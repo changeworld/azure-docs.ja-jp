@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e541a5620d4f263e5e1379b364d7c7dd9a97a331
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 355e300ec9f3671cf29ccc763e211a9bb3806f64
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289023"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474786"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) で OPENROWSET を使用する方法
 
@@ -127,7 +127,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
  読み取り対象のフォルダーまたはファイルを指す、ストレージ内のパスを指定します。 パスがコンテナーまたはフォルダーを指している場合は、その特定のコンテナーまたはフォルダーからすべてのファイルが読み取られます。 サブフォルダー内のファイルは含まれません。 
 
  ワイルドカードを使用して、複数のファイルまたはフォルダーを対象にすることができます。 連続しない複数のワイルドカードを使用できます。
-次に示すのは、 */csv/population* で始まるすべてのフォルダーから、*population* で始まるすべての *csv* ファイルを読み取る例です。  
+次に示すのは、 */csv/population* で始まるすべてのフォルダーから、 *population* で始まるすべての *csv* ファイルを読み取る例です。  
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
 unstructured_data_path でフォルダーを指定すると、SQL オンデマンド クエリはそのフォルダーからファイルを取得します。 
@@ -192,9 +192,9 @@ CSV ファイルで引用符文字として使用される文字を指定しま�
 
 DATA_COMPRESSION = 'data_compression_method'
 
-圧縮方法を指定します。 次の圧縮方法がサポートされています。
+圧縮方法を指定します。 PARSER_VERSION='1.0' でのみサポートされます。 次の圧縮方法がサポートされています。
 
-- org.apache.hadoop.io.compress.GzipCodec
+- GZIP
 
 PARSER_VERSION = 'parser_version'
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 5507c25510a84dcfeafc1b2db6c2a774153a59c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 803f5c25429b33e6d1af130196d38e125b410eb4
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545732"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891025"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>チュートリアル: Azure Active Directory と Zscaler Private Access Administrator の統合
 
@@ -27,7 +27,7 @@ Zscaler Private Access Administrator と Azure AD の統合には、次の利点
 * ユーザーが自分の Azure AD アカウントで Zscaler Private Access Administrator に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -64,13 +64,13 @@ Azure AD への Zscaler Private Access Administrator の統合を構成するに
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Zscaler Private Access Administrator**」と入力し、結果パネルから **[Zscaler Private Access Administrator]** を選択してから **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Zscaler Private Access Administrator** 」と入力し、結果パネルから **[Zscaler Private Access Administrator]** を選択してから **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Zscaler Private Access Administrator](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Zscaler Private Access Administrator で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Zscaler Private Access Administrator で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Zscaler Private Access Administrator の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 Zscaler Private Access Administrator で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -102,7 +102,7 @@ Zscaler Private Access Administrator で Azure AD シングル サインオン�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![Zscaler Private Access Administrator のドメインと URL のシングル サインオン情報](common/idp-relay.png)
+    ![説明されている値を入力できる [基本的な SAML 構成] を示すスクリーンショット。](common/idp-relay.png)
 
     a. **[識別子]** ボックスに、`https://<subdomain>.private.zscaler.com/auth/metadata` の形式で URL を入力します。
 
@@ -114,14 +114,14 @@ Zscaler Private Access Administrator で Azure AD シングル サインオン�
 
 5.  **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
-    ![Zscaler Private Access Administrator のドメインと URL のシングル サインオン情報](common/both-signonurl.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/both-signonurl.png)
 
     **[サインオン URL]** ボックスに、`https://<subdomain>.private.zscaler.com/auth/sso` という形式で URL を入力します。   
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Zscaler Private Access Administrator クライアント サポート チーム](https://help.zscaler.com/zpa-submit-ticket)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -179,7 +179,7 @@ Zscaler Private Access Administrator で Azure AD シングル サインオン�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -257,13 +257,12 @@ Azure AD ユーザーが Zscaler Private Access Administrator にサインイン
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで Zscaler Private Access Administrator のタイルをクリックすると、SSO をセットアップする Zscaler Private Access Administrator に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで Zscaler Private Access Administrator のタイルをクリックすると、SSO をセットアップする Zscaler Private Access Administrator に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

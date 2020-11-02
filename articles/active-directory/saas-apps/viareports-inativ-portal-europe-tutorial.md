@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: jeedes
-ms.openlocfilehash: c4c1ffa4d8e9b175ced40671f1ac3d092b51c8c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8393410c5b15ee888a2c0cee82c783f17e0e177
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88532017"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517618"
 ---
 # <a name="tutorial-integrate-viareport-europe-with-azure-active-directory"></a>チュートリアル:Viareport (ヨーロッパ) を Azure Active Directory と統合する
 
@@ -26,7 +26,7 @@ ms.locfileid: "88532017"
 * ユーザーが自分の Azure AD アカウントを使用して Viareport (ヨーロッパ) に自動的にサインインできるようにします。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Viareport (ヨーロッパ) では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Viareport (ヨーロッパ) では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-viareport-europe-from-the-gallery"></a>ギャラリーからの Viareport (ヨーロッパ) の追加
 
@@ -49,7 +49,7 @@ Azure AD への Viareport (ヨーロッパ) の統合を構成するには、ギ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Viareport (ヨーロッパ)** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Viareport (ヨーロッパ)** 」と入力します。
 1. 結果ウィンドウで **[Viareport (ヨーロッパ)]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -93,7 +93,7 @@ Viareport (ヨーロッパ) に対する Azure AD SSO を構成してテスト�
 
 ### <a name="configure-viareport-europe-sso"></a>Viareport (ヨーロッパ) の SSO の構成
 
-**Viareport (ヨーロッパ)** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Viareport (ヨーロッパ) サポート チーム](mailto:ycezard@viareport.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Viareport (ヨーロッパ)** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Viareport (ヨーロッパ) サポート チーム](mailto:ycezard@viareport.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -126,19 +126,18 @@ Viareport (ヨーロッパ) に対する Azure AD SSO を構成してテスト�
 
 ### <a name="create-viareport-europe-test-user"></a>Viareport (ヨーロッパ) のテスト ユーザーの作成
 
-このセクションでは、Viareport (ヨーロッパ) で B.Simon というユーザーを作成します。  [Viareport (ヨーロッパ) サポート チーム](mailto:ycezard@viareport.com)と連携して、ユーザーを Viareport (ヨーロッパ) プラットフォームに追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Viareport (ヨーロッパ) で B.Simon というユーザーを作成します。 [Viareport (ヨーロッパ) サポート チーム](mailto:ycezard@viareport.com)と連携して、ユーザーを Viareport (ヨーロッパ) プラットフォームに追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Viareport (ヨーロッパ)] タイルをクリックすると、SSO を設定した Viareport (ヨーロッパ) に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Viareport (ヨーロッパ)] タイルをクリックすると、SSO を設定した Viareport (ヨーロッパ) に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

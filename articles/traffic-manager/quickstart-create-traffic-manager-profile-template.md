@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: duau
 ms.date: 09/01/2020
-ms.openlocfilehash: dbdb6a255fdf0214103a0011f25b0a6d25014e69
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ec569781a6318062810358c2c5e17ba71efc4f71
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89299152"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676004"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Traffic Manager プロファイルを作成する
 
@@ -43,7 +43,7 @@ Azure Traffic Manager に関連するテンプレートをさらに探すには�
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-1. 次のコード ブロックの **[試してみる]** を選択して Azure Cloud Shell を開き、指示に従って Azure にサインインします。 
+1. 次のコード ブロックの **[試してみる]** を選択して Azure Cloud Shell を開き、指示に従って Azure にサインインします。
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -66,12 +66,12 @@ Azure Traffic Manager に関連するテンプレートをさらに探すには�
 
 1. 値を入力します。
 
-    テンプレートのデプロイによって、2 つの外部エンドポイントがあるプロファイルが作成されます。 **Endpoint1** は、*w<span>ww.microsoft</span>.com* のターゲット エンドポイントを使用し、場所は**北ヨーロッパ**です。 **Endpoint2** は、*d<span>ocs.microsoft</span>.com* のターゲット エンドポイントを使用し、場所は**米国中南部**です。 
+    テンプレートのデプロイによって、2 つの外部エンドポイントがあるプロファイルが作成されます。 **Endpoint1** は、`www.microsoft.com` のターゲット エンドポイントを使用し、その場所は **北ヨーロッパ** です。 **Endpoint2** は、`docs.microsoft.com` のターゲット エンドポイントを使用し、その場所は **米国中南部** です。
 
-    リソース グループの名前は、**rg** が付加されたプロジェクト名です。
+    リソース グループの名前は、 **rg** が付加されたプロジェクト名です。
 
     > [!NOTE]
-    > テンプレートが正常にデプロイされるためには、**uniqueDNSname** がグローバルに一意の名前である必要があります。 デプロイが失敗した場合は、手順 1. からやり直します。
+    > テンプレートが正常にデプロイされるためには、 **uniqueDNSname** がグローバルに一意の名前である必要があります。 デプロイが失敗した場合は、手順 1. からやり直します。
 
     テンプレートのデプロイには数分かかります。 完了すると、次のように出力されます。
 
@@ -87,21 +87,23 @@ Azure Traffic Manager に関連するテンプレートをさらに探すには�
     Get-AzTrafficManagerProfile -Name ExternalEndpointExample -ResourceGroupName $resourceGroupName | Select RelativeDnsName
     ```
 
-    **RelativeDnsName** 値をコピーします。 Traffic Manager プロファイルの DNS 名は、 *<* relativednsname *>.trafficmanager.net* です。 
+    **RelativeDnsName** 値をコピーします。 Traffic Manager プロファイルの DNS 名は、`<relativednsname>.trafficmanager.net` です。
 
-1. ローカル PowerShell から次のコマンドを実行します。その際に、 **{relativeDNSname}** 変数を *<* relativednsname *> trafficmanager.net* に置き換えます。
+1. ローカル PowerShell から次のコマンドを実行します。その際に、 **{relativeDNSname}** 変数を `<relativednsname>.trafficmanager.net` に置き換えます。
 
     ```powershell
     Resolve-DnsName -Name {relativeDNSname} | Select-Object NameHost | Select -First 1
     ```
-    どちらのリージョンが近いかに応じて、*w<span>ww.microsoft</span>.com* または *d<span>ocs.microsoft</span>.com* の NameHost を取得する必要があります。
 
-1. もう一方のエンドポイントに解決できるかどうかを確認するには、最後の手順で取得したターゲットのエンドポイントを無効にします。 *w<span>ww.microsoft</span>.com* または *d<span>ocs.microsoft</span>.com* のターゲットを無効にするには、 **{endpointName}** をそれぞれ **endpoint1** または **endpoint2** に置き換えます。
+    どちらのリージョンが近いかに応じて、`www.microsoft.com` または `docs.microsoft.com` の NameHost を取得する必要があります。
+
+1. もう一方のエンドポイントに解決できるかどうかを確認するには、最後の手順で取得したターゲットのエンドポイントを無効にします。 `www.microsoft.com` または `docs.microsoft.com` のターゲットを無効にするには、 **{endpointName}** をそれぞれ **endpoint1** または **endpoint2** に置き換えます。
 
     ```azurepowershell-interactive
     Disable-AzTrafficManagerEndpoint -Name {endpointName} -Type ExternalEndpoints -ProfileName ExternalEndpointExample -ResourceGroupName $resourceGroupName -Force
     ```
-1. ローカル PowerShell で、手順 2. のコマンドをもう一度実行します。 今回は、もう一方のエンドポイントの NameHost を取得する必要があります。 
+
+1. ローカル PowerShell で、手順 2. のコマンドをもう一度実行します。 今回は、もう一方のエンドポイントの NameHost を取得する必要があります。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -115,8 +117,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、次のものを作成しました。
-* Traffic Manager プロファイル
+このクイック スタートでは、Traffic Manager プロファイルを作成しました。
 
 トラフィックのルーティングについて理解を深めるために、引き続き Traffic Manager のチュートリアルをご覧ください。
 

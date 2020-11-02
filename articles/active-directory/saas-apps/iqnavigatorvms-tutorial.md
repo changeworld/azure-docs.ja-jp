@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 947834f0ca32b81a8a5e292ce63507f93a389bb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: beef52641b9744b39873a7f48e39eb2f94ed4c9f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552786"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459732"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iqnavigator-vms"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と IQNavigator VMS の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88552786"
 * ユーザーが自分の Azure AD アカウントを使用して IQNavigator VMS に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,7 +40,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 
-* IQNavigator VMS では、**IDP** によって開始される SSO がサポートされます
+* IQNavigator VMS では、 **IDP** によって開始される SSO がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -55,7 +55,7 @@ Azure AD への IQNavigator VMS の統合を構成するには、ギャラリー
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**IQNavigator VMS**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **IQNavigator VMS** 」と入力します。
 1. 結果のパネルから **IQNavigator VMS** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -135,25 +135,24 @@ IQNavigator VMS で Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-iqnavigator-vms-sso"></a>IQNavigator VMS の SSO の構成
 
-**IQNavigator VMS** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [IQNavigator VMS サポート チーム](https://www.beeline.com/support-iqn/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**IQNavigator VMS** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [IQNavigator VMS サポート チーム](https://www.beeline.com/support-iqn/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-iqnavigator-vms-test-user"></a>IQNavigator VMS テスト ユーザーの作成
 
-このセクションでは、IQNavigator VMS で Britta Simon というユーザーを作成します。  [IQNavigator VMS サポート チーム](https://www.beeline.com/support-iqn/)と協力して、IQNavigator VMS プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、IQNavigator VMS で Britta Simon というユーザーを作成します。 [IQNavigator VMS サポート チーム](https://www.beeline.com/support-iqn/)と連携して、IQNavigator VMS プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [IQNavigator VMS] タイルをクリックすると、SSO を設定した IQNavigator VMS に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [IQNavigator VMS] タイルをクリックすると、SSO を設定した IQNavigator VMS に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で IQNavigator VMS を試す](https://aad.portal.azure.com/)
-

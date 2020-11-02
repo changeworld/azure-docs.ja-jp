@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 17e2d04a39a2ef5a935ea6e56ef16958419eddb1
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: e676268abb9e1a4a597ef431ea6ba6593411711e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91775625"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455223"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coralogix"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Coralogix の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91775625"
 * ユーザーが自分の Azure AD アカウントを使用して Coralogix に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Coralogix では、**SP** によって開始される SSO がサポートされます
+* Coralogix では、 **SP** によって開始される SSO がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -52,7 +52,7 @@ Azure AD への Coralogix の統合を構成するには、ギャラリーから
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Coralogix**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Coralogix** 」と入力します。
 1. 結果ウィンドウで **Coralogix** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-coralogix"></a>Coralogix の Azure AD シングル サインオンの構成とテスト
@@ -104,9 +104,9 @@ Coralogix で Azure AD SSO を構成してテストするには、次の構成�
     ![[編集] ボタンが強調表示されている [ユーザー属性とクレーム] ダイアログを示すスクリーンショット。](./media/coralogix-tutorial/tutorial_usermail.png)
     ![image](./media/coralogix-tutorial/tutorial_usermailedit.png)
 
-    b. **[名前識別子の形式の選択]** の一覧で、**[電子メール アドレス]** を選択します。
+    b. **[名前識別子の形式の選択]** の一覧で、 **[電子メール アドレス]** を選択します。
 
-    c. **[ソース属性]** の一覧から、**[user.mail]** を選択します。
+    c. **[ソース属性]** の一覧から、 **[user.mail]** を選択します。
 
     d. **[保存]** を選択します。
 
@@ -150,25 +150,24 @@ Coralogix で Azure AD SSO を構成してテストするには、次の構成�
 
 ## <a name="configure-coralogix-sso"></a>Coralogix の SSO の構成
 
-**Coralogix** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Coralogix サポート チーム](mailto:info@coralogix.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Coralogix** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Coralogix サポート チーム](mailto:info@coralogix.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-coralogix-test-user"></a>Coralogix のテスト ユーザーの作成
 
-このセクションでは、Coralogix で Britta Simon というユーザーを作成します。  [Coralogix サポート チーム](mailto:info@coralogix.com)と連携し、Coralogix プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Coralogix で Britta Simon というユーザーを作成します。 [Coralogix サポート チーム](mailto:info@coralogix.com)と連携して、Coralogix プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Coralogix] タイルをクリックすると、SSO を設定した Coralogix に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Coralogix] タイルをクリックすると、SSO を設定した Coralogix に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Coralogix を試す](https://aad.portal.azure.com/)
-

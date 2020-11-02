@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 5a8fe24e5fa1935b2363ed5d2c15c72af8af11ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad6a4d075ea861068ad0c929d92cd2f12efa6121
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88539727"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516105"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>チュートリアル:Azure Active Directory と Signagelive の統合
 
@@ -27,7 +27,7 @@ Signagelive と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Signagelive に自動的にサインイン (シングル サインオン) するようにすることができます。
 * 1 つの中央サイト (Azure ポータル) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、[Azure Active Directory を使用したアプリケーション アクセスとシングル サインオンの概要](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)に関する記事をご覧ください。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+SaaS アプリと Azure AD の統合の詳細については、[Azure Active Directory を使用したアプリケーション アクセスとシングル サインオンの概要](../manage-apps/what-is-single-sign-on.md)に関する記事をご覧ください。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,7 +48,7 @@ Azure AD への Signagelive の統合を構成するには、まず、ギャラ�
 
 ギャラリーから Signagelive を追加するには、次の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com) の左側のウィンドウで、**Azure Active Directory** アイコンを選択します。
+1. [Azure Portal](https://portal.azure.com) の左側のウィンドウで、 **Azure Active Directory** アイコンを選択します。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
@@ -60,7 +60,7 @@ Azure AD への Signagelive の統合を構成するには、まず、ギャラ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Signagelive**」と入力します。 
+4. 検索ボックスに「 **Signagelive** 」と入力します。 
 
      ![結果リストの Signagelive](common/search-new-app.png)
 
@@ -68,7 +68,7 @@ Azure AD への Signagelive の統合を構成するには、まず、ギャラ�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Signagelive で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Signagelive で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Signagelive 内の関連ユーザーとの間にリンク関係を確立する必要があります。
 
 Signagelive で Azure AD でのシングル サインオンを構成してテストするには、まず、次の構成要素を完了します。
@@ -107,7 +107,7 @@ Signagelive での Azure AD シングル サインオンを構成するには、
     > [!NOTE]
     > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Signagelive クライアント サポート チーム](mailto:support@signagelive.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** を選択して、ご自分の要件に適した特定のオプションの**証明書 (未加工)** をダウンロードします。 その後、ご自分のコンピューター上に保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** を選択して、ご自分の要件に適した特定のオプションの **証明書 (未加工)** をダウンロードします。 その後、ご自分のコンピューター上に保存します。
 
     ![証明書のダウンロードのリンク](common/certificateraw.png)
 
@@ -123,7 +123,7 @@ Signagelive での Azure AD シングル サインオンを構成するには、
 
 ### <a name="configure-signagelive-single-sign-on"></a>Signagelive のシングル サインオンの構成
 
-Signagelive 側でシングル サインオンを構成するには、ダウンロードした**証明書 (未加工)** と Azure portal からコピーした URL を [Signagelive サポート チーム](mailto:support@signagelive.com)に送信します。 サポート チームにより、SAML シングル サインオン接続が両方の側で確実に正しく設定されます。
+Signagelive 側でシングル サインオンを構成するには、ダウンロードした **証明書 (未加工)** と Azure portal からコピーした URL を [Signagelive サポート チーム](mailto:support@signagelive.com)に送信します。 サポート チームにより、SAML シングル サインオン接続が両方の側で確実に正しく設定されます。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -141,7 +141,7 @@ Signagelive 側でシングル サインオンを構成するには、ダウン�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、この場合は、「BrittaSimon@contoso.com」と入力できます。
 
@@ -177,19 +177,18 @@ Signagelive 側でシングル サインオンを構成するには、ダウン�
 
 ### <a name="create-a-signagelive-test-user"></a>Signagelive のテスト ユーザーの作成
 
-このセクションでは、Signagelive で Britta Simon というユーザーを作成します。  [Signagelive サポート チーム](mailto:support@signagelive.com)と連携し、Signagelive プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、アクティブにする必要があります。
+このセクションでは、Signagelive で Britta Simon というユーザーを作成します。 [Signagelive サポート チーム](mailto:support@signagelive.com)と連携して、Signagelive プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、アクティブにする必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、MyApps ポータルを使用してご自分の Azure AD のシングル サインオン構成をテストします。
 
-MyApps ポータル内で **[Signagelive]** タイルを選択すると、Signagelive に自動的にサインインします。 MyApps ポータルの詳細については、[MyApps ポータルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+MyApps ポータル内で **[Signagelive]** タイルを選択すると、Signagelive に自動的にサインインします。 MyApps ポータルの詳細については、[MyApps ポータルの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

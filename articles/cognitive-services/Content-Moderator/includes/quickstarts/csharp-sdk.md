@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: cb0d9ff1074ba1a309cf4f5a8cad12f34335e435
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2db80cdba778d868d90d5278005791257acb0ed3
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91989436"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548175"
 ---
 .NET 用 Azure Content Moderator クライアント ライブラリの使用を開始します。 以下の手順に従って、NuGet パッケージをインストールし、基本タスクのコード例を試してみましょう。 
 
@@ -34,7 +34,7 @@ Content Moderator は、不快感を与える可能性がある内容、リス�
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) または現在のバージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
-* Azure サブスクリプションを入手したら、Azure portal で <a href="https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account"  title="[製品名] リソースを作成"  target="_blank">Content Moderator リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイするまで待ち、 **[リソースに移動]** ボタンをクリックします。
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title="Content Moderator リソースを作成"  target="_blank">Content Moderator リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイするまで待ち、 **[リソースに移動]** ボタンをクリックします。
     * 対象のアプリケーションを Content Moderator に接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
     * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
@@ -48,11 +48,11 @@ Visual Studio を使用して、新しい .NET Core アプリケーションを�
 
 ### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする 
 
-新しいプロジェクトを作成したら、**ソリューション エクスプローラー**でプロジェクト ソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択し、 **[プレリリースを含める]** をオンにして、`Microsoft.Azure.CognitiveServices.ContentModerator` を検索します。 バージョン `2.0.0` を選択し、 **[インストール]** を選択します。 
+新しいプロジェクトを作成したら、 **ソリューション エクスプローラー** でプロジェクト ソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択し、 **[プレリリースを含める]** をオンにして、`Microsoft.Azure.CognitiveServices.ContentModerator` を検索します。 バージョン `2.0.0` を選択し、 **[インストール]** を選択します。 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-コンソール ウィンドウ (cmd、PowerShell、Bash など) で、`dotnet new` コマンドを使用し、`content-moderator-quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイルを使用する単純な "Hello World" C# プロジェクトが作成されます。*Program.cs*。
+コンソール ウィンドウ (cmd、PowerShell、Bash など) で、`dotnet new` コマンドを使用し、`content-moderator-quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイルを使用する単純な "Hello World" C# プロジェクトが作成されます。 *Program.cs* 。
 
 ```console
 dotnet new console -n content-moderator-quickstart
@@ -94,7 +94,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator --version 
 **Program** クラスで、対象のリソースのキーとエンドポイントの変数を作成します。
 
 > [!IMPORTANT]
-> Azure Portal にアクセスします。 「**前提条件**」セクションで作成した Content Moderator リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
+> Azure Portal にアクセスします。 「 **前提条件** 」セクションで作成した Content Moderator リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
 >
 > 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)に関するページを参照してください。
 
@@ -152,7 +152,7 @@ Crap is the profanity here. Is this information PII? phone 4255550111
 ```
 
 
-次に、**Program** クラスのどこかにテキスト モデレーション メソッドを定義します。
+次に、 **Program** クラスのどこかにテキスト モデレーション メソッドを定義します。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod)]
 

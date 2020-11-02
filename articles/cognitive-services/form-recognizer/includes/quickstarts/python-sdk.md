@@ -7,17 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 09/21/2020
+ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: ba3eae9b48650a549c3bb91bdf5e9a76cfbbe3b7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5ff9c95e51f63de77ca20dee965718687daae5f4
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963084"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897738"
 ---
 > [!IMPORTANT]
-> * Form Recognizer SDK は現在、From Recognizer サービスの v2.0 を対象としています。
 > * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 以下のリファレンス ドキュメントを参照してください。 
 
 [リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-ai-formrecognizer) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer) | [パッケージ (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/) | [サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
@@ -25,11 +24,36 @@ ms.locfileid: "91963084"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
-* トレーニング データのセットを含む Azure Storage Blob。 トレーニング データ セットをまとめるためのヒントとオプションについては、「[カスタム モデルのトレーニング データ セットを作成する](../../build-training-data-set.md)」を参照してください。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)の **Train** フォルダーにあるファイルを使用できます (*sample_data.zip* をダウンロードして展開します)。
-* [Python 2.7 または 3.5 以降](https://www.python.org/)
+* [Python 3.x](https://www.python.org/)
+* トレーニング データのセットを含む Azure Storage Blob。 トレーニング データ セットをまとめるためのヒントとオプションについては、「[カスタム モデルのトレーニング データ セットを作成する](../../build-training-data-set.md)」を参照してください。 このクイックスタートでは、 [サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)の **Train** フォルダーにあるファイルを使用できます ( *sample_data.zip* をダウンロードして展開します)。
 * Azure サブスクリプションを用意できたら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Form Recognizer リソースを作成"  target="_blank">Form Recognizer リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、自分のキーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
     * 自分のアプリケーションを Form Recognizer API に接続するには、作成したリソースのキーとエンドポイントが必要になります。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
     * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
+
+## <a name="setting-up"></a>設定
+
+### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
+
+Python をインストールしたら、次のコマンドを使用して最新バージョンの Form Recognizer クライアント ライブラリをインストールすることができます。
+
+```console
+pip install azure-ai-formrecognizer
+```
+
+### <a name="create-a-new-python-application"></a>新しい Python アプリケーションを作成する
+
+お気に入りのエディターまたは IDE で、新しい Python アプリケーションを作成します。 次に、次のライブラリをインポートします。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_imports)]
+
+> [!TIP]
+> クイックスタートのコード ファイル全体を一度にご覧いただけます。 これは [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/FormRecognizerQuickstart.py) にあり、このクイックスタートのコード例が含まれています。
+
+
+自分のリソースの Azure エンドポイントおよびキー用の変数を作成します。 
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_creds)]
+
 
 ## <a name="object-model"></a>オブジェクト モデル 
 
@@ -53,35 +77,6 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 > [!NOTE]
 > モデルのトレーニングは、[Form Recognizer のラベル付けツール](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)など、グラフィカル ユーザー インターフェイスを使用して行うこともできます。
 
-## <a name="setting-up"></a>設定
-
-### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
-
-Python をインストールしたら、次のコマンドを使用して最新バージョンの Form Recognizer クライアント ライブラリをインストールすることができます。
-
-```console
-pip install azure-ai-formrecognizer
-```
-
-### <a name="create-a-new-python-application"></a>新しい Python アプリケーションを作成する
-
-お気に入りのエディターまたは IDE で、新しい Python アプリケーションを作成します。 次に、次のライブラリをインポートします。 トレーニングとフォーム認識の両方に必要なライブラリをインポートしていることに注目してください。
-
-```python
-import os
-from azure.core.exceptions import ResourceNotFoundError
-from azure.ai.formrecognizer import FormRecognizerClient
-from azure.ai.formrecognizer import FormTrainingClient
-from azure.core.credentials import AzureKeyCredential
-```
-
-自分のリソースの Azure エンドポイントおよびキー用の変数を作成します。 
-
-```python
-endpoint = "<paste-your-form-recognizer-endpoint-here>"
-key = "<paste-your-form-recognizer-key-here>"
-```
-
 ## <a name="code-examples"></a>コード例
 
 これらのコード スニペットでは、Python 用 Form Recognizer クライアント ライブラリを使用して次のタスクを実行する方法を示します。
@@ -96,43 +91,30 @@ key = "<paste-your-form-recognizer-key-here>"
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-ここでは、上で定義したサブスクリプション変数を使用して 2 つのクライアント オブジェクトを認証します。 必要に応じて、新しいクライアント オブジェクトを作成せずに API キーを更新できるように、`AzureKeyCredential` オブジェクトを使用します。
+ここでは、上で定義したサブスクリプション変数を使用して 2 つのクライアント オブジェクトを認証します。 必要に応じて、新しいクライアント オブジェクトを作成せずに API キーを更新できるように、 **AzureKeyCredential** オブジェクトを使用します。
 
-```python
-form_recognizer_client = FormRecognizerClient(endpoint, AzureKeyCredential(key))
-form_training_client = FormTrainingClient(endpoint, AzureKeyCredential(key))
-```
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_auth)]
+
 
 ## <a name="get-assets-for-testing"></a>テスト用のアセットを取得する
 
-このガイドのコード スニペットでは、URL でアクセスされるリモート フォームが使用されます。 ローカル フォーム ドキュメントを代わりに処理する場合は、[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-ai-formrecognizer)の関連するメソッドと[サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)を参照してください。
-
-また、トレーニング データとテスト データの URL への参照を追加する必要もあります。
+トレーニングとテスト データの URL への参照を追加する必要があります。
 * カスタム モデルのトレーニング データの SAS URL を取得するには、Microsoft Azure Storage Explorer を開き、ご利用のコンテナーを右クリックし、 **[Shared Access Signature の取得]** を選択します。 アクセス許可の **[読み取り]** と **[表示]** がオンになっていることを確認し、 **[作成]** をクリックします。 次に、その値を **URL** セクションにコピーします。 それは次の書式になります`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
 * 以下のサンプルに含まれるフォームや領収書のサンプル画像を使用します ([GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) から入手することもできます)。または、上記の手順を使用して、Blob Storage 内の各ドキュメントの SAS URL を取得することもできます。 
 
 > [!NOTE]
-> このガイドのコード スニペットでは、URL でアクセスされるリモート フォームが使用されます。 ローカル フォーム ドキュメントを代わりに処理する場合は、[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-ai-formrecognizer)の関連するメソッドを参照してください。
+> このガイドのコード スニペットでは、URL でアクセスされるリモート フォームが使用されます。 ローカル フォーム ドキュメントを代わりに処理する場合は、[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-ai-formrecognizer)の関連するメソッドと[サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)を参照してください。
 
 ## <a name="recognize-form-content"></a>フォーム コンテンツを認識する
 
 Form Recognizer を使用すると、ドキュメント内の表、行、および単語を認識できます。モデルをトレーニングする必要はありません。
 
-指定された URL にあるファイルの内容を認識するには、`begin_recognize_content` メソッドを使用します。 返される値は `FormPage` オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つあります。 次のコードでは、これらのオブジェクトを反復処理し、抽出されたキー/値のペアとテーブル データを出力します。
+指定された URL にあるファイルの内容を認識するには、`begin_recognize_content_from_url` メソッドを使用します。 返される値は `FormPage` オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つあります。 次のコードでは、これらのオブジェクトを反復処理し、抽出されたキー/値のペアとテーブル データを出力します。
 
-```Python
-formUrl = "https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/tests/sample_forms/forms/Invoice_1.pdf"
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_getcontent)]
 
-poller = form_recognizer_client.begin_recognize_content_from_url(formUrl)
-page = poller.result()
-
-table = page[0].tables[0] # page 1, table 1
-print("Table found on page {}:".format(table.page_number))
-for cell in table.cells:
-    print("Cell text: {}".format(cell.text))
-    print("Location: {}".format(cell.bounding_box))
-    print("Confidence score: {}\n".format(cell.confidence))
-```
+> [!TIP]
+> また、ローカルの画像から内容を取得することもできます。 [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) のメソッドを参照してください (`begin_recognize_content` など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上のサンプル コードを参照してください。
 
 ### <a name="output"></a>出力
 
@@ -162,23 +144,10 @@ Confidence score: 1.0
 
 このセクションでは、事前トレーニング済みの領収書モデルを使用して、米国の領収書から共通フィールドを認識して抽出する方法を示します。 URL から領収書を認識するには、`begin_recognize_receipts_from_url` メソッドを使用します。 
 
-```python
-receiptUrl = "https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/tests/sample_forms/receipt/contoso-receipt.png"
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
 
-poller = form_recognizer_client.begin_recognize_receipts_from_url(receiptUrl)
-result = poller.result()
-
-for receipt in result:
-    for name, field in receipt.fields.items():
-        if name == "Items":
-            print("Receipt Items:")
-            for idx, items in enumerate(field.value):
-                print("...Item #{}".format(idx + 1))
-                for item_name, item in items.value.items():
-                    print("......{}: {} has confidence {}".format(item_name, item.value, item.confidence))
-        else:
-            print("{}: {} has confidence {}".format(name, field.value, field.confidence))
-```
+> [!TIP]
+> ローカルにある領収書の画像を認識することもできます。 [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) のメソッドを参照してください (`begin_recognize_receipts` など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上のサンプル コードを参照してください。
 
 ### <a name="output"></a>出力
 
@@ -215,40 +184,8 @@ Total: 1203.39 has confidence 0.774
 
 次のコードは、トレーニング クライアントを `begin_training` 関数と共に使用して、特定のドキュメント セットでモデルをトレーニングします。 返される `CustomFormModel` オブジェクトには、モデルが認識できるフォームの種類と、それぞれのフォームの種類から抽出できるフィールドに関する情報が含まれています。 次のコード ブロックは、この情報をコンソールに出力します。
 
-```python
-# To train a model you need an Azure Storage account.
-# Use the SAS URL to access your training files.
-trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>"
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_train)]
 
-poller = form_training_client.begin_training(trainingDataUrl, use_training_labels=False)
-model = poller.result()
-
-print("Model ID: {}".format(model.model_id))
-print("Status: {}".format(model.status))
-print("Training started on: {}".format(model.training_started_on))
-print("Training completed on: {}".format(model.training_completed_on))
-
-print("\nRecognized fields:")
-for submodel in model.submodels:
-    print(
-        "The submodel with form type '{}' has recognized the following fields: {}".format(
-            submodel.form_type,
-            ", ".join(
-                [
-                    field.label if field.label else name
-                    for name, field in submodel.fields.items()
-                ]
-            ),
-        )
-    )
-
-# Training result information
-for doc in model.training_documents:
-    print("Document name: {}".format(doc.name))
-    print("Document status: {}".format(doc.status))
-    print("Document page count: {}".format(doc.page_count))
-    print("Document errors: {}".format(doc.errors))
-```
 
 ### <a name="output"></a>出力
 
@@ -289,42 +226,9 @@ Document errors: []
 トレーニング ドキュメントに手動でラベルを付けて、カスタム モデルをトレーニングすることもできます。 ラベルを使用してトレーニングを行うと、一部のシナリオでパフォーマンスの向上につながります。 返される `CustomFormModel` は、モデルが抽出できるフィールドを、各フィールドの予測精度と共に示します。 次のコード ブロックは、この情報をコンソールに出力します。
 
 > [!IMPORTANT]
-> ラベルを使用してトレーニングするには、トレーニング ドキュメントと共に、自分の Blob Storage コンテナーに特別なラベル情報ファイル (`\<filename\>.pdf.labels.json`) を用意する必要があります。 [Form Recognizer のサンプル ラベル付けツール](../../quickstarts/label-tool.md)では、これらのラベル ファイルの作成を支援する UI が提供されています。 それらの用意ができたら、*use_training_labels* パラメーターを `true` に設定して、`begin_training` 関数を呼び出すことができます。
+> ラベルを使用してトレーニングするには、トレーニング ドキュメントと共に、自分の Blob Storage コンテナーに特別なラベル情報ファイル (`\<filename\>.pdf.labels.json`) を用意する必要があります。 [Form Recognizer のサンプル ラベル付けツール](../../quickstarts/label-tool.md)では、これらのラベル ファイルの作成を支援する UI が提供されています。 それらの用意ができたら、 *use_training_labels* パラメーターを `true` に設定して、`begin_training` 関数を呼び出すことができます。
 
-```python
-# To train a model you need an Azure Storage account.
-# Use the SAS URL to access your training files.
-trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>"
-
-poller = form_training_client.begin_training(trainingDataUrl, use_training_labels=True)
-model = poller.result()
-
-print("Model ID: {}".format(model.model_id))
-print("Status: {}".format(model.status))
-print("Training started on: {}".format(model.training_started_on))
-print("Training completed on: {}".format(model.training_completed_on))
-
-print("\nRecognized fields:")
-for submodel in model.submodels:
-    print(
-        "The submodel with form type '{}' has recognized the following fields: {}".format(
-            submodel.form_type,
-            ", ".join(
-                [
-                    field.label if field.label else name
-                    for name, field in submodel.fields.items()
-                ]
-            ),
-        )
-    )
-
-# Training result information
-for doc in model.training_documents:
-    print("Document name: {}".format(doc.name))
-    print("Document status: {}".format(doc.status))
-    print("Document page count: {}".format(doc.page_count))
-    print("Document errors: {}".format(doc.errors))
-```
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_trainlabels)]
 
 ### <a name="output"></a>出力
 
@@ -370,24 +274,11 @@ Document errors: []
 
 `begin_recognize_custom_forms_from_url` メソッドを使用します。 返される値は `RecognizedForm` オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つあります。 次のコードは、分析結果をコンソールに出力します。 認識された各フィールドと対応する値が、信頼度スコアと共に出力されます。
 
-```python
-# Model ID from when you trained your model.
-model_id = "<your custom model id>"
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_analyze)]
 
-poller = form_recognizer_client.begin_recognize_custom_forms_from_url(
-    model_id=model_id, form_url=formUrl)
-result = poller.result()
+> [!TIP]
+> ローカルの画像を分析することもできます。 [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) のメソッドを参照してください (`begin_recognize_custom_forms` など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上のサンプル コードを参照してください。
 
-for recognized_form in result:
-    print("Form type: {}".format(recognized_form.form_type))
-    for name, field in recognized_form.fields.items():
-        print("Field '{}' has label '{}' with value '{}' and a confidence score of {}".format(
-            name,
-            field.label_data.text if field.label_data else name,
-            field.value,
-            field.confidence
-        ))
-```
 
 ### <a name="output"></a>出力
 
@@ -420,12 +311,8 @@ Field 'Total' has label 'Total' with value 'None' and a confidence score of None
 
 次のコード ブロックは、Form Recognizer アカウントに保存したモデルの数を確認し、アカウントの制限と比較します。
 
-```python
-account_properties = form_training_client.get_account_properties()
-print("Our account has {} custom models, and we can have at most {} custom models".format(
-    account_properties.custom_model_count, account_properties.custom_model_limit
-))
-```
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_count)]
+
 
 ### <a name="output"></a>出力
 
@@ -437,18 +324,8 @@ Our account has 5 custom models, and we can have at most 5000 custom models
 
 次のコード ブロックは、アカウント内の現在のモデルを一覧表示し、その詳細をコンソールに出力します。 また、最初のモデルへの参照も保存します。
 
-```python
-# Next, we get a paged list of all of our custom models
-custom_models = form_training_client.list_custom_models()
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_list)]
 
-print("We have models with the following ids:")
-
-# Let's pull out the first model
-first_model = next(custom_models)
-print(first_model.model_id)
-for model in custom_models:
-    print(model.model_id)
-```
 
 ### <a name="output"></a>出力
 
@@ -467,15 +344,8 @@ c6309148-6b64-4fef-aea0-d39521452699
 
 次のコード ブロックは、前のセクションで保存したモデル ID を使用して、モデルに関する詳細を取得します。
 
-```python
-model_id = "<model_id from the Train a Model sample>"
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_getmodel)]
 
-custom_model = form_training_client.get_custom_model(model_id=model_id)
-print("Model ID: {}".format(custom_model.model_id))
-print("Status: {}".format(custom_model.status))
-print("Training started on: {}".format(custom_model.training_started_on))
-print("Training completed on: {}".format(custom_model.training_completed_on))
-```
 
 ### <a name="output"></a>出力
 
@@ -492,18 +362,12 @@ Training completed on: 2020-08-20 23:20:57+00:00
 
 ID を参照して、アカウントからモデルを削除することもできます。 このコードは、前のセクションで使用したモデルを削除します。
 
-```python
-form_training_client.delete_model(model_id=custom_model.model_id)
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_delete)]
 
-try:
-    form_training_client.get_custom_model(model_id=custom_model.model_id)
-except ResourceNotFoundError:
-    print("Successfully deleted model with id {}".format(custom_model.model_id))
-```
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-このコマンドを使用すると、このクイックスタートで取り上げた関数をいくつでも使用して、アプリケーションをいつでも実行できます。
+クイック スタート ファイルで `python` コマンドを使用して、アプリケーションを実行します。
 
 ```console
 python quickstart-file.py
@@ -522,38 +386,18 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 
 Form Recognizer クライアント ライブラリにより、[Azure Core](https://aka.ms/azsdk-python-azure-core) で定義されている例外が発生します。
 
-## <a name="logging"></a>ログ記録
+### <a name="logging"></a>ログ記録
 
 このライブラリでは、ログ記録に[標準のログ ライブラリ](https://docs.python.org/3/library/logging.html)を使用します。 HTTP セッション (URL、ヘッダーなど) に関する基本的な情報は、情報レベルでログに記録されます。
 
 要求/応答本文と編集されていないヘッダーを含む詳細なデバッグ レベルのログ記録は、次のように `logging_enable` キーワード引数を使用してクライアントで有効にすることができます。
 
-```python
-import sys
-import logging
-from azure.ai.formrecognizer import FormRecognizerClient
-from azure.core.credentials import AzureKeyCredential
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerLogging.py?name=snippet_logging)]
 
-# Create a logger for the 'azure' SDK
-logger = logging.getLogger('azure')
-logger.setLevel(logging.DEBUG)
-
-# Configure a console output
-handler = logging.StreamHandler(stream=sys.stdout)
-logger.addHandler(handler)
-
-endpoint = "https://<my-custom-subdomain>.cognitiveservices.azure.com/"
-credential = AzureKeyCredential("<api_key>")
-
-# This client will log detailed information about its HTTP sessions, at DEBUG level
-form_recognizer_client = FormRecognizerClient(endpoint, credential, logging_enable=True)
-```
 
 同様に、`logging_enable` は、詳細なログ記録がクライアントで有効になっていない場合でも、1 回の操作のために有効にすることができます。
 
-```python
-poller = form_recognizer_client.begin_recognize_receipts(receipt, logging_enable=True)
-```
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerLogging.py?name=snippet_example)]
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -562,6 +406,5 @@ poller = form_recognizer_client.begin_recognize_receipts(receipt, logging_enable
 > [!div class="nextstepaction"]
 > [トレーニング データ セットの作成](../../build-training-data-set.md)
 
-## <a name="see-also"></a>関連項目
-
 * [Form Recognizer とは](../../overview.md)
+* このガイドのサンプル コードについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/FormRecognizerQuickstart.py) を参照してください。

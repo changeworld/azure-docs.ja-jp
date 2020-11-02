@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 24990087507dee09bc38418f40c72911386e5efb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 132a9b7ad3eef17f4ca27fb76a0c05f94c82fd37
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469118"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428270"
 ---
 # <a name="tutorial-connect-to-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターに接続する
 
@@ -63,7 +63,7 @@ az aro list-credentials \
 
 OpenShift Web コンソールにログインしたら、右上の **[?]** をクリックし、 **[Command Line Tools]\(コマンド ライン ツール\)** をクリックします。 お使いのマシンに適したリリースをダウンロードします。
 
-![Azure Red Hat OpenShift ログイン画面](media/aro4-download-cli.png)
+![[?] を選択して表示される一覧の [Command Line Tools]\(コマンド ライン ツール\) オプションが強調表示されているスクリーンショット アイコンを選択し、ナビゲーション ウィンドウを折りたたみます。](media/aro4-download-cli.png)
 
 また、<https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/> からお使いのマシンに適した CLI の最新リリースをダウンロードすることもできます。
 

@@ -1,6 +1,6 @@
 ---
 title: 'クイックスタート: ARM テンプレートを使用して Azure API for FHIR をデプロイする'
-description: このクイックスタートでは、Azure Resource Manager テンプレートを使用して、Azure API for FHIR® (Fast Healthcare Interoperability Resources) をデプロイする方法について説明します。
+description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure API for FHIR® (Fast Healthcare Interoperability Resources) をデプロイする方法について説明します。
 author: mgblythe
 ms.service: healthcare-apis
 ms.subservice: fhir
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 10/06/2020
-ms.openlocfilehash: e9b2ec017ca985c1de739ee74c4d0732f39bdc1d
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 0d045aac63daf99bf67ec79438f55eedd5f200d9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91772738"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521443"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>クイックスタート: ARM テンプレートを使用して Azure API for FHIR をデプロイする
 
@@ -77,9 +77,9 @@ Azure portal から ARM テンプレートを使用して Azure API for FHIR を
 
 2. **[リソース グループ]** の **[新規作成]** を選択し、新しいリソース グループの名前を入力し、 **[OK]** を選択します。
 
-3. 新しいリソース グループを作成した場合は、リソース グループの**リージョン**を選択します。
+3. 新しいリソース グループを作成した場合は、リソース グループの **リージョン** を選択します。
 
-4. 新しい**サービス名**を入力し、Azure API for FHIR の**場所**を選択します。 この場所は、リソース グループのリージョンと同じでも異なっていてもかまいません。
+4. 新しい **サービス名** を入力し、Azure API for FHIR の **場所** を選択します。 この場所は、リソース グループのリージョンと同じでも異なっていてもかまいません。
 
     :::image type="content" source="./media/fhir-paas-arm-template-quickstart/deploy-azure-api-fhir.png" alt-text="Azure portal から ARM テンプレートを使用して Azure API for FHIR サービスを Azure にデプロイする。":::
 
@@ -150,11 +150,11 @@ read -p "Press [ENTER] to continue: "
 
 新しい Azure API for FHIR サービスの概要を確認するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) で、**Azure API for FHIR** を検索して選択します。
+1. [Azure portal](https://portal.azure.com) で、 **Azure API for FHIR** を検索して選択します。
 
 2. FHIR の一覧から新しいサービスを選択します。 新しい Azure API for FHIR サービスの **[概要]** ページが表示されます。
 
-3. 新しい FHIR API アカウントがプロビジョニングされていることを確認するために、**FHIR メタデータ エンドポイント**の横にあるリンクを選択して、FHIR API 機能ステートメントをフェッチします。 このリンクは `https://<service-name>.azurehealthcareapis.com/metadata` という形式になっています。 アカウントがプロビジョニングされると、大きな JSON ファイルが表示されます。
+3. 新しい FHIR API アカウントがプロビジョニングされていることを確認するために、 **FHIR メタデータ エンドポイント** の横にあるリンクを選択して、FHIR API 機能ステートメントをフェッチします。 このリンクは `https://<service-name>.azurehealthcareapis.com/metadata` という形式になっています。 アカウントがプロビジョニングされると、大きな JSON ファイルが表示されます。
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
@@ -224,9 +224,14 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
+ARM テンプレートの作成手順については、[初めての ARM テンプレートを作成してデプロイするチュートリアル](../azure-resource-manager/templates/template-tutorial-create-first-template.md)を参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
-Resource Manager テンプレートの作成手順について説明したチュートリアルについては、次のページを参照してください。
+このクイックスタート ガイドでは、ご利用のサブスクリプションに Azure API for FHIR をデプロイしました。 Azure API for FHIR に対してその他の設定を行うには、追加設定の攻略ガイドに進んでください。 Azure API for FHIR を使い始める準備ができたら、アプリケーションの登録方法についての詳しい情報をご覧ください。
 
-> [!div class="nextstepaction"]
-> [ チュートリアル: 初めての ARM テンプレートを作成してデプロイする](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+>[!div class="nextstepaction"]
+>[Azure API for FHIR の追加設定](azure-api-for-fhir-additional-settings.md)
+
+>[!div class="nextstepaction"]
+>[アプリケーションの登録の概要](fhir-app-registration.md)

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: d0e677377037203a6a67150d985efb30e09af86e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e415e0979e7f45531093993b0524a1bb556d339b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89321867"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886636"
 ---
 <a name="HOLTop"></a>
 
@@ -66,7 +66,7 @@ dep ensure -add https://github.com/Azure/azure-sdk-for-go/tree/master/services/c
 
 ### <a name="create-a-go-application"></a>Go アプリケーションを作成する
 
-次に、**src** ディレクトリに `sample-app.go` という名前のファイルを作成します。
+次に、 **src** ディレクトリに `sample-app.go` という名前のファイルを作成します。
 
 ```bash
 cd src
@@ -121,8 +121,8 @@ touch sample-app.go
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_analyze_url)]
 
-> [!NOTE]
-> ローカルの画像を分析することもできます。 ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go) 上のサンプル コードを参照してください。
+> [!TIP]
+> ローカルの画像を分析することもできます。 [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient) のメソッドを参照してください ( **DescribeImageInStream** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go) 上のサンプル コードを参照してください。
 
 ### <a name="specify-visual-features"></a>視覚的特徴を指定する
 
@@ -210,8 +210,8 @@ Computer Vision は、画像に映っているテキストを読み取って、�
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_readinmain)]
 
-> [!NOTE]
-> ローカルの画像からテキストを抽出することもできます。 ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go) 上のサンプル コードを参照してください。
+> [!TIP]
+> ローカルの画像からテキストを抽出することもできます。 [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient) のメソッドを参照してください ( **BatchReadFileInStream** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go) 上のサンプル コードを参照してください。
 
 ### <a name="call-the-read-api"></a>Read API を呼び出す
 
@@ -221,7 +221,7 @@ Computer Vision は、画像に映っているテキストを読み取って、�
 
 ### <a name="get-read-results"></a>読み取りの結果を取得する
 
-次に、**BatchReadFile** の呼び出しから返された操作 ID を取得し、 **GetReadOperationResult** と共に使用して操作の結果をサービスに照会します。 次のコードは、結果が返されるまで 1 秒間隔で操作をチェックします。 次に、抽出されたテキスト データをコンソールに出力します。
+次に、 **BatchReadFile** の呼び出しから返された操作 ID を取得し、 **GetReadOperationResult** と共に使用して操作の結果をサービスに照会します。 次のコードは、結果が返されるまで 1 秒間隔で操作をチェックします。 次に、抽出されたテキスト データをコンソールに出力します。
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_read_response)]
 

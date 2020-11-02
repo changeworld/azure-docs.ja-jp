@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 6959b7e819ad906f04a18661d6bd4aa2d82f8984
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d04601cb11e57f50c82680077793aef1b816bfa
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543372"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895144"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>チュートリアル: Azure Active Directory と SAP Business ByDesign の統合
 
@@ -27,7 +27,7 @@ SAP Business ByDesign と Azure AD の統合には、次の利点があります
 * ユーザーが自分の Azure AD アカウントで SAP Business ByDesign に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Azure AD と SAP Business ByDesign の統合を構成するには、次のもの
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* SAP Business ByDesign では、**SP** によって開始される SSO がサポートされます
+* SAP Business ByDesign では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-sap-business-bydesign-from-the-gallery"></a>ギャラリーから SAP Business ByDesign を追加する
 
@@ -61,13 +61,13 @@ Azure AD への SAP Business ByDesign の統合を構成するには、ギャラ
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**SAP Business ByDesign**」と入力し、結果パネルで **[SAP Business ByDesign]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **SAP Business ByDesign** 」と入力し、結果パネルで **[SAP Business ByDesign]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の SAP Business ByDesign](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、SAP Business ByDesign で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、SAP Business ByDesign で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと SAP Business ByDesign 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 SAP Business ByDesign で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -110,11 +110,11 @@ SAP Business ByDesign で Azure AD シングル サインオンを構成する�
 
 5. SAP Business ByDesign アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![[編集] ボタンが選択されている [ユーザー属性] ダイアログを示すスクリーンショット。](common/edit-attribute.png)
 
 6. **[編集]** アイコンをクリックして、 **[名前識別子の値]** を編集します。
 
-    ![image](media/sapbusinessbydesign-tutorial/mail-prefix1.png)
+    ![[編集] アイコンが選択された [ユーザー属性とクレーム] ページを示すスクリーンショット。](media/sapbusinessbydesign-tutorial/mail-prefix1.png)
 
 7. **[ユーザー要求の管理]** セクションで、以下の手順を実行します。![image](media/sapbusinessbydesign-tutorial/mail-prefix2.png)
 
@@ -126,7 +126,7 @@ SAP Business ByDesign で Azure AD シングル サインオンを構成する�
 
     d. **[保存]** をクリックします。
 
-8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -148,7 +148,7 @@ SAP Business ByDesign で Azure AD シングル サインオンを構成する�
 
 3. **[New Identity Provider]** をクリックし、Azure Portal からダウンロードしたメタデータの XML ファイルを選択します。 メタデータをインポートすることによって、必要な署名証明書と暗号化証明書が自動的にアップロードされます。
 
-    ![Configure single sign-on](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
+    ![[Identity Provider]\(ID プロバイダー\) タブが選択され、[New Identity Provider]\(新しい ID プロバイダー\) アクションが選択されている [Configure Single Sign-On]\(シングル サインオンの構成\) ページを示すスクリーンショット。](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
 
 4. **Assertion Consumer Service URL** を SAML 要求に追加するには、 **[Include Assertion Consumer Service URL (Assertion Consumer Service URL を含める)]** を選択します。
 
@@ -158,9 +158,9 @@ SAP Business ByDesign で Azure AD シングル サインオンを構成する�
 
 7. **[My System (自分のシステム)]** タブをクリックします。
 
-    ![Configure single sign-on](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
+    ![[My System]\(自分のシステム\) タブが選択されている [Configure Single Sign-On]\(シングル サインオンの構成\) ページを示すスクリーンショット。](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
 
-8. **[Azure AD Sign On URL]\(Azure AD サインオン URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+8. **[Azure AD Sign On URL]\(Azure AD サインオン URL\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     ![Configure single sign-on](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_53.png)
 
@@ -199,7 +199,7 @@ SAP Business ByDesign で Azure AD シングル サインオンを構成する�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -244,12 +244,12 @@ SAP Business ByDesign で Azure AD シングル サインオンを構成する�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [SAP Business ByDesign] タイルをクリックすると、SSO を設定した SAP Business ByDesign に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [SAP Business ByDesign] タイルをクリックすると、SSO を設定した SAP Business ByDesign に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

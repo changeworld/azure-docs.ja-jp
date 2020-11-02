@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 1048b5edf33dc6eead362ad608c0dad61f998b6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e900b4b7b7d704408c4fa77c2eb5441a9d5e2f05
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544793"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516395"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tickitlms-learn"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と TickitLMS Learn の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88544793"
 * ユーザーが自分の Azure AD アカウントを使用して TickitLMS Learn に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* TickitLMS Learn では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* TickitLMS Learn を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* TickitLMS Learn では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* TickitLMS Learn を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-tickitlms-learn-from-the-gallery"></a>ギャラリーからの TickitLMS Learn の追加
 
@@ -50,7 +50,7 @@ Azure AD への TickitLMS Learn の統合を構成するには、ギャラリー
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**TickitLMS Learn**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **TickitLMS Learn** 」と入力します。
 1. 結果のパネルから **[TickitLMS Learn]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -134,29 +134,28 @@ TickitLMS Learn で Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-tickitlms-learn-sso"></a>TickitLMS Learn SSO の構成
 
-**TickitLMS Learn** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [TickitLMS Learn サポート チーム](mailto:support@tickitlms.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**TickitLMS Learn** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [TickitLMS Learn サポート チーム](mailto:support@tickitlms.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-tickitlms-learn-test-user"></a>TickitLMS Learn テスト ユーザーを作成する
 
-このセクションでは、TickitLMS Learn で Britta Simon というユーザーを作成します。  [TickitLMS Learn サポート チーム](mailto:support@tickitlms.com)と連携して、TickitLMS Learn プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、TickitLMS Learn で Britta Simon というユーザーを作成します。 [TickitLMS Learn サポート チーム](mailto:support@tickitlms.com)と連携して、TickitLMS Learn プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [TickitLMS Learn] タイルをクリックすると、SSO を設定した TickitLMS Learn に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [TickitLMS Learn] タイルをクリックすると、SSO を設定した TickitLMS Learn に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で TickitLMS Learn を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって TickitLMS Learn を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [高度な可視性と制御によって TickitLMS Learn を保護する方法](/cloud-app-security/proxy-intro-aad)

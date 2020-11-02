@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 09/25/2019
-ms.openlocfilehash: 0dbab7db45a9f97db48bbf97aba55b5943f623a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09a568f7cd0b8efaed4ee5210dde4000ca472529
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282444"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546791"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>チュートリアル:DMS を使用して MongoDB を Azure Cosmos DB の MongoDB 用 API にオンラインで移行する
 
@@ -75,7 +75,7 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 
     ![リソース プロバイダーの表示](media/tutorial-mongodb-to-cosmosdb-online/portal-select-resource-provider.png)
 
-3. 移行を検索し、**Microsoft.DataMigration** の右側にある **[登録]** を選択します。
+3. 移行を検索し、 **Microsoft.DataMigration** の右側にある **[登録]** を選択します。
 
     ![リソース プロバイダーの登録](media/tutorial-mongodb-to-cosmosdb-online/portal-register-resource-provider.png)    
 
@@ -112,7 +112,7 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 
 サービスが作成されたら、Azure portal 内でそのサービスを探して開き、新しい移行プロジェクトを作成します。
 
-1. Azure ポータルで、 **[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、**Azure Database Migration Service** を選択します。
+1. Azure ポータルで、 **[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、 **Azure Database Migration Service** を選択します。
 
     ![Azure Database Migration Service のすべてのインスタンスを検索する](media/tutorial-mongodb-to-cosmosdb-online/dms-search.png)
 
@@ -138,9 +138,9 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
    > Azure Database Migration Service では、Azure Cosmos DB はソースとしてサポートされていません。
 
     ソースへの接続には、3 つのモードがあります。
-   * **標準モード**: 完全修飾ドメイン名または IP アドレス、ポート番号、および接続の資格情報を受け取ります。
-   * **接続文字列のモード**: MongoDB 接続文字列 (記事「[Connection String URI Format (接続文字列の URI 形式)](https://docs.mongodb.com/manual/reference/connection-string/)」で説明しています) を受け取ります。
-   * **Azure Storage からのデータ**: BLOB コンテナーの SAS URL を受け取ります。 MongoDB [bsondump ツール](https://docs.mongodb.com/manual/reference/program/bsondump/)によって生成された BSON ダンプが BLOB コンテナーに含まれている場合は、 **[Blob には BSON ダンプが含まれています]** を選択します。JSON ファイルがコンテナーに含まれている場合は、その選択を解除します。
+   * **標準モード** : 完全修飾ドメイン名または IP アドレス、ポート番号、および接続の資格情報を受け取ります。
+   * **接続文字列のモード** : MongoDB 接続文字列 (記事「 [Connection String URI Format (接続文字列の URI 形式)](https://docs.mongodb.com/manual/reference/connection-string/)」で説明しています) を受け取ります。
+   * **Azure Storage からのデータ** : BLOB コンテナーの SAS URL を受け取ります。 MongoDB [bsondump ツール](https://docs.mongodb.com/manual/reference/program/bsondump/)によって生成された BSON ダンプが BLOB コンテナーに含まれている場合は、 **[Blob には BSON ダンプが含まれています]** を選択します。JSON ファイルがコンテナーに含まれている場合は、その選択を解除します。
 
      このオプションを選択する場合は、ストレージ アカウントの接続文字列が次の形式で表示されていることを確認してください。
 
@@ -150,12 +150,12 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 
      また、Azure Storage のダンプの種類情報に基づいて、次の点に注意してください。
 
-     * BSON ダンプの場合、データ ファイルが collection.bson 形式の包含データベースの名前が付けられたフォルダーに配置されるように、BLOB コンテナー内のデータは bsondump 形式にする必要があります。 メタデータ ファイルがある場合は、*collection*.metadata.json の形式で名前を付けます。
+     * BSON ダンプの場合、データ ファイルが collection.bson 形式の包含データベースの名前が付けられたフォルダーに配置されるように、BLOB コンテナー内のデータは bsondump 形式にする必要があります。 メタデータ ファイルがある場合は、 *collection* .metadata.json の形式で名前を付けます。
 
-     * JSON ダンプの場合、BLOB コンテナー内のファイルは、包含データベースの名前が付けられたフォルダーに配置する必要があります。 各データベース フォルダー内で、データ ファイルは "data" というサブフォルダーに配置し、*collection*.json の形式で名前を付ける必要があります。 メタデータ ファイルがある場合は、"metadata" というサブフォルダーに配置し、同じ形式の *collection*.json を使用して名前を付ける必要があります。 メタデータ ファイルは、MongoDB bsondump ツールによって生成されたものと同じ形式にする必要があります。
+     * JSON ダンプの場合、BLOB コンテナー内のファイルは、包含データベースの名前が付けられたフォルダーに配置する必要があります。 各データベース フォルダー内で、データ ファイルは "data" というサブフォルダーに配置し、 *collection* .json の形式で名前を付ける必要があります。 メタデータ ファイルがある場合は、"metadata" というサブフォルダーに配置し、同じ形式の *collection* .json を使用して名前を付ける必要があります。 メタデータ ファイルは、MongoDB bsondump ツールによって生成されたものと同じ形式にする必要があります。
 
     > [!IMPORTANT]
-    > Mongo サーバー上で自己署名入りの証明書を使用することはお勧めできません。 ただし、使用する場合は、**接続文字列のモード**を使用してサーバーに接続し、確実に接続文字列に “” を付けるようにしてください。
+    > Mongo サーバー上で自己署名入りの証明書を使用することはお勧めできません。 ただし、使用する場合は、 **接続文字列のモード** を使用してサーバーに接続し、確実に接続文字列に “” を付けるようにしてください。
     >
     >```
     >&sslVerifyCertificate=false
@@ -233,7 +233,7 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 1. ソース MongoDB データベースに変更を加えます。
 2. COSMOS DB に接続して、データがソース MongoDB サーバーからレプリケートされるかどうかを確認します。
 
-    ![アクティビティの状態 - 再生中](media/tutorial-mongodb-to-cosmosdb-online/dms-verify-data.png)
+    ![データがレプリケートされたことを確認できる画面のスクリーンショット。](media/tutorial-mongodb-to-cosmosdb-online/dms-verify-data.png)
 
 ## <a name="complete-the-migration"></a>移行を完了する
 
@@ -241,7 +241,7 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 
     このアクションにより、保留中の変更がすべて再生し終わり、移行が完了します。
 
-    ![アクティビティの状態 - 再生中](media/tutorial-mongodb-to-cosmosdb-online/dms-finish-migration.png)
+    ![[完了] メニュー オプションが表示されている画面のスクリーンショット。](media/tutorial-mongodb-to-cosmosdb-online/dms-finish-migration.png)
 
 ## <a name="post-migration-optimization"></a>移行後の最適化
 

@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 7b0db0f97531c60b3e809dd0dafa042dbcc2b542
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 31e129b9b1a4b5161ed33c27ea4da76168170dbe
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667437"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495982"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning スタジオとは
 
@@ -72,9 +72,9 @@ ms.locfileid: "91667437"
 
 **Azure Machine Learning** は、完全なデータ サイエンス プラットフォームを提供する、独立した最新のサービスです。 コード ファースト エクスペリエンスと少量コード エクスペリエンスの両方がサポートされています。
 
-**Azure Machine Learning スタジオ**は Azure Machine Learning "*内の*" Web ポータルであり、プロジェクト作成とアセット管理のための少量のコードおよびコードなしのオプションが用意されています。 
+**Azure Machine Learning スタジオ** は Azure Machine Learning " *内の* " Web ポータルであり、プロジェクト作成とアセット管理のための少量のコードおよびコードなしのオプションが用意されています。 
 
-新しく使い始める方には、最新の各種データ サイエンス ツールのために、ML Studio (classic) ではなく、**Azure Machine Learning** を選択することをお勧めします。
+新しく使い始める方には、最新の各種データ サイエンス ツールのために、ML Studio (classic) ではなく、 **Azure Machine Learning** を選択することをお勧めします。
 
 ### <a name="feature-comparison"></a>機能の比較
 
@@ -98,7 +98,9 @@ ms.locfileid: "91667437"
 ## <a name="next-steps"></a>次のステップ
 
 [スタジオ](https://ml.azure.com)にアクセスするか、以下のチュートリアルを使用して別の作成オプションを調べます。  
-  + [Python ノートブックを使用して、モデルをトレーニングおよびデプロイする](tutorial-1st-experiment-sdk-setup.md)
+
+- + [個人の開発環境で使用を開始する](tutorial-1st-experiment-sdk-setup-local.md)
+  + [コンピューティング インスタンスで Jupyter Notebook を使用してモデルのトレーニングとデプロイを行う](tutorial-1st-experiment-sdk-setup.md)
   + [自動化された機械学習を使用して、モデルをトレーニングおよびデプロイする](tutorial-first-experiment-automated-ml.md)  
   + [デザイナーを使用して、モデルをトレーニングおよびデプロイする](tutorial-designer-automobile-price-train-score.md)
 

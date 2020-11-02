@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: ee7c1c57c271a6173f4ee978a10ff37526c04c33
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 12190a50579bf5b87685fc4b19ec7b2907e5ee9c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047849"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547046"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して VM の負荷を分散する内部ロード バランサーを作成する
 
@@ -44,12 +44,12 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 
 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して、次のようにリソース グループを作成します。
 
-* 名前は **myResourceGroupLB** にします。
+* 名前は **CreateIntLBQS-rg** にします。
 * 場所は **eastus** にします。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
-$rg = 'MyResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 
 New-AzResourceGroup -Name $rg -Location $loc
@@ -70,7 +70,7 @@ VM をデプロイしてロード バランサーをテストする前に、サ�
 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用して、次のように仮想ネットワークを作成します。
 
 * 名前は **myVNet** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * サブネットの名前は **myBackendSubnet** にします。
 * 仮想ネットワークは **10.0.0.0/16** にします。
 * サブネットは **10.0.0.0/24** にします。
@@ -79,7 +79,7 @@ VM をデプロイしてロード バランサーをテストする前に、サ�
 
 ```azurepowershell-interactive
 ## Variables for the command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $sub = 'myBackendSubnet'
 $spfx = '10.0.0.0/24'
@@ -107,14 +107,14 @@ New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPr
 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、bastion ホストのパブリック IP アドレスを作成します。
 
 * 名前は **myPublicIPBastion** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * 場所は **eastus** にします。
 * 割り当て方法は **static** にします。
 * SKU は **Standard** にします。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $ipn = 'myPublicIPBastion'
 $all = 'static'
@@ -129,13 +129,13 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Location $loc -Name $ipn -Allocati
 [New-AzBastion](/powershell/module/az.network/new-azbastion) を使用して、次の bastion ホストを作成します。
 
 * 名前は **myBastion** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * 仮想ネットワークは **myVNet** にします。
 * パブリック IP アドレス **myPublicIPBastion** に関連付けます。
 
 ```azurepowershell-interactive
 ## Variables for the commands ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $nmn = 'myBastion'
 
 ## Command to create bastion host. $vnet and $publicip are from the previous steps ##
@@ -160,7 +160,7 @@ Azure Bastion ホストがデプロイされるまでに数分かかる場合が
 * 発信元は **Internet** にします。
 * 発信元ポート範囲は **(*)** にします。
 * 宛先アドレス プレフィックスは **(*)** にします。
-* 宛先は**ポート 80** にします。
+* 宛先は **ポート 80** にします。
 
 ```azurepowershell-interactive
 ## Variables for command ##
@@ -184,13 +184,13 @@ New-AzNetworkSecurityRuleConfig -Name $rnm -Description $des -Access $acc -Proto
 [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) を使用して、次のようにネットワーク セキュリティ グループを作成します。
 
 * 名前は **myNSG** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * 場所は **eastus** にします。
 * 前の手順で作成したセキュリティ規則を変数に格納します。
 
 ```azurepowershell
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $nmn = 'myNSG'
 
@@ -218,7 +218,7 @@ New-AzNetworkSecurityGroup -ResourceGroupName $rg -Location $loc -Name $nmn -Sec
 ```azurepowershell-interactive
 ## Variables for the commands ##
 $fe = 'myFrontEnd'
-$rg = 'MyResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $ip = '10.0.0.4'
 
 ## Command to create frontend configuration. The variable $vnet is from the previous commands. ##
@@ -277,21 +277,24 @@ New-AzLoadBalancerProbeConfig -Name $hp -Protocol $pro -Port $port -RequestPath 
 [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) を使用して、次のようにロード バランサー規則を作成します。 
 
 * 名前は **myHTTPRule** にします
-* フロントエンド プール **myFrontEnd** で**ポート 80** をリッスンします。
+* フロントエンド プール **myFrontEnd** で **ポート 80** をリッスンします。
 * **ポート 80** を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール **myBackEndPool** に送信します。 
 * 正常性プローブ **myHealthProbe** を使用します。
 * プロトコルは **TCP** にします。
+* アイドル タイムアウトは **15 分** とします。
+* TCP リセットを有効にします。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
 $lbr = 'myHTTPRule'
 $pro = 'tcp'
 $port = '80'
+$idl = '15'
 
 ## $feip and $bePool are the variables from previous steps. ##
 
 $rule = 
-New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool -DisableOutboundSNAT
+New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool -DisableOutboundSNAT -IdleTimeoutInMinutes $idl -EnableTcpReset
 ```
 >[!NOTE]
 >バックエンド プール内の仮想マシンは、この構成ではアウトバウンド インターネット接続を持ちません。 </br> アウトバウンド接続の提供の詳細については、以下を参照してください。 </br> **[Azure の送信接続](load-balancer-outbound-connections.md)**</br> 接続を提供するためのオプション: </br> **[送信専用のロード バランサーの構成](egress-only.md)** </br> **[Virtual Network NAT とは](https://docs.microsoft.com/azure/virtual-network/nat-overview)**
@@ -303,12 +306,12 @@ New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPo
 
 * 名前は **myLoadBalancer** にします
 * 場所は **eastus** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
 $lbn = 'myLoadBalancer'
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $sku = 'Standard'
 
@@ -325,7 +328,7 @@ New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -F
 #### <a name="vm-1"></a>VM 1
 
 * 名前は **myNicVM1** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * 場所は **eastus** にします。
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
@@ -334,7 +337,7 @@ New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -F
 
 ```azurepowershell-interactive
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $nic1 = 'myNicVM1'
 $vnt = 'myVNet'
@@ -361,7 +364,7 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBa
 #### <a name="vm-2"></a>VM 2
 
 * 名前は **myNicVM2** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * 場所は **eastus** にします。
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
@@ -370,7 +373,7 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBa
 
 ```azurepowershell-interactive
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $nic2 = 'myNicVM2'
 $vnt = 'myVNet'
@@ -414,7 +417,7 @@ $cred = Get-Credential
 #### <a name="vm1"></a>VM1
 
 * 名前は **myVM1** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM1** に接続します。
 * ロード バランサー **myLoadBalancer** に接続します。
 * ゾーンは **Zone 1** にします。
@@ -422,7 +425,7 @@ $cred = Get-Credential
 
 ```azurepowershell-interactive
 ## Variables used for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $vm = 'myVM1'
 $siz = 'Standard_DS1_v2'
 $pub = 'MicrosoftWindowsServer'
@@ -445,7 +448,7 @@ New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
 #### <a name="vm2"></a>VM2
 
 * 名前は **myVM2** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM2** に接続します。
 * ロード バランサー **myLoadBalancer** に接続します。
 * ゾーンは **Zone 2** にします。
@@ -453,7 +456,7 @@ New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
 
 ```azurepowershell-interactive
 ## Variables used for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $vm = 'myVM2'
 $siz = 'Standard_DS1_v2'
 $pub = 'MicrosoftWindowsServer'
@@ -486,7 +489,7 @@ VM をデプロイしてロード バランサーをテストする前に、サ�
 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用して、次のように仮想ネットワークを作成します。
 
 * 名前は **myVNet** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * サブネットの名前は **myBackendSubnet** にします。
 * 仮想ネットワークは **10.0.0.0/16** にします。
 * サブネットは **10.0.0.0/24** にします。
@@ -495,7 +498,7 @@ VM をデプロイしてロード バランサーをテストする前に、サ�
 
 ```azurepowershell-interactive
 ## Variables for the command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $sub = 'myBackendSubnet'
 $spfx = '10.0.0.0/24'
@@ -523,14 +526,14 @@ New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPr
 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、bastion ホストのパブリック IP アドレスを作成します。
 
 * 名前は **myPublicIPBastion** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * 場所は **eastus** にします。
 * 割り当て方法は **static** にします。
 * SKU は **Standard** にします。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $ipn = 'myPublicIPBastion'
 $all = 'static'
@@ -545,13 +548,13 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Location $loc -Name $ipn -Allocati
 [New-AzBastion](/powershell/module/az.network/new-azbastion) を使用して、次の bastion ホストを作成します。
 
 * 名前は **myBastion** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * 仮想ネットワークは **myVNet** にします。
 * パブリック IP アドレス **myPublicIPBastion** に関連付けます。
 
 ```azurepowershell-interactive
 ## Variables for the commands ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $nmn = 'myBastion'
 
 ## Command to create bastion host. $vnet and $publicip are from the previous steps ##
@@ -577,7 +580,7 @@ Azure Bastion ホストがデプロイされるまでに数分かかる場合が
 * 発信元は **Internet** にします。
 * 発信元ポート範囲は **(*)** にします。
 * 宛先アドレス プレフィックスは **(*)** にします。
-* 宛先は**ポート 80** にします。
+* 宛先は **ポート 80** にします。
 
 ```azurepowershell-interactive
 ## Variables for command ##
@@ -601,13 +604,13 @@ New-AzNetworkSecurityRuleConfig -Name $rnm -Description $des -Access $acc -Proto
 [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) を使用して、次のようにネットワーク セキュリティ グループを作成します。
 
 * 名前は **myNSG** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * 場所は **eastus** にします。
 * 前の手順で作成したセキュリティ規則を変数に格納します。
 
 ```azurepowershell
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $nmn = 'myNSG'
 
@@ -635,7 +638,7 @@ New-AzNetworkSecurityGroup -ResourceGroupName $rg -Location $loc -Name $nmn -Sec
 ```azurepowershell-interactive
 ## Variables for the commands ##
 $fe = 'myFrontEnd'
-$rg = 'MyResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $ip = '10.0.0.4'
 
 ## Command to create frontend configuration. The variable $vnet is from the previous commands. ##
@@ -694,21 +697,23 @@ New-AzLoadBalancerProbeConfig -Name $hp -Protocol $pro -Port $port -RequestPath 
 [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) を使用して、次のようにロード バランサー規則を作成します。 
 
 * 名前は **myHTTPRule** にします
-* フロントエンド プール **myFrontEnd** で**ポート 80** をリッスンします。
+* フロントエンド プール **myFrontEnd** で **ポート 80** をリッスンします。
 * **ポート 80** を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール **myBackEndPool** に送信します。 
 * 正常性プローブ **myHealthProbe** を使用します。
 * プロトコルは **TCP** にします。
+* アイドル タイムアウトは **15 分** とします。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
 $lbr = 'myHTTPRule'
 $pro = 'tcp'
 $port = '80'
+$idl = '15'
 
 ## $feip and $bePool are the variables from previous steps. ##
 
 $rule = 
-New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool
+New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool -IdleTimeoutInMinutes $idl
 ```
 
 ### <a name="create-load-balancer-resource"></a>ロード バランサーのリソースを作成する
@@ -717,12 +722,12 @@ New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPo
 
 * 名前は **myLoadBalancer** にします
 * 場所は **eastus** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
 $lbn = 'myLoadBalancer'
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $sku = 'Basic'
 
@@ -739,7 +744,7 @@ New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -F
 #### <a name="vm-1"></a>VM 1
 
 * 名前は **myNicVM1** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * 場所は **eastus** にします。
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
@@ -748,7 +753,7 @@ New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -F
 
 ```azurepowershell-interactive
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $nic1 = 'myNicVM1'
 $vnt = 'myVNet'
@@ -775,7 +780,7 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBa
 #### <a name="vm-2"></a>VM 2
 
 * 名前は **myNicVM2** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * 場所は **eastus** にします。
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
@@ -784,7 +789,7 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBa
 
 ```azurepowershell-interactive
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $nic2 = 'myNicVM2'
 $vnt = 'myVNet'
@@ -813,12 +818,12 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -LoadBa
 [New-AzAvailabilitySet](/powershell/module/az.compute/new-azvm) を使用して、次のように仮想マシンの可用性セットを作成します。
 
 * 名前は **myAvSet** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * 場所は **eastus** にします。
 
 ```azurepowershell-interactive
 ## Variables used for the command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $avs = 'myAvSet'
 $loc = 'eastus'
 
@@ -845,7 +850,7 @@ $cred = Get-Credential
 #### <a name="vm1"></a>VM1
 
 * 名前は **myVM1** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM1** に接続します。
 * ロード バランサー **myLoadBalancer** に接続します。
 * 場所は **eastus** にします。
@@ -853,7 +858,7 @@ $cred = Get-Credential
 
 ```azurepowershell-interactive
 ## Variables used for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $vm = 'myVM1'
 $siz = 'Standard_DS1_v2'
 $pub = 'MicrosoftWindowsServer'
@@ -876,7 +881,7 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetNam
 #### <a name="vm2"></a>VM2
 
 * 名前は **myVM2** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM2** に接続します。
 * ロード バランサー **myLoadBalancer** に接続します。
 * 場所は **eastus** にします。
@@ -884,7 +889,7 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetNam
 
 ```azurepowershell-interactive
 ## Variables used for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $vm = 'myVM2'
 $siz = 'Standard_DS1_v2'
 $pub = 'MicrosoftWindowsServer'
@@ -917,7 +922,7 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetNam
 
 ```azurepowershell-interactive
 ## Variables for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $enm = 'IIS'
 $vmn = 'myVM1'
 $loc = 'eastus'
@@ -932,7 +937,7 @@ Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Locat
 
 ```azurepowershell-interactive
 ## Variables for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $enm = 'IIS'
 $vmn = 'myVM2'
 $loc = 'eastus'
@@ -952,7 +957,7 @@ Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Locat
 #### <a name="mytestvm"></a>myTestVM
 
 * 名前は **myNicTestVM** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * 場所は **eastus** にします。
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
@@ -960,7 +965,7 @@ Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Locat
 
 ```azurepowershell-interactive
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $nic1 = 'myNicTestVM'
 $vnt = 'myVNet'
@@ -999,13 +1004,13 @@ $cred = Get-Credential
 #### <a name="mytestvm"></a>myTestVM
 
 * 名前は **myTestVM** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicTestVM** に接続します。
 * 場所は **eastus** にします。
 
 ```azurepowershell-interactive
 ## Variables used for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $vm = 'myTestVM'
 $siz = 'Standard_DS1_v2'
 $pub = 'MicrosoftWindowsServer'
@@ -1028,11 +1033,11 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig
 
 1. Azure portal に[サインイン](https://portal.azure.com)します。
 
-1. **[概要]** 画面で、ロード バランサーのプライベート IP アドレスを見つけます。 左側のメニューで **[すべてのサービス]** を選択し、 **[すべてのリソース]** を選択して、**myLoadBalancer** を選択します。
+1. **[概要]** 画面で、ロード バランサーのプライベート IP アドレスを見つけます。 左側のメニューで **[すべてのサービス]** を選択し、 **[すべてのリソース]** を選択して、 **myLoadBalancer** を選択します。
 
 2. **myLoadBalancer** の **[概要]** で、 **[プライベート IP アドレス]** の横にあるアドレスを書き留めるか、コピーしておきます。
 
-3. 左側のメニューで **[すべてのサービス]** を選択し、 **[すべてのリソース]** を選択して、リソースの一覧から **myResourceGroupLB** リソース グループにある **myTestVM** を選択します。
+3. 左側のメニューで **[すべてのサービス]** を選択し、 **[すべてのリソース]** を選択して、リソースの一覧から **CreateIntLBQS-rg** リソース グループにある **myTestVM** を選択します。
 
 4. **[概要]** ページで **[接続]** 、 **[要塞]** の順に選択します。
 
@@ -1052,7 +1057,7 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig
 
 ```azurepowershell-interactive
 ## Variable for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 
 Remove-AzResourceGroup -Name $rg
 ```

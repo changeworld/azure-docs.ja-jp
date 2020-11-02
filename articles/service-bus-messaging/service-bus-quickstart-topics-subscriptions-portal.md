@@ -5,12 +5,12 @@ author: spelluru
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: d3dc63106e1ca5d9db2b14392ca1fb97e3a68289
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9085ccd272c6634e4be518872cb7e279da6b803c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88191541"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425398"
 ---
 # <a name="use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する
 このクイック スタートでは、Azure portal を使用して Service Bus トピックを作成した後、そのトピックのサブスクリプションを作成します。 
@@ -32,7 +32,11 @@ Service Bus のトピックとサブスクリプションを使用すると、�
 > Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
 ## <a name="next-steps"></a>次のステップ
-トピックにメッセージを送信してそれらのメッセージをサブスクリプション経由で受信する方法については、次の記事を参照してください。TOC からプログラミング言語を選択してください。 
+この記事では、Service Bus 名前空間と、その名前空間内のトピック、さらに、そのトピックに対する 3 つのサブスクリプションを作成しました。 トピックにメッセージを発行したり、サブスクリプションのメッセージをサブスクライブしたりする方法については、「 **メッセージの発行とサブスクライブ** 」セクションで、次のいずれかのクイックスタートを参照してください。 
 
-> [!div class="nextstepaction"]
-> [メッセージの発行とサブスクライブ](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+- [.NET](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+- [Java](service-bus-java-how-to-use-topics-subscriptions.md)
+- [JavaScript](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
+- [Python](service-bus-python-how-to-use-topics-subscriptions.md)
+- [PHP](service-bus-php-how-to-use-topics-subscriptions.md)
+- [Ruby](service-bus-ruby-how-to-use-topics-subscriptions.md)

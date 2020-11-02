@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.custom: cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: bea422514b109f446ee30633b0074730f9b89af0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 64a9143e7a425b35e37f23b233c91b8e7bb70169
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332574"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755758"
 ---
 Python 用 Azure Content Moderator クライアント ライブラリの使用を開始します。 以下の手順に従って、PiPy パッケージをインストールし、基本タスクのコード例を試してみましょう。 
 
@@ -24,11 +24,11 @@ Content Moderator は、不快感を与える可能性がある内容、リス�
 
 Python 用 Content Moderator クライアント ライブラリは、次の目的で使用できます。
 
-* [テキストのモデレート](#moderate-text)
-* [カスタム用語リストの使用](#use-a-custom-terms-list)
-* [画像のモデレート](#moderate-images)
-* [カスタムの画像リストの使用](#use-a-custom-image-list)
-* [レビューを作成する](#create-a-review)
+* テキストのモデレート
+* カスタム用語リストの使用
+* 画像のモデレート
+* カスタムの画像リストの使用
+* レビューを作成する
 
 [リファレンス ドキュメント](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) | [パッケージ (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/) | [サンプル](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
@@ -36,35 +36,38 @@ Python 用 Content Moderator クライアント ライブラリは、次の目�
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
 * [Python 3.x](https://www.python.org/)
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title="Content Moderator リソースを作成"  target="_blank">Content Moderator リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイするまで待ち、 **[リソースに移動]** ボタンをクリックします。
+    * 対象のアプリケーションを Content Moderator に接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
-## <a name="create-a-content-moderator-resource"></a>Content Moderator リソースを作成する
 
-Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル コンピューター上に Content Moderator 用のリソースを作成します。 次のこともできます。
+## <a name="setting-up"></a>設定
 
-* お使いのリソースを [Azure portal](https://portal.azure.com/) で表示する
+### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
 
-リソースからキーを取得した後、キーとエンドポイント URL の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、それぞれに `CONTENT_MODERATOR_SUBSCRIPTION_KEY` と `CONTENT_MODERATOR_ENDPOINT` という名前を付けます。
- 
-## <a name="create-a-new-python-script"></a>新しい Python スクリプトを作成する
+Python のインストール後、次のコマンドを使用して、Content Moderator クライアント ライブラリをインストールできます。
+
+```console
+pip install --upgrade azure-cognitiveservices-vision-contentmoderator
+```
+
+### <a name="create-a-new-python-application"></a>新しい Python アプリケーションを作成する
 
 新しい Python スクリプトを作成して、希望するエディターまたは IDE で開きます。 その後、次の `import` ステートメントをファイルの先頭に追加します。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imports)]
 
-次に、自分のリソースのエンドポイントの場所用の変数と、環境変数としてのキーを作成します。 
+> [!TIP]
+> クイックスタートのコード ファイル全体を一度にご覧いただけます。 これは [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py) にあり、このクイックスタートのコード例が含まれています。
+
+次に、リソースのエンドポイントの場所とキーに使用する変数を作成します。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_vars)]
 
-> [!NOTE]
-> アプリケーションの起動後に環境変数を作成した場合、その変数にアクセスするには、アプリケーションを実行しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。
-
-## <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
-
-次のコマンドを使用して、Content Moderator クライアント ライブラリをインストールできます。
-
-```console
-pip install --upgrade azure-cognitiveservices-vision-contentmoderator
-```
+> [!IMPORTANT]
+> Azure Portal にアクセスします。 「 **前提条件** 」セクションで作成した Content Moderator リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
+>
+> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 たとえば、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) が考えられます。
 
 ## <a name="object-model"></a>オブジェクト モデル
 
@@ -90,16 +93,13 @@ pip install --upgrade azure-cognitiveservices-vision-contentmoderator
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-> [!NOTE]
-> このクイックスタートでは、Content Moderator キーとエンドポイントの[環境変数を作成](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)してあることを前提としています。
-
 ご利用のエンドポイントとキーを使用してクライアントをインスタンス化します。 キーを使用して [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) オブジェクトを作成し、それをエンドポイントと共に使用して、[ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python) オブジェクトを作成します。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_client)]
 
 ## <a name="moderate-text"></a>テキストのモデレート
 
-次のコードでは、Content Moderator クライアントを使用してテキストの本文が分析され、結果がコンソールに出力されます。 まず、自分のプロジェクトのルートに **text_files/** フォルダーを作成し、*content_moderator_text_moderation.txt* ファイルを追加します。 このファイルに独自のテキストを追加するか、次のサンプル テキストを使用します。
+次のコードでは、Content Moderator クライアントを使用してテキストの本文が分析され、結果がコンソールに出力されます。 まず、自分のプロジェクトのルートに **text_files/** フォルダーを作成し、 *content_moderator_text_moderation.txt* ファイルを追加します。 このファイルに独自のテキストを追加するか、次のサンプル テキストを使用します。
 
 ```
 Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
@@ -120,7 +120,7 @@ Crap is the profanity here. Is this information PII? phone 2065550111
 
 ### <a name="get-sample-text"></a>サンプル テキストを取得する
 
-このサンプルを使用するには、自分のプロジェクトのルートに **text_files/** フォルダーを作成し、*content_moderator_term_list.txt* ファイルを追加します。 このファイルには、用語のリストと照らし合わせて検査される、有機的なテキストが含まれている必要があります。 次のサンプル テキストを使用することができます。
+このサンプルを使用するには、自分のプロジェクトのルートに **text_files/** フォルダーを作成し、 *content_moderator_term_list.txt* ファイルを追加します。 このファイルには、用語のリストと照らし合わせて検査される、有機的なテキストが含まれている必要があります。 次のサンプル テキストを使用することができます。
 
 ```
 This text contains the terms "term1" and "term2".

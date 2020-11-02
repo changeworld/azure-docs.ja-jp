@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 06b56566108bb482109d02d8d4f9db66dc2a6995
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 9e0bdbc9cc197deb5028848731f031ff19d5ebf7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92756059"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897708"
 ---
 > [!IMPORTANT]
 > この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。
@@ -91,6 +91,9 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 
 アプリケーションの **Main** メソッドで、このクイックスタートで使用する非同期タスクへの呼び出しを追加します。 これは後で実装します。
 
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
+
+
 ## <a name="object-model"></a>オブジェクト モデル 
 
 Form Recognizer で作成できるクライアントは 2 種類あります。 1 つは、`FormRecognizerClient` です。認識されたフォームのフィールドやコンテンツをサービスに照会するときに使用します。 もう 1 つは `FormTrainingClient` です。認識精度を高めるために使用できるカスタム モデルを作成したり管理したりするときに使用します。 
@@ -143,16 +146,11 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
 ## <a name="get-assets-for-testing"></a>テスト用のアセットを取得する 
 
-このガイドのコード スニペットでは、URL でアクセスされるリモート フォームが使用されます。 ローカル フォーム ドキュメントを代わりに処理する場合は、[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer)の関連するメソッドと[サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)を参照してください。
-
 また、トレーニング データとテスト データの URL への参照を追加する必要もあります。 これらを **Program** クラスのルートに追加します。
 
 * カスタム モデルのトレーニング データの SAS URL を取得するには、Microsoft Azure Storage Explorer を開き、ご利用のコンテナーを右クリックし、 **[Shared Access Signature の取得]** を選択します。 アクセス許可の **[読み取り]** と **[表示]** がオンになっていることを確認し、 **[作成]** をクリックします。 次に、その値を **URL** セクションにコピーします。 それは次の書式になります`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
 * 次に、上記の手順を使用して、Blob Storage 内の個々のドキュメントの SAS URL を取得します。
 * 最後に、以下のサンプルに含まれているサンプルの領収書の画像の URL を保存します ([GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) でも入手できます)。 
-
-> [!NOTE]
-> このガイドのコード スニペットでは、URL でアクセスされるリモート フォームが使用されます。 ローカル フォーム ドキュメントを代わりに処理する場合は、[リファレンス ドキュメント](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/)の関連するメソッドを参照してください。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_urls)]
 
@@ -161,9 +159,12 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
 Form Recognizer を使用すると、ドキュメント内の表、行、および単語を認識できます。モデルをトレーニングする必要はありません。 返される値は **FormPage** オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つあります。 
 
-指定された URI にあるファイルの内容を認識するには、`StartRecognizeContentFromUri` メソッドを使用します。
+指定された URL にあるファイルの内容を認識するには、`StartRecognizeContentFromUri` メソッドを使用します。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_getcontent_call)]
+
+> [!TIP]
+> また、ローカルのファイルから内容を取得することもできます。 [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) のメソッドを参照してください ( **StartRecognizeContent** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上のサンプル コードを参照してください。
 
 このタスクの残りの部分では、コンテンツ情報をコンソールに出力します。
 
@@ -208,10 +209,12 @@ Table 0 has 2 rows and 6 columns.
 
 このセクションでは、事前トレーニング済みの領収書モデルを使用して、米国の領収書から共通フィールドを認識して抽出する方法を示します。
 
-URI からの領収書を認識するには、`StartRecognizeReceiptsFromUri` メソッドを使用します。 
+URL から領収書を認識するには、`StartRecognizeReceiptsFromUri` メソッドを使用します。 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
 
+> [!TIP]
+> ローカルにある領収書の画像を認識することもできます。 [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) のメソッドを参照してください ( **StartRecognizeReceipts** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上のサンプル コードを参照してください。
 
 返される値は `RecognizedReceipt` オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つあります。 次のコードでは、指定された URI にある領収書を処理し、主要なフィールドと値をコンソールに出力します。
 
@@ -401,12 +404,14 @@ Submodel Form Type: form-63c013e3-1cab-43eb-84b0-f4b20cb9214c
 > [!IMPORTANT]
 > このシナリオを実装するには、モデルのトレーニングが完了している必要があります。それにより、次のメソッドにその ID を渡すことができます。
 
-`StartRecognizeCustomFormsFromUri` メソッドを使用します。 返される値は `RecognizedForm` オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つあります。 
-
+`StartRecognizeCustomFormsFromUri` メソッドを使用します。 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze)]
 
-次のコードは、分析結果をコンソールに出力します。 認識された各フィールドと対応する値が、信頼度スコアと共に出力されます。
+> [!TIP]
+> ローカルのファイルを分析することもできます。 [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) のメソッドを参照してください ( **StartRecognizeCustomForms** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上のサンプル コードを参照してください。
+
+返される値は `RecognizedForm` オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つあります。 次のコードは、分析結果をコンソールに出力します。 認識された各フィールドと対応する値が、信頼度スコアと共に出力されます。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze_response)]
 

@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: e3b22b831deca47eece70d337a99346ae472c7ee
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 9ed3a4b0827e81b3f779d95a6eab1dc341e69bb1
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569481"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503268"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Synapse SQL を使用してデータを安全に読み込む
 
@@ -76,7 +76,7 @@ WITH (
 3. Azure ストレージ アカウントの **[Firewalls and Virtual networks]\(ファイアウォールと仮想ネットワーク\)** 設定メニューで、 **[Allow trusted Microsoft services to access this storage account]\(信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します\)** をオンにする必要があります。 詳しくは、この[ガイド](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions)をご覧ください。
 #### <a name="steps"></a>手順
 
-1. PowerShell で、Azure Active Directory に**お使いの SQL サーバーを登録します**。
+1. PowerShell で、Azure Active Directory に **お使いの SQL サーバーを登録します** 。
 
    ```powershell
    Connect-AzAccount
@@ -84,20 +84,20 @@ WITH (
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
    ```
 
-2. この[ガイド](../../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を使用して、**汎用 v2 ストレージ アカウント**を作成します。
+2. この [ガイド](../../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を使用して、 **汎用 v2 ストレージ アカウント** を作成します。
 
    > [!NOTE]
-   > 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を使用して、**最初に v2 にアップグレードする**必要があります。
+   > 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この [ガイド](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を使用して、 **最初に v2 にアップグレードする** 必要があります。
 
-3. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 **ストレージ BLOB データ所有者、共同作成者、または閲覧者**の Azure ロールを SQL サーバーに割り当てます。
+3. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 **ストレージ BLOB データ所有者、共同作成者、または閲覧者** の Azure ロールを SQL サーバーに割り当てます。
 
    > [!NOTE]
    > 所有者特権を持つメンバーのみが、この手順を実行できます。 さまざまな Azure の組み込みロールについては、こちらの[ガイド](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を参照してください。
    
     > [!IMPORTANT]
-    > **ストレージ** **BLOB データ**所有者、共同作成者、または閲覧者の Azure ロールを指定します。 これらのロールは、所有者、共同作成者、閲覧者の Azure 組み込みロールとは異なります。 
+    > **ストレージ** **BLOB データ** 所有者、共同作成者、または閲覧者の Azure ロールを指定します。 これらのロールは、所有者、共同作成者、閲覧者の Azure 組み込みロールとは異なります。 
 
-    ![読み込みのための RBAC アクセス許可の付与](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+    ![読み込みのための Azure RBAC アクセス許可の付与](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
 4. これで "マネージド ID" を指定して COPY ステートメントを実行できます。
 
@@ -113,12 +113,12 @@ WITH (
 ## <a name="d-azure-active-directory-authentication"></a>D. Azure Active Directory 認証
 #### <a name="steps"></a>手順
 
-1. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 **ストレージ BLOB データ所有者、共同作成者、または閲覧者**の Azure ロールを Azure AD ユーザーに割り当てます。 
+1. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 **ストレージ BLOB データ所有者、共同作成者、または閲覧者** の Azure ロールを Azure AD ユーザーに割り当てます。 
 
     > [!IMPORTANT]
-    > **ストレージ** **BLOB データ**所有者、共同作成者、または閲覧者の Azure ロールを指定します。 これらのロールは、所有者、共同作成者、閲覧者の Azure 組み込みロールとは異なります。
+    > **ストレージ** **BLOB データ** 所有者、共同作成者、または閲覧者の Azure ロールを指定します。 これらのロールは、所有者、共同作成者、閲覧者の Azure 組み込みロールとは異なります。
 
-    ![読み込みのための RBAC アクセス許可の付与](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+    ![読み込みのための Azure RBAC アクセス許可の付与](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
 2. 次の[ドキュメント](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#create-an-azure-ad-administrator-for-azure-sql-server)を進め、Azure AD 認証を構成します。 
 

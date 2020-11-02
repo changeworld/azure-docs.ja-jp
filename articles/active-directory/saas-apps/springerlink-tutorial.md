@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Springer Link の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Springer Link の統合 | Microsoft Docs
 description: Azure Active Directory と Springer Link の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,107 +9,80 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/13/2019
+ms.date: 09/30/2020
 ms.author: jeedes
-ms.openlocfilehash: a203bbd65c07d21c7d96b59c57b441748ed5b9a9
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 3c03bb91320e79d5ea54ad43802073795bfbd4cb
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127560"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896488"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>チュートリアル: Azure Active Directory と Springer Link の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-springer-link"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Springer Link の統合
 
-このチュートリアルでは、Springer Link と Azure Active Directory (Azure AD) を統合する方法について説明します。
-Springer Link と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、Springer Link と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Springer Link を統合すると、次のことができます。
 
-* Springer Link にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して Springer Link に自動的にサインイン (シングル サインオン) できるようにすることができます。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
-
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+* Springer Link にアクセスできる Azure AD ユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Springer Link に自動的にサインインできるように設定できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure AD と Springer Link の統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* Springer Link でのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* Springer Link でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、Azure AD シングル サインオンを構成してテストします。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Springer Link では、**SP** Initiated SSO と **IDP** Initiated SSO がサポートされます
+* Springer Link では、 **SP Initiated SSO と IDP** Initiated SSO がサポートされます
 
 ## <a name="adding-springer-link-from-the-gallery"></a>ギャラリーからの Springer Link の追加
 
 Azure AD への Springer Link の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Springer Link を追加する必要があります。
 
-**ギャラリーから Springer Link を追加するには、次の手順に従います。**
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Springer Link** 」と入力します。
+1. 結果のパネルから **[Springer Link]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+**B.Simon** というテスト ユーザーを使用して、Springer Link に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Springer Link の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
+Springer Link に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+2. **[Springer Link の SSO の構成](#configure-springer-link-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-4. 検索ボックスに「**Springer Link**」と入力し、結果パネルで **Springer Link** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+1. Azure portal の **Springer Link** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
-     ![結果リストの Springer Link](common/search-new-app.png)
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-このセクションでは、"**Britta Simon**" というテスト ユーザーに基づいて、Springer Link で Azure AD のシングル サインオンを構成し、テストします。
+    a. **[識別子]** ボックスに、`https://fsso.springer.com` という URL を入力します。
 
-Springer Link で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
-
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Springer Link シングル サインオンの構成](#configure-springer-link-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-
-このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
-
-Springer Link で Azure AD シングル サインオンを構成するには、次の手順に従います。
-
-1. [Azure portal](https://portal.azure.com/) の **Springer Link** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
-
-    ![シングル サインオン構成のリンク](common/select-sso.png)
-
-2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
-
-    ![シングル サインオン選択モード](common/select-saml-option.png)
-
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
-
-    ![基本的な SAML 構成を編集する](common/edit-urls.png)
-
-4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
-
-    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-relay.png)
-
-    a. **[識別子]** テキスト ボックスに、`https://fsso.springer.com` という URL を入力します。
-
-    b. **[応答 URL]** ボックスに、`https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider` という URL を入力します。
+    b. **[応答 URL]** ボックスに、URL として「`https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`」と入力します。
 
     c. **[追加の URL を設定します]** をクリックします。
 
-    d. **[リレー状態]** テキスト ボックスに、URL `https://link.springer.com` を入力します
+    d. **[リレー状態]** ボックスに、URL `https://link.springer.com` を入力します
 
 5. **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
-
-    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/both-signonurl.png)
 
     **[サインオン URL]** ボックスに、`https://fsso.springer.com/saml/login?idp=<entityID>&targetUrl=https://link.springer.com` という形式で URL を入力します。
 
@@ -120,72 +93,57 @@ Springer Link で Azure AD シングル サインオンを構成するには、�
 
     ![メタデータのダウンロード リンク](common/copy_metadataurl.png)
 
-### <a name="configure-springer-link-single-sign-on"></a>Springer Link シングル サインオンの構成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-**Springer Link** 側でシングル サインオンを構成するには、コピーした**アプリのフェデレーション メタデータ URL** を [Springer Link サポート チーム](mailto:onlineservice@springernature.com)に送る必要があります。 Springer Link サポート チームは、この URL を使用して、両側で適切に SAML SSO 接続を設定します。
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
-
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
-
-1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
-
-2. 画面の上部にある **[新しいユーザー]** を選択します。
-
-    ![[新しいユーザー] ボタン](common/new-user.png)
-
-3. [ユーザーのプロパティ] で、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
-    b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Springer Link へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、B.Simon に Springer Link へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Springer Link]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で **[Springer Link]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+## <a name="configure-springer-link-sso"></a>Springer Link の SSO の構成
 
-2. アプリケーションの一覧で **[Springer Link]** を選択します。
+**Springer Link** 側でシングル サインオンを構成するには、コピーした **アプリのフェデレーション メタデータ URL** を [Springer Link サポート チーム](mailto:onlineservice@springernature.com)に送る必要があります。 Springer Link サポート チームは、この URL を使用して、両側で適切に SAML SSO 接続を設定します。
 
-    ![アプリケーション一覧の Springer Link のリンク](common/all-applications.png)
+### <a name="create-springer-link-test-user"></a>Springer Link テスト ユーザーの作成
 
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
+このセクションでは、Springer Link で Britta Simon というユーザーを作成します。 [Springer Link サポート チーム](mailto:onlineservice@springernature.com)と協力して、Springer Link プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
+## <a name="test-sso"></a>SSO のテスト 
 
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
+#### <a name="sp-initiated"></a>SP Initiated:
 
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Springer Link のサインオン URL にリダイレクトされます。  
 
-6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+* Springer Link のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
+#### <a name="idp-initiated"></a>IDP Initiated:
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Springer Link に自動的にサインインされます 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで Springer Link タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Springer Link に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
-アクセス パネル上で [Springer Link] タイルをクリックすると、SSO を設定した Springer Link に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+## <a name="next-steps"></a>次の手順
 
-## <a name="additional-resources"></a>その他のリソース
+Springer Link を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: d66c19ce3a9786a5ca0f1390acb398c2a9cf502f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 69f43b626bb50171ceaca1b7a8761bec040d1dd6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445786"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897230"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>クイック スタート:Azure portal で仮想マシンに対して Azure Automanage を有効にする
 
@@ -28,7 +28,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 > 無料試用版アカウントでは、このチュートリアルで使用されている仮想マシンを利用できません。 従量課金制サブスクリプションにアップグレードしてください。
 
 > [!IMPORTANT]
-> 既存の Automanage アカウントを使用して Automanage を有効にするには、**共同作成者**ロールが必要です。 新しい Automanage アカウントで Automanage を有効にする場合は、次のアクセス許可が必要です: **所有者**ロール、または**共同作成者**ロールと**ユーザー アクセス管理者**ロールの併用。
+> 既存の Automanage アカウントを使用して Automanage を有効にするには、VM を含むリソース グループの **共同作成者** ロールが必要です。 新しい Automanage アカウントで Automanage を有効にする場合は、次のアクセス許可が必要です: ご使用のサブスクリプションに対する **所有者** ロール、または **共同作成者** ロールと **ユーザー アクセス管理者** ロールの併用。
 
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
     :::image type="content" source="media\quick-create-virtual-machine-portal\zero-vm-list-view.png" alt-text="[Enable on existing VM]\(既存の VM で有効にする\)":::
 
 3. **[マシンの選択]** ブレードで次のようにします。
-    1. 実際の**サブスクリプション**と**リソース グループ**で VM のリストにフィルターをかけます。
+    1. 実際の **サブスクリプション** と **リソース グループ** で VM のリストにフィルターをかけます。
     1. オンボードする各仮想マシンのチェック ボックスをオンにします。
     1. **[選択]** ボタンをクリックします。
 

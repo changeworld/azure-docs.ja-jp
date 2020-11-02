@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: e214607b82a44fb1b6859a3c73d58907fbb279d9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ad025d2278d6c9ab360ddbdc250e8db4b4eec665
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91710738"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495742"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 
@@ -111,15 +111,15 @@ Azure Machine Learning の基本的な使い方については、「[次の手�
 
 Azure Machine Learning は、Azure プラットフォーム上の他のサービスとの連携に加え、Git や MLFlow といったオープン ソース ツールとの統合にも対応します。
 
-+ コンピューティング先 (__Azure Kubernetes Service__、__Azure Container Instances__、__Azure Databricks__、__Azure Data Lake Analytics__、__Azure HDInsight__ など)。 コンピューティング先の詳細については、[コンピューティング先の概要](concept-compute-target.md)に関するページを参照してください。
-+ __Azure Event Grid__。 詳細については、[Azure Machine Learning イベントを使用する方法](concept-event-grid-integration.md)に関するページを参照してください。
-+ __Azure Monitor__。 詳細については、「[Azure Machine Learning の監視](monitor-azure-machine-learning.md)」を参照してください。
-+ データ ストア (__Azure Storage アカウント__、__Azure Data Lake Storage__、__Azure SQL Database__、__Azure Database for PostgreSQL__、__Azure Open Datasets__ など)。 詳細については、「[Azure ストレージ サービスのデータにアクセスする](how-to-access-data.md)」および「[Azure Open Datasets を使用してデータセットを作成する](how-to-create-register-datasets.md)」を参照してください。
-+ __Azure Virtual Networks__。 詳細については、「[仮想ネットワークの分離とプライバシーの概要](how-to-network-security-overview.md)」を参照してください。
-+ __Azure Pipelines__。 詳細については、「[機械学習モデルのトレーニングとデプロイ](/azure/devops/pipelines/targets/azure-machine-learning)」を参照してください。
-+ __Git リポジトリのログ__。 詳細については、「[Git 統合](concept-train-model-git-integration.md)」を参照してください。
-+ __MLFlow__。 詳細については、[MLflow を使用してメトリックを追跡し、モデルをデプロイする方法](how-to-use-mlflow.md)に関するページを参照してください。 
-+ __Kubeflow__。 詳細については、[エンド ツー エンドのワークフロー パイプラインを構築する方法](https://www.kubeflow.org/docs/azure/)に関するページを参照してください。
++ コンピューティング先 ( __Azure Kubernetes Service__ 、 __Azure Container Instances__ 、 __Azure Databricks__ 、 __Azure Data Lake Analytics__ 、 __Azure HDInsight__ など)。 コンピューティング先の詳細については、[コンピューティング先の概要](concept-compute-target.md)に関するページを参照してください。
++ __Azure Event Grid__ 。 詳細については、[Azure Machine Learning イベントを使用する方法](concept-event-grid-integration.md)に関するページを参照してください。
++ __Azure Monitor__ 。 詳細については、「[Azure Machine Learning の監視](monitor-azure-machine-learning.md)」を参照してください。
++ データ ストア ( __Azure Storage アカウント__ 、 __Azure Data Lake Storage__ 、 __Azure SQL Database__ 、 __Azure Database for PostgreSQL__ 、 __Azure Open Datasets__ など)。 詳細については、「[Azure ストレージ サービスのデータにアクセスする](how-to-access-data.md)」および「[Azure Open Datasets を使用してデータセットを作成する](how-to-create-register-datasets.md)」を参照してください。
++ __Azure Virtual Networks__ 。 詳細については、「[仮想ネットワークの分離とプライバシーの概要](how-to-network-security-overview.md)」を参照してください。
++ __Azure Pipelines__ 。 詳細については、「[機械学習モデルのトレーニングとデプロイ](/azure/devops/pipelines/targets/azure-machine-learning)」を参照してください。
++ __Git リポジトリのログ__ 。 詳細については、「[Git 統合](concept-train-model-git-integration.md)」を参照してください。
++ __MLFlow__ 。 詳細については、[MLflow を使用してメトリックを追跡し、モデルをデプロイする方法](how-to-use-mlflow.md)に関するページを参照してください。 
++ __Kubeflow__ 。 詳細については、[エンド ツー エンドのワークフロー パイプラインを構築する方法](https://www.kubeflow.org/docs/azure/)に関するページを参照してください。
 
 ### <a name="secure-communications"></a>セキュリティで保護された通信
 
@@ -128,7 +128,8 @@ Azure Storage アカウントやコンピューティング先などのリソー
 ## <a name="next-steps"></a>次のステップ
 
 - 任意の方法で最初の実験を作成します。
-  + [Python ノートブックを使用して、ML モデルをトレーニングおよびデプロイする](tutorial-1st-experiment-sdk-setup.md)
+- + [個人の開発環境で使用を開始する](tutorial-1st-experiment-sdk-setup-local.md)
+  + [コンピューティング インスタンスで Jupyter Notebook を使用して ML モデルのトレーニングとデプロイを行う](tutorial-1st-experiment-sdk-setup.md)
   + [R Markdown を使用して、ML モデルをトレーニングおよびデプロイする](tutorial-1st-r-experiment.md) 
   + [自動化された機械学習を使用して、ML モデルをトレーニングおよびデプロイする](tutorial-first-experiment-automated-ml.md) 
   + [デザイナーのドラッグ アンド ドロップ機能を使用して、トレーニングおよびデプロイする](tutorial-designer-automobile-price-train-score.md) 

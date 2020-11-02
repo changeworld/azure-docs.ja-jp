@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 455cf921cfcd4ac5d0e81fb4e092ec165070a3f1
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 925a5000f9778689660765ef715dd8760d5340a2
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331568"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495970"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>クイック スタート - ADT Explorer を使用して、Azure Digital Twins のサンプル シナリオを精査する
 
@@ -37,9 +37,7 @@ Azure Digital Twins を使用すると、現実の環境のライブ モデル�
 
 お使いのコンピューターには **Node.js** も必要になります。 次のリンクで最新バージョンを入手できます。[Node.js](https://nodejs.org/)。
 
-最後に、クイックスタートの間に使用するサンプルを 2 つダウンロードする必要もあります。
-* **ADT エクスプローラー** サンプル アプリケーション。 このサンプルには、クイックスタートで Azure Digital Twins シナリオを読み込んで精査する際に使用するメイン アプリが含まれています。 このアプリは、「[Azure Digital Twins (ADT) エクスプローラー](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)」から入手できます。 *[Download ZIP]\(ZIP のダウンロード\)* ボタンをクリックして、このサンプル コードの *.ZIP* ファイルをご自分のマシンにダウンロードしてください。 これにより、ZIP フォルダーが _**Azure_Digital_Twins__ADT__explorer.zip**_ としてマシンにダウンロードされます。 フォルダーを解凍し、ファイルを抽出します。
-* **Azure Digital Twins のサンプル シナリオ** 。 ここには、ADT エクスプローラーに読み込んで操作することになる、事前構築済みの Azure Digital Twins グラフが含まれています。 シナリオを入手するには、こちらに移動してください: [Azure Digital Twins のエンドツーエンド サンプル](/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 *[Download ZIP]\(ZIP のダウンロード\)* ボタンをクリックして、このサンプル コードの *.ZIP* ファイルをご自分のマシンにダウンロードしてください。 これにより、.ZIP フォルダーが _**Azure_Digital_Twins_end_to_end_samples.zip**_ としてマシンにダウンロードされます。 フォルダーを解凍し、ファイルを抽出します。
+最後に、クイックスタートの間に使用するサンプル ( **ADT エクスプローラー** サンプル アプリケーション) をダウンロードする必要もあります。 このサンプルには、クイックスタートで Azure Digital Twins シナリオを読み込んで精査する際に使用するアプリのほか、サンプル シナリオ ファイルが含まれています。 サンプルを入手するには、こちらに移動してください: [Azure Digital Twins (ADT) エクスプローラー](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 *[Download ZIP]\(ZIP のダウンロード\)* ボタンをクリックして、このサンプル コードの *.ZIP* ファイルをご自分のマシンにダウンロードしてください。 これにより、ZIP フォルダーが _**Azure_Digital_Twins__ADT__explorer.zip**_ としてマシンにダウンロードされます。 フォルダーを解凍し、ファイルを抽出します。
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Azure Digital Twins と ADT エクスプローラーを設定する
 
@@ -50,10 +48,10 @@ Azure Digital Twins を操作する際の最初の手順は、 **Azure Digital T
 ### <a name="set-up-azure-digital-twins-instance-and-app-registration"></a>Azure Digital Twins インスタンスとアプリの登録を設定する
 
 まず、 **Azure Digital Twins インスタンスを設定** し、その操作を可能にするために必要な認証を設定します。 このためには、 [*操作方法の手順に従うため、インスタンスと認証を設定する方法*](how-to-set-up-instance-portal.md)に関するページを参照してください。 推奨されるエクスペリエンスに応じて、[Azure portal](how-to-set-up-instance-portal.md)、[CLI](how-to-set-up-instance-cli.md)、または [ Cloud Shell の自動デプロイ スクリプト サンプル](how-to-set-up-instance-scripted.md)用のセットアップに関する記事が用意されています。 すべてのバージョンの説明には、各手順が正しく完了し、新しいインスタンスを使用する準備ができていることを確認する手順も含まれています。
-* Azure Digital Twins インスタンスの設定後、インスタンスの " **_ホスト名_** " ([ポータルで確認してください](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) が必要になります。
+* Azure Digital Twins インスタンスの設定後、インスタンスの " **_ホスト名_** " ( [ポータルで確認してください](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) が必要になります。
 
 ADT Explorer アプリケーションを認証するには、 **アプリの登録** も設定する必要があります。 [*アプリの登録の作成方法*](how-to-create-app-registration.md)に関するページでの指示に従って設定します。 
-* アプリの登録が完了したら、登録の " **_アプリケーション (クライアント) ID_** " および " **_ディレクトリ (テナント) ID_** " ([ポータルで確認してください](how-to-create-app-registration.md#collect-client-id-and-tenant-id)) が必要になります。
+* アプリの登録が完了したら、登録の " **_アプリケーション (クライアント) ID_** " および " **_ディレクトリ (テナント) ID_** " ( [ポータルで確認してください](how-to-create-app-registration.md#collect-client-id-and-tenant-id)) が必要になります。
 
 ### <a name="set-adt-explorer-permissions"></a>ADT エクスプローラーのアクセス許可を設定する
 
@@ -115,9 +113,7 @@ Microsoft の *[要求されているアクセス許可]* ポップアップ ウ
 
 ## <a name="add-the-sample-data"></a>サンプル データを追加する
 
-次に、ADT エクスプローラーにサンプル シナリオとグラフをインポートします。
-
-サンプル シナリオは、ダウンロードして解凍した _**Azure_Digital_Twins_end_to_end_samples**_ フォルダーに置かれているので、ここでこのフォルダーに移動する必要があります。
+次に、ADT エクスプローラーにサンプル シナリオとグラフをインポートします。 サンプル シナリオは、先ほどダウンロードした **Azure_Digital_Twins__ADT__explorer** フォルダーにもあります。
 
 ### <a name="models"></a>モデル
 
@@ -140,8 +136,8 @@ Azure Digital Twins ソリューションで実行する最初の手順は、対
 
 :::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。" lightbox="media/quickstart-adt-explorer/upload-model.png":::
  
-1. 表示されたファイル セレクター ボックスで、ダウンロードしたリポジトリの *Azure_Digital_Twins_end_to_end_samples/AdtSampleApp/SampleClientApp/models* フォルダーに移動します。
-2. *Room.json* と *Floor.json* を選択し、[OK] をクリックします。 (必要であれば他のモデルをアップロードすることもできますが、このクイックスタートでは使用しません。)
+1. 表示されたファイル セレクター ボックスで、ダウンロードしたリポジトリの *Azure_Digital_Twins__ADT__explorer/client/examples* フォルダーに移動します。
+2. *Room.json* と *Floor.json* を選択し、[OK] をクリックします。 (必要であればさらに別のモデルをアップロードすることもできますが、このクイックスタートでは使用しません。)
 3. Azure アカウントへのサインインを求めるポップアップ ダイアログに従います。
 
 >[!NOTE]
@@ -178,7 +174,7 @@ ADT エクスプローラーによって、これらのモデル ファイルが
 
 :::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。" lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
-ファイル セレクター ボックスで、 *Azure_Digital_Twins_end_to_end_samples/AdtSampleApp/SampleClientApp* フォルダーに移動し、 _**buildingScenario.xlsx**_ スプレッドシート ファイルを選択します。 このファイルには、サンプル グラフの説明が含まれています。 [OK] をタップします。
+ファイル セレクター ボックスで *Azure_Digital_Twins__ADT__explorer/client/examples* フォルダーに移動し、 _**buildingScenario.xlsx**_ スプレッドシート ファイルを選択します。 このファイルには、サンプル グラフの説明が含まれています。 [OK] をタップします。
 
 数秒後、ADT エクスプローラーで *[インポート]* ビューが開き、読み込みの対象となるグラフのプレビューが表示されます。
 
@@ -320,7 +316,13 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-最後に、ローカル マシンにダウンロードしたプロジェクトのサンプル フォルダー ( _**Azure_Digital_Twins__ADT__explorer**_ と _**Azure_Digital_Twins_end_to_end_samples**_ ) を削除します。 zip されているバージョンと解凍されたバージョンの両方を削除する必要がある場合があります。
+次に、クライアント アプリ用に作成した Azure Active Directory アプリの登録を次のコマンドで削除します。
+
+```azurecli-interactive
+az ad app delete --id <your-application-ID>
+```
+
+最後に、ローカル コンピューターにダウンロードしたプロジェクトのサンプル フォルダー ( _**Azure_Digital_Twins__ADT__explorer**_ ) を削除します。 zip されているバージョンと解凍されたバージョンの両方を削除する必要がある場合があります。
 
 ## <a name="next-steps"></a>次のステップ 
 

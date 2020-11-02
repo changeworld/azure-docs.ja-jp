@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 482d703689ca6cfc34dd5d78574ae52e4def2b1f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 908bf21d2fe101731b11e3a8ad783f17728c8ed3
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86109775"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677331"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>クイック スタート:Databricks を使用したデータの分析
 
@@ -25,7 +25,7 @@ ms.locfileid: "86109775"
 
 * Azure Data Lake Gen2 ストレージ アカウントの名前。 [Azure Data Lake Storage Gen2 ストレージ アカウントを作成します](data-lake-storage-quickstart-create-account.md)。
 
-* **ストレージ BLOB データ共同作成者**のロールが割り当てられた Azure サービス プリンシパルのテナント ID、アプリ ID、パスワード。 [サービス プリンシパルを作成します](../../active-directory/develop/howto-create-service-principal-portal.md)。
+* **ストレージ BLOB データ共同作成者** のロールが割り当てられた Azure サービス プリンシパルのテナント ID、アプリ ID、パスワード。 [サービス プリンシパルを作成します](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
   > [!IMPORTANT]
   > Data Lake Storage Gen2 ストレージ アカウントの範囲内のロールを割り当ててください。 親リソース グループまたはサブスクリプションにロールを割り当てることはできますが、それらのロール割り当てがストレージ アカウントに伝達されるまで、アクセス許可関連のエラーが発生します。
@@ -86,7 +86,7 @@ ms.locfileid: "86109775"
 
 2. 左側のウィンドウで、 **[ワークスペース]** を選択します。 **[ワークスペース]** ドロップダウンで、 **[作成]**  >  **[ノートブック]** の順に選択します。
 
-    ![Databricks でノートブックを作成する](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Databricks でノートブックを作成する")
+    ![Databricks でノートブックを作成する方法を示し、[作成] > [ノートブック] メニュー オプションが強調表示されているスクリーンショット。](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Databricks でノートブックを作成する")
 
 3. **[ノートブックの作成]** ダイアログ ボックスでノートブックの名前を入力します。 言語として **[Scala]** を選んで、前に作成した Spark クラスターを選びます。
 
@@ -151,7 +151,7 @@ dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<container-name>@<st
 
     `%sql` 言語のマジック コマンドを使うと、ノートブックから SQL コードを実行できます (ノートブックが別の種類であっても)。 詳しくは、「[Mixing languages in a notebook](https://docs.azuredatabricks.net/user-guide/notebooks/index.html#mixing-languages-in-a-notebook)」(ノートブックに言語を混在させる) をご覧ください。
 
-2. 実行するクエリについて詳しく理解するため、サンプルの JSON データのスナップショットを見てみます。 次のスニペットをコード セルに貼り付けて、**Shift + Enter** キーを押します。
+2. 実行するクエリについて詳しく理解するため、サンプルの JSON データのスナップショットを見てみます。 次のスニペットをコード セルに貼り付けて、 **Shift + Enter** キーを押します。
 
     ```sql
     %sql
@@ -162,7 +162,7 @@ dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<container-name>@<st
 
     ![サンプル JSON データ](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sample-csv-data.png "サンプル JSON データ")
 
-    サンプルには、ラジオ チャンネルの視聴者の性別 (列名: **gender**) および登録が無料か有料か (列名: **level**) に関するデータが含まれます。
+    サンプルには、ラジオ チャンネルの視聴者の性別 (列名: **gender** ) および登録が無料か有料か (列名: **level** ) に関するデータが含まれます。
 
 4. このデータのビジュアル表現を作成し、各性別について、無料アカウント ユーザーの数と有料登録者の数がわかるようにします。 表形式の出力の下部で、 **[Bar chart]\(棒グラフ\)** アイコンをクリックした後、 **[Plot Options]\(プロット オプション\)** をクリックします。
 
@@ -170,7 +170,7 @@ dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<container-name>@<st
 
 5. **[Customize Plot]\(プロットのカスタマイズ\)** で、スクリーンショットに示すように値をドラッグ アンド ドロップします。
 
-    ![横棒グラフをカスタマイズする](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-customize-plot.png "横棒グラフをカスタマイズする")
+    ![[Customize Plot]\(プロットのカスタマイズ\) 画面と、ドラッグ アンド ドロップできる値を示すスクリーンショット。](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-customize-plot.png "横棒グラフをカスタマイズする")
 
     - **[Keys]\(キー\)** を **gender** に設定します。
     - **[Series groupings]\(系列グループ\)** を **level** に設定します。

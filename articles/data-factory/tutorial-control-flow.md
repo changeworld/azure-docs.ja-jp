@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 6eaf00679566aa8dfb7a90db95228349c81fcfec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a6fc68ddcb86c7ba768f59519cfb4273d381fab
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983408"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637702"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 
@@ -40,7 +40,7 @@ ms.locfileid: "90983408"
 > * パイプラインの実行を開始します。
 > * パイプラインとアクティビティの実行を監視します。
 
-このチュートリアルでは .NET SDK を使用します。 Azure Data Factory の操作にはその他のメカニズムを使用することもできます。 Data Factory のクイックスタートについては、[5 分間のクイックスタート](/azure/data-factory/quickstart-create-data-factory-portal)を参照してください。
+このチュートリアルでは .NET SDK を使用します。 Azure Data Factory の操作にはその他のメカニズムを使用することもできます。 Data Factory のクイックスタートについては、[5 分間のクイックスタート](./quickstart-create-data-factory-portal.md)を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
@@ -54,11 +54,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 現在 Data Factory が利用可能な Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」を参照してください。 データ ストアとコンピューティングは、別のリージョンに配置できます。 ストアには、Azure Storage と Azure SQL Database が含まれます。 コンピューティングには、Data Factory で使用される HDInsight が含まれます。
 
-「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)」の説明に従って、アプリケーションを作成します。 同じ記事の手順に従って、このアプリケーションを**共同作成者**ロールに割り当てます。 このチュートリアルの後の方で、**アプリケーション (クライアント) ID** や**ディレクトリ (テナント) ID** など、いくつかの値が必要になります。
+「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)」の説明に従って、アプリケーションを作成します。 同じ記事の手順に従って、このアプリケーションを **共同作成者** ロールに割り当てます。 このチュートリアルの後の方で、 **アプリケーション (クライアント) ID** や **ディレクトリ (テナント) ID** など、いくつかの値が必要になります。
 
 ### <a name="create-a-blob-table"></a>BLOB テーブルを作成する
 
-1. テキスト エディターを開きます。 次のテキストをコピーし、*input.txt* としてローカルに保存します。
+1. テキスト エディターを開きます。 次のテキストをコピーし、 *input.txt* としてローカルに保存します。
 
    ```
    Ethel|Berg
@@ -80,7 +80,7 @@ C# .NET コンソール アプリケーションを作成します。
 ### <a name="install-nuget-packages"></a>NuGet パッケージのインストール
 
 1. **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順に選択します。
-1. **パッケージ マネージャー コンソール**で、次のコマンドを実行してパッケージをインストールします。 詳細については、[Microsoft.Azure.Management.DataFactory nuget パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)を参照してください。
+1. **パッケージ マネージャー コンソール** で、次のコマンドを実行してパッケージをインストールします。 詳細については、[Microsoft.Azure.Management.DataFactory nuget パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)を参照してください。
 
    ```powershell
    Install-Package Microsoft.Azure.Management.DataFactory
@@ -211,7 +211,7 @@ C# .NET コンソール アプリケーションを作成します。
 
 ### <a name="create-a-dataset-for-a-source-azure-blob"></a>ソース Azure BLOB 用のデータセットの作成
 
-*Azure BLOB データセット*を作成するメソッドを追加します。 サポートされているプロパティと詳細については、[Azure BLOB データセットのプロパティ](connector-azure-blob-storage.md#dataset-properties)に関するページを参照してください。
+*Azure BLOB データセット* を作成するメソッドを追加します。 サポートされているプロパティと詳細については、[Azure BLOB データセットのプロパティ](connector-azure-blob-storage.md#dataset-properties)に関するページを参照してください。
 
 *Program.cs* ファイルに `SourceBlobDatasetDefinition` メソッドを追加します。
 
@@ -234,7 +234,7 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 }
 ```
 
-Azure BLOB 内のソース データを表すデータセットを定義します。 この BLOB データセットは、前の手順でサポートされていた Azure Storage のリンクされたサービスを参照します。 BLOB データセットには、コピー元の BLOB の場所が記述されます。*FolderPath* と *FileName* が使用されます。
+Azure BLOB 内のソース データを表すデータセットを定義します。 この BLOB データセットは、前の手順でサポートされていた Azure Storage のリンクされたサービスを参照します。 BLOB データセットには、コピー元の BLOB の場所が記述されます。 *FolderPath* と *FileName* が使用されます。
 
 *FolderPath* ではパラメーターが使用されていることに注意してください。 `sourceBlobContainer` はパラメーターの名前であり、この式はパイプラインの実行で渡された値に置き換えられます。 パラメーターを定義する構文は `@pipeline().parameters.<parameterName>` です。
 
@@ -308,7 +308,7 @@ C# プロジェクトで、`EmailRequest` という名前のクラスを作成�
 
 ### <a name="success-email-workflow"></a>成功電子メールのワークフロー
 
-[Azure portal](https://portal.azure.com) で、*CopySuccessEmail* という名前の Logic Apps ワークフローを作成します。 ワークフロー トリガーを `When an HTTP request is received` として定義します。 要求トリガー用に、`Request Body JSON Schema` に次の JSON を入力します。
+[Azure portal](https://portal.azure.com) で、 *CopySuccessEmail* という名前の Logic Apps ワークフローを作成します。 ワークフロー トリガーを `When an HTTP request is received` として定義します。 要求トリガー用に、`Request Body JSON Schema` に次の JSON を入力します。
 
 ```json
 {
@@ -336,7 +336,7 @@ C# プロジェクトで、`EmailRequest` という名前のクラスを作成�
 
 この JSON コンテンツは、前のセクションで作成した `EmailRequest` クラスに合わせたものです。
 
-`Office 365 Outlook – Send an email` のアクションを追加します。 **[Send an email]\(メールの送信\)** アクションでは、要求**本文**の JSON スキーマで渡されるプロパティを使用して、メールの書式設定方法をカスタマイズします。 次に例を示します。
+`Office 365 Outlook – Send an email` のアクションを追加します。 **[Send an email]\(メールの送信\)** アクションでは、要求 **本文** の JSON スキーマで渡されるプロパティを使用して、メールの書式設定方法をカスタマイズします。 次に例を示します。
 
 ![ロジック アプリ デザイナー - メールの送信アクション](media/tutorial-control-flow/customize-send-email-action.png)
 
@@ -610,7 +610,7 @@ Creating linked service AzureStorageLinkedService...
 {
   "type": "AzureStorage",
   "typeProperties": {
-    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
+    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=**_"
   }
 }
 Creating dataset SourceStorageDataset...
@@ -753,7 +753,7 @@ Press any key to exit...
 このチュートリアルでは、次のタスクを実行しました。
 
 > [!div class="checklist"]
-> * Data Factory の作成
+> _ データ ファクトリを作成する
 > * Azure Storage のリンクされたサービスを作成する
 > * Azure BLOB データセットを作成します。
 > * コピー アクティビティと Web アクティビティを含むパイプラインを作成します。

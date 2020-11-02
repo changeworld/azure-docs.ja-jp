@@ -8,25 +8,25 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 6649a8d470a75922aac423bf0b411163bdd79f71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91a0ea19f53d1da7631154cb71f96e495cc93857
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449092"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788997"
 ---
 # <a name="introduction-to-azure-defender-for-key-vault"></a>Azure Defender for Key Vault の概要
 
 Azure Key Vault は、暗号化キーとシークレット (証明書、接続文字列、パスワードなど) を保護するクラウド サービスです。 
 
-Azure ネイティブの場合は、**Azure Defender for Key Vault** を有効にします。Azure Key Vault の場合は、セキュリティ インテリジェンスのレイヤーを追加して、Advanced Threat Protection を有効にします。 
+Azure ネイティブの場合は、 **Azure Defender for Key Vault** を有効にします。Azure Key Vault の場合は、セキュリティ インテリジェンスのレイヤーを追加して、Advanced Threat Protection を有効にします。 
 
 ## <a name="availability"></a>可用性
 
 |側面|詳細|
 |----|:----|
 |リリース状態:|一般提供 (GA)|
-|価格:|**Azure Defender for Key Vault**は、[価格ページ](security-center-pricing.md)に示されているように課金されます|
+|価格:|**Azure Defender for Key Vault** は、 [価格ページ](security-center-pricing.md)に示されているように課金されます|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
 |||
 
@@ -55,5 +55,5 @@ Azure Defender for Key Vault からアラートを受け取った場合は、[Az
 関連資料については、次の記事をご覧ください。 
 
 - [Key Vault セキュリティ アラート](alerts-reference.md#alerts-azurekv)--すべての Azure Security Center アラートの参照テーブルの Key Vault セクション
-- [SIEM にアラートをエクスポートする](continuous-export.md)
+- [Security Center のデータを連続的にエクスポートする](continuous-export.md)
 - [Azure Defender のアラートの抑制](alerts-suppression-rules.md)

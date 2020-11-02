@@ -6,70 +6,111 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/04/2020
+ms.date: 10/21/2020
 ms.author: aahi
-ms.openlocfilehash: 9c3bae9d2ad388409c40a8e8c89bcdd52f536cdb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 122e44da7bbf4229f932eefdae4c70dc49f43bfe
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85806025"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371284"
 ---
-このクイックスタートでは、Bing Image Search クライアント ライブラリを使用して最初の画像検索を行います。このクライアント ライブラリは、API のラッパーであり、同じ機能を含んでいます。 このシンプルな C# アプリケーションは、画像検索クエリを送信し、JSON 応答を解析して、返された最初の画像の URL を表示します。
+このクイックスタートでは、Bing Image Search クライアント ライブラリを使用して最初の画像検索を行います。 
+
+このクライアント検索ライブラリは、REST API のラッパーであり、同じ機能を含んでいます。 
+
+ここでは、画像検索クエリを送信し、JSON 応答を解析して、返された最初の画像の URL を表示する C# アプリケーションを作成します。
 
 このサンプルのソース コードは、追加のエラー処理と注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
-* [Visual Studio 2017 またはそれ以降](https://visualstudio.microsoft.com/vs/whatsnew/)の任意のエディション。
-* [Cognitive Image Search NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/)。
 
-Visual Studio に Bing Image Search クライアント ライブラリをインストールするには、**ソリューション エクスプローラー**から **[NuGet パッケージの管理]** オプションを使用します。
+* (Windows を使用している場合) [Visual Studio 2017 以降](https://visualstudio.microsoft.com/vs/whatsnew/)のエディション
+* (macOS または Linux を使用している場合) [VS Code](https://code.visualstudio.com) と [.NET Core がインストール](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/install)されていること
+* [無料の Azure サブスクリプション](https://azure.microsoft.com/free/dotnet)
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](~/includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
-## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
+## <a name="create-a-console-project"></a>コンソール プロジェクトを作成する
 
-まず Visual Studio で新しい C# コンソール アプリケーションを作成します。 次のパッケージをプロジェクトに追加します。
+まず、新しい C# コンソール アプリケーションを作成します。
 
-```csharp
-using System;
-using System.Linq;
-using Microsoft.Azure.CognitiveServices.Search.ImageSearch;
-using Microsoft.Azure.CognitiveServices.Search.ImageSearch.Models;
-```
+## <a name="create-a-console-project"></a>コンソール プロジェクトを作成する
 
-プロジェクトの main メソッドでは、有効なサブスクリプション キー、Bing で返す必要のある画像の結果、および検索語句の変数を作成します。 その後、キーを使用して画像検索クライアントをインスタンス化します。
+# <a name="visual-studio"></a>[Visual Studio](#tab/visualstudio)
 
-```csharp
-//IMPORTANT: replace this variable with your Cognitive Services subscription key
-string subscriptionKey = "ENTER YOUR KEY HERE";
-//stores the image results returned by Bing
-Images imageResults = null;
-// the image search term to be used in the query
-string searchTerm = "canadian rockies";
+1. Visual Studio で、 *BingImageSearch* という新しいコンソール ソリューションを作成します。
+    
+1. [Cognitive Image Search NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch)を追加します。
+    1. **ソリューション エクスプローラー** でプロジェクトを右クリックします。
+    1. **[NuGet パッケージの管理]** を選択します。
+    1. *Microsoft.Azure.CognitiveServices.Search.ImageSearch* を検索して選択し、このパッケージをインストールします。
+    
+# <a name="vs-code"></a>[VS Code](#tab/vscode)
 
-//initialize the client
-//NOTE: If you're using version 1.2.0 or below for the Bing Image Search client library, 
-// use ImageSearchAPI() instead of ImageSearchClient() to initialize your search client.
+1. VS Code でターミナル ウィンドウを開きます。
+1. ターミナル ウィンドウに次のコードを入力して、 *BingImageSearch* という名前の新しいコンソール プロジェクトを作成します。
+    
+    ```bash
+    dotnet new console -n BingImageSearch
+    ```
+1. VS Code で *BingImageSearch* フォルダーを開きます。
+1. ターミナル ウィンドウに次のコードを入力して、[[Cognitive Image Search NuGet package]\(Cognitive Image Search NuGet パッケージ\)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch) という NuGetPackage を追加します。
 
-var client = new ImageSearchClient(new ApiKeyServiceClientCredentials(subscriptionKey));
-```
+    ```bash
+    dotnet add package Microsoft.Azure.CognitiveServices.Search.ImageSearch
+    ```
 
+---
+
+## <a name="initialize-the-application"></a>アプリケーションを初期化する
+
+
+1. *Program.cs* 内のすべての `using` ステートメントを次のコードに置き換えます。
+
+    ```csharp
+    using System;
+    using System.Linq;
+    using Microsoft.Azure.CognitiveServices.Search.ImageSearch;
+    using Microsoft.Azure.CognitiveServices.Search.ImageSearch.Models;
+    ```
+
+1. プロジェクトの `Main` メソッドでは、有効なサブスクリプション キー、Bing で返す必要のある画像の結果、および検索語句の変数を作成します。 その後、キーを使用して画像検索クライアントをインスタンス化します。
+
+    ```csharp
+    static async Task Main(string[] args)
+    {
+        //IMPORTANT: replace this variable with your Cognitive Services subscription key
+        string subscriptionKey = "ENTER YOUR KEY HERE";
+        //stores the image results returned by Bing
+        Images imageResults = null;
+        // the image search term to be used in the query
+        string searchTerm = "canadian rockies";
+        
+        //initialize the client
+        //NOTE: If you're using version 1.2.0 or below for the Bing Image Search client library, 
+        // use ImageSearchAPI() instead of ImageSearchClient() to initialize your search client.
+        
+        var client = new ImageSearchClient(new ApiKeyServiceClientCredentials(subscriptionKey));
+    }
+    ```
+    
 ## <a name="send-a-search-query-using-the-client"></a>クライアントを使用して検索クエリを送信する
-
-クライアントを使用して、クエリ テキストを指定して検索します。
-
+    
+引き続き `Main` メソッドで、クライアントを使用してクエリ テキストを検索します。
+    
 ```csharp
 // make the search request to the Bing Image API, and get the results"
-imageResults = client.Images.SearchAsync(query: searchTerm).Result; //search query
+imageResults = await client.Images.SearchAsync(query: searchTerm).Result; //search query
 ```
 
 ## <a name="parse-and-view-the-first-image-result"></a>最初の画像の結果を解析して表示する
 
-応答で返された画像の結果を解析します。
-応答に検索結果が含まれている場合は、最初の結果を格納して、返された URL の合計数と共にサムネイルの URL などの詳細を出力します。  
+応答で返された画像の結果を解析します。 
+
+応答に検索結果が含まれている場合は、最初の結果を格納して、その詳細の一部を出力します。
 
 ```csharp
 if (imageResults != null)
@@ -80,6 +121,7 @@ if (imageResults != null)
     Console.WriteLine($"Copy the following URLs to view these images on your browser.\n");
     Console.WriteLine($"URL to the first image:\n\n {firstImageResult.ContentUrl}\n");
     Console.WriteLine($"Thumbnail URL for the first image:\n\n {firstImageResult.ThumbnailUrl}");
+    Console.WriteLine("Press any key to exit ...");
     Console.ReadKey();
 }
 ```

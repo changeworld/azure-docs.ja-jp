@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: 4a1bb3346d50825dcab799477794cb138ac2de91
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 72120f6937c65ca6f7a94d34122e41ae3b4a4ef5
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91326288"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746441"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>クイック スタート:Service Bus のトピックとサブスクリプションを Node.js および azure/service-bus パッケージで使用する方法
 このチュートリアルでは、新しい [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) パッケージを使用して Service Bus トピックにメッセージを送り、Service Bus サブスクリプションからメッセージを受け取る Node.js プログラムの記述方法を学習します。 このパッケージではより高速な [AMQP 1.0 プロトコル](service-bus-amqp-overview.md)が使用されます。一方、以前の [azure-sb](https://www.npmjs.com/package/azure-sb) パッケージでは [Service Bus REST ランタイム API](/rest/api/servicebus/service-bus-runtime-rest) が使用されていました。 サンプルは JavaScript で記述されています。

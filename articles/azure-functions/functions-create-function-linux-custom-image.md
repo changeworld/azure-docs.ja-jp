@@ -3,14 +3,14 @@ title: カスタム イメージを使用して Linux 上で Azure Functions を
 description: カスタム Linux イメージで実行する Azure Functions を作成する方法について説明します。
 ms.date: 03/30/2020
 ms.topic: tutorial
-ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
+ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 7940e0f90e29e5c69ccde79dfbec889dbe31fe63
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 846599414c0bca95a3f41e127dc01e06d0fd43f9
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91758984"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747102"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>カスタム コンテナーを使用して Linux で関数を作成する
 
@@ -95,7 +95,10 @@ mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArti
 ```
 ---
 
-`-DjavaVersion` パラメーターは、使用する Java のバージョンを Functions Runtime に指示します。 プレビュー段階にある Java 11 で関数を実行する場合は、`-DjavaVersion=11` を使用します。 `-DjavaVersion` を指定しない場合、Maven の既定値は Java 8 になります。 詳細については、「[Java のバージョン](functions-reference-java.md#java-versions)」を参照してください。
+`-DjavaVersion` パラメーターは、使用する Java のバージョンを Functions Runtime に指示します。 Java 11 で関数を実行する場合は、`-DjavaVersion=11` を使用します。 `-DjavaVersion` を指定しない場合、Maven の既定値は Java 8 になります。 詳細については、「[Java のバージョン](functions-reference-java.md#java-versions)」を参照してください。
+
+> [!IMPORTANT]
+> この記事の作業を行うには、`JAVA_HOME` 環境変数を、適切なバージョンの JDK のインストール場所に設定する必要があります。
 
 Maven により、デプロイ時にプロジェクトの生成を終了するための値の入力が求められます。   
 入力を求められたら、次の値を入力します。
@@ -109,7 +112,7 @@ Maven により、デプロイ時にプロジェクトの生成を終了する�
 
 「`Y`」と入力するか、Enter キーを押して確認します。
 
-Maven により、_artifactId_ という名前の新しいフォルダーにプロジェクト ファイルが作成されます (この例では `fabrikam-functions`)。 
+Maven により、 _artifactId_ という名前の新しいフォルダーにプロジェクト ファイルが作成されます (この例では `fabrikam-functions`)。 
 ::: zone-end
 `--docker` オプションによって、プロジェクトの `Dockerfile` が生成されます。これにより、Azure Functions および選択されたランタイムで使用するための適切なカスタム コンテナーが定義されます。
 
@@ -125,7 +128,7 @@ cd fabrikam-functions
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
-次のコマンドを使用して、関数を自分のプロジェクトに追加します。ここで、`--name` 引数は関数の一意の名前で、`--template` 引数は関数のトリガーを指定するものです。 `func new` によって、関数と同じ名前のサブフォルダーが作成されます。ここには、プロジェクト用に選択した言語に適したコード ファイルと、*function.json* という名前の構成ファイルが含まれます。
+次のコマンドを使用して、関数を自分のプロジェクトに追加します。ここで、`--name` 引数は関数の一意の名前で、`--template` 引数は関数のトリガーを指定するものです。 `func new` によって、関数と同じ名前のサブフォルダーが作成されます。ここには、プロジェクト用に選択した言語に適したコード ファイルと、 *function.json* という名前の構成ファイルが含まれます。
 
 ```
 func new --name HttpExample --template "HTTP trigger"
@@ -177,7 +180,7 @@ docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
 ```
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
-ローカル コンテナーでイメージが実行状態になったら、ブラウザーで `http://localhost:8080` を開きます。以下に示したプレースホルダー画像が表示されます。 この時点で画像が表示されるということは、Azure で実行されるときと同じように、ローカル コンテナーで関数が実行されているということです。つまり、*function.json* に `"authLevel": "function"` プロパティで定義されたアクセス キーによって関数は保護されています。 ただし、Azure の関数アプリに対してまだコンテナーが発行されていないため、そのキーはまだ利用できません。 ローカル コンテナーに対してテストしたい場合は、Docker を停止し、承認プロパティを `"authLevel": "anonymous"` に変更して、イメージをリビルドしてから Docker を再起動してください。 その後、*function.json* で `"authLevel": "function"` をリセットします。 詳細については、[承認キー](functions-bindings-http-webhook-trigger.md#authorization-keys)に関するセクションを参照してください。
+ローカル コンテナーでイメージが実行状態になったら、ブラウザーで `http://localhost:8080` を開きます。以下に示したプレースホルダー画像が表示されます。 この時点で画像が表示されるということは、Azure で実行されるときと同じように、ローカル コンテナーで関数が実行されているということです。つまり、 *function.json* に `"authLevel": "function"` プロパティで定義されたアクセス キーによって関数は保護されています。 ただし、Azure の関数アプリに対してまだコンテナーが発行されていないため、そのキーはまだ利用できません。 ローカル コンテナーに対してテストしたい場合は、Docker を停止し、承認プロパティを `"authLevel": "anonymous"` に変更して、イメージをリビルドしてから Docker を再起動してください。 その後、 *function.json* で `"authLevel": "function"` をリセットします。 詳細については、[承認キー](functions-bindings-http-webhook-trigger.md#authorization-keys)に関するセクションを参照してください。
 
 ![コンテナーがローカルで実行されていることを示すプレースホルダー画像](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
@@ -186,7 +189,7 @@ docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
 ローカル コンテナーでイメージが実行状態になったら、`http://localhost:8080/api/HttpExample?name=Functions` に移動します。そこに、前と同じ "hello" メッセージが表示されます。 Maven アーキタイプでは、匿名の承認を使用する、HTTP によってトリガーされる関数が生成されるため、関数はコンテナーで実行されている場合でも呼び出すことができます。 
 ::: zone-end  
 
-コンテナー内の関数アプリを確認したら、**Ctrl** + **C** キーで Docker を停止します。
+コンテナー内の関数アプリを確認したら、 **Ctrl** + **C** キーで Docker を停止します。
 
 ## <a name="push-the-image-to-docker-hub"></a>イメージを Docker Hub にプッシュする
 
@@ -299,7 +302,7 @@ Azure 上の関数アプリにイメージをデプロイしたら、HTTP 要求
 
     # <a name="portal"></a>[ポータル](#tab/portal)
 
-    1. Azure portal にサインインし、"**関数アプリ**" を検索して選択します。
+    1. Azure portal にサインインし、" **関数アプリ** " を検索して選択します。
 
     1. 検証する関数を選択します。
 
@@ -347,7 +350,7 @@ Azure 上の関数アプリにイメージをデプロイしたら、HTTP 要求
     1. コマンドの出力は関数キーです。 関数の完全な URL は `https://<app_name>.azurewebsites.net/api/<function_name>?code=<key>` です。`<app_name>`、`<function_name>`、`<key>` は、お客様固有の値に置き換えてください。
     
         > [!NOTE]
-        > ここで取得したキーは、関数アプリに含まれるすべての関数で使用できる "*ホスト*" キーです。一方、ポータル用に示した方法で取得されるのは、1 つの関数についてのキーだけです。
+        > ここで取得したキーは、関数アプリに含まれるすべての関数で使用できる " *ホスト* " キーです。一方、ポータル用に示した方法で取得されるのは、1 つの関数についてのキーだけです。
 
     ---
 
@@ -372,7 +375,7 @@ Azure 上の関数アプリにイメージをデプロイしたら、HTTP 要求
 
 1. デプロイの Webhook URL をクリップボードにコピーします。
 
-1. [[Docker Hub]](https://hub.docker.com/) を開いてサインインし、ナビゲーション バーの **[Repositories]\(リポジトリ\)** を選択します。 イメージを検索して選択し、 **[Webhooks]** タブを選択します。次に、**Webhook の名前**を指定して、 **[Webhook URL]** に URL を貼り付け、 **[Create]\(作成\)** を選択します。
+1. [[Docker Hub]](https://hub.docker.com/) を開いてサインインし、ナビゲーション バーの **[Repositories]\(リポジトリ\)** を選択します。 イメージを検索して選択し、 **[Webhooks]** タブを選択します。次に、 **Webhook の名前** を指定して、 **[Webhook URL]** に URL を貼り付け、 **[Create]\(作成\)** を選択します。
 
     ![DockerHub リポジトリに Webhook を追加する](./media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
 
@@ -438,7 +441,7 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
 
 ## <a name="write-to-an-azure-storage-queue"></a>Azure Storage キューに書き込む
 
-Azure Functions を使用すると、独自の統合コードを記述することなく他の Azure サービスやリソースに関数を接続できます。 これらの*バインド*は、入力と出力の両方を表し、関数定義内で宣言されます。 バインドからのデータは、パラメーターとして関数に提供されます。 "*トリガー*" は、特殊な種類の入力バインドです。 関数はトリガーを 1 つしか持てませんが、複数の入力および出力バインドを持つことができます。 詳細については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」を参照してください。
+Azure Functions を使用すると、独自の統合コードを記述することなく他の Azure サービスやリソースに関数を接続できます。 これらの *バインド* は、入力と出力の両方を表し、関数定義内で宣言されます。 バインドからのデータは、パラメーターとして関数に提供されます。 " *トリガー* " は、特殊な種類の入力バインドです。 関数はトリガーを 1 つしか持てませんが、複数の入力および出力バインドを持つことができます。 詳細については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」を参照してください。
 
 このセクションでは、関数と Azure Storage キューを統合する方法について説明します。 この関数に追加する出力バインドは、HTTP 要求のデータをキュー内のメッセージに書き込みます。
 

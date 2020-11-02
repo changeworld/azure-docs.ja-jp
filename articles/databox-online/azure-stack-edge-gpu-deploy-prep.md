@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/29/2020
+ms.date: 10/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1d207e7cc052af32917eb6c871f332136580e56c
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 46c5271c8ded970442d1ae4022573473997d98af
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743270"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427002"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro の配置を準備する 
 
@@ -121,14 +121,14 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
 
     ![リソースを作成する 4](media/azure-stack-edge-gpu-deploy-prep/create-resource-4.png)
 
-6. **[基本]** タブで、次の**プロジェクト情報**を入力または選択します。
+6. **[基本]** タブで、次の **プロジェクト情報** を入力または選択します。
     
     |設定  |値  |
     |---------|---------|
     |サブスクリプション    |事前に選択した内容に応じて自動的に設定されます。 サブスクリプションは、課金アカウントにリンクされます。 |
     |Resource group  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/resource-group-overview.md)をご覧ください。     |
 
-7. 次の**インスタンス情報**を入力または選択します。
+7. 次の **インスタンス情報** を入力または選択します。
 
     |設定  |値  |
     |---------|---------|
@@ -136,7 +136,6 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
     |リージョン     |Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関するページを参照してください。 Azure Government を使用している場合は、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」に記載されているすべての政府機関向けリージョンを選択できます。<br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
 
     ![リソースを作成する 5](media/azure-stack-edge-gpu-deploy-prep/create-resource-5.png)
-
 
 8. **配送先住所** を選択します。
 
@@ -148,9 +147,9 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
 
         ![リソースを作成する 7](media/azure-stack-edge-gpu-deploy-prep/create-resource-7.png)
 
-9. **タグ**を選択します。 必要に応じて、リソースを分類し、請求を統合するためのタグを指定します。 **確認と作成** をクリックします。
+9. **タグ** を選択します。 必要に応じて、リソースを分類し、請求を統合するためのタグを指定します。 **確認と作成** をクリックします。
 
-10. **[確認と作成]** タブで、**価格の詳細**、**使用条件**、リソースの詳細を確認します。 **[I have reviewed the privacy terms]\(プライバシー条件を確認しました\)** のコンボ ボックスを選択します。
+10. **[確認と作成]** タブで、 **価格の詳細** 、 **使用条件** 、リソースの詳細を確認します。 **[I have reviewed the privacy terms]\(プライバシー条件を確認しました\)** のコンボ ボックスを選択します。
 
     ![リソースを作成する 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png) 
 
@@ -167,6 +166,9 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
 Microsoft は受け取った注文を確認し、発送の詳細と共にお客様に (メールで) 連絡します。
 
 <!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)-->
+
+> [!NOTE]
+>一度に複数の注文を作成したい場合や既存の注文を複製したい場合は、[「Azure サンプル」のスクリプト](https://github.com/Azure-Samples/azure-stack-edge-order)をご利用ください。 詳細については、Readme ファイルを参照してください。
 
 注文処理の間に問題が発生した場合は、[注文の問題のトラブルシューティング](azure-stack-edge-troubleshoot-ordering.md)に関する記事を参照してください。
 

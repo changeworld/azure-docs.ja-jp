@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: a7e159c94bf1b9f3e8049fd657abb562f1c85671
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2bac9645fa66cd33c7cda79f16628c1104e27d7d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87503924"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480549"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>Azure Synapse Analytics の IP ファイアウォール規則 (プレビュー)
 
@@ -27,7 +27,7 @@ IP ファイアウォール規則は、各要求の発信元 IP アドレスに�
 
 IP ファイアウォール規則を Synapse ワークスペースに追加するには、2 つの方法があります。 IP ファイアウォールをワークスペースに追加するには、 **[Security + networking]\(セキュリティ + ネットワーク\)** を選択し、ワークスペースの作成時に **[Allow connections from all IP addresses]\(すべての IP アドレスからの接続を許可する\)** をオンにします。
 
-![Azure portal での Synapse ワークスペース IP の構成。](./media/synpase-workspace-ip-firewall/ip-firewall-1.png)
+![[Security + networking]\(セキュリティ + ネットワーク\) ボタンが強調表示されているスクリーンショット。](./media/synpase-workspace-ip-firewall/ip-firewall-1.png)
 
 ![Azure portal での Synapse ワークスペース IP の構成。](./media/synpase-workspace-ip-firewall/ip-firewall-2.png)
 

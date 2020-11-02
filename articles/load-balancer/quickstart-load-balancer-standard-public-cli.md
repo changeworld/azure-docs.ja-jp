@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/23/2020
+ms.date: 10/23/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: d78b67cbd811ae0f3b7cea8aec119d05464c124a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 454dc3ddd03be319c23df67231ea2ab08b95c52b
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047796"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544921"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>クイック スタート:Azure CLI を使用して VM の負荷を分散するパブリック ロード バランサーを作成する
 
@@ -42,12 +42,12 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 
 [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) を使用して、次のようにリソース グループを作成します。
 
-* 名前は **myResourceGroupLB** にします。 
+* 名前は **CreatePubLBQS-rg** にします。 
 * 場所は **eastus** にします。
 
 ```azurecli-interactive
   az group create \
-    --name myResourceGroupLB \
+    --name CreatePubLBQS-rg \
     --location eastus
 ```
 ---
@@ -69,12 +69,12 @@ VM をデプロイしてロード バランサーをテストする前に、サ�
 * アドレス プレフィックスは **10.1.0.0/16** にします。
 * サブネットの名前は **myBackendSubnet** にします。
 * サブネット プレフィックスは **10.1.0.0/24** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * 場所は **eastus** にします。
 
 ```azurecli-interactive
   az network vnet create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --location eastus \
     --name myVNet \
     --address-prefixes 10.1.0.0/16 \
@@ -89,11 +89,11 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) を使用して、次のようにネットワーク セキュリティ グループを作成します。
 
 * 名前は **myNSG** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 
 ```azurecli-interactive
   az network nsg create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNSG
 ```
 
@@ -103,18 +103,18 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 
 * 名前は **myNSGRuleHTTP** にします。
 * ネットワーク セキュリティ グループは、前の手順で作成した **myNSG** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * プロトコルは **(*)** にします。
 * 方向は **Inbound** にします。
 * 送信元は **(*)** にします。
 * 送信先は **(*)** にします。
-* 送信先ポートは**ポート 80** にします。
+* 送信先ポートは **ポート 80** にします。
 * アクセスは **Allow** にします。
 * 優先度は **200** にします。
 
 ```azurecli-interactive
   az network nsg rule create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --nsg-name myNSG \
     --name myNSGRuleHTTP \
     --protocol '*' \
@@ -134,7 +134,7 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 #### <a name="vm1"></a>VM1
 
 * 名前は **myNicVM1** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
 * ネットワーク セキュリティ グループは **myNSG** にします。
@@ -142,7 +142,7 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 ```azurecli-interactive
 
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNicVM1 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
@@ -151,13 +151,13 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 #### <a name="vm2"></a>VM2
 
 * 名前は **myNicVM2** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
 
 ```azurecli-interactive
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNicVM2 \
     --vnet-name myVnet \
     --subnet myBackEndSubnet \
@@ -166,14 +166,14 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 #### <a name="vm3"></a>VM3
 
 * 名前は **myNicVM3** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
 * ネットワーク セキュリティ グループは **myNSG** にします。
 
 ```azurecli-interactive
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNicVM3 \
     --vnet-name myVnet \
     --subnet myBackEndSubnet \
@@ -240,7 +240,7 @@ runcmd:
 
 #### <a name="vm1"></a>VM1
 * 名前は **myVM1** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM1** に接続します。
 * 仮想マシン イメージは **UbuntuLTS** にします。
 * 構成ファイルは、前の手順で作成した **cloud-init.txt** にします。
@@ -248,7 +248,7 @@ runcmd:
 
 ```azurecli-interactive
   az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myVM1 \
     --nics myNicVM1 \
     --image UbuntuLTS \
@@ -260,7 +260,7 @@ runcmd:
 ```
 #### <a name="vm2"></a>VM2
 * 名前は **myVM2** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM2** に接続します。
 * 仮想マシン イメージは **UbuntuLTS** にします。
 * 構成ファイルは、前の手順で作成した **cloud-init.txt** にします。
@@ -268,7 +268,7 @@ runcmd:
 
 ```azurecli-interactive
   az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myVM2 \
     --nics myNicVM2 \
     --image UbuntuLTS \
@@ -280,7 +280,7 @@ runcmd:
 
 #### <a name="vm3"></a>VM3
 * 名前は **myVM3** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM3** に接続します。
 * 仮想マシン イメージは **UbuntuLTS** にします。
 * 構成ファイルは、前の手順で作成した **cloud-init.txt** にします。
@@ -288,7 +288,7 @@ runcmd:
 
 ```azurecli-interactive
    az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myVM3 \
     --nics myNicVM3 \
     --image UbuntuLTS \
@@ -306,11 +306,11 @@ VM がデプロイされるまでに、数分かかる場合があります。
 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) を使用して、以下のことを行います。
 
 * **myPublicIP** という名前の Standard ゾーン冗長パブリック IP アドレスを作成します。
-* **myResourceGroupLB** 内に作成します。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 
 ```azurecli-interactive
   az network public-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIP \
     --sku Standard
 ```
@@ -319,7 +319,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ```azurecli-interactive
   az network public-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIP \
     --sku Standard \
     --zone 1
@@ -345,7 +345,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ```azurecli-interactive
   az network lb create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myLoadBalancer \
     --sku Standard \
     --public-ip-address myPublicIP \
@@ -368,7 +368,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ```azurecli-interactive
   az network lb probe create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --lb-name myLoadBalancer \
     --name myHealthProbe \
     --protocol tcp \
@@ -386,15 +386,17 @@ VM がデプロイされるまでに、数分かかる場合があります。
 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) を使用して、次のようにロード バランサー規則を作成します。
 
 * 名前は **myHTTPRule** にします
-* フロントエンド プール **myFrontEnd** で**ポート 80** をリッスンします。
+* フロントエンド プール **myFrontEnd** で **ポート 80** をリッスンします。
 * **ポート 80** を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール **myBackEndPool** に送信します。 
 * 正常性プローブ **myHealthProbe** を使用します。
 * プロトコルは **TCP** にします。
-* フロントエンド IP アドレスを使用して、アウトバウンドの送信元ネットワーク アドレス変換 (SNAT) を有効にします。
+* アイドル タイムアウトは **15 分** とします。
+* TCP リセットを有効にします。
+
 
 ```azurecli-interactive
   az network lb rule create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --lb-name myLoadBalancer \
     --name myHTTPRule \
     --protocol tcp \
@@ -403,7 +405,10 @@ VM がデプロイされるまでに、数分かかる場合があります。
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool \
     --probe-name myHealthProbe \
-    --disable-outbound-snat true 
+    --disable-outbound-snat true \
+    --idle-timeout 15 \
+    --enable-tcp-reset true
+
 ```
 ### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>仮想マシンをロード バランサー バックエンド プールに追加する
 
@@ -411,7 +416,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 #### <a name="vm1"></a>VM1
 * バックエンド アドレス プールは **myBackEndPool** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM1** および **ipconfig1** に関連付けます。
 * ロード バランサー **myLoadBalancer** に関連付けます。
 
@@ -420,13 +425,13 @@ VM がデプロイされるまでに、数分かかる場合があります。
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM1 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
 #### <a name="vm2"></a>VM2
 * バックエンド アドレス プールは **myBackEndPool** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM2** および **ipconfig1** に関連付けます。
 * ロード バランサー **myLoadBalancer** に関連付けます。
 
@@ -435,13 +440,13 @@ VM がデプロイされるまでに、数分かかる場合があります。
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM2 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
 #### <a name="vm3"></a>VM3
 * バックエンド アドレス プールは **myBackEndPool** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM3** および **ipconfig1** に関連付けます。
 * ロード バランサー **myLoadBalancer** に関連付けます。
 
@@ -450,7 +455,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM3 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
@@ -470,11 +475,11 @@ VM がデプロイされるまでに、数分かかる場合があります。
 #### <a name="public-ip"></a>パブリック IP
 
 * 名前は **myPublicIPOutbound** にします。
-* **myResourceGroupLB** 内に作成します。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 
 ```azurecli-interactive
   az network public-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIPOutbound \
     --sku Standard
 ```
@@ -483,7 +488,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ```azurecli-interactive
   az network public-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIPOutbound \
     --sku Standard \
     --zone 1
@@ -491,12 +496,12 @@ VM がデプロイされるまでに、数分かかる場合があります。
 #### <a name="public-ip-prefix"></a>パブリック IP プレフィックス
 
 * 名前は **myPublicIPPrefixOutbound** にします。
-* **myResourceGroupLB** 内に作成します。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * プレフィックス長は **28** にします。
 
 ```azurecli-interactive
   az network public-ip prefix create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIPPrefixOutbound \
     --length 28
 ```
@@ -504,7 +509,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ```azurecli-interactive
   az network public-ip prefix create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIPPrefixOutbound \
     --length 28 \
     --zone 1
@@ -519,13 +524,13 @@ VM がデプロイされるまでに、数分かかる場合があります。
 #### <a name="public-ip"></a>パブリック IP
 
 * 名前は **myFrontEndOutbound** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * パブリック IP アドレス **myPublicIPOutbound** に関連付けます。
 * ロード バランサー **myLoadBalancer** に関連付けます。
 
 ```azurecli-interactive
   az network lb frontend-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myFrontEndOutbound \
     --lb-name myLoadBalancer \
     --public-ip-address myPublicIPOutbound 
@@ -534,13 +539,13 @@ VM がデプロイされるまでに、数分かかる場合があります。
 #### <a name="public-ip-prefix"></a>パブリック IP プレフィックス
 
 * 名前は **myFrontEndOutbound** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * パブリック IP プレフィックス **myPublicIPPrefixOutbound** に関連付けます。
 * ロード バランサー **myLoadBalancer** に関連付けます。
 
 ```azurecli-interactive
   az network lb frontend-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myFrontEndOutbound \
     --lb-name myLoadBalancer \
     --public-ip-prefix myPublicIPPrefixOutbound 
@@ -551,12 +556,12 @@ VM がデプロイされるまでに、数分かかる場合があります。
 [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create) を使用して、次のように新しいアウトバウンド プールを作成します。
 
 * 名前は **myBackEndPoolOutbound** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * ロード バランサー **myLoadBalancer** に関連付けます。
 
 ```azurecli-interactive
   az network lb address-pool create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --lb-name myLoadBalancer \
     --name myBackendPoolOutbound
 ```
@@ -565,7 +570,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 [az network lb outbound-rule create](https://docs.microsoft.com/cli/azure/network/lb/outbound-rule?view=azure-cli-latest#az-network-lb-outbound-rule-create) を使用して、次のようにアウトバウンド バックエンド プールの新しいアウトバウンド規則を作成します。
 
 * 名前は **myOutboundRule** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * ロード バランサー **myLoadBalancer** に関連付けます
 * フロントエンド **myFrontEndOutbound** に関連付けます。
 * プロトコルは **All** にします。
@@ -575,7 +580,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ```azurecli-interactive
   az network lb outbound-rule create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --lb-name myLoadBalancer \
     --name myOutboundRule \
     --frontend-ip-configs myFrontEndOutbound \
@@ -591,7 +596,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 #### <a name="vm1"></a>VM1
 * バックエンド アドレス プールは **myBackEndPoolOutbound** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM1** および **ipconfig1** に関連付けます。
 * ロード バランサー **myLoadBalancer** に関連付けます。
 
@@ -600,13 +605,13 @@ VM がデプロイされるまでに、数分かかる場合があります。
    --address-pool myBackendPoolOutbound \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM1 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
 #### <a name="vm2"></a>VM2
 * バックエンド アドレス プールは **myBackEndPoolOutbound** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM2** および **ipconfig1** に関連付けます。
 * ロード バランサー **myLoadBalancer** に関連付けます。
 
@@ -615,13 +620,13 @@ VM がデプロイされるまでに、数分かかる場合があります。
    --address-pool myBackendPoolOutbound \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM2 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
 #### <a name="vm3"></a>VM3
 * バックエンド アドレス プールは **myBackEndPoolOutbound** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM3** および **ipconfig1** に関連付けます。
 * ロード バランサー **myLoadBalancer** に関連付けます。
 
@@ -630,7 +635,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
    --address-pool myBackendPoolOutbound \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM3 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
@@ -651,12 +656,12 @@ VM をデプロイしてロード バランサーをテストする前に、サ�
 * アドレス プレフィックスは **10.1.0.0/16** にします。
 * サブネットの名前は **myBackendSubnet** にします。
 * サブネット プレフィックスは **10.1.0.0/24** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * 場所は **eastus** にします。
 
 ```azurecli-interactive
   az network vnet create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --location eastus \
     --name myVNet \
     --address-prefixes 10.1.0.0/16 \
@@ -671,11 +676,11 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) を使用して、次のようにネットワーク セキュリティ グループを作成します。
 
 * 名前は **myNSG** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 
 ```azurecli-interactive
   az network nsg create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNSG
 ```
 
@@ -685,18 +690,18 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 
 * 名前は **myNSGRuleHTTP** にします。
 * ネットワーク セキュリティ グループは、前の手順で作成した **myNSG** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * プロトコルは **(*)** にします。
 * 方向は **Inbound** にします。
 * 送信元は **(*)** にします。
 * 送信先は **(*)** にします。
-* 送信先ポートは**ポート 80** にします。
+* 送信先ポートは **ポート 80** にします。
 * アクセスは **Allow** にします。
 * 優先度は **200** にします。
 
 ```azurecli-interactive
   az network nsg rule create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --nsg-name myNSG \
     --name myNSGRuleHTTP \
     --protocol '*' \
@@ -716,7 +721,7 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 #### <a name="vm1"></a>VM1
 
 * 名前は **myNicVM1** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
 * ネットワーク セキュリティ グループは **myNSG** にします。
@@ -724,7 +729,7 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 ```azurecli-interactive
 
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNicVM1 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
@@ -733,14 +738,14 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 #### <a name="vm2"></a>VM2
 
 * 名前は **myNicVM2** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
 * ネットワーク セキュリティ グループは **myNSG** にします。
 
 ```azurecli-interactive
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNicVM2 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
@@ -749,14 +754,14 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 #### <a name="vm3"></a>VM3
 
 * 名前は **myNicVM3** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
 * ネットワーク セキュリティ グループは **myNSG** にします。
 
 ```azurecli-interactive
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNicVM3 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
@@ -826,13 +831,13 @@ runcmd:
 [az vm availability-set create](https://docs.microsoft.com/cli/azure/vm/availability-set?view=azure-cli-latest#az-vm-availability-set-create) を使用して、次のように可用性セットを作成します。
 
 * 名前は **myAvSet** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * 場所は **eastus** にします。
 
 ```azurecli-interactive
   az vm availability-set create \
     --name myAvSet \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --location eastus 
     
 ```
@@ -843,7 +848,7 @@ runcmd:
 
 #### <a name="vm1"></a>VM1
 * 名前は **myVM1** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM1** に接続します。
 * 仮想マシン イメージは **UbuntuLTS** にします。
 * 構成ファイルは、前の手順で作成した **cloud-init.txt** にします。
@@ -851,7 +856,7 @@ runcmd:
 
 ```azurecli-interactive
   az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myVM1 \
     --nics myNicVM1 \
     --image UbuntuLTS \
@@ -862,7 +867,7 @@ runcmd:
 ```
 #### <a name="vm2"></a>VM2
 * 名前は **myVM2** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM2** に接続します。
 * 仮想マシン イメージは **UbuntuLTS** にします。
 * 構成ファイルは、前の手順で作成した **cloud-init.txt** にします。
@@ -870,7 +875,7 @@ runcmd:
 
 ```azurecli-interactive
   az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myVM2 \
     --nics myNicVM2 \
     --image UbuntuLTS \
@@ -882,7 +887,7 @@ runcmd:
 
 #### <a name="vm3"></a>VM3
 * 名前は **myVM3** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM3** に接続します。
 * 仮想マシン イメージは **UbuntuLTS** にします。
 * 構成ファイルは、前の手順で作成した **cloud-init.txt** にします。
@@ -890,7 +895,7 @@ runcmd:
 
 ```azurecli-interactive
    az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myVM3 \
     --nics myNicVM3 \
     --image UbuntuLTS \
@@ -909,11 +914,11 @@ VM がデプロイされるまでに、数分かかる場合があります。
 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) を使用して、以下のことを行います。
 
 * **myPublicIP** という名前の Standard ゾーン冗長パブリック IP アドレスを作成します。
-* **myResourceGroupLB** 内に作成します。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 
 ```azurecli-interactive
   az network public-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIP \
     --sku Basic
 ```
@@ -938,7 +943,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ```azurecli-interactive
   az network lb create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myLoadBalancer \
     --sku Basic \
     --public-ip-address myPublicIP \
@@ -961,7 +966,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ```azurecli-interactive
   az network lb probe create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --lb-name myLoadBalancer \
     --name myHealthProbe \
     --protocol tcp \
@@ -979,14 +984,15 @@ VM がデプロイされるまでに、数分かかる場合があります。
 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) を使用して、次のようにロード バランサー規則を作成します。
 
 * 名前は **myHTTPRule** にします
-* フロントエンド プール **myFrontEnd** で**ポート 80** をリッスンします。
+* フロントエンド プール **myFrontEnd** で **ポート 80** をリッスンします。
 * **ポート 80** を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール **myBackEndPool** に送信します。 
 * 正常性プローブ **myHealthProbe** を使用します。
 * プロトコルは **TCP** にします。
+* アイドル タイムアウトは **15 分** とします。
 
 ```azurecli-interactive
   az network lb rule create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --lb-name myLoadBalancer \
     --name myHTTPRule \
     --protocol tcp \
@@ -994,7 +1000,8 @@ VM がデプロイされるまでに、数分かかる場合があります。
     --backend-port 80 \
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool \
-    --probe-name myHealthProbe
+    --probe-name myHealthProbe \
+    --idle-timeout 15
 ```
 
 ### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>仮想マシンをロード バランサー バックエンド プールに追加する
@@ -1004,7 +1011,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 #### <a name="vm1"></a>VM1
 * バックエンド アドレス プールは **myBackEndPool** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM1** および **ipconfig1** に関連付けます。
 * ロード バランサー **myLoadBalancer** に関連付けます。
 
@@ -1013,13 +1020,13 @@ VM がデプロイされるまでに、数分かかる場合があります。
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM1 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
 #### <a name="vm2"></a>VM2
 * バックエンド アドレス プールは **myBackEndPool** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM2** および **ipconfig1** に関連付けます。
 * ロード バランサー **myLoadBalancer** に関連付けます。
 
@@ -1028,13 +1035,13 @@ VM がデプロイされるまでに、数分かかる場合があります。
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM2 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
 #### <a name="vm3"></a>VM3
 * バックエンド アドレス プールは **myBackEndPool** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreatePubLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM3** および **ipconfig1** に関連付けます。
 * ロード バランサー **myLoadBalancer** に関連付けます。
 
@@ -1043,7 +1050,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM3 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 ---
@@ -1056,7 +1063,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ```azurecli-interactive
   az network public-ip show \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIP \
     --query [ipAddress] \
     --output tsv
@@ -1069,7 +1076,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ```azurecli-interactive
   az group delete \
-    --name myResourceGroupLB
+    --name CreatePubLBQS-rg
 ```
 
 ## <a name="next-steps"></a>次のステップ

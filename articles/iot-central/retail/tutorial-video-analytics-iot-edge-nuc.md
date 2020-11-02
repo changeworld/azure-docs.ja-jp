@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: c41a6679009f1467c5bcd04d9629ef9256238e00
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b74c7c3e9678c89edbe90d648520b9526c8fb569
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127047"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748658"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>チュートリアル:ビデオ分析用の IoT Edge インスタンスを作成する (Intel NUC)
 
@@ -119,7 +119,7 @@ IoT Central アプリケーションに登録、接続するように IoT Edge �
 
 1. `{registration_id}` を *lva-gateway-001* (前のチュートリアルで作成したデバイス) に置き換えます。
 
-1. `{symmetric_key}` を、前のチュートリアルで *scratchpad.txt* ファイルに書き留めた **lva-gateway-001** デバイスの**プライマル キー**に置き換えます。
+1. `{symmetric_key}` を、前のチュートリアルで *scratchpad.txt* ファイルに書き留めた **lva-gateway-001** デバイスの **プライマル キー** に置き換えます。
 
 1. 次のコマンドを実行して、IoT Edge デーモンを再起動します。
 
@@ -140,7 +140,7 @@ IoT Central アプリケーションに登録、接続するように IoT Edge �
 
 IoT Edge モジュールが正しく起動しない場合は、「[IoT Edge デバイスのトラブルシューティング](../../iot-edge/troubleshoot.md)」を参照してください。
 
-## <a name="collect-the-rstp-stream-from-your-camera"></a>カメラから RSTP ストリームを収集する
+## <a name="collect-the-rtsp-stream-from-your-camera"></a>カメラから RTSP ストリームを収集する
 
 IoT Edge デバイスに接続されたカメラの RTSP ストリームの URL を識別します。その例を次に示します。
 

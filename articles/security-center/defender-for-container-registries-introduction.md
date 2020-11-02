@@ -7,18 +7,18 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 0c504ebdec524390d9deb22088979199f80e4f13
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 05d7316ceccd67a8eeb1d081843307162ff210c1
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275958"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558637"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Azure Defender for container registries の概要
 
 Azure Container Registry (ACR) は、Azure デプロイ用のコンテナー イメージを中央のレジストリに格納して管理する、プライベートなマネージド Docker レジストリ サービスです。 これは、オープンソースの Docker Registry 2.0 を基にしています。
 
-サブスクリプション内のすべての Azure Resource Manager ベースのレジストリを保護するには、サブスクリプション レベルで**コンテナー レジストリ用 Azure Defender** を有効にします。 その後、Security Center では、レジストリにプッシュされたイメージ、レジストリにインポートされたイメージ、または過去 30 日以内にプルされたイメージがスキャンされます。 この機能では、イメージごとに課金されます。
+サブスクリプション内のすべての Azure Resource Manager ベースのレジストリを保護するには、サブスクリプション レベルで **コンテナー レジストリ用 Azure Defender** を有効にします。 その後、Security Center では、レジストリにプッシュされたイメージ、レジストリにインポートされたイメージ、または過去 30 日以内にプルされたイメージがスキャンされます。 この機能では、イメージごとに課金されます。
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-container-registries"></a>コンテナー レジストリ用 Azure Defender の利点は何ですか?
 
@@ -39,7 +39,7 @@ Security Center では、スキャナーによる検出結果がフィルター�
 
 - **プッシュ時** - イメージがレジストリにプッシュされるたびに、Security Center はそのイメージを自動的にスキャンします。 イメージのスキャンをトリガーするには、イメージをリポジトリにプッシュしてください。
 
-- **最近プルされたもの** - 新しい脆弱性は日々検出されるため、**コンテナー レジストリ用 Azure Defender** は、過去 30 日以内にプルされたすべてのイメージもスキャンします。 再スキャンに対する追加料金は発生しません。前述のように、イメージごとに 1 回の課金となります。
+- **最近プルされたもの** - 新しい脆弱性は日々検出されるため、 **コンテナー レジストリ用 Azure Defender** は、過去 30 日以内にプルされたすべてのイメージもスキャンします。 再スキャンに対する追加料金は発生しません。前述のように、イメージごとに 1 回の課金となります。
 
 - **インポート時** - Azure Container Registry には、Docker Hub、Microsoft Container Registry、またはその他の Azure コンテナー レジストリからレジストリにイメージを取り込むためのインポート ツールが用意されています。 **コンテナー レジストリ用 Azure Defender** は、インポートした、サポートされているイメージをスキャンします。 詳細については、「[コンテナー レジストリにコンテナー イメージをインポートする](../container-registry/container-registry-import-images.md)」を参照してください。
  
@@ -71,6 +71,12 @@ Security Center では、スキャナーによる検出結果がフィルター�
 コンテナー レジストリ用 Azure Defender によってサポートされているコンテナー レジストリの種類の一覧については、「[可用性](defender-for-container-registries-usage.md#availability)」をご覧ください。
 
 サポートされていないレジストリを Azure サブスクリプションに接続している場合、これらはスキャンされず、課金対象にもなりません。
+
+### <a name="can-i-customize-the-findings-from-the-vulnerability-scanner"></a>脆弱性スキャナーの結果をカスタマイズすることはできますか。
+はい。 組織のニーズとして、検出結果を修復するのではなく無視する必要がある場合は、必要に応じて検出結果を無効にできます。 無効化された検出結果は、セキュリティ スコアに影響を与えたり、不要なノイズを生成したりすることはありません。
+
+[統合された脆弱性評価ツールからの結果を無効にするルールを作成する方法について確認してください](defender-for-container-registries-usage.md#disable-specific-findings-preview)。
+
 
 
 ## <a name="next-steps"></a>次のステップ

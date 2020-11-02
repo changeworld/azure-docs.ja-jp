@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d902258c80467380518df3b55583cea1efa76609
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64767f83dfad2b0c2909e8a89b55c849d5c5a9a9
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119312"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896992"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>チュートリアル:ARM テンプレートでの条件の使用
 
@@ -88,7 +88,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 1. テンプレート全体で 3 つの **variables('storageAccountName')** を **parameters('storageAccountName')** に置き換えます。
 1. 次の変数定義を削除します。
 
-    ![条件を使用する Resource Manager テンプレートの図](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
+    ![削除する必要のある変数定義が強調表示されているスクリーンショット。](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
 1. parameters セクションの先頭に、次の 2 つのパラメーターを追加します。
 
@@ -117,11 +117,11 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
     "condition": "[equals(parameters('newOrExisting'),'new')]",
     ```
 
-    この条件では、**newOrExisting** というパラメーターの値が確認されます。 パラメーターの値に **new** が指定されていると、ストレージ アカウントが作成されます。
+    この条件では、 **newOrExisting** というパラメーターの値が確認されます。 パラメーターの値に **new** が指定されていると、ストレージ アカウントが作成されます。
 
     更新したストレージ アカウント定義は次のようになります。
 
-    ![Resource Manager での条件の使用](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
+    ![更新したストレージ アカウント定義を示すスクリーンショット。](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
 1. 仮想マシンのリソース定義の **storageUri** プロパティを次の値に更新します。
 
     ```json
@@ -140,7 +140,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 
     ![Azure portal の Cloud Shell のファイルのアップロード](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. **[ファイルのアップロード/ダウンロード]** を選択し、 **[アップロード]** を選択します。 先のスクリーンショットをご覧ください。 前のセクションで保存したファイルを選択します。 ファイルをアップロードした後、**ls** コマンドと **cat** コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。
+1. **[ファイルのアップロード/ダウンロード]** を選択し、 **[アップロード]** を選択します。 先のスクリーンショットをご覧ください。 前のセクションで保存したファイルを選択します。 ファイルをアップロードした後、 **ls** コマンドと **cat** コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。
 
 1. 次の PowerShell スクリプトを実行してテンプレートをデプロイします。
 

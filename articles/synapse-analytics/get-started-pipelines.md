@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:パイプラインを使用したオーケストレーションの概要
-description: このチュートリアルでは、Synapse Studio を使用してパイプラインとアクティビティのオーケストレーションを行う方法について説明します。
+title: チュートリアル:パイプラインとの統合の概要
+description: このチュートリアルでは、Synapse Studio を使用してパイプラインとアクティビティを統合する方法について説明します。
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
@@ -9,21 +9,21 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: pipeline
 ms.topic: tutorial
-ms.date: 10/16/2020
-ms.openlocfilehash: 42d2ac6cf6592f8e22b0a66aee84c3436d466572
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.date: 10/27/2020
+ms.openlocfilehash: af01d5b5e424dd5ea229115f7aa3570d0b7cd511
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329885"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744928"
 ---
-# <a name="orchestrate-with-pipelines"></a>パイプラインを使用したオーケストレーション
+# <a name="integrate-with-pipelines"></a>パイプラインと統合する
 
-このチュートリアルでは、Synapse Studio を使用してパイプラインとアクティビティのオーケストレーションを行う方法について説明します。 
+このチュートリアルでは、Synapse Studio を使用してパイプラインとアクティビティを統合する方法について説明します。 
 
 ## <a name="overview"></a>概要
 
-Azure Synapse では、さまざまなタスクを調整できます。
+Azure Synapse では、さまざまなタスクを統合できます。
 
 1. Synapse Studio で、 **[統合]** ハブに移動します。
 1. **[+]**  >  **[パイプライン]** を選択して新しいパイプラインを作成します。

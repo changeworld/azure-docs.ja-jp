@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/19/2020
-ms.openlocfilehash: 6d4d9fd901337b9c05c7d7d7f271974273e9fe37
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.openlocfilehash: 502c48a92f5b41c4434d03139335a0ce05fa451f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170063"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896975"
 ---
 # <a name="tutorial-connect-to-a-web-app-using-an-azure-private-endpoint"></a>チュートリアル:Azure プライベート エンドポイントを使用して Web アプリに接続する
 
@@ -57,7 +57,7 @@ bastion ホストは、プライベート エンドポイントをテストす�
     | リソース グループ   | **[myResourceGroup]** を選択します |
     | **インスタンスの詳細** |                                                                 |
     | 名前             | 「 **myVNet** 」と入力します                                    |
-    | リージョン           | **[米国東部]** を選択します。 |
+    | リージョン           | **[西ヨーロッパ]** を選択します |
 
 3. **[IP アドレス]** タブを選択するか、ページの下部にある **[Next: IP Addresses]\(次へ: IP アドレス\)** ボタンを選択します。
 
@@ -109,7 +109,7 @@ bastion ホストは、プライベート エンドポイントをテストす�
     | リソース グループ | **[myResourceGroup]** を選択します |
     | **インスタンスの詳細** |  |
     | 仮想マシン名 | 「 **myVM** 」と入力します |
-    | リージョン | **[米国東部]** を選択します。 |
+    | リージョン | **[西ヨーロッパ]** を選択します |
     | 可用性オプション | **[インフラストラクチャ冗長は必要ありません]** を選択します |
     | Image | **[Windows Server 2019 Datacenter - Gen1]** を選択します |
     | Azure Spot インスタンス | **[いいえ]**  を選択します |
@@ -154,9 +154,9 @@ bastion ホストは、プライベート エンドポイントをテストす�
     | 発行 | **[コード]** を選択します。 |
     | ランタイム スタック | **[.NET Core 3.1 (LTS)]** を選択します。 |
     | オペレーティング システム | **[Windows]** を選択します。 |
-    | リージョン | **[米国東部]** を選択します。 |
+    | リージョン | **[西ヨーロッパ]** を選択します |
     | **App Service プラン** |  |
-    | Windows プラン (米国東部) | **[新規作成]** を選択します。 </br> **[名前]** に「 **myServicePlan** 」と入力します。 |
+    | Windows プラン (西ヨーロッパ) | **[新規作成]** を選択します。 </br> **[名前]** に「 **myServicePlan** 」と入力します。 |
     | SKU とサイズ | **[サイズの変更]** を選択します。 </br> **[Spec Picker]\(スペックの選択\)** 画面で **[P2V2]** を選択します。 </br> **[適用]** を選択します。 |
    
 3. **[Review + create]\(レビュー + 作成\)** を選択します。

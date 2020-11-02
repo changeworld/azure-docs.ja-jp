@@ -1,7 +1,7 @@
 ---
 title: Azure Cognitive Services とは
 titleSuffix: Azure Cognitive Services
-description: Azure Cognitive Services は、インテリジェントなアプリケーションを構築するために Microsoft Azure と共に使用できる、REST API シリーズとクライアント ライブラリ SDK を含むクラウド サービスです。
+description: Cognitive Services は、すべての開発者にとって AI を身近なものにします。機械学習やデータサイエンスの専門知識は必要ありません。 必要なことは、アプリケーションから API を呼び出して、見たり (高度な画像検索と画像認識)、聞いたり、読み上げたり、検索したり、意思決定を行ったりする機能をアプリに追加するだけです。
 services: cognitive-services
 author: nitinme
 manager: nitinme
@@ -9,29 +9,31 @@ keywords: Cognitive Services, コグニティブ インテリジェンス, コ�
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
-ms.date: 08/28/2020
+ms.date: 10/22/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 96a722ba3570cda7a3a5d1ee82955ddc3f0014e8
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 82531466c80917087ca007900ca79b3485f38a21
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827605"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546264"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure Cognitive Services とは
 
-Azure Cognitive Services は、開発者が直接的な人工知能 (AI) またはデータ サイエンスのスキルや知識がなくてもコグニティブかつインテリジェントなアプリケーションを構築できる、REST API シリーズとクライアント ライブラリ SDK を含むクラウドベースのサービスです。 開発者は Azure Cognitive Services を使用して、見たり、聞いたり、話したり、理解したり、推論し始めたりできるコグニティブ ソリューションを使用したコグニティブ機能をそのアプリケーションに容易に追加することができます。
+Azure Cognitive Services はクラウドベースのサービスです。REST API とクライアント ライブラリ SDK が用意されており、それらを利用することで、コグニティブなインテリジェンスを手軽にアプリケーションに組み込むことができます。 コグニティブ機能をアプリケーションに追加するために、人工知能 (AI) やデータ サイエンスのスキルは必要ありません。 Azure Cognitive Services を構成する各種の AI サービスを通じて、見る、聞く、話す、理解する、さらには、意思決定を行うといったことができるコグニティブ ソリューションを作成できます。
 
-コグニティブな理解を提供する AI サービスのカタログは、大きく次の 5 つに分けられます。
+## <a name="categories-of-cognitive-services"></a>Cognitive Services のカテゴリ
+
+コグニティブな理解を提供する Cognitive Services のカタログは、大きく次の 5 つに分けられます。
 
 * 視覚
 * 音声
-* 言語
-* Web Search
+* Language
 * 決定
+* 検索
 
-新しいドキュメントの最新の一覧は、[Cognitive Services の更新情報に関するドキュメント](whats-new-docs.md)で入手できます。
+以降この記事の各セクションでは、この 5 つの要素に含まれる一連のサービスについて取り上げます。
 
 ## <a name="vision-apis"></a>Vision API
 
@@ -40,7 +42,7 @@ Azure Cognitive Services は、開発者が直接的な人工知能 (AI) また�
 |[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Computer Vision")|Computer Vision サービスを使用すると、画像を処理して情報を返すための高度なコグニティブ アルゴリズムにアクセスできます。|
 |[Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Custom Vision Service")|Custom Vision Service を使用すると、カスタム画像分類器を構築できます。|
 |[Face](https://docs.microsoft.com/azure/cognitive-services/face/ "Face")| Face サービスは、顔属性の検出と認識を有効にする、高度な顔アルゴリズムへのアクセスを提供します。|
-|[Form Recognizer](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "Form Recognizer") (プレビュー)|Form Recognizer では、キーと値のペアおよびテーブル データを識別して form ドキュメントから抽出し、その後、元のファイルにあるリレーションシップを含む構造化データを出力します。|
+|[Form Recognizer](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "Form Recognizer")|Form Recognizer では、キーと値のペアおよびテーブル データを識別して form ドキュメントから抽出し、その後、元のファイルにあるリレーションシップを含む構造化データを出力します。|
 |[Ink Recognizer](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "Ink Recognizer") (廃止)|Ink Recognizer では、デジタル インク ストローク データ、シェイプ、および手書きのコンテンツを認識して分析し、認識されたすべてのエンティティを備えたドキュメント構造を出力します。|
 |[Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|Video Indexer は、ビデオから洞察を抽出できます。|
 
@@ -48,26 +50,35 @@ Azure Cognitive Services は、開発者が直接的な人工知能 (AI) また�
 
 |サービス名|サービスの説明|
 |:-----------|:------------------|
-|[Speech サービス](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Speech サービス")|Speech サービスは、音声対応の機能をアプリケーションに追加します。|
-|[Speaker Recognition API](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "Speaker Recognition API") (プレビュー)|Speaker Recognition API は、話者識別と検証のアルゴリズムを提供します。|
-|[Bing Speech](https://docs.microsoft.com/azure/cognitive-services/speech/home "Bing Speech") (廃止)|Bing Speech API は、アプリケーションに音声対応の機能を作成する簡単な方法を提供します。|
-|[Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Translator Speech") (廃止)|Translator Speech は、機械翻訳サービスです。|
-
-> [!NOTE]
-> [Azure Cognitive Search](https://docs.microsoft.com/azure/search/) をお探しですか? 一部のタスクに Cognitive Services が使用されますが、他のシナリオをサポートする異なる検索テクノロジです。
-
-
+|[Speech サービス](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Speech サービス")|Speech サービスは、音声対応の機能をアプリケーションに追加します。 Speech サービスには、音声テキスト変換、テキスト読み上げ、音声翻訳など、さまざまな機能が含まれます。|
+<!--
+|[Speaker Recognition API](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "Speaker Recognition API") (Preview)|The Speaker Recognition API provides algorithms for speaker identification and verification.|
+|[Bing Speech](https://docs.microsoft.com/azure/cognitive-services/speech/home "Bing Speech") (Retiring)|The Bing Speech API provides you with an easy way to create speech-enabled features in your applications.|
+|[Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Translator Speech") (Retiring)|Translator Speech is a machine translation service.|
+-->
 ## <a name="language-apis"></a>Language API
 
 |サービス名|サービスの説明|
 |:-----------|:------------------|
 |[Language Understanding LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/ "Language Understanding")|Language Understanding (LUIS) サービスを使用すると、アプリケーションが人の発言の意図を認識できるようになります。|
 |[QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "QnA Maker")|QnA Maker を使用すると、半構造化コンテンツから質疑応答サービスを構築できます。|
-|[Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Text Analytics")|Text Analytics は、未加工のテキストに、センチメント分析、キー フレーズ抽出、および言語検出のための自然言語処理を提供します。|
+|[Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Text Analytics")| Text Analytics によって、未加工のテキストに対して、感情分析、キー フレーズ抽出、および言語検出のための自然言語処理が提供されます。|
 |[Translator](https://docs.microsoft.com/azure/cognitive-services/translator/ "Translator")|Translator は、ほぼリアルタイムでのマシン ベースのテキスト翻訳を提供します。|
+| [Immersive Reader](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/ "イマーシブ リーダー") | Immersive Reader は、スクリーン リーダーや読解機能をアプリケーションに追加するものです。 |
 
+## <a name="decision-apis"></a>Decision API
 
-## <a name="search-apis"></a>Search API
+|サービス名|サービスの説明|
+|:-----------|:------------------|
+|[Anomaly Detector](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "Anomaly Detector") |Anomaly Detector では、時系列データを監視し、その中の異常を検出できます。|
+|[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|Content Moderator は、不快感を与えたり、望ましくなかったり、危険であったりする可能性があるコンテンツを監視します。|
+|[Metrics Advisor](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor) (プレビュー) | Metrics Advisor には、多変量の時系列データに対するカスタマイズ可能な異常検出機能と、そのサービスの使用を支援するあらゆる機能を備えた Web ポータルがあります。|
+|[Personalizer](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Personalizer")|Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにします。|
+
+## <a name="search-apis"></a>検索 API
+
+> [!NOTE]
+> [Azure Cognitive Search](https://docs.microsoft.com/azure/search/) をお探しですか? 一部のタスクに Cognitive Services が使用されますが、他のシナリオをサポートする異なる検索テクノロジです。
 
 |サービス名|サービスの説明|
 |:-----------|:------------------|
@@ -82,31 +93,43 @@ Azure Cognitive Services は、開発者が直接的な人工知能 (AI) また�
 |[Bing Local Business Search](https://docs.microsoft.com/azure/cognitive-services/bing-local-business-search/ "Bing Local Business Search")| Bing Local Business Search API を使用すると、アプリケーションでは検索クエリに基づいて地元企業に関する連絡先や場所の情報を検索できます。|
 |[Bing Spell Check](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/ "Bing Spell Check")|Bing Spell Check を使用して、コンテキストに応じた文法およびスペル チェックを実行できます。|
 
-## <a name="decision-apis"></a>Decision API
+## <a name="development-options"></a>開発オプション 
 
-|サービス名|サービスの説明|
-|:-----------|:------------------|
-|[Anomaly Detector](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "Anomaly Detector") (プレビュー)|Anomaly Detector では、時系列データを監視し、その中の異常を検出できます。|
-|[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|Content Moderator は、不快感を与えたり、望ましくなかったり、危険であったりする可能性があるコンテンツを監視します。|
-|[Metrics Advisor](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor) (プレビュー) | Metrics Advisor には、多変量の時系列データに対するカスタマイズ可能な異常検出機能と、そのサービスの使用を支援するあらゆる機能を備えた Web ポータルがあります。
-|[Personalizer](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Personalizer")|Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにします。|
+Azure と Cognitive Services を使用すると、いくつかの開発オプションを利用できます。以下はその例です。
+
+* Logic Apps や Power Automate のような自動化および統合ツール。
+* Azure Functions や App Service のようなデプロイ オプション。 
+* セキュリティで保護されたアクセス用の Cognitive Services Docker コンテナー。
+* ビッグ データ シナリオ用の Apache Spark、Azure Databricks、Azure Synapse Analytics、Azure Kubernetes Service などのツール。 
+
+詳細については、「[Cognitive Services の開発オプション](./cognitive-services-development-options.md)」を参照してください。
 
 ## <a name="learn-with-the-quickstarts"></a>クイックスタートで学習する
 
-Cognitive Services リソースは、次の方法で作成できます。それぞれの方法については、ハンズオン クイックスタートをご覧ください。
+まず、以下の方法で Cognitive Services リソースを作成します。それぞれの方法については、ハンズオン クイックスタートをご覧ください。
 
 * [Azure Portal](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure portal")
 * [Azure CLI](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI")
 * [Azure SDK クライアント ライブラリ](cognitive-services-apis-create-account-cli.md?tabs=windows "cognitive-services-apis-create-account-client-library?pivots=programming-language-csharp")
 * [Azure Resource Manager (ARM) テンプレート](resource-manager-template.md?tabs=portal "Azure Resource Manager (ARM) テンプレート")
 
-## <a name="subscription-management"></a>サブスクリプション管理
+<!--
+## Subscription management
 
-Microsoft Account にサインインすると、[個人用サブスクリプション](https://www.microsoft.com/cognitive-services/subscriptions "個人用サブスクリプション")にアクセスして、使用している製品、残りのクォータ、およびサブスクリプションにさらに製品を追加する機能を表示できます。
+Once you are signed in with your Microsoft Account, you can access [My subscriptions](https://www.microsoft.com/cognitive-services/subscriptions "My subscriptions") to show the products you are using, the quota remaining, and the ability to add additional products to your subscription.
 
-## <a name="upgrade-to-unlock-higher-limits"></a>アップグレードして上限を解除する
+## Upgrade to unlock higher limits
 
-すべての API には、使用量とスループットの制限が設けられた無料レベルが用意されています。  有料プランを使用し、サービスをデプロイするときに Azyre portal 上で適切な価格レベルのオプションを選択することで、これらの制限を引き上げることができます。 [オファリングと価格の詳細についてはこちらを参照してください](https://azure.microsoft.com/pricing/details/cognitive-services/ "プランと価格")。 クレジット カードと電話番号で、Azure サブスクリプション アカウントを設定する必要があります。 特殊な要件がある場合や、単に販売員と話したい場合は、料金ページの上部にある「問い合わせ」ボタンをクリックしてください。
+All APIs have a free tier, which has usage and throughput limits.  You can increase these limits by using a paid offering and selecting the appropriate pricing tier option when deploying the service in the Azure portal. [Learn more about the offerings and pricing](https://azure.microsoft.com/pricing/details/cognitive-services/ "offerings and pricing"). You'll need to set up an Azure subscriber account with a credit card and a phone number. If you have a special requirement or simply want to talk to sales, click "Contact us" button at the top the pricing page.
+-->
+
+## <a name="using-cognitive-services-securely"></a>Cognitive Services を安全に使用する
+
+Azure Cognitive Services には、[Azure Virtual Networks](cognitive-services-virtual-networks.md "Azure 仮想ネットワーク")、有効なリソース キー、Azure Active Directory の資格情報を使用した[認証](authentication.md "認証")を含む多層型のセキュリティ モデルが採用されています。
+
+## <a name="containers-for-cognitive-services"></a>Cognitive Services のコンテナー
+
+ Cognitive Services には、Azure クラウドまたはオンプレミスへのデプロイ用にコンテナーが用意されています。 詳細については、[Cognitive Services のコンテナー](cognitive-services-container-support.md "Cognitive Services コンテナー")に関するページを参照してください。
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
@@ -116,31 +139,19 @@ Cognitive Services の API は、Microsoft マネージド データ センタ�
 
 ## <a name="supported-cultural-languages"></a>サポートされる言語 (カルチャ)
 
- Cognitive Services では、さまざまなカルチャ言語がサービス レベルでサポートされています。 各 API で利用可能な言語は、[サポート対象の言語一覧](language-support.md "サポートされている言語の一覧")に関するページで検索できます。
-
-## <a name="securing-resources"></a>リソースのセキュリティ
-
-Azure Cognitive Services には、[Azure Virtual Networks](cognitive-services-virtual-networks.md "Azure 仮想ネットワーク")、有効なリソース キー、Azure Active Directory の資格情報を使用した[認証](authentication.md "認証")を含む多層型のセキュリティ モデルが採用されています。
-
-## <a name="container-support"></a>コンテナー サポート
-
- Cognitive Services には、Azure クラウドまたはオンプレミスへのデプロイ用にコンテナーが用意されています。 詳細については、[Cognitive Services のコンテナー](cognitive-services-container-support.md "Cognitive Services コンテナー")に関するページを参照してください。
+Cognitive Services では、さまざまなカルチャ言語がサービス レベルでサポートされています。 各 API で利用可能な言語は、[サポート対象の言語一覧](language-support.md "サポートされている言語の一覧")に関するページで検索できます。
 
 ## <a name="certifications-and-compliance"></a>認定資格とコンプライアンス
 
-Cognitive Services には、CSA STAR Certification、FedRAMP Moderate、HIPAA BAA などの認定資格が与えられています。
-
-自分で監査したり、セキュリティを確認する目的で認定資格を[ダウンロード](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942 "download")できます。
+Cognitive Services には、CSA STAR Certification、FedRAMP Moderate、HIPAA BAA などの認定資格が与えられています。 自分で監査したり、セキュリティを確認する目的で認定資格を[ダウンロード](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942 "download")できます。
 
 プライバシーやデータ管理は[セキュリティ センター](https://servicetrust.microsoft.com/ "トラスト センター")で確認できます。
 
 ## <a name="support"></a>サポート
 
-Cognitive Services には、いくつかの[サポート オプション](cognitive-services-support-options.md "サポート オプション")が用意されています。
-
-
-
+Cognitive Services には、インテリジェント アプリケーションの作成を支援するいくつかのサポート オプションが用意されています。 また、個別の質問への回答を得ることができる強力な開発者コミュニティもあります。 提供されているオプションの全一覧については、[Cognitive Services のサポート オプションとヘルプ オプション](cognitive-services-support-options.md "Cognitive Services のサポート オプションとヘルプ オプション")に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Cognitive Services アカウントを作成する](cognitive-services-apis-create-account.md "Cognitive Services アカウントを作成する")
+* [Cognitive Services ドキュメントの新着情報](whats-new-docs.md "Cognitive Services ドキュメントの新着情報")

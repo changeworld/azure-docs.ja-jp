@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo, devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c8e22373f4550b0c65f6ea5c0b62815e32dcbb58
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 4e50f6b2770f9f787c92e7a9c66f72cdbb252a94
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92105126"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519692"
 ---
 # <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>クイック スタート:Visual Studio Code を使用して Azure で関数を作成する
 
@@ -65,7 +65,7 @@ ms.locfileid: "92105126"
 - [.NET Core 3.1](https://www.microsoft.com/net/download) と [.NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.2) の両方
 ::: zone-end
 ::: zone pivot="programming-language-java"
-- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support)、バージョン 8。
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support)、バージョン 8 または 11。
 
 - [Apache Maven](https://maven.apache.org) バージョン 3.0 以降。
 ::: zone-end
@@ -121,7 +121,7 @@ ms.locfileid: "92105126"
     ::: zone pivot="programming-language-java"
     - **Select a language for your function project (関数プロジェクトの言語を選択してください)** : [`Java`] を選択します。
 
-    - **Select a version of Java (Java のバージョンを選択してください)** : Azure における関数の実行環境として `Java 8` または `Java 11 (preview)` を選択します。 ローカルで確認済みの Java バージョンを選択してください。
+    - **Select a version of Java (Java のバージョンを選択してください)** : Azure における関数の実行環境として `Java 8` または `Java 11` を選択します。 ローカルで確認済みの Java バージョンを選択してください。
 
     - **Provide a group ID (グループ ID を指定してください)** : [`com.function`] を選択します。
 
@@ -142,7 +142,7 @@ ms.locfileid: "92105126"
     - **Provide a namespace (名前空間を指定してください)** : 「`My.Functions`.
     ::: zone-end
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
-    - **承認レベル**: `Anonymous` を選択します。この場合、すべてのユーザーが関数のエンドポイントを呼び出すことができます。 承認レベルについては、「[承認キー](functions-bindings-http-webhook-trigger.md#authorization-keys)」を参照してください。
+    - **承認レベル** : `Anonymous` を選択します。この場合、すべてのユーザーが関数のエンドポイントを呼び出すことができます。 承認レベルについては、「[承認キー](functions-bindings-http-webhook-trigger.md#authorization-keys)」を参照してください。
     ::: zone-end
     - **Select how you would like to open your project (プロジェクトを開く方法を選択してください)** : [`Add to workspace`] を選択します。
 

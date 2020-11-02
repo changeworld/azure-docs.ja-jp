@@ -6,18 +6,22 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 10/22/2020
 ms.author: banders
-ms.openlocfilehash: ae504072e2a2cc481217933478ccbfb7bc3372b3
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 69d6544485e356741634749dd91ba6485cfbb31c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132365"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460684"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>サブスクライバーと CSP の間で Azure サブスクリプションを譲渡する
 
 この記事では、クラウド ソリューション プロバイダー (CSP) パートナーと CSP の顧客との間で、Azure サブスクリプションを譲渡するために使用される手順の概要について説明します。 ここに記載されている情報は、パートナーとの連携に役立つ Azure サブスクライバーを対象としています。 Microsoft パートナーが転送プロセスに使用する情報については、「[顧客の Azure サブスクリプションを別のパートナーに転送する方法について学習する](/partner-center/switch-azure-subscriptions-to-a-different-partner)」に記載されています。
+
+移転リクエストを開始する前に、残しておきたいコスト情報や課金情報があれば、それらをダウンロードまたはエクスポートしておく必要があります。 課金情報や使用情報がサブスクリプションと一緒に移転されることはありません。 コスト管理データのエクスポートの詳細については、[データのエクスポートと管理](../costs/tutorial-export-acm-data.md)に関するページを参照してください。 請求書データと利用状況データのダウンロードについて詳しくは、「[Azure の請求書と毎日の使用状況データをダウンロードまたは表示する](download-azure-invoice-daily-usage-date.md)」を参照してください。
+
+既存の予約がある場合、サブスクリプションの移転後は適用されなくなります。 必ず[予約の取り消しと払い戻し](../reservations/exchange-and-refund-azure-reservations.md)を行ったうえで、サブスクリプションを移転してください。
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>EA サブスクリプションを CSP パートナーに譲渡する
 

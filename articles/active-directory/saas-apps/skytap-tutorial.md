@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: jeedes
-ms.openlocfilehash: 8d34ca8ed01144ee282f6411640894807a09ef08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2a6b902f1c6b7e06b1a72b183007fbb9fe05c3c
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88527878"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515952"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-single-sign-on-for-skytap"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Single Sign-on for Skytap の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88527878"
 * ユーザーが自分の Azure AD アカウントを使用して Single Sign-on for Skytap に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、[Azure Active Directory を使用したアプリケーション アクセスとシングル サインオンの概要](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)に関する記事を参照してください。
+サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、[Azure Active Directory を使用したアプリケーション アクセスとシングル サインオンの概要](../manage-apps/what-is-single-sign-on.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88527878"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Single Sign-on for Skytap では、SP Initiated SSO と IDP Initiated SSO がサポートされます。
-* Single Sign-on for Skytap を構成した後、セッション制御を適用できます。 これにより、組織の機密データを流出と侵入からリアルタイムで保護することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Single Sign-on for Skytap を構成した後、セッション制御を適用できます。 これにより、組織の機密データを流出と侵入からリアルタイムで保護することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="add-single-sign-on-for-skytap-from-the-gallery"></a>ギャラリーからの Single Sign-on for Skytap の追加
 
@@ -50,7 +50,7 @@ Azure AD への Single Sign-on for Skytap の統合を構成するには、ギ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Single Sign-on for Skytap**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Single Sign-on for Skytap** 」と入力します。
 1. 結果のパネルから **[Single Sign-on for Skytap]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-single-sign-on-for-skytap"></a>Single Sign-on for Skytap の Azure AD シングル サインオンの構成とテスト
@@ -135,7 +135,7 @@ Single Sign-on for Skytap で Azure AD SSO を構成してテストする一般�
 
 ## <a name="configure-single-sign-on-for-skytap-sso"></a>Single Sign-on for Skytap SSO の構成
 
-Single Sign-on for Skytap 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Single Sign-on for Skytap サポート チーム](mailto:support@skytap.com)に送信する必要があります。 この設定が構成され、SAML SSO 接続が両側で正しく行われます。
+Single Sign-on for Skytap 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Single Sign-on for Skytap サポート チーム](mailto:support@skytap.com)に送信する必要があります。 この設定が構成され、SAML SSO 接続が両側で正しく行われます。
 
 
 ### <a name="create-single-sign-on-for-skytap-test-user"></a>Single Sign-on for Skytap のテスト ユーザーの作成
@@ -146,15 +146,14 @@ Single Sign-on for Skytap 側でシングル サインオンを構成するに�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Single Sign-on for Skytap] タイルを選択すると、SSO を設定した Single Sign-on for Skytap に自動的にサインインします。 詳細については、「[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)」を参照してください。
+アクセス パネル上で [Single Sign-on for Skytap] タイルを選択すると、SSO を設定した Single Sign-on for Skytap に自動的にサインインします。 詳細については、「[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Slack を試す](https://aad.portal.azure.com/)
-

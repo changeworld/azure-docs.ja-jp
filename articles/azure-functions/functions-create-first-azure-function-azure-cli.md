@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: b299f0bb13bb25fbc192f3d117be11ca1ce26586
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b457c3b0ec0f68dd6a8213fbebe7a2596bed4c2e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89145554"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519675"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>クイック スタート:HTTP 要求に応答する関数を Azure で作成する
 
@@ -82,7 +82,11 @@ func init LocalFunctionProj --powershell
 ```
 ::: zone-end    
 ::: zone pivot="programming-language-java"  
-空のフォルダーで次のコマンドを実行して、[Maven アーキタイプ](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)から Functions プロジェクトを生成します。 Java 11 で関数を実行する場合は、`-DjavaVersion=11` を使用します。 詳細については、「[Java のバージョン](functions-reference-java.md#java-versions)」を参照してください。 
+空のフォルダーで次のコマンドを実行して、[Maven アーキタイプ](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)から Functions プロジェクトを生成します。 
+
+> [!IMPORTANT]
+> + Java 11 で関数を実行する場合は、`-DjavaVersion=11` を使用します。 詳細については、「[Java のバージョン](functions-reference-java.md#java-versions)」を参照してください。 
+> + この記事の作業を行うには、`JAVA_HOME` 環境変数を、適切なバージョンの JDK のインストール場所に設定する必要があります。
 
 # <a name="bash"></a>[bash](#tab/bash)
 ```bash
@@ -110,7 +114,7 @@ Maven により、デプロイ時にプロジェクトの生成を終了する�
 
 「`Y`」と入力するか、Enter キーを押して確認します。
 
-Maven により、_artifactId_ という名前の新しいフォルダーにプロジェクト ファイルが作成されます (この例では `fabrikam-functions`)。 
+Maven により、 _artifactId_ という名前の新しいフォルダーにプロジェクト ファイルが作成されます (この例では `fabrikam-functions`)。 
 
 ::: zone-end  
 プロジェクト フォルダーに移動します。
@@ -159,50 +163,48 @@ cd fabrikam-functions
 
 これらの設定を変更して、Azure でのリソースの作成方法を制御できます。たとえば、初期デプロイの前に `runtime.os` を `windows` から `linux` に変更することができます。 Maven プラグインでサポートされている設定の完全な一覧については、[構成の詳細](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details)に関するページを参照してください。
 
-Java 8 の代わりに、Java 11 で関数アプリを実行する場合は、Java 11 の値を使用して pom.xml ファイルを手動で更新する必要があります。 詳細については、「[Java のバージョン](functions-reference-java.md#java-versions)」を参照してください。 Java 11 で実行している場合、次を確認してください。  
-
 #### <a name="functiontestjava"></a>FunctionTest.java
 
-このアーキタイプでは、関数の単体テストも生成されます。 関数を変更してバインドを追加したり、新しい関数をプロジェクトに追加したりする場合は、*FunctionTest.java* ファイル内のテストも変更する必要があります。
+このアーキタイプでは、関数の単体テストも生成されます。 関数を変更してバインドを追加したり、新しい関数をプロジェクトに追加したりする場合は、 *FunctionTest.java* ファイル内のテストも変更する必要があります。
 ::: zone-end  
 ::: zone pivot="programming-language-python"
 #### <a name="__init__py"></a>\_\_init\_\_.py
 
-*\_\_init\_\_.py* には、*function.json* 内の構成に従ってトリガーされる Python 関数 `main()` が含まれます。
+*\_\_init\_\_.py* には、 *function.json* 内の構成に従ってトリガーされる Python 関数 `main()` が含まれます。
 
 :::code language="python" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/__init__.py":::
 
-HTTP トリガーの場合、この関数は、*function.json* に定義された変数 `req` で要求データを受け取ります。 `req` は、[azure.functions.HttpRequest クラス](/python/api/azure-functions/azure.functions.httprequest)のインスタンスです。 *function.json* に `$return` として定義されているリターン オブジェクトは、[azure.functions.HttpResponse クラス](/python/api/azure-functions/azure.functions.httpresponse)のインスタンスです。 詳細については、「[Azure Functions の HTTP トリガーとバインド](./functions-bindings-http-webhook.md?tabs=python)」を参照してください。
+HTTP トリガーの場合、この関数は、 *function.json* に定義された変数 `req` で要求データを受け取ります。 `req` は、[azure.functions.HttpRequest クラス](/python/api/azure-functions/azure.functions.httprequest)のインスタンスです。 *function.json* に `$return` として定義されているリターン オブジェクトは、 [azure.functions.HttpResponse クラス](/python/api/azure-functions/azure.functions.httpresponse)のインスタンスです。 詳細については、「[Azure Functions の HTTP トリガーとバインド](./functions-bindings-http-webhook.md?tabs=python)」を参照してください。
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
 #### <a name="indexjs"></a>index.js
 
-*index.js* は、*function.json* の構成に従ってトリガーされる関数をエクスポートします。
+*index.js* は、 *function.json* の構成に従ってトリガーされる関数をエクスポートします。
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-HTTP トリガーの場合、この関数は、*function.json* に定義された変数 `req` で要求データを受け取ります。 *function.json* で `$return` として定義されている返されるオブジェクトが応答です。 詳細については、「[Azure Functions の HTTP トリガーとバインド](./functions-bindings-http-webhook.md?tabs=javascript)」を参照してください。
+HTTP トリガーの場合、この関数は、 *function.json* に定義された変数 `req` で要求データを受け取ります。 *function.json* で `$return` として定義されている返されるオブジェクトが応答です。 詳細については、「[Azure Functions の HTTP トリガーとバインド](./functions-bindings-http-webhook.md?tabs=javascript)」を参照してください。
 ::: zone-end
 
 ::: zone pivot="programming-language-typescript"
 #### <a name="indexts"></a>index.ts
 
-*index.ts* は、*function.json* の構成に従ってトリガーされる関数をエクスポートします。
+*index.ts* は、 *function.json* の構成に従ってトリガーされる関数をエクスポートします。
 
 :::code language="typescript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-TypeScript/index.ts":::
 
-HTTP トリガーの場合、この関数は、*function.json* に定義されている **HttpRequest** 型の変数 `req` で要求データを受け取ります。 *function.json* で `$return` として定義されている返されるオブジェクトが応答です。 
+HTTP トリガーの場合、この関数は、 *function.json* に定義されている **HttpRequest** 型の変数 `req` で要求データを受け取ります。 *function.json* で `$return` として定義されている返されるオブジェクトが応答です。 
 ::: zone-end
 
 ::: zone pivot="programming-language-powershell"
 #### <a name="runps1"></a>run.ps1
 
-*run.ps1* は、*function.json* の構成に従ってトリガーされる関数スクリプトを定義します。
+*run.ps1* は、 *function.json* の構成に従ってトリガーされる関数スクリプトを定義します。
 
 :::code language="powershell" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-PowerShell/run.ps1":::
 
-HTTP トリガーの場合、この関数は、*function.json* に定義された `$Request` パラメーターに渡された要求データを受け取ります。 *function.json* で `Response` として定義されている返されるオブジェクトが、応答として `Push-OutputBinding` コマンドレットに渡されます。 
+HTTP トリガーの場合、この関数は、 *function.json* に定義された `$Request` パラメーターに渡された要求データを受け取ります。 *function.json* で `Response` として定義されている返されるオブジェクトが、応答として `Push-OutputBinding` コマンドレットに渡されます。 
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
@@ -381,7 +383,7 @@ mvn azure-functions:deploy
 
 # <a name="browser"></a>[ブラウザー](#tab/browser)
 
-publish コマンドの出力に表示されている完全な**呼び出し URL** にクエリ パラメーター `&name=Functions` を追加して、ブラウザーのアドレス バーにコピーします。 関数をローカルで実行したときと同様の出力がブラウザーに表示されるはずです。
+publish コマンドの出力に表示されている完全な **呼び出し URL** にクエリ パラメーター `&name=Functions` を追加して、ブラウザーのアドレス バーにコピーします。 関数をローカルで実行したときと同様の出力がブラウザーに表示されるはずです。
 
 ![Azure 上で実行された関数の出力をブラウザーで表示したところ](./media/functions-create-first-azure-function-azure-cli/function-test-cloud-browser.png)
 

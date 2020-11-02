@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: fc3b5b096e339d0c0f4bca7afc92d7315246fcd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 748566cf5b25157fcb8a2938a3f4bd307c930874
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552290"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895157"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>チュートリアル: Azure Active Directory と SAP HANA の統合
 
@@ -27,7 +27,7 @@ SAP HANA と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して SAP HANA に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -51,8 +51,8 @@ SAP HANA と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* SAP HANA では、**IDP** によって開始される SSO がサポートされます
-* SAP HANA では、**Just-In-Time** ユーザー プロビジョニングがサポートされています
+* SAP HANA では、 **IDP** によって開始される SSO がサポートされます
+* SAP HANA では、 **Just-In-Time** ユーザー プロビジョニングがサポートされています
 
 ## <a name="adding-sap-hana-from-the-gallery"></a>ギャラリーからの SAP HANA の追加
 
@@ -72,13 +72,13 @@ Azure AD への SAP HANA の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**SAP HANA**」と入力し、結果ウィンドウで **SAP HANA** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **SAP HANA** 」と入力し、結果ウィンドウで **SAP HANA** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の SAP HANA](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、SAP HANA で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、SAP HANA で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと SAP HANA 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 SAP HANA で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -121,23 +121,23 @@ SAP HANA で Azure AD シングル サインオンを構成するには、次の
 
 5. SAP HANA アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![[編集] アイコンが選択されている [ユーザー属性] セクションを示すスクリーンショット。](common/edit-attribute.png)
 
 6. **[ユーザー属性とクレーム]** ダイアログの **[ユーザー属性]** セクションで、次の手順を実行します。
  
     a. **[編集]** アイコンをクリックして、 **[ユーザー要求の管理]** ダイアログを開きます。
 
-    ![image](./media/saphana-tutorial/tutorial_usermail.png)
+    ![[編集] アイコンが選択された [ユーザー属性とクレーム] ダイアログを示すスクリーンショット。](./media/saphana-tutorial/tutorial_usermail.png)
 
     ![image](./media/saphana-tutorial/tutorial_usermailedit.png)
 
-    b. **[変換]** の一覧で、**ExtractMailPrefix()** を選択します。
+    b. **[変換]** の一覧で、 **ExtractMailPrefix()** を選択します。
 
-    c. **[パラメーター 1]** の一覧で、**user.mail** を選択します。
+    c. **[パラメーター 1]** の一覧で、 **user.mail** を選択します。
 
     d. **[保存]** をクリックします。
 
-7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -148,13 +148,13 @@ SAP HANA で Azure AD シングル サインオンを構成するには、次の
     > [!NOTE]
     > 既定の構成では、この URL で要求はサインイン画面にリダイレクトされ、認証済みの SAP HANA データベース ユーザーの資格情報を要求されます。 サインインするユーザーには、SAML 管理タスクを実行するアクセス許可が必要です。
 
-2. XSA Web インターフェイスで、**SAML Identity Provider** に移動します。 ここから画面の下部にある **+** ボタンを選択し、 **[Add Identity Provider Info]\(ID プロバイダー情報の追加\)** ウィンドウを表示します。 その後、次の手順を実行します。
+2. XSA Web インターフェイスで、 **SAML Identity Provider** に移動します。 ここから画面の下部にある **+** ボタンを選択し、 **[Add Identity Provider Info]\(ID プロバイダー情報の追加\)** ウィンドウを表示します。 その後、次の手順を実行します。
 
     ![ID プロバイダーの追加](./media/saphana-tutorial/sap1.png)
 
     a. **[Add Identity Provider Info]\(ID プロバイダーの情報の追加\)** ウィンドウで、Azure Portal からダウンロードしたメタデータ XML の内容を、 **[Metadata]\(メタデータ\)** ボックスに貼り付けます。
 
-    ![ID プロバイダーの設定の追加](./media/saphana-tutorial/sap2.png)
+    ![[Metadata]\(メタデータ\) と [Name]\(名前\) ボックスが強調表示されている [Add Identity Provider Info]\(ID プロバイダーの情報の追加\) ペインを示すスクリーンショット。](./media/saphana-tutorial/sap2.png)
 
     b. XML ドキュメントの内容が有効な場合、解析プロセスで、 **[General data]\(全般的なデータ\)** 画面領域の **[Subject, Entity ID, and Issuer]\(件名、エンティティ ID、発行者\)** に必要な情報が抽出されます。 **[Base URL and SingleSignOn URL (*)]\(ベース URL と SingleSignOn URL (*)\)** のフィールドなど、 **[Destination]\(接続先\)** 画面領域に URL フィールドに必要な情報も抽出されます。
 
@@ -169,7 +169,7 @@ SAP HANA で Azure AD シングル サインオンを構成するには、次の
 
     ![[保存] ボタン](./media/saphana-tutorial/sap4.png)
 
-4. HANA Studio の **[Configuration]\(構成\)** タブのシステム プロパティで、**saml** を使用して設定を絞り込みます。 次に、 **[assertion_timeout]** を **[10 sec]\(10 秒\)** から **[120 sec]\(120 秒\)** に調整します。
+4. HANA Studio の **[Configuration]\(構成\)** タブのシステム プロパティで、 **saml** を使用して設定を絞り込みます。 次に、 **[assertion_timeout]** を **[10 sec]\(10 秒\)** から **[120 sec]\(120 秒\)** に調整します。
 
     ![assertion_timeout の設定](./media/saphana-tutorial/sap7.png)
 
@@ -189,9 +189,9 @@ SAP HANA で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -227,7 +227,7 @@ SAP HANA で Azure AD シングル サインオンを構成するには、次の
 ### <a name="create-sap-hana-test-user"></a>SAP HANA のテスト ユーザーを作成する
 
 SAP HANA への Azure AD ユーザーのサインインを有効にするには、SAP HANA でプロビジョニングする必要があります。
-SAP HANA では、**Just-In-Time プロビジョニング**がサポートされています。この設定は、既定で有効になっています。
+SAP HANA では、 **Just-In-Time プロビジョニング** がサポートされています。この設定は、既定で有効になっています。
 
 ユーザーを手動で作成する必要がある場合は、次の手順を実行します。
 
@@ -238,7 +238,7 @@ SAP HANA では、**Just-In-Time プロビジョニング**がサポートされ
 
     ![ユーザーの作成](./media/saphana-tutorial/sap5.png)
 
-2. **[SAML]** の左側にある非表示のチェック ボックスをオンにし、[**Configure]\(構成\)** リンクを選択します。
+2. **[SAML]** の左側にある非表示のチェック ボックスをオンにし、[ **Configure]\(構成\)** リンクを選択します。
 
 3. **[Add]\(追加\)** を選択して SAML IDP を追加します。  適切な SAML IDP を選択してから **[OK]** を選択します。
 
@@ -260,13 +260,12 @@ SAP HANA では、**Just-In-Time プロビジョニング**がサポートされ
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [SAP HANA] タイルをクリックすると、SSO を設定した SAP HANA に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [SAP HANA] タイルをクリックすると、SSO を設定した SAP HANA に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

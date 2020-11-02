@@ -1,18 +1,18 @@
 ---
 title: 'クイックスタート: Azure SignalR サービスを作成する - ARM テンプレート'
-description: このクイックスタートでは、Azure Resource Manager テンプレートを使用して Azure SignalR Service を作成する方法について説明します。
+description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure SignalR Service を作成する方法について説明します。
 author: mgblythe
 ms.service: signalr
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 10/02/2020
-ms.openlocfilehash: 04d0a98863dded93216f5fc669b8148f710f5f0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f38bd6ed91788343c028ec5834ba28f4bad3ba43
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858834"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487825"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>クイックスタート: ARM テンプレートを使用して Azure SignalR Service をデプロイする
 
@@ -68,9 +68,9 @@ Azure portal から ARM テンプレートを使用して Azure SignalR Service 
 
 2. **[リソース グループ]** の **[新規作成]** を選択し、新しいリソース グループの名前を入力し、 **[OK]** を選択します。
 
-3. 新しいリソース グループを作成した場合は、リソース グループの**リージョン**を選択します。
+3. 新しいリソース グループを作成した場合は、リソース グループの **リージョン** を選択します。
 
-4. 必要に応じて、Azure SignalR Service の新しい**名前**と**場所** (**eastus2** など) を入力します。 名前を指定しない場合は、自動的に生成されます。 Azure SignalR Service の場所は、リソース グループのリージョンと同じでも異なっていてもかまいません。 場所を指定しなかった場合は、リソース グループと同じリージョンに設定されます。
+4. 必要に応じて、Azure SignalR Service の新しい **名前** と **場所** ( **eastus2** など) を入力します。 名前を指定しない場合は、自動的に生成されます。 Azure SignalR Service の場所は、リソース グループのリージョンと同じでも異なっていてもかまいません。 場所を指定しなかった場合は、リソース グループと同じリージョンに設定されます。
 
 5. **[価格レベル]** ( **[Free_F1]** または **[Standard_S1]** ) を選択し、 **[Capacity]\(キャパシティ\)** (SignalR ユニットの数) を入力します。 **[サービス モード]** として、 **[既定]** (ハブ サーバーが必要)、 **[サーバーレス]** (サーバー接続を許可しない)、 **[クラシック]** (ハブにサーバー接続がある場合にのみハブ サーバーにルーティング) のいずれかを選択してください。 次に、 **[Enable Connectivity Logs]\(接続ログを有効にする\)** または **[Enable Messaging Logs]\(メッセージング ログを有効にする\)** を選択します。
 
@@ -92,15 +92,15 @@ ARM テンプレートを使用して Azure SignalR Service をデプロイす�
 
 * 新しい Azure SignalR Service の名前とリージョン
 * 新しいリソース グループの名前とリージョン
-* Azure の価格レベル (**Free_F1** または **Standard_S1**)
+* Azure の価格レベル ( **Free_F1** または **Standard_S1** )
 * SignalR ユニット容量 (1、2、5、10、20、50、100)
   > [!NOTE]
   > **[Free_F1]** 価格レベルの場合、容量は 1 ユニットに制限されます。
-* サービス モード: ハブ サーバーを必要とする場合は **Default**、サーバー接続を一切許可しない場合は **Serverless**、ハブにサーバー接続がある場合にのみハブ サーバーにルーティングする場合は **Classic**
-* 接続またはメッセージングのログを有効にするかどうか (**true** または **false**)
+* サービス モード: ハブ サーバーを必要とする場合は **Default** 、サーバー接続を一切許可しない場合は **Serverless** 、ハブにサーバー接続がある場合にのみハブ サーバーにルーティングする場合は **Classic**
+* 接続またはメッセージングのログを有効にするかどうか ( **true** または **false** )
 
 ```azurepowershell-interactive
-$serviceName = Read-Host -Prompt "Enter a name for the new Azure SignalR service"
+$serviceName = Read-Host -Prompt "Enter a name for the new Azure SignalR Service"
 $serviceLocation = Read-Host -Prompt "Enter an Azure region (for example, westus2) for the service"
 $resourceGroupName = Read-Host -Prompt "Enter a name for the new resource group to contain the service"
 $resourceGroupRegion = Read-Host -Prompt "Enter an Azure region (for example, centralus) for the resource group"
@@ -124,7 +124,7 @@ $paramObjHashTable = @{
     enableMessagingLogs = $enableMessageLogs
 }
 
-Write-Verbose "Run New-AzResourceGroupDeployment to create an Azure SignalR service using an ARM template" -Verbose
+Write-Verbose "Run New-AzResourceGroupDeployment to create an Azure SignalR Service using an ARM template" -Verbose
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
     -TemplateParameterObject $paramObjHashTable `
     -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-signalr/azuredeploy.json
@@ -137,15 +137,15 @@ ARM テンプレートを使用して Azure SignalR Service をデプロイす�
 
 * 新しい Azure SignalR Service の名前とリージョン
 * 新しいリソース グループの名前とリージョン
-* Azure の価格レベル (**Free_F1** または **Standard_S1**)
+* Azure の価格レベル ( **Free_F1** または **Standard_S1** )
 * SignalR ユニット容量 (1、2、5、10、20、50、100)
     > [!NOTE]
     > **[Free_F1]** 価格レベルの場合、容量は 1 ユニットに制限されます。
-* サービス モード: ハブ サーバーを必要とする場合は **Default**、サーバー接続を一切許可しない場合は **Serverless**、ハブにサーバー接続がある場合にのみハブ サーバーにルーティングする場合は **Classic**
-* 接続またはメッセージングのログを有効にするかどうか (**true** または **false**)
+* サービス モード: ハブ サーバーを必要とする場合は **Default** 、サーバー接続を一切許可しない場合は **Serverless** 、ハブにサーバー接続がある場合にのみハブ サーバーにルーティングする場合は **Classic**
+* 接続またはメッセージングのログを有効にするかどうか ( **true** または **false** )
 
 ```azurecli-interactive
-read -p "Enter a name for the new Azure SignalR service: " serviceName &&
+read -p "Enter a name for the new Azure SignalR Service: " serviceName &&
 read -p "Enter an Azure region (for example, westus2) for the service: " serviceLocation &&
 read -p "Enter a name for the new resource group to contain the service: " resourceGroupName &&
 read -p "Enter an Azure region (for example, centralus) for the resource group: " resourceGroupRegion &&
@@ -157,7 +157,7 @@ read -p "Specify whether to enable messaging logs (true or false): " enableMessa
 params='name='$serviceName' location='$serviceLocation' pricingTier='$priceTier' capacity='$unitCapacity' serviceMode='$servicingMode' enableConnectivityLogs='$enableConnectionLogs' enableMessagingLogs='$enableMessageLogs &&
 echo "CREATE RESOURCE GROUP:  az group create --name $resourceGroupName --location $resourceGroupRegion" &&
 az group create --name $resourceGroupName --location $resourceGroupRegion &&
-echo "RUN az deployment group create, which creates an Azure SignalR service using an ARM template" &&
+echo "RUN az deployment group create, which creates an Azure SignalR Service using an ARM template" &&
 az deployment group create --resource-group $resourceGroupName --parameters $params --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-signalr/azuredeploy.json &&
 read -p "Press [ENTER] to continue: "
 ```
@@ -173,7 +173,7 @@ read -p "Press [ENTER] to continue: "
 
 新しい Azure SignalR Service の概要を確認するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) で、**SignalR** を検索して選択します。
+1. [Azure portal](https://portal.azure.com) で、 **SignalR** を検索して選択します。
 
 2. SignalR の一覧から新しいサービスを選択します。 新しい Azure SignalR Service の **[概要]** ページが表示されます。
 
@@ -182,7 +182,7 @@ read -p "Press [ENTER] to continue: "
 Azure SignalR Service の詳細を確認するには、以下の対話型コードを実行します。 新しいサービスの名前とリソース グループを入力する必要があります。
 
 ```azurepowershell-interactive
-$serviceName = Read-Host -Prompt "Enter the name of your Azure SignalR service"
+$serviceName = Read-Host -Prompt "Enter the name of your Azure SignalR Service"
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
 Write-Verbose "Get-AzSignalR -ResourceGroupName $resourceGroupName -Name $serviceName" -Verbose
 Get-AzSignalR -ResourceGroupName $resourceGroupName -Name $serviceName
@@ -194,7 +194,7 @@ Read-Host "Press [ENTER] to continue"
 Azure SignalR Service の詳細を確認するには、以下の対話型コードを実行します。 新しいサービスの名前とリソース グループを入力する必要があります。
 
 ```azurecli-interactive
-read -p "Enter the name of your Azure SignalR service: " serviceName &&
+read -p "Enter the name of your Azure SignalR Service: " serviceName &&
 read -p "Enter the resource group name: " resourceGroupName &&
 echo "SHOW SERVICE DETAILS:  az signalr show --resource-group $resourceGroupName --name $serviceName" &&
 az signalr show --resource-group $resourceGroupName --name $serviceName &&

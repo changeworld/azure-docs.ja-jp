@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 203ba2988d817e3e396fd8aec3db00eba9832041
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4b04558077f6b59d0fef613308a6ab96680d7ff8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92323094"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92470862"
 ---
 ## <a name="download-and-install"></a>ダウンロードしてインストールする
 
@@ -107,7 +107,8 @@ Linux または Mac の場合、コマンドは次のように始まります。
 
 ## <a name="create-subscription-config"></a>サブスクリプション構成の作成
 
-Speech CLI の使用を開始するには、最初に、Speech サブスクリプション キーとリージョン情報を入力する必要があります。 リージョン識別子を確認するには、[リージョンのサポート](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)に関するページを参照してください。 サブスクリプション キーとリージョン識別子 (たとえば、 `eastus`、`westus`) を入手したら、次のコマンドを実行します。
+Speech CLI の使用を開始するには、Speech サブスクリプション キーとリージョン識別子を入力する必要があります。 「[Speech Service を無料で試す](../overview.md#try-the-speech-service-for-free)」の手順に従って、これらの資格情報を取得します。
+サブスクリプション キーとリージョン識別子 (たとえば、 `eastus`、`westus`) を入手したら、次のコマンドを実行します。
 
 ```shell
 spx config @key --set SUBSCRIPTION-KEY

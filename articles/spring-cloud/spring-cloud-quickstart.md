@@ -4,16 +4,16 @@ description: このクイックスタートでは、Spring Cloud アプリケー
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 09/18/2020
+ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 2ec79c9c1fc3b461037b2005da7198f81cbbab34
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.openlocfilehash: a060528d3140203541f6a13064659651c7a4f67d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170363"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488957"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>クイック スタート:初めての Azure Spring Cloud アプリケーションをデプロイする
 
@@ -96,7 +96,7 @@ Visual Studio で API プロジェクト テンプレートを使用して、"he
    cd hello-world
    ```
 
-1. *appSettings.json* ファイルを編集して、次の設定を追加します。
+1. *appSettings.json* ファイルを編集して、次の設定を追加します。
 
    ```json
    "spring": {
@@ -345,9 +345,9 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 
 ## <a name="generate-a-spring-cloud-project"></a>Spring Cloud プロジェクトを生成する
 
-[Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin) を開始して、Azure Spring Cloud に対して推奨される依存関係があるサンプル プロジェクトを生成します。 次の図は、このサンプル プロジェクトに対して設定された Initializr を示しています。
+[Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client) を開始して、Azure Spring Cloud に対して推奨される依存関係があるサンプル プロジェクトを生成します。 次の図は、このサンプル プロジェクトに対して設定された Initializr を示しています。
 ```url
-https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin
+https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client
 ```
 
   ![Initializr のページ](media/spring-cloud-quickstart-java/initializr-page.png)

@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 126df6e7f4d227c20c2173a1e2d4c0d7361b043f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 080e2daf5065c0762fb039a84e62580e5c915ddb
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962447"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735169"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
 Azure Key Vault は、シークレットのセキュリティで保護されたストアを提供するクラウド サービスです。 キー、パスワード、証明書、およびその他のシークレットを安全に保管することができます。 Azure Key Vault は、Azure Portal を使用して作成および管理できます。 このクイック スタートでは、キー コンテナーを作成し、それを使用してシークレットを格納します。 Key Vault の詳細については、[概要](../general/overview.md)に関する記事をご覧ください。
 
-シークレットの詳細については、(about-secrets.md) を参照してください。
+シークレットの詳細については、[シークレット](about-secrets.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,12 +35,12 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 ## <a name="create-a-vault"></a>コンテナーの作成
 
 1. Azure portal メニューまたは **[ホーム]** ページで、 **[リソースの作成]** を選択します。
-2. 検索ボックスに「**Key Vault**」と入力します。
+2. 検索ボックスに「 **Key Vault** 」と入力します。
 3. 結果の一覧の **[Key Vault]** を選択します。
 4. Key Vault のセクションで、 **[作成]** を選択します。
 5. **[キー コンテナーの作成]** セクションで、次の情報を入力します。
-    - **Name**:一意の名前が必要です。 このクイックスタートでは、**Contoso-vault2** を使用します。 
-    - **サブスクリプション**:サブスクリプションを選択します。
+    - **Name** :一意の名前が必要です。 このクイックスタートでは、 **Contoso-vault2** を使用します。 
+    - **サブスクリプション** :サブスクリプションを選択します。
     - **[リソース グループ]** で、 **[新規作成]** を選択し、リソース グループ名を入力します。
     - **[場所]** プルダウン メニューで場所を選択します。
     - 他のオプションは既定値のままにしておきます。
@@ -48,11 +48,12 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 次の 2 つのプロパティをメモしておきます。
 
-* **Vault Name**:この例では、これは **Contoso-Vault2** です。 この名前は他の手順で使用します。
+* **Vault Name** :この例では、これは **Contoso-Vault2** です。 この名前は他の手順で使用します。
 * **Vault URI (コンテナー URI)** :この例では、これは https://contoso-vault2.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
 
-Azure CLI と PowerShell を使用してキー コンテナーを作成することもできます。[PowerShell を使用してキー コンテナーを作成する](../general/quick-create-powershell.md)
-[Azure CLI を使用してキー コンテナーを作成する](../general/quick-create-cli.md)
+Azure CLI と PowerShell を使用してキー コンテナーを作成することもできます。
+- [PowerShell を使用してキー コンテナーを作成する](../general/quick-create-powershell.md)
+- [Azure CLI を使用してキー コンテナーを作成する](../general/quick-create-cli.md)
 
 この時点で、使用している Azure アカウントが、この新しいコンテナーで操作を実行することを許可されている唯一のアカウントになります。
 
@@ -66,7 +67,7 @@ Azure CLI と PowerShell を使用してキー コンテナーを作成するこ
 2. **[Generate/Import]\(生成/インポート\)** をクリックします。
 3. **[シークレットの作成]** 画面で、次の値を選択します。
     - **[アップロード オプション]** :手動。
-    - **Name**:ExamplePassword。
+    - **Name** :ExamplePassword。
     - **[値]** : hVFkk965BuUv
     - 他の値は既定値のままにしておきます。 **Create** をクリックしてください。
 

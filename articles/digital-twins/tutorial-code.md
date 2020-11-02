@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 19ce74046dd86885a01ad5e8dcc4bfda950dd884
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: dd7c5da84d6330e0214404f55aad9487c71b0a29
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201352"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792431"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>チュートリアル:Azure Digital Twins API を使用したコーディング
 
-Azure Digital Twins を使用する開発者は、Azure Digital Twins サービスのインスタンスとのやり取りのために、クライアント アプリケーションを作成するのが一般的です。 この開発者向けのチュートリアルでは、[.NET 用 Azure IoT Digital Twins クライアント ライブラリ (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) を使用した、Azure Digital Twins サービスに対するプログラミングの概要を説明します。 C# コンソール クライアント アプリの作成手順を最初から順を追って説明します。
+Azure Digital Twins を使用する開発者は、Azure Digital Twins サービスのインスタンスとのやり取りのために、クライアント アプリケーションを作成するのが一般的です。 この開発者向けのチュートリアルでは、[.NET 用 Azure Digital Twins SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) を使用した、Azure Digital Twins サービスに対するプログラミングの概要を説明します。 C# コンソール クライアント アプリの作成手順を最初から順を追って説明します。
 
 > [!div class="checklist"]
 > * プロジェクトの設定
@@ -35,6 +35,8 @@ Azure Digital Twins を使用する開発者は、Azure Digital Twins サービ�
 
 [!INCLUDE [Azure Digital Twins tutorials: instance prereq](../../includes/digital-twins-tutorial-prereq-instance.md)]
 
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
+
 ## <a name="set-up-project"></a>プロジェクトの設定
 
 Azure Digital Twins インスタンスを使用する準備ができたら、クライアント アプリ プロジェクトの設定を開始します。 
@@ -43,7 +45,7 @@ Azure Digital Twins インスタンスを使用する準備ができたら、ク
 
 その新しいディレクトリに移動します。
 
-プロジェクト ディレクトリに移動したら、空の .NET コンソール アプリ プロジェクトを作成します。 コマンド ウィンドウで次のコマンドを実行して、コンソール用の最小限の C# プロジェクトを作成します。
+プロジェクト ディレクトリに移動したら、 **空の .NET コンソール アプリ プロジェクトを作成** します。 コマンド ウィンドウで次のコマンドを実行して、コンソール用の最小限の C# プロジェクトを作成できます。
 
 ```cmd/sh
 dotnet new console
@@ -51,16 +53,11 @@ dotnet new console
 
 これにより、コードの大部分を記述する *Program.cs* と呼ばれるものを含む、いくつかのファイルがこのディレクトリ内に作成されます。
 
-次に、Azure Digital Twins を使用するために必要な 2 つの依存関係を追加します。
-
-```cmd/sh
-dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-dotnet add package Azure.identity
-```
-
-最初の依存関係は、[.NET 用 Azure IoT Digital Twins クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)です。 2 つ目の依存関係では、Azure に対する認証を支援するツールが提供されます。
-
 コマンド ウィンドウは、チュートリアル全体を通して使用するため、開いたままにしておきます。
+
+次に、Azure Digital Twins を操作するために必要な **2 つの依存関係をプロジェクトに追加** します。 以下のリンクを使用すると、NuGet のパッケージに移動できます。そこでコンソール コマンド (.NET CLI を含む) を見つけて、それぞれの最新バージョンをプロジェクトに追加できます。
+* [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core)。 これは、[.NET 用 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) のパッケージです。 
+* [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity)。 このライブラリでは、Azure に対する認証を支援するツールが提供されます。
 
 ## <a name="get-started-with-project-code"></a>プロジェクト コードでの作業開始
 
@@ -116,9 +113,6 @@ Console.WriteLine($"Service client created – ready to go");
 ```
 
 ファイルを保存します。 
-
->[!NOTE]
-> この例では、認証に `DefaultAzureCredential` を使用しています。 その他の種類の資格情報については、「[Microsoft ID プラットフォームの認証ライブラリ](../active-directory/develop/reference-v2-libraries.md)」のドキュメント、または Azure Digital Twins の[クライアント アプリケーションの認証](how-to-authenticate-client.md)に関する記事を参照してください。
 
 コマンド ウィンドウで、次のコマンドを使用してコードを実行します。 
 
@@ -266,12 +260,18 @@ Type name: : dtmi:com:contoso:SampleModel;1
 
 これで、Azure Digital Twins にモデルがアップロードされたので、このモデル定義を使用して **デジタル ツイン** を作成できます。 [デジタル ツイン](concepts-twins-graph.md)はモデルのインスタンスであり、農場のセンサー、建物内の部屋、車内の照明など、対象となるビジネス環境内のエンティティを表します。 このセクションでは、先ほどアップロードしたモデルに基づいて、いくつかのデジタル ツインを作成します。
 
-`System.Text.Json` の組み込みの .NET Json シリアライザーが必要になるため、先頭に新しい `using` ステートメントを追加します。
+このコード サンプルは、`System.Text.Json` の組み込みの .NET Json シリアライザーと、[.NET 用 Azure Digital Twins SDK (C#)](https://dev.azure.com/azure-sdk/public/_packaging?_a=package&feed=azure-sdk-for-net&view=overview&package=Azure.DigitalTwins.Core&version=1.0.0-alpha.20201020.1&protocolType=NuGet) [プレビュー用にリンクを修正] の `Serialization` 名前空間を使用するため、先頭にこれらの新しい `using` ステートメントを追加します。
 
 ```csharp
 using System.Text.Json;
 using Azure.DigitalTwins.Core.Serialization;
 ```
+
+>[!NOTE]
+>`Azure.DigitalTwins.Core.Serialization` は、デジタル ツインとリレーションシップを操作するうえで必要ありません。これは、データを適切な形式にするためのオプションの名前空間です。 これを使用する代わりに、次の方法があります。
+>* 文字列を連結して JSON オブジェクトを形成する
+>* `System.Text.Json` のような JSON パーサーを使用して JSON オブジェクトを動的に構築する
+>* カスタム型を C# でモデル化し、インスタンス化し、文字列にシリアル化する
 
 次に、`Main` メソッドの末尾に次のコードを追加し、このモデルに基づいて 3 つのデジタル ツインを作成して初期化します。
 
@@ -301,17 +301,7 @@ for(int i=0; i<3; i++) {
 
 次に、作成したツイン間に **リレーションシップ** を作成することで、それらのツインを接続し、 **ツイン グラフ** を形成することができます。 [ツイン グラフ](concepts-twins-graph.md)は、ご自分の環境全体を表すために使用されます。
 
-このコード サンプルでは、リレーションシップの作成に役立つように、`Azure.DigitalTwins.Core.Serialization` 名前空間を使用します。 これは、次の `using` ステートメントでプロジェクトに追加済みです。
-
-```csharp
-using Azure.DigitalTwins.Core.Serialization;
-```
-
->[!NOTE]
->`Azure.DigitalTwins.Core.Serialization` は、デジタル ツインとリレーションシップを操作するうえで必要ありません。これは、データを適切な形式にするためのオプションの名前空間です。 これを使用する代わりに、次の方法があります。
->* 文字列を連結して JSON オブジェクトを形成する
->* `System.Text.Json` のような JSON パーサーを使用して JSON オブジェクトを動的に構築する
->* カスタム型を C# でモデル化し、インスタンス化し、文字列にシリアル化する
+このコード サンプルでは、リレーションシップの作成に役立つように、`Azure.DigitalTwins.Core.Serialization` 名前空間を使用します。 これは、前に「 [*デジタル ツインの作成*](#create-digital-twins)」セクションでプロジェクトに追加しました。
 
 新しい静的メソッドを `Program` クラスの `Main` メソッドの下に追加します。
 

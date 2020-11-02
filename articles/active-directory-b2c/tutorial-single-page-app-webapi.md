@@ -11,12 +11,12 @@ ms.custom: mvc, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8b10dd2d87ab7d4cf41a0bf860798f27651294d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9fe1363ffc714754c1de333a77d36595ce4223e6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259001"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442339"
 ---
 # <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>チュートリアル:Azure AD B2C を使用して、シングルページ アプリケーションから Node.js Web API へのアクセスを保護および許可する
 
@@ -56,7 +56,7 @@ ms.locfileid: "91259001"
 
 保護された Web API を別のアプリケーションから呼び出すには、その Web API へのアクセス許可をそのアプリケーションに付与する必要があります。
 
-前提条件のチュートリアルでは、*webapp1* という名前の Web アプリケーションを作成しました。 このチュートリアルでは、前のセクションで作成した Web API である *webapi1* を呼び出すようにそのアプリケーションを構成します。
+前提条件のチュートリアルでは、 *webapp1* という名前の Web アプリケーションを作成しました。 このチュートリアルでは、前のセクションで作成した Web API である *webapi1* を呼び出すようにそのアプリケーションを構成します。
 
 [!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
@@ -74,21 +74,27 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="configure-the-web-api"></a>Web API を構成する
 
-1. コード エディターで *config.js* ファイルを開きます。
-1. 変数の値を変更して、前に作成したアプリケーション登録のものを反映させます。 また、前提条件の一部として作成したユーザー フローを使用して、`policyName` を更新します。 たとえば、*B2C_1_signupsignin1* などです。
-
-    ```javascript
-    const clientID = "<your-webapi-application-ID>"; // Application (client) ID
-    const b2cDomainHost = "<your-tenant-name>.b2clogin.com";
-    const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can use your Directory (tenant) ID (a GUID)
-    const policyName = "B2C_1_signupsignin1";
+1. コード エディターで *config.json* ファイルを開きます。
+1. 変数の値を変更して、前に作成したアプリケーション登録のものを反映させます。 また、前提条件の一部として作成したユーザー フローを使用して、`policyName` を更新します。 たとえば、 *B2C_1_signupsignin1* などです。
+    
+    ```json
+    "credentials": {
+        "tenantName": "<your-tenant-name>",
+        "clientID": "<your-webapi-application-ID>"
+    },
+    "policies": {
+        "policyName": "B2C_1_signupsignin1"
+    },
+    "resource": {
+        "scope": ["demo.read"] 
+    },
     ```
 
 #### <a name="enable-cors"></a>CORS を有効にする
 
 シングルページ アプリケーションに Node.js Web API の呼び出しを許可するには、Web API で [CORS](https://expressjs.com/en/resources/middleware/cors.html) を有効にする必要があります。 実稼働アプリケーションでは、どのドメインが要求を行っているかに注意する必要がありますが、このチュートリアルでは、すべてのドメインからの要求を許可します。
 
-CORS を有効にするには、次のミドルウェアを使用します。 このチュートリアルの Node.js Web API コード サンプルでは、*index.js* ファイルに既に追加されています。
+CORS を有効にするには、次のミドルウェアを使用します。 このチュートリアルの Node.js Web API コード サンプルでは、 *index.js* ファイルに既に追加されています。
 
 ```javascript
 app.use((req, res, next) => {
@@ -100,15 +106,15 @@ app.use((req, res, next) => {
 
 ### <a name="configure-the-single-page-application"></a>シングルページ アプリケーションを構成する
 
-このシリーズの[前のチュートリアル](tutorial-single-page-app.md)のシングルページ アプリケーション (SPA) は、ユーザーのサインアップとサインインに Azure AD B2C を使用し、既定で、*frabrikamb2c* デモ テナントによって保護されている Node.js Web API を呼び出します。
+このシリーズの [前のチュートリアル](tutorial-single-page-app.md)のシングルページ アプリケーション (SPA) は、ユーザーのサインアップとサインインに Azure AD B2C を使用し、既定で、 *frabrikamb2c* デモ テナントによって保護されている Node.js Web API を呼び出します。
 
-このセクションでは、"*自分の*" Azure AD B2C テナントによって保護されている (そして、自分のローカル マシンで実行する) Node.js Web API を呼び出すようにシングルページ Web アプリケーションを更新します。
+このセクションでは、" *自分の* " Azure AD B2C テナントによって保護されている (そして、自分のローカル マシンで実行する) Node.js Web API を呼び出すようにシングルページ Web アプリケーションを更新します。
 
 SPA 内の設定を変更するには:
 
-1. 前のチュートリアルでダウンロードまたは複製した [active-directory-b2c-javascript-msal-singlepageapp][github-js-spa] プロジェクトで、*JavaScriptSPA* フォルダー内の *apiConfig.js* ファイルを開きます。
+1. 前のチュートリアルでダウンロードまたは複製した [active-directory-b2c-javascript-msal-singlepageapp][github-js-spa] プロジェクトで、 *JavaScriptSPA* フォルダー内の *apiConfig.js* ファイルを開きます。
 1. 先ほど作成した *demo.read* スコープの URI と Web API の URL を使用してサンプルを構成します。
-    1. `apiConfig` 定義で、`b2cScopes` 値を、*demo.read* スコープの完全な URI (前に記録した**スコープ**値) に置き換えます。
+    1. `apiConfig` 定義で、`b2cScopes` 値を、 *demo.read* スコープの完全な URI (前に記録した **スコープ** 値) に置き換えます。
     1. `webApi` 値のドメインを、前の手順で Web API アプリケーションを登録したときに追加したリダイレクト URI に変更します。
 
     API には `/hello` エンドポイントでアクセス可能なため、URI の */hello* はそのままにします。

@@ -11,14 +11,17 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 14ae5f01e23a7922f508c4a2674e1a3f29e354b8
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f8b4256f33a143c711a23a3564c2a46c69e0783b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166065"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675770"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Jupyter ノートブックを使用して Azure Machine Learning を探索する
+
+> [!NOTE] 
+> コミュニティ主導の例のリポジトリについては、 https://github.com/Azure/azureml-examples を参照してください。
 
 [サンプルの Azure Machine Learning Notebooks のリポジトリ](https://github.com/azure/machinelearningnotebooks)には、最新の Azure Machine Learning Python SDK のサンプルが含まれています。 これらの Juypter Notebook は、SDK の探索を支援し、独自の機械学習プロジェクトのモデルとして機能するように設計されています。
 

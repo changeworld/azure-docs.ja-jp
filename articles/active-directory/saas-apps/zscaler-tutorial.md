@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
-ms.openlocfilehash: e22d86f85b82af1109e79789073d7e442c51cf24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9d16f8cbb3da98a96f97a85d65672cc7ef70f65
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545762"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893673"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Zscaler の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88545762"
 * ユーザーが自分の Azure AD アカウントで Zscaler に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Zscaler では、**SP** Initiated SSO がサポートされます
-* Zscaler では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Zscaler では、 **SP** Initiated SSO がサポートされます
+* Zscaler では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-zscaler-from-the-gallery"></a>ギャラリーからの Zscaler の追加
 
@@ -50,7 +50,7 @@ Azure AD への Zscaler の統合を構成するには、管理対象の SaaS �
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Zscaler**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Zscaler** 」と入力します。
 1. 結果のパネルから **[Zscaler]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-zscaler"></a>Zscaler の Azure AD シングル サインオンの構成とテスト
@@ -85,7 +85,7 @@ Zscaler に対する Azure AD SSO を構成してテストするには、次の�
 
 1. Zscaler アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes]\(ユーザー属性\) を示しています。](common/edit-attribute.png)
 
 1. その他に、Zscaler アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
@@ -106,7 +106,7 @@ Zscaler に対する Azure AD SSO を構成してテストするには、次の�
     f. **[保存]** をクリックします。
 
     > [!NOTE]
-    > Azure AD で役割を構成する方法については、[ここ](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)をクリックしてください
+    > Azure AD で役割を構成する方法については、[ここ](../develop/active-directory-enterprise-app-role-management.md)をクリックしてください
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -150,15 +150,15 @@ Zscaler に対する Azure AD SSO を構成してテストするには、次の�
 
 5. **[ユーザーとグループ]** ダイアログの一覧から **[Britta Simon]** などのユーザーを選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-    ![image](./media/zscaler-tutorial/tutorial_zscaler_users.png)
+    ![[ユーザーとグループ] ダイアログ ボックスを示すスクリーンショット。ここでユーザーを選択できます。](./media/zscaler-tutorial/tutorial_zscaler_users.png)
 
 6. **[ロールの選択]** ダイアログで、一覧から適切なユーザー ロールを選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-    ![image](./media/zscaler-tutorial/tutorial_zscaler_roles.png)
+    ![[ロールの選択] ダイアログ ボックスを示すスクリーンショット。ここでユーザー ロールを選択できます。](./media/zscaler-tutorial/tutorial_zscaler_roles.png)
 
 7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンを選択します。
 
-    ![image](./media/zscaler-tutorial/tutorial_zscaler_assign.png)
+    ![[割り当ての追加] ダイアログ ボックスを示すスクリーンショット。ここで [割り当て] を選択できます。](./media/zscaler-tutorial/tutorial_zscaler_assign.png)
 
 ## <a name="configure-zscaler-sso"></a>Zscaler の SSO の構成
 
@@ -174,7 +174,7 @@ Zscaler に対する Azure AD SSO を構成してテストするには、次の�
 
 1. **[Administration]\(管理\) > [Authentication]\(認証\) > [Authentication Settings]\(認証の設定\)** に移動し、次の手順を実行します。
 
-    ![管理](./media/zscaler-tutorial/ic800206.png "管理")
+    ![Zscaler One サイトのスクリーンショット。説明されている手順が示されています。](./media/zscaler-tutorial/ic800206.png "管理")
 
     a. [Authentication Type]\(認証の種類\)で **[SAML]** を選択します。
 
@@ -184,7 +184,7 @@ Zscaler に対する Azure AD SSO を構成してテストするには、次の�
 
     ![ユーザーと認証の管理](./media/zscaler-tutorial/ic800208.png "[ユーザーと認証の管理]")
     
-    a. **[SAML Portal URL]\(SAML ポータル URL\)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** を貼り付けます。
+    a. **[SAML Portal URL]\(SAML ポータル URL\)** テキスト ボックスに、Azure portal からコピーした **ログイン URL** を貼り付けます。
 
     b. **[Login Name Attribute]\(ログイン名属性\)** テキスト ボックスに **NameID** の値を入力します。
 
@@ -202,7 +202,7 @@ Zscaler に対する Azure AD SSO を構成してテストするには、次の�
 
 1. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
 
-    ![管理](./media/zscaler-tutorial/ic800207.png)
+    ![[Configure User Authentication]\(ユーザー認証の構成\) ダイアログ ボックスを示すスクリーンショット。[Activate]\(アクティブ化\) が選択されています。](./media/zscaler-tutorial/ic800207.png)
 
     a. 左下の **[Activation]\(アクティブ化\)** メニューにポインターを置きます。
 
@@ -212,7 +212,7 @@ Zscaler に対する Azure AD SSO を構成してテストするには、次の�
 
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Internet Explorer でプロキシ設定を構成するには
 
-1. **Internet Explorer**を開始します。
+1. **Internet Explorer** を開始します。
 
 1. **[ツール]** メニューの **[インターネット オプション]** を選択し、 **[インターネット オプション]** ダイアログを開きます。
 
@@ -230,9 +230,9 @@ Zscaler に対する Azure AD SSO を構成してテストするには、次の�
 
     a. **[LAN にプロキシ サーバーを使用する]** をオンにします。
 
-    b. [アドレス] ボックスに「**gateway.zscaler.net**」と入力します。
+    b. [アドレス] ボックスに「 **gateway.zscaler.net** 」と入力します。
 
-    c. [ポート] ボックスに「 **80**」と入力します。
+    c. [ポート] ボックスに「 **80** 」と入力します。
 
     d. **[ローカル アドレスにはプロキシ サーバーを使用しない]** を選択します。
 
@@ -251,14 +251,14 @@ Zscaler に対する Azure AD SSO を構成してテストするには、次の�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Zscaler] タイルをクリックすると、SSO を設定した Zscaler に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Zscaler] タイルをクリックすると、SSO を設定した Zscaler に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Zscaler を試す](https://aad.portal.azure.com/)

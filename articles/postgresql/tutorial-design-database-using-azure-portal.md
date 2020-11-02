@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: d22e9c10c167e0b2646298acca75d506a0ea032f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7af3386a618fdcc58facb1d67c26692312d30a89
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707576"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535775"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Database for PostgreSQL - 単一サーバーを設計する
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-an-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の作成
 
-Azure Database for PostgreSQL サーバーは、定義済みの一連の[コンピューティング リソースとストレージ リソース](./concepts-compute-unit-and-storage.md)を使って作成されます。 サーバーは、[Azure リソース グループ](../azure-resource-manager/management/overview.md)内に作成されます。
+Azure Database for PostgreSQL サーバーは、定義済みの一連の[コンピューティング リソースとストレージ リソース](./concepts-pricing-tiers.md)を使って作成されます。 サーバーは、[Azure リソース グループ](../azure-resource-manager/management/overview.md)内に作成されます。
 
 Azure Database for PostgreSQL サーバーを作成するには、次の手順に従います。
 1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
@@ -55,7 +55,7 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
     :::image type="content" source="./media/quickstart-create-database-portal/2-pricing-tier.png" alt-text="Azure Database for PostgreSQL - データベースの作成":::
 
     > [!TIP]
-    > **自動拡張**が有効になっている場合、サーバーは、割り当てられた制限に近づくとワークロードに影響を与えずにストレージを増大させます。
+    > **自動拡張** が有効になっている場合、サーバーは、割り当てられた制限に近づくとワークロードに影響を与えずにストレージを増大させます。
 
 5. **[確認および作成]** を選択して、選択内容を確認します。 **[作成]** を選択して、サーバーをプロビジョニングします。 この操作には数分かかることがあります。
 
@@ -63,14 +63,14 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
 
     :::image type="content" source="./media/quickstart-create-database-portal/3-notifications.png" alt-text="Azure Database for PostgreSQL - データベースの作成":::
    
-   既定では、**postgres** データベースがサーバーに作成されます。 [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) は既定のデータベースで、ユーザー、ユーティリティ、サード パーティ製のアプリケーションが使用するためのものです。 (その他の既定のデータベースは **azure_maintenance** です。 その機能は、管理されたサービス プロセスをユーザーのアクションから分離することです。 このデータベースにはアクセスできません。)
+   既定では、 **postgres** データベースがサーバーに作成されます。 [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) は既定のデータベースで、ユーザー、ユーティリティ、サード パーティ製のアプリケーションが使用するためのものです。 (その他の既定のデータベースは **azure_maintenance** です。 その機能は、管理されたサービス プロセスをユーザーのアクションから分離することです。 このデータベースにはアクセスできません。)
 
 
 ## <a name="configure-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則の構成
 
 Azure Database for PostgreSQL サービスは、サーバーレベルでファイアウォールを使用します。 既定では、このファイアウォールにより、外部のすべてのアプリケーションやツールから、サーバーまたはサーバー上のすべてのデータベースへの接続が禁止されます。接続を許可するためには、特定の IP アドレス範囲に対して、ファイアウォールを開放するファイアウォール規則を作成する必要があります。 
 
-1. デプロイが完了したら、左側のメニューの **[すべてのリソース]** をクリックし、サーバー名「**mydemoserver**」を入力して、ご利用の新しく作成したサーバーを検索します。 検索結果に示されたサーバー名をクリックします。 サーバーの **[概要]** ページが開き、さらに多くの構成オプションが表示されます。
+1. デプロイが完了したら、左側のメニューの **[すべてのリソース]** をクリックし、サーバー名「 **mydemoserver** 」を入力して、ご利用の新しく作成したサーバーを検索します。 検索結果に示されたサーバー名をクリックします。 サーバーの **[概要]** ページが開き、さらに多くの構成オプションが表示されます。
 
    :::image type="content" source="./media/tutorial-design-database-using-azure-portal/4-locate.png" alt-text="Azure Database for PostgreSQL - データベースの作成":::
 
@@ -184,11 +184,11 @@ SELECT * FROM inventory;
 
    :::image type="content" source="./media/tutorial-design-database-using-azure-portal/10-azure-portal-restore.png" alt-text="Azure Database for PostgreSQL - データベースの作成":::
 
-   - **復元ポイント**:サーバーが変更される前の日時を選択します。
-   - **対象サーバー**:復元先の新しいサーバー名を指定します。
+   - **復元ポイント** :サーバーが変更される前の日時を選択します。
+   - **対象サーバー** :復元先の新しいサーバー名を指定します。
    - **[場所]** :リージョンを選択することはできません。既定では、ソース サーバーと同じ場所になります。
-   - **価格レベル**:サーバーを復元するときは、この値を変更することはできません。 ソース サーバーと同じレベルになります。 
-3. **[OK]** をクリックして、テーブルが削除される前の[状態にサーバーを復元](./howto-restore-server-portal.md)します。 異なる時点にサーバーを復元すると、[価格レベル](./concepts-pricing-tiers.md)のリテンション期間内であれば、指定した時点の元サーバーと同じサーバー内に、新しいサーバーが複製されます。
+   - **価格レベル** :サーバーを復元するときは、この値を変更することはできません。 ソース サーバーと同じレベルになります。 
+3. **[OK]** をクリックして、テーブルが削除される前の [状態にサーバーを復元](./howto-restore-server-portal.md)します。 異なる時点にサーバーを復元すると、[価格レベル](./concepts-pricing-tiers.md)のリテンション期間内であれば、指定した時点の元サーバーと同じサーバー内に、新しいサーバーが複製されます。
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure Portal とその他のユーティリティを使用して、次のことを行う方法を説明しました。

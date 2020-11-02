@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: b070d6600f18b87ec16f1f9894d577f4c0a6c51c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 47cca5019277b2f4d0025ccb6743589a21dfaafa
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149183"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480124"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>チュートリアル:メトリックと診断ログを設定して IoT ハブと連携させる
 
@@ -138,7 +138,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 2. [IoT Hub] ブレードの **[監視]** セクションを探します。 **[診断設定]** をクリックします。 
 
-   ![[IoT Hub] ブレードの診断設定領域を示すスクリーンショット](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
+   ![[モニター] セクションの [診断設定] が強調表示されているスクリーンショット。](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
 
 
 3. サブスクリプションとリソース グループが正しいことを確認します。 **[リソースの種類]** の **[すべて選択]** チェック ボックスをオフにし、 **[IoT Hub]** チェック ボックスをオンにします。 ( *[すべて選択]* の横に再びチェックマークが表示されますが、無視してください。) **[リソース]** でハブの名前を選択します。 実際の画面は、次の画像のようになります。 
@@ -151,7 +151,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
    ![ストレージ アカウントに診断をアーカイブするための設定を示すスクリーンショット。](./media/tutorial-use-metrics-and-diags/03-diagnostic-settings-storage.png)
 
-    **[構成]** をクリックして **[ストレージ アカウントの選択]** 画面を表示します。次に、右側の項目 (*contosostoragemon*) を選択し、 **[OK]** をクリックして [診断設定] ウィンドウに戻ります。 
+    **[構成]** をクリックして **[ストレージ アカウントの選択]** 画面を表示します。次に、右側の項目 ( *contosostoragemon* ) を選択し、 **[OK]** をクリックして [診断設定] ウィンドウに戻ります。 
 
    ![ストレージ アカウントに診断ログをアーカイブするための設定を示すスクリーンショット](./media/tutorial-use-metrics-and-diags/04-diagnostic-settings-after-storage.png)
 
@@ -178,17 +178,17 @@ az iot hub device-identity show --device-id $iotDeviceName \
    ![送信済みテレメトリ メッセージのメトリックを追加する画面のスクリーンショット。](./media/tutorial-use-metrics-and-diags/07-metrics-telemetry-messages-sent.png)
 
 
-4. 次に **[メトリックの追加]** をクリックして、グラフにもう 1 つメトリックを追加します。 ご自分のリソース グループ (**ContosoTestHub**) を選択します。 **[メトリック]** で、 **[Total number of messages used]\(使用されているメッセージの合計数\)** を選択します。 **[集計]** で **[平均]** を選択します。 
+4. 次に **[メトリックの追加]** をクリックして、グラフにもう 1 つメトリックを追加します。 ご自分のリソース グループ ( **ContosoTestHub** ) を選択します。 **[メトリック]** で、 **[Total number of messages used]\(使用されているメッセージの合計数\)** を選択します。 **[集計]** で **[平均]** を選択します。 
 
    これで画面には、最小化された *[Telemetry messages sent]\(送信済みテレメトリ メッセージ\)* のメトリックに加え、新しく *[Total number of messages used]\(使用されているメッセージの合計数\)* のメトリックが表示されます。
 
-   ![送信済みテレメトリ メッセージのメトリックを追加する画面のスクリーンショット。](./media/tutorial-use-metrics-and-diags/07-metrics-num-messages-used.png)
+   ![[ダッシュボードにピン留め] ボタンが強調表示されているスクリーンショット。](./media/tutorial-use-metrics-and-diags/07-metrics-num-messages-used.png)
 
    **[ダッシュボードにピン留め]** をクリックします。 これで、再度アクセスできるように、ご自分の Azure portal のダッシュボードにピン留めされます。 ダッシュボードにピン留めしなかった場合、ご自分の設定は保持されません。
 
 ## <a name="set-up-alerts"></a>アラートを設定する
 
-ポータルのハブに移動します。 **[リソース グループ]** をクリックし、*ContosoResources* を選択して、IoT ハブ (*ContosoTestHub*) を選択します。 
+ポータルのハブに移動します。 **[リソース グループ]** をクリックし、 *ContosoResources* を選択して、IoT ハブ ( *ContosoTestHub* ) を選択します。 
 
 IoT Hub はまだ [Azure Monitor のメトリック](../azure-monitor/platform/data-platform.md#metrics)に移行されていないため、[クラシック アラート](../azure-monitor/platform/alerts-classic.overview.md)を使用する必要があります。
 
@@ -202,25 +202,25 @@ IoT Hub はまだ [Azure Monitor のメトリック](../azure-monitor/platform/d
 
     フィールドに入力します。 
 
-    **サブスクリプション**:このフィールドはご自分の現在のサブスクリプションに設定しておきます。
+    **サブスクリプション** :このフィールドはご自分の現在のサブスクリプションに設定しておきます。
 
-    **ソース**:このフィールドは *[メトリック]* に設定します。
+    **ソース** :このフィールドは *[メトリック]* に設定します。
 
     **[リソース グループ]** :このフィールドは、ご自分の現在のリソース グループ *ContosoResources* に設定します。 
 
     **[リソースの種類]** :このフィールドは [IoT Hub] に設定します。 
 
-    **リソース**:ご自分の IoT ハブ *ContosoTestHub* を選択します。
+    **リソース** :ご自分の IoT ハブ *ContosoTestHub* を選択します。
 
 3. 新しいアラートを設定するために、 **[メトリック アラートの追加 (クラシック)]** をクリックします。
 
     フィールドに入力します。
 
-    **Name**:ご自分のアラート ルールの名前を指定します (*telemetry-messages* など)。
+    **Name** :ご自分のアラート ルールの名前を指定します ( *telemetry-messages* など)。
 
-    **説明**:ご自分のアラートの説明を入力します (「*送信済みテレメトリ メッセージが 1,000 件に達したときのアラート*」など)。 
+    **説明** :ご自分のアラートの説明を入力します (「 *送信済みテレメトリ メッセージが 1,000 件に達したときのアラート* 」など)。 
 
-    **ソース**:これは *[メトリック]* に設定します。
+    **ソース** :これは *[メトリック]* に設定します。
 
     **[サブスクリプション]** 、 **[リソース グループ]** 、 **[リソース]** は、お客様が **[クラシック アラートの表示]** 画面で選択した値に設定する必要があります。 
 
@@ -230,13 +230,13 @@ IoT Hub はまだ [Azure Monitor のメトリック](../azure-monitor/platform/d
 
 4. グラフの後にある次のフィールドを設定します。
 
-   **条件**: *[次の値より大きい]* に設定します。
+   **条件** : *[次の値より大きい]* に設定します。
 
-   **しきい値**: 「1000」に設定します。
+   **しきい値** : 「1000」に設定します。
 
-   **期間**: *[直近 5 分]* に設定します。
+   **期間** : *[直近 5 分]* に設定します。
 
-   **通知メールの受信者**: ここにはご自分の電子メール アドレスを入力します。 
+   **通知メールの受信者** : ここにはご自分の電子メール アドレスを入力します。 
 
    ![アラート画面の下半分を示すスクリーンショット。](./media/tutorial-use-metrics-and-diags/11-alerts-add-rule-bottom.png)
 
@@ -246,11 +246,11 @@ IoT Hub はまだ [Azure Monitor のメトリック](../azure-monitor/platform/d
 
    **[クラシック アラートの表示]** 画面で、 **[メトリック アラートの追加 (クラシック)]** をクリックし、 **[ルールの追加]** ウィンドウで次のフィールドを設定します。
 
-   **Name**:ご自分のアラート ルールの名前を指定します (*number-of-messages-used* など)。
+   **Name** :ご自分のアラート ルールの名前を指定します ( *number-of-messages-used* など)。
 
-   **説明**:ご自分のアラートの説明を入力します (「*クォータに近づきつつあるときのアラート*」など)。
+   **説明** :ご自分のアラートの説明を入力します (「 *クォータに近づきつつあるときのアラート* 」など)。
 
-   **ソース**:このフィールドは *[メトリック]* に設定します。
+   **ソース** :このフィールドは *[メトリック]* に設定します。
 
     **[サブスクリプション]** 、 **[リソース グループ]** 、 **[リソース]** は、お客様が **[クラシック アラートの表示]** 画面で選択した値に設定する必要があります。 
 
@@ -258,13 +258,13 @@ IoT Hub はまだ [Azure Monitor のメトリック](../azure-monitor/platform/d
 
 6. グラフの下にある次のフィールドを設定します。
 
-   **条件**: *[次の値より大きい]* に設定します。
+   **条件** : *[次の値より大きい]* に設定します。
 
-   **しきい値**: 「1000」に設定します。
+   **しきい値** : 「1000」に設定します。
 
-   **期間**: このフィールドは、 *[直近 5 分]* に設定します。 
+   **期間** : このフィールドは、 *[直近 5 分]* に設定します。 
 
-   **通知メールの受信者**: ここにはご自分の電子メール アドレスを入力します。 
+   **通知メールの受信者** : ここにはご自分の電子メール アドレスを入力します。 
 
    **[OK]** をクリックして、ルールを保存します。 
 
@@ -282,7 +282,7 @@ IoT Hub はまだ [Azure Monitor のメトリック](../azure-monitor/platform/d
 
 [IoT デバイス シミュレーション](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)のソリューションをダウンロードします。 このリンクにより、いくつかのアプリケーションを含むリポジトリがダウンロードされます。探しているソリューションは、iot-hub/Tutorials/Routing/ にあります。
 
-ソリューション ファイル (SimulatedDevice.sln) をダブルクリックしてコードを Visual Studio で開いた後、Program.cs を開きます。 `{iot hub hostname}` を、IoT ハブのホスト名で置き換えます。 IoT ハブのホスト名の形式は、 **{iot-hub-name}.azure-devices.net** です。 このチュートリアルでのハブのホスト名は、**ContosoTestHub.azure-devices.net** です。 次に、`{device key}` を、シミュレートされたデバイスを設定するときに保存したデバイス キーに置き換えます。 
+ソリューション ファイル (SimulatedDevice.sln) をダブルクリックしてコードを Visual Studio で開いた後、Program.cs を開きます。 `{iot hub hostname}` を、IoT ハブのホスト名で置き換えます。 IoT ハブのホスト名の形式は、 **{iot-hub-name}.azure-devices.net** です。 このチュートリアルでのハブのホスト名は、 **ContosoTestHub.azure-devices.net** です。 次に、`{device key}` を、シミュレートされたデバイスを設定するときに保存したデバイス キーに置き換えます。 
 
    ```csharp
         static string myDeviceId = "contoso-test-device";
@@ -304,13 +304,13 @@ await Task.Delay(10);
 
 ### <a name="see-the-metrics-in-the-portal"></a>ポータルでメトリックを確認する
 
-ダッシュボードでご自分のメトリックを開きます。 時間の値を *[過去 30 分間]* (時間の粒度は "*1 分*") に変更します。 送信済みテレメトリ メッセージと、使用されているメッセージの合計数がグラフに示され、最新の数値がグラフの一番下に表示されます。
+ダッシュボードでご自分のメトリックを開きます。 時間の値を *[過去 30 分間]* (時間の粒度は " *1 分* ") に変更します。 送信済みテレメトリ メッセージと、使用されているメッセージの合計数がグラフに示され、最新の数値がグラフの一番下に表示されます。
 
    ![メトリックを示すスクリーンショット。](./media/tutorial-use-metrics-and-diags/13-metrics-populated.png)
 
 ### <a name="see-the-alerts"></a>アラートを確認する
 
-アラートに戻ります。 **[リソース グループ]** をクリックし、*ContosoResources* を選択して、ハブ *ContosoTestHub* を選択します。 ハブについて表示されたプロパティ ページで、 **[アラート]** 、 **[クラシック アラートの表示]** の順に選択します。 
+アラートに戻ります。 **[リソース グループ]** をクリックし、 *ContosoResources* を選択して、ハブ *ContosoTestHub* を選択します。 ハブについて表示されたプロパティ ページで、 **[アラート]** 、 **[クラシック アラートの表示]** の順に選択します。 
 
 送信されたメッセージの数が上限を超えると、電子メール アラートが届き始めます。 アクティブなアラートがあるかどうかを確認するには、ご自分のハブに移動して **[アラート]** を選択します。 アクティブなアラートと共に、警告があるかどうかが表示されます。 
 

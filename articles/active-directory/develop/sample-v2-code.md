@@ -12,12 +12,12 @@ ms.date: 10/21/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e4327d8426a5dc1668993efd418c3f21624d407d
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 49bba8054065123d7409f26b61d1dfc2580ef720
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327656"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636053"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft ID プラットフォームのコード サンプル (v2.0 エンドポイント)
 
@@ -41,10 +41,12 @@ GitHub でサンプルに協力することもできます。 その方法につ
 | ![JavaScript のロゴを示す画像](media/sample-v2-code/logo_js.png) [JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | SPA から Microsoft Graph を呼び出します。 |[javascript-graphapi-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
 | ![JavaScript のロゴを示す画像](media/sample-v2-code/logo_js.png) [JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | SPA から認証コード フローと PKCE を使用して Microsoft Graph を呼び出します。 |[javascript-v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) |
 | ![JavaScript のロゴを示す画像](media/sample-v2-code/logo_js.png) [JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | SPA から B2C を呼び出します。 |[b2c-javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
-| ![Angular のロゴを示す画像](media/sample-v2-code/logo_angular.png) [JavaScript (MSAL-Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| SPA から Microsoft Graph を呼び出します。  | [active-directory-javascript-singlepageapp-angular](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) |
+| ![JavaScript のロゴを示す画像](media/sample-v2-code/logo_js.png) [JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | SPA から認証コード フローと PKCE を使用して B2C を呼び出します |[b2c-javascript-spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) |
+| ![Angular のロゴを示す画像](media/sample-v2-code/logo_angular.png) [Angular (MSAL-Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| SPA から Microsoft Graph を呼び出します。  | [active-directory-javascript-singlepageapp-angular](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) |
 | ![Angular のロゴを示す画像](media/sample-v2-code/logo_angular.png) [Angular (MSAL-Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| SPA からカスタム Web API を呼び出します。 | [ms-identity-javascript-angular-spa-aspnetcore-webapi](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi) |
 | ![Angular のロゴを示す画像](media/sample-v2-code/logo_angular.png) [Angular (MSAL-Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | SPA から B2C を呼び出します。 |[active-directory-b2c-javascript-angular-spa](https://github.com/Azure-Samples/active-directory-b2c-javascript-angular-spa) |
 | ![React のロゴを示す画像](media/sample-v2-code/logo_react.png) [React (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core)| SPA からカスタム Web API を呼び出し、そこから Microsoft Graph を呼び出します。  | [ms-identity-javascript-react-spa-dotnetcore-webapi-obo](https://github.com/Azure-Samples/ms-identity-javascript-react-spa-dotnetcore-webapi-obo) |
+| ![JavaScript のロゴを示す画像](media/sample-v2-code/logo_js.png) [JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | SPA からカスタム Web API を呼び出し、そこから Microsoft Graph を呼び出します  | [ms-identity-javascript-tutorial-chapter4-obo](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/4-AdvancedGrants/4-1-call-api-graph) |
 | ![Angular のロゴを示す画像](media/sample-v2-code/logo_angular.png) [Angular (MSAL-Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | SPA からアプリのロールとセキュリティ グループを使用してカスタム Web API を呼び出します。 |[ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups) |
 
 ## <a name="web-applications"></a>Web アプリケーション
@@ -61,7 +63,7 @@ GitHub でサンプルに協力することもできます。 その方法につ
 
 ## <a name="desktop-and-mobile-public-client-apps"></a>デスクトップおよびモバイルのパブリック クライアント アプリ
 
-次のサンプルは、ユーザーの名前で Microsoft Graph API またはお客様独自の Web API にアクセスするパブリック クライアント アプリケーション (デスクトップまたはモバイル アプリケーション) を示しています。 "*WAM を使用するデスクトップ (コンソール)* " を除き、これらのすべてのクライアント アプリケーションで Microsoft Authentication Library (MSAL) を使用します。
+次のサンプルは、ユーザーの名前で Microsoft Graph API またはお客様独自の Web API にアクセスするパブリック クライアント アプリケーション (デスクトップまたはモバイル アプリケーション) を示しています。 " *WAM を使用するデスクトップ (コンソール)* " を除き、これらのすべてのクライアント アプリケーションで Microsoft Authentication Library (MSAL) を使用します。
 
 | クライアント アプリケーション | プラットフォーム | フロー/許可 | Microsoft Graph の呼び出し | ASP.NET Core Web API の呼び出し |
 | ------------------ | -------- |  ----------| ---------- | ------------------------- |
@@ -101,7 +103,7 @@ GitHub でサンプルに協力することもできます。 その方法につ
 
 ## <a name="multi-tenant-saas-applications"></a>マルチテナント SaaS アプリケーション
 
-次のサンプルでは、任意の Azure Active Directory (Azure AD) テナントからのサインインを受け付けるようにアプリケーションを構成する方法を示します。 アプリケーションを "*マルチテナント*" として構成すると、**サービスとしてのソフトウェア** (SaaS) アプリケーションを多数の組織に提供でき、ユーザーはアカウントの使用に同意した後でアプリケーションにサインインできるようになります。
+次のサンプルでは、任意の Azure Active Directory (Azure AD) テナントからのサインインを受け付けるようにアプリケーションを構成する方法を示します。 アプリケーションを " *マルチテナント* " として構成すると、 **サービスとしてのソフトウェア** (SaaS) アプリケーションを多数の組織に提供でき、ユーザーはアカウントの使用に同意した後でアプリケーションにサインインできるようになります。
 
 | プラットフォーム | 説明 | Link |
 | -------- | --------------------- | -------- |
@@ -129,8 +131,8 @@ GitHub でサンプルに協力することもできます。 その方法につ
 | プラットフォーム | サンプル |
 | -------- | ------------------- |
 | ![ASP.NET Core のロゴを示す画像](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [dotnet-native-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions) の ASP.NET Core Web API (サービス) Azure Function  |
-| ![Node.js のロゴを示す画像](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | [NodeJS and passport-azure-ad](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions) の Web API (サービス) |
 | ![Python のロゴを示す画像](media/sample-v2-code/logo_python.png)</p>Python | [Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions) の Web API (サービス) |
+| ![Node.js のロゴを示す画像](media/sample-v2-code/logo_nodejs.png)</p>Node.js | [Node.js および passport-azure-ad](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions) の Web API (サービス) |
 | ![Node.js のロゴを示す画像](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | [NodeJS and passport-azure-ad using on behalf of](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) の Web API (サービス) |
 
 ## <a name="other-microsoft-graph-samples"></a>Microsoft Graph のその他のサンプル

@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
-ms.openlocfilehash: f5eb5f5ce6c6ded3fffc95b73d3ac86ae9e94ba2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d5b6ecc12cee983cee0772da8b6f8f26a3b5a8ae
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88055464"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890277"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>C\# で最初の Durable Functions を作成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "88055464"
 
 この記事では、Visual Studio Code を使用して、"hello world" 永続関数をローカルで作成してテストする方法を学習します。  この関数は、他の関数の呼び出しを調整し、連結します。 その後、関数コードを Azure に発行します。 これらのツールは、VS Code の [Azure Functions 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)の一部として利用できます。
 
-![Azure で Durable Functions を実行する](./media/durable-functions-create-first-csharp/functions-vscode-complete.png)
+![持続的関数が表示されている Visual Studio Code ウィンドウを示すスクリーンショット。](./media/durable-functions-create-first-csharp/functions-vscode-complete.png)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -86,7 +86,7 @@ Azure Functions Core Tools は、必要に応じて Visual Studio Code により
     | リソース グループの選択 | *<一意の名前>* | 作成するリソース グループの名前 |
     | 場所を選択します。 | *リージョン* | 近くのリージョンを選択します |
 
-新しい関数を含むクラスがプロジェクトに追加されます。 また VS Code により、ストレージ アカウントの接続文字列が *local.settings.json* に追加され、[`Microsoft.Azure.WebJobs.Extensions.DurableTask`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) NuGet パッケージへの参照が *.csproj* プロジェクトファイルに追加されます。
+新しい関数を含むクラスがプロジェクトに追加されます。 また VS Code により、ストレージ アカウントの接続文字列が *local.settings.json* に追加され、 [`Microsoft.Azure.WebJobs.Extensions.DurableTask`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) NuGet パッケージへの参照が *.csproj* プロジェクトファイルに追加されます。
 
 新しい *HelloOrchestration.cs* ファイルを開いて内容を表示します。 この永続関数は、次のメソッドを使用した単純な関数チェーンの例です。  
 
@@ -102,7 +102,7 @@ Azure Functions Core Tools は、必要に応じて Visual Studio Code により
 
 Azure Functions Core Tools を使用すると、ローカルの開発用コンピューター上で Azure Functions プロジェクトを実行できます。 Visual Studio Code から初めて関数を起動すると、これらのツールをインストールするよう求めるメッセージが表示されます。
 
-1. 関数をテストするには、`SayHello` アクティビティの関数コードにブレークポイントを設定し、F5 キーを押して関数アプリ プロジェクトを開始します。 Core Tools からの出力が**ターミナル** パネルに表示されます。
+1. 関数をテストするには、`SayHello` アクティビティの関数コードにブレークポイントを設定し、F5 キーを押して関数アプリ プロジェクトを開始します。 Core Tools からの出力が **ターミナル** パネルに表示されます。
 
     > [!NOTE]
     > デバッグについて詳しくは、[Durable Functions の診断](durable-functions-diagnostics.md#debugging)に関する記事をご覧ください。
@@ -136,7 +136,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
     }
     ```
 
-1. デバッグを停止するには、VS Code で **Shift キーを押しながら F5 キー**を押します。
+1. デバッグを停止するには、VS Code で **Shift キーを押しながら F5 キー** を押します。
 
 関数がローカル コンピューター上で正常に動作することを確認したら、プロジェクトを Azure に発行します。
 
@@ -146,7 +146,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
 ## <a name="test-your-function-in-azure"></a>Azure で関数をテストする
 
-1. **出力**パネルから HTTP トリガーの URL をコピーします。 HTTP によってトリガーされる関数を呼び出す URL は、次の形式である必要があります。
+1. **出力** パネルから HTTP トリガーの URL をコピーします。 HTTP によってトリガーされる関数を呼び出す URL は、次の形式である必要があります。
 
     `https://<functionappname>.azurewebsites.net/api/HelloOrchestration_HttpStart`
 
@@ -165,13 +165,13 @@ Visual Studio Code を使用して、C# の永続関数アプリを作成して�
 
 この記事では、Visual Studio 2019 を使用して、"hello world" 永続関数をローカルで作成してテストする方法を学習します。  この関数は、他の関数の呼び出しを調整し、連結します。 その後、関数コードを Azure に発行します。 これらのツールは、Visual Studio 2019 の Azure の開発ワークロードの一部として使用できます。
 
-![Azure で Durable Functions を実行する](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
+![持続的関数が表示されている Visual Studio 2019 ウィンドを示すスクリーンショット。](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、以下が必要です。
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) をインストールします。 **Azure 開発**ワークロードもインストールされていることを確認します。 Visual Studio 2017 でも Durable Functions 開発はサポートされていますが、UI と手順は異なります。
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) をインストールします。 **Azure 開発** ワークロードもインストールされていることを確認します。 Visual Studio 2017 でも Durable Functions 開発はサポートされていますが、UI と手順は異なります。
 
 * [Azure Storage Emulator](../../storage/common/storage-use-emulator.md) がインストールされ、実行されていることを確認します。
 
@@ -187,7 +187,7 @@ Azure Functions テンプレートでは、Azure の関数アプリに発行で�
 
     ![Visual Studio で関数を作成するための [新しいプロジェクト] ダイアログ](./media/durable-functions-create-first-csharp/functions-vs-new-project.png)
 
-1. プロジェクトの**プロジェクト名**を入力し、 **[OK]** を選択します。 プロジェクト名は、C# 名前空間として有効である必要があります。そのため、アンダースコア、ハイフン、その他の英数字以外の文字は使用しないでください。
+1. プロジェクトの **プロジェクト名** を入力し、 **[OK]** を選択します。 プロジェクト名は、C# 名前空間として有効である必要があります。そのため、アンダースコア、ハイフン、その他の英数字以外の文字は使用しないでください。
 
 1. **[新しい Azure Functions アプリケーションの作成]** で、図の下の表に示されている設定を使用してください。
 
@@ -237,7 +237,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
 3. HTTP 要求の URL をブラウザーのアドレス バーに貼り付け、要求を実行します。 関数によって返されたローカルの GET 要求に対するブラウザーでの応答を次に示します。
 
-    ![ブラウザーでの関数 localhost の応答](./media/durable-functions-create-first-csharp/functions-vs-status.png)
+    ![statusQueryGetUri が強調表示されているブラウザー ウィンドウを示すスクリーンショット。](./media/durable-functions-create-first-csharp/functions-vs-status.png)
 
     応答は、永続的なオーケストレーションが正常に開始されたことを示す HTTP 関数の最初の結果です。  これはまだオーケストレーションの最終的な結果ではありません。  応答には、いくつかの便利な URL が含まれています。  ここでは、オーケストレーションの状態を照会してみましょう。
 
@@ -261,7 +261,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
     }
     ```
 
-5. デバッグを停止するには、**Shift キーを押しながら F5 キー**を押します。
+5. デバッグを停止するには、 **Shift キーを押しながら F5 キー** を押します。
 
 関数がローカル コンピューター上で正常に動作することを確認した後、プロジェクトを Azure に発行します。
 

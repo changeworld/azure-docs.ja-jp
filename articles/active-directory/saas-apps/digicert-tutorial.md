@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: jeedes
-ms.openlocfilehash: b2027cbe3fd04f500e03a2b3bdcb7463643d15a2
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 1b9ef8887216443640a24c36906e7b45e7064a5e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91774589"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454815"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-digicert"></a>チュートリアル: Azure Active Directory と DigiCert の統合
 
@@ -27,7 +27,7 @@ DigiCert と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して DigiCert に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ DigiCert と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* DigiCert では、**IDP** Initiated SSO がサポートされます
+* DigiCert では、 **IDP** Initiated SSO がサポートされます
 
 ## <a name="adding-digicert-from-the-gallery"></a>ギャラリーからの DigiCert の追加
 
@@ -61,13 +61,13 @@ Azure AD への DigiCert の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**DigiCert**」と入力し、結果パネルで **[DigiCert]** を選び、 **[追加]** ボタン をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **DigiCert** 」と入力し、結果パネルで **[DigiCert]** を選び、 **[追加]** ボタン をクリックして、アプリケーションを追加します。
 
      ![結果一覧の DigiCert](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、DigiCert で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、DigiCert で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと DigiCert 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 DigiCert で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
@@ -107,7 +107,7 @@ DigiCert で Azure AD シングル サインオンを構成するには、次の
 
     ![[編集] ボタンが選択されている [ユーザー属性] セクションを示すスクリーンショット。](common/edit-attribute.png)
 
-6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
+6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、 **編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
 
     | Name |  ソース属性|
     | ---------------| --------------- |
@@ -116,7 +116,7 @@ DigiCert で Azure AD シングル サインオンを構成するには、次の
     | digicertrole | CanAccessCertCentral |
 
     > [!Note]
-    > 属性 **company** の値は実数ではありません。 この値を実際の企業コードで更新します。 **company** 属性の値を取得するには、[DigiCert サポート チーム](mailto:support@digicert.com)に問い合わせてください。
+    > 属性 **company** の値は実数ではありません。 この値を実際の企業コードで更新します。 **company** 属性の値を取得するには、 [DigiCert サポート チーム](mailto:support@digicert.com)に問い合わせてください。
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
@@ -136,7 +136,7 @@ DigiCert で Azure AD シングル サインオンを構成するには、次の
 
     g. **[保存]** をクリックします。
 
-7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -152,7 +152,7 @@ DigiCert で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="configure-digicert-single-sign-on"></a>DigiCert シングル サインオンの構成
 
-**DigiCert** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [DigiCert サポート チーム](mailto:support@digicert.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**DigiCert** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [DigiCert サポート チーム](mailto:support@digicert.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -170,9 +170,9 @@ DigiCert で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -207,19 +207,18 @@ DigiCert で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="create-digicert-test-user"></a>DigiCert のテスト ユーザーの作成
 
-このセクションでは、DigiCert で Britta Simon というユーザーを作成します。  [DigiCert サポート チーム](mailto:support@digicert.com)と協力して、DigiCert プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、DigiCert で Britta Simon というユーザーを作成します。 [DigiCert サポート チーム](mailto:support@digicert.com)と連携して、DigiCert プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [DigiCert] タイルをクリックすると、SSO を設定した DigiCert に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [DigiCert] タイルをクリックすると、SSO を設定した DigiCert に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

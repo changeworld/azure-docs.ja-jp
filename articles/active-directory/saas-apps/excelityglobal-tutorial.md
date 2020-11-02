@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 48aa1313dbcc9e56fc50abd64ea167fb1ca8943b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c9eaf68036531530f844e919bacfae922441b79
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88555350"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453838"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-excelityglobal"></a>チュートリアル:Azure Active Directory と ExcelityGlobal の統合
 
@@ -27,7 +27,7 @@ ExcelityGlobal と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して ExcelityGlobal に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ ExcelityGlobal と Azure AD の統合を構成するには、次のものが必�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* ExcelityGlobal では、**IDP** によって開始される SSO がサポートされます
+* ExcelityGlobal では、 **IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-excelityglobal-from-the-gallery"></a>ギャラリーからの ExcelityGlobal の追加
 
@@ -61,13 +61,13 @@ Azure AD への ExcelityGlobal の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**ExcelityGlobal**」と入力し、結果パネルで **[ExcelityGlobal]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **ExcelityGlobal** 」と入力し、結果パネルで **[ExcelityGlobal]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの ExcelityGlobal](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、ExcelityGlobal で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、ExcelityGlobal で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと ExcelityGlobal 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 ExcelityGlobal で Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -103,17 +103,17 @@ ExcelityGlobal で Azure AD シングル サインオンを構成するには、
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
 
-    **運用環境**: `https://ess.excelityglobal.com`
+    **運用環境** : `https://ess.excelityglobal.com`
 
-    **サンドボックス環境**: `https://s6.excelityglobal.com`
+    **サンドボックス環境** : `https://s6.excelityglobal.com`
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    **運用環境**: `https://ess.excelityglobal.com/ACS`
+    **運用環境** : `https://ess.excelityglobal.com/ACS`
 
-    **サンドボックス環境**: `https://s6.excelityglobal.com/ACS`
+    **サンドボックス環境** : `https://s6.excelityglobal.com/ACS`
 
-5. ExcelityGlobal アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 ExcelityGlobal アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+5. ExcelityGlobal アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 ExcelityGlobal アプリケーションでは、 **nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
  
     ![image](common/edit-attribute.png)
 
@@ -137,7 +137,7 @@ ExcelityGlobal で Azure AD シングル サインオンを構成するには、
 
 ### <a name="configure-excelityglobal-single-sign-on"></a>ExcelityGlobal のシングル サインオンの構成
 
-**ExcelityGlobal** 側でシングル サインオンを構成するには、**サムプリントの値**と Azure portal からコピーした適切な URL を [ExcelityGlobal サポート チーム](https://www.excelityglobal.com/contact-us)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**ExcelityGlobal** 側でシングル サインオンを構成するには、 **サムプリントの値** と Azure portal からコピーした適切な URL を [ExcelityGlobal サポート チーム](https://www.excelityglobal.com/contact-us)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -155,9 +155,9 @@ ExcelityGlobal で Azure AD シングル サインオンを構成するには、
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -192,18 +192,18 @@ ExcelityGlobal で Azure AD シングル サインオンを構成するには、
 
 ### <a name="create-excelityglobal-test-user"></a>ExcelityGlobal のテスト ユーザーの作成
 
-このセクションでは、ExcelityGlobal で Britta Simon というユーザーを作成します。  [ExcelityGlobal サポート チーム](https://www.excelityglobal.com/contact-us)と協力して、ExcelityGlobal プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、ExcelityGlobal で Britta Simon というユーザーを作成します。 [ExcelityGlobal サポート チーム](https://www.excelityglobal.com/contact-us)と連携して、ExcelityGlobal プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [ExcelityGlobal] タイルをクリックすると、SSO を設定した ExcelityGlobal に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [ExcelityGlobal] タイルをクリックすると、SSO を設定した ExcelityGlobal に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

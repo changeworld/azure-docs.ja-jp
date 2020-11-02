@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: c2738e1a6168440adee79ebaa599a313600153a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d87be085331c174b58e2a475e18efa54a78cfea
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546765"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895173"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>チュートリアル: Azure Active Directory と SAP Cloud Platform の統合
 
@@ -27,7 +27,7 @@ SAP Cloud Platform と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで自動的に SAP Cloud Platform にサインオン (シングル サインオン) できるように、設定が可能です。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -37,7 +37,7 @@ SAP Cloud Platform と Azure AD の統合を構成するには、次のものが
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
 * SAP Cloud Platform でのシングル サインオンが有効なサブスクリプション
 
-このチュートリアルを完了すると、SAP Cloud Platform に割り当てた Azure AD ユーザーは、「 [アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、SAP Cloud Platform に割り当てた Azure AD ユーザーは、「 [アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
 
 >[!IMPORTANT]
 >シングル サインオンをテストするには、独自のアプリケーションをデプロイするか、SAP Cloud Platform アカウントでアプリケーションをサブスクライブする必要があります。 このチュートリアルでは、アプリケーションはアカウントにデプロイされます。
@@ -47,7 +47,7 @@ SAP Cloud Platform と Azure AD の統合を構成するには、次のものが
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* SAP Cloud Platform では、**SP** によって開始される SSO がサポートされます
+* SAP Cloud Platform では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-sap-cloud-platform-from-the-gallery"></a>ギャラリーからの SAP Cloud Platform の追加
 
@@ -67,13 +67,13 @@ Azure AD への SAP Cloud Platform の統合を構成するには、ギャラリ
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**SAP Cloud Platform**」と入力して、結果パネルで **[SAP Cloud Platform]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **SAP Cloud Platform** 」と入力して、結果パネルで **[SAP Cloud Platform]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの SAP Cloud Platform](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、SAP Cloud Platform で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、SAP Cloud Platform で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと SAP Cloud Platform 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 SAP Cloud Platform で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -136,7 +136,7 @@ SAP Cloud Platform で Azure AD シングル サインオンを構成するに�
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 サインオン URL と識別子を取得するには、[SAP Cloud Platform クライアント サポート チーム](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/5dd739823b824b539eee47b7860a00be.html)に問い合わせてください。 応答 URL については、チュートリアルの後半で説明されている信頼管理セクションから入手できます。
     > 
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -150,7 +150,7 @@ SAP Cloud Platform で Azure AD シングル サインオンを構成するに�
 
 3. 信頼管理セクションの **[Local Service Provider]\(ローカル サービス プロバイダー\)** で、次の手順に従います。
 
-    ![信頼管理](./media/sap-hana-cloud-platform-tutorial/ic793931.png "信頼管理")
+    ![[Local Service Provider]\(ローカル サービス プロバイダー\) タブが選択され、すべてのテキスト ボックスが強調表示されている [Trust Management]\(信頼管理\) セクションを示すスクリーンショット。](./media/sap-hana-cloud-platform-tutorial/ic793931.png "信頼管理")
    
     a. **[編集]** をクリックします。
 
@@ -158,7 +158,7 @@ SAP Cloud Platform で Azure AD シングル サインオンを構成するに�
 
     c. **[Local Provider Name (ローカル プロバイダー名)]** は既定値のままにします。 この値をコピーして、SAP Cloud Platform 用の Azure AD 構成の **[識別子]** フィールドに貼り付けます。
 
-    d. **署名キー**と**署名証明書**キーのペアを生成するには、 **[Generate Key Pair (キー ペアの生成)]** をクリックします。
+    d. **署名キー** と **署名証明書** キーのペアを生成するには、 **[Generate Key Pair (キー ペアの生成)]** をクリックします。
 
     e. **[Principal Propagation (プリンシパル伝達)]** で **[無効]** を選択します。
 
@@ -172,13 +172,13 @@ SAP Cloud Platform で Azure AD シングル サインオンを構成するに�
 
     a. **[Get Metadata]\(メタデータの取得\)** をクリックして、SAP Cloud Platform メタデータ ファイルをダウンロードします。
 
-    b. ダウンロードした SAP Cloud Platform のメタデータ XML ファイルを開き、**ns3:AssertionConsumerService** タグを見つけます。
+    b. ダウンロードした SAP Cloud Platform のメタデータ XML ファイルを開き、 **ns3:AssertionConsumerService** タグを見つけます。
  
     c. **Location** 属性の値をコピーして、SAP Cloud Platform 用の Azure AD 構成の **[応答 URL]** フィールドに貼り付けます。
 
 5. **[信頼できる ID プロバイダー]** タブをクリックし、 **[Add Trusted Identity Provider (信頼できる ID プロバイダーの追加)]** をクリックします。
    
-    ![信頼管理](./media/sap-hana-cloud-platform-tutorial/ic790802.png "信頼管理")
+    ![[Trusted Identity Provider]\(信頼できる ID プロバイダー\) タブが選択されている [Trust Management]\(信頼管理\) ページを示すスクリーンショット。](./media/sap-hana-cloud-platform-tutorial/ic790802.png "信頼管理")
    
     >[!NOTE]
     >信頼できる ID プロバイダーの一覧を管理するには、ローカル サービス プロバイダーのセクションでカスタム構成タイプを選んでおく必要があります。 既定の構成タイプでは、SAP ID サービスに対する編集不可能で暗黙的な信頼があります。 [なし] では、いずれの信頼設定もありません。
@@ -221,7 +221,7 @@ SAP Cloud Platform で Azure AD シングル サインオンを構成するに�
 
 SAP Cloud Platform でグループを使用すると、SAP Cloud Platform アプリケーションで、1 つ以上のロールに 1 人以上のユーザーを動的に割り当てることができます。この割り当ては SAML 2.0 アサーションの属性値によって決定されます。 
 
-たとえば、アサーションに属性 "*contract=temporary*" が含まれている場合、対象となるすべてのユーザーが "*TEMPORARY*" グループに追加されます。 "*TEMPORARY*" グループには、SAP Cloud Platform アカウントにデプロイされた 1 つ以上のアプリケーションの 1 つ以上のロールが含まれます。
+たとえば、アサーションに属性 " *contract=temporary* " が含まれている場合、対象となるすべてのユーザーが " *TEMPORARY* " グループに追加されます。 " *TEMPORARY* " グループには、SAP Cloud Platform アカウントにデプロイされた 1 つ以上のアプリケーションの 1 つ以上のロールが含まれます。
  
 SAP Cloud Platform アカウントでアプリケーションの 1 つ以上のロールに多くのユーザーを同時に割り当てる場合は、アサーション ベースのグループを使用します。 1 人または少数のユーザーのみを特定のロールに割り当てる場合は、SAP Cloud Platform コックピットの **[承認]** タブで直接割り当てることをお勧めします。
 
@@ -241,9 +241,9 @@ SAP Cloud Platform アカウントでアプリケーションの 1 つ以上の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -258,7 +258,7 @@ SAP Cloud Platform アカウントでアプリケーションの 1 つ以上の�
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、「**SAP Cloud Platform**」と入力して選択します。
+2. アプリケーションの一覧で、「 **SAP Cloud Platform** 」と入力して選択します。
 
     ![アプリケーションの一覧の [SAP Cloud Platform] リンク](common/all-applications.png)
 
@@ -302,13 +302,12 @@ Azure AD ユーザーが SAP Cloud Platform にログインできるようにす
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [SAP Cloud Platform] タイルをクリックすると、SSO を設定した SAP Cloud Platform に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [SAP Cloud Platform] タイルをクリックすると、SSO を設定した SAP Cloud Platform に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

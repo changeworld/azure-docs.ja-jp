@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: trbye
-ms.openlocfilehash: 65340bfcab76bd35901d1b3a9f3b4a8736205706
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 7575e174f1f47d55c507fdbf0386fbd578649839
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91376788"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92499156"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して文字起こしをする機能です (多くの場合、音声テキスト変換と呼ばれます)。 このクイックスタートでは、アプリや製品で Speech SDK を使用し、高品質の音声テキスト変換を実行する方法について説明します。
 
@@ -31,68 +31,62 @@ Speech Service の中核となる機能の 1 つは、人間の音声を認識�
 
 ## <a name="create-a-speech-configuration"></a>音声構成を作成する
 
-Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) を作成する必要があります。 このクラスには、キー、関連付けられたリージョン、エンドポイント、ホスト、または認証トークンなど、ご利用のサブスクリプションに関する情報が含まれています。
+Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) を作成する必要があります。 このクラスには、キー、関連付けられたリージョン、エンドポイント、ホスト、または認証トークンなど、ご利用のサブスクリプションに関する情報が含まれています。 キーとリージョンを使用して [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) を作成します。 リージョン識別子を確認するには、[リージョンのサポート](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)に関するページを参照してください。
 
-> [!NOTE]
-> 音声認識、音声合成、翻訳、またはインテント認識のどれを実行するのかに関係なく、必ず構成を作成します。
+```cpp
+using namespace std;
+using namespace Microsoft::CognitiveServices::Speech;
 
-[`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) を初期化するには、次に示すようないくつかの方法があります。
+auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+```
 
-* サブスクリプションの場合: キーと、それに関連付けられたリージョンを渡します。
+[`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) を初期化するには、他にも次に示すようないくつかの方法があります。
+
 * エンドポイントの場合: Speech Service エンドポイントを渡します。 キーまたは認証トークンは省略可能です。
 * ホストの場合: ホスト アドレスを渡します。 キーまたは認証トークンは省略可能です。
 * 認証トークンの場合: 認証トークンと、それに関連付けられたリージョンを渡します。
 
-キーとリージョンを使用して [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) を作成する方法を見てみましょう。 リージョン識別子を確認するには、[リージョンのサポート](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)に関するページを参照してください。
+> [!NOTE]
+> 音声認識、音声合成、翻訳、またはインテント認識のどれを実行するのかに関係なく、必ず構成を作成します。
 
-```cpp
-auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-```
+## <a name="recognize-from-microphone"></a>マイクから認識する
 
-## <a name="initialize-a-recognizer"></a>認識エンジンを初期化する
-
-[`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) を作成したら、次の手順として、[`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) を初期化します。 [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) を初期化する場合は、それを自分の `speech_config` に渡す必要があります。 これにより、Speech Service がお客様の要求を検証するために必要な資格情報が提供されます。
-
-```cpp
-auto recognizer = SpeechRecognizer::FromConfig(config);
-```
-
-## <a name="recognize-from-microphone-or-file"></a>マイクまたはファイルから認識する
-
-オーディオ入力デバイスを指定する場合は、[`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig) を作成し、[`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) を初期化するときにパラメーターとして渡す必要があります。
-
-デバイス マイクを使用して音声を認識するには、`FromDefaultMicrophoneInput()` を使用して `AudioConfig` を作成し、`SpeechRecognizer` オブジェクトの作成時にオーディオ構成を渡します。
+デバイス マイクを使用して音声を認識するには、`FromDefaultMicrophoneInput()` を使用して `AudioConfig` を作成します。 次に、`audioConfig` と `config` を渡して [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) を初期化します。
 
 ```cpp
 using namespace Microsoft::CognitiveServices::Speech::Audio;
 
 auto audioConfig = AudioConfig::FromDefaultMicrophoneInput();
 auto recognizer = SpeechRecognizer::FromConfig(config, audioConfig);
+
+cout << "Speak into your microphone." << std::endl;
+auto result = recognizer->RecognizeOnceAsync().get();
+cout << "RECOGNIZED: Text=" << result->Text << std::endl;
 ```
 
-> [!TIP]
-> [自分のオーディオ入力デバイスのデバイス ID を取得する方法の詳細](../../../how-to-select-audio-input-devices.md)。
+" *特定の* " オーディオ入力デバイスを使用したい場合、`AudioConfig` でデバイス ID を指定する必要があります。 自分のオーディオ入力デバイスの[デバイス ID を取得する方法](../../../how-to-select-audio-input-devices.md)をご覧ください。
 
-マイクを使用するのでなくオーディオ ファイルから音声を認識する場合でも、`AudioConfig` を作成する必要があります。 ただし、`FromDefaultMicrophoneInput()` を呼び出さずに、[`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig) を作成する場合は、`FromWavFileInput()` を呼び出して `filename` パラメーターを渡します。
+## <a name="recognize-from-file"></a>ファイルから認識する
+
+マイクを使用するのでなくオーディオ ファイルから音声を認識する場合でも、`AudioConfig` を作成する必要があります。 ただし、`FromDefaultMicrophoneInput()` を呼び出さずに、[`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig) を作成する場合は、`FromWavFileInput()` を呼び出してファイル パスを渡します。
 
 ```cpp
+using namespace Microsoft::CognitiveServices::Speech::Audio;
+
 auto audioInput = AudioConfig::FromWavFileInput("YourAudioFile.wav");
 auto recognizer = SpeechRecognizer::FromConfig(config, audioInput);
+
+auto result = recognizer->RecognizeOnceAsync().get();
+cout << "RECOGNIZED: Text=" << result->Text << std::endl;
 ```
 
 ## <a name="recognize-speech"></a>音声を認識する
 
 Speech SDK for C++ 用の [認識エンジン](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) では、音声認識に使用できるいくつかの手法が公開されています。
 
-* 単発の認識 (非同期) - 非ブロッキング (非同期) モードで認識を実行します。 これにより、1 つの発話が認識されます。 1 つの発話の終わりは、終了時の無音状態をリッスンするか、最大 15 秒のオーディオが処理されるまで待機することによって決定されます。
-* 継続的認識 (非同期) - 継続的な認識操作を非同期に開始します。 ユーザーは認識結果を受け取るには、EventSignal に接続する必要があります。 非同期の継続的認識を停止するには、[`StopContinuousRecognitionAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#stopcontinuousrecognitionasync) を呼び出します。
-
-> [!NOTE]
-> [音声認識モードを選択](../../../how-to-choose-recognition-mode.md)する方法の詳細情報。
-
 ### <a name="single-shot-recognition"></a>単発の認識
 
-[`RecognizeOnceAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#recognizeonceasync) を使用した非同期の単発認識の例を次に示します。
+単発の認識では、1 つの発話が非同期的に認識されます。 1 つの発話の終わりは、終了時の無音状態をリッスンするか、最大 15 秒のオーディオが処理されるまで待機することによって決定されます。 [`RecognizeOnceAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#recognizeonceasync) を使用した非同期の単発認識の例を次に示します。
 
 ```cpp
 auto result = recognizer->RecognizeOnceAsync().get();

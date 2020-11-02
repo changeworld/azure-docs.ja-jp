@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/18/2019
 ms.author: jeedes
-ms.openlocfilehash: b3790c52598b2857f56cac54acad156b3ba0bf51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d872c50174ba2fe7dfa321ac568e51fdaa80affc
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545008"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514743"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sonarqube"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Sonarqube の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88545008"
 * ユーザーが自分の Azure AD アカウントを使用して Sonarqube に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Sonarqube では、**SP** Initiated SSO がサポートされます
+* Sonarqube では、 **SP** Initiated SSO がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -52,7 +52,7 @@ Azure AD への Sonarqube の統合を構成するには、ギャラリーから
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Sonarqube**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Sonarqube** 」と入力します。
 1. 結果のパネルから **Sonarqube** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-sonarqube"></a>Sonarqube の Azure AD シングル サインオンの構成とテスト
@@ -142,13 +142,13 @@ Sonarqube に対する Azure AD SSO を構成してテストするには、次�
 
     a. **[Enabled]\(有効化\)** オプションを **[yes]\(はい\)** に切り替えます。
 
-    b. **[Application ID]\(アプリケーション ID\)** ボックスに、**sonarqube** のような名前を入力します。
+    b. **[Application ID]\(アプリケーション ID\)** ボックスに、 **sonarqube** のような名前を入力します。
 
-    c. **[Provider Name]\(プロバイダー名\)** ボックスに、**SAML** のような名前を入力します。
+    c. **[Provider Name]\(プロバイダー名\)** ボックスに、 **SAML** のような名前を入力します。
 
-    d. **[Provider ID]\(プロバイダー ID\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
+    d. **[Provider ID]\(プロバイダー ID\)** ボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。
 
-    e. **[SAML login url]\(SAML ログイン URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    e. **[SAML login url]\(SAML ログイン URL\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     f. Base64 でエンコードされた証明書をメモ帳で開き、その内容をコピーして **[Provider certificate]\(プロバイダー証明書\)** ボックスに貼り付けます。
 
@@ -162,21 +162,20 @@ Sonarqube に対する Azure AD SSO を構成してテストするには、次�
 
 ### <a name="create-sonarqube-test-user"></a>Sonarqube テスト ユーザーの作成
 
-このセクションでは、Sonarqube で B.Simon というユーザーを作成します。  [Sonarqube クライアント サポート チーム](https://www.sonarsource.com/support/)と協力して、Sonarqube プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、Sonarqube で B.Simon というユーザーを作成します。 [Sonarqube クライアント サポート チーム](https://www.sonarsource.com/support/)と連携して、Sonarqube プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Sonarqube] タイルをクリックすると、SSO を設定した Sonarqube に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Sonarqube] タイルをクリックすると、SSO を設定した Sonarqube に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Sonarqube を試す](https://aad.portal.azure.com/)
-

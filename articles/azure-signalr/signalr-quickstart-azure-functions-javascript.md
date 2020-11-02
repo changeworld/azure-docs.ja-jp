@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
 ms.custom: devx-track-js
-ms.openlocfilehash: c210096c1765015378f12f8c5e01fc9f8f97e10b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 02bcbf0b4f6f6021c157a8ba3c5d2783fc94f1aa
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327682"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425312"
 ---
 # <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>クイック スタート:JavaScript を使って Azure Functions と SignalR Service を使用するチャット ルームを作成する
 
@@ -58,20 +58,20 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 1. プライマリ接続文字列を選択してコピーします。
 
-    ![SignalR Service の作成](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
+    ![プライマリ接続文字列が強調表示されているスクリーンショット。](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
 1. コード エディターで、複製したリポジトリの *src/chat/javascript* フォルダーを開きます。
 
 1. *local.settings.sample.json* を *local.settings.json* に変更します。
 
-1. **local.settings.json** で、**AzureSignalRConnectionString** 設定に接続文字列の値を貼り付けます。 ファイルを保存します。
+1. **local.settings.json** で、 **AzureSignalRConnectionString** 設定に接続文字列の値を貼り付けます。 ファイルを保存します。
 
 1. フォルダーに JavaScript 関数が編成されます。 各フォルダーには、関数で使用されるバインディングを定義する *function.json* と、関数の本体である *index.js* という 2 つのファイルがあります。 この関数アプリには、HTTP によってトリガーされる関数が 2 つあります。
 
     - **negotiate** - *SignalRConnectionInfo* 入力バインディングを使用し、有効な接続情報を生成して返却します。
-    - **messages** - 要求本文でチャット メッセージを受信し、*SignalR* 出力バインディングを使用して接続されているすべてのクライアント アプリケーションにメッセージをブロードキャストします。
+    - **messages** - 要求本文でチャット メッセージを受信し、 *SignalR* 出力バインディングを使用して接続されているすべてのクライアント アプリケーションにメッセージをブロードキャストします。
 
-1. ターミナルで、*src/chat/javascript* フォルダーにいることを確認します。 関数アプリを実行します。
+1. ターミナルで、 *src/chat/javascript* フォルダーにいることを確認します。 関数アプリを実行します。
 
     ```bash
     func start

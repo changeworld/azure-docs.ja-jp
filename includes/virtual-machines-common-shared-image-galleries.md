@@ -1,18 +1,17 @@
 ---
 title: インクルード ファイル
-description: インクルード ファイル
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/14/2020
 ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: 3d5b57330775af60341cd65fddc65c10645f2573
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: b17480c1a2a0bd8588289627a51780999e1f311c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92116749"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897827"
 ---
 Shared Image Gallery は、イメージに関連する構造および組織を構築できるサービスです。 共有イメージ ギャラリーでは以下のことが提供されます。
 
@@ -155,8 +154,11 @@ Shared Image Gallery は、イメージに関連する構造および組織を�
 
 ## <a name="billing"></a>課金
 共有イメージ ギャラリー サービスを使用するための追加料金はかかりません。 次のリソースに対しては、課金されます。
-- 共有イメージ バージョンを格納するためのストレージ コスト。 コストは、イメージ バージョンのレプリカ数と、そのバージョンのレプリケート先となるリージョン数に応じて変わります。 たとえば、2 つのイメージがあり、どちらも 3 つのリージョンにレプリケートされる場合、それらのサイズに基づいて 6 つのマネージド ディスクについて請求されます。 詳細については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks/)」を参照してください。
-- ソース リージョンからレプリケート先のリージョンに最初のイメージ バージョンをレプリケートするための、ネットワーク エグレスの料金。 後続のレプリカはリージョン内で処理されるので、追加料金は発生しません。 
+-   各レプリカを格納するためのストレージ コスト。 ストレージ コストは、イメージ バージョンの占有サイズ、イメージ バージョンのレプリカの数、およびバージョンのレプリケート先となるリージョンの数に基づき、スナップショットとして課金されます。 
+-   ソース リージョンからレプリケート先のリージョンに最初のイメージ バージョンをレプリケートするための、ネットワーク エグレスの料金。 後続のレプリカはリージョン内で処理されるので、追加料金は発生しません。 
+
+たとえば、ストレージを 10 GB だけ占有する 127 GB の OS ディスクのイメージと、1 つの空の 32 GB のデータ ディスクがあるとします。 各イメージの占有サイズは 10 GB のみです。 イメージは 3 つのリージョンにレプリケートされ、各リージョンには 2 つのレプリカがあります。 合計 6 つのスナップショットがあり、それぞれ 10 GB を使用します。 各スナップショットのストレージ コストは、占有サイズの 10 GB に基づいて課金されます。 最初のレプリカが追加の 2 つのリージョンにコピーされるまでのネットワーク エグレス料金が課金されます。 各リージョンのスナップショットの価格の詳細については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks/)」を参照してください。 ネットワーク エグレスの詳細については、「[帯域幅の料金詳細](https://azure.microsoft.com/pricing/details/bandwidth/)」を参照してください。
+
 
 ## <a name="updating-resources"></a>リソースの更新
 

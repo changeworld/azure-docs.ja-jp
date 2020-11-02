@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 74e85906742207d6cde0b7c4cc5c021c23ee4c7b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bb5c7e082dc4a35183190f5d2d6a4b305b907f4f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260140"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480481"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Azure Synapse Analytics の Apache Spark の主要な概念
 
@@ -60,7 +60,40 @@ Spark インスタンスは、Spark プールに接続してセッションを�
 - 別のユーザー (U2) が、10 ノードを使用するジョブ (J3) を作成すると、そのジョブを処理するための新しい Spark インスタンス (SI2) が作成されます。
 - ここで、最初のユーザーが、10 ノードを使用する別のジョブ (J2) を送信した場合、プールとインスタンスにはまだキャパシティがあるため、J2 は SI1 によって処理されます。
 
+## <a name="quotas-and-resource-constraints-in-apache-spark-for-azure-synapse"></a>Apache Spark for Azure Synapse におけるクォータとリソースの制約
+
+### <a name="workspace-level"></a>ワークスペースレベル
+
+Azure Synapse ワークスペースにはそれぞれ、Spark に使用できる既定の仮想コア クォータが割り当てられています。 ユーザー クォータとデータフロー クォータのどちらの使用パターンもワークスペース内の仮想コアをすべて使い尽くしてしまうことのないよう、クォータは、その両者間で分け合うようになっています。 クォータはサブスクリプションの種類によって異なりますが、ユーザーとデータフローとの間で均等に割り当てられます。 ただし、ワークスペースに残っている仮想コアを超える要求を行った場合は、次のエラーが発生します。
+
+```console
+Failed to start session: [User] MAXIMUM_WORKSPACE_CAPACITY_EXCEEDED
+Your Spark job requested 480 vcores.
+However, the workspace only has xxx vcores available out of quota of yyy vcores.
+Try reducing the numbers of vcores requested or increasing your vcore quota. Click here for more information - https://go.microsoft.com/fwlink/?linkid=213499
+```
+
+メッセージ内のリンク先は、この記事です。
+
+ワークスペースの仮想コア クォータ引き上げを要求する方法については、以下の記事で説明されています。
+
+- サービスの種類として "Azure Synapse Analytics" を選択します。
+- [クォータの詳細] ウィンドウで、[Apache Spark (vCore) per workspace]\(ワークスペースごとの Apache Spark (仮想コア)\) を選択します。
+
+[Azure portal でキャパシティの引き上げを要求する](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests#request-a-standard-quota-increase-from-help--support)
+
+### <a name="spark-pool-level"></a>Spark プール レベル
+
+Spark プールを定義するとき、実質的には、そのプールに対するユーザーごとのクォータを定義することになります。複数のノートブックまたはジョブ (あるいはその両方) を実行した場合、プールのクォータを使い果たしてしまう可能性があります。 その場合、次のようなエラー メッセージが表示されます。
+
+```console
+Failed to start session: Your Spark job requested xx vcores.
+However, the pool is consuming yy vcores out of available zz vcores.Try ending the running job(s) in the pool, reducing the numbers of vcores requested, increasing the pool maximum size or using another pool
+```
+
+この問題を解決するには、プール リソースの使用量を減らしたうえで、ノートブックまたはジョブを実行し、新しいリソース要求を送信する必要があります。
+
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
-- [Apache Spark ドキュメント](https://spark.apache.org/docs/2.4.4/)
+- [Apache Spark ドキュメント](https://spark.apache.org/docs/2.4.5/)

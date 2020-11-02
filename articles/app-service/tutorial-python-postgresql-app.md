@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: e171ce1ab7d2b9d4a78399ee639945bde16b71ca
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 63fdee6036580df42f7f965244b5f888c1ec082d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019411"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540756"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>チュートリアル:PostgreSQL を使用した Django Web アプリを Azure App Service にデプロイする
 
@@ -101,7 +101,7 @@ cd djangoapp
 
 [https://github.com/Azure-Samples/djangoapp](https://github.com/Azure-Samples/djangoapp) にアクセスして **[Clone]\(クローン\)** を選択し、 **[Download ZIP]\(ZIP のダウンロード\)** を選択します。 
 
-その ZIP ファイルを、*djangoapp* という名前のフォルダーに展開します。 
+その ZIP ファイルを、 *djangoapp* という名前のフォルダーに展開します。 
 
 次に、その *djangoapp* フォルダー内でターミナル ウィンドウを開きます。
 
@@ -111,7 +111,7 @@ djangoapp サンプルには、データ ドリブンの Django 投票アプリ�
 
 このサンプルは、App Service のような運用環境で実行するために変更もされています。
 
-- 運用環境の設定は、*azuresite/production.py* ファイルにあります。 開発の詳細は *azuresite/settings.py* にあります。
+- 運用環境の設定は、 *azuresite/production.py* ファイルにあります。 開発の詳細は *azuresite/settings.py* にあります。
 - `DJANGO_ENV` 環境変数を "production" に設定した場合に、アプリで運用環境の設定が使用されます。 この環境変数は、PostgreSQL データベース構成に使用する他のものと共に、チュートリアルの後半で作成します。
 
 これらの変更は、任意の運用環境で実行するために Django を構成する場合に固有であり、App Service に固有ではありません。 詳細については、[Django デプロイ チェックリスト](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/)に関するページを参照してください。 一部の変更点の詳細については、[Azure 上での Django の運用設定](configure-language-python.md#production-settings-for-django-apps)に関するセクションを参照してください。
@@ -138,7 +138,7 @@ az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --
 ```
 
 - *\<postgres-server-name>* を Azure 全体で一意である名前に置き換えます (サーバー エンドポイントは `https://<postgres-server-name>.postgres.database.azure.com` になります)。 会社名と別の一意の値を組み合わせて使用すると、適切なパターンになります。
-- *\<admin-username>* と *\<admin-password>* には、この Postgres サーバーの管理者ユーザーを作成するための資格情報を指定します。
+- *\<admin-username>* と *\<admin-password>* には、この Postgres サーバーの管理者ユーザーを作成するための資格情報を指定します。 ユーザー名とパスワードに `$` 文字は使用しないでください。 後で、これらの値を使用して環境変数を作成しますが、Python アプリの実行に使用する Linux コンテナー内では、環境変数内の `$` 文字に特殊な意味があります。
 - ここで使用している B_Gen5_1 (Basic、Gen5、1 コア) の[価格レベル](../postgresql/concepts-pricing-tiers.md)は、コストが最も低いものです。 運用データベースの場合は、`--sku-name` 引数を省略して、代わりに GP_Gen5_2 (General Purpose、Gen 5、2 コア) レベルを使用します。
 
 このコマンドによって次の操作が実行されます。これには数分かかる場合があります。
@@ -153,7 +153,7 @@ az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --
 
 すべての手順は、他の `az postgres` および `psql` コマンドを使用して個別に実行することもできますが、`az postgres up` を使用すれば、そのすべての手順をまとめて実行できます。
 
-コマンドが完了すると、サーバーの URL、生成されたユーザー名 ("joyfulKoala@msdocs-djangodb-12345" など)、GUID パスワードと共に、データベースのさまざまな接続文字列を含む JSON オブジェクトが出力されます。 このチュートリアルの後半で必要になるため、ユーザー名とパスワードを一時的なテキスト ファイルにコピーします。
+コマンドが完了すると、サーバーの URL、生成されたユーザー名 ("joyfulKoala@msdocs-djangodb-12345" など)、GUID パスワードと共に、データベースのさまざまな接続文字列を含む JSON オブジェクトが出力されます。 このチュートリアルの後半で必要になるため、短いユーザー名 (@ の前) とパスワードを一時的なテキスト ファイルにコピーします。
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
@@ -212,7 +212,7 @@ az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<pos
 ```
 
 - *\<postgres-server-name>* は、先ほど `az postgres up` コマンドで使用した名前に置き換えます。 *azuresite/production.py* 内のコードによって、完全な Postgres サーバー URL を作成するための `.postgres.database.azure.com` が自動的に追加されます。
-- *\<username>* と *\<password>* を、前の `az postgres up` コマンドで使用した管理者の資格情報、または `az postgres up` によって自動的に生成された資格情報に置き換えます。 *azuresite/production.py* 内のコードを実行すると、完全な Postgres ユーザー名が `DBUSER` および `DBHOST` を基に自動的に作成されます。
+- *\<username>* と *\<password>* を、前の `az postgres up` コマンドで使用した管理者の資格情報、または `az postgres up` によって自動的に生成された資格情報に置き換えます。 *azuresite/production.py* 内のコードを実行すると、完全な Postgres ユーザー名が `DBUSER` および `DBHOST` を基に自動的に作成されます。そのため、`@server` の部分は含めないようにしてください。 (また、前述したように、どちらの値にも `$` 文字は使用しないでください。Linux 環境変数では、この文字に特殊な意味があります。)
 - リソース グループとアプリ名は、 *.azure/config* ファイル内のキャッシュされた値から取得されます。
 
 Python コードでは、`os.environ.get('DJANGO_ENV')` のようなステートメントを使用して、環境変数としてこれらの設定にアクセスします。 詳細については、「[環境変数へのアクセス](configure-language-python.md#access-environment-variables)」を参照してください。
@@ -235,7 +235,7 @@ Django データベースの移行によって、Azure データベース上の 
 
     SSH セッションに接続できない場合は、アプリ自体が起動に失敗しています。 詳細については、[診断ログを確認](#stream-diagnostic-logs)してください。 たとえば、前のセクションで必要なアプリ設定を作成していない場合、ログには `KeyError: 'DBNAME'` と示されます。
 
-1. SSH セッションで次のコマンドを実行します (**Ctrl**+**Shift**+**V** キーを使用してコマンドを貼り付けることができます)。
+1. SSH セッションで次のコマンドを実行します ( **Ctrl**+**Shift**+**V** キーを使用してコマンドを貼り付けることができます)。
 
     ```bash
     # Change to the folder where the app code is deployed
@@ -254,7 +254,7 @@ Django データベースの移行によって、Azure データベース上の 
     python manage.py createsuperuser
     ```
 
-1. `createsuperuser` コマンドを使用すると、スーパーユーザーの資格情報の入力を求められます。 このチュートリアルの目的では、既定のユーザー名である `root` を使用し、**Enter** キーを押してメール アドレスを空白のままにして、パスワードを「`Pollsdb1`」と入力します。
+1. `createsuperuser` コマンドを使用すると、スーパーユーザーの資格情報の入力を求められます。 このチュートリアルの目的では、既定のユーザー名である `root` を使用し、 **Enter** キーを押してメール アドレスを空白のままにして、パスワードを「`Pollsdb1`」と入力します。
 
 1. データベースがロックされているというエラーが表示された場合は、前のセクションで `az webapp settings` コマンドを実行したことを確認してください。 それらの設定を行わないと、migrate コマンドがデータベースと通信できずにエラーが発生します。
 
@@ -374,7 +374,7 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-`python manage.py runserver` を使用して開発サーバーを再度実行し、*http:\//localhost:8000/admin* でアプリをテストします。
+`python manage.py runserver` を使用して開発サーバーを再度実行し、 *http:\//localhost:8000/admin* でアプリをテストします。
 
 **Ctrl**+**C** キーを使用して Django Web サーバーを再度停止します。
 
@@ -427,7 +427,7 @@ az webapp log tail
 
 コンソール ログがすぐに表示されない場合は、30 秒以内にもう一度確認します。
 
-任意のタイミングでログのストリーミングを停止するには、**Ctrl**+**C** キーを押します。
+任意のタイミングでログのストリーミングを停止するには、 **Ctrl**+**C** キーを押します。
 
 [問題がある場合は、お知らせください。](https://aka.ms/DjangoCLITutorialHelp)
 

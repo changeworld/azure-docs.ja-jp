@@ -6,23 +6,22 @@ ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: sumuth
-ms.date: 09/22/2020
-ms.openlocfilehash: 18366069fd7273afe33b538d2bd69ac8a99689c6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/23/2020
+ms.openlocfilehash: 3f32d3d7cc498126d0fbdb709aaf0424d335793f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90945719"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534126"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql---flexible-server-preview"></a>クイック スタート:ARM テンプレートを使用して Azure Database for MySQL - フレキシブル サーバー (プレビュー) を作成する
 
+> [!IMPORTANT]
+> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
 
-> [!IMPORTANT] 
-> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります
+Azure Database for MySQL - フレキシブル サーバー (プレビュー) は、高可用性の MySQL データベースをクラウド内で実行、管理、スケーリングするために使用されるマネージド サービスです。 Azure Resource Manager テンプレート (ARM テンプレート) を使用すると、複数のサーバー、または 1 つのサーバー上の複数のデータベースをデプロイするためのフレキシブル サーバーをプロビジョニングできます。
 
-Azure Database for MySQL - フレキシブル サーバー (プレビュー) は、高可用性の MySQL データベースをクラウド内で実行、管理、スケーリングするために使用されるマネージド サービスです。 ARM テンプレートを使用すると、複数のサーバー、または 1 つのサーバー上の複数のデータベースをデプロイするためのフレキシブル サーバーをプロビジョニングできます。
-
-[ARM テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)は JavaScript Object Notation (JSON) ファイルであり、プロジェクトのインフラストラクチャと構成が定義されています。 このテンプレートでは、デプロイしようとしているものを、それを作成する一連のプログラミング コマンドを記述しなくても記述できる、宣言型の構文を使用しています。
+[!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,135 +31,135 @@ Azure Database for MySQL - フレキシブル サーバー (プレビュー) は
 
 Azure Database for MySQL フレキシブル サーバーは、リージョン内の 1 つ以上のデータベースの親リソースです。 データベースに適用される管理ポリシーのスコープ (ログイン、ファイアウォール、ユーザー、ロール、構成など) を提供します。
 
+_mysql-flexible-server-template.json_ ファイルを作成し、そこに次の JSON スクリプトをコピーします。
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "administratorLogin": {
+      "type": "String"
+    },
+    "administratorLoginPassword": {
+      "type": "SecureString"
+    },
+    "location": {
+      "type": "String"
+    },
+    "serverName": {
+      "type": "String"
+    },
+    "serverEdition": {
+      "type": "String"
+    },
+    "vCores": {
+      "type": "Int"
+    },
+    "storageSizeMB": {
+      "type": "Int"
+    },
+    "standbyCount": {
+      "type": "Int"
+    },
+    "availabilityZone": {
+      "type": "String"
+    },
+    "version": {
+      "type": "String"
+    },
+    "tags": {
+      "defaultValue": {},
+      "type": "Object"
+    },
+    "firewallRules": {
+      "defaultValue": {},
+      "type": "Object"
+    },
+    "vnetData": {
+      "defaultValue": {},
+      "type": "Object"
+    },
+    "backupRetentionDays": {
+      "type": "Int"
+    }
+  },
+  "variables": {
+    "api": "2020-02-14-privatepreview",
+    "firewallRules": "[parameters('firewallRules').rules]",
+    "publicNetworkAccess": "[if(empty(parameters('vnetData')), 'Enabled', 'Disabled')]",
+    "vnetDataSet": "[if(empty(parameters('vnetData')), json('{ \"vnetId\": \"\", \"vnetName\": \"\", \"vnetResourceGroup\": \"\", \"subnetName\": \"\" }'), parameters('vnetData'))]",
+    "finalVnetData": "[json(concat('{ \"DelegatedVnetID\": \"', variables('vnetDataSet').vnetId, '\", \"DelegatedVnetName\": \"', variables('vnetDataSet').vnetName, '\", \"DelegatedVnetResourceGroup\": \"', variables('vnetDataSet').vnetResourceGroup, '\", \"DelegatedSubnetName\": \"', variables('vnetDataSet').subnetName, '\"}'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.DBforMySQL/flexibleServers",
+      "apiVersion": "[variables('api')]",
+      "name": "[parameters('serverName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_D4ds_v4",
+        "tier": "[parameters('serverEdition')]",
+        "capacity": "[parameters('vCores')]"
+      },
+      "tags": "[parameters('tags')]",
+      "properties": {
+        "version": "[parameters('version')]",
+        "administratorLogin": "[parameters('administratorLogin')]",
+        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+        "publicNetworkAccess": "[variables('publicNetworkAccess')]",
+        "VnetInjArgs": "[if(empty(parameters('vnetData')), json('null'), variables('finalVnetData'))]",
+        "standbyCount": "[parameters('standbyCount')]",
+        "storageProfile": {
+          "storageMB": "[parameters('storageSizeMB')]",
+          "backupRetentionDays": "[parameters('backupRetentionDays')]"
+        },
+        "availabilityZone": "[parameters('availabilityZone')]"
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-08-01",
+      "name": "[concat('firewallRules-', copyIndex())]",
+      "dependsOn": [
+        "[concat('Microsoft.DBforMySQL/flexibleServers/', parameters('serverName'))]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.DBforMySQL/flexibleServers/firewallRules",
+              "name": "[concat(parameters('serverName'),'/',variables('firewallRules')[copyIndex()].name)]",
+              "apiVersion": "[variables('api')]",
+              "properties": {
+                "StartIpAddress": "[variables('firewallRules')[copyIndex()].startIPAddress]",
+                "EndIpAddress": "[variables('firewallRules')[copyIndex()].endIPAddress]"
+              }
+            }
+          ]
+        }
+      },
+      "copy": {
+        "name": "firewallRulesIterator",
+        "count": "[if(greater(length(variables('firewallRules')), 0), length(variables('firewallRules')), 1)]",
+        "mode": "Serial"
+      },
+      "condition": "[greater(length(variables('firewallRules')), 0)]"
+    }
+  ]
+}
+```
+
 テンプレートでは、次のリソースが定義されています。
 
 - Microsoft.DBforMySQL/flexibleServers
 
-```mysql-flexible-server-template.json``` ファイルを作成し、この ```json``` スクリプトをそこにコピーします。
-
-```json
-{
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "administratorLogin": {
-            "type": "String"
-        },
-        "administratorLoginPassword": {
-            "type": "SecureString"
-        },
-        "location": {
-            "type": "String"
-        },
-        "serverName": {
-            "type": "String"
-        },
-        "serverEdition": {
-            "type": "String"
-        },
-        "vCores": {
-            "type": "Int"
-        },
-        "storageSizeMB": {
-            "type": "Int"
-        },
-        "standbyCount": {
-            "type": "Int"
-        },
-        "availabilityZone": {
-            "type": "String"
-        },
-        "version": {
-            "type": "String"
-        },
-        "tags": {
-            "defaultValue": {},
-            "type": "Object"
-        },
-        "firewallRules": {
-            "defaultValue": {},
-            "type": "Object"
-        },
-        "vnetData": {
-            "defaultValue": {},
-            "type": "Object"
-        },
-        "backupRetentionDays": {
-            "type": "Int"
-        }
-    },
-    "variables": {
-        "api": "2020-02-14-privatepreview",
-        "firewallRules": "[parameters('firewallRules').rules]",
-        "publicNetworkAccess": "[if(empty(parameters('vnetData')), 'Enabled', 'Disabled')]",
-        "vnetDataSet": "[if(empty(parameters('vnetData')), json('{ \"vnetId\": \"\", \"vnetName\": \"\", \"vnetResourceGroup\": \"\", \"subnetName\": \"\" }'), parameters('vnetData'))]",
-        "finalVnetData": "[json(concat('{ \"DelegatedVnetID\": \"', variables('vnetDataSet').vnetId, '\", \"DelegatedVnetName\": \"', variables('vnetDataSet').vnetName, '\", \"DelegatedVnetResourceGroup\": \"', variables('vnetDataSet').vnetResourceGroup, '\", \"DelegatedSubnetName\": \"', variables('vnetDataSet').subnetName, '\"}'))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.DBforMySQL/flexibleServers",
-            "apiVersion": "[variables('api')]",
-            "name": "[parameters('serverName')]",
-            "location": "[parameters('location')]",
-            "tags": "[parameters('tags')]",
-            "sku": {
-                "name": "Standard_D4ds_v4",
-                "tier": "[parameters('serverEdition')]",
-                "capacity": "[parameters('vCores')]"
-            },
-            "properties": {
-                "version": "[parameters('version')]",
-                "administratorLogin": "[parameters('administratorLogin')]",
-                "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
-                "publicNetworkAccess": "[variables('publicNetworkAccess')]",
-                "VnetInjArgs": "[if(empty(parameters('vnetData')), json('null'), variables('finalVnetData'))]",
-                "standbyCount": "[parameters('standbyCount')]",
-                "storageProfile": {
-                    "storageMB": "[parameters('storageSizeMB')]",
-                    "backupRetentionDays": "[parameters('backupRetentionDays')]"
-                },
-                "availabilityZone": "[parameters('availabilityZone')]"
-            }
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-08-01",
-            "name": "[concat('firewallRules-', copyIndex())]",
-            "dependsOn": [
-                "[concat('Microsoft.DBforMySQL/flexibleServers/', parameters('serverName'))]"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "resources": [
-                        {
-                            "type": "Microsoft.DBforMySQL/flexibleServers/firewallRules",
-                            "name": "[concat(parameters('serverName'),'/',variables('firewallRules')[copyIndex()].name)]",
-                            "apiVersion": "[variables('api')]",
-                            "properties": {
-                                "StartIpAddress": "[variables('firewallRules')[copyIndex()].startIPAddress]",
-                                "EndIpAddress": "[variables('firewallRules')[copyIndex()].endIPAddress]"
-                            }
-                        }
-                    ]
-                }
-            },
-            "copy": {
-                "name": "firewallRulesIterator",
-                "count": "[if(greater(length(variables('firewallRules')), 0), length(variables('firewallRules')), 1)]",
-                "mode": "Serial"
-            },
-            "condition": "[greater(length(variables('firewallRules')), 0)]"
-        }
-    ]
-}
-```
-
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-次の PowerShell コード ブロックから **[使ってみる]** を選択して [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を開きます。
+次の PowerShell コード ブロックから **[使ってみる]** を選択して [Azure Cloud Shell](../../cloud-shell/overview.md) を開きます。
 
 ```azurepowershell-interactive
 $serverName = Read-Host -Prompt "Enter a name for the new Azure Database for MySQL server"
@@ -179,15 +178,14 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 Read-Host -Prompt "Press [ENTER] to continue ..."
 ```
 
-## <a name="view-the-deployed-resources"></a>デプロイされたリソースを表示する
+## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 
 サーバーが Azure 内で作成されたかどうかを確認するには、次の手順に従います。
 
 ### <a name="azure-portal"></a>Azure portal
 
 1. [Azure portal](https://portal.azure.com) で、 **[Azure Database for MySQL サーバー]** を選択します。
-
-2. データベース一覧から新しいサーバーを選択します。 新しい Azure Database for MySQL サーバーの **[概要]** ページが表示されます。
+1. データベース一覧から新しいサーバーを選択します。 新しい Azure Database for MySQL サーバーの **[概要]** ページが表示されます。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -220,12 +218,9 @@ az resource show --resource-group $resourcegroupName --name $serverName --resour
 ### <a name="azure-portal"></a>Azure portal
 
 1. [Azure portal](https://portal.azure.com) で、 **[リソース グループ]** を検索して選択します。
-
-2. リソース グループの一覧で、リソース グループの名前を選択します。
-
-3. リソース グループの **[概要]** ページで、 **[リソース グループの削除]** を選択します。
-
-4. 確認のダイアログ ボックスでリソース グループの名前を入力し、 **[削除]** を選択します。
+1. リソース グループの一覧で、リソース グループの名前を選択します。
+1. リソース グループの **[概要]** ページで、 **[リソース グループの削除]** を選択します。
+1. 確認のダイアログ ボックスでリソース グループの名前を入力し、 **[削除]** を選択します。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -250,7 +245,7 @@ echo "Press [ENTER] to continue ..."
 Resource Manager テンプレートの作成手順について説明したチュートリアルについては、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> [ チュートリアル: 初めての ARM テンプレートを作成してデプロイする](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> 初めての ARM テンプレートを作成してデプロイする[
 
 MySQL を使用して App Service でアプリをビルドするステップバイステップのチュートリアルについては、次を参照してください:
 

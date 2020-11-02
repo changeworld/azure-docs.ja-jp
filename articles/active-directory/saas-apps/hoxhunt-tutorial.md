@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: jeedes
-ms.openlocfilehash: 03b31f80ecd5cc388b66c6eae54db83be300cd95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e18cd80c0232c4552c0e3dc57a23477d410c5395
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91338265"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442560"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hoxhunt"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Hoxhunt の統合
 
@@ -37,7 +37,7 @@ ms.locfileid: "91338265"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Hoxhunt では、**SP** Initiated SSO がサポートされます
+* Hoxhunt では、 **SP** Initiated SSO がサポートされます
 
 ## <a name="adding-hoxhunt-from-the-gallery"></a>ギャラリーからの Hoxhunt の追加
 
@@ -47,7 +47,7 @@ Azure AD への Hoxhunt の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Hoxhunt**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Hoxhunt** 」と入力します。
 1. 結果のパネルから **[Hoxhunt]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -118,11 +118,11 @@ Hoxhunt に対して Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-hoxhunt-sso"></a>Hoxhunt SSO の構成
 
-**Hoxhunt** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Hoxhunt サポート チーム](mailto:support@hoxhunt.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Hoxhunt** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [Hoxhunt サポート チーム](mailto:support@hoxhunt.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-hoxhunt-test-user"></a>Hoxhunt テストユーザーの作成
 
-このセクションでは、Hoxhunt で Britta Simon というユーザーを作成します。  [Hoxhunt サポート チーム](mailto:support@hoxhunt.com)と連携し、Hoxhunt プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Hoxhunt で Britta Simon というユーザーを作成します。 [Hoxhunt サポート チーム](mailto:support@hoxhunt.com)と連携して、Hoxhunt プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
@@ -132,10 +132,8 @@ Hoxhunt に対して Azure AD SSO を構成してテストするには、次の�
 
 2. Hoxhunt のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Hoxhunt] タイルをクリックすると、Hoxhunt サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Hoxhunt] タイルをクリックすると、Hoxhunt サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Hoxhunt を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+Hoxhunt を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

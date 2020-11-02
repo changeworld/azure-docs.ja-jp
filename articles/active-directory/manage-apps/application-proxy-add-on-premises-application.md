@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 081ed9675c10be8ea1db767567aa866442158086
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0ece14fb1a96ac8cc66f4d35d027b9d93d1f800e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207667"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792822"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する
 
@@ -96,7 +96,7 @@ Azure AD アプリケーション プロキシの環境を準備するには、�
 
 ### <a name="open-ports"></a>ポートを開く
 
-以下の各ポートを**アウトバウンド** トラフィックに対して開きます。
+以下の各ポートを **アウトバウンド** トラフィックに対して開きます。
 
    | ポート番号 | 用途 |
    | --- | --- |
@@ -109,13 +109,14 @@ Azure AD アプリケーション プロキシの環境を準備するには、�
 
 次の URL へのアクセスを許可します。
 
-| URL | 用途 |
-| --- | --- |
-| \*.msappproxy.net<br>\*.servicebus.windows.net | コネクタとアプリケーション プロキシ クラウド サービスの間の通信 |
-| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>www.d-trust.net<br>root-c3-ca2-2009.ocsp.d-trust.net<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | コネクタでは、証明書の検証にこれらの URL が使用されます。 |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*.microsoftonline-p.com<br>\*.msauth.net<br>\*.msauthimages.net<br>\*.msecnd.net<br>\*.msftauth.net<br>\*.msftauthimages.net<br>\*.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | コネクタでは、登録プロセスの間にこれらの URL が使用されます。 |
+| URL | Port | 用途 |
+| --- | --- | --- |
+| &ast;.msappproxy.net<br>&ast;.servicebus.windows.net | 443/HTTPS | コネクタとアプリケーション プロキシ クラウド サービスの間の通信 |
+| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP |コネクタでは、証明書の検証にこれらの URL が使用されます。 |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com | 443/HTTPS |コネクタでは、登録プロセスの間にこれらの URL が使用されます。 |
+| ctldl.windowsupdate.com | 80/HTTP |コネクタでは、登録プロセスの間にこの URL が使用されます。 |
 
-ファイアウォールまたはプロキシで DNS 許可リストを構成できる場合は、\*.msappproxy.net と \*.servicebus.windows.net への接続を許可できます。 そうでない場合は、[Azure IP ranges and Service Tags - Public Cloud (Azure IP 範囲とサービス タグ - パブリック クラウド)](https://www.microsoft.com/download/details.aspx?id=56519) へのアクセスを許可する必要があります。 これらの IP 範囲は毎週更新されます。
+ファイアウォールまたはプロキシで DNS 許可リストを構成できる場合は、&ast;.msappproxy.net と &ast;.servicebus.windows.net への接続を許可できます。 そうでない場合は、[Azure IP ranges and Service Tags - Public Cloud (Azure IP 範囲とサービス タグ - パブリック クラウド)](https://www.microsoft.com/download/details.aspx?id=56519) へのアクセスを許可する必要があります。 これらの IP 範囲は毎週更新されます。
 
 ## <a name="install-and-register-a-connector"></a>コネクタのインストールと登録
 
@@ -167,10 +168,10 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
 
 コネクタが正しくインストールおよび登録されていることを確認するには:
 
-1. **Windows** キーをクリックして「*services.msc*」と入力し、Windows サービス マネージャーを開きます。
+1. **Windows** キーをクリックして「 *services.msc* 」と入力し、Windows サービス マネージャーを開きます。
 1. 次の 2 つのサービスの状態が **[実行中]** であることを確認します。
-   - **Microsoft AAD アプリケーション プロキシ コネクタ**により、接続が有効になります。
-   - **Microsoft AAD アプリケーション プロキシ コネクタ アップデーター**は自動更新サービスです。 アップデーターはコネクタの新しいバージョンをチェックし、必要に応じてコネクタを更新します。
+   - **Microsoft AAD アプリケーション プロキシ コネクタ** により、接続が有効になります。
+   - **Microsoft AAD アプリケーション プロキシ コネクタ アップデーター** は自動更新サービスです。 アップデーターはコネクタの新しいバージョンをチェックし、必要に応じてコネクタを更新します。
 
      ![App Proxy Connector services - screenshot](./media/application-proxy-add-on-premises-application/app_proxy_services.png)
 
@@ -191,10 +192,10 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
     | **名前** | [マイ アプリ] および Azure portal に表示されるアプリケーションの名前。 |
     | **内部 URL** | プライベート ネットワークの内部からアプリケーションにアクセスするための URL。 バックエンド サーバー上の特定のパスを指定して発行できます。この場合、サーバーのそれ以外のパスは発行されません。 この方法では、同じサーバー上の複数のサイトを別々のアプリとして発行し、それぞれに独自の名前とアクセス規則を付与することができます。<br><br>パスを発行する場合は、アプリケーションに必要な画像、スクリプト、スタイル シートが、すべてそのパスに含まれていることを確認してください。 たとえば、アプリケーションが https:\//yourapp/app にあり、https:\//yourapp/media にある画像を使用する場合は、パスとして https:\//yourapp/ を発行する必要があります。 この内部 URL は、ユーザーに表示されるランディング ページである必要はありません。 詳細については、「[発行されたアプリのカスタム ホーム ページを設定する](application-proxy-configure-custom-home-page.md)」を参照してください。 |
     | **外部 URL** | ユーザーがネットワークの外部からアプリにアクセスするためのアドレス。 既定のアプリケーション プロキシ ドメインを使用しない場合は、[Azure AD アプリケーション プロキシのカスタム ドメイン](application-proxy-configure-custom-domain.md)に関する記事を参照してください。|
-    | **事前認証** | ユーザーにアプリケーションへのアクセス権を付与する前にアプリケーション プロキシがユーザーを認証する方法。<br><br>**Azure Active Directory** - アプリケーション プロキシによってユーザーが Azure AD のサインイン ページにリダイレクトされます。これにより、ディレクトリとアプリケーションに対するユーザーのアクセス許可が認証されます。 このオプションは、条件付きアクセスや Multi-Factor Authentication など、Azure AD のセキュリティ機能を活用できるように、既定のままにしておくことをお勧めします。 Microsoft Cloud Application Security を使用してアプリケーションを監視するには、**Azure Active Directory** が必要です。<br><br>**パススルー** - アプリケーションにアクセスするための Azure AD に対するユーザーの認証は必要ありません。 ただし、バックエンドで認証要件を設定できます。 |
+    | **事前認証** | ユーザーにアプリケーションへのアクセス権を付与する前にアプリケーション プロキシがユーザーを認証する方法。<br><br>**Azure Active Directory** - アプリケーション プロキシによってユーザーが Azure AD のサインイン ページにリダイレクトされます。これにより、ディレクトリとアプリケーションに対するユーザーのアクセス許可が認証されます。 このオプションは、条件付きアクセスや Multi-Factor Authentication など、Azure AD のセキュリティ機能を活用できるように、既定のままにしておくことをお勧めします。 Microsoft Cloud Application Security を使用してアプリケーションを監視するには、 **Azure Active Directory** が必要です。<br><br>**パススルー** - アプリケーションにアクセスするための Azure AD に対するユーザーの認証は必要ありません。 ただし、バックエンドで認証要件を設定できます。 |
     | **コネクタ グループ** | コネクタは、アプリケーションへのリモート アクセスを処理します。コネクタ グループを使用して、コネクタとアプリをリージョン、ネットワーク、または目的別に整理できます。 まだコネクタ グループを作成していない場合、アプリは **[既定]** グループに割り当てられます。<br><br>アプリケーションで接続に Websocket を使用する場合は、グループ内のすべてのコネクタがバージョン 1.5.612.0 以降である必要があります。|
 
-6. 必要に応じて、**追加設定**を構成します。 ほとんどのアプリケーションでは、これらの設定は既定の状態のままにしてください。 
+6. 必要に応じて、 **追加設定** を構成します。 ほとんどのアプリケーションでは、これらの設定は既定の状態のままにしてください。 
 
     | フィールド | 説明 |
     | :---- | :---------- |

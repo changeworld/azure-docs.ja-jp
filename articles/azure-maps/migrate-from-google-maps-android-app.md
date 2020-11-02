@@ -9,22 +9,35 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: b493b78971b7e802d82e8f61203abdaaca527016
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: d7ec1edb779ddaf53cef02dd6e83bb3e719d0b4e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873882"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503557"
 ---
 # <a name="tutorial---migrate-an-android-app-from-google-maps"></a>チュートリアル - Google Maps から Android アプリを移行する
 
-Azure Maps Android SDK の API インターフェイスは、Web SDK と似ています。 これらの SDK のいずれかを使用して開発した場合、同じ概念、ベスト プラクティス、アーキテクチャの多くが適用されます。
+Azure Maps Android SDK の API インターフェイスは、Web SDK と似ています。 これらの SDK のいずれかを使用して開発した場合、同じ概念、ベスト プラクティス、アーキテクチャの多くが適用されます。 このチュートリアルでは、次の内容を学習します。
+
+> [!div class="checklist"]
+> * マップを読み込む
+> * マップをローカライズする
+> * マーカー、ポリライン、およびポリゴンを追加する。
+> * タイル レイヤーをオーバーレイする
+> * トラフィック データを表示する
 
 Azure Maps Android SDK でサポートされている Android の最小バージョンは、API 21: Android 5.0.0 (Lollipop) です。
 
 すべての例は Java で提供されていますが、Azure Maps Android SDK では Kotlin を使用できます。
 
 Azure Maps による Android SDK を使用した開発の詳細については、[Azure Maps Android SDK のハウツー ガイド](how-to-use-android-map-control-library.md)のページを参照してください。
+
+## <a name="prerequisites"></a>前提条件 
+
+1. [Azure portal](https://portal.azure.com) にサインインします。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+2. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
 
 ## <a name="load-a-map"></a>マップを読み込む
 
@@ -150,7 +163,7 @@ Google Maps SDK for Android を使用してマップを表示するには、次�
 
 Azure Maps SDK for Android を使用してマップを表示するには、次の手順のようにします。
 
-1. 最上位の **build.gradle** ファイルを開き、次のコードを**すべてのプロジェクト**のブロック セクションに追加します。
+1. 最上位の **build.gradle** ファイルを開き、次のコードを **すべてのプロジェクト** のブロック セクションに追加します。
 
     ```JAVA
     maven {
@@ -745,6 +758,18 @@ mapControl.onReady(map -> {
 
 ![Azure Maps の交通情報](media/migrate-google-maps-android-app/azure-maps-traffic.png)
 
+## <a name="next-steps"></a>次のステップ
+
 Azure Maps Android SDK の詳細について学習します。
 
-[Android マップ コントロールの使用方法](how-to-use-android-map-control-library.md)
+> [!div class="nextstepaction"]
+> [Android マップ コントロールの使用方法](how-to-use-android-map-control-library.md)
+
+> [!div class="nextstepaction"]
+> [Android マップへのシンボル レイヤーの追加](how-to-add-symbol-to-android-map.md)
+
+> [!div class="nextstepaction"]
+> [Android マップへの図形の追加](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+
+> [!div class="nextstepaction"]
+> [Android マップでのマップ スタイルの変更](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)

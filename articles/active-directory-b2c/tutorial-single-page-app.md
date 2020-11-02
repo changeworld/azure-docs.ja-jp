@@ -11,12 +11,12 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 86d89dc6973e61f0cff80b5c65a8c5b836485575
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 3a3eb77315953c3791e09c4326af7cc3e3231a69
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216530"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670031"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>チュートリアル:Azure AD B2C を使用してシングルページ アプリケーションで認証を有効にする
 
@@ -116,6 +116,72 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
       scopes: apiConfig.b2cScopes // i.e. ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"]
     };
     ```
+
+1. *JavaScriptSPA* フォルダー内の *authConfig.js* ファイルを開きます。
+1. `msalConfig` オブジェクト内で、次のように更新します。
+    * 前の手順で記録した **アプリケーション (クライアント) ID** で `clientId` を更新
+    * Azure AD B2C テナント名と、前提条件の一部として作成したサインアップ/サインイン ユーザー フローの名前 ( *B2C_1_signupsignin1* など) で `authority` URI を更新
+1. *policies.js* ファイルを開きます。
+1. `names` と `authorities` のエントリを見つけ、手順 2 で作成したポリシーの名前に適宜置き換えます。 `fabrikamb2c.onmicrosoft.com`を Azure AD B2C テナントの名前 (たとえば、`https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-sign-in-sign-up-policy>`) に置き換えます。
+1. *apiConfig.js* ファイルを開きます。
+1. スコープ `b2cScopes` の割り当てを見つけ、URL を Web API 用に作成したスコープ URL (たとえば、`b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/helloapi/demo.read"]`) に置き換えます。
+1. API URL `webApi` の割り当てを見つけ、現在の URL を手順 4 で Web API をデプロイした URL (たとえば、`webApi: http://localhost:5000/hello`) に置き換えます。
+
+結果のコードは次のようになります。
+
+### <a name="authconfigjs"></a>authConfig.js
+
+```javascript
+const msalConfig = {
+  auth: {
+    clientId: "e760cab2-b9a1-4c0d-86fb-ff7084abd902",
+    authority: b2cPolicies.authorities.signUpSignIn.authority,
+    validateAuthority: false
+  },
+  cache: {
+    cacheLocation: "localStorage",
+    storeAuthStateInCookie: true
+  }
+};
+
+const loginRequest = {
+  scopes: ["openid", "profile"],
+};
+
+const tokenRequest = {
+  scopes: apiConfig.b2cScopes // i.e. ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"]
+};
+```
+### <a name="policiesjs"></a>policies.js
+
+```javascript
+const b2cPolicies = {
+    names: {
+        signUpSignIn: "b2c_1_susi",
+        forgotPassword: "b2c_1_reset",
+        editProfile: "b2c_1_edit_profile"
+    },
+    authorities: {
+        signUpSignIn: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_susi",
+        },
+        forgotPassword: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_reset",
+        },
+        editProfile: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_edit_profile"
+        }
+    },
+}
+```
+### <a name="apiconfigjs"></a>apiConfig.js
+
+```javascript
+const apiConfig = {
+  b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"],
+  webApi: "https://fabrikamb2chello.azurewebsites.net/hello"
+};
+```
 
 ## <a name="run-the-sample"></a>サンプルを実行する
 

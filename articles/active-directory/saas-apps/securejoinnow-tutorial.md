@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: e6c4cb506d4a218a22a5dd5e92fe09466e0cb0f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 024de5acfbc4e6c4aaa510de84c0bceb6bde2b3d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543169"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672964"
 ---
 # <a name="tutorial-integrate-securew2-joinnow-connector-with-azure-active-directory"></a>チュートリアル:SecureW2 JoinNow Connector と Azure Active Directory の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543169"
 * ユーザーが自分の Azure AD アカウントを使用して SecureW2 JoinNow Connector に自動的にサインインできるようにすることができます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* SecureW2 JoinNow Connector では、**SP** Initiated SSO がサポートされます
+* SecureW2 JoinNow Connector では、 **SP** Initiated SSO がサポートされます
 
 
 
@@ -53,7 +53,7 @@ Azure AD への SecureW2 JoinNow Connector の統合を構成するには、ギ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**SecureW2 JoinNow Connector**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **SecureW2 JoinNow Connector** 」と入力します。
 1. 結果のパネルから **[SecureW2 JoinNow Connector]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -99,7 +99,7 @@ SecureW2 JoinNow Connector で Azure AD の SSO を構成してテストする�
 
 ### <a name="configure-securew2-joinnow-connector-sso"></a>SecureW2 JoinNow Connector SSO の構成
 
-**SecureW2 JoinNow Connector** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** と Azure portal からコピーした適切な URL を [SecureW2 JoinNow Connector サポート チーム](mailto:support@securew2.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**SecureW2 JoinNow Connector** 側でシングル サインオンを構成するには、ダウンロードした **メタデータ XML** と Azure portal からコピーした適切な URL を [SecureW2 JoinNow Connector サポート チーム](mailto:support@securew2.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -132,19 +132,18 @@ SecureW2 JoinNow Connector で Azure AD の SSO を構成してテストする�
 
 ### <a name="create-securew2-joinnow-connector-test-user"></a>SecureW2 JoinNow Connector テスト ユーザーの作成
 
-このセクションでは、SecureW2 JoinNow Connector で Britta Simon というユーザーを作成します。  [SecureW2 JoinNow Connector サポート チーム](mailto:support@securew2.com)と協力して、SecureW2 JoinNow Connector プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、SecureW2 JoinNow Connector で Britta Simon というユーザーを作成します。 [SecureW2 JoinNow Connector サポート チーム](mailto:support@securew2.com)と連携して、SecureW2 JoinNow Connector プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [SecureW2 JoinNow Connector] タイルをクリックすると、SSO を設定した SecureW2 JoinNow Connector に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [SecureW2 JoinNow Connector] タイルをクリックすると、SSO を設定した SecureW2 JoinNow Connector に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

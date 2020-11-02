@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2020
 ms.author: jeedes
-ms.openlocfilehash: c99d1359c1d354e7464d473c6d859afde51577a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 021497fa7766b7eecfa935d4186ecc98edef8d61
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88523373"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633690"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whosoffice"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と WhosOffice の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88523373"
 * ユーザーが自分の Azure AD アカウントを使用して WhosOffice に自動的にサインインできるようになります。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* WhosOffice では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* WhosOffice を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* WhosOffice では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* WhosOffice を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -53,7 +53,7 @@ Azure AD への WhosOffice の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**WhosOffice**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **WhosOffice** 」と入力します。
 1. 結果のパネルで **[WhosOffice]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -135,19 +135,19 @@ WhosOffice で Azure AD SSO を構成してテストするには、次の構成�
 
 1. **[Settings]\(設定\)** をクリックし、 **[Company]\(会社\)** を選択します。
 
-    ![WhosOffice の構成](./media/whosoffice-tutorial/configuration1.png)
+    ![[Settings]\(設定\) から [Company]\(会社\) が選択されていることを示すスクリーンショット。](./media/whosoffice-tutorial/configuration1.png)
 
 1. **[Apps/Integrations]\(アプリおよび統合\)** をクリックします。
 
-    ![WhosOffice の構成](./media/whosoffice-tutorial/configuration2.png)
+    ![[Company settings]\(会社の設定\) から [Apps / Integrations]\(アプリおよび統合\) が選択されていることを示すスクリーンショット。](./media/whosoffice-tutorial/configuration2.png)
 
 1. [Provider]\(プロバイダー\) ボックスの一覧から **[Microsoft Azure]** を選択し、 **[Activate Login Provider]\(ログイン プロバイダーのアクティブ化\)** をクリックします。
 
-    ![WhosOffice の構成](./media/whosoffice-tutorial/configuration3.png)
+    ![[Microsoft Azure] に対して [Activate Login Provider]\(ログイン プロバイダーのアクティブ化\) が選択されていることを示すスクリーンショット。](./media/whosoffice-tutorial/configuration3.png)
 
 1. **[Upload]\(アップロード\)** オプションをクリックして、Azure portal からダウンロードしたフェデレーション メタデータ ファイルをアップロードします。
     
-    ![WhosOffice の構成](./media/whosoffice-tutorial/configuration4.png)
+    ![メタ データ ファイルの [Upload]\(アップロード\) オプションを示すスクリーンショット。](./media/whosoffice-tutorial/configuration4.png)
 
 ### <a name="create-whosoffice-test-user"></a>WhosOffice のテスト ユーザーの作成
 
@@ -155,30 +155,30 @@ WhosOffice で Azure AD SSO を構成してテストするには、次の構成�
 
 1. **[Settings]\(設定\)** をクリックし、 **[Users]\(ユーザー\)** を選択します。
 
-    ![WhosOffice の構成](./media/whosoffice-tutorial/user1.png)
+    ![[Settings]\(設定\) から [Users]\(ユーザー\) が選択されていることを示すスクリーンショット。](./media/whosoffice-tutorial/user1.png)
 
 1. **[Create new User]\(新しいユーザーの作成\)** を選択します。
 
-    ![WhosOffice の構成](./media/whosoffice-tutorial/user2.png)
+    ![[Create new User]\(新しいユーザーの作成\) が選択されていることを示すスクリーンショット。](./media/whosoffice-tutorial/user2.png)
 
 1. 組織の要件に従って、ユーザーに関する必要な詳細情報を入力します。
 
-    ![WhosOffice の構成](./media/whosoffice-tutorial/user3.png)
+    ![[new User]\(新しいユーザー\) ダイアログ ボックスを示すスクリーンショット。ここで、ユーザー データを入力できます。](./media/whosoffice-tutorial/user3.png)
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [WhosOffice] タイルをクリックすると、SSO を設定した WhosOffice に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [WhosOffice] タイルをクリックすると、SSO を設定した WhosOffice に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で WhosOffice を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)

@@ -3,12 +3,12 @@ title: クイック スタート:Kafka プロトコルを使用した Azure Even
 description: クイック スタート:この記事では、Kafka のプロトコルおよび API を使用して、Azure Event Hubs にストリーム配信する方法に関する情報を示します。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: e87d9b1e4a444695d64dc6acfa0e29f7b72e37f2
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2020534a3984453bcd6eff7ad0f5c02d9e7a29ff
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319344"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368351"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>クイック スタート:Kafka プロトコルを使用した Event Hubs によるデータ ストリーミング
 このクイックスタートでは、プロトコル クライアントを変更したり独自のクラスターを実行したりせずに Event Hubs にストリーム配信する方法を紹介します。 プロデューサーとコンシューマーを使用して、アプリケーションの構成変更だけで Event Hubs と通信する方法を説明します。 
@@ -28,10 +28,10 @@ ms.locfileid: "92319344"
 
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs 名前空間を作成します
-**Standard** レベルの Event Hubs 名前空間を作成すると、名前空間の Kafka エンドポイントが自動的に有効になります。 Kafka プロトコルを使用するアプリケーションから Standard レベルの Event Hubs にイベントをストリーム配信できます。 **Standard** レベルの Event Hubs 名前空間を作成するには、[Azure portal を使用したイベント ハブの作成](event-hubs-create.md)に関するページの手順に従います。 
+**Standard** レベルの Event Hubs 名前空間を作成すると、名前空間の Kafka エンドポイントが自動的に有効になります。 Kafka プロトコルを使用するアプリケーションから Standard レベルの Event Hubs にイベントをストリーム配信できます。 **Standard** レベルの Event Hubs 名前空間を作成するには、 [Azure portal を使用したイベント ハブの作成](event-hubs-create.md)に関するページの手順に従います。 
 
 > [!NOTE]
-> Kafka 用の Event Hubs は、**Standard** および **Dedicated** レベルでのみ使用できます。 **Basic** レベルでは、Event Hubs 上の Kafka はサポートされません。
+> Kafka 用の Event Hubs は、 **Standard** および **Dedicated** レベルでのみ使用できます。 **Basic** レベルでは、Event Hubs 上の Kafka はサポートされません。
 
 ## <a name="send-and-receive-messages-with-kafka-in-event-hubs"></a>Event Hubs で Kafka を使用してメッセージを送受信する
 
@@ -49,6 +49,10 @@ ms.locfileid: "92319344"
     sasl.mechanism=PLAIN
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
     ```
+    
+    > [!IMPORTANT]
+    > `{YOUR.EVENTHUBS.CONNECTION.STRING}` を Event Hubs 名前空間への接続文字列に置き換えます。 接続文字列を取得する手順については、「[Event Hubs の接続文字列の取得](event-hubs-get-connection-string.md)」を参照してください。 たとえば、`sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";` のように構成します。
+
     **OAuth:**
 
     ```xml
@@ -79,6 +83,9 @@ ms.locfileid: "92319344"
     sasl.mechanism=PLAIN
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
     ```
+
+    > [!IMPORTANT]
+    > `{YOUR.EVENTHUBS.CONNECTION.STRING}` を Event Hubs 名前空間への接続文字列に置き換えます。 接続文字列を取得する手順については、「[Event Hubs の接続文字列の取得](event-hubs-get-connection-string.md)」を参照してください。 たとえば、`sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";` のように構成します。
 
     **OAuth:**
 

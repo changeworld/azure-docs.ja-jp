@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 10/15/2019
 ms.author: cavoeg
-ms.openlocfilehash: 07221e0cf8feeef48de27a84450c28b08d22e0d3
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 2cb50f2ae98dab1e64e01498e0913d1932e455cd
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217492"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339409"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-powershell"></a>クイック スタート:PowerShell を使用して Azure API for FHIR をデプロイする
 
@@ -68,7 +68,10 @@ Remove-AzResourceGroup -Name myResourceGroupName
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタート ガイドでは、ご利用のサブスクリプションに Azure API for FHIR をデプロイしました。 Azure API for FHIR に対してその他の設定を行うには、追加設定の攻略ガイドに進んでください。
+このクイックスタート ガイドでは、ご利用のサブスクリプションに Azure API for FHIR をデプロイしました。 Azure API for FHIR に対してその他の設定を行うには、追加設定の攻略ガイドに進んでください。 Azure API for FHIR を使い始める準備ができたら、アプリケーションの登録方法についての詳しい情報をご覧ください。
 
 >[!div class="nextstepaction"]
 >[Azure API for FHIR の追加設定](azure-api-for-fhir-additional-settings.md)
+
+>[!div class="nextstepaction"]
+>[アプリケーションの登録の概要](fhir-app-registration.md)

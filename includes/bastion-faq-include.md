@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 05/04/2020
+ms.date: 10/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: efb32631c5ee1eedece6d2a06b94702b602ed418
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95c55f92304ddd3ec2b3d44d4f07fb64ab815c6d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86276118"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755648"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>利用可能なリージョン
 
@@ -45,6 +45,10 @@ RDP と SSH はどちらも使用量ベースのプロトコルです。 セッ�
 
 現時点では、テキストのコピーと貼り付けのみがサポートされています。 ファイルのコピーなどの機能はサポートされていません。 [Azure Bastion フィードバック ページ](https://feedback.azure.com/forums/217313-networking?category_id=367303)で、新機能に関するフィードバックをぜひお寄せください。
 
+### <a name="does-bastion-hardening-work-with-aadj-vm-extension-joined-vms"></a><a name="aadj"></a>Bastion によるセキュリティ強化は、AADJ VM 拡張機能に参加している VM で動作しますか?
+
+この機能は、Azure AD ユーザーを使用して AADJ VM 拡張機能に参加しているマシンでは動作しません。 詳細については、[Windows Azure VM と Azure AD](../articles/active-directory/devices/howto-vm-sign-in-azure-ad-windows.md#requirements) に関するページをご覧ください。
+
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>どのブラウザーがサポートされていますか?
 
 Windows では Microsoft Edge ブラウザーまたは Google Chrome をご使用ください。 Apple Mac では、Google Chrome ブラウザーをご使用ください。 Microsoft Edge Chromium も Windows と Mac の両方でサポートされます。
@@ -66,7 +70,7 @@ Azure Bastion によって、顧客データがデプロイされているリー
 詳細については、 [価格に関するページ](https://aka.ms/BastionHostPricing)を参照してください。
 
 ### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Azure Bastion には、Azure でホストされる VM を管理する目的で RDS CAL が必要ですか?
-いいえ、管理の目的にのみ使用する場合、Azure Bastion による Windows Server VM へのアクセスに [RDS CAL](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) は必要ありません。
+いいえ、管理の目的にのみ使用する場合、Azure Bastion による Windows Server VM へのアクセスに [RDS CAL](https://www.microsoft.com/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) は必要ありません。
 
 ### <a name="what-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a><a name="keyboard"></a>Bastion リモート セッション中はどのようなキーボード レイアウトがサポートされますか?
 

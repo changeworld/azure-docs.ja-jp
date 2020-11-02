@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b9d7ad93c287aa9313658ec6b8d5df9f2219f27
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b159250e107fa73b9071eafe24fbe08ff1ea100b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90968868"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896006"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>REST API 呼び出しを使用して Azure VM 上に Azure リソースのマネージド ID を構成する
 
@@ -33,13 +33,13 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 - Azure VM 上でシステム割り当てマネージド ID を有効および無効にする
 - Azure VM 上でユーザー割り当てマネージド ID を追加および削除する
 
+まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
+
 ## <a name="prerequisites"></a>前提条件
 
-- Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#managed-identity-types)を必ず確認してください**。
-- まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
-- この記事で取り上げるすべてのコマンドは、クラウドでもローカルでも実行できます。
-    - クラウドで実行するには、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用します。
-    - ローカルから実行するには、[curl](https://curl.haxx.se/download.html) と [Azure CLI](/cli/azure/install-azure-cli) をインストールし、システム割り当てマネージド ID またはユーザー割り当てマネージド ID を管理する Azure サブスクリプションに関連付けられているアカウントで [az login](/cli/azure/reference-index#az-login) を使用して Azure にサインインします。
+- Azure リソースのマネージド ID に慣れていない場合は、「[Azure リソースのマネージド ID とは](overview.md)」を参照してください。 システム割り当てとユーザー割り当ての両方の種類のマネージド ID の詳細については、「[マネージド ID の種類](overview.md#managed-identity-types)」をご覧ください。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="system-assigned-managed-identity"></a>システム割り当てマネージド ID
 
@@ -55,7 +55,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    az group create --name myResourceGroup --location westus
    ```
 
-2. ご利用の VM の[ネットワーク インターフェイス](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create)を作成します。
+2. ご利用の VM の[ネットワーク インターフェイス](/cli/azure/network/nic#az-network-nic-create)を作成します。
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
@@ -67,7 +67,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    az account get-access-token
    ``` 
 
-4. CURL を使用して Azure Resource Manager REST エンドポイントを呼び出し、VM を作成します。 次の例では、値 `"identity":{"type":"SystemAssigned"}` によって要求本文で識別される、システム割り当てマネージド ID を使用して *myVM* という VM を作成します。 `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
+4. Azure Cloud Shell を使用して、Azure Resource Manager REST エンドポイントを呼び出す CURL を使って VM を作成します。 次の例では、値 `"identity":{"type":"SystemAssigned"}` によって要求本文で識別される、システム割り当てマネージド ID を使用して *myVM* という VM を作成します。 `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"SystemAssigned"},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"<SECURE PASSWORD STRING>"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -154,7 +154,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    az account get-access-token
    ```
 
-2. ご利用の VM で、*myVM* という VM の値 `{"identity":{"type":"SystemAssigned"}` により要求本文で識別される、システム割り当てマネージド ID を有効にするには、以下の CURL コマンドを使用して Azure Resource Manager REST エンドポイントを呼び出します。  `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
+2. ご利用の VM で、 *myVM* という VM の値 `{"identity":{"type":"SystemAssigned"}` により要求本文で識別される、システム割り当てマネージド ID を有効にするには、以下の CURL コマンドを使用して Azure Resource Manager REST エンドポイントを呼び出します。  `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
    
    > [!IMPORTANT]
    > VM に割り当てられている既存のユーザー割り当てマネージド ID を削除しないようにするには、次の CURL コマンドを使用してユーザー割り当てマネージド ID を一覧表示する必要があります。`curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` 応答の `identity` 値で識別される、ユーザー割り当てマネージド ID が VM に割り当てられている場合は、VM でシステム割り当てマネージド ID を有効にしている間、ユーザー割り当てマネージド ID を保持する方法を示す手順 3 に進みます。
@@ -264,7 +264,7 @@ VM でシステム割り当てマネージド ID を無効にするには、お�
    az account get-access-token
    ```
 
-2. CURL を使用して Azure Resource Manager REST エンドポイントを呼び出し、システム割り当てマネージド ID を無効にして VM を更新します。  次の例では、*myVM* という VM から値 `{"identity":{"type":"None"}}` によって要求本文で識別される、システム割り当てマネージド ID を無効にします。  `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
+2. CURL を使用して Azure Resource Manager REST エンドポイントを呼び出し、システム割り当てマネージド ID を無効にして VM を更新します。  次の例では、 *myVM* という VM から値 `{"identity":{"type":"None"}}` によって要求本文で識別される、システム割り当てマネージド ID を無効にします。  `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
 
    > [!IMPORTANT]
    > VM に割り当てられている既存のユーザー割り当てマネージド ID を削除しないようにするには、次の CURL コマンドを使用してユーザー割り当てマネージド ID を一覧表示する必要があります。`curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` 応答の `identity` 値で識別される、ユーザー割り当てマネージド ID が VM に割り当てられている場合は、VM でシステム割り当てマネージド ID を無効にしている間、ユーザー割り当てマネージド ID を保持する方法を示す手順 3 に進みます。
@@ -309,7 +309,7 @@ VM でシステム割り当てマネージド ID を無効にするには、お�
    az account get-access-token
    ```
 
-2. ご利用の VM の[ネットワーク インターフェイス](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create)を作成します。
+2. ご利用の VM の[ネットワーク インターフェイス](/cli/azure/network/nic#az-network-nic-create)を作成します。
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: jeedes
-ms.openlocfilehash: 4cb46487904f1f909686119d074dff5dcfad40c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b774f50f6f136d9e7c71b5fe6fbffb725a9240a5
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604054"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522225"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-orgvitality-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と OrgVitality SSO の統合
 
@@ -37,7 +37,7 @@ ms.locfileid: "91604054"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* OrgVitality SSO では、**IDP** によって開始される SSO がサポートされます
+* OrgVitality SSO では、 **IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-orgvitality-sso-from-the-gallery"></a>ギャラリーからの OrgVitality SSO の追加
 
@@ -47,7 +47,7 @@ Azure AD への OrgVitality SSO の統合を構成するには、ギャラリー
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**OrgVitality SSO**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **OrgVitality SSO** 」と入力します。
 1. 結果 パネルで **OrgVitality SSO** を選択して、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -83,7 +83,7 @@ OrgVitality SSO に対して Azure AD SSO を構成してテストするには�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[OrgVitality SSO サポート チーム](https://orgvitality.com/contact-us/)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. OrgVitality SSO アプリケーションでは、特定の形式の SAML アサーションを予測しているため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 OrgVitality SSO アプリケーションでは、**nameidentifier** が **user.employeeid** にマップされると想定しているため、 **[編集]** アイコンをクリックして属性マッピングを編集することで、属性マッピングを変更する必要があります。
+1. OrgVitality SSO アプリケーションでは、特定の形式の SAML アサーションを予測しているため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 OrgVitality SSO アプリケーションでは、 **nameidentifier** が **user.employeeid** にマップされると想定しているため、 **[編集]** アイコンをクリックして属性マッピングを編集することで、属性マッピングを変更する必要があります。
 
     ![image](common/default-attributes.png)
 
@@ -120,11 +120,11 @@ OrgVitality SSO に対して Azure AD SSO を構成してテストするには�
 
 ## <a name="configure-orgvitality-sso-sso"></a>OrgVitality SSO の SSO の構成
 
-**OrgVitality SSO** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [OrgVitality SSO サポート チーム](https://orgvitality.com/contact-us/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**OrgVitality SSO** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [OrgVitality SSO サポート チーム](https://orgvitality.com/contact-us/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-orgvitality-sso-test-user"></a>OrgVitality SSO テスト ユーザーの作成
 
-このセクションでは、OrgVitality SSO で Britta Simon というユーザーを作成します。  [OrgVitality SSO サポート チーム](https://orgvitality.com/contact-us/)と連携して、OrgVitality SSO ラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、OrgVitality SSO で Britta Simon というユーザーを作成します。 [OrgVitality SSO サポート チーム](https://orgvitality.com/contact-us/)と連携して、OrgVitality SSO プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
@@ -132,8 +132,8 @@ OrgVitality SSO に対して Azure AD SSO を構成してテストするには�
 
 1. Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した OrgVitality SSO に自動的にサインインされるはずです
 
-1. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [OrgVitality SSO] タイルをクリックすると、SSO を設定した OrgVitality SSO に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+1. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [OrgVitality SSO] タイルをクリックすると、SSO を設定した OrgVitality SSO に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-OrgVitality SSO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+OrgVitality SSO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

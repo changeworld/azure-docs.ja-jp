@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 8049df552c9754a1674c9e38e6d9b9b2cea3bd85
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 67902073b1484835d23566c91cbfae6f1d80d249
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058218"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900462"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>チュートリアル:2 つのマネージド インスタンス間でのレプリケーションの構成
 
@@ -32,7 +32,7 @@ ms.locfileid: "92058218"
 > [!div class="checklist"]
 >
 > - レプリケーション パブリッシャーおよびディストリビューターとしてマネージド インスタンスを構成する。
-> - レプリケーション ディストリビューターとしてマネージド インスタンスを構成する。
+> - レプリケーション サブスクライバーとしてマネージド インスタンスを構成する。
 
 ![2 つのマネージド インスタンス間でのレプリケート](./media/replication-between-two-instances-configure-tutorial/sqlmi-sqlmi-repl.png)
 
@@ -68,7 +68,7 @@ SQL Managed Instance をパブリッシャー、ディストリビューター�
 
 ## <a name="3---create-an-azure-storage-account"></a>3 ‐ Azure ストレージ アカウントを作成する
 
-作業ディレクトリ用に [Azure ストレージ アカウント](/azure/storage/common/storage-create-storage-account#create-a-storage-account)を作成し、そのストレージ アカウント内に[ファイル共有](../../storage/files/storage-how-to-create-file-share.md)を作成します。 
+作業ディレクトリ用に [Azure ストレージ アカウント](../../storage/common/storage-account-create.md#create-a-storage-account)を作成し、そのストレージ アカウント内に[ファイル共有](../../storage/files/storage-how-to-create-file-share.md)を作成します。 
 
 `\\storage-account-name.file.core.windows.net\file-share-name` の形式のファイル共有パスをコピーします。
 
@@ -326,4 +326,4 @@ GO
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure SQL Managed Instance とのトランザクション レプリケーション](replication-transactional-overview.md)の詳細、または [SQL Managed Instance パブリッシャー/ディストリビューターと、Azure VM サブスクライバー上の SQL](replication-two-instances-and-sql-server-configure-tutorial.md) 間でのレプリケーションの構成方法についても学習してください。 
+[Azure SQL Managed Instance とのトランザクション レプリケーション](replication-transactional-overview.md)の詳細、または [SQL Managed Instance パブリッシャー/ディストリビューターと、Azure VM サブスクライバー上の SQL](replication-two-instances-and-sql-server-configure-tutorial.md) 間でのレプリケーションの構成方法についても学習してください。

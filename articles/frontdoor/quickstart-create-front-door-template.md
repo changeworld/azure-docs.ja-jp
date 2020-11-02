@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
 ms.custom: subject-armqs
-ms.openlocfilehash: e7c3f2f50d9ac1fb1731f70f7b442ab4a2e44425
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 223006193219afe4179f3161d5e60e6439207b22
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088926"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896057"
 ---
 # <a name="quickstart-create-a-front-door-using-an-arm-template"></a>クイック スタート」を参照してください。ARM テンプレートを使用して Front Door を作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "92088926"
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、**[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
 [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-front-door-create-basic%2Fazuredeploy.json)
 
@@ -40,7 +40,7 @@ ms.locfileid: "92088926"
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-front-door-create-basic)からのものです。
 
-このクイックスタートでは、1 つのバックエンドと、"/*" に一致する 1 つの既定のパスを使用して、Front Door 構成を作成します。 
+このクイックスタートでは、1 つのバックエンドと、`/*` に一致する 1 つの既定のパスを使用して、Front Door 構成を作成します。
 
 :::code language="json" source="~/quickstart-templates/101-front-door-create-basic/azuredeploy.json":::
 
@@ -50,7 +50,7 @@ ms.locfileid: "92088926"
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-1. 次のコード ブロックの **[試してみる]** を選択して Azure Cloud Shell を開き、指示に従って Azure にサインインします。 
+1. 次のコード ブロックの **[試してみる]** を選択して Azure Cloud Shell を開き、指示に従って Azure にサインインします。
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -69,16 +69,16 @@ ms.locfileid: "92088926"
 
 1. 前のコード ブロックから **[コピー]** を選択して、PowerShell スクリプトをコピーします。
 
-1. シェル コンソール ウィンドウを右クリックし、**[貼り付け]** を選択します。
+1. シェル コンソール ウィンドウを右クリックし、 **[貼り付け]** を選択します。
 
 1. 値を入力します。
 
-    テンプレートのデプロイにより、1 つのバックエンドを使用した Front Door が作成されます。 この例では、 *<span>microsoft.</span>com* が **backendAddress** として使用されます。
+    テンプレートのデプロイにより、1 つのバックエンドを使用した Front Door が作成されます。 この例では、`microsoft.com` が **backendAddress** として使用されます。
 
-    リソース グループの名前は、**rg** が付加されたプロジェクト名です。
+    リソース グループの名前は、 **rg** が付加されたプロジェクト名です。
 
     > [!NOTE]
-    > テンプレートが正常にデプロイされるためには、**frontDoorName** がグローバルに一意の名前である必要があります。 デプロイが失敗した場合は、手順 1. からやり直します。
+    > テンプレートが正常にデプロイされるためには、 **frontDoorName** がグローバルに一意の名前である必要があります。 デプロイが失敗した場合は、手順 1. からやり直します。
 
     テンプレートのデプロイには数分かかります。 完了すると、次のように出力されます。
 
@@ -110,8 +110,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、次のものを作成しました。
-* フロントドア
+このクイックスタートでは、Front Door を作成しました。
 
 フロント ドアにカスタム ドメインを追加する方法を学習するには、Front Door のチュートリアルに進んでください。
 

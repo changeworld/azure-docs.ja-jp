@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d67d6301137a90d287148131fb4b1be7731e15bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07be83527fa781f87ed1de06fa41bd6d08ee9dc4
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88585833"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426570"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault を Azure Private Link と統合する
 
@@ -51,7 +51,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 1. [ネットワーク] タブで [プライベート エンドポイント] を選択します。
 1. [+ 追加] ボタンをクリックしてプライベート エンドポイントを追加します。
 
-    ![Image](../media/private-link-service-1.png)
+    ![キー コンテナーの作成時に表示される最初の画面のスクリーンショット。](../media/private-link-service-1.png)
  
 1. [プライベート エンドポイントの作成] ブレードの [場所] フィールドで、自分の仮想ネットワークが配置されているリージョンを選択します。 
 1. [名前] フィールドに、このプライベート エンドポイントを識別できるわかりやすい名前を作成します。 
@@ -59,7 +59,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 1. [プライベート DNS ゾーンと統合する] オプションはそのままにします。  
 1. [OK] を選択します。
 
-    ![Image](../media/private-link-service-8.png)
+    ![プライベート エンドポイントを構成するうえで重要なフィールドを示すスクリーンショット。](../media/private-link-service-8.png)
  
 これで、構成されたプライベート エンドポイントが表示されるようになります。 このプライベート エンドポイントを削除および編集するオプションが表示されるようになりました。 [レビュー + 作成] ボタンを選択してキー コンテナーを作成します。 デプロイが完了するまでに 5 から 10 分かかります。 
 
@@ -74,12 +74,10 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 1. ページの上部にある [プライベート エンドポイント接続] タブを選択します。
 1. ページの上部にある [+ プライベート エンドポイント] ボタンを選択します。
 
-    ![画像](../media/private-link-service-3.png) ![画像](../media/private-link-service-4.png)
+    ![[+ プライベート エンドポイント] ボタンを示すスクリーンショット。](../media/private-link-service-3.png)
+    ![プライベート エンドポイントを作成するための画面を示すスクリーンショット。](../media/private-link-service-4.png)
 
 このブレードを使用することで、任意の Azure リソース用のプライベート エンドポイントを作成できます。 ドロップダウン メニューを使用してリソースの種類を選択し、自分のディレクトリ内のリソースを選択することも、リソース ID を使用して任意の Azure リソースに接続することもできます。 [プライベート DNS ゾーンと統合する] オプションはそのままにします。  
-
-![画像](../media/private-link-service-3.png)
-![画像](../media/private-link-service-4.png)
 
 ## <a name="establish-a-private-link-connection-to-key-vault-using-cli"></a>CLI を使用してキー コンテナーへのプライベート リンク接続を確立する
 
@@ -272,13 +270,13 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 > [!NOTE]
 > プライベート エンドポイントが有効なキー コンテナーのサブスクリプションあたりの上限は、調整可能です。 以下に記載した上限は、あくまで既定値です。 サービスに適用される上限の引き上げをご希望の場合には、akv-privatelink@microsoft.com まで電子メールをお送りください。 いただいたご依頼は、ケースごとの事情を考慮して承認します。
 
-**価格**: 価格情報については、[Azure Private Link の価格](https://azure.microsoft.com/pricing/details/private-link/)に関するページを参照してください。
+**価格** : 価格情報については、 [Azure Private Link の価格](https://azure.microsoft.com/pricing/details/private-link/)に関するページを参照してください。
 
-**制限事項**: Azure Key Vault のプライベート エンドポイントは、Azure パブリック リージョンでのみ使用できます。
+**制限事項** : Azure Key Vault のプライベート エンドポイントは、Azure パブリック リージョンでのみ使用できます。
 
-**キー コンテナーあたりのプライベート エンドポイントの最大数**: 64。
+**キー コンテナーあたりのプライベート エンドポイントの最大数** : 64。
 
-**プライベート エンドポイントのあるキー コンテナーのサブスクリプションあたりの既定の数**:400。
+**プライベート エンドポイントのあるキー コンテナーのサブスクリプションあたりの既定の数** :400。
 
 詳細については、[Azure Private Link サービスの制限事項](../../private-link/private-link-service-overview.md#limitations)に関するセクションを参照してください。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
-ms.openlocfilehash: f2a6598cc28c39719d73be333bd74c24fce9371b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b76c41787d7a35fb3024fa18c0122bc966243bbc
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551903"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514539"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>チュートリアル:Trend Micro Web Security (TMWS) と Azure Active Directory のシングル サインオン (SSO) 統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88551903"
 * ユーザーが自分の Azure AD アカウントを使用して TMWS に自動的にサインインできるようになります。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,7 +40,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * TMWS では、SP Initiated SSO がサポートされます。
-* TMWS を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 Microsoft Cloud App Security を使用してセッション制御を適用する方法については、「[任意のアプリについてアプリの条件付きアクセス制御をオンボードして展開する](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)」を参照してください。
+* TMWS を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 Microsoft Cloud App Security を使用してセッション制御を適用する方法については、「[任意のアプリについてアプリの条件付きアクセス制御をオンボードして展開する](/cloud-app-security/proxy-deployment-any-app)」を参照してください。
 
 ## <a name="add-tmws-from-the-gallery"></a>ギャラリーから TMWS を追加する
 
@@ -50,7 +50,7 @@ Azure AD への TMWS の統合を構成するには、ギャラリーからマ�
 1. 左側のウィンドウで、 **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Trend Micro Web Security (TMWS)** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Trend Micro Web Security (TMWS)** 」と入力します。
 1. 検索結果で **[Trend Micro Web Security (TMWS)]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-tmws"></a>TMWS の Azure AD SSO の構成とテスト
@@ -116,7 +116,7 @@ B.Simon というテスト ユーザーを使用して、TMWS に対する Azure
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
    1. **[名前]** ボックスに、「`B.Simon`」と入力します。  
-   1. **[ユーザー名]** ボックスに、「***<ユーザー名> *@* <会社のドメイン> *.* <拡張子>***」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[ユーザー名]** ボックスに、「* *_username_@* companydomain *.* extension***」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
    1. **[パスワードを表示]** をオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **［作成］** を選択します
 
@@ -134,7 +134,7 @@ B.Simon というテスト ユーザーを使用して、TMWS に対する Azure
 
     ![[ユーザーの追加] を選択する](common/add-assign-user.png)
 
-1. **[ユーザーとグループ]** ダイアログ ボックスで、**ユーザー**の一覧で **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. **[ユーザーとグループ]** ダイアログ ボックスで、 **ユーザー** の一覧で **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. SAML アサーションにロール値が必要な場合は、 **[ロールの選択]** ダイアログ ボックスでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
 
@@ -188,11 +188,11 @@ TMWS SSO を構成するには、アプリケーション側で次の手順を�
 
 1. **[Identity Provider Settings]\(ID プロバイダーの設定\)** セクションで、次の手順を実行します。
 
-    a. **[Service URL]\(サービス URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を入力します。
+    a. **[Service URL]\(サービス URL\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を入力します。
 
-    b. **[Logon name attribute]\(ログオン名属性\)** ボックスに、Azure portal から取得した**ユーザー要求名**を **user.onpremisessamaccountname** ソース属性と共に入力します。
+    b. **[Logon name attribute]\(ログオン名属性\)** ボックスに、Azure portal から取得した **ユーザー要求名** を **user.onpremisessamaccountname** ソース属性と共に入力します。
 
-    c. **[Public SSL certificate]\(公開 SSL 証明書\)** ボックスには、Azure portal からダウンロードした**証明書 (Base64)** を使用します。
+    c. **[Public SSL certificate]\(公開 SSL 証明書\)** ボックスには、Azure portal からダウンロードした **証明書 (Base64)** を使用します。
 
 1. **[Synchronization Settings]\(同期設定\)** セクションで、次の手順を実行します。
 
@@ -200,7 +200,7 @@ TMWS SSO を構成するには、アプリケーション側で次の手順を�
 
     b. **[Application ID]\(アプリケーション ID\)** ボックスに、Azure portal から取得した **[アプリケーション (クライアント) ID]** の値を入力します。
 
-    c. **[Client secret]\(クライアント シークレット\)** ボックスに、Azure portal から取得した**クライアント シークレット**を入力します。
+    c. **[Client secret]\(クライアント シークレット\)** ボックスに、Azure portal から取得した **クライアント シークレット** を入力します。
 
     d. **[Synchronization schedule]\(同期スケジュール\)** を選択し、手動で、またはスケジュールに従って Azure AD との同期を行います。 **[Manually]\(手動\)** を選択した場合は、Active Directory ユーザー情報に変更があるたびに必ず **[Directory Services]\(ディレクトリ サービス\)** ページに戻って手動同期を実行し、TMWS の情報を最新の状態に保つようにしてください。
 
@@ -224,21 +224,20 @@ Azure AD サービスを構成し、ユーザーの認証方法として Azure A
 
 1. インターネットの任意の Web サイトにアクセスします。 TMWS により、TMWS のキャプティブ ポータルに移動します。
 
-1. Active Directory アカウント (形式: *domain*\\*sAMAccountName* または *sAMAccountName*@*domain*)、メール アドレス、または UPN を指定し、 **[Log On]\(ログオン\)** を選択します。 TMWS により Azure AD サインイン ウィンドウにリダイレクトされます。
+1. Active Directory アカウント (形式: *domain*\\*sAMAccountName* または *sAMAccountName*@*domain* )、メール アドレス、または UPN を指定し、 **[Log On]\(ログオン\)** を選択します。 TMWS により Azure AD サインイン ウィンドウにリダイレクトされます。
 
 1. Azure AD サインイン ウィンドウで、Azure AD アカウントの資格情報を入力します。 これで TMWS にサインインできます。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアル](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Trend Micro Web Security を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性とコントロールを使用して Trend Micro Web Security を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [高度な可視性とコントロールを使用して Trend Micro Web Security を保護する方法](/cloud-app-security/proxy-intro-aad)

@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 69d34b6c50d5a4be728453a34c1c092c63c7b6be
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 98764df41d5488afaaf7a24e0f1aa2535b0691d7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977325"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896958"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>クイック スタート:Azure portal を使用した Windows 仮想マシンの作成と暗号化
 
@@ -30,8 +30,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. Azure portal の左上隅にある **[リソースの作成]** を選択します。
 1. [新規] ページの [人気順] で、 **[Windows Server 2016 Datacenter]** を選択します。
 1. [基本] タブの [プロジェクトの詳細] で、正しいサブスクリプションが選択されていることを確認します。
-1. "リソース グループ" には **[新規作成]** を選択します。 名前として「*myResourceGroup*」と入力し、 **[OK]** を選択します。
-1. **[仮想マシン名]** に「*MyVM*」と入力します。
+1. "リソース グループ" には **[新規作成]** を選択します。 名前として「 *myResourceGroup* 」と入力し、 **[OK]** を選択します。
+1. **[仮想マシン名]** に「 *MyVM* 」と入力します。
 1. **[リージョン]** で *[(米国) 米国東部]* を選択します。
 1. **[サイズ]** が *[Standard D2s v3]* になっていることを確認します。
 1. **[管理者アカウント]** で **[パスワード]** を選択します。 ユーザー名とパスワードを入力します。

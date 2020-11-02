@@ -5,15 +5,15 @@ author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 04/15/2020
+ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: e3c2b2ce5bd9af60d6d1fd4ac066681ee8473521
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4100640fd619d9d971ac1c7083eedef8e2125fc3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249452"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738296"
 ---
 # <a name="azure-synapse-workspace-managed-identity-preview"></a>Azure Synapse ワークスペース マネージド ID (プレビュー)
 
@@ -32,7 +32,7 @@ Azure リソースのマネージド ID は、以前のマネージド サービ
 >[!NOTE]
 >このワークスペース マネージド ID は、このドキュメントの残りの部分ではマネージド ID と呼ばれます。
 
-Azure Synapse では、マネージド ID を使用してパイプラインを調整します。 マネージド ID のライフサイクルは、Azure Synapse ワークスペースに直接関連付けられています。 Azure Synapse ワークスペースを削除すると、マネージド ID もクリーンアップされます。
+Azure Synapse では、マネージド ID を使用してパイプラインを統合します。 マネージド ID のライフサイクルは、Azure Synapse ワークスペースに直接関連付けられています。 Azure Synapse ワークスペースを削除すると、マネージド ID もクリーンアップされます。
 
 ワークスペース マネージド ID には、パイプラインで操作を実行するためのアクセス許可が必要です。 アクセス許可を付与するときに、オブジェクト ID または Azure Synapse ワークスペース名を使用してマネージド ID を見つけることができます。
 
@@ -48,11 +48,11 @@ Azure portal でマネージド ID を取得できます。 Azure portal で Azu
 
 ![リンクされたサービスの作成 1](./media/synapse-workspace-managed-identity/workspace-managed-identity-2.png)
 
-**[新しいリンクされたサービス]** ウィンドウで、「*Azure Data Lake Storage Gen2*」と入力します。 リストから **[Azure Data Lake Storage Gen2]** のリソースの種類を選択し、 **[続行]** をクリックします。
+**[新しいリンクされたサービス]** ウィンドウで、「 *Azure Data Lake Storage Gen2* 」と入力します。 リストから **[Azure Data Lake Storage Gen2]** のリソースの種類を選択し、 **[続行]** をクリックします。
 
 ![リンクされたサービスの作成 2](./media/synapse-workspace-managed-identity/workspace-managed-identity-3.png)
 
-次のウィンドウで、 **[認証方法]** として **[マネージド ID]** を選択します。 マネージド ID の**名前**と**オブジェクト ID** が表示されます。
+次のウィンドウで、 **[認証方法]** として **[マネージド ID]** を選択します。 マネージド ID の **名前** と **オブジェクト ID** が表示されます。
 
 ![リンクされたサービスの作成 3](./media/synapse-workspace-managed-identity/workspace-managed-identity-4.png)
 

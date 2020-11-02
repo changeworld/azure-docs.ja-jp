@@ -1,26 +1,26 @@
 ---
 title: クイックスタート - Azure PowerShell を使用して Azure プライベート DNS ゾーンを作成する
-description: この記事では、Azure DNS でプライベート DNS ゾーンとレコードを作成してテストします。 これは、Azure PowerShell を使用して最初のプライベート DNS ゾーンとレコードを作成して管理するためのステップバイステップ ガイドです。
+description: このクイックスタートでは、Azure PowerShell を使用して最初のプライベート DNS ゾーンとレコードを作成して管理する方法について説明します。
 services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: fd795c9e251a7c4c0c8cbea5ce6c48cec3535484
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ee6dde6b34cccd415f9bf2052f65dcbe940715c1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311752"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424391"
 ---
-# <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure プライベート DNS ゾーンを作成する
+# <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>クイックスタート: Azure PowerShell を使用して Azure プライベート DNS ゾーンを作成する
 
 この記事では、Azure PowerShell を使用して最初のプライベート DNS ゾーンとレコードを作成する手順について説明します。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。 Azure DNS でドメインのホストを開始するには、そのドメイン名用に DNS ゾーンを作成する必要があります。 ドメインの DNS レコードはすべて、この DNS ゾーン内に作成されます。 仮想ネットワークにプライベート DNS ゾーンを発行するには、そのゾーン内のレコードを解決することが認められた仮想ネットワークの一覧を指定します。  これらを "*リンクされている*" 仮想ネットワーク と呼びます。 また、自動登録を有効にすると、仮想マシンの作成または削除、あるいはその IP アドレスの変更を行うたびに、Azure DNS でそのゾーン レコードも更新されます。
+DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。 Azure DNS でドメインのホストを開始するには、そのドメイン名用に DNS ゾーンを作成する必要があります。 ドメインの DNS レコードはすべて、この DNS ゾーン内に作成されます。 仮想ネットワークにプライベート DNS ゾーンを発行するには、そのゾーン内のレコードを解決することが認められた仮想ネットワークの一覧を指定します。  これらを " *リンクされている* " 仮想ネットワーク と呼びます。 また、自動登録を有効にすると、仮想マシンの作成または削除、あるいはその IP アドレスの変更を行うたびに、Azure DNS でそのゾーン レコードも更新されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,7 +42,7 @@ New-AzResourceGroup -name MyAzureResourceGroup -location "eastus"
 
 DNS ゾーンは、 `New-AzPrivateDnsZone` コマンドレットを使用して作成します。
 
-次の例では、**myAzureVNet** という名前の仮想ネットワークを作成します。 次に、**private.contoso.com** という名前の DNS ゾーンを **MyAzureResourceGroup** リソース グループに作成し、その DNS ゾーンを **MyAzureVnet** 仮想ネットワークにリンクし、自動登録を有効にします。
+次の例では、 **myAzureVNet** という名前の仮想ネットワークを作成します。 次に、 **private.contoso.com** という名前の DNS ゾーンを **MyAzureResourceGroup** リソース グループに作成し、その DNS ゾーンを **MyAzureVnet** 仮想ネットワークにリンクし、自動登録を有効にします。
 
 ```azurepowershell
 Install-Module -Name Az.PrivateDns -force
@@ -108,7 +108,7 @@ New-AzVm `
 
 ## <a name="create-an-additional-dns-record"></a>追加の DNS レコードの作成
 
-レコード セットは、`New-AzPrivateDnsRecordSet` コマンドレットを使用して作成します。 次の例では、リソース グループ **MyAzureResourceGroup** の DNS ゾーン **private.contoso.com** に、相対名が **db** のレコードを作成します。 レコード セットの完全修飾名は、**db.private.contoso.com** になります。 レコードの種類は "A"、IP アドレスは "10.2.0.4"、TTL は 3,600 秒です。
+レコード セットは、`New-AzPrivateDnsRecordSet` コマンドレットを使用して作成します。 次の例では、リソース グループ **MyAzureResourceGroup** の DNS ゾーン **private.contoso.com** に、相対名が **db** のレコードを作成します。 レコード セットの完全修飾名は、 **db.private.contoso.com** になります。 レコードの種類は "A"、IP アドレスは "10.2.0.4"、TTL は 3,600 秒です。
 
 ```azurepowershell
 New-AzPrivateDnsRecordSet -Name db -RecordType A -ZoneName private.contoso.com `
@@ -126,7 +126,7 @@ Get-AzPrivateDnsRecordSet -ZoneName private.contoso.com -ResourceGroupName MyAzu
 
 ## <a name="test-the-private-zone"></a>プライベート ゾーンのテスト
 
-これで、**private.contoso.com** プライベート ゾーンでの名前解決をテストできます。
+これで、 **private.contoso.com** プライベート ゾーンでの名前解決をテストできます。
 
 ### <a name="configure-vms-to-allow-inbound-icmp"></a>受信 ICMP を許可するように VM を構成する
 
@@ -193,7 +193,7 @@ MyVM02 についても同じ手順を繰り返します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-この記事で作成したリソースが不要になったときに削除するには、**MyAzureResourceGroup** リソース グループを削除します。
+この記事で作成したリソースが不要になったときに削除するには、 **MyAzureResourceGroup** リソース グループを削除します。
 
 ```azurepowershell
 Remove-AzResourceGroup -Name MyAzureResourceGroup

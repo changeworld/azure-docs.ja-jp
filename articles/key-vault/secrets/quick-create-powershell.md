@@ -7,15 +7,15 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurepowershell
 ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6ef7b17efc1f18009edffbacb2578f94fcf40b1c
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 1b70a8330f6350ef66244ae03e89f685162df5c7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743031"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786328"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>クイック スタート:PowerShell を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -25,10 +25,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-PowerShell をローカルにインストールして使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 1.0.0 以降が必要になります。 バージョンを確認するには、「`$PSVersionTable.PSVersion`」と入力します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzAccount` を実行して Azure との接続を作成することも必要です。
+PowerShell をローカルにインストールして使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.0.0 以降が必要になります。 バージョンを確認するには、「`$PSVersionTable.PSVersion`」と入力します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
 ```azurepowershell-interactive
-Login-AzAccount
+Connect-AzAccount
 ```
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
@@ -45,9 +45,9 @@ New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
 
 このクイックスタート全体でキー コンテナーの名前として "Contoso KeyVault2" を使用していますが、一意の名前を使用する必要があります。
 
-- **コンテナー名**: Contoso-Vault2。
-- **リソース グループ名**: ContosoResourceGroup。
-- **場所**: 米国東部。
+- **コンテナー名** : Contoso-Vault2。
+- **リソース グループ名** : ContosoResourceGroup。
+- **場所** : 米国東部。
 
 ```azurepowershell-interactive
 New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
@@ -55,7 +55,7 @@ New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' 
 
 このコマンドレットの出力では、新しく作成したキー コンテナーのプロパティが示されます。 次の 2 つのプロパティをメモしておきます。
 
-* **Vault Name**:この例では、これは **Contoso-Vault2** です。 この名前を他の Key Vault コマンドレットに使用できます。
+* **Vault Name** :この例では、これは **Contoso-Vault2** です。 この名前を他の Key Vault コマンドレットに使用できます。
 * **Vault URI (コンテナー URI)** :この例では、これは https://Contoso-Vault2.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
 
 資格情報コンテナーを作成した後は、使用している Azure アカウントのみが、この新しいコンテナーで任意の操作を実行することが許可されます。
@@ -71,13 +71,13 @@ Set-AzKeyVaultAccessPolicy -VaultName 'Contoso-Vault2' -UserPrincipalName 'user@
 
 シークレットをコンテナーに追加するには、いくつかの手順を実行する必要があります。 このケースでは、アプリケーションによって使用可能なパスワードを追加します。 パスワードは **ExamplePassword** と呼ばれ、値 **hVFkk965BuUv** がその中に格納されます。
 
-最初に、次のように入力して、**hVFkk965BuUv** の値をセキュリティで保護された文字列に変換します。
+最初に、次のように入力して、 **hVFkk965BuUv** の値をセキュリティで保護された文字列に変換します。
 
 ```azurepowershell-interactive
 $secretvalue = ConvertTo-SecureString 'hVFkk965BuUv' -AsPlainText -Force
 ```
 
-その後、次の PowerShell コマンドを入力して、Key Vault に **ExamplePassword** というシークレットを作成します。その値は、**hVFkk965BuUv** にします。
+その後、次の PowerShell コマンドを入力して、Key Vault に **ExamplePassword** というシークレットを作成します。その値は、 **hVFkk965BuUv** にします。
 
 ```azurepowershell-interactive
 $secret = Set-AzKeyVaultSecret -VaultName 'Contoso-Vault2' -Name 'ExamplePassword' -SecretValue $secretvalue
@@ -86,7 +86,7 @@ $secret = Set-AzKeyVaultSecret -VaultName 'Contoso-Vault2' -Name 'ExamplePasswor
 シークレットに格納されている値をプレーンテキストとして表示するには:
 
 ```azurepowershell-interactive
-(Get-AzKeyVaultSecret -vaultName "Contoso-Vault2" -name "ExamplePassword").SecretValueText
+(Get-AzKeyVaultSecret -VaultName "Contoso-Vault2" -Name "ExamplePassword").SecretValue | ConvertFrom-SecureString -AsPlainText
 ```
 
 これで、キー コンテナーを作成し、シークレットを格納した後、取得しました。
@@ -106,5 +106,5 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 このクイックスタートでは、Key Vault を作成してシークレットを格納しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
-- [Azure PowerShell の Key Vault コマンドレット](/powershell/module/az.keyvault/?view=azps-2.6.0#key_vault)のリファレンスを参照する
+- [Azure PowerShell の Key Vault コマンドレット](/powershell/module/az.keyvault/#key_vault)のリファレンスを参照する
 - [Azure Key Vault のベスト プラクティス](../general/best-practices.md)を確認する

@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: bf89e99842efa726e6ca05a08998c9d058dc02e3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5eb392fdfc1ffdb6d7cfee64734cca32c9abcd33
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019377"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913281"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>チュートリアル:R を使用して機械学習モデルを作成する (プレビュー)
 
@@ -45,12 +45,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure Machine Learning ワークスペースは、機械学習モデルを実験、トレーニング、およびデプロイするために使用する、クラウドでの基本的なリソースです。 ワークスペースは、Azure サブスクリプションとリソース グループを、サービス内の簡単に使用できるオブジェクトに結び付けます。 
 
-ワークスペースを作成するには、Azure リソースを管理するための Web ベースのコンソールである Azure portal を使用します。 
+[ワークスペースを作成する方法](how-to-manage-workspace.md)は多数あります。 このチュートリアルでは、Azure リソースを管理するための Web ベースのコンソールである Azure portal を使用してワークスペースを作成します。 
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT] 
-> お使いの**ワークスペース**と**サブスクリプション**をメモしておきます。 これらは、適切な場所に実験を作成するために必要になります。 
+> お使いの **ワークスペース** と **サブスクリプション** をメモしておきます。 これらは、適切な場所に実験を作成するために必要になります。 
 
 
 ## <a name="open-rstudio"></a><a name="open"></a>RStudio を開く
@@ -63,7 +63,7 @@ Azure Machine Learning ワークスペースは、機械学習モデルを実験
 
 1. コンピューティング リソースがまだ存在しない場合は追加します。
 
-1. コンピューティングが実行されたら、**RStudio** リンクを使用して RStudio を開きます。
+1. コンピューティングが実行されたら、 **RStudio** リンクを使用して RStudio を開きます。
 
 
 ## <a name="clone-the-sample-vignettes"></a><a name="azure"></a>サンプルのビネットをクローンする 
@@ -74,10 +74,10 @@ Azure Machine Learning ワークスペースは、機械学習モデルを実験
 
 1. ターミナルで `git clone https://github.com/Azure/azureml-sdk-for-r` を実行し、リポジトリをクローンします。
 
-1. RStudio で、クローンされた *azureml-sdk-for-r* フォルダーの *vignettes* フォルダーに移動します。  *vignettes* の下で、 *train-and-deploy-first-model.Rmd* ファイルを選択し、このチュートリアルで使用されるビネットを検索します。 このビネットに使用されるその他のファイルは、*train-and-deploy-first-model* サブフォルダーにあります。 ビネットを開いたら、 **[Session]\(セッション\) > [Set Working Directory]\(作業ディレクトリの設定\) > [To Source File Location]\(ソース ファイルの場所に\)** を使用して、作業ディレクトリをそのファイルの場所に設定します。 
+1. RStudio で、クローンされた *azureml-sdk-for-r* フォルダーの *vignettes* フォルダーに移動します。  *vignettes* の下で、 *train-and-deploy-first-model.Rmd* ファイルを選択し、このチュートリアルで使用されるビネットを検索します。 このビネットに使用されるその他のファイルは、 *train-and-deploy-first-model* サブフォルダーにあります。 ビネットを開いたら、 **[Session]\(セッション\) > [Set Working Directory]\(作業ディレクトリの設定\) > [To Source File Location]\(ソース ファイルの場所に\)** を使用して、作業ディレクトリをそのファイルの場所に設定します。 
 
 > [!Important]
-> 以降この記事には、*train-and-deploy-first-model.Rmd* ファイルと同じ内容が記載されています。 RMarkdown の使用経験がある場合は、そのファイルのコードを自由に使用できます。  また、そこから、またはこの記事から、コード スニペットをコピーして R スクリプトまたはコマンド ラインに貼り付けることもできます。 
+> 以降この記事には、 *train-and-deploy-first-model.Rmd* ファイルと同じ内容が記載されています。 RMarkdown の使用経験がある場合は、そのファイルのコードを自由に使用できます。  また、そこから、またはこの記事から、コード スニペットをコピーして R スクリプトまたはコマンド ラインに貼り付けることもできます。 
 
 
 ## <a name="set-up-your-development-environment"></a>開発環境を設定する
@@ -99,7 +99,7 @@ azuremlsdk::install_azureml()
 > [!WARNING]
 > インストール プロセス中に "`Would you like to install Miniconda? [Y/n]:`" というメッセージが表示された場合は、"`n`" で応答してください。コンピューティング インスタンスには既に Anaconda がインストールされているため、Miniconda のインストールは必要ありません。
 
-先に進んで、**azuremlsdk** パッケージをインポートします。
+先に進んで、 **azuremlsdk** パッケージをインポートします。
 
 ```R
 library(azuremlsdk)
@@ -108,7 +108,7 @@ library(azuremlsdk)
 トレーニング スクリプトとスコアリング スクリプト (`accidents.R` と `accident_predict.R`) には、いくつかの追加の依存関係があります。 これらのスクリプトをローカルで実行する予定の場合は、それらの必要なパッケージがあることも確認します。
 
 ### <a name="load-your-workspace"></a>ワークスペースを読み込む
-既存のワークスペースからワークスペース オブジェクトをインスタンス化します。 次のコードでは、**config.json** ファイルからワークスペースの詳細を読み込みます。 [`get_workspace()`](https://azure.github.io/azureml-sdk-for-r/reference/get_workspace.html) を使用してワークスペースを取得することもできます。
+既存のワークスペースからワークスペース オブジェクトをインスタンス化します。 次のコードでは、 **config.json** ファイルからワークスペースの詳細を読み込みます。 [`get_workspace()`](https://azure.github.io/azureml-sdk-for-r/reference/get_workspace.html) を使用してワークスペースを取得することもできます。
 
 ```R
 ws <- load_workspace_from_config()
@@ -184,11 +184,11 @@ upload_files_to_datastore(ds,
 * ジョブを送信する
 
 ### <a name="prepare-the-training-script"></a>トレーニング スクリプトを準備する
-`accidents.R` というトレーニング スクリプトが *train-and-deploy-first-model* ディレクトリに用意されています。 Azure Machine Learning サービスをトレーニングに活用するために行われた**トレーニング スクリプト内**の次の詳細に注意してください。
+`accidents.R` というトレーニング スクリプトが *train-and-deploy-first-model* ディレクトリに用意されています。 Azure Machine Learning サービスをトレーニングに活用するために行われた **トレーニング スクリプト内** の次の詳細に注意してください。
 
 * このトレーニング スクリプトは、引数 `-d` を受け取り、トレーニング データが含まれるディレクトリを検出します。 後でジョブを定義して送信する際に、次のように、引数にデータストアを指定します。 Azure ML は、トレーニング ジョブ用にストレージ フォルダーをリモート クラスターにマウントします。
 * トレーニング スクリプトは、`log_metric_to_run()` を使用して Azure ML の実行レコードにメトリックとして最終的な精度をログに記録します。 Azure ML SDK には、トレーニングの実行中にさまざまなメトリックをログに記録するためのログ記録 API のセットが用意されています。 これらのメトリックは記録され、実験の実行レコードに保存されます。 メトリックにはいつでもアクセスでき、[スタジオ](https://ml.azure.com)の実行の詳細ページで表示することもできます。 `log_*()` のログ記録方法の完全なセットについては、[リファレンス](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation)を参照してください。
-* トレーニング スクリプトでは、**outputs** という名前のディレクトリにモデルが保存されます。 `./outputs` フォルダーは、Azure ML によって特別に処理されます。 トレーニング中、`./outputs` に書き込まれるファイルは、Azure ML によって実行レコードに自動的にアップロードされ、成果物として永続化されます。 トレーニング済みのモデルを `./outputs` に保存することにより、実行が終了し、リモート トレーニング環境にアクセスできなくなった後でも、モデル ファイルにアクセスして取得することができます。
+* トレーニング スクリプトでは、 **outputs** という名前のディレクトリにモデルが保存されます。 `./outputs` フォルダーは、Azure ML によって特別に処理されます。 トレーニング中、`./outputs` に書き込まれるファイルは、Azure ML によって実行レコードに自動的にアップロードされ、成果物として永続化されます。 トレーニング済みのモデルを `./outputs` に保存することにより、実行が終了し、リモート トレーニング環境にアクセスできなくなった後でも、モデル ファイルにアクセスして取得することができます。
 
 ### <a name="create-an-estimator"></a>推定を作成する
 
@@ -212,7 +212,7 @@ est <- estimator(source_directory = "train-and-deploy-first-model",
 
 ### <a name="submit-the-job-on-the-remote-cluster"></a>リモート クラスターでジョブを送信する
 
-最後に、クラスターで実行するジョブを送信します。 `submit_experiment()` は、後で実行とのインターフェイスに使用する実行オブジェクトを返します。 初回の実行は合計で**約 10 分**かかります。 しかし、その後の実行では、スクリプトの依存関係が変わらなければ、同じ Docker イメージが再利用されます。  この場合、イメージはキャッシュされ、コンテナーの起動時間は大幅に短縮されます。
+最後に、クラスターで実行するジョブを送信します。 `submit_experiment()` は、後で実行とのインターフェイスに使用する実行オブジェクトを返します。 初回の実行は合計で **約 10 分** かかります。 しかし、その後の実行では、スクリプトの依存関係が変わらなければ、同じ Docker イメージが再利用されます。  この場合、イメージはキャッシュされ、コンテナーの起動時間は大幅に短縮されます。
 
 ```R
 run <- submit_experiment(exp, est)
@@ -305,7 +305,7 @@ model <- register_model(ws,
 ### <a name="define-the-inference-dependencies"></a>推論の依存関係を定義する
 モデル用の Web サービスを作成するには、最初にスコアリング スクリプト (`entry_script`) を作成する必要があります。これは、入力変数の値 (JSON 形式) として取得し、モデルからの予測を出力する R スクリプトです。 このチュートリアルでは、指定されたスコアリング ファイル `accident_predict.R` を使用します。 スコアリング スクリプトには、モデルを読み込み、モデルを使用して入力データに基づいて予測を行う関数を返す、`init()` メソッドが含まれている必要があります。 詳細については、[ドキュメント](https://azure.github.io/azureml-sdk-for-r/reference/inference_config.html#details)を参照してください。
 
-次に、スクリプトのパッケージの依存関係のための Azure ML **環境**を定義します。 環境では、スクリプトの実行に必要な R パッケージ (CRAN またはその他の場所のパッケージ) を指定します。 また、スクリプトで参照できる環境変数の値を指定して、その動作を変更することもできます。 既定では、Azure ML は、トレーニング用に Estimator で使用されるのと同じ既定の Docker イメージを構築します。 このチュートリアルには特別な要件がないため、特別な属性のない環境を作成します。
+次に、スクリプトのパッケージの依存関係のための Azure ML **環境** を定義します。 環境では、スクリプトの実行に必要な R パッケージ (CRAN またはその他の場所のパッケージ) を指定します。 また、スクリプトで参照できる環境変数の値を指定して、その動作を変更することもできます。 既定では、Azure ML は、トレーニング用に Estimator で使用されるのと同じ既定の Docker イメージを構築します。 このチュートリアルには特別な要件がないため、特別な属性のない環境を作成します。
 
 ```R
 r_env <- r_environment(name = "basic_env")
@@ -313,7 +313,7 @@ r_env <- r_environment(name = "basic_env")
 
 代わりに、デプロイに独自の Docker イメージを使用する場合は、`custom_docker_image` パラメーターを指定します。 環境を構成するための構成可能なオプションの完全なセットについては、[`r_environment()`](https://azure.github.io/azureml-sdk-for-r/reference/r_environment.html) リファレンスを参照してください。
 
-これで、スコアリング スクリプトと環境の依存関係をカプセル化するための**推論構成**の作成に必要なものがすべて揃いました。
+これで、スコアリング スクリプトと環境の依存関係をカプセル化するための **推論構成** の作成に必要なものがすべて揃いました。
 
 ```R
 inference_config <- inference_config(
@@ -329,7 +329,7 @@ inference_config <- inference_config(
 aci_config <- aci_webservice_deployment_config(cpu_cores = 1, memory_gb = 0.5)
 ```
 
-ここで、モデルを Web サービスとしてデプロイします。 デプロイには**数分かかることがあります**。 
+ここで、モデルを Web サービスとしてデプロイします。 デプロイには **数分かかることがあります** 。 
 
 ```R
 aci_service <- deploy_model(ws, 

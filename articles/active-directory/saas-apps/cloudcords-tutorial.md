@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jeedes
-ms.openlocfilehash: bf0e6b82ff6007a847b159829ebd0462cdad42fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59e5e9ecf87a5774cefe2798c01006b08c6b1df5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551692"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455784"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudcords"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と CloudCords の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88551692"
 * ユーザーが自分の Azure AD アカウントを使用して CloudCords に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,9 +39,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* CloudCords では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* CloudCords では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
-* CloudCords を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* CloudCords を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-cloudcords-from-the-gallery"></a>ギャラリーからの CloudCords の追加
 
@@ -51,7 +51,7 @@ Azure AD への CloudCords の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**CloudCords**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **CloudCords** 」と入力します。
 1. 結果のパネルから **CloudCords** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -131,29 +131,28 @@ CloudCords で Azure AD SSO を構成してテストするには、次の構成�
 
 ## <a name="configure-cloudcords-sso"></a>CloudCords SSO の構成
 
-**CloudCords** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [CloudCords サポート チーム](mailto:support@kiran.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**CloudCords** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [CloudCords サポート チーム](mailto:support@kiran.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-cloudcords-test-user"></a>CloudCords テスト ユーザーの作成
 
-このセクションでは、CloudCords で Britta Simon というユーザーを作成します。  [Cloudcords サポート チーム](mailto:support@kiran.com)と連携して、CloudCords プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、CloudCords で Britta Simon というユーザーを作成します。 [Cloudcords サポート チーム](mailto:support@kiran.com)と連携して、CloudCords プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [CloudCords] タイルをクリックすると、SSO を設定した CloudCords に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [CloudCords] タイルをクリックすると、SSO を設定した CloudCords に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で CloudCords を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって CloudCords を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [高度な可視性と制御によって CloudCords を保護する方法](/cloud-app-security/proxy-intro-aad)

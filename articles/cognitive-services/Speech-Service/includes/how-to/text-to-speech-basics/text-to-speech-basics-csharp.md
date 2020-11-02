@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5e2631332be1ea2a9e63755ea53897ba0d7813ef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fa1571721653b9a3829a91bb5659f0b8216e0037
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332515"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92470854"
 ---
 このクイックスタートでは、Speech SDK を使用してテキスト読み上げ合成を行うための一般的な設計パターンについて説明します。 まずは基本的な構成と合成を行った後、次のようなより高度なカスタム アプリケーション開発の例に進みます。
 
@@ -64,7 +64,7 @@ Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig
 * ホストの場合: ホスト アドレスを渡します。 キーまたは認証トークンは省略可能です。
 * 認証トークンの場合: 認証トークンと、それに関連付けられたリージョンを渡します。
 
-この例では、サブスクリプション キーとリージョンを使用して [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true) を作成します。 リージョン識別子を確認するには、[リージョンのサポート](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)に関するページを参照してください。 また、この記事の残りの部分で使用する、基本的な定型コードをいくつか作成します。これを変更して、さまざまなカスタマイズを行います。
+この例では、サブスクリプション キーとリージョンを使用して [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true) を作成します。 「[Speech Service を無料で試す](../../../overview.md#try-the-speech-service-for-free)」の手順に従って、これらの資格情報を取得します。 また、この記事の残りの部分で使用する、基本的な定型コードをいくつか作成します。これを変更して、さまざまなカスタマイズを行います。
 
 ```csharp
 public class Program 
@@ -185,7 +185,7 @@ static async Task SynthesizeAudioAsync()
 音声合成マークアップ言語 (SSML) を使用すると、XML スキーマから要求を送信して、テキスト読み上げ出力のピッチ、発音、読み上げ速度、ボリュームなどを微調整することができます。 このセクションでは実用的な使用例をいくつか紹介しますが、詳細なガイドについては、[SSML の操作方法に関する記事](../../../speech-synthesis-markup.md)を参照してください。
 
 SSML を使用したカスタマイズを開始するには、音声を切り替える単純な変更を加えます。
-まず、ルート プロジェクト ディレクトリに SSML 構成用の新しい XML ファイルを作成します (この例では `ssml.xml`)。 ルート要素は常に `<speak>` であり、テキストを `<voice>` 要素でラップすることで、`name` パラメーターを使用して音声を変更できます。 この例では、音声を男性の英語 (英国) の音声に変更します。 この音声が**標準**音声であることに注意してください。これは、**ニューラル**音声とは価格や可用性が異なります。 サポートされている**標準**音声の[全一覧](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#standard-voices)を参照してください。
+まず、ルート プロジェクト ディレクトリに SSML 構成用の新しい XML ファイルを作成します (この例では `ssml.xml`)。 ルート要素は常に `<speak>` であり、テキストを `<voice>` 要素でラップすることで、`name` パラメーターを使用して音声を変更できます。 この例では、音声を男性の英語 (英国) の音声に変更します。 この音声が **標準** 音声であることに注意してください。これは、 **ニューラル** 音声とは価格や可用性が異なります。 サポートされている **標準** 音声の [全一覧](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#standard-voices)を参照してください。
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -233,7 +233,7 @@ public static async Task SynthesizeAudioAsync()
 ニューラル音声に切り替えるには、`name` を[ニューラル音声オプション](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)のいずれかに変更します。 次に、`mstts` の XML 名前空間を追加し、テキストを `<mstts:express-as>` タグ内にラップします。 読み上げスタイルをカスタマイズするには、`style` パラメーターを使用します。 この例では `cheerful` を使用していますが、`customerservice` または `chat` に設定して、読み上げスタイルの違いを確認してみてください。
 
 > [!IMPORTANT]
-> ニューラル音声は、"*米国東部*"、"*東南アジア*"、"*西ヨーロッパ*" のリージョンで作成された音声リソースで**のみ**サポートされています。
+> ニューラル音声は、" *米国東部* "、" *東南アジア* "、" *西ヨーロッパ* " のリージョンで作成された音声リソースで **のみ** サポートされています。
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">

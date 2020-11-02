@@ -9,19 +9,19 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: a2e6111f2df5a8d7334a85ec5b6a9e514368ad6c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 708b8255f6cf7c60e2d2fc7fbd280b477c06a3d6
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289482"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503285"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>ワークスペース、データ、およびパイプラインへのアクセスを管理する
 
 Azure Synapse Analytics ワークスペース (プレビュー) でワークスペース、データ、およびパイプラインへのアクセス制御を管理する方法について説明します。
 
 > [!NOTE]
-> GA 向けに、Synapse 固有の Azure ロールの導入によりさらに RBAC の開発が行われる予定です
+> GA 向けに、Synapse 固有の Azure ロールの導入によりさらに Azure RBAC の開発が行われる予定です
 
 ## <a name="access-control-for-workspace"></a>ワークスペースのアクセス制御
 
@@ -52,10 +52,10 @@ Azure Synapse ワークスペースへの運用環境のデプロイでは、お
 3. Azure Synapse ワークスペース用に選択したコンテナー (ファイルシステム) に移動します
 4. **[アクセス制御 (IAM)]** を選択します
 5. 次のロールを割り当てます。
-   1. **閲覧者**ロール: `Synapse_WORKSPACENAME_Users`
-   2. **ストレージ BLOB データ所有者**ロール: `Synapse_WORKSPACENAME_Admins`
-   3. **ストレージ BLOB データ共同作成者**ロール: `Synapse_WORKSPACENAME_Users`
-   4. **ストレージ BLOB データ所有者**ロール: `WORKSPACENAME`
+   1. **閲覧者** ロール: `Synapse_WORKSPACENAME_Users`
+   2. **ストレージ BLOB データ所有者** ロール: `Synapse_WORKSPACENAME_Admins`
+   3. **ストレージ BLOB データ共同作成者** ロール: `Synapse_WORKSPACENAME_Users`
+   4. **ストレージ BLOB データ所有者** ロール: `WORKSPACENAME`
 
 > [!NOTE]
 > WORKSPACENAME - この部分は、実際のワークスペース名に置き換えてください。
@@ -100,7 +100,7 @@ Azure Synapse ワークスペースへの運用環境のデプロイでは、お
 ## <a name="access-control-to-sql-databases"></a>SQL データベースに対するアクセス制御
 
 > [!TIP]
-> 以下の手順は、すべての SQL データベースへのユーザー アクセスを付与するために、SQL データベース**ごと**に実行する必要があります。ただし、ユーザーに sysadmin ロールを割り当てることができる「[サーバー レベルのアクセス許可](#server-level-permission)」セクションは除きます。
+> 以下の手順は、すべての SQL データベースへのユーザー アクセスを付与するために、SQL データベース **ごと** に実行する必要があります。ただし、ユーザーに sysadmin ロールを割り当てることができる「 [サーバー レベルのアクセス許可](#server-level-permission)」セクションは除きます。
 
 ### <a name="sql-on-demand"></a>SQL オンデマンド
 
@@ -108,7 +108,7 @@ Azure Synapse ワークスペースへの運用環境のデプロイでは、お
 
 #### <a name="database-level-permission"></a>データベース レベルのアクセス許可
 
-ユーザーに**単一の** SQL オンデマンド データベースへのアクセスを許可するには、次の例の手順に従います。
+ユーザーに **単一の** SQL オンデマンド データベースへのアクセスを許可するには、次の例の手順に従います。
 
 1. ログインを作成します
 
@@ -144,12 +144,12 @@ Azure Synapse ワークスペースへの運用環境のデプロイでは、お
 
 ```sql
 CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
-ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
+ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 ```
 
 ### <a name="sql-pools"></a>SQL プール
 
-ユーザーに**単一の** SQL データベースへのアクセスを許可するには、次の手順に従います。
+ユーザーに **単一の** SQL データベースへのアクセスを許可するには、次の手順に従います。
 
 1. コンテキスト セレクター (データベースを選択するためのドロップダウン) で目的のデータベースをターゲットとする次のコマンドを実行して、データベースにユーザーを作成します。
 
@@ -166,8 +166,8 @@ ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
     ```
 
 > [!IMPORTANT]
-> *db_owner* アクセス許可を付与することが望ましくない場合は、*db_datareader* および *db_datawriter* を読み取りまたは書き込みアクセス許可のために使用することができます。
-> Spark ユーザーが Spark と SQL プールとの間で直接読み取りまたは書き込みを行うには、*db_owner* アクセス許可が必要です。
+> *db_owner* アクセス許可を付与することが望ましくない場合は、 *db_datareader* および *db_datawriter* を読み取りまたは書き込みアクセス許可のために使用することができます。
+> Spark ユーザーが Spark と SQL プールとの間で直接読み取りまたは書き込みを行うには、 *db_owner* アクセス許可が必要です。
 
 ユーザーを作成した後、SQL オンデマンドでストレージ アカウントに対してクエリを実行できることを検証します。
 

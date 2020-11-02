@@ -3,12 +3,12 @@ title: Azure VMware Solution のデプロイの計画
 description: この記事では、Azure VMware Solution のデプロイ ワークフローの概要について説明します。  最終的な結果として、仮想マシン (VM) の作成と移行に向けて環境の準備が整います。
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 7914176174a38fef2336fc52eae7501780057452
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: e30692f26af786097f3cdb81690be617bfea0c79
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147978"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517363"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware Solution のデプロイの計画
 
@@ -73,7 +73,7 @@ Azure VMware Solution、お使いの既存の Azure 環境、およびオンプ�
 
 プライベート クラウド内に最初のネットワーク (NSX セグメント) を作成するための IP セグメントを特定します。  言い換えると、Azure VMware Solution に VM をデプロイできるように、Azure VMware Solution 上にネットワーク セグメントを作成する必要があります。   
 
-L2 ネットワークの拡張だけを計画している場合でも、環境を検証するために役立つネットワーク セグメントを作成します。
+L2 ネットワークの拡張だけを計画している場合でも、環境を検証するネットワーク セグメントを作成します。
 
 作成されるどの IP セグメントも、Azure とオンプレミスのフットプリント全体で一意である必要があることに注意してください。  
 

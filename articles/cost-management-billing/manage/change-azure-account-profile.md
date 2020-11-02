@@ -7,19 +7,19 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 10/26/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: be3de838e340400da09ad261d82328f6793aed2e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: contperfq2
+ms.openlocfilehash: 05b93fd02ec229306d4e3e150b1e8baab072b597
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297727"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672001"
 ---
 # <a name="change-contact-information-for-an-azure-billing-account"></a>Azure 課金アカウントの連絡先情報を変更する
 
-この記事は、Azure portal で "*課金アカウント*" の連絡先情報を更新するために役立ちます。 連絡先情報を更新する手順は、課金アカウントの種類によって異なります。 課金アカウントの詳細を確認し、ご自分の課金アカウントの種類を特定するには、[Azure portal での課金アカウントの表示](view-all-accounts.md)に関するページを参照してください。 Azure 課金アカウントは、Azure ユーザー アカウントおよび [Microsoft アカウント](https://account.microsoft.com/)とは別のものです。
+この記事は、Azure portal で " *課金アカウント* " の連絡先情報を更新するために役立ちます。 連絡先情報を更新する手順は、課金アカウントの種類によって異なります。 課金アカウントの詳細を確認し、ご自分の課金アカウントの種類を特定するには、[Azure portal での課金アカウントの表示](view-all-accounts.md)に関するページを参照してください。 Azure 課金アカウントは、Azure ユーザー アカウントおよび [Microsoft アカウント](https://account.microsoft.com/)とは別のものです。
 
 Azure Active Directory のユーザー プロファイル情報を更新する場合は、ユーザー管理者のみが変更を行うことができます。 ユーザー管理者ロールが割り当てられていない場合は、ユーザー管理者に問い合わせてください。 ユーザーのプロファイルの変更の詳細については、「[Azure Active Directory を使用してユーザーのプロファイル情報を追加または更新する](../../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)」を参照してください。
 
@@ -31,8 +31,8 @@ Azure Active Directory のユーザー プロファイル情報を更新する�
 
 ## <a name="update-an-mosp-billing-account-address"></a>MOSP 課金アカウントの住所を更新する
 
-1. アカウントの管理者アクセス許可を持つメール アドレスを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
-1. "**コスト管理 + 請求**" を検索します。  
+1. アカウントの管理者アクセス許可を持つメール アドレスを使用して、Azure portal にサインインします。
+1. " **コスト管理 + 請求** " を検索します。  
     ![Azure portal での [コストの管理と請求] の検索を示すスクリーンショット](./media/change-azure-account-profile/search-cmb.png)
 1. 左側で **[プロパティ]** を選択します。  
     ![MOSP 課金アカウントのプロパティを示すスクリーンショット](./media/change-azure-account-profile/update-contact-information-select-properties.png)
@@ -41,8 +41,8 @@ Azure Active Directory のユーザー プロファイル情報を更新する�
 
 ## <a name="update-an-mca-billing-account-sold-to-address"></a>MCA 課金アカウントの販売先住所を更新する
 
-1. Microsoft 顧客契約の課金アカウントの所有者または共同作成者のロールを持つメール アドレスを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
-1. "**コスト管理 + 請求**" を検索します。  
+1. Microsoft 顧客契約の課金アカウントの所有者または共同作成者のロールを持つメール アドレスを使用して、Azure portal にサインインします。
+1. " **コスト管理 + 請求** " を検索します。  
     ![Azure portal 内で検索する場所を示すスクリーンショット](./media/change-azure-account-profile/search-cmb.png)
 1. 左側の **[プロパティ]** を選択してから、 **[Update sold-to]\(販売先の更新\)** を選択します。  
     ![販売先住所を変更できる MCA 課金アカウントのプロパティを示すスクリーンショット](./media/change-azure-account-profile/update-sold-to-list-properties-mca.png)
@@ -54,8 +54,8 @@ Azure Active Directory のユーザー プロファイル情報を更新する�
 
 ## <a name="update-an-mca-billing-account-address"></a>MCA 課金アカウントの住所を更新する
 
-1. MCA の課金アカウントまたは課金プロファイルの所有者または共同作成者のロールを持つメール アドレスを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
-1. "**コスト管理 + 請求**" を検索します。  
+1. MCA の課金アカウントまたは課金プロファイルの所有者または共同作成者のロールを持つメール アドレスを使用して、Azure portal にサインインします。
+1. " **コスト管理 + 請求** " を検索します。  
 1. 左側の **[課金プロファイル]** を選択します。
 1. 請求先住所を更新するには、課金プロファイルを選択します。  
     ![課金プロファイルを選択する [課金プロファイル] ページを示すスクリーンショット](./media/change-azure-account-profile/update-bill-to-list-profiles-mca.png)
@@ -67,7 +67,7 @@ Azure Active Directory のユーザー プロファイル情報を更新する�
 
 ## <a name="service-and-marketing-emails"></a>サービスおよびマーケティングのメール
 
-[Azure portal](https://portal.azure.com) では、90 日ごとにメール アドレスの確認または更新を求められます。 Microsoft では、次の Azure アカウント関連情報のメールを、このメール アドレスに送信します。
+Azure portal では、90 日ごとにメール アドレスの確認または更新を求められます。 Microsoft では、次の Azure アカウント関連情報のメールを、このメール アドレスに送信します。
 
 - サービスの通知
 - セキュリティのアラート
@@ -84,9 +84,9 @@ Azure Active Directory のユーザー プロファイル情報を更新する�
 
 次のいずれかの方法を使って、連絡先のメール アドレスを変更できます。 連絡先メール アドレスを更新しても、サインインに使用するメール アドレスは更新されません。
 
-1. MOSP アカウントのアカウント管理者の場合は、「[MOSP 課金アカウントの住所を更新する](#update-an-mosp-billing-account-address)」の指示に従い、最後の手順で **[Update contact info]\(連絡先情報の更新\)** を選択します。 次に、新しいメール アドレスを入力します。
+1. MOSP アカウントのアカウント管理者の場合は、「 [MOSP 課金アカウントの住所を更新する](#update-an-mosp-billing-account-address)」の指示に従い、最後の手順で **[Update contact info]\(連絡先情報の更新\)** を選択します。 次に、新しいメール アドレスを入力します。
 1. Azure portal の [[連絡先情報]](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) 領域に移動して、新しいメール アドレスを入力します。 
-1. [Azure portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) で、自分のイニシャルの付いたアイコンまたは画像を選択します。 次に、コンテキスト メニュー **[...]** を選択します。次に、メニューから **[My Contact Information]\(自分の連絡先情報\)** を選択し、新しいメール アドレスを入力します。
+1. Azure portal で、自分のイニシャルの付いたアイコンまたは画像を選択します。 次に、コンテキスト メニュー **[...]** を選択します。次に、メニューから **[My Contact Information]\(自分の連絡先情報\)** を選択し、新しいメール アドレスを入力します。
 
 ![Azure でのメール アドレスの更新の例](./media/change-azure-account-profile/azure-contact-information.png)
 
@@ -102,7 +102,7 @@ Azure Active Directory のユーザー プロファイル情報を更新する�
 
 ## <a name="update-the-email-address-that-you-sign-in-with"></a>サインインに使用するメール アドレスを更新する
 
-アカウントへのアクセスに使用するメール アドレスは更新できません。 ただし、MOSP の課金アカウントがある場合は、新しいメール アドレスを使用して別のアカウントにサインアップし、サブスクリプションの所有権を次のアカウントに譲渡することができます。 MCA 課金アカウントの場合は、[新しいメール アドレスのアクセス許可をアカウントに付与できます](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)。
+アカウントへのアクセスに使用するメール アドレスは更新できません。 ただし、MOSP の課金アカウントがある場合は、新しいメール アドレスを使用して別のアカウントにサインアップし、サブスクリプションの所有権を次のアカウントに譲渡することができます。 MCA 課金アカウントの場合は、新しいメール アドレスのアクセス許可をアカウントに付与できます。
 
 ## <a name="update-your-credit-card"></a>クレジット カードを更新する
 
@@ -114,7 +114,7 @@ Azure Active Directory のユーザー プロファイル情報を更新する�
 
 ## <a name="change-the-subscription-name"></a>サブスクリプション名を変更する
 
-1. [Azure portal](https://portal.azure.com) にサインインし、左側のウィンドウから **[サブスクリプション]** を選択して、名前を変更するサブスクリプションを選択します。
+1. Azure portal にサインインし、左側のペインから **[サブスクリプション]** を選択して、名前を変更するサブスクリプションを選択します。
 1. **[概要]** を選択し、コマンド バーから **[名前の変更]** を選択します。  
     ![Azure サブスクリプションの名前変更の例](./media/change-azure-account-profile/rename-sub.png)
 1. 名前を変更したら、 **[保存]** を選択します。

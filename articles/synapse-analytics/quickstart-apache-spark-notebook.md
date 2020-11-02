@@ -8,20 +8,20 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
-ms.date: 04/15/2020
-ms.openlocfilehash: cf899962f6e62b0943f48494bf5c3fe27a6327a9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/16/2020
+ms.openlocfilehash: a4583e7fbf1eeaf4447e1e717c716159af645bfa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91651719"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742554"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>クイック スタート:Web ツールを使用して Azure Synapse Analytics で Apache Spark プールを作成する
 
 このクイックスタートでは、Web ツールを使用して Azure Synapse で Apache Spark プール (プレビュー) を作成する方法について説明します。 次に、Apache Spark プールに接続し、ファイルとテーブルに対して Spark SQL クエリを実行する方法について説明します。 Apache Spark により、メモリ内処理を使用した、高速のデータ分析とクラスター コンピューティングが可能になります。 Azure Synapse の Spark については、[Azure Synapse 上の Apache Spark の概要に関するページ](./spark/apache-spark-overview.md)を参照してください。
 
 > [!IMPORTANT]
-> Spark インスタンスの料金は、それを使用しているかどうかに関係なく、分単位で課金されます。 必ず、Spark インスタンスの使用を終了した後にシャットダウンするか、短いタイムアウトを設定してください。 詳しくは、この記事の「**リソースのクリーンアップ**」をご覧ください。
+> Spark インスタンスの料金は、それを使用しているかどうかに関係なく、分単位で課金されます。 必ず、Spark インスタンスの使用を終了した後にシャットダウンするか、短いタイムアウトを設定してください。 詳しくは、この記事の「 **リソースのクリーンアップ** 」をご覧ください。
 
 Azure サブスクリプションをお持ちでない場合は、[開始する前に無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -42,9 +42,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ノートブックとは、さまざまなプログラミング言語をサポートする対話型の環境のことです。 ノートブックを使用すると、データを対話的に操作したり、コードを Markdown テキストと結合したり、簡単な視覚化を行ったりすることができます。
 
 1. 使用する Azure Synapse ワークスペースの Azure portal ビューで、 **[Synapse Studio の起動]** を選択します。
-2. Synapse Studio が起動したら、 **[開発]** を選択します。 次に、 **[ノートブック]** エントリの上にマウス ポインターを移動します。 省略記号 ( **...** ) を選択します。
-3. そこから、 **[新しいノートブック]** を選択します。 新しいノートブックが作成され、自動的に生成された名前で開きます。
-  ![新しいノートブック](./media/quickstart-apache-spark-notebook/spark-get-started-new-notebook.png "新しいノートブック")
+2. Synapse Studio が起動したら、 **[開発]** を選択します。 次に、" **+** " アイコンを選択して、新しいリソースを追加します。
+3. そこから、 **[ノートブック]** を選択します。 新しいノートブックが作成され、自動的に生成された名前で開きます。
+ 
+     ![新しいノートブック](./media/quickstart-apache-spark-notebook/spark-get-started-new-notebook.png "新しいノートブック")
 
 4. **[プロパティ]** ウィンドウで、ノートブックの名前を指定します。
 5. ツール バーの **[Publish]\(発行\)** をクリックします。
@@ -60,15 +61,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 9. ここでは次のいずれかの方法でセルを実行できます。
 
-   - **Shift + Enter**キーを押します。
+   - **Shift + Enter** キーを押します。
    - セルの左側にある青い再生アイコンを選択します。
    - ツールバーの **[すべて実行]** ボタンを選択します。
 
-   ![データ フレーム オブジェクトを作成する](./media/quickstart-apache-spark-notebook/spark-get-started-create-data-frame-object.png "Spark ジョブからの出力")
+       ![データ フレーム オブジェクトを作成する](./media/quickstart-apache-spark-notebook/spark-get-started-create-data-frame-object.png)
 
 10. Apache Spark プール インスタンスがまだ実行されていない場合は、自動的に起動されます。 Apache Spark プール インスタンスの状態は、実行しているセルの下に表示されます。また、ノートブックの下部にある状態パネルでも確認できます。 プールのサイズによっては、開始に 2 から 5 分かかります。 コードの実行が完了すると、セルの下の情報に、実行にかかった時間と実行内容が表示されます。 出力セルに出力が表示されます。
 
-    ![セルの実行からの出力](./media/quickstart-apache-spark-notebook/run-cell-with-output.png "Spark ジョブからの出力")
+    ![セルの実行からの出力](./media/quickstart-apache-spark-notebook/run-cell-with-output.png)
 
 11. データがデータフレームに存在しているため、さまざまな方法でデータを使用できます。 このクイックスタートの残りの部分では、さまざまな形式のデータが必要になります。
 12. 次のコードを別のセルに入力して実行します。これにより、Spark テーブル、CSV、Parquet ファイルが作成され、すべてにデータがコピーされます。
@@ -123,13 +124,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![Azure Synapse Spark でのグラフ出力](./media/quickstart-apache-spark-notebook/spark-get-started-query-chart-output.png "Azure Synapse Spark でのグラフ出力")
 
-10. SQL を実行するのと同じエクスペリエンスを得ることができますが、言語を切り替える必要はありません。 これを行うには、上の SQL セルをこの PySpark セルに置き換えます。**display** コマンドが使用されているため、出力エクスペリエンスは同じです。
+10. SQL を実行するのと同じエクスペリエンスを得ることができますが、言語を切り替える必要はありません。 これを行うには、上の SQL セルをこの PySpark セルに置き換えます。 **display** コマンドが使用されているため、出力エクスペリエンスは同じです。
 
     ```python
     display(spark.sql('SELECT * FROM demo_df'))
     ```
 
-11. 以前に実行した各セルには、**History Server** と**監視**にアクセスするためのオプションがありました。 リンクをクリックすると、ユーザー エクスペリエンスのさまざまな部分に移動します。
+11. 以前に実行した各セルには、 **History Server** と **監視** にアクセスするためのオプションがありました。 リンクをクリックすると、ユーザー エクスペリエンスのさまざまな部分に移動します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -137,7 +138,7 @@ Azure Synapse では Azure Data Lake Storage にデータが保存されます�
 
 プールの料金はストレージの料金の何倍にもなるため、使用しない場合は Spark インスタンスをシャットダウンするのが経済的にも合理的です。
 
-Spark インスタンスがシャットダウンされるようにするには、接続されているセッション (ノートブック) を終了します。 プールは、Apache Spark プールに指定されている**アイドル時間**に達したときにシャットダウンされます。 また、ノートブックの下部にあるステータスバーから **[セッションの終了]** を選択することもできます。
+Spark インスタンスがシャットダウンされるようにするには、接続されているセッション (ノートブック) を終了します。 プールは、Apache Spark プールに指定されている **アイドル時間** に達したときにシャットダウンされます。 また、ノートブックの下部にあるステータスバーから **[セッションの終了]** を選択することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

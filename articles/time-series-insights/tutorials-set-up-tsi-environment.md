@@ -10,16 +10,16 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 79a4fc048b8301d67206bf28b571f88f9e5ad024
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58da5c73ea2674bbbd1536a163e163aa0ff31d96
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597663"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521290"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>チュートリアル:Azure Time Series Insights Gen2 環境を設定する
 
-このチュートリアルでは、Azure Time Series Insights Gen2 の "*従量課金制*" (PAYG) 環境を作成する手順について説明します。
+このチュートリアルでは、Azure Time Series Insights Gen2 の " *従量課金制* " (PAYG) 環境を作成する手順について説明します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -38,7 +38,7 @@ ms.locfileid: "91597663"
 
 ## <a name="prerequisites"></a>前提条件
 
-* 少なくとも、Azure サブスクリプションに対する**共同作成者**ロールが必要です。 詳細については、[ロールベースのアクセス制御と Azure portal を使用したアクセスの管理](../role-based-access-control/role-assignments-portal.md)に関するページをご覧ください。
+* 少なくとも、Azure サブスクリプションに対する **共同作成者** ロールが必要です。 詳細については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ## <a name="create-a-device-simulation"></a>デバイス シミュレーションを作成する
 
@@ -68,7 +68,7 @@ ms.locfileid: "91597663"
 
    [![デバイス シミュレーション ソリューションのプロビジョニング完了。](media/v2-update-provision/iot-solution-accelerator-ready.png)](media/v2-update-provision/iot-solution-accelerator-ready.png#lightbox)
 
-1. ここで、Azure portal で新しく作成されたリソースを検査します。 **[リソース グループ]** ページで、最後の手順で指定した**ソリューション名**を使用して新しいリソース グループが作成されたことを確認します。 デバイス シミュレーション用に作成されたリソースをメモします。
+1. ここで、Azure portal で新しく作成されたリソースを検査します。 **[リソース グループ]** ページで、最後の手順で指定した **ソリューション名** を使用して新しいリソース グループが作成されたことを確認します。 デバイス シミュレーション用に作成されたリソースをメモします。
 
    [![デバイス シミュレーションのリソース。](media/v2-update-provision/tsi-device-sim-solution-resources.png)](media/v2-update-provision/tsi-device-sim-solution-resources.png#lightbox)
 
@@ -91,8 +91,8 @@ ms.locfileid: "91597663"
     | **リソース グループ** | Azure Time Series Insights Gen2 環境リソースに既存のリソース グループを選択するか、新しいリソース グループを作成します。 リソース グループとは、Azure リソース用のコンテナーです。 ベスト プラクティスとしては、デバイス シミュレーターによって作成される他の IoT リソースと同じリソース グループを使用します。 |
     | **場所** | Azure Time Series Insights Gen2 環境のデータ センター リージョンを選択します。 待ち時間の増加を防ぐために、デバイス シミュレーターによって作成された IoT ハブと同じリージョン内に Azure Time Series Insights Gen2 環境を作成することをお勧めします。 |
     | **レベル** |  **[Gen2 (L1)]** を選択します。 これは、Azure Time Series Insights Gen2 製品の SKU です。 |
-    | **Time Series ID property name\(時系列 ID のプロパティ名\)** | 時系列インスタンスを一意に識別する値を含むプロパティの名前を入力します。 時系列 ID として **[プロパティ名]** ボックスに入力する値は後で変更できません。 このチュートリアルでは、「***iothub-connection-device-id***」と入力します。複合時系列 ID を含む、時系列 ID の詳細については、「[時系列 ID の選択のベスト プラクティス](./time-series-insights-update-how-to-id.md)」を参照してください。 |
-    | **Storage account name \(ストレージ アカウント名\)** | 新しいストレージ アカウント用のグローバルな一意名を入力します。|
+    | **Time Series ID property name\(時系列 ID のプロパティ名\)** | 時系列インスタンスを一意に識別する値を含むプロパティの名前を入力します。 時系列 ID として **[プロパティ名]** ボックスに入力する値は後で変更できません。 このチュートリアルでは、「* *_iothub-connection-device-id_* _」と入力します。 複合時系列 ID を含む、時系列 ID の詳細については、「[時系列 ID の選択のベスト プラクティス](./time-series-insights-update-how-to-id.md)」を参照してください。 |
+    | _ *ストレージ アカウント名** | 新しいストレージ アカウント用のグローバルな一意名を入力します。|
     | **ストレージ アカウントの種類** | 新しいストレージ アカウントのストレージの種類を選択します。 StorageV2 をお勧めします|
     | **ストレージ アカウントのレプリケーション** | 新しいストレージ アカウントのストレージの種類を選択します。 選択した場所に基づいて、LRS、GRS、ZRS から選択できます。 このチュートリアルでは、LRS を選択できます|
     | **階層構造の名前空間** |このオプションは、ストレージの種類に [StorageV2] を選択すると選択できます。 既定では無効になっています。 このチュートリアルでは、既定の *[無効]* 状態のままにしておくことができます|
@@ -117,7 +117,7 @@ ms.locfileid: "91597663"
    | **IoT Hub name (IoT ハブの名前)** | デバイス シミュレーター用に作成した IoT ハブの名前を選択します。 |
    | **IoT Hub access policy (IoT ハブのアクセス ポリシー)** | **[iothubowner]** を選びます。 |
    | **IoT Hub コンシューマー グループ** | **[New]\(新規\)** を選択し、一意の名前を入力します。次に、 **[+ Add]\(追加\)** を選択します。 コンシューマー グループは、Azure Time Series Insights Gen2 で一意の値である必要があります。 |
-   | **Timestamp property \(タイムスタンプのプロパティ\)** | この値は、受信したテレメトリ データで**タイムスタンプ** プロパティを識別するために使用されます。 このチュートリアルでは、このボックスを空のままにします。 このシミュレーターでは、IoT ハブからの受信タイムスタンプを使用します。これが Azure Time Series Insights Gen2 の既定の設定です。 |
+   | **Timestamp property \(タイムスタンプのプロパティ\)** | この値は、受信したテレメトリ データで **タイムスタンプ** プロパティを識別するために使用されます。 このチュートリアルでは、このボックスを空のままにします。 このシミュレーターでは、IoT ハブからの受信タイムスタンプを使用します。これが Azure Time Series Insights Gen2 の既定の設定です。 |
 
 1. **[確認および作成]** を選択します。
 
@@ -153,7 +153,7 @@ Azure Time Series Insights Gen2 環境をデプロイできたので、分析の
 
    [![ソリューション アクセラレータのダッシュボード。](media/v2-update-provision/iot-solution-accelerator-ready.png)](media/v2-update-provision/iot-solution-accelerator-ready.png#lightbox)
 
-1. デバイス シミュレーション Web アプリは、最初に Web アプリケーションに "**サインインとプロファイルの読み取り**" アクセス許可を付与することをユーザーに促します。 このアクセス許可により、アプリケーションがアプリケーションの機能をサポートするのに必要なユーザー プロファイル情報を取得することを許可します。
+1. デバイス シミュレーション Web アプリは、最初に Web アプリケーションに " **サインインとプロファイルの読み取り** " アクセス許可を付与することをユーザーに促します。 このアクセス許可により、アプリケーションがアプリケーションの機能をサポートするのに必要なユーザー プロファイル情報を取得することを許可します。
 
    [![デバイス シミュレーション Web アプリケーションの同意。](media/v2-update-provision/sawa-signin-consent.png)](media/v2-update-provision/sawa-signin-consent.png#lightbox)
 
@@ -166,7 +166,7 @@ Azure Time Series Insights Gen2 環境をデプロイできたので、分析の
         | **名前** | シミュレーターの一意名を入力します。 |
         | **説明** | 定義を入力します。 |
         | **[Simulation duration]\(シミュレーション期間\)** | **[Run indefinitely]\(無期限に実行する\)** に設定します。 |
-        | **[デバイス モデル]** | **[+ Add a device type]\(+ デバイスの種類の追加\)** をクリックします <br />**Name**:「**Elevator**」と入力します。 <br />**[Amount]\(量\)** :「**3**」と入力します。 <br /> 他の既定値はそのまま使用します |
+        | **[デバイス モデル]** | **[+ Add a device type]\(+ デバイスの種類の追加\)** をクリックします <br />**Name** :「 **Elevator** 」と入力します。 <br />**[Amount]\(量\)** :「 **3** 」と入力します。 <br /> 他の既定値はそのまま使用します |
         | **[Target IoT Hub]\(IoT Hub をターゲットにする\)** | **[Use pre-provisioned IoT Hub]\(事前プロビジョニングされている IoT Hub を使用する\)** に設定します。 |
 
         [![パラメーターを構成して起動します。](media/v2-update-provision/tsi-launch-solution-accelerator.png)](media/v2-update-provision/tsi-launch-solution-accelerator.png#lightbox)
@@ -199,7 +199,7 @@ Azure Time Series Insights Gen2 環境をデプロイできたので、分析の
 
     [![すべての時系列のグラフ。](media/v2-update-provision/tsi-explorer-add-three-instances.png)](media/v2-update-provision/tsi-explorer-add-three-instances.png#lightbox)
 
-1. 右上にある時間範囲ピッカーを選択します。 ここでは、特定の開始時刻と終了時刻をミリ秒単位で選択したり、**過去 30 分**などの事前構成済みオプションから選択したりできます。 既定のタイム ゾーンを変更することもできます。
+1. 右上にある時間範囲ピッカーを選択します。 ここでは、特定の開始時刻と終了時刻をミリ秒単位で選択したり、 **過去 30 分** などの事前構成済みオプションから選択したりできます。 既定のタイム ゾーンを変更することもできます。
 
     [![時間の範囲を過去 30 分に設定します。](media/v2-update-provision/tsi-explorer-thirty-minute-time-range.png)](media/v2-update-provision/tsi-explorer-thirty-minute-time-range.png#lightbox)
 
@@ -219,8 +219,8 @@ Azure Time Series Insights Gen2 環境をデプロイできたので、分析の
 
     | パラメーター | アクション |
     | --- | ---|
-    | **名前** | 「**Elevator**」と入力します |
-    | **説明** | 「**This is a type definition for Elevator (これはエレベーターのタイプ定義です)** 」と入力します |
+    | **名前** | 「 **Elevator** 」と入力します |
+    | **説明** | 「 **This is a type definition for Elevator (これはエレベーターのタイプ定義です)** 」と入力します |
 
 1. 次に、 **[変数]** タブを選択します。
 
@@ -228,7 +228,7 @@ Azure Time Series Insights Gen2 環境をデプロイできたので、分析の
 
         | パラメーター | アクション |
         | --- | --- |
-        | **名前** | 「**Avg Temperature**」と入力します。 |
+        | **名前** | 「 **Avg Temperature** 」と入力します。 |
         | **種類** | **[数値]** を選択します |
         | **Value** | プリセットから選択します。 **[temperature (Double)]\(温度 (Double)\)** を選択します。 <br /> 注:Azure Time Series Insights Gen2 でイベントの受信が開始されてから **[値]** が自動的に入力されるまで、数分かかる場合があります。|
         | **Aggregation Operation (集計操作)** | **[詳細オプション]** を展開します。 <br /> **[AVG]** を選択します。 |
@@ -237,7 +237,7 @@ Azure Time Series Insights Gen2 環境をデプロイできたので、分析の
 
         | パラメーター | アクション |
         | --- | --- |
-        | **名前** | 「**Avg Vibration**」と入力します。 |
+        | **名前** | 「 **Avg Vibration** 」と入力します。 |
         | **種類** | **[数値]** を選択します |
         | **Value** | プリセットから選択します。 **[vibration (Double)]\(振動 (Double)\)** を選択します。 <br /> 注:Azure Time Series Insights Gen2 でイベントの受信が開始されてから **[値]** が自動的に入力されるまで、数分かかる場合があります。|
         | **Aggregation Operation (集計操作)** | **[詳細オプション]** を展開します。 <br /> **[AVG]** を選択します。 |
@@ -246,11 +246,11 @@ Azure Time Series Insights Gen2 環境をデプロイできたので、分析の
 
         | パラメーター | アクション |
         | --- | --- |
-        | **名前** | 「**Floor**」と入力します。 |
+        | **名前** | 「 **Floor** 」と入力します。 |
         | **種類** | **[カテゴリ別]** を選択します |
         | **Value** | プリセットから選択します。 **[Floor (Double)]\(フロア (Double)\)** を選択します。 <br /> 注:Azure Time Series Insights Gen2 でイベントの受信が開始されてから **[値]** が自動的に入力されるまで、数分かかる場合があります。|
         | **Categories (カテゴリ)** | <span style="text-decoration: underline">ラベル</span>  - <span style="text-decoration: underline">値</span> <br /> Lower:1,2,3,4 <br /> Middle:5,6,7,8,9 <br /> Upper:10,11,12,13,14,15 |
-        | **既定のカテゴリ** | 「**Unknown**」と入力します |
+        | **既定のカテゴリ** | 「 **Unknown** 」と入力します |
 
         [![型の変数を追加します。](media/v2-update-provision/tsi-add-type-variables.png)](media/v2-update-provision/tsi-add-type-variables.png#lightbox)
 
@@ -265,8 +265,8 @@ Azure Time Series Insights Gen2 環境をデプロイできたので、分析の
 
         | パラメーター | アクション |
         | --- | ---|
-        | **名前** | 「**Location Hierarchy**」と入力します。 |
-        |**レベル**| 最初のレベルの名前として「**Country**」を入力します <br /> **[+ レベルの追加]** を選択します <br /> 2 つ目のレベルとして「**City**」を入力し、 **[+ レベルの追加]** を選択します <br /> 3 つ目の最後のレベルの名前として「**Building**」を入力します |
+        | **名前** | 「 **Location Hierarchy** 」と入力します。 |
+        |**レベル**| 最初のレベルの名前として「 **Country** 」を入力します <br /> **[+ レベルの追加]** を選択します <br /> 2 つ目のレベルとして「 **City** 」を入力し、 **[+ レベルの追加]** を選択します <br /> 3 つ目の最後のレベルの名前として「 **Building** 」を入力します |
 
    1. **[保存]** を選択します。
 
@@ -279,17 +279,17 @@ Azure Time Series Insights Gen2 環境をデプロイできたので、分析の
         | パラメーター | アクション |
         | --- | --- |
         | **Type** | **[Elevator]** を選択します。 |
-        | **名前** | 「**Elevator 1**」と入力します|
-        | **説明** | 「**Instance for Elevator 1**」と入力します |
+        | **名前** | 「 **Elevator 1** 」と入力します|
+        | **説明** | 「 **Instance for Elevator 1** 」と入力します |
 
     1. **[インスタンス フィールド]** に移動し、次の値を入力します。
 
         | パラメーター | アクション |
         | --- | --- |
         | **Hierarchies (階層)** | **[Location Hierarchy]\(場所の階層\)** を選択します |
-        | **Country (国)** | 「**USA**」と入力します |
-        | **City (市)** | 「**Seattle**」と入力します |
-        | **Building (建物)** | 「**Space Needle**」と入力します |
+        | **Country (国)** | 「 **USA** 」と入力します |
+        | **City (市)** | 「 **Seattle** 」と入力します |
+        | **Building (建物)** | 「 **Space Needle** 」と入力します |
 
     1. **[保存]** を選択します。
 
@@ -300,24 +300,24 @@ Azure Time Series Insights Gen2 環境をデプロイできたので、分析の
     | パラメーター | アクション |
     | --- | --- |
     | **Type** | **[Elevator]** を選択します。 |
-    | **名前** | 「**Elevator 2**」と入力します|
-    | **説明** | 「**Instance for Elevator 2**」と入力します |
+    | **名前** | 「 **Elevator 2** 」と入力します|
+    | **説明** | 「 **Instance for Elevator 2** 」と入力します |
     | **Hierarchies (階層)** | **[Location Hierarchy]\(場所の階層\)** を選択します |
-    | **Country (国)** | 「**USA**」と入力します |
-    | **City (市)** | 「**Seattle**」と入力します |
-    | **Building (建物)** | 「**Pacific Science Center**」と入力します |
+    | **Country (国)** | 「 **USA** 」と入力します |
+    | **City (市)** | 「 **Seattle** 」と入力します |
+    | **Building (建物)** | 「 **Pacific Science Center** 」と入力します |
 
     **Elevator 3 の場合:**
 
     | パラメーター | アクション |
     | --- | --- |
     | **Type** | **[Elevator]** を選択します。 |
-    | **名前** | 「**Elevator 3**」と入力します|
-    | **説明** | 「**Instance for Elevator 3**」と入力します |
+    | **名前** | 「 **Elevator 3** 」と入力します|
+    | **説明** | 「 **Instance for Elevator 3** 」と入力します |
     | **Hierarchies (階層)** | **[Location Hierarchy]\(場所の階層\)** を選択します |
-    | **Country (国)** | 「**USA**」と入力します |
-    | **City (市)** | 「**New York**」と入力します |
-    | **Building (建物)** | 「**Empire State Building**」と入力します |
+    | **Country (国)** | 「 **USA** 」と入力します |
+    | **City (市)** | 「 **New York** 」と入力します |
+    | **Building (建物)** | 「 **Empire State Building** 」と入力します |
 
     [![更新されたインスタンスを表示します。](media/v2-update-provision/iot-solution-accelerator-instances.png)](media/v2-update-provision/iot-solution-accelerator-instances.png#lightbox)
 

@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6037ece7f4cbe0edc9cf44bded3ee34815f76a48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d504cbe9c2ac9046a34187d4a5576385b1f73bbe
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620207"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518111"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>チュートリアル:Azure Time Series Insights Gen1 環境を作成する
 
@@ -36,7 +36,7 @@ ms.locfileid: "91620207"
 
 ## <a name="prerequisites"></a>前提条件
 
-* また、Azure のサインイン アカウントは、サブスクリプションの**所有者**ロールのメンバーである必要があります。 詳細については、[ロールベースのアクセス制御と Azure portal を使用したアクセスの管理](../role-based-access-control/role-assignments-portal.md)に関するページをご覧ください。
+* また、Azure のサインイン アカウントは、サブスクリプションの **所有者** ロールのメンバーである必要があります。 詳細については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ## <a name="review-video"></a>ビデオの視聴
 
@@ -83,7 +83,7 @@ Azure IoT Hub は、お使いの Azure クラウドに安全に接続してデ�
 
    [![デバイス シミュレーション ソリューションのプロビジョニング完了](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png#lightbox)
 
-1. ここで、Azure portal で新しく作成されたリソースを検査します。 **[リソース グループ]** ページで、最後の手順で指定した**ソリューション名**を使用して新しいリソース グループが作成されたことを確認します。 デバイス シミュレーション用に作成されたリソースをメモします。
+1. ここで、Azure portal で新しく作成されたリソースを検査します。 **[リソース グループ]** ページで、最後の手順で指定した **ソリューション名** を使用して新しいリソース グループが作成されたことを確認します。 デバイス シミュレーション用に作成されたリソースをメモします。
 
    [![デバイス シミュレーションのリソース](media/tutorial-create-populate-tsi-environment/tsi-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/tsi-device-sim-solution-resources.png#lightbox)
 
@@ -112,7 +112,7 @@ Azure IoT Hub は、お使いの Azure クラウドに安全に接続してデ�
 
    [![Azure Time Series Insights 環境リソースを作成する](media/tutorial-create-populate-tsi-environment/tsi-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/tsi-create-resource-tsi-params.png#lightbox)
 
-1. 次に、Azure Time Series Insights 環境を、ソリューション アクセラレータによって作成された IoT ハブに接続します。 **[ハブを選択]** を `Select existing` に設定します。 次に、**IoT ハブ名**を設定するときにソリューション アクセラレータによって作成された IoT ハブを選択します。
+1. 次に、Azure Time Series Insights 環境を、ソリューション アクセラレータによって作成された IoT ハブに接続します。 **[ハブを選択]** を `Select existing` に設定します。 次に、 **IoT ハブ名** を設定するときにソリューション アクセラレータによって作成された IoT ハブを選択します。
 
    [![作成した IoT ハブに Azure Time Series Insights 環境を接続する](media/tutorial-create-populate-tsi-environment/tsi-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/tsi-create-resource-iot-hub.png#lightbox)
 
@@ -132,7 +132,7 @@ IoT ハブに加えて、シミュレートされたデバイス テレメトリ
 
    [![ソリューション アクセラレータのダッシュボード](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png#lightbox)
 
-1. デバイス シミュレーション Web アプリは、最初に Web アプリケーションに "**サインインとプロファイルの読み取り**" アクセス許可を付与することをユーザーに促します。 このアクセス許可により、アプリケーションがアプリケーションの機能をサポートするのに必要なユーザー プロファイル情報を取得することを許可します。
+1. デバイス シミュレーション Web アプリは、最初に Web アプリケーションに " **サインインとプロファイルの読み取り** " アクセス許可を付与することをユーザーに促します。 このアクセス許可により、アプリケーションがアプリケーションの機能をサポートするのに必要なユーザー プロファイル情報を取得することを許可します。
 
    [![デバイス シミュレーション Web アプリケーションの同意](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png)](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png#lightbox)
 
@@ -170,7 +170,7 @@ IoT ハブに加えて、シミュレートされたデバイス テレメトリ
 
    [![Azure Time Series Insights Explorer の時間の範囲フィルター](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png#lightbox)
 
-1. 時間の範囲を絞り込むと、IoT ハブや Azure Time Series Insights 環境に対する明らかなデータ転送バーストの部分にグラフをズームインできます。 また、右上隅の "**Streaming complete**" (ストリーミングが完了しました) のテキストには、見つかったイベントの合計数が表示されます。 **[Interval size]\(間隔のサイズ\)** スライダーをドラッグして、グラフのプロット細分性を制御することもできます。
+1. 時間の範囲を絞り込むと、IoT ハブや Azure Time Series Insights 環境に対する明らかなデータ転送バーストの部分にグラフをズームインできます。 また、右上隅の " **Streaming complete** " (ストリーミングが完了しました) のテキストには、見つかったイベントの合計数が表示されます。 **[Interval size]\(間隔のサイズ\)** スライダーをドラッグして、グラフのプロット細分性を制御することもできます。
 
    [![Azure Time Series Insights Explorer の時間の範囲フィルターが適用されたビュー](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png#lightbox)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 61241f361be3a9a60c8125f891525a078954afdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e8ca83a4f7ab9d255c6081b89b3e02f0e744a29
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858083"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458841"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kronos"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Kronos の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91858083"
 * ユーザーが自分の Azure AD アカウントを使用して Kronos に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Kronos では、**IDP** によって開始される SSO がサポートされます
+* Kronos では、 **IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-kronos-from-the-gallery"></a>ギャラリーからの Kronos の追加
 
@@ -49,7 +49,7 @@ Azure AD への Kronos の統合を構成するには、ギャラリーから管
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Kronos**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Kronos** 」と入力します。
 1. 結果パネルで **[Kronos]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-kronos"></a>Kronos の Azure AD シングル サインオンの構成とテスト
@@ -96,9 +96,9 @@ Kronos で Azure AD SSO を構成してテストするには、次の構成要�
 
     ![スクリーンショットは、説明されている値を入力できる [ユーザー要求の管理] ダイアログ ボックスを示しています。](./media/kronos-tutorial/tutorial_usermailedit.png)
 
-    b. **[変換]** の一覧で、**ExtractMailPrefix()** を選択します。
+    b. **[変換]** の一覧で、 **ExtractMailPrefix()** を選択します。
 
-    c. **[パラメーター 1]** の一覧で、**user.userprincipalname** を選択します。
+    c. **[パラメーター 1]** の一覧で、 **user.userprincipalname** を選択します。
 
     d. **[保存]** をクリックします。
 
@@ -142,24 +142,24 @@ Kronos で Azure AD SSO を構成してテストするには、次の構成要�
 
 ## <a name="configure-kronos-sso"></a>Kronos SSO の構成
 
-**Kronos** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Kronos サポート チーム](https://www.kronos.in/contact/en-in/form)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Kronos** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Kronos サポート チーム](https://www.kronos.in/contact/en-in/form)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-kronos-test-user"></a>Kronos テスト ユーザーの作成
 
-このセクションでは、Kronos で Britta Simon というユーザーを作成します。  [Kronos サポート チーム](https://www.kronos.in/contact/en-in/form)と連携し、Kronos プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Kronos で Britta Simon というユーザーを作成します。 [Kronos サポート チーム](https://www.kronos.in/contact/en-in/form)と連携して、Kronos プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Kronos] タイルをクリックすると、SSO を設定した Kronos に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Kronos] タイルをクリックすると、SSO を設定した Kronos に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Kronos を試す](https://aad.portal.azure.com/)

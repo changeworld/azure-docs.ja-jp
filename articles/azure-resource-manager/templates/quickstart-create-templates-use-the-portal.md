@@ -5,12 +5,12 @@ author: mumian
 ms.date: 06/29/2020
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: ff6c459f2f4178bee6b6b564e177c097d72592a3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c132d8337ccb46824b32ab4a6bcfc73bf5d0818b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85557315"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890396"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して ARM テンプレートを作成およびデプロイする
 
@@ -41,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |名前|値|
     |----|----|
     |**リソース グループ**|**[新規作成]** を選択し、任意のリソース グループ名を指定します。 スクリーンショットでは、リソース グループ名は *mystorage1016rg* です。 リソース グループとは、Azure リソース用のコンテナーです。 リソース グループを使用すると、Azure リソースをより簡単に管理できます。 |
-    |**名前**|ストレージ アカウントに一意の名前を付けます。 ストレージ アカウントの名前は、Azure に存在するいずれの名前とも重複しないこと、また小文字と数字だけで構成されている必要があります。 名前は 3 文字から 24 文字の長さで指定する必要があります。 "ストレージ カウント名 'mystorage1016' は既に使用されています" というエラー メッセージが表示された場合は、 **&lt;自分の名前>storage&lt;MMDD形式の今日の日付>** (例: **johndolestorage1016**) の使用を試してください。 詳細については、「[名前付け規則と制約事項](/azure/architecture/best-practices/resource-naming)」を参照してください。|
+    |**名前**|ストレージ アカウントに一意の名前を付けます。 ストレージ アカウントの名前は、Azure に存在するいずれの名前とも重複しないこと、また小文字と数字だけで構成されている必要があります。 名前は 3 文字から 24 文字の長さで指定する必要があります。 "ストレージ カウント名 'mystorage1016' は既に使用されています" というエラー メッセージが表示された場合は、 **&lt;自分の名前>storage&lt;MMDD形式の今日の日付>** (例: **johndolestorage1016** ) の使用を試してください。 詳細については、「[名前付け規則と制約事項](/azure/architecture/best-practices/resource-naming)」を参照してください。|
 
     残りのプロパティは既定値のままでかまいません。
 
@@ -57,27 +57,27 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     メイン ウィンドウにテンプレートが表示されます。 これは、6 つの最上位要素 (`schema`、`contentVersion`、`parameters`、`variables`、`resources`、および `output`) が含まれた JSON ファイルです。 詳しくは、「[Azure Resource Manager テンプレートの構造と構文の詳細](./template-syntax.md)」をご覧ください
 
-    8 個のパラメーターが定義されています。 そのうちの 1 つは、**storageAccountName** という名前です。 前のスクリーンショットの 2 番目の強調表示された部分は、テンプレートでこのパラメーターを参照する方法を示しています。 次のセクションでは、生成された名前をストレージ アカウントに使用するようにテンプレートを編集します。
+    8 個のパラメーターが定義されています。 そのうちの 1 つは、 **storageAccountName** という名前です。 前のスクリーンショットの 2 番目の強調表示された部分は、テンプレートでこのパラメーターを参照する方法を示しています。 次のセクションでは、生成された名前をストレージ アカウントに使用するようにテンプレートを編集します。
 
     テンプレートには、1 つの Azure リソースが定義されています。 種類は `Microsoft.Storage/storageAccounts` です。 リソースがどのように定義されているかと、定義の構造を確認します。
 1. 画面上部の **[ダウンロード]** を選択します。
-1. ダウンロードした zip ファイルを開き、**template.json** をお使いのコンピューターに保存します。 次のセクションでは、テンプレート デプロイ ツールを使用してテンプレートを編集します。
+1. ダウンロードした zip ファイルを開き、 **template.json** をお使いのコンピューターに保存します。 次のセクションでは、テンプレート デプロイ ツールを使用してテンプレートを編集します。
 1. **[パラメーター]** タブを選択して、パラメーターに指定した値を確認します。 これらの値を書き留めておきます。次のセクションでテンプレートをデプロイするときに必要になります。
 
-    ![ポータルを使用してテンプレートを生成する](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template-parameters.png)
+    ![指定した値を表示する [パラメーター] タブを強調表示するスクリーンショット。](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template-parameters.png)
 
     テンプレート ファイルとパラメーター ファイルの両方を使用して、リソース (このチュートリアルでは Azure Storage アカウント) を作成できます。
 
 ## <a name="edit-and-deploy-the-template"></a>テンプレートの編集とデプロイ
 
-Azure portal では、いくつかの基本的なテンプレート編集を行うことができます。 このクイック スタートでは、"*Template Deployment*" と呼ばれるポータル ツールを使用します。 このチュートリアルでは *Template Deployment* を使用しているため、1 つのインターフェイス (Azure portal) を使用してチュートリアル全体を完了できます。 より複雑なテンプレートを編集する場合は、豊富な編集機能を備えた [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) を使用することを検討してください。
+Azure portal では、いくつかの基本的なテンプレート編集を行うことができます。 このクイック スタートでは、" *Template Deployment* " と呼ばれるポータル ツールを使用します。 このチュートリアルでは *Template Deployment* を使用しているため、1 つのインターフェイス (Azure portal) を使用してチュートリアル全体を完了できます。 より複雑なテンプレートを編集する場合は、豊富な編集機能を備えた [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) を使用することを検討してください。
 
 > [!IMPORTANT]
 > Template deployment は、シンプルなテンプレートをテストするためのインターフェイスを提供します。 運用環境でこの機能を使用することはお勧めしません。 代わりに、自分のテンプレートを Azure Storage アカウント、または GitHub のようなソース コード リポジトリに保存します。
 
 Azure では、各 Azure サービスで一意の名前が使用される必要があります。 既に存在するストレージ アカウント名を入力すると、デプロイが失敗する可能性があります。 この問題を回避するために、テンプレート関数呼び出し `uniquestring()` を使用して一意のストレージ アカウント名を生成するようにテンプレートを変更します。
 
-1. Azure portal メニューから、検索ボックスに「**deploy**」と入力し、 **[カスタム テンプレートのデプロイ]** を選択します。
+1. Azure portal メニューから、検索ボックスに「 **deploy** 」と入力し、 **[カスタム テンプレートのデプロイ]** を選択します。
 
     ![Azure Resource Manager のテンプレート ライブラリ](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-library.png)
 
@@ -87,15 +87,15 @@ Azure では、各 Azure サービスで一意の名前が使用される必要�
 
     ![Azure Resource Manager のテンプレート](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-edit-storage-account-template-revised.png)
 
-   - 前のスクリーンショットに示されているように、**storageAccountName** パラメーターを削除します。
-   - 前のスクリーン ショットに示されているように、**storageAccountName** という 1 つの変数を追加します。
+   - 前のスクリーンショットに示されているように、 **storageAccountName** パラメーターを削除します。
+   - 前のスクリーン ショットに示されているように、 **storageAccountName** という 1 つの変数を追加します。
 
        ```json
        "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
        ```
 
        ここでは、`concat()` と `uniqueString()` という 2 つのテンプレート関数が使用されています。
-   - このパラメーターの代わりに、新しく定義した変数を使用するように、**Microsoft.Storage/storageAccounts** リソースの name 要素を更新します。
+   - このパラメーターの代わりに、新しく定義した変数を使用するように、 **Microsoft.Storage/storageAccounts** リソースの name 要素を更新します。
 
        ```json
        "name": "[variables('storageAccountName')]",
@@ -165,16 +165,16 @@ Azure では、各 Azure サービスで一意の名前が使用される必要�
     |**リソース グループ**|前のセクションで作成したリソース グループの名前を選択します。 |
     |**リージョン**|リソース グループの場所を選びます。 たとえば **[米国中部]** です。 |
     |**場所**|ストレージ アカウントの場所を選択します。 たとえば **[米国中部]** です。 |
-    |**アカウントの種類**|このクイック スタートでは、「**Standard_LRS**」と入力します。 |
-    |**種類**|このクイック スタートでは、「**StorageV2**」と入力します。 |
-    |**アクセス層**|このクイック スタートでは、「**ホット**」と入力します。 |
-    |**TLS の最小バージョン**|「**TLS1_0**」と入力します。 |
+    |**アカウントの種類**|このクイック スタートでは、「 **Standard_LRS** 」と入力します。 |
+    |**種類**|このクイック スタートでは、「 **StorageV2** 」と入力します。 |
+    |**アクセス層**|このクイック スタートでは、「 **ホット** 」と入力します。 |
+    |**TLS の最小バージョン**|「 **TLS1_0** 」と入力します。 |
     |**Https トラフィックのみをサポートする**| このクイック スタートでは、 **[true]** を選択します。 |
     |**BLOB パブリック アクセスを許可する**| このクイック スタートでは、 **[false]** を選択します。 |
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
 1. **［作成］** を選択します
-1. 画面の上部にあるベルのアイコン (通知) を選択して、デプロイの状態を確認します。 "**デプロイを実行しています**" と表示されます。 デプロイが完了するまでお待ちください。
+1. 画面の上部にあるベルのアイコン (通知) を選択して、デプロイの状態を確認します。 " **デプロイを実行しています** " と表示されます。 デプロイが完了するまでお待ちください。
 
     ![Azure Resource Manager テンプレートのデプロイ通知](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-notification.png)
 

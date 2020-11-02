@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: jeedes
-ms.openlocfilehash: ba9fe6b727ec3f2f5ec8133901fb1aea287fbcd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0e5134da9083e97b3977b05d601c2cfba25f5d4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88523119"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636682"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whosonlocation"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と WhosOnLocation の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88523119"
 * ユーザーが自分の Azure AD アカウントを使用して WhosOnLocation に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,9 +39,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* WhosOnLocation では、**SP** initiated SSO がサポートされます
+* WhosOnLocation では、 **SP** initiated SSO がサポートされます
 
-* WhosOnLocation を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* WhosOnLocation を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-whosonlocation-from-the-gallery"></a>ギャラリーからの WhosOnLocation の追加
 
@@ -51,7 +51,7 @@ Azure AD への WhosOnLocation の統合を構成するには、ギャラリー�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**WhosOnLocation**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **WhosOnLocation** 」と入力します。
 1. 結果パネルで **[WhosOnLocation]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -133,47 +133,46 @@ WhosOnLocation で Azure AD SSO を構成してテストするには、次の構
 
 2. **[Tools]\(ツール\)**  ->  **[Account]\(アカウント\)** の順にクリックします。
 
-    ![WhosOnLocation の構成](./media/WhosOnLocation-tutorial/config1.png)
+    ![WhosOnLocation サイトの [Tools]\(ツール\) メニューから [Account]\(アカウント\) が選択されていることを示すスクリーンショット。](./media/WhosOnLocation-tutorial/config1.png)
 
 3. 左側のナビゲーターで、 **[Employee Access]\(従業員のアクセス\)** を選択します。
 
-    ![WhosOnLocation の構成](./media/WhosOnLocation-tutorial/config2.png)
+    ![[Account Profile]\(アカウントのプロファイル\) から [Employee Access]\(従業員のアクセス\) が選択されていることを示すスクリーンショット。](./media/WhosOnLocation-tutorial/config2.png)
 
 4. 次のページで、以下の手順を実行します。
 
-    ![WhosOnLocation の構成](./media/WhosOnLocation-tutorial/config3.png)
+    ![[Employess Access]\(従業員のアクセス\) タブを示すスクリーンショット。ここで、ユーザー データを入力できます。](./media/WhosOnLocation-tutorial/config3.png)
 
     a. **[Single sign-on with SAML]\(SAML によるシングル サインオン\)** で **[Yes]\(はい\)** に変更します。
 
-    b. **[Issuer URL]\(発行者の URL\)** ボックスに、Azure portal からコピーした**エンティティ ID** の値を貼り付けます。
+    b. **[Issuer URL]\(発行者の URL\)** ボックスに、Azure portal からコピーした **エンティティ ID** の値を貼り付けます。
 
-    c. **[SSO Endpoint]\(SSO エンドポイント\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    c. **[SSO Endpoint]\(SSO エンドポイント\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    d. Azure portal からダウンロードした**証明書 (Base64)** をメモ帳で開き、その内容を **[Certificate]\(証明書\)** ボックスに貼り付けます。
+    d. Azure portal からダウンロードした **証明書 (Base64)** をメモ帳で開き、その内容を **[Certificate]\(証明書\)** ボックスに貼り付けます。
 
     e. **[Save SAML Configuration]\(SAML 構成の保存\)** をクリックします。
 
 ### <a name="create-whosonlocation-test-user"></a>WhosOnLocation テスト ユーザーの作成
 
-このセクションでは、WhosOnLocation で B.Simon というユーザーを作成します。  [WhosOnLocation サポートチーム](mailto:support@whosonlocation.com)と連携して、WhosOnLocation プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、WhosOnLocation で B.Simon というユーザーを作成します。 [WhosOnLocation サポート チーム](mailto:support@whosonlocation.com)と連携して、WhosOnLocation プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [WhosOnLocation] タイルをクリックすると、SSO を設定した WhosOnLocation に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [WhosOnLocation] タイルをクリックすると、SSO を設定した WhosOnLocation に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で WhosOnLocation を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって WhosOnLocation を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [高度な可視性と制御によって WhosOnLocation を保護する方法](/cloud-app-security/proxy-intro-aad)

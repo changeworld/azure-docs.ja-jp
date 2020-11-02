@@ -3,12 +3,12 @@ title: コンテナー内の .NET アプリを Azure Service Fabric にデプロ
 description: Visual Studio を使って既存の .NET アプリケーションをコンテナーに格納し、Service Fabric 内のコンテナーをローカルでデバッグする方法を紹介します。 コンテナーに格納されたアプリケーションは Azure のコンテナー レジストリにプッシュされ、Service Fabric クラスターにデプロイされます。 Azure にデプロイされたアプリケーションは、データの保持に Azure SQL DB を使用します。
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: c2e44db9bc813b346493b4d23b9f48b279e245b3
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b7c841c1185cb2e289a230eb1078a13d4ccd48f8
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122065"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92889937"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>チュートリアル:Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする
 
@@ -169,7 +169,7 @@ Service Fabric アプリケーションは、ネットワークに接続され�
     d. **[VM の詳細]** タブを選択します。クラスターを構成する仮想マシン (VM) に使用したいパスワードを指定します。 ユーザー名とパスワードは、VM へのリモート接続に使用できます。 また、VM マシン サイズを選択できるほか、必要に応じて VM イメージを変更できます。
 
     > [!IMPORTANT]
-    > 実行中のコンテナーをサポートする SKU を選択します。 クラスター ノード上の Windows Server OS は、コンテナーの Windows Server OS と互換性を持っている必要があります。 詳細については、[Windows Server コンテナーの OS とホスト OS の互換性](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility)に関するページを参照してください。 このチュートリアルでは、既定では Windows Server 2016 LTSC に基づいて Docker イメージを作成します。 このイメージに基づくコンテナーは、コンテナー搭載 Windows Server 2016 Datacenter で作成されたクラスター上で実行されます。 ただし、コンテナー搭載 Windows Server Datacenter Core 1709 に基づいてクラスターを作成するか、既存のクラスターを使用する場合は、コンテナーの基になる Windows Server OS イメージを変更する必要があります。 **FabrikamFiber.Web** プロジェクトの **Dockerfile** を開き、(`windowsservercore-ltsc` に基づいて) 既存の `FROM` ステートメントをコメントアウトし、`windowsservercore-1709` に基づいて `FROM` ステートメントのコメントを解除します。
+    > 実行中のコンテナーをサポートする SKU を選択します。 クラスター ノード上の Windows Server OS は、コンテナーの Windows Server OS と互換性を持っている必要があります。 詳細については、[Windows Server コンテナーの OS とホスト OS の互換性](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility)に関するページを参照してください。 このチュートリアルでは、既定では Windows Server 2016 LTSC に基づいて Docker イメージを作成します。 このイメージに基づくコンテナーは、コンテナー搭載 Windows Server 2016 Datacenter で作成されたクラスター上で実行されます。 ただし、Windows Server の別のバージョンに基づいて、クラスターを作成するか、既存のクラスターを使用する場合は、コンテナーの基になる OS イメージを変更する必要があります。 **FabrikamFiber.Web** プロジェクトの **dockerfile** を開き、以前のバージョンの Windows Server に基づいている既存のすべての `FROM` ステートメントをコメントアウトし、[Windows Server Core DockerHub ページ](https://hub.docker.com/_/microsoft-windows-servercore)の目的のバージョンのタグに基づく `FROM` ステートメントを追加します。 Windows Server Core リリース、サポート タイムライン、およびバージョンの追加情報については、「[Windows Server のリリース情報](https://docs.microsoft.com/windows-server/get-started/windows-server-release-info)」を参照してください。 
 
     e. **[詳細]** タブで、クラスターをデプロイする際にロード バランサーで開放するアプリケーション ポートを列挙します。 これは、クラスターの作成を始める前にメモしておいたポートです。 さらに、アプリケーション ログ ファイルのルーティングに使用される既存の Application Insights キーを追加することもできます。
 

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: baf528e1b4ab7e323b69574729669d09692741cc
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 27c9198558a730d0af49077d6f5baa6db4789416
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148151"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503523"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する 
 
@@ -104,32 +104,32 @@ ILB ASE を作成する方法は次のとおりです。
 
 ILB ASE を使用して独自の DNS サーバーで DNS を構成するには、次の操作を行ってください。
 
-1. <ASE name>.appserviceenvironment.net のゾーンを作成する
+1. &lt;ASE 名&gt;.appserviceenvironment.net 用のゾーンを作成する
 2. そのゾーンに、ILB の IP アドレスに * を指定する A レコードを作成する
 3. そのゾーンに、ILB の IP アドレスに @ を指定する A レコードを作成する
-4. <ASE name>.appserviceenvironment.net に scm という名前のゾーンを作成する
+4. &lt;ASE 名&gt;.appserviceenvironment.net に scm という名前のゾーンを作成する
 5. scm ゾーンに、ILB の IP アドレスに * を指定する A レコードを作成する
 
 Azure DNS プライベート ゾーンで DNS を構成するには、次の操作を行ってください。
 
-1. <ASE name>.appserviceenvironment.net という名前の Azure DNS プライベート ゾーンを作成する
+1. &lt;ASE 名&gt;.appserviceenvironment.net という名前の Azure DNS プライベート ゾーンを作成する
 2. そのゾーンに、ILB の IP アドレスに * を指定する A レコードを作成する
 3. そのゾーンに、ILB の IP アドレスに @ を指定する A レコードを作成する
 4. そのゾーンに、ILB の IP アドレスに *.scm を指定する A レコードを作成する
 
-ASE の既定のドメイン サフィックスの DNS 設定では、アプリがこれらの名前によってのみアクセスできるように制限されていません。 ILB ASE では、アプリの検証なしでカスタム ドメイン名を設定できます。 その後、contoso.net という名前のゾーンを作成する場合は、ILB IP アドレスを指すようにすることができます。 カスタム ドメイン名はアプリ要求に対して機能しますが、scm サイトでは使用できません。 scm サイトは <appname>.scm.<asename>.appserviceenvironment.net でのみ使用できます。
+ASE の既定のドメイン サフィックスの DNS 設定では、アプリがこれらの名前によってのみアクセスできるように制限されていません。 ILB ASE では、アプリの検証なしでカスタム ドメイン名を設定できます。 その後、contoso.net という名前のゾーンを作成する場合は、ILB IP アドレスを指すようにすることができます。 カスタム ドメイン名はアプリ要求に対して機能しますが、scm サイトでは使用できません。 scm サイトは、&lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net でのみ使用できます。
 
-.<asename>.appserviceenvironment.net という名前のゾーンはグローバルに一意です。 2019 年 5 月より前のユーザーは、ILB ASE のドメイン サフィックスを指定できました。 ドメイン サフィックスで .contoso.com を使用した場合は、scm サイトが含まれていることになります。 このモデルには、既定の SSL 証明書の管理、scm サイトでのシングル サインオンの欠如、ワイルドカード証明書の使用要件といった課題がありました。 ILB ASE の既定の証明書アップグレード プロセスも中断され、アプリケーションが再起動されました。 これらの問題を解決するため、ILB ASE の動作が、ASE の名前と Microsoft の所有するサフィックスに基づくドメイン サフィックスを使用するように変更されました。 ILB ASE の動作の変更は、2019 年 5 月以降に作成された ILB ASE にのみ影響します。 既存の ILB ASE では、引き続き ASE の既定の証明書とその DNS 構成を管理する必要があります。
+.&lt;asename&gt;.appserviceenvironment.net という名前のゾーンはグローバルに一意です。 2019 年 5 月より前のユーザーは、ILB ASE のドメイン サフィックスを指定できました。 ドメイン サフィックスで .contoso.com を使用した場合は、scm サイトが含まれていることになります。 このモデルには、既定の SSL 証明書の管理、scm サイトでのシングル サインオンの欠如、ワイルドカード証明書の使用要件といった課題がありました。 ILB ASE の既定の証明書アップグレード プロセスも中断され、アプリケーションが再起動されました。 これらの問題を解決するため、ILB ASE の動作が、ASE の名前と Microsoft の所有するサフィックスに基づくドメイン サフィックスを使用するように変更されました。 ILB ASE の動作の変更は、2019 年 5 月以降に作成された ILB ASE にのみ影響します。 既存の ILB ASE では、引き続き ASE の既定の証明書とその DNS 構成を管理する必要があります。
 
 ## <a name="publish-with-an-ilb-ase"></a>ILB ASE で発行する
 
 作成されるすべてのアプリにはエンドポイントが 2 つあります。 ILB ASE には、" *&lt;アプリ名&gt;.&lt;ILB ASE ドメイン&gt;* " と " *&lt;アプリ名&gt;.scm.&lt;ILB ASE ドメイン&gt;* " があります。 
 
-SCM サイト名をクリックすると、Azure Portal 内の Kudu コンソールに移動します。これは、**高度なポータル**と呼ばれます。 Kudu コンソールでは、環境変数の表示、ディスクの確認、コンソールの使用などができます。 詳しくは、[Azure App Service の Kudu コンソール][Kudu]に関するビデオをご覧ください。 
+SCM サイト名をクリックすると、Azure Portal 内の Kudu コンソールに移動します。これは、 **高度なポータル** と呼ばれます。 Kudu コンソールでは、環境変数の表示、ディスクの確認、コンソールの使用などができます。 詳しくは、[Azure App Service の Kudu コンソール][Kudu]に関するビデオをご覧ください。 
 
 インターネット ベースの CI システム (GitHub や Azure DevOps など) は、ビルド エージェントがインターネットにアクセス可能であり、かつ ILB ASE と同じネットワーク上に存在すれば、引き続き機能します。 したがって、Azure DevOps の場合、ビルド エージェントが ILB ASE と同じ VNET 上に作成されていれば (サブネットは異なっていてもかまいません)、Azure DevOps git からコードをプルして ILB ASE にデプロイできます。 独自のビルド エージェントを作成しない場合は、プル モデルを使用している CI システム (Dropbox など) を使用する必要があります。
 
-ILB ASE 内のアプリには、その ILB ASE の作成時に使用されたドメインが、発行エンドポイントとして使用されます。 このドメインは、アプリの発行プロファイルとアプリのポータル ブレード ( **[概要]**  >  **[要点]** 、 **[プロパティ]** など) に表示されます。 ILB ASE のドメイン サフィックスが " *&lt;ASE 名&gt;.appserviceenvironment.net*" で、アプリの名前が *mytest* である場合、FTP では "*mytest.&lt;ASE 名&gt;.appserviceenvironment.net*" となり、Web デプロイでは *mytest.scm.contoso.net* となります。
+ILB ASE 内のアプリには、その ILB ASE の作成時に使用されたドメインが、発行エンドポイントとして使用されます。 このドメインは、アプリの発行プロファイルとアプリのポータル ブレード ( **[概要]**  >  **[要点]** 、 **[プロパティ]** など) に表示されます。 ILB ASE のドメイン サフィックスが " *&lt;ASE 名&gt;.appserviceenvironment.net* " で、アプリの名前が *mytest* である場合、FTP では " *mytest.&lt;ASE 名&gt;.appserviceenvironment.net* " となり、Web デプロイでは *mytest.scm.contoso.net* となります。
 
 ## <a name="configure-an-ilb-ase-with-a-waf-device"></a>WAF デバイスを使用して ILB ASE を構成する ##
 

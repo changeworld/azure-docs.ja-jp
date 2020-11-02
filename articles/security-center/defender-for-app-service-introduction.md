@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a7026757651d1b0510293101203f41a651c7b851
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ac4f41a36a2a18a65816be5ea74e88d0b364294
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850967"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789065"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>Azure Defender for App Service の概要
 
@@ -45,12 +45,12 @@ Azure Defender for App Service で Azure App Service プランを保護するに
 
 - 確実に専用のコンピューターに関連付けられた、サポートされている App Service プランを利用します。 サポートされているプランは、上記の「[可用性](#availability)」に記載されています。
 
-- [Azure Security Center の価格](security-center-pricing.md)に関する記事で説明されているように、サブスクリプションで **Azure Defender** を有効にします (必要に応じて、**Azure Defender for App Service**プランのみを有効にできます)。
+- [Azure Security Center の価格](security-center-pricing.md)に関する記事で説明されているように、サブスクリプションで **Azure Defender** を有効にします (必要に応じて、 **Azure Defender for App Service** プランのみを有効にできます)。
 
 Security Center は App Service とネイティブで統合されており、デプロイやオンボーディングの必要がありません。統合は透過的となっています。
 
 >[!NOTE]
-> 価格と設定のページには、**リソース数量**に対するインスタンスの数が記載されています。 これは、このサブスクリプションのすべての App Service プランに含まれるコンピューティング リソースのうち、価格レベルのページを開いたときに実行されていたコンピューティング リソースの総数を表しています。
+> 価格と設定のページには、 **リソース数量** に対するインスタンスの数が記載されています。 これは、このサブスクリプションのすべての App Service プランに含まれるコンピューティング リソースのうち、価格レベルのページを開いたときに実行されていたコンピューティング リソースの総数を表しています。
 >
 > Azure App Service にはさまざまなプランがあります。 App Service プランによって、Web アプリを実行するための一連のコンピューティング リソースが決まります。 そのようなリソースは、従来の Web ホスティングのサーバー ファームに相当します。 1 つまたは複数のアプリを同じコンピューティング リソース (または、同じ App Service プラン) で実行するように構成することができます。
 >
@@ -64,7 +64,7 @@ Security Center は App Service とネイティブで統合されており、デ
 
 関連資料については、次の記事をご覧ください。 
 
-- アラートは、Security Center によって生成されたか、別のセキュリティ製品の Security Center によって受信されたかにかかわらず、エクスポートすることができます。 アラートを Azure Sentinel、サードパーティの SIEM、またはその他の外部ツールにエクスポートする場合は、[SIEM へのアラートのエクスポート](continuous-export.md)に関するページの手順に従ってください。
+- アラートは、Security Center によって生成されたか、別のセキュリティ製品の Security Center によって受信されたかにかかわらず、エクスポートすることができます。 アラートを Azure Sentinel、サードパーティの SIEM、またはその他の外部ツールにエクスポートする場合は、「[SIEM、SOAR、または IT サービス管理ソリューションにアラートをストリーミングする](export-to-siem.md)」の手順に従ってください。
 - Azure App Service アラートの一覧については、[アラートのリファレンス表](alerts-reference.md#alerts-azureappserv)に関するページを参照してください。
 - App Service プランの詳細については、「[App Service プラン](https://azure.microsoft.com/pricing/details/app-service/plans/)」を参照してください。
 - > [!div class="nextstepaction"]

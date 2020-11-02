@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2020
 ms.author: memildin
-ms.openlocfilehash: 02b0ee4d572290436cc45bab73921ae1298bc72f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b9f0b3219a75900a44a73ca0fc3e453f023bddb8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359001"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787161"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>チュートリアル:セキュリティ アラートのトリアージ、調査、対応
 Security Center では、高度な分析および脅威インテリジェンスを使用してハイブリッド クラウド ワークロードを継続的に分析し、クラウド リソースでの潜在的な悪意のあるアクティビティに関するアラートを受け取ることができます。 さらに、他のセキュリティ製品およびサービスからのアラートを Security Center に統合することもできます。 アラートが発生したら、潜在的なセキュリティの問題の調査と修復を行うために、迅速なアクションが必要になります。 
@@ -49,7 +49,7 @@ Security Center では、すべてのセキュリティ アラートを統合さ
 セキュリティ アラートをトリアージする際は、アラートにその重要度に基づく優先順位を付けます。重要度が高いアラートから先に対応します。 アラートの重要度の詳細については、「[アラートはどのように分類されますか](security-center-alerts-overview.md#how-are-alerts-classified)」を参照してください。
 
 > [!TIP]
-> Azure Sentinel など、広く使われている SIEM ソリューションに Azure Security Center を接続し、任意のツールからアラートを取り込むことができます。 詳細については、[SIEM へのアラートのエクスポート](continuous-export.md)に関するページを参照してください。
+> Azure Sentinel など、広く使われている SIEM ソリューションに Azure Security Center を接続し、任意のツールからアラートを取り込むことができます。 詳細については、「[SIEM、SOAR、または IT サービス管理ソリューションにアラートをストリーミングする](export-to-siem.md)」を参照してください。
 
 
 ## <a name="investigate-a-security-alert"></a>セキュリティ アラートの調査

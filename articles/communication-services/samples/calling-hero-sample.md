@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: cfb6a7ba10c388cadb19268ee1431fe523a0cfa4
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e6cbf840fa27755fa43eb2a81e752415562ce41f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126328"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461143"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Group Calling Hero Sample を使ってみる
 
@@ -25,16 +25,16 @@ ms.locfileid: "92126328"
 > Add links to our Hero Sample repo when the sample is publicly available.
 ---->
 
+> [!IMPORTANT]
+> [このサンプルは GitHub で入手できます。](https://github.com/Azure-Samples/communication-services-web-calling-hero)
+
 Azure Communication Services の **Group Calling Hero Sample** は、Communication Services の Calling Web クライアント ライブラリを使用して、グループ通話エクスペリエンスを構築する方法を示します。
 
 このサンプルのクイックスタートでは、サンプルがどのように動作するかを学習した後で、サンプルをローカル コンピューターで実行します。 次に、独自の Azure Communication Services リソースを使用して、サンプルを Azure にデプロイします。
 
-> [!IMPORTANT]
-> [GitHub からサンプルをダウンロードする](https://github.com/Azure-Samples/communication-services-web-calling-hero)
-
 ## <a name="overview"></a>概要
 
-このサンプルには、クライアント側アプリケーションとサーバー側アプリケーションの両方があります。 **クライアント側アプリケーション**は、Microsoft の Fluent UI フレームワークを使用する React/Redux Web アプリケーションです。 このアプリケーションが ASP.NET Core の**サーバー側アプリケーション**に要求を送信することで、クライアント側アプリケーションが Azure に接続できるようにします。 
+このサンプルには、クライアント側アプリケーションとサーバー側アプリケーションの両方があります。 **クライアント側アプリケーション** は、Microsoft の Fluent UI フレームワークを使用する React/Redux Web アプリケーションです。 このアプリケーションが ASP.NET Core の **サーバー側アプリケーション** に要求を送信することで、クライアント側アプリケーションが Azure に接続できるようにします。 
 
 サンプルは次のようになります。
 
@@ -50,9 +50,9 @@ Azure Communication Services の **Group Calling Hero Sample** は、Communicati
 
 通話のメイン画面のコンポーネントは以下のとおりです。
 
-1. **メディア ギャラリー**: 参加者が表示されるメイン領域。 参加者のカメラが有効になっている場合は、そのビデオ フィードがここに表示されます。 各参加者の表示名とビデオ ストリーム (ある場合) がタイル表示されます。
-2. **ヘッダー**:ここには通話のメイン コントロールがあり、設定と参加者のサイド バーの切り替え、ビデオとマイクのオン/オフ切り替え、画面の共有、通話の終了を行えます。
-3. **サイド バー**: ヘッダーのコントロールを使用して、参加者と設定情報の表示を切り替えます。 このコンポーネントは、右上隅にある 'X' を使用して閉じることができます。 参加者のサイド バーには参加者の一覧と、チャットするユーザーをさらに招待するためのリンクが表示されます。 [設定] サイドバーでは、マイクとカメラの設定を構成できます。
+1. **メディア ギャラリー** : 参加者が表示されるメイン領域。 参加者のカメラが有効になっている場合は、そのビデオ フィードがここに表示されます。 各参加者の表示名とビデオ ストリーム (ある場合) がタイル表示されます。
+2. **ヘッダー** :ここには通話のメイン コントロールがあり、設定と参加者のサイド バーの切り替え、ビデオとマイクのオン/オフ切り替え、画面の共有、通話の終了を行えます。
+3. **サイド バー** : ヘッダーのコントロールを使用して、参加者と設定情報の表示を切り替えます。 このコンポーネントは、右上隅にある 'X' を使用して閉じることができます。 参加者のサイド バーには参加者の一覧と、チャットするユーザーをさらに招待するためのリンクが表示されます。 [設定] サイドバーでは、マイクとカメラの設定を構成できます。
 
 以下で、サンプルを設定するための前提条件と手順について詳しく説明します。
 
@@ -62,7 +62,7 @@ Azure Communication Services の **Group Calling Hero Sample** は、Communicati
 - [Node.js (12.18.4 以上)](https://nodejs.org/en/download/)
 - [Visual Studio (2019 以上)](https://visualstudio.microsoft.com/vs/)
 - [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (使用する Visual Studio インスタンス (32 または 64 ビット) に対応するバージョンを必ずインストールしてください)
-- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication リソースの作成](../quickstarts/create-communication-resource.md)に関するページをご覧ください。 このクイックスタートで使用するリソースの**接続文字列**を記録する必要があります。
+- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication リソースの作成](../quickstarts/create-communication-resource.md)に関するページをご覧ください。 このクイックスタートで使用するリソースの **接続文字列** を記録する必要があります。
 
 ## <a name="locally-deploy-the-service--client-applications"></a>サービスおよびクライアント アプリケーションをローカルにデプロイする
 
@@ -108,7 +108,6 @@ Communication Services サブスクリプションをクリーンアップして
 詳細については、次の記事を参照してください。
 
 - [Calling クライアント ライブラリ](../quickstarts/voice-video-calling/calling-client-samples.md)について理解する
-- [Calling クライアント ライブラリの機能](../quickstarts/voice-video-calling/calling-client-samples.md)について学習する
 - [通話のしくみ](../concepts/voice-video-calling/about-call-types.md)の詳細について確認する
 
 ## <a name="additional-reading"></a>その他の情報

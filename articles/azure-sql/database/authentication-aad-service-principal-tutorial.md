@@ -8,20 +8,20 @@ ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 08/17/2020
-ms.openlocfilehash: 4e7da02f7dd7e8fb19e031b814624b289730b3ee
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 10/21/2020
+ms.openlocfilehash: 6231e4631c19aa3595fa85ca0aa7997861de65a3
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367722"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675034"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>チュートリアル:Azure AD アプリケーションを使用して Azure AD ユーザーを作成する
 
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 > [!NOTE]
-> この記事は**パブリック プレビュー**段階です。 詳細については、「[Azure SQL での Azure Active Directory のサービス プリンシパル](authentication-aad-service-principal.md)」を参照してください。 この記事は、Azure SQL Database を使用して、必要なチュートリアルの手順を紹介していますが、[Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) にも同じように適用することができます。
+> この記事は **パブリック プレビュー** 段階です。 詳細については、「[Azure SQL での Azure Active Directory のサービス プリンシパル](authentication-aad-service-principal.md)」を参照してください。 この記事は、Azure SQL Database を使用して、必要なチュートリアルの手順を紹介していますが、[Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) にも同じように適用することができます。
 
 この記事では、Azure のサービス プリンシパル (Azure AD アプリケーション) を使用して、Azure SQL Database に Azure AD ユーザーを作成する手順を説明します。 Azure SQL Managed Instance にはこの機能が既に存在しますが、今後は Azure SQL Database と Azure Synapse Analytics にもこの機能が導入されることとなります。 このシナリオをサポートするためには、Azure AD Identity を生成して Azure SQL 論理サーバーに割り当てる必要があります。
 
@@ -44,9 +44,9 @@ Azure SQL に対する Azure AD 認証の詳細については、記事「[Azure
 
 ## <a name="assign-an-identity-to-the-azure-sql-logical-server"></a>Azure SQL 論理サーバーに ID を割り当てる
 
-1. Azure Active Directory に接続します。 テナント ID を見つける必要があります。 これを見つけるには、[Azure portal](https://portal.azure.com) から **Azure Active Directory** リソースにアクセスします。 **[概要]** ペインに **[テナント ID]** が表示されます。 次の PowerShell コマンドを実行します。
+1. Azure Active Directory に接続します。 テナント ID を見つける必要があります。 これを見つけるには、 [Azure portal](https://portal.azure.com) から **Azure Active Directory** リソースにアクセスします。 **[概要]** ペインに **[テナント ID]** が表示されます。 次の PowerShell コマンドを実行します。
 
-    - `<TenantId>` は、実際の**テナント ID** に置き換えます。
+    - `<TenantId>` は、実際の **テナント ID** に置き換えます。
 
     ```powershell
     Connect-AzAccount -Tenant <TenantId>
@@ -62,12 +62,12 @@ Azure SQL に対する Azure AD 認証の詳細については、記事「[Azure
     Set-AzSqlServer -ResourceGroupName <resource group> -ServerName <server name> -AssignIdentity
     ```
 
-    詳細については、[Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) コマンドを参照してください。
+    詳細については、[Set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver) コマンドを参照してください。
 
     > [!IMPORTANT]
-    > Azure SQL 論理サーバーに対して Azure AD ID を設定した場合は、その ID に[**ディレクトリ閲覧者**](../../active-directory/roles/permissions-reference.md#directory-readers)のアクセス許可を付与する必要があります。 その手順については、次のセクションで取り上げます。 この手順をスキップ**しない**でください。Azure AD 認証が機能しなくなります。
+    > Azure SQL 論理サーバーに対して Azure AD ID を設定した場合は、その ID に [**ディレクトリ閲覧者**](../../active-directory/roles/permissions-reference.md#directory-readers)のアクセス許可を付与する必要があります。 その手順については、次のセクションで取り上げます。 この手順をスキップ **しない** でください。Azure AD 認証が機能しなくなります。
 
-    - 過去に、[New-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver) コマンドに `AssignIdentity` パラメーターを使用して新しい SQL Server を作成してある場合は、Azure ファブリックでこのプロパティを有効にするために、後から別途 [Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) コマンドを実行する必要があります。
+    - 過去に、[New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) コマンドに `AssignIdentity` パラメーターを使用して新しい SQL Server を作成してある場合は、Azure ファブリックでこのプロパティを有効にするために、後から別途 [Set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver) コマンドを実行する必要があります。
 
 1. サーバー ID が正常に割り当てられたことを確認します。 次の PowerShell コマンドを実行します。
 
@@ -82,7 +82,7 @@ Azure SQL に対する Azure AD 認証の詳細については、記事「[Azure
 
 1. [Azure portal](https://portal.azure.com) にアクセスして ID を確認することもできます。
 
-    - **Azure Active Directory** リソースの **[エンタープライズ アプリケーション]** に移動します。 SQL 論理サーバーの名前を入力してください。 リソースに**オブジェクト ID** が関連付けられていることがわかります。
+    - **Azure Active Directory** リソースの **[エンタープライズ アプリケーション]** に移動します。 SQL 論理サーバーの名前を入力してください。 リソースに **オブジェクト ID** が関連付けられていることがわかります。
     
     :::image type="content" source="media/authentication-aad-service-principals-tutorial/enterprise-applications-object-id.png" alt-text="オブジェクト ID":::
 
@@ -95,7 +95,7 @@ Azure AD によって割り当てられた ID が Azure SQL で適切に機能�
 > [!NOTE] 
 > このスクリプトは、Azure AD の `Global Administrator` または `Privileged Roles Administrator` が実行する必要があります。
 >
-> **パブリック プレビュー**では、Azure AD 内のグループに `Directory Readers` ロールを割り当てることができます。 グループの所有者は、このグループのメンバーとしてマネージド ID を追加できます。これにより、`Global Administrator` または `Privileged Roles Administrator` が `Directory Readers` ロールを付与する必要がなくなります。 この機能の詳細については、「[Azure SQL の Azure Active Directory のディレクトリ閲覧者ロール](authentication-aad-directory-readers-role.md)」を参照してください。
+> **パブリック プレビュー** では、Azure AD 内のグループに `Directory Readers` ロールを割り当てることができます。 グループの所有者は、このグループのメンバーとしてマネージド ID を追加できます。これにより、`Global Administrator` または `Privileged Roles Administrator` が `Directory Readers` ロールを付与する必要がなくなります。 この機能の詳細については、「[Azure SQL の Azure Active Directory のディレクトリ閲覧者ロール](authentication-aad-directory-readers-role.md)」を参照してください。
 
 - `<TenantId>` は、先ほど確認した `TenantId` に置き換えます。
 - `<server name>` は、実際の SQL 論理サーバーの名前に置き換えます。 実際のサーバー名が `myserver.database.windows.net` の場合、`<server name>` を `myserver` に置き換えます。
@@ -155,13 +155,13 @@ if ($selDirReader -eq $null) {
 > [!NOTE]
 > 目的の ID に対してディレクトリ閲覧者のアクセス許可が付与されたかどうかは、このスクリプトの出力を見るとわかります。 アクセス許可が付与されたかどうかが定かでない場合は、スクリプトを再実行してください。
 
-SQL Managed Instance に**ディレクトリ閲覧者**のアクセス許可を設定する方法に関する同様のアプローチについては、「[Azure AD 管理者 (SQL Managed Instance) をプロビジョニングする](authentication-aad-configure.md#powershell)」を参照してください。
+SQL Managed Instance に **ディレクトリ閲覧者** のアクセス許可を設定する方法に関する同様のアプローチについては、「 [Azure AD 管理者 (SQL Managed Instance) をプロビジョニングする](authentication-aad-configure.md#powershell)」を参照してください。
 
 ## <a name="create-a-service-principal-an-azure-ad-application-in-azure-ad"></a>Azure AD にサービス プリンシパル (Azure AD アプリケーション) を作成する
 
 1. こちらのガイドに従って[アプリを登録し、アクセス許可を設定](active-directory-interactive-connect-azure-sql-db.md#register-your-app-and-set-permissions)します。
 
-    必ず、**アプリケーションのアクセス許可**と**委任されたアクセス許可**を追加してください。
+    必ず、 **アプリケーションのアクセス許可** と **委任されたアクセス許可** を追加してください。
 
     :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="オブジェクト ID":::
 
@@ -173,10 +173,20 @@ SQL Managed Instance に**ディレクトリ閲覧者**のアクセス許可を�
     - **アプリケーション ID**
     - **テナント ID** - 先ほどと同じ値を使用します
 
-このチュートリアルでは、メイン サービス プリンシパルとして *AppSP* を、2 つ目のサービス プリンシパル ユーザーとして *myapp* を使用します。myapp は、*AppSP* によって Azure SQL に作成されます。 *AppSP* と *myapp* の 2 つのアプリケーションを作成する必要があります。
+このチュートリアルでは、メイン サービス プリンシパルとして *AppSP* を、2 つ目のサービス プリンシパル ユーザーとして *myapp* を使用します。myapp は、 *AppSP* によって Azure SQL に作成されます。 *AppSP* と *myapp* の 2 つのアプリケーションを作成する必要があります。
 
 Azure AD アプリケーションの作成方法について詳しくは、「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../../active-directory/develop/howto-create-service-principal-portal.md)」の記事を参照してください。
 
+### <a name="permissions-required-to-set-or-unset-the-azure-ad-admin"></a>Azure AD 管理者を設定または設定解除するために必要なアクセス許可
+
+サービス プリンシパルが Azure SQL の Azure AD 管理者を設定または解除するには、追加の API のアクセス許可が必要です。 [Directory.Read.All](https://docs.microsoft.com/graph/permissions-reference#application-permissions-18) アプリケーション API アクセス許可を、Azure AD 内で対象のアプリケーションに追加する必要があります。
+
+:::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="オブジェクト ID":::
+
+サービス プリンシパルには、 [**SQL Server 共同作成者**](../../role-based-access-control/built-in-roles.md#sql-server-contributor)ロール (SQL Database の場合) または [**SQL Managed Instance の共同作成者**](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)ロール (SQL Managed Instance の場合) も必要になります。
+
+> [!NOTE]
+> Azure AD Graph API は非推奨とされていますが、このチュートリアルには引き続き **Directory.Reader.All** アクセス許可が適用されます。 Microsoft Graph API は、このチュートリアルには適用されません。
 
 ## <a name="create-the-service-principal-user-in-azure-sql-database"></a>Azure SQL Database にサービス プリンシパル ユーザーを作成する
 
@@ -196,7 +206,7 @@ Azure AD にサービス プリンシパルを作成したら、SQL Database に
     GO
     ```
 
-    詳細については、「[sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)」を参照してください。
+    詳細については、「[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)」を参照してください。
 
     `db_owner` ロールを割り当てる代わりに、`ALTER ANY USER` アクセス許可を付与してもかまいません。 その場合、サービス プリンシパルは、他の Azure AD ユーザーを追加できるようになります。
 
@@ -301,5 +311,5 @@ Azure AD にサービス プリンシパルを作成したら、SQL Database に
 - [App Service と Azure Functions でマネージド ID を使用する方法](../../app-service/overview-managed-identity.md)
 - [SQL DB に対する Azure AD サービス プリンシパルの認証 - コード サンプル](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467)
 - [Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../../active-directory/develop/app-objects-and-service-principals.md)
-- [Azure PowerShell で Azure サービス プリンシパルを作成する](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+- [Azure PowerShell で Azure サービス プリンシパルを作成する](/powershell/azure/create-azure-service-principal-azureps)
 - [Azure SQL の Azure Active Directory のディレクトリ閲覧者ロール](authentication-aad-directory-readers-role.md)

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: include
-ms.date: 09/17/2020
+ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 1154bf3ddde67ba5074517ab4f96ed6764edf6a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d84fd9e66c03fd92f3824b685bc550c70d4a6340
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91859781"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886638"
 ---
 Go 用 Face クライアント ライブラリを使用して顔認識を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Face サービスは、画像内の人間の顔を検出および認識するための高度なアルゴリズムへのアクセスを提供します。
 
@@ -72,7 +72,7 @@ dep ensure -add https://github.com/Azure/azure-sdk-for-go/tree/master/services/c
 
 ### <a name="create-a-go-application"></a>Go アプリケーションを作成する
 
-次に、**src** ディレクトリに `sample-app.go` という名前のファイルを作成します。
+次に、 **src** ディレクトリに `sample-app.go` という名前のファイルを作成します。
 
 ```bash
 cd src
@@ -125,6 +125,9 @@ touch sample-app.go
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_detect)]
 
+> [!TIP]
+> また、ローカルの画像から顔を検出することもできます。 [Client](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client) のメソッドを参照してください ( **DetectWithStream** など)。
+
 ### <a name="display-detected-face-data"></a>検出された顔データを表示する
 
 次のコード ブロックでは、 **[DetectedFace](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#DetectedFace)** オブジェクトの配列の最初の要素を取得し、その属性をコンソールに出力します。 複数の顔が写った画像を使用する場合は、配列を反復処理することになります。
@@ -166,7 +169,7 @@ touch sample-app.go
 
 ### <a name="create-persongroup"></a>PersonGroup を作成する
 
-画像をダウンロードしたら、**main** メソッドの一番下に次のコードを追加します。 このコードは、 **[PersonGroupClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient)** オブジェクトを認証し、それを使用して新しい **PersonGroup** を定義します。
+画像をダウンロードしたら、 **main** メソッドの一番下に次のコードを追加します。 このコードは、 **[PersonGroupClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient)** オブジェクトを認証し、それを使用して新しい **PersonGroup** を定義します。
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_pg_setup)]
 
@@ -182,9 +185,12 @@ touch sample-app.go
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_pgp_assign)]
 
+> [!TIP]
+> URL によって参照されたリモート画像から **PersonGroup** を作成することもできます。 [PersonGroupPersonClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupPersonClient) のメソッドを参照してください ( **AddFaceFromURL** など)。
+
 ### <a name="train-persongroup"></a>PersonGroup をトレーニングする
 
-顔を割り当てたら、**PersonGroup** をトレーニングして、その各 **Person** オブジェクトに関連付けられている視覚的特徴を識別できるようにします。 次のコードは、非同期の **train** メソッドを呼び出し、結果をポーリングして、状態をコンソールに出力します。
+顔を割り当てたら、 **PersonGroup** をトレーニングして、その各 **Person** オブジェクトに関連付けられている視覚的特徴を識別できるようにします。 次のコードは、非同期の **train** メソッドを呼び出し、結果をポーリングして、状態をコンソールに出力します。
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_pg_train)]
 

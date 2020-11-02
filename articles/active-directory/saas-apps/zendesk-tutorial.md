@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 85e198def03ab4f6d3e18047ccea0152f96694fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4973a5f1311de23cf54e401a52fb083f497687a3
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88815074"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894493"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zendesk"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Zendesk の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88815074"
 * ユーザーが自分の Azure AD アカウントを使用して Zendesk に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,9 +39,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Zendesk では、**SP** によって開始される SSO がサポートされます
-* Zendesk では、[**自動化された**ユーザー プロビジョニング](zendesk-provisioning-tutorial.md)がサポートされます
-* Zendesk を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Zendesk では、 **SP** によって開始される SSO がサポートされます
+* Zendesk では、 [**自動化された** ユーザー プロビジョニング](zendesk-provisioning-tutorial.md)がサポートされます
+* Zendesk を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-zendesk-from-the-gallery"></a>ギャラリーからの Zendesk の追加
 
@@ -51,7 +51,7 @@ Azure AD への Zendesk の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Zendesk**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Zendesk** 」と入力します。
 1. 結果のパネルから **[Zendesk]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-zendesk"></a>Zendesk の Azure AD SSO の構成とテスト
@@ -90,10 +90,10 @@ Zendesk で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. Zendesk アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 必須の SAML 属性はありませんが、必要に応じて、アプリケーション統合ページの **[ユーザー属性]** セクションから管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes]\(ユーザー属性\) を示しています。](common/edit-attribute.png)
 
     > [!NOTE]
-    > 既定では、Azure AD に含まれていない属性を追加するには拡張属性を使用します。 「[SAMLに設定できるユーザー属性](https://support.zendesk.com/hc/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise-)」をクリックすると、**Zendesk** が受け入れる SAML 属性の完全な一覧が表示されます。
+    > 既定では、Azure AD に含まれていない属性を追加するには拡張属性を使用します。 「 [SAMLに設定できるユーザー属性](https://support.zendesk.com/hc/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise-)」をクリックすると、 **Zendesk** が受け入れる SAML 属性の完全な一覧が表示されます。
 
 1. **[SAML 署名証明書]** セクションで **[編集]** ボタンをクリックして、 **[SAML 署名証明書]** ダイアログを開きます。
 
@@ -139,9 +139,9 @@ Zendesk で Azure AD SSO を構成してテストするには、次の構成要�
 
 ## <a name="configure-zendesk-sso"></a>Zendesk の SSO の構成
 
-1. **Zendesk** 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. **Zendesk** 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
-    ![image](./media/target-process-tutorial/install_extension.png)
+    ![[拡張機能のインストール] ボタンを示すスクリーンショット。](./media/target-process-tutorial/install_extension.png)
 
 1. ブラウザーに拡張機能を追加した後、 **[Zendesk のセットアップ]** をクリックすると、Zendesk アプリケーションに移動します。 そこから、管理者資格情報を提供して Zendesk にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 6 が自動化されます。
 
@@ -149,23 +149,23 @@ Zendesk で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. Zendesk を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、管理者として Zendesk 企業サイトにサインインして、次の手順を実行します。
 
-1. **Zendesk 管理センター**で、 **[Security]\(セキュリティ\)** タブの **[Security settings]\(セキュリティ設定\)** をクリックします。
+1. **Zendesk 管理センター** で、 **[Security]\(セキュリティ\)** タブの **[Security settings]\(セキュリティ設定\)** をクリックします。
 
-    ![Security](./media/zendesk-tutorial/settings.png "Security")
+    ![[Security settings]\(セキュリティ設定\) が選択されている Zendesk 管理センターを示すスクリーンショット。](./media/zendesk-tutorial/settings.png "Security")
 
 1. **[Single sign-on]\(シングル サインオン\)** ページにアクセスし、 **[SAML]** で **[Edit]\(編集\)** をクリックします。
 
-    ![Security](./media/zendesk-tutorial/saml-sso.png "Security")
+    ![[Edit]\(編集\) が選択されている [Single sign-on]\(シングル サインオン\) ページを示すスクリーンショット。](./media/zendesk-tutorial/saml-sso.png "Security")
 
 1. **[SSO]** ページで次の手順を実行します。
 
     ![シングル サインオン](./media/zendesk-tutorial/saml-configuration.png "シングル サインオン")
 
-    a. **[SAML SSO URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    a. **[SAML SSO URL]** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     b. **[Certificate Fingerprint] \(証明書のフィンガープリント)** テキスト ボックスに、Azure Portal からコピーした証明書の **THUMBPRINT** 値を貼り付けます。
 
-    c. **[Remote Logout URL]\(リモート ログアウト URL\)** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    c. **[Remote Logout URL]\(リモート ログアウト URL\)** ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
     d. **[保存]** をクリックします。
 
@@ -177,20 +177,20 @@ Zendesk で Azure AD SSO を構成してテストするには、次の構成要�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Zendesk] タイルをクリックすると、SSO を設定した Zendesk に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Zendesk] タイルをクリックすると、SSO を設定した Zendesk に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Zendesk を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって Zendesk を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御によって Zendesk を保護する方法](/cloud-app-security/proxy-intro-aad)
 
 - [[ユーザー プロビジョニングの構成]](zendesk-provisioning-tutorial.md)

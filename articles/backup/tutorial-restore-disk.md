@@ -3,13 +3,13 @@ title: チュートリアル - Azure CLI を使用した VM の復元
 description: Azure でバックアップおよび Recovery Services を使用して、ディスクを復元し、回復した VM を作成する方法について説明します。
 ms.topic: tutorial
 ms.date: 01/31/2019
-ms.custom: mvc
-ms.openlocfilehash: 861c911e84c9de02467d443751902e71d2504422
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 2d8ce7ab6d5a3ab244d0292ffe52847f18ea8795
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324990"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746749"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Azure CLI を使用した VM の復元
 
@@ -43,7 +43,7 @@ Azure でバックアップが開始されると、VM のバックアップ拡�
 
 ディスクを復元するには、回復データのソースとして復旧ポイントを選択します。 既定のポリシーでは復旧ポイントが毎日作成され、30 日間保持されるため、一連の復旧ポイントを保持し、復旧の特定の時点を選択することができます。
 
-使用可能な復旧ポイントのリストを表示するには、[az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) を使用します。 ディスクの復旧には、復旧ポイント**名**が使用されます。 このチュートリアルでは、使用可能な最新の復旧ポイントが必要です。 `--query [0].name` パラメーターでは、次のように最新の復旧ポイント名が選択されます。
+使用可能な復旧ポイントのリストを表示するには、[az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) を使用します。 ディスクの復旧には、復旧ポイント **名** が使用されます。 このチュートリアルでは、使用可能な最新の復旧ポイントが必要です。 `--query [0].name` パラメーターでは、次のように最新の復旧ポイント名が選択されます。
 
 ```azurecli-interactive
 az backup recoverypoint list \
@@ -74,7 +74,7 @@ az backup recoverypoint list \
         --sku Standard_LRS
     ```
 
-2. [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) を使用して、復旧ポイントからディスクを復元します。 *mystorageaccount* は、前述のコマンドで作成したストレージ アカウントの名前に置き換えます。 *myRecoveryPointName* は、前述の [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) コマンドから出力を取得した復旧ポイント名に置き換えます。 ***マネージド ディスクの復元先となるターゲット リソース グループも指定します***。
+2. [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) を使用して、復旧ポイントからディスクを復元します。 *mystorageaccount* は、前述のコマンドで作成したストレージ アカウントの名前に置き換えます。 *myRecoveryPointName* は、前述の [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) コマンドから出力を取得した復旧ポイント名に置き換えます。" ***マネージド ディスクの復元先となるターゲット リソース グループも指定します** _"。
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -88,7 +88,7 @@ az backup recoverypoint list \
     ```
 
     > [!WARNING]
-    > **target-resource-group** を指定しないと、マネージド ディスクは、指定したストレージ アカウントにアンマネージド ディスクとして復元されます。 ディスク全体の復元にかかる時間は、指定したストレージ アカウントに依存するため、これは復元時間に大きく影響します。 target-resource-group パラメーターが指定されている場合にのみ、インスタント リストアのベネフィットが得られます。 マネージド ディスクをアンマネージドとして復元する場合は、次に示すように、**target-resource-group** パラメーターを指定せず、**restore-as-unmanaged-disk** パラメーターを代わりに指定してください。 このパラメーターは、az 3.4.0 以降で利用できます。
+    > _ *target-resource-group* * を指定しないと、マネージド ディスクは、指定したストレージ アカウントにアンマネージド ディスクとして復元されます。 ディスク全体の復元にかかる時間は、指定したストレージ アカウントに依存するため、これは復元時間に大きく影響します。 target-resource-group パラメーターが指定されている場合にのみ、インスタント リストアのベネフィットが得られます。 マネージド ディスクをアンマネージドとして復元する場合は、次に示すように、 **target-resource-group** パラメーターを指定せず、 **restore-as-unmanaged-disk** パラメーターを代わりに指定してください。 このパラメーターは、az 3.4.0 以降で利用できます。
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -101,7 +101,7 @@ az backup recoverypoint list \
     --restore-as-unmanaged-disk
     ```
 
-これにより、マネージド ディスクがアンマネージド ディスクとして指定のストレージ アカウントに復元され、"インスタント" リストア機能は利用されなくなります。 CLI の将来のバージョンでは、**target-resource-group** パラメーターまたは **restore-as-unmanaged-disk** パラメーターのどちらかを指定することが必須となります。
+これにより、マネージド ディスクがアンマネージド ディスクとして指定のストレージ アカウントに復元され、"インスタント" リストア機能は利用されなくなります。 CLI の将来のバージョンでは、 **target-resource-group** パラメーターまたは **restore-as-unmanaged-disk** パラメーターのどちらかを指定することが必須となります。
 
 ### <a name="unmanaged-disks-restore"></a>アンマネージド ディスクの復元
 
@@ -154,7 +154,7 @@ az backup job list \
     --output table
 ```
 
-出力は次の例のようになります。復元ジョブが*進行中*であることが示されています。
+出力は次の例のようになります。復元ジョブが *進行中* であることが示されています。
 
 ```output
 Name      Operation        Status      Item Name    Start Time UTC       Duration

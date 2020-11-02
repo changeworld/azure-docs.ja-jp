@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/08/2019
 ms.author: jeedes
-ms.openlocfilehash: db8f7e77570ade206633781c9ba4726f881bff02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bd98acec06caf9c807844df2c957e61e0f0b2a8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88549196"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455123"
 ---
 # <a name="tutorial-integrate-cpqsync-by-cincom-with-azure-active-directory"></a>チュートリアル:CPQSync by Cincom と Azure Active Directory の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88549196"
 * ユーザーが自分の Azure AD アカウントで CPQSync by Cincom に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* CPQSync by Cincom では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* CPQSync by Cincom では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-cpqsync-by-cincom-from-the-gallery"></a>ギャラリーからの CPQSync by Cincom の追加
 
@@ -49,7 +49,7 @@ Azure AD への CPQSync by Cincom の統合を構成するには、ギャラリ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**CPQSync by Cincom**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **CPQSync by Cincom** 」と入力します。
 1. 結果のパネルから **[CPQSync by Cincom]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-cpqsync-by-cincom"></a>CPQSync by Cincom のための Azure AD シングル サインオンの構成とテスト
@@ -128,23 +128,22 @@ CPQSync by Cincom で Azure AD SSO を構成してテストするには、次の
 
 ## <a name="configure-cpqsync-by-cincom-sso"></a>CPQSync by Cincom の SSO の構成
 
-**CPQSync by Cincom** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (未加工)** と Azure portal からコピーした適切な URL を [CPQSync by Cincom サポート チーム](https://cpqsupport.cincomcpq.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**CPQSync by Cincom** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (未加工)** と Azure portal からコピーした適切な URL を [CPQSync by Cincom サポート チーム](https://cpqsupport.cincomcpq.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-cpqsync-by-cincom-test-user"></a>CPQSync by Cincom のテスト ユーザーの作成
 
-このセクションでは、CPQSync by Cincom で B.Simon というユーザーを作成します。  [CPQSync by Cincom サポート チーム](https://cpqsupport.cincomcpq.com)と連携し、CPQSync by Cincom プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、CPQSync by Cincom で B.Simon というユーザーを作成します。 [CPQSync by Cincom サポート チーム](https://cpqsupport.cincomcpq.com)と連携して、CPQSync by Cincom プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [CPQSync by Cincom] タイルをクリックすると、SSO を設定した CPQSync by Cincom に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [CPQSync by Cincom] タイルをクリックすると、SSO を設定した CPQSync by Cincom に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

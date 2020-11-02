@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: marobert
-ms.openlocfilehash: 77b1e9ab245f668ab81741451a5e032f37bc3625
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 22cfe369561eab1ca334c7ff2450162dfae3e761
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90945758"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92347323"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -49,7 +49,7 @@ npm install @azure/communication-administration --save
 
 ```
 
-`--save` オプションを使用すると、**package.json** ファイル内の依存関係としてライブラリが表示されます。
+`--save` オプションを使用すると、 **package.json** ファイル内の依存関係としてライブラリが表示されます。
 
 ## <a name="set-up-the-app-framework"></a>アプリのフレームワークを設定する
 
@@ -127,6 +127,15 @@ await identityClient.revokeTokens(userResponse);
 console.log(`\nSuccessfully revoked all tokens for user with Id: ${userResponse.communicationUserId}`);
 ```
 
+## <a name="refresh-user-access-tokens"></a>ユーザー アクセス トークンを更新する
+
+トークンを更新するには、`CommunicationUser` オブジェクトを使用して再発行します。
+
+```javascript  
+let userResponse = new CommunicationUser(existingUserId);
+let tokenResponse = await identityClient.issueToken(userResponse, ["voip"]);
+```
+
 ## <a name="delete-a-user"></a>ユーザーの削除
 
 ユーザーを削除すると、すべてのアクティブなトークンが取り消され、その ID についての後続のトークンを発行できなくなります。 また、ユーザーに関連付けられているすべての永続化されたコンテンツも削除されます。
@@ -138,7 +147,7 @@ console.log(`\nDeleted the user with Id: ${userResponse.communicationUserId}`);
 
 ## <a name="run-the-code"></a>コードの実行
 
-コンソール プロンプトから、*issue-token.js* ファイルが格納されているディレクトリに移動し、次の `node` コマンドを実行してアプリを実行します。
+コンソール プロンプトから、 *issue-token.js* ファイルが格納されているディレクトリに移動し、次の `node` コマンドを実行してアプリを実行します。
 
 ```console
 node ./issue-token.js

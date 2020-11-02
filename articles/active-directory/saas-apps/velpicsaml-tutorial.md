@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 85dfa6b57171ce68c3d962bac27016434d587080
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81523a1c11b6a3da4e7d1db5d8249921ad5047ff
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88532655"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635866"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-velpic-saml"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Velpic SAML の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88532655"
 * ユーザーが自分の Azure AD アカウントを使用して Velpic SAML に自動的にサインインできるようになります。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Velpic SAML では、**SP** によって開始される SSO がサポートされます
+* Velpic SAML では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-velpic-saml-from-the-gallery"></a>ギャラリーからの Velpic SAML の追加
 
@@ -49,7 +49,7 @@ Azure AD への Velpic SAML の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Velpic SAML**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Velpic SAML** 」と入力します。
 1. 結果のパネルから **Velpic SAML** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。    
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-velpic-saml"></a>Velpic SAML の Azure AD シングル サインオンの構成とテスト
@@ -124,7 +124,7 @@ Velpic SAML で Azure AD SSO を構成してテストするには、次の構成
 
 ## <a name="configure-velpic-saml-sso"></a>Velpic SAML SSO の構成
 
-1. Velpic SAML 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. Velpic SAML 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -136,33 +136,33 @@ Velpic SAML で Azure AD SSO を構成してテストするには、次の構成
 
 4. **[Manage] \(管理)** タブをクリックして **[Integration] \(統合)** セクションに移動します。ここで、 **[Plugins] \(プラグイン)** をクリックして、サインイン用の新しいプラグインを作成する必要があります。
 
-    ![プラグイン](./media/velpicsaml-tutorial/velpic_1.png)
+    ![[Integration]\(統合\) ページを示すスクリーンショット。ここで、[Plugins]\(プラグイン\) を選択できます。](./media/velpicsaml-tutorial/velpic_1.png)
 
 5. **[Add plugin] \(プラグインの追加)** をクリックします。
     
-    ![プラグイン](./media/velpicsaml-tutorial/velpic_2.png)
+    ![[Add Plugin]\(プラグインの追加\) ボタンが選択されていることを示すスクリーンショット。](./media/velpicsaml-tutorial/velpic_2.png)
 
 6. [Add plugin] \(プラグインの追加) ページで **[SAML]** タイルをクリックします。
     
-    ![プラグイン](./media/velpicsaml-tutorial/velpic_3.png)
+    ![[Add plugin] \(プラグインの追加) ページで [SAML] が選択されていることを示すスクリーンショット。](./media/velpicsaml-tutorial/velpic_3.png)
 
 7. 新しい SAML プラグインの名前を入力し、 **[追加]** をクリックします。
 
-    ![プラグイン](./media/velpicsaml-tutorial/velpic_4.png)
+    ![[Azure A D] が入力されている [Add new SAML plugin]\(新しい SAML プラグインの追加\) ダイアログ ボックスを示すスクリーンショット。](./media/velpicsaml-tutorial/velpic_4.png)
 
 8. 詳細を次のように入力します。
 
-    ![プラグイン](./media/velpicsaml-tutorial/velpic_5.png)
+    ![[Azure A D] ページを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/velpicsaml-tutorial/velpic_5.png)
 
     a. **[名前]** テキストボックスに、SAML プラグインの名前を入力します。
 
-    b. **[Issuer URL]\(発行者 URL\)** ボックスに、Azure portal の **[サインオンの構成]** ウィンドウからコピーした **Azure AD 識別子**を貼り付けます。
+    b. **[Issuer URL]\(発行者 URL\)** ボックスに、Azure portal の **[サインオンの構成]** ウィンドウからコピーした **Azure AD 識別子** を貼り付けます。
 
     c. **[Provider Metadata Config] \(Provider メタデータ構成)** で、Azure Portal からダウンロードしたメタデータ XML ファイルをアップロードします。
 
     d. **Auto create new users \(新規ユーザーの自動作成)** チェックボックスをオンにして、SAML のジャストインタイム プロビジョニングを有効にすることもできます。 Velpic にユーザーが存在せず、このチェックボックスがオンになっていない場合は、Azure からのログインに失敗します。 このチェックボックスがオンになっている場合、ユーザーは、ログイン時に Velpic に自動的にプロビジョニングされます。 
 
-    e. テキストボックスから**シングル サインオン URL** をコピーして、Azure Portal に貼り付けます。
+    e. テキストボックスから **シングル サインオン URL** をコピーして、Azure Portal に貼り付けます。
     
     f. **[保存]** をクリックします。
 
@@ -198,17 +198,16 @@ Velpic SAML 企業サイトに管理者としてサインインし、次の手�
 
 1. アクセス パネルで [Velpic SAML] タイルをクリックすると、Velpic SAML アプリケーションのログイン ページが表示されます。 サインイン ページに **[Log In With Azure AD] \(Azure AD でログイン)** と表示されます。
 
-    ![プラグイン](./media/velpicsaml-tutorial/velpic_6.png)
+    ![[Log In With Azure A D]\(Azure A D でログイン\) が選択されている Learning Portal を示すスクリーンショット。](./media/velpicsaml-tutorial/velpic_6.png)
 
 1. **[Log In With Azure AD] \(Azure AD でログイン)** をクリックし、Azure AD アカウントを使用して Velpic にログインします。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Velpic SAML を試す](https://aad.portal.azure.com/)
-

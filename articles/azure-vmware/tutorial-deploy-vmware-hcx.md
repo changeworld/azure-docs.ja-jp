@@ -3,12 +3,12 @@ title: チュートリアル - VMware HCX をデプロイして構成する
 description: Azure VMware Solution プライベート クラウドのために VMware HCX ソリューションをデプロイして構成する方法について説明します。
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: c78eae11497702054bb54b5980228fd0a3962577
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 424abeef567d88f7de37f7a7a4ab7a7a8b6ef3bc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367773"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791411"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>VMware HCX をデプロイして構成する
 
@@ -17,7 +17,7 @@ ms.locfileid: "92367773"
 VMware HCX Advanced コネクタは、Azure VMware Solution にあらかじめデプロイされています。 最大 3 つのサイト接続 (オンプレミスからクラウド、またはクラウドからクラウド) がサポートされます。 3 つを超えるサイト接続が必要な場合は、[VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) アドオンを有効にするために[サポート リクエスト](https://rc.portal.azure.com/#create/Microsoft.Support)を送信してください。 このアドオンは現在、プレビュー段階です。 
 
 >[!NOTE]
->VMware HCX Enterprise Edition (EE) は、Azure VMware Solution でプレビュー サービスとして使用できます。 これは無料で、プレビュー サービスの使用条件が適用されます。 VMware HCX EE サービスが一般提供されると、課金に切り替わるという通知が 30 日前に届きます。 サービスを無効にするかオプトアウトするオプションも用意されます。
+>VMware HCX Enterprise Edition (EE) は、Azure VMware Solution でプレビュー サービスとして使用できます。 これは無料で、プレビュー サービスの使用条件が適用されます。 VMware HCX EE サービスが一般提供されると、課金に切り替わるという通知が 30 日前に届きます。 サービスを無効にするかオプトアウトするオプションも用意されます。 現在、HCX Enterprise から HCX Advanced への簡単なダウングレード パスはなく、ダウングレードする場合はダウンタイムが発生する再デプロイを行う必要があることに注意してください。
 
 まず、この記事の「[開始する前に](#before-you-begin)」、「[ソフトウェア バージョンの要件](#software-version-requirements)」、および「[前提条件](#prerequisites)」のセクションをよく確認してください。 
 

@@ -4,12 +4,12 @@ description: Azure Migrate サービスの最新の情報や最近行われた�
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: b03f3a7e10aa42f3393ecc22cb74f4e565587032
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ed2347d2d322e272b4fb7f4dfd697f3499419124
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314572"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545176"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate の新着情報
 
@@ -22,6 +22,7 @@ ms.locfileid: "92314572"
 - 1000 台の VM で同時に依存関係の分析 (エージェントレス) を実行できるようになりました。
 - PowerShell スクリプトを使用して、大規模な依存関係の分析 (エージェントレス) を有効または無効にすることができるようになりました。 [詳細情報。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
 - 依存関係の分析 (エージェントレス) によって収集されたデータを使用して、Power BI でネットワーク接続を視覚化できます。[詳細情報。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
+- データ ディスクのサイズが最大 32 TB の VMware VM の移行は、Azure Migrate:Server Migration のエージェントレス VMware 移行方式を使用してサポートされるようになりました。 
 
 ## <a name="update-august-2020"></a>更新 (2020 年 8 月)
 

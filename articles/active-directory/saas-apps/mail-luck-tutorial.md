@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 9f2808690bee528e78dbd5fed3023e1a6ea4a75b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9326d52fa69de6a5dfbb5f4e9b7054858d67383a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552494"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458253"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mail-luck"></a>チュートリアル:Azure Active Directory と Mail Luck! のシングル サイン オン (SSO) 統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88552494"
 * ユーザーが自分の Azure AD アカウントを使用して Mail Luck! に自動的に サインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Mail Luck! では、**SP** によって開始される SSO がサポートされます
+* Mail Luck! では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-mail-luck-from-the-gallery"></a>ギャラリーからの Mail Luck! の追加
 
@@ -49,7 +49,7 @@ Mail Luck! の Azure AD への統合を構成するには、 Mail Luck! をギ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Mail Luck!** 」 と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Mail Luck!** 」 と入力します。
 1. 結果パネルで **[Mail Luck!]** を選択し、 アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-mail-luck"></a>Mail Luck! の Azure AD シングル サインオンの構成とテスト
@@ -120,24 +120,24 @@ Mail Luck! で Azure AD SSO を構成してテストするには、次の構成�
 
 ## <a name="configure-mail-luck-sso"></a>Mail Luck! SSO の構成
 
-**Mail Luck!** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Mail Luck! サポート チーム](https://customer.nttpc.co.jp/cgi-bin/form/inquiry_index.cgi)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Mail Luck!** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Mail Luck! サポート チーム](https://customer.nttpc.co.jp/cgi-bin/form/inquiry_index.cgi)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-mail-luck-test-user"></a>Mail Luck! テスト ユーザー の作成
 
-このセクションでは、Mail Luck! で B.Simon というユーザーを作成します。  [Mail Luck! サポート チーム](https://customer.nttpc.co.jp/cgi-bin/form/inquiry_index.cgi)と連携し、Mail Luck! プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Mail Luck! で B.Simon というユーザーを作成します。 [Mail Luck! サポート チーム](https://customer.nttpc.co.jp/cgi-bin/form/inquiry_index.cgi)と連携して、Mail Luck! プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Mail Luck!] タイルをクリックすると、SSO を設定した Mail Luck! に自動的にサインイン します。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Mail Luck!] タイルをクリックすると、SSO を設定した Mail Luck! に自動的にサインイン します。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Mail Luck! を試す](https://aad.portal.azure.com/)

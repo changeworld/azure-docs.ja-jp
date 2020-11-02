@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: jeedes
-ms.openlocfilehash: f9fd458ea19fa0dad2f630f94a67d5e1db96cee3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b244d5e6aa9dd732aa670fd645b6bbc266c9535
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543314"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897281"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-for-customer"></a>チュートリアル:SAP Cloud for Customer と Azure Active Directory のシングル サインオン (SSO) 統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543314"
 * ユーザーが自分の Azure AD アカウントを使用して SAP Cloud for Customer に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* SAP Cloud for Customer では、**SP** によって開始される SSO がサポートされます
+* SAP Cloud for Customer では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-sap-cloud-for-customer-from-the-gallery"></a>ギャラリーから SAP Cloud for Customer を追加する
 
@@ -49,7 +49,7 @@ Azure AD への SAP Cloud for Customer の統合を構成するには、ギャ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**SAP Cloud for Customer**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **SAP Cloud for Customer** 」と入力します。
 1. 結果のパネルから **[SAP Cloud for Customer]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-cloud-for-customer"></a>SAP Cloud for Customer の Azure AD シングル サインオンの構成とテスト
@@ -86,19 +86,19 @@ SAP Cloud for Customer に対する Azure AD SSO を構成してテストする�
 
 1. SAP Cloud for Customer アプリケーションでは、特定の形式の SAML アサーションを受け取るため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![[編集] アイコンが選択されている [ユーザー属性] ダイアログを示すスクリーンショット。](common/edit-attribute.png)
 
 1. **[ユーザー属性とクレーム]** ダイアログの **[ユーザー属性]** セクションで、次の手順を実行します。
 
     a. **[編集]** アイコンをクリックして、 **[ユーザー要求の管理]** ダイアログを開きます。
 
-    ![image](./media/sap-customer-cloud-tutorial/tutorial_usermail.png)
+    ![[編集] アイコンが選択されている [ユーザー属性とクレーム] を示すスクリーンショット。](./media/sap-customer-cloud-tutorial/tutorial_usermail.png)
 
     ![image](./media/sap-customer-cloud-tutorial/tutorial_usermailedit.png)
 
-    b. **ソース**として **[変換]** を選択します。
+    b. **ソース** として **[変換]** を選択します。
 
-    c. **[変換]** の一覧で、**ExtractMailPrefix()** を選択します。
+    c. **[変換]** の一覧で、 **ExtractMailPrefix()** を選択します。
 
     d. **[パラメーター 1]** 一覧から、実装で使用するユーザー属性を選択します。
     たとえば、一意のユーザー識別子として EmployeeID を使用し、その属性値を ExtensionAttribute2 に保存している場合、[user.extensionattribute2] を選択します。
@@ -147,13 +147,13 @@ SAP Cloud for Customer に対する Azure AD SSO を構成してテストする�
 
 1. 新しい Web ブラウザー ウィンドウを開き、SAP Cloud for Customer 企業サイトに管理者としてサインインします。
 
-2. メニューの左側で **[Identity Providers]\(ID プロバイダー\)**  >  **[Corporate Identity Providers]\(企業 ID プロバイダー\)**  >  **[Add]\(追加\)** の順にクリックし、ポップアップで ID プロバイダー名 (**Azure AD** など) を追加します。 **[Save]\(保存\)** をクリックしてから、 **[SAML 2.0 Configuration]\(SAML 2.0 構成\)** をクリックします。
+2. メニューの左側で **[Identity Providers]\(ID プロバイダー\)**  >  **[Corporate Identity Providers]\(企業 ID プロバイダー\)**  >  **[Add]\(追加\)** の順にクリックし、ポップアップで ID プロバイダー名 ( **Azure AD** など) を追加します。 **[Save]\(保存\)** をクリックしてから、 **[SAML 2.0 Configuration]\(SAML 2.0 構成\)** をクリックします。
 
-    ![SAP 構成](./media/sap-customer-cloud-tutorial/configure01.png)
+    ![[Add Identity Provider]\(ID プロバイダーの追加\) テキスト ボックスが強調表示され、[Save]\(保存\) ボタンが選択されている [Identity Providers]\(ID プロバイダー\) ページを示すスクリーンショット。](./media/sap-customer-cloud-tutorial/configure01.png)
 
 3. **[SAML 2.0 Configuration]\(SAML 2.0 の構成\)** セクションで、次の手順を実行します。
 
-    ![SAP 構成](./media/sap-customer-cloud-tutorial/configure02.png)
+    ![[Browse]\(参照\) ボタンが選択されている [S A M L 2.0 Configuration]\(S A M L 2.0 の構成\) を示すスクリーンショット。](./media/sap-customer-cloud-tutorial/configure02.png)
 
     a. **[Browse]\(参照\)** をクリックし、Azure portal からダウンロードしたフェデレーション メタデータ XML ファイルをアップロードします。
 
@@ -167,21 +167,21 @@ Azure AD ユーザーが SAP Cloud for Customer にサインインできるよ�
 
 1. セキュリティ管理者として SAP Cloud for Customer にサインインします。
 
-2. メニューの左側で **[Users & Authorizations]\(ユーザーと承認\)**  > **[User Management]\(ユーザー管理\)**  >  **[Add User]\(ユーザーの追加\)** の順にクリックします。
+2. メニューの左側で **[Users & Authorizations]\(ユーザーと承認\)**  >  **[User Management]\(ユーザー管理\)**  >  **[Add User]\(ユーザーの追加\)** の順にクリックします。
 
-    ![SAP 構成](./media/sap-customer-cloud-tutorial/configure03.png)
+    ![[Add User]\(ユーザーの追加\) ボタンが選択されている [User Management]\(ユーザー管理\) ページを示すスクリーンショット。](./media/sap-customer-cloud-tutorial/configure03.png)
 
 3. **[Add New User]\(新しいユーザーの追加\)** セクションで、次の手順を実行します。
 
     ![SAP 構成](./media/sap-customer-cloud-tutorial/configure04.png)
 
-    a. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **B**)。
+    a. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **B** )。
 
-    b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon**)。
+    b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon** )。
 
     c. **[E-Mail]\(電子メール\)** ボックスに、ユーザーのメール アドレスを入力します (例: `B.Simon@contoso.com`)。
 
-    d. **[Login Name]\(ログイン名\)** ボックスに、ユーザーの名前を入力します (例: **B.Simon**)。
+    d. **[Login Name]\(ログイン名\)** ボックスに、ユーザーの名前を入力します (例: **B.Simon** )。
 
     e. 要件に従って **[User Type]\(ユーザーの種類\)** を選択します。
 
@@ -191,15 +191,14 @@ Azure AD ユーザーが SAP Cloud for Customer にサインインできるよ�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [SAP Cloud for Customer] タイルをクリックすると、SSO を設定した SAP Cloud for Customer に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [SAP Cloud for Customer] タイルをクリックすると、SSO を設定した SAP Cloud for Customer に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で SAP Cloud for Customer を試す](https://aad.portal.azure.com/)
-

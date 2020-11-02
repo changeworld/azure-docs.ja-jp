@@ -8,24 +8,25 @@ ms.topic: include
 ms.date: 10/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2069d56b6bc0507478714eda575ab38fec41b8a1
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: fe95481e977d2e35c2f652b6c99b9e69ae89e2f8
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207626"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479577"
 ---
-1. [Azure portal](https://portal.azure.com) メニューから **[リソースの作成]** を選択します。
+1. [Azure portal](https://portal.azure.com) で、 **[Search resources, services, and docs]\(ソース、サービス、ドキュメントの検索\) (G+/)** に、「 **仮想ネットワーク ゲートウェイ** 」と入力します。 検索結果で **仮想ネットワーク ゲートウェイ** を見つけて、それを選択します。
 
-   ![Azure portal でリソースを作成する](./media/vpn-gateway-add-gw-rm-portal-include/azure-portal-create-resource.png)
-1. **[Marketplace を検索]** フィールドに「仮想ネットワーク ゲートウェイ」と入力します。 検索結果で **仮想ネットワーク ゲートウェイ** を見つけて、そのエントリを選択します。 **[仮想ネットワーク ゲートウェイ]** のページで、 **[作成]** を選択します。 **[仮想ネットワーク ゲートウェイの作成]** ページが開きます。
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/search.png" alt-text="検索フィールド" lightbox="./media/vpn-gateway-add-gw-rm-portal-include/search-expand.png":::
+
+1. **[仮想ネットワーク ゲートウェイ]** ページで、 **[+ 追加]** を選択します。 **[仮想ネットワーク ゲートウェイの作成]** ページが開きます。
+
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/add.png" alt-text="検索フィールド":::
 1. **[基本]** タブで、仮想ネットワーク ゲートウェイの値を入力します。
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway.png" alt-text="ゲートウェイ フィールド":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway.png" alt-text="検索フィールド":::
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway-vnet.png" alt-text="ゲートウェイ フィールド":::
-
-   **プロジェクトの詳細**
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway-vnet.png" alt-text="検索フィールド":::
 
    * **サブスクリプション** :使用するサブスクリプションをドロップダウンから選択します。
    * **リソース グループ** :この設定は、このページで仮想ネットワークを選択すると自動入力されます。
@@ -48,10 +49,8 @@ ms.locfileid: "92207626"
      * **[パブリック IP アドレス]** : **[新規作成]** を選択しておいてください。
      * **パブリック IP アドレス名** :このテキスト ボックスに、パブリック IP アドレス インスタンスの名前を入力します。
      * **割り当て** : VPN ゲートウェイでは動的のみがサポートされます。
-
-   **アクティブ/アクティブ モード** : **[アクティブ/アクティブ モードの有効化]** を選択するのは、アクティブ/アクティブ ゲートウェイ構成を作成する場合だけです。 それ以外の場合は、この設定を **[Disabled]\(無効\)** のままにします。
-
-   **[Configure BGP ASN]\(BGP ASN の構成\)** の設定は、実際の構成で特に必要でない限り、 **[Disabled]\(無効\)** のままにしておいてください。 この設定が必要である場合、既定の ASN は 65515 です。ただし、これは変わる場合があります。
+     * **[アクティブ/アクティブ モードの有効化]** : **[アクティブ/アクティブ モードの有効化]** を選択するのは、アクティブ/アクティブ ゲートウェイ構成を作成する場合だけです。 それ以外の場合は、この設定を **[Disabled]\(無効\)** のままにします。
+     * **[Configure BGP]\(BGP の構成\)** の設定は、実際の構成で特に必要でない限り、 **[無効]** のままにしておいてください。 この設定が必要である場合、既定の ASN は 65515 です。ただし、これは変わる場合があります。
 1. **[確認と作成]** を選択して検証を実行します。
 1. 検証に合格したら、 **[作成]** を選択して VPN ゲートウェイをデプロイします。 ゲートウェイを完全に作成してデプロイするには最大で 45 分かかることがあります。 デプロイの状態は、ゲートウェイの [概要] ページで確認できます。
 

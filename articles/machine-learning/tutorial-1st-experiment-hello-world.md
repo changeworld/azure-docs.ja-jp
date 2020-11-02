@@ -11,18 +11,18 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 980347c658c65a0c08dfc50c08f50741fb9a00fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afc851be08e6708efc0138dc45931cda147c67c1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372546"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895887"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>チュートリアル:"Hello world!" Python スクリプトを実行する (パート 2/4) Python script (part 2 of 4)
 
 このチュートリアルでは、Azure Machine Learning SDK for Python を使用して、Python の "Hello World" スクリプトを送信および実行する方法について説明します。  スクリプトを入手してください。
 
-このチュートリアルは、"*4 部構成のチュートリアル シリーズのパート 2*" であり、Azure Machine Learning の基礎を学習し、Azure でジョブベースの機械学習タスクを実行します。 このチュートリアルは、[パート 1 のローカル マシンを Azure Machine Learning 用に設定する方法](tutorial-1st-experiment-sdk-setup-local.md)に関するページで完了した作業に基づいて構築されています。
+このチュートリアルは、" *4 部構成のチュートリアル シリーズのパート 2* " であり、Azure Machine Learning の基礎を学習し、Azure でジョブベースの機械学習タスクを実行します。 このチュートリアルは、[パート 1 のローカル マシンを Azure Machine Learning 用に設定する方法](tutorial-1st-experiment-sdk-setup-local.md)に関するページで完了した作業に基づいて構築されています。
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -72,7 +72,7 @@ python ./src/hello.py
 
 ## <a name="create-a-control-script"></a>コントロール スクリプトを作成する
 
-*コントロール スクリプト*を使用すると、`hello.py` スクリプトをクラウドで実行できます。 コントロール スクリプトを使用すると、機械学習コードを実行する方法と場所を制御できます。  
+*コントロール スクリプト* を使用すると、`hello.py` スクリプトをクラウドで実行できます。 コントロール スクリプトを使用すると、機械学習コードを実行する方法と場所を制御できます。  
 
 チュートリアル ディレクトリで、`03-run-hello.py` という名前の新しい Python ファイルを作成し、そのファイルに次のコードをコピーして貼り付けます。
 
@@ -115,7 +115,7 @@ print(aml_url)
       `config = ScriptRunConfig( ... )` 
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) は、`hello.py` コードをラップしてワークスペースに渡します。 名前に示されているように、このクラスを使用して、Azure Machine Learning で_スクリプト_を_実行_する方法を_構成_できます。 スクリプトを実行するコンピューティング ターゲットも指定します。 このコードでは、ターゲットは[セットアップ チュートリアル](tutorial-1st-experiment-sdk-setup-local.md)で作成したコンピューティング クラスターです。
+      [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) は、`hello.py` コードをラップしてワークスペースに渡します。 名前に示されているように、このクラスを使用して、Azure Machine Learning で _スクリプト_ を _実行_ する方法を _構成_ できます。 スクリプトを実行するコンピューティング ターゲットも指定します。 このコードでは、ターゲットは[セットアップ チュートリアル](tutorial-1st-experiment-sdk-setup-local.md)で作成したコンピューティング クラスターです。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -142,6 +142,9 @@ print(aml_url)
 ```bash
 python 03-run-hello.py
 ```
+
+> [!TIP]
+> このコードを実行すると、サブスクリプションへのアクセス権がないというエラーが表示される場合は、認証オプションの詳細について、「[ワークスペースに接続する](how-to-manage-workspace.md?tab=python#connect-multi-tenant)」セクションを参照してください。
 
 ## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a>スタジオを使用してクラウドでコードを監視する
 
@@ -177,7 +180,7 @@ python 03-run-hello.py
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、単純な "Hello world!" スクリプトを作成し、Azure で実行しました。 script and ran it on Azure. Azure Machine Learning ワークスペースに接続し、実験を作成して、`hello.py` コードをクラウドに送信する方法について説明しました。
+このチュートリアルでは、単純な "Hello world!"  スクリプトを作成し、Azure で実行しました。 Azure Machine Learning ワークスペースに接続し、実験を作成して、`hello.py` コードをクラウドに送信する方法について説明しました。
 
 次のチュートリアルでは、`print("Hello world!")` よりも興味深いものを実行して、これまでの学習をさらに発展させます。
 

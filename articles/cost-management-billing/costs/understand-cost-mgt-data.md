@@ -3,17 +3,18 @@ title: Azure Cost Management のデータを理解する
 description: この記事では、Azure Cost Management に含まれるデータと、それが処理、収集、表示、およびクローズされる頻度について詳しく説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 10/26/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: a9ec5fd7d6e93d4413e86b5c9433cb6c0c9b59a1
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.custom: contentperfq2
+ms.openlocfilehash: 923b03f0c7bbf8d6948a80742530db6cb9b06c25
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132314"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675909"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
@@ -31,43 +32,43 @@ Azure Cost Management で現在サポートされている [Microsoft Azure の�
 | --- | --- | --- | --- | --- |
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | 2014 年 5 月<sup>1</sup> |
 | **Enterprise Agreement (EA)** | Enterprise Dev/Test                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | 2014 年 5 月<sup>1</sup> |
-| **Enterprise Agreement (EA)** | [Microsoft Azure エンタープライズ](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | 2014 年 5 月<sup>1</sup> |
-| **Microsoft 顧客契約** | [Microsoft Azure プラン](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | 該当なし | 2019 年 3 月<sup>3</sup> |
-| **Microsoft 顧客契約** | [Dev/Test 用 Microsoft Azure プラン](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | 該当なし | 2019 年 3 月<sup>3</sup> |
+| **Enterprise Agreement (EA)** | Microsoft Azure エンタープライズ | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | 2014 年 5 月<sup>1</sup> |
+| **Microsoft 顧客契約** | Microsoft Azure プラン | EnterpriseAgreement_2014-09-01 | 該当なし | 2019 年 3 月<sup>3</sup> |
+| **Microsoft 顧客契約** | Dev/Test 用の Microsoft Azure プラン | MSDNDevTest_2014-09-01 | 該当なし | 2019 年 3 月<sup>3</sup> |
 | **パートナーによってサポートされる Microsoft 顧客契約** | Microsoft Azure プラン | CSP_2015-05-01、CSP_MG_2017-12-01、および CSPDEVTEST_2018-05-01<br><br>クォータ ID は、Microsoft 顧客契約および従来の CSP サブスクリプションで再利用されます。 現時点では、Microsoft 顧客契約サブスクリプションのみがサポートされています。 | 該当なし | 2019 年 10 月 |
-| **Microsoft Developer Network (MSDN)** | [MSDN Platforms](https://azure.microsoft.com/offers/ms-azr-0062p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0062P | 2018 年 10 月 2 日<sup>2</sup> |
-| **従量課金制** | [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p)                  | PayAsYouGo_2014-09-01 | MS-AZR-0003P | 2018 年 10 月 2 日<sup>2</sup> |
-| **従量課金制** | [開発テスト用の従量課金制プラン](https://azure.microsoft.com/offers/ms-azr-0023p)         | MSDNDevTest_2014-09-01 | MS-AZR-0023P | 2018 年 10 月 2 日<sup>2</sup> |
-| **従量課金制** | [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p)      | MPN_2014-09-01 | MS-AZR-0025P | 2018 年 10 月 2 日<sup>2</sup> |
-| **従量課金制** | [無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p)<sup>4</sup>         | FreeTrial_2014-09-01 | MS-AZR-0044P | 2018 年 10 月 2 日<sup>2</sup> |
-| **従量課金制** | [Azure イン オープン プラン](https://azure.microsoft.com/offers/ms-azr-0111p)<sup>4</sup>      | AzureInOpen_2014-09-01 | MS-AZR-0111P | 2018 年 10 月 2 日<sup>2</sup> |
+| **Microsoft Developer Network (MSDN)** | MSDN Platforms<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0062P | 2018 年 10 月 2 日<sup>2</sup> |
+| **従量課金制** | 従量課金制                  | PayAsYouGo_2014-09-01 | MS-AZR-0003P | 2018 年 10 月 2 日<sup>2</sup> |
+| **従量課金制** | 開発テスト用の従量課金制プラン         | MSDNDevTest_2014-09-01 | MS-AZR-0023P | 2018 年 10 月 2 日<sup>2</sup> |
+| **従量課金制** | Microsoft Partner Network      | MPN_2014-09-01 | MS-AZR-0025P | 2018 年 10 月 2 日<sup>2</sup> |
+| **従量課金制** | 無料試用版<sup>4</sup>         | FreeTrial_2014-09-01 | MS-AZR-0044P | 2018 年 10 月 2 日<sup>2</sup> |
+| **従量課金制** | Azure イン オープン プラン<sup>4</sup>      | AzureInOpen_2014-09-01 | MS-AZR-0111P | 2018 年 10 月 2 日<sup>2</sup> |
 | **従量課金制** | Azure Pass<sup>4</sup>                                                            | AzurePass_2014-09-01 | MS-AZR-0120P、MS-AZR-0122P - MS-AZR-0125P、MS-AZR-0128P - MS-AZR-0130P | 2018 年 10 月 2 日<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Enterprise – MPN](https://azure.microsoft.com/offers/ms-azr-0029p)<sup>4</sup>     | MPN_2014-09-01 | MS-AZR-0029P | 2018 年 10 月 2 日<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p)<sup>4</sup>         | MSDN_2014-09-01 | MS-AZR-0059P | 2018 年 10 月 2 日<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p)<sup>4</sup>    | MSDNDevTest_2014-09-01 | MS-AZR-0060P | 2018 年 10 月 2 日<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p)<sup>4</sup>           | MSDN_2014-09-01 | MS-AZR-0063P | 2018 年 10 月 2 日<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Enterprise:BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0064P | 2018 年 10 月 2 日<sup>2</sup> |
+| **Visual Studio** | Visual Studio Enterprise – MPN<sup>4</sup>     | MPN_2014-09-01 | MS-AZR-0029P | 2018 年 10 月 2 日<sup>2</sup> |
+| **Visual Studio** | Visual Studio Professional<sup>4</sup>         | MSDN_2014-09-01 | MS-AZR-0059P | 2018 年 10 月 2 日<sup>2</sup> |
+| **Visual Studio** | Visual Studio Test Professional<sup>4</sup>    | MSDNDevTest_2014-09-01 | MS-AZR-0060P | 2018 年 10 月 2 日<sup>2</sup> |
+| **Visual Studio** | Visual Studio Enterprise<sup>4</sup>           | MSDN_2014-09-01 | MS-AZR-0063P | 2018 年 10 月 2 日<sup>2</sup> |
+| **Visual Studio** | Visual Studio Enterprise:BizSpark<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0064P | 2018 年 10 月 2 日<sup>2</sup> |
 
-_<sup>**1**</sup> 2014 年 5 月よりも前のデータについては、[Azure エンタープライズ ポータル](https://ea.azure.com)にアクセスしてください。_
+_<sup>**1**</sup> 2014 年 5 月よりも前のデータについては、 [Azure エンタープライズ ポータル](https://ea.azure.com)にアクセスしてください。_
 
-_<sup>**2**</sup> 2018 年 10 月 2 日よりも前のデータについては、[Azure アカウント センター](https://account.azure.com/subscriptions)にアクセスしてください。_
+_<sup>**2**</sup> 2018 年 10 月 2 日よりも前のデータについては、 [Azure アカウント センター](https://account.azure.com/subscriptions)にアクセスしてください。_
 
 _<sup>**3**</sup> Microsoft 顧客契約は 2019 年 3 月に開始したため、これ以前の履歴データはありません。_
 
-_<sup>**4**</sup>クレジットベースの前払い制サブスクリプションの履歴データは、請求書と一致しない場合があります。以下の「[履歴データが請求書と一致しない場合がある](#historical-data-might-not-match-invoice)」をご覧ください。_
+_<sup>**4**</sup>クレジットベースの前払い制サブスクリプションの履歴データは、請求書と一致しない場合があります。以下の「 [履歴データが請求書と一致しない場合がある](#historical-data-might-not-match-invoice)」をご覧ください。_
 
 次のプランはまだサポートされていません。
 
 | カテゴリ  | **プラン名** | **クォータ ID** | **プラン番号** |
 | --- | --- | --- | --- |
-| **Azure Germany** | [Azure Germany 従量課金制](https://azure.microsoft.com/offers/ms-azr-de-0003p) | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
+| **Azure Germany** | Azure Germany 従量課金制 | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
 | **Azure Government** | Azure Government 従量課金制 | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P |
 | **クラウド ソリューション プロバイダー (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
 | **クラウド ソリューション プロバイダー (CSP)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
 | **クラウド ソリューション プロバイダー (CSP)** | Azure Germany in CSP (Microsoft Cloud Germany 用)   | CSP_2015-05-01 | MS-AZR-DE-0145P |
 | **従量課金制**                 | Microsoft Azure for Students Starter | DreamSpark_2015-02-01 | MS-AZR-0144P |
-| **従量課金制** | [学生向け Azure](https://azure.microsoft.com/offers/ms-azr-0170p)<sup>4</sup> | AzureForStudents_2018-01-01 | MS-AZR-0170P |
-| **従量課金制**                 | [Microsoft Azure スポンサー プラン](https://azure.microsoft.com/offers/ms-azr-0036p/) | Sponsored_2016-01-01 | MS-AZR-0036P |
+| **従量課金制** | 学生向け Azure<sup>4</sup> | AzureForStudents_2018-01-01 | MS-AZR-0170P |
+| **従量課金制**                 | Microsoft Azure スポンサー プラン | Sponsored_2016-01-01 | MS-AZR-0036P |
 | **サポート プラン** | Standard サポート                    | Default_2014-09-01 | MS-AZR-0041P |
 | **サポート プラン** | Professional Direct サポート         | Default_2014-09-01 | MS-AZR-0042P |
 | **サポート プラン** | Developer サポート                   | Default_2014-09-01 | MS-AZR-0043P |
@@ -82,7 +83,7 @@ _<sup>**4**</sup>クレジットベースの前払い制サブスクリプショ
 
 ### <a name="determine-your-offer-type"></a>オファーの種類を決定する
 
-サブスクリプションのデータが表示されず、ご利用のサブスクリプションがサポート対象のプランに該当するかどうかわからない場合は、ご利用のサブスクリプションがサポート対象かどうかを検証することができます。 Azure サブスクリプションがサポート対象かどうかを確認するには、[Azure portal](https://portal.azure.com) にサインインします。 次に、左側のメニュー ウィンドウにある **[すべてのサービス]** を選択します。 サービスの一覧で **[サブスクリプション]** を選択します。 [サブスクリプション] の一覧で、確認するサブスクリプションを選択します。 選択したサブスクリプションが [概要] タブに表示され、**プラン**と**プラン ID** を確認できます。 次に例を示します。
+サブスクリプションのデータが表示されず、ご利用のサブスクリプションがサポート対象のプランに該当するかどうかわからない場合は、ご利用のサブスクリプションがサポート対象かどうかを検証することができます。 Azure サブスクリプションがサポート対象かどうかを確認するには、Azure portal にサインインします。 次に、左側のメニュー ウィンドウにある **[すべてのサービス]** を選択します。 サービスの一覧で **[サブスクリプション]** を選択します。 [サブスクリプション] の一覧で、確認するサブスクリプションを選択します。 選択したサブスクリプションが [概要] タブに表示され、 **プラン** と **プラン ID** を確認できます。 次に例を示します。
 
 ![プランとプラン ID が表示された、サブスクリプションの [概要] タブの例](./media/understand-cost-mgt-data/offer-and-offer-id.png)
 
@@ -110,9 +111,9 @@ Azure Cost Management は、個々のサービスによって送信される各�
 
 - タグはリソースに直接適用される必要があり、親リソース グループから暗黙的に継承されることはありません。
 - リソース タグは、リソース グループにデプロイされたリソースでのみサポートされます。
-- デプロイされたリソースの中には、タグをサポートしていないものや、使用状況データにタグが含まれていないものもあります。「[Azure リソースでのタグのサポート](../../azure-resource-manager/management/tag-support.md)」を参照してください。
+- デプロイされたリソースの中には、タグをサポートしていないものや、使用状況データにタグが含まれていないものもあります。
 - リソース タグは、タグの適用時に使用状況データにのみ含まれます。タグは履歴データには適用されません。
-- リソース タグは、データが更新された後に Cost Management でのみ使用できます。「[コストと使用状況データの更新と保持](#cost-and-usage-data-updates-and-retention)」を参照してください。
+- リソース タグは、データが更新された後に Cost Management でのみ使用できます。
 - リソース タグは、リソースがアクティブまたは実行中であり、使用状況レコードが生成されている場合 (たとえば、VM が割り当て解除されていない場合) に Cost Management でのみ使用できます。
 - タグを管理するには、各リソースに対する共同作成者のアクセス権が必要です。
 - タグ ポリシーを管理するには、管理グループ、サブスクリプション、またはリソース グループに対する所有者またはポリシーの共同作成者のアクセス権が必要です。
@@ -120,7 +121,7 @@ Azure Cost Management は、個々のサービスによって送信される各�
 Cost Management に特定のタグが表示されない場合は、次の点を考慮してください。
 
 - タグがリソースに直接適用されたか。
-- タグが 24 時間以上前に適用されたか。 「[コストと使用状況データの更新と保持](#cost-and-usage-data-updates-and-retention)」を参照してください。
+- タグが 24 時間以上前に適用されたか。
 - リソースの種類でタグがサポートされているか。 2019 年 12 月 1 日の時点で、次のリソースの種類では、使用状況データのタグはサポートされていません。 サポート対象の完全な一覧については、「[Azure リソースでのタグのサポート](../../azure-resource-manager/management/tag-support.md)」を参照してください。
     - Azure Active Directory B2C ディレクトリ
     - Azure Bastion
@@ -143,13 +144,13 @@ Cost Management に特定のタグが表示されない場合は、次の点を�
 
 ## <a name="cost-and-usage-data-updates-and-retention"></a>コストと使用状況データの更新と保持
 
-コストと使用状況データは通常、Azure portal の [コストの管理と請求] および[サポートする API](../index.yml) で、8 から 24 時間以内に利用できます。 コストを確認するときは、次の点に留意してください。
+コストと使用状況データは通常、Azure portal の [コストの管理と請求] およびサポートする API で、8 から 24 時間以内に利用できます。 コストを確認するときは、次の点に留意してください。
 
 - 各 Azure サービス (Storage、Compute、SQL など) では、異なる間隔で使用量が生成されます。一部のサービスのデータは、他のサービスよりも早く表示される場合があります。
 - 現在の請求期間の見積もり料金は、1 日に 6 回更新されます。
 - 現在の請求期間の見積もり料金は、使用量の増加に伴い変更される可能性があります。
 - 各更新は累積的であるため、すべての明細項目と、以前の更新からの情報が含まれます。
-- Azure では、現在の請求期間の終了後 72 時間 (3 カレンダー日) 以内に請求期間が確定 ("_クローズ_") します。
+- Azure では、現在の請求期間の終了後 72 時間 (3 カレンダー日) 以内に請求期間が確定 (" _クローズ_ ") します。
 
 次の例は、請求期間が終了するタイミングを示しています。
 
@@ -160,7 +161,7 @@ Cost Management に特定のタグが表示されない場合は、次の点を�
 
 ### <a name="rerated-data"></a>データの再評価
 
-[Cost Management API](../index.yml)、Power BI、Azure portal のどの方法でデータを取得する場合でも、請求書がクローズされるまでは、現在の請求期間の料金が再評価され、その結果変更される可能性があります。
+Cost Management API、Power BI、Azure portal のどの方法でデータを取得する場合でも、請求書がクローズされるまでは、現在の請求期間の料金が再評価され、その結果変更される可能性があります。
 
 ## <a name="cost-rounding"></a>コストの丸め
 

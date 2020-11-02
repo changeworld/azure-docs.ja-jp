@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 098cfa1784571856cbd80d55fec4e6232e882d17
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 3ea8e944a004dc89dadc74e4ab2e3e4b295b3a9b
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339851"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900241"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -25,14 +25,19 @@ Security Center のセキュリティは精力的な開発の下、継続的に�
 
 このページは頻繁に更新されるため、定期的にアクセスしてご確認ください。 
 
+Security Center で近日中に公開を " *予定されている* " 変更については、「[Azure Security Center への今後予定されている重要な変更](upcoming-changes.md)」を参照してください。 
+
 > [!TIP]
 > 6 か月以上前の項目を探す場合は、「[Azure Security Center の最新情報のアーカイブ](release-notes-archive.md)」をご覧ください。
+
 
 
 ## <a name="october-2020"></a>2020 年 10 月
 
 - [オンプレミスおよびマルチクラウド マシンの脆弱性評価 (プレビュー)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview)
 - [Azure Firewall の推奨事項の追加 (プレビュー)](#azure-firewall-recommendation-added-preview)
+- ["Kubernetes Services では承認された IP 範囲を定義する必要があります" という推奨事項のクイック修正による更新](#authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix)
+- [規制コンプライアンス ダッシュボードへの、標準を削除するオプションの追加](#regulatory-compliance-dashboard-now-includes-option-to-remove-standards)
 - [Azure Resource Graph (ARG) からの Microsoft.Security/securityStatuses テーブルの削除](#microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg)
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview"></a>オンプレミスおよびマルチクラウド マシンの脆弱性評価 (プレビュー)
@@ -64,6 +69,24 @@ Azure Firewall を使用してすべての仮想ネットワークを保護す�
 [Azure Firewall](https://azure.microsoft.com/services/azure-firewall/) の詳細を参照します。
 
 
+### <a name="authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix"></a>"Kubernetes Services では承認された IP 範囲を定義する必要があります" という推奨事項のクイック修正による更新
+
+**Kubernetes Services では承認された IP 範囲を定義する必要があります** という推奨事項に、クイック修正オプションが追加されました。
+
+この推奨事項の詳細と、Security Center の他のすべての推奨事項については、「[セキュリティの推奨事項 - リファレンス ガイド](recommendations-reference.md)」を参照してください。
+
+:::image type="content" source="./media/release-notes/authorized-ip-ranges-recommendation.png" alt-text="クイック修正オプションがある &quot;Kubernetes Services では承認された IP 範囲を定義する必要があります&quot; という推奨事項":::
+
+
+### <a name="regulatory-compliance-dashboard-now-includes-option-to-remove-standards"></a>規制コンプライアンス ダッシュボードへの、標準を削除するオプションの追加
+
+Security Center の規制コンプライアンス ダッシュボードでは、特定のコンプライアンスのコントロールと要件をどのように満たしているかに基づいて、コンプライアンス体制に関する分析情報が提供されます。
+
+ダッシュボードには、規制標準の既定のセットが含まれています。 提供されている標準に、組織に関連していないものが含まれている場合、簡単なプロセスでサブスクリプションの UI から削除できるようになりました。 標準は、" *サブスクリプション* " レベルだけで削除できます。管理グループのスコープでは、削除できません。
+
+詳細については、「[ダッシュボードから標準を削除する](update-regulatory-compliance-packages.md#removing-a-standard-from-your-dashboard)」セクションを参照してください。
+
+
 ### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>Azure Resource Graph (ARG) からの Microsoft.Security/securityStatuses テーブルの削除
 
 Azure Resource Graph は、効率的なリソース探索を提供するように設計されている、Azure のサービスです。環境を効果的に管理できるように、特定のサブスクリプションのセットにわたって大規模なクエリを実行する機能を備えています。 
@@ -75,33 +98,7 @@ Azure Security Center では、ARG および [Kusto クエリ言語 (KQL)](https
 
 ARG 内には、クエリで使用できるデータのテーブルがあります。
 
-:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Azure Resource Graph エクスプローラーと利用可能なテーブル&quot;:::
-
-> [!TIP]
-> ARG ドキュメントの「[Azure Resource Graph のテーブルとリソースの種類のリファレンス](../governance/resource-graph/reference/supported-tables-resources.md)」には、使用可能なすべてのテーブルの一覧があります。
-
-この更新から、 **Microsoft.Security/securityStatuses** テーブルが削除されました。 securityStatuses API は引き続き使用できます。
-
-データ置換は、Microsoft.Security/Assessments テーブルで使用できます。
-
-Microsoft.Security/securityStatuses と Microsoft.Security/Assessments の大きな違いは、前者が評価の集計を示すのに対して、後者はそれぞれの単一のレコードを保持することです。
-
-たとえば、Microsoft.Security/securityStatuses は、次のように 2 つの policyAssessments の配列で結果を返します。
-
-```
-{
-id: &quot;/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet&quot;,
-name: &quot;mico-rg-vnet&quot;,
-type: &quot;Microsoft.Security/securityStatuses&quot;,
-properties:  {
-    policyAssessments: [
-        {assessmentKey: &quot;e3deicce-f4dd-3b34-e496-8b5381bazd7e&quot;, category: &quot;Networking&quot;, policyName: &quot;Azure DDOS Protection Standard should be enabled&quot;,...},
-        {assessmentKey: &quot;sefac66a-1ec5-b063-a824-eb28671dc527&quot;, category: &quot;Compute&quot;, policyName: &quot;&quot;,...}
-    ],
-    securitystateByCategory: [{category: &quot;Networking&quot;, securityState: &quot;None&quot; }, {category: &quot;Compute&quot;,...],
-    name: &quot;GenericResourceHealthProperties&quot;,
-    type: &quot;VirtualNetwork&quot;,
-    securitystate: &quot;High"
+:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="クイック修正オプションがある &quot;Kubernetes Services では承認された IP 範囲を定義する必要があります&quot; という推奨事項"
 }
 ```
 一方、Microsoft.Security/Assessments では、次のような各ポリシー評価のレコードが保持されます。
@@ -301,33 +298,7 @@ Security Center の統合された脆弱性評価ツールは、"仮想マシン
 
 推奨事項を選択し **[セキュリティに関する調査結果を含める]** オプションを有効にすることで、連続エクスポートを介して、セキュリティに関する調査結果をエクスポートに利用できるようにるようになりました。
 
-:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Azure Resource Graph エクスプローラーと利用可能なテーブル&quot;:::
-
-> [!TIP]
-> ARG ドキュメントの「[Azure Resource Graph のテーブルとリソースの種類のリファレンス](../governance/resource-graph/reference/supported-tables-resources.md)」には、使用可能なすべてのテーブルの一覧があります。
-
-この更新から、 **Microsoft.Security/securityStatuses** テーブルが削除されました。 securityStatuses API は引き続き使用できます。
-
-データ置換は、Microsoft.Security/Assessments テーブルで使用できます。
-
-Microsoft.Security/securityStatuses と Microsoft.Security/Assessments の大きな違いは、前者が評価の集計を示すのに対して、後者はそれぞれの単一のレコードを保持することです。
-
-たとえば、Microsoft.Security/securityStatuses は、次のように 2 つの policyAssessments の配列で結果を返します。
-
-```
-{
-id: &quot;/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet&quot;,
-name: &quot;mico-rg-vnet&quot;,
-type: &quot;Microsoft.Security/securityStatuses&quot;,
-properties:  {
-    policyAssessments: [
-        {assessmentKey: &quot;e3deicce-f4dd-3b34-e496-8b5381bazd7e&quot;, category: &quot;Networking&quot;, policyName: &quot;Azure DDOS Protection Standard should be enabled&quot;,...},
-        {assessmentKey: &quot;sefac66a-1ec5-b063-a824-eb28671dc527&quot;, category: &quot;Compute&quot;, policyName: &quot;&quot;,...}
-    ],
-    securitystateByCategory: [{category: &quot;Networking&quot;, securityState: &quot;None&quot; }, {category: &quot;Compute&quot;,...],
-    name: &quot;GenericResourceHealthProperties&quot;,
-    type: &quot;VirtualNetwork&quot;,
-    securitystate: &quot;High" :::
+:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="クイック修正オプションがある &quot;Kubernetes Services では承認された IP 範囲を定義する必要があります&quot; という推奨事項" :::
 
 関連するページ:
 
@@ -392,33 +363,7 @@ Security Center は、セキュリティの問題について、リソース、�
 
 プレビューの推奨事項の例を次に示します。
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Azure Resource Graph エクスプローラーと利用可能なテーブル&quot;:::
-
-> [!TIP]
-> ARG ドキュメントの「[Azure Resource Graph のテーブルとリソースの種類のリファレンス](../governance/resource-graph/reference/supported-tables-resources.md)」には、使用可能なすべてのテーブルの一覧があります。
-
-この更新から、 **Microsoft.Security/securityStatuses** テーブルが削除されました。 securityStatuses API は引き続き使用できます。
-
-データ置換は、Microsoft.Security/Assessments テーブルで使用できます。
-
-Microsoft.Security/securityStatuses と Microsoft.Security/Assessments の大きな違いは、前者が評価の集計を示すのに対して、後者はそれぞれの単一のレコードを保持することです。
-
-たとえば、Microsoft.Security/securityStatuses は、次のように 2 つの policyAssessments の配列で結果を返します。
-
-```
-{
-id: &quot;/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet&quot;,
-name: &quot;mico-rg-vnet&quot;,
-type: &quot;Microsoft.Security/securityStatuses&quot;,
-properties:  {
-    policyAssessments: [
-        {assessmentKey: &quot;e3deicce-f4dd-3b34-e496-8b5381bazd7e&quot;, category: &quot;Networking&quot;, policyName: &quot;Azure DDOS Protection Standard should be enabled&quot;,...},
-        {assessmentKey: &quot;sefac66a-1ec5-b063-a824-eb28671dc527&quot;, category: &quot;Compute&quot;, policyName: &quot;&quot;,...}
-    ],
-    securitystateByCategory: [{category: &quot;Networking&quot;, securityState: &quot;None&quot; }, {category: &quot;Compute&quot;,...],
-    name: &quot;GenericResourceHealthProperties&quot;,
-    type: &quot;VirtualNetwork&quot;,
-    securitystate: &quot;High":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="クイック修正オプションがある &quot;Kubernetes Services では承認された IP 範囲を定義する必要があります&quot; という推奨事項":::
 
 [セキュリティ スコアの詳細](secure-score-security-controls.md)。
 
@@ -427,33 +372,7 @@ properties:  {
 
 推奨事項の詳細ページに、更新間隔インジケーター (関連する場合) が追加され、推奨事項の重大度が明確に表示されるようになりました。
 
-:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Azure Resource Graph エクスプローラーと利用可能なテーブル&quot;:::
-
-> [!TIP]
-> ARG ドキュメントの「[Azure Resource Graph のテーブルとリソースの種類のリファレンス](../governance/resource-graph/reference/supported-tables-resources.md)」には、使用可能なすべてのテーブルの一覧があります。
-
-この更新から、 **Microsoft.Security/securityStatuses** テーブルが削除されました。 securityStatuses API は引き続き使用できます。
-
-データ置換は、Microsoft.Security/Assessments テーブルで使用できます。
-
-Microsoft.Security/securityStatuses と Microsoft.Security/Assessments の大きな違いは、前者が評価の集計を示すのに対して、後者はそれぞれの単一のレコードを保持することです。
-
-たとえば、Microsoft.Security/securityStatuses は、次のように 2 つの policyAssessments の配列で結果を返します。
-
-```
-{
-id: &quot;/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet&quot;,
-name: &quot;mico-rg-vnet&quot;,
-type: &quot;Microsoft.Security/securityStatuses&quot;,
-properties:  {
-    policyAssessments: [
-        {assessmentKey: &quot;e3deicce-f4dd-3b34-e496-8b5381bazd7e&quot;, category: &quot;Networking&quot;, policyName: &quot;Azure DDOS Protection Standard should be enabled&quot;,...},
-        {assessmentKey: &quot;sefac66a-1ec5-b063-a824-eb28671dc527&quot;, category: &quot;Compute&quot;, policyName: &quot;&quot;,...}
-    ],
-    securitystateByCategory: [{category: &quot;Networking&quot;, securityState: &quot;None&quot; }, {category: &quot;Compute&quot;,...],
-    name: &quot;GenericResourceHealthProperties&quot;,
-    type: &quot;VirtualNetwork&quot;,
-    securitystate: &quot;High":::
+:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="クイック修正オプションがある &quot;Kubernetes Services では承認された IP 範囲を定義する必要があります&quot; という推奨事項":::
 
 
 
@@ -617,7 +536,7 @@ BLOB コンテナー、ファイル共有、またはデータ レイクのい�
 - **Azure Storage アカウントで Advanced Threat Protection を有効にする必要がある**
 - **仮想マシンで Advanced Threat Protection を有効にする必要がある**
 
-これらの新しい推奨事項は、セキュリティ コントロール **Advanced Threat Protection を有効にする** に属しています。
+これらの新しい推奨事項は、 **[Azure Defender を有効にする]** セキュリティ コントロールに属しています。
 
 推奨事項には、クイック修正機能も含まれています。 
 
@@ -738,7 +657,7 @@ Advanced Data Security では、SQL マシンに対して、場所によらず�
 
 Azure Security Center でエージェントを使用する方法の詳細については、「[Log Analytics エージェントとは](faq-data-collection-agents.md#what-is-the-log-analytics-agent)」を参照してください。
 
-詳細については、[Azure Arc マシンの拡張機能](../azure-arc/servers/manage-vm-extensions.md#enable-extensions-from-the-portal)に関するページを参照してください。
+詳細については、[Azure Arc マシンの拡張機能](../azure-arc/servers/manage-vm-extensions.md)に関するページを参照してください。
 
 
 ### <a name="new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale"></a>連続エクスポートとワークフローの自動化の構成を大規模に作成するための新しいポリシー
@@ -760,7 +679,7 @@ Azure Security Center でエージェントを使用する方法の詳細につ�
 
 [ワークフローの自動化テンプレート](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation)を使用して開始するには、こちらを参照してください。
 
-2 つのエクスポート ポリシーを使用する方法の詳細については、「[ポリシーを使用して Azure Security Center のアラートと推奨事項を連続エクスポートする](https://techcommunity.microsoft.com/t5/azure-security-center/continuously-export-azure-security-center-alerts-and/ba-p/1440745)」を参照してください。
+2 つのエクスポート ポリシーの使用の詳細については、「[提供されているポリシーを使用してワークフローの自動化を大規模に構成する](workflow-automation.md#configure-workflow-automation-at-scale-using-the-supplied-policies)」と「[連続エクスポートを設定する](continuous-export.md#set-up-a-continuous-export)」を参照してください。
 
 
 ### <a name="new-recommendation-for-using-nsgs-to-protect-non-internet-facing-virtual-machines"></a>NSG を使用してインターネットに接続していない仮想マシンを保護するための新しい推奨事項
@@ -877,33 +796,7 @@ Security Center には、VM の管理ポートを保護するオプションの�
 
 セキュリティ コントロールの詳細については、「[Azure Security Center の強化されたセキュア スコア (プレビュー)](secure-score-security-controls.md)」を参照してください。
 
-:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="Azure Resource Graph エクスプローラーと利用可能なテーブル&quot;:::
-
-> [!TIP]
-> ARG ドキュメントの「[Azure Resource Graph のテーブルとリソースの種類のリファレンス](../governance/resource-graph/reference/supported-tables-resources.md)」には、使用可能なすべてのテーブルの一覧があります。
-
-この更新から、 **Microsoft.Security/securityStatuses** テーブルが削除されました。 securityStatuses API は引き続き使用できます。
-
-データ置換は、Microsoft.Security/Assessments テーブルで使用できます。
-
-Microsoft.Security/securityStatuses と Microsoft.Security/Assessments の大きな違いは、前者が評価の集計を示すのに対して、後者はそれぞれの単一のレコードを保持することです。
-
-たとえば、Microsoft.Security/securityStatuses は、次のように 2 つの policyAssessments の配列で結果を返します。
-
-```
-{
-id: &quot;/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet&quot;,
-name: &quot;mico-rg-vnet&quot;,
-type: &quot;Microsoft.Security/securityStatuses&quot;,
-properties:  {
-    policyAssessments: [
-        {assessmentKey: &quot;e3deicce-f4dd-3b34-e496-8b5381bazd7e&quot;, category: &quot;Networking&quot;, policyName: &quot;Azure DDOS Protection Standard should be enabled&quot;,...},
-        {assessmentKey: &quot;sefac66a-1ec5-b063-a824-eb28671dc527&quot;, category: &quot;Compute&quot;, policyName: &quot;&quot;,...}
-    ],
-    securitystateByCategory: [{category: &quot;Networking&quot;, securityState: &quot;None&quot; }, {category: &quot;Compute&quot;,...],
-    name: &quot;GenericResourceHealthProperties&quot;,
-    type: &quot;VirtualNetwork&quot;,
-    securitystate: &quot;High":::
+:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="クイック修正オプションがある &quot;Kubernetes Services では承認された IP 範囲を定義する必要があります&quot; という推奨事項":::
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>拡張されたセキュリティ コントロール "セキュリティのベスト プラクティスの実装" 
 

@@ -1,22 +1,22 @@
 ---
 title: 組織の外部と共有する (ARM テンプレート) - Azure Data Share のクイックスタート
-description: このクイックスタートでは、Azure Data Share と Resource Manager テンプレートを使用して顧客やパートナーとデータを共有する方法について説明します。
+description: このクイックスタートでは、Azure Data Share と Azure Resource Manager テンプレート (ARM テンプレート) を使用して顧客やパートナーとデータを共有する方法について説明します。
 author: mumian
 ms.author: jgao
 ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/19/2020
-ms.openlocfilehash: f72fbad579bcb08a36c2dd29c387e18953f26c09
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5abe92120c8b822ac86ced90658869a0858d4ff4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146154"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487689"
 ---
-# <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>クイック スタート:Azure Data Share と Resource Manager テンプレートを使用してデータを共有する
+# <a name="quickstart-share-data-using-azure-data-share-and-arm-template"></a>クイックスタート: Azure Data Share と ARM テンプレートを使用してデータを共有する
 
-Azure Resource Manager テンプレートを使用して Azure ストレージ アカウントから新しい Azure データ共有を設定し、Azure 組織の外部の顧客やパートナーとのデータの共有を開始する方法を学習します。 サポートされているデータ ストアの一覧については、「[Azure Data Share でサポートされているデータ ストア](./supported-data-stores.md)」を参照してください。
+Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure ストレージ アカウントから新しい Azure Data Share を設定する方法について説明します。 Azure 組織の外部の顧客やパートナーとデータを共有してみましょう。 サポートされているデータ ストアの一覧については、「[Azure Data Share でサポートされているデータ ストア](./supported-data-stores.md)」を参照してください。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -38,12 +38,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts):
 * [Microsoft.Storage/storageAccounts/blobServices/containers](/azure/templates/microsoft.storage/storageaccounts/blobservices/containers)
+* [Microsoft.DataShare/accounts](/azure/templates/microsoft.datashare/accounts)
+* [Microsoft.DataShare/accounts/shares](/azure/templates/microsoft.datashare/accounts/shares)
 * [Microsoft.Storage/storageAccounts/providers/roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
-* [Microsoft.DataShare/accounts](/rest/api/datashare/accounts/create)
-* [Microsoft.DataShare/accounts/shares](/rest/api/datashare/shares/create)
-* [Microsoft.DataShare/accounts/shares/dataSets](/rest/api/datashare/datasets/create)
-* [Microsoft.DataShare/accounts/shares/invitations](/rest/api/datashare/invitations/create)
-* [Microsoft.DataShare/accounts/shares/synchronizationSettings](/rest/api/datashare/synchronizationsettings/create)
+* [Microsoft.DataShare/accounts/shares/dataSets](/azure/templates/microsoft.datashare/accounts/shares/datasets)
+* [Microsoft.DataShare/accounts/shares/invitations](/azure/templates/microsoft.datashare/accounts/shares/invitations)
+* [Microsoft.DataShare/accounts/shares/synchronizationSettings](/azure/templates/microsoft.datashare/accounts/shares/synchronizationsettings)
 
 このテンプレートでは、次のタスクを実行します。
 
@@ -56,11 +56,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このテンプレートは学習用に作成されています。 実際には、通常、既存のストレージ アカウントにいくつかのデータがあります。 テンプレートまたはスクリプトを実行してデータセットを作成する前に、ロールの割り当てを作成する必要があります。 テンプレートをデプロイするときに、次のエラー メッセージが表示されることがあります。
 
-```error message
+```plaintext
 "Missing permissions for DataShareAcccount on resource 'subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>' (Code: 5006)"
 ```
 
-これは、Azure ロールの割り当てが完了する前に、デプロイによってデータセットの作成が試行されているためです。 エラー メッセージにもかかわらず、デプロイは成功する可能性があります。  引き続き、[デプロイされたリソースを確認する](#review-deployed-resources)ことができます。
+これは、Azure ロールの割り当てが完了する前に、デプロイによってデータセットの作成が試行されているためです。 エラー メッセージにもかかわらず、デプロイは成功する可能性があります。 引き続き、[デプロイされたリソースを確認する](#review-deployed-resources)ことができます。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 

@@ -1,69 +1,35 @@
 ---
 title: Azure で CSP パートナー情報を使用して Cloudyn に登録する
-description: Cloudyn 試用版サブスクリプションの作成に必要な登録プロセスと、Cloudyn ポータルへのサインインについて詳しく説明します。
+description: パートナーがその顧客を Cloudyn ポータルにオンボードする際の登録プロセスについて詳しく説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/12/2020
+ms.date: 10/23/2020
 ms.topic: quickstart
 ms.custom: seodec18
 ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: benshy
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1cbdeb09a1f3182aef9dcc6445c5b5e22e2448ff
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 95d8a425314ad1c968915085b35ca89aa3f62711
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132348"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543323"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>CSP パートナー プログラムに登録してコスト データを確認する
 
-CSP パートナーであれば、Cloudyn に登録できます。 この登録によって、Cloudyn ポータルにアクセスできるようになります。 このクイック スタートでは、Cloudyn 試用版サブスクリプションの作成に必要な登録プロセスと、Cloudyn ポータルへのサインインについて詳しく説明します。 コスト データの表示を今すぐに開始する方法についても説明します。
+CSP パートナーおよび登録済みの Cloudyn ユーザーは、Cloudyn でクラウド支出を表示して分析することができます。 Azure Cost Management は、お客様を Microsoft 顧客契約にオンボードし、Azure プランを購入している[直接パートナーがネイティブに使用](../costs/get-started-partners.md)できます。
 
+この登録によって、Cloudyn ポータルにアクセスできるようになります。 このクイック スタートでは、Cloudyn 試用版サブスクリプションの作成に必要な登録プロセスと、Cloudyn ポータルへのサインインについて詳しく説明します。
 
 [!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
-
-> [!NOTE]
->
-> Cloudyn 登録を完了できるのは、CSP 直接パートナーと CSP 間接プロバイダーだけです。
->
-> 認証とデータ アクセスには、パートナー センター API の構成が必要です。 API アクセスをプロビジョニングするには、パートナー センターのグローバル管理者アカウントが必要です。
-> 詳細については、[パートナー センター API への接続](/partner-center/develop/set-up-api-access-in-partner-center)に関する記事を参照してください。
->
-> CSP 間接リセラーは、CSP 間接プロバイダーが Cloudyn に登録した後で、Cloudyn にアクセスできるようになります。 その後、CSP 間接リセラーは、Cloudyn アクセスを Azure のお客様とサブスクリプションに提供できます。
->
->Cloudy は、Microsoft Secure Application モデルに準拠しています。 詳細については、「[セキュリティで保護されたアプリケーション モデル フレームワークの有効化](/partner-center/develop/enable-secure-app-model)」を参照してください。
-
-## <a name="sign-in-to-azure"></a>Azure へのサインイン
-
-- Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
-
-## <a name="register-with-cloudyn"></a>Cloudyn に登録する
-
-1. Azure Portal で、サービスの一覧の **[Cost Management + Billing]\(コスト管理 + 課金\)** をクリックします。
-2. **[概要]** の **[Cloudyn]** をクリックします｡  
-    ![Azure portal に表示される [Cloudyn] ページ](./media/quick-register-csp/cost-mgt-billing-service.png)
-3. **[Cloudyn]** ページで **[Cloudyn に移動します]** をクリックします。新しいウィンドウで Cloudyn 登録ページが開きます。
-4. Cloudyn ポータル試用版登録のページで、会社名を入力し、 **[Microsoft CSP Partner Program Administrator]\(Microsoft CSP パートナー プログラム管理者\)** を選択し、 **[次へ]** をクリックします。  
-5. **[アプリケーション ID]** 、 **[Commerce ID]\(コマース ID\)** 、 **[Application Secret key]\(アプリケーションの秘密鍵\)** を入力し、 **[Default Pricing Plan]\(既定の料金プラン\)** を選択します。 手元に情報がない場合は、パートナー センター ポータル ([https://partnercenter.microsoft.com](https://partnercenter.microsoft.com)) にプライマリ管理者アカウントでサインインして、次の手順を実行します。
-   1. **ダッシュボード**に移動して**設定**の記号をクリックし、 **[パートナーの設定]** をクリックして **[アプリの管理]** をクリックします。
-   2. 以前に Web アプリを作成したことがある場合は、この手順をスキップします。 作成したことがない場合は、 **[Web アプリ]** セクションの **[新規 Web アプリの追加]** をクリックします。
-   3. ご自分の Web アプリケーションから、**アプリ ID** の GUID をコピーします。
-   4. ご自分の Web アプリケーションから、**Commerce ID** の GUID をコピーします。
-   5. キーの有効期間は、必要に応じて、1 年または 2 年を選択します。 **[キーの追加]** を選択し、秘密鍵の値をコピーして保存します。  
-    ![資格情報のコピーを行うパートナー ダッシュボード](./media/quick-register-csp/csp-partner-center.png)
-   6. Cloudyn の登録ページに戻って、情報を貼り付けます。  
-      ![Cloudyn の登録ページに資格情報を貼り付ける](./media/quick-register-csp/csp-reg.png)
-6. 使用条件に同意し、情報を検証します。 **[次へ]** をクリックし、Cloudyn で Azure リソース データを収集することを承認します。 収集されたデータには、お客様のサブスクリプションの使用状況、パフォーマンス、請求、サブスクリプションからのタグ データなどが含まれています。  
-7. **[Invite other stakeholders]\(その他の関係者を招待\)** の下に電子メール アドレスを入力することで、ユーザーを追加できます。 完了したら、 **[次へ]** をクリックします。 すべての課金データが Cloudyn に追加されるまで、約 2 時間かかります。
-8. **[Go to Cloudyn]\(Cloudyn に移動\)** をクリックして Cloudyn ポータルを開くと、 **[Cloud Accounts Management]\(クラウド アカウント管理\)** ページに、登録された CSP アカウント情報が表示されます。
 
 ## <a name="configure-indirect-csp-access-in-cloudyn"></a>Cloudyn で間接 CSP アクセスを構成する
 
 既定で Partner Center API は直接 CSP にのみアクセスできます。 ただし、直接 CSP プロバイダーは、Cloudyn のエンティティ グループを使用して、間接 CSP 顧客またはパートナーのアクセスを構成できます。
 
-間接 CSP 顧客またはパートナーのアクセスを有効にするには、「[Cloudyn に登録する](#register-with-cloudyn)」の手順に従って試用版の登録を設定します。 次に、以下の手順を完了して、Cloudyn エンティティ グループを使用して間接 CSP データをセグメント化します。 次に、エンティティ グループに適切なユーザーのアクセス許可を割り当てます。
+間接 CSP 顧客またはパートナーのアクセスを有効にするには、以下の手順を完了して、Cloudyn エンティティ グループを使用して間接 CSP データをセグメント化します。 次に、エンティティ グループに適切なユーザーのアクセス許可を割り当てます。
 
 1. [エンティティの作成](tutorial-user-access.md#create-and-manage-entities)に関する情報を参照して、エンティティ グループを作成します。
 2. 「[Assigning subscriptions to Cost Entities](https://www.youtube.com/watch?v=d9uTWSdoQYo)」(サブスクリプションをコスト エンティティに割り当てる) の手順に従って実行します。 間接 CSP 顧客のアカウントとその Azure サブスクリプションを、以前に作成したエンティティに関連付けます。

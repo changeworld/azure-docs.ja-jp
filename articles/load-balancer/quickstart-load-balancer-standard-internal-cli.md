@@ -6,22 +6,21 @@ services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: KumudD
-tags: azure-resource-manager
 Customer intent: I want to create a load balancer so that I can load balance internal traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/20/2020
+ms.date: 10/23/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: df1db5467dadcd127141708fa33147769f1f50a7
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 75e37c91b9b3161d7396d94fb086c4dc567a18c1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047881"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546995"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>クイック スタート:Azure CLI を使用して VM の負荷を分散する内部ロード バランサーを作成する
 
@@ -42,12 +41,12 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 
 [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) を使用して、次のようにリソース グループを作成します。
 
-* 名前は **myResourceGroupLB** にします。 
+* 名前は **CreateIntLBQS-rg** にします。 
 * 場所は **eastus** にします。
 
 ```azurecli-interactive
   az group create \
-    --name myResourceGroupLB \
+    --name CreateIntLBQS-rg \
     --location eastus
 ```
 ---
@@ -69,12 +68,12 @@ VM をデプロイしてロード バランサーをデプロイする前に、�
 * アドレス プレフィックスは **10.1.0.0/16** にします。
 * サブネットの名前は **myBackendSubnet** にします。
 * サブネット プレフィックスは **10.1.0.0/24** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * 場所は **eastus** にします。
 
 ```azurecli-interactive
   az network vnet create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --location eastus \
     --name myVNet \
     --address-prefixes 10.1.0.0/16 \
@@ -88,11 +87,11 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) を使用して、次のようにネットワーク セキュリティ グループを作成します。
 
 * 名前は **myNSG** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 
 ```azurecli-interactive
   az network nsg create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --name myNSG
 ```
 
@@ -102,18 +101,18 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 
 * 名前は **myNSGRuleHTTP** にします。
 * ネットワーク セキュリティ グループは、前の手順で作成した **myNSG** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * プロトコルは **(*)** にします。
 * 方向は **Inbound** にします。
 * 送信元は **(*)** にします。
 * 送信先は **(*)** にします。
-* 送信先ポートは**ポート 80** にします。
+* 送信先ポートは **ポート 80** にします。
 * アクセスは **Allow** にします。
 * 優先度は **200** にします。
 
 ```azurecli-interactive
   az network nsg rule create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --nsg-name myNSG \
     --name myNSGRuleHTTP \
     --protocol '*' \
@@ -133,14 +132,14 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 #### <a name="vm1"></a>VM1
 
 * 名前は **myNicVM1** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
 * ネットワーク セキュリティ グループは **myNSG** にします。
 
 ```azurecli-interactive
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --name myNicVM1 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
@@ -149,14 +148,14 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 #### <a name="vm2"></a>VM2
 
 * 名前は **myNicVM2** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
 * ネットワーク セキュリティ グループは **myNSG** にします。
 
 ```azurecli-interactive
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --name myNicVM2 \
     --vnet-name myVnet \
     --subnet myBackEndSubnet \
@@ -223,7 +222,7 @@ runcmd:
 
 #### <a name="vm1"></a>VM1
 * 名前は **myVM1** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM1** に接続します。
 * 仮想マシン イメージは **UbuntuLTS** にします。
 * 構成ファイルは、前の手順で作成した **cloud-init.txt** にします。
@@ -231,7 +230,7 @@ runcmd:
 
 ```azurecli-interactive
   az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --name myVM1 \
     --nics myNicVM1 \
     --image UbuntuLTS \
@@ -244,7 +243,7 @@ runcmd:
 ```
 #### <a name="vm2"></a>VM2
 * 名前は **myVM2** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM2** に接続します。
 * 仮想マシン イメージは **UbuntuLTS** にします。
 * 構成ファイルは、前の手順で作成した **cloud-init.txt** にします。
@@ -252,7 +251,7 @@ runcmd:
 
 ```azurecli-interactive
   az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --name myVM2 \
     --nics myNicVM2 \
     --image UbuntuLTS \
@@ -286,7 +285,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ```azurecli-interactive
   az network lb create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --name myLoadBalancer \
     --sku Standard \
     --vnet-name myVnet \
@@ -310,7 +309,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ```azurecli-interactive
   az network lb probe create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --lb-name myLoadBalancer \
     --name myHealthProbe \
     --protocol tcp \
@@ -328,15 +327,16 @@ VM がデプロイされるまでに、数分かかる場合があります。
 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) を使用して、次のようにロード バランサー規則を作成します。
 
 * 名前は **myHTTPRule** にします
-* フロントエンド プール **myFrontEnd** で**ポート 80** をリッスンします。
+* フロントエンド プール **myFrontEnd** で **ポート 80** をリッスンします。
 * **ポート 80** を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール **myBackEndPool** に送信します。 
 * 正常性プローブ **myHealthProbe** を使用します。
 * プロトコルは **TCP** にします。
-* フロントエンド IP アドレスを使用して、アウトバウンドの送信元ネットワーク アドレス変換 (SNAT) を有効にします。
+* アイドル タイムアウトは **15 分** とします。
+* TCP リセットを有効にします。
 
 ```azurecli-interactive
   az network lb rule create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --lb-name myLoadBalancer \
     --name myHTTPRule \
     --protocol tcp \
@@ -345,7 +345,9 @@ VM がデプロイされるまでに、数分かかる場合があります。
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool \
     --probe-name myHealthProbe \
-    --disable-outbound-snat true 
+    --disable-outbound-snat true \
+    --idle-timeout 15 \
+    --enable-tcp-reset true
 ```
 >[!NOTE]
 >バックエンド プール内の仮想マシンは、この構成ではアウトバウンド インターネット接続を持ちません。 </br> アウトバウンド接続の提供の詳細については、以下を参照してください。 </br> **[Azure の送信接続](load-balancer-outbound-connections.md)**</br> 接続を提供するためのオプション: </br> **[送信専用のロード バランサーの構成](egress-only.md)** </br> **[Virtual Network NAT とは](https://docs.microsoft.com/azure/virtual-network/nat-overview)**
@@ -357,7 +359,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 #### <a name="vm1"></a>VM1
 * バックエンド アドレス プールは **myBackEndPool** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM1** および **ipconfig1** に関連付けます。
 * ロード バランサー **myLoadBalancer** に関連付けます。
 
@@ -366,13 +368,13 @@ VM がデプロイされるまでに、数分かかる場合があります。
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM1 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreateIntLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
 #### <a name="vm2"></a>VM2
 * バックエンド アドレス プールは **myBackEndPool** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM2** および **ipconfig1** に関連付けます。
 * ロード バランサー **myLoadBalancer** に関連付けます。
 
@@ -381,7 +383,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM2 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreateIntLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
@@ -402,12 +404,12 @@ VM をデプロイしてロード バランサーをデプロイする前に、�
 * アドレス プレフィックスは **10.1.0.0/16** にします。
 * サブネットの名前は **myBackendSubnet** にします。
 * サブネット プレフィックスは **10.1.0.0/24** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * 場所は **eastus** にします。
 
 ```azurecli-interactive
   az network vnet create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --location eastus \
     --name myVNet \
     --address-prefixes 10.1.0.0/16 \
@@ -421,11 +423,11 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) を使用して、次のようにネットワーク セキュリティ グループを作成します。
 
 * 名前は **myNSG** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 
 ```azurecli-interactive
   az network nsg create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --name myNSG
 ```
 
@@ -435,18 +437,18 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 
 * 名前は **myNSGRuleHTTP** にします。
 * ネットワーク セキュリティ グループは、前の手順で作成した **myNSG** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * プロトコルは **(*)** にします。
 * 方向は **Inbound** にします。
 * 送信元は **(*)** にします。
 * 送信先は **(*)** にします。
-* 送信先ポートは**ポート 80** にします。
+* 送信先ポートは **ポート 80** にします。
 * アクセスは **Allow** にします。
 * 優先度は **200** にします。
 
 ```azurecli-interactive
   az network nsg rule create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --nsg-name myNSG \
     --name myNSGRuleHTTP \
     --protocol '*' \
@@ -466,7 +468,7 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 #### <a name="vm1"></a>VM1
 
 * 名前は **myNicVM1** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
 * ネットワーク セキュリティ グループは **myNSG** にします。
@@ -474,7 +476,7 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 ```azurecli-interactive
 
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --name myNicVM1 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
@@ -483,13 +485,13 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 #### <a name="vm2"></a>VM2
 
 * 名前は **myNicVM2** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
 
 ```azurecli-interactive
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --name myNicVM2 \
     --vnet-name myVnet \
     --subnet myBackEndSubnet \
@@ -559,13 +561,13 @@ runcmd:
 [az vm availability-set create](https://docs.microsoft.com/cli/azure/vm/availability-set?view=azure-cli-latest#az-vm-availability-set-create) を使用して、次のように可用性セットを作成します。
 
 * 名前は **myAvSet** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * 場所は **eastus** にします。
 
 ```azurecli-interactive
   az vm availability-set create \
     --name myAvSet \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --location eastus 
     
 ```
@@ -576,7 +578,7 @@ runcmd:
 
 #### <a name="vm1"></a>VM1
 * 名前は **myVM1** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM1** に接続します。
 * 仮想マシン イメージは **UbuntuLTS** にします。
 * 構成ファイルは、前の手順で作成した **cloud-init.txt** にします。
@@ -584,7 +586,7 @@ runcmd:
 
 ```azurecli-interactive
   az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --name myVM1 \
     --nics myNicVM1 \
     --image UbuntuLTS \
@@ -597,7 +599,7 @@ runcmd:
 ```
 #### <a name="vm2"></a>VM2
 * 名前は **myVM2** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM2** に接続します。
 * 仮想マシン イメージは **UbuntuLTS** にします。
 * 構成ファイルは、前の手順で作成した **cloud-init.txt** にします。
@@ -605,7 +607,7 @@ runcmd:
 
 ```azurecli-interactive
   az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --name myVM2 \
     --nics myNicVM2 \
     --image UbuntuLTS \
@@ -639,7 +641,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ```azurecli-interactive
   az network lb create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --name myLoadBalancer \
     --sku Basic \
     --vnet-name myVNet \
@@ -663,7 +665,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ```azurecli-interactive
   az network lb probe create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --lb-name myLoadBalancer \
     --name myHealthProbe \
     --protocol tcp \
@@ -681,14 +683,15 @@ VM がデプロイされるまでに、数分かかる場合があります。
 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) を使用して、次のようにロード バランサー規則を作成します。
 
 * 名前は **myHTTPRule** にします
-* フロントエンド プール **myFrontEnd** で**ポート 80** をリッスンします。
+* フロントエンド プール **myFrontEnd** で **ポート 80** をリッスンします。
 * **ポート 80** を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール **myBackEndPool** に送信します。 
 * 正常性プローブ **myHealthProbe** を使用します。
 * プロトコルは **TCP** にします。
+* アイドル タイムアウトは **15 分** とします。
 
 ```azurecli-interactive
   az network lb rule create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --lb-name myLoadBalancer \
     --name myHTTPRule \
     --protocol tcp \
@@ -696,7 +699,8 @@ VM がデプロイされるまでに、数分かかる場合があります。
     --backend-port 80 \
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool \
-    --probe-name myHealthProbe
+    --probe-name myHealthProbe \
+    --idle-timeout 15 
 ```
 ### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>仮想マシンをロード バランサー バックエンド プールに追加する
 
@@ -705,7 +709,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 #### <a name="vm1"></a>VM1
 * バックエンド アドレス プールは **myBackEndPool** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM1** および **ipconfig1** に関連付けます。
 * ロード バランサー **myLoadBalancer** に関連付けます。
 
@@ -714,13 +718,13 @@ VM がデプロイされるまでに、数分かかる場合があります。
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM1 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreateIntLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
 #### <a name="vm2"></a>VM2
 * バックエンド アドレス プールは **myBackEndPool** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicVM2** および **ipconfig1** に関連付けます。
 * ロード バランサー **myLoadBalancer** に関連付けます。
 
@@ -729,7 +733,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM2 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreateIntLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
@@ -742,11 +746,11 @@ VM がデプロイされるまでに、数分かかる場合があります。
 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) を使用して、bastion ホストのパブリック IP アドレスを作成します。
 
 * **myBastionIP** という名前の Standard ゾーン冗長パブリック IP アドレスを作成します。
-* **myResourceGroupLB** 内に作成します。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 
 ```azurecli-interactive
   az network public-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --name myBastionIP \
     --sku Standard
 ```
@@ -758,11 +762,11 @@ VM がデプロイされるまでに、数分かかる場合があります。
 * 名前は **AzureBastionSubnet** にします。
 * アドレス プレフィックスは **10.1.1.0/24** にします。
 * 仮想ネットワークは **myVNet** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 
 ```azurecli-interactive
   az network vnet subnet create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --name AzureBastionSubnet \
     --vnet-name myVNet \
     --address-prefixes 10.1.1.0/24
@@ -772,14 +776,14 @@ VM がデプロイされるまでに、数分かかる場合があります。
 [az network bastion create](https://docs.microsoft.com/cli/azure/network/bastion?view=azure-cli-latest#az-network-bastion-create) を使用して、bastion ホストを作成します。
 
 * 名前は **myBastionHost** にします
-* **myResourceGroupLB** 内に作成します
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします
 * パブリック IP **myBastionIP** に関連付けます。
 * 仮想ネットワーク **myVNet** に関連付けます。
 * 場所は **eastus** にします。
 
 ```azurecli-interactive
   az network bastion create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --name myBastionHost \
     --public-ip-address myBastionIP \
     --vnet-name myVNet \
@@ -792,14 +796,14 @@ bastion ホストがデプロイされるまでに数分かかります。
 [az network nic create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) を使用して、ネットワーク インターフェイスを作成します。
 
 * 名前は **myNicTestVM** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
 * ネットワーク セキュリティ グループは **myNSG** にします。
 
 ```azurecli-interactive
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --name myNicTestVM \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
@@ -808,7 +812,7 @@ bastion ホストがデプロイされるまでに数分かかります。
 [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) を使用して、仮想マシンを作成します。
 
 * 名前は **myTestVM** にします。
-* リソース グループは **myResourceGroupLB** にします。
+* 作成先のリソース グループは **CreateIntLBQS-rg** とします。
 * ネットワーク インターフェイス **myNicTestVM** に接続します。
 * 仮想マシン イメージは **Win2019Datacenter** にします。
 * **\<adminpass>** および **\<adminuser>** の値を選択します。
@@ -816,7 +820,7 @@ bastion ホストがデプロイされるまでに数分かかります。
 
 ```azurecli-interactive
   az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreateIntLBQS-rg \
     --name myTestVM \
     --nics myNicTestVM \
     --image Win2019Datacenter \
@@ -830,11 +834,11 @@ bastion ホストがデプロイされるまでに数分かかります。
 
 1. Azure portal に[サインイン](https://portal.azure.com)します。
 
-1. **[概要]** 画面で、ロード バランサーのプライベート IP アドレスを見つけます。 左側のメニューで **[すべてのサービス]** を選択し、 **[すべてのリソース]** を選択して、**myLoadBalancer** を選択します。
+1. **[概要]** 画面で、ロード バランサーのプライベート IP アドレスを見つけます。 左側のメニューで **[すべてのサービス]** を選択し、 **[すべてのリソース]** を選択して、 **myLoadBalancer** を選択します。
 
 2. **myLoadBalancer** の **[概要]** で、 **[プライベート IP アドレス]** の横にあるアドレスを書き留めるか、コピーしておきます。
 
-3. 左側のメニューで **[すべてのサービス]** を選択し、 **[すべてのリソース]** を選択して、リソースの一覧から **myResourceGroupLB** リソース グループにある **myTestVM** を選択します。
+3. 左側のメニューで **[すべてのサービス]** を選択し、 **[すべてのリソース]** を選択して、リソースの一覧から **CreateIntLBQS-rg** リソース グループにある **myTestVM** を選択します。
 
 4. **[概要]** ページで **[接続]** 、 **[要塞]** の順に選択します。
 
@@ -854,7 +858,7 @@ bastion ホストがデプロイされるまでに数分かかります。
 
 ```azurecli-interactive
   az group delete \
-    --name myResourceGroupLB
+    --name CreateIntLBQS-rg
 ```
 
 ## <a name="next-steps"></a>次のステップ

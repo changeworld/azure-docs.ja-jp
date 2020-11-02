@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 8936c2150c32a22877f9b56736ecc4b8f3424b32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bf3eccec70619bf73397e315c6d851f753ec52f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88533148"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521834"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>チュートリアル: Azure Active Directory と Uberflip の統合
 
@@ -28,7 +28,7 @@ Uberflip と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Uberflip に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure ポータル) でアカウントを管理できます。
 
-サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,13 +63,13 @@ Azure AD への Uberflip の統合を構成するには、Azure Marketplace か�
 
    ![[新しいアプリケーション] オプション](common/add-new-app.png)
 
-1. 検索ボックスに「**Uberflip**」と入力します。 検索結果で **[Uberflip]** を選択し、 **[追加]** を選択してアプリケーションを追加します。
+1. 検索ボックスに「 **Uberflip** 」と入力します。 検索結果で **[Uberflip]** を選択し、 **[追加]** を選択してアプリケーションを追加します。
 
    ![結果一覧の Uberflip](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**B Simon** というテスト ユーザーに基づいて、Uberflip で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと Uberflip 内の関連ユーザーとの間にリンクを確立する必要があります。
+このセクションでは、 **B Simon** というテスト ユーザーに基づいて、Uberflip で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと Uberflip 内の関連ユーザーとの間にリンクを確立する必要があります。
 
 Uberflip で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
@@ -94,9 +94,9 @@ Uberflip で Azure AD シングル サインオンを構成するには、次の
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-1. **[SAML でシングル サインオンをセットアップします]** ウィンドウで、**編集** (鉛筆アイコン) を選択して **[基本的な SAML 構成]** ウィンドウを開きます。
+1. **[SAML でシングル サインオンをセットアップします]** ウィンドウで、 **編集** (鉛筆アイコン) を選択して **[基本的な SAML 構成]** ウィンドウを開きます。
 
-   ![基本的な SAML 構成を編集する](common/edit-urls.png)
+   ![[基本的な SAML 構成] を示すスクリーンショット。ここに応答 U R L を入力することができます。](common/edit-urls.png)
 
 1. **[基本的な SAML 構成]** ウィンドウで、構成する SSO モードに応じて、以下のいずれかの手順に従います。
 
@@ -113,9 +113,9 @@ Uberflip で Azure AD シングル サインオンを構成するには、次の
 
      `https://app.uberflip.com/users/login`
 
-     ![[Uberflip のドメインと URL] のシングル サインオン情報](common/both-signonurl.png)
+     ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/both-signonurl.png)
 
-1. **[SAML でシングル サインオンをセットアップします]** ウィンドウの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** を選択し、特定のオプションの**フェデレーション メタデータ XML** をダウンロードします。
+1. **[SAML でシングル サインオンをセットアップします]** ウィンドウの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** を選択し、特定のオプションの **フェデレーション メタデータ XML** をダウンロードします。
 
    ![フェデレーション メタデータ XML のダウンロード オプション](common/metadataxml.png)
 
@@ -147,9 +147,9 @@ Uberflip 側でシングル サインオンを構成するには、ダウンロ�
 
     ![[ユーザー] ウィンドウ](common/user-properties.png)
 
-    1. **[名前]** ボックスに、「**BSimon**」と入力します。
+    1. **[名前]** ボックスに、「 **BSimon** 」と入力します。
   
-    1. **[ユーザー名]** ボックスに「**BSimon\@\<yourcompanydomain>.\<extension>** 」と入力します。 たとえば、「**BSimon\@contoso.com**」のように入力します。
+    1. **[ユーザー名]** ボックスに「 **BSimon\@\<yourcompanydomain>.\<extension>** 」と入力します。 たとえば、「 **BSimon\@contoso.com** 」のように入力します。
 
     1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
 
@@ -192,12 +192,12 @@ Uberflip 側でシングル サインオンを構成するには、ダウンロ�
 
 このセクションでは、マイ アプリ ポータルを使用して自分の Azure AD のシングル サインオン構成をテストします。
 
-マイ アプリ ポータルで **[Uberflip]** を選択すると、シングル サインオンを設定した Uberflip サブスクリプションに自動的にサインインするはずです。 マイアプリ ポータルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)」を参照してください。
+マイ アプリ ポータルで **[Uberflip]** を選択すると、シングル サインオンを設定した Uberflip サブスクリプションに自動的にサインインするはずです。 マイアプリ ポータルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアルの一覧](./tutorial-list.md)
 
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-* [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

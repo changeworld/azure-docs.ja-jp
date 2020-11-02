@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 1fa8f6f0382312951905476ad6fee06e180c6f35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe8acfd1bfd14f339a0109cab215b8a9ab65256f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543146"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893881"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-segment"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) とセグメントの統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543146"
 * ユーザーが自分の Azure AD アカウントを使用してセグメントに自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,10 +39,10 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* セグメントでは、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* セグメントでは、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* セグメントでは、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* セグメントでは、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
-* セグメントを構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* セグメントを構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-segment-from-the-gallery"></a>ギャラリーからのセグメントの追加
 
@@ -52,7 +52,7 @@ Azure AD へのセグメントの統合を構成するには、ギャラリー�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**セグメント**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **セグメント** 」と入力します。
 1. [結果] パネルから **[セグメント]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -73,7 +73,7 @@ Azure AD へのセグメントの統合を構成するには、ギャラリー�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の**セグメント** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **セグメント** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -134,21 +134,21 @@ Azure AD へのセグメントの統合を構成するには、ギャラリー�
 
 1. 新しい Web ブラウザー ウィンドウで、セグメント企業サイトに管理者としてサインインします。
 
-1. **[設定] アイコン**をクリックし、 **[認証]** まで下にスクロールして、 **[接続]** をクリックします。
+1. **[設定] アイコン** をクリックし、 **[認証]** まで下にスクロールして、 **[接続]** をクリックします。
 
-    ![セグメント構成](./media/segment-tutorial/segment1.PNG)
+    ![[Setting]\(設定\) アイコンが選択され、[Authentication]\(認証\) メニューの [Connections]\(接続\) が選択されているスクリーンショット。](./media/segment-tutorial/segment1.PNG)
 
 1. **[新しい接続の追加]** をクリックします。
 
-    ![セグメント構成](./media/segment-tutorial/segment2.PNG)
+    ![[Connections]\(接続\) セクションを示すスクリーンショット。[Add new Connection]\(新しい接続の追加\) ボタンが選択されています。](./media/segment-tutorial/segment2.PNG)
 
 1. 構成する接続として **[SAML 2.0]** を選択し、 **[接続の選択]** ボタンをクリックします。
 
-    ![セグメント構成](./media/segment-tutorial/segment3.PNG)
+    ![[Choose a Connection]\(接続の選択\) セクションを示すスクリーンショット。[S A M L 2.0] および [Select Connection]\(接続を選択\) ボタンが選択されています。](./media/segment-tutorial/segment3.PNG)
 
 1. 次のページで、以下の手順を実行します。
 
-    ![セグメント構成](./media/segment-tutorial/segment4.PNG)
+    ![[Configure Identity Provider]\(I D プロバイダーの構成\) ページを示すスクリーンショット。[Single Sign-On U R L]\(シングル サインオン U R L\) および [Audience U R L]\(対象 U R L\) テキスト ボックスが強調表示され、[Next]\(次へ\) ボタンが選択されています。](./media/segment-tutorial/segment4.PNG)
 
     a. **[シングル サインオン URL]** の値をコピーし、Azure portal の **[基本的な SAML 構成]** ダイアログ ボックスにある **[応答 URL]** ボックスに貼り付けます。
 
@@ -160,7 +160,7 @@ Azure AD へのセグメントの統合を構成するには、ギャラリー�
 
 1. **[SAML 2.0 Endpoint URL]\(SAML 2.0 エンドポイント URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
-1. Azure portal からダウンロードした**証明書 (Base64)** をメモ帳で開き、その内容を **[Public Certificate]\(公開証明書\)** ボックスに貼り付けます。
+1. Azure portal からダウンロードした **証明書 (Base64)** をメモ帳で開き、その内容を **[Public Certificate]\(公開証明書\)** ボックスに貼り付けます。
 
 1. **[接続の構成]** をクリックします。
 
@@ -172,19 +172,18 @@ Azure AD へのセグメントの統合を構成するには、ギャラリー�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [セグメント] タイルをクリックすると、SSO を設定したセグメントに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [セグメント] タイルをクリックすると、SSO を設定したセグメントに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD でセグメントを試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によってセグメントを保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [高度な可視性と制御によってセグメントを保護する方法](/cloud-app-security/proxy-intro-aad)

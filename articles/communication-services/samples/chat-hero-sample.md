@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d244ed92cceb385f9f80690ae630e617e952c481
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 8349654650ff0c85fb7c9c1af6ab5dabc4f5c3ac
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124587"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677414"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>グループ チャットのヒーロー サンプルを使ってみる
 
@@ -25,16 +25,18 @@ ms.locfileid: "92124587"
 > links to our Hero Sample repo need to be updated when the sample is publicly available.
 ---->
 
-Azure Communication Services の**グループ チャットのヒーロー サンプル**は、Communication Services のチャット Web クライアント ライブラリーを使用して、グループ通話エクスペリエンスを構築する方法を示します。
+> [!IMPORTANT]
+> [このサンプルは GitHub で入手できます。](https://github.com/Azure-Samples/communication-services-web-chat-hero)
+
+
+Azure Communication Services の **グループ チャットのヒーロー サンプル** は、Communication Services のチャット Web クライアント ライブラリーを使用して、グループ通話エクスペリエンスを構築する方法を示します。
 
 このサンプルのクイックスタートでは、サンプルをローカル コンピューターで実行する前に、サンプルがどのように動作するかを学習します。 次に、独自の Azure Communication Services リソースを使用して、サンプルを Azure にデプロイします。
 
-> [!IMPORTANT]
-> [GitHub からサンプルをダウンロードする](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 ## <a name="overview"></a>概要
 
-このサンプルには、クライアント側アプリケーションとサーバー側アプリケーションの両方があります。 **クライアント側アプリケーション**は、Microsoft の Fluent UI フレームワークを使用する React/Redux Web アプリケーションです。 このアプリケーションは、クライアント側アプリケーションが Azure に接続するのを助ける ASP.NET Core の**サーバー側アプリケーション**に要求を送信します。 
+このサンプルには、クライアント側アプリケーションとサーバー側アプリケーションの両方があります。 **クライアント側アプリケーション** は、Microsoft の Fluent UI フレームワークを使用する React/Redux Web アプリケーションです。 このアプリケーションは、クライアント側アプリケーションが Azure に接続するのを助ける ASP.NET Core の **サーバー側アプリケーション** に要求を送信します。 
 
 サンプルは次のようになります。
 
@@ -50,9 +52,9 @@ Azure Communication Services の**グループ チャットのヒーロー サ�
 
 メイン チャット画面のコンポーネント:
 
-- **メイン チャット領域**: これは、ユーザーがメッセージを送受信できるコア チャット エクスペリエンスです。 メッセージを送信するには、入力領域を使用して Enter キーを押します (または、[送信] ボタンを使用します)。 受信されたチャット メッセージは、適切な名前と絵文字を使って送信者によって分類されます。 チャット領域には、次の 2 種類の通知が表示されます。1) ユーザーが入力中の入力通知と、2) メッセージの送信済みと既読の通知。
-- **ヘッダー**:ここには、チャット スレッドのタイトルと、参加者と設定のサイド バーを切り替えるためのコントロール、およびチャット セッションを終了するための退出ボタンがユーザーに表示されます。
-- **サイド バー**: ヘッダーでコントロールを使用して切り替えると、ここに参加者と設定情報が表示されます。 参加者のサイド バーには、チャットの参加者の一覧と、チャット セッションに参加者を招待するためのリンクが含まれています。 設定のサイド バーでは、チャット スレッドのタイトルを構成できます。 
+- **メイン チャット領域** : これは、ユーザーがメッセージを送受信できるコア チャット エクスペリエンスです。 メッセージを送信するには、入力領域を使用して Enter キーを押します (または、[送信] ボタンを使用します)。 受信されたチャット メッセージは、適切な名前と絵文字を使って送信者によって分類されます。 チャット領域には、次の 2 種類の通知が表示されます。1) ユーザーが入力中の入力通知と、2) メッセージの送信済みと既読の通知。
+- **ヘッダー** :ここには、チャット スレッドのタイトルと、参加者と設定のサイド バーを切り替えるためのコントロール、およびチャット セッションを終了するための退出ボタンがユーザーに表示されます。
+- **サイド バー** : ヘッダーでコントロールを使用して切り替えると、ここに参加者と設定情報が表示されます。 参加者のサイド バーには、チャットの参加者の一覧と、チャット セッションに参加者を招待するためのリンクが含まれています。 設定のサイド バーでは、チャット スレッドのタイトルを構成できます。 
 
 以下で、サンプルを設定するための前提条件と手順について詳しく説明します。
 
@@ -62,7 +64,7 @@ Azure Communication Services の**グループ チャットのヒーロー サ�
 - [Node.js (8.11.2 以上)](https://nodejs.org/en/download/)
 - [Visual Studio (2017 以上)](https://visualstudio.microsoft.com/vs/)
 - [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (使用する Visual Studio インスタンス (32 または 64 ビット) に対応するバージョンを必ずインストールしてください)
-- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication リソースの作成](../quickstarts/create-communication-resource.md)に関するページを参照してください。 このクイックスタートで使用するリソースの**接続文字列**を記録する必要があります。
+- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication リソースの作成](../quickstarts/create-communication-resource.md)に関するページを参照してください。 このクイックスタートで使用するリソースの **接続文字列** を記録する必要があります。
 
 ## <a name="locally-deploying-the-service--client-app"></a>サービスおよびクライアント アプリをローカルにデプロイする
 
@@ -75,7 +77,7 @@ chat.csproj で Visual Studio を開き、デバッグ モードで実行しま�
 ## <a name="before-running-the-sample-for-the-first-time"></a>サンプルを初めて実行する前
 
 1. PowerShell、Windows ターミナル、コマンド プロンプト、またはそれと同等のインスタンスを開き、サンプルの複製先のディレクトリに移動します。
-2. `git clone https://github.com/Azure/Communication.git`
+2. `git clone https://github.com/Azure-Samples/communication-services-web-chat-hero.git`
 3. Azure portal から `Connection String` を取得します。 接続文字列の詳細については、[Azure Communication リソースの作成](../quickstarts/create-communication-resource.md)に関するページを参照してください。
 4. `Connection String` を取得したら、Chat フォルダーにある **Chat/appsettings.json** ファイルに接続文字列を追加します。 変数 `ResourceConnectionString` に接続文字列を入力します。
 

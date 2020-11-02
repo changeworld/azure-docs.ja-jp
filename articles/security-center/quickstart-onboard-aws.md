@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: cddae0a7115fc2999b52eaba7df2b49db509981b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfb1c0180b50ca95cb2f1fbff62469e63ab5f19d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449034"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428102"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Azure Security Center への AWS アカウントの接続
 
@@ -41,7 +41,7 @@ AWS アカウントを Security Center にオンボードすると、AWS Securit
 |----|:----|
 |リリース状態:|プレビュー|
 |価格:|[Azure Defender for servers](defender-for-servers-introduction.md) が必要|
-|必要なロールとアクセス許可:|関連する Azure サブスクリプションの**所有者**または**共同作成者**|
+|必要なロールとアクセス許可:|関連する Azure サブスクリプションの **所有者** または **共同作成者**|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
 |||
 
@@ -77,7 +77,7 @@ Security Center が AWS に対して認証を行えるようにするには、2 
 1. **[別の AWS アカウント]** を選択します。
 1. 次の詳細を入力します。
 
-    - **アカウント ID** - Security Center の AWS コネクタ ページに示されているように、Microsoft アカウント ID (**158177204117**) を入力します。
+    - **アカウント ID** - Security Center の AWS コネクタ ページに示されているように、Microsoft アカウント ID ( **158177204117** ) を入力します。
     - **外部 ID が必要** - 選択する必要があります
     - **外部 ID** - Security Center の AWS コネクタ ページに示されているように、サブスクリプション ID を入力します 
 
@@ -104,9 +104,9 @@ Security Center が AWS に対して認証を行えるようにするには、2 
     - AmazonSSMAutomationRole
     - AWSSecurityHubReadOnlyAccess
     
-1. **タグ**を選択します。 必要に応じて、タグを追加します。 ユーザーにタグを追加しても、接続には影響しません。
+1. **タグ** を選択します。 必要に応じて、タグを追加します。 ユーザーにタグを追加しても、接続には影響しません。
 1. **[レビュー]** を選択します。
-1. 後で使用するために、自動的に生成された**アクセス キー ID** と **シークレット アクセス キー**の CSV ファイルを保存します。
+1. 後で使用するために、自動的に生成された **アクセス キー ID** と **シークレット アクセス キー** の CSV ファイルを保存します。
 1. 概要を確認し、 **[ユーザーを作成]** をクリックします。
 
 
@@ -118,9 +118,12 @@ Security Center が AWS に対して認証を行えるようにするには、2 
 - [Amazon EC2 Linux インスタンスでの SSM エージェントのインストールと構成](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-ssm-agent.html)
 
 
-### <a name="step-4-create-a-service-principal-for-onboarding-at-scale"></a>手順 4. 大規模なオンボーディング用にサービス プリンシパルを作成する
+### <a name="step-4-complete-azure-arc-prerequisites"></a>手順 4. Azure Arc の前提条件を満たす
+1. 適切な [Azure リソース プロバイダー](../azure-arc/servers/agent-overview.md#register-azure-resource-providers)が登録されていることを確認します。
+    - Microsoft.HybridCompute
+    - Microsoft.GuestConfiguration
 
-「[大規模なオンボーディング用にサービス プリンシパルを作成する](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)」で説明されているように、オンボードに使用するサブスクリプションの**所有者**として、Azure Arc オンボード用サービス プリンシパルを作成します
+1. 大規模なオンボーディング用にサービス プリンシパルを作成します。 「 [大規模なオンボーディング用にサービス プリンシパルを作成する](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)」で説明されているように、オンボードに使用するサブスクリプションの **所有者** として、Azure Arc オンボード用サービス プリンシパルを作成します。
 
 
 ### <a name="step-5-connect-aws-to-security-center"></a>手順 5. AWS を Security Center に接続する
@@ -129,24 +132,25 @@ Security Center が AWS に対して認証を行えるようにするには、2 
 1. **[Add AWS account]\(AWS アカウントの追加\)** を選択します。
     :::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="Security Center の概要ダッシュボードに一覧表示された 3 つの GCP プロジェクト":::
 1. **[AWS authentication]\(AWS 認証\)** タブでオプションを構成します。
-    1. コネクタの**表示名**を入力します。
+    1. コネクタの **表示名** を入力します。
     1. サブスクリプションが正しいことを確認します。 これは、コネクタと AWS Security Hub の推奨事項が追加されるサブスクリプションです。
     1. 「[手順 2. AWS で Security Center に対する認証を設定する](#step-2-set-up-authentication-for-security-center-in-aws)」で選択した認証オプションに応じて、次の操作を行います。
-        - **[Assume Role]\(ロールを想定\)** を選択し、「[Security Center の IAM ロールを作成する](#create-an-iam-role-for-security-center)」から ARN を貼り付けます :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Security Center の概要ダッシュボードに一覧表示された 3 つの GCP プロジェクト":::
+        - **[Assume Role]\(ロールを想定\)** を選択し、「[Security Center の IAM ロールを作成する](#create-an-iam-role-for-security-center)」から ARN を貼り付けます。
+            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Security Center の概要ダッシュボードに一覧表示された 3 つの GCP プロジェクト":::
 
             OR
 
-        - **資格情報**を選択し、「[Security Center の AWS ユーザーを作成する](#create-an-aws-user-for-security-center)」で保存した .csv ファイルから**アクセス キー**と**秘密鍵**を貼り付けます。
+        - **資格情報** を選択し、「 [Security Center の AWS ユーザーを作成する](#create-an-aws-user-for-security-center)」で保存した .csv ファイルから **アクセス キー** と **秘密鍵** を貼り付けます。
 1. **[次へ]** を選択します。
 1. **[Azure Arc Configuration]\(Azure Arc 構成\)** タブでオプションを構成します。
 
     接続されている AWS アカウントの EC2 インスタンスが Security Center によって検出され、SSM を使用して Azure Arc にオンボードされます。 
 
     > [!TIP]
-    > サポートされているオペレーティング システムの一覧については、以下の FAQ を参照してください。
+    > サポートされるオペレーティング システムの一覧については、FAQ の「[自身の EC2 インスタンスではどのオペレーティングシステムがサポートされていますか?](#what-operating-systems-for-my-ec2-instances-are-supported)」を参照してください。
 
-    1. 選択したサブスクリプションで、検出された AWS EC2 がオンボードされる**リソース グループ**と **Azure リージョン**を選択します。
-    1. こちらの「[大規模なオンボーディング用にサービス プリンシパルを作成する](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)」で説明されているように、Azure Arc の**サービス プリンシパル ID** と**サービス プリンシパルのクライアント シークレット**を入力します
+    1. 選択したサブスクリプションで、検出された AWS EC2 がオンボードされる **リソース グループ** と **Azure リージョン** を選択します。
+    1. こちらの「 [大規模なオンボーディング用にサービス プリンシパルを作成する](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)」で説明されているように、Azure Arc の **サービス プリンシパル ID** と **サービス プリンシパルのクライアント シークレット** を入力します
     1. マシンがプロキシ サーバー経由でインターネットに接続している場合は、プロキシ サーバーの IP アドレスか、マシンがプロキシ サーバーとの通信に使用する名前とポート番号を指定します。 ```http://<proxyURL>:<proxyport>``` の形式で値を入力します。
     1. **[Review + create]\(レビュー + 作成\)** を選択します。
 

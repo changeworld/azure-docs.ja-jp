@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
-ms.date: 07/27/2020
-ms.openlocfilehash: 752021e3838809cace8b5d1c71c2516645031f9d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.date: 10/15/2020
+ms.openlocfilehash: d497ff1a829902c0623740f01a457e6496db2401
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089776"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744953"
 ---
 # <a name="monitor-your-synapse-workspace"></a>Synapse ワークスペースを監視する
 
@@ -25,25 +25,25 @@ ms.locfileid: "92089776"
 
 Synapse Studio を開き、 **[監視]** ハブに移動します。 ここには、ワークスペースで発生したすべてのアクティビティの履歴と、現在アクティブになっているアクティビティが表示されます。 
 
-* **[オーケストレーション]** で、パイプライン、トリガー、統合ランタイムを監視できます。
+* **[Integration]\(統合\)** で、パイプライン、トリガー、統合ランタイムを監視できます
 * **[アクティビティ]** で、Spark と SQL のアクティビティを監視できます。 
 
-## <a name="orchestration"></a>オーケストレーション
+## <a name="integration"></a>統合
 
-1. **[オーケストレーション] > [パイプライン]** の順に移動します。 このビューでは、ご利用のワークスペース内で特定のパイプラインが実行された時刻をすべて確認できます。 
-1. 前の手順で実行したパイプラインを見つけて、その**パイプライン名**をクリックします。
+1. **[Integration]\(統合\) > [パイプライン]** の順に移動します。 このビューでは、ご利用のワークスペース内で特定のパイプラインが実行された時刻をすべて確認できます。 
+1. 前の手順で実行したパイプラインを見つけて、その **パイプライン名** をクリックします。
 1. これで、そのパイプライン内の個々のアクティビティがどのように実行されるかを確認できます。
 1. Synapse Studio の上部近くにある **[階層リンク バー]** をクリックします。 **[すべてのパイプラインの実行]** をクリックすると、前のビューに戻ります。
 
 ## <a name="apache-spark-activities"></a>Apache Spark アクティビティ
 
-1. **[オーケストレーション] > [アクティビティ] > [Apache Spark applications]\(Apache Spark アプリケーション\)** の順に移動します。 これで、ご利用のワークスペース内で実行中の、または実行されたすべての Spark アプリケーションを確認できます。
+1. **[Integration]\(統合\) > [アクティビティ] > [Apache Spark applications]\(Apache Spark アプリケーション\)** の順に移動します。 これで、ご利用のワークスペース内で実行中の、または実行されたすべての Spark アプリケーションを確認できます。
 1. 現在実行されていないアプリケーションを見つけて、その **[アプリケーション名]** をクリックします。 これで、その Spark アプリケーションの詳細を確認できます。
 1. Apache Spark に慣れている場合は、 **[Spark History Server]** をクリックすることで、標準の Apache Spark History Server UI を見つけることができます。
 
 ## <a name="sql-activities"></a>SQL アクティビティ
 
-1. **[オーケストレーション] > [アクティビティ] > [SQL requests]\(SQL 要求\)** の順に移動します。
+1. **[Integration]\(統合\) > [アクティビティ] > [SQL requests]\(SQL 要求\)** の順に移動します。
 1. このビューでは、SQL 要求を確認できます。
 1. 監視する **[プール]** を選択します。 これで、そのプールにあるご利用のワークスペース内で実行中の、または実行されたすべての SQL 要求を確認できます。
 1. 特定の SQL 要求を検索し、その項目の上にマウス ポインターを置きます。 マウス ポインターを合わせると、SQL スクリプト アイコンが表示されるのがわかります。

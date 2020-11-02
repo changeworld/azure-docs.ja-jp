@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: include
-ms.date: 10/07/2020
+ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 587e702f5c74149542e2fffcf7891b7ea41f4202
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86d2935cfac7ca095c918826c47dbf3f1dd2d8d3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91859620"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886639"
 ---
 Python 用 Face クライアント ライブラリを使用して顔認識を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Face サービスは、画像内の人間の顔を検出および認識するための高度なアルゴリズムへのアクセスを提供します。
 
@@ -30,35 +30,40 @@ Python 用 Face クライアント ライブラリを使用すると、次のこ
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Python 3.x](https://www.python.org/)
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* [Python 3.x](https://www.python.org/)
 * Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Face リソースを作成"  target="_blank">Face リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
     * 対象のアプリケーションを Face API に接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
     * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
-* キーとエンドポイントを取得したら、キーとエンドポイントの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、それぞれ `FACE_SUBSCRIPTION_KEY` および `FACE_ENDPOINT` という名前を付けます。
+
 
 ## <a name="setting-up"></a>設定
  
+### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
+
+Python をインストールしたら、次を使用してクライアント ライブラリをインストールすることができます。
+
+```console
+pip install --upgrade azure-cognitiveservices-vision-face
+```
+
 ### <a name="create-a-new-python-application"></a>新しい Python アプリケーションを作成する
 
-新しい Python スクリプト (たとえば *quickstart-file.py*) を作成します。 次に、それを任意のエディターまたは IDE で開き、以下のライブラリをインポートします。
+新しい Python スクリプト (たとえば *quickstart-file.py* ) を作成します。 次に、それを任意のエディターまたは IDE で開き、以下のライブラリをインポートします。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_imports)]
+
+> [!TIP]
+> クイックスタートのコード ファイル全体を一度にご覧いただけます。 これは [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py) にあり、このクイックスタートのコード例が含まれています。
 
 次に、リソースの Azure エンドポイントおよびキー用の変数を作成します。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_subvars)]
 
-> [!NOTE]
-> アプリケーションの起動後に環境変数を作成した場合、その変数にアクセスするには、アプリケーションを実行しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。
-
-### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
-
-次のようにして、クライアント ライブラリをインストールできます。
-
-```console
-pip install --upgrade azure-cognitiveservices-vision-face
-```
+> [!IMPORTANT]
+> Azure Portal にアクセスします。 「 **前提条件** 」セクションで作成した [製品名] リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
+>
+> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 たとえば、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) が考えられます。
 
 ## <a name="object-model"></a>オブジェクト モデル
 
@@ -87,9 +92,6 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-> [!NOTE]
-> このクイックスタートでは、`FACE_SUBSCRIPTION_KEY` という名前の、Face キーの[環境変数が作成](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)してあることを前提としています。
-
 ご利用のエンドポイントとキーを使用してクライアントをインスタンス化します。 キーを使用して [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) オブジェクトを作成し、それをエンドポイントと共に使用して、[FaceClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) オブジェクトを作成します。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_auth)]
@@ -100,7 +102,8 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_detect)]
 
-その他の検出シナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py) 上のサンプル コードを参照してください。
+> [!TIP]
+> また、ローカルの画像から顔を検出することもできます。 [FaceOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python) のメソッドを参照してください ( **detect_with_stream** など)。
 
 ### <a name="display-and-frame-faces"></a>顔を表示してフレームに収める
 
@@ -144,7 +147,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroupvars)]
 
-次に、以下のコードをスクリプトの末尾に追加します。 このコードでは、**PersonGroup** オブジェクトと 3 つの **Person** オブジェクトが作成されます。
+次に、以下のコードをスクリプトの末尾に追加します。 このコードでは、 **PersonGroup** オブジェクトと 3 つの **Person** オブジェクトが作成されます。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_create)]
 
@@ -154,9 +157,12 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_assign)]
 
+> [!TIP]
+> URL によって参照されたリモート画像から **PersonGroup** を作成することもできます。 [PersonGroupPersonOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations?view=azure-python) のメソッドを参照してください ( **add_face_from_url** など)。
+
 ### <a name="train-persongroup"></a>PersonGroup をトレーニングする
 
-顔を割り当てたら、**PersonGroup** をトレーニングして、その各 **Person** オブジェクトに関連付けられている視覚的特徴を識別できるようにする必要があります。 次のコードは、非同期の **train** メソッドを呼び出し、結果をポーリングして、状態をコンソールに出力します。
+顔を割り当てたら、 **PersonGroup** をトレーニングして、その各 **Person** オブジェクトに関連付けられている視覚的特徴を識別できるようにする必要があります。 次のコードは、非同期の **train** メソッドを呼び出し、結果をポーリングして、状態をコンソールに出力します。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_train)]
 
@@ -169,7 +175,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 ### <a name="get-a-test-image"></a>テスト画像を取得する
 
-次のコードは、プロジェクトのルートで画像 _test-image-person-group.jpg_ を探し、画像内の顔を検出します。 この画像は、**PersonGroup** の管理に使用される画像と同じ場所 (https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images ) にあります。
+次のコードは、プロジェクトのルートで画像 _test-image-person-group.jpg_ を探し、画像内の顔を検出します。 この画像は、 **PersonGroup** の管理に使用される画像と同じ場所 (https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images ) にあります。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_identify_testimage)]
 

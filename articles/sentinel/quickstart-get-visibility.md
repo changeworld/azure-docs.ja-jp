@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: bdd3f543c948ac2825b836fdbedd4c0f0d713b2c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: affefb302d602e9069a903fa5f6a0fbae78992b9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208228"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516955"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>クイック スタート:Azure Sentinel の概要
 
@@ -80,10 +80,10 @@ ms.locfileid: "92208228"
 新しいブックを最初から作成するか、組み込みのブックを新しいブックのベースとして使用することができます。
 
 1. 新しいブックを最初から作成するには、 **[ブック]** 、 **[+New workbook]\(+ 新しいブック\)** の順に選択します。
-2. ブックを作成したサブスクリプションを選択し、わかりやすい名前を付けます。 各ブックは他のブックと同様に Azure リソースであり、アクセスできるユーザーを定義および制限するためにロールを割り当てることができます (RBAC)。 
+2. ブックを作成したサブスクリプションを選択し、わかりやすい名前を付けます。 各ブックは他のブックと同様に Azure リソースであり、アクセスできるユーザーを定義および制限するためにロールを割り当てることができます (Azure RBAC)。 
 3. ブックに表示して視覚化をピン留めできるようにするには、共有する必要があります。 **[共有]** 、 **[ユーザーの管理]** の順にクリックします。 
  
-1. 他の Azure リソースと同様に、 **[Check access]\(アクセスの確認\)** および **[ロールの割り当て]** を使用します。 詳細については、[RBAC を使用した Azure ブックの共有](../azure-portal/azure-portal-dashboard-share-access.md)に関する記事を参照してください。
+1. 他の Azure リソースと同様に、 **[Check access]\(アクセスの確認\)** および **[ロールの割り当て]** を使用します。 詳細については、[Azure RBAC を使用した Azure ブックの共有](../azure-portal/azure-portal-dashboard-share-access.md)に関する記事を参照してください。
 
 
 ## <a name="new-workbook-examples"></a>新しいブックの例

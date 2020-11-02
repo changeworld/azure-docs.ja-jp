@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: include
-ms.date: 10/06/2020
+ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: ceb33a747b987898668e315518c3ba7a2b02efcc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: aad1be52ae05573d565d960d914dafdf824a4de9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91989553"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886640"
 ---
 .NET 用 Face クライアント ライブラリを使用して顔認識を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Face サービスは、画像内の人間の顔を検出および認識するための高度なアルゴリズムへのアクセスを提供します。
 
@@ -46,11 +46,11 @@ Visual Studio を使用して、新しい .NET Core アプリケーションを�
 
 ### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする 
 
-新しいプロジェクトを作成したら、**ソリューション エクスプローラー**でプロジェクト ソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択し、 **[プレリリースを含める]** をオンにして、`Microsoft.Azure.CognitiveServices.Vision.Face` を検索します。 バージョン `2.6.0-preview.1` を選択し、 **[インストール]** を選択します。 
+新しいプロジェクトを作成したら、 **ソリューション エクスプローラー** でプロジェクト ソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択し、 **[プレリリースを含める]** をオンにして、`Microsoft.Azure.CognitiveServices.Vision.Face` を検索します。 バージョン `2.6.0-preview.1` を選択し、 **[インストール]** を選択します。 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-コンソール ウィンドウ (cmd、PowerShell、Bash など) で、`dotnet new` コマンドを使用し、`face-quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイル (*program.cs*) を使用する単純な "Hello World" C# プロジェクトが作成されます。 
+コンソール ウィンドウ (cmd、PowerShell、Bash など) で、`dotnet new` コマンドを使用し、`face-quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイル ( *program.cs* ) を使用する単純な "Hello World" C# プロジェクトが作成されます。 
 
 ```console
 dotnet new console -n face-quickstart
@@ -94,7 +94,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0
 
 
 > [!IMPORTANT]
-> Azure Portal にアクセスします。 「**前提条件**」セクションで作成した [製品名] リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
+> Azure Portal にアクセスします。 「 **前提条件** 」セクションで作成した [製品名] リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
 >
 > 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)に関するページを参照してください。
 
@@ -151,6 +151,9 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect)]
 
+> [!TIP]
+> また、ローカルの画像から顔を検出することもできます。 [IFaceOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ifaceoperations?view=azure-dotnet) のメソッドを参照してください ( **DetectWithStreamAsync** など)。
+
 ### <a name="display-detected-face-data"></a>検出された顔データを表示する
 
 `DetectFaceExtract` メソッドの残りの部分では、検出された各顔の属性データが解析されて出力されます。 各属性は、元の顔検出 API 呼び出しで個別に指定する必要があります ( **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** リストで)。 次のコードではすべての属性が処理されますが、通常、使用する必要があるのは 1 個または数個だけです。
@@ -201,6 +204,9 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_create)]
 
+> [!TIP]
+> ローカル画像から **PersonGroup** を作成することもできます。 [IPersonGroupPerson](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ipersongroupperson?view=azure-dotnet) のメソッドを参照してください ( **AddFaceFromStreamAsync** など)。
+
 ### <a name="train-the-persongroup"></a>PersonGroup をトレーニングする
 
 画像から顔データを抽出して個別の **Person** オブジェクトに分類したら、各 **Person** オブジェクトに関連付けられた視覚的特徴を識別できるよう **PersonGroup** をトレーニングする必要があります。 次のコードは、非同期の **train** メソッドを呼び出し、結果をポーリングして、状態をコンソールに出力します。
@@ -211,11 +217,11 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0
 
 ### <a name="identify-faces"></a>顔を識別する
 
-次のコードは、ソース画像を受け取って、その画像で検出されたすべての顔のリストを作成します。 それらの顔が、**PersonGroup** と照らして識別されることになります。
+次のコードは、ソース画像を受け取って、その画像で検出されたすべての顔のリストを作成します。 それらの顔が、 **PersonGroup** と照らして識別されることになります。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_identify_sources)]
 
-次のコード スニペットは、**IdentifyAsync** 操作を呼び出してその結果をコンソールに出力します。 ここでは、このサービスによって、ソース画像に含まれるそれぞれの顔が、指定された **PersonGroup** 内の **Person** と照合されます。 これにより、識別メソッドが終了します。
+次のコード スニペットは、 **IdentifyAsync** 操作を呼び出してその結果をコンソールに出力します。 ここでは、このサービスによって、ソース画像に含まれるそれぞれの顔が、指定された **PersonGroup** 内の **Person** と照合されます。 これにより、識別メソッドが終了します。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_identify)]
 

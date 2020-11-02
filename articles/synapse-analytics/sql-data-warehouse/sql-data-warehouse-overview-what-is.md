@@ -10,16 +10,16 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 27311270c1383a54192d072d0e152c7cf1a58225
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ce4efe0250ea1b85e2e2d77b7ee69bdf3dbcab26
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85200955"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480397"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (旧称 SQL DW) とは
 
-> [!NOTE] 
+> [!NOTE]
 >詳細については、[Azure Synapse (ワークスペース プレビュー) のドキュメント](../overview-what-is.md)を参照してください。
 >
 
@@ -40,7 +40,7 @@ Synapse SQL プールは、Azure Synapse で一般提供されているエンタ
 
 SQL プールは、Synapse SQL を使用するときにプロビジョニングされる分析リソースのコレクションを表します。 SQL プールのサイズは、Data Warehouse ユニット (DWU) によって決まります。
 
-簡単な [PolyBase](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL クエリを使用してビッグ データをインポートしてから、MPP の機能を利用してハイ パフォーマンスの分析を実行します。 統合と分析を進めると、Synapse SQL プールは、企業がより迅速で確実な分析情報を得るために信頼できる唯一の真実になります。  
+簡単な [PolyBase](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL クエリを使用してビッグ データをインポートしてから、分散クエリ エンジンの機能を利用してハイ パフォーマンスの分析を実行します。 データの統合と分析を進めると、Synapse SQL は、企業がより迅速で確実な分析情報を得るために信頼できる唯一の真実になります。 
 
 ## <a name="key-component-of-a-big-data-solution"></a>ビッグ データ ソリューションの主要コンポーネント
 

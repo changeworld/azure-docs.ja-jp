@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Translator, Translator サービス, テキストの翻訳, テキストの表記変換, 言語の検出
-ms.openlocfilehash: e5b0bc17e8df1d82fb23a098f857be4fea13b982
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ca86ce1dc015c8d7ee3bc83a6d7e3279a146f195
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318842"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517040"
 ---
 # <a name="quickstart-get-started-with-translator"></a>クイックスタート: Translator を使ってみる
 
@@ -59,7 +59,7 @@ ms.locfileid: "91318842"
 # <a name="java"></a>[Java](#tab/java)
 
 * 自分のプロジェクト用に作業ディレクトリを作成します (例: `mkdir sample-project`)。
-* Gradle を使用して自分のプロジェクトを初期化します (`gradle init --type basic`)。 **DSL** を選択するよう求められたら、**Kotlin** を選択します。
+* Gradle を使用して自分のプロジェクトを初期化します (`gradle init --type basic`)。 **DSL** を選択するよう求められたら、 **Kotlin** を選択します。
 * `build.gradle.kts` を更新します。 サンプルに応じて `mainClassName` を更新する必要があることに注意してください。
   ```java
   plugins {
@@ -123,7 +123,7 @@ REST を介して Translator サービスを呼び出すときは、必ず各要
 
 ## <a name="keys-and-endpoints"></a>[Keys and endpoints]\(キーとエンドポイント)
 
-このページのサンプルでは、わかりやすくするために、ハードコーディングされたキーとエンドポイントを使用しています。 **終わったらコードからキーを削除し**、**公開しない**よう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)に関するページを参照してください。
+このページのサンプルでは、わかりやすくするために、ハードコーディングされたキーとエンドポイントを使用しています。 **終わったらコードからキーを削除し** 、 **公開しない** よう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)に関するページを参照してください。
 
 ## <a name="translate-text"></a>テキストを翻訳する 
 
@@ -2440,6 +2440,12 @@ print(json.dumps(response, sort_keys=True, ensure_ascii=False, indent=4, separat
     }
 ]
 ```
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+### <a name="java-users"></a>Java ユーザー
+
+接続の問題が発生した場合、SSL 証明書の有効期限が切れている可能性があります。 この問題を解決するには、[DigiCertGlobalRootG2.crt](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt) をプライベート ストアにインストールします。 
 
 ## <a name="next-steps"></a>次の手順
 

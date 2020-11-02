@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: defe7cb8ec727ac358789368f0897639fa109b16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 592d96195d1c70c73e32589fe764a8747b0b66e6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308607"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546774"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-offline-using-dms"></a>チュートリアル:DMS を使用してオフラインで SQL Server を Azure SQL Managed Instance に移行する
 
@@ -66,7 +66,7 @@ Azure Database Migration Service を使用して、SQL Server インスタンス
     >[!NOTE]
     >既定では Azure Database Migration Service でサポートされているのは、SQL ログインの移行のみです。 ただし、次の方法により Windows ログインを移行する機能を有効にすることができます。
     >
-    >- ターゲット SQL マネージド インスタンスに AAD 読み取りアクセス権が付与されていることを確認します。これは、**会社の管理者**または**グローバル管理者**のロールを持つユーザーが Azure portal を介して構成できます。
+    >- ターゲット SQL マネージド インスタンスに AAD 読み取りアクセス権が付与されていることを確認します。これは、 **会社の管理者** または **グローバル管理者** のロールを持つユーザーが Azure portal を介して構成できます。
     >- Azure portal ([構成] ページ) を介して設定された Windows ユーザーまたはグループのログイン移行を有効にするように、ご利用の Azure Database Migration Service インスタンスを構成します。 この設定を有効にしたら、サービスを再起動して変更を有効にします。
     >
     > サービスを再起動すると、Windows ユーザーまたはグループのログインが、移行可能なログインの一覧に表示されます。 移行する Windows ユーザーまたはグループのログインについては、関連付けられているドメイン名を指定するように求められます。 サービス ユーザー アカウント (ドメイン名 NT AUTHORITY を含むアカウント) と仮想ユーザー アカウント (ドメイン名 NT SERVICE を含むアカウント名) はサポートされていません。
@@ -89,13 +89,13 @@ Azure Database Migration Service を使用して、SQL Server インスタンス
 
     ![リソース プロバイダーの表示](media/tutorial-sql-server-to-managed-instance/portal-select-resource-provider.png)
 
-3. 移行を検索し、**Microsoft.DataMigration** の右側にある **[登録]** を選択します。
+3. 移行を検索し、 **Microsoft.DataMigration** の右側にある **[登録]** を選択します。
 
     ![リソース プロバイダーの登録](media/tutorial-sql-server-to-managed-instance/portal-register-resource-provider.png)
 
 ## <a name="create-an-azure-database-migration-service-instance"></a>Azure Database Migration Service インスタンスを作成する
 
-1. Azure portal で **[+ リソースの作成]** を選択し、**Azure Database Migration Service** を検索して、ドロップダウン リストから **[Azure Database Migration Service]** を選択します。
+1. Azure portal で **[+ リソースの作成]** を選択し、 **Azure Database Migration Service** を検索して、ドロップダウン リストから **[Azure Database Migration Service]** を選択します。
 
     ![Azure Marketplace](media/tutorial-sql-server-to-managed-instance/portal-marketplace.png)
 
@@ -127,7 +127,7 @@ Azure Database Migration Service を使用して、SQL Server インスタンス
 
 サービスのインスタンスが作成されたら、Azure portal 内でそのサービスを探して開き、新しい移行プロジェクトを作成します。
 
-1. Azure ポータルで、 **[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、**Azure Database Migration Service** を選択します。
+1. Azure ポータルで、 **[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、 **Azure Database Migration Service** を選択します。
 
     ![Azure Database Migration Service のすべてのインスタンスを検索する](media/tutorial-sql-server-to-managed-instance/dms-search.png)
 
@@ -167,7 +167,7 @@ Azure Database Migration Service を使用して、SQL Server インスタンス
 
 ## <a name="specify-target-details"></a>ターゲット詳細を指定する
 
-1. **[移行のターゲットの詳細]** 画面で、ターゲットの接続の詳細を指定します。このターゲットは、**AdventureWorks2012** データベースの移行先である、事前プロビジョニング済みの SQL Managed Instance です。
+1. **[移行のターゲットの詳細]** 画面で、ターゲットの接続の詳細を指定します。このターゲットは、 **AdventureWorks2012** データベースの移行先である、事前プロビジョニング済みの SQL Managed Instance です。
 
     SQL Managed Instance のプロビジョニングがまだ済んでいない場合は、インスタンスのプロビジョニングに役立つ[リンク](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)を選択します。 そのままプロジェクトの作成を続行し、SQL Managed Instance の準備ができたら、この特定のプロジェクトに戻って移行を実行できます。
 
@@ -188,7 +188,7 @@ Azure Database Migration Service を使用して、SQL Server インスタンス
 1. **[ログインの選択]** 画面で、移行するログインを選択します。
 
     >[!NOTE]
-    >既定では Azure Database Migration Service でサポートされているのは、SQL ログインの移行のみです。 Windows ログインの移行に対するサポートを有効にするには、このチュートリアルの「**前提条件**」セクションを参照してください。
+    >既定では Azure Database Migration Service でサポートされているのは、SQL ログインの移行のみです。 Windows ログインの移行に対するサポートを有効にするには、このチュートリアルの「 **前提条件** 」セクションを参照してください。
 
     ![ログインを選択する](media/tutorial-sql-server-to-managed-instance/select-logins.png)
 
@@ -233,7 +233,7 @@ Azure Database Migration Service を使用して、SQL Server インスタンス
 
 1. 移行アクティビティ画面で、 **[更新]** を選択して表示を更新します。
 
-   ![進行中の移行アクティビティ](media/tutorial-sql-server-to-managed-instance/dms-monitor-migration1.png)
+   ![移行アクティビティ画面と [更新] ボタンを示すスクリーンショット。](media/tutorial-sql-server-to-managed-instance/dms-monitor-migration1.png)
 
     データベースとログインのカテゴリを展開して、該当するサーバー オブジェクトの移行状態を監視できます。
 

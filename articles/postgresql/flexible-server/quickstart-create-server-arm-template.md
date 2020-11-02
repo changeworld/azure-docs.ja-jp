@@ -2,28 +2,28 @@
 title: クイック スタート:Azure DB for PostgresSQL フレキシブル サーバーを作成する - ARM テンプレート
 description: このクイックスタートでは、ARM テンプレートを使用して Azure Database for PostgresSQL フレキシブル サーバーを作成する方法を説明します。
 author: mksuni
-ms.service: mysql
+ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: sumuth
-ms.date: 09/22/2020
-ms.openlocfilehash: a52f88f5ca325027cbac53d2c7e927bcf30da994
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/23/2020
+ms.openlocfilehash: 3eccb3fb4f4c65896f3956e265509258525c1ac9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90945830"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535758"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---flexible-server"></a>クイック スタート:ARM テンプレートを使用して Azure Database for PostgreSQL - フレキシブル サーバーを作成する
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL - フレキシブル サーバーはプレビュー段階です
 
-フレキシブル サーバーは、高可用性の PostgreSQL データベースをクラウドで実行、管理、およびスケーリングするために使用されるマネージド サービスです。 ARM テンプレートを使用すると、サーバーに複数のサーバーまたは複数のデータベースをデプロイするための PostgreSQL フレキシブル サーバーをプロビジョニングできます。
+フレキシブル サーバーは、高可用性の PostgreSQL データベースをクラウドで実行、管理、およびスケーリングするために使用されるマネージド サービスです。 Azure Resource Manager テンプレート (ARM テンプレート) を使用すると、複数のサーバー、または 1 つのサーバー上の複数のデータベースをデプロイするための PostgreSQL フレキシブル サーバーをプロビジョニングできます。
 
-Azure Resource Manager は、Azure のデプロイおよび管理サービスです。 お使いの Azure アカウント内のリソースを作成、更新、および削除できる管理レイヤーを提供します。 アクセス制御、ロック、タグなどの管理機能を使用して、デプロイ後にリソースを保護および整理します。
+[!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure Resource Manager テンプレートについては、[テンプレートのデプロイの概要](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)に関するページを参照してください。
+Azure Resource Manager は、Azure のデプロイおよび管理サービスです。 お使いの Azure アカウント内のリソースを作成、更新、および削除できる管理レイヤーを提供します。 アクセス制御、ロック、タグなどの管理機能を使用して、デプロイ後にリソースを保護および整理します。 Azure Resource Manager テンプレートについては、[テンプレートのデプロイの概要](../../azure-resource-manager/templates/overview.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,133 +31,133 @@ Azure Resource Manager テンプレートについては、[テンプレート�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-Azure Database for PostgresSQL サーバーは、リージョン内の 1 つ以上のデータベースの親リソースです。 データベースに適用される管理ポリシーのスコープ (ログイン、ファイアウォール、ユーザー、ロール、構成など) を提供します。
+Azure Database for PostgreSQL サーバーは、リージョン内の 1 つ以上のデータベースの親リソースです。 データベースに適用される管理ポリシーのスコープ (ログイン、ファイアウォール、ユーザー、ロール、構成) を提供します。
+
+_postgres-flexible-server-template.json_ ファイルを作成し、そこに次の JSON スクリプトをコピーします。
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "administratorLogin": {
+      "type": "String"
+    },
+    "administratorLoginPassword": {
+      "type": "SecureString"
+    },
+    "location": {
+      "type": "String"
+    },
+    "serverName": {
+      "type": "String"
+    },
+    "serverEdition": {
+      "type": "String"
+    },
+    "vCores": {
+      "type": "Int"
+    },
+    "storageSizeMB": {
+      "type": "Int"
+    },
+    "standbyCount": {
+      "type": "Int"
+    },
+    "availabilityZone": {
+      "type": "String"
+    },
+    "version": {
+      "type": "String"
+    },
+    "tags": {
+      "defaultValue": {},
+      "type": "Object"
+    },
+    "firewallRules": {
+      "defaultValue": {},
+      "type": "Object"
+    },
+    "vnetData": {
+      "defaultValue": {},
+      "type": "Object"
+    },
+    "backupRetentionDays": {
+      "type": "Int"
+    }
+  },
+  "variables": {
+    "api": "2020-02-14-privatepreview",
+    "firewallRules": "[parameters('firewallRules').rules]",
+    "publicNetworkAccess": "[if(empty(parameters('vnetData')), 'Enabled', 'Disabled')]",
+    "vnetDataSet": "[if(empty(parameters('vnetData')), json('{ \"vnetId\": \"\", \"vnetName\": \"\", \"vnetResourceGroup\": \"\", \"subnetName\": \"\" }'), parameters('vnetData'))]",
+    "finalVnetData": "[json(concat('{ \"DelegatedVnetID\": \"', variables('vnetDataSet').vnetId, '\", \"DelegatedVnetName\": \"', variables('vnetDataSet').vnetName, '\", \"DelegatedVnetResourceGroup\": \"', variables('vnetDataSet').vnetResourceGroup, '\", \"DelegatedSubnetName\": \"', variables('vnetDataSet').subnetName, '\"}'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.DBforPostgreSQL/flexibleServers",
+      "apiVersion": "[variables('api')]",
+      "name": "[parameters('serverName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "GP_D4s_v3",
+        "tier": "[parameters('serverEdition')]",
+        "capacity": "[parameters('vCores')]"
+      },
+      "tags": "[parameters('tags')]",
+      "properties": {
+        "version": "[parameters('version')]",
+        "administratorLogin": "[parameters('administratorLogin')]",
+        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+        "publicNetworkAccess": "[variables('publicNetworkAccess')]",
+        "VnetInjArgs": "[if(empty(parameters('vnetData')), json('null'), variables('finalVnetData'))]",
+        "standbyCount": "[parameters('standbyCount')]",
+        "storageProfile": {
+          "storageMB": "[parameters('storageSizeMB')]",
+          "backupRetentionDays": "[parameters('backupRetentionDays')]"
+        },
+        "availabilityZone": "[parameters('availabilityZone')]"
+      }
+    },
+    {
+      "condition": "[greater(length(variables('firewallRules')), 0)]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-08-01",
+      "name": "[concat('firewallRules-', copyIndex())]",
+      "copy": {
+        "name": "firewallRulesIterator",
+        "count": "[if(greater(length(variables('firewallRules')), 0), length(variables('firewallRules')), 1)]",
+        "mode": "Serial"
+      },
+      "dependsOn": [
+        "[concat('Microsoft.DBforPostgreSQL/flexibleServers/', parameters('serverName'))]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.DBforPostgreSQL/flexibleServers/firewallRules",
+              "name": "[concat(parameters('serverName'),'/',variables('firewallRules')[copyIndex()].name)]",
+              "apiVersion": "[variables('api')]",
+              "properties": {
+                "StartIpAddress": "[variables('firewallRules')[copyIndex()].startIPAddress]",
+                "EndIpAddress": "[variables('firewallRules')[copyIndex()].endIPAddress]"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
 
 テンプレートでは、次のリソースが定義されています。
 
 - Microsoft.DBforPostgreSQL/flexibleServers
-
-```postgres-flexible-server-template.json``` ファイルを作成し、この ```json``` スクリプトをそこにコピーします。
-
-```json
-{
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "administratorLogin": {
-            "type": "String"
-        },
-        "administratorLoginPassword": {
-            "type": "SecureString"
-        },
-        "location": {
-            "type": "String"
-        },
-        "serverName": {
-            "type": "String"
-        },
-        "serverEdition": {
-            "type": "String"
-        },
-        "vCores": {
-            "type": "Int"
-        },
-        "storageSizeMB": {
-            "type": "Int"
-        },
-        "standbyCount": {
-            "type": "Int"
-        },
-        "availabilityZone": {
-            "type": "String"
-        },
-        "version": {
-            "type": "String"
-        },
-        "tags": {
-            "defaultValue": {},
-            "type": "Object"
-        },
-        "firewallRules": {
-            "defaultValue": {},
-            "type": "Object"
-        },
-        "vnetData": {
-            "defaultValue": {},
-            "type": "Object"
-        },
-        "backupRetentionDays": {
-            "type": "Int"
-        }
-    },
-    "variables": {
-        "api": "2020-02-14-privatepreview",
-        "firewallRules": "[parameters('firewallRules').rules]",
-        "publicNetworkAccess": "[if(empty(parameters('vnetData')), 'Enabled', 'Disabled')]",
-        "vnetDataSet": "[if(empty(parameters('vnetData')), json('{ \"vnetId\": \"\", \"vnetName\": \"\", \"vnetResourceGroup\": \"\", \"subnetName\": \"\" }'), parameters('vnetData'))]",
-        "finalVnetData": "[json(concat('{ \"DelegatedVnetID\": \"', variables('vnetDataSet').vnetId, '\", \"DelegatedVnetName\": \"', variables('vnetDataSet').vnetName, '\", \"DelegatedVnetResourceGroup\": \"', variables('vnetDataSet').vnetResourceGroup, '\", \"DelegatedSubnetName\": \"', variables('vnetDataSet').subnetName, '\"}'))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.DBforPostgreSQL/flexibleServers",
-            "apiVersion": "[variables('api')]",
-            "name": "[parameters('serverName')]",
-            "location": "[parameters('location')]",
-            "tags": "[parameters('tags')]",
-            "sku": {
-                "name": "GP_D4s_v3",
-                "tier": "[parameters('serverEdition')]",
-                "capacity": "[parameters('vCores')]"
-            },
-            "properties": {
-                "version": "[parameters('version')]",
-                "administratorLogin": "[parameters('administratorLogin')]",
-                "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
-                "publicNetworkAccess": "[variables('publicNetworkAccess')]",
-                "VnetInjArgs": "[if(empty(parameters('vnetData')), json('null'), variables('finalVnetData'))]",
-                "standbyCount": "[parameters('standbyCount')]",
-                "storageProfile": {
-                    "storageMB": "[parameters('storageSizeMB')]",
-                    "backupRetentionDays": "[parameters('backupRetentionDays')]"
-                },
-                "availabilityZone": "[parameters('availabilityZone')]"
-            }
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-08-01",
-            "name": "[concat('firewallRules-', copyIndex())]",
-            "dependsOn": [
-                "[concat('Microsoft.DBforPostgreSQL/flexibleServers/', parameters('serverName'))]"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "resources": [
-                        {
-                            "type": "Microsoft.DBforPostgreSQL/flexibleServers/firewallRules",
-                            "name": "[concat(parameters('serverName'),'/',variables('firewallRules')[copyIndex()].name)]",
-                            "apiVersion": "[variables('api')]",
-                            "properties": {
-                                "StartIpAddress": "[variables('firewallRules')[copyIndex()].startIPAddress]",
-                                "EndIpAddress": "[variables('firewallRules')[copyIndex()].endIPAddress]"
-                            }
-                        }
-                    ]
-                }
-            },
-            "copy": {
-                "name": "firewallRulesIterator",
-                "count": "[if(greater(length(variables('firewallRules')), 0), length(variables('firewallRules')), 1)]",
-                "mode": "Serial"
-            },
-            "condition": "[greater(length(variables('firewallRules')), 0)]"
-        }
-    ]
-}
-```
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
@@ -180,36 +180,36 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 Read-Host -Prompt "Press [ENTER] to continue ..."
 ```
 ---
-## <a name="view-the-deployed-resources"></a>デプロイされたリソースを表示する
+
+## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 
 サーバーが Azure で作成されたかどうかを確認するには、次の手順に従います。
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-1. [Azure portal](https://portal.azure.com) 上で、**Azure Database for PostgreSQL フレキシブル サーバー (プレビュー)** を検索して選択します。
-
-2. データベースの一覧で、新しいサーバーを選択し、サーバーを管理するための **[概要]** ページを表示します。
+1. [Azure portal](https://portal.azure.com) 上で、 **Azure Database for PostgreSQL フレキシブル サーバー (プレビュー)** を検索して選択します。
+1. データベースの一覧で、新しいサーバーを選択し、サーバーを管理するための **[概要]** ページを表示します。
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-Azure Database for MySQL フレキシブル サーバーの詳細を表示するには、新しいサーバーの名前を入力する必要があります。
+Azure Database for PostgreSQL フレキシブル サーバーの詳細を表示するには、新しいサーバーの名前を入力する必要があります。
 
 ```azurepowershell-interactive
-$serverName = Read-Host -Prompt "Enter the name of your Azure Database for MySQL server"
+$serverName = Read-Host -Prompt "Enter the name of your Azure Database for PostgreSQL server"
 Get-AzResource -ResourceType "Microsoft.DBforPostgreSQL/flexibleServers" -Name $serverName | ft
 Write-Host "Press [ENTER] to continue..."
 ```
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
-Azure Database for MySQL フレキシブル サーバーの詳細を表示するには、新しいサーバーの名前とリソース グループを入力する必要があります。
+Azure Database for PostgreSQL フレキシブル サーバーの詳細を表示するには、新しいサーバーの名前とリソース グループを入力する必要があります。
 
 ```azurecli-interactive
-echo "Enter your Azure Database for MySQL Flexible server name:" &&
+echo "Enter your Azure Database for PostgreSQL Flexible Server name:" &&
 read serverName &&
-echo "Enter the resource group where the Azure Database for MySQL Flexible server exists:" &&
+echo "Enter the resource group where the Azure Database for PostgreSQL Flexible Server exists:" &&
 read resourcegroupName &&
-az resource show --resource-group $resourcegroupName --name $serverName --resource-type "Microsoft.DbForMySQL/flexibleServers"
+az resource show --resource-group $resourcegroupName --name $serverName --resource-type "Microsoft.DBforPostgreSQL/flexibleServers"
 ```
 
 ---
@@ -225,7 +225,7 @@ az resource show --resource-group $resourcegroupName --name $serverName --resour
 [ポータル](https://portal.azure.com)で、削除するリソース グループを選択します。
 
 1. **[リソース グループの削除]** を選択します。
-2. 削除を確認するには、リソース グループの名前を入力します。
+1. 削除を確認するには、リソース グループの名前を入力します。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -240,6 +240,7 @@ az group delete --name ExampleResourceGroup
 ```
 ----
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ
+
 > [!div class="nextstepaction"]
 > [ダンプと復元を使用してデータベースを移行する](../howto-migrate-using-dump-and-restore.md)

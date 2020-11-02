@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/29/2019
+ms.date: 10/20/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9427ec4530ac249d5b8059d04fc85f1183c0081c
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ced33bb17e9c24faa127b27adacce9cab011e1d8
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123893"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426263"
 ---
 ::: zone target="docs"
 
@@ -74,11 +74,11 @@ Windows Server ホスト コンピューターを使用している場合は、�
 
     ![SMB 共有の共有資格情報を取得する](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
-2. [共有にアクセスしてデータをコピーする] ダイアログ ボックスで、共有に対応する **[ユーザー名]** と **[パスワード]** をコピーします。 **[OK]** を選択します。
+2. [共有にアクセスしてデータをコピーする] ダイアログ ボックスで、共有に対応する **[ユーザー名]** と **[パスワード]** をコピーします。 パスワードに特殊文字が含まれている場合は、その前後に二重引用符を追加してください。 **[OK]** をクリックします。
     
     ![共有のユーザー名とパスワード](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
-3. 自分のストレージ アカウントに関連付けられている共有 (次の例の場合は、*utsac1*) にホスト コンピューターからアクセスするために、コマンド ウィンドウを開きます。 コマンド プロンプトに、次のコマンドを入力します。
+3. 自分のストレージ アカウントに関連付けられている共有 (次の例の場合は、 *utsac1* ) にホスト コンピューターからアクセスするために、コマンド ウィンドウを開きます。 コマンド プロンプトに、次のコマンドを入力します。
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -103,7 +103,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
     
     ![エクスプローラーに表示されている共有](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
-    **常にコピーしようとするファイル用のフォルダーを共有下に作成してから、ファイルをそのフォルダーにコピーします**。 ブロック BLOB およびページ BLOB の共有の下に作成したフォルダーは、データが BLOB としてアップロードされるコンテナーになります。 ストレージ アカウント内の *root* フォルダーに直接ファイルをコピーすることはできません。
+    **常にコピーしようとするファイル用のフォルダーを共有下に作成してから、ファイルをそのフォルダーにコピーします** 。 ブロック BLOB およびページ BLOB の共有の下に作成したフォルダーは、データが BLOB としてアップロードされるコンテナーになります。 ストレージ アカウント内の *root* フォルダーに直接ファイルをコピーすることはできません。
     
 Linux クライアントを使用している場合は、次のコマンドを使用して、SMB 共有をマウントします。 以下の "vers" パラメーターは、Linux ホストがサポートしている SMB のバージョンです。 次のコマンドで、適切なバージョンを指定します。 Data Box でサポートされている SMB のバージョンについては、「[Linux クライアントでサポートされるファイル システム](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients)」を参照してください 
 
@@ -279,7 +279,7 @@ NFS 経由でデータをコピーするには、次のようにします。
 
 REST 経由でデータをコピーするには、次のようにします。
 
-1. REST API シリーズ経由で Data Box BLOB ストレージを使用してデータをコピーするには、*http* または *https* 経由で接続できます。
+1. REST API シリーズ経由で Data Box BLOB ストレージを使用してデータをコピーするには、 *http* または *https* 経由で接続できます。
 2. データを Data Box BLOB ストレージにコピーするには、AzCopy を使用できます。
 
 具体的な手順については、「[チュートリアル: REST API 経由で Azure Data Box BLOB ストレージにデータをコピーする](data-box-deploy-copy-data-via-nfs.md)」を参照してください。

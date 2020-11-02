@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: fe0f2b0efa3f089398493cf30012e34097e065ec
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 161348f7566ff64858d563f34ad8f3f4c7511adf
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91944281"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459104"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と F5 の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91944281"
 * ユーザーが自分の Azure AD アカウントを使用して F5 に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,7 +59,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="access-guided-configuration"></a>アクセス ガイド付き構成
 
-* アクセス ガイド付き構成は、F5 TMOS バージョン 13.1.0.8 以降でサポートされます。 BIG-IP システムで実行されているバージョンが 13.1.0.8 未満である場合は、「**詳細な構成**」セクションを参照してください。
+* アクセス ガイド付き構成は、F5 TMOS バージョン 13.1.0.8 以降でサポートされます。 BIG-IP システムで実行されているバージョンが 13.1.0.8 未満である場合は、「 **詳細な構成** 」セクションを参照してください。
 
 * アクセス ガイド付き構成により、効率化されたまったく新しいユーザー エクスペリエンスが得られます。 このワークフローベースのアーキテクチャにより、選択したトポロジに合わせて調整された直感的で再入可能な構成ステップが提供されます。
 
@@ -86,7 +86,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* F5 では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* F5 では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
 * F5 SSO は、次の 3 つの異なる方法で構成できます。
 
 - [Kerberos アプリケーション用に F5 シングル サインオンを構成する](#configure-f5-single-sign-on-for-kerberos-application)
@@ -117,7 +117,7 @@ Azure AD への F5 の統合を構成するには、ギャラリーからマネ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**F5**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **F5** 」と入力します。
 1. 結果のパネルから **[F5]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>F5 の Azure AD シングル サインオンの構成とテスト
@@ -211,11 +211,11 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
 1. 後で設定プロセスで使用するメタデータ証明書を F5 にインポートする必要があります。
 
-1. **[System]\(システム\) > [Certificate Management]\(証明書の管理\) > [Traffic Certificate Management]\(トラフィック証明書管理\) > [SSL Certificate List]\(SSL 証明書リスト\)** の順に移動します。 右隅の **[Import]\(インポート\)** を選択します。 **証明書の名前**を指定します (この後の構成で参照されます)。 **[Certificate Source]\(証明書ソース\)** で [Upload File]\(ファイルのアップロード\) を選択し、SAML シングル サインオンの構成時に Azure からダウンロードした証明書を指定します。 **[インポート]** をクリックします。
+1. **[System]\(システム\) > [Certificate Management]\(証明書の管理\) > [Traffic Certificate Management]\(トラフィック証明書管理\) > [SSL Certificate List]\(SSL 証明書リスト\)** の順に移動します。 右隅の **[Import]\(インポート\)** を選択します。 **証明書の名前** を指定します (この後の構成で参照されます)。 **[Certificate Source]\(証明書ソース\)** で [Upload File]\(ファイルのアップロード\) を選択し、SAML シングル サインオンの構成時に Azure からダウンロードした証明書を指定します。 **[インポート]** をクリックします。
 
     ![証明書名が強調表示され、[Upload File]\(ファイルのアップロード\) と [Import]\(インポート\) ボタンが選択されている [SSL Certificate/Key Source]\(SSL 証明書/キー ソース\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure01.png) 
 
-1. 加えて、アプリケーション ホスト名の SSL 証明書が必要となります。 **[System]\(システム\) > [Certificate Management]\(証明書の管理\) > [Traffic Certificate Management]\(トラフィック証明書管理\) > [SSL Certificate List]\(SSL 証明書リスト\)** の順に移動します。 右隅の **[Import]\(インポート\)** を選択します。 **[Import Type]\(インポートの種類\)** は **[PKCS 12(IIS)]** になります。 **キー名** (この後の構成で参照されます) を指定し、PFX ファイルを指定します。 PFX の**パスワード**を指定します。 **[インポート]** をクリックします。
+1. 加えて、アプリケーション ホスト名の SSL 証明書が必要となります。 **[System]\(システム\) > [Certificate Management]\(証明書の管理\) > [Traffic Certificate Management]\(トラフィック証明書管理\) > [SSL Certificate List]\(SSL 証明書リスト\)** の順に移動します。 右隅の **[Import]\(インポート\)** を選択します。 **[Import Type]\(インポートの種類\)** は **[PKCS 12(IIS)]** になります。 **キー名** (この後の構成で参照されます) を指定し、PFX ファイルを指定します。 PFX の **パスワード** を指定します。 **[インポート]** をクリックします。
 
     >[!NOTE]
     >この例のアプリ名は `Kerbapp.superdemo.live` です。ワイルド カード証明書を使用しており、キー名は `WildCard-SuperDemo.live` です。
@@ -228,22 +228,22 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
     ![[Next]\(次へ\) ボタンが選択された [Guided Configuration - SAML Service Provider]\(ガイド付き構成 - SAML サービス プロバイダー\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure04.png)
 
-1. **構成名**を指定します。 **エンティティ ID** (Azure AD アプリケーションの構成で構成した内容と同じ) を指定します。 **ホスト名**を指定します。 参考のために**説明**を追加します。 それ以外は既定値のままとし、 **[Save & Next]\(保存して次へ\)** をクリックします。
+1. **構成名** を指定します。 **エンティティ ID** (Azure AD アプリケーションの構成で構成した内容と同じ) を指定します。 **ホスト名** を指定します。 参考のために **説明** を追加します。 それ以外は既定値のままとし、 **[Save & Next]\(保存して次へ\)** をクリックします。
 
     ![[Host name]\(ホスト名\) と [Description]\(説明\) のテキスト ボックスが強調表示され、[Save & Next]\(保存して次へ\) ボタンが選択されている [Service Provider Properties]\(サービス プロバイダーのプロパティ\) を示すスクリーンショット。](./media/kerbf5-tutorial/configure05.png) 
 
-1. この例では、新しい仮想サーバーを 192.168.30.200 として作成します。ポートは 443 を使用します。 **[Destination Address]\(接続先のアドレス\)** に仮想サーバーの IP アドレスを指定します。 クライアントの **SSL プロファイル**を選択し、[Create new]\(新規作成\) を選択します。 あらかじめアップロードしておいたアプリケーション証明書 (この例ではワイルド カード証明書) および関連するキーを指定し、 **[Save & Next]\(保存して次へ\)** をクリックします。
+1. この例では、新しい仮想サーバーを 192.168.30.200 として作成します。ポートは 443 を使用します。 **[Destination Address]\(接続先のアドレス\)** に仮想サーバーの IP アドレスを指定します。 クライアントの **SSL プロファイル** を選択し、[Create new]\(新規作成\) を選択します。 あらかじめアップロードしておいたアプリケーション証明書 (この例ではワイルド カード証明書) および関連するキーを指定し、 **[Save & Next]\(保存して次へ\)** をクリックします。
 
     >[!NOTE]
     >この例では、内部 Web サーバーがポート 80 で稼動しており、それを 443 で公開したいと考えています。
 
     ![[Destination Address]\(宛先アドレス\) テキスト ボックスが強調表示され、[Save & Next]\(保存して次へ\) ボタンが選択されている [Virtual Server Properties]\(仮想サーバーのプロパティ\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure06.png)
 
-1. **[Select method to configure your IdP connector]\(IdP コネクタの構成方法を選択してください\)** で [Metadata]\(メタデータ\) を指定し、[Choose File]\(ファイルの選択\) をクリックして、先ほど Azure AD からダウンロードしたメタデータ XML ファイルをアップロードします。 SAML IDP コネクタの一意の**名前**を指定します。 先ほどアップロードした**メタデータ署名証明書**を選択します。 **[Save & Next]\(保存して次へ\)** をクリックします。
+1. **[Select method to configure your IdP connector]\(IdP コネクタの構成方法を選択してください\)** で [Metadata]\(メタデータ\) を指定し、[Choose File]\(ファイルの選択\) をクリックして、先ほど Azure AD からダウンロードしたメタデータ XML ファイルをアップロードします。 SAML IDP コネクタの一意の **名前** を指定します。 先ほどアップロードした **メタデータ署名証明書** を選択します。 **[Save & Next]\(保存して次へ\)** をクリックします。
 
     ![[Name]\(名前\) テキスト ボックスが強調表示され、[Save & Next]\(保存して次へ\) ボタンが選択されている [External Identity Provider Connector Settings]\(外部 ID プロバイダー コネクタの設定\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure07.png)  
 
-1. **[Select a Pool]\(プールの選択\)** で **[Create New]\(新規作成\)** を選択します (または既存のプールを選択します)。 他の値は既定値のままにしてください。    [Pool Servers]\(プール サーバー\) の **[IP Address/Node Name]\(IP アドレス/ノード名\)** に IP アドレスを入力します。 **ポート**を指定します。 **[Save & Next]\(保存して次へ\)** をクリックします。
+1. **[Select a Pool]\(プールの選択\)** で **[Create New]\(新規作成\)** を選択します (または既存のプールを選択します)。 他の値は既定値のままにしてください。    [Pool Servers]\(プール サーバー\) の **[IP Address/Node Name]\(IP アドレス/ノード名\)** に IP アドレスを入力します。 **ポート** を指定します。 **[Save & Next]\(保存して次へ\)** をクリックします。
  
     ![[IP Address/Node Name]\(IP アドレス/ノード名\) テキスト ボックスが強調表示され、[Save & Next]\(保存して次へ\) ボタンが選択されている [Pool Properties]\(プールのプロパティ\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure08.png)
 
@@ -297,7 +297,7 @@ Access Policy Manager (APM) がユーザーの認証に使用するドメイン 
 
    * **[Domain Controller Pool Name]\(ドメイン コントローラーのプール名\)** フィールドに名前を入力します。
 
-   * プール内の**ドメイン コントローラー**を指定するために、それぞれの IP アドレスとホスト名を入力し、 **[Add]\(追加\)** ボタンをクリックします。
+   * プール内の **ドメイン コントローラー** を指定するために、それぞれの IP アドレスとホスト名を入力し、 **[Add]\(追加\)** ボタンをクリックします。
 
    * AAA サーバーの正常性を監視するために、正常性モニターを選択することもできます。この場合に適切なのは **gateway_icmp** モニターのみです。 **[Server Pool Monitor]\(サーバー プール モニター\)** リストから選択してください。
 
@@ -356,7 +356,7 @@ Access Policy Manager (APM) がユーザーの認証に使用するドメイン 
 
      ![選択された [Bind/UnBind IdP Connectors]\(IdP コネクタのバインドまたはバインド解除\) ボタンを示すスクリーンショット。](./media/kerbf5-tutorial/configure27.png)
 
-     c. **[Add New Row]\(新しい行の追加\)** をクリックし、前の手順で作成した**外部 IdP コネクタ**を選択して、 **[Update]\(更新\)** 、 **[OK]** の順にクリックします。
+     c. **[Add New Row]\(新しい行の追加\)** をクリックし、前の手順で作成した **外部 IdP コネクタ** を選択して、 **[Update]\(更新\)** 、 **[OK]** の順にクリックします。
 
      ![[Add New Row]\(新しい行の追加\) ボタンが選択された、[Edit SAML IdPs that use this SP]\(この SP を使用する SAML IdP の編集\) ウィンドウを示すスクリーンショット。](./media/kerbf5-tutorial/configure28.png)
 
@@ -365,7 +365,7 @@ Access Policy Manager (APM) がユーザーの認証に使用するドメイン 
     >[!Note]
     > Kerberos 委任アカウントを作成し、指定する必要があります。 KCD セクションを参照してください (変数リファレンスについては、付録を参照してください)
 
-    * **ユーザー名ソース**: session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
+    * **ユーザー名ソース** : session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
 
     * **[User Realm Source]\(ユーザー領域のソース\)** : session.logon.last.domain
 
@@ -414,7 +414,7 @@ Access Policy Manager (APM) がユーザーの認証に使用するドメイン 
     * **mcget {session.logon.last.username}**
     * **mcget {session.logon.last.password**
 
-1. 新しいノードを追加するために、 **[Local Traffic]\(ローカル トラフィック\) > [Nodes]\(ノード\) > [Node List]\(ノード リスト\) の順に移動して、[Create]\(作成\) をクリックし**、次の情報を入力して **[Finished]\(完了\)** をクリックします。
+1. 新しいノードを追加するために、 **[Local Traffic]\(ローカル トラフィック\) > [Nodes]\(ノード\) > [Node List]\(ノード リスト\) の順に移動して、[Create]\(作成\) をクリックし** 、次の情報を入力して **[Finished]\(完了\)** をクリックします。
 
     * 名前:KerbApp200
     * 説明:KerbApp200
@@ -422,7 +422,7 @@ Access Policy Manager (APM) がユーザーの認証に使用するドメイン 
 
         ![[Name]\(名前\)、[Description]\(説明\)、[Address]\(アドレス\) のテキスト ボックスが強調表示され、[Finished]\(完了\) ボタンが選択された [New Node]\(新しいノード\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure39.png)
 
-1. 新しいプールを作成するために、 **[Local Traffic]\(ローカル トラフィック\) > [Pools]\(プール\) > [Pool List]\(プール リスト\) の順に移動して、[Create]\(作成\) をクリックし**、次の情報を入力して **[Finished]\(完了\)** をクリックします。
+1. 新しいプールを作成するために、 **[Local Traffic]\(ローカル トラフィック\) > [Pools]\(プール\) > [Pool List]\(プール リスト\) の順に移動して、[Create]\(作成\) をクリックし** 、次の情報を入力して **[Finished]\(完了\)** をクリックします。
 
     * 名前:KerbApp200-Pool
     * 説明:KerbApp200-Pool
@@ -472,25 +472,24 @@ Access Policy Manager (APM) がユーザーの認証に使用するドメイン 
 
 ### <a name="create-f5-test-user"></a>F5 テスト ユーザーの作成
 
-このセクションでは、F5 で B.Simon というユーザーを作成します。  [F5 クライアント サポート チーム](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45)と連携し、F5 プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、F5 で B.Simon というユーザーを作成します。 [F5 クライアント サポート チーム](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45)と連携して、F5 プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [F5] タイルをクリックすると、SSO を設定した F5 に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [F5] タイルをクリックすると、SSO を設定した F5 に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で F5 を試す](https://aad.portal.azure.com/)
 
 - [ヘッダー ベースのアプリケーション用に F5 シングル サインオンを構成する](headerf5-tutorial.md)
 
 - [Advanced Kerberos アプリケーション用に F5 シングル サインオンを構成する](advance-kerbf5-tutorial.md)
-
