@@ -12,12 +12,12 @@ metadata:
   ms.author: mtillman
   manager: daveba
   ms.date: 10/22/2020
-  ms.openlocfilehash: 6b7ed9160cc256d2b52bd69730017db08ca479fa
-  ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+  ms.openlocfilehash: e0b1c8946c1bdd8acfe1c7a21458fee456b2b84f
+  ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/27/2020
-  ms.locfileid: "92670451"
+  ms.lasthandoff: 10/29/2020
+  ms.locfileid: "92926820"
 highlightedContent:
   items:
   - title: Azure AD とは
@@ -40,17 +40,6 @@ highlightedContent:
     url: ./fundamentals/active-directory-how-subscriptions-associated-directory.md
 conceptualContent:
   items:
-  - title: パートナー アプリケーションのサポート
-    links:
-    - url: ./saas-apps/tutorial-list.md
-      itemType: tutorial
-      text: クラウド対応の SaaS アプリを Azure AD と統合するには、次のチュートリアルに従ってください
-    - url: https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx
-      itemType: get-started
-      text: アプリ要求を送信して Azure AD ギャラリーに統合する
-    footerLink:
-      url: ./manage-apps/index.yml
-      text: 詳細情報
   - title: アプリケーション管理
     links:
     - url: ./manage-apps/what-is-application-management.md
@@ -289,6 +278,20 @@ conceptualContent:
     footerLink:
       url: ./roles/index.yml
       text: 詳細情報
+  - title: サードパーティ アプリケーション
+    links:
+    - url: ./saas-apps/amazon-web-service-tutorial.md
+      itemType: tutorial
+      text: Azure AD シングル サインオンとアマゾン ウェブ サービスとの統合
+    - url: ./saas-apps/workday-inbound-tutorial.md
+      itemType: tutorial
+      text: Workday を構成し、自動ユーザー プロビジョニングに対応させる
+    - url: ./develop/v2-howto-app-gallery-listing.md
+      itemType: get-started
+      text: ギャラリーへのアプリの追加要求
+    footerLink:
+      url: ./saas-apps/tutorial-list.md
+      text: その他のアプリを表示
 additionalContent:
   sections:
   - items:

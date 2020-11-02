@@ -679,7 +679,9 @@
           href: data-lake-storage-best-practices.md
         - name: クエリの高速化
           href: data-lake-storage-query-acceleration.md
-        - name: Architecture
+        - name: Data Lake Storage の Premium サービス レベル
+          href: premium-tier-for-data-lake-storage.md
+        - name: アーキテクチャ
           items:
             - name: Hadoop 用 Azure BLOB ファイル システム ドライバー
               href: data-lake-storage-abfs-driver.md

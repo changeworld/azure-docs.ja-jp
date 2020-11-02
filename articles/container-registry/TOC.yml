@@ -59,6 +59,8 @@
           href: container-registry-geo-replication.md
         - name: レジストリのベスト プラクティス
           href: container-registry-best-practices.md
+        - name: パブリック イメージの管理
+          href: buffer-gate-public-content.md
     - name: 操作方法ガイド
       expanded: false
       items:

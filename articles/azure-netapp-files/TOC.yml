@@ -11,7 +11,8 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: Azure NetApp Files を設定し、NFS ボリュームを作成する
+    - name: Azure NetApp Files を設定し、NFS ボリュームを作成する - Resource Manager テンプレート
+      displayName: Resource Manager
       href: azure-netapp-files-quickstart-set-up-account-create-volumes.md
 - name: 概念
   items:
