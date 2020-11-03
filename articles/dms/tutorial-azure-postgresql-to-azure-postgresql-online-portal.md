@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 0513b12c7ec9174c9a458400cd5682904d9ffb3b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 85b42c6a3c3c59bd8c22bcdc8954b8dd3399c454
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313142"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460973"
 ---
-# <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>チュートリアル:Azure portal を介して DMS を使用し、Azure DB for PostgreSQL - 単一サーバーを Azure DB for PostgreSQL - 単一サーバーにオンラインで移行する
+# <a name="tutorial-migrateupgrade-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>チュートリアル:Azure portal を介して DMS を使用し、Azure DB for PostgreSQL - 単一サーバーを Azure DB for PostgreSQL - 単一サーバーにオンラインで移行または更新する
 
 Azure Database Migration Service を使用すると、[Azure Database for PostgreSQL - 単一サーバー](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) インスタンスから、同じまたは別のバージョンの Azure Database for PostgreSQL - 単一サーバー インスタンス、または Azure Database for PostgreSQL - フレキシブル サーバーに、最小限のダウンタイムでデータベースを移行できます。 このチュートリアルでは、Azure Database Migration Service のオンライン移行アクティビティを使用して、 **DVD Rental** サンプル データベースを Azure Database for PostgreSQL v10 から Azure Database for PostgreSQL - 単一サーバーに移行します。
 
@@ -47,7 +47,7 @@ Azure Database Migration Service を使用すると、[Azure Database for Postgr
 このチュートリアルを完了するには、以下を実行する必要があります。
 
 * サポートされている移行とバージョンの組み合わせについては、「[Azure Database Migration Service によってサポートされる移行シナリオの状態](https://docs.microsoft.com/azure/dms/resource-scenario-status)」を確認してください。 
-* **DVD Rental** データベースが稼働している既存の [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) バージョン 10 以降のインスタンス。 Azure Database Migration Service は、Azure DB for PostgreSQL 9.5 または 9.6 からの移行をサポートしていません。
+* **DVD Rental** データベースが稼働している既存の [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) バージョン 10 以降のインスタンス。 
 
     また、ターゲットの Azure Database for PostgreSQL のバージョンは、オンプレミスの PostgreSQL バージョンと同じかそれ以降である必要があることに注意してください。 たとえば、PostgreSQL 10 は Azure Database for PostgreSQL 10 または 11 に移行できますが、Azure Database for PostgreSQL 9.6 には移行できません。
 

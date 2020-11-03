@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 08/12/2019
+ms.date: 10/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: a1c07432dcf90759662e8f4aaedc760abd18157c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 931aea02d0a3c26bb5c2e7158f9c4360976d3af5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88585935"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440520"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault のバックアップ
 
@@ -30,6 +30,9 @@ Key Vault を使用すると、障害状況下で可用性を維持し、ユー�
 不注意や悪意によってシークレットが削除されないようにする場合は、キー コンテナーに論理的な削除と消去保護の機能を構成します。 詳細については、「[Azure Key Vault の論理的な削除の概要](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)」を参照してください。
 
 ## <a name="limitations"></a>制限事項
+
+> [!IMPORTANT]
+> Key Vault で、500 を超える過去のバージョンのキー、シークレット、または証明書オブジェクトをバックアップする機能はサポートされていません。 キー、シークレット、または証明書オブジェクトをバックアップしようとすると、エラーが発生するおそれがあります。 キー、シークレット、または証明書の以前のバージョンを削除することはできません。
 
 Key Vault では現在、キー コンテナー全体を 1 回の操作でバックアップすることはできません。 このドキュメントに記載されているコマンドを使用してキー コンテナーの自動バックアップを実行しようとするとエラーが発生する可能性があります。これは、Microsoft でも Azure Key Vault チームでもサポートしていません。 
 

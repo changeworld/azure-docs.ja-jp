@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 81dc3a4f55b214ea6ca7ad0388e57f4b4fdc7124
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6b646688fb0c42091182cc7f94e019432b354fa
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546476"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504594"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textmagic"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と TextMagic の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88546476"
 * ユーザーが自分の Azure AD アカウントを使用して TextMagic に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,9 +39,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* TextMagic では、**IDP** によって開始される SSO がサポートされます
+* TextMagic では、 **IDP** によって開始される SSO がサポートされます
 
-* TextMagic では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* TextMagic では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -54,7 +54,7 @@ Azure AD への TextMagic の統合を構成するには、ギャラリーから
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**TextMagic**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **TextMagic** 」と入力します。
 1. 結果のパネルから **TextMagic** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-textmagic"></a>TextMagic の Azure AD シングル サインオンの構成とテスト
@@ -84,7 +84,7 @@ TextMagic に対する Azure AD SSO を構成してテストするには、次�
 
     **[識別子]** テキスト ボックスに、`https://my.textmagic.com/saml/metadata` という URL を入力します。
 
-5. TextMagic アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 TextMagic アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+5. TextMagic アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 TextMagic アプリケーションでは、 **nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
@@ -137,7 +137,7 @@ TextMagic に対する Azure AD SSO を構成してテストするには、次�
 
 ### <a name="configure-textmagic-sso"></a>TextMagic の SSO の構成
 
-1. TextMagic 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. TextMagic 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -149,40 +149,39 @@ TextMagic に対する Azure AD SSO を構成してテストするには、次�
 
 4. ユーザー名で **[Account settings]\(アカウント設定\)** を選択します。
 
-    ![TextMagic の構成](./media/textmagic-tutorial/config1.png)
+    ![ユーザーが [アカウント設定] を選択したことを示すスクリーンショット。](./media/textmagic-tutorial/config1.png)
 
 5. **[Single Sign-On (SSO)]\(シングル サインオン (SSO)\)** タブをクリックし、次のフィールドを入力します。  
 
-    ![TextMagic の構成](./media/textmagic-tutorial/config2.png)
+    ![[Single Sign-On]\(シングル サインオン\) タブのスクリーンショット。ここで、説明されている値を入力できます。](./media/textmagic-tutorial/config2.png)
 
-    a. **[Identity Provider Entity ID]\(ID プロバイダーのエンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
+    a. **[Identity Provider Entity ID]\(ID プロバイダーのエンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。
 
     b. **[Identity provider SSO URL]\(ID プロバイダーの SSO URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
     c. **[Identity provider SLO URL]\(ID プロバイダーの SLO URL\)** ボックスに、Azure portal からコピーした **[ログアウト URL]** の値を貼り付けます。
 
-    d. Azure Portal からダウンロードした **base-64 でエンコードされた証明書**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[Public x509 certificate]\(パブリック x509 証明書\)** ボックスに貼り付けます。
+    d. Azure Portal からダウンロードした **base-64 でエンコードされた証明書** をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[Public x509 certificate]\(パブリック x509 証明書\)** ボックスに貼り付けます。
 
     e. **[保存]** をクリックします。
 
 ### <a name="create-textmagic-test-user"></a>TextMagic テスト ユーザーの作成
 
-アプリケーションでは、**Just-In-Time のユーザー プロビジョニング**がサポートされ、認証後にユーザーがアプリケーションに自動的に作成されます。 初めてシステムにログインしてサブアカウントを有効にしたら、情報を入力する必要があります。
+アプリケーションでは、 **Just-In-Time のユーザー プロビジョニング** がサポートされ、認証後にユーザーがアプリケーションに自動的に作成されます。 初めてシステムにログインしてサブアカウントを有効にしたら、情報を入力する必要があります。
 このセクションでは、ユーザー側で必要な操作はありません。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [TextMagic] タイルをクリックすると、SSO を設定した TextMagic に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [TextMagic] タイルをクリックすると、SSO を設定した TextMagic に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で TextMagic を試す](https://aad.portal.azure.com/)
-

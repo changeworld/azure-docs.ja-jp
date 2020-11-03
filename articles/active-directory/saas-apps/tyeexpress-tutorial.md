@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 5a601b7ec7e2615053203e23ea61fc6d2efc85bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f44a67b4943c6897f82aedf47d493b36e5e2d3b9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88533505"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521888"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>チュートリアル: Azure Active Directory と T&E Express の統合
 
@@ -27,7 +27,7 @@ T&E Express と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで T&E Express に自動的にサインイン (シングル サインオン) できるように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ T&E Express と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* T&E Express では、**IDP** によって開始される SSO がサポートされます
+* T&E Express では、 **IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-te-express-from-the-gallery"></a>ギャラリーから T&E Express を追加する
 
@@ -61,13 +61,13 @@ Azure AD への T&E Express の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**T&E Express**」と入力し、結果パネルで **[T&E Express]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **T&E Express** 」と入力し、結果パネルで **[T&E Express]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の T&E Express](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、T&E Express で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、T&E Express で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと T&E Express 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 T&E Express で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -108,7 +108,7 @@ T&E Express で Azure AD シングル サインオンを構成するには、次
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値を取得するには、[T&E Express クライアント サポート チーム](https://www.tyeexpress.com/contacto.aspx)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -128,11 +128,11 @@ T&E Express で Azure AD シングル サインオンを構成するには、次
 
 1. **[管理者]** タブで、 **[SAML domain (SAML ドメイン)]** をクリックして、SAML 設定ページを開きます。
 
-    ![Configure single sign-on](./media/tyeexpress-tutorial/tye-SAML.png)
+    ![[Admin]\(管理者\) メニューから [SAML Domain]\(SAML ドメイン\) が選択されていることを示すスクリーンショット。](./media/tyeexpress-tutorial/tye-SAML.png)
 
 1. **[Activar (有効化)]** オプションを **[No]** から **[SI (はい)]** にして選択します。 **[Identity Provider Metadata]\(ID プロバイダーのメタデータ\)** ボックスに、Azure portal からダウンロードしたメタデータ XML を貼り付けます。
 
-    ![Configure single sign-on](./media/tyeexpress-tutorial/tyeAdmin.png)
+    ![[Dominio SAML] ページを示すスクリーンショット。ここでメタデータを入力できます。](./media/tyeexpress-tutorial/tyeAdmin.png)
 
 1. **[Guardar (保存)]** ボタンをクリックして、設定を保存します。
 
@@ -152,7 +152,7 @@ T&E Express で Azure AD シングル サインオンを構成するには、次
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -197,29 +197,28 @@ Azure AD ユーザーが T&E Express にログインできるようにするに�
 
 1. 管理者タグで、[ユーザー] をクリックして、[ユーザー] マスター ページを開きます。
 
-    ![従業員の追加](./media/tyeexpress-tutorial/tye-adminusers.png)
+    ![[Admin]\(管理者\) メニューから [Users]\(ユーザー\) が選択されていることを示すスクリーンショット。](./media/tyeexpress-tutorial/tye-adminusers.png)
 
 1. ホーム ページをクリックして、 **[+]** をクリックしてユーザーを追加します。
 
-    ![従業員の追加](./media/tyeexpress-tutorial/tye-usershome.png)
+    ![ユーザーを追加するプラス記号アイコンを示すスクリーンショット。](./media/tyeexpress-tutorial/tye-usershome.png)
 
 1. フォームに必要なすべての必須事項を入力して、保存ボタンをクリックし、詳細を保存します。
 
-    ![従業員の追加](./media/tyeexpress-tutorial/tye-usersadd.png)
+    ![[User Information]\(ユーザー情報\) セクションを示すスクリーンショット。ここで適切な値を入力できます。](./media/tyeexpress-tutorial/tye-usersadd.png)
 
-    ![従業員の追加](./media/tyeexpress-tutorial/tye-userssave.png)
+    ![[Approvers]\(承認者\) と [Assistant]\(アシスタント\) のセクションを示すスクリーンショット。ここで適切な値を入力できます。](./media/tyeexpress-tutorial/tye-userssave.png)
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [T&E Express] タイルをクリックすると、SSO を設定した T&E Express に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [T&E Express] タイルをクリックすると、SSO を設定した T&E Express に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

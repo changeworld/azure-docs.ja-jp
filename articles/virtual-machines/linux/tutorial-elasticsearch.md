@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: 1b7b4d3c25794a62bc19925ade278159ebb37615
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3d35940a445b73ecb9285355f36b141c3a151b8
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80066538"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475058"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>Elastic Stack を Azure VM にインストールする
 
@@ -43,7 +43,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 [az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
-次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+次の例では、 *myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -53,7 +53,7 @@ az group create --name myResourceGroup --location eastus
 
 [az vm create](/cli/azure/vm) コマンドで VM を作成します。 
 
-次の例では、*myVM* という名前の VM を作成し、既定のキーの場所にまだ SSH キーが存在しない場合は SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。  
+次の例では、 *myVM* という名前の VM を作成し、既定のキーの場所にまだ SSH キーが存在しない場合は SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。  
 
 ```azurecli-interactive
 az vm create \
@@ -228,7 +228,7 @@ az vm open-port --port 5601 --resource-group myResourceGroup --name myVM
 
 Kibana コンソールを開いて、 **[作成]** を選択し、前に Elasticsearch に送信した syslog データに基づいて、既定のインデックスを生成します。 
 
-![Kibana で Syslog イベントを参照](media/elasticsearch-install/kibana-index.png)
+![Kibana コンソールを示すスクリーンショット。[作成] ボタンが強調表示されています。](media/elasticsearch-install/kibana-index.png)
 
 Kibana コンソールで **[検出]** を選択して、syslog イベントを検索、参照、およびフィルター処理します。
 

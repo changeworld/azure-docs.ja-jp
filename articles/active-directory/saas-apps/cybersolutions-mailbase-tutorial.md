@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: aa45494e9870daee079eed4fe92867f64c3c791e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a1bed217f12646687654f37145a4a796d0487a1
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90057088"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455002"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cybersolutions-mailbasecmss"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と CyberSolutions MAILBASEΣ\CMSS の統合
 
@@ -37,7 +37,7 @@ ms.locfileid: "90057088"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* CyberSolutions MAILBASEΣ\CMSS では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* CyberSolutions MAILBASEΣ\CMSS では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-cybersolutions-mailbasecmss-from-the-gallery"></a>ギャラリーからの CyberSolutions MAILBASEΣ\CMSS の追加
 
@@ -47,7 +47,7 @@ Azure AD への CyberSolutions MAILBASEΣ\CMSS の統合を構成するには、
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**CyberSolutions MAILBASEΣ\CMSS**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **CyberSolutions MAILBASEΣ\CMSS** 」と入力します。
 1. 結果のパネルから **[CyberSolutions MAILBASEΣ\CMSS]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -121,11 +121,11 @@ CyberSolutions MAILBASEΣ\CMSS で Azure AD SSO を構成してテストする�
 
 ## <a name="configure-cybersolutions-mailbase-sso"></a>CyberSolutions MAILBASE SSO の構成
 
-**CyberSolutions MAILBASEΣ\CMSS** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [CyberSolutions MAILBASEΣ\CMSS サポート チーム](mailto:tech@cybersolutions.co.jp)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**CyberSolutions MAILBASEΣ\CMSS** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [CyberSolutions MAILBASEΣ\CMSS サポート チーム](mailto:tech@cybersolutions.co.jp)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-cybersolutions-mailbase-test-user"></a>CyberSolutions MAILBASE テスト ユーザーの作成
 
-このセクションでは、CyberSolutions MAILBASEΣ\CMSS で Britta Simon というユーザーを作成します。  [CyberSolutions MAILBASEΣ\CMSS サポート チーム](mailto:tech@cybersolutions.co.jp)と連携し、CyberSolutions MAILBASEΣ\CMSS プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、CyberSolutions MAILBASEΣ\CMSS で Britta Simon というユーザーを作成します。 [CyberSolutions MAILBASEΣ\CMSS サポート チーム](mailto:tech@cybersolutions.co.jp)と連携し、CyberSolutions MAILBASEΣ\CMSS プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
@@ -141,9 +141,8 @@ CyberSolutions MAILBASEΣ\CMSS で Azure AD SSO を構成してテストする�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した CyberSolutions MAILBASEΣ\CMSS に自動的にサインインされます 
 
-また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで CyberSolutions MAILBASEΣ\CMSS タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した CyberSolutions MAILBASEΣ\CMSS に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで CyberSolutions MAILBASEΣ\CMSS タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した CyberSolutions MAILBASEΣ\CMSS に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-CyberSolutions MAILBASEΣ\CMSS を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
+CyberSolutions MAILBASEΣ\CMSS を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

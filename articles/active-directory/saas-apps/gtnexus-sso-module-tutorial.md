@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: jeedes
-ms.openlocfilehash: b40a124c9cee05e8d06df3de6539c566bb2ac76a
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 11439a8c93c0f1ef682e7104e989a3a2cbbdc28e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945147"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92446754"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>チュートリアル:Azure Active Directory と GTNexus SSO System の統合
 
@@ -27,7 +27,7 @@ GTNexus SSO System と Azure AD を統合すると、次の利点が得られま
 * ユーザーが自分の Azure AD アカウントで GTNexus SSO System に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ GTNexus SSO System と Azure AD の統合を構成するには、次のものが
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* GTNexus SSO System では、**IDP** によって開始される SSO がサポートされます
+* GTNexus SSO System では、 **IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-gtnexus-sso-system-from-the-gallery"></a>ギャラリーからの GTNexus SSO System の追加
 
@@ -61,13 +61,13 @@ Azure AD への GTNexus SSO System の統合を構成するには、管理対象
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**GTNexus SSO System**」と入力し、結果パネルから **[GTNexus SSO System]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **GTNexus SSO System** 」と入力し、結果パネルから **[GTNexus SSO System]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果リスト内の GTNexus SSO System](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーを基に、GTNexus SSO System で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーを基に、GTNexus SSO System で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと GTNexus SSO System 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 GTNexus SSO System で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -97,30 +97,30 @@ GTNexus SSO System で Azure AD シングル サインオンを構成するに�
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル**がある場合は、次の手順に従います。
+4. **[基本的な SAML 構成]** セクションで、 **サービス プロバイダー メタデータ ファイル** がある場合は、次の手順に従います。
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
     ![[メタデータ ファイルをアップロードします] アクションが選択された [基本的な SAML 構成] ページを示すスクリーンショット。](common/upload-metadata.png)
 
-    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
+    b. **フォルダー ロゴ** をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
     !["フォルダー" ロゴと [アップロード] ボタンが選択されている [ファイルの選択] フィールドを示すスクリーンショット。](common/browse-upload-metadata.png)
 
-    c. メタデータ ファイルが正常にアップロードされると、**識別子**と**応答 URL** の値が、GTNexus SSO System セクションのテキスト ボックスに自動的に設定されます。
+    c. メタデータ ファイルが正常にアップロードされると、 **識別子** と **応答 URL** の値が、GTNexus SSO System セクションのテキスト ボックスに自動的に設定されます。
 
     ![image](common/idp-intiated.png)
 
     > [!Note]
-    > **識別子**と**返信 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
+    > **識別子** と **返信 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
 ### <a name="configure-gtnexus-sso-system-single-sign-on"></a>GTNexus SSO System のシングル サインオンの構成
 
-**GTNexus SSO System** 側でシングル サインオンを構成するには、**フェデレーション メタデータ XML** を [GTNexus SSO System サポート チーム](mailto:support@gtnexus.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**GTNexus SSO System** 側でシングル サインオンを構成するには、 **フェデレーション メタデータ XML** を [GTNexus SSO System サポート チーム](mailto:support@gtnexus.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -138,9 +138,9 @@ GTNexus SSO System で Azure AD シングル サインオンを構成するに�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -175,18 +175,18 @@ GTNexus SSO System で Azure AD シングル サインオンを構成するに�
 
 ### <a name="create-gtnexus-sso-system-test-user"></a>GTNexus SSO System のテスト ユーザーの作成
 
-このセクションでは、GTNexus SSO System で Britta Simon というユーザーを作成します。  [GTNexus SSO System サポート チーム](mailto:support@gtnexus.com) と連携して、GTNexus SSO System プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、GTNexus SSO System で Britta Simon というユーザーを作成します。 [GTNexus SSO System サポート チーム](mailto:support@gtnexus.com)と連携して、GTNexus SSO System プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [GTNexus SSO System] タイルをクリックすると、SSO を設定した GTNexus SSO System に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [GTNexus SSO System] タイルをクリックすると、SSO を設定した GTNexus SSO System に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/15/2019
 ms.author: jeedes
-ms.openlocfilehash: e56684c30d243e0b7848355234fef896ccd220ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b0c42046df716c8ae65046e5f3314817da0a17e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543297"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893781"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-screencast-o-matic"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Screencast-O-Matic の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543297"
 * ユーザーが自分の Azure AD アカウントを使用して Screencast-O-Matic に自動的にサインイン (シングル サインオン) できるようにすることが可能です。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Screencast-O-Matic では、**SP** によって開始される SSO がサポートされます
-* Screencast-O-Matic では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Screencast-O-Matic では、 **SP** によって開始される SSO がサポートされます
+* Screencast-O-Matic では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-screencast-o-matic-from-the-gallery"></a>ギャラリーからの Screencast-O-Matic の追加
 
@@ -50,7 +50,7 @@ Azure AD への Screencast-O-Matic の統合を構成するには、ギャラリ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Screencast-O-Matic**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Screencast-O-Matic** 」と入力します。
 1. 結果パネルで **[Screencast-O-Matic]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-screencast-o-matic"></a>Screencast-O-Matic の Azure AD シングル サインオンの構成とテスト
@@ -123,7 +123,7 @@ Screencast-O-Matic で Azure AD SSO を構成してテストするには、次�
 
 ## <a name="configure-screencast-o-matic-sso"></a>Screencast-O-Matic SSO の構成
 
-1. Screencast-O-Matic 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. Screencast-O-Matic 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -137,15 +137,15 @@ Screencast-O-Matic で Azure AD SSO を構成してテストするには、次�
 
     ![サブスクリプション](./media/screencast-tutorial/tutorial_screencast_sub.png)
 
-1. **[Access page]\(アクセス ページ\)** セクションで、 **[セットアップ]** をクリックします。
+1. **[Access page]\(アクセス ページ\)** セクションで、 **[Setup]\(セットアップ\)** をクリックします。
 
-    ![アクセス](./media/screencast-tutorial/tutorial_screencast_setup.png)
+    ![[Setup]\(セットアップ\) ボタンが選択されている [Access page]\(アクセス ページ\) セクションを示すスクリーンショット。](./media/screencast-tutorial/tutorial_screencast_setup.png)
 
 1. **[Setup Access Page]\(アクセス ページのセットアップ\)** で、次の手順を実行します。
 
-1. **[アクセス URL]** セクションで、指定されたテキスト ボックスにインスタンス名を入力します。
+1. **[Access URL]\(アクセス URL\)** セクションで、指定されたテキスト ボックスにインスタンス名を入力します。
 
-    ![アクセス](./media/screencast-tutorial/tutorial_screencast_access.png)
+    ![インスタンス名のテキストボックスが強調表示されている [Access URL]\(アクセス URL\) セクションを示すスクリーンショット。](./media/screencast-tutorial/tutorial_screencast_access.png)
 
 1. **[SAML User Restriction (optional)]\(SAML ユーザーの制限 (省略可能)\)** セクションで、 **[Require Domain User]\(ドメイン ユーザーが必要\)** を選択します。
 
@@ -163,14 +163,14 @@ Screencast-O-Matic で Azure AD SSO を構成してテストするには、次�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Screencast-O-Matic] タイルをクリックすると、SSO を設定した Screencast-O-Matic に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Screencast-O-Matic] タイルをクリックすると、SSO を設定した Screencast-O-Matic に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Screencast-O-Matic を試す](https://aad.portal.azure.com/)

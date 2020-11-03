@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: d85e6bbaf85ebb84d3664d90e3d645f61b2cb60a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 8706ac588f2cc868805de7126140a1edd4b8c735
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91817359"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92445530"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>チュートリアル:Azure Active Directory と F5 の間でのシングル サインオン (SSO) の構成
 
@@ -26,7 +26,7 @@ ms.locfileid: "91817359"
 * ユーザーが自分の Azure AD アカウントを使用して F5 に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-シングル サインオンによる SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+シングル サインオンによる SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -60,7 +60,7 @@ ms.locfileid: "91817359"
 
 ## <a name="access-guided-configuration"></a>アクセス ガイド付き構成
 
-* アクセス ガイド付き構成は、F5 TMOS バージョン 13.1.0.8 以降でサポートされます。 BIG-IP システムで実行されているバージョンが 13.1.0.8 未満である場合は、「**詳細な構成**」セクションを参照してください。
+* アクセス ガイド付き構成は、F5 TMOS バージョン 13.1.0.8 以降でサポートされます。 BIG-IP システムで実行されているバージョンが 13.1.0.8 未満である場合は、「 **詳細な構成** 」セクションを参照してください。
 
 * アクセス ガイド付き構成により、効率化されたまったく新しいユーザー エクスペリエンスが得られます。 このワークフローベースのアーキテクチャにより、選択したトポロジに合わせて調整された直感的で再入可能な構成ステップが提供されます。
 
@@ -117,7 +117,7 @@ Azure AD への F5 の統合を構成するには、ギャラリーからマネ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**F5**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **F5** 」と入力します。
 1. 結果のパネルから **[F5]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>F5 の Azure AD シングル サインオンの構成とテスト
@@ -209,11 +209,11 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
 1. 新しい Web ブラウザー ウィンドウを開き、F5 (ヘッダー ベース) 企業サイトに管理者としてサインインして、次の手順を実行します。
 
-1. **[System]\(システム\) > [Certificate Management]\(証明書の管理\) > [Traffic Certificate Management]\(トラフィック証明書管理\) > [SSL Certificate List]\(SSL 証明書リスト\)** の順に移動します。 右隅の **[Import]\(インポート\)** を選択します。 **証明書の名前**を指定します (この後の構成で参照されます)。 **[Certificate Source]\(証明書ソース\)** で [Upload File]\(ファイルのアップロード\) を選択し、SAML シングル サインオンの構成時に Azure からダウンロードした証明書を指定します。 **[インポート]** をクリックします。
+1. **[System]\(システム\) > [Certificate Management]\(証明書の管理\) > [Traffic Certificate Management]\(トラフィック証明書管理\) > [SSL Certificate List]\(SSL 証明書リスト\)** の順に移動します。 右隅の **[Import]\(インポート\)** を選択します。 **証明書の名前** を指定します (この後の構成で参照されます)。 **[Certificate Source]\(証明書ソース\)** で [Upload File]\(ファイルのアップロード\) を選択し、SAML シングル サインオンの構成時に Azure からダウンロードした証明書を指定します。 **[インポート]** をクリックします。
 
     ![証明書の名前と証明書ソースを選択する S S L 証明書リストを示すスクリーンショット。](./media/headerf5-tutorial/configure12.png)
  
-1. 加えて、アプリケーション ホスト名の SSL 証明書が必要となります。 **[System]\(システム\) > [Certificate Management]\(証明書の管理\) > [Traffic Certificate Management]\(トラフィック証明書管理\) > [SSL Certificate List]\(SSL 証明書リスト\)** の順に移動します。 右隅の **[Import]\(インポート\)** を選択します。 **[Import Type]\(インポートの種類\)** は **[PKCS 12(IIS)]** になります。 **キー名** (この後の構成で参照されます) を指定し、PFX ファイルを指定します。 PFX の**パスワード**を指定します。 **[インポート]** をクリックします。
+1. 加えて、アプリケーション ホスト名の SSL 証明書が必要となります。 **[System]\(システム\) > [Certificate Management]\(証明書の管理\) > [Traffic Certificate Management]\(トラフィック証明書管理\) > [SSL Certificate List]\(SSL 証明書リスト\)** の順に移動します。 右隅の **[Import]\(インポート\)** を選択します。 **[Import Type]\(インポートの種類\)** は **[PKCS 12(IIS)]** になります。 **キー名** (この後の構成で参照されます) を指定し、PFX ファイルを指定します。 PFX の **パスワード** を指定します。 **[インポート]** をクリックします。
 
     >[!NOTE]
     >この例のアプリ名は `Headerapp.superdemo.live` です。ワイルド カード証明書を使用しており、キー名は `WildCard-SuperDemo.live` です。
@@ -226,22 +226,22 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
     ![[SAML Service Provider]\(SAML サービス プロバイダー\) ページを示すスクリーンショット。](./media/headerf5-tutorial/configure02.png)
  
-1. **構成名**を指定します。 **エンティティ ID** (Azure AD アプリケーションの構成で構成した内容と同じ) を指定します。 **ホスト名**を指定します。 参考のために**説明**を追加します。 それ以外は既定値のままとし、 **[Save & Next]\(保存して次へ\)** をクリックします。
+1. **構成名** を指定します。 **エンティティ ID** (Azure AD アプリケーションの構成で構成した内容と同じ) を指定します。 **ホスト名** を指定します。 参考のために **説明** を追加します。 それ以外は既定値のままとし、 **[Save & Next]\(保存して次へ\)** をクリックします。
 
     ![[Service Provider Properties]\(サービス プロバイダーのプロパティ\) ページを示すスクリーンショット。](./media/headerf5-tutorial/configure03.png) 
 
-1. この例では、ポート 443 で新しい仮想サーバーを 192.168.30.20 として作成します。 **[Destination Address]\(接続先のアドレス\)** に仮想サーバーの IP アドレスを指定します。 クライアントの **SSL プロファイル**を選択し、[Create new]\(新規作成\) を選択します。 あらかじめアップロードしておいたアプリケーション証明書 (この例ではワイルド カード証明書) および関連するキーを指定し、 **[Save & Next]\(保存して次へ\)** をクリックします。
+1. この例では、ポート 443 で新しい仮想サーバーを 192.168.30.20 として作成します。 **[Destination Address]\(接続先のアドレス\)** に仮想サーバーの IP アドレスを指定します。 クライアントの **SSL プロファイル** を選択し、[Create new]\(新規作成\) を選択します。 あらかじめアップロードしておいたアプリケーション証明書 (この例ではワイルド カード証明書) および関連するキーを指定し、 **[Save & Next]\(保存して次へ\)** をクリックします。
 
     >[!NOTE]
     >この例では、内部 Web サーバーがポート 888 で稼動しており、それを 443 で公開したいと考えています。
 
     ![[Virtual Server Properties]\(仮想サーバーのプロパティ\) ページを示すスクリーンショット。](./media/headerf5-tutorial/configure04.png) 
 
-1. **[Select method to configure your IdP connector]\(IdP コネクタの構成方法を選択してください\)** で [Metadata]\(メタデータ\) を指定し、[Choose File]\(ファイルの選択\) をクリックして、先ほど Azure AD からダウンロードしたメタデータ XML ファイルをアップロードします。 SAML IDP コネクタの一意の**名前**を指定します。 先ほどアップロードした**メタデータ署名証明書**を選択します。 **[Save & Next]\(保存して次へ\)** をクリックします。
+1. **[Select method to configure your IdP connector]\(IdP コネクタの構成方法を選択してください\)** で [Metadata]\(メタデータ\) を指定し、[Choose File]\(ファイルの選択\) をクリックして、先ほど Azure AD からダウンロードしたメタデータ XML ファイルをアップロードします。 SAML IDP コネクタの一意の **名前** を指定します。 先ほどアップロードした **メタデータ署名証明書** を選択します。 **[Save & Next]\(保存して次へ\)** をクリックします。
 
     ![[External Identity Provider Connector Settings]\(外部 ID プロバイダー コネクタの設定\) ページを示すスクリーンショット。](./media/headerf5-tutorial/configure05.png)
  
-1. **[Select a Pool]\(プールの選択\)** で **[Create New]\(新規作成\)** を選択します (または既存のプールを選択します)。 他の値は既定値のままにしてください。 [Pool Servers]\(プール サーバー\) の **[IP Address/Node Name]\(IP アドレス/ノード名\)** に IP アドレスを入力します。 **ポート**を指定します。 **[Save & Next]\(保存して次へ\)** をクリックします。
+1. **[Select a Pool]\(プールの選択\)** で **[Create New]\(新規作成\)** を選択します (または既存のプールを選択します)。 他の値は既定値のままにしてください。 [Pool Servers]\(プール サーバー\) の **[IP Address/Node Name]\(IP アドレス/ノード名\)** に IP アドレスを入力します。 **ポート** を指定します。 **[Save & Next]\(保存して次へ\)** をクリックします。
 
     ![[Pool Properties]\(プールのプロパティ\) ページを示すスクリーンショット。](./media/headerf5-tutorial/configure06.png)
 
@@ -278,7 +278,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
 このセクションは、ガイド付き構成を使用できない場合や他のパラメーターを追加または変更したい場合に使用するためのものです。 アプリケーション ホスト名の TLS/SSL 証明書が必要になります。
 
-1. **[System]\(システム\) > [Certificate Management]\(証明書の管理\) > [Traffic Certificate Management]\(トラフィック証明書管理\) > [SSL Certificate List]\(SSL 証明書リスト\)** の順に移動します。 右隅の **[Import]\(インポート\)** を選択します。 **[Import Type]\(インポートの種類\)** は **[PKCS 12(IIS)]** になります。 **キー名** (この後の構成で参照されます) を指定し、PFX ファイルを指定します。 PFX の**パスワード**を指定します。 **[インポート]** をクリックします。
+1. **[System]\(システム\) > [Certificate Management]\(証明書の管理\) > [Traffic Certificate Management]\(トラフィック証明書管理\) > [SSL Certificate List]\(SSL 証明書リスト\)** の順に移動します。 右隅の **[Import]\(インポート\)** を選択します。 **[Import Type]\(インポートの種類\)** は **[PKCS 12(IIS)]** になります。 **キー名** (この後の構成で参照されます) を指定し、PFX ファイルを指定します。 PFX の **パスワード** を指定します。 **[インポート]** をクリックします。
 
     >[!NOTE]
     >この例のアプリ名は `Headerapp.superdemo.live` です。ワイルド カード証明書を使用しており、キー名は `WildCard-SuperDemo.live` です。
@@ -289,7 +289,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
 1. **[Main]\(メイン\) > [IApps] > [Application Services]\(アプリケーション サービス\) > [Application]\(アプリケーション\) > [Create]\(作成\)** の順にクリックします。
 
-1. **名前**を入力し、 **[Template]\(テンプレート\)** で **[f5.http]** を選択します。
+1. **名前** を入力し、 **[Template]\(テンプレート\)** で **[f5.http]** を選択します。
  
     ![[Template Selection]\(テンプレートの選択\) が含まれた [Application Services]\(アプリケーション サービス\) ページを示すスクリーンショット。](./media/headerf5-tutorial/configure18.png)
 
@@ -301,7 +301,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
         * 既存のアプリケーション プールを指定するか、新たに作成します。
 
-        * 新しいアプリ サーバーを作成する場合は、**内部 IP アドレス**と**ポート番号**を指定します。
+        * 新しいアプリ サーバーを作成する場合は、 **内部 IP アドレス** と **ポート番号** を指定します。
 
         ![これらの詳細を指定できるペインを示すスクリーンショット。](./media/headerf5-tutorial/configure19.png) 
 
@@ -321,7 +321,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
     ![[About this BIG I P]\(この BIG I P について\) ページを示すスクリーンショット。 ](./media/headerf5-tutorial/configure22.png)
 
-1. サービス プロバイダー サービスの詳細を指定します。 F5 の SP 構成を表す**名前**を指定します。 **エンティティ ID** (通常は、アプリケーションの URL と同じ) を指定します。
+1. サービス プロバイダー サービスの詳細を指定します。 F5 の SP 構成を表す **名前** を指定します。 **エンティティ ID** (通常は、アプリケーションの URL と同じ) を指定します。
 
     ![[Create New SAML S P Service]\(新しい SAML S P サービスの作成\) ダイアログ ボックスが表示された [SAML Service Provider]\(SAML サービス プロバイダー\) ページを示すスクリーンショット。](./media/headerf5-tutorial/configure23.png)
 
@@ -341,7 +341,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
  
     ![[Create New I d P Connector]\(新しい I d P コネクタの作成\) が選択されている [Edit SAML I d Ps that use this S P]\(この S P を使用する SAML I d P の編集\) ダイアログ ボックスを示すスクリーンショット。](./media/headerf5-tutorial/configure29.png)
 
-    a. Azure AD からダウンロードした metadata.xml ファイルを参照し、**ID プロバイダー名**を指定します。
+    a. Azure AD からダウンロードした metadata.xml ファイルを参照し、 **ID プロバイダー名** を指定します。
 
     b. **[OK]** をクリックします。
 
@@ -355,13 +355,13 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
     f. **[Matching Source]\(一致するソース\) = %{session.server.landinguri}** 
 
-    g. **[Matching Value]\(一致する値\) = /** *
+    g. **[Matching Value]\(一致する値\) = /**
 
-    h. **[update]\(更新\)** をクリックします。
+    h. *[update]\(更新\)* * をクリックします。
 
     i. **[OK]**
 
-    j. **SAML IDP の設定は完了です**。
+    j. **SAML IDP の設定は完了です** 。
     
     ![[Edit SAML I d Ps that use this S P]\(この S P を使用する SAML I d P の編集\) ダイアログ ボックスを示すスクリーンショット。](./media/headerf5-tutorial/configure31.png)
 
@@ -375,7 +375,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
     ![[Access Profiles]\(アクセス プロファイル\) ページを示すスクリーンショット。](./media/headerf5-tutorial/configure32.png)
  
-    c. **名前**を指定します (この例では HeaderAppAzureSAMLPolicy)。
+    c. **名前** を指定します (この例では HeaderAppAzureSAMLPolicy)。
 
     d. 他の設定をカスタマイズできます。F5 のドキュメントを参照してください。
 
@@ -399,7 +399,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
  
     i. **[Add Item]\(項目の追加\)** をクリックします。
 
-    j. **[Properties]\(プロパティ\)** で**名前**を指定し、 **[AAA Server]\(AAA サーバー\)** で、先ほど構成した SP を選択して、 **[SAVE]\(保存\)** をクリックします。
+    j. **[Properties]\(プロパティ\)** で **名前** を指定し、 **[AAA Server]\(AAA サーバー\)** で、先ほど構成した SP を選択して、 **[SAVE]\(保存\)** をクリックします。
  
     ![A A A サーバーを含む項目のプロパティを示すスクリーンショット。](./media/headerf5-tutorial/configure38.png)
 
@@ -445,25 +445,24 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
  
 ### <a name="create-f5-test-user"></a>F5 テスト ユーザーの作成
 
-このセクションでは、F5 で B.Simon というユーザーを作成します。  [F5 クライアント サポート チーム](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45)と連携し、F5 プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、F5 で B.Simon というユーザーを作成します。 [F5 クライアント サポート チーム](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45)と連携して、F5 プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [F5] タイルをクリックすると、SSO を設定した F5 に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [F5] タイルをクリックすると、SSO を設定した F5 に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で F5 を試す](https://aad.portal.azure.com/)
 
 - [Kerberos アプリケーション用に F5 シングル サインオンを構成する](kerbf5-tutorial.md)
 
 - [Advanced Kerberos アプリケーション用に F5 シングル サインオンを構成する](advance-kerbf5-tutorial.md)
-

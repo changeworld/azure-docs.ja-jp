@@ -5,12 +5,12 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 68ddb5c07ffac2aad4e2dafd16301fa29f391797
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0da6c614572e73a00db1087621eaca3bd790aad6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119346"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891807"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>チュートリアル:ARM テンプレート デプロイのトラブルシューティング
 
@@ -18,8 +18,8 @@ Azure Resource Manager (ARM) テンプレート デプロイ エラーのトラ�
 
 テンプレート デプロイに関連するエラーには、次の 2 種類があります。
 
-- **検証エラー**は、デプロイ前に判断できるシナリオで発生します。 これには、テンプレートに構文エラーがある場合や、サブスクリプション クォータを超えるリソースをデプロイしようとしている場合などがあります。
-- **デプロイ エラー**は、デプロイ プロセスで発生する状況に起因します。 これには、並列でデプロイされているリソースにアクセスしようとしている場合などがあります。
+- **検証エラー** は、デプロイ前に判断できるシナリオで発生します。 これには、テンプレートに構文エラーがある場合や、サブスクリプション クォータを超えるリソースをデプロイしようとしている場合などがあります。
+- **デプロイ エラー** は、デプロイ プロセスで発生する状況に起因します。 これには、並列でデプロイされているリソースにアクセスしようとしている場合などがあります。
 
 この 2 種類のエラーでは、デプロイのトラブルシューティングに使用するエラー コードが返されます。 どちらの種類のエラーもアクティビティ ログに表示されます。 ただし、検証エラーは、デプロイが開始されていないため、デプロイ履歴には表示されません。
 
@@ -72,7 +72,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 New-AzResourceGroupDeployment : 4:29:24 PM - Error: Code=InvalidRequestContent; Message=The request content was invalid and could not be deserialized: 'Could not find member 'apiVersion1' on object of type 'TemplateResource'. Path 'properties.template.resources[0].apiVersion1', line 36, position 24.'.
 ```
 
-このエラー メッセージは、**apiVersion1** に問題があることを示しています。
+このエラー メッセージは、 **apiVersion1** に問題があることを示しています。
 
 Visual Studio Code を使用して **apiVersion1** を **apiVersion** に変更して問題を解決し、テンプレートを保存します。
 
@@ -96,14 +96,14 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[リソース グループ]** を選択し、目的のリソース グループ名を選択して、リソース グループを開きます。 **[デプロイ]** の下に **[1 件失敗]** が表示されます。
 
-    ![Resource Manager チュートリアルのトラブルシューティング](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
+    ![失敗したデプロイが強調表示されているスクリーンショット。](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
 3. **[エラーの詳細]** を選択します。
 
-    ![Resource Manager チュートリアルのトラブルシューティング](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
+    ![[エラーの詳細] リンクが強調表示されているスクリーンショット。](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
 
     エラー メッセージは、前に示したものと同じです。
 
-    ![Resource Manager チュートリアルのトラブルシューティング](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
+    ![エラーの詳細を示すスクリーンショット。](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
 
 アクティビティ ログからエラーを見つけることもできます。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.author: jeedes
-ms.openlocfilehash: bcda410e678e44916a4128d7ef097883e148ed79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc1317ffce7c958f092ad01feff473e123581439
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551862"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521766"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と uniFLOW Online の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88551862"
 * ユーザーが自分の Azure AD アカウントを使用して uniFLOW Online にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* uniFLOW Online では、**SP** Initiated SSO がサポートされます
+* uniFLOW Online では、 **SP** Initiated SSO がサポートされます
 
 ## <a name="adding-uniflow-online-from-the-gallery"></a>ギャラリーからの uniFLOW Online の追加
 
@@ -49,7 +49,7 @@ Azure AD への uniFLOW Online の統合を構成するには、ギャラリー�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**uniFLOW Online**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **uniFLOW Online** 」と入力します。
 1. 結果のパネルから **[uniFLOW Online]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-uniflow-online"></a>uniFLOW Online の Azure AD シングル サインオンの構成とテスト
@@ -152,22 +152,21 @@ uniFLOW Online に対する Azure AD SSO を構成してテストするには、
 
 1. 左側のナビゲーション パネルで **[User]\(ユーザー\)** タブを選択します。
 
-    ![uniFLOW Online の構成](./media/uniflow-online-tutorial/configure1.png)
+    ![uniFLOW Online サイトで [User]\(ユーザー\) が選択されていることを示すスクリーンショット。](./media/uniflow-online-tutorial/configure1.png)
 
 1. **[ID プロバイダー]** をクリックします。
 
-    ![uniFLOW Online の構成](./media/uniflow-online-tutorial/configure2.png)
+    ![[Identity Provider]\(ID プロバイダー\) が選択されていることを示すスクリーンショット。](./media/uniflow-online-tutorial/configure2.png)
 
 1. **[Add identity provider]\(ID プロバイダーの追加\)** をクリックします。
 
-    ![uniFLOW Online の構成](./media/uniflow-online-tutorial/configure3.png)
+    ![[Add identity provider]\(ID プロバイダーの追加\) が選択されていることを示すスクリーンショット。](./media/uniflow-online-tutorial/configure3.png)
 
 1. **[ADD IDENTITY PROVIDER]\(ID プロバイダーの追加\)** セクションで、次の手順を実行します。
 
+    ![[ADD IDENTITY PROVIDER]\(ID プロバイダーの追加\) セクションを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/uniflow-online-tutorial/configure4.png)
 
-    ![uniFLOW Online の構成](./media/uniflow-online-tutorial/configure4.png)
-
-    a. 表示名を入力します (例: *AzureAD SSO*)。
+    a. 表示名を入力します (例: *AzureAD SSO* )。
 
     b. **[Provider type]\(プロバイダーの種類\)** で、ドロップダウンの **[WS-Fed]** オプションを選択します。
 
@@ -177,13 +176,13 @@ uniFLOW Online に対する Azure AD SSO を構成してテストするには、
 
 1. **[General]\(全般\)** タブで、次の手順を実行します。
 
-    ![uniFLOW Online の構成](./media/uniflow-online-tutorial/configure5.png)
+    ![[General]\(全般\) タブを示すスクリーンショット。ここで説明されている値を入力できます。](./media/uniflow-online-tutorial/configure5.png)
 
-    a. 表示名を入力します (例: *AzureAD SSO*)。
+    a. 表示名を入力します (例: *AzureAD SSO* )。
 
     b. **[ADFS Federation Metadata]\(ADFS フェデレーション メタデータ\)** で **[From URL]\(URL から\)** オプションを選択します。
 
-    c. **[Federation Metadata URl]\(フェデレーション メタデータ URI\)** ボックスに、Azure portal からコピーした**アプリのフェデレーション メタデータ URL** の値を貼り付けます。
+    c. **[Federation Metadata URl]\(フェデレーション メタデータ URI\)** ボックスに、Azure portal からコピーした **アプリのフェデレーション メタデータ URL** の値を貼り付けます。
 
     d. **[Identity provider]\(ID プロバイダー\)** で **[Enabled]\(有効化\)** を選択します。
 
@@ -201,10 +200,10 @@ uniFLOW Online に対する Azure AD SSO を構成してテストするには、
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で uniFLOW Online を試す](https://aad.portal.azure.com/)

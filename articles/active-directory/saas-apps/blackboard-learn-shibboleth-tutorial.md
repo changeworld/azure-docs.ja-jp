@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.openlocfilehash: dd9077c647d7f9f0a9272b71654767acc2e2d117
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3badd14a6a5c0c991618023ba7cfb7b17228f66
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88556047"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457080"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn---shibboleth"></a>チュートリアル: Azure Active Directory と Blackboard Learn - Shibboleth との統合
 
@@ -27,7 +27,7 @@ Blackboard Learn - Shibboleth と Azure AD の統合には、次の利点があ�
 * ユーザーが自分の Azure AD アカウントで Blackboard Learn - Shibboleth に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Blackboard Learn - Shibboleth と Azure AD の統合を構成するには、次�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Blackboard Learn - Shibboleth では、**SP** Initiated SSO がサポートされます
+* Blackboard Learn - Shibboleth では、 **SP** Initiated SSO がサポートされます
 
 ## <a name="adding-blackboard-learn---shibboleth-from-the-gallery"></a>ギャラリーからの Blackboard Learn - Shibboleth の追加
 
@@ -61,13 +61,13 @@ Azure AD への Blackboard Learn - Shibboleth の統合を構成するには、�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Blackboard Learn - Shibboleth**」と入力し、結果パネルで **[Blackboard Learn - Shibboleth]** を選び、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Blackboard Learn - Shibboleth** 」と入力し、結果パネルで **[Blackboard Learn - Shibboleth]** を選び、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Blackboard Learn - Shibboleth](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Blackboard Learn - Shibboleth で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Blackboard Learn - Shibboleth で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Blackboard Learn - Shibboleth 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Blackboard Learn - Shibboleth で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -110,7 +110,7 @@ Blackboard Learn - Shibboleth で Azure AD シングル サインオンを構成
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Blackboard Learn - Shibboleth クライアント サポート チーム](https://www.blackboard.com/forms/contact-us_form.aspx)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -126,7 +126,7 @@ Blackboard Learn - Shibboleth で Azure AD シングル サインオンを構成
 
 ### <a name="configure-blackboard-learn---shibboleth-single-sign-on"></a>Blackboard Learn - Shibboleth シングル サインオンの構成
 
-**Blackboard Learn - Shibboleth** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Blackboard Learn - Shibboleth サポート チーム](https://www.blackboard.com/forms/contact-us_form.aspx)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Blackboard Learn - Shibboleth** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Blackboard Learn - Shibboleth サポート チーム](https://www.blackboard.com/forms/contact-us_form.aspx)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -144,9 +144,9 @@ Blackboard Learn - Shibboleth で Azure AD シングル サインオンを構成
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -181,18 +181,18 @@ Blackboard Learn - Shibboleth で Azure AD シングル サインオンを構成
 
 ### <a name="create-blackboard-learn---shibboleth-test-user"></a>Blackboard Learn - Shibboleth のテスト ユーザーの作成
 
-このセクションでは、Blackboard Learn - Shibboleth で Britta Simon というユーザーを作成します。  [Blackboard Learn - Shibboleth サポート チーム](https://www.blackboard.com/forms/contact-us_form.aspx)と協力して、Blackboard Learn - Shibboleth プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Blackboard Learn - Shibboleth で Britta Simon というユーザーを作成します。 [Blackboard Learn - Shibboleth サポート チーム](https://www.blackboard.com/forms/contact-us_form.aspx)と協力して、Blackboard Learn - Shibboleth プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Blackboard Learn - Shibboleth] タイルをクリックすると、SSO を設定した Blackboard Learn - Shibboleth に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Blackboard Learn - Shibboleth] タイルをクリックすると、SSO を設定した Blackboard Learn - Shibboleth に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

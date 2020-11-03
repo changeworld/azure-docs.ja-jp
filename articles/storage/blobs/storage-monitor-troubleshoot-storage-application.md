@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 8554a78112d197ef8174ac9d18147d301745165e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5deece615e9d7de1e71e33164560c1c26212ec08
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83652162"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676795"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>クラウド ストレージ アプリケーションの監視およびトラブルシューティング
 
@@ -43,7 +43,7 @@ ms.locfileid: "83652162"
 
 完了したら、 **[保存]** をクリックします。
 
-![[診断] ウィンドウ](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
+![ログとメトリックを有効にするための構成設定が含まれているセクションが強調表示されているスクリーンショット。](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
 
 ## <a name="enable-alerts"></a>アラートを有効にする
 
@@ -91,13 +91,13 @@ curl https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/<CONTAINER_NAME>/<INCO
 
 アプリケーションを起動し、 **[ファイル]**  >  **[開く]**  >  **[From Other File Sources] \(他のファイル ソースから)** を選択します。
 
-**[File Selector] \(ファイル セレクター)** ダイアログで、 **[+ Add Azure Connection] \(+ Azure 接続の追加)** を選択します。 **ストレージ アカウント名**と**アカウント キー**を入力し、 **[OK]** をクリックします。
+**[File Selector] \(ファイル セレクター)** ダイアログで、 **[+ Add Azure Connection] \(+ Azure 接続の追加)** を選択します。 **ストレージ アカウント名** と **アカウント キー** を入力し、 **[OK]** をクリックします。
 
 ![Microsoft Message Analyzer - Azure Storage 接続ダイアログの追加](media/storage-monitor-troubleshoot-storage-application/figure3.png)
 
 接続されたら、ストレージ ツリー ビューのコンテナーを展開してログ BLOB を表示します。 最新のログを選択し、 **[OK]** をクリックします。
 
-![Microsoft Message Analyzer - Azure Storage 接続ダイアログの追加](media/storage-monitor-troubleshoot-storage-application/figure4.png)
+![Microsoft Message Analyzer を示すスクリーンショット。選択したログ ファイルが強調表示されています。](media/storage-monitor-troubleshoot-storage-application/figure4.png)
 
 **[New Session] \(新しいセッション)** ダイアログで、 **[開始]** をクリックしてログを表示します。
 

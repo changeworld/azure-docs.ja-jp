@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: dd0cf450ca63349d29aba3d65f3c76f40a44be2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e1f94b5a8e361a6bbd34f3f12756377dd1713f4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503635"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518715"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した仮想マシン スケール セットのカスタム イメージの作成および使用
 スケール セットを作成するときは、VM インスタンスのデプロイ時に使用するイメージを指定します。 VM インスタンスをデプロイした後のタスクの数を減らすには、カスタム VM イメージを使用できます。 このカスタム VM イメージには、すべての必要なアプリケーション インストールまたは構成が含まれます。 スケール セットで作成されたすべての VM インスタンスは、カスタム VM イメージを使用し、アプリケーション トラフィックを処理できる状態になります。 このチュートリアルで学習する内容は次のとおりです。
@@ -41,7 +41,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-and-configure-a-source-vm"></a>ソース VM の作成と構成
 
-最初に [az group create](/cli/azure/group) を使用してリソース グループを作成し、次に [az vm create](/cli/azure/vm) を使用して VM を作成します。 この VM は、イメージのソースとして使用されます。 次の例では、*myResourceGroup* という名前のリソース グループに *myVM* という名前の VM を作成します。
+最初に [az group create](/cli/azure/group) を使用してリソース グループを作成し、次に [az vm create](/cli/azure/vm) を使用して VM を作成します。 この VM は、イメージのソースとして使用されます。 次の例では、 *myResourceGroup* という名前のリソース グループに *myVM* という名前の VM を作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -55,7 +55,7 @@ az vm create \
 ```
 
 > [!IMPORTANT]
-> VM の **ID** は、[az vm create](/cli/azure/vm) コマンドの出力に示されます。 このチュートリアルの後半で使用できるように、これを安全な場所にコピーします。
+> VM の **ID** は、 [az vm create](/cli/azure/vm) コマンドの出力に示されます。 このチュートリアルの後半で使用できるように、これを安全な場所にコピーします。
 
 VM のパブリック IP アドレスも、[az vm create](/cli/azure/vm) コマンドの出力に示されます。 次に示すように、VM のパブリック IP アドレスに SSH 接続します。
 
@@ -77,7 +77,7 @@ sudo apt-get install -y nginx
 
 ギャラリー名で許可されている文字は、英字 (大文字または小文字)、数字、ドット、およびピリオドです。 ギャラリー名にダッシュを含めることはできません。   ギャラリー名は、お使いのサブスクリプション内で一意にする必要があります。 
 
-[az sig create](/cli/azure/sig#az-sig-create) を使用してイメージ ギャラリーを作成します。 次の例では、*myGalleryRG* という名前のリソース グループを "*米国東部*" に作成し、*myGallery* という名前のギャラリーを作成します。
+[az sig create](/cli/azure/sig#az-sig-create) を使用してイメージ ギャラリーを作成します。 次の例では、 *myGalleryRG* という名前のリソース グループを " *米国東部* " に作成し、 *myGallery* という名前のギャラリーを作成します。
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location eastus
@@ -96,7 +96,7 @@ az sig create --resource-group myGalleryRG --gallery-name myGallery
 
 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) を使用して、ギャラリー内にイメージ定義を作成します。
 
-この例では、イメージ定義は *myImageDefinition* という名前で、[特殊化された](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images) Linux OS イメージ用です。 Windows OS を使用してイメージの定義を作成するには、`--os-type Windows` を使用します。 
+この例では、イメージ定義は *myImageDefinition* という名前で、 [特殊化された](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images) Linux OS イメージ用です。 Windows OS を使用してイメージの定義を作成するには、`--os-type Windows` を使用します。 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -118,9 +118,9 @@ az sig image-definition create \
 
 [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) を使用して、VM からイメージのバージョンを作成します。  
 
-イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式:*MajorVersion*.*MinorVersion*.*Patch*。
+イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式: *MajorVersion*. *MinorVersion*. *Patch* 。
 
-この例では、イメージのバージョンは *1.0.0* であり、"*米国中南部*" リージョンに 1 個のレプリカ、および "*米国東部 2*" リージョンに 1 個のレプリカを作成しています。 レプリケーション リージョンには、ソース VM が配置されているリージョンが含まれている必要があります。
+この例では、イメージのバージョンは *1.0.0* であり、" *米国中南部* " リージョンに 1 個のレプリカ、および " *米国東部 2* " リージョンに 1 個のレプリカを作成しています。 レプリケーション リージョンには、ソース VM が配置されているリージョンが含まれている必要があります。
 
 この例の `--managed-image` の値を、前の手順の VM の ID に置き換えます。
 
@@ -165,7 +165,7 @@ az vmss create \
 
 
 ## <a name="test-your-scale-set"></a>スケール セットのテスト
-トラフィックがスケール セットに到達できるようにし、Web サーバーが正常に動作することを確認するには、[az network lb rule create](/cli/azure/network/lb/rule) を使用してロード バランサー規則を作成します。 次の例では、*TCP* ポート *80* のトラフィックを許可する *myLoadBalancerRuleWeb* という名前の規則を作成します。
+トラフィックがスケール セットに到達できるようにし、Web サーバーが正常に動作することを確認するには、[az network lb rule create](/cli/azure/network/lb/rule) を使用してロード バランサー規則を作成します。 次の例では、 *TCP* ポート *80* のトラフィックを許可する *myLoadBalancerRuleWeb* という名前の規則を作成します。
 
 ```azurecli-interactive
 az network lb rule create \
@@ -197,7 +197,7 @@ az network public-ip show \
 
 ## <a name="share-the-gallery"></a>ギャラリーを共有する
 
-ロールベースのアクセス制御 (RBAC) を使用して、サブスクリプション全体でイメージを共有できます。 イメージは、ギャラリー、イメージ定義、またはイメージ バージョンで共有できます。 イメージ バージョンへの読み取りアクセス許可があるユーザーは、サブスクリプション間でも、そのイメージ バージョンを使用して VM をデプロイできます。
+Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、サブスクリプション全体でイメージを共有できます。 イメージは、ギャラリー、イメージ定義、またはイメージ バージョンで共有できます。 イメージ バージョンへの読み取りアクセス許可があるユーザーは、サブスクリプション間でも、そのイメージ バージョンを使用して VM をデプロイできます。
 
 他のユーザーとは、ギャラリー レベルで共有することをお勧めします。 ギャラリーのオブジェクト ID を取得するには、[az sig show](/cli/azure/sig#az-sig-show) を使用します。
 
@@ -217,7 +217,7 @@ az role assignment create \
    --scope <gallery ID>
 ```
 
-RBAC を使用してリソースを共有する方法の詳細については、「[RBAC と Azure CLI を使用してアクセスを管理する](../role-based-access-control/role-assignments-cli.md)」を参照してください。
+Azure RBAC を使用してリソースを共有する方法の詳細については、「[Azure CLI を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-cli.md)」をご覧ください。
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

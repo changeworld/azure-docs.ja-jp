@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 75e75a2fe8c81ae928617149018ac2afaab07faa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cee037b7f92dd55bb8fba264e164087a1cf8983b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545150"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460276"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-in-case-of-crisis---mobile"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と In Case of Crisis - Mobile の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88545150"
 * ユーザーが自分の Azure AD アカウントを使用して In Case of Crisis - Mobile に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* In Case of Crisis - Mobile では、**IDP** Initiated SSO がサポートされます
+* In Case of Crisis - Mobile では、 **IDP** Initiated SSO がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -52,7 +52,7 @@ Azure AD への In Case of Crisis - Mobile の統合を構成するには、ギ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**In Case of Crisis - Mobile**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **In Case of Crisis - Mobile** 」と入力します。
 1. 結果のパネルから **[In Case of Crisis - Mobile]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-in-case-of-crisis---mobile"></a>In Case of Crisis - Mobile の Azure AD シングル サインオンの構成とテスト
@@ -78,13 +78,13 @@ In Case of Crisis - Mobile で Azure AD の SSO を構成してテストする�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1.  **[基本的な SAML 構成]**  セクションでは、アプリケーションは **IDP** Initiated モードで事前に構成されており、必要な URL は既に Azure で事前に設定されています。 ユーザーは、 **[保存]**  ボタンをクリックして構成を保存する必要があります。
+1. **[基本的な SAML 構成]** セクションでは、アプリケーションは **IDP** 開始モードで事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、 **[保存]** ボタンをクリックします。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (未加工)]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificateraw.png)
 
-1. ページの左側にある **[管理]** セクションに移動し、 **[プロパティ]** タブをクリックします。次に、**ユーザーのアクセス URL** をコピーして、コンピューターに保存します。
+1. ページの左側にある **[管理]** セクションに移動し、 **[プロパティ]** タブをクリックします。次に、 **ユーザーのアクセス URL** をコピーして、コンピューターに保存します。
 
     ![シングル サインオンのプロパティ](./media/in-case-of-crisis-mobile-tutorial/properties.png)
 
@@ -120,25 +120,24 @@ In Case of Crisis - Mobile で Azure AD の SSO を構成してテストする�
 
 ## <a name="configure-in-case-of-crisis---mobile-sso"></a>In Case of Crisis - Mobile の SSO の構成
 
-**In Case of Crisis - Mobile** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (未加工)** と Azure portal からコピーした**ユーザーのアクセス URL** を [In Case of Crisis - Mobile サポート チーム](https://www.rockdovesolutions.com/features/enterprise-ready)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**In Case of Crisis - Mobile** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (未加工)** と Azure portal からコピーした **ユーザーのアクセス URL** を [In Case of Crisis - Mobile サポート チーム](https://www.rockdovesolutions.com/features/enterprise-ready)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-in-case-of-crisis---mobile-test-user"></a>In Case of Crisis - Mobile テスト ユーザーの作成
 
-このセクションでは、In Case of Crisis - Mobile で Britta Simon というユーザーを作成します。  [In Case of Crisis - Mobile サポート チーム](https://www.rockdovesolutions.com/features/enterprise-ready)と連携して、In Case of Crisis - Mobile プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、In Case of Crisis - Mobile で Britta Simon というユーザーを作成します。 [In Case of Crisis - Mobile サポート チーム](https://www.rockdovesolutions.com/features/enterprise-ready)と連携して、In Case of Crisis - Mobile プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [In Case of Crisis - Mobile] タイルをクリックすると、SSO を設定した In Case of Crisis - Mobile に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [In Case of Crisis - Mobile] タイルをクリックすると、SSO を設定した In Case of Crisis - Mobile に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で In Case of Crisis - Mobile を試す](https://aad.portal.azure.com/)
-

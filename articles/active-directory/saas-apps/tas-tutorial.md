@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 4aaf4f059976635f32c1a4e6b7130f8835598f98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2687909a7067bc135f6fcf27fce2e1694325887
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552137"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504142"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tas"></a>チュートリアル:Azure Active Directory と TAS の統合
 
@@ -27,7 +27,7 @@ TAS と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して TAS に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ TAS と Azure AD の統合を構成するには、次のものが必要です。
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* TAS では、**SP と IDP** によって開始される SSO がサポートされます
+* TAS では、 **SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-tas-from-the-gallery"></a>ギャラリーからの TAS の追加
 
@@ -61,13 +61,13 @@ Azure AD への TAS の統合を構成するには、ギャラリーからマネ
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**TAS**」と入力し、結果パネルで **[TAS]** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **TAS** 」と入力し、結果パネルで **[TAS]** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の TAS](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、TAS で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、TAS で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと TAS 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 TAS で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -99,7 +99,7 @@ TAS で Azure AD シングル サインオンを構成するには、次の手�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[TAS のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://taseu.combtas.com/<DOMAIN>` の形式で URL を入力します。
 
@@ -107,14 +107,14 @@ TAS で Azure AD シングル サインオンを構成するには、次の手�
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[TAS のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://taseu.combtas.com/<DOMAIN>` という形式で URL を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 これらを実際の識別子、応答 URL、およびサインオン URL に値を置き換えます。実際の値については、チュートリアルの後の方で説明します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -134,17 +134,17 @@ TAS で Azure AD シングル サインオンを構成するには、次の手�
 
 2. メニューの左側で **[Settings]\(設定\)** をクリックして、 **[Administrator]\(管理者\)** に移動し、 **[Manage Single sign on]\(シングル サインオンの管理\)** をクリックします。
 
-    ![TAS の構成](./media/tas-tutorial/configure01.png)
+    ![[Manage Single Sign-On]\(シングル サインオンの管理\) が選択されていることを示すスクリーンショット。](./media/tas-tutorial/configure01.png)
 
 3. **[Manage Single sign on]\(シングル サインオンの管理\)** ページで、次の手順を実行します。
 
-    ![TAS の構成](./media/tas-tutorial/configure02.png)
+    ![[Manage Single sign on]\(シングル サインオンの管理\) ページのスクリーンショット。ここで、説明されている値を入力できます。](./media/tas-tutorial/configure02.png)
 
     a. **[Name]\(名前\)** ボックスに環境の名前を入力します。
     
     b. **[Authentication Type]\(認証の種類\)** として **[SAML2]** を選択します。
 
-    c. **[Enter URL]\(URL の入力\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    c. **[Enter URL]\(URL の入力\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     d. Azure portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をコピーして **[Enter Certification]\(証明書の入力\)** ボックスに貼り付けます。
 
@@ -155,7 +155,7 @@ TAS で Azure AD シングル サインオンを構成するには、次の手�
 
     f. **シングル サインオン** URL をコピーして、Azure portal の **[基本的な SAML 構成]** の **[識別子 (エンティティ ID)]** および **[サインオン URL]** ボックスに貼り付けます。 URL は、大文字と小文字が区別され、スラッシュ (/) で終わる必要があることに注意してください。
 
-    g. セットアップ ページの**アサーション サービス** URL をコピーし、Azure portal の **[基本的な SAML 構成]** の **[応答 URL]** ボックスに貼り付けます。
+    g. セットアップ ページの **アサーション サービス** URL をコピーし、Azure portal の **[基本的な SAML 構成]** の **[応答 URL]** ボックスに貼り付けます。
 
     h. **[Insert SSO row]\(SSO 行の挿入\)** をクリックします。
 
@@ -175,7 +175,7 @@ TAS で Azure AD シングル サインオンを構成するには、次の手�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -218,13 +218,12 @@ TAS で Azure AD シングル サインオンを構成するには、次の手�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [TAS] タイルをクリックすると、SSO を設定した TAS に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [TAS] タイルをクリックすると、SSO を設定した TAS に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
-ms.openlocfilehash: c3c2e9b8b37d3d81b9683e871844e2dd8d099074
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91a50ed85b5802657a27c5a545de0013937e9da0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88517058"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460565"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ibm-digital-business-automation-on-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と IBM Digital Business Automation on Cloud の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88517058"
 * ユーザーが自分の Azure AD アカウントを使用して IBM Digital Business Automation on Cloud に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* IBM Digital Business Automation on Cloud では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* IBM Digital Business Automation on Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* IBM Digital Business Automation on Cloud では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* IBM Digital Business Automation on Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-ibm-digital-business-automation-on-cloud-from-the-gallery"></a>ギャラリーからの IBM Digital Business Automation on Cloud の追加
 
@@ -50,7 +50,7 @@ Azure AD への IBM Digital Business Automation on Cloud の統合を構成す�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**IBM Digital Business Automation on Cloud**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **IBM Digital Business Automation on Cloud** 」と入力します。
 1. 結果のパネルから **[IBM Digital Business Automation on Cloud]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -77,21 +77,21 @@ IBM Digital Business Automation on Cloud に対する Azure AD SSO を構成し�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル**がある場合は、次の手順に従います。
+1. **[基本的な SAML 構成]** セクションで、 **サービス プロバイダー メタデータ ファイル** がある場合は、次の手順に従います。
     
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
-    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
+    b. **フォルダー ロゴ** をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
-    c. メタデータ ファイルが正常にアップロードされると、**識別子**と**応答 URL** の値が、IBM Digital Business Automation on Cloud セクションのテキスト ボックスに自動的に設定されます。
+    c. メタデータ ファイルが正常にアップロードされると、 **識別子** と **応答 URL** の値が、IBM Digital Business Automation on Cloud セクションのテキスト ボックスに自動的に設定されます。
 
     > [!Note]
-    > **識別子**と**応答 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
+    > **識別子** と **応答 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
 
     > [!Note]
     > お客様の Cloud サブスクリプションのメタデータ ファイルは、[IBM Digital Business Automation on Cloud クライアント サポート チーム](mailto:supportbpmoncloud@us.ibm.com)から入手できます。
 
-1. **サービス プロバイダーのメタデータ ファイル**がなければ、 **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+1. **サービス プロバイダーのメタデータ ファイル** がなければ、 **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
     a. **[識別子]** ボックスに、`https://www.automationcloud.ibm.com/isam/sps/<TENANT>/saml20` の形式で URL を入力します。
 
@@ -143,29 +143,28 @@ IBM Digital Business Automation on Cloud に対する Azure AD SSO を構成し�
 
 ## <a name="configure-ibm-digital-business-automation-on-cloud-sso"></a>IBM Digital Business Automation on Cloud の SSO の構成
 
-**IBM Digital Business Automation on Cloud** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [IBM Digital Business Automation on Cloud サポート チーム](mailto:supportbpmoncloud@us.ibm.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**IBM Digital Business Automation on Cloud** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [IBM Digital Business Automation on Cloud サポート チーム](mailto:supportbpmoncloud@us.ibm.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-ibm-digital-business-automation-on-cloud-test-user"></a>IBM Digital Business Automation on Cloud のテスト ユーザーの作成
 
-このセクションでは、IBM Digital Business Automation on Cloud で Britta Simon というユーザーを作成します。  [IBM Digital Business Automation on Cloud サポート チーム](mailto:supportbpmoncloud@us.ibm.com)と連携して、IBM Digital Business Automation on Cloud プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、IBM Digital Business Automation on Cloud で Britta Simon というユーザーを作成します。 [IBM Digital Business Automation on Cloud サポート チーム](mailto:supportbpmoncloud@us.ibm.com)と連携して、IBM Digital Business Automation on Cloud プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [IBM Digital Business Automation on Cloud] タイルをクリックすると、SSO を設定した IBM Digital Business Automation on Cloud に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [IBM Digital Business Automation on Cloud] タイルをクリックすると、SSO を設定した IBM Digital Business Automation on Cloud に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で IBM Digital Business Automation on Cloud を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって IBM Digital Business Automation on Cloud を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [高度な可視性と制御によって IBM Digital Business Automation on Cloud を保護する方法](/cloud-app-security/proxy-intro-aad)

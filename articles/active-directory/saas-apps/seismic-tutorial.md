@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: c42180990f81e179a8fa8cdfe9e5d762323213b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71de0573f252cab7f2b479212551562de2b1d1c2
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89661054"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674358"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-seismic"></a>チュートリアル:Azure Active Directory と Seismic の統合
 
@@ -27,7 +27,7 @@ Seismic と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで Seismic に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -44,8 +44,8 @@ Seismic と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Seismic では、**SP** Initiated SSO がサポートされます
-* Seismic を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* Seismic では、 **SP** Initiated SSO がサポートされます
+* Seismic を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-seismic-from-the-gallery"></a>ギャラリーからの Seismic の追加
 
@@ -55,12 +55,12 @@ Azure AD への Seismic の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Seismic**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Seismic** 」と入力します。
 1. 結果のパネルから **[Seismic]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Seismic で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Seismic で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Seismic 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Seismic で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -93,9 +93,9 @@ Seismic で Azure AD のシングル サインオンを構成してテストす�
     c. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.seismic.com/SSO/<ROUTEURL>` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値は、実際のサインオン URL、識別子、応答 URL で更新してください。 これらの値を取得するには、[Seismic クライアント サポート チーム](mailto:support@seismic.com)に問い合わせてください。 **サービス プロバイダーのメタデータ**をアップロードして [識別子] の値を自動的に事前設定することもできます。**サービス プロバイダーのメタデータ**の詳細については、[Seismic クライアント サポート チーム](mailto:support@seismic.com)に問い合わせてください。
+    > これらは実際の値ではありません。 これらの値は、実際のサインオン URL、識別子、応答 URL で更新してください。 これらの値を取得するには、[Seismic クライアント サポート チーム](mailto:support@seismic.com)に問い合わせてください。 **サービス プロバイダーのメタデータ** をアップロードして [識別子] の値を自動的に事前設定することもできます。 **サービス プロバイダーのメタデータ** の詳細については、 [Seismic クライアント サポート チーム](mailto:support@seismic.com)に問い合わせてください。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -135,22 +135,22 @@ Seismic で Azure AD のシングル サインオンを構成してテストす�
 
 ## <a name="configure-seismic-sso"></a>Seismic の SSO の構成
 
-**Seismic** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Seismic サポート チーム](mailto:support@seismic.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Seismic** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [Seismic サポート チーム](mailto:support@seismic.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-seismic-test-user"></a>Seismic のテスト ユーザーの作成
 
-このセクションでは、Seismic で Britta Simon というユーザーを作成します。  [Seismic サポート チーム](mailto:support@seismic.com)と連携し、Seismic プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Seismic で Britta Simon というユーザーを作成します。 [Seismic サポート チーム](mailto:support@seismic.com)と連携し、Seismic プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Seismic] タイルをクリックすると、SSO を設定した Seismic に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Seismic] タイルをクリックすると、SSO を設定した Seismic に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

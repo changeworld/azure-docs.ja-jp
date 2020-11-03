@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/23/2020
 ms.author: jeedes
-ms.openlocfilehash: b7710ce16b11ee82de11a6e23f56526eee470e51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36f3254a3a309f3dd2612658a82d0dc099ac1991
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554172"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522667"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-numlyengage"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と NumlyEngage™ の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88554172"
 * ユーザーが自分の Azure AD アカウントを使用して NumlyEngage™ に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* NumlyEngage™ では、**SP** Initiated SSO がサポートされます
-* NumlyEngage™ を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* NumlyEngage™ では、 **SP** Initiated SSO がサポートされます
+* NumlyEngage™ を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-numlyengage-from-the-gallery"></a>ギャラリーからの NumlyEngage™ の追加
 
@@ -50,7 +50,7 @@ Azure AD への NumlyEngage™ の統合を構成するには、ギャラリー�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**NumlyEngage™**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **NumlyEngage™** 」と入力します。
 1. 結果のパネルから **[NumlyEngage™]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -135,29 +135,28 @@ NumlyEngage™ で Azure AD SSO を構成してテストするには、次の構
 
 ## <a name="configure-numlyengage-sso"></a>NumlyEngage SSO の構成
 
-**NumlyEngage™** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [NumlyEngage™ のサポート チーム](mailto:numlyengage-support@numly.io)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**NumlyEngage™** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [NumlyEngage™ のサポート チーム](mailto:numlyengage-support@numly.io)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-numlyengage-test-user"></a>NumlyEngage のテスト ユーザーの作成
 
-このセクションでは、NumlyEngage™ で B.Simon というユーザーを作成します。  [NumlyEngage™ サポート チーム](mailto:numlyengage-support@numly.io)と協力して、NumlyEngage™ プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、NumlyEngage™ で B.Simon というユーザーを作成します。 [NumlyEngage™ サポート チーム](mailto:numlyengage-support@numly.io)と連携して、NumlyEngage™ プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [NumlyEngage™] タイルをクリックすると、SSO を設定した NumlyEngage™ に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [NumlyEngage™] タイルをクリックすると、SSO を設定した NumlyEngage™ に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で NumlyEngage™ を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって NumlyEngage™ を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [高度な可視性と制御によって NumlyEngage™ を保護する方法](/cloud-app-security/proxy-intro-aad)

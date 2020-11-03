@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: a656ec60fd3cb1e6b94da2122d8f493f426cef07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c19ad34c2ae9b5fbbdb2f9e3afd78a868b0a3712
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851307"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459644"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>チュートリアル: Azure Active Directory と Ivanti Service Manager (ISM) の統合
 
@@ -27,7 +27,7 @@ Ivanti Service Manager (ISM) と Azure AD を統合すると、次の利点が�
 * ユーザーが自分の Azure AD アカウントを使用して Ivanti Service Manager (ISM) に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,8 +41,8 @@ Ivanti Service Manager (ISM) と Azure AD の統合を構成するには、次�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Ivanti Service Manager (ISM) では、**SP と IDP** によって開始される SSO がサポートされます
-* Ivanti Service Manager (ISM) では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Ivanti Service Manager (ISM) では、 **SP と IDP** によって開始される SSO がサポートされます
+* Ivanti Service Manager (ISM) では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-ivanti-service-manager-ism-from-the-gallery"></a>ギャラリーから Ivanti Service Manager (ISM) を追加する
 
@@ -62,13 +62,13 @@ Azure AD と Ivanti Service Manager (ISM) の統合を構成するには、ギ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Ivanti Service Manager (ISM)** 」と入力し、結果パネルから **[Ivanti Service Manager (ISM)]** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Ivanti Service Manager (ISM)** 」と入力し、結果パネルから **[Ivanti Service Manager (ISM)]** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果リストの Ivanti Service Manager (ISM)](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Ivanti Service Manager (ISM) で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Ivanti Service Manager (ISM) で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Ivanti Service Manager (ISM) 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Ivanti Service Manager (ISM) で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -121,7 +121,7 @@ Ivanti Service Manager (ISM) で Azure AD シングル サインオンを構成�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 [Ivanti Service Manager (ISM) クライアント サポート チーム](https://www.ivanti.com/support/contact)に問い合わせてこれらの値を取得します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificateraw.png)
 
@@ -137,7 +137,7 @@ Ivanti Service Manager (ISM) で Azure AD シングル サインオンを構成�
 
 ### <a name="configure-ivanti-service-manager-ism-single-sign-on"></a>Ivanti Service Manager (ISM) のシングル サインオンの構成
 
-**Ivanti Service Manager (ISM)** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (未加工)** と Azure portal からコピーした適切な URL を [Ivanti Service Manager (ISM) サポート チーム](https://www.ivanti.com/support/contact)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Ivanti Service Manager (ISM)** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (未加工)** と Azure portal からコピーした適切な URL を [Ivanti Service Manager (ISM) サポート チーム](https://www.ivanti.com/support/contact)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -155,9 +155,9 @@ Ivanti Service Manager (ISM) で Azure AD シングル サインオンを構成�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -195,19 +195,18 @@ Ivanti Service Manager (ISM) で Azure AD シングル サインオンを構成�
 このセクションでは、Britta Simon というユーザーを Ivanti Service Manager (ISM) に作成します。 Ivanti Service Manager (ISM) では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Ivanti Service Manager (ISM) にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 > [!Note]
-> 手動でユーザーを作成する必要がある場合は、 [Ivanti Service Manager (ISM) サポート チーム](https://www.ivanti.com/support/contact)にお問い合わせください。
+> 手動でユーザーを作成する必要がある場合は、[Ivanti Service Manager (ISM) サポート チーム](https://www.ivanti.com/support/contact)にお問い合わせください。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Ivanti Service Manager (ISM)] タイルをクリックすると、SSO を設定した Ivanti Service Manager (ISM) アプリケーションに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Ivanti Service Manager (ISM)] タイルをクリックすると、SSO を設定した Ivanti Service Manager (ISM) アプリケーションに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

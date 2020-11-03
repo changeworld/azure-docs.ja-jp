@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 9a9e2298b6707304df96a2e954015459534abfa9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e10ca98e0c9257187288d02483ed81915a7b321d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546083"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894742"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>チュートリアル: Azure Active Directory と Ziflow の統合
 
@@ -27,7 +27,7 @@ Ziflow と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Ziflow に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Ziflow と Azure AD の統合を構成するには、次のものが必要です
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Ziflow では、**SP** によって開始される SSO がサポートされます
+* Ziflow では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-ziflow-from-the-gallery"></a>ギャラリーからの Ziflow の追加
 
@@ -61,13 +61,13 @@ Azure AD への Ziflow の統合を構成するには、ギャラリーから管
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Ziflow**」と入力し、結果ウィンドウで **[Ziflow]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **Ziflow** 」と入力し、結果ウィンドウで **[Ziflow]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Ziflow](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"**Britta Simon**" というテスト ユーザーに基づいて、Ziflow で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、" **Britta Simon** " というテスト ユーザーに基づいて、Ziflow で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Ziflow 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Ziflow で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -108,7 +108,7 @@ Ziflow で Azure AD シングル サインオンを構成するには、次の�
     > [!NOTE]
     > 上記の値は、実際の値ではありません。 識別子とサインオン URL 内の固有の ID を実際の値に置き換えます。実際の値については後で説明します。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -134,17 +134,17 @@ Ziflow で Azure AD シングル サインオンを構成するには、次の�
 
     ![Ziflow の構成 - サイン](./media/ziflow-tutorial/tutorial_ziflow_signon.png)
 
-4. **Single sign-on**(シングル サインオン) ページで、次の手順を実行します。
+4. **Single sign-on** (シングル サインオン) ページで、次の手順を実行します。
 
     ![Ziflow の構成 - シングル](./media/ziflow-tutorial/tutorial_ziflow_page.png)
 
     a. **[SAML2.0]** として **[種類]** を選択します。
 
-    b. **[サインイン URL]** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    b. **[サインイン URL]** テキスト ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    c. Azure Portal からダウンロードした base 64 でエンコードされた証明書を **X509 署名証明書**にアップロードします。
+    c. Azure Portal からダウンロードした base 64 でエンコードされた証明書を **X509 署名証明書** にアップロードします。
 
-    d. **[サインアウト URL]** テキスト ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    d. **[サインアウト URL]** テキスト ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
     e. **[Configuration Settings for your Identifier Provider (ID プロバイダーの構成設定)]** セクションで、強調表示されている一意の ID 値をコピーし、Azure portal の **[基本的な SAML 構成]** で ID とサインオン URL に追加します。
 
@@ -164,7 +164,7 @@ Ziflow で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -212,11 +212,11 @@ Azure AD ユーザーが Ziflow にサインインできるようにするには
 
 3. **[追加]** 、 **[ユーザーの追加]** の順にクリックします。
 
-    ![Ziflow の構成 - ユーザーの追加](./media/ziflow-tutorial/tutorial_ziflow_add.png)
+    ![[ユーザーの追加] オプションが選択されていることを示すスクリーンショット。](./media/ziflow-tutorial/tutorial_ziflow_add.png)
 
 4. **[ユーザーの追加]** ポップアップで、次の手順を実行します。
 
-    ![Ziflow の構成 - ユーザーの追加](./media/ziflow-tutorial/tutorial_ziflow_adduser.png)
+    ![[ユーザーの追加] ダイアログ ボックスを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/ziflow-tutorial/tutorial_ziflow_adduser.png)
 
     a. **[電子メール]** ボックスに、ユーザーのメール アドレスを入力します (例: brittasimon@contoso.com)。
 
@@ -235,13 +235,12 @@ Azure AD ユーザーが Ziflow にサインインできるようにするには
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Ziflow] タイルをクリックすると、SSO を設定した Ziflow に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Ziflow] タイルをクリックすると、SSO を設定した Ziflow に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

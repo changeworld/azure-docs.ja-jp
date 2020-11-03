@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: dad4262520da1ec88c634c98aa2af2bf66bab936
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4340bd0ffc4a060b1eb8884efa8078aaf18e1e28
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322297"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893983"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Azure Monitor のメトリック アラート ルール用の Resource Manager テンプレート サンプル
 
@@ -502,7 +502,7 @@ ms.locfileid: "87322297"
 - 各条件内では、ディメンションごとに 1 つの値のみを選択できます。
 - "\*" をディメンション値として使用することはできません。
 - 異なる条件内で構成されているメトリックが同じディメンションをサポートしている場合、構成するディメンションの値は、関連する条件内にあるこれらすべてのメトリックに対して同じ方法で明示的に設定する必要があります。
-    - 次の例では、**Transactions** と **SuccessE2ELatency** メトリックの両方に **ApiName** ディメンションがあり、*criterion1* で **ApiName** ディメンションの *"GetBlob"* 値が指定されているため*criterion2* は **ApiName** ディメンションに *"GetBlob"* 値も設定する必要があります。
+    - 次の例では、 **Transactions** と **SuccessE2ELatency** メトリックの両方に **ApiName** ディメンションがあり、 *criterion1* で **ApiName** ディメンションの *"GetBlob"* 値が指定されているため *criterion2* は **ApiName** ディメンションに *"GetBlob"* 値も設定する必要があります。
 
 ### <a name="template-file"></a>テンプレート ファイル
 
@@ -707,15 +707,15 @@ ms.locfileid: "87322297"
 ## <a name="multiple-dimensions-static-threshold"></a>複数ディメンションと静的しきい値
 1 つのアラート ルールで、複数のメトリック時系列を一度に監視できます。これにより、管理するアラート ルールが少なくなります。 次のサンプルでは、ディメンション メトリックに対して静的なメトリック アラート ルールを作成します。
 
-この例では、アラート ルールによって、**Transactions** メトリックの **ResponseType** と **ApiName** ディメンションのディメンション値の組み合わせが監視されます。
-1. **ResponseType** - "\*" ワイルド カードを使用することは、**ResponseType** ディメンションの各値 (将来の値を含む) について、異なる時系列が個別に監視されることを意味します。
+この例では、アラート ルールによって、 **Transactions** メトリックの **ResponseType** と **ApiName** ディメンションのディメンション値の組み合わせが監視されます。
+1. **ResponseType** - "\*" ワイルド カードを使用することは、 **ResponseType** ディメンションの各値 (将来の値を含む) について、異なる時系列が個別に監視されることを意味します。
 2. **ApiName** - **GetBlob** および **PutBlob** ディメンション値に対してのみ異なる時系列が監視されます。
 
 たとえば、このアラート ルールによって監視される可能性のある時系列のいくつかを次に示します。
-- Metric = *Transactions*, ResponseType = *Success*, ApiName = *GetBlob*
-- Metric = *Transactions*, ResponseType = *Success*, ApiName = *PutBlob*
-- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *GetBlob*
-- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *PutBlob*
+- Metric = *Transactions* , ResponseType = *Success* , ApiName = *GetBlob*
+- Metric = *Transactions* , ResponseType = *Success* , ApiName = *PutBlob*
+- Metric = *Transactions* , ResponseType = *Server Timeout* , ApiName = *GetBlob*
+- Metric = *Transactions* , ResponseType = *Server Timeout* , ApiName = *PutBlob*
 
 ### <a name="template-file"></a>テンプレート ファイル
 
@@ -898,15 +898,15 @@ ms.locfileid: "87322297"
 1 つの動的しきい値アラート ルールによって、一度に数百のメトリック時系列 (異なる種類も可) のカスタマイズされたしきい値を作成できます。これにより、管理するアラートの数を抑えられます。 次のサンプルでは、ディメンション メトリックに対して動的しきい値のメトリック アラート ルールを作成します。
 
 
-この例では、アラート ルールによって、**Transactions** メトリックの **ResponseType** と **ApiName** ディメンションのディメンション値の組み合わせが監視されます。
+この例では、アラート ルールによって、 **Transactions** メトリックの **ResponseType** と **ApiName** ディメンションのディメンション値の組み合わせが監視されます。
 1. **ResponseType** - **ResponseType** ディメンションの各値 (将来の値を含む) について、異なる時系列が個別に監視されます。
 2. **ApiName** - **GetBlob** および **PutBlob** ディメンション値に対してのみ異なる時系列が監視されます。
 
 たとえば、このアラート ルールによって監視される可能性のある時系列のいくつかを次に示します。
-- Metric = *Transactions*, ResponseType = *Success*, ApiName = *GetBlob*
-- Metric = *Transactions*, ResponseType = *Success*, ApiName = *PutBlob*
-- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *GetBlob*
-- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *PutBlob*
+- Metric = *Transactions* , ResponseType = *Success* , ApiName = *GetBlob*
+- Metric = *Transactions* , ResponseType = *Success* , ApiName = *PutBlob*
+- Metric = *Transactions* , ResponseType = *Server Timeout* , ApiName = *GetBlob*
+- Metric = *Transactions* , ResponseType = *Server Timeout* , ApiName = *PutBlob*
 
 >[!NOTE]
 > 現在、動的しきい値を使用するメトリック アラート ルールでは複数の条件はサポートされていません。
@@ -3132,7 +3132,7 @@ Azure Monitor では、同じ Azure リージョンに存在するリソース�
 > [!NOTE]
 > `&amp`; は、& の HTML エンティティ参照です。 URL パラメーターは、1 つの & で分離されていますが、HTML で URL を記述した場合は、エンコードする必要があります。 そのため、pingURL パラメーターの値に "&" が含まれている場合は、"`&amp`;" を使用してエスケープする必要があります。
 
-### <a name="parameter-file"></a>パラメーター ファイル
+### <a name="template-file"></a>テンプレート ファイル
 
 ```json
 {
@@ -3234,8 +3234,6 @@ Azure Monitor では、同じ Azure リージョンに存在するリソース�
 }
 ```
 
-
-
 ### <a name="parameter-file"></a>パラメーター ファイル
 
 ```json
@@ -3254,12 +3252,53 @@ Azure Monitor では、同じ Azure リージョンに存在するリソース�
         },
         "location": {
             "value": "Replace with the location of your Application Insights resource"
-        }
+        },
+        "pingText": {
+            "defaultValue": "Optional parameter that allows you to perform a content-match for the presence of a specific string within the content returned from a pingURL response",
+            "type": "String"
+        },
     }
 }
 ```
 
+コンテンツ一致 `pingText` パラメーターの追加構成は、テンプレート ファイルの `Configuration/Webtest` 部分で制御されます。 具体的には、以下のセクションを参照してください。
 
+```xml
+<RuleParameter Name=\"FindText\" Value=\"',parameters('pingText'), '\" />
+<RuleParameter Name=\"IgnoreCase\" Value=\"False\" />
+<RuleParameter Name=\"UseRegularExpression\" Value=\"False\" /> 
+<RuleParameter Name=\"PassIfTextFound\" Value=\"True\" />
+```
+### <a name="test-locations"></a>テストの場所
+
+|Id                  | リージョン           |
+|:-------------------|:-----------------|
+| `emea-nl-ams-azr`  | 西ヨーロッパ      |
+| `us-ca-sjc-azr`    | 米国西部          |
+| `emea-ru-msa-edge` | 英国南部         |
+| `emea-se-sto-edge` | 英国西部          |
+| `apac-sg-sin-azr`  | 東南アジア   |
+| `us-tx-sn1-azr`    | 米国中南部 |
+| `us-il-ch1-azr`    | 米国中北部 |
+| `emea-gb-db3-azr`  | 北ヨーロッパ     |
+| `apac-jp-kaw-edge` | 東日本       |
+| `emea-fr-pra-edge` | フランス中部   |
+| `emea-ch-zrh-edge` | フランス南部     |
+| `us-va-ash-azr`    | 米国東部          |
+| `apac-hk-hkn-azr`  | 東アジア        |
+| `us-fl-mia-edge`   | 米国中部       |
+| `latam-br-gru-edge`| ブラジル南部      |
+| `emea-au-syd-edge` | オーストラリア東部   |
+
+### <a name="us-government-test-locations"></a>米国政府のテストの場所
+
+|Id                    | リージョン           |
+|----------------------|------------------|
+| `usgov-va-azr`       | `USGov Virginia` |
+| `usgov-phx-azr`      | `USGov Arizona`  |
+| `usgov-tx-azr`       | `USGov Texas`    |
+| `usgov-ddeast-azr`   | `USDoD East`     |
+| `usgov-ddcentral-azr`| `USDoD Central`  |
 
 ## <a name="next-steps"></a>次のステップ
 

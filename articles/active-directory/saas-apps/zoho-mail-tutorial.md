@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 00b9df3ad5e4d2104051e5489138785b4ecde8e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89c703f6bb956409c97c36c6507519f4e884fcf2
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546132"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892725"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho"></a>チュートリアル: Azure Active Directory と Zoho の統合
 
@@ -27,7 +27,7 @@ Zoho と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Zoho に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Zoho と Azure AD の統合を構成するには、次のものが必要です�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Zoho では、**SP** によって開始される SSO がサポートされます
+* Zoho では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-zoho-from-the-gallery"></a>ギャラリーからの Zoho の追加
 
@@ -61,13 +61,13 @@ Azure AD への Zoho の統合を構成するには、ギャラリーから管�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Zoho**」と入力し、結果パネルで **[Zoho]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **Zoho** 」と入力し、結果パネルで **[Zoho]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Zoho](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Zoho で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Zoho で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Zoho 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Zoho で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -106,7 +106,7 @@ Zoho で Azure AD シングル サインオンを構成するには、次の手�
     > [!NOTE]
     > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Zoho クライアント サポート チーム](https://www.zoho.com/mail/contact.html)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -124,7 +124,7 @@ Zoho で Azure AD シングル サインオンを構成するには、次の手�
 
 1. 別の Web ブラウザー ウィンドウで、Zoho Mail 企業サイトに管理者としてログインします。
 
-2. **コントロール パネル**に移動します。
+2. **コントロール パネル** に移動します。
    
     ![コントロール パネル](./media/zoho-mail-tutorial/ic789607.png "コントロール パネル")
 
@@ -140,7 +140,7 @@ Zoho で Azure AD シングル サインオンを構成するには、次の手�
    
     b. **[Logout URL]\(ログアウト URL\)** ボックスに、Azure portal からコピーした **[ログアウト URL]** を貼り付けます。
    
-    c. **[Change Password URL]\(パスワードの変更 URL\)** ボックスに、Azure Portal からコピーした**パスワードの変更 URL** を貼り付けます。
+    c. **[Change Password URL]\(パスワードの変更 URL\)** ボックスに、Azure Portal からコピーした **パスワードの変更 URL** を貼り付けます。
        
     d. Azure Portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして **[PublicKey]\(公開キー\)** ボックスに貼り付けます。
    
@@ -164,9 +164,9 @@ Zoho で Azure AD シングル サインオンを構成するには、次の手�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -181,7 +181,7 @@ Zoho で Azure AD シングル サインオンを構成するには、次の手�
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、「**Zoho**」と入力して選択します。
+2. アプリケーションの一覧で、「 **Zoho** 」と入力して選択します。
 
     ![アプリケーションの一覧の [Zoho] リンク](common/all-applications.png)
 
@@ -214,17 +214,17 @@ Azure AD ユーザーが Zoho Mail にログインできるようにするには
 
 1. **[ユーザーの詳細] \> [ユーザーの追加]** の順に移動します。
    
-    ![ユーザーの追加](./media/zoho-mail-tutorial/ic789611.png "ユーザーの追加")
+    ![[ユーザーの詳細] と [ユーザーの追加] が選択されている Zoho Mail サイトを示すスクリーンショット。](./media/zoho-mail-tutorial/ic789611.png "ユーザーの追加")
 
 1. **[ユーザーの追加]** ダイアログで、次の手順を実行します。
    
-    ![ユーザーの追加](./media/zoho-mail-tutorial/ic789612.png "ユーザーの追加")
+    ![[ユーザーの追加] ダイアログ ボックスを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/zoho-mail-tutorial/ic789612.png "ユーザーの追加")
    
-    a. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (この例では **Britta**)。
+    a. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (この例では **Britta** )。
 
-    b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
+    b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon** )。
 
-    c. **[メール ID]** ボックスに、ユーザーのメール ID (**brittasimon\@contoso.com** など) を入力します。
+    c. **[メール ID]** ボックスに、ユーザーのメール ID ( **brittasimon\@contoso.com** など) を入力します。
 
     d. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
    
@@ -237,13 +237,12 @@ Azure AD ユーザーが Zoho Mail にログインできるようにするには
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Zoho] タイルをクリックすると、SSO を設定した Zoho に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Zoho] タイルをクリックすると、SSO を設定した Zoho に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
