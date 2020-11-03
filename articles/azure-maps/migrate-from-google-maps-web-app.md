@@ -9,18 +9,36 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 5d7e6c5229fa6f8204ba363d9868ffa80d78ccba
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: b95800bea4bceffabad56aa29b68a57b310c5518
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876500"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896448"
 ---
-# <a name="migrate-a-web-app-from-google-maps"></a>Google Maps から Web アプリを移行する
+# <a name="tutorial---migrate-a-web-app-from-google-maps"></a>チュートリアル - Google Maps から Web アプリを移行する
 
-Google マップを使用するほとんどの Web アプリでは、Google Maps V3 JavaScript SDK が使用されています。 Azure Maps Web SDK は、移行に適した Azure ベースの SDK です。 Azure Maps Web SDK では、独自のコンテンツや映像を使用して、インタラクティブ マップをカスタマイズすることができます。 Web アプリケーションとモバイル アプリケーションの両方でアプリを実行することができます。 このコントロールには、WebGL が利用されているため、大きなデータ セットを高いパフォーマンスでレンダリングすることができます。 JavaScript または TypeScript を使用して、この SDK での開発を行います。
+Google マップを使用するほとんどの Web アプリでは、Google Maps V3 JavaScript SDK が使用されています。 Azure Maps Web SDK は、移行に適した Azure ベースの SDK です。 Azure Maps Web SDK では、独自のコンテンツや映像を使用して、インタラクティブ マップをカスタマイズすることができます。 Web アプリケーションとモバイル アプリケーションの両方でアプリを実行することができます。 このコントロールには、WebGL が利用されているため、大きなデータ セットを高いパフォーマンスでレンダリングすることができます。 JavaScript または TypeScript を使用して、この SDK での開発を行います。 このチュートリアルでは、次の内容を学習します。
 
-既存の Web アプリケーションを移行する場合は、オープンソースのマップ コントロール ライブラリが使用されているかどうかを確認します。 オープンソースのマップ コントロール ライブラリの例としては、Cesium、Leaflet、OpenLayers があります。 オープンソースのマップ コントロール ライブラリがご自分のアプリケーションで使用されていて、Azure Maps Web SDK を使用したくない場合でも、移行することはできます。 その場合は、ご自分のアプリケーションを Azure Maps タイル サービス ([道路タイル](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [衛星タイル](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)) に接続してください。 一般的に使用されるいくつかのオープンソースのマップ コントロール ライブラリで Azure Maps を使用する方法の詳細を以下に示します。
+> [!div class="checklist"]
+> * マップを読み込む
+> * マップをローカライズする
+> * マーカー、ポリライン、およびポリゴンを追加する。
+> * ポップアップ ウィンドウまたは情報ウィンドウに情報を表示する
+> * KML と GeoJSON のデータを読み込んで表示する
+> * クラスター マーカー
+> * タイル レイヤーをオーバーレイする
+> * トラフィック データを表示する
+> * グラウンド オーバーレイを追加する
+
+また、次についても学習します。 
+
+> [!div class="checklist"]
+> * Azure Maps Web SDK を使用して一般的なマッピング タスクを実行する方法
+> * パフォーマンスとユーザー エクスペリエンスを向上させるためのベスト プラクティス
+> * Azure Maps で利用可能なより高度な機能を使用したアプリケーションの作成方法に関するヒント
+
+既存の Web アプリケーションを移行する場合は、オープンソースのマップ コントロール ライブラリが使用されているかどうかを確認します。 オープンソースのマップ コントロール ライブラリの例としては、Cesium、Leaflet、OpenLayers があります。 オープンソースのマップ コントロール ライブラリがご自分のアプリケーションで使用されていて、Azure Maps Web SDK を使用したくない場合でも、移行することはできます。 その場合は、ご自分のアプリケーションを Azure Maps タイル サービス ([道路タイル](/rest/api/maps/render/getmaptile) \| [衛星タイル](/rest/api/maps/render/getmapimagerytile)) に接続してください。 一般的に使用されるいくつかのオープンソースのマップ コントロール ライブラリで Azure Maps を使用する方法の詳細を以下に示します。
 
 - Cesium - Web 用の 3D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [ドキュメント](https://cesiumjs.org/)
 - Leaflet – Web 用の軽量な 2D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [ドキュメント](https://leafletjs.com/)
@@ -33,6 +51,11 @@ JavaScript フレームワークを開発に使用している場合は、次の
 - [Azure Maps React Component](https://github.com/WiredSolutions/react-azure-maps) - Azure Maps コントロール用の React ラッパー。
 - [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) - Vue アプリケーション用の Azure Maps コンポーネント。
 
+## <a name="prerequisites"></a>前提条件 
+
+1. [Azure portal](https://portal.azure.com) にサインインします。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+2. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
 
 ## <a name="key-features-support"></a>主なフィーチャーのサポート
 
@@ -62,16 +85,15 @@ JavaScript フレームワークを開発に使用している場合は、次の
 - まず、Azure Maps で Map クラスのインスタンスを作成する必要があります。 マップの `ready` または `load` イベントが発生するのを待ってから、プログラムでマップを操作してください。 この順序により、確実にマップ リソースがすべて読み込まれ、アクセスできる状態になります。
 - どちらのプラットフォームも、基本マップには同様のタイリング システムが使用されています。 Google マップのタイルのディメンションは 256 ピクセルですが、Azure Maps のタイルのディメンションは 512 ピクセルとなります。 Google マップと同じマップ ビューを Azure Maps で取得するには、Azure Maps では、Google マップのズーム レベルから 1 減らします。
 - Google マップでは座標は `latitude,longitude` と呼ばれますが、Azure Maps では `longitude,latitude` が使用されます。 Azure Maps の形式は、ほとんどの GIS プラットフォームが準拠している標準の `[x, y]` に合わせてあります。
-- Azure Maps Web SDK の図形は、GeoJSON スキーマに基づいています。 ヘルパー クラスは、["*atlas.data*" 名前空間](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)を通じて公開されます。 また、[*atlas.Shape*](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) というクラスもあります。 このクラスを使用すると、GeoJSON オブジェクトをラップし、データ バインド可能な方法で簡単に更新、保守できます。
+- Azure Maps Web SDK の図形は、GeoJSON スキーマに基づいています。 ヘルパー クラスは、 [" *atlas.data* " 名前空間](/javascript/api/azure-maps-control/atlas.data)を通じて公開されます。 また、 [*atlas.Shape*](/javascript/api/azure-maps-control/atlas.shape) というクラスもあります。 このクラスを使用すると、GeoJSON オブジェクトをラップし、データ バインド可能な方法で簡単に更新、保守できます。
 - Azure Maps の座標は、位置オブジェクトとして定義されます。 座標は、`[longitude,latitude]` 形式の数値配列として指定されます。 または、新しい atlas.data.Position(経度, 緯度) を使用して指定されます。
     > [!TIP]
-    > Position クラスには、"緯度, 経度" 形式の座標をインポートするための静的ヘルパー メソッドがあります。 [atlas.data.Position.fromLatLng](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position) メソッドは、多くの場合、Google Maps のコード内の `new google.maps.LatLng` メソッドと置き換えることができます。
+    > Position クラスには、"緯度, 経度" 形式の座標をインポートするための静的ヘルパー メソッドがあります。 [atlas.data.Position.fromLatLng](/javascript/api/azure-maps-control/atlas.data.position) メソッドは、多くの場合、Google Maps のコード内の `new google.maps.LatLng` メソッドと置き換えることができます。
 - マップに追加される各図形にスタイル設定情報を指定するのではなく、Azure Maps によってデータからスタイルが分離されます。 データはデータ ソースに格納され、レンダリング レイヤーに接続されます。 Azure Maps のコードはデータ ソースを使用してそのデータをレンダリングします。 この手法では、パフォーマンスが向上します。 さらに、多くのレイヤーでは、データドリブンのスタイル設定がサポートされ、ビジネス ロジックをレイヤー スタイル オプションに追加することができます。 このサポートにより、図形で定義されているプロパティに基づいてレイヤー内で個々の図形をレンダリングする方法が変更されます。
 
 ## <a name="web-sdk-side-by-side-examples"></a>Web SDK のサイドバイサイドの例
 
 このコレクションには各プラットフォーム用のコード サンプルが用意されており、それぞれが一般的なユース ケースを対象としています。 これは、Google Maps V3 JavaScript SDK から Azure Maps Web SDK への Web アプリケーションの移行をサポートすることを目的としています。 Web アプリケーションに関連するコード サンプルは JavaScript で提供されています。 ただし、Azure Maps では、[NPM モジュール](how-to-use-map-control.md)を通じて、追加オプションとして TypeScript 定義も提供しています。
-
 
 **トピック**
 
@@ -90,7 +112,6 @@ JavaScript フレームワークを開発に使用している場合は、次の
 - [トラフィック データを表示する](#show-traffic-data)
 - [グラウンド オーバーレイを追加する](#add-a-ground-overlay)
 - [マップに KML データを追加する](#add-kml-data-to-the-map)
-
 
 ### <a name="load-a-map"></a>マップを読み込む
 
@@ -420,10 +441,10 @@ map.markers.add(new atlas.HtmlMarker({
 - [ポイント データをクラスタリングする](clustering-point-data-web-sdk.md)
 - [HTML マーカーを追加する](map-add-custom-html.md)
 - [データドリブンのスタイルの式を使用する](data-driven-style-expressions-web-sdk.md)
-- [シンボル レイヤーのアイコン オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)
-- [シンボル レイヤーのテキスト オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions)
-- [HTML マーカーのクラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
-- [HTML マーカーのオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+- [シンボル レイヤーのアイコン オプション](/javascript/api/azure-maps-control/atlas.iconoptions)
+- [シンボル レイヤーのテキスト オプション](/javascript/api/azure-maps-control/atlas.textoptions)
+- [HTML マーカーのクラス](/javascript/api/azure-maps-control/atlas.htmlmarker)
+- [HTML マーカーのオプション](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 ### <a name="adding-a-custom-marker"></a>カスタム マーカーの追加
 
@@ -545,10 +566,10 @@ Azure Maps のシンボル レイヤーでもカスタム画像がサポート�
 - [シンボル レイヤーを追加する](map-add-pin.md)
 - [HTML マーカーを追加する](map-add-custom-html.md)
 - [データドリブンのスタイルの式を使用する](data-driven-style-expressions-web-sdk.md)
-- [シンボル レイヤーのアイコン オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)
-- [シンボル レイヤーのテキスト オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions)
-- [HTML マーカーのクラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
-- [HTML マーカーのオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+- [シンボル レイヤーのアイコン オプション](/javascript/api/azure-maps-control/atlas.iconoptions)
+- [シンボル レイヤーのテキスト オプション](/javascript/api/azure-maps-control/atlas.textoptions)
+- [HTML マーカーのクラス](/javascript/api/azure-maps-control/atlas.htmlmarker)
+- [HTML マーカーのオプション](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 ### <a name="adding-a-polyline"></a>ポリラインの追加
 
@@ -623,7 +644,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 **その他のリソース:**
 
 - [マップに線を追加する](map-add-line-layer.md)
-- [線レイヤーのオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
+- [線レイヤーのオプション](/javascript/api/azure-maps-control/atlas.linelayeroptions)
 - [データドリブンのスタイルの式を使用する](data-driven-style-expressions-web-sdk.md)
 
 ### <a name="adding-a-polygon"></a>多角形の追加
@@ -694,8 +715,8 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 - [マップに多角形を追加する](map-add-shape.md)
 - [マップに円を追加する](map-add-shape.md#add-a-circle-to-the-map)
-- [多角形レイヤーのオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
-- [線レイヤーのオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
+- [多角形レイヤーのオプション](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
+- [線レイヤーのオプション](/javascript/api/azure-maps-control/atlas.linelayeroptions)
 - [データドリブンのスタイルの式を使用する](data-driven-style-expressions-web-sdk.md)
 
 ### <a name="display-an-info-window"></a>情報ウィンドウを表示する
@@ -762,8 +783,8 @@ map.events.add('click', marker, function () {
 - [メディア コンテンツを含むポップアップ](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popup%20with%20Media%20Content)
 - [図形のポップアップ](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popups%20on%20Shapes)
 - [複数のピンでのポップアップの再利用](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Reusing%20Popup%20with%20Multiple%20Pins)
-- [ポップアップのクラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
-- [ポップアップのオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions)
+- [ポップアップのクラス](/javascript/api/azure-maps-control/atlas.popup)
+- [ポップアップのオプション](/javascript/api/azure-maps-control/atlas.popupoptions)
 
 ### <a name="import-a-geojson-file"></a>GeoJSON ファイルをインポートする
 
@@ -1279,8 +1300,8 @@ GeoJSON データをデータ ソースに読み込み、そのデータ ソー�
 **その他のリソース:**
 
 - [ヒート マップ レイヤーを追加する](map-add-heat-map-layer.md)
-- [ヒート マップ レイヤーのクラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.heatmaplayer)
-- [ヒート マップ レイヤーのオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
+- [ヒート マップ レイヤーのクラス](/javascript/api/azure-maps-control/atlas.layer.heatmaplayer)
+- [ヒート マップ レイヤーのオプション](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
 - [データドリブンのスタイルの式を使用する](data-driven-style-expressions-web-sdk.md)
 
 ### <a name="overlay-a-tile-layer"></a>タイル レイヤーをオーバーレイする
@@ -1333,8 +1354,8 @@ map.layers.add(new atlas.layer.TileLayer({
 **その他のリソース:**
 
 - [タイル レイヤーを追加する](map-add-tile-layer.md)
-- [タイル レイヤーのクラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer)
-- [タイル レイヤーのオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.tilelayeroptions)
+- [タイル レイヤーのクラス](/javascript/api/azure-maps-control/atlas.layer.tilelayer)
+- [タイル レイヤーのオプション](/javascript/api/azure-maps-control/atlas.tilelayeroptions)
 
 ### <a name="show-traffic-data"></a>トラフィック データを表示する
 
@@ -1439,7 +1460,7 @@ Azure と Google のどちらのマップも、ジオリファレンスされた
 ジオリファレンスされた画像をオーバーレイするには、`atlas.layer.ImageLayer` クラスを使用します。 このクラスでは、イメージへの URL と、イメージの四隅の座標のセットが必要です。 イメージは、同じドメインでホストされているか、CORS が有効になっている必要があります。
 
 > [!TIP]
-> 画像の各隅の座標ではなく、北、南、東、西および回転の情報のみがある場合は、静的な [`atlas.layer.ImageLayer.getCoordinatesFromEdges`](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer#getcoordinatesfromedges-number--number--number--number--number-) メソッドを使用できます。
+> 画像の各隅の座標ではなく、北、南、東、西および回転の情報のみがある場合は、静的な [`atlas.layer.ImageLayer.getCoordinatesFromEdges`](/javascript/api/azure-maps-control/atlas.layer.imagelayer#getcoordinatesfromedges-number--number--number--number--number-) メソッドを使用できます。
 
 ```html
 <!DOCTYPE html>
@@ -1500,7 +1521,7 @@ Azure と Google のどちらのマップも、ジオリファレンスされた
 **その他のリソース:**
 
 - [イメージをオーバーレイする](map-add-image-layer.md)
-- [イメージ レイヤーのクラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer)
+- [イメージ レイヤーのクラス](/javascript/api/azure-maps-control/atlas.layer.imagelayer)
 
 ### <a name="add-kml-data-to-the-map"></a>マップに KML データを追加する
 
@@ -1549,7 +1570,7 @@ Azure と Google のどちらのマップも、KML、KMZ、GeoRSS のデータ�
 
 #### <a name="after-azure-maps"></a>後: Azure Maps
 
-Azure Maps では、GeoJSON が Web SDK で使用される主なデータ形式となりますが、[空間 IO モジュール](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)を使用すれば、その他の空間データ形式も容易に統合することができます。 このモジュールには、空間データの読み取りと書き込みの両方に対応した関数のほか、これらの空間データ形式から簡単にデータをレンダリングできるシンプルなデータ レイヤーが備わっています。 空間データ ファイルのデータを読み取るには、URL を (あるいは生データを文字列または BLOB として) `atlas.io.read` 関数に渡します。 ファイルから解析済みのデータがすべて返されるので、そのデータをマップに追加することができます。 KML は、多くのスタイル情報を含んでいるため、ほとんどの空間データ形式と比べてやや複雑です。 そうしたスタイルの大半のレンダリングは、`SpatialDataLayer` クラスでサポートされますが、地物データを読み込む前にアイコン画像をマップに読み込む必要があり、また、マップには別途レイヤーとしてグラウンド オーバーレイを追加する必要があります。 URL でデータを読み込む場合は、CORS が有効なエンドポイントでデータがホストされているか、または、読み取り関数にオプションとしてプロキシ サービスを渡す必要があります。 
+Azure Maps では、GeoJSON が Web SDK で使用される主なデータ形式となりますが、[空間 IO モジュール](/javascript/api/azure-maps-spatial-io/)を使用すれば、その他の空間データ形式も容易に統合することができます。 このモジュールには、空間データの読み取りと書き込みの両方に対応した関数のほか、これらの空間データ形式から簡単にデータをレンダリングできるシンプルなデータ レイヤーが備わっています。 空間データ ファイルのデータを読み取るには、URL を (あるいは生データを文字列または BLOB として) `atlas.io.read` 関数に渡します。 ファイルから解析済みのデータがすべて返されるので、そのデータをマップに追加することができます。 KML は、多くのスタイル情報を含んでいるため、ほとんどの空間データ形式と比べてやや複雑です。 そうしたスタイルの大半のレンダリングは、`SpatialDataLayer` クラスでサポートされますが、地物データを読み込む前にアイコン画像をマップに読み込む必要があり、また、マップには別途レイヤーとしてグラウンド オーバーレイを追加する必要があります。 URL でデータを読み込む場合は、CORS が有効なエンドポイントでデータがホストされているか、または、読み取り関数にオプションとしてプロキシ サービスを渡す必要があります。 
 
 ```javascript
 <!DOCTYPE html>
@@ -1646,9 +1667,9 @@ Azure Maps では、GeoJSON が Web SDK で使用される主なデータ形式�
 
 **その他のリソース:**
 
-- [atlas.io.read 関数](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io#read-string---arraybuffer---blob--spatialdatareadoptions-)
-- [SimpleDataLayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
-- [SimpleDataLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
+- [atlas.io.read 関数](/javascript/api/azure-maps-spatial-io/atlas.io#read-string---arraybuffer---blob--spatialdatareadoptions-)
+- [SimpleDataLayer](/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
+- [SimpleDataLayerOptions](/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
 
 ## <a name="additional-code-samples"></a>その他のコード サンプル
 
@@ -1675,28 +1696,28 @@ Google Maps の移行に関連するその他のコード サンプルを以下�
 
 | Google Maps   | Azure Maps  |
 |---------------|-------------|
-| `google.maps.Map` | [atlas.Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)  |
-| `google.maps.InfoWindow` | [atlas.Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)  |
+| `google.maps.Map` | [atlas.Map](/javascript/api/azure-maps-control/atlas.map)  |
+| `google.maps.InfoWindow` | [atlas.Popup](/javascript/api/azure-maps-control/atlas.popup)  |
 | `google.maps.InfoWindowOptions` | [atlas.PopupOptions](https://docs.microsoft.com/) |
-| `google.maps.LatLng`  | [atlas.data.Position](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position)  |
-| `google.maps.LatLngBounds` | [atlas.data.BoundingBox](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.boundingbox) |
-| `google.maps.MapOptions`  | [atlas.CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraoptions)<br/>[atlas.CameraBoundsOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraboundsoptions)<br/>[atlas.ServiceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions)<br/>[atlas.StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)<br/>[atlas.UserInteractionOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.userinteractionoptions) |
-| `google.maps.Point`  | [atlas.Pixel](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.pixel)   |
+| `google.maps.LatLng`  | [atlas.data.Position](/javascript/api/azure-maps-control/atlas.data.position)  |
+| `google.maps.LatLngBounds` | [atlas.data.BoundingBox](/javascript/api/azure-maps-control/atlas.data.boundingbox) |
+| `google.maps.MapOptions`  | [atlas.CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)<br/>[atlas.CameraBoundsOptions](/javascript/api/azure-maps-control/atlas.cameraboundsoptions)<br/>[atlas.ServiceOptions](/javascript/api/azure-maps-control/atlas.serviceoptions)<br/>[atlas.StyleOptions](/javascript/api/azure-maps-control/atlas.styleoptions)<br/>[atlas.UserInteractionOptions](/javascript/api/azure-maps-control/atlas.userinteractionoptions) |
+| `google.maps.Point`  | [atlas.Pixel](/javascript/api/azure-maps-control/atlas.pixel)   |
 
 ## <a name="overlay-classes"></a>オーバーレイ クラス
 
 | Google Maps  | Azure Maps  |
 |--------------|-------------|
-| `google.maps.Marker` | [atlas.HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)<br/>[atlas.data.Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point)  |
-| `google.maps.MarkerOptions`  | [atlas.HtmlMarkerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)<br/>[atlas.layer.SymbolLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer)<br/>[atlas.SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions)<br/>[atlas.IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)<br/>[atlas.TextOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions)<br/>[atlas.layer.BubbleLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer)<br/>[atlas.BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions) |
-| `google.maps.Polygon`  | [atlas.data.Polygon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon)               |
-| `google.maps.PolygonOptions` |[atlas.layer.PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer)<br/> [atlas.PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions)<br/> [atlas.layer.LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer)<br/> [atlas.LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)|
-| `google.maps.Polyline` | [atlas.data.LineString](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.linestring)         |
-| `google.maps.PolylineOptions` | [atlas.layer.LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer)<br/>[atlas.LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions) |
+| `google.maps.Marker` | [atlas.HtmlMarker](/javascript/api/azure-maps-control/atlas.htmlmarker)<br/>[atlas.data.Point](/javascript/api/azure-maps-control/atlas.data.point)  |
+| `google.maps.MarkerOptions`  | [atlas.HtmlMarkerOptions](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)<br/>[atlas.layer.SymbolLayer](/javascript/api/azure-maps-control/atlas.layer.symbollayer)<br/>[atlas.SymbolLayerOptions](/javascript/api/azure-maps-control/atlas.symbollayeroptions)<br/>[atlas.IconOptions](/javascript/api/azure-maps-control/atlas.iconoptions)<br/>[atlas.TextOptions](/javascript/api/azure-maps-control/atlas.textoptions)<br/>[atlas.layer.BubbleLayer](/javascript/api/azure-maps-control/atlas.layer.bubblelayer)<br/>[atlas.BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions) |
+| `google.maps.Polygon`  | [atlas.data.Polygon](/javascript/api/azure-maps-control/atlas.data.polygon)               |
+| `google.maps.PolygonOptions` |[atlas.layer.PolygonLayer](/javascript/api/azure-maps-control/atlas.layer.polygonlayer)<br/> [atlas.PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)<br/> [atlas.layer.LineLayer](/javascript/api/azure-maps-control/atlas.layer.linelayer)<br/> [atlas.LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions)|
+| `google.maps.Polyline` | [atlas.data.LineString](/javascript/api/azure-maps-control/atlas.data.linestring)         |
+| `google.maps.PolylineOptions` | [atlas.layer.LineLayer](/javascript/api/azure-maps-control/atlas.layer.linelayer)<br/>[atlas.LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions) |
 | `google.maps.Circle`  | 「[マップに円を追加する](map-add-shape.md#add-a-circle-to-the-map)」を参照してください                                     |
-| `google.maps.ImageMapType`  | [atlas.TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer)         |
-| `google.maps.ImageMapTypeOptions` | [atlas.TileLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.tilelayeroptions) |
-| `google.maps.GroundOverlay`  | [atlas.layer.ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer)<br/>[atlas.ImageLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagelayeroptions) |
+| `google.maps.ImageMapType`  | [atlas.TileLayer](/javascript/api/azure-maps-control/atlas.layer.tilelayer)         |
+| `google.maps.ImageMapTypeOptions` | [atlas.TileLayerOptions](/javascript/api/azure-maps-control/atlas.tilelayeroptions) |
+| `google.maps.GroundOverlay`  | [atlas.layer.ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer)<br/>[atlas.ImageLayerOptions](/javascript/api/azure-maps-control/atlas.imagelayeroptions) |
 
 ## <a name="service-classes"></a>サービス クラス
 
@@ -1704,11 +1725,11 @@ Azure Maps Web SDK には、個別に読み込むことができるサービス 
 
 | Google Maps | Azure Maps  |
 |-------------|-------------|
-| `google.maps.Geocoder` | [atlas.service.SearchUrl](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl)  |
-| `google.maps.GeocoderRequest`  | [atlas.SearchAddressOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchaddressoptions)<br/>[atlas.SearchAddressRevrseOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchaddressreverseoptions)<br/>[atlas.SearchAddressReverseCrossStreetOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchaddressreversecrossstreetoptions)<br/>[atlas.SearchAddressStructuredOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchaddressstructuredoptions)<br/>[atlas.SearchAlongRouteOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchalongrouteoptions)<br/>[atlas.SearchFuzzyOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchfuzzyoptions)<br/>[atlas.SearchInsideGeometryOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchinsidegeometryoptions)<br/>[atlas.SearchNearbyOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchnearbyoptions)<br/>[atlas.SearchPOIOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchpoioptions)<br/>[atlas.SearchPOICategoryOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchpoicategoryoptions) |
-| `google.maps.DirectionsService`  | [atlas.service.RouteUrl](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl)  |
-| `google.maps.DirectionsRequest`  | [atlas.CalculateRouteDirectionsOptions](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.calculateroutedirectionsoptions) |
-| `google.maps.places.PlacesService` | [atlas.service.SearchUrl](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl)  |
+| `google.maps.Geocoder` | [atlas.service.SearchUrl](/javascript/api/azure-maps-rest/atlas.service.searchurl)  |
+| `google.maps.GeocoderRequest`  | [atlas.SearchAddressOptions](/javascript/api/azure-maps-rest/atlas.service.searchaddressoptions)<br/>[atlas.SearchAddressRevrseOptions](/javascript/api/azure-maps-rest/atlas.service.searchaddressreverseoptions)<br/>[atlas.SearchAddressReverseCrossStreetOptions](/javascript/api/azure-maps-rest/atlas.service.searchaddressreversecrossstreetoptions)<br/>[atlas.SearchAddressStructuredOptions](/javascript/api/azure-maps-rest/atlas.service.searchaddressstructuredoptions)<br/>[atlas.SearchAlongRouteOptions](/javascript/api/azure-maps-rest/atlas.service.searchalongrouteoptions)<br/>[atlas.SearchFuzzyOptions](/javascript/api/azure-maps-rest/atlas.service.searchfuzzyoptions)<br/>[atlas.SearchInsideGeometryOptions](/javascript/api/azure-maps-rest/atlas.service.searchinsidegeometryoptions)<br/>[atlas.SearchNearbyOptions](/javascript/api/azure-maps-rest/atlas.service.searchnearbyoptions)<br/>[atlas.SearchPOIOptions](/javascript/api/azure-maps-rest/atlas.service.searchpoioptions)<br/>[atlas.SearchPOICategoryOptions](/javascript/api/azure-maps-rest/atlas.service.searchpoicategoryoptions) |
+| `google.maps.DirectionsService`  | [atlas.service.RouteUrl](/javascript/api/azure-maps-rest/atlas.service.routeurl)  |
+| `google.maps.DirectionsRequest`  | [atlas.CalculateRouteDirectionsOptions](/javascript/api/azure-maps-rest/atlas.service.calculateroutedirectionsoptions) |
+| `google.maps.places.PlacesService` | [atlas.service.SearchUrl](/javascript/api/azure-maps-rest/atlas.service.searchurl)  |
 
 ## <a name="libraries"></a>ライブラリ
 
@@ -1717,12 +1738,21 @@ Azure Maps Web SDK には、個別に読み込むことができるサービス 
 | Google Maps           | Azure Maps   |
 |-----------------------|--------------|
 | 描画ライブラリ       | [描画ツール モジュール](set-drawing-options.md) |
-| ジオメトリ ライブラリ      | [atlas.math](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math)   |
+| ジオメトリ ライブラリ      | [atlas.math](/javascript/api/azure-maps-control/atlas.math)   |
 | 視覚エフェクト ライブラリ | [ヒート マップ レイヤー](map-add-heat-map-layer.md) |
 
-Google Maps を移行する方法に関する詳細については、次を参照してください。
+## <a name="next-steps"></a>次のステップ
 
-* [サービス モジュールの使用方法](how-to-use-services-module.md) 
-* [描画ツール モジュールの使用方法](set-drawing-options.md)
-* [サービス モジュールの使用方法](how-to-use-services-module.md)
-* [マップ コントロールの使用方法](how-to-use-map-control.md)
+Azure Maps Web SDK の詳細について学習します。
+
+> [!div class="nextstepaction"]
+> [マップ コントロールの使用方法](how-to-use-map-control.md)
+
+> [!div class="nextstepaction"]
+> [描画ツール モジュールの使用方法](set-drawing-options.md)
+
+> [!div class="nextstepaction"]
+> [サービス モジュールの使用方法](how-to-use-services-module.md)
+
+> [!div class="nextstepaction"]
+> [空間 IO モジュールの使用方法](how-to-use-spatial-io-module.md)

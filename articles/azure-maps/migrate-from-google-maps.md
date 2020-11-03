@@ -9,16 +9,28 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: ee7eda58c211ca570b052d55c813999e62b95fde
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 61b6f4a530ab1861c67b0bd4983167546e268957
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876313"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896329"
 ---
 # <a name="tutorial---migrate-from-google-maps-to-azure-maps"></a>チュートリアル - Google Maps から Azure Maps に移行する
 
-この記事では、Web アプリケーション、モバイル アプリケーション、サーバーベース アプリケーションを Google Maps から Microsoft Azure Maps プラットフォームに移行する方法についての分析情報を提供します。 このチュートリアルには、Azure Maps に移行するための比較コード サンプル、移行に関する提案、ベスト プラクティスが含まれています。
+この記事では、Web アプリケーション、モバイル アプリケーション、サーバーベース アプリケーションを Google Maps から Microsoft Azure Maps プラットフォームに移行する方法についての分析情報を提供します。 このチュートリアルには、Azure Maps に移行するための比較コード サンプル、移行に関する提案、ベスト プラクティスが含まれています。 このチュートリアルでは、次の事項について説明します。
+
+> [!div class="checklist"]
+> * Azure Maps で使用できる機能と同等の Google Maps の機能との大まかな比較
+> * 考慮すべきライセンスの相違点
+> * 移行を計画する方法
+> * テクニカル リソースとサポートの場所
+
+## <a name="prerequisites"></a>前提条件 
+
+1. [Azure portal](https://portal.azure.com) にサインインします。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+2. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
 
 ## <a name="azure-maps-platform-overview"></a>Azure Maps プラットフォームの概要
 
@@ -67,7 +79,7 @@ Azure Maps のいくつかの関連リソースを次に示します。
 - [Azure Maps の価格のページ](https://azure.microsoft.com/pricing/details/azure-maps/)
 - [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
 - [Azure Maps 使用条件](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46) (Microsoft オンライン サービスの使用条件に含まれています)
-- [Azure Maps での適切な価格レベルの選択](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier)
+- [Azure Maps での適切な価格レベルの選択](./choose-pricing-tier.md)
 
 ## <a name="suggested-migration-plan"></a>おすすめの移行プラン
 
@@ -75,7 +87,7 @@ Azure Maps のいくつかの関連リソースを次に示します。
 
 1. アプリケーションで使用されている Google マップ SDK とサービスの一覧を作成します。 代わりとなる SDK とサービスが Azure Maps にあることを確認します。
 2. [https://azure.com](https://azure.com) で Azure サブスクリプションを作成します (まだお持ちでない場合)。
-3. Azure Maps アカウント ([ドキュメント](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)) と認証キーまたは Azure Active Directory ([ドキュメント](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)) を作成します。
+3. Azure Maps アカウント ([ドキュメント](./how-to-manage-account-keys.md)) と認証キーまたは Azure Active Directory ([ドキュメント](./how-to-manage-authentication.md)) を作成します。
 4. アプリケーション コードを移行します。
 5. 移行したアプリケーションをテストします。
 6. 移行したアプリケーションを運用環境にデプロイします。
@@ -86,17 +98,17 @@ Azure Maps アカウントを作成し、Azure Maps プラットフォームに�
 
 1. Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 2. [Azure portal](https://portal.azure.com/) にサインインします。
-3. [Azure Maps アカウント](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)を作成します。 
-4. [Azure Maps サブスクリプション キー](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details)を取得するか、Azure Active Directory 認証を設定し、セキュリティを強化します。
+3. [Azure Maps アカウント](./how-to-manage-account-keys.md)を作成します。 
+4. [Azure Maps サブスクリプション キー](./how-to-manage-authentication.md#view-authentication-details)を取得するか、Azure Active Directory 認証を設定し、セキュリティを強化します。
 
 ## <a name="azure-maps-technical-resources"></a>Azure Maps の技術リソース
 
 Azure Maps に関する役に立つ技術リソースの一覧を次に示します。
 
 - 概要: [https://azure.com/maps](https://azure.com/maps)
-- ドキュメント: [https://aka.ms/AzureMapsDocs](https://aka.ms/AzureMapsDocs)
+- ドキュメント: [https://aka.ms/AzureMapsDocs](./index.yml)
 - Web SDK コード サンプル: [https://aka.ms/AzureMapsSamples](https://aka.ms/AzureMapsSamples)
-- 開発者フォーラム: [https://aka.ms/AzureMapsForums](https://aka.ms/AzureMapsForums)
+- 開発者フォーラム: [https://aka.ms/AzureMapsForums](/answers/topics/azure-maps.html)
 - ビデオ: [https://aka.ms/AzureMapsVideos](https://aka.ms/AzureMapsVideos)
 - ブログ: [https://aka.ms/AzureMapsBlog](https://aka.ms/AzureMapsBlog)
 - 技術ブログ: [https://aka.ms/AzureMapsTechBlog](https://aka.ms/AzureMapsTechBlog)
@@ -105,12 +117,17 @@ Azure Maps に関する役に立つ技術リソースの一覧を次に示しま
 
 ## <a name="migration-support"></a>移行サポート
 
-開発者は、[フォーラム](https://aka.ms/AzureMapsForums) または多くの Azure サポート オプション ([https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)) のいずれかを使用して、移行サポートを探すことができます。
+開発者は、[フォーラム](/answers/topics/azure-maps.html) または多くの Azure サポート オプション ([https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)) のいずれかを使用して、移行サポートを探すことができます。
 
-次を利用して Google Maps アプリケーションを移行する方法を習得できます。 
+## <a name="next-steps"></a>次のステップ
 
-[Android アプリを移行する](migrate-from-google-maps-android-app.md) 
+Google マップ アプリケーションを移行する詳しい方法について次の記事でご確認ください。
 
-[Web サービスを移行する](migrate-from-google-maps-web-services.md) 
+> [!div class="nextstepaction"]
+> [Web アプリを移行する](migrate-from-google-maps-web-app.md)
 
-[Web アプリを移行する](migrate-from-google-maps-web-app.md)
+> [!div class="nextstepaction"]
+> [Web サービスを移行する](migrate-from-google-maps-web-services.md) 
+
+> [!div class="nextstepaction"]
+> [Android アプリを移行する](migrate-from-google-maps-android-app.md) 
