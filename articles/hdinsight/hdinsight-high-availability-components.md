@@ -7,22 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 26c7029e710479b8785e06b1d65ff7b5270aeab0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 1ff7932f0afb128f6e7568ecdae602c6471db0bd
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102933"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539719"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight でサポートされている高可用性サービス
 
 分析コンポーネントに最適な可用性レベルを提供するために、HDInsight は、重要なサービスの高可用性 (HA) を保証するための独自のアーキテクチャを使用して開発されました。 このアーキテクチャの一部のコンポーネントは、自動フェールオーバーを提供するために Microsoft によって開発されました。 その他のコンポーネントは、特定のサービスをサポートするためにデプロイされる標準の Apache コンポーネントです。 この記事では、HDInsight の HA サービス モデルのアーキテクチャ、HDInsight で HA サービスのフェールオーバーをサポートする方法、および他のサービス中断から復旧するためのベストプラクティスについて説明します。
- 
+
 > [!NOTE]
-> バイアスフリーなコミュニケーション
->
-> Microsoft は、多様性を尊重する環境をサポートします。 この記事には、 _スレーブ_ という単語への言及があります。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これを排他的な単語と認めています。 この単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
->
+> この記事には、Microsoft が使用しなくなった " *スレーブ* " という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 ## <a name="high-availability-infrastructure"></a>高可用性インフラストラクチャ
 
@@ -139,5 +136,5 @@ HDInsight HBase クラスターでは、HBase Master 高可用性がサポート
 
 ## <a name="next-steps"></a>次のステップ
 
-- [HDInsight における Apache Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)
+- [HDInsight における Apache Hadoop クラスターの可用性と信頼性](./hdinsight-business-continuity.md)
 - [Azure HDInsight 仮想ネットワーク アーキテクチャ](hdinsight-virtual-network-architecture.md)

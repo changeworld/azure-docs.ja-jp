@@ -11,18 +11,18 @@ ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fecdd65ae0dbf9faeb0e74e6446a9deaf8273106
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 0533e76863d01675cee7aaca79e32821e5efc749
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075027"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92507805"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Synapse SQL プールのデータの読み込み戦略
 
-従来の SMP SQL プールでは、データの読み込みに抽出、変換、読み込み (ETL) プロセスが使用されています。 Azure Synapse Analytics 内の Synapse SQL プールには、コンピューティング リソースとストレージ リソースのスケーラビリティと柔軟性を活用した超並列処理 (MPP) アーキテクチャがあります。
+従来の SMP SQL プールでは、データの読み込みに抽出、変換、読み込み (ETL) プロセスが使用されています。 Azure Synapse Analytics 内の Synapse SQL プールには、コンピューティング リソースとストレージ リソースのスケーラビリティと柔軟性を活用した分散クエリ処理アーキテクチャが使用されています。
 
-抽出、読み込み、変換 (ELT) プロセスを使用すると、MPP を活用し、読み込み前にデータ変換に必要なリソースを排除できます。
+抽出、読み込み、および変換 (ELT) プロセスを使用すると、組み込みの分散クエリ処理機能が利用され、読み込み前のデータ変換に必要なリソースを排除できます。
 
 SQL プールでは、[bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) などの一般的な SQL Server オプションを含む多くの読み込み方法がサポートされていますが、データを読み込むための最速かつ最もスケーラブルな方法は、PolyBase 外部テーブルと [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)を使用することです。
 
@@ -113,12 +113,14 @@ Parquet ファイルを読み込む場合、次の SQL データ型マッピン�
 |                            INT64                             |            INT(64, true)            |      bigint      |
 |                            INT64                             |           INT(64, false)            |  decimal (20,0)   |
 |                            INT64                             |                DECIMAL                |     decimal      |
-|                            INT64                             |         TIME (MICROS / NANOS)         |       time       |
-|                            INT64                             | TIMESTAMP (MILLIS / MICROS / NANOS) |    datetime2     |
+|                            INT64                             |         TIME (MILLIS)                 |       time       |
+|                            INT64                             | TIMESTAMP   (MILLIS)                  |    datetime2     |
 | [複合型](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23lists&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=6Luk047sK26ijTzfvKMYc%2FNu%2Fz0AlLCX8lKKTI%2F8B5o%3D&reserved=0) |                 リスト                  |   varchar(max)   |
 | [複合型](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23maps&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=FiThqXxjgmZBVRyigHzfh5V7Z%2BPZHjud2IkUUM43I7o%3D&reserved=0) |                  MAP                  |   varchar(max)   |
 
-
+>[!IMPORTANT] 
+> - 現在、SQL 専用プールは、MICROS および NANOS 精度の Parquet データ型をサポートしていません。 
+> - Parquet と SQL の間で型が一致しない場合、またはサポートされていない Parquet データ型がある場合は、次のエラーが発生する可能性があります。 **"HdfsBridge::recordReaderFillBuffer - Unexpected error encountered filling record reader buffer:ClassCastException: ..." (Hdfs Bridge::recordReaderFillBuffer - レコード リーダー バッファーの読み込み中に予期しないエラーが発生しました: ClassCastException: ...)**
 
 外部オブジェクトの作成の例については、[外部テーブルの作成](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables?tabs=sql-pool)に関する記事を参照してください。
 

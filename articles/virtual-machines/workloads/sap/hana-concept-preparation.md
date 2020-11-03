@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33d52f871de75a7f7d34016b040e44d6f1623fd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89da6935d85628b5ce4ff762ad31d3f280682921
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70101258"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424250"
 ---
 # <a name="disaster-recovery-principles"></a>ディザスター リカバリーの原則
 
@@ -68,7 +68,7 @@ HANA L インスタンスでは、さまざまな Azure リージョンの HANA 
 - DR Azure リージョンの HANA L インスタンス ユニットに新しくインストールした SAP HANA インスタンスを停止します。
 - PRD ボリュームのマウントを解除し、SAP HANA on Azure サービス管理に連絡します。 ストレージ レプリケーション ターゲットとして機能している間はボリュームにアクセスできないため、ボリュームをユニットにマウントしたままにすることはできません。  
 
-![レプリケーションを確立する前の DR セットアップ手順](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
+![運用 Azure リージョンの PRD ボリュームと、DR Azure リージョンの PRD ボリューム間のレプリケーション関係示す図。](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
 
 オペレーション チームは、運用 Azure リージョンの PRD ボリュームと、DR Azure リージョンの PRD ボリューム間にレプリケーション関係を確立します。
 
@@ -76,8 +76,8 @@ HANA L インスタンスでは、さまざまな Azure リージョンの HANA 
 >レプリケートされた SAP HANA データベースをディザスター リカバリー サイトで一貫した状態に復元する必要がないため、/hana/log ボリュームはレプリケートされません。
 
 次に、障害発生時に目標とする RTO と RPO に合わせて、ストレージ スナップショット バックアップ スケジュールをセットアップまたは調整します。 目標復旧時点を最小限に抑えるために、HANA L インスタンス サービスでは次のレプリケーション間隔を設定します。
-- 結合スナップショット (スナップショットの種類は **hana**) の対象となるボリュームについては、ディザスター リカバリー サイトの同等のストレージ ボリューム ターゲットに 15 分ごとにレプリケートされるように設定します。
-- トランザクション ログ バックアップ ボリューム (スナップショットの種類は **logs**) については、ディザスター リカバリー サイトの同等のストレージ ボリューム ターゲットに 3 分ごとにレプリケートされるように設定します。
+- 結合スナップショット (スナップショットの種類は **hana** ) の対象となるボリュームについては、ディザスター リカバリー サイトの同等のストレージ ボリューム ターゲットに 15 分ごとにレプリケートされるように設定します。
+- トランザクション ログ バックアップ ボリューム (スナップショットの種類は **logs** ) については、ディザスター リカバリー サイトの同等のストレージ ボリューム ターゲットに 3 分ごとにレプリケートされるように設定します。
 
 目標復旧時点を最小限に抑えるには、次のようにセットアップします。
 - 種類が **hana** のストレージ スナップショット (「手順 7:スナップショットを実行する」を参照) を 30 分から 1 時間ごとに実行する。

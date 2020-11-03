@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: f85a7e2acf911772ecc6562217918352e909fcbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8154ef7a90011da8c15f52870eebb6c80ebaebca
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254076"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496109"
 ---
 # <a name="telemetry-and-troubleshooting"></a>テレメトリとトラブルシューティング
 
@@ -23,9 +23,9 @@ ms.locfileid: "91254076"
 
 ## <a name="enable-visualizations"></a>視覚化の有効化
 
-動画フレームで AI Insights イベントの視覚化を有効にするには、 `.debug` バージョンの [空間分析操作](spatial-analysis-operations.md)を使用する必要があります。 使用できるデバッグ操作は 4 つあります。
+動画フレームで AI Insights イベントの視覚化を有効にするには、デスクトップ マシン上で `.debug` バージョンの[空間分析操作](spatial-analysis-operations.md)を使用する必要があります。 Azure Stack Edge デバイス上では視覚化を使用できません。 使用できるデバッグ操作は 4 つあります。
 
-[デプロイ マニフェスト](https://go.microsoft.com/fwlink/?linkid=2142179) を編集して、`DISPLAY` 環境変数に適切な値を使用します。 ホスト コンピューターの `$DISPLAY` 変数と一致している必要があります。 デプロイ マニフェストを更新した後、コンテナーを再デプロイします。
+デバイスが Azure Stack Edge デバイスでない場合は、[デスクトップ マシン](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)のデプロイ マニフェスト ファイルを編集して、`DISPLAY` 環境変数に正しい値を使用します。 ホスト コンピューターの `$DISPLAY` 変数と一致している必要があります。 デプロイ マニフェストを更新した後、コンテナーを再デプロイします。
 
 デプロイが完了したら、 `.Xauthority` ファイルをホストコンピューターからコンテナーにコピーし、再起動することが必要になる場合があります。 次のサンプルでは、 `peopleanalytics` は、ホストコンピューター上のコンテナーの名前になります。
 
@@ -39,7 +39,7 @@ xhost +
 
 ## <a name="collect-system-health-telemetry"></a>システム正常性テレメトリの収集
 
-telegraf は、空間分析で動作するオープン ソースのイメージであり、Microsoft Container Registry で使用できます。 次の入力を受け取り、Azure Monitor に送信します。 指定されたカスタム入出力を使用して、telegraf モジュールを作成できます。 空間分析の telegraf モジュール構成は、 [デプロイ マニフェスト](https://go.microsoft.com/fwlink/?linkid=2142179)の一部です。 このモジュールはオプションであり、必要がない場合は、マニフェストから削除できます。 
+telegraf は、空間分析で動作するオープン ソースのイメージであり、Microsoft Container Registry で使用できます。 次の入力を受け取り、Azure Monitor に送信します。 指定されたカスタム入出力を使用して、telegraf モジュールを作成できます。 空間分析の telegraf モジュール構成は、デプロイ マニフェスト (前述のリンク) の一部です。 このモジュールはオプションであり、必要がない場合は、マニフェストから削除できます。 
 
 入力: 
 1. 空間分析メトリック
@@ -68,14 +68,14 @@ az iot hub list
 az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principal name>" --scopes="<resource ID of IoT Hub>"
 ```
 
-[デプロイ マニフェスト](https://go.microsoft.com/fwlink/?linkid=2142179)で、*telegraf* モジュールを探し、次の値を前の手順のサービス プリンシパル情報に置き換えて再デプロイします。
+[Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)または他の [デスクトップ マシン](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)のデプロイ マニフェストで、 *telegraf* モジュールを探し、次の値を前の手順のサービス プリンシパル情報に置き換え、再デプロイします。
 
 ```json
 
 "telegraf": { 
-  "settings": {
-  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/telegraf:1.0",
-  "createOptions":   "{\"HostConfig\":{\"Runtime\":\"nvidia\",\"NetworkMode\":\"azure-iot-edge\",\"Memory\":33554432,\"Binds\":[\"/var/run/docker.sock:/var/run/docker.sock\"]}}"
+  "settings": {
+  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/telegraf:1.0",
+  "createOptions":   "{\"HostConfig\":{\"Runtime\":\"nvidia\",\"NetworkMode\":\"azure-iot-edge\",\"Memory\":33554432,\"Binds\":[\"/var/run/docker.sock:/var/run/docker.sock\"]}}"
 },
 "type": "docker",
 "env": {
@@ -105,19 +105,19 @@ telegraf モジュールがデプロイされると、報告されたメトリ�
 
 | イベント名 | 説明|
 |------|---------|
-|archon_exit    |ユーザーが空間分析モジュールの状態を *実行*中から*停止*に変更したときに送信されます。  |
-|archon_error   |コンテナー内でいずれかのプロセスがクラッシュしたときに送信されます。 これは重大なエラーです。  |
-|InputRate  |グラフが動画入力を処理する速度。 5 分ごとに報告されます。 | 
-|OutputRate     |グラフが AI Insights を出力する速度。 5 分ごとに報告されます。 |
-|archon_allGraphsStarted | すべてのグラフの起動が終了したときに送信されます。 |
-|archon_configchange    | グラフの構成が変更されたときに送信されます。 |
-|archon_graphCreationFailed     |報告された `graphId` のグラフを開始できなかったときに送信されます。 |
-|archon_graphCreationSuccess    |報告された `graphId` のグラフが正常に開始されたときに送信されます。 |
-|archon_graphCleanup    | 報告された `graphId` のグラフをクリーンアップして終了したときに送信されます。 |
-|archon_graphHeartbeat  |スキルのすべてのグラフに対して 1 分ごとに送信されるハートビート。 |
+|archon_exit    |ユーザーが空間分析モジュールの状態を *実行* 中から *停止* に変更したときに送信されます。  |
+|archon_error   |コンテナー内でいずれかのプロセスがクラッシュしたときに送信されます。 これは重大なエラーです。  |
+|InputRate  |グラフが動画入力を処理する速度。 5 分ごとに報告されます。 | 
+|OutputRate     |グラフが AI Insights を出力する速度。 5 分ごとに報告されます。 |
+|archon_allGraphsStarted | すべてのグラフの起動が終了したときに送信されます。 |
+|archon_configchange    | グラフの構成が変更されたときに送信されます。 |
+|archon_graphCreationFailed     |報告された `graphId` のグラフを開始できなかったときに送信されます。 |
+|archon_graphCreationSuccess    |報告された `graphId` のグラフが正常に開始されたときに送信されます。 |
+|archon_graphCleanup    | 報告された `graphId` のグラフをクリーンアップして終了したときに送信されます。 |
+|archon_graphHeartbeat  |スキルのすべてのグラフに対して 1 分ごとに送信されるハートビート。 |
 |archon_apiKeyAuthFail |次の理由により、24 時間以上、Computer Vision リソース キーがコンテナーの認証に失敗したときに送信されます。クォータ外で、無効、オフラインです。 |
-|VideoIngesterHeartbeat     |動画が動画ソースからストリーミングされることを示すために、1 時間ごとに送信され、その時間のエラーの数を示します。 各グラフに対して報告されます。 |
-|VideoIngesterState | 動画のストリーミングのために、 *停止* または*開始* を報告します。 各グラフに対して報告されます。 |
+|VideoIngesterHeartbeat     |動画が動画ソースからストリーミングされることを示すために、1 時間ごとに送信され、その時間のエラーの数を示します。 各グラフに対して報告されます。 |
+|VideoIngesterState | 動画のストリーミングのために、 *停止* または *開始* を報告します。  各グラフに対して報告されます。 |
 
 ##  <a name="troubleshooting-an-iot-edge-device"></a>IoT Edge デバイスのトラブルシューティング
 
@@ -129,22 +129,17 @@ telegraf モジュールがデプロイされると、報告されたメトリ�
 
 ## <a name="collect-log-files-with-the-diagnostics-container"></a>診断コンテナーでログ ファイルを収集
 
-空間分析では、ランタイムの問題を診断したり、サポート チケットに含めたりするために使用できる Docker デバッグ ログが生成されます。 Microsoft Container Registry では、空間分析診断モジュールを使用して、ダウンロードできます。 [サンプルのデプロイ マニフェスト](https://go.microsoft.com/fwlink/?linkid=2142179)で、*diagnostics* モジュールを探します。
+空間分析では、ランタイムの問題を診断したり、サポート チケットに含めたりするために使用できる Docker デバッグ ログが生成されます。 Microsoft Container Registry では、空間分析診断モジュールを使用して、ダウンロードできます。 [Azure Stack Edge Device](https://go.microsoft.com/fwlink/?linkid=2142179) または他の [デスクトップ マシン](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)のマニフェスト デプロイ ファイルで、 *diagnostics* モジュールを探します。
 
 "Env" セクションで、次の構成を追加します。
 
 ```json
-"diagnostics": {  
-  "settings": {
-  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/diagnostics:1.0",
-  "createOptions":   "{\"HostConfig\":{\"Mounts\":[{\"Target\":\"/usr/bin/docker\",\"Source\":\"/home/data/docker\",\"Type\":\"bind\"},{\"Target\":\"/var/run\",\"Source\":\"/run\",\"Type\":\"bind\"}],\"LogConfig\":{\"Config\":{\"max-size\":\"500m\"}}}}"
-  }
+"diagnostics": {  
+  "settings": {
+  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/diagnostics:1.0",
+  "createOptions":   "{\"HostConfig\":{\"Mounts\":[{\"Target\":\"/usr/bin/docker\",\"Source\":\"/home/data/docker\",\"Type\":\"bind\"},{\"Target\":\"/var/run\",\"Source\":\"/run\",\"Type\":\"bind\"}],\"LogConfig\":{\"Config\":{\"max-size\":\"500m\"}}}}"
+  }
 ```    
-
->[!NOTE]
-> ASE Kubernetes 環境で実行していない場合は、ロギング モジュールのコンテナー作成オプションを次のように置き換えます。
->
->`"createOptions": "{\"HostConfig\": {\"Binds\": [\"/var/run/docker.sock:/var/run/docker.sock\",\"/usr/bin/docker:/usr/bin/docker\"],\"LogConfig\": {\"Config\": {\"max-size\": \"500m\"}}}}"`
 
 Azure Blob Storage など、リモー トエンドポイントにアップロードされたログを最適化するには、ファイル サイズを小さくすることをお勧めします。 推奨される Docker ログ構成については、次の例を参照してください。
 
@@ -193,18 +188,18 @@ Azure Blob Storage など、リモー トエンドポイントにアップロー
 > `diagnostics` モジュールは、ログの内容には影響しません。既存のログの収集、フィルター処理、およびアップロードにのみ役立ちます。
 > このモジュールを使用するには、Docker API バージョン 1.40 以降が必要です。
 
-[サンプルのデプロイ マニフェスト](https://go.microsoft.com/fwlink/?linkid=2142179) ファイルには、ログを収集してアップロードする `diagnostics` という名前のモジュールが含まれています。 このモジュールは既定で無効になっているため、ログにアクセスする必要がある場合は IoT Edge モジュール構成を使用して有効にする必要があります。 
+[Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)またはその他の[デスクトップ マシン](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)のサンプル デプロイ マニフェスト ファイルには、ログを収集してアップロードする `diagnostics` という名前のモジュールが含まれています。 このモジュールは既定で無効になっているため、ログにアクセスする必要がある場合は IoT Edge モジュール構成を使用して有効にする必要があります。 
 
 `diagnostics` コレクションはオンデマンドで、IoT Edge ダイレクト メソッドによって制御され、ログを Azure Blob Storage に送信できます。
 
 ### <a name="configure-diagnostics-upload-targets"></a>診断アップロード ターゲットの構成
 
-IoT Edge ポータルから、デバイスを選択し、 **diagnostics** モジュールを選択します。 サンプル ファイル [*DeploymentManifest. json*](https://go.microsoft.com/fwlink/?linkid=2142179)で、"env" という名前の診断用の**環境変数** セクションを探し、次の情報を追加します。
+IoT Edge ポータルから、デバイスを選択し、 **diagnostics** モジュールを選択します。 [Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)または他の [デスクトップ マシン](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)のサンプル デプロイ マニフェスト ファイルで、`env` という名前の診断用の **Environment Variables** セクションを探し、次の情報を追加します。
 
 **Azure Blob Storage へのアップロードの構成**
 
 1. まだ作成していない場合は、自身の Azure Blob Storage アカウントを作成します。
-2. Azure ポータルのストレージ アカウント用に**接続文字列**を取得します。 これは、**アクセス キー**にあります。
+2. Azure ポータルのストレージ アカウント用に **接続文字列** を取得します。 これは、 **アクセス キー** にあります。
 3. 空間分析ログは *rtcvlogs* という名前の Blob Storage コンテナーに自動的にアップロードされます。ファイル名の形式は `{CONTAINER_NAME}/{START_TIME}-{END_TIME}-{QUERY_TIME}.log` です。
 
 ```json
@@ -221,15 +216,15 @@ IoT Edge ポータルから、デバイスを選択し、 **diagnostics** モジ
 
 
 1. IoT Hub ポータルのページにアクセスし、 **[エッジ デバイス]** を選択して、デバイスと診断モジュールを選択します。 
-2. モジュールの詳細ページに移動し、[***ダイレクト メソッド***] タブをクリックします。
+2. モジュールの詳細ページに移動し、* *_[ダイレクト メソッド]_* _ タブをクリックします。
 3. [メソッド名] に `getRTCVLogs` と入力し、ペイロードに json 形式の文字列を入力します。 空のペイロードである `{}` を入力できます。 
-4. 接続とメソッドのタイムアウトを設定し、 **[メソッドの呼び出し]** をクリックます。
+4. 接続とメソッドのタイムアウトを設定し、_*[メソッドの呼び出し]** をクリックます。
 5. ターゲット コンテナーを選択し、 **[ロギング構文]** で説明しているパラメーターを使用してペイロード json 文字列を作成します。 **[ メソッドの呼び出し]** をクリックして、要求を実行します。
 
 >[!NOTE]
 > 空のペイロードで `getRTCVLogs` メソッドを呼び出すと、デバイスにデプロイされているすべてのコンテナーの一覧が返されます。 メソッド名では、大文字と小文字が区別されます。 不正なメソッド名を指定すると、501 エラーが発生します。
 
-:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="Azure Monitor テレメトリ レポート":::
+:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text=" getRTCVLogs メソッドの呼び出し":::
 ![getRTCVLogs ダイレクト メソッド ページ](./media/spatial-analysis/direct-log-collection.png)
 
  
@@ -250,7 +245,7 @@ IoT Edge ポータルから、デバイスを選択し、 **diagnostics** モジ
 
 | Keyword | 説明|
 |--|--|
-|DoPost| *true* または *false*。 ログがアップロードされたかどうかを示します。 ログをアップロードしない場合、API は***同期的に*** 情報を返します。 ログをアップロードする場合、API は 200 を返します。要求が有効な場合は、 ***非同期に***ログのアップロードを開始します。|
+|DoPost| *true* または *false* 。 ログがアップロードされたかどうかを示します。 ログをアップロードしない場合、API からは "* **同期的に** _" 情報が返されます。 ログをアップロードする場合、API からは 200 が返されます。要求が有効な場合は、" _*_非同期に_*_ " ログのアップロードが開始されます。|
 |TimeFilter| ログに適用される時刻フィルターです。|
 |ValueFilters| ログに適用されるキーワード フィルターです。 |
 |TimeStamp| メソッド実行開始時刻。 |
@@ -303,7 +298,7 @@ IoT Edge ポータルから、デバイスを選択し、 **diagnostics** モジ
 }
 ```
 
-フェッチ ログのライン、時刻、およびサイズを確認します。これらの設定が適切であれば、 ***DoPost*** を `true` に置き換え、同じフィルターを使用してログを宛先にプッシュします。 
+フェッチ ログのライン、時刻、およびサイズを確認します。これらの設定が適切であれば、 _*_DoPost_*_ を `true` に置き換え、同じフィルターを使用してログを宛先にプッシュします。 
 
 問題を解決するときに、Azure Blob Storage からログをエクスポートできます。 
 
@@ -319,9 +314,9 @@ IoT Edge ポータルから、デバイスを選択し、 **diagnostics** モジ
 
 次のセクションでは、Azure Stack Edge デバイスの状態のデバッグと検証について説明します。
 
-### <a name="access-the-kubernetes-api-endpoint"></a>Kubernetes API エンドポイントにアクセスします。 
+### <a name="access-the-kubernetes-api-endpoint"></a>Kubernetes API エンドポイントにアクセスします。 
 
-1. デバイスのローカル UI で **[デバイス]** ページに移動します。 
+1. デバイスのローカル UI で _ *[デバイス]* * ページに移動します。 
 2. **[デバイスのエンドポイント]** で、Kubernetes API サービス エンドポイントをコピーします。 このエンドポイントは `https://compute..[device-IP-address]` という形式の文字列です。
 3. エンドポイント文字列を保存します。 後で Kubernetes クラスターにアクセスするために `kubectl` を構成するときにこれを使用します。
 

@@ -15,18 +15,18 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c16882f35c9ca79644cd2b51ce4cd88bba516ed2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ee8c7cf2b34d5923f84bf9b9ba3cf5b10034e3e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652067"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458053"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装
 この記事では、オンプレミスの Active Directory インスタンスから、クラウドベースの Azure Active Directory (Azure AD) インスタンスへの、ユーザー パスワードの同期に必要な情報を提供します。
 
 ## <a name="how-password-hash-synchronization-works"></a>パスワード ハッシュ同期のしくみ
-Active Directory ドメイン サービスは、実際のユーザー パスワードをハッシュ値表現の形式で格納します。 ハッシュ値は、一方向の数学関数 ("*ハッシュ アルゴリズム*") の結果として求められます。 一方向の関数の結果をパスワードのプレーンテキスト バージョンに戻す方法はありません。 
+Active Directory ドメイン サービスは、実際のユーザー パスワードをハッシュ値表現の形式で格納します。 ハッシュ値は、一方向の数学関数 (" *ハッシュ アルゴリズム* ") の結果として求められます。 一方向の関数の結果をパスワードのプレーンテキスト バージョンに戻す方法はありません。 
 
 パスワードを同期するには、Azure AD Connect 同期でオンプレミスの Active Directory インスタンスからパスワード ハッシュを抽出します。 Azure Active Directory 認証サービスに同期される前に、パスワード ハッシュには、追加のセキュリティ処理が行われます。 パスワードは、ユーザーごとに、時間順に同期されます。
 
@@ -85,13 +85,13 @@ Active Directory ドメイン サービスは、実際のユーザー パスワ�
 
 #### <a name="password-expiration-policy"></a>パスワードの有効期限のポリシー
 
-ユーザーがパスワード ハッシュ同期のスコープ内にいる場合、既定でクラウド アカウントのパスワードは "*期限なし*" に設定されます。
+ユーザーがパスワード ハッシュ同期のスコープ内にいる場合、既定でクラウド アカウントのパスワードは " *期限なし* " に設定されます。
 
 オンプレミス環境で期限切れになった同期パスワードを利用し、引き続きクラウド サービスにサインインできます。 クラウドのパスワードは、次にオンプレミス環境でパスワードを変更したときに更新されます。
 
 ##### <a name="enforcecloudpasswordpolicyforpasswordsyncedusers"></a>EnforceCloudPasswordPolicyForPasswordSyncedUsers
 
-Azure AD 統合サービスのみを操作し、パスワードの有効期限ポリシーに準拠している必要がある同期済みユーザーがいる場合は、*EnforceCloudPasswordPolicyForPasswordSyncedUsers* 機能を有効にすることで、Azure AD パスワードの有効期限ポリシーに強制的に準拠させることができます。
+Azure AD 統合サービスのみを操作し、パスワードの有効期限ポリシーに準拠している必要がある同期済みユーザーがいる場合は、 *EnforceCloudPasswordPolicyForPasswordSyncedUsers* 機能を有効にすることで、Azure AD パスワードの有効期限ポリシーに強制的に準拠させることができます。
 
 *EnforceCloudPasswordPolicyForPasswordSyncedUsers* が無効になっている場合 (既定の設定)、Azure AD Connect では、同期済みユーザーの PasswordPolicies 属性は "DisablePasswordExpiration" に設定されます。 これは、ユーザーのパスワードが同期されるたびに実行され、そのユーザーのクラウド パスワードの有効期限ポリシーを無視するように Azure AD へ指示されます。 Azure AD PowerShell モジュールを使用して、次のコマンドを使って属性の値を確認できます。
 
@@ -109,7 +109,7 @@ Continue with this operation?
 [Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y
 ```
 
-有効にすると、Azure AD では、PasswordPolicies 属性から `DisablePasswordExpiration` 値を削除するために、同期済みの各ユーザーに移動することがなくなります。 代わりに、オンプレミス AD 上で次にパスワードを変更するときに、次のパスワードの同期中に、ユーザーごとに値が `None` に設定されます。  
+有効にすると、Azure AD では、PasswordPolicies 属性から `DisablePasswordExpiration` 値を削除するために、同期済みの各ユーザーに移動することがなくなります。 代わりに、オンプレミス AD での次回のパスワードの変更時、各ユーザーの次のパスワード ハッシュ同期中に PasswordPolicies から `DisablePasswordExpiration` 値が削除されます。
 
 パスワード ハッシュの初期同期によってユーザーの PasswordPolicies 属性に `DisablePasswordExpiration` 値が追加されないように、パスワード ハッシュ同期を有効にする前に、EnforceCloudPasswordPolicyForPasswordSyncedUsers を有効にすることをお勧めします。
 
@@ -172,16 +172,16 @@ Azure AD Domain Services を使用して、Kerberos、LDAP、または NTLM を�
 
 1. Azure AD Connect はテナントの Azure AD Domain Services インスタンスの公開キーを取得します。
 1. ユーザーがパスワードを変更すると、オンプレミスのドメイン コントローラーは、パスワード変更 (ハッシュ) の結果を次の 2 つの属性に格納します。
-    * *unicodePwd*: NTLM パスワード ハッシュ。
-    * *supplementalCredentials*: Kerberos パスワード ハッシュ。
+    * *unicodePwd* : NTLM パスワード ハッシュ。
+    * *supplementalCredentials* : Kerberos パスワード ハッシュ。
 1. Azure AD Connect では、ディレクトリ レプリケーション チャネル 介してパスワードの変更が検出されます (他のドメイン コントローラーにレプリケートする必要がある属性の変更)。
 1. パスワードが変更されたユーザーごとに、Azure AD Connect が次の手順を実行します。
     * ランダムな AES 256 ビット対称キーを生成します。
     * 暗号化の最初のラウンドに必要なランダムな初期化ベクターを生成します。
     * Kerberos パスワードハッシュを *supplementalCredentials* 属性から抽出します。
     * Azure AD Domain Services セキュリティ構成の *SyncNtlmPasswords* 設定を確認します。
-        * この設定が無効になっている場合、ランダムな高エントロピ NTLM ハッシュ (ユーザーのパスワードとは異なる) が生成されます。 このハッシュは、*supplementalCrendetials* 属性から抽出された Kerberos パスワード ハッシュと結合されて 1 つのデータ構造になります。
-        * 有効になっている場合は、*unicodePwd*属性の値と *supplementalCredentials* から抽出された Kerberos パスワード ハッシュが結合されて 1 つのデータ構造になります。
+        * この設定が無効になっている場合、ランダムな高エントロピ NTLM ハッシュ (ユーザーのパスワードとは異なる) が生成されます。 このハッシュは、 *supplementalCrendetials* 属性から抽出された Kerberos パスワード ハッシュと結合されて 1 つのデータ構造になります。
+        * 有効になっている場合は、 *unicodePwd* 属性の値と *supplementalCredentials* から抽出された Kerberos パスワード ハッシュが結合されて 1 つのデータ構造になります。
     * AES 対称キーを使用して 1 つのデータ構造を暗号化します。
     * テナントの Azure AD Domain Services 公開キーを使用して AES 対称キーを暗号化します。
 1. Azure AD Connect は、暗号化された AES 対称キー、暗号化されたデータ構造 (パスワード ハッシュを含む)、および初期化ベクターを Azure AD に送信します。
@@ -199,7 +199,7 @@ Azure AD Domain Services を使用して、Kerberos、LDAP、または NTLM を�
 >[!IMPORTANT]
 >AD FS (または他のフェデレーション テクノロジ) からパスワード ハッシュの同期に移行する場合は、[こちら](https://aka.ms/adfstophsdpdownload)に公開されている詳細なデプロイ ガイドに従うことを強くお勧めします。
 
-**簡単設定**オプションを使用して Azure AD Connect をインストールすると、パスワード ハッシュ同期が自動的に有効になります。 詳細については、「[簡単設定を使用した Azure AD Connect の開始](how-to-connect-install-express.md)」を参照してください。
+**簡単設定** オプションを使用して Azure AD Connect をインストールすると、パスワード ハッシュ同期が自動的に有効になります。 詳細については、「[簡単設定を使用した Azure AD Connect の開始](how-to-connect-install-express.md)」を参照してください。
 
 Azure AD Connect のインストール時にカスタム設定を使用すると、ユーザー サインイン ページでパスワード ハッシュ同期が使用可能になります。 詳細については、「[Azure AD Connect のカスタム インストール](how-to-connect-install-custom.md)」をご覧ください。
 

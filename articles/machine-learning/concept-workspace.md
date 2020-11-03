@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: dccdbcb99b32a922d76b29e5896cdf99290758d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b40ce0951e2d9c8933d4f0ea9d24b1673e254d6
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302453"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495716"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
 
@@ -88,8 +88,8 @@ ms.locfileid: "91302453"
 
 ワークスペースは、さまざまな方法で作成できます。  
 
-* ポイント アンド クリック形式のインターフェイスで各手順の作業を行う場合は、[Azure portal](how-to-manage-workspace.md) を使用します。
-* Python スクリプトまたは Jupiter Notebook からオンザフライでワークスペースを作成するには、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true#&preserve-view=trueworkspace) を使用します。
+* ポイント アンド クリック形式のインターフェイスで各手順の作業を行う場合は、[Azure portal](how-to-manage-workspace.md?tabs=azure-portal#create-a-workspace) を使用します。
+* Python スクリプトまたは Jupiter Notebook からオンザフライでワークスペースを作成するには、[Azure Machine Learning SDK for Python](how-to-manage-workspace.md?tabs=python#create-a-workspace) を使用します。
 * 会社のセキュリティ標準に沿って作成を自動化またはカスタマイズするには、[Azure Resource Manager テンプレート](how-to-create-workspace-template.md)または [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) を使用します。
 * Visual Studio Code で作業する場合は、[VS Code 拡張機能](how-to-manage-resources-vscode.md#create-a-workspace)を使用します。
 
@@ -105,16 +105,16 @@ ms.locfileid: "91302453"
   > [!IMPORTANT]
   > 既定では、ストレージ アカウントは汎用 v1 アカウントです。 ワークスペースの作成後に、[これを汎用 v2 にアップグレード](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)することができます。 汎用 v2 にアップグレードした後は、ストレージ アカウントで階層型名前空間を有効にしないでください。
 
-  既存の Azure Storage アカウントを使用する場合は、Premium アカウント (Premium_LRS と Premium_GRS) であってはいけません。 また、階層的名前空間 (Azure Data Lake Storage Gen2 で使用されます) を含めることもできません。 ワークスペースの_既定の_ストレージ アカウントでは、Premium Storage と階層型名前空間はサポートされていません。 "_既定以外_" のストレージ アカウントでは、Premium Storage または階層型名前空間を使用できます。
+  既存の Azure Storage アカウントを使用する場合は、Premium アカウント (Premium_LRS と Premium_GRS) であってはいけません。 また、階層的名前空間 (Azure Data Lake Storage Gen2 で使用されます) を含めることもできません。 ワークスペースの _既定の_ ストレージ アカウントでは、Premium Storage と階層型名前空間はサポートされていません。 " _既定以外_ " のストレージ アカウントでは、Premium Storage または階層型名前空間を使用できます。
   
-+ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/):トレーニング中およびモデルのデプロイ時に使用する Docker コンテナーを登録します。 コストを最小限に抑えるために、ACR は、デプロイ イメージが作成されるまで**遅延読み込み**されます。
++ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/):トレーニング中およびモデルのデプロイ時に使用する Docker コンテナーを登録します。 コストを最小限に抑えるために、ACR は、デプロイ イメージが作成されるまで **遅延読み込み** されます。
 
 + [Azure Application Insights](https://azure.microsoft.com/services/application-insights/):モデルに関する監視情報を格納します。
 
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/):コンピューティング先で使用されるシークレット、およびワークスペースで必要な他の機密情報を格納します。
 
 > [!NOTE]
-> 新しいバージョンを作成するだけでなく、既存の Azure サービスを使用することもできます。
+> 代わりに、[Python SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace)、[R SDK](https://azure.github.io/azureml-sdk-for-r/reference/create_workspace.html)、または Azure Machine Learning CLI ([ARM テンプレートを使用](how-to-create-workspace-template.md)) を使用してワークスペースを作成するときに、既存の Azure リソース インスタンスを使用することができます。
 
 <a name="wheres-enterprise"></a>
 
@@ -131,9 +131,9 @@ ms.locfileid: "91302453"
 Azure Machine Learning の利用を開始するには、以下を参照してください。
 
 + [Azure Machine Learning の概要](overview-what-is-azure-ml.md)
-+ [ワークスペースを作成する](how-to-manage-workspace.md)
-+ [ワークスペースを管理する](how-to-manage-workspace.md)
-+ [チュートリアル:Python SDK で初めての ML 実験を作成する](tutorial-1st-experiment-sdk-setup.md)
++ [ワークスペースの作成と管理](how-to-manage-workspace.md)
++ [チュートリアル: ](tutorial-1st-experiment-sdk-setup-local.md)個人の開発環境で Azure Machine Learning の使用を開始する
++ [チュートリアル: コンピューティング インスタンスで初めての ML 実験の作成を開始する](tutorial-1st-experiment-sdk-setup.md)
 + [チュートリアル:R SDK による Azure Machine Learning の利用を開始する](tutorial-1st-r-experiment.md)
 + [チュートリアル:自動機械学習を使用して最初の分類モデルを作成する](tutorial-first-experiment-automated-ml.md) 
 + [チュートリアル:デザイナーを使用して自動車の価格を予測する](tutorial-designer-automobile-price-train-score.md)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e874e7107af0eac60f16f5494c04905da56f785a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0dfc93987fb2ca25b9e397e4aa91adcaaafd8a38
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205494"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478858"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure Digital Twins インスタンスと認証を設定する (ポータル)
 
@@ -33,18 +33,19 @@ ms.locfileid: "92205494"
 
 Azure portal に入ったら、Azure サービスのホーム ページ メニューで _[リソースの作成]_ を選択して開始します。
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する":::
 
-検索ボックスで &quot; *Azure Digital Twins* " を検索し、結果から **[Azure Digital Twins (Preview)]\(Azure Digital Twins (プレビュー)\)** サービスを選択します。 _[作成]_ ボタンを選択して、サービスの新しいインスタンスを作成します。
+検索ボックスで " *Azure Digital Twins* " を検索し、結果から **[Azure Digital Twins (Preview)]\(Azure Digital Twins (プレビュー)\)** サービスを選択します。 _[作成]_ ボタンを選択して、サービスの新しいインスタンスを作成します。
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Azure Digital Twins サービスのページから [作成] を選択する":::
 
-検索ボックスで &quot; *Azure Digital Twins* " [*リージョン別の利用可能な Azure 製品 (Azure Digital Twins)*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)" に関するページを参照してください。
+以下の *[リソースの作成]* ページで、次に示した値を入力します。
+* **サブスクリプション** :使用している Azure サブスクリプション
+  - **[リソース グループ]** :インスタンスのデプロイ先にするリソース グループ。 検討できる既存のリソース グループがまだない場合は、 *[新規作成]* リンクを選択して新しいリソース グループの名前を入力することで、ここで作成することができます
+* **[場所]** :デプロイする Azure Digital Twins 対応のリージョン。 リージョンのサポートに関する詳細については、" [*リージョン別の利用可能な Azure 製品 (Azure Digital Twins)*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)" に関するページを参照してください。
 * **[リソース名]** : Azure Digital Twins インスタンスの名前。 新しいインスタンスの名前は、サブスクリプションのリージョン内で一意である必要があります (つまり、サブスクリプションのリージョン内に、選択した名前を既に使用している別の Azure Digital Twins インスタンスが存在する場合は、異なる名前を選択するよう求められます)。
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
-
-検索ボックスで &quot; *Azure Digital Twins* ":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="説明に示された値を入力して Azure Digital Twins リソースを作成する":::
 
 終わったら、 _[確認と作成]_ を選択します。 これにより、[概要] ページへ遷移します。ここでは、入力したインスタンスの詳細を確認して、 _[作成]_ を押します。 
 
@@ -52,9 +53,7 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 
 *[作成]* を押した後は、ポータル アイコン バーの Azure 通知にインスタンスのデプロイの状態が表示されます。 この通知はデプロイが成功した時点で示され、作成したインスタンスを表示するための _[リソースに移動]_ ボタンを選択できるようになります。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
-
-検索ボックスで &quot; *Azure Digital Twins* ":::
+:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="デプロイの成功の表示と [リソースに移動] ボタンの強調表示がある Azure 通知のビュー":::
 
 また、デプロイが失敗した場合は、その理由が通知に示されます。 エラー メッセージの通知内容を確認して、インスタンスの作成を再試行します。
 
@@ -63,9 +62,7 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 
 インスタンスの *[概要]* ページで、 *[名前]* 、 *[リソース グループ]* 、および *[ホスト名]* をメモします。 これらはすべて、Azure Digital Twins インスタンスの操作を続行する際に必要になる可能性がある重要な値です。 他のユーザーがそのインスタンスに対してプログラミングする場合は、これらの値を彼らと共有する必要があります。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
-
-検索ボックスで &quot; *Azure Digital Twins* ":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="インスタンスの [概要] ページの重要な値の強調表示":::
 
 これで、Azure Digital Twins インスタンスの準備が完了しました。 次に、適切な Azure ユーザーにそれを管理するためのアクセス許可を付与します。
 
@@ -75,20 +72,16 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 
 最初に、Azure portal 上の Azure Digital Twins インスタンスのページを開きます。 インスタンスのメニューから *[アクセス制御 (IAM)]* を選択します。 *[ロールの割り当てを追加する]* にある *[追加]* ボタンを選択します。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
-
-検索ボックスで &quot; *Azure Digital Twins* ":::
+:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="[アクセス制御 (IAM)] ページからロールの割り当てを追加することを選ぶ":::
 
 次の *[ロールの割り当てを追加する]* ページで、値を入力します (Azure サブスクリプションにおいて [十分なアクセス許可](#prerequisites-permission-requirements)を持つユーザーが完了する必要があります)。
-* **ロール** : ドロップダウン メニューから *[Azure Digital Twins 所有者 (プレビュー)]* を選択します
+* **ロール** : ドロップダウン メニューから *[Azure Digital Twins Data Owner]\(Azure Digital Twins データ所有者\)* を選択します。
 * **アクセスの割り当て先** :ドロップダウン メニューから *[Azure AD user, group or service principal]\(Azure AD ユーザー、グループ、またはサービス プリンシパル\)* を選択します
 * **Select** :割り当てるユーザーの名前または電子メール アドレスを検索します。 結果を選択すると、 *[選択したメンバー]* セクションにそのユーザーが表示されます。
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-2.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
-
-検索ボックスで &quot; *Azure Digital Twins* ":::
+        :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-2.png" alt-text="[ロールの割り当てを追加する] ダイアログに表示されたフィールドへの入力":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -98,11 +91,9 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 
 ### <a name="verify-success"></a>成功を確認する
 
-*[アクセス制御 (IAM)] > [ロールの割り当て]* 下で設定したロールの割り当てを確認できます。 *[Azure Digital Twins 所有者 (プレビュー)]* のロールの一覧に、ユーザーが表示されます。 
+*[アクセス制御 (IAM)] > [ロールの割り当て]* 下で設定したロールの割り当てを確認できます。 一覧に *"Azure Digital Twins Data Owner" (Azure Digital Twins データ所有者)* のロールを持つユーザーが表示されます。 
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する&quot;:::
-
-検索ボックスで &quot; *Azure Digital Twins* ":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Azure portal での Azure Digital Twins インスタンスのロールの割り当てのビュー":::
 
 これで、Azure Digital Twins インスタンスの準備が完了し、これを管理するためのアクセス許可が割り当てられました。
 

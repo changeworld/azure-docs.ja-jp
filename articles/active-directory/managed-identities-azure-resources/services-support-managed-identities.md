@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: d0b9e2301a8bb9990f88db8d4d55ef7f97946174
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7e971b4afe0719d74c8aa32c5f5103c4be971d9b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072171"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426440"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -41,6 +41,16 @@ Azure API Management のために (それが提供されているリージョン
 
 - [Azure Resource Manager テンプレート](../../api-management/api-management-howto-use-managed-service-identity.md)
 
+### <a name="azure-app-configuration"></a>Azure App Configuration
+
+| マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 利用不可 | 利用不可 |
+| ユーザー割り当て済み | ![利用可能][check] | ![利用可能][check]  | 利用不可  | 利用不可 |
+
+Azure App Configuration のために (提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
+
+- [Azure CLI](../../azure-app-configuration/overview-managed-identity.md)
 
 ### <a name="azure-app-service"></a>Azure App Service
 

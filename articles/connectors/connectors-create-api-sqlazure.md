@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: 534b9fedc6649d3174ea65caf51b28004de7bda2
-ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
+ms.openlocfilehash: 674d496485f89bee1904e3588a0fb81c6140945b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92169389"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426620"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して SQL データベースのワークフローを自動化する
 
@@ -214,19 +214,16 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
 
 サイズが大きすぎてコネクタが同時にすべての結果を返さない結果セットを操作する必要がある場合、または、結果セットのサイズと構造を詳細に制御したい場合があります。 このような大きな結果セットを処理する方法は、いくつかあります。
 
-* 結果を、より小さなセットとして管理しやすくするには、 *改ページ位置の自動修正* をオンします。 詳細は、「[Get bulk data, records, and items by using pagination](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md)」(改ページ位置の自動修正を使用した一括データ、レコードおよび項目) を参照してください。
+* 結果を、より小さなセットとして管理しやすくするには、 *改ページ位置の自動修正* をオンします。 詳細は、「[Get bulk data, records, and items by using pagination](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md)」(改ページ位置の自動修正を使用した一括データ、レコードおよび項目) を参照してください。 詳細については、「[Logic Apps での一括データ転送に対する SQL の改ページ処理](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)」を参照してください。
 
-* 希望どおりの結果を編成するストアド プロシージャを作成します。
+* 希望どおりの結果を編成する " [*ストアド プロシージャ*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine)" を作成します。 SQL データベース テーブルを操作するビジネス タスクをより簡単に自動化できるように、SQL コネクタには、Azure Logic Apps を使用してアクセスできる多数のバックエンド機能が用意されています。
 
   複数の行を取得または挿入する場合、ロジック アプリは、こちらの [制限](../logic-apps/logic-apps-limits-and-config.md)の中で " [*until ループ*](../logic-apps/logic-apps-control-flow-loops.md#until-loop)" を使用することで、行を反復処理できます。 ただし、ロジック アプリは、数千から数百万の行がある非常に大きなレコード セットを処理する場合があります。このような場合は、データベースへの呼び出しコストを最小限にする必要があります。
 
-  代わりに、SQL インスタンスで実行され、 **SELECT - ORDER BY** ステートメントを使用して、望みどおりの方法で結果を整理する " [*ストアド プロシージャ*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine)" を作成できます。 このソリューションでは、結果のサイズと構造を詳細に制御できます。 ロジック アプリは、SQL Server コネクタの **［ストアド プロシージャの実行］** アクションを使用して、ストアド プロシージャを呼び出します。
+  代わりに、SQL インスタンスで実行され、SELECT - ORDER BYステートメントを使用して、望みどおりの方法で結果を整理する " **ストアド プロシージャ** " を作成できます。 このソリューションでは、結果のサイズと構造を詳細に制御できます。 ロジック アプリは、SQL Server コネクタの **［ストアド プロシージャの実行］** アクションを使用して、ストアド プロシージャを呼び出します。 詳細については、「[SELECT - ORDER BY 句](/sql/t-sql/queries/select-order-by-clause-transact-sql)」を参照してください。
 
-  ソリューションの詳細については、次の記事を参照してください。
-
-  * [Logic Apps での一括データ転送に対する SQL の改ページ処理](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
-
-  * [SELECT - ORDER BY Clause](/sql/t-sql/queries/select-order-by-clause-transact-sql)
+  > [!NOTE]
+  > このコネクタを使用すると、ストアド プロシージャの実行は [2 分未満のタイムアウト上限](/connectors/sql/#known-issues-and-limitations)に制限されます。 一部のストアド プロシージャでは、処理を行って完全に終了するまでに、この上限よりも長い時間がかかることがあります。その場合は、`504 TIMEOUT` エラーが生成されます。 実際には、長期実行されるいくつかのプロセスは、この目的のために明示的にストアド プロシージャとしてコード化されます。 これらのプロシージャを Azure Logic Apps から呼び出すと、このタイムアウト上限が原因で問題が発生する可能性があります。 SQL コネクタはネイティブで非同期モードをサポートしていませんが、[Azure エラスティック ジョブ エージェント](../azure-sql/database/elastic-jobs-overview.md)を利用することで、SQL 補完のトリガー、ネイティブ SQL パススルー クエリ、状態テーブル、およびサーバー側ジョブを使用してこのモードをシミュレートできます。
 
 ### <a name="handle-dynamic-bulk-data"></a>動的な一括データを処理する
 
@@ -253,13 +250,13 @@ SQL Server コネクタを使用してストアド プロシージャを呼び�
 
 ## <a name="troubleshoot-problems"></a>問題のトラブルシューティング
 
-接続の問題は普通に発生する可能性があるため、このような問題をトラブルシューティングして解決するには、「[SQL Server への接続エラーの解決](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)」を確認してください。 次に例をいくつか示します。
+* 接続の問題は普通に発生する可能性があるため、このような問題をトラブルシューティングして解決するには、「[SQL Server への接続エラーの解決](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)」を確認してください。 次に例をいくつか示します。
 
-* `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+  * `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
 
-* `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+  * `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
 
-* `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
+  * `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
 
 ## <a name="connector-specific-details"></a>コネクタ固有の詳細
 

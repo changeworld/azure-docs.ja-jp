@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 5178bf6955203c6a5625b941dd0102f2f4458abc
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 771635baa3c49c07d0d796cf6ef3be7b870de3e1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078376"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425440"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure のリージョンと Availability Zones
 
@@ -170,10 +170,10 @@ Availability Zones にデプロイされる仮想マシンに追加のコスト�
 - [仮想マシンの作成](../virtual-machines/windows/create-portal-availability-zone.md)
 - [PowerShell を使った管理ディスクの追加](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 - [ゾーン冗長仮想マシン スケール セットの作成](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [ゾーン冗長フロントエンドによる Standard Load Balancer を使用したゾーン間での VM の負荷分散](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
-- [ゾーン フロントエンドによる Standard Load Balancer を使用した単一のゾーン内での VM の負荷分散](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
-- [ゾーン冗長ストレージ](../storage/common/storage-redundancy.md)
-- [SQL Database](../azure-sql/database/high-availability-sla.md#zone-redundant-configuration)
+- [ゾーン冗長フロントエンドによる Standard Load Balancer を使用したゾーン間での VM の負荷分散](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
+- [ゾーン フロントエンドによる Standard Load Balancer を使用した単一のゾーン内での VM の負荷分散](../load-balancer/load-balancer-standard-public-zonal-cli.md)
+- [ゾーン冗長ストレージ](../storage/common/storage-redundancy-zrs.md)
+- [SQL Database General Purpose レベル](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
 - [Event Hubs の geo ディザスター リカバリー](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [Service Bus の geo ディザスター リカバリー](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
 - [ゾーン冗長仮想ネットワーク ゲートウェイの作成](../vpn-gateway/create-zone-redundant-vnet-gateway.md)

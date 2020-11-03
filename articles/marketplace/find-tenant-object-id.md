@@ -6,12 +6,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 10/09/2020
-ms.openlocfilehash: c35e42aaf5e4bd31a54f807969c3671ecc5668ab
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: db09943085cb7934bca5d7f2dc24ba692613ee19
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91814351"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426899"
 ---
 # <a name="find-tenant-id-object-id-and-partner-association-details"></a>テナント ID、オブジェクト ID、パートナーの関連付けの詳細を検索する
 
@@ -31,18 +31,18 @@ ms.locfileid: "91814351"
 
 3. **[グループ]** を選びます。 テナント ID は、 **[テナント情報]** ボックスにあります。
 
-    :::image type="content" source="media/tenant-and-object-id/select-groups-1.png" alt-text="Azure portal の [Azure Active Directory] アイコン。":::
+    :::image type="content" source="media/tenant-and-object-id/select-groups-1.png" alt-text="Azure portal で [グループ] を選択します。":::
 
 ## <a name="find-subscriptions-and-roles"></a>サブスクリプションとロールを検索する
 
 1. Azure portal に移動し、上記の手順 1 と 2 の説明に従って **[Azure Active Directory]** を選択します。
 2. **[サブスクリプション]** を選択します。
 
-    :::image type="content" source="media/tenant-and-object-id/icon-azure-subscriptions-1.png" alt-text="Azure portal の [Azure Active Directory] アイコン。":::
+    :::image type="content" source="media/tenant-and-object-id/icon-azure-subscriptions-1.png" alt-text="Azure portal での [サブスクリプション] アイコン。":::
 
 3. サブスクリプションとロールを表示します。
 
-    :::image type="content" source="media/tenant-and-object-id/subscriptions-screen-1.png" alt-text="Azure portal の [Azure Active Directory] アイコン。":::
+    :::image type="content" source="media/tenant-and-object-id/subscriptions-screen-1.png" alt-text="Azure portal での [サブスクリプション] 画面。":::
 
 ## <a name="find-partner-id"></a>パートナー ID を検索する
 
@@ -50,7 +50,7 @@ ms.locfileid: "91814351"
 2. サブスクリプションを選択します。
 3. **[課金]** で、 **[パートナー情報]** を選択します。
 
-    :::image type="content" source="media/tenant-and-object-id/menu-partner-information.png" alt-text="Azure portal の [Azure Active Directory] アイコン。":::
+    :::image type="content" source="media/tenant-and-object-id/menu-partner-information.png" alt-text="左側のナビゲーション メニューの [パートナー情報]。":::
 
 ## <a name="find-user-object-id"></a>ユーザー (オブジェクト ID) を検索する
 
@@ -60,11 +60,11 @@ ms.locfileid: "91814351"
 4. 目的のユーザーを参照または検索してから、アカウント名を選択して、ユーザー アカウントのプロファイル情報を表示します。
 5. オブジェクト ID は、右側の [ID] セクションにあります。
 
-    :::image type="content" source="media/tenant-and-object-id/azure-ad-admin-center.png" alt-text="Azure portal の [Azure Active Directory] アイコン。":::
+    :::image type="content" source="media/tenant-and-object-id/azure-ad-admin-center.png" alt-text="Azure Active Directory 管理センター。":::
 
-6. 左側のメニューの **[アクセス制御 (IAM)]** を選択してから、 **[ロールの割り当て]** を選択することで、**ロールの割り当て**を検索します。
+6. 左側のメニューの **[アクセス制御 (IAM)]** を選択してから、 **[ロールの割り当て]** を選択することで、 **ロールの割り当て** を検索します。
 
-    :::image type="content" source="https://docs.microsoft.com/azure/role-based-access-control/media/role-assignments-portal/role-assignments.png" alt-text="Azure portal の [Azure Active Directory] アイコン。":::
+    :::image type="content" source="https://docs.microsoft.com/azure/role-based-access-control/media/role-assignments-portal/role-assignments.png" alt-text="Azure リソースに対するロールの割り当て。":::
 
 ## <a name="find-ids-for-debugging"></a>デバッグのために ID を検索する
 
@@ -73,27 +73,27 @@ ms.locfileid: "91814351"
 1. [Azure ポータル](https://ms.portal.azure.com/)にアクセスします。
 2. 右上にある [PowerShell] アイコンを選択して Azure Cloud Shell を開きます。
 
-    :::image type="content" source="media/tenant-and-object-id/icon-azure-cloud-shell-1.png" alt-text="Azure portal の [Azure Active Directory] アイコン。":::
+    :::image type="content" source="media/tenant-and-object-id/icon-azure-cloud-shell-1.png" alt-text="画面の右上にある [PowerShell] アイコン。":::
 
 3. **[PowerShell]** を選択します。
 
-    :::image type="content" source="media/tenant-and-object-id/icon-powershell.png" alt-text="Azure portal の [Azure Active Directory] アイコン。":::
+    :::image type="content" source="media/tenant-and-object-id/icon-powershell.png" alt-text="PowerShell リンクを選択します。":::
 
 4. **[サブスクリプション]** ボックスを選択してパートナーのリンク先を選び、次に **[ストレージの作成]** を選択します。 これは 1 回限りの操作です。既にストレージが設定されている場合は、次の手順に進んでください。
 
-    :::image type="content" source="media/tenant-and-object-id/create-storage-window.png" alt-text="Azure portal の [Azure Active Directory] アイコン。":::
+    :::image type="content" source="media/tenant-and-object-id/create-storage-window.png" alt-text="[ストレージの作成] ボタンを選択します。":::
 
 5. ストレージを作成する (または既に用意されている) と、Azure Cloud Shell ウィンドウが開きます。
 
-    :::image type="content" source="media/tenant-and-object-id/cloud-shell-window-1.png" alt-text="Azure portal の [Azure Active Directory] アイコン。":::
+    :::image type="content" source="media/tenant-and-object-id/cloud-shell-window-1.png" alt-text="Azure Cloud Shell ウィンドウ。":::
 
 6. パートナーの関連付けの詳細については、次のコマンドを使用して拡張機能をインストールします。<br>`az extension add --name managementpartner`.<br>拡張機能が既にインストールされているかどうかは Azure Cloud Shell から通知があります。
 
-    :::image type="content" source="media/tenant-and-object-id/cloud-shell-window-2.png" alt-text="Azure portal の [Azure Active Directory] アイコン。":::
+    :::image type="content" source="media/tenant-and-object-id/cloud-shell-window-2.png" alt-text="拡張機能が既にインストールされていることを示す [Azure Cloud Shell] ウィンドウ。":::
 
 7. 次のコマンドを使用して、パートナーの詳細を確認します。<br>`az managementpartner show --partner-id xxxxxx`<br>例: `az managementpartner show --partner-id 4760962`.<br>コマンドの結果のスクリーンショットをスナップします。次のようになります。
 
-    :::image type="content" source="media/tenant-and-object-id/partner-id-sample-screenshot.png" alt-text="Azure portal の [Azure Active Directory] アイコン。":::
+    :::image type="content" source="media/tenant-and-object-id/partner-id-sample-screenshot.png" alt-text="パートナー ID を表示するための前のコマンドの結果を示すサンプル画面。":::
 
 >[!NOTE]
 >複数のサブスクリプションでスクリーンショットが必要な場合は、次のコマンドを使用してサブスクリプションを切り替えます。<br>`az account set --subscription "My Demos"`

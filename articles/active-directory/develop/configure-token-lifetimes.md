@@ -9,22 +9,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/29/2020
+ms.date: 10/23/2020
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: f70a11165f6433e580fd857f2d5a620deb6640c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2815041f32ebd7c2dae235229d1ca19aad253f7d
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604092"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503623"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>トークンの有効期間ポリシーを構成する (プレビュー)
-アプリ、サービス プリンシパル、および組織全体のトークンの有効期間を作成および管理できる場合は、Azure AD で多くのシナリオを実行できます。 詳細については、「[Microsoft ID プラットフォームでの構成可能なトークンの有効期間](active-directory-configurable-token-lifetimes.md)」を参照してください。 
+アプリ、サービス プリンシパル、および組織全体のトークンの有効期間を作成および管理できる場合は、Azure AD で多くのシナリオを実行できます。  
 
 > [!IMPORTANT]
-> プレビュー中にお客様のご意見をお聞きした後、Azure AD の条件付きアクセスの[認証セッション管理機能](../conditional-access/howto-conditional-access-session-lifetime.md)を実装しました。 この新機能を使用し、サインインの頻度を設定して更新トークンの有効期間を構成できます。 2020 年 5 月 30 日以降、新しいテナントでは、構成可能なトークンの有効期間ポリシーを使用してセッションと更新トークンを構成できなくなります。 廃止はその数か月後に行われます。つまり、セッションと更新トークンに関する既存のポリシーは適用されなくなります。 非推奨となった後も、アクセス トークンの有効期間を構成することはできます。
+> 2021 年 1 月 30 日以降、テナントでは更新およびセッション トークンの有効期間を構成できなくなり、Azure AD では、その日以降、ポリシー内の既存の更新およびセッション トークンの構成が考慮されなくなります。 非推奨となった後も、アクセス トークンの有効期間を構成することはできます。  詳細については、「[Microsoft ID プラットフォームでの構成可能なトークンの有効期間](active-directory-configurable-token-lifetimes.md)」を参照してください。
+> Azure AD の条件付きアクセスに [認証セッションの管理機能](../conditional-access/howto-conditional-access-session-lifetime.md) を実装しました。 この新機能を使用し、サインインの頻度を設定して更新トークンの有効期間を構成できます。
 
 
 このセクションでは新しい規則を適用する場合に役立つ、いくつかの一般的なポリシー シナリオについて説明します。
@@ -115,7 +116,7 @@ ms.locfileid: "91604092"
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    1. 新しいポリシーを表示して、そのポリシーの **ObjectId** を取得するには、[Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) コマンドレットを実行します。
+    1. 新しいポリシーを表示して、そのポリシーの **ObjectId** を取得するには、 [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) コマンドレットを実行します。
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
@@ -152,7 +153,7 @@ ms.locfileid: "91604092"
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-1. Web API にポリシーを割り当てます。 アプリケーションの **ObjectId** を取得する必要もあります。 [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) コマンドレットを使用して、アプリの **ObjectId** を見つけるか、[Azure portal](https://portal.azure.com/) を使用します。
+1. Web API にポリシーを割り当てます。 アプリケーションの **ObjectId** を取得する必要もあります。 [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) コマンドレットを使用して、アプリの **ObjectId** を見つけるか、 [Azure portal](https://portal.azure.com/) を使用します。
 
     アプリの **ObjectId** を取得し、ポリシーを割り当てます。
 

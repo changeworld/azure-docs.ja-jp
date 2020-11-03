@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 10/19/2020
-ms.openlocfilehash: 96df9610f0da94cfe7d3a82fc8ef72aeb539b2d0
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 343a6c92c9d77b5ef589477802015c6346a95ea9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207711"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520993"
 ---
 # <a name="co-sell-partner-engagement"></a>共同販売のパートナー エンゲージメント
 
@@ -67,19 +67,28 @@ ms.locfileid: "92207711"
 
 1. **[Listing]\(登録情報\)** セクションに、Microsoft の販売者がプランをすばやく並べ替えて見つけるのに役立つ、基本的な登録情報の詳細を提供します。 ( *必須: すべてのフィールド。* )
 
-    :::image type="content" source="media/co-sell/co-sell-listing-section.png" alt-text="この図は、[Microsoft と共同販売する] タブの場所を示しています。":::  
+    :::image type="content" source="media/co-sell/co-sell-listing-section.png" alt-text="この図は、[共同販売] タブの [Listing]\(登録情報\) セクションを示しています。":::  
 
 1. プランの詳細を入力し、 **[ドキュメント]** セクションに記載されている資料をアップロードします。 Microsoft の販売者は、この情報を使用してお客様のオファーを推薦および販売します。 ( *必須:顧客 1 ページャーおよび顧客プレゼンテーション デッキ。* )
 
-    :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="この図は、[Microsoft と共同販売する] タブの場所を示しています。":::
+    :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="この図は、共同販売タブの [ドキュメント] セクションを示しています。":::
  
 1. 営業担当者の情報を **[連絡先]** セクションにアップロードします。 Microsoft の販売者は、これらの連絡先に問い合わせて、オファーに関する追加情報を依頼することがあります。 ( *必須: プランが使用可能になる地理的な場所ごとの連絡先。* )
 
-    :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="この図は、[Microsoft と共同販売する] タブの場所を示しています。":::
+    :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="この図は、共同販売タブの [連絡先] セクションを示しています。":::
 
 1. 続行する前に、下書きを保存します。
 1. オファーの必須セクションをすべて完了したら、レビューと発行のためにそれを送信することができます。 右上にある **[レビューと公開]** を選択します。 オファーの詳細を確認してから、 **[公開]** を選択します。
-1. Microsoft では、アップロードされた資料を確認し、お客様のオファーが共同販売プログラムの対象になるかどうかを判断します。
+1. [目標とする共同販売の状態の条件](#co-sell-publishing-steps-and-requirements)を満たしていることを確認した後、以下のガイダンスに従って共同販売のプランを申請してください。
+    1. **Microsoft Partner Manager (PDM など) がいる場合:** Partner Manager にサポートを依頼してください。 共同販売の準備ができた状態と、Azure IP の共同販売または Business Applications の共同販売のインセンティブ (該当する場合) の申請プロセスについて説明を受けることができます。
+    
+    1. **Microsoft Partner Manager (PDM など) がいない場合** : [Cloud Enablement Desk (CED) を使用してご自分で申請してください](https://aka.ms/cednominate)。 [Desired CED Services]\(希望する CED サービス\) ドロップダウンで [Becoming co-sell ready]\(共同販売の準備を完了する\) を選択します。
+<ul><ul>
+
+:::image type="content" source="media/co-sell/co-sell-request-review.png" alt-text="この画像は、共同販売のレビューを依頼する CED のドロップダウンを示しています。":::
+
+このプロセスを完了するには、CED にお問い合わせください。
+</ul></ul>
 
 ## <a name="next-steps"></a>次のステップ
 

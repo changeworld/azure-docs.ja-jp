@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 924b1132efeb3ee4211593da190f5b7251029ae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3db411df69a754857220867865522f8e4fa24030
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80587331"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546009"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive のゲートウェイの詳細とベスト プラクティス
 
@@ -46,7 +46,7 @@ HDInsight クラスターの前にゲートウェイを配置する目的は、�
 
 Apache Hive は、HDFS と互換性のあるファイルシステム上のリレーショナル抽象化です。 この抽象化は、Hive 内の **SELECT** ステートメントが、ファイルシステム上の **READ** 操作に対応することを意味します。 **READ** 操作は、ユーザーに報告される前に適切なスキーマに変換されます。 このプロセスの待機時間は、データのサイズとエンド ユーザーに到達するために必要な合計ホップ数によって増加します。
 
-これらのコマンドは、基になるファイル システムの **WRITE** 操作に対応するため、大きなデータの **CREATE** または **INSERT** ステートメントの実行時に、同様の動作が発生する可能性があります。 生の ORC などのデータを、**INSERT** または **LOAD** を使用して読み込むのではなく、filesystem/datalake に書き込むことを検討してください。
+これらのコマンドは、基になるファイル システムの **WRITE** 操作に対応するため、大きなデータの **CREATE** または **INSERT** ステートメントの実行時に、同様の動作が発生する可能性があります。 生の ORC などのデータを、 **INSERT** または **LOAD** を使用して読み込むのではなく、filesystem/datalake に書き込むことを検討してください。
 
 Enterprise Security Pack 対応のクラスターでは、十分に複雑な Apache Ranger ポリシーによって、クエリのコンパイル時間に遅延が発生し、ゲートウェイのタイムアウトにつながる可能性があります。 ESP クラスターでゲートウェイのタイムアウトが検出された場合、Ranger ポリシーの数を減らしたり、組み合わせたりすることを検討してください。
 
@@ -54,11 +54,11 @@ Enterprise Security Pack 対応のクラスターでは、十分に複雑な Apa
 
 上記の行動の一部として、パフォーマンスの問題の緩和と理解を達成できる複数の場所があります。 HDInsight ゲートウェイでクエリ パフォーマンスの低下が発生している場合は、次のチェックリストを使用します。
 
-* 大きな **SELECT** クエリを実行する場合は、**LIMIT** 句を使用します。 **LIMIT** 句によって、クライアント ホストに報告される合計行数が減少します。 **LIMIT** 句は、結果の生成にのみ影響し、クエリ プランを変更しません。 **LIMIT** 句をクエリ プランに適用するには、構成 `hive.limit.optimize.enable` を使用します。 **LIMIT** は、引数形式  **x, y** を使用して、オフセットと組み合わせることができます。
+* 大きな **SELECT** クエリを実行する場合は、 **LIMIT** 句を使用します。 **LIMIT** 句によって、クライアント ホストに報告される合計行数が減少します。 **LIMIT** 句は、結果の生成にのみ影響し、クエリ プランを変更しません。 **LIMIT** 句をクエリ プランに適用するには、構成 `hive.limit.optimize.enable` を使用します。 **LIMIT** は、引数形式  **x, y** を使用して、オフセットと組み合わせることができます。
 
-* **SELECT\*** を使用する代わりに **SELECT** クエリを実行する場合、目的の列に名前を付けます。 選択する列が少ないほど、読み取られるデータの量が少なくなります。
+* * *SELECT \** _ を使用する代わりに **SELECT** クエリを実行する場合、目的の列に名前を付けます。 選択する列が少ないほど、読み取られるデータの量が少なくなります。
 
-* Apache Beeline を使用して、目的のクエリを実行してみてください。 Apache Beeline による結果の取得に長時間かかる場合、外部ツールによって同じ結果を取得する際に、遅延が予想されます。
+_ Apache Beeline を使用して、目的のクエリを実行してみてください。 Apache Beeline による結果の取得に長時間かかる場合、外部ツールによって同じ結果を取得する際に、遅延が予想されます。
 
 * 基本的な Hive クエリをテストして、HDInsight ゲートウェイへの接続を確立できることを確認します。 複数の外部ツールから基本的なクエリを実行して、個々のツールが問題なく動作することを確認してください。
 
@@ -80,7 +80,7 @@ Enterprise Security Pack 対応のクラスターでは、十分に複雑な Apa
 
 ## <a name="next-steps"></a>次のステップ
 
-* [HDInsight での Apache Beeline](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-beeline)
-* [HDInsight ゲートウェイのタイムアウトのトラブルシューティング手順](https://docs.microsoft.com/azure/hdinsight/interactive-query/troubleshoot-gateway-timeout)
-* [HDInsight の仮想ネットワーク](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)
-* [Express Route を使用した HDInsight](https://docs.microsoft.com/azure/hdinsight/connect-on-premises-network)
+* [HDInsight での Apache Beeline](../hadoop/apache-hadoop-use-hive-beeline.md)
+* [HDInsight ゲートウェイのタイムアウトのトラブルシューティング手順](./troubleshoot-gateway-timeout.md)
+* [HDInsight の仮想ネットワーク](../hdinsight-plan-virtual-network-deployment.md)
+* [Express Route を使用した HDInsight](../connect-on-premises-network.md)

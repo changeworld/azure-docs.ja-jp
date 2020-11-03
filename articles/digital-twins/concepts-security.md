@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0b99b9034dc382552d292cef95a3790bb27eba89
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 6784ca9dbc32811a02f4454be94d220c634318f5
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331755"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503319"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure Digital Twins をセキュリティで保護する
 
@@ -20,7 +20,7 @@ Azure Digital Twins では、セキュリティのために、デプロイ内の
 
 Azure Digital Twins では、保存データの暗号化もサポートされています。
 
-## <a name="granting-permissions-with-azure-rbac"></a>Azure RBAC を使用してアクセス許可を付与する
+## <a name="roles-and-permissions-with-azure-rbac"></a>Azure RBAC を使用したロールとアクセス許可
 
 Azure RBAC は、[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) との統合を介して Azure Digital Twins に提供されます。
 
@@ -47,20 +47,32 @@ Azure でサポートされているロールとロールの割り当ての詳�
 
 #### <a name="authorization-azure-roles-for-azure-digital-twins"></a>Authorization:Azure Digital Twins の Azure ロール
 
-Azure には、Azure Digital Twins リソースへのアクセス承認用に、以下の Azure 組み込みロールが用意されています。
-* *Azure Digital Twins Owner (プレビュー)* - Azure Digital Twins リソースに対するフル アクセス権を付与するには、このロールを使用します。
-* *Azure Digital Twins Reader (プレビュー)* - Azure Digital Twins リソースへの読み取り専用アクセス権を付与するには、このロールを使用します。
+Azure には、Azure Digital Twins [データ プレーン API](how-to-use-apis-sdks.md#overview-data-plane-apis) へのアクセスを承認するための **2 つの Azure 組み込みロール** が用意されています。 名前または ID を使用してロールを参照できます。
 
-> [!TIP]
-> *Azure Digital Twins Reader (プレビュー)* ロールでは、リレーションシップの閲覧もサポートされるようになりました。
+| 組み込みのロール | 説明 | id | 
+| --- | --- | --- |
+| Azure Digital Twins Data Owner (Azure Digital Twins データ所有者) | Azure Digital Twins リソースへのフル アクセス権が付与されます | bcd981a7-7f74-457b-83e1-cceb9e632ffe |
+| Azure Digital Twins Data Reader (Azure Digital Twins データ閲覧者) | Azure Digital Twins リソースへの読み取り専用アクセス権が付与されます | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
 
-組み込みロールの定義方法の詳細については、Azure RBAC のドキュメントの [*ロール定義の概要*](../role-based-access-control/role-definitions.md)に関するページを参照してください。 Azure カスタム ロールの作成については、「 [*Azure カスタム ロール*](../role-based-access-control/custom-roles.md)」を参照してください。
+>[!NOTE]
+> これらのロールは、最近、プレビューで以前の名前から変更されました。
+> * *"Azure Digital Twins Data Owner" (Azure Digital Twins データ所有者)* の旧称は *"Azure Digital Twins Owner (Preview)" (Azure Digital Twins 所有者 (プレビュー))* です。
+> * *"Azure Digital Twins Data Reader" (Azure Digital Twins データ閲覧者)* の旧称は *"Azure Digital Twins Reader (Preview)" (Azure Digital Twins 閲覧者 (プレビュー))* です。
 
 ロールを割り当てるには、次の 2 つの方法があります。
 * Azure portal で Azure Digital Twins のアクセス制御 (IAM) ペインを使用する (「 [*Azure portal を使用して Azure ロールの割り当てを追加または削除する*](../role-based-access-control/role-assignments-portal.md)」を参照してください)
 * CLI コマンドを使用してロールを追加または削除する
 
 この詳細な実行手順については、 [*Azure Digital Twins チュートリアルのエンド ツー エンドのソリューションの接続*](tutorial-end-to-end.md)に関するページを参照してください。
+
+組み込みロールの定義方法の詳細については、Azure RBAC のドキュメントの [*ロール定義の概要*](../role-based-access-control/role-definitions.md)に関するページを参照してください。 Azure カスタム ロールの作成については、「 [*Azure カスタム ロール*](../role-based-access-control/custom-roles.md)」を参照してください。
+
+##### <a name="automating-roles"></a>ロールの自動化
+
+自動化されたシナリオでロールを参照する場合は、名前ではなく **ID** を使用して参照することをお勧めします。 名前はリリースによって変わる可能性がありますが、ID は変わらないため、自動化の場合はより安定した参照になります。
+
+> [!TIP]
+> `New-AzRoleAssignment` ([ reference](/powershell/module/az.resources/new-azroleassignment?view=azps-4.8.0)) などのコマンドレットを使用してロールを割り当てる場合は、`-RoleDefinitionName` ではなく `-RoleDefinitionId` パラメーターを使用して、ロールの名前ではなく ID を渡すことができます。
 
 ### <a name="permission-scopes"></a>アクセス許可のスコープ
 

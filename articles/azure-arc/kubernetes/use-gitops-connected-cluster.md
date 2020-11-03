@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure Arc 対応のクラスター構成に対して GitOps を使用する (プレビュー)
 keywords: GitOps、Kubernetes、K8s、Azure、Arc、Azure Kubernetes Service、コンテナー
-ms.openlocfilehash: c00ed30c9a7424d083bf076c64cf008e0480bb2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a8839c2463494ba0e165bf9e1a5d22245fac8df
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714184"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371258"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Arc 対応 Kubernetes クラスターに対して GitOps を使用して構成をデプロイする (プレビュー)
 
@@ -98,31 +98,30 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 | シナリオ | Format | 説明 |
 | ------------- | ------------- | ------------- |
-| プライベート GitHub リポジトリ - SSH | git@github.com:username/repo | Flux によって生成される SSH キーペア。  ユーザーは、公開キーをデプロイ キーとして GitHub アカウントに追加する必要があります。 |
-| パブリック GitHub リポジトリ | `http://github.com/username/repo` または git://github.com/username/repo   | パブリック Git リポジトリ  |
+| パブリック Git リポジトリ | http[s]://server/repo.git or git://server/repo.git   | パブリック Git リポジトリ  |
+| プライベート Git リポジトリ – SSH – Flux で作成されたキー | ssh://[user@]server/repo.git or [user@]server:repo.git | Flux によって生成される公開キーは、Git サービス プロバイダー上のユーザー アカウントまたはリポジトリに追加する必要があります。 詳細については、 [こちら](#apply-configuration-from-a-private-git-repository) |
 
-これらのシナリオは Flux でサポートされていますが、sourceControlConfiguration ではまだサポートされていません。 
+これらのシナリオは Flux でサポートされていますが、sourceControlConfiguration ではまだサポートされていません。
 
 | シナリオ | Format | 説明 |
 | ------------- | ------------- | ------------- |
-| プライベート GitHub リポジトリ - HTTPS | `https://github.com/username/repo` | Flux では SSH キーペアが生成されません。  [手順](https://docs.fluxcd.io/en/1.17.0/guides/use-git-https.html) |
-| プライベート Git ホスト | user@githost:path/to/repo | [手順](https://docs.fluxcd.io/en/1.18.0/guides/use-private-git-host.html) |
-| プライベート GitHub リポジトリ -SSH (Bring Your Own Key) | git@github.com:username/repo | [自分の SSH キーペアを使用する](https://docs.fluxcd.io/en/1.17.0/guides/provide-own-ssh-key.html) |
-
+| プライベート Git リポジトリ - HTTPS | https://server/repo.git | 近日対応予定 (ユーザー名/パスワード、ユーザー名/トークン、証明書をサポートします) |
+| プライベート Git リポジトリ - SSH – ユーザー指定のキー | ssh://[user@]server/repo.git or [user@]server:repo.git | 近日中にご利用になれます |
+| プライベート Git ホスト – SSH – カスタム known_hosts | ssh://[user@]server/repo.git or [user@]server:repo.git | 近日中にご利用になれます |
 
 #### <a name="additional-parameters"></a>追加のパラメーター
 
 構成の作成をカスタマイズするために、いくつかの追加パラメーターを次に示します。
 
-`--enable-helm-operator`:*省略可能*: Helm グラフの配置のサポートを有効にするように切り替えます。
+`--enable-helm-operator`: *省略可能* : Helm グラフの配置のサポートを有効にするように切り替えます。
 
-`--helm-operator-chart-values`:*省略可能*: Helm 演算子 (有効な場合) のグラフの値。  たとえば、'--set helm.versions=v3' です。
+`--helm-operator-chart-values`: *省略可能* : Helm 演算子 (有効な場合) のグラフの値。  たとえば、'--set helm.versions=v3' です。
 
-`--helm-operator-chart-version`:*省略可能*: Helm 演算子 (有効な場合) のグラフのバージョン。 既定値は'0.6.0'。
+`--helm-operator-chart-version`: *省略可能* : Helm 演算子 (有効な場合) のグラフのバージョン。 既定値は'0.6.0'。
 
-`--operator-namespace`:*省略可能*: オペレーターの名前空間の名前。 既定値: 'default'
+`--operator-namespace`: *省略可能* : オペレーターの名前空間の名前。 既定値: 'default'
 
-`--operator-params`:*省略可能*: オペレーターのパラメーター。 単一引用符で囲む必要があります。 たとえば、```--operator-params='--git-readonly --git-path=releases' ``` のように指定します。
+`--operator-params`: *省略可能* : オペレーターのパラメーター。 単一引用符で囲む必要があります。 たとえば、```--operator-params='--git-readonly --git-path=releases' ``` のように指定します。
 
 --operator-params でサポートされているオプション
 
@@ -206,7 +205,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>プライベート git リポジトリから構成を適用する
 
-プライベート git リポジトリを使用している場合、ループを閉じるためにもう 1 つのタスクを実行する必要があります。リポジトリで、`flux` によって生成された公開キーを**デプロイ キー**として追加します。
+プライベート git リポジトリを使用している場合、ループを閉じるためにもう 1 つのタスクを実行する必要があります。リポジトリで、`flux` によって生成された公開キーを **デプロイ キー** として追加します。
 
 **Azure CLI を使用して公開キーを取得する**
 
@@ -225,7 +224,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 **公開キーをデプロイ キーとして git リポジトリに追加する**
 
-1. GitHub を開き、フォークに移動して、 **[設定]** 、 **[Deploy keys]\(デプロイ キー\)** の順に移動します
+1. GitHub を開き、リポジトリに移動して、 **[設定]** 、 **[Deploy keys]\(デプロイ キー\)** の順に移動します
 2. **[Add deploy key]\(デプロイ キーの追加\)** をクリックします
 3. [タイトル] を入力します
 4. **[Allow write access]\(書き込みアクセスを許可する\)** をオンにします

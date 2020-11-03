@@ -4,23 +4,24 @@ description: Azure Cosmos DB に接続し、Azure Storage Explorer を使用し�
 author: deborahc
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 08/24/2020
+ms.date: 10/23/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 938968599f1824416666818a46cc73a1d33c5341
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be37ab43db9b5b696a619cb1539981c064b4cb0e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987744"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537798"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>Azure Storage Explorer を使用して Azure Cosmos DB リソースを管理する
 
 Azure Storage Explorer を使用して、Azure Cosmos DB に接続できます。 これにより、Windows、macOS、または Linux から、Azure およびソブリン クラウドでホストされている Azure Cosmos DB アカウントに接続できます。
 
-さまざまな Azure エンティティを、同じツールを使用して 1 か所で管理します。 ストレージ BLOB やキューなど、他の Azure エンティティと一緒に Azure Cosmos DB エンティティの管理、データの操作、ストアド プロシージャとトリガーの更新を実行できます。
+さまざまな Azure エンティティを、同じツールを使用して 1 か所で管理します。 ストレージ BLOB やキューなど、他の Azure エンティティと一緒に Azure Cosmos DB エンティティの管理、データの操作、ストアド プロシージャとトリガーの更新を実行できます。 Azure Storage Explorer では、SQL、MongoDB、Graph、Table API に構成された Cosmos アカウントがサポートされます。
 
-Azure Storage Explorer では、SQL、MongoDB、Graph、Table API に構成された Cosmos アカウントがサポートされます。 詳細については、[Azure Storage Explorer での Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/storage-explorer) に関するページをご覧ください。
+> [!NOTE]
+> Storage Explorer との Azure Cosmos DB 統合は、非推奨になりました。 既存の機能は、このリリースから最低 1 年間は削除されません。 代わりに、[Azure portal](https://portal.azure.com/)、[Azure Portal デスクトップ アプリ](https://portal.azure.com/App/Download)、またはスタンドアロンの [Azure Cosmos エクスプローラー](data-explorer.md)を使用してください。 代替のオプションには、Storage Explorer で現在サポートされていない多くの新機能が含まれています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,27 +33,27 @@ SQL API または Azure Cosmos DB の MongoDB 用 API の Cosmos アカウント
 
 ## <a name="connect-to-an-azure-subscription"></a>Azure サブスクリプションに接続する
 
-1. **Azure Storage Explorer** をインストールした後で、左側のウィンドウにある**プラグイン** アイコンを選択します。
+1. **Azure Storage Explorer** をインストールした後で、左側のウィンドウにある **プラグイン** アイコンを選択します。
 
    :::image type="content" source="./media/storage-explorer/plug-in-icon.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
 
-1. **[Add an Azure Account]\(Azure アカウントの追加\)** を選択し、**[サインイン]** を選択します。
+1. **[Add an Azure Account]\(Azure アカウントの追加\)** を選択し、 **[サインイン]** を選択します。
 
-   :::image type="content" source="./media/storage-explorer/connect-to-azure-subscription.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+   :::image type="content" source="./media/storage-explorer/connect-to-azure-subscription.png" alt-text="[Add an Azure Account]\(Azure アカウントの追加\) ラジオ ボタンが選択され、[Azure 環境] ドロップダウン メニューが表示された [Azure Storage への接続] ウィンドウのスクリーンショット。":::
 
 1. **[Azure サインイン]** ダイアログ ボックスで、 **[サインイン]** を選択し、Azure 資格情報を入力します。
 
-    :::image type="content" source="./media/storage-explorer/sign-in.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+    :::image type="content" source="./media/storage-explorer/sign-in.png" alt-text="Azure サブスクリプションの資格情報の入力箇所が表示された [サインイン] ウィンドウのスクリーンショット。":::
 
 1. 一覧からサブスクリプションを選択し、 **[適用]** を選択します。
 
-    :::image type="content" source="./media/storage-explorer/apply-subscription.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+    :::image type="content" source="./media/storage-explorer/apply-subscription.png" alt-text="サブスクリプションのリストと [適用] ボタンが表示された [アカウント管理] ウィンドウのスクリーンショット。":::
 
     エクスプローラー ウィンドウが更新され、選択したサブスクリプション内のアカウントが表示されます。
 
-    :::image type="content" source="./media/storage-explorer/account-list.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+    :::image type="content" source="./media/storage-explorer/account-list.png" alt-text="選択したサブスクリプション内のアカウントが表示された更新後のエクスプローラー ウィンドウのスクリーンショット。":::
 
-    お使いの **Cosmos DB アカウント**は Azure サブスクリプションに接続されています。
+    お使いの **Cosmos DB アカウント** は Azure サブスクリプションに接続されています。
 
 ## <a name="use-a-connection-string-to-connect-to-azure-cosmos-db"></a>接続文字列を使用して Azure Cosmos DB に接続する
 
@@ -60,32 +61,32 @@ SQL API または Azure Cosmos DB の MongoDB 用 API の Cosmos アカウント
 
 1. 左側のツリーで **[Local and Attached]\(ローカルおよびアタッチ済み\)** を見つけ、 **[Cosmos DB アカウント]** を右クリックして、 **[Connect to Cosmos DB]\(Cosmos DB に接続\)** を選択します。
 
-    :::image type="content" source="./media/storage-explorer/connect-to-db-by-connection-string.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+    :::image type="content" source="./media/storage-explorer/connect-to-db-by-connection-string.png" alt-text="[Connect to Azure Cosmos D B]\(Azure Cosmos DB への接続\) が強調表示されている状態で右クリックした後のドロップダウン メニューを示したスクリーンショット。":::
 
 2. **[Connect to Cosmos DB]\(Cosmos DB に接続\)** ウィンドウで、次の手順を行います。
    1. ドロップダウン メニューから API を選択します。
    1. 接続文字列を **[接続文字列]** ボックスに貼り付けます。 プライマリ接続文字列を取得する方法については、[接続文字列の取得](manage-with-powershell.md#list-keys)に関するページをご覧ください。
-   1. **アカウント ラベル**を入力し、 **[次へ]** を選択して概要を確認します。
+   1. **アカウント ラベル** を入力し、 **[次へ]** を選択して概要を確認します。
    1. **[接続]** を選択して、Azure Cosmos DB アカウントに接続します。
 
-      :::image type="content" source="./media/storage-explorer/connection-string.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+      :::image type="content" source="./media/storage-explorer/connection-string.png" alt-text="[API] ドロップダウン メニュー、[接続文字列] ボックス、[アカウント ラベル] ボックスを示した、[Connect to Cosmos DB]\(Cosmos DB に接続\) ウィンドウのスクリーンショット。":::
 
 ## <a name="use-a-local-emulator-to-connect-to-azure-cosmos-db"></a>ローカル エミュレーターを使用して Azure Cosmos DB に接続する
 
 エミュレーターを使用して Azure Cosmos DB に接続するには、以下の手順を使用します。 この方法は、SQL アカウントのみをサポートしています。
 
-1. Cosmos DB Emulator インストールして開きます。 エミュレーターのインストール方法については、「[Cosmos DB Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator)」をご覧ください。
+1. Cosmos DB Emulator インストールして開きます。 エミュレーターのインストール方法については、「[Cosmos DB Emulator](./local-emulator.md)」をご覧ください。
 
 1. 左側のツリーで **[Local and Attached]\(ローカルおよびアタッチ済み\)** を見つけ、 **[Cosmos DB アカウント]** を右クリックして、 **[Connect to Cosmos DB Emulator]\(Cosmos DB Emulator に接続\)** を選択します。
 
-    :::image type="content" source="./media/storage-explorer/emulator-entry.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+    :::image type="content" source="./media/storage-explorer/emulator-entry.png" alt-text="[Connect to Azure Cosmos DB Emulator]\(Azure Cosmos DB Emulator への接続\) が強調表示されている状態で右クリックした後のメニューを示したスクリーンショット。":::
 
 1. **[Connect to Cosmos DB]\(Cosmos DB に接続\)** ウィンドウで、次の手順を行います。
    1. 接続文字列を **[接続文字列]** ボックスに貼り付けます。 プライマリ接続文字列の取得については、「[接続文字列を取得する](manage-with-powershell.md#list-keys)」を参照してください。
-   1. **アカウント ラベル**を入力し、 **[次へ]** を選択して概要を確認します。
+   1. **アカウント ラベル** を入力し、 **[次へ]** を選択して概要を確認します。
    1. **[接続]** を選択して、Azure Cosmos DB アカウントに接続します。
 
-      :::image type="content" source="./media/storage-explorer/emulator-dialog.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+      :::image type="content" source="./media/storage-explorer/emulator-dialog.png" alt-text="[接続文字列] ボックスと [アカウント ラベル] ボックスを示した [Connect to Cosmos DB]\(Cosmos DB に接続\) ウィンドウのスクリーンショット。":::
 
 ## <a name="azure-cosmos-db-resource-management"></a>Azure Cosmos DB のリソース管理
 
@@ -105,13 +106,13 @@ SQL API または Azure Cosmos DB の MongoDB 用 API の Cosmos アカウント
 
 * Azure Cosmos DB アカウントまたはデータベースを右クリックし、 **[ポータルで開く]** を選択して、Azure portal のブラウザーでリソースを管理します。
 
-  :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+  :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="[ポータルで開く] が強調表示されている状態で右クリックした後に表示されるメニューを示したスクリーンショット。":::
 
 * Azure Cosmos DB アカウント、データベース、またはコレクションを右クリックして **[クイック アクセスに追加]** を選択し、クイック アクセス メニューに追加します。
 
 * **[ここから検索]** を選択して、選択したパスのキーワード検索を有効にします。
 
-    :::image type="content" source="./media/storage-explorer/search-from-here.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+    :::image type="content" source="./media/storage-explorer/search-from-here.png" alt-text="強調表示されている検索ボックスを示したスクリーンショット。":::
 
 ### <a name="database-and-collection-management"></a>データベースとコレクションの管理
 
@@ -119,36 +120,36 @@ SQL API または Azure Cosmos DB の MongoDB 用 API の Cosmos アカウント
 
 1. Azure Cosmos DB アカウントを右クリックし、 **[データベースの作成]** を選択します。
 
-   :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+   :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="[データベースの作成] が強調表示されている状態で右クリックした後に表示されるメニューを示したスクリーンショット。":::
 
-1. データベース名を入力し、**Eenter** キーを押して完了します。
+1. データベース名を入力し、 **Eenter** キーを押して完了します。
 
 #### <a name="delete-a-database"></a>データベースの削除
 
 1. データベースを右クリックし、 **[データベースの削除]** を選択します。 
 
-   :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+   :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="[データベースの削除] が強調表示されている状態で右クリックした後に表示されるメニューを示したスクリーンショット。":::
 
 1. ポップアップ ウィンドウで **[はい]** を選択します。 データベース ノードが削除され、Azure Cosmos DB アカウントが自動的に更新されます。
 
-   :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+   :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="[はい] ボタンが強調表示されている確認ウィンドウのスクリーンショット。":::
 
 #### <a name="create-a-collection"></a>コレクションの作成
 
 1. データベースを右クリックし、 **[コレクションの作成]** を選択します。
 
-   :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+   :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="[コレクションの作成] が強調表示されている状態で右クリックした後に表示されるメニューを示したスクリーンショット。":::
 
-1. [コレクションの作成] ウィンドウで、**コレクション ID** や**ストレージ容量**など、要求された情報を入力します。 **[OK]** を選択して作業を終了します。
+1. [コレクションの作成] ウィンドウで、 **コレクション ID** や **ストレージ容量** など、要求された情報を入力します。 **[OK]** を選択して作業を終了します。
 
-   :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+   :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="[コレクション ID] ボックスと [ストレージ容量] ボタンが表示された [コレクションの作成] ウィンドウのスクリーンショット。":::
 
 1. パーティション キーを指定できるように **[無制限]** を選択し、 **[OK]** を選択して完了します。
 
    > [!NOTE]
    > コレクションの作成時にパーティション キーを使用する場合は、作成が完了するとコレクションのパーティション キー値を変更することはできなくなります。
 
-    :::image type="content" source="./media/storage-explorer/partitionkey.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+    :::image type="content" source="./media/storage-explorer/partitionkey.png" alt-text="[ストレージ容量] として [無制限] が選択され、[パーティション キー] ボックスが強調表示された [コレクションの作成] ウィンドウのスクリーンショット。":::
 
 #### <a name="delete-a-collection"></a>コレクションの削除
 
@@ -156,7 +157,7 @@ SQL API または Azure Cosmos DB の MongoDB 用 API の Cosmos アカウント
 
     コレクション ノードが削除され、データベースが自動的に更新されます。
 
-    :::image type="content" source="./media/storage-explorer/delete-collection.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+    :::image type="content" source="./media/storage-explorer/delete-collection.png" alt-text="[コレクションの削除] が強調表示されている状態で右クリックした後に表示されるメニューを示したスクリーンショット。":::
 
 ### <a name="document-management"></a>ドキュメントの管理
 
@@ -165,7 +166,7 @@ SQL API または Azure Cosmos DB の MongoDB 用 API の Cosmos アカウント
 - 左側のウィンドウで **[ドキュメント]** を開き、右側のウィンドウで **[新しいドキュメント]** を選択し、内容を編集し、 **[保存]** を選択します。
 - 既存のドキュメントを更新して **[保存]** を選択することもできます。 変更を破棄するには、 **[破棄]** を選択します。
 
-  :::image type="content" source="./media/storage-explorer/document.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+  :::image type="content" source="./media/storage-explorer/document.png" alt-text="左側のウィンドウで強調表示されたドキュメントを示したスクリーンショット。右側のウィンドウで、[新しいドキュメント]、[保存]、[破棄] が強調表示されています。":::
 
 #### <a name="delete-a-document"></a>ドキュメントの削除
 
@@ -173,9 +174,9 @@ SQL API または Azure Cosmos DB の MongoDB 用 API の Cosmos アカウント
 
 #### <a name="query-for-documents"></a>ドキュメントのクエリ
 
-* ドキュメント フィルターを編集するには、[SQL クエリ](how-to-sql-query.md)を入力して **[適用]** を選択します。
+* ドキュメント フィルターを編集するには、 [SQL クエリ](./sql-query-getting-started.md)を入力して **[適用]** を選択します。
 
-  :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+  :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="[フィルター] および [適用] ボタン、ID 番号、クエリ ボックスが強調表示された右側のウィンドウのスクリーンショット。":::
 
 ### <a name="graph-management"></a>Graph の管理
 
@@ -184,7 +185,7 @@ SQL API または Azure Cosmos DB の MongoDB 用 API の Cosmos アカウント
 * 新しい頂点を作成するには、左側のウィンドウから **Graph** を開き、 **[New Vertex]\(新しい頂点\)** を選択して内容を編集し、 **[OK]** を選択します。
 * 既存の頂点を変更するには、右側のウィンドウにあるペン アイコンを選択します。
 
-   :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+   :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="左側のウィンドウで選択された [グラフ] を示し、右側のウィンドウに表示された [New Vertex]\(新しい頂点\) と強調表示されたペン アイコンを示したスクリーンショット。":::
 
 #### <a name="delete-a-graph"></a>グラフの削除
 
@@ -192,9 +193,9 @@ SQL API または Azure Cosmos DB の MongoDB 用 API の Cosmos アカウント
 
 #### <a name="filter-for-graph"></a>グラフのフィルター選択
 
-* グラフ フィルターを編集するには、[Gremlin クエリ](gremlin-support.md)を入力して、 **[フィルターの適用]** を選択します。
+* グラフ フィルターを編集するには、 [Gremlin クエリ](gremlin-support.md)を入力して、 **[フィルターの適用]** を選択します。
 
-   :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+   :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="左側のウィンドウで選択された [グラフ] を示し、右側のウィンドウに表示された [フィルターの適用] と強調表示された [クエリ] ボックスを示したスクリーンショット。":::
 
 ### <a name="table-management"></a>テーブル管理
 
@@ -206,7 +207,7 @@ SQL API または Azure Cosmos DB の MongoDB 用 API の Cosmos アカウント
    1. プロパティを追加するには **[プロパティの追加]** ボタンをクリックします。
    1. **[挿入]** を選択します。
 
-      :::image type="content" source="./media/storage-explorer/table.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+      :::image type="content" source="./media/storage-explorer/table.png" alt-text="左側のウィンドウで強調表示されている [エンティティ] を示し、右側のウィンドウで強調表示されている [追加]、[編集]、[プロパティの追加]、[挿入] を示したスクリーンショット。":::
 
 * テーブルに変更を加えるには、 **[編集]** を選択して内容に変更を加え、 **[更新]** を選択します。
 
@@ -217,32 +218,32 @@ SQL API または Azure Cosmos DB の MongoDB 用 API の Cosmos アカウント
 * インポートするには、 **[インポート]** ボタンを選択してから既存のテーブルを選択します。
 * エクスポートするには、 **[エクスポート]** ボタンを選択してからエクスポート先を選択します。
 
-   :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+   :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="右側のウィンドウで強調表示されている [インポート] および [エクスポート] ボタンを示したスクリーンショット。":::
 
 #### <a name="delete-entities"></a>エンティティの削除
 
 * エンティティを選択してから **[削除]** ボタンを選択します。
 
-  :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+  :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="右側のウィンドウで強調表示されている [削除] ボタンと、[はい] が強調表示されている確認のポップアップ ウィンドウを示したスクリーンショット。":::
 
 #### <a name="query-a-table"></a>テーブルを照会する
 
 - **[クエリ]** ボタンを選択し、クエリ条件を入力してから **[クエリの実行]** ボタンを選択します。 クエリ ウィンドウを閉じるには、 **[クエリを閉じる]** ボタンを選択します。
 
-  :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+  :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="強調表示された [クエリの実行] ボタンと [クエリを閉じる] ボタンを示した右側のウィンドウのスクリーンショット。":::
 
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>ストアド プロシージャ、トリガー、および UDF の管理
 
 * ストアド プロシージャを作成するには:
   1. 左側のツリーで、 **[ストアド プロシージャ]** を右クリックし、 **[ストアドプロシージャの作成]** を選択します。
   
-     :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+     :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="[ストアド プロシージャの作成] が強調表示されている状態で右クリックした後に表示されるメニューを示した左側のウィンドウのスクリーンショット。":::
   
   1. 左側に名前を入力し、右側のウィンドウでストアド プロシージャのスクリプトを入力してから **[作成]** を選択します。
   
 * 既存のストアド プロシージャを編集するには、プロシージャをダブルクリックし、更新を行ってから、 **[更新]** を選択して保存します。 また、 **[破棄]** を選択して、変更を取り消すこともできます。
 
-* **トリガー**と **UDF** に対する操作は、**ストアド プロシージャ**に対する操作に似ています。
+* **トリガー** と **UDF** に対する操作は、 **ストアド プロシージャ** に対する操作に似ています。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -256,7 +257,7 @@ Storage Explorer で Azure Cosmos DB を使用するときに発生する一般�
 
 このエラーが表示される理由はいくつかあります。最も一般的な理由は次の 2 つです。
 
-* *透過プロキシ*の背後にいる。 IT 部門などのユーザーが、HTTPS トラフィックを傍受し、暗号化を解除してから、自己署名証明書を使用して暗号化しています。
+* *透過プロキシ* の背後にいる。 IT 部門などのユーザーが、HTTPS トラフィックを傍受し、暗号化を解除してから、自己署名証明書を使用して暗号化しています。
 
 * ウイルス対策ソフトウェアなどのソフトウェアを実行している。 このソフトウェアにより、受信した HTTPS メッセージに自己署名 TLS/SSL 証明書が挿入されます。
 
@@ -268,7 +269,7 @@ Storage Explorer が自己署名証明書を検出しても、受信した HTTPS
      - macOS および Linux:お使いのオペレーティング システムに付属しているはずです。
 
 1. OpenSSL を実行します。
-    * Windows: インストール ディレクトリ、 **/bin/** の順に移動して、**openssl.exe** をダブルクリックします。
+    * Windows: インストール ディレクトリ、 **/bin/** の順に移動して、 **openssl.exe** をダブルクリックします。
     * Mac と Linux:ターミナルで **openssl** を実行します。
 1. `s_client -showcerts -connect microsoft.com:443` を実行します。
 1. 自己署名証明書を検索します。 どれが自己署名かわからない場合は、証明書の発行先 ("s:") と証明書の発行者 ("i:") が同じものを検索します。
@@ -296,7 +297,7 @@ Storage Explorer が自己署名証明書を検出しても、受信した HTTPS
   * .extaccounts
 * F12 キーを押して、開発者コンソールを開きます。 サインイン時にエラー メッセージが表示されていないか、コンソールを確認してください。
 
-   :::image type="content" source="./media/storage-explorer/console.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+   :::image type="content" source="./media/storage-explorer/console.png" alt-text="強調表示されたコンソールを示した開発者ツール コンソールのスクリーンショット。":::
 
 #### <a name="unable-to-see-the-authentication-page"></a>認証ページが表示されない
 
@@ -321,7 +322,7 @@ Storage Explorer が自己署名証明書を検出しても、受信した HTTPS
   * ~/.config/StorageExplorer (Linux の場合)
   
   > [!NOTE]
-  > これらのファイルを削除した場合は、**資格情報をすべて再入力する必要があります**。
+  > これらのファイルを削除した場合は、 **資格情報をすべて再入力する必要があります** 。
 
 ### <a name="httphttps-proxy-issue"></a>HTTP/HTTPS プロキシの問題
 
@@ -329,28 +330,28 @@ ASE で HTTP/HTTPS プロキシを構成するときに、左側のツリーで 
 
 ### <a name="development-node-under-local-and-attached-node-issue"></a>"ローカルで接続済み" ノードの下の "開発" ノードに関する問題
 
-左側のツリーにある**ローカルで接続済み**ノードの下の**開発**ノードを選択した後、応答がありません。 これは期待される動作です。
+左側のツリーにある **ローカルで接続済み** ノードの下の **開発** ノードを選択した後、応答がありません。 これは期待される動作です。
 
-:::image type="content" source="./media/storage-explorer/development.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+:::image type="content" source="./media/storage-explorer/development.png" alt-text="選択された開発ノードを示したスクリーンショット。":::
 
-### <a name="attach-an-azure-cosmos-db-account-in-the-local-and-attached-node-error"></a>**ローカルで接続済み**ノードの Azure Cosmos DB アカウントのアタッチに関するエラー
+### <a name="attach-an-azure-cosmos-db-account-in-the-local-and-attached-node-error"></a>**ローカルで接続済み** ノードの Azure Cosmos DB アカウントのアタッチに関するエラー
 
-**ローカルで接続済み**ノードの Azure Cosmos DB アカウントをアタッチした後に以下のエラーが表示される場合、正しい接続文字列を使用しているか確認します。
+**ローカルで接続済み** ノードの Azure Cosmos DB アカウントをアタッチした後に以下のエラーが表示される場合、正しい接続文字列を使用しているか確認します。
 
-:::image type="content" source="./media/storage-explorer/attached-error.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+:::image type="content" source="./media/storage-explorer/attached-error.png" alt-text="getaddrinfo ENOTFOUND と示された、子リソースを取得できないというエラー ポップアップ ウィンドウのスクリーンショット。":::
 
 ### <a name="expand-azure-cosmos-db-node-error"></a>Azure Cosmos DB ノードの展開に関するエラー
 
 左側のツリーでノードを展開しようとすると、次のエラーが表示される場合があります。
 
-:::image type="content" source="./media/storage-explorer/expand-error.png" alt-text="左側のウィンドウにプラグイン アイコンが表示されているスクリーンショット。":::
+:::image type="content" source="./media/storage-explorer/expand-error.png" alt-text="この Cosmos DB アカウントに接続できないと示された、子リソースを取得できないというエラー ポップアップ ウィンドウのスクリーンショット。":::
 
 次の推奨事項を試してください。
 
 * Azure Cosmos DB アカウントがプロビジョニング中であるかどうかを確認します。 アカウントが正常に作成されているときに再試行してください。
-* アカウントが**クイック アクセス** ノードまたは**ローカルで接続済み**ノードにある場合、アカウントが削除されていることをチェックします。 その場合、ノードを手動で削除する必要があります。
+* アカウントが **クイック アクセス** ノードまたは **ローカルで接続済み** ノードにある場合、アカウントが削除されていることをチェックします。 その場合、ノードを手動で削除する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 
 * 次のビデオを見て、Azure Storage Explorer を使用して Azure Cosmos DB を利用する方法を確認します。[Use Azure Cosmos DB in Azure Storage Explorer](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be) (Azure Storage Explorer で Azure Cosmos DB を使用する)。
-* Storage Explorer と他のサービスへの接続の詳細については、[Storage Explorer の概要](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)に関するページをご覧ください。
+* Storage Explorer と他のサービスへの接続の詳細については、[Storage Explorer の概要](../vs-azure-tools-storage-manage-with-storage-explorer.md)に関するページをご覧ください。

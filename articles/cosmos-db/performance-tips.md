@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: e3d6771f841d3a1d403c1c825da3b504b6896d9e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0fb783a6ad65ce17bff14b72e8d94d284769779f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277227"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475160"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB と .NET SDK v2 のパフォーマンスに関するヒント
 
@@ -42,7 +42,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
 パフォーマンス向上のため、Windows 64 ビットのホスト処理をお勧めします。 SQL SDK には、ローカル環境でクエリを解析して最適化するためのネイティブ ServiceInterop.dll が含まれています。 ServiceInterop.dll は、Windows x64 プラットフォームでのみサポートされています。 Linux および ServiceInterop.dll を使用できない他のサポート対象外プラットフォームでは、最適化されたクエリを取得するために、ゲートウェイに対して追加のネットワーク呼び出しが行われます。 次の種類のアプリケーションでは、既定で 32 ビットのホスト処理が使用されます。 ホスト処理を 64 ビット処理に変更するには、アプリケーションの種類に基づいて次の手順のようにします。
 
-- 実行可能なアプリケーションの場合は、 **[プロジェクトのプロパティ]** ウィンドウの **[ビルド]** タブで [[プラットフォーム ターゲット]](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) を **[x64]** に設定することで、ホスト処理を変更できます。
+- 実行可能なアプリケーションの場合は、 **[プロジェクトのプロパティ]** ウィンドウの **[ビルド]** タブで [[プラットフォーム ターゲット]](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) を **[x64]** に設定することで、ホスト処理を変更できます。
 
 - VSTest ベースのテスト プロジェクトの場合は、Visual Studio の **[テスト]** メニューで **[テスト]**  >  **[テストの設定]**  >  **[既定のプロセッサ アーキテクチャ] > [X64]** の順に選択することで、ホスト処理を変更できます。
 
@@ -56,7 +56,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
     
 **サーバー側のガベージ コレクション (GC) を有効にする**
 
-ガベージ コレクションの頻度を減らした方がよい場合もあります。 .NET では、[gcServer](https://msdn.microsoft.com/library/ms229357.aspx) を `true` に設定します。
+ガベージ コレクションの頻度を減らした方がよい場合もあります。 .NET では、[gcServer](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element) を `true` に設定します。
 
 **クライアント ワークロードをスケールアウトする**
 
@@ -90,8 +90,8 @@ TCP プロトコルで実行されている場合、クライアントでは、�
 
 アクセス頻度が低く、ゲートウェイ モード アクセスと比べて接続数が多い場合は、次のことが可能です。
 
-* [ConnectionPolicy.PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.portreusemode) プロパティを `PrivatePortPool` に構成します (フレームワーク バージョン >= 4.6.1 および .NET core バージョン >= 2.0 で有効):このプロパティにより、SDK は異なる Azure Cosmos DB の宛先エンドポイントに対して一時的なポートの小さなプールを使用できます。
-* [ConnectionPolicy.IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.idletcpconnectiontimeout) プロパティを構成します。これは 10 分以上である必要があります。 推奨値は 20 分から 24 時間です。
+* [ConnectionPolicy.PortReuseMode](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.portreusemode) プロパティを `PrivatePortPool` に構成します (フレームワーク バージョン >= 4.6.1 および .NET core バージョン >= 2.0 で有効):このプロパティにより、SDK は異なる Azure Cosmos DB の宛先エンドポイントに対して一時的なポートの小さなプールを使用できます。
+* [ConnectionPolicy.IdleConnectionTimeout](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.idletcpconnectiontimeout) プロパティを構成します。これは 10 分以上である必要があります。 推奨値は 20 分から 24 時間です。
 
 **OpenAsync を呼び出して最初の要求での開始時の待機時間を回避する**
 
@@ -109,7 +109,7 @@ TCP プロトコルで実行されている場合、クライアントでは、�
 **スレッドまたはタスクの数を増やす**
 <a id="increase-threads"></a>
 
-Azure Cosmos DB の呼び出しはネットワーク経由で行われるため、クライアント アプリケーションで要求間の待機時間を最短にするために、要求の並列処理の次数を変えることが必要な場合があります。 たとえば、.NET の [タスク並列ライブラリ](https://msdn.microsoft.com//library/dd460717.aspx)を使用する場合、Azure Cosmos DB に対する読み取りタスクまたは書き込みタスクを 100 件単位で作成してください。
+Azure Cosmos DB の呼び出しはネットワーク経由で行われるため、クライアント アプリケーションで要求間の待機時間を最短にするために、要求の並列処理の次数を変えることが必要な場合があります。 たとえば、.NET の [タスク並列ライブラリ](/dotnet/standard/parallel-programming/task-parallel-library-tpl)を使用する場合、Azure Cosmos DB に対する読み取りタスクまたは書き込みタスクを 100 件単位で作成してください。
 
 **高速ネットワークの有効化**
  
@@ -127,7 +127,7 @@ Azure Cosmos DB SDK は、最適なパフォーマンスを提供するために
 
 **ゲートウェイ モードを使用するときはホストあたりの System.Net MaxConnections を増やす**
 
-ゲートウェイ モードを使用すると、Azure Cosmos DB の要求は HTTPS/REST を介して行われます。 それらは、ホスト名または IP アドレスごとの既定の接続数の上限に従います。 場合によっては、Azure Cosmos DB に対する複数の同時接続をクライアント ライブラリで使用できるよう、`MaxConnections` を高い値 (100 から 1,000) に増やす必要があります。 .NET SDK 1.8.0 以降では、[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) の既定値は 50 です。 その値を変更するには、[Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) をより高い値に設定できます。
+ゲートウェイ モードを使用すると、Azure Cosmos DB の要求は HTTPS/REST を介して行われます。 それらは、ホスト名または IP アドレスごとの既定の接続数の上限に従います。 場合によっては、Azure Cosmos DB に対する複数の同時接続をクライアント ライブラリで使用できるよう、`MaxConnections` を高い値 (100 から 1,000) に増やす必要があります。 .NET SDK 1.8.0 以降では、[ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) の既定値は 50 です。 その値を変更するには、[Documents.Client.ConnectionPolicy.MaxConnectionLimit](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit) をより高い値に設定できます。
 
 **パーティション分割コレクションに対する並列クエリを調整する**
 
@@ -135,19 +135,19 @@ SQL .NET SDK 1.9.0 以降では、並列クエリがサポートされていま�
 - `MaxDegreeOfParallelism` では、同時にクエリを実行できるパーティションの最大数を制御します。 
 - `MaxBufferedItemCount` では、プリフェッチされる結果の数を制御します。
 
-***並列処理の次数を調整する***
+**_並列処理の次数を調整する_* _
 
 並列クエリは、複数のパーティションに並列にクエリを実行することによって機能します。 ただし、個々のパーティションからのデータは、クエリごとに順番に取得されます。 そのため、[SDK V2](sql-api-sdk-dotnet.md) の `MaxDegreeOfParallelism` をパーティションの数に設定すると、その他のすべてのシステムの条件が変わらなければ、クエリのパフォーマンスを最善にできる可能性が最大になります。 パーティションの数がわからない場合は、並列処理の次数を高い数値に設定できます。 システムにより、並列処理の次数として最小値 (パーティションの数、ユーザー指定の入力) が選択されます。
 
 並列クエリが最も有効に機能するのは、クエリに対するデータがすべてのパーティションに均等に分散している場合であることに注意する必要があります。 パーティション分割されたコレクションが、クエリによって返されるすべてまたは大部分のデータがわずかな数のパーティション (最悪の場合は 1 つのパーティション) に集中するように分割されている場合、それらのパーティションがクエリのパフォーマンスのボトルネックになります。
 
-***MaxBufferedItemCount を調整する***
+_*_MaxBufferedItemCount を調整する_*_
     
 並列クエリは、結果の現在のバッチがクライアントによって処理されている間に結果をプリフェッチするように設計されています。 このプリフェッチは、クエリの全体的な遅延の削減に役立ちます。 `MaxBufferedItemCount` パラメーターは、プリフェッチされる結果の数を制限します。 `MaxBufferedItemCount` を、返される結果の予期される数 (またはそれ以上の数) に設定すると、クエリに対するプリフェッチの効果が最大になります。
 
 プリフェッチは、並列処理の次数とは無関係に同じように動作し、すべてのパーティションからのデータに対して単一のバッファーが存在します。  
 
-**RetryAfter 間隔でバックオフを実装する**
+_ *RetryAfter 間隔でバックオフを実装する**
 
 パフォーマンス テストでは、調整される要求の割合がわずかになるまで負荷を上げる必要があります。 要求がスロットル状態になった場合、クライアント アプリケーション側でバックオフ値を適用し、サーバー側によって指定された再試行間隔のスロットル時間を後退させるようにしてください。 バックオフにより、再試行までの待ち時間を最小限に抑えることができます。 
 
@@ -156,7 +156,7 @@ SQL .NET SDK 1.9.0 以降では、並列クエリがサポートされていま�
 - [Node.js SDK for SQL](sql-api-sdk-node.md) および [Python SDK for SQL](sql-api-sdk-python.md) のバージョン 1.9.0 以降
 - [.NET Core](sql-api-sdk-dotnet-core.md) SDK のサポートされているすべてのバージョン 
 
-詳細については、[RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx) に関するページを参照してください。
+詳細については、[RetryAfter](/dotnet/api/microsoft.azure.documents.documentclientexception.retryafter) に関するページを参照してください。
     
 .NET SDK のバージョン 1.19 以降では、次の例のように、追加の診断情報をログに記録し、待ち時間に関する問題をトラブルシューティングするメカニズムがあります。 読み取り待ち時間の長い要求についての診断文字列をログに記録できます。 取得した診断文字列は、特定の要求に対して 429 エラーを受け取った回数を把握するのに役立ちます。
 

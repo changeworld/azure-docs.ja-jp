@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 9eac64eff8c87046fd1ce76ee71475fda79ac6f7
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 42419247de537f9a166c3cdca2fd5a832ade6a5f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329255"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461432"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する
 
@@ -235,7 +235,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 ### <a name="azure-portal"></a>Azure portal
 
-Application Insights や Log Analytics などの Azure Monitor ポータル エクスペリエンスを使用するには、プライベート ネットワークで Azure portal および Azure Monitor の拡張機能にアクセスできるようにする必要があります。 **AzureActiveDirectory** 、 **AzureResourceManager** 、 **AzureFrontDoor.FirstParty** 、および **AzureFrontdoor.Frontend** [サービス タグ](../../firewall/service-tags.md)をファイアウォールに追加します。
+Application Insights や Log Analytics などの Azure Monitor ポータル エクスペリエンスを使用するには、プライベート ネットワークで Azure portal および Azure Monitor の拡張機能にアクセスできるようにする必要があります。 **AzureActiveDirectory** 、 **AzureResourceManager** 、 **AzureFrontDoor.FirstParty** 、および **AzureFrontdoor.Frontend** [サービス タグ](../../firewall/service-tags.md)をネットワーク セキュリティ グループに追加します。
 
 ### <a name="programmatic-access"></a>プログラムによるアクセス
 

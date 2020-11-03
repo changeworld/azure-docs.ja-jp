@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/16/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 280e5012f7c41a906b5b2e266840ea3c0cc315ba
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a5b019068368f1c0c076f5a1ed157c288bb7169c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151705"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479920"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure portal を使用して Azure でのロールの割り当てを一覧表示する
 
@@ -126,7 +126,7 @@ ms.locfileid: "92151705"
 
     管理グループ、サブスクリプション、リソース グループ、リソースなどのさまざまなスコープで、選択したユーザー割り当てマネージド ID に割り当てられているロールの一覧が表示されます。 この一覧では、自分が読み取りアクセス許可を認められているすべてのロールの割り当てが表示されます。
 
-    ![システム割り当てマネージド ID のロールの割り当て](./media/shared/role-assignments-user-assigned.png)
+    ![ユーザー割り当てマネージド ID に対するロールの割り当てを示しているスクリーンショット。](./media/shared/role-assignments-user-assigned.png)
 
 1. サブスクリプションを変更するには、 **[サブスクリプション]** の一覧をクリックします。
 
@@ -178,7 +178,7 @@ ms.locfileid: "92151705"
 
     ![ロールの割り当てを CSV としてダウンロード](./media/role-assignments-list-portal/download-role-assignments-csv.png)
 
-    ![ロールの割り当てを CSV としてダウンロード](./media/role-assignments-list-portal/download-role-assignments-json.png)
+    ![ダウンロードされた JSON 形式のロールの割り当てのスクリーンショット。](./media/role-assignments-list-portal/download-role-assignments-json.png)
 
 ## <a name="next-steps"></a>次のステップ
 

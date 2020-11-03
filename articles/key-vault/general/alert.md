@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 6b179dd2662bf6fa545ea44b723671f1499b9e35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9195bb59264731914740e1cca902707603e3502d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589012"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427027"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault の監視とアラート
 
@@ -53,7 +53,7 @@ ms.locfileid: "88589012"
 3. **[監視]** で **[メトリック]** を選択します 
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal のスクリーンショット](../media/alert-1.png)
+> ![[モニター] セクションの [メトリック] が強調表示されているスクリーンショット。](../media/alert-1.png)
 
 4. グラフのタイトルを、ダッシュボードに表示する内容に更新します。 
 5. スコープを選択します。 この例では、単一のキー コンテナーを選択します。 
@@ -61,7 +61,7 @@ ms.locfileid: "88589012"
 7. 時間の範囲を [過去 24 時間] に更新し、時間の細分性を [1 分] に更新します。 
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal のスクリーンショット](../media/alert-2.png)
+> ![コンテナーの全体的な可用性メトリックを示しているスクリーンショット。](../media/alert-2.png)
 
 8. [コンテナーの飽和度] と [サービス API 待機時間] メトリックについて、上記の手順を繰り返します。 **[ダッシュボードにピン留めする]** を選択し、ダッシュボードにメトリックを保存します。 
 
@@ -71,19 +71,19 @@ ms.locfileid: "88589012"
 9. キー コンテナーに対するすべての種類の操作を監視するには、 **[サービス API ヒット数の合計]** メトリックを使用して、 **[Apply Splitting by Activity Type]\(アクティビティの種類ごとに分割を適用\)** を選択します。
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal のスクリーンショット](../media/alert-3.png)
+> ![[分割の適用] ボタンを示しているスクリーンショット。](../media/alert-3.png)
 
 10. キー コンテナーのエラー コードを監視するには、 **[サービス API 結果数の合計]** メトリックを使用して、 **[Apply Splitting by Activity Type]\(アクティビティの種類ごとに分割を適用\)** を選択します。
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal のスクリーンショット](../media/alert-4.png)
+> ![選択されている [サービス API 結果数の合計] メトリックを示しているスクリーンショット。](../media/alert-4.png)
 
 これで、ダッシュボードは次のようになります。 各タイルの右上にある 3 つの点をクリックすると、必要に応じてタイルの並べ替えやサイズ変更を行うことができます。 
 
 ダッシュボードを保存して発行すると、Azure サブスクリプションに新しいリソースが作成されます。 「共有ダッシュボード」で検索すれば、これをいつでも表示できます。 
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal のスクリーンショット](../media/alert-5.png)
+> ![発行されたダッシュボードを示しているスクリーンショット。](../media/alert-5.png)
 
 ## <a name="how-to-configure-alerts-on-your-key-vault"></a>Key Vault でアラートを構成する方法 
 
@@ -97,24 +97,24 @@ ms.locfileid: "88589012"
 アクション グループは、通知とプロパティの構成可能な一覧です。
 
 1. Azure portal にログインします
-2. 検索ボックスで「**アラート**」を検索します。
+2. 検索ボックスで「 **アラート** 」を検索します。
 3. **[アクションの管理]** を選択します。
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal のスクリーンショット](../media/alert-6.png)
+> ![[アクションの管理] ボタンが強調表示されているスクリーンショット。](../media/alert-6.png)
 
 4. **[+ アクション グループの追加]** を選択します。
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal のスクリーンショット](../media/alert-7.png)
+> ![[+ アクション グループの追加] ボタンが強調表示されているスクリーンショット。](../media/alert-7.png)
 
 5. アクション グループの **[アクションの種類]** を選択します。 この例では、電子メール アラートを作成します。
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal のスクリーンショット](../media/alert-8.png)
+> ![アクション グループを追加するために必要なフィールドが強調表示されているスクリーンショット。](../media/alert-8.png)
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal のスクリーンショット](../media/alert-9.png)
+> ![電子メールまたは SMS メッセージ アラートを追加するために必要なものを示しているスクリーンショット。](../media/alert-9.png)
 
 6. ページの下部にある **[OK]** をクリックします。 アクション グループの作成が正常に完了しました。 
 
@@ -125,12 +125,12 @@ ms.locfileid: "88589012"
 1. Azure portal でキー コンテナー リソースを選択し、 **[監視]** の下にある **[アラート]** を選択します。
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal のスクリーンショット](../media/alert-10.png)
+> ![[モニター] セクションの [アラート] メニューを示しているスクリーンショット。](../media/alert-10.png)
 
 2. **[新しいアラート ルール]** を選択します。
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal のスクリーンショット](../media/alert-11.png)
+> ![[+ 新しいアラート ルール] ボタンを示しているスクリーンショット。](../media/alert-11.png)
 
 3. アラート ルールのスコープを選択します。 1 つまたは複数のコンテナーを選択できます。 
 
@@ -138,7 +138,7 @@ ms.locfileid: "88589012"
 > アラートのスコープに対して複数のコンテナーを選択する場合は、選択したすべてのコンテナーが同じリージョンに存在する必要があることに注意してください。 異なるリージョンのコンテナーに対して個別のアラート ルールを構成する必要があります。 
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal のスクリーンショット](../media/alert-12.png)
+> ![コンテナーの選択方法を示しているスクリーンショット。](../media/alert-12.png)
 
 4. アラートの条件を選択します。 次のいずれかのシグナルを選択して、アラートのロジックを定義できます。 Key Vault チームでは、次のアラートのしきい値を構成することをお勧めします。 
 
@@ -149,13 +149,13 @@ ms.locfileid: "88589012"
     + エラー コードの総数が平均を超える (動的しきい値) 
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal のスクリーンショット](../media/alert-13.png)
+> ![アラートの条件を選択する場所を示しているスクリーンショット。](../media/alert-13.png)
 
 ### <a name="example-1-configuring-a-static-alert-threshold-for-latency"></a>例 1:待機時間に対する静的アラートのしきい値の構成
 
 シグナル名として **[サービス API の全体的な待機時間]** を選択します。
 > [!div class="mx-imgBorder"]
-> ![Azure portal のスクリーンショット](../media/alert-14.png)
+> ![[サービス API の全体的な待機時間] シグナル名を示しているスクリーンショット。](../media/alert-14.png)
 
 次の構成パラメーターを確認してください。
 
@@ -168,14 +168,14 @@ ms.locfileid: "88589012"
 + **[完了]** を選択します  
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal のスクリーンショット](../media/alert-15.png)
+> ![構成されたアラート ロジックが強調表示されているスクリーンショット。](../media/alert-15.png)
 
 ### <a name="example-2-configuring-a-dynamic-alert-threshold-for-vault-saturation"></a>例 2:コンテナーの飽和度に対する動的アラートのしきい値の構成 
 
 動的アラートを使用すると、選択したキー コンテナーの履歴データを表示できるようになります。 青色の領域は、キー コンテナーの平均使用量を表します。 赤色の領域は、アラート構成の他の条件が満たされた場合にアラートをトリガーするスパイクを示しています。 赤色の点は、集約期間の時間枠でアラートの条件が満たされた違反のインスタンスを示します。 設定した時間内に特定の数の違反が発生した後に起動するようにアラートを設定できます。 過去のデータを含めたくない場合は、以下の詳細設定で古いデータを除外するオプションがあります。 
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal のスクリーンショット](../media/alert-16.png)
+> ![コンテナーの全体的な飽和状態のグラフを示しているスクリーンショット。](../media/alert-16.png)
 
 次の構成パラメーターを確認してください。
 
@@ -194,12 +194,12 @@ ms.locfileid: "88589012"
 5. 構成したアクション グループを追加します
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal のスクリーンショット](../media/alert-18.png)
+> ![アクション グループの追加方法を示しているスクリーンショット。](../media/alert-18.png)
 
 6. アラートを有効にして重要度を割り当てます
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal のスクリーンショット](../media/alert-19.png)
+> ![アラートの有効化と重大度の割り当てを行う場所を示しているスクリーンショット。](../media/alert-19.png)
 
 7. アラートを作成する 
 
@@ -211,4 +211,4 @@ ms.locfileid: "88589012"
 ### <a name="example-email-alert"></a>電子メール アラートの例 
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal のスクリーンショット](../media/alert-20.png)
+> ![電子メール アラートを構成するために必要な情報が強調表示されているスクリーンショット。](../media/alert-20.png)

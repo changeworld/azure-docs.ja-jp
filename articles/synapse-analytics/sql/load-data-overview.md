@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: d96604cd23f49ff61dce2087fde2c13b8fa2069d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbbed2ccaa62a99bb54a6d3d2eecf0c644281404
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89483730"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474667"
 ---
 # <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Azure Synapse SQL プール用の PolyBase データ読み込み戦略を設計する
 
-従来の SMP データ ウェアハウスでは、データの読み込みに ETL (抽出、変換、読み込み) プロセスが使用されます。 Azure SQL プールは、コンピューティング リソースとストレージ リソースのスケーラビリティと柔軟性を活かした超並列処理 (MPP: Massively Parallel Processing) アーキテクチャです。 抽出、読み込み、変換 (ELT) プロセスを利用することで、MPP の利点を活かすと共に、読み込む前にデータを事前に変換するために必要なリソースをなくすことができます。
+従来の SMP データ ウェアハウスでは、データの読み込みに ETL (抽出、変換、読み込み) プロセスが使用されます。 Azure SQL プールは、コンピューティング リソースとストレージ リソースのスケーラビリティと柔軟性を活かした超並列処理 (MPP: Massively Parallel Processing) アーキテクチャです。 抽出、読み込み、変換 (ELT) プロセスを利用することで、組み込みの分散クエリ処理機能の利点を活かすと共に、読み込む前にデータを事前に変換するために必要なリソースをなくすことができます。
 
 SQL プールは、Polybase 以外にもさまざまな読み込み方法 (BCP、SQL BulkCopy API など) をサポートしていますが、データを読み込むための最速かつ最もスケーラブルな方法は PolyBase です。  PolyBase は、Azure Blob Storage または Azure Data Lake Store に格納されている外部データに T-SQL 言語でアクセスするテクノロジです。
 
@@ -112,7 +112,7 @@ SQL プールに読み込む前に、ストレージ アカウント内でデー
 
 ## <a name="4-load-the-data-into-sql-pool-staging-tables-using-polybase"></a>4.PolyBase を使用して SQL プール ステージング テーブルにデータを読み込む
 
-これがステージング テーブルにデータを読み込むための最善の方法です。 ステージング テーブルを使用すると、運用環境のテーブルに支障をきたすことなく、エラーを処理することができます。 また、ステージング テーブルを使用すれば、運用環境のテーブルへの挿入前に、SQL プールの MPP を使用してデータを変換することができます。
+これがステージング テーブルにデータを読み込むための最善の方法です。 ステージング テーブルを使用すると、運用環境のテーブルに支障をきたすことなく、エラーを処理することができます。 また、ステージング テーブルを使用すれば、運用テーブルにデータを挿入する前に、SQL プールの組み込みの分散クエリ処理機能を使用してデータを変換できます。
 
 ### <a name="options-for-loading-with-polybase"></a>PolyBase を使用してデータを読み込むためのオプション
 

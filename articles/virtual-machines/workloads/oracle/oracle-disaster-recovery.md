@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: fe93ada343e83d61526b6b899429d9e2b7b745d3
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 9736c4d2b048aa18f283689247f5597d7526f1df
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996175"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480362"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー
 
@@ -37,12 +37,12 @@ Azure セットアップの概要は次のとおりです。
 - Data Guard を備えた 2 つの Oracle データベース (プライマリとスタンバイ)
 - Golden Gate または Data Guard を備えた 2 つの Oracle データベース (プライマリ サイトのみ)
 - 2 つのアプリケーション サービス (プライマリ サイトに 1 つ、DR サイトに 1 つ)
-- プライマリ サイト上のデータベースおよびアプリケーション サービスに使用されている "*可用性セット*"
+- プライマリ サイト上のデータベースおよびアプリケーション サービスに使用されている " *可用性セット* "
 - 各サイトに 1 つのジャンプボックス (プライベート ネットワークへのアクセスを制限し、管理者によるサインインのみを許可)
 - 別個のサブネット上にあるジャンプボックス、アプリケーション サービス、データベース、および VPN ゲートウェイ
 - アプリケーションおよびデータベースのサブネットに適用されている NSG
 
-![DR トポロジ ページのスクリーンショット](./media/oracle-disaster-recovery/oracle_topology_01.png)
+![Azure 上のプライマリ と DR のサイトを示している図](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
 ## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>シナリオ 2: オンプレミスのプライマリ サイトと Azure 上の DR サイト
 
@@ -68,7 +68,7 @@ Azure セットアップの概要は次のとおりです。
 - 受信 TCP ポート 1521 (またはユーザー定義ポート) を許可するNSG ポリシー/ルール
 - オンプレミス (DB またはアプリケーション) の IP アドレスから仮想ネットワークへのアクセスのみを制限するための NSG ポリシー/ルール
 
-![DR トポロジ ページのスクリーンショット](./media/oracle-disaster-recovery/oracle_topology_02.png)
+![オンプレミスと Azure の間の直接接続を示している図 (ファイアウォール上に開いている TCP ポートが必要)。](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
 ### <a name="approach-2-site-to-site-vpn"></a>アプローチ 2: サイト間 VPN
 サイト対サイト VPN は、より優れたアプローチです。 VPN の設定に関する詳細については、「[CLI を使用したサイト間 VPN 接続を持つ仮想ネットワークの作成](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)」を参照してください。

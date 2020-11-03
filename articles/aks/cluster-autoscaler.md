@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) クラスターでのアプリケー
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 7368745d3b6bf9731f987d6f4fc36b81d354fed8
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: e644a931152c83a5232c8233d519f7807ab708af
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103868"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542643"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションの需要を満たすようにクラスターを自動的にスケーリング
 
@@ -47,7 +47,7 @@ Azure Kubernetes Service (AKS) のアプリケーションの需要に対応す�
 
 ## <a name="create-an-aks-cluster-and-enable-the-cluster-autoscaler"></a>AKS クラスターの作成とクラスター オートスケーラーの有効化
 
-AKS クラスターを作成する必要がある場合は、[az aks create][az-aks-create] コマンドを使用します。 クラスターのノード プール上でクラスター オートスケーラーを有効にして構成するには、 *--enable-cluster-autoscaler* パラメーターを使用し、ノードの *--min-count* と *--max-count* を指定します。
+AKS クラスターを作成する必要がある場合は、[az aks create][az-aks-create] コマンドを使用します。 クラスターのノード プール上でクラスター オートスケーラーを有効にして構成するには、 `--enable-cluster-autoscaler` パラメーターを使用し、ノードの `--min-count` と `--max-count` を指定します。
 
 > [!IMPORTANT]
 > クラスター オートスケーラーは、Kubernetes のコンポーネントです。 AKS クラスターは、ノードに仮想マシン スケール セットを使用しますが、Azure portal で、または Azure CLI を使用して、スケール セットの自動スケーリングの設定を手動で有効にしたり編集したりしないでください。 必要なスケール設定の管理は、Kubernetes クラスター オートスケーラーが行います。 詳細については、[ノード リソース グループ内の AKS リソースを変更可能かどうか][aks-faq-node-resource-group]に関するセクションを参照してください。
@@ -74,7 +74,7 @@ az aks create \
 
 ## <a name="update-an-existing-aks-cluster-to-enable-the-cluster-autoscaler"></a>既存の AKS クラスターを更新してクラスター オートスケーラーを有効にする
 
-既存のクラスターのノード プール上でクラスター オートスケーラーを有効にして構成するには、[az aks update][az-aks-update] コマンドを使用します。 *--enable-cluster-autoscaler* パラメーターを使用し、ノードの *--min-count* と *--max-count* を指定します。
+既存のクラスターのノード プール上でクラスター オートスケーラーを有効にして構成するには、[az aks update][az-aks-update] コマンドを使用します。 `--enable-cluster-autoscaler` パラメーターを使用し、ノードの `--min-count` と `--max-count` を指定します。
 
 > [!IMPORTANT]
 > クラスター オートスケーラーは、Kubernetes のコンポーネントです。 AKS クラスターは、ノードに仮想マシン スケール セットを使用しますが、Azure portal で、または Azure CLI を使用して、スケール セットの自動スケーリングの設定を手動で有効にしたり編集したりしないでください。 必要なスケール設定の管理は、Kubernetes クラスター オートスケーラーが行います。 詳細については、[ノード リソース グループ内の AKS リソースを変更可能かどうか][aks-faq-node-resource-group]に関するセクションを参照してください。
@@ -131,7 +131,14 @@ az aks update \
 | scale-down-unready-time          | 準備ができていないノードが不要になってからスケールダウンの対象になるまでの時間         | 20 分    |
 | scale-down-utilization-threshold | 要求されたリソースの合計を容量で割った値として定義される、ノード利用レベル。これを下回るノードはスケールダウンの対象と見なすことができます。 | 0.5 |
 | max-graceful-termination-sec     | ノードのスケールダウンを試みるときに、クラスター オートスケーラーがポッドの終了を待機する最大秒数。 | 600 秒   |
-| balance-similar-node-groups | 類似のノード プールを検出し、その間でノード数のバランスを取ります | false |
+| balance-similar-node-groups      | 類似のノード プールを検出し、その間でノード数のバランスを取ります                 | false         |
+| expander                         | スケールアップで使用するノード プール [expander](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) の種類 指定できる値: `most-pods`、`random`、`least-waste` | random | 
+| skip-nodes-with-local-storage    | true の場合、EmptyDir や HostPath などのローカル ストレージを備えたポッドがあるノードは、クラスター オートスケーラーによって削除されなくなります | true |
+| skip-nodes-with-system-pods      | true の場合、ポッドのあるノードは、クラスター オートスケーラーによって kube-system から削除されなくなります (DaemonSet またはミラー ポッドを除く) | true | 
+| max-empty-bulk-delete            | 同時に削除できる空ノードの最大数。                      | 10 ノード      |
+| new-pod-scale-up-delay           | バーストまたはバッチ スケールのように、kubernetes スケジューラによってすべてのポッドがスケジュールされる前に CA を動作させたくないシナリオの場合、一定の期間に達する前のスケジュールされていないポッドを無視するように CA に指示できます。                                                                                                                | 10 秒    |
+| max-total-unready-percentage     | クラスター内の準備が完了していないノードの最大割合。 この割合を超えると、CA の動作は停止されます | 45% | 
+| ok-total-unready-count           | max-total-unready-percentage に関係なく、準備が完了していないノードの許可されている数            | 3 ノード       |
 
 > [!IMPORTANT]
 > クラスター オートスケーラー プロファイルは、クラスター オートスケーラーを使用するすべてのノード プールに影響を及ぼします。 ノード プールごとにオートスケーラー プロファイルを設定することはできません。
@@ -194,7 +201,7 @@ az aks update \
 
 ## <a name="disable-the-cluster-autoscaler"></a>クラスター オートスケーラーの無効化
 
-クラスター オートスケーラーを今後使用しない場合は、 [az aks update][az-aks-update-preview] コマンドで *--disable-cluster-autoscaler* パラメーターを指定することで無効にできます。 クラスター オートスケーラーが無効になってもノードは削除されません。
+クラスター オートスケーラーを今後使用しない場合は、[az aks update][az-aks-update-preview] コマンドで `--disable-cluster-autoscaler` パラメーターを指定することで無効にできます。 クラスター オートスケーラーが無効になってもノードは削除されません。
 
 ```azurecli-interactive
 az aks update \
@@ -207,18 +214,18 @@ az aks update \
 
 ## <a name="re-enable-a-disabled-cluster-autoscaler"></a>無効なクラスター オートスケーラーを再度有効にする
 
-既存のクラスター上でクラスター オートスケーラーを再度有効にする場合は、 [az aks update][az-aks-update-preview] コマンドで *--enable-cluster-autoscaler* 、 *--min-count* 、および *--max-count* パラメーターを指定することで有効にできます。
+既存のクラスター上でクラスター オートスケーラーを再度有効にする場合は、[az aks update][az-aks-update-preview] コマンドで `--enable-cluster-autoscaler`、`--min-count`、および `--max-count` のパラメーターを指定することで再度有効にすることができます。
 
 ## <a name="retrieve-cluster-autoscaler-logs-and-status"></a>クラスター オートスケーラーのログと状態を取得する
 
 オートスケーラーのイベントを診断し、デバッグする目的で、オートスケーラー アドオンからログと状態を取得できます。
 
-AKS では、ユーザーに代わってクラスター オートスケーラーが管理され、マネージド コントロール プレーンで実行されます。 マスター ノードのログは、結果として表示されるように構成する必要があります。
+AKS では、ユーザーに代わってクラスター オートスケーラーが管理され、マネージド コントロール プレーンで実行されます。 コントロール プレーン ノードを有効にすると、CA からのログと操作を確認できます。
 
 クラスター オートスケーラーから Log Analytics にプッシュされるようにログを構成するには、次の手順に従います。
 
 1. Log Analytics にクラスター オートスケーラーのログをプッシュするようにリソース ログのルールを設定します。 [手順の詳細はこちらにあります][aks-view-master-logs]。[ログ] のオプションを選択するときは、確実に `cluster-autoscaler` のボックスにチェックマークを入れます。
-1. Azure portal から、クラスターの [ログ] セクションをクリックします。
+1. Azure portal から、クラスターの [ログ] セクションを選択します。
 1. Log Analytics に次のサンプル クエリを入力します。
 
 ```
@@ -230,7 +237,7 @@ AzureDiagnostics
 
 ![Log Analytics のログ](media/autoscaler/autoscaler-logs.png)
 
-クラスター オートスケーラーにより、`cluster-autoscaler-status` という名前の configmap に正常性状態も書き込まれます。 これらのログを取得するには、次の `kubectl` コマンドを実行します。 クラスター オートスケーラーで構成されたノード プールごとに、正常性状態が報告されます。
+クラスター オートスケーラーにより、`cluster-autoscaler-status` という名前の `configmap` に正常性状態も書き込まれます。 これらのログを取得するには、次の `kubectl` コマンドを実行します。 クラスター オートスケーラーで構成されたノード プールごとに、正常性状態が報告されます。
 
 ```
 kubectl get configmap -n kube-system cluster-autoscaler-status -o yaml
@@ -264,7 +271,7 @@ az aks nodepool update \
   --disable-cluster-autoscaler
 ```
 
-既存のクラスター上でクラスター オートスケーラーを再度有効にする場合は、 [az aks nodepool update][az-aks-nodepool-update] コマンドで *--enable-cluster-autoscaler* 、 *--min-count* 、および *--max-count* パラメーターを指定することで有効にできます。
+既存のクラスター上でクラスター オートスケーラーを再度有効にする場合は、[az aks nodepool update][az-aks-nodepool-update] コマンドで `--enable-cluster-autoscaler`、 `--min-count`、および `--max-count` パラメーターを指定することで有効にできます。
 
 ## <a name="next-steps"></a>次のステップ
 

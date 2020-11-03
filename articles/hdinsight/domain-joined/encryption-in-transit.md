@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: 25e38beb561ee954db2987643775f3a3c6e05737
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f043a1cb870d003e371d2f20d0e1f6614c9201e
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89668775"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628985"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>Azure HDInsight での転送中の IPSec 暗号化
 
 この記事では、Azure HDInsight クラスター ノード間の通信に対する転送中の暗号化の実装について説明します。
 
 > [!Note]
-> 現在、転送中の暗号化が有効なリージョンは、米国東部、米国中南部、米国西部 2 です。 
+> 現在、転送中の暗号化が有効なリージョンは、米国東部、米国中南部、米国西部 2 です。
 
 ## <a name="background"></a>バックグラウンド
 
@@ -27,7 +27,7 @@ Azure HDInsight には、エンタープライズ データをセキュリティ
 
 保存時の暗号化は、Azure ストレージ アカウントでのサーバー側暗号化と、HDInsight クラスターの一部である Azure VM でのディスク暗号化によってカバーされます。
 
-HDInsight での転送中データの暗号化は、クラスター ゲートウェイにアクセスするための[トランスポート層セキュリティ (TLS)](https://docs.microsoft.com/azure/hdinsight/transport-layer-security) と、クラスター ノード間の[インターネット プロトコル セキュリティ (IPSec)](https://en.wikipedia.org/wiki/IPsec) を使用して実現されます。 IPSec は、すべてのヘッド ノード、ワーカー ノード、エッジ ノード、および Zookeeper ノード間で、オプションで有効化できます。 クラスター内の Windows ベースの VM と他の Linux ベースのノードである、ゲートウェイまたは [ID ブローカー](https://docs.microsoft.com/azure/hdinsight/domain-joined/identity-broker)間のトラフィックに対しては、有効にはなりません。
+HDInsight での転送中データの暗号化は、クラスター ゲートウェイにアクセスするための[トランスポート層セキュリティ (TLS)](../transport-layer-security.md) と、クラスター ノード間の[インターネット プロトコル セキュリティ (IPSec)](https://wikipedia.org/wiki/IPsec) を使用して実現されます。 IPSec は、すべてのヘッド ノード、ワーカー ノード、エッジ ノード、および Zookeeper ノード間で、オプションで有効化できます。 クラスター内の Windows ベースの VM と他の Linux ベースのノードである、ゲートウェイまたは [ID ブローカー](./identity-broker.md)間のトラフィックに対しては、有効にはなりません。
 
 ## <a name="enable-encryption-in-transit"></a>転送中の暗号化を有効にする
 
@@ -40,9 +40,9 @@ Azure portal を使用して、転送中の暗号化を有効にした新しい�
 
     :::image type="content" source="media/encryption-in-transit/create-cluster-security-networking-tab.png" alt-text="クラスターの作成 - [セキュリティとネットワーク] タブ":::
 
-1. **[セキュリティとネットワーク]** タブで、 **[転送中の暗号化を有効にする]** チェック ボックスをクリックします。
+1. **[セキュリティとネットワーク]** タブで、 **[転送中の暗号化を有効にする]** チェック ボックスを選択します。
 
-    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="クラスターの作成 - [セキュリティとネットワーク] タブ":::
+    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="クラスターの作成 - 転送中の暗号化を有効にする":::
 
 ### <a name="create-a-cluster-with-encryption-in-transit-enabled-through-the-azure-cli"></a>転送中の暗号化を有効にしたクラスターを Azure CLI を使用して作成する
 

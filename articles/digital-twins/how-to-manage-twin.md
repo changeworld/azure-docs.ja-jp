@@ -4,36 +4,36 @@ titleSuffix: Azure Digital Twins
 description: 個々のツインとリレーションシップを取得、更新、削除する方法について説明します。
 author: baanders
 ms.author: baanders
-ms.date: 4/10/2020
+ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c522ac9e1aedbcdfdb4564d17b506b1b490da0c3
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 4945e89232ee9a15b2700dac49ccd829b7a52dac
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150394"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494787"
 ---
 # <a name="manage-digital-twins"></a>デジタル ツインを管理する
 
-環境内のエンティティは、[デジタル ツイン](concepts-twins-graph.md)で表されます。 デジタル ツインの管理には、作成、変更、削除などが伴います。 これらの操作を実行するには、[**DigitalTwins API**](how-to-use-apis-sdks.md)、[NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用します。
+環境内のエンティティは、[デジタル ツイン](concepts-twins-graph.md)で表されます。 デジタル ツインの管理には、作成、変更、削除などが伴います。 これらの操作を実行するには、 [**DigitalTwins API**](/rest/api/digital-twins/dataplane/twins)、 [NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用します。
 
-この記事では、デジタル ツインの管理に重点を置いて説明します。リレーションシップと[ツイン グラフ](concepts-twins-graph.md)の全体的な操作については、「[*方法: リレーションシップを使用してツイン グラフを管理する*](how-to-manage-graph.md)」を参照してください。
+この記事では、デジタル ツインの管理に重点を置いて説明します。リレーションシップと [ツイン グラフ](concepts-twins-graph.md)の全体的な操作については、「 [*方法: リレーションシップを使用してツイン グラフを管理する*](how-to-manage-graph.md)」を参照してください。
 
 > [!TIP]
 > すべての SDK 関数に同期バージョンと非同期バージョンがあります。
 
 ## <a name="create-a-digital-twin"></a>デジタル ツインを作成する
 
-ツインを作成するには、次のようにサービス クライアントで `CreateDigitalTwin` メソッドを使用します。
+ツインを作成するには、次のようにサービス クライアントで `CreateDigitalTwin()` メソッドを使用します。
 
 ```csharp
-await client.CreateDigitalTwinAsync("myNewTwinID", initData);
+await client.CreateDigitalTwinAsync("myTwinId", initData);
 ```
 
 デジタル ツインを作成するには、以下を指定する必要があります。
 * デジタル ツインの目的の ID
-* 使用する[モデル](concepts-models.md) 
+* 使用する[モデル](concepts-models.md)
 
 必要に応じて、デジタル ツインのすべてのプロパティの初期値を指定できます。 
 
@@ -44,10 +44,13 @@ await client.CreateDigitalTwinAsync("myNewTwinID", initData);
 
 ### <a name="initialize-model-and-properties"></a>モデルとプロパティを初期化する
 
-ツイン作成 API は、ツイン プロパティの有効な JSON 記述にシリアル化されるオブジェクトを受け入れます。 "[*デジタル ツインとツイン グラフの概念*](concepts-twins-graph.md)" に関する記事をご覧ください。 
+ツイン作成 API は、ツイン プロパティの有効な JSON 記述にシリアル化されるオブジェクトを受け入れます。 " [*デジタル ツインとツイン グラフの概念*](concepts-twins-graph.md)" に関する記事をご覧ください。 
 
-したがって、まず、ツインとそのプロパティ データを表すデータ オブジェクトを作成します。 次に、`JsonSerializer` を使用して、このシリアル化されたバージョンを `initdata` パラメーターの API 呼び出しに渡すことができます。
+まず、ツインとそのプロパティ データを表すデータ オブジェクトを作成することができます。 次に、`JsonSerializer` を使用して、このオブジェクトのシリアル化されたバージョンを次のように `initdata` パラメーターの API 呼び出しに渡すことができます。
 
+```csharp
+await client.CreateDigitalTwinAsync(srcId, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+```
 パラメーター オブジェクトは手動で作成することも、用意されているヘルパー クラスを使用して作成することもできます。 それぞれの例を以下に示します。
 
 #### <a name="create-twins-using-manually-created-data"></a>手動で作成したデータを使用してツインを作成する
@@ -58,7 +61,7 @@ await client.CreateDigitalTwinAsync("myNewTwinID", initData);
 
 #### <a name="create-twins-with-the-helper-class"></a>ヘルパー クラスを使用してツインを作成する
 
-`BasicDigitalTwin` のヘルパー クラスを使用すると、"ツイン" オブジェクトにプロパティ フィールドをより直接的に格納できます。 `Dictionary<string, object>` を使用してプロパティのリストを作成することもできます。それは、`CustomProperties` としてツイン オブジェクトに直接追加できます。
+`BasicDigitalTwin` のヘルパー クラスを使用すると、"ツイン" オブジェクトにプロパティ フィールドを直接的に格納できます。 `Dictionary<string, object>` を使用してプロパティのリストを作成することもできます。それは、`CustomProperties` としてツイン オブジェクトに直接追加できます。
 
 ```csharp
 BasicDigitalTwin twin = new BasicDigitalTwin();
@@ -70,38 +73,48 @@ props.Add("Temperature", 25.0);
 props.Add("Humidity", 50.0);
 twin.CustomProperties = props;
 
-client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+client.CreateDigitalTwinAsync("myRoomId", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+Console.WriteLine("The twin is created successfully");
 ```
 
 >[!NOTE]
-> `BasicDigitalTwin` オブジェクトには、`Id` フィールドが付属しています。 このフィールドは空のままとすることができますが、ID 値を追加する場合は、それが、`CreateDigitalTwin` 呼び出しに渡される ID パラメーターと一致する必要があります。 上記の例の場合、以下のようになります。
+> `BasicDigitalTwin` オブジェクトには、`Id` フィールドが付属しています。 このフィールドは空のままとすることができますが、ID 値を追加する場合は、それが、`CreateDigitalTwin()` 呼び出しに渡される ID パラメーターと一致する必要があります。 次に例を示します。
 >
 >```csharp
->twin.Id = "myNewRoomID";
+>twin.Id = "myRoomId";
 >```
 
 ## <a name="get-data-for-a-digital-twin"></a>デジタル ツインのデータを取得する
 
-次の呼び出しにより、任意のデジタル ツインの全データにアクセスできます。
+次のように `GetDigitalTwin()` メソッドを呼び出すことで、デジタル ツインの詳細にアクセスすることができます。
 
 ```csharp
 object result = await client.GetDigitalTwin(id);
 ```
+この呼び出しでは、ツイン データが JSON 文字列として返されます。 これを使用してツインの詳細を表示する方法の例を次に示します。
 
-この呼び出しでは、ツイン データが JSON 文字列として返されます。 
-
-`GetDigitalTwin` を使用してツインを取得すると、少なくとも 1 回は設定されたプロパティだけが返されます。
+```csharp
+Response<string> res = client.GetDigitalTwin("myRoomId");
+twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
+foreach (string prop in twin.CustomProperties.Keys)
+{
+  if (twin.CustomProperties.TryGetValue(prop, out object value))
+  Console.WriteLine($"Property '{prop}': {value}");
+}
+```
+`GetDigitalTwin()` メソッドを使用してツインを取得すると、少なくとも 1 回は設定されたプロパティだけが返されます。
 
 >[!TIP]
 >ツインの `displayName` はモデル メタデータの一部であるため、ツイン インスタンスのデータを取得するときには表示されません。 この値を表示するには、[モデルから取得する](how-to-manage-model.md#retrieve-models)ことができます。
 
-1 つの API 呼び出しを使用して複数のツインを取得するには、クエリ API の例を、[*ツイン グラフにクエリを実行する*](how-to-query-graph.md)方法に関する記事を参照してください。
+1 つの API 呼び出しを使用して複数のツインを取得するには、クエリ API の例を、 [*ツイン グラフにクエリを実行する*](how-to-query-graph.md)方法に関する記事を参照してください。
 
-*Moon* を定義する次のモデル ([Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL) で記述) について考えてみましょう。
+*Moon* を定義する次のモデル ( [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL) で記述) について考えてみましょう。
 
 ```json
 {
-    "@id": " dtmi:com:contoso:Moon;1",
+    "@id": "dtmi:example:Moon;1",
     "@type": "Interface",
     "@context": "dtmi:dtdl:context;2",
     "contents": [
@@ -120,8 +133,7 @@ object result = await client.GetDigitalTwin(id);
     ]
 }
 ```
-
-*Moon* 型ツインで `object result = await client.DigitalTwins.GetByIdAsync("my-moon");` を呼び出すと、結果は次のようになります。
+*Moon* 型ツインで `object result = await client.GetDigitalTwinAsync("my-moon");` を呼び出すと、結果は次のようになります。
 
 ```json
 {
@@ -130,7 +142,7 @@ object result = await client.GetDigitalTwin(id);
   "radius": 1737.1,
   "mass": 0.0734,
   "$metadata": {
-    "$model": "dtmi:com:contoso:Moon;1",
+    "$model": "dtmi:example:Moon;1",
     "radius": {
       "desiredValue": 1737.1,
       "desiredVersion": 5,
@@ -162,7 +174,7 @@ object result = await client.GetDigitalTwin(id);
 SDK に含まれているシリアル化ヘルパー クラスの `BasicDigitalTwin` を使用することもできます。この場合、ツインのコア メタデータとプロパティが解析済みの形で返されます。 たとえば次のようになります。
 
 ```csharp
-Response<string> res = client.GetDigitalTwin(twin_id);
+Response<string> res = client.GetDigitalTwin(twin_Id);
 BasicDigitalTwin twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
 Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
 foreach (string prop in twin.CustomProperties.Keys)
@@ -172,11 +184,11 @@ foreach (string prop in twin.CustomProperties.Keys)
 }
 ```
 
-シリアル化ヘルパー クラスの詳細については、"[*Azure Digital Twins の API および SDK を使用する方法*](how-to-use-apis-sdks.md)" に関するページで参照してください。
+シリアル化ヘルパー クラスの詳細については、" [*Azure Digital Twins の API および SDK を使用する方法*](how-to-use-apis-sdks.md)" に関するページで参照してください。
 
 ## <a name="update-a-digital-twin"></a>デジタル ツインを更新する
 
-デジタル ツインのプロパティを更新するには、置き換える情報を [JSON Patch](http://jsonpatch.com/) 形式で記述します。 これにより、一度に複数のプロパティを置き換えることができます。 次に、その JSON Patch ドキュメントを `Update` メソッドに渡します。
+デジタル ツインのプロパティを更新するには、置き換える情報を [JSON Patch](http://jsonpatch.com/) 形式で記述します。 これにより、一度に複数のプロパティを置き換えることができます。 次に、その JSON Patch ドキュメントを `UpdateDigitalTwin()` メソッドに渡します。
 
 ```csharp
 await client.UpdateDigitalTwin(id, patch);
@@ -203,7 +215,6 @@ JSON Patch コードの例を次に示します。 このドキュメントで�
   }
 ]
 ```
-
 パッチは手動で作成することも、[SDK](how-to-use-apis-sdks.md) のシリアル化ヘルパー クラスを使用して作成することもできます。 それぞれの例を以下に示します。
 
 #### <a name="create-patches-manually"></a>パッチを手動で作成する
@@ -216,7 +227,10 @@ twinData.Add(new Dictionary<string, object>() {
     { "value", 25.0}
 });
 
-await client.UpdateDigitalTwinAsync(twinId, JsonConvert.SerializeObject(twinData));
+await client.UpdateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize(twinData));
+Console.WriteLine("Updated twin properties");
+FetchAndPrintTwin(twin_Id, client);
+}
 ```
 
 #### <a name="create-patches-using-the-helper-class"></a>ヘルパー クラスを使用してパッチを作成する
@@ -224,14 +238,14 @@ await client.UpdateDigitalTwinAsync(twinId, JsonConvert.SerializeObject(twinData
 ```csharp
 UpdateOperationsUtility uou = new UpdateOperationsUtility();
 uou.AppendAddOp("/Temperature", 25.0);
-await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
+await client.UpdateDigitalTwinAsync(twin_Id, uou.Serialize());
 ```
 
 ### <a name="update-properties-in-digital-twin-components"></a>デジタル ツイン コンポーネントのプロパティを更新する
 
 モデルには、他のモデルで構成できるコンポーネントが含まれている場合があることに注意してください。 
 
-デジタル ツインのコンポーネントのプロパティにパッチを適用するには、JSON Patch で path 構文を使用します。
+デジタル ツインのコンポーネントのプロパティにパッチを適用するには、JSON Patch で path 構文を使用することができます。
 
 ```json
 [
@@ -245,7 +259,7 @@ await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
 
 ### <a name="update-a-digital-twins-model"></a>デジタル ツインのモデルを更新する
 
-`Update` 関数を使用して、デジタル ツインを別のモデルに移行することもできます。 
+`UpdateDigitalTwin()` 関数を使用して、デジタル ツインを別のモデルに移行することもできます。 
 
 たとえば、デジタル ツインのメタデータの `$model` フィールドを置き換える、次の JSON Patch ドキュメントについて考えてみましょう。
 
@@ -254,7 +268,7 @@ await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
   {
     "op": "replace",
     "path": "/$metadata/$model",
-    "value": "dtmi:com:contoso:foo;1"
+    "value": "dtmi:example:foo;1"
   }
 ]
 ```
@@ -273,7 +287,7 @@ await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
   {
     "op": "replace",
     "path": "$metadata.$model",
-    "value": "dtmi:com:contoso:foo_new"
+    "value": "dtmi:example:foo_new"
   },
   {
     "op": "add",
@@ -285,7 +299,7 @@ await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
 
 ### <a name="handle-conflicting-update-calls"></a>競合する更新呼び出しを処理する
 
-Azure Digital Twins では、すべての受信要求が確実に 1 つずつ処理されます。 つまり、複数の関数が同時にツイン上の同じプロパティを更新しようとする場合でも、競合を処理するための明示的なロック コードを記述する**必要はありません**。
+Azure Digital Twins では、すべての受信要求が確実に 1 つずつ処理されます。 つまり、複数の関数が同時にツイン上の同じプロパティを更新しようとする場合でも、競合を処理するための明示的なロック コードを記述する **必要はありません** 。
 
 この動作はツインごとに行われます。 
 
@@ -298,9 +312,9 @@ Azure Digital Twins では、すべての受信要求が確実に 1 つずつ処
 
 ## <a name="delete-a-digital-twin"></a>デジタル ツインを削除する
 
-`DeleteDigitalTwin(ID)` を使用してツインを削除できます。 ただし、ツインを削除できるのは、ツインにリレーションシップがない場合だけです。 最初にすべてのリレーションシップを削除する必要があります。 
+`DeleteDigitalTwin()` メソッドを使用してツインを削除することができます。 ただし、ツインを削除できるのは、ツインにリレーションシップがない場合だけです。 そのため、最初にツインの受信と送信のリレーションシップを削除します。
 
-このコードの例を次に示します。
+ツインとそのリレーションシップを削除するコードの例を次に示します。
 
 ```csharp
 static async Task DeleteTwin(string id)
@@ -344,7 +358,7 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
     try
     {
-        // GetRelationshipssAsync will throw an error if a problem occurs
+        // GetRelationshipsAsync will throw an error if a problem occurs
         AsyncPageable<IncomingRelationship> incomingRels = client.GetIncomingRelationshipsAsync(dtId);
 
         await foreach (IncomingRelationship incomingRel in incomingRels)
@@ -359,20 +373,199 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
     }
 }
 ```
-
 ### <a name="delete-all-digital-twins"></a>すべてのデジタル ツインを削除する
 
-一度にすべてのツインを削除する方法の例については、"[*サンプル クライアント アプリを使用した基本事項の確認に関するチュートリアル*](tutorial-command-line-app.md)" で再利用できます。 *CommandLoop.cs* ファイルでは、`CommandDeleteAllTwins` 関数でこれを実行します。
+一度にすべてのツインを削除する方法の例については、「[_チュートリアル: サンプル クライアント アプリを使用して基本事項を確認するチュートリアル*](tutorial-command-line-app.md)」を参照してください。 *CommandLoop.cs* ファイルでは、`CommandDeleteAllTwins()` 関数でこれを実行します。
+
+## <a name="manage-twins-using-runnable-code-sample"></a>実行可能なコード サンプルを使用してツインを管理する
+
+次の実行可能なコード サンプルを使用してツインを作成し、その詳細を更新して、ツインを削除することができます。 
+
+### <a name="set-up-the-runnable-sample"></a>実行可能なサンプルを設定する
+
+このスニペットには、 [Room.json](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) モデル定義 (「 [*チュートリアル: サンプル クライアント アプリを使用して Azure Digital Twins を試す*](tutorial-command-line-app.md)」が使用されています。 [こちら](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)のリンクを使用してファイルに直接移動するか、完全なエンドツーエンドのサンプル プロジェクトの一部としてダウンロードすることができます。
+
+このサンプルを実行する前に、以下を実行します。
+1. モデル ファイルをダウンロードしてプロジェクトに配置し、以下のコードの `<path-to>` プレースホルダーを置き換えて、プログラムに検索場所を指示します。
+2. プレースホルダー `<your-instance-hostname>` を Azure Digital Twins インスタンスのホスト名に置き換えます。
+3. 次のパッケージをプロジェクトに追加します。
+    ```cmd/sh
+    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
+    dotnet add package Azure.identity
+    ```
+
+サンプルを直接実行する場合は、ローカルの資格情報も設定する必要があります。 次のセクションでは、これについて説明します。
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
+
+### <a name="run-the-sample"></a>サンプルを実行する
+
+上記の手順を完了すると、次のサンプル コードを直接実行できます。
+
+```csharp
+using System;
+using Azure.DigitalTwins.Core;
+using Azure.Identity;
+using System.Threading.Tasks;
+using System.IO;
+using System.Collections.Generic;
+using Azure;
+using Azure.DigitalTwins.Core.Serialization;
+using System.Text.Json;
+
+namespace minimal
+{
+    class Program
+    {
+
+        public static async Task Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+
+            //Create the Azure Digital Twins client for API calls
+            string adtInstanceUrl = "https://<your-instance-hostname>";
+            var credentials = new DefaultAzureCredential();
+            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+            Console.WriteLine($"Service client created – ready to go");
+            Console.WriteLine();
+
+            //Upload models
+            Console.WriteLine($"Upload a model");
+            Console.WriteLine();
+            string dtdl = File.ReadAllText("<path-to>/Room.json");
+            var typeList = new List<string>();
+            typeList.Add(dtdl);
+            // Upload the model to the service
+            await client.CreateModelsAsync(typeList);
+
+            //Create new digital twin
+            BasicDigitalTwin twin = new BasicDigitalTwin();
+            string twin_Id = "myRoomId";
+            twin.Metadata = new DigitalTwinMetadata();
+            twin.Metadata.ModelId = "dtmi:example:Room;1";
+            // Initialize properties
+            Dictionary<string, object> props = new Dictionary<string, object>();
+            props.Add("Temperature", 35.0);
+            props.Add("Humidity", 55.0);
+            twin.CustomProperties = props;
+            await client.CreateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+            Console.WriteLine("Twin created successfully");
+            Console.WriteLine();
+
+            //Print twin
+            Console.WriteLine("--- Printing twin details:");
+            twin = FetchAndPrintTwin(twin_Id, client);
+            Console.WriteLine("--------");
+            Console.WriteLine();
+
+            //Update twin data
+            List<object> twinData = new List<object>();
+            twinData.Add(new Dictionary<string, object>() 
+            {
+                { "op", "add"},
+                { "path", "/Temperature"},
+                { "value", 25.0}
+            });
+            await client.UpdateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize(twinData));
+            Console.WriteLine("Twin properties updated");
+            Console.WriteLine();
+
+            //Print twin again
+            Console.WriteLine("--- Printing twin details (after update):");
+            FetchAndPrintTwin(twin_Id, client);
+            Console.WriteLine("--------");
+            Console.WriteLine();
+
+            //Delete twin
+            await DeleteTwin(client, twin_Id);
+        }
+
+        private static BasicDigitalTwin FetchAndPrintTwin(string twin_Id, DigitalTwinsClient client)
+        {
+            BasicDigitalTwin twin;
+            Response<string> res = client.GetDigitalTwin(twin_Id);
+            twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+            Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
+            foreach (string prop in twin.CustomProperties.Keys)
+            {
+                if (twin.CustomProperties.TryGetValue(prop, out object value))
+                    Console.WriteLine($"Property '{prop}': {value}");
+            }
+
+            return twin;
+        }
+        private static async Task DeleteTwin(DigitalTwinsClient client, string id)
+        {
+            await FindAndDeleteOutgoingRelationshipsAsync(client, id);
+            await FindAndDeleteIncomingRelationshipsAsync(client, id);
+            try
+            {
+                await client.DeleteDigitalTwinAsync(id);
+                Console.WriteLine("Twin deleted successfully");
+            }
+            catch (RequestFailedException exc)
+            {
+                Console.WriteLine($"*** Error:{exc.Message}");
+            }
+        }
+
+        private static async Task FindAndDeleteOutgoingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+        {
+            // Find the relationships for the twin
+
+            try
+            {
+                // GetRelationshipsAsync will throw an error if a problem occurs
+                AsyncPageable<string> relsJson = client.GetRelationshipsAsync(dtId);
+
+                await foreach (string relJson in relsJson)
+                {
+                    var rel = System.Text.Json.JsonSerializer.Deserialize<BasicRelationship>(relJson);
+                    await client.DeleteRelationshipAsync(dtId, rel.Id).ConfigureAwait(false);
+                    Console.WriteLine($"Deleted relationship {rel.Id} from {dtId}");
+                }
+            }
+            catch (RequestFailedException ex)
+            {
+                Console.WriteLine($"**_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting relationships for {dtId} due to {ex.Message}");
+            }
+        }
+
+       private static async Task FindAndDeleteIncomingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+        {
+            // Find the relationships for the twin
+
+            try
+            {
+                // GetRelationshipsAsync will throw an error if a problem occurs
+                AsyncPageable<IncomingRelationship> incomingRels = client.GetIncomingRelationshipsAsync(dtId);
+
+                await foreach (IncomingRelationship incomingRel in incomingRels)
+                {
+                    await client.DeleteRelationshipAsync(incomingRel.SourceId, incomingRel.RelationshipId).ConfigureAwait(false);
+                    Console.WriteLine($"Deleted incoming relationship {incomingRel.RelationshipId} from {dtId}");
+                }
+            }
+            catch (RequestFailedException ex)
+            {
+                Console.WriteLine($"_*_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting incoming relationships for {dtId} due to {ex.Message}");
+            }
+        }
+
+    }
+}
+
+```
+上記のプログラムのコンソール出力は次のようになります。 
+
+:::image type="content" source="./media/how-to-manage-twin/console-output-manage-twins.png" alt-text="ツインが作成、更新、削除されたことを示すコンソール出力" lightbox="./media/how-to-manage-twin/console-output-manage-twins.png":::
 
 ## <a name="manage-twins-with-cli"></a>CLI を使用してツインを管理する
 
-ツインは、Azure Digital Twins CLI を使用して管理することもできます。 コマンドについては、"[*Azure Digital Twins CLI を使用する方法*](how-to-use-cli.md)" に関するページを参照してください。
-
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
+ツインは、Azure Digital Twins CLI を使用して管理することもできます。 コマンドについては、[_「Azure Digital Twins CLI を使用する」方法*](how-to-use-cli.md)を参照してください。
 
 ## <a name="view-all-digital-twins"></a>すべてのデジタル ツインを表示する
 
-インスタンス内のすべてのデジタル ツインを表示するには、[クエリ](how-to-query-graph.md)を使用します。 クエリは、[Query API](how-to-use-apis-sdks.md) または [CLI コマンド](how-to-use-cli.md)を使用して実行できます。
+インスタンス内のすべてのデジタル ツインを表示するには、[クエリ](how-to-query-graph.md)を使用します。 クエリは、[Query API](/rest/api/digital-twins/dataplane/query) または [CLI コマンド](how-to-use-cli.md)を使用して実行できます。
 
 次に示すのは、インスタンス内のすべてのデジタル ツインの一覧を返す基本的なクエリの本文です。
 

@@ -1,25 +1,28 @@
 ---
-title: Azure Monitor でのパフォーマンス カウンターの収集と分析 | Microsoft Docs
+title: Azure Monitor で Log Analytics エージェントを使用して Windows と Linux のパフォーマンス データ ソースを収集する
 description: Azure Monitor では、Windows および Linux のエージェントのパフォーマンスを分析するためにパフォーマンス カウンターが収集されます。  この記事では、Windows および Linux の両方のエージェントでのパフォーマンス カウンターの収集の構成方法、ワークスペースに格納されたそれらの詳細、および Azure Portal でのそれらの分析方法について説明します。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: bf744e4edc9e631ce1efd04688611fb78fb6fce2
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.date: 10/21/2020
+ms.openlocfilehash: 71fc3f457338796289c2f6ac54f3bc713a91cc29
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131192"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461364"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Monitor での Windows および Linux のパフォーマンス データ ソース
-Windows および Linux のパフォーマンス カウンターから、ハードウェア コンポーネント、オペレーティング システム、およびアプリケーションのパフォーマンスに関する情報が得られます。  Azure Monitor は、長期的な分析とレポートのためにパフォーマンス データを集計することに加えて、ほぼリアルタイム (NRT) 分析のために頻繁な間隔でパフォーマンス カウンターを収集することができます。
+# <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Log Analytics エージェントを使用して Windows と Linux のパフォーマンス データ ソースを収集する
+Windows および Linux のパフォーマンス カウンターから、ハードウェア コンポーネント、オペレーティング システム、およびアプリケーションのパフォーマンスに関する情報が得られます。  Azure Monitor では、長期的な分析とレポートのためにパフォーマンス データを集計することに加えて、ほぼリアルタイム (NRT) 分析のために Log Analytics エージェントから頻繁な間隔でパフォーマンス カウンターを収集できます。
+
+> [!IMPORTANT]
+> この記事では、Azure Monitor で使用されるエージェントの 1 つである [Log Analytics エージェント](log-analytics-agent.md)を使用してパフォーマンス データを収集する方法について説明します。 他のエージェントは異なるデータを収集し、異なる方法で構成されます。 使用可能なエージェントとそれらが収集できるデータの一覧については、「[Azure Monitor エージェントの概要](agents-overview.md)」を参照してください。
 
 ![パフォーマンス カウンター](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>パフォーマンス カウンターの構成
-パフォーマンス カウンターは、[[詳細設定] の [データ] メニュー](agent-data-sources.md#configuring-data-sources)から構成します。
+Log Analytics ワークスペースで [[詳細設定] の [データ] メニュー](agent-data-sources.md#configuring-data-sources)からパフォーマンス カウンターを構成します。
 
 新しいワークスペースの Windows または Linux のパフォーマンス カウンターを初めて構成する場合、いくつかの一般的なカウンターをすばやく作成するためのオプションが表示されます。  それぞれのオプションの横には、チェック ボックスが表示されます。  最初に作成するカウンターがオンになっていることを確認し、 **[Add the selected performance counters (選択されたパフォーマンス カウンターを追加する)]** をクリックします。
 
@@ -78,8 +81,8 @@ Azure Portal を使用して Linux のパフォーマンス カウンターを�
 | パラメーター | 説明 |
 |:--|:--|
 | object\_name | コレクションのオブジェクト名。 |
-| instance\_regex |  収集するインスタンスを定義する*正規表現*。 すべてのインスタンスは、 `.*` という値で指定します。 \_Total インスタンスのみを対象にプロセッサ メトリックを収集するには、`_Total` を指定します。 crond または sshd のインスタンスのみを対象にプロセス メトリックを収集するには、「 `(crond\|sshd)`」と指定します。 |
-| counter\_name\_regex | 収集する (オブジェクトの) カウンターを定義する*正規表現*。 オブジェクトのすべてのカウンターを収集するには、「 `.*`」と指定します。 メモリ オブジェクトを対象にスワップ領域カウンターを収集するには、たとえば `.+Swap.+` のように指定できます。 |
+| instance\_regex |  収集するインスタンスを定義する *正規表現* 。 すべてのインスタンスは、 `.*` という値で指定します。 \_Total インスタンスのみを対象にプロセッサ メトリックを収集するには、`_Total` を指定します。 crond または sshd のインスタンスのみを対象にプロセス メトリックを収集するには、「 `(crond\|sshd)`」と指定します。 |
+| counter\_name\_regex | 収集する (オブジェクトの) カウンターを定義する *正規表現* 。 オブジェクトのすべてのカウンターを収集するには、「 `.*`」と指定します。 メモリ オブジェクトを対象にスワップ領域カウンターを収集するには、たとえば `.+Swap.+` のように指定できます。 |
 | interval | オブジェクトのカウンターを収集する頻度。 |
 
 

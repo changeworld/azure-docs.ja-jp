@@ -1,7 +1,7 @@
 ---
 title: ポータルでワークスペースを作成する
 titleSuffix: Azure Machine Learning
-description: Azure portal で Azure Machine Learning ワークスペースを作成、表示、削除する方法について説明します。
+description: Azure portal または Python 用 SDK を使用して、Azure Machine Learning ワークスペースを作成、表示、削除する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,21 +10,106 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: d0b5d3678c3d9c7e55eede13c630510df89d5128
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 9abfbe03a4192411a3790bb6d6e488d674c13109
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045569"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897162"
 ---
-# <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure portal 内で Azure Machine Learning ワークスペースを作成および管理する
+# <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning ワークスペースを作成して管理する 
 
+この記事では、Azure portal または [Python 用 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) を使用して、 [Azure Machine Learning](overview-what-is-azure-ml.md) 用の [**Azure Machine Learning ワークスペース**](concept-workspace.md)を作成、表示、および削除します。
 
-この記事では、[Azure Machine Learning ](overview-what-is-azure-ml.md)用の Azure portal で [**Azure Machine Learning ワークスペース**](concept-workspace.md)を作成、表示、削除します。  ワークスペースを初めて利用する際にはポータルが最も手軽ですが、ニーズに変化が生じたり自動化の要件が高まったりした場合は、[CLI](reference-azure-machine-learning-cli.md)、[Python コード](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)、または [VS Code 拡張機能](tutorial-setup-vscode-extension.md)を使用して、ワークスペースを作成したり、削除したりすることもできます。
+ニーズに変化が生じたり自動化の要件が増えたりしたときに、[CLI](reference-azure-machine-learning-cli.md) または [VS Code 拡張機能](tutorial-setup-vscode-extension.md)を使用して、ワークスペースの作成と削除を行うこともできます。
+
+## <a name="prerequisites"></a>前提条件
+
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+* Python SDK を使用する場合は、[その SDK をインストール](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)します。
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 
-ワークスペースを作成するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+# <a name="python"></a>[Python](#tab/python)
+
+* **既定の仕様。** 既定では、依存するリソースとリソース グループが自動的に作成されます。 このコードでは、`myworkspace` という名前のワークスペースと `myresourcegroup` という名前のリソース グループが `eastus2` に作成されます。
+    
+    ```python
+    from azureml.core import Workspace
+    
+    ws = Workspace.create(name='myworkspace',
+                   subscription_id='<azure-subscription-id>',
+                   resource_group='myresourcegroup',
+                   create_resource_group=True,
+                   location='eastus2'
+                   )
+    ```
+    ワークスペースで使用する既存の Azure リソース グループがある場合は、`create_resource_group` を False に設定します。
+
+* <a name="create-multi-tenant"></a>**複数のテナント。**  複数のアカウントがある場合は、使用する Azure Active Directory のテナント ID を追加します。  [Azure portal](https://portal.azure.com) で、 **[Azure Active Directory]、[外部 ID]** からテナント ID を見つけます。
+
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(tenant_id="my-tenant-id")
+    ws = Workspace.create(name='myworkspace',
+                subscription_id='<azure-subscription-id>',
+                resource_group='myresourcegroup',
+                create_resource_group=True,
+                location='eastus2',
+                auth=interactive_auth
+                )
+    ```
+
+* **[ソブリン クラウド](reference-machine-learning-cloud-parity.md)** 。 ソブリン クラウドで作業している場合は、Azure に対して認証するための追加のコードが必要になります。
+
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(cloud="<cloud name>") # for example, cloud="AzureUSGovernment"
+    ws = Workspace.create(name='myworkspace',
+                subscription_id='<azure-subscription-id>',
+                resource_group='myresourcegroup',
+                create_resource_group=True,
+                location='eastus2',
+                auth=interactive_auth
+                )
+    ```
+
+* **既存の Azure リソースを使用する** 。  既存の Azure リソースを Azure リソース ID 形式で使用するワークスペースを作成することもできます。 Azure portal または SDK を使用して、特定の Azure リソース ID を見つけます。 この例では、リソース グループ、ストレージ アカウント、キー コンテナー、App Insights、およびコンテナー レジストリが既に存在していることを前提としています。
+
+   ```python
+   import os
+   from azureml.core import Workspace
+   from azureml.core.authentication import ServicePrincipalAuthentication
+
+   service_principal_password = os.environ.get("AZUREML_PASSWORD")
+
+   service_principal_auth = ServicePrincipalAuthentication(
+      tenant_id="<tenant-id>",
+      username="<application-id>",
+      password=service_principal_password)
+
+                        auth=service_principal_auth,
+                             subscription_id='<azure-subscription-id>',
+                             resource_group='myresourcegroup',
+                             create_resource_group=False,
+                             location='eastus2',
+                             friendly_name='My workspace',
+                             storage_account='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.storage/storageaccounts/mystorageaccount',
+                             key_vault='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.keyvault/vaults/mykeyvault',
+                             app_insights='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.insights/components/myappinsights',
+                             container_registry='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.containerregistry/registries/mycontainerregistry',
+                             exist_ok=False)
+   ```
+
+詳細については、[ワークスペース SDK リファレンス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true)を参照してください。
+
+サブスクリプションへのアクセスで問題が発生した場合は、[Azure Machine Learning のリソースとワークフローのための認証の設定](how-to-setup-authentication.md)に関する記事と「[Azure Machine Learning での認証](https://aka.ms/aml-notebook-auth)」ノートブックを参照してください。
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. ご利用の Azure サブスクリプションの資格情報を使って、[Azure portal](https://portal.azure.com/) にサインインします。 
 
@@ -32,7 +117,7 @@ ms.locfileid: "92045569"
 
       ![新しいリソースを作成](./media/how-to-manage-workspace/create-workspace.gif)
 
-1. 検索バーを使用して、**Machine Learning** を見つけます。
+1. 検索バーを使用して、 **Machine Learning** を見つけます。
 
 1. **[Machine Learning]** を選択します。
 
@@ -42,10 +127,12 @@ ms.locfileid: "92045569"
 
    フィールド|説明 
    ---|---
-   ワークスペース名 |ワークスペースを識別する一意の名前を入力します。 この例では、**docs-ws** を使用します。 名前は、リソース グループ全体で一意である必要があります。 覚えやすく、他のユーザーが作成したワークスペースと区別しやすい名前を使用します。 ワークスペース名では、大文字と小文字は区別されません。
+   ワークスペース名 |ワークスペースを識別する一意の名前を入力します。 この例では、 **docs-ws** を使用します。 名前は、リソース グループ全体で一意である必要があります。 覚えやすく、他のユーザーが作成したワークスペースと区別しやすい名前を使用します。 ワークスペース名では、大文字と小文字は区別されません。
    サブスクリプション |使用する Azure サブスクリプションを選択します。
-   Resource group | サブスクリプションの既存のリソース グループを使用するか、任意の名前を入力して新しいリソース グループを作成します。 リソース グループは、Azure ソリューションの関連するリソースを保持します。 この例では、**docs-aml** を使用します。 既存のリソース グループを使用するには、*共同作成者*または*所有者*のロールが必要です。  アクセスの詳細については、「[Azure Machine Learning ワークスペースへのアクセスの管理](how-to-assign-roles.md)」の記事をご覧ください。
+   Resource group | サブスクリプションの既存のリソース グループを使用するか、任意の名前を入力して新しいリソース グループを作成します。 リソース グループは、Azure ソリューションの関連するリソースを保持します。 この例では、 **docs-aml** を使用します。 既存のリソース グループを使用するには、 *共同作成者* または *所有者* のロールが必要です。  アクセスの詳細については、「[Azure Machine Learning ワークスペースへのアクセスの管理](how-to-assign-roles.md)」の記事をご覧ください。
    リージョン | ユーザーとデータ リソースに最も近い Azure リージョンを選択し、ワークスペースを作成します。
+
+    ![ワークスペースを構成する](./media/how-to-manage-workspace/create-workspace-form.png)
 
 1. ワークスペースの構成が完了したら、 **[確認および作成]** を選択します。 必要に応じて、[ネットワーク](#networking)に関するセクションと[詳細設定](#advanced)に関するセクションを使用し、ワークスペースに対してさらに多くの設定を行います。
 
@@ -57,80 +144,183 @@ ms.locfileid: "92045569"
    プロセスが完了すると、デプロイ成功メッセージが表示されます。 
  
  1. 新しいワークスペースを表示するには、 **[Go to resource]\(リソースに移動\)** を選択します。
+ 
+---
 
 ### <a name="networking"></a>ネットワーク  
 
 > [!IMPORTANT]  
-> お使いのワークスペースでのプライベート エンドポイントと仮想ネットワークの使用の詳細については、[ネットワークの分離とプライバシー](how-to-enable-virtual-network.md)に関する記事を参照してください。
-    
-1. 既定のネットワーク構成では、公衆インターネット上の__パブリック エンドポイント__を使用します。 作成した Azure Virtual Network にお使いのワークスペースへのアクセスを制限するには、代わりに __[接続方法]__ として __[プライベート エンドポイント]__ を選択し、 __[+ 追加]__ を使用してそのエンドポイントを構成します。 
-    
+> お使いのワークスペースでのプライベート エンドポイントと仮想ネットワークの使用の詳細については、[ネットワークの分離とプライバシー](how-to-network-security-overview.md)に関する記事を参照してください。
+
+
+# <a name="python"></a>[Python](#tab/python)
+
+Azure Machine Learning Python SDK には、[PrivateEndpointConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py&preserve-view=true) クラスが用意されています。これを [Workspace.create()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-&preserve-view=true) で使用すると、プライベート エンドポイントを使用してワークスペースを作成できます。 このクラスには、既存の仮想ネットワークが必要です。
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+1. 既定のネットワーク構成では、公衆インターネット上の __パブリック エンドポイント__ を使用します。 作成した Azure Virtual Network にお使いのワークスペースへのアクセスを制限するには、代わりに __[接続方法]__ として __[プライベート エンドポイント]__ (プレビュー) を選択し、 __[+ 追加]__ を使用してそのエンドポイントを構成します。   
+
    :::image type="content" source="media/how-to-manage-workspace/select-private-endpoint.png" alt-text="プライベート エンドポイントを選択する":::  
 
 1. __[プライベート エンドポイントの作成]__ フォームで、使用する場所、名前、仮想ネットワークを設定します。 そのエンドポイントをプライベート DNS ゾーンと共に使用する場合は、 __[プライベート DNS ゾーンと統合する]__ を選択し、 __[プライベート DNS ゾーン]__ フィールドを使用してそのゾーンを選択します。 __[OK]__ を選択してエンドポイントを作成します。   
 
-   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="プライベート エンドポイントを選択する":::   
+   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="プライベート エンドポイントを作成する":::   
 
-1. ネットワークの構成が完了したら、 __[確認および作成]__ を選択するか、オプションの __[詳細]__ 構成に進みます。 
+1. ネットワークの構成が完了したら、 __[確認および作成]__ を選択するか、オプションの __[詳細]__ 構成に進みます。
 
-    > [!WARNING]    
-    > プライベート エンドポイントを作成すると、__privatelink.api.azureml.ms__ という名前の新しいプライベート DNS ゾーンが作成されます。 これには、仮想ネットワークへのリンクが含まれます。 プライベート エンドポイントがあるワークスペースを同じリソース グループ内に複数作成した場合、最初のプライベート エンドポイントの仮想ネットワークしか DNS ゾーンに追加されない場合があります。 追加のワークスペースまたはプライベート エンドポイントで使用される仮想ネットワークを追加するには、次の手順に従います。 
-    >   
-    > 1. [Azure portal](https://portal.azure.com) で、そのワークスペースが含まれているリソース グループを選択します。 次いで __privatelink.api.azureml.ms__ という名前のプライベート DNS ゾーンのリソースを選択します。    
-    > 2. __[設定]__ で、 __[仮想ネットワーク リンク]__ を選択します。 
-    > 3. __[追加]__ を選択します。 __[仮想ネットワーク リンクの追加]__ ページで一意の __[リンク名]__ を指定し、次いで追加する__仮想ネットワーク__を選択します。 __[OK]__ を選択して、ネットワーク リンクを追加します。    
-    >   
-    > 詳細については、「[Azure プライベート エンドポイントの DNS 構成](/azure/private-link/private-endpoint-dns)」をご覧ください。   
+---
+
+> [!IMPORTANT]  
+> Azure Machine Learning ワークスペースでのプライベート エンドポイントの使用は、現在パブリック プレビュー段階です。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。     
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+### <a name="multiple-workspaces-with-private-endpoint"></a>プライベート エンドポイントを使用する複数のワークスペース
+
+プライベート エンドポイントを作成すると、 __privatelink.api.azureml.ms__ という名前の新しいプライベート DNS ゾーンが作成されます。 これには、仮想ネットワークへのリンクが含まれます。 プライベート エンドポイントがあるワークスペースを同じリソース グループ内に複数作成した場合、最初のプライベート エンドポイントの仮想ネットワークしか DNS ゾーンに追加されない場合があります。 追加のワークスペースまたはプライベート エンドポイントで使用される仮想ネットワークを追加するには、次の手順に従います。
+
+1. [Azure portal](https://portal.azure.com) で、そのワークスペースが含まれているリソース グループを選択します。 次に、 __privatelink.api.azureml.ms__ という名前のプライベート DNS ゾーン リソースを選択します。
+2. __[設定]__ で、 __[仮想ネットワーク リンク]__ を選択します。
+3. __[追加]__ を選択します。 __[仮想ネットワーク リンクの追加]__ ページで一意の __[リンク名]__ を指定し、次いで追加する __仮想ネットワーク__ を選択します。 __[OK]__ を選択して、ネットワーク リンクを追加します。
+
+詳細については、「[Azure プライベート エンドポイントの DNS 構成](/azure/private-link/private-endpoint-dns)」をご覧ください。
 
 ### <a name="vulnerability-scanning"></a>脆弱性のスキャン
 
 Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を実現します。 Azure Security Center に対して、リソースのスキャンと推奨事項の順守を許可する必要があります。 詳細については、「[Security Center による Azure Container Registry のイメージ スキャン](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)」および「[Azure Kubernetes Service と Security Center の統合](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)」を参照してください。
 
-### <a name="advanced"></a>詳細設定    
+### <a name="advanced"></a>詳細設定
 
-既定では、ワークスペースのメトリックとメタデータは、Microsoft が管理する Azure Cosmos DB インスタンスに格納されます。 このデータは Microsoft のマネージド キーで暗号化されます。  
+既定では、ワークスペースのメトリックとメタデータは、Microsoft が管理する Azure Cosmos DB インスタンスに格納されます。 このデータは Microsoft のマネージド キーで暗号化されます。
 
-Microsoft がお使いのワークスペースで収集するデータを制限するには、 __[High business impact workspace]__ \(業務への影響が大きいワークスペース\) を選択します。 この設定の詳細については、「[保存時の暗号化](concept-enterprise-security.md#encryption-at-rest)」を参照してください。
+Microsoft がお使いのワークスペースで収集するデータを制限するには、ポータルで __[High business impact workspace]\(業務への影響が大きいワークスペース\)__ を選択するか、Python で `hbi_workspace=true ` を設定します。 この設定の詳細については、「[保存時の暗号化](concept-enterprise-security.md#encryption-at-rest)」を参照してください。
 
 > [!IMPORTANT]  
 > High Business Impact の選択は、ワークスペースの作成時にのみ実行できます。 ワークスペースの作成後にこの設定を変更することはできません。   
-__Enterprise__ バージョンの Azure Machine Learning を使用している場合は、代わりに自分独自のキーを使用できます。 これを行うと、Azure サブスクリプションにメトリックとメタデータを格納する Azure Cosmos DB インスタンスが作成されます。 自分で用意したキーを使用するには、次の手順を実行します。    
+
+#### <a name="use-your-own-key"></a>独自のキーを使用する
+
+データ暗号化用の独自のキーを用意できます。 これを行うと、Azure サブスクリプションにメトリックとメタデータを格納する Azure Cosmos DB インスタンスが作成されます。
+
+[!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
+
+独自のキーを用意するには、次の手順を実行します。
 
 > [!IMPORTANT]  
 > これらの手順を実行する前に、まず次のアクションを実行する必要があります。   
->   
-> 1. サブスクリプションに対する共同作成者のアクセス許可を使用して、__Machine Learning アプリ__ (ID とアクセスの管理) を承認します。  
-> 1. [カスタマー マネージド キーの構成](/azure/cosmos-db/how-to-setup-cmk)に関する記事の手順に従って以下を行います。   
->     * Azure Cosmos DB プロバイダーを登録する   
->     * Azure Key Vault を作成して構成する 
->     * キーを生成する  
+>
+> 1. サブスクリプションに対する共同作成者のアクセス許可を使用して、 __Machine Learning アプリ__ (ID とアクセスの管理) を承認します。  
+> 1. [カスタマー マネージド キーの構成](/azure/cosmos-db/how-to-setup-cmk)に関する記事の手順に従って以下を行います。
+>     * Azure Cosmos DB プロバイダーを登録する
+>     * Azure Key Vault を作成して構成する
+>     * キーを生成する
 >   
 >     Azure Cosmos DB インスタンスを手動で作成する必要はありません。ワークスペースの作成時に作成されます。 この Azure Cosmos DB インスタンスは、`<your-workspace-resource-name>_<GUID>` というパターンに基づく名前を使用して、別のリソース グループ内に作成されます。   
 >   
 > ワークスペースの作成後にこの設定を変更することはできません。 ワークスペースによって使用されている Azure Cosmos DB を削除する場合は、それを使用しているワークスペースも削除する必要があります。
 
-1. __[カスタマー マネージド キー]__ を選択し、 __[クリックしてキーを選択します]__ を選択します。   
+# <a name="python"></a>[Python](#tab/python)
 
-    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="プライベート エンドポイントを選択する":::。   
+`cmk_keyvault` と `resource_cmk_uri` を使用して、カスタマー マネージド キーを指定します。
 
-1. __[Azure Key Vault からのキーの選択]__ フォームから既存の Azure Key Vault、それに含まれているキー、およびそのキーのバージョンを選択します。 このキーは、Azure Cosmos DB に格納されているデータを暗号化するために使用されます。 最後に、 __[選択]__ ボタンをクリックして、このキーが使用されるようにします。 
+```python
+from azureml.core import Workspace
+   ws = Workspace.create(name='myworkspace',
+               subscription_id='<azure-subscription-id>',
+               resource_group='myresourcegroup',
+               create_resource_group=True,
+               location='eastus2'
+               cmk_keyvault='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.keyvault/vaults/<keyvault-name>', 
+               resource_cmk_uri='<key-identifier>'
+               )
 
-   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="プライベート エンドポイントを選択する":::
+```
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+1. __[カスタマー マネージド キー]__ を選択し、 __[クリックしてキーを選択します]__ を選択します。
+
+    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="カスタマー マネージド キー":::。
+
+1. __[Azure Key Vault からのキーの選択]__ フォームから既存の Azure Key Vault、それに含まれているキー、およびそのキーのバージョンを選択します。 このキーは、Azure Cosmos DB に格納されているデータを暗号化するために使用されます。 最後に、 __[選択]__ ボタンをクリックして、このキーが使用されるようにします。
+
+   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="キーを選択する":::
+
+---
 
 ### <a name="download-a-configuration-file"></a>構成ファイルをダウンロードする
 
-1. [コンピューティング インスタンス](tutorial-1st-experiment-sdk-setup.md#azure)を作成する場合は、この手順をスキップしてください。
+[コンピューティング インスタンス](tutorial-1st-experiment-sdk-setup.md#azure)を作成する場合は、この手順をスキップしてください。  このファイルのコピーは、コンピューティング インスタンスによって既に作成されています。
 
-1. このワークスペースを参照するローカル環境でコードを使用する場合は、ワークスペースの **[概要]** セクションから **[config. json をダウンロード]** を選択します。  
+# <a name="python"></a>[Python](#tab/python)
+
+このワークスペース (`ws`) を参照するローカル環境でコードを使用する場合は、構成ファイルを記述します。
+
+```python
+ws.write_config()
+```
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+このワークスペースを参照するローカル環境でコードを使用する場合は、ワークスペースの **[概要]** セクションから **[config. json をダウンロード]** を選択します。  
 
    ![config.json をダウンロードする](./media/how-to-manage-workspace/configure.png)
-   
-   このファイルは、Python スクリプトまたは Jupyter Notebook を含むディレクトリ構造内に置きます。 それは、同じディレクトリ内、 *.azureml* という名前のサブディレクトリ内、または親ディレクトリ内に置くことができます。 コンピューティング インスタンスを作成するとき、このファイルは VM 上の正しいディレクトリに自動的に追加されます。
+
+---
+
+このファイルは、Python スクリプトまたは Jupyter Notebook を含むディレクトリ構造内に置きます。 それは、同じディレクトリ内、 *.azureml* という名前のサブディレクトリ内、または親ディレクトリ内に置くことができます。 コンピューティング インスタンスを作成するとき、このファイルは VM 上の正しいディレクトリに自動的に追加されます。
+
+## <a name="connect-to-a-workspace"></a>ワークスペースに接続する
+
+Python コードで、ワークスペースに接続するワークスペース オブジェクトを作成します。  このコードにより、構成ファイルの内容が読み取られ、ワークスペースが検索されます。  まだ認証されていない場合は、サインインを求めるメッセージが表示されます。
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+```
+
+* <a name="connect-multi-tenant"></a>**複数のテナント。**  複数のアカウントがある場合は、使用する Azure Active Directory のテナント ID を追加します。  [Azure portal](https://portal.azure.com) で、 **[Azure Active Directory]、[外部 ID]** からテナント ID を見つけます。
+
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(tenant_id="my-tenant-id")
+    ws = Workspace.from_config(auth=interactive_auth)
+    ```
+
+* **[ソブリン クラウド](reference-machine-learning-cloud-parity.md)** 。 ソブリン クラウドで作業している場合は、Azure に対して認証するための追加のコードが必要になります。
+
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(cloud="<cloud name>") # for example, cloud="AzureUSGovernment"
+    ws = Workspace.from_config(auth=interactive_auth)
+    ```
+    
+サブスクリプションへのアクセスで問題が発生した場合は、[Azure Machine Learning のリソースとワークフローのための認証の設定](how-to-setup-authentication.md)に関する記事と「[Azure Machine Learning での認証](https://aka.ms/aml-notebook-auth)」ノートブックを参照してください。
+
 ## <a name="find-a-workspace"></a><a name="view"></a>ワークスペースの検索
+
+使用できるすべてのワークスペースの一覧を表示します。
+
+# <a name="python"></a>[Python](#tab/python)
+
+[Azure portal の [サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)で、サブスクリプションを見つけます。  ID をコピーして下のコードで使用して、そのサブスクリプションで使用可能なすべてのワークスペースを確認します。
+
+```python
+from azureml.core import Workspace
+
+Workspace.list('<subscription-id>')
+```
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-1. 上部の検索フィールドに「**Machine Learning**」と入力します。  
+1. 上部の検索フィールドに「 **Machine Learning** 」と入力します。  
 
 1. **[Machine Learning]** を選択します。
 
@@ -140,11 +330,30 @@ __Enterprise__ バージョンの Azure Machine Learning を使用している�
 
 1. ワークスペースを選択して、そのプロパティを表示します。
 
+---
+
+
 ## <a name="delete-a-workspace"></a>ワークスペースを削除する
+
+ワークスペースが不要になったら、削除します。  
+
+# <a name="python"></a>[Python](#tab/python)
+
+ワークスペースを削除する`ws`:
+
+```python
+ws.delete(delete_dependent_resources=False, no_wait=False)
+```
+
+既定のアクションでは、ワークスペースに関連付けられているリソース (コンテナー レジストリ、ストレージ アカウント、キー コンテナー、Application Insights) は削除されません。  これらのリソースも削除するには、`delete_dependent_resources` を True に設定します。
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 [Azure portal](https://portal.azure.com/) で、削除するワークスペースの上部にある **[削除]** を選択します。
 
-:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="プライベート エンドポイントを選択する":::
+:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="ワークスペースの削除":::
+
+---
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -167,9 +376,12 @@ Azure Machine Learning ワークスペースでは、一部の操作に対して
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
+## <a name="examples"></a>例
+
+ワークスペースの作成例:
+* Azure portal を使用して、[ワークスペースとコンピューティング インスタンスを作成する](tutorial-1st-experiment-sdk-setup.md)
+* Python SDK を使用して、[独自の環境内にワークスペースを作成する](tutorial-1st-experiment-sdk-setup-local.md)
+
 ## <a name="next-steps"></a>次のステップ
 
-ワークスペースを使用して、Azure Machine Learning でモデルをビルド、トレーニング、デプロイする方法については、完全版のチュートリアルをご利用ください。
-
-> [!div class="nextstepaction"]
-> [チュートリアル:モデルをトレーニングする](tutorial-train-models-with-aml.md)
+ワークスペースを作成したら、[モデルをトレーニングしてデプロイする](tutorial-train-models-with-aml.md)方法を確認します。

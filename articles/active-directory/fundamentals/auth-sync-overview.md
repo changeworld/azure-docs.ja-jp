@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory 認証と同期プロトコルの概要
-description: この認証パターンの実現に関するアーキテクチャ ガイダンス
+description: Azure AD とレガシ認証プロトコルの統合と同期パターンに関するアーキテクチャ ガイダンス
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,20 +13,20 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d881dc3fe3e3caa1058cf97834735910b0de1d9
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: ab63bc5bd2819a239741da525eebb2404a47bbf9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113998"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441200"
 ---
-# <a name="azure-active-directory-integrations-with-legacy-authentication-and-synchronization-protocols"></a>Azure Active Directory と、従来の認証および同期プロトコルの統合に関する概要
+# <a name="azure-active-directory-integrations-with-authentication-and-synchronization-protocols"></a>Azure Active Directory と認証および同期プロトコルの統合
 
 Microsoft Azure Active Directory (Azure AD) では、多くの認証と同期プロトコルと統合することができます。 認証統合を行うと、従来の認証方法を使うアプリケーションをほとんどまたはまったく変更せずに、Azure AD とそのセキュリティと管理の機能を使用できます。 同期統合を行うと、ユーザーとグループのデータを Azure AD に同期し、その後、ユーザー Azure AD 管理機能を同期できるようになります。 一部の同期パターンでは、自動プロビジョニングも有効にされます。
 
-## <a name="authentication-patterns"></a>認証パターン
+## <a name="legacy-authentication-protocols"></a>レガシ認証プロトコル
 
-次の表に、認証パターンとその機能を示します。 表示する認証パターンの名前を選択します
+次の表に、従来の認証プロトコルとの認証 Azure AD 統合とその機能を示します。 表示する認証プロトコルの名前を選択してください。
 
 * 詳細な説明
 
@@ -40,7 +40,7 @@ Microsoft Azure Active Directory (Azure AD) では、多くの認証と同期プ
 
  
 
-| 認証パターン| 認証| 承認| Multi-factor Authentication| 条件付きアクセス |
+| 認証プロトコル| 認証| 承認| Multi-factor Authentication| 条件付きアクセス |
 | - |- | - | - | - |
 | [ヘッダーベースの認証](auth-header-based.md)|![チェック マーク](./media/authentication-patterns/check.png)| ![チェック マーク](./media/authentication-patterns/check.png)| ![チェック マーク](./media/authentication-patterns/check.png)| ![チェック マーク](./media/authentication-patterns/check.png) |
 | [LDAP 認証](auth-ldap.md)| ![チェック マーク](./media/authentication-patterns/check.png)| | |  |
@@ -49,6 +49,7 @@ Microsoft Azure Active Directory (Azure AD) では、多くの認証と同期プ
 | [パスワード ベースの SSO 認証](auth-password-based-sso.md )| ![チェック マーク](./media/authentication-patterns/check.png)| ![チェック マーク](./media/authentication-patterns/check.png)| ![チェック マーク](./media/authentication-patterns/check.png)| ![チェック マーク](./media/authentication-patterns/check.png) |
 | [RADIUS 認証]( auth-radius.md)| ![チェック マーク](./media/authentication-patterns/check.png)| | ![チェック マーク](./media/authentication-patterns/check.png)| ![チェック マーク](./media/authentication-patterns/check.png) |
 | [リモート デスクトップ ゲートウェイ サービス](auth-remote-desktop-gateway.md)| ![チェック マーク](./media/authentication-patterns/check.png)| ![チェック マーク](./media/authentication-patterns/check.png)| ![チェック マーク](./media/authentication-patterns/check.png)| ![チェック マーク](./media/authentication-patterns/check.png) |
+| [Secure Shell (SSH)](auth-ssh.md) |  ![チェック マーク](./media/authentication-patterns/check.png)| | ![チェック マーク](./media/authentication-patterns/check.png)| ![チェック マーク](./media/authentication-patterns/check.png) |
 | [SAML 認証](auth-saml.md)| ![チェック マーク](./media/authentication-patterns/check.png)| ![チェック マーク](./media/authentication-patterns/check.png)| ![チェック マーク](./media/authentication-patterns/check.png)| ![チェック マーク](./media/authentication-patterns/check.png) |
 | [Windows 認証 - Kerberos 制約付き委任](auth-kcd.md)| ![チェック マーク](./media/authentication-patterns/check.png)| ![チェック マーク](./media/authentication-patterns/check.png)| ![チェック マーク](./media/authentication-patterns/check.png)| ![チェック マーク](./media/authentication-patterns/check.png) |
 
@@ -56,7 +57,7 @@ Microsoft Azure Active Directory (Azure AD) では、多くの認証と同期プ
  
 ## <a name="synchronization-patterns"></a>同期パターン
 
-次の表に、同期パターンとその機能を示します。 表示するパターンの名前を選択します
+次の表に、Azure AD 統合の同期パターンとその機能を示します。 表示するパターンの名前を選択します
 
 * 詳細な説明
 

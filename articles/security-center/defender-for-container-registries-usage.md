@@ -1,18 +1,18 @@
 ---
 title: コンテナー レジストリ用の Azure Defender を使用する方法
-description: コンテナー レジストリ用の Azure Defender を使用してレジストリ内のイメージをスキャンする方法について説明します
+description: コンテナー レジストリ用の Azure Defender を使用して、Linux でホストされたレジストリ内の Linux イメージをスキャンする方法について説明します
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 57e8b6f47c4166c4f8b9f5de0f3e03a7d757e100
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: b46c72730922a977dd754d8422d07db479a62b6c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342078"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370544"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>コンテナー レジストリ用の Azure Defender を使用してイメージの脆弱性をスキャンする
 
@@ -27,23 +27,22 @@ ms.locfileid: "92342078"
 |側面|詳細|
 |----|:----|
 |リリース状態:|一般提供 (GA)|
-|価格:|**コンテナー レジストリ用の Azure Defender** の課金については、[価格に関するページ](security-center-pricing.md)をご覧ください。|
-|サポートされているレジストリとイメージ:|![はい](./media/icons/yes-icon.png) パブリック インターネットからアクセスでき、シェル アクセスを提供する、Linux でホストされている ACR レジストリ。<br>![いいえ](./media/icons/no-icon.png) Windows でホストされている ACR レジストリ。<br>![いいえ](./media/icons/no-icon.png) 'プライベート' レジストリ - パブリック インターネットからこのレジストリにアクセスできることが Security Center によって求められます。 現在、ファイアウォール、サービス エンドポイント、または Azure Private Link などのプライベート エンドポイントによってアクセスが制限されたレジストリへの接続、このようなレジストリのスキャンは、Security Center ではサポートされていません。<br>![いいえ](./media/icons/no-icon.png) [Docker スクラッチ](https://hub.docker.com/_/scratch/) イメージのようなスーパー ミニマリスト イメージ、またはアプリケーションとそのランタイム依存関係のみが含まれ、パッケージ マネージャー、シェル、OS は含まれない "ディストリビューションレス" イメージ。|
-|必要なロールとアクセス許可:|**セキュリティ閲覧者**と [Azure Container Registry 閲覧者ロール](../container-registry/container-registry-roles.md)|
+|価格:|**コンテナー レジストリ用の Azure Defender** の課金については、 [価格に関するページ](security-center-pricing.md)をご覧ください。|
+|サポートされているレジストリとイメージ:|シェル アクセスによってパブリック インターネットからアクセス可能な ACR レジストリ内の Linux イメージ|
+|サポートされていないレジストリとイメージ:|Windows イメージ<br>"プライベート" レジストリ<br>Azure Private Link などのファイアウォール、サービス エンドポイント、またはプライベート エンドポイントによってアクセスが制限されたレジストリ<br>[Docker スクラッチ](https://hub.docker.com/_/scratch/)のようなスーパー ミニマリスト イメージ、またはアプリケーションとそのランタイム依存関係のみが含まれ、パッケージ マネージャー、シェル、または OS は含まれない "ディストリビューションレス" イメージ。|
+|必要なロールとアクセス許可:|**セキュリティ閲覧者** と [Azure Container Registry 閲覧者ロール](../container-registry/container-registry-roles.md)|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
 |||
 
 
 ## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>Azure コンテナー レジストリでイメージの脆弱性を識別する 
 
-1. Azure Resource Manager ベースの Azure Container Registry に格納されているイメージの脆弱性のスキャンを有効にするには、次のようにします。
+Azure Resource Manager ベースの Azure Container Registry に格納されているイメージの脆弱性のスキャンを有効にするには、次のようにします。
 
-    1. ご利用のサブスクリプションで**コンテナー レジストリ用の Azure Defender** を有効にします。
+1. ご利用のサブスクリプションで **コンテナー レジストリ用の Azure Defender** を有効にします。 これで、Security Center でレジストリ内のイメージをスキャンする準備が整いました。
 
-        これで、Security Center でレジストリ内のイメージをスキャンする準備が整いました。
-
-        >[!NOTE]
-        > この機能では、イメージごとに課金されます。
+    >[!NOTE]
+    > この機能では、イメージごとに課金されます。
 
 1. イメージ スキャンは、プッシュまたはインポートが行われるたびに、およびイメージが過去 30 日以内にプルされている場合にトリガーされます。 
 
@@ -64,7 +63,7 @@ ms.locfileid: "92342078"
 
 ## <a name="view-and-remediate-findings"></a>結果の表示と修復
 
-1. 結果を表示するために、 **[推奨事項]** ページへ移動します。 問題が見つかった場合は、**Azure Container Registry イメージの脆弱性を修復する必要があります**という推奨事項が表示されます。
+1. 結果を表示するために、 **[推奨事項]** ページへ移動します。 問題が見つかった場合は、 **Azure Container Registry イメージの脆弱性を修復する必要があります** という推奨事項が表示されます。
 
     ![問題を修復するための推奨事項 ](media/monitor-container-security/acr-finding.png)
 
@@ -127,7 +126,7 @@ ms.locfileid: "92342078"
 > [!IMPORTANT]
 > ルールを作成するには、Azure Policy でポリシーを編集するためのアクセス許可が必要です。
 >
-> 詳細については、「[ Azure Policy における RBAC アクセス許可](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)」を参照してください。
+> 詳細については、「[Azure Policy における RBAC アクセス許可](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)」を参照してください。
 
 次のいずれかの条件を使用できます。 
 
@@ -140,7 +139,7 @@ ms.locfileid: "92342078"
 
 ルールを作成するには:
 
-1. **Azure Container Registry イメージの脆弱性を修復する必要があります**という推奨事項の詳細ページで、 **[ルールを無効にする]** を選択します。
+1. **Azure Container Registry イメージの脆弱性を修復する必要があります** という推奨事項の詳細ページで、 **[ルールを無効にする]** を選択します。
 1. 関連するスコープを選択します。
 1. 条件を定義します。
 1. **[ルールの適用]** を選択します。
@@ -150,7 +149,7 @@ ms.locfileid: "92342078"
 1. ルールを表示、無効化、または削除するには、次の手順に従います。 
     1. **[ルールを無効にする]** を選択します。
     1. アクティブなルールが適用されているサブスクリプションは、スコープの一覧に **[Rule applied]\(ルール適用済み\)** と表示されます。
-        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="レジストリで VA の結果の無効化ルールを作成する":::
+        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="既存のルールを変更または削除する":::
     1. ルールを表示または削除するには、省略記号メニュー ("...") を選択します。
 
 

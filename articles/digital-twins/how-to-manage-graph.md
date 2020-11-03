@@ -4,23 +4,23 @@ titleSuffix: Azure Digital Twins
 description: リレーションシップを使って接続することでデジタル ツインのグラフを管理する方法について説明します。
 author: baanders
 ms.author: baanders
-ms.date: 4/10/2020
+ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8c698cdf5b26cb1682eec2828922517cf4272275
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 3b8dafd6d2347cf7cca4100f577476b8dfdf6c81
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048442"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495765"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>リレーションシップを使ってデジタル ツインのグラフを管理する
 
-Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](concepts-twins-graph.md)です。 ツイン グラフは、**リレーションシップ**を介して接続された個々のデジタル ツインで構成されています。
+Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](concepts-twins-graph.md)です。 ツイン グラフは、 **リレーションシップ** を介して接続された個々のデジタル ツインで構成されています。 
 
-機能する [Azure Digital Twins インスタンス](how-to-set-up-instance-portal.md)があり、クライアント アプリで[認証](how-to-authenticate-client.md)コードを設定すると、[**DigitalTwins API**](how-to-use-apis-sdks.md) を使用して Azure Digital Twins インスタンス内のデジタル ツインとそのリレーションシップを作成、変更、削除することができます。 [.NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用することもできます。
+機能する [Azure Digital Twins インスタンス](how-to-set-up-instance-portal.md)があり、クライアント アプリで [認証](how-to-authenticate-client.md)コードを設定すると、 [**DigitalTwins API**](/rest/api/digital-twins/dataplane/twins) を使用して Azure Digital Twins インスタンス内のデジタル ツインとそのリレーションシップを作成、変更、削除することができます。 [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用することもできます。
 
-この記事では、リレーションシップとグラフ全体の管理に焦点を当てます。個々のデジタル ツインの操作については、[ *「デジタル ツインを管理する」方法*](how-to-manage-twin.md)を参照してください。
+この記事では、リレーションシップとグラフ全体の管理に焦点を当てます。個々のデジタル ツインの操作については、 [ *「デジタル ツインを管理する」方法*](how-to-manage-twin.md)を参照してください。
 
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
@@ -28,208 +28,421 @@ Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](co
 
 リレーションシップには、さまざまなデジタル ツインが相互にどのように接続されるかが記述され、それによってツイン グラフの基礎が形成されます。
 
-リレーションシップは、`CreateRelationship` 呼び出しを使用して作成されます。 
+リレーションシップは、`CreateRelationship()` 呼び出しを使用して作成されます。 
 
 リレーションシップを作成するには、以下を指定する必要があります。
-* ソース ツイン ID (リレーションシップの発生元のツイン)
-* ターゲット ツイン ID (リレーションシップの到達先のツイン)
-* リレーションシップ名
-* リレーションシップ ID
+* ソース ツイン ID (以下のコード サンプルの `srcId`):リレーションシップが発生したツインの ID。
+* ターゲット ツイン ID (以下のコード サンプルの `targetId`):リレーションシップの対象のツインの ID。
+* リレーションシップ名 (以下のコード サンプルの `relName`): _contains_ のような一般的な種類のリレーションシップ。
+* リレーションシップ ID (以下のコード サンプルの `relId`):このリレーションシップの具体的な名前 ( _Relationship1_ など)。
 
 リレーションシップ ID は、指定されたソース ツイン内で一意である必要があります。 グローバルに一意である必要はありません。
-たとえば、ツイン *foo* の場合、それぞれのリレーションシップ ID は一意である必要があります。 ただし、別のツインである *bar* は、*foo* リレーションシップの同じ ID と一致する発信リレーションシップを持つことができます。 
+たとえば、ツイン *foo* の場合、それぞれのリレーションシップ ID は一意である必要があります。 ただし、別のツインである *bar* は、 *foo* リレーションシップの同じ ID と一致する発信リレーションシップを持つことができます。
 
-次のコード サンプルは、Azure Digital Twins インスタンスにリレーションシップを追加する方法を示しています。
+次のコード サンプルは、Azure Digital Twins インスタンスにリレーションシップを作成する方法を示しています。
 
 ```csharp
-public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
-{
-    var relationship = new BasicRelationship
-    {
-        TargetId = targetId,
-        Name = "contains"
-    };
+public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId, string relName)
+        {
+            var relationship = new BasicRelationship
+            {
+                TargetId = targetId,
+                Name = relName
+            };
 
-    try
-    {
-        string relId = $"{srcId}-contains->{targetId}";
-        await client.CreateRelationshipAsync(srcId, relId, JsonSerializer.Serialize(relationship));
-        Console.WriteLine("Created relationship successfully");
-    }
-    catch (RequestFailedException rex) {
-        Console.WriteLine($"Create relationship error: {rex.Status}:{rex.Message}");
-    }
-}
+            try
+            {
+                string relId = $"{srcId}-{relName}->{targetId}";
+                await client.CreateRelationshipAsync(srcId, relId, JsonSerializer.Serialize(relationship));
+                Console.WriteLine($"Created {relName} relationship successfully");
+            }
+            catch (RequestFailedException rex)
+            {
+                Console.WriteLine($"Create relationship error: {rex.Status}:{rex.Message}");
+            }
+            
+        }
 ```
+main メソッドでは、`CreateRelationship()` 関数を呼び出して、次のような _contains_ リレーションシップを作成できます。 
 
-ヘルパー クラス `BasicRelationship` の詳細については、[ *「Azure Digital Twins の API および SDK を使用する」方法*](how-to-use-apis-sdks.md)を参照してください。
+```csharp
+await CreateRelationship(client, srcId, targetId, "contains");
+```
+複数のリレーションシップを作成する場合は、同じメソッドの呼び出しを繰り返して、異なるリレーションシップの種類を引数に渡すことができます。 
+
+ヘルパー クラス `BasicRelationship` の詳細については、 [ *「Azure Digital Twins の API および SDK を使用する」方法*](how-to-use-apis-sdks.md#serialization-helpers)を参照してください。
 
 ### <a name="create-multiple-relationships-between-twins"></a>ツイン間でリレーションシップの作成
 
+リレーションシップは次のいずれかに分類できます。 
+
+* 発信リレーションシップ:他のツインに接続するために外側を指す、このツインに属するリレーションシップ。 `GetRelationshipsAsync()` メソッドは、ツインの発信リレーションシップを取得するために使用されます。
+* 受信リレーションシップ:"受信" リンクを作成するためにこのツインを指す、他のツインに属するリレーションシップ。 `GetIncomingRelationshipsAsync()` メソッドは、ツインの受信リレーションシップを取得するために使用されます。
+
 2 つのツイン間のリレーションシップの数には制限がありません。ツイン間には、必要な数のリレーションシップを含めることができます。 
 
-これは、2 つのツイン間に、さまざまな種類のリレーションシップを同時に複数表すことができることを意味します。 たとえば、"*ツイン A*" と "*ツイン B*" の間に、"*格納された*" リレーションシップと "*製造された*" リレーションシップを含めることができます。
+これは、2 つのツイン間に、さまざまな種類のリレーションシップを同時に複数表すことができることを意味します。 たとえば、" *ツイン A* " と " *ツイン B* " の間に、" *格納された* " リレーションシップと " *製造された* " リレーションシップを含めることができます。
 
-必要に応じて、同じ 2 つのツイン間に、同じ種類のリレーションシップのインスタンスを複数作成することもできます。 この例では、"*ツイン A*"と "*ツイン B*"の間に、"*格納された*" リレーションシップが個別に 2 つあることを意味しています。
+必要に応じて、同じ 2 つのツイン間に、同じ種類のリレーションシップのインスタンスを複数作成することもできます。 この例では、リレーションシップのリレーションシップ ID が異なる限り、" *ツイン A* " は " *ツイン B* " と 2 つの異なる " *格納された* " リレーションシップを持つことができます。
 
 ## <a name="list-relationships"></a>リレーションシップの一覧表示
 
-グラフ内の特定のツインからの**発信**リレーションシップの一覧にアクセスするには、以下を使用できます。
+グラフ内の特定のツインの " **発信** " リレーションシップの一覧にアクセスするには、次のように `GetRelationships()` メソッドを使用できます。
 
 ```csharp
-await client.GetRelationshipsAsync(id);
+await client.GetRelationships()
 ```
 
 これによって、呼び出しの同期または非同期のバージョンのどちらを使用するかに応じて、`Azure.Pageable<T>` または `Azure.AsyncPageable<T>` が返されます。
 
-リレーションシップの一覧を取得する完全な例を次に示します。
+リレーションシップの一覧を取得する例を次に示します。
 
 ```csharp
-public async Task<List<BasicRelationship>> FindOutgoingRelationshipsAsync(string dtId)
-{
-    // Find the relationships for the twin
-    try
-    {
-        // GetRelationshipsAsync will throw if an error occurs
-        AsyncPageable<string> relsJson = client.GetRelationshipsAsync(dtId);
-        List<BasicRelationship> results = new List<BasicRelationship>();
-        await foreach (string relJson in relsJson)
+public static async Task<List<BasicRelationship>> FindOutgoingRelationshipsAsync(DigitalTwinsClient client, string dtId)
         {
-            var rel = System.Text.Json.JsonSerializer.Deserialize<BasicRelationship>(relJson);
-            results.Add(rel);
-        }
-        return results;
-    }
-    catch (RequestFailedException ex)
-    {
-        Log.Error($"**_ Error {ex.Status}/{ex.ErrorCode} retrieving relationships for {dtId} due to {ex.Message}");
-        return null;
-    }
-}
-```
+            // Find the relationships for the twin
+            try
+            {
+                // GetRelationshipsAsync will throw if an error occurs
+                AsyncPageable<string> relsJson = client.GetRelationshipsAsync(dtId);
+                List<BasicRelationship> results = new List<BasicRelationship>();
+                await foreach (string relJson in relsJson)
+                {
+                    var rel = System.Text.Json.JsonSerializer.Deserialize<BasicRelationship>(relJson);
+                    results.Add(rel);
+                    Console.WriteLine(relJson);
+                }
 
-取得したリレーションシップを使用して、グラフ内の他のツインに移動できます。 これを行うには、返されたリレーションシップから `target` フィールドを読み取り、それを `GetDigitalTwin` への次の呼び出しの ID として使用します。 
+                return results;
+            }
+            catch (RequestFailedException ex)
+            {
+                Console.WriteLine($"**_ Error {ex.Status}/{ex.ErrorCode} retrieving relationships for {dtId} due to {ex.Message}");
+                return null;
+            }
+        }
+
+```
+これで、このメソッドを呼び出して、次のようなツインの発信リレーションシップを確認できます。
+
+```csharp
+await FindOutgoingRelationshipsAsync(client, twin_Id);
+```
+取得したリレーションシップを使用して、グラフ内の他のツインに移動できます。 これを行うには、返されたリレーションシップから `target` フィールドを読み取り、それを `GetDigitalTwin()` への次の呼び出しの ID として使用します。
 
 ### <a name="find-incoming-relationships-to-a-digital-twin"></a>デジタル ツインとの受信リレーションシップを見つける
 
-Azure Digital Twins には、特定のツインとのすべての**受信**リレーションシップを検索する API もあります。 これは、逆方向のナビゲーションの場合やツインを削除するときに便利です。
+Azure Digital Twins には、特定のツインとのすべての "_ *受信* *" リレーションシップを検索するための API もあります。 これは、逆方向のナビゲーションの場合やツインを削除するときに便利です。
 
-前のコード サンプルは、ツインからの発信リレーションシップの検索に焦点を合わせていました。 次の例は同じような構造になってますが、代わりにツインへの "*受信*" リレーションシップを検索します。
+前のコード サンプルは、ツインからの発信リレーションシップの検索に焦点を合わせていました。 次の例は同じような構造になってますが、代わりにツインへの " *受信* " リレーションシップを検索します。
 
 `IncomingRelationship` の呼び出しからは、リレーションシップ全体が返されないことに注意してください。
 
 ```csharp
-async Task<List<IncomingRelationship>> FindIncomingRelationshipsAsync(string dtId)
-{
-    // Find the relationships for the twin
-    try
-    {
-        // GetRelationshipsAsync will throw an error if a problem occurs
-        AsyncPageable<IncomingRelationship> incomingRels = client.GetIncomingRelationshipsAsync(dtId);
+public static async Task<List<IncomingRelationship>> FindIncomingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+        {
+            // Find the relationships for the twin
+            try
+            {
+                // GetRelationshipsAsync will throw an error if a problem occurs
+                AsyncPageable<IncomingRelationship> incomingRels = client.GetIncomingRelationshipsAsync(dtId);
 
-        List<IncomingRelationship> results = new List<IncomingRelationship>();
-        await foreach (IncomingRelationship incomingRel in incomingRels)
-            results.Add(incomingRel);
-    }
-    catch (RequestFailedException ex)
-    {
-        Log.Error($"*** Error {ex.Status}/{ex.ErrorCode} retrieving incoming relationships for {dtId} due to {ex.Message}");
-    }
-}
+                List<IncomingRelationship> results = new List<IncomingRelationship>();
+                await foreach (IncomingRelationship incomingRel in incomingRels)
+                {
+                    results.Add(incomingRel);
+                    Console.WriteLine(incomingRel);
+
+                }
+                return results;
+            }
+            catch (RequestFailedException ex)
+            {
+                Console.WriteLine($"*** Error {ex.Status}/{ex.ErrorCode} retrieving incoming relationships for {dtId} due to {ex.Message}");
+                return null;
+            }
+        }
 ```
 
-## <a name="delete-relationships"></a>リレーションシップの削除
+これで、このメソッドを呼び出して、次のようなツインの受信リレーションシップを確認できます。
 
-`DeleteRelationship(source, relId);` を使用してリレーションシップを削除することができます。
+```csharp
+await FindIncomingRelationshipsAsync(client, twin_Id);
+```
+### <a name="list-all-twin-properties-and-relationships"></a>ツインのすべてのプロパティとリレーションシップを一覧表示する
+
+ツインへの発信と受信のリレーションシップを一覧表示する上記のメソッドを使用すると、ツインのプロパティとその両方の種類のリレーションシップを含む完全なツインの情報を出力するメソッドを作成できます。 この実行方法を示す、`FetchAndPrintTwinAsync()` というメソッドの例を次に示します。
+
+```csharp  
+private static async Task FetchAndPrintTwinAsync(DigitalTwinsClient client, string twin_Id)
+        {
+            BasicDigitalTwin twin;
+            Response<string> res = client.GetDigitalTwin(twin_Id);
+            twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+            
+            await FindOutgoingRelationshipsAsync(client, twin_Id);
+            await FindIncomingRelationshipsAsync(client, twin_Id);
+
+            return;
+        }
+```
+
+これで、次のように main メソッドでこの関数を呼び出すことができるようになります。 
+
+```csharp
+await FetchAndPrintTwinAsync(client, targetId);
+```
+## <a name="delete-relationships"></a>リレーションシップの削除
 
 最初のパラメーターには、ソース ツイン (リレーションシップの発生元のツイン) を指定します。 もう一方のパラメーターはリレーションシップ ID です。 リレーションシップ ID はツインのスコープ内でのみ一意であるため、ツイン ID とリレーションシップ ID の両方が必要です。
 
-## <a name="create-a-twin-graph"></a>ツイン グラフを作成する 
+```csharp
+private static async Task DeleteRelationship(DigitalTwinsClient client, string srcId, string relId)
+        {
+            try
+            {
+                Response response = await client.DeleteRelationshipAsync(srcId, relId);
+                await FetchAndPrintTwinAsync(srcId, client);
+                Console.WriteLine("Deleted relationship successfully");
+            }
+            catch (RequestFailedException Ex)
+            {
+                Console.WriteLine($"Error {Ex.ErrorCode}");
+            }
+        }
+```
 
-次のコード スニペットでは、この記事のリレーションシップ操作を使用して、デジタル ツインとリレーションシップからツイン グラフを作成します。
+これで、このメソッドを呼び出して、次のようなリレーションシップを削除できるようになります。
 
 ```csharp
-static async Task CreateTwins()
+await DeleteRelationship(client, srcId, relId);
+```
+## <a name="create-a-twin-graph"></a>ツイン グラフを作成する 
+
+次の実行可能なコード スニペットでは、この記事のリレーションシップ操作を使用して、デジタル ツインとリレーションシップからツイン グラフを作成します。
+
+### <a name="set-up-the-runnable-sample"></a>実行可能なサンプルを設定する
+
+このスニペットでは、 [*Room.json*](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) と [*Floor.json*](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) モデル定義を使用しています。「 [*チュートリアル:サンプル クライアント アプリを使用して Azure Digital Twins を試す*](tutorial-command-line-app.md)」のものです。 これらのリンクを使用してファイルに直接移動するか、[こちら](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)の完全なエンドツーエンドのサンプル プロジェクトの一部としてダウンロードすることができます。 
+
+このサンプルを実行する前に、以下を実行します。
+1. モデル ファイルをダウンロードしてプロジェクトに配置し、以下のコードの `<path-to>` プレースホルダーを置き換えて、プログラムに検索場所を指示します。
+2. プレースホルダー `<your-instance-hostname>` を Azure Digital Twins インスタンスのホスト名に置き換えます。
+3. 次のパッケージをプロジェクトに追加します。
+    ```cmd/sh
+    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
+    dotnet add package Azure.identity
+    ```
+
+サンプルを直接実行する場合は、ローカルの資格情報も設定する必要があります。 次のセクションでは、これについて説明します。
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
+
+### <a name="run-the-sample"></a>サンプルを実行する
+
+上記の手順を完了すると、次のサンプル コードを直接実行できます。
+
+```csharp 
+using System;
+using Azure.DigitalTwins.Core;
+using Azure.Identity;
+using System.Threading.Tasks;
+using System.IO;
+using System.Collections.Generic;
+using Azure;
+using Azure.DigitalTwins.Core.Serialization;
+using System.Text.Json;
+
+namespace minimal
 {
-    // Create twins - see utility functions below 
-    await CreateRoom("Room01", 68, 50, false, "");
-    await CreateRoom("Room02", 70, 66, true, "EId-00124");
-    await CreateFloorOrBuilding("Floor01", makeFloor:true);
+    class Program
+    {
 
-    // Create relationships
-    await AddRelationship("Floor01", "contains", "Floor-to-Room01", "Room01");
-    await AddRelationship("Floor01", "contains", "Floor-to-Room02", "Room02");
-}
+        public static async Task Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
 
-static async Task<bool> AddRelationship(string source, string relationship, string id, string target)
-{
-    var relationship = new BasicRelationship
-    {
-        TargetId = target,
-        Name = relationship
-    };
+            //Create the Azure Digital Twins client for API calls
+            DigitalTwinsClient client = createDTClient();
+            Console.WriteLine($"Service client created – ready to go");
+            Console.WriteLine();
 
-    try
-    {
-        string relId = $"{source}-contains->{target}";
-        await client.CreateRelationshipAsync(source, relId, JsonSerializer.Serialize(relationship));
-        Console.WriteLine("Created relationship successfully");
-        return true;
-    }
-    catch (RequestFailedException rex) {
-        Console.WriteLine($"Create relationship error: {rex.Status}:{rex.Message}");
-        return false;
-    }
-}
+            //Upload models
+            Console.WriteLine($"Upload models");
+            Console.WriteLine();
+            string dtdl = File.ReadAllText("<path-to>/Room.json");
+            string dtdl1 = File.ReadAllText("<path-to>/Floor.json");
+            var typeList = new List<string>();
+            typeList.Add(dtdl);
+            typeList.Add(dtdl1);
+            // Upload the models to the service
+            await client.CreateModelsAsync(typeList);
 
-static async Task<bool> CreateRoom(string id, double temperature, double humidity)
-{
-    BasicDigitalTwin twin = new BasicDigitalTwin();
-    twin.Metadata = new DigitalTwinMetadata();
-    twin.Metadata.ModelId = "dtmi:com:contoso:Room;2";
-    // Initialize properties
-    Dictionary<string, object> props = new Dictionary<string, object>();
-    props.Add("Temperature", temperature);
-    props.Add("Humidity", humidity);
-    twin.CustomProperties = props;
-    
-    try
-    {
-        client.CreateDigitalTwin(id, JsonSerializer.Serialize<BasicDigitalTwin>(twin)); 
-        return true;       
-    }
-    catch (ErrorResponseException e)
-    {
-        Console.WriteLine($"**_ Error creating twin {id}: {e.Response.StatusCode}"); 
-        return false;
-    }
-}
+            //Create new (Floor) digital twin
+            BasicDigitalTwin floorTwin = new BasicDigitalTwin();
+            string srcId = "myFloorID";
+            floorTwin.Metadata = new DigitalTwinMetadata();
+            floorTwin.Metadata.ModelId = "dtmi:example:Floor;1";
+            //Floor twins have no properties, so nothing to initialize
+            //Create the twin
+            await client.CreateDigitalTwinAsync(srcId, JsonSerializer.Serialize<BasicDigitalTwin>(floorTwin));
+            Console.WriteLine("Twin created successfully");
 
-static async Task<bool> CreateFloorOrBuilding(string id, bool makeFloor=true)
-{
-    string type = "dtmi:com:contoso:Building;3";
-    if (makeFloor==true)
-        type = "dtmi:com:contoso:Floor;2";
-    BasicDigitalTwin twin = new BasicDigitalTwin();
-    twin.Metadata = new DigitalTwinMetadata();
-    twin.Metadata.ModelId = type;
-    // Initialize properties
-    Dictionary<string, object> props = new Dictionary<string, object>();
-    props.Add("AverageTemperature", 0);
-    twin.CustomProperties = props;
-    
-    try
-    {
-        client.CreateDigitalTwin(id, JsonSerializer.Serialize<BasicDigitalTwin>(twin));  
-        return true;      
-    }
-    catch (ErrorResponseException e)
-    {
-        Console.WriteLine($"_*_ Error creating twin {id}: {e.Response.StatusCode}"); 
-        return false;
+            //Create second (Room) digital twin
+            BasicDigitalTwin roomTwin = new BasicDigitalTwin();
+            string targetId = "myRoomID";
+            roomTwin.Metadata = new DigitalTwinMetadata();
+            roomTwin.Metadata.ModelId = "dtmi:example:Room;1";
+            // Initialize properties
+            Dictionary<string, object> props = new Dictionary<string, object>();
+            props.Add("Temperature", 35.0);
+            props.Add("Humidity", 55.0);
+            roomTwin.CustomProperties = props;
+            //Create the twin
+            await client.CreateDigitalTwinAsync(targetId, JsonSerializer.Serialize<BasicDigitalTwin>(roomTwin));
+            
+            //Create relationship between them
+            await CreateRelationship(client, srcId, targetId, "contains");
+            Console.WriteLine();
+
+            //Print twins and their relationships
+            Console.WriteLine("--- Printing details:");
+            Console.WriteLine("Outgoing relationships from source twin:");
+            await FetchAndPrintTwinAsync(srcId, client);
+            Console.WriteLine();
+            Console.WriteLine("Incoming relationships to target twin:");
+            await FetchAndPrintTwinAsync(targetId, client);
+            Console.WriteLine("--------");
+            Console.WriteLine();
+
+            //Delete the relationship
+            Console.WriteLine("Deleting the relationship");
+            await DeleteRelationship(client, srcId, $"{srcId}-contains->{targetId}");
+            Console.WriteLine();
+
+            //Print twins and their relationships again
+            Console.WriteLine("--- Printing details:");
+            Console.WriteLine("Outgoing relationships from source twin:");
+            await FetchAndPrintTwinAsync(srcId, client);
+            Console.WriteLine();
+            Console.WriteLine("Incoming relationships to target twin:");
+            await FetchAndPrintTwinAsync(targetId, client);
+            Console.WriteLine("--------");
+            Console.WriteLine();
+        }
+
+        private static DigitalTwinsClient createDTClient()
+        {
+            string adtInstanceUrl = "https://<your-instance-hostname>";
+            var credentials = new DefaultAzureCredential();
+            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+            return client;
+        }
+        private async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId, string relName)
+        {
+            // Create relationship between twins
+            var relationship = new BasicRelationship
+            {
+                TargetId = targetId,
+                Name = relName
+            };
+
+            try
+            {
+                string relId = $"{srcId}-{relName}->{targetId}";
+                await client.CreateRelationshipAsync(srcId, relId, JsonSerializer.Serialize(relationship));
+                Console.WriteLine($"Created {relName} relationship successfully");
+            }
+            catch (RequestFailedException rex)
+            {
+                Console.WriteLine($"Create relationship error: {rex.Status}:{rex.Message}");
+            }
+
+        }
+
+        private static async Task FetchAndPrintTwinAsync(string twin_Id, DigitalTwinsClient client)
+        {
+            BasicDigitalTwin twin;
+            Response<string> res = client.GetDigitalTwin(twin_Id);
+            twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+            await FindOutgoingRelationshipsAsync(client, twin_Id);
+            await FindIncomingRelationshipsAsync(client, twin_Id);
+
+            return;
+        }
+
+        private static async Task<List<BasicRelationship>> FindOutgoingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+        {
+            // Find the relationships for the twin
+            
+            try
+            {
+                // GetRelationshipsAsync will throw if an error occurs
+                AsyncPageable<string> relsJson = client.GetRelationshipsAsync(dtId);
+                List<BasicRelationship> results = new List<BasicRelationship>();
+                await foreach (string relJson in relsJson)
+                {
+                    var rel = System.Text.Json.JsonSerializer.Deserialize<BasicRelationship>(relJson);
+                    results.Add(rel);
+                    Console.WriteLine(relJson);
+                }
+
+                return results;
+            }
+            catch (RequestFailedException ex)
+            {
+                Console.WriteLine($"*** Error {ex.Status}/{ex.ErrorCode} retrieving relationships for {dtId} due to {ex.Message}");
+                return null;
+            }
+        }
+
+        private static async Task<List<IncomingRelationship>> FindIncomingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+        {
+            // Find the relationships for the twin
+            
+            try
+            {
+                // GetRelationshipsAsync will throw an error if a problem occurs
+                AsyncPageable<IncomingRelationship> incomingRels = client.GetIncomingRelationshipsAsync(dtId);
+
+                List<IncomingRelationship> results = new List<IncomingRelationship>();
+                await foreach (IncomingRelationship incomingRel in incomingRels)
+                {
+                    results.Add(incomingRel);
+                    Console.WriteLine(incomingRel.RelationshipId);
+
+                }
+                return results;
+            }
+            catch (RequestFailedException ex)
+            {
+                Console.WriteLine($"**_ Error {ex.Status}/{ex.ErrorCode} retrieving incoming relationships for {dtId} due to {ex.Message}");
+                return null;
+            }
+        }
+
+        private static async Task DeleteRelationship(DigitalTwinsClient client, string srcId, string relId)
+        {
+            try
+            {
+                Response response = await client.DeleteRelationshipAsync(srcId, relId);
+                await FetchAndPrintTwinAsync(srcId, client);
+                Console.WriteLine("Deleted relationship successfully");
+            }
+            catch (RequestFailedException Ex)
+            {
+                Console.WriteLine($"Error {Ex.ErrorCode}");
+            }
+        }
     }
 }
 ```
+
+上記のプログラムのコンソール出力は次のようになります。 
+
+:::image type="content" source="./media/how-to-manage-graph/console-output-twin-graph.png" alt-text="ツインの詳細、ツインの受信および発信リレーションシップが表示されているコンソール出力。" lightbox="./media/how-to-manage-graph/console-output-twin-graph.png":::
+
+> [!TIP]
+> ツイン グラフは、ツイン間にリレーションシップを作成する概念です。 ツイン グラフの視覚的表現を表示する場合は、この記事の [_視覚化*](how-to-manage-graph.md#visualization)に関するセクションを参照してください。 
 
 ### <a name="create-a-twin-graph-from-a-spreadsheet"></a>スプレッドシートからツイン グラフを作成する
 
@@ -237,15 +450,12 @@ static async Task<bool> CreateFloorOrBuilding(string id, bool makeFloor=true)
 
 デジタル ツインのセットと作成されるリレーションシップを説明する次のデータ テーブルがあるとします。
 
-| モデル    | id | Parent | [リレーションシップ名] | その他のデータ |
+| モデル ID| ツイン ID (一意である必要があります) | [リレーションシップ名] | ターゲット ツイン ID | ツインの init データ |
 | --- | --- | --- | --- | --- |
-| floor    | Floor01 | | | … |
-| room    | Room10 | Floor01 | contains | … |
-| room    | Room11 | Floor01 | contains | … |
-| room    | Room12 | Floor01 | contains | … |
-| floor    | Floor02 | | | … |
-| room    | Room21 | Floor02 | contains | … |
-| room    | Room22 | Floor02 | contains | … |
+| dtmi:example:Floor;1 | Floor1 |  contains | Room1 |{"Temperature":80, "Humidity":60}
+| dtmi:example:Floor;1 | Floor0 |  has      | Room0 |{"Temperature":70, "Humidity":30}
+| dtmi:example:Room;1  | Room1 | 
+| dtmi:example:Room;1  | Room0 |
 
 次のコードでは、[Microsoft Graph API](/graph/overview) を使用してスプレッドシートを読み取り、結果から Azure Digital Twins ツイン グラフを作成しています。
 
@@ -255,20 +465,22 @@ JsonDocument data = JsonDocument.Parse(range.values);
 List<BasicRelationship> RelationshipRecordList = new List<BasicRelationship>();
 foreach (JsonElement row in data.RootElement.EnumerateArray())
 {
-    string type = row[0].GetString();
-    string id = row[1].GetString();
-    string relSource = row[2].GetString();
-    string relName = row[3].GetString();
+    string modelId = row[0].GetString();
+    string sourceId = row[1].GetString();
+    string relName = row[2].GetString();
+    string targetId = row[3].GetString();
+    string initData = row[4].GetString();
+    
     // Parse spreadsheet extra data into a JSON string to initialize the digital twin
     // Left out for compactness
     Dictionary<string, object> initData = new Dictionary<string, object>() { ... };
 
-    if (relSource != null)
+    if (sourceId != null)
     {
         BasicRelationship br = new BasicRelationship()
         {
-            SourceId = relSource,
-            TargetId = id,
+            SourceId = sourceId,
+            TargetId = targetId,
             Name = relName
         };
         RelationshipRecordList.Add(br);
@@ -277,42 +489,34 @@ foreach (JsonElement row in data.RootElement.EnumerateArray())
     BasicDigitalTwin twin = new BasicDigitalTwin();
     twin.CustomProperties = initData;
     // Set the type of twin to be created
-    switch (type)
-    {
-        case "room":
-            twin.Metadata = new DigitalTwinMetadata() { ModelId = "dtmi:com:contoso:Room;2" };
-            break;
-        case "floor":
-            twin.Metadata = new DigitalTwinMetadata() { ModelId = "dtmi:com:contoso:Floor;2" };
-            break;
-        ... handle additional types
-    }
+    twin.Metadata = new DigitalTwinMetadata() { ModelId = modelId };
+    
     try
     {
-        client.CreateDigitalTwin(id, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+        await client.CreateDigitalTwinAsync(sourceId, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
     }
     catch (RequestFailedException e)
     {
-        Log.Error($"Error {e.Status}: {e.Message}");
+       Console.WriteLine($"Error {e.Status}: {e.Message}");
     }
     foreach (BasicRelationship rec in RelationshipRecordList)
     { 
         try { 
-            client.CreateRelationship(rec.SourceId, Guid.NewGuid().ToString(), JsonSerializer.Serialize<BasicRelationship>(rec));
+            await client.CreateRelationshipAsync(rec.sourceId, Guid.NewGuid().ToString(), JsonSerializer.Serialize<BasicRelationship>(rec));
         }
         catch (RequestFailedException e)
         {
-            Log.Error($"Error {e.Status}: {e.Message}");
+            Console.WriteLine($"Error {e.Status}: {e.Message}");
         }
     }
 }
 ```
 ## <a name="manage-relationships-with-cli"></a>CLI を使用してリレーションシップを管理する
 
-ツインとそのリレーションシップは、Azure Digital Twins CLI を使用して管理することもできます。 コマンドについては、[ *「Azure Digital Twins CLI を使用する」方法*](how-to-use-cli.md)を参照してください。
+ツインとそのリレーションシップは、Azure Digital Twins CLI を使用して管理することもできます。 コマンドについては、 [ *「Azure Digital Twins CLI を使用する」方法*](how-to-use-cli.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure Digital Twins ツイン グラフのクエリについて確認します。
-* "[*概念: クエリ言語*](concepts-query-language.md)
+* " [*概念: クエリ言語*](concepts-query-language.md)
 * [*方法: ツイン グラフにクエリを実行する*](how-to-query-graph.md)

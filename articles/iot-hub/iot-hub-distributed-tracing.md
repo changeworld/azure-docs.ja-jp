@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 99a58cdbed10703c64b980af8571bce2d2638e72
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: efc4d07e9e3a64a36f2ecf3fa0000379bef380f9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152142"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538580"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>分散トレース (プレビュー) を使用して Azure IoT の cloud-to-device メッセージをトレースする
 
@@ -29,7 +29,7 @@ IoT Hub は、分散トレースをサポートする最初の Azure サービ�
 IoT Hub に対して分散トレースを有効にすると、次のことを実行できるようになります。
 
 - [トレース コンテキスト](https://github.com/w3c/trace-context)を使用して、IoT Hub を介した各メッセージの流れを正確に監視できます。 このトレース コンテキストには、あるコンポーネントからのイベントを別のコンポーネントからのイベントに関連付けることができる関連付け ID が含まれています。 これは、[デバイス ツイン](iot-hub-devguide-device-twins.md)を使用して、サブセットまたはすべての IoT デバイス メッセージに適用できます。
-- トレース コンテキストを自動的に [Azure Monitor 診断ログ](iot-hub-monitor-resource-health.md)に記録できます。
+- トレース コンテキストを自動的に [Azure Monitor ログ](monitor-iot-hub.md)に記録できます。
 - デバイスから IoT Hub およびルーティング エンドポイントまでのメッセージ フローと待ち時間を測定および把握できます。
 - ご使用の IoT ソリューション内の Azure 以外のサービスに対して分散トレースをどのように実装するか、検討を開始できます。
 
@@ -57,9 +57,9 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
 
 1. IoT Hub の左側のウィンドウで、下にスクロールして **[監視]** セクションを表示し、 **[診断設定]** をクリックします。
 
-1. 診断設定が有効になっていない場合は、 **[診断を有効にする]** をクリックします。 診断設定が既に有効になっている場合、 **[診断設定の追加]** をクリックします。
+1. **[診断設定の追加]** をクリックします。
 
-1. **[名前]** フィールドに、新しい診断設定の名前を入力します。 たとえば、**DistributedTracingSettings** などです。
+1. **[名前]** フィールドに、新しい診断設定の名前を入力します。 たとえば、 **DistributedTracingSettings** などです。
 
 1. ログの送信先を決定するために、次のオプションを 1 つ以上選択します。
 
@@ -83,7 +83,7 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
 - メッセージが IoT Hub によって処理される。
 - メッセージがカスタム エンドポイントにルーティングされる。 ルーティングを有効にする必要があります。
 
-これらのログとそのスキーマの詳細については、[IoT Hub 診断ログでの分散トレース](iot-hub-monitor-resource-health.md#distributed-tracing-preview)に関するページを参照してください。
+これらのログとそのスキーマの詳細については、[IoT Hub の監視](monitor-iot-hub.md)と [IoT Hub リソース ログの分散トレース](monitor-iot-hub-reference.md#distributed-tracing-preview)に関する記事を参照してください。
 
 ## <a name="set-up-device"></a>デバイスを設定する
 
@@ -181,9 +181,9 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
 
 ### <a name="workaround-for-third-party-clients"></a>サード パーティ製クライアントの回避策
 
-C SDK を使用せずに分散トレース機能をプレビューするのは**簡単ではありません**。 したがって、このアプローチはお勧めできません。
+C SDK を使用せずに分散トレース機能をプレビューするのは **簡単ではありません** 。 したがって、このアプローチはお勧めできません。
 
-最初に、開発ガイド「[IoT Hub メッセージを作成し、読み取る](iot-hub-devguide-messages-construct.md)」に従って、すべての IoT Hub プロトコル プリミティブをご自身のメッセージで実装する必要があります。 次に、MQTT/AMQP メッセージのプロトコル プロパティを編集して、`tracestate` を**システム プロパティ**として追加します。 具体的には次のとおりです。
+最初に、開発ガイド「[IoT Hub メッセージを作成し、読み取る](iot-hub-devguide-messages-construct.md)」に従って、すべての IoT Hub プロトコル プリミティブをご自身のメッセージで実装する必要があります。 次に、MQTT/AMQP メッセージのプロトコル プロパティを編集して、`tracestate` を **システム プロパティ** として追加します。 具体的には次のとおりです。
 
 * MQTT の場合は、`%24.tracestate=timestamp%3d1539243209` をメッセージ トピックに追加します。`1539243209` は、Unix タイムスタンプ形式のメッセージの作成時に置き換える必要があります。 例としては、[C SDK](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761) の実装を参照してください
 * AMQP の場合は、`key("tracestate")` と `value("timestamp=1539243209")` をメッセージの注釈として追加します。 リファレンス実装については、[こちら](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527)を参照してください。
@@ -260,7 +260,7 @@ IoT Hub によって記録されたすべてのトレースを表示するには
 
 ### <a name="query-using-log-analytics"></a>Log Analytics を使用してクエリを実行する
 
-[診断ログで Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) を設定した場合、`DistributedTracing` カテゴリでログを探すことでクエリを実行します。 たとえば、次のクエリでは、記録されたすべてのトレースが表示されます。
+[リソース ログで Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) を設定した場合、`DistributedTracing` カテゴリでログを探すことでクエリを実行します。 たとえば、次のクエリでは、記録されたすべてのトレースが表示されます。
 
 ```Kusto
 // All distributed traces 
@@ -278,7 +278,7 @@ Log Analytics で表示されるログの例
 | 2018-02-22T03:28:38.633Z | DiagnosticIoTHubIngress | DistributedTracing | Informational | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |
 | 2018-02-22T03:28:48.633Z | DiagnosticIoTHubEgress | DistributedTracing | Informational | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType":"EventHub","endpointName":"myEventHub", "parentSpanId":"0144d2590aacd909"} |
 
-各種ログの詳細については、[Azure IoT Hub の診断ログ](iot-hub-monitor-resource-health.md#distributed-tracing-preview)に関するページを参照してください。
+さまざまな種類のログについては、[Azure IoT Hub の分散トレース ログ](monitor-iot-hub-reference.md#distributed-tracing-preview)に関する記事を参照してください。
 
 ### <a name="application-map"></a>アプリケーション マップ
 
@@ -299,7 +299,7 @@ Microsoft 独自の[参照アーキテクチャ](https://aka.ms/iotrefarchitectu
 
 ### <a name="distributed-tracing-pattern-in-microservice-architecture"></a>マイクロサービス アーキテクチャでの分散トレース パターン
 
-異なるサービス間での IoT メッセージのフローを再構築するには、各サービスで、メッセージを一意に識別する*関連付け ID* を伝達する必要があります。 一元管理されたシステムで収集されると、ユーザーは関連付け ID を使用してメッセージのフローを確認できます。 この方法は、[分散トレース パターン](/azure/architecture/microservices/logging-monitoring#distributed-tracing)と呼ばれます。
+異なるサービス間での IoT メッセージのフローを再構築するには、各サービスで、メッセージを一意に識別する *関連付け ID* を伝達する必要があります。 一元管理されたシステムで収集されると、ユーザーは関連付け ID を使用してメッセージのフローを確認できます。 この方法は、[分散トレース パターン](/azure/architecture/microservices/logging-monitoring#distributed-tracing)と呼ばれます。
 
 Microsoft は、分散トレースのより広範な採用をサポートするために、[分散トレースの W3C 標準の提案](https://w3c.github.io/trace-context/)に寄与しています。
 
@@ -313,7 +313,7 @@ Microsoft は、分散トレースのより広範な採用をサポートする�
 1. IoT デバイスによって、IoT Hub にメッセージが送信されます。
 1. メッセージが IoT Hub ゲートウェイに到着します。
 1. IoT Hub で、メッセージ プロパティ内の `tracestate` が調べられ、それが正しい形式であるかどうか確認されます。
-1. そうである場合、IoT Hub によって、メッセージのグローバルに一意の `trace-id` ("ホップ" の場合は `span-id`) が生成され、それらが `DiagnosticIoTHubD2C` の操作で Azure Monitor 診断ログに記録されます。
+1. そうである場合、IoT Hub によって、メッセージのグローバルに一意の `trace-id` ("ホップ" の場合は `span-id`) が生成され、それらが `DiagnosticIoTHubD2C` の操作で [IoT Hub 分散トレース ログ](monitor-iot-hub-reference.md#distributed-tracing-preview)に記録されます。
 1. メッセージの処理が終了すると、IoT Hub によって別の `span-id` が生成され、`DiagnosticIoTHubIngress` の操作で既存の `trace-id` とともにそれが記録されます。
 1. メッセージに対してルーティングが有効になっている場合、IoT Hub はそれをカスタム エンドポイントに書き込み、同じ `trace-id` を持つ別の `span-id` をカテゴリ `DiagnosticIoTHubEgress` に記録します。
 1. 上記の手順は、生成されたメッセージごとに繰り返されます。
@@ -330,3 +330,4 @@ Microsoft は、分散トレースのより広範な採用をサポートする�
 - マイクロサービスの一般的な分散トレース パターンについて詳しくは、[マイクロサービス アーキテクチャ パターン: 分散トレース](https://microservices.io/patterns/observability/distributed-tracing.html)に関するページを参照してください。
 - 分散トレース設定を多数のデバイスに適用するための構成を設定するには、「[多数の IoT デバイスの構成と監視](./iot-hub-automatic-device-management.md)」を参照してください。
 - Azure Monitor の詳細については、「[Azure Monitor とは](../azure-monitor/overview.md)」を参照してください。
+- IoT Hub での Azure Monitor の使用の詳細については、[IoT Hub の監視](monitor-iot-hub.md)に関するページを参照してください

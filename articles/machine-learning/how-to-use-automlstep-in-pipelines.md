@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 82e2a484e23d55b91ff0c7820302b2cc83537cb8
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: b6c6d15b553e8b19fff2c464dfb856550f7bcbf0
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057707"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494909"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Python の Azure Machine Learning パイプラインで自動 ML を使用する
 
@@ -37,7 +37,7 @@ Azure Machine Learning の自動 ML 機能は、考えられる方法をすべ�
 
 `PipelineStep` にはいくつかのサブクラスがあります。 `AutoMLStep` に加え、この記事では、データ準備用とモデルの登録用の `PythonScriptStep` を示します。
 
-データを ML パイプライン "_に_" 最初に移動する場合は、`Dataset` オブジェクトを使用することをお勧めします。 ステップ "_間_" でデータを移動する場合は、`PipelineData` オブジェクトを使用することをお勧めします。 `AutoMLStep` で使用するには、`PipelineData` オブジェクトを `PipelineOutputTabularDataset` オブジェクトに変換する必要があります。 詳細については、[ML パイプラインからのデータの入力と出力](how-to-move-data-in-out-of-pipelines.md)に関するページを参照してください。
+データを ML パイプライン " _に_ " 最初に移動する場合は、`Dataset` オブジェクトを使用することをお勧めします。 ステップ " _間_ " でデータを移動する場合は、`PipelineData` オブジェクトを使用することをお勧めします。 `AutoMLStep` で使用するには、`PipelineData` オブジェクトを `PipelineOutputTabularDataset` オブジェクトに変換する必要があります。 詳細については、[ML パイプラインからのデータの入力と出力](how-to-move-data-in-out-of-pipelines.md)に関するページを参照してください。
 
 
 > [!TIP]
@@ -73,7 +73,7 @@ if not 'titanic_ds' in ws.datasets.keys() :
 titanic_ds = Dataset.get_by_name(ws, 'titanic_ds')
 ```
 
-このコードでは、まず、**config.json** で定義されている Azure Machine Learning ワークスペースにログインします (説明については、「[チュートリアル: Python SDK で初めての ML 実験を作成する](tutorial-1st-experiment-sdk-setup.md)」を参照)。 `'titanic_ds'` という名前のデータセットがまだ登録されていない場合は、1 つ作成されます。 このコードでは、Web から CSV データをダウンロードし、それらを使用して `TabularDataset` をインスタンス化してから、ワークスペースにデータセットを登録します。 最後に、関数 `Dataset.get_by_name()` で `Dataset` を `titanic_ds` に割り当てます。 
+このコードでは、まず、 **config.json** で定義されている Azure Machine Learning ワークスペースにログインします (説明については、「[ワークスペース構成ファイルを作成する](how-to-configure-environment.md#workspace)」を参照してください)。 `'titanic_ds'` という名前のデータセットがまだ登録されていない場合は、1 つ作成されます。 このコードでは、Web から CSV データをダウンロードし、それらを使用して `TabularDataset` をインスタンス化してから、ワークスペースにデータセットを登録します。 最後に、関数 `Dataset.get_by_name()` で `Dataset` を `titanic_ds` に割り当てます。 
 
 ### <a name="configure-your-storage-and-compute-target"></a>ストレージおよびコンピューティング ターゲットを構成する
 
@@ -222,7 +222,7 @@ print(f"Wrote test to {args.output_path} and train to {args.output_path}")
 
 コードでは、データ準備関数を定義した後、入力引数を解析します。これは、データの書き込み先のパスです (これらの値は、次のステップで説明する `PipelineData` オブジェクトによって決まります)。このコードでは、登録済みの `'titanic_cs'` `Dataset` を取得し、それを Pandas `DataFrame` に変換して、さまざまなデータ準備関数を呼び出します。 
 
-`output_path` は完全修飾されているため、ディレクトリ構造の準備には関数 `os.makedirs()` が使用されます。 この時点で、`DataFrame.to_csv()` を使用して出力データを書き込むことはできますが、Parquet ファイルの方が効率的です。 このような小さなデータセットでは、この効率性は重要ではないと思われますが、**PyArrow** パッケージの `from_pandas()` と `write_table()` 関数を使用すると、`to_csv()` の場合よりもキーストロークがわずかに多くなります。
+`output_path` は完全修飾されているため、ディレクトリ構造の準備には関数 `os.makedirs()` が使用されます。 この時点で、`DataFrame.to_csv()` を使用して出力データを書き込むことはできますが、Parquet ファイルの方が効率的です。 このような小さなデータセットでは、この効率性は重要ではないと思われますが、 **PyArrow** パッケージの `from_pandas()` と `write_table()` 関数を使用すると、`to_csv()` の場合よりもキーストロークがわずかに多くなります。
 
 Parquet ファイルは、以下で説明する自動 ML ステップでネイティブにサポートされているため、それらを使用するのに特別な処理は必要ありません。 
 

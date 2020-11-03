@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4fcd3d143cf2dbb529a8c9c78a769165621e2e89
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 1386dd820b10b63862ddab38c441f251bea1d83d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400419"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428402"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Hybrid Runbook Worker の問題のトラブルシューティング
 
@@ -46,7 +46,7 @@ Runbook は 3 回実行を試みると、短時間中断されます。 Runbook 
 
 #### <a name="resolution"></a>解決策
 
-コンピューターがポート 443 で * **.azure-automation.net**に発信アクセスできることを確認します。
+コンピューターがポート 443 で **\*.azure-automation.net** に発信アクセスできることを確認します。
 
 Hybrid Runbook Worker を実行するコンピューターは、この機能をホストするようにワーカーを構成する前に、ハードウェアの最小要件を満たしている必要があります。 Runbook とそれらが使用するバックグラウンド プロセスによってシステムが過剰に使用され、それが原因で Runbook ジョブの遅延やタイムアウトが発生する可能性があります。
 
@@ -114,7 +114,7 @@ At line:3 char:1
 
 #### <a name="resolution"></a>解決策
 
-お使いの Hybrid Runbook Worker が Azure VM である場合は、代わりに、[マネージド ID による Runbook 認証](../automation-hrw-run-runbooks.md#runbook-auth-managed-identities)を使用できます。 このシナリオでは、実行アカウントの代わりに Azure VM のマネージド ID を使用して Azure リソースへの認証を可能にすることで、認証を簡素化します。 Hybrid Runbook Worker がオンプレミスのコンピューターである場合は、実行アカウント証明書をコンピューターにインストールする必要があります。 証明書をインストールする方法については、「[Hybrid Runbook Worker での Runbook の実行](../automation-hrw-run-runbooks.md)」で、PowerShell Runbook の **Export-RunAsCertificateToHybridWorker** を実行するための手順を参照してください。
+お使いの Hybrid Runbook Worker が Azure VM である場合は、代わりに、[マネージド ID による Runbook 認証](../automation-hrw-run-runbooks.md#runbook-auth-managed-identities)を使用できます。 このシナリオでは、実行アカウントの代わりに Azure VM のマネージド ID を使用して Azure リソースへの認証を可能にすることで、認証を簡素化します。 Hybrid Runbook Worker がオンプレミスのコンピューターである場合は、実行アカウント証明書をコンピューターにインストールする必要があります。 証明書をインストールする方法については、「 [Hybrid Runbook Worker での Runbook の実行](../automation-hrw-run-runbooks.md)」で、PowerShell Runbook の **Export-RunAsCertificateToHybridWorker** を実行するための手順を参照してください。
 
 ### <a name="scenario-error-403-during-registration-of-a-hybrid-runbook-worker"></a><a name="error-403-on-registration"></a>シナリオ:Hybrid Runbook Worker の登録中にエラー 403 が発生した
 
@@ -156,7 +156,7 @@ Linux Hybrid Runbook Worker で `sudo` コマンドを実行すると、パス�
 
 #### <a name="cause"></a>原因
 
-Linux 用 Log Analytics エージェントの **nxautomationuser** アカウントが、**sudoers** ファイルで正しく構成されていません。 Hybrid Runbook Worker では、Linux Runbook Worker で Runbook に署名できるように、アカウントのアクセス許可やその他のデータが適切に構成されている必要があります。
+Linux 用 Log Analytics エージェントの **nxautomationuser** アカウントが、 **sudoers** ファイルで正しく構成されていません。 Hybrid Runbook Worker では、Linux Runbook Worker で Runbook に署名できるように、アカウントのアクセス許可やその他のデータが適切に構成されている必要があります。
 
 #### <a name="resolution"></a>解決策
 
@@ -176,7 +176,7 @@ Linux 用 Log Analytics エージェントが実行されていません。
 
 #### <a name="resolution"></a>解決策
 
- `ps -ef | grep python` コマンドを入力して、このエージェントが実行されていることを確認します。 次のような出力が表示されます。 Python では、**nxautomation** ユーザー アカウントを使用して処理が行われます。 Azure Automation 機能が有効になっていない場合、次のどのプロセスも実行されていません。
+ `ps -ef | grep python` コマンドを入力して、このエージェントが実行されていることを確認します。 次のような出力が表示されます。 Python では、 **nxautomation** ユーザー アカウントを使用して処理が行われます。 Azure Automation 機能が有効になっていない場合、次のどのプロセスも実行されていません。
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -186,9 +186,9 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 次の一覧は、Linux Hybrid Runbook Worker のために開始されるプロセスを示します。 これらはすべて /var/opt/microsoft/omsagent/state/automationworker/ ディレクトリに配置されています。
 
-* **oms.conf**:worker マネージャー プロセスです。 これは、DSC から直接開始されます。
-* **worker.conf**:自動登録ハイブリッド worker プロセスです。 worker マネージャーによって開始されます。 このプロセスは Update Management によって使用され、ユーザーに透過的です。 マシンで Update Management が有効になっていない場合、このプロセスは存在しません。
-* **diy/worker.conf**:DIY ハイブリッド worker プロセスです。 DIY ハイブリッド ワーカー プロセスは、Hybrid Runbook Worker でユーザーの Runbook を実行するために使用されます。 キーの詳細での自動登録ハイブリッド ワーカー プロセスとの唯一の違いは、異なる構成を使用していることです。 Azure Automation が無効であり、DIY Linux ハイブリッド worker が登録されていない場合、このプロセスは存在しません。
+* **oms.conf** :worker マネージャー プロセスです。 これは、DSC から直接開始されます。
+* **worker.conf** :自動登録ハイブリッド worker プロセスです。 worker マネージャーによって開始されます。 このプロセスは Update Management によって使用され、ユーザーに透過的です。 マシンで Update Management が有効になっていない場合、このプロセスは存在しません。
+* **diy/worker.conf** :DIY ハイブリッド worker プロセスです。 DIY ハイブリッド ワーカー プロセスは、Hybrid Runbook Worker でユーザーの Runbook を実行するために使用されます。 キーの詳細での自動登録ハイブリッド ワーカー プロセスとの唯一の違いは、異なる構成を使用していることです。 Azure Automation が無効であり、DIY Linux ハイブリッド worker が登録されていない場合、このプロセスは存在しません。
 
 エージェントが実行されていない場合、次のコマンドを実行してサービスを開始します。`sudo /opt/microsoft/omsagent/bin/service_control restart`
 
@@ -226,11 +226,11 @@ PowerShell で次のコマンドを入力して、このエージェントが実
 
 #### <a name="cause"></a>原因
 
-この問題は、プロキシまたはネットワークのファイアウォールが Microsoft Azure への通信をブロックしていることが原因で発生する可能性があります。 コンピューターがポート 443 で * **.azure-automation.net**に発信アクセスできることを確認します。
+この問題は、プロキシまたはネットワークのファイアウォールが Microsoft Azure への通信をブロックしていることが原因で発生する可能性があります。 コンピューターがポート 443 で **\*.azure-automation.net** に発信アクセスできることを確認します。
 
 #### <a name="resolution"></a>解決策
 
-ログは、各ハイブリッド worker の C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes にローカルに格納されます。 警告やエラー イベントが、**アプリケーションとサービス ログ\Microsoft-SMA\Operations** と**アプリケーションとサービス ログ\Operations Manager** イベント ログにあるかどうかを確認できます。 これらのログは、Azure Automation に対するロールの有効化に影響する接続や他の種類の問題、または通常の操作中に発生した問題を示しています。 Log Analytics エージェントに関する問題のトラブルシューティングの詳細については、[Log Analytics Windows エージェントの問題のトラブルシューティング](../../azure-monitor/platform/agent-windows-troubleshoot.md)に関するページを参照してください。
+ログは、各ハイブリッド worker の C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes にローカルに格納されます。 警告やエラー イベントが、 **アプリケーションとサービス ログ\Microsoft-SMA\Operations** と **アプリケーションとサービス ログ\Operations Manager** イベント ログにあるかどうかを確認できます。 これらのログは、Azure Automation に対するロールの有効化に影響する接続や他の種類の問題、または通常の操作中に発生した問題を示しています。 Log Analytics エージェントに関する問題のトラブルシューティングの詳細については、[Log Analytics Windows エージェントの問題のトラブルシューティング](../../azure-monitor/platform/agent-windows-troubleshoot.md)に関するページを参照してください。
 
 ハイブリッド worker により、クラウドで実行されている Runbook ジョブが出力とメッセージを送信するのと同じ方法で、[Runbook の出力とメッセージ](../automation-runbook-output-and-messages.md)が Azure Automation に送信されます。 詳細ストリームと進行状況ストリームは、Runbook の場合と同じように有効にすることができます。
 
@@ -244,7 +244,7 @@ Windows Hybrid Runbook Worker で実行されるスクリプトを、想定ど�
 
 #### <a name="cause"></a>原因
 
-サーバー上の Active Directory フェデレーション サービス (AD FS) への接続でプロキシをバイパスすることはできません。 PowerShell サンドボックスはログインしたユーザーとして実行されることに注意してください。 ただし、Orchestrator サンドボックスは大幅にカスタマイズされており、**Orchestrator.Sandbox.exe.config** ファイルの設定は無視されることがあります。 それにはマシンまたは Log Analytics エージェントのプロキシ設定を処理するための特殊なコードが含まれていますが、それら以外のカスタム プロキシ設定は処理されません。 
+サーバー上の Active Directory フェデレーション サービス (AD FS) への接続でプロキシをバイパスすることはできません。 PowerShell サンドボックスはログインしたユーザーとして実行されることに注意してください。 ただし、Orchestrator サンドボックスは大幅にカスタマイズされており、 **Orchestrator.Sandbox.exe.config** ファイルの設定は無視されることがあります。 それにはマシンまたは Log Analytics エージェントのプロキシ設定を処理するための特殊なコードが含まれていますが、それら以外のカスタム プロキシ設定は処理されません。 
 
 #### <a name="resolution"></a>解決策
 
@@ -293,7 +293,7 @@ Remove-Item -Path 'C:\Program Files\Microsoft Monitoring Agent\Agent\Health Serv
 Start-Service -Name HealthService
 ```
 
-### <a name="scenario-you-cant-add-a-hybrid-runbook-worker"></a><a name="already-registered"></a>シナリオ:Hybrid Runbook Worker を追加できない
+### <a name="scenario-you-cant-add-a-windows-hybrid-runbook-worker"></a><a name="already-registered"></a>シナリオ:Windows Hybrid Runbook Worker を追加できない
 
 #### <a name="issue"></a>問題
 
@@ -312,6 +312,46 @@ Machine is already registered
 この問題を解決するには、次のレジストリ キーを削除し、`HealthService` を再起動して、もう一度 `Add-HybridRunbookWorker` コマンドレットを試します。
 
 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\HybridRunbookWorker`
+
+### <a name="scenario-you-cant-add-a-linux-hybrid-runbook-worker"></a><a name="already-registered"></a>シナリオ:Linux Hybrid Runbook Worker を追加できない
+
+#### <a name="issue"></a>問題
+
+`sudo python /opt/microsoft/omsconfig/.../onboarding.py --register` Python スクリプトを使用して Hybrid Runbook Worker の追加を試みると、次のメッセージが表示されます。
+
+```error
+Unable to register, an existing worker was found. Please deregister any existing worker and try again.
+```
+
+さらに、`sudo python /opt/microsoft/omsconfig/.../onboarding.py --deregister` Python スクリプトを使用して Hybrid Runbook Worker の登録を解除しようとした場合:
+
+```error
+Failed to deregister worker. [response_status=404]
+```
+
+#### <a name="cause"></a>原因
+
+この問題は、マシンが既に別の Automation アカウントに登録されている場合、Azure ハイブリッド Worker グループが削除されている場合、またはマシンから Hybrid Runbook Worker を削除した後で再度追加しようとした場合に発生する可能性があります。
+
+#### <a name="resolution"></a>解像度
+
+この問題を解決するには、次の手順を実行します。
+
+1. `sudo sh onboard_agent.sh --purge` エージェントを削除します。
+
+1. これらのコマンドを実行します。
+
+   ```
+   sudo mv -f /home/nxautomation/state/worker.conf /home/nxautomation/state/worker.conf_old
+   sudo mv -f /home/nxautomation/state/worker_diy.crt /home/nxautomation/state/worker_diy.crt_old
+   sudo mv -f /home/nxautomation/state/worker_diy.key /home/nxautomation/state/worker_diy.key_old
+   ```
+
+1. `sudo sh onboard_agent.sh -w <workspace id> -s <workspace key> -d opinsights.azure.com` エージェントを再びオンボードします。
+
+1. `/opt/microsoft/omsconfig/modules/nxOMSAutomationWorker` フォルダーが設定されるのを待ちます。
+
+1. `sudo python /opt/microsoft/omsconfig/.../onboarding.py --register` Python スクリプトをもう一度試してください。
 
 ## <a name="next-steps"></a>次のステップ
 

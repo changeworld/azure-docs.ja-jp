@@ -3,22 +3,28 @@ title: 概念 - ロールベースのアクセス制御 (RBAC)
 description: Azure VMware Solution のロールベースのアクセス制御の主な機能について説明します
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: a863f44dd5fdd485f8d5ebfcfbacee994e6b63a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fbda24ec6a8c1d08570d7f64270a954eb3d8a35
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579302"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440945"
 ---
 # <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>Azure VMware Solution のロールベースのアクセス制御 (RBAC)
 
-vCenter および ESXi オンプレミス展開では、管理者は vCenter administrator@vsphere.local アカウントにアクセス可能であり、その他の Active Directory (AD) ユーザーまたはグループが割り当てられている場合があります。 ただし、Azure VMware Solution デプロイでは、管理者は管理者ユーザー アカウントにアクセスすることはできませんが、AD ユーザーとグループを vCenter の CloudAdmin ロールに割り当てることができます。  また、Azure VMware Solution プライベート クラウドのユーザーには、クラスター、ホスト、データストア、分散仮想スイッチなど、Microsoft がサポートおよび管理する特定の管理コンポーネントへのアクセスまたは構成を行うアクセス許可がありません。
-
-
-Azure VMware Solution では、vCenter に、組み込みの CloudAdmin ロールに割り当てられている cloudadmin という組み込みのローカル ユーザーがあります。 ローカルの cloudadmin ユーザーは、AD で追加のユーザーを設定するために使用されます。 CloudAdmin ロールには、一般に、プライベート クラウド (仮想マシン、リソース プール、データストア、ネットワーク) でワークロードを作成および管理するアクセス許可があります。 Azure VMware Solution の CloudAdmin ロールには、他の VMware クラウド ソリューションとは異なる一連の vCenter 特権があります。   
+Azure VMware Solution では、vCenter に cloudadmin という組み込みのローカル ユーザーがあり、組み込みの CloudAdmin ロールに割り当てられています。 このローカルの cloudadmin ユーザーを使用して、AD にユーザーが設定されます。 通常、プライベート クラウドのワークロードは、CloudAdmin ロールによって作成と管理が行われます。 Azure VMware Solution では、CloudAdmin ロールには、他の VMware クラウド ソリューションとは異なる vCenter 特権があります。     
 
 > [!NOTE]
-> 現在、Azure VMware Solution では、vCenter または Azure VMware Solution ポータルにカスタム ロールが提供されていません。 
+> 現在、Azure VMware Solution では、vCenter または Azure VMware Solution ポータルにカスタム ロールを提供していません。 
+
+vCenter と ESXi のオンプレミスのデプロイでは、管理者は vCenter の administrator@vsphere.local アカウントにアクセスできます。 追加の Active Directory (AD) ユーザー/グループを割り当てることもできます。 
+
+Azure VMware Solution のデプロイでは、管理者が管理者ユーザー アカウントにアクセスすることはできません。 ただし、AD ユーザーとグループを vCenter の CloudAdmin ロールに割り当てることができます。  
+
+プライベート クラウド ユーザーは、Microsoft によってサポートと管理が行われている特定の管理コンポーネントにアクセスすることも構成することもできません (クラスター、ホスト、データストア、分散仮想スイッチなど)。
+
+
+
 
 ## <a name="azure-vmware-solution-cloudadmin-role-on-vcenter"></a>VCenter の Azure VMware Solution の CloudAdmin ロール
 

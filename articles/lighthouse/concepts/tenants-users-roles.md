@@ -3,26 +3,26 @@ title: Azure Lighthouse のシナリオにおけるテナント、ロール、�
 description: Azure Active Directory のテナント、ユーザー、およびロールの概念と、それらを Azure Lighthouse のシナリオで使用する方法について説明します。
 ms.date: 07/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: c409b45d18504d071ffed3185de20ec5e1147bc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dae09ddd7760af1663e0329eb646c8956dff3ac
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399246"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424120"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure Lighthouse のシナリオにおけるテナント、ロール、ユーザー
 
 顧客を [Azure Lighthouse](../overview.md) にオンボードする前に、Azure Active Directory (Azure AD) のテナント、ユーザー、およびロールがどのように機能するか、およびそれらを Azure Lighthouse シナリオでどのように使用するかを理解しておくことが重要です。
 
-*テナント*とは、Azure AD の信頼された専用インスタンスです。 通常、各 Azure テナントは 1 つの組織を表します。 [Azure の委任されたリソース管理](azure-delegated-resource-management.md)を使用すると、あるテナントから別のテナントにリソースを論理的に投影できます。 これにより、(サービス プロバイダーに属するユーザーなどの) 管理テナントのユーザーは、顧客のテナント内の委任されたリソースにアクセスできるようになります。また、[複数のテナントを持つ企業が、管理操作を一元的に実行できるようになります。](enterprise.md)
+*テナント* とは、Azure AD の信頼された専用インスタンスです。 通常、各 Azure テナントは 1 つの組織を表します。 [Azure の委任されたリソース管理](azure-delegated-resource-management.md)を使用すると、あるテナントから別のテナントにリソースを論理的に投影できます。 これにより、(サービス プロバイダーに属するユーザーなどの) 管理テナントのユーザーは、顧客のテナント内の委任されたリソースにアクセスできるようになります。また、[複数のテナントを持つ企業が、管理操作を一元的に実行できるようになります。](enterprise.md)
 
-この論理的な投影を実現するには、顧客テナントのサブスクリプション (またはサブスクリプション内の 1 つ以上のリソース グループ) を、Azure Lighthouse に "*オンボード*" する必要があります。 オンボードは、[Azure Resource Manager のテンプレート](../how-to/onboard-customer.md)を使用して行うか、[Azure Marketplace にパブリックまたはプライベート サービスを発行して行います](../how-to/publish-managed-services-offers.md)。
+この論理的な投影を実現するには、顧客テナントのサブスクリプション (またはサブスクリプション内の 1 つ以上のリソース グループ) を、Azure Lighthouse に " *オンボード* " する必要があります。 オンボードは、[Azure Resource Manager のテンプレート](../how-to/onboard-customer.md)を使用して行うか、[Azure Marketplace にパブリックまたはプライベート サービスを発行して行います](../how-to/publish-managed-services-offers.md)。
 
-いずれのオンボード方法を選択しても、*承認*を定義する必要があります。 各承認では、委任されたリソースへのアクセス権を持つ管理テナントのユーザーアカウント、およびこれらの各ユーザーがこれらのリソースに対して持つアクセス許可を設定する組み込みのロールを指定します。
+いずれのオンボード方法を選択しても、 *承認* を定義する必要があります。 各承認では、委任されたリソースへのアクセス権を持つ管理テナントのユーザーアカウント、およびこれらの各ユーザーがこれらのリソースに対して持つアクセス許可を設定する組み込みのロールを指定します。
 
 ## <a name="role-support-for-azure-lighthouse"></a>Azure Lighthouse 用のロールのサポート
 
-承認を定義する場合、各ユーザー アカウントには、[ロールベースのアクセス制御 (RBAC) の組み込みロール](../../role-based-access-control/built-in-roles.md)を 1 つ割り当てる必要があります。 カスタム ロールと[従来のサブスクリプション管理者ロール](../../role-based-access-control/classic-administrators.md)はサポートされていません。
+承認を定義する場合、各ユーザー アカウントには、[Azure の組み込みロール](../../role-based-access-control/built-in-roles.md)の 1 つを割り当てる必要があります。 カスタム ロールと[従来のサブスクリプション管理者ロール](../../role-based-access-control/classic-administrators.md)はサポートされていません。
 
 現在、Azure Lighthouse では、以下を除く、すべての[組み込みロール](../../role-based-access-control/built-in-roles.md)がサポートされています。
 

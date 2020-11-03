@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/16/2020
+ms.date: 10/22/2020
 ms.author: radeltch
-ms.openlocfilehash: a216e942d63941c19aea8fa1c07962de0744e9bd
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 9b4684f8d9a6bd04a11961632b616258db7344a3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165045"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487570"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性
 
@@ -499,10 +499,10 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
 
 1. **[A]** キープ アライブを構成します
 
-   SAP NetWeaver アプリケーション サーバーと ASCS/SCS の間の通信は、ソフトウェア ロード バランサーを介してルーティングされます。 ロード バランサーは、構成可能なタイムアウト後に非アクティブな接続を切断します。 これを防止するには、SAP NetWeaver ASCS/SCS プロファイル内にパラメーターを設定し、Linux システム設定を変更する必要があります。 詳細については、[SAP Note 1410736][1410736] を参照してください。
+   SAP NetWeaver アプリケーション サーバーと ASCS/SCS の間の通信は、ソフトウェア ロード バランサーを介してルーティングされます。 ロード バランサーは、構成可能なタイムアウト後に非アクティブな接続を切断します。 これを防止するには、SAP NetWeaver ASCS/SCS プロファイル内にパラメーターを設定し (ENSA1 を使用している場合)、ENSA1/ENSA2 の両方について、すべての SAP サーバーで Linux システムの `keepalive` 設定を変更する必要があります。 詳細については、[SAP Note 1410736][1410736] を参照してください。
 
    <pre><code># Change the Linux system configuration
-   sudo sysctl net.ipv4.tcp_keepalive_time=120
+   sudo sysctl net.ipv4.tcp_keepalive_time=300
    </code></pre>
 
 1. **[A]** /usr/sap/sapservices ファイルを更新します

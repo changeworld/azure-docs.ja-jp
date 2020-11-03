@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory を使用した SAML 認証
-description: この認証パターンの実現に関するアーキテクチャのガイダンス
+description: Azure Active Directory を使用する SAML 認証のアーカイブに関するアーキテクチャ ガイダンス
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05b13e04db8e83a8a10c2d7fe0aea202dfa3b69c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 1ab14413de1f999747e5b3fb58b505e0a9258a55
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114001"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441217"
 ---
 # <a name="saml-authentication-with-azure-active-directory"></a>Azure Active Directory を使用した SAML 認証
 
@@ -37,7 +37,7 @@ SAML 仕様には、次の 3 つのロールが定義されています。
 
 特にセキュリティ ドメイン間で SSO を拡張すると、SAML で対処される最も重要なユース ケースの 1 つは SSO ですが、(プロファイルと呼ばれる) 他のユース ケースもあります。 
 
-![アーキテクチャの図](./media/authentication-patterns/saml-auth.png)
+![SAML のアーキテクチャ図](./media/authentication-patterns/saml-auth.png)
 
 ## <a name="components-of-system"></a>システムのコンポーネント
 

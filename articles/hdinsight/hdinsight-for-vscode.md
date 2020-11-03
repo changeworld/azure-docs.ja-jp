@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 2c9a610eb30b33adb82cebda74e99c37f84dacf9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 302f1a081ca44cf6436f2c318b03e227f6640489
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319446"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543085"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Spark & Hive Tools for Visual Studio Code を使用する
 
@@ -225,7 +225,7 @@ PySpark Interactive コマンドを使用してクエリを送信するには、
 
 10. お使いの Azure アカウントに[接続](#connect-to-an-azure-account)するか、クラスターをリンクします (まだ行っていない場合)。
 
-11. すべてのコードを選択し、スクリプト エディターを右クリックして、 **[Spark: PySpark Interactive / Synapse:Pyspark Interactive]** を選択してクエリを送信します。 
+11. すべてのコードを選択し、スクリプト エディターを右クリックして、 **[Spark: PySpark Interactive / Synapse:Pyspark Interactive]** を選択してクエリを送信します。 
 
     ![PySpark Interactive のコンテキスト メニュー](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
@@ -299,13 +299,13 @@ PySpark Interactive コマンドを使用してクエリを送信するには、
 
 4. お使いの Azure アカウントに[接続](#connect-to-an-azure-account)するか、クラスターをリンクします (まだ行っていない場合)。
 
-5. スクリプト エディターを右クリックし、 **[Spark:PySpark Batch]** 、または [** Synapse:PySpark Batch***] を選択します。
+5. スクリプト エディターを右クリックし、 **[Spark:PySpark Batch]** 、または **[Synapse:PySpark Batch]** _ を選択します。
 
 6. PySpark ジョブの送信先となるクラスター/spark プールを選択します。
 
    ![Python ジョブの送信の結果の出力](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
 
-Python ジョブを送信すると、Visual Studio Code の **[OUTPUT]\(出力\)** ウィンドウに送信ログが表示されます。 Spark UI URL と Yarn UI URL も表示されます。 バッチ ジョブを Apache Spark プールに送信すると、Spark の履歴 UI の URL と Spark ジョブ アプリケーション UI の URL も表示されます。 Web ブラウザーで URL を開いて、ジョブの状態を追跡することができます。
+Python ジョブを送信すると、Visual Studio Code の _ *[出力]* * ウィンドウに送信ログが表示されます。 Spark UI URL と Yarn UI URL も表示されます。 バッチ ジョブを Apache Spark プールに送信すると、Spark の履歴 UI の URL と Spark ジョブ アプリケーション UI の URL も表示されます。 Web ブラウザーで URL を開いて、ジョブの状態を追跡することができます。
 
 ## <a name="integrate-with-hdinsight-identity-broker-hib"></a>HDInsight Identity Broker (HIB) との統合
 
@@ -433,7 +433,7 @@ Spark & Hive for Visual Studio Code では、次の機能もサポートされ�
 
 ## <a name="reader-only-role"></a>読み取り専用ロール
 
-クラスターに対する読み取り専用ロールが割り当てられているユーザーは、HDInsight クラスターにジョブを送信することも、Hive データベースを表示することもできません。 クラスター管理者に連絡し、 [Azure portal](https://portal.azure.com/) で [**HDInsight クラスター オペレーター**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user)へとロールをアップグレードしてもらいます。 有効な Ambari 資格情報を持っている場合は、次のガイダンスに従って、クラスターを手動でリンクすることができます。
+クラスターに対する読み取り専用ロールが割り当てられているユーザーは、HDInsight クラスターにジョブを送信することも、Hive データベースを表示することもできません。 クラスター管理者に連絡し、 [Azure portal](https://portal.azure.com/) で [**HDInsight クラスター オペレーター**](./hdinsight-migrate-granular-access-cluster-configurations.md#add-the-hdinsight-cluster-operator-role-assignment-to-a-user)へとロールをアップグレードしてもらいます。 有効な Ambari 資格情報を持っている場合は、次のガイダンスに従って、クラスターを手動でリンクすることができます。
 
 ### <a name="browse-the-hdinsight-cluster"></a>HDInsight クラスターを参照する  
 

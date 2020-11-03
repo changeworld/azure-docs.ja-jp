@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: d8c4eea10b0c2230e50b5ded710b3455539f6493
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 1681217c9e55b67ee2a6737aeece5303256bc1e6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206035"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461806"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor によって監視される内容
 この記事では、Azure Monitor によって監視されるさまざまなアプリケーションとサービスについて説明します。 
@@ -169,6 +169,19 @@ Insights は、特定のアプリケーションやサービスを監視する�
 |Virtual Network - NSG フロー ログ | いいえ | はい | いいえ |  |
 |VPN Gateway | はい | はい | いいえ |  |
 |Windows Virtual Desktop | いいえ | いいえ | いいえ |  |
+
+## <a name="virtual-machine-agents"></a>仮想マシンのエージェント
+次の表に、仮想マシンのゲスト オペレーティング システムからデータを収集し、Monitor にデータを送信できるエージェントを示します。 各エージェントで異なるデータを収集し、Azure Monitor のメトリックまたはログに送信できます。 
+
+各エージェントが収集できるデータの詳細については、「[Azure Monitor エージェントの概要](platform/agents-overview.md)」を参照してください。
+
+| エージェント |  メトリック | ログ |
+|:---|:---|:---|:---|
+| [Azure Monitor エージェント (プレビュー)](platform/azure-monitor-agent-overview.md) | はい | はい |
+| [Log Analytics エージェント](platform/log-analytics-agent.md) | いいえ | はい|
+| [診断拡張機能](platform/diagnostics-extension-overview.md) | はい | いいえ |
+| [Telegraf エージェント](platform/collect-custom-metrics-linux-telegraf.md) | はい | いいえ |
+| [依存関係エージェント](insights/vminsights-enable-overview.md) | いいえ | はい |
 
 
 ## <a name="product-integrations"></a>製品の統合

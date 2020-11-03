@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f725932b30fad062123d6c752f2d563b84f98b2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5e2ce17be6d8a1fa82d8a92b9b788f0bd2a37b8
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267637"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424735"
 ---
 # <a name="scenario-isolating-vnets"></a>シナリオ:VNet の分離
 
@@ -26,10 +26,10 @@ Virtual WAN の仮想ハブ ルーティングを使用する場合、多くの�
 
 | ソース |   ターゲット |  *VNet* | *ブランチ* |
 | -------------- | -------- | ---------- | ---|
-| VNet     | &#8594;|           |     X    |
-| ブランチ   | &#8594;|    x     |     x    |
+| VNet     | &#8594;| 直接 |   直接    |
+| ブランチ   | &#8594;|  直接  |   直接    |
 
-前の表の各セルは、特定のトラフィック フローについて、仮想 WAN 接続 (フローの "ソース" 側、行ヘッダー) が宛先プレフィックス (フローの "ターゲット" 側、斜体の列ヘッダー) を学習するかどうかを説明しています。ここで、"X" は Virtual WAN 経由で接続されることを示します。
+前の表の各マスは、Virtual WAN 接続 (フローの "ソース" 側、行ヘッダー) が宛先プレフィックス (フローの "ターゲット" 側、斜体の列ヘッダー) と通信するかどうかを示しています。 このシナリオでは、ファイアウォールもネットワーク仮想アプライアンスも存在しないため、通信は Virtual WAN を介して直接行われます (そのため、表では "直接" という単語が使用されています)。
 
 この接続性のマトリックスは、2 つのルート テーブルに変換される 2 種類の行パターンを提供しています。 仮想 WAN には既に既定のルート テーブルがあるため、別のルート テーブルが必要になります。 この例では、ルート テーブルに **[RT_VNET]** という名前を指定します。
 
@@ -53,12 +53,12 @@ VNet は、この **[RT_VNET]** ルート テーブルに関連付けられま�
 1. 各ハブにカスタム ルート テーブルを作成します。 この例では、ルート テーブルは **RT_VNet** です。 ルート テーブルを作成するには、「[仮想ハブ ルーティングを構成する方法](how-to-virtual-hub-routing.md)」を参照してください。 ルート テーブルの詳細については、「[仮想ハブ ルーティングについて](about-virtual-hub-routing.md)」を参照してください。
 2. **RT_VNet** ルート テーブルを作成する場合は、次の設定を構成します。
 
-   * **Association**: 分離する VNet を選択します。
-   * **伝達**: ブランチのオプションを選択します。ブランチ (VPN/ER/P2S) 接続を暗黙的に指定することで、ルートはこのルート テーブルに伝達されます。
+   * **Association** : 分離する VNet を選択します。
+   * **伝達** : ブランチのオプションを選択します。ブランチ (VPN/ER/P2S) 接続を暗黙的に指定することで、ルートはこのルート テーブルに伝達されます。
 
 :::image type="content" source="./media/routing-scenarios/isolated/isolated-vnets.png" alt-text="分離された VNet":::
 
 ## <a name="next-steps"></a>次のステップ
 
 * Virtual WAN の詳細については、[FAQ](virtual-wan-faq.md) を参照してください。
-* 仮想ハブ ルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。
+* 仮想ハブのルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。

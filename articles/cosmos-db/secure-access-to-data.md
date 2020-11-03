@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 30444523bfc26fc0f4eb410957bcc9ee46aff725
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 574592d4434b9d8c49086b82bab0b8775fb67e03
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760871"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371734"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB のデータへのアクセスをセキュリティで保護する
 
@@ -29,20 +29,7 @@ Azure Cosmos DB では、2 種類のキーを使用してユーザーを認証�
 
 ## <a name="primary-keys"></a>主キー
 
-主キーは、データベース アカウントのすべての管理リソースへのアクセスを提供します。 主キー:
-
-- アカウント、データベース、ユーザー、およびアクセス許可へのアクセスを提供します。 
-- コンテナーとドキュメントへのきめ細かいアクセスを提供するために使用することはできません。
-- アカウントの作成時に作成されます。
-- いつでも再生成することができます。
-
-各アカウントは、主キーとセカンダリ キーという 2 つの主キーで構成されます。 二重キーの目的は、キーを再生成 (ロール) して、アカウントとデータに継続的にアクセスできるようにするためです。
-
-Cosmos DB アカウント用の 2 つの主キーに加えて、2 つの読み取り専用キーがあります。 これらの読み取り専用キーは、アカウントの読み取り操作のみを許可します。 読み取り専用キーは、アクセス許可リソースを読み取るためのアクセスを提供しません。
-
-主、セカンダリ、読み取り専用、および読み取り書き込みの主キーは、Azure portal で取得と再生成を行うことができます。 手順については、「[アクセス キーを表示、コピー、および再生成する](manage-with-cli.md#regenerate-account-key)」を参照してください。
-
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Azure portal でのアクセス制御 (IAM) - NoSQL データベースのセキュリティのデモ":::
+主キーは、データベース アカウントのすべての管理リソースへのアクセスを提供します。 各アカウントは、主キーとセカンダリ キーという 2 つの主キーで構成されます。 二重キーの目的は、キーを再生成 (ロール) して、アカウントとデータに継続的にアクセスできるようにするためです。 主キーの詳細については、[データベース セキュリティ](database-security.md#primary-keys)に関する記事を参照してください。
 
 ### <a name="key-rotation"></a>キーのローテーション<a id="key-rotation"></a>
 
@@ -54,7 +41,7 @@ Cosmos DB アカウント用の 2 つの主キーに加えて、2 つの読み�
 4. 新しいプライマリ キーがすべてのリソースに対して動作することを検証します。 キーのローテーション プロセスには、Cosmos DB アカウントのサイズに応じて、1 分未満から数時間かかる場合があります。
 5. セカンダリ キーを新しいプライマリ キーに置き換えます。
 
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Azure portal でのアクセス制御 (IAM) - NoSQL データベースのセキュリティのデモ" border="false":::
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Azure portal での主キーのローテーション - NoSQL データベースのセキュリティのデモ" border="false":::
 
 ### <a name="code-sample-to-use-a-primary-key"></a>主キーを使用するコード サンプル
 
@@ -102,7 +89,7 @@ Cosmos DB リソース トークンにより、付与されたアクセス許可
 7. 電話アプリはリソース トークンを引き続き使用し、リソース トークンによって定義されたアクセス許可を使用して、リソース トークンによって許可された間隔で Cosmos DB リソースに直接アクセスすることができます。
 8. リソース トークンの期限が切れると、それ以降の要求は、401 (承認されていない例外) を受け取ります。  この時点で、電話アプリは ID を再度確立し、新しいリソース トークンを要求します。
 
-    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Azure portal でのアクセス制御 (IAM) - NoSQL データベースのセキュリティのデモ" border="false":::
+    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Azure Cosmos DB リソース トークンのワークフロー" border="false":::
 
 リソース トークンの生成と管理は、ネイティブ Cosmos DB クライアント ライブラリによって処理されます。ただし、REST を使用する場合は、要求/認証ヘッダーを構築する必要があります。 REST 用の認証ヘッダーの作成については、[Cosmos DB リソースのアクセス制御](/rest/api/cosmos-db/access-control-on-cosmosdb-resources)に関するページや、[.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/Authorization/AuthorizationHelper.cs) または [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts) のソース コードを参照してください。
 

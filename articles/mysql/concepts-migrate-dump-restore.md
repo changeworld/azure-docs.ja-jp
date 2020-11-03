@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
-ms.openlocfilehash: a0171481b97cff2ea085a80b387bff13590529a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7cc18980d1dddc33ddf98f06de70449dee22e2ac
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905891"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484595"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>ダンプと復元を使用した Azure Database for MySQL への MySQL データベースの移行
 
@@ -30,11 +30,15 @@ ms.locfileid: "90905891"
 > [!TIP]
 > データベースのサイズが 1 TB を超える大規模なデータベースを移行しようとしている場合、並列エクスポートおよびインポートがサポートされる **mydumper/myloader** などのコミュニティ ツールの使用を検討してください。 [大規模な MySQL データベースを移行する方法](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699)について確認します。
 
-## <a name="common-use-cases-for-dump-and-restore"></a>ダンプと復元の一般的なユースケース
-いくつかの一般的なシナリオでは、**mysqldump** や **mysqlpump** などの MySQL ユーティリティを使用して、データベースをダンプし、Azure MySQL Database に読み込むことができます。 他のシナリオでは、代わりに[インポートとエクスポート](concepts-migrate-import-export.md)の方法を使用できます。
 
-- **データベース全体を移行するときは、データベース ダンプを使用します**。 この推奨事項は、大量の MySQL データを移動するときや、ライブ サイトやライブ アプリケーションのためにサービスの中断を最小限に抑える必要がある場合に有効です。
--  **データベースのすべてのテーブルで InnoDB ストレージ エンジンを使用する場合は、データベース ダンプを使用します**。 Azure Database for MySQL でサポートされるのは InnoDB ストレージ エンジンだけであるため、代替のストレージ エンジンはサポートされません。 テーブルが他のストレージ エンジンで構成されている場合は、Azure Database for MySQL に移行する前に、それらのテーブルを InnoDB エンジン形式に変換します。
+## <a name="common-use-cases-for-dump-and-restore"></a>ダンプと復元の一般的なユースケース
+
+最も一般的なユース ケースは次のとおりです。
+
+- **他のマネージド サービス プロバイダーからの移動** - ほとんどのマネージド サービス プロバイダーは、セキュリティ上の理由から物理ストレージ ファイルにアクセスできないようにしている可能性があるため、論理バックアップと復元が、移行するための唯一のオプションになります。
+- **オンプレミスの環境または仮想マシンからの移行** - Azure Database for MySQL では、唯一の方法として論理バックアップと復元を行う物理バックアップの復元はサポートされていません。
+- **バックアップ ストレージのローカル冗長から geo 冗長ストレージへの移行** - Azure Database for MySQL では、バックアップするためのローカル冗長または geo 冗長ストレージの構成は、サーバーの作成時にのみ許可されます。 一度サーバーがプロビジョニングされると、バックアップ ストレージ冗長オプションを変更することはできません。 バックアップ ストレージをローカル冗長ストレージから geo 冗長ストレージに移動するには、ダンプと復元のみが唯一のオプションです。 
+-  **代替ストレージ エンジンから InnoDB への移行** - Azure Database for MySQL でサポートされるのは InnoDB ストレージ エンジンだけであるため、代替ストレージ エンジンはサポートされません。 テーブルが他のストレージ エンジンで構成されている場合は、Azure Database for MySQL に移行する前に、それらのテーブルを InnoDB エンジン形式に変換します。
 
     たとえば、MyISAM テーブルを使用する WordPress または WebApp がある場合は、Azure Database for MySQL に復元する前に InnoDB 形式に移行して、それらのテーブルを変換しておきます。 新しいテーブルを作成するときに、`ENGINE=InnoDB` 句によって使用するエンジンを設定し、復元前にデータを互換性のあるテーブルに転送します。
 
@@ -67,7 +71,7 @@ ms.locfileid: "90905891"
 
 接続情報を MySQL Workbench に追加します。
 
-:::image type="content" source="./media/concepts-migrate-dump-restore/2_setup-new-connection.png" alt-text="Azure Portal で接続情報を見つける":::
+:::image type="content" source="./media/concepts-migrate-dump-restore/2_setup-new-connection.png" alt-text="MySQL Workbench の接続文字列":::
 
 ## <a name="preparing-the-target-azure-database-for-mysql-server-for-fast-data-loads"></a>高速データ読み込みのためのターゲット Azure Database for MySQL サーバーの準備
 データの読み込みを高速化するためにターゲット Azure Database for MySQL サーバーを準備するには、次のサーバー パラメーターと構成を変更する必要があります。
@@ -123,12 +127,12 @@ mysql -h [hostname] -u [uname] -p[pass] [db_to_restore] < [backupfile.sql]
 ```
 この例では、Azure Database for MySQL ターゲット サーバーに新しく作成されたデータベースにデータを復元します。
 
-この **mysql** を**単一サーバー**で使用する方法の例を次に示します。
+この **mysql** を **単一サーバー** で使用する方法の例を次に示します。
 
 ```bash
 $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p testdb < testdb_backup.sql
 ```
-この **mysql** を**フレキシブル サーバー**で使用する方法の例を次に示します。
+この **mysql** を **フレキシブル サーバー** で使用する方法の例を次に示します。
 
 ```bash
 $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin -p testdb < testdb_backup.sql
@@ -156,7 +160,7 @@ $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin -p testdb < testdb_b
 2. phpMyAdmin セットアップ ページで、 **[追加]** をクリックして Azure Database for MySQL サーバーを追加します。 接続の詳細とログイン情報を入力します。
 3. データベースを作成して適切な名前を付けたら、画面の左側でそのデータベースを選択します。 既存のデータベースを再作成するには、データベース名をクリックし、テーブル名の横のすべてのチェック ボックスをオンにします。 **[ドロップ]** を選択して既存のテーブルを削除します。
 4. **[SQL]** リンクをクリックします。表示されたページで、SQL コマンドを入力したり、SQL ファイルをアップロードしたりできます。
-5. **参照**ボタンを使用して、データベース ファイルを検索します。
+5. **参照** ボタンを使用して、データベース ファイルを検索します。
 6. **[実行]** をクリックすると、バックアップがエクスポートされ、SQL コマンドが実行された後、データベースが再作成されます。
 
 ## <a name="known-issues"></a>既知の問題
@@ -165,3 +169,4 @@ $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin -p testdb < testdb_b
 ## <a name="next-steps"></a>次のステップ
 - [Azure Database for MySQL にアプリケーションを接続します](./howto-connection-string.md)。
 - Azure Database for MySQL へのデータベースの移行については、「[データベース移行ガイド](https://aka.ms/datamigration)」をご覧ください。
+- データベースのサイズが 1 TB を超える大規模なデータベースを移行しようとしている場合、並列エクスポートおよびインポートがサポートされる **mydumper/myloader** などのコミュニティ ツールの使用を検討してください。 [大規模な MySQL データベースを移行する方法](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699)について確認します。

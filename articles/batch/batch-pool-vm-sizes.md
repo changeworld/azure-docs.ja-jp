@@ -2,14 +2,14 @@
 title: プールの VM サイズを選択する
 description: Azure Batch プールのコンピューティング ノード用に使用可能な VM サイズを選択する方法
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 10/23/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6dc1b3cf708a6dbaacc87e6c9fc00ae6f0ff3440
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: fd093006a9eb0c9746a19cb5f91b280145ddfb7e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107506"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517057"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズを選択する
 
@@ -28,20 +28,22 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 
 | VM シリーズ  | サポートされるサイズ |
 |------------|---------|
-| Basic A | Basic_A0 (A0) を*除く*すべてのサイズ |
-| A | Standard_A0 を*除く*すべてのサイズ |
+| Basic A | Basic_A0 (A0) を *除く* すべてのサイズ |
+| A | Standard_A0 を *除く* すべてのサイズ |
 | Av2 | すべてのサイズ |
-| B | なし |
-| DC | なし |
+| B | サポートされていません |
+| DC | サポートされていません |
 | Dv2、DSv2 | すべてのサイズ |
 | Dv3、Dsv3 | すべてのサイズ |
 | Dav4<sup>1</sup> | すべてのサイズ |
 | Dasv4<sup>1</sup> | すべてのサイズ |
 | Ddv4、Ddsv4 |  すべてのサイズ |
+| Dv4、Dsv4 | サポートされていません |
 | Ev3、Esv3 | E64is_v3 を除くすべてのサイズ |
 | Eav4<sup>1</sup> | すべてのサイズ |
 | Easv4<sup>1</sup> | すべてのサイズ |
 | Edv4、Edsv4 |  すべてのサイズ |
+| Ev4、Esv4 | サポートされていません |
 | F、Fs | すべてのサイズ |
 | Fsv2 | すべてのサイズ |
 | G、Gs | すべてのサイズ |
@@ -56,12 +58,13 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 | NC | すべてのサイズ |
 | NCv2<sup>1</sup> | すべてのサイズ |
 | NCv3<sup>1</sup> | すべてのサイズ |
+| NCasT4_v3 | なし - まだ使用できません |
 | ND<sup>1</sup> | すべてのサイズ |
 | NDv2<sup>1</sup> | なし - まだ使用できません |
 | NV | すべてのサイズ |
 | NVv3<sup>1</sup> | すべてのサイズ |
-| NVv4 | なし - まだ使用できません |
-| SAP HANA | なし |
+| NVv4<sup>1</sup> | すべてのサイズ |
+| SAP HANA | サポートされていません |
 
 <sup>1</sup> これらの VM シリーズは仮想マシン構成の Batch プールに割り当てることができますが、新しい Batch アカウントを作成し、特定の[クォータ引き上げ](batch-quota-limit.md#increase-a-quota)を要求する必要があります。 この制限は、VM シリーズごとの vCPU クォータが Batch アカウントで完全にサポートされると削除されます。
 
@@ -72,7 +75,7 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 
 ### <a name="pools-in-cloud-service-configuration"></a>クラウド サービス構成のプール
 
-クラウド サービス構成のバッチ プールでは、次を**除く**すべての [Cloud Services 向け VM サイズ](../cloud-services/cloud-services-sizes-specs.md)がサポートされます。
+クラウド サービス構成のバッチ プールでは、次を **除く** すべての [Cloud Services 向け VM サイズ](../cloud-services/cloud-services-sizes-specs.md)がサポートされます。
 
 | VM シリーズ  | サポートされないサイズ |
 |------------|-------------------|
@@ -89,7 +92,7 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 
 * **利用可能なリージョン** - Batch アカウントを作成したリージョンで、VM シリーズまたはサイズが利用できない場合があります。 特定のサイズが使用可能かどうかを確認するには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。
 
-* **クォータ** - Batch アカウントの[コア クォータ](batch-quota-limit.md#resource-quotas)により、Batch プールに追加できる指定されたサイズのノードの数を制限できます。 クォータの引き上げを要求するには、[この記事](batch-quota-limit.md#increase-a-quota)をご覧ください。 
+* **クォータ** - Batch アカウントの [コア クォータ](batch-quota-limit.md#resource-quotas)により、Batch プールに追加できる指定されたサイズのノードの数を制限できます。 クォータの引き上げを要求するには、[この記事](batch-quota-limit.md#increase-a-quota)をご覧ください。 
 
 * **プールの構成** - 一般的に、仮想マシン構成のプールを作成する際は、クラウド サービス構成と比較して VM サイズ オプションが増えます。
 

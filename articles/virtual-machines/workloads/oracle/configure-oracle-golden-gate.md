@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: c1890ab9f99999c88e28eb9a76d6270fa08fb87c
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: c480de6da0427b8eda212e02e08c7b3f5426941c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996662"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534143"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Azure Linux VM での Oracle Golden Gate の実装 
 
@@ -389,7 +389,7 @@ Oracle Golden Gate ソフトウェアをダウンロードして準備するに�
 3. PuTTY Key Generator で、次の手順を実行します。
 
    - キーを生成するために、 **[Generate]\(生成\)** ボタンを選択します。
-   - キーの内容をコピーします (**Ctrl + C キー**)。
+   - キーの内容をコピーします ( **Ctrl + C キー** )。
    - **[Save private key]\(秘密キーの保存\)** ボタンを選択します。
    - 表示される警告を無視し、 **[OK]** を選択します。
 
@@ -442,19 +442,19 @@ Oracle Golden Gate をインストールするには、次の手順を実行し�
 
 4. インベントリ ディレクトリを変更し、 **[Next]\(次へ\)** を選択して続行します。
 
-   ![[Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_03.png)
+   ![インストール ディレクトリが表示された [Select Installation]\(インストールの選択\) ページのスクリーンショット。](./media/oracle-golden-gate/golden_gate_install_03.png)
 
 5. **[Summary]\(概要\)** 画面で、 **[Install]\(インストール\)** を選択して続行します。
 
-   ![インストーラーの [Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_04.png)
+   ![[Select Installation]\(インストールの選択\) ページと [Install]\(インストール\) ボタンを示すスクリーンショット。](./media/oracle-golden-gate/golden_gate_install_04.png)
 
 6. スクリプトを "ルート" として実行するよう求められる場合があります。 その場合は別のセッションを開き (VM には ssh、root には sudo)、スクリプトを実行します。 **[OK]** を選択して続行します。
 
-   ![[Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_05.png)
+   ![スクリプトの場所と、構成スクリプトを実行する方法を示すスクリーンショット。](./media/oracle-golden-gate/golden_gate_install_05.png)
 
 7. インストールが完了したら、 **[Close]\(閉じる\)** を選択してプロセスを完了します。
 
-   ![[Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_06.png)
+   ![[閉じる] ボタンが表示された [Select Installation]\(インストールの選択\) ページのスクリーンショット。](./media/oracle-golden-gate/golden_gate_install_06.png)
 
 ### <a name="set-up-service-on-myvm1-primary"></a>myVM1 (プライマリ) でのサービスのセットアップ
 

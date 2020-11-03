@@ -6,19 +6,19 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 8/13/2020
-ms.openlocfilehash: 9868403f69f3dc0b56aae06be1afda2134472805
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: d2d34e95642308dcdacba20879945f2c965db955
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631037"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425193"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での監視
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for MariaDB には、サーバーの動作への洞察を提供する各種のメトリックが用意されています。
 
 ## <a name="metrics"></a>メトリック
-すべての Azure メトリックは 1 分間隔で、各メトリックの 30 日間の履歴が保持されます。 メトリックにアラートを構成できます。 その他のタスクとして、自動化されたアクションの設定、高度な分析の実行、履歴のアーカイブなどがあります。 詳細については、[Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)に関する記事をご覧ください。
+すべての Azure メトリックは 1 分間隔で、各メトリックの 30 日間の履歴が保持されます。 メトリックにアラートを構成できます。 その他のタスクとして、自動化されたアクションの設定、高度な分析の実行、履歴のアーカイブなどがあります。 詳細については、[Azure のメトリックの概要](../azure-monitor/platform/data-platform.md)に関する記事をご覧ください。
 
 詳細な手順については、[アラートの設定方法](howto-alert-metric.md)に関する記事をご覧ください。
 
@@ -45,15 +45,15 @@ ms.locfileid: "91631037"
 
 ## <a name="server-logs"></a>サーバー ログ
 
-サーバーで低速クエリ ログを有効にできます。 これらのログは、Azure Monitor ログ、Event Hubs、およびストレージ アカウントでの Azure 診断ログを通じて入手することもできます。 ログ記録の詳細については、 [サーバー ログ](concepts-server-logs.md)に関するページをご覧ください。
+サーバーで低速クエリ ログを有効にできます。 これらのログは、Azure Monitor ログ、Event Hubs、およびストレージ アカウントでの Azure 診断ログを通じて入手することもできます。 ログ記録の詳細については、[サーバー ログ](concepts-server-logs.md)に関するページをご覧ください。
 
 ## <a name="query-store"></a>クエリ ストア
 
-[クエリ ストア](concepts-query-store.md)は、クエリ ランタイム統計や待機イベントなど、一定期間のクエリ パフォーマンスを追跡記録します。 この機能は、**mysql** スキーマにクエリ ランタイムのパフォーマンス情報を保持します。 さまざまな構成ノブを介してデータのコレクションとストレージを制御できます。
+[クエリ ストア](concepts-query-store.md)は、クエリ ランタイム統計や待機イベントなど、一定期間のクエリ パフォーマンスを追跡記録します。 この機能は、 **mysql** スキーマにクエリ ランタイムのパフォーマンス情報を保持します。 さまざまな構成ノブを介してデータのコレクションとストレージを制御できます。
 
 ## <a name="query-performance-insight"></a>Query Performance Insight
 
-[Query Performance Insight](concepts-query-performance-insight.md) はクエリ ストアと連動し、データを視覚化します。視覚化したデータには Azure portal からアクセスできます。 これらのグラフにより、パフォーマンスに影響を与える主要なクエリを特定できます。 Query Performance Insight には、Azure Database for MariaDB サーバーのポータル ページの「**インテリジェント パフォーマンス**」セクションからアクセスできます。
+[Query Performance Insight](concepts-query-performance-insight.md) はクエリ ストアと連動し、データを視覚化します。視覚化したデータには Azure portal からアクセスできます。 これらのグラフにより、パフォーマンスに影響を与える主要なクエリを特定できます。 Query Performance Insight には、Azure Database for MariaDB サーバーのポータル ページの「 **インテリジェント パフォーマンス** 」セクションからアクセスできます。
 
 ## <a name="performance-recommendations"></a>パフォーマンスに関する推奨事項
 
@@ -61,30 +61,13 @@ ms.locfileid: "91631037"
 
 ## <a name="planned-maintenance-notification"></a>計画メンテナンスの通知
 
-**計画メンテナンスの通知**によって、Azure Database for MariaDB に対して今後予定されているメンテナンスに関するアラートを受信できます。 これらの通知は [Service Health の](../service-health/overview.md)計画メンテナンスに統合されており、サブスクリプションに対してスケジュールされたすべてのメンテナンスを 1 か所に表示できます。 また、異なるリソースに対しては異なる連絡先が必要になる場合があるため、さまざまなリソース グループに対して適切なユーザーへの通知をスケーリングすることも可能です。 今後のメンテナンスに関する通知は、イベントの 72 時間前に受信します。
+[計画メンテナンスの通知](./concepts-planned-maintenance-notification.md)によって、Azure Database for MariaDB に対して今後予定されているメンテナンスに関するアラートを受信できます。 これらの通知は [Service Health の](../service-health/overview.md)計画メンテナンスに統合されており、サブスクリプションに対してスケジュールされたすべてのメンテナンスを 1 か所に表示できます。 また、異なるリソースに対しては異なる連絡先が必要になる場合があるため、さまざまなリソース グループに対して適切なユーザーへの通知をスケーリングすることも可能です。 今後のメンテナンスに関する通知は、イベントの 72 時間前に受信します。
 
-計画メンテナンス中は、サーバーが再起動されて[一時的なエラー](concepts-connectivity.md#transient-errors)が発生する場合があります。 こうした事象の大半は、システムにより、60 秒かからず自動的に緩和されます。 
-
-> [!IMPORTANT]
-> 計画メンテナンスの通知は、現在、米国中西部**を除く**すべてのリージョンでプレビューとして利用できます。
-
-### <a name="to-receive-planned-maintenance-notification"></a>計画メンテナンスの通知を受信するには
-
-1. [ポータル](https://portal.azure.com)で、 **[サービス正常性]** を選択します。
-2. **[アラート]** セクションで、 **[正常性アラート]** を選択します。
-3. **[+ サービス正常性アラートの追加]** を選択し、フィールドに入力します。
-4. 必須フィールドに入力します。 
-5. **[イベントの種類]** を選択し、 **[計画メンテナンス]** または **[すべて選択]** を選択します
-6. **[アクション グループ]** で、アラートの受信方法 (電子メールの取得、ロジック アプリのトリガーなど) を定義します。  
-7. [ルールの作成時に有効にする] を確実に [はい] に設定します。
-8. **[アラート ルールの作成]** を選択してアラートを完成させます
-
-**サービス正常性アラート**の作成方法の詳細な手順については、「[サービス通知のアクティビティ ログ アラートを作成する](../service-health/alerts-activity-log-service-notifications.md)」を参照してください。
-
-> [!Note]
-> Microsoft では、**計画メンテナンスの通知**の 72 時間での通知をすべてのイベントに対して提供するために、あらゆる試みを行います。 ただし、重大時やセキュリティ更新プログラムに関する場合には、イベントが迫ってから通知が送信されたり、あるいは通知が省略されたりすることがあります。
+通知の設定方法の詳細については、[計画メンテナンスの通知](./concepts-planned-maintenance-notification.md)に関するドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 - Azure Portal、REST API、または CLI を使用してメトリックへのアクセスおよびメトリックのエクスポートを行う方法の詳細については、[Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)に関する記事をご覧ください。
-  - メトリックに対するアラートの作成のガイダンスについては、[アラートを設定する方法](howto-alert-metric.md)に関するページをご覧ください。
+- メトリックに対するアラートの作成のガイダンスについては、[アラートを設定する方法](howto-alert-metric.md)に関するページをご覧ください。
+- Azure Database for MariaDB での[計画メンテナンスの通知](./concepts-planned-maintenance-notification.md)に関するドキュメントを参照してください。
+

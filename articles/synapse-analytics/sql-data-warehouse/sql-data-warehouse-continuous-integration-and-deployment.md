@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 131811ffd268f001a047a7031170f0723770d24c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 061be5addd0c236db5d982e6103e3cf455b9c361
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462328"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480532"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>データ ウェアハウジングのための継続的インテグレーションと継続的デプロイ
 
@@ -60,7 +60,7 @@ ms.locfileid: "89462328"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Synapse SQL プール MPP アーキテクチャ](massively-parallel-processing-mpp-architecture.md)について理解を深める
+- [Synapse SQL プール アーキテクチャ](massively-parallel-processing-mpp-architecture.md)について理解を深める
 - [SQL プールの簡易作成](create-data-warehouse-portal.md)
 - [サンプル データを読み込む](load-data-from-azure-blob-storage-using-polybase.md)
 - [ビデオ](sql-data-warehouse-videos.md)を確認する

@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: be308a91b5b583f96406f10675344ab263150a81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48e9fc4c1efa3517f5de46b7198c868a22331c79
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716080"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486391"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>SMB アクセスの Azure Files ID ベース認証オプションの概要
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -104,7 +104,7 @@ Azure ファイル共有で ID ベースの認証を有効にする前に、ま�
 
 次の図は、SMB 経由の Azure ファイル共有に対するオンプレミス AD DS 認証を示しています。 オンプレミスの AD DS は、Azure AD Connect 同期を使用して Azure AD に同期する必要があります。オンプレミスの AD DS と Azure AD の両方に存在するハイブリッド ユーザーのみを、Azure ファイル共有アクセスに対して認証および承認できます。 これは、Azure AD ではAD DS 内の ID に対してディレクトリ/ファイル レベルのアクセス許可が 適用されており、Azure AD 内に示されている ID に対しては共有レベルのアクセス許可が構成されているためです。 同じハイブリッド ユーザーに対してアクセス許可を正しく構成するようにしてください。
 
-:::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="Diagram (ダイアグラム)":::
+:::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="SMB 経由の Azure ファイル共有に対するオンプレミスの AD DS 認証を示す図。":::
 
 ### <a name="azure-ad-ds"></a>Azure AD DS
 

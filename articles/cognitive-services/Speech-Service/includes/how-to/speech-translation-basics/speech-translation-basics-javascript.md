@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: v-demjoh
 ms.custom: devx-track-js
-ms.openlocfilehash: 44a9723b2fbe908be3cae79302834e2020190336
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: c63b55905ea16c0597e1f8f1179153229018ed32
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92210893"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92470912"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して他の言語に翻訳する機能です。 このクイックスタートでは、アプリと製品で Speech SDK を使用して、高品質の音声翻訳を実行する方法について説明します。 このクイックスタートでは、次のトピックについて説明します。
 
@@ -77,7 +77,7 @@ Speech SDK を使用して翻訳サービスを呼び出すには、[`SpeechTran
 * ホストの場合: ホスト アドレスを渡します。 キーまたは認証トークンは省略可能です。
 * 認証トークンの場合: 認証トークンと、それに関連付けられたリージョンを渡します。
 
-キーとリージョンを使用して [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true) を作成する方法を見てみましょう。 リージョン識別子を確認するには、[リージョンのサポート](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)に関するページを参照してください。
+キーとリージョンを使用して [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true) を作成する方法を見てみましょう。 「[Speech Service を無料で試す](../../../overview.md#try-the-speech-service-for-free)」の手順に従って、これらの資格情報を取得します。
 
 ```javascript
 const speechTranslationConfig = SpeechTranslationConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
@@ -104,7 +104,7 @@ const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 const recognizer = new TranslationRecognizer(speechTranslationConfig, audioConfig);
 ```
 
-マイクを使用するのでなくオーディオ ファイルを提供する場合でも、`audioConfig` を指定する必要があります。 ただし、これを行うことができるのは **Node.js** を対象とする場合のみであり、[`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true) を作成するときに、`fromDefaultMicrophoneInput`を呼び出すのではなく、`fromWavFileOutput` を呼び出して `filename` パラメーターを渡します。
+マイクを使用するのでなくオーディオ ファイルを提供する場合でも、`audioConfig` を指定する必要があります。 ただし、これを行うことができるのは **Node.js** を対象とする場合のみであり、 [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true) を作成するときに、`fromDefaultMicrophoneInput`を呼び出すのではなく、`fromWavFileOutput` を呼び出して `filename` パラメーターを渡します。
 
 ```javascript
 const audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
@@ -238,7 +238,7 @@ recognizer.startContinuousRecognitionAsync();
 speechTranslationConfig.speechRecognitionLanguage = "it-IT";
 ```
 
-[`speechRecognitionLanguage`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true#speechrecognitionlanguage) プロパティには、言語ロケールの書式指定文字列が必要です。 サポートされている[ロケールまたは言語](../../../language-support.md)のリストの**ロケール**列に任意の値を指定できます。
+[`speechRecognitionLanguage`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true#speechrecognitionlanguage) プロパティには、言語ロケールの書式指定文字列が必要です。 サポートされている [ロケールまたは言語](../../../language-support.md)のリストの **ロケール** 列に任意の値を指定できます。
 
 ## <a name="choose-one-or-more-target-languages"></a>1 つ以上のターゲット言語を選択する
 

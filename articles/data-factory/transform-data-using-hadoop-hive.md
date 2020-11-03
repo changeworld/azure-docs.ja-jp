@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 05/08/2019
-ms.openlocfilehash: 877c1719a76f23f8446164b641dc2dac84261e0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20deb1a235843bf5fe5c42c513e1d8d2117c65c5
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83849282"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637906"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Azure Data Factory で Hadoop Hive アクティビティを使用してデータを変換する
 
@@ -64,7 +64,7 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
 | description         | アクティビティの用途を説明するテキストです。                | いいえ       |
 | type                | Hive アクティビティの場合、アクティビティの種類は HDinsightHive です        | はい      |
 | linkedServiceName   | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |
-| scriptLinkedService | 実行する Hiveスクリプトの格納に使用される Azure Storage のリンクされたサービスへの参照。 ここでは **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** および **[ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** にリンクされたサービスのみがサポートされています。 このリンクされたサービスを指定していない場合は、HDInsight のリンクされたサービスで定義されている Azure Storage のリンクされたサービスが使用されます。  | いいえ       |
+| scriptLinkedService | 実行する Hiveスクリプトの格納に使用される Azure Storage のリンクされたサービスへの参照。 ここでは **[Azure Blob Storage](./connector-azure-blob-storage.md)** および **[ADLS Gen2](./connector-azure-data-lake-storage.md)** にリンクされたサービスのみがサポートされています。 このリンクされたサービスを指定していない場合は、HDInsight のリンクされたサービスで定義されている Azure Storage のリンクされたサービスが使用されます。  | いいえ       |
 | scriptPath          | scriptLinkedService で参照される Azure Storage に格納されているスクリプト ファイルへのパスを指定します。 ファイル名は大文字と小文字が区別されます。 | はい      |
 | getDebugInfo        | HDInsight クラスターで使用されている Azure Storage または scriptLinkedService で指定された Azure Storage にログ ファイルがコピーされるタイミングを指定します。 使用できる値は以下の通りです。None、Always、または Failure。 既定値:[なし] : | いいえ       |
 | 引数           | Hadoop ジョブの引数の配列を指定します。 引数はコマンド ライン引数として各タスクに渡されます。 | いいえ       |
@@ -80,5 +80,5 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
 * [Hadoop Streaming アクティビティ](transform-data-using-hadoop-streaming.md)
 * [Spark アクティビティ](transform-data-using-spark.md)
 * [.NET カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md)
-* [Machine Learning バッチ実行アクティビティ](transform-data-using-machine-learning.md)
+* [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](transform-data-using-machine-learning.md)
 * [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)

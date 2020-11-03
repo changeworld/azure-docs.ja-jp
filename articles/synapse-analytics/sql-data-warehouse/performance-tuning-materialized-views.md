@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 7c7109999d478121ba0251de8e7470bc0f38d64c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e807a01f575615967a039d360505a4f090cd1fd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984117"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478322"
 ---
 # <a name="performance-tune-with-materialized-views"></a>具体化されたビューを使用したパフォーマンスのチューニング
 
@@ -79,7 +79,7 @@ SQL プールに実装されている具体化されたビューには、さら�
 
 **クエリ パフォーマンスを向上させるために別のデータ分散方法が必要である**
 
-SQL プールは、分散型の超並列処理 (MPP) システムです。   SQL プール テーブル内のデータは、3 つの[分散方式](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (ハッシュ、ラウンド ロビン、レプリケート) のいずれかを使用して 60 のノードに分散されます。  
+Synapse SQL は分散クエリ処理システムです。  SQL テーブル内のデータは、3 つの[分散方式](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (ハッシュ、ラウンド ロビン、レプリケート) のいずれかを使用して 60 のノードに分散されます。   
 
 データ分散はテーブルの作成時に指定され、テーブルが削除されるまで変更されることなく維持されます。 具体化されたビューはディスク上の仮想テーブルであるため、ハッシュとラウンド ロビンによるデータ分散がサポートされます。  ユーザーは、ベース テーブルとは異なっているものの、ビューの使用頻度がきわめて高いクエリのパフォーマンスに最適なデータ分散を選択できます。  
 

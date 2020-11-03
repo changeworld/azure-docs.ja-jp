@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 2/20/2019
 ms.author: raiye
 ms.subservice: disks
-ms.openlocfilehash: fd0f489bd6109a5dcd6625eb26286e0d40c50c63
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e4f6cefd56c12162b370c78b6df2cd29ece030f1
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962328"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515714"
 ---
 # <a name="enable-write-accelerator"></a>書き込みアクセラレータを有効にする
 
@@ -33,7 +33,7 @@ ms.locfileid: "91962328"
 >
 > Windows のディスクまたはボリューム マネージャー、Windows 記憶域スペース、Windows スケールアウト ファイル サーバー (SOFS)、Linux LVM、または MDADM を使って複数のディスクで構成されるボリュームの一部ではない既存の Azure ディスクに対して書き込みアクセラレータを有効にするには、Azure ディスクにアクセスしているワークロードをシャットダウンする必要があります。 Azure ディスクを使っているデータベース アプリケーションをシャットダウンをする必要があります。
 >
-> 複数の Azure Premium Storage ディスクで構成され、Windows のディスクまたはボリューム マネージャー、Windows 記憶域スペース、Windows スケールアウト ファイル サーバー (SOFS)、Linux LVM、または MDADM を使ってストライピングされている既存のボリュームで、書き込みアクセラレータを有効または無効にする場合は、ボリュームを構成するすべてのディスクに対し、異なる手順で書き込みアクセラレータを有効または無効にする必要があります。 **そのような構成で書き込みアクセラレータを有効または無効にする前に、Azure VM をシャットダウンしてください**。
+> 複数の Azure Premium Storage ディスクで構成され、Windows のディスクまたはボリューム マネージャー、Windows 記憶域スペース、Windows スケールアウト ファイル サーバー (SOFS)、Linux LVM、または MDADM を使ってストライピングされている既存のボリュームで、書き込みアクセラレータを有効または無効にする場合は、ボリュームを構成するすべてのディスクに対し、異なる手順で書き込みアクセラレータを有効または無効にする必要があります。 **そのような構成で書き込みアクセラレータを有効または無効にする前に、Azure VM をシャットダウンしてください** 。
 
 SAP 関連の VM 構成では、OS ディスクで書き込みアクセラレータを有効にする必要はありません。
 
@@ -57,7 +57,7 @@ Azure ディスク/VHD で書き込みアクセラレータを使うときは、
 | M16ms、M16s | 2 | 2500 |
 | M8ms、M8s | 1 | 1250 |
 
-IOPS の制限は、VM あたりの値であり、ディスクあたりの値では*ありません*。 すべての書き込みアクセラレータ ディスクが VM あたりの同じ IOPS 制限を共有します。
+IOPS の制限は、VM あたりの値であり、ディスクあたりの値では *ありません* 。 すべての書き込みアクセラレータ ディスクが VM あたりの同じ IOPS 制限を共有します。 アタッチされているディスクは、VM の書き込みアクセラレータの IOPS 制限を超えることはできません。 たとえば、アタッチされたディスクで 30,000 IOPS を実行できる場合でも、システムでは、M416ms_v2 のディスクが 20,000 IOPS を超えることは許可されません。
 
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>特定のディスクでの書き込みアクセラレータの有効化
 
@@ -138,7 +138,7 @@ Update-AzVM -ResourceGroupName $rgname -VM $vm
 
 ### <a name="enabling-write-accelerator-on-an-existing-azure-disk-using-powershell"></a>PowerShell を使用して既存の Azure ディスクで書き込みアクセラレータを有効にする
 
-このスクリプトを使って、既存のディスクで書き込みアクセラレータを有効にすることができます。 `myVM`、`myWAVMs`、および `test-log001` を特定のデプロイに対して適切な値に置き換えます。 スクリプトでは、**$newstatus** の値を "$true" に設定して、既存のディスクに書き込みアクセラレータを追加します。 値 "$false" を使うと、特定のディスクの書き込みアクセラレータが無効になります。
+このスクリプトを使って、既存のディスクで書き込みアクセラレータを有効にすることができます。 `myVM`、`myWAVMs`、および `test-log001` を特定のデプロイに対して適切な値に置き換えます。 スクリプトでは、 **$newstatus** の値を "$true" に設定して、既存のディスクに書き込みアクセラレータを追加します。 値 "$false" を使うと、特定のディスクの書き込みアクセラレータが無効になります。
 
 ```powershell
 #Specify your VM Name

@@ -5,19 +5,22 @@ services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 10/15/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: a9e300a0e6f1b847c49ced7ded94db8e24016b32
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 857429ab5fd2e2ea9a0cb0173015ceba4bb0bacb
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102274"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504113"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>API コネクタをサインアップ ユーザー フローに追加する (プレビュー)
+
+> [!IMPORTANT]
+> サインアップ用の API コネクタは、Azure AD B2C のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 [API コネクタ](api-connectors-overview.md)を使用するには、まず API コネクタを作成してから、ユーザー フローで有効にします。
 
@@ -48,7 +51,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -80,7 +83,7 @@ Content-type: application/json
 > API エンドポイントが呼び出されたときに要求に値がない場合、要求は API に送信されません。 API は、要求に要求が含まれていないケースを明示的に確認して処理するように設計する必要があります。
 
 > [!TIP] 
-> [**identities ("identities")**](https://docs.microsoft.com/graph/api/resources/objectidentity) および **Email Address ("email")** の各要求は、テナントにアカウントを作成する前にユーザーを識別するために API によって使用できます。 "identities" 要求は、ユーザーが Google または Facebook などの ID プロバイダーで認証されるときに送信されます。 "email" は常に送信されます。
+> [**identities ("identities")**](https://docs.microsoft.com/graph/api/resources/objectidentity) および **Email Address ("email")** の各要求は、テナントにアカウントを作成する前にユーザーを識別するために API によって使用できます。 
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>ユーザー フローで API コネクタを有効にする
 
@@ -100,7 +103,7 @@ Content-type: application/json
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>ID プロバイダーを使用してサインインした後
 
-サインアップ プロセスのこのステップでの API コネクタは、ID プロバイダー (Google、Facebook、Azure AD など) でユーザーが認証された直後に呼び出されます。 このステップは、 ***属性コレクション ページ*** (ユーザーに提示される、ユーザー属性を収集するためのフォーム) の前にあります。 ユーザーがローカル アカウントを使用して登録している場合、このステップは呼び出されません。
+サインアップ プロセスのこのステップでの API コネクタは、ID プロバイダー (Google、Facebook、Azure AD など) でユーザーが認証された直後に呼び出されます。 このステップは、* *_属性コレクション ページ_* _ (ユーザーに提示される、ユーザー属性を収集するためのフォーム) の前にあります。 ユーザーがローカル アカウントを使用して登録している場合、このステップは呼び出されません。
 
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>この手順で API に送信される要求の例
 ```http
@@ -109,7 +112,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [ 
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -167,7 +170,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -238,7 +241,7 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | version                                            | String            | はい      | API のバージョン。                                                                                                                                                                                                                                                                |
 | action                                             | String            | はい      | 値は `Continue` とする必要があります。                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | いいえ       | 戻り値を使用すると、ユーザーから収集された値を上書きすることができます。 また、 **[アプリケーション要求]** として選択されている場合は、値をトークンで返すことができます。                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | いいえ       | 戻り値を使用すると、ユーザーから収集された値を上書きすることができます。 また、_*[アプリケーション要求]** として選択されている場合は、値をトークンで返すことができます。                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | いいえ       | 要求に `_<extensions-app-id>_` が含まれている必要はありません。 戻り値を使用すると、ユーザーから収集された値を上書きすることができます。 また、 **[アプリケーション要求]** として選択されている場合は、値をトークンで返すことができます。  |
 
 ### <a name="example-of-a-blocking-response"></a>ブロック応答の例
@@ -288,7 +291,8 @@ Content-type: application/json
 | status      | Integer | はい      | ValidationError 応答の値 `400` である必要があります。                        |
 | userMessage | String  | はい      | ユーザーに表示するメッセージ。                                            |
 
-*注:* HTTP 状態コードは、応答の本文で、"status" 値であることに加え、"400" である必要があります。
+> [!NOTE]
+> HTTP 状態コードは、応答の本文で、"status" 値であることに加え、"400" である必要があります。
 
 **検証エラー応答を使用したエンド ユーザー エクスペリエンス**
 
@@ -318,4 +322,4 @@ Azure Functions の HTTP トリガーなどのサーバーレス機能を使用�
 
 ## <a name="next-steps"></a>次の手順
 <!-- - Learn how to [add a custom approval workflow to sign-up](add-approvals.md) -->
-- [Azure Function クイックスタート サンプル](code-samples.md#api-connectors)を使用する。
+- [サンプル](code-samples.md#api-connectors)を使用して作業を開始します。

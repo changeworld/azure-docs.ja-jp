@@ -1,14 +1,14 @@
 ---
 title: テナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
-ms.date: 10/20/2020
+ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: b033e141d176db839e897ac4add738a4a799de99
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 5443c3b5a34cd493e0956f2a0d6ed7d6fecd603d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315928"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460667"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -81,6 +81,10 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 [Azure Kubernetes Service (AKS)](../../aks/index.yml):
 
 - ホストされている Kubernetes 環境を管理し、顧客のテナント内でコンテナー化されたアプリケーションをデプロイして管理する
+
+[Azure Migrate](../../migrate/index.yml):
+
+- 顧客テナントで移行プロジェクトを作成して VM を移行する
 
 [Azure Monitor](../../azure-monitor/index.yml):
 
@@ -160,7 +164,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 すべてのシナリオで、次に示す現在の制限事項に注意してください。
 
 - Azure Resource Manager で処理される要求は、Azure Lighthouse を使用して実行できます。 これらの要求の操作 URI は、`https://management.azure.com` で始まります。 ただし、リソースの種類のインスタンス (Key Vault のシークレット アクセスやストレージのデータ アクセスなど) によって処理される要求は、Azure Lighthouse ではサポートされていません。 これらの要求の操作 URI は、通常、`https://myaccount.blob.core.windows.net` や `https://mykeyvault.vault.azure.net/` など、実際のインスタンスに固有のアドレスで始まります。 また、通常、後者は管理操作ではなくデータ操作です。
-- ロールの割り当てでは、ロールベースのアクセス制御 (RBAC) の[組み込みロール](../../role-based-access-control/built-in-roles.md)を使用する必要があります。 現在、組み込みロールはすべて、Azure の委任されたリソース管理によってサポートされています。ただし、所有者または [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) アクセス許可を持つ組み込みロールは除きます。 [マネージド ID へのロールの割り当て](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)において、ユーザー アクセス管理者ロールは、限定された用途のみに対してサポートされています。  カスタム ロールと[従来のサブスクリプション管理者ロール](../../role-based-access-control/classic-administrators.md)はサポートされていません。
+- ロールの割り当てには [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)を使用する必要があります。 現在、組み込みロールはすべて、Azure の委任されたリソース管理によってサポートされています。ただし、所有者または [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) アクセス許可を持つ組み込みロールは除きます。 [マネージド ID へのロールの割り当て](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)において、ユーザー アクセス管理者ロールは、限定された用途のみに対してサポートされています。  カスタム ロールと[従来のサブスクリプション管理者ロール](../../role-based-access-control/classic-administrators.md)はサポートされていません。
 - Azure Databricks を使用するサブスクリプションをオンボードすることはできますが、現時点では、管理テナントのユーザーは、委任されたサブスクリプションで Azure Databricks ワークスペースを起動することはできません。
 - リソース ロックがあるサブスクリプションとリソース グループをオンボードすることはできますが、このようなロックがあっても、管理テナントのユーザーによるアクションの実行は妨げられません。 Azure マネージド アプリケーションまたは Azure Blueprints (システム割り当ての拒否割り当て) によって作成されたものなど、システムの管理対象リソースを保護する[拒否割り当て](../../role-based-access-control/deny-assignments.md)がある場合、管理テナントのユーザーはそれらのリソースを操作できません。ただし、現時点では、顧客テナントのユーザーは自分の拒否割り当て (ユーザー割り当て拒否割り当て) を作成できません。
 

@@ -1,6 +1,6 @@
 ---
 title: データを変換する
-description: Azure Data Factory で、Hadoop、Machine Learning、または Azure Data Lake Analytics を使用してデータを変換または処理します。
+description: Azure Data Factory でのデータの変換またはデータの処理には、Azure Data Factory で Hadoop、Azure Machine Learning Studio (クラシック)、または Azure Data Lake Analytics を使用します。
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 19b4ee621a3918a49b524c5e4515bddd5962e0f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37eac4acab7232e44f94e852b1c04c5549447b09
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442787"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637685"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory でデータを変換する
 
@@ -26,7 +26,7 @@ ms.locfileid: "89442787"
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
 > * [HDInsight Streaming](transform-data-using-hadoop-streaming.md)
 > * [HDInsight Spark](transform-data-using-spark.md)
-> * [Machine Learning](transform-data-using-machine-learning.md) 
+> * [Azure Machine Learning Studio (クラシック)](transform-data-using-machine-learning.md) 
 > * [ストアド プロシージャ](transform-data-using-stored-procedure.md)
 > * [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md)
 > * [Databricks Notebook](transform-data-databricks-notebook.md)
@@ -49,7 +49,7 @@ Data Factory は、次のデータ変換アクティビティをサポートし�
 
 ### <a name="wrangling-data-flows"></a>ラングリング データ フロー
 
-Azure Data Factory のラングリング データ フローを使用すると、コードなしのデータ準備をクラウド規模で繰り返し実行できます。 ラングリング データ フローは [Power Query Online](https://docs.microsoft.com/power-query/) と統合されており、Spark 実行を通して Power Query M 関数をデータ ラングリングに対してクラウド規模で使用可能にします。 詳細については、[ラングリング データ フロー](wrangling-data-flow-overview.md)に関するページを参照してください。
+Azure Data Factory のラングリング データ フローを使用すると、コードなしのデータ準備をクラウド規模で繰り返し実行できます。 ラングリング データ フローは [Power Query Online](/power-query/) と統合されており、Spark 実行を通して Power Query M 関数をデータ ラングリングに対してクラウド規模で使用可能にします。 詳細については、[ラングリング データ フロー](wrangling-data-flow-overview.md)に関するページを参照してください。
 
 ## <a name="external-transformations"></a>外部での変換
 
@@ -70,12 +70,12 @@ Data Factory パイプラインの HDInsight Streaming アクティビティは�
 ### <a name="hdinsight-spark-activity"></a>HDInsight Spark アクティビティ
 Data Factory パイプラインの HDInsight Spark アクティビティでは、独自の HDInsight クラスターで Spark プログラムを実行します。 詳細については、「[Data Factory から Spark プログラムを起動する](transform-data-using-spark.md)」を参照してください。 
 
-### <a name="machine-learning-activities"></a>Machine Learning アクティビティ
-Azure Data Factory を使用すると、公開された Azure Machine Learning Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプラインで[バッチ実行アクティビティ](transform-data-using-machine-learning.md)を使用すると、Machine Learning Web サービスを呼び出して、データの予測をバッチで行うことができます。
+### <a name="azure-machine-learning-studio-classic-activities"></a>Azure Machine Learning スタジオ (クラシック) のアクティビティ
+Azure Data Factory を使用すると、公開された Azure Machine Learning Studio (classic) Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプライン内で[バッチ実行アクティビティ](transform-data-using-machine-learning.md)を使用すると、スタジオ (クラシック) Web サービスを呼び出して、データの予測を一括で行うことができます。
 
-時間の経過と共に、Machine Learning スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。 再トレーニングが完了したら、再トレーニング済みの Machine Learning モデルでスコア付け Web サービスを更新する必要があります。 [更新リソース アクティビティ](update-machine-learning-models.md)を使用して、新しくトレーニングを行ったモデルで Web サービスを更新します。  
+時間の経過と共に、スタジオ (クラシック) スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。 再トレーニングが完了したら、再トレーニング済みの機械学習モデルでスコア付け Web サービスを更新する必要があります。 [更新リソース アクティビティ](update-machine-learning-models.md)を使用して、新しくトレーニングを行ったモデルで Web サービスを更新します。  
 
-これらの Machine Learning アクティビティの詳細については、 [Azure Machine Learning アクティビティの使用](transform-data-using-machine-learning.md) に関する記事を参照してください。 
+これらのスタジオ (クラシック) アクティビティの詳細については、[Azure Machine Learning Studio (クラシック) アクティビティの使用](transform-data-using-machine-learning.md)に関するページを参照してください。 
 
 ### <a name="stored-procedure-activity"></a>ストアド プロシージャ アクティビティ
 SQL Server ストアド プロシージャ アクティビティを Data Factory のパイプライン内で使用して、次のいずれかのデータ ストア内のストアド プロシージャを呼び出すことができます。企業または Azure VM 内の Azure SQL Database、Azure Synapse Analytics (旧称 SQL Data Warehouse)、SQL Server データベース。 詳細については、[ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)に関する記事をご覧ください。  
@@ -103,8 +103,8 @@ Data Factory でサポートされていない方法でデータを変換する�
 ### <a name="compute-environments"></a>コンピューティング環境
 変換アクティビティを定義するときには、コンピューティング環境のリンクされたサービスを作成したうえで、そのサービスを使用します。 Data Factory でサポートされているコンピューティング環境は 2 種類あります。 
 
-- **オンデマンド**: この場合、コンピューティング環境は Data Factory で完全に管理されます。 データを処理するためのジョブが送信される前に Data Factory サービスにより自動的に作成され、ジョブの完了時に削除されます。 ユーザーは、ジョブの実行、クラスターの管理、ブートストラップ アクションなどについて、オンデマンドのコンピューティング環境の詳細設定を構成および制御できます。 
-- **独自の環境を使用する**: この場合、Data Factory のリンクされたサービスとして、独自のコンピューティング環境 (HDInsight クラスターなど) を登録できます。 このコンピューティング環境はユーザーが自分で管理することになります。Data Factory サービスは、アクティビティを実行にこの環境を使用します。 
+- **オンデマンド** : この場合、コンピューティング環境は Data Factory で完全に管理されます。 データを処理するためのジョブが送信される前に Data Factory サービスにより自動的に作成され、ジョブの完了時に削除されます。 ユーザーは、ジョブの実行、クラスターの管理、ブートストラップ アクションなどについて、オンデマンドのコンピューティング環境の詳細設定を構成および制御できます。 
+- **独自の環境を使用する** : この場合、Data Factory のリンクされたサービスとして、独自のコンピューティング環境 (HDInsight クラスターなど) を登録できます。 このコンピューティング環境はユーザーが自分で管理することになります。Data Factory サービスは、アクティビティを実行にこの環境を使用します。 
 
 Data Factory でサポートされているコンピューティング サービスの詳細については、記事「 [コンピューティングのリンクされたサービス](compute-linked-services.md) 」を参照してください。 
 

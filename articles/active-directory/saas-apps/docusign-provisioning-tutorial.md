@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: d56f9890396d0381d24676964dabc57e2020ec28
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3a0a69784be3b03b030ef599037b57c2c20ea2c6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317431"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454679"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>チュートリアル:DocuSign を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -35,7 +35,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 プロビジョニング サービスを構成して有効にする前に、DocuSign アプリへのアクセスが必要なユーザーを表す Azure AD 内のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順でこれらのユーザーを DocuSign アプリに割り当てることができます。
 
-[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-docusign"></a>ユーザーを DocuSign に割り当てる際の重要なヒント
 
@@ -69,7 +69,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 1. **[管理者資格情報]** セクションに次の構成設定を指定します。
    
-    a. **[管理ユーザー名]** テキストボックスに、DocuSign の**システム管理者**プロファイルが割り当てられている DocuSign アカウント名を入力します。
+    a. **[管理ユーザー名]** テキストボックスに、DocuSign の **システム管理者** プロファイルが割り当てられている DocuSign アカウント名を入力します。
    
     b. **[管理パスワード]** テキストボックスに、このアカウントのパスワードを入力します。
 
@@ -93,6 +93,12 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 [ユーザーとグループ] セクションで DocuSign に割り当てたユーザーの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。このログには、プロビジョニング サービスによって DocuSign アプリに対して実行されたすべてのアクションが記載されています。
 
 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
+
+## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
+* Docusign でユーザーのロールまたはアクセス許可プロファイルをプロビジョニングするには、属性マッピングで [switch](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#switch) と [singleAppRoleAssignment](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#singleapproleassignment) 関数を使用する式を使用します。 たとえば、次の式では、Azure AD でユーザーに "DS Admin" ロールが割り当てられている場合、ID "8032066" がプロビジョニングされます。 ユーザーに Azure AD 側でロールが割り当てられていない場合、アクセス許可プロファイルはプロビジョニングされません。 DocuSign [ポータル](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles)から ID を取得できます。
+
+Switch(SingleAppRoleAssignment([appRoleAssignments])," ", "8032066", "DS Admin")
+
 
 ## <a name="additional-resources"></a>その他のリソース
 

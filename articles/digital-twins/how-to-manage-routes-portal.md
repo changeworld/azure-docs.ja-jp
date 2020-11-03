@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ec23252883f928cfa6c1651afbfe88e413d55571
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 6b1f53226b82a5342efda8665b6a366a3a7fd310
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339596"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461415"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Azure Digital Twins でのエンドポイントとルートの管理 (ポータル)
 
@@ -22,7 +22,7 @@ Azure Digital Twins では、ダウンストリームのサービスや接続さ
 
 この記事では、[Azure portal](https://portal.azure.com) を使用して、エンドポイントとルートを作成する手順を説明します。
 
-エンドポイントとルートは、[EventRoutes API](how-to-use-apis-sdks.md)、[.NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用して管理することもできます。 ポータルの代わりにこれらのメカニズムを使用するこの記事のバージョンについては、 [*エンドポイントとルートを管理する方法 (API と CLI)*](how-to-manage-routes-apis-cli.md) に関するページを参照してください。
+エンドポイントとルートは、[Event Routes API](/rest/api/digital-twins/dataplane/eventroutes)、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用して管理することもできます。 ポータルの代わりにこれらのメカニズムを使用するこの記事のバージョンについては、 [*エンドポイントとルートを管理する方法 (API と CLI)*](how-to-manage-routes-apis-cli.md) に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +37,7 @@ Azure Digital Twins では、ダウンストリームのサービスや接続さ
 
 結果からインスタンスを選択すると、インスタンスの詳細ページが表示されます。
 
-:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Azure portal 検索バーのスクリーンショット。" border="false":::
+:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="ADT インスタンスの詳細のスクリーンショット。" border="false":::
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Azure Digital Twins のエンドポイントの作成
 
@@ -62,11 +62,11 @@ Azure Digital Twins では、ダウンストリームのサービスや接続さ
 
 次に、 _[保存]_ をクリックしてエンドポイントを作成します。
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="Azure portal 検索バーのスクリーンショット。":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="Event Grid の種類のエンドポイントを作成するスクリーンショット。":::
 
 上部の Azure portal バーの通知アイコンを確認して、エンドポイントが正常に作成されたことを確認できます。 
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="Azure portal 検索バーのスクリーンショット。" border="false":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="エンドポイントの作成を確認する通知のスクリーンショット。" border="false":::
 
 また、Azure Digital Twins インスタンスの *[エンドポイント]* ページに戻って、作成したエンドポイントを表示することもできます。
 
@@ -88,7 +88,7 @@ Azure Digital Twins では、ダウンストリームのサービスや接続さ
 
 次に、 _[保存]_ をクリックしてエンドポイントを作成します。
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub.png" alt-text="Azure portal 検索バーのスクリーンショット。":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub.png" alt-text="イベント ハブの種類のエンドポイントを作成するスクリーンショット。":::
 
 上部の Azure portal バーの通知アイコンを確認して、エンドポイントが正常に作成されたことを確認できます。 
 
@@ -110,7 +110,7 @@ Azure Digital Twins では、ダウンストリームのサービスや接続さ
 
 次に、 _[保存]_ をクリックしてエンドポイントを作成します。
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-service-bus.png" alt-text="Azure portal 検索バーのスクリーンショット。":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-service-bus.png" alt-text="Service Bus の種類のエンドポイントを作成するスクリーンショット。":::
 
 上部の Azure portal バーの通知アイコンを確認して、エンドポイントが正常に作成されたことを確認できます。 
 
@@ -157,7 +157,7 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 
 有効にするルートについて、少なくとも `true` の **イベントルート フィルターを追加する** 必要もあります。 (`false` の既定値のままにするとルートが作成されますが、イベントがそれに送信されません)。これを行うには、 _[詳細エディター]_ のスイッチを切り替えて有効にし、 *[フィルター]* ボックスに `true` と書き込みます。
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="Azure portal 検索バーのスクリーンショット。" lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="インスタンスのイベント ルートを作成するスクリーンショット。" lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
 
 完了したら、 _[保存]_ ボタンをクリックして、イベント ルートを作成します。
 
@@ -182,7 +182,7 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-1.png" alt-text="Azure portal 検索バーのスクリーンショット。":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-1.png" alt-text="基本フィルターでイベントルートを作成するスクリーンショット。イベントのチェックボックスが選択されている。":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -192,7 +192,7 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-2.png" alt-text="Azure portal 検索バーのスクリーンショット。":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-2.png" alt-text="基本フィルターでイベントルートを作成するスクリーンショット。イベントの選択後の自動設定されたフィルター テキストを示している。":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -206,7 +206,7 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-advanced.png" alt-text="Azure portal 検索バーのスクリーンショット。":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-advanced.png" alt-text="高度なフィルターを使用してイベント ルートを作成するスクリーンショット。":::
     :::column-end:::
     :::column:::
     :::column-end:::

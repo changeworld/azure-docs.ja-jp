@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: ca4ed58de030e372f97ebda87d12340a57a584d5
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f0dfa137e42d60246ce8f5281f002d5ca567c2ae
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207089"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427523"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスを作成して管理する
 
@@ -111,7 +111,7 @@ Azure Machine Learning Studio のワークスペースで、いずれかのノ�
 * [Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)  このテンプレートに必要な TenantID と ObjectID を見つける方法の詳細については、「[認証構成のための ID オブジェクト ID を見つける](../healthcare-apis/find-identity-object-ids.md)」を参照してください。  これらの値は Azure Active Directory ポータルでも見つけることができます。
 * REST API
 
-データ科学者向けにコンピューティング インスタンスを作成する場合、彼らは次に示す [Azure ロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) アクセス許可が必要です。 
+データ科学者向けにコンピューティング インスタンスを作成する場合は、次に示す [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) アクセス許可が必要です。 
 * *Microsoft.MachineLearningServices/workspaces/computes/start/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
@@ -226,9 +226,9 @@ Azure Machine Learning Studio 内のご利用のワークスペースで、 **[�
 
 ---
 
-[RBAC](/azure/role-based-access-control/overview) を使用すると、ワークスペース内のどのユーザーにコンピューティング インスタンスの作成、削除、開始、停止、再起動を許可するかを制御できます。 ワークスペースの共同作成者および所有者ロール内のユーザーはすべて、ワークスペース全体でコンピューティング インスタンスを作成、削除、開始、停止、および再起動することができます。 ただし、特定のコンピューティング インスタンスの作成者、またはその作成者に代わって作成された場合は割り当てられたユーザーのみが、そのコンピューティング インスタンス上の Jupyter、JupyterLab、および RStudio にアクセスすることが許可されます。 コンピューティング インスタンスは、ルート アクセス権を持つ 1 人のユーザー専用で、Jupyter/JupyterLab/RStudio を介してターミナルを使用できます。 コンピューティング インスタンスには、シングルユーザー ログインが用意され、すべてのアクションで、実験実行の属性および RBAC にそのユーザー ID が使用されます。 SSH アクセスは、公開/秘密キーのメカニズムを通じて制御されます。
+[Azure RBAC](/azure/role-based-access-control/overview) を使用すると、ワークスペース内のどのユーザーにコンピューティング インスタンスの作成、削除、開始、停止、再起動を許可するかを制御できます。 ワークスペースの共同作成者および所有者ロール内のユーザーはすべて、ワークスペース全体でコンピューティング インスタンスを作成、削除、開始、停止、および再起動することができます。 ただし、特定のコンピューティング インスタンスの作成者、またはその作成者に代わって作成された場合は割り当てられたユーザーのみが、そのコンピューティング インスタンス上の Jupyter、JupyterLab、および RStudio にアクセスすることが許可されます。 コンピューティング インスタンスは、ルート アクセス権を持つ 1 人のユーザー専用で、Jupyter/JupyterLab/RStudio を介してターミナルを使用できます。 コンピューティング インスタンスには、シングルユーザー ログインが用意され、すべてのアクションで、そのユーザーの ID が Azure RBAC と実験実行の属性で使用されます。 SSH アクセスは、公開/秘密キーのメカニズムを通じて制御されます。
 
-次のアクションは RBAC で制御できます。
+Azure RBAC によって、次のアクションを制御できます。
 * *Microsoft.MachineLearningServices/workspaces/computes/read*
 * *Microsoft.MachineLearningServices/workspaces/computes/write*
 * *Microsoft.MachineLearningServices/workspaces/computes/delete*

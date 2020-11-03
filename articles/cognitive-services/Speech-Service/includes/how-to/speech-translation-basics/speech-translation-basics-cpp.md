@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: 1b54d0059e68c7e06904155fdd1a70782e07f493
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eab4af541c2190599e953196ba16e9300bee2ede
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91376431"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92470903"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して他の言語に翻訳する機能です。 このクイックスタートでは、アプリと製品で Speech SDK を使用して、高品質の音声翻訳を実行する方法について説明します。 このクイックスタートでは、次のトピックについて説明します。
 
@@ -27,7 +27,7 @@ Speech Service の中核となる機能の 1 つは、人間の音声を認識�
 
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
-何らかの操作を行うには、事前に Speech SDK をインストールしておく必要があります。 お使いのプラットフォームに応じて、記事「_Speech SDK について_」の「<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">Speech SDK を取得する<span class="docon docon-navigate-external x-hidden-focus"></span></a>」セクションに記載されている手順に従ってください。
+何らかの操作を行うには、事前に Speech SDK をインストールしておく必要があります。 お使いのプラットフォームに応じて、記事「 _Speech SDK について_ 」の「 <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">Speech SDK を取得する <span class="docon docon-navigate-external x-hidden-focus"></span></a>」セクションに記載されている手順に従ってください。
 
 ## <a name="import-dependencies"></a>依存関係のインポート
 
@@ -70,7 +70,7 @@ Speech SDK を使用して Speech Service を呼び出すには、[`SpeechTransl
 * ホストの場合: ホスト アドレスを渡します。 キーまたは認証トークンは省略可能です。
 * 認証トークンの場合: 認証トークンと、それに関連付けられたリージョンを渡します。
 
-キーとリージョンを使用して [`SpeechTranslationConfig`][config] を作成する方法を見てみましょう。 リージョン識別子を確認するには、[リージョンのサポート](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)に関するページを参照してください。
+キーとリージョンを使用して [`SpeechTranslationConfig`][config] を作成する方法を見てみましょう。 「[Speech Service を無料で試す](../../../overview.md#try-the-speech-service-for-free)」の手順に従って、これらの資格情報を取得します。
 
 ```cpp
 auto SPEECH__SUBSCRIPTION__KEY = getenv("SPEECH__SUBSCRIPTION__KEY");
@@ -102,7 +102,7 @@ void translateSpeech() {
 }
 ```
 
-[`SpeechRecognitionLanguage`][recognitionlang] プロパティには、言語ロケールの書式指定文字列が必要です。 サポートされている[ロケールまたは言語](../../../language-support.md)のリストの**ロケール**列に任意の値を指定できます。
+[`SpeechRecognitionLanguage`][recognitionlang] プロパティには、言語ロケールの書式指定文字列が必要です。 サポートされている [ロケールまたは言語](../../../language-support.md)のリストの **ロケール** 列に任意の値を指定できます。
 
 ## <a name="add-translation-language"></a>翻訳言語を追加する
 
@@ -232,7 +232,7 @@ void translateSpeech() {
 `TranslationRecognizer` オブジェクトによって `Synthesizing` イベントが公開されます。 イベントは複数回発生し、合成されたオーディオを翻訳認識結果から取得するためのメカニズムが提供されます。 複数の言語に翻訳する場合は、「[手動合成](#manual-synthesis)」を参照してください。 合成音声を指定するには、[`SetVoiceName`][voicename] を割り当て、`Synthesizing` イベントのイベント ハンドラーを提供して、オーディオを取得します。 次の例では、翻訳されたオーディオを *.wav* ファイルとして保存します。
 
 > [!IMPORTANT]
-> イベントベースの合成は、1 つの翻訳でのみ機能し、複数のターゲット翻訳言語を追加**しません**。 また、[`SetVoiceName`][voicename] は、ターゲット翻訳言語と同じ言語である必要があります。たとえば、`"de"` は `"de-DE-Hedda"` にマップされる可能性があります。
+> イベントベースの合成は、1 つの翻訳でのみ機能し、複数のターゲット翻訳言語を追加 **しません** 。 また、[`SetVoiceName`][voicename] は、ターゲット翻訳言語と同じ言語である必要があります。たとえば、`"de"` は `"de-DE-Hedda"` にマップされる可能性があります。
 
 ```cpp
 void translateSpeech() {

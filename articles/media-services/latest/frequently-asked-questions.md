@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: aa33319f146ac57ab4d253696c94308a43b5db2e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 50a0fe0fa5dece41ac9e343d5a8939e8d9dc634e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019615"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426878"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 のよく寄せられる質問
 
@@ -34,11 +34,11 @@ ms.locfileid: "92019615"
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Azure Media Services リソースに対してアクションを実行できる Azure のロールは何ですか。 
 
-「[Media Services アカウント用のロールベースのアクセス制御 (RBAC)](rbac-overview.md)」を参照してください。
+詳細については、「[Media Services アカウント用の Azure ロールベースのアクセス制御 (Azure RBAC)](rbac-overview.md)」を参照してください。
 
 ### <a name="how-do-i-stream-to-apple-ios-devices"></a>Apple iOS デバイスにはどのようにしてストリーミングしますか?
 
-パスの終わり (URL の「 **/manifest**」の部分の後) に **(format=m3u8-aapl)** が指定されていることを確認します。これは、Apple iOS ネイティブ デバイスで使用するために HTTP ライブ ストリーミング (HLS) コンテンツを返すようにストリーミング元のサーバーに指示します。 詳細については、「[コンテンツの配信](dynamic-packaging-overview.md)」を参照してください。
+パスの終わり (URL の「 **/manifest** 」の部分の後) に **(format=m3u8-aapl)** が指定されていることを確認します。これは、Apple iOS ネイティブ デバイスで使用するために HTTP ライブ ストリーミング (HLS) コンテンツを返すようにストリーミング元のサーバーに指示します。 詳細については、「[コンテンツの配信](dynamic-packaging-overview.md)」を参照してください。
 
 ### <a name="how-do-i-configure-media-reserved-units"></a>メディア占有ユニットの構成方法を教えてください。
 
@@ -113,7 +113,7 @@ Azure Active Directory (Azure AD) のような特定のトークン プロバイ
 
 プレーヤーは、ユーザーが認証された後、そのトークンの要求を STS に対して作成し、それをトークンの値として割り当てます。 [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) を使用できます。
 
-対称キーと非対称キーのどちらかを使用して STS を実行する例については、「[JWT ツール](https://aka.ms/jwt)」を参照してください。 このような JWT トークンを使用する Azure Media Player に基づくプレーヤーの例については、「[Azure メディア テスト ツール](https://aka.ms/amtest)」を参照してください。 (**player_settings** リンクを展開するとトークンの入力が表示されます。)
+対称キーと非対称キーのどちらかを使用して STS を実行する例については、「[JWT ツール](https://aka.ms/jwt)」を参照してください。 このような JWT トークンを使用する Azure Media Player に基づくプレーヤーの例については、「[Azure メディア テスト ツール](https://aka.ms/amtest)」を参照してください。 ( **player_settings** リンクを展開するとトークンの入力が表示されます。)
 
 ### <a name="how-do-i-authorize-requests-to-stream-videos-with-aes-encryption"></a>AES 暗号化を使用してビデオをストリームする要求を承認する方法を教えてください。
 
@@ -255,9 +255,9 @@ Google の「Widevine DRM Architecture Overview」 (Widevine DRM アーキテク
 
 | **Widevine アーキテクチャで定義されたセキュリティ レベル** |**Widevine API で使用されるセキュリティ レベル**|
 |---|---| 
-| **セキュリティ レベル 1**:すべてのコンテンツの処理、暗号化、および管理は、信頼できる実行環境 (TEE) 内で実行されます。 一部の実装モデルでは、セキュリティ処理が異なるチップで実行される場合があります。|**security_level=5**:暗号化、デコード、およびメディア (圧縮済みおよび圧縮解除済み) のすべての処理を、ハードウェアを基盤にした TEE で実行する必要があります。<br/><br/>**security_level=4**:コンテンツの暗号化とデコードを、ハードウェアを基盤にした TEE で実行する必要があります。|
-**セキュリティ レベル 2**:暗号化は TEE 内で実行されます (ビデオ処理は実行されません)。 解読されたバッファーはアプリケーション ドメインに返され、別のビデオ ハードウェアまたはソフトウェアによって処理されます。 ただし、レベル 2 では、暗号化に関する情報はやはり TEE 内でのみ処理されます。| **security_level=3**:キー マテリアルと暗号化の操作を、ハードウェアを基盤にした TEE で実行する必要があります。 |
-| **セキュリティ レベル 3**:デバイスに TEE はありません。 ホスト オペレーティング システム上の暗号化情報と解読されたコンテンツを保護するため、適切な手段が実行される場合があります。 レベル 3 では、ハードウェア暗号化エンジンも実装に含まれる場合がありますが、セキュリティのためではなく、パフォーマンス向上のみを目的としています。 | **security_level=2**:ソフトウェア暗号化と難読化デコーダーが必須です。<br/><br/>**security_level=1**:ソフトウェアベースのホワイトボックス暗号化が必須です。|
+| **セキュリティ レベル 1** :すべてのコンテンツの処理、暗号化、および管理は、信頼できる実行環境 (TEE) 内で実行されます。 一部の実装モデルでは、セキュリティ処理が異なるチップで実行される場合があります。|**security_level=5** :暗号化、デコード、およびメディア (圧縮済みおよび圧縮解除済み) のすべての処理を、ハードウェアを基盤にした TEE で実行する必要があります。<br/><br/>**security_level=4** :コンテンツの暗号化とデコードを、ハードウェアを基盤にした TEE で実行する必要があります。|
+**セキュリティ レベル 2** :暗号化は TEE 内で実行されます (ビデオ処理は実行されません)。 解読されたバッファーはアプリケーション ドメインに返され、別のビデオ ハードウェアまたはソフトウェアによって処理されます。 ただし、レベル 2 では、暗号化に関する情報はやはり TEE 内でのみ処理されます。| **security_level=3** :キー マテリアルと暗号化の操作を、ハードウェアを基盤にした TEE で実行する必要があります。 |
+| **セキュリティ レベル 3** :デバイスに TEE はありません。 ホスト オペレーティング システム上の暗号化情報と解読されたコンテンツを保護するため、適切な手段が実行される場合があります。 レベル 3 では、ハードウェア暗号化エンジンも実装に含まれる場合がありますが、セキュリティのためではなく、パフォーマンス向上のみを目的としています。 | **security_level=2** :ソフトウェア暗号化と難読化デコーダーが必須です。<br/><br/>**security_level=1** :ソフトウェアベースのホワイトボックス暗号化が必須です。|
 
 #### <a name="why-does-content-download-take-so-long"></a>コンテンツのダウンロードに時間がかかるのはなぜですか。
 

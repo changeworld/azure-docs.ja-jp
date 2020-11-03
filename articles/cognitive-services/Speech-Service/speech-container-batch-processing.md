@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: 3cd6febfc774b214a8c1ae8553e6c127c4f452fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3b2a9db688104c168017863910745427a3a68f9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319080"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425791"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>音声コンテナー用のバッチ処理キット
 
@@ -75,9 +75,8 @@ MyContainer3:
 > [!NOTE] 
 > * この例では、構成ファイルと入力、出力、およびログのディレクトリに同じディレクトリ (`/my_nfs`) を使用しています。 これらのフォルダーには、ホストされたディレクトリまたは NFS でマウントされたディレクトリを使用できます。
 > * `–h` を使用してクライアントを実行すると、使用できるコマンドライン パラメーターとその既定値が一覧表示されます。 
+> * バッチ処理コンテナーは、Linux でのみサポートされています。
 
-
-#### <a name="linux"></a>[Linux](#tab/linux)
 Docker の `run` コマンドを使用してコンテナーを開始します。 その結果、コンテナー内で対話型シェルが開始されます。
 
 ```Docker
@@ -96,17 +95,6 @@ run-batch-client -config /my_nfs/config.yaml -input_folder /my_nfs/audio
 docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-バッチ クライアントとコンテナーを 1 つのコマンドで実行するには:
-
-```Docker
-docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config  /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config
-
-```
-
----
-
 
 クライアントの実行が開始されます。 オーディオ ファイルが以前の実行で既に文字起こしされている場合、クライアントでは自動的にそのファイルがスキップされます。 一時的なエラーが発生した場合、ファイルは自動再試行によって送信されます。また、クライアントで再試行するエラーを区別できます。 文字起こしのエラーが発生した場合、クライアントでは文字起こしが続行され、進行状況を失うことなく再試行されます。  
 
@@ -118,7 +106,7 @@ docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch
 
 `ONESHOT` モードを使用すると、(入力ディレクトリと省略可能なファイル一覧の) オーディオ ファイルの 1 つのバッチを文字起こしして出力フォルダーに出力できます。
 
-:::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="バッチキットのコンテナー ワークフローの例を示す図。":::
+:::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="oneshot モードでファイルを処理するバッチキット コンテナーを示す図。":::
 
 1. バッチ クライアントから使用される音声コンテナー エンドポイントを `config.yaml` ファイルに定義します。 
 2. 文字起こし用のオーディオ ファイルを入力ディレクトリに配置します。  
@@ -133,7 +121,7 @@ docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch
 
 `DAEMON` モードを使用すると、指定されたフォルダー内の既存のファイルが文字起こしされ、新しいオーディオ ファイルが追加されると継続的に文字起こしされます。          
 
-:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="バッチキットのコンテナー ワークフローの例を示す図。":::
+:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="daemon モードでファイルを処理するバッチキット コンテナーを示す図。":::
 
 1. バッチ クライアントから使用される音声コンテナー エンドポイントを `config.yaml` ファイルに定義します。 
 2. 入力ディレクトリ上でコンテナーを呼び出します。 バッチ クライアントによって、受信ファイルのディレクトリの監視が開始されます。 
@@ -146,7 +134,7 @@ docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch
 
 `REST` モードは、オーディオ ファイルのバッチ送信、状態チェック、およびロング ポーリング用の HTTP エンドポイントの基本セットを提供する API サーバー モードです。 また、Python モジュール拡張機能を使用したプログラムによる消費、またはサブモジュールとしてのインポートを行うこともできます。
 
-:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="バッチキットのコンテナー ワークフローの例を示す図。":::
+:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="REST モードでファイルを処理するバッチキット コンテナーを示す図。":::
 
 1. バッチ クライアントから使用される音声コンテナー エンドポイントを `config.yaml` ファイルに定義します。 
 2. API サーバーのエンドポイントのいずれかに HTTP 要求要求を送信します。 
@@ -170,7 +158,7 @@ docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch
 
 クライアントでは、Docker の `run` コマンドの `-log_folder` 引数で指定されたディレクトリに *run.log* ファイルが作成されます。 ログは既定でデバッグ レベルでキャプチャされます。 同じログが `stdout/stderr` に送信され、`-log_level` 引数に応じてフィルター処理されます。 このログは、デバッグ目的、またはサポートのためにトレースを送信する必要がある場合にのみ必要です。 ログ フォルダーには、各オーディオ ファイルの Speech SDK ログも含まれています。
 
-`-output_folder` で指定された出力ディレクトリには、*run_summary.json*  ファイルが格納されています。このファイルは、30 秒ごとに定期的に、または新しい文字起こしが完了するたびに書き換えられます。 このファイルを使用すると、バッチの進行状況を確認できます。 また、バッチが完了したときのすべてのファイルの最終的な実行の統計情報と最終的な状態も含まれます。 プロセスに clean exit があると、バッチは完了します。 
+`-output_folder` で指定された出力ディレクトリには、 *run_summary.json*  ファイルが格納されています。このファイルは、30 秒ごとに定期的に、または新しい文字起こしが完了するたびに書き換えられます。 このファイルを使用すると、バッチの進行状況を確認できます。 また、バッチが完了したときのすべてのファイルの最終的な実行の統計情報と最終的な状態も含まれます。 プロセスに clean exit があると、バッチは完了します。 
 
 ## <a name="next-steps"></a>次のステップ
 

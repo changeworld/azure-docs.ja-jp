@@ -3,12 +3,12 @@ title: Azure VMware Solution で VM をデプロイするためのコンテン�
 description: コンテンツ ライブラリを作成して、Azure VMware Solution プライベート クラウドに VM をデプロイします。
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: 3a1b0a091dcdf9a225b4bf91ec83f542c2310285
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57db8ac4da8eef826d85feb11680c9c87823ee36
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575809"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461687"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Azure VMware Solution で VM をデプロイするためのコンテンツ ライブラリを作成する
 
@@ -92,7 +92,7 @@ ms.locfileid: "91575809"
 
 ## <a name="next-steps"></a>次のステップ
 
-Hybrid Cloud Extension (HCX) を使用して VM ワークロードをプライベート クラウドに移行する予定がある場合は、「[Azure VMware Solution 用の HCX をインストールする](tutorial-deploy-vmware-hcx.md)」の手順に従います。
+VMware HCX を使用して VM ワークロードをプライベート クラウドに移行する予定がある場合は、[VMware HCX のデプロイと構成](tutorial-deploy-vmware-hcx.md)を行う手順を使用します。
 
 <!-- LINKS - external-->
 

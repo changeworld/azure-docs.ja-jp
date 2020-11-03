@@ -9,23 +9,45 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/29/2020
+ms.date: 10/23/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperfq1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 1410af4d3c1fb9974818e5c4ebc469eee03a314c
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4accae27dc092a4900e6092c62c7f4978a46668a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948625"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503778"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft ID プラットフォームでの構成可能なトークンの有効期間 (プレビュー)
 
 Microsoft ID プラットフォームによって発行されたトークンの有効期間を指定できます。 組織のすべてのアプリ、マルチテナント (複数の組織) アプリケーション、または組織の特定のサービス プリンシパルに対して、トークンの有効期間を設定できます。 ただし、現時点では、[マネージド ID サービス プリンシパル](../managed-identities-azure-resources/overview.md)のトークン有効期間の構成はサポートされていません。
 
 > [!IMPORTANT]
-> プレビュー中にお客様のご意見をお聞きした後、Azure AD の条件付きアクセスの[認証セッション管理機能](../conditional-access/howto-conditional-access-session-lifetime.md)を実装しました。 この新機能を使用し、サインインの頻度を設定して更新トークンの有効期間を構成できます。 2020 年 5 月 30 日以降、新しいテナントでは、構成可能なトークンの有効期間ポリシーを使用してセッションと更新トークンを構成できなくなります。 廃止はその数か月後に行われます。つまり、セッションと更新トークンに関する既存のポリシーは適用されなくなります。 非推奨となった後も、アクセス トークンの有効期間を構成することはできます。
+> 2021 年 1 月 30 日以降、テナントでは更新およびセッション トークンの有効期間を構成できなくなり、Azure Active Directory では、その日以降、ポリシー内の既存の更新およびセッション トークンの構成が考慮されなくなります。 廃止後も、アクセス トークンの有効期間を構成することはできます。
+> Azure AD の条件付きアクセスに [認証セッションの管理機能](../conditional-access/howto-conditional-access-session-lifetime.md) を実装しました。 この新機能を使用し、サインインの頻度を設定して更新トークンの有効期間を構成できます。 条件付きアクセスは Azure AD Premium P1 の機能であり、[Premium の価格ページ](https://azure.microsoft.com/en-us/pricing/details/active-directory/)で Premium が組織に適しているかどうかを評価できます。 
+> 
+> 廃止日以降に条件付きアクセスで認証セッション管理を使用しないテナントの場合、次のセクションで説明する既定の構成が Azure AD に使用されることを想定できます。
+
+## <a name="configurable-token-lifetime-properties-after-the-retirement"></a>廃止後に構成可能なトークンの有効期間プロパティ
+更新とセッション トークンの構成は、次のプロパティとそれぞれの設定値の影響を受けます。 更新とセッション トークンの構成が廃止された後、ポリシーにカスタム値が構成されているかどうかに関係なく、Azure AD では以下に説明する既定値のみが有効になります。  
+
+|プロパティ   |ポリシーのプロパティ文字列    |影響 |Default |
+|----------|-----------|------------|------------|
+|更新トークンの最大非アクティブ時間 |MaxInactiveTime  |更新トークン |90 日間  |
+|単一要素更新トークンの最長有効期間  |MaxAgeSingleFactor  |更新トークン (すべてのユーザー向け)  |Until-revoked  |
+|多要素更新トークンの最長有効期間  |MaxAgeMultiFactor  |更新トークン (すべてのユーザー向け) |180 日  |
+|単一要素セッション トークンの最長有効期間  |MaxAgeSessionSingleFactor |セッション トークン (永続的および非永続的)  |Until-revoked |
+|多要素セッション トークンの最長有効期間  |MaxAgeSessionMultiFactor  |セッション トークン (永続的および非永続的)  |180 日 |
+
+[Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) コマンドレットを使用して、プロパティ値が Azure AD の既定値と異なるトークンの有効期間ポリシーを特定できます。
+
+テナントでのポリシーの使用方法についてさらに理解を深めるには、[Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) コマンドレットを使用して、ポリシーにリンクされているアプリとサービス プリンシパルを確認します。 
+
+更新およびセッション トークン構成プロパティのカスタム値を定義するポリシーがテナントにある場合、Microsoft は、スコープ内のこれらのポリシーを上記の既定値を反映する値に更新することをお勧めします。 変更が加えられていない場合、Azure AD によって自動的に既定値が使用されます。  
+
+## <a name="overview"></a>概要
 
 Azure AD では、ポリシー オブジェクトは、組織の個々のアプリケーションまたはすべてのアプリケーションに適用される規則のセットを表します。 それぞれのポリシーの種類は、割り当てられているオブジェクトに適用されるプロパティのセットを含む一意の構造体を持ちます。
 

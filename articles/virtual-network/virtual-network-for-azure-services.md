@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/06/2020
 ms.author: kumud
-ms.openlocfilehash: ddc7f5f8844c602defb99a56ea3f511f0ea88cbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e53127b51116c87dd8b92ea3cd87ebf1892d38b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90084704"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461704"
 ---
 # <a name="deploy-dedicated-azure-services-into-virtual-networks"></a>仮想ネットワークに専用の Azure サービスをデプロイする
 
@@ -48,6 +48,7 @@ ms.locfileid: "90084704"
 | Containers | [Azure Kubernetes Service (AKS)](../aks/concepts-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Container Instances (ACI)](https://www.aka.ms/acivnet)<br/>[Azure Container Service エンジン](https://github.com/Azure/acs-engine)と Azure Virtual Network CNI [プラグイン](https://github.com/Azure/acs-engine/tree/master/examples/vnet)<br/>[Azure Functions](../azure-functions/functions-networking-options.md#virtual-network-integration) |いいえ<sup>2</sup><br/> はい <br/><br/> いいえ <br/> はい
 | Web | [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Web Apps](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[App Service 環境](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|はい <br/> はい <br/> はい <br/> はい
 | ホストされている | [Azure の専用 HSM](../dedicated-hsm/index.yml?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|はい <br/> はい <br/>
+| Azure Spring Cloud | [Azure 仮想ネットワークにデプロイする (VNet インジェクション)](../spring-cloud/spring-cloud-tutorial-deploy-in-azure-virtual-network.md)<br/>| はい <br/>
 | | |
 
 <sup>1</sup> "専用" とは、そのサブネットにデプロイできるのがサービス固有のリソースのみであり、ユーザーの VM/VMSS と一緒にデプロイすることはできないことを意味します。 <br/> 

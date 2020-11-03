@@ -3,18 +3,18 @@ title: Azure のメッセージング サービス - Service Manager から Reso
 description: この記事では、非推奨になった Azure Service Manager の REST API と PowerShell コマンドレットから Resource Manager の REST API と PowerShell コマンドレットへの対応について説明します。
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: 84335d534c229f40381b913dfca54f42e2da250b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b82772b364bbc44a898197e7fafd11b33e2e6320
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761177"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518791"
 ---
 # <a name="deprecation-of-azure-service-manager-support-for-azure-service-bus-relay-and-event-hubs"></a>Azure Service Bus、Relay、Event Hubs に対する Azure Service Manager のサポートの非推奨化
 
 次世代のクラウド インフラストラクチャ スタックである Resource Manager により、"従来の" Azure サービス管理モデル (クラシック デプロイ モデル) は完全に置き換えられます。 その結果、クラシック デプロイ モデルの REST API と Service Bus、Relay、Event Hubs のサポートは、2021 年 11 月 1 日に廃止される予定です。 この非推奨化は、[Microsoft Tech Community の通知](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Deprecating-Service-Management-support-for-Azure-Service-Bus/ba-p/370909)で最初に発表されましたが、当初の発表から、非推奨期間を 2 年延長することが決定されました。 簡単に見分けることができるように、これらの API の URI には `management.core.windows.net` が含まれます。 非推奨になった API と、代わりに使用する必要がある Azure Resource Manager バージョンの API の一覧については、次の表を参照してください。
 
-Service Bus、Relay、Event Hubs を引き続き使用するには、2021 年 10 月 31 日までに Resource Manager に移行してください。 まだ古い API を使用しているお客様には、すぐに切り替えて Resource Manager にしかないメリットを利用することをお勧めします。リソースのグループ化、タグ、合理化されたデプロイと管理のプロセス、ロールベースのアクセス制御 (RBAC) を使用きめ細かなアクセス制御などがあります。
+Service Bus、Relay、Event Hubs を引き続き使用するには、2021 年 10 月 31 日までに Resource Manager に移行してください。 まだ古い API を使用しているお客様には、すぐに切り替えて Resource Manager にしかないメリットを利用することをお勧めします。リソースのグループ化、タグ、合理化されたデプロイと管理のプロセス、Azure のロールベースのアクセス制御 (Azure RBAC) を使用するきめ細かなアクセス制御などがあります。
 
 Azure Resource Manager と Azure Service Manager の比較について詳しくは、[TechNet のブログ](https://blogs.technet.microsoft.com/meamcs/2016/12/22/difference-between-azure-service-manager-and-azure-resource-manager/)をご覧ください。
 

@@ -6,19 +6,16 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
-ms.openlocfilehash: 26a6ddf3ea3009c1463f40403c9d1860a7cb81f2
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 6e77746d21d63cf1460b9e460e470a3bd12ce656
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126005"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480039"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>Synapse Link で Azure Cosmos DB データを分析するための Power BI とサーバーレス Synapse SQL プールを使用する (プレビュー) 
 
 この記事では、Azure Cosmos DB の Synapse Link 上にサーバーレス Synapse SQL プール (旧称 **SQL オンデマンド** ) データベースおよびビューを構築する方法について説明します。 Azure Cosmos コンテナーに対してクエリを実行し、そのクエリを反映するために、それらのビュー上に Power BI でモデルを構築します。
-
-> [!NOTE]
-> サーバーレス SQL プールでの Azure Cosmos DB 分析ストアの使用は、現在限定的なプレビューの段階にあります。 アクセスを要求するには、[Azure Cosmos DB チーム](mailto:cosmosdbsynapselink@microsoft.com)にご連絡ください。
 
 このシナリオでは、パートナー小売店での Surface 製品の売上に関するダミー データを使用します。 大所帯への近さと、特定の週の広告の効果に基づいた店舗ごとの収益を分析します。 この記事では **RetailSales** と **StoreDemographics** という名前の 2 つのビューと、それらの間のクエリを作成します。 この [GitHub](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) リポジトリからサンプル製品データを取得できます。
 
@@ -46,7 +43,7 @@ Synapse ワークスペースで、 **[開発]** タブをクリックし、 **+
 
 すべてのワークスペースに、サーバーレス SQL エンドポイントが付属しています。 SQL スクリプトを作成したら、上部のツール バーから **SQL オンデマンド** に接続します。
 
-:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="Synapse Analytics ワークスペースに SQL スクリプトを追加する":::
+:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="SQL スクリプトで、ワークスペースのサーバーレス SQL エンドポイントを使用できるようにする":::
 
 **RetailCosmosDB** という名前の新しいデータベースと、Synapse Link 対応コンテナーに SQL ビューを作成します。 次のコマンドは、データベースを作成する方法を示しています。
 
@@ -106,7 +103,7 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 
 **[実行]** を選択すると、結果として次のテーブルが得られます。
 
-:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="Synapse Analytics ワークスペースに SQL スクリプトを追加する":::
+:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="StoreDemographics ビューと RetailSales ビューの結合後のクエリ結果":::
 
 ## <a name="model-views-over-containers-with-power-bi"></a>Power BI によるコンテナー上のモデル ビュー
 
@@ -141,8 +138,10 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 1. **RetailSales** ビューの **productCode** を凡例にドラッグ アンド ドロップして、特定の製品ラインを選択します。
 これらのオプションを選択すると、次のスクリーンショットのようなグラフが表示されます。
 
-:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="Synapse Analytics ワークスペースに SQL スクリプトを追加する":::
+:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="店舗あたりの平均収益と世帯規模の相対的重要度を比較するレポート":::
 
 ## <a name="next-steps"></a>次のステップ
+
+[T-SQL で Azure Synapse Link を使用して Azure Cosmos DB のデータのクエリを実行する](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)
 
 サーバーレス Synapse SQL プールを使用して、[Azure Open Datasets を分析し、Azure Synapse Studio で結果を視覚化する](../synapse-analytics/sql/tutorial-data-analyst.md)

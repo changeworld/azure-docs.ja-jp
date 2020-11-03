@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
-ms.openlocfilehash: ceb01c97ec50f4e2a7aa146448c3da662d4314ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12d6beac446f8a15a41daf0dfe8ca1783c95c775
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89258352"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427246"
 ---
 # <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>Azure CLI を使用して Azure AD アプリを作成し、それを Media Services API にアクセスするように構成します。
 
@@ -57,7 +57,7 @@ az role assignment create --assignee < user/app id> --role Contributor --scope <
 az role assignment create --assignee a3e068fa-f739-44e5-ba4d-ad57866e25a1 --role Contributor --scope /subscriptions/0b65e280-7917-4874-9fed-1307f2615ea2/resourceGroups/Default-AzureBatch-SouthCentralUS/providers/microsoft.media/mediaservices/sbbash
 ```
 
-この例では、**scope** はメディア サービス アカウントの完全なリソース パスです。 しかし、**scope** は任意のレベルに設定できます。
+この例では、 **scope** はメディア サービス アカウントの完全なリソース パスです。 しかし、 **scope** は任意のレベルに設定できます。
 
 たとえば、次のいずれかのレベルにすることができます。
  
@@ -67,7 +67,7 @@ az role assignment create --assignee a3e068fa-f739-44e5-ba4d-ad57866e25a1 --role
 
 詳細については、「[Azure CLI で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli)」を参照してください
 
-また、「[Azure コマンド ライン インターフェイスを使用したロールベースの Access Control の管理](../../role-based-access-control/role-assignments-cli.md)」も参照してください。 
+「[Azure CLI を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-cli.md)」も参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c2d69d21eb46d502a45c9df1dfaaa947d26ef7c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d982d06bd100313d643033294b6d14e6383d5df
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79225511"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424700"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>オンプレミスのワークステーションからのプライベート クラウドの vCenter にアクセスするための名前解決用に DNS を構成する
 
@@ -58,19 +58,19 @@ zone "az.cloudsimple.io"
 
 1. DNS サーバーを右クリックして **[新しいゾーン]** を選択します。 
   
-    ![新しいゾーン](media/DNS01.png)
+    ![[New Zone]\(新規ゾーン\) メニュー オプションが強調表示されているスクリーンショット。](media/DNS01.png)
 2. **[スタブ ゾーン]** を選択して **[次へ]** をクリックします。
 
-    ![新しいゾーン](media/DNS02.png)
+    ![[スタブ ゾーン] オプションが強調表示されているスクリーンショット。](media/DNS02.png)
 3. 環境に応じて適切なオプションを選択し、 **[次へ]** をクリックします。
 
-    ![新しいゾーン](media/DNS03.png)
+    ![ゾーン データのレプリケーション オプションを示すスクリーンショット。](media/DNS03.png)
 4. **[前方参照ゾーン]** を選択し、 **[次へ]** をクリックします。
 
-    ![新しいゾーン](media/DNS01.png)
+    ![[前方参照] ゾーン オプションが強調表示されているスクリーンショット。](media/DNS01.png)
 5. ゾーン名を入力して **[次へ]** をクリックします。
 
-    ![新しいゾーン](media/DNS05.png)
+    ![ゾーン名の入力場所を示すスクリーンショット。](media/DNS05.png)
 6. CloudSimple ポータルから取得した、プライベート クラウドの DNS サーバーの IP アドレスを入力します。
 
     ![新しいゾーン](media/DNS06.png)
