@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: f32783b18b5454164567910aa369739d025b8be0
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: d840fe5b6fde72149893a15ab9096d3880c1c8ea
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826905"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425678"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスとは
 
@@ -82,7 +82,7 @@ SSH を必要としないリモート サーバーとしてコンピューティ
 |ONNX パッケージ|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
 |Azure Machine Learning の Python と R SDK のサンプル||
 
-Python パッケージはすべて、**Python 3.6 - AzureML** 環境にインストールされます。  
+Python パッケージはすべて、 **Python 3.6 - AzureML** 環境にインストールされます。  
 
 ## <a name="accessing-files"></a>ファイルにアクセスする
 
@@ -118,9 +118,9 @@ Azure Machine Learning Studio 内のご利用のワークスペースで、 **[�
 * コンピューティング インスタンスに SSH 接続する。 SSH アクセスは既定で無効になっていますが、コンピューティング インスタンスの作成時に有効にすることができます。 SSH アクセスは、公開/秘密キーのメカニズムを通じて実行されます。 このタブには、SSH 接続の詳細が表示されます (IP アドレス、ユーザー名、ポート番号など)。
 * 特定のコンピューティング インスタンスに関する詳細を取得する (IP アドレス、リージョンなど)。
 
-[RBAC](/azure/role-based-access-control/overview) を使用すると、ワークスペース内のどのユーザーにコンピューティング インスタンスの作成、削除、開始、停止、再起動を許可するかを制御できます。 ワークスペースの共同作成者および所有者ロール内のユーザーはすべて、ワークスペース全体でコンピューティング インスタンスを作成、削除、開始、停止、および再起動することができます。 ただし、特定のコンピューティング インスタンスの作成者、またはその作成者に代わって作成された場合は割り当てられたユーザーのみが、そのコンピューティング インスタンス上の Jupyter、JupyterLab、および RStudio にアクセスすることが許可されます。 コンピューティング インスタンスは、ルート アクセス権を持つ 1 人のユーザー専用で、Jupyter/JupyterLab/RStudio を介してターミナルを使用できます。 コンピューティング インスタンスには、シングルユーザー ログインが用意され、すべてのアクションで、実験実行の属性および RBAC にそのユーザー ID が使用されます。 SSH アクセスは、公開/秘密キーのメカニズムを通じて制御されます。
+[Azure RBAC](/azure/role-based-access-control/overview) を使用すると、ワークスペース内のどのユーザーにコンピューティング インスタンスの作成、削除、開始、停止、再起動を許可するかを制御できます。 ワークスペースの共同作成者および所有者ロール内のユーザーはすべて、ワークスペース全体でコンピューティング インスタンスを作成、削除、開始、停止、および再起動することができます。 ただし、特定のコンピューティング インスタンスの作成者、またはその作成者に代わって作成された場合は割り当てられたユーザーのみが、そのコンピューティング インスタンス上の Jupyter、JupyterLab、および RStudio にアクセスすることが許可されます。 コンピューティング インスタンスは、ルート アクセス権を持つ 1 人のユーザー専用で、Jupyter/JupyterLab/RStudio を介してターミナルを使用できます。 コンピューティング インスタンスには、シングルユーザー ログインが用意されており、すべてのアクションで、Azure RBAC、および実験実行の属性にそのユーザーの ID が使用されます。 SSH アクセスは、公開/秘密キーのメカニズムを通じて制御されます。
 
-次のアクションは RBAC で制御できます。
+次のアクションは、Azure RBAC で制御できます。
 * *Microsoft.MachineLearningServices/workspaces/computes/read*
 * *Microsoft.MachineLearningServices/workspaces/computes/write*
 * *Microsoft.MachineLearningServices/workspaces/computes/delete*
@@ -130,7 +130,7 @@ Azure Machine Learning Studio 内のご利用のワークスペースで、 **[�
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>コンピューティング インスタンスを作成する
 
-Azure Machine Learning Studio のワークスペースで、いずれかのノートブックを実行する準備ができたら、 **[計算]** セクションまたは **[ノートブック]** セクションから[新しいコンピューティング インスタンス](how-to-create-attach-compute-studio.md#compute-instance)を作成します。 
+Azure Machine Learning Studio のワークスペースで、いずれかのノートブックを実行する準備ができたら、 **[計算]** セクションまたは **[ノートブック]** セクションから [新しいコンピューティング インスタンス](how-to-create-attach-compute-studio.md#compute-instance)を作成します。 
 
 インスタンスを作成することもできます
 * [統合ノートブックのエクスペリエンス](tutorial-1st-experiment-sdk-setup.md#azure)から直接
@@ -148,7 +148,7 @@ Azure Machine Learning Studio のワークスペースで、いずれかのノ�
 * [Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)  このテンプレートに必要な TenantID と ObjectID を見つける方法の詳細については、「[認証構成のための ID オブジェクト ID を見つける](../healthcare-apis/find-identity-object-ids.md)」を参照してください。  これらの値は Azure Active Directory ポータルでも見つけることができます。
 * REST API
 
-コンピューティング インスタンスを作成するデータ科学者には、次の RBAC アクセス許可が必要です。 
+コンピューティング インスタンスを作成する対象となるデータ科学者には、次の Azure RBAC アクセス許可が必要です。 
 * *Microsoft.MachineLearningServices/workspaces/computes/start/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/restart/action*

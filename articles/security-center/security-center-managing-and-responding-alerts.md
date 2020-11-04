@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: e17c7d6618d67d66c89875696c5c529af3a85ea9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75ca0438336825bf8d4bbdc6e08eca109f430fde
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440559"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785920"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Azure Security Center でのセキュリティ アラートの管理と対応
 
@@ -80,4 +80,4 @@ Security Center は、真の脅威を検出し、偽陽性を減らすために�
 このドキュメントでは、セキュリティ アラートを表示する方法について説明しました。 関連資料については、次のページを参照してください。
 
 - [アラートの抑制ルールを構成する](alerts-suppression-rules.md)
-- [ワークフローの自動化でアラートや推奨事項に対する応答を自動化する](workflow-automation.md)
+- [Security Center のトリガーへの応答を自動化する](workflow-automation.md)

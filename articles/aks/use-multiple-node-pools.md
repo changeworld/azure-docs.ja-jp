@@ -4,16 +4,16 @@ description: Azure Kubernetes Service (AKS) のクラスターで複数のノー
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 024b7adb254980ec87084b4794a9ced3eaea95eb
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 39c2fe177d0a6d913d7bf2b2baf44af3c69c0868
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074517"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900089"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
-Azure Kubernetes Service (AKS) で同じ構成のノードは、*ノード プール*にグループ化できます。 これらのノード プールには、お使いのアプリケーションを実行する基になる VM が含まれています。 最初のノード数とそのサイズ (SKU) は、"[システム ノード プール][use-system-pool]" が作成される AKS クラスターの作成時に定義します。 コンピューティングまたは記憶域の要件が異なるアプリケーションをサポートするには、追加の "*ユーザー ノード プール*" を作成します。 システム ノード プールは、CoreDNS や tunnelfront などの重要なシステム ポッドをホストするという主要な目的を果たします。 ユーザー ノード プールは、アプリケーション ポッドをホストするという主要な目的を果たします。 ただし、AKS クラスター内のプールを 1 つだけにする場合は、システム ノード プールでアプリケーション ポッドをスケジュールすることができます。 ユーザー ノード プールは、お使いのアプリケーションに固有のポッドを配置する場所です。 たとえば、これらの追加のユーザー ノード プールを使用すると、コンピューティング集約型のアプリケーションに GPU を提供したり、高パフォーマンスな SSD ストレージにアクセスを提供したりできます。
+Azure Kubernetes Service (AKS) で同じ構成のノードは、 *ノード プール* にグループ化できます。 これらのノード プールには、お使いのアプリケーションを実行する基になる VM が含まれています。 最初のノード数とそのサイズ (SKU) は、"[システム ノード プール][use-system-pool]" が作成される AKS クラスターの作成時に定義します。 コンピューティングまたは記憶域の要件が異なるアプリケーションをサポートするには、追加の " *ユーザー ノード プール* " を作成します。 システム ノード プールは、CoreDNS や tunnelfront などの重要なシステム ポッドをホストするという主要な目的を果たします。 ユーザー ノード プールは、アプリケーション ポッドをホストするという主要な目的を果たします。 ただし、AKS クラスター内のプールを 1 つだけにする場合は、システム ノード プールでアプリケーション ポッドをスケジュールすることができます。 ユーザー ノード プールは、お使いのアプリケーションに固有のポッドを配置する場所です。 たとえば、これらの追加のユーザー ノード プールを使用すると、コンピューティング集約型のアプリケーションに GPU を提供したり、高パフォーマンスな SSD ストレージにアクセスを提供したりできます。
 
 > [!NOTE]
 > この機能を使用すると、複数のノード プールを作成および管理する方法をより細かく制御できます。 そのため、作成/更新/削除には個別のコマンドが必要です。 以前は、`az aks create` または `az aks update` を介したクラスター操作は、managedCluster API を使用するものであり、コントロール プレーンと単一ノード プールを変更する唯一の方法でした。 この機能は、agentPool API を介した、エージェント プールに対する個別の操作セットを公開するものであり、個々のノード プールに対して操作を実行するには `az aks nodepool` コマンド セットを使用する必要があります。
@@ -42,10 +42,10 @@ Azure CLI バージョン 2.2.0 以降がインストールされて構成され
 > [!Important]
 > 運用環境内のお使いの AKS クラスターで 1 つのシステム ノード プールを実行する場合、そのノード プールには少なくとも 3 つのノードを使用することをお勧めします。
 
-まず、1 つのノード プールで AKS クラスターを作成開始します。 次の例では、[az group create][az-group-create] コマンドを使用して、*myResourceGroup* という名前のリソース グループを *eastus* リージョンに作成しています。 次いで、*myAKSCluster* という名前の AKS クラスターを [az aks create][az-aks-create] コマンドを使用して作成しています。
+まず、1 つのノード プールで AKS クラスターを作成開始します。 次の例では、 [az group create][az-group-create] コマンドを使用して、 *myResourceGroup* という名前のリソース グループを *eastus* リージョンに作成しています。 次いで、 *myAKSCluster* という名前の AKS クラスターを [az aks create][az-aks-create] コマンドを使用して作成しています。
 
 > [!NOTE]
-> 複数のノード プールを使用する場合、*Basic* ロード バランサー SKU は**サポートされません**。 既定では、AKS クラスターが、Azure CLI および Azure portal から *Standard* ロード バランサー SKU で作成されます。
+> 複数のノード プールを使用する場合、 *Basic* ロード バランサー SKU は **サポートされません** 。 既定では、AKS クラスターが、Azure CLI および Azure portal から *Standard* ロード バランサー SKU で作成されます。
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -74,7 +74,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 ## <a name="add-a-node-pool"></a>ノード プールの追加
 
-前の手順で作成したクラスターには、ノード プールが 1 つあります。 [az aks nodepool add][az-aks-nodepool-add] コマンドを使用して、2 番目のノード プールを追加しましょう。 次の例では、*3* つのノードを実行する *mynodepool* という名前のノード プールを作成します。
+前の手順で作成したクラスターには、ノード プールが 1 つあります。 [az aks nodepool add][az-aks-nodepool-add] コマンドを使用して、2 番目のノード プールを追加しましょう。 次の例では、 *3* つのノードを実行する *mynodepool* という名前のノード プールを作成します。
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -93,7 +93,7 @@ az aks nodepool add \
 az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
 ```
 
-次の出力例では、*mynodepool* がノード プール内に 3 つのノードと共に正常に作成されたことを示しています。 前の手順で AKS クラスターを作成したとき、既定の *nodepool1* がノード数 *2* で作成されました。
+次の出力例では、 *mynodepool* がノード プール内に 3 つのノードと共に正常に作成されたことを示しています。 前の手順で AKS クラスターを作成したとき、既定の *nodepool1* がノード数 *2* で作成されました。
 
 ```output
 [
@@ -121,7 +121,7 @@ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluste
 ```
 
 > [!TIP]
-> ノード プールを追加するときに *VmSize* を指定しなかった場合、既定のサイズは、Windows ノード プールの場合は *Standard_D2s_v3*、Linux ノード プールの場合は *Standard_DS2_v2* になります。 *OrchestratorVersion* が指定されていない場合、コントロール プレーンと同じバージョンが既定値になります。
+> ノード プールを追加するときに *VmSize* を指定しなかった場合、既定のサイズは、Windows ノード プールの場合は *Standard_D2s_v3* 、Linux ノード プールの場合は *Standard_DS2_v2* になります。 *OrchestratorVersion* が指定されていない場合、コントロール プレーンと同じバージョンが既定値になります。
 
 ### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>一意なサブネットを持つノード プールを追加する (プレビュー)
 
@@ -172,7 +172,7 @@ az aks nodepool upgrade \
     --no-wait
 ```
 
-[az aks node pool list][az-aks-nodepool-list] コマンドを使用し、再度お使いのノード プールの状態を一覧表示します。 次の例では、*mynodepool* が *KUBERNETES_VERSION* への *Upgrading* 状態であることを示しています。
+[az aks node pool list][az-aks-nodepool-list] コマンドを使用し、再度お使いのノード プールの状態を一覧表示します。 次の例では、 *mynodepool* が *KUBERNETES_VERSION* への *Upgrading* 状態であることを示しています。
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -214,7 +214,7 @@ AKS クラスター内のノード プールは、すべて同じ Kubernetes の
 ## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>複数のノード プールを使用するでクラスターのコントロール プレーンをアップグレードする
 
 > [!NOTE]
-> Kubernetes は、標準の[セマンティック バージョニング](https://semver.org/)のバージョン管理スキームを使用します。 バージョン番号は *x.y.z* として表されます。ここで、*x* はメジャー バージョン、*y* はマイナー バージョン、*z* は修正プログラムのバージョンです。 たとえば、バージョン *1.12.6* の場合は、1 がメジャー バージョン、12 がマイナー バージョン、6 が修正プログラムのバージョンです。 コントロール プレーンの Kubernetes バージョンと初期ノード プールは、クラスター作成時に設定されます。 その他のすべてのノード プールには、クラスターに追加されるときに Kubernetes バージョンが設定されます。 Kubernetes バージョンは、ノード プール間、およびノード プールとコントロール プレーン間では異なる場合があります。
+> Kubernetes は、標準の[セマンティック バージョニング](https://semver.org/)のバージョン管理スキームを使用します。 バージョン番号は *x.y.z* として表されます。ここで、 *x* はメジャー バージョン、 *y* はマイナー バージョン、 *z* は修正プログラムのバージョンです。 たとえば、バージョン *1.12.6* の場合は、1 がメジャー バージョン、12 がマイナー バージョン、6 が修正プログラムのバージョンです。 コントロール プレーンの Kubernetes バージョンと初期ノード プールは、クラスター作成時に設定されます。 その他のすべてのノード プールには、クラスターに追加されるときに Kubernetes バージョンが設定されます。 Kubernetes バージョンは、ノード プール間、およびノード プールとコントロール プレーン間では異なる場合があります。
 
 AKS クラスターには、Kubernetes バージョンが関連付けられている 2 つのクラスター リソース オブジェクトがあります。
 
@@ -234,8 +234,8 @@ AKS コントロール プレーンをアップグレードするには、`az ak
 クラスターのコントロール プレーンおよびノード プールに対して有効な Kubernetes のアップグレードは、次の規則のセットによって検証されます。
 
 * ノード プールをアップグレードするための有効なバージョンの規則:
-   * ノード プールのバージョンは、コントロール プレーンと同じ "*メジャー*" バージョンである必要があります。
-   * ノード プールの "*マイナー*" バージョンは、コントロール プレーンのバージョンの 2 つ以内の "*マイナー*" バージョンでなければなりません。
+   * ノード プールのバージョンは、コントロール プレーンと同じ " *メジャー* " バージョンである必要があります。
+   * ノード プールの " *マイナー* " バージョンは、コントロール プレーンのバージョンの 2 つ以内の " *マイナー* " バージョンでなければなりません。
    * ノード プールのバージョンを、コントロールの `major.minor.patch` バージョンよりも大きくすることはできません。
 
 * アップグレード操作を送信するための規則:
@@ -249,7 +249,7 @@ AKS コントロール プレーンをアップグレードするには、`az ak
 
 <!--If you scale down, nodes are carefully [cordoned and drained][kubernetes-drain] to minimize disruption to running applications.-->
 
-ノード プール内のノード数をスケーリングするには、[az aks node pool scale][az-aks-nodepool-scale] コマンドを使用します。 次の例では、*mynodepool* 内のノード数を *5* にスケーリングしています。
+ノード プール内のノード数をスケーリングするには、[az aks node pool scale][az-aks-nodepool-scale] コマンドを使用します。 次の例では、 *mynodepool* 内のノード数を *5* にスケーリングしています。
 
 ```azurecli-interactive
 az aks nodepool scale \
@@ -260,7 +260,7 @@ az aks nodepool scale \
     --no-wait
 ```
 
-[az aks node pool list][az-aks-nodepool-list] コマンドを使用し、再度お使いのノード プールの状態を一覧表示します。 次の例では、*mynodepool* が新しいノード数の *5* で *Scaling* の状態であることを示しています。
+[az aks node pool list][az-aks-nodepool-list] コマンドを使用し、再度お使いのノード プールの状態を一覧表示します。 次の例では、 *mynodepool* が新しいノード数の *5* で *Scaling* の状態であることを示しています。
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -312,7 +312,7 @@ AKS には、[クラスター オートスケーラー](cluster-autoscaler.md)�
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name mynodepool --no-wait
 ```
 
-次の [az aks node pool list][az-aks-nodepool-list] コマンドでの出力例では、*mynodepool* が *Deleting* の状態であることを示しています。
+次の [az aks node pool list][az-aks-nodepool-list] コマンドでの出力例では、 *mynodepool* が *Deleting* の状態であることを示しています。
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -351,11 +351,11 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 ## <a name="specify-a-vm-size-for-a-node-pool"></a>ノード プールの VM サイズの指定
 
-前のノード プールの作成例では、クラスターに作成したノードに、既定の VM サイズを使用しました。 より一般的なシナリオでは、さまざまなサイズおよび性能の VM のノード プールが作成されます。 たとえば、大きな CPU またはメモリのノードが含まれるノード プール、または GPU をサポートするノード プールが作成されます。 次の手順では、[taints と tolerations を使用](#schedule-pods-using-taints-and-tolerations)して、Kubernetes スケジューラにこれらのノードで実行されるポッドに対するアクセスを制限する方法を通知します。
+前のノード プールの作成例では、クラスターに作成したノードに、既定の VM サイズを使用しました。 より一般的なシナリオでは、さまざまなサイズおよび性能の VM のノード プールが作成されます。 たとえば、大きな CPU またはメモリのノードが含まれるノード プール、または GPU をサポートするノード プールが作成されます。 次の手順では、[taints と tolerations を使用](#setting-nodepool-taints)して、Kubernetes スケジューラにこれらのノードで実行されるポッドに対するアクセスを制限する方法を通知します。
 
-次の例では、*Standard_NC6* の VM サイズを使用する GPU ベースのノード プールを作成します。 これらの VM は NVIDIA Tesla K80 カードを搭載しています。 使用可能な VM サイズの詳細については、「[Azure での Linux VM のサイズ][vm-sizes]」を参照してください。
+次の例では、 *Standard_NC6* の VM サイズを使用する GPU ベースのノード プールを作成します。 これらの VM は NVIDIA Tesla K80 カードを搭載しています。 使用可能な VM サイズの詳細については、「[Azure での Linux VM のサイズ][vm-sizes]」を参照してください。
 
-再度 [az aks node pool add][az-aks-nodepool-add] コマンドを使用して、ノード プールを作成します。 今回は、次のように *gpunodepool* を名前として指定し、*Standard_NC6* サイズを `--node-vm-size` パラメーターを使用して指定します。
+再度 [az aks node pool add][az-aks-nodepool-add] コマンドを使用して、ノード プールを作成します。 今回は、次のように *gpunodepool* を名前として指定し、 *Standard_NC6* サイズを `--node-vm-size` パラメーターを使用して指定します。
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -367,7 +367,7 @@ az aks nodepool add \
     --no-wait
 ```
 
-[az aks node pool list][az-aks-nodepool-list] コマンドの次の出力例では、*gpunodepool* によって指定した *VmSize* を使用してノードが *Creating* されていることを示しています。
+[az aks node pool list][az-aks-nodepool-list] コマンドの次の出力例では、 *gpunodepool* によって指定した *VmSize* を使用してノードが *Creating* されていることを示しています。
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -404,89 +404,6 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 *gpunodepool* が正常に作成されるには、数分かかります。
 
-## <a name="schedule-pods-using-taints-and-tolerations"></a>taints と tolerations を使用したポッドのスケジュール
-
-現在、最初に作成した既定のノード プールと、GPU ベースのノード プールの 2 つのノード プールがお使いのクラスターにあります。 [kubectl get nodes][kubectl-get] コマンドを使用すると、お使いのクラスターのノードを参照できます。 次の出力例では、ノードが示されています。
-
-```console
-kubectl get nodes
-```
-
-```output
-NAME                                 STATUS   ROLES   AGE     VERSION
-aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.15.7
-aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.15.7
-```
-
-Kubernetes スケジューラでは、テイントと容認を使用して、ノードで実行できるワークロードを制限できます。
-
-* **テイント**は、ノードに適用されて、特定のポッドのみをそのノードでスケジュールできることを示します。
-* **容認**は、ポッドに適用されて、ポッドがノードのテイントを "*許容する*" ことを許可します。
-
-Kubernetes での高度なスケジューラ機能の詳細については、「[Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス][taints-tolerations]」を参照してください。
-
-この例では、--node-taints コマンドを使用してお使いの GPU ベースのノードに taint を適用しています。 前の `kubectl get nodes` コマンドからお使いの GPU ベースのノードの名前を指定します。 taint が *キーと値*のペアとして適用され、その後、スケジュール オプションとして適用されます。 次の例では *sku=gpu* の組み合わせを使用してポッドを定義しています。されない場合、*NoSchedule* 機能を持つことになります。
-
-```console
-az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
-```
-
-次の YAML マニフェストの基本例では、Kubernetes スケジューラが GPU ベースのノードで NGINX ポッドを実行できるように toleration を使用しています。 MNIST データセットに対して Tensorflow ジョブを実行する、より適切な、しかし時間がかかる例については、「[Azure Kubernetes Service (AKS) でコンピューティングを集中的に使用するワークロードに GPU を使用する][gpu-cluster]」を参照してください。
-
-`gpu-toleration.yaml` という名前のファイルを作成し、次の例の YAML にコピーします。
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: mypod
-spec:
-  containers:
-  - image: nginx:1.15.9
-    name: mypod
-    resources:
-      requests:
-        cpu: 100m
-        memory: 128Mi
-      limits:
-        cpu: 1
-        memory: 2G
-  tolerations:
-  - key: "sku"
-    operator: "Equal"
-    value: "gpu"
-    effect: "NoSchedule"
-```
-
-`kubectl apply -f gpu-toleration.yaml` コマンドを使用してポッドをスケジュールします。
-
-```console
-kubectl apply -f gpu-toleration.yaml
-```
-
-ポッドのスケジュールおよび NGINX イメージのプルには、数秒かかります。 [kubectl describe pod][kubectl-describe] コマンドを使用して、ポッドの状態を参照します。 次の縮約された出力例では、*sku = gpu:NoSchedule* toleration を適用しています。 次のように、イベント セクションでは、スケジューラがポッドを *aks-gpunodepool-28993262-vmss000000* GPU ベース ノードに割り当てています。
-
-```console
-kubectl describe pod mypod
-```
-
-```output
-[...]
-Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
-                 node.kubernetes.io/unreachable:NoExecute for 300s
-                 sku=gpu:NoSchedule
-Events:
-  Type    Reason     Age    From                                          Message
-  ----    ------     ----   ----                                          -------
-  Normal  Scheduled  4m48s  default-scheduler                             Successfully assigned default/mypod to aks-gpunodepool-28993262-vmss000000
-  Normal  Pulling    4m47s  kubelet, aks-gpunodepool-28993262-vmss000000  pulling image "nginx:1.15.9"
-  Normal  Pulled     4m43s  kubelet, aks-gpunodepool-28993262-vmss000000  Successfully pulled image "nginx:1.15.9"
-  Normal  Created    4m40s  kubelet, aks-gpunodepool-28993262-vmss000000  Created container
-  Normal  Started    4m40s  kubelet, aks-gpunodepool-28993262-vmss000000  Started container
-```
-
-この toleration が適用されたポッドのみが、*gpunodepool* のノードにスケジュールできます。 その他のポッドは、*nodepool1* ノード プールにスケジュールされます。 ノード プールを追加作成した場合、追加の taints と tolerations を使用して、それらのノード リソースにどのようなポッドをスケジュールするか制限できます。
-
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>テイント、ラベル、またはタグをノード プールに指定する
 
 ### <a name="setting-nodepool-taints"></a>ノード プールのテイントの設定
@@ -508,7 +425,7 @@ az aks nodepool add \
 > [!NOTE]
 > テイントは、ノード プールを作成するときにノード プールに対してのみ設定できます。
 
-[az aks nodepool list][az-aks-nodepool-list] コマンドからの次の出力例では、*taintnp* によって、指定した *nodeTaints* でノードが "*作成されている*" ことが示されています。
+[az aks nodepool list][az-aks-nodepool-list] コマンドからの次の出力例では、 *taintnp* によって、指定した *nodeTaints* でノードが " *作成されている* " ことが示されています。
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -532,13 +449,74 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-テイントの情報は、ノードのスケジューリング規則を処理するために Kubernetes に表示されます。
+テイントの情報は、ノードのスケジューリング規則を処理するために Kubernetes に表示されます。 Kubernetes スケジューラでは、テイントと容認を使用して、ノードで実行できるワークロードを制限できます。
+
+* **テイント** は、ノードに適用されて、特定のポッドのみをそのノードでスケジュールできることを示します。
+* **容認** は、ポッドに適用されて、ポッドがノードのテイントを " *許容する* " ことを許可します。
+
+Kubernetes での高度なスケジューラ機能の詳細については、「[Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス][taints-tolerations]」を参照してください。
+
+前の手順では、ノード プールの作成時に *sku=gpu:NoSchedule* テイントを適用しました。 次の YAML マニフェストの基本例では、Kubernetes スケジューラがそのノードプール内のノードで NGINX ポッドを実行できるように toleration を使用しています。
+
+`nginx-toleration.yaml` という名前のファイルを作成し、次の例の YAML にコピーします。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+  - image: mcr.microsoft.com/oss/nginx/nginx:1.15.9-alpine
+    name: mypod
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 1
+        memory: 2G
+  tolerations:
+  - key: "sku"
+    operator: "Equal"
+    value: "gpu"
+    effect: "NoSchedule"
+```
+
+`kubectl apply -f nginx-toleration.yaml` コマンドを使用してポッドをスケジュールします。
+
+```console
+kubectl apply -f nginx-toleration.yaml
+```
+
+ポッドのスケジュールおよび NGINX イメージのプルには、数秒かかります。 [kubectl describe pod][kubectl-describe] コマンドを使用して、ポッドの状態を参照します。 次の縮約された出力例では、 *sku = gpu:NoSchedule* toleration を適用しています。 イベント セクションで、スケジューラによってポッドが *aks-taintnp-28993262-vmss000000* ノードに割り当てられています。
+
+```console
+kubectl describe pod mypod
+```
+
+```output
+[...]
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+                 sku=gpu:NoSchedule
+Events:
+  Type    Reason     Age    From                Message
+  ----    ------     ----   ----                -------
+  Normal  Scheduled  4m48s  default-scheduler   Successfully assigned default/mypod to aks-taintnp-28993262-vmss000000
+  Normal  Pulling    4m47s  kubelet             pulling image "mcr.microsoft.com/oss/nginx/nginx:1.15.9-alpine"
+  Normal  Pulled     4m43s  kubelet             Successfully pulled image "mcr.microsoft.com/oss/nginx/nginx:1.15.9-alpine"
+  Normal  Created    4m40s  kubelet             Created container
+  Normal  Started    4m40s  kubelet             Started container
+```
+
+*taintnp* のノードでスケジュールできるのは、この toleration が適用されているポッドのみです。 その他のポッドは、 *nodepool1* ノード プールにスケジュールされます。 ノード プールを追加作成した場合、追加の taints と tolerations を使用して、それらのノード リソースにどのようなポッドをスケジュールするか制限できます。
 
 ### <a name="setting-nodepool-labels"></a>ノード プールのラベルの設定
 
 ノード プールを作成するときに、ラベルをノード プールに追加することもできます。 ノード プールに設定されたラベルは、ノード プールの各ノードに追加されます。 ノードのスケジューリング規則を処理するため、これらの[ラベルは Kubernetes に表示][kubernetes-labels]されます。
 
-ラベルが追加されたノード プールを作成するには、[az aks nodepool add][az-aks-nodepool-add] を使用します。 名前 *labelnp* を指定し、`--labels` パラメーターを使用して、*dept=IT* と *costcenter=9999* をラベルに指定します。
+ラベルが追加されたノード プールを作成するには、[az aks nodepool add][az-aks-nodepool-add] を使用します。 名前 *labelnp* を指定し、`--labels` パラメーターを使用して、 *dept=IT* と *costcenter=9999* をラベルに指定します。
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -553,7 +531,7 @@ az aks nodepool add \
 > [!NOTE]
 > ラベルは、ノード プールを作成するときにノード プールに対してのみ設定できます。 また、ラベルはキーと値のペアであり、[有効な構文][kubernetes-label-syntax]で指定されている必要があります。
 
-[az aks nodepool list][az-aks-nodepool-list] コマンドからの次の出力例では、*labelnp* によって、指定した *nodeLabels* でノードが "*作成されている*" ことが示されています。
+[az aks nodepool list][az-aks-nodepool-list] コマンドからの次の出力例では、 *labelnp* によって、指定した *nodeLabels* でノードが " *作成されている* " ことが示されています。
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -586,7 +564,7 @@ Azure タグには、キーを検索してタグを取得する場合などに�
 
 AKS では、複数のタグが同じキーで設定され、大文字/小文字が異なる場合、使用されるタグはアルファベット順で最初のものになります。 たとえば、`{"Key1": "val1", "kEy1": "val2", "key1": "val3"}` の場合は `Key1` と `val1` が設定されます。
 
-[az aks nodepool add][az-aks-nodepool-add] を使用してノード プールを作成します。 名前 *tagnodepool* を指定し、`--tag` パラメーターを使用して、*dept = IT* と *costcenter=9999* をタグに指定します。
+[az aks nodepool add][az-aks-nodepool-add] を使用してノード プールを作成します。 名前 *tagnodepool* を指定し、`--tag` パラメーターを使用して、 *dept = IT* と *costcenter=9999* をタグに指定します。
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -599,9 +577,9 @@ az aks nodepool add \
 ```
 
 > [!NOTE]
-> `--tags` パラメーターは、[az aks nodepool update][az-aks-nodepool-update] コマンドを使用する場合やクラスターの作成時にも使用できます。 クラスターの作成時に、`--tags` パラメーターを指定すると、そのクラスターで作成される最初のノード プールにタグが適用されます。 すべてのタグ名は、「[タグを使用した Azure リソースの整理][tag-limitation]」の制限に従う必要があります。 `--tags` パラメーターを使用してノード プールを更新すると、既存のタグ値が更新され、新しいタグが追加されます。 たとえば、ノード プールにタグの *dept=IT* と *costcenter=9999* があった場合は、タグの *team=dev* と *costcenter=111* で更新すると、ノードプールには、タグの *dept=IT*、*costcenter=111*、*team=dev* が含まれます。
+> `--tags` パラメーターは、[az aks nodepool update][az-aks-nodepool-update] コマンドを使用する場合やクラスターの作成時にも使用できます。 クラスターの作成時に、`--tags` パラメーターを指定すると、そのクラスターで作成される最初のノード プールにタグが適用されます。 すべてのタグ名は、「[タグを使用した Azure リソースの整理][tag-limitation]」の制限に従う必要があります。 `--tags` パラメーターを使用してノード プールを更新すると、既存のタグ値が更新され、新しいタグが追加されます。 たとえば、ノード プールにタグの *dept=IT* と *costcenter=9999* があった場合は、タグの *team=dev* と *costcenter=111* で更新すると、ノードプールには、タグの *dept=IT* 、 *costcenter=111* 、 *team=dev* が含まれます。
 
-[az aks nodepool list][az-aks-nodepool-list] コマンドの次の出力例は、*tagnodepool* によって、指定した "*タグ*" を使用してノードが *Creating* されていることを示しています。
+[az aks nodepool list][az-aks-nodepool-list] コマンドの次の出力例は、 *tagnodepool* によって、指定した " *タグ* " を使用してノードが *Creating* されていることを示しています。
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -634,7 +612,7 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 `aks-agentpools.json` などのテンプレートを作成し、次のマニフェスト例を貼り付けます。 このテンプレートの例は、次の設定を構成します。
 
-* 3 つのノードを実行するように、*myagentpool* という *Linux* ノード プールを更新します。
+* 3 つのノードを実行するように、 *myagentpool* という *Linux* ノード プールを更新します。
 * Kubernetes バージョン *1.15.7* を実行するように、ノード プール内のノードを設定します。
 * *Standard_DS2_v2* とノード サイズを定義します。
 
@@ -798,7 +776,7 @@ az vmss list-instance-public-ips -g MC_MyResourceGroup2_MyManagedCluster_eastus 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-この記事では、GPU ベースのノードを含む AKS クラスターを作成しました。 不要なコストを減らすには、*gpunodepool*、または AKS クラスター全体を削除してください。
+この記事では、GPU ベースのノードを含む AKS クラスターを作成しました。 不要なコストを減らすには、 *gpunodepool* 、または AKS クラスター全体を削除してください。
 
 GPU ベースのノード プールを削除するには、次の例のように [az aks nodepool delete][az-aks-nodepool-delete] コマンドを使用します。
 

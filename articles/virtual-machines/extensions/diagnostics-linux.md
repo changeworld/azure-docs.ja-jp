@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: a01f5d2d000ef6e177000828500ef2ab0e26c4ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1faf4455a983e87ce4c702c09f8bf2d9fbe70047
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448189"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893405"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -39,6 +39,9 @@ Linux Diagnostic Extension は、Microsoft Azure で実行中の Linux VM の正
 ## <a name="installing-the-extension-in-your-vm"></a>VM への拡張機能のインストール
 
 この拡張機能は、Azure PowerShell コマンドレット、Azure CLI スクリプト、ARM テンプレート、Azure portal のいずれかを使用して有効にできます。 詳細については、[拡張機能](features-linux.md)に関するページをご覧ください。
+
+>[!NOTE]
+>診断 VM 拡張機能の一部のコンポーネントは、[Log Analytics VM 拡張機能](./oms-linux.md)にも含まれています。 このアーキテクチャが原因で、両方の拡張機能が同じ ARM テンプレートでインスタンス化されると、競合が発生する可能性があります。 このようなインストール時の競合を回避するには、[`dependsOn` ディレクティブ](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)を使用して、拡張機能が順番にインストールされるようにします。 拡張機能は、どちらの順序でもインストールできます。
 
 このインストール手順と[ダウンロード可能なサンプル構成](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json)により、LAD 3.0 は次のように構成されます。
 
@@ -67,8 +70,8 @@ Debian 7 などのメジャー バージョンのみを示しているディス�
 
 ### <a name="prerequisites"></a>前提条件
 
-* **Azure Linux エージェント バージョン 2.2.0 以降**。 ほとんどの Azure VM Linux ギャラリー イメージには、バージョン 2.2.7 以降が含まれています。 `/usr/sbin/waagent -version` を実行して、VM にインストールされているバージョンを確認します。 VM で古いバージョンのゲスト エージェントを実行している場合は、[次の手順](./update-linux-agent.md)に従って更新します。
-* **Azure CLI**。 ご使用のマシンに [Azure CLI 環境をセットアップ](/cli/azure/install-azure-cli)します。
+* **Azure Linux エージェント バージョン 2.2.0 以降** 。 ほとんどの Azure VM Linux ギャラリー イメージには、バージョン 2.2.7 以降が含まれています。 `/usr/sbin/waagent -version` を実行して、VM にインストールされているバージョンを確認します。 VM で古いバージョンのゲスト エージェントを実行している場合は、[次の手順](./update-linux-agent.md)に従って更新します。
+* **Azure CLI** 。 ご使用のマシンに [Azure CLI 環境をセットアップ](/cli/azure/install-azure-cli)します。
 * wget コマンド。まだ持っていない場合は `sudo apt-get install wget` を実行します。
 * 既存の Azure サブスクリプションと、データを格納するための既存の汎用ストレージ アカウント。  汎用ストレージ アカウントでは、必須のテーブル ストレージがサポートされます。  BLOB ストレージ アカウントは機能しません。
 
@@ -172,7 +175,7 @@ Protected 設定または Public 設定を変更した後、同じコマンド�
 
 ### <a name="migration-from-previous-versions-of-the-extension"></a>以前のバージョンの拡張機能からの移行
 
-拡張機能の最新バージョンは **3.0** です。 **以前のバージョン (2.x) は非推奨となり、2018 年 7 月 31 日以降は非公開になる可能性があります**。
+拡張機能の最新バージョンは **3.0** です。 **以前のバージョン (2.x) は非推奨となり、2018 年 7 月 31 日以降は非公開になる可能性があります** 。
 
 > [!IMPORTANT]
 > この拡張機能では、構成の面で大幅な変更点が導入されます。 その変更点の 1 つは、拡張機能のセキュリティを向上させるために行われました。結果として、2.x との下位互換性を維持できなくなりました。 また、この拡張機能の Extension Publisher は、2.x バージョンのパブリッシャーとは異なります。
@@ -206,7 +209,7 @@ Protected 設定または Public 設定を変更した後、同じコマンド�
 ---- | -----
 storageAccountName | 拡張機能によってデータが書き込まれるストレージ アカウントの名前。
 storageAccountEndPoint | (省略可能) ストレージ アカウントが存在するクラウドを識別するエンドポイント。 この設定がない場合、LAD の既定値は Azure パブリック クラウド `https://core.windows.net` になります。 Azure Germany、Azure Government、Azure China でストレージ アカウントを使用するには、この値を適切に設定します。
-storageAccountSasToken | BLOB および Table service (`ss='bt'`) の[アカウント SAS トークン](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/)。追加、作成、一覧表示、更新、書き込み権限 (`sp='acluw'`) を付与するコンテナーおよびオブジェクト (`srt='co'`) に適用できます。 先頭の疑問符 (?) を*含めないで*ください。
+storageAccountSasToken | BLOB および Table service (`ss='bt'`) の[アカウント SAS トークン](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/)。追加、作成、一覧表示、更新、書き込み権限 (`sp='acluw'`) を付与するコンテナーおよびオブジェクト (`srt='co'`) に適用できます。 先頭の疑問符 (?) を *含めないで* ください。
 mdsdHttpProxy | (省略可能) 指定されたストレージ アカウントとエンドポイントに拡張機能が接続するために必要な HTTP プロキシ情報。
 sinksConfig | (省略可能) メトリックとイベントの配信が可能な代替宛先の詳細。 拡張機能でサポートされている各データ シンクの詳細については、以降のセクションで説明します。
 
@@ -578,7 +581,7 @@ TransfersPerSecond | 1 秒あたりの読み取りまたは書き込み操作
 
 すべてのファイル システムの集計値は、`"condition": "IsAggregate=True"` のように設定すると取得できます。 "/mnt" のような特定のマウントされたファイル システムの値は、`"condition": 'Name="/mnt"'` のように設定すると取得できます。 
 
-**注**:JSON ではなく Azure Portal を使用する場合、正しい条件フィールド形式は Name='/mnt' になります。
+**注** :JSON ではなく Azure Portal を使用する場合、正しい条件フィールド形式は Name='/mnt' になります。
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>"ディスク" クラスの組み込みメトリック
 

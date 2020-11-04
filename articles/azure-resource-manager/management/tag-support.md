@@ -2,16 +2,16 @@
 title: リソースでのタグのサポート
 description: タグをサポートしている Azure リソースの種類を示します。 すべての Azure サービスの詳細を提供します。
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: 27e25b1048bb759a3b38859788c27c03f1cf0447
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: c3a94ece52e5c5b17a50fed9810303480a9c974a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371543"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370289"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure リソースでのタグのサポート
-この記事では、リソースの種類が[タグ](tag-resources.md)をサポートしているかどうかについて説明します。 「**タグのサポート**」というラベルが付けられた列は、リソースの種類にタグのプロパティがあるかどうかを示します。 「**コスト レポートのタグ**」というラベルが付けられた列は、リソースの種類がタグをコスト レポートに渡すかどうかを示します。 [Cost Management のコスト分析](../../cost-management-billing/costs/group-filter.md)および [Azure の請求書と毎日の使用データ](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)で、タグ別にコストを表示できます。
+この記事では、リソースの種類が[タグ](tag-resources.md)をサポートしているかどうかについて説明します。 「 **タグのサポート** 」というラベルが付けられた列は、リソースの種類にタグのプロパティがあるかどうかを示します。 「 **コスト レポートのタグ** 」というラベルが付けられた列は、リソースの種類がタグをコスト レポートに渡すかどうかを示します。 [Cost Management のコスト分析](../../cost-management-billing/costs/group-filter.md)および [Azure の請求書と毎日の使用データ](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)で、タグ別にコストを表示できます。
 
 コンマ区切りの値のファイルと同じデータを取得するには、[tag-support.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv) をダウンロードします。
 
@@ -37,6 +37,7 @@ ms.locfileid: "91371543"
 > - [Microsoft.AzureData](#microsoftazuredata)
 > - [Microsoft.AzureStack](#microsoftazurestack)
 > - [Microsoft.AzureStackHCI](#microsoftazurestackhci)
+> - [Microsoft.BareMetalInfrastructure](#microsoftbaremetalinfrastructure)
 > - [Microsoft.Batch](#microsoftbatch)
 > - [Microsoft.Billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
@@ -167,6 +168,7 @@ ms.locfileid: "91371543"
 > - [Microsoft.ServiceFabricMesh](#microsoftservicefabricmesh)
 > - [Microsoft.Services](#microsoftservices)
 > - [Microsoft.SignalRService](#microsoftsignalrservice)
+> - [Microsoft.Singularity](#microsoftsingularity)
 > - [Microsoft.SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft.Solutions](#microsoftsolutions)
 > - [Microsoft.SQL](#microsoftsql)
@@ -361,6 +363,7 @@ ms.locfileid: "91371543"
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
 > | privateClouds | はい | はい |
+> | privateClouds / addons | いいえ | いいえ |
 > | privateClouds / authorizations | いいえ | いいえ |
 > | privateClouds / clusters | いいえ | いいえ |
 > | privateClouds / globalReachConnections | いいえ | いいえ |
@@ -423,12 +426,21 @@ ms.locfileid: "91371543"
 > | ------------- | ----------- | ----------- |
 > | clusters | はい | はい |
 
+## <a name="microsoftbaremetalinfrastructure"></a>Microsoft.BareMetalInfrastructure
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | タグのサポート | コスト レポートのタグ |
+> | ------------- | ----------- | ----------- |
+> | bareMetalInstances | はい | はい |
+
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
 > | batchAccounts | はい | はい |
+> | batchAccounts/certificates | いいえ | いいえ |
+> | batchAccounts / pools | いいえ | いいえ |
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
@@ -737,7 +749,7 @@ ms.locfileid: "91371543"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | plans | はい | はい |
+> | plans | はい | いいえ |
 > | registeredSubscriptions | いいえ | いいえ |
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
@@ -973,7 +985,6 @@ ms.locfileid: "91371543"
 > | ------------- | ----------- | ----------- |
 > | workspaces | はい | はい |
 > | workspaces / dbWorkspaces | いいえ | いいえ |
-> | workspaces / storageEncryption | いいえ | いいえ |
 > | workspaces / virtualNetworkPeerings | いいえ | いいえ |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
@@ -1132,6 +1143,7 @@ ms.locfileid: "91371543"
 > | applicationgroups / desktops | いいえ | いいえ |
 > | applicationgroups / startmenuitems | いいえ | いいえ |
 > | hostpools | はい | はい |
+> | hostpools / msixpackages | いいえ | いいえ |
 > | hostpools / sessionhosts | いいえ | いいえ |
 > | hostpools / sessionhosts / usersessions | いいえ | いいえ |
 > | hostpools / usersessions | いいえ | いいえ |
@@ -1384,12 +1396,14 @@ ms.locfileid: "91371543"
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
 > | devices | はい | はい |
+> | networkFunctions | はい | はい |
+> | networkFunctionVendors | いいえ | いいえ |
 > | registeredSubscriptions | いいえ | いいえ |
 > | vendors | いいえ | いいえ |
-> | vendors / vendorskus | いいえ | いいえ |
-> | vendors / vendorskus / previewSubscriptions | いいえ | いいえ |
-> | virtualnetworkfunctions | はい | はい |
-> | virtualnetworkfunctionvendors | いいえ | いいえ |
+> | vendors / vendorSkus | いいえ | いいえ |
+> | vendors / vendorSkus / previewSubscriptions | いいえ | いいえ |
+> | virtualNetworkFunctions | はい | はい |
+> | virtualNetworkFunctionVendors | いいえ | いいえ |
 
 ## <a name="microsofthydra"></a>Microsoft.Hydra
 
@@ -1537,9 +1551,20 @@ ms.locfileid: "91371543"
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
 > | workspaces | はい | はい |
+> | workspaces / batchEndpoints | はい | はい |
+> | workspaces / batchEndpoints / deployments | はい | はい |
+> | workspaces / codes | いいえ | いいえ |
+> | workspaces / codes / versions | いいえ | いいえ |
 > | workspaces / computes | いいえ | いいえ |
+> | workspaces / datastores | いいえ | いいえ |
 > | workspaces / eventGridFilters | いいえ | いいえ |
+> | workspaces / jobs | いいえ | いいえ |
+> | workspaces / labelingJobs | いいえ | いいえ |
 > | workspaces / linkedServices | いいえ | いいえ |
+> | workspaces / models | いいえ | いいえ |
+> | workspaces / models / versions | いいえ | いいえ |
+> | workspaces / onlineEndpoints | はい | はい |
+> | workspaces / onlineEndpoints / deployments | はい | はい |
 
 ## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
 
@@ -2194,6 +2219,17 @@ ms.locfileid: "91371543"
 > | SignalR | はい | はい |
 > | SignalR / eventGridFilters | いいえ | いいえ |
 
+## <a name="microsoftsingularity"></a>Microsoft.Singularity
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | タグのサポート | コスト レポートのタグ |
+> | ------------- | ----------- | ----------- |
+> | accounts | はい | はい |
+> | accounts / accountQuotaPolicies | いいえ | いいえ |
+> | accounts / groupPolicies | いいえ | いいえ |
+> | accounts / jobs | いいえ | いいえ |
+> | accounts / storageContainers | いいえ | いいえ |
+
 ## <a name="microsoftsoftwareplan"></a>Microsoft.SoftwarePlan
 
 > [!div class="mx-tableFixed"]
@@ -2332,6 +2368,7 @@ ms.locfileid: "91371543"
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
 > | clusters | はい | はい |
+> | clusters / privateEndpoints | いいえ | いいえ |
 > | streamingjobs | はい (下記の「注」を参照) | はい |
 
 > [!NOTE]
@@ -2433,8 +2470,8 @@ ms.locfileid: "91371543"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | accounts | はい | はい |
-> | plans | はい | はい |
+> | accounts | はい | いいえ |
+> | plans | はい | いいえ |
 > | registeredSubscriptions | いいえ | いいえ |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
@@ -2469,6 +2506,8 @@ ms.locfileid: "91371543"
 > | runtimes | いいえ | いいえ |
 > | serverFarms | はい | はい |
 > | serverFarms / eventGridFilters | いいえ | いいえ |
+> | serverFarms / firstPartyApps | いいえ | いいえ |
+> | serverFarms / firstPartyApps / keyVaultSettings | いいえ | いいえ |
 > | sites | はい | はい |
 > | sites / config  | いいえ | いいえ |
 > | sites / eventGridFilters | いいえ | いいえ |

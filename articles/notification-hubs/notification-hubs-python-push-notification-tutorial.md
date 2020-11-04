@@ -17,12 +17,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 3b6a38087aee7f33861f980cb6d245024f8d51ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f81614005a1b0374dc249187c4ff3c920b7c97e9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852329"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424843"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Python で Notification Hubs を使用する方法
 
@@ -425,7 +425,7 @@ tags = {'sports', 'politics'}
 hub.send_windows_notification(wns_payload, tags)
 ```
 
-![HTTP 要求、および Service Bus Notification 形式、Service Bus Notification タグ、X-WNS 型の各値の詳細が赤色の枠線で囲まれているコンソールのスクリーンショット。][4]
+![HTTP 要求、および Service Bus Notification 形式、複数の Service Bus Notification タグ、X-WNS 型の各値の詳細が赤色の枠線で囲まれているコンソールのスクリーンショット。][4]
 
 ### <a name="templated-notification"></a>テンプレート化された通知
 

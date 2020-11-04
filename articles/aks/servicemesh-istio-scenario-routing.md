@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 871a764c549de75d5a9e1449ba2e0737d38a4094
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69541ec652188bc3826b7829fbc5c182193d6ba9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83799938"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670943"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Istio によりインテリジェントなルーティングとカナリア リリースを使用する
 
@@ -39,7 +39,7 @@ ms.locfileid: "83799938"
 
 ## <a name="about-this-application-scenario"></a>このアプリケーションのシナリオについて
 
-サンプルの AKS 投票アプリでは、ユーザーに 2 つの投票オプション (**Cats** または **Dogs**) が提供されます。 各オプションの投票の数を保持するストレージ コンポーネントがあります。 さらに、各オプションの投票総数に関する詳細を提供する分析コンポーネントがあります。
+サンプルの AKS 投票アプリでは、ユーザーに 2 つの投票オプション ( **Cats** または **Dogs** ) が提供されます。 各オプションの投票の数を保持するストレージ コンポーネントがあります。 さらに、各オプションの投票総数に関する詳細を提供する分析コンポーネントがあります。
 
 このアプリケーション シナリオでは、投票アプリのバージョン `1.0` と分析コンポーネントのバージョン `1.0` をデプロイすることから始めます。 分析コンポーネントでは、投票数に関する簡単なカウントが提供されます。 投票アプリと分析コンポーネントは、Redis によってサポートされるストレージ コンポーネントのバージョン `1.0` を使用してやり取りします。
 
@@ -53,7 +53,7 @@ ms.locfileid: "83799938"
 
 最初に、アプリケーションを Azure Kubernetes Service (AKS) クラスターにデプロイしましょう。 次の図に、このセクションが終わった時点で何が実行されているかを示します。つまり、すべてのコンポーネントのバージョン `1.0` では、Istio イングレス ゲートウェイ経由で受信要求が処理されます。
 
-![AKS 投票アプリのコンポーネントとルーティング。](media/servicemesh/istio/scenario-routing-components-01.png)
+![すべてのコンポーネントのバージョン 1.0 を示す図。Istio のイングレス ゲートウェイ経由で受信要求が提供されています。](media/servicemesh/istio/scenario-routing-components-01.png)
 
 この記事を理解するために必要な成果物は、[Azure-Samples/aks-voting-app][github-azure-sample] GitHub リポジトリにあります。 成果物をダウンロードするか、次のようにしてリポジトリを複製することができます。
 
@@ -139,9 +139,9 @@ voting-storage-1-0-5d8fcc89c4-2jhms     2/2       Running   0          39s   app
 Istio [ゲートウェイ][istio-reference-gateway]および[仮想サービス][istio-reference-virtualservice]を作成するまで、投票アプリに接続することはできません。 これらの Istio リソースにより、既定の Istio イングレス ゲートウェイからアプリケーションにトラフィックがルーティングされます。
 
 > [!NOTE]
-> "**ゲートウェイ**" はサービス メッシュのエッジにあるコンポーネントであり、インバウンドまたはアウトバウンドの HTTP および TCP トラフィックが受信されます。
+> " **ゲートウェイ** " はサービス メッシュのエッジにあるコンポーネントであり、インバウンドまたはアウトバウンドの HTTP および TCP トラフィックが受信されます。
 > 
-> "**仮想サービス**" では、1 つまたは複数の送信先サービスに対するルーティング規則のセットが定義されています。
+> " **仮想サービス** " では、1 つまたは複数の送信先サービスに対するルーティング規則のセットが定義されています。
 
 `kubectl apply` コマンドを使用して、ゲートウェイと仮想サービス yaml をデプロイします。 これらのリソースがデプロイされる名前空間を必ず指定してください。
 
@@ -180,7 +180,7 @@ kubectl get service istio-ingressgateway --namespace istio-system -o jsonpath='{
 
 次の図に、このセクションが終わった時点で何が実行されているかを示します。`voting-analytics` コンポーネントのバージョン `1.1` だけが、`voting-app` コンポーネントからトラフィックをルーティングされます。 `voting-analytics` コンポーネント のバージョン `1.0` は引き続き実行され、`voting-analytics` サービスによって参照されますが、Istio プロキシではそのコンポーネントとのトラフィックは許可されません。
 
-![AKS 投票アプリのコンポーネントとルーティング。](media/servicemesh/istio/scenario-routing-components-02.png)
+![voting-app コンポーネントからルーティングされたトラフィックが voting-analytics コンポーネントのバージョン 1.1 のみに含まれていることを示す図。](media/servicemesh/istio/scenario-routing-components-02.png)
 
 `voting-analytics` コンポーネントのバージョン `1.1` をデプロイしましょう。 `voting` 名前空間にこのコンポーネントを作成します。
 
@@ -236,9 +236,9 @@ deployment.apps/voting-analytics-1-1 created
 
 次に、トラフィックを `voting-analytics` コンポーネントのバージョン `1.1` と `voting-storage` コンポーネントのバージョン `1.0` にロックダウンしましょう。 その後、他のすべてのコンポーネントに対するルーティング規則を定義します。
 
-> * "**仮想サービス**" では、1 つまたは複数の送信先サービスに対するルーティング規則のセットが定義されています。
-> * "**宛先ルール**" では、トラフィック ポリシーとバージョン固有のポリシーが定義されています。
-> * "**ポリシー**" では、ワークロードで受け付けられる認証方法を定義します。
+> * " **仮想サービス** " では、1 つまたは複数の送信先サービスに対するルーティング規則のセットが定義されています。
+> * " **宛先ルール** " では、トラフィック ポリシーとバージョン固有のポリシーが定義されています。
+> * " **ポリシー** " では、ワークロードで受け付けられる認証方法を定義します。
 
 `kubectl apply` コマンドを使用して `voting-app` の仮想サービス定義を置き換え、他のコンポーネント用の[宛先ルール][istio-reference-destinationrule]と[仮想サービス][istio-reference-virtualservice]を追加します。 [ポリシー][istio-reference-policy]を `voting` 名前空間に追加して、サービス間のすべての通信が相互 TLS とクライアント証明書を使用してセキュリティ保護されるようにします。
 
@@ -361,7 +361,7 @@ voting-storage.voting.svc.cluster.local:6379     OK         mTLS       mTLS     
 * `voting-app` コンポーネントのバージョン `2.0`、`voting-analytics` コンポーネントのバージョン `2.0`、および `voting-storage` コンポーネントのバージョン `2.0` が、相互に通信できます。
 * `voting-app` コンポーネントのバージョン `2.0` は、特定の機能フラグが設定されているユーザーのみがアクセスできます。 この変更は、Cookie により機能フラグを使用して管理されます。
 
-![AKS 投票アプリのコンポーネントとルーティング。](media/servicemesh/istio/scenario-routing-components-03.png)
+![このセクションの最後で実行されるものを示す図。](media/servicemesh/istio/scenario-routing-components-03.png)
 
 最初に、これらの新しいコンポーネントに対応するように Istio の宛先ルールと仮想サービスを更新します。 これらの更新では、新しいコンポーネントに間違ってトラフィックがルーティングされないこと、予期せずユーザーにアクセス権が与えられないことが保証されます。
 
@@ -415,7 +415,7 @@ kubectl get pods --namespace voting -w
 
 カナリア リリースのテストで問題がなければ、`voting-app` 仮想サービスを更新して、すべてのトラフィックが `voting-app` コンポーネントのバージョン `2.0` にルーティングされるようにします。 その後は、機能フラグが設定されているかどうかに関係なく、すべてのユーザーにアプリケーションのバージョン `2.0` が表示されます。
 
-![AKS 投票アプリのコンポーネントとルーティング。](media/servicemesh/istio/scenario-routing-components-04.png)
+![機能フラグが設定されているかどうかに関係なく、アプリケーションのバージョン 2.0 がユーザーに表示されることを示す図。](media/servicemesh/istio/scenario-routing-components-04.png)
 
 すべての宛先ルールを更新し、アクティブにする必要がなくなったコンポーネントのバージョンを削除します。 その後、すべての仮想サービスを更新して、これらのバージョンの参照を停止します。
 

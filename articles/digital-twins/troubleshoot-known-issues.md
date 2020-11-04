@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 8bcbe395f78d3e4e9a6f7f615edc61eaa04347cf
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 8f56538470b8a52697e2d5c4154a6a6807a0cfde
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311676"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489015"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure Digital Twins の既知の問題
 
@@ -32,9 +32,9 @@ Azure Digital Twins では特に、これは次のコマンド グループに�
 
 または、Azure portal の [Cloud Shell] ペインを開き、そこから Cloud Shell 作業を完了することができます。
 
-:::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="Cloud Shell アイコンが強調表示されている Azure portal と、ポータル ウィンドウの下部に表示されている Cloud Shell のビュー":::
+:::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="&quot;Cloud Shell&quot; アイコンが強調表示されている Azure portal のビューと、ポータル ウィンドウの下部に表示されている Cloud Shell":::
 
-最終的には、別の解決策として、コンピューターに [Azure CLI をインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)して、Azure CLI コマンドをローカルで実行できるようにします。 ローカル CLI ではこの問題は発生しません。
+最終的には、別の解決策として、コンピューターに [Azure CLI をインストール](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)して、Azure CLI コマンドをローカルで実行できるようにします。 ローカル CLI ではこの問題は発生しません。
 
 ### <a name="possible-causes"></a>考えられる原因
 
@@ -46,7 +46,9 @@ Azure Digital Twins では特に、これは次のコマンド グループに�
 
 ## <a name="missing-role-assignment-after-scripted-setup"></a>スクリプトを使用したセットアップ後にロールの割り当てが存在しない
 
-ユーザーによっては、 [*方法: インスタンスと認証の設定 (スクリプト化) に関する記事のロールの割り当て部分で問題が発生することがあります。インスタンスと認証の設定 (スクリプト化)*](how-to-set-up-instance-scripted.md) に関するページを参照してください。 このスクリプトでは失敗として示されませんが、 *Azure Digital Twins 所有者 (プレビュー)* ロールがユーザーに正常に割り当てられておらず、この問題は、今後その他のリソースを作成する機能に影響します。
+ユーザーによっては、 [*方法: インスタンスと認証の設定 (スクリプト化) に関する記事のロールの割り当て部分で問題が発生することがあります。インスタンスと認証の設定 (スクリプト化)*](how-to-set-up-instance-scripted.md) に関するページを参照してください。 このスクリプトには失敗と示されてはいませんが、" *Azure Digital Twins データ所有者* " ロールがユーザーに正常に割り当てられておらず、この問題は、今後その他のリソースを作成する機能に影響します。
+
+[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 スクリプトの実行後にロールの割り当てが正常に設定されたかどうかを確認するには、セットアップの記事にある「 [*ユーザー ロールの割り当てを確認する*](how-to-set-up-instance-scripted.md#verify-user-role-assignment)」の手順に従ってください。 ユーザーに対してこのロールが表示されていない場合、この問題による影響があります。
 
@@ -64,7 +66,7 @@ Azure Digital Twins では特に、これは次のコマンド グループに�
 
 ## <a name="issue-with-interactive-browser-authentication"></a>対話型ブラウザーの認証に関する問題
 
-**[Azure.Identity](/dotnet/api/azure.identity?view=azure-dotnet) ライブラリ** のバージョン **1.2.0** を使用して Azure Digital Twins アプリケーションで認証コードを記述すると、 [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) メソッドで問題が発生することがあります。
+**[Azure.Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) ライブラリ** のバージョン **1.2.0** を使用して Azure Digital Twins アプリケーションで認証コードを記述すると、 [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) メソッドで問題が発生することがあります。
 
 これはライブラリの最新バージョンではありません。 最新バージョンは **1.2.2** です。
 

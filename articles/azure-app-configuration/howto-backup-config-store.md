@@ -6,16 +6,16 @@ author: avanigupta
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
-ms.custom: devx-track-dotnet
+ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 3c4bdf1268aea06d7b67776a4022c608549994e7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: b48adfdfda4b3e120b2246e67a70000d25c25f3a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074857"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737080"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>App Configuration ストアを自動的にバックアップする
 
@@ -62,7 +62,7 @@ az group create --name $resourceGroupName --location westus
 ## <a name="create-app-configuration-stores"></a>App Configuration ストアを作成する
 
 プライマリとセカンダリの App Configuration ストアを異なるリージョンに作成します。
- `<primary_appconfig_name>` および `<secondary_appconfig_name>` を、構成ストアの一意の名前に置き換えます。 各ストア名は、DNS 名として使用されるため、一意である必要があります。
+`<primary_appconfig_name>` と `<secondary_appconfig_name>` を、構成ストアの一意の名前に置き換えます。 各ストア名は、DNS 名として使用されるため、一意である必要があります。
 
 ```azurecli-interactive
 primaryAppConfigName="<primary_appconfig_name>"
@@ -213,7 +213,7 @@ az role assignment create \
 az appconfig kv set --name $primaryAppConfigName --key Foo --value Bar --yes
 ```
 
-イベントをトリガーしました。 しばらくすると、Event Grid によってイベント通知がキューに送信されます。 *次にスケジュールされた関数の実行後*、セカンダリ ストアの構成設定を表示して、プライマリ ストアからの更新されたキー値が含まれているかどうかを確認します。
+イベントをトリガーしました。 しばらくすると、Event Grid によってイベント通知がキューに送信されます。 *次にスケジュールされた関数の実行後* 、セカンダリ ストアの構成設定を表示して、プライマリ ストアからの更新されたキー値が含まれているかどうかを確認します。
 
 > [!NOTE]
 > スケジュールされたタイマー トリガーを待たずに、テスト中およびトラブルシューティング中に[関数を手動でトリガーする](../azure-functions/functions-manually-run-non-http.md)ことができます。
@@ -241,7 +241,7 @@ az appconfig kv show --name $secondaryAppConfigName --key Foo
 
 セカンダリ ストアに新しい設定が表示されない場合は、次の処理を行います。
 
-- プライマリ ストアで設定を作成した*後に*、バックアップ関数がトリガーされたことを確認します。
+- プライマリ ストアで設定を作成した *後に* 、バックアップ関数がトリガーされたことを確認します。
 - Event Grid によって時間内にキューにイベント通知が送信されなかった可能性があります。 プライマリ ストアからのイベント通知がキューにまだ含まれているかどうかを確認します。 存在する場合は、バックアップ関数を再びトリガーします。
 - エラーまたは警告がないか [Azure Functions のログ](../azure-functions/functions-create-scheduled-function.md#test-the-function)を確認します。
 - [Azure portal](../azure-functions/functions-how-to-use-azure-function-app-settings.md#get-started-in-the-azure-portal) を使用して、Azure 関数アプリに、Azure Functions で読み取ろうとしているアプリケーション設定の正しい値が含まれていることを確実にします。

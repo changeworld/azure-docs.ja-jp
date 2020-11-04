@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: e3eb6b750c805951a67a2e869c862f1285a342a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a40ffab652a6ae8671d6cd1c0dd9336764ce2c4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448318"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791938"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>Azure Defender の Key Vault アラートに対応する
 Azure Defender for Key Vault からアラートを受け取った場合は、以下の説明に従って調査し、アラートに対応することをお勧めします。 Azure Defender for Key Vault によってアプリケーションと資格情報が保護されているため、アラートをトリガーしたアプリケーションまたはユーザーを熟知している場合でも、すべてのアラートを取り巻く状況を確認することが重要です。  
@@ -23,7 +23,7 @@ Azure Defender for Key Vault のすべてのアラートには、次の要素が
 - 疑わしいリソースのユーザー プリンシパル名または IP アドレス
 
 > [!TIP]
-> 発生したアクセスの "*種類*" によっては、一部のフィールドが使用できない場合があります。 たとえば、キー コンテナーがアプリケーションからアクセスされた場合、関連付けられているユーザー プリンシパル名は表示されません。 トラフィックが Azure の外部から送信された場合、オブジェクト ID は表示されません。
+> 発生したアクセスの " *種類* " によっては、一部のフィールドが使用できない場合があります。 たとえば、キー コンテナーがアプリケーションからアクセスされた場合、関連付けられているユーザー プリンシパル名は表示されません。 トラフィックが Azure の外部から送信された場合、オブジェクト ID は表示されません。
 
 ## <a name="step-1-contact"></a>手順 1. Contact
 
@@ -32,7 +32,7 @@ Azure Defender for Key Vault のすべてのアラートには、次の要素が
 1. ご自分のテナント内でトラフィックの送信元を特定できる場合は、そのユーザーまたはアプリケーションの所有者に問い合わせてください。 
 
 > [!CAUTION]
-> Azure Defender for Key Vault は、盗まれた資格情報によって引き起こされた疑わしいアクティビティを特定できるように設計されています。 ユーザーまたはアプリケーションを認識しているという理由だけで、アラートを無視**しないでください**。 アプリケーションの所有者またはユーザーに連絡し、アクティビティが正当なものであったことを確認します。 必要に応じて、ノイズを除去する抑制ルールを作成できます。 詳細については、[Azure Defender のアラートの抑制](alerts-suppression-rules.md)に関するページを参照してください。
+> Azure Defender for Key Vault は、盗まれた資格情報によって引き起こされた疑わしいアクティビティを特定できるように設計されています。 ユーザーまたはアプリケーションを認識しているという理由だけで、アラートを無視 **しないでください** 。 アプリケーションの所有者またはユーザーに連絡し、アクティビティが正当なものであったことを確認します。 必要に応じて、ノイズを除去する抑制ルールを作成できます。 詳細については、[Azure Defender のアラートの抑制](alerts-suppression-rules.md)に関するページを参照してください。
 
 
 ## <a name="step-2-immediate-mitigation"></a>手順 2. 即時軽減策 
@@ -72,4 +72,4 @@ Azure Defender for Key Vault のすべてのアラートには、次の要素が
 
 - [Azure Defender for Key Vault の概要](defender-for-key-vault-introduction.md)
 - [Azure Defender のアラートの抑制](alerts-suppression-rules.md)
-- [セキュリティ アラートのエクスポート](continuous-export.md)
+- [継続的に Security Center データをエクスポートする](continuous-export.md)

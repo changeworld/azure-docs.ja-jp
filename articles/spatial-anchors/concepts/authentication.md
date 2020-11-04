@@ -9,16 +9,16 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 715e09eaf6ca379261d619fe02ad81a69a519d3e
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 5f59f626d9edbf30f61935c026ac965dbbe946f8
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328540"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516921"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure Spatial Anchors に対する認証と承認
 
-この記事では、アプリまたは Web サービスから Azure Spatial Anchors に対する認証を実行できるさまざまな方法について説明します。 Azure Active Directory (Azure AD) でロールベースのアクセス制御を使用して、Spatial Anchors アカウントへのアクセスを制御する方法についても説明します。
+この記事では、アプリまたは Web サービスから Azure Spatial Anchors に対する認証を実行できるさまざまな方法について説明します。 Azure Active Directory (Azure AD) で Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Spatial Anchors アカウントへのアクセスを制御する方法についても説明します。
 
 ## <a name="overview"></a>概要
 
@@ -108,7 +108,7 @@ Azure Active Directory ユーザーを対象とするアプリケーションで
    1.    Azure portal で、ご使用の Spatial Anchors リソースに移動します。
    2.    **[アクセス制御 (IAM)]** タブに移動します。
    3.    **[ロールの割り当ての追加]** を選択します。
-   1.    [ロールを選択します](#role-based-access-control)。
+   1.    [ロールを選択します](#azure-role-based-access-control)。
    2.    **[選択]** ボックスに、アクセス権を割り当てるユーザー、グループ、またはアプリケーションの名前を入力します。
    3.    **[保存]** を選択します。
 
@@ -182,7 +182,7 @@ Azure AD アクセス トークンは、[MSAL](../../active-directory/develop/ms
         1.    Azure portal で、ご使用の Spatial Anchors リソースに移動します。
         2.    **[アクセス制御 (IAM)]** タブに移動します。
         3.    **[ロールの割り当ての追加]** を選択します。
-        1.    [ロールを選択します](#role-based-access-control)。
+        1.    [ロールを選択します](#azure-role-based-access-control)。
         2.    **[選択]** ボックスに、アクセス権を割り当てるアプリケーションの名前を入力します (1 つまたは複数)。 アプリのユーザーに Spatial Anchors アカウントとは異なるロールを割り当てる場合は、複数のアプリケーションを Azure AD に登録し、それぞれに別のロールを割り当てます。 次に、ユーザーに適切なロールを使用するために承認ロジックを実装します。
         
               > [!NOTE] 
@@ -262,7 +262,7 @@ configuration.AccessToken(LR"(MyAccessToken)");
 
 ---
 
-## <a name="role-based-access-control"></a>ロールベースのアクセス制御
+## <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 
 アプリケーション、サービス、またはサービスの Azure AD ユーザーに付与されるアクセスのレベルを制御するために、必要に応じて、ご使用の Azure Spatial Anchors アカウントに次の既存のロールを割り当てることができます。
 

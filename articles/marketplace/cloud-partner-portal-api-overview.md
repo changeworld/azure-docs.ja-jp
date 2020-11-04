@@ -7,19 +7,19 @@ ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: bfb6e9cb510f5fe887f108dfdea5932406aafe0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57d3d1c6bb14db3eb2ca499069934a628d2f7fea
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292920"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425787"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Cloud パートナー ポータルの API リファレンス
 
 > [!NOTE]
 > Cloud パートナー ポータル API はパートナー センターと統合されており、引き続き機能します。 切り替えにより、小さな変更が加えられました。 このドキュメントに記載されている [CPP API の変更点](#changes-to-cpp-apis-after-the-migration-to-partner-center)を調べて、パートナー センターへの切り替え後にコードが機能し続けることを確認してください。 CPP API は、パートナー センターへの切り替え前に既に統合されている既存の製品に対してのみ使用してください。新しい製品では、パートナー センター申請 API を使用する必要があります。
 
-Cloud パートナー ポータルの REST API を使用すると、ワークロード、プラン、発行元プロファイルのプログラムによる取得と操作が可能になります。 API は、処理の際に正しいアクセス許可を実施するために、ロールベースのアクセス制御 (RBAC) を使用します。
+Cloud パートナー ポータルの REST API を使用すると、ワークロード、プラン、発行元プロファイルのプログラムによる取得と操作が可能になります。 API は、処理時に正しいアクセス許可を実施するために、Azure ロールベースのアクセス制御 (Azure RBAC) を使用します。
 
 このリファレンスでは、Cloud パートナー ポータル REST API の技術的な詳細について説明します。 このドキュメントのペイロードのサンプルは参考にすぎず、新しい機能が追加されると変更される可能性があります。
 

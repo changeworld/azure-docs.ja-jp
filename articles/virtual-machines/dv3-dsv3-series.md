@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: jushiman
-ms.openlocfilehash: eff3ff3d8fa2ab3025ca8b8d4f974d6944c88433
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 3ac90d3cabc179ecd1c1e421fd026a584f7158e3
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91649645"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368572"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3 および Dsv3 シリーズ
 
@@ -22,7 +22,7 @@ D シリーズのユース ケースの例には、エンタープライズ級�
 
 ## <a name="dv3-series"></a>Dv3 シリーズ
 
-Dv3 シリーズのサイズは、Intel Turbo Boost Technology 2.0 を備えた Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell)、または Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) プロセッサ上で実行されます。 Dv3 シリーズのサイズは、ほとんどの運用環境のワークロードに適した vCPU、メモリ、一時ストレージの組み合わせを提供します。
+Dv3 シリーズのサイズは、[Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html) を備えた Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell)、または Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) プロセッサ上で実行されます。 Dv3 シリーズのサイズは、ほとんどの運用環境のワークロードに適した vCPU、メモリ、一時ストレージの組み合わせを提供します。
 
 データ ディスク ストレージは、仮想マシンとは別に課金されます。 Premium Storage ディスクを使用するには、Dsv3 サイズを使用してください。 Dsv3 サイズの料金および課金の計算方法は、Dv3 シリーズと同じです。
 
@@ -48,7 +48,7 @@ Dv3 シリーズの VM は、Intel® ハイパースレッディング テクノ
 
 ## <a name="dsv3-series"></a>Dsv3 シリーズ
 
-Dsv3 シリーズのサイズは、Intel Turbo Boost Technology 2.0 を備えた Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell)、または Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) プロセッサ上で実行され、Premium Storage が使用されます。 Dsv3 シリーズのサイズは、ほとんどの運用環境のワークロードに適した vCPU、メモリ、一時ストレージの組み合わせを提供します。
+Dsv3 シリーズのサイズは、[Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html) を備えた Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell)、または Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) プロセッサ上で実行され、Premium Storage が使用されます。 Dsv3 シリーズのサイズは、ほとんどの運用環境のワークロードに適した vCPU、メモリ、一時ストレージの組み合わせを提供します。
 
 Dsv3 シリーズの VM は、Intel® ハイパースレッディング テクノロジを備えています。
 

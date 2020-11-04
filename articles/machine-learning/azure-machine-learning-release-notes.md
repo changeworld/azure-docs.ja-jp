@@ -9,18 +9,50 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: f490038e6257829e63b1b28591d17eee76e17eb4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6e18599e83a301ecda94525949f9f4cd077085a2
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92139365"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742025"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
 この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の [**メインの SDK for Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) のリファレンス ページを参照してください。
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
+
+## <a name="2020-10-26"></a>2020-10-26
+
+### <a name="azure-machine-learning-sdk-for-python-v1170"></a>Azure Machine Learning SDK for Python v1.17.0
++ **新しい例**
+  + 例の新しいコミュニティ主導のリポジトリは、 https://github.com/Azure/azureml-examples で利用できます。
++ **バグの修正と機能強化**
+  + **azureml-automl-core**
+    + get_output から XGBoostError が報告されることがある問題を修正しました。
+  + **azureml-automl-runtime**
+    + AutoML によって作成された時間またはカレンダーベースの機能にプレフィックスが付けられるようになります。
+    + 数多くのクラスとサブサンプリングが有効な分類データセットの StackEnsemble のトレーニング中に発生する IndexError を修正しました。
+    + モデルを再調整した後、VotingRegressor の予測が不正確になるおそれがある問題を修正しました。
+  + **azureml-core**
+    + AKS のデプロイ構成と Azure Kubernetes Service の概念の間の関係について、詳細情報を追加しました。
+    + お客様は、リンクされたサービス SDK を使用して、Synapse ワークスペースを AML ワークスペースにリンクすることができます。 CRUD がサポートされています。
+    + 環境クライアント ラベルがサポートされています。 ユーザーは、環境にラベルを付け、ラベルを使用してそれらを参照することができます。
+  + **azureml-dataprep**
+    + 現在サポートされていない Spark を Scala 2.12 と共に使用する場合のエラー メッセージを改善しました。
+  + **azureml-explain-model**
+    + azureml-explain-model パッケージは正式に非推奨になりました
+  + **azureml-mlflow**
+    + 終了処理中の状態が適切に処理されていなかった、azureml バックエンドに対する mlflow.projects.run のバグを解決しました。
+  + **azureml-pipeline-core**
+    + 1 つのパイプライン エンドポイントに基づいてパイプライン スケジュールを作成、一覧表示、取得するためのサポートを追加します。
+    +  無効な使用例が含まれている PipelineData.as_dataset のドキュメントを改善しました。PipelineData.as_dataset を不適切に使用すると、ValueException がスローされるようになりました
+    + HyperDriveStep の実行直後に PipelineStep 内に最適なモデルを登録するように、HyperDriveStep パイプライン ノートブックを変更しました。
+  + **azureml-pipeline-steps**
+    + HyperDriveStep の実行直後に PipelineStep 内に最適なモデルを登録するように、HyperDriveStep パイプライン ノートブックを変更しました。
+  + **azureml-train-automl-client**
+    + get_output から XGBoostError が報告されることがある問題を修正しました。
+
 
 ## <a name="2020-10-12"></a>2020-10-12
 
@@ -179,7 +211,7 @@ ms.locfileid: "92139365"
   + 新しくなった作業開始のランディング ページ 
   
 + **プレビュー機能**
-    + ノートブックの機能を収集します。  [収集](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#clean-your-notebook-preview) 機能を使用して、ユーザーはノートブックを簡単にクリーンアップできるようになりました。収集ではノートブックの自動化された依存関係分析が使用され、重要なコードを保持しつつ、関連性のない部分を削除できます。
+    + ノートブックの機能を収集します。 [収集](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#clean-your-notebook-preview)機能を使用して、ユーザーはノートブックを簡単にクリーンアップできるようになりました。収集によってノートブックの自動化された依存関係分析が使用され、重要なコードを保持しつつ、関連性のない部分を削除できます。
 
 + **バグの修正と機能強化**
   + 速度と信頼性の向上
@@ -347,7 +379,7 @@ ms.locfileid: "92139365"
   + **azureml-pipeline-steps**
     + azureml-pipeline-steps のドキュメントを更新しました。
     +  ユーザーが環境をその他の構成と一緒にインラインで定義するか、別のファイルに定義できるように、ParallelRunConfig の `load_yaml()` のサポートを追加しました。
-  + **azureml-train-automl-client** .
+  + **azureml-train-automl-client**.
     + AutoMLConfig の一部として `enable_cache` を指定する機能を削除しました。
   + **azureml-train-automl-runtime**
     + BERT を使用したマルチノードおよびマルチ GPU の分散特徴量化が制限付きで使用できるようになりました。
@@ -2031,7 +2063,7 @@ Azure Machine Learning SDK for Python v1.0.30 がリリースされました。
 
 + **新機能**
   + Azure Machine Learning SDK で Python 3.7 がサポートされるようになりました。
-  + Azure Machine Learning DNN Estimator で、組み込みマルチバージョン サポートが提供されるようになりました。 たとえば、`TensorFlow`  Estimator は `framework_version` パラメーターを受け入れるようになり、ユーザーはバージョン '1.10' や '1.12' を指定することができます。 現在の SDK リリースでサポートされているバージョンの一覧については、目的のフレームワーク クラスで `get_supported_versions()` を呼び出します (例: `TensorFlow.get_supported_versions()`)。
+  + Azure Machine Learning DNN Estimator で、組み込みマルチバージョン サポートが提供されるようになりました。 たとえば、`TensorFlow` Estimator は `framework_version` パラメーターを受け入れるようになり、ユーザーはバージョン '1.10' や '1.12' を指定することができます。 現在の SDK リリースでサポートされているバージョンの一覧については、目的のフレームワーク クラスで `get_supported_versions()` を呼び出します (例: `TensorFlow.get_supported_versions()`)。
   最新の SDK リリースでサポートされているバージョンの一覧については、[DNN Estimator のドキュメント](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py&preserve-view=true)を参照してください。
 
 ## <a name="2019-03-25"></a>2019-03-25

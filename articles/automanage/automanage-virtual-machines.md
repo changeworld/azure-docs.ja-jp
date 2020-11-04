@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 54a81ac36fb0b99f6931b372543dc3e4bca6a12c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: a51a4a95d3580912d9b727d1580e6f278831f677
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447893"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891504"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure Automanage for virtual machines
 
@@ -44,11 +44,13 @@ Azure Automanage に仮想マシンをオンボードすると、各ベスト �
 - Windows Server VM のみ
 - VM が実行されている必要があります
 - VM はサポート対象のリージョンに存在する必要があります
-- ユーザーは正しいアクセス許可を持っている必要があります
-- VM が異なるサブスクリプションの Log Analytics ワークスペースにリンクしていてはなりません
+- ユーザーは正しいアクセス許可を持っている必要があります (次の段落を参照)
 - 現時点では、サンドボックス サブスクリプションは Automanage ではサポートされていません
 
-既存の Automanage アカウントを使用して Automanage を有効にするには、**共同作成者**ロールが必要です。 新しい Automanage アカウントで Automanage を有効にする場合は、次のアクセス許可が必要です: **所有者**ロール、または**共同作成者**ロールと**ユーザー アクセス管理者**ロールの併用。
+既存の Automanage アカウントを使用して VM で Automanage を有効にするには、VM を含むリソース グループの **共同作成者** ロールが必要です。 新しい Automanage アカウントで Automanage を有効にする場合は、サブスクリプションに対する次のアクセス許可が必要です。 **所有者** ロール、または **共同作成者** ロールと **ユーザー アクセス管理者** ロールの併用。 
+
+> [!NOTE]
+> 別のサブスクリプションのワークスペースに接続されている VM で Automanage を使用する場合は、サブスクリプションごとに上記に記載されているアクセス許可を持っている必要があります。
 
 また、Automanage では次のリージョンにある Windows VM のみがサポートされることにも注意してください: 西ヨーロッパ、米国東部、米国西部 2、カナダ中部、米国中西部。
 
@@ -58,7 +60,7 @@ Azure Automanage に仮想マシンをオンボードすると、各ベスト �
 
 対象となる Azure サービスの完全な一覧と、サポートされている構成プロファイルについては、[Azure Automanage for virtual machines のベスト プラクティス](virtual-machines-best-practices.md)に関するページを参照してください。
 
- これらの対象サービスは、自動的にオンボードされます。 それらはベスト プラクティスのホワイト ペーパーに不可欠なものであり、[クラウド導入フレームワーク](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/azure-server-management)を参照してください。
+ これらの対象サービスは、自動的にオンボードされます。 それらはベスト プラクティスのホワイト ペーパーに不可欠なものであり、[クラウド導入フレームワーク](/azure/cloud-adoption-framework/manage/azure-server-management)を参照してください。
 
 これらサービスすべてについて、自動オンボード、自動構成、ドリフトの監視、ドリフトが検出された場合の修正が行われます。
 
@@ -81,13 +83,13 @@ VM に対して Automanage を初めて有効にする場合は、Azure portal �
 現在、2 つの構成プロファイルを使用できます。
 
 - **Azure 仮想マシンのベスト プラクティス - Dev/Test** 構成プロファイルは、Dev/Test 用のマシン向けに設計されています。
-- **Azure 仮想マシンのベスト プラクティス - 運用**構成プロファイルは、運用環境向けです。
+- **Azure 仮想マシンのベスト プラクティス - 運用** 構成プロファイルは、運用環境向けです。
 
 このような違いの理由は、実行されるワークロードに基づいて特定のサービスが推奨されるためです。 たとえば、運用マシンでは、Azure Backup に自動的にオンボードされます。 一方、Dev/Test マシンの場合は通常、ビジネスへの影響が少ないため、バックアップ サービスは不要なコストになります。
 
 ### <a name="customizing-a-configuration-profile-using-preferences"></a>基本設定を使用した構成プロファイルのカスタマイズ
 
-自動的にオンボードされる標準サービスに加えて、ユーザーは基本設定の特定のサブセットを構成することもできます。 これらの基本設定は、ベスト プラクティスに違反しない構成オプションの範囲内で許可されます。 たとえば、Azure Backup の場合、ユーザーによる定義が許可されているのは、バックアップの頻度と実行する曜日です。 しかし、Azure Backup 完全にオフにすることは許可されて "*いません*"。
+自動的にオンボードされる標準サービスに加えて、ユーザーは基本設定の特定のサブセットを構成することもできます。 これらの基本設定は、ベスト プラクティスに違反しない構成オプションの範囲内で許可されます。 たとえば、Azure Backup の場合、ユーザーによる定義が許可されているのは、バックアップの頻度と実行する曜日です。 しかし、Azure Backup 完全にオフにすることは許可されて " *いません* "。
 
 > [!NOTE]
 > Dev/Test 構成プロファイルでは、VM のバックアップはまったく行われません。
@@ -105,14 +107,23 @@ Automanage アカウントは、自動化された操作が行われるセキュ
 Azure portal のエクスペリエンスでは、VM で Automanage が有効になっていると、 **[Enable Azure VM best practice]\(Azure VM のベスト プラクティスを有効にする\)** ブレードの詳細ドロップダウンを使用して、Automanage アカウントを割り当てたり、手動で作成したりすることができます。
 
 > [!NOTE]
-> 既存の Automanage アカウントを使用して Automanage を有効にするには、**共同作成者**ロールが必要です。 新しい Automanage アカウントで Automanage を有効にする場合は、次のアクセス許可が必要です: **所有者**ロール、または**共同作成者**ロールと**ユーザー アクセス管理者**ロールの併用。
+> 既存の Automanage アカウントを使用して VM で Automanage を有効にするには、VM を含むリソース グループの **共同作成者** ロールが必要です。 新しい Automanage アカウントで Automanage を有効にする場合は、サブスクリプションに対する次のアクセス許可が必要です。 **所有者** ロール、または **共同作成者** ロールと **ユーザー アクセス管理者** ロールの併用。
 
 
 ## <a name="status-of-vms"></a>VM の状態
 
 Azure portal で、自動管理されている VM がすべて表示されている **[Automanage – Azure virtual machine best practices]\(Automanage - Azure 仮想マシンのベスト プラクティス)** ページに移動します。 ここには、各仮想マシンの全体的な状態が表示されます。
 
-:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="サービスをインテリジェントにオンボードする。" 状態とエラーの詳細を確認します。
+:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="構成済み仮想マシンの一覧。":::
+
+一覧の VM ごとに、次の詳細が表示されます: 名前、構成プロファイル、構成の基本設定、状態、アカウント、サブスクリプション、リソース グループ。
+
+**[状態]** 列には、次の状態が表示されます。
+- *[進行中]* - VM は有効にされたばかりで、構成が行われています
+- *[構成済み]* - VM は構成されており、ドリフトは検出されていません
+- *[失敗]* - VM にはドリフトがあり、修正できませんでした
+
+**[状態]** が *[失敗]* と表示される場合は、VM が配置されているリソース グループを使用してデプロイのトラブルシューティングを行うことができます。 **[リソース グループ]** に移動し、リソース グループを選択し、 **[デプロイ]** をクリックして、" *失敗* " 状態とエラーの詳細を確認します。
 
 
 ## <a name="disabling-automanage-for-vms"></a>Automanage for VMs を無効にする
@@ -121,17 +132,17 @@ Azure portal で、自動管理されている VM がすべて表示されてい
 
 Azure portal でそれを行うには、自動管理されている VM がすべて表示される **[Automanage – Azure virtual machine best practices]\(Automanage - Azure 仮想マシンのベスト プラクティス)** ページに移動します。 Automanage から無効にする仮想マシンの横にあるチェック ボックスをオンにして、 **[Disable automanagment]\(自動管理を無効にする\)** ボタンをクリックし ます。
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="サービスをインテリジェントにオンボードする。":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="仮想マシンでの Automanage の無効化。":::
 
 **[Disable]\(無効\)** に同意する前に、結果として表示されたポップアップのメッセージを注意深く確認します。
 
-```
-Disabling automanagement in a VM results in the following behavior:
+> [!NOTE]
+> VM で自動管理を無効にすると、次の動作が発生します。
+>
+> - VM とそれにオンボードされているサービスの構成は変更されません。
+> - それらのサービスによって発生する料金は引き続き課金されます。
+> - Automanage のすべての動作は直ちに停止します。
 
-1.    The configuration of the VM and the services it's onboarded to will not be changed
-2.    Any changes incurred by those services will remain billable and will continue to be incurred
-3.    Any Automanage behaviors will stop immediately
-```
 
 何よりもまず、仮想マシンは、オンボードされて構成されているどのサービスからも、オフボードされることはありません。 そのため、それらのサービスによって発生する料金は引き続き課金されます。 必要な場合は、オフボードする必要があります。 Automanage のすべての動作は直ちに停止します。 たとえば、VM でドリフトは監視されなくなります。
 

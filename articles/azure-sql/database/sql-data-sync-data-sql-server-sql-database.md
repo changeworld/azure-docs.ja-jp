@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: d888266ae13b500abc5b03fa6a699c9f34b782a6
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: fdeddfb0a09151ea010d4e95a2954200dd9371dc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173560"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791428"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure の SQL データ同期とは
 
@@ -62,7 +62,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 |----------|----------------------------|
 | ディザスター リカバリー | [Azure 地理冗長のバックアップ](automated-backups-overview.md) |
 | 読み取りスケール | [読み取り専用レプリカを使用して読み取り専用クエリ ワークロードを負荷分散する (プレビュー)](read-scale-out.md) |
-| ETL (OLTP から OLAP へ) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) または [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
+| ETL (OLTP から OLAP へ) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) または [SQL Server Integration Services](/sql/integration-services/sql-server-integration-services) |
 | SQL Server から Azure SQL Database への移行 | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
 |||
 
@@ -81,7 +81,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 | | データ同期 | トランザクション レプリケーション |
 |---|---|---|
 | **長所** | - アクティブ/アクティブのサポート<br/>- オンプレミスと Azure SQL Database 間で双方向 | - 待ち時間の短縮<br/>- トランザクションの整合性<br/>- 移行後に既存のトポロジの再利用 <br/>\- Azure SQL Managed Instance のサポート |
-| **短所** | - 5 分以上の待機時間<br/>- トランザクションの整合性なし<br/>- パフォーマンスへの影響が大きい | - Azure SQL Database からは発行できない <br/>- 高いメンテナンス コスト |
+| **短所** | - 同期の最小間隔が 5 分<br/>- トランザクションの整合性なし<br/>- パフォーマンスへの影響が大きい | - Azure SQL Database からは発行できない <br/>- 高いメンテナンス コスト |
 
 ## <a name="get-started"></a>はじめに 
 
@@ -101,7 +101,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 ### <a name="did-something-go-wrong"></a>何か問題が起きた場合
 
-- [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](../../sql-database/sql-database-troubleshoot-data-sync.md)
+- [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](./sql-data-sync-troubleshoot.md)
 
 ## <a name="consistency-and-performance"></a>一貫性とパフォーマンス
 
@@ -126,7 +126,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 > - 同期の問題がレポートされなくても、ハブとメンバーとの間でデータの損失が生じる可能性があります。
 > - 同期に失敗する可能性があります。主キーの変更で、追跡しているテーブルに、同期元からの存在しない行が含まれることが原因です。
 
-- 同期のメンバーとハブの両方に対してスナップショット分離を有効にする必要があります。 詳しくは、「[SQL Server でのスナップショット分離](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)」をご覧ください。
+- 同期のメンバーとハブの両方に対してスナップショット分離を有効にする必要があります。 詳しくは、「[SQL Server でのスナップショット分離](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)」をご覧ください。
 
 ### <a name="general-limitations"></a>一般的な制限事項
 
@@ -135,9 +135,9 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 - 主キーに、次のデータ型を含めることはできません。sql_variant、binary、varbinary、image、xml。
 - サポートされている精度は秒に対してのみであるため、次のデータの種類を主キーとして使用するときは注意してください。time、datetime、datetime2、datetimeoffset。
 - オブジェクト (データベース、テーブル、および列) の名前には、印刷可能な文字のピリオド (.)、左角かっこ ([)、または右角かっこ (]) を使用できません。
+- テーブル名に印刷可能文字を含めることはできません: ! " # $ % ' ( ) * + - 空白
 - Azure Active Directory 認証はサポートされていません。
 - 名前が同じでスキーマが異なるテーブル (たとえば dbo.customers と sales.customers) がある場合は、一方のテーブルのみを同期に追加できます。
-- テーブル名には、ASCII 値が '-' より小さいか等しい文字を含めることはできません。
 - ユーザー定義データ型の列はサポートされていません
 - 異なるサブスクリプション間でのサーバーの移動はサポートされていません。 
 
@@ -166,7 +166,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 | 同期グループ内のテーブル数                                          | 500                    | 複数の同期グループを作成する |
 | 同期グループ内のテーブルの列数                              | 1000                   |                             |
 | テーブルでのデータ行のサイズ                                        | 24 Mb                  |                             |
-| 最小同期間隔                                           | 5 分              |                             |
+| 同期の最小間隔                                 | 5 分              |                             |
 
 > [!NOTE]
 > 同期グループが 1 つだけの場合は、 1 つの同期グループで最大 30 個のエンドポイントを持つことができます。 同期グループが 2 つ以上ある場合は、すべての同期グループでのエンドポイントの合計数が最大 30 個に制限されます。 データベースが複数の同期グループに属している場合、それは 1 つではなく、複数のエンドポイントとしてカウントされます。
@@ -248,20 +248,19 @@ SQL データ同期を使ってデータのバックアップを作成するこ�
 
 同期グループ内のデータベースのスキーマを更新する必要がある場合、 スキーマ変更は自動的にはレプリケートされません。 いくつかのソリューションについては、次の記事を参照してください。
 
-- [Azure の SQL データ同期でスキーマ変更のレプリケートを自動化する](../../sql-database/sql-database-update-sync-schema.md)
+- [Azure の SQL データ同期でスキーマ変更のレプリケートを自動化する](./sql-data-sync-update-sync-schema.md)
 - [PowerShell を使用して、既存の同期グループの同期スキーマを更新する](scripts/update-sync-schema-in-sync-group.md)
 
 ### <a name="monitor-and-troubleshoot"></a>監視とトラブルシューティング
 
 SQL データ同期が想定どおりに行われているかどうかを確認したい場合に、 アクティビティを監視して問題のトラブルシューティングを行うには、次の記事を参照してください。
 
-- [Azure Monitor ログによる SQL データ同期の監視](../../sql-database/sql-database-sync-monitor-oms.md)
-- [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](../../sql-database/sql-database-troubleshoot-data-sync.md)
+- [Azure Monitor ログによる SQL データ同期の監視](./monitor-tune-overview.md)
+- [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](./sql-data-sync-troubleshoot.md)
 
 ### <a name="learn-more-about-azure-sql-database"></a>Azure SQL Database の詳細
 
 Azure SQL Database の詳細については、以下の記事を参照してください。
 
 - [SQL Database の概要](sql-database-paas-overview.md)
-- [データベースのライフサイクル管理](https://msdn.microsoft.com/library/jj907294.aspx)
- 
+- [データベースのライフサイクル管理](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

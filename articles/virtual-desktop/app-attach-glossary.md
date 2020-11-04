@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f3cc8495f673c8b428aa9e6ace2747a70c5b0847
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6107ffea4fe4d615a42973ab1b231ca9f6b5241f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88556174"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674950"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX アプリのアタッチの用語集
 
@@ -25,7 +25,7 @@ MSIX のコンテナーは、MSIX アプリが実行される場所です。 詳
 
 ## <a name="msix-application"></a>MSIX アプリケーション 
 
-MSIX ファイルに格納されているアプリケーション。
+.MSIX ファイルに格納されているアプリケーション。
 
 ## <a name="msix-package"></a>MSIX パッケージ 
 
@@ -35,13 +35,17 @@ MSIX パッケージは、MSIX ファイルまたはアプリケーションで�
 
 MSIX 共有は、拡張された MSIX パッケージを保持するネットワーク共有です。 MSIX 共有では SMB 3 以降がサポートされています。 アプリケーション ファイルをシステム ドライブに移動することなく、この MSIX 共有からアプリケーションがステージングされます。
 
+## <a name="msix-image"></a>MSIX イメージ
+
+MSIX イメージは、VHD、VHDx、または CIM ファイルであり、1 つ以上の MSIX パッケージ アプリケーションが含まれます。 各アプリケーションは、MSIXMGR ツールを使用して、MSIX イメージで配信されます。
+
 ## <a name="repackage"></a>再パッケージ化
 
 再パッケージ化では、MSIX Packaging Tool (MPT) の使用により、MSIX 以外のアプリケーションが取得され、MSIX に変換されます。 詳細については、「[MSIX Packaging Tool の概要](/windows/msix/packaging-tool/tool-overview)」を参照してください。
 
-## <a name="expand"></a>expand
+## <a name="expand-an-msix-package"></a>MSIX パッケージを展開する
 
-MSIX パッケージの展開は、複数の手順から成るプロセスです。 MSIX ファイルが取得され、その内容が VHD (x) または CIM ファイルに格納されます。 
+MSIX パッケージの展開は、複数の手順から成るプロセスです。 展開により MSIX ファイルが取得され、その内容が VHD (x) または CIM ファイルに格納されます。 
 
 MSIX パッケージを展開するには、次のようにします。
 
@@ -63,11 +67,11 @@ MSIX パッケージをアップロードには、拡張された MSIX パッケ
 
 Windows Virtual Desktop では、アップロードは MSIX 共有ごとに 1 回行われます。 パッケージをアップロードすると、同じサブスクリプション内のすべてのホスト プールから参照できるようになります。
 
-## <a name="publish-an-msix-package"></a>MSIX パッケージを公開する
+## <a name="add-an-msix-package"></a>MSIX パッケージを追加する
 
-Windows Virtual Desktop では、MSIX パッケージを公開すると、リモート アプリまたはデスクトップにリンクされます。
+Windows Virtual Desktop で、MSIX パッケージは、追加されるとホスト プールにリンクされます。
 
-## <a name="assign-an-msix-package"></a>MSIX パッケージを割り当てる 
+## <a name="publish-an-msix-package"></a>MSIX パッケージを公開する 
 
 Windows Virtual Desktop では、公開された MSIX パッケージは、Active Directory Domain Services (AD DS) または Azure Active Directory (Azure AD) のユーザーまたはユーザー グループに割り当てられる必要があります。
 
@@ -118,4 +122,3 @@ Windows Virtual Desktop では、公開された MSIX パッケージは、Activ
 ## <a name="next-steps"></a>次のステップ
 
 MSIX アプリ アタッチの詳細については、[概要](what-is-app-attach.md)と[よくあるご質問](app-attach-faq.md)に関するページを参照してください。 それ以外の場合、[アプリのアタッチの設定](app-attach.md)を開始してください。
-

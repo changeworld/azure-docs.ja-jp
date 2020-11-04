@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 4223e3bc572a689472dce136b60599034566b274
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3ecf29be94074f51ead3173f997154df6dfa88f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654261"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785614"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Azure ファイル共有への移行
 
@@ -34,11 +34,11 @@ Azure には、複数の種類のクラウド ストレージが用意されて�
 
 ファイルの基本的なコンポーネントは次の 2 つです。
 
-- **データ ストリーム**: ファイルのデータ ストリームにはファイル コンテンツが格納されます。
-- **ファイル メタデータ**: ファイル メタデータには次のサブコンポーネントがあります。
+- **データ ストリーム** : ファイルのデータ ストリームにはファイル コンテンツが格納されます。
+- **ファイル メタデータ** : ファイル メタデータには次のサブコンポーネントがあります。
    * ファイル属性 (読み取り専用など)
-   * ファイルのアクセス許可。"*NTFS アクセス許可*" または "*ファイルとフォルダーの ACL*" と呼ばれることがあります
-   * タイムスタンプ。特に作成 タイムスタンプおよび最終更新日時 タイムスタンプ
+   * ファイルのアクセス許可。" *NTFS アクセス許可* " または " *ファイルとフォルダーの ACL* " と呼ばれることがあります
+   * タイムスタンプ。特に作成時と最終更新時のタイムスタンプ
    * 代替データ ストリーム。これは、より多くの非標準プロパティを格納するための領域です
 
 移行におけるファイルの忠実性は、次の機能として定義できます。
@@ -111,7 +111,7 @@ Microsoft およびその他のファイル コピー ツールがいくつか�
 
     ツールを最初に実行するときに、データの大部分がコピーされます。 この最初の実行は、しばらく時間がかかる場合があります。 多くの場合、ビジネス プロセスのためにデータ ソースをオフラインにするのに要する時間よりも長くかかります。
 
-    ソースをターゲットにミラーリングすることにより (**robocopy /MIR** と同様)、同じソースとターゲットでツールを再度実行できます。 前回の実行後に発生したソースの変更のみを転送する必要があるため、今回の実行はずっと速くなります。 この方法でコピー ツールを再実行すると、ダウンタイムを大幅に短縮できます。
+    ソースをターゲットにミラーリングすることにより ( **robocopy /MIR** と同様)、同じソースとターゲットでツールを再度実行できます。 前回の実行後に発生したソースの変更のみを転送する必要があるため、今回の実行はずっと速くなります。 この方法でコピー ツールを再実行すると、ダウンタイムを大幅に短縮できます。
 
 次の表は、Microsoft ツールと、Azure ファイル共有との現時点での適合性を分類したものです。
 
@@ -121,7 +121,7 @@ Microsoft およびその他のファイル コピー ツールがいくつか�
 |![はい、推奨されます](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure File Sync | Azure ファイル共有にネイティブに統合されます。 | 完全な忠実性。* |
 |![はい、推奨されます](media/storage-files-migration-overview/circle-green-checkmark.png)| 記憶域移行サービス | 間接的にサポートされています。 Azure ファイル共有は、SMS ターゲット サーバーでネットワーク ドライブとしてマウントできます。 | 完全な忠実性。* |
 |![はい、推奨されます](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy、バージョン 10.4 以降| サポートされています。 | 完全な忠実性。* |
-|![完全にはお勧めできません](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Data Box | サポートされています。 | メタデータがコピーされません。 [Data Box は Azure File Sync と共に使用できます](storage-sync-offline-data-transfer.md)。 |
+|![はい、推奨されます](media/storage-files-migration-overview/circle-green-checkmark.png)| Data Box | サポートされています。 | DataBox でメタデータが完全にサポートされるようになりました。 [DataBox は、Azure File Sync と組み合わせて使用することもできます](storage-sync-offline-data-transfer.md)。 |
 |![完全にはお勧めできません](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Storage Explorer、バージョン 1.14 | サポートされています。 | ACL はコピーされません。 タイムスタンプがサポートされます。  |
 |![推奨されません](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | サポートされています。 | メタデータがコピーされません。 |
 |||||

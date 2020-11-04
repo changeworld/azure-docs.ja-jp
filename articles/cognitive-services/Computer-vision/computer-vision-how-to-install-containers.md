@@ -1,23 +1,23 @@
 ---
 title: Computer Vision から Read OCR Docker コンテナーをインストールする
 titleSuffix: Azure Cognitive Services
-description: Computer Vision からの Read OCR Docker コンテナーを使用して、イメージおよびドキュメントからオンプレミスでテキストを抽出します。
+description: Computer Vision の Read OCR Docker コンテナーを使用して、イメージとドキュメントからオンプレミスでテキストを抽出します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/22/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: オンプレミス、OCR、Docker、コンテナー
-ms.openlocfilehash: acf6a391965dcba20a2dabc18648076b88c5e7c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07440b99d887ee6cb4b6d505ed7fb79f4c12c784
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536377"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677192"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Read OCR Docker コンテナー (プレビュー) をインストールする 
 
@@ -27,10 +27,12 @@ ms.locfileid: "91536377"
 
 *Read* OCR コンテナーを使用すると、JPEG、PNG、BMP、PDF、TIFF の各ファイル形式をサポートするイメージとドキュメントから、印刷されたテキストおよび手書きのテキストを抽出できます。 詳細については、[Read API のドキュメント](concept-recognizing-text.md#read-api)に関する記事を参照してください。
 
-## <a name="read-3x-containers"></a>Read 3.x コンテナー
-プレビューでは、2 つのバージョンの 3.x コンテナーが利用できます。 どちらのバージョンも、前のコンテナーに優る精度と機能が追加されています。
+## <a name="read-31-container"></a>Read 3.1 コンテナー
 
-Read 3.0-preview コンテナーでは、次のものが提供されています。
+> [!NOTE]
+> Read 3.0-preview コンテナーは非推奨となりました。 
+
+Read 3.1-preview コンテナーは、次のものを備えています。
 * 精度の向上のための新しいモデル。
 * 同じドキュメント内での複数言語のサポート
 * サポート対象:オランダ語、英語、フランス語、ドイツ語、イタリア語、ポルトガル語、およびスペイン語。
@@ -38,14 +40,11 @@ Read 3.0-preview コンテナーでは、次のものが提供されています
 * 大きなドキュメントとイメージのサポート。
 * 0 から 1 までの信頼度スコア。
 * 印刷および手書きの両方のテキストを含むドキュメントのサポート
-
-Read 3.1-preview コンテナーには v3.0-preview と同じ利点に加えて、次の機能が追加されています。
-
 * 簡体字中国語と日本語のサポート。
 * 印刷および手書きのテキストに対する信頼スコアとラベル。 
 * ドキュメント内の選択したページからのみテキストを抽出する機能。
 
-使用するコンテナーのバージョンを検討するときは、v3.1-preview が初期の状態のプレビューであることに注意してください。 現時点で Read 2.0 コンテナーを使用している場合は、 [移行ガイド](read-container-migration-guide.md)に関する記事を参照して、新しいバージョンの変更点を確認してください。
+現時点で Read 2.0 コンテナーを使用している場合は、 [移行ガイド](read-container-migration-guide.md)に関する記事を参照して、新しいバージョンの変更点を確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,7 +52,7 @@ Read 3.1-preview コンテナーには v3.0-preview と同じ利点に加えて�
 
 |必須|目的|
 |--|--|
-|Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
+|Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では** 、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
 |Computer Vision リソース |コンテナーを使用するためには、以下が必要です。<br><br>Azure **Computer Vision** リソースとその関連する API キーおよびエンドポイント URI。 どちらの値も、対象リソースの概要ページとキー ページで使用でき、コンテナーを開始するために必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページに提示されているエンドポイント|
 
@@ -73,14 +72,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="advanced-vector-extension-support"></a>Advanced Vector Extension のサポート
 
-**ホスト** コンピューターとは、Docker コンテナーを実行するコンピューターのことです。 ホストは、[高度なベクター拡張機能](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2) を *サポートしている必要があります*。 次のコマンドを使用して、Linux ホストでの AVX2 サポートを確認できます。
+**ホスト** コンピューターとは、Docker コンテナーを実行するコンピューターのことです。 ホストは、 [高度なベクター拡張機能](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2) を *サポートしている必要があります* 。 次のコマンドを使用して、Linux ホストでの AVX2 サポートを確認できます。
 
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
 ```
 
 > [!WARNING]
-> AVX2 をサポートするにはホスト コンピューターが*必須*です。 AVX2 サポートがないと、コンテナーは正しく機能*しません*。
+> AVX2 をサポートするにはホスト コンピューターが *必須* です。 AVX2 サポートがないと、コンテナーは正しく機能 *しません* 。
 
 ### <a name="container-requirements-and-recommendations"></a>コンテナーの要件と推奨事項
 
@@ -93,7 +92,6 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 | コンテナー | コンテナー レジストリ / リポジトリ / イメージ名 |
 |-----------|------------|
 | Read 2.0-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| Read 3.0-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview` |
 | Read 3.1-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
 
 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して、コンテナー イメージをダウンロードします。
@@ -104,12 +102,6 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 ```bash
 docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview
-```
-
-# <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
-
-```bash
-docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview
 ```
 
 # <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
@@ -152,24 +144,6 @@ ApiKey={API_KEY}
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
 * コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
 
-# <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-
-```
-
-このコマンドは、次の操作を行います。
-
-* コンテナー イメージから読み取りコンテナーを実行します。
-* 8 つの CPU コアと 18 ギガバイト (GB) のメモリを割り当てます。
-* TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
-* コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
-
 # <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
 
 ```bash
@@ -195,13 +169,13 @@ ApiKey={API_KEY}
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing)」を参照してください。
 
-より高いスループットが必要な場合 (たとえば、複数ページのファイルを処理する場合)、[Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-create) および [Azure Queue](https://docs.microsoft.com/azure/storage/queues/storage-queues-introduction) を使用して、[Kubernetes クラスター](deploy-computer-vision-on-premises.md)に複数の v3.0 または v3.1 コンテナーをデプロイすることを検討してください。
+より高いスループットが必要な場合 (複数ページのファイルを処理する場合など)、[Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-create) と [Azure Queue](https://docs.microsoft.com/azure/storage/queues/storage-queues-introduction) を使用して、[Kubernetes クラスターに](deploy-computer-vision-on-premises.md)複数のコンテナーをデプロイすることを検討してください。
 
 処理用のイメージを格納するために Azure Storage を使用している場合は、コンテナーを呼び出すときに使用する[接続文字列](https://docs.microsoft.com/azure/storage/common/storage-configure-connection-string)を作成できます。
 
 接続文字列を見つけるには
 
-1. Azure portal で**ストレージ アカウント**に移動し、自分のアカウントを見つけます。
+1. Azure portal で **ストレージ アカウント** に移動し、自分のアカウントを見つけます。
 2. 左側のナビゲーション リストで **[アクセス キー]** をクリックします。
 3. 接続文字列は、 **[接続文字列]** の下に配置されます。
 
@@ -218,10 +192,6 @@ ApiKey={API_KEY}
 # <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
 
 コンテナー API には、ホストの `http://localhost:5000` を使用します。 Swagger パスは `http://localhost:5000/swagger/vision-v3.1-preview-read/swagger.json` で確認できます。
-
-# <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
-
-コンテナー API には、ホストの `http://localhost:5000` を使用します。 Swagger パスは `http://localhost:5000/swagger/vision-v3.0-preview-read/swagger.json` で確認できます。
 
 # <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
 
@@ -241,7 +211,7 @@ Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開しま
 
 ![タブとスペース](media/tabs-vs-spaces.png)
 
-非同期 POST が正常に実行されると、**HTTP 202** 状態コードが返されます。 応答の一部として、要求の結果エンドポイントを保持する `operation-location` ヘッダーがあります。
+非同期 POST が正常に実行されると、 **HTTP 202** 状態コードが返されます。 応答の一部として、要求の結果エンドポイントを保持する `operation-location` ヘッダーがあります。
 
 ```http
  content-length: 0
@@ -310,75 +280,6 @@ Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開しま
 }
 ```
 
-# <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
-
-Computer Vision サービスで該当する REST 操作を使用する方法と同じように、`POST /vision/v3.0/read/analyze` 操作と `GET /vision/v3.0/read/operations/{operationId}` 操作を同時に使用して、画像を非同期に読み取ることができます。 非同期 POST メソッドでは、HTTP GET 要求に対する識別子として使用される `operationId` が返されます。
-
-Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開します。 次に、 **[Try it out]\(試してみる\)**  >  **[Choose file]\(ファイルの選択\)** を選択します。 この例では、次の画像を使用します。
-
-![タブとスペース](media/tabs-vs-spaces.png)
-
-非同期 POST が正常に実行されると、**HTTP 202** 状態コードが返されます。 応答の一部として、要求の結果エンドポイントを保持する `operation-location` ヘッダーがあります。
-
-```http
- content-length: 0
- date: Fri, 04 Sep 2020 16:23:01 GMT
- operation-location: http://localhost:5000/vision/v3.0/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
- server: Kestrel
-```
-
-`operation-location` は完全修飾 URL であり、HTTP GET を介してアクセスされます。 次に示すのは、前の画像から `operation-location` URL を実行すると返される JSON 応答です。
-
-```json
-{
-  "status": "succeeded",
-  "createdDateTime": "2020-09-02T10:24:49Z",
-  "lastUpdatedDateTime": "2020-09-02T10:24:50Z",
-  "analyzeResult": {
-    "version": "3.0.0",
-    "readResults": [
-      {
-        "page": 1,
-        "angle": 2.12,
-        "width": 502,
-        "height": 252,
-        "unit": "pixel",
-        "language": "",
-        "lines": [
-          {
-            "boundingBox": [58, 42, 314, 59, 311, 123, 56, 121],
-            "text": "Tabs vs",
-            "words": [
-              {
-                "boundingBox": [85, 45, 242, 62, 241, 122, 83, 123],
-                "text": "Tabs",
-                "confidence": 0.981
-              },
-              {
-                "boundingBox": [258, 64, 314, 72, 314, 123, 256, 123],
-                "text": "vs",
-                "confidence": 0.958
-              }
-            ]
-          },
-          {
-            "boundingBox": [286, 171, 415, 165, 417, 197, 287, 201],
-            "text": "paces",
-            "words": [
-              {
-                "boundingBox": [303, 175, 415, 167, 415, 198, 306, 199],
-                "text": "paces",
-                "confidence": 0.918
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
 # <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
 
 Computer Vision サービスで該当する REST 操作を使用する方法と同じように、`POST /vision/v2.0/read/core/asyncBatchAnalyze` 操作と `GET /vision/v2.0/read/operations/{operationId}` 操作を同時に使用して、画像を非同期に読み取ることができます。 非同期 POST メソッドでは、HTTP GET 要求に対する識別子として使用される `operationId` が返されます。
@@ -387,7 +288,7 @@ Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開しま
 
 ![タブとスペース](media/tabs-vs-spaces.png)
 
-非同期 POST が正常に実行されると、**HTTP 202** 状態コードが返されます。 応答の一部として、要求の結果エンドポイントを保持する `operation-location` ヘッダーがあります。
+非同期 POST が正常に実行されると、 **HTTP 202** 状態コードが返されます。 応答の一部として、要求の結果エンドポイントを保持する `operation-location` ヘッダーがあります。
 
 ```http
  content-length: 0
@@ -453,10 +354,6 @@ Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開しま
 
 `POST /vision/v3.1/read/syncAnalyze` 
 
-# <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
-
-`POST /vision/v3.0/read/syncAnalyze`
-
 # <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
 
 `POST /vision/v2.0/read/core/Analyze`
@@ -473,7 +370,7 @@ Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開しま
 
 JSON 応答オブジェクトには、非同期バージョンと同じオブジェクト グラフが含まれます。 JavaScript を使用していて、タイプ セーフが必要な場合は、TypeScript を使用して、JSON 応答をキャストすることを検討してください。
 
-ユースケースの例については、<a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">こちらの TypeScript サンドボックス<span class="docon docon-navigate-external x-hidden-focus"></span></a>を参照し、 **[Run]\(実行\)** を選択してその使いやすさを確認してください。
+ユースケースの例については、 <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">こちらの TypeScript サンドボックス <span class="docon docon-navigate-external x-hidden-focus"></span></a>を参照し、 **[Run]\(実行\)** を選択してその使いやすさを確認してください。
 
 ## <a name="stop-the-container"></a>コンテナーの停止
 

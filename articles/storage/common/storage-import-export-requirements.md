@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 7b7915e1b7779c4d0359b9ac190574c43a624cbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d17b9cdebf06e7d754a23a7224bbe3dba1a2832c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87276399"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783608"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure Import/Export のシステム要件
 
@@ -50,7 +50,7 @@ Azure Import/Export サービスでは、以下の種類のストレージ ア�
 各ジョブを使用できるのは、1 つのストレージ アカウントとの間でのデータ転送だけです。 言い換えると、1 つのインポート/エクスポート ジョブを、複数のストレージ アカウントに対して使用することはできません。 新しいストレージ アカウントの作成については、「 [ストレージ アカウントの作成方法](storage-account-create.md)」を参照してください。
 
 > [!IMPORTANT]
-> [仮想ネットワーク サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md) 機能が有効になっているストレージ アカウントでは、Azure との間でデータのインポートまたはエクスポートを実行するために、 **[信頼された Microsoft サービスを許可]** 設定を使用して [Import/Export](/azure/storage/common/storage-network-security) サービスを有効にしてください。
+> [仮想ネットワーク サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)機能が有効になっているストレージ アカウントでは、Azure との間でデータのインポートまたはエクスポートを実行するために、 **[信頼された Microsoft サービスを許可]** 設定を使用して [Import/Export サービスを有効](./storage-network-security.md)にしてください。
 
 ## <a name="supported-storage-types"></a>サポートされているストレージの種類
 
@@ -94,4 +94,4 @@ WAImportExport ツールを使用してハード ドライブの準備とデー�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
+* [AzCopy コマンド ライン ユーティリティを使ったデータの転送](./storage-use-azcopy-v10.md)

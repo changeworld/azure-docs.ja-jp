@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3c8d3162e13c31204ed317edc653756b04ef8dd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3baedd49843c7721b6dba464054d5535b4c4f1cd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934125"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785342"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>Speech SDK のオーディオ入力ストリーム API について
 
-Speech SDK の**オーディオ入力ストリーム** API では、マイクまたは入力ファイルの API を使用する代わりに、認識エンジンにオーディオをストリーミングする方法を提供します。
+Speech SDK の **オーディオ入力ストリーム** API では、マイクまたは入力ファイルの API を使用する代わりに、認識エンジンにオーディオをストリーミングする方法を提供します。
 
 オーディオ入力ストリームを使用するときは、次の手順が必要です。
 
 - オーディオ ストリームの形式を識別します。 この形式は、Speech SDK と音声認識サービスでサポートされている必要があります。 現在、次の構成のみがサポートされています。
 
-  PCM 形式のオーディオ サンプル、1 つのチャンネル、16 ビット/サンプル、8,000 または 16,000 サンプル/秒 (16,000 または 32,000 バイト/秒)、2 つのブロック配列 (1 つのサンプルのパディングを含む 16 ビット)。
+  オーディオ サンプルは、PCM 形式で、1 つのチャンネル、16 ビット/サンプル、8,000 または 16,000 サンプル/秒 (16,000 または 32,000 バイト/秒)、2 つのブロック配列 (1 つのサンプルのパディングを含む 16 ビット) です。
 
   オーディオ形式を作成するための SDK の対応するコードは次のようになります。
 
@@ -37,7 +37,7 @@ Speech SDK の**オーディオ入力ストリーム** API では、マイクま
   var audioFormat = AudioStreamFormat.GetWaveFormatPCM(samplesPerSecond, bitsPerSample, channels);
   ```
 
-- これらの仕様に従って、コードが RAW オーディオ データを提供できることを確認します。 オーディオ ソース データが、サポートされている形式と一致しない場合、オーディオは、必要な形式にトランスコードする必要があります。
+- コードがこれらの仕様に従って RAW オーディオ データを提供していることを確認します。 また、16 ビットのサンプルは、リトル エンディアン形式で到達するようにしてください。 署名付きサンプルもサポートされています。 オーディオ ソース データが、サポートされている形式と一致しない場合、オーディオは、必要な形式にトランスコードする必要があります。
 
 - `PullAudioInputStreamCallback` から派生された独自のオーディオ入力ストリーム クラスを作成します。 `Read()` メンバーと `Close()` メンバーを実装します。 正確な関数シグネチャは言語に依存しますが、そのコードは以下のサンプル コードのようになります。
 

@@ -8,12 +8,12 @@ ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6b7d670f5e38968fa6592e323ede075abf687435
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 404f435e321e53694807a627121d84f6cbf6724d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939019"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359681"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>マネージド ディスクのパフォーマンス レベル (プレビュー)
 
@@ -52,9 +52,9 @@ Azure Disk Storage には現在、短期間の予期しないトラフィック�
 ## <a name="restrictions"></a>制限
 
 - 現在、この機能は Premium SSD でのみサポートされています。
-- ディスクのレベルを変更する前に、実行中の VM からディスクを切断する必要があります。
+- ディスクのレベルを変更する前に、VM の割り当てを解除するか、実行中の VM からディスクを切断する必要があります。
 - P60、P70、P80 の各パフォーマンス レベルの使用は、4,096 GiB 以上のディスクに制限されています。
-- ディスクのパフォーマンス レベルは、24 時間ごとに 1 回だけ変更できます。
+- ディスクのパフォーマンス レベルは、24 時間ごとに 1 回だけダウングレードできます。
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 

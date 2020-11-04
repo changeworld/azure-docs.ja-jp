@@ -7,13 +7,13 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.custom: devx-track-js
-ms.openlocfilehash: 052a28dc69bf5c758133ca98366efc63105f4a56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 5c9d7faebe7fefdddbf194e3a9ad36b4644115e0
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289873"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746464"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Azure Storage で静的 Web サイトをホストする
 
@@ -38,11 +38,11 @@ Azure Storage GPv2 アカウントのコンテナーから静的コンテンツ 
 
 4. **[有効]** を選択して、ストレージ アカウントに対して静的な Web サイト ホスティングを有効にします。
 
-5. **[インデックス ドキュメント名]** フィールドで、既定のインデックス ページを指定します。（*index.html* など）。 
+5. **[インデックス ドキュメント名]** フィールドで、既定のインデックス ページを指定します。（ *index.html* など）。 
 
    既定のインデックス ページは、ユーザーが静的な Web サイトのルートに移動したときに表示されます。  
 
-6. **[エラー ドキュメントのパス]** フィールドで、既定のエラー ページを指定します。（*404 .html*など)。 
+6. **[エラー ドキュメントのパス]** フィールドで、既定のエラー ページを指定します。（ *404 .html* など)。 
 
    既定のエラー ページは、ユーザーが静的な Web サイトに存在しないページに移動しようとしたときに表示されます。
 
@@ -253,13 +253,13 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 
    ![Azure Storage 静的 Web サイトのメトリック: 時間の範囲](./media/storage-blob-static-website/storage-blob-static-website-metrics-time-range.png)
 
-3. "*名前空間*" のドロップ ダウンから **[BLOB]** を選択します。
+3. " *名前空間* " のドロップ ダウンから **[BLOB]** を選択します。
 
    ![Azure Storage 静的 Web サイトのメトリック: 名前空間](./media/storage-blob-static-website/storage-blob-static-website-metrics-namespace.png)
 
 4. メトリックとして **[エグレス]** を選択します。
 
-   ![Azure Storage 静的 Web サイトのメトリック: メトリック](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
+   ![Azure Storage 静的 Web サイトのエグレス メトリックを示すスクリーンショット。](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
 
 5. *[集計]* セレクターから **[合計]** を選択します。
 

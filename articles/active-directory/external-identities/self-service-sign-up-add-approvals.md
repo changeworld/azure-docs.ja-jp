@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d664d7cd169593924917bb02a0220e4047eb0cdb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e46dabc665d383279a12fc6bd8eb67475d88a2ea
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88165246"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896074"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>カスタム承認ワークフローをセルフサービス サインアップに追加する
 
@@ -29,18 +29,18 @@ ms.locfileid: "88165246"
 
 ## <a name="register-an-application-for-your-approval-system"></a>承認システム用のアプリケーションを登録する
 
-承認システムをアプリケーションとして Azure AD テナントに登録することで、承認システムを Azure AD で認証し、承認システムがユーザーを作成するアクセス許可を持つようにすることができます。 詳しくは、[Microsoft Graph 用の認証および承認の基本](https://docs.microsoft.com/graph/auth/auth-concepts)に関する記事をご覧ください。
+承認システムをアプリケーションとして Azure AD テナントに登録することで、承認システムを Azure AD で認証し、承認システムがユーザーを作成するアクセス許可を持つようにすることができます。 詳しくは、[Microsoft Graph 用の認証および承認の基本](/graph/auth/auth-concepts)に関する記事をご覧ください。
 
 1. [Azure Portal](https://portal.azure.com) に Azure AD 管理者としてサインインします。
 2. **[Azure サービス]** で **[Azure Active Directory]** を選択します。
 3. 左のメニューで、 **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
-4. アプリケーションの**名前**を入力します (_Sign-up Approvals_ など)。
+4. アプリケーションの **名前** を入力します ( _Sign-up Approvals_ など)。
 
    <!-- ![Register an application for the approval system](./self-service-sign-up-add-approvals/approvals/register-an-approvals-application.png) -->
 
 5. **[登録]** を選択します。 他のすべてのフィールドは既定値のままにすることができます。
 
-   ![[アプリケーションの登録] ページ](media/self-service-sign-up-add-approvals/register-approvals-app.png)
+   ![[登録] ボタンが強調表示されているスクリーンショット。](media/self-service-sign-up-add-approvals/register-approvals-app.png)
 
 6. 左のメニューの **[管理]** で、 **[API のアクセス許可]** を選択してから、 **[アクセス許可の追加]** を選択します。
 7. **[API アクセス許可の要求]** ページで、 **[Microsoft Graph]** を選択し、 **[アプリケーションのアクセス許可]** を選択します。
@@ -50,12 +50,12 @@ ms.locfileid: "88165246"
 
 9. **[API のアクセス許可]** ページで、 **[(テナント名) に管理者の同意を与えます]** を選択し、 **[はい]** を選択します。
 10. 左のメニューの **[管理]** で **[証明書とシークレット]** を選択してから、 **[新しいクライアント シークレット]** を選択します。
-11. シークレットの **[説明]** を入力し (たとえば、_Approvals client secret (承認クライアント シークレット)_ )、クライアント シークレットが**期限切れになる**までの期間を選択します。 その後、 **[追加]** を選択します。
+11. シークレットの **[説明]** を入力し (たとえば、 _Approvals client secret (承認クライアント シークレット)_ )、クライアント シークレットが **期限切れになる** までの期間を選択します。 その後、 **[追加]** を選択します。
 12. クライアント シークレットの値をコピーします。
 
     ![承認システムで使用するクライアント シークレットをコピーする](media/self-service-sign-up-add-approvals/client-secret-value-copy.png)
 
-13. クライアント ID としての**アプリケーション ID** と、Azure AD で認証するために生成した **クライアント シークレット**を使用するように承認システムを構成します。
+13. クライアント ID としての **アプリケーション ID** と、Azure AD で認証するために生成した **クライアント シークレット** を使用するように承認システムを構成します。
 
 ## <a name="create-the-api-connectors"></a>API コネクタを作成する
 
@@ -81,8 +81,8 @@ ms.locfileid: "88165246"
 4. **[User flows (Preview)]\(ユーザー フロー (プレビュー)\)** を選択し、API コネクタを有効にするユーザー フローを選択します。
 5. **[API connectors]\(API コネクタ\)** を選択し、ユーザー フローの次の手順で呼び出す API エンドポイントを選択します。
 
-   - **ID プロバイダーを使用してサインインした後**:承認状態 API コネクタを選択します。たとえば、 _[Check approval status]\(承認状態の確認\)_ を選択します。
-   - **ユーザーを作成する前**:承認要求 API コネクタを選択します。たとえば、 _[要求の承認]_ を選択します。
+   - **ID プロバイダーを使用してサインインした後** :承認状態 API コネクタを選択します。たとえば、 _[Check approval status]\(承認状態の確認\)_ を選択します。
+   - **ユーザーを作成する前** :承認要求 API コネクタを選択します。たとえば、 _[要求の承認]_ を選択します。
 
    ![API をユーザー フローに追加する](./media/self-service-sign-up-add-approvals/api-connectors-user-flow-api.png)
 
@@ -207,7 +207,7 @@ API に送信される正確な要求は、ユーザーから収集される情�
 
 **要求の承認** API エンドポイントは、次の場合に継続応答を返す必要があります。
 
-- ユーザーを**_自動的に承認_** できる。
+- ユーザーを **_自動的に承認_** できる。
 
 継続応答の例:
 
@@ -263,14 +263,14 @@ Content-type: application/json
 
 ## <a name="user-account-creation-after-manual-approval"></a>手動承認後のユーザー アカウントの作成
 
-手動による承認を取得した後、カスタム承認システムでは [Microsoft Graph](https://docs.microsoft.com/graph/use-the-api) を使用して[ユーザー](https://docs.microsoft.com/graph/azuread-users-concept-overview) アカウントを作成します。 承認システムがユーザー アカウントをプロビジョニングする方法は、ユーザーによって使用された ID プロバイダーによって異なります。
+手動による承認を取得した後、カスタム承認システムでは [Microsoft Graph](/graph/use-the-api) を使用して[ユーザー](/graph/azuread-users-concept-overview) アカウントを作成します。 承認システムがユーザー アカウントをプロビジョニングする方法は、ユーザーによって使用された ID プロバイダーによって異なります。
 
 ### <a name="for-a-federated-google-or-facebook-user"></a>Google または Facebook のフェデレーション ユーザーの場合
 
 > [!IMPORTANT]
 > この方法を使用するには、承認システムは、`identities`、`identities[0]`、および `identities[0].issuer` が存在し、 `identities[0].issuer` が 'facebook' または 'google' に一致することを明示的に確認する必要があります。
 
-ユーザーが Google または Facebook アカウントを使用してサインインした場合は、[ユーザー作成 API](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0&tabs=http) を使用できます。
+ユーザーが Google または Facebook アカウントを使用してサインインした場合は、[ユーザー作成 API](/graph/api/user-post-users?tabs=http&view=graph-rest-1.0) を使用できます。
 
 1. 承認システムはユーザー フローから HTTP 要求を受信します。
 
@@ -330,7 +330,7 @@ Content-type: application/json
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>フェデレーション Azure Active Directory ユーザーの場合
 
-ユーザーがフェデレーション Azure Active Directory アカウントを使用してサインインする場合は、[招待 API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-1.0) を使用してユーザーを作成し、必要に応じて[ユーザー更新 API](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0) を使用してユーザーに追加の属性を割り当てる必要があります。
+ユーザーがフェデレーション Azure Active Directory アカウントを使用してサインインする場合は、[招待 API](/graph/api/invitation-post?view=graph-rest-1.0) を使用してユーザーを作成し、必要に応じて[ユーザー更新 API](/graph/api/user-update?view=graph-rest-1.0) を使用してユーザーに追加の属性を割り当てる必要があります。
 
 1. 承認システムはユーザー フローから HTTP 要求を受信します。
 
@@ -389,4 +389,4 @@ Content-type: application/json
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Function クイックスタート サンプル](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)を使用します。
-- [手動承認を使用したゲスト ユーザーのセルフサービス サインアップのサンプル](code-samples-self-service-sign-up.md#custom-approval-workflows)をチェックアウトします。 
+- [手動承認を使用したゲスト ユーザーのセルフサービス サインアップのサンプル](code-samples-self-service-sign-up.md#custom-approval-workflows)をチェックアウトします。

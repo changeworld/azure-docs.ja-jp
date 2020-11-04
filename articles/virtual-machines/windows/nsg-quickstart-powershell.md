@@ -1,21 +1,21 @@
 ---
 title: Azure PowerShell を使用した VM へのポートの開放
-description: Azure Resource Manager デプロイメント モデルと Azure PowerShell を使用して、Windows VM へのポートを開き、エンドポイントを作成する方法について説明します。
+description: Azure PowerShell を使用して VM に対してポートを開く、またはエンドポイントを作成する方法について説明します
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a417c271c16aabe91836f425f26c0a55e7103557
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a432ce978f6fa9e3a472cb15e9ef9241bc41004d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973939"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891756"
 ---
-# <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>PowerShell を使用して Azure の VM へのポートとエンドポイントを開放する方法
+# <a name="how-to-open-ports-and-endpoints-to-a-vm-using-powershell"></a>PowerShell を使用して VM へのポートとエンドポイントを開放する方法
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## <a name="quick-commands"></a>クイック コマンド
@@ -27,9 +27,9 @@ Azure アカウントにログインします。
 Connect-AzAccount
 ```
 
-以下の例では、パラメーター名を独自の値に置き換えてください。 たとえば、*myResourceGroup*、*myNetworkSecurityGroup*、*myVnet* といったパラメーター名にします。
+以下の例では、パラメーター名を独自の値に置き換えてください。 たとえば、 *myResourceGroup* 、 *myNetworkSecurityGroup* 、 *myVnet* といったパラメーター名にします。
 
-[New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) を使用して規則を作成します。 次の例では、*myNetworkSecurityGroupRule* という名前の規則を作成して、ポート *80* での *TCP* トラフィックを許可します。
+[New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) を使用して規則を作成します。 次の例では、 *myNetworkSecurityGroupRule* という名前の規則を作成して、ポート *80* での *TCP* トラフィックを許可します。
 
 ```powershell
 $httprule = New-AzNetworkSecurityRuleConfig `
@@ -45,7 +45,7 @@ $httprule = New-AzNetworkSecurityRuleConfig `
     -DestinationPortRange 80
 ```
 
-そして、次のように、[New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) を使用してネットワーク セキュリティ グループを作成し、先ほど作成した HTTP 規則を割り当てます。 次の例では、*myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループを作成します。
+そして、次のように、[New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) を使用してネットワーク セキュリティ グループを作成し、先ほど作成した HTTP 規則を割り当てます。 次の例では、 *myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループを作成します。
 
 ```powershell
 $nsg = New-AzNetworkSecurityGroup `
@@ -55,7 +55,7 @@ $nsg = New-AzNetworkSecurityGroup `
     -SecurityRules $httprule
 ```
 
-ここで、ネットワーク セキュリティ グループをサブネットに割り当ててみましょう。 次の例では、[Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) を使用して、*myVnet* という名前の既存の仮想ネットワークを *$vnet* 変数に割り当てます。
+ここで、ネットワーク セキュリティ グループをサブネットに割り当ててみましょう。 次の例では、 [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) を使用して、 *myVnet* という名前の既存の仮想ネットワークを *$vnet* 変数に割り当てます。
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -63,7 +63,7 @@ $vnet = Get-AzVirtualNetwork `
     -Name "myVnet"
 ```
 
-[Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) を使用して、ネットワーク セキュリティ グループをサブネットに関連付けます。 次の例では、*mySubnet* という名前のサブネットをネットワーク セキュリティ グループに関連付けます。
+[Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) を使用して、ネットワーク セキュリティ グループをサブネットに関連付けます。 次の例では、 *mySubnet* という名前のサブネットをネットワーク セキュリティ グループに関連付けます。
 
 ```powershell
 $subnetPrefix = $vnet.Subnets|?{$_.Name -eq 'mySubnet'}

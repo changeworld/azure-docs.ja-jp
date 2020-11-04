@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: eb3c45c01b2e3ca1761e86f3ac991d67f7813856
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb978f30104b1e38bd8930ccb058c4057d394e51
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504317"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899671"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大規模な抽出、変換、および読み込み (ETL)
 
@@ -60,7 +60,7 @@ Azure Data Factory の詳細については、[こちらのドキュメント](.
 
 Azure Storage には、固有の適応性ターゲットがあります。 詳細については、「[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](../../storage/blobs/scalability-targets.md)」を参照してください。 大半の分析ノードでは、Azure Storage は、多数の小さなファイルを処理する場合に最善のスケーリングを行います。 アカウントの制限内である限り、Azure Storage では、ファイルのサイズに関係なく同じパフォーマンスが保証されます。 テラバイト単位のデータを保存しても、一貫したパフォーマンスを得ることができます。 このことは、データのサブセットを使用する場合でもすべてを使用する場合でも当てはまります。
 
-Azure Storage には、複数の種類の BLOB があります。 "*追加 BLOB*" は、Web ログやセンサー データを格納するための優れたオプションです。
+Azure Storage には、複数の種類の BLOB があります。 " *追加 BLOB* " は、Web ログやセンサー データを格納するための優れたオプションです。
 
 複数の BLOB を数多くのサーバーに分散して、アクセスをスケールアウトすることができます。 ただし、単一の BLOB は単一サーバーでのみ提供されます。 BLOB は BLOB コンテナーに論理的にグループ化できますが、このグループ化によるパーティション分割の影響はありません。
 
@@ -86,7 +86,7 @@ Data Lake Storage は、Azure Event Hubs または Apache Storm を使用した�
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Azure Synapse Analytics は、準備された結果を格納するための適切な選択肢です。 Azure HDInsight を使用して、それらのサービスを Azure Synapse Analytics に対して実行できます。
+Azure Synapse Analytics (旧称 SQL DW) は、準備された結果を格納するための適切な選択肢です。 Azure HDInsight を使用して、それらのサービスを Azure Synapse Analytics に対して実行できます。
 
 Azure Synapse Analytics は、分析ワークロード用に最適化されたリレーショナル データベース ストアです。 これにより、パーティション分割されたテーブルに基づいてスケーリングが行われます。 テーブルは、複数のノードにパーティション分割できます。 ノードは作成時に選択されます。 それらは後でスケーリングできますが、データ移動が必要になるのはアクティブ プロセスです。 詳細については、「[Azure Synapse Analytics でのコンピューティングの管理](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)」をご覧ください。
 

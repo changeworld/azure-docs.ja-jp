@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9e83fcd6a8e6a7b0c81f47cc3ad97b7f55da1b3b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8c67ff71ccc7690fbf3362b423ba4b6a56091684
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713188"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891246"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C の ISV パートナー
 
@@ -29,19 +29,19 @@ ISV パートナー ネットワークは、Microsoft のソリューション�
 
 | ISV パートナー | 説明と統合のチュートリアル  |
 | :--- | :--- |
-| ![ロゴ](./media/partner-gallery/arkose-logo.png) | [Arkose Labs](./partner-arkose-labs.md) は、組織がボット攻撃、アカウント乗っ取り攻撃、および不正なアカウント開設を防ぐのに役立つ不正行為防止ソリューション プロバイダーです。
-| ![ロゴ](./media/partner-gallery/experian-logo.png) | [Experian](./partner-experian.md) は、詐欺を防ぐためにユーザー属性に基づいてリスク評価を行う、本人確認および証明プロバイダーです。|
-| ![ロゴ](./media/partner-gallery/hypr-logo.png) | [HYPR](./partner-hypr.md) は、パスワードを公開キー暗号化に置き換えることによって、不正行為、フィッシング、および資格情報の再利用を排除する、真のパスワードレス認証プロバイダーです。|
-| ![ロゴ](./media/partner-gallery/idology-logo.png) | [IDology](./partner-idology.md) は、ID 検証ソリューション、不正行為防止ソリューション、コンプライアンス ソリューションなどを備えた ID の検証および証明プロバイダーです。|
-| ![ロゴ](./media/partner-gallery/itsme-logo.png) | [itsme](./partner-itsme.md) は、ユーザーがカード リーダー、パスワード、2 要素認証、および複数の PIN コードを使用せずに安全にサインインできる、eiDAS (Electronic Identification, Authentication and Trust Services) に準拠したデジタル ID ソリューションです。 |
-| ![ロゴ](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) は ID 検証サービスです。リアルタイムの自動 ID 検証が可能になり、顧客データが保護されます。 |
-| ![ロゴ](./media/partner-gallery/lexisnexis-logo.png) | [LexisNexis](./partner-lexisnexis.md) は、ユーザー ID を検証し、ユーザーのデバイスに基づいて包括的なリスク評価を提供する、プロファイルと ID 検証のプロバイダーです。 |
-| ![ロゴ](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) は、ドキュメント ID および顔の生体認証検証ソリューションであり、企業は *Know Your Customer* (顧客確認) と ID 要件をリアルタイムで満たすことができます。  |
-| ![ロゴ](./media/partner-gallery/saviynt-logo.png) | [Saviynt](./partner-saviynt.md) クラウドネイティブ プラットフォームは、インテリジェント分析を使用し、アプリケーション間の統合機能を提供することで、IT 最新化の効率を高め、セキュリティ、ガバナンス、コンプライアンスを向上させます。 ビジネスの最新化により、企業がアクセス要求を確認し、アクセス レビューとレポート分析を行い、認定キャンペーンを効率化する方法が変革されます。  |
-| ![ロゴ](./media/partner-gallery/trusona-logo.png) | [Trusona](./partner-trusona.md) 統合を使用すると、安全にサインインし、パスワードレス認証、多要素認証、およびデジタル ライセンス スキャンを有効にすることができます。|
-| ![ロゴ](./media/partner-gallery/twilio-logo.png) | [Twilio Verify App](./partner-twilio.md) は、SMS ワンタイム パスワード (OTP)、時間ベースのワンタイム パスワード (TOTP)、およびプッシュ通知を使用して多要素認証 (MFA) を有効にし、PSD2 (Payment Services Directive 2) の SCA 要件に準拠するための複数のソリューションを提供しています。|
-| ![ロゴ](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-typingdna.md) は、ユーザー入力パターンに基づく ID 検証および証明プロバイダーであり、多要素認証を強制する ID 検証ソリューションを提供し、PSD2 (Payment Services Directive 2) の SCA 要件に準拠するのに役立ちます。 |
-| ![ロゴ](./media/partner-gallery/whoiam-logo.png) | [WhoIAM](./partner-whoiam.md) はブランド化された ID 管理システム (BRIMS) アプリケーションです。組織はこのアプリケーションを使用して、音声、SMS、および電子メールでユーザー ベースを確認できます。 
+| ![Arkos Labs ロゴのスクリーンショット。](./media/partner-gallery/arkose-logo.png) | [Arkose Labs](./partner-arkose-labs.md) は、組織がボット攻撃、アカウント乗っ取り攻撃、および不正なアカウント開設を防ぐのに役立つ不正行為防止ソリューション プロバイダーです。
+| ![Experian ロゴのスクリーンショット。](./media/partner-gallery/experian-logo.png) | [Experian](./partner-experian.md) は、詐欺を防ぐためにユーザー属性に基づいてリスク評価を行う、本人確認および証明プロバイダーです。|
+| ![HYPR ロゴのスクリーンショット。](./media/partner-gallery/hypr-logo.png) | [HYPR](./partner-hypr.md) は、パスワードを公開キー暗号化に置き換えることによって、不正行為、フィッシング、および資格情報の再利用を排除する、真のパスワードレス認証プロバイダーです。|
+| ![IDology ロゴのスクリーンショット。](./media/partner-gallery/idology-logo.png) | [IDology](./partner-idology.md) は、ID 検証ソリューション、不正行為防止ソリューション、コンプライアンス ソリューションなどを備えた ID の検証および証明プロバイダーです。|
+| ![itsme ロゴのスクリーンショット。](./media/partner-gallery/itsme-logo.png) | [itsme](./partner-itsme.md) は、ユーザーがカード リーダー、パスワード、2 要素認証、および複数の PIN コードを使用せずに安全にサインインできる、eiDAS (Electronic Identification, Authentication and Trust Services) に準拠したデジタル ID ソリューションです。 |
+| ![Jumio ロゴのスクリーンショット。](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) は ID 検証サービスです。リアルタイムの自動 ID 検証が可能になり、顧客データが保護されます。 |
+| ![LexisNexis ロゴのスクリーンショット。](./media/partner-gallery/lexisnexis-logo.png) | [LexisNexis](./partner-lexisnexis.md) は、ユーザー ID を検証し、ユーザーのデバイスに基づいて包括的なリスク評価を提供する、プロファイルと ID 検証のプロバイダーです。 |
+| ![Onfido ロゴのスクリーンショット。](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) は、ドキュメント ID および顔の生体認証検証ソリューションであり、企業は *Know Your Customer* (顧客確認) と ID 要件をリアルタイムで満たすことができます。  |
+| ![Saviynt ロゴのスクリーンショット。](./media/partner-gallery/saviynt-logo.png) | [Saviynt](./partner-saviynt.md) クラウドネイティブ プラットフォームは、インテリジェント分析を使用し、アプリケーション間の統合機能を提供することで、IT 最新化の効率を高め、セキュリティ、ガバナンス、コンプライアンスを向上させます。 ビジネスの最新化により、企業がアクセス要求を確認し、アクセス レビューとレポート分析を行い、認定キャンペーンを効率化する方法が変革されます。  |
+| ![Trusona ロゴのスクリーンショット。](./media/partner-gallery/trusona-logo.png) | [Trusona](./partner-trusona.md) 統合を使用すると、安全にサインインし、パスワードレス認証、多要素認証、およびデジタル ライセンス スキャンを有効にすることができます。|
+| ![Twilio Verify App のロゴのスクリーンショット。](./media/partner-gallery/twilio-logo.png) | [Twilio Verify App](./partner-twilio.md) は、SMS ワンタイム パスワード (OTP)、時間ベースのワンタイム パスワード (TOTP)、およびプッシュ通知を使用して多要素認証 (MFA) を有効にし、PSD2 (Payment Services Directive 2) の SCA 要件に準拠するための複数のソリューションを提供しています。|
+| ![TypingDNA ロゴを示すスクリーンショット。](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-typingdna.md) は、ユーザー入力パターンに基づく ID 検証および証明プロバイダーであり、多要素認証を強制する ID 検証ソリューションを提供し、PSD2 (Payment Services Directive 2) の SCA 要件に準拠するのに役立ちます。 |
+| ![WhoIAM ロゴを示すスクリーンショット。](./media/partner-gallery/whoiam-logo.png) | [WhoIAM](./partner-whoiam.md) はブランド化された ID 管理システム (BRIMS) アプリケーションです。組織はこのアプリケーションを使用して、音声、SMS、および電子メールでユーザー ベースを確認できます。 
 
 ## <a name="next-steps"></a>次のステップ
 

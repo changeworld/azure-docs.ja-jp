@@ -6,13 +6,13 @@ ms.author: daperlov
 manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.openlocfilehash: 0442c701f39fd3e84361ad0201aaf8d1840d8851
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/27/2020
+ms.openlocfilehash: 6fe85db6612a16099f61cb52fe9c5864882f35b3
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81606281"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892929"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>マッピング データ フロー変換の概要
 
@@ -33,8 +33,9 @@ ms.locfileid: "81606281"
 | [Lookup](data-flow-lookup.md) | 複数の入力/出力 | 別のソースからデータを参照します。 |
 | [新しいブランチ](data-flow-new-branch.md) | 複数の入力/出力 | 同じデータ ストリームに対して複数の操作と変換を行います。 |
 | [ピボット](data-flow-pivot.md) | スキーマ修飾子 | 1 つまたは複数のグループ化された列が、個々の列に変換された個別の行の値を持つ集計。 |
+| [順位](data-flow-rank.md) | スキーマ修飾子 | 並べ替え条件に基づいて順序付けされた順位付けを生成する |
 | [Select](data-flow-select.md) | スキーマ修飾子 | 別名列とストリーム名、列のドロップまたは並べ替え |
-| [シンク](data-flow-sink.md) | - | お使いのデータの最終受信先 |
+| [Sink](data-flow-sink.md) | - | お使いのデータの最終受信先 |
 | [Sort](data-flow-sort.md) | 行の修飾子 | 現在のデータ ストリームで受信行を並べ替える |
 | [ソース](data-flow-source.md) | - | データ フローのデータ ソース |
 | [代理キー](data-flow-surrogate-key.md) | スキーマ修飾子 | ビジネス以外の任意のキー値のインクリメントを追加する |

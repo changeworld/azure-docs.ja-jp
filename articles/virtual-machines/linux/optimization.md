@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: eff512c9d050eb293391233848fcece83e845680
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fceef1fa9f79ead0ffbbfd7de17b21b750659fc9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654193"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370238"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Azure での Linux VM の最適化
 コマンド ラインやポータルを使用すると、Linux 仮想マシン (VM) を簡単に作成できます。 このチュートリアルでは、Microsoft Azure Platform でのパフォーマンスが最適化されるように Linux 仮想マシンがセットアップされていることを確認する方法を説明します。 このトピックでは Ubuntu Server VM を使用しますが、 [テンプレートとして独自のイメージ](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して Linux 仮想マシンを作成することもできます。  
@@ -22,16 +22,16 @@ ms.locfileid: "88654193"
 このトピックでは、利用中の Azure サブスクリプション ([無料試用版](https://azure.microsoft.com/pricing/free-trial/)のサインアップ) が既にあり、VM を Azure サブスクリプションにプロビジョニング済みであることを前提としています。 [VM を作成](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)する前に、最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされていることを確認し、[az login](/cli/azure/reference-index) を使用して Azure サブスクリプションにログインしておく必要があります。
 
 ## <a name="azure-os-disk"></a>Azure OS ディスク
-Azure に Linux VM を作成すると、その VM には 2 つのディスクが関連付けられています。 **/dev/sda** は OS ディスクを表し、 **/dev/sdb** は一時ディスクを表します。  メインの OS ディスク ( **/dev/sda**) は、VM の高速起動用に最適化されており、ワークロードでは優れたパフォーマンスを発揮しないため、オペレーティング システム以外の用途には使用しないでください。 データ用の永続的で最適化されたストレージにするために、1 つ以上のディスクを VM に接続することができます。 
+Azure に Linux VM を作成すると、その VM には 2 つのディスクが関連付けられています。 **/dev/sda** は OS ディスクを表し、 **/dev/sdb** は一時ディスクを表します。  メインの OS ディスク ( **/dev/sda** ) は、VM の高速起動用に最適化されており、ワークロードでは優れたパフォーマンスを発揮しないため、オペレーティング システム以外の用途には使用しないでください。 データ用の永続的で最適化されたストレージにするために、1 つ以上のディスクを VM に接続することができます。 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>サイズとパフォーマンスの目標に向けたディスクの追加
 VM サイズに基づいて、A シリーズのマシンでは最大 16 個、D シリーズのマシンでは 32 個、G シリーズのマシンでは 64 個のディスクを接続できます (ディスクのサイズはそれぞれ、最大 32 TB)。 スペースと IOPS の要件に従って、必要に応じてさらにディスクを追加します。 各ディスクのパフォーマンス目標は、Standard Storage の場合は 500 IOPS、Premium Storage の場合は最大 20,000 IOPS です。
 
-キャッシュ設定が **ReadOnly** または **None** に設定されている Premium Storage ディスクで最高レベルの IOPS を実現するには、Linux でファイル システムをマウントするときに**バリア**を無効にする必要があります。 Premium Storage ディスクでこれらのキャッシュ設定を使用する場合は、ディスクへの書き込みの耐久性が保証されるため、バリアは必要ありません。
+キャッシュ設定が **ReadOnly** または **None** に設定されている Premium Storage ディスクで最高レベルの IOPS を実現するには、Linux でファイル システムをマウントするときに **バリア** を無効にする必要があります。 Premium Storage ディスクでこれらのキャッシュ設定を使用する場合は、ディスクへの書き込みの耐久性が保証されるため、バリアは必要ありません。
 
-* **reiserFS**: バリアを無効にするには、マウント オプション `barrier=none` を使用します (バリアを有効にするには `barrier=flush` を使用します)。
-* **ext3/ext4**: バリアを無効にするには、マウント オプション `barrier=0` を使用します (バリアを有効にするには `barrier=1` を使用します)。
-* **XFS**: バリアを無効にするには、マウント オプション `nobarrier` を使用します (バリアを有効にするには `barrier` を使用します)。
+* **reiserFS** : バリアを無効にするには、マウント オプション `barrier=none` を使用します (バリアを有効にするには `barrier=flush` を使用します)。
+* **ext3/ext4** : バリアを無効にするには、マウント オプション `barrier=0` を使用します (バリアを有効にするには `barrier=1` を使用します)。
+* **XFS** : バリアを無効にするには、マウント オプション `nobarrier` を使用します (バリアを有効にするには `barrier` を使用します)。
 
 ## <a name="unmanaged-storage-account-considerations"></a>非管理対象ストレージ アカウントに関する考慮事項
 Azure CLI で VM を作成したときの既定のアクションでは、Azure Managed Disks が使用されます。  これらのディスクは Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。  非管理対象ディスクではストレージ アカウントが必要であり、パフォーマンスに関するその他の考慮事項がいくつかあります。  マネージド ディスクの詳細については、「[Azure Managed Disks の概要](../managed-disks-overview.md)」をご覧ください。  次のセクションで説明するパフォーマンスに関する考慮事項は、非管理対象ディスクを使用する場合にのみ適用されます。  既定の推奨ストレージ ソリューションは、マネージド ディスクを使用することです。
@@ -42,12 +42,43 @@ IOPS が高いワークロードを処理していて、ディスクに Standard
  
 
 ## <a name="your-vm-temporary-drive"></a>VM の一時ドライブ
-既定では、VM の作成時に、Azure から OS ディスク ( **/dev/sda**) と一時ディスク ( **/dev/sdb**) が提供されます。  ユーザーが追加するその他のディスクはすべて、 **/dev/sdc**、 **/dev/sdd**、 **/dev/sde** のように表示されます。 一時ディスク ( **/dev/sdb**) 上のすべてのデータは持続性がないため、VM のサイズ変更、再デプロイ、メンテナンスなどの特定のイベントによって VM が再起動された場合に失われる可能性があります。  一時ディスクのサイズと種類は、デプロイ時に選択した VM サイズに関連付けられています。 プレミアム サイズの VM (DS、G、DS_V2 の各シリーズ) では、ローカル SSD が一時ドライブに使用され、さらに最大 48,000 IOPS のパフォーマンスが実現します。 
+既定では、VM の作成時に、Azure から OS ディスク ( **/dev/sda** ) と一時ディスク ( **/dev/sdb** ) が提供されます。  ユーザーが追加するその他のディスクはすべて、 **/dev/sdc** 、 **/dev/sdd** 、 **/dev/sde** のように表示されます。 一時ディスク ( **/dev/sdb** ) 上のすべてのデータは持続性がないため、VM のサイズ変更、再デプロイ、メンテナンスなどの特定のイベントによって VM が再起動された場合に失われる可能性があります。  一時ディスクのサイズと種類は、デプロイ時に選択した VM サイズに関連付けられています。 プレミアム サイズの VM (DS、G、DS_V2 の各シリーズ) では、ローカル SSD が一時ドライブに使用され、さらに最大 48,000 IOPS のパフォーマンスが実現します。 
 
 ## <a name="linux-swap-partition"></a>Linux スワップ パーティション
 Azure VM が Ubuntu イメージまたは CoreOS イメージから作成されている場合は、CustomData を使用して cloud-config を cloud-init に送信できます。 cloud-init を使用する[カスタム Linux イメージをアップロード](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)している場合は、cloud-init を使用してスワップ パーティションも構成します。
 
-Ubuntu Cloud Image では、cloud-init を使用してスワップ パーティションを構成する必要があります。 詳細については、「[AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions)」をご覧ください。
+cloud-init によってプロビジョニングおよびサポートされたすべてのイメージのスワップを管理するために、 **/etc/waagent.conf** ファイルを使用することはできません。 イメージの完全な一覧については、[cloud-init の使用](using-cloud-init.md)に関する記事を参照してください。 
+
+これらのイメージのスワップを管理する方法としては、次の手順を行うのが最も簡単です。
+
+1. **/var/lib/cloud/scripts/per-boot** フォルダーで、 **create_swapfile.sh** という名前でファイルを作成します。
+
+   **$ sudo touch /var/lib/cloud/scripts/per-boot/create_swapfile.sh**
+
+1. 次の行をファイルに追加します。
+
+   **$ sudo vi /var/lib/cloud/scripts/per-boot/create_swapfile.sh**
+
+   ```
+   #!/bin/sh
+   if [ ! -f '/mnt/swapfile' ]; then
+   fallocate --length 2GiB /mnt/swapfile
+   chmod 600 /mnt/swapfile
+   mkswap /mnt/swapfile
+   swapon /mnt/swapfile
+   swapon -a ; fi
+   ```
+
+   > [!NOTE]
+   > 必要に応じて、およびリソース ディスクの使用可能な領域に基づいて値を変更できます。これは、使用中の VM のサイズによって異なります。
+
+1. ファイルを実行可能ファイルにします。
+
+   **$ sudo chmod +x /var/lib/cloud/scripts/per-boot/create_swapfile.sh**
+
+1. swapfile を作成するには、最後の手順の直後にスクリプトを実行します。
+
+   **$ sudo /var/lib/cloud/scripts/per-boot/./create_swapfile.sh**
 
 cloud-init のサポートがないイメージの場合、Azure Marketplace からデプロイされた VM イメージで VM Linux エージェントが OS と統合されています。 このエージェントにより、VM がさまざまな Azure サービスと対話できるようになります。 Azure Marketplace から標準イメージをデプロイしたことを想定すると、Linux スワップ ファイルの設定を正しく構成するには、次の操作を行う必要があります。
 
@@ -58,7 +89,7 @@ cloud-init のサポートがないイメージの場合、Azure Marketplace か
 * ResourceDisk.EnableSwap=Y
 * ResourceDisk.SwapSizeMB={ニーズに合わせたサイズ (MB)} 
 
-この変更を行ったら、変更を反映するために waagent を再起動するか、Linux VM を再起動する必要があります。  `free` コマンドを使用して空き領域を表示すると、変更が実装され、スワップ ファイルが作成されたことがわかります。 次の例では、**waagent.conf** ファイルを変更した結果として、512 MB のスワップ ファイルが作成されています。
+この変更を行ったら、変更を反映するために waagent を再起動するか、Linux VM を再起動する必要があります。  `free` コマンドを使用して空き領域を表示すると、変更が実装され、スワップ ファイルが作成されたことがわかります。 次の例では、 **waagent.conf** ファイルを変更した結果として、512 MB のスワップ ファイルが作成されています。
 
 ```bash
 azuseruser@myVM:~$ free
@@ -97,7 +128,7 @@ root@myVM:~# update-grub
 > [!NOTE]
 > この設定を **/dev/sda** だけに適用しても役立ちません。 I/O パターンの大部分がシーケンシャル I/O であるすべてのデータ ディスクで設定します。  
 
-次の出力では、**grub.cfg** が正常に再構築され、既定のスケジューラが NOOP に更新されたことを確認できます。  
+次の出力では、 **grub.cfg** が正常に再構築され、既定のスケジューラが NOOP に更新されたことを確認できます。  
 
 ```bash
 Generating grub configuration file ...

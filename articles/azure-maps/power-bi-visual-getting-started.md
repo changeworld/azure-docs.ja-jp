@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: aecda5ed9b87ba2345a52923a574919d6a08594f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 5c89922aef1ba802ee694aaed9bae2ac2dd273ee
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362673"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896244"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Azure Maps Power BI ビジュアルの概要
 
-<Token>**適用対象:** ![緑のチェック マーク。](media/power-bi-visual/yes.png)Power BI サービス (***コンシューマー***) ![緑色のチェックマーク。](media/power-bi-visual/yes.png)Power BI サービス (デザイナーおよび開発者) ![緑色のチェックマーク。](media/power-bi-visual/yes.png)Power BI Desktop X !["いいえ" を示す X。](media/power-bi-visual/no.png)Pro または Premium ライセンスが必要 </Token>
+<Token>**適用対象:** ![緑のチェック マーク。](media/power-bi-visual/yes.png)Power BI サービス * *( _コンシューマー_ )* _![緑色のチェックマーク。](media/power-bi-visual/yes.png)Power BI サービス (デザイナーおよび開発者) ![緑色のチェックマーク。](media/power-bi-visual/yes.png)Power BI Desktop X !["いいえ" を示す X。](media/power-bi-visual/no.png)Pro または Premium ライセンスが必要 </Token>
 
 この記事では、Power BI で Microsoft Azure Maps ビジュアルを使用する方法を示します。
 
@@ -47,10 +47,10 @@ Azure Maps ビジュアルに関連するプライバシーと使用条件の詳
 
 ## <a name="preview-behavior-and-requirements"></a>プレビューの動作と要件
 
-この **Azure Maps** のプレビュー リリースには、いくつかの考慮事項と要件があります。
+この _*Azure Maps** のプレビュー リリースには、いくつかの考慮事項と要件があります。
 
 -   **Azure Maps** ビジュアルはプレビュー段階であり、Power BI Desktop で有効にする必要があります。 **Azure Maps** を有効にするには、 **[ファイル]** &gt; **[オプションと設定]** &gt; **[オプション]** &gt; **[プレビュー機能]** の順に選択してから、 **[Azure Maps Visual]** チェック ボックスをオンにします。 この操作を行っても Azure Maps ビジュアルが使用できない場合は、おそらく、管理ポータルでテナント管理者スイッチを有効にする必要があります。
--   **緯度**と**経度**の情報を含むフィールドがデータセットに必要です。 位置情報フィールドのジオコーディングは、将来の更新で追加される予定です。
+-   **緯度** と **経度** の情報を含むフィールドがデータセットに必要です。 位置情報フィールドのジオコーディングは、将来の更新で追加される予定です。
 -   Power BI 用の組み込みの凡例コントロールは、このプレビューの時点では表示されません。 将来の更新で追加される予定です。
 
 ## <a name="use-the-azure-maps-visual"></a>Azure Maps ビジュアルを使用する
@@ -173,7 +173,7 @@ Azure Maps Power BI ビジュアルについて詳しく確認します。
 ビジュアルのカスタマイズ:
 
 > [!div class="nextstepaction"]
-> [Power BI における色の書式設定に関するヒントとコツ](https://docs.microsoft.com/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
+> [Power BI における色の書式設定に関するヒントとコツ](/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
 
 > [!div class="nextstepaction"]
-> [視覚エフェクトのタイトル、背景、および凡例をカスタマイズする](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)
+> [視覚エフェクトのタイトル、背景、および凡例をカスタマイズする](/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)

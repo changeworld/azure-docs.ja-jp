@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 5e20863cd971a55142283676fe035d3238520ae1
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: be7cfef5c7121d918c375dae216d293d9d56526b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361366"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890481"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Azure 用の SAP LaMa コネクタ
 
@@ -181,7 +181,7 @@ SAP Note [2343511] に記載されている Oracle Database 用のいずれか�
 
 Oracle Database には、/oracle、/home/oraod1、および /home/oracle 用のディスクが必要です。
 
-![Linux 上の Oracle Database](media/lama/sap-lama-db-ora-lnx.png)
+![Linux 上の Oracle データベースと、必要なディスクを示す図。](media/lama/sap-lama-db-ora-lnx.png)
 
 #### <a name="manual-deployment-for-microsoft-sql-server"></a>Microsoft SQL Server 用の手動によるデプロイ
 
@@ -447,7 +447,7 @@ SWPM を実行し、 *[ASCS Instance Host Name]\(ASCS インスタンス ホス�
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-db -n 255.255.255.128
 ```
 
-SQL Server 仮想マシンで SWPM のデータベース インスタンスのインストールを実行します。 SAPINST_USE_HOSTNAME=*as1-db* を使用して、SQL Server への接続に使用するホスト名をオーバーライドします。 Azure Resource Manager テンプレートを使用して仮想マシンをデプロイした場合は、データベース データ ファイルに使用するディレクトリを *C:\sql\data*、データベース ログ ファイルに使用するディレクトリを *C:\sql\log* に設定してください。
+SQL Server 仮想マシンで SWPM のデータベース インスタンスのインストールを実行します。 SAPINST_USE_HOSTNAME= *as1-db* を使用して、SQL Server への接続に使用するホスト名をオーバーライドします。 Azure Resource Manager テンプレートを使用して仮想マシンをデプロイした場合は、データベース データ ファイルに使用するディレクトリを *C:\sql\data* 、データベース ログ ファイルに使用するディレクトリを *C:\sql\log* に設定してください。
 
 ユーザー *NT AUTHORITY\SYSTEM* が SQL Server にアクセスできること、およびサーバー ロール *sysadmin* が割り当てられていることを確認します。 詳しくは、SAP Note [1877727] および [2562184] をご覧ください。
 
@@ -489,7 +489,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
   * 解決策  
     ソースの HANA システムですべてのデータベースのバックアップを作成してください。
 
-* データベース インスタンスのシステム コピー手順の*開始*
+* データベース インスタンスのシステム コピー手順の *開始*
   * Host Agent Operation '000D3A282BC91EE8A1D76CF1F92E2944' failed (OperationException. FaultCode:'127', Message:'Command execution failed. : [Microsoft][ODBC SQL Server Driver][SQL Server]User does not have permission to alter database 'AS2', the database does not exist, or the database is not in a state that allows access checks.') (ホスト エージェント操作 '000D3A282BC91EE8A1D76CF1F92E2944' に失敗しました (OperationException. FaultCode: '127', Message: 'コマンドの実行に失敗しました。: [Microsoft][ODBC SQL Server Driver][SQL Server]ユーザーにデータベース 'AS2' を変更するアクセス許可がないか、データベースが存在しないか、データベースがアクセス チェックできない状態です。'))
   * 解決策  
     *NT AUTHORITY\SYSTEM* が SQL Server にアクセスできることを確認してください。 SAP Note [2562184] をご覧ください。

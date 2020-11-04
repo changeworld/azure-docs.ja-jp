@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 87d26e18ff97416ff8cb0eda08f7beb81005c627
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: d825a30cf43b3e7f9017638138df91d5145d280e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015704"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791598"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -37,6 +37,25 @@ ms.locfileid: "92015704"
 > [Azure portal](https://portal.azure.com/) を使用して、v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)とジョブの表示、API へのアクセスに関する情報の取得、コンテンツの暗号化を行うことができます。 他のすべての管理タスク (変換とジョブの管理など) については、[REST API](/rest/api/media/accountfilters)、[CLI](/cli/azure/ams)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 >
 > 詳細については、[Media Services v3 に関する Azure portal の制限事項](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)に関する記事を参照してください。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+### <a name="basic-audio-analysis"></a>Basic の音声分析
+音声分析のプリセットに、Basic モードの価格レベルが含まれるようになりました。 新しい Basic の音声アナライザー モードによって、音声の文字起こしの抽出、出力キャプションと字幕の書式設定の低コストのオプションが提供されます。 このモードを使用すると、音声からテキストへの文字起こし、VTT 字幕またはキャプション ファイルの生成が実行されます。 このモードの出力には、キーワード、文字起こし、タイミング情報のみを含む Insights JSON ファイルなどがあります。 このモードには、自動言語検出と話者のダイアライゼーションは含まれていません。 [サポートされている言語](analyzing-video-audio-files-concept.md#built-in-presets)のリストを参照してください。
+
+インデクサー v1 およびインデクサー v2 を使用しているお客様は、Basic の音声分析のプリセットに移行する必要があります。
+
+基本的な音声アナライザー モードの詳細については、[ビデオおよび音声のファイルの分析](analyzing-video-audio-files-concept.md)に関するページを参照してください。  REST API で Basic の音声アナライザー モードを使用する方法については、[基本的なオーディオ変換を作成する方法](how-to-create-basic-audio-transform.md)に関するページを参照してください。
+
+## <a name="live-events"></a>ライブ イベント
+
+ライブ イベントが停止したときに、ほとんどのプロパティの更新が許可されるようになりました。 さらに、ユーザーは、ライブ イベントの入力およびプレビューの URL に対して、静的ホスト名のプレフィックスを指定できます。 VanityUrl は、プロパティの意図をより適切に反映するために `useStaticHostName` と呼ばれるようになりました。
+
+ライブ イベントにスタンバイ状態が追加されました。  「[Media Services のライブ イベントとライブ出力](https://docs.microsoft.com/azure/media-services/latest/live-events-outputs-concept)」を参照してください。
+
+ライブ イベントでは、さまざまな入力の縦横比の受信がサポートされています。 ストレッチ モードを使用すると、顧客が出力の拡張動作を指定できます。
+
+ライブ エンコードに、0.5 - 20 秒の固定キー フレーム間隔フラグメントを出力する機能が追加されました。
 
 ## <a name="august-2020"></a>2020 年 8 月
 
@@ -90,7 +109,7 @@ Azure Media Player ドキュメントは、[Azure ドキュメント](../azure-m
 
 ### <a name="azure-government-cloud-updates"></a>Azure Government クラウドの更新
 
-Media Services が次の Azure Government リージョンで一般公開されました。*米国政府アリゾナ*および*米国政府テキサス*。
+Media Services が次の Azure Government リージョンで一般公開されました。 *米国政府アリゾナ* および *米国政府テキサス* 。
 
 ## <a name="december-2019"></a>2019 年 12 月
 
@@ -120,7 +139,7 @@ Media Services が次の Azure Government リージョンで一般公開され�
 
 ### <a name="content-protection"></a>コンテンツの保護
 
-去る 9 月に限定リージョンで公開された "*トークン再生防止*" 機能が全リージョンで利用できるようになりました。
+去る 9 月に限定リージョンで公開された " *トークン再生防止* " 機能が全リージョンで利用できるようになりました。
 Media Services をご利用のお客様は、キーまたはライセンスの要求に同じトークンを使用できる回数に上限を設定できるようになりました。 詳細については、「[トークン再生の防止](content-protection-overview.md#token-replay-prevention)」を参照してください。
 
 ### <a name="new-recommended-live-encoder-partners"></a>新しいおすすめのライブ エンコーダー パートナー
@@ -154,7 +173,7 @@ Media Services v3 で、24 時間 365 日のライブ イベントのライブ �
 
 #### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
 
-*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 提供終了日については、[レガシ コンポーネント](../previous/legacy-components.md)に関する記事を参照してください。 [Azure Media Services Video Indexer](../video-indexer/index.yml) が、これらの従来のメディア プロセッサに取って代わります。
+*Azure Media Indexer* および " *Azure Media Indexer 2 プレビュー* " の廃止を発表します。 提供終了日については、[レガシ コンポーネント](../previous/legacy-components.md)に関する記事を参照してください。 [Azure Media Services Video Indexer](../video-indexer/index.yml) が、これらの従来のメディア プロセッサに取って代わります。
 
 詳細については、[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer への移行](../previous/migrate-indexer-v1-v2.md)に関する記事をご覧ください。
 
@@ -180,7 +199,7 @@ Media Services を南アフリカ北部と南アフリカ西部の各リージ�
 
 ### <a name="content-protection"></a>コンテンツの保護
 
-トークン制限で保護されたコンテンツをストリーミングする場合、エンドユーザーはキー配信要求の一部として送信されるトークンを取得する必要があります。 *トークン再生の防止*機能を使用すると、Media Services のユーザーは、同じトークンを使用してキーまたはライセンスを要求できる回数に制限を設定できます。 詳細については、「[トークン再生の防止](content-protection-overview.md#token-replay-prevention)」を参照してください。
+トークン制限で保護されたコンテンツをストリーミングする場合、エンドユーザーはキー配信要求の一部として送信されるトークンを取得する必要があります。 *トークン再生の防止* 機能を使用すると、Media Services のユーザーは、同じトークンを使用してキーまたはライセンスを要求できる回数に制限を設定できます。 詳細については、「[トークン再生の防止](content-protection-overview.md#token-replay-prevention)」を参照してください。
 
 7 月の時点では、プレビュー機能は米国中部と米国中西部でのみ利用できました。
 
@@ -256,7 +275,7 @@ MPI ファイルを変更または削除したり、サービスにこのよう�
 
 V3 API の GA リリースの更新プログラム:
        
-* **資産フィルター**と**アカウント フィルター**では **PresentationTimeRange** プロパティが '必須' でなくなりました。 
+* **資産フィルター** と **アカウント フィルター** では **PresentationTimeRange** プロパティが '必須' でなくなりました。 
 * **Jobs** と **Transforms** のクエリ オプション、$top と $skip が削除され、$orderby が追加されました。 新しい順序付け機能を追加する手順の一部で、実装されていない $top オプションと $skip オプションが、以前は偶発的に公開されていたことが判明しました。
 * 列挙型の拡張性が再有効化されました。 この機能はプレビュー版の SDK で有効になりましたが、GA 版で偶発的に無効になりました。
 * 定義済みの 2 つのストリーミング ポリシーの名前が変更されました。 **SecureStreaming** が **MultiDrmCencStreaming** になりました。 **SecureStreamingWithFairPlay** が **Predefined_MultiDrmStreaming** になりました。
@@ -333,11 +352,11 @@ Azure Resource Management のサポートにより、管理と操作の API が�
 
 #### <a name="new-transform-object"></a>新しい変換オブジェクト
 
-新しい**変換**オブジェクトによってエンコード モデルが簡略化されます。 この新しいオブジェクトを使用すると、Resource Manager テンプレートおよびプリセットの作成と共有が簡単になります。 
+新しい **変換** オブジェクトによってエンコード モデルが簡略化されます。 この新しいオブジェクトを使用すると、Resource Manager テンプレートおよびプリセットの作成と共有が簡単になります。 
 
-#### <a name="azure-active-directory-authentication-and-rbac"></a>Azure Active Directory 認証と RBAC
+#### <a name="azure-active-directory-authentication-and-azure-rbac"></a>Azure Active Directory 認証と Azure RBAC
 
-Azure AD Authentication とロールベースのアクセス制御 (RBAC) によって、Azure AD のロールまたはユーザーごとのセキュアな変換、LiveEvent、コンテンツ キー ポリシー、またはアセットが実現します。
+Azure AD Authentication と Azure ロールベースのアクセス制御 (Azure RBAC) によって、Azure AD のロールまたはユーザーごとのセキュアな変換、LiveEvent、コンテンツ キー ポリシー、またはアセットが実現します。
 
 #### <a name="client-sdks"></a>クライアント SDK  
 
@@ -388,12 +407,12 @@ Media Services v3 CLI または API を使用して 9 月 28 日から 10 月 12
 
 .NET SDK には次の機能があります。
 
-* **Transforms** と **Job**: メディア コンテンツをエンコードまたは分析します。 例については、「[ファイルのストリーミング](stream-files-tutorial-with-api.md)」と「[分析](analyze-videos-tutorial-with-api.md)」を参照してください。
-* **ストリーミング ロケーター**: コンテンツをエンドユーザー デバイスに公開およびストリーミングします。
-* **ストリーミング ポリシー**および**コンテンツ キー ポリシー**: コンテンツ配信時のキーの配信とコンテンツ保護 (DRM) を構成します。
-* **ライブ イベント**および**ライブ出力**: ライブ ストリーミング コンテンツの取り込みとアーカイブを構成します。
-* **Asset**: メディア コンテンツの Azure Storage への格納と発行を行います。 
-* **ストリーミング エンドポイント**: ダイナミック パッケージ、暗号化、およびライブとオンデマンドの両方のメディア コンテンツのストリーミングを構成およびスケーリングします。
+* **Transforms** と **Job** : メディア コンテンツをエンコードまたは分析します。 例については、「[ファイルのストリーミング](stream-files-tutorial-with-api.md)」と「[分析](analyze-videos-tutorial-with-api.md)」を参照してください。
+* **ストリーミング ロケーター** : コンテンツをエンドユーザー デバイスに公開およびストリーミングします。
+* **ストリーミング ポリシー** および **コンテンツ キー ポリシー** : コンテンツ配信時のキーの配信とコンテンツ保護 (DRM) を構成します。
+* **ライブ イベント** および **ライブ出力** : ライブ ストリーミング コンテンツの取り込みとアーカイブを構成します。
+* **Asset** : メディア コンテンツの Azure Storage への格納と発行を行います。 
+* **ストリーミング エンドポイント** : ダイナミック パッケージ、暗号化、およびライブとオンデマンドの両方のメディア コンテンツのストリーミングを構成およびスケーリングします。
 
 ### <a name="known-issues"></a>既知の問題
 

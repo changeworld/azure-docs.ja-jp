@@ -1,15 +1,16 @@
 ---
 title: Azure Functions のネットワーク オプション
 description: Azure Functions で利用可能なすべてのネットワーク オプションの概要。
+author: jeffhollan
 ms.topic: conceptual
-ms.date: 4/11/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 271730e57a2d7ef8324420744b4bcd088b9809cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/27/2020
+ms.author: jehollan
+ms.openlocfilehash: 3a44efac274bf5c5d6cfc6a0f044ee89b479cbe6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530092"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897077"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -66,11 +67,30 @@ Azure Functions の仮想ネットワーク統合では、App Service Web アプ
 
 詳細については、「[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)」を参照してください。
 
-## <a name="restrict-your-storage-account-to-a-virtual-network"></a>お使いのストレージ アカウントを仮想ネットワークに制限する
+## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a>ストレージ アカウントを仮想ネットワークに制限する (プレビュー)
 
-関数アプリを作成するときは、BLOB、Queue、および Table Storage をサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 現在、このアカウントに対して仮想ネットワークの制限を使用することはできません。 関数アプリに使用しているストレージ アカウントに仮想ネットワーク サービス エンドポイントを構成すると、その構成によってアプリが中断されます。
+関数アプリを作成するときは、BLOB、Queue、および Table Storage をサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。  このストレージ アカウントは、サービス エンドポイントまたはプライベート エンドポイントで保護されているものに置き換えることができます。  現在、このプレビュー機能は、西ヨーロッパの Windows Premium プランでのみ機能します。  プライベート ネットワークに制限されたストレージ アカウントを使用して関数を設定するには、次のようにします。
 
-詳しくは、「[ストレージ アカウントの要件](./functions-create-function-app-portal.md#storage-account-requirements)」をご覧ください。
+> [!NOTE]
+> 現在、ストレージアカウントの制限は、西ヨーロッパで Windows を使用する Premium 関数に対してのみ機能します。
+
+1. サービス エンドポイントが有効になっていないストレージ アカウントを使用して関数を作成します。
+1. ご使用の仮想ネットワークに接続するように関数を構成します。
+1. 別のストレージ アカウントを作成または構成します。  これがサービス エンドポイントで保護され、関数に接続されるストレージ アカウントになります。
+1. セキュリティで保護されたストレージ アカウントに[ファイル共有を作成](../storage/files/storage-how-to-create-file-share.md#create-file-share)します。
+1. ストレージ アカウントのサービス エンドポイントまたはプライベート エンドポイントを有効にします。  
+    * サービス エンドポイントを使用する場合は、必ず関数アプリ専用のサブネットを有効にしてください。
+    * プライベート エンドポイントを使用している場合は、DNS レコードを作成し、[プライベート エンドポイントを使用](#azure-dns-private-zones)するようにアプリを構成する必要があります。  ストレージ アカウントには、`file` と `blob` のサブリソース用のプライベート エンドポイントが必要です。  Durable Functions のような特定の機能を使用する場合は、プライベート エンドポイント接続を介して `queue` と `table` にアクセスできる必要もあります。
+1. (省略可能) 関数アプリのストレージ アカウントから、セキュリティで保護されたストレージ アカウントとファイル共有に、ファイルと BLOB の内容をコピーします。
+1. このストレージ アカウントの接続文字列をコピーします。
+1. 関数アプリの **[構成]** の下の **[アプリケーションの設定]** を次のように更新します。
+    - `AzureWebJobsStorage` をセキュリティで保護されたストレージ アカウントの接続文字列にします。
+    - `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` をセキュリティで保護されたストレージ アカウントの接続文字列にします。
+    - `WEBSITE_CONTENTSHARE` をセキュリティで保護されたストレージ アカウントで作成されたファイル共有の名前にします。
+    - 名前が `WEBSITE_CONTENTOVERVNET` で値が `1` の新しい設定を作成します。
+1. アプリケーションの設定を保存します。  
+
+関数アプリが再起動され、セキュリティで保護されたストレージ アカウントに接続されるようになります。
 
 ## <a name="use-key-vault-references"></a>Key Vault 参照を使用する
 
@@ -87,7 +107,7 @@ Azure Key Vault 参照を使用すると、コードの変更を必要とせず�
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>仮想ネットワーク トリガーを使用した Premium プラン
 
-Premium プランを実行する場合は、仮想ネットワーク内で実行されているサービスに非 HTTP トリガー関数を接続できます。 これを行うには、関数アプリの仮想ネットワーク トリガーのサポートを有効にする必要があります。 **[Runtime Scale Monitoring]\(ランタイム スケールの監視\)** の設定は、[Azure portal](https://portal.azure.com) の **[構成]**  >  **[関数のランタイム設定]** にあります。
+Premium プランを実行する場合は、仮想ネットワーク内で実行されているサービスに非 HTTP トリガー関数を接続できます。 これを行うには、関数アプリの仮想ネットワーク トリガーのサポートを有効にする必要があります。 **[Runtime Scale Monitoring]\(ランタイム スケールの監視\)** の設定は、 [Azure portal](https://portal.azure.com) の **[構成]**  >  **[関数のランタイム設定]** にあります。
 
 :::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 
@@ -136,8 +156,8 @@ Premium プランまたは App Service プランの関数アプリを仮想ネ�
 ## <a name="automation"></a>オートメーション
 次の API では、リージョンでの仮想ネットワーク統合をプログラミングで管理できます。
 
-+ **Azure CLI**:[`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) コマンドを使用し、リージョンでの仮想ネットワーク統合を追加、一覧表示、または削除します。  
-+ **ARM テンプレート**:リージョンでの仮想ネットワーク統合は、Azure Resource Manager テンプレートを使用することで有効にできます。 完全な例については、[こちらの関数クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/) ページを参照してください。
++ **Azure CLI** : [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) コマンドを使用し、リージョンでの仮想ネットワーク統合を追加、一覧表示、または削除します。  
++ **ARM テンプレート** :リージョンでの仮想ネットワーク統合は、Azure Resource Manager テンプレートを使用することで有効にできます。 完全な例については、[こちらの関数クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/) ページを参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

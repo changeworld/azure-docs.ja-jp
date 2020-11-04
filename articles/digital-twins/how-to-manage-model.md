@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 06c4ac3be0e9d1021e64cf1a34bda94ed02c9982
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 399ae682028479f801b82b6273f7d1429cfa1b97
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102495"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494856"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Twins のモデルを管理する
 
-[**DigitalTwinsModels API**](how-to-use-apis-sdks.md)、 [.NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)、または [Azure Digital Twins CLI](how-to-use-cli.md) の使用について、Azure Digital Twins インスタンスで認識されている [モデル](concepts-models.md)を管理できます。 
+[**DigitalTwinsModels API**](/rest/api/digital-twins/dataplane/models)、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)、または [Azure Digital Twins CLI](how-to-use-cli.md) の使用について、Azure Digital Twins インスタンスで認識されている[モデル](concepts-models.md)を管理できます。 
 
 管理操作には、モデルのアップロード、検証、取得、および削除が含まれます。 
 
@@ -285,8 +285,6 @@ Azure Digital Twins ではこの状態を防ぐことができないため、モ
 ## <a name="manage-models-with-cli"></a>CLI を使用してモデルを管理する。
 
 モデルは、Azure Digital Twins CLI を使用して管理することもできます。 コマンドについては、" [*Azure Digital Twins CLI を使用する方法*](how-to-use-cli.md)" に関するページを参照してください。
-
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

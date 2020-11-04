@@ -10,12 +10,12 @@ ms.date: 08/12/2020
 ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: f25aae64e117452cd689b68c5478e7431d1a21bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1833a606f3dbbc9826858bac4f3ba056b5b7ad8a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249367"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369864"
 ---
 # <a name="hyperspace-an-indexing-subsystem-for-apache-spark"></a>Hyperspace:Apache Spark 用のインデックス作成サブシステム
 
@@ -410,7 +410,7 @@ FROM T
 WHERE Y = 2
 ```
 
-X にはインデックス付き列を指定でき、Y には付加列を指定できます。
+Y にはインデックス付き列を指定でき、X には付加列を指定できます。
 
 :::zone pivot = "programming-language-scala"
 

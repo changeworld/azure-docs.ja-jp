@@ -7,12 +7,12 @@ ms.date: 09/22/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6670f654685f8d5cdcaf55d2b1679738a57ecab4
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 958402e61f6dc81a3e6618dbcd4df4c8dd6b9ced
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042798"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793060"
 ---
 # <a name="how-to-connect-an--iot-plug-and-play-bridge-sample-running-on-linux-or-windows-to-iot-hub"></a>Linux または Windows 上で実行されている IoT プラグ アンド プレイ ブリッジのサンプルを IoT Hub に接続する方法
 
@@ -30,14 +30,14 @@ ms.locfileid: "92042798"
 
 このクイックスタートを Linux で完了するには、ご利用のローカルの Linux 環境に以下のソフトウェアをインストールする必要があります。
 
-`apt-get` コマンドを使用して、**GCC**、**Git**、**cmake**、および必要なすべての依存関係をインストールします。
+`apt-get` コマンドを使用して、 **GCC** 、 **Git** 、 **cmake** 、および必要なすべての依存関係をインストールします。
 
 ```sh
 sudo apt-get update
 sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
 ```
 
-`cmake` のバージョンが **2.8.12** より大きく、**GCC** のバージョンが **4.4.7** より大きいことを確認します。
+`cmake` のバージョンが **2.8.12** より大きく、 **GCC** のバージョンが **4.4.7** より大きいことを確認します。
 
 ```sh
 cmake --version
@@ -48,17 +48,17 @@ gcc --version
 
 Windows でこのクイックスタートを完了するには、ご利用のローカル Windows 環境に以下のソフトウェアをインストールします。
 
-* [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/)。Visual Studio を[インストール](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019)するときに、 **[C++ によるデスクトップ開発]** ワークロードを必ず含めてください。
+* [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/)。Visual Studio を [インストール](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019)するときに、 **[C++ によるデスクトップ開発]** ワークロードを必ず含めてください。
 * [Git](https://git-scm.com/download/).
 * [CMake](https://cmake.org/download/)。
 
 ### <a name="azure-iot-explorer"></a>Azure IoT エクスプローラー
 
-このクイックスタートのパート 2 でサンプル デバイスとやり取りするには、**Azure IoT エクスプローラー** ツールを使用します。 ご利用のオペレーティング システム用の [Azure IoT エクスプローラーの最新リリースをダウンロードしてインストール](./howto-use-iot-explorer.md)します。
+このクイックスタートのパート 2 でサンプル デバイスとやり取りするには、 **Azure IoT エクスプローラー** ツールを使用します。 ご利用のオペレーティング システム用の [Azure IoT エクスプローラーの最新リリースをダウンロードしてインストール](./howto-use-iot-explorer.md)します。
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
-次のコマンドを実行して、ご利用のハブに対する "_IoT Hub 接続文字列_" を取得します。 この接続文字列はメモしておいてください。このクイックスタートで後ほど使用します。
+次のコマンドを実行して、ご利用のハブに対する " _IoT Hub 接続文字列_ " を取得します。 この接続文字列はメモしておいてください。このクイックスタートで後ほど使用します。
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
@@ -67,7 +67,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 > [!TIP]
 > また、Azure IoT エクスプローラー ツールを使用して、IoT ハブ接続文字列を見つけることもできます。
 
-次のコマンドを実行して、ハブに追加したデバイスの "_デバイス接続文字列_" を取得します。 この接続文字列はメモしておいてください。このクイックスタートで後ほど使用します。
+次のコマンドを実行して、ハブに追加したデバイスの " _デバイス接続文字列_ " を取得します。 この接続文字列はメモしておいてください。このクイックスタートで後ほど使用します。
 
 ```azurecli-interactive
 az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
@@ -75,13 +75,13 @@ az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --
 
 ## <a name="view-the-model"></a>モデルの表示
 
-後のステップで Azure IoT エクスプローラーを使用して、IoT ハブへの接続時にデバイスを表示します。 Azure IoT エクスプローラーには、デバイスから送信される**モデル ID** と一致するモデル ファイルのローカル コピーが必要です。 モデル ファイルを使用すると、デバイスによって実装されるテレメトリ、プロパティ、およびコマンドを IoT エクスプローラーに表示できます。
+後のステップで Azure IoT エクスプローラーを使用して、IoT ハブへの接続時にデバイスを表示します。 Azure IoT エクスプローラーには、デバイスから送信される **モデル ID** と一致するモデル ファイルのローカル コピーが必要です。 モデル ファイルを使用すると、デバイスによって実装されるテレメトリ、プロパティ、およびコマンドを IoT エクスプローラーに表示できます。
 
 以下の手順でコードをダウンロードすると、`pnpbridge/docs/schema` フォルダーの下にサンプル モデル ファイルが含まれます。 Azure IoT エクスプローラーを準備するには:
 
-1. ローカル コンピューターに "*モデル*" という名前のフォルダーを作成します。
-1. [EnvironmentalSensor.json](https://aka.ms/iot-pnp-bridge-env-model) を表示し、JSON ファイルを "*モデル*" フォルダーに保存します
-1. [RootBridgeSampleDevice.json](https://aka.ms/iot-pnp-bridge-root-model) を表示し、JSON ファイルを "*モデル*" フォルダーに保存します。
+1. ローカル コンピューターに " *モデル* " という名前のフォルダーを作成します。
+1. [EnvironmentalSensor.json](https://aka.ms/iot-pnp-bridge-env-model) を表示し、JSON ファイルを " *モデル* " フォルダーに保存します
+1. [RootBridgeSampleDevice.json](https://aka.ms/iot-pnp-bridge-root-model) を表示し、JSON ファイルを " *モデル* " フォルダーに保存します。
 
 ## <a name="download-the-code"></a>コードのダウンロード
 
@@ -107,9 +107,13 @@ git submodule update --init --recursive
 
 IoT プラグ アンド プレイ ブリッジ リポジトリをコンピューターにクローンした後、クローンされたリポジトリの `pnpbridge/docs/schema` ディレクトリに移動します。ここに、[構成 JSON](https://aka.ms/iot-pnp-bridge-env-config) またはブリッジの環境センサー サンプルの `config.json` が見つかります。 構成ファイルの詳細については、[IoT プラグ アンド プレイ ブリッジの概念ドキュメント](concepts-iot-pnp-bridge.md)を参照してください。
 
-`root-_interface_model_id` フィールドには、デバイスのモデルを識別する IoT プラグ アンド プレイ モデル ID をコピーする必要があります。 この例では `dtmi:com:example:SampleDevice;1` です。 ' の `config.json` ファイル内の **pnp_bridge_parameters** ノードにある次のパラメーターを変更します。
+`root-_interface_model_id` フィールドには、デバイスのモデルを識別する IoT プラグ アンド プレイ モデル ID をコピーする必要があります。 この例では `dtmi:com:example:SampleDevice;1` です。 `config.json` ファイル内の **pnp_bridge_parameters** ノードにある次のパラメーターを変更します。
 
-  接続文字列を使用します (注: symmetric_key は、接続文字列の SAS キーと一致している必要があります)。
+* connection_string 
+* symmetric_key 
+
+>[!NOTE]
+> symmetric_key は、接続文字列の SAS キーと一致している必要があります。
 
   ```JSON
     {
@@ -126,7 +130,7 @@ IoT プラグ アンド プレイ ブリッジ リポジトリをコンピュー
   }
   ```
 
- 入力すると `config.json` ファイルは次のようになります。
+ 入力すると、`config.json` ファイルは次のようになります。
 
    ```JSON
     {
@@ -165,7 +169,7 @@ cd scripts/linux
 ```
 
 >[!TIP]
->Windows 上で、cmake コマンドによって生成されたソリューションを Visual Studio 2019 で開くことができます。 cmake ディレクトリ内の *azure_iot_pnp_bridge.sln* プロジェクト ファイルを開き、*pnpbridge_bin* プロジェクトをソリューションのスタートアップ プロジェクトとして設定します。 これで、Visual Studio でサンプルをビルドし、デバッグ モードで実行できるようになりました。
+>Windows 上で、cmake コマンドによって生成されたソリューションを Visual Studio 2019 で開くことができます。 cmake ディレクトリ内の *azure_iot_pnp_bridge.sln* プロジェクト ファイルを開き、 *pnpbridge_bin* プロジェクトをソリューションのスタートアップ プロジェクトとして設定します。 これで、Visual Studio でサンプルをビルドし、デバッグ モードで実行できるようになりました。
 
 ## <a name="start-the-iot-plug-and-play-bridge"></a>IoT プラグ アンド プレイ ブリッジの開始
 

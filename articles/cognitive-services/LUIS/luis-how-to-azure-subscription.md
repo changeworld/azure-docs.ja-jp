@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: adc0c253648ed7ae869a20b92c42e7f6478501b7
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: eecc93558625d3ae891ca589424aec218036adae
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151580"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744700"
 ---
 # <a name="create-luis-resources"></a>LUIS リソースの作成
 
@@ -29,7 +29,7 @@ LUIS では、次の 3 種類の Azure リソースと Azure 以外の 1 つの�
 
 |リソース|目的|Cognitive service `kind`|Cognitive service `type`|
 |--|--|--|--|
-|作成リソース|これにより、アプリケーションの作成、管理、トレーニング、テスト、および発行を行うことができます。 LUIS アプリの作成をプログラムによって、または LUIS ポータルから行う場合は、[LUIS オーサリング リソースを作成](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal)します。 まずは、Azure オーサリング リソースをアプリケーションにリンクできるようにするために、[LUIS アカウントを移行](luis-migration-authoring.md#what-is-migration)する必要があります。 [共同作成者ロール](#contributions-from-other-authors)にユーザーを割り当てることで、オーサリング リソースへのアクセス許可を制御することができます。 <br><br> LUIS オーサリング リソースで利用できるサービス レベルは次の 1 つです。<br> * **無料 F0 オーサリング リソース** 。これによって、100 万件の無料オーサリング トランザクションと 1,000 件のテスト用無料予測エンドポイント要求が毎月提供されます。 |`LUIS.Authoring`|`Cognitive Services`|
+|作成リソース|これにより、アプリケーションの作成、管理、トレーニング、テスト、および発行を行うことができます。 LUIS アプリの作成をプログラムによって、または LUIS ポータルから行う場合は、[LUIS オーサリング リソースを作成](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal)します。 まずは、Azure オーサリング リソースをアプリケーションにリンクできるようにするために、[LUIS アカウントを移行](luis-migration-authoring.md#what-is-migration)する必要があります。 [共同作成者ロール](#contributions-from-other-authors)にユーザーを割り当てることで、オーサリング リソースへのアクセス許可を制御することができます。 <br><br> LUIS オーサリング リソースで利用できるサービス レベルは、次の 1 つです。<br> * **無料 F0 オーサリング リソース** 。100 万件の無料オーサリング トランザクションと 1,000 件のテスト用無料予測エンドポイント要求が毎月提供されます。 |`LUIS.Authoring`|`Cognitive Services`|
 |予測リソース| LUIS アプリケーションを発行したら、予測リソースまたはキーを使用して、予測エンドポイント要求をクエリします。 クライアント アプリで要求する予測がオーサリングまたはスターター リソースによって提供される 1,000 件の要求を超える場合は、事前に LUIS 予測リソースを作成しておきます。 <br><br> 予測リソースで利用できるサービス レベルは次の 2 つです。<br> * **無料 F0 予測リソース** 。これによって、毎月 10,000 件の無料予測エンドポイント要求が提供されます。<br> * **標準 S0 予測リソース** 。これは有料のサービス レベルです。 [価格に関する詳細情報](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
 |スターターまたは試用版のリソース|これにより、アプリケーションの作成、管理、トレーニング、テスト、および発行を行うことができます。 最初に LUIS にサインアップするときにスターター リソース オプションを選択した場合は、これが既定で作成されます。 ただし、スタート キーは最終的に非推奨となるので、すべての LUIS ユーザーは[自分のアカウントを移行](luis-migration-authoring.md#what-is-migration)し、自分の LUIS アプリケーションをオーサリング リソースにリンクする必要があります。 オーサリング リソースの場合とは違い、このリソースによって、Azure ロールベースのアクセス制御のためのアクセス許可が付与されることはありません。 <br><br> オーサリング リソースと同様に、スターター リソースでも、100 万件の無料オーサリング トランザクションと 1,000 件のテスト用無料予測エンドポイント要求が提供されます。|-|Azure リソースではありません|
 |[Cognitive Service マルチサービスのリソース キー](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|LUIS およびその他のサポートされている Cognitive Services と共有される予測エンドポイント要求に対するクエリを実行します。|`CognitiveServices`|`Cognitive Services`|

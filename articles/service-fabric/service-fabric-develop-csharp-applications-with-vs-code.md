@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 1d7478e6b81ef2c53ca6194197336e91d3ff250b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fbd523a38b3c4860316e45b8b7c03a17de19499
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75614525"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678337"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Visual Studio Code を使用して C# Service Fabric アプリケーションを開発する
 
@@ -49,7 +49,7 @@ sudo code . --user-data-dir='.'
 ![ワークスペース内のカウンター サービス アプリケーション](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-application-in-workspace.png)
 
 ## <a name="build-the-application"></a>アプリケーションのビルド
-1. (Ctrl + Shift + P キー) を押して VS Code で**コマンド パレット**を開きます。
+1. (Ctrl + Shift + P キー) を押して VS Code で **コマンド パレット** を開きます。
 2. **[Service Fabric:Build Application]\(Service Fabric: アプリケーションのビルド\)** コマンドを探して選択します。 ビルドの出力は統合ターミナルに送信されます。
 
    ![VS Code の [Build Application]\(アプリケーションのビルド\) コマンド](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-build-application.png)
@@ -57,7 +57,7 @@ sudo code . --user-data-dir='.'
 ## <a name="deploy-the-application-to-the-local-cluster"></a>アプリケーションをローカル クラスターにデプロイする
 アプリケーションをビルドしたら、ローカル クラスターにデプロイできます。 
 
-1. **コマンド パレット**から **[Service Fabric:Deploy Application (Localhost)]\(Service Fabric: アプリケーションのデプロイ (Localhost)\)** コマンドを選択します。 インストール プロセスの出力は統合ターミナルに送信されます。
+1. **コマンド パレット** から **[Service Fabric:Deploy Application (Localhost)]\(Service Fabric: アプリケーションのデプロイ (Localhost)\)** コマンドを選択します。 インストール プロセスの出力は統合ターミナルに送信されます。
 
    ![VS Code の [Deploy Application]\(アプリケーションのデプロイ) コマンド](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
@@ -74,7 +74,7 @@ sudo code . --user-data-dir='.'
 
 1. 上記の手順を使用してアプリケーションをビルドしたことを確認します。 生成された構成ファイル `Cloud.json` を、発行先となるリモート クラスターの詳細で更新します。
 
-2. **コマンド パレット**から **Service Fabric: Publish Application\(Service Fabric: アプリケーションの発行\) コマンド**を選択します。 インストール プロセスの出力は統合ターミナルに送信されます。
+2. **コマンド パレット** から **Service Fabric: Publish Application\(Service Fabric: アプリケーションの発行\) コマンド** を選択します。 インストール プロセスの出力は統合ターミナルに送信されます。
 
    ![VS Code のアプリケーションの発行コマンド](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
 
@@ -85,13 +85,13 @@ VS Code でアプリケーションをデバッグする場合、ローカル �
 
 ブレークポイントとデバッグを設定するには、次の手順を実行します。
 1. エクスプローラーで */src/CounterServiceApplication/CounterService/CounterService.cs* ファイルを開き、`RunAsync` メソッド内の 62 行目にブレークポイントを設定します。
-3. VS Code で**アクティビティ バー**の [デバッグ] アイコンをクリックして、デバッガー ビューを開きます。 デバッガー ビューの上部にある歯車アイコンをクリックし、ドロップダウン メニューから **[.NET Core]** を選択します。 launch.json ファイルが開きます。 このファイルを複製できます。 実行ボタン (緑色の矢印) の横にあるデバッグ設定メニューに構成の選択肢が表示されます。
+3. VS Code で **アクティビティ バー** の [デバッグ] アイコンをクリックして、デバッガー ビューを開きます。 デバッガー ビューの上部にある歯車アイコンをクリックし、ドロップダウン メニューから **[.NET Core]** を選択します。 launch.json ファイルが開きます。 このファイルを複製できます。 実行ボタン (緑色の矢印) の横にあるデバッグ設定メニューに構成の選択肢が表示されます。
 
    ![VS Code ワークスペースの [デバッグ] アイコン](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-icon-workspace.png)
 
 2. デバッグの構成メニューから **[.NET Core Attach]\(.NET Core のアタッチ\)** を選択します。
 
-   ![VS Code ワークスペースの [デバッグ] アイコン](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
+   ![[デバッグ構成] メニューで選択されている .NET Core Attach を示すスクリーンショット。](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
 
 3. ブラウザーで Service Fabric Explorer (http:\//localhost:19080/Explorer) を開きます。 **[アプリケーション]** をクリックし、ドリルダウンして CounterService が実行されているプライマリ ノードを特定します。 以下の画像では、CounterService のプライマリ ノードはノード 0 です。
 

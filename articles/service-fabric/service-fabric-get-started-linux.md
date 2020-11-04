@@ -4,12 +4,12 @@ description: Linux にランタイムと SDK をインストールし、ロー�
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: f8639287ea65347319cb438a5ff6e8c96c8279e1
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 39ed4a394a54112c03145c0d481e5459ecbf6d8b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168411"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675279"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -17,9 +17,9 @@ ms.locfileid: "92168411"
 > * [Linux](service-fabric-get-started-linux.md)
 > * [Mac OS X](service-fabric-get-started-mac.md)
 
-Linux の開発用コンピューターに (Azure Service Fabric アプリケーション)[service-fabric-application-model.md] をデプロイして実行するには、ランタイムと共通 SDK をインストールします。 また、必要に応じて Java および .NET Core デプロイ用 SDK をインストールすることもできます。 
+Linux の開発コンピューターに [Azure Service Fabric アプリケーション](service-fabric-application-model.md) をデプロイして実行するには、ランタイムと共通 SDK をインストールする必要があります。 また、必要に応じて Java および .NET Core デプロイ用 SDK をインストールすることもできます。 
 
-この記事の手順では、Linux にネイティブにインストールするか、(Service Fabric OneBox コンテナー イメージ)[https://hub.docker.com/_/microsoft-service-fabric-onebox ] (つまり、`mcr.microsoft.com/service-fabric/onebox:u18` ) を使用することを想定しています。
+この記事の手順では、Linux にネイティブにインストールするか、[Service Fabric OneBox コンテナー イメージ](https://hub.docker.com/_/microsoft-service-fabric-onebox) (つまり、`mcr.microsoft.com/service-fabric/onebox:u18`) を使用することを想定しています。
 
 Azure Service Fabric コマンド ライン インターフェイス (CLI) を使用して、クラウドやオンプレミスでホストされている Service Fabric のエンティティを管理することができます。 CLI をインストールする方法については、[Service Fabric CLI のセットアップ](./service-fabric-cli.md)に関するページを参照してください。
 
