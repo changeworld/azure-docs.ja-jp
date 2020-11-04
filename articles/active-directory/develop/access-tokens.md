@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/18/2020
+ms.date: 10/26/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: c59dbe9464e70c1a071b64fabf91ce56f409d8d7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ee8ea874ba8133216bf5a28587f841d3b7cfa2ed
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258523"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740158"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft ID プラットフォーム アクセス トークン
 
@@ -31,8 +31,9 @@ ms.locfileid: "91258523"
 リソースでアクセス トークン内のクレームを検証して使用する方法については、以下のセクションをご覧ください。
 
 > [!IMPORTANT]
-> アクセス トークンは、トークンの*対象ユーザー*、つまりそのトークン内のスコープを所有するアプリケーションに基づいて作成されます。  これは、[アプリ マニフェスト](reference-app-manifest.md#manifest-reference)内の `accessTokenAcceptedVersion` を `2` に設定しているリソースにより、v1.0 エンドポイントを呼び出しているクライアントがどのように v2.0 アクセス トークンを受信できるかを示しています。  同様に、これはクライアントのアクセス トークンの[省略可能な要求](active-directory-optional-claims.md)を変更しても、リソースによって所有される `user.read` に対してトークンが要求されたときに受信されるアクセス トークンが変更されない理由でもあります。
-> 同じ理由で、個人アカウント (hotmail.com や outlook.com など) によるクライアント アプリケーションをテストしたときに、クライアントが受け取ったアクセス トークンが不透明型の文字列であることがわかります。 これは、アクセス対象のリソースが、暗号化されていてクライアントが認識できない従来の MSA (Microsoft アカウント) チケットを要求したためです。
+> アクセス トークンは、トークンの *対象ユーザー* 、つまりそのトークン内のスコープを所有するアプリケーションに基づいて作成されます。  これは、[アプリ マニフェスト](reference-app-manifest.md#manifest-reference)内の `accessTokenAcceptedVersion` を `2` に設定しているリソースにより、v1.0 エンドポイントを呼び出しているクライアントがどのように v2.0 アクセス トークンを受信できるかを示しています。  同様に、これはクライアントのアクセス トークンの[省略可能な要求](active-directory-optional-claims.md)を変更しても、リソースによって所有される `user.read` に対してトークンが要求されたときに受信されるアクセス トークンが変更されない理由でもあります。
+>
+> 同じ理由で、個人アカウント (hotmail.com や outlook.com など) をサポートする Microsoft API を使用してクライアント アプリケーションをテストしたときに、クライアントが受け取ったアクセス トークンが不透明型の文字列であることがわかります。 これは、アクセス対象のリソースが、暗号化されたトークンを使用しており、クライアントによって認識できないためです。  これは想定されているものであり、アプリの問題ではありません。クライアント アプリは、アクセス トークンの形式に依存しないようにしてください。 
 
 ## <a name="sample-tokens"></a>サンプル トークン
 
@@ -58,7 +59,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEps
 
 JWT (JSON Web トークン) は 3 つの部分に分かれています。
 
-* **ヘッダー** - トークンの種類や署名方法に関する情報など、[トークンの検証](#validating-tokens)方法に関する情報が提供されます。
+* **ヘッダー** - トークンの種類や署名方法に関する情報など、 [トークンの検証](#validating-tokens)方法に関する情報が提供されます。
 * **ペイロード** - サービスを呼び出そうとしているユーザーまたはアプリに関する重要なデータがすべて含まれています。
 * **署名** - トークンの検証に使用される原材料です。
 
@@ -100,10 +101,10 @@ JWT (JSON Web トークン) は 3 つの部分に分かれています。
 | `name` | String | トークンのサブジェクトを識別する、人間が判読できる値を提供します。 この値は、一意であるとは限らず、変更可能であり、表示目的でのみ使用されます。 この要求を受け取るには、 `profile` スコープが必要です。 |
 | `scp` | 文字列、スコープのスペース区切りリスト | クライアント アプリケーションが同意を要求し、同意を得た、アプリケーションによって公開されているスコープのセット。 アプリでは、これらのスコープがアプリによって公開されている有効なスコープであることを確認し、これらのスコープの値に基づいて承認を決定する必要があります。 [ユーザー トークン](#user-and-application-tokens)にのみ含まれます。 |
 | `roles` | 文字列の配列、アクセス許可の一覧 | 要求元のアプリケーションに呼び出しのアクセス許可が付与されている、アプリケーションまたはユーザーによって公開されているアクセス許可のセット。 [アプリケーション トークン](#user-and-application-tokens)では、これはユーザー スコープの代わりにクライアント資格情報フロー ([v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)、[v2.0](v2-oauth2-client-creds-grant-flow.md)) で使用されます。  [ユーザー トークン](#user-and-application-tokens)では、これにはターゲット アプリケーションでユーザーに割り当てられたロールが設定されます。 |
-| `wids` | [RoleTemplateID](../users-groups-roles/directory-assign-admin-roles.md#role-template-ids) GUID の配列 | [管理者ロール ページ](../users-groups-roles/directory-assign-admin-roles.md#role-template-ids)に存在するロールのセクションから、このユーザーに割り当てられたテナント全体のロールを示します。  この要求は、[アプリケーション マニフェスト](reference-app-manifest.md)の `groupMembershipClaims` プロパティを介して、アプリケーションごとに構成されます。  これを "All" または "DirectoryRole" に設定することが必要です。  トークンの長さの問題のため、暗黙的フローを介して取得されたトークンには存在しない可能性があります。 |
+| `wids` | [RoleTemplateID](../roles/permissions-reference.md#role-template-ids) GUID の配列 | [管理者ロール ページ](../roles/permissions-reference.md#role-template-ids)に存在するロールのセクションから、このユーザーに割り当てられたテナント全体のロールを示します。  この要求は、[アプリケーション マニフェスト](reference-app-manifest.md)の `groupMembershipClaims` プロパティを介して、アプリケーションごとに構成されます。  これを "All" または "DirectoryRole" に設定することが必要です。  トークンの長さの問題のため、暗黙的フローを介して取得されたトークンには存在しない可能性があります。 |
 | `groups` | GUID の JSON 配列 | サブジェクトのグループ メンバーシップを表すオブジェクト ID です。 これらの値は一意 (「オブジェクト ID」を参照) であり、アクセスの管理 (リソースへのアクセスを承認するなど) に安全に使用できます。 groups 要求に含まれるグループは、[アプリケーション マニフェスト](reference-app-manifest.md)の `groupMembershipClaims` プロパティを使用してアプリケーションごとに構成されます。 値が null の場合はすべてのグループが除外され、値が "SecurityGroup" の場合は Active Directory セキュリティ グループのメンバーシップのみが含まれ、値が ”All” の場合はセキュリティ グループと Microsoft 365 配布リストの両方が含まれます。 <br><br>暗黙的な許可での `groups` 要求の使用の詳細については、以下の `hasgroups` 要求を参照してください。 <br>他のフローでは、ユーザーが属するグループの数が上限 (SAML の場合は 150、JWT の場合は 200) を超えた場合、ユーザーのグループのリストを含む Microsoft Graph エンドポイントを参照する要求ソースに超過要求が追加されます。 |
 | `hasgroups` | Boolean | 存在する場合、常に `true` であり、ユーザーが 1 つ以上のグループに属していることを示します。 すべてのグループ要求で URL 長の制限 (現在は 6 以上のグループ) を超えて URI フラグメントが拡張された場合、暗黙的な許可フローの JWT で `groups` 要求の代わりに使用されます。 クライアントが Microsoft Graph API を使用して、ユーザーのグループを決定する必要があることを示します (`https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects`)。 |
-| `groups:src1` | JSON オブジェクト | 長さは制限されていないが (上記 `hasgroups` を参照)、トークンには大きすぎるトークン要求の場合、ユーザーのすべてのグループ リストへのリンクが含まれます。 SAML では `groups` 要求の代わりに新しい要求として、JWT では分散要求として使用されます。 <br><br>**JWT 値の例**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
+| `groups:src1` | JSON オブジェクト | 長さは制限されていないが (上記 `hasgroups` を参照)、トークンには大きすぎるトークン要求の場合、ユーザーのすべてのグループ リストへのリンクが含まれます。 SAML では `groups` 要求の代わりに新しい要求として、JWT では分散要求として使用されます。 <br><br>**JWT 値の例** : <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
 | `sub` | String | トークンが情報をアサートするプリンシパルです (アプリのユーザーなど)。 この値は変更不可で、再割り当ても再利用もできません。 そのため、この値を使用すると、トークンを使用してリソースにアクセスする場合などに安全に承認チェックができます。また、データベース テーブルのキーとして使用することもできます。 サブジェクトは、Azure AD が発行するトークン内に常に存在するため、汎用性のある承認システムでこの値を使用することをお勧めします。 ただし、サブジェクトはペアワイズ識別子で、特定のアプリケーション ID に一意です。 そのため、1 人のユーザーが 2 つの異なるクライアント ID を使用して 2 つの異なるアプリにサインインすると、そのアプリは、サブジェクト要求に対して 2 つの異なる値を受け取ることになります。 この動作が求められているかどうかは、アーキテクチャやプライバシーの要件によって異なります。 `oid` 要求 (テナント内のアプリ全体で同じままです) も参照してください。 |
 | `oid` | 文字列、GUID | Microsoft ID プラットフォーム (ここではユーザー アカウント) におけるオブジェクトの変更不可の識別子です。 承認チェックの安全に実行するとき、また、データベース テーブルのキーとして使用することもできます。 この ID によって、複数のアプリケーションでユーザーが一意に識別されます。同じユーザーにサインインする 2 つの異なるアプリケーションは `oid` 要求で同じ値を受け取ります。 そのため、Microsoft Graph などの Microsoft オンライン サービスに対してクエリを実行するときに `oid` を使用できます。 Microsoft Graph は、この ID を、指定された[ユーザー アカウント](/graph/api/resources/user)の `id` プロパティとして返します。 `oid` では複数のアプリがユーザーを関連付けることができるため、この要求を受け取るには、`profile` スコープが必要です。 1 人のユーザーが複数のテナントに存在する場合、そのユーザーのオブジェクト ID はテナントごとに異なります。つまり、ユーザーは、同じ資格情報で各アカウントにログインしても、異なるアカウントと見なされます。 |
 | `tid` | 文字列、GUID | ユーザーが属している Azure AD テナントを表します。 職場または学校アカウントの場合、GUID はユーザーが属している組織の不変のテナント ID です。 個人アカウントでは、この値は `9188040d-6c67-4c5b-b112-36a304b66dad` です。 この要求を受け取るには、 `profile` スコープが必要です。 |
@@ -177,7 +178,7 @@ Azure AD ミドルウェアにはアクセス トークンを検証するため�
 
 ### <a name="validating-the-signature"></a>署名の検証
 
-JWT には 3 つのセグメントがあり、 `.` 文字で区切られています。 1 番目のセグメントは**ヘッダー**、2 番目は**本文**、3 番目は**署名**と呼ばれます。 署名セグメントを使用してトークンの信頼性を検証し、アプリで信頼できることを確認できます。
+JWT には 3 つのセグメントがあり、 `.` 文字で区切られています。 1 番目のセグメントは **ヘッダー** 、2 番目は **本文** 、3 番目は **署名** と呼ばれます。 署名セグメントを使用してトークンの信頼性を検証し、アプリで信頼できることを確認できます。
 
 Azure AD によって発行されるトークンは、RS256 などの業界標準の非対称暗号アルゴリズムを使用して署名されます。 JWT のヘッダーには、トークンの署名に使用されたキーと暗号方法に関する情報が含まれます。
 
@@ -268,7 +269,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 #### <a name="non-password-based"></a>パスワードに基づかない
 
-"*パスワードに基づかない*" ログインは、ユーザーがそれを取得する際にパスワードを入力しないことを意味します。 パスワードに基づかないログインの例を次に示します。
+" *パスワードに基づかない* " ログインは、ユーザーがそれを取得する際にパスワードを入力しないことを意味します。 パスワードに基づかないログインの例を次に示します。
 
 - 顔を使用する Windows Hello
 - FIDO2 キー

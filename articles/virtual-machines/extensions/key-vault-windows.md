@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 741f1ba60a5824654737558d9d977333d3911f45
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 78231fa5cc6e5061ab3e2b26faf97da76da83b32
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201683"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427904"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows 用の Key Vault 仮想マシン拡張機能
 
@@ -26,6 +26,8 @@ Key Vault VM 拡張機能では、以下のバージョンの Windows がサポ�
 - Windows Server 2019
 - Windows Server 2016
 - Windows Server 2012
+
+Key Vault VM 拡張機能は、Azure で使用するために、Windows Server 2019 Core インストールを使用してアップロードされ、特殊化されたイメージに変換されたカスタムローカル VM でもサポートされています。
 
 ### <a name="supported-certificate-content-types"></a>サポートされている証明書の内容の種類
 
@@ -59,7 +61,7 @@ Key Vault VM 拡張機能では、以下のバージョンの Windows がサポ�
         "secretsManagementSettings": {
           "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
           "certificateStoreName": <certificate store name, e.g.: "MY">,
-          "linkOnRenewal": <Only Windows. This feature enables auto-rotation of SSL certificates, without necessitating a re-deployment or binding.  e.g.: false>,
+          "linkOnRenewal": <Only Windows. This feature ensures s-channel binding when certificate renews, without necessitating a re-deployment.  e.g.: false>,
           "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
           "requireInitialSync": <initial synchronization of certificates e..g: true>,
           "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
@@ -194,9 +196,9 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
     
     ```azurecli
        # Start the deployment
-         az vm extension set -n "KeyVaultForWindows" `
+         az vm extension set -name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         -g "<resourcegroup>" `
+         -resource-group "<resourcegroup>" `
          --vm-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCerts> \"] }}'
     ```
@@ -226,7 +228,7 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
 ### <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 * 設定できる observedCertificates の数に制限はありますか?
-  いいえ。Key Vault VM 拡張機能には、observedCertificates の数に関する制限はありません。
+  いいえ。Key Vault VM 拡張機能には、observedCertificates の数に制限はありません。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 ```powershell

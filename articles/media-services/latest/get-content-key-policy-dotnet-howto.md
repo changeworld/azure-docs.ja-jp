@@ -12,18 +12,18 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 7f46c77d463873a5cdd5d8c4ac1b28f1b7d0b9eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7107a2acdc0ca430797245125ca903f7414908da
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89298999"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427072"
 ---
 # <a name="get-a-signing-key-from-the-existing-policy"></a>既存のポリシーから署名キーを取得する
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-v3 API の主要な設計原則の 1 つは、API の安全性の向上です。 v3 API シリーズは、**Get** または **List** 操作でシークレットまたは資格情報を返しません。 詳細については、次を参照してください。詳細については、[RBAC と Media Services アカウント](rbac-overview.md)に関するページをご覧ください。
+v3 API の主要な設計原則の 1 つは、API の安全性の向上です。 v3 API シリーズは、 **Get** または **List** 操作でシークレットまたは資格情報を返しません。 詳細については、次を参照してください。詳細については、[Azure RBAC と Media Services アカウント](rbac-overview.md)に関するページをご覧ください。
 
 この記事の例では、.NET を使用して既存のポリシーから署名キーを取得する方法を示します。 
  

@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 1836e6fc1c29e74bceba62bbeb40ce9cc5831895
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 629c27602df14c0b35e2063d8db2d0b13bbff99a
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147443"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635900"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションとデリバリー
 
@@ -26,9 +26,9 @@ ms.locfileid: "92147443"
 
 継続的インテグレーションは、コードベースに対して行われた変更を、できるだけ早く自動的にテストするプラクティスです。  継続的デリバリーは、継続的インテグレーションの間に発生したテストに続けて、変更をステージングまたは実稼働システムにプッシュします。
 
-Azure Data Factory では、継続的インテグレーションと継続的デリバリー (CI/CD) とは、Data Factory パイプラインをある環境 (開発、テスト、運用) から別の環境に移動することを意味します。 Azure Data Factory では [Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)を活用し、さまざまな ADF エンティティ (パイプライン、データセット、データ フローなど) の構成を保存します。 データ ファクトリを別の環境に昇格させる手法が 2 つ提案されています。
+Azure Data Factory では、継続的インテグレーションと継続的デリバリー (CI/CD) とは、Data Factory パイプラインをある環境 (開発、テスト、運用) から別の環境に移動することを意味します。 Azure Data Factory では [Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)を活用し、さまざまな ADF エンティティ (パイプライン、データセット、データ フローなど) の構成を保存します。 データ ファクトリを別の環境に昇格させる手法が 2 つ提案されています。
 
--    Data Factory と [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) の統合を利用した自動化されたデプロイ
+-    Data Factory と [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) の統合を利用した自動化されたデプロイ
 -    Data Factory UX と Azure Resource Manager の統合を利用した Resource Manager テンプレートの手動アップロード。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -62,11 +62,11 @@ Azure Repos Git で構成された Azure Data Factory での CI/CD のライフ�
 
 ### <a name="requirements"></a>必要条件
 
--    [Azure Resource Manager サービス エンドポイント](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager)を使用して Visual Studio Team Foundation Server または Azure Repos にリンクされた Azure サブスクリプション。
+-   [Azure Resource Manager サービス エンドポイント](/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager)を使用して Visual Studio Team Foundation Server または Azure Repos にリンクされた Azure サブスクリプション。
 
 -   Azure Repos Git 統合で構成されたデータ ファクトリ。
 
--   各環境用のシークレットを格納する  [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。
+-   各環境用のシークレットを格納する [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。
 
 ### <a name="set-up-an-azure-pipelines-release"></a>Azure Pipelines リリースをセットアップする
 
@@ -115,7 +115,7 @@ Azure Repos Git で構成された Azure Data Factory での CI/CD のライフ�
 
 1.  リリース パイプラインを保存します。
 
-1. リリースをトリガーするには、 **[Create release]\(リリースの作成\)** を選択します。 リリースの作成を自動化するには、[Azure DevOps のリリース トリガー](https://docs.microsoft.com/azure/devops/pipelines/release/triggers?view=azure-devops)に関するページを参照してください。
+1. リリースをトリガーするには、 **[Create release]\(リリースの作成\)** を選択します。 リリースの作成を自動化するには、[Azure DevOps のリリース トリガー](/azure/devops/pipelines/release/triggers?view=azure-devops)に関するページを参照してください。
 
    ![[Create release]\(リリースの作成\) の選択](media/continuous-integration-deployment/continuous-integration-image10.png)
 
@@ -151,7 +151,7 @@ Azure Resource Manager テンプレートに渡すシークレットがある場
 
     パラメーター ファイルも発行ブランチ内に存在する必要があります。
 
-1. 前のセクションで説明されている Azure Resource Manager デプロイ タスクの前に、[Azure Key Vault タスク](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault)を追加します。
+1. 前のセクションで説明されている Azure Resource Manager デプロイ タスクの前に、[Azure Key Vault タスク](/azure/devops/pipelines/tasks/deploy/azure-key-vault)を追加します。
 
     1.  **[タスク]** タブで、新しいタスクを作成します。 **Azure Key Vault** を検索して追加します。
 
@@ -228,14 +228,14 @@ Resource Manager テンプレートをエクスポートすると、Data Factory
 カスタム パラメーター ファイル **arm-template-parameters-definition.json** を作成する際のいくつかのガイドラインを次に示します。 ファイルは、(トリガー、パイプライン、リンクされたサービス、データセット、統合ランタイム、データ フロー) エンティティの種類ごとのセクションで構成されています。
 
 * 関連するエンティティ型の下にプロパティ パスを入力します。
-* プロパティ名を  `*` に設定すると、その下 (再帰的にではなく、最初のレベルまでのみ) にあるすべてのプロパティをパラメーター化することを指示します。 また、この構成に例外を指定することもできます。
-* プロパティの値を文字列として設定すると、プロパティをパラメーター化することを指示します。  `<action>:<name>:<stype>` の形式を使用します。
-   *  `<action>`  には、次のいずれかの文字を指定できます。
-      * `=`  は、パラメーターの既定値として現在の値を保持することを意味します。
-      * `-`  は、パラメーターの既定値を保持しないことを意味します。
-      * `|`  は、接続文字列またはキーに対する Azure Key Vault からのシークレットの特殊なケースです。
-   * `<name>`  は、パラメーターの名前です。 空白の場合は、プロパティの名前になります。 値が `-` 文字で始まる場合、名前は短縮されます。 たとえば、`AzureStorage1_properties_typeProperties_connectionString` は `AzureStorage1_connectionString` に短縮されます。
-   * `<stype>`  は、パラメーターの型です。  `<stype>`  が空白の場合、既定の型は `string` です。 サポートされる値は `string`、`bool`、`number`、`object`、`securestring` です。
+* プロパティ名を `*` に設定すると、その下 (再帰的にではなく、最初のレベルまでのみ) にあるすべてのプロパティをパラメーター化することを指示します。 また、この構成に例外を指定することもできます。
+* プロパティの値を文字列として設定すると、プロパティをパラメーター化することを指示します。 「`<action>:<name>:<stype>`」の形式を使用します。
+   *  `<action>` には、次のいずれかの文字を指定できます。
+      * `=` は、パラメーターの既定値として現在の値を保持することを意味します。
+      * `-` は、パラメーターの既定値を保持しないことを意味します。
+      * `|` は、接続文字列またはキーに対する Azure Key Vault からのシークレットの特殊なケースです。
+   * `<name>` は、パラメーターの名前です。 空白の場合は、プロパティの名前になります。 値が `-` 文字で始まる場合、名前は短縮されます。 たとえば、`AzureStorage1_properties_typeProperties_connectionString` は `AzureStorage1_connectionString` に短縮されます。
+   * `<stype>` は、パラメーターの型です。 `<stype>` が空白の場合、既定の型は `string` です。 サポートされる値は `string`、`bool`、`number`、`object`、`securestring` です。
 * 定義ファイルに配列を指定すると、テンプレート内の一致するプロパティが配列であることを指示します。 Data Factory は、配列の統合ランタイム オブジェクトに指定された定義を使用することで、配列内のすべてのオブジェクトを反復処理します。 2 番目のオブジェクトである文字列は、各反復処理のパラメーターの名前として使用されるプロパティ名です。
 * 定義をリソース インスタンスに固有にすることはできません。 定義はその型のすべてのリソースに適用されます。
 * 既定では、Key Vault シークレットなどのセキュリティで保護されたすべての文字列と、接続文字列、キー、トークンなどのセキュリティで保護された文字列がパラメーター化されます。
@@ -603,7 +603,7 @@ Git が構成されている場合は、リンクされたテンプレートが�
 
 通常、リンクされた Resource Manager テンプレートは、マスター テンプレートと、マスターにリンクされた一連の子テンプレートで構成されます。 親テンプレートは ArmTemplate_master.json という名前になり、子テンプレートには、ArmTemplate_0. json、ArmTemplate_1.json といったパターンで名前が付けられます。 
 
-完全な Resource Manager テンプレートではなく、リンクされたテンプレートを使用するには、ArmTemplateForFactory.json (完全な Resource Manager テンプレート) ではなく ArmTemplate_master.json をポイントするように CI/CD タスクを更新します。 Resource Manager では、リンクされたテンプレートをストレージ アカウントにアップロードして、デプロイ時に Azure によってアクセスできるようにする必要もあります。 詳細については、[リンクされた Resource Manager テンプレートの VSTS を使用したデプロイ](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/)に関する記事を参照してください。
+完全な Resource Manager テンプレートではなく、リンクされたテンプレートを使用するには、ArmTemplateForFactory.json (完全な Resource Manager テンプレート) ではなく ArmTemplate_master.json をポイントするように CI/CD タスクを更新します。 Resource Manager では、リンクされたテンプレートをストレージ アカウントにアップロードして、デプロイ時に Azure によってアクセスできるようにする必要もあります。 詳細については、[リンクされた Resource Manager テンプレートの VSTS を使用したデプロイ](/archive/blogs/najib/deploying-linked-arm-templates-with-vsts)に関する記事を参照してください。
 
 Data Factory のスクリプトは、必ず CI/CD パイプラインのデプロイ タスクの前後に追加してください。
 

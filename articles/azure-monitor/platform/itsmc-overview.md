@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 0a632e8c57ab57869e4454b0d6a4018de6bd5548
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c18a904f0ec0f100312ee3fafb53038bd2ccf19
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613766"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745675"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
 
@@ -65,7 +65,7 @@ ITSM Connector の使用を開始するには、次の手順を使用します�
    >[!NOTE]
    >Microsoft Operations Management Suite (OMS) から Azure Monitor への現在進行中の移行の一環として、OMS ワークスペースは Log Analytics ワークスペースと呼ばれるようになります。
 
-5. **Create** をクリックしてください。
+5. **[OK]** をクリックします。
 
 ソリューション リソースがデプロイされると、ウィンドウの右上に通知が表示されます。
 
@@ -85,7 +85,7 @@ ITSM Connector の使用を開始するには、次の手順を使用します�
 
 ITSM ツールの準備が完了したら、次の手順に従って接続を作成します。
 
-1. **[すべてのリソース]** に移動し、**ServiceDesk(YourWorkspaceName)** を探します。
+1. **[すべてのリソース]** に移動し、 **ServiceDesk(YourWorkspaceName)** を探します。
 2. 左側のウィンドウの **[ワークスペースのデータ ソース]** で、 **[ITSM 接続]** をクリックします。
    ![ITSM 接続](media/itsmc-overview/itsm-connections.png)
 
@@ -106,9 +106,13 @@ ITSM ツールの準備が完了したら、次の手順に従って接続を作
 ## <a name="using-the-solution"></a>ソリューションの使用
    ITSM Connector ソリューションを使用すると、Azure アラート、Log Analytics アラート、および Log Analytics ログ レコードから作業項目を作成できます。
 
+## <a name="template-definitions"></a>テンプレート定義
+   ITSM ツールによって定義されているテンプレートを使用できる作業項目の種類があります。
+テンプレートを使用すると、ユーザーはアクション グループの一部として定義されている固定値に基づいて自動的に入力されるフィールドを定義できます。 テンプレートの定義は ITSM ツールで実行します。
+      
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>Azure アラートから ITSM 作業項目を作成する
 
-ITSM 接続を作成したら、**アクション グループ**の **ITSM アクション**を使用して、Azure アラートに基づいて ITSM ツールで作業項目を作成できます。
+ITSM 接続を作成したら、 **アクション グループ** の **ITSM アクション** を使用して、Azure アラートに基づいて ITSM ツールで作業項目を作成できます。
 
 アクション グループでは、Azure アラートのアクションをトリガーする再利用可能なモジュール化された方法が提供されます。 Azure Portal で、アクション グループと、メトリック アラート、アクティビティ ログ アラート、および Azure Log Analytics アラートを使用できます。
 
@@ -118,23 +122,29 @@ ITSM 接続を作成したら、**アクション グループ**の **ITSM ア�
 
 次の手順に従います。
 
-1. Azure Portal で、 **[監視]** をクリックします。
-2. 左側のウィンドウで、 **[アクション グループ]** をクリックします。 **[アクション グループの追加]** ウィンドウが表示されます。
+1. Azure portal で、 **[アラート]** をクリックします。
+2. 上部のウィンドウで、 **[アクションの管理]** をクリックします。 **[アクション グループの追加]** ウィンドウが表示されます。
 
-    ![Action Groups](media/itsmc-overview/action-groups.png)
+    [![Action Groups](media/itsmc-overview/action-groups-selection.png)](media/itsmc-overview/action-groups-selection-big.png)
 
-3. アクション グループの**名前**と**短い名前**を入力します。 アクション グループを作成する**リソース グループ**と**サブスクリプション**を選択します。
+3. アクション グループを作成する **サブスクリプション** と **リソース グループ** を選択します。 アクション グループの **アクション グループ名** と **表示名** を指定します。 **[次へ: 通知]** をクリックします。
 
     ![アクション グループの詳細](media/itsmc-overview/action-groups-details.png)
 
-4. アクション リストで、 **[アクションの種類]** のドロップダウン メニューから **[ITSM]** を選択します。 アクションの**名前**を入力し、 **[詳細の編集]** をクリックします。
-5. Log Analytics ワークスペースが配置される**サブスクリプション**を選択します。 ご使用のワークスペース名が後に続く**接続**名 (ITSM Connector の名前) を選択します。 たとえば、"MyITSMMConnector(MyWorkspace)" などです。
+4. 通知の一覧で、 **[次へ: アクション]** をクリックします。
+5. アクション リストで、 **[アクションの種類]** のドロップダウン メニューから **[ITSM]** を選択します。 アクションの **名前** を入力し、 **[詳細の編集]** を表すペンをクリックします。
+6. Log Analytics ワークスペースが配置される **サブスクリプション** を選択します。 ご使用のワークスペース名が後に続く **接続** 名 (ITSM Connector の名前) を選択します。 たとえば、"MyITSMMConnector(MyWorkspace)" などです。
 
-    ![ITSM アクションの詳細](media/itsmc-overview/itsm-action-details.png)
+    ![ITSM アクションの詳細](media/itsmc-overview/itsm-action-configuration.png)
 
-6. ドロップダウン メニューから **[作業項目]** の種類を選択します。
-   既存のテンプレートを使用するか、ITSM 製品に必要なフィールドに入力します。
-7. **[OK]** をクリックします。
+7. ドロップダウン メニューから **[作業項目]** の種類を選択します。
+
+8. ボックス フィールドに固定値を入力する場合は、[カスタム テンプレートを使用する] チェックボックスを選択します。それ以外の場合は、ドロップダウンから既存の[テンプレート](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions)を使用し、テンプレート フィールドに固定値を入力します。
+
+9. **[Create individual work items for each Configuration Item]\(各構成アイテムに対して個々の作業項目を作成する\)** チェックボックスをオンにすると、すべての構成項目に独自の作業項目が含まれるようになります。 つまり、構成項目ごとに 1 つの作業項目が存在し、作成されるアラートに従って更新されます。
+**[Create individual work items for each Configuration Item]\(各構成アイテムに対して個々の作業項目を作成する\)** チェックボックスをオフにした場合、各アラートによって新しい作業項目が作成されます。つまり、構成項目ごとに複数のアラートが存在する可能性があります。
+
+10. **[OK]** をクリックします。
 
 Azure のアラート ルールを作成/編集する場合は、ITSM アクションを含むアクション グループを使用します。 アラートがトリガーされると、ITSM ツールで作業項目が作成/更新されます。
 
@@ -153,7 +163,7 @@ Azure のアラート ルールを作成/編集する場合は、ITSM アクシ�
 
 インシデントと変更要求データを視覚化するには、ソリューションで ITSM Connector ダッシュボードを使用します。
 
-![Log Analytics 画面](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
+![ITSM Connector ダッシュボードを示すスクリーンショット。](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
 ダッシュボードでは、接続の問題を分析するときの開始ポイントとして使用できるコネクタの状態に関する情報も確認できます。
 
@@ -177,7 +187,7 @@ ITSMC によって収集されるデータの例を以下に示します。
 
 > [!NOTE]
 >
-> Log Analytics にインポートされる作業項目の種類によっては、**ServiceDesk_CL** には以下のフィールドが含まれます。
+> Log Analytics にインポートされる作業項目の種類によっては、 **ServiceDesk_CL** には以下のフィールドが含まれます。
 
 **作業項目:** **インシデント**  
 ServiceDeskWorkItemType_s="Incident"
@@ -288,7 +298,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 
 ## <a name="troubleshoot-itsm-connections"></a>ITSM 接続のトラブルシューティング
-1. 接続されているソースの UI からの接続が失敗し、"**接続の保存中にエラーが発生しました**" というメッセージが表示された場合は、次の手順を実行してください。
+1. 接続されているソースの UI からの接続が失敗し、" **接続の保存中にエラーが発生しました** " というメッセージが表示された場合は、次の手順を実行してください。
    - ServiceNow、Cherwell および Provance の接続の場合  
    - 各接続のユーザー名、パスワード、クライアント ID、およびクライアント シークレットが正しく入力されていることを確認します。  
    - 対応する ITSM 製品で接続を作成するための十分な特権があるかどうかを確認します。  
@@ -297,12 +307,12 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 2. ServiceNow のデータが Log Analytics に同期されていない場合は、ServiceNow インスタンスがスリープ状態でないことを確認します。 ServiceNow Dev インスタンスは、長時間アイドル状態になっている場合、スリープ状態になることがあります。 それ以外の場合は、問題を報告してください。
 3. Log Analytics アラートが発生しても、ITSM 製品で作業項目が作成されない場合や、構成項目が作成されない/作業項目にリンクされない場合、または一般情報が必要な場合は、以下を確認してください。
-   -  ITSMC: このソリューションでは、接続/作業項目/コンピューターなどの概要が表示されます。**接続の状態**を示すタイルをクリックします。これにより、関連するクエリを使用する **[ログ検索]** が表示されます。 詳細については、LogType_S が ERROR のログ レコードを確認してください。
+   -  ITSMC: このソリューションでは、接続/作業項目/コンピューターなどの概要が表示されます。 **接続の状態** を示すタイルをクリックします。これにより、関連するクエリを使用する **[ログ検索]** が表示されます。 詳細については、LogType_S が ERROR のログ レコードを確認してください。
    - **[ログ検索]** ページ: `*`ServiceDeskLog_CL`*` というクエリを使用して直接エラー/関連情報を表示します。
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager Web アプリのデプロイのトラブルシューティング
 1.  Web アプリのデプロイに関する問題が発生した場合は、該当するサブスクリプションでリソースを作成/デプロイするための十分なアクセス許可があることを確認します。
-2.  [スクリプト](itsmc-service-manager-script.md)の実行時に "**オブジェクト参照がオブジェクトのインスタンスに設定されていません**" というエラーが発生した場合は、 **[ユーザー構成]** セクションに有効な値が入力されていることを確認します。
+2.  [スクリプト](itsmc-service-manager-script.md)の実行時に " **オブジェクト参照がオブジェクトのインスタンスに設定されていません** " というエラーが発生した場合は、 **[ユーザー構成]** セクションに有効な値が入力されていることを確認します。
 3.  Service Bus Relay 名前空間を作成できない場合は、必要なリソース プロバイダーがサブスクリプションに登録されていることを確認します。 登録されていない場合は、Azure Portal で Service Bus Relay 名前空間を手動で作成します。 リソース プロバイダーは、Azure Portal で[ハイブリッド接続を作成](./itsmc-connections.md#configure-the-hybrid-connection)するときに作成することもできます。
 
 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 14360ab7668248f39c8ad0916eb964ffe11f7959
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 25eaca08202bd01ad4777fdb73eb75abff458c29
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331296"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677859"
 ---
 # <a name="vm-certification-troubleshooting"></a>VM 認定のトラブルシューティング
 
@@ -36,6 +36,9 @@ Azure Marketplace に仮想マシン (VM) イメージを発行する際に、Az
 
 > [!Note]
 > Azure Marketplace から取得していない Linux ベースのイメージを使用している場合は、最初のパーティションを 2,048 KB オフセットできます。 これにより、フォーマットされていない領域を、新しい課金情報を追加するために使用でき、Azure で Azure Marketplace への VM の公開を進めることができます。  
+
+> [!Note]
+> Marketplace から取得したものではない Linux ベースのイメージを使用している場合は、最初のパーティションを 2048 KB オフセットできます。 これにより、フォーマットされていない領域を、新しい課金情報を追加するために使用でき、Azure で Marketplace への VM の発行を進めることができます。  
 
 ## <a name="vm-extension-failure"></a>VM 拡張機能のエラー
 
@@ -148,7 +151,7 @@ Microsoft 認定ツールキットを使用すると、テスト ケースを実
 |17|ワイヤレス LAN サービス|ワイヤレス LAN サービス。 このサーバー機能はまだサポートされていません。 アプリケーションがこの機能に依存しないようにする必要があります。|
 |
 
-前述のテスト ケースでエラーが発生した場合、解決策については、表の **[説明]** 列を参照してください。 詳細情報が必要な場合は、サポート チームにお問い合わせください。
+前述のテスト ケースでエラーが発生した場合、解決策については、表の **[説明]** 列を参照してください。 詳細情報が必要な場合は、サポート チームにお問い合わせください。 
 
 ## <a name="data-disk-size-verification"></a>データ ディスク サイズの確認
 
@@ -181,7 +184,7 @@ VM では基になるオペレーティング システムへのアクセスが�
 
 WannaCry ウイルスに関連する潜在的な攻撃を防ぐには、すべての Windows イメージ要求が最新の修正プログラムで更新されているようにします。
 
-OS の詳細とサポートされる最小バージョンについて Windows Server の修正プログラム適用済みバージョンを確認するには、次の表を参照してください。
+OS の詳細とサポートされる最小バージョンについて Windows Server の修正プログラム適用済みバージョンを確認するには、次の表を参照してください。 
 
 イメージ ファイルのバージョンは、`C:\windows\system32\drivers\srv.sys` または `srv2.sys` から確認できます。
 
@@ -205,13 +208,13 @@ Linux イメージを送信するときに、カーネル バージョンの問�
 
 次のいずれかのカーネル バージョンでイメージがインストールされていない場合は、適切な修正プログラムを使用してそれを更新してください。 次の必要な修正プログラムを使用してイメージを更新した後で、サポート チームに必要な承認を要求します。
 
-- CVE-2019-11477
-- CVE-2019-11478
+- CVE-2019-11477 
+- CVE-2019-11478 
 - CVE-2019-11479
 
 |OS ファミリ|Version|カーネル|
 |---|---|---|
-|Ubuntu|14.04 LTS|4.4.0-151|
+|Ubuntu|14.04 LTS|4.4.0-151| 
 ||14.04 LTS|4.15.0-1049-*-azure|
 ||16.04 LTS|4.15.0-1049|
 ||18.04 LTS|4.18.0-1023|
@@ -242,7 +245,7 @@ Linux イメージを送信するときに、カーネル バージョンの問�
 ||SLES15|4.12.14-5.30.1 (kernel-azure)|
 ||SLES15 for SAP|4.12.14-5.30.1 (kernel-azure)|
 ||SLES15SP1|4.12.14-5.30.1 (kernel-azure)|
-|Oracle|6.10|UEK2 2.6.39-400.312.2<br>UEK3 3.8.13-118.35.2<br>RHCK 2.6.32-754.15.3
+|Oracle|6.10|UEK2 2.6.39-400.312.2<br>UEK3 3.8.13-118.35.2<br>RHCK 2.6.32-754.15.3 
 ||7.0-7.5|UEK3 3.8.13-118.35.2<br>UEK4 4.1.12-124.28.3<br>RHCK は上記の RHEL に従う|
 ||7.6|RHCK 3.10.0-957.21.3<br>UEK5 4.14.35-1902.2.0|
 |CoreOS Stable 2079.6.0|4.19.43*|
@@ -267,13 +270,22 @@ VM 上でテスト ケースを実行しているときにアクセス拒否の�
 
 セルフテスト ケースが実行されているアカウントに対して適切なアクセスが有効になっているかどうかを確認します。 アクセスが有効になっていない場合は、テスト ケースを実行できるようにします。 アクセスを有効にしない場合は、セルフテスト ケースの結果をサポート チームと共有することができます。
 
-## <a name="download-failure"></a>ダウンロードの失敗
+SSH が無効になったイメージを使用して認定プロセスの要求を送信する場合は、次の手順に従ってください。
 
+1. イメージで Azure Toolkit を実行します。 ([最新の Toolkit](https://aka.ms/AzureCertificationTestTool) をダウンロードしてください。)
+
+2. [サポート チケット](https://aka.ms/marketplacepublishersupport)を作成し、Toolkit レポートを添付して、オファーの詳細 (オファー名、発行元の名前、プラン ID/SKU、バージョン) を提供します。
+
+3. 認定要求を再送信してください。
+
+
+## <a name="download-failure"></a>ダウンロードの失敗
+    
 共有アクセス署名 (SAS) URL を使用して VM イメージをダウンロードするときに発生する問題については、次の表を参照してください。
 
 |シナリオ|エラー|理由|解決策|
 |---|---|---|---|
-|1|見つからない BLOB|VHD が削除されているか、指定された場所から移動されている可能性があります。||
+|1|見つからない BLOB|VHD が削除されているか、指定された場所から移動されている可能性があります。|| 
 |2|BLOB が使用中|VHD は別の内部プロセスによって使用されています。|SAS URL を使用してダウンロードする場合、VHD は使用済みの状態である必要があります。|
 |3|無効な SAS URL|その VHD に関連付けられている SAS URL は正しくありません。|正しい SAS URL を取得してください。|
 |4|無効な署名|その VHD に関連付けられている SAS URL は正しくありません。|正しい SAS URL を取得してください。|
@@ -287,6 +299,91 @@ VHD を送信するときに、VHD の最初の 2048 KB が空であることを
 
 >[!NOTE]
 >\* Azure Marketplace から取得した Azure Windows 基本イメージの上に構築されたものなど、一部の特殊なイメージの場合、課金タグがあるかどうかを確認し、課金タグが存在し、使用可能な内部値に一致する場合は、MB パーティションを無視します。
+
+
+## <a name="steps-for-creating-first-mb-2048-kb-partition-only-for-linux-on-an-empty-vhd"></a>空の VHD に最初の MB (2048 KB) パーティション (Linux の場合のみ) を作成するための手順
+
+手順 1: 任意の種類の VM (例: Ubuntu、Cent OS など) を作成します。 必須フィールドに入力し、[Next:Disks>]\(次: ディスク>\) をクリックします。\
+![次:Disks コマンド](./media/create-vm/vm-certification-issues-solutions-15.png)
+
+手順 2:上記 VM のアンマネージド ディスクを作成します。
+![アンマネージド ディスクを作成する](./media/create-vm/vm-certification-issues-solutions-16.png)
+
+既定値を使用することも、NIC、NSG、パブリック IP などのフィールドに任意の値を指定することもできることに注意してください。
+
+手順 3:VM を作成したら、下に示すように左側にある [Disks]\(ディスク\) をクリックしてください。![[Disks]\(ディスク\) をクリックする](./media/create-vm/vm-certification-issues-solutions-17.png)
+
+手順 4:下に示すように、パーティション テーブルを作成するために、VHD をデータ ディスクとして上記の VM にアタッチしてください。
+![VHD をアタッチする](./media/create-vm/vm-certification-issues-solutions-18.png)
+
+下に示すように、[Add DataDisk]\(DataDisk の追加\) -> [Existing Blob]\(既存の BLOB\) をクリックします。VHD ストレージ アカウント -> [Container]\(コンテナー\) を参照します。[VHD] を選択し、[OK] をクリックします。\
+![VHD の選択](./media/create-vm/vm-certification-issues-solutions-19.png)
+
+VHD がデータ ディスク LUN 0 として追加されます。ディスクを追加した後、VM を再起動してください。
+
+手順 5: VM を再起動した後、Putty (またはその他のクライアント) を使用して VM にログインし、"sudo  -i" コマンドを実行してルート アクセスを取得します。
+
+![VM にログインする](./media/create-vm/vm-certification-issues-solutions-20.png)
+
+手順 6: 以下の手順に従って、VHD にパーティションを作成します。
+
+a) fdisk /dev/sdb コマンドを入力します
+
+b) 「p」と入力して、VHD の既存パーティション一覧を表示します。
+
+c) 「d」と入力して、VHD で使用可能なすべての既存パーティションを削除します (必要ない場合、この手順は省略できます) ![既存のパーティションをすべて削除する](./media/create-vm/vm-certification-issues-solutions-21.png)
+
+d) 新しいパーティションを作成するために「n」と入力し、(プライマリ パーティション) のための [p] を選択します。
+
+e) [First Sector] の値として 2048 を入力してください。[Last Sector] については、既定値が使用されるため、そのままにすることができます。すべてのデータは、2048 KB まで消去されることに注意してください。
+           
+>[!NOTE]
+>\* 上記のようにパーティションを作成すると、既存のデータは 2048 KB まで消去されます。そのため、上記のコマンドを実行する前に、VHD のバックアップを取っておくことをお勧めします。
+
+下のスクリーンショットを参照してください。
+![消去されたデータ](./media/create-vm/vm-certification-issues-solutions-22.png)
+
+f) 「w」を入力して、パーティションの作成を確認します。 
+
+![パーティションの作成](./media/create-vm/vm-certification-issues-solutions-23.png)
+
+g) パーティション テーブルを確認するには、n fdisk /dev/sdb コマンドを実行し、「p」を入力します。これにより、以下に示すように、2048 オフセット値を使用してパーティションが作成されていることを確認できます。 
+
+ ![2048 オフセット](./media/create-vm/vm-certification-issues-solutions-24.png)
+
+手順 7: VM から VHD をデタッチし、VM を削除してください。
+
+         
+## <a name="steps-for-creating-first-mb-2048-kb-partition-only-for-linux-by-moving-the-existing-data-on-vhd"></a>VHD 上の既存のデータを移動して最初の MB (2048 KB) パーティション (Linux の場合のみ) を作成するための手順
+
+手順 1: 任意の種類の VM (例: Ubuntu、Cent OS など) を作成します。 必須フィールドに入力し、[Next:Disks>]\(次: ディスク>\) をクリックします。\
+![[Next:Disks>]\(次: ディスク>\) をクリックします。](./media/create-vm/vm-certification-issues-solutions-15.png)
+
+手順 2:上記 VM のアンマネージド ディスクを作成します。
+![アンマネージド ディスクを作成する](./media/create-vm/vm-certification-issues-solutions-16.png)
+
+既定値を使用することも、NIC、NSG、パブリック IP などのフィールドに任意の値を指定することもできることに注意してください。
+
+手順 3:VM を作成したら、下に示すように左側にある [Disks]\(ディスク\) をクリックしてください。![[Disks]\(ディスク\) をクリックする](./media/create-vm/vm-certification-issues-solutions-17.png)
+
+手順 4:下に示すように、パーティション テーブルを作成するために、VHD をデータ ディスクとして上記の VM にアタッチしてください。
+![パーティション テーブル](./media/create-vm/vm-certification-issues-solutions-18.png)
+
+下に示すように、[Add DataDisk]\(DataDisk の追加\) -> [Existing Blob]\(既存の BLOB\) をクリックします。VHD ストレージ アカウント -> [Container]\(コンテナー\) を参照します。[VHD] を選択し、[OK] をクリックします。\
+![VHD の選択](./media/create-vm/vm-certification-issues-solutions-19.png)
+
+VHD がデータ ディスク LUN 0 として追加されます。ディスクを追加した後、VM を再起動してください。
+
+手順 5: VM を再起動した後、Putty を使用して VM にログインし、"sudo  -i" コマンドを実行してルート アクセスを取得します。 \
+![再起動後にログインする](./media/create-vm/vm-certification-issues-solutions-20.png)
+
+手順 6: echo '+1M,' | sfdisk --move-data /dev/sdc -N 1 コマンドを実行します。![コマンドを実行する](./media/create-vm/vm-certification-issues-solutions-25.png)
+
+>[!NOTE]
+>\* ディスクのサイズによっては、上記のコマンドが完了するまでに時間がかかる場合があることに注意してください。
+
+手順 7: VM から VHD をデタッチし、VM を削除してください。
+
 
 ## <a name="default-credentials"></a>既定の資格情報
 
@@ -326,7 +423,7 @@ Azure Marketplace から取得したすべてのイメージを再利用する�
 
 ## <a name="remote-access-issue"></a>リモート アクセスの問題
 
-リモート デスクトップ プロトコル (RDP) オプションが Windows イメージに対して有効になっていない場合は、このエラーを受け取ります。
+リモート デスクトップ プロトコル (RDP) オプションが Windows イメージに対して有効になっていない場合は、このエラーを受け取ります。 
 
 送信する前に、Windows イメージに対して RDP アクセスを有効にします。
 
@@ -359,7 +456,7 @@ Azure Marketplace から取得したすべてのイメージを再利用する�
 
 一般に、発行元が例外を求めるシナリオまたはケースには、次の 3 つがあります。
 
-- **1 つ以上のテスト ケースに対する例外** : 発行元がパートナー センターの[サポート](https://aka.ms/marketplacepublishersupport)に問い合わせ、テスト ケースに対し例外を求めます。
+- **1 つ以上のテスト ケースに対する例外** : 発行元がパートナー センターの [サポート](https://aka.ms/marketplacepublishersupport)に問い合わせ、テスト ケースに対し例外を求めます。
 
 - **VM をロックダウンする/ルート アクセスなし** : 少数の発行元のシナリオでは、ファイアウォールなどのソフトウェアが VM にインストールされているために、VM をロックする必要があります。 この場合は、発行元は[認定テスト ツール](https://aka.ms/AzureCertificationTestTool)をダウンロードし、パートナー センターの[サポート](https://aka.ms/marketplacepublishersupport)からレポートを送信する必要があります。
 

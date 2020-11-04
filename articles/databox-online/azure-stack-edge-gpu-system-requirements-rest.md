@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 10/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 5e3b9b841c8e6ff17a29ac9c6a5e746ed6b687b9
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: f99a3110880626b3a809e6bab5edc02398094547
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92128432"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426227"
 ---
 # <a name="azure-stack-edge-blob-storage-requirements"></a>Azure Stack Edge BLOB ストレージの要件
 
@@ -21,16 +21,14 @@ ms.locfileid: "92128432"
 
 Azure Stack Edge BLOB ストレージに接続する前にこの情報をよく確認し、必要に応じて再度参照することをお勧めします。
 
-
 ## <a name="storage-differences"></a>ストレージの相違点
 
 |     機能                                             |     Azure Storage                                     |     Azure Stack Edge BLOB ストレージ |
 |---------------------------------------------------------|-------------------------------------------------------|---------------------------|
 |    Azure File ストレージ                                   |    クラウド ベースの SMB ファイル共有のサポート              |    サポートされていません      |
-|    サービスによる保存データの暗号化                  |    256 ビット AES 暗号化                             |    256 ビット AES 暗号化 |
 |    ストレージ アカウントの種類                                 |    汎用アカウントと Azure Blob Storage アカウント    |    汎用 v1 のみ|
 |    BLOB 名                                            |    1,024 文字 (2,048 バイト)                     |    880 文字 (1,760 バイト)|
-|    ブロック BLOB の最大サイズ                              |    4.75 TB (100 MB X 50,000 ブロック)                   |    Azure Stack Edge v 2.1.1377.2170 以降の場合に 4.75 TB (100 MB x 50,000 ブロック)|
+|    ブロック BLOB の最大サイズ                              |    4.75 TB (100 MB X 50,000 ブロック)                   |    Azure Stack Edge の場合、4.75 TB (100 MB x 50,000 ブロック)|
 |    ページ BLOB の最大サイズ                               |    8 TB                                               |    1 TB (テラバイト)                   |
 |    ページ BLOB のページ サイズ                                  |    512 バイト                                          |    4 KB                   |
 
@@ -44,7 +42,7 @@ Azure Storage サービス API の次のバージョンが Azure Stack Edge BLOB
 
 ## <a name="supported-azure-client-libraries"></a>サポートされている Azure クライアント ライブラリ
 
-Azure Stack Edge ストレージの場合、クライアント ライブラリとエンドポイント サフィックスに特定の要件があります。 Azure Stack Edge BLOB ストレージのエンドポイントは、最新バージョンの Azure Blob Storage REST API と完全に対応しているわけではありません。[ 2.1.1377.2170 以降でサポートされている API のバージョン](#supported-api-versions)に関するセクションをご覧ください。 したがって、ストレージのクライアント ライブラリについて、REST API と互換性のあるバージョンを把握しておく必要があります。
+Azure Stack Edge ストレージの場合、クライアント ライブラリとエンドポイント サフィックスに特定の要件があります。 Azure Stack Edge BLOB ストレージのエンドポイントは、Azure Blob Storage REST API の最新バージョンと完全に対応しているわけではありません。[Azure Stack Edge でサポートされている API のバージョン](#supported-api-versions)に関するセクションをご覧ください。 したがって、ストレージのクライアント ライブラリについて、REST API と互換性のあるバージョンを把握しておく必要があります。
 
 ### <a name="azure-stack-edge-2113772170-onwards"></a>Azure Stack Edge 2.1.1377.2170 以降
 
@@ -52,10 +50,11 @@ Azure Stack Edge BLOB ストレージの場合、次の Azure クライアント
 
 [!INCLUDE [data-box-rest-supported-azure-client-libraries](../../includes/data-box-rest-supported-azure-client-libraries.md)]
 
-### <a name="install-php-client-via-composer---current"></a>Composer 経由で PHP クライアントをインストールする (現在)
+### <a name="install-the-php-client-via-composer---current"></a>Composer 経由で PHP クライアントをインストールする (現在)
 
-Composer 経由でインストールするには (BLOB の例):
-1. 次のコードを含む composer.json という名前のファイルをプロジェクトのルートに作成します。
+Composer 経由で PHP クライアントをインストールするには、次のようにします。
+
+1. 次のコードを含む composer.json という名前のファイルをプロジェクトのルートに作成します (例では、Azure Storage Blob サービスが使用されています)。
 
     ```
     {
@@ -68,10 +67,12 @@ Composer 経由でインストールするには (BLOB の例):
 
 3. 実行: php composer.phar install。
 
-### <a name="endpoint-declaration"></a>エンドポイントの宣言
+
+## <a name="endpoint-declaration"></a>エンドポイントの宣言
 
 Azure Stack Edge BLOB ストレージ SDK では、エンドポイント サフィックス (`<device serial number>.microsoftdatabox.com`) によって Azure Stack Edge ドメインが識別されます。 Blob service エンドポイントの詳細については、「[Azure Stack Edge Pro GPU でストレージ アカウントを使用してデータを転送する](azure-stack-edge-j-series-deploy-add-storage-accounts.md)」を参照してください。
- 
+
+
 ## <a name="examples"></a>例
 
 ### <a name="net"></a>.NET

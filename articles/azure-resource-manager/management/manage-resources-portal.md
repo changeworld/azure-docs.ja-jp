@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 266ad613a4966b26fc4a6ddffbb7b4196aa937b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2274a551542b06996941b49e7d047baf3e8b3ca
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372104"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894034"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure portal を使用した Azure リソース の管理
 
@@ -29,7 +29,7 @@ Resource Manager テンプレートを作成した後に、Azure portal を使�
 
 ## <a name="open-resources"></a>リソースを開く
 
-Azure のリソースは、Azure のサービスとリソース グループで構成されます。 次の手順で、**mystorage0207** という名前のストレージ アカウントを開く方法を示します。 仮想マシンは、**mystorage0207rg** という名前のリソース グループ内に存在します。
+Azure のリソースは、Azure のサービスとリソース グループで構成されます。 次の手順で、 **mystorage0207** という名前のストレージ アカウントを開く方法を示します。 仮想マシンは、 **mystorage0207rg** という名前のリソース グループ内に存在します。
 
 サービスの種類によってリソースを開くには、次の手順を実行します。
 
@@ -40,11 +40,11 @@ Azure のリソースは、Azure のサービスとリソース グループで�
 
 3. 開くリソースを選択します。
 
-    ![ポータルで Azure リソースを開く](./media/manage-resources-portal/manage-azure-resources-portal-open-resource.png)
+    ![選択したリソースが強調表示されているスクリーンショット。](./media/manage-resources-portal/manage-azure-resources-portal-open-resource.png)
 
     ストレージ アカウントは次のとおりです。
 
-    ![ポータルで Azure リソースを開く](./media/manage-resources-portal/manage-azure-resources-portal-open-resource-storage.png)
+    ![ストレージ アカウントの外観を示すスクリーンショット。](./media/manage-resources-portal/manage-azure-resources-portal-open-resource-storage.png)
 
 リソース グループによってリソースを開くには、次の手順を実行します。
 

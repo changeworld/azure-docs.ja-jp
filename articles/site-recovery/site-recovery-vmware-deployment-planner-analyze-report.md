@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
-ms.openlocfilehash: 901f4a9d4fd53f665c3d078f5e463dcde2af1882
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef4baa4be7f6058ca704f8f499c47099de7c1a85
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654873"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372091"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーについての Deployment Planner レポートを分析する
 
@@ -102,7 +102,7 @@ VMware to Azure レポートの [Recommendations]\(推奨事項\) シートに�
 ![必要な Azure のコア数 (Deployment Planner)](media/site-recovery-vmware-deployment-planner-analyze-report/required-cores-v2a.png)
 
 ### <a name="required-on-premises-infrastructure"></a>必要なオンプレミス インフラストラクチャ
-この図は、適合するすべての VM を保護するために必要な構成サーバーと追加のプロセス サーバーの総数を表しています。 サポートされる[構成サーバーの推奨サイズ](https://aka.ms/asr-v2a-on-prem-components)に応じて、追加のサーバーが提案されます。 この提案は、1 日あたりの変更頻度か、または保護対象 VM の最大数 (VM ごとに平均 3 台のディスクを想定) に基づいて行われ、構成サーバーまたは追加のプロセス サーバーで、最初に到達した方の制限が適用されます。 1 日あたりの総変更頻度と保護対象ディスクの総数の詳細については、[On-premises summary]\(オンプレミス サマリー\) セクションに記載されています。
+この図は、適合するすべての VM を保護するために必要な構成サーバーと追加のプロセス サーバーの総数を表しています。 サポートされる[構成サーバーの推奨サイズ](/en-in/azure/site-recovery/site-recovery-plan-capacity-vmware#size-recommendations-for-the-configuration-server)に応じて、追加のサーバーが提案されます。 この提案は、1 日あたりの変更頻度か、または保護対象 VM の最大数 (VM ごとに平均 3 台のディスクを想定) に基づいて行われ、構成サーバーまたは追加のプロセス サーバーで、最初に到達した方の制限が適用されます。 1 日あたりの総変更頻度と保護対象ディスクの総数の詳細については、[On-premises summary]\(オンプレミス サマリー\) セクションに記載されています。
 
 ![必要なオンプレミス インフラストラクチャ (Deployment Planner)](media/site-recovery-vmware-deployment-planner-analyze-report/required-on-premises-components-v2a.png)
 
@@ -113,7 +113,7 @@ What-if 分析は、設定する帯域幅を引き下げて、必要な RPO を 
 ![What-if 分析 (Deployment Planner)](media/site-recovery-vmware-deployment-planner-analyze-report/what-if-analysis-v2a.png)
 
 ### <a name="recommended-vm-batch-size-for-initial-replication"></a>Recommended VM batch size for initial replication (初回レプリケーションの推奨 VM バッチ サイズ)
-このセクションには、必要な RPO を 100% の時間満たすことのできる推奨帯域幅を設定した状態で、初回レプリケーションを 72 時間以内に完了するという前提で保護することができる VM の推奨台数が表示されます。 この値は設定によって変更することができます。 レポートの生成時に変更するには、*GoalToCompleteIR* パラメーターを使用します。
+このセクションには、必要な RPO を 100% の時間満たすことのできる推奨帯域幅を設定した状態で、初回レプリケーションを 72 時間以内に完了するという前提で保護することができる VM の推奨台数が表示されます。 この値は設定によって変更することができます。 レポートの生成時に変更するには、 *GoalToCompleteIR* パラメーターを使用します。
 
 ここに示されるグラフには、適合するすべての VM について検出された平均 VM サイズに基づき、初回レプリケーションを 72 時間以内に完了する場合の、帯域幅値の範囲と算出された VM のバッチ サイズ カウントが表示されます。
 
@@ -165,7 +165,7 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 
 **Log Storage Account Type (ログ ストレージ アカウントの種類)** :レプリケーションのログはすべて Standard ストレージ アカウントに格納されます。
 
-**Suggested Prefix for Storage Account (ストレージ アカウントに推奨されるプレフィックス)** :キャッシュ ストレージ アカウントに名前を付ける場合に使用できる 3 文字の推奨プレフィックスです。 独自のプレフィックスを使用することもできますが、[ストレージ アカウントのパーティションの名前付け規則](https://aka.ms/storage-performance-checklist)に準拠したプレフィックスがツールから提案されます。
+**Suggested Prefix for Storage Account (ストレージ アカウントに推奨されるプレフィックス)** :キャッシュ ストレージ アカウントに名前を付ける場合に使用できる 3 文字の推奨プレフィックスです。 独自のプレフィックスを使用することもできますが、[ストレージ アカウントのパーティションの名前付け規則](/en-in/azure/storage/blobs/storage-performance-checklist)に準拠したプレフィックスがツールから提案されます。
 
 **[Suggested Log Account Name]\(推奨ログ アカウント名\)** : 推奨されるプレフィックスを付けた後のストレージ アカウント名です。 山かっこ (< と >) で囲まれた名前は、カスタムの入力値に置き換えてください。
 
@@ -178,7 +178,7 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 
 **[VM Name]\(VM 名\)** :レポートの生成時に VMListFile で使った VM の名前または IP アドレスです。 また、VM にアタッチされたディスク (VMDK) もこの列に一覧表示されます。 vCenter において名前または IP アドレスが重複する VM を区別するために、VM 名には ESXi ホスト名が一緒に表示されます。 このときに表示される ESXi ホストは、プロファイリング期間中、Deployment Planner ツールによって VM が最初に検出されたときに配置されていたホストです。
 
-**[VM Compatibility]\(VM 適合性\)** : **Yes** と **Yes\*** の 2 つの値があります。 **Yes**\* は、[Premium SSD](../virtual-machines/disks-types.md) に適した VM があるインスタンスに付けられます。 ただしこの場合、プロファイリング結果によると変更頻度または IOPS の高いディスクが、P20 または P30 のカテゴリに適しているのに、ディスクのサイズが原因でそれよりも低い P10 または P20 にマッピングされています。 ストレージ アカウントでは、Premium Storage のディスク タイプが、そのサイズに基づいて決定されます。 次に例を示します。
+**[VM Compatibility]\(VM 適合性\)** : 値は **Yes** および **Yes\* *_ です。_* Yes**\* は、[Premium SSD](../virtual-machines/disks-types.md) に適した VM があるインスタンスに付けられます。 ただしこの場合、プロファイリング結果によると変更頻度または IOPS の高いディスクが、P20 または P30 のカテゴリに適しているのに、ディスクのサイズが原因でそれよりも低い P10 または P20 にマッピングされています。 ストレージ アカウントでは、Premium Storage のディスク タイプが、そのサイズに基づいて決定されます。 次に例を示します。
 * 128 GB 未満の場合は P10
 * 128 ～ 256 GB の場合は P15
 * 256 ～ 512 GB の場合は P20
@@ -188,38 +188,38 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 
 たとえば、ディスクのワークロード特性上は P20 または P30 に分類されるものの、サイズ上はそれよりも低い Premium Storage ディスク タイプに対応している VM は、Deployment Planner ツールによって **Yes**\* として表示されます。 そのうえで、推奨される適切な Premium Storage ディスク タイプに合わせてレプリケーション元のディスク サイズを変更するか、またはレプリケーション先のディスク タイプをフェールオーバー後に変更するように促されます。
 
-**[ストレージの種類]** : Standard または Premium です。
+**[ストレージの種類]** : Standard または Premium があります。
 
 **Asrseeddisk (Managed Disk) created for replication (レプリケーション用に作成された Asrseeddisk (マネージド ディスク))** :レプリケーションを有効にしたときに作成されるディスクの名前。 データとそのスナップショットが Azure に格納されます。
 
-**[Peak R/W IOPS (with Growth Factor)]\(ピーク読み取り/書き込み IOPS (増加率を考慮)\)** : 将来的な増加率 (既定では 30%) を加味した、ディスクに対するピーク ワークロードの読み取り/書き込み IOPS (既定では 95 パーセンタイル) です。 VM のトータルな読み取り/書き込み IOPS は、必ずしもその個々のディスクの読み取り/書き込み IOPS を足した値になるとは限りません。VM の読み取り/書き込みのピーク IOPS が、プロファイリングの全期間を通じての、その各ディスクにおける読み取り/書き込み IOPS の合計のピークであるためです。
+**[Peak R/W IOPS (with Growth Factor) (読み取り/書き込み IOPS のピーク (増加率を考慮))]** : 将来的な増加率 (既定では 30 %) を加味した、ディスクに対するピーク ワークロードの読み取り/書き込み IOPS (既定では 95 パーセンタイル) です。 VM のトータルな読み取り/書き込み IOPS は、必ずしもその個々のディスクの読み取り/書き込み IOPS を足した値になるとは限りません。VM の読み取り/書き込みのピーク IOPS が、プロファイリングの全期間を通じての、その各ディスクにおける読み取り/書き込み IOPS の合計のピークであるためです。
 
-**[Peak Data Churn in Mbps (with Growth Factor)]\(データの変更頻度のピーク (Mbps) (増加率を考慮)\)** : 将来的な増加率 (既定では 30%) を加味した、ディスクに対する変更頻度のピーク値 (既定では 95 パーセンタイル) です。 VM のトータルなデータ変更頻度は、必ずしもその個々のディスクのデータ変更頻度を足した値になるとは限りません。VM のデータ変更頻度のピークが、プロファイリングの全期間を通じての、その各ディスクにおける変更頻度の合計のピークであるためです。
+**[Peak Data Churn in Mbps (with Growth Factor) ( データの変更頻度のピーク (Mbps) (増加率を考慮))]** : 将来的な増加率 (既定では 30%) を加味した、ディスクに対する変更頻度のピーク値 (既定では 95 パーセンタイル) です。 VM のトータルなデータ変更頻度は、必ずしもその個々のディスクのデータ変更頻度を足した値になるとは限りません。VM のデータ変更頻度のピークが、プロファイリングの全期間を通じての、その各ディスクにおける変更頻度の合計のピークであるためです。
 
-**[Azure VM Size]\(Azure VM サイズ\)** : オンプレミス VM に対応する Azure Cloud Services の仮想マシンとして理想的なサイズです。 この判断は、オンプレミス VM のメモリ、ディスク数/コア数/NIC 数、読み取り/書き込みの IOPS に基づいて行われます。 オンプレミスの VM が備えているこうした特性をすべて満たした最小の Azure VM サイズが確実に提案されます。
+**[Azure VM Size (Azure VM サイズ)]** : オンプレミス VM に対応する Azure Cloud Services の仮想マシンとして理想的なサイズです。 この判断は、オンプレミス VM のメモリ、ディスク数/コア数/NIC 数、読み取り/書き込みの IOPS に基づいて行われます。 オンプレミスの VM が備えているこうした特性をすべて満たした最小の Azure VM サイズが確実に提案されます。
 
 **[ディスク数]** : VM の仮想マシン ディスク (VMDK) の総数です。
 
-**[ディスク サイズ (GB)]** : VM 上のすべてのディスクの合計セットアップ サイズです。 VM に含まれる個々のディスクのサイズも表示されます。
+**[ディスク サイズ (GB)]** : VM の全ディスクの合計セットアップ サイズです。 VM に含まれる個々のディスクのサイズも表示されます。
 
-**[コア]** : VM 上の CPU コアの数です。
+**[コア]** : VM に搭載されている CPU コアの数です。
 
-**[メモリ (MB)]** : VM 上の RAM です。
+**[メモリ (MB)]** : VM に搭載されている RAM です。
 
-**[NIC]** : VM 上の NIC の数です。
+**[NIC]** : VM に搭載されている NIC の数です。
 
-**[ブートの種類]** : VM のブートの種類です。 BIOS と EFI のどちらかになります。  現在の Azure Site Recovery では、ブート ディスク内のパーティションの数が 4 個未満で、ブート セクターのサイズが 512 バイトの場合に、Windows Server EFI VM (Windows Server 2012、2012 R2、2016) がサポートされます。 EFI VM を保護するには、Azure Site Recovery モビリティ サービスのバージョンが 9.13 以上である必要があります。 EFI VM でサポートされているのはフェールオーバーだけです。 フェールバックはサポートされていません。  
+**[Boot Type (ブートの種類)]** : VM のブートの種類です。 BIOS と EFI のどちらかになります。  現在の Azure Site Recovery では、ブート ディスク内のパーティションの数が 4 個未満で、ブート セクターのサイズが 512 バイトの場合に、Windows Server EFI VM (Windows Server 2012、2012 R2、2016) がサポートされます。 EFI VM を保護するには、Azure Site Recovery モビリティ サービスのバージョンが 9.13 以上である必要があります。 EFI VM でサポートされているのはフェールオーバーだけです。 フェールバックはサポートされていません。  
 
-**[OS Type]\(OS の種類\)** :VM の OS の種類です。 これは、Windows または Linux、あるいは VM の作成時に VMware vSphere で選択されたテンプレートに基づくその他の OS の場合があります。  
+**[OS の種類]** : VM の OS の種類です。 これは、Windows または Linux、あるいは VM の作成時に VMware vSphere で選択されたテンプレートに基づくその他の OS の場合があります。  
 
 ## <a name="incompatible-vms"></a>Incompatible VMs (不適合 VM)
 
 ![不適合 VM の Excel スプレッドシート
 ](media/site-recovery-vmware-deployment-planner-analyze-report/incompatible-vms-v2a.png)
 
-**[VM Name]\(VM 名\)** :レポートの生成時に VMListFile で使った VM の名前または IP アドレスです。 また、VM にアタッチされた VMDK もこの列に一覧表示されます。 vCenter において名前または IP アドレスが重複する VM を区別するために、VM 名には ESXi ホスト名が一緒に表示されます。 このときに表示される ESXi ホストは、プロファイリング期間中、Deployment Planner ツールによって VM が最初に検出されたときに配置されていたホストです。
+**[VM 名]** : レポートの生成時に VMListFile で使った VM の名前または IP アドレスです。 また、VM にアタッチされた VMDK もこの列に一覧表示されます。 vCenter において名前または IP アドレスが重複する VM を区別するために、VM 名には ESXi ホスト名が一緒に表示されます。 このときに表示される ESXi ホストは、プロファイリング期間中、Deployment Planner ツールによって VM が最初に検出されたときに配置されていたホストです。
 
-**[VM Compatibility]\(VM 適合性\)** : 指定された VM が Site Recovery での使用に不適合である理由を示します。 理由は VM の不適合ディスクごとに記述され、公開されている[ストレージの制限](https://aka.ms/azure-storage-scalbility-performance)に基づく次のいずれかの状況に該当します。
+**[VM Compatibility (VM 適合性)]** : 指定された VM が Site Recovery での使用に不適合である理由が表示されます。 理由は VM の不適合ディスクごとに記述され、公開されている[ストレージの制限](/en-in/azure/storage/common/scalability-targets-standard-account)に基づく次のいずれかの状況に該当します。
 
 * データ ディスク サイズが間違っているか、OS ディスク サイズが間違っている。 サポートの制限を[確認してください](vmware-physical-azure-support-matrix.md#azure-vm-requirements)。 
 * VM サイズの合計 (レプリケーション + テスト フェールオーバー) が、サポートされているストレージ アカウントの上限サイズ (35 TB) を超えている。 これは通常、VM にあるいずれか 1 台のディスクのパフォーマンス特性が、Azure または Site Recovery でサポートされる Standard ストレージの上限を超えている場合に発生します。 そのような VM は Premium Storage の領域に分類されます。 一方、Premium ストレージ アカウントでサポートされる最大サイズは 35 TB です。保護対象となる単一の VM を複数のストレージ アカウントにまたがって保護することはできません。 また、保護対象 VM で実行されるテスト フェールオーバーは、レプリケーション処理と同じストレージ アカウントで実行されることに注意してください。 この場合、レプリケーションの進行と同時にテスト フェールオーバーが正常完了するためには、対象となるディスク サイズの 2 倍の容量をセットアップする必要があります。
@@ -243,17 +243,17 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 
 **[Peak Data Churn in Mbps (with Growth Factor)]\(データの変更頻度のピーク (Mbps) (増加率を考慮)\)** : 将来的な増加率 (既定では 30%) を加味した、ディスクに対する変更頻度のピーク値 (既定では 95 パーセンタイル) です。 VM のトータルなデータ変更頻度は、必ずしもその個々のディスクのデータ変更頻度を足した値になるとは限りません。VM のデータ変更頻度のピークが、プロファイリングの全期間を通じての、その各ディスクにおける変更頻度の合計のピークであるためです。
 
-**[ディスク数]** : VM 上の VMDK の総数です。
+**[ディスク数]** : VM の VMDK の総数です。
 
-**[ディスク サイズ (GB)]** : VM 上のすべてのディスクの合計セットアップ サイズです。 VM に含まれる個々のディスクのサイズも表示されます。
+**[ディスク サイズ (GB)]** : VM の全ディスクの合計セットアップ サイズです。 VM に含まれる個々のディスクのサイズも表示されます。
 
-**[コア]** : VM 上の CPU コアの数です。
+**[コア]** : VM に搭載されている CPU コアの数です。
 
-**[メモリ (MB)]** : VM 上の RAM のサイズです。
+**[メモリ (MB)]** : VM に搭載されている RAM のサイズです。
 
-**[NIC]** : VM 上の NIC の数です。
+**[NIC]** : VM に搭載されている NIC の数です。
 
-**[ブートの種類]** : VM のブートの種類です。 BIOS と EFI のどちらかになります。  現在の Azure Site Recovery では、ブート ディスク内のパーティションの数が 4 個未満で、ブート セクターのサイズが 512 バイトの場合に、Windows Server EFI VM (Windows Server 2012、2012 R2、2016) がサポートされます。 EFI VM を保護するには、Azure Site Recovery モビリティ サービスのバージョンが 9.13 以上である必要があります。 EFI VM でサポートされているのはフェールオーバーだけです。 フェールバックはサポートされていません。
+**[Boot Type (ブートの種類)]** : VM のブートの種類です。 BIOS と EFI のどちらかになります。  現在の Azure Site Recovery では、ブート ディスク内のパーティションの数が 4 個未満で、ブート セクターのサイズが 512 バイトの場合に、Windows Server EFI VM (Windows Server 2012、2012 R2、2016) がサポートされます。 EFI VM を保護するには、Azure Site Recovery モビリティ サービスのバージョンが 9.13 以上である必要があります。 EFI VM でサポートされているのはフェールオーバーだけです。 フェールバックはサポートされていません。
 
 **[OS Type]\(OS の種類\)** :VM の OS の種類です。 これは、Windows または Linux、あるいは VM の作成時に VMware vSphere で選択されたテンプレートに基づくその他の OS の場合があります。
 

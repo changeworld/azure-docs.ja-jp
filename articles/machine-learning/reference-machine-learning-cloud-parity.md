@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4a6f09fdff82b8e86c7fe75018c5267dba3c1b4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddfe1344b235500f0f1ea69b6e3d8c537f96b855
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892975"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426526"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning ソブリン クラウドの同等性
 
@@ -28,9 +28,9 @@ ms.locfileid: "90892975"
 * Azure China 21Vianet リージョンの **China-East-2**
 
 > [!TIP]
-> ソブリンとソブリン以外のリージョンを区別するために、この記事ではソブリン以外のリージョンを__パブリック クラウド__という用語を使用して表現します。
+> ソブリンとソブリン以外のリージョンを区別するために、この記事ではソブリン以外のリージョンを __パブリック クラウド__ という用語を使用して表現します。
 
-Microsoft では、パブリック クラウドとソブリン リージョンの間に最大の同等性を提供することを目標としています。 パブリック クラウドでは、**GA (一般公開) の 30 日以内**に、これらのリージョンですべての Azure Machine Learning 機能を利用できるようになります。 また、これらのリージョンの一部のプレビュー機能を有効にすることもできます。 ソブリンとパブリック クラウドの間の現在の同等性の相違点を以下に示します。
+Microsoft では、パブリック クラウドとソブリン リージョンの間に最大の同等性を提供することを目標としています。 パブリック クラウドでは、 **GA (一般公開) の 30 日以内** に、これらのリージョンですべての Azure Machine Learning 機能を利用できるようになります。 また、これらのリージョンの一部のプレビュー機能を有効にすることもできます。 ソブリンとパブリック クラウドの間の現在の同等性の相違点を以下に示します。
 
 ## <a name="azure-government"></a>Azure Government 
 
@@ -122,7 +122,7 @@ Microsoft では、パブリック クラウドとソブリン リージョン�
 | コンピューティング リソースへのルート アクセスと SSH アクセス。                                          | YES | YES |  |
 | エンドポイントの保護、修正プログラムの適用、ログ記録など、デプロイされたシステム (インスタンス、エンドポイントなど) のセキュリティを維持する |  PARTIAL|  PARTIAL |VNet とプライベート エンドポイントの背後にある ACI は現在使用できません |                                  
 | ACI/AKS 統合の制御 (無効化/制限/制限)                    | PARTIAL| PARTIAL |VNet とプライベート エンドポイントの背後にある ACI は現在使用できません|
-| ロールベースのアクセス制御 (RBAC) - カスタム ロールの作成                           | YES | YES |  |
+| Azure ロールベースのアクセス制御 (Azure RBAC) - カスタム ロールの作成                           | YES | YES |  |
 | ML サービスによって使用される ACR イメージへのアクセスの制御 (Azure によって提供または維持される、またはカスタム)  |PARTIAL|  PARTIAL | プライベート エンドポイントと VNet の背後にある ACR は Azure Government ではサポートされません |
 | **一般的な Machine Learning サービスの使用** |  | | |
 | モデルを構築し、そのモデルをトレーニングし、エンドポイントとしてホストし、webapp を介して使用するための開発環境を用意する機能     | YES | YES |  |

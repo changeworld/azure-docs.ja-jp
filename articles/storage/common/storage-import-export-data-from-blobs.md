@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/17/2020
+ms.date: 10/20/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d9f7778d1dda159f3ab0c4548912370c85f94eff
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: bfbef5ce3ba7675aff88df654a5ba6572c38adbe
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441869"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440734"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage からデータをエクスポートする
 
@@ -36,6 +36,8 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
     - [DHL アカウントを作成します](http://www.dhl-usa.com/en/express/shipping/open_account.html)。
 
 ## <a name="step-1-create-an-export-job"></a>手順 1:エクスポート ジョブの作成
+
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 以下の手順を実行して、Azure portal でエクスポート ジョブを作成します。
 
@@ -69,8 +71,8 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
          ![[すべてをエクスポートする]](./media/storage-import-export-data-from-blobs/export-from-blob4.png)
 
     - エクスポートするコンテナーと BLOB を指定できます。
-        - **エクスポートする BLOB を指定するには**: **[等しい]** セレクターを使用します。 コンテナー名から始まる BLOB への相対パスを指定します。 ルート コンテナーを指定するには、" *$root* " を使用します。
-        - **プレフィックスで始まるすべての BLOB を指定するには**: **[指定値で始まる]** セレクターを使用します。 スラッシュ "/" で始まるプレフィックスを指定します。 プレフィックスには、コンテナー名のプレフィックス、コンテナー名全体、またはコンテナー名全体の後に BLOB 名のプレフィックスを付けた名前を指定できます。 次のスクリーンショットで示すように、処理中にエラーが発生しないように、有効な形式で BLOB のパスを指定する必要があります。 詳細については、「[有効な BLOB パスの例](#examples-of-valid-blob-paths)」を参照してください。
+        - **エクスポートする BLOB を指定するには** : **[等しい]** セレクターを使用します。 コンテナー名から始まる BLOB への相対パスを指定します。 ルート コンテナーを指定するには、" *$root* " を使用します。
+        - **プレフィックスで始まるすべての BLOB を指定するには** : **[指定値で始まる]** セレクターを使用します。 スラッシュ "/" で始まるプレフィックスを指定します。 プレフィックスには、コンテナー名のプレフィックス、コンテナー名全体、またはコンテナー名全体の後に BLOB 名のプレフィックスを付けた名前を指定できます。 次のスクリーンショットで示すように、処理中にエラーが発生しないように、有効な形式で BLOB のパスを指定する必要があります。 詳細については、「[有効な BLOB パスの例](#examples-of-valid-blob-paths)」を参照してください。
 
            ![選択したコンテナーと BLOB をエクスポートする](./media/storage-import-export-data-from-blobs/export-from-blob5.png)
 
@@ -99,6 +101,83 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
         > ディスクは常に、Azure Portal に示されているデータ センターに送付します。 誤って別のデータ センターにディスクが発送された場合、ジョブは処理されません。
 
     - **[OK]** をクリックして、エクスポート ジョブの作成を完了します。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+以下の手順を使用して、Azure portal でエクスポート ジョブを作成します。
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+### <a name="create-a-job"></a>ジョブの作成
+
+1. [az extension add](/cli/azure/extension#az_extension_add) コマンドを使用して、[az import-export](/cli/azure/ext/import-export/import-export) 拡張機能を追加します。
+
+    ```azurecli
+    az extension add --name import-export
+    ```
+
+1. ディスクを受け取ることができる場所の一覧を取得するには、[az import-export location list](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) コマンドを使用します。
+
+    ```azurecli
+    az import-export location list
+    ```
+
+1. 次の [az import-export create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) コマンドを実行して、既存のストレージ アカウントを使用するエクスポート ジョブを作成します。
+
+    ```azurecli
+    az import-export create \
+        --resource-group myierg \
+        --name Myexportjob1 \
+        --location "West US" \
+        --backup-drive-manifest true \
+        --diagnostics-path waimportexport \
+        --export blob-path=/ \
+        --type Export \
+        --log-level Verbose \
+        --shipping-information recipient-name="Microsoft Azure Import/Export Service" \
+            street-address1="3020 Coronado" city="Santa Clara" state-or-province=CA postal-code=98054 \
+            country-or-region=USA phone=4083527600 \
+        --return-address recipient-name="Gus Poland" street-address1="1020 Enterprise way" \
+            city=Sunnyvale country-or-region=USA state-or-province=CA postal-code=94089 \
+            email=gus@contoso.com phone=4085555555" \
+        --storage-account myssdocsstorage
+    ```
+
+    > [!TIP]
+    > 1 人のユーザーの電子メール アドレスを指定する代わりに、グループ メール アドレスを提供します。 これにより、管理者が離れる場合でも、通知を受信します。
+
+   このジョブは、ストレージ アカウント内のすべての BLOB をエクスポートします。 エクスポートする BLOB を指定するには、この **--export** の値を次のように置き換えます。
+
+    ```azurecli
+    --export blob-path=$root/logo.bmp
+    ```
+
+   このパラメーター値では、ルート コンテナー内の *logo.bmp* という名前の BLOB がエクスポートされます。
+
+   また、プレフィックスを使用して、コンテナー内のすべての BLOB を選択するオプションもあります。 この **--export** の値を次のように置き換えます。
+
+    ```azurecli
+    blob-path-prefix=/myiecontainer
+    ```
+
+   詳細については、「[有効な BLOB パスの例](#examples-of-valid-blob-paths)」を参照してください。
+
+   > [!NOTE]
+   > データ コピー時にエクスポートする BLOB が使用中の場合、Azure Import/Export サービスは BLOB のスナップショットを作成し、スナップショットをコピーします。
+
+1. [az import-export list](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list) コマンドを使用して、リソース グループ myierg のすべてのジョブを表示します。
+
+    ```azurecli
+    az import-export list --resource-group myierg
+    ```
+
+1. ジョブを更新するかジョブをキャンセルするには、[az import-export update](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) コマンドを実行します。
+
+    ```azurecli
+    az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true
+    ```
+
+---
 
 <!--## (Optional) Step 2: -->
 
@@ -139,7 +218,7 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
 
 ## <a name="check-the-number-of-drives"></a>ドライブ数を確認する
 
-この*省略可能*な手順は、エクスポート ジョブに必要なドライブ数を決定するために役立ちます。 [サポートされている OS バージョン](storage-import-export-requirements.md#supported-operating-systems)を実行している Windows システム上でこの手順を実行します。
+この *省略可能* な手順は、エクスポート ジョブに必要なドライブ数を決定するために役立ちます。 [サポートされている OS バージョン](storage-import-export-requirements.md#supported-operating-systems)を実行している Windows システム上でこの手順を実行します。
 
 1. Windows システムに [WAImportExport バージョン 1 をダウンロード](https://www.microsoft.com/download/details.aspx?id=42659)します。
 2. 既定のフォルダー `waimportexportv1` に解凍します。 たとえば、「 `C:\WaImportExportV1` 」のように入力します。
@@ -160,7 +239,7 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
     |**/sk:**|コンテナー SAS が指定されていない場合のみ必須。 エクスポート ジョブのストレージ アカウントのアカウント キーです。|  
     |**/csas:**|ストレージ アカウント キーが指定されていない場合のみ必須。 エクスポート ジョブでエクスポートされる BLOB を一覧表示するためのコンテナー SAS です。|  
     |**/ExportBlobListFile:**|必須。 エクスポートする BLOB の BLOB パスや BLOB パスのプレフィックスの一覧を含む XML ファイルへのパス。 インポート/エクスポート サービス REST API の [Put Job](/rest/api/storageimportexport/jobs) 操作の `BlobListBlobPath` 要素で使用されるファイル形式です。|  
-    |**/DriveSize:**|必須。 エクスポート ジョブに使用するドライブのサイズ (*例:* 500 GB、1.5 TB)。|  
+    |**/DriveSize:**|必須。 エクスポート ジョブに使用するドライブのサイズ ( *例:* 500 GB、1.5 TB)。|  
 
     「[PreviewExport コマンドの例](#example-of-previewexport-command)」を参照してください。
 
@@ -213,9 +292,9 @@ Number of drives needed:        3
    | [指定値で始まる] |/$root/ |ルート コンテナー内のすべての BLOB をエクスポートする |
    | [指定値で始まる] |/book |プレフィックス " **book** |
    | [指定値で始まる] |/music/ |コンテナー " **music** |
-   | [指定値で始まる] |/music/love |コンテナー "**music**" 内の、プレフィックス "**love**" で始まるすべての BLOB をエクスポートする |
+   | [指定値で始まる] |/music/love |コンテナー " **music** " 内の、プレフィックス " **love** " で始まるすべての BLOB をエクスポートする |
    | [等しい] |$root/logo.bmp |ルート コンテナー内の BLOB " **logo.bmp** " をエクスポートする |
-   | [等しい] |videos/story.mp4 |コンテナー "**videos**" 内の BLOB "**story.mp4**" をエクスポートする |
+   | [等しい] |videos/story.mp4 |コンテナー " **videos** " 内の BLOB " **story.mp4** " をエクスポートする |
 
 ## <a name="next-steps"></a>次のステップ
 

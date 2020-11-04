@@ -10,13 +10,13 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 98bc108af22491c6ea0b64bc2e278b6b32f43a5b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.custom: how-to, devx-track-python, contperfq1, devx-track-azurecli
+ms.openlocfilehash: a6612f3df5fba834dff8fc60e90c359ceff4cbe1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203094"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743108"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のために開発環境をセットアップする
 
@@ -61,13 +61,13 @@ Azure Machine Learning のために Python 開発環境を構成する方法に�
 
 * Azure portal
 
-    **ファイルをダウンロードする**:[Azure portal](https://ms.portal.azure.com) で、お使いのワークスペースの **[概要]** セクションから **[config.json をダウンロード]** を選択します。
+    **ファイルをダウンロードする** : [Azure portal](https://ms.portal.azure.com) で、お使いのワークスペースの **[概要]** セクションから **[config.json をダウンロード]** を選択します。
 
     ![Azure portal](./media/how-to-configure-environment/configure.png)
 
 * Azure Machine Learning Python SDK
 
-    Azure Machine Learning ワークスペースに接続するためのスクリプトを作成し、[`write_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) メソッドを使用してファイルを生成し、それを *.azureml/config.json* として保存します。 必ず `subscription_id`、`resource_group`、`workspace_name` を独自の値に置き換えてください。
+    Azure Machine Learning ワークスペースに接続するためのスクリプトを作成し、 [`write_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) メソッドを使用してファイルを生成し、それを *.azureml/config.json* として保存します。 必ず `subscription_id`、`resource_group`、`workspace_name` を独自の値に置き換えてください。
 
     ```python
     from azureml.core import Workspace
@@ -122,6 +122,9 @@ Azure Machine Learning のために Python 開発環境を構成する方法に�
 
 Azure Machine Learning と Jupyter Notebook の使用を開始するには、[Azure Machine Learning ノートブックのリポジトリ](https://github.com/Azure/MachineLearningNotebooks)を参照してください。
 
+> [!NOTE]
+> コミュニティ主導の例のリポジトリについては、 https://github.com/Azure/azureml-examples を参照してください。
+
 ### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio Code
 
 開発に Visual Studio Code を使用するには
@@ -139,10 +142,10 @@ Azure Machine Learning の[コンピューティング インスタンス](conce
 
 Azure Machine Learning ワークスペース内から、いつでも作成できます。 名前を指定し、Azure VM の種類を指定するだけです。 今すぐお試しいただくには、「[チュートリアル:環境とワークスペースの設定に関するチュートリアル](tutorial-1st-experiment-sdk-setup.md)を参照)。
 
-パッケージのインストール方法など、コンピューティング インスタンスの詳細については、[コンピューティング インスタンス](concept-compute-instance.md)に関する記事を参照してください。
+パッケージのインストール方法など、コンピューティング インスタンスの詳細については、「[Azure Machine Learning コンピューティング インスタンスを作成して管理する](how-to-create-manage-compute-instance.md)」を参照してください。
 
 > [!TIP]
-> 未使用のコンピューティング インスタンスに対する課金が発生しないようにするには、[コンピューティング インスタンス](tutorial-1st-experiment-bring-data.md#clean-up-resources)を停止します。
+> 未使用のコンピューティング インスタンスに対する課金が発生しないようにするには、[コンピューティング インスタンス](how-to-create-manage-compute-instance.md#manage)を停止します。
 
 コンピューティング インスタンスは、Jupyter Notebook サーバーと JupyterLab に加えて、[Azure Machine Learning スタジオの内部に統合されたノートブック機能](how-to-run-jupyter-notebooks.md)で使用できます。
 
@@ -284,7 +287,7 @@ ML 以外の Databricks ラインタイム 7.0 以前の場合は、[init スク
 ### <a name="start-exploring"></a>実際に使ってみる
 
 実際に試してみましょう。
-+ サンプル ノートブックがたくさんありますが、**Azure Databricks で動作するのは[これらのサンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks)のみです。**
++ サンプル ノートブックがたくさんありますが、 **Azure Databricks で動作するのは [これらのサンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks)のみです。**
 
 + これらのサンプルは、ワークスペースから直接インポートしてください。 次を参照してください。![インポートの選択](./media/how-to-configure-environment/azure-db-screenshot.png)
 ![パネルのインポ―ト](./media/how-to-configure-environment/azure-db-import.png)

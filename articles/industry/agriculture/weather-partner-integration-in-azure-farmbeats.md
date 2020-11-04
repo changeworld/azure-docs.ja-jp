@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
-ms.openlocfilehash: a2677b5343b2d65a39e7c9f6d5006db599c1ac73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd5d05ff6ed2368308f90f61ea0a6f107e43acd7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86496997"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740777"
 ---
 # <a name="weather-partner-integration"></a>気象パートナーの統合
 
@@ -28,7 +28,7 @@ ms.locfileid: "86496997"
 - 気象パートナーのシステムからデータにアクセスするための顧客固有の API キーと資格情報
 - VM SKU の詳細 (パートナーの Docker に特定の VM 要件がある場合は、パートナーがこれを提供できます。それ以外の場合は、顧客が Azure でサポートされる VM SKU から選択できます)
 
-顧客は、上記の Docker 情報を使用して、FarmBeats インスタンスに気象パートナーを登録します。 顧客が Docker を使用して気象データを FarmBeats に取り込む方法の詳細については、[気象データの取得](https://docs.microsoft.com/azure/industry/agriculture/get-weather-data-from-weather-partner)に関するガイドを参照してください
+顧客は、上記の Docker 情報を使用して、FarmBeats インスタンスに気象パートナーを登録します。 顧客が Docker を使用して気象データを FarmBeats に取り込む方法の詳細については、[気象データの取得](./get-weather-data-from-weather-partner.md)に関するガイドを参照してください
 
 ## <a name="connector-docker-development"></a>コネクタ Docker の開発
 
@@ -71,9 +71,9 @@ headers = *{"Authorization": "Bearer " + access_token, …}*
    }
 }
 ```
-API サービスは、この辞書をシリアル化し、[KeyVault](https://docs.microsoft.com/azure/key-vault/basic-concepts) に格納します。
+API サービスは、この辞書をシリアル化し、[KeyVault](../../key-vault/general/basic-concepts.md) に格納します。
 
-[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) は、気象ジョブの調整に使用され、Docker コードを実行するためにリソースをスピンアップします。 また、Docker ジョブが実行される VM にデータを安全にプッシュするメカニズムも提供します。 現在 KeyVault に安全に格納されている API 資格情報は、KeyVault から安全な文字列として読み取られ、Docker コンテナーの作業ディレクトリで拡張プロパティ activity.json (ファイルへのパスは、"/mnt/working_dir/activity.json") として使用できるようになります。Docker コードでは、顧客に代わってパートナー側の API にアクセスするために、実行時にこのファイルから資格情報を読み取ることができます。 資格情報は、ファイル内で次のように使用できます。
+[Azure Data Factory](../../data-factory/introduction.md) は、気象ジョブの調整に使用され、Docker コードを実行するためにリソースをスピンアップします。 また、Docker ジョブが実行される VM にデータを安全にプッシュするメカニズムも提供します。 現在 KeyVault に安全に格納されている API 資格情報は、KeyVault から安全な文字列として読み取られ、Docker コンテナーの作業ディレクトリで拡張プロパティ activity.json (ファイルへのパスは、"/mnt/working_dir/activity.json") として使用できるようになります。Docker コードでは、顧客に代わってパートナー側の API にアクセスするために、実行時にこのファイルから資格情報を読み取ることができます。 資格情報は、ファイル内で次のように使用できます。
 
 ```json
 { 
@@ -89,7 +89,7 @@ FarmBeats ライブラリには、パートナーがアクティビティ プロ
 
 ファイルの有効期間は、Docker コードの実行中のみで、Docker の実行終了後に削除されます。
 
-ADF パイプラインとアクティビティのしくみの詳細については、[https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping](https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping) を参照してください。
+ADF パイプラインとアクティビティのしくみの詳細については、[https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping](../../data-factory/copy-activity-schema-and-type-mapping.md) を参照してください。
 
 **HTTP 要求ヘッダー**
 
@@ -107,7 +107,7 @@ JSON は、任意のデータ構造をシンプルなテキストで表現する
 
 ## <a name="docker-specifications"></a>Docker の仕様
 
-Docker プログラムには、**ブートストラップ**と**ジョブ**の 2 つのコンポーネントが必要です。 複数のジョブを含めることができます。
+Docker プログラムには、 **ブートストラップ** と **ジョブ** の 2 つのコンポーネントが必要です。 複数のジョブを含めることができます。
 
 ### <a name="bootstrap"></a>ブートストラップ
 
@@ -121,10 +121,10 @@ Docker プログラムには、**ブートストラップ**と**ジョブ**の 2
 このプロセスの一環として、次のメタデータが作成されます。 
 
  > [!NOTE]
- > **ご注意ください**。[リファレンス実装](https://github.com/azurefarmbeats/noaa_docker)で説明されているとおりに bootstrap_manifest.json ファイルを更新する場合、ブートストラップにより、マニフェスト ファイルに従って次のメタデータが作成されるため、同じものを作成する必要はありません。
+ > **ご注意ください** 。 [リファレンス実装](https://github.com/azurefarmbeats/noaa_docker)で説明されているとおりに bootstrap_manifest.json ファイルを更新する場合、ブートストラップにより、マニフェスト ファイルに従って次のメタデータが作成されるため、同じものを作成する必要はありません。
 
-- /**WeatherDataModel**: WeatherDataModel は、気象データを表すためのモデルで、ソースから提供されるさまざまなデータに対応します。 たとえば、DailyForecastSimpleModel は、1 日に 1 回、平均気温、湿度、降水量の情報を提供するのに対して、DailyForecastAdvancedModel は、1 時間単位でより多くの情報を提供します。 任意の数の WeatherDataModels を作成できます。
-- /**JobType**: FarmBeats には、拡張可能なジョブ管理システムが用意されています。 気象データ プロバイダーには、さまざまなデータセットおよび API (たとえば、GetDailyForecasts) があります。FarmBeats では、それらを JobType として有効にすることができます。 JobType が作成されると、顧客は、その種類のジョブをトリガーして、自分の場所または関心のあるファームの気象データを取得できます ([FarmBeats Swagger](https://aka.ms/farmbeatsswagger) 内の JobType および Job API を参照)。
+- /**WeatherDataModel** : WeatherDataModel は、気象データを表すためのモデルで、ソースから提供されるさまざまなデータに対応します。 たとえば、DailyForecastSimpleModel は、1 日に 1 回、平均気温、湿度、降水量の情報を提供するのに対して、DailyForecastAdvancedModel は、1 時間単位でより多くの情報を提供します。 任意の数の WeatherDataModels を作成できます。
+- /**JobType** : FarmBeats には、拡張可能なジョブ管理システムが用意されています。 気象データ プロバイダーには、さまざまなデータセットおよび API (たとえば、GetDailyForecasts) があります。FarmBeats では、それらを JobType として有効にすることができます。 JobType が作成されると、顧客は、その種類のジョブをトリガーして、自分の場所または関心のあるファームの気象データを取得できます ([FarmBeats Swagger](https://aka.ms/farmbeatsswagger) 内の JobType および Job API を参照)。
 
 ### <a name="jobs"></a>ジョブ
 
@@ -161,7 +161,7 @@ Docker プログラムには、**ブートストラップ**と**ジョブ**の 2
   location  | 緯度、経度、高度を表します |
   名前 | オブジェクトの名前 |
   説明 | 説明 |
-  farmId | ファームの**オプションの** ID - ジョブ パラメーターの一部として顧客によって提供されます |
+  farmId | ファームの **オプションの** ID - ジョブ パラメーターの一部として顧客によって提供されます |
   Properties  | 製造元から提供されるその他のプロパティ。
 
  各オブジェクトとそのプロパティの詳細については、[Swagger](https://aka.ms/FarmBeatsSwagger) に関するページを参照してください。
@@ -180,7 +180,7 @@ Docker プログラムには、**ブートストラップ**と**ジョブ**の 2
 
 ## <a name="weather-data-telemetry-specifications"></a>気象データ (テレメトリ) の仕様
 
-気象データは、処理のために Azure イベント ハブにプッシュされる正規のメッセージにマップされます。 Azure EventHub は、接続されているデバイスやアプリケーションからリアルタイムでデータ (テレメトリ) を取り込むことができるようにするサービスです。 気象データを FarmBeats に送信するには、FarmBeats のイベント ハブにメッセージを送信するクライアントを作成する必要があります。 テレメトリの送信の詳細については、[イベント ハブへのテレメトリの送信](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)に関するページを参照してください
+気象データは、処理のために Azure イベント ハブにプッシュされる正規のメッセージにマップされます。 Azure Event Hubs は、接続されているデバイスやアプリケーションからリアルタイムでデータ (テレメトリ) の取り込みを可能にするサービスです。 気象データを FarmBeats に送信するには、FarmBeats のイベント ハブにメッセージを送信するクライアントを作成する必要があります。 テレメトリの送信の詳細については、[イベント ハブへのテレメトリの送信](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)に関するページを参照してください
 
 指定されたイベント ハブにクライアントとしてテレメトリを送信する Python コードの例を次に示します。
 

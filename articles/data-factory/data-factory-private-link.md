@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 2cd9f01404a4e33303356dd3f452cd7dbc47a747
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c21b4d746d763f41f4360cf93f67939bcd6dc49f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328566"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632687"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Data Factory 用の Azure Private Link
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Private Link を使用すると、プライベート エンドポイント経由で Azure のさまざまなサービスとしてのプラットフォーム (PaaS) のデプロイに接続できます。 プライベート エンドポイントは、特定の仮想ネットワークおよびサブネット内のプライベート IP アドレスです。 Private Link 機能をサポートしている PaaS デプロイの一覧については、「[Private Link のドキュメント](https://docs.microsoft.com/azure/private-link/)」を参照してください。 
+Azure Private Link を使用すると、プライベート エンドポイント経由で Azure のさまざまなサービスとしてのプラットフォーム (PaaS) のデプロイに接続できます。 プライベート エンドポイントは、特定の仮想ネットワークおよびサブネット内のプライベート IP アドレスです。 Private Link 機能をサポートしている PaaS デプロイの一覧については、「[Private Link のドキュメント](../private-link/index.yml)」を参照してください。 
 
 ## <a name="secure-communication-between-customer-networks-and-azure-data-factory"></a>カスタマー ネットワークと Azure Data Factory 間の通信をセキュリティで保護する 
 クラウド内のネットワークを論理的に表すように Azure 仮想ネットワークをセットアップできます。 これにより、次のような利点があります。
@@ -53,10 +53,10 @@ Azure Data Factory サービスへの通信は、Private Link を経由し、セ
 ![Azure Data Factory アーキテクチャの Private Link の図。](./media/data-factory-private-link/private-link-architecture.png)
 
 上記の各通信チャネルに対して Private Link サービスを有効にすると、次の機能が提供されます。
-- **サポート対象**:
+- **サポート対象** :
    - 送信方向の通信をすべてブロックした場合でも、ご利用の仮想ネットワーク内でデータ ファクトリの作成と監視を行うことができます。
    - セルフホステッド統合ランタイムと Azure Data Factory サービス間のコマンド通信をプライベート ネットワーク環境内で安全に実行できます。 セルフホステッド統合ランタイムと Azure Data Factory サービス間のトラフィックは Private Link を経由します。 
-- **現在、サポートされていません**:
+- **現在、サポートされていません** :
    - テスト接続、フォルダー リストやテーブル リストの参照、スキーマの取得、データのプレビューなど、セルフホステッド統合ランタイムを使用したインタラクティブな作成が Private Link を経由します。
    - 自動更新を有効にした場合、セルフホステッド統合ランタイムの新しいバージョンを Microsoft ダウンロード センターから自動的にダウンロードできます。
 
@@ -67,7 +67,7 @@ Azure Data Factory サービスへの通信は、Private Link を経由し、セ
 > リンクされたサービスを作成する場合は、必ず資格情報を Azure Key Vault 内に格納してください。 そうしないと、Azure Data Factory 内で Private Link サービスを有効にしても、資格情報が機能しません。
 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>Azure Data Factory 用の Private Link をセットアップする
-プライベート エンドポイントは、[Azure portal](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)、PowerShell、または Azure CLI を使用して作成できます。
+プライベート エンドポイントは、[Azure portal](../private-link/create-private-endpoint-portal.md) を使用して作成できます。
 
 また、次に示すように、Azure portal でご利用の Azure Data Factory に移動し、プライベート エンドポイントを作成することもできます。
 
@@ -89,4 +89,3 @@ Azure Data Factory へのパブリック アクセスをブロックし、Privat
 - [Azure Data Factory UIを使用してData Factoryを作成する](quickstart-create-data-factory-portal.md)
 - [Azure Data Factory の概要](introduction.md)
 - [Azure Data Factory でのビジュアルの作成](author-visually.md)
-

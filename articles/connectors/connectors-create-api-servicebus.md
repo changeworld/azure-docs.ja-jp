@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: 5834a1927fda71faa924e14265fb7f82034887de
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b6276ff940d8b156a671cb5386ce53ede30dd879
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996343"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426649"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps と Azure Service Bus を使用してクラウド内でメッセージを交換する
 
@@ -47,7 +47,7 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
 1. [Azure portal](https://portal.azure.com) で、Azure アカウントを使ってサインインします。
 
-1. Service Bus "*名前空間*" に移動します。 名前空間ページで **[設定]** の **[共有アクセス ポリシー]** を選択します。 **[要求]** で、その名前空間に対して**管理**アクセス許可が付与されていることを確認します。
+1. Service Bus " *名前空間* " に移動します。 名前空間ページで **[設定]** の **[共有アクセス ポリシー]** を選択します。 **[要求]** で、その名前空間に対して **管理** アクセス許可が付与されていることを確認します。
 
    ![Service Bus 名前空間のアクセス許可を管理する](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
 
@@ -60,7 +60,7 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
       ![Service Bus 名前空間の接続文字列をコピーする](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > 接続文字列が Service Bus 名前空間に関連付けられているのか、キューのようなメッセージング エンティティに関連付けられているのかを確認するには、接続文字列で `EntityPath`  パラメーターを探します。 このパラメーターがある場合、接続文字列は特定のエンティティを対象としています。これは、ロジック アプリで使用するのに適切な文字列ではありません。
+   > 接続文字列が Service Bus 名前空間に関連付けられているのか、キューのようなメッセージング エンティティに関連付けられているのかを確認するには、接続文字列で `EntityPath` パラメーターを探します。 このパラメーターがある場合、接続文字列は特定のエンティティを対象としています。これは、ロジック アプリで使用するのに適切な文字列ではありません。
 
 ## <a name="add-service-bus-trigger"></a>Service Bus トリガーの追加
 
@@ -68,18 +68,22 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
 1. [Azure portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーで空のロジック アプリを開きます。
 
-1. 検索ボックスに、フィルターとして「azure service bus」と入力します。 トリガーの一覧から、使用するトリガーを選択します。
+1. ポータルの検索ボックスに、「`azure service bus`」と入力します。 表示されたトリガー一覧から、使用するトリガーを選択します。
 
    たとえば、新しい項目が Service Bus キューに送信されたときにロジック アプリをトリガーするには、 **[メッセージがキューに着信したとき (オート コンプリート)]** トリガーを選択します。
 
    ![Service Bus トリガーを選択する](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
-   すべての Service Bus トリガーは、*長いポーリング*のトリガーです。 この説明はつまり、起動するときにすべてのメッセージを処理し、キューまたはトピック サブスクリプションにさらにメッセージが届くのを 30 秒間待機します。 30 秒以内にメッセージが届かなかった場合、トリガーの実行はスキップされます。 受信した場合、トリガーはキューまたはトピック サブスクリプションが空になるまでメッセージの読み取りを続けます。 次のトリガーのポーリングは、トリガーのプロパティで指定された繰り返し間隔に基づいています。
+   Service Bus トリガーを使用する場合の考慮事項を次に示します。
 
-   **[1 つ以上のメッセージがキューに届いたとき (オート コンプリート)]** トリガーのように、1 つ以上のメッセージを返すトリガーもあります。 これらのトリガーが起動すると、1 からトリガーの **[最大メッセージ数]** プロパティで指定された数までのメッセージが返されます。
+   * すべての Service Bus トリガーは、 *長いポーリング* のトリガーです。 この説明はつまり、起動するときにすべてのメッセージを処理し、キューまたはトピック サブスクリプションにさらにメッセージが届くのを 30 秒間待機します。 30 秒以内にメッセージが届かなかった場合、トリガーの実行はスキップされます。 受信した場合、トリガーはキューまたはトピック サブスクリプションが空になるまでメッセージの読み取りを続けます。 次のトリガーのポーリングは、トリガーのプロパティで指定された繰り返し間隔に基づいています。
 
-    > [!NOTE]
-    > オートコンプリートのトリガーでメッセージが自動的に完成しますが、これは次回の Service Bus 呼び出し時にのみ発生します。 このビヘイビアーはロジック アプリの設計に影響を与える可能性があります。 たとえば、オートコンプリート トリガーの同時実行を変更しないようにします。変更すると、ロジック アプリが調整状態になったときに、メッセージが重複する可能性があります。 同時実行制御を変更すると、次のような状況になります。調整されたトリガーは `WorkflowRunInProgress` コードでスキップされ、完了操作は行われず、ポーリング間隔の後で次のトリガー実行が発生します。 ポーリング間隔より長い値にサービス バス ロック期間を設定する必要があります。 ただし、このように設定しても、次のポーリング間隔でもロジック アプリが調整状態のままである場合、メッセージはまだ完了していない可能性があります。
+   * **[1 つ以上のメッセージがキューに届いたとき (オート コンプリート)]** トリガーのように、1 つ以上のメッセージを返すトリガーもあります。 これらのトリガーが起動すると、1 からトリガーの **[最大メッセージ数]** プロパティで指定された数までのメッセージが返されます。
+
+     > [!NOTE]
+     > オートコンプリートのトリガーでメッセージが自動的に完成しますが、これは次回の Service Bus 呼び出し時にのみ発生します。 このビヘイビアーはロジック アプリの設計に影響を与える可能性があります。 たとえば、オートコンプリート トリガーの同時実行を変更しないようにします。変更すると、ロジック アプリが調整状態になったときに、メッセージが重複する可能性があります。 同時実行制御を変更すると、次のような状況になります。調整されたトリガーは `WorkflowRunInProgress` コードでスキップされ、完了操作は行われず、ポーリング間隔の後で次のトリガー実行が発生します。 ポーリング間隔より長い値にサービス バス ロック期間を設定する必要があります。 ただし、このように設定しても、次のポーリング間隔でもロジック アプリが調整状態のままである場合、メッセージはまだ完了していない可能性があります。
+
+   * Service Bus トリガーに対して[同時実行の設定を有効](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)にした場合、`maximumWaitingRuns` プロパティの既定値は 10 です。 Service Bus エンティティのロック期間の設定とロジック アプリ インスタンスの実行時間によっては、この既定値は大きすぎて、"ロックが失われました" という例外が発生する可能性があります。 ご自分のシナリオに最適な値を確認するには、`maximumWaitingRuns` プロパティに値 1 または 2 を指定してテストを開始します。 待機中の実行の最大値を変更するには、「[実行待機の制限を変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)」を参照してください。
 
 1. トリガーを Service Bus 名前空間に初めて接続する場合、接続情報の入力を求めるメッセージがロジック アプリ デザイナーによって表示された際は次の手順に従います。
 
@@ -113,13 +117,13 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. [Azure portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでお客様のロジック アプリを開きます。
+1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
 
 1. アクションを追加するステップで、 **[新しいステップ]** を選択します。
 
    または、ステップの間にアクションを追加するには、該当するステップ間の矢印の上にポインターを移動します。 表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]** を選択します。
 
-1. **[アクションを選択してください]** の下の検索ボックス内に、フィルターとして「azure service bus」と入力します。 アクションの一覧から、目的のアクションを選択します。 
+1. **[アクションを選択してください]** で、検索ボックスに「`azure service bus`」と入力します。 表示されるアクションの一覧から、目的のアクションを選択します。 
 
    この例では、 **[メッセージの送信]** というアクションを選択します。
 
@@ -159,7 +163,7 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
 ## <a name="send-correlated-messages-in-order"></a>相互関係のあるメッセージを順番に送信する
 
-相互関係のあるメッセージを特定の順序で送信する必要がある場合は、[Azure Service Bus コネクタ](../connectors/connectors-create-api-servicebus.md)を使用することによって、["*シーケンシャルなコンボイ*" パターン](/azure/architecture/patterns/sequential-convoy)に従うことができます。 関連付けられたメッセージには、Service Bus での[セッション](../service-bus-messaging/message-sessions.md)の ID など、それらのメッセージ間の関係を定義するプロパティがあります。
+相互関係のあるメッセージを特定の順序で送信する必要がある場合は、 [Azure Service Bus コネクタ](../connectors/connectors-create-api-servicebus.md)を使用することによって、 [" *シーケンシャルなコンボイ* " パターン](/azure/architecture/patterns/sequential-convoy)に従うことができます。 関連付けられたメッセージには、Service Bus での[セッション](../service-bus-messaging/message-sessions.md)の ID など、それらのメッセージ間の関係を定義するプロパティがあります。
 
 ロジック アプリを作成するとき、シーケンシャルなコンボイ パターンを実装する **Correlated in-order delivery using service bus sessions** テンプレートを選択できます。 詳細については、[関連のあるメッセージを順番に送信する](../logic-apps/send-related-messages-sequential-convoy.md)方法に関するページを参照してください。
 

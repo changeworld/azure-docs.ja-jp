@@ -2,25 +2,22 @@
 title: Azure Automation でモジュールを管理する
 description: この記事では、PowerShell モジュールを使用して、Runbook と DSC 構成の DSC リソースでコマンドレットを有効にする方法について説明します。
 services: automation
-ms.service: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 01/31/2020
+ms.subservice: shared-capabilities
+ms.date: 10/22/2020
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 2bf3dda6e3d99b5ed67298343f5238d304df7e2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c940ede63e2a467a29ae56308893d573925d0039
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187372"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458151"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Automation でモジュールを管理する
 
 Azure Automation では、複数の PowerShell モジュールを使用して、Runbook と DSC 構成の DSC リソースでコマンドレットを有効にすることができます。 サポートされているモジュールは次のとおりです。
 
-* [Azure PowerShell Az.Automation](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)。
-* [Azure PowerShell AzureRM.Automation](/powershell/module/azurerm.automation/?view=azurermps-6.13.0)。
+* [Azure PowerShell Az.Automation](/powershell/azure/new-azureps-module-az)。
+* [Azure PowerShell AzureRM.Automation](/powershell/module/azurerm.automation/)。
 * その他の PowerShell モジュール。
 * 内部の `Orchestrator.AssetManagement.Cmdlets` モジュール。
 * Python 2 モジュール。
@@ -106,9 +103,9 @@ Azure Automation は、カスタム モジュールをインポートしてそ�
 
 ## <a name="migrate-to-az-modules"></a>Az モジュールへの移行
 
-このセクションでは、Automation で Az モジュールに移行する方法について説明します。 詳細については、「[AzureRM から Az への Azure PowerShell の移行](/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.7.0)」を参照してください。 
+このセクションでは、Automation で Az モジュールに移行する方法について説明します。 詳細については、「[AzureRM から Az への Azure PowerShell の移行](/powershell/azure/migrate-from-azurerm-to-az)」を参照してください。
 
-AzureRM モジュールと Az モジュールを同じ Automation アカウントで実行することはお勧めできません。 AzureRM から Az に移行することが確実である場合は、完全な移行を完全にコミットすることをお勧めします。 Automation では、多くの場合、起動時間を節約するために Automation アカウントのサンドボックスが再利用されます。 モジュールの完全な移行を行っていない場合、AzureRM モジュールのみを使用するジョブを開始し、次に Az モジュールのみを使用する別のジョブを開始することになります。 サンドボックスは間もなくクラッシュし、モジュールに互換性がないことを示すエラーが返されます。 このような状況では、特定の Runbook または構成ではクラッシュがランダムに発生します。 
+AzureRM モジュールと Az モジュールを同じ Automation アカウントで実行することはお勧めできません。 AzureRM から Az に移行することが確実である場合は、完全な移行を完全にコミットすることをお勧めします。 Automation では、多くの場合、起動時間を節約するために Automation アカウントのサンドボックスが再利用されます。 モジュールの完全な移行を行っていない場合、AzureRM モジュールのみを使用するジョブを開始し、次に Az モジュールのみを使用する別のジョブを開始することになります。 サンドボックスは間もなくクラッシュし、モジュールに互換性がないことを示すエラーが返されます。 このような状況では、特定の Runbook または構成ではクラッシュがランダムに発生します。
 
 >[!NOTE]
 >新しい Automation アカウントを作成すると、Az モジュールへの移行後でも、Automation では既定で AzureRM モジュールがインポートされます。 引き続き、AzureRM コマンドレットを使用してチュートリアルの Runbook を更新できます。 ただし、これらの Runbook は実行しないでください。
@@ -119,27 +116,27 @@ Az モジュールに移行する前に、別の Automation アカウントで�
 
 ### <a name="stop-and-unschedule-all-runbooks-that-use-azurerm-modules"></a>AzureRM モジュールが使用されるすべての Runbook を停止してスケジュールを解除する
 
-AzureRM モジュールを使用する既存の Runbook または DSC 構成を決して実行しないようにするために、影響を受けるすべての Runbook と構成を停止し、スケジュールを解除する必要があります。 まず、各 Runbook または DSC 構成と、それぞれのスケジュールを別々に確認して、必要に応じて、後で項目を確実に再スケジュールできるようにします。 
+AzureRM モジュールを使用する既存の Runbook または DSC 構成を決して実行しないようにするために、影響を受けるすべての Runbook と構成を停止し、スケジュールを解除する必要があります。 まず、各 Runbook または DSC 構成と、それぞれのスケジュールを別々に確認して、必要に応じて、後で項目を確実に再スケジュールできるようにします。
 
-スケジュールを削除する準備ができたら、Azure portal または [Remove-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/remove-azurermautomationschedule?view=azurermps-6.13.0) コマンドレットのいずれかを使用できます。 [スケジュールの削除](schedules.md#remove-a-schedule)に関するページを参照してください。
+スケジュールを削除する準備ができたら、Azure portal または [Remove-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/remove-azurermautomationschedule) コマンドレットのいずれかを使用できます。 [スケジュールの削除](schedules.md#remove-a-schedule)に関するページを参照してください。
 
 ### <a name="remove-azurerm-modules"></a>AzureRM モジュールを削除する
 
-Az モジュールをインポートする前に、AzureRM モジュールを削除することができます。 ただし、これを行うと、ソース管理の同期が中断され、まだスケジュールされているスクリプトが失敗する可能性があります。 モジュールを削除することに決めたら、「[AzureRM のアンインストール](/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.8.0#uninstall-azurerm)」を参照してください。
+Az モジュールをインポートする前に、AzureRM モジュールを削除することができます。 ただし、これを行うと、ソース管理の同期が中断され、まだスケジュールされているスクリプトが失敗する可能性があります。 モジュールを削除することに決めたら、「[AzureRM のアンインストール](/powershell/azure/migrate-from-azurerm-to-az#uninstall-azurerm)」を参照してください。
 
 ### <a name="import-az-modules"></a>Az モジュールをインポートする
 
 Automation アカウントに Az モジュールをインポートしても、Runbook で使用される PowerShell セッションにそのモジュールが自動的にインポートされることはありません。 モジュールは、次の状況で PowerShell セッションにインポートされます。
 
 * Runbook がモジュールからコマンドレットを呼び出したとき。
-* Runbook で [Import-Module](/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) コマンドレットを使用してモジュールが明示的にインポートされたとき。
+* Runbook で [Import-Module](/powershell/module/microsoft.powershell.core/import-module) コマンドレットを使用してモジュールが明示的にインポートされたとき。
 * Runbook が別の依存モジュールをインポートするとき。
 
 Az モジュールは Azure portal でインポートできます。 Az.Automation モジュール全体ではなく、必要な Az モジュールだけをインポートするようにしてください。 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) には他の Az モジュールが依存しているため、必ず他のモジュールの前にこのモジュールをインポートするようにしてください。
 
-1. Automation アカウントから、 **[共有リソース]** の **[モジュール]** を選択します。 
+1. Automation アカウントから、 **[共有リソース]** の **[モジュール]** を選択します。
 2. **[ギャラリーの参照]** を選択します。  
-3. 検索バーにモジュール名を入力します (`Az.Accounts` など)。 
+3. 検索バーにモジュール名を入力します (`Az.Accounts` など)。
 4. [PowerShell Module]\(PowerShell モジュール\) ページで、 **[インポート]** を選択してモジュールを Automation アカウントにインポートします。
 
     ![Automation アカウントにモジュールをインポートする画面のスクリーンショット](../media/modules/import-module.png)
@@ -150,25 +147,36 @@ Az モジュールは Azure portal でインポートできます。 Az.Automati
 
 ### <a name="test-your-runbooks"></a>Runbook をテストする
 
-Az モジュールを Automation アカウントにインポートしたら、その新しいモジュールを使用できるように Runbook および DSC 構成の編集を開始することができます。 新しいコマンドレットを使用するという Runbook の変更をテストする 1 つの方法として、Runbook の先頭で `Enable-AzureRmAlias -Scope Process` コマンドを使用できます。 このコマンドを Runbook に追加することで、変更なしでスクリプトを実行できます。 
+Az モジュールを Automation アカウントにインポートしたら、その新しいモジュールを使用できるように Runbook および DSC 構成の編集を開始することができます。 新しいコマンドレットを使用するという Runbook の変更をテストする 1 つの方法として、Runbook の先頭で `Enable-AzureRmAlias -Scope Process` コマンドを使用できます。 このコマンドを Runbook に追加することで、変更なしでスクリプトを実行できます。
 
 ## <a name="author-modules"></a>モジュールを作成する
 
-Azure Automation で使用するカスタム PowerShell モジュールを作成するときは、このセクションの考慮事項に従うことをお勧めします。 インポート用にモジュールを準備するには、少なくとも、モジュール フォルダーと同じ名前の psd1、psm1、または PowerShell モジュールの **.dll** ファイルを作成する必要があります。 次に、Azure Automation が 1 つのファイルとしてインポートできるように、モジュール フォルダーを zip 形式に圧縮します。 **.zip** パッケージは、含まれているモジュール フォルダーと同じ名前にする必要があります。 
+Azure Automation で使用するカスタム PowerShell モジュールを作成するときは、このセクションの考慮事項に従うことをお勧めします。 インポート用にモジュールを準備するには、少なくとも、モジュール フォルダーと同じ名前の .psd1、.psm1、または PowerShell モジュールの **.dll** ファイルを作成する必要があります。 次に、Azure Automation が 1 つのファイルとしてインポートできるように、モジュール フォルダーを zip 形式に圧縮します。 **.zip** パッケージは、含まれているモジュール フォルダーと同じ名前にする必要があります。
 
-PowerShell モジュールの作成の詳細については、「[PowerShell スクリプト モジュールを記述する方法](/powershell/scripting/developer/module/how-to-write-a-powershell-script-module?view=powershell-7)」を参照してください。
+PowerShell モジュールの作成の詳細については、「[PowerShell スクリプト モジュールを記述する方法](/powershell/scripting/developer/module/how-to-write-a-powershell-script-module)」を参照してください。
 
 ### <a name="version-folder"></a>バージョン フォルダー
 
-モジュールの **.zip** パッケージにバージョン フォルダーを含めないでください。 この問題は Runbook にはあまり関係ありませんが、State Configuration (DSC) サービスでは問題が発生します。 State Configuration で管理されるノードにモジュールが配布されるときに、Azure Automation によってバージョン フォルダーが自動的に作成されます。 バージョン フォルダーが存在する場合、最終的に 2 つのインスタンスが作成されます。 DSC モジュールのフォルダー構造の例を次に示します。
+PowerShell のサイド バイ サイドのモジュール バージョン管理では、PowerShell 内で複数のバージョンのモジュールを使用できます。 これは特定のバージョンの PowerShell モジュールに対してのみテストされて動作する古いスクリプトがあるが、他のスクリプトについては同じ PowerShell モジュールの新しいバージョンが必要な場合に便利です。
+
+複数のバージョンが含まれるように PowerShell モジュールを構築するには、モジュール フォルダーを作成し、このモジュール フォルダー内に、使用可能にするモジュールのバージョンごとのフォルダーを作成します。 次の例では、 *TestModule* というモジュール内に、1.0.0 と 2.0.0 の 2 つのバージョンがあります。
+
+```dos
+TestModule
+   1.0.0
+   2.0.0
+```
+
+各バージョンのフォルダー内で、モジュールを構成する PowerShell の .psm1、.psd1、または PowerShell モジュールの **.dll** ファイルをそれぞれのバージョンのフォルダーにコピーします。 Azure Automation が 1 つの .zip ファイルとしてインポートできるように、モジュール フォルダーを zip 形式に圧縮します。 Automation ではインポートされたモジュールの最上位バージョンのみが表示されますが、モジュール パッケージにサイド バイ サイド バージョンのモジュールが含まれている場合は、これらのすべてを Runbook または DSC 構成で使用できます。  
+
+Automation では、同じパッケージ内のサイド バイ サイド バージョンを含むモジュールがサポートされますが、モジュール パッケージ インポート全体で複数のバージョンのモジュールを使用することはサポートされていません。 たとえば、バージョン 1 と 2 を含む **モジュール A** を Automation アカウントにインポートします。 後で、バージョン 3 と 4 を含むように **モジュール A** を更新し、Automation アカウントにインポートすると、すべての Runbook または DSC 構成内でバージョン 3 と 4 のみが使用できます。 1、2、3、4 のすべてのバージョンを使用できるようにする必要がある場合、インポートする .zip ファイルにバージョン 1、2、3、4 が含まれている必要があります。
+
+Runbook 間で同じモジュールの異なるバージョンを使用する場合は、`Import-Module` コマンドレットを使用して `-RequiredVersion <version>` パラメーターを含めることで、Runbook で使用するバージョンを常に宣言する必要があります。 使用するバージョンが最新バージョンであってもそうです。 これは、Runbook ジョブは同じサンドボックス内で実行できるためです。 サンドボックス内の以前のジョブによって指定されていたため、特定のバージョン番号のモジュールがサンドボックスに既に明示的に読み込まれている場合、そのサンドボックスの後続のジョブでは、そのモジュールの最新バージョンが自動的に読み込まれることはありません。 これは、その一部のバージョンが既にサンドボックスに読み込まれているためです。
+
+DSC リソースの場合は、次のコマンドを使用して特定のバージョンを指定します。
 
 ```powershell
-myModule
-  - DSCResources
-    - myResourceFolder
-      myResourceModule.psm1
-      myResourceSchema.mof
-  myModuleManifest.psd1
+Import-DscResource -ModuleName <ModuleName> -ModuleVersion <version>
 ```
 
 ### <a name="help-information"></a>ヘルプ情報
@@ -219,7 +227,7 @@ myModule
 
 ### <a name="connection-type"></a>接続の種類
 
-モジュールから外部サービスに接続する場合は、[カスタム統合モジュール](#custom-modules)を使用して、接続の種類を定義します。 モジュール内の各コマンドレットはその接続の種類 (接続オブジェクト) のインスタンスをパラメーターとして受け取ります。 ユーザーは、コマンドレットを呼び出すたびに、接続資産のパラメーターをそのコマンドレットの対応するパラメーターにマップします。 
+モジュールから外部サービスに接続する場合は、[カスタム統合モジュール](#custom-modules)を使用して、接続の種類を定義します。 モジュール内の各コマンドレットはその接続の種類 (接続オブジェクト) のインスタンスをパラメーターとして受け取ります。 ユーザーは、コマンドレットを呼び出すたびに、接続資産のパラメーターをそのコマンドレットの対応するパラメーターにマップします。
 
 ![Azure portal でカスタム接続を使用する](../media/modules/connection-create-new.png)
 
@@ -289,11 +297,11 @@ myModule
 
 ### <a name="module-dependency"></a>モジュールの依存関係
 
-xcopy を使用してコピーできるパッケージにモジュールが完全に含まれていることを確認します。 Automation のモジュールは、Runbook を実行するときに Automation の Sandbox に配布されます。 モジュールは、それらを実行するホストとは独立して動作する必要があります。 
+xcopy を使用してコピーできるパッケージにモジュールが完全に含まれていることを確認します。 Automation のモジュールは、Runbook を実行するときに Automation の Sandbox に配布されます。 モジュールは、それらを実行するホストとは独立して動作する必要があります。
 
-モジュール パッケージを zip 形式で圧縮して移動できるようにし、別のホストの PowerShell 環境にインポートしたときに通常通りに機能する状態にする必要があります。 これを行うには、モジュールが Automation にインポートされるときに、zip 形式のモジュール フォルダーの外部にあるファイルに依存していないことを確認します。 
+モジュール パッケージを zip 形式で圧縮して移動できるようにし、別のホストの PowerShell 環境にインポートしたときに通常通りに機能する状態にする必要があります。 これを行うには、モジュールが Automation にインポートされるときに、zip 形式のモジュール フォルダーの外部にあるファイルに依存していないことを確認します。
 
-モジュールは、ホスト上の独自のレジストリ設定に依存しないようにする必要があります。 例としては、製品のインストール時に行われる設定があります。 
+モジュールは、ホスト上の独自のレジストリ設定に依存しないようにする必要があります。 例としては、製品のインストール時に行われる設定があります。
 
 ### <a name="module-file-paths"></a>モジュール ファイルのパス
 
@@ -301,7 +309,7 @@ xcopy を使用してコピーできるパッケージにモジュールが完�
 
 ## <a name="import-modules"></a>モジュールをインポートする
 
-このセクションでは、Automation アカウントにモジュールをインポートできるいくつかの方法を定義します。 
+このセクションでは、Automation アカウントにモジュールをインポートできるいくつかの方法を定義します。
 
 ### <a name="import-modules-in-the-azure-portal"></a>Azure portal でモジュールをインポートする
 
@@ -309,13 +317,13 @@ Azure portal でモジュールをインポートするには:
 
 1. Automation アカウントに移動します。
 2. **[共有リソース]** の下にある **[モジュール]** を選択します。
-3. **[モジュールの追加]** を選択します。 
+3. **[モジュールの追加]** を選択します。
 4. モジュールを含む **.zip** ファイルを選択します。
 5. **[OK]** を選択してプロセスのインポートを開始します。
 
 ### <a name="import-modules-by-using-powershell"></a>PowerShell を使用してモジュールをインポートする
 
-[New-AzAutomationModule](/powershell/module/az.automation/new-azautomationmodule?view=azps-3.7.0) コマンドレットを使用して、モジュールを Automation アカウントにインポートできます。 このコマンドレットは、モジュールの .zip パッケージの URL を受け取ります。
+[New-AzAutomationModule](/powershell/module/az.automation/new-azautomationmodule) コマンドレットを使用して、モジュールを Automation アカウントにインポートできます。 このコマンドレットは、モジュールの .zip パッケージの URL を受け取ります。
 
 ```azurepowershell-interactive
 New-AzAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
@@ -358,8 +366,8 @@ PowerShell ギャラリー モジュールを Automation アカウントから�
 
 Azure portal でモジュールを削除するには:
 
-1. Automation アカウントに移動します。 **[共有リソース]** の下にある **[モジュール]** を選択します。 
-2. 削除するモジュールを選択します。 
+1. Automation アカウントに移動します。 **[共有リソース]** の下にある **[モジュール]** を選択します。
+2. 削除するモジュールを選択します。
 3. [モジュール] ページで、 **[削除]** を選択します。 このモジュールが[既定のモジュール](#default-modules)のいずれかである場合、Automation アカウントが作成されたときに存在していたバージョンにロールバックされます。
 
 ### <a name="delete-modules-by-using-powershell"></a>PowerShell を使用してモジュールを削除する
@@ -372,5 +380,6 @@ Remove-AzAutomationModule -Name <moduleName> -AutomationAccountName <automationA
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure PowerShell モジュールの使用方法の詳細については、「[Azure PowerShell の概要](/powershell/azure/get-started-azureps?view=azps-3.7.0)」をご覧ください。
-* PowerShell モジュールの作成の詳細については、「[Windows PowerShell モジュールの作成](/powershell/scripting/developer/module/writing-a-windows-powershell-module?view=powershell-7)」をご覧ください。
+* Azure PowerShell モジュールの使用方法の詳細については、「[Azure PowerShell の概要](/powershell/azure/get-started-azureps)」をご覧ください。
+
+* PowerShell モジュールの作成の詳細については、「[Windows PowerShell モジュールの作成](/powershell/scripting/developer/module/writing-a-windows-powershell-module)」をご覧ください。

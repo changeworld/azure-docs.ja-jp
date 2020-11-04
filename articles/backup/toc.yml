@@ -406,6 +406,8 @@
           href: backup-encryption.md
         - name: カスタマー マネージド キーを使用した暗号化
           href: encryption-at-rest-with-cmk.md
+        - name: トランスポート層セキュリティ
+          href: transport-layer-security.md
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md

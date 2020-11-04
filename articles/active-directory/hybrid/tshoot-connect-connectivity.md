@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: c46d977b6ce4eaa62aefc6874ce2b855a4711670
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 56e9820c5e3a750a35b7271b86750df00eb4784e
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317514"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677066"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD 接続性のトラブルシューティング
 この記事では、Azure AD Connect と Azure AD の間の接続のしくみと、接続に関する問題のトラブルシューティング方法について説明します。 このような問題は、プロキシ サーバーを備えた環境において発生する可能性が最も高くなります。
@@ -32,7 +32,7 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 
 この記事では、Fabrikam がプロキシを介して Azure AD に接続する方法について説明します。 プロキシ サーバーは fabrikamproxy という名前で、ポート 8080 を使用しています。
 
-最初に、[**machine.config**](how-to-connect-install-prerequisites.md#connectivity) が正しく構成されており、machine.config ファイルの更新後に **Microsoft Azure AD 同期サービス**が再起動されていることを確認する必要があります。
+最初に、 [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) が正しく構成されており、machine.config ファイルの更新後に **Microsoft Azure AD 同期サービス** が再起動されていることを確認する必要があります。
 ![スクリーンショットは、machine.config ファイルの一部を示しています。](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
@@ -52,9 +52,17 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 | \*.windows.net |HTTPS/443 |Azure AD へのサインインに使用します。 |
 | secure.aadcdn.microsoftonline-p.com |HTTPS/443 |MFA に使用します。 |
 | \*.microsoftonline.com |HTTPS/443 |Azure AD ディレクトリの構成とデータのインポート/エクスポートに使用します。 |
+| \*.crl3.digicert.com |HTTP/80 |証明書の確認に使用します。 |
+| \*.crl4.digicert.com |HTTP/80 |証明書の確認に使用します。 |
+| \*.ocsp.digicert.com |HTTP/80 |証明書の確認に使用します。 |
+| \*. www.d-trust.net |HTTP/80 |証明書の確認に使用します。 |
+| \*.root-c3-ca2-2009.ocsp.d-trust.net |HTTP/80 |証明書の確認に使用します。 |
+| \*.crl.microsoft.com |HTTP/80 |証明書の確認に使用します。 |
+| \*.oneocsp.microsoft.com |HTTP/80 |証明書の確認に使用します。 |
+| \*.ocsp.msocsp.com |HTTP/80 |証明書の確認に使用します。 |
 
 ## <a name="errors-in-the-wizard"></a>ウィザードでのエラー
-インストール ウィザードでは、2 種類のセキュリティ コンテキストを使用しています。 **[Azure AD に接続]** ページでは、現在サインインしているユーザーを使用します。 **[構成]** ページでは、使用するセキュリティ コンテキストを[同期エンジンのサービスを実行しているアカウント](reference-connect-accounts-permissions.md#adsync-service-account)に変更します。 プロキシ構成はグローバルであるため、何らかの問題があると、ほとんどの場合、その問題はウィザードの **[Azure AD に接続]** ページに既に表示されています。
+インストール ウィザードでは、2 種類のセキュリティ コンテキストを使用しています。 **[Azure AD に接続]** ページでは、現在サインインしているユーザーを使用します。 **[構成]** ページでは、使用するセキュリティ コンテキストを [同期エンジンのサービスを実行しているアカウント](reference-connect-accounts-permissions.md#adsync-service-account)に変更します。 プロキシ構成はグローバルであるため、何らかの問題があると、ほとんどの場合、その問題はウィザードの **[Azure AD に接続]** ページに既に表示されています。
 
 インストール ウィザードで発生する最も一般的な問題を次に示します。
 
@@ -66,7 +74,7 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 * 正しいようであれば、「 [プロキシ接続を検証する](#verify-proxy-connectivity) 」の手順に従って、ウィザード外部でも同じように問題が発生するかどうかを確認してください。
 
 ### <a name="a-microsoft-account-is-used"></a>Microsoft アカウントが使用されている
-**学校または組織**のアカウントではなく **Microsoft アカウント**を使用すると、一般的なエラーが表示されます。
+**学校または組織** のアカウントではなく **Microsoft アカウント** を使用すると、一般的なエラーが表示されます。
 ![Microsoft アカウントが使用されている](./media/tshoot-connect-connectivity/unknownerror.png)
 
 ### <a name="the-mfa-endpoint-cannot-be-reached"></a>MFA エンドポイントに到達できない
@@ -87,7 +95,7 @@ PowerShell は、machine.config 内の構成を使用してプロキシに接続
 
 プロキシが正しく構成されていれば、成功状態になるはずです。![プロキシが正しく構成されている場合の成功状態を示すスクリーンショット。](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
-"**リモート サーバーに接続できません**" というメッセージが表示された場合は、PowerShell がプロキシを使用せずに直接呼び出しを試みているか、DNS が正しく構成されていません。 **machine.config** ファイルが正しく構成されていることを確認してください。
+" **リモート サーバーに接続できません** " というメッセージが表示された場合は、PowerShell がプロキシを使用せずに直接呼び出しを試みているか、DNS が正しく構成されていません。 **machine.config** ファイルが正しく構成されていることを確認してください。
 ![unabletoconnect](./media/tshoot-connect-connectivity/invokewebrequestunable.png)
 
 プロキシが正しく構成されていない場合、次のエラーが表示されます。![proxy200](./media/tshoot-connect-connectivity/invokewebrequest403.png)
@@ -109,7 +117,7 @@ Azure AD Connect が Azure AD にエクスポート要求を送信すると、Az
 * エンドポイントの adminwebservice と provisioningapi は検出エンドポイントであり、実際に使用するエンドポイントを見つけるために使用されます。 こうしたエンドポイントは、リージョンによって異なります。
 
 ### <a name="reference-proxy-logs"></a>参照用プロキシ ログ
-実際のプロキシ ログのダンプと、その取得元のインストール ウィザード ページを次に示します (エンドポイントが重複する項目は削除してあります)。 このセクションは、お使いの環境でのプロキシおよびネットワーク ログの参照用としてご利用ください。 実際のエンドポイントは環境によって異なる場合があります (特に "*斜体*" で示された URL)。
+実際のプロキシ ログのダンプと、その取得元のインストール ウィザード ページを次に示します (エンドポイントが重複する項目は削除してあります)。 このセクションは、お使いの環境でのプロキシおよびネットワーク ログの参照用としてご利用ください。 実際のエンドポイントは環境によって異なる場合があります (特に " *斜体* " で示された URL)。
 
 **Azure への接続**
 
@@ -117,26 +125,26 @@ Azure AD Connect が Azure AD にエクスポート要求を送信すると、Az
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:32 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:32 |connect:// *bba800-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:32 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://provisioningapi.microsoftonline.com:443 |
-| 1/11/2016 8:33 |connect://*bwsc02-relay*.microsoftonline.com:443 |
+| 1/11/2016 8:33 |connect:// *bwsc02-relay*.microsoftonline.com:443 |
 
 **構成**
 
 | Time | URL |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
-| 1/11/2016 8:43 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:43 |connect:// *bba800-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |connect://*bba900-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect:// *bba900-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect:// *bba800-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:46 |connect://provisioningapi.microsoftonline.com:443 |
-| 1/11/2016 8:46 |connect://*bwsc02-relay*.microsoftonline.com:443 |
+| 1/11/2016 8:46 |connect:// *bwsc02-relay*.microsoftonline.com:443 |
 
 **初期同期**
 
@@ -144,8 +152,8 @@ Azure AD Connect が Azure AD にエクスポート要求を送信すると、Az
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect://*bba900-anchor*.microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect:// *bba900-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect:// *bba800-anchor*.microsoftonline.com:443 |
 
 ## <a name="authentication-errors"></a>認証エラー
 このセクションでは、ADAL (Azure AD Connect で使用される認証ライブラリ) および PowerShell から返される可能性があるエラーについて説明します。 エラーの説明は、次に進むステップを理解するうえで役立ちます。
@@ -186,7 +194,7 @@ Multi-Factor Authentication (MFA) 要求が取り消されました。
 </div>
 
 ### <a name="azure-ad-global-admin-role-needed"></a>Azure AD Global Admin Role Needed (Azure AD の全体管理者ロールが必要です)
-ユーザーは正常に認証されました。 ただし、ユーザーに全体管理者ロールが割り当てられていません。 ユーザーに[全体管理者ロールを割り当てる方法](../users-groups-roles/directory-assign-admin-roles.md)に関するページを参照してください。
+ユーザーは正常に認証されました。 ただし、ユーザーに全体管理者ロールが割り当てられていません。 ユーザーに[全体管理者ロールを割り当てる方法](../roles/permissions-reference.md)に関するページを参照してください。
 
 <div id="privileged-identity-management">
 <!--
@@ -219,7 +227,7 @@ Multi-Factor Authentication (MFA) 要求が取り消されました。
 認証に成功しました。 Azure AD からドメイン情報を取得できませんでした。
 
 ### <a name="unspecified-authentication-failure"></a>Unspecified Authentication Failure (不明な認証エラー)
-インストール ウィザードで予期しないエラーとして表示されます。 **学校または組織のアカウント**ではなく **Microsoft アカウント**の使用を試みると、発生する可能性があります。
+インストール ウィザードで予期しないエラーとして表示されます。 **学校または組織のアカウント** ではなく **Microsoft アカウント** の使用を試みると、発生する可能性があります。
 
 ## <a name="troubleshooting-steps-for-previous-releases"></a>以前のリリース用のトラブルシューティング手順です。
 ビルド番号 1.1.105.0 (2016 年 2 月リリース) 以降のリリースでは、サインイン アシスタントが提供されなくなりました。 このセクションと構成は必要がなくなりますが、参照用に残されています。

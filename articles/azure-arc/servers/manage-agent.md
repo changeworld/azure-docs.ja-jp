@@ -1,14 +1,14 @@
 ---
 title: Azure Arc 対応サーバー エージェントの管理
 description: この記事では、Azure Arc 対応サーバー Connected Machine エージェントのライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。
-ms.date: 09/09/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: af020d0ca586b950b444f2a3149ad207b5696050
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 184b0425b956232b4485047cafb00a7ced21c7dd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108934"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371428"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Connected Machine エージェントの管理と保守
 
@@ -60,7 +60,7 @@ Windows 用 Connected Machine エージェントの更新プログラム パッ�
 ソフトウェア更新管理プロセスをサポートするさまざまな方法に従って、エージェントをアップグレードできます。 Microsoft Update から取得する他に、コマンド プロンプト、スクリプトまたはその他のオートメーション ソリューション、または `AzureConnectedMachine.msi` の実行による UI ウィザードから手動でダウンロードして実行できます。
 
 > [!NOTE]
-> * エージェントをアップグレードするには、"*管理者*" アクセス許可が必要です。
+> * エージェントをアップグレードするには、" *管理者* " アクセス許可が必要です。
 > * 手動でアップグレードするには、まず、インストーラー パッケージをダウンロードし、ターゲット サーバー上のフォルダーにコピーするか、共有ネットワーク フォルダーからコピーする必要があります。 
 
 Windows インストーラー パッケージのコマンドライン オプションに詳しくない場合は、[Msiexec の標準コマンドライン オプション](/windows/win32/msi/standard-installer-command-line-options)と [Msiexec のコマンドライン オプション](/windows/win32/msi/command-line-options)に関するページを参照してください。
@@ -90,7 +90,7 @@ Linux マシン上のエージェントを最新バージョンに更新する�
 Microsoft の [パッケージ リポジトリ](https://packages.microsoft.com/)から、最新のエージェント パッケージをダウンロードできます。
 
 > [!NOTE]
-> エージェントをアップグレードするには、*root* アクセス許可 (つまり、Sudo を使用して権限を昇格したアカウント) が必要です。
+> エージェントをアップグレードするには、 *root* アクセス許可 (つまり、Sudo を使用して権限を昇格したアカウント) が必要です。
 
 #### <a name="upgrade-ubuntu"></a>Ubuntu をアップグレードする
 
@@ -138,7 +138,7 @@ Microsoft の [パッケージ リポジトリ](https://packages.microsoft.com/)
     zypper update
     ```
 
-[zypper](https://en.opensuse.org/Portal:Zypper) コマンドのアクション (パッケージのインストールや削除など) は、`/var/log/zypper.log` ログ ファイルに記録されます。 
+[zypper](https://en.opensuse.org/Portal:Zypper) コマンドのアクション (パッケージのインストールや削除など) は、`/var/log/zypper.log` ログ ファイルに記録されます。
 
 ## <a name="about-the-azcmagent-tool"></a>Azcmagent ツールについて
 
@@ -148,20 +148,22 @@ Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中�
 
 * **Disconnect** - Azure Arc からマシンを切断します。
 
-* **Reconnect** - 切断されたマシンを Azure Arc に再接続します。
+* **Show** - エージェントの状態とその構成プロパティ (リソース グループ名、サブスクリプション ID、バージョンなど) を表示します。これは、エージェントに関する問題をトラブルシューティングするときに役立ちます。 結果を JSON 形式で出力するには、`-j` パラメーターを含めます。
 
-* **Show** - エージェントの状態とその構成プロパティ (リソース グループ名、サブスクリプション ID、バージョンなど) を表示します。これは、エージェントに関する問題をトラブルシューティングするときに役立ちます。
+* **Logs** - 現在のディレクトリに、トラブルシューティングの際に役立つログを含む .zip ファイルを作成します。
+
+* **Version** - Connected Machine エージェントのバージョンを表示します。
 
 * **-h または --help** - 使用可能なコマンドライン パラメーターを表示します。
 
-    たとえば、**Reconnect** パラメーターの詳細なヘルプを表示するには、「`azcmagent reconnect -h`」と入力します。 
+    たとえば、 **Reconnect** パラメーターの詳細なヘルプを表示するには、「`azcmagent reconnect -h`」と入力します。 
 
 * **-v または --verbose** - 詳細なログ記録を有効にします。
 
-対話形式でのログオン中に **Connect**、**Disconnect**、および **Reconnect** を手動で実行できます。または、複数のエージェントのオンボードに使用したのと同じサービス プリンシパルを使用するか、Microsoft ID プラットフォーム [アクセス トークン](../../active-directory/develop/access-tokens.md)を使用して自動化することができます。 サービス プリンシパルを使用してマシンを Azure Arc 対応サーバーに登録していない場合は、次の[記事](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)を参照して、サービス プリンシパルを作成してください。
+対話形式でのログオン中に **Connect** および **Disconnect** を手動で実行できます。または、複数のエージェントのオンボードに使用したのと同じサービス プリンシパルを使用するか、Microsoft ID プラットフォーム [アクセス トークン](../../active-directory/develop/access-tokens.md)を使用して自動化することができます。 サービス プリンシパルを使用してマシンを Azure Arc 対応サーバーに登録していない場合は、次の[記事](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)を参照して、サービス プリンシパルを作成してください。
 
 >[!NOTE]
->**Azcmagent** を実行するには、Linux マシンに対する*ルート* アクセス許可が必要です。
+>**Azcmagent** を実行するには、Linux マシンに対する *ルート* アクセス許可が必要です。
 
 ### <a name="connect"></a>接続する
 
@@ -198,28 +200,7 @@ Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中�
 
 管理者特権のログオン資格情報を使用して (対話型) 切断するには、次のコマンドを実行します。
 
-`azcmagent disconnect --tenant-id <tenantID>`
-
-### <a name="reconnect"></a>[再接続]
-
-> [!WARNING]
-> `reconnect` コマンドは非推奨となっています。使用しないでください。 このコマンドは、将来リリースされるエージェントでは削除される予定であり、既存のエージェントは再接続要求を実行できなくなります。 代わりに、マシンを[切断](#disconnect)してから再度[接続](#connect)してください。
-
-このパラメーターを使用すると、既に登録されている、または接続されているマシンが Azure Arc 対応サーバーに再接続されます。 証明書の有効期限が切れるまで、45 日以上マシンがオフになっている場合に、この操作が必要になることがあります。 このパラメーターでは、提供されている認証オプションを使用して、このマシンを表す Azure Resource Manager リソースに対応する新しい資格情報を取得します。
-
-このコマンドには、[Azure に接続されたマシンのオンボード](agent-overview.md#required-permissions) ロールよりも高い特権が必要です。
-
-サービス プリンシパルを使用して再接続するには、次のコマンドを実行します。
-
-`azcmagent reconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
-
-アクセス トークンを使用して再接続するには、次のコマンドを実行します。
-
-`azcmagent reconnect --access-token <accessToken>`
-
-管理者特権のログオン資格情報を使用して (対話型) 再接続するには、次のコマンドを実行します。
-
-`azcmagent reconnect --tenant-id <tenantID>`
+`azcmagent disconnect`
 
 ## <a name="remove-the-agent"></a>エージェントを削除する
 
@@ -227,14 +208,14 @@ Windows または Linux の Connected Machine エージェントをマシンか�
 
 ### <a name="windows-agent"></a>Windows エージェント
 
-以下に示すどちらの方法でもエージェントは削除されますが、*C:\Program Files\AzureConnectedMachineAgent* フォルダーはマシンから削除されません。
+以下に示すどちらの方法でもエージェントは削除されますが、 *C:\Program Files\AzureConnectedMachineAgent* フォルダーはマシンから削除されません。
 
 #### <a name="uninstall-from-control-panel"></a>コントロール パネルからアンインストールする
 
 1. マシンから Windows エージェントをアンインストールするには、次の手順を実行します。
 
     a. 管理者のアクセス許可を持つアカウントを使用してコンピューターにサインインします。  
-    b. **コントロール パネル**で、 **[プログラムと機能]** を選択します。  
+    b. **コントロール パネル** で、 **[プログラムと機能]** を選択します。  
     c. **[プログラムと機能]** で、 **[Azure Connected Machine Agent]** を選択し、 **[アンインストール]** を選択してから、 **[はい]** を選択します。  
 
     >[!NOTE]
@@ -268,7 +249,7 @@ Windows または Linux の Connected Machine エージェントをマシンか�
 ### <a name="linux-agent"></a>Linux エージェント
 
 > [!NOTE]
-> エージェントをアンインストールするには、*root* アクセス許可 (つまり、Sudo を使用して権限を昇格したアカウント) が必要です。
+> エージェントをアンインストールするには、 *root* アクセス許可 (つまり、Sudo を使用して権限を昇格したアカウント) が必要です。
 
 Linux エージェントをアンインストールするために使用するコマンドは、Linux オペレーティング システムによって異なります。
 

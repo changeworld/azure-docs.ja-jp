@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: cavoeg
-ms.openlocfilehash: ea9a47676b8294b2541c27d361b0dc2fa1ae3627
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 609bd01e8dcb0e9202d1d9dbe1d1fc1a01cac550
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339510"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368283"
 ---
 # <a name="features"></a>特徴
 
@@ -39,8 +39,8 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 | delete (条件付き)           | いいえ        | いいえ        | いいえ        |                                                     |
 | history                        | はい       | はい       | はい       |                                                     |
 | create                         | はい       | はい       | はい       | POST/PUT の両方をサポートします                               |
-| create (条件付き)           | はい       | はい       | はい       |                                                     |
-| 検索                         | 部分的   | Partial   | 部分的   | 下記参照                                           |
+| create (条件付き)           | はい       | はい       | はい       | イシュー [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
+| 検索                         | Partial   | 部分的   | 部分的   | 下記参照                                           |
 | chained search                 | いいえ        | はい       | いいえ        |                                           |
 | reverse chained search         | いいえ        | いいえ        | いいえ        |                                            |
 | capabilities                   | はい       | はい       | はい       |                                                     |
@@ -98,11 +98,11 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 
 | 検索結果のパラメーター | サポート対象 - PaaS | サポート対象 - OSS (SQL) | サポート対象 - OSS (Cosmos DB) | 解説 |
 |-------------------------|-----------|-----------|-----------|---------|
-| `_sort`                 | Partial        | Partial   | 部分的        |   `_sort=_lastUpdated` がサポートされています       |
+| `_sort`                 | Partial        | 部分的   | 部分的        |   `_sort=_lastUpdated` がサポートされています       |
 | `_count`                | はい       | はい       | はい       | `_count` の上限は 100 文字です。 100 より大きい値に設定すると、100 個だけが返され、バンドルで警告が返されます。 |
 | `_include`              | いいえ        | はい       | いいえ        |         |
 | `_revinclude`           | いいえ        | はい       | いいえ        | 含まれる項目は 100 に制限されています。 |
-| `_summary`              | Partial   | Partial   | 部分的   | `_summary=count` がサポートされています |
+| `_summary`              | Partial   | 部分的   | 部分的   | `_summary=count` がサポートされています |
 | `_total`                | Partial   | Partial   | Partial   | _total=non および _total=accurate      |
 | `_elements`             | はい       | はい       | はい       |         |
 | `_contained`            | いいえ        | いいえ        | いいえ        |         |

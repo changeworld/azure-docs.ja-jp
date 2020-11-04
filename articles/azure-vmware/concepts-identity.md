@@ -3,18 +3,18 @@ title: 概念 - ID とアクセス
 description: Azure VMware Solution の ID とアクセスの概念について説明します
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 9d5b7b4c7c2e0d55cffc99a3f371494f40320a16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7127109801d92d2177f6edac3efcaf76ddf217e6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88750592"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674639"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware Solution の ID の概念
 
-vCenter サーバーと NSX-T Manager は、プライベート クラウドのデプロイ時にプロビジョニングされます。 vCenter は仮想マシンのワークロードを管理するために使用し、NSX-T Manager はプライベート クラウドのソフトウェア定義ネットワークを拡張するために使用します。
+プライベート クラウドをデプロイするときに、vCenter サーバーと NSX-T Manager がプロビジョニングされます。 vCenter は、仮想マシン (VM) のワークロードを管理するために使用します。 NSX-T Manager は、プライベート クラウドのソフトウェアによるネットワークを拡張するために使用します。
 
-アクセスと ID 管理では、vCenter の場合は CloudAdmin グループ特権が、NSX-T Manager の場合は制限付き管理者権限が使用されます。 このポリシーにより、プライベート クラウド プラットフォームを自動的にアップグレードできるようになります。 これにより、最新の機能と修正プログラムが定期的に配信されます。 プライベート クラウドのアップグレードの詳細については、[プライベート クラウドのアップグレードの概念に関する記事][concepts-upgrades]を参照してください。
+アクセスと ID 管理では、vCenter の場合は CloudAdmin グループ特権が、NSX-T Manager の場合は制限付き管理者権限が使用されます。 これにより、プライベート クラウド プラットフォームは、最新の機能とパッチを使用して自動的にアップグレードされることが保証されます。  詳細については、[プライベート クラウドのアップグレードの概念に関する記事][concepts-upgrades]を参照してください。
 
 ## <a name="vcenter-access-and-identity"></a>vCenter のアクセスと ID
 
@@ -49,7 +49,7 @@ vCenter の特権は、CloudAdmin グループを通じて提供されます。 
 
 ## <a name="nsx-t-manager-access-and-identity"></a>NSX-T Manager のアクセスと ID
 
-"管理者" アカウントを使用して、NSX-T Manager にアクセスします。 このアカウントには完全な特権があり、T1 ルーター、論理スイッチ、およびすべてのサービスを作成および管理できます。 NSX-T の完全な特権により、NSX-T T0 ルーターへのアクセスも提供されます。 T0 ルーターを変更すると、ネットワーク パフォーマンスが低下したり、プライベート クラウドへのアクセスが失われたりする可能性があります。 サポート要件を満たすには、Azure portal でサポート リクエストを開いて、NSX-T T0 ルーターへの変更を要求する必要があります。
+"管理者" アカウントを使用して、NSX-T Manager にアクセスします。 これには完全な特権があるため、T1 ルーター、論理スイッチ、およびすべてのサービスを作成および管理できます。 この特権により、NSX-T T0 ルーターへのアクセス権が付与されます。 T0 ルーターを変更すると、ネットワーク パフォーマンスが低下したり、プライベート クラウドにアクセスできなくなったりする可能性があります。 Azure portal でサポート リクエストを開いて、NSX-T T0 ルーターに対する変更を依頼してください。
   
 ## <a name="next-steps"></a>次のステップ
 

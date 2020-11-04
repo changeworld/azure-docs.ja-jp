@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: bd5b20d8e713e07b52eb1d6cbc57f01b9e5c1a95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9189be5f2f513cd27fe8783d6a1825aac016522c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987479"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677732"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Azure 上に TmaxSoft OpenFrame をインストールする
 
@@ -145,7 +145,7 @@ Eclipse for Windows:TmaxSoft でサポートされている開発プラットフ
 
 Windows オペレーティング システムを使用している場合は、公開/秘密キー ペアを生成するために PuTTYgen が必要です。
 
-公開キーは自由に共有できますが、秘密キーは完全に秘密に保持し、別のパーティとは共有しないようにする必要があります。 キーを生成した後、**SSH 公開キー**を構成に貼り付ける必要があります。実際には、Linux VM にアップロードします。 ユーザー アカウントのホーム ディレクトリの \~/.ssh ディレクトリ内の authorized\_keys の内部に格納されます。 その後、Linux VM では、SSH クライアント (この例では PuTTY) の関連付けられた **SSH 秘密キー**が提供されると、接続を認識して検証できるようになります。
+公開キーは自由に共有できますが、秘密キーは完全に秘密に保持し、別のパーティとは共有しないようにする必要があります。 キーを生成した後、 **SSH 公開キー** を構成に貼り付ける必要があります。実際には、Linux VM にアップロードします。 ユーザー アカウントのホーム ディレクトリの \~/.ssh ディレクトリ内の authorized\_keys の内部に格納されます。 その後、Linux VM では、SSH クライアント (この例では PuTTY) の関連付けられた **SSH 秘密キー** が提供されると、接続を認識して検証できるようになります。
 
 新しいユーザーに VM へのアクセスを許可する場合: 
 
@@ -164,7 +164,7 @@ Windows オペレーティング システムを使用している場合は、�
 
 3.  **[Generate]\(生成\)** をクリックします。
 
-    ![[PuTTY Key Generator] ダイアログ ボックス](media/puttygen-02.png)
+    ![[PuTTY Key Generator] ダイアログ ボックスを表示し、[Generate]\(生成\) ボタンを強調表示するスクリーンショット。](media/puttygen-02.png)
 
 4.  生成した後、公開キーと秘密キーの両方を保存します。 公開キーの内容を、 **[仮想マシンの作成] \> [基本]** ウィンドウの **[SSH 公開キー]** セクションに貼り付けます (前のセクションのステップ 6 と 7 で示されています)。
 
@@ -172,7 +172,7 @@ Windows オペレーティング システムを使用している場合は、�
 
 ### <a name="configure-vm-features"></a>VM の機能を構成する
 
-1. Azure portal の **[サイズの選択]** ブレードで、必要な Linux マシンのハードウェア設定を選択します。 Tibero と OpenFrame の両方をインストールするための "*最小*" 要件は、このインストール例で示すように、2 つの CPU と 4 GB の RAM です。
+1. Azure portal の **[サイズの選択]** ブレードで、必要な Linux マシンのハードウェア設定を選択します。 Tibero と OpenFrame の両方をインストールするための " *最小* " 要件は、このインストール例で示すように、2 つの CPU と 4 GB の RAM です。
 
     ![仮想マシンを作成する - 基本](media/create-vm-01.png)
 
@@ -183,23 +183,23 @@ Windows オペレーティング システムを使用している場合は、�
 
 4. 選択内容を送信します。 Azure で VM のデプロイが開始されます。 通常、このプロセスには数分かかります。
 
-5. VM がデプロイされると、ダッシュボードが表示されて、構成中に選したすべての設定が示されます。 **パブリック IP アドレス**を書き留めておきます。
+5. VM がデプロイされると、ダッシュボードが表示されて、構成中に選したすべての設定が示されます。 **パブリック IP アドレス** を書き留めておきます。
 
     ![Azure ダッシュボード上の tmax](media/create-vm-03.png)
 
 6. PuTTY を開きます。
 
-7. **[ホスト名]** に、ご自分のユーザー名と、コピーしたパブリック IP アドレスを入力します。 たとえば、**username\@publicip** などです。
+7. **[ホスト名]** に、ご自分のユーザー名と、コピーしたパブリック IP アドレスを入力します。 たとえば、 **username\@publicip** などです。
 
-    ![[PuTTY Configuration]\(PuTTY 構成\) ダイアログ ボックス](media/putty-01.png)
+    ![[PuTTY Configuration]\(PuTTY 構成\) ダイアログ ボックスを表示し、[ホスト名 (または IP アドレス)] フィールドを強調表示するスクリーンショット。](media/putty-01.png)
 
-8. **[Category]\(カテゴリ\)** ボックスで、 **[Connection]\(接続\) \> [SSH] \> [Auth]** をクリックします。**秘密キー** ファイルのパスを指定します。
+8. **[Category]\(カテゴリ\)** ボックスで、 **[Connection]\(接続\) \> [SSH] \> [Auth]** をクリックします。 **秘密キー** ファイルのパスを指定します。
 
     ![[PuTTY Configuration]\(PuTTY 構成\) ダイアログ ボックス](media/putty-02.png)
 
 9. **[Open]\(開く\)** をクリックして、PuTTY ウィンドウを起動します。 成功すると、Azure で実行されている新しい CentOS VM に接続されます。
 
-10. ルート ユーザーとしてログオンするには、「**sudo bash**」と入力します。
+10. ルート ユーザーとしてログオンするには、「 **sudo bash** 」と入力します。
 
     ![コマンド ウィンドウでのルート ユーザーのログオン](media/putty-03.png)
 
@@ -909,7 +909,7 @@ ProSort は、バッチ トランザクションでデータの並べ替えに�
 
 **ProSort をインストールするには**
 
-1. Batch が正常にインストールされたことを確認した後、**prosort-bin-prosort\_2sp3-linux64-2123-opt.tar.gz** インストーラー ファイルがあることを確認します。
+1. Batch が正常にインストールされたことを確認した後、 **prosort-bin-prosort\_2sp3-linux64-2123-opt.tar.gz** インストーラー ファイルがあることを確認します。
 
 2. プロパティ ファイルを使用してインストーラーを実行します。 コマンド プロンプトに、次のコマンドを入力します。
 
@@ -1105,13 +1105,13 @@ OFASM は、メインフレームのアセンブラー プログラムを解釈�
      [oframe7@ofdemo ~]$ vi tjclrun.conf
      ```
 
-     次に示すのは、変更 "*前*" の [SYSLIB] セクションです。
+     次に示すのは、変更 " *前* " の [SYSLIB] セクションです。
 
      ```
      [SYSLIB] BIN_PATH=${OPENFRAME_HOME}/bin:${OPENFRAME_HOME}/util:${COBDIR}/bin:/usr/local/bin:/bi n:${OPENFRAME_HOME}/volume_default/SYS1.LOADLIB LIB_PATH=${OPENFRAME_HOME}/lib:${OPENFRAME_HOME}/core/lib:${TB_HOME}/client/lib:${CO BDIR}/lib:/usr/lib:/lib:/lib/i686:/usr/local/lib:${PROSORT_HOME}/lib:/opt/FSUNbsort/lib:${OFCOB_HOM E}/lib:${ODBC_HOME}/lib:${OFPLI_HOME}/lib
      ```
 
-     次に示すのは、変更 "*後*" の [SYSLIB] セクションです。
+     次に示すのは、変更 " *後* " の [SYSLIB] セクションです。
 
      ```
      [SYSLIB] BIN_PATH=${OPENFRAME_HOME}/bin:${OPENFRAME_HOME}/util:${COBDIR}/bin:/usr/local/bin:/bi n:${OPENFRAME_HOME}/volume_default/SYS1.LOADLIB LIB_PATH=${OPENFRAME_HOME}/lib:${OPENFRAME_HOME}/core/lib:${TB_HOME}/client/lib:${CO BDIR}/lib:/usr/lib:/lib:/lib/i686:/usr/local/lib:${PROSORT_HOME}/lib:/opt/FSUNbsort/lib:${OFCOB_HOM E}/lib:${ODBC_HOME}/lib:${OFPLI_HOME}/lib:${OFASM_HOME}/lib
@@ -1359,7 +1359,7 @@ JEUS をインストールする前に、Apache Ant パッケージをインス�
      [oframe7@ofdemo setup]$ . .bash_profile
      ```
 
-11. *オプション*。 JEUS コンポーネントを簡単にシャットダウンおよびブートできるように、別名を作成します。
+11. *オプション* 。 JEUS コンポーネントを簡単にシャットダウンおよびブートできるように、別名を作成します。
 
      ```     
      # JEUS alias
@@ -1389,11 +1389,11 @@ JEUS をインストールする前に、Apache Ant パッケージをインス�
      > [!NOTE]
      > ポート セキュリティで何らかの問題が発生する場合は、ポート 9736 を開くか、またはファイアウォールを無効にします (`systemctl stop firewall`)。
 
-14. server1 のホスト名を変更するには、 **[Lock & Edit]\(ロックして編集\)** をクリックし、**server1** をクリックします。 [Server]\(サーバー\) ウィンドウで、ホスト名を次のように変更します。
+14. server1 のホスト名を変更するには、 **[Lock & Edit]\(ロックして編集\)** をクリックし、 **server1** をクリックします。 [Server]\(サーバー\) ウィンドウで、ホスト名を次のように変更します。
 
     1.  **[Nodename]\(ノード名\)** を **ofdemo** に変更します。
     2.  ウィンドウの右側にある **[OK]** をクリックします。
-    3.  ウィンドウの左下で **[Apply changes]\(変更の適用\)** をクリックし、説明に「*ホスト名の変更*」と入力します。
+    3.  ウィンドウの左下で **[Apply changes]\(変更の適用\)** をクリックし、説明に「 *ホスト名の変更* 」と入力します。
 
     ![JEUS WebAdmin 画面](media/jeus-02.png)
 

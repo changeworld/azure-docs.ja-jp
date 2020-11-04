@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db68528a810ebc9cd61b205dd5167396d75db7f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de255836cb269f5077a417a203e136f9e903f05d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613987"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441676"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>API コネクタをユーザー フローに追加する
 
@@ -31,11 +31,11 @@ ms.locfileid: "91613987"
 
    ![新しい API コネクタを追加する](./media/self-service-sign-up-add-api-connector/api-connector-new.png)
 
-5. 呼び出しの表示名を指定します。 たとえば、「**承認状態の確認**」などです。
+5. 呼び出しの表示名を指定します。 たとえば、「 **承認状態の確認** 」などです。
 6. API 呼び出しの **[エンドポイント URL]** を指定します。
 7. API の認証情報を指定します。
 
-   - 現在サポートされているのは [基本認証] のみです。 開発目的で基本認証を使用せずに API を使用する場合は、API で無視できるダミーの **[ユーザー名]** と **[パスワード]** を入力するだけです。 Azure 関数で API キーを使用するには、コードをクエリ パラメーターとして **[エンドポイント URL]** に含めることができます (例: https[]()://contoso.azurewebsites.net/api/endpoint<b>?code=0123456789</b>)。
+   - 現在サポートされているのは [基本認証] のみです。 開発目的で基本認証を使用せずに API を使用する場合は、API で無視できるダミーの **[ユーザー名]** と **[パスワード]** を入力するだけです。 Azure 関数で API キーを使用するには、コードをクエリ パラメーターとして **[エンドポイント URL]** に含めることができます (例: https []()://contoso.azurewebsites.net/api/endpoint <b>?code=0123456789</b>)。
 
    ![新しい API コネクタを構成する](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
 8. **[保存]** を選択します。
@@ -44,7 +44,7 @@ ms.locfileid: "91613987"
 > 以前は、API に送信するユーザー属性 ("送信する要求") と、API から受け入れるユーザー属性 ("受信する要求") を構成する必要がありました。 現在は、既定ですべてのユーザー属性 (値を含む場合) が送信されるようになり、API ではすべてのユーザー属性を "継続" 応答で返すことができます。
 
 ## <a name="the-request-sent-to-your-api"></a>API に送信される要求
-API コネクタによってユーザー属性 ("要求") が **HTTP POST** 要求として具体化され、JSON 本文のキーと値のペアとして送信されます。 属性は [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user#properties) ユーザー プロパティと同様にシリアル化されます。 
+API コネクタによってユーザー属性 ("要求") が **HTTP POST** 要求として具体化され、JSON 本文のキーと値のペアとして送信されます。 属性は [Microsoft Graph](/graph/api/resources/user#properties) ユーザー プロパティと同様にシリアル化されます。 
 
 **要求の例**
 ```http
@@ -79,13 +79,13 @@ Content-type: application/json
 
 カスタム属性は、ディレクトリ内に **extension_\<extensions-app-id>_AttributeName** の形式で存在しています。 API では、これと同じシリアル化された形式で要求を受け取ることを想定しています。 カスタム属性の詳細については、[セルフサービス サインアップ フローのカスタム属性の定義](user-flow-add-custom-attributes.md)に関するページを参照してください。
 
-また、**UI ロケール ("ui_locales")** 要求は、すべての要求で既定で送信されます。 これによって、デバイスで構成されているユーザーのロケールがわかります。API ではこれを使用して、国際化応答を返すことができます。
+また、 **UI ロケール ("ui_locales")** 要求は、すべての要求で既定で送信されます。 これによって、デバイスで構成されているユーザーのロケールがわかります。API ではこれを使用して、国際化応答を返すことができます。
 
 > [!IMPORTANT]
 > API エンドポイントが呼び出されたときに送信する要求に値がない場合、要求は API に送信されません。 API は、それが予期する値を明示的に確認するように設計する必要があります。
 
 > [!TIP] 
-> [**identities ("identities")** ](https://docs.microsoft.com/graph/api/resources/objectidentity) および **Email Address ("email")** の各要求は、テナントにアカウントを作成する前にユーザーを識別するために API によって使用できます。 "identities" 要求は、ユーザーが Google または Facebook などの ID プロバイダーで認証されるときに送信されます。 "email" は常に送信されます。
+> [**identities ("identities")**](/graph/api/resources/objectidentity) および **Email Address ("email")** の各要求は、テナントにアカウントを作成する前にユーザーを識別するために API によって使用できます。 "identities" 要求は、ユーザーが Google または Facebook などの ID プロバイダーで認証されるときに送信されます。 "email" は常に送信されます。
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>ユーザー フローで API コネクタを有効にする
 
@@ -106,7 +106,7 @@ Content-type: application/json
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>ID プロバイダーを使用してサインインした後
 
-サインアップ プロセスのこのステップでの API コネクタは、ID プロバイダー (Google、Facebook、Azure AD) でユーザーが認証された直後に呼び出されます。 このステップは、***属性コレクション ページ*** (ユーザーに提示される、ユーザー属性を収集するためのフォーム) の前にあります。 
+サインアップ プロセスのこのステップでの API コネクタは、ID プロバイダー (Google、Facebook、Azure AD) でユーザーが認証された直後に呼び出されます。 このステップは、* *" _属性コレクション ページ_ "* _ (ユーザーに提示される、ユーザー属性を収集するためのフォーム) の前にあります。 
 
 <!-- The following are examples of API connector scenarios you may enable at this step:
 - Use the email or federated identity that the user provided to look up claims in an existing system. Return these claims from the existing system, pre-fill the attribute collection page, and make them available to return in the token.
@@ -248,7 +248,7 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | version                                            | String            | はい      | API のバージョン。                                                                                                                                                                                                                                                                |
 | action                                             | String            | はい      | 値は `Continue` とする必要があります。                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | いいえ       | 値は、API コネクタの構成の **[Claim to receive]\(受信する要求\)** とユーザー フローの **[ユーザー属性]** として選択した場合にディレクトリに格納できます。 **[アプリケーション要求]** として選択されている場合、値をトークンで返すことができます。                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | いいえ       | 値は、API コネクタの構成の _ *[Claim to receive]\(受信する要求\)* * とユーザー フローの **[ユーザー属性]** として選択した場合にディレクトリに格納できます。 **[アプリケーション要求]** として選択されている場合、値をトークンで返すことができます。                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | いいえ       | 返される要求に `_<extensions-app-id>_` が含まれている必要はありません。 値は、API コネクタの構成の **[Claim to receive]\(受信する要求\)** とユーザー フローの **[ユーザー属性]** として選択した場合にディレクトリに格納されます。 トークンではカスタム属性を返信できません。 |
 
 ### <a name="example-of-a-blocking-response"></a>ブロック応答の例
@@ -313,7 +313,7 @@ Azure Functions の HTTP トリガーなどのサーバーレス機能を使用�
 ### <a name="best-practices"></a>ベスト プラクティス
 次のことを確認します。
 * API は、上で説明した API 要求と応答のコントラクトに従っています。 
-* API コネクタの**エンドポイント URL** によって、正確な API エンドポイントが指定されます。
+* API コネクタの **エンドポイント URL** によって、正確な API エンドポイントが指定されます。
 * API によって、受け取った要求の null 値が明示的に確認されます。
 * API が可能な限り迅速に応答することで、スムーズなユーザー エクスペリエンスが保証されます。
     * サーバーレス機能またはスケーラブルな Web サービスを使用している場合は、API を運用環境で "起動状態" または "ウォーム状態" に保つホスティング プランを Azure Functions の場合は、[Premium プラン](../../azure-functions/functions-scale.md#premium-plan)を使用することをお勧めします。 

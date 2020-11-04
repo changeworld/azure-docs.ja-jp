@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 082f246437cdd99b844d1ed8010d8dc846fc4d47
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: f9b3be69ab57c0abf7523169303def899f325229
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341942"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789218"
 ---
 # <a name="security-alerts-schemas"></a>セキュリティ アラートのスキーマ
 
@@ -25,7 +25,7 @@ ms.locfileid: "92341942"
 こうしたセキュリティ アラートは、Azure Security Center の **[脅威に対する保護]** ページで確認できるほか、次のような外部ツールを使用して確認することができます。
 
 - [Azure Sentinel](../sentinel/index.yml) - Microsoft のクラウドネイティブの SIEM です。 Sentinel コネクタは、Azure Security Center からアラートを受け取ると、それらを Azure Sentinel の [[Log Analytics ワークスペース]](../azure-monitor/learn/quick-create-workspace.md) に送信します。
-- サードパーティの SIEM - Security Center の[連続エクスポート](continuous-export.md) ツールを使用して、[Azure Event Hubs](../event-hubs/index.yml) にデータを送信します。 その後、Event Hub のデータをサードパーティの SIEM に統合します。
+- サードパーティの SIEM - [Azure Event Hubs](../event-hubs/index.yml) にデータを送信します。 その後、Event Hub のデータをサードパーティの SIEM に統合します。 詳細については、「[SIEM、SOAR、または IT サービス管理ソリューションにアラートをストリーミングする](export-to-siem.md)」を参照してください。
 - [REST API](/rest/api/securitycenter/) - REST API を使用してアラートにアクセスする場合は、[Alerts API のオンライン ドキュメント](/rest/api/securitycenter/alerts)を参照してください。
 
 プログラムを使った方法でアラートを取り込む場合は、対象となるフィールドを検索するための適切なスキーマが必要です。 また、イベント ハブへのエクスポートを実行する場合や、汎用的な HTTP コネクタでワークフロー オートメーションをトリガーしようとしている場合は、JSON オブジェクトを適切に解析するためにスキーマを使用します。
@@ -46,8 +46,9 @@ ms.locfileid: "92341942"
 - Security Center のワークフロー オートメーション内に構成された Azure Logic Apps インスタンス
 - Security Center の連続エクスポート機能を使用する Azure イベント ハブ
 
-ワークフロー オートメーション機能の詳細については、「[アラートや推奨事項に対する応答の自動化](workflow-automation.md)」を参照してください。
-連続エクスポートの詳細については、「[アラートと推奨事項のエクスポート](continuous-export.md)」を参照してください。
+ワークフロー オートメーション機能の詳細については、「[Security Center のトリガーへの応答を自動化する](workflow-automation.md)」を参照してください。
+
+連続エクスポートの詳細については、「[継続的に Security Center データをエクスポートする](continuous-export.md)」を参照してください。
 
 [!INCLUDE [Workflow schema](../../includes/security-center-alerts-schema-workflow-automation.md)]
 
@@ -185,5 +186,5 @@ Security Center の外部からセキュリティ アラートにアクセスす
 
 - [Azure Sentinel](../sentinel/index.yml) - Microsoft のクラウドネイティブの SIEM
 - [Azure Event Hubs](../event-hubs/index.yml) - Microsoft のフル マネージドのリアルタイム データ インジェスト サービス
-- Security Center の[連続エクスポート機能](continuous-export.md)
+- [継続的に Security Center データをエクスポートする](continuous-export.md)
 - [Log Analytics ワークスペース](../azure-monitor/learn/quick-create-workspace.md) - Azure Monitor のログ データは、Log Analytics ワークスペースという、データと構成情報を含んだコンテナーに格納されます。

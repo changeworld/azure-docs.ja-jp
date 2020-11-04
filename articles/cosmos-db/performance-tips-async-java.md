@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: a44848e81e974d8294b84471d68ded8509f4ddf6
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 3064672dc9eafbabda896f56f4881302980585b0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282818"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475381"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Azure Cosmos DB Async Java SDK v2 のパフォーマンスに関するヒント
 
@@ -26,7 +26,7 @@ ms.locfileid: "92282818"
 
 
 > [!IMPORTANT]  
-> これは Azure Cosmos DB 用の最新の Java SDK では "*ありません*"。 プロジェクトを [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) にアップグレードしてから、Azure Cosmos DB Java SDK v4 の[パフォーマンス ヒント ガイド](performance-tips-java-sdk-v4-sql.md)をお読みください。 [Azure Cosmos DB Java SDK v4 への移行](migrate-java-v4-sdk.md)ガイド、および [Reactor と RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) に関するガイドの手順に従ってアップグレードします。 
+> これは Azure Cosmos DB 用の最新の Java SDK では " *ありません* "。 プロジェクトを [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) にアップグレードしてから、Azure Cosmos DB Java SDK v4 の[パフォーマンス ヒント ガイド](performance-tips-java-sdk-v4-sql.md)をお読みください。 [Azure Cosmos DB Java SDK v4 への移行](migrate-java-v4-sdk.md)ガイド、および [Reactor と RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) に関するガイドの手順に従ってアップグレードします。 
 > 
 > この記事のパフォーマンスに関するヒントは、Azure Cosmos DB Async Java SDK v2 のみを対象としています。 詳細については、Azure Cosmos DB Async Java SDK v2 の[リリース ノート](sql-api-sdk-async-java.md)、[Maven リポジトリ](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)、Azure Cosmos DB Async Java SDK v2 の[トラブルシューティング ガイド](troubleshoot-java-async-sdk.md)を参照してください。
 >
@@ -46,7 +46,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
   
   ゲートウェイ モードは、すべての SDK プラットフォームでサポートされており、既定で構成されているオプションです。 ゲートウェイ モードでは標準の HTTPS ポートと単一のエンドポイントを使用するため、ファイアウォールの厳しい制限がある企業ネットワーク内でアプリケーションを実行する場合は、ゲートウェイ モードが最適な選択肢です。   ただし、パフォーマンスのトレードオフとして、ゲートウェイ モードでは、Azure Cosmos DB に対してデータの読み取りまたは書き込みを行うたびに、追加のネットワーク ホップが必要になります。 そのため、ネットワーク ホップ数が少ない直接モードの方がパフォーマンスが向上します。
   
-  *ConnectionMode* は、*DocumentClient* インスタンスの作成時に *ConnectionPolicy* パラメーターを使って構成されます。
+  *ConnectionMode* は、 *DocumentClient* インスタンスの作成時に *ConnectionPolicy* パラメーターを使って構成されます。
 
 ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-connectionpolicy"></a>Async Java SDK V2 (Maven com.microsoft.azure::azure-cosmosdb)
 
@@ -84,17 +84,17 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
   Azure Cosmos DB Async Java SDK v2 では、ほとんどのワークロードでデータベースのパフォーマンスを向上させるための最適な選択肢は直接モードです。 
 
-  * ***直接モードの概要***
+  * "***直接モードの概要** _"
 
-  :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Azure Cosmos DB 接続ポリシーの図" border="false":::
+  :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="直接モード アーキテクチャの図" border="false":::
   
-  直接モードで使用されるクライアント側のアーキテクチャにより、予測可能なネットワーク使用率と Azure Cosmos DB レプリカへの多重アクセスが可能になります。 上の図は、直接モードで Cosmos DB バックエンドのレプリカにクライアント要求をルーティングする方法を示しています。 直接モード アーキテクチャでは、クライアント側で DB レプリカあたり最大 10 個の**チャネル**が割り当てられます。 チャネルは、要求バッファーが先行する TCP 接続であり、要求の深さは 30 個です。 レプリカに属するチャネルは、レプリカの**サービス エンドポイント**によって、必要に応じて動的に割り当てられます。 ユーザーが直接モードで要求を発行すると、**TransportClient** により、パーティション キーに基づいて要求が適切なサービス エンドポイントにルーティングされます。 **要求キュー**では、サービス エンドポイントの前に要求がバッファリングされます。
+  直接モードで使用されるクライアント側のアーキテクチャにより、予測可能なネットワーク使用率と Azure Cosmos DB レプリカへの多重アクセスが可能になります。 上の図は、直接モードで Cosmos DB バックエンドのレプリカにクライアント要求をルーティングする方法を示しています。 直接モード アーキテクチャでは、クライアント側で DB レプリカあたり最大 10 個の _ *チャネル* * が割り当てられます。 チャネルは、要求バッファーが先行する TCP 接続であり、要求の深さは 30 個です。 レプリカに属するチャネルは、レプリカの **サービス エンドポイント** によって、必要に応じて動的に割り当てられます。 ユーザーが直接モードで要求を発行すると、 **TransportClient** により、パーティション キーに基づいて要求が適切なサービス エンドポイントにルーティングされます。 **要求キュー** では、サービス エンドポイントの前に要求がバッファリングされます。
 
-  * ***直接モード用の ConnectionPolicy 構成オプション***
+  * "***直接モード用の ConnectionPolicy 構成オプション** _"
 
     最初の手順として、次の推奨される構成設定を使用します。 この特定のトピックで問題が発生した場合は、[Azure Cosmos DB チーム](mailto:CosmosDBPerformanceSupport@service.microsoft.com)にお問い合わせください。
 
-    Azure Cosmos DB を参照データベースとして使用している (つまり、データベースが多数のポイント読み取り操作に使用され、書き込み操作にはほとんど使用されていない) 場合には、*idleEndpointTimeout* を 0 (タイムアウトなし) に設定してもかまいません。
+    Azure Cosmos DB を参照データベースとして使用している (つまり、データベースが多数のポイント読み取り操作に使用され、書き込み操作にはほとんど使用されていない) 場合には、_idleEndpointTimeout* を 0 (タイムアウトなし) に設定してもかまいません。
 
 
     | 構成オプション       | Default    |
@@ -113,13 +113,13 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
     | sendHangDetectionTime      | "PT10S"    |
     | shutdownTimeout            | "PT15S"    |
 
-* ***直接モードのプログラミングのヒント***
+* "***直接モードのプログラミングのヒント** _"
 
   SDK の問題を解決するためのベースラインとして、Azure Cosmos DB Async Java SDK v2 の[トラブルシューティング](troubleshoot-java-async-sdk.md)に関する記事を確認してください。
   
   直接モードを使用する場合の重要なプログラミングのヒントを次に示します。
   
-  **効率的な TCP データ転送のためには、アプリケーションでマルチスレッドを使用する** - アプリケーションでは、要求を行った後に、別のスレッドでデータを受信するようにサブスクライブする必要があります。 そうしないと、意図しない "半二重" 操作が強制され、以降の要求は、前の要求の応答を待機してブロックされます。
+  _ **効率的な TCP データ転送のためには、アプリケーションでマルチスレッドを使用する** - アプリケーションでは、要求を行った後に、別のスレッドでデータを受信するようにサブスクライブする必要があります。 そうしないと、意図しない "半二重" 操作が強制され、以降の要求は、前の要求の応答を待機してブロックされます。
   
   * **コンピューティング集中型のワークロードは専用スレッドで実行する** - 上述のヒントと同様の理由から、複雑なデータ処理などの操作は、個別のスレッドに配置するのが最適です。 別のデータ ストアからデータを取り込む要求の場合 (たとえば、スレッドで Azure Cosmos DB と Spark のデータ ストアを同時に使用する場合)、待機時間が長くなる可能性があるため、他のデータ ストアからの応答を待機する追加のスレッドを生成することをお勧めします。
   
@@ -131,19 +131,19 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
   Azure Cosmos DB Async Java SDK v2 では、パーティション分割コレクションに対してクエリを並列で実行できるようにするために、並列クエリがサポートされています。 詳細については、SDK の操作に関連した[コード サンプル](https://github.com/Azure/azure-cosmosdb-java/tree/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples)を参照してください。 並列クエリは、シリアル クエリよりもクエリの待機時間とスループットを向上させるように設計されています。
 
-  * ***setMaxDegreeOfParallelism を調整する\:***
+  * "***setMaxDegreeOfParallelism の調整\:** _"
     
     並列クエリは、複数のパーティションに並列にクエリを実行することによって機能します。 ただし、個々のパーティション分割されたコレクションからのデータは、クエリごとに順番に取得されます。 そのため、setMaxDegreeOfParallelism を使ってパーティションの数を設定すると、その他のすべてのシステムの条件が変わらなければ、クエリのパフォーマンスを最大にできる可能性が最大になります。 パーティションの数が不明な場合は、setMaxDegreeOfParallelism を使って大きな数を設定すると、システムが並列処理の最大限度として最小値 (パーティションの数、ユーザー指定の入力) を選びます。
 
     並列クエリが最も有効に機能するのは、クエリに対するデータがすべてのパーティションに均等に分散している場合であることに注意する必要があります。 パーティション分割されたコレクションが、クエリによって返されるすべてまたは大部分のデータがわずかな数のパーティション (最悪の場合は 1 つのパーティション) に集中するように分割されている場合、クエリのパフォーマンスに関してこれらのパーティションがボトルネックになるでしょう。
 
-  ***setMaxBufferedItemCount を調整する\:***
+  "_ * **setMaxBufferedItemCount の調整\:** _"
     
     並列クエリは、結果の現在のバッチがクライアントによって処理されている間に結果をプリフェッチするように設計されています。 プリフェッチは、クエリの全体的な遅延の削減に役立ちます。 setMaxBufferedItemCount は、プリフェッチされる結果の数を制限します。 setMaxBufferedItemCount を、返される結果の予期される数 (またはそれ以上の数) に設定すると、クエリに対するプリフェッチの効果が最大になります。
 
     プリフェッチは MaxDegreeOfParallelism とは無関係に同じように動作し、すべてのパーティションからのデータに対して単一のバッファーが存在します。
 
-**GetRetryAfterInMilliseconds の間隔でバックオフを実装する**
+_ **GetRetryAfterInMilliseconds の間隔でバックオフを実装する**
 
   パフォーマンス テストでは、調整される要求の割合がわずかになるまで負荷を上げる必要があります。 スロットル状態になった場合は、クライアント アプリケーションでバックオフ値を適用し、サーバー側によって指定された再試行間隔を後退させる必要があります。 バックオフにより、再試行までの待ち時間を最小限に抑えることができます。
 
@@ -258,7 +258,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
     collectionDefinition.setIndexingPolicy(indexingPolicy);
     ```
 
-    詳細については、[Azure Cosmos DB インデックス作成ポリシー](indexing-policies.md)に関するページをご覧ください。
+    詳細については、[Azure Cosmos DB インデックス作成ポリシー](/azure/cosmos-db/index-policy)に関するページをご覧ください。
 
 ## <a name="throughput"></a><a id="measure-rus"></a>スループット
 

@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 4c78938e2f70342822a4009ed9195196ca486fe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfecae4775655f732df8fd6cffea613cd39fb828
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88034670"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782010"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure ポータルでのストレージ アカウントの監視
 
@@ -27,7 +27,7 @@ ms.locfileid: "88034670"
 >
 > 現在、Azure Files は、Storage Analytics のメトリックをサポートしますが、ログ記録はまだサポートされていません。
 >
-> Premium パフォーマンス ブロック BLOB のストレージ アカウントでは、ストレージ分析メトリックをサポートしていませんが、ログ記録をサポートしています。 REST API またはクライアント ライブラリを使用してプログラムでログ記録を有効にすることができます。 Premium パフォーマンス ブロック BLOB のストレージ アカウントでメトリックを表示する場合は、[Azure Monitor の Azure Storage メトリック](storage-metrics-in-azure-monitor.md)を使用することを検討してください。
+> Premium パフォーマンス ブロック BLOB のストレージ アカウントでは、ストレージ分析メトリックをサポートしていませんが、ログ記録をサポートしています。 REST API またはクライアント ライブラリを使用してプログラムでログ記録を有効にすることができます。 Premium パフォーマンス ブロック BLOB のストレージ アカウントでメトリックを表示する場合は、[Azure Monitor の Azure Storage メトリック](../blobs/monitor-blob-storage.md)を使用することを検討してください。
 >
 > Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「 [Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
 >
@@ -37,9 +37,9 @@ ms.locfileid: "88034670"
 1. [Azure Portal](https://portal.azure.com) で **[ストレージ アカウント]** を選択し、目的のストレージ アカウントの名前を選択して、アカウント ダッシュボードを開きます。
 1. メニュー ブレードの **[監視]** セクションで **[診断]** を選択します。
 
-    ![MonitoringOptions](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
+    ![[監視 (クラシック)] セクションの [Diagnostic settings (classic)]\(診断設定 (クラシック)\) オプションが強調表示されているスクリーンショット。](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 
-1. 監視する**サービス**ごとにメトリック データの**型**を選択し、データの**保持ポリシー**を選択します。 **[ステータス]** を **[オフ]** に設定して、監視を無効にすることもできます。
+1. 監視する **サービス** ごとにメトリック データの **型** を選択し、データの **保持ポリシー** を選択します。 **[ステータス]** を **[オフ]** に設定して、監視を無効にすることもできます。
 
     ![MonitoringOptions](./media/storage-monitor-storage-account/storage-enable-metrics-01.png)
 
@@ -63,19 +63,19 @@ ms.locfileid: "88034670"
 
 メトリック グラフに表示するストレージ メトリックを選択するには、次の手順に従います。
 
-1. 最初に Azure Portal でストレージのメトリック グラフを表示します。 サービス (BLOB、キュー、テーブル、ファイル) ごとに、**ストレージ アカウント ブレード**と **[メトリック]** ブレードにグラフがあります。
+1. 最初に Azure Portal でストレージのメトリック グラフを表示します。 サービス (BLOB、キュー、テーブル、ファイル) ごとに、 **ストレージ アカウント ブレード** と **[メトリック]** ブレードにグラフがあります。
 
-   この例では、**ストレージ アカウント ブレード**に表示される次のグラフを使用します。
+   この例では、 **ストレージ アカウント ブレード** に表示される次のグラフを使用します。
 
    ![Azure Portal でのグラフの選択](./media/storage-monitor-storage-account/stg-customize-chart-00.png)
 
 1. グラフを編集するために、グラフ内の任意の場所をクリックします。
 
-1. 次に、グラフに表示するメトリックの**時間範囲**と、表示するメトリックの**サービス** (BLOB、キュー、テーブル、ファイル) を選択します。 ここでは、Blob service の過去 1 週間のメトリックが表示されるように選択しました。
+1. 次に、グラフに表示するメトリックの **時間範囲** と、表示するメトリックの **サービス** (BLOB、キュー、テーブル、ファイル) を選択します。 ここでは、Blob service の過去 1 週間のメトリックが表示されるように選択しました。
 
    ![[グラフの編集] ブレードでの時間の範囲とサービスの選択](./media/storage-monitor-storage-account/storage-edit-metric-time-range.png)
 
-1. グラフに表示されている必要な個別の**メトリック**を選択し、 **[OK]** をクリックします。
+1. グラフに表示されている必要な個別の **メトリック** を選択し、 **[OK]** をクリックします。
 
    ![[グラフの編集] ブレードでの個別のメトリックの選択](./media/storage-monitor-storage-account/storage-edit-metric-selections.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "88034670"
 
 ### <a name="metrics-availability-in-charts"></a>グラフのメトリックの可用性
 
-使用可能なメトリックの一覧は、ドロップダウン リストで選択したサービスと、編集しているグラフの単位の種類に基づいて変わります。 たとえば、*PercentNetworkError*、*PercentThrottlingError* などの割合メトリックを選択できるのは、単位の割合が表示されているグラフを編集している場合だけです。
+使用可能なメトリックの一覧は、ドロップダウン リストで選択したサービスと、編集しているグラフの単位の種類に基づいて変わります。 たとえば、 *PercentNetworkError* 、 *PercentThrottlingError* などの割合メトリックを選択できるのは、単位の割合が表示されているグラフを編集している場合だけです。
 
 ![Azure Portal の要求エラーの割合グラフ](./media/storage-monitor-storage-account/stg-customize-chart-04.png)
 
@@ -91,19 +91,19 @@ ms.locfileid: "88034670"
 
 **[診断]** で選択したメトリックによって、アカウントで利用可能なメトリックの解像度が決まります。
 
-* **集計**: 受信/送信、空き時間情報、遅延時間、成功のパーセンテージなどのメトリックを監視します。 このメトリックは、BLOB、テーブル、ファイル、およびキューのサービスごとに集計されます。
-* **API ごと**: さらに細かな解像度が、サービス レベル集計のほか、個別のストレージ操作で使用できるメトリックと共に示されます。
+* **集計** : 受信/送信、空き時間情報、遅延時間、成功のパーセンテージなどのメトリックを監視します。 このメトリックは、BLOB、テーブル、ファイル、およびキューのサービスごとに集計されます。
+* **API ごと** : さらに細かな解像度が、サービス レベル集計のほか、個別のストレージ操作で使用できるメトリックと共に示されます。
 
 ## <a name="configure-metrics-alerts"></a>メトリック アラートの構成
 
 ストレージ リソース メトリックのしきい値に達したときに通知するアラートを作成できます。
 
-1. **警告ルール ブレード**を開くには、下にスクロールして**メニュー ブレード**の **[監視]** セクションを表示し、 **[アラート (クラシック)]** を選択します。
+1. **警告ルール ブレード** を開くには、下にスクロールして **メニュー ブレード** の **[監視]** セクションを表示し、 **[アラート (クラシック)]** を選択します。
 2. **[メトリック アラートの追加 (クラシック)]** を選択して、 **[アラート ルールの追加]** ブレードを開きます
-3. 新しい警告ルールの**名前**と**説明**を指定します。
-4. アラートを追加する**メトリック**を選択し、アラートの**条件**、および**しきい値**を選択します。 しきい値の単位の種類は、選択したメトリックによって異なります。 たとえば、"回数" は *ContainerCount* の単位の種類ですが、*PercentNetworkError* の単位は割合です。
-5. **期間**を選択します。 この期間内にメトリックがしきい値以上になると、アラートがトリガーされます。
-6. (省略可能) **電子メール**と **webhook** の通知を構成します。 webhook の詳細については、「[Azure メトリック アラートでの webhook の構成](../../azure-monitor/platform/alerts-webhooks.md)」を参照してください。 電子メールまたは webhook の通知を構成しない場合は、Azure Portal にのみアラートが表示されます。
+3. 新しい警告ルールの **名前** と **説明** を指定します。
+4. アラートを追加する **メトリック** を選択し、アラートの **条件** 、および **しきい値** を選択します。 しきい値の単位の種類は、選択したメトリックによって異なります。 たとえば、"回数" は *ContainerCount* の単位の種類ですが、 *PercentNetworkError* の単位は割合です。
+5. **期間** を選択します。 この期間内にメトリックがしきい値以上になると、アラートがトリガーされます。
+6. (省略可能) **電子メール** と **webhook** の通知を構成します。 webhook の詳細については、「[Azure メトリック アラートでの webhook の構成](../../azure-monitor/platform/alerts-webhooks.md)」を参照してください。 電子メールまたは webhook の通知を構成しない場合は、Azure Portal にのみアラートが表示されます。
 
 ![Azure Portal の [アラート ルールの追加] ブレード](./media/storage-monitor-storage-account/add-alert-rule.png)
 
@@ -136,7 +136,7 @@ BLOB、テーブル、およびキューごとに、読み取り要求、書き�
 
     ![Azure Portal の [監視] の [診断] メニュー。](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 
-1. **[ステータス]** を **[オン]** に設定して、ログを有効にする**サービス**を選択します。
+1. **[ステータス]** を **[オン]** に設定して、ログを有効にする **サービス** を選択します。
 
     ![Azure Portal でログを構成する。](./media/storage-monitor-storage-account/enable-diagnostics.png)
 1. **[保存]** をクリックします。

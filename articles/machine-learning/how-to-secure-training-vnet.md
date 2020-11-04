@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 6e7499d8402bf31d5ecc4d1b212c08b7064d0446
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59e8c836a796a46cbf5a45c6ad4440e4b80d476d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629728"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425105"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning トレーニング環境をセキュリティで保護する
 
@@ -42,17 +42,17 @@ ms.locfileid: "91629728"
 
 + コンピューティング リソースで使用する既存の仮想ネットワークとサブネット。
 
-+ リソースを仮想ネットワークまたはサブネットにデプロイするには、ご利用のユーザー アカウントが、Azure のロールベースのアクセス制御 (RBAC) で次のアクションへのアクセス許可を持っている必要があります。
++ リソースを仮想ネットワークまたはサブネットにデプロイするには、ご利用のユーザー アカウントが、Azure ロールベースのアクセス制御 (Azure RBAC) で次のアクションへのアクセス許可を保持している必要があります。
 
     - 仮想ネットワーク リソース上の "Microsoft.Network/virtualNetworks/join/action"。
     - サブネット リソース上の "Microsoft.Network/virtualNetworks/subnet/join/action"。
 
-    ネットワークでの RBAC の詳細については、[ネットワークの組み込みロール](/azure/role-based-access-control/built-in-roles#networking)に関するページを参照してください
+    ネットワークでの Azure RBAC の詳細については、[ネットワークの組み込みロール](/azure/role-based-access-control/built-in-roles#networking)に関するページを参照してください
 
 
 ## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>コンピューティング クラスターとインスタンス 
 
-仮想ネットワーク内で[管理対象の Azure Machine Learning __コンピューティング__](concept-compute-target.md#azure-machine-learning-compute-managed)または [Azure Machine Learning コンピューティング __インスタンス__](concept-compute-instance.md)のどちらかを使用するには、次のネットワーク要件を満たす必要があります。
+仮想ネットワーク内で [管理対象の Azure Machine Learning __コンピューティング__](concept-compute-target.md#azure-machine-learning-compute-managed)または [Azure Machine Learning コンピューティング __インスタンス__](concept-compute-instance.md)のどちらかを使用するには、次のネットワーク要件を満たす必要があります。
 
 > [!div class="checklist"]
 > * 仮想ネットワークは Azure Machine Learning のワークスペースと同じサブスクリプションとリージョンになければなりません。
@@ -63,7 +63,7 @@ ms.locfileid: "91629728"
 > * コンピューティング インスタンスの Jupyter 機能を動作させるには、Web ソケット通信が無効になっていないことを確認してください。 お使いのネットワークで、*. instances.azureml.net と *. instances.azureml.ms への websocket 接続が許可されていることを確認してください。
 
 > [!TIP]
-> Machine Learning コンピューティング インスタンスまたはクラスターにより、__仮想ネットワークが含まれているリソース グループ__に追加のネットワーク リソースが自動的に割り当てられます。 サービスにより、各コンピューティング インスタンスまたはクラスターについて次のリソースが割り当てられます。
+> Machine Learning コンピューティング インスタンスまたはクラスターにより、 __仮想ネットワークが含まれているリソース グループ__ に追加のネットワーク リソースが自動的に割り当てられます。 サービスにより、各コンピューティング インスタンスまたはクラスターについて次のリソースが割り当てられます。
 > 
 > * 1 つのネットワーク セキュリティ グループ
 > * 1 つのパブリック IP アドレス
@@ -89,7 +89,7 @@ Batch サービスにより、VM にアタッチされたネットワーク イ�
 
 - インターネットに向かう全ポートのアウトバウンド トラフィック。
 
-- コンピューティング インスタンスの場合は、__AzureMachineLearning__ の __サービス タグ__ からの、ポート 44224 で受信するインバウンド TCP トラフィック。
+- コンピューティング インスタンスの場合は、 __AzureMachineLearning__ の __サービス タグ__ からの、ポート 44224 で受信するインバウンド TCP トラフィック。
 
 > [!IMPORTANT]
 > Batch によって構成された NSG のインバウンド規則またはアウトバウンド規則を変更したり追加したりする際は注意が必要です。 NSG によってコンピューティング ノードとの通信が拒否された場合は、コンピューティング サービスによってコンピューティング ノードの状態が使用不可に設定されます。
@@ -111,18 +111,18 @@ Azure portal 内での NSG 規則の構成は、次の画像に示したとお�
 - NSG 規則を使用して、アウトバウンドのインターネット接続を拒否します。
 
 - __コンピューティング インスタンス__ または __コンピューティング クラスター__ の場合は、次の項目への送信トラフィックを制限します。
-   - Azure Storage (__Storage.RegionName__ の __サービス タグ__ を使用)。 ここで、`{RegionName}` は Azure リージョンの名前です。
-   - Azure Container Registry (__AzureContainerRegistry.RegionName__ の __サービス タグ__ を使用)。 ここで、`{RegionName}` は Azure リージョンの名前です。
-   - Azure Machine Learning (__AzureMachineLearning__ の __サービス タグ__ を使用)
-   - Azure Resource Manager (__AzureResourceManager__ の __サービス タグ__ を使用)
-   - Azure Active Directory (__AzureActiveDirectory__ の __サービス タグ__ を使用)
+   - Azure Storage ( __Storage.RegionName__ の __サービス タグ__ を使用)。 ここで、`{RegionName}` は Azure リージョンの名前です。
+   - Azure Container Registry ( __AzureContainerRegistry.RegionName__ の __サービス タグ__ を使用)。 ここで、`{RegionName}` は Azure リージョンの名前です。
+   - Azure Machine Learning ( __AzureMachineLearning__ の __サービス タグ__ を使用)
+   - Azure Resource Manager ( __AzureResourceManager__ の __サービス タグ__ を使用)
+   - Azure Active Directory ( __AzureActiveDirectory__ の __サービス タグ__ を使用)
 
 Azure portal 内での NSG 規則の構成は、次の画像に示したとおりです。
 
 [![Machine Learning コンピューティングのアウトバウンド NSG 規則](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png#lightbox)
 
 > [!NOTE]
-> Microsoft から提供される既定の Docker イメージを使用し、ユーザー マネージドの依存関係を有効にする場合は、次の__サービス タグ__も使用する必要があります。
+> Microsoft から提供される既定の Docker イメージを使用し、ユーザー マネージドの依存関係を有効にする場合は、次の __サービス タグ__ も使用する必要があります。
 >
 > * __MicrosoftContainerRegistry__
 > * __AzureFrontDoor.FirstParty__
@@ -200,7 +200,7 @@ Machine Learning コンピューティング クラスターを作成するに�
 
 1. __[New Training Cluster]\(新しいトレーニング クラスター\)__ ダイアログで、 __[詳細設定]__ セクションを展開します。
 
-1. このコンピューティング リソースを仮想ネットワークを使用するように構成するには、「__仮想ネットワークを構成する__」セクションの操作を実行します。
+1. このコンピューティング リソースを仮想ネットワークを使用するように構成するには、「 __仮想ネットワークを構成する__ 」セクションの操作を実行します。
 
     1. __[リソース グループ]__ ボックスの一覧で、目的の仮想ネットワークが含まれているリソース グループを選択します。
     1. __[仮想ネットワーク]__ ボックスの一覧で、目的のサブネットが含まれている仮想ネットワークを選択します。

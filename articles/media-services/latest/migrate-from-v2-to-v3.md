@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 48ce6edc3d071d84c3921f85c2e9798b804d0279
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0cdf4699f5dc00087845ee6ca0d24ad6493c320b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017745"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426874"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services v2 から v3 への移行のガイダンス
 
@@ -59,7 +59,7 @@ ms.locfileid: "92017745"
 * ライブ出力は、v2 API の Program エンティティよりも使用方法が簡単です。 
 * RTMP サポートの強化 (安定性の向上およびソース エンコーダー サポートの強化)。
 * RTMPS のセキュアな取り込み。<br/>ライブ イベントを作成すると、4 つの取り込み URL を取得します。 4 つの取り込み URL はほとんど同じで。ストリーミング トークン (AppId) は同じですが、ポート番号の部分のみが異なります。 URL のうち 2 つは RTMPS のプライマリとバックアップです。   
-* エンティティに対するロールベースのアクセス制御 (RBAC) があります。 
+* エンティティに対する Azure ロールベースのアクセス制御 (Azure RBAC) があります。 
 
 ## <a name="known-issues"></a>既知の問題
 

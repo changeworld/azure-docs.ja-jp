@@ -1,7 +1,7 @@
 ---
 title: ワークスペースでロールを管理する
 titleSuffix: Azure Machine Learning
-description: ロールベースのアクセス制御 (RBAC) を使用して、Azure Machine Learning ワークスペースにアクセスする方法について説明します。
+description: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Machine Learning ワークスペースにアクセスする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
-ms.custom: how-to, seodec18
-ms.openlocfilehash: a9259e287c75a3a39ad1d4e701638f38b4512ee0
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: how-to, seodec18, devx-track-azurecli
+ms.openlocfilehash: cba01684457c8b3a7f6c8c51c7d202bf8963658e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966408"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736613"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへのアクセスの管理
 
@@ -34,9 +34,9 @@ Azure Machine Learning ワークスペースは Azure リソースの 1 つで�
 | **カスタム ロール** | ワークスペース内の特定のコントロールまたはデータ プレーン操作へのアクセスをカスタマイズできます。 たとえば、実行の送信、コンピューティングの作成、モデルの配置、データセットの登録などです。 |
 
 > [!IMPORTANT]
-> ロール アクセス権は、Azure の複数のレベルにスコープ指定できます。 たとえば、ワークスペースへの所有者アクセス権を持つユーザーであっても、そのワークスペースが含まれるリソース グループへの所有者アクセス権を持っていないことがあります。 詳細については、「[RBAC のしくみ](/azure/role-based-access-control/overview#how-rbac-works)」を参照してください。
+> ロール アクセス権は、Azure の複数のレベルにスコープ指定できます。 たとえば、ワークスペースへの所有者アクセス権を持つユーザーであっても、そのワークスペースが含まれるリソース グループへの所有者アクセス権を持っていないことがあります。 詳細については、「[Azure RBAC のしくみ](/azure/role-based-access-control/overview#how-azure-rbac-works)」を参照してください。
 
-特定の組み込みロールの詳細については、「[Azure リソースの組み込みロール](/azure/role-based-access-control/built-in-roles)」を参照してください。
+特定の組み込みロールの詳細については、「[Azure の組み込みロール](/azure/role-based-access-control/built-in-roles)」を参照してください。
 
 ## <a name="manage-workspace-access"></a>ワークスペース アクセスの管理
 
@@ -145,7 +145,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 次の表は、Azure Machine Learning アクティビティの概要と、それらを最小のスコープで実行するために必要なアクセス許可をまとめたものです。 たとえば、ワークスペース スコープ (列 4) を使用してアクティビティを実行できる場合は、そのアクセス許可を持つそれより高いすべてのスコープも自動的に機能します。
 
 > [!IMPORTANT]
-> この表内の `/` で始まるすべてのパスは、`Microsoft.MachineLearningServices/` に対する**相対パス**です。
+> この表内の `/` で始まるすべてのパスは、`Microsoft.MachineLearningServices/` に対する **相対パス** です。
 
 | アクティビティ | サブスクリプション レベルのスコープ | リソース グループレベルのスコープ | ワークスペースレベルのスコープ |
 | ----- | ----- | ----- | ----- |
@@ -173,7 +173,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
 はい、独自のカスタム ロールを定義するためのベースとして使用できる、提案されたカスタム ロール定義を使用した一般的なシナリオをいくつか紹介します。
 
-* __Data Scientist Custom__:データ科学者がワークスペース内で以下を**除く**すべての操作を実行することができます。
+* __Data Scientist Custom__ :データ科学者がワークスペース内で以下を **除く** すべての操作を実行することができます。
 
     * コンピューティングの作成
     * 実稼働 AKS クラスターへのモデルの配置
@@ -209,7 +209,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
     }
     ```
 
-* __Data Scientist Restricted Custom__:許可されたアクションにワイルドカードを含まない、より制限されたロール定義。 ワークスペース内で以下を**除く**すべての操作が実行できます。
+* __Data Scientist Restricted Custom__ :許可されたアクションにワイルドカードを含まない、より制限されたロール定義。 ワークスペース内で以下を **除く** すべての操作が実行できます。
 
     * コンピューティングの作成
     * 実稼働 AKS クラスターへのモデルの配置
@@ -270,7 +270,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
     }
     ```
      
-* __MLflow Data Scientist Custom__:データ科学者が、以下を**除く**、MLflow AzureML でサポートされているすべての操作を実行できます。
+* __MLflow Data Scientist Custom__ :データ科学者が、以下を **除く** 、MLflow AzureML でサポートされているすべての操作を実行できます。
 
    * コンピューティングの作成
    * 実稼働 AKS クラスターへのモデルの配置
@@ -310,7 +310,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
     }
     ```   
 
-* __MLOps Custom__:サービス プリンシパルにロールを割り当て、それを使用して MLOps パイプラインを自動化することができます。 たとえば、既に公開されているパイプラインに対して実行を送信するには、次のようにします。
+* __MLOps Custom__ :サービス プリンシパルにロールを割り当て、それを使用して MLOps パイプラインを自動化することができます。 たとえば、既に公開されているパイプラインに対して実行を送信するには、次のようにします。
 
     `mlops_custom_role.json` :
     ```json
@@ -351,7 +351,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
     }
     ```
 
-* __Workspace Admin__:ワークスペースのスコープ内で以下を**除く**すべての操作を実行することができます。
+* __Workspace Admin__ :ワークスペースのスコープ内で以下を **除く** すべての操作を実行することができます。
 
     * 新しいワークスペースの作成。
     * サブスクリプションまたはワークスペース レベルのクォータの割り当て
@@ -381,7 +381,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
     ```
 
 <a name="labeler"></a>
-* __Labeler Custom__:データのラベル付けのみを対象とするロールを定義することができます。
+* __Labeler Custom__ :データのラベル付けのみを対象とするロールを定義することができます。
 
     `labeler_custom_role.json` :
     ```json
@@ -432,13 +432,13 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用している
     - VNet リソース上の "Microsoft.Network/virtualNetworks/join/action"。
     - サブネット リソース上の "Microsoft.Network/virtualNetworks/subnet/join/action"。
     
-    ネットワークでの RBAC の詳細については、[ネットワークの組み込みロール](/azure/role-based-access-control/built-in-roles#networking)に関するページを参照してください。
+    ネットワークでの Azure RBAC の詳細については、[ネットワークの組み込みロール](/azure/role-based-access-control/built-in-roles#networking)に関するページを参照してください。
 
 - 新しいロールの割り当てがスタック全体のキャッシュされたアクセス許可に対して有効になるには、最大で 1 時間かかることがあります。
 
 ### <a name="q-what-permissions-do-i-need-to-use-a-user-assigned-managed-identity-with-my-amlcompute-clusters"></a>Q. ユーザー割り当てのマネージド ID を Amlcompute クラスターで使用するには、どのようなアクセス許可が必要ですか?
 
-Amlcompute クラスターでユーザー割り当て ID を割り当てるには、コンピューティングを作成するための書き込みアクセス許可と、[マネージド ID オペレーター ロール](/azure/role-based-access-control/built-in-roles#managed-identity-operator)を持っている必要があります。 マネージド ID を使用した RBAC の詳細については、[ユーザー割り当て ID の管理方法](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)に関するページを参照してください。
+Amlcompute クラスターでユーザー割り当て ID を割り当てるには、コンピューティングを作成するための書き込みアクセス許可と、[マネージド ID オペレーター ロール](/azure/role-based-access-control/built-in-roles#managed-identity-operator)を持っている必要があります。 マネージド ID を使用した Azure RBAC の詳細については、[ユーザー割り当て ID の管理方法](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)に関するページを参照してください。
 
 
 ### <a name="q-do-we-support-role-based-access-control-on-the-studio-portal"></a>Q. Studio ポータルでロールベースのアクセス制御はサポートされていますか?

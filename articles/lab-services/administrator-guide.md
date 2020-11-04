@@ -2,13 +2,13 @@
 title: Azure Lab Services - 管理者ガイド | Microsoft Docs
 description: このガイドは、Azure Lab Services を使用してラボ アカウントを作成および管理する管理者にとって役立ちます。
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: ad3bc110d93efb5b735f77fb8a0b2af9e4f9a7cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/20/2020
+ms.openlocfilehash: a39ee2cc57c8fc1497c3798759bd40d1ed2976e3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85444150"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425296"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services - 管理者ガイド
 大学のクラウド リソースを管理する情報技術 (IT) 管理者は、通常、学校のラボ アカウントの設定を担当します。 ラボ アカウントが設定されると、管理者または教師は、ラボ アカウント内に含まれるクラスルーム ラボを作成します。 この記事では、関連する Azure リソースの概要と、それらを作成するためのガイダンスを示します。
@@ -38,7 +38,7 @@ ms.locfileid: "85444150"
 
 ラボ アカウントを作成するときに、同時に共有イメージ ギャラリーを自動的に作成してアタッチできます。  このオプションにより、ラボ アカウントと共有イメージ ギャラリーが異なるリソース グループに作成されます。 この動作は、[ラボ アカウントの作成時に共有イメージ ギャラリーを構成する](how-to-attach-detach-shared-image-gallery.md#configure-at-the-time-of-lab-account-creation)方法に関するチュートリアルで説明する手順の使用時に確認できます。 この記事の上記の図でも、この構成を使用しています。 
 
-ラボ アカウントまたは共有イメージ ギャラリーのリソース グループは、作成後に変更することが*できない*ため、事前に時間をかけてリソース グループの構造を計画することをお勧めします。 これらのリソースのリソース グループを変更する必要がある場合は、ラボ アカウント/共有イメージ ギャラリーを削除して再作成する必要があります。
+ラボ アカウントまたは共有イメージ ギャラリーのリソース グループは、作成後に変更することが *できない* ため、事前に時間をかけてリソース グループの構造を計画することをお勧めします。 これらのリソースのリソース グループを変更する必要がある場合は、ラボ アカウント/共有イメージ ギャラリーを削除して再作成する必要があります。
 
 ## <a name="lab-account"></a>ラボ アカウント
 
@@ -48,7 +48,7 @@ ms.locfileid: "85444150"
 
 - **複数のクラスルーム ラボのさまざまなポリシー要件を管理する**
 
-    ラボ アカウントを設定するときは、ラボ アカウントの "*すべての*" クラスルーム ラボに適用される次のようなポリシーを設定します。
+    ラボ アカウントを設定するときは、ラボ アカウントの " *すべての* " クラスルーム ラボに適用される次のようなポリシーを設定します。
     - クラスルーム ラボがアクセスできる共有リソースがある Azure 仮想ネットワーク。 たとえば、仮想ネットワーク内の共有データ セットへのアクセスを必要とする一連のクラスルーム ラボがある場合があります。
     - クラスルーム ラボが VM の作成に使用できる仮想マシン (VM) イメージ。 たとえば、[Data Science VM for Linux](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) Marketplace イメージへのアクセスを必要とする一連のクラスルーム ラボがある場合があります。
 
@@ -114,9 +114,9 @@ Azure Lab Services の使用を開始するときは、リソース グループ
 
 | リソースの種類 | Role | 提案されるパターン | 例 |
 | ------------- | ---- | ----------------- | -------- | 
-| Resource group | 1 つ以上のラボ アカウントと 1 つ以上の共有イメージ ギャラリーが含まれます。 | \<organization short name\>-\<environment\>-rg<ul><li>**組織の短い名前**は、リソース グループがサポートする組織の名前を示します。</li><li>**環境**は、リソースの環境 (パイロットや運用など) を示します。</li><li>**rg** は、リソースの種類 (リソース グループ) を表します。</li></ul> | contosouniversitylabs-rg<br/>contosouniversitylabs-pilot-rg<br/>contosouniversitylabs-prod-rg |
-| ラボ アカウント | 1 つ以上のラボが含まれます。 | \<organization short name\>-\<environment\>-la<ul><li>**組織の短い名前**は、リソース グループがサポートする組織の名前を示します。</li><li>**環境**は、リソースの環境 (パイロットや運用など) を示します。</li><li>**la** は、リソースの種類 (ラボ アカウント) を表します。</li></ul> | contosouniversitylabs-la<br/>mathdeptlabs-la<br/>sciencedeptlabs-pilot-la<br/>sciencedeptlabs-prod-la |
-| クラスルーム ラボ | 1 つ以上の VM が含まれます。 |\<class name\>-\<timeframe\>-\<educator identifier\><ul><li>**クラス名**は、ラボがサポートするクラスの名前を示します。</li><li>**期間**は、クラスが提供される期間を示します。</li>**教師識別子**は、ラボを所有する教師を示します。</li></ul> | CS1234-fall2019-johndoe<br/>CS1234-spring2019-johndoe |
+| Resource group | 1 つ以上のラボ アカウントと 1 つ以上の共有イメージ ギャラリーが含まれます。 | \<organization short name\>-\<environment\>-rg<ul><li>**組織の短い名前** は、リソース グループがサポートする組織の名前を示します。</li><li>**環境** は、リソースの環境 (パイロットや運用など) を示します。</li><li>**rg** は、リソースの種類 (リソース グループ) を表します。</li></ul> | contosouniversitylabs-rg<br/>contosouniversitylabs-pilot-rg<br/>contosouniversitylabs-prod-rg |
+| ラボ アカウント | 1 つ以上のラボが含まれます。 | \<organization short name\>-\<environment\>-la<ul><li>**組織の短い名前** は、リソース グループがサポートする組織の名前を示します。</li><li>**環境** は、リソースの環境 (パイロットや運用など) を示します。</li><li>**la** は、リソースの種類 (ラボ アカウント) を表します。</li></ul> | contosouniversitylabs-la<br/>mathdeptlabs-la<br/>sciencedeptlabs-pilot-la<br/>sciencedeptlabs-prod-la |
+| クラスルーム ラボ | 1 つ以上の VM が含まれます。 |\<class name\>-\<timeframe\>-\<educator identifier\><ul><li>**クラス名** は、ラボがサポートするクラスの名前を示します。</li><li>**期間** は、クラスが提供される期間を示します。</li>**教師識別子** は、ラボを所有する教師を示します。</li></ul> | CS1234-fall2019-johndoe<br/>CS1234-spring2019-johndoe |
 | 共有イメージ ギャラリー | 1 つ以上の VM イメージ バージョンが含まれます。 | \<organization short name\>gallery | contosouniversitylabsgallery |
 
 他の Azure リソースの名前付けの詳細については、[Azure リソースの名前付け規則](/azure/architecture/best-practices/naming-conventions)に関する記事をご覧ください。
@@ -144,13 +144,13 @@ Azure Lab Services のリソースを設定するときに、リソースをホ�
     > [!NOTE]
     > ラボ アカウントが VNet とピアリングされている場合、 **[ラボ作成者にラボの場所の選択を許可する]** に対する設定は無効になります。 この設定に関する追加情報については、[ラボ作成者がラボ用の場所を選択できるようにする](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)方法に関する記事を参照してください。
     
-  - **どの VNet ともピアリングされておらず ***、*** ラボ作成者はラボの場所の選択を許可されていない**
+  - **どの VNet ともピアリングされておらず、* *" _かつ_ "* _ラボ作成者はラボの場所の選択を許可されていない_*
   
-    ラボ アカウントがどの VNet ともピアリングされて**おらず** *、* [ラボ作成者がラボの場所の選択を許可されて**いない**](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)場合は、使用可能な VM 容量があるリージョンにクラスルーム ラボが自動的に作成されます。  具体的には、Azure Lab Services は、[ラボ アカウントと同じ地域内にあるリージョン](https://azure.microsoft.com/global-infrastructure/regions)の可用性を調べます。
+    ラボ アカウントがどの VNet ともピアリングされて **おらず** *、* [ラボ作成者がラボの場所の選択を許可されて **いない**](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)場合は、使用可能な VM 容量があるリージョンにクラスルーム ラボが自動的に作成されます。  具体的には、Azure Lab Services は、[ラボ アカウントと同じ地域内にあるリージョン](https://azure.microsoft.com/global-infrastructure/regions)の可用性を調べます。
 
-  - **どの VNet ともピアリングされておらず ***、*** ラボ作成者はラボの場所の選択を許可されている**
+  - **どの VNet ともピアリングされておらず、 *" _かつ_ "* _ ラボ作成者はラボの場所の選択を許可されている_*
        
-    ラボ アカウントがどの VNet ともピアリングされて**おらず**、[ラボ作成者がラボの場所の選択を許可されている](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)場合は、ラボ作成者が選択できる場所は使用可能な容量に基づきます。
+    ラボ アカウントがどの VNet ともピアリングされて **おらず** 、 [ラボ作成者がラボの場所の選択を許可されている](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)場合は、ラボ作成者が選択できる場所は使用可能な容量に基づきます。
 
 > [!NOTE]
 > リージョンのための十分な VM 容量が確実に存在するようにするには、まずラボ アカウントを使用して、またはラボの作成時に容量を要求することが重要です。
@@ -171,18 +171,18 @@ Azure Lab Services のリソースを設定するときに、リソースをホ�
 | Medium | <ul><li>4 コア</li><li>7 GB RAM</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | このサイズは、リレーショナル データベース、メモリ内 Caching、および分析に最適です。 |
 | 中 (入れ子になった仮想化) | <ul><li>4 コア</li><li>16 GB RAM</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | このサイズは、リレーショナル データベース、メモリ内 Caching、および分析に最適です。
 | Large | <ul><li>8 コア</li><li>16 GB RAM</li></ul>  | [Standard_A8_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series) | このサイズは、高速の CPU、ローカル ディスクのよりすぐれたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。  また、このサイズは入れ子になった仮想化もサポートしています。 |
-| 大規模 (入れ子になった仮想化) | <ul><li>8 コア</li><li>16 GB RAM</li></ul>  | [Standard_A8_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series) | このサイズは、高速の CPU、ローカル ディスクのよりすぐれたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。 |
+| 大規模 (入れ子になった仮想化) | <ul><li>8 コア</li><li>32 GB RAM</li></ul>  | [Standard_D8s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | このサイズは、高速の CPU、ローカル ディスクのよりすぐれたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。 |
 | Small GPU (視覚化) | <ul><li>6 コア</li><li>56 GB RAM</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | このサイズは、リモートの視覚化、ストリーミング、ゲーム、OpenGL や DirectX などのフレームワークを使用したエンコードに最適です。 |
 | Small GPU (Compute) | <ul><li>6 コア</li><li>56 GB RAM</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |このサイズは、人工知能やディープ ラーニングなどのコンピューティング集中型のアプリケーションに最適です。 |
 | Medium GPU (視覚化) | <ul><li>12 コア</li><li>112 GB RAM</li></ul>  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | このサイズは、リモートの視覚化、ストリーミング、ゲーム、OpenGL や DirectX などのフレームワークを使用したエンコードに最適です。 |
 
 ## <a name="manage-identity"></a>ID の管理
 
-[Azure のロール ベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/overview)を使用すると、次のロールを割り当てて、ラボ アカウントとクラスルーム ラボへのアクセス権を付与できます。
+[Azure ロール ベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) を使用すると、次のロールを割り当てて、ラボ アカウントとクラスルーム ラボへのアクセス権を付与できます。
 
 - **ラボ アカウント所有者**
 
-    ラボ アカウントを作成する管理者は、ラボ アカウントの**所有者**ロールに自動的に追加されます。  **所有者**ロールを割り当てられた管理者は、次のことができます。
+    ラボ アカウントを作成する管理者は、ラボ アカウントの **所有者** ロールに自動的に追加されます。  **所有者** ロールを割り当てられた管理者は、次のことができます。
      - ラボ アカウントの設定を変更する。
      - 所有者または共同作成者としてのラボ アカウントへのアクセス権を他の管理者に付与する。
      - 作成者、所有者、または共同作成者としてのクラスルーム ラボへのアクセス権を教師に付与する。
@@ -190,32 +190,32 @@ Azure Lab Services のリソースを設定するときに、リソースをホ�
 
 - **ラボ アカウント共同作成者**
 
-    **共同作成者**ロールを割り当てられた管理者は、次のことができます。
+    **共同作成者** ロールを割り当てられた管理者は、次のことができます。
     - ラボ アカウントの設定を変更する。
     - ラボ アカウント内のすべてのクラスルーム ラボを作成して管理する。
 
-    ただし、ラボ アカウントまたはクラスルーム ラボへのアクセス権を他のユーザーに付与することは "*できません*"。
+    ただし、ラボ アカウントまたはクラスルーム ラボへのアクセス権を他のユーザーに付与することは " *できません* "。
 
 - **クラスルーム ラボ作成者**
 
-    ラボ アカウント内にクラスルーム ラボを作成するには、教師が**ラボ作成者**ロールのメンバーである必要があります。  教師は、クラスルーム ラボを作成すると、自動的にそのラボの所有者として追加されます。  「[ユーザーを**ラボの作成者**ロールに追加する](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role)」方法について、チュートリアルを参照してください。 
+    ラボ アカウント内にクラスルーム ラボを作成するには、教師が **ラボ作成者** ロールのメンバーである必要があります。  教師は、クラスルーム ラボを作成すると、自動的にそのラボの所有者として追加されます。  「 [ユーザーを **ラボの作成者** ロールに追加する](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role)」方法について、チュートリアルを参照してください。 
 
 - **クラスルーム ラボ所有者/共同作成者**
   
-    教師は、ラボの**所有者**または**共同作成者**ロールのメンバーである場合、クラスルーム ラボの設定を表示および変更できます。ラボ アカウントの**閲覧者**ロールのメンバーでもある必要があります。
+    教師は、ラボの **所有者** または **共同作成者** ロールのメンバーである場合、クラスルーム ラボの設定を表示および変更できます。ラボ アカウントの **閲覧者** ロールのメンバーでもある必要があります。
 
-    ラボの**所有者**と**共同作成者**のロールの主な違いは、共同作成者は、ラボを管理するためのアクセス権を他のユーザーに与えることが "*できない*" 点です。ラボを管理するためのアクセス権を他のユーザーに付与できるのは、所有者のみです。
+    ラボの **所有者** と **共同作成者** のロールの主な違いは、共同作成者は、ラボを管理するためのアクセス権を他のユーザーに与えることが " *できない* " 点です。ラボを管理するためのアクセス権を他のユーザーに付与できるのは、所有者のみです。
 
-    さらに、教師は、**ラボ作成者**ロールのメンバーでもある場合を除き、新しいクラスルーム ラボを作成 "*できません*"。
+    さらに、教師は、 **ラボ作成者** ロールのメンバーでもある場合を除き、新しいクラスルーム ラボを作成 " *できません* "。
 
 - **共有イメージ ギャラリー**
 
     共有イメージ ギャラリーをラボ アカウントにアタッチすると、ラボ アカウントの所有者/共同作成者、およびラボの作成者/所有者/共同作成者には、ギャラリーのイメージを表示および保存するためのアクセス権が自動的に付与されます。
 
 ロールの割り当てに役立つヒントを次にいくつか示します。
-   - 通常は、管理者のみがラボ アカウントの**所有者**または**共同作成者**ロールのメンバーである必要があります。複数の所有者/共同作成者がいてもかまいません。
-   - 教師がクラスルーム ラボの新規作成や自身が作成したラボの管理を行うことができるようにするには、**ラボ作成者**ロールへのアクセス権の付与のみが必要です。
-   - 教師が特定のクラスルーム ラボを管理できるようにするが、新しいラボを作成でき "*ない*" ようにするには、彼らが管理するクラスルーム ラボごとに**所有者**または**共同作成者**のいずれかのロールへのアクセス権を割り当てる必要があります。  たとえば、教授と補助教員の両方が、クラスルーム ラボを共同で所有することを許可できます。  [クラスルーム ラボにユーザーを所有者として追加する](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-add-user-lab-owner)方法に関するガイドを参照してください。
+   - 通常は、管理者のみがラボ アカウントの **所有者** または **共同作成者** ロールのメンバーである必要があります。複数の所有者/共同作成者がいてもかまいません。
+   - 教師がクラスルーム ラボの新規作成や自身が作成したラボの管理を行うことができるようにするには、 **ラボ作成者** ロールへのアクセス権の付与のみが必要です。
+   - 教師が特定のクラスルーム ラボを管理できるようにするが、新しいラボを作成でき " *ない* " ようにするには、彼らが管理するクラスルーム ラボごとに **所有者** または **共同作成者** のいずれかのロールへのアクセス権を割り当てる必要があります。  たとえば、教授と補助教員の両方が、クラスルーム ラボを共同で所有することを許可できます。  [クラスルーム ラボにユーザーを所有者として追加する](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-add-user-lab-owner)方法に関するガイドを参照してください。
 
 ## <a name="pricing"></a>価格
 
@@ -239,7 +239,7 @@ Azure Lab Services の価格については、「[Azure Lab Services の価格](
 
 イメージ バージョンがソース リージョンから追加のターゲット リージョンにレプリケートされると、ネットワーク エグレス料金が発生します。 請求額は、イメージのデータがソース リージョンから外部に最初に転送されたときのイメージ バージョンのサイズに基づきます。  価格の詳細については、「[帯域幅の料金詳細](https://azure.microsoft.com/pricing/details/bandwidth/)」をご覧ください。
 
-[教育機関向けソリューション](https://www.microsoft.com/licensing/licensing-programs/licensing-for-industries?rtc=1&activetab=licensing-for-industries-pivot:primaryr3)のお客様は、エグレス料金の支払いを免除される場合があります。 詳細については、アカウント マネージャーにお問い合わせください。  詳細については、リンク先ドキュメントの「**よく寄せられるご質問**」セクション (具体的には、「What data transfer programs exist for academic customers and how do I qualify? (教育機関のお客様向けのどんなデータ転送プログラムがありますか? 資格を得るにはどうすればよいですか?)」という質問) をご覧ください。
+[教育機関向けソリューション](https://www.microsoft.com/licensing/licensing-programs/licensing-for-industries?rtc=1&activetab=licensing-for-industries-pivot:primaryr3)のお客様は、エグレス料金の支払いを免除される場合があります。 詳細については、アカウント マネージャーにお問い合わせください。  詳細については、リンク先ドキュメントの「 **よく寄せられるご質問** 」セクション (具体的には、「What data transfer programs exist for academic customers and how do I qualify? (教育機関のお客様向けのどんなデータ転送プログラムがありますか? 資格を得るにはどうすればよいですか?)」という質問) をご覧ください。
 
 #### <a name="pricing-example"></a>価格の例
 

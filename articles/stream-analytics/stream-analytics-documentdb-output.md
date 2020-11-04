@@ -8,15 +8,15 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: 891cd651278906c6ff4b24d91342c612c67604de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b28d75e6526f27fd0076244ec32848dbf20e91e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596566"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424781"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB への Azure Stream Analytics の出力  
-Azure Stream Analytics では、JSON 出力のターゲットを [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) にすることができるため、構造化されていない JSON データに対してデータ アーカイブと待機時間の短いクエリを有効にすることができます。 このドキュメントでは、この構成を実装するためのベスト プラクティスについて説明します。
+Azure Stream Analytics では、JSON 出力のターゲットを [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) にすることができるため、構造化されていない JSON データに対してデータ アーカイブと待機時間の短いクエリを有効にすることができます。 このドキュメントでは、この構成を実装するためのベスト プラクティスについて説明します。 Azure Cosmos DB を出力として使用する場合は、ジョブを互換性レベル 1.2 に設定することをお勧めします。
 
 Azure Cosmos DB に馴染みがない場合は、「[Azure Cosmos DB のドキュメント](https://docs.microsoft.com/azure/cosmos-db/)」を参照して、作業を開始してください。 
 
@@ -44,7 +44,7 @@ Azure Cosmos DB では、アプリケーション要件を満たすために、�
 詳細については、[データベースとクエリの一貫性レベルの変更](../cosmos-db/consistency-levels.md)に関する記事をご覧ください。
 
 ## <a name="upserts-from-stream-analytics"></a>Stream Analytics からのアップサート
-Stream Analytics を Azure Cosmos DB と統合することで、特定の**ドキュメント ID** 列に基づき、ご利用のコンテナーでレコードを挿入または更新できるようになります。 これは *upsert* とも呼ばれます。
+Stream Analytics を Azure Cosmos DB と統合することで、特定の **ドキュメント ID** 列に基づき、ご利用のコンテナーでレコードを挿入または更新できるようになります。 これは *upsert* とも呼ばれます。
 
 Stream Analytics ではオプティミスティック upsert 手法が使用されます。 ドキュメント ID の競合により挿入が失敗した場合のみ、更新が行われます。 
 
@@ -55,10 +55,10 @@ Stream Analytics ではオプティミスティック upsert 手法が使用さ�
 受信した JSON ドキュメントに既存の ID フィールドがある場合、そのフィールドは自動的に Azure Cosmos DB の **ドキュメント ID** 列として使用されます。 後続のどの書き込みもそのように処理されるため、次のいずれかの状況になります。
 
 - ID が一意の場合は挿入となる。
-- ID が重複していて、**ドキュメント ID** が **ID** に設定されていると upsert となる。
-- ID が重複していて、**ドキュメント ID** が設定されていないと、最初のドキュメントの後でエラーになる。
+- ID が重複していて、 **ドキュメント ID** が **ID** に設定されていると upsert となる。
+- ID が重複していて、 **ドキュメント ID** が設定されていないと、最初のドキュメントの後でエラーになる。
 
-重複した ID を持つものも含め、"*すべての*" ドキュメントを保存する場合は、(**AS** キーワードを使用して) クエリ内の ID フィールドの名前を変更します。 Azure Cosmos DB により ID フィールドを作成するか、または ID を別の列の値に置き換えます (**AS** キーワードを使用するか、または**ドキュメント ID** 設定を使用)。
+重複した ID を持つものも含め、" *すべての* " ドキュメントを保存する場合は、( **AS** キーワードを使用して) クエリ内の ID フィールドの名前を変更します。 Azure Cosmos DB により ID フィールドを作成するか、または ID を別の列の値に置き換えます ( **AS** キーワードを使用するか、または **ドキュメント ID** 設定を使用)。
 
 ## <a name="data-partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB でのデータ パーティション分割
 Azure Cosmos DB では、パーティションがご利用のワークロードに基づいて自動的にスケーリングされます。 そのため、ご自分のデータをパーティション分割するための方法として[無制限](../cosmos-db/partition-data.md)コンテナーをお勧めします。 Stream Analytics では、無制限コンテナーに書き込む場合、以前のクエリ手順または入力のパーティション分割スキームと同数の並列ライターが使用されます。
@@ -66,7 +66,7 @@ Azure Cosmos DB では、パーティションがご利用のワークロード�
 > [!NOTE]
 > Azure Stream Analytics では最上位のパーティション キーを使用した無制限コンテナーのみがサポートされています。 たとえば、`/region` がサポートされています。 入れ子になったパーティション キー (たとえば、`/region/name`) はサポートされていません。 
 
-選択したパーティション キーによっては、次の "_警告_" が出力される場合があります。
+選択したパーティション キーによっては、次の " _警告_ " が出力される場合があります。
 
 `CosmosDB Output contains multiple rows and just one row per partition key. If the output latency is higher than expected, consider choosing a partition key that contains at least several hundred records per partition key.`
 
@@ -74,7 +74,7 @@ Azure Cosmos DB では、パーティションがご利用のワークロード�
 
 同一パーティション キー値に属するドキュメントのストレージ サイズは 20 GB に制限されます ([物理的なパーティション サイズの制限](../cosmos-db/partition-data.md)は 50 GB です)。 [理想的なパーティション キー](../cosmos-db/partitioning-overview.md#choose-partitionkey)とは、クエリ内でフィルターとして頻繁に使用され、ソリューションのスケーラビリティを確保するために十分なカーディナリティを持つものを指します。
 
-Stream Analytics クエリと Cosmos DB に使用されるパーティション キーは、同一である必要はありません。 完全並列トポロジでは、Stream Analytics クエリのパーティション キーとして*入力パーティション キー* `PartitionId` を使用することが推奨されますが、Cosmos DB コンテナーのパーティション キーとしては推奨される選択肢ではないことがあります。
+Stream Analytics クエリと Cosmos DB に使用されるパーティション キーは、同一である必要はありません。 完全並列トポロジでは、Stream Analytics クエリのパーティション キーとして *入力パーティション キー* `PartitionId` を使用することが推奨されますが、Cosmos DB コンテナーのパーティション キーとしては推奨される選択肢ではないことがあります。
 
 また、パーティション キーは Azure Cosmos DB 用のストアド プロシージャやトリガーでのトランザクションの境界でもあります。 パーティション キーは、トランザクション内で同時に発生するドキュメントが同一のパーティション キーの値を共有できるように選択する必要があります。 パーティション キーの選択については、記事「[Azure Cosmos DB でのパーティション分割](../cosmos-db/partitioning-overview.md)」に詳しく説明されています。
 
@@ -99,7 +99,7 @@ Event Hubs でのイベントの受信速度は、取り込むように構成さ
 
 1\.2 を使用することで、Stream Analytics は Azure Cosmos DB で使用可能なスループットの 100 パーセントをより賢く利用することができ、スロットリングまたは速度の制限による再送信はほとんどありません。 これにより、コンテナーで同時に実行されるクエリなどの他のワークロードにも優れたエクスペリエンスが提供されます。 1 秒あたり 1,000 から 10,000 のメッセージに対応するシンクとして Azure Cosmos DB を使用する場合、Stream Analytics でどのようにスケール アウトが行われるのかを確認したい場合は、[この Azure サンプル プロジェクト](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb)を試してください。
 
-Azure Cosmos DB 出力のスループットは、1.0 および 1.1 と同じです。 Azure Cosmos DB を使用する Stream Analytics では、互換性レベル 1.2 を使用することを "*強くお勧めします*"。
+Azure Cosmos DB 出力のスループットは、1.0 および 1.1 と同じです。 Azure Cosmos DB を使用する Stream Analytics では、互換性レベル 1.2 を使用することを " *強くお勧めします* "。
 
 ## <a name="azure-cosmos-db-settings-for-json-output"></a>JSON 出力の Azure Cosmos DB 設定
 
@@ -137,3 +137,17 @@ Azure Cosmos DB へのイベントの送信中に一時的な障害、サービ�
 - NotFound (HTTP エラー コード 404)
 - Forbidden (HTTP エラー コード 403)
 - BadRequest (HTTP エラー コード 400)
+
+## <a name="common-issues"></a>一般的な問題
+
+1. 一意なインデックスの制約がコレクションに追加され、Stream Analytics からの出力データがこの制約に違反しています。 Stream Analytics の出力データが一意制約に違反しないようにするか、または制約を削除してください。 詳細については、「[Azure Cosmos DB における一意キー制約](../cosmos-db/unique-keys.md)」を参照してください。
+
+2. 列 `PartitionKey` は存在しません。
+
+3. 列 `Id` は存在しません。
+
+## <a name="next-steps"></a>次のステップ
+
+* [Azure Stream Analytics からの出力を理解する](stream-analytics-define-outputs.md) 
+* [Azure SQL Database への Azure Stream Analytics の出力](stream-analytics-sql-output-perf.md)
+* [Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割](stream-analytics-custom-path-patterns-blob-storage-output.md)

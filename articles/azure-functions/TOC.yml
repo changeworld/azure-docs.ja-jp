@@ -270,7 +270,7 @@
         - name: 接続の管理
           href: manage-connections.md
           displayName: best practice
-        - name: エラー処理
+        - name: エラー処理と再試行
           href: functions-bindings-error-pages.md
         - name: HTTP によってトリガーされない関数を手動で実行する
           href: functions-manually-run-non-http.md
