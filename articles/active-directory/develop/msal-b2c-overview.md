@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
-ms.custom: aaddev
-ms.openlocfilehash: 13b478e85278827258ea2fc25a0ee4298039fb1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: aaddev devx-track-js
+ms.openlocfilehash: 327280c193c3c2fb829e468bccfc352f35edfdb5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119792"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673512"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>JavaScript 用 Microsoft Authentication Library を使用して Azure AD B2C と連携する
 
@@ -29,7 +29,7 @@ ID 管理サービスとして Azure AD B2C を使用すると、顧客がアプ
 以降のセクションでは、次の方法について説明します。
 
 - Node.js Web API を保護する
-- シングルページ アプリケーション (SPA) でのサインインをサポートし、*その*保護された Web API を呼び出す
+- シングルページ アプリケーション (SPA) でのサインインをサポートし、 *その* 保護された Web API を呼び出す
 - パスワード リセットのサポートを有効にする
 
 ## <a name="prerequisites"></a>前提条件
@@ -38,7 +38,7 @@ ID 管理サービスとして Azure AD B2C を使用すると、顧客がアプ
 
 ## <a name="nodejs-web-api"></a>Node.js Web API
 
-次の手順は、**Web API** が Azure AD B2C を使用して自身を保護し、選択されたスコープをクライアント アプリケーションに公開する方法を示しています。
+次の手順は、 **Web API** が Azure AD B2C を使用して自身を保護し、選択されたスコープをクライアント アプリケーションに公開する方法を示しています。
 
 MSAL.js for Node は現在開発中です。 詳細については、GitHub 上の[ ロードマップ](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap) を参照してください。 現時点では、Microsoft によって開発およびサポートされている Node.js 用の認証ライブラリである [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad) を使用することをお勧めします。
 
@@ -56,22 +56,28 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="step-3-configure-authentication"></a>手順 3:認証を構成する。
 
-1. サンプルの `config.js` ファイルを開きます。
+1. サンプルの *config.json* ファイルを開きます。
 
-2. 以前にアプリケーションの登録中に取得したアプリケーション資格情報を使用してサンプルを構成します。 次のコード行を、その各値をクライアント ID、ホスト、テナント ID、ポリシー名の名前に置き換えることによって変更します。
+2. 以前にアプリケーションの登録中に取得したアプリケーション資格情報を使用してサンプルを構成します。 次のコード行の値を実際のテナント名、クライアント ID、ポリシー名に置き換えて変更します。
 
-```JavaScript
-const clientID = "<Application ID for your Node.js web API - found on Properties page in Azure portal e.g. 93733604-cc77-4a3c-a604-87084dd55348>";
-const b2cDomainHost = "<Domain of your B2C host eg. fabrikamb2c.b2clogin.com>";
-const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can use your Directory (tenant) ID (GUID)
-const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsignin1>";
-```
+    ```json
+         "credentials": {
+             "tenantName": "<your-tenant-name>",
+             "clientID": "<your-webapi-application-ID>"
+         },
+         "policies": {
+             "policyName": "B2C_1_signupsignin1"
+         },
+         "resource": {
+             "scope": ["demo.read"] 
+         },
+    ```
 
 詳細については、この [Node.js B2C Web API のサンプル](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)を確認してください。
 
 ## <a name="javascript-spa"></a>JavaScript SPA
 
-次の手順は、**シングルページ アプリケーション**が Azure AD B2C を使用して、サインアップ、サインイン、保護された Web API の呼び出しを行う方法を示しています。
+次の手順は、 **シングルページ アプリケーション** が Azure AD B2C を使用して、サインアップ、サインイン、保護された Web API の呼び出しを行う方法を示しています。
 
 ### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 
@@ -201,7 +207,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
     パスワードをリセットした後、ユーザーはアプリケーションに戻って再度サインインします。
 
-    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Azure AD B2C によって表示されるサインイン画面" border="false":::
+    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Azure AD B2C によって示されるパスワード リセット フロー画面" border="false":::
 
     エラーコードと例外の処理の詳細については、[MSAL のエラーと例外コード](msal-handling-exceptions.md)に関するページを参照してください。
 

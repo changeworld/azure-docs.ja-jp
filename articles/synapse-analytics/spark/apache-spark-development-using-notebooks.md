@@ -6,16 +6,16 @@ author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
-ms.date: 05/01/2020
+ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: d0063594309dc7a1c12c61b6dd18fec1d93f1082
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 02f304af10ae1907326d3f77f318a058155a4c21
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893086"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738744"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Synapse Studio (プレビュー) ノートブックを作成、開発、管理する
 
@@ -32,7 +32,7 @@ Azure Synapse Studio ノートブックでは、次のことができます。
 
 ## <a name="create-a-notebook"></a>ノートブックを作成する
 
-ノートブックを作成するには、2 つの方法があります。 新しいノートブックを作成することも、既存のノートブックを**オブジェクト エクスプローラー**から Azure Synapse ワークスペースにインポートすることもできます。 Azure Synapse Studio ノートブックでは、標準の Jupyter Notebook IPYNB ファイルを認識することができます。
+ノートブックを作成するには、2 つの方法があります。 新しいノートブックを作成することも、既存のノートブックを **オブジェクト エクスプローラー** から Azure Synapse ワークスペースにインポートすることもできます。 Azure Synapse Studio ノートブックでは、標準の Jupyter Notebook IPYNB ファイルを認識することができます。
 
 ![インポートによるノートブックの作成](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
 
@@ -52,7 +52,7 @@ Azure Synapse Studio ノートブックでは、次のことができます。
 
     ![add-cell-between-space](./media/apache-spark-development-using-notebooks/synapse-add-cell-2.png)
 
-3. [コマンド モードのショートカット キー](#shortcut-keys-under-command-mode)を使用します。 現在のセルの上にセルを挿入するには、**A** キーを押します。 現在のセルの下にセルを挿入するには、**B** キーを押します。
+3. [コマンド モードのショートカット キー](#shortcut-keys-under-command-mode)を使用します。 現在のセルの上にセルを挿入するには、 **A** キーを押します。 現在のセルの下にセルを挿入するには、 **B** キーを押します。
 
 ### <a name="set-a-primary-language"></a>第一言語を設定する
 
@@ -73,12 +73,12 @@ Azure Synapse Studio ノートブックでは、次の 4 つの Apache Spark 言
 
 |マジック コマンド |Language | 説明 |  
 |---|------|-----|
-|%%pyspark| Python | Spark コンテキストに対して、**Python** クエリを実行します。  |
-|%%spark| Scala | Spark コンテキストに対して、**Scala** クエリを実行します。  |  
-|%%sql| SparkSQL | Spark コンテキストに対して、**SparkSQL** クエリを実行します。  |
+|%%pyspark| Python | Spark コンテキストに対して、 **Python** クエリを実行します。  |
+|%%spark| Scala | Spark コンテキストに対して、 **Scala** クエリを実行します。  |  
+|%%sql| SparkSQL | Spark コンテキストに対して、 **SparkSQL** クエリを実行します。  |
 |%%csharp | .NET for Spark C# | Spark コンテキストに対して、 **.NET for Spark C#** クエリを実行します。 |
 
-次の図は、**Spark(Scala)** ノートブックで、 **%%pyspark** マジック コマンドを使用する PySpark クエリ、または **%%sql** マジック コマンドでの SparkSQL クエリの記述方法の例です。 ノートブックの第一言語が PySpark に設定されていることに注目してください。
+次の図は、 **Spark(Scala)** ノートブックで、 **%%pyspark** マジック コマンドを使用する PySpark クエリ、または **%%sql** マジック コマンドでの SparkSQL クエリの記述方法の例です。 ノートブックの第一言語が PySpark に設定されていることに注目してください。
 
    ![Synapse spark マジック コマンド](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
@@ -128,7 +128,7 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
   ![Synapse テキスト セル ツールバー](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
 
 ### <a name="undo-cell-operations"></a>セルの操作を元に戻す
-**[元に戻す]** ボタンを選択するか、**Ctrl + Z** キーを押して、最新のセルの操作を取り消します。 これで、最新の 20 個の過去のセル アクションを元に戻すことができます。 
+**[元に戻す]** ボタンを選択するか、 **Ctrl + Z** キーを押して、最新のセルの操作を取り消します。 これで、最新の 20 個の過去のセル アクションを元に戻すことができます。 
 
    ![Synapse セルを元に戻す](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
 
@@ -136,7 +136,7 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
 
 省略記号 (...) を選択して、右端にある追加のセル アクション メニューにアクセスします。 その後、 **[Move cell up]\(セルを上に移動\)** または **[Move cell down]\(セルを下に移動\)** を選択して、現在のセルを移動します。 
 
-[コマンド モードのショートカット キーを使用](#shortcut-keys-under-command-mode)することもできます。 現在のセルを上に移動するには、**Ctrl + Alt + ↑** キーを押します。 現在のセルを下に移動するには、**Ctrl + Alt + ↓** キーを押します。
+[コマンド モードのショートカット キーを使用](#shortcut-keys-under-command-mode)することもできます。 現在のセルを上に移動するには、 **Ctrl + Alt + ↑** キーを押します。 現在のセルを下に移動するには、 **Ctrl + Alt + ↓** キーを押します。
 
    ![move-a-cell](./media/apache-spark-development-using-notebooks/synapse-move-cells.png)
 
@@ -144,7 +144,7 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
 
 セルを削除するには、省略記号 (...) を選択して、右端にある追加のセル アクション メニューにアクセスし、 **[セルの削除]** を選択します。 
 
-[コマンド モードのショートカット キーを使用](#shortcut-keys-under-command-mode)することもできます。 現在のセルを削除するには、**D、D** キーを押します。
+[コマンド モードのショートカット キーを使用](#shortcut-keys-under-command-mode)することもできます。 現在のセルを削除するには、 **D、D** キーを押します。
   
    ![delete-a-cell](./media/apache-spark-development-using-notebooks/synapse-delete-cell.png)
 
@@ -155,7 +155,7 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
 
 ### <a name="collapse-a-cell-output"></a>セル出力を折りたたむ
 
-現在のセル出力の左上にある**出力の折りたたみ**ボタンを選択して、折りたたみます。 これを展開するには、セル出力が折りたたまれている状態で **[Show cell output]\(セル出力の表示\)** を選択します。
+現在のセル出力の左上にある **出力の折りたたみ** ボタンを選択して、折りたたみます。 これを展開するには、セル出力が折りたたまれている状態で **[Show cell output]\(セル出力の表示\)** を選択します。
 
    ![collapse-cell-output](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
 
@@ -167,7 +167,7 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
 
 セルでコードを実行するには、いくつかの方法があります。
 
-1. 実行するセルをポイントし、 **[セルの実行]** ボタンを選択するか、**Ctrl + Enter** キーを押します。
+1. 実行するセルをポイントし、 **[セルの実行]** ボタンを選択するか、 **Ctrl + Enter** キーを押します。
 
    ![run-cell-1](./media/apache-spark-development-using-notebooks/synapse-run-cell.png)
 
@@ -176,7 +176,7 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
 
    ![run-cell-2](./media/apache-spark-development-using-notebooks/synapse-run-cell-2.png)
    
-3. [コマンド モードのショートカット キー](#shortcut-keys-under-command-mode)を使用します。 現在のセルを実行し、下のセルを選択するには、**Shift + Enter** キーを押します。 現在のセルを実行し、新しいセルを下に挿入するには、**Alt + Enter** キーを押します。
+3. [コマンド モードのショートカット キー](#shortcut-keys-under-command-mode)を使用します。 現在のセルを実行し、下のセルを選択するには、 **Shift + Enter** キーを押します。 現在のセルを実行し、新しいセルを下に挿入するには、 **Alt + Enter** キーを押します。
 
 
 ### <a name="run-all-cells"></a>すべてのセルを実行する
@@ -294,9 +294,9 @@ df = spark.read.option("header", "true") \
 
 ### <a name="render-html-or-interactive-libraries"></a>HTML または対話型のライブラリをレンダリングする
 
-JavaScript、CSS、D3、対話型のライブラリ (**bokeh** など) を含む HTML コードは、**displayHTML()** を使用してレンダリングすることができます。
+JavaScript、CSS、D3、対話型のライブラリ ( **bokeh** など) を含む HTML コードは、 **displayHTML()** を使用してレンダリングすることができます。
 
-次の図は、**ボケ**を使用して、マップ上にグリフをプロットする例です。
+次の図は、 **ボケ** を使用して、マップ上にグリフをプロットする例です。
 
    ![bokeh-example](./media/apache-spark-development-using-notebooks/synapse-bokeh-image.png)
    
@@ -357,7 +357,7 @@ Azure Synapse Studio ノートブックでは、使い慣れた Jupyter マジ�
 使用可能なセル マジック: [%%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)、[%%capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture)、[%%writefile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile)、[%%sql](#use-multiple-languages)、[%%pyspark](#use-multiple-languages)、[%%spark](#use-multiple-languages)、[%%csharp](#use-multiple-languages)
 
 
-## <a name="orchestrate-notebook"></a>ノートブックを調整する
+## <a name="integrate-a-notebook"></a>ノートブックを統合する
 
 ### <a name="add-a-notebook-to-a-pipeline"></a>ノートブックをパイプラインに追加する
 

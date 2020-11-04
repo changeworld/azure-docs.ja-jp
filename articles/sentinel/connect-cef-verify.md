@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 643b28b2e88f233d2924270511d3c87fa4d9b767
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: ba14e2c475611ed77661060d6e17ae0bcbf0a6ca
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631632"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744212"
 ---
 # <a name="step-3-validate-connectivity"></a>手順 3:接続の検証
 
@@ -29,8 +29,10 @@ ms.locfileid: "91631632"
 
 - ログ フォワーダー マシンに対する昇格されたアクセス許可 (sudo) が必要です。
 
-- ログ フォワーダー マシンに Python がインストールされている必要があります。<br>
+- ログ フォワーダー マシンに **Python 2.7** がインストールされている必要があります。<br>
 `python –version` コマンドを使用して確認してください。
+
+- 場合によっては、プロセスの間にワークスペース ID とワークスペースの主キーが必要になることがあります。 これらは、ワークスペース リソースの **[エージェント管理]** で確認できます。
 
 ## <a name="how-to-validate-connectivity"></a>接続を検証する方法
 
@@ -39,8 +41,15 @@ ms.locfileid: "91631632"
 
 1. クエリの結果がまったく表示されない場合は、セキュリティ ソリューションからイベントが生成されていることを確認するか、なんらかのイベントを生成してみてください。それらのイベントが、指定した Syslog フォワーダー マシンに転送されていることを確認します。 
 
-1. ログ フォワーダーで次のスクリプトを実行し、セキュリティ ソリューションとログ フォワーダー、Azure Sentinel 間の接続を確認します。 デーモンが適切なポートでリッスンしていること、転送が適切に構成されていること、デーモンと Log Analytics エージェントとの間の通信がブロックされていないことが、このスクリプトによって確認されます。 また、モック メッセージ "TestCommonEventFormat" を送信することで、エンドツーエンドの接続が確認されます。 <br>
- `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]`
+1. ログ フォワーダーで次のスクリプトを実行し (プレースホルダーをワークスペース ID に置き換えます)、セキュリティ ソリューション、ログ フォワーダー、および Azure Sentinel 間の接続を確認します。 デーモンが適切なポートでリッスンしていること、転送が適切に構成されていること、デーモンと Log Analytics エージェントとの間の通信がブロックされていないことが、このスクリプトによって確認されます。 また、モック メッセージ "TestCommonEventFormat" を送信することで、エンドツーエンドの接続が確認されます。 <br>
+
+    ```bash
+    sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]` 
+    ```
+
+   - **" *コンピューター* " フィールドのマッピング** に関する問題を修正するためのコマンドを実行するよう指示するメッセージが表示される場合があります。 詳細については、[検証スクリプトの説明](#mapping-command)を参照してください。
+
+    - **Cisco ASA ファイアウォール ログの解析** に関する問題を修正するためのコマンドを実行するよう指示するメッセージが表示される場合があります。 詳細については、[検証スクリプトの説明](#parsing-command)を参照してください。
 
 ## <a name="validation-script-explained"></a>検証スクリプトの説明
 
@@ -72,21 +81,31 @@ ms.locfileid: "91631632"
     </filter>
     ```
 
-1. ファイアウォール イベントに対して Cisco ASA の解析が想定どおりに構成されていることを確認します。
+1. 次のコマンドを使用して、Cisco ASA ファイアウォール イベントの解析が想定どおりに構成されていることを確認します。 
 
     ```bash
-    sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" 
-        /opt/microsoft/omsagent/plugin/security_lib.rb && 
-        sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/security_lib.rb
     ```
 
-1. Syslog ソースの *[コンピューター]* フィールドが、Log Analytics エージェントで正しくマップされていることを確認します。
+    - <a name="parsing-command"></a>解析に問題がある場合は、 **次のコマンドを手動で実行** するよう指示するエラー メッセージが表示されます (プレースホルダーをワークスペース ID に置き換えます)。 このコマンドによって、正しい解析が確認され、エージェントが再起動されます。
+    
+        ```bash
+        # Cisco ASA parsing fix
+        sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" /opt/microsoft/omsagent/plugin/security_lib.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
+
+1. 次のコマンドを使用して、Syslog ソースの " *コンピューター* " フィールドが、Log Analytics エージェントで正しくマップされていることを確認します。 
 
     ```bash
-    sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
-        -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
-        filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
     ```
+
+    - <a name="mapping-command"></a>マッピングに問題がある場合は、 **次のコマンドを手動で実行** するよう指示するエラー メッセージが表示されます (プレースホルダーをワークスペース ID に置き換えます)。 このコマンドによって、正しいマッピングが確認され、エージェントが再起動されます。
+
+        ```bash
+        # Computer field mapping fix
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 1. マシンのセキュリティにネットワーク トラフィックをブロックするような改良 (ホスト ファイアウォールなど) がなされているかどうかを確認します。
 
@@ -155,21 +174,31 @@ ms.locfileid: "91631632"
     </filter>
     ```
 
-1. ファイアウォール イベントに対して Cisco ASA の解析が想定どおりに構成されていることを確認します。
+1. 次のコマンドを使用して、Cisco ASA ファイアウォール イベントの解析が想定どおりに構成されていることを確認します。 
 
     ```bash
-    sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" 
-        /opt/microsoft/omsagent/plugin/security_lib.rb && 
-        sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/security_lib.rb
     ```
 
-1. Syslog ソースの *[コンピューター]* フィールドが、Log Analytics エージェントで正しくマップされていることを確認します。
+    - <a name="parsing-command"></a>解析に問題がある場合は、 **次のコマンドを手動で実行** するよう指示するエラー メッセージが表示されます (プレースホルダーをワークスペース ID に置き換えます)。 このコマンドによって、正しい解析が確認され、エージェントが再起動されます。
+    
+        ```bash
+        # Cisco ASA parsing fix
+        sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" /opt/microsoft/omsagent/plugin/security_lib.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
+
+1. 次のコマンドを使用して、Syslog ソースの " *コンピューター* " フィールドが、Log Analytics エージェントで正しくマップされていることを確認します。 
 
     ```bash
-    sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
-        -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
-        filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
     ```
+
+    - <a name="mapping-command"></a>マッピングに問題がある場合は、 **次のコマンドを手動で実行** するよう指示するエラー メッセージが表示されます (プレースホルダーをワークスペース ID に置き換えます)。 このコマンドによって、正しいマッピングが確認され、エージェントが再起動されます。
+
+        ```bash
+        # Computer field mapping fix
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 1. マシンのセキュリティにネットワーク トラフィックをブロックするような改良 (ホスト ファイアウォールなど) がなされているかどうかを確認します。
 

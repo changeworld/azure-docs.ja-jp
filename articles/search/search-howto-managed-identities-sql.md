@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 9f90125edeee453dc9e8b8b80f8eb09d9fc6e84c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49493f47c7178a15e37a54a70dd066690057caba
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90971532"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519573"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity"></a>マネージド ID を使用して Azure SQL Database へのインデクサー接続を設定する
 
@@ -29,7 +29,7 @@ ms.locfileid: "90971532"
 
 ### <a name="1---turn-on-system-assigned-managed-identity"></a>1 - システム割り当てマネージド ID をオンにする
 
-システム割り当てマネージド ID が有効になると、Azure で検索サービスのための ID が作成されます。これは、同じテナントとサブスクリプション内の他の Azure サービスに対する認証に使用することができます。 その後、インデックス作成中にデータへのアクセスを許可する、ロールベースのアクセス制御 (RBAC) の割り当てで、この ID を使用することができます。
+システム割り当てマネージド ID が有効になると、Azure で検索サービスのための ID が作成されます。これは、同じテナントとサブスクリプション内の他の Azure サービスに対する認証に使用することができます。 この ID はその後、インデックス作成中にデータへのアクセスを許可する Azure ロールベースのアクセス制御 (Azure RBAC) の割り当てで、使用することができます。
 
 ![システム割り当てマネージド ID をオンにする](./media/search-managed-identities/turn-on-system-assigned-identity.png "システム割り当てマネージド ID を有効にする")
 
@@ -86,7 +86,7 @@ ms.locfileid: "90971532"
 
     ![ロールの割り当てを追加する](./media/search-managed-identities/add-role-assignment-sql-server.png "ロールの割り当ての追加")
 
-4. 適切な**リーダー** ロールを選択します。
+4. 適切な **リーダー** ロールを選択します。
 5. **[アクセスの割り当て先]** は **[Azure AD のユーザー、グループ、サービス プリンシパル]** のままにしておきます
 6. お使いの検索サービスを検索し、それを選んでから、 **[保存]** を選択します
 
@@ -99,11 +99,11 @@ ms.locfileid: "90971532"
 [REST API](/rest/api/searchservice/create-data-source) を使用してデータ ソースを作成する場合、データ ソースには次の必須プロパティが必要です。
 
 * **name** は、Search サービス内のデータ ソースの一意の名前です。
-* **型**は、`azuresql` です
+* **型** は、`azuresql` です
 * **credentials**
-    * マネージド ID を使用して認証する場合、**credentials** 形式は、マネージド ID を使用しない場合とは異なります。 この場合、Initial Catalog または Database の名前と、アカウント キーまたはパスワードが設定されていない ResourceId を指定します。 ResourceId には、Azure SQL Database のサブスクリプション ID、SQL データベースのリソース グループ、および SQL データベースの名前を含める必要があります。 
+    * マネージド ID を使用して認証する場合、 **credentials** 形式は、マネージド ID を使用しない場合とは異なります。 この場合、Initial Catalog または Database の名前と、アカウント キーまたはパスワードが設定されていない ResourceId を指定します。 ResourceId には、Azure SQL Database のサブスクリプション ID、SQL データベースのリソース グループ、および SQL データベースの名前を含める必要があります。 
     * マネージド ID の接続文字列の形式:
-        * *Initial Catalog|Database=**データベース名**;ResourceId=/subscriptions/**お使いのサブスクリプション ID**/resourceGroups/**お使いのリソース グループ名**/providers/Microsoft.Sql/servers/**お使いの SQL Server 名**/;Connection Timeout=**接続タイムアウトの長さ**;*
+        * *Initial Catalog|Database= **データベース名** ;ResourceId=/subscriptions/ **お使いのサブスクリプション ID** /resourceGroups/ **お使いのリソース グループ名** /providers/Microsoft.Sql/servers/ **お使いの SQL Server 名** /;Connection Timeout= **接続タイムアウトの長さ** ;*
 * **container** には、インデックスを作成する対象のテーブルまたはビューの名前を指定します。
 
 [REST API](/rest/api/searchservice/create-data-source) を使用して Azure SQL データ ソース オブジェクトを作成する方法の例:

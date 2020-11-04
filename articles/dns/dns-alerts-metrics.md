@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: rohink
-ms.openlocfilehash: 42acbc0d32b3ce5de4befcf112b68f611ad70542
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a27c4519024d6d3d2f3852534619b5f8c2bb5e43
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76937450"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489610"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS メトリックとアラート
 Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 この記事では、Azure DNS サービスのメトリックとアラートについて説明します。
@@ -38,7 +38,7 @@ Azure DNS には、DNS サービスでホストされている DNS ゾーンの�
 
 ### <a name="query-volume"></a>クエリ量
 
-Azure DNS 内の *クエリ量*メトリックは、Azure DNS によって受信される、DNS ゾーンの DNS クエリ量 (クエリ トラフィック) を示します。 測定単位はクエリ数で、一定期間中に受信したすべてのクエリの合計数が集計されます。 
+Azure DNS 内の *クエリ量* メトリックは、Azure DNS によって受信される、DNS ゾーンの DNS クエリ量 (クエリ トラフィック) を示します。 測定単位はクエリ数で、一定期間中に受信したすべてのクエリの合計数が集計されます。 
 
 このメトリックを表示するには、Azure Portal の [監視] タブからメトリックス エクスプローラー エクスペリエンス (プレビュー) を選択します。 [リソース] ドロップダウン リストから DNS ゾーンを選択し、クエリ量メトリックを選択し、[集計] として [合計] を選択します。 次のスクリーン ショットに、例を示します。  メトリックス エクスプローラー エクスペリエンスおよびグラフ作成機能の詳細については、「[Azure Monitor メトリックス エクスプローラー](../azure-monitor/platform/metrics-charts.md)」を参照してください。
 
@@ -47,7 +47,7 @@ Azure DNS 内の *クエリ量*メトリックは、Azure DNS によって受信
 *図: Azure DNS のクエリ量メトリック*
 
 ### <a name="record-set-count"></a>レコード セット数
-*レコード セット数*メトリックは、DNS ゾーンの Azure DNS 内にあるレコード セットの数を示します。 ゾーン内で定義されているすべてのレコード セットが集計されます。 測定単位はレコード セット数で、すべてのレコードセットの最大数が集計されます。 このメトリックを表示するには、Azure Portal の **[監視]** タブから**メトリックス エクスプローラー エクスペリエンス (プレビュー)** を選択します。 **[リソース]** ドロップダウン リストから DNS ゾーンを選択し、**レコード セット数**メトリックを選択してから、 **[集計]** として **[最大数]** を選択します。 メトリックス エクスプローラー エクスペリエンスおよびグラフ作成機能の詳細については、「[Azure Monitor メトリックス エクスプローラー](../azure-monitor/platform/metrics-charts.md)」を参照してください。 
+*レコード セット数* メトリックは、DNS ゾーンの Azure DNS 内にあるレコード セットの数を示します。 ゾーン内で定義されているすべてのレコード セットが集計されます。 測定単位はレコード セット数で、すべてのレコードセットの最大数が集計されます。 このメトリックを表示するには、Azure Portal の **[監視]** タブから **メトリックス エクスプローラー エクスペリエンス (プレビュー)** を選択します。 **[リソース]** ドロップダウン リストから DNS ゾーンを選択し、 **レコード セット数** メトリックを選択してから、 **[集計]** として **[最大数]** を選択します。 メトリックス エクスプローラー エクスペリエンスおよびグラフ作成機能の詳細については、「[Azure Monitor メトリックス エクスプローラー](../azure-monitor/platform/metrics-charts.md)」を参照してください。 
 
 ![レコード セット数](./media/dns-alerts-metrics/dns-metrics-record-set-count.png)
 
@@ -55,14 +55,14 @@ Azure DNS 内の *クエリ量*メトリックは、Azure DNS によって受信
 
 
 ### <a name="record-set-capacity-utilization"></a>レコード セットの容量使用率
-Azure DNS の*レコード セットの容量使用率*メトリックは、DNS でゾーンのレコード セットの容量使用率をパーセンテージで示します。 Azure DNS 内のすべての DNS ゾーンには、ゾーンで許容されるレコードセットの最大数を定義するレコードセット制限が適用されます ([DNS 制限](dns-zones-records.md#limits)参照)。 このため、このメトリックは、レコードセットの上限にどの程度近づいているかを示します。 たとえば、DNS ゾーンで 500 個のレコードセットが構成されており、ゾーンの既定のレコードセット制限が 5000 だったとすると、RecordSetCapacityUtilization メトリックの値は 10% になります (5000 を 500 で除算した値)。 測定単位は **[Percentage]\(パーセンテージ\)** で、 **[集計]** タイプは **[最大]** です。 このメトリックを表示するには、Azure Portal の [監視] タブからメトリックス エクスプローラー エクスペリエンス (プレビュー) を選択します。 [リソース] ドロップダウン リストから DNS ゾーンを選択して、[レコード セット容量使用率] メトリックを選択してから、[集計] として [最大] を選択します。 次のスクリーン ショットに、例を示します。 メトリックス エクスプローラー エクスペリエンスおよびグラフ作成機能の詳細については、「[Azure Monitor メトリックス エクスプローラー](../azure-monitor/platform/metrics-charts.md)」を参照してください。 
+Azure DNS の *レコード セットの容量使用率* メトリックは、DNS でゾーンのレコード セットの容量使用率をパーセンテージで示します。 Azure DNS 内のすべての DNS ゾーンには、ゾーンで許容されるレコードセットの最大数を定義するレコードセット制限が適用されます ([DNS 制限](dns-zones-records.md#limits)参照)。 このため、このメトリックは、レコードセットの上限にどの程度近づいているかを示します。 たとえば、DNS ゾーンで 500 個のレコードセットが構成されており、ゾーンの既定のレコードセット制限が 5000 だったとすると、RecordSetCapacityUtilization メトリックの値は 10% になります (5000 を 500 で除算した値)。 測定単位は **[Percentage]\(パーセンテージ\)** で、 **[集計]** タイプは **[最大]** です。 このメトリックを表示するには、Azure Portal の [監視] タブからメトリックス エクスプローラー エクスペリエンス (プレビュー) を選択します。 [リソース] ドロップダウン リストから DNS ゾーンを選択して、[レコード セット容量使用率] メトリックを選択してから、[集計] として [最大] を選択します。 次のスクリーン ショットに、例を示します。 メトリックス エクスプローラー エクスペリエンスおよびグラフ作成機能の詳細については、「[Azure Monitor メトリックス エクスプローラー](../azure-monitor/platform/metrics-charts.md)」を参照してください。 
 
-![レコード セット数](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)
+![メトリックを表示する方法の例を示すスクリーンショット。](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)
 
 *図: Azure DNS の レコード セット容量使用率メトリック*
 
 ## <a name="alerts-in-azure-dns"></a>Azure DNS のアラート
-Azure Monitor には、使用可能なメトリックの値を基準にアラートを送信する機能があります。 新しいアラート構成エクスペリエンスで DNS メトリックを使用できます。 [Azure Monitor アラート ドキュメント](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)で詳しく説明されているとおり、リソースとして DNS ゾーンを選択し、メトリック信号の種類やアラートのロジック、**期間**や**頻度**などのパラメーターを構成できます。 さらに、アラート条件に一致した場合の[アクション グループ](../azure-monitor/platform/action-groups.md)を定義すれば、選択したアクションを通してアラートを送信することもできます。 Azure Monitor メトリックのアラートを構成する方法の詳細については、[Azure Monitor を使用してアラートを作成、表示、管理する](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)を参照してください。 
+Azure Monitor には、使用可能なメトリックの値を基準にアラートを送信する機能があります。 新しいアラート構成エクスペリエンスで DNS メトリックを使用できます。 [Azure Monitor アラート ドキュメント](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)で詳しく説明されているとおり、リソースとして DNS ゾーンを選択し、メトリック信号の種類やアラートのロジック、 **期間** や **頻度** などのパラメーターを構成できます。 さらに、アラート条件に一致した場合の[アクション グループ](../azure-monitor/platform/action-groups.md)を定義すれば、選択したアクションを通してアラートを送信することもできます。 Azure Monitor メトリックのアラートを構成する方法の詳細については、[Azure Monitor を使用してアラートを作成、表示、管理する](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure DNS](dns-overview.md) の詳細を学習する。

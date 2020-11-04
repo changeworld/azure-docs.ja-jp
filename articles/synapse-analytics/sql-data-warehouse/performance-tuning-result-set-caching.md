@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: aeeca38afb82e2dcd86e111d1ae5dcb2e7499f42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 933ec541e358f1839c1b4d24acd19e439ea26375
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362267"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541283"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>結果セットのキャッシュを使用したパフォーマンスのチューニング
 
@@ -36,11 +36,15 @@ ms.locfileid: "91362267"
 
 結果セットのキャッシュがデータベースに対してオンになると、キャッシュがいっぱいになるまで、すべてのクエリに対して結果がキャッシュされます。ただし、次のクエリは除きます。
 
-- DateTime.Now() などの非決定論的関数を使用するクエリ
+- ベース テーブルのデータやクエリに変化がなくても非決定論的な関数やランタイム式が組み込まれているクエリ。 たとえば、DateTime.Now() や GetDate() などです。
 - ユーザー定義関数を使用したクエリ
 - 行レベルのセキュリティまたは列レベルのセキュリティが有効になっているテーブルを使用したクエリ
 - 64 KB を超える行サイズのデータを返すクエリ
 - 10 GB を超えるサイズの大きなデータを返すクエリ 
+>[!NOTE]
+> - 一部の非決定論的関数とランタイム式は、同じデータに対する繰り返しクエリに対して決定論的である場合があります。 たとえば、ROW_NUMBER() などです。  
+> - クエリの結果セットの行の順序がアプリケーション ロジックにとって重要である場合は、クエリで ORDER BY を使用します。
+> - ORDER BY 列のデータが一意でない場合、結果セットのキャッシュが有効か無効かに関係なく、ORDER BY 列内の同じ値を持つ行の行順は保証されません。
 
 > [!IMPORTANT]
 > 結果セットのキャッシュを作成し、キャッシュからデータを取得する操作は、Synapse SQL プール インスタンスの制御ノードで行われます。

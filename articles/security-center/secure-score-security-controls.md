@@ -11,49 +11,66 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2020
+ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: 24e10dad6a4b9a6232ce74b5365d9a9df7860079
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 920f6cc7eaef6d25fa700e2f8ca8277efee671d1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339936"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425394"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure Security Center 内のセキュリティ スコア
 
 ## <a name="introduction-to-secure-score"></a>セキュリティ スコアの概要
 
-Azure Security Center には、現在のセキュリティ状況を把握すること、およびセキュリティを効率的かつ効果的に向上させるという 2 つの主な目標があります。 これらの目標を達成できるようにする Security Center の中心となる要素が、セキュリティ スコアです。
+Azure Security Center には主に次の 2 つの目標があります。 
+
+- 現在のセキュリティ状況を把握すること
+- セキュリティを効率的かつ効果的に向上させること
+
+これらの目標を達成できるようにする Security Center の中心となる機能が、 **セキュリティ スコア** です。
 
 Security Center は、セキュリティの問題について、リソース、サブスクリプション、および組織を継続的に評価します。 その後、すべての結果を 1 つのスコアに集約して、現在のセキュリティの状況を一目で確認できるようにします。スコアが高くなるほど、識別されたリスク レベルが低下します。
 
-Security Center の [セキュリティ スコア] ページには次のものが含まれます。
+セキュリティ スコアは、Azure portal のページにパーセント値として表示されますが、基になる値も明確に示されます。
 
-- **スコア** - セキュリティ スコアはパーセント値として表示されますが、基になる値も明確です。
+:::image type="content" source="./media/secure-score-security-controls/single-secure-score-via-ui.png" alt-text="ポータルに表示された全体的なセキュリティ スコア":::
 
-    [![パーセント値として表示される、基になる数値も明確なセキュリティ スコア](media/secure-score-security-controls/secure-score-with-percentage.png)](media/secure-score-security-controls/secure-score-with-percentage.png#lightbox)
+セキュリティを強化するには、スコアを上げるために必要な未処理のアクションについて Security Center の推奨事項に関するページを参照してください。 各推奨事項には、特定の問題を修復するための手順が含まれています。
 
-- **セキュリティ コントロール** - 各コントロールは、関連するセキュリティの推奨事項の論理グループであり、脆弱な攻撃対象領域を反映しています。 コントロールは、セキュリティに関する一連の推奨事項と、これらの推奨事項を実装するための指示内容です。 コントロール内の 1 つのリソースに関する推奨事項を " *すべて* " 修復した場合にのみ、スコアが向上します。
+推奨事項は、 **セキュリティ コントロール** にグループ化されています。 各コントロールは、関連するセキュリティの推奨事項の論理グループであり、脆弱な攻撃対象領域を反映しています。 コントロール内の 1 つのリソースに関する推奨事項を " *すべて* " 修復した場合にのみ、スコアが向上します。 組織が個々の攻撃面をどの程度セキュリティで保護できているかを確認するには、各セキュリティ コントロールのスコアを確認します。
 
-    組織が個々の攻撃対象領域をどの程度セキュリティで保護しているかをすぐに確認するには、各セキュリティ コントロールのスコアを確認します。
-
-    詳細については、「[セキュリティ スコアの計算方法](secure-score-security-controls.md#how-your-secure-score-is-calculated)」を参照してください。 
-
-
->[!TIP]
-> 以前のバージョンの Security Center は、推奨事項レベルでポイントを獲得しました。1 つのリソースの推奨事項を修復すると、セキュリティ スコアが向上しました。 現在は、コントロール内の 1 つのリソースに関する推奨事項を " *すべて* " 修復した場合にのみ、スコアが向上します。 そのため、リソースのセキュリティが向上した場合にのみスコアが向上します。
+詳細については、「[セキュリティ スコアの計算方法](secure-score-security-controls.md#how-your-secure-score-is-calculated)」を参照してください。 
 
 
 ## <a name="access-your-secure-score"></a>セキュリティ スコアにアクセスする
 
-Azure portal または Azure Security Center REST API を使用したプログラムによって、全体的なセキュリティ スコアとサブスクリプションごとのスコアを確認できます。
+次のセクションで説明するように、Azure portal またはプログラムによって、全体的なセキュリティ スコアとサブスクリプションごとのスコアを確認できます。
+
+- [ポータルからセキュリティ スコアを取得する](#get-your-secure-score-from-the-portal)
+- [REST API からセキュリティ スコアを取得する](#get-your-secure-score-from-the-rest-api)
+- [Azure Resource Graph (ARG) からセキュリティ スコアを取得する](#get-your-secure-score-from-azure-resource-graph-arg)
 
 ### <a name="get-your-secure-score-from-the-portal"></a>ポータルからセキュリティ スコアを取得する
 
-ポータルで、Security Center にはスコアが目立つように表示されます。スコアは、[概要] ページの最初に表示されます。 専用のセキュリティ スコア ページをクリックすると、スコアがサブスクリプション別に分類されていることがわかります。 サブスクリプションを 1 つクリックすると、優先度が設定された推奨事項と、修復によるスコアへの影響を示す詳細な一覧が表示されます。
+ポータルで、Security Center にはスコアが目立つように表示されます。これは、Security Center の [概要] ページの最初の主なタイルです。 このタイルを選択すると、スコアがサブスクリプション別に分類されている専用のセキュリティ スコア ページに移動ます。 サブスクリプションを 1 つ選択すると、優先度が設定された推奨事項と、修復によるスコアへの影響を示す詳細な一覧が表示されます。
 
-![ポータルに表示された全体的なセキュリティ スコア](media/secure-score-security-controls/single-secure-score-via-ui.png)
+要約すると、Security Center のポータル ページの次の場所に、セキュリティ スコアが表示されます。
+
+- Security Center の **[概要]** にあるタイル (メイン ダッシュボード):
+
+    :::image type="content" source="./media/secure-score-security-controls/score-on-main-dashboard.png" alt-text="Security Center のダッシュボード上のセキュリティ スコア":::
+
+- 専用の **セキュリティ スコア** ページ:
+
+    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="Security Center の [セキュリティ スコア] ページのセキュリティ スコア":::
+
+- **[推奨事項]** ページの上部:
+
+    :::image type="content" source="./media/secure-score-security-controls/score-on-recommendations-page.png" alt-text="Security Center の [推奨事項] ページのセキュリティ スコア":::
+
+
 
 ### <a name="get-your-secure-score-from-the-rest-api"></a>REST API からセキュリティ スコアを取得する
 
@@ -62,6 +79,40 @@ Azure portal または Azure Security Center REST API を使用したプログ�
 ![API を使用して 1 つのセキュリティ スコアを取得する](media/secure-score-security-controls/single-secure-score-via-api.png)
 
 Secure Scores API を使用して構築されたツールの例については、[GitHub コミュニティのセキュリティ スコアの領域](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)を参照してください。 
+
+
+
+### <a name="get-your-secure-score-from-azure-resource-graph-arg"></a>Azure Resource Graph (ARG) からセキュリティ スコアを取得する
+
+Azure Resource Graph を使用すると、堅牢なフィルター処理、グループ化、および並べ替え機能を使用して、クラウド環境全体のリソース情報にすばやくアクセスできます。 これは、Azure サブスクリプション全体の情報を、プログラムから、または Azure portal 内ですばやく効率的に照会する方法です。 [Azure Resource Graph の詳細についてさらに学習します](https://docs.microsoft.com/azure/governance/resource-graph/)。
+
+ARG を使用して複数のサブスクリプションのセキュリティ スコアにアクセスするには:
+
+1. Azure portal から **Azure Resource Graph Explorer** を開きます。
+
+    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Azure Resource Graph エクスプローラーの起動** 推奨ページ" :::
+
+1. Kusto クエリを入力します (詳細については、次の例を参照してください)。
+
+    - このクエリによって、サブスクリプション ID、現在のスコア (ポイントおよびパーセント表記)、およびサブスクリプションの最大スコアが返されます。 
+
+        ```kusto
+        SecurityResources 
+        | where type == 'microsoft.security/securescores' 
+        | extend current = properties.score.current, max = todouble(properties.score.max)
+        | project subscriptionId, current, max, percentage = ((current / max)*100)
+        ```
+
+    - このクエリによって、すべてのセキュリティ コントロールの状態が返されます。 各コントロールについて、異常なリソースの数、現在のスコア、および最大スコアを取得します。 
+
+        ```kusto
+        SecurityResources 
+        | where type == 'microsoft.security/securescores/securescorecontrols'
+        | extend SecureControl = properties.displayName, unhealthy = properties.unhealthyResourceCount, currentscore = properties.score.current, maxscore = properties.score.max
+        | project SecureControl , unhealthy, currentscore, maxscore
+        ```
+
+1. **[クエリの実行]** を選択します。
 
 ## <a name="how-your-secure-score-is-calculated"></a>セキュリティ スコアの計算方法 
 

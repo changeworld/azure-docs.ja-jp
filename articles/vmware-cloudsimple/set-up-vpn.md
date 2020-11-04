@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cd08ce938a25e3311358892c9afa9eefd6c6dbf
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77087134"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424675"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドへの VPN 接続を構成する
 
@@ -22,7 +22,7 @@ VPN ゲートウェイを使用すると、オンプレミス ネットワーク
 ## <a name="vpn-gateway-types"></a>VPN ゲートウェイの種類
 
 * **ポイント対サイト VPN** 接続は、お使いのコンピューターから自分のプライベート クラウドに接続する最も簡単な方法です。 プライベート クラウドにリモートで接続するには、ポイント対サイト VPN 接続を使用します。
-* **サイト対サイト VPN** 接続を使用すると、オンプレミスのサービスにアクセスするようにプライベート クラウドのワークロードを設定できます。 プライベート クラウドの vCenter に対して認証を行うための ID ソースとして、オンプレミスの Active Directory を使用することもできます。  現時点では、**ポリシーベースの VPN** の種類がサポートされています。
+* **サイト対サイト VPN** 接続を使用すると、オンプレミスのサービスにアクセスするようにプライベート クラウドのワークロードを設定できます。 プライベート クラウドの vCenter に対して認証を行うための ID ソースとして、オンプレミスの Active Directory を使用することもできます。  現時点では、 **ポリシーベースの VPN** の種類がサポートされています。
 
 リージョンでは、1 つのサイト対サイト VPN ゲートウェイと 1 つのポイント対サイト VPN ゲートウェイを作成できます。
 
@@ -49,7 +49,7 @@ VPN ゲートウェイを使用すると、オンプレミス ネットワーク
 
 7. CloudSimple VPN ゲートウェイに接続します。
 
-次の例で、**Viscosity クライアント**を使用した接続のインポートを示します。
+次の例で、 **Viscosity クライアント** を使用した接続のインポートを示します。
 
 #### <a name="import-connection-on-viscosity-client"></a>Viscosity クライアントの接続をインポートする
 
@@ -63,7 +63,7 @@ VPN ゲートウェイを使用すると、オンプレミス ネットワーク
 
 4. 使用するプロトコル用の OpenVPN 構成ファイル (.ovpn) を選択し、 **[Open]\(開く\)** をクリックします。
 
-    ![VPN](media/import-p2s-vpn-config-choose-ovpn.png)
+    ![選択できる OpenVPN 構成ファイルが強調表示されているスクリーンショット。](media/import-p2s-vpn-config-choose-ovpn.png)
 
 これで、[Viscosity] メニューに接続が表示されます。
 
@@ -71,7 +71,7 @@ VPN ゲートウェイを使用すると、オンプレミス ネットワーク
 
 Viscosity OpenVPN クライアントを使用して VPN に接続するには、メニューから接続を選択します。 メニュー アイコンが更新され、接続が確立されたことが示されます。
 
-![VPN](media/vis03.png)
+![CloudSimple VPN の接続状態を示すスクリーンショット。](media/vis03.png)
 
 ### <a name="connecting-to-multiple-private-clouds"></a>複数のプライベート クラウドへの接続
 

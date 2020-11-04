@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: a1ae0971b016ed226351167cfabfca7d3cafd19f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82220a63cfe470344951e4276bc9eaccd9600428
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905407"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677352"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>パフォーマンス用に Azure Data Lake Storage Gen2 を最適化する
 
@@ -27,7 +27,7 @@ Data Lake Storage Gen2 は、あらゆる分析シナリオで必要とされる
 
 ソース システムから Data Lake Storage Gen2 にデータを取り込む場合には、ソース ハードウェア、ソース ネットワーク ハードウェア、および Data Lake Storage Gen2 へのネットワークの接続性がボトルネックとなる可能性があることを考慮することが重要です。  
 
-![Data Lake Storage Gen2 のパフォーマンス](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
+![ソース システムから Data Lake Storage Gen2 にデータを取り込むときに考慮すべき要素を示す図。](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
 
 これらの要因がデータの移動に影響を与えないようにすることが重要です。
 
@@ -107,7 +107,7 @@ HDInsight クラスター内には 3 つのレイヤーがあります。これ�
 
 **より多くのノードと大きなサイズの VM、またはそのどちらかで、クラスターを実行します。**  次の図に示すように、クラスターを大きくすると、より多くの YARN コンテナーを実行できます。
 
-![Data Lake Storage Gen2 のパフォーマンス](./media/data-lake-storage-performance-tuning-guidance/VM.png)
+![クラスターを大きくすると、より多くの YARN コンテナーを実行できることを示す図。](./media/data-lake-storage-performance-tuning-guidance/VM.png)
 
 **より大きなネットワーク帯域幅を備えた VM を使用します。**  ネットワーク帯域幅が Data Lake Storage Gen2 のスループットよりも小さい場合、ネットワーク帯域幅の容量がボトルネックとなる可能性があります。  VM によって、ネットワーク帯域幅のサイズは異なります。  できる限り大きなネットワーク帯域幅を備えた VM タイプを選択してください。
 
@@ -115,7 +115,7 @@ HDInsight クラスター内には 3 つのレイヤーがあります。これ�
 
 **より小さい YARN コンテナーを使用します。**  各 YARN コンテナーのサイズを小さくして、同じ容量のリソースを備えたコンテナーの数を増やします。
 
-![Data Lake Storage Gen2 のパフォーマンス](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
+![各 YARN コンテナーのサイズを小さくしてコンテナーの数を増やした場合の結果を示す図。](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
 
 ワークロードによっては、YARN コンテナーが常に必要とする最小サイズが存在します。 選択したコンテナーが小さすぎる場合、ジョブでメモリ不足の問題が発生します。 通常、YARN コンテナーは 1 GB 以上にする必要があります。 3 GB の YARN コンテナーを検討するのが一般的です。 一部のワークロードでは、それよりも大きい YARN コンテナーが必要な場合もあります。  
 
@@ -125,7 +125,7 @@ HDInsight クラスター内には 3 つのレイヤーがあります。これ�
 
 **使用可能なすべてのコンテナーを使用します。**  すべてのリソースが使用されるように、タスク数を使用可能なコンテナー数と同じ数、またはそれ以上に設定します。
 
-![Data Lake Storage Gen2 のパフォーマンス](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
+![すべてのコンテナーの使用を示す図。](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
 
 **タスクでエラーが発生するとコストがかかります。** 各タスクで大量のデータを処理すると、タスクでエラーが発生した場合、再試行に高いコストがかかることになります。  そのため、多数のタスクを作成し、各タスクで少量のデータを処理するようにすることをお勧めします。
 

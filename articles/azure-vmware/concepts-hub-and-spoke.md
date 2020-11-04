@@ -1,14 +1,14 @@
 ---
 title: 概念 - ハブ アンド スポークのアーキテクチャで Azure VMware Solution のデプロイを統合する
-description: Azure の既存または新規のハブ アンド スポークのアーキテクチャで Azure VMware Solution のデプロイを統合するための推奨事項について説明します。
+description: Azure のハブ アンド スポーク アーキテクチャで Azure VMware Solution のデプロイを統合する方法について説明します。
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 66c6cc4841b4b36775fda89b29dc588100c3ad87
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.date: 10/26/2020
+ms.openlocfilehash: 93c11ad9253fe78e1935da7b40e7251788f1f037
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058473"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674717"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>ハブ アンド スポークのアーキテクチャで Azure VMware Solution を統合する
 
@@ -23,7 +23,7 @@ ms.locfileid: "92058473"
 
 ## <a name="architecture"></a>アーキテクチャ
 
-"*ハブ*" は、オンプレミスおよび Azure VMware Solution のプライベート クラウドへの接続の中心点として機能する Azure Virtual Network です。 "*スポーク*" は、仮想ネットワーク間通信を有効にするためにハブとピアリングされた仮想ネットワークです。
+" *ハブ* " は、オンプレミスおよび Azure VMware Solution のプライベート クラウドへの接続の中心点として機能する Azure Virtual Network です。 " *スポーク* " は、仮想ネットワーク間通信を有効にするためにハブとピアリングされた仮想ネットワークです。
 
 オンプレミスのデータセンター、Azure VMware Solution プライベート クラウド、およびハブの間のトラフィックは、Azure ExpressRoute 接続を経由します。 スポーク仮想ネットワークには、通常、IaaS ベースのワークロードが含まれていますが、Virtual Network に直接統合されている PaaS サービス ([App Service Environment](../app-service/environment/intro.md) など) や、[Azure Private Link](../private-link/index.yml) が有効になっているその他の PaaS サービスを含めることができます。
 
@@ -46,7 +46,7 @@ ms.locfileid: "92058473"
 
 
   > [!NOTE]
-  > **S2S VPN に関する考慮事項:** Azure VMware Solution の運用環境のデプロイでは、VMware HCX のネットワーク要件により、Azure S2S VPN がサポートされていません。 ただし、PoC のデプロイに使用できます。
+  > **S2S VPN に関する考慮事項:** Azure VMware Solution の運用環境のデプロイでは、VMware HCX のネットワーク要件により、Azure S2S VPN がサポートされていません。 ただし、PoC のデプロイに使用することはできます。
 
 
 -   **ハブ仮想ネットワーク:** オンプレミスのネットワークおよび Azure VMware Solution プライベート クラウドへの中心となる接続ポイントとして機能します。
@@ -55,11 +55,11 @@ ms.locfileid: "92058473"
 
     -   **IaaS スポーク:** IaaS スポークによって、VM 可用性セットや仮想マシン スケール セットなどの Azure IaaS ベースのワークロードと、それに対応するネットワーク コンポーネントがホストされます。
 
-    -   **PaaS スポーク:** PaaS スポークでは、[プライベート エンドポイント](../private-link/private-endpoint-overview.md)と[プライベート リンク](../private-link/private-link-overview.md)により、プライベート アドレス指定を使用して Azure PaaS サービスがホストされます。
+    -   **PaaS スポーク:** PaaS スポークでは、 [プライベート エンドポイント](../private-link/private-endpoint-overview.md)と [プライベート リンク](../private-link/private-link-overview.md)により、プライベート アドレス指定を使用して Azure PaaS サービスがホストされます。
 
 -   **Azure Firewall:** スポークと Azure VMware Solution の間でトラフィックをセグメント化するための中心的な要素として機能します。
 
--   **Application Gateway**Azure IaaS/PaaS または Azure VMware Solution 仮想マシン (VM) 上で実行される Web アプリを公開し、保護します。 これは、API Management などの他のサービスと統合されています。
+-   **Application Gateway** Azure IaaS/PaaS または Azure VMware Solution 仮想マシン (VM) 上で実行される Web アプリを公開し、保護します。 これは、API Management などの他のサービスと統合されています。
 
 ## <a name="network-and-security-considerations"></a>ネットワークとセキュリティに関する考慮事項
 
@@ -69,12 +69,12 @@ ExpressRoute ゲートウェイの場合、それに接続されている回路�
 
 * **オンプレミスから Azure VMware Solution へのトラフィック フロー**
 
-  :::image type="content" source="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png" alt-text="Azure VMware Solution のハブ アンド スポークの統合デプロイ" border="false" lightbox="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png":::
+  :::image type="content" source="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png" alt-text="オンプレミスから Azure VMware Solution へのトラフィック フロー" border="false" lightbox="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png":::
 
 
 * **Azure VMware Solution からハブ VNET へのトラフィック フロー**
 
-  :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Azure VMware Solution のハブ アンド スポークの統合デプロイ" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
+  :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Azure VMware Solution からハブ仮想ネットワークへのトラフィック フロー" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
 
 
 Azure VMware Solution ネットワークと接続の概念の詳細については、[Azure VMware Solution 製品のドキュメント](./concepts-networking.md)を参照してください。
@@ -83,22 +83,22 @@ Azure VMware Solution ネットワークと接続の概念の詳細について�
 
 [Azure Firewall](../firewall/index.yml) はハブ アンド スポークのトポロジの中心的な要素であり、ハブ仮想ネットワークにデプロイされています。 Azure Firewall、またはその他の Azure でサポートされているネットワーク仮想アプライアンスを使用して、トラフィック規則を確立し、さまざまなスポークと Azure VMware Solution のワークロード間の通信をセグメント化します。
 
-トラフィックを Azure Firewall に送信するためのルート テーブルを作成します。  スポーク仮想ネットワークの場合は、Azure Firewall の内部インターフェイスにデフォルト ルートを設定するルートを作成します。これにより、Virtual Network 内のワークロードが Azure VMware Solution アドレス空間に到達する必要がある場合に、ファイアウォールによってこのワークロードを評価し、対応するトラフィック規則を適用して許可または拒否することができます。  
+トラフィックを Azure Firewall に送信するためのルート テーブルを作成します。  スポーク仮想ネットワークの場合は、Azure Firewall の内部インターフェイスにデフォルト ルートを設定するルートを作成します。 これにより、Virtual Network 内のワークロードが Azure VMware Solution アドレス空間に到達する必要がある場合に、ファイアウォールによってこのワークロードを評価し、対応するトラフィック規則を適用して許可または拒否することができます。  
 
-:::image type="content" source="media/hub-spoke/create-route-table-to-direct-traffic.png" alt-text="Azure VMware Solution のハブ アンド スポークの統合デプロイ" lightbox="media/hub-spoke/create-route-table-to-direct-traffic.png":::
+:::image type="content" source="media/hub-spoke/create-route-table-to-direct-traffic.png" alt-text="トラフィックを Azure Firewall に送信するためのルート テーブルを作成する" lightbox="media/hub-spoke/create-route-table-to-direct-traffic.png":::
 
 
 > [!IMPORTANT]
 > **GatewaySubnet** 設定のアドレス プレフィックス 0.0.0.0/0 のルートはサポートされていません。
 
-対応するルート テーブルで特定のネットワークのルートを設定します。 たとえば、Azure VMware Solution 管理に到達するまでのルートと、スポーク ワークロードからのワークロード IP プレフィックスです (またはその逆)。
+対応するルート テーブルで特定のネットワークのルートを設定します。 たとえば、Azure VMware Solution 管理に到達するまでのルートと、スポーク ワークロードからのワークロード IP プレフィックス (またはその逆) です。
 
-:::image type="content" source="media/hub-spoke/specify-gateway-subnet-for-route-table.png" alt-text="Azure VMware Solution のハブ アンド スポークの統合デプロイ" lightbox="media/hub-spoke/specify-gateway-subnet-for-route-table.png":::
+:::image type="content" source="media/hub-spoke/specify-gateway-subnet-for-route-table.png" alt-text="対応するルート テーブルで特定のネットワークのルートを設定する" lightbox="media/hub-spoke/specify-gateway-subnet-for-route-table.png":::
 
 スポークおよびハブ内のネットワーク セキュリティ グループを使用して、より詳細なトラフィック ポリシーを作成する、2 番目のレベルのトラフィック セグメント。
 
 > [!NOTE]
-> **オンプレミスから Azure VMware Solution までのトラフィック**オンプレミス ワークロード間のトラフィックは、vSphere ベースであれ、その他であれ、Global Reach によって有効になりますが、トラフィックはハブ上で Azure Firewall を通過しません。 このシナリオでは、オンプレミスまたは Azure VMware Solution にトラフィック セグメント化メカニズムを実装する必要があります。
+> **オンプレミスから Azure VMware Solution までのトラフィック** オンプレミス ワークロード間のトラフィックは、vSphere ベースであれ、その他であれ、Global Reach によって有効になりますが、トラフィックはハブ上で Azure Firewall を通過しません。 このシナリオでは、オンプレミスまたは Azure VMware Solution にトラフィック セグメント化メカニズムを実装する必要があります。
 
 ### <a name="application-gateway"></a>Application Gateway
 
@@ -106,7 +106,7 @@ Azure Application Gateway V1 および V2 は、Azure VMware Solution VM 上で�
 
 詳細と要件については、[Application Gateway](./protect-azure-vmware-solution-with-application-gateway.md) に関する Azure VMware Solution 特集記事をご確認ください。
 
-:::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Azure VMware Solution のハブ アンド スポークの統合デプロイ" border="false":::
+:::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="ネットワーク セキュリティ グループを使用する 2 番目のレベルのトラフィック セグメント" border="false":::
 
 
 ### <a name="jump-box-and-azure-bastion"></a>ジャンプ ボックスと Azure Bastion
@@ -114,7 +114,7 @@ Azure Application Gateway V1 および V2 は、Azure VMware Solution VM 上で�
 ハブ仮想ネットワーク内の共有サービス サブネットにデプロイされている Windows 10 または Windows Server の VM であるジャンプ ボックスを使用して、Azure VMware Solution 環境にアクセスします。
 
 >[!IMPORTANT]
->Azure Bastion は、Azure VMware Solution がインターネットに公開されないようにするために、ジャンプ ボックスに接続する場合に推奨されるサービスです。 Azure VMware Solution の VM は Azure IaaS オブジェクトではないため、Azure Bastion を使用してそれらの VM に接続することはできません。  
+>Azure Bastion は、Azure VMware Solution がインターネットに公開されないようにジャンプ ボックスに接続する場合に推奨されるサービスです。 Azure VMware Solution の VM は Azure IaaS オブジェクトではないため、Azure Bastion を使用してそれらの VM に接続することはできません。  
 
 セキュリティのベスト プラクティスとして、ハブ仮想ネットワーク内に [Microsoft Azure Bastion](../bastion/index.yml) サービスをデプロイすることをお勧めします。 Azure Bastion では、Azure にデプロイされている VM へのシームレスな RDP アクセスと SSH アクセスが提供されます。これらのリソースにパブリック IP アドレスをプロビジョニングする必要はありません。 Azure Bastion サービスをプロビジョニングすると、選択した VM に Azure portal からアクセスできるようになります。 接続を確立すると、新しいタブが開いてジャンプ ボックスのデスクトップが表示されます。そのデスクトップから、Azure VMware Solution プライベート クラウドの管理プレーンにアクセスできます。
 
@@ -122,7 +122,7 @@ Azure Application Gateway V1 および V2 は、Azure VMware Solution VM 上で�
 > ジャンプ ボックス VM にパブリック IP アドレスを付与したり、パブリック インターネットに 3389/TCP ポートを公開したりしないでください。 
 
 
-:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Azure VMware Solution のハブ アンド スポークの統合デプロイ" border="false":::
+:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Azure Bastion ハブ仮想ネットワーク" border="false":::
 
 
 ## <a name="azure-dns-resolution-considerations"></a>Azure DNS の解決に関する考慮事項
@@ -137,7 +137,7 @@ Azure DNS の解決には、次の 2 つのオプションを使用できます�
 
 一般的な設計の推奨事項として、2 つ以上の Azure VM (ハブ仮想ネットワークにデプロイされており、DNS 設定で Azure DNS サーバーを使用するようにスポーク仮想ネットワークで構成されている) にデプロイされている既存の Azure DNS インフラストラクチャ (この場合は Active Directory 統合 DNS) を使用します。
 
-Azure DNS プライベート ゾーンが仮想ネットワークにリンクされている場合も使用することができ、DNS サーバーは顧客の Azure プライベート DNS インフラストラクチャを利用して DNS を実行しているオンプレミスまたは Azure VMware Solution への条件付き転送にハイブリッド リゾルバーとして使用されます。
+Azure プライベート DNS ゾーンが仮想ネットワークにリンクされる Azure プライベート DNS を使用できます。  DNS サーバーは顧客の Azure プライベート DNS インフラストラクチャを利用して DNS を実行しているオンプレミスまたは Azure VMware Solution への条件付き転送にハイブリッド リゾルバーとして使用されます。 
 
 Azure DNS プライベート ゾーンについていくつかの考慮事項があります。
 
@@ -149,7 +149,7 @@ Azure DNS プライベート ゾーンについていくつかの考慮事項が
 
 ## <a name="identity-considerations"></a>ID に関する考慮事項
 
-ID に関する理由により、共有サービス サブネットを使用して、ハブに少なくとも 1 つの AD ドメイン コントローラー (理想的には、ゾーン分散形式の 2 つまたは VM 可用性セット) をデプロイすることをお勧めします。 オンプレミスの AD ドメインを Azure に拡張する方法については、[Azure アーキテクチャ センター](/azure/architecture/reference-architectures/identity/adds-extend-domain)に関する記事を参照してください。
+ID に関する理由により、ハブに少なくとも 1 つの AD ドメイン コントローラーをデプロイすることをお勧めします。 ゾーン分散方式または VM 可用性セットで 2 つの共有サービス サブネットを使用します。 オンプレミスの AD ドメインを Azure に拡張する方法については、[Azure アーキテクチャ センター](/azure/architecture/reference-architectures/identity/adds-extend-domain)に関する記事を参照してください。
 
 さらに、vSphere 環境内で ID および DNS ソースとして機能するように、別のドメイン コントローラーを Azure VMware Solution 側にデプロイします。
 

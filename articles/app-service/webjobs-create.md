@@ -8,12 +8,12 @@ ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 235d82e54c79350f110ab0cda4f4b672e396c61d
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 2743efa5a9067f0667d54be0b7df75a627e60fcd
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91652008"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674039"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Azure App Service で Web ジョブを使用してバックグラウンド タスクを実行する
 
@@ -31,7 +31,7 @@ Azure Functions は、プログラムとスクリプトを実行する別の方�
 
 ## <a name="webjob-types"></a>Web ジョブの種類
 
-次の表で、*継続的* Web ジョブと*トリガーされる* Web ジョブの違いを説明します。
+次の表で、 *継続的* Web ジョブと *トリガーされる* Web ジョブの違いを説明します。
 
 
 |継続的  |トリガー  |
@@ -61,6 +61,9 @@ Several steps in the three "Create..." sections are identical;
 when making changes in one don't forget the other two.
 -->
 
+> [!IMPORTANT]
+> アプリケーションでソース管理が構成されている場合は、ソース管理の統合の一環として Webjobs をデプロイする必要があります。 アプリケーションでソース管理を構成した後は、Azure portal から WebJob を追加することはできません。
+
 1. [Azure ポータル](https://portal.azure.com)で、App Service Web アプリ、API アプリ、またはモバイル アプリの **App Service** ページに移動します。
 
 2. **[Web ジョブ]** を選択します。
@@ -75,7 +78,7 @@ when making changes in one don't forget the other two.
 
    ![構成する必要がある [Web ジョブの追加] 設定を示すスクリーンショット。](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
-   | 設定      | 値の例   | 説明  |
+   | 設定      | 値の例   | 説明  |
    | ------------ | ----------------- | ------------ |
    | **名前** | myContinuousWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。 |
    | **ファイルのアップロード** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
@@ -113,7 +116,7 @@ when making changes in one don't forget the other two.
 
    ![手動でトリガーされる Web ジョブを作成するために指定する必要がある設定を示すスクリーンショット。](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
-   | 設定      | 値の例   | 説明  |
+   | 設定      | 値の例   | 説明  |
    | ------------ | ----------------- | ------------ |
    | **名前** | myTriggeredWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。|
    | **ファイルのアップロード** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
@@ -151,7 +154,7 @@ when making changes in one don't forget the other two.
 
    ![[Web ジョブの追加] ページ](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
-   | 設定      | 値の例   | 説明  |
+   | 設定      | 値の例   | 説明  |
    | ------------ | ----------------- | ------------ |
    | **名前** | myScheduledWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。 |
    | **ファイルのアップロード** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |

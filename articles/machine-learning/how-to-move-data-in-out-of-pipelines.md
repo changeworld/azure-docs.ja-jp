@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: a1bd93931f8a94f598952b28fc3db23d33e5783f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 195c334500c8c540d819e949353b34bea65b3d4f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329773"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741900"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML パイプラインのステップ間でのデータの移動 (Python)
 
@@ -101,6 +101,9 @@ train_step = PythonScriptStep(
 )
 ```
 
+> [!NOTE]
+> これらのすべての引数の値 (つまり、`"train_data"`、`"train.py"`、`cluster`、および `iris_dataset`) を独自のデータで置き換える必要があります。 上記のスニペットは、呼び出しの形式のみを示しており、Microsoft のサンプルには含まれていません。 
+
 また、`random_split()` や `take_sample()` などのメソッドを使用して、複数の入力を作成したり、パイプライン ステップに渡されるデータの量を減らしたりすることもできます。
 
 ```python
@@ -150,9 +153,12 @@ ws = run.experiment.workspace
 ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 ```
 
+> [!NOTE]
+> 前のスニペットは、呼び出しの形式を示しており、Microsoft のサンプルには含まれていません。 さまざまな引数を、自分のプロジェクトの値に置き換える必要があります。
+
 ## <a name="use-pipelinedata-for-intermediate-data"></a>中間データに `PipelineData` を使用する
 
-`Dataset` オブジェクトは永続データを表しますが、パイプラインのステップから出力される一時的なデータには [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) オブジェクトが使用されます。 `PipelineData` オブジェクトの有効期間は 1 つのパイプライン ステップより長くなるため、それらをパイプライン定義スクリプトで定義します。 `PipelineData` オブジェクトを作成するときは、名前と、データを格納するデータストアを指定する必要があります。 `arguments` と `outputs` の "_両方_" の引数を使用して、`PipelineData` オブジェクトを `PythonScriptStep` に渡します。
+`Dataset` オブジェクトは永続データを表しますが、パイプラインのステップから出力される一時的なデータには [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) オブジェクトが使用されます。 `PipelineData` オブジェクトの有効期間は 1 つのパイプライン ステップより長くなるため、それらをパイプライン定義スクリプトで定義します。 `PipelineData` オブジェクトを作成するときは、名前と、データを格納するデータストアを指定する必要があります。 `arguments` と `outputs` の " _両方_ " の引数を使用して、`PipelineData` オブジェクトを `PythonScriptStep` に渡します。
 
 ```python
 
@@ -175,6 +181,9 @@ dataprep_step = PythonScriptStep(
 ```python
 PipelineData("clean_data", datastore=def_blob_store, output_mode="upload", output_path_on_compute="clean_data_output/")
 ```
+
+> [!NOTE]
+> 前のスニペットは、呼び出しの形式を示しており、Microsoft のサンプルには含まれていません。 さまざまな引数を、自分のプロジェクトの値に置き換える必要があります。
 
 > [!TIP]
 > パイプライン ステップ間で中間データを渡すためのエクスペリエンスの向上は、パブリック プレビュー クラス [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) で使用できます。 `OutputFileDatasetConfig` を使用したコード例については、[2 ステップの ML パイプラインを構築する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)方法を参照してください。
@@ -226,6 +235,9 @@ pipeline = Pipeline(workspace=ws, steps=[step1, step2])
 ```
 
 `PipelineData` 入力の値は、前の出力へのパスです。 
+
+> [!NOTE]
+> 前のスニペットは、呼び出しの形式を示しており、Microsoft のサンプルには含まれていません。 さまざまな引数を、自分のプロジェクトの値に置き換える必要があります。
 
 > [!TIP]
 > パイプライン ステップ間で中間データを渡すためのエクスペリエンスの向上は、パブリック プレビュー クラス [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) で使用できます。 `OutputFileDatasetConfig` を使用したコード例については、[2 ステップの ML パイプラインを構築する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)方法を参照してください。

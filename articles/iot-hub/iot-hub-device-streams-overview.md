@@ -11,16 +11,17 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 8194f520abf5c8d4e47fa279f6cf82013024e9ec
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+- devx-track-azurecli
+ms.openlocfilehash: bdd9d5fd878094326331e60fc1a639eef08b7ea3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152174"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792465"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub デバイス ストリーム (プレビュー)
 
-Azure IoT Hub *デバイス ストリーム*によって、さまざまな cloud-to-device 通信シナリオのセキュリティで保護された双方向 TCP トンネルの作成が容易になります。 デバイス ストリームは、デバイスとサービス エンドポイント間のプロキシとして機能する、IoT Hub *ストリーミング エンドポイント*によって仲介されます。 下の図に示されているこのセットアップは、デバイスがネットワーク ファイアウォールの背後にある場合や、プライベート ネットワーク内にある場合に特に便利です。 そのため、IoT Hub デバイス ストリームは、ファイアウォール フレンドリな方法で、着信または発信ネットワーク ファイアウォール ポートを広範に開くことなく、IoT デバイスにアクセスしたいという、お客様のニーズに応えるのに役立ちます。
+Azure IoT Hub *デバイス ストリーム* によって、さまざまな cloud-to-device 通信シナリオのセキュリティで保護された双方向 TCP トンネルの作成が容易になります。 デバイス ストリームは、デバイスとサービス エンドポイント間のプロキシとして機能する、IoT Hub *ストリーミング エンドポイント* によって仲介されます。 下の図に示されているこのセットアップは、デバイスがネットワーク ファイアウォールの背後にある場合や、プライベート ネットワーク内にある場合に特に便利です。 そのため、IoT Hub デバイス ストリームは、ファイアウォール フレンドリな方法で、着信または発信ネットワーク ファイアウォール ポートを広範に開くことなく、IoT デバイスにアクセスしたいという、お客様のニーズに応えるのに役立ちます。
 
 !["IoT Hub デバイス ストリームの概要"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-overview.png )
 
@@ -56,7 +57,7 @@ SDK を使用するデバイス ストリームのプログラムによる作成
 
 1. デバイス アプリケーションでは、デバイスに対して新しいデバイス ストリームが開始されたときに通知されるように、事前にコールバックが登録されます。 この手順は、通常、デバイスが起動し、IoT Hub に接続されたときに行われます。
 
-2. サービス側のプログラムでは、(IP アドレス _ではなく_) デバイス ID を提供することで、必要なときにデバイス ストリームを開始します。
+2. サービス側のプログラムでは、(IP アドレス _ではなく_ ) デバイス ID を提供することで、必要なときにデバイス ストリームを開始します。
 
 3. IoT ハブでは、手順 1 で登録したコールバックを呼び出して、デバイス側のプログラムに通知します。 デバイスでは、ストリームの開始要求を受け入れるか拒否する場合があります。 このロジックは、アプリケーションのシナリオに固有である可能性があります。 ストリーム要求がデバイスによって拒否された場合、IoT Hub で適宜、サービスに通知します。それ以外の場合は、以下の手順が続きます。
 
@@ -103,7 +104,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> Azure CLI バージョン 2.0.57 以降がインストールされていることを確認してください。 最新バージョンは、「[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)」ページからダウンロードできます。
+> Azure CLI バージョン 2.0.57 以降がインストールされていることを確認してください。 最新バージョンは、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」ページからダウンロードできます。
 >
 
 ## <a name="allow-outbound-connectivity-to-the-device-streaming-endpoints"></a>デバイス ストリーミング エンドポイントへの送信接続を許可する
@@ -119,28 +120,28 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> Azure CLI バージョン 2.0.57 以降がインストールされていることを確認してください。 最新バージョンは、「[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)」ページからダウンロードできます。
+> Azure CLI バージョン 2.0.57 以降がインストールされていることを確認してください。 最新バージョンは、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」ページからダウンロードできます。
 >
 
-## <a name="troubleshoot-via-device-streams-activity-logs"></a>デバイス ストリーム アクティビティ ログを使用してトラブルシューティングを行う
+## <a name="troubleshoot-via-device-streams-resource-logs"></a>デバイス ストリーム リソース ログを使用してトラブルシューティングを行う
 
-IoT ハブでデバイス ストリームのアクティビティ ログを収集するように、Azure Monitor ログを設定できます。 これは、トラブルシューティング シナリオで非常に役立つ場合があります。
+Azure Monitor を設定して、IoT Hub によって出力される[デバイス ストリームのリソース ログ](monitor-iot-hub-reference.md#device-streams-preview)を収集することができます。 これは、トラブルシューティング シナリオで非常に役立つ場合があります。
 
-IoT Hub のデバイス ストリーム アクティビティのために Azure Monitor ログを構成するには、以下の手順に従います。
+次の手順に従って、IoT Hub のデバイス ストリーム ログを Azure Monitor ログに送信するための診断設定を作成します。
 
-1. IoT Hub の *[診断設定]* タブに移動し、 *[診断をオンにする]* リンクをクリックします。
+1. Azure portal で、お使いの IoT ハブに移動します。 左側のウィンドウの **[モニター]** の下で、 **[診断設定]** を選択します。 次に **[診断設定を追加する]** を選択します。
 
-   !["診断ログの有効化"](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings-pane.png)
+2. 診断設定の名前を指定し、ログの一覧から **[DeviceStreams]** を選択します。 次に **[Log Analytics への送信]** を選択します。 既存の Log Analytics ワークスペースを選ぶか、新しいものを作成するよう指示されます。
 
-2. 診断設定の名前を指定し、 *[Log Analytics への送信]* オプションを選びます。 既存の Log Analytics ワークスペース リソースを選ぶか、新しいものを作成するよう指示されます。 さらに、リストの *[DeviceStreams]* を確認します。
+    :::image type="content" source="media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png" alt-text="デバイス ストリーム ログを有効にする":::
 
-    !["デバイス ストリーム ログを有効にする"](./media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png)
-
-3. これで、IoT Hub のポータルの *[ログ]* タブにあるデバイス ストリーム ログにアクセスできるようになりました。 デバイス ストリーム アクティビティ ログは、`AzureDiagnostics` テーブルに表示されます。ログには `Category=DeviceStreams` が含まれます。
+3. デバイス ストリーム ログを Log Analytics ワークスペースに送信するための診断設定を作成した後、Azure portal で IoT ハブの左側のウィンドウにある **[モニター]** の **[ログ]** を選択することでログにアクセスできます。 デバイス ストリーム ログは、`AzureDiagnostics` テーブルに表示されます。ログには `Category=DeviceStreams` が含まれます。 操作後、ログがテーブルに表示されるまでに数分かかる場合があることに注意してください。
 
    以下のように、ターゲット デバイスの ID と操作の結果もログで確認できます。
 
    !["デバイス ストリーム ログにアクセスする"](./media/iot-hub-device-streams-overview/device-streams-view-logs.png)
+
+IoT Hub での Azure Monitor の使用の詳細については、[IoT Hub の監視](monitor-iot-hub.md)に関するページを参照してください。 IoT Hub で使用できるすべてのリソース ログ、メトリック、およびテーブルの詳細については、[Azure IoT Hub のデータ監視のリファレンス](monitor-iot-hub-reference.md)に関するページを参照してください。
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
@@ -158,7 +159,7 @@ IoT Hub のデバイス ストリーム アクティビティのために Azure 
 
 IoT Hub のページでは、2 つの[クイックスタート サンプル](./index.yml)を利用できます。 これらでは、アプリケーションでのデバイス ストリームの使用が示されています。
 
-* "*エコー*" サンプルでは、(SDK API を直接呼び出すことによって) プログラムでデバイス ストリームを使用する方法を示しています。
+* " *エコー* " サンプルでは、(SDK API を直接呼び出すことによって) プログラムでデバイス ストリームを使用する方法を示しています。
 
 * *ローカル プロキシ* サンプルでは、デバイス ストリームを使用して (SSH、RDP、Web などの) 既存のアプリケーションのトラフィックをトンネリングする方法を示しています。
 
@@ -182,7 +183,7 @@ echo サンプルを次に示します。
 
 このセクションでは、ユーザーがデバイス ストリーム経由でデバイスに SSH 接続できるようにするための、デバイス ストリームの使用方法について説明します (RDP またはその他のクライアント/サーバー アプリケーションのケースは、プロトコルの対応するポートを使用する点で似ています)。
 
-セットアップでは、下の図に示されている、2 つの*ローカル プロキシ* プログラム (つまり、*デバイス ローカル プロキシ*と*サービス ローカル プロキシ*) が利用されます。 ローカル プロキシ プログラムは、IoT Hub による[デバイス ストリームの開始ハンドシェイク](#device-stream-creation-flow)を実行し、通常のクライアント/サーバー ソケットを使用して SSH クライアントおよび SSH デーモンとやりとりします。
+セットアップでは、下の図に示されている、2 つの *ローカル プロキシ* プログラム (つまり、 *デバイス ローカル プロキシ* と *サービス ローカル プロキシ* ) が利用されます。 ローカル プロキシ プログラムは、IoT Hub による[デバイス ストリームの開始ハンドシェイク](#device-stream-creation-flow)を実行し、通常のクライアント/サーバー ソケットを使用して SSH クライアントおよび SSH デーモンとやりとりします。
 
 !["SSH/RDP のためのデバイス ストリーム プロキシ セットアップ"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
 

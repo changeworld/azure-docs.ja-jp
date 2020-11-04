@@ -12,19 +12,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/28/2020
+ms.date: 10/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9194b461cdceab889e1dfd20e3e70f3f69cb4369
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0861d1fd3ab2a378f0b9afc4e8b35b32badfc3db
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978256"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670660"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 仮想マシンのストレージ構成
 
-Azure は、SAP HANA を実行する Azure VM に適した、異なる種類のストレージを提供します。 SAP HANA のデプロイのために検討できる **SAP HANA 認定の Azure ストレージの種類**は次のとおりです。 
+Azure は、SAP HANA を実行する Azure VM に適した、異なる種類のストレージを提供します。 SAP HANA のデプロイのために検討できる **SAP HANA 認定の Azure ストレージの種類** は次のとおりです。 
 
 - Azure Premium SSD または Premium Storage 
 - [Ultra Disk](../../disks-enable-ultra-ssd.md)
@@ -46,7 +46,7 @@ Azure では、Azure Standard および Premium Storage の 2 つの VHD デプ�
 - **/hana/log** ボリュームには、少なくとも Azure Ultra Disk が必要です。 **/hana/data** ボリュームは、Azure 書き込みアクセラレータなしで Premium Storage に配置できます。また、再起動時間を短縮するために Ultra Disk に配置することもできます。
 - **/hana/log および /hana/data** には、Azure NetApp Files 上の **NFS v4.1** ボリュームを使用します。 /hana/shared のボリュームでは、NFS v3 または NFS v4.1 プロトコルを使用できます。
 
-ストレージの種類によっては、組み合わせることができます。 たとえば、 **/hana/data** を Premium Storage に配置し、必要な低遅延を確保するために、 **/hana/log** を Ultra Disk ストレージに配置できます。 **/hana/data** に ANF に基づくボリュームを使用する場合は、 **/hana/log** ボリュームも、ANF 上の NFS に基づく必要があります。 一方のボリューム (/hana/data など) に ANF 上の NFS を使用し、もう一方のボリューム ( **/hana/log** など) に Azure Premium Storage または Ultra Disk を使用することは**サポートされていません**。
+ストレージの種類によっては、組み合わせることができます。 たとえば、 **/hana/data** を Premium Storage に配置し、必要な低遅延を確保するために、 **/hana/log** を Ultra Disk ストレージに配置できます。 **/hana/data** に ANF に基づくボリュームを使用する場合は、 **/hana/log** ボリュームも、ANF 上の NFS に基づく必要があります。 一方のボリューム (/hana/data など) に ANF 上の NFS を使用し、もう一方のボリューム ( **/hana/log** など) に Azure Premium Storage または Ultra Disk を使用することは **サポートされていません** 。
 
 オンプレミスでは、I/O サブシステムとその機能を気にする必要はほとんどありませんでした。 SAP HANA に対する最低限のストレージ要件が満たされていることを、アプライアンスのベンダーが保証する必要があったためです。 Azure インフラストラクチャを自身でビルドする場合は、これらの SAP が発行した要件の一部に注意する必要があります。 SAP が推奨している最小スループット特性の一部を次に示します。
 
@@ -54,7 +54,7 @@ Azure では、Azure Standard および Premium Storage の 2 つの VHD デプ�
 - I/O サイズが 16 MB および 64 MB の **/hana/data** での、少なくとも 400 MB/秒の読み取りアクティビティ
 - I/O サイズが 16 MB および 64 MB の **/hana/data** での、少なくとも 250 MB/秒の書き込みアクティビティ
 
-DBMS システムではストレージの待ち時間が短いことが重要であるため、SAP HANA のようなシステムでもデータをメモリ内に保持します。 通常、ストレージのクリティカル パスは、DBMS システムのトランザクション ログの書き込みの周辺にあります。 しかし、クラッシュ復旧後のセーブポイントの書き込みやメモリ内のデータの読み込みなどの操作も重要である場合があります。 そのため、 **/hana/data** および **/hana/log** ボリュームには、Azure Premium Storage、Ultra Disk、または ANF を利用することが**必須**となります。 
+DBMS システムではストレージの待ち時間が短いことが重要であるため、SAP HANA のようなシステムでもデータをメモリ内に保持します。 通常、ストレージのクリティカル パスは、DBMS システムのトランザクション ログの書き込みの周辺にあります。 しかし、クラッシュ復旧後のセーブポイントの書き込みやメモリ内のデータの読み込みなどの操作も重要である場合があります。 そのため、 **/hana/data** および **/hana/log** ボリュームには、Azure Premium Storage、Ultra Disk、または ANF を利用することが **必須** となります。 
 
 
 HANA のストレージ構成を選択する際の基本原則は次のとおりです。
@@ -143,36 +143,36 @@ LVM または mdadm を使用して、複数の Azure Premium ディスクにま
 
 SAP **/hana/data** ボリュームの構成:
 
-| VM の SKU | RAM | 最大 VM I/O<br /> スループット | /hana/data | 最大バースト スループット | IOPS | バースト IOPS |
+| VM の SKU | RAM | 最大 VM I/O<br /> スループット | /hana/data | プロビジョニングされたスループット | 最大バースト スループット | IOPS | バースト IOPS |
 | --- | --- | --- | --- | --- | --- | --- | 
-| M32ts | 192 GiB | 500 MBps | 4 x P6 | 680 MBps | 960 | 14,000 |
-| M32ls | 256 GiB | 500 MBps | 4 x P6 | 680 MBps | 960 | 14,000 |
-| M64ls | 512 GiB | 1,000 MBps | 4 x P10 |  680 MBps | 2,000 | 14,000 |
-| M64s | 1,000 GiB | 1,000 MBps | 4 x P15 | 680 MBps | 4,400 | 14,000 |
-| M64ms | 1,750 GiB | 1,000 MBps | 4 x P20 | 680 MBps | 9,200 | 14,000 |  
-| M128s | 2,000 GiB | 2,000 MBps | 4 x P20 | 680 MBps | 9,200| 14,000 | 
-| M128ms | 3,800 GiB | 2,000 MBps | 4 x P30 | 800 MBps (プロビジョニング済み) | 20,000 | バーストなし | 
-| M208s_v2 | 2,850 GiB | 1,000 MBps | 4 x P30 | 800 MBps (プロビジョニング済み) | 20,000| バーストなし | 
-| M208ms_v2 | 5,700 GiB | 1,000 MBps | 4 x P40 | 1,000 MBps (プロビジョニング済み) | 25,000 | バーストなし |
-| M416s_v2 | 5,700 GiB | 2,000 MBps | 4 x P40 | 1,000 MBps (プロビジョニング済み) | 25,000 | バーストなし |
-| M416ms_v2 | 11,400 GiB | 2,000 MBps | 4 x P50 | 2,000 MBps (プロビジョニング済み) | 25,000 | バーストなし |
+| M32ts | 192 GiB | 500 MBps | 4 x P6 | 200 MBps | 680 MBps | 960 | 14,000 |
+| M32ls | 256 GiB | 500 MBps | 4 x P6 | 200 MBps | 680 MBps | 960 | 14,000 |
+| M64ls | 512 GiB | 1,000 MBps | 4 x P10 | 400 MBps | 680 MBps | 2,000 | 14,000 |
+| M64s | 1,000 GiB | 1,000 MBps | 4 x P15 | 500 MBps | 680 MBps | 4,400 | 14,000 |
+| M64ms | 1,750 GiB | 1,000 MBps | 4 x P20 | 600 MBps | 680 MBps | 9,200 | 14,000 |  
+| M128s | 2,000 GiB | 2,000 MBps | 4 x P20 | 600 MBps | 680 MBps | 9,200| 14,000 | 
+| M128ms | 3,800 GiB | 2,000 MBps | 4 x P30 | 800 MBps | バースティングなし | 20,000 | バースティングなし | 
+| M208s_v2 | 2,850 GiB | 1,000 MBps | 4 x P30 | 800 MBps | バースティングなし | 20,000| バースティングなし | 
+| M208ms_v2 | 5,700 GiB | 1,000 MBps | 4 x P40 | 1,000 MBps | バースティングなし | 30,000 | バースティングなし |
+| M416s_v2 | 5,700 GiB | 2,000 MBps | 4 x P40 | 1,000 MBps | バースティングなし | 30,000 | バースティングなし |
+| M416ms_v2 | 11,400 GiB | 2,000 MBps | 4 x P50 | 2,000 MBps | バースティングなし | 30,000 | バースティングなし |
 
 
 **/hana/log** ボリュームの場合、 構成は次のようになります。
 
-| VM の SKU | RAM | 最大 VM I/O<br /> スループット | **/hana/log** ボリューム | 最大バースト スループット | IOPS | バースト IOPS |
+| VM の SKU | RAM | 最大 VM I/O<br /> スループット | **/hana/log** ボリューム | プロビジョニングされたスループット | 最大バースト スループット | IOPS | バースト IOPS |
 | --- | --- | --- | --- | --- | --- | --- | 
-| M32ts | 192 GiB | 500 MBps | 3 x P10 | 510 MBps | 1,500 | 10,500 | 
-| M32ls | 256 GiB | 500 MBps | 3 x P10 | 510 MBps | 1,500 | 10,500 | 
-| M64ls | 512 GiB | 1,000 MBps | 3 x P10 | 510 MBps | 1,500 | 10,500 | 
-| M64s | 1,000 GiB | 1,000 MBps | 3 x P15 | 510 MBps | 3,300 | 10,500 | 
-| M64ms | 1,750 GiB | 1,000 MBps | 3 x P15 | 510 MBps | 3,300 | 10,500 |  
-| M128s | 2,000 GiB | 2,000 MBps | 3 x P15 | 510 MBps | 3,300 | 10,500|  
-| M128ms | 3,800 GiB | 2,000 MBps | 3 x P15 | 510 MBps | 3,300 | 10,500 | 
-| M208s_v2 | 2,850 GiB | 1,000 MBps | 3 x P15 | 510 MBps | 3,300 | 10,500 |  
-| M208ms_v2 | 5,700 GiB | 1,000 MBps | 3 x P15 | 510 MBps | 3,300 | 10,500 |  
-| M416s_v2 | 5,700 GiB | 2,000 MBps | 3 x P15 | 510 MBps | 3,300 | 10,500 |  
-| M416ms_v2 | 11,400 GiB | 2,000 MBps | 3 x P15 | 510 MBps | 3,300 | 10,500 | 
+| M32ts | 192 GiB | 500 MBps | 3 x P10 | 300 MBps | 510 MBps | 1,500 | 10,500 | 
+| M32ls | 256 GiB | 500 MBps | 3 x P10 | 300 MBps | 510 MBps | 1,500 | 10,500 | 
+| M64ls | 512 GiB | 1,000 MBps | 3 x P10 | 300 MBps | 510 MBps | 1,500 | 10,500 | 
+| M64s | 1,000 GiB | 1,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 | 
+| M64ms | 1,750 GiB | 1,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 |  
+| M128s | 2,000 GiB | 2,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500|  
+| M128ms | 3,800 GiB | 2,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 | 
+| M208s_v2 | 2,850 GiB | 1,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 |  
+| M208ms_v2 | 5,700 GiB | 1,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 |  
+| M416s_v2 | 5,700 GiB | 2,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 |  
+| M416ms_v2 | 11,400 GiB | 2,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 | 
 
 
 その他のボリュームの場合、構成は次のようになります。
@@ -198,13 +198,13 @@ Azure 書き込みアクセラレータは、[Azure マネージド ディスク
 
 Azure [Esv3](../../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#esv3-series) ファミリおよび [Edsv4](../../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#edsv4-series) の HANA 認定 VM の場合、 **/hana/data** および **/hana/log** ボリュームに ANF を使用する必要があります。 または、 **/hana/log** ボリュームにのみ、Azure Premium Storage ではなく Azure Ultra Disk Storage を利用する必要があります。 その結果、Azure Premium Storage 上の **/hana/data** ボリュームの構成は次のようになります。
 
-| VM の SKU | RAM | 最大 VM I/O<br /> スループット | /hana/data | 最大バースト スループット | IOPS | バースト IOPS |
+| VM の SKU | RAM | 最大 VM I/O<br /> スループット | /hana/data | プロビジョニングされたスループット | 最大バースト スループット | IOPS | バースト IOPS |
 | --- | --- | --- | --- | --- | --- | --- |
-| E20ds_v4 | 160 GiB | 480 MBps | 3 x P10 | 510 MBps | 1,500 | 10,500 |
-| E32ds_v4 | 256 GiB | 768 Mbps | 3 x P10 |  510 MBps | 1,500 | 10,500|
-| E48ds_v4 | 384 GiB | 1,152 MBps | 3 x P15 |  510 MBps | 3,300  | 10,500 | 
-| E64ds_v4 | 504 GiB | 1,200 MBps | 3 x P15 |  510 MBps | 3,300 | 10,500 | 
-| E64s_v3 | 432 GiB | 1,200 MB/秒 | 3 x P15 |  510 MBps | 3,300 | 10,500 | 
+| E20ds_v4 | 160 GiB | 480 MBps | 3 x P10 | 300 MBps | 510 MBps | 1,500 | 10,500 |
+| E32ds_v4 | 256 GiB | 768 Mbps | 3 x P10 |  300 MBps | 510 MBps | 1,500 | 10,500|
+| E48ds_v4 | 384 GiB | 1,152 MBps | 3 x P15 |  375 MBps |510 MBps | 3,300  | 10,500 | 
+| E64ds_v4 | 504 GiB | 1,200 MBps | 3 x P15 |  375 MBps | 510 MBps | 3,300 | 10,500 | 
+| E64s_v3 | 432 GiB | 1,200 MB/秒 | 3 x P15 |  375 MBps | 510 MBps | 3,300 | 10,500 | 
 
 Ultra Disk 上の **/hana/log** など、その他のボリュームの場合、構成は次のようになります。
 
@@ -224,7 +224,7 @@ Ultra Disk 上の **/hana/log** など、その他のボリュームの場合、
 - 100 IOPS から 160K IOPS の IOPS の範囲 (最大値は VM の種類によっても異なる)
 - 300 MB/秒から 2,000 MB/秒のストレージのスループット
 
-Ultra Disk によって、自分のサイズ、IOPS、ディスク スループットの範囲を実行する 1 つのディスクを定義することができます。 Azure Premium Storage 上の LVM や MDADM などの論理ボリューム マネージャーを使用する代わりに、IOPS とストレージ スループットの要件を満たすボリュームを構築します。 Ultra Disk と Premium Storage の間で構成の組み合わせを実行できます。 その場合、Ultra Disk の使用をパフォーマンス クリティカルな /**hana/data** および **/hana/log** ボリュームに限定し、その他のボリュームには Azure Premium Storage で対応できます。
+Ultra Disk によって、自分のサイズ、IOPS、ディスク スループットの範囲を実行する 1 つのディスクを定義することができます。 Azure Premium Storage 上の LVM や MDADM などの論理ボリューム マネージャーを使用する代わりに、IOPS とストレージ スループットの要件を満たすボリュームを構築します。 Ultra Disk と Premium Storage の間で構成の組み合わせを実行できます。 その場合、Ultra Disk の使用をパフォーマンス クリティカルな / **hana/data** および **/hana/log** ボリュームに限定し、その他のボリュームには Azure Premium Storage で対応できます。
 
 Ultra Disk のその他の利点は、Premium Storage と比較して読み取り待ち時間が短いことです。 読み取り待機時間が短いということは、HANA の起動時間とその後のメモリへのデータの読み込みを短縮する必要がある場合に利点があります。 Ultra Disk ストレージの利点は、HANA によってセーブポイントが書き込まれているときにも感じることができます。 
 

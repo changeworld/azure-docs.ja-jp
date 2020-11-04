@@ -1,6 +1,6 @@
 ---
-title: Key Vault の設定
-description: 仮想マシンで使用するために Key Vault を設定する方法。
+title: PowerShell を使用して Key Vault を設定する
+description: 仮想マシンで使用するために PowerShell を使用して Key Vault を設定する方法。
 author: mimckitt
 manager: vashan
 ms.service: virtual-machines
@@ -9,14 +9,14 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/24/2017
 ms.author: mimckitt
-ms.openlocfilehash: d5e4bb1d3f62685c90e95eebf5f8f07720a23b82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd4a6ed5f57c536a9e40b2fd81b96d055702b425
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086995"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678319"
 ---
-# <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Azure Resource Manager の仮想マシンの Key Vault を設定する
+# <a name="set-up-key-vault-for-virtual-machines-using-azure-powershell"></a>Azure PowerShell を使用して仮想マシンの Key Vault を設定する
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-rm-include.md)]
 

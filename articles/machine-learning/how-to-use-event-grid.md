@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: e033f00f7657f7f4e5e63509672e924979ce03e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77d2f600a651f44abddf4a77f2a01486fa0259f2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362518"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428424"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Azure Machine Learning イベントに基づいてアプリケーション、プロセス、または CI/CD ワークフローをトリガーする (プレビュー)
 
@@ -62,7 +62,7 @@ Azure Machine Learning は、機械学習のライフサイクルのさまざま
 
 イベントを設定するときに、フィルターを適用して、特定のイベント データでのみトリガーするようにできます。 実行状態変更イベントについての次の例では、実行の種類でフィルター処理できます。 イベントは、条件が満たされた場合にのみトリガーされます。 フィルター処理できるイベン トデータの詳細については、[Azure Machine Learning イベント グリッド スキーマ](/azure/event-grid/event-schema-machine-learning)に関する記事を参照してください。 
 
-Azure Machine Learning イベントのサブスクリプションは、ロールベースのアクセス制御 (RBAC) によって保護されています。 ワークスペースの[共同作成者または所有者](how-to-assign-roles.md#default-roles)だけが、イベント サブスクリプションの作成、更新、削除を行うことができます。  イベント サブスクリプションの[作成](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest&preserve-view=true)中、または作成後に、イベント サブスクリプションをフィルター処理することができます。 
+Azure Machine Learning イベントのサブスクリプションは、Azure ロールベースのアクセス制御 (Azure RBAC) によって保護されています。 ワークスペースの[共同作成者または所有者](how-to-assign-roles.md#default-roles)だけが、イベント サブスクリプションの作成、更新、削除を行うことができます。  イベント サブスクリプションの[作成](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest&preserve-view=true)中、または作成後に、イベント サブスクリプションをフィルター処理することができます。 
 
 
 1. Azure portal にアクセスし、新しいサブスクリプションまたは既存のサブスクリプションを選択します。 
@@ -74,7 +74,7 @@ Azure Machine Learning イベントのサブスクリプションは、ロール
 
 + **イベントの種類でフィルター処理する:** イベント サブスクリプションでは、1 つまたは複数の Azure Machine Learning イベントの種類を指定できます。
 
-+ **イベントの件名でフィルター処理する:** Azure Event Grid は、__次で始まる__ と __次で終わる__ という一致に基づく件名フィルターをサポートするため、件名が一致するイベントはサブスクライバーに配信されます。 機械学習イベントが異なると、件名の形式も異なります。
++ **イベントの件名でフィルター処理する:** Azure Event Grid は、 __次で始まる__ と __次で終わる__ という一致に基づく件名フィルターをサポートするため、件名が一致するイベントはサブスクライバーに配信されます。 機械学習イベントが異なると、件名の形式も異なります。
 
   | イベントの種類 | 件名の形式 | 件名の例 |
   | ---------- | ----------- | ----------- |
@@ -84,7 +84,7 @@ Azure Machine Learning イベントのサブスクリプションは、ロール
   | `Microsoft.MachineLearningServices.DatasetDriftDetected` | `datadrift/{data.DataDriftId}/run/{data.RunId}` | `datadrift/4e694bf5-712e-4e40-b06a-d2a2755212d4/run/my_driftrun1_1550564444_fbbcdc0f` |
   | `Microsoft.MachineLearningServices.RunStatusChanged` | `experiments/{ExperimentId}/runs/{RunId}` | `experiments/b1d7966c-f73a-4c68-b846-992ace89551f/runs/my_exp1_1554835758_38dbaa94` | 
 
-+ **高度なフィルター処理**:Azure Event Grid は、発行されたイベント スキーマに基づく高度なフィルター処理もサポートしています。 Azure Machine Learning のイベント スキーマの詳細については、「[Azure Machine Learning の Azure Event Grid イベント スキーマ](../event-grid/event-schema-machine-learning.md)」を参照してください。  実行できる高度なフィルター処理の例をいくつか次に示します。
++ **高度なフィルター処理** :Azure Event Grid は、発行されたイベント スキーマに基づく高度なフィルター処理もサポートしています。 Azure Machine Learning のイベント スキーマの詳細については、「[Azure Machine Learning の Azure Event Grid イベント スキーマ](../event-grid/event-schema-machine-learning.md)」を参照してください。  実行できる高度なフィルター処理の例をいくつか次に示します。
 
   `Microsoft.MachineLearningServices.ModelRegistered` イベントの場合、モデルのタグ値をフィルター処理するには、次のようにします。
 
@@ -174,7 +174,7 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
     ![イベントの種類が選択された [リソース イベントが発生したとき] ダイアログ ボックスを示すスクリーンショット。](./media/how-to-use-event-grid/select-event-runcomplete.png)
 
-1. 上のセクションのフィルター処理方法を使用するか、フィルターを追加して、イベントの種類のサブセットでのみロジック アプリをトリガーすることができます。 次のスクリーンショットでは、 __/datadriftID/runs/__ の__プレフィックス フィルター__が使用されています。
+1. 上のセクションのフィルター処理方法を使用するか、フィルターを追加して、イベントの種類のサブセットでのみロジック アプリをトリガーすることができます。 次のスクリーンショットでは、 __/datadriftID/runs/__ の __プレフィックス フィルター__ が使用されています。
 
     ![filter-events](./media/how-to-use-event-grid/filtering-events.png)
 
@@ -222,7 +222,7 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
     ![[イベントの種類] 項目が選択された [リソース イベントが発生したとき] を示すスクリーンショット。](./media/how-to-use-event-grid/login-and-add-event.png)
 
-1. 新しいステップを追加し、__Azure Data Factory__ を検索します。 __[パイプラインの実行の作成]__ を選択します。 
+1. 新しいステップを追加し、 __Azure Data Factory__ を検索します。 __[パイプラインの実行の作成]__ を選択します。 
 
     ![[パイプラインの実行の作成] が選択された [アクションの選択] ペインを示すスクリーンショット。](./media/how-to-use-event-grid/create-adfpipeline-run.png)
 
@@ -230,7 +230,7 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
     ![さまざまな値がある [パイプラインの実行の作成] ペインを示すスクリーンショット。](./media/how-to-use-event-grid/specify-adf-pipeline.png)
 
-1. ページの左上にある **[保存]** ボタンを使用して、ロジック アプリを保存して作成します。 アプリを表示するには、[Azure portal](https://portal.azure.com) のワークスペースにアクセスし、 **[イベント]** をクリックします。
+1. ページの左上にある **[保存]** ボタンを使用して、ロジック アプリを保存して作成します。 アプリを表示するには、 [Azure portal](https://portal.azure.com) のワークスペースにアクセスし、 **[イベント]** をクリックします。
 
     ![ロジック アプリが強調表示されているイベントを示すスクリーンショット。](./media/how-to-use-event-grid/show-logic-app-webhook.png)
 
@@ -242,7 +242,7 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 Azure Machine Learning モデルオブジェクトには、モデルの名前、バージョン、タグ、プロパティなど、デプロイをピボットできるパラメーターが含まれています。 モデル登録イベントはエンドポイントをトリガーでき、Azure 関数を使用して、これらのパラメーターの値に基づいてモデルを配置できます。
 
-例については、[https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) リポジトリを参照し、**readme** ファイルの手順に従ってください。
+例については、 [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) リポジトリを参照し、 **readme** ファイルの手順に従ってください。
 
 ## <a name="next-steps"></a>次のステップ
 

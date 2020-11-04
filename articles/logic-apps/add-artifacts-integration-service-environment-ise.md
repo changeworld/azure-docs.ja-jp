@@ -6,19 +6,19 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: dc4798df05b760074ff06d95d9712204a3cf3e5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 147247c663311cfb3e05a986c6fb2bffbb41158b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269745"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675206"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps で統合サービス環境 (ISE) にリソースを追加する
 
 [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成したら、ロジック アプリ、統合アカウント、コネクタなどのリソースを追加して、Azure 仮想ネットワーク内のリソースにアクセスできるようにします。 たとえば、ISE の作成後に使用可能になる ISE マネージド コネクタは、ロジック アプリ デザイナーに自動的には表示されません。 これらの ISE コネクタを使用するには、手動で[これらのコネクタを追加して ISE にデプロイ](#add-ise-connectors-environment)し、ロジック アプリ デザイナーに表示されるようにする必要があります。
 
 > [!IMPORTANT]
-> ISE でロジック アプリと統合アカウントを連携させるには、両方とも "*同じ ISE*" を場所として使用する必要があります。
+> ISE でロジック アプリと統合アカウントを連携させるには、両方とも " *同じ ISE* " を場所として使用する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,7 +47,7 @@ ms.locfileid: "91269745"
    | **名前** | はい | 作成するロジック アプリの名前 |
    | **サブスクリプション** | はい | 使用する Azure サブスクリプションの名前。 |
    | **リソース グループ** | はい | 使用する Azure リソース グループ (新規または既存) の名前 |
-   | **場所** | はい | **[統合サービス環境]** で、使用する ISE を選択します (まだ選択していない場合)。 <p><p> **重要**:統合アカウントでロジック アプリを使用するには、どちらも同じ ISE を使用する必要があります。 |
+   | **場所** | はい | **[統合サービス環境]** で、使用する ISE を選択します (まだ選択していない場合)。 <p><p> **重要** :統合アカウントでロジック アプリを使用するには、どちらも同じ ISE を使用する必要があります。 |
    ||||
 
 1. 完了したら **[作成]** を選択します。
@@ -62,7 +62,7 @@ ms.locfileid: "91269745"
 
 ## <a name="create-integration-accounts"></a>統合アカウントを作成する
 
-作成時に選択された [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) に基づいて、ISE には追加費用なしで特定の統合アカウントの使用が含まれます。 統合サービス環境 (ISE) に存在するロジック アプリは、同じ ISE に存在する統合アカウントのみを参照できます。 そのため、ISE で統合アカウントがロジック アプリと連携するには、統合アカウントとロジック アプリの両方で、場所として "*同じ環境*" を使用する必要があります。 統合アカウントと ISE の詳細については、「[ISE との統合アカウント](connect-virtual-network-vnet-isolated-environment-overview.md#create-integration-account-environment)」を参照してください。
+作成時に選択された [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) に基づいて、ISE には追加費用なしで特定の統合アカウントの使用が含まれます。 統合サービス環境 (ISE) に存在するロジック アプリは、同じ ISE に存在する統合アカウントのみを参照できます。 そのため、ISE で統合アカウントがロジック アプリと連携するには、統合アカウントとロジック アプリの両方で、場所として " *同じ環境* " を使用する必要があります。 統合アカウントと ISE の詳細については、「[ISE との統合アカウント](connect-virtual-network-vnet-isolated-environment-overview.md#create-integration-account-environment)」を参照してください。
 
 ISE を使用する統合アカウントを作成するには、次の手順を実行します。
 
@@ -80,7 +80,7 @@ ISE を使用する統合アカウントを作成するには、次の手順を�
    | **サブスクリプション** | はい | 使用する Azure サブスクリプションの名前 |
    | **リソース グループ** | はい | 使用する Azure リソース グループ (新規または既存) の名前 |
    | **価格レベル** | はい | 統合アカウントに使用する価格レベル |
-   | **場所** | はい | **[統合サービス環境]** で、ロジック アプリが使用するものと同じ ISE を選択します (まだ選択していない場合)。 <p><p> **重要**:ロジック アプリで統合アカウントを使用するには、どちらも同じ ISE を使用する必要があります。 |
+   | **場所** | はい | **[統合サービス環境]** で、ロジック アプリが使用するものと同じ ISE を選択します (まだ選択していない場合)。 <p><p> **重要** :ロジック アプリで統合アカウントを使用するには、どちらも同じ ISE を使用する必要があります。 |
    ||||
 
 1. 完了したら **[作成]** を選択します。
@@ -95,7 +95,21 @@ ISE を使用する統合アカウントを作成するには、次の手順を�
 
 ## <a name="add-ise-connectors"></a>ISE のコネクタを追加する
 
-ISE の作成後に使用可能になる Microsoft が管理するコネクタは、ロジック アプリ デザイナーのコネクタ ピッカーに自動的には表示されません。 これらの ISE コネクタを使用するには、手動でこれらのコネクタを追加して ISE にデプロイし、ロジック アプリ デザイナーに表示されるようにする必要があります。
+ISE を作成すると、マネージド ISE コネクタはロジック アプリ デザイナーのコネクタ ピッカーに自動的には表示されません。 これらの ISE コネクタを使用するには、手動でこれらのコネクタを追加して ISE にデプロイし、ロジック アプリ デザイナーに表示されるようにする必要があります。
+
+> [!IMPORTANT]
+> マネージド ISE コネクタは現在のところ、[タグ](../azure-resource-manager/management/tag-support.md)に対応していません。 タグ付けを強制するポリシーを設定した場合、ISE コネクタを追加しようとすると、次の例のようなエラーで失敗する可能性があります。
+> 
+> ```json
+> {
+>    "error": { 
+>       "code": "IntergrationServiceEnvironmentManagedApiDefinitionTagsNotSupported", 
+>       "message": "The tags are not supported in the managed API 'azureblob'."
+>    }
+> }
+> ```
+> 
+> そのため、ISE コネクタを追加するには、ポリシーを無効にするか、削除する必要があります。 
 
 1. ISE メニューの **[設定]** で、 **[マネージド コネクタ]** を選択します。 ツールバーの **[追加]** を選択します。
 

@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/08/2020
+ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 7e97dc6ad4c6591a470e19050d79230f9ea7fd43
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 8cd5969e4362b1581a7b9aebf39f8c6871839918
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164804"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558751"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure に接続された Video Indexer アカウントを作成する
 
@@ -30,11 +30,9 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
 * Azure サブスクリプション。
 
     Azure サブスクリプションがまだない場合は、[Azure 無料試用版](https://azure.microsoft.com/free/)にサインアップしてください。
-
 * Azure Active Directory (Azure AD) ドメイン。
 
-    Azure AD ドメインがない場合は、Azure サブスクリプションを使用して作成してください。 詳細については、[Azure AD のカスタム ドメイン名の管理](../../active-directory/users-groups-roles/domains-manage.md)に関する記事を参照してください。
-
+    Azure AD ドメインがない場合は、Azure サブスクリプションを使用して作成してください。 詳細については、[Azure AD のカスタム ドメイン名の管理](../../active-directory/enterprise-users/domains-manage.md)に関する記事を参照してください。
 * **アプリケーション管理者** のロールを持つ、Azure AD ドメイン内のユーザー。 このメンバーは、Video Indexer アカウントを Azure に接続するときに使用します。
 
     このユーザーは、職場または学校アカウントを持つ Azure AD ユーザーである必要があります。 個人アカウント (outlook.com、live.com、hotmail.com など) は使用しないでください。
@@ -61,44 +59,42 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
 
     ![EventGrid](./media/create-account/event-grid.png)
 
-## <a name="connect-to-azure"></a>Azure に接続する
+## <a name="create-a-new-account"></a>新しいアカウントを作成する
 
 > [!NOTE]
 > Azure サブスクリプションが証明書ベースの多要素認証を使用する場合、必要な証明書がインストールされているデバイスで次の手順を実行することが重要です。
 
 1. [Video Indexer](https://www.videoindexer.ai/) Web サイトに移動してサインインします。
+1. **[Create unlimited account]\(無制限アカウントの作成\)**  ボタンを選択します。
 
-2. **[アカウントの新規作成]** ボタンを選択します。
+    ![新規 Video Indexer アカウントを作成する](./media/create-account/create-unlimited-account.png)
+1. サブスクリプション一覧が表示されたら、使用するサブスクリプションを選択します。
 
-    ![新規 Video Indexer アカウントを作成する](./media/create-account/connect-to-azure.png)
-
-3. サブスクリプション一覧が表示されたら、使用するサブスクリプションを選択します。
-
-    ![Video Indexer を Azure に接続する](./media/create-account/connect-vi-to-azure-subscription.png)
-
-4. サポートされている場所から Azure リージョンを選択します。米国西部 2、北ヨーロッパ、東アジアです。
-5. **[Azure Media Services アカウント]** で、次のいずれかのオプションを選択します。
+    ![Video Indexer を Azure に接続する](./media/create-account/new-account-on-azure-subscription.png)
+1. サポートされている場所から Azure リージョンを選択します。米国西部 2、北ヨーロッパ、東アジアです。
+1. **[Azure Media Services アカウント]** で、次のいずれかのオプションを選択します。
 
     * 新しい Media Services アカウントを作成するには、 **[新規リソース グループの作成]** を選択します。 リソース グループの名前を入力します。
 
-        新しい Azure Storage アカウントを含め、新しいアカウントが Azure のサブスクリプションに作成されます。 新しい Media Services アカウントには、1 つのストリーミング エンドポイントと 10 個の S3 予約ユニットという既定の初期構成があります。
+        新しい Azure Storage アカウントを含め、新しいアカウントが Azure のサブスクリプションに作成されます。  
     * 既存の Media Services アカウントを使用するには、 **[既存のリソースの使用]** を選択します。 アカウント一覧からアカウントを選択します。
 
         Media Services アカウントのリージョンは Video Indexer アカウントと同じである必要があります。
 
         > [!NOTE]
-        > インデックス作成時間を最小限に抑え、スループットを低くするために、Media Services アカウントの [予約ユニット](../previous/media-services-scale-media-processing-overview.md )の種類と数を **10 個の S3 予約ユニット** に調整することを強くお勧めします。 [ポータルを使用して予約ユニットを変更する方法](../previous/media-services-portal-scale-media-processing.md)に関する記事を参照してください。
-
+        > インデックス作成時間を最小限に抑え、スループットを低くするために、Media Services アカウントの [予約ユニット](../previous/media-services-scale-media-processing-overview.md )の種類と数を **10 個の S3 予約ユニット** に調整することを強くお勧めします。 [ポータルを使用して予約ユニットを変更する方法](../previous/media-services-portal-scale-media-processing.md)に関する記事を参照してください。 予約ユニットは自分のアカウントに課金されます。[価格の詳細](https://azure.microsoft.com/pricing/details/media-services/#analytics)を参照してください。
     * 接続を手動で構成するには、 **[手動構成に切り替える]** リンクを選択します。
 
         詳細については、後述する「[Azure に手動で接続する](#connect-to-azure-manually-advanced-option) (上級者向けオプション)」を参照してください。
-6. 完了したら、 **[接続]** を選択します。 この操作が完了するまでに数分かかる場合があります。
+1. 操作が完了したら、 **[作成]** を選択します。 この操作が完了するまでに数分かかる場合があります。
 
     Azure への接続が完了すると、新しい Video Indexer アカウントがアカウント一覧に表示されます。
 
     ![新しいアカウント](./media/create-account/new-account.png)
+1. Video Indexer Web アプリで動画を再生する前に、Media Services アカウントのストリーミング エンドポイントが実行されていることを確認します (停止状態の場合は [開始] をクリックします)。
 
-7. 新しいアカウントを表示します。
+> [!TIP]
+> アカウントにわかりやすい表示名を付けるには、 **[設定]** にアクセスします。
 
 ## <a name="connect-to-azure-manually-advanced-option"></a>Azure に手動で接続する (上級者向けオプション)
 
@@ -111,20 +107,20 @@ Azure への接続に失敗する場合は、手動で接続して問題の解�
 
 1. [アカウントの作成](../previous/media-services-portal-create-account.md)に関するページに従って、[Azure](https://portal.azure.com/) portal を使用して Azure Media Services アカウントを作成します。
 
-    Media Services アカウント用にストレージ アカウントを作成する場合は、アカウントの種類に **StorageV2** 、レプリケーション フィールドに **地理冗長 (GRS)** を選択します。
+    Media Services アカウント用にストレージ アカウントを作成する場合は、アカウントの種類に **StorageV2** 、レプリケーション フィールドに **geo 冗長** (GRS) を選択します。
 
     ![新しい AMS アカウント](./media/create-account/create-ams-account1.png)
 
     > [!NOTE]
     > Media Services リソースとアカウント名を書き留めてください。 次のセクションの手順で必要になります。
+1. 作成した Media Services アカウントの [予約ユニット](../previous/media-services-scale-media-processing-overview.md )の種類と数を **10 個の S3 予約ユニット** に調整します。 [ポータルを使用して予約ユニットを変更する方法](../previous/media-services-portal-scale-media-processing.md)に関する記事を参照してください。
 
-2. 作成した Media Services アカウントの [予約ユニット](../previous/media-services-scale-media-processing-overview.md )の種類と数を **10 個の S3 予約ユニット** に調整します。 [ポータルを使用して予約ユニットを変更する方法](../previous/media-services-portal-scale-media-processing.md)に関する記事を参照してください。
-3. Video Indexer Web アプリでビデオを再生するには、新しい Media Services アカウントの既定の **ストリーミング エンドポイント** を起動しておく必要があります。
+    予約ユニットは自分のアカウントに課金されます。[価格の詳細](https://azure.microsoft.com/pricing/details/media-services/#analytics)を参照してください。
+1. Video Indexer Web アプリでビデオを再生するには、新しい Media Services アカウントの既定の **ストリーミング エンドポイント** を起動しておく必要があります。
 
     新しい Media Services アカウントで **[ストリーミング エンドポイント]** を選択します。 次に、ストリーミング エンドポイントを選択し、[開始] を押します。
 
-    ![新しい AMS アカウント](./media/create-account/create-ams-account2.png)
-
+    ![ストリーミング エンドポイント](./media/create-account/create-ams-account2.png)
 4. Video Indexer が Media Services API を使用して認証するには、AD アプリを作成する必要があります。 次に、「[Azure ポータルで Azure AD 認証を開始する](../previous/media-services-portal-get-started-with-aad.md)」で説明されている Azure AD 認証プロセスについて、手順を追って説明します。
 
     1. 新しい Media Services アカウントで **[API アクセス]** をクリックします。
@@ -140,7 +136,7 @@ Azure への接続に失敗する場合は、手動で接続して問題の解�
 
 ### <a name="connect-manually"></a>手動で接続する
 
-[[Video Indexer]](https://www.videoindexer.ai/) ページの **[Video Indexer を Azure サブスクリプションに接続]** ダイアログで **[手動構成に切り替える]** リンクを選択します。
+[[Video Indexer]](https://www.videoindexer.ai/) ページの **[Azure サブスクリプションで新しいアカウントを作成する]** ダイアログで **[手動構成に切り替える]** リンクを選択します。
 
 このダイアログに次の情報を入力します。
 
@@ -156,33 +152,38 @@ Azure への接続に失敗する場合は、手動で接続して問題の解�
 
 ## <a name="import-your-content-from-the-trial-account"></a>" *試用版* " アカウントからコンテンツをインポートする
 
-[新しいアカウントを作成する](#connect-to-azure)場合は、" *試用版* " アカウントから新しいアカウントにコンテンツをインポートするオプションがあります。 **[Azure サブスクリプションで新しいアカウントを作成する]** ダイアログで " *[インポート]* " オプションをオンにする場合、メディアおよびコンテンツ モデルのカスタマイズはすべて、" *試用版* " アカウントから新しいアカウントにコピーされます。
+新しいアカウントを作成する場合は、 *"試用版"* アカウントから新しいアカウントにコンテンツをインポートするオプションがあります。 **[Azure サブスクリプションで新しいアカウントを作成する]** ダイアログで " *[インポート]* " オプションをオンにする場合、メディアおよびコンテンツ モデルのカスタマイズはすべて、" *試用版* " アカウントから新しいアカウントにコピーされます。
 
 コンテンツをインポートする機能は、前述の自動と手動の両方の方法で有効です。
 
 > [!NOTE]
 > コンテンツは、各アカウントから一度だけインポートすることができます。
 
+## <a name="delete-the-account"></a>アカウントを削除する
+
+後でアカウントを削除する場合は、Video Indexer Web サイトからアカウントを削除できます。 アカウントを削除するには、所有者である必要があります。
+
+アカウントを選択し、 **[設定]**  ->  **[このアカウントを削除する]** の順にクリックします。 
+
+アカウントは 90 日後に完全に削除されます。
+
 ## <a name="considerations"></a>考慮事項
 
 Azure Media Services に関する次の考慮事項が適用されます。
 
 * 自動的に接続されると、Azure サブスクリプションに新しいリソース グループ、Media Services アカウント、ストレージ アカウントが表示されます。
-* 自動的に接続されると、Video Indexer によってメディアの **[予約ユニット]** は 10 S3 ユニットに設定されます。
-
-    ![Media Services の予約ユニット](./media/create-account/ams-reserved-units.png)
-
 * 既存の Media Services アカウントに接続した場合、Video Indexer で既存メディアの **[予約ユニット]** の構成は変更されません。
 
    予想される負荷に従って、メディアの [予約ユニット] の種類と数を調整する必要があります。 負荷が高く、ユニットや速度が十分ではない場合は、ビデオ処理でタイムアウト エラーが発生する可能性がある点に注意してください。
-
 * 新しい Media Services アカウントに接続した場合、Video Indexer は、既定の **ストリーミング エンドポイント** を自動的に起動します。
 
     ![Media Services ストリーミング エンドポイント](./media/create-account/ams-streaming-endpoint.png)
 
     ストリーミング エンドポイントの起動には時間がかかります。 そのため、アカウントを Azure に接続してから Video Indexer Web アプリでビデオをストリーミングして視聴できるようになるまでに数分かかることがあります。
-
 * 既存の Media Services アカウントに接続した場合、Video Indexer で既定のストリーミング エンドポイントの構成は変更されません。 実行中の **ストリーミング エンドポイント** がない場合、この Media Services アカウントから、または Video Indexer でビデオを視聴できません。
+* 自動的に接続されると、Video Indexer によってメディアの **[予約ユニット]** は 10 S3 ユニットに設定されます。
+
+    ![Media Services の予約ユニット](./media/create-account/ams-reserved-units.png)
 
 ## <a name="next-steps"></a>次のステップ
 

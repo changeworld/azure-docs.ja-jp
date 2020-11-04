@@ -13,12 +13,12 @@ ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: c0d0e1c5f096a45c08265927a288b4ff56876d94
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 7a5157c955a51215a9e62711ebb7838b61fda496
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951589"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424268"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -45,10 +45,10 @@ Azure 仮想ネットワークには、個々のネットワーク インター�
 ## <a name="key-components"></a>主なコンポーネント
 
 - **ネットワーク セキュリティ グループ (NSG)** :Azure Virtual Network に接続されたリソースへのネットワーク トラフィックを許可または拒否する一連のセキュリティ規則が含まれています。 NSG はサブネットに関連付けることができるほか、クラシック モデルについては個々の VM に、Resource Manager モデルについては VM にアタッチされた個々のネットワーク インターフェイス (NIC) に関連付けることができます。 詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。
-- **ネットワーク セキュリティ グループ (NSG) フロー ログ**:ネットワーク セキュリティ グループを使用して、イングレス/エグレス IP トラフィックの情報を確認できます。 NSG フロー ログは JSON 形式で記述され、規則ごとの送信フローと受信フロー、フローが適用される NIC、フローに関する 5 組の情報 (送信元/宛先 IP アドレス、送信元/宛先ポート、プロトコル)、トラフィックが許可されているか拒否されているかが示されます。 NSG フロー ログの詳細については、[NSG フロー ログ](network-watcher-nsg-flow-logging-overview.md)に関する記事をご覧ください。
-- **Log Analytics**:監視データを収集し、そのデータを中央リポジトリに格納する Azure サービス。 このデータには、Azure API によって提供されるイベント、パフォーマンス データ、またはカスタム データを含めることができます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。 Network Performance Monitor やトラフィック分析などの監視アプリケーションは、Azure Monitor ログを基盤として構築されています。 詳細については、[Azure Monitor ログ](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関するページを参照してください。
-- **Log Analytics ワークスペース**:Azure アカウントに関するデータが格納される、Azure Monitor ログのインスタンス。 Log Analytics ワークスペースの詳細については、[Log Analytics ワークスペースの作成](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関するページを参照してください。
-- **Network Watcher**:ネットワーク シナリオ レベルで Azure の状態を監視および診断できるリージョン サービス。 Network Watcher で NSG フロー ログを有効または無効にすることができます。 詳細については、「[Network Watcher](network-watcher-monitoring-overview.md)」をご覧ください。
+- **ネットワーク セキュリティ グループ (NSG) フロー ログ** :ネットワーク セキュリティ グループを使用して、イングレス/エグレス IP トラフィックの情報を確認できます。 NSG フロー ログは JSON 形式で記述され、規則ごとの送信フローと受信フロー、フローが適用される NIC、フローに関する 5 組の情報 (送信元/宛先 IP アドレス、送信元/宛先ポート、プロトコル)、トラフィックが許可されているか拒否されているかが示されます。 NSG フロー ログの詳細については、[NSG フロー ログ](network-watcher-nsg-flow-logging-overview.md)に関する記事をご覧ください。
+- **Log Analytics** :監視データを収集し、そのデータを中央リポジトリに格納する Azure サービス。 このデータには、Azure API によって提供されるイベント、パフォーマンス データ、またはカスタム データを含めることができます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。 Network Performance Monitor やトラフィック分析などの監視アプリケーションは、Azure Monitor ログを基盤として構築されています。 詳細については、[Azure Monitor ログ](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関するページを参照してください。
+- **Log Analytics ワークスペース** :Azure アカウントに関するデータが格納される、Azure Monitor ログのインスタンス。 Log Analytics ワークスペースの詳細については、[Log Analytics ワークスペースの作成](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関するページを参照してください。
+- **Network Watcher** :ネットワーク シナリオ レベルで Azure の状態を監視および診断できるリージョン サービス。 Network Watcher で NSG フロー ログを有効または無効にすることができます。 詳細については、「[Network Watcher](network-watcher-monitoring-overview.md)」をご覧ください。
 
 ## <a name="how-traffic-analytics-works"></a>トラフィック分析のしくみ
 
@@ -164,7 +164,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 
 ### <a name="user-access-requirements"></a>ユーザー アクセスの要件
 
-お使いのアカウントは、次のいずれかの Azure [組み込みロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)のメンバーである必要があります。
+お使いのアカウントは、次のいずれかの [Azure 組み込みロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)のメンバーである必要があります。
 
 |デプロイメント モデル   | Role                   |
 |---------          |---------               |

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 770ded494f050631cd1c373f4b3fa5846c65e01a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b877ff912470cc19082410fddab64c84824eb269
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275134"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519556"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>マネージド ID を使用して、Azure Storage アカウントへの接続を設定する
 
@@ -30,7 +30,7 @@ ms.locfileid: "91275134"
 
 ### <a name="1---turn-on-system-assigned-managed-identity"></a>1 - システム割り当てマネージド ID をオンにする
 
-システム割り当てマネージド ID が有効になると、Azure で検索サービスのための ID が作成されます。これは、同じテナントとサブスクリプション内の他の Azure サービスに対する認証に使用することができます。 その後、インデックス作成中にデータへのアクセスを許可する、ロールベースのアクセス制御 (RBAC) の割り当てで、この ID を使用することができます。
+システム割り当てマネージド ID が有効になると、Azure で検索サービスのための ID が作成されます。これは、同じテナントとサブスクリプション内の他の Azure サービスに対する認証に使用することができます。 この ID はその後、インデックス作成中にデータへのアクセスを許可する Azure ロールベースのアクセス制御 (Azure RBAC) の割り当てで、使用することができます。
 
 ![システム割り当てマネージド ID をオンにする](./media/search-managed-identities/turn-on-system-assigned-identity.png "システム割り当てマネージド ID をオンにする")
 
@@ -49,9 +49,9 @@ ms.locfileid: "91275134"
     ![ロールの割り当てを追加する](./media/search-managed-identities/add-role-assignment-storage.png "ロールの割り当ての追加")
 
 4. インデックスを作成するストレージ アカウントの種類に基づいて、適切なロールを選択します。
-    1. Azure BLOB ストレージでは、**ストレージ BLOB データ閲覧者**ロールに検索サービスを追加する必要があります。
-    1. Azure Data Lake Storage Gen2 では、**ストレージ BLOB データ閲覧者**ロールに検索サービスを追加する必要があります。
-    1. Azure テーブル ストレージでは、**閲覧者とデータ アクセス** ロールに検索サービスを追加する必要があります。
+    1. Azure BLOB ストレージでは、 **ストレージ BLOB データ閲覧者** ロールに検索サービスを追加する必要があります。
+    1. Azure Data Lake Storage Gen2 では、 **ストレージ BLOB データ閲覧者** ロールに検索サービスを追加する必要があります。
+    1. Azure テーブル ストレージでは、 **閲覧者とデータ アクセス** ロールに検索サービスを追加する必要があります。
 5.  **[アクセスの割り当て先]** は **[Azure AD のユーザー、グループ、サービス プリンシパル]** のままにしておきます
 6.  検索サービスを検索し、それを選んでから、 **[保存]** を選択します
 
@@ -73,11 +73,11 @@ ms.locfileid: "91275134"
 * **type**
     * Azure BLOB ストレージ: `azureblob`
     * Azure テーブル ストレージ: `azuretable`
-    * Azure Data Lake Storage Gen2: [こちらのフォーム](https://aka.ms/azure-cognitive-search/mi-preview-request)を使用してプレビューにサインアップすると、この**種類**が提供されます。
+    * Azure Data Lake Storage Gen2: [こちらのフォーム](https://aka.ms/azure-cognitive-search/mi-preview-request)を使用してプレビューにサインアップすると、この **種類** が提供されます。
 * **credentials**
-    * マネージド ID を使用して認証する場合、**credentials** 形式は、マネージド ID を使用しない場合とは異なります。 ここでは、アカウント キーまたはパスワードのない ResourceId を指定します。 ResourceId には、ストレージ アカウントのサブスクリプション ID、ストレージ アカウントのリソース グループ、およびストレージ アカウント名を含める必要があります。
+    * マネージド ID を使用して認証する場合、 **credentials** 形式は、マネージド ID を使用しない場合とは異なります。 ここでは、アカウント キーまたはパスワードのない ResourceId を指定します。 ResourceId には、ストレージ アカウントのサブスクリプション ID、ストレージ アカウントのリソース グループ、およびストレージ アカウント名を含める必要があります。
     * マネージド ID の形式: 
-        * *ResourceId=/subscriptions/**ご利用のサブスクリプション ID**/resourceGroups/**ご利用のリソース グループの名前**/providers/Microsoft.Storage/storageAccounts/**ご利用のストレージ アカウントの名前**/;*
+        * *ResourceId=/subscriptions/ **ご利用のサブスクリプション ID** /resourceGroups/ **ご利用のリソース グループの名前** /providers/Microsoft.Storage/storageAccounts/ **ご利用のストレージ アカウントの名前** /;*
 * **container** では、ストレージ アカウントにあるコンテナーまたはテーブルを指定します。 既定では、コンテナー内のすべての BLOB を取得できます。 特定の仮想ディレクトリにある BLOB についてのみインデックスを作成する場合は、オプションの **query** パラメーターを使用してそのディレクトリを指定できます。
 
 [REST API](/rest/api/searchservice/create-data-source) を使用して BLOB データ ソース オブジェクトを作成する方法の例:

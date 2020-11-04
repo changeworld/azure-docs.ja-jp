@@ -11,22 +11,22 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f46d41c8287d03cbe9582ed560244cbd85cdeeaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4979405c7675b5eff9f6940cd34e0c974ebad217
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81759599"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538274"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
-この記事では、**401003 IoTHubUnauthorized** エラーの原因と解決策について説明します。
+この記事では、 **401003 IoTHubUnauthorized** エラーの原因と解決策について説明します。
 
 ## <a name="symptoms"></a>現象
 
 ### <a name="symptom-1"></a>現象 1
 
-診断ログを見ると、**401003 IoTHubUnauthorized** で切断されたデバイスがあり、それに **404104 DeviceConnectionClosedRemotely** が続き、そのすぐ後に接続が成功するパターンがあります。
+ログを見ると、 **401003 IoTHubUnauthorized** で切断されたデバイスがあり、それに **404104 DeviceConnectionClosedRemotely** が続き、そのすぐ後に接続が成功するパターンがあります。
 
 ### <a name="symptom-2"></a>現象 2
 
@@ -45,7 +45,7 @@ IoT Hub への要求が、次のいずれかのエラー メッセージで失�
 MQTT の場合、一部の SDK では、SAS トークンが期限切れになったときに切断を発行するために IoT Hub を利用し、更新するタイミングを把握しています。 そのため、 
 
 1. SAS トークンが期限切れになります
-1. IoT Hub によって有効期限が通知され、**401003 IoTHubUnauthorized** でデバイスが切断されます
+1. IoT Hub によって有効期限が通知され、 **401003 IoTHubUnauthorized** でデバイスが切断されます
 1. デバイスでは **404104 DeviceConnectionClosedRemotely** で切断が完了します
 1. IoT SDK により、新しい SAS トークンが生成されます
 1. デバイスが IoT Hub に正常に再接続されます

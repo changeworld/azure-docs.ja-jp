@@ -7,20 +7,20 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: fda40e58231b849f1e63f53f7bb268375ffe7fec
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 2e4a09ba07a5fa5eb3a5af7aa88e092feb3e7efc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996447"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487978"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) での PostgreSQL 拡張機能
 
-PostgreSQL では拡張機能を使用してデータベースの機能を拡張することができます。 拡張機能により、関連する複数の SQL オブジェクトを 1 つのパッケージにまとめて、1 つのコマンドでデータベースに読み込んだり、データベースから削除したりできます。 データベースに読み込まれた後、拡張機能は組み込み機能と同じように機能します。 PostgreSQL 拡張機能の詳細については、 [拡張機能への関連オブジェクトのパッケージ化](https://www.postgresql.org/docs/current/static/extend-extensions.html)に関するページを参照してください。
+PostgreSQL では拡張機能を使用してデータベースの機能を拡張することができます。 拡張機能により、関連する複数の SQL オブジェクトを 1 つのパッケージにまとめて、1 つのコマンドでデータベースに読み込んだり、データベースから削除したりできます。 データベースに読み込まれた後、拡張機能は組み込み機能と同じように機能します。 PostgreSQL 拡張機能の詳細については、[拡張機能への関連オブジェクトのパッケージ化](https://www.postgresql.org/docs/current/static/extend-extensions.html)に関するページを参照してください。
 
 ## <a name="use-postgresql-extensions"></a>PostgreSQL 拡張機能を使用する
 
-PostgreSQL 拡張機能を使用するには、その拡張機能がデータベースにインストールされている必要があります。 特定の拡張機能をインストールするには、psql ツールから  [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html)  コマンドを実行して、パッケージ化されたオブジェクトをデータベースに読み込みます。
+PostgreSQL 拡張機能を使用するには、その拡張機能がデータベースにインストールされている必要があります。 特定の拡張機能をインストールするには、psql ツールから [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) コマンドを実行して、パッケージ化されたオブジェクトをデータベースに読み込みます。
 
 Azure Database for PostgreSQL - Hyperscale (Citus) で現在サポートされている主要な拡張機能のサブセットを以下に記載しています。 リストされているもの以外の拡張機能はサポートされていません。 Azure Database for PostgreSQL では、独自の拡張機能を作成することはできません。
 
@@ -140,7 +140,7 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 ## <a name="pg_stat_statements"></a>pg_stat_statements
 すべての Azure Database for PostgreSQL サーバーには、SQL ステートメントの実行の統計を追跡する手段として、[pg\_stat\_statements 拡張機能](https://www.postgresql.org/docs/current/pgstatstatements.html)がプリロードされています。
 
-この拡張機能によって追跡されるステートメントは、`pg_stat_statements.track` 設定で制御されます。 既定では `top` に設定され、クライアントによって直接発行されたすべてのステートメントが追跡の対象となります。 その他の 2 つの追跡レベルは`none`と`all`です。 この設定は、[Azure portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal)または[Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli)を通じてサーバーのパラメーターとして構成可能です。
+この拡張機能によって追跡されるステートメントは、`pg_stat_statements.track` 設定で制御されます。 既定では `top` に設定され、クライアントによって直接発行されたすべてのステートメントが追跡の対象となります。 その他の 2 つの追跡レベルは`none`と`all`です。 この設定は、[Azure portal](./howto-configure-server-parameters-using-portal.md)または[Azure CLI](./howto-configure-server-parameters-using-cli.md)を通じてサーバーのパラメーターとして構成可能です。
 
 pg_stat_statements から得られるクエリの実行情報と、各 SQL ステートメントがログに記録されることによるサーバーのパフォーマンスへの影響との間には、トレードオフがあります。 pg_stat_statements 拡張機能を使用していない場合は、`pg_stat_statements.track` を `none` に設定することをお勧めします。 一部のサード パーティ監視サービスがクエリ パフォーマンスの分析情報を生成するために pg_stat_statements に依存することがあるため、そのようなケースに該当するかどうかを確認してください。
 

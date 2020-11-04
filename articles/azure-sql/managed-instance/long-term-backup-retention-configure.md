@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 04/29/2020
-ms.openlocfilehash: 4249e7df61c7f1f090b6377114bcab6ce1d40b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b0d6665b440516d29cc9aeb0b6e50f509528574
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619085"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503438"
 ---
 # <a name="manage-azure-sql-managed-instance-long-term-backup-retention-powershell"></a>Azure SQL Managed Instance の長期的なバックアップ保有期間を管理する (PowerShell)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -48,7 +48,7 @@ Azure SQL Managed Instance では、[長期的なバックアップ保有期間]
 > [!NOTE]
 > マネージド インスタンス共同作成者ロールには、LTR バックアップを削除するアクセス許可がありません。
 
-RBAC のアクセス許可は、*サブスクリプション*または*リソース グループ*のいずれかのスコープで付与できます。 ただし、削除されたインスタンスに属する LTR バックアップにアクセスするには、そのインスタンスの "*サブスクリプション*" スコープにアクセス許可を付与する必要があります。
+RBAC のアクセス許可は、 *サブスクリプション* または *リソース グループ* のいずれかのスコープで付与できます。 ただし、削除されたインスタンスに属する LTR バックアップにアクセスするには、そのインスタンスの " *サブスクリプション* " スコープにアクセス許可を付与する必要があります。
 
 - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete`
 

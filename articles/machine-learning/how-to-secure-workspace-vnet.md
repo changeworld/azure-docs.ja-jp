@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 5d34fe403e0af4bc871ba176d0fa755650c26292
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1dc7c343087e4fc11aef20e95bc9cafea20a99b4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776046"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672854"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning ワークスペースをセキュリティで保護する
 
@@ -43,12 +43,12 @@ ms.locfileid: "91776046"
 
 + コンピューティング リソースで使用する既存の仮想ネットワークとサブネット。
 
-+ リソースを仮想ネットワークまたはサブネットにデプロイするには、ご利用のユーザー アカウントが、Azure のロールベースのアクセス制御 (RBAC) で次のアクションへのアクセス許可を持っている必要があります。
++ リソースを仮想ネットワークまたはサブネットにデプロイするには、ご利用のユーザー アカウントが、Azure ロールベースのアクセス制御 (Azure RBAC) で次のアクションへのアクセス許可を保持している必要があります。
 
     - 仮想ネットワーク リソース上の "Microsoft.Network/virtualNetworks/join/action"。
     - サブネット リソース上の "Microsoft.Network/virtualNetworks/subnet/join/action"。
 
-    ネットワークでの RBAC の詳細については、[ネットワークの組み込みロール](/azure/role-based-access-control/built-in-roles#networking)に関するページを参照してください
+    ネットワークでの Azure RBAC の詳細については、[ネットワークの組み込みロール](/azure/role-based-access-control/built-in-roles#networking)に関するページを参照してください
 
 
 ## <a name="secure-the-workspace-with-private-endpoint"></a>プライベート エンドポイントを使用してワークスペースをセキュリティで保護する
@@ -62,7 +62,7 @@ Azure Private Link では、プライベート エンドポイントを使用し
 Azure Machine Learning では、サービス エンドポイントまたはプライベート エンドポイントを使用するようにストレージ アカウントを構成できます。 このセクションでは、サービス エンドポイントを使用して Azure ストレージ アカウントをセキュリティで保護する方法について説明します。 プライベート エンドポイントについては、次のセクションを参照してください。
 
 > [!IMPORTANT]
-> Azure Machine Learning 用の "_既定のストレージ アカウント_" と、"_既定以外のストレージ アカウント_" は、どちらも仮想ネットワークに配置できます。
+> Azure Machine Learning 用の " _既定のストレージ アカウント_ " と、" _既定以外のストレージ アカウント_ " は、どちらも仮想ネットワークに配置できます。
 >
 > 既定のストレージ アカウントは、ワークスペースを作成するときに自動的にプロビジョニングされます。
 >
@@ -85,12 +85,17 @@ Azure Machine Learning では、サービス エンドポイントまたはプ�
         > [!IMPORTANT]
         > ストレージ アカウントは、トレーニングまたは推論に使用されるコンピューティング インスタンスまたはクラスターと同じ仮想ネットワークとサブネット内に存在する必要があります。
 
-    1. __[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]__ チェック ボックスをオンにします。
+    1. __[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]__ チェック ボックスをオンにします。 これは、すべての Azure サービスにユーザーのストレージ アカウントへのアクセス許可を与えるものではありません。
+    
+        * 一部のサービスのリソースは、 **ユーザーのサブスクリプションで登録されている場合に** 、特定の操作のために **同じサブスクリプション内の** ストレージ アカウントにアクセスできます。 たとえば、ログの書き込みやバックアップの作成などです。
+        * 一部のサービスのリソースでは、そのシステム割り当てマネージド ID に __Azure ロールを割り当てる__ ことで、ストレージ アカウントへのアクセスを明示的に許可できます。
+
+        詳細については、[Azure Storage ファイアウォールおよび仮想ネットワークの構成](../storage/common/storage-network-security.md#trusted-microsoft-services)に関する記事を参照してください。
 
     > [!IMPORTANT]
     > Azure Machine Learning SDK を使用する場合は、開発環境を Azure Storage アカウントに接続できる必要があります。 ストレージ アカウントが仮想ネットワーク内にある場合、ファイアウォールでは開発環境の IP アドレスからのアクセスを許可する必要があります。
     >
-    > ストレージ アカウントへのアクセスを有効にするには、*開発クライアントの Web ブラウザーから*ストレージ アカウントの __[ファイアウォールと仮想ネットワーク]__ にアクセスします。 次に、 __[クライアント IP アドレスを追加する]__ チェック ボックスを使用して、クライアントの IP アドレスを __[アドレス範囲]__ に追加します。 また、 __[アドレス範囲]__ フィールドを使用して、開発環境の IP アドレスを手動で入力することもできます。 クライアントの IP アドレスが追加されると、SDK を使用してストレージ アカウントにアクセスできるようになります。
+    > ストレージ アカウントへのアクセスを有効にするには、 *開発クライアントの Web ブラウザーから* ストレージ アカウントの __[ファイアウォールと仮想ネットワーク]__ にアクセスします。 次に、 __[クライアント IP アドレスを追加する]__ チェック ボックスを使用して、クライアントの IP アドレスを __[アドレス範囲]__ に追加します。 また、 __[アドレス範囲]__ フィールドを使用して、開発環境の IP アドレスを手動で入力することもできます。 クライアントの IP アドレスが追加されると、SDK を使用してストレージ アカウントにアクセスできるようになります。
 
    [![Azure portal 内の [ファイアウォールと仮想ネットワーク] ウィンドウ](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
 
@@ -102,7 +107,7 @@ Azure Machine Learning では、サービス エンドポイントまたはプ�
 
 ![プライベート エンドポイント構成ページのスクリーンショット。BLOB オプションとファイル オプションを確認できます。](./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png)
 
-既定のストレージでは**ない**ストレージ アカウントにプライベート エンドポイントを構成するには、追加するストレージ アカウントに相当する**ターゲット サブリソース** タイプを選択します。
+既定のストレージでは **ない** ストレージ アカウントにプライベート エンドポイントを構成するには、追加するストレージ アカウントに相当する **ターゲット サブリソース** タイプを選択します。
 
 詳細については、「[Azure Storage のプライベート エンドポイントを使用する](../storage/common/storage-private-endpoints.md)」を参照してください。
 
@@ -281,6 +286,13 @@ Azure Machine Learning では、関連付けられた Key Vault インスタン�
     ]
     }
     ```
+
+    このテンプレートによって、ワークスペースから ACR にネットワーク アクセスするための _プライベート エンドポイント_ が作成されます。 次のスクリーンショットは、このプライベート エンドポイントの例を示しています。
+
+    :::image type="content" source="media/how-to-secure-workspace-vnet/acr-private-endpoint.png" alt-text="ACR プライベート エンドポイントの設定":::
+
+    > [!IMPORTANT]
+    > このエンドポイントを削除しないでください。 誤って削除した場合は、この手順でテンプレートを再適用して新しいテンプレートを作成できます。
 
 ## <a name="next-steps"></a>次のステップ
 

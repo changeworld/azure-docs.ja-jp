@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: caaf8e25cdf43602fda8fc72caf7d16b7b56c06a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc9da659e7e55e8b15071f957d6a51e3b4673244
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361893"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427559"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Azure Machine Learning Studio (クラシック) Web サービス ポータルを使用して Web サービスを管理する
 
@@ -32,7 +32,7 @@ Machine Learning Web サービス ポータルでは、次のことができま�
 * エンドポイントを追加、削除する (クラシック Web サービスのみ)。
 
 >[!NOTE]
->クラシック Web サービスは、[Machine Learning Studio (クラシック)](https://studio.azureml.net) の **[Web サービス]** タブでも管理できます。
+>クラシック Web サービスは、 [Machine Learning Studio (クラシック)](https://studio.azureml.net) の **[Web サービス]** タブでも管理できます。
 
 ## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>新しいリソース マネージャー ベースの Web サービスを管理するためのアクセス許可
 
@@ -44,7 +44,7 @@ Machine Learning Web サービス ポータルでは、次のことができま�
 
 ワークスペースを作成する方法の詳細については、「[Azure Machine Learning Studio (クラシック) ワークスペースの作成と共有](create-workspace.md)」を参照してください。
 
-アクセス許可の設定の詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+アクセス許可の設定の詳細については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 
 ## <a name="manage-new-web-services"></a>新しい Web サービスを管理する

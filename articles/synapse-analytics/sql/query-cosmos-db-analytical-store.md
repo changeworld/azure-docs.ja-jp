@@ -9,20 +9,23 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3367a20ca5e2dc59880ed66939413606ff83963b
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 2b1af6fa5b0ccb95476c4ae169481e4aaa15f4f9
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122723"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737834"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Azure Synapse Link (プレビュー) でサーバーレス SQL プールを使用して Azure Cosmos DB データのクエリを実行する
 
-Synapse サーバーレス SQL プール (以前の SQL オンデマンド) を使用すると、トランザクション ワークロードのパフォーマンスに影響を与えることなく、[Azure Synapse Link](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) で有効になっている Azure Cosmos DB コンテナー内のデータを、ほぼリアルタイムに分析できます。 T-SQL インターフェイスを使用して[分析ストア](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)および統合された接続からさまざまな BI やアドホック クエリ ツールへのデータのクエリを実行するために、使い慣れた T-SQL 構文が用意されています。
+Synapse サーバーレス SQL プールを使用すると、トランザクション ワークロードのパフォーマンスに影響を与えることなく、[Azure Synapse Link](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) で有効になっている Azure Cosmos DB コンテナー内のデータをほぼリアルタイムで分析できます。 T-SQL インターフェイスを使用して[分析ストア](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)および統合された接続からさまざまな BI やアドホック クエリ ツールへのデータのクエリを実行するために、使い慣れた T-SQL 構文が用意されています。
 
 Azure Cosmos DB のクエリを実行する場合、[SQL の関数や演算子](overview-features.md)の大部分を含め、完全な [SELECT](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) のセキュリティが、[OPENROWSET](develop-openrowset.md) 関数によってサポートされます。 また、Azure Blob Storage または Azure Data Lake Storage のデータと共に Azure Cosmos DB からデータを読み取るクエリの結果を、[create external table as select](develop-tables-cetas.md#cetas-in-sql-on-demand) を使用して格納することもできます。 現在は、[CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand) を使用して、サーバーレス SQL プールのクエリの結果を Azure Cosmos DB に格納することはできません。
 
 この記事では、Synapse Link が有効になっている Azure Cosmos DB コンテナーのデータのクエリを実行する、サーバーレス SQL プールを使用するクエリの作成方法について説明します。 その後は、[この](./tutorial-data-analyst.md)チュートリアルで、Azure Cosmos DB コンテナーに対するサーバーレス SQL プールのビューを構築し、それらを Power BI モデルに接続することの詳細を学習できます。 
+
+> [!IMPORTANT]
+> このチュートリアルでは、[Azure Cosmos DB の適切に定義されたスキーマ](../../cosmos-db/analytical-store-introduction.md#schema-representation)を持つコンテナーを使用します。 [Azure Cosmos DB の完全な忠実性スキーマ](#full-fidelity-schema)で利用できるサーバーレス SQL プールがもたらすクエリ エクスペリエンスは、プレビューのフィードバックに基づいて変更される一時的な動作です。 クエリ エクスペリエンスは変更され適切に定義されたスキーマに合わせて調整されている可能性があるため、完全に忠実なスキーマを持つコンテナーからデータを読み取る `WITH` 句のない `OPENROWSET` 関数の結果セット スキーマに依存しないでください。 [Azure Synapse Analytics のフィードバック フォーラム](https://feedback.azure.com/forums/307516-azure-synapse-analytics)にフィードバックを投稿いただくか、[Synapse Link の製品チーム](mailto:cosmosdbsynapselink@microsoft.com)宛にフィードバックをお寄せください。
 
 ## <a name="overview"></a>概要
 
@@ -73,7 +76,15 @@ FROM OPENROWSET(
        'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
        EcdcCases) as documents
 ```
-上の例では、Azure Cosmos DB キー (上記の例ではダミー) を使用して認証された Azure Cosmos DB アカウント `MyCosmosDbAccount` の `covid` データベースに接続するように、サーバーレス SQL プールに指示しています。 その後、`West US 2` リージョンのコンテナー `EcdcCases` の分析ストアにアクセスします。 特定のプロパティのプロジェクションはないため、`OPENROWSET` 関数からは、Azure Cosmos DB の項目のすべてのプロパティが返されます。
+上の例では、Azure Cosmos DB キー (上記の例ではダミー) を使用して認証された Azure Cosmos DB アカウント `MyCosmosDbAccount` の `covid` データベースに接続するように、サーバーレス SQL プールに指示しています。 その後、`West US 2` リージョンのコンテナー `EcdcCases` の分析ストアにアクセスします。 特定のプロパティのプロジェクションはないため、`OPENROWSET` 関数からは、Azure Cosmos DB の項目のすべてのプロパティが返されます。 
+
+Cosmos DB コンテナー内の項目に `date_rep`、`cases`、および `geo_id` プロパティがあるという前提の下、このクエリの結果を次の表に示します。
+
+| date_rep | cases | geo_id |
+| --- | --- | --- |
+| 2020-08-13 | 254 | RS |
+| 2020-08-12 | 235 | RS |
+| 2020-08-11 | 163 | RS |
 
 同じ Azure Cosmos DB データベース内の他のコンテナーのデータを探索する必要がある場合は、同じ接続文字列を使用し、3 番目のパラメーターとして必要なコンテナーを参照することができます。
 
@@ -178,7 +189,6 @@ FROM
 > `Mélade` ではなく `MÃƒÂ©lade` のような予期しない文字がテキストで表示される場合は、データベースの照合順序が [UTF8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) の照合順序に設定されていません。 
 > `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` のような SQL ステートメントを使用して、いずれかの UTF8 照合順序に[データベースの照合順序を変更します](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation)。
 
-
 ## <a name="flattening-nested-arrays"></a>入れ子になった配列のフラット化
 
 Azure Cosmos DB のデータには、[Cord19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) データ セットの authors 配列のように、入れ子になったサブ配列が存在する場合があります。
@@ -253,12 +263,83 @@ SQL (Core) API の Azure Cosmos DB アカウントでは、数値、文字列、
 | [Null] | `any SQL type` 
 | 入れ子になったオブジェクトまたは配列 | varchar(max) (UTF8 データベース照合順序)、JSON テキストとしてシリアル化 |
 
+## <a name="full-fidelity-schema"></a>完全に忠実なスキーマ
+
+Azure Cosmos DB の完全に忠実なスキーマを使用すると、コンテナー内のすべてのプロパティについて、値と最も一致する型の両方を記録できます。
+完全に忠実なスキーマを持つコンテナーで `OPENROWSET` 関数を使用すると、各セルに型と実際の値の両方が提供されます。 次のクエリでは、完全に忠実なスキーマでコンテナーから項目を読み取ると仮定します。
+
+```sql
+SELECT *
+FROM OPENROWSET(
+      'CosmosDB',
+      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+       EcdcCases
+    ) as rows
+```
+
+このクエリの結果は、JSON テキストとしてフォーマットされた型と値を返します。 
+
+| date_rep | cases | geo_id |
+| --- | --- | --- |
+| {"date":"2020-08-13"} | {"int32":"254"} | {"string":"RS"} |
+| {"date":"2020-08-12"} | {"int32":"235"}| {"string":"RS"} |
+| {"date":"2020-08-11"} | {"int32":"316"} | {"string":"RS"} |
+| {"date":"2020-08-10"} | {"int32":"281"} | {"string":"RS"} |
+| {"date":"2020-08-09"} | {"int32":"295"} | {"string":"RS"} |
+| {"string":"2020/08/08"} | {"int32":"312"} | {"string":"RS"} |
+| {"date":"2020-08-07"} | {"float64":"339.0"} | {"string":"RS"} |
+
+すべての値について、Cosmos DB コンテナー項目で識別された型を確認できます。 `date_rep` プロパティの値のほとんどに `date` 値が含まれていますが、一部の値が Cosmos DB に誤って文字列として格納されています。 完全に忠実なスキーマによって、正しく型指定された `date` 値と正しくフォーマットされていない `string` 値の両方が返されます。
+ケースの数は `int32` 値として格納される情報ですが、10 進数として入力される値が 1 つあります。 この値の型は `float64` です。 `int32` の最大値を超える値がある場合は `int64` 型として格納されます。 この例のすべての `geo_id` 値は `string` 型として格納されます。
+
+> [!IMPORTANT]
+> `WITH` 句が指定されていない `OPENROWSET` 関数によって、予期される型を持つ値と、入力された型が正しくない値の両方が公開されます。 この関数は、レポート用ではなく、データの探索用に設計されています。 明示的な [WITH 句](#querying-items-with-full-fidelity-schema)を使用してレポートを作成し、この関数から返された JSON 値を解析してレポートを作成することは避けてください。
+> 完全に忠実な分析ストアで補正を適用するためには、Azure Cosmos DB コンテナー内の型が正しくない値をクリーンアップする必要があります。 
+
 Mongo DB API の種類の Azure Cosmos DB アカウントに対してクエリを実行する場合は、分析ストア内の完全に忠実なスキーマ表現と、使用される拡張プロパティ名の詳細を、[こちら](../../cosmos-db/analytical-store-introduction.md#analytical-schema)で確認してください。
+
+### <a name="querying-items-with-full-fidelity-schema"></a>完全に忠実なスキーマを使用して項目に対してクエリを実行する
+
+完全に忠実なスキーマにクエリを実行する際は、`WITH` 句で SQL 型と、想定される Cosmos DB プロパティ型を明示的に指定する必要があります。 結果セットの形式がフィードバックに基づいてプレビューで変更されている可能性があるため、レポートに `WITH` 句を指定せずに `OPENROWSET` を使用しないでください。
+
+次の例では、`string` が `geo_id` プロパティの正しい型であり、`int32` が `cases` プロパティの正しい型であると仮定します。
+
+```sql
+SELECT geo_id, cases = SUM(cases)
+FROM OPENROWSET(
+      'CosmosDB'
+      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+       EcdcCases
+    ) WITH ( geo_id VARCHAR(50) '$.geo_id.string',
+             cases INT '$.cases.int32'
+    ) as rows
+GROUP BY geo_id
+```
+
+他の型を持つ `geo_id` および `cases` の値は `NULL` 値として返されます。 このクエリは、式 (`cases.int32`) で指定された型の `cases` のみを参照します。
+
+Cosmos DB コンテナーでクリーンアップできない他の型 (`cases.int64`、`cases.float64`) を持つ値がある場合は、`WITH` 句で明示的に参照し、その結果を結合する必要があります。 次のクエリでは、`cases` 列に格納されている `int32`、`int64`、および `float64` の両方を集約します。
+
+```sql
+SELECT geo_id, cases = SUM(cases_int) + SUM(cases_bigint) + SUM(cases_float)
+FROM OPENROWSET(
+      'CosmosDB',
+      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+       EcdcCases
+    ) WITH ( geo_id VARCHAR(50) '$.geo_id.string', 
+             cases_int INT '$.cases.int32',
+             cases_bigint BIGINT '$.cases.int64',
+             cases_float FLOAT '$.cases.float64'
+    ) as rows
+GROUP BY geo_id
+```
+
+この例では、ケースの数は `int32`、`int64`、または `float64` 値として格納され、国あたりのケース数を計算するためにすべての値を抽出する必要があります。 
 
 ## <a name="known-issues"></a>既知の問題
 
 - 別名を `OPENROWSET` 関数 (`OPENROWSET (...) AS function_alias` など) の後に指定する **必要があります** 。 別名を省略すると、接続の問題が発生して、Synapse サーバーレスの SQL エンドポイントが一時的に使用できなくなる可能性があります。 この問題は、2020 年 11 月に解決される予定です。
-- サーバーレス SQL プールでは、現在、[Azure Cosmos DB の完全に忠実なスキーマ](../../cosmos-db/analytical-store-introduction.md#schema-representation)がサポートされていません。 サーバーレス SQL プールのみを使用して、Cosmos DB の適切に定義されたスキーマにアクセスします。
+- [Azure Cosmos DB の完全な忠実性スキーマ](#full-fidelity-schema)で利用できるサーバーレス SQL プールがもたらすクエリ エクスペリエンスは、プレビューのフィードバックに基づいて変更される一時的な動作です。 クエリ エクスペリエンスは顧客フィードバックに基づいて適切に定義されたスキーマに合わせて調整されている可能性があるため、パブリック プレビュー期間中は、`WITH` 句のない `OPENROWSET` 関数のスキーマには依存しないでください。 フィードバックを提供するには、[Synapse Link の製品チーム](mailto:cosmosdbsynapselink@microsoft.com)宛にご連絡ください。
 
 次の表に、考えられるエラーとトラブルシューティングの操作を示します。
 
@@ -273,9 +354,10 @@ Mongo DB API の種類の Azure Cosmos DB アカウントに対してクエリ�
 
 [Azure Synapse のフィードバック ページ](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862)で、提案や問題を知らせることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次の記事を参照してください。
 
+- [Azure Synapse Link で Power BI とサーバーレス Synapse SQL プールを使用する](../../cosmos-db/synapse-link-power-bi.md)
 - [SQL オンデマンドでビューを作成および使用する方法](create-use-views.md) 
 - [Azure Cosmos DB に対する SQL オンデマンド ビューの作成と、DirectQuery による Power BI モデルへのそれらの接続に関するチュートリアル](./tutorial-data-analyst.md)

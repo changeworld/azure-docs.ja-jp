@@ -8,26 +8,26 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c31ebfedeee0fe208f68c190402796b98c73ea1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 000e43a7861bd155ebbd7175db96dd323731464b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85829875"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518213"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>プライベート クラウド環境をセキュリティで保護する方法
 
 Azure のプライベート クラウド、CloudSimple サービス、CloudSimple ポータルに対してロールベースのアクセス制御 (RBAC) を定義します。  プライベート クラウドの vCenter にアクセスするためのユーザー、グループ、ロールは、VMware SSO を使用して指定します。  
 
-## <a name="rbac-for-cloudsimple-service"></a>CloudSimple サービスの RBAC
+## <a name="azure-rbac-for-cloudsimple-service"></a>CloudSimple サービスの Azure RBAC
 
-CloudSimple サービスの作成には、Azure サブスクリプションの**所有者**ロールまたは**共同作成者**ロールが必要です。  既定では、すべての所有者および共同作成者が CloudSimple サービスを作成し、CloudSimple ポータルにアクセスして、プライベート クラウドを作成したり管理したりすることができます。  作成できる CloudSimple サービスは、各リージョンにつき 1 つだけです。  特定の管理者にアクセスを限定するには、次の手順に従ってください。
+CloudSimple サービスの作成には、Azure サブスクリプションの **所有者** ロールまたは **共同作成者** ロールが必要です。  既定では、すべての所有者および共同作成者が CloudSimple サービスを作成し、CloudSimple ポータルにアクセスして、プライベート クラウドを作成したり管理したりすることができます。  作成できる CloudSimple サービスは、各リージョンにつき 1 つだけです。  特定の管理者にアクセスを限定するには、次の手順に従ってください。
 
-1. Azure portal で新しい**リソース グループ**に CloudSimple サービスを作成します。
-2. リソース グループの RBAC を指定します。
+1. Azure portal で新しい **リソース グループ** に CloudSimple サービスを作成します。
+2. リソース グループの Azure RBAC を指定します。
 3. ノードを購入し、CloudSimple サービスと同じリソース グループを使用します。
 
-以後、CloudSimple サービスの表示と CloudSimple ポータルの起動は、このリソース グループの**所有者**と**共同作成者**の特権を持つユーザーに限定されます。
+以後、CloudSimple サービスの表示と CloudSimple ポータルの起動は、このリソース グループの **所有者** と **共同作成者** の特権を持つユーザーに限定されます。
 
 詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../role-based-access-control/overview.md)」を参照してください。
 
@@ -37,7 +37,7 @@ CloudSimple サービスの作成には、Azure サブスクリプションの**
 
 ### <a name="add-new-users-to-vcenter"></a>vCenter に新しいユーザーを追加する
 
-1. プライベート クラウドの **CloudOwner\@cloudsimple.local** ユーザーの[権限をエスカレート](escalate-private-cloud-privileges.md)します。
+1. プライベート クラウドの **CloudOwner\@cloudsimple.local** ユーザーの [権限をエスカレート](escalate-private-cloud-privileges.md)します。
 2. **CloudOwner\@cloudsimple.local** を使用して vCenter にサインインします
 3. [vCenter シングル サインオン ユーザーを追加](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html)します。
 4. [vCenter シングル サインオン グループ](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)にユーザーを追加します。
@@ -51,7 +51,7 @@ CloudSimple サービスの作成には、Azure サブスクリプションの**
 * プライベート クラウドの vCenter の [ID プロバイダーとして Active Directory を使用](set-vcenter-identity.md)する。
 * プライベート クラウドの vCenter の [ID プロバイダーとして Azure AD を使用](azure-ad.md)する。
 
-1. プライベート クラウドの **CloudOwner\@cloudsimple.local** ユーザーの[権限をエスカレート](escalate-private-cloud-privileges.md)します。
+1. プライベート クラウドの **CloudOwner\@cloudsimple.local** ユーザーの [権限をエスカレート](escalate-private-cloud-privileges.md)します。
 2. **CloudOwner\@cloudsimple.local** を使用して vCenter にサインインします
 3. ID プロバイダーから [vCenter シングル サインオン グループ](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)にユーザーを追加します。
 

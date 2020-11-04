@@ -5,20 +5,22 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: 41dc4e97e847e9e7d9863631cdb20b72d3f35d9b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/25/2020
+ms.openlocfilehash: 4df9543e5e747de640562b7e5be224e257e0cfd1
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91269371"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676107"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps で統合サービス環境 (ISE) を管理する
 
 この記事では、[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) について次のような管理タスクを実行する方法について説明します。
 
 * ISE 内のロジック アプリ、接続、統合アカウント、コネクタなどのリソースの管理。
+
 * ISE のネットワークの正常性の確認。
+
 * 容量の追加、ISE の再起動、または ISE の削除。このトピックの手順に従ってください。 これらの成果物を ISE に追加するには、[成果物の統合サービス環境への追加](../logic-apps/add-artifacts-integration-service-environment-ise.md)に関する記事を参照してください。
 
 ## <a name="view-your-ise"></a>ISE を表示する
@@ -42,6 +44,14 @@ ms.locfileid: "91269371"
 ISE メニューの **[設定]** で、 **[ネットワーク正常性]** を選択します。 このウィンドウには、サブネットの正常性状態と、他のサービスに対する送信依存関係が表示されます。
 
 ![ネットワーク正常性を確認する](./media/ise-manage-integration-service-environment/ise-check-network-health.png)
+
+> [!CAUTION]
+> ISE のネットワークが異常になった場合、ISE によって使用されている内部 App Service Environment (ASE) も異常になることがあります。 ASE が異常な状態になったまま 7 日が過ぎると、ASE は停止されます。 この状態を解決するには、仮想ネットワークのセットアップを確認します。 見つかった問題を解決してから、ISE を再起動します。 そうしないと、90 日後に、停止されている ASE が削除され、ISE を使用できなくなります。 そのため、必要なトラフィックが許可されるよう ISE を正常な状態に保ってください。
+> 
+> 詳細については、以下のトピックを参照してください。
+>
+> * [Azure App Service の診断の概要](../app-service/overview-diagnostics.md)
+> * [Azure App Service Environment のメッセージ ログ](../app-service/environment/using-an-ase.md#logging)
 
 <a name="find-logic-apps"></a>
 
@@ -119,8 +129,8 @@ Premium ISE ベース ユニットの容量は固定されているため、さ�
 
 1. **[設定]** で、 **[スケールアウト]** を選択します。 **[構成]** ペインで、次のオプションを選択します。
 
-   * [ **[Manual scale]\(手動スケーリング\)** ](#manual-scale):使用する処理ユニット数に基づいてスケーリングします。
-   * [ **[カスタム自動スケーリング]** ](#custom-autoscale):さまざまな条件から選択し、その条件を満たすしきい値条件を指定して、パフォーマンス メトリックに基づいてスケーリングします。
+   * [ **[Manual scale]\(手動スケーリング\)**](#manual-scale):使用する処理ユニット数に基づいてスケーリングします。
+   * [ **[カスタム自動スケーリング]**](#custom-autoscale):さまざまな条件から選択し、その条件を満たすしきい値条件を指定して、パフォーマンス メトリックに基づいてスケーリングします。
 
    ![[Manual scale]\(手動スケーリング\) が選択されている [スケールアウト] ページを示すスクリーンショット。](./media/ise-manage-integration-service-environment/select-scale-out-options.png)
 
@@ -128,7 +138,7 @@ Premium ISE ベース ユニットの容量は固定されているため、さ�
 
 ### <a name="manual-scale"></a>手動でのスケーリング
 
-1. **[Manual scale]\(手動スケーリング\)** を選択したら、**追加容量**について、使用するスケーリング ユニット数を選択します。
+1. **[Manual scale]\(手動スケーリング\)** を選択したら、 **追加容量** について、使用するスケーリング ユニット数を選択します。
 
    ![目的のスケーリングの種類を選択](./media/ise-manage-integration-service-environment/select-manual-scale-out-units.png)
 
@@ -138,7 +148,7 @@ Premium ISE ベース ユニットの容量は固定されているため、さ�
 
 ### <a name="custom-autoscale"></a>カスタム自動スケーリング
 
-1. **[カスタム自動スケーリング]** を選択したら、**自動スケーリング設定の名前**について、設定の名前を指定し、必要に応じて、設定が属す Azure リソース グループを選択します。
+1. **[カスタム自動スケーリング]** を選択したら、 **自動スケーリング設定の名前** について、設定の名前を指定し、必要に応じて、設定が属す Azure リソース グループを選択します。
 
    ![自動スケーリング設定の名前を指定し、リソース グループを選択](./media/ise-manage-integration-service-environment/select-custom-autoscale.png)
 
@@ -154,9 +164,9 @@ Premium ISE ベース ユニットの容量は固定されているため、さ�
 
      1. **[インスタンスの制限]** で、次の値を指定します。
 
-        * **最小**:使用する処理ユニットの最小数
-        * **Maximum**: 使用する処理ユニットの最大数
-        * **既定**:リソース メトリックの読み取り中に問題が発生した場合は、現在の容量が既定の容量を下回り、自動スケーリングが処理ユニットの既定数に対してスケールアウトされます。 ただし、現在の容量が既定の容量を超えた場合、自動スケーリングはスケールインしません。
+        * **最小** :使用する処理ユニットの最小数
+        * **Maximum** : 使用する処理ユニットの最大数
+        * **既定** :リソース メトリックの読み取り中に問題が発生した場合は、現在の容量が既定の容量を下回り、自動スケーリングが処理ユニットの既定数に対してスケールアウトされます。 ただし、現在の容量が既定の容量を超えた場合、自動スケーリングはスケールインしません。
 
 1. 他の条件を追加するには、 **[スケーリング条件を追加する]** を選択します。
 

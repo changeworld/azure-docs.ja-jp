@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 82b0b53b1933a7ca08163a12b2b7649b7b9538f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c112896e78c07fafa2d714b0533db1f58dd57ffd
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361638"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535605"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Azure インフラストラクチャの VM 再起動を利用して SAP システムの "高可用性" を実現する
 
@@ -216,7 +216,7 @@ ms.locfileid: "91361638"
 Windows Server フェールオーバー クラスタリング (WSFC) や Linux の Pacemaker などの機能 (現在 SUSE Linux Enterprise Server [SLES] 12 以降でのみサポート) を使用しない場合は、Azure の VM 再起動を利用します。 これにより、Azure 物理サーバー インフラストラクチャと基になる Azure プラットフォーム全体の計画済みおよび計画外のダウンタイムに対して SAP システムを保護します。
 
 > [!NOTE]
-> Azure の VM 再起動は、主に VM を保護するものであり、アプリケーションを保護するものでは "*ありません*"。 VM 再起動は、SAP アプリケーションの高可用性を提供するものではなく、一定レベルのインフラストラクチャの可用性を提供します。 それは、間接的に SAP システムの "高可用性" も提供します。 計画されたまたは計画外のホスト停止後に VM を再起動するためにかかる時間に対する SLA はないため、この方法による高可用性の実現は、SAP システムの重要なコンポーネントには適していません。 重要なコンポーネントの例として、ASCS/SCS インスタンスやデータベース管理システム (DBMS) があります。
+> Azure の VM 再起動は、主に VM を保護するものであり、アプリケーションを保護するものでは " *ありません* "。 VM 再起動は、SAP アプリケーションの高可用性を提供するものではなく、一定レベルのインフラストラクチャの可用性を提供します。 それは、間接的に SAP システムの "高可用性" も提供します。 計画されたまたは計画外のホスト停止後に VM を再起動するためにかかる時間に対する SLA はないため、この方法による高可用性の実現は、SAP システムの重要なコンポーネントには適していません。 重要なコンポーネントの例として、ASCS/SCS インスタンスやデータベース管理システム (DBMS) があります。
 >
 >
 
@@ -228,7 +228,7 @@ Azure マネージド ディスクは、それらが接続されている仮想�
 
 Azure インフラストラクチャの高可用性とストレージ アカウントを使用する SAP NetWeaver システムのアーキテクチャの例を次に示します。
 
-![Azure インフラストラクチャの高可用性を利用して SAP アプリケーションの "高可用性" を実現する][planning-guide-figure-2900]
+![Azure インフラストラクチャの高可用性とストレージ アカウントを使用する SAP NetWeaver システムのアーキテクチャを示す図。][planning-guide-figure-2900]
 
 Azure インフラストラクチャの高可用性とマネージド ディスクを使用する SAP NetWeaver システムのアーキテクチャの例を次に示します。
 
@@ -250,13 +250,13 @@ Azure インフラストラクチャの高可用性とマネージド ディス�
 
     マネージド ディスクを使用している場合でも、ディスクは Azure Storage アカウントに格納されるため、Storage の停止が発生した場合は使用不可になる可能性があります。
 
-* SAP ASCS/SCS インスタンスの*可用性の向上*
+* SAP ASCS/SCS インスタンスの *可用性の向上*
 
-    このシナリオでは、Azure の VM 再起動を利用して、VM と インストール済みの SAP ASCS/SCS インスタンスを保護します。 Azure サーバーの計画されたまたは計画外のダウンタイムが発生した場合、VM は使用可能な別のサーバー上で起動されます。 前述したように、Azure の VM 再起動は、主に VM を保護するものであり、アプリケーション (ここでは ASCS/SCS インスタンス) を保護するものでは "*ありません*"。 VM 再起動を通して、SAP ASCS/SCS インスタンスの “可用性の向上” を間接的に実現できます。 
+    このシナリオでは、Azure の VM 再起動を利用して、VM と インストール済みの SAP ASCS/SCS インスタンスを保護します。 Azure サーバーの計画されたまたは計画外のダウンタイムが発生した場合、VM は使用可能な別のサーバー上で起動されます。 前述したように、Azure の VM 再起動は、主に VM を保護するものであり、アプリケーション (ここでは ASCS/SCS インスタンス) を保護するものでは " *ありません* "。 VM 再起動を通して、SAP ASCS/SCS インスタンスの “可用性の向上” を間接的に実現できます。 
 
     VM 再起動の後に ASCS/SCS インスタンスを確実に自動開始するには、「[SAP インスタンスでの Autostart の使用][planning-guide-11.5]」セクションの説明に従って、ASCS/SCS インスタンスの開始プロファイルに Autostart パラメーターを設定します。 この設定は、単一の VM で実行される単一障害点 (SPOF) としての ASCS/SCS インスタンスが SAP ランドスケープ全体の可用性を決定することを意味します。
 
-* DBMS サーバーの*可用性の向上*
+* DBMS サーバーの *可用性の向上*
 
     上記の SAP ASCS/SCS インスタンスのユース ケースと同様に、Azure の VM 再起動を利用して VM とインストール済みの DBMS ソフトウェアを保護することで、VM 再起動による DBMS ソフトウェアの "可用性の向上" を実現できます。
   

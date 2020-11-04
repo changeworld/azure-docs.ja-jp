@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0991992a6138d263dfb4d200c9555a8d53366d70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 219fe82f16dd9bbc887c9b17b067c706230c63dd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993056"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782384"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>Azure Key Vault に格納されているカスタマー マネージド キーによる暗号化を構成する
 
@@ -58,7 +58,7 @@ $keyVault = New-AzKeyVault -Name <key-vault> `
     -EnablePurgeProtection
 ```
 
-PowerShell を使用して既存のキー コンテナーに対する消去保護を有効にする方法については、「[PowerShell で論理的な削除を使用する方法](../../key-vault/general/soft-delete-powershell.md)」を参照してください。
+PowerShell を使用して既存のキー コンテナーに対する消去保護を有効にする方法については、「[PowerShell で論理的な削除を使用する方法](../../key-vault/general/key-vault-recovery.md)」を参照してください。
 
 次に、ストレージ アカウントにシステム割り当てマネージド ID を割り当てます。 このマネージド ID を使って、キー コンテナーへのアクセス許可をストレージ アカウントに付与します。 システム割り当てマネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
 
@@ -93,7 +93,7 @@ az keyvault create \
     --enable-purge-protection
 ```
 
-Azure CLI を使用して既存のキー コンテナーに対する消去保護を有効にする方法については、「[CLI で論理的な削除を使用する方法](../../key-vault/general/soft-delete-cli.md)」を参照してください。
+Azure CLI を使用して既存のキー コンテナーに対する消去保護を有効にする方法については、「[CLI で論理的な削除を使用する方法](../../key-vault/general/key-vault-recovery.md)」を参照してください。
 
 次に、ストレージ アカウントにシステム割り当てマネージド ID を割り当てます。 このマネージド ID を使って、キー コンテナーへのアクセス許可をストレージ アカウントに付与します。 システム割り当てマネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
 
@@ -129,7 +129,7 @@ az keyvault set-policy \
 
 次に、キー コンテナーにキーを追加します。
 
-Azure Storage の暗号化では、2,048、3,072、および 4,096 のサイズの RSA キーと RSA-HSM キーがサポートされています。 キーの詳細については、「[Azure Key Vault のキー、シークレット、証明書について](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)」の「**Key Vault のキー**」を参照してください。
+Azure Storage の暗号化では、2,048、3,072、および 4,096 のサイズの RSA キーと RSA-HSM キーがサポートされています。 キーの詳細については、「[キーについて](../../key-vault/keys/about-keys.md)」を参照してください。
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -190,13 +190,13 @@ Azure portal でキーのバージョンを自動更新するようにカスタ�
 
 キーを指定した後は、Azure portal に、キーのバージョンの自動更新が有効になっていることが示されて、現在暗号化に使用されているキーのバージョンが表示されます。
 
-:::image type="content" source="media/customer-managed-keys-configure-key-vault/portal-auto-rotation-enabled.png" alt-text="キー コンテナーを作成するときに消去保護を有効にする方法を示すスクリーンショット":::
+:::image type="content" source="media/customer-managed-keys-configure-key-vault/portal-auto-rotation-enabled.png" alt-text="キーのバージョンの自動更新が有効になっていることを示すスクリーンショット":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 PowerShell を使用してキーのバージョンを自動的に更新するようにカスタマー マネージド キーを構成するには、[Az.Storage](https://www.powershellgallery.com/packages/Az.Storage) モジュールのバージョン 2.0.0 以降をインストールします。
 
-カスタマー マネージド キーのキー バージョンを自動的に更新するには、ストレージ アカウントでカスタマー マネージド キーを使用した暗号化を構成するときに、キーのバージョンを省略します。 次の例に示すように、[Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) を呼び出してストレージ アカウントの暗号化設定を更新し、 **-KeyvaultEncryption** オプションを含めてストレージ アカウントでカスタマー マネージド キーを有効にします。
+カスタマー マネージド キーのキー バージョンを自動的に更新するには、ストレージ アカウントでカスタマー マネージド キーを使用した暗号化を構成するときに、キーのバージョンを省略します。 次の例に示すように、 [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) を呼び出してストレージ アカウントの暗号化設定を更新し、 **-KeyvaultEncryption** オプションを含めてストレージ アカウントでカスタマー マネージド キーを有効にします。
 
 角かっこ内のプレースホルダー値を独自の値に置き換え、前の例で定義した変数を使用してください。
 
@@ -255,7 +255,7 @@ Azure portal でキーのバージョンを手動更新するようにカスタ�
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-キーのバージョンを手動更新するようにカスタマー マネージド キーを構成するには、ストレージ アカウントの暗号化を設定するときに、キーのバージョンを明示的に指定します。 次の例に示すように、[Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) を呼び出してストレージ アカウントの暗号化設定を更新し、 **-KeyvaultEncryption** オプションを含めてストレージ アカウントでカスタマー マネージド キーを有効にします。
+キーのバージョンを手動更新するようにカスタマー マネージド キーを構成するには、ストレージ アカウントの暗号化を設定するときに、キーのバージョンを明示的に指定します。 次の例に示すように、 [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) を呼び出してストレージ アカウントの暗号化設定を更新し、 **-KeyvaultEncryption** オプションを含めてストレージ アカウントでカスタマー マネージド キーを有効にします。
 
 角かっこ内のプレースホルダー値を独自の値に置き換え、前の例で定義した変数を使用してください。
 

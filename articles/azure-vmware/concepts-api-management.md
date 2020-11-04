@@ -3,20 +3,22 @@ title: 概念 - API Management
 description: Azure VMware Solution 仮想マシン (VM) 上で実行されている API を API Management が保護する方法について説明します
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 346d0f795c3d19b115ced771991263cce2104217
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f412ee81fc77435f2586a31c1bf6f6bdf22c66e2
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91262979"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670368"
 ---
 # <a name="api-management-to-publish-and-protect-apis-running-on-azure-vmware-solution-based-vms"></a>Azure VMware Solution ベースの VM で実行されている API を発行および保護するための API Management
 
-Microsoft Azure [API Management](https://azure.microsoft.com/services/api-management/) を使用すると、開発者や DevOps チームは、内部または外部のコンシューマーに安全に発行できます。
+Microsoft Azure [API Management](https://azure.microsoft.com/services/api-management/) を使用すると、内部または外部のコンシューマーに安全に発行できます。  Developer および Premium SKU のみで、Azure Virtual Network 統合を使用して、Azure VMware Solution ワークロードで実行されている API を発行することができます。  どちらの SKU でも、API Management サービスとバックエンド間の接続を安全に確立することができます。 
 
-複数の SKU で提供されていますが、Developer および Premium SKU のみで、Azure Virtual Network 統合を使用して、Azure VMware Solution ワークロードで実行されている API を発行することができます。 これら 2 つの SKU は、API Management サービスとバックエンド間の接続を安全に有効にします。 Developer SKU は開発とテストを目的としており、Premium SKU は運用環境のデプロイ向けです。
+>[!NOTE]
+>Developer SKU は開発とテストを目的としており、Premium SKU は運用環境のデプロイ向けです。
 
-Azure VMware Solution 仮想マシン (VM) 上で実行されるバックエンド サービスの場合、既定では API Management の構成はオンプレミスのバックエンド サービスと同じです。 内部デプロイと外部デプロイの両方について、API Management は、Azure VMware Solution 側でバックエンド サーバーが NSX Load Balancer の後ろに配置されている場合、ロード バランサーの仮想 IP (VIP) をバックエンド エンドポイントとして構成します。
+API Management 構成は、Azure VMware Solution の仮想マシン (VM) およびオンプレミス上で実行されるバックエンド サービスの場合と同じです。 どちらのデプロイにおいても、Azure VMware Solution でバックエンド サーバーが NSX Load Balancer の後ろに配置されている場合、API Management によってロード バランサーの仮想 IP (VIP) がバックエンド エンドポイントとして構成されます。 
+
 
 ## <a name="external-deployment"></a>外部デプロイ
 
@@ -28,9 +30,9 @@ Azure VMware Solution 仮想マシン (VM) 上で実行されるバックエン�
 
 - **Users:** 公開されている API のコンシューマーを表し、API を使用するユーザーとサービスの両方を表します。
 
-トラフィック フローは API Management インスタンスを通過します。これにより、バックエンド サービスが抽象化され、ハブ仮想ネットワークに接続されます。 ExpressRoute ゲートウェイがトラフィックを ExpressRoute Global Reach チャネルにルーティングし、その着信トラフィックをさまざまなバックエンド サービス インスタンスに分散する NSX Load Balancer に到達します。
+トラフィック フローは API Management インスタンスを通過します。これにより、バックエンド サービスが抽象化され、ハブ仮想ネットワークに接続されます。 ExpressRoute ゲートウェイによってトラフィックが ExpressRoute Global Reach チャネルにルーティングされ、その着信トラフィックをさまざまなバックエンド サービス インスタンスに分散する NSX Load Balancer に到達させます。
 
-API Management には Azure パブリック API があり、Azure DDOS Protection サービスをアクティブ化することをお勧めします。 
+API Management には Azure パブリック API があり、Azure DDOS Protection サービスをアクティブ化することをお勧めします。 
 
 :::image type="content" source="media/api-management/external-deployment.png" alt-text="外部デプロイ - Azure VMware Solution 向けの API Management":::
 
@@ -39,7 +41,7 @@ API Management には Azure パブリック API があり、Azure DDOS Protectio
 
 内部デプロイは、内部ユーザーまたはシステムによって使用される API を発行します。 DevOps チームおよび API 開発者は、外部デプロイと同じ管理ツールと開発者ポータルを使用します。
 
-内部デプロイでは [Azure Application Gateway](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md) を使用してその機能を活用し、API 向けにパブリックのセキュリティ保護されたエンドポイントを作成し、さまざまなシナリオを可能にするハイブリッド デプロイを作成できます。  API はその機能を活用し、さまざまなシナリオを可能にするハイブリッドデプロイを作成します。
+内部デプロイでは [Azure Application Gateway](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md) を使用して、API 向けにパブリックのセキュリティ保護されたエンドポイントを作成します。  ゲートウェイの機能によって、さまざまなシナリオを可能にするハイブリッド デプロイを作成します。  
 
 * 内部と外部のコンシューマーの両方における消費用に同一の API Management リソースを使用する。
 
@@ -49,11 +51,12 @@ API Management には Azure パブリック API があり、Azure DDOS Protectio
 
 次の配置ダイアグラムは、内部または外部のコンシューマーを示しています。それぞれが同じ API または異なる API にアクセスします。
 
-内部デプロイでは、API は同じ API Management インスタンスに公開されます。 API Management の前に、 Azure Web Application Firewall (WAF) 機能がアクティブになっており、トラフィックをフィルター処理するための一連の HTTP リスナーとルールを備えた Application Gateway がデプロイされています。これは、Azure VMware Solution で実行されているバックエンド サービスのサブセットのみを公開します。
+内部デプロイでは、API は同じ API Management インスタンスに公開されます。 API Management の前に、Azure Web Application Firewall (WAF) 機能がアクティブになっている Application Gateway がデプロイされています。 トラフィックをフィルター処理するための一連の HTTP リスナーとルールを備えた Application Gateway もデプロイされており、これは Azure VMware Solution で実行されているバックエンド サービスのサブセットのみを公開します。
 
-* 内部トラフィックは、トラフィック規則が確立されている場合は ExpressRoute ゲートウェイ経由で Azure Firewall の後に API Management にルーティングされるか、直接 API Management にルーティングされます。  
+
+* 内部トラフィックは、直接またはトラフィック規則を介して、ExpressRoute ゲートウェイ経由で Azure Firewall の後に API Management にルーティングされます。   
 
 * 外部トラフィックは、API Management の外部保護レイヤーを使用する Application Gateway を通じて Azure に入ります。
 
 
-:::image type="content" source="media/api-management/internal-deployment.png" alt-text="外部デプロイ - Azure VMware Solution 向けの API Management":::
+:::image type="content" source="media/api-management/internal-deployment.png" alt-text="内部デプロイ - Azure VMware Solution 向けの API Management" lightbox="media/api-management/internal-deployment.png":::

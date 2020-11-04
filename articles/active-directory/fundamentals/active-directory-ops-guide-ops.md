@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 74ebd25cb48276f76cdf379eaa596f4ec1f3a2b9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2de3f78b58e10a4fbf65bb00d516448a089f85b6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312605"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370952"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory 一般的な運用ガイド リファレンス
 
@@ -49,7 +49,7 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 
 #### <a name="owners-recommended-reading"></a>所有者向けの推奨資料
 
-- [Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure Active Directory での管理者ロールの割り当て](../roles/permissions-reference.md)
 - [Azure でのガバナンス](../../governance/index.yml)
 
 ## <a name="hybrid-management"></a>ハイブリッド管理
@@ -154,9 +154,9 @@ Azure AD によって使用される "差出人" アドレスは 2 つありま�
 
 ### <a name="ad-fs-lockdown"></a>AD FS のロックダウン
 
-Azure AD で直接認証されるようアプリケーションを構成している組織は、 [Azure AD スマート ロックアウト](../authentication/concept-sspr-howitworks.md)を利用できます。 Windows Server 2012 R2 で AD FS を使っている場合は、AD FS の [エクストラネット ロックアウト保護](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)を実装します。 Windows Server 2016 以降で AD FS を使っている場合は、 [エクストラネット スマート ロックアウト](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)を実装します。 少なくとも、オンプレミスの Active Directory へのブルート フォース攻撃のリスクを含むように、エクストラネット ロックアウトを有効にすることをお勧めします。 ただし、Windows 2016 以降で AD FS を利用している場合は、[パスワード スプレー](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/)攻撃を軽減するのに役立つ、エクストラネットのスマート ロックアウトも有効にする必要があります。
+Azure AD で直接認証されるようアプリケーションを構成している組織は、[Azure AD スマート ロックアウト](../authentication/concept-sspr-howitworks.md)を利用できます。 Windows Server 2012 R2 で AD FS を使っている場合は、AD FS の[エクストラネット ロックアウト保護](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)を実装します。 Windows Server 2016 以降で AD FS を使っている場合は、[エクストラネット スマート ロックアウト](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)を実装します。 少なくとも、オンプレミスの Active Directory へのブルート フォース攻撃のリスクを含むように、エクストラネット ロックアウトを有効にすることをお勧めします。 ただし、Windows 2016 以降で AD FS を利用している場合は、[パスワード スプレー](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/)攻撃を軽減するのに役立つ、エクストラネットのスマート ロックアウトも有効にする必要があります。
 
-AD FS が Azure AD フェデレーションにのみ使用される場合、攻撃対象を最小限に抑えるために無効にできるエンドポイントがいくつかあります。 たとえば、AD FS が Azure AD にのみ使用される場合、**usernamemixed** および **windowstransport** に対して有効になっているエンドポイント以外の WS-Trust エンドポイントを無効にする必要があります。
+AD FS が Azure AD フェデレーションにのみ使用される場合、攻撃対象を最小限に抑えるために無効にできるエンドポイントがいくつかあります。 たとえば、AD FS が Azure AD にのみ使用される場合、 **usernamemixed** および **windowstransport** に対して有効になっているエンドポイント以外の WS-Trust エンドポイントを無効にする必要があります。
 
 ### <a name="access-to-machines-with-on-premises-identity-components"></a>オンプレミスの ID コンポーネントを使用したマシンへのアクセス
 
@@ -166,9 +166,9 @@ Active Directory 管理階層モデルは、環境のフル コントロール (
 
 [階層モデル](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)は 3 つのレベルで構成され、管理者アカウントのみが含まれ、標準ユーザー アカウントは含まれません。
 
-- **階層 0** - 環境内のエンタープライズ ID を直接管理します。 階層 0 には、Active Directory フォレスト、ドメイン、ドメイン コントローラー、それに含まれるすべての資産を直接的または間接的に管理するアカウント、グループ、その他の資産が含まれます。 階層 0 のすべての資産は、事実上相互に管理しあっているため、セキュリティの機密性は同じです。
-- **階層 1** - エンタープライズ サーバーとアプリケーションを管理します。 階層 1 の資産には、サーバーのオペレーティング システム、クラウド サービス、エンタープライズ アプリケーションが含まれます。 階層 1 の管理者アカウントによって、これらの資産でホストされている多くのビジネス価値を管理します。 一般的なロールの例として、すべてのエンタープライズ サービスに影響する機能を持つこれらのオペレーティング システムを管理しているサーバー管理者があります。
-- **階層 2** - ユーザーのワークステーションとデバイスを管理します。 階層 2 の管理者アカウントによって、ユーザーのワークステーションやデバイスでホストされている多くのビジネス価値を管理します。 例としては、ヘルプ デスクやコンピューター サポートの管理者が挙げられます。ほとんどのユーザー データの整合性に影響を及ぼす可能性があるためです。
+- **階層 0** : 環境内のエンタープライズ ID を直接管理します。 階層 0 には、Active Directory フォレスト、ドメイン、ドメイン コントローラー、それに含まれるすべての資産を直接的または間接的に管理するアカウント、グループ、その他の資産が含まれます。 階層 0 のすべての資産は、事実上相互に管理しあっているため、セキュリティの機密性は同じです。
+- **階層 1** : エンタープライズ サーバーとアプリケーションを管理します。 階層 1 の資産には、サーバーのオペレーティング システム、クラウド サービス、エンタープライズ アプリケーションが含まれます。 階層 1 の管理者アカウントによって、これらの資産でホストされている多くのビジネス価値を管理します。 一般的なロールの例として、すべてのエンタープライズ サービスに影響する機能を持つこれらのオペレーティング システムを管理しているサーバー管理者があります。
+- **階層 2** : - ユーザーのワークステーションとデバイスを管理します。 階層 2 の管理者アカウントによって、ユーザーのワークステーションやデバイスでホストされている多くのビジネス価値を管理します。 例としては、ヘルプ デスクやコンピューター サポートの管理者が挙げられます。ほとんどのユーザー データの整合性に影響を及ぼす可能性があるためです。
 
 ドメイン コントローラーの場合と同じ方法で、Azure AD Connect、AD FS、SQL サービスなどのオンプレミスの ID コンポーネントへのアクセスをロックダウンします。
 

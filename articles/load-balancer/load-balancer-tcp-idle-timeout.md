@@ -1,7 +1,7 @@
 ---
-title: Azure でロード バランサーの TCP リセットおよびアイドル タイムアウトを構成する
+title: ロード バランサーの TCP リセットおよびアイドル タイムアウトを構成する
 titleSuffix: Azure Load Balancer
-description: この記事では Azure Load Balancer TCP アイドル タイムアウトを構成する方法について説明します。
+description: この記事では Azure Load Balancer TCP アイドル タイムアウトとリセットを構成する方法について説明します。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -11,51 +11,106 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/09/2020
+ms.date: 10/26/2020
 ms.author: allensu
-ms.openlocfilehash: 26c4c01aaf6abe6b9c9ac6daf6836d7b660ba21e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a6be588544883b77c3ff115c9dba5e6ecd5fbd7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91649849"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747198"
 ---
-# <a name="configure-tcp-idle-timeout-for-azure-load-balancer"></a>Azure Load Balancer の TCP アイドル タイムアウトを構成する
+# <a name="configure-tcp-reset-and-idle-timeout-for-azure-load-balancer"></a>Azure Load Balancer の TCP リセットとアイドル タイムアウトを構成する
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Azure Load Balancer のアイドルには、次のタイムアウト範囲があります。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+* 送信規則の場合は、4 分から 100 分
+* Load Balancer 規則と受信 NAT 規則の場合は、4 分から 30 分
+
+既定では 4 分に設定されています。 アイドル時間がタイムアウト値よりも長い場合、クライアントとサービス間の TCP または HTTP セッションが維持されるという保証はありません。 
+
+次のセクションでは、ロード バランサー リソースのアイドル タイムアウトと TCP リセット設定を変更する方法について説明します。
+
+## <a name="set-tcp-reset-and-idle-timeout"></a>TCP リセットとアイドル タイムアウトを設定する
+---
+# <a name="portal"></a>[**ポータル**](#tab/tcp-reset-idle-portal)
+
+ロード バランサーのアイドル タイムアウトと TCP リセットを設定するには、負荷分散規則を編集します。 
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+
+2. 左側のメニューで、 **[リソース グループ]** を選択します。
+
+3. ロード バランサーのリソース グループを選択します。 この例では、リソース グループの名前は **myResourceGroup** です。
+
+4. ロード バランサーを選択します。 この例では、ロード バランサーの名前は **myLoadBalancer** です。
+
+5. **[設定]** で、 **[負荷分散規則]** を選択します。
+
+     :::image type="content" source="./media/load-balancer-tcp-idle-timeout/portal-lb-rules.png" alt-text="負荷分散規則を編集します。" border="true":::
+
+6. 負荷分散規則を選択します。 この例では、負荷分散規則の名前は **myLBrule** になります。
+
+7. 負荷分散規則で、 **[アイドル タイムアウト (分)]** のスライダーをタイムアウト値に移動します。  
+
+8. **[TCP リセット]** で、 **[有効]** を選択します。
+
+   :::image type="content" source="./media/load-balancer-tcp-idle-timeout/portal-lb-rules-tcp-reset.png" alt-text="アイドル タイムアウトと TCP リセットを設定します。" border="true":::
+
+9. **[保存]** を選択します。
+
+# <a name="powershell"></a>[**PowerShell**](#tab/tcp-reset-idle-powershell)
+
+アイドル タイムアウトと TCP リセットを設定するには、次の負荷分散規則パラメーターの値を [Set-AzLoadBalancer](/powershell/module/az.network/set-azloadbalancer) に設定します。
+
+* **IdleTimeoutInMinutes**
+* **EnableTcpReset**
 
 PowerShell をインストールしてローカルで使用する場合、この記事では Azure PowerShell モジュール バージョン 5.4.1 以降が必要になります。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
-Azure Load Balancer では、アイドル タイムアウトは 4 分から 120 分に設定されています。 既定では 4 分に設定されています。 アイドル時間がタイムアウト値よりも長い場合、クライアントとクラウド サービス間の TCP または HTTP セッションが維持されるという保証はありません。 TCP アイドル リセットの詳細については、[こちら](load-balancer-tcp-reset.md)を参照してください。
+次の例をリソースの値に置き換えます。
 
-次のセクションでは、パブリック IP とロード バランサー リソースのアイドル タイムアウト設定を変更する方法について説明します。
+* **myResourceGroup**
+* **myLoadBalancer**
 
-
-## <a name="configure-the-tcp-idle-timeout-for-your-public-ip"></a>パブリック IP の TCP アイドル タイムアウトを構成する
-
-```azurepowershell-interactive
-$publicIP = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyResourceGroup
-$publicIP.IdleTimeoutInMinutes = "15"
-Set-AzPublicIpAddress -PublicIpAddress $publicIP
+```azurepowershell
+$lb = Get-AzLoadBalancer -Name "myLoadBalancer" -ResourceGroup "myResourceGroup"
+$lb.LoadBalancingRules[0].IdleTimeoutInMinutes = '15'
+$lb.LoadBalancingRules[0].EnableTcpReset = 'true'
+Set-AzLoadBalancer -LoadBalancer $lb
 ```
 
-`IdleTimeoutInMinutes` はオプションです。 設定しない場合、既定のタイムアウト時間は 4 分です。 設定できるタイムアウトの範囲は 4 分から 120 分です。
+# <a name="azure-cli"></a>[**Azure CLI**](#tab/tcp-reset-idle-cli)
 
-## <a name="set-the-tcp-idle-timeout-on-rules"></a>ルールの TCP アイドル タイムアウトを設定する
+アイドル タイムアウトと TCP リセットを設定するには、[az network lb rule update](/cli/azure/network/lb/rule?az_network_lb_rule_update) に次のパラメーターを使用します。
 
-ロード バランサーにアイドル タイムアウトを設定するために、'IdleTimeoutInMinutes' は負荷分散規則された規則に設定されています。 次に例を示します。
+* **--idle-timeout**
+* **--enable-tcp-reset**
 
-```azurepowershell-interactive
-$lb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroup "MyResourceGroup"
-$lb | Set-AzLoadBalancerRuleConfig -Name myLBrule -IdleTimeoutInMinutes 15
+開始する前に、環境を検証します。
+
+* Azure portal にサインインし、`az login` を実行して、ご利用のサブスクリプションがアクティブであることを確認します。
+* `az --version` を実行して、ターミナルまたはコマンド ウィンドウの Azure CLI のバージョンを確認します。 最新バージョンについては、[最新のリリース ノート](/cli/azure/release-notes-azure-cli?tabs=azure-cli)を参照してください。
+  * 最新バージョンを使用していない場合は、[オペレーティング システムまたはプラットフォーム用のインストール ガイド](/cli/azure/install-azure-cli)に従ってインストールを更新します。
+
+次の例をリソースの値に置き換えます。
+
+* **myResourceGroup**
+* **myLoadBalancer**
+* **myLBrule**
+
+
+```azurecli
+az network lb rule update \
+    --resource-group myResourceGroup \
+    --name myLBrule \
+    --lb-name myLoadBalancer \
+    --idle-timeout 15 \
+    --enable-tcp-reset true
 ```
-
+---
 ## <a name="next-steps"></a>次のステップ
 
-[内部ロード バランサーの概要](load-balancer-internal-overview.md)
+TCP アイドル タイムアウトとリセットの詳細については、「[Load Balancer の TCP リセットおよびアイドルのタイムアウト](load-balancer-tcp-reset.md)」を参照してください。
 
-[インターネットに接続するロード バランサーの構成の開始](quickstart-load-balancer-standard-public-powershell.md)
-
-[ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
+ロード バランサー分散モードの構成の詳細については、[ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)に関するページを参照してください。

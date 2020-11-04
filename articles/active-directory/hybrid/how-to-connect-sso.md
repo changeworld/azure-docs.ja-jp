@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1708b3b8777b32aac7c160a1084235ba1b2eda13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7baa851943db3e8c691b50c2cb5446a2adbbccc
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658349"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457993"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -31,12 +31,12 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-シームレス SSO は、サインインの方法として、 [パスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)または[パススルー認証](how-to-connect-pta.md)のどちらとも組み合わせることができます。 シームレス SSO は、Active Directory フェデレーション サービス (ADFS) には適用でき _ません_。
+シームレス SSO は、サインインの方法として、 [パスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)または[パススルー認証](how-to-connect-pta.md)のどちらとも組み合わせることができます。 シームレス SSO は、Active Directory フェデレーション サービス (ADFS) には適用でき _ません_ 。
 
 ![シームレス シングル サインオン](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->シームレス SSO では、ユーザーのデバイスが**ドメインに参加している**ことのみが必要ですが、[Azure AD 参加済み](../devices/concept-azure-ad-join.md)デバイスまたは[ハイブリッド Azure AD 参加済み](../devices/concept-azure-ad-join-hybrid.md)デバイスでは使用されません。 Azure AD 参加済み、ハイブリッド Azure AD 参加済み、および Azure AD 登録済みデバイスでの SSO は、[プライマリ更新トークン](../devices/concept-primary-refresh-token.md)に基づいて機能します。
+>シームレス SSO では、ユーザーのデバイスが **ドメインに参加している** ことのみが必要ですが、 [Azure AD 参加済み](../devices/concept-azure-ad-join.md)デバイスまたは [ハイブリッド Azure AD 参加済み](../devices/concept-azure-ad-join-hybrid.md)デバイスでは使用されません。 Azure AD 参加済み、ハイブリッド Azure AD 参加済み、および Azure AD 登録済みデバイスでの SSO は、[プライマリ更新トークン](../devices/concept-primary-refresh-token.md)に基づいて機能します。
 
 ## <a name="key-benefits"></a>主な利点
 
@@ -64,18 +64,20 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 | OS\ブラウザー |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
 |Windows 10|はい\*|はい|はい|はい\*\*\*|該当なし
-|Windows 8.1|はい\*|該当なし|はい|はい\*\*\*|該当なし
+|Windows 8.1|はい\*|はい*\*\*\*|はい|はい\*\*\*|該当なし
 |Windows 8|はい\*|該当なし|はい|はい\*\*\*|該当なし
 |Windows 7|はい\*|該当なし|はい|はい\*\*\*|該当なし
 |Windows Server 2012 R2 以降|はい\*\*|該当なし|はい|はい\*\*\*|該当なし
 |Mac OS X|該当なし|該当なし|はい\*\*\*|はい\*\*\*|はい\*\*\*
 
 
-\*Internet Explorer バージョン 10 以降が必要
+\*Internet Explorer バージョン 10 以降が必要です。
 
-\*\*Internet Explorer バージョン 10 以降が必要。 拡張保護モードを無効にする
+\*\*Internet Explorer バージョン 10 以降が必要です。 拡張保護モードを無効にする。
 
-\*\*\*[追加の構成](how-to-connect-sso-quick-start.md#browser-considerations)が必要
+\*\*\*[別途構成](how-to-connect-sso-quick-start.md#browser-considerations)が必要。
+
+\*\*\*\*Microsoft Edge バージョン 77 以降が必要です。
 
 >[!NOTE]
 >Windows 10 の場合、Azure AD で最適なシングル サインオン エクスペリエンスを実現するために、[Azure AD Join](../devices/concept-azure-ad-join.md) を使用することをお勧めします。
