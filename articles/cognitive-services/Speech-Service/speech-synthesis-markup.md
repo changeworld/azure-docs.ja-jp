@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2c60d2e874e861eebac54e24ba0cb949bfb9a57b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: e0625fd257ed9995fb567785ce07dcb0b0422c61
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207684"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311625"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
@@ -46,7 +46,7 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 
 ## <a name="create-an-ssml-document"></a>SSML ドキュメントを作成する
 
-`speak` はルート要素であり、SSML のすべてのドキュメントで**必須**です。 `speak` 要素には、バージョン、言語、およびマークアップのボキャブラリ定義などの重要な情報が含まれています。
+`speak` はルート要素であり、SSML のすべてのドキュメントで **必須** です。 `speak` 要素には、バージョン、言語、およびマークアップのボキャブラリ定義などの重要な情報が含まれています。
 
 **構文**
 
@@ -218,7 +218,7 @@ speechConfig!.setPropertyTo(
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
 | `style` | 話し方を指定します。 現在のところ、話し方は音声に固有です。 | ニューラル音声の話し方を調整する場合は、必須です。 `mstts:express-as` を使用する場合は、スタイルを指定する必要があります。 無効な値を指定すると、この要素は無視されます。 |
-| `styledegree` | 話し方の強度を指定します。 **指定可能な値**:0.01 ～ 2 (0.01 と 2 を含む)。 既定値は、定義済みのスタイル強度を表す 1 です。 最小単位は 0.01 で、ターゲットのスタイルにわずかに傾きます。 値を 2 にすると、既定のスタイル強度が 2 倍になります。  | 省略可能 (現時点では、`styledegree` は XiaoxiaoNeural のみをサポートします)。|
+| `styledegree` | 話し方の強度を指定します。 **指定可能な値** :0.01 ～ 2 (0.01 と 2 を含む)。 既定値は、定義済みのスタイル強度を表す 1 です。 最小単位は 0.01 で、ターゲットのスタイルにわずかに傾きます。 値を 2 にすると、既定のスタイル強度が 2 倍になります。  | 省略可能 (現時点では、`styledegree` は XiaoxiaoNeural のみをサポートします)。|
 
 各ニューラル音声でサポートされている話し方を確認するには、次の表を使用してください。
 
@@ -233,6 +233,7 @@ speechConfig!.setPropertyTo(
 | `en-US-JennyNeural`     | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  |
 |                         | `style="chat"`            | カジュアルでリラックスした語調を表します                         |
 |                         | `style="assistant"`       | デジタル アシスタント向けの暖かくてリラックスした語調を表します    |
+|                         | `style="newscast"`        | 一般的なニュースを配信するときの汎用的でカジュアルな語調を表します   |
 | `en-US-GuyNeural`       | `style="newscast"`        | ニュースを読み上げる改まった職業的な語調を表します |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | ニュースを読み上げる改まった職業的な語調を表します |
 |                         | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  |
@@ -538,8 +539,8 @@ IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-U
 | `contour` |ニューラル音声と標準音声の両方で音調がサポートされるようになりました。 音調とは音の高さの変化です。 この変化は、音声出力において指定の時間位置にあるターゲットの配列として表わされます。 各ターゲットは、パラメーターのペアのセットによって定義されます。 次に例を示します。 <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>パラメーターの各セットの最初の値は、ピッチの変更位置をテキストの継続時間の割合として指定します。 2 番目の値は、ピッチの相対値または列挙値を使用して、ピッチを増減する量を指定します (`pitch` を参照)。 | 省略可能 |
 | `range` | テキストのピッチの範囲を表す値。 `range` は、`pitch` の記述に使用されるものと同じ絶対値、相対値、または列挙値を使用して表すことができます。 | 省略可能 |
 | `rate` | テキストの読み上げ速度を示します。 `rate` は次のように表されます。<ul><li>相対値。既定値の乗数として機能する数字で表されます。 たとえば、値 *1* では速度は変更されません。 値 *0.5* では、速度が半分になります。 値 *3* では、速度が 3 倍になります。</li><li>定数値:<ul><li>x-slow</li><li>slow</li><li>中</li><li>fast</li><li>x-fast</li><li>default</li></ul></li></ul> | 省略可能 |
-| `duration` | 音声合成 (TTS) サービスがテキストを読んでいる間に経過する時間 (秒またはミリ秒)。 たとえば、*2s* または *1800ms* です。 duration では、標準の音声のみがサポートされます。| 省略可能 |
-| `volume` | 読み上げている音声の音量レベルを示します。 音量は次のように表されます。<ul><li>絶対値。0.0 から 100.0 (*quietest* から *loudest* まで) の範囲の数字として表されます。 たとえば、75 です。 既定値は 100.0 です。</li><li>相対値。音量の変更量を指定する、前に "+" または "-" が付いた数字として表されます。 たとえば、+10、-5.5。</li><li>定数値:<ul><li>silent</li><li>x-soft</li><li>soft</li><li>中</li><li>loud</li><li>x-loud</li><li>default</li></ul></li></ul> | 省略可能 |
+| `duration` | 音声合成 (TTS) サービスがテキストを読んでいる間に経過する時間 (秒またはミリ秒)。 たとえば、 *2s* または *1800ms* です。 duration では、標準の音声のみがサポートされます。| 省略可能 |
+| `volume` | 読み上げている音声の音量レベルを示します。 音量は次のように表されます。<ul><li>絶対値。0.0 から 100.0 ( *quietest* から *loudest* まで) の範囲の数字として表されます。 たとえば、75 です。 既定値は 100.0 です。</li><li>相対値。音量の変更量を指定する、前に "+" または "-" が付いた数字として表されます。 たとえば、+10、-5.5。</li><li>定数値:<ul><li>silent</li><li>x-soft</li><li>soft</li><li>中</li><li>loud</li><li>x-loud</li><li>default</li></ul></li></ul> | 省略可能 |
 
 ### <a name="change-speaking-rate"></a>読み上げ速度を変更する
 
@@ -630,7 +631,7 @@ IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-U
 | `address` | | テキストはアドレスとして読み上げられます。 音声合成エンジンでは次のように発音されます。<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />"I'm at 150th court north east redmond washington" (私はワシントン州レドモンド 150th コート ノースイーストにいます)。 |
 | `cardinal`, `number` | | テキストは基数として読み上げられます。 音声合成エンジンでは次のように発音されます。<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />"There are three alternatives" (代替手段は 3 つあります)。 |
 | `characters`, `spell-out` | | テキストは、個別の文字 (綴り) として読み上げられます。 音声合成エンジンでは次のように発音されます。<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />"T E S T"。 |
-| `date` | dmy、mdy、ymd、ydm、ym、my、md、dm、d、m、y | テキストは日付として読み上げられます。 `format` 属性では、日付の形式を指定します (*d=日、m=月、y=年*)。 音声合成エンジンでは次のように発音されます。<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />"Today is October nineteenth two thousand sixteen" (今日は 2016 年 10 月 19 日です)。 |
+| `date` | dmy、mdy、ymd、ydm、ym、my、md、dm、d、m、y | テキストは日付として読み上げられます。 `format` 属性では、日付の形式を指定します ( *d=日、m=月、y=年* )。 音声合成エンジンでは次のように発音されます。<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />"Today is October nineteenth two thousand sixteen" (今日は 2016 年 10 月 19 日です)。 |
 | `digits`, `number_digit` | | テキストは、個別の数字のシーケンスとして読み上げられます。 音声合成エンジンでは次のように発音されます。<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />"1 2 3 4 5 6 7 8 9"。 |
 | `fraction` | | テキストは分数として読み上げられます。 音声合成エンジンでは次のように発音されます。<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />"three eighths of an inch" (1 インチの 8 分の 3)。 |
 | `ordinal` | | テキストは序数として読み上げられます。 音声合成エンジンでは次のように発音されます。<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />"3 つ目のオプションを選択します"。 |
@@ -716,9 +717,9 @@ SSML ドキュメントに含まれるオーディオは、次の要件を満た
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
 | `src` | バックグラウンド オーディオ ファイルの場所/URL を指定します。 | SSML ドキュメントでバックグラウンド オーディオを使用している場合は必須です。 |
-| `volume` | バックグラウンド オーディオ ファイルのボリュームを指定します。 **指定可能な値**: `0` から `100`。 既定値は `1` です。 | 省略可能 |
-| `fadein` | バックグラウンド オーディオの "フェードイン" の期間をミリ秒単位で指定します。 既定値は `0` で、"フェードインなし" に相当します。 **指定可能な値**: `0` から `10000`。  | 省略可能 |
-| `fadeout` | バックグラウンド オーディオのフェードアウトの期間をミリ秒単位で指定します。 既定値は `0` で、"フェードアウトなし" に相当します。**指定可能な値**: `0` から `10000` まで。  | 省略可能 |
+| `volume` | バックグラウンド オーディオ ファイルのボリュームを指定します。 **指定可能な値** : `0` から `100`。 既定値は `1` です。 | 省略可能 |
+| `fadein` | バックグラウンド オーディオの "フェードイン" の期間をミリ秒単位で指定します。 既定値は `0` で、"フェードインなし" に相当します。 **指定可能な値** : `0` から `10000`。  | 省略可能 |
+| `fadeout` | バックグラウンド オーディオのフェードアウトの期間をミリ秒単位で指定します。 既定値は `0` で、"フェードアウトなし" に相当します。 **指定可能な値** : `0` から `10000` まで。  | 省略可能 |
 
 **例**
 

@@ -15,6 +15,10 @@
       href: virtual-wan-expressroute-portal.md
 - name: 概念
   items:
+    - name: Security
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: リモート作業
       items:
         - name: リモートでの作業のサポート
@@ -131,7 +135,7 @@
               href: virtual-wan-route-table-nva-portal.md
             - name: Azure PowerShell
               href: virtual-wan-route-table-nva.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: Azure Firewall をハブにデプロイする
           href: howto-firewall.md
