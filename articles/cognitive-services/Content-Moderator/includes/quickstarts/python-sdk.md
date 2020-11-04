@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.custom: cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 64a9143e7a425b35e37f23b233c91b8e7bb70169
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bf24d7c5ca88c47d3bfd8067a4e533ed413dde90
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755758"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92918760"
 ---
 Python 用 Azure Content Moderator クライアント ライブラリの使用を開始します。 以下の手順に従って、PiPy パッケージをインストールし、基本タスクのコード例を試してみましょう。 
 
@@ -30,7 +30,7 @@ Python 用 Content Moderator クライアント ライブラリは、次の目�
 * カスタムの画像リストの使用
 * レビューを作成する
 
-[リファレンス ドキュメント](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) | [パッケージ (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/) | [サンプル](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[リファレンス ドキュメント](/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) | [パッケージ (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/) | [サンプル](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -75,10 +75,10 @@ pip install --upgrade azure-cognitiveservices-vision-contentmoderator
 
 |名前|説明|
 |---|---|
-|[ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)|このクラスは、すべての Content Moderator の機能に必要です。 サブスクリプション情報を使用してこれをインスタンス化し、他のクラスのインスタンスを生成するために使用します。|
-|[ImageModerationOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python)|このクラスでは、成人向けコンテンツ、個人情報、または人間の顔の画像を分析するための機能が提供されます。|
-|[TextModerationOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)|このクラスでは、言語、冒涜的表現、エラー、個人情報のテキストを分析するための機能が提供されます。|
-[ReviewsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python)|このクラスでは、ジョブ、カスタム ワークフロー、人によるレビューを作成するためのメソッド含む、レビュー API の機能が提供されます。|
+|[ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)|このクラスは、すべての Content Moderator の機能に必要です。 サブスクリプション情報を使用してこれをインスタンス化し、他のクラスのインスタンスを生成するために使用します。|
+|[ImageModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python)|このクラスでは、成人向けコンテンツ、個人情報、または人間の顔の画像を分析するための機能が提供されます。|
+|[TextModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)|このクラスでは、言語、冒涜的表現、エラー、個人情報のテキストを分析するための機能が提供されます。|
+[ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python)|このクラスでは、ジョブ、カスタム ワークフロー、人によるレビューを作成するためのメソッド含む、レビュー API の機能が提供されます。|
 
 ## <a name="code-examples"></a>コード例
 
@@ -93,7 +93,7 @@ pip install --upgrade azure-cognitiveservices-vision-contentmoderator
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-ご利用のエンドポイントとキーを使用してクライアントをインスタンス化します。 キーを使用して [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) オブジェクトを作成し、それをエンドポイントと共に使用して、[ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python) オブジェクトを作成します。
+ご利用のエンドポイントとキーを使用してクライアントをインスタンス化します。 キーを使用して [CognitiveServicesCredentials](/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) オブジェクトを作成し、それをエンドポイントと共に使用して、[ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python) オブジェクトを作成します。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_client)]
 
@@ -116,7 +116,7 @@ Crap is the profanity here. Is this information PII? phone 2065550111
 
 ## <a name="use-a-custom-terms-list"></a>カスタム用語リストの使用
 
-次のコードでは、テキストのモデレートのカスタム用語リストを管理する方法が示されます。 [ListManagementTermListsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementtermlistsoperations?view=azure-python) クラスを使用して、用語リストを作成したり、個々の用語を管理したり、リストに対してテキストの他の本文を選別したりすることができます。
+次のコードでは、テキストのモデレートのカスタム用語リストを管理する方法が示されます。 [ListManagementTermListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementtermlistsoperations?view=azure-python) クラスを使用して、用語リストを作成したり、個々の用語を管理したり、リストに対してテキストの他の本文を選別したりすることができます。
 
 ### <a name="get-sample-text"></a>サンプル テキストを取得する
 
@@ -186,7 +186,7 @@ This text contains the terms "term1" and "term2".
 
 ## <a name="moderate-images"></a>画像のモデレート
 
-次のコードでは、Content Moderator クライアントが [ImageModerationOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python) オブジェクトとともに使用され、成人向けコンテンツやきわどい内容の画像が分析されます。
+次のコードでは、Content Moderator クライアントが [ImageModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python) オブジェクトとともに使用され、成人向けコンテンツやきわどい内容の画像が分析されます。
 
 ### <a name="get-sample-images"></a>サンプル イメージの取得
 
@@ -218,7 +218,7 @@ This text contains the terms "term1" and "term2".
 
 ## <a name="use-a-custom-image-list"></a>カスタムの画像リストの使用
 
-次のコードでは、画像のモデレートに対してカスタムの画像リストを管理する方法が示されます。 この機能は、排除する画像の同じセットのインスタンスをプラットフォームで頻繁に受け取る場合に便利です。これらの特定の画像のリストを保持することで、パフォーマンスを向上させることができます。 [ListManagementImageListsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementimagelistsoperations?view=azure-python) クラスによって、画像リストを作成したり、リストの個々の画像を管理したり、リストと他の画像を比較したりすることができます。
+次のコードでは、画像のモデレートに対してカスタムの画像リストを管理する方法が示されます。 この機能は、排除する画像の同じセットのインスタンスをプラットフォームで頻繁に受け取る場合に便利です。これらの特定の画像のリストを保持することで、パフォーマンスを向上させることができます。 [ListManagementImageListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementimagelistsoperations?view=azure-python) クラスによって、画像リストを作成したり、リストの個々の画像を管理したり、リストと他の画像を比較したりすることができます。
 
 次のテキスト変数を作成して、このシナリオで使用する画像の URL を格納します。
 
@@ -296,7 +296,7 @@ This text contains the terms "term1" and "term2".
 
 Content Moderator Python クライアント ライブラリを使用して、人間のモデレーターがレビューできるように、[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)にコンテンツをフィードすることができます。 レビュー ツールの詳細については、[レビュー ツールの概念的なガイド](../../review-tool-user-guide/human-in-the-loop.md)に関するページを参照してください。
 
-次のコードでは、[ReviewsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python) クラスを使用してレビューが作成され、その ID が取得されて、レビュー ツールの Web ポータルから人間による入力を受け取った後、その詳細が確認されます。
+次のコードでは、[ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python) クラスを使用してレビューが作成され、その ID が取得されて、レビュー ツールの Web ポータルから人間による入力を受け取った後、その詳細が確認されます。
 
 ### <a name="get-review-credentials"></a>レビューの資格情報を取得する
 
@@ -311,7 +311,7 @@ Content Moderator Python クライアント ライブラリを使用して、人
 
 ### <a name="get-review-details"></a>レビューの詳細を取得する
 
-次のコードを使用して、指定したレビューの詳細を確認します。 レビューを作成したら、自分でレビュー ツールにアクセスし、コンテンツとやりとりすることができます。 これを行う方法の詳細については、[レビューの攻略ガイド](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/review-moderated-images)に関する記事を参照してください。 完了したら、このコードをもう一度実行すると、レビュー プロセスの結果が取得されます。
+次のコードを使用して、指定したレビューの詳細を確認します。 レビューを作成したら、自分でレビュー ツールにアクセスし、コンテンツとやりとりすることができます。 これを行う方法の詳細については、[レビューの攻略ガイド](../../review-tool-user-guide/review-moderated-images.md)に関する記事を参照してください。 完了したら、このコードをもう一度実行すると、レビュー プロセスの結果が取得されます。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagereview_getdetails)]
 
@@ -351,7 +351,7 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 このクイック スタートでは、Content Moderator Python ライブラリを使用して、モデレーション タスクを行う方法について学習しました。 次は、概念的なガイドを読んで、画像や他のメディアのモデレーションに関する詳細について学習します。
 
 > [!div class="nextstepaction"]
->[画像のモデレートの概念](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
+>[画像のモデレートの概念](../../image-moderation-api.md)
 
 * [Azure Content Moderator とは](../../overview.md)
 * このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py) にあります。

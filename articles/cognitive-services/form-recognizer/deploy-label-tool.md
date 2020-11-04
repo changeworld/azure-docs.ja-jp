@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c7c4e1cc854fdd2fbf03d2274992bbc4a3bb93af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df800938d568af0b94cfb1d368ef32e9b085b6eb
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88717899"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913111"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>サンプル ラベル付けツールのデプロイ
 
@@ -77,7 +77,7 @@ Azure portal を使用して新しいリソースを作成するには、次の�
    * [ユーザー名] (省略可能) - ユーザー名を作成します。 
    * [パスワード] (省略可能) - 憶えやすい安全なパスワードを作成します。
    * [イメージとタグ] - これは `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest` に設定します
-   * 継続的なデプロイ - 開発チームがサンプル ラベル付けツールを変更したときに自動更新を受信する場合は、これを**オン**に設定します。
+   * 継続的なデプロイ - 開発チームがサンプル ラベル付けツールを変更したときに自動更新を受信する場合は、これを **オン** に設定します。
    * [スタートアップ コマンド] - これは `./run.sh eula=accept` に設定します
 
     # <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1) 
@@ -87,7 +87,7 @@ Azure portal を使用して新しいリソースを作成するには、次の�
    * [ユーザー名] (省略可能) - ユーザー名を作成します。 
    * [パスワード] (省略可能) - 憶えやすい安全なパスワードを作成します。
    * [イメージとタグ] - これは `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview` に設定します
-   * 継続的なデプロイ - 開発チームがサンプル ラベル付けツールを変更したときに自動更新を受信する場合は、これを**オン**に設定します。
+   * 継続的なデプロイ - 開発チームがサンプル ラベル付けツールを変更したときに自動更新を受信する場合は、これを **オン** に設定します。
    * [スタートアップ コマンド] - これは `./run.sh eula=accept` に設定します
     
     ---
@@ -102,7 +102,7 @@ Azure portal を使用して新しいリソースを作成するには、次の�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure portal を使用する代わりに、Azure CLI を使用してリソースを作成することもできます。 続ける前に、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) をインストールする必要があります。 既に Azure CLI を使用している場合は、このステップを省略できます。 
+Azure portal を使用する代わりに、Azure CLI を使用してリソースを作成することもできます。 続ける前に、[Azure CLI](/cli/azure/install-azure-cli) をインストールする必要があります。 既に Azure CLI を使用している場合は、このステップを省略できます。 
 
 このコマンドについて知っておくべきことがいくつかあります。
 
@@ -149,7 +149,7 @@ az container create \
 
 ### <a name="connect-to-azure-ad-for-authorization"></a>承認のために Azure AD に接続する
 
-Web アプリを Azure Active Directory に接続することをお勧めします。 これにより、有効な資格情報を持つユーザーのみがサインインして Web アプリを使用できるようになります。 [App Service アプリの構成](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)に関する記事の手順に従って、Azure Active Directory に接続します。
+Web アプリを Azure Active Directory に接続することをお勧めします。 これにより、有効な資格情報を持つユーザーのみがサインインして Web アプリを使用できるようになります。 [App Service アプリの構成](../../app-service/configure-authentication-provider-aad.md)に関する記事の手順に従って、Azure Active Directory に接続します。
 
 ## <a name="open-source-on-github"></a>GitHub でのオープンソース
 

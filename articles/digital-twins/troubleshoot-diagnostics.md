@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: f4abf78c153bd3d61068e4b7607794d6ccf1ed04
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 11a7b4876c773922d4b0ed28f7047912b738ee6a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047677"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091737"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure Digital Twins のトラブルシューティング: 診断ログ
 
 Azure Digital Twins では、リソースの状態に関する情報を提供する、サービス インスタンスの[メトリック](troubleshoot-metrics.md)が収集されます。 これらのメトリックを使用すると、Azure Digital Twins サービスやそれに接続されているリソースの全体的な正常性を評価できます。 これらのユーザー向けの統計情報は、Azure Digital Twins で何が起きているかを確認するのに役立ち、Azure サポートに連絡することなく問題の根本原因の分析を実行する助けとなります。
 
-この記事では、Azure Digital Twins インスタンスからメトリック データの**診断ログ**を有効にする方法について説明します。 これらのログを使用して、サービスの問題をトラブルシューティングしたり、Azure Digital Twins のメトリックを異なる宛先に送信するように診断設定を構成したりできます。 これらの設定の詳細については、「[*プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する*](../azure-monitor/platform/diagnostic-settings.md)」を参照してください。
+この記事では、Azure Digital Twins インスタンスからメトリック データの **診断ログ** を有効にする方法について説明します。 これらのログを使用して、サービスの問題をトラブルシューティングしたり、Azure Digital Twins のメトリックを異なる宛先に送信するように診断設定を構成したりできます。 これらの設定の詳細については、「 [*プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する*](../azure-monitor/platform/diagnostic-settings.md)」を参照してください。
 
 ## <a name="turn-on-diagnostic-settings-with-the-azure-portal"></a>Azure portal 上で診断設定を有効にする
 
@@ -31,16 +31,16 @@ Azure Digital Twins インスタンスの診断設定を有効にする方法は
     :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="[診断設定] ページと追加するボタンが表示されたスクリーンショット":::
 
 3. 次のページで、以下の値を入力します。
-     * **診断設定の名前**:診断設定の名前を付けます。
-     * **カテゴリの詳細**:監視する操作を選択し、チェック ボックスをオンにしてそれらの操作の診断を有効にします。 診断設定では、次の操作をレポートできます。
+     * **診断設定の名前** :診断設定の名前を付けます。
+     * **カテゴリの詳細** :監視する操作を選択し、チェック ボックスをオンにしてそれらの操作の診断を有効にします。 診断設定では、次の操作をレポートできます。
         - DigitalTwinsOperation
         - EventRoutesOperation
         - ModelsOperation
         - QueryOperation
         - AllMetrics
         
-        これらのオプションの詳細については、下の「[*カテゴリの詳細*](#category-details)」を参照してください。
-     * **宛先の詳細**:ログの送信先を選択します。 3 つのオプションを自由に組み合わせて選択できます。
+        これらのオプションの詳細については、下の「 [*カテゴリの詳細*](#category-details)」を参照してください。
+     * **宛先の詳細** :ログの送信先を選択します。 3 つのオプションを自由に組み合わせて選択できます。
         - Log Analytics への送信
         - ストレージ アカウントへのアーカイブ
         - イベント ハブへのストリーミング
@@ -49,7 +49,7 @@ Azure Digital Twins インスタンスの診断設定を有効にする方法は
     
 4. 新しい設定を保存します。 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="[診断設定] ページと追加するボタンが表示されたスクリーンショット":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="診断設定ページを示すスクリーンショット。ここで、ユーザーは、診断設定の名前を入力し、[カテゴリの詳細] および [宛先の詳細] のチェックボックスをいくつか選択しています。[保存] ボタンが強調表示されています。":::
 
 新しい設定は、10 分ほどで有効になります。 その後、インスタンスの **[診断設定]** ページ上の構成されたターゲットにログが表示されます。 
 
@@ -132,7 +132,7 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
   "time": "2020-03-14T21:11:14.9918922Z",
   "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
   "operationName": "Microsoft.DigitalTwins/digitaltwins/write",
-  "operationVersion": "2020-05-31-preview",
+  "operationVersion": "2020-10-31",
   "category": "DigitalTwinOperation",
   "resultType": "Success",
   "resultSignature": "200",
@@ -142,7 +142,7 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
   "correlationId": "2f6a8e64-94aa-492a-bc31-16b9f0b16ab3",
   "level": "4",
   "location": "southcentralus",
-  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-05-31-preview"
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-10-31"
 }
 ```
 
@@ -153,7 +153,7 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
   "time": "2020-10-29T21:12:24.2337302Z",
   "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
   "operationName": "Microsoft.DigitalTwins/models/write",
-  "operationVersion": "2020-05-31-preview",
+  "operationVersion": "2020-10-31",
   "category": "ModelsOperation",
   "resultType": "Success",
   "resultSignature": "201",
@@ -163,7 +163,7 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
   "correlationId": "9dcb71ea-bb6f-46f2-ab70-78b80db76882",
   "level": "4",
   "location": "southcentralus",
-  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/Models?api-version=2020-05-31-preview",
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/Models?api-version=2020-10-31",
 }
 ```
 
@@ -174,7 +174,7 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
   "time": "2020-12-04T21:11:44.1690031Z",
   "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
   "operationName": "Microsoft.DigitalTwins/query/action",
-  "operationVersion": "2020-05-31-preview",
+  "operationVersion": "2020-10-31",
   "category": "QueryOperation",
   "resultType": "Success",
   "resultSignature": "200",
@@ -184,7 +184,7 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
   "correlationId": "1ee2b6e9-3af4-4873-8c7c-1a698b9ac334",
   "level": "4",
   "location": "southcentralus",
-  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/query?api-version=2020-05-31-preview",
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/query?api-version=2020-10-31",
 }
 ```
 
@@ -225,6 +225,6 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
 
 ## <a name="next-steps"></a>次のステップ
 
-* 診断の構成に関する詳細については、"[*Azure リソースからのログ データの収集と使用*](../azure-monitor/platform/platform-logs-overview.md)" に関するページを参照してください。
-* Azure Digital Twins のメトリックについては、[*トラブルシューティング: Azure Monitor でメトリックを表示する方法*](troubleshoot-metrics.md)に関するページを参照してください。
-* メトリックのアラートを有効にする方法については、[*トラブルシューティング:アラートの設定*](troubleshoot-alerts.md)に関するページを参照してください。
+* 診断の構成に関する詳細については、" [*Azure リソースからのログ データの収集と使用*](../azure-monitor/platform/platform-logs-overview.md)" に関するページを参照してください。
+* Azure Digital Twins のメトリックについては、 [*トラブルシューティング: Azure Monitor でメトリックを表示する方法*](troubleshoot-metrics.md)に関するページを参照してください。
+* メトリックのアラートを有効にする方法については、 [*トラブルシューティング:アラートの設定*](troubleshoot-alerts.md)に関するページを参照してください。

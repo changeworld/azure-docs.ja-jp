@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: 2db80cdba778d868d90d5278005791257acb0ed3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 793dc6d210751d0605ab756cd1c72b1dc5dd308f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548175"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92918750"
 ---
 .NET 用 Azure Content Moderator クライアント ライブラリの使用を開始します。 以下の手順に従って、NuGet パッケージをインストールし、基本タスクのコード例を試してみましょう。 
 
@@ -28,7 +28,7 @@ Content Moderator は、不快感を与える可能性がある内容、リス�
 * [画像のモデレート](#moderate-images)
 * [レビューを作成する](#create-a-review)
 
-[リファレンスのドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) | [サンプル](https://docs.microsoft.com/azure/cognitive-services/content-moderator/samples-dotnet)
+[リファレンスのドキュメント](/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) | [サンプル](../../samples-dotnet.md)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -96,7 +96,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator --version 
 > [!IMPORTANT]
 > Azure Portal にアクセスします。 「 **前提条件** 」セクションで作成した Content Moderator リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
 >
-> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)に関するページを参照してください。
+> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](../../../cognitive-services-security.md)に関するページを参照してください。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_creds)]
 
@@ -118,10 +118,10 @@ dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator --version 
 
 |名前|説明|
 |---|---|
-|[ContentModeratorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.contentmoderatorclient?view=azure-dotnet)|このクラスは、すべての Content Moderator の機能に必要です。 サブスクリプション情報を使用してこれをインスタンス化し、他のクラスのインスタンスを生成するために使用します。|
-|[ImageModeration](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet)|このクラスでは、成人向けコンテンツ、個人情報、または人間の顔の画像を分析するための機能が提供されます。|
-|[TextModeration](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.textmoderation?view=azure-dotnet)|このクラスでは、言語、冒涜的表現、エラー、個人情報のテキストを分析するための機能が提供されます。|
-|[Reviews](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet)|このクラスでは、ジョブ、カスタム ワークフロー、人によるレビューを作成するためのメソッド含む、レビュー API の機能が提供されます。|
+|[ContentModeratorClient](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.contentmoderatorclient?view=azure-dotnet)|このクラスは、すべての Content Moderator の機能に必要です。 サブスクリプション情報を使用してこれをインスタンス化し、他のクラスのインスタンスを生成するために使用します。|
+|[ImageModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet)|このクラスでは、成人向けコンテンツ、個人情報、または人間の顔の画像を分析するための機能が提供されます。|
+|[TextModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.textmoderation?view=azure-dotnet)|このクラスでは、言語、冒涜的表現、エラー、個人情報のテキストを分析するための機能が提供されます。|
+|[Reviews](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet)|このクラスでは、ジョブ、カスタム ワークフロー、人によるレビューを作成するためのメソッド含む、レビュー API の機能が提供されます。|
 
 ## <a name="code-examples"></a>コード例
 
@@ -158,10 +158,10 @@ Crap is the profanity here. Is this information PII? phone 4255550111
 
 ## <a name="moderate-images"></a>画像のモデレート
 
-次のコードでは、Content Moderator クライアントが [ImageModeration](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet) オブジェクトとともに使用され、成人向けコンテンツやきわどい内容のリモート画像が分析されます。
+次のコードでは、Content Moderator クライアントが [ImageModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet) オブジェクトとともに使用され、成人向けコンテンツやきわどい内容のリモート画像が分析されます。
 
 > [!NOTE]
-> ローカルの画像コンテンツを分析することもできます。 ローカル画像を操作するメソッドと操作については、[リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation.evaluatefileinputwithhttpmessagesasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_ContentModerator_ImageModeration_EvaluateFileInputWithHttpMessagesAsync_System_IO_Stream_System_Nullable_System_Boolean__System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_)を参照してください。
+> ローカルの画像コンテンツを分析することもできます。 ローカル画像を操作するメソッドと操作については、[リファレンス ドキュメント](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation.evaluatefileinputwithhttpmessagesasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_ContentModerator_ImageModeration_EvaluateFileInputWithHttpMessagesAsync_System_IO_Stream_System_Nullable_System_Boolean__System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_)を参照してください。
 
 ### <a name="get-sample-images"></a>サンプル イメージの取得
 
@@ -204,7 +204,7 @@ Content Moderator 画面に表示される画像の属性の詳細について�
 
 Content Moderator .NET クライアント ライブラリを使用して、人間のモデレーターがレビューできるように、[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)にコンテンツをフィードすることができます。 レビュー ツールの詳細については、[レビュー ツールの概念的なガイド](../../review-tool-user-guide/human-in-the-loop.md)に関するページを参照してください。
 
-このセクションのメソッドでは、[Reviews](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet) クラスを使用してレビューが作成され、その ID が取得されて、レビュー ツールの Web ポータルから人間による入力を受け取った後、その詳細が確認されます。 これらの情報は、すべて出力テキスト ファイルに記録されます。 
+このセクションのメソッドでは、[Reviews](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet) クラスを使用してレビューが作成され、その ID が取得されて、レビュー ツールの Web ポータルから人間による入力を受け取った後、その詳細が確認されます。 これらの情報は、すべて出力テキスト ファイルに記録されます。 
 
 ### <a name="get-sample-images"></a>サンプル イメージの取得
 
@@ -248,7 +248,7 @@ API 呼び出しから返されたオブジェクトには、アップロード�
 
 ### <a name="get-review-details"></a>レビューの詳細を取得する
 
-次のコードを使用すると、プログラムはユーザーの入力を待機します。 実行時にこの手順に到達すると、[レビュー](https://contentmoderator.cognitive.microsoft.com) ツールにアクセスしてサンプル イメージがアップロードされたことを確認、操作することができます。 レビューを操作する方法の詳細については、[レビューの攻略ガイド](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/review-moderated-images)に関する記事を参照してください。 完了したら、任意のキーを押してプログラムを続行し、レビュー プロセスの結果を取得することができます。
+次のコードを使用すると、プログラムはユーザーの入力を待機します。 実行時にこの手順に到達すると、[レビュー](https://contentmoderator.cognitive.microsoft.com) ツールにアクセスしてサンプル イメージがアップロードされたことを確認、操作することができます。 レビューを操作する方法の詳細については、[レビューの攻略ガイド](../../review-tool-user-guide/review-moderated-images.md)に関する記事を参照してください。 完了したら、任意のキーを押してプログラムを続行し、レビュー プロセスの結果を取得することができます。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_createreview_results)]
 
@@ -296,7 +296,7 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 このクイック スタートでは、Content Moderator .NET ライブラリを使用して、モデレーション タスクを行う方法について学習しました。 次は、概念的なガイドを読んで、画像や他のメディアのモデレーションに関する詳細について学習します。
 
 > [!div class="nextstepaction"]
-> [画像のモデレートの概念](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
+> [画像のモデレートの概念](../../image-moderation-api.md)
 
 * [Azure Content Moderator とは](../../overview.md)
 * このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ContentModerator/Program.cs) にあります。

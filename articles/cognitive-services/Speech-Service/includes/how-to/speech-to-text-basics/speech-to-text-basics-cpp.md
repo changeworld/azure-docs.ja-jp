@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: trbye
-ms.openlocfilehash: 7575e174f1f47d55c507fdbf0386fbd578649839
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 6240cdb184e0e226e5d407c8d24fed7395a285c2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92499156"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135839"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して文字起こしをする機能です (多くの場合、音声テキスト変換と呼ばれます)。 このクイックスタートでは、アプリや製品で Speech SDK を使用し、高品質の音声テキスト変換を実行する方法について説明します。
 
@@ -37,7 +37,7 @@ Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig
 using namespace std;
 using namespace Microsoft::CognitiveServices::Speech;
 
-auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+auto config = SpeechConfig::FromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
 ```
 
 [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) を初期化するには、他にも次に示すようないくつかの方法があります。

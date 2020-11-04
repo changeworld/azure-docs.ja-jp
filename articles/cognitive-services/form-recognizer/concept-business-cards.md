@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: f8f173291448d9da4d8967ff56b0fa027ca73409
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 82182c24f87a82df5ee040b7853588f74dda449f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334550"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909949"
 ---
 # <a name="business-card-concepts"></a>名刺の概念
 
@@ -385,7 +385,7 @@ Business Card API で抽出されたデータは、さまざまな作業を行�
 * 潜在顧客を追跡します。  
 * 既存の名刺画像から、連絡先情報を一括して抽出します。 
 
-また、Business Card API では、[AIBuilder の名刺処理機能](https://docs.microsoft.com/ai-builder/prebuilt-business-card)も強化されています。
+また、Business Card API では、[AIBuilder の名刺処理機能](/ai-builder/prebuilt-business-card)も強化されています。
 
 ## <a name="next-steps"></a>次のステップ
 

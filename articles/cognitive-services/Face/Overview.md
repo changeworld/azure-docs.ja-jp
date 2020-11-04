@@ -11,12 +11,12 @@ ms.date: 9/17/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 顔認識, 顔認識ソフトウェア, 顔分析, 顔照合, 顔認識アプリ, 画像による顔検索, 顔認識検索
-ms.openlocfilehash: 0a7e242add9fdaa9e169a4003e8ad8f39b1fb111
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ccc9ee3107d287844430be0ae089e4b7ac3a2f44
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91262486"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911445"
 ---
 # <a name="what-is-the-azure-face-service"></a>Azure Face サービスとは
 
@@ -34,7 +34,7 @@ Face サービスにはいくつかの異なる顔分析機能があり、その
 Face サービスでは、画像に含まれている人の顔を検出し、その位置の四角形の座標を返します。 顔検出では、オプションとして、頭部姿勢、性別、年齢、ひげ、眼鏡などの顔関連の属性を抽出できます。
 
 > [!NOTE]
-> 顔検出機能は [Computer Vision サービス](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)でもご利用いただけます。 ただし、顔のデータを使ってさらに操作を行いたい場合は、代わりにこのサービスを使用する必要があります。
+> 顔検出機能は [Computer Vision サービス](../computer-vision/overview.md)でもご利用いただけます。 ただし、顔のデータを使ってさらに操作を行いたい場合は、代わりにこのサービスを使用する必要があります。
 
 ![女性と男性の画像 (それぞれの顔の周囲に四角形が描かれ、年齢と性別が表示されている)](./Images/Face.detection.jpg)
 
@@ -48,7 +48,7 @@ Verify API は、検出された 2 つの顔に対する認証、または検出
 
 Find Similar API では、ターゲットの顔と候補となる一連の顔との間で顔照合を行い、ターゲットの顔によく似ている一連の顔が検索されます。 これは、画像による顔検索を行う場合に便利です。 
 
-**matchPerson** と **matchFace** の 2 つの動作モードがサポートされています。 **matchPerson** モードでは、[Verify API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) を使用して同一人物についてフィルター処理が行われた後、似た顔が返されます。 **matchFace** モードでは、同一人物フィルターは無視されます。 同一人物のものであるかどうかに関係なく、似ている顔の候補のリストが返されます。
+**matchPerson** と **matchFace** の 2 つの動作モードがサポートされています。 **matchPerson** モードでは、 [Verify API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) を使用して同一人物についてフィルター処理が行われた後、似た顔が返されます。 **matchFace** モードでは、同一人物フィルターは無視されます。 同一人物のものであるかどうかに関係なく、似ている顔の候補のリストが返されます。
 
 ターゲットの顔の例を次に示します。
 
@@ -58,7 +58,7 @@ Find Similar API では、ターゲットの顔と候補となる一連の顔と
 
 ![笑っている人々の 5 つの画像。 画像 a と画像 b は同一人物を示しています。](./Images/FaceFindSimilar.Candidates.jpg)
 
-4 つの似た顔を検索する場合、**matchPerson** モードではターゲットの顔と同じ人を表す a と b が返されます。 **matchFace** モードでは、ターゲットと同一人物ではない、あるいは類似性が低くとも厳密に 4 つの候補が返されるので、a、b、c、d が返されます。 詳細については、[顔認識](concepts/face-recognition.md)の概念のガイドまたは [Find Similar API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) リファレンス ドキュメントを参照してください。
+4 つの似た顔を検索する場合、 **matchPerson** モードではターゲットの顔と同じ人を表す a と b が返されます。 **matchFace** モードでは、ターゲットと同一人物ではない、あるいは類似性が低くとも厳密に 4 つの候補が返されるので、a、b、c、d が返されます。 詳細については、[顔認識](concepts/face-recognition.md)の概念のガイドまたは [Find Similar API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) リファレンス ドキュメントを参照してください。
 
 ## <a name="face-grouping"></a>顔のグループ化
 

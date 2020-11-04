@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: c959231826125349ecd6a62afe529248f7ac2eec
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7a8b331c1295ed19afa64e95318bfa14414e6d9f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326798"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913060"
 ---
 # <a name="form-recognizer-encryption-of-data-at-rest"></a>Form Recognizer による保存データの暗号化
 
@@ -30,4 +30,4 @@ Azure Form Recognizer では、クラウドに永続化されるときにデー�
 ## <a name="next-steps"></a>次のステップ
 
 * [Form Recognizer カスタマー マネージド キー要求フォーム](https://aka.ms/cogsvc-cmk)
-* [Azure Key Vault の詳細を確認する](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Azure Key Vault の詳細を確認する](../../key-vault/general/overview.md)

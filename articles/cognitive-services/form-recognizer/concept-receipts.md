@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 16d90aea8edc47750dfb7e64de7b50885971f632
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 5125fff0ef8987d313c6611e4d5de08d090f2263
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893688"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913196"
 ---
 # <a name="receipt-concepts"></a>レシートの概念
 
@@ -449,7 +449,7 @@ Azure Form Recognizer では、その事前構築済みモデルの 1 つを使�
 
 レシートには、消費者の行動やショッピングの傾向を分析するために使用できる有益なデータが含まれています。
 
-また、レシート API は [AI Builder の領収書処理機能](https://docs.microsoft.com/ai-builder/prebuilt-receipt-processing)にも採用されています。
+また、レシート API は [AI Builder の領収書処理機能](/ai-builder/prebuilt-receipt-processing)にも採用されています。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -459,4 +459,4 @@ Azure Form Recognizer では、その事前構築済みモデルの 1 つを使�
 ## <a name="see-also"></a>関連項目
 
 * [Form Recognizer とは](./overview.md)
-* [REST API リファレンス ドキュメント](https://docs.microsoft.com/azure/cognitive-services/form-recognizer)
+* [REST API リファレンス ドキュメント](./index.yml)

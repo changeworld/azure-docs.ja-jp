@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 10/30/2020
 ms.author: aahi
-ms.openlocfilehash: 9a8e0dde8b24c39180a584c26af725ab82ea0176
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e77b5ea2bbd5bae79295a5680fa6e143efa5e99
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907103"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131532"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Kubernetes と Helm と共に Computer Vision コンテナーを使用する
 
@@ -46,56 +46,15 @@ ms.locfileid: "90907103"
 
 ホスト コンピューターには使用可能な Kubernetes クラスターがあることが想定されます。 ホスト コンピューターへの Kubernetes クラスターの展開方法の概念を理解するには、[Kubernetes クラスターの展開](../../aks/tutorial-kubernetes-deploy-cluster.md)に関するこのチュートリアルをご覧ください。 デプロイの詳細については、[Kubernetes のドキュメント](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)をご覧ください。
 
-### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Kubernetes クラスターと Docker の資格情報を共有する
-
-Kubernetes クラスターで `containerpreview.azurecr.io` コンテナー レジストリの構成済みイメージに対して `docker pull` を実行できるようにするには、Docker の資格情報をクラスターに転送する必要があります。 下の [`kubectl create`][kubectl-create] コマンドを実行し、コンテナー レジストリのアクセスの前提条件から提供された資格情報に基づいて、"*docker-registry シークレット*" を作成します。
-
-適切なコマンド ライン インターフェイスから、次のコマンドを実行します。 `<username>`、`<password>`、`<email-address>` は、コンテナー レジストリの資格情報に置き換えてください。
-
-```console
-kubectl create secret docker-registry containerpreview \
-    --docker-server=containerpreview.azurecr.io \
-    --docker-username=<username> \
-    --docker-password=<password> \
-    --docker-email=<email-address>
-```
-
-> [!NOTE]
-> `containerpreview.azurecr.io` コンテナー レジストリへのアクセス権が既にある場合は、代わりに汎用フラグを使って Kubernetes シークレットを作成できます。 Docker 構成 JSON に対して実行する次のコマンドを検討してください。
-> ```console
->  kubectl create secret generic containerpreview \
->      --from-file=.dockerconfigjson=~/.docker/config.json \
->      --type=kubernetes.io/dockerconfigjson
-> ```
-
-シークレットが正常に作成されると、次の出力がコンソールに表示されます。
-
-```console
-secret "containerpreview" created
-```
-
-シークレットが作成されたことを確認するには、`secrets` フラグを指定して [`kubectl get`][kubectl-get] を実行します。
-
-```console
-kubectl get secrets
-```
-
-`kubectl get secrets` を実行すると、構成されているすべてのシークレットが表示されます。
-
-```console
-NAME                  TYPE                                  DATA      AGE
-containerpreview      kubernetes.io/dockerconfigjson        1         30s
-```
-
 ## <a name="configure-helm-chart-values-for-deployment"></a>展開に対する Helm チャートの値を構成する
 
-まず、*read* という名前のフォルダを作成します。 次に、次の YAML コンテンツを `chart.yaml` という名前の新しいファイルに貼り付けます。
+まず、 *read* という名前のフォルダを作成します。 次に、次の YAML コンテンツを `chart.yaml` という名前の新しいファイルに貼り付けます。
 
 ```yaml
 apiVersion: v2
 name: read
 version: 1.0.0
-description: A Helm chart to deploy the microsoft/cognitive-services-read to a Kubernetes cluster
+description: A Helm chart to deploy the Read OCR container to a Kubernetes cluster
 dependencies:
 - name: rabbitmq
   condition: read.image.args.rabbitmq.enabled
@@ -111,15 +70,13 @@ Helm チャートの既定値を構成するために、次の YAML をコピー
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
-
 read:
   enabled: true
   image:
     name: cognitive-services-read
-    registry:  containerpreview.azurecr.io/
-    repository: microsoft/cognitive-services-read
-    tag: latest
-    pullSecret: containerpreview # Or an existing secret
+    registry:  mcr.microsoft.com/
+    repository: azure-cognitive-services/vision/read
+    tag: 3.1-preview
     args:
       eula: accept
       billing: # {ENDPOINT_URI}
@@ -148,7 +105,7 @@ read:
 > [!IMPORTANT]
 > - `billing` 値と `apikey` 値が指定されていない場合、サービスは 15 分後に期限切れになります。 さらに、サービスが利用できないため、検証は失敗します。
 > 
-> - Docker Compose または Kubernetes の下など、ロード バランサーの背後に複数の読み取りコンテナーをデプロイする場合は、外部キャッシュが必要です。 処理コンテナーと GET 要求コンテナーは同じではない可能性があるため、外部キャッシュに結果が保存され、コンテナー間で共有されます。 キャッシュ設定の詳細については、「[Computer Vision Docker コンテナーを構成する](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config)」をご覧ください。
+> - Docker Compose または Kubernetes の下など、ロード バランサーの背後に複数の読み取りコンテナーをデプロイする場合は、外部キャッシュが必要です。 処理コンテナーと GET 要求コンテナーは同じではない可能性があるため、外部キャッシュによって結果が格納され、コンテナーとの間で共有されます。 キャッシュ設定の詳細については、「[Computer Vision Docker コンテナーを構成する](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config)」をご覧ください。
 >
 
 *read* ディレクトリの下に *templates* フォルダーを作成します。 次の YAML をコピーし、`deployment.yaml` という名前のファイルに貼り付けます。 `deployment.yaml` ファイルは Helm テンプレートとして機能します。
@@ -227,15 +184,15 @@ spec:
 
 ### <a name="the-kubernetes-package-helm-chart"></a>Kubernetes パッケージ (Helm チャート)
 
-"*Helm チャート*" には、`containerpreview.azurecr.io` コンテナー レジストリからプルする Docker イメージの構成が含まれます。
+" *Helm チャート* " には、`mcr.microsoft.com` コンテナー レジストリからプルする Docker イメージの構成が含まれます。
 
 > [Helm チャート][helm-charts] は、関連する Kubernetes リソースのセットが記述されているファイルのコレクションです。 1 つのチャートを使って、memcached ポッドのような単純なものや、HTTP サーバー、データベース、キャッシュなどを含む完全な Web アプリ スタックのような複雑なものを、展開できます。
 
-提供されている "*Helm チャート*" では、Computer Vision サービスと対応するサービスの Docker イメージが、`containerpreview.azurecr.io` コンテナー レジストリからプルされます。
+提供されている " *Helm チャート* " では、Computer Vision サービスと対応するサービスの Docker イメージが、`mcr.microsoft.com` コンテナー レジストリからプルされます。
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>Kubernetes クラスターに Helm チャートをインストールする
 
-"*Helm チャート*" をインストールするには、[`helm install`][helm-install-cmd] コマンドを実行する必要があります。 必ず `read` フォルダーの上のディレクトリから install コマンドを実行します。
+" *Helm チャート* " をインストールするには、 [`helm install`][helm-install-cmd] コマンドを実行する必要があります。 必ず `read` フォルダーの上のディレクトリから install コマンドを実行します。
 
 ```console
 helm install read ./read

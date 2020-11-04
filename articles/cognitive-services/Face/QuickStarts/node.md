@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 0f87bc13a75355306f7d2d15b22ff9cdfaa53794
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f77282502a0032a5b1811e32d9aa47d9b4ede569
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858224"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912822"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>クイック スタート:Face REST API と Node.js を使用して画像から顔を検出する
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="set-up-the-node-environment"></a>Node 環境をセットアップする
 
-実際のプロジェクトの作成先となるフォルダーに移動して、*facedetection.js* という新しいファイルを作成します。 そのプロジェクトに `axios` モジュールをインストールします。 これにより、スクリプトから HTTP 要求を実行することができます。
+実際のプロジェクトの作成先となるフォルダーに移動して、 *facedetection.js* という新しいファイルを作成します。 そのプロジェクトに `axios` モジュールをインストールします。 これにより、スクリプトから HTTP 要求を実行することができます。
 
 ```shell
 npm install axios --save
@@ -42,7 +42,7 @@ npm install axios --save
 
 ## <a name="write-the-nodejs-script"></a>Node.js スクリプトを作成する
 
-次のコードを *facedetection.js* に貼り付けます。 Face サービスへの接続方法と入力データの取得場所がこれらのフィールドによって指定されます。 [環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows#configure-an-environment-variable-for-authentication)し、Face サブスクリプションのキーとエンドポイントを追加します。 `imageUrl` フィールドは、実際の入力画像を指すように変更する必要があります。
+次のコードを *facedetection.js* に貼り付けます。 Face サービスへの接続方法と入力データの取得場所がこれらのフィールドによって指定されます。 [環境変数を作成](../../cognitive-services-apis-create-account.md?tabs=multiservice%252cwindows#configure-an-environment-variable-for-authentication)し、Face サブスクリプションのキーとエンドポイントを追加します。 `imageUrl` フィールドは、実際の入力画像を指すように変更する必要があります。
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

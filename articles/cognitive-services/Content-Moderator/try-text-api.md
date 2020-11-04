@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: ad365c2d4c171105d8dec89d818ef481361d1ff8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 664c4289cbfa1f6ce2fce9f9f83b0240bd2d592c
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81272595"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912873"
 ---
 # <a name="moderate-text-from-the-api-console"></a>API コンソールからテキストをモデレートする
 
@@ -33,7 +33,7 @@ Azure Content Moderator の [Text Moderation API](https://westus.dev.cognitive.m
 
 ## <a name="open-the-api-console"></a>API コンソールを開く
 
-**API テスト コンソールを開く場合**、実際の場所を最もよく表しているリージョンを選択します。 
+**API テスト コンソールを開く場合** 、実際の場所を最もよく表しているリージョンを選択します。 
 
   ![(テキスト - 選別) ページでのリージョンの選択](images/test-drive-region.png)
 
@@ -43,12 +43,12 @@ Azure Content Moderator の [Text Moderation API](https://westus.dev.cognitive.m
 
 ### <a name="parameters"></a>パラメーター
 
-テキスト画面で使用するクエリ パラメーターを選択します。 この例の場合、**language** には既定値を使用します。 この操作では実行の一環として、可能性の高い言語が自動的に検出されるため、これは空白のままにしておくこともできます。
+テキスト画面で使用するクエリ パラメーターを選択します。 この例の場合、 **language** には既定値を使用します。 この操作では実行の一環として、可能性の高い言語が自動的に検出されるため、これは空白のままにしておくこともできます。
 
 > [!NOTE]
-> **language** パラメーターについては、`eng` を割り当てるか、パラメーターを空のままにして、コンピューター支援による**分類**応答を表示します (プレビュー機能)。 **この機能でサポートされているのは英語のみです**。
+> **language** パラメーターについては、`eng` を割り当てるか、パラメーターを空のままにして、コンピューター支援による **分類** 応答を表示します (プレビュー機能)。 **この機能でサポートされているのは英語のみです** 。
 >
-> **不適切用語**の検出については、この記事の一覧に示したサポート対象言語の [ISO 639-3 コード](http://www-01.sil.org/iso639-3/codes.asp)を使用するか、空のままにします。
+> **不適切用語** の検出については、この記事の一覧に示したサポート対象言語の [ISO 639-3 コード](http://www-01.sil.org/iso639-3/codes.asp)を使用するか、空のままにします。
 
 **[autocorrect]** 、 **[PII]** 、および **[classify]** (プレビュー) については、 **[true]** を選択します。 **[ListId]** フィールドは空白のままにしておきます。
 
@@ -137,4 +137,4 @@ JSON 応答に含まれるすべてのセクションの詳細説明について
 
 ## <a name="next-steps"></a>次のステップ
 
-コードで REST API を使用するか、[.NET SDK のクイックスタート](dotnet-sdk-quickstart.md)に従って、アプリケーションと統合します。
+コードで REST API を使用するか、[.NET SDK のクイックスタート](./client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)に従って、アプリケーションと統合します。
