@@ -11,12 +11,13 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e7765e077638c85c0cefe394a10cc22fe2b0b757
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+- devx-track-azurecli
+ms.openlocfilehash: 3a75b3622ebc2085dac898e2a06e09f16466cbf5
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147788"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746603"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub 用語集
 
@@ -44,7 +45,7 @@ Azure IoT Hub の自動デバイス管理は、大規模なデバイス集団の
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT device SDK
 
-複数の言語で使用可能な _デバイス SDK_ があり、IoT Hub と対話する[デバイス アプリ](#device-app)を作成できます。 IoT Hub のチュートリアルでは、これらのデバイス SDK を使用する方法を説明します。 デバイス SDK のソース コードと詳細については、この GitHub [リポジトリ](https://github.com/Azure/azure-iot-sdks)を参照してください。
+複数の言語で使用可能な _デバイス SDK_ があり、IoT Hub と対話する [デバイス アプリ](#device-app)を作成できます。 IoT Hub のチュートリアルでは、これらのデバイス SDK を使用する方法を説明します。 デバイス SDK のソース コードと詳細については、この GitHub [リポジトリ](https://github.com/Azure/azure-iot-sdks)を参照してください。
 
 ## <a name="azure-iot-explorer"></a>Azure IoT Explorer
 
@@ -52,7 +53,7 @@ Azure IoT Hub の自動デバイス管理は、大規模なデバイス集団の
 
 ## <a name="azure-iot-service-sdks"></a>Azure IoT サービス SDK
 
-複数の言語で使用可能な _サービス SDK_ があり、IoT Hub と対話する[バックエンド アプリ](#back-end-app)を作成できます。 IoT Hub のチュートリアルでは、これらのサービス SDK を使用する方法を説明します。 サービス SDK のソース コードと詳細については、この GitHub [リポジトリ](https://github.com/Azure/azure-iot-sdks)を参照してください。
+複数の言語で使用可能な _サービス SDK_ があり、IoT Hub と対話する [バックエンド アプリ](#back-end-app)を作成できます。 IoT Hub のチュートリアルでは、これらのサービス SDK を使用する方法を説明します。 サービス SDK のソース コードと詳細については、この GitHub [リポジトリ](https://github.com/Azure/azure-iot-sdks)を参照してください。
 
 ## <a name="azure-iot-tools"></a>Azure IoT Tools
 
@@ -60,7 +61,7 @@ Azure IoT Hub の自動デバイス管理は、大規模なデバイス集団の
 
 ## <a name="azure-portal"></a>Azure portal
 
-Azure リソースのプロビジョニングと管理は、[Microsoft Azure Portal](https://portal.azure.com) を使って 1 か所で行うことができます。 Azure Portal は、_ブレード_ を使用してそのコンテンツを整理します。
+Azure リソースのプロビジョニングと管理は、[Microsoft Azure Portal](https://portal.azure.com) を使って 1 か所で行うことができます。 Azure Portal は、 _ブレード_ を使用してそのコンテンツを整理します。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -218,7 +219,7 @@ IoT Hub は、何百万ものデバイスとソリューションのバックエ
 
 ## <a name="iot-hub-metrics"></a>IoT Hub メトリック
 
-[IoT Hub メトリック](iot-hub-metrics.md)は、[Azure サブスクリプション](#subscription)内の IoT Hub の状態に関するデータを提供します。 IoT Hub メトリックにより、ユーザーはサービスとそれに接続されたデバイスの全体的な正常性を評価することができます。 IoT Hub メトリックは、IoT Hub で起こっていることを確認するため、また、Azure サポートに連絡することなく問題の根本原因を調査するための有用な情報となります。
+[IoT Hub メトリック](monitor-iot-hub-reference.md#metrics)は、[Azure サブスクリプション](#subscription)内の IoT Hub の状態に関するデータを提供します。 IoT Hub メトリックにより、ユーザーはサービスとそれに接続されたデバイスの全体的な正常性を評価することができます。 IoT Hub メトリックは、IoT Hub で起こっていることを確認するため、また、Azure サポートに連絡することなく問題の根本原因を調査するための有用な情報となります。 詳細については、[IoT Hub の監視](monitor-iot-hub.md)に関する記事を参照してください。
 
 ## <a name="iot-hub-query-language"></a>IoT Hub クエリ言語
 
@@ -319,7 +320,7 @@ Shared Access Signature (SAS) は、SHA-256 セキュア ハッシュまたは U
 便宜上、IoT Hub チュートリアルの多くは、シミュレートされたデバイスを使用して、ローカル コンピューター上でサンプルを実行できるようにしています。 一方、[物理デバイス](#physical-device)は、Raspberry Pi など、IoT Hub に接続する実際のデバイスです。
 
 ## <a name="solution"></a>解決策
-_ソリューション_ は、1 つまたは複数のプロジェクトを含む Visual Studio ソリューションを指す場合があります。 _ソリューション_ は、デバイス、[デバイス アプリ](#device-app)、IoT Hub、他の Azure サービス、[バックエンド アプリ](#back-end-app)などの要素を含む IoT ソリューションを指す場合もあります。
+_ソリューション_ は、1 つまたは複数のプロジェクトを含む Visual Studio ソリューションを指す場合があります。 _ソリューション_ は、デバイス、 [デバイス アプリ](#device-app)、IoT Hub、他の Azure サービス、 [バックエンド アプリ](#back-end-app)などの要素を含む IoT ソリューションを指す場合もあります。
 
 ## <a name="subscription"></a>サブスクリプション
 
@@ -339,7 +340,7 @@ Azure サブスクリプションでは、課金が発生します。 作成す�
 
 ## <a name="token-service"></a>トークン サービス
 
-トークン サービスを使用して、デバイスに認証メカニズムを実装できます。 このサービスは、**DeviceConnect** アクセス許可が指定された IoT Hub [共有アクセス ポリシー](#shared-access-policy)を使用して、*デバイスを対象とする*トークンを作成します。 これらのトークンにより、デバイスは IoT Hub に接続できるようになります。 デバイスは、カスタム認証機構を使用して、トークン サービスで認証を受けます。 デバイスが正常に認証された場合、トークン サービスはデバイスに対して IoT Hub へのアクセスに使用する SAS トークンを発行します。
+トークン サービスを使用して、デバイスに認証メカニズムを実装できます。 このサービスは、 **DeviceConnect** アクセス許可が指定された IoT Hub [共有アクセス ポリシー](#shared-access-policy)を使用して、 *デバイスを対象とする* トークンを作成します。 これらのトークンにより、デバイスは IoT Hub に接続できるようになります。 デバイスは、カスタム認証機構を使用して、トークン サービスで認証を受けます。 デバイスが正常に認証された場合、トークン サービスはデバイスに対して IoT Hub へのアクセスに使用する SAS トークンを発行します。
 
 ## <a name="twin-queries"></a>ツイン クエリ
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
-ms.openlocfilehash: 416ca556e298fa088916a554860d05725bc1cf72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29ea65e94e97b69e24c6935328cc01c2295adc5a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045503"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518638"
 ---
 # <a name="plan-virtual-networks"></a>仮想ネットワークを計画する
 
@@ -105,7 +105,7 @@ Azure [VPN Gateway](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2
 
 ## <a name="permissions"></a>アクセス許可
 
-Azure は、リソースに対して[ロール ベースのアクセス制御](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) を利用します。 アクセス許可は、管理グループ、サブスクリプション、リソース グループ、および個々のリソースという階層内の[スコープ](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope)に割り当てられます。 階層について詳しくは、[リソースの整理](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。 Azure 仮想ネットワークと、ピアリング、ネットワーク セキュリティ グループ、サービス エンドポイント、ルート テーブルなどの関連するすべての機能を使用するには、組織のメンバーを組み込みの[所有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner)、[共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)、または[ネットワーク共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロールに割り当ててから、ロールを適切なスコープに割り当てることができます。 仮想ネットワークの機能のサブセットに対して特定のアクセス許可を割り当てる場合は、[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を作成し、[仮想ネットワーク](manage-virtual-network.md#permissions)、[サブネットとサービス エンドポイント](virtual-network-manage-subnet.md#permissions)、[ネットワーク インターフェイス](virtual-network-network-interface.md#permissions)、[ピアリング](virtual-network-manage-peering.md#permissions)、[ネットワークおよびアプリケーション セキュリティ グループ](manage-network-security-group.md#permissions)、または[ルート テーブル](manage-route-table.md#permissions)に必要な特定のアクセス許可を、ロールに割り当てます。
+Azure では、リソースに対して、[Azure ロール ベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を利用します。 アクセス許可は、管理グループ、サブスクリプション、リソース グループ、および個々のリソースという階層内の[スコープ](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope)に割り当てられます。 階層について詳しくは、[リソースの整理](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。 Azure 仮想ネットワークと、ピアリング、ネットワーク セキュリティ グループ、サービス エンドポイント、ルート テーブルなどの関連するすべての機能を使用するには、組織のメンバーを組み込みの[所有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner)、[共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)、または[ネットワーク共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロールに割り当ててから、ロールを適切なスコープに割り当てることができます。 仮想ネットワークの機能のサブセットに対して特定のアクセス許可を割り当てる場合は、[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を作成し、[仮想ネットワーク](manage-virtual-network.md#permissions)、[サブネットとサービス エンドポイント](virtual-network-manage-subnet.md#permissions)、[ネットワーク インターフェイス](virtual-network-network-interface.md#permissions)、[ピアリング](virtual-network-manage-peering.md#permissions)、[ネットワークおよびアプリケーション セキュリティ グループ](manage-network-security-group.md#permissions)、または[ルート テーブル](manage-route-table.md#permissions)に必要な特定のアクセス許可を、ロールに割り当てます。
 
 ## <a name="policy"></a>ポリシー
 

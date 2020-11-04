@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 094a146f8e0e32667986a8e807955be1a5f66e39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa28b299a33f5386edc6ce14c523d2c332b0767b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613928"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520506"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>チュートリアル: Tableau Online を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -53,15 +53,15 @@ Marketplace から Tableau Online を追加するには、次の手順に従い�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Tableau Online**」と入力し、結果パネルから **[Tableau Online]** を選択します。 アプリケーションを追加するには、 **[追加]** を選択します。
+4. 検索ボックスに「 **Tableau Online** 」と入力し、結果パネルから **[Tableau Online]** を選択します。 アプリケーションを追加するには、 **[追加]** を選択します。
 
     ![結果一覧の Tableau Online](common/search-new-app.png)
 
 ## <a name="assign-users-to-tableau-online"></a>Tableau Online にユーザーを割り当てる
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD でアプリケーションに割り当てられているユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD でアプリケーションに割り当てられているユーザーとグループのみが同期されます。
 
-自動ユーザー プロビジョニングを構成して有効にする前に、Tableau Online にアクセスする必要がある Azure AD のユーザーまたはグループを決定しておく必要があります。 これらのユーザーまたはグループを Tableau Online に割り当てるには、「[エンタープライズ アプリにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)」の指示に従います。
+自動ユーザー プロビジョニングを構成して有効にする前に、Tableau Online にアクセスする必要がある Azure AD のユーザーまたはグループを決定しておく必要があります。 これらのユーザーまたはグループを Tableau Online に割り当てるには、「[エンタープライズ アプリにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)」の指示に従います。
 
 ### <a name="important-tips-for-assigning-users-to-tableau-online"></a>ユーザーを Tableau Online に割り当てる際の重要なヒント
 
@@ -98,7 +98,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
    * **[ドメイン]** ボックスに、手順 6 に基づいてサブドメインを入力します。
 
-   * **[管理ユーザー名]** ボックスに、Clarizen テナントの管理者アカウントのユーザー名を入力します。 たとえば admin@contoso.com です。
+   * **[管理ユーザー名]** ボックスに、Tableau Online テナントの管理者アカウントのユーザー名を入力します。 たとえば admin@contoso.com です。
 
    * **[管理パスワード]** ボックスに、管理者ユーザー名に対応する管理者アカウントのパスワードを入力します。
 
@@ -115,7 +115,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
         ![Tableau Online のコンテンツの URL](./media/tableau-online-provisioning-tutorial/ContentUrlPart.png)
 
         > [!NOTE]
-        > 実際の**ドメイン**は、ここに示したものとは異なる場合があります。
+        > 実際の **ドメイン** は、ここに示したものとは異なる場合があります。
 
 7. 手順 5 に示されているボックスに入力したら、 **[テスト接続]** を選択して、Azure AD が Tableau Online に接続できることを確認します。 接続できない場合は、使用中の Tableau Online アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

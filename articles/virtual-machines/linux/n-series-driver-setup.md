@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: c0f05bd9ebd100956cfb7b2b6188e18616368dd0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 9b6e752f8352db565239aba4a990752b1c397f5f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168479"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517261"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする
 
@@ -161,6 +161,23 @@ N シリーズ VM で RDMA 接続をサポートする Azure Marketplace で、�
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
 * **CentOS ベースの 7.4 HPC** - RDMA ドライバーおよび Intel MPI 5.1 は、VM にインストールされます。
+
+* **CentOS ベースの HPC** - CentOS-HPC 7.6 以降 (InfiniBand が SR-IOV 経由でサポートされている SKU の場合)。 これらのイメージには、Mellanox OFED と MPI ライブラリが事前にインストールされています。
+
+> [!NOTE]
+> CX3-Pro カードは、Mellanox OFED の LTS バージョンによってのみサポートされます。 ConnectX3-Pro カードを搭載する N シリーズ VM では、LTS Mellanox OFED バージョン (4.9-0.1.7.0) を使用してください。 詳細については、[Linux ドライバー](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed)に関するページを参照してください。
+>
+> また、最新の Azure Marketplace HPC イメージの一部には、ConnectX3-Pro カードをサポートしていない Mellanox OFED 5.1 以降が使用されています。 ConnectX3-Pro カードを搭載する VM で使用する前に、HPC イメージの Mellanox OFED のバージョンを確認してください。
+>
+> 次の図は、ConnectX3-Pro カードをサポートする最新の CentOS-HPC イメージです。
+>
+> - OpenLogic:CentOS-HPC:7.6:7.6.2020062900
+> - OpenLogic:CentOS-HPC:7_6gen2:7.6.2020062901
+> - OpenLogic:CentOS-HPC:7.7:7.7.2020062600
+> - OpenLogic:CentOS-HPC:7_7-gen2:7.7.2020062601
+> - OpenLogic:CentOS-HPC:8_1:8.1.2020062400
+> - OpenLogic:CentOS-HPC:8_1-gen2:8.1.2020062401
+>
 
 ## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>NV または NVv3 シリーズの VM に GRID ドライバーをインストールする
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 039fabbbb04f352042973f559e34a3c3a77e7500
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: cf297cdeec88a31950d007246f987957db80e247
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340429"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785886"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
@@ -26,9 +26,9 @@ ms.locfileid: "92340429"
 ## <a name="integrated-azure-security-solutions"></a>統合された Azure セキュリティ ソリューション
 Security Center を使用すると、Azure で統合されたセキュリティ ソリューションを簡単に有効にすることができます。 利点は次のとおりです。
 
-- **簡略化されたデプロイ**:Security Center により、統合されたパートナー ソリューションのプロビジョニングが簡略化されます。 マルウェア対策や脆弱性評価などのソリューションについては、Security Center によって仮想マシンにエージェントをプロビジョニングできます。 ファイアウォール アプライアンスについては、Security Center で、必要なネットワーク構成の多くに対処できます。
-- **統合された検出機能**:パートナー ソリューションのセキュリティ イベントは、Security Center の警告とインシデントの一環として自動的に収集、集計、表示されます。 また、これらのイベントは、他のソースからの検出とも組み合わされ、高度な脅威検出機能を提供します。
-- **統合された正常性の監視と管理**:ユーザーは、統合された正常性イベントを使用して、すべてのパートナー ソリューションをひとめで監視できます。 基本的な管理は、パートナー ソリューションを使用して高度な設定に簡単にアクセスできれば、使用できます。
+- **簡略化されたデプロイ** :Security Center により、統合されたパートナー ソリューションのプロビジョニングが簡略化されます。 マルウェア対策や脆弱性評価などのソリューションについては、Security Center によって仮想マシンにエージェントをプロビジョニングできます。 ファイアウォール アプライアンスについては、Security Center で、必要なネットワーク構成の多くに対処できます。
+- **統合された検出機能** :パートナー ソリューションのセキュリティ イベントは、Security Center の警告とインシデントの一環として自動的に収集、集計、表示されます。 また、これらのイベントは、他のソースからの検出とも組み合わされ、高度な脅威検出機能を提供します。
+- **統合された正常性の監視と管理** :ユーザーは、統合された正常性イベントを使用して、すべてのパートナー ソリューションをひとめで監視できます。 基本的な管理は、パートナー ソリューションを使用して高度な設定に簡単にアクセスできれば、使用できます。
 
 現時点では、統合セキュリティ ソリューションに、[Qualys](https://www.qualys.com/public-cloud/#azure) と [Rapid7](https://www.rapid7.com/products/insightvm/) による脆弱性評価と Microsoft Application Gateway Web アプリケーション ファイアウォールが含まれます。
 
@@ -105,5 +105,5 @@ Security Center は、Azure で実行されていても Security Center に接�
 
 この記事では、Security Center でパートナー ソリューションを統合する方法について説明しました。 関連情報については、次の記事をご覧ください。
 
-* [セキュリティ アラートと推奨事項のエクスポート](continuous-export.md)。 Azure Sentinel または任意の他の SIEM との統合を設定する方法について説明しています。
+* [Security Center のデータを連続的にエクスポートする](continuous-export.md)。 Azure Sentinel または任意の他の SIEM との統合を設定する方法について説明しています。
 * [Security Center でのセキュリティ正常性の監視](security-center-monitoring.md)。 Azure リソースの正常性を監視する方法について説明しています。

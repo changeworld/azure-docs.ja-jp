@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 3cb335cb32ded68377b4eec0af3b1ebbc19e77d9
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: c40f1762ea7c87ea73ec20e47b0398e0d3e364b4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328303"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677128"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM 製品/サービスを IT Service Management Connector に追加する
 この記事では、ITSM 製品/サービスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。 ITSMC の詳細については、[概要](./itsmc-overview.md)に関する記事をご覧ください。
@@ -45,7 +45,7 @@ ms.locfileid: "92328303"
 > [!NOTE]
 > 
 > - ITSM Connector は、クラウドベースの ServiceNow インスタンスにのみ接続できます。 オンプレミスの ServiceNow インスタンスは現在サポートされていません。
-> - アクションの一部としてカスタム テンプレートを使用するには、SCSM テンプレートのパラメーター "ProjectionType" を "IncidentManagement!System.WorkItem.Incident.ProjectionType" にマップする必要があります。
+> - アクションの一部としてカスタム [テンプレート](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions)を使用するには、SCSM テンプレートのパラメーター "ProjectionType" を "IncidentManagement!System.WorkItem.Incident.ProjectionType" にマップする必要があります
 
 ### <a name="connection-procedure"></a>接続手順
 
@@ -214,6 +214,8 @@ Service Manager インスタンスを Azure の ITSMC に接続するハイブ�
 > 3. [Revoke Access]\(アクセス権の取り消し\)、[Revoke]\(取り消し\) の順にクリックします。
 
 - Microsoft Log Analytics 統合のユーザー アプリ (ServiceNow アプリ) をインストールします。 [詳細については、こちらを参照してください](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 )。
+> [!NOTE]
+> ITSMC では、ServiceNow ストアからダウンロードされた Microsoft Log Analytics 統合用の公式ユーザー アプリのみをサポートしています。 ITSMC では、ServiceNow 側でのコード インジェストや公式 ServiceNow ソリューションに含まれていないアプリケーションをサポートしていません。 
 - インストールしたユーザー アプリの統合ユーザー ロールを作成します。 統合ユーザー ロールを作成する方法については、[こちら](#create-integration-user-role-in-servicenow-app)をご覧ください。
 
 ### <a name="connection-procedure"></a>**接続手順**
@@ -348,7 +350,7 @@ Provance 接続を作成するには、次の手順に従います。
 | **データの同期** | 過去何日分のデータを同期するのかについて、日数を入力します。 **上限** : 120 日。 |
 | **Create new configuration item in ITSM solution (ITSM ソリューション内の新しい構成項目の作成)** | ITSM 製品で構成項目を作成する場合は、このオプションを選択します。 選択すると、ITSMC は影響を受ける CI を、サポートされている ITSM システムの構成項目として作成します (CI が存在しない場合)。 **既定** : 無効。|
 
-![Provance 接続](media/itsmc-connections/itsm-connections-provance-latest.png)
+![接続名とパートナーの種類の一覧を強調表示したスクリーンショット。](media/itsmc-connections/itsm-connections-provance-latest.png)
 
 **正常に接続され、同期された場合** :
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c670c011f911e9b27f1280800508124d32e696cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19a9abe3a03a384a69950a8ed9b63353e6e36588
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87489845"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676253"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>クイック スタート:Azure CLI を使用してストレージ イベントを Web エンドポイントにルーティングする
 
@@ -24,7 +24,7 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 
 この記事の手順の最後に、イベント データが Web アプリに送信済みであることを確認できます。
 
-![サブスクリプション イベントの表示](./media/storage-blob-event-quickstart/view-results.png)
+![Web アプリに送信されたイベント データを表示する Azure Event Grid ビューアーのスクリーンショット。](./media/storage-blob-event-quickstart/view-results.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -48,7 +48,7 @@ az group create --name <resource_group_name> --location westcentralus
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-Blob Storage のイベントは、汎用 v2 ストレージ アカウントおよび BLOB ストレージ アカウントで使用できます。 **汎用 v2** ストレージ アカウントでは、BLOB、ファイル、キュー、テーブルをはじめとするすべてのストレージ サービスに対するすべての機能がサポートされます。 **BLOB ストレージ アカウント**とは、Azure Storage に BLOB (オブジェクト) として非構造化データを格納するための特殊なストレージ アカウントです。 Blob Storage アカウントは、汎用ストレージ アカウントと同様に、現在使われているすべての優れた耐久性、可用性、スケーラビリティ、およびパフォーマンス機能を共有します。たとえば、ブロック BLOB と追加 BLOB の 100% の API 整合性などです。 詳細については、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
+Blob Storage のイベントは、汎用 v2 ストレージ アカウントおよび BLOB ストレージ アカウントで使用できます。 **汎用 v2** ストレージ アカウントでは、BLOB、ファイル、キュー、テーブルをはじめとするすべてのストレージ サービスに対するすべての機能がサポートされます。 **BLOB ストレージ アカウント** とは、Azure Storage に BLOB (オブジェクト) として非構造化データを格納するための特殊なストレージ アカウントです。 Blob Storage アカウントは、汎用ストレージ アカウントと同様に、現在使われているすべての優れた耐久性、可用性、スケーラビリティ、およびパフォーマンス機能を共有します。たとえば、ブロック BLOB と追加 BLOB の 100% の API 整合性などです。 詳細については、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
 
 `<storage_account_name>` は、ご利用のストレージ アカウントの一意の名前に、`<resource_group_name>` は、先ほど作成したリソース グループに置き換えてください。
 

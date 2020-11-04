@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
-ms.openlocfilehash: b5ea227ba75a9ecf6666883603dad97d02385b5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddd1a6fa2fc25add30664da5b739338e87e7e74f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086485"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547845"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>HDInsight の Apache Hadoop クラスターで空のエッジ ノードを使用する
 
@@ -61,13 +61,13 @@ HDInsight クラスターに空のエッジ ノードを追加する方法につ
 > [!WARNING]
 > エッジ ノードにインストールされているカスタム コンポーネントは、Microsoft からビジネス上合理的なサポートを受けることができます。 これにより、発生する問題を解決できる場合があります。 または、追加の支援を受けるために、コミュニティ リソースを参照することもできます。 コミュニティから支援を受けることができる、最もアクティブなサイトの一部を次に示します。
 >
-> * [HDInsight に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-hdinsight.html)
+> * [HDInsight についての Microsoft Q&A 質問ページ](/answers/topics/azure-hdinsight.html
 > * [https://stackoverflow.com](https://stackoverflow.com).
 >
 > Apache テクノロジを使用している場合、[https://apache.org](https://apache.org) にある Apache の各プロジェクト サイト (例: [Apache Hadoop](https://hadoop.apache.org/) サイト) で支援を受けられる可能性があります。
 
 > [!IMPORTANT]
-> Ubuntu イメージは、公開から 3 か月以内に、新しい HDInsight クラスターの作成のために入手できるようになります。 2019 年 1 月時点で、実行中のクラスター (エッジ ノードを含む) に修正プログラムは自動適用**されません**。 お客様は、スクリプトによるアクションまたはその他のメカニズムを使用して、実行中のクラスターに修正プログラムを適用する必要があります。  詳細については、「[HDInsight 用の OS の修正プログラム](./hdinsight-os-patching.md)」を参照してください。
+> Ubuntu イメージは、公開から 3 か月以内に、新しい HDInsight クラスターの作成のために入手できるようになります。 2019 年 1 月時点で、実行中のクラスター (エッジ ノードを含む) に修正プログラムは自動適用 **されません** 。 お客様は、スクリプトによるアクションまたはその他のメカニズムを使用して、実行中のクラスターに修正プログラムを適用する必要があります。  詳細については、「[HDInsight 用の OS の修正プログラム](./hdinsight-os-patching.md)」を参照してください。
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>既存のクラスターにエッジ ノードを追加する
 
@@ -109,9 +109,9 @@ HDInsight クラスターに空のエッジ ノードを追加する方法につ
     |Resource group|クラスターの新しいリソース グループを作成します。|
     |場所|リソース グループの場所を選びます。|
     |クラスター名|新しく作成するクラスターの名前を入力します。|
-    |[Cluster Login User Name]\(クラスター ログイン ユーザー名\)|Hadoop HTTP ユーザー名を入力します。  既定の名前は **admin**です。|
+    |[Cluster Login User Name]\(クラスター ログイン ユーザー名\)|Hadoop HTTP ユーザー名を入力します。  既定の名前は **admin** です。|
     |[クラスター ログイン パスワード]|HTTP ユーザー パスワードを入力します。|
-    |SSH ユーザー名|SSH ユーザー名を入力します。 既定の名前は **sshuser**です。|
+    |SSH ユーザー名|SSH ユーザー名を入力します。 既定の名前は **sshuser** です。|
     |SSH パスワード|SSH ユーザー パスワードを入力します。|
     |スクリプト アクションのインストール|この記事では既定値のままにします。|
 
@@ -121,7 +121,7 @@ HDInsight クラスターに空のエッジ ノードを追加する方法につ
 
 ## <a name="add-multiple-edge-nodes"></a>複数のエッジ ノードの追加
 
-HDInsight クラスターには複数のエッジ ノードを追加できます。  複数エッジ ノード構成は、Azure Resource Manager テンプレートを使用することによってのみ行うことができます。  この記事の冒頭にあるテンプレート サンプルを参照してください。  作成するエッジ ノードの数を反映させるには、**targetInstanceCount** を更新します。
+HDInsight クラスターには複数のエッジ ノードを追加できます。  複数エッジ ノード構成は、Azure Resource Manager テンプレートを使用することによってのみ行うことができます。  この記事の冒頭にあるテンプレート サンプルを参照してください。  作成するエッジ ノードの数を反映させるには、 **targetInstanceCount** を更新します。
 
 ## <a name="access-an-edge-node"></a>エッジ ノードにアクセスする
 
@@ -133,7 +133,7 @@ HDInsight クラスターには複数のエッジ ノードを追加できます
 
 1. [Azure Portal](https://portal.azure.com) にサインオンします。
 2. エッジ ノードを含む HDInsight クラスターを開きます。
-3. **[アプリケーション]** を選択します。 エッジ ノードが表示されます。  既定の名前は **new-edgenode**です。
+3. **[アプリケーション]** を選択します。 エッジ ノードが表示されます。  既定の名前は **new-edgenode** です。
 4. エッジ ノードを選択します。 SSH エンドポイントが表示されます。
 
 **エッジ ノードで Hive を使用するには**
@@ -169,6 +169,6 @@ Azure Portal からエッジ ノードを削除できます。
 * [HDInsight アプリケーションをインストールする](hdinsight-apps-install-applications.md):HDInsight アプリケーションをクラスターにインストールする方法について確認します。
 * [カスタム HDInsight アプリケーションをインストールする](hdinsight-apps-install-custom-applications.md): 未発行の HDInsight アプリケーションを HDInsight にデプロイする方法について確認します。
 * [HDInsight アプリケーションを発行する](hdinsight-apps-publish-applications.md):カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法について確認します。
-* [MSDN:HDInsight アプリケーションをインストールする](https://msdn.microsoft.com/library/mt706515.aspx):HDInsight アプリケーションを定義する方法を確認します。
+* [MSDN:HDInsight アプリケーションをインストールする](/rest/api/hdinsight/hdinsight-application):HDInsight アプリケーションを定義する方法を確認します。
 * [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md): スクリプト アクションを使用してアプリケーションを追加インストールする方法を確認します。
 * [Resource Manager テンプレートを使用して HDInsight で Linux ベースの Apache Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Resource Manager テンプレートを呼び出して HDInsight クラスターを作成する方法を確認します。

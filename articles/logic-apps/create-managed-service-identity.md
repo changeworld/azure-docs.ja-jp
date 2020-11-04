@@ -5,19 +5,19 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 02/10/2020
-ms.openlocfilehash: 95d892bf7a0c0e395289d4a5535cd9b6b789b055
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/27/2020
+ms.openlocfilehash: bb146f03000f17d94d3d2ffc93b55c42eea20dac
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88565929"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736258"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps でマネージド ID を使用して Azure リソースへのアクセスを認証する
 
 サインインすることなく他の Azure Active Directory (Azure AD) によって保護される他のリソースに容易にアクセスして ID の認証を行うため、ロジック アプリは、資格情報やシークレットではなく [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) (以前はマネージド サービス ID (MSI) と呼ばれていました) を使用できます。 この ID は、ユーザーの代わりに Azure で管理されます。ユーザーがシークレットを提供したりローテーションしたりする必要がないため、資格情報の保護に役立ちます。
 
-Azure Logic Apps では、"[*システム割り当て*](../active-directory/managed-identities-azure-resources/overview.md)" と "[*ユーザー割り当て*](../active-directory/managed-identities-azure-resources/overview.md)" の両方のマネージド ID がサポートされます。 ロジック アプリでは、システムによって割り当てられた ID または "*単一*" のユーザー割り当て ID のいずれかを使用できます。これは、ロジック アプリのグループ全体で共有できますが、両方を共有することはできません。 現在、[特定の組み込みトリガーおよびアクション](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)でのみマネージド ID がサポートされ、マネージド コネクタや接続はサポートされません。以下に例を示します。
+Azure Logic Apps では、" [*システム割り当て*](../active-directory/managed-identities-azure-resources/overview.md)" と " [*ユーザー割り当て*](../active-directory/managed-identities-azure-resources/overview.md)" の両方のマネージド ID がサポートされます。 ロジック アプリでは、システムによって割り当てられた ID または " *単一* " のユーザー割り当て ID のいずれかを使用できます。これは、ロジック アプリのグループ全体で共有できますが、両方を共有することはできません。 現在、[特定の組み込みトリガーおよびアクション](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)でのみマネージド ID がサポートされ、マネージド コネクタや接続はサポートされません。以下に例を示します。
 
 * HTTP
 * Azure Functions
@@ -35,7 +35,7 @@ Azure Logic Apps では、"[*システム割り当て*](../active-directory/mana
 
 * Azure アカウントとサブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 マネージド ID とアクセスする必要があるターゲット Azure リソースの両方で、同じ Azure サブスクリプションを使用する必要があります。
 
-* マネージド ID に Azure リソースへのアクセス権を付与するには、その ID のターゲット リソースにロールを追加する必要があります。 ロールを追加するには、対応する Azure AD テナント内の ID にロールを割り当てることができる、[Azure AD 管理者のアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)が必要です。
+* マネージド ID に Azure リソースへのアクセス権を付与するには、その ID のターゲット リソースにロールを追加する必要があります。 ロールを追加するには、対応する Azure AD テナント内の ID にロールを割り当てることができる、[Azure AD 管理者のアクセス許可](../active-directory/roles/permissions-reference.md)が必要です。
 
 * アクセスするターゲット Azure リソース。 このリソースでは、マネージ ID のロールを追加します。これにより、ロジック アプリはターゲット リソースへのアクセスを認証できます。
 
@@ -68,7 +68,7 @@ Azure Logic Apps では、"[*システム割り当て*](../active-directory/mana
    ![システム割り当て ID を有効にする](./media/create-managed-service-identity/enable-system-assigned-identity.png)
 
    > [!NOTE]
-   > マネージド ID を 1 つだけ持つことができるというエラーが表示される場合、ロジック アプリは既にユーザー割り当て ID に関連付けられています。 システム割り当て ID を追加できるようにするには、まず、ロジック アプリからユーザー割り当て ID を "*削除*" する必要があります。
+   > マネージド ID を 1 つだけ持つことができるというエラーが表示される場合、ロジック アプリは既にユーザー割り当て ID に関連付けられています。 システム割り当て ID を追加できるようにするには、まず、ロジック アプリからユーザー割り当て ID を " *削除* " する必要があります。
 
    これで、ロジック アプリでシステム割り当て ID を使用できるようになりました。この ID は Azure Active Directory に登録され、オブジェクト ID で表されます。
 
@@ -156,19 +156,19 @@ Azure によってロジック アプリのリソース定義が作成される�
 
    ![新しいマネージド ID の追加](./media/create-managed-service-identity/add-user-assigned-identity.png)
 
-1. 次の例のようにマネージド ID に関する情報を指定し、 **[作成]** を選択します。
+1. 次の例のようにマネージド ID に関する情報を指定し、 **[確認と作成]** を選択します。次に例を示します。
 
    ![ユーザー割り当てマネージド ID を作成する](./media/create-managed-service-identity/create-user-assigned-identity.png)
 
    | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
-   | **リソース名** | はい | <*user-assigned-identity-name*> | ユーザー割り当て ID に付与する名前。 この例では、"Fabrikam-user-assigned-identity" を使用します。 |
    | **サブスクリプション** | はい | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションの名前。 |
-   | **リソース グループ** | はい | <*Azure-resource-group-name*> | 使用するリソース グループの名前。 新しいグループを作成するか、既存のグループを選択します。 この例では、"fabrikam-managed-identities-RG" という名前の新しいグループを作成します。 |
-   | **場所** | はい | <*Azure-region*> | リソースに関する情報の保存先となる Azure リージョン。 この例では "米国西部" を使用します。 |
+   | **リソース グループ** | はい | <*Azure-resource-group-name*> | 使用するリソース グループの名前。 新しいグループを作成するか、既存のグループを選択します。 この例では、`fabrikam-managed-identities-RG` という名前の新しいグループを作成します。 |
+   | **[リージョン]** | はい | <*Azure-region*> | リソースに関する情報の保存先となる Azure リージョン。 この例では "米国西部" を使用します。 |
+   | **名前** | はい | <*user-assigned-identity-name*> | ユーザー割り当て ID に付与する名前。 この例では、`Fabrikam-user-assigned-identity` を使用します。 |
    |||||
 
-   これで、ユーザー割り当て ID をロジック アプリに追加できるようになりました。 ロジック アプリに複数のユーザー割り当て ID を追加することはできません。
+   これらの詳細の検証後、Azure によってマネージド ID が作成されます。 これで、ユーザー割り当て ID をロジック アプリに追加できるようになりました。 ロジック アプリに複数のユーザー割り当て ID を追加することはできません。
 
 1. Azure portal のロジック アプリ デザイナーで、ロジック アプリを選択して開きます。
 
@@ -176,7 +176,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 
    ![ユーザー割り当てマネージド ID の追加](./media/create-managed-service-identity/add-user-assigned-identity-logic-app.png)
 
-1. **[ユーザー割り当てマネージド ID の追加]** ウィンドウで、 **[サブスクリプション]** の一覧から、まだ選択されていない場合は使用する Azure サブスクリプションを選択します。 そのサブスクリプションの "*すべての*" マネージド ID を示す一覧から、目的のユーザー割り当て ID を検索して選択します。 一覧をフィルター処理するには、 **[ユーザー割り当て済みマネージド ID]** 検索ボックスに、ID またはリソース グループの名前を入力します。 終了したら、 **[追加]** を選択します。
+1. **[ユーザー割り当てマネージド ID の追加]** ウィンドウで、 **[サブスクリプション]** の一覧から、まだ選択されていない場合は使用する Azure サブスクリプションを選択します。 そのサブスクリプションの " *すべての* " マネージド ID を示す一覧から、目的のユーザー割り当て ID を検索して選択します。 一覧をフィルター処理するには、 **[ユーザー割り当て済みマネージド ID]** 検索ボックスに、ID またはリソース グループの名前を入力します。 終了したら、 **[追加]** を選択します。
 
    ![使用するユーザー割り当て ID を選択する](./media/create-managed-service-identity/select-user-assigned-identity.png)
 
@@ -287,7 +287,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 * [Azure Portal](#azure-portal-assign-access)
 * [Azure Resource Manager テンプレート](../role-based-access-control/role-assignments-template.md)
 * Azure PowerShell ([New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)) - 詳細については、[Azure RBAC と Azure PowerShell を使用したロールの割り当ての追加](../role-based-access-control/role-assignments-powershell.md)に関する記事を参照してください。
-* Azure CLI ([az role assignment create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)) - 詳細については、[Azure RBAC と Azure CLI を使用したロールの割り当ての追加](../role-based-access-control/role-assignments-cli.md)に関する記事を参照してください。
+* Azure CLI ([az role assignment create](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true#az-role-assignment-create)) - 詳細については、[Azure RBAC と Azure CLI を使用したロールの割り当ての追加](../role-based-access-control/role-assignments-cli.md)に関する記事を参照してください。
 * [Azure REST API](../role-based-access-control/role-assignments-rest.md)
 
 <a name="azure-portal-assign-access"></a>
@@ -301,11 +301,11 @@ Azure によってロジック アプリのリソース定義が作成される�
    ![[追加] > [ロールの割り当ての追加] の順に選択する](./media/create-managed-service-identity/add-role-to-resource.png)
 
    > [!TIP]
-   > **[ロールの割り当ての追加]** オプションが無効になっている場合は、ご自分にアクセス許可がない可能性があります。 リソースのロールを管理するためのアクセス許可の詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」をご覧ください。
+   > **[ロールの割り当ての追加]** オプションが無効になっている場合は、ご自分にアクセス許可がない可能性があります。 リソースのロールを管理するためのアクセス許可の詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/roles/permissions-reference.md)」をご覧ください。
 
-1. **[ロールの割り当ての追加]** で、ID にターゲット リソースへのアクセスに必要なアクセス権を与える**ロール**を選択します。
+1. **[ロールの割り当ての追加]** で、ID にターゲット リソースへのアクセスに必要なアクセス権を与える **ロール** を選択します。
 
-   このトピックの例では、ID に [Azure Storage コンテナー内の BLOB にアクセスできるロール](../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)が必要です。
+   このトピックの例では、ID に [Azure Storage コンテナー内の BLOB にアクセスできるロール](../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)が必要であるため、マネージド ID に対して、 **[ストレージ BLOB データ共同作成者]** ロールを選択します。
 
    ![[ストレージ BLOB データ共同作成者] ロールを選択する](./media/create-managed-service-identity/select-role-for-identity.png)
 
@@ -378,8 +378,8 @@ Azure によってロジック アプリのリソース定義が作成される�
    |----------|----------|---------------|-------------|
    | **方法** | はい | `PUT`| Snapshot Blob 操作で使用する HTTP メソッド |
    | **URI** | はい | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | この構文を使用する Azure Global (パブリック) 環境内の Azure Blob Storage ファイルのリソース ID |
-   | **ヘッダー** | はい (Azure Storage の場合) | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | Azure Storage 操作に必要な `x-ms-blob-type` ヘッダーと `x-ms-version` ヘッダーの値。 <p><p>**重要**:Azure Storage の発信 HTTP トリガーおよびアクションの要求では、ヘッダーに `x-ms-version` プロパティと実行する操作の API バージョンが必要です。 <p>詳細については、以下のトピックを参照してください。 <p><p>- [要求ヘッダー - Snapshot Blob](/rest/api/storageservices/snapshot-blob#request) <br>- [Azure Storage サービスのバージョン管理](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
-   | **クエリ** | はい (この操作の場合) | `comp` = `snapshot` | Snapshot Blob 操作のクエリ パラメーターの名前と値。 |
+   | **ヘッダー** | Azure Storage の場合 | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` <p>`x-ms-date` = `@{formatDateTime(utcNow(),'r'}` | Azure Storage の操作には、`x-ms-blob-type`、`x-ms-version`、および `x-ms-date` ヘッダー値が必要です。 <p><p>**重要** :Azure Storage の発信 HTTP トリガーおよびアクションの要求では、ヘッダーに `x-ms-version` プロパティと実行する操作の API バージョンが必要です。 `x-ms-date` は現在の日付である必要があります。 それ以外の場合、ロジック アプリは `403 FORBIDDEN` エラーで失敗します。 現在の日付を必要な形式で取得するには、例の値で式を使用します。 <p>詳細については、以下のトピックを参照してください。 <p><p>- [要求ヘッダー - Snapshot Blob](/rest/api/storageservices/snapshot-blob#request) <br>- [Azure Storage サービスのバージョン管理](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
+   | **クエリ** | スナップショット BLOB 操作の場合のみ | `comp` = `snapshot` | 操作のクエリ パラメーターの名前と値。 |
    |||||
 
    上記すべてのプロパティ値を示す HTTP アクションの例:
@@ -409,10 +409,10 @@ Azure によってロジック アプリのリソース定義が作成される�
 
    この例では、 **[システム割り当てマネージド ID]** を使用して先に進みます。
 
-1. 一部のトリガーとアクションでは、ターゲット リソース ID を設定するために **[対象ユーザー]** プロパティも表示されます。 **[対象ユーザー]** プロパティは[ターゲット リソースまたはサービスのリソース ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) に設定します。 そうしないと、既定では、 **[対象ユーザー]** プロパティに Azure Resource Manager のリソース ID である `https://management.azure.com/` リソース ID が使用されます。
+1. 一部のトリガーとアクションでは、ターゲット リソース ID を設定するために **[対象ユーザー]** プロパティも表示されます。 **[対象ユーザー]** プロパティは [ターゲット リソースまたはサービスのリソース ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) に設定します。 そうしないと、既定では、 **[対象ユーザー]** プロパティに Azure Resource Manager のリソース ID である `https://management.azure.com/` リソース ID が使用されます。
 
    > [!IMPORTANT]
-   > ターゲット リソース ID は、必要な末尾のスラッシュも含めて、Azure Active Directory (AD) で予想される値と*正確に一致*するようにします。 たとえば、すべての Azure Blob Storage アカウントのリソース ID には、末尾のスラッシュが必要です。 ただし、特定のストレージ アカウントのリソース ID については、末尾のスラッシュは必要ありません。 「[Azure AD 認証をサポートしている Azure サービスのリソース ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。
+   > ターゲット リソース ID は、必要な末尾のスラッシュも含めて、Azure Active Directory (AD) で予想される値と *正確に一致* するようにします。 たとえば、すべての Azure Blob Storage アカウントのリソース ID には、末尾のスラッシュが必要です。 ただし、特定のストレージ アカウントのリソース ID については、末尾のスラッシュは必要ありません。 「[Azure AD 認証をサポートしている Azure サービスのリソース ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。
 
    この例では、 **[対象ユーザー]** プロパティを `https://storage.azure.com/` に設定して、認証に使用されるアクセス トークンをすべてのストレージ アカウントに対して有効にしています。 ただし、特定のストレージ アカウントに対してルート サービス URL (`https://fabrikamstorageaccount.blob.core.windows.net`) を指定することもできます。
 
@@ -462,7 +462,7 @@ Azure portal で、まず、[ターゲット リソース](#disable-identity-tar
 1. ロールの一覧で、削除するマネージド ID を選択します。 ツール バーの **[削除]** を選択します。
 
    > [!TIP]
-   > **[削除]** オプションが無効になっている場合は、ご自分にアクセス許可がない可能性があります。 リソースのロールを管理するためのアクセス許可の詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」をご覧ください。
+   > **[削除]** オプションが無効になっている場合は、ご自分にアクセス許可がない可能性があります。 リソースのロールを管理するためのアクセス許可の詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/roles/permissions-reference.md)」をご覧ください。
 
 マネージド ID が削除され、ターゲット リソースにアクセスできなくなりました。
 

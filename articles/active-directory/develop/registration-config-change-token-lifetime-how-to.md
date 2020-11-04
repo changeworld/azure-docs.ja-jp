@@ -8,19 +8,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 10/23/2020
 ms.author: ryanwi
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: 7eb01ccda3c3e13827a8977b8ee0e244aef6b0be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9483fe972cf1a4dce4fb285ced3cb390d0bda725
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613240"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516785"
 ---
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>独自に開発したアプリケーションのトークン有効期間の既定値を変更する方法
 
 この記事では、Azure AD PowerShell を使用して、トークンの有効期間ポリシーを設定する方法を示します。 Azure AD Premium では、非機密クライアントに対して発行されたトークンの有効期間をアプリ開発者とテナント管理者が構成できます。 トークンの有効期間ポリシーは、テナント全体またはアクセスされるリソースに対して設定されます。
+
+> [!IMPORTANT]
+> 2021 年 1 月 30 日以降、テナントでは更新およびセッション トークンの有効期間を構成できなくなり、Azure Active Directory では、その日以降、ポリシー内の既存の更新およびセッション トークンの構成が考慮されなくなります。 非推奨となった後も、アクセス トークンの有効期間を構成することはできます。 詳細については、[Azure AD の構成可能なトークン有効期間](./active-directory-configurable-token-lifetimes.md)に関する記事を参照してください。
+> Azure AD の条件付きアクセスに [認証セッションの管理機能](../conditional-access/howto-conditional-access-session-lifetime.md) を実装しました。 この新機能を使用し、サインインの頻度を設定して更新トークンの有効期間を構成できます。  
 
 トークンの有効期間ポリシーを設定するには、[Azure AD PowerShell モジュール](https://www.powershellgallery.com/packages/AzureADPreview)をダウンロードする必要があります。
 **Connect-AzureAD -Confirm** コマンドを実行します。

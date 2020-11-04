@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 7a76ac3bbe62d48de67815d09e1c8d75f03caa36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af9b1f42140c5656c5f55a98c2d635d59e130db5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86077900"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533735"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行する - アーキテクチャのベスト プラクティス
 
@@ -43,9 +43,9 @@ Azure HDInsight クラスターは、特定の種類の計算を利用するた�
 |[Azure CLI (ver 1.0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
 |[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
-|[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)||||X|
-|[Python SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||X|
-|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
+|[.NET SDK](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true)||||X|
+|[Python SDK](/python/api/overview/azure/hdinsight)||||X|
+|[Java SDK](/java/api/overview/azure/hdinsight)||||X|
 |[Azure リソース マネージャーのテンプレート](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
 
 詳細については、[HDInsight でのクラスターの種類](../hadoop/apache-hadoop-introduction.md)に関する記事を参照してください。
@@ -107,7 +107,7 @@ HDInsight では、Hive metastore と Oozie metastore に Azure SQL Database を
 
 ## <a name="best-practices-for-different-workloads"></a>さまざまなワークロードのベスト プラクティス
 
-- 応答時間が改善された対話型 Hive クエリに LLAP クラスターを使用することを検討します。[LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP)  は、クエリのメモリ内キャッシュを可能にする Hive 2.0 の新機能です。 LLAP により、Hive クエリは速くなり、 [場合によっては Hive 1.x と比べて最大 26 倍高速化](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)されます。
+- 応答時間が改善された対話型 Hive クエリに LLAP クラスターを使用することを検討します。[LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) は、クエリのメモリ内キャッシュを可能にする Hive 2.0 の新機能です。 LLAP により、Hive クエリは[特定のケースで Hive 1.x と比べて最大 26 倍高速化](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)されます。
 - Hive ジョブの代わりに Spark ジョブを使用することを検討します。
 - impala ベースのクエリを LLAP クエリに置き換えることを検討します。
 - MapReduce ジョブを Spark ジョブに置き換えることを検討します。

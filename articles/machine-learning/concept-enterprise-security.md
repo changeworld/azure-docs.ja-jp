@@ -1,5 +1,5 @@
 ---
-title: エンタープライズ セキュリティ
+title: エンタープライズ セキュリティとガバナンス
 titleSuffix: Azure Machine Learning
 description: 'Azure Machine Learning を安全に使用します: 認証、認可、ネットワーク セキュリティ、データ暗号化、監視。'
 services: machine-learning
@@ -10,18 +10,18 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: 462ecb1fb3f44f3caac8c58bfca169e4eac2a6da
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: b45c5cd1a750ee4b3f182920c4ee2f2e47756867
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207939"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899324"
 ---
-# <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning のエンタープライズ セキュリティ
+# <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Azure Machine Learning のエンタープライズ セキュリティとガバナンス
 
 この記事では、Azure Machine Learning で利用できるセキュリティ機能について学習します。
 
-クラウド サービスを使用する場合は、アクセスを必要とするユーザーのみに制限することをお勧めします。 まず、サービスによって使用される認証および認可モデルについて理解します。 ネットワーク アクセスを制限したり、オンプレミス ネットワークのリソースをクラウドと安全に結合したりすることも必要になる場合があります。 保存時とサービス間の移動時の両方でデータを暗号化することも不可欠です。 最後に、サービスを監視し、すべてのアクティビティの監査ログを生成できることも必要です。
+クラウド サービスを使用する場合は、アクセスを必要とするユーザーのみに制限することをお勧めします。 まず、サービスによって使用される認証および認可モデルについて理解します。 ネットワーク アクセスを制限したり、オンプレミス ネットワークのリソースをクラウドと安全に結合したりすることも必要になる場合があります。 保存時とサービス間の移動時の両方でデータを暗号化することも不可欠です。 また、ポリシーを作成して、非対応の構成を作成するときに特定の構成またはログを適用することもできます。 最後に、サービスを監視し、すべてのアクティビティの監査ログを生成できることも必要です。
 
 > [!NOTE]
 > この記事の情報は、Azure Machine Learning Python SDK バージョン 1.0.83.1 以降に対応します。
@@ -111,7 +111,7 @@ Azure Machine Learning は、コンピューティング リソースに関し�
 ## <a name="data-encryption"></a>データの暗号化
 
 > [!IMPORTANT]
-> __トレーニング__中の運用グレードの暗号化の場合、Microsoft は Azure Machine Learning コンピューティング クラスターを使用することをお勧めします。 __推論__中の運用グレードの暗号化の場合、Microsoft は Azure Kubernetes Service を使用することをお勧めします。
+> __トレーニング__ 中の運用グレードの暗号化の場合、Microsoft は Azure Machine Learning コンピューティング クラスターを使用することをお勧めします。 __推論__ 中の運用グレードの暗号化の場合、Microsoft は Azure Kubernetes Service を使用することをお勧めします。
 >
 > Azure Machine Learning コンピューティング インスタンスは、開発またはテスト環境です。 これを使用する場合は、ノートブックやスクリプトなどのファイルをファイル共有に保存することをお勧めします。 データは、データストアに格納する必要があります。
 
@@ -135,7 +135,7 @@ Azure BLOB ストレージに格納されるデータに独自のキーを使用
 
 通常はトレーニング データも、トレーニング コンピューティング先にアクセスできるように Azure BLOB ストレージに格納されます。 このストレージは、Azure Machine Learning によって管理されませんが、リモート ファイル システムとしてコンピューティング先にマウントされます。
 
-キーを__交換または取り消す__必要がある場合は、いつでもこの操作を行うことができます。 キーを交換すると、ストレージ アカウントは、新しいキー (最新バージョン) を使用して保存データを暗号化します。 キーを取り消す (無効にする) と、ストレージ アカウントは失敗した要求を処理します。 通常、交換または失効が有効になるまでに 1 時間かかります。
+キーを __交換または取り消す__ 必要がある場合は、いつでもこの操作を行うことができます。 キーを交換すると、ストレージ アカウントは、新しいキー (最新バージョン) を使用して保存データを暗号化します。 キーを取り消す (無効にする) と、ストレージ アカウントは失敗した要求を処理します。 通常、交換または失効が有効になるまでに 1 時間かかります。
 
 アクセス キーを再生成する方法の詳細については、「[ストレージ アカウント アクセス キーの再生成](how-to-change-storage-access-key.md)」を参照してください。
 
@@ -158,14 +158,9 @@ Azure Machine Learning では、Azure Cosmos DB インスタンスにメトリ�
         > [!NOTE]
         > このキー コンテナー インスタンスは、ワークスペースをプロビジョニングするときに Azure Machine Learning によって作成されるキー コンテナーとは異なる場合があります。 ワークスペースに同じキー コンテナー インスタンスを使用する場合は、[key_vault パラメーター](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)を使用してワークスペースをプロビジョニングするときに、同じキー コンテナーを渡します。 
 
-この Cosmos DB インスタンスは、必要なリソースと共にお使いのサブスクリプションの Microsoft が管理するリソース グループ内に作成されます。 マネージド リソース グループの名前は、`<AML Workspace Resource Group Name><GUID>` という形式で指定されます。 Azure Machine Learning ワークスペースでプライベート エンドポイントが使用される場合は、Cosmos DB インスタンスの仮想ネットワークも作成されます。 この VNet は、Cosmos DB と Azure Machine Learning の間の通信をセキュリティで保護するために使用されます。
+[!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
-> [!IMPORTANT]
-> * この Cosmos DB インスタンスが含まれるリソース グループ、またはこのグループに自動的に作成されたリソースを削除しないでください。 Cosmos DB インスタンスなどのリソース グループを削除する必要がある場合は、それが使用されている Azure Machine Learning ワークスペースを削除してください。 関連付けられているワークスペースが削除されると、リソース グループ、Cosmos DB インスタンス、および自動的に作成されたその他のリソースが削除されます。
-> * この Cosmos DB アカウントの既定の[__要求ユニット__](../cosmos-db/request-units.md)は __8000__ に設定されています。 この値の変更はサポートされていません。
-> * 作成された Cosmos DB インスタンスでの使用のために、独自の VNet を指定することはできません。 また、仮想ネットワークを変更することもできません。 たとえば、使用される IP アドレスの範囲を変更することはできません。
-
-キーを__交換または取り消す__必要がある場合は、いつでもこの操作を行うことができます。 キーを交換すると、Cosmos DB は新しいキー (最新バージョン) を使用して保存データを暗号化します。 キーを取り消す (無効にする) と、Cosmos DB は失敗した要求を処理します。 通常、交換または失効が有効になるまでに 1 時間かかります。
+キーを __交換または取り消す__ 必要がある場合は、いつでもこの操作を行うことができます。 キーを交換すると、Cosmos DB は新しいキー (最新バージョン) を使用して保存データを暗号化します。 キーを取り消す (無効にする) と、Cosmos DB は失敗した要求を処理します。 通常、交換または失効が有効になるまでに 1 時間かかります。
 
 カスタマー マネージド キーと Cosmos DB の詳細については、[Azure Cosmos DB アカウントのカスタマー マネージド キーの構成](../cosmos-db/how-to-setup-cmk.md)に関する記事を参照してください。
 
@@ -183,6 +178,7 @@ Azure Machine Learning では、Azure Cosmos DB インスタンスにメトリ�
 既存の Azure Container Registry を使用してワークスペースを作成する例については、次の記事を参照してください。
 
 * [Azure CLI を使用して Azure Machine Learning のワークスペースを作成する](how-to-manage-workspace-cli.md)。
+* [Python SDK でワークスペースを作成する](how-to-manage-workspace.md?tabs=python#create-a-workspace)。
 * [Azure Resource Manager テンプレートを使用して Azure Machine Learning のワークスペースを作成する](how-to-create-workspace-template.md)
 
 #### <a name="azure-container-instance"></a>Azure Container Instances
@@ -370,8 +366,8 @@ Machine Learning コンピューティングはマネージド コンピュー�
 
 [Azure Policy](/azure/governance/policy) は、Azure リソースがポリシーに準拠していることを確認できるガバナンス ツールです。 Azure Machine Learning を使用すると、次のポリシーを割り当てることができます。
 
-* **カスタマー マネージド キー**: ワークスペースでカスタマー マネージド キーを使用する必要があることを監査または適用します。
-* **Private Link**: ワークスペースで仮想ネットワークとの通信にプライベート エンドポイントが使用されているかどうかを監査します。
+* **カスタマー マネージド キー** : ワークスペースでカスタマー マネージド キーを使用する必要があることを監査または適用します。
+* **Private Link** : ワークスペースで仮想ネットワークとの通信にプライベート エンドポイントが使用されているかどうかを監査します。
 
 Azure Policy の詳細については、[ のドキュメント](/azure/governance/policy/overview)を参照してください。
 

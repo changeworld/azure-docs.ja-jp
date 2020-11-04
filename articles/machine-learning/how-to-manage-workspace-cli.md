@@ -9,13 +9,13 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: cb6c49ce779fe8b1e764471c31b392e31d6572ce
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.custom: how-to, devx-track-azurecli
+ms.openlocfilehash: 42f47ad61c0d90752928a8273872b734574e02c3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631207"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740796"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLI を使用して Azure Machine Learning のワークスペースを作成する
 
@@ -24,9 +24,9 @@ ms.locfileid: "91631207"
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+* **Azure サブスクリプション** 。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
 
-* ご使用の**ローカル環境**からこのドキュメントの CLI コマンドを使用するには、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) が必要です。
+* ご使用の **ローカル環境** からこのドキュメントの CLI コマンドを使用するには、 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) が必要です。
 
     [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/) を使用する場合は、ブラウザーを使用してクラウド内に存在する CLI にアクセスします。
 
@@ -62,11 +62,11 @@ Azure Machine Learning ワークスペースは、次の Azure サービスま�
 > [!IMPORTANT]
 > 既存の Azure サービスを指定しない場合は、ワークスペースの作成時に自動的に作成されます。 リソース グループは必ず指定する必要があります。 独自のストレージ アカウントをアタッチする場合は、次の条件を満たしていることを確認してください。
 >
-> * ストレージ アカウントが Premium アカウント (Premium_LRS と Premium_GRS) "_ではない_"
+> * ストレージ アカウントが Premium アカウント (Premium_LRS と Premium_GRS) " _ではない_ "
 > * Azure Blob と Azure File の両方の機能が有効になっている
 > * 階層型名前空間 (ADLS Gen 2) が無効になっている
 >
-> これらの要件は、ワークスペースによって使用される "_既定_" のストレージ アカウントにのみ使用されます。
+> これらの要件は、ワークスペースによって使用される " _既定_ " のストレージ アカウントにのみ使用されます。
 
 | サービス | 既存のインスタンスを指定するパラメーター |
 | ---- | ---- |
@@ -107,7 +107,7 @@ az group create --name <resource-group-name> --location <location>
 
 ### <a name="automatically-create-required-resources"></a>必要なリソースを自動的に作成する
 
-__サービスが自動的に作成__される新しいワークスペースを作成するには、次のコマンドを使用します。
+__サービスが自動的に作成__ される新しいワークスペースを作成するには、次のコマンドを使用します。
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
@@ -160,18 +160,17 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 
 Microsoft のマネージド キーを使用する代わりに、独自のキーを指定することもできます。 これを行うと、Azure サブスクリプションにメトリックとメタデータを格納する Azure Cosmos DB インスタンスが作成されます。 `--cmk-keyvault` パラメーターを使用して、キーを格納する Azure Key Vault を指定し、`--resource-cmk-uri` を使用してコンテナー内のキーの URL を指定します。
 
-> [!IMPORTANT]
-> `--cmk-keyvault` と `--resource-cmk-uri` パラメーターを使用する前に、まず次のアクションを実行する必要があります。
->
-> 1. サブスクリプションに対する共同作成者のアクセス許可を使用して、__Machine Learning アプリ__ (ID とアクセスの管理) を承認します。
-> 1. [カスタマー マネージド キーの構成](/azure/cosmos-db/how-to-setup-cmk)に関する記事の手順に従って以下を行います。
->     * Azure Cosmos DB プロバイダーを登録する
->     * Azure Key Vault を作成して構成する
->     * キーを生成する
->
->     Azure Cosmos DB インスタンスを手動で作成する必要はありません。ワークスペースの作成時に作成されます。 この Azure Cosmos DB インスタンスは、`<your-resource-group-name>_<GUID>` というパターンに基づく名前を使用して、別のリソース グループ内に作成されます。
->
-> ワークスペースの作成後にこの設定を変更することはできません。 ワークスペースによって使用されている Azure Cosmos DB を削除する場合は、それを使用しているワークスペースも削除する必要があります。
+`--cmk-keyvault` と `--resource-cmk-uri` パラメーターを使用する前に、まず次のアクションを実行する必要があります。
+
+1. サブスクリプションに対する共同作成者のアクセス許可を使用して、 __Machine Learning アプリ__ (ID とアクセスの管理) を承認します。
+1. [カスタマー マネージド キーの構成](/azure/cosmos-db/how-to-setup-cmk)に関する記事の手順に従って以下を行います。
+    * Azure Cosmos DB プロバイダーを登録する
+    * Azure Key Vault を作成して構成する
+    * キーを生成する
+
+Azure Cosmos DB インスタンスを手動で作成する必要はありません。ワークスペースの作成時に作成されます。 この Azure Cosmos DB インスタンスは、`<your-resource-group-name>_<GUID>` というパターンに基づく名前を使用して、別のリソース グループ内に作成されます。
+
+[!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
 お客様のワークスペースで Microsoft が収集するデータを制限するには、`--hbi-workspace` パラメーターを使用します。 
 
@@ -187,16 +186,16 @@ Microsoft のマネージド キーを使用する代わりに、独自のキー
 > [!IMPORTANT]
 > 既存のリソースをすべて指定する必要はありません。 1 つ以上を指定できます。 たとえば、既存のストレージ アカウントを指定すると、ワークスペースによって他のリソースが作成されます。
 
-+ **Azure Storage アカウント**: `az storage account show --name <storage-account-name> --query "id"`
++ **Azure Storage アカウント** : `az storage account show --name <storage-account-name> --query "id"`
 
     このコマンドからの応答は、次のテキストのようになり、ご使用のストレージ アカウントの ID になります。
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"`
 
     > [!IMPORTANT]
-    > 既存の Azure Storage アカウントを使用する場合は、Premium アカウント (Premium_LRS と Premium_GRS) にすることはできません。 また、階層的名前空間 (Azure Data Lake Storage Gen2 で使用されます) を含めることもできません。 ワークスペースの "_既定_" のストレージ アカウントでは、Premium Storage と階層型名前空間のどちらもサポートされていません。 "_既定以外_" のストレージ アカウントでは、Premium Storage または階層型名前空間を使用できます。
+    > 既存の Azure Storage アカウントを使用する場合は、Premium アカウント (Premium_LRS と Premium_GRS) にすることはできません。 また、階層的名前空間 (Azure Data Lake Storage Gen2 で使用されます) を含めることもできません。 ワークスペースの " _既定_ " のストレージ アカウントでは、Premium Storage と階層型名前空間のどちらもサポートされていません。 " _既定以外_ " のストレージ アカウントでは、Premium Storage または階層型名前空間を使用できます。
 
-+ **Azure Application Insights**:
++ **Azure Application Insights** :
 
     1. Application Insights 拡張機能をインストールします。
 
@@ -214,13 +213,13 @@ Microsoft のマネージド キーを使用する代わりに、独自のキー
 
         `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>"`
 
-+ **Azure Key Vault**: `az keyvault show --name <key-vault-name> --query "ID"`
++ **Azure Key Vault** : `az keyvault show --name <key-vault-name> --query "ID"`
 
     このコマンドからの応答は、次のテキストのようになり、ご使用のキー コンテナーの ID になります。
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
 
-+ **Azure Container Registry**: `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
++ **Azure Container Registry** : `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
 
     このコマンドからの応答は、次のテキストのようになり、ご使用のコンテナー レジストリの ID になります。
 
@@ -359,7 +358,7 @@ az ml workspace update -w <workspace-name> -g <resource-group-name>
 az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user> --role <role>
 ```
 
-Azure Machine Learning を使用したロールベースのアクセス制御 (RBAC) の詳細については、[ユーザーとロールの管理](how-to-assign-roles.md)に関するページを参照してください。
+Azure Machine Learning を使用した Azure ロールベースのアクセス制御 (Azure RBAC) の詳細については、[ユーザーとロールの管理](how-to-assign-roles.md)に関するページを参照してください。
 
 詳細については、[az ml workspace share](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-share) のドキュメントをご覧ください。
 

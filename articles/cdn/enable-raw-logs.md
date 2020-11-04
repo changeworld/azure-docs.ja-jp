@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/25/2020
 ms.author: allensu
-ms.openlocfilehash: c41bf8bc6e5aa3749786bc1189343dfdebdc1508
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2fbefd3b7761976cffbd6be8714cb849e1253aec
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321151"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778038"
 ---
 # <a name="monitoring-metrics-and-raw-logs-for-azure-cdn-from-microsoft"></a>Microsoft Azure CDN に対するメトリックと生ログの監視
 Microsoft Azure CDN を使用すると、次の方法でリソースを監視して、問題のトラブルシューティング、追跡、デバッグに役立てることができます。 
@@ -55,19 +55,19 @@ Microsoft プロファイルから Azure CDN の生ログを構成するには:
 
 6. **[宛先の詳細]** を選択します。 出力先の選択肢:
     * **Log Analytics への送信**
-        * **サブスクリプション**と **Log Analytics ワークスペース**を選択します。
+        * **サブスクリプション** と **Log Analytics ワークスペース** を選択します。
     * **ストレージ アカウントへのアーカイブ**
-        * **サブスクリプション**と**ストレージ アカウント**を選択します。
+        * **サブスクリプション** と **ストレージ アカウント** を選択します。
     * **イベント ハブへのストリーム**
         * **[サブスクリプション]** 、 **[イベント ハブの名前空間]** 、 **[イベント ハブ名 (オプション)]** 、 **[イベント ハブ ポリシー名]** を選択します。
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="CDN プロファイルの診断設定を追加する。" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="ログ設定の出力先を構成する。" border="true":::
 
 7. **[保存]** を選択します。
 
 ## <a name="configuration---azure-powershell"></a>構成 - Azure PowerShell
 
-生ログの診断設定を構成するには、[Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) を使用します。
+生ログの診断設定を構成するには、[Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) を使用します。
 
 保持データは、このコマンドの **-RetentionInDays** オプションで定義されます。
 
@@ -187,7 +187,7 @@ Microsoft サービスの Azure CDN は現在、生ログを提供していま�
 * エッジ ノード由来
 * オリジン シールド由来 
 
-エグレスまたは応答がエッジ ノード由来かオリジン シールド由来かは、**isReceivedFromClient** フィールドを使用して正しいデータを取得することで区別できます。 
+エグレスまたは応答がエッジ ノード由来かオリジン シールド由来かは、 **isReceivedFromClient** フィールドを使用して正しいデータを取得することで区別できます。 
 
 この値が false の場合、その要求に対する応答はオリジン シールドからエッジ ノードに返されたことを意味します。 このアプローチは、生ログを課金データと比較する際に有効です。 オリジン シールドからエッジ ノードへのエグレスに料金は発生しません。 料金は、エッジ ノードからクライアントへのエグレスで発生します。 
 
@@ -201,7 +201,7 @@ AzureDiagnostics
 ```
 
 > [!IMPORTANT]
-> HTTP 生ログ機能は、**2020 年 2 月 25 日**以降に作成または更新されたプロファイルで自動的に使用可能になります。 それよりも前に作成した CDN プロファイルの場合、ログ記録のセットアップ後に CDN エンドポイントを更新する必要があります。 たとえば、CDN エンドポイントで geo フィルタリングに移動し、そのワークロードに関係のない国および地域をブロックし、保存することができます。
+> HTTP 生ログ機能は、 **2020 年 2 月 25 日** 以降に作成または更新されたプロファイルで自動的に使用可能になります。 それよりも前に作成した CDN プロファイルの場合、ログ記録のセットアップ後に CDN エンドポイントを更新する必要があります。 たとえば、CDN エンドポイントで geo フィルタリングに移動し、そのワークロードに関係のない国および地域をブロックし、保存することができます。
 
 
 ## <a name="metrics"></a>メトリック
@@ -211,7 +211,7 @@ Microsoft Azure CDN は Azure Monitor と統合されており、問題の追跡
 
 Microsoft Azure CDN では、メトリックが 60 秒間隔で測定されて送信されます。 メトリックがポータルに表示されるまでに、最大で 3 分かかることがあります。 
 
-詳細については、「[Azure Monitor metrics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)」(Azure Monitor メトリック) を参照してください。
+詳細については、「[Azure Monitor metrics](../azure-monitor/platform/data-platform-metrics.md)」(Azure Monitor メトリック) を参照してください。
 
 **Microsoft Azure CDN でサポートされているメトリック**
 
@@ -220,9 +220,9 @@ Microsoft Azure CDN では、メトリックが 60 秒間隔で測定されて�
 | バイト ヒット率* | 総エグレスに対して計算される、CDN キャッシュからのエグレスの割合。                                      | エンドポイント                                                                                    |
 | RequestCount    | CDN によって処理されたクライアント要求の数。                                                                     | エンドポイント </br> クライアントの国。 </br> クライアントのリージョン。 </br> HTTP の状態です。 </br> HTTP 状態コード。 |
 | ResponseSize    | CDN エッジからクライアントに応答として送信されたバイト数。                                                  |エンドポイント </br> クライアントの国。 </br> クライアントのリージョン。 </br> HTTP の状態です。 </br> HTTP 状態コード。                                                                                          |
-| TotalLatency    | クライアント要求が CDN によって受信されてから、**最後の応答バイトが CDN からクライアントに送信されるまで**の合計時間。 |エンドポイント </br> クライアントの国。 </br> クライアントのリージョン。 </br> HTTP の状態です。 </br> HTTP 状態コード。                                                                                             |
+| TotalLatency    | クライアント要求が CDN によって受信されてから、 **最後の応答バイトが CDN からクライアントに送信されるまで** の合計時間。 |エンドポイント </br> クライアントの国。 </br> クライアントのリージョン。 </br> HTTP の状態です。 </br> HTTP 状態コード。                                                                                             |
 
-***バイト ヒット率 = (エッジからのエグレス - オリジンからのエグレス)/エッジからのエグレス**
+**_バイト ヒット率 = (エッジからのエグレス - オリジンからのエグレス)/エッジからのエグレス_*
 
 バイト ヒット率の計算で除外されるシナリオ:
 
@@ -235,23 +235,23 @@ Microsoft Azure CDN では、メトリックが 60 秒間隔で測定されて�
 
 2. **[監視]** で **[メトリック]** を選択します。
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="CDN プロファイルの診断設定を追加する。" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="CDN プロファイルのメトリック。" border="true":::
 
 3. **[メトリックの追加]** を選択し、追加するメトリックを選択します。
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="CDN プロファイルの診断設定を追加する。" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="CDN プロファイルのメトリックを追加して選択する。" border="true":::
 
 4. フィルターを追加するには、 **[フィルターの追加]** を選択します。
     
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="CDN プロファイルの診断設定を追加する。" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="メトリックにフィルターを適用する。" border="true":::
 
 5. さまざまなディメンション別の傾向を表示するには、 **[分割を適用する]** を選択します。
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="CDN プロファイルの診断設定を追加する。" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="メトリックに分割を適用する。" border="true":::
 
 6. 新しいグラフを追加するには、 **[新しいグラフ]** を選択します。
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="CDN プロファイルの診断設定を追加する。" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="メトリック ビューに新しいグラフを追加する。" border="true":::
 
 ### <a name="alerts"></a>警告
 
@@ -259,9 +259,9 @@ Microsoft Azure CDN では、メトリックが 60 秒間隔で測定されて�
 
 [メトリック] セクションに表示されているメトリックの **[新しいアラート ルール]** を選択します。
 
-:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="CDN プロファイルの診断設定を追加する。" border="true":::
+:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="CDN エンドポイントのアラートを構成する。" border="true":::
 
-アラートは Azure Monitor に基づいて課金されます。 アラートの詳細については、[Azure Monitor のアラート](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)に関する記事を参照してください。
+アラートは Azure Monitor に基づいて課金されます。 アラートの詳細については、[Azure Monitor のアラート](../azure-monitor/platform/alerts-overview.md)に関する記事を参照してください。
 
 ### <a name="additional-metrics"></a>追加のメトリック
 追加のコストがかかりますが、Azure Log Analytics と生ログを使用して、追加のメトリックを有効にすることができます。
@@ -270,21 +270,21 @@ Microsoft Azure CDN では、メトリックが 60 秒間隔で測定されて�
 
 2. 作成した Log Analytics ワークスペースを選択します。
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="CDN プロファイルの診断設定を追加する。" border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="Log Analytics ワークスペースを選択する" border="true":::   
 
 3. Log Analytics ワークスペースで、 **[全般]** の **[ログ]** を選択します。  次に、 **[作業の開始]** を選択します。
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="CDN プロファイルの診断設定を追加する。" border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="Log Analytics リソース ワークスペース。" border="true":::   
  
 4. **[CDN プロファイル]** を選択します。  クエリの例を選択して実行するか、例の画面を閉じてカスタム クエリを入力します。
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="CDN プロファイルの診断設定を追加する。" border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="クエリの例の画面。" border="true":::   
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="CDN プロファイルの診断設定を追加する。" border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="クエリの実行。" border="true":::   
 
 4. グラフでデータを表示するには、 **[グラフ]** を選択します。  Azure ダッシュボードにグラフをピン留めするには、 **[ダッシュボードにピン留めする]** を選択します。
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="CDN プロファイルの診断設定を追加する。" border="true"::: 
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="ダッシュボードにグラフをピン留めします。" border="true"::: 
 
 ## <a name="next-steps"></a>次の手順
 この記事では、Microsoft CDN サービスの HTTP 生ログを有効にしました。
@@ -293,6 +293,6 @@ Azure CDN とこの記事で言及しているその他の Azure サービスの
 
 * Azure CDN の使用パターンを[分析する](cdn-log-analysis.md)。
 
-* 詳細については、「[Azure Monitor の概要](https://docs.microsoft.com/azure/azure-monitor/overview)」を参照してください。
+* 詳細については、「[Azure Monitor の概要](../azure-monitor/overview.md)」を参照してください。
 
-* [Azure Monitor で Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) を構成する。
+* [Azure Monitor で Log Analytics](../azure-monitor/log-query/get-started-portal.md) を構成する。

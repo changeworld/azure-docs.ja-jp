@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c183c906644d5d672b97642b1b072a2a08a70973
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 45cad20a2e32640cabf4c57ce6411fcd5ab67da3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203757"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748217"
 ---
 # <a name="azure-tls-certificate-changes"></a>Azure TLS 証明書の変更  
 
@@ -27,7 +27,7 @@ Microsoft では、異なるルート証明機関 (CA) のセットからの TLS
 - 既存の Azure エンドポイントは、2020 年 8 月 13 日から段階的に移行されます。
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) と [DPS](/azure/iot-dps/) は Baltimore CyberTrust ルート CA に残りますが、中間 CA は変更されます。 詳細については、[こちら](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456)をクリックしてください。
 - [Azure Storage](/azure/storage) は Baltimore CyberTrust ルート CA に残りますが、中間 CA は変更されます。 詳細については、[こちら](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518)をクリックしてください。
-
+- [Azure Cache for Redis](/azure/azure-cache-for-redis) は Baltimore CyberTrust ルート CA に残りますが、中間 CA は変更されます。 詳細については、[こちら](../../azure-cache-for-redis/cache-whats-new.md)をクリックしてください。
 > [!IMPORTANT]
 > お客様は、Azure サービスに接続しようとしたときの接続エラーを防ぐため、この変更後にアプリケーションを更新することが必要になる場合があります。
 
@@ -48,7 +48,7 @@ Azure サービスによって使用される TLS 証明書は、次のいずれ
 | [Baltimore CyberTrust Root](https://cacerts.digicert.com/BaltimoreCyberTrustRoot.crt) | d4de20d05e66fc53fe1a50882c78db2852cae474 |
 | [D-TRUST Root Class 3 CA 2 2009](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt) | 58e8abb0361533fb80f79b1b6d29d3ff8d5f00f0 |
 | [Microsoft RSA Root Certificate Authority 2017](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt) | 73a5e64a3bff8316ff0edccc618a906e4eae4d74 | 
-| [Microsoft EV ECC Root Certificate Authority 2017](https://www.microsoft.com/pkiops/certs/Microsoft%20EV%20ECC%20Root%20Certificate%20Authority%202017.crt) | 6b1937abfd64e1e40daf2262a27857c015d6228d |
+| [Microsoft ECC Root Certificate Authority 2017](https://www.microsoft.com/pkiops/certs/Microsoft%20ECC%20Root%20Certificate%20Authority%202017.crt) | 999a64c37ff47d9fab95f14769891460eec4c3c5 |
 
 ## <a name="when-can-i-retire-the-old-intermediate-thumbprint"></a>古い中間サムプリントはいつ廃止できますか?
 

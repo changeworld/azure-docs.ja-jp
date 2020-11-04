@@ -3,14 +3,14 @@ title: Azure Automation の変更履歴とインベントリの概要
 description: この記事では、環境内のソフトウェアや Microsoft サービスの変更を特定するのに役立つ、Change Tracking とインベントリの機能について説明します。
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 10/14/2020
+ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9654529723b5b69c15358be9e06db4f8cbed35e3
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f4fc464da08128b7f2ecd0a037213d5f40aa65e0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209244"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670736"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>変更履歴とインベントリの概要
 
@@ -48,7 +48,7 @@ Log Analytics ワークスペースに接続されているマシンでは、[Lo
 - Windows レジストリ追跡用の再帰
 - ネットワーク ファイル システム
 - さまざまなインストール方法
-- Windows に格納されている * **.exe** ファイル
+- Windows に格納されている **_.exe_* ファイル
 - **[最大ファイル サイズ]** 列と値は現在の実装では使用されません。
 - 30 分間の収集サイクルで 2500 を超えるファイルを収集しようとすると、変更履歴とインベントリのパフォーマンスが低下する可能性があります。
 - ネットワーク トラフィックが高い場合は、変更レコードが表示されるまでに最大 6 時間かかることがあります。
@@ -77,13 +77,15 @@ TLS 1.2 のクライアント要件を理解するには、「[Azure Automation 
 
 ## <a name="enable-change-tracking-and-inventory"></a>Change Tracking と Inventory の有効化
 
-変更履歴とインベントリを有効にし、管理するマシンを選択するには、次の方法を使用します。
+変更履歴とインベントリは、次の方法で有効にすることができます。
 
-* [Azure 仮想マシンから](enable-from-vm.md)。
-* [複数の Azure 仮想マシンを参照して](enable-from-portal.md)。
-* [Azure Automation アカウントから行う方法](enable-from-automation-account.md)。
-* Arc 対応サーバーまたは Azure 以外のマシンの場合は、[VM 拡張機能](../../azure-arc/servers/manage-vm-extensions.md)を使用して Azure Arc 対応サーバーから Log Analytics エージェントをインストールし、変更履歴とインベントリを[ワークスペース内のマシンで有効にします](enable-from-automation-account.md#enable-machines-in-the-workspace)。
-* [Automation runbook を使用する](enable-from-runbook.md)
+- 1 台以上の Azure マシンと Azure 以外のマシンに対しては、お使いの [Automation アカウント](enable-from-automation-account.md)から。
+
+- Azure 以外のマシン ([Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)に登録されているマシンまたはサーバーを含む) に対しては、手動で。 ハイブリッド マシンの場合は、最初にマシンを [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)に接続し、次に Azure Policy を使用して [*Linux* または *Windows* Azure Arc マシンに Log Analytics エージェントをデプロイする](../../governance/policy/samples/built-in-policies.md#monitoring)組み込みポリシーを割り当てることにより、Windows 用の Log Analytics エージェントをインストールすることをお勧めします。 Azure Monitor for VMs を使用してマシンの監視も行う場合は、代わりに [Azure Monitor for VMs を有効にする](../../governance/policy/samples/built-in-initiatives.md#monitoring)イニシアティブを使用します。
+
+- 単一の Azure VM に対しては、Azure portal の [[仮想マシン] ページ](enable-from-vm.md)から。 このシナリオは、Linux VM 用と Windows VM 用があります。
+
+- [複数の Azure VM](enable-from-portal.md) に対しては、Azure portal の [仮想マシン] ページからそれらを選択することで。
 
 ## <a name="tracking-file-changes"></a>ファイルの変更を追跡する
 
@@ -125,7 +127,7 @@ Change Tracking とインベントリを使用すると、Windows レジスト�
 
 - 複数のファイルを追跡するにはワイルドカードが必要です。
 
-- ワイルドカードを使用できるのは、 **c:\folder\\file** * や **/etc/*.conf** など、ファイル パスの最後のセグメントでのみです。
+- ワイルドカードを使用できるのは、 **c:\folder\\file** _ や _ */etc/* .conf** など、ファイル パスの最後のセグメントでのみです。
 
 - 環境変数に無効なパスが存在する場合、検証は成功しますが、実行時にそのパスはエラーになります。
 

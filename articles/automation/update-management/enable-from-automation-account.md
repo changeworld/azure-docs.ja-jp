@@ -2,19 +2,19 @@
 title: Automation アカウントから Azure Automation Update Management を有効にする
 description: この記事では、Automation アカウントから Update Management を有効にする方法について説明します。
 services: automation
-ms.date: 10/15/2020
+ms.date: 10/26/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 1c28d73cac142e85cc9faf36d5e875d684094724
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 9630b29def0c450ef907219895d1488d72fd78d1
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221743"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669903"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Automation アカウントから Update Management を有効にする
 
-この記事では、Automation アカウントを使用して、環境内の VM の [Update Management](overview.md) 機能を有効にする方法について説明します。これには [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md) (プレビュー) で登録されたマシンやサーバーも含まれます。 Azure VM を大規模に有効にするには、Update Management を使用して既存の Azure VM を有効にする必要があります。
+この記事では、Automation アカウントを使用して、環境内の VM の [Update Management](overview.md) 機能を有効にする方法について説明します。これには [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)で登録されたマシンやサーバーも含まれます。 Azure VM を大規模に有効にするには、Update Management を使用して既存の Azure VM を有効にする必要があります。
 
 > [!NOTE]
 > Update Management を有効にする際、Log Analytics ワークスペースと Automation アカウントのリンクは特定のリージョンでのみサポートされています。 サポートされているマッピング ペアの一覧については、[Automation アカウントと Log Analytics ワークスペースのリージョン マッピング](../how-to/region-mappings.md)に関する記事をご覧ください。
@@ -23,7 +23,7 @@ ms.locfileid: "92221743"
 
 * Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
 * マシンを管理する [Automation アカウント](../index.yml)。
-* Arc 対応サーバー (プレビュー) で登録された [Azure 仮想マシン](../../virtual-machines/windows/quick-create-portal.md) (VM) またはサーバー。 Azure 以外の VM やサーバーの場合、Windows または Linux 向けの [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)をインストールしておく必要があり、Update Management が有効になっている Automation アカウントにリンクされているワークスペースに報告させる必要があります。 エージェントは、[Azure Log Analytics VM 拡張機能](../../azure-arc/servers/manage-vm-extensions.md)と Azure Arc をデプロイすることで、Arc 対応サーバーにインストールすることができます。
+* Arc 対応サーバー (プレビュー) で登録された [Azure 仮想マシン](../../virtual-machines/windows/quick-create-portal.md) (VM) またはサーバー。 Azure 以外の VM やサーバーの場合、Windows または Linux 向けの [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)をインストールしておく必要があり、Update Management が有効になっている Automation アカウントにリンクされているワークスペースに報告させる必要があります。 最初にマシンを [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)に接続し、次に Azure Policy を使用して [*Linux* または *Windows* Azure Arc マシンに Log Analytics エージェントをデプロイする](../../governance/policy/samples/built-in-policies.md#monitoring)組み込みポリシーに割り当てることにより、Windows または Linux 用の Log Analytics エージェントをインストールすることをお勧めします。 Azure Monitor for VMs を使用してマシンの監視も行う場合は、代わりに [Azure Monitor for VMs を有効にする](../../governance/policy/samples/built-in-initiatives.md#monitoring)イニシアティブを使用します。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

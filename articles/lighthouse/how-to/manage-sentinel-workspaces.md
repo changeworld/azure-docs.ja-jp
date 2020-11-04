@@ -3,12 +3,12 @@ title: Azure Sentinel ワークスペースの大規模な管理を行う
 description: 委任された顧客リソースで Azure Sentinel を効果的に管理する方法を学習します。
 ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: d1ab392ee946e09a5f9e32ddf01ec2cd1e8bd41f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91e2f875aa2fc067420c0c6eda4e7dd56bd2b088
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596940"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424104"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel ワークスペースの大規模な管理を行う
 
@@ -39,7 +39,7 @@ Azure Sentinel を使用してサービスとしてのセキュリティ オフ�
 > [!NOTE]
 > 別の[リージョン](../../availability-zones/az-overview.md#regions)にある委任されたリソースを管理することができます。 ただし、[各国のクラウド](../../active-directory/develop/authentication-national-cloud.md)と Azure パブリック クラウドにわたって行われる、または 2 つの独立した国内クラウドにわたって行われるサブスクリプションの委任はサポートされていません。
 
-## <a name="granular-role-based-access-control-rbac"></a>詳細なロールベースのアクセス制御 (RBAC)
+## <a name="granular-azure-role-based-access-control-azure-rbac"></a>詳細な Azure ロールベースのアクセス制御 (Azure RBAC)
 
 MSSP によって管理される各顧客サブスクリプションは、[Azure Lighthouse にオンボードする](onboard-customer.md)必要があります。 これにより、管理テナントの指定されたユーザーは、顧客テナントにデプロイされた Azure Sentinel ワークスペースにアクセスして管理操作を実行できます。
 

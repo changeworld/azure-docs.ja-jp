@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 1574810de5b1a2df1b82ea9cc19c88be5c72fec6
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 372ff1dc53f15a1338cad933fec64746b6736f40
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342146"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368089"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Security Center の統合 EDR ソリューションを使用してエンドポイントを保護する: Microsoft Defender for Endpoint
 
@@ -85,9 +85,9 @@ Azure Security Center を使用してサーバーを監視すると、Microsoft 
 1. Security Center のメニューから、 **[価格と設定]** を選択します。
 1. 変更するサブスクリプションを選択します。
 1. **[脅威検出]** を選択します。
-1. **[Allow Windows Defender ATP to access my data]\(Windows Defender ATP にデータへのアクセスを許可する\)** を選択し、 **[保存]** を選択します。
+1. **[データに Microsoft Defender for Endpoint がアクセスすることを許可する]** を選択し、 **[保存]** を選択します。
 
-    :::image type="content" source="./media/security-center-wdatp/enable-integration-with-edr.png" alt-text="Microsoft Defender for Endpoint 独自の Security Center":::
+    :::image type="content" source="./media/security-center-wdatp/enable-integration-with-edr.png" alt-text="Azure Security Center および Microsoft の EDR ソリューションの Microsoft Defender for Endpoint 間の統合を有効にする":::
 
     Azure Security Center によって、サーバーは Microsoft Defender for Endpoint に自動的にオンボードされます。 このオンボードには最大で 24 時間かかることがあります。
 
@@ -112,7 +112,7 @@ Microsoft Defender for Endpoint で無害なテスト アラートを生成す�
     ```powershell
     powershell.exe -NoExit -ExecutionPolicy Bypass -WindowStyle Hidden (New-Object System.Net.WebClient).DownloadFile('http://127.0.0.1/1.exe', 'C:\\test-MDATP-test\\invoice.exe'); Start-Process 'C:\\test-MDATP-test\\invoice.exe'
     ```
-    :::image type="content" source="./media/security-center-wdatp/generate-edr-alert.png" alt-text="Microsoft Defender for Endpoint 独自の Security Center":::
+    :::image type="content" source="./media/security-center-wdatp/generate-edr-alert.png" alt-text="テスト アラートを生成するコマンドを含むコマンド プロンプト ウィンドウ。":::
 
 1. コマンドが成功した場合、Azure Security Center ダッシュボードと Microsoft Defender for Endpoint ポータルに新しいアラートが表示されます。 このアラートは、表示されるまでに数分かかることがあります。
 1. Security Center 内でアラートを確認するには、 **[セキュリティ通知]**  >  **[Suspicious Powershell CommandLine]\(疑わしい Powershell コマンド ライン\)** に移動します。

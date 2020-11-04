@@ -7,12 +7,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 1fdff6e1c29b8484aaea3bb647e2f1738d1889c6
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: df1d4f3a12c6e15e2954bb0e02454ef58b22cb73
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92142240"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535792"
 ---
 # <a name="customer-data-request-features-for-azure-iot-hub-devices"></a>Azure IoT Hub デバイスの顧客データ要求機能
 
@@ -30,7 +30,7 @@ Azure IoT Hub サービスのルーティング機能を使ってデバイスの
 
 Azure IoT Hub サービスの Azure Event Grid 統合機能を使う場合は、テナント管理者がそれらのイベントの各サブスクライバーに対してデータ要求を実行する必要があります。 詳しくは、「[Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする](iot-hub-event-grid.md)」をご覧ください。
 
-Azure IoT Hub サービスの Azure Monitor 統合機能を使って診断ログを作成する場合は、テナント管理者が格納されているログに対してデータ要求を実行する必要があります。 詳しくは、「[Azure IoT Hub の正常性の監視](iot-hub-monitor-resource-health.md)」をご覧ください。
+Azure IoT Hub サービスの Azure Monitor 統合機能を使ってリソース ログを作成する場合は、テナント管理者が、格納されているログに対してデータ要求を実行する必要があります。 詳細については、[IoT Hub の監視](monitor-iot-hub.md)に関するページを参照してください。
 
 ## <a name="deleting-customer-data"></a>顧客データの削除
 

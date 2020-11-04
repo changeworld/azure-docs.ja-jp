@@ -1,18 +1,18 @@
 ---
 title: Azure portal を使用した VM へのポートの開放
-description: Azure portal を使用して Windows VM へのポートを開き、エンドポイントを作成する方法について説明します
+description: Azure portal を使用して VM へのポートを開き、エンドポイントを作成する方法について説明します
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/27/2020
 ms.author: cynthn
-ms.openlocfilehash: 06f682bc697f93d436e2cd71b161c01e1360944a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1c3c39dd8c907f780876f97f9703857653d4e359
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973990"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92777760"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Azure Portal を使用して仮想マシンへのポートを開く方法
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]

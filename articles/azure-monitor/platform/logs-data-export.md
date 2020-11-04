@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 6b94b6d66046c29de99339887d5c5c87d6c5bb5f
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 6c0908d2656d9d6464ae1f94d5b0cd68f759530a
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055938"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637345"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
 Azure Monitor で Log Analytics ワークスペースのデータ エクスポートを使用すると、Log Analytics ワークスペースで選択したテーブルのデータを収集する際に Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。 この記事では、この機能の詳細と、ワークスペースでデータ エクスポートを構成する手順について説明します。
@@ -22,7 +22,7 @@ Log Analytics ワークスペースのデータ エクスポートを構成す�
 
 ![データ エクスポートの概要](media/logs-data-export/data-export-overview.png)
 
-含まれるテーブルのすべてのデータが、フィルターを使用せずにエクスポートされます。 たとえば、*SecurityEvent* テーブルに対してデータ エクスポート ルールを構成すると、その構成時点から、*SecurityEvent* テーブルに送信されたすべてのデータがエクスポートされます。
+含まれるテーブルのすべてのデータが、フィルターを使用せずにエクスポートされます。 たとえば、 *SecurityEvent* テーブルに対してデータ エクスポート ルールを構成すると、その構成時点から、 *SecurityEvent* テーブルに送信されたすべてのデータがエクスポートされます。
 
 
 ## <a name="other-export-options"></a>その他のエクスポート オプション
@@ -36,7 +36,8 @@ Log Analytics ワークスペースのデータ エクスポートでは、Log A
 ## <a name="current-limitations"></a>現在の制限
 
 - 構成は、現在、CLI または REST 要求を使用してのみ行うことができます。 Azure portal または PowerShell を使用することはできません。
-- 現在、サポート対象のテーブルは、以下の (#supported-tabes) セクションに記載されているものに限定されています。 サポートされていないテーブルがデータ エクスポート ルールに含まれている場合、操作は成功しますが、そのテーブルのデータはエクスポートされません。 存在しないテーブルがデータ エクスポート ルールに含まれている場合、"*Table <tableName> does not exist in the workspace (テーブル <tableName> がワークスペースに存在しません)* " エラーで失敗します。
+- CLI と REST の ```--export-all-tables``` オプションはサポートされていないため、削除されます。 エクスポート ルールでテーブルの一覧を明示的に指定する必要があります。
+- 現在、サポート対象のテーブルは、以下の「[サポート対象のテーブル](#supported-tables)」セクションに記載されているものに限定されています。 サポートされていないテーブルがデータ エクスポート ルールに含まれている場合、操作は成功しますが、そのテーブルのデータはエクスポートされません。 存在しないテーブルがデータ エクスポート ルールに含まれている場合、```Table <tableName> does not exist in the workspace.``` エラーで失敗します。
 - Log Analytics ワークスペースは、以下を除くすべてのリージョンに配置できます。
   - スイス北部
   - スイス西部
@@ -63,9 +64,9 @@ Log Analytics ワークスペースのデータ エクスポートでは、Log A
 ## <a name="export-destinations"></a>エクスポート先
 
 ### <a name="storage-account"></a>ストレージ アカウント
-データは、1 時間ごとにストレージ アカウントに送信されます。 このデータ エクスポート構成により、ストレージ アカウント内の各テーブルにコンテナーが作成されます。これには、*am-* の後にテーブルの名前が続く名前が付けられます。 たとえば、テーブル *SecurityEvent* は、*am-SecurityEvent* という名前のコンテナーに送信されます。
+データは、1 時間ごとにストレージ アカウントに送信されます。 このデータ エクスポート構成により、ストレージ アカウント内の各テーブルにコンテナーが作成されます。これには、 *am-* の後にテーブルの名前が続く名前が付けられます。 たとえば、テーブル *SecurityEvent* は、 *am-SecurityEvent* という名前のコンテナーに送信されます。
 
-ストレージ アカウントの BLOB パスは、*WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=00/PT1H.json* です。 追加 BLOB はストレージへの書き込みが 50K に制限されているため、追加の数が多い場合はエクスポートされる BLOB の数が増える可能性があります。 このような場合の BLOB の名前付けパターンは PT1H_#.json となり、# は増分の BLOB 数です。
+ストレージ アカウントの BLOB パスは、 *WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=00/PT1H.json* です。 追加 BLOB はストレージへの書き込みが 50K に制限されているため、追加の数が多い場合はエクスポートされる BLOB の数が増える可能性があります。 このような場合の BLOB の名前付けパターンは PT1H_#.json となり、# は増分の BLOB 数です。
 
 ストレージ アカウントのデータ形式は [JSON 行](diagnostic-logs-append-blobs.md)です。 つまり、各レコードは改行で区切られ、外部のレコード配列や JSON レコード間のコンマはありません。 
 
@@ -74,7 +75,7 @@ Log Analytics ワークスペースのデータ エクスポートでは、Log A
 Log Analytics のデータ エクスポートでは、時間ベースのアイテム保持ポリシーで *allowProtectedAppendWrites* 設定が有効になっている場合に、不変ストレージ アカウントに追加 BLOB を書き込むことができます。 これにより、追加 BLOB への新しいブロックの書き込みが許可される一方で、不変性の保護とコンプライアンスは維持されます。 「[保護された追加 BLOB の書き込みを許可する](../../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes)」を参照してください。
 
 ### <a name="event-hub"></a>イベント ハブ
-データは、Azure Monitor に到達すると、ほぼリアルタイムでイベント ハブに送信されます。 イベント ハブは、エクスポートするデータ型ごとに作成され、*am-* の後にテーブルの名前が続く名前が付けられます。 たとえば、テーブル *SecurityEvent* は、*am-SecurityEvent* という名前のイベント ハブに送信されます。 エクスポートされたデータを特定のイベント ハブに到達させる場合や、47 文字の制限を超える名前の付いたテーブルがある場合は、独自のイベント ハブ名を指定して、すべてのテーブルをそれにエクスポートすることができます。
+データは、Azure Monitor に到達すると、ほぼリアルタイムでイベント ハブに送信されます。 イベント ハブは、エクスポートするデータ型ごとに作成され、 *am-* の後にテーブルの名前が続く名前が付けられます。 たとえば、テーブル *SecurityEvent* は、 *am-SecurityEvent* という名前のイベント ハブに送信されます。 エクスポートされたデータを特定のイベント ハブに到達させる場合や、47 文字の制限を超える名前の付いたテーブルがある場合は、独自のイベント ハブ名を指定して、定義されたテーブルのすべてのデータをそれにエクスポートすることができます。
 
 多くの場合、エクスポートされるデータの量は時間の経過と共に増加します。そのため、より高い転送速度を処理し、調整シナリオやデータ待ち時間を回避するために、イベント ハブのスケールを拡大する必要があります。 Event Hubs の自動インフレ機能を使用して、自動的にスケールアップし、スループット ユニットの数を増やすことで、使用量のニーズを満たす必要があります。 詳細については、「[Azure Event Hubs のスループット ユニットを自動的にスケールアップする](../../event-hubs/event-hubs-auto-inflate.md)」参照してください。
 
@@ -113,7 +114,12 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 
 
 ### <a name="create-or-update-data-export-rule"></a>データ エクスポート ルールを作成または更新する
-データ エクスポート ルールでは、すべてのテーブルまたは特定のテーブル セットから 1 つのエクスポート先にエクスポートするデータを定義します。 複数のエクスポート先に送信する必要がある場合は、複数のルールを作成します。
+データ エクスポート ルールでは、あるテーブル セットについて 1 つのエクスポート先にエクスポートするデータを定義します。 ルールはエクスポート先ごとに作成できます。
+
+ワークスペース内のテーブルを表示するには、次の CLI コマンドを使用します。 必要なテーブルをコピーして、データ エクスポート ルールに含めることができます。
+```azurecli
+az monitor log-analytics workspace table list -resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
+```
 
 CLI を使用してストレージ アカウントに対するデータ エクスポート ルールを作成するには、次のコマンドを使用します。
 
@@ -142,8 +148,8 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
             "resourceId": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/Microsoft.Storage/storageAccounts/storage-account-name"
         },
         "tablenames": [
-"table1",
-    "table2" 
+            "table1",
+            "table2" 
         ],
         "enable": true
     }
@@ -165,9 +171,26 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
         "enable": true
     }
 }
-
 ```
 
+イベント ハブ名が指定されているイベント ハブを対象とした REST 要求のサンプル本文を次に示します。 この場合、エクスポートされたすべてのデータがこのイベント ハブに送信されます。
+
+```json
+{
+    "properties": {
+        "destination": {
+            "resourceId": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/Microsoft.EventHub/namespaces/eventhub-namespaces-name",
+            "metaData": {
+                "EventHubName": "eventhub-name"
+        },
+        "tablenames": [
+            "table1",
+            "table2"
+        ],
+        "enable": true
+    }
+}
+```
 
 ## <a name="view-data-export-configuration"></a>データ エクスポートの構成を表示する
 CLI を使用してデータ エクスポート ルールの構成を表示するには、次のコマンドを使用します。
@@ -239,7 +262,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="unsupported-tables"></a>サポート対象外のテーブル
 サポート対象外のテーブルがデータ エクスポート ルールに含まれている場合、構成は成功しますが、そのテーブルのデータはエクスポートされません。 そのテーブルが後でサポートされるようになると、その時点でテーブルのデータがエクスポートされます。
 
-存在しないテーブルがデータ エクスポート ルールに含まれている場合、"*Table <tableName> does not exist in the workspace (テーブル <tableName> がワークスペースに存在しません)* " エラーで失敗します。
+存在しないテーブルがデータ エクスポート ルールに含まれている場合、```Table <tableName> does not exist in the workspace.``` エラーで失敗します。
 
 
 ## <a name="supported-tables"></a>サポート対象のテーブル

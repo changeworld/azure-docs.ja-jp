@@ -2,17 +2,17 @@
 title: Azure Data Factory でセルフホステッド統合ランタイムのトラブルシューティングを行う
 description: Azure Data Factory でセルフホステッド統合ランタイムの問題をトラブルシューティングする方法について説明します。
 services: data-factory
-author: nabhishek
+author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/16/2020
-ms.author: abnarain
-ms.openlocfilehash: f0957b74bf13acfcc80e38cccaec389fbbd19fa0
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.date: 10/26/2020
+ms.author: lle
+ms.openlocfilehash: 3598db409e5493737753a8a1b03de168af5c664b
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131314"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637192"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムのトラブルシューティング
 
@@ -183,7 +183,7 @@ System.ValueTuple.dll が *%windir%\Microsoft.NET\assembly* や *%windir%\assemb
  
 `<LogProperties><ErrorInfo>[{"Code":0,"Message":"The type initializer for 'Npgsql.PoolManager' threw an exception.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]</ErrorInfo></LogProperties>`
  
-GAC の詳細については、[こちらの記事](https://docs.microsoft.com/dotnet/framework/app-domains/gac)を参照してください。
+GAC の詳細については、[こちらの記事](/dotnet/framework/app-domains/gac)を参照してください。
 
 
 ### <a name="how-to-audit-self-hosted-ir-key-missing"></a>セルフホステッド IR キーの欠落を監査する方法
@@ -468,7 +468,7 @@ Localhost 127.0.0.1 を使用してファイルをホストすれば、この問
 
 > [!NOTE] 
 > プロキシに関する考慮事項：
-> *    プロキシ サーバーを [信頼できる宛先のリスト] に含める必要があるかどうかを確認します。 その場合は、必ず[このようなドメイン](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network)を [信頼できる宛先のリスト] に含めます。
+> *    プロキシ サーバーを [信頼できる宛先のリスト] に含める必要があるかどうかを確認します。 その場合は、必ず[このようなドメイン](./data-movement-security-considerations.md#firewall-requirements-for-on-premisesprivate-network)を [信頼できる宛先のリスト] に含めます。
 > *    TLS/SSL 証明書 "wu2.frontend.clouddatahub.net/" がプロキシ サーバー上で信頼されているかどうかを確認します。
 > *    プロキシで Active Directory 認証を使用している場合は、サービス アカウントを、"Integration Runtime サービス" としてプロキシにアクセスできるユーザー アカウントに変更してください。
 
@@ -618,34 +618,76 @@ Netmon トレースを取得して、さらに分析します。
 
 ### <a name="receiving-email-to-update-the-network-configuration-to-allow-communication-with-new-ip-addresses"></a>新しい IP アドレスでの通信を許可するようにネットワーク構成を更新するための電子メールを受け取った
 
-#### <a name="symptoms"></a>現象
+#### <a name="email-notification-from-microsoft"></a>Microsoft からの電子メール通知
 
 次の電子メール通知を受信することがあります。これは、2020 年 11 月 8 日までに Azure Data Factory で新しい IP アドレスでの通信を許可するようにネットワーク構成を更新することを推奨しています。
 
    ![電子メール通知](media/self-hosted-integration-runtime-troubleshoot-guide/email-notification.png)
 
-#### <a name="resolution"></a>解像度
+#### <a name="how-to-determine-if-you-are-impacted-by-this-notification"></a>この通知の影響を受けるかどうかを確認する方法
 
-この通知は、 **オンプレミス** または **Azure 仮想プライベート ネットワーク** 内で実行されている **Integration Runtime** から ADF サービスへの **送信方向の通信** に関するものです。 たとえば、ADF サービスにアクセスする必要があるセルフホステッド IR または Azure SQL Server Integration Services (SSIS) の IR が Azure VNET にある場合は、 **ネットワーク セキュリティ グループ (NSG)** のルールにこの新しい IP 範囲を追加する必要があるかどうかを確認する必要があります。 送信 NSG ルールでサービス タグが使用されている場合、影響はありません。
+この通知は、次のシナリオに影響します。
+##### <a name="scenario-1-outbound-communication-from-self-hosted-integration-runtime-running-on-premises-behind-the-corporate-firewall"></a>シナリオ 1:企業のファイアウォール内でオンプレミスで実行されている、セルフホステッド統合ランタイムからの送信方向の通信
+影響があるかどうかは、次のように確認できます。
+- 「[IP アドレスに対するファイアウォールの構成と許可リストの設定](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)」で説明されている方法を使用して、FQDN 名に基づいたファイアウォール規則を定義している場合は、影響を受けません。
+- ただし、企業のファイアウォールで発信 IP の許可リストを明示的に有効にしている場合は、影響を受けます。
 
-#### <a name="more-details"></a>詳細
+影響を受ける場合の対処方法: 2020 年 11 月 8 日までにネットワーク構成を更新して最新の Data Factory の IP アドレスを使用するように、ネットワーク インフラストラクチャ チームに通知します。  最新の IP アドレスをダウンロードするには、[サービス タグの IP 範囲のダウンロード リンク](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)にアクセスしてください。
 
-オンプレミス ネットワークまたは Azure 仮想ネットワークにセルフホステッド IR または SSIS IR があるシナリオで、ADF サービスと通信する必要がある場合、これらの新しい IP 範囲は、 **オンプレミスのファイア ウォール** または **Azure 仮想プライベート ネットワーク** から ADF サービスへの **送信方向の通信ルールにのみ影響します** (「[IP アドレスに対するファイアウォールの構成と許可リストの設定](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)」を参照してください)。
+##### <a name="scenario-2-outbound-communication-from-self-hosted-integration-runtime-running-on-an-azure-vm-inside-customer-managed-azure-virtual-network"></a>シナリオ 2: カスタマー マネージド Azure 仮想ネットワーク内の Azure VM で実行されている、セルフホステッド統合ランタイムからの送信方向の通信
+影響があるかどうかは、次のように確認できます。
+- セルフホステッド統合ランタイムを含むプライベート ネットワークに、送信 NSG 規則があるかどうかを確認します。 送信制限がない場合、影響はありません。
+- アウトバウンド規則の制限がある場合は、サービス タグを使用しているかどうかを確認します。 サービス タグを使用している場合は、新しい IP 範囲が既存のサービス タグの下にあるため、変更や追加を行う必要はありません。 
+ ![追加先の確認](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
+- ただし、Azure 仮想ネットワークの NSG 規則設定で送信 IP アドレスの許可リストを明示的に有効にしている場合は、影響を受けます。
 
-**Azure VPN** を使用する既存のユーザーの場合:
+影響を受ける場合の対処方法: 2020 年 11 月 8 日までに Azure 仮想ネットワーク構成の NSG 規則を更新して最新の Data Factory の IP アドレスを使用するように、ネットワーク インフラストラクチャ チームに通知します。  最新の IP アドレスをダウンロードするには、[サービス タグの IP 範囲のダウンロード リンク](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)にアクセスしてください。
 
-1. SSIS または Azure SSIS が構成されているプライベート ネットワークの送信 NSG ルールを確認します。 送信制限がない場合、それらには影響しません。
-1. アウトバウンド規則の制限がある場合は、サービス タグを使用しているかどうかを確認します。 サービス タグを使用している場合は、新しい IP 範囲が既存のサービス タグの下にあるため、変更や追加を行う必要はありません。 
-  
-    ![追加先の確認](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
+##### <a name="scenario-3-outbound-communication-from-ssis-integration-runtime-in-customer-managed-azure-virtual-network"></a>シナリオ 3: カスタマー マネージド Azure 仮想ネットワークでの SSIS Integration Runtime からの送信方向の通信
+- SSIS Integration Runtime を含むプライベート ネットワークに、送信 NSG 規則があるかどうかを確認します。 送信制限がない場合、影響はありません。
+- アウトバウンド規則の制限がある場合は、サービス タグを使用しているかどうかを確認します。 サービス タグを使用している場合は、新しい IP 範囲が既存のサービス タグの下にあるため、変更や追加を行う必要はありません。
+- ただし、Azure 仮想ネットワークの NSG 規則設定で送信 IP アドレスの許可リストを明示的に有効にしている場合は、影響を受けます。
 
-1. ルールの設定で IP アドレスを直接使用する場合は、[サービス タグの IP 範囲のダウンロード リンク](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)ですべての IP 範囲が追加されているかどうかを確認します。 このファイルには、新しい IP 範囲を既に設定しています。 新しいユーザーの場合:NSG ルールを構成するには、ドキュメントに記載されている関連するセルフホステッド IR または SSIS IR の構成に従う必要があるだけです。
+影響を受ける場合の対処方法: 2020 年 11 月 8 日までに Azure 仮想ネットワーク構成の NSG 規則を更新して最新の Data Factory の IP アドレスを使用するように、ネットワーク インフラストラクチャ チームに通知します。  最新の IP アドレスをダウンロードするには、[サービス タグの IP 範囲のダウンロード リンク](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)にアクセスしてください。
 
-**オンプレミス** で SSIS IR またはセルフホステッド IR を使用している既存のユーザーの場合:
+### <a name="could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>SSLTLS のセキュリティで保護されているチャネルに対する信頼関係を確立できなかった 
 
-- ネットワーク インフラストラクチャ チームに連絡して、アウトバウンド規則の通信に新しい IP 範囲アドレスを含める必要があるかどうかを確認します。
-- FQDN 名に基づくファイアウォール規則の場合、「[IP アドレスに対するファイアウォールの構成と許可リストの設定](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)」に記載されている設定を使用するときは、更新は必要ありません。 
-- 一部のオンプレミス ファイアウォールではサービス タグがサポートされます。更新された Azure サービス タグ構成ファイルを使用する場合、他の変更は必要ありません。
+#### <a name="symptoms"></a>現象
+
+セルフホステッド IR は ADF サービスに接続できませんでした。
+
+SHIR イベント ログまたは CustomLogEvent テーブルのクライアント通知ログを確認すると、次のエラー メッセージが表示されます。
+
+`The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.The remote certificate is invalid according to the validation procedure.`
+
+ADF サービスのサーバー証明書は、次のように確認できます。
+
+最も簡単な方法は、ブラウザーで ADF サービスの URL を開くことです。たとえば、SHIR がインストールされているコンピューターで https://eu.frontend.clouddatahub.net/ を開き、サーバー証明書の情報を表示します。
+
+  ![ADF サービスのサーバー証明書を確認します](media/self-hosted-integration-runtime-troubleshoot-guide/server-certificate.png)
+
+  ![サーバー証明書のパスを確認します](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-path.png)
+
+#### <a name="cause"></a>原因
+
+この問題の原因は 2 つ考えられます。
+
+- ADF サービスのサーバー証明書のルート CA は、SHIR がインストールされているコンピューターで信頼されていません。 
+- お使いの環境でプロキシを使用していて、ADF サービスのサーバー証明書がプロキシによって置き換えられていますが、置き換えられたサーバー証明書は、SHIR がインストールされているコンピューターで信頼されていません。
+
+#### <a name="solution"></a>解決策
+
+- 理由 1 の場合、ADF サーバー証明書とその証明書チェーンが、SHIR がインストールされているコンピューターによって信頼されていることを確認してください。
+- 理由 2 の場合、SHIR マシンで置き換えられたルート CA を信頼するか、ADF サーバー証明書を置き換えないようにプロキシを構成します。
+
+Windows で証明書を信頼する方法の詳細については、[この記事](https://docs.microsoft.com/skype-sdk/sdn/articles/installing-the-trusted-root-certificate)を参照してください。
+
+#### <a name="additional-info"></a>追加情報
+DigiCert から署名された、新しい SSL 証明書がロールアウトされています。DigiCert Global Root G2 が信頼されたルート CA に存在するかどうかを確認してください。
+
+  ![DigiCert Global Root G2](media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png)
+
+存在しない場合は、[こちら](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt )からダウンロードできます。 
 
 ## <a name="self-hosted-ir-sharing"></a>セルフホステッド IR の共有
 
@@ -667,7 +709,7 @@ Azure Data Factory の UI からセルフホステッド IR を共有しよう�
 *  [Data Factory ブログ](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory の機能のリクエスト](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
+*  [Microsoft Q&A 質問ページ](/answers/topics/azure-data-factory.html)
 *  [Data Factory に関する Stack overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Data Factory に関する Twitter 情報](https://twitter.com/hashtag/DataFactory)
 *  [マッピング データ フローのパフォーマンス ガイド](concepts-data-flow-performance.md)

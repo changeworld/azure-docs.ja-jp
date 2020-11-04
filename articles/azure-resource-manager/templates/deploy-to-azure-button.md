@@ -2,17 +2,24 @@
 title: '[Azure にデプロイ] ボタン'
 description: Azure Resource Manager テンプレートを GitHub リポジトリからデプロイするためのボタンを使用する。
 ms.topic: conceptual
-ms.date: 07/20/2020
-ms.openlocfilehash: 9fe69eba2a91bf19e0662ae071c222905c348666
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 62a0a8b0336d9a7fcf00efb172775b9606bcef98
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079463"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675388"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>デプロイ ボタンを使用して GitHub リポジトリからテンプレートをデプロイする
 
-この記事では、 **[Azure に配置する]** ボタンを使用して、GitHub リポジトリからテンプレートをデプロイする方法について説明します。 このボタンは、GitHub リポジトリ内の README.md ファイル、またはリポジトリを参照する Web ページに直接追加できます。 この方法では、リソース グループ レベルのデプロイのみがサポートされます。
+この記事では、 **[Azure に配置する]** ボタンを使用して、GitHub リポジトリからテンプレートをデプロイする方法について説明します。 このボタンは、GitHub リポジトリ内の README.md ファイルに直接追加できます。 または、リポジトリを参照する Web ページにボタンを追加することもできます。
+
+デプロイ スコープは、テンプレート スキーマによって決定されます。 詳細については、次を参照してください。
+
+* [resource groups](deploy-to-resource-group.md)
+* [subscriptions](deploy-to-subscription.md)
+* [管理グループ](deploy-to-management-group.md)
+* [テナント](deploy-to-tenant.md)
 
 ## <a name="use-common-image"></a>一般的なイメージを使用する
 
@@ -38,7 +45,7 @@ URL の形式は、次のようになります。
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-次に、これを URL エンコードします。 オンライン エンコーダーを使用するか、コマンドを実行できます。 次の PowerShell の例は、値を URL エンコードする方法を示しています。
+次に、URL を URL エンコードされた値に変換します。 オンライン エンコーダーを使用するか、コマンドを実行できます。 次の PowerShell の例は、値を URL エンコードする方法を示しています。
 
 ```powershell
 [uri]::EscapeDataString($url)

@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 3bc71e10167b21b65616dd20f8edb9a1d902527e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fbe930780ff026be748bc42104f821ee9e5c443
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83798349"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785104"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-application-gateway"></a>Application Gateway の Azure Web アプリケーション ファイアウォールに関してよく寄せられる質問
 
@@ -58,6 +58,9 @@ WAF で現在サポートされているのは、CRS [2.2.9](application-gateway
 
 はい。 アプリケーション ゲートウェイをデプロイしてある仮想ネットワーク上で、DDos 保護を有効にすることができます。 この設定によって、アプリケーション ゲートウェイの仮想 IP (VIP) も Azure DDoS Protection サービスによる保護の対象になります。
 
+### <a name="does-waf-store-customer-data"></a>WAF は顧客データを格納しますか?
+
+いいえ。WAF は顧客データを格納しません。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 0111da00962f267387e66978952e8a7c9f5d7308
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f09ef109be68dbdb6c82ce5fc89761b10bec85f3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970046"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781687"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Azure App Service のカスタム ドメイン名を購入する
 
@@ -24,12 +24,13 @@ Azure VM または Azure Storage については、「[Assign App Service domain
 
 * [App Service アプリを作成する](./index.yml)か、別のチュートリアルで作成したアプリを使用します。
 * [サブスクリプションで使用制限を削除](../cost-management-billing/manage/spending-limit.md#remove)します。 無料のサブスクリプション クレジットで App Service ドメインを購入することはできません。
+* Azure Public リージョンの App Service。 現時点では、Azure の各国のクラウドはサポートされていないことに注意してください。
 
 ## <a name="prepare-the-app"></a>アプリの準備
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Azure App Service でカスタム ドメインを使うには、アプリの [App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が有料レベル (**Shared**、**Basic**、**Standard**、または **Premium**) である必要があります。 この手順では、アプリが、サポートされている価格レベルであることを確認します。
+Azure App Service でカスタム ドメインを使うには、アプリの [App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が有料レベル ( **Shared** 、 **Basic** 、 **Standard** 、または **Premium** ) である必要があります。 この手順では、アプリが、サポートされている価格レベルであることを確認します。
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -49,19 +50,19 @@ App Service アプリの管理ページが表示されます。
 
 ![スケール アップ メニュー](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
-アプリの現在のレベルが青色の枠線で強調表示されます。 アプリが **F1** レベルに含まれていないことを確認します。 カスタム DNS は、**F1** レベルではサポートされていません。 
+アプリの現在のレベルが青色の枠線で強調表示されます。 アプリが **F1** レベルに含まれていないことを確認します。 カスタム DNS は、 **F1** レベルではサポートされていません。 
 
 :::image type="content" source="./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png" alt-text="スケールアップ (App Service プラン) が選択されているアプリ ページの左側のナビゲーション メニューのスクリーンショット。":::
 
-App Service プランが **F1** レベルではない場合は、 **[スケール アップ]** ページを閉じて、「[ドメインを購入する](#buy-the-domain)」に進みます。
+App Service プランが **F1** レベルではない場合は、 **[スケール アップ]** ページを閉じて、「 [ドメインを購入する](#buy-the-domain)」に進みます。
 
 ### <a name="scale-up-the-app-service-plan"></a>App Service プランをスケール アップする
 
-非 Free レベルのいずれかを選びます (**D1**、**B1**、**B2**、**B3**、または**運用**カテゴリのいずれかのレベル)。 その他のオプションについては、 **[See additional options]\(その他のオプションを参照する\)** をクリックします。
+非 Free レベルのいずれかを選びます ( **D1** 、 **B1** 、 **B2** 、 **B3** 、または **運用** カテゴリのいずれかのレベル)。 その他のオプションについては、 **[See additional options]\(その他のオプションを参照する\)** をクリックします。
 
 **[Apply]** をクリックします。
 
-:::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="スケールアップ (App Service プラン) が選択されているアプリ ページの左側のナビゲーション メニューのスクリーンショット。":::
+:::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="[運用] タブ、[B1 プラン]、[適用] ボタンが強調表示されている [運用] カテゴリのカスタム ドメイン価格レベルのスクリーンショット。":::
 
 次の通知が表示されたら、スケール操作は完了です。
 
@@ -85,7 +86,7 @@ Azure App Service ドメインの料金については、[App Service の価格�
 ![[ドメインの購入] が強調表示されているスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
 
 > [!NOTE]
-> **[App Service ドメイン]** セクションが表示されていない場合は、Azure アカウントの使用制限を削除する必要があります (「[前提条件](#prerequisites)」をご覧ください)。
+> **[App Service ドメイン]** セクションが表示されていない場合は、Azure アカウントの使用制限を削除する必要があります (「 [前提条件](#prerequisites)」をご覧ください)。
 >
 >
 
@@ -96,7 +97,7 @@ Azure App Service ドメインの料金については、[App Service の価格�
 ![[ドメインの検索] 検索ボックスを示すスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
 > [!NOTE]
-> App Service ドメインでは、_com_、_net_、_co.uk_、_org_、_nl_、_in_、_biz_、_org.uk_、_co.in_ の各[トップレベル ドメイン](https://wikipedia.org/wiki/Top-level_domain)がサポートされています。
+> App Service ドメインでは、 _com_ 、 _net_ 、 _co.uk_ 、 _org_ 、 _nl_ 、 _in_ 、 _biz_ 、 _org.uk_ 、 _co.in_ の各 [トップレベル ドメイン](https://wikipedia.org/wiki/Top-level_domain)がサポートされています。
 >
 >
 
@@ -108,7 +109,7 @@ Azure App Service ドメインの料金については、[App Service の価格�
 
 | 設定 | 推奨値 | 説明 |
 |-|-|-|
-|プライバシー保護 | 有効化 | "プライバシー保護" にオプトインします。これは、購入価格に含まれており "_無料_" です。 一部のトップレベル ドメインは、プライバシー保護をサポートしていないレジストラーによって管理されます。これらは、 **[プライバシー保護]** ページに表示されます。 |
+|プライバシー保護 | 有効化 | "プライバシー保護" にオプトインします。これは、購入価格に含まれており " _無料_ " です。 一部のトップレベル ドメインは、プライバシー保護をサポートしていないレジストラーによって管理されます。これらは、 **[プライバシー保護]** ページに表示されます。 |
 | 既定のホスト名の割り当て | **www** および **\@** | 必要に応じて、適切なホスト名バインドを選びます。 ドメイン購入操作が完了すると、選んだホスト名でアプリにアクセスできるようになります。 アプリが [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) の背後にある場合、Traffic Manager は A レコードをサポートしていないため、ルート ドメイン (@) を割り当てるオプションは表示されません。 ドメインの購入が完了した後で、ホスト名の割り当てを変更することができます。 |
 
 ### <a name="accept-terms-and-purchase"></a>ライセンス条項に同意して購入する
@@ -140,7 +141,7 @@ Azure App Service ドメインの料金については、[App Service の価格�
 > カスタム ドメインの **[セキュリティ保護なし]** のラベルは、それがまだ TLS/SSL 証明書にバインドされていないことを意味し、ブラウザーによっては、ブラウザーからカスタム ドメインへの HTTPS 要求でエラーまたは警告が発生します。 TLS バインドを構成するには、「[Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)」を参照してください。
 >
 
-ホスト名をテストするには、一覧表示されているホスト名にブラウザーで移動します。 前掲のスクリーンショットの例では、_kontoso.net_ と _www\.kontoso.net_ に移動してみます。
+ホスト名をテストするには、一覧表示されているホスト名にブラウザーで移動します。 前掲のスクリーンショットの例では、 _kontoso.net_ と _www\.kontoso.net_ に移動してみます。
 
 ## <a name="assign-hostnames-to-app"></a>アプリにホスト名を割り当てる
 
@@ -191,7 +192,7 @@ Azure App Service ドメインの料金については、[App Service の価格�
 
 ### <a name="test-the-hostnames"></a>ホスト名をテストする
 
-一覧表示されているホスト名にブラウザーで移動します。 前掲のスクリーンショットの例では、_abc.kontoso.net_ に移動してみます。
+一覧表示されているホスト名にブラウザーで移動します。 前掲のスクリーンショットの例では、 _abc.kontoso.net_ に移動してみます。
 
 ## <a name="renew-the-domain"></a>ドメインを更新する
 

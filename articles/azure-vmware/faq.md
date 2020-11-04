@@ -4,12 +4,12 @@ description: Azure VMware Solution についてよく寄せられる質問にお
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 8868f86f0cf46ff82e37cd433d7b5bca0d69567d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 91be1c51639aa3ae8acbf0c37f5c4a8174b5a592
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078937"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779443"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware Solution についてよく寄せられる質問
 
@@ -45,7 +45,7 @@ Azure VMware Solution のお客様はすべての Azure サービスを利用で
 
 #### <a name="can-i-migrate-vsphere-vms-from-on-premises-environments-to-azure-vmware-solution-private-clouds"></a>オンプレミス環境から Azure VMware Solution のプライベート クラウドに vSphere VM を移行できますか?
 
-はい。 標準クロス vCenter [vMotion の要件](https://kb.vmware.com/s/article/210695)が満たされる場合、VM 移行と vMotion を使用して VM をプライベート クラウドに移動できます。
+はい。 標準クロス vCenter [vMotion の要件](https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=2106952)が満たされる場合、VM 移行と vMotion を使用して VM をプライベート クラウドに移動できます。
 
 #### <a name="is-a-specific-version-of-vsphere-required-in-on-premises-environments"></a>オンプレミス環境では、特定のバージョンの vSphere が必要ですか?
 
@@ -57,7 +57,7 @@ Azure VMware Solution のお客様はすべての Azure サービスを利用で
 
 #### <a name="how-is-this-different-from-azure-vmware-solution-by-cloudsimple"></a>これは Azure VMware Solution by CloudSimple とはどのように違いますか?
 
-新しい Azure VMware Solution では、Microsoft と VMware の間に直接クラウド プロバイダー パートナーシップがあります。 新しいソリューションは、Microsoft によって完全に設計、構築、サポートされ、VMware によって保証されます。 アーキテクチャ上、ソリューションは Azure 専用インフラストラクチャで実行されている VMware テクノロジ スタックと一貫しています。
+新しい Azure VMware Solution では、Microsoft と VMware の間に直接クラウド プロバイダー パートナーシップがあります。 新しいソリューションは、Microsoft によって完全に設計、構築、サポートされ、VMware によって保証されます。 アーキテクチャ上、ソリューションは専用の Azure インフラストラクチャで実行されている VMware テクノロジ スタックと一貫しています。
 
 #### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>Red Hat ソリューションは Azure VMware Solution でサポートされていますか?
 
@@ -65,10 +65,10 @@ Microsoft と Red Hat は、Azure プラットフォームで実行される Red
 
 #### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>VMware HCX Enterprise Edition を利用できますか? 利用できる場合、コストはどのくらいですか?
 
-VMware HCX Enterprise Edition (EE) は、Azure VMware Solution で、*プレビュー*の機能/サービスとして使用できます。 Azure VMware Solution 向けの VMware HCX EE はプレビュー段階ですが、無料の機能/サービスであり、プレビュー サービスの使用条件が適用されます。 VMware HCX EE サービスが GA になると、課金が切り替わるという通知が 30 日間前に届きます。 サービスのオン/オフを切り替えるオプションも用意されます。
+VMware HCX Enterprise Edition (EE) は、Azure VMware Solution で、 *プレビュー* の機能/サービスとして使用できます。 Azure VMware Solution 向けの VMware HCX EE はプレビュー段階ですが、無料の機能/サービスであり、プレビュー サービスの利用規約が適用されます。 VMware HCX EE サービスが GA になると、課金が切り替わるという通知が 30 日間前に届きます。 サービスを停止またはオプトアウトすることができます。
 
 #### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Azure VMware Solution の VM は VMRC で管理できますか?
-はい。インストールされるシステムがプライベート クラウドの vCenter にアクセスでき、パブリック DNS を使用している (ESXi ホスト名を解決できるようにするため) 場合は管理できます。
+はい。インストールされるシステムがプライベート クラウドの vCenter にアクセスでき、パブリック DNS を使用して ESXi ホスト名を解決している場合は管理できます。
 
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Azure VMware Solution の VM で VMRC をインストールして使用するための特別な手順はありますか?
 いいえ。[VMware によって提供されている手順](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html)を使用し、その手順で指定されている VM の前提条件を満たすようにしてください。 
@@ -102,7 +102,7 @@ Azure Bastion は、Azure VMware Solution がインターネットに公開さ�
 
 #### <a name="how-much-network-bandwidth-is-available-in-each-esxi-host"></a>各 ESXi ホストで使用できるネットワーク帯域幅はどれくらいですか?
 
-各 ESXi ホストは、4 つの 25 Gbps NIC で構成された Azure VMware Solution です。ESXi のシステム トラフィック用に 2 つの NIC がプロビジョニングされ、ワークロードのトラフィック用に 2 つの NIC がプロビジョニングされます。 
+Azure VMware Solution の各 ESXi ホストは、4 つの 25 Gbps NIC、ESXi のシステム トラフィック用にプロビジョニングされた 2 つの NIC、ワークロードのトラフィック用にプロビジョニングされた 2 つの NIC で構成されています。 
 
 #### <a name="is-data-stored-on-the-vsan-datastores-encrypted-at-rest"></a>vSAN データストアに保存されるデータは保存時に暗号化されますか?
 
@@ -116,9 +116,9 @@ Microsoft で把握している限りでは、HotAdd トランスポート モ�
 
 これらのバックアップ ソリューションはお客様がインストールおよび管理するため、それぞれの ISV にサポートを依頼することができます。 
 
-#### <a name="what-is-the-correct-storage-policy-for-the-dedup-set-up"></a>重複除去の設定に適切なストレージ ポリシーは何ですか?
+#### <a name="what-is-the-correct-storage-policy-for-the-dedupe-setup"></a>重複除去の設定に適切なストレージ ポリシーは何ですか?
 
-VM テンプレートに "*thin_provision*" ストレージ ポリシーを使用します。  既定値は "*thick_provision*" です。
+VM テンプレートに " *thin_provision* " ストレージ ポリシーを使用します。  既定値は " *thick_provision* " です。
 
 #### <a name="are-the-snmp-infrastructure-logs-shared"></a>SNMP インフラストラクチャのログは共有されますか?
 
@@ -130,7 +130,7 @@ VM テンプレートに "*thin_provision*" ストレージ ポリシーを使�
 
 いいえ。プライベート クラウド ホストとクラスターは専用であり、使用前と使用後に安全に消去されます。
 
-#### <a name="what-are-the-minimum-and-maximum-number-of-hosts-per-cluster"></a>クラスターあたりのホストの最小数と最大数はどれくらいですか?
+#### <a name="what-are-the-minimum-and-the-maximum-number-of-hosts-per-cluster"></a>クラスターあたりのホストの最小数と最大数はどれくらいですか?
 
 クラスターは、3 台から 16 台の ESXi ホストにスケーリングできます。 試用版クラスターは、3 台のホストに制限されます。
 
@@ -239,7 +239,7 @@ Azure サブスクリプションの Azure アカウントが必要です。
 * Microsoft との [Azure Enterprise Agreement (EA)](../cost-management-billing/manage/ea-portal-agreements.md) が必要です。
 * Azure サブスクリプションの Azure アカウントが必要です。
 
-Azure VMware Solution リソースを作成する前に、サポート チケットを提出して、ノードが割り当てられるようにする必要があります。 サポート チームがリクエストを受け取ると、リクエストが確認されてノードが割り当てられるまでに、最大 5 営業日かかります。 Azure VMware Solution の既存のプライベート クラウドがあり、さらに多くのノードを割り当てる必要がある場合は、同じプロセスを実行します。
+Azure VMware Solution リソースを作成する前に、サポート チケットを提出して、ノードを割り当てる必要があります。 リクエストが確認されてノードが割り当てられるまでに、最大 5 営業日かかります。 Azure VMware Solution の既存のプライベート クラウドがあり、さらに多くのノードを割り当てる必要がある場合は、同じプロセスを実行します。
 
 
 1. Azure portal の **[ヘルプとサポート]** で、 **[新しいサポート リクエスト](https://rc.portal.azure.com/#create/Microsoft.Support)** を作成し、チケットに関する次の情報を提供します。
@@ -272,12 +272,12 @@ Azure VMware Solution リソースを作成する前に、サポート チケッ
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
-   ```
+   `"
 
-   リソース プロバイダーを登録するその他の方法については、「[Azure リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)」を参照してください。
+   For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md).
 
 <!-- LINKS - external -->
-[kb2106952]: https://kb.vmware.com/s/article/2106952
+[kb2106952]: https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=21069522
 
 <!-- LINKS - internal -->
 [Access and Identity Concepts]: concepts-identity.md

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/28/2020
-ms.openlocfilehash: 4ff1a793b3e8c4fe642aa304f1aa59bd8edefb8c
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 8937cfa5a48903ab53f3015b056a4915240bc525
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405604"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633129"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Databricks Delta Lake をコピー先またはコピー元としてデータをコピーする
 
@@ -46,9 +46,9 @@ ms.locfileid: "91405604"
 
 Databricks クラスターは、Azure Blob または Azure Data Lake Storage Gen2 アカウントにアクセスできる必要があります。これは、ソース/シンク/ステージングに使用されるストレージ コンテナー/ファイル システムと、Data Lake テーブルを書き込むコンテナー/ファイル システムの両方です。
 
-- **Azure Data Lake Storage Gen2** を使用するには、Apache Spark 構成の一部として、Databricks クラスターで**サービス プリンシパル**または**ストレージ アカウント アクセス キー**を構成します。 「[サービス プリンシパルを使用した直接アクセス](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20)」または「[ストレージ アカウント アクセス キーを使用した直接アクセス](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-using-the-storage-account-access-key)」の手順に従います。
+- **Azure Data Lake Storage Gen2** を使用するには、Apache Spark 構成の一部として、Databricks クラスターで **サービス プリンシパル** または **ストレージ アカウント アクセス キー** を構成します。 「[サービス プリンシパルを使用した直接アクセス](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20)」または「[ストレージ アカウント アクセス キーを使用した直接アクセス](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-using-the-storage-account-access-key)」の手順に従います。
 
-- **Azure Blob Storage** を使用するには、Apache Spark 構成の一部として、Databricks クラスターで**ストレージ アカウント アクセス キー**または **SAS トークン**を構成します。 「[RDD API を使用した Azure Blob Storage へのアクセス](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-storage#access-azure-blob-storage-using-the-rdd-api)」の手順に従います。
+- **Azure Blob Storage** を使用するには、Apache Spark 構成の一部として、Databricks クラスターで **ストレージ アカウント アクセス キー** または **SAS トークン** を構成します。 「[RDD API を使用した Azure Blob Storage へのアクセス](/azure/databricks/data/data-sources/azure/azure-storage#access-azure-blob-storage-using-the-rdd-api)」の手順に従います。
 
 コピー アクティビティの実行中、構成したクラスターが終了した場合は、Data Factory によって自動的に開始されます。 Data Factory オーサリング UI を使用してパイプラインを作成する場合、データのプレビューなどの操作にはライブ クラスターが必要ですが、Data Factory によってクラスターが起動されることはありません。
 
@@ -58,7 +58,7 @@ Databricks クラスターは、Azure Blob または Azure Data Lake Storage Gen
 
 2. **[Databricks Runtime のバージョン]** ドロップダウンで、Databricks Runtime のバージョンを選択します。
 
-3. [Spark 構成](https://docs.microsoft.com/azure/databricks/clusters/configure#spark-config)に次のプロパティを追加して、[自動最適化](https://docs.microsoft.com/azure/databricks/delta/optimizations/auto-optimize)をオンにします。
+3. [Spark 構成](/azure/databricks/clusters/configure#spark-config)に次のプロパティを追加して、[自動最適化](/azure/databricks/delta/optimizations/auto-optimize)をオンにします。
 
    ```
    spark.databricks.delta.optimizeWrite.enabled true
@@ -67,7 +67,7 @@ Databricks クラスターは、Azure Blob または Azure Data Lake Storage Gen
 
 4. 統合とスケーリングのニーズに応じて、クラスターを構成します。
 
-クラスター構成の詳細については、「[クラスターの構成](https://docs.microsoft.com/azure/databricks/clusters/configure)」を参照してください。
+クラスター構成の詳細については、「[クラスターの構成](/azure/databricks/clusters/configure)」を参照してください。
 
 ## <a name="get-started"></a>はじめに
 
@@ -81,10 +81,10 @@ Azure Databricks Delta Lake のリンクされたサービスでは、次のプ�
 
 | プロパティ    | 説明                                                  | 必須 |
 | :---------- | :----------------------------------------------------------- | :------- |
-| type        | type プロパティは、**AzureDatabricksDeltaLake** に設定する必要があります。 | はい      |
+| type        | type プロパティは、 **AzureDatabricksDeltaLake** に設定する必要があります。 | はい      |
 | domain      | Azure Databricks ワークスペースの URL を指定します (例: `https://adb-xxxxxxxxx.xx.azuredatabricks.net`)。 |          |
-| clusterId   | 既存のクラスターのクラスター ID を指定します。 これは作成済みの対話型クラスターでなければなりません。 <br>対話型クラスターのクラスター ID は Databricks ワークスペース -> クラスター -> 対話型クラスター名 -> 構成 -> タグで見つけることができます。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/databricks/clusters/configure#cluster-tags)。 |          |
-| accessToken | Data Factory の Azure Databricks の認証にはアクセス トークンが必要です。 アクセス トークンは、Databricks ワークスペースから生成する必要があります。 アクセス トークンを見つける詳細な手順については、[こちら](https://docs.microsoft.com/azure/databricks/dev-tools/api/latest/authentication#generate-token)を参照してください。 |          |
+| clusterId   | 既存のクラスターのクラスター ID を指定します。 これは作成済みの対話型クラスターでなければなりません。 <br>対話型クラスターのクラスター ID は Databricks ワークスペース -> クラスター -> 対話型クラスター名 -> 構成 -> タグで見つけることができます。 [詳細については、こちらを参照してください](/azure/databricks/clusters/configure#cluster-tags)。 |          |
+| accessToken | Data Factory の Azure Databricks の認証にはアクセス トークンが必要です。 アクセス トークンは、Databricks ワークスペースから生成する必要があります。 アクセス トークンを見つける詳細な手順については、[こちら](/azure/databricks/dev-tools/api/latest/authentication#generate-token)を参照してください。 |          |
 | connectVia  | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたはセルフホステッド統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ       |
 
 **例:**
@@ -114,7 +114,7 @@ Azure Databricks Delta Lake データセットでは、次のプロパティが�
 
 | プロパティ  | 説明                                                  | 必須                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| type      | データセットの type プロパティには、**AzureDatabricksDeltaLakeDataset** を設定する必要があります。 | はい                         |
+| type      | データセットの type プロパティには、 **AzureDatabricksDeltaLakeDataset** を設定する必要があります。 | はい                         |
 | database | データベースの名前です。 |ソースの場合はいいえ、シンクの場合ははい  |
 | table | デルタ テーブルの名前。 |ソースの場合はいいえ、シンクの場合ははい  |
 
@@ -151,8 +151,8 @@ Azure Databricks Delta Lake からデータをコピーするために、コピ�
 | type                         | コピー アクティビティのソースの type プロパティは **AzureDatabricksDeltaLakeSource** を設定する必要があります。 | はい      |
 | query          | データを読み取るための SQL クエリを指定します。 タイム トラベル制御については、次のパターンに従います。<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | いいえ       |
 | exportSettings | デルタ テーブルからデータを取得するために使用される詳細設定。 | いいえ       |
-| ***`exportSettings` の下:*** |  |  |
-| type | エクスポート コマンドの種類。**AzureDatabricksDeltaLakeExportCommand** に設定します。 | Yes |
+| * **`exportSettings` の下:** _ |  |  |
+| type | エクスポート コマンドの種類。_*AzureDatabricksDeltaLakeExportCommand** に設定します。 | Yes |
 | dateFormat | 日付型を日付形式の文字列に書式設定します。 カスタム日付形式は [datetime パターン](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)の形式に従います。 指定しない場合は、既定値の `yyyy-MM-dd` が使用されます。 | いいえ |
 | timestampFormat | タイムスタンプ型をタイムスタンプ形式の文字列に書式設定します。 カスタム日付形式は [datetime パターン](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)の形式に従います。 指定しない場合は、既定値の `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` が使用されます。 | いいえ |
 
@@ -160,16 +160,16 @@ Azure Databricks Delta Lake からデータをコピーするために、コピ�
 
 シンクのデータ ストアと形式がこのセクションで説明する基準を満たす場合は、コピー アクティビティを使用して、Azure Databricks Delta テーブルからシンクに直接コピーできます。 Data Factory によって設定が確認され、次の条件が満たされない場合は、コピー アクティビティの実行が失敗します。
 
-- **シンクのリンクされたサービス**は、[Azure Blob Storage](connector-azure-blob-storage.md) または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) です。 アカウントの資格情報は Azure Databricks クラスター構成で事前に構成されている必要があります。詳細については、「[前提条件](#prerequisites)」を参照してください。
+- **シンクのリンクされたサービス** は、 [Azure Blob Storage](connector-azure-blob-storage.md) または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) です。 アカウントの資格情報は Azure Databricks クラスター構成で事前に構成されている必要があります。詳細については、「[前提条件](#prerequisites)」を参照してください。
 
-- **シンク データ形式**は、次のように構成された **Parquet**、**区切りテキスト**、または **Avro** であり、ファイルではなくフォルダーを指しています。
+- **シンク データ形式** は、次のように構成された **Parquet** 、 **区切りテキスト** 、または **Avro** であり、ファイルではなくフォルダーを指しています。
 
-    - **Parquet** 形式の場合は、圧縮コーデックが **none**、**snappy**、または **gzip** です。
-    - **区切りテキスト**形式の場合:
+    - **Parquet** 形式の場合は、圧縮コーデックが **none** 、 **snappy** 、または **gzip** です。
+    - **区切りテキスト** 形式の場合:
         - `rowDelimiter` は任意の 1 文字です。
-        - `compression` には **none**、**bzip2**、**gzip** を指定できます。
+        - `compression` には **none** 、 **bzip2** 、 **gzip** を指定できます。
         - `encodingName` UTF-7 はサポートされていません。
-    - **Avro** 形式の場合は、圧縮コーデックが **none**、**deflate**、または **snappy** です。
+    - **Avro** 形式の場合は、圧縮コーデックが **none** 、 **deflate** 、または **snappy** です。
 
 - コピー アクティビティ ソースでは、`additionalColumns` が指定されていません。
 - 区切りテキストにデータをコピーする場合、コピー アクティビティ シンクでは、`fileExtension` は ".csv" である必要があります。
@@ -262,11 +262,11 @@ Azure Databricks Delta Lake にデータをコピーするために、コピー 
 
 | プロパティ      | 説明                                                  | 必須 |
 | :------------ | :----------------------------------------------------------- | :------- |
-| type          | コピー アクティビティのシンクの type プロパティ。**AzureDatabricksDeltaLakeSink** に設定します。 | はい      |
+| type          | コピー アクティビティのシンクの type プロパティ。 **AzureDatabricksDeltaLakeSink** に設定します。 | はい      |
 | preCopyScript | コピー アクティビティの毎回の実行で、データを Databricks Delta テーブルに書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップしたり、TRUNCATE TABLE ステートメントまたは VACUUM ステートメントを追加したりできます。 | いいえ       |
 | importSettings | デルタ テーブルにデータを書き込むために使用される詳細設定。 | いいえ |
-| ***`importSettings` の下:*** |                                                              |  |
-| type | インポート コマンドの種類。**AzureDatabricksDeltaLakeImportCommand** に設定します。 | Yes |
+| **_`importSettings` の下:_* _ |                                                              |  |
+| type | インポート コマンドの種類。_*AzureDatabricksDeltaLakeImportCommand** に設定します。 | Yes |
 | dateFormat | 日付形式の文字列を日付型に書式設定します。 カスタム日付形式は [datetime パターン](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)の形式に従います。 指定しない場合は、既定値の `yyyy-MM-dd` が使用されます。 | いいえ |
 | timestampFormat | タイムスタンプ形式の文字列をタイムスタンプ型に書式設定します。 カスタム日付形式は [datetime パターン](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)の形式に従います。 指定しない場合は、既定値の `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` が使用されます。 | いいえ |
 
@@ -274,16 +274,16 @@ Azure Databricks Delta Lake にデータをコピーするために、コピー 
 
 ソースのデータ ストアと形式がこのセクションで説明する基準を満たす場合は、コピー アクティビティを使用して、ソースから Azure Databricks Delta Lake に直接コピーできます。 Azure Data Factory によって設定が確認され、次の条件が満たされない場合は、コピー アクティビティの実行が失敗します。
 
-- **ソースのリンクされたサービス**は、[Azure Blob Storage](connector-azure-blob-storage.md) または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) です。 アカウントの資格情報は Azure Databricks クラスター構成で事前に構成されている必要があります。詳細については、「[前提条件](#prerequisites)」を参照してください。
+- **ソースのリンクされたサービス** は、 [Azure Blob Storage](connector-azure-blob-storage.md) または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) です。 アカウントの資格情報は Azure Databricks クラスター構成で事前に構成されている必要があります。詳細については、「[前提条件](#prerequisites)」を参照してください。
 
-- **ソース データ形式**は、次のように構成された **Parquet**、**区切りテキスト**、または **Avro** であり、ファイルではなくフォルダーを指しています。
+- **ソース データ形式** は、次のように構成された **Parquet** 、 **区切りテキスト** 、または **Avro** であり、ファイルではなくフォルダーを指しています。
 
-    - **Parquet** 形式の場合は、圧縮コーデックが **none**、**snappy**、または **gzip** です。
-    - **区切りテキスト**形式の場合:
+    - **Parquet** 形式の場合は、圧縮コーデックが **none** 、 **snappy** 、または **gzip** です。
+    - **区切りテキスト** 形式の場合:
         - `rowDelimiter` は既定値または任意の 1 文字です。
-        - `compression` には **none**、**bzip2**、**gzip** を指定できます。
+        - `compression` には **none** 、 **bzip2** 、 **gzip** を指定できます。
         - `encodingName` UTF-7 はサポートされていません。
-    - **Avro** 形式の場合は、圧縮コーデックが **none**、**deflate**、または **snappy** です。
+    - **Avro** 形式の場合は、圧縮コーデックが **none** 、 **deflate** 、または **snappy** です。
 
 - コピー アクティビティ ソース内: 
 
@@ -374,7 +374,7 @@ Azure Databricks Delta Lake にデータをコピーするために、コピー 
 
 ## <a name="monitoring"></a>監視
 
-Azure Data Factory は、他のコネクタと同じ[コピー アクティビティ監視エクスペリエンス](copy-activity-monitoring.md)を提供します。 さらに、Delta Lake との間のデータの読み込みが Azure Databricks クラスターで実行されているため、[詳細なクラスター ログを表示](https://docs.microsoft.com/azure/databricks/clusters/clusters-manage#--view-cluster-logs)したり、[パフォーマンスを監視](https://docs.microsoft.com/azure/databricks/clusters/clusters-manage#--monitor-performance)したりすることができます。
+Azure Data Factory は、他のコネクタと同じ[コピー アクティビティ監視エクスペリエンス](copy-activity-monitoring.md)を提供します。 さらに、Delta Lake との間のデータの読み込みが Azure Databricks クラスターで実行されているため、[詳細なクラスター ログを表示](/azure/databricks/clusters/clusters-manage#--view-cluster-logs)したり、[パフォーマンスを監視](/azure/databricks/clusters/clusters-manage#--monitor-performance)したりすることができます。
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 

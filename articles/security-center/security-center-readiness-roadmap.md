@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 38e1fc7f062908f8c4a4b9aa903ca09dd7fb9ea5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: fcaf427c2e0ab275a5a6e08306dda785bca690d6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342333"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784169"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center の対応準備ロードマップ
 このドキュメントでは、Azure Security Center の導入を支援する対応準備ロードマップについて取り上げます。
@@ -78,7 +78,7 @@ Security Center は、真の脅威を検出し、偽陽性を減らすために�
 
 [アーティクル]    
 * [Azure Security Center を活用したインシデント対応](./tutorial-security-incident.md)
-* [ワークフローの自動化による応答の自動化](workflow-automation.md)
+* [自動化を使用して Security Center トリガーに応答する](workflow-automation.md)
 
 ## <a name="advanced-cloud-defense"></a>高度なクラウド防御
 

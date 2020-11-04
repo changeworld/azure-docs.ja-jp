@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: fd23dff3f60ab52a82633b9876b67c628a8e2dc7
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 4ba35d91d286cb43a763887d104e21ae0d537c8e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123529"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424137"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Azure Network Watcher に関してよく寄せられる質問 (FAQ)
 [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) サービスは、Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツール スイートを提供します。 この記事では、そのサービスに関する一般的な質問への回答を示します。
@@ -55,7 +55,7 @@ Network Watcher のコンポーネントと各コンポーネントの価格に�
 [Azure サービスの利用可能性のページ](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher)で、最新のリージョン別の利用可能性を確認できます。
 
 ### <a name="which-permissions-are-needed-to-use-network-watcher"></a>Network Watcher を使用するために必要なアクセス許可は何ですか?
-[Network Watcher を使用するために必要な RBAC アクセス許可](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)に関する記事にある一覧を参照してください。 リソースをデプロイするために、NetworkWatcherRG (下記参照) に対する共同作成者のアクセス許可が必要です。
+[Network Watcher を使用するために必要な Azure RBAC アクセス許可](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)に関する記事にある一覧を参照してください。 リソースをデプロイするために、NetworkWatcherRG (下記参照) に対する共同作成者のアクセス許可が必要です。
 
 ### <a name="how-do-i-enable-network-watcher"></a>Network Watcher を有効化する方法
 Network Watcher サービスは、すべてのサブスクリプションで[自動的に有効になります](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/)。

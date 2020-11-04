@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6f7af74cce6bbafea7924d505f768503c7b1f108
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3c941139b12fdf19bf1080b4dddecb8ab761568
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89457993"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676127"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics リリース ノート
 
@@ -39,6 +39,13 @@ ms.locfileid: "89457993"
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
+
+## <a name="oct-2020"></a>2020 年 10 月
+
+| サービスの機能強化 | 詳細 |
+| --- | --- |
+|**T-SQL インライン テーブル値関数 (プレビュー)**|このリリースでは、Transact-SQL を使用してインライン テーブル値関数を作成し、テーブルの場合と同様に結果を照会できるようになりました。 この機能は現在プレビュー段階であり、GA のツールでサポートされます。 詳細については、「[CREATE FUNCTION (Azure Synapse Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-function-sql-data-warehouse?view=azure-sqldw-latest)」を参照してください。|
+|**MERGE コマンド (プレビュー)**|ソース テーブルとの結合結果から、挿入、更新、または削除操作を対象テーブルに対して実行できるようになりました。 たとえば、他のテーブルとの違いに基づいて、あるテーブル内の行を挿入、更新、または削除することにより、2 つのテーブルを同期できます。  詳細については、「[MERGE](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current)」を確認してください。|
 
 ## <a name="aug-2020"></a>2020 年 8 月
 
@@ -114,7 +121,7 @@ ms.locfileid: "89457993"
 | サービスの機能強化 | 詳細 |
 | --- | --- |
 |**Azure Private Link (プレビュー)**|[Azure Private Link](https://azure.microsoft.com/blog/announcing-azure-private-link/) を使用すると、お使いの Virtual Network (VNet) にプライベート エンドポイントを作成し、お使いの SQL プールにマップできます。 これらのリソースには、VNet 内のプライベート IP アドレスを使用してアクセスできます。これにより、Azure ExpressRoute プライベート ピアリングや VPN ゲートウェイを介したオンプレミスからの接続が可能になります。 全体として、ネットワーク構成をパブリック IP アドレスに公開する必要がないため、ネットワーク構成を単純化できます。 これにより、データ流出のリスクに対する保護も可能になります。 詳細については、[概要](../../private-link/private-link-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関するページと [SQL Analytics のドキュメント](../../azure-sql/database/private-endpoint-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を参照してください。|
-|**データの検出と分類 (GA)**|[データの検出および分類](../../azure-sql/database/data-discovery-and-classification-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)機能は、現在、一般提供されています。 この機能によって、データベース内の機密データを**検出、分類、ラベル付け、および保護する**ための高度な能力が提供されます。|
+|**データの検出と分類 (GA)**|[データの検出および分類](../../azure-sql/database/data-discovery-and-classification-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)機能は、現在、一般提供されています。 この機能によって、データベース内の機密データを **検出、分類、ラベル付け、および保護する** ための高度な能力が提供されます。|
 |**Azure Advisor とのワンクリック統合**|Azure Synapse の SQL Analytics の概要ブレードに、Azure Advisor 推奨事項が直接統合され、ワンクリックで参照できるようになりました。 Azure Advisor ブレードに移動しなくても、概要ブレードで推奨事項を表示できるようになりました。 推奨事項の詳細については、[こちら](sql-data-warehouse-concept-recommendations.md)を参照してください。|
 |**Read Committed スナップショット分離 (プレビュー)**|ALTER DATABASE を使用して、ユーザー データベースのスナップショット分離を有効または無効にすることができます。  現在のワークロードへの影響を回避するには、データベースのメンテナンス期間中にこのオプションを設定するか、データベースへの他のアクティブな接続がなくなるまで待機します。 詳細については、[ALTER DATABASE SET オプション](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)に関するページを参照してください。|
 |**EXECUTE AS (Transact-SQL)**| [EXECUTE AS](/sql/t-sql/statements/execute-as-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL がサポートされるようになりました。これにより、セッションの実行コンテキストを、指定したユーザーに設定できます。|

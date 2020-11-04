@@ -10,16 +10,16 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: 35c6d94ce69acf59ae6cd8b26b0ad75645eb526a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 3289f8a22e5601552ec6d44c7d37195b06913fde
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91819706"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545346"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure サブスクリプションを別の Azure AD ディレクトリに移転する
 
-組織には複数の Azure サブスクリプションがある場合があります。 各サブスクリプションは、特定の Azure Active Directory (Azure AD) ディレクトリと関連付けられています。 管理を容易にするために、サブスクリプションを別の Azure AD ディレクトリに移転することが必要になる場合があります。 サブスクリプションを別の Azure AD ディレクトリに移転する場合、一部のリソースはターゲット ディレクトリに移転されません。 たとえば、Azure のロールベースのアクセス制御 (Azure RBAC) でのすべてのロールの割り当てとカスタム ロールは、ソース ディレクトリからは**完全に**削除され、ターゲット ディレクトリには移転されません。
+組織には複数の Azure サブスクリプションがある場合があります。 各サブスクリプションは、特定の Azure Active Directory (Azure AD) ディレクトリと関連付けられています。 管理を容易にするために、サブスクリプションを別の Azure AD ディレクトリに移転することが必要になる場合があります。 サブスクリプションを別の Azure AD ディレクトリに移転する場合、一部のリソースはターゲット ディレクトリに移転されません。 たとえば、Azure のロールベースのアクセス制御 (Azure RBAC) でのすべてのロールの割り当てとカスタム ロールは、ソース ディレクトリからは **完全に** 削除され、ターゲット ディレクトリには移転されません。
 
 この記事では、サブスクリプションを別の Azure AD ディレクトリに移転し、移転後にいくつかのリソースを再作成するために実行できる基本的な手順について説明します。
 
@@ -75,12 +75,13 @@ ms.locfileid: "91819706"
 | Azure Files | はい | はい |  | すべての ACL を再作成する必要があります。 |
 | Azure File Sync | はい | はい |  |  |
 | Azure Managed Disks | はい | はい |  |  ディスク暗号化セットを使用して、カスタマー マネージド キーで Managed Disks を暗号化する場合は、ディスク暗号化セットに関連付けられているシステム割り当て ID を無効にしてから、再度有効にする必要があります。 また、ロールの割り当てを再作成する必要があります。つまり、Key Vault 内にあるディスク暗号化セットに対し、必要なアクセス許可を再度付与します。 |
-| Kubernetes 向け Azure Container Service | はい | はい |  |  |
+| Azure Kubernetes Service | はい | はい |  |  |
+| Azure Policy | はい | いいえ | カスタム定義、割り当て、除外、コンプライアンス データなど、すべての Azure Policy オブジェクト。 | 定義を[エクスポート](../governance/policy/how-to/export-resources.md)、インポート、および再割り当てする必要があります。 次に、新しいポリシー割り当てと、必要な[ポリシーの除外](../governance/policy/concepts/exemption-structure.md)を作成します。 |
 | Azure Active Directory Domain Services | はい | いいえ |  |  |
 | アプリの登録 | はい | はい |  |  |
 
 > [!WARNING]
-> ストレージ アカウントや SQL データベースなどのリソースに対して保存時の暗号化を使用していて、それが移転されるの**ではない**サブスクリプションのキー コンテナーに依存している場合、復旧不可能なシナリオが発生する可能性があります。 このような状況が発生した場合は、別のキー コンテナーを使用するか、ユーザーが管理するキーを一時的に無効にして、この復旧不可能なシナリオを回避する必要があります。
+> ストレージ アカウントや SQL データベースなどのリソースに対して保存時の暗号化を使用していて、それが移転されるの **ではない** サブスクリプションのキー コンテナーに依存している場合、復旧不可能なシナリオが発生する可能性があります。 このような状況が発生した場合は、別のキー コンテナーを使用するか、ユーザーが管理するキーを一時的に無効にして、この復旧不可能なシナリオを回避する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,17 +109,17 @@ ms.locfileid: "91819706"
     az account set --subscription "Marketing"
     ```
 
-### <a name="install-the-resource-graph-extension"></a>resource-graph 拡張機能をインストールする
+### <a name="install-the-azure-resource-graph-extension"></a>Azure Resource Graph 拡張機能をインストールする
 
- resource-graph 拡張機能を使用すると、[az graph](/cli/azure/ext/resource-graph/graph) コマンドを使用して、Azure Resource Manager によって管理されているリソースを照会できます。 このコマンドは、後の手順で使用します。
+ [Azure Resource Graph](../governance/resource-graph/index.yml) の Azure CLI 拡張機能である *resource-graph* を使用すると、[az graph](/cli/azure/ext/resource-graph/graph) コマンドを使用して、Azure Resource Manager によって管理されているリソースを照会できます。 このコマンドは、後の手順で使用します。
 
-1. [az extension list](/cli/azure/extension#az_extension_list) を使用して、*resource-graph* 拡張機能がインストールされているかどうかを確認します。
+1. [az extension list](/cli/azure/extension#az_extension_list) を使用して、 *resource-graph* 拡張機能がインストールされているかどうかを確認します。
 
     ```azurecli
     az extension list
     ```
 
-1. ない場合、*resource-graph* 拡張機能をインストールします。
+1. ない場合、 *resource-graph* 拡張機能をインストールします。
 
     ```azurecli
     az extension add --name resource-graph
@@ -138,7 +139,7 @@ ms.locfileid: "91819706"
 
 1. ロールの割り当ての一覧を保存します。
 
-    サブスクリプションを移転すると、すべてのロールの割り当てが**完全に**削除されます。そのため、コピーを保存しておくことが重要です。
+    サブスクリプションを移転すると、すべてのロールの割り当てが **完全に** 削除されます。そのため、コピーを保存しておくことが重要です。
 
 1. ロールの割り当ての一覧を確認します。 ターゲット ディレクトリに必要のないロールの割り当てが存在する可能性があります。
 
@@ -217,7 +218,7 @@ ms.locfileid: "91819706"
 キー コンテナーを作成すると、そのキー コンテナーは、それが作成されたサブスクリプションの既定の Azure Active Directory テナント ID に自動的に関連付けられます。 また、すべてのアクセス ポリシー エントリがこのテナント ID に関連付けられます。 詳細については、「[Azure Key Vault を別のサブスクリプションに移動する](../key-vault/general/move-subscription.md)」を参照してください。
 
 > [!WARNING]
-> ストレージ アカウントや SQL データベースなどのリソースに対して保存時の暗号化を使用していて、それが移転されるの**ではない**サブスクリプションのキー コンテナーに依存している場合、復旧不可能なシナリオが発生する可能性があります。 このような状況が発生した場合は、別のキー コンテナーを使用するか、ユーザーが管理するキーを一時的に無効にして、この復旧不可能なシナリオを回避する必要があります。
+> ストレージ アカウントや SQL データベースなどのリソースに対して保存時の暗号化を使用していて、それが移転されるの **ではない** サブスクリプションのキー コンテナーに依存している場合、復旧不可能なシナリオが発生する可能性があります。 このような状況が発生した場合は、別のキー コンテナーを使用するか、ユーザーが管理するキーを一時的に無効にして、この復旧不可能なシナリオを回避する必要があります。
 
 - キー コンテナーがある場合は、[az keyvault show](/cli/azure/keyvault#az_keyvault_show) を使用してアクセス ポリシーの一覧を表示します。 詳細については、[キー コンテナーへのアクセス ポリシーの割り当て](../key-vault/general/assign-access-policy-cli.md)に関するページを参照してください。
 
@@ -262,7 +263,7 @@ ms.locfileid: "91819706"
 この手順では、サブスクリプションを、ソース ディレクトリからターゲット ディレクトリに移転します。 この手順は、課金所有権も移転するかどうかによって変わります。
 
 > [!WARNING]
-> サブスクリプションを移転すると、ソース ディレクトリ内のすべてのロールの割り当てが**完全に**削除されて復元できなくなります。 サブスクリプションの移転は、元に戻すことはできません。 このステップを実行する前に、これまでの手順を完了していることを確認してください。
+> サブスクリプションを移転すると、ソース ディレクトリ内のすべてのロールの割り当てが **完全に** 削除されて復元できなくなります。 サブスクリプションの移転は、元に戻すことはできません。 このステップを実行する前に、これまでの手順を完了していることを確認してください。
 
 1. 課金所有権も別のアカウントに移転するかどうかを決定します。
 

@@ -9,12 +9,12 @@ ms.date: 08/03/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 75b464c140bfda6c3f3559d3bfdbe1e6bc2e7f24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c809a1ae525fb7fab6dceebb3241e229e8a0284e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87760738"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781840"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Azure BLOB ストレージのコストを計画および管理する
 
@@ -32,9 +32,9 @@ Azure Storage アカウントを作成し、データの転送を開始する前
 
 3. ドロップダウン リストからオプションを選択します。 
 
-   これらのドロップダウン リストの値を変更すると、コストの見積り額が変化します。 その見積り額は、上部の隅と見積りの下部に表示されます。 
-    
-   ![[コスト分析] ペインを使用してコストを監視する](media/storage-plan-manage-costs/price-calculator-storage-type.png)
+   これらのドロップダウン リストの値を変更すると、コストの見積り額が変化します。 その見積り額は、上部の隅と見積りの下部に表示されます。
+
+   ![見積りを示すスクリーンショット](media/storage-plan-manage-costs/price-calculator-storage-type.png)
 
    **[種類]** ドロップダウン リストの値を変更すると、このワークシートに表示されている他のオプションも変更されます。 **[詳細]** セクションのリンクを使用して、各オプションの意味とこれらのオプションがストレージ関連の操作の価格にどのように影響するかを確認します。 
 
@@ -56,19 +56,19 @@ Azure Storage アカウントを作成し、データの転送を開始する前
 
 Azure Storage の予約容量を使用して BLOB データのストレージ コストを節約できます。 Azure Storage の予約容量により、1 年間または 3 年間の予約を行うと、Standard ストレージ アカウントのブロック BLOB および Azure Data Lake Storage Gen2 データの容量を割引できます。 予約を行うと、予約期間に一定量のストレージ容量が提供されます。 Azure Storage の予約容量により、ブロック BLOB と Azure Data Lake Storage Gen2 データの容量コストを大幅に削減できます。 
 
-詳細については、「[予約容量を使用して BLOB ストレージのコストを最適化する](https://docs.microsoft.com/azure/storage/blobs/storage-blob-reserved-capacity)」を参照してください。
+詳細については、「[予約容量を使用して BLOB ストレージのコストを最適化する](../blobs/storage-blob-reserved-capacity.md)」を参照してください。
 
 #### <a name="organize-data-into-access-tiers"></a>データをアクセス層にまとめる
 
-コスト効率に優れたアクセス層に BLOB データを配置することで、コストを削減できます。 データの使用に関するコストを最適化するように設計された 3 つの層から選択します。 たとえば、"*ホット*" 層のストレージ コストは高くなりますが、アクセス コストは低くなります。 そのため、データに頻繁にアクセスする場合は、ホット層が最もコスト効率の高い選択肢になる可能性があります。 データにアクセスする頻度が少ない場合は、データを格納するコストを削減すると同時に、データにアクセスするコストが発生するため、"*コールド*" または "*アーカイブ*" 層が最も意味がある可能性があります。    
+コスト効率に優れたアクセス層に BLOB データを配置することで、コストを削減できます。 データの使用に関するコストを最適化するように設計された 3 つの層から選択します。 たとえば、" *ホット* " 層のストレージ コストは高くなりますが、アクセス コストは低くなります。 そのため、データに頻繁にアクセスする場合は、ホット層が最もコスト効率の高い選択肢になる可能性があります。 データにアクセスする頻度が少ない場合は、データを格納するコストを削減すると同時に、データにアクセスするコストが発生するため、" *コールド* " または " *アーカイブ* " 層が最も意味がある可能性があります。    
 
-詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal)」を参照してください。
+詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](../blobs/storage-blob-storage-tiers.md?tabs=azure-portal)」を参照してください。
 
 #### <a name="automatically-move-data-between-access-tiers"></a>アクセス層間でデータを自動的に移動する
 
 ライフサイクル管理ポリシーを使用して、コストを最も節約するために定期的に階層間でデータを移動します。 これらのポリシーによって、指定したルールを使用してデータをに移動できます。 たとえば、BLOB が 90 日以内に変更されていない場合、BLOB をアーカイブ層に移動するルールを作成することができます。 データのアクセス層を調整するポリシーを作成することによって、ニーズに最もコストのかからないストレージ オプションを設計できます。
 
-詳細については、「[Azure Blob Storage のライフサイクルを管理する](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)」を参照してください。
+詳細については、「[Azure Blob Storage のライフサイクルを管理する](../blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)」を参照してください。
 
 ## <a name="create-budgets"></a>予算を作成する
 
@@ -89,13 +89,13 @@ Azure Storage のコストをコスト分析で表示するには、次の操作
 
 2. **[コストの管理と請求]** ウィンドウを開き、メニューから **[Cost management] (コスト管理)** を選択してから、 **[コスト分析]** を選択します。 その後、特定のサブスクリプションのスコープを **[スコープ]** ドロップダウンから変更できます。
 
-   ![[コスト分析] ペインを使用してコストを監視する](./media/storage-plan-manage-costs/cost-analysis-pane.png)
+   ![スコープを示すスクリーンショット](./media/storage-plan-manage-costs/cost-analysis-pane.png)
 
 4. Azure Storage のコストのみを表示するには、 **[フィルターの追加]** 、 **[サービス名]** の順に選択します。 次に、リストから **[ストレージ]** を選択します。 
 
    Azure Storage のみのコストを表示する例を次に示します。
 
-   ![[コスト分析] ペインを使用してストレージ コストを監視する](./media/storage-plan-manage-costs/cost-analysis-pane-storage.png)
+   ![ストレージによるフィルターを示すスクリーンショット](./media/storage-plan-manage-costs/cost-analysis-pane-storage.png)
 
 前の例では、サービスの現在のコストが表示されます。 また、Azure リージョン (場所) 別およびリソース グループ別のコストも表示されます。 他のフィルターを追加することもできます (例: 特定のストレージ アカウントのコストを表示するフィルター)。
 

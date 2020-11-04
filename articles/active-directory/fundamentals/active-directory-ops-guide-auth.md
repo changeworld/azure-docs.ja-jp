@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 178c54b9726f21775603d67cb0911237aa4caf01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f91928812dd2f9f850b5e4c3af16ce5c82608e05
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601366"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371054"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory の認証管理の運用リファレンス ガイド
 
@@ -42,13 +42,13 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 | Azure AD Identity Protection からのリスクと脆弱性のレポートでフラグが設定されたユーザーをトリアージして調査する | InfoSec 運用チーム |
 
 > [!NOTE]
-> Azure AD Identity Protection には、Azure AD Premium P2 ライセンスが必要です。 要件に対する適切なライセンスを確認するには、 [Azure AD Free および Azure AD Premium エディションの一般公開されている機能の比較](https://azure.microsoft.com/pricing/details/active-directory/)に関するページをご覧ください。
+> Azure AD Identity Protection には、Azure AD Premium P2 ライセンスが必要です。 要件に対する適切なライセンスを確認するには、[Azure AD Free および Azure AD Premium エディションの一般公開されている機能の比較](https://azure.microsoft.com/pricing/details/active-directory/)に関するページをご覧ください。
 
 リストを確認しているときに、所有者が空のタスクに所有者を割り当てたり、上記のレコメンデーションに一致しない所有者を持つタスクの所有権を調整したりする必要があることに気付く場合があります。
 
 #### <a name="owner-recommended-reading"></a>所有者に関する推奨資料
 
-- [Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure Active Directory での管理者ロールの割り当て](../roles/permissions-reference.md)
 - [Azure でのガバナンス](../../governance/index.yml)
 
 ## <a name="credentials-management"></a>資格情報の管理
@@ -119,7 +119,7 @@ PowerShell を使用する Azure AD スクリプトや Microsoft Graph API を�
 
 ### <a name="device-trust-access-policies"></a>デバイスの信頼のアクセス ポリシー
 
-組織内のユーザーと同様、デバイスは保護対象となる主要なアイデンティティです。 デバイスの ID を使用して、いつでもどこからでもリソースを保護できます。 デバイスを認証し、その信頼の種類を考慮することで、次のようなセキュリティ体制と使用可能性が向上します。
+組織内のユーザーと同様、デバイスは保護対象となる主要なアイデンティティです。 デバイスの ID を使用して、いつでもどこからでもリソースを保護できます。  デバイスを認証し、その信頼の種類を考慮することで、次のようなセキュリティ体制と使用可能性が向上します。
 
 - デバイスが信頼されている場合に、MFA などを使用して障害を回避する
 - 信頼されていないデバイスからのアクセスをブロックする
@@ -128,7 +128,7 @@ PowerShell を使用する Azure AD スクリプトや Microsoft Graph API を�
 この目標は、次のいずれかの方法を使用してデバイス ID を取り込んで Azure AD で管理することで実行できます。
 
 - 組織は、[Microsoft Intune](/intune/what-is-intune) を使用してデバイスを管理し、コンプライアンス ポリシーを適用し、デバイスの正常性を証明し、デバイスが準拠しているかどうかに基づいて条件付きアクセス ポリシーを設定することができます。 Microsoft Intune では、iOS デバイス、Mac デスクトップ (JAMF 統合経由)、Windows デスクトップ (Windows 10 のモバイル デバイス管理のネイティブな使用、および Microsoft Endpoint Configuration Manager との共同管理)、および Android モバイル デバイスを管理できます。
-- [Hybrid Azure AD Join](../devices/hybrid-azuread-join-managed-domains.md) では、Active Directory ドメイン参加済みコンピューター デバイスがある環境で、グループ ポリシーまたは Microsoft Endpoint Configuration Manager を使用した管理を提供します。 組織は、シームレス SSO を使用した PHS または PTA のいずれかを使用して、マネージド環境をデプロイできます。 Azure AD に自分のデバイスを取り込むと、クラウドとオンプレミスのリソースでの SSO を使用したユーザーの生産性を最大化でき、同時に [条件付きアクセス](../conditional-access/overview.md) を使用したクラウドとオンプレミスのリソースへのアクセスをセキュリティで保護することができます。
+- [Hybrid Azure AD Join](../devices/hybrid-azuread-join-managed-domains.md) では、Active Directory ドメイン参加済みコンピューター デバイスがある環境で、グループ ポリシーまたは Microsoft Endpoint Configuration Manager を使用した管理を提供します。 組織は、シームレス SSO を使用した PHS または PTA のいずれかを使用して、マネージド環境をデプロイできます。 Azure AD に自分のデバイスを取り込むと、クラウドとオンプレミスのリソースでの SSO を使用したユーザーの生産性を最大化でき、同時に[条件付きアクセス](../conditional-access/overview.md)を使用したクラウドとオンプレミスのリソースへのアクセスをセキュリティで保護することができます。
 
 クラウドに登録されていないドメイン参加済み Windows デバイス、またはクラウドに登録されていても条件付きアクセス ポリシーがないドメイン参加済み Windows デバイスがある場合は、登録されていないデバイスを登録する必要があり、いずれにしても条件付きアクセス ポリシーで[制御として Hybrid Azure AD Join を使用](../conditional-access/require-managed-devices.md)する必要があります。
 
@@ -177,7 +177,7 @@ Windows 10 では、[Windows Hello for Business](/windows/security/identity-prot
 
 ### <a name="assign-users-to-applications"></a>アプリケーションへのユーザーの割り当て
 
-優れた柔軟性と大規模な管理が可能になるため、[アプリケーションへのユーザーの割り当て](../manage-apps/assign-user-or-group-access-portal.md)は、グループを使用することで最適なマッピングになります。 グループを使用する利点には、[属性ベースの動的グループ メンバーシップ](../users-groups-roles/groups-dynamic-membership.md)と[アプリ所有者への委任](../fundamentals/active-directory-accessmanagement-managing-group-owners.md)などがあります。 そのため、既にグループを使用して管理している場合は、管理を大規模に向上させるために次の操作を行うことをお勧めします。
+優れた柔軟性と大規模な管理が可能になるため、[アプリケーションへのユーザーの割り当て](../manage-apps/assign-user-or-group-access-portal.md)は、グループを使用することで最適なマッピングになります。 グループを使用する利点には、[属性ベースの動的グループ メンバーシップ](../enterprise-users/groups-dynamic-membership.md)と[アプリ所有者への委任](../fundamentals/active-directory-accessmanagement-managing-group-owners.md)などがあります。 そのため、既にグループを使用して管理している場合は、管理を大規模に向上させるために次の操作を行うことをお勧めします。
 
 - グループ管理とガバナンスをアプリケーション所有者に委任します。
 - アプリケーションへのセルフサービス アクセスを許可します。
@@ -189,8 +189,8 @@ Windows 10 では、[Windows Hello for Business](/windows/security/identity-prot
 #### <a name="assign-users-to-applications-recommended-reading"></a>アプリケーションへのユーザーの割り当てに関する推奨資料
 
 - [Azure Active Directory でアプリケーションにユーザーとグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
-- [Azure Active Directory でアプリ登録のアクセス許可を委任する](../users-groups-roles/roles-delegate-app-roles.md)
-- [Azure Active Directory の動的グループ メンバーシップ ルール](../users-groups-roles/groups-dynamic-membership.md)
+- [Azure Active Directory でアプリ登録のアクセス許可を委任する](../roles/delegate-app-roles.md)
+- [Azure Active Directory の動的グループ メンバーシップ ルール](../enterprise-users/groups-dynamic-membership.md)
 
 ## <a name="access-policies"></a>アクセス ポリシー
 
@@ -241,14 +241,14 @@ Microsoft Intune アプリケーション管理 (MAM) を使用すると、ス�
 条件付きアクセスは、組織のセキュリティ体制を向上させるための重要なツールです。 そのため、次のベスト プラクティスに従うことが重要です。
 
 - すべての SaaS アプリケーションに少なくとも 1 つのポリシーが適用されていることを確認します
-- ロックアウトのリスクを回避するために、 **[すべてのアプリ]** フィルターを**ブロック**制御と組み合わせないようにします
+- ロックアウトのリスクを回避するために、 **[すべてのアプリ]** フィルターを **ブロック** 制御と組み合わせないようにします
 - **[すべてのユーザー]** をフィルターとして使用せず、誤って **[ゲスト]** を追加しないようにします
 - **すべての "レガシ" ポリシーを Azure portal に移行します**
 - ユーザー、デバイス、およびアプリケーションのすべての条件をキャッチします
 - **ユーザーごとの MFA** を使用するのではなく、条件付きアクセス ポリシーを使用して [MFA を実装](../conditional-access/plan-conditional-access.md)します
 - 複数のアプリケーションに適用できる重要なポリシーの小さいセットを用意します
 - 空の例外グループを定義し、それらをポリシーに追加して例外戦略を設定します
-- MFA 制御を使用しない[緊急用](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency)アカウントを計画します
+- MFA 制御を使用しない[緊急用](../roles/security-planning.md#break-glass-what-to-do-in-an-emergency)アカウントを計画します
 - Exchange Online や Sharepoint Online などのサービスに対して同じ一連の制御を実装することで、Microsoft 365 クライアント アプリケーション (たとえば、Teams、OneDrive、Outlook など) で一貫したエクスペリエンスを確保します
 - ポリシーへの割り当ては、個人ではなくグループを使用して実装する必要があります
 - ポリシーで使用されている例外グループを定期的にレビューして、ユーザーがセキュリティ体制外にある時間を制限します。 Azure AD P2 を所有している場合は、アクセス レビューを使用してプロセスを自動化できます
@@ -347,7 +347,7 @@ MFA などの強力な資格情報は、レガシ認証プロトコルを使用�
 - [Azure Active Directory とアプリケーションの統合](../develop/quickstart-register-app.md)
 - [Azure Active Directory のアプリ、アクセス許可、および同意](../develop/quickstart-register-app.md)
 - [Azure Active Directory でのグループを使用したリソースへのアクセス管理](./active-directory-manage-groups.md)
-- [アプリケーション アクセス管理のセルフ サービス化に必要な Azure Active Directory の設定](../users-groups-roles/groups-self-service-management.md)
+- [アプリケーション アクセス管理のセルフ サービス化に必要な Azure Active Directory の設定](../enterprise-users/groups-self-service-management.md)
 
 ### <a name="traffic-from-unexpected-locations"></a>予期しない場所からのトラフィック
 

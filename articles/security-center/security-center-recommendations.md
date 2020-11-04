@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 0efb2c26a63418835dd2b7561a1fb9d3a9d5fee8
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: c0952e0f267f9c2511a2e80fa7106958d8dd0ee5
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945561"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791887"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Security recommendations in Azure Security Center 
 このトピックでは、Azure セキュリティ センターで推奨事項を確認し、理解し、Azure リソースの保護に役立てる方法について説明します。
@@ -50,7 +50,7 @@ Security Center はリソースのセキュリティの状態を分析して、�
 
     このページには次の項目が含まれています。
 
-    1. サポートされている推奨事項の **[適用]** と **[拒否]** ボタン (「[適用/拒否の推奨事項を使用した構成ミスの防止](prevent-misconfigurations.md)」を参照)
+    1. サポートされている推奨事項の **[適用]** と **[拒否]** ボタン (「 [適用/拒否の推奨事項を使用した構成ミスの防止](prevent-misconfigurations.md)」を参照)
     1. **重大度インジケーター**
     1. **更新間隔** (該当する場合) 
     1. **説明** - 問題の簡単な説明
@@ -60,22 +60,25 @@ Security Center はリソースのセキュリティの状態を分析して、�
         - **異常なリソース** – 特定された問題の影響を受けているリソース。
         - **適用されないリソース** – 推奨事項で明確な回答を得ることができないリソース。 [適用されないリソース] タブには、各リソースの理由も含まれています。 
 
-            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="推奨事項の詳細ページ。":::
+            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="理由が表示されている [適用されないリソース] タブ。":::
     1. 推奨事項を修復するか、ロジック アプリをトリガーするアクション ボタン。
 
 ## <a name="preview-recommendations"></a>推奨事項のプレビュー
 
-**プレビュー**のフラグが設定されている推奨事項は、セキュリティ スコアの計算からは除外されます。
+**プレビュー** のフラグが設定されている推奨事項は、セキュリティ スコアの計算からは除外されます。
 
 それでも、その推奨事項はプレビュー期間が終了した時点でスコアに反映されるため、可能な限り修復しておく必要があります。
 
 プレビューの推奨事項の例を次に示します。
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="推奨事項の詳細ページ。":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="プレビュー フラグが設定された推奨事項":::
  
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、セキュリティ センターのセキュリティに関する推奨事項について説明しました。 推奨事項を修正する方法については、次を参照してください。
+このドキュメントでは、セキュリティ センターのセキュリティに関する推奨事項について説明しました。 関連情報:
 
-- [推奨事項の修正](security-center-remediate-recommendations.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明します。
+- [推奨事項の修正](security-center-remediate-recommendations.md) - Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明します。
 - [適用/拒否の推奨事項を使用した構成ミスの防止](prevent-misconfigurations.md)。
+- [Security Center トリガーへの応答の自動化](workflow-automation.md) - 推奨事項への応答を自動化します
+- [推奨事項からリソースを除外する](exempt-resource.md)
+- [セキュリティの推奨事項 - リファレンス ガイド](recommendations-reference.md)

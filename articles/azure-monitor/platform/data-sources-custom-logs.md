@@ -1,21 +1,24 @@
 ---
-title: Azure Monitor でカスタム ログを収集する | Microsoft Docs
+title: Azure Monitor で Log Analytics エージェントを使用してカスタム ログを収集する
 description: Azure Monitor は、Windows コンピューターと Linux コンピューターの両方のテキスト ファイルからイベントを収集できます。  この記事では、Azure Monitor で作成したレコードの新しいカスタム ログと詳細を定義する方法について説明します。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/26/2019
-ms.openlocfilehash: 4f8ef04343d873bcb94ccee599ecbc7c2a1ef94c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 406371325ddf8b555ede481582e19635b85abe49
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269490"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461568"
 ---
-# <a name="custom-logs-in-azure-monitor"></a>Azure Monitor のカスタム ログ
+# <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>Azure Monitor で Log Analytics エージェントを使用してカスタム ログを収集する
 
-Azure Monitor のカスタム ログ データ ソースでは、Windows コンピューターと Linux コンピューターの両方のテキスト ファイルからイベントを収集できます。 多くのアプリケーションは、Windows イベント ログや Syslog などの標準のログ記録サービスの代わりに、テキスト ファイルに情報を記録します。 収集されたデータは、クエリで解析して個別のフィールドに格納するか、または収集時に個別のフィールドに抽出することができます。
+Azure Monitor の Log Analytics エージェントのカスタム ログ データ ソースでは、Windows コンピューターと Linux コンピューターの両方のテキスト ファイルからイベントを収集できます。 多くのアプリケーションは、Windows イベント ログや Syslog などの標準のログ記録サービスの代わりに、テキスト ファイルに情報を記録します。 収集されたデータは、クエリで解析して個別のフィールドに格納するか、または収集時に個別のフィールドに抽出することができます。
+
+> [!IMPORTANT]
+> この記事では、Azure Monitor で使用されるエージェントの 1 つである [Log Analytics エージェント](log-analytics-agent.md)でカスタム ログを収集する方法について説明します。 他のエージェントは異なるデータを収集し、異なる方法で構成されます。 使用可能なエージェントと、それらが収集できるデータの一覧については、「[Azure Monitor エージェントの概要](agents-overview.md)」を参照してください。
 
 ![カスタム ログの収集](media/data-sources-custom-logs/overview.png)
 
@@ -57,7 +60,7 @@ Azure Monitor のカスタム ログ データ ソースでは、Windows コン�
 ### <a name="step-2-upload-and-parse-a-sample-log"></a>手順 2. サンプル ログをアップロードし、解析する
 始めにカスタム ログのサンプルをアップロードします。  ユーザーが評価できるように、ウィザードはこのファイルのエントリを解析して表示します。  Azure Monitor はユーザーが指定した区切り記号を利用して各レコードを識別します。
 
-**改行**が既定の区切り記号であり、1 行につき 1 エントリのログ ファイルに利用されます。  利用可能な形式の 1 つで表現された日付と時刻で行が始まるとき、区切り記号として**タイムスタンプ**を指定できます。その場合、1 行以上のエントリに対応します。
+**改行** が既定の区切り記号であり、1 行につき 1 エントリのログ ファイルに利用されます。  利用可能な形式の 1 つで表現された日付と時刻で行が始まるとき、区切り記号として **タイムスタンプ** を指定できます。その場合、1 行以上のエントリに対応します。
 
 区切り記号としてタイムスタンプが使用されるとき、Azure Monitor に保存される各レコードの TimeGenerated プロパティに、ログ ファイルでそのエントリに指定された日付/時刻が入力されます。  区切り記号として改行が使用される場合、Azure Monitor がエントリを収集した日付と時刻が TimeGenerated に入力されます。
 
@@ -70,7 +73,7 @@ Azure Monitor のカスタム ログ データ ソースでは、Windows コン�
 ### <a name="step-3-add-log-collection-paths"></a>手順 3. ログのコレクション パスを追加する
 エージェントに 1 つまたは複数のパスを定義する必要があります。エージェントがカスタム ログを見つける場所です。  ログ ファイルの特定のパスか名前を入力するか、名前にワイルドカードを含むパスを指定できます。 毎日新しいファイルを作成するアプリケーションに対応し、1 つのファイルが一定のサイズに到達した場合にも対応します。 また、1 つのログ ファイルに複数のパスを指定できます。
 
-たとえば、ログ ファイルを毎日作成するアプリケーションがあります。log20100316.txt のように、名前に日付を含めます。 このようなログのパターンは、たとえば、*log\*.txt* になります。このアプリケーションの命名規則に従うあらゆるログ ファイルに適用されます。
+たとえば、ログ ファイルを毎日作成するアプリケーションがあります。log20100316.txt のように、名前に日付を含めます。 このようなログのパターンは、たとえば、 *log\*.txt* になります。このアプリケーションの命名規則に従うあらゆるログ ファイルに適用されます。
 
 次の表は、異なるログ ファイルを指定する有効なパターンの例をまとめたものです。
 
@@ -101,7 +104,7 @@ Azure Monitor がカスタム ログから収集を始めると、そのレコ�
 > RawData プロパティがクエリに表示されない場合、ブラウザーを閉じて再び開いてみてください。
 
 ### <a name="step-6-parse-the-custom-log-entries"></a>手順 6. カスタム ログ エントリを解析する
-ログ エントリ全体は、 **RawData**と呼ばれる 1 つのプロパティに格納されます。  それぞれのエントリに含まれる異なる情報を、各レコードの個別のプロパティに分けたいと考えるケースが大半でしょう。 **RawData** を解析して複数のプロパティに格納する方法については、[Azure Monitor でのテキスト データの解析](../log-query/parse-text.md)に関するページを参照してください。
+ログ エントリ全体は、 **RawData** と呼ばれる 1 つのプロパティに格納されます。  それぞれのエントリに含まれる異なる情報を、各レコードの個別のプロパティに分けたいと考えるケースが大半でしょう。 **RawData** を解析して複数のプロパティに格納する方法については、 [Azure Monitor でのテキスト データの解析](../log-query/parse-text.md)に関するページを参照してください。
 
 ## <a name="removing-a-custom-log"></a>カスタム ログの削除
 Azure Portal で次のプロセスを使用して、これまでに定義したカスタム ログを削除します。
@@ -142,7 +145,7 @@ Azure Monitor は約 5 分おきに各カスタム ログから新しいエン�
 ![サンプル ログをアップロードし、解析する](media/data-sources-custom-logs/delimiter.png)
 
 ### <a name="add-log-collection-paths"></a>ログのコレクション パスを追加する
-ログ ファイルは *C:\MyApp\Logs* に置かれます。  新しいファイルが毎日作成されます。名前には日付が含まれ、*appYYYYMMDD.log* というパターンになります。  このログには *C:\MyApp\Logs\\\*.log* というパターンを使えばよいでしょう。
+ログ ファイルは *C:\MyApp\Logs* に置かれます。  新しいファイルが毎日作成されます。名前には日付が含まれ、 *appYYYYMMDD.log* というパターンになります。  このログには *C:\MyApp\Logs\\\*.log* というパターンを使えばよいでしょう。
 
 ![ログのコレクション パス](media/data-sources-custom-logs/collection-path.png)
 

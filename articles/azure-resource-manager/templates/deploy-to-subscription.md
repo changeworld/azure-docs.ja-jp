@@ -2,15 +2,15 @@
 title: サブスクリプションにリソースをデプロイする
 description: Azure Resource Manager テンプレートでリソース グループを作成する方法について説明します。 Azure サブスクリプション スコープでリソースをデプロイする方法も示します。
 ms.topic: conceptual
-ms.date: 10/05/2020
-ms.openlocfilehash: 0673ea5260c7312395acde8a62b5d457657b9793
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/26/2020
+ms.openlocfilehash: 7b0edde4f3571255e92c65d82429b4ddd1a689b8
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729119"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92668883"
 ---
-# <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>サブスクリプション レベルでリソース グループとリソースを作成する
+# <a name="subscription-deployments-with-arm-templates"></a>ARM テンプレートを使用したサブスクリプションのデプロイ
 
 リソースの管理を簡略化するには、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure サブスクリプションのレベルでリソースをデプロイします。 たとえば、[ポリシー](../../governance/policy/overview.md)および [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) をサブスクリプションにデプロイすると、これらのリソースがサブスクリプション全体に適用されます。 サブスクリプション内にリソース グループを作成し、サブスクリプションのリソース グループにリソースをデプロイすることもできます。
 
@@ -71,32 +71,26 @@ Azure のロールベースのアクセス制御 (Azure RBAC) では、以下を
 テンプレートの場合は、次を使用します。
 
 ```json
-https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    ...
+}
 ```
 
 パラメーター ファイルのスキーマはすべてのデプロイ範囲で同じです。 パラメーター ファイルの場合は、次を使用します。
 
 ```json
-https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    ...
+}
 ```
-
-## <a name="deployment-scopes"></a>デプロイのスコープ
-
-サブスクリプションにデプロイする場合、1 つのサブスクリプション、およびそのサブスクリプション内の任意のリソース グループを対象にすることができます。 ターゲット サブスクリプションとは異なるサブスクリプションにデプロイすることはできません。 テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
-
-テンプレートのリソース セクション内で定義されたリソースは、サブスクリプションに適用されます。
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-sub.json" highlight="5":::
-
-サブスクリプション内のリソース グループを対象にするには、入れ子になったデプロイを追加して、`resourceGroup` プロパティを含めます。 次の例では、入れ子になったデプロイは `rg2` という名前のリソース グループを対象としています。
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-resource-group.json" highlight="9,13":::
-
-この記事では、さまざまなスコープにリソースをデプロイする方法を示すテンプレートを用意しています。 リソース グループを作成し、そこにストレージ アカウントをデプロイするテンプレートについては、「[リソース グループとリソースを作成する](#create-resource-group-and-resources)」を参照してください。 リソース グループを作成してロックを適用し、そのリソース グループにロールを割り当てるテンプレートについては、「[アクセス制御](#access-control)」を参照してください。
 
 ## <a name="deployment-commands"></a>デプロイ コマンド
 
-サブスクリプション レベルのデプロイ用のコマンドは、リソース グループのデプロイ用のコマンドと異なります。
+サブスクリプションにデプロイするには、サブスクリプション レベルのデプロイ コマンドを使用します。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLI の場合は、[az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create) を使用します。 次の例では、リソース グループを作成するテンプレートがデプロイされます。
 
@@ -108,7 +102,9 @@ az deployment sub create \
   --parameters rgName=demoResourceGroup rgLocation=centralus
 ```
 
-PowerShell デプロイ コマンドには、[New-AzDeployment](/powershell/module/az.resources/new-azdeployment) または **New-AzSubscriptionDeployment** を使用します。 次の例では、リソース グループを作成するテンプレートがデプロイされます。
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+PowerShell デプロイ コマンドには、 [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) または **New-AzSubscriptionDeployment** を使用します。 次の例では、リソース グループを作成するテンプレートがデプロイされます。
 
 ```azurepowershell-interactive
 New-AzSubscriptionDeployment `
@@ -119,35 +115,52 @@ New-AzSubscriptionDeployment `
   -rgLocation centralus
 ```
 
-REST API の場合は、[デプロイ - サブスクリプション スコープでの作成](/rest/api/resources/deployments/createorupdateatsubscriptionscope)に関するページを参照してください。
+---
+
+ARM テンプレートをデプロイするためのデプロイ コマンドとオプションの詳細については、以下を参照してください。
+
+* [ARM テンプレートと Azure portal でリソースをデプロイする](deploy-portal.md)
+* [ARM テンプレートと Azure CLI でリソースをデプロイする](deploy-cli.md)
+* [ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)
+* [ARM テンプレートと Azure Resource Manager REST API を使用してリソースをデプロイする](deploy-rest.md)
+* [デプロイ ボタンを使用して GitHub リポジトリからテンプレートをデプロイする](deploy-to-azure-button.md)
+* [Cloud Shell から ARM テンプレートをデプロイする](deploy-cloud-shell.md)
+
+## <a name="deployment-scopes"></a>デプロイのスコープ
+
+サブスクリプションにデプロイする際には、リソースを以下にデプロイできます。
+
+* 操作のターゲット サブスクリプション
+* サブスクリプション内のリソース グループ
+* [拡張リソース](scope-extension-resources.md)はリソースに適用できます
+
+ターゲット サブスクリプションとは異なるサブスクリプションにデプロイすることはできません。 テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
+
+このセクションでは、異なるスコープを指定する方法について説明します。 これらの異なるスコープを 1 つのテンプレートで結合することができます。
+
+### <a name="scope-to-subscription"></a>サブスクリプションへのスコープ
+
+リソースをターゲット サブスクリプションにデプロイするには、テンプレートのリソース セクションに目的のリソースを追加します。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-sub.json" highlight="5":::
+
+サブスクリプションへのデプロイの例については、「[リソース グループを作成する](#create-resource-groups)」と「[ポリシー定義を割り当てる](#assign-policy-definition)」を参照してください。
+
+### <a name="scope-to-resource-group"></a>リソース グループへのスコープ
+
+リソースをサブスクリプション内のリソース グループにデプロイするには、入れ子になったデプロイを追加して、`resourceGroup` プロパティを含めます。 次の例では、入れ子になったデプロイは `demoResourceGroup` という名前のリソース グループを対象としています。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-resource-group.json" highlight="9,13":::
+
+リソース グループにデプロイする例については、「[リソース グループとリソースを作成する](#create-resource-group-and-resources)」を参照してください。
 
 ## <a name="deployment-location-and-name"></a>デプロイの場所と名前
 
 サブスクリプション レベルのデプロイの場合、デプロイの場所を指定する必要があります。 デプロイの場所は、デプロイするリソースの場所とは異なります。 デプロイの場所では、デプロイ データを格納する場所を指定します。
 
-デプロイ名を指定することも、既定のデプロイ名を使用することもできます。 既定の名前は、テンプレート ファイルの名前です。 たとえば、**azuredeploy.json** という名前のテンプレートをデプロイすると、既定のデプロイ名として **azuredeploy** が作成されます。
+デプロイ名を指定することも、既定のデプロイ名を使用することもできます。 既定の名前は、テンプレート ファイルの名前です。 たとえば、 **azuredeploy.json** という名前のテンプレートをデプロイすると、既定のデプロイ名として **azuredeploy** が作成されます。
 
 デプロイ名ごとに、場所を変更することはできません。 ある場所にデプロイを作成しようとしても、別の場所に同じ名前の既存のデプロイがあると、作成することはできません。 エラー コード `InvalidDeploymentLocation` が表示された場合は、別の名前を使用するか、その名前の以前のデプロイと同じ場所を使用してください。
-
-## <a name="use-template-functions"></a>テンプレート関数を使用する
-
-サブスクリプション レベルのデプロイでは、テンプレート関数を使用する場合に、次のようないくつかの重要な考慮事項があります。
-
-* [resourceGroup ()](template-functions-resource.md#resourcegroup) 関数は、サポートされて**いません**。
-* [reference()](template-functions-resource.md#reference) および [list()](template-functions-resource.md#list) 関数がサポートされています。
-* サブスクリプション レベルでデプロイされているリソースのリソース ID を取得するために、[resourceId()](template-functions-resource.md#resourceid) を使用しないでください。 代わりに、[subscriptionResourceId()](template-functions-resource.md#subscriptionresourceid) 関数を使用してください。
-
-  たとえば、サブスクリプションにデプロイされているポリシー定義のリソース ID を取得するには、次のように使用します。
-
-  ```json
-  subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
-  ```
-
-  返されるリソース ID の形式は次のとおりです。
-
-  ```json
-  /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  ```
 
 ## <a name="resource-groups"></a>リソース グループ
 

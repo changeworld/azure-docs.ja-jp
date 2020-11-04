@@ -6,19 +6,19 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 8/13/2020
-ms.openlocfilehash: 9e1bd3f555873503aa1f6ed9c804aced3620fb9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: b2670862814495ab04f92d8f34a757d3ede6cf4a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627518"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546876"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Azure Database for MySQL での監視
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for MySQL には、サーバーの動作への洞察を提供する各種のメトリックが用意されています。
 
 ## <a name="metrics"></a>メトリック
-すべての Azure メトリックは 1 分間隔で、各メトリックの 30 日間の履歴が保持されます。 メトリックにアラートを構成できます。 詳細な手順については、[アラートの設定方法](howto-alert-on-metric.md)に関する記事をご覧ください。 その他のタスクとして、自動化されたアクションの設定、高度な分析の実行、履歴のアーカイブなどがあります。 詳細については、[Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)に関する記事をご覧ください。
+すべての Azure メトリックは 1 分間隔で、各メトリックの 30 日間の履歴が保持されます。 メトリックにアラートを構成できます。 詳細な手順については、[アラートの設定方法](howto-alert-on-metric.md)に関する記事をご覧ください。 その他のタスクとして、自動化されたアクションの設定、高度な分析の実行、履歴のアーカイブなどがあります。 詳細については、[Azure のメトリックの概要](../azure-monitor/platform/data-platform.md)に関する記事をご覧ください。
 
 ### <a name="list-of-metrics"></a>メトリックの一覧
 これらのメトリックは、Azure Database for MySQL に使用できます。
@@ -42,43 +42,25 @@ ms.locfileid: "91627518"
 |backup_storage_used|使用済みバックアップ ストレージ|バイト|使用されているバックアップ ストレージの量。 このメトリックは、サーバーに設定されているバックアップ保持期間に基づいて保持されているすべてのデータベースの完全バックアップ、差分バックアップ、ログ バックアップによって使用されるストレージの合計を表します。 バックアップの頻度はサービスによって管理され、[概念に関する記事](concepts-backup.md)で説明されています。 geo 冗長ストレージの場合、バックアップ ストレージの使用量は、ローカル冗長ストレージの 2 倍になります。|
 
 ## <a name="server-logs"></a>サーバー ログ
-サーバーで低速クエリ ログと監査ログを有効にしできます。 これらのログは、Azure Monitor ログ、Event Hubs、およびストレージ アカウントでの Azure 診断ログを通じて入手することもできます。 ログの詳細については、 [監査ログ](concepts-audit-logs.md)と[低速クエリ ログ](concepts-server-logs.md)の記事を参照してください。
+サーバーで低速クエリ ログと監査ログを有効にしできます。 これらのログは、Azure Monitor ログ、Event Hubs、およびストレージ アカウントでの Azure 診断ログを通じて入手することもできます。 ログの詳細については、[監査ログ](concepts-audit-logs.md)と[低速クエリ ログ](concepts-server-logs.md)の記事を参照してください。
 
 ## <a name="query-store"></a>クエリ ストア
-[クエリ ストア](concepts-query-store.md)は、クエリ ランタイム統計や待機イベントなど、一定期間のクエリ パフォーマンスを追跡記録する機能です。 この機能は、**mysql** スキーマにクエリ ランタイムのパフォーマンス情報を保持します。 さまざまな構成ノブを介してデータのコレクションとストレージを制御できます。
+[クエリ ストア](concepts-query-store.md)は、クエリ ランタイム統計や待機イベントなど、一定期間のクエリ パフォーマンスを追跡記録する機能です。 この機能は、 **mysql** スキーマにクエリ ランタイムのパフォーマンス情報を保持します。 さまざまな構成ノブを介してデータのコレクションとストレージを制御できます。
 
 ## <a name="query-performance-insight"></a>Query Performance Insight
-[Query Performance Insight](concepts-query-performance-insight.md) はクエリ ストアと連動し、データを視覚化します。視覚化したデータには Azure portal からアクセスできます。 これらのグラフにより、パフォーマンスに影響を与える主要なクエリを特定できます。 Query Performance Insight には、Azure Database for MySQL サーバーのポータル ページの「**インテリジェント パフォーマンス**」セクションからアクセスできます。
+[Query Performance Insight](concepts-query-performance-insight.md) はクエリ ストアと連動し、データを視覚化します。視覚化したデータには Azure portal からアクセスできます。 これらのグラフにより、パフォーマンスに影響を与える主要なクエリを特定できます。 Query Performance Insight には、Azure Database for MySQL サーバーのポータル ページの「 **インテリジェント パフォーマンス** 」セクションからアクセスできます。
 
 ## <a name="performance-recommendations"></a>パフォーマンスに関する推奨事項
 [パフォーマンスの推奨事項](concepts-performance-recommendations.md)機能によって、ワークロード パフォーマンス改善の機会が特定されます。 パフォーマンスの推奨事項によって、ワークロードのパフォーマンスを改善する可能性がある新しいインデックスを作成するための推奨事項が提供されます。 推奨インデックスを作成するために、この機能は、クエリ ストアから報告されたスキーマ、ワークロードなどのさまざまなデータベースの特性を考慮します。 顧客は、パフォーマンスに関する推奨事項を実装した後、パフォーマンスをテストし、変更の影響を評価する必要があります。
 
 ## <a name="planned-maintenance-notification"></a>計画メンテナンスの通知
 
-**計画メンテナンスの通知**によって、Azure Database for MySQL に対して今後予定されているメンテナンスに関するアラートを受信できます。 これらの通知は [Service Health](../service-health/overview.md) の計画メンテナンスに統合されており、サブスクリプションに対してスケジュールされたすべてのメンテナンスを 1 か所に表示できます。 また、異なるリソースに対しては異なる連絡先が必要になる場合があるため、さまざまなリソース グループに対して適切なユーザーへの通知をスケーリングすることも可能です。 今後のメンテナンスに関する通知は、イベントの 72 時間前に受信します。
+[計画メンテナンスの通知](./concepts-planned-maintenance-notification.md)によって、Azure Database for MySQL に対して今後予定されているメンテナンスに関するアラートを受信できます。 これらの通知は [Service Health の](../service-health/overview.md)計画メンテナンスに統合されており、サブスクリプションに対してスケジュールされたすべてのメンテナンスを 1 か所に表示できます。 また、異なるリソースに対しては異なる連絡先が必要になる場合があるため、さまざまなリソース グループに対して適切なユーザーへの通知をスケーリングすることも可能です。 今後のメンテナンスに関する通知は、イベントの 72 時間前に受信します。
 
-計画メンテナンス中は、サーバーが再起動されて[一時的なエラー](concepts-connectivity.md#transient-errors)が発生する場合があります。 こうした事象の大半は、システムにより、60 秒かからず自動的に緩和されます。
-
-> [!IMPORTANT]
-> 計画メンテナンスの通知は、現在、米国中西部を**除く**すべてのリージョンでパブリック プレビューとして利用できます
-
-### <a name="to-receive-planned-maintenance-notification"></a>計画メンテナンスの通知を受信するには
-
-1. [ポータル](https://portal.azure.com)で、 **[サービス正常性]** を選択します。
-2. **[アラート]** セクションで、 **[正常性アラート]** を選択します。
-3. **[+ サービス正常性アラートの追加]** を選択し、フィールドに入力します。
-4. 必須フィールドに入力します。 
-5. **[イベントの種類]** を選択し、 **[計画メンテナンス]** または **[すべて選択]** を選択します
-6. **[アクション グループ]** で、アラートの受信方法 (電子メールの取得、ロジック アプリのトリガーなど) を定義します。  
-7. [ルールの作成時に有効にする] を確実に [はい] に設定します。
-8. **[アラート ルールの作成]** を選択してアラートを完成させます
-
-**サービス正常性アラート**の作成方法の詳細な手順については、「[サービス通知のアクティビティ ログ アラートを作成する](../service-health/alerts-activity-log-service-notifications.md)」を参照してください。
-
-> [!Note]
-> Microsoft では、**計画メンテナンスの通知**の 72 時間での通知をすべてのイベントに対して提供するために、あらゆる試みを行います。 ただし、重大時やセキュリティ更新プログラムに関する場合には、イベントが迫ってから通知が送信されたり、あるいは通知が省略されたりすることがあります。
+通知の設定方法の詳細については、[計画メンテナンスの通知](./concepts-planned-maintenance-notification.md)に関するドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 - メトリックに対するアラートの作成のガイダンスについては、[アラートを設定する方法](howto-alert-on-metric.md)に関するページをご覧ください。
-- Azure Portal、REST API、または CLI を使用してメトリックへのアクセスおよびメトリックのエクスポートを行う方法の詳細については、[Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)に関する記事をご覧ください。
+- Azure Portal、REST API、または CLI を使用してメトリックへのアクセスおよびメトリックのエクスポートを行う方法の詳細については、[Azure のメトリックの概要](../azure-monitor/platform/data-platform.md)に関する記事をご覧ください。
 - [サーバーの監視のベスト プラクティス](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-mysql-monitoring/)に関するブログをお読みください。
+- 「Azure Database for MySQL での[計画メンテナンスの通知 - シングル サーバー](./concepts-planned-maintenance-notification.md)」を参照してください

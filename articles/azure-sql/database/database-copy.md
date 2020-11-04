@@ -4,19 +4,19 @@ description: トランザクション上一貫性のある Azure SQL Database �
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: 67f123472a5fd6060bc4e2de36fb7ac1ea46d356
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 7a80f6ef918ac42f43eee2ccc8acae09c5008129
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124397"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748892"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>トランザクション上一貫性のある Azure SQL Database のデータベースのコピーを作成する
 
@@ -82,7 +82,7 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
 
 サーバー管理者のログイン、またはコピーするデータベースを作成したログインを使用して、マスター データベースにログインします。 データベースのコピーを成功させるには、サーバー管理者ではないログインが `dbmanager` ロールのメンバーによるものである必要があります。 ログインおよびサーバーへの接続の詳細については、 [ログインの管理](logins-create-manage.md)に関するページを参照してください。
 
-[CREATE DATABASE AS COPY OF ...](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#copy-a-database) ステートメントを使用して、ソース データベースのコピーを開始します。 T-SQL ステートメントは、データベースのコピー操作が完了するまで実行を続けます。
+[CREATE DATABASE AS COPY OF ...](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true#copy-a-database) ステートメントを使用して、ソース データベースのコピーを開始します。 T-SQL ステートメントは、データベースのコピー操作が完了するまで実行を続けます。
 
 > [!NOTE]
 > T-SQL ステートメントを終了しても、データベース コピー操作は終了しません。 操作を終了するには、ターゲット データベースを削除します。
@@ -100,6 +100,21 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
    ```sql
    -- execute on the master database to start copying
    CREATE DATABASE Database2 AS COPY OF Database1;
+   ```
+
+### <a name="copy-to-an-elastic-pool"></a>エラスティック プールにコピーする
+
+サーバー管理者のログイン、またはコピーするデータベースを作成したログインを使用して、マスター データベースにログインします。 データベースのコピーを成功させるには、サーバー管理者ではないログインが `dbmanager` ロールのメンバーによるものである必要があります。
+
+このコマンドは、Database1 を、pool1 という名前のエラスティック プール内の Database2 という名前の新しいデータベースにコピーします。 データベースのサイズに応じて、コピー操作の完了に時間がかかる場合があります。
+
+Database1 には、単一データベースまたはプールされたデータベースを指定できます。 異なる層のプール間のコピーはサポートされていますが、一部の層間のコピーは成功しません。 たとえば、単一またはエラスティックの Standard データベースは汎用プールにコピーできますが、エラスティックの Standard データベースを Premium プールにコピーすることはできません。 
+
+   ```sql
+   -- execute on the master database to start copying
+   CREATE DATABASE "Database2"
+   AS COPY OF "Database1"
+   (SERVICE_OBJECTIVE = ELASTIC_POOL( name = "pool1" ) ) ;
    ```
 
 ### <a name="copy-to-a-different-server"></a>別のサーバーへのコピー
@@ -128,13 +143,13 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>コピー操作の進行状況を監視する
 
-[の](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) に対してクエリを実行してコピー処理を監視し、[ sys. dm_database_copies](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)、[dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) を表示します。 コピー操作の進行中は、新しいデータベースの sys.databases ビューの **state_desc** 列が **COPYING** に設定されます。
+[の](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) に対してクエリを実行してコピー処理を監視し、[ sys. dm_database_copies](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)、[dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) を表示します。 コピー操作の進行中は、新しいデータベースの sys.databases ビューの **state_desc** 列が **COPYING** に設定されます。
 
 * コピー操作が失敗すると、新しいデータベースの sys.databases ビューの **state_desc** 列が **SUSPECT** に設定されます。 新しいデータベースに対して DROP ステートメントを実行した後でもう一度やり直してください。
 * コピー操作が成功すると、新しいデータベースの sys.databases ビューの **state_desc** 列が **ONLINE** に設定されます。 コピー操作は完了しています。新しいデータベースは通常のデータベースであり、コピー元データベースから独立して変更することができます。
 
 > [!NOTE]
-> 進行中のコピー操作を取り消すには、新しいデータベースに対して [DROP DATABASE](https://docs.microsoft.com/sql/t-sql/statements/drop-database-transact-sql) ステートメントを実行します。
+> 進行中のコピー操作を取り消すには、新しいデータベースに対して [DROP DATABASE](/sql/t-sql/statements/drop-database-transact-sql) ステートメントを実行します。
 
 > [!IMPORTANT]
 > ソースよりも非常に小さいサービス目標を使用してコピーを作成する必要がある場合、ターゲット データベースには、シード処理を完了するための十分なリソースがない可能性があります。これにより、コピー操作が失敗する可能性があります。 このシナリオでは、geo リストア要求を使用して、別のサーバーや別のリージョンにコピーを作成します。 詳細については、[データベースのバックアップを使用した Azure SQL Database の復旧](recovery-using-backups.md#geo-restore)に関するページを参照してください。
@@ -167,7 +182,7 @@ Azure portal を使用してデータベースのコピーを管理するには�
 
 ## <a name="resolve-logins"></a>ログインの解決
 
-新しいデータベースがターゲット サーバーでオンラインになった後、 [ALTER USER](https://docs.microsoft.com/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current) ステートメントを使用して、ユーザーを新しいデータベースからターゲット サーバーのログインに再マップします。 孤立したユーザーを解決するには、「 [孤立ユーザーのトラブルシューティング](https://docs.microsoft.com/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server)」をご覧ください。 [ディザスター リカバリー後に Azure SQL Database のセキュリティを管理する方法](active-geo-replication-security-configure.md)に関するページもご覧ください。
+新しいデータベースがターゲット サーバーでオンラインになった後、 [ALTER USER](/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current&preserve-view=true) ステートメントを使用して、ユーザーを新しいデータベースからターゲット サーバーのログインに再マップします。 孤立したユーザーを解決するには、「 [孤立ユーザーのトラブルシューティング](/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server)」をご覧ください。 [ディザスター リカバリー後に Azure SQL Database のセキュリティを管理する方法](active-geo-replication-security-configure.md)に関するページもご覧ください。
 
 新しいデータベースのすべてのユーザーのアクセス許可は、コピー元データベースで保持していたものと同じです。 データベースのコピーを開始したユーザーが、新しいデータベースのデータベース所有者になります。 コピーが成功した後、他のユーザーが再マップされる前に、データベース所有者のみが新しいデータベースにログインできます。
 

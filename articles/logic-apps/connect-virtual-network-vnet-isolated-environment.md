@@ -5,24 +5,24 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 09/25/2020
-ms.openlocfilehash: 7fee95a435b477639fe2b98cf2c9cbf500df5941
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.date: 10/25/2020
+ms.openlocfilehash: cf8ce541c069f78adbb138fa38e2efc506e095ea
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310019"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675198"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network に接続する
 
-ロジック アプリと統合アカウントが [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)にアクセスする必要があるシナリオでは、"[*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成します。 ISE は、専用のストレージと、"グローバル" なマルチテナント Logic Apps サービスとは別に確保されている他のリソースを使用する専用環境です。 この分離で、他の Azure テナントがご利用のアプリのパフォーマンスに与える可能性がある影響も軽減されます。 ISE には、独自の静的 IP アドレスも用意されています。 これらの IP アドレスは、パブリックのマルチテナント サービスのロジック アプリによって共有される静的 IP アドレスとは別のものです。
+ロジック アプリと統合アカウントが [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)にアクセスする必要があるシナリオでは、" [*統合サービス環境* " (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成します。 ISE は、専用のストレージと、"グローバル" なマルチテナント Logic Apps サービスとは別に確保されている他のリソースを使用する専用環境です。 この分離で、他の Azure テナントがご利用のアプリのパフォーマンスに与える可能性がある影響も軽減されます。 ISE には、独自の静的 IP アドレスも用意されています。 これらの IP アドレスは、パブリックのマルチテナント サービスのロジック アプリによって共有される静的 IP アドレスとは別のものです。
 
-ISE を作成すると、Azure によってその ISE が Azure 仮想ネットワークに "*挿入*" され、その仮想ネットワークに Logic Apps サービスがデプロイされます。 ロジック アプリまたは統合アカウントを作成するときに、お使いの ISE を場所として選択します。 ロジック アプリまたは統合アカウントは、仮想ネットワーク内の仮想マシン (VM)、サーバー、システム、サービスなどのリソースに直接アクセスできます。
+ISE を作成すると、Azure によってその ISE が Azure 仮想ネットワークに " *挿入* " され、その仮想ネットワークに Logic Apps サービスがデプロイされます。 ロジック アプリまたは統合アカウントを作成するときに、お使いの ISE を場所として選択します。 ロジック アプリまたは統合アカウントは、仮想ネットワーク内の仮想マシン (VM)、サーバー、システム、サービスなどのリソースに直接アクセスできます。
 
 ![統合サービス環境を選択する](./media/connect-virtual-network-vnet-isolated-environment/select-logic-app-integration-service-environment.png)
 
 > [!IMPORTANT]
-> ISE でロジック アプリと統合アカウントを連携させるには、両方とも "*同じ ISE*" を場所として使用する必要があります。
+> ISE でロジック アプリと統合アカウントを連携させるには、両方とも " *同じ ISE* " を場所として使用する必要があります。
 
 ISE では、実行継続時間、ストレージのリテンション期間、スループット、HTTP の要求と応答のタイムアウト、メッセージのサイズ、およびカスタム コネクタの要求の上限が引き上げられました。 詳細については、[Azure Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページを参照してください。 ISE の詳細については、[Azure Logic Apps から Azure Virtual Network リソースへのアクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)に関する記事を参照してください。
 
@@ -44,7 +44,7 @@ ISE では、実行継続時間、ストレージのリテンション期間、�
   > [!IMPORTANT]
   > ISE 内で実行されるロジック アプリ、組み込みトリガー、組み込みアクション、およびコネクターでは、使用量ベースの価格プランとは異なる価格プランが使用されます。 ISE の価格と課金のしくみについては、「[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)」を参照してください。 価格については、[Logic Apps の価格](../logic-apps/logic-apps-pricing.md)に関する記事を参照してください。
 
-* [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)。 仮想ネットワークには、"*空の*" サブネットが 4 つ必要です。これらのサブネットは、ISE 内にリソースを作成してデプロイするために必要であり、これらの内部または非表示のコンポーネントで使用されます。
+* [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)。 仮想ネットワークには、" *空の* " サブネットが 4 つ必要です。これらのサブネットは、ISE 内にリソースを作成してデプロイするために必要であり、これらの内部または非表示のコンポーネントで使用されます。
 
   * Logic Apps コンピューティング
   * 内部 App Service Environment (コネクタ)
@@ -67,9 +67,9 @@ ISE では、実行継続時間、ストレージのリテンション期間、�
 
   * [ExpressRoute](../expressroute/expressroute-introduction.md) を[強制トンネリング](../firewall/forced-tunneling.md)と共に使用する場合は、次の特定のルートを使用して[ルート テーブルを作成](../virtual-network/manage-route-table.md)し、ISE で使用される各サブネットにそのルート テーブルをリンクする必要があります。
 
-    **名前**: <*route-name*><br>
-    **アドレス プレフィックス**:0.0.0.0/0<br>
-    **次ホップ**:インターネット
+    **名前** : < *route-name*><br>
+    **アドレス プレフィックス** :0.0.0.0/0<br>
+    **次ホップ** :インターネット
     
     この特定のルート テーブルは、Logic Apps コンポーネントが、Azure Storage や Azure SQL DB などの他に依存している Azure サービスと通信するために必要です。 このルートの詳細については、「[アドレス プレフィックス 0.0.0.0/0](../virtual-network/virtual-networks-udr-overview.md#default-route)」を参照してください。 ExpressRoute と共に強制トンネリングを使用しない場合、この特定のルート テーブルは必要ありません。
     
@@ -97,9 +97,9 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
 * 新しい Azure 仮想ネットワークとサブネットを制約なしで作成した場合、サブネット間のトラフィックを制御する目的で仮想ネットワーク内に[ネットワーク セキュリティ グループ (NSG)](../virtual-network/network-security-groups-overview.md#network-security-groups) を設定する必要はありません。
 
-* 既存の仮想ネットワークの場合は、*必要に応じて*[ネットワーク セキュリティ グループ (NSG)](../virtual-network/network-security-groups-overview.md#network-security-groups) を設定して、[サブネット間のネットワーク トラフィックをフィルター処理](../virtual-network/tutorial-filter-network-traffic.md)することができます。 このルートを使用する場合、または既に NSG を使用している場合は、NSG の[この表に記載されているポート](#network-ports-for-ise)を開いてください。
+* 既存の仮想ネットワークの場合は、 *必要に応じて*[ネットワーク セキュリティ グループ (NSG)](../virtual-network/network-security-groups-overview.md#network-security-groups) を設定して、 [サブネット間のネットワーク トラフィックをフィルター処理](../virtual-network/tutorial-filter-network-traffic.md)することができます。 このルートを使用する場合、または既に NSG を使用している場合は、NSG の[この表に記載されているポート](#network-ports-for-ise)を開いてください。
 
-  [NSG セキュリティ規則](../virtual-network/network-security-groups-overview.md#security-rules)を設定する場合は、**TCP** プロトコルと **UDP** プロトコルの*両方*を使用するか、代わりに **[任意]** を選択する必要があります。そうしないと、プロトコルごとに個別のルールを作成する必要があります。 NSG セキュリティ規則では、これらのポートへのアクセスが必要な IP アドレスに対して開く必要があるポートが記述されています。 すべてのファイアウォール、ルーター、またはこれらのエンドポイント間に存在するその他の項目で、これらのポートがこれらの IP アドレスにアクセスできる状態になっていることも確認してください。
+  [NSG セキュリティ規則](../virtual-network/network-security-groups-overview.md#security-rules)を設定する場合は、 **TCP** プロトコルと **UDP** プロトコルの *両方* を使用するか、代わりに **[任意]** を選択する必要があります。そうしないと、プロトコルごとに個別のルールを作成する必要があります。 NSG セキュリティ規則では、これらのポートへのアクセスが必要な IP アドレスに対して開く必要があるポートが記述されています。 すべてのファイアウォール、ルーター、またはこれらのエンドポイント間に存在するその他の項目で、これらのポートがこれらの IP アドレスにアクセスできる状態になっていることも確認してください。
 
 * ファイアウォールを経由してインターネットへのトラフィックをリダイレクトする強制トンネリングを設定した場合は、[強制トンネリングの追加要件](#forced-tunneling)を確認してください。
 
@@ -107,7 +107,7 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
 ### <a name="network-ports-used-by-your-ise"></a>ISE で使用されるネットワーク ポート
 
-この表は、ISE でのアクセスが要求されるポートとそれらのポートの目的を示しています。 セキュリティ規則をもっと簡単に設定できるように、テーブルの[サービス タグ](../virtual-network/service-tags-overview.md)は、特定の Azure サービスの IP アドレス プレフィックス グループを表わしています。 明記されている場合、*内部 ISE* および*外部 ISE* は、[ISE の作成中に選択されたアクセス エンドポイント](connect-virtual-network-vnet-isolated-environment.md#create-environment)を意味します。 詳細については、「[エンドポイント アクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)」を参照してください。
+この表は、ISE でのアクセスが要求されるポートとそれらのポートの目的を示しています。 セキュリティ規則をもっと簡単に設定できるように、テーブルの[サービス タグ](../virtual-network/service-tags-overview.md)は、特定の Azure サービスの IP アドレス プレフィックス グループを表わしています。 明記されている場合、 *内部 ISE* および *外部 ISE* は、 [ISE の作成中に選択されたアクセス エンドポイント](connect-virtual-network-vnet-isolated-environment.md#create-environment)を意味します。 詳細については、「[エンドポイント アクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)」を参照してください。
 
 > [!IMPORTANT]
 > ソース ポートは一時的なものであるため、すべての規則において、ソース ポートが `*` に設定されていることを確認してください。
@@ -116,22 +116,22 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
 | 目的 | ソース サービス タグまたは IP アドレス | ソース ポート | 宛先サービス タグまたは IP アドレス | 宛先ポート | Notes |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
-| 仮想ネットワーク内のサブネット間通信 | 仮想ネットワークと ISE サブネットのアドレス空間 | * | 仮想ネットワークと ISE サブネットのアドレス空間 | * | トラフィックが仮想ネットワーク内のサブネットの "*間*" を通過するために必要です。 <p><p>**重要**:トラフィックが各サブネット内の "*コンポーネント*" 間を通過するには、各サブネット内のすべてのポートを開いていることを確認します。 |
-| 両方: <p>ロジック アプリへの通信 <p><p>ロジック アプリの実行履歴| 内部 ISE: <br>**VirtualNetwork** <p><p>外部 ISE:**インターネット** (または**メモ**を参照) | * | **VirtualNetwork** | 443 | **Internet** サービス タグを使用する代わりに、これらの項目に発信元 IP アドレスを指定できます。 <p><p>- ロジック アプリ内の任意の要求トリガーまたは Webhook を呼び出すコンピューターまたはサービス <p>- ロジック アプリの実行履歴へのアクセス元となるコンピューターまたはサービス <p><p>**重要**:このポートを閉じるかブロックすると、要求トリガーまたは Webhook を持つロジック アプリへの呼び出しができなくなります。 また、実行履歴の各ステップの入力と出力にアクセスすることもできなくなります。 ただし、ロジック アプリの実行履歴にアクセスすることはできます。|
+| 仮想ネットワーク内のサブネット間通信 | 仮想ネットワークと ISE サブネットのアドレス空間 | * | 仮想ネットワークと ISE サブネットのアドレス空間 | * | トラフィックが仮想ネットワーク内のサブネットの " *間* " を通過するために必要です。 <p><p>**重要** :トラフィックが各サブネット内の " *コンポーネント* " 間を通過するには、各サブネット内のすべてのポートを開いていることを確認します。 |
+| 両方: <p>ロジック アプリへの通信 <p><p>ロジック アプリの実行履歴| 内部 ISE: <br>**VirtualNetwork** <p><p>外部 ISE: **インターネット** (または **メモ** を参照) | * | **VirtualNetwork** | 443 | **Internet** サービス タグを使用する代わりに、これらの項目に発信元 IP アドレスを指定できます。 <p><p>- ロジック アプリ内の任意の要求トリガーまたは Webhook を呼び出すコンピューターまたはサービス <p>- ロジック アプリの実行履歴へのアクセス元となるコンピューターまたはサービス <p><p>**重要** :このポートを閉じるかブロックすると、要求トリガーまたは Webhook を持つロジック アプリへの呼び出しができなくなります。 また、実行履歴の各ステップの入力と出力にアクセスすることもできなくなります。 ただし、ロジック アプリの実行履歴にアクセスすることはできます。|
 | Logic Apps デザイナー - 動的プロパティ | **LogicAppsManagement** | * | **VirtualNetwork** | 454 | 要求は、そのリージョンの Logic Apps アクセス エンドポイントの[受信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#inbound)から取得されます。 |
 | コネクタのデプロイ | **AzureConnectors** | * | **VirtualNetwork** | 454 | コネクタをデプロイおよび更新するために必要です。 このポートを閉じたりブロックしたりすると、ISE のデプロイが失敗し、コネクタの更新や修正ができなくなります。このポートを閉じたりブロックしたりすると、ISE のデプロイが失敗し、コネクタの更新や修正ができなくなります。 |
 | ネットワーク正常性チェック | **LogicApps** | * | **VirtualNetwork** | 454 | 要求は、そのリージョンの[受信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#inbound)と[送信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#outbound)に対して Logic Apps アクセス エンドポイントから送信されます。 |
 | App Service の管理の依存関係 | **AppServiceManagement** | * | **VirtualNetwork** | 454、455 ||
 | Azure Traffic Manager からの通信 | **AzureTrafficManager** | * | **VirtualNetwork** | 内部 ISE:454 <p><p>外部 ISE:443 ||
 | 両方: <p>コネクタ ポリシーのデプロイ <p>API Management - 管理エンドポイント | **APIManagement** | * | **VirtualNetwork** | 3443 | コネクタ ポリシーのデプロイについては、コネクタをデプロイおよび更新するためにポート アクセスが必要です。 このポートを閉じたりブロックしたりすると、ISE のデプロイが失敗し、コネクタの更新や修正ができなくなります。このポートを閉じたりブロックしたりすると、ISE のデプロイが失敗し、コネクタの更新や修正ができなくなります。 |
-| ロール インスタンス間での Azure Cache for Redis インスタンスへのアクセス | **VirtualNetwork** | * | **VirtualNetwork** | 6379 - 6383、(さらに、**メモ**を参照)| Azure Cache for Redis で動作する ISE の場合は、[Azure Cache for Redis の FAQ で説明されている送信ポートと受信ポート](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)を開く必要があります。 |
+| ロール インスタンス間での Azure Cache for Redis インスタンスへのアクセス | **VirtualNetwork** | * | **VirtualNetwork** | 6379 - 6383、(さらに、 **メモ** を参照)| Azure Cache for Redis で動作する ISE の場合は、[Azure Cache for Redis の FAQ で説明されている送信ポートと受信ポート](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)を開く必要があります。 |
 |||||||
 
 #### <a name="outbound-security-rules"></a>送信セキュリティ規則
 
 | 目的 | ソース サービス タグまたは IP アドレス | ソース ポート | 宛先サービス タグまたは IP アドレス | 宛先ポート | Notes |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
-| 仮想ネットワーク内のサブネット間通信 | 仮想ネットワークと ISE サブネットのアドレス空間 | * | 仮想ネットワークと ISE サブネットのアドレス空間 | * | トラフィックが仮想ネットワーク内のサブネットの "*間*" を通過するために必要です。 <p><p>**重要**:トラフィックが各サブネット内の "*コンポーネント*" 間を通過するには、各サブネット内のすべてのポートを開いていることを確認します。 |
+| 仮想ネットワーク内のサブネット間通信 | 仮想ネットワークと ISE サブネットのアドレス空間 | * | 仮想ネットワークと ISE サブネットのアドレス空間 | * | トラフィックが仮想ネットワーク内のサブネットの " *間* " を通過するために必要です。 <p><p>**重要** :トラフィックが各サブネット内の " *コンポーネント* " 間を通過するには、各サブネット内のすべてのポートを開いていることを確認します。 |
 | ロジック アプリからの通信 | **VirtualNetwork** | * | 宛先によって異なる | 80、443 | 宛先は、ロジック アプリが通信する必要がある外部サービスのエンドポイントによって異なります。 |
 | Azure Active Directory | **VirtualNetwork** | * | **AzureActiveDirectory** | 80、443 ||
 | Azure Storage の依存関係 | **VirtualNetwork** | * | **Storage** | 80、443、445 ||
@@ -140,7 +140,7 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 | Azure SQL 依存関係 | **VirtualNetwork** | * | **SQL** | 1433 ||
 | Azure Resource Health | **VirtualNetwork** | * | **AzureMonitor** | 1886 | 正常性の状態を Resource Health に公開するために必要。 |
 | ログから Event Hub ポリシーおよび監視エージェントへの依存関係 | **VirtualNetwork** | * | **EventHub** | 5672 ||
-| ロール インスタンス間での Azure Cache for Redis インスタンスへのアクセス | **VirtualNetwork** | * | **VirtualNetwork** | 6379 - 6383、(さらに、**メモ**を参照)| Azure Cache for Redis で動作する ISE の場合は、[Azure Cache for Redis の FAQ で説明されている送信ポートと受信ポート](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)を開く必要があります。 |
+| ロール インスタンス間での Azure Cache for Redis インスタンスへのアクセス | **VirtualNetwork** | * | **VirtualNetwork** | 6379 - 6383、(さらに、 **メモ** を参照)| Azure Cache for Redis で動作する ISE の場合は、[Azure Cache for Redis の FAQ で説明されている送信ポートと受信ポート](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)を開く必要があります。 |
 | DNS 名前解決 | **VirtualNetwork** | * | 仮想ネットワーク上のカスタム ドメイン ネーム システム (DNS) サーバーの IP アドレス | 53 | 仮想ネットワークでカスタム DNS サーバーを使用する場合にのみ必要です |
 |||||||
 
@@ -148,7 +148,7 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
 * Azure Firewall を使用する場合は、App Service Environment (ASE) の[完全修飾ドメイン名 (FQDN) タグ](../firewall/fqdn-tags.md#current-fqdn-tags)を使用してファイアウォールを設定する必要があります。これにより、ASE プラットフォームのトラフィックへの発信アクセスが許可されます。
 
-* Azure Firewall 以外のファイアウォール アプライアンスを使用する場合は、App Service Environment に必要とされる、[ファイアウォール統合の依存関係](../app-service/environment/firewall-integration.md#dependencies)にリストされている "*すべて*" の規則を使用してファイアウォールを設定する必要があります。
+* Azure Firewall 以外のファイアウォール アプライアンスを使用する場合は、App Service Environment に必要とされる、 [ファイアウォール統合の依存関係](../app-service/environment/firewall-integration.md#dependencies)にリストされている " *すべて* " の規則を使用してファイアウォールを設定する必要があります。
 
 <a name="forced-tunneling"></a>
 
@@ -194,18 +194,18 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
    | **リソース グループ** | はい | <*Azure-resource-group-name*> | 環境を作成する新しいまたは既存の Azure リソース グループ |
    | **統合サービス環境の名前** | はい | <*environment-name*> | ISE 名。英字、数字、ハイフン (`-`)、アンダースコア (`_`)、ピリオド (`.`) のみを含めることができます。 |
    | **場所** | はい | <*Azure-datacenter-region*> | 環境をデプロイする Azure データセンター リージョン |
-   | **SKU** | はい | **Premium** または **Developer (SLA なし)** | 作成および使用する ISE SKU。 これらの SKU の違いについては、[ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) に関する記事を参照してください。 <p><p>**重要**:このオプションは、ISE 作成時にのみ使用できます。後で変更することはできません。 |
+   | **SKU** | はい | **Premium** または **Developer (SLA なし)** | 作成および使用する ISE SKU。 これらの SKU の違いについては、[ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) に関する記事を参照してください。 <p><p>**重要** :このオプションは、ISE 作成時にのみ使用できます。後で変更することはできません。 |
    | **追加容量** | Premium: <br>はい <p><p>Developer: <br>適用なし | Premium: <br>0 から 10 <p><p>Developer: <br>適用なし | この ISE リソースに使用する追加の処理ユニット数。 作成後に容量を追加する場合は、「[ISE の容量を追加する](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)」を参照してください。 |
-   | **アクセス エンドポイント** | はい | **内部**または**外部** | ISE に使用するアクセス エンドポイントの種類。 これらのエンドポイントにより、ISE 内のロジック アプリ上で要求または Webhook トリガーが仮想ネットワークの外からの呼び出しを受信できるかどうかが決まります。 <p><p>選択した内容は、ロジック アプリの実行履歴の入力と出力の表示やアクセスの方法にも影響します。 詳細については、「[ISE エンドポイント アクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)」を参照してください。 <p><p>**重要**:アクセス エンドポイントは、ISE 作成中にのみ選択できます。後でこのオプションを変更することはできません。 |
-   | **Virtual Network** | はい | <*Azure-virtual-network-name*> | 環境内のロジック アプリが仮想ネットワークにアクセスできるように、その環境を挿入する Azure 仮想ネットワーク。 ネットワークがない場合は、[まず Azure 仮想ネットワークを作成](../virtual-network/quick-create-portal.md)します。 <p><p>**重要**:ISE を作成するときに "*のみ*"、この挿入を実行することができます。 |
-   | **サブネット** | はい | <*subnet-resource-list*> | ISE には、*空の*サブネットが 4 つ必要です。これらのサブネットは、ISE 内にリソースを作成してデプロイするために必要であり、内部の Logic Apps コンポーネント (コネクタやパフォーマンス用のキャッシュなど) で使用されます。 <p>**重要**:[サブネットを作成する手順](#create-subnet)に進む前に、必ずサブネットの要件を確認してください。 |
+   | **アクセス エンドポイント** | はい | **内部** または **外部** | ISE に使用するアクセス エンドポイントの種類。 これらのエンドポイントにより、ISE 内のロジック アプリ上で要求または Webhook トリガーが仮想ネットワークの外からの呼び出しを受信できるかどうかが決まります。 <p><p>選択した内容は、ロジック アプリの実行履歴の入力と出力の表示やアクセスの方法にも影響します。 詳細については、「[ISE エンドポイント アクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)」を参照してください。 <p><p>**重要** :アクセス エンドポイントは、ISE 作成中にのみ選択できます。後でこのオプションを変更することはできません。 |
+   | **Virtual Network** | はい | <*Azure-virtual-network-name*> | 環境内のロジック アプリが仮想ネットワークにアクセスできるように、その環境を挿入する Azure 仮想ネットワーク。 ネットワークがない場合は、[まず Azure 仮想ネットワークを作成](../virtual-network/quick-create-portal.md)します。 <p><p>**重要** :ISE を作成するときに " *のみ* "、この挿入を実行することができます。 |
+   | **サブネット** | はい | <*subnet-resource-list*> | ISE には、 *空の* サブネットが 4 つ必要です。これらのサブネットは、ISE 内にリソースを作成してデプロイするために必要であり、内部の Logic Apps コンポーネント (コネクタやパフォーマンス用のキャッシュなど) で使用されます。 <p>**重要** : [サブネットを作成する手順](#create-subnet)に進む前に、必ずサブネットの要件を確認してください。 |
    |||||
 
    <a name="create-subnet"></a>
 
    **サブネットを作成する**
 
-   ISE には、*空の*サブネットが 4 つ必要です。これらのサブネットは、ISE 内にリソースを作成してデプロイするために必要であり、内部の Logic Apps コンポーネント (コネクタやパフォーマンス用のキャッシュなど) で使用されます。 環境の作成後に、これらのサブネット アドレスを変更することは*できません*。 Azure portal で ISE を作成してデプロイする場合は、これらのサブネットをどの Azure サービスにも委任しないようにしてください。 ただし、REST API、Azure PowerShell、または Azure Resource Manager テンプレートを使用して ISE をデプロイする場合は、1 つの空のサブネットを `Microsoft.integrationServiceEnvironment` に[委任する](../virtual-network/manage-subnet-delegation.md)必要があります。 詳細については、[サブネットの委任の追加](../virtual-network/manage-subnet-delegation.md)に関するページを参照してください。
+   ISE には、 *空の* サブネットが 4 つ必要です。これらのサブネットは、ISE 内にリソースを作成してデプロイするために必要であり、内部の Logic Apps コンポーネント (コネクタやパフォーマンス用のキャッシュなど) で使用されます。 環境の作成後に、これらのサブネット アドレスを変更することは *できません* 。 Azure portal で ISE を作成してデプロイする場合は、これらのサブネットをどの Azure サービスにも委任しないようにしてください。 ただし、REST API、Azure PowerShell、または Azure Resource Manager テンプレートを使用して ISE をデプロイする場合は、1 つの空のサブネットを `Microsoft.integrationServiceEnvironment` に[委任する](../virtual-network/manage-subnet-delegation.md)必要があります。 詳細については、[サブネットの委任の追加](../virtual-network/manage-subnet-delegation.md)に関するページを参照してください。
 
    各サブネットは、次の要件を満たしている必要があります。
 
@@ -227,9 +227,9 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
    * [ExpressRoute](../expressroute/expressroute-introduction.md) を使用する場合、次のルートを持つ[ルート テーブルを作成](../virtual-network/manage-route-table.md)し、ISE によって使用される各サブネットにそのテーブルをリンクする必要があります。
 
-     **名前**: <*route-name*><br>
-     **アドレス プレフィックス**:0.0.0.0/0<br>
-     **次ホップ**:インターネット
+     **名前** : < *route-name*><br>
+     **アドレス プレフィックス** :0.0.0.0/0<br>
+     **次ホップ** :インターネット
 
    1. **[サブネット]** 一覧で **[サブネット構成の管理]** を選択します。
 
@@ -241,7 +241,7 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
    1. **[サブネットの追加]** ウィンドウで次の情報を指定します。
 
-      * **Name**:サブネットの名前
+      * **Name** :サブネットの名前
       * **アドレス範囲 (CIDR ブロック)** :仮想ネットワークのサブネットの範囲 (CIDR 形式)
 
       ![サブネットの詳細を追加する](./media/connect-virtual-network-vnet-isolated-environment/provide-subnet-details.png)
@@ -280,25 +280,18 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
 1. ISE のネットワーク正常性を確認するには、[統合サービス環境の管理](../logic-apps/ise-manage-integration-service-environment.md#check-network-health)に関する記事を参照してください。
 
+   > [!CAUTION]
+   > ISE のネットワークが異常になった場合、ISE によって使用されている内部 App Service Environment (ASE) も異常になることがあります。 ASE の異常な状態が 7 日を超えると、ASE は中断されます。 この状態を解決するには、仮想ネットワーク設定を確認します。 見つかった問題を解決してから、ISE を再起動します。 そうしないと、90 日後に中断された ASE が削除され、ISE を使用できなくなります。 そのため、必要なトラフィックを許可するように ISE を正常に維持するようにしてください。
+   > 
+   > 詳細については、以下のトピックを参照してください。
+   >
+   > * [Azure App Service の診断の概要](../app-service/overview-diagnostics.md)
+   > * [Azure App Service Environment のメッセージ ログ](../app-service/environment/using-an-ase.md#logging)
+
 1. ISE 内でロジック アプリやその他の成果物の作成を開始するには、「[統合サービス環境にリソースを追加する](../logic-apps/add-artifacts-integration-service-environment-ise.md)」を参照してください。
 
    > [!IMPORTANT]
-   > ISE の作成後に使用可能になるマネージド ISE コネクタは、ロジック アプリ デザイナーのコネクタ ピッカーに自動的には表示されません。 これらの ISE コネクタを使用するには、手動で[これらのコネクタを ISE に追加](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment)し、ロジック アプリ デザイナーに表示されるようにする必要があります。
-
-   > [!IMPORTANT]
-   > マネージド ISE コネクタは現在のところ、[タグ](../azure-resource-manager/management/tag-support.md)に対応していません。 タグ付けを強制するポリシーを設定した場合、ISE コネクタを追加しようすると  
-   > 失敗し、次の例のようなエラーが出ることがあります。 
-   > 
-   > ```json
-   > {
-   >    "error": { 
-   >       "code": "IntergrationServiceEnvironmentManagedApiDefinitionTagsNotSupported", 
-   >       "message": "The tags are not supported in the managed API 'azureblob'."
-   >    }
-   > }
-   > ```
-   > ISE コネクタを追加するには、ポリシーを無効にするか、削除しする必要があります。
-   > 
+   > ISE の作成後、マネージド ISE コネクタを使用できるようになりますが、それらはロジック アプリ デザイナーのコネクタ ピッカーに自動的に表示されません。 これらの ISE コネクタを使用するには、手動で[これらのコネクタを追加して ISE にデプロイ](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment)し、ロジック アプリ デザイナーに表示されるようにする必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: manayar
-ms.openlocfilehash: 0a777b9008864368a6d1731cae0374e55a4c585f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c7574daced9cec078b6e98e378212ce30d6f4f6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842871"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744726"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>プレビュー:Azure の Windows VM における VM ゲストの自動パッチ適用
 
@@ -80,17 +80,20 @@ Azure の Windows VM では、次のパッチ オーケストレーション モ
 
 **AutomaticByPlatform:**
 - このモードでは、Windows 仮想マシンに対する VM ゲストの自動パッチ適用が有効になり、その後のパッチのインストールは Azure によってオーケストレーションされます。
+- このモードは、可用性優先のパッチを適用するために必要です。
 - このモードを設定すると、重複を避けるために、Windows 仮想マシンのネイティブ自動更新も無効になります。
 - このモードは、上記のサポートされている OS プラットフォーム イメージを使用して作成された VM でのみサポートされています。
 - このモードを使用するには、プロパティ `osProfile.windowsConfiguration.enableAutomaticUpdates=true` を設定し、VM テンプレートでプロパティ `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatfom` を設定します。
 
 **AutomaticByOS:**
 - このモードでは、Windows 仮想マシンで自動更新が有効になり、自動更新によってパッチが VM にインストールされます。
+- このモードは、可用性優先のパッチ適用をサポートしていません。
 - 他のパッチ モードが指定されていない場合、このモードが既定で設定されます。
 - このモードを使用するには、プロパティ `osProfile.windowsConfiguration.enableAutomaticUpdates=true` を設定し、VM テンプレートでプロパティ `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByOS` を設定します。
 
 **Manual:**
 - このモードでは、Windows 仮想マシンの自動更新が無効になります。
+- このモードは、可用性優先のパッチ適用をサポートしていません。
 - カスタム パッチ適用ソリューションを使用する場合は、このモードに設定する必要があります。
 - このモードを使用するには、プロパティ `osProfile.windowsConfiguration.enableAutomaticUpdates=false` を設定し、VM テンプレートでプロパティ `osProfile.windowsConfiguration.patchSettings.patchMode=Manual` を設定します。
 
@@ -196,7 +199,7 @@ Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-新しい VM を作成するときに VM ゲストの自動パッチ適用を有効にするには、[az vm create](/cli/azure/vm#az-vm-create) を使用します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という名前の VM に対して、VM ゲストの自動パッチ適用を構成します。
+新しい VM を作成するときに VM ゲストの自動パッチ適用を有効にするには、[az vm create](/cli/azure/vm#az-vm-create) を使用します。 次の例では、 *myResourceGroup* という名前のリソース グループ内の *myVM* という名前の VM に対して、VM ゲストの自動パッチ適用を構成します。
 
 ```azurecli-interactive
 az vm create --resource-group myResourceGroup --name myVM --image Win2019Datacenter --enable-agent --enable-auto-update --patch-mode AutomaticByPlatform

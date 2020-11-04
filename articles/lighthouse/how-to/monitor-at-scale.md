@@ -1,23 +1,23 @@
 ---
 title: 委任されたリソースを大規模に監視する
 description: 管理下にある顧客テナント全体を対象に、スケーラブルな方法で効率よく Azure Monitor ログを使用する方法について説明します。
-ms.date: 08/12/2020
+ms.date: 10/26/2020
 ms.topic: how-to
-ms.openlocfilehash: fdd0147737da47613d6b7ef1bf6005e4c03de0dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e5c98b3b62a8fbc953a29cf51ac527e5de21110
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88163290"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735841"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>委任されたリソースを大規模に監視する
 
 サービス プロバイダーは、[Azure Lighthouse](../overview.md) に複数の顧客テナントをオンボードしている場合があります。 Azure Lighthouse を使用すると、サービス プロバイダーは一度に複数のテナントにわたって大規模に操作を実行できるため、管理タスクがより効率的になります。
 
-このトピックでは、管理下にある顧客テナント全体を対象に、スケーラブルな方法で [Azure Monitor ログ](../../azure-monitor/platform/data-platform-logs.md)を使用する方法について説明します。
+このトピックでは、管理下にある顧客テナント全体を対象に、スケーラブルな方法で [Azure Monitor ログ](../../azure-monitor/platform/data-platform-logs.md)を使用する方法について説明します。 このトピックではサービスのプロバイダーと顧客について触れますが、このガイドラインは、[Azure Lighthouse を使用して複数のテナントを管理する企業](../concepts/enterprise.md)にも当てはまります。
 
-> [!TIP]
-> このトピックではサービスのプロバイダーと顧客について触れますが、このガイドラインは、[Azure Lighthouse を使用して複数のテナントを管理する企業](../concepts/enterprise.md)にも当てはまります。
+> [!NOTE]
+> 管理テナントのユーザーには、委任された顧客サブスクリプションで [Log Analytics ワークスペースの管理に必要なロール](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions)が付与されていることを確認してください。
 
 ## <a name="create-log-analytics-workspaces"></a>Log Analytics ワークスペースの作成
 
@@ -26,6 +26,9 @@ ms.locfileid: "88163290"
 これらのワークスペースは、直接顧客テナントに作成することをお勧めします。 そうすることで、データを自分の環境にエクスポートするのではなく、各顧客のテナント内に留めることができます。 また、Log Analytics でサポートされるリソースまたはサービスの監視を一元化し、監視対象となるデータの種類について、より柔軟な運用が可能となります。
 
 Log Analytics ワークスペースは、[Azure portal](../../azure-monitor/learn/quick-create-workspace.md)、[Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)、[Azure PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) のいずれかを使用して作成できます。
+
+> [!IMPORTANT]
+> すべてのワークスペースが顧客テナントに作成されている場合でも、管理テナントのサブスクリプションには、Microsoft.Insights リソース プロバイダーも登録する必要があります。
 
 ## <a name="deploy-policies-that-log-data"></a>データのログ記録ポリシーをデプロイする
 

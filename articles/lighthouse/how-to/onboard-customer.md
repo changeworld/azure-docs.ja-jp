@@ -3,12 +3,12 @@ title: Azure Lighthouse への顧客のオンボード
 description: Azure Lighthouse に顧客をオンボードする方法について説明します。これにより、Azure の委任されたリソース管理を使用して自分のテナントからそれらのリソースにアクセスして管理できるようになります。
 ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: 926e9bc5302403063d536e31fe304d837bca8ec5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: b5a6d60d10b2cee7f26ae405ed95b980f423b42e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109070"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426332"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Azure Lighthouse への顧客のオンボード
 
@@ -62,7 +62,7 @@ az account show
 
 ## <a name="define-roles-and-permissions"></a>ロールとアクセス許可を定義する
 
-サービス プロバイダーは、1 人の顧客に対して複数のタスクを実行でき、その場合は、スコープごとに異なるアクセスが必要になります。 適切な[ロールベースのアクセス制御 (RBAC) の組み込みロール](../../role-based-access-control/built-in-roles.md)をテナント内のユーザーに割り当てるために、必要な数の承認を定義することができます。
+サービス プロバイダーは、1 人の顧客に対して複数のタスクを実行でき、その場合は、スコープごとに異なるアクセスが必要になります。 適切な[Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)をテナント内のユーザーに割り当てるために、必要な数の認可を定義することができます。
 
 管理しやすくするため、ロールごとに Azure AD ユーザー グループを使用することをお勧めします。 これにより、アクセス権を持つグループに個々のユーザーを柔軟に追加または削除できるようになるため、ユーザー変更を行うためにオンボード プロセスを繰り返す必要がなくなります。 サービス プリンシパルにロールを割り当てることができます。これは、自動化のシナリオで役立ちます。
 
@@ -142,7 +142,7 @@ az role definition list --name "<roleName>" | grep name
 > [!TIP]
 > 1 回のデプロイでグループ全体をオンボードすることはできませんが、[管理グループ レベルでポリシーをデプロイする](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-delegate-management-groups)ことはできます。 ポリシーによって、管理グループ内の各サブスクリプションが指定された管理対象のテナントに委任されているかどうかが確認され、委任されていない場合は、指定した値に基づく割り当てが作成されます。
 
-次の例では、変更した **delegatedResourceManagement.parameters.json** ファイルを示します。これを使用すれば、サブスクリプションをオンボードすることができます。 ([rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management) フォルダー内にある) リソース グループのパラメーター ファイルは似ていますが、オンボードの対象となる特定のリソース グループを識別するための **rgName** パラメーターも含まれています。
+次の例では、変更した **delegatedResourceManagement.parameters.json** ファイルを示します。これを使用すれば、サブスクリプションをオンボードすることができます。 ( [rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management) フォルダー内にある) リソース グループのパラメーター ファイルは似ていますが、オンボードの対象となる特定のリソース グループを識別するための **rgName** パラメーターも含まれています。
 
 ```json
 {
@@ -195,14 +195,14 @@ az role definition list --name "<roleName>" | grep name
 }
 ```
 
-上記の例の最後の承認では、ユーザー アクセス管理者ロール (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) が設定された **principalId** が追加されます。 このロールを割り当てる際は、**delegatedRoleDefinitionIds** プロパティと 1 つ以上の組み込みロールを含める必要があります。 この承認で作成されたユーザーは、これらの組み込みのロールを顧客テナント内の[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に割り当てることができます。これは、[修復可能なポリシーをデプロイする](deploy-policy-remediation.md)ためには必要なことです。  ユーザーは、サポート インシデントを作成することもできます。  ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可は、このユーザーに適用されません。
+上記の例の最後の承認では、ユーザー アクセス管理者ロール (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) が設定された **principalId** が追加されます。 このロールを割り当てる際は、 **delegatedRoleDefinitionIds** プロパティと 1 つ以上の組み込みロールを含める必要があります。 この承認で作成されたユーザーは、これらの組み込みのロールを顧客テナント内の[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に割り当てることができます。これは、[修復可能なポリシーをデプロイする](deploy-policy-remediation.md)ためには必要なことです。  ユーザーは、サポート インシデントを作成することもできます。  ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可は、このユーザーに適用されません。
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートをデプロイする
 
 パラメーター ファイルを更新したら、顧客のテナント内のユーザーは、Azure Resource Manager テンプレートを顧客のテナントにデプロイする必要があります。 オンボードするサブスクリプションごと (または、オンボードするリソース グループを含むサブスクリプションごと) に個別のデプロイが必要です。
 
 > [!IMPORTANT]
-> このデプロイは、ゲスト以外のアカウントが、オンボード対象のサブスクリプションで[所有者の組み込みロール](../../role-based-access-control/built-in-roles.md#owner)を持っている (またはオンボード対象のリソース グループを含む) 顧客のテナントで実行する必要があります。 サブスクリプションを委任できるすべてのユーザーを表示するには、顧客のテナントのユーザーが Azure portal でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開くと、[所有者ロールを持つすべてのユーザーを表示](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)することができます。 
+> このデプロイは、ゲスト以外のアカウントが、オンボード対象のサブスクリプションで[所有者の組み込みロール](../../role-based-access-control/built-in-roles.md#owner)を持っている (またはオンボード対象のリソース グループを含む) 顧客のテナントで実行する必要があります。 サブスクリプションを委任できるすべてのユーザーを表示するには、顧客のテナントのユーザーが Azure portal でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開くと、 [所有者ロールを持つすべてのユーザーを表示](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)することができます。 
 >
 > サブスクリプションが[クラウド ソリューション プロバイダー (CSP) プログラム](../concepts/cloud-solution-provider.md)を使用して作成されている場合、サービス プロバイダー テナントの[管理エージェント](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) ロールを持つユーザーがデプロイを実行できます。
 
@@ -299,5 +299,5 @@ az account list
 ## <a name="next-steps"></a>次のステップ
 
 - [テナント間の管理エクスペリエンス](../concepts/cross-tenant-management-experience.md)について学習します。
-- Azure portal の **[マイ カスタマー]** に移動して、[顧客を表示および管理](view-manage-customers.md)します。
+- Azure portal の **[マイ カスタマー]** に移動して、 [顧客を表示および管理](view-manage-customers.md)します。
 - 以前にオンボードした[委任へのアクセスを削除する](remove-delegation.md)方法について学習します。

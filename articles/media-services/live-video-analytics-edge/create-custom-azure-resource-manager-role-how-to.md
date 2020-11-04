@@ -3,12 +3,12 @@ title: カスタム Azure Resource Manager ロールを作成し、サービス 
 description: この記事では、Azure CLI を使用して、カスタム Azure Resource Manager ロールを作成し、Live Video Analytics on IoT Edge のサービス プリンシパルに割り当てる方法に関するガイダンスを提供します。
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: a780ecbbf2530b15984c596281c4aa7e4f5dd520
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40bf0f60a718d512e02481d977b8208112ed1a55
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526580"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425735"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>カスタム Azure Resource Manager ロールを作成し、サービス プリンシパルに割り当てる
 
@@ -230,7 +230,7 @@ az role assignment list  --assignee < objectId>
 
 これにより、カスタム ユーザー ロールと、アプリケーションで使用されるサービス プリンシパルがリンクされていることが確認されます。
 
-### <a name="test-the-service-principal-rbac"></a>サービス プリンシパル RBAC をテストする  
+### <a name="test-the-service-principal-access-control"></a>サービス プリンシパルへのアクセス制御のテスト
 
 1. サービス プリンシパルを使用してログインします。 これには、[サービス プリンシパルの作成](#create-service-principal)手順の出力から取得できる適切なアクセス トークンが付与されるためには、Azure Active Directory の次の 3 つの情報が必要になります。
     1. AadClientID 

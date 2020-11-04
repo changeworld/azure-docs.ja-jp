@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: 265b99fb985602604eefee27d722b4dc8d7593a8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 99528d1575056917b68bcb38f41a24d065822827
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970386"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792805"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux VM の Scheduled Events
 
@@ -154,6 +154,10 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 
 > [!NOTE] 
 > Azure では、劣化したハードウェアに起因するホストの故障を予測が可能になり、移行をスケジュールすることでサービスの中断を軽減しようとすることがあります。 影響を受ける仮想マシンには、スケジュールされているイベントと `NotBefore` が届きます。これは通常、2、3 日先になります。 実際の時間は、予測された故障のリスク評価によって異なります。 Azure では、可能であれば、7 日前に通知を行いますが、実際の時間はさまざまであり、ハードウェアが今にも故障する可能性が高い場合、7 日より短くなることがあります。 システムによって開始される移行の前にハードウェアで障害が発生した場合に備えて、サービスのリスクを最小限に抑えるために、できるだけ早く仮想マシンをご自身で再デプロイすることをお勧めします。
+
+### <a name="polling-frequency"></a>ポーリング頻度
+
+任意の頻度で、更新についてエンドポイントをポーリングできます。 ただし、要求間の時間が長くなるほど、今後のイベントに対応できない時間が長くなる可能性があります。 ほとんどのイベントは、5 分から 15 分前に通知されますが、場合によっては、事前通知がわずか 30 秒ほどになることがあります。 軽減措置にかける時間を可能な限り多くするため、1 秒あたり 1 回サービスをポーリングすることが推奨されます。
 
 ### <a name="start-an-event"></a>イベントの開始 
 

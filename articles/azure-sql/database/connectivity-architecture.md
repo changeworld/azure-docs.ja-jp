@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 71bd250cbfb2642a291d495273c4cd66ebb2c350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0242ceec62db6548d91e5e58c21981a4f0246a0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325387"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672507"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database と Azure Synapse Analytics の接続アーキテクチャ
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -25,13 +25,13 @@ ms.locfileid: "91325387"
 この記事では、Azure SQL Database または Azure Synapse Analytics のサーバーにネットワーク トラフィックを誘導するさまざまなコンポーネントのアーキテクチャについて説明します。 さまざまな接続ポリシーと、それが Azure 内から接続するクライアントと Azure 外から接続するクライアントに与える影響について説明します。
 
 > [!IMPORTANT]
-> この記事は、**Azure SQL Managed Instance** には適用され "*ません*"。 [マネージド インスタンスの接続アーキテクチャ](../managed-instance/connectivity-architecture-overview.md)に関するページを参照してください。
+> この記事は、 **Azure SQL Managed Instance** には適用され " *ません* "。 [マネージド インスタンスの接続アーキテクチャ](../managed-instance/connectivity-architecture-overview.md)に関するページを参照してください。
 
 ## <a name="connectivity-architecture"></a>接続のアーキテクチャ
 
 次の図は、接続アーキテクチャの概要を示しています。
 
-![アーキテクチャの概要](./media/connectivity-architecture/connectivity-overview.png)
+![接続アーキテクチャの概要を示す図。](./media/connectivity-architecture/connectivity-overview.png)
 
 次の手順では、Azure SQL Database への接続を確立する方法について説明します。
 
@@ -51,7 +51,7 @@ SQL Database および Azure Synapse のサーバーは、サーバーの接続�
 
 - **既定値:** これは、明示的に接続ポリシーを `Proxy` または `Redirect` に変更しない限り、作成後のすべてのサーバーで有効になる接続ポリシーです。 Azure の内部からの (たとえば、Azure 仮想マシンからの) すべてのクライアント接続の既定のポリシーは `Redirect` であり、外部からのすべてのクライアント接続 (たとえば、ローカル ワークステーションからの接続) の既定のポリシーは `Proxy` です。
 
-最短の待機時間と最高のスループットを実現するために、`Proxy` 接続ポリシーではなく `Redirect` 接続ポリシーを強くお勧めします。 ただし、前述のように、ネットワーク トラフィックを許可するための追加の要件を満たす必要があります。 クライアントが Azure 仮想マシンの場合は、ネットワーク セキュリティ グループ (NSG) と[サービス タグ](../../virtual-network/security-overview.md#service-tags)を使用してこれを実現できます。 クライアントがオンプレミスのワークステーションから接続している場合は、ネットワーク管理者と協力して、企業のファイアウォールを通過するネットワーク トラフィックを許可することが必要になる必要があります。
+最短の待機時間と最高のスループットを実現するために、`Proxy` 接続ポリシーではなく `Redirect` 接続ポリシーを強くお勧めします。 ただし、前述のように、ネットワーク トラフィックを許可するための追加の要件を満たす必要があります。 クライアントが Azure 仮想マシンの場合は、ネットワーク セキュリティ グループ (NSG) と[サービス タグ](../../virtual-network/network-security-groups-overview.md#service-tags)を使用してこれを実現できます。 クライアントがオンプレミスのワークステーションから接続している場合は、ネットワーク管理者と協力して、企業のファイアウォールを通過するネットワーク トラフィックを許可することが必要になる必要があります。
 
 ## <a name="connectivity-from-within-azure"></a>Azure 内からの接続
 
@@ -63,14 +63,14 @@ Azure 内から接続する場合、接続には既定で `Redirect` の接続�
 
 Azure 外から接続する場合、接続には既定で `Proxy` の接続ポリシーが与えられます。 `Proxy` のポリシーとは、TCP セッションが Azure SQL Database ゲートウェイ経由で確立し、すべての後続パケットがゲートウェイ経由で送信されることを意味します。 次の図にこのトラフィックの流れを示します。
 
-![アーキテクチャの概要](./media/connectivity-architecture/connectivity-onprem.png)
+![TCP セッションを Azure SQL Database ゲートウェイ経由で確立し、すべての後続パケットをゲートウェイ経由で送信する方法を示す図。](./media/connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
-> [DAC による接続](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)を有効にするには、追加で TCP ポート 1434、14000 から 14999 を開きます
+> [DAC による接続](/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)を有効にするには、追加で TCP ポート 1434、14000 から 14999 を開きます
 
 ## <a name="gateway-ip-addresses"></a>ゲートウェイ IP アドレス
 
-以下の表は、ゲートウェイの IP アドレスをリージョン別にまとめたものです。 SQL Database または Azure Synapse に接続するには、そのリージョンの**すべての**ゲートウェイとの間でやり取りされるネットワーク トラフィックを許可する必要があります。
+以下の表は、ゲートウェイの IP アドレスをリージョン別にまとめたものです。 SQL Database または Azure Synapse に接続するには、そのリージョンの **すべての** ゲートウェイとの間でやり取りされるネットワーク トラフィックを許可する必要があります。
 
 特定のリージョンの新しいゲートウェイにトラフィックを移行する方法の詳細については、次の記事をご覧ください。「[Azure SQL Database traffic migration to newer Gateways](gateway-migration.md)」(Azure SQL Database トラフィックの新しいゲートウェイへの移行)
 
@@ -124,6 +124,6 @@ Azure 外から接続する場合、接続には既定で `Proxy` の接続ポ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- サーバーの Azure SQL Database 接続ポリシーの変更方法については、「[conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy)」を参照してください。
+- サーバーの Azure SQL Database 接続ポリシーの変更方法については、「[conn-policy](/cli/azure/sql/server/conn-policy)」を参照してください。
 - ADO.NET 4.5 以降のバージョンを使用するクライアントの Azure SQL Database 接続動作については、「[ADO.NET 4.5 用の 1433 以外のポート](adonet-v12-develop-direct-route-ports.md)」を参照してください。
 - 一般的なアプリケーション開発概要情報については、「[SQL Database アプリケーションの開発の概要](develop-overview.md)」を参照してください。

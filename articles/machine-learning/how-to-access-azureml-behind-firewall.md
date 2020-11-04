@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 081c07be49178be2415edccbfc2026336eb8a8a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0f30edeb24f3c4abed6f144f3fb7f755cc08a72
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604412"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629461"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>ファイアウォールの内側で Azure Machine Learning のワークスペースを使用する
 
@@ -26,10 +26,10 @@ ms.locfileid: "90604412"
 
 ## <a name="application-rules"></a>アプリケーション ルール
 
-ファイアウォールで、この記事のアドレスとの間で送受信されるトラフィックを許可する_アプリケーション ルール_を作成します。
+ファイアウォールで、この記事のアドレスとの間で送受信されるトラフィックを許可する _アプリケーション ルール_ を作成します。
 
 > [!TIP]
-> ネットワーク ルールを追加するときは、__プロトコル__を任意に設定し、ポートを `*` に設定します。
+> ネットワーク ルールを追加するときは、 __プロトコル__ を任意に設定し、ポートを `*` に設定します。
 >
 > Azure Firewall の構成について詳しくは、[Azure Firewall のデプロイと構成](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule)に関する記事をご覧ください。
 
@@ -63,6 +63,8 @@ Azure Machine Learning リソースを含むサブネットの送信ルートを
 | **mcr.microsoft.com** | 基本 Docker イメージ用の Microsoft Container Registry |
 | **your-acr-server-name.azurecr.io** | Azure Container Registry が仮想ネットワークの背後にある場合にのみ必要です。 この構成では、Microsoft 環境からサブスクリプションの ACR インスタンスへのプライベート リンクが作成されます。 Azure Machine Learning ワークスペースの ACR サーバー名を使用します。 |
 | **\*.notebooks.azure.net** | Azure Machine Learning studio のノートブックで必要です。 |
+| **\*.file.core.windows.net** | Azure Machine Learning スタジオのエクスプローラーで必要です。 |
+| **\*.dfs.core.windows.net** | Azure Machine Learning スタジオのエクスプローラーで必要です。 |
 | **graph.windows.net** | ノートブックに必要です |
 
 > [!TIP]

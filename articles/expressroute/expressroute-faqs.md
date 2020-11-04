@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 70acacb9bacddaf403b79e11b460333c67641aae
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f4bddf1746a9d680897428f1aa0afdb35d93e470
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202210"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631276"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -40,9 +40,10 @@ ExpressRoute 接続では、公共のインターネットを利用できませ�
 
 いいえ。 サービス プロバイダーから任意の速度の VPN 接続を購入できます。 ただし、Azure への接続は、購入した ExpressRoute 回線の帯域幅に制限されます。
 
-### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>特定の帯域幅の ExpressRoute 回線に対して料金を支払っている場合、必要に応じてより高速にバーストすることはできますか。
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>特定の帯域幅の ExpressRoute 回線に対して料金を支払っている場合、購入した帯域幅を超えて使用することはできますか。
 
-はい。 ExpressRoute 回線は、購入した帯域幅の 2 倍まで無料でバーストできるように構成されています。 サービス プロバイダーがこの機能をサポートしているかどうかをご確認ください。 この動作は長時間を対象としたものではなく、保証もされていません。  トラフィックが ExpressRoute ゲートウェイを通過する場合、SKU の帯域幅は固定されており、かつバーストに対応していません。
+はい。ExpressRoute 回線のセカンダリ接続で使用可能な帯域幅を使用して、購入した帯域幅上限の 2 倍まで使用できます。 回線の組み込みの冗長化は、2 つの Microsoft Enterprise Edge ルーター (MSEE) への、それぞれ購入した帯域幅であるプライマリ接続とセカンダリ接続を使用して構成されます。 セカンダリ接続経由で使用できる帯域幅は、必要に応じて追加のトラフィックに使用できます。 ただし、セカンダリ接続は冗長性を目的としているため、それは保証されず、長期間の追加トラフィックには使用しないでください。 両方の接続を使用して、トラフィックを送信する方法の詳細については、[こちら](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending)を参照してください。
+プライマリ接続のみを使用してトラフィックを送信する予定である場合は、接続の帯域幅が固定され、オーバーサブスクライブしようとすると、パケットのドロップが増加します。 トラフィックが ExpressRoute ゲートウェイを通過する場合、SKU の帯域幅は固定され、かつバーストに対応していません。
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>同じプライベート ネットワーク接続を、仮想ネットワークや他の Azure サービスに同時に使用できますか。
 

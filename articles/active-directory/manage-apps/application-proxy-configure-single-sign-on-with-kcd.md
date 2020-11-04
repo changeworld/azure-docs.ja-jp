@@ -1,29 +1,25 @@
 ---
-title: アプリケーション プロキシを使用したシングル サインオン | Microsoft Docs
-description: Azure AD アプリケーション プロキシを使用してシングル サインオンを提供する方法について説明します。
+title: アプリケーション プロキシを使った Azure Active Directory の Kerberos ベースのシングル サインオン (SSO)
+description: Azure Active Directory アプリケーション プロキシを使用してシングル サインオンを提供する方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 08/13/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8320f5c034eb3a6de8c912ba23a9fb3f69a8a53c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: contperfq2
+ms.openlocfilehash: 860d29d3fff2187e770a5ff00b7145fc188a497c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299750"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426494"
 ---
-# <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>アプリケーション プロキシを使ったアプリへのシングル サインオンの Kerberos の制約付き委任
+# <a name="kerberos-constrained-delegation-for-single-sign-on-sso-to-your-apps-with-application-proxy"></a>アプリケーション プロキシを使ったアプリへのシングル サインオン (SSO) の Kerberos の制約付き委任
 
 統合 Windows 認証でセキュリティ保護されているアプリケーション プロキシを使って公開されているオンプレミスのアプリケーションにシングル サインオンを提供できます。 これらのアプリケーションにアクセスするには Kerberos チケットが必要です。 アプリケーション プロキシは、Kerberos の制約付き委任 (KCD) を使って、これらのアプリケーションをサポートします。 
 
@@ -93,7 +89,7 @@ Active Directory の構成は、アプリケーション プロキシ コネク�
 2. アプリケーションがエンタープライズ アプリケーションの一覧に表示されたら、アプリケーションを選択して **[シングル サインオン]** をクリックします。
 3. シングル サインオン モードを **[統合 Windows 認証]** に設定します。  
 4. アプリケーション サーバーの **[内部アプリケーション SPN]** を入力します。 この例では、公開されたアプリケーションの SPN は、http/www.contoso.com です。 この SPN は、コネクタが委任された資格情報を提供できるサービスの一覧に入っている必要があります。 
-5. ユーザーの代わりに使うコネクタに**委任されたログイン ID** を選択します。 詳細については、「[さまざまなオンプレミス ID とクラウド ID の操作](#working-with-different-on-premises-and-cloud-identities)」をご覧ください。
+5. ユーザーの代わりに使うコネクタに **委任されたログイン ID** を選択します。 詳細については、「[さまざまなオンプレミス ID とクラウド ID の操作](#working-with-different-on-premises-and-cloud-identities)」をご覧ください。
 
    ![高度なアプリケーションの構成](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  
 
@@ -121,7 +117,7 @@ SPNEGO を有効にするには:
 非 Windows アプリは通常、ドメインのメール アドレスの代わりに、ユーザー名または SAM アカウント名を使います。 お使いのアプリケーションでこの状況が当てはまる場合、指定されたログイン ID フィールドを構成して、クラウド ID をアプリケーション ID に接続する必要があります。 
 
 ## <a name="working-with-different-on-premises-and-cloud-identities"></a>さまざまなオンプレミス ID とクラウド ID の操作
-アプリケーション プロキシは、ユーザーのクラウド ID とオンプレミス ID は完全に同じであるとみなします。 しかし、環境によっては、企業ポリシーやアプリケーションの依存関係が原因で、サインインに代替 ID を使用する必要がある場合があります。 このような場合でも、シングル サインオンに引き続き KCD を使用できます。 アプリケーションごとに**指定されたログイン ID** を構成し、シングル サインオンを実行するときに使う ID を指定します。  
+アプリケーション プロキシは、ユーザーのクラウド ID とオンプレミス ID は完全に同じであるとみなします。 しかし、環境によっては、企業ポリシーやアプリケーションの依存関係が原因で、サインインに代替 ID を使用する必要がある場合があります。 このような場合でも、シングル サインオンに引き続き KCD を使用できます。 アプリケーションごとに **指定されたログイン ID** を構成し、シングル サインオンを実行するときに使う ID を指定します。  
 
 この機能により、オンプレミス ID とクラウド ID が異なる多くの組織で、ユーザーに別のユーザー名とパスワードの入力を要求することなく、クラウドからオンプレミスのアプリに SSO させることができます。 次のような組織が含まれます。
 
@@ -136,7 +132,7 @@ SPNEGO を有効にするには:
 
 委任されたログイン ID が使用されている場合、その値は組織内のすべてのドメインまたはフォレストで一意でないことがあります。 異なる 2 つのコネクタ グループを使用してこれらのアプリケーションを 2 回発行することで、この問題を回避できます。 これは各アプリケーションのユーザーが異なり、そのコネクタを異なるドメインに参加させることができるためです。
 
-**オンプレミスの SAM アカウント名**をログオン ID として使用する場合は、コネクタをホストするコンピューターを、ユーザー アカウントが存在するドメインに追加する必要があります。
+**オンプレミスの SAM アカウント名** をログオン ID として使用する場合は、コネクタをホストするコンピューターを、ユーザー アカウントが存在するドメインに追加する必要があります。
 
 ### <a name="configure-sso-for-different-identities"></a>ID が異なる場合の SSO の構成
 1. Azure AD Connect の設定を、メイン ID が電子メール アドレス (mail) になるように構成します。 これはカスタマイズ プロセスの一部として、同期設定の **[ユーザー プリンシパル名]** フィールドを変更することで実行します。 これらの設定は、ユーザーが Office365、Windows10 デバイス、および Azure AD を ID ストアとして使用する他のアプリケーションにログインする方法も決定します。  

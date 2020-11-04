@@ -2,30 +2,30 @@
 title: Azure portal を使用してリソースをデプロイする
 description: Azure portal と Azure Resource Manager を使用して、サブスクリプション内のリソース グループにリソースをデプロイします。
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: 31f80eb617820def871633dac1541c7dc3bed691
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: b87ac48bbaec7f94d5e75939cf5ec17df0ff2d2f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85255264"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92668765"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>ARM テンプレートと Azure portal でリソースをデプロイする
 
-[Azure portal](https://portal.azure.com) と [Azure Resource Manager (ARM) のテンプレート](overview.md) を使用して、Azure にリソースをデプロイする方法について説明します。 リソース管理の詳細については、「[Manage Azure resources by using the Azure portal (Azure portal を使用した Azure リソースの管理)](../management/manage-resources-portal.md)」を参照してください。
+[Azure portal](https://portal.azure.com) と [Azure Resource Manager テンプレート (ARM テンプレート)](overview.md) を使用して、Azure リソースをデプロイする方法について説明します。 リソース管理の詳細については、「[Manage Azure resources by using the Azure portal (Azure portal を使用した Azure リソースの管理)](../management/manage-resources-portal.md)」を参照してください。
 
 Azure portal を使用して Azure リソースをデプロイするには、通常、次の 2 つの手順が必要です。
 
 - リソース グループを作成します。
 - リソースをリソース グループにデプロイします。
 
-さらに、ARM テンプレートをデプロイして Azure リソースを作成することもできます。
+また、カスタマイズされた ARM テンプレートを作成して、Azure リソースをデプロイすることもできます。
 
 このトピックでは、両方の方法を説明します。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-1. 新しいリソース グループを作成するには、[Azure portal](https://portal.azure.com) から **[リソース グループ]** を選択します。
+1. 新しいリソース グループを作成するには、 [Azure portal](https://portal.azure.com) から **[リソース グループ]** を選択します。
 
    ![リソース グループの選択](./media/deploy-portal/select-resource-groups.png)
 
@@ -35,7 +35,7 @@ Azure portal を使用して Azure リソースをデプロイするには、通
 
 1. 次のプロパティ値を選択または入力します。
 
-    - **サブスクリプション**:Azure サブスクリプションを選択します。
+    - **サブスクリプション** :Azure サブスクリプションを選択します。
     - **[リソース グループ]** :リソース グループに名前を付けます。
     - **[リージョン]** :Azure の場所を指定します。 これは、リソース グループによってリソースに関するメタデータが格納される場所です。 場合によっては、コンプライアンス上の理由から、そのメタデータが格納される場所を指定する必要があります。 一般に、ほとんどのリソースが存在する場所を指定することをお勧めします。 同じ場所を使用することで、テンプレートを簡素化できます。
 
@@ -49,7 +49,7 @@ Azure portal を使用して Azure リソースをデプロイするには、通
 
 リソース グループを作成したら、そのグループに Marketplace からリソースをデプロイできます。 Marketplace には、一般的なシナリオに対応する事前定義されたソリューションが用意されています。
 
-1. デプロイを開始するには、[Azure portal](https://portal.azure.com) から **[リソースの作成]** を選択します。
+1. デプロイを開始するには、 [Azure portal](https://portal.azure.com) から **[リソースの作成]** を選択します。
 
    ![新しいリソース](./media/deploy-portal/new-resources.png)
 
@@ -61,7 +61,7 @@ Azure portal を使用して Azure リソースをデプロイするには、通
 
    ![リソース グループの作成](./media/deploy-portal/select-existing-group.png)
 
-   また、リソースをデプロイするときにリソース グループを作成することもできます。 **[新規作成]** を選択して、リソース グループに名前を付けます。
+   リソースをデプロイするときにリソース グループを作成することができます。 **[新規作成]** を選択して、リソース グループに名前を付けます。
 
 1. デプロイが開始されます。 デプロイには数分かかることがあります。 一部のリソースは他のリソースよりも時間がかかります。 デプロイが完了すると、通知が表示されます。 **[リソースに移動]** を選択して開きます
 
@@ -71,6 +71,8 @@ Azure portal を使用して Azure リソースをデプロイするには、通
 
    ![リソースの追加](./media/deploy-portal/add-resource.png)
 
+表示されませんでしたが、選択したリソースをデプロイするときに、ポータルで ARM テンプレートが使用されました。 デプロイ履歴からテンプレートを見つけることができます。 詳細については、「[デプロイ後にテンプレートをエクスポートする](export-template-portal.md#export-template-after-deployment)」を参照してください。
+
 ## <a name="deploy-resources-from-custom-template"></a>カスタム テンプレートからリソースをデプロイする
 
 デプロイを実行するが、Marketplace 内のテンプレートを使用しない場合は、ソリューションのインフラストラクチャを定義するカスタマイズされたテンプレートを作成できます。 テンプレート作成の詳細については、「[ARM テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
@@ -78,33 +80,33 @@ Azure portal を使用して Azure リソースをデプロイするには、通
 > [!NOTE]
 > ポータル インターフェイスは、[Key Vault からのシークレット](key-vault-parameter.md)の参照をサポートしません。 代わりに、[PowerShell](deploy-powershell.md) または [Azure CLI](deploy-cli.md) を使用して、テンプレートをローカルにデプロイするか、外部 URI からデプロイします。
 
-1. カスタマイズされたテンプレートをポータルからデプロイするには、 **[リソースの作成]** を選択し、**テンプレート**を探します。 次に **[テンプレートのデプロイ]** を選択します。
+1. カスタマイズされたテンプレートをポータルからデプロイするには、 **[リソースの作成]** を選択し、 **テンプレート** を探します。 次に **[テンプレートのデプロイ]** を選択します。
 
    ![テンプレートのデプロイの検索](./media/deploy-portal/search-template.png)
 
 1. **［作成］** を選択します
 1. テンプレートを作成するためのいくつかのオプションが表示されます。
 
-    - **エディターで独自のテンプレートを作成する**:ポータル テンプレート エディターを使用してテンプレートを作成します。  エディターには、リソース テンプレート スキーマを追加する機能があります。
-    - **一般的なテンプレート**:Linux 仮想マシン、Windows 仮想マシン、Web アプリケーション、および Azure SQL Database のデータベースを作成するための 4 つの一般的なテンプレートがあります。
-    - **GitHub クイックスタート テンプレートを読み込む**: 既存の[クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)を使用します。
+    - **エディターで独自のテンプレートを作成する** :ポータル テンプレート エディターで独自のテンプレートを作成します。
+    - **一般的なテンプレート** :一般的なソリューションから選択します。
+    - **GitHub クイックスタート テンプレートを読み込む** :[クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)から選択します。
 
    ![オプションの表示](./media/deploy-portal/see-options.png)
 
     このチュートリアルでは、クイックスタート テンプレートを読み込む方法について説明します。
 
-1. **[GitHub クイックスタート テンプレートを読み込む]** で、「**101-storage-account-create**」を入力するか選択します。
+1. **[GitHub クイックスタート テンプレートを読み込む]** で、「 **101-storage-account-create** 」を入力するか選択します。
 
     2 つのオプションがあります。
 
-    - **テンプレートの選択**: テンプレートをデプロイします。
-    - **テンプレートの編集**: デプロイする前にクイックスタート テンプレートを編集します。
+    - **テンプレートの選択** : テンプレートをデプロイします。
+    - **テンプレートの編集** : デプロイする前にクイックスタート テンプレートを編集します。
 
 1. **[テンプレートの編集]** を選択してポータル テンプレート エディターを探索します。 テンプレートがエディターに読み込まれます。 **storageAccountType** と **location** という 2 つのパラメーターがあることに注目してください。
 
    ![テンプレートの作成](./media/deploy-portal/show-json.png)
 
-1. テンプレートに軽微な変更を加えます。 たとえば、**storageAccountName** 変数を次のように更新します。
+1. テンプレートに軽微な変更を加えます。 たとえば、 **storageAccountName** 変数を次のように更新します。
 
     ```json
     "storageAccountName": "[concat('azstore', uniquestring(resourceGroup().id))]"
@@ -113,10 +115,10 @@ Azure portal を使用して Azure リソースをデプロイするには、通
 1. **[保存]** を選択します。 これで、ポータル テンプレート デプロイ インターフェイスが表示されます。 テンプレートで定義した 2 つのパラメーターに注目してください。
 1. プロパティ値を入力または選択します。
 
-    - **サブスクリプション**:Azure サブスクリプションを選択します。
+    - **サブスクリプション** :Azure サブスクリプションを選択します。
     - **[リソース グループ]** : **[新規作成]** を選択し、名前を付けます。
     - **[場所]** :Azure の場所を選択します。
-    - **ストレージ アカウントの種類**:既定値を使用します。
+    - **ストレージ アカウントの種類** :既定値を使用します。
     - **[場所]** :既定値を使用します。
     - **[上記の使用条件に同意する]** : (オン)
 

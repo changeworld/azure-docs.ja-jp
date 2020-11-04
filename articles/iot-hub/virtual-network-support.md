@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.author: jlian
-ms.openlocfilehash: 3deffe6f1dbffcaae5676b8ddf3c0fc2dc934401
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cb6e4b2b10b6b44a544416ad5d57808c7ad4d83f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149093"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427845"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Private Link とマネージド ID を使用した仮想ネットワークの IoT Hub サポート
 
@@ -56,7 +56,7 @@ ms.locfileid: "92149093"
 
 1. サブスクリプション、リソース グループ、名前、およびリージョンを指定して、新しいプライベート エンドポイントを作成します。 理想としては、プライベート エンドポイントをハブと同じリージョンに作成することをお勧めします。
 
-1. **[次へ: リソース]** をクリックし、IoT Hub リソースのサブスクリプションを指定し、リソースの種類として **"Microsoft.Devices/IotHubs"** 、**リソース**として IoT Hub の名前、ターゲット サブリソースとして **iotHub** を選択します。
+1. **[次へ: リソース]** をクリックし、IoT Hub リソースのサブスクリプションを指定し、リソースの種類として **"Microsoft.Devices/IotHubs"** 、 **リソース** として IoT Hub の名前、ターゲット サブリソースとして **iotHub** を選択します。
 
 1. **[次へ: 構成]** をクリックし、プライベート エンドポイントの作成先となる仮想ネットワークとサブネットを指定します。 必要に応じて、Azure プライベート DNS ゾーンと統合するオプションを選択します。
 
@@ -82,7 +82,7 @@ IoT Hub の [IP フィルター](iot-hub-ip-filtering.md) でも、組み込み�
 
 ## <a name="egress-connectivity-from-iot-hub-to-other-azure-resources"></a>IoT Hub から他の Azure リソースへのエグレス接続
 
-IoT Hub は、リソースのパブリック エンドポイントを経由した[メッセージのルーティング](./iot-hub-devguide-messages-d2c.md)、[ファイルのアップロード](./iot-hub-devguide-file-upload.md)、[デバイスの一括インポートとエクスポート](./iot-hub-bulk-identity-mgmt.md)のために Azure BLOB ストレージ、イベント ハブ、Service Bus のリソースに接続できます。 リソースを VNet にバインドすると、リソースへの接続が既定でブロックされます。 その結果、この構成では、IoT Hub がリソースにデータを送信できなくなります。 この問題を解決するには、**信頼された Microsoft サービス** オプションを使用して、IoT Hub リソースからストレージ アカウント、イベント ハブ、または Service Bus のリソースへの接続を有効にします。
+IoT Hub は、リソースのパブリック エンドポイントを経由した[メッセージのルーティング](./iot-hub-devguide-messages-d2c.md)、[ファイルのアップロード](./iot-hub-devguide-file-upload.md)、[デバイスの一括インポートとエクスポート](./iot-hub-bulk-identity-mgmt.md)のために Azure BLOB ストレージ、イベント ハブ、Service Bus のリソースに接続できます。 リソースを VNet にバインドすると、リソースへの接続が既定でブロックされます。 その結果、この構成では、IoT Hub がリソースにデータを送信できなくなります。 この問題を解決するには、 **信頼された Microsoft サービス** オプションを使用して、IoT Hub リソースからストレージ アカウント、イベント ハブ、または Service Bus のリソースへの接続を有効にします。
 
 ### <a name="turn-on-managed-identity-for-iot-hub"></a>IoT Hub のマネージド ID を有効にする
 
@@ -92,7 +92,7 @@ IoT Hub は、リソースのパブリック エンドポイントを経由し�
 
 1. **[状態]** の下で **[オン]** を選択し、 **[保存]** をクリックします。
 
-    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="IoT Hub 用にプライベート エンドポイントを追加する場所を示すスクリーンショット":::
+    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="IoT Hub のマネージド ID を有効にする方法を示すスクリーンショット":::
 
 ### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>ARM テンプレートを使用して、作成時にマネージド ID を IoT ハブに割り当てる
 
@@ -170,11 +170,11 @@ az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resou
 
 ### <a name="egress-connectivity-to-storage-account-endpoints-for-routing"></a>ルーティングのためのストレージ アカウント エンドポイントへのエグレス接続
 
-IoT Hub は、顧客所有のストレージ アカウントにメッセージをルーティングできます。 ファイアウォールの制限が適用されているときに、ルーティング機能でストレージ アカウントにアクセスできるようにするには、IoT Hub に[マネージド ID](#turn-on-managed-identity-for-iot-hub) が必要です。 マネージド ID がプロビジョニングされたら、以下の手順に従って、ストレージ アカウントにアクセスするためにハブのリソース ID に RBAC アクセス許可を付与します。
+IoT Hub は、顧客所有のストレージ アカウントにメッセージをルーティングできます。 ファイアウォールの制限が適用されているときに、ルーティング機能でストレージ アカウントにアクセスできるようにするには、IoT Hub に[マネージド ID](#turn-on-managed-identity-for-iot-hub) が必要です。 マネージド ID がプロビジョニングされたら、以下の手順に従って、ストレージ アカウントにアクセスするためにハブのリソース ID に Azure RBAC アクセス許可を付与します。
 
 1. Azure portal で、ストレージ アカウントの **[アクセス制御 (IAM)]** タブに移動し、 **[ロールの割り当てを追加する]** セクションの下にある **[追加]** をクリックします。
 
-2. **ロール**として **[ストレージ BLOB データ共同作成者]** ([共同作成者やストレージ アカウント共同作成者 "*ではなく*"](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) を選択し、**アクセスの割当先**として **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選んでから、ドロップダウン リストで IoT Hub のリソース名を選択します。 **[保存]** ボタンをクリックします。
+2. **ロール** として **[ストレージ BLOB データ共同作成者]** ( [共同作成者やストレージ アカウント共同作成者 " *ではなく* "](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) を選択し、 **アクセスの割当先** として **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選んでから、ドロップダウン リストで IoT Hub のリソース名を選択します。 **[保存]** ボタンをクリックします。
 
 3. ストレージ アカウントの **[ファイアウォールと仮想ネットワーク]** タブに移動し、 **[Allow access from selected networks]\(選択したネットワークからのアクセスを許可する\)** オプションを有効にします。 **[例外]** 一覧で、 **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** のボックスをオンにします。 **[保存]** ボタンをクリックします。
 
@@ -188,11 +188,11 @@ IoT Hub は、顧客所有のストレージ アカウントにメッセージ�
 
 ### <a name="egress-connectivity-to-event-hubs-endpoints-for-routing"></a>ルーティングのための Event Hubs エンドポイントへのエグレス接続
 
-IoT Hub は、顧客所有の Event Hubs 名前空間にメッセージをルーティングするように構成できます。 ファイアウォールの制限が適用されているときに、ルーティング機能でイベント ハブ リソースにアクセスできるようにするには、IoT Hub にマネージド ID が必要です。 マネージド ID が作成されたら、以下の手順に従って、イベント ハブにアクセスするためにハブのリソース ID に RBAC アクセス許可を付与します。
+IoT Hub は、顧客所有の Event Hubs 名前空間にメッセージをルーティングするように構成できます。 ファイアウォールの制限が適用されているときに、ルーティング機能でイベント ハブ リソースにアクセスできるようにするには、IoT Hub にマネージド ID が必要です。 マネージド ID が作成されたら、以下の手順に従って、イベント ハブにアクセスするためにハブのリソース ID に Azure RBAC アクセス許可を付与します。
 
 1. Azure portal で、Event Hubs の **[アクセス制御 (IAM)]** タブに移動し、 **[ロールの割り当てを追加する]** セクションの下にある **[追加]** をクリックします。
 
-2. **ロール**として **[Event Hubs Data Sender]\(Event Hubs のデータ送信者\)** 、**アクセスの割当先**として **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選んでから、ドロップダウン リストで IoT Hub のリソース名を選択します。 **[保存]** ボタンをクリックします。
+2. **ロール** として **[Event Hubs Data Sender]\(Event Hubs のデータ送信者\)** 、 **アクセスの割当先** として **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選んでから、ドロップダウン リストで IoT Hub のリソース名を選択します。 **[保存]** ボタンをクリックします。
 
 3. Event Hubs の **[ファイアウォールと仮想ネットワーク]** タブに移動し、 **[Allow access from selected networks]\(選択したネットワークからのアクセスを許可する\)** オプションを有効にします。 **[例外]** 一覧で、 **[Allow trusted Microsoft services to access event hubs]\(信頼された Microsoft サービスによる Event Hubs に対するアクセスを許可します\)** のボックスをオンにします。 **[保存]** ボタンをクリックします。
 
@@ -206,11 +206,11 @@ IoT Hub は、顧客所有の Event Hubs 名前空間にメッセージをルー
 
 ### <a name="egress-connectivity-to-service-bus-endpoints-for-routing"></a>ルーティングのための Service Bus エンドポイントへのエグレス接続
 
-IoT Hub は、顧客所有の Service Bus 名前空間にメッセージをルーティングするように構成できます。 ファイアウォールの制限が適用されているときに、ルーティング機能で Service Bus リソースにアクセスできるようにするには、IoT Hub にマネージド ID が必要です。 マネージド ID がプロビジョニングされたら、以下の手順に従って、Service Bus にアクセスするためにハブのリソース ID に RBAC アクセス許可を付与します。
+IoT Hub は、顧客所有の Service Bus 名前空間にメッセージをルーティングするように構成できます。 ファイアウォールの制限が適用されているときに、ルーティング機能で Service Bus リソースにアクセスできるようにするには、IoT Hub にマネージド ID が必要です。 マネージド ID がプロビジョニングされたら、以下の手順に従って、Service Bus にアクセスするためにハブのリソース ID に Azure RBAC アクセス許可を付与します。
 
 1. Azure portal で、Service Bus の **[アクセス制御 (IAM)]** タブに移動し、 **[ロールの割り当てを追加する]** セクションの下にある **[追加]** をクリックします。
 
-2. **ロール**として **[Service bus Data Sender]\(Service Bus のデータ送信者\)** 、**アクセスの割当先**として **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選んでから、ドロップダウン リストで IoT Hub のリソース名を選択します。 **[保存]** ボタンをクリックします。
+2. **ロール** として **[Service bus Data Sender]\(Service Bus のデータ送信者\)** 、 **アクセスの割当先** として **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選んでから、ドロップダウン リストで IoT Hub のリソース名を選択します。 **[保存]** ボタンをクリックします。
 
 3. Service Bus の **[ファイアウォールと仮想ネットワーク]** タブに移動し、 **[Allow access from selected networks]\(選択したネットワークからのアクセスを許可する\)** オプションを有効にします。 **[例外]** 一覧で、 **[Allow trusted Microsoft services to access this service bus]\(信頼された Microsoft サービスによるこの Service Bus に対するアクセスを許可します\)** のボックスをオンにします。 **[保存]** ボタンをクリックします。
 
@@ -224,19 +224,19 @@ IoT Hub は、顧客所有の Service Bus 名前空間にメッセージをル�
 
 ### <a name="egress-connectivity-to-storage-accounts-for-file-upload"></a>ファイルのアップロードのためのストレージ アカウントへのエグレス接続
 
-IoT Hub のファイルのアップロード機能を使用すると、デバイスで顧客所有のストレージ アカウントにファイルをアップロードできます。 ファイルのアップロードを機能させるには、デバイスと IoT Hub の両方をストレージ アカウントに接続する必要があります。 ストレージ アカウントにファイアウォールの制限が適用されている場合、デバイスでは、サポートされているストレージ アカウントのいずれかのメカニズム ([プライベート エンドポイント](../private-link/tutorial-private-endpoint-storage-portal.md)、[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)、または[ファイアウォールのダイレクト構成](../storage/common/storage-network-security.md)を含む) を使用して接続する必要があります。 同様に、ストレージ アカウントにファイアウォールの制限が適用されている場合は、信頼された Microsoft サービスの例外を使用して、ストレージ リソースにアクセスするように IoT Hub を構成する必要があります。 このため、IoT Hub にはマネージド ID が必要です。 マネージド ID がプロビジョニングされたら、以下の手順に従って、ストレージ アカウントにアクセスするためにハブのリソース ID に RBAC アクセス許可を付与します。
+IoT Hub のファイルのアップロード機能を使用すると、デバイスで顧客所有のストレージ アカウントにファイルをアップロードできます。 ファイルのアップロードを機能させるには、デバイスと IoT Hub の両方をストレージ アカウントに接続する必要があります。 ストレージ アカウントにファイアウォールの制限が適用されている場合、デバイスでは、サポートされているストレージ アカウントのいずれかのメカニズム ([プライベート エンドポイント](../private-link/tutorial-private-endpoint-storage-portal.md)、[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)、または[ファイアウォールのダイレクト構成](../storage/common/storage-network-security.md)を含む) を使用して接続する必要があります。 同様に、ストレージ アカウントにファイアウォールの制限が適用されている場合は、信頼された Microsoft サービスの例外を使用して、ストレージ リソースにアクセスするように IoT Hub を構成する必要があります。 このため、IoT Hub にはマネージド ID が必要です。 マネージド ID がプロビジョニングされたら、以下の手順に従って、ストレージ アカウントにアクセスするためにハブのリソース ID に Azure RBAC アクセス許可を付与します。
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 1. Azure portal で、ストレージ アカウントの **[アクセス制御 (IAM)]** タブに移動し、 **[ロールの割り当てを追加する]** セクションの下にある **[追加]** をクリックします。
 
-2. **ロール**として **[ストレージ BLOB データ共同作成者]** ([共同作成者やストレージ アカウント共同作成者 "*ではなく*"](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) を選択し、**アクセスの割当先**として **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選んでから、ドロップダウン リストで IoT Hub のリソース名を選択します。 **[保存]** ボタンをクリックします。
+2. **ロール** として **[ストレージ BLOB データ共同作成者]** ( [共同作成者やストレージ アカウント共同作成者 " *ではなく* "](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) を選択し、 **アクセスの割当先** として **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選んでから、ドロップダウン リストで IoT Hub のリソース名を選択します。 **[保存]** ボタンをクリックします。
 
 3. ストレージ アカウントの **[ファイアウォールと仮想ネットワーク]** タブに移動し、 **[Allow access from selected networks]\(選択したネットワークからのアクセスを許可する\)** オプションを有効にします。 **[例外]** 一覧で、 **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** のボックスをオンにします。 **[保存]** ボタンをクリックします。
 
 4. IoT Hub のリソース ページで、 **[ファイルのアップロード]** タブに移動します。
 
-5. 表示されたページで、BLOB ストレージで使用する予定のコンテナーを選択し、 **[ファイル通知の設定]** 、 **[SAS TTL]** 、 **[既定の TTL]** 、 **[最大配信回数]** を必要に応じて構成します。 ストレージ エンドポイントに対する **[認証の種類]** として、 **[ID ベース]** を選択します。 **[作成]** ボタンをクリックします。 この手順でエラーが発生した場合は、一時的にストレージ アカウントを設定して、**すべてのネットワーク**からのアクセスを許可してから、再試行してください。 ファイルのアップロードの構成が完了したら、ストレージ アカウントでファイアウォールを構成できます。
+5. 表示されたページで、BLOB ストレージで使用する予定のコンテナーを選択し、 **[ファイル通知の設定]** 、 **[SAS TTL]** 、 **[既定の TTL]** 、 **[最大配信回数]** を必要に応じて構成します。 ストレージ エンドポイントに対する **[認証の種類]** として、 **[ID ベース]** を選択します。 **[作成]** ボタンをクリックします。 この手順でエラーが発生した場合は、一時的にストレージ アカウントを設定して、 **すべてのネットワーク** からのアクセスを許可してから、再試行してください。 ファイルのアップロードの構成が完了したら、ストレージ アカウントでファイアウォールを構成できます。
 
 これで、ファイルのアップロード用のストレージ エンドポイントが、ハブのシステム割り当て ID を使用するように設定され、ファイアウォールの制限に関係なく、ストレージ リソースにアクセスするためのアクセス許可が付与されました。
 
@@ -244,11 +244,11 @@ IoT Hub のファイルのアップロード機能を使用すると、デバイ
 
 IoT Hub では、顧客指定のストレージ BLOB 間で、デバイスの情報を一括で[インポートおよびエクスポートする](./iot-hub-bulk-identity-mgmt.md)機能がサポートされています。 一括インポートとエクスポートを機能させるには、デバイスと IoT Hub の両方でストレージ アカウントに接続する必要があります。
 
-この機能では、IoT Hub からストレージ アカウントへの接続が必要です。 ファイアウォールの制限が適用されているときに、Service Bus リソースにアクセスするには、IoT Hub にマネージド ID が必要です。 マネージド ID がプロビジョニングされたら、以下の手順に従って、Service Bus にアクセスするためにハブのリソース ID に RBAC アクセス許可を付与します。
+この機能では、IoT Hub からストレージ アカウントへの接続が必要です。 ファイアウォールの制限が適用されているときに、Service Bus リソースにアクセスするには、IoT Hub にマネージド ID が必要です。 マネージド ID がプロビジョニングされたら、以下の手順に従って、Service Bus にアクセスするためにハブのリソース ID に Azure RBAC アクセス許可を付与します。
 
 1. Azure portal で、ストレージ アカウントの **[アクセス制御 (IAM)]** タブに移動し、 **[ロールの割り当てを追加する]** セクションの下にある **[追加]** をクリックします。
 
-2. **ロール**として **[ストレージ BLOB データ共同作成者]** ([共同作成者やストレージ アカウント共同作成者 "*ではなく*"](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) を選択し、**アクセスの割当先**として **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選んでから、ドロップダウン リストで IoT Hub のリソース名を選択します。 **[保存]** ボタンをクリックします。
+2. **ロール** として **[ストレージ BLOB データ共同作成者]** ( [共同作成者やストレージ アカウント共同作成者 " *ではなく* "](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) を選択し、 **アクセスの割当先** として **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選んでから、ドロップダウン リストで IoT Hub のリソース名を選択します。 **[保存]** ボタンをクリックします。
 
 3. ストレージ アカウントの **[ファイアウォールと仮想ネットワーク]** タブに移動し、 **[Allow access from selected networks]\(選択したネットワークからのアクセスを許可する\)** オプションを有効にします。 **[例外]** 一覧で、 **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** のボックスをオンにします。 **[保存]** ボタンをクリックします。
 

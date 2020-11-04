@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: d0ee9680a6b1b7c3e145137c73dda84d1a755b06
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 4948d23af98e267e72e6f0e0efcc1a4037173576
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147914"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547420"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Private Link を使用して Azure HDInsight クラスターを保護および分離する (プレビュー)
 
@@ -54,19 +54,21 @@ Azure Key Vault のプライベート エンドポイントはサポートされ
 
 既定で無効になっている Private Link を使用するには、クラスターを作成する前に、ユーザー定義ルート (UDR) とファイアウォール ルールを適切に設定するための幅広いネットワークに関する知識が必要です。 前のセクションで説明したように、`resourceProviderConnection` ネットワーク プロパティが " *送信* " に設定されている場合にのみ、Private Link からクラスターにアクセスできます。
 
-`privateLink` が " *有効* " に設定されている場合は、内部[標準ロード バランサー](../load-balancer/load-balancer-overview.md) (SLB) が作成され、SLB ごとに Azure Private Link サービスがプロビジョニングされます。 Private Link サービスを使用すると、プライベート エンドポイントから HDInsight クラスターにアクセスできます。
+`privateLink` が " *有効* " に設定されている場合は、内部 [標準ロード バランサー](../load-balancer/load-balancer-overview.md) (SLB) が作成され、SLB ごとに Azure Private Link サービスがプロビジョニングされます。 Private Link サービスを使用すると、プライベート エンドポイントから HDInsight クラスターにアクセスできます。
 
-標準ロード バランサーでは、[パブリック送信 NAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) (基本ロードバランサーなど) が自動的に提供されません。 送信依存関係のために、独自の NAT ソリューション ([Virtual Network NAT](../virtual-network/nat-overview.md) や[ファイアウォール](./hdinsight-restrict-outbound-traffic.md)など) を提供する必要があります。 HDInsight クラスターから送信依存関係へのアクセスは引き続き必要です。 このような送信依存関係が許可されていない場合は、クラスターの作成に失敗する可能性があります。
+標準ロード バランサーでは、[パブリック送信 NAT](../load-balancer/load-balancer-outbound-connections.md) (基本ロードバランサーなど) が自動的に提供されません。 送信依存関係のために、独自の NAT ソリューション ([Virtual Network NAT](../virtual-network/nat-overview.md) や[ファイアウォール](./hdinsight-restrict-outbound-traffic.md)など) を提供する必要があります。 HDInsight クラスターから送信依存関係へのアクセスは引き続き必要です。 このような送信依存関係が許可されていない場合は、クラスターの作成に失敗する可能性があります。
 
 ### <a name="prepare-your-environment"></a>環境を準備する
 
+Private Link サービスの作成を成功させるには、[Private Link サービスのネットワーク ポリシーを明示的に無効にする](../private-link/disable-private-link-service-network-policy.md)必要があります。
+
 次の図は、クラスターを作成する前に必要なネットワーク構成の例を示しています。 この例では、すべての送信トラフィックが UDR を使用する Azure Firewall に[強制的に適用](../firewall/forced-tunneling.md)され、クラスターを作成する前に、ファイアウォールで必要な送信依存関係が "許可される" 必要があります。 Enterprise セキュリティ パッケージ クラスターでは、Azure Active Directory Domain Services へのネットワーク接続を VNet ピアリングによって提供できます。
 
-:::image type="content" source="media/hdinsight-private-link/before-cluster-creation.png" alt-text="送信リソース プロバイダー接続を使用した HDInsight アーキテクチャの図":::
+:::image type="content" source="media/hdinsight-private-link/before-cluster-creation.png" alt-text="クラスターを作成する前のプライベート リンク環境の図":::
 
 ネットワークを設定したら、次の図に示すように、送信リソース プロバイダー接続とプライベート リンクが有効になっているクラスターを作成できます。 この構成では、パブリック IP が使用されず、標準ロード バランサーごとに Private Link サービスがプロビジョニングされています。
 
-:::image type="content" source="media/hdinsight-private-link/after-cluster-creation.png" alt-text="送信リソース プロバイダー接続を使用した HDInsight アーキテクチャの図":::
+:::image type="content" source="media/hdinsight-private-link/after-cluster-creation.png" alt-text="クラスターを作成した後のプライベート リンク環境の図":::
 
 ### <a name="access-a-private-cluster"></a>プライベート クラスターにアクセスする
 
@@ -82,7 +84,7 @@ Azure で管理されているパブリック DNS ゾーン `azurehdinsight.net`
 
 次の図は、ピアリングされていないか、クラスター ロード バランサーに直接アクセスできない仮想ネットワークからクラスターにアクセスするために必要なプライベート DNS エントリの例を示しています。 Azure プライベート ゾーンを使用して `*.privatelink.azurehdinsight.net` FQDN を上書きし、独自のプライベート エンドポイント IP アドレスに解決できます。
 
-:::image type="content" source="media/hdinsight-private-link/access-private-clusters.png" alt-text="送信リソース プロバイダー接続を使用した HDInsight アーキテクチャの図":::
+:::image type="content" source="media/hdinsight-private-link/access-private-clusters.png" alt-text="プライベート リンク アーキテクチャの図":::
 
 ## <a name="arm-template-properties"></a>ARM テンプレートのプロパティ
 

@@ -2,15 +2,15 @@
 title: Azure Kubernetes Service (AKS) での可用性ゾーンの使用
 description: Azure Kubernetes Service (AKS) で複数の可用性ゾーンにノードを分散させるクラスターを作成する方法について説明します。
 services: container-service
-ms.custom: fasttrack-edit, references_regions
+ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 5d2c670bc862dadf289171fbf53318e876eff3d3
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 7d91491a2f521d974f15878791739a70a31c1bbe
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165810"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745819"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する
 
@@ -22,7 +22,7 @@ Azure Kubernetes Service (AKS) クラスターは、ノードやストレージ�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-Azure CLI バージョン 2.0.76 以降がインストールされて構成されている必要があります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+Azure CLI バージョン 2.0.76 以降がインストールされて構成されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
 ## <a name="limitations-and-region-availability"></a>制限事項とリージョンの可用性
 
@@ -56,11 +56,11 @@ Azure マネージド ディスクを使用するボリュームは、現在、�
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>AKS クラスターの可用性ゾーンの概要
 
-可用性ゾーンとは高可用性を提供するサービスで、アプリケーションとデータをデータセンターの障害から保護します。 ゾーンは、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、ゾーンが有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 可用性ゾーンはリージョン内で物理的に分離されているため、データセンターで障害が発生してもアプリケーションとデータは保護されます。
+可用性ゾーンとは高可用性を提供するサービスで、アプリケーションとデータをデータセンターの障害から保護します。 ゾーンは、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、ゾーンが有効になっているすべてのリージョンに常に複数のゾーンがあります。 可用性ゾーンはリージョン内で物理的に分離されているため、データセンターで障害が発生してもアプリケーションとデータは保護されます。
 
 詳しくは、「[Azure の可用性ゾーンの概要][az-overview]」をご覧ください。
 
-可用性ゾーンを使用してデプロイされる AKS クラスターでは、1 つのリージョン内の複数のゾーンにノードを分散させることができます。 たとえば、 *米国東部 2*  リージョンのクラスターでは、*米国東部 2* の 3 つすべての可用性ゾーンでノードを作成できます。 この AKS クラスターリソースの分散により、特定のゾーンの障害に対する回復力があるため、クラスターの可用性が向上します。
+可用性ゾーンを使用してデプロイされる AKS クラスターでは、1 つのリージョン内の複数のゾーンにノードを分散させることができます。 たとえば、  *米国東部 2*  リージョンのクラスターでは、 *米国東部 2* の 3 つすべての可用性ゾーンでノードを作成できます。 この AKS クラスターリソースの分散により、特定のゾーンの障害に対する回復力があるため、クラスターの可用性が向上します。
 
 ![複数の可用性ゾーンへの AKS ノードの分散](media/availability-zones/aks-availability-zones.png)
 
@@ -68,11 +68,11 @@ Azure マネージド ディスクを使用するボリュームは、現在、�
 
 ## <a name="create-an-aks-cluster-across-availability-zones"></a>複数の可用性ゾーンでの AKS クラスターの作成
 
-[az aks create][az-aks-create] コマンドを使用してクラスターを作成する場合、`--zones` パラメーターで、エージェント ノードをデプロイする先のゾーンを定義します。 クラスターの作成時に `--zones` パラメーターを定義すると、etcd などのコントロール プレーン コンポーネントが 3 つのゾーンに分散されます。 コントロール プレーン コンポーネントが分散される特定のゾーンは、初期ノード プールに対して選択されている明示的なゾーンに依存しません。
+[az aks create][az-aks-create] コマンドを使用してクラスターを作成する場合、`--zones` パラメーターで、エージェント ノードをデプロイする先のゾーンを定義します。 クラスターの作成時に `--zones` パラメーターを定義すると、etcd や API などのコントロール プレーン コンポーネントがリージョン内の使用可能なゾーンに分散されます。 コントロール プレーン コンポーネントが分散される特定のゾーンは、初期ノード プールに対して選択されている明示的なゾーンに依存しません。
 
 AKS クラスターの作成時に既定のエージェント プールのゾーンを定義しなかった場合、コントロール プレーン コンポーネントが可用性ゾーン間で分散されることは保証されません。 [az aks nodepool add][az-aks-nodepool-add] コマンドを使用して別のノード プールを追加し、新しいノードに `--zones` を指定することはできますが、コントロール プレーンがゾーン間でどのように分散されているかは変わりません。 可用性ゾーンの設定は、クラスターまたはノード プールの作成時にのみ定義できます。
 
-次の例では、*myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前の AKS クラスターを作成しています。 合計 *3* つのノードが作成されます (ゾーン *1* にエージェント 1 つ、ゾーン *2* にエージェント 1 つ、ゾーン *3* にエージェント 1 つ)。
+次の例では、 *myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前の AKS クラスターを作成しています。 合計 *3* つのノードが作成されます (ゾーン *1* にエージェント 1 つ、ゾーン *2* にエージェント 1 つ、ゾーン *3* にエージェント 1 つ)。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus2
@@ -101,13 +101,13 @@ AKS クラスターの作成には数分かかります。
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-次に、[kubectl describe][kubectl-describe] コマンドを使用して、クラスター内のノードを一覧表示し、*failure-domain.beta.kubernetes.io/zone* 値でフィルター処理します。 Bash シェルの例を次に示します。
+次に、 [kubectl describe][kubectl-describe] コマンドを使用して、クラスター内のノードを一覧表示し、 *failure-domain.beta.kubernetes.io/zone* 値でフィルター処理します。 Bash シェルの例を次に示します。
 
 ```console
 kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"
 ```
 
-次の出力例では、指定のリージョンの複数の可用性ゾーンに分散した 3 つのノードが示されています (1 番目の可用性ゾーンは *eastus2-1*、2 番目の可用性ゾーンは *eastus2-2* など)。
+次の出力例では、指定のリージョンの複数の可用性ゾーンに分散した 3 つのノードが示されています (1 番目の可用性ゾーンは *eastus2-1* 、2 番目の可用性ゾーンは *eastus2-2* など)。
 
 ```console
 Name:       aks-nodepool1-28993262-vmss000000

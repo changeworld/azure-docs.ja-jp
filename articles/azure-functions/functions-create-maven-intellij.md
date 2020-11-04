@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: 19deaa7656cc86d534278464dba1041267ef15b0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 149d0ae99975628239f8b08f3987947a99e01cbb
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92105041"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893235"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Java と IntelliJ を使用して初めての Azure 関数を作成する
 
@@ -37,14 +37,14 @@ Java および IntelliJ で関数を開発するには、次のソフトウェ�
 
 ## <a name="installation-and-sign-in"></a>インストールとサインイン
 
-1. IntelliJ IDEA の [設定/環境設定] ダイアログ (Ctrl+Alt+S) で、 **[プラグイン]** を選択します。 次に、**Marketplace** で **Azure Toolkit for IntelliJ** を見つけ、 **[インストール]** をクリックします。 インストール後、 **[再起動]** をクリックしてプラグインをアクティブにします。 
+1. IntelliJ IDEA の [設定/環境設定] ダイアログ (Ctrl+Alt+S) で、 **[プラグイン]** を選択します。 次に、 **Marketplace** で **Azure Toolkit for IntelliJ** を見つけ、 **[インストール]** をクリックします。 インストール後、 **[再起動]** をクリックしてプラグインをアクティブにします。 
 
     ![Marketplace の Azure Toolkit for IntelliJ プラグイン][marketplace]
 
 2. Azure アカウントにサインインするには、サイドバーの **Azure Explorer** を開き、上部のバーにある **[Azure サインイン]** アイコンをクリックします (または [IDEA] メニューから **[ツール]/[Azure]/ [Azure サインイン]** をクリックします)。
     ![IntelliJ Azure サインイン コマンド][intellij-azure-login]
 
-3. **[Azure サインイン]** ウィンドウで、 **[Device Login]\(デバイスのログイン\)** を選択し、次に **[サインイン]** をクリックします ([他のサインイン オプション](/azure/developer/java/toolkit-for-intellij/sign-in-instructions))。
+3. **[Azure サインイン]** ウィンドウで、 **[Device Login]\(デバイスのログイン\)** を選択し、次に **[サインイン]** をクリックします ( [他のサインイン オプション](/azure/developer/java/toolkit-for-intellij/sign-in-instructions))。
 
    ![[デバイスのログイン] が選択されている [Azure サインイン] ウィンドウ][intellij-azure-popup]
 
@@ -74,7 +74,7 @@ Java および IntelliJ で関数を開発するには、次のソフトウェ�
 
 ## <a name="run-the-function-app-locally"></a>関数アプリをローカルで実行する
 
-1. `src/main/java/org/example/functions/HttpTriggerFunction.java`に移動して生成されたコードを確認します。 行 *17*の横に、緑色の *[Run]\(実行\)* ボタンが表示されています。それをクリックして *[Run 'azure-function-exam...']\('azure-function-exam...' の実行\)* を選択すると、関数アプリが実行されていくつかのログが出力されます。
+1. `src/main/java/org/example/functions/HttpTriggerFunction.java`に移動して生成されたコードを確認します。 行 *17* の横に、緑色の *[Run]\(実行\)* ボタンが表示されています。それをクリックして *[Run 'azure-function-exam...']\('azure-function-exam...' の実行\)* を選択すると、関数アプリが実行されていくつかのログが出力されます。
 
     ![関数プロジェクトのローカル実行](media/functions-create-first-java-intellij/local-run-functions-project.png)
 
@@ -84,7 +84,7 @@ Java および IntelliJ で関数を開発するには、次のソフトウェ�
 
     ![関数のローカル実行のテスト結果](media/functions-create-first-java-intellij/local-run-functions-test.png)
 
-1. ログは IDEA にも出力されます。ここで、"*停止*" ボタンをクリックして関数を停止します。
+1. ログは IDEA にも出力されます。ここで、" *停止* " ボタンをクリックして関数を停止します。
 
     ![関数のローカル実行のテスト ログ](media/functions-create-first-java-intellij/local-run-functions-log.png)
 
@@ -94,7 +94,7 @@ Java および IntelliJ で関数を開発するには、次のソフトウェ�
 
     ![関数をローカルでデバッグするボタン](media/functions-create-first-java-intellij/local-debug-functions-button.png)
 
-1. ファイル `src/main/java/org/example/functions/HttpTriggerFunction.java` の行 *20* をクリックしてブレークポイントを追加し、エンドポイント `http://localhost:7071/api/HttpTrigger-Java?name=Azure` に再度アクセスすると、ブレークポイントにヒットします。これにより、"*ステップ実行*"、"*ウォッチ*"、"*評価*"など、より多くのデバッグ機能を試すことができます。 停止ボタンをクリックしてデバッグ セッションを停止します。
+1. ファイル `src/main/java/org/example/functions/HttpTriggerFunction.java` の行 *20* をクリックしてブレークポイントを追加し、エンドポイント `http://localhost:7071/api/HttpTrigger-Java?name=Azure` に再度アクセスすると、ブレークポイントにヒットします。これにより、" *ステップ実行* "、" *ウォッチ* "、" *評価* "など、より多くのデバッグ機能を試すことができます。 停止ボタンをクリックしてデバッグ セッションを停止します。
 
     ![関数のローカル デバッグの中断](media/functions-create-first-java-intellij/local-debug-functions-break.png)
 
@@ -114,13 +114,13 @@ Java および IntelliJ で関数を開発するには、次のソフトウェ�
 
 1. デプロイする関数アプリを選択します (作成した新しい関数アプリが自動的に選択されます)。 *[Run]\(実行\)* をクリックして関数をデプロイします。
 
-    ![Azure への関数のデプロイの実行](media/functions-create-first-java-intellij/deploy-functions-run.png)
+    ![スクリーンショットに、[Azure Functions のデプロイ] ダイアログボックスが示されています。](media/functions-create-first-java-intellij/deploy-functions-run.png)
 
     ![Azure への関数のデプロイのログ](media/functions-create-first-java-intellij/deploy-functions-log.png)
 
 ## <a name="manage-azure-functions-from-idea"></a>IDEA から Azure Functions を管理する
 
-1. IDEA の "*Azure 用エクスプローラー*" を使用して関数を管理できます。 *[Function App]\(関数アプリ\)* をクリックすると、ここにすべての関数が表示されます。
+1. IDEA の " *Azure 用エクスプローラー* " を使用して関数を管理できます。 *[Function App]\(関数アプリ\)* をクリックすると、ここにすべての関数が表示されます。
 
     ![エクスプローラーでの関数の表示](media/functions-create-first-java-intellij/explorer-view-functions.png)
 
@@ -130,7 +130,7 @@ Java および IntelliJ で関数を開発するには、次のソフトウェ�
 
 1. 関数 *HttpTrigger-Java* を右クリックし、 *[Trigger Function]\(関数のトリガー\)* を選択します。トリガー URL でブラウザーが開きます。
 
-    ![Azure への関数のデプロイの実行](media/functions-create-first-java-intellij/explorer-trigger-functions.png)
+    ![スクリーンショットに、URL があるブラウザーが示されています。](media/functions-create-first-java-intellij/explorer-trigger-functions.png)
 
 ## <a name="add-more-functions-to-the-project"></a>プロジェクトに関数を追加する
 
@@ -138,9 +138,9 @@ Java および IntelliJ で関数を開発するには、次のソフトウェ�
 
     ![プロジェクト エントリへの関数の追加](media/functions-create-first-java-intellij/add-functions-entry.png)
 
-1. 関数クラスの作成ウィザードで、クラス名に「*HttpTest*」を入力し、 *[HttpTrigger]* を選択し、 *[OK]* をクリックして作成します。この方法で、新しい関数を必要なだけ作成できます。
+1. 関数クラスの作成ウィザードで、クラス名に「 *HttpTest* 」を入力し、 *[HttpTrigger]* を選択し、 *[OK]* をクリックして作成します。この方法で、新しい関数を必要なだけ作成できます。
 
-    ![プロジェクトへの関数の追加でのトリガーの選択](media/functions-create-first-java-intellij/add-functions-trigger.png)
+    ![スクリーンショットに、[関数クラスの作成] ダイアログボックスが示されています。](media/functions-create-first-java-intellij/add-functions-trigger.png)
     
     ![プロジェクトへの関数の追加での出力](media/functions-create-first-java-intellij/add-functions-output.png)
 
@@ -148,7 +148,7 @@ Java および IntelliJ で関数を開発するには、次のソフトウェ�
 
 1. Azure Explorer での Azure Functions の削除
       
-      ![プロジェクトへの関数の追加でのトリガーの選択](media/functions-create-first-java-intellij/delete-function.png)
+      ![スクリーンショットに、コンテキスト メニューから選択された [削除] が示されています。](media/functions-create-first-java-intellij/delete-function.png)
       
 
 ## <a name="next-steps"></a>次のステップ

@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: fcbce9e7a5b24cbbe695b2ad664137875464b705
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 32ff5a73494bac2cabcb9488f946673435173dd0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107931"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489440"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する
 Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 [プラットフォーム メトリック](data-platform-metrics.md)は、既定で収集され、通常は Azure Monitor メトリック データベースに格納されます。 この記事では、プラットフォーム メトリックとプラットフォーム ログをさまざまな送信先に送信するための診断設定を作成して構成する方法について詳しく説明します。
@@ -34,7 +34,7 @@ Azure のアクティビティ ログとリソース ログを含む Azure の[�
 > [プラットフォーム メトリック](metrics-supported.md)は、[Azure Monitor のメトリック](data-platform-metrics.md)へと自動的に送信されます。 診断設定を使用すると、特定の Azure サービスのメトリックを Azure Monitor ログに送信し、特定の制限で[ログ クエリ](../log-query/log-query-overview.md)を使用して他の監視データと組み合わせて分析することができます。 
 >  
 >  
-> 診断設定を使用した多ディメンション メトリックの送信は現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。 *例*: ブロックチェーンに関する "IOReadBytes" メトリックは、ノード レベルごとに探索してグラフ化できます。 ただし、診断設定を使用してエクスポートすると、エクスポートされたメトリックは、すべてのノードのすべての読み取りバイト数として表されます。 また、内部の制限により、すべてのメトリックが Azure Monitor ログまたは Log Analytics にエクスポート可能であるとは限りません。 詳細については、[エクスポート可能なメトリック一覧](metrics-supported-export-diagnostic-settings.md)をご覧ください。 
+> 診断設定を使用した多ディメンション メトリックの送信は現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。 *例* : ブロックチェーンに関する "IOReadBytes" メトリックは、ノード レベルごとに探索してグラフ化できます。 ただし、診断設定を使用してエクスポートすると、エクスポートされたメトリックは、すべてのノードのすべての読み取りバイト数として表されます。 また、内部の制限により、すべてのメトリックが Azure Monitor ログまたは Log Analytics にエクスポート可能であるとは限りません。 詳細については、[エクスポート可能なメトリック一覧](metrics-supported-export-diagnostic-settings.md)をご覧ください。 
 >  
 >  
 > 特定のメトリックのこれらの制限を回避するには、[メトリック REST API](/rest/api/monitor/metrics/list) を使用してこれらを抽出し、[Azure Monitor データ コレクター API](data-collector-api.md) を使用して Azure Monitor ログにインポートすることをお勧めします。  
@@ -63,6 +63,8 @@ Azure のアクティビティ ログとリソース ログを含む Azure の[�
 > [!NOTE]
 > Azure Data Lake Storage Gen2 アカウントは、Azure portal では有効なオプションとして表示されていますが、診断設定の送信先としては現在サポートされていません。
 
+> [!NOTE]
+> Azure Monitor (診断設定) では、仮想ネットワークが有効になっていると Event Hubs リソースにアクセスできません。 Event Hub で、[信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する] を有効にして、Azure Monitor (診断設定) サービスに Event Hubs リソースへのアクセス権が付与されるようにする必要があります。 
 
 
 ## <a name="create-in-azure-portal"></a>Azure Portal での作成
@@ -126,7 +128,7 @@ Azure portal では、Azure Monitor メニューから、またはリソース�
         >
         > まず、ストレージをアーカイブ用に使用している場合は、一般的にデータを 365 日以上保持することをお勧めします。 2 つ目の方法として、0 より大きいアイテム保持ポリシーを選択すると、保存時に有効期限日がログに付加されます。 保存後にログの日付を変更することはできません。
         >
-        > たとえば、*WorkflowRuntime* のアイテム保持ポリシーを 180 日に設定し、24 時間後に 365 日に設定した場合、最初の 24 時間の間に保存されたログは 180 日後に自動的に削除されますが、その種類の後続のすべてのログは、365 日後に自動的に削除されます。 後でアイテム保持ポリシーを変更しても、最初の 24 時間のログが 365 日間保持されるようにはなりません。
+        > たとえば、 *WorkflowRuntime* のアイテム保持ポリシーを 180 日に設定し、24 時間後に 365 日に設定した場合、最初の 24 時間の間に保存されたログは 180 日後に自動的に削除されますが、その種類の後続のすべてのログは、365 日後に自動的に削除されます。 後でアイテム保持ポリシーを変更しても、最初の 24 時間のログが 365 日間保持されるようにはなりません。
 
 6. **[保存]** をクリックします。
 

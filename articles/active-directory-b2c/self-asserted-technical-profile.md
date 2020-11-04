@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/15/2020
+ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 817267414555ea0641e8fb8a8392976a4789c780
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: a4e76e3924b1b14660dce8a3b58f7dd5b2715eec
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096217"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670124"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C のカスタム ポリシーでセルフ アサート技術プロファイルを定義します。
 
@@ -175,6 +175,14 @@ ms.locfileid: "92096217"
 </TechnicalProfile>
 ```
 
+### <a name="output-claims-sign-up-or-sign-in-page"></a>出力要求サインアップまたはサインイン ページ
+
+結合されたサインアップおよびサインイン ページで、`unifiedssp` または `unifiedssd` のページの種類を指定するコンテンツ定義 [DataUri](contentdefinitions.md#datauri) 要素を使用する場合、次の点に注意してください。
+
+- ユーザー名とパスワードの要求のみがレンダリングされます。
+- 最初の 2 つの出力要求は、ユーザー名とパスワード (この順序で) である必要があります。 
+- その他の要求はすべてレンダリングされません。これらの要求については、`defaultValue` を設定するか、要求フォーム検証技術プロファイルを呼び出す必要があります。 
+
 ## <a name="persist-claims"></a>永続化した要求
 
 PersistedClaims 要素は使用されません。 セルフ アサート技術プロファイルでは、データが Azure AD B2C に保持されません。 代わりに、データの永続化を担当する検証技術プロファイルが呼び出されます。 たとえば、サインアップ ポリシーは、新しいユーザー プロファイルを収集するために`LocalAccountSignUpWithLogonEmail`セルフ アサート技術プロファイルを使用します。 `LocalAccountSignUpWithLogonEmail`技術プロファイルは、Azure AD B2C でアカウントを作成するには、検証技術プロファイルを呼び出します。
@@ -189,7 +197,7 @@ PersistedClaims 要素は使用されません。 セルフ アサート技術�
 
 ## <a name="metadata"></a>Metadata
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | setting.operatingMode <sup>1</sup>| いいえ | サインイン ページのために、このプロパティは、入力検証とエラー メッセージなど [ユーザー名] フィールドの動作を制御します。 期待される値は`Username`または`Email`です。  |
 | AllowGenerationOfClaimsWithNullValues| いいえ| null 値を含む要求を生成することを許可します。 たとえば、ユーザーがチェックボックスをオンにしていない場合などです。|
@@ -203,7 +211,7 @@ PersistedClaims 要素は使用されません。 セルフ アサート技術�
 | setting.forgotPasswordLinkLocation <sup>2</sup>| いいえ| パスワードを忘れた場合のリンクを表示します。 使用可能な値: `AfterInput` (既定) ではリンクがページ下部に表示される、`None` ではパスワードを忘れた場合のリンクが削除される。|
 | setting.enableRememberMe <sup>2</sup>| いいえ| [[サインインしたままにする]](custom-policy-keep-me-signed-in.md) チェックボックスを表示します。 指定できる値: `true` または `false` (既定値)。 |
 | setting.inputVerificationDelayTimeInMilliseconds <sup>3</sup>| いいえ| ユーザーが入力を停止するのを待って、値を検証することで、ユーザー エクスペリエンスを向上させます。 既定値は、2000 ミリ秒です。 |
-| IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
+| IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
 
 メモ:
 1. コンテンツ定義 [DataUri](contentdefinitions.md#datauri) `unifiedssp`または`unifiedssd`の種類に使用できます。

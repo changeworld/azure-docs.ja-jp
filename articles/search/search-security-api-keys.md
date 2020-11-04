@@ -7,17 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/05/2020
-ms.openlocfilehash: 60c5051b403d3072292a03c60d7cba95bd0cf1d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 5935bc3f59585b19fc3b45bdfd567bb1f9404234
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740634"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675589"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Azure Cognitive Search サービスの管理者 API キーを作成する
 
-Search サービスへのすべての HTTP 要求には、対象のサービス用に生成された読み取り専用の API キーが必要です。 この API キーは、その Search サービス エンドポイントへのアクセスを認証するための唯一のメカニズムであり、すべての要求に含まれる必要があります。 [REST ソリューション](search-get-started-postman.md)では、通常、API キーは要求のヘッダーで指定されます。 [.NET ソリューション](search-howto-dotnet-sdk.md#core-scenarios)では、多くの場合、キーは構成の設定として指定され、[SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) 上の [Credentials](/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) (管理者キー) または [SearchCredentials](/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials) (クエリ キー) として渡されます。
+Search サービスへのすべての HTTP 要求には、対象のサービス専用に生成された読み取り専用の `api-key` が必要です。 `api-key` は、その Search サービス エンドポイントへのアクセスを認証するための唯一のメカニズムであり、すべての要求に含まれる必要があります。 
+
++ [REST ソリューション](search-get-started-postman.md)では、通常、API キーは要求のヘッダーで指定されます
+
++ [.NET ソリューション](search-howto-dotnet-sdk.md)では、キーが多くの場合に構成設定として指定され、[AzureKeyCredential](/dotnet/api/azure.azurekeycredential) として渡されます
 
 キーは、サービスのプロビジョニング中に検索サービスで作成されます。 [Azure portal](https://portal.azure.com) でキーの値を表示および取得することができます。
 
@@ -31,7 +35,7 @@ API キーは、ランダムに生成された数字と文字から成る文字�
 
 |Key|説明|制限|  
 |---------|-----------------|------------|  
-|[Admin]|サービスの管理のほか、インデックス、インデクサー、データ ソースの作成と削除など、すべての操作に対する完全な権限を付与します。<br /><br /> *プライマリ* キーおよび*セカンダリ* キーと呼ばれる、ポータルの 2 つの管理者キーは、サービスの作成時に生成され、要求に応じて個別に再生成できます。 キーが 2 つあることで、サービスへの継続的なアクセスに 1 つのキーを使用している間に、もう 1 つのキーをロールオーバーできます。<br /><br /> 管理者キーは、HTTP 要求ヘッダーでのみ指定されます。 管理者 API キーを URL に加えることはできません。|最大でサービスあたり 2 つ|  
+|[Admin]|サービスの管理のほか、インデックス、インデクサー、データ ソースの作成と削除など、すべての操作に対する完全な権限を付与します。<br /><br /> *プライマリ* キーおよび *セカンダリ* キーと呼ばれる、ポータルの 2 つの管理者キーは、サービスの作成時に生成され、要求に応じて個別に再生成できます。 キーが 2 つあることで、サービスへの継続的なアクセスに 1 つのキーを使用している間に、もう 1 つのキーをロールオーバーできます。<br /><br /> 管理者キーは、HTTP 要求ヘッダーでのみ指定されます。 管理者 API キーを URL に加えることはできません。|最大でサービスあたり 2 つ|  
 |クエリ|インデックスとドキュメントに対する読み取り専用アクセスを付与するものであり、通常は、検索要求を発行するクライアント アプリケーションに配布されます。<br /><br /> クエリ キーは要求に応じて作成されます。 これらはポータルで手動で作成できるほか、[管理 REST API](/rest/api/searchmanagement/) を通じてプログラムで作成できます。<br /><br /> クエリ キーは、検索、推奨、または参照の操作に使用するために HTTP 要求ヘッダーで指定できます。 または、クエリ キーは URL 上のパラメーターとして渡すことができます。 クライアント アプリケーションが要求を作成する方法によっては、キーをクエリ パラメーターとして渡すほうが簡単な場合があります。<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2020-06-30&api-key=[query key]`|サービスあたり 50 個|  
 
  管理者キーとクエリ キーに見た目の違いはありません。 どちらのキーも、ランダムに生成された 32 個の英数字からなる文字列です。 アプリケーションで指定されているキーの種類がわからなくなった場合、[ポータルでキーの値を確認](https://portal.azure.com)したり、[REST API](/rest/api/searchmanagement/) を使用して値とキーの種類を返したりできます。  
@@ -47,7 +51,7 @@ API キーは、ランダムに生成された数字と文字から成る文字�
 2. サブスクリプションの[検索サービス](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)を一覧表示します。
 3. サービスを選択し、[概要] ページで **[設定]**  > **[キー]** の順に移動して管理者キーとクエリ キーを表示します。
 
-   :::image type="content" source="media/search-security-overview/settings-keys.png" alt-text="ポータル ページ、設定の取得、キー セクション" border="false":::
+   :::image type="content" source="media/search-security-overview/settings-keys.png" alt-text="ポータル ページ、設定の表示、キー セクション" border="false":::
 
 ## <a name="create-query-keys"></a>クエリ キーを作成する
 
@@ -61,7 +65,7 @@ API キーは、ランダムに生成された数字と文字から成る文字�
 4. **[クエリ キーの管理]** をクリックします。
 5. サービス用に既に生成されているクエリ キーを使用するか、最大 50 個の新しいクエリ キーを作成します。 既定のクエリ キーには名前はありませんが、追加のクエリ キーには、管理を容易にするために名前を付けることができます。
 
-   :::image type="content" source="media/search-security-overview/create-query-key.png" alt-text="ポータル ページ、設定の取得、キー セクション" border="false":::
+   :::image type="content" source="media/search-security-overview/create-query-key.png" alt-text="クエリ キーを作成または使用する" border="false":::
 
 > [!Note]
 > [C# で Azure Cognitive Search インデックスに対するクエリを実行する](./search-get-started-dotnet.md)方法に関する記事に、クエリ キーの使用法を示すコード例があります。
@@ -95,6 +99,6 @@ API キーは、ランダムに生成された数字と文字から成る文字�
 
 ## <a name="see-also"></a>参照
 
-+ [Azure Cognitive Search でのロール ベースのアクセス制御](search-security-rbac.md)
++ [Azure Cognitive Search での Azure ロール ベースのアクセス制御](search-security-rbac.md)
 + [PowerShell を使用した管理](search-manage-powershell.md) 
 + [パフォーマンスと最適化についての記事](search-performance-optimization.md)

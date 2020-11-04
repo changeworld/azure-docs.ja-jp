@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bd5ae5c60530890f65f8cc9a98171c29820a7762
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd2f7d46df09085d19b19709c7f45cd3d6566988
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85202859"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628662"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -24,7 +24,7 @@ ms.locfileid: "85202859"
 
 [セルフアサート技術プロファイル](self-asserted-technical-profile.md)の外観をカスタマイズすることができます。 Azure Active Directory B2C (Azure AD B2C) は、ユーザーのブラウザーでコードを実行し、クロス オリジン リソース共有 (CORS) と呼ばれる最新の手法を使用します。
 
-ユーザー インターフェイスをカスタマイズするには、**ContentDefinition** 要素でカスタマイズされた HTMLコンテンツを含む URL を指定します。 セルフアサート技術プロファイルまたは **OrchestrationStep** で、そのコンテンツ定義識別子をポイントします。 コンテンツ定義には、ロードするローカライズされたリソースの一覧を指定する、**LocalizedResourcesReference**  要素を含めることができます。 Azure AD B2C により、ユーザー インターフェイス要素が URL から読み込まれた HTML コンテンツとマージされ、ユーザーにページが表示されます。
+ユーザー インターフェイスをカスタマイズするには、 **ContentDefinition** 要素でカスタマイズされた HTMLコンテンツを含む URL を指定します。 セルフアサート技術プロファイルまたは **OrchestrationStep** で、そのコンテンツ定義識別子をポイントします。 コンテンツ定義には、ロードするローカライズされたリソースの一覧を指定する、 **LocalizedResourcesReference**  要素を含めることができます。 Azure AD B2C により、ユーザー インターフェイス要素が URL から読み込まれた HTML コンテンツとマージされ、ユーザーにページが表示されます。
 
 **ContentDefinitions** 要素には、ユーザー体験で使用できる HTML5 テンプレートへの URL が含まれています。 HTML5 ページの URI は、指定されたユーザー インターフェイス ステップで使用されます。 たとえば、サインインまたはサインアップ、パスワード リセット、またはエラー ページなどです。 HTML5 ファイルの LoadUri をオーバーライドすることで、外観を変更できます。 必要に応じて新しいコンテンツ定義を作成できます。 この要素には、[Localization](localization.md) 要素で指定されたローカライズ識別子への、ローカライズされたリソース参照を含めることができます。
 
@@ -63,7 +63,7 @@ ms.locfileid: "85202859"
 
 | 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
-| Id | はい | コンテンツ定義の識別子。 この値は、このページの後半の**コンテンツ定義 ID** セクションで指定される値です。 |
+| Id | はい | コンテンツ定義の識別子。 この値は、このページの後半の **コンテンツ定義 ID** セクションで指定される値です。 |
 
 **ContentDefinition** 要素には、次の属性が含まれています。
 
@@ -111,7 +111,7 @@ ms.locfileid: "85202859"
 
 #### <a name="migrating-to-page-layout"></a>ページ レイアウトへの移行
 
-値の形式には、次のように `contract` という語が含まれている必要があります: _urn:com:microsoft:aad:b2c:elements:**contract**:page-name:version_。 古い **DataUri** 値を使用するカスタム ポリシーでページ レイアウトを指定するには、次の表を使用して新しい形式に移行してください。
+値の形式には、次のように `contract` という語が含まれている必要があります: _urn:com:microsoft:aad:b2c:elements: **contract** :page-name:version_ 。 古い **DataUri** 値を使用するカスタム ポリシーでページ レイアウトを指定するには、次の表を使用して新しい形式に移行してください。
 
 | 古い DataUri 値 | 新しい DataUri 値 |
 | ----------------- | ----------------- |
@@ -126,6 +126,39 @@ ms.locfileid: "85202859"
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
+次の例は、コンテンツ定義識別子と、対応する **DataUri** をページ コントラクトと共に示しています。 
+
+```xml
+<ContentDefinitions>
+  <ContentDefinition Id="api.error">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.idpselections">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.idpselections.signup">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.signuporsignin">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.selfasserted">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.selfasserted.profileupdate">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.localaccountsignup">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.localaccountpasswordreset">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.phonefactor">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0</DataUri>
+  </ContentDefinition>
+</ContentDefinitions>
+```
 
 ### <a name="metadata"></a>Metadata
 
@@ -137,7 +170,7 @@ ms.locfileid: "85202859"
 
 **Metadata** 要素の **Item** 要素には、次の属性が含まれています。
 
-| 属性 | Required | Description |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Key | はい | メタデータ キー。  |
 
@@ -159,7 +192,7 @@ ms.locfileid: "85202859"
 
 **LocalizedResourcesReference** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Language | はい | 「RFC 5646 - 言語を識別するタグ」に従ってポリシーでサポートされている言語を含む文字列。 |
 | LocalizedResourcesReferenceId | はい | **LocalizedResources** 要素の識別子。 |
@@ -188,7 +221,7 @@ ms.locfileid: "85202859"
 
 **ContentDefinition** 要素の ID 属性は、コンテンツ定義に関連するページの種類を指定します。 この要素は、カスタム HTML5/CSS テンプレートが適用されるコンテキストを定義します。 次の表は、Identity Experience Framework によって認識される一連のコンテンツ定義 ID と、それらに関連するページの種類を示しています。 任意の ID を使用して独自のコンテンツ定義を作成できます。
 
-| id | 既定のテンプレート | 説明 |
+| ID | 既定のテンプレート | 説明 |
 | -- | ---------------- | ----------- |
 | **api.error** | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **エラー ページ** - 例外またはエラーが発生したときにエラーページを表示します。 |
 | **api.idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **ID プロバイダーの選択ページ** - ユーザーがサインイン時に選択できる ID プロバイダーを一覧表示します。 ID プロバイダーは、通常、エンタープライズ ID プロバイダー、ソーシャル ID プロバイダー (Facebook や Google+ など)、ローカル アカウントのいずれかです。 |
