@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 6f216a7f0851661efc61a771fc35feb71e77fd1f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1b8dae471729b42b1c302c6c45033ddc808c7b43
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792482"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289301"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server を使用したフェールオーバー クラスター インスタンス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -149,7 +149,7 @@ Azure Virtual Machines 上の SQL Server を使用するフェールオーバー
 Azure Virtual Machines 上の SQL Server を使用するフェールオーバー クラスター インスタンスについて、次の制限事項を考慮してください。 
 
 ### <a name="lightweight-resource-provider"></a>軽量リソース プロバイダー   
-現時点では、Azure 仮想マシン上の SQL Server フェールオーバー クラスター インスタンスは、[SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)の[軽量管理モード](sql-vm-resource-provider-register.md#management-modes)でのみサポートされています。 完全拡張機能モードから軽量モードに変更するには、対応する VM の **SQL 仮想マシン** リソースを削除し、それらを軽量モードで SQL VM リソース プロバイダーに登録します。 Azure portal を使用して **SQL 仮想マシン** リソースを削除するときに、正しい仮想マシンの横のチェック ボックスをオフにします。 
+現時点では、Azure 仮想マシン上の SQL Server フェールオーバー クラスター インスタンスは、[SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)の[軽量管理モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)でのみサポートされています。 完全拡張機能モードから軽量モードに変更するには、対応する VM の **SQL 仮想マシン** リソースを削除し、それらを軽量モードで SQL VM リソース プロバイダーに登録します。 Azure portal を使用して **SQL 仮想マシン** リソースを削除するときに、正しい仮想マシンの横のチェック ボックスをオフにします。 
 
 完全拡張機能では、自動バックアップ、パッチ適用、高度なポータル管理などの機能がサポートされます。 エージェントを軽量管理モードで再インストールすると、これらの機能は SQL Server VM で動作しなくなります。
 

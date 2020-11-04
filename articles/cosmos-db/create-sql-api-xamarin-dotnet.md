@@ -9,14 +9,15 @@ ms.topic: quickstart
 ms.date: 10/09/2020
 ms.author: anfeldma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2d82b7f618757fbf77072bd7147595eec3083885
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 91e89eaf215468f171974e5f3fd383691fdd6ebe
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487638"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096982"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Xamarin で todo アプリを構築する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
@@ -91,7 +92,7 @@ Mac を使用している場合は、 **無料の** [Visual Studio for Mac](http
 
 1. [Azure Portal](https://portal.azure.com/) で、Azure Cosmos DB SQL API アカウントの左のナビゲーションから、 **[キー]** をクリックし、 **[読み取り/書き込みキー]** をクリックします。 次の手順では、画面の右側のコピー ボタンを使用して、URI と主キーを APIKeys.cs ファイルにコピーします。
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/keys.png" alt-text="iOS 上で実行されている Xamarin todo アプリ":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/keys.png" alt-text="Azure portal の [キー] ブレードでアクセス キーを表示およびコピーする":::
 
 2. Visual Studio で **ToDoItems.Core/Helpers/APIKeys.cs** を開きます。
 
@@ -115,7 +116,7 @@ Mac を使用している場合は、 **無料の** [Visual Studio for Mac](http
 
 このソリューションでは、Azure Cosmos DB SQL API および Xamarin.Forms を使用して ToDo アプリを作成する方法を示します。 このアプリには 2 つのタブがあります。最初のタブには、未完了の todo 項目を表示するリスト ビューが含まれています。 2 番目のタブには、完了した todo 項目が表示されます。 最初のタブでは、未完了の todo 項目が表示されることに加え、新しい todo 項目を追加したり、既存の todo 項目を編集したりできます。また、項目を "完了" としてマークすることもできます。
 
-:::image type="content" source="./media/create-sql-api-xamarin-dotnet/android-todo-screen.png" alt-text="iOS 上で実行されている Xamarin todo アプリ":::
+:::image type="content" source="./media/create-sql-api-xamarin-dotnet/android-todo-screen.png" alt-text="json データをコピーし、Azure portal のデータ エクスプローラーで [保存] をクリックする":::
 
 ToDoItems ソリューションのコードには、次の項目が含まれています。
 
@@ -181,25 +182,27 @@ ToDoItems ソリューションのコードには、次の項目が含まれて�
 
 1. 最初に、強調表示されているドロップダウンをクリックし、ToDoItems.iOS (iOS の場合) または ToDoItems.Android (Android の場合) を選択して、ターゲットとするプラットフォームを選択します。
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-select-platform.png" alt-text="iOS 上で実行されている Xamarin todo アプリ":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-select-platform.png" alt-text="Visual Studio for Mac でのデバッグするプラットフォームの選択":::
 
 2. アプリのデバッグを開始するには、cmd キーを押しながら Enter キーを押すか、再生ボタンをクリックします。
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-start-debug.png" alt-text="iOS 上で実行されている Xamarin todo アプリ":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-start-debug.png" alt-text="Visual Studio for Mac でのデバッグの開始":::
 
 3. iOS シミュレーターまたは Android エミュレーターの起動が完了すると、アプリの画面の下部 (iOS 版) または上部 (Android 版) に 2 つのタブが表示されます。 最初のタブには完了していない todo 項目が表示され、2 番目のタブには完了した todo 項目が表示されます。
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-droid-started.png" alt-text="iOS 上で実行されている Xamarin todo アプリ" と設定するには、項目を長押しし、[Complete] ボタンをタップします。
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-droid-started.png" alt-text="ToDo アプリの起動画面":::
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-complete.png" alt-text="iOS 上で実行されている Xamarin todo アプリ":::
+4. iOS 上で todo 項目を "完了" と設定するには、項目を左にスライドし、 **[Complete]** ボタンをタップします。 Android 上で todo 項目を "完了" と設定するには、項目を長押しし、[Complete] ボタンをタップします。
+
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-complete.png" alt-text="todo 項目を 完了 と設定する":::
 
 5. todo 項目を編集するには、項目をタップし、新しい画面が表示されたら新しい値を入力します。 [save] ボタンをタップして、変更を Azure Cosmos DB に保存します。
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-edit.png" alt-text="iOS 上で実行されている Xamarin todo アプリ":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-edit.png" alt-text="todo 項目の編集":::
 
 6. todo 項目を追加するには、ホーム画面の右上にある **[Add]** ボタンをタップします。すると、新しい空白の編集ページが表示されます。
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-add.png" alt-text="iOS 上で実行されている Xamarin todo アプリ":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-add.png" alt-text="todo 項目の追加":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

@@ -9,14 +9,15 @@ ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: jasonh
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 0b81bf951df6db0da7ed049c435a319f6ee33b8a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 816a16b34c16b2ccc95cbe57aec482b8d3e13fc6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479053"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099761"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>クイック スタート:Azure Cosmos DB Gremlin API アカウントを使用して .NET Framework アプリケーションまたは Core アプリケーションを構築する
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Gremlin コンソール](create-graph-gremlin-console.md)
@@ -110,7 +111,7 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
 
    **Gremlin エンドポイント** - この値は、Gremlin.Net ライブラリを使用してグラフ アカウントに接続する場合に使用されます。
 
-    :::image type="content" source="./media/create-graph-dotnet/endpoint.png" alt-text="エンドポイントをコピーする&quot;:::
+    :::image type="content" source="./media/create-graph-dotnet/endpoint.png" alt-text="エンドポイントをコピーする":::
 
    このサンプルを実行するには、 **[Gremlin エンドポイント]** の値をコピーして最後のポート番号を削除します。つまり、URI は `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com` になります。 エンドポイントの値は `testgraphacct.gremlin.cosmosdb.azure.com` のようになります
 
@@ -119,11 +120,11 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
 1. お使いのアカウントの URI と主キーをコピーしたら、アプリケーションを実行しているローカル コンピューター上の新しい環境変数に保存します。 環境変数を設定するには、コマンド プロンプト ウィンドウを開き、次のコマンドを実行します。 <Your_Azure_Cosmos_account_URI> と <Your_Azure_Cosmos_account_PRIMARY_KEY> の値を必ず置き換えてください。
 
    ```console
-   setx Host &quot;<your Azure Cosmos account name>.gremlin.cosmosdb.azure.com&quot;
-   setx PrimaryKey &quot;<Your_Azure_Cosmos_account_PRIMARY_KEY>&quot;
+   setx Host "<your Azure Cosmos account name>.gremlin.cosmosdb.azure.com"
+   setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
    ```
 
-1. *Program.cs* ファイルを開き、上記で作成したデータベース名およびコンテナー名 (グラフ名でもあります) を使用して &quot;database&quot; および &quot;container" 変数を更新します。
+1. *Program.cs* ファイルを開き、上記で作成したデータベース名およびコンテナー名 (グラフ名でもあります) を使用して "database" および "container" 変数を更新します。
 
     `private static string database = "your-database-name";` `private static string container = "your-container-or-graph-name";`
 
@@ -147,20 +148,7 @@ Ctrl + F5 キーを押してアプリケーションを実行します。 アプ
 
     グラフは拡大または縮小できます。また、グラフ表示領域の拡大、頂点の追加、表示画面上での頂点の移動が可能です。
 
-    :::image type="content" source="./media/create-graph-dotnet/graph-explorer.png" alt-text="エンドポイントをコピーする&quot;:::
-
-   このサンプルを実行するには、 **[Gremlin エンドポイント]** の値をコピーして最後のポート番号を削除します。つまり、URI は `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com` になります。 エンドポイントの値は `testgraphacct.gremlin.cosmosdb.azure.com` のようになります
-
-1. 次に、 **[キー]** タブに移動し、Azure portal から **[主キー]** 値をコピーします。 
-
-1. お使いのアカウントの URI と主キーをコピーしたら、アプリケーションを実行しているローカル コンピューター上の新しい環境変数に保存します。 環境変数を設定するには、コマンド プロンプト ウィンドウを開き、次のコマンドを実行します。 <Your_Azure_Cosmos_account_URI> と <Your_Azure_Cosmos_account_PRIMARY_KEY> の値を必ず置き換えてください。
-
-   ```console
-   setx Host &quot;<your Azure Cosmos account name>.gremlin.cosmosdb.azure.com&quot;
-   setx PrimaryKey &quot;<Your_Azure_Cosmos_account_PRIMARY_KEY>&quot;
-   ```
-
-1. *Program.cs* ファイルを開き、上記で作成したデータベース名およびコンテナー名 (グラフ名でもあります) を使用して &quot;database&quot; および &quot;container":::
+    :::image type="content" source="./media/create-graph-dotnet/graph-explorer.png" alt-text="Azure portal のデータ エクスプローラーでのグラフ表示":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

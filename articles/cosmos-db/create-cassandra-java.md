@@ -9,14 +9,15 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 59f3bf1cfda7bf26f63c1ec1352a5a231ee07995
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: df7f857edc4c1296b6a6e1fae13d70aa4f178728
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526784"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099775"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v3-driver"></a>Azure Cosmos DB Cassandra API データを管理する Java アプリを作成する (v3 ドライバー)
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -66,7 +67,7 @@ ms.locfileid: "90526784"
 
 ## <a name="review-the-code"></a>コードの確認
 
-この手順は省略可能です。 コードでデータベース リソースを作成する方法に関心がある場合は、次のスニペットで確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 これらのスニペットはすべて、*src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java* ファイルから取得されます。  
+この手順は省略可能です。 コードでデータベース リソースを作成する方法に関心がある場合は、次のスニペットで確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 これらのスニペットはすべて、 *src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java* ファイルから取得されます。  
 
 * Cassandra ホスト、ポート、ユーザー名、パスワード、および TLS/SSL オプションが設定されます。 接続文字列情報は、Azure Portal の [接続文字列] ページから取得されます。
 
@@ -80,7 +81,7 @@ ms.locfileid: "90526784"
     return cluster.connect();
     ```
 
-次のスニペットは、*src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java* ファイルからのものです。
+次のスニペットは、 *src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java* ファイルからのものです。
 
 * 新しいキースペースを作成します。
 
@@ -144,7 +145,7 @@ ms.locfileid: "90526784"
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 アプリはこの接続文字列の詳細によって、ホストされているデータベースと通信できます。
 
-1. [Azure portal](https://portal.azure.com/) の Azure Cosmos DB アカウントで、**[接続文字列]** を選択します。 
+1. [Azure portal](https://portal.azure.com/) の Azure Cosmos DB アカウントで、 **[接続文字列]** を選択します。 
 
     :::image type="content" source="./media/create-cassandra-java/copy-username-connection-string-azure-portal.png" alt-text="Azure portal の [接続文字列] ページからユーザー名を表示してコピー":::
 
@@ -202,7 +203,7 @@ ms.locfileid: "90526784"
 
 4. Azure portal で **Data Explorer** を開き、この新しいデータのクエリ、変更、操作を行います。 
 
-    :::image type="content" source="./media/create-cassandra-java/view-data-explorer-java-app.png" alt-text="Azure portal の [接続文字列] ページからユーザー名を表示してコピー":::
+    :::image type="content" source="./media/create-cassandra-java/view-data-explorer-java-app.png" alt-text="データ エクスプローラーでデータを表示する - Azure Cosmos DB":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

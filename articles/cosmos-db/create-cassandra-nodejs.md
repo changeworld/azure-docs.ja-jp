@@ -9,14 +9,15 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: fe017476993872a989fc10564caa94983b9071c5
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6b05e8fbd2f688b4dd5611302c8df1b1deb16ab3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164280"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099795"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>クイック スタート:Node.js SDK と Azure Cosmos DB を使用して Cassandra アプリを構築する
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -212,11 +213,11 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 > 
 > .crt ファイルをダブルクリックして、証明書の表示に開きます。 
 >
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="Azure portal の [接続文字列] ページに表示されているコンタクト ポイント、ユーザー名、パスワードをコピーする":::
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="証明書ウィンドウを示すスクリーンショット。":::
 >
 > 証明書ウィザードで [次へ] を押します。 [Base-64 encoded X.509 (.CER)]、[次へ] の順に選択します。
 >
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="Azure portal の [接続文字列] ページに表示されているコンタクト ポイント、ユーザー名、パスワードをコピーする":::
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="[Base-64 encoded X.509 (.CER)] オプションを示すスクリーンショット。":::
 >
 > [参照] を選択して変換先を見つけ、ファイル名を入力します。
 > [次へ] を選択して終了します。
@@ -237,13 +238,13 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 
 4. コマンド ラインから予想される結果を確認します。
 
-    :::image type="content" source="./media/create-cassandra-nodejs/output.png" alt-text="Azure portal の [接続文字列] ページに表示されているコンタクト ポイント、ユーザー名、パスワードをコピーする":::
+    :::image type="content" source="./media/create-cassandra-nodejs/output.png" alt-text="出力を表示して検証する":::
 
     Ctrl + C キーを押してプログラムの実行を停止し、コンソール ウィンドウを閉じます。 
 
 5. Azure portal で **Data Explorer** を開き、この新しいデータのクエリ、変更、操作を行います。 
 
-    :::image type="content" source="./media/create-cassandra-nodejs/data-explorer.png" alt-text="Azure portal の [接続文字列] ページに表示されているコンタクト ポイント、ユーザー名、パスワードをコピーする"::: 
+    :::image type="content" source="./media/create-cassandra-nodejs/data-explorer.png" alt-text="データ エクスプローラーでのデータの表示"::: 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

@@ -9,14 +9,15 @@ ms.topic: quickstart
 ms.date: 06/05/2019
 ms.author: jasonh
 ms.custom: devx-track-js
-ms.openlocfilehash: c44f7218734af4bc3144137356b85e8845208f6f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 546187b49e1186d665fe32b3f8d632a0281bffa4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409376"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099676"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>クイック スタート:Azure Cosmos DB Gremlin API アカウントを使用して Node.js アプリケーションをビルドする
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Gremlin コンソール](create-graph-gremlin-console.md)
@@ -95,7 +96,7 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
 
     ```
 
-  構成はすべて、*config.js* に含まれています。これは[次のセクション](#update-your-connection-string)で編集します。
+  構成はすべて、 *config.js* に含まれています。これは [次のセクション](#update-your-connection-string)で編集します。
 
 * さまざまな Gremlin 操作を実行する一連の関数が定義されています。 その一例を次に示します。
 
@@ -161,7 +162,7 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
 
     `config.primaryKey = "PRIMARYKEY";`
 
-   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="Azure portal の [概要] ページでアクセス キーを表示およびコピーする":::
+   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="Azure portal キー ブレード":::
 
 4. データベース名とグラフ (コンテナー) 名を config.database と config.collection の値として入力します。 
 

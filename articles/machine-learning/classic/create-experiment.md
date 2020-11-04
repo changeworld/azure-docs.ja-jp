@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: d23702a71bababec2e172181c8e75c26241d0460
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b7ec7273848b9e8bb5be809b9cf48cdc919d3949
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91348099"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307985"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-machine-learning-studio-classic"></a>クイック スタート:Machine Learning Studio (classic) で初めてのデータ サイエンス実験を作成する
 
-**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
@@ -47,21 +47,21 @@ ms.locfileid: "91348099"
 ## <a name="get-the-data"></a>データを取得する
 
 機械学習の実行にはまずデータが必要です。
-使用できるサンプル データセットがいくつか Studio (クラシック) に含まれています。また、多数のソースからデータをインポートできます。 この例では、ワークスペースに含まれているサンプル データセットである**Automobile price data (Raw)** を使用します。
+使用できるサンプル データセットがいくつか Studio (クラシック) に含まれています。また、多数のソースからデータをインポートできます。 この例では、ワークスペースに含まれているサンプル データセットである **Automobile price data (Raw)** を使用します。
 このデータセットには、製造仕様、モデル仕様、技術仕様、価格などの情報を含む、さまざまな個別の自動車のエントリが含まれています。
 
 > [!TIP]
-> [Azure AI Gallery](https://gallery.azure.ai)には、次の実験の作業コピーがあります。 「 **[初めてのデータ サイエンス実験 - 自動車価格の予測 ](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** 」にアクセスし、 **[Open in Studio]\(Studio で開く\)** をクリックして、お使いの Machine Learning Studio (クラシック) ワークスペースに実験のコピーをダウンロードしてください。
+> [Azure AI Gallery](https://gallery.azure.ai)には、次の実験の作業コピーがあります。 「 **[初めてのデータ サイエンス実験 - 自動車価格の予測](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** 」にアクセスし、 **[Open in Studio]\(Studio で開く\)** をクリックして、お使いの Machine Learning Studio (クラシック) ワークスペースに実験のコピーをダウンロードしてください。
 
 データセットを実験に取得する方法を次に示します。
 
 1. Machine Learning Studio (クラシック) ウィンドウの下部にある **[+新規]** をクリックして、新しい実験を作成します。 **[EXPERIMENT]\(実験\)**  >   **[Blank Experiment]\(空の実験\)** の順に選択します。
 
-1. 実験には既定の名前が付いており、キャンバスの上部で確認できます。 このテキストを選択し、「**Automobile price prediction**」(自動車価格の予測) など意味のある名前に変更します。 名前は一意でなくてもかまいません。
+1. 実験には既定の名前が付いており、キャンバスの上部で確認できます。 このテキストを選択し、「 **Automobile price prediction** 」(自動車価格の予測) など意味のある名前に変更します。 名前は一意でなくてもかまいません。
 
     ![実験の名前の変更](./media/create-experiment/rename-experiment.png)
 
-1. 実験キャンバスの左側には、データセットとモジュールのパレットがあります。 このパレットの上部にある検索ボックスに「**automobile**」と入力し、**Automobile price data (Raw)** というラベルが付いたデータセットを検索します。 このデータセットを実験キャンバスにドラッグします。
+1. 実験キャンバスの左側には、データセットとモジュールのパレットがあります。 このパレットの上部にある検索ボックスに「 **automobile** 」と入力し、 **Automobile price data (Raw)** というラベルが付いたデータセットを検索します。 このデータセットを実験キャンバスにドラッグします。
 
     ![automobile データセットの検索と実験キャンバスへのドラッグ](./media/create-experiment/type-automobile.png)
 
@@ -78,18 +78,18 @@ ms.locfileid: "91348099"
 
 ![データ視覚化ウィンドウでの自動車データの表示](./media/create-experiment/visualize-auto-data.png)
 
-右上隅の "**x**" をクリックして、視覚化ウィンドウを閉じます。
+右上隅の " **x** " をクリックして、視覚化ウィンドウを閉じます。
 
 ## <a name="prepare-the-data"></a>データを準備する
 
-通常、データセットには、分析前にある程度の前処理が必要です。 さまざまな行の中に、値が不足している列があります。 モデルがデータを正しく分析するには、これらの不足値を整理する必要があります。 値が不足している行をすべて削除します。 また、不足している値の大部分は、**normalized-losses** 列にあります。したがって、モデルからこの列も一緒に除外します。
+通常、データセットには、分析前にある程度の前処理が必要です。 さまざまな行の中に、値が不足している列があります。 モデルがデータを正しく分析するには、これらの不足値を整理する必要があります。 値が不足している行をすべて削除します。 また、不足している値の大部分は、 **normalized-losses** 列にあります。したがって、モデルからこの列も一緒に除外します。
 
 > [!TIP]
 > 不足している値を入力データから整理することが、ほとんどのモジュールを使用するための前提条件となっています。
 
-まず、**normalized-losses** 列を完全に削除するモジュールを追加します。 次に、データが不足している行を削除する別のモジュールを追加します。
+まず、 **normalized-losses** 列を完全に削除するモジュールを追加します。 次に、データが不足している行を削除する別のモジュールを追加します。
 
-1. モジュールのパレットの上部にある検索ボックスに「**select columns**」と入力し、[Select Columns in Dataset][select-columns] (データセットの列を選択する) モジュールを見つけます。 その後、それを実験キャンバスにドラッグします。 このモジュールを使用すると、モデルに含める、またはモデルから除外するデータの列を選択できます。
+1. モジュールのパレットの上部にある検索ボックスに「 **select columns** 」と入力し、 [Select Columns in Dataset][select-columns] (データセットの列を選択する) モジュールを見つけます。 その後、それを実験キャンバスにドラッグします。 このモジュールを使用すると、モデルに含める、またはモデルから除外するデータの列を選択できます。
 
 1. **Automobile price data (Raw)** データセットの出力ポートを、Select Columns in Dataset の入力ポートに接続します。
 
@@ -104,7 +104,7 @@ ms.locfileid: "91348099"
 
      ![列セレクターの起動と "normalized-losses" 列の除外](./media/create-experiment/launch-column-selector.png)
 
-     これで、**Select Columns in Dataset**のプロパティ ウィンドウに、**normalized-losses** 以外のデータセットのすべての列がフィルターを通過することが示されます。
+     これで、 **Select Columns in Dataset** のプロパティ ウィンドウに、 **normalized-losses** 以外のデータセットのすべての列がフィルターを通過することが示されます。
 
      !["normalized-losses" 列が除外されたことを示すプロパティ ウィンドウ](./media/create-experiment/showing-excluded-column.png)
 
@@ -126,13 +126,13 @@ ms.locfileid: "91348099"
 > [!TIP]
 > ここで実験を実行したのはなぜでしょうか。 実験を実行することで、データの列の定義がデータセットから [Select Columns in Dataset][select-columns] モジュールと [Clean Missing Data][clean-missing-data] モジュールを介して渡されます。 これにより、[Clean Missing Data][clean-missing-data] に接続するすべてのモジュールに、この同じ情報が設定されることになります。
 
-これで、データが整理されました。 整理したデータセットを表示するには、[Clean Missing Data][clean-missing-data] モジュールの左側の出力ポートをクリックし、 **[Visualize]\(視覚化\)** を選択します。 **normalized-losses** 列がもう含まれていないことと、値が不足していないことが確認できます。
+これで、データが整理されました。 整理したデータセットを表示するには、 [Clean Missing Data][clean-missing-data] モジュールの左側の出力ポートをクリックし、 **[Visualize]\(視覚化\)** を選択します。 **normalized-losses** 列がもう含まれていないことと、値が不足していないことが確認できます。
 
 データが整理できたので、予測モデルで使用する特徴を指定する準備が整いました。
 
 ## <a name="define-features"></a>特徴を定義する
 
-機械学習で、"*特徴*" とは、関心がある項目を個別に測定できるプロパティです。 この例のデータセットでは、各行が 1 台の車を表し、各列がその車の特徴に対応します。
+機械学習で、" *特徴* " とは、関心がある項目を個別に測定できるプロパティです。 この例のデータセットでは、各行が 1 台の車を表し、各列がその車の特徴に対応します。
 
 予測モデルの作成に役立つ特徴を見つけるには、解決する問題に関する実験と知識が必要です。 対象を予測するにあたり、一部の特徴は他のものよりも有益です。 他の特徴と強い相関関係があって削除できる特徴もあります。 たとえば、city-mpg と highway-mpg は密接に関連しているため、予測に大きな影響を及ぼすことなく一方を残して他方を削除することができます。
 
@@ -163,9 +163,9 @@ ms.locfileid: "91348099"
 データが準備できました。予測モデルの構築に必要なのは、トレーニングとテストです。 このデータを使用してモデルのトレーニングとテストを行い、価格を予測する精度を確認します。
 <!-- For now, don't worry about *why* we need to train and then test a model.-->
 
-"*分類*" と "*回帰*" は、2 種類の教師あり機械学習アルゴリズムです。 分類は、色 (赤、青、または緑) のような定義された一連のカテゴリから答えを予測するものです。 回帰は、数値を予測する目的で使用されます。
+" *分類* " と " *回帰* " は、2 種類の教師あり機械学習アルゴリズムです。 分類は、色 (赤、青、または緑) のような定義された一連のカテゴリから答えを予測するものです。 回帰は、数値を予測する目的で使用されます。
 
-予測したい価格は数値であるため、回帰アルゴリズムを使用することになります。 この例では "*線形回帰*" モデルを使用します。
+予測したい価格は数値であるため、回帰アルゴリズムを使用することになります。 この例では " *線形回帰* " モデルを使用します。
 
 
 価格が含まれた一連のデータを指定してモデルをトレーニングします。 モデルによってデータがスキャンされ、自動車の特徴と価格の相関関係が検出されます。 次にモデルのテストを行います。よく知っている自動車の特徴のセットをモデルに与え、モデルがその既知の価格をどの程度の精度で予測できるか確認します。
@@ -189,7 +189,7 @@ ms.locfileid: "91348099"
 
     !["Linear Regression" モジュールと "Split Data" モジュールの両方に "Train Model" モジュールを接続](./media/create-experiment/connect-train-model.png)
 
-1. [Train Model][train-model] モジュールをクリックして、 **[Properties]\(プロパティ\)** ウィンドウの **[Launch column selector]\(列セレクターの起動\)** をクリックし、**price** 列を選択します。 **price** が、作成しているモデルで予測する値です。
+1. [Train Model][train-model] モジュールをクリックして、 **[Properties]\(プロパティ\)** ウィンドウの **[Launch column selector]\(列セレクターの起動\)** をクリックし、 **price** 列を選択します。 **price** が、作成しているモデルで予測する値です。
 
     列セレクターで **[Available columns]\(使用できる列\)** の一覧から **[Selected columns]\(選択した列\)** の一覧に **price** 列を移動させることで選択します。
 
@@ -209,7 +209,7 @@ ms.locfileid: "91348099"
 
     !["Train Model" モジュールと "Split Data" モジュールの両方に "Score Model" モジュールを接続](./media/create-experiment/connect-score-model.png)
 
-1. 実験を実行し、[Score Model][score-model] の出力ポートをクリックして、 **[Visualize]\(視覚化\)** を選択します。[Score Model][score-model] モジュールの出力が表示されます。 出力に、予測された価格の値と、テスト データからの既知の値が表示されます。  
+1. 実験を実行し、 [Score Model][score-model] の出力ポートをクリックして、 **[Visualize]\(視覚化\)** を選択します。 [Score Model][score-model] モジュールの出力が表示されます。 出力に、予測された価格の値と、テスト データからの既知の値が表示されます。  
 
     !["Score Model" モジュールの出力](./media/create-experiment/score-model-output.png)
 
@@ -225,13 +225,13 @@ ms.locfileid: "91348099"
 
 作成したモデルに対して、以下の統計値が表示されます。
 
-- **Mean Absolute Error** (MAE、平均絶対誤差):絶対誤差の平均です (*誤差* とは、予測された値と実際の値との差です)。
+- **Mean Absolute Error** (MAE、平均絶対誤差):絶対誤差の平均です ( *誤差* とは、予測された値と実際の値との差です)。
 - **Root Mean Squared Error** (RMSE、二乗平均平方根誤差):テスト データセットに対して実行した予測の二乗誤差平均の平方根です。
 - **Relative Absolute Error** (相対絶対誤差):実際の値とすべての実際の値の平均との絶対差を基準にした絶対誤差の平均です。
 - **Relative Squared Error** (相対二乗誤差):実際の値とすべての実際の値の平均との二乗差を基準にした二乗誤差の平均です。
-- **Coefficient of Determination** (決定係数):**R-2 乗値**ともいいます。どの程度モデルが高い精度でデータと適合するかを示す統計指標です。
+- **Coefficient of Determination** (決定係数): **R-2 乗値** ともいいます。どの程度モデルが高い精度でデータと適合するかを示す統計指標です。
 
-この誤差の統計情報は、それぞれ小さいほど良いとされます。 値が小さいほど、予測が実際の値により近いことを示します。 **Coefficient of Determination**では、値が 1 (1.0) に近づくほど、予測の精度が高くなります。
+この誤差の統計情報は、それぞれ小さいほど良いとされます。 値が小さいほど、予測が実際の値により近いことを示します。 **Coefficient of Determination** では、値が 1 (1.0) に近づくほど、予測の精度が高くなります。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -245,10 +245,10 @@ ms.locfileid: "91348099"
 > [チュートリアル:Studio (クラシック) での予測ソリューションの作成](tutorial-part1-credit-risk.md)
 
 <!-- Module References -->
-[evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
-[linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
-[clean-missing-data]: https://msdn.microsoft.com/library/azure/d2c5ca2f-7323-41a3-9b7e-da917c99f0c4/
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-[train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
+[evaluate-model]: /azure/machine-learning/studio-module-reference/evaluate-model
+[linear-regression]: /azure/machine-learning/studio-module-reference/linear-regression
+[clean-missing-data]: /azure/machine-learning/studio-module-reference/clean-missing-data
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset
+[score-model]: /azure/machine-learning/studio-module-reference/score-model
+[split]: /azure/machine-learning/studio-module-reference/split-data
+[train-model]: /azure/machine-learning/studio-module-reference/train-model

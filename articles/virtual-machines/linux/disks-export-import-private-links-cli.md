@@ -8,16 +8,16 @@ ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 66c331a79a4da7b8fb397e7d0209b24e00645783
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 20b2f74b33ae57016188ee66af29570f7ec1b529
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741708"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289270"
 ---
 # <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI - プライベート リンクを使用してマネージド ディスクに対するインポートおよびエクスポート アクセスを制限する
 
-マネージド ディスクでのプライベート リンクのサポートは現在プレビュー段階です。 [プライベート エンドポイント](../../private-link/private-endpoint-overview.md)を使用すると、マネージド ディスクのエクスポートとインポートを制限し、Azure 仮想ネットワーク上のクライアントから[プライベート リンク](../../private-link/private-link-overview.md)を介してデータに安全にアクセスできます。 プライベート エンドポイントでは、対象のマネージド ディスク サービスのために仮想ネットワークのアドレス空間の IP アドレスを使用します。 仮想ネットワーク上のクライアントとマネージド ディスク間のネットワーク トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベート リンク経由でのみ送信され、パブリック インターネットから公開されることはなくなります。
+[プライベート エンドポイント](../../private-link/private-endpoint-overview.md)を使用すると、マネージド ディスクのエクスポートとインポートを制限し、Azure 仮想ネットワーク上のクライアントから[プライベート リンク](../../private-link/private-link-overview.md)を介してデータに安全にアクセスできます。 プライベート エンドポイントでは、対象のマネージド ディスク サービスのために仮想ネットワークのアドレス空間の IP アドレスを使用します。 仮想ネットワーク上のクライアントとマネージド ディスク間のネットワーク トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベート リンク経由でのみ送信され、パブリック インターネットから公開されることはなくなります。
 
 プライベート リンクを使用してマネージド ディスクをエクスポートまたはインポートするには、ディスク アクセス リソースを作成した後、プライベート エンドポイントを作成することによってこれを同じサブスクリプション内の仮想ネットワークにリンクします。 次に、ディスクまたはスナップショットをディスク アクセスのインスタンスに関連付けます。 最後に、ディスクまたはスナップショットの NetworkAccessPolicy プロパティを `AllowPrivate` に設定します。 これにより、対象の仮想ネットワークへのアクセスが制限されます。 
 

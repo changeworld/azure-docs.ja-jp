@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 6ef4d63e30aeceec9cba3ae97f69afa1c299ec65
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 37cbd1b05249c694aaaa4ff5196a3b6328ccda7f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742735"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126245"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Stream Analytics ジョブを作成する
 
@@ -77,7 +77,7 @@ Stream Analytics ジョブを定義する前に、ジョブの入力に使用さ
     az iot hub create --name "MyASAIoTHub" --resource-group streamanalyticsrg --sku S1
     ```
 
-    IoT ハブが作成されたら、[az iot hub show-connection-string](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest) コマンドを使用して IoT ハブの接続文字列を取得します。 IoT ハブを Stream Analytics ジョブへの入力として追加するときに備えて、接続文字列全体をコピーして保存します。
+    IoT ハブが作成されたら、[az iot hub show-connection-string](/cli/azure/iot/hub?view=azure-cli-latest) コマンドを使用して IoT ハブの接続文字列を取得します。 IoT ハブを Stream Analytics ジョブへの入力として追加するときに備えて、接続文字列全体をコピーして保存します。
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
@@ -124,7 +124,7 @@ Stream Analytics ジョブを定義する前に、ジョブの入力に使用さ
    az storage account keys list -g streamanalyticsrg -n <storage-account>
    ```
 
-3. BLOB を格納するコンテナーは、[az storage container create](/cli/azure/storage/container) コマンドで作成します。 ストレージ アカウント キーを使用して、コンテナーの作成操作を承認します。 Azure CLI を使用したデータ操作の承認について詳しくは、「[Azure CLI を使用して BLOB またはキュー データへのアクセスを承認する](/azure/storage/common/authorize-data-operations-cli)」を参照してください。
+3. BLOB を格納するコンテナーは、[az storage container create](/cli/azure/storage/container) コマンドで作成します。 ストレージ アカウント キーを使用して、コンテナーの作成操作を承認します。 Azure CLI を使用したデータ操作の承認について詳しくは、「[Azure CLI を使用して BLOB またはキュー データへのアクセスを承認する](../storage/common/authorize-data-operations-cli.md)」を参照してください。
 
    ```azurecli
    az storage container create \

@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 5ba47522f483b6c9b2a03e99f3608c58e916e010
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f53ff85dd118774b86a0ec25c89f912798a6418d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90946095"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125854"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>クイック スタート:Visual Studio Code で Azure Stream Analytics ジョブを作成する (プレビュー)
 
@@ -33,15 +33,15 @@ ms.locfileid: "90946095"
 
 1. Visual Studio Code を開きます。
 
-2. 左ペインの **[拡張機能]** から **Stream Analytics** を検索し、**Azure Stream Analytics ツール**拡張機能で **[インストール]** を選択します。
+2. 左ペインの **[拡張機能]** から **Stream Analytics** を検索し、 **Azure Stream Analytics ツール** 拡張機能で **[インストール]** を選択します。
 
-3. 拡張機能がインストールされたら、**Azure Stream Analytics ツール**が **[Enabled Extensions]\(有効な拡張機能\)** に表示されることを確認します。
+3. 拡張機能がインストールされたら、 **Azure Stream Analytics ツール** が **[Enabled Extensions]\(有効な拡張機能\)** に表示されることを確認します。
 
    ![Visual Studio Code で有効な拡張機能に表示される Azure Stream Analytics ツール](./media/quick-create-visual-studio-code/enabled-extensions.png)
 
 ## <a name="activate-the-azure-stream-analytics-tools-extension"></a>Azure Stream Analytics ツール拡張機能をアクティブにする
 
-1. Visual Studio Code アクティビティ バーで、**Azure** アイコンを選択します。 サイド バーの **[Stream Analytics]** で、 **[Azure にサインイン]** を選択します。
+1. Visual Studio Code アクティビティ バーで、 **Azure** アイコンを選択します。 サイド バーの **[Stream Analytics]** で、 **[Azure にサインイン]** を選択します。
 
    ![Visual Studio Code で Azure にサインインする](./media/quick-create-visual-studio-code/azure-sign-in.png)
 
@@ -108,28 +108,28 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
 
    ![ストレージ アカウントの概要](./media/quick-create-visual-studio-code/blob-storage.png)
 
-4. **[Blob service]** ページで、 **[コンテナー]** を選択し、お客様のコンテナーに名前を付けます (**container1** など)。 **[パブリック アクセス レベル]** を **[プライベート (匿名アクセスなし)]** のままにして、 **[OK]** を選択します。
+4. **[Blob service]** ページで、 **[コンテナー]** を選択し、お客様のコンテナーに名前を付けます ( **container1** など)。 **[パブリック アクセス レベル]** を **[プライベート (匿名アクセスなし)]** のままにして、 **[OK]** を選択します。
 
    ![BLOB コンテナーを作成する](./media/quick-create-visual-studio-code/create-blob-container.png)
 
 ## <a name="create-a-stream-analytics-project"></a>Stream Analytics プロジェクトを作成する
 
-1. Visual Studio Code で、**Ctrl + Shift + P** キーを押してコマンド パレットを開きます。 次に「**ASA**」と入力し、 **[ASA: 新しいプロジェクトの作成]** を選択します。
+1. Visual Studio Code で、 **Ctrl + Shift + P** キーを押してコマンド パレットを開きます。 次に「 **ASA** 」と入力し、 **[ASA: 新しいプロジェクトの作成]** を選択します。
 
    ![新しいプロジェクトを作成する](./media/quick-create-visual-studio-code/create-new-project.png)
 
-2. 「**myASAproj**」のようにプロジェクト名を入力し、プロジェクトのフォルダーを選択します。
+2. 「 **myASAproj** 」のようにプロジェクト名を入力し、プロジェクトのフォルダーを選択します。
 
     ![プロジェクト名を作成する](./media/quick-create-visual-studio-code/create-project-name.png)
 
-3. 新しいプロジェクトがワークスペースに追加されます。 Stream Analytics プロジェクトは、 **[入力]** 、 **[出力]** 、 **[関数]** という 3 つのフォルダーで構成されます。 また、クエリ スクリプト **(*.asaql)** 、**JobConfig.json** ファイル、**asaproj.json** 構成ファイルも含まれます。
+3. 新しいプロジェクトがワークスペースに追加されます。 Stream Analytics プロジェクトは、 **[入力]** 、 **[出力]** 、 **[関数]** という 3 つのフォルダーで構成されます。 また、クエリ スクリプト **(*.asaql)** 、 **JobConfig.json** ファイル、 **asaproj.json** 構成ファイルも含まれます。
 
     **asaproj.json** 構成ファイルには、Stream Analytics ジョブを Azure に送信するために必要な入力、出力、およびジョブ構成ファイルの情報が含まれています。
 
     ![Visual Studio Code の Stream Analytics プロジェクト ファイル](./media/quick-create-visual-studio-code/asa-project-files.png)
 
 > [!Note]
-> コマンド パレットから入力と出力を追加すると、対応するパスが自動的に **asaproj.json** に追加されます。 ディスク上で入力または出力を直接追加または削除する場合は、**asaproj.json** に手動で追加または削除する必要があります。 入力と出力を 1 か所にまとめてから、それぞれの **asaproj.json** にパスを指定して、それらを異なるジョブで参照するように選択することもできます。
+> コマンド パレットから入力と出力を追加すると、対応するパスが自動的に **asaproj.json** に追加されます。 ディスク上で入力または出力を直接追加または削除する場合は、 **asaproj.json** に手動で追加または削除する必要があります。 入力と出力を 1 か所にまとめてから、それぞれの **asaproj.json** にパスを指定して、それらを異なるジョブで参照するように選択することもできます。
 
 ## <a name="define-the-transformation-query"></a>変換クエリを定義する
 
@@ -150,7 +150,7 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
 
     ![入力フォルダーから入力を追加する](./media/quick-create-visual-studio-code/add-input-from-inputs-folder.png)
 
-    または、**Ctrl + Shift + P** キーを押してコマンド パレットを開き、「**ASA: 入力の追加** を入力します。
+    または、 **Ctrl + Shift + P** キーを押してコマンド パレットを開き、「 **ASA: 入力の追加** を入力します。
 
    ![Visual Studio Code で Stream Analytics 入力を追加する](./media/quick-create-visual-studio-code/add-input.png)
 
@@ -196,7 +196,7 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
 
 3. この入力を使用する Stream Analytics クエリ スクリプトを選択します。
 
-4. 出力ファイル名を「**BlobStorage**」と入力します。
+4. 出力ファイル名を「 **BlobStorage** 」と入力します。
 
 5. 以下の値を使用して **BlobStorage** を編集します。 ここに記載されていないフィールドは既定値のままにします。 CodeLens 機能を使用すると、文字列を簡単にドロップダウン リストから選択したり入力したりすることができます。
 
@@ -219,7 +219,7 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
 
    ![Visual Studio Code コマンド パレットを使用してスクリプトをコンパイルする](./media/quick-create-visual-studio-code/compile-script1.png)
 
-- スクリプトを右クリックし、**ASA: Compile Script**」と入力します。
+- スクリプトを右クリックし、 **ASA: Compile Script** 」と入力します。
 
     ![Stream Analytics スクリプトを右クリックしてコンパイルする](./media/quick-create-visual-studio-code/compile-script2.png)
 
@@ -237,11 +237,11 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
 
 3. **[Select a job]\(ジョブの選択\)** を選択します。 次に、 **[新しいジョブの作成]** を選択します。
 
-4. ジョブ名「**myASAjob**」を入力します。 次に、指示に従ってリソース グループと場所を選択します。
+4. ジョブ名「 **myASAjob** 」を入力します。 次に、指示に従ってリソース グループと場所を選択します。
 
 5. **[Azure に送信]** を選択します。 ログは出力ウィンドウで確認できます。 
 
-6. ジョブが作成されると、**Stream Analytics Explorer** で確認できます。
+6. ジョブが作成されると、 **Stream Analytics Explorer** で確認できます。
 
     ![Stream Analytics Explorer に表示されているジョブ](./media/quick-create-visual-studio-code/list-job.png)
 
@@ -281,4 +281,4 @@ Visual Studio Code の Azure Stream Analytics ツールについて学習する�
 
 * [Visual Studio Code を使用して Azure Stream Analytics ジョブを表示する](visual-studio-code-explore-jobs.md)
 
-* [npm パッケージを使用して CI/CD パイプラインを設定する](setup-cicd-vs-code.md)
+* [npm パッケージを使用して CI/CD パイプラインを設定する](./cicd-overview.md)

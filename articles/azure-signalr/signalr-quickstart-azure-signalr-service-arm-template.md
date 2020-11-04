@@ -1,18 +1,18 @@
 ---
 title: 'クイックスタート: Azure SignalR サービスを作成する - ARM テンプレート'
 description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure SignalR Service を作成する方法について説明します。
-author: mgblythe
+author: sffamily
 ms.service: signalr
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
+ms.author: zhshang
 ms.date: 10/02/2020
-ms.openlocfilehash: f38bd6ed91788343c028ec5834ba28f4bad3ba43
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a7e8183f21ab49fe4662470d30e52977dd89153a
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487825"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289922"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>クイックスタート: ARM テンプレートを使用して Azure SignalR Service をデプロイする
 
@@ -77,7 +77,7 @@ Azure portal から ARM テンプレートを使用して Azure SignalR Service 
     > [!NOTE]
     > **[Free_F1]** 価格レベルの場合、容量は 1 ユニットに制限されます。
 
-    :::image type="content" source="./media/signalr-quickstart-azure-signalr-service-arm-template/deploy-azure-signalr-service-arm-template-portal.png" alt-text="Azure portal から ARM テンプレートを使用して Azure に Azure SignalR Service をデプロイするためのボタン。":::
+    :::image type="content" source="./media/signalr-quickstart-azure-signalr-service-arm-template/deploy-azure-signalr-service-arm-template-portal.png" alt-text="Azure portal から Azure SignalR Service を作成するための ARM テンプレートのスクリーンショット。":::
 
 6. **[Review + create]\(レビュー + 作成\)** を選択します。
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: edee1948780b827eed5047c6c9c919b66eb619d0
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 553f83151289adf6f0f4420d106af7ae37047bda
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900217"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148322"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>セキュリティの推奨事項 - リファレンス ガイド
 
@@ -217,6 +217,5 @@ Security Center の推奨事項は、ベスト プラクティスに基づいて
 ## <a name="next-steps"></a>次のステップ
 推奨事項の詳細については、以下を参照してください。
 
-* [Security Center による推奨事項を分析する方法に関する Microsoft Learn モジュール](/learn/modules/identify-threats-with-azure-security-center/)
 * [Azure Security Center でのセキュリティに関する推奨事項](security-center-recommendations.md)
 * [Azure Security Center でのネットワークの保護](security-center-network-recommendations.md)

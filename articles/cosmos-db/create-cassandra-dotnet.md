@@ -9,14 +9,15 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/01/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7389136d5f08c7efd0c0443387744ce4c5816f00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 13706b900c64b1d0aa5ce03fc95442e8dfc41051
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91627383"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099829"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>クイック スタート:.NET SDK と Azure Cosmos DB を使用して Cassandra アプリを構築する
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -36,7 +37,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]または、Azure サブスクリプションを使わず、課金も契約もなしで [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。
 
 さらに、次のものが必要です。 
-* まだ Visual Studio 2019 をインストールしていない場合は、**無料**の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
+* まだ Visual Studio 2019 をインストールしていない場合は、 **無料** の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 * [Git](https://www.git-scm.com/) をインストールして例を複製します。
 
 <a id="create-account"></a>
@@ -97,7 +98,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 * uprofile キースペースに接続する新しいセッションで IMapper オブジェクトを使用し、ユーザーのエンティティを挿入します。
 
     ```csharp
-    mapper.Insert<User>(new User(1, "LyubovK", "Dubai"));
+    mapper.Insert<User>(new User(1, "LyubovK", "Dubai"));
     ```
     
 * すべてのユーザーの情報を取得するクエリを実行します。
@@ -158,13 +159,13 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     ```
 3. Ctrl + F5 キーを押してアプリケーションを実行します。 コンソール ウィンドウにアプリが表示されます。 
 
-    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="Azure portal の [接続文字列] ページでアクセス キー名を表示してコピー":::
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="出力を表示して検証する":::
 
     Ctrl + C キーを押してプログラムの実行を停止し、コンソール ウィンドウを閉じます。 
     
 4. Azure portal で **Data Explorer** を開き、この新しいデータのクエリ、変更、操作を行います。
 
-    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Azure portal の [接続文字列] ページでアクセス キー名を表示してコピー":::
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="データ エクスプローラーでのデータの表示":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

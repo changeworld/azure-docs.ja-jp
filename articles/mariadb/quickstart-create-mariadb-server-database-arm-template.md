@@ -1,18 +1,18 @@
 ---
 title: クイック スタート:Azure DB for MariaDB を作成する - ARM テンプレート
 description: このクイックスタートの記事では、Azure Resource Manager テンプレートを使用して、Azure Database for MariaDB サーバーを作成する方法について説明します。
-author: mgblythe
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 108233892a89e6f6288e05476e37460a58b52b0e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dc3999193356dd9cddc52b9873d22b4172c0030c
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88660548"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042501"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>クイック スタート:ARM テンプレートを使用して Azure Database for MariaDB サーバーを作成する
 
@@ -72,28 +72,28 @@ Azure portal で Azure Database for MariaDB サーバーのテンプレートを
 
 1. **[リソース グループ]** の **[新規作成]** を選択し、新しいリソース グループの名前を入力し、 **[OK]** を選択します。
 
-2. 新しいリソース グループを作成した場合は、リソース グループと新しいサーバーの**場所**を選択します。
+2. 新しいリソース グループを作成した場合は、リソース グループと新しいサーバーの **場所** を選択します。
 
-3. **サーバー名**、**管理者のログイン**、**管理者のログイン パスワード**を入力します。
+3. **サーバー名** 、 **管理者のログイン** 、 **管理者のログイン パスワード** を入力します。
 
     ![[Deploy Azure Database for MariaDB with VNet]\(VNet を使用して Azure Database for MariaDB をデプロイする\) ウィンドウ、Azure クイックスタート テンプレート、Azure portal](./media/quickstart-create-mariadb-server-database-arm-template/deploy-azure-database-mariadb-vnet.png)
 
 4. 必要に応じて、他の既定の設定を変更します。
 
     * **[サブスクリプション]** : サーバーに使用する Azure サブスクリプション。
-    * **[SKU 容量]** : 仮想コア容量。*2* (既定)、*4*、*8*、*16*、*32*、*64* のいずれかを指定できます。
-    * **[SKU 名]** : SKU レベル プレフィックス、SKU ファミリー、SKU 容量をアンダースコアで結合したもの (例: *B_Gen5_1*、*GP_Gen5_2* (既定)、*MO_Gen5_32*)。
-    * **[Sku Size MB]\(SKU サイズ (MB)\)** : Azure Database for MariaDB サーバーのメガバイト単位のストレージ サイズ (既定値: *51200*)。
-    * **[SKU レベル]** : デプロイ レベル (例: *Basic*、*GeneralPurpose* (既定)、*MemoryOptimized*)。
+    * **[SKU 容量]** : 仮想コア容量。 *2* (既定)、 *4* 、 *8* 、 *16* 、 *32* 、 *64* のいずれかを指定できます。
+    * **[SKU 名]** : SKU レベル プレフィックス、SKU ファミリー、SKU 容量をアンダースコアで結合したもの (例: *B_Gen5_1* 、 *GP_Gen5_2* (既定)、 *MO_Gen5_32* )。
+    * **[Sku Size MB]\(SKU サイズ (MB)\)** : Azure Database for MariaDB サーバーのメガバイト単位のストレージ サイズ (既定値: *51200* )。
+    * **[SKU レベル]** : デプロイ レベル (例: *Basic* 、 *GeneralPurpose* (既定)、 *MemoryOptimized* )。
     * **[SKU ファミリ]** : *Gen4* または *Gen5* (既定)。サーバーのデプロイに使用するハードウェアの世代を指定します。
-    * **[Mriadb バージョン]** : デプロイする MariaDB サーバーのバージョン (例: *10.2*、または *10.3* (既定値))。
-    * **[Backup Retention Days]\(バックアップ保持期間の日数\)** : geo 冗長バックアップの保持期間の日数を指定します (既定値: *7*)。
-    * **[Geo Redundant Backup]\(geo 冗長バックアップ\)** : geo ディザスター リカバリー (Geo-DR) の要件に応じて "*有効*" または "*無効*" (既定) を選択します。
-    * **[仮想ネットワーク名]** : 仮想ネットワークの名前 (既定値: *azure_mariadb_vnet*)。
-    * **[サブネット名]** : サブネットの名前 (既定値: *azure_mariadb_subnet*)。
-    * **[Virtual Network Rule Name]\(仮想ネットワーク規則名\)** : サブネットを許可する仮想ネットワーク規則の名前 (既定値: *AllowSubnet*)。
-    * **[Vnet Address Prefix]\(VNet のアドレス プレフィックス\)** : 仮想ネットワークのアドレス プレフィックス (既定値: *10.0.0.0/16*)。
-    * **[Subnet Prefix]\(サブネット プレフィックス\)** : サブネットのアドレス プレフィックス (既定値: *10.0.0.0/16*)。
+    * **[Mriadb バージョン]** : デプロイする MariaDB サーバーのバージョン (例: *10.2* 、または *10.3* (既定値))。
+    * **[Backup Retention Days]\(バックアップ保持期間の日数\)** : geo 冗長バックアップの保持期間の日数を指定します (既定値: *7* )。
+    * **[Geo Redundant Backup]\(geo 冗長バックアップ\)** : geo ディザスター リカバリー (Geo-DR) の要件に応じて " *有効* " または " *無効* " (既定) を選択します。
+    * **[仮想ネットワーク名]** : 仮想ネットワークの名前 (既定値: *azure_mariadb_vnet* )。
+    * **[サブネット名]** : サブネットの名前 (既定値: *azure_mariadb_subnet* )。
+    * **[Virtual Network Rule Name]\(仮想ネットワーク規則名\)** : サブネットを許可する仮想ネットワーク規則の名前 (既定値: *AllowSubnet* )。
+    * **[Vnet Address Prefix]\(VNet のアドレス プレフィックス\)** : 仮想ネットワークのアドレス プレフィックス (既定値: *10.0.0.0/16* )。
+    * **[Subnet Prefix]\(サブネット プレフィックス\)** : サブネットのアドレス プレフィックス (既定値: *10.0.0.0/16* )。
 
 5. 使用条件を読み、 **[上記の使用条件に同意する]** をオンにします。
 

@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: aff9bf83795043e0176d7a3f155844c8dbe0281a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 034f1497cb6262ca86cd440b914f3ae67356eef9
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87337477"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124613"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>クイック スタート:Visual Studio を使用して Azure Stream Analytics ジョブを作成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "87337477"
 
 * Visual Studio 2019、Visual Studio 2015、または Visual Studio 2013 Update 4 をインストールします。 Enterprise (Ultimate/Premium)、Professional、Community の各エディションがサポートされています。 Express エディションはサポートされていません。
 
-* [インストール手順](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)に従って、Visual Studio の Stream Analytics ツールをインストールします。
+* [インストール手順](./stream-analytics-tools-for-visual-studio-install.md)に従って、Visual Studio の Stream Analytics ツールをインストールします。
 
 ## <a name="prepare-the-input-data"></a>入力データを準備する
 
@@ -77,7 +77,7 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
 
    ![ストレージ アカウントの概要](./media/stream-analytics-quick-create-portal/blob-storage.png)
 
-4. **[Blob service]** ページで、 **[コンテナー]** を選択し、お客様のコンテナーに名前を付けます (*container1* など)。 **[パブリック アクセス レベル]** を **[Private (no anonymous access)]\(プライベート (匿名アクセスなし)\)** のままにして、 **[OK]** を選択します。
+4. **[Blob service]** ページで、 **[コンテナー]** を選択し、お客様のコンテナーに名前を付けます ( *container1* など)。 **[パブリック アクセス レベル]** を **[Private (no anonymous access)]\(プライベート (匿名アクセスなし)\)** のままにして、 **[OK]** を選択します。
 
    ![BLOB コンテナーを作成する](./media/stream-analytics-quick-create-portal/create-blob-container.png)
 
@@ -89,7 +89,7 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
 
 3. 左側のテンプレートの一覧で **[Stream Analytics]** を選択し、 **[Azure Stream Analytics アプリケーション]** を選択します。  
 
-4. プロジェクトの**名前**、**場所**、および**ソリューション名**を入力し、 **[OK]** を選択します。
+4. プロジェクトの **名前** 、 **場所** 、および **ソリューション名** を入力し、 **[OK]** を選択します。
 
    ![Stream Analytics プロジェクトを作成する](./media/stream-analytics-quick-create-vs/create-stream-analytics-project.png)
 
@@ -106,7 +106,7 @@ Azure Stream Analytics プロジェクトに含まれる要素に注目してく
 
 ## <a name="define-input"></a>入力を定義する
 
-1. **ソリューション エクスプローラー**で **[入力]** ノードを展開し、 **[Input.json]** をダブルクリックします。
+1. **ソリューション エクスプローラー** で **[入力]** ノードを展開し、 **[Input.json]** をダブルクリックします。
 
 2. **[Stream Analytics Input Configuration]\(Stream Analytics 入力構成\)** で、次の値を入力します。
 
@@ -125,7 +125,7 @@ Azure Stream Analytics プロジェクトに含まれる要素に注目してく
 
 ## <a name="define-output"></a>出力の定義
 
-1. **ソリューション エクスプローラー**で **[出力]** ノードを展開し、 **[Output.json]** をダブルクリックします。
+1. **ソリューション エクスプローラー** で **[出力]** ノードを展開し、 **[Output.json]** をダブルクリックします。
 
 2. **[Stream Analytics Output Configuration]\(Stream Analytics 出力構成\)** で、次の値を入力します。
 
@@ -145,7 +145,7 @@ Azure Stream Analytics プロジェクトに含まれる要素に注目してく
 
 ## <a name="define-the-transformation-query"></a>変換クエリを定義する
 
-1. Visual Studio の**ソリューション エクスプローラー**から **Script.asaql** を開きます。
+1. Visual Studio の **ソリューション エクスプローラー** から **Script.asaql** を開きます。
 
 2. 次のクエリを追加します。
 
@@ -158,9 +158,9 @@ Azure Stream Analytics プロジェクトに含まれる要素に注目してく
 
 ## <a name="submit-a-stream-analytics-query-to-azure"></a>Stream Analytics クエリを Azure に送信する
 
-1. **クエリ エディター**で、スクリプト エディターの **[Azure に送信]** を選択します。
+1. **クエリ エディター** で、スクリプト エディターの **[Azure に送信]** を選択します。
 
-2. **[新しい Azure Stream Analytics ジョブを作成する]** を選択し、**ジョブ名**を入力します。 クイック スタートの最初に使用した**サブスクリプション**、**リソース グループ**、および**場所**を選択します。
+2. **[新しい Azure Stream Analytics ジョブを作成する]** を選択し、 **ジョブ名** を入力します。 クイック スタートの最初に使用した **サブスクリプション** 、 **リソース グループ** 、および **場所** を選択します。
 
    ![ジョブを Azure に送信する](./media/stream-analytics-quick-create-vs/stream-analytics-job-to-azure.png)
 

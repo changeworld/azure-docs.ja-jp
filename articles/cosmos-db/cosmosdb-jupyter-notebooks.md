@@ -6,14 +6,15 @@ ms.topic: overview
 ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 0299ab1e76e742adb8d2653b8b5d6923aff2f11f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8dca9e3e29796618b905c4d266eb674f82565969
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88588157"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097619"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Azure Cosmos DB に組み込まれている Jupyter Notebook のサポート (プレビュー)
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Jupyter Notebook はオープン ソースの Web アプリケーションであり、ライブ コード、数式、視覚化、および説明テキストが含まれるドキュメントを作成して共有することができます。 
 
@@ -23,7 +24,7 @@ Azure Cosmos DB の組み込みの Jupyter Notebook は、Azure portal とご自
 
 Azure Cosmos DB では、Core (SQL)、Cassandra、Gremlin、Table、および MongoDB 用 API など、すべての API に対して C# と Python の両方のノートブックがサポートされます。 ノートブック内で、組み込みのコマンドと機能を活用して、Azure Cosmos DB リソースの作成、データのアップロード、Azure Cosmos DB でのデータのクエリと視覚化を簡単に行うことができます。 
 
-:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="Azure Cosmos DB における Jupyter Notebook の視覚化":::
+:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="Azure Cosmos DB における Jupyter Notebook のサポート":::
 
 ## <a name="benefits-of-jupyter-notebooks"></a>Jupyter Notebook の利点
 

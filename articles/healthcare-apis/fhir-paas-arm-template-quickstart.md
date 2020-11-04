@@ -1,19 +1,19 @@
 ---
 title: 'クイックスタート: ARM テンプレートを使用して Azure API for FHIR をデプロイする'
 description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure API for FHIR® (Fast Healthcare Interoperability Resources) をデプロイする方法について説明します。
-author: mgblythe
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
+ms.author: cavoeg
 ms.date: 10/06/2020
-ms.openlocfilehash: 0d045aac63daf99bf67ec79438f55eedd5f200d9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: c04bb82810bf55d6ac55b2697f5010896e0eb9b4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521443"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289280"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>クイックスタート: ARM テンプレートを使用して Azure API for FHIR をデプロイする
 
@@ -81,7 +81,7 @@ Azure portal から ARM テンプレートを使用して Azure API for FHIR を
 
 4. 新しい **サービス名** を入力し、Azure API for FHIR の **場所** を選択します。 この場所は、リソース グループのリージョンと同じでも異なっていてもかまいません。
 
-    :::image type="content" source="./media/fhir-paas-arm-template-quickstart/deploy-azure-api-fhir.png" alt-text="Azure portal から ARM テンプレートを使用して Azure API for FHIR サービスを Azure にデプロイする。":::
+    :::image type="content" source="./media/fhir-paas-arm-template-quickstart/deploy-azure-api-fhir.png" alt-text="Azure portal から ARM テンプレートを使用して Azure API for FHIR をデプロイする。":::
 
 5. **[Review + create]\(レビュー + 作成\)** を選択します。
 

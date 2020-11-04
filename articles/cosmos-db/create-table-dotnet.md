@@ -9,14 +9,15 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 65a3e9a1e60ad28fbc0357c5b04007ce4da37895
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 513af71384fd1fa5d38ee3ec367a42892a662444
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487604"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096939"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>クイック スタート:.NET SDK と Azure Cosmos DB で Table API アプリをビルドする 
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)
@@ -104,7 +105,15 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
 
 1. [Azure Portal](https://portal.azure.com/) で **[接続文字列]** をクリックします。 ウィンドウの右側にある [コピー] ボタンを使って **プライマリ接続文字列** をコピーします。
 
-   :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="ソリューションを開く"
+   :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="[接続文字列] ウィンドウでプライマリ接続文字列を確認してコピーする":::
+
+2. Visual Studio で **Settings.json** ファイルを開きます。 
+
+3. ポータルの **プライマリ接続文字列** を StorageConnectionString に貼り付けます。 引用符の内側に文字列を貼り付けます。
+
+   ```csharp
+   {
+      "StorageConnectionString": "<Primary connection string from Azure portal>"
    }
    ```
 
@@ -116,25 +125,25 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
 
 1. Visual Studio の **ソリューション エクスプローラー** で **CosmosTableSamples** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。 
 
-   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-manage-nuget.png" alt-text="ソリューションを開く":::
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-manage-nuget.png" alt-text="NuGet パッケージの管理":::
 
 2. NuGet の **[参照]** ボックスに「Microsoft.Azure.Cosmos.Table」と入力します。 これで、Cosmos DB テーブル API のクライアント ライブラリが見つかります。 このライブラリは、現在 .NET Framework と .NET Standard で使用できることにご留意ください。 
    
-   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-nuget-browse.png" alt-text="ソリューションを開く":::
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-nuget-browse.png" alt-text="NuGet の [参照] タブ":::
 
 3. **[インストール]** をクリックして **Microsoft.Azure.Cosmos.Table** ライブラリをインストールします。 これにより、Azure Cosmos DB Table API パッケージとすべての依存関係がインストールされます。
 
 4. アプリ全体を実行すると、サンプル データがテーブル エンティティに挿入され、終わりのところで削除されます。そのため、サンプル全体を実行した場合、データが挿入されても表示されません。 ただし、ブレークポイントを挿入することでデータを表示できます。 BasicSamples.cs ファイルを開き、52 行目を右クリックし、 **[ブレークポイント]** と **[ブレークポイントの挿入]** を順に選択します。 55 行目にもブレークポイントを挿入します。
 
-   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-breakpoint.png" alt-text="ソリューションを開く"::: 
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-breakpoint.png" alt-text="ブレークポイントの追加"::: 
 
 5. F5 キーを押してアプリケーションを実行します。 コンソール ウィンドウに、Azure Cosmos DB の新しいテーブル データベースの名前 (この場合は demoa13b1) が表示されます。 
     
-   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-console.png" alt-text="ソリューションを開く":::
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-console.png" alt-text="コンソール出力":::
 
    最初のブレークポイントにヒットしたら、Azure Portal のデータ エクスプローラーに戻ります。 **[最新の情報に更新]** ボタンをクリックし、demo* table を展開して **[エンティティ]** をクリックします。 右側の **[エンティティ]** タブに、追加された Walter Harp の新しいエンティティが表示されます。 新しいエンティティの電話番号が 425-555-0101 であることを確認します。
 
-   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-entity.png" alt-text="ソリューションを開く":::
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-entity.png" alt-text="新しいエンティティ":::
     
    プロジェクトを実行するときに Settings.json ファイルが見つからないというエラーが発生した場合は、次の XML エントリをプロジェクトの設定に追加することで解決できます。 CosmosTableSamples を右クリックし、[CosmosTableSamples.csproj の編集] を選択して、次の itemGroup を追加します。 
 

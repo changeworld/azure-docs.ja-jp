@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/10/2020
 ms.author: jasonh
-ms.openlocfilehash: ca1ca258296f5ac8f1fb7120d2965ccacf74b5d5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: be93df10614e32fb14e5ca7497461f0f2d6fc93e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409393"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099712"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>クイック スタート:Gremlin コンソールを使用して Azure Cosmos DB グラフ データベースを作成、クエリ、および走査する
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Gremlin コンソール](create-graph-gremlin-console.md)
@@ -52,11 +53,11 @@ Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、およ
 ## <a name="connect-to-your-app-servicegraph"></a><a id="ConnectAppService"></a>アプリ サービス/グラフへの接続
 
 1. Gremlin コンソールを開始する前に、`apache-tinkerpop-gremlin-console-3.2.5/conf` ディレクトリで remote-secure.yaml 構成ファイルを作成または変更します。
-2. 次の表の定義に従って、*host*、*port*、*username*、*password*、*connectionPool*、および *serializer* の構成を入力します。
+2. 次の表の定義に従って、 *host* 、 *port* 、 *username* 、 *password* 、 *connectionPool* 、および *serializer* の構成を入力します。
 
     設定|推奨値|説明
     ---|---|---
-    hosts|[ *<アカウント名>* .**gremlin**.cosmos.azure.com]|次のスクリーンショットをご覧ください。 これは、Azure portal の [概要] ページに表示される **[Gremlin URI]** の値から末尾の ":443/" を削除して角かっこで囲んだものです。 注:必ず Gremlin 値を使用してください。[ *<アカウント名>* .documents.azure.com] で終わる URI **ではありません**。この URI を使用すると、後で Gremlin クエリを実行したときに "Host did not respond in a timely fashion (ホストが適切な時間内に応答しませんでした)" 例外が発生する可能性があります。 
+    hosts|[ *<アカウント名>* . **gremlin**.cosmos.azure.com]|次のスクリーンショットをご覧ください。 これは、Azure portal の [概要] ページに表示される **[Gremlin URI]** の値から末尾の ":443/" を削除して角かっこで囲んだものです。 注:必ず Gremlin 値を使用してください。[ *<アカウント名>* .documents.azure.com] で終わる URI **ではありません** 。この URI を使用すると、後で Gremlin クエリを実行したときに "Host did not respond in a timely fashion (ホストが適切な時間内に応答しませんでした)" 例外が発生する可能性があります。 
     port|443|443 に設定します。
     username|*自分のユーザー名*|`/dbs/<db>/colls/<coll>` 形式のリソースです。`<db>` は実際のデータベースの名前、`<coll>` は実際のコレクションの名前になります。
     password|*自分のプライマリ キー*| 以下の 2 つ目のスクリーンショットをご覧ください。 これは自分のプライマリ キーです。Azure Portal の [キー] ページの [プライマリ キー] ボックスから取得できます。 ボックスの左側にあるコピー ボタンを使用して値をコピーしてください。
@@ -65,11 +66,11 @@ Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、およ
 
    hosts の値には、 **[概要]** ページから **[Gremlin URI]** の値をコピーします。
 
-   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="Apache Gremlin コンソールからの Azure Cosmos DB":::
+   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="Azure Portal の [概要] ページで Gremlin URI の値を表示してコピー":::
 
    パスワードの値には、 **[キー]** ページから **[主キー]** をコピーします。
 
-   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="Apache Gremlin コンソールからの Azure Cosmos DB":::
+   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="Azure portal の [キー] ページでプライマリ キーを表示してコピーする":::
 
    remote secure.yaml ファイルは、次のようになります。
 
@@ -108,7 +109,7 @@ g.V().count()
 
 ## <a name="create-vertices-and-edges"></a>頂点と辺の作成
 
-まずはじめに、*Thomas*、*Mary Kay*、*Robin*、*Ben*、および *Jack* の 5 つの人物頂点を追加しましょう。
+まずはじめに、 *Thomas* 、 *Mary Kay* 、 *Robin* 、 *Ben* 、および *Jack* の 5 つの人物頂点を追加しましょう。
 
 入力 (Thomas):
 

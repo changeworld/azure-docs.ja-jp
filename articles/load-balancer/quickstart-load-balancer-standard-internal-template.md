@@ -8,18 +8,22 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: allensu
 ms.date: 09/14/2020
-ms.openlocfilehash: aa68dad2f8f018a9f3f70f2f02fd5e989ccbad4e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 41c90bb58e6ece968f8e2bf211a14e4e4e98211f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047762"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910867"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>クイック スタート」を参照してください。ARM テンプレートを使用して VM の負荷を分散する内部ロード バランサーを作成する
 
 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して内部の Azure ロード バランサーを作成する方法を説明します。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-2-vms-internal-load-balancer%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -49,7 +53,7 @@ Azure Load Balancer に関連するテンプレートをさらに探すには、
 ```azurecli-interactive
 read -p "Enter the location (i.e. westcentralus): " location
 resourceGroupName="myResourceGroupLB"
-templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json" 
+templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json"
 
 az group create \
 --name $resourceGroupName \
@@ -64,11 +68,11 @@ az deployment group create \
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. 左側のウィンドウから **[リソース グループ]** を選択します。
+1. 左側のウィンドウから **[リソース グループ]** を選択します。
 
-3. 前のセクションで作成したリソース グループを選択します 既定のリソース グループ名は **myResourceGroupLB** です
+1. 前のセクションで作成したリソース グループを選択します 既定のリソース グループ名は **myResourceGroupLB** です
 
-4. 次のリソースがリソース グループ内に作成されていることを確認します。
+1. 次のリソースがリソース グループ内に作成されていることを確認します。
 
 :::image type="content" source="media/quickstart-load-balancer-standard-internal-template/verify-creation.png" alt-text="Azure portal を使用してリソースの作成を確認する。" border="true":::
 
@@ -76,7 +80,7 @@ az deployment group create \
 
 リソース グループとそこに含まれているすべてのリソースは、不要になったら、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用して削除できます。
 
-```azurecli-interactive 
+```azurecli-interactive
   az group delete \
     --name myResourceGroupLB
 ```
@@ -86,4 +90,4 @@ az deployment group create \
 テンプレートの作成手順について説明したチュートリアルについては、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> 初めての ARM テンプレートを作成してデプロイする[
+> [チュートリアル:初めての ARM テンプレートを作成してデプロイする](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)

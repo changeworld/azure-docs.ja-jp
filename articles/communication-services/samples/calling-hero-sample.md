@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e6cbf840fa27755fa43eb2a81e752415562ce41f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 799c46ad2715e1edd3d2fba24a8350fd2608d3d8
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461143"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233935"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Group Calling Hero Sample を使ってみる
 
@@ -42,11 +42,11 @@ Azure Communication Services の **Group Calling Hero Sample** は、Communicati
 
 [Start a Chat]\(通話を開始\) ボタンを押すと、サーバー側アプリケーションからユーザー アクセス トークンがフェッチされます。 このトークンは、クライアント アプリを Azure Communication Services に接続するために使用されます。 トークンの取得後、使用するカメラとマイクを指定するように求められます。 切り替えコントロールを使用して、これらのデバイスを無効または有効にできます。
 
-:::image type="content" source="./media/calling/pre-call.png" alt-text="サンプル アプリケーションのランディング ページを示すスクリーンショット。":::
+:::image type="content" source="./media/calling/pre-call.png" alt-text="サンプル アプリケーションの通話開始前の画面を示すスクリーンショット。":::
 
 表示名とデバイスを構成すると、通話セッションに参加できるようになります。 これで、メインの通話キャンバスが表示され、通話のコア エクスペリエンスが提供されます。
 
-:::image type="content" source="./media/calling/main-app.png" alt-text="サンプル アプリケーションのランディング ページを示すスクリーンショット。":::
+:::image type="content" source="./media/calling/main-app.png" alt-text="サンプル アプリケーションのメイン画面を示すスクリーンショット。":::
 
 通話のメイン画面のコンポーネントは以下のとおりです。
 
@@ -75,7 +75,7 @@ Azure Communication Services の **Group Calling Hero Sample** は、Communicati
 ## <a name="before-running-the-sample-for-the-first-time"></a>サンプルを初めて実行する前に行う手順
 
 1. PowerShell、Windows ターミナル、コマンド プロンプト、またはそれと同等のインスタンスを開き、サンプルの複製先のディレクトリに移動します。
-2. `git clone https://github.com/Azure/Communication.git`
+2. `git clone https://github.com/Azure-Samples/communication-services-web-calling-hero.git`
 3. Azure portal から `Connection String` を取得します。 接続文字列の詳細については、[Azure Communication リソースの作成](../quickstarts/create-communication-resource.md)に関するページを参照してください。
 4. `Connection String` を取得したら、Service .NET フォルダーの下で **Calling/appsetting.json** ファイルに接続文字列を追加します。 変数 `ResourceConnectionString` に接続文字列を入力します。
 

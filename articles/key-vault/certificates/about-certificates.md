@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3e5476b01ac78af992f548efbeb87de5104dead0
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 45c0108ed87dd5264b9192f5dd69e0198bd59fc1
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126775"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289787"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Azure Key Vault の証明書について
 
@@ -44,7 +44,7 @@ Key Vault 証明書が作成されるとき、秘密キーと共にアドレス�
 
 アドレス指定可能なキーは、エクスポート不可能な KV 証明書との関連性が高くなります。 アドレス指定可能な KV キーの操作は、KV 証明書の作成に使用された KV 証明書ポリシーの *keyusage* フィールドからマップされます。  
 
- - サポートされているキーの種類: RSA、RSA-HSM、EC、EC-HSM、oct (一覧は[こちら](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype))。エクスポート可能にできるのは、RSA、EC のみです。 HSM キーはエクスポートできません。
+ - サポートされているキーの種類: RSA、RSA-HSM、EC、EC-HSM、oct (一覧は[こちら](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype))。エクスポート可能にできるのは、RSA、EC のみです。 HSM キーはエクスポートできません。
 
 
 ## <a name="certificate-attributes-and-tags"></a>証明書の属性とタグ
@@ -82,11 +82,11 @@ Key Vault 証明書には次の属性があります。
 
 Key Vault 証明書を最初から作成するときは、ポリシーを提供する必要があります。 ポリシーでは、この Key Vault 証明書バージョンまたは次の Key Vault 証明書バージョンを作成する方法を指定します。 ポリシーが確立された後は、将来のバージョンに対する後続の作成操作では必要はありません。 Key Vault 証明書のすべてのバージョンに対して、ポリシーのインスタンスは 1 つだけ存在します。  
 
-大まかに言えば、証明書ポリシーには次の情報が含まれています (それらの定義は[こちら](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)から見つけることができます)。  
+大まかに言えば、証明書ポリシーには次の情報が含まれています (それらの定義は[こちら](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)から見つけることができます)。  
 
 -   X509 証明書のプロパティ:サブジェクト名、サブジェクト代替名、および x509 証明書要求の作成に使用される他のプロパティが含まれます。  
 -   キーのプロパティ: キーの種類、キーの長さ、エクスポート可能、ReuseKeyOnRenewal フィールドが含まれています。 これらのフィールドは、キー コンテナーにキーの生成方法を示します。 
-     - サポートされているキーの種類: RSA、RSA-HSM、EC、EC-HSM、oct (一覧は[こちら](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)にあります) 
+     - サポートされているキーの種類: RSA、RSA-HSM、EC、EC-HSM、oct (一覧は[こちら](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)にあります) 
 -   シークレットのプロパティ: 証明書をシークレットとして取得するための、シークレット値を生成するアドレス指定可能なシークレットのコンテンツの種類などの、シークレットのプロパティが含まれます。  
 -   有効期間アクション: KV 証明書の有効期間アクションが含まれます。 各有効期間アクションには次のものが含まれています。  
 
@@ -133,7 +133,7 @@ Key Vault で証明書発行者を作成するには、その前に、次の前�
 
     -   キー コンテナー内のプロバイダーの発行者オブジェクトの作成に使用される構成を提供します  
 
-証明書ポータルから発行者オブジェクトを作成する方法について詳しくは、[Key Vault 証明書のブログ](https://aka.ms/kvcertsblog)をご覧ください  
+証明書ポータルから発行者オブジェクトを作成する方法について詳しくは、[Key Vault 証明書のブログ](/archive/blogs/kv/manage-certificates-via-azure-key-vault)をご覧ください  
 
 Key Vault では、異なる発行者プロバイダー構成で複数の発行者オブジェクトを作成できます。 発行者オブジェクトが作成されたら、その名前を 1 つまたは複数の証明書ポリシーで参照できます。 発行者オブジェクトを参照することで、証明書の作成と更新中に CA プロバイダーに X509 証明書を要求するときに、発行者オブジェクトで指定されている構成を使用するよう Key Vault に指示します。  
 
