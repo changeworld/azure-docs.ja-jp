@@ -13,6 +13,7 @@
     - name: パブリック ロード バランサ―の作成 - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
     - name: パブリック ロード バランサ―の作成 - Resource Manager テンプレート
+      displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
     - name: 内部ロード バランサ―の作成 - Azure PowerShell
       href: quickstart-load-balancer-standard-internal-portal.md
@@ -21,6 +22,7 @@
     - name: 内部ロード バランサーの作成 - Azure CLI
       href: quickstart-load-balancer-standard-internal-cli.md
     - name: 内部ロード バランサーの作成 - Resource Manager テンプレート
+      displayName: Resource Manager
       href: quickstart-load-balancer-standard-internal-template.md
   expanded: true
 - name: チュートリアル
@@ -53,6 +55,8 @@
       items:
         - name: 正常性プローブ
           href: load-balancer-custom-probe-overview.md
+        - name: Load Balancer 用の Azure Monitor 分析情報
+          href: load-balancer-insights.md
         - name: Standard Load Balancer のメトリックと診断
           href: load-balancer-standard-diagnostics.md
         - name: Basic Load Balancer の Azure Monitor ログ

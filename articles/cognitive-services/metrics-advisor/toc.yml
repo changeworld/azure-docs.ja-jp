@@ -5,12 +5,14 @@
   items:
     - name: Metrics Advisor とは
       href: overview.md
+    - name: 新機能
+      href: whats-new.md
 - name: クイックスタート
   items:
     - name: Web ポータルを使用する
       href: quickstarts/web-portal.md
-    - name: REST API の使用
-      href: quickstarts/rest-api.md
+    - name: REST API またはクライアント ライブラリを使用する
+      href: quickstarts/rest-api-and-client-library.md
 - name: 方法
   items:
     - name: データをオンボードする

@@ -7,21 +7,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 07/01/2020
+ms.date: 10/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 981c6f6bb2b0eb597b32ce8e428ef0aa7d19929b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb4b69902f73a22cbd2b0fd5ad97c547ceb76a5c
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88003369"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912329"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>チュートリアル:AI Builder を使用してフォーム処理アプリを作成する
 
-[AI Builder](https://docs.microsoft.com/ai-builder/overview) は Power Platform の機能であり、プロセスを自動化し、結果を予測して、ビジネスのパフォーマンスを向上させることができます。 AI Builder のフォーム処理を使用すると、フォーム ドキュメントからキーと値のペアおよびテーブル データを識別して抽出する AI モデルを作成できます。
+[AI Builder](/ai-builder/overview) は Power Platform の機能であり、プロセスを自動化し、結果を予測して、ビジネスのパフォーマンスを向上させることができます。 AI Builder のフォーム処理を使用すると、フォーム ドキュメントからキーと値のペアおよびテーブル データを識別して抽出する AI モデルを作成できます。
 
 > [!NOTE]
-> このプロジェクトは、[Microsoft Learn モジュール](https://docs.microsoft.com/learn/modules/get-started-with-form-processing/)としても利用できます。
+> このプロジェクトは、[Microsoft Learn モジュール](/learn/modules/get-started-with-form-processing/)としても利用できます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -32,8 +32,8 @@ ms.locfileid: "88003369"
 
 ## <a name="prerequisites"></a>前提条件
 
-* データのトレーニングとテストに使用するために、同じ種類の少なくとも 5 つのフォームのセット。 トレーニング データ セットをまとめるためのヒントとオプションについては、[トレーニング データ セットの作成](./build-training-data-set.md)に関するページを参照してください。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2128080)の **Train** フォルダーにあるファイルを使用できます。
-* Power Apps または Power Automate のライセンスについては、[ライセンス ガイド](https://go.microsoft.com/fwlink/?linkid=2085130)に関するドキュメントを参照してください。 ライセンスには、[Common Data Service](https://powerplatform.microsoft.com/en-us/common-data-service/) が含まれている必要があります。
+* データのトレーニングとテストに使用するために、同じ種類の少なくとも 5 つのフォームのセット。 トレーニング データ セットをまとめるためのヒントとオプションについては、[トレーニング データ セットの作成](./build-training-data-set.md)に関するページを参照してください。 このクイックスタートでは、 [サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2128080)の **Train** フォルダーにあるファイルを使用できます。
+* Power Apps または Power Automate のライセンスについては、[ライセンス ガイド](https://go.microsoft.com/fwlink/?linkid=2085130)に関するドキュメントを参照してください。 ライセンスには、[Common Data Service](https://powerplatform.microsoft.com/common-data-service/) が含まれている必要があります。
 * AI Builder の[アドオンまたは試用版](https://go.microsoft.com/fwlink/?LinkId=2113956&clcid=0x409)。
 
 
@@ -69,7 +69,7 @@ ms.locfileid: "88003369"
 > これらのドキュメントをアップロードした後でも、ドキュメントの一部を削除したり、他のドキュメントをアップロードしたりすることができます。
 
 > [!div class="mx-imgBorder"]
-> ![[ドキュメントの追加] ページ](./media/tutorial-ai-builder/add-documents-page.png)
+> ![[ドキュメントの追加] ボタンが強調表示されているスクリーンショット。](./media/tutorial-ai-builder/add-documents-page.png)
 
 ### <a name="analyze-your-documents"></a>ドキュメントを分析する
 
@@ -89,11 +89,11 @@ ms.locfileid: "88003369"
 
     検出されたフィールドをクリックすると、次の情報が表示されます。
 
-    - **フィールド名**: 検出されたフィールドのラベルの名前。
-    - **フィールド値**: 検出されたフィールドの値。
+    - **フィールド名** : 検出されたフィールドのラベルの名前。
+    - **フィールド値** : 検出されたフィールドの値。
 
 > [!div class="mx-imgBorder"]
-> ![[ドキュメントの追加] ページ](./media/tutorial-ai-builder/select-fields-page.png)
+> ![タグ付けのページ](./media/tutorial-ai-builder/select-fields-page.png)
 
 ### <a name="label-undetected-fields"></a>検出されないフィールドにラベルを付ける
 
@@ -104,7 +104,7 @@ ms.locfileid: "88003369"
 1. **[次へ]** を選択して、選択されたフォームのフィールドを確認します。 すべて問題がなければ、 **[トレーニング]** を選択してモデルをトレーニングします。
 
     > [!div class="mx-imgBorder"]
-    > ![[ドキュメントの追加] ページ](./media/tutorial-ai-builder/summary-train-page.png)
+    > ![トレーニングのページ](./media/tutorial-ai-builder/summary-train-page.png)
 1. トレーニングが完了したら、 **[トレーニングが完了しました]** 画面で **[詳細ページに移動する]** を選択します。
 ## <a name="quick-test-your-model"></a>モデルのクイック テストを行う
 
@@ -127,13 +127,13 @@ ms.locfileid: "88003369"
 モデルに問題がなければ、 **[発行]** を選択して発行します。 発行が完了すると、モデルは **[Published]\(発行済み\)** として昇格され、使用できるようになります。
 
 > [!div class="mx-imgBorder"]
-> ![[ドキュメントの追加] ページ](./media/tutorial-ai-builder/model-page.png)
+> ![発行モデルのページ](./media/tutorial-ai-builder/model-page.png)
 
-フォーム処理モデルを発行した後は、[Power Apps キャンバス アプリ](https://docs.microsoft.com/ai-builder/form-processor-component-in-powerapps)または [Power Automate](https://docs.microsoft.com/ai-builder/form-processing-model-in-flow) でそれを使用できます。
+フォーム処理モデルを発行した後は、[Power Apps キャンバス アプリ](/ai-builder/form-processor-component-in-powerapps)または [Power Automate](/ai-builder/form-processing-model-in-flow) でそれを使用できます。
 
 ## <a name="next-steps"></a>次のステップ
 
 フォーム処理モデルを使用する方法については、AI Builder のドキュメントを参照してください。
 
-* [Power Apps でフォーム プロセッサ コンポーネントを使用する](https://docs.microsoft.com/ai-builder/form-processor-component-in-powerapps)
-* [Power Automate でフォーム処理モデルを使用する](https://docs.microsoft.com/ai-builder/form-processing-model-in-flow)
+* [Power Apps でフォーム プロセッサ コンポーネントを使用する](/ai-builder/form-processor-component-in-powerapps)
+* [Power Automate でフォーム処理モデルを使用する](/ai-builder/form-processing-model-in-flow)
