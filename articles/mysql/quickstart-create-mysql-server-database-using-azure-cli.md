@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/15/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 161d1c95507d366ce00f75580a100fd2607675d9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0c43f1ea81bbc29817e6a2509c9967bf3b5782c9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544020"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337287"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>クイック スタート:Azure CLI を使用した Azure Database for MySQL サーバーの作成
 
@@ -143,6 +143,4 @@ az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
->[Windows 上で PHP アプリと MySQL を構築する](../app-service/tutorial-php-mysql-app.md)
->[Linux 上で PHP アプリと MySQL を構築する](../app-service/tutorial-php-mysql-app.md?pivots=platform-linux%253fpivots%253dplatform-linux)
->[MySQL を使用して Java ベースの Spring アプリを構築する](/azure/developer/java/spring-framework/spring-app-service-e2e?tabs=bash)
+>[MySQL を使用して Windows で PHP アプリを構築する](../app-service/tutorial-php-mysql-app.md)

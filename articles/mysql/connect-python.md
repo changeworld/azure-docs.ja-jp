@@ -11,12 +11,12 @@ ms.custom:
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: a08145ba5ffb5b30eb2c472d3eb8f608703f44a0
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 8d181483032deed35adfd6eebcbf870b89593407
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743456"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332068"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:Python を使用して Azure Database for MySQL に接続してデータを照会する
 
@@ -61,13 +61,13 @@ Azure portal から Azure Database for MySQL に接続するために必要な�
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
    
-1. ポータルの検索バーで、作成した Azure Database for MySQL サーバー (たとえば、**mydemoserver**) を検索して選択します。
+1. ポータルの検索バーで、作成した Azure Database for MySQL サーバー (たとえば、 **mydemoserver** ) を検索して選択します。
    
    :::image type="content" source="./media/connect-python/1_server-overview-name-login.png" alt-text="Azure Database for MySQL サーバー名":::
    
 1. サーバーの **[概要]** ページから、 **[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。 パスワードを忘れた場合も、このページからパスワードをリセットすることができます。
    
-   :::image type="content" source="./media/connect-python/azure-database-for-mysql-server-overview-name-login.png" alt-text="Azure Database for MySQL サーバー名":::
+   :::image type="content" source="./media/connect-python/azure-database-for-mysql-server-overview-name-login.png" alt-text="Azure Database for MySQL サーバー名 2":::
 
 ## <a name="run-the-python-examples"></a>Python サンプルを実行する
 
@@ -75,15 +75,15 @@ Azure portal から Azure Database for MySQL に接続するために必要な�
 
 1. テキスト エディターで新しいファイルを作成します。
 1. ファイルにコード例を追加します。 コード内の `<mydemoserver>`、`<myadmin>`、`<mypassword>`、および `<mydatabase>` の各プレースホルダーを、実際の MySQL サーバーとデータベースの値に置き換えます。
-1. *.py* 拡張子を付けてファイルをプロジェクト フォルダーに保存します (たとえば、*C:\pythonmysql\createtable.py*、 */home/username/pythonmysql/createtable.py*)。
+1. *.py* 拡張子を付けてファイルをプロジェクト フォルダーに保存します (たとえば、 *C:\pythonmysql\createtable.py* 、 */home/username/pythonmysql/createtable.py* )。
 1. コードを実行するために、コマンド プロンプトまたは `bash` シェルを開き、ディレクトリを対象のプロジェクト フォルダー (たとえば、`cd pythonmysql`) に変更します。 `python` コマンドに続けてファイル名 (たとえば、`python createtable.py`) を入力し、Enter キーを押します。 
    
    > [!NOTE]
-   > Windows で *python.exe* が見つからない場合は、Python のパスを PATH 環境変数に追加するか、*python.exe* への完全パス (たとえば、`C:\python27\python.exe createtable.py`) を指定してください。
+   > Windows で *python.exe* が見つからない場合は、Python のパスを PATH 環境変数に追加するか、 *python.exe* への完全パス (たとえば、`C:\python27\python.exe createtable.py`) を指定してください。
 
 ## <a name="create-a-table-and-insert-data"></a>テーブルを作成してデータを挿入する
 
-次のコードを使用して、サーバーとデータベースに接続し、テーブルを作成した後、**INSERT** SQL ステートメントを使用してデータを読み込みます。 
+次のコードを使用して、サーバーとデータベースに接続し、テーブルを作成した後、 **INSERT** SQL ステートメントを使用してデータを読み込みます。 
 
 このコードでは、mysql.connector ライブラリをインポートし、[connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 関数を使用して、config コレクション内の[引数](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)を使用して Azure Database for MySQL に接続します。 このコードでは、接続でカーソルを使用し、[cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) メソッドによって MySQL データベースに対する SQL クエリを実行します。 
 
@@ -138,7 +138,7 @@ else:
 
 ## <a name="read-data"></a>データの読み取り
 
-接続し、**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
+接続し、 **SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
 
 このコードでは、mysql.connector ライブラリをインポートし、[connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 関数を使用して、config コレクション内の[引数](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)を使用して Azure Database for MySQL に接続します。 このコードでは、接続でカーソルを使用し、[cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) メソッドによって MySQL データベースに対する SQL クエリを実行します。 
 
@@ -188,7 +188,7 @@ else:
 
 ## <a name="update-data"></a>データの更新
 
-接続し、**UPDATE** SQL ステートメントを使用してデータを更新するには、次のコードを使用します。 
+接続し、 **UPDATE** SQL ステートメントを使用してデータを更新するには、次のコードを使用します。 
 
 このコードでは、mysql.connector ライブラリをインポートし、[connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 関数を使用して、config コレクション内の[引数](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)を使用して Azure Database for MySQL に接続します。 このコードでは、接続でカーソルを使用し、[cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) メソッドによって MySQL データベースに対する SQL クエリを実行します。 
 
@@ -231,7 +231,7 @@ else:
 
 ## <a name="delete-data"></a>データの削除
 
-接続し、**DELETE** SQL ステートメントを使用してデータを削除するには、次のコードを使用します。 
+接続し、 **DELETE** SQL ステートメントを使用してデータを削除するには、次のコードを使用します。 
 
 このコードでは、mysql.connector ライブラリをインポートし、[connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 関数を使用して、config コレクション内の[引数](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)を使用して Azure Database for MySQL に接続します。 このコードでは、接続でカーソルを使用し、[cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) メソッドによって MySQL データベースに対する SQL クエリを実行します。 
 
@@ -270,6 +270,16 @@ else:
   cursor.close()
   conn.close()
   print("Done.")
+```
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このクイックスタートで使用したすべてのリソースをクリーンアップするには、次のコマンドを使用してリソース グループを削除します。
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>次のステップ

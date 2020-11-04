@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 3b5783476e0d4a96561e11158cd2b0f6421cfbf6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 648f06ef1af5d6dce9fa3583c6358d3bd173f209
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88136101"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319667"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (旧称 SQL DW) のチート シート
 
@@ -37,7 +37,7 @@ ms.locfileid: "88136101"
 
 ## <a name="data-migration"></a>データ移行
 
-まず、データを [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) または Azure Blob Storage に読み込みます。 次に、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (プレビュー) を使用して、データをステージング テーブルに読み込みます。 次の構成を使用します。
+まず、データを [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) または Azure Blob Storage に読み込みます。 次に、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (プレビュー) を使用して、データをステージング テーブルに読み込みます。 次の構成を使用します。
 
 | デザイン | 推奨 |
 |:--- |:--- |
@@ -64,8 +64,8 @@ ms.locfileid: "88136101"
 * 共通ハッシュ キーが同じデータ形式であることを確認します。
 * 分散には varchar 形式を使わないようにします。
 * 頻繁に結合操作が行われるファクト テーブルに対する共通ハッシュ キーを持つディメンション テーブルは、ハッシュが分散される可能性があります。
-* データの偏りを分析するには、 *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* を使います。
-* クエリの背後で行われているデータ移動を分析し、ブロードキャストおよびシャッフル操作にかかる時間を監視するには、 *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* を使います。 これはディストリビューション方法の検討に役立ちます。
+* データの偏りを分析するには、 *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)* を使います。
+* クエリの背後で行われているデータ移動を分析し、ブロードキャストおよびシャッフル操作にかかる時間を監視するには、 *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)* を使います。 これはディストリビューション方法の検討に役立ちます。
 
 詳しくは、[レプリケート テーブル](design-guidance-for-replicated-tables.md)および[分散テーブル](sql-data-warehouse-tables-distribute.md)に関するページをご覧ください。
 
@@ -109,7 +109,7 @@ ELT を必要とするステージング テーブルでは、パーティショ
 
 ## <a name="maintain-statistics"></a>統計を管理する
 
-データに*大幅な*変更が発生したときに統計を更新することが重要です。 "*大幅な*" 変更が発生したかどうかを判断するには、「[統計の更新](sql-data-warehouse-tables-statistics.md#update-statistics)」をご覧ください。 更新された統計により、クエリ プランが最適化されます。 すべての統計の管理に時間がかかりすぎる場合は、統計を作成する列を限定します。
+データに *大幅な* 変更が発生したときに統計を更新することが重要です。 " *大幅な* " 変更が発生したかどうかを判断するには、「 [統計の更新](sql-data-warehouse-tables-statistics.md#update-statistics)」をご覧ください。 更新された統計により、クエリ プランが最適化されます。 すべての統計の管理に時間がかかりすぎる場合は、統計を作成する列を限定します。
 
 更新の頻度を定義することもできます。 たとえば、毎日新しい値が追加される可能性がある日付列を更新する場合があります。 結合に含まれる列、WHERE 句で使われている列、および GROUP BY に含まれている列に関する統計を作成すると、最も大きなメリットが得られます。
 
@@ -121,7 +121,7 @@ ELT を必要とするステージング テーブルでは、パーティショ
 
 クエリに時間がかかりすぎる場合は、ユーザーが大きいリソース クラスで実行していないことを確認します。 大きいリソース クラスは、多くのコンカレンシー スロットを消費します。 それにより、他のクエリが待機する可能性があります。
 
-最後に、Gen2 の [SQL プール](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)を使用して、各リソース クラスが Gen1 の 2.5 倍のメモリを取得します。
+最後に、Gen2 の [SQL プール](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse)を使用して、各リソース クラスが Gen1 の 2.5 倍のメモリを取得します。
 
 詳しくは、[リソース クラスとコンカレンシー](resource-classes-for-workload-management.md)の操作方法に関するページをご覧ください。
 

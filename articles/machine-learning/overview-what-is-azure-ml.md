@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: ad025d2278d6c9ab360ddbdc250e8db4b4eec665
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 4dcc1d755f4fe11dda69f84466d3e958ca981ddf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495742"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316295"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 
@@ -43,7 +43,7 @@ Azure Machine Learning は、従来の ML からディープ ラーニング、�
 Azure Machine Learning には、次のような、開発者やデータ科学者が機械学習ワークフロー用に必要とするすべてのツールが用意されています。
 + [Azure Machine Learning デザイナー](tutorial-designer-automobile-price-train-score.md): ドラッグアンドドロップ モジュールを使用して実験を構築し、パイプラインをデプロイします。
 
-+ Jupyter Notebook: [サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks)を使用するか、独自のノートブックを作成して、<a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK for Python</a> のサンプルを機械学習に活用します。 
++ Jupyter Notebook: [サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks)を使用するか、独自のノートブックを作成して、<a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK for Python</a> のサンプルを機械学習に活用します。 
 
 + R スクリプトまたはノートブックでは、<a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">SDK for R</a> を使用して独自のコードを書いたり、デザイナーで R モジュールを使用したりします。
 
@@ -61,9 +61,9 @@ Azure Machine Learning には、次のような、開発者やデータ科学者
 
 ## <a name="build-ml-models-in-python-or-r"></a>Python または R で ML モデルを構築する
 
-Azure Machine Learning の <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a> または <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a> を使用してローカル コンピューターでトレーニングを開始します。 その後、クラウドにスケールアウトすることができます。 
+Azure Machine Learning の <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a> または <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a> を使用してローカル コンピューターでトレーニングを開始します。 その後、クラウドにスケールアウトすることができます。 
 
-クラウドのパワーと、Azure Machine Learning コンピューティングや [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks) などの利用可能な多数の[コンピューティング先](how-to-create-attach-compute-studio.md)と[高度なハイパーパラメーター調整サービス](how-to-tune-hyperparameters.md)を活用することで、高品質のモデルを手早く構築できます。
+クラウドのパワーと、Azure Machine Learning コンピューティングや [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) などの利用可能な多数の[コンピューティング先](how-to-create-attach-compute-studio.md)と[高度なハイパーパラメーター調整サービス](how-to-tune-hyperparameters.md)を活用することで、高品質のモデルを手早く構築できます。
 
 SDK を使用して、[モデルのトレーニングと調整を自動化](tutorial-auto-train-models.md)することもできます。
 
@@ -92,9 +92,9 @@ SDK を使用して、[モデルのトレーニングと調整を自動化](tuto
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps:デプロイとライフサイクル管理
 適切なモデルがあれば、Web サービス、IoT デバイス、または Power BI で簡単に使用できます。 詳細については、[デプロイする方法と場所](how-to-deploy-and-where.md)に関する記事を参照してください。
 
-デプロイされたモデルは、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)、[Azure Machine Learning Studio](https://ml.azure.com)、または [Machine Learning CLI](reference-azure-machine-learning-cli.md) を使用して管理できます。
+デプロイされたモデルは、[Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)、[Azure Machine Learning Studio](https://ml.azure.com)、または [Machine Learning CLI](reference-azure-machine-learning-cli.md) を使用して管理できます。
 
-これらのモデルを使用して、[リアルタイム](how-to-consume-web-service.md)で予測を返したり、データが大量の場合は[非同期で](how-to-use-parallel-run-step.md)予測を返したりすることができます。
+これらのモデルを使用して、[リアルタイム](how-to-consume-web-service.md)で予測を返したり、データが大量の場合は[非同期で](./tutorial-pipeline-batch-scoring-classification.md)予測を返したりすることができます。
 
 さらに、高度な[機械学習パイプライン](concept-ml-pipelines.md)を使用して、データの準備、モデルのトレーニングと評価、およびデプロイの各手順で共同で作業することができます。 パイプラインを使用すると、次のことができます。
 
@@ -112,7 +112,7 @@ Azure Machine Learning の基本的な使い方については、「[次の手�
 Azure Machine Learning は、Azure プラットフォーム上の他のサービスとの連携に加え、Git や MLFlow といったオープン ソース ツールとの統合にも対応します。
 
 + コンピューティング先 ( __Azure Kubernetes Service__ 、 __Azure Container Instances__ 、 __Azure Databricks__ 、 __Azure Data Lake Analytics__ 、 __Azure HDInsight__ など)。 コンピューティング先の詳細については、[コンピューティング先の概要](concept-compute-target.md)に関するページを参照してください。
-+ __Azure Event Grid__ 。 詳細については、[Azure Machine Learning イベントを使用する方法](concept-event-grid-integration.md)に関するページを参照してください。
++ __Azure Event Grid__ 。 詳細については、[Azure Machine Learning イベントを使用する方法](./how-to-use-event-grid.md)に関するページを参照してください。
 + __Azure Monitor__ 。 詳細については、「[Azure Machine Learning の監視](monitor-azure-machine-learning.md)」を参照してください。
 + データ ストア ( __Azure Storage アカウント__ 、 __Azure Data Lake Storage__ 、 __Azure SQL Database__ 、 __Azure Database for PostgreSQL__ 、 __Azure Open Datasets__ など)。 詳細については、「[Azure ストレージ サービスのデータにアクセスする](how-to-access-data.md)」および「[Azure Open Datasets を使用してデータセットを作成する](how-to-create-register-datasets.md)」を参照してください。
 + __Azure Virtual Networks__ 。 詳細については、「[仮想ネットワークの分離とプライバシーの概要](how-to-network-security-overview.md)」を参照してください。

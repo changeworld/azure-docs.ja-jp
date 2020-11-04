@@ -8,12 +8,12 @@ ms.custom: mvc, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.openlocfilehash: 16f1e2a6b7a3c0e81b7ceb57359a48a84ee489d9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 86362dc6d3e66f8b3d6888318fef0eb1dd12c3c3
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532732"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337491"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:.NET (C#) を使用して Azure Database for MySQL に接続してデータを照会する
 
@@ -272,6 +272,16 @@ namespace AzureMySqlExample
         }
     }
 }
+```
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このクイックスタートで使用したすべてのリソースをクリーンアップするには、次のコマンドを使用してリソース グループを削除します。
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>次のステップ

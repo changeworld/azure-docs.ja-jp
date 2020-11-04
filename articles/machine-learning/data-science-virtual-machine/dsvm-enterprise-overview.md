@@ -10,19 +10,19 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: b1357c9bb125cb881ac4aa6dd31c9dcaf53954f0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 538802cc2129a8e8f379c8b569bd1f8696097dab
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87919941"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314179"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>データ サイエンス仮想マシンに基づくチーム分析と AI 環境 
 [Data Science Virtual Machine](overview.md) (DSVM) では、人工知能 (AI) およびデータ分析用にあらかじめ構築されているソフトウェアで、Azure プラットフォーム上にリッチな環境を提供します。
 
 従来、個々の分析デスクトップとして、DSVM が使用されています。 個々のデータ サイエンティストは、この共有された構築済みの分析環境を使用して、生産性を向上させます。 大規模な分析チームが、データ サイエンティストや AI 開発者向けの環境を計画するときに繰り返されるテーマの 1 つは、開発および実験のための共有分析インフラストラクチャです。 このインフラストラクチャは、データ サイエンス チームと分析チームとの間のコラボレーションと一貫性の促進も行う、エンタープライズ IT ポリシーに従って管理されます。
 
-共有インフラストラクチャにより、分析環境で IT をいっそう有効に活用することができます。 一部の組織は、チームベースのデータ サイエンス/分析インフラストラクチャを "*分析サンドボックス*" と呼びます。 これにより、データ サイエンティストはさまざまなデータ資産にアクセスし、データを迅速に理解できるようになります。 このサンドボックス環境では、データ サイエンティストが実験を実行し、仮説を検証して、実稼働環境に影響を与えずに予測モデルを構築することもできます。
+共有インフラストラクチャにより、分析環境で IT をいっそう有効に活用することができます。 一部の組織は、チームベースのデータ サイエンス/分析インフラストラクチャを " *分析サンドボックス* " と呼びます。 これにより、データ サイエンティストはさまざまなデータ資産にアクセスし、データを迅速に理解できるようになります。 このサンドボックス環境では、データ サイエンティストが実験を実行し、仮説を検証して、実稼働環境に影響を与えずに予測モデルを構築することもできます。
 
 DSVM は、Azure インフラストラクチャ レベルで動作するため、IT 管理者は、企業の IT ポリシーに準拠して動作する DSVM を簡単に構成できます。 DSVM では、制御された方法で会社のデータ資産へのアクセスを提供しながら、さまざまな共有アーキテクチャを実装する際に十分な柔軟性を提供します。
 
@@ -37,13 +37,13 @@ DSVM は、Azure インフラストラクチャ レベルで動作するため�
 
 このシリーズでは、前述の各トピックに対するガイダンスと指針を示します。 大規模なエンタープライズ構成で DSVM を展開する際の考慮事項と要件がすべて含まれているわけではありません。 企業で DSVM インスタンスを実装するときに使用できる、いくつかのその他の Azure リソースを次に示します。
 
-* [ネットワークのセキュリティ](https://docs.microsoft.com/azure/security/fundamentals/network-security)
-* [監視](https://docs.microsoft.com/azure/virtual-machines/windows/monitor)と[管理](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
-* [ログ記録と監査](https://docs.microsoft.com/azure/security/fundamentals/log-audit)
-* [Azure ロールベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [ネットワークのセキュリティ](../../security/fundamentals/network-overview.md)
+* [監視](../../azure-monitor/insights/monitor-vm-azure.md)と[管理](../../virtual-machines/maintenance-and-updates.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json%252c%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json%253ftoc%253d%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)
+* [ログ記録と監査](../../security/fundamentals/log-audit.md)
+* [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md)
 * [ポリシーの設定と適用](../../governance/policy/overview.md)
-* [マルウェア対策](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
-* [暗号化](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview)
-* [データの探索とガバナンス](https://docs.microsoft.com/azure/data-catalog/)
+* [マルウェア対策](../../security/fundamentals/antimalware.md)
+* [暗号化](../../virtual-machines/windows/disk-encryption-overview.md)
+* [データの探索とガバナンス](../../data-catalog/index.yml)
 
-最後に、[Azure アーキテクチャ センター](https://docs.microsoft.com/azure/architecture/)では、クラウド ベースの分析インフラストラクチャを構築して管理するための詳細なエンドツーエンド アーキテクチャとモデルが提供されています。
+最後に、[Azure アーキテクチャ センター](/azure/architecture/)では、クラウド ベースの分析インフラストラクチャを構築して管理するための詳細なエンドツーエンド アーキテクチャとモデルが提供されています。

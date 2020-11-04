@@ -5,17 +5,19 @@ author: SnehaGunda
 ms.author: sngun
 tags: azure-resource-manager
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: a319e5f3b6aa861feb2d9dfc88d471ff695c2a3c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b97702bb84eb38d185fe97ffcc596e374f28fbe2
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482321"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339667"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Cosmos DB とコンテナーを作成する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB は、あらゆる規模に対応する、オープン API を備えた Microsoft の高速 NoSQL データベースです。 Azure Cosmos DB を使用すると、キーと値のデータベース、ドキュメント データベース、グラフ データベースをすばやく作成し、クエリを実行できます。 このクイックスタートでは、Azure Cosmos データベースを作成してその中にコンテナーを作成する Azure Resource Manager テンプレート (ARM テンプレート) のデプロイ プロセスについて重点的に取り上げます。 その後、そのコンテナーにデータを格納することができます。
 
@@ -57,7 +59,7 @@ Azure サブスクリプションまたは Azure Cosmos DB の無料試用版ア
 
 2. 次の値を選択または入力します。
 
-   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="Azure へのデプロイ":::
+   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="ARM テンプレート、Azure Cosmos DB 統合、デプロイ ポータル":::
 
     特に明記されていない場合は、既定値を使用して Azure Cosmos リソースを作成してください。
 
@@ -78,7 +80,7 @@ Azure サブスクリプションまたは Azure Cosmos DB の無料試用版ア
 
 3. **[購入]** を選択します。 Azure Cosmos アカウントが正常にデプロイされると、次の通知が表示されます。
 
-   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="Azure へのデプロイ":::
+   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="ARM テンプレート、Cosmos DB 統合、デプロイ ポータル通知":::
 
 テンプレートをデプロイするには Azure portal を使用します。 Azure portal だけでなく、Azure PowerShell、Azure CLI、および REST API を使用することもできます。 他のデプロイ方法については、「[テンプレートのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)」を参照してください。
 

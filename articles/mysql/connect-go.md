@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: a9fc43c2b9b95022f9036fc5410c314c1546d1ea
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 08f9e9b7c720b19941f2889047a56f55bba05473
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90882537"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332187"
 ---
 # <a name="quickstart-use-go-language-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:Go 言語を使用して Azure Database for MySQL に接続してデータを照会する
 
@@ -83,7 +83,7 @@ ms.locfileid: "90882537"
 Azure Database for MySQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したサーバー (例: **mydemoserver**) を検索します。
+2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したサーバー (例: **mydemoserver** ) を検索します。
 3. サーバー名をクリックします。
 4. サーバーの **[概要]** パネルから、 **[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
  :::image type="content" source="./media/connect-go/1_server-overview-name-login.png" alt-text="Azure Database for MySQL サーバー名":::
@@ -98,7 +98,7 @@ Azure Database for MySQL に接続するために必要な接続情報を取得�
 6. または、コードをネイティブ アプリケーションとしてビルドするには、`go build createtable.go` を実行し、`createtable.exe` を起動してアプリケーションを実行します。
 
 ## <a name="connect-create-table-and-insert-data"></a>接続、テーブルの作成、データの挿入
-サーバーに接続し、テーブルを作成した後、**INSERT** SQL ステートメントを使用してデータを読み込むには、次のコードを使用します。 
+サーバーに接続し、テーブルを作成した後、 **INSERT** SQL ステートメントを使用してデータを読み込むには、次のコードを使用します。 
 
 このコードでは、3 つのパッケージをインポートします。[sql パッケージ](https://golang.org/pkg/database/sql/)、Azure Database for MySQL と通信するためのドライバーである [go sql driver for mysql](https://github.com/go-sql-driver/mysql#installation)、コマンド ラインで入力と出力を表示するための [fmt パッケージ](https://golang.org/pkg/fmt/)です。
 
@@ -175,7 +175,7 @@ func main() {
 ```
 
 ## <a name="read-data"></a>データの読み取り
-接続し、**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
+接続し、 **SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
 
 このコードでは、3 つのパッケージをインポートします。[sql パッケージ](https://golang.org/pkg/database/sql/)、Azure Database for MySQL と通信するためのドライバーである [go sql driver for mysql](https://github.com/go-sql-driver/mysql#installation)、コマンド ラインで入力と出力を表示するための [fmt パッケージ](https://golang.org/pkg/fmt/)です。
 
@@ -244,7 +244,7 @@ func main() {
 ```
 
 ## <a name="update-data"></a>データの更新
-接続し、**UPDATE** SQL ステートメントを使用してデータを更新するには、次のコードを使用します。 
+接続し、 **UPDATE** SQL ステートメントを使用してデータを更新するには、次のコードを使用します。 
 
 このコードでは、3 つのパッケージをインポートします。[sql パッケージ](https://golang.org/pkg/database/sql/)、Azure Database for MySQL と通信するためのドライバーである [go sql driver for mysql](https://github.com/go-sql-driver/mysql#installation)、コマンド ラインで入力と出力を表示するための [fmt パッケージ](https://golang.org/pkg/fmt/)です。
 
@@ -299,7 +299,7 @@ func main() {
 ```
 
 ## <a name="delete-data"></a>データの削除
-接続し、**DELETE** SQL ステートメントを使用してデータを削除するには、次のコードを使用します。 
+接続し、 **DELETE** SQL ステートメントを使用してデータを削除するには、次のコードを使用します。 
 
 このコードでは、3 つのパッケージをインポートします。[sql パッケージ](https://golang.org/pkg/database/sql/)、Azure Database for MySQL と通信するためのドライバーである [go sql driver for mysql](https://github.com/go-sql-driver/mysql#installation)、コマンド ラインで入力と出力を表示するための [fmt パッケージ](https://golang.org/pkg/fmt/)です。
 
@@ -350,6 +350,16 @@ func main() {
     fmt.Printf("Deleted %d row(s) of data.\n", rowCount)
     fmt.Println("Done.")
 }
+```
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このクイックスタートで使用したすべてのリソースをクリーンアップするには、次のコマンドを使用してリソース グループを削除します。
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>次のステップ

@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 2/28/2018
-ms.openlocfilehash: 45fa455d00a757e6df87d2a93982f33fe4e64bef
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4e82c8402584f694cb32bb37ae3e6eae9366eaf7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91710364"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341435"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:PHP を使用して Azure Database for PostgreSQL - Single Server に接続してデータを照会する
 
@@ -31,13 +31,13 @@ ms.locfileid: "91710364"
 - [PHP 7.1.4 非スレッド セーフ バージョン (x64)](https://windows.php.net/download#php-7.1) をダウンロードします。
 - PHP をインストールし、さらなる構成については [PHP マニュアル](https://secure.php.net/manual/install.windows.php)を参照します。
 - このコードでは、PHP のインストールに含まれている **pgsql** クラス (ext/php_pgsql.dll) を使用します。 
-- php.ini 構成ファイル (通常は `C:\Program Files\PHP\v7.1\php.ini` にあります) を編集して、**pgsql** 拡張機能を有効にします。 この構成ファイルには、`extension=php_pgsql.so` というテキスト行を含める必要があります。 このテキストが表示されていない場合は、追加してファイルを保存します。 このテキストが含まれていても、先頭にセミコロンが付いてコメント化されている場合は、セミコロンを削除してコメント解除します。
+- php.ini 構成ファイル (通常は `C:\Program Files\PHP\v7.1\php.ini` にあります) を編集して、 **pgsql** 拡張機能を有効にします。 この構成ファイルには、`extension=php_pgsql.so` というテキスト行を含める必要があります。 このテキストが表示されていない場合は、追加してファイルを保存します。 このテキストが含まれていても、先頭にセミコロンが付いてコメント化されている場合は、セミコロンを削除してコメント解除します。
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 - [PHP 7.1.4 非スレッド セーフ バージョン (x64)](https://secure.php.net/downloads.php) をダウンロードします。 
 - PHP をインストールし、さらなる構成については [PHP マニュアル](https://secure.php.net/manual/install.unix.php)を参照します。
-- このコードでは、**pgsql** クラス (php_pgsql.so) を使用します。 `sudo apt-get install php-pgsql` を実行してインストールします。
-- `/etc/php/7.0/mods-available/pgsql.ini` 構成ファイルを編集して、**pgsql** 拡張機能を有効にします。 この構成ファイルには、`extension=php_pgsql.so` というテキスト行を含める必要があります。 このテキストが表示されていない場合は、追加してファイルを保存します。 このテキストが含まれていても、先頭にセミコロンが付いてコメント化されている場合は、セミコロンを削除してコメント解除します。
+- このコードでは、 **pgsql** クラス (php_pgsql.so) を使用します。 `sudo apt-get install php-pgsql` を実行してインストールします。
+- `/etc/php/7.0/mods-available/pgsql.ini` 構成ファイルを編集して、 **pgsql** 拡張機能を有効にします。 この構成ファイルには、`extension=php_pgsql.so` というテキスト行を含める必要があります。 このテキストが表示されていない場合は、追加してファイルを保存します。 このテキストが含まれていても、先頭にセミコロンが付いてコメント化されている場合は、セミコロンを削除してコメント解除します。
 
 ### <a name="macos"></a>MacOS
 - [PHP 7.1.4 バージョン](https://secure.php.net/downloads.php)をダウンロードします。
@@ -47,13 +47,13 @@ ms.locfileid: "91710364"
 Azure Database for PostgreSQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したサーバー (例: **mydemoserver**) を検索します。
+2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したサーバー (例: **mydemoserver** ) を検索します。
 3. サーバー名をクリックします。
 4. サーバーの **[概要]** パネルから、 **[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
  :::image type="content" source="./media/connect-php/1-connection-string.png" alt-text="Azure Database for PostgreSQL サーバーの名前":::
 
 ## <a name="connect-and-create-a-table"></a>接続とテーブルの作成
-接続し、**CREATE TABLE** SQL ステートメントでテーブルを作成してから、**INSERT INTO** SQL ステートメントでそのテーブルに行を追加するには、次のコードを使用します。
+接続し、 **CREATE TABLE** SQL ステートメントでテーブルを作成してから、 **INSERT INTO** SQL ステートメントでそのテーブルに行を追加するには、次のコードを使用します。
 
 このコードでは、[pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) メソッドを呼び出して、Azure Database for PostgreSQL に接続します。 次に、[pg_query()](https://secure.php.net/manual/en/function.pg-query.php) メソッドを数回呼び出して複数のコマンドを実行し、毎回エラーが発生した場合は [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) を呼び出して詳細をチェックします。 その後、[pg_close()](https://secure.php.net/manual/en/function.pg-close.php) メソッドを呼び出して接続を閉じます。
 
@@ -111,7 +111,7 @@ Azure Database for PostgreSQL に接続するために必要な接続情報を�
 ```
 
 ## <a name="read-data"></a>データの読み取り
-接続し、**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
+接続し、 **SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
 
  このコードでは、[pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) メソッドを呼び出して、Azure Database for PostgreSQL に接続します。 次に、[pg_query()](https://secure.php.net/manual/en/function.pg-query.php) メソッドを呼び出して SELECT コマンドを実行し (結果は結果セットに保持されます)、エラーが発生した場合は [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) を呼び出して詳細をチェックします。  結果セットを読み取るために、ループで [pg_fetch_row()](https://secure.php.net/manual/en/function.pg-fetch-row.php) メソッドが呼び出されます。このメソッドは行ごとに 1 回呼び出され、行データは配列 `$row` に取得されます。このとき、列あたり 1 つのデータ値が各配列位置に格納されます。  結果セットを開放するために、[pg_free_result()](https://secure.php.net/manual/en/function.pg-free-result.php) メソッドが呼び出されます。 その後、[pg_close()](https://secure.php.net/manual/en/function.pg-close.php) メソッドを呼び出して接続を閉じます。
 
@@ -149,7 +149,7 @@ Azure Database for PostgreSQL に接続するために必要な接続情報を�
 ```
 
 ## <a name="update-data"></a>データの更新
-接続し、**UPDATE** SQL ステートメントを使用してデータを更新するには、次のコードを使用します。
+接続し、 **UPDATE** SQL ステートメントを使用してデータを更新するには、次のコードを使用します。
 
 このコードでは、[pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) メソッドを呼び出して、Azure Database for PostgreSQL に接続します。 次に、[pg_query()](https://secure.php.net/manual/en/function.pg-query.php) メソッドを呼び出してコマンドを実行し、エラーが発生した場合は [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) を呼び出して詳細をチェックします。 その後、[pg_close()](https://secure.php.net/manual/en/function.pg-close.php) メソッドを呼び出して接続を閉じます。
 
@@ -184,7 +184,7 @@ Azure Database for PostgreSQL に接続するために必要な接続情報を�
 
 
 ## <a name="delete-data"></a>データの削除
-接続し、**DELETE** SQL ステートメントを使用してデータを削除するには、次のコードを使用します。 
+接続し、 **DELETE** SQL ステートメントを使用してデータを削除するには、次のコードを使用します。 
 
  このコードでは、[pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) メソッドを呼び出して、Azure Database for PostgreSQL に接続します。 次に、[pg_query()](https://secure.php.net/manual/en/function.pg-query.php) メソッドを呼び出してコマンドを実行し、エラーが発生した場合は [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) を呼び出して詳細をチェックします。 その後、[pg_close()](https://secure.php.net/manual/en/function.pg-close.php) メソッドを呼び出して接続を閉じます。
 
@@ -214,6 +214,16 @@ Azure Database for PostgreSQL に接続するために必要な接続情報を�
     // Closing connection
     pg_close($connection);
 ?>
+```
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このクイックスタートで使用したすべてのリソースをクリーンアップするには、次のコマンドを使用してリソース グループを削除します。
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>次のステップ

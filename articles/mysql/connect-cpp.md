@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: cpp
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 8119cbbb6619b923068723a6c855c04a8de48876
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 28957235dc5c90beebf834101a481187909ab6bb
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90904030"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332221"
 ---
 # <a name="quickstart-use-connectorc-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:Connector/C++ を使用して Azure Database for MySQL に接続してデータを照会する
 
@@ -54,7 +54,7 @@ ms.locfileid: "90904030"
 Azure Database for MySQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したサーバー (例: **mydemoserver**) を検索します。
+2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したサーバー (例: **mydemoserver** ) を検索します。
 3. サーバー名をクリックします。
 4. サーバーの **[概要]** パネルから、 **[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
  :::image type="content" source="./media/connect-cpp/1_server-overview-name-login.png" alt-text="Azure Database for MySQL サーバー名":::
@@ -134,7 +134,7 @@ int main()
 
 ## <a name="read-data"></a>データの読み取り
 
-接続し、**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 このコードでは、sql::Driver クラスとその connect() メソッドを使って MySQL との接続を確立しています。 その後、prepareStatement() メソッドと executeQuery() メソッドを使用して、select コマンドを実行します。 次に、next() を使用して、結果のレコードに進みます。 最後に、getInt() と getString() を使用して、レコード内の値を解析します。
+接続し、 **SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 このコードでは、sql::Driver クラスとその connect() メソッドを使って MySQL との接続を確立しています。 その後、prepareStatement() メソッドと executeQuery() メソッドを使用して、select コマンドを実行します。 次に、next() を使用して、結果のレコードに進みます。 最後に、getInt() と getString() を使用して、レコード内の値を解析します。
 
 Host、DBName、User、Password パラメーターを置き換えます。 これらのパラメーターの値は、サーバーとデータベースの作成時に指定した値に置き換えることができます。 
 
@@ -193,7 +193,7 @@ int main()
 ```
 
 ## <a name="update-data"></a>データの更新
-接続し、**UPDATE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 このコードでは、sql::Driver クラスとその connect() メソッドを使って MySQL との接続を確立しています。 その後、prepareStatement() メソッドと executeQuery() メソッドを使用して、update コマンドを実行します。 
+接続し、 **UPDATE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 このコードでは、sql::Driver クラスとその connect() メソッドを使って MySQL との接続を確立しています。 その後、prepareStatement() メソッドと executeQuery() メソッドを使用して、update コマンドを実行します。 
 
 Host、DBName、User、Password パラメーターを置き換えます。 これらのパラメーターの値は、サーバーとデータベースの作成時に指定した値に置き換えることができます。 
 
@@ -251,7 +251,7 @@ int main()
 
 
 ## <a name="delete-data"></a>データの削除
-接続し、**DELETE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 このコードでは、sql::Driver クラスとその connect() メソッドを使って MySQL との接続を確立しています。 その後、prepareStatement() メソッドと executeQuery() メソッドを使用して、delete コマンドを実行します。
+接続し、 **DELETE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 このコードでは、sql::Driver クラスとその connect() メソッドを使って MySQL との接続を確立しています。 その後、prepareStatement() メソッドと executeQuery() メソッドを使用して、delete コマンドを実行します。
 
 Host、DBName、User、Password パラメーターを置き換えます。 これらのパラメーターの値は、サーバーとデータベースの作成時に指定した値に置き換えることができます。 
 
@@ -306,6 +306,16 @@ int main()
     system("pause");
     return 0;
 }
+```
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このクイックスタートで使用したすべてのリソースをクリーンアップするには、次のコマンドを使用してリソース グループを削除します。
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>次のステップ

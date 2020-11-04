@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 8a9661f7f5cdd66dc0aab6d937701cda48048219
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1ddc8c2b9531dd78c1c6746e28b8ff5864af563e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488029"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331949"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Database for PostgreSQL サーバーを作成する
 
@@ -153,7 +153,3 @@ az postgres server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [エクスポートとインポートを使用したデータベースの移行](./howto-migrate-using-export-and-import.md)
-> 
-> [PostgreSQL を使用する Django Web アプリのデプロイ](../app-service/tutorial-python-postgresql-app.md)
->
-> [Node.JS アプリを使用した接続](./connect-nodejs.md)

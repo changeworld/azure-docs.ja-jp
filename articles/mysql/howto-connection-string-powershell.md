@@ -5,14 +5,14 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.custom: mvc, devx-track-azurepowershell
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 8/5/2020
-ms.openlocfilehash: 37a257e2ca7f354659c032833480dd207cc1bed9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fcba366a0322c3c1b5c6dcdf0fc3571646053fad
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87839938"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337185"
 ---
 # <a name="how-to-generate-an-azure-database-for-mysql-connection-string-with-powershell"></a>PowerShell を使用して Azure Database for MySQL 接続文字列を生成する方法
 
@@ -26,7 +26,7 @@ ms.locfileid: "87839938"
 
 ## <a name="get-the-connection-string"></a>接続文字列を取得する
 
-アプリケーションを Azure Database for MySQL に接続するための接続文字列を生成するには、`Get-AzMySqlConnectionString` コマンドレットを使用します。 次の例では、**mydemoserver** から PHP クライアントの接続文字列が返されます。
+アプリケーションを Azure Database for MySQL に接続するための接続文字列を生成するには、`Get-AzMySqlConnectionString` コマンドレットを使用します。 次の例では、 **mydemoserver** から PHP クライアントの接続文字列が返されます。
 
 ```azurepowershell-interactive
 Get-AzMySqlConnectionString -Client PHP -Name mydemoserver -ResourceGroupName myresourcegroup
