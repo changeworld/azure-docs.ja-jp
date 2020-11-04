@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 2fb94faacc2bc7d6c3b1e166e617f3f675594cef
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: bcb6e91bba367363385214806077146b1a24fe7b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101258"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503489"
 ---
 # <a name="indexer-access-to-content-protected-by-azure-network-security-features-azure-cognitive-search"></a>Azure ネットワーク セキュリティ機能によって保護されたコンテンツへのインデクサー アクセス (Azure Cognitive Search)
 
@@ -87,7 +87,7 @@ Azure Cognitive Search インデクサーは、データ ソースからコン�
 
 お客様は、セキュリティで保護されたリソース (たとえば、ストレージ アカウントなど) へのプライベート エンドポイント接続を作成するために、検索管理操作 [CreateOrUpdate API](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) を **共有プライベート リンク リソース** 上に呼び出す必要があります。 この (発信) プライベート エンドポイント接続を介して移動するトラフィックは、検索サービス固有の "プライベート" インデクサー実行環境にある仮想ネットワークからのみ発信されます。
 
-この API の呼び出し元に、セキュリティで保護されたリソースへのプライベート エンドポイント接続要求を承認する RBAC アクセス許可があるかどうかが、Azure Cognitive Search によって検証されます。 たとえば、読み取り専用のアクセス許可があるストレージ アカウントへのプライベート エンドポイント接続を要求した場合、この呼び出しは拒否されます。
+この API の呼び出し元に、セキュリティで保護されたリソースへのプライベート エンドポイント接続要求を承認する Azure RBAC アクセス許可があるかどうかが、Azure Cognitive Search によって検証されます。 たとえば、読み取り専用のアクセス許可があるストレージ アカウントへのプライベート エンドポイント接続を要求した場合、この呼び出しは拒否されます。
 
 ### <a name="step-2-approve-the-private-endpoint-connection"></a>手順 2:プライベート エンドポイント接続を承認する
 

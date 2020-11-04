@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: a3382f93990612b0ab34eb0848cbf3d6577c44ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a9a8f3fe7422468ff2c8886dff7415322cf70f0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87087936"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676880"
 ---
 # <a name="how-to-manually-fix-servicenow-sync-problems"></a>ServiceNow の同期に関する問題を手動で修正する方法
 
@@ -23,16 +23,16 @@ Azure Monitor は、サードパーティの IT Service Management (ITSM) プロ
 
 1. 上部の検索バナーでソリューションを検索し、関連するソリューションを選択します
 
-    ![新しい接続](media/itsmc-resync-servicenow/solution-search-8bit.png)
+    ![上部の検索バナーと、関連するソリューションを選択する場所を示すスクリーンショット。](media/itsmc-resync-servicenow/solution-search-8bit.png)
 
 1. ソリューション画面で、サブスクリプション フィルターで [すべてを選択] を選択し、"ServiceDesk" でフィルター処理します
 
-    ![新しい接続](media/itsmc-resync-servicenow/solutions-list-8bit.png)
+    ![[すべてを選択] を選択する場所と、ServiceDesk によってフィルター処理する場所を示すスクリーンショット。](media/itsmc-resync-servicenow/solutions-list-8bit.png)
 
 1. ITSM 接続のソリューションを選択します。
 1. 左側のバナーで [ITSM connection]\(ITSM 接続\) を選択します。
 
-    ![新しい接続](media/itsmc-resync-servicenow/itsm-connector-8bit.png)
+    ![ITSM 接続を選択する場所を示すスクリーンショット。](media/itsmc-resync-servicenow/itsm-connector-8bit.png)
 
 1. 各コネクタを一覧から選択します。 
     1. 構成するにはコネクタ名をクリックします
@@ -42,7 +42,7 @@ Azure Monitor は、サードパーティの IT Service Management (ITSM) プロ
 
     1. [同期] をクリックします
 
-       ![新しい接続](media/itsmc-resync-servicenow/resync-8bit2.png)
+       ![[同期] ボタンが強調表示されているスクリーンショット。](media/itsmc-resync-servicenow/resync-8bit2.png)
 
     1. [保存] をクリックします
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: 14f0eaee1ede4da3b80ddd94d5c915438e97f8f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90862a74e5fb6521a95292d50fc5cc11bd0082b5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530065"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547658"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>VMware VM と物理サーバーのためのモビリティ サービスについて
 
@@ -85,15 +85,15 @@ ms.locfileid: "90530065"
 
 1. **[インストールの進行状況]** でインストールを監視します。 インストールが完了したら、 **[Proceed to Configuration]\(構成に進む\)** を選択して、構成サーバーにサービスを登録します。
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="モビリティ サービスのインストール オプションのページ。":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="インストールの進行状況と、インストールが完了したら、アクティブな構成を続けるボタンを示すスクリーンショット。":::
 
 1. **[構成サーバーの詳細]** で、構成した IP アドレスとパスフレーズを指定します。
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility4.png" alt-text="モビリティ サービスのインストール オプションのページ。":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility4.png" alt-text="モビリティ サービスの登録ページ。":::
 
 1. **[登録]** を選択して登録を完了します。
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility5.png" alt-text="モビリティ サービスのインストール オプションのページ。":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility5.png" alt-text="モビリティ サービスの登録の最後のページ。":::
 
 ## <a name="install-the-mobility-service-using-command-prompt"></a>コマンド プロンプトを使用してモビリティ サービスをインストールする
 
@@ -104,7 +104,7 @@ ms.locfileid: "90530065"
 
 ### <a name="windows-machine"></a>Windows マシン
 
-- コマンド プロンプトから、次のコマンドを実行して、保護するサーバー上のローカル フォルダー (_C:\Temp_ など) にインストーラーをコピーします。 インストーラーのファイル名を実際のファイル名に置き換えます。
+- コマンド プロンプトから、次のコマンドを実行して、保護するサーバー上のローカル フォルダー ( _C:\Temp_ など) にインストーラーをコピーします。 インストーラーのファイル名を実際のファイル名に置き換えます。
 
   ```cmd
   cd C:\Temp
@@ -134,7 +134,7 @@ ms.locfileid: "90530065"
 セットアップ ログ | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 `/Role` | 必須のインストール パラメーターです。 モビリティ サービス (MS) またはマスター ターゲット (MT) をインストールするかどうかを指定します。
 `/InstallLocation`| 省略可能なパラメーター。 モビリティ サービスのインストール場所 (任意のフォルダー) を指定します。
-`/Platform` | 必須。 モビリティ サービスがインストールされるプラットフォームを指定します。 <br/> VMware VM/物理サーバーの場合は **VMware**。 <br/> Azure VM の場合は **Azure**。<br/><br/> Azure VM を物理マシンとして扱う場合は、**VMware** を指定します。
+`/Platform` | 必須。 モビリティ サービスがインストールされるプラットフォームを指定します。 <br/> VMware VM/物理サーバーの場合は **VMware** 。 <br/> Azure VM の場合は **Azure** 。<br/><br/> Azure VM を物理マシンとして扱う場合は、 **VMware** を指定します。
 `/Silent`| 省略可能。 インストーラーをサイレント モードで実行するかどうかを指定します。
 
 #### <a name="registration-settings"></a>登録設定
@@ -174,7 +174,7 @@ ms.locfileid: "90530065"
 構文 | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 `-r` | 必須のインストール パラメーターです。 モビリティ サービス (MS) またはマスター ターゲット (MT) をインストールするかどうかを指定します。
 `-d` | 省略可能なパラメーター。 モビリティ サービスのインストールの場所 (`/usr/local/ASR`) を指定します。
-`-v` | 必須。 モビリティ サービスがインストールされるプラットフォームを指定します。 <br/> VMware VM/物理サーバーの場合は **VMware**。 <br/> Azure VM の場合は **Azure**。
+`-v` | 必須。 モビリティ サービスがインストールされるプラットフォームを指定します。 <br/> VMware VM/物理サーバーの場合は **VMware** 。 <br/> Azure VM の場合は **Azure** 。
 `-q` | 省略可能。 インストーラーをサイレント モードで実行するかどうかを指定します。
 
 #### <a name="registration-settings"></a>登録設定
@@ -187,8 +187,8 @@ ms.locfileid: "90530065"
 
 ## <a name="azure-virtual-machine-agent"></a>Azure 仮想マシン エージェント
 
-- **Windows VM**:モビリティ サービスのバージョン 9.7.0.0 以降、[Azure VM エージェント](../virtual-machines/extensions/features-windows.md#azure-vm-agent)がモビリティ サービス インストーラーによってインストールされます。 これにより、マシンが Azure にフェールオーバーするとき、Azure VM は確実に、VM 拡張機能を使用するためのエージェント インストールの前提条件を満たすようになります。
-- **Linux VM**:フェールオーバー後、[WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md) を Azure VM に手動インストールする必要があります。
+- **Windows VM** :モビリティ サービスのバージョン 9.7.0.0 以降、 [Azure VM エージェント](../virtual-machines/extensions/features-windows.md#azure-vm-agent)がモビリティ サービス インストーラーによってインストールされます。 これにより、マシンが Azure にフェールオーバーするとき、Azure VM は確実に、VM 拡張機能を使用するためのエージェント インストールの前提条件を満たすようになります。
+- **Linux VM** :フェールオーバー後、 [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md) を Azure VM に手動インストールする必要があります。
 
 ## <a name="locate-installer-files"></a>インストーラー ファイルを検索する
 
@@ -225,38 +225,38 @@ ms.locfileid: "90530065"
 
 ### <a name="suse-11-sp3-server"></a>SUSE 11 SP3 サーバー
 
-9.36 バージョン以降の **SUSE Linux Enterprise Server 11 SP3 マシンをアップデートまたは保護するための前提条件**には、以下があります。
+9.36 バージョン以降の **SUSE Linux Enterprise Server 11 SP3 マシンをアップデートまたは保護するための前提条件** には、以下があります。
 
 1. 最新のモビリティ エージェント インストーラーが Microsoft ダウンロード センターからダウンロードされ、構成サーバーおよびすべてのスケールアウト プロセス サーバーのプッシュ インストーラー リポジトリに配置されていることを確認します
 2. 最新の SUSE Linux Enterprise Server 11 SP3 エージェント インストーラーを[ダウンロード](site-recovery-whats-new.md)します。 最新のモビリティ エージェント バージョンは [9.37](https://support.microsoft.com/help/4582666/) です
 3. 構成サーバーに移動し、次のパスに SUSE Linux Enterprise Server 11 SP3 エージェント インストーラーをコピーします: INSTALL_DIR\home\svsystems\pushinstallsvc\repository
 1. 最新のインストーラーをコピーしたら、InMage PushInstall サービスを再起動します。 
 1. 次に、関連するスケールアウト プロセス サーバーに移動し、手順 3 と手順 4 を繰り返します。
-1. **たとえば**、インストール パスが C:\Program Files (x86)\Microsoft Azure Site Recovery の場合、前述のディレクトリは次のようになります。
+1. **たとえば** 、インストール パスが C:\Program Files (x86)\Microsoft Azure Site Recovery の場合、前述のディレクトリは次のようになります。
     1. C:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
 
 ### <a name="rhel-5-or-centos-5-server"></a>RHEL 5 または CentOS 5 サーバー
 
-バージョン 9.36 以降の **RHEL 5 マシンを更新または保護するための前提条件**には、以下があります。
+バージョン 9.36 以降の **RHEL 5 マシンを更新または保護するための前提条件** には、以下があります。
 
 1. 最新のモビリティ エージェント インストーラーが Microsoft ダウンロード センターからダウンロードされ、構成サーバーおよびすべてのスケールアウト プロセス サーバーのプッシュ インストーラー リポジトリに配置されていることを確認します
 2. 最新の RHEL 5 または CentOS 5 エージェント インストーラーを[ダウンロード](site-recovery-whats-new.md)します。 最新のモビリティ エージェント バージョンは [9.37](https://support.microsoft.com/help/4582666/) です
 3. 構成サーバーに移動し、次のパスに RHEL 5 または CentOS 5 エージェント インストーラーをコピーします: INSTALL_DIR\home\svsystems\pushinstallsvc\repository
 1. 最新のインストーラーをコピーしたら、InMage PushInstall サービスを再起動します。 
 1. 次に、関連するスケールアウト プロセス サーバーに移動し、手順 3 と手順 4 を繰り返します。
-1. **たとえば**、インストール パスが C:\Program Files (x86)\Microsoft Azure Site Recovery の場合、前述のディレクトリは次のようになります。
+1. **たとえば** 、インストール パスが C:\Program Files (x86)\Microsoft Azure Site Recovery の場合、前述のディレクトリは次のようになります。
     1. C:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
 
 ## <a name="debian-7-server"></a>Debian 7 サーバー
 
-バージョン 9.36 以降の **Debian 7 マシンを更新または保護するための前提条件**には、以下があります。
+バージョン 9.36 以降の **Debian 7 マシンを更新または保護するための前提条件** には、以下があります。
 
 1. 最新のモビリティ エージェント インストーラーが Microsoft ダウンロード センターからダウンロードされ、構成サーバーおよびすべてのスケールアウト プロセス サーバーのプッシュ インストーラー リポジトリに配置されていることを確認します
 2. 最新の Debian 7 エージェント インストーラーを[ダウンロード](site-recovery-whats-new.md)します。 最新のモビリティ エージェント バージョンは [9.37](https://support.microsoft.com/help/4582666/) です
 3. 構成サーバーに移動し、次のパスに Debian 7 エージェント インストーラーをコピーします: INSTALL_DIR\home\svsystems\pushinstallsvc\repository
 1. 最新のインストーラーをコピーしたら、InMage PushInstall サービスを再起動します。 
 1. 次に、関連するスケールアウト プロセス サーバーに移動し、手順 3 と手順 4 を繰り返します。
-1. **たとえば**、インストール パスが C:\Program Files (x86)\Microsoft Azure Site Recovery の場合、前述のディレクトリは次のようになります。
+1. **たとえば** 、インストール パスが C:\Program Files (x86)\Microsoft Azure Site Recovery の場合、前述のディレクトリは次のようになります。
     1. C:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
 
 ## <a name="next-steps"></a>次のステップ

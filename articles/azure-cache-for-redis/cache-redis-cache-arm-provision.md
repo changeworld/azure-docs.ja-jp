@@ -1,22 +1,22 @@
 ---
 title: Azure Resource Manager テンプレートを使用して Azure Cache for Redis をデプロイする
-description: Azure Resource Manager テンプレートを使用して Azure Cache for Redis をデプロイする方法について説明します。 テンプレートは、一般的なシナリオ向けに用意されています。
+description: Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure Cache for Redis リソースをデプロイする方法について説明します。 テンプレートは、一般的なシナリオ向けに用意されています。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
-ms.openlocfilehash: a2ab400158f77af7934ca3f9f7c811d5fe2bd340
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bd9a45ec7c43d9338dec184afd784d2b163c410
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461240"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735963"
 ---
-# <a name="create-an-azure-cache-for-redis-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure Cache for Redis を作成する
+# <a name="quickstart-create-an-azure-cache-for-redis-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure Cache for Redis を作成する
 
-Azure Cache for Redis をデプロイする Azure Resource Manager テンプレートを作成する方法について説明します。 キャッシュを既存のストレージ アカウントで使用することで、診断データを保持することができます。 さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法についても説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。 現時点では、診断設定は、サブスクリプションの同じリージョン内のすべてのキャッシュで共有されます。 領域内の 1 つのキャッシュを更新すると、領域内の他のすべてのキャッシュに反映されます。
+Azure Cache for Redis をデプロイする Azure Resource Manager テンプレート (ARM テンプレート) を作成する方法について説明します。 キャッシュを既存のストレージ アカウントで使用することで、診断データを保持することができます。 さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法についても説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。 現時点では、診断設定は、サブスクリプションの同じリージョン内のすべてのキャッシュで共有されます。 領域内の 1 つのキャッシュを更新すると、領域内の他のすべてのキャッシュに反映されます。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -26,8 +26,8 @@ Azure Cache for Redis をデプロイする Azure Resource Manager テンプレ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-* **ストレージ アカウント**:これを作成するには、「[Azure Storage アカウントの作成](/azure/storage/common/storage-account-create?tabs=azure-portal)」を参照してください。 ストレージ アカウントは、診断データに使用されます。
+* **Azure サブスクリプション** :Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+* **ストレージ アカウント** :これを作成するには、「 [Azure Storage アカウントの作成](../storage/common/storage-account-create.md?tabs=azure-portal)」を参照してください。 ストレージ アカウントは、診断データに使用されます。
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
@@ -46,7 +46,7 @@ Azure Cache for Redis をデプロイする Azure Resource Manager テンプレ�
 * [データの永続化を使用する Premium Azure Cache for Redis の作成](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
 * [仮想ネットワークにデプロイされる Premium Redis Cache の作成](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
 
-最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」で `Azure Cache for Redis` を検索してください。
+最新のテンプレートを確認する場合は、「 [Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」で _Azure Cache for Redis_ を検索してください。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
@@ -57,9 +57,9 @@ Azure Cache for Redis をデプロイする Azure Resource Manager テンプレ�
 
     * **[サブスクリプション]** : データ共有とその他のリソースの作成に使用する Azure サブスクリプションを選択します。
     * **[リソース グループ]** : **[新規作成]** を選択して新しいリソース グループを作成するか、既存のリソース グループを選択します。
-    * **場所**: リソース グループの場所を選択します。 ストレージ アカウントと Redis Cache は同じリージョンに存在する必要があります。 既定では、Redis Cache はリソース グループと同じ場所を使用します。 そのため、ストレージ アカウントと同じ場所を指定します。
-    * **Redis Cache 名**: Redis Cache の名前を入力します。
-    * **既存の診断ストレージ アカウント**: ストレージ アカウントのリソース ID を入力します。 構文は、 **/subscriptions/&lt;サブスクリプション ID>/resourceGroups/&lt;リソース グループ名>/providers/Microsoft.Storage/storageAccounts/&lt;ストレージ アカウント名>** です。
+    * **場所** : リソース グループの場所を選択します。 ストレージ アカウントと Redis Cache は同じリージョンに存在する必要があります。 既定では、Redis Cache はリソース グループと同じ場所を使用します。 そのため、ストレージ アカウントと同じ場所を指定します。
+    * **Redis Cache 名** : Redis Cache の名前を入力します。
+    * **既存の診断ストレージ アカウント** : ストレージ アカウントのリソース ID を入力します。 構文は `/subscriptions/&lt;SUBSCRIPTION ID>/resourceGroups/&lt;RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/&lt;STORAGE ACCOUNT NAME>` です。
 
     残りの設定については既定値を使用します。
 1. **[上記の使用条件に同意する]** を選択し、 **[購入]** を選択します。

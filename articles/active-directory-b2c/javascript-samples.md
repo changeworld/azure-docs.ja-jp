@@ -9,15 +9,15 @@ ms.custom: devx-track-js
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a9faca55f8440a28a845e892ee38df2de3489f97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6b4fff4a58685873e99332b00864ee95f569416
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259494"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628594"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で使用するための JavaScript のサンプル
 
@@ -42,13 +42,13 @@ ms.locfileid: "91259494"
 
 * アプリケーションのユーザー インターフェイスの要素に[ページ レイアウト](contentdefinitions.md#select-a-page-layout)を選択します。
 
-    JavaScript を使用する場合は、カスタム ポリシーのコンテンツ定義の "*すべて*" に対して、ページ `contract` バージョンを使用して[ページ レイアウト バージョンを定義する](contentdefinitions.md#migrating-to-page-layout)必要があります。
+    JavaScript を使用する場合は、カスタム ポリシーのコンテンツ定義の " *すべて* " に対して、ページ `contract` バージョンを使用して [ページ レイアウト バージョンを定義する](contentdefinitions.md#migrating-to-page-layout)必要があります。 ページ バージョンで[ページ レイアウトに移行する](contentdefinitions.md#migrating-to-page-layout)方法について説明します。 
 
 ## <a name="add-the-scriptexecution-element"></a>ScriptExecution 要素を追加する
 
 **ScriptExecution** 要素を [RelyingParty](relyingparty.md) 要素に追加することで、スクリプトの実行を有効にします。
 
-1. カスタム ポリシー ファイルを開きます。 たとえば、*SignUpOrSignin.xml* などです。
+1. カスタム ポリシー ファイルを開きます。 たとえば、 *SignUpOrSignin.xml* などです。
 2. **ScriptExecution** 要素を **RelyingParty** の **UserJourneyBehaviors** 要素に追加します。
 
     ```xml
@@ -139,7 +139,7 @@ function addTermsOfUseLink() {
 }
 ```
 
-コードでは、`termsOfUseUrl` を利用規約の同意のリンクで置き換えます。 ディレクトリでは、**termsOfUse** と呼ばれる新しいユーザー属性を作成し、**termsOfUse** をユーザー属性として組み込みます。
+コードでは、`termsOfUseUrl` を利用規約の同意のリンクで置き換えます。 ディレクトリでは、 **termsOfUse** と呼ばれる新しいユーザー属性を作成し、 **termsOfUse** をユーザー属性として組み込みます。
 
 ## <a name="next-steps"></a>次のステップ
 

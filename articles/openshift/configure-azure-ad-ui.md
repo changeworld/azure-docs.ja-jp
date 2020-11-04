@@ -7,13 +7,13 @@ ms.date: 03/12/2020
 author: sabbour
 ms.author: asabbour
 keywords: aro、openshift、az aro、red hat、cli
-ms.custom: mvc
-ms.openlocfilehash: 2cb54c202af04996080cda970b3d327145f0e72b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 1b9e4d1f1b989caa317384292d013af255530f11
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469883"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748074"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>Azure Red Hat OpenShift 4 クラスターの Azure Active Directory 認証を構成する (ポータル)
 
@@ -21,7 +21,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-クラスターの **OAuth コールバック URL** を作成し、メモしておきます。 **aro-rg** を実際のリソース グループの名前に、**aro-cluster** を実際のクラスター名に置き換えてください。
+クラスターの **OAuth コールバック URL** を作成し、メモしておきます。 **aro-rg** を実際のリソース グループの名前に、 **aro-cluster** を実際のクラスター名に置き換えてください。
 
 > [!NOTE]
 > OAuth コールバック URL の `AAD` セクションは、後でセットアップする OAuth ID プロバイダー名と一致している必要があります。
@@ -34,9 +34,9 @@ echo "OAuth callback URL: https://oauth-openshift.apps.$domain.$location.aroapp.
 
 ## <a name="create-an-azure-active-directory-application-for-authentication"></a>認証用の Azure Active Directory アプリケーションを作成する
 
-Azure portal にログインし、[[アプリの登録]](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ブレードに移動します。次に、 **[新規登録]** をクリックして新しいアプリケーションを作成します。
+Azure portal にログインし、 [[アプリの登録]](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ブレードに移動します。次に、 **[新規登録]** をクリックして新しいアプリケーションを作成します。
 
-アプリケーションの名前 (**aro-azuread-auth** など) を指定し、上記の手順で取得した OAuth コールバック URL の値を使用して **リダイレクト URI** を入力します。
+アプリケーションの名前 ( **aro-azuread-auth** など) を指定し、上記の手順で取得した OAuth コールバック URL の値を使用して **リダイレクト URI** を入力します。
 
 ![[新しいアプリケーションの登録]](media/aro4-ad-registerapp.png)
 
@@ -44,7 +44,7 @@ Azure portal にログインし、[[アプリの登録]](https://ms.portal.azure
 
 ![シークレットの作成](media/aro4-ad-clientsecret.png)
 
-**[概要]** に移動し、**アプリケーション (クライアント) ID** と**ディレクトリ (テナント) ID** をメモしておきます。 この値は後の段階で必要となります。
+**[概要]** に移動し、 **アプリケーション (クライアント) ID** と **ディレクトリ (テナント) ID** をメモしておきます。 この値は後の段階で必要となります。
 
 ![アプリケーション (クライアント) ID とディレクトリ (テナント) ID を取得する](media/aro4-ad-ids.png)
 
@@ -62,7 +62,7 @@ Azure Active Directory によって返される ID トークンの一部とし�
 
 **トークン構成 (プレビュー)** に移動し、 **[Add optional claim]\(省略可能な要求を追加\)** をクリックします。 **[ID]** を選択し、 **[電子メール]** と **upn** 要求を確認します。
 
-![シークレットの作成](media/aro4-ad-tokens.png)
+![追加された電子メールと UPN 要求を示すスクリーンショット。](media/aro4-ad-tokens.png)
 
 ## <a name="assign-users-and-groups-to-the-cluster-optional"></a>ユーザーとグループをクラスターに割り当てる (省略可能)
 
@@ -115,6 +115,6 @@ az aro list-credentials \
 
 ## <a name="verify-login-through-azure-active-directory"></a>Azure Active Directory を使用したログインの検証
 
-OpenShift Web コンソールをログアウトしてもう一度ログインしようとすると、**AAD** でログインするための新しいオプションが表示されます。 数分待つ必要がある場合があります。
+OpenShift Web コンソールをログアウトしてもう一度ログインしようとすると、 **AAD** でログインするための新しいオプションが表示されます。 数分待つ必要がある場合があります。
 
 ![Azure Active Directory オプションを使用したログイン画面](media/aro4-login-2.png)

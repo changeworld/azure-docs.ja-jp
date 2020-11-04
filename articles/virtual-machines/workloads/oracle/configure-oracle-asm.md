@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 2d112db720d8ad5a1cba1ec2f35fbb59670e1e92
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b9653cded11edd36602caea0ecd50cfb8dd05ebe
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996743"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547182"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle ASM をセットアップする  
 
@@ -32,7 +32,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ### <a name="create-a-resource-group"></a>リソース グループを作成する
 
-リソース グループを作成するには、[az group create](/cli/azure/group) コマンドを使用します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この例では、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。
+リソース グループを作成するには、[az group create](/cli/azure/group) コマンドを使用します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この例では、 *myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -144,7 +144,7 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
 
 ## <a name="set-up-oracle-asm"></a>Oracle ASM のセットアップ
 
-このチュートリアルでは、既定のユーザーは *grid*、既定のグループは *asmadmin* です。 *oracle* ユーザーが asmadmin グループに属していることを確認します。 Oracle ASM インストールをセットアップするには、次の手順を実行します。
+このチュートリアルでは、既定のユーザーは *grid* 、既定のグループは *asmadmin* です。 *oracle* ユーザーが asmadmin グループに属していることを確認します。 Oracle ASM インストールをセットアップするには、次の手順を実行します。
 
 1. Oracle ASM ライブラリ ドライバーの設定には、既定のユーザー (grid) と既定のグループ (asmadmin) を定義し、ブート時に起動し (y を選択)、ディスクをスキャンする (y を選択) ようにドライブを構成するという作業が含まれます。 次のコマンドからのプロンプトに答える必要があります。
 
@@ -317,7 +317,7 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
     FRA
    ```
 
-9. ルート、Oracle、および grid ユーザーのパスワードを変更します インストールの後の段階で使用するため、**新しいパスワードをメモしておきます**。
+9. ルート、Oracle、および grid ユーザーのパスワードを変更します インストールの後の段階で使用するため、 **新しいパスワードをメモしておきます** 。
 
    ```bash
    passwd oracle 
@@ -346,7 +346,7 @@ Oracle Grid Infrastructure ソフトウェアをダウンロードして準備�
 
 1. [Oracle ASM のダウンロード ページ](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-2240591.html)から Oracle Grid Infrastructure をダウンロードします。 
 
-   "**Oracle Database 12c Release 1 Grid Infrastructure (12.1.0.2.0) for Linux x86-64**" というダウンロード タイトルの下で、2 つの .zip ファイルをダウンロードします。
+   " **Oracle Database 12c Release 1 Grid Infrastructure (12.1.0.2.0) for Linux x86-64** " というダウンロード タイトルの下で、2 つの .zip ファイルをダウンロードします。
 
 2. これらの .zip ファイルをクライアント コンピューターにダウンロードしたら、Secure Copy Protocol (SCP) を使用してそのファイルを VM にコピーすることができます。
 
@@ -458,7 +458,7 @@ Oracle Grid Infrastructure をインストールするには、次の手順を�
    - ディスク グループの名前を入力します。
    - **[冗長性]** で、 **[外部]** を選択します。
    - **[割当て単位サイズ]** で、 **[4]** を選択します。
-   - **[ディスクの追加]** で、**ORCLASMSP** を選択します。
+   - **[ディスクの追加]** で、 **ORCLASMSP** を選択します。
    - [`next`] をクリックします。
 
 5. **[ASM パスワードの指定]** ページで、 **[これらのアカウントごとに、同じパスワードを使用]** を選択し、パスワードを入力します。
@@ -508,8 +508,8 @@ Oracle ASM インストールをセットアップするには、次の手順を
 
 3. **[ディスク グループの作成]** ダイアログ ボックスで、次の作業を行います。
 
-   - ディスク グループ名として「**DATA**」を入力します。
-   - **[メンバー ディスクの選択]** で、**ORCL_DATA** と **ORCL_DATA1** を選択します。
+   - ディスク グループ名として「 **DATA** 」を入力します。
+   - **[メンバー ディスクの選択]** で、 **ORCL_DATA** と **ORCL_DATA1** を選択します。
    - **[割当て単位サイズ]** で、 **[4]** を選択します。
    - `ok` をクリックし、ディスク グループを作成します。
    - `ok` をクリックし、確認ウィンドウを閉じます。
@@ -520,14 +520,14 @@ Oracle ASM インストールをセットアップするには、次の手順を
 
 5. **[ディスク グループの作成]** ダイアログ ボックスで、次の作業を行います。
 
-   - ディスク グループ名として「**FRA**」を入力します。
+   - ディスク グループ名として「 **FRA** 」を入力します。
    - **[冗長性]** で、 **[External (none)]\(外部 (なし)\)** を選択します。
-   - **[メンバー ディスクの選択]** で、**ORCL_FRA** を選択します。
+   - **[メンバー ディスクの選択]** で、 **ORCL_FRA** を選択します。
    - **[割当て単位サイズ]** で、 **[4]** を選択します。
    - `ok` をクリックし、ディスク グループを作成します。
    - `ok` をクリックし、確認ウィンドウを閉じます。
 
-   ![[ディスク グループの作成] ダイアログ ボックスのスクリーンショット](./media/oracle-asm/asm04.png)
+   ![[ディスクグループの作成] ダイアログ ボックスのスクリーンショットで、[外部 (なし)] オプションが強調表示されています。](./media/oracle-asm/asm04.png)
 
 6. **[終了]** を選択して ASM コンフィギュレーション アシスタントを閉じます。
 

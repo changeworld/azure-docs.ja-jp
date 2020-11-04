@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 027a816e846996aa7c61a1747327128f9a0feed0
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 4fbd410a7d2a7374303e637ca81c34dbea90fcb7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079209"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791037"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の新機能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "92079209"
 
 ## <a name="whats-new"></a>新機能
 
-Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々のセクションに分割されました。 また、*Azure SQL Database マネージド インスタンス*からマネージド インスタンスを参照する方法を *Azure SQL Managed Instance* へ更新しました。
+Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々のセクションに分割されました。 また、 *Azure SQL Database マネージド インスタンス* からマネージド インスタンスを参照する方法を *Azure SQL Managed Instance* へ更新しました。
 
 これは、一部の特徴や機能が単一データベースとマネージド インスタンスの間で大きく異なるための処置です。個々の共有記事で Azure SQL Database と Azure SQL Managed Instance 間の複雑な差異を説明することはますます困難になっています。
 
@@ -56,7 +56,7 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 | エラスティック クエリ | 詳しくは、[エラスティック クエリの概要](elastic-query-overview.md)に関する記事をご覧ください。 |
 | エラスティック トランザクション | [クラウド データベースにまたがる分散トランザクション](elastic-transactions-overview.md)。 |
 | Azure portal のクエリ エディター |詳しくは、「[Azure portal の SQL クエリ エディターを使用した接続とデータの照会](connect-query-portal.md)」をご覧ください。|
-| 単一データベースとエラスティック プールでの R サービス/機械学習 |詳しくは、「[Machine Learning Services in Azure SQL Database (Azure SQL Database での Machine Learning Services)](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database)」をご覧ください。|
+| 単一データベースとエラスティック プールでの R サービス/機械学習 |詳しくは、「[Machine Learning Services in Azure SQL Database (Azure SQL Database での Machine Learning Services)](/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database)」をご覧ください。|
 |SQL Analytics|詳細については、[Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) に関するページをご覧ください。|
 | &nbsp; |
 
@@ -66,7 +66,7 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 | ---| --- |
 | <a href="/azure/azure-sql/database/elastic-transactions-overview">分散トランザクション</a> | マネージド インスタンスにまたがる分散トランザクション。 |
 | <a href="/azure/sql-database/sql-database-instance-pools">インスタンス プール</a> | 比較的小規模な SQL インスタンスをクラウドに移行するための、便利かつ費用対効果に優れた方法です。 |
-| <a href="https://aka.ms/managed-instance-aadlogins">インスタンス レベルの Azure AD サーバー プリンシパル (ログイン)</a> | <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> ステートメントを使って、インスタンスレベルのログインを作成します。 |
+| <a href="/en-gb/sql/t-sql/statements/create-login-transact-sql">インスタンス レベルの Azure AD サーバー プリンシパル (ログイン)</a> | <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> ステートメントを使って、インスタンスレベルのログインを作成します。 |
 | [トランザクション レプリケーション](../managed-instance/replication-transactional-overview.md) | テーブルの変更を、SQL Managed Instance、SQL Database、または SQL Server の他のデータベースにレプリケートします。 または、SQL Managed Instance や SQL Server の他のインスタンスで一部の行が変更されたときに、テーブルを更新します。 詳しくは、[Azure SQL Managed Instance にレプリケーションを構成する方法](../managed-instance/replication-between-two-instances-configure-tutorial.md)に関する記事をご覧ください。 |
 | 脅威の検出 |詳しくは、[Azure SQL Managed Instance で脅威検出を構成する方法](../managed-instance/threat-detection-configure.md)に関する記事をご覧ください。|
 | 長期のバックアップ リテンション期間 | 詳細については、現在は制限付きパブリック プレビュー段階である [Azure SQL Managed Instance での長期のバックアップ リテンション期間の構成](../managed-instance/long-term-backup-retention-configure.md)に関するページをご覧ください。 | 
@@ -85,13 +85,13 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 ### <a name="sql-managed-instance-h1-2019-updates"></a>2019 年上期の SQL Managed Instance の更新プログラム
 
 2019 年上期の SQL Managed Instance のデプロイ モデルでは、次の機能が有効になっています。
-  - <a href="https://aka.ms/sql-mi-visual-studio-subscribers">Visual Studio サブスクライバー向けの Azure の月単位のクレジット</a>と強化された[リージョン制限](../managed-instance/resource-limits.md#regional-resource-limitations)を備えたサブスクリプションのサポート
-  - <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016、SharePoint 2019</a>、および <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance">Dynamics 365 Business Central</a> のサポート。
-  - 選択した<a href="https://aka.ms/managed-instance-collation">インスタンスレベルの照合順序</a>と<a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">タイム ゾーン</a>を使用して、マネージド インスタンスを作成します。
+  - <a href="/azure/azure-sql/managed-instance/resource-limits">Visual Studio サブスクライバー向けの Azure の月単位のクレジット</a>と強化された[リージョン制限](../managed-instance/resource-limits.md#regional-resource-limitations)を備えたサブスクリプションのサポート
+  - <a href="/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016、SharePoint 2019</a>、および <a href="/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance">Dynamics 365 Business Central</a> のサポート。
+  - 選択した<a href="/azure/azure-sql/managed-instance/scripts/create-powershell-azure-resource-manager-template">インスタンスレベルの照合順序</a>と<a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">タイム ゾーン</a>を使用して、マネージド インスタンスを作成します。
   - マネージド インスタンスは現在、[組み込みのファイアウォール](../managed-instance/management-endpoint-verify-built-in-firewall.md)によって保護されています。
-  - より優れたネットワーク パフォーマンスと、<a href="https://aka.ms/four-cores-sql-mi-update">Gen5 ハードウェア世代における 4 仮想コア</a>またはポイントインタイム リストアのための<a href="https://aka.ms/managed-instance-configurable-backup-retention">最大 35 日間のバックアップ リテンション期間の構成</a>を得るために、[パブリック エンドポイント](../managed-instance/public-endpoint-configure.md)と [Proxy Override](connectivity-architecture.md#connection-policy) 接続を使用するように、SQL Managed Instance を構成します。 [長期のバックアップ リテンション期間](long-term-retention-overview.md#sql-managed-instance-support) (最長 10 年間) は、現在、制限付きパブリック プレビュー段階です。  
+  - より優れたネットワーク パフォーマンスと、<a href="https://aka.ms/four-cores-sql-mi-update">Gen5 ハードウェア世代における 4 仮想コア</a>またはポイントインタイム リストアのための<a href="/azure/azure-sql/database/automated-backups-overview">最大 35 日間のバックアップ リテンション期間の構成</a>を得るために、[パブリック エンドポイント](../managed-instance/public-endpoint-configure.md)と [Proxy Override](connectivity-architecture.md#connection-policy) 接続を使用するように、SQL Managed Instance を構成します。 [長期のバックアップ リテンション期間](long-term-retention-overview.md#sql-managed-instance-support) (最長 10 年間) は、現在、制限付きパブリック プレビュー段階です。  
   - 新しい機能を利用すると、<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">PowerShell を使用してお使いのデータベースを別のデータ センターに geo リストアして</a>、[データベース名を変更し](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/)、[仮想クラスターを削除する](../managed-instance/virtual-cluster-delete.md)ことができます。
-  - 新しい組み込みの[インスタンス共同作成者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor)を使用すると、セキュリティ原則による職務の分離 (SoD) のコンプライアンスとエンタープライズ標準によるコンプライアンスを有効にできます。
+  - 新しい組み込みの[インスタンス共同作成者ロール](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)を使用すると、セキュリティ原則による職務の分離 (SoD) のコンプライアンスとエンタープライズ標準によるコンプライアンスを有効にできます。
   - SQL Managed Instance は、中国北部 2 および中国東部 2 と、GA (US Gov テキサス、US Gov アリゾナ) の Azure Government リージョン内で利用できます。 また、次のパブリック リージョンでも利用できます。オーストラリア中部、オーストラリア中部 2、ブラジル南部、フランス南部、アラブ首長国連邦中部、アラブ首長国連邦北部、南アフリカ北部、南アフリカ西部です。
 
 ## <a name="known-issues"></a>既知の問題
@@ -100,7 +100,7 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 |---------|---------|---------|---------|
 |[サーバー信頼グループからマネージド インスタンスを削除した後、分散トランザクションを実行できる](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|2020 年 10 月|回避策あり||
 |[マネージド インスタンスのスケーリング操作の後、分散トランザクションを実行できない](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|2020 年 10 月|回避策あり||
-|Azure SQL の [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql)、およびマネージド インスタンスの `BACKUP`/`RESTORE` ステートメントで、Azure AD の Manage Identity を使用して Azure Storage に対する認証を実行できない|2020 年 9 月|回避策あり||
+|Azure SQL の [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql)/[OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15)、およびマネージド インスタンスの `BACKUP`/`RESTORE` ステートメントで、Azure AD の Manage Identity を使用して Azure Storage に対する認証を実行できない|2020 年 9 月|回避策あり||
 |[サービス プリンシパルから Azure AD および AKV にアクセスできません](#service-principal-cannot-access-azure-ad-and-akv)|2020 年 8 月|回避策あり||
 |[CHECKSUM を使用せずに手動バックアップを復元すると失敗することがある](#restoring-manual-backup-without-checksum-might-fail)|2020 年 5 月|解決済み|2020 年 6 月|
 |[既存のジョブを変更、無効化、または有効化するとエージェントが応答しなくなる](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020 年 5 月|解決済み|2020 年 6 月|
@@ -131,15 +131,15 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 
 ### <a name="distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group"></a>サーバー信頼グループからマネージド インスタンスを削除した後、分散トランザクションを実行できる
 
-[サーバー信頼グループ](https://docs.microsoft.com/azure/azure-sql/managed-instance/server-trust-group-overview)は、[分散トランザクション](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)を実行するための前提条件である、マネージド インスタンス間の信頼を確立するために使用されます。 サーバー信頼グループからマネージド インスタンスを削除した後、またはグループを削除した後も、分散トランザクションを実行できる可能性があります。 分散トランザクションを確実に無効にするための回避策を適用できます。それは、マネージド インスタンスで[手動フェールオーバーを開始](https://docs.microsoft.com/azure/azure-sql/managed-instance/user-initiated-failover)することです。
+[サーバー信頼グループ](../managed-instance/server-trust-group-overview.md)は、[分散トランザクション](./elastic-transactions-overview.md)を実行するための前提条件である、マネージド インスタンス間の信頼を確立するために使用されます。 サーバー信頼グループからマネージド インスタンスを削除した後、またはグループを削除した後も、分散トランザクションを実行できる可能性があります。 分散トランザクションを確実に無効にするための回避策を適用できます。それは、マネージド インスタンスで[手動フェールオーバーを開始](../managed-instance/user-initiated-failover.md)することです。
 
 ### <a name="distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation"></a>マネージド インスタンスのスケーリング操作の後、分散トランザクションを実行できない
 
-サービス レベルまたは仮想コア数の変更といったマネージド インスタンスのスケーリング操作を実行すると、バックエンドのサーバー信頼グループの設定がリセットされ、[分散トランザクション](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)の実行が無効になります。 回避するには、Azure portal で[サーバー信頼グループ](https://docs.microsoft.com/azure/azure-sql/managed-instance/server-trust-group-overview)を削除して、新しく作成します。
+サービス レベルまたは仮想コア数の変更といったマネージド インスタンスのスケーリング操作を実行すると、バックエンドのサーバー信頼グループの設定がリセットされ、[分散トランザクション](./elastic-transactions-overview.md)の実行が無効になります。 回避するには、Azure portal で[サーバー信頼グループ](../managed-instance/server-trust-group-overview.md)を削除して、新しく作成します。
 
 ### <a name="bulk-insert-and-backuprestore-statements-cannot-use-managed-identity-to-access-azure-storage"></a>BULK INSERT および BACKUP/RESTORE ステートメントで、マネージド ID を使用して Azure storage にアクセスできない
 
-BULK INSERT ステートメントでは、マネージド ID で `DATABASE SCOPED CREDENTIAL` を使用して Azure storage に対する認証を実行することはできません。 回避するには、Shared Access Signature 認証に切り替えます。 次の例は、Azure SQL (データベースと Managed Instance の両方) では機能しません。
+BULK INSERT、BACKUP、RESTORE ステートメント、および OPENROWSET 関数では、Azure storage に対する認証に、`DATABASE SCOPED CREDENTIAL` をマネージド ID と共に使用することはできません。 回避するには、Shared Access Signature 認証に切り替えます。 次の例は、Azure SQL (データベースと Managed Instance の両方) では機能しません。
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Identity';
@@ -150,19 +150,19 @@ GO
 BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzureBlobStorage');
 ```
 
-**回避策**:[Shared Access Signature を使用して、ストレージに対する認証を実行します](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage)。
+**回避策** : [Shared Access Signature を使用して、ストレージに対する認証を実行します](/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage)。
 
 ### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>サービス プリンシパルから Azure AD および AKV にアクセスできません
 
 場合によっては、Azure AD および Azure Key Vault (AKV) サービスへのアクセスに使用されるサービス プリンシパルに問題が存在することがあります。 そのため、この問題は SQL Managed Instance での Azure AD 認証および Transparent Database Encryption (TDE) の使用に影響します。 これは、断続的な接続の問題として発生する可能性があります。または、CREATE LOGIN/USER FROM EXTERNAL PROVIDER または EXECUTE AS LOGIN/USER などのステートメントを実行できない場合に発生する可能性があります。 新しい Azure SQL Managed Instance 上でカスタマー マネージド キーを使用して TDE を設定しても、状況によっては機能しないことがあります。
 
-**回避策**:更新コマンドを実行する前に、ご利用の SQL Managed Instance 上でこの問題が発生しないようにするには、または更新コマンドの実行後にこの問題が既に発生している場合は、Azure portal に移動し、SQL Managed Instance の [[Active Directory 管理者]](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal) ブレード にアクセスします。 "Azure Active Directory にアクセスするには、Managed Instance にサービス プリンシパルが必要です。 サービス プリンシパルを作成するには、ここをクリックします" というエラー メッセージが表示されるかどうかを確認します。 このエラーメッセージが表示された場合は、それをクリックし、このエラーが解決されるまで、示されるステップ バイ ステップの手順に従います。
+**回避策** :更新コマンドを実行する前に、ご利用の SQL Managed Instance 上でこの問題が発生しないようにするには、または更新コマンドの実行後にこの問題が既に発生している場合は、Azure portal に移動し、SQL Managed Instance の [[Active Directory 管理者]](./authentication-aad-configure.md?tabs=azure-powershell#azure-portal) ブレード にアクセスします。 "Azure Active Directory にアクセスするには、Managed Instance にサービス プリンシパルが必要です。 サービス プリンシパルを作成するには、ここをクリックします" というエラー メッセージが表示されるかどうかを確認します。 このエラーメッセージが表示された場合は、それをクリックし、このエラーが解決されるまで、示されるステップ バイ ステップの手順に従います。
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>CHECKSUM を使用せずに手動バックアップを復元すると失敗することがある
 
 特定の状況で、CHECKSUM なしでマネージド インスタンス上に作成されたデータベースの手動バックアップが復元に失敗することがあります。 このような場合は、成功するまでバックアップの復元を再試行してください。
 
-**回避策**:CHECKSUM を有効にして、マネージド インスタンス上のデータベースの手動バックアップを実行します。
+**回避策** :CHECKSUM を有効にして、マネージド インスタンス上のデータベースの手動バックアップを実行します。
 
 ### <a name="agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs"></a>既存のジョブを変更、無効化、または有効化するとエージェントが応答しなくなる
 
@@ -172,19 +172,19 @@ BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzur
 
 リソース グループ (RG) に SQL Managed Instance 共同作成者 Azure ロールが適用されている場合、SQL Managed Instance には適用されず、効果がありません。
 
-**回避策**:ユーザーの SQL Managed Instance 共同作成者ロールをサブスクリプション レベルで設定します。
+**回避策** :ユーザーの SQL Managed Instance 共同作成者ロールをサブスクリプション レベルで設定します。
 
 ### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>ポータルを使用したフェールオーバー グループに対する手動フェールオーバーの制限
 
 フェールオーバー グループが、異なる Azure サブスクリプションやリソース グループのインスタンスにまたがっている場合、フェールオーバー グループのプライマリ インスタンスから手動フェールオーバーを開始することはできません。
 
-**回避策**:Geo セカンダリ インスタンスからポータル経由でフェールオーバーを開始します。
+**回避策** :Geo セカンダリ インスタンスからポータル経由でフェールオーバーを開始します。
 
 ### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL エージェント ロールには、sysadmin 以外のログインに対する明示的な EXECUTE 権限が必要です
 
-sysadmin 以外のログインが [SQL Agent の固定データベース ロール](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles)に追加されると、これらのログインを機能させるには、明示的な EXECUTE 権限を Master ストアド プロシージャに付与する必要があるという問題が存在します。 この問題が発生した場合は、エラー メッセージ "EXECUTE 権限がオブジェクト <object_name> で拒否されました (Microsoft SQL Server、エラー:229)" が表示されます。
+sysadmin 以外のログインが [SQL Agent の固定データベース ロール](/sql/ssms/agent/sql-server-agent-fixed-database-roles)に追加されると、これらのログインを機能させるには、明示的な EXECUTE 権限を Master ストアド プロシージャに付与する必要があるという問題が存在します。 この問題が発生した場合は、エラー メッセージ "EXECUTE 権限がオブジェクト <object_name> で拒否されました (Microsoft SQL Server、エラー:229)" が表示されます。
 
-**回避策**:SQL Agent 固定データベース ロール (SQLAgentUserRole、SQLAgentReaderRole、または SQLAgentOperatorRole) にログインを追加した後、これらのロールに追加された各ログインに対して次の T-SQL スクリプトを実行して、一覧表示されているストアド プロシージャに明示的に EXECUTE 権限を付与します。
+**回避策** :SQL Agent 固定データベース ロール (SQLAgentUserRole、SQLAgentReaderRole、または SQLAgentOperatorRole) にログインを追加した後、これらのロールに追加された各ログインに対して次の T-SQL スクリプトを実行して、一覧表示されているストアド プロシージャに明示的に EXECUTE 権限を付与します。
 
 ```tsql
 USE [master]
@@ -204,13 +204,13 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 Business Critical サービス レベルでは、[メモリ最適化オブジェクトの最大メモリ制限](../managed-instance/resource-limits.md#in-memory-oltp-available-space)が正しく適用されない場合があります。 SQL Managed Instance では、ワークロードが、インメモリ OLTP 操作に対してより多くのメモリを使用できる場合があり、これがインスタンスの可用性と安定性に影響を及ぼすことがあります。 インメモリ OLTP クエリは、制限に達しても、すぐには失敗しない可能性があります。 この問題は、まもなく解決されます。 さらに多くのインメモリ OLTP メモリを使用するクエリは、[制限](../managed-instance/resource-limits.md#in-memory-oltp-available-space)に達するとすぐに失敗するようになります。
 
-**回避策**:[SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) を使用して[インメモリ OLTP ストレージの使用状況を監視](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-monitor-space)し、使用可能な量を超えるメモリがワークロードによって使用されないようにします。 仮想コアの数に応じてメモリ制限を増やすか、ワークロードを最適化して、使用するメモリを減らします。
+**回避策** : [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) を使用して [インメモリ OLTP ストレージの使用状況を監視](../in-memory-oltp-monitor-space.md)し、使用可能な量を超えるメモリがワークロードによって使用されないようにします。 仮想コアの数に応じてメモリ制限を増やすか、ワークロードを最適化して、使用するメモリを減らします。
  
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>空ではないファイルを削除しようとしたときに誤ったエラーが返される
 
 SQL Server と SQL Managed Instance では、[ユーザーは空でないファイルを削除できません](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites)。 `ALTER DATABASE REMOVE FILE` ステートメントを使用して空でないデータ ファイルを削除しようとすると、エラー `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` はすぐには返されません。 SQL Managed Instance では引き続きファイルの削除が試行されますが、操作は 30 分後に `Internal server error` で失敗します。
 
-**回避策**:`DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` コマンドを使用して、ファイルの内容を削除します。 ファイル グループ内の唯一のファイルの場合は、ファイルを圧縮する前に、このファイル グループに関連付けられているテーブルまたはパーティションからデータを削除する必要があります。また、必要に応じて、このデータを別のテーブルまたはパーティションに読み込みます。
+**回避策** :`DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` コマンドを使用して、ファイルの内容を削除します。 ファイル グループ内の唯一のファイルの場合は、ファイルを圧縮する前に、このファイル グループに関連付けられているテーブルまたはパーティションからデータを削除する必要があります。また、必要に応じて、このデータを別のテーブルまたはパーティションに読み込みます。
 
 ### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>サービス レベルの変更とインスタンスの作成操作が、進行中のデータベースの復元によってブロックされる
 
@@ -218,19 +218,19 @@ SQL Server と SQL Managed Instance では、[ユーザーは空でないファ�
 
 復元プロセスでは、復元プロセスが実行されているのと同じサブネット内のマネージド インスタンスとインスタンス プールでこれらの操作がブロックされます。 インスタンス プール内のインスタンスは影響を受けません。 サービス レベルを作成または変更する操作が失敗したり、タイムアウトしたりすることはありません。復元プロセスが完了するかキャンセルされると、処理が続行されます。
 
-**回避策**:サービス レベルの作成または更新操作の優先順位が高い場合は、復元プロセスが完了するか、復元プロセスがキャンセルされるまで待機します。
+**回避策** :サービス レベルの作成または更新操作の優先順位が高い場合は、復元プロセスが完了するか、復元プロセスがキャンセルされるまで待機します。
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Business Critical サービス レベルの Resource Governor をフェールオーバー後に再構成しなければならない場合がある
 
 ユーザー ワークロードに割り当てられるリソースを制限することを可能にする [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) 機能では、フェールオーバー後、またはユーザーが開始したサービス レベルの変更 (たとえば、最大仮想コア数やインスタンスの最大ストレージ サイズの変更) 後に、一部のユーザー ワークロードが誤って分類されることがあります。
 
-**回避策**:[Resource Governor](/sql/relational-databases/resource-governor/resource-governor) を使用している場合、`ALTER RESOURCE GOVERNOR RECONFIGURE` を定期的に、または、インスタンスの開始時に SQL タスクを実行する SQL Agent ジョブの一環として実行します。
+**回避策** : [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) を使用している場合、`ALTER RESOURCE GOVERNOR RECONFIGURE` を定期的に、または、インスタンスの開始時に SQL タスクを実行する SQL Agent ジョブの一環として実行します。
 
 ### <a name="cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade"></a>サービス レベルのアップグレード後は、複数データベースにまたがる Service Broker のダイアログを再初期化する必要がある
 
-サービス レベルの変更操作の後、複数データベースにまたがる Service Broker のダイアログで、他のデータベースのサービスにメッセージが配信されなくなります。 メッセージは "*失われたわけではなく*"、センダーのキューに存在しています。 SQL Managed Instance の仮想コア数やインスタンスのストレージ サイズを変更すると、すべてのデータベースについて、[sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) ビューの `service_broke_guid` 値が変更されます。 [BEGIN DIALOG](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) ステートメントを使用して作成された、他のデータベースの Service Broker を参照する `DIALOG` から、ターゲット サービスにメッセージが配信されなくなります。
+サービス レベルの変更操作の後、複数データベースにまたがる Service Broker のダイアログで、他のデータベースのサービスにメッセージが配信されなくなります。 メッセージは " *失われたわけではなく* "、センダーのキューに存在しています。 SQL Managed Instance の仮想コア数やインスタンスのストレージ サイズを変更すると、すべてのデータベースについて、[sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) ビューの `service_broke_guid` 値が変更されます。 [BEGIN DIALOG](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) ステートメントを使用して作成された、他のデータベースの Service Broker を参照する `DIALOG` から、ターゲット サービスにメッセージが配信されなくなります。
 
-**回避策**:複数データベースにまたがる Service Broker ダイアログのメッセージ交換を使用するアクティビティはすべて、サービス レベルを更新する前に停止し、後で再初期化してください。 サービス レベルの変更後、未配信のままのメッセージがあった場合は、それらのメッセージをソース キューから読み取って、ターゲット キューに再送信します。
+**回避策** :複数データベースにまたがる Service Broker ダイアログのメッセージ交換を使用するアクティビティはすべて、サービス レベルを更新する前に停止し、後で再初期化してください。 サービス レベルの変更後、未配信のままのメッセージがあった場合は、それらのメッセージをソース キューから読み取って、ターゲット キューに再送信します。
 
 ### <a name="impersonation-of-azure-ad-login-types-is-not-supported"></a>Azure AD ログイン タイプの偽装がサポートされない
 
@@ -254,11 +254,11 @@ SQL Server Data Tools では、Azure AD のログインとユーザーが完全�
 
 SQL Managed Instance でデータベースが復元されるとき、復元サービスではまず、目的の名前で空のデータベースが作成され、インスタンス上でその名前が割り当てられます。 しばらくすると、このデータベースは削除され、実際のデータベースの復元が開始されます。 
 
-"*復元中*" 状態のデータベースには、名前ではなくランダムな GUID 値が一時的に与えられます。 復元プロセスが終了すると、一時的な名前は、`RESTORE` ステートメントで指定した目的の名前に変更されます。 
+" *復元中* " 状態のデータベースには、名前ではなくランダムな GUID 値が一時的に与えられます。 復元プロセスが終了すると、一時的な名前は、`RESTORE` ステートメントで指定した目的の名前に変更されます。 
 
 初期フェーズでは、ユーザーは空のデータベースにアクセスしたり、さらにはこのデータベースにテーブルを作成したり、データを読み込んだりできます。 この一時的なデータベースは、復元サービスで 2 つ目のフェーズが開始されると削除されます。
 
-**回避策**:復元の完了を確認するまで、復元中のデータベースにはアクセスしないでください。
+**回避策** :復元の完了を確認するまで、復元中のデータベースにはアクセスしないでください。
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>TEMPDB の構造と内容は再作成される
 
@@ -279,13 +279,13 @@ SQL Managed Instance の各 General Purpose インスタンスには、Azure Pre
 
 この例では既存のデータベースは引き続き機能し、新しいファイルを追加しない限りは問題なく拡張できます。 すべてのデータベースの合計サイズがインスタンス サイズの上限に到達しない場合でも、新しいディスク ドライブ用の十分な領域がないため、新しいデータベースの作成や復元はできません。 その場合に返されるエラーは明確ではありません。
 
-システム ビューを使用して、[残りのファイルの数を特定](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1)できます。 この制限に達した場合は、[DBCC SHRINKFILE ステートメントを使用して、より小さなファイルをいくつか空にして削除](/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file)してみるか、[この制限のない Business Critical レベル](/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)に切り替えてください。
+システム ビューを使用して、[残りのファイルの数を特定](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1)できます。 この制限に達した場合は、[DBCC SHRINKFILE ステートメントを使用して、より小さなファイルをいくつか空にして削除](/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file)してみるか、[この制限のない Business Critical レベル](../managed-instance/resource-limits.md#service-tier-characteristics)に切り替えてください。
 
 ### <a name="guid-values-shown-instead-of-database-names"></a>データベース名の代わりに GUID 値が表示される
 
 複数のシステム ビュー、パフォーマンス カウンター、エラー メッセージ、XEvent、およびエラー ログ エントリで、実際のデータベース名ではなく GUID データベース識別子が表示されています。 将来、実際のデータベース名に置き換えられるため、これらの GUID 識別子には依存しないでください。
 
-**回避策**:sys.databases ビューを使用して、実際のデータベース名を、GUID データベース識別子の形式で指定した物理データベース名から解決します。
+**回避策** :sys.databases ビューを使用して、実際のデータベース名を、GUID データベース識別子の形式で指定した物理データベース名から解決します。
 
 ```tsql
 SELECT name as ActualDatabaseName, physical_database_name as GUIDDatabaseIdentifier 
@@ -330,7 +330,7 @@ using (var scope = new TransactionScope())
 
 SQL Managed Instance 内の CLR モジュールと、現在のインスタンスを参照しているリンク サーバーまたは分散クエリでは、ローカル インスタンスの IP を解決できないことがあります。 このエラーは一時的な問題です。
 
-**回避策**:可能であれば、CLR モジュールでコンテキスト接続を使用します。
+**回避策** :可能であれば、CLR モジュールでコンテキスト接続を使用します。
 
 ## <a name="updates"></a>更新プログラム
 
@@ -340,4 +340,4 @@ SQL Database の更新情報や機能強化の一覧については、[SQL Datab
 
 ## <a name="contribute-to-content"></a>コンテンツの改善への協力
 
-Azure SQL のドキュメントに投稿するには、[Docs 共同作成者ガイド](https://docs.microsoft.com/contribute/)に関する記事をご覧ください。
+Azure SQL のドキュメントに投稿するには、[Docs 共同作成者ガイド](/contribute/)に関する記事をご覧ください。

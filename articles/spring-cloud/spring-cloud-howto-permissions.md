@@ -7,15 +7,15 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 635f1e03596d55101b6158353ed8cdc278212ceb
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: edd9898580c60199b761b24b172a366069f09cb2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92155384"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516190"
 ---
 # <a name="how-to-use-permissions-in-azure-spring-cloud"></a>Azure Spring Cloud でアクセス許可を使用する方法
-この記事では、Azure Spring Cloud リソースに対するアクセス許可を委任するカスタム ロールを作成する方法を示します。 カスタム ロールは、さまざまな標準アクセス許可を使用して、[組み込みの Azure ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)を拡張するものです。
+この記事では、Azure Spring Cloud リソースに対するアクセス許可を委任するカスタム ロールを作成する方法を示します。 カスタム ロールは、さまざまな標準アクセス許可を使用して [Azure 組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)を拡張するものです。
 
 ここでは以下のカスタム ロールを実装します。
 

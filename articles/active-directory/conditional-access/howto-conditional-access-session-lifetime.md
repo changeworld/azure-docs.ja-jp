@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 10/23/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 817a13080cedc1d737b43bae14a07a7d4a0bd416
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 8d33721a70f0a9d4cfb26516d2f252424cc924f8
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145267"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503812"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>条件付きアクセスを使用して認証セッション管理を構成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "92145267"
 
 ユーザー サインインの頻度に関する Azure Active Directory (Azure AD) の既定の構成は、90 日間のローリング ウィンドウです。 多くの場合、ユーザーに資格情報を要求することは賢明であるように思われますが、逆効果になることがあります。何も考えずに資格情報を入力するように教えられたユーザーは、意図せずに、資格情報を求める悪意のあるプロンプトに入力してしまう可能性があります。
 
-ユーザーにサインインし直すように求めないことは不安に感じられるかもしれませんが、実際は IT ポリシーのどのような違反によってもセッションは取り消されます。 たとえば、パスワードの変更、非準拠のデバイス、アカウントの無効化などがあります (ただしこれらに限定されません)。 また、明示的に [PowerShell を使用してユーザーのセッションを取り消す](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)ことができます。 Azure AD の既定の構成は、結局、「セッションのセキュリティ体制が変更していなければ、資格情報の提供をユーザーに求めない」というものになります。
+ユーザーにサインインし直すように求めないことは不安に感じられるかもしれませんが、実際は IT ポリシーのどのような違反によってもセッションは取り消されます。 たとえば、パスワードの変更、非準拠のデバイス、アカウントの無効化などがあります (ただしこれらに限定されません)。 また、明示的に [PowerShell を使用してユーザーのセッションを取り消す](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0&preserve-view=true)ことができます。 Azure AD の既定の構成は、結局、「セッションのセキュリティ体制が変更していなければ、資格情報の提供をユーザーに求めない」というものになります。
 
 サインイン頻度設定は、標準に従って OAUTH2 または OIDC プロトコルを実装したアプリで動作します。 Windows、Mac、次の Web アプリケーションを含むモバイル用のほとんどの Microsoft ネイティブ アプリは、この設定に準拠します。
 
@@ -88,7 +88,7 @@ Azure AD 参加済み、ハイブリッド Azure AD 参加済み、または Azu
 条件付きアクセスは Azure AD Premium の機能であり、Premium ライセンスが必要です。 条件付きアクセスの詳細については、[Azure Active Directory の条件付きアクセスの概要](overview.md#license-requirements)に関するページを参照してください。
 
 > [!WARNING]
-> 現在、パブリック プレビューで[構成可能なトークン有効期間](../develop/active-directory-configurable-token-lifetimes.md)機能を使用している場合、同一のユーザーまたはアプリの組み合わせに対し、異なる 2 つのポリシー (1 つはこの機能で、もう 1 つは構成可能なトークン有効期間機能で使用) を作成することはサポートしていないことに注意してください。 Microsoft は、2020 年 5 月 1 日に構成可能なトークン有効期間機能を廃止し、条件付きアクセス認証セッション管理機能に置き換える予定です。  
+> 現在、パブリック プレビューで[構成可能なトークン有効期間](../develop/active-directory-configurable-token-lifetimes.md)機能を使用している場合、同一のユーザーまたはアプリの組み合わせに対し、異なる 2 つのポリシー (1 つはこの機能で、もう 1 つは構成可能なトークン有効期間機能で使用) を作成することはサポートしていないことに注意してください。 Microsoft は、2021 年 1 月 30 日に更新およびセッション トークン有効期間の構成可能なトークン有効期間機能を廃止し、条件付きアクセス認証セッション管理機能に置き換える予定です。  
 >
 > [サインインの頻度] を有効にする前に、テナントで他の再認証設定が無効になっていることを確認してください。 [信頼されたデバイスで MFA を記憶する] が有効になっている場合は、[サインインの頻度] を使用する前に必ず無効にしてください。この 2 つの設定を一緒に使用すると、ユーザーに予期せずにメッセージが表示される可能性があります。 再認証のプロンプトとセッションの有効期間の詳細については、「[再認証プロンプトを最適化し、Azure Multi-Factor Authentication のセッションの有効期間を理解する](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)」の記事を参照してください。
 

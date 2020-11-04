@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: 83fa16265106e1033cb77ab4175b606714ec66d7
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 693d2304324bdfcac298b3e20ddd0d882a16533c
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996847"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899870"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute の暗号化
  
@@ -31,7 +31,7 @@ MACsec は [IEEE 標準](https://1.ieee802.org/security/802-1ae/)です。 MAC (
 ### <a name="will-enabling-macsec-on-expressroute-direct-degrade-network-performance"></a>ExpressRoute Direct で MACsec を有効にすると、ネットワーク パフォーマンスが低下しますか。
 MACsec の暗号化と復号は、Microsoft が使用するルーターのハードウェアで行われます。 Microsoft 側では、パフォーマンスに影響はありません。 しかしながら、お使いのデバイスのネットワーク ベンダーに問い合わせ、MACsec にパフォーマンス上の影響が出るかどうかを確認してください。
 ### <a name="which-cipher-suites-are-supported-for-encryption"></a>暗号化にはどの暗号スイートがサポートされていますか。
-[Extended Packet Numbering](https://1.ieee802.org/security/802-1aebw/) バージョンの AES128 および AES256 のみサポートされています。 また、デバイスの MACsec 構成で [Secure Channel Identifier (SCI)](https://en.wikipedia.org/wiki/IEEE_802.1AE) を無効にしてください。 
+[Extended Packet Numbering](https://1.ieee802.org/security/802-1aebw/) バージョンの AES-128 および AES-256 のみサポートされています。 また、デバイスの MACsec 構成で [Secure Channel Identifier (SCI)](https://wikipedia.org/wiki/IEEE_802.1AE) を無効にする必要があります。 
 
 ## <a name="end-to-end-encryption-by-ipsec-faq"></a>IPsec によるエンドツーエンドの暗号化に関してよくあるご質問
 IPsec は [IETF 標準](https://tools.ietf.org/html/rfc6071)です。 インターネット プロトコル (IP) レベルまたはネットワーク レイヤー 3 でデータを暗号化します。 お使いのオンプレミス ネットワークと Azure でお使いの仮想ネットワーク (VNET) の間でエンドツーエンドの接続を暗号化する目的で IPsec を利用できます。 以下でその他のよくあるご質問をご覧ください。

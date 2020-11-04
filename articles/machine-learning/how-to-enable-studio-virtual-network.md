@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 07/16/2020
+ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: da8dc11212d33627a165dc5e11acc64087fb6c43
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: a5206ed55dfe2632c7f6604c4f3d8e3199e23b99
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131821"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792023"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure 仮想ネットワークで Azure Machine Learning Studio を使用する
 
@@ -36,7 +36,7 @@ ms.locfileid: "92131821"
 
 
 > [!IMPORTANT]
-> ほとんどの Studio では仮想ネットワークに格納されているデータを操作しますが、統合されたノートブックでは__異なります__。 統合されたノートブックでは、仮想ネットワーク内のストレージの使用はサポートされていません。 代わりに、コンピューティング インスタンスから Jupyter Notebook を使用できます。 詳細については、「[コンピューティング インスタンス ノートブック内のデータにアクセスする]()」のセクションを参照してください。
+> ワークスペースが Azure Government や Azure China 21Vianet などの __ソブリン クラウド__ にある場合、統合ノートブックでは仮想ネットワーク内のストレージを使用 " _できません_ "。 代わりに、コンピューティング インスタンスから Jupyter Notebook を使用できます。 詳細については、「[コンピューティング インスタンス ノートブック内のデータにアクセスする](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook)」のセクションを参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -53,7 +53,7 @@ ms.locfileid: "92131821"
 
 仮想ネットワーク内のリソース (コンピューティング インスタンスや仮想マシンなど) からスタジオにアクセスする場合は、仮想ネットワークからスタジオへの送信トラフィックを許可する必要があります。 
 
-たとえば、ネットワーク セキュリティ グループ (NSG) を使用して送信トラフィックを制限している場合は、__AzureFrontDoor.Frontend__ の__サービス タグ__宛先に規則を追加します。
+たとえば、ネットワーク セキュリティ グループ (NSG) を使用して送信トラフィックを制限している場合は、 __AzureFrontDoor.Frontend__ の __サービス タグ__ 宛先に規則を追加します。
 
 ## <a name="access-data-using-the-studio"></a>Studio を使用したデータへのアクセス
 
@@ -66,9 +66,6 @@ ms.locfileid: "92131821"
 * AutoML 実験の送信
 * ラベル付けプロジェクトの開始
 
-> [!NOTE]
-> [ML によるデータのラベル付け](how-to-create-labeling-projects.md#use-ml-assisted-labeling)では、仮想ネットワークの内側でセキュリティ保護された既定のストレージ アカウントはサポートされていません。 ML によるデータのラベル付けには、既定以外のストレージ アカウントを使用する必要があります。 既定以外のストレージ アカウントは、仮想ネットワークの背後でセキュリティ保護できます。 
-
 スタジオでは、仮想ネットワーク内の次のデータストアの種類からのデータの読み取りがサポートされています。
 
 * Azure BLOB
@@ -76,7 +73,11 @@ ms.locfileid: "92131821"
 * Azure Data Lake Storage Gen2
 * Azure SQL データベース
 
-### <a name="configure-datastores-to-use-managed-identity"></a>マネージド ID を使用するようにデータストアを構成する
+### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>ストレージ プライベート リンクにワークスペースのマネージド ID __閲覧者__ アクセス権を付与する
+
+この手順が必要なのは、[プライベート エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)を使用して Azure ストレージ アカウントを仮想ネットワークに追加した場合のみです。 詳細については、[閲覧者](../role-based-access-control/built-in-roles.md#reader)組み込みロールに関するページを参照してください。
+
+### <a name="configure-datastores-to-use-workspace-managed-identity"></a>ワークスペースのマネージド ID を使用するようにデータストアを構成する
 
 Azure Machine Learning では、[データストア](concept-data.md#datastores)を使用してストレージ アカウントに接続します。 マネージド ID を使用するようにデータストアを構成するには、次の手順に従います。 
 
@@ -89,7 +90,7 @@ Azure Machine Learning では、[データストア](concept-data.md#datastores)
 1. データストアの設定で、 __[Azure Machine Learning service がワークスペース マネージド ID を使用してストレージにアクセスするのを許可する]__ で __[はい]__ を選択します。
 
 
-この手順により、Azure リソースベース アクセス制御 (RBAC) を使用して、ワークスペースのマネージド ID がストレージ サービスに__閲覧者__として追加されます。 __閲覧者__のアクセス権を指定することにより、ワークスペースはファイアウォールの設定を取得し、データが仮想ネットワークから離れないようにすることができます。
+この手順により、Azure リソースベース アクセス制御 (Azure RBAC) を使用して、ワークスペースのマネージド ID がストレージ サービスに __閲覧者__ として追加されます。 __閲覧者__ のアクセス権を指定することにより、ワークスペースはファイアウォールの設定を取得し、データが仮想ネットワークから離れないようにすることができます。
 
 > [!NOTE]
 > これらの変更は、有効になるまでに最大 10 分かかる場合があります。
@@ -100,13 +101,13 @@ Azure Machine Learning では、[データストア](concept-data.md#datastores)
 
 ### <a name="azure-blob-storage"></a>Azure BLOB ストレージ
 
-__Azure Blob ストレージ__では、ワークスペース マネージド ID は [BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)としても追加されるため、BLOB ストレージからデータを読み取ることができます。
+__Azure Blob ストレージ__ では、ワークスペース マネージド ID は [BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)としても追加されるため、BLOB ストレージからデータを読み取ることができます。
 
 ### <a name="azure-data-lake-storage-gen2-access-control"></a>Azure Data Lake Storage Gen2 のアクセスの制御
 
-仮想ネットワーク内のデータ アクセスの制御には、RBAC と POSIX スタイルのアクセス制御リスト (ACL) の両方を使用できます。
+仮想ネットワーク内のデータ アクセスの制御には、Azure RBAC と POSIX スタイルのアクセス制御リスト (ACL) の両方を使用できます。
 
-RBAC を使用するには、ワークスペース マネージド ID を [BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)のロールに追加します。 詳細については、[Azure のロールベースのアクセス制御](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control)に関するページを参照してください。
+Azure RBAC を使用するには、ワークスペース マネージド ID を [BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)のロールに追加します。 詳細については、[Azure のロールベースのアクセス制御](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control)に関するページを参照してください。
 
 ACL を使用する場合は、他のセキュリティ原則の場合と同様に、ワークスペース マネージド ID にアクセス権を割り当てることができます。 詳細については、「[ファイルとディレクトリのアクセス制御リスト](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)」を参照してください。
 
@@ -126,8 +127,8 @@ SQL 包含ユーザーを作成したら、これに対してアクセス許可�
 
 パイプラインの新しい既定のストレージを設定するには:
 
-1. パイプライン ドラフトで、パイプラインのタイトルの近くにある**設定の歯車アイコン**を選択します。
-1. **[Select default datastore]\(既定のデータストアの選択\)** を選択します。
+1. パイプライン ドラフトで、パイプラインのタイトルの近くにある **設定の歯車アイコン** を選択します。
+1. **[Select default datastore]\(既定のデータストアを選択する\)** を選択します。
 1. 新しいデータストアを指定します。
 
 また、既定のデータストアをモジュールごとにオーバーライドすることもできます。 これにより、個々のモジュールのストレージの場所を制御できます。

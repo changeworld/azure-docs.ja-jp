@@ -3,15 +3,15 @@ title: Azure API Management の Dapr 統合ポリシー | Microsoft Docs
 description: Dapr マイクロサービス拡張機能と対話するための Azure API Management のポリシーについて説明します。
 author: vladvino
 ms.author: vlvinogr
-ms.date: 9/13/2020
+ms.date: 10/23/2020
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: d537040be4ed4cbf961a4621980d3d290e306359
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bf9c4d233cfad454d63da4dce30a38af80d24ab
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91339710"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558399"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API Management の Dapr 統合ポリシー
 
@@ -104,14 +104,14 @@ template:
 
 ## <a name="send-message-to-pubsub-topic"></a><a name="pubsub"></a> Pub/Sub トピックへのメッセージの送信
 
-このポリシーは、Dapr Publish/Subscribe トピックにメッセージを送信するように API Management ゲートウェイに指示します。 このポリシーでは、`http://localhost:3500/v1.0/publish/{{pub-name}}/{{topic}}` への HTTP POST 要求を実行することによってこれを実現します。この際、テンプレート パラメーターが置き換えられ、ポリシー ステートメントで指定されたコンテンツが追加されます。
+このポリシーは、Dapr Publish/Subscribe トピックにメッセージを送信するように API Management ゲートウェイに指示します。 このポリシーでは、`http://localhost:3500/v1.0/publish/{{pubsub-name}}/{{topic}}` への HTTP POST 要求を実行することによってこれを実現します。この際、テンプレート パラメーターが置き換えられ、ポリシー ステートメントで指定されたコンテンツが追加されます。
 
 このポリシーでは、Dapr ランタイムがゲートウェイと同じポッドのサイドカー コンテナーで実行されていることを前提としています。 Dapr ランタイムは、Pub/Sub セマンティクスを実装しています。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
 ```xml
-<publish-to-dapr topic=”topic-name” ignore-error="false|true" response-variable-name="resp-var-name" timeout="in seconds" template=”Liquid” content-type="application/json">
+<publish-to-dapr pubsub-name="pubsub-name" topic=”topic-name” ignore-error="false|true" response-variable-name="resp-var-name" timeout="in seconds" template=”Liquid” content-type="application/json">
     <!-- message content -->
 </publish-to-dapr>
 ```
@@ -131,7 +131,8 @@ Dapr ランタイムがターゲット トピックを見つけられないな�
      <inbound>
         <base />
         <publish-to-dapr
-               topic="@("orders/new")"
+           pubsub-name="orders"
+               topic="new"
                response-variable-name="dapr-response">
             @(context.Request.Body.As<string>())
         </publish-to-dapr>
@@ -158,7 +159,8 @@ Dapr ランタイムがターゲット トピックを見つけられないな�
 
 | 属性        | 説明                     | 必須 | Default |
 |------------------|---------------------------------|----------|---------|
-| topic            | ターゲット トピックの名前               | はい      | 該当なし     |
+| pubsub-name      | ターゲット PubSub コンポーネントの名前。 Dapr の [pubsubname](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md) パラメーターにマップされます。 存在しない場合、 __topic__ 属性値は `pubsub-name/topic-name` の形式である必要があります。    | いいえ       | なし    |
+| topic            | トピックの名前。 Dapr の [topic](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md) パラメーターにマップされます。               | はい      | 該当なし     |
 | ignore-error     | `true` に設定すると、Dapr ランタイムからエラーを受信したときに ["on-error"](api-management-error-handling-policies.md) セクションをトリガーしないようにポリシーに指示します | いいえ | `false` |
 | response-variable-name | Dapr ランタイムからの応答を格納するために使用する [Variables](api-management-policy-expressions.md#ContextVariables) コレクションのエントリの名前 | いいえ | なし |
 | timeout | Dapr ランタイムが応答するのを待機する時間 (秒)。 範囲は 1 ～ 240 秒です。 | いいえ | 5 |

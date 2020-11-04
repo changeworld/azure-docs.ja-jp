@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 3fd1ae82450c6203833a1e7b9947d516950c0330
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3975a57c095a8593e392e932bd125308853d3756
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146589"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541521"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>device-to-cloud IoT Hub のメッセージ エンリッチメント
 
-"*メッセージ エンリッチメント*" は、指定エンドポイントに送信される前のメッセージに対し、追加情報を含んだ "*スタンプ*" を適用する IoT Hub の機能です。 メッセージ エンリッチメントを使用する理由の 1 つは、ダウンストリームの処理を単純化するために用いることのできるデータを追加することです。 たとえば、デバイス ツイン タグを使用してデバイスのテレメトリ メッセージのエンリッチメントを行えば、この情報のために顧客側でデバイス ツイン API を呼び出す負担を軽減することができます。
+" *メッセージ エンリッチメント* " は、指定エンドポイントに送信される前のメッセージに対し、追加情報を含んだ " *スタンプ* " を適用する IoT Hub の機能です。 メッセージ エンリッチメントを使用する理由の 1 つは、ダウンストリームの処理を単純化するために用いることのできるデータを追加することです。 たとえば、デバイス ツイン タグを使用してデバイスのテレメトリ メッセージのエンリッチメントを行えば、この情報のために顧客側でデバイス ツイン API を呼び出す負担を軽減することができます。
 
 ![メッセージ エンリッチメント フロー](./media/iot-hub-message-enrichments-overview/message-enrichments-flow.png)
 
@@ -29,9 +29,9 @@ ms.locfileid: "92146589"
 
 * エンリッチメントを適用する[エンドポイント](iot-hub-devguide-endpoints.md) (複数可)
 
-**キー**は文字列です。 キーに含めることができるのは、英数字と特殊文字 (ハイフン (`-`)、アンダースコア (`_`)、ピリオド (`.`)) のみです。
+**キー** は文字列です。 キーに含めることができるのは、英数字と特殊文字 (ハイフン (`-`)、アンダースコア (`_`)、ピリオド (`.`)) のみです。
 
-**値**には、次の例のいずれかを使用できます。
+**値** には、次の例のいずれかを使用できます。
 
 * 任意の静的文字列。 条件、ロジック、演算、関数などの動的な値は使用できません。 たとえば、複数の顧客によって使用される SaaS アプリケーションを開発する場合、それぞれの顧客に識別子を割り当て、その識別子をアプリケーション内で利用可能にすることができます。 アプリケーションを実行すると、IoT Hub によってデバイス テレメトリ メッセージに顧客の識別子のスタンプが適用され、顧客ごとに異なる処理をメッセージに適用することができます。
 
@@ -63,7 +63,7 @@ ms.locfileid: "92146589"
 | **方法** | **コマンド** |
 | ----- | -----| 
 | ポータル | [Azure Portal](https://portal.azure.com) | [メッセージ エンリッチメントのチュートリアル](tutorial-message-enrichments.md)をご覧ください | 
-| Azure CLI   | [az iot hub message-enrichment](/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
+| Azure CLI   | [az iot hub message-enrichment](/cli/azure/iot/hub/message-enrichment) |
 | Azure PowerShell | [Add-AzIotHubMessageEnrichment](/powershell/module/az.iothub/add-aziothubmessageenrichment) |
 
 メッセージ エンリッチメントを追加しても、メッセージのルーティングに待機時間は追加されません。
@@ -84,7 +84,7 @@ ms.locfileid: "92146589"
 
 * デバイス ツインに対する更新が、対応するエンリッチメント値に反映されるまでに最大 5 分程度かかります。
 
-* エンリッチメントを含むメッセージ サイズの合計が 256 KB を超えることは許容されません。 メッセージ サイズが 256 KB を超えた場合、IoT ハブでメッセージがドロップされます。 メッセージがドロップされたときのエラーは、[IoT Hub メトリック](iot-hub-metrics.md)を使用して識別し、デバッグすることができます。 たとえば、d2c.telemetry.egress.invalid を監視することが考えられます。
+* エンリッチメントを含むメッセージ サイズの合計が 256 KB を超えることは許容されません。 メッセージ サイズが 256 KB を超えた場合、IoT ハブでメッセージがドロップされます。 メッセージがドロップされたときのエラーは、[IoT Hub メトリック](monitor-iot-hub-reference.md#metrics)を使用して識別し、デバッグすることができます。 たとえば、 [ルーティング メトリック](monitor-iot-hub-reference.md#routing-metrics)で *互換性のないテレメトリ メッセージ* ( *d2c.telemetry.egress.invalid* ) メトリックを監視できます。 詳細については、[IoT Hub の監視](monitor-iot-hub.md)に関する記事を参照してください。
 
 * メッセージ エンリッチメントは、デジタル ツインの変更イベントには適用されません。
 

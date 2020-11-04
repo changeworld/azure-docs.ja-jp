@@ -11,16 +11,16 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 03/05/2020
-ms.openlocfilehash: 6d62c9aa7be1511cdac6404ac7c42200677e56fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62351f341d03873afc59ff7748fa03da0a202d35
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651608"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495587"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench の変更点
 
-Azure Machine Learning Workbench アプリケーションとその他のいくつかの初期機能は、**2018 年 9 月**のリリースで非推奨とされ、改善された[アーキテクチャ](concept-azure-machine-learning-architecture.md)への移行のために置き換えられました。
+Azure Machine Learning Workbench アプリケーションとその他のいくつかの初期機能は、 **2018 年 9 月** のリリースで非推奨とされ、改善された [アーキテクチャ](concept-azure-machine-learning-architecture.md)への移行のために置き換えられました。
 
 エクスペリエンスの向上のため、このリリースには、お客様からのフィードバックをきっかけとする重要なアップデートが多く含まれています。 実験の実施からモデルのデプロイに至るまで、コア機能は変更されていません。 ただし、堅牢な <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a>、R SDK、[Azure CLI](reference-azure-machine-learning-cli.md) を使用して、機械学習のタスクとパイプラインを実現できるようになっています。
 
@@ -56,7 +56,7 @@ Machine Learning Workbench、Azure Machine Learning 実験、Machine Learning �
 
 最新のバージョンでお客様の実行がまだ表示されていても、以前の実行履歴にはもうアクセスできなくなっています。
 
-実行履歴は**実験**と呼ばれるようになりました。 SDK、CLI、または Azure Machine Learning Studio を使用して、モデルの実験を収集し、それらを表示することができます。
+実行履歴は **実験** と呼ばれるようになりました。 SDK、CLI、または Azure Machine Learning Studio を使用して、モデルの実験を収集し、それらを表示することができます。
 
 ポータルのワークスペース ダッシュボードは、Microsoft Edge、Chrome、および Firefox ブラウザーでのみでサポートされます。
 
@@ -99,6 +99,8 @@ run = exp.submit(source_directory=script_folder,
 サービスの概要については、「[Azure Machine Learning とは](overview-what-is-azure-ml.md)」を参照してください。
 
 任意の方法で最初の実験を作成します。
+
+  + [独自の環境を使用する](tutorial-1st-experiment-sdk-setup-local.md)
   + [Python ノートブックを使用する](tutorial-1st-experiment-sdk-setup.md)
   + [R Markdown を使用する](tutorial-1st-r-experiment.md) 
   + [自動機械学習を使用する](tutorial-designer-automobile-price-train-score.md) 

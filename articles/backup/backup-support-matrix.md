@@ -4,12 +4,12 @@ description: Azure Backup サービスのサポート設定と制限事項の概
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: d9da2ee893244afc7150ab6249dbe51845d5d0c2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ee37e994c9e72c3d3c98455360dc68746f49d278
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332714"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743133"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -108,7 +108,7 @@ Azure Backup では、転送中のデータと保存データの暗号化をサ�
 
 - バックアップ データは、暗号化された形式で Recovery Services コンテナーに格納されます。
 - MARS エージェントを使用してオンプレミスのサーバーからデータをバックアップする場合、データは Azure Backup にアップロードする前にパスフレーズを使用して暗号化され、Azure Backup からダウンロードされた後に初めて暗号化が解除されます。
-- Azure VM をバックアップする場合は、仮想マシン*内*で暗号化を設定する必要があります。
+- Azure VM をバックアップする場合は、仮想マシン *内* で暗号化を設定する必要があります。
 - Azure Backup は Azure Disk Encryption をサポートしており、Windows 仮想マシンでは BitLocker が、Linux 仮想マシンでは **dm-crypt** が使用されます。
 - Azure Backup のバックエンドでは [Azure Storage Service Encryption](../storage/common/storage-service-encryption.md) が使用されており、これによって保存データが保護されます。
 
@@ -151,7 +151,7 @@ Azure Backup に、データの可用性と回復性の機能を強化するた�
 | バックアップの管理の種類 | サポートされています                                                    | サポートされているリージョン |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | はい。   暗号化された VM と 4 TB 未満のディスクがある VM でのサポート | すべての Azure パブリック リージョンとソブリン クラウド。  |
-| SQL/SAP HANA | はい                                                          | 米国西部 2 (WUS2)、米国中西部 (WCUS)、カナダ中部 (CNC)、カナダ東部 (CNE)、米国東部 (EUS)、米国西部 (WUS)、東日本 (JPE)、東日本 (JPE) |
+| SQL/SAP HANA | はい                                                          | フランスを除くすべてのパブリック リージョン |
 | MARS エージェント/オンプレミス  | いいえ                                                           | 該当なし               |
 | AFS (Azure ファイル共有)                 | いいえ                                                           | 該当なし               |
 

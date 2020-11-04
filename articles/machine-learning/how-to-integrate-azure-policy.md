@@ -1,5 +1,5 @@
 ---
-title: Azure Policy を使用したコンプライアンスの監査と管理
+title: ポリシーへの準拠の監査と管理
 titleSuffix: Azure Machine Learning
 description: Azure Policy を使用して、Azure Machine Learning の組み込みポリシーを使用する方法について説明します。
 author: jhirono
@@ -10,19 +10,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: e7eebb22efe32b290e078348337049c6c3e762db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d371ea077b479ad2256e782dadd5d037f53004f2
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993293"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900143"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>Azure Policy を使用した Azure Machine Learning の監査と管理
 
 [Azure Policy](/azure/governance/policy) は、Azure リソースがポリシーに準拠していることを確認できるガバナンス ツールです。 Azure Machine Learning を使用すると、次のポリシーを割り当てることができます。
 
-* **カスタマー マネージド キー**: ワークスペースでカスタマー マネージド キーを使用する必要があることを監査または適用します。
-* **Private Link**: ワークスペースで仮想ネットワークとの通信にプライベート エンドポイントが使用されているかどうかを監査します。
+* **カスタマー マネージド キー** : ワークスペースでカスタマー マネージド キーを使用する必要があることを監査または適用します。
+* **Private Link** : ワークスペースで仮想ネットワークとの通信にプライベート エンドポイントが使用されているかどうかを監査します。
 
 ポリシーは、サブスクリプション レベルやリソース グループ レベルなど、さまざまなスコープで設定できます。 詳細については、[Azure Policy のドキュメント](/azure/governance/policy/overview)を参照してください。
 

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 7717c02fb460c41543ae810820ba01efb13a1ca7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: af98811e158b9613e41389e08e19cb36797aa272
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91271190"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790595"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して REST エンドポイントを呼び出す
 
@@ -27,6 +27,8 @@ ms.locfileid: "91271190"
   通常、コネクタが機能するためには、REST エンドポイントがこの条件を満たしている必要があります。
 
   * Swagger ファイルは、パブリックにアクセス可能な HTTPS URL でホストされている必要があります。
+  
+  * Swagger ファイルでは、定義に各操作の `operationID` が含まれている必要があります。 そうでない場合、コネクタによって Swagger ファイル内の最後の操作のみが表示されます。 
 
   * Swagger ファイルでは、[クロスオリジン リソース共有 (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) が有効になっている必要があります。
 
@@ -125,7 +127,7 @@ ms.locfileid: "91271190"
    | プロパティ | 値 |
    |----------|-------|
    | **許可されたオリジン** | `*` |
-   | **許可されたメソッド** | `GET`、`HEAD`、`PUT` |
+   | **許可されたメソッド** | `GET`, `HEAD`, `PUT` |
    | **許可されたヘッダー** | `*` |
    | **公開されるヘッダー** | `*` |
    | **最長有効期間** (秒) | `200` |
@@ -166,4 +168,3 @@ ms.locfileid: "91271190"
 ## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。
-

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 1a6aabe7ef3500a114525fe6c8bc993826295e36
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: afbf80810f45f616eac40de16889bbebb1cf4964
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275355"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544802"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Azure Database for MySQL のサーバーの概念
 
@@ -32,7 +32,7 @@ Azure Database for MySQL サーバーの特徴を次に示します。
 - データベースに適用される管理ポリシーのスコープ (ログイン、ファイアウォール、ユーザー、ロール、構成など) を提供します。
 - 複数のバージョンで使用できます。 詳細については、[サポートされる Azure Database for MySQL データベース バージョン](./concepts-supported-versions.md)に関するページをご覧ください。
 
-Azure Database for MySQL サーバー内には 1 つまたは複数のデータベースを作成できます。 サーバーごとに 1 つのデータベースを作成してすべてのリソースを使用するか、複数のデータベースを作成してリソースを共有することができます。 価格は、価格レベル、仮想コア、ストレージ (GB) の構成に基づき、サーバーごとに構造化されています。 詳細については、「[価格レベル](./concepts-service-tiers.md)」をご覧ください。
+Azure Database for MySQL サーバー内には 1 つまたは複数のデータベースを作成できます。 サーバーごとに 1 つのデータベースを作成してすべてのリソースを使用するか、複数のデータベースを作成してリソースを共有することができます。 価格は、価格レベル、仮想コア、ストレージ (GB) の構成に基づき、サーバーごとに構造化されています。 詳細については、「[価格レベル](./concepts-pricing-tiers.md)」をご覧ください。
 
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーへの接続および認証方法
 
@@ -48,12 +48,12 @@ Azure Database for MySQL サーバー内には 1 つまたは複数のデータ�
 
 ## <a name="stopstart-an-azure-database-for-mysql-preview"></a>Azure Database for MySQL を停止または開始する (プレビュー)
 
-Azure Database for MySQL を使用すると、使用されていないときにサーバーを**停止**し、アクティビティを再開したらサーバーを**開始**することができます。 これは基本的に、データベース サーバーのコストを節約し、使用したリソースに対してのみ課金されるようにするために行われます。 これは、開発テスト ワークロードの場合、および 1 日の一部でしかサーバーを使用しない場合に、いっそう重要になります。 サーバーを停止すると、すべてのアクティブな接続が切断されます。 後で、サーバーをオンラインに戻すときは、[Azure portal](how-to-stop-start-server.md) または [CLI](how-to-stop-start-server.md) のいずれかを使用できます。
+Azure Database for MySQL を使用すると、使用されていないときにサーバーを **停止** し、アクティビティを再開したらサーバーを **開始** することができます。 これは基本的に、データベース サーバーのコストを節約し、使用したリソースに対してのみ課金されるようにするために行われます。 これは、開発テスト ワークロードの場合、および 1 日の一部でしかサーバーを使用しない場合に、いっそう重要になります。 サーバーを停止すると、すべてのアクティブな接続が切断されます。 後で、サーバーをオンラインに戻すときは、[Azure portal](how-to-stop-start-server.md) または [CLI](how-to-stop-start-server.md) のいずれかを使用できます。
 
-サーバーが**停止**状態にある場合、サーバーのコンピューティングは課金されません。 ただし、サーバーが再び起動されたときにデータ ファイルを使用できるようにするため、サーバーのストレージは維持されているため、ストレージは引き続き課金されます。
+サーバーが **停止** 状態にある場合、サーバーのコンピューティングは課金されません。 ただし、サーバーが再び起動されたときにデータ ファイルを使用できるようにするため、サーバーのストレージは維持されているため、ストレージは引き続き課金されます。
 
 > [!IMPORTANT]
-> サーバーを**停止**すると、それ以降連続して 7 日間は、その状態のままになります。 この期間内に手動で**開始**しないと、サーバーは 7 日の終わりに自動的に開始されます。 サーバーを使用していない場合は、再び**停止**することができます。
+> サーバーを **停止** すると、それ以降連続して 7 日間は、その状態のままになります。 この期間内に手動で **開始** しないと、サーバーは 7 日の終わりに自動的に開始されます。 サーバーを使用していない場合は、再び **停止** することができます。
 
 サーバーが停止されている間、サーバーで管理操作を実行することはできません。 サーバーの構成設定を変更するには、[サーバーを起動する](how-to-stop-start-server.md)必要があります。
 
@@ -67,5 +67,5 @@ Azure Database for MySQL サーバーを管理するには、Azure Portal また
 ## <a name="next-steps"></a>次のステップ
 
 - サービスの概要については、[Azure Database for MySQL の概要](./overview.md)に関するページをご覧ください
-- **サービス レベル**に基づく特定のリソース クォータと制限については、[サービス レベル](./concepts-service-tiers.md)に関するページをご覧ください
+- **価格レベル** に基づく特定のリソース クォータと制限については、[価格レベル](./concepts-pricing-tiers.md)に関するページをご覧ください。
 - サービスへの接続については、「[Azure Database for MySQL の接続ライブラリ](./concepts-connection-libraries.md)」を参照してください。

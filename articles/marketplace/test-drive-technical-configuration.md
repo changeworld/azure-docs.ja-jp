@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 7d22226721d4fc09b4f5affc15047b6799ed0d19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1772a61f45d88e0b63346c41d557cfddf35ab4a7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409478"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892623"
 ---
 # <a name="test-drive-technical-configuration"></a>体験版の技術的な構成
 
@@ -22,15 +22,15 @@ Microsoft コマーシャル マーケットプレースの [体験版] オプ�
 
 ## <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager の体験版
 
-これは、仮想マシンまたは Azure アプリ オファーの唯一のテスト ドライブ オプションであり、非常に詳細な設定も必要です。 後述するセクション「[デプロイ サブスクリプションの詳細](#deployment-subscription-details)」および「[体験版のリスト登録](#test-drive-listings)」をお読みになってから、[Azure Resource Manager 体験版の構成](azure-resource-manager-test-drive.md)に関する別のトピックに進んでください。
+これは、仮想マシンまたは Azure アプリ オファーの唯一のテスト ドライブ オプションであり、非常に詳細な設定が必要です。 後述するセクション「[デプロイ サブスクリプションの詳細](#deployment-subscription-details)」および「[体験版のリスト登録](#test-drive-listings)」をお読みになってから、[Azure Resource Manager 体験版の構成](azure-resource-manager-test-drive.md)に関する別のトピックに進んでください。
 
 ## <a name="hosted-test-drive"></a>ホストされた体験版
 
-Microsoft は、この種類の体験版を使用してサービスのプロビジョニングとデプロイをホストおよび維持することで、体験版の設定の複雑さを排除できます。 この種類のホストされた体験版では、体験版がターゲットとしている対象ユーザーが Dynamics 365 Business Central、Dynamics 365 Customer Engagement、Dynamics 365 Operations のいずれであっても、構成は同じです。
+Microsoft は、サービスのプロビジョニングとプロビジョニング解除をホストおよび維持することで、体験版の設定の複雑さを排除できます。 この種類の体験版では、体験版がターゲットとしている対象ユーザーが Dynamics 365 Customer Engagement と Dynamics 365 Operations のどちらであっても、構成は同じです。
 
 - **同時実行体験版の最大数** (必須) – 体験版を同時に使用できる顧客の最大数を設定します。 体験版がアクティブになっている間、各同時ユーザーは Dynamics 365 のライセンスを消費します。そのため、設定された上限に対応するうえで十分な数のライセンスを確実に使用可能にしてください。 推奨値は 3 から 5 です。
 
-- **[体験版の期間]** (必須) – 体験版が有効である時間数 (1 時間以上) を入力します。 この時間が経過すると、セッションが終了し、ライセンスが消費されなくなります。 オファーの複雑さに応じて、2 時間から 24 時間までの値にすることをお勧めします。 この期間は、整数の時間でのみ設定できます (たとえば、"2" 時間は有効ですが、"1.5" は有効ではありません)。 ユーザーは、時間を使い切った後に体験版にもう一度アクセスしたい場合、新しいセッションを要求できます。
+- **[体験版の期間]** (必須) – 各顧客に対して体験版が有効である時間数を入力します。 この期間が経過すると、セッションが終了し、ライセンスが消費されなくなります。 オファーの複雑さに応じて、2 時間から 24 時間までの値にすることをお勧めします。 この期間は、整数の時間でのみ設定できます (たとえば、"2 時間" は有効ですが、"1.5 時間" は有効ではありません)。 ユーザーは、時間を使い切った後に体験版にもう一度アクセスしたい場合、新しいセッションを要求できます。
 
 - **インスタンス URL** (必須) – 顧客が体験版を開始する URL。 通常、インストールされたサンプル データを使用してアプリを実行する Dynamics 365 インスタンスの URL です (例: `https://testdrive.crm.dynamics.com`)。
 
@@ -48,7 +48,7 @@ Microsoft は、この種類の体験版を使用してサービスのプロビ�
 
 - **同時実行体験版の最大数** (必須) – 体験版を同時に使用できる顧客の最大数を設定します。 これらの体験版は既にデプロイされており、顧客はデプロイを待つことなくそれらにすぐにアクセスできます。
 
-- **[体験版の期間]** (必須) – 体験版が有効である時間数 (1 時間以上) を入力します。 この期間が終わると、体験版は自動的に終了します。
+- **体験版の期間** (必須) – 体験版がアクティブな状態であり続ける期間の長さを時間数で入力します。 この期間が終わると、体験版は自動的に終了します。
 
 - **Azure リソース グループ名** (必須) – ロジック アプリの体験版が保存される [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md#resource-groups)名を入力します。
 
@@ -66,15 +66,15 @@ Power BI アプリの設定の詳細については、[Power BI アプリとは]
 
 Microsoft が体験版のデプロイを代行できるようにするには、固有の Azure サブスクリプションを別に作成して指定します (Power BI 体験版の場合は必要ありません)。
 
-- **[Azure サブスクリプション ID]** (Azure Resource Manager および Logic Apps では必須) – リソースの使用状況レポート用および課金用の Azure アカウント サービスへのアクセス権を付与するサブスクリプション ID を入力します。 まだお持ちでない場合、体験版に使用するために[別個の Azure サブスクリプションの作成](../cost-management-billing/manage/create-subscription.md)を検討することをお勧めします。 Azure サブスクリプション ID は、[Azure portal](https://portal.azure.com/) にログインし、左側にあるメニューの **[サブスクリプション]** タブに移動して見つけることができます。 このタブを選択すると、自分のサブスクリプション ID (例: "a83645ac-1234-5ab6-6789-1h234g764ghty") が表示されます。
+- **[Azure サブスクリプション ID]** (Azure Resource Manager および Logic Apps では必須) – リソースの使用状況レポート用および課金用の Azure アカウント サービスへのアクセス権を付与するサブスクリプション ID を入力します。 まだお持ちでない場合、体験版に使用するために[別個の Azure サブスクリプションの作成](../cost-management-billing/manage/create-subscription.md)を検討することをお勧めします。 Azure サブスクリプション ID は、 [Azure portal](https://portal.azure.com/) にログインし、左側にあるメニューの **[サブスクリプション]** タブに移動して見つけることができます。 このタブを選択すると、自分のサブスクリプション ID (例: "a83645ac-1234-5ab6-6789-1h234g764ghty") が表示されます。
 
-- **Azure AD テナント ID** (必須) – ご利用の Azure Active Directory (AD) [テナント ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) を入力します。 この ID を見つけるには、[Azure portal](https://portal.azure.com/) にサインインし、左側のメニューで [Active Directory] タブを選択します。 **[プロパティ]** を選択した後、表示される**ディレクトリ ID** 番号を確認します (例: 50c464d3-4930-494c-963c-1e951d15360e)。 また、[https://www.whatismytenantid.com](https://www.whatismytenantid.com) でドメイン名アドレスを使用して、組織のテナント ID を検索することもできます。
+- **Azure AD テナント ID** (必須) – ご利用の Azure Active Directory (AD) [テナント ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) を入力します。 この ID を見つけるには、 [Azure portal](https://portal.azure.com/) にサインインし、左側のメニューで [Active Directory] タブを選択します。 **[プロパティ]** を選択した後、表示される **ディレクトリ ID** 番号を確認します (例: 50c464d3-4930-494c-963c-1e951d15360e)。 また、[https://www.whatismytenantid.com](https://www.whatismytenantid.com) でドメイン名アドレスを使用して、組織のテナント ID を検索することもできます。
 
 - **Azure AD テナント名** (Dynamic 365 では必須) – お使いの Azure Active Directory (AD) 名を入力します。 この名前を見つけるには、[Azure portal](https://portal.azure.com/) にサインインします。右上隅にある自分のアカウント名の下に、テナント名が表示されます。
 
-- **Azure AD アプリ ID** (必須) – ご利用の Azure Active Directory (AD) [アプリケーション ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) を入力します。 この ID を見つけるには、[Azure portal](https://portal.azure.com/) にサインインして左側のメニューで [Active Directory] タブを選択し、 **[アプリの登録]** を選んでから、一覧表示される**アプリケーション ID** 番号を探します (`50c464d3-4930-494c-963c-1e951d15360e` など)。
+- **Azure AD アプリ ID** (必須) – ご利用の Azure Active Directory (AD) [アプリケーション ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) を入力します。 この ID を見つけるには、 [Azure portal](https://portal.azure.com/) にサインインして左側のメニューで [Active Directory] タブを選択し、 **[アプリの登録]** を選んでから、一覧表示される **アプリケーション ID** 番号を探します (`50c464d3-4930-494c-963c-1e951d15360e` など)。
 
-- **Azure AD アプリ クライアントのシークレット** (必須) – ご利用の Azure AD アプリケーションの[クライアント シークレット](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)) を入力します。 この値を探すには、[Azure portal](https://portal.azure.com/) にサインインします。 左側のメニューにある **[Azure Active Directory]** タブを選択し、 **[アプリの登録]** を選択してから、体験版アプリを選択します。 次に、 **[Certificates and secrets]\(証明書とシークレット\)** 、 **[New client secret]\(新しいクライアント シークレット\)** の順に選択し、説明を入力し、 **[Expires]\(有効期限\)** で **[Never]\(なし\)** を選択してから、 **[追加]** を選択します。 必ず値をコピーしておいてください。 値をコピーする前に、ページから移動しないでください。
+- **Azure AD アプリ クライアントのシークレット** (必須) – ご利用の Azure AD アプリケーションの [クライアント シークレット](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)) を入力します。 この値を探すには、[Azure portal](https://portal.azure.com/) にサインインします。 左側のメニューにある **[Azure Active Directory]** タブを選択し、 **[アプリの登録]** を選択してから、体験版アプリを選択します。 次に、 **[Certificates and secrets]\(証明書とシークレット\)** 、 **[New client secret]\(新しいクライアント シークレット\)** の順に選択し、説明を入力し、 **[Expires]\(有効期限\)** で **[Never]\(なし\)** を選択してから、 **[追加]** を選択します。 必ず値をコピーしておいてください。 値をコピーする前に、ページから移動しないでください。
 
 ## <a name="test-drive-listings"></a>体験版のリスト登録
 
@@ -93,6 +93,14 @@ Microsoft が体験版のデプロイを代行できるようにするには、�
 
 現在、パートナー センターで体験版を作成している場合は、続行する前に、 **[下書きの保存]** を選択します。
 
-## <a name="next-step"></a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
-- [コマーシャル マーケットプレースで既存のオファーを更新する](partner-center-portal/update-existing-offer.md)
+- [体験版のベスト プラクティス](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [概要](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF、ポップアップ ブロックがオフになっていることを確認してください)
+- [商業マーケットプレースで既存のオファーを更新する](partner-center-portal/update-existing-offer.md)
+
+## <a name="additional-resources"></a>その他のリソース
+
+## <a name="feedback"></a>フィードバック
+
+[この製品](https://feedback.azure.com/forums/216369-azure-marketplace)に関するフィードバックを送信して表示する

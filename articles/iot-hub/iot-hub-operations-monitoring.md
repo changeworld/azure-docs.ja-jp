@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 956a676709322860da7f08d032d370ed66f55b3f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 559dac0f37daf612404fca839e9918e97077029e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92139337"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538495"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub 操作の監視 (非推奨)
 
 IoT Hub の操作の監視では、IoT Hub に対する操作の状態をリアルタイムで監視することができます。 IoT Hub は、複数のカテゴリにまたがる操作のイベントを追跡します。 1 つ以上のカテゴリから IoT ハブのエンドポイントにイベントを送信して処理するように選択することができます。 データを監視してエラーがないか確認したり、データ パターンに基づいてより複雑な処理をセットアップしたりできます。
 
 >[!NOTE]
->IoT Hub の**操作の監視は非推奨になっており、2019 年 3 月 10 日をもって IoT Hub から削除される予定です**。 IoT Hub の操作と正常性を監視する方法については、「[Azure IoT Hub の正常性を監視し、問題をすばやく診断する](iot-hub-monitor-resource-health.md)」をご覧ください。 廃止のスケジュールについて詳しくは、「[Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)」(Azure Monitor および Azure Resource Health による Azure IoT ソリューションの監視) をご覧ください。
+>IoT Hub の **操作の監視は非推奨になっており、2019 年 3 月 10 日をもって IoT Hub から削除される予定です** 。 IoT Hub の操作と正常性の監視については、[IoT Hub の監視](monitor-iot-hub.md)に関するページを参照してください。 廃止のスケジュールについて詳しくは、「[Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)」(Azure Monitor および Azure Resource Health による Azure IoT ソリューションの監視) をご覧ください。
 
 IoT Hub では、次の 6 つのカテゴリのイベントを監視します。
 
@@ -205,15 +205,15 @@ IoT Hub での監視エンドポイントは、Event Hub と互換性のある�
 
     ![サービスの共有アクセス ポリシーの主キー](./media/iot-hub-operations-monitoring/service-key.png)
 
-次の C# コード サンプルは、Visual Studio の **Windows クラシック デスクトップ** C# コンソール アプリからの抜粋です。 このプロジェクトでは、**WindowsAzure.ServiceBus** NuGet パッケージがインストールされています。
+次の C# コード サンプルは、Visual Studio の **Windows クラシック デスクトップ** C# コンソール アプリからの抜粋です。 このプロジェクトでは、 **WindowsAzure.ServiceBus** NuGet パッケージがインストールされています。
 
-* 次の例に示されているように、接続文字列プレースホルダーを、以前にメモした **Event Hub 互換エンドポイント** とサービスの**主キー** の値に置き換えます。
+* 次の例に示されているように、接続文字列プレースホルダーを、以前にメモした **Event Hub 互換エンドポイント** とサービスの **主キー** の値に置き換えます。
 
     ```csharp
     "Endpoint={your Event Hub-compatible endpoint};SharedAccessKeyName=service;SharedAccessKey={your service primary key value}"
     ```
 
-* 監視エンドポイント名プレース ホルダーを、以前にメモした **Event Hub 互換名**に置き換えます。
+* 監視エンドポイント名プレース ホルダーを、以前にメモした **Event Hub 互換名** に置き換えます。
 
 ```csharp
 class Program

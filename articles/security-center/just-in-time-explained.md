@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: be2aa75fb7c532d48188493b2ed09adc8b141b6a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: fe358e35f2d68a3e55e9d9bb4ac57a13f42085e3
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340021"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629240"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>Just-In-Time (JIT) VM アクセスについて
 
@@ -67,6 +67,10 @@ JIT の利点を得られるマシンが Security Center で検出されると�
 
 ### <a name="what-permissions-are-needed-to-configure-and-use-jit"></a>JIT を構成して使用するために必要なアクセス許可は何ですか?
 
+JIT では、サブスクリプションで [Azure Defender for servers](defender-for-servers-introduction.md) を有効にする必要があります。 
+
+**閲覧者** と **セキュリティ閲覧者** ロールは、JIT の状態とパラメーターの両方を表示できます。
+
 JIT で動作するカスタム ロールを作成する場合は、次の表にある詳細情報が必要となります。
 
 > [!TIP]
@@ -85,7 +89,7 @@ JIT で動作するカスタム ロールを作成する場合は、次の表に
 
 ## <a name="next-steps"></a>次のステップ
 
-このページでは、Just-In-Time (JIT) 仮想マシン (VM) へのアクセスを使用すべき_理由_について説明しました。 
+このページでは、Just-In-Time (JIT) 仮想マシン (VM) へのアクセスを使用すべき _理由_ について説明しました。 
 
 JIT を有効にし、JIT 対応の VM へのアクセスを要求する方法については、操作方法に関する記事に進んでください。
 

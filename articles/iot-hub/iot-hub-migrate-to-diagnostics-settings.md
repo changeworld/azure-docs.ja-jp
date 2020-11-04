@@ -8,18 +8,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: ab07da38c01b052a4220274fb059683a22950a3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40c90142330b0530f1127beae1624ff27d7eb6ca
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75750697"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541487"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>IoT Hub を操作の監視から診断設定に移行する
 
 [操作の監視](iot-hub-operations-monitoring.md)を使用して IoT Hub での操作の状態を追跡するユーザーは、そのワークフローを、Azure Monitor の機能である [Azure Diagnostics 設定](../azure-monitor/platform/platform-logs-overview.md)に移行することができます。 診断設定は、多数の Azure サービスについてリソース レベルの診断情報を提供します。
 
-**IoT Hub の操作の監視機能は非推奨となっており**、今後 Portal から削除される予定です。 この記事では、ワークロードを操作の監視から診断設定に移動する手順について説明します。 廃止のスケジュールについて詳しくは、「[Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/)」(Azure Monitor および Azure Resource Health による Azure IoT ソリューションの監視) をご覧ください。
+**IoT Hub の操作の監視機能は非推奨となっており** 、今後 Portal から削除される予定です。 この記事では、ワークロードを操作の監視から診断設定に移動する手順について説明します。 廃止のスケジュールについて詳しくは、「[Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/)」(Azure Monitor および Azure Resource Health による Azure IoT ソリューションの監視) をご覧ください。
 
 ## <a name="update-iot-hub"></a>IoT Hub の更新
 
@@ -52,12 +52,12 @@ Azure Portal で IoT Hub を更新するには、まず診断設定を有効に�
 * ジョブ操作
 * ダイレクト メソッド
 
-具体的なスキーマ構造については、[診断設定のスキーマの理解](iot-hub-monitor-resource-health.md#understand-the-logs)に関するページを参照してください。
+特定のスキーマ構造については、「[リソース ログ](monitor-iot-hub-reference.md#resource-logs)」を参照してください。
 
 ## <a name="monitoring-device-connect-and-disconnect-events-with-low-latency"></a>待機時間が短いデバイスの接続イベントと切断イベントの監視
 
-実稼働のデバイスの接続イベントと切断イベントを監視するには、Event Grid で[**デバイス切断**イベント](iot-hub-event-grid.md#event-types) をサブスクライブして、アラートを取得し、デバイスの接続状態を監視することをお勧めします。 IoT ソリューション内の IoT Hub からのデバイス接続イベントとデバイス切断イベントを統合する方法については、こちらの[チュートリアル](iot-hub-how-to-order-connection-state-events.md)をご覧ください。
+実稼働のデバイスの接続イベントと切断イベントを監視するには、Event Grid で [**デバイス切断** イベント](iot-hub-event-grid.md#event-types) をサブスクライブして、アラートを取得し、デバイスの接続状態を監視することをお勧めします。 IoT ソリューション内の IoT Hub からのデバイス接続イベントとデバイス切断イベントを統合する方法については、こちらの[チュートリアル](iot-hub-how-to-order-connection-state-events.md)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure IoT Hub の正常性を監視し、問題をすばやく診断する](iot-hub-monitor-resource-health.md)
+[IoT Hub の監視](monitor-iot-hub.md)

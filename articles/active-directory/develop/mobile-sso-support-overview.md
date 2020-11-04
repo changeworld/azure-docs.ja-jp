@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 27a58fc66de31fef272ab2f2c2bfaa9896a07d4b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a3899d9fbf04f9629885ec38f6b0b2bde728561b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209204"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740148"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>開発するモバイル アプリでシングル サインオンとアプリ保護ポリシーをサポートする
 
@@ -47,7 +47,7 @@ ms.locfileid: "92209204"
 
 iOS アプリケーションの場合は、MSAL を使用してサインインを設定する方法と、[さまざまな SSO シナリオに合わせて MSAL を構成するためのガイダンス](single-sign-on-macos-ios.md)を示す、[クイックスタート](quickstart-v2-ios.md)が用意されています。
 
-Android アプリケーションの場合は、MSAL を使用してサインインを設定する方法と、[ブローカー認証](brokered-auth.md)または[承認エージェント](authorization-agents.md)を使用するためのガイダンスを示す、[クイックスタート](quickstart-v2-android.md)が用意されています。
+Android アプリケーションの場合は、MSAL を使用してサインインを設定する方法を示す[クイックスタート](quickstart-v2-android.md)と、[Android で MSAL を使用してクロスアプリ SSO を有効にする方法](msal-android-single-sign-on.md)についてのガイダンスが用意されています。
 
 ### <a name="use-the-system-web-browser"></a>システム Web ブラウザーを使用する
 

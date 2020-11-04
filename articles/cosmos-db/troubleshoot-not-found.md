@@ -7,12 +7,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f32a37d5d08e8b20e59455393c70e4e4d288eb11
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 83b28c562dca0c20b6f78058f1c7f7def60416ee
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91802398"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496089"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Azure Cosmos DB の "見つかりません" 例外を診断してトラブルシューティングする
 HTTP 状態コード 404 は、リソースがもう存在しないことを表します。
@@ -28,7 +28,7 @@ HTTP 状態コード 404 は、リソースがもう存在しないことを表�
 
 #### <a name="solution"></a>解決方法:
 1. Azure Cosmos DB の既定のアカウント整合性は、セッション整合性です。 項目が作成または更新されると、応答により、セッション トークンが返されます。これを SDK インスタンス間で渡すことで、読み取り要求がその変更を含むレプリカから読み取っていることが保証されます。
-1. [整合性レベル](consistency-levels-choosing.md)を[より強力なレベル](consistency-levels-tradeoffs.md)に変更します。
+1. [整合性レベル](./consistency-levels.md)を[より強力なレベル](./consistency-levels.md)に変更します。
 
 ### <a name="invalid-partition-key-and-id-combination"></a>パーティション キーと ID の組み合わせが無効
 パーティション キーと ID の組み合わせが無効です。
@@ -37,7 +37,7 @@ HTTP 状態コード 404 は、リソースがもう存在しないことを表�
 不適切な組み合わせの原因となっているアプリケーション ロジックを修正します。 
 
 ### <a name="invalid-character-in-an-item-id"></a>項目 ID に無効な文字がある
-項目 ID に[無効な文字](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet&preserve-view=true#remarks)を含む項目が Azure Cosmos DB に挿入されています。
+項目 ID に[無効な文字](/dotnet/api/microsoft.azure.documents.resource.id?preserve-view=true&view=azure-dotnet#remarks)を含む項目が Azure Cosmos DB に挿入されています。
 
 #### <a name="solution"></a>解決方法:
 ID を、特殊文字を含まない別の値に変更します。 ID を変更できない場合は、ID を Base64 でエンコードして特殊文字をエスケープすることができます。
@@ -79,7 +79,7 @@ while (invalidItemsIterator.HasMoreResults)
 ```
 
 ### <a name="time-to-live-purge"></a>Time to Live 消去
-項目に、[Time to Live (TTL)](https://docs.microsoft.com/azure/cosmos-db/time-to-live) プロパティが設定されていました。 TTL プロパティの期限が切れたため、項目は消去されました。
+項目に、[Time to Live (TTL)](./time-to-live.md) プロパティが設定されていました。 TTL プロパティの期限が切れたため、項目は消去されました。
 
 #### <a name="solution"></a>解決方法:
 項目が消去されないようにするには、TTL プロパティを変更します。
@@ -94,7 +94,7 @@ while (invalidItemsIterator.HasMoreResults)
 項目が存在するデータベースやコンテナーが削除されました。
 
 #### <a name="solution"></a>解決方法:
-1. 親リソースを[復元](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore#backup-retention-period)するか、リソースを再作成します。
+1. 親リソースを[復元](./online-backup-and-restore.md#request-data-restore-from-a-backup)するか、リソースを再作成します。
 1. 新しいリソースを作成して、削除されたリソースを置き換えます。
 
 ### <a name="7-containercollection-names-are-case-sensitive"></a>7.コンテナーおよびコレクション名は、大文字と小文字が区別されます。

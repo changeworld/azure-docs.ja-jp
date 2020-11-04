@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: aee886e4e5ccaa3e07851ba839532f47c0a46ef8
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: fa7d252246ed37160ba2a5cfcd90557df1375bc3
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342044"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461534"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender for SQL servers on machines 
 
@@ -31,7 +31,7 @@ ms.locfileid: "92342044"
 |側面|詳細|
 |----|:----|
 |リリース状態:|プレビュー|
-|価格:|**Azure Defender for SQL servers on machines** は、[価格ページ](security-center-pricing.md)に記載されているように課金されます|
+|価格:|**Azure Defender for SQL servers on machines** は、 [価格ページ](security-center-pricing.md)に記載されているように課金されます|
 |保護される SQL のバージョン:|Azure SQL Server (Microsoft サポートの対象となるすべてのバージョン)|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov|
 |||
@@ -48,27 +48,27 @@ ms.locfileid: "92342044"
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>手順 1. SQL サーバーのホストで Log Analytics エージェントをプロビジョニングする
 
-- **Azure VM 上の SQL Server** - SQL マシンが Azure VM でホストされている場合は、[Log Analytics エージェントを自動プロビジョニングする](security-center-enable-data-collection.md#workspace-configuration)ことができます。 または、手動の手順に従って [Azure Stack VM をオンボードする](quickstart-onboard-machines.md#onboard-your-azure-stack-vms)こともできます。
-- **Azure Arc 上の SQL Server** - SQL Server が [Azure Arc](../azure-arc/index.yml) マシンでホストされている場合は、Security Center のレコメンデーション [Log Analytics agent should be installed on your Windows-based Azure Arc machines (Preview)] (Log Analytics エージェントを Windows ベースの Azure Arc マシンにインストールする必要があります (プレビュー)) を使用して、Log Analytics エージェントをデプロイできます。 または、[Azure Arc のドキュメント](../azure-arc/servers/manage-vm-extensions.md#enable-extensions-from-the-portal)の手動の手順に従うこともできます。
+- **Azure VM 上の SQL Server** - SQL マシンが Azure VM でホストされている場合は、 [Log Analytics エージェントを自動プロビジョニングする](security-center-enable-data-collection.md#workspace-configuration)ことができます。 または、手動の手順に従って [Azure Stack VM をオンボードする](quickstart-onboard-machines.md#onboard-your-azure-stack-vms)こともできます。
+- **Azure Arc 上の SQL Server** - SQL Server が [Azure Arc](../azure-arc/index.yml) 対応サーバーによって管理されている場合は、Security Center のレコメンデーション [Log Analytics agent should be installed on your Windows-based Azure Arc machines (Preview)] (Log Analytics エージェントを Windows ベースの Azure Arc マシンにインストールする必要があります (プレビュー)) を使用して、Log Analytics エージェントをデプロイできます。 または、[Azure Arc のドキュメント](../azure-arc/servers/manage-vm-extensions.md)に記載されたインストール方法に従うこともできます。
 
 - **オンプレミスの SQL Server** - SQL Server が Azure Arc を使用しないオンプレミスの Windows マシンでホストされている場合は、Azure に接続するためのオプションが 2 つあります。
     
-    - **Azure Arc をデプロイする** - 任意の Windows マシンを Security Center に接続できます。 ただし、Azure Arc を使用すると、Azure 環境の*すべて*がより緊密に統合されます。 Azure Arc を設定すると、ポータルに **[SQL Server - Azure Arc]** ページが表示され、セキュリティ アラートはそのページの専用の **[セキュリティ]** タブに表示されます。 そのため、最初に推奨されるオプションは、[ホストで Azure Arc を設定](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows)し、前述の **Azure Arc 上の SQL Server** の手順に従うことです。
+    - **Azure Arc をデプロイする** - 任意の Windows マシンを Security Center に接続できます。 ただし、Azure Arc を使用すると、Azure 環境の *すべて* がより緊密に統合されます。 Azure Arc を設定すると、ポータルに **[SQL Server - Azure Arc]** ページが表示され、セキュリティ アラートはそのページの専用の **[セキュリティ]** タブに表示されます。 そのため、最初に推奨されるオプションは、 [ホストで Azure Arc を設定](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows)し、前述の **Azure Arc 上の SQL Server** の手順に従うことです。
         
-    - **Azure Arc を使用せずに Windows マシンを接続する** - Azure Arc を使用せずに Windows マシンで実行されている SQL Server を接続する場合は、「[Windows コンピューターを Azure Monitor に接続する](../azure-monitor/platform/agent-windows.md)」の手順に従ってください。
+    - **Azure Arc を使用せずに Windows マシンを接続する** - Azure Arc を使用せずに Windows マシンで実行されている SQL Server を接続する場合は、「 [Windows コンピューターを Azure Monitor に接続する](../azure-monitor/platform/agent-windows.md)」の手順に従ってください。
 
 
 ### <a name="step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>手順 2. Security Center の価格と設定ページで、オプションのプランを有効にする
 
 1. Security Center のメニューで、 **[価格と設定]** ページを開きます。
 
-    - **Azure Security Center の既定のワークスペース** (名前は "defaultworkspace-[サブスクリプション ID]-[リージョン]") を使用している場合は、該当する**サブスクリプション**を選択します。
+    - **Azure Security Center の既定のワークスペース** (名前は "defaultworkspace-[サブスクリプション ID]-[リージョン]") を使用している場合は、該当する **サブスクリプション** を選択します。
 
-    - **既定以外のワークスペース**を使用している場合は、該当する**ワークスペース**を選択します (必要に応じて、フィルターにワークスペースの名前を入力します)。
+    - **既定以外のワークスペース** を使用している場合は、該当する **ワークスペース** を選択します (必要に応じて、フィルターにワークスペースの名前を入力します)。
 
         ![既定以外のワークスペースをタイトルで検索する](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
 
-1. **Azure Defender for SQL servers on machines (プレビュー)** のオプションを**オン**に設定します。 
+1. **Azure Defender for SQL servers on machines (プレビュー)** のオプションを **オン** に設定します。 
 
     ![オプションのプランを含む Security Center の価格ページ](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)
 
@@ -97,7 +97,7 @@ ms.locfileid: "92342044"
 
     このレコメンデーションの詳細ビューが表示されます。
 
-    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="マシン上の SQL サーバーの脆弱性評価の結果を修復する必要がある (プレビュー)":::
+    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="レコメンデーションの詳細ビュー":::
 
 1. 詳細を表示するには、次のようにドリルダウンします。
 
@@ -105,7 +105,7 @@ ms.locfileid: "92342044"
 
     * 特定の SQL データベースごとにグループ化された脆弱性の概要を表示するには、目的のデータベースを選択します。
 
-    各ビューでは、セキュリティ チェックが**重要度**順に表示されます。 特定のセキュリティ チェックをクリックすると詳細ウィンドウが表示され、**説明**、**修復方法**、およびその他の関連情報 (**影響**や**ベンチマーク**など) が表示されます。
+    各ビューでは、セキュリティ チェックが **重要度** 順に表示されます。 特定のセキュリティ チェックをクリックすると詳細ウィンドウが表示され、 **説明** 、 **修復方法** 、およびその他の関連情報 ( **影響** や **ベンチマーク** など) が表示されます。
 
 ## <a name="azure-defender-for-sql-alerts"></a>Azure Defender for SQL のアラート
 普段は見られない、潜在的に有害な SQL マシンへのアクセスが試行されると、あるいは SQL マシンの悪用が試行されると、アラートが生成されます。 これらのイベントが発生すると、[アラート リファレンス ページの「SQL Database および Azure Synapse Analytics (旧称 SQL Data Warehouse) のアラート」セクション](alerts-reference.md#alerts-sql-db-and-warehouse)で示されるアラートがトリガーされます。

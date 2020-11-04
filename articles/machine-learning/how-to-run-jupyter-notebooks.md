@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 4373618bacad00675d5f639225c435296010949b
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 654c1beb0f8f544219ed802cab92f06055d70960
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221424"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628679"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter ノートブックを実行する方法
 
@@ -80,11 +80,11 @@ Azure Machine Learning ワークスペースで、新しい Jupyter ノートブ
 1. **[コンピューティング]** 先を選択するか、新しいものを作成し、それが実行されるまで待ちます。
 1. **[Open terminal]\(ターミナルを開く\)** アイコンを選択します。
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="[新しいファイルの作成]":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="ターミナルを開きます":::
 
 1. アイコンが表示されない場合は、コンピューティング ターゲットの右側にある **[...]** を選択し、 **[ターミナルを開く]** を選択します。
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="[新しいファイルの作成]":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="[...] の [Open terminal]\(ターミナルを開く\)":::
 
 
 詳細については、[Git リポジトリをワークスペース ファイル システムに複製する](concept-train-model-git-integration.md#clone-git-repositories-into-your-workspace-file-system)方法に関する記事を参照してください。
@@ -113,10 +113,10 @@ Notebook ツールバーから Jupyter または JupyterLab を起動するこ�
 
 フォーカス モードを使用して現在のビューを拡張すると、アクティブなタブに集中できるようになります。 フォーカス モードでは、Notebook ファイル エクスプローラーが非表示になります。
 
-1. ターミナル ウィンドウのツールバーで、 **[フォーカス モード]**  を選択してフォーカス モードをオンにします。 ウィンドウの幅によっては、ツールバーの **[...]** メニュー項目の下にあります。
-1. フォーカス モードになっているときに標準ビューに戻るには、 **[標準ビュー]** を選択します。
+1. ターミナル ウィンドウのツールバーで、 **[フォーカス モード]** を選択してフォーカス モードをオンにします。 ウィンドウの幅によっては、ツールバーの **[...]** メニュー項目の下にあります。
+1. フォーカス モードになっているときに標準ビューに戻るには、 **[標準ビュー]** を選択します。
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="[新しいファイルの作成]":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="フォーカス モード/標準ビューの切り替え":::
 
 
 ### <a name="use-intellisense"></a>IntelliSense を使用する
@@ -136,19 +136,20 @@ Notebook ツールバーから Jupyter または JupyterLab を起動するこ�
 1. すべてのノートブック セルを実行します。
 1. 新しいノートブックを実行するコードが含まれているセルを選択します。 たとえば、実験を送信するコードや、あるいはモデルを登録するコードなどです。
 1. セルのツールバーに表示される **[収集]** アイコンを選択します。
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="[新しいファイルの作成]" ノートブックの名前を入力します。  
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="スクリーンショット: [収集] アイコンを選択します":::
+1. 新しい "収集された" ノートブックの名前を入力します。  
 
 新しいノートブックにはコード セルのみが含まれており、収集するよう選択したセルと同じ結果を得るために必要なすべてのセルが含まれています。
 
 ### <a name="save-and-checkpoint-a-notebook"></a>ノートブックを保存およびチェックポイントする
 
- *ipynb* ファイルを作成すると、Azure Machine Learning によってチェックポイント ファイルが作成されます。
+*ipynb* ファイルを作成すると、Azure Machine Learning によってチェックポイント ファイルが作成されます。
 
 ノートブック ツール バーでメニューを選択し、 **[ファイル] &gt; [Save and checkpoint]\(保存とチェックポイント\)** の順に選択して、手動でノートブックを保存します。そうすると、ノートブックに関連付けられたチェックポイント ファイルが追加されます。
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="[新しいファイルの作成]":::
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="ノートブック ツール バーの保存ツールのスクリーンショット":::
 
-すべてのノートブックは 30 秒ごとに自動保存されます。  自動保存では、チェックポイント ファイルではなく、最初の *ipynb* ファイルのみが更新されます。
+すべてのノートブックは 30 秒ごとに自動保存されます。 自動保存では、チェックポイント ファイルではなく、最初の *ipynb* ファイルのみが更新されます。
  
 ノートブックのメニューで **[チェックポイント]** を選択して、名前付きチェックポイントを作成し、保存されているチェックポイントにノートブックを戻すことができます。
 
@@ -217,7 +218,7 @@ Notebook によって、接続されたコンピューティング インスタ�
 1. Notebook ツールバーの [ **[Open terminal]\(ターミナルを開く\)**](#terminal) を選択します。
 1. ターミナル ウィンドウを使用して、新しい環境を作成します。  たとえば、次のコードでは `newenv` が作成されます。
     ```shell
-    conda create --name newenv
+    conda create -y --name newenv
     ```
 1. 環境をアクティブにします。  `newenv` を作成した後の例を次に示します。
 
@@ -227,8 +228,8 @@ Notebook によって、接続されたコンピューティング インスタ�
 1. pip と ipykernel パッケージを新しい環境にインストールし、その conda 環境用のカーネルを作成します
 
     ```shell
-    conda install pip
-    conda install ipykernel
+    conda install -y pip
+    conda install -y ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
 

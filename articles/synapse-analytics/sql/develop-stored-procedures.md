@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 09/23/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2089a6895a34c74de9d3e14beaa3807bbb1b6e6b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 1db3b224d23664c83f21e77dcb445b0fb043a4c3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279078"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737855"
 ---
 # <a name="use-stored-procedures-in-synapse-sql"></a>Synapse SQL でストアド プロシージャを使用する
 
@@ -24,6 +24,9 @@ ms.locfileid: "92279078"
 ## <a name="what-to-expect"></a>ウィザードの内容
 
 Synapse SQL では、SQL Server で使用される多数の T-SQL 機能がサポートされています。 さらに重要なのは、ソリューションのパフォーマンスを最大限にするために使用できる、スケールアウト専用の機能が用意されていることです。
+
+> [!NOTE]
+> プロシージャ本体では、Synapse SQL のセキュリティでサポートされている機能のみを使用できます。 [この記事](overview-features.md)では、ストアド プロシージャで使用できるオブジェクトとステートメントを確認します。 これらの記事の例では、サーバーレスおよびプロビジョニングされた領域で使用できる汎用機能を使用しています。
 
 SQL プールのスケールとパフォーマンスを維持するために、動作が異なる機能もあれば、サポートされていない機能もあります。
 

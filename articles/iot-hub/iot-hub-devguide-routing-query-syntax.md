@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 9b5463ba789a1bcfb707fb03c70f1a8464cb6b59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83c290adea02915db1dc52bd359b4d3165611522
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767342"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547709"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub メッセージ ルーティングのクエリ構文
 
@@ -23,7 +23,7 @@ ms.locfileid: "91767342"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-メッセージ ルーティングでは、メッセージ プロパティとメッセージ本文に基づいてクエリを実行できるほか、デバイス ツインのタグとプロパティに基づいてクエリを実行することもできます。 メッセージ本文が JSON でない場合、メッセージ ルーティングを使用してメッセージをルーティングできるものの、メッセージ本文にクエリを適用することはできません。  クエリはブール式として表されます。このブール式では、ブール値が true の場合にはクエリが成功し、受信データがすべてルーティングされます。また、ブール値が false の場合にはクエリが失敗し、データはルーティングされません。 式が null 値または未定義に評価されると、false として処理され、失敗時に診断ログでエラーが生成されます。 ルートが保存および評価されるようにするには、正しいクエリ構文を使用する必要があります。  
+メッセージ ルーティングでは、メッセージ プロパティとメッセージ本文に基づいてクエリを実行できるほか、デバイス ツインのタグとプロパティに基づいてクエリを実行することもできます。 メッセージ本文が JSON でない場合、メッセージ ルーティングを使用してメッセージをルーティングできるものの、メッセージ本文にクエリを適用することはできません。  クエリはブール式として表されます。このブール式では、ブール値が true の場合にはクエリが成功し、受信データがすべてルーティングされます。また、ブール値が false の場合にはクエリが失敗し、データはルーティングされません。 式が null 値または未定義に評価されると、false として処理され、失敗時に、IoT Hub [ルート リソース ログ](monitor-iot-hub-reference.md#routes)でエラーが生成されます。 ルートが保存および評価されるようにするには、正しいクエリ構文を使用する必要があります。  
 
 ## <a name="message-routing-query-based-on-message-properties"></a>メッセージ プロパティに基づいたメッセージ ルーティング クエリ 
 
@@ -62,7 +62,7 @@ IoT ハブでは、各種プロトコルにおける相互運用性を確保す�
 | dt-dataschema | string |  この値は、IoT Hub で、device-to-cloud メッセージに対して設定されます。 デバイス接続で設定されたデバイス モデル ID が含まれます。 クエリを実行するには、`$dt-dataschema` を使用します。 |
 | dt-subject | string | device-to-cloud メッセージを送信しているコンポーネントの名前。 クエリを実行するには、`$dt-subject` を使用します。 |
 
-[IoT Hub のメッセージ](iot-hub-devguide-messages-construct.md)に関するページで説明されているように、メッセージには他にもシステム プロパティがあります。 前の表の上記のプロパティに加えて、**connectionDeviceId**、**connectionModuleId** のクエリを実行することもできます。
+[IoT Hub のメッセージ](iot-hub-devguide-messages-construct.md)に関するページで説明されているように、メッセージには他にもシステム プロパティがあります。 前の表の上記のプロパティに加えて、 **connectionDeviceId** 、 **connectionModuleId** のクエリを実行することもできます。
 
 ### <a name="application-properties"></a>Application properties
 

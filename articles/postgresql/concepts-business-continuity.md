@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: 4189aadb6e37fc70bcaeecca2110d6fcc3959dd3
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 5fb82c6098352076307f71eee022074a247e3cd9
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939870"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629342"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server でのビジネス継続性の概要
 
@@ -29,18 +29,18 @@ Azure Database for PostgreSQL により、geo リストアを開始し、別の�
 | :------------: | :-------: | :-----------------: | :------------------: |
 | バックアップからのポイントインタイム リストア | リテンション期間内の任意の復元ポイント | リテンション期間内の任意の復元ポイント | リテンション期間内の任意の復元ポイント |
 | Geo レプリケーション バックアップからの geo リストア | サポートされていません | RTO - 変動 <br/>RPO < 1 時間 | RTO - 変動 <br/>RPO < 1 時間 |
-| 読み取りレプリカ | RTO - 分単位 <br/>RPO < 5 分* | RTO - 分単位 <br/>RPO < 5 分*| RTO - 分単位 <br/>RPO < 5 分*|
+| 読み取りレプリカ | RTO - 分単位* <br/>RPO < 5 分* | RTO - 分単位* <br/>RPO < 5 分*| RTO - 分単位* <br/>RPO < 5 分*|
 
-\* RPO は、プライマリ データベースのワークロードやリージョン間の待ち時間など、さまざまな要因によって高くなることがあります。 
+\* RTO と RPO は場合により、プライマリ データベースのワークロードやリージョン間の待ち時間など、さまざまな要因によって、大幅に高くなることがあります。 
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>ユーザーまたはアプリケーション エラーの後でサーバーを復旧する
 
 サービスのバックアップを使って、さまざまな破壊的イベントからサーバーを復旧できます。 一部のデータ、重要なテーブル、そしてデータベース全体さえも、うっかり削除してしまう場合があります。 アプリケーションの欠陥などにより、正しいデータが不良データによって誤って上書きされることもあります。
 
-**ポイントインタイム リストア**を実行して、正常であることがわかっている時点のサーバーのコピーを作成できます。 この時点は、サーバーに対して構成されているバックアップ リテンション期間内でなければなりません。 新しいサーバーにデータを復元した後は、元のサーバーを新しく復元したサーバーに置き換えたり、復元したサーバーから元のサーバーに必要なデータをコピーしたりできます。
+**ポイントインタイム リストア** を実行して、正常であることがわかっている時点のサーバーのコピーを作成できます。 この時点は、サーバーに対して構成されているバックアップ リテンション期間内でなければなりません。 新しいサーバーにデータを復元した後は、元のサーバーを新しく復元したサーバーに置き換えたり、復元したサーバーから元のサーバーに必要なデータをコピーしたりできます。
 
 > [!IMPORTANT]
-> 削除したサーバーは、復元**できません**。 サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。 [Azure リソース ロック](../azure-resource-manager/management/lock-resources.md)を使用すると、サーバーが誤って削除されるのを防ぐことができます。
+> 削除したサーバーは、復元 **できません** 。 サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。 [Azure リソース ロック](../azure-resource-manager/management/lock-resources.md)を使用すると、サーバーが誤って削除されるのを防ぐことができます。
 
 ## <a name="recover-from-an-azure-data-center-outage"></a>Azure データ センターの停止から復旧する
 

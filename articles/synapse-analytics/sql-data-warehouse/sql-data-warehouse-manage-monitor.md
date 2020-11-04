@@ -11,12 +11,12 @@ ms.date: 03/24/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: 9eb1006bdba6c69136c972359bb13420a04f4180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70ce0d6aada2b03646500720b0eba980a1f2d8f8
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89048026"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515731"
 ---
 # <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>DMV を使用して Azure Synapse Analytics SQL プールのワークロードを監視する
 
@@ -67,7 +67,7 @@ ORDER BY total_elapsed_time DESC;
 
 上記のクエリ結果から、調査するクエリの **要求 ID を書き留めます** 。
 
-アクティブな実行中のクエリが多数あるため、**中断**状態のクエリをキューに入れることができます。 これらのクエリは、UserConcurrencyResourceType 型の [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 待機クエリにも表示されます。 コンカレンシーの制限に関する詳細については、「[メモリおよびコンカレンシーの制限](memory-concurrency-limits.md)」、または[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)に関する記事を参照してください。 クエリの待機は、オブジェクト ロックなど、他の理由によっても発生します。  クエリがリソースを待っている場合は、この記事の下にある [リソースを待機しているクエリの調査](#monitor-waiting-queries) に関するトピックをご覧ください。
+アクティブな実行中のクエリが多数あるため、 **中断** 状態のクエリをキューに入れることができます。 これらのクエリは、UserConcurrencyResourceType 型の [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 待機クエリにも表示されます。 コンカレンシーの制限に関する詳細については、「[メモリおよびコンカレンシーの制限](memory-concurrency-limits.md)」、または[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)に関する記事を参照してください。 クエリの待機は、オブジェクト ロックなど、他の理由によっても発生します。  クエリがリソースを待っている場合は、この記事の下にある [リソースを待機しているクエリの調査](#monitor-waiting-queries) に関するトピックをご覧ください。
 
 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) テーブル内のクエリの検索を簡素化するには、[LABEL](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して、sys.dm_pdw_exec_requests ビューで検索できるクエリにコメントを割り当てます。
 
@@ -100,10 +100,10 @@ ORDER BY step_index;
 
 DSQL プランに予想よりも時間がかかる場合は、多くの DSQL 手順が存在する複雑なプランであったり、1 つの手順に長い時間を要することが原因であったりする可能性があります。  プランにいくつかの移動操作を含む多くの手順が存在する場合は、テーブルのディストリビューションを最適化して、データの移動を削減することを検討してください。 [テーブルのディストリビューション](sql-data-warehouse-tables-distribute.md)に関する記事で、クエリを解決するためにデータを移動する必要がある理由について説明しています。 その記事では、データ移動を最小限に抑えるためのいくつかの分散方法についても説明しています。
 
-1 つの手順に関する詳細を調査するには、実行時間の長いクエリ手順の *operation_type* 列を確認し、**手順インデックス**を書き留めます。
+1 つの手順に関する詳細を調査するには、実行時間の長いクエリ手順の *operation_type* 列を確認し、 **手順インデックス** を書き留めます。
 
 * 手順 3 の **SQL 操作** に進みます(OnOperation、RemoteOperation、ReturnOperation)。
-* 手順 4 の**データ移動操作**に進みます(ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation)。
+* 手順 4 の **データ移動操作** に進みます(ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation)。
 
 ### <a name="step-3-investigate-sql-on-the-distributed-databases"></a>手順 3:分散データベースでの SQL を調査する
 
@@ -139,7 +139,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
 * *total_elapsed_time* 列で、特定の配布で他の配布よりデータ移動に大幅に時間がかかっていないか確認します。
-* 実行時間の長い配布に対して、*rows_processed* 列で、その配布から移動された行の数が他の配布より大幅に大きいか確認します。 大きい場合、個の検出は、基になるデータの傾斜を示していることがあります。
+* 実行時間の長い配布に対して、 *rows_processed* 列で、その配布から移動された行の数が他の配布より大幅に大きいか確認します。 大きい場合、個の検出は、基になるデータの傾斜を示していることがあります。 データ スキューの原因の 1 つは、多数の NULL 値を持つ列 (行がすべて同じ分布に配置される) に配布することです。 このような列に対する配布を回避したり、可能な場合はクエリをフィルター処理して NULL を除外したりすることで、クエリの速度が低下しないようにします。 
 
 クエリが実行中の場合は、[DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して、特定のディストリビューション内で現在実行中の SQL 手順に対する SQL Server プラン キャッシュから、SQL Server 推定プランを取得できます。
 
@@ -176,7 +176,7 @@ WHERE waits.request_id = 'QID####'
 ORDER BY waits.object_name, waits.object_type, waits.state;
 ```
 
-クエリが別のクエリからのリソースを積極的に待っている場合、状態は **AcquireResources**になります。  クエリに必要なリソースがすべて揃っている場合、状態は **Granted**になります。
+クエリが別のクエリからのリソースを積極的に待っている場合、状態は **AcquireResources** になります。  クエリに必要なリソースがすべて揃っている場合、状態は **Granted** になります。
 
 ## <a name="monitor-tempdb"></a>tempdb を監視する
 

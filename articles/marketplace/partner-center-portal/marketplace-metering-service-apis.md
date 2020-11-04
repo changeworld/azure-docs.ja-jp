@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d4c1005d300a5b326ff2f41d9fa3838dbb1c7552
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e29aeb7570ad6daba9d6fc652291471fa246bf0a
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278022"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674631"
 ---
 # <a name="marketplace-metered-billing-apis"></a>マーケットプレースの従量制課金 API
 
@@ -34,7 +34,7 @@ TLS バージョン 1.2 バージョンは、HTTPS 通信の最小バージョ�
 
 カレンダー日の 1 時間ごとに生成できる使用状況イベントはリソースあたり 1 つだけです。 1 時間に複数のユニットが消費される場合は、その時間内に消費されるすべてのユニットを累積し、1 つのイベントで生成します。 使用状況イベントは過去 24 時間のみ生成できます。 使用状況イベントを 8:00 と 8:59:59 の間の任意の時点で生成した (かつ受け入れられた) 場合、同じ日の 8:00 と 8:59:59 の間に追加のイベントを送信すると、重複として拒否されます。
 
-**POST**: `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**POST** : `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *クエリ パラメーター:*
 
@@ -67,7 +67,7 @@ TLS バージョン 1.2 バージョンは、HTTPS 通信の最小バージョ�
 >[!NOTE]
 >`resourceId` は、SaaS アプリとカスタム メーターを生成するマネージド アプリでは、意味が異なります。 
 
-Azure Application Managed Apps プランの場合、`resourceId` は、Managed App メタデータ オブジェクトの `billingDetails` にある `resourceUsageId` です。 これを取得するためのサンプル スクリプトについては、「[Azure マネージド ID トークンの使用](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token)」をご覧ください。 
+Azure Application Managed Apps プランの場合、`resourceId` は、マネージド アプリの `resource group Id`です。 これを取得するためのサンプル スクリプトについては、「[Azure マネージド ID トークンの使用](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token)」をご覧ください。 
 
 SaaS オファーの場合、`resourceId` は SaaS サブスクリプション ID です。 SaaS サブスクリプションの詳細については、「[サブスクリプションの一覧](./pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions)」をご覧ください。
 
@@ -191,7 +191,7 @@ Forbidden. 認証トークンが指定されていない、無効である、ま
 >[!NOTE]
 >`resourceId` は、SaaS アプリとカスタム メーターを生成するマネージド アプリでは、意味が異なります。 
 
-Azure Application Managed Apps プランの場合、`resourceId` は、Managed App メタデータ オブジェクトの `billingDetails` にある `resourceUsageId` です。 これを取得するためのサンプル スクリプトについては、「[Azure マネージド ID トークンの使用](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token)」をご覧ください。 
+Azure Application Managed Apps プランの場合、`resourceId` は、マネージド アプリの `resource group Id`です。 これを取得するためのサンプル スクリプトについては、「[Azure マネージド ID トークンの使用](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token)」をご覧ください。 
 
 SaaS オファーの場合、`resourceId` は SaaS サブスクリプション ID です。 SaaS サブスクリプションの詳細については、「[サブスクリプションの一覧](./pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions)」をご覧ください。
 

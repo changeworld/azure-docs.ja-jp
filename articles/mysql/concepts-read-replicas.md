@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/15/2020
-ms.openlocfilehash: 81c6cd6ffe200f0fbc9df20f4fa7e2e147db86af
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.date: 10/26/2020
+ms.openlocfilehash: c66845a801b93db4ba718bc0aba5c39eabdd24b4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151187"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791972"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ
 
@@ -36,9 +36,6 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 レプリカは読み取り専用であるため、マスターへの書き込み容量の負担を直接減らすことにはなりません。 この機能は、書き込み集中型ワークロードを対象としていません。
 
 読み取りレプリカ機能は、MySQL の非同期レプリケーションを使用します。 機能は、同期レプリケーション シナリオを目的としていません。 ソースとレプリカの間には測定可能な遅延が発生します。 レプリカ上のデータは、最終的にマスター上のデータと整合します。 この機能は、この遅延に対応できるワークロードに使用してください。
-
-> [!IMPORTANT]
-> Azure Database for MySQL では、 **行** ベースのバイナリ ログが使用されます。 テーブルに主キーがない場合は、テーブル内のすべての行が DML 操作に対してスキャンされます。 これにより、レプリケーションのラグが増加します。 変更に遅れずにレプリカが処理されるようにするには、一般に、レプリカ サーバーを作成する前に、ソース サーバーのテーブルに主キーを追加するか、既にある場合はレプリカ サーバーを作成しなおすことをお勧めします。
 
 ## <a name="cross-region-replication"></a>リージョン間レプリケーション
 ソース サーバーとは別のリージョンに読み取りレプリカを作成できます。 リージョン間レプリケーションは、ディザスター リカバリー計画や、データをユーザーの所在地の近くに配置するなどのシナリオに役立ちます。
@@ -71,7 +68,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 ソース サーバーに既存のレプリカ サーバーがない場合、まずレプリケーションの準備のためにソースが再起動されます。
 
-レプリカ作成ワークフローを開始すると、空の Azure Database for MySQL サーバーが作成されます。 新しいサーバーには、ソース サーバー上にあったデータが設定されます。 作成時間は、ソース上のデータ量と、最後の週次完全バックアップからの経過時間に依存します。 時間の範囲は、数分から数時間になる可能性があります。 レプリカ サーバーは、ソース サーバーと同じリソース グループおよび同じサブスクリプションに常に作成されます。 レプリカ サーバーを別のリソース グループや別のサブスクリプションに作成したい場合は、作成後に[レプリカ サーバーを移動](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription)します。
+レプリカ作成ワークフローを開始すると、空の Azure Database for MySQL サーバーが作成されます。 新しいサーバーには、ソース サーバー上にあったデータが設定されます。 作成時間は、ソース上のデータ量と、最後の週次完全バックアップからの経過時間に依存します。 時間の範囲は、数分から数時間になる可能性があります。 レプリカ サーバーは、ソース サーバーと同じリソース グループおよび同じサブスクリプションに常に作成されます。 レプリカ サーバーを別のリソース グループや別のサブスクリプションに作成したい場合は、作成後に[レプリカ サーバーを移動](../azure-resource-manager/management/move-resource-group-and-subscription.md)します。
 
 すべてのレプリカでストレージの[自動拡張](concepts-pricing-tiers.md#storage-auto-grow)が有効になっています。 自動拡張機能により、レプリカはレプリケートされるデータに追従していくことができ、ストレージ不足エラーによって発生するレプリケーションの中断が防止されます。
 
@@ -95,7 +92,7 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
 
 Azure Database for MySQL は、Azure Monitor に **[Replication lag in seconds]\(レプリケーションのラグ (秒)\)** メトリックを提供しています。 このメトリックは、レプリカのみで使用できます。 このメトリックは、MySQL の `SHOW SLAVE STATUS` コマンドで使用できる `seconds_behind_master` メトリックを使用して計算されます。 レプリケーションのラグがワークロードに対して許容できない値に達したときに通知されるアラートを設定します。
 
-レプリケーションのラグが増加している場合は、[レプリケーションの待機時間のトラブルシューティングに関する記事](howto-troubleshoot-replication-latency.md)を参照して、考えられる原因を把握し、トラブルシューティングします。
+レプリケーションのラグが増加している場合は、[レプリケーションの待機時間のトラブルシューティング](howto-troubleshoot-replication-latency.md)に関する記事を参照して、考えられる原因を把握し、トラブルシューティングします。
 
 ## <a name="stop-replication"></a>レプリケーションの停止
 

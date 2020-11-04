@@ -3,12 +3,12 @@ title: Azure Service Bus エンティティにアクセスするためにアプ�
 description: この記事では、Azure Service Bus エンティティ (キュー、トピックなど) にアクセスするための Azure Active Directory を使用したアプリケーションの認証に関する情報を提供します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: b12f2f294a66159a7035240c361ab93f9f84718e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4e19c0ab26d491ba0b95159e274383431aefaee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88064827"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518230"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Azure Service Bus エンティティにアクセスするために Azure Active Directory を使用してアプリケーションを認証および承認する
 Azure Service Bus では、Azure Active Directory (Azure AD) を使用して Service Bus エンティティ (キュー、トピック、サブスクリプション、またはフィルター) への要求を承認することがサポートされています。 Azure AD では、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、サービス プリンシパル (ユーザー、グループ、またはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与します。 ロールとロールの割り当ての詳細については、[各種ロールの理解](../role-based-access-control/overview.md)に関するページを参照してください。
@@ -32,7 +32,7 @@ Azure Active Directory (Azure AD) では、[Azure RBAC](../role-based-access-con
 Azure ロールが Azure AD セキュリティ プリンシパルに割り当てられると、Azure によりそのセキュリティ プリンシパルのリソースへのアクセス権が付与されます。 アクセスは、サブスクリプションのレベル、リソース グループ、または Service Bus 名前空間にスコープを設定できます。 Azure AD セキュリティ プリンシパルは、Azure リソースのユーザー、グループ、アプリケーション サービス プリンシパル、または[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) の場合があります。
 
 ## <a name="azure-built-in-roles-for-azure-service-bus"></a>Azure Service Bus 用の Azure 組み込みロール
-Azure Service Bus の場合、名前空間およびそれに関連するすべてのリソースの Azure Portal および Azure リソース管理 API による管理は、Azure RBAC モデルを使って既に保護されています。 Azure では、Service Bus 名前空間へのアクセスを承認するための次の Azure 組み込みロールが提供されています。
+Azure Service Bus の場合、名前空間およびそれに関連するすべてのリソースの Azure portal および Azure リソース管理 API による管理は、Azure RBAC モデルを使って既に保護されています。 Azure では、Service Bus 名前空間へのアクセスを承認するための次の Azure 組み込みロールが提供されています。
 
 - [Azure Service Bus データ所有者](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner):Service Bus 名前空間とそのエンティティ (キュー、トピック、サブスクリプション、およびフィルター) へのデータ アクセスが可能です
 - [Azure Service Bus データ送信者](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender):このロールを使用して、Service Bus 名前空間とそのエンティティへの送信アクセスを許可します。
@@ -43,10 +43,10 @@ Azure Service Bus の場合、名前空間およびそれに関連するすべ�
 
 次の一覧で、Service Bus リソースへのアクセスのスコープとして指定できるレベルを、最も狭いスコープから順に示します。
 
-- **キュー**、**トピック**、または**サブスクリプション**:ロールの割り当ては、特定の Service Bus エンティティに適用されます。 現在、Azure portal では、サブスクリプション レベルでの Service Bus Azure ロールへのユーザー/グループ/マネージド ID の割り当てはサポートされていません。 
+- **キュー** 、 **トピック** 、または **サブスクリプション** :ロールの割り当ては、特定の Service Bus エンティティに適用されます。 現在、Azure portal では、サブスクリプション レベルでの Service Bus Azure ロールへのユーザー/グループ/マネージド ID の割り当てはサポートされていません。 
 - **[Service Bus 名前空間]** :ロールの割り当ては、名前空間以下とそれに関連付けられているコンシューマー グループに対する Service Bus のトポロジ全体にわたります。
 - **[リソース グループ]** :ロールの割り当ては、リソース グループのすべての Service Bus リソースに適用されます。
-- **サブスクリプション**:ロールの割り当ては、サブスクリプションのすべてのリソース グループ内のすべての Service Bus リソースに適用されます。
+- **サブスクリプション** :ロールの割り当ては、サブスクリプションのすべてのリソース グループ内のすべての Service Bus リソースに適用されます。
 
 > [!NOTE]
 > Azure ロールの割り当ての反映には最大で 5 分かかる場合があることに留意してください。 
@@ -69,8 +69,8 @@ Azure RBAC と Azure portal を使用して Azure リソースへのアクセス
 
     ![ツール バーの [追加] ボタン](./media/authenticate-application/role-assignments-add-button.png)
 1. **[ロールの割り当ての追加]** ページで、次の手順を実行します。
-    1. 割り当てる **Service Bus ロール**を選択します。 
-    1. ロールの割り当て先となる**セキュリティ プリンシパル** (ユーザー、グループ、サービス プリンシパル) を検索して見つけます。
+    1. 割り当てる **Service Bus ロール** を選択します。 
+    1. ロールの割り当て先となる **セキュリティ プリンシパル** (ユーザー、グループ、サービス プリンシパル) を検索して見つけます。
     1. **[保存]** を選択して、ロールの割り当てを保存します。 
 
         ![ユーザーにロールを割り当てる](./media/authenticate-application/assign-role-to-user.png)
@@ -123,7 +123,7 @@ Azure AD へのアプリケーションの登録について詳しくは、「[A
     ![クライアント シークレット](./media/authenticate-application/client-secret.png)
 
 ### <a name="permissions-for-the-service-bus-api"></a>Service Bus API のアクセス許可
-アプリケーションがコンソール アプリケーションである場合は、ネイティブ アプリケーションを登録し、**Microsoft.ServiceBus** に対する API アクセス許可を**必要なアクセス許可**セットに追加する必要があります。 また、ネイティブ アプリケーションには、識別子として機能する、Azure AD の**リダイレクト URI** も必要です。この URI はネットワーク宛先である必要はありません。 この例では、サンプル コードが `https://servicebus.microsoft.com` を既に使っているため、この URI を使います。
+アプリケーションがコンソール アプリケーションである場合は、ネイティブ アプリケーションを登録し、 **Microsoft.ServiceBus** に対する API アクセス許可を **必要なアクセス許可** セットに追加する必要があります。 また、ネイティブ アプリケーションには、識別子として機能する、Azure AD の **リダイレクト URI** も必要です。この URI はネットワーク宛先である必要はありません。 この例では、サンプル コードが `https://servicebus.microsoft.com` を既に使っているため、この URI を使います。
 
 ### <a name="client-libraries-for-token-acquisition"></a>トークン取得のためのクライアント ライブラリ  
 アプリケーションを登録し、Azure Service Bus でデータを送受信するためのアクセス許可をこれに付与したら、セキュリティ プリンシパルを認証して OAuth 2.0 トークンを取得するためのコードをアプリケーションに追加できます。 認証してトークンを取得するには、[Microsoft ID プラットフォームの認証ライブラリ](../active-directory/develop/reference-v2-libraries.md)か、OpenID または Connect 1.0 をサポートする別のオープンソース ライブラリのいずれかを使用することができます。 その後、アプリケーションでアクセス トークンを使用して、Azure Service Bus に対する要求を承認することができます。
@@ -131,16 +131,16 @@ Azure AD へのアプリケーションの登録について詳しくは、「[A
 トークンの取得がサポートされるシナリオの一覧は、[Microsoft Authentication Library (MSAL) for .NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) GitHub リポジトリの[シナリオ](https://aka.ms/msal-net-scenarios)のセクションを参照してください。
 
 ## <a name="sample-on-github"></a>GitHub 上のサンプル
-GitHub の次のサンプルを参照してください: [Service Bus のロールベースのアクセス制御](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)。 
+GitHub の次のサンプルを参照してください: [Service Bus の Azure ロールベースのアクセス制御](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl) 
 
 **[Interactive User Login]\(対話型のユーザー ログイン\)** オプションではなく、 **[Client Secret Login]\(クライアント シークレット ログイン\)** オプションを使用します。 クライアント シークレット オプションを使用すると、ポップアップ ウィンドウが表示されません。 アプリケーションでは、認証にテナント ID とアプリ ID が利用されます。 
 
 ### <a name="run-the-sample"></a>サンプルを実行する
 
-サンプルを実行する前に、**app.config** ファイルを編集し、シナリオに応じて、次の値を設定します。
+サンプルを実行する前に、 **app.config** ファイルを編集し、シナリオに応じて、次の値を設定します。
 
-- `tenantId`:**TenantId** の値に設定します。
-- `clientId`:**ApplicationId** の値に設定します。
+- `tenantId`: **TenantId** の値に設定します。
+- `clientId`: **ApplicationId** の値に設定します。
 - `clientSecret`:クライアント シークレットを使ってサインオンする場合は、Azure AD で作成します。 また、ネイティブ アプリの代わりに Web アプリまたは API を使います。 また、前に作成した名前空間の **[アクセス制御 (IAM)]** にアプリを追加します。
 - `serviceBusNamespaceFQDN`:新しく作成した Service Bus 名前空間の完全な DNS 名に設定します (例: `example.servicebus.windows.net`)。
 - `queueName`:作成したキューの名前に設定します。

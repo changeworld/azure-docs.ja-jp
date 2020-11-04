@@ -3,12 +3,12 @@ title: Azure Kubernetes Service (AKS) についてよく寄せられる質問
 description: Azure Kubernetes Service (AKS) についてよく寄せられる質問にお答えします。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: d46b3ba9e3df5e2b3600db2be2a41789fed5242f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: bbe4d43fde3746e6c992b7f03927f081d3814597
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207973"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745754"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -95,6 +95,9 @@ AKS では、以下の[アドミッション コントローラー][admission-co
 - *MutatingAdmissionWebhook*
 - *ValidatingAdmissionWebhook*
 - *ResourceQuota*
+- *PodNodeSelector*
+- *PodTolerationRestriction*
+- *ExtendedResourceToleration*
 
 現在は、AKS でアドミッション コントローラーの一覧を変更することはできません。
 
@@ -108,6 +111,8 @@ namespaceSelector:
     - key: control-plane
       operator: DoesNotExist
 ```
+
+AKS によって、API サーバーのエグレスがファイアウォールで保護されるため、アドミッション コントローラー Webhook にクラスター内からアクセスできる必要があります。
 
 ## <a name="can-admission-controller-webhooks-impact-kube-system-and-internal-aks-namespaces"></a>アドミッション コントローラー Webhook は kube-system と内部 AKS 名前空間に影響しますか?
 
@@ -193,11 +198,18 @@ AKS には、このような構成に耐え、そこから復旧するための�
 
 ## <a name="can-i-use-custom-vm-extensions"></a>カスタム VM 拡張機能を使用できますか?
 
-いいえ。AKS はマネージド サービスであり、IaaS リソースの操作はサポートされていません。 カスタム コンポーネントなどをインストールするには、 Kubernetes の API およびメカニズムを活用してください。 たとえば、必要なコンポーネントをインストールするには、DaemonSet を活用します。
+Log Analytics エージェントは、Microsoft によって管理される拡張機能であるため、サポートされています。 それ以外は、いいえです。AKS はマネージド サービスであり、IaaS リソースの操作はサポートされていません。 カスタム コンポーネントなどをインストールするには、Kubernetes API とメカニズムを使用します。 たとえば、必要なコンポーネントをインストールするには、デーモンセットを使用します。
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>AKS によって、クラスターのリージョン外に格納される顧客データはありますか?
 
 顧客データを 1 つのリージョンに格納できるようにする機能は、現在のところ、アジア太平洋地域の東南アジア リージョン (シンガポール) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは geo 内に格納されます。
+
+## <a name="are-aks-images-required-to-run-as-root"></a>AKS イメージはルートとして実行する必要がありますか?
+
+次の 2 つのイメージを除き、AKS イメージはルートとして実行する必要はありません。
+
+- *mcr.microsoft.com/oss/kubernetes/coredns*
+- *mcr.microsoft.com/azuremonitor/containerinsights/ciprod*
 
 <!-- LINKS - internal -->
 

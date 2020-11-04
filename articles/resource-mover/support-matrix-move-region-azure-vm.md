@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: d71181c5f45ab63febae7288f07189dc52ea12fd
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 4ee442d1983e4f7c1825690e1c780454272971aa
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945915"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521307"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure リージョン間で Azure VM を移動するためのサポート
 
@@ -107,7 +107,7 @@ Azure ギャラリー イメージ (Microsoft が公開) | サポートされて
 Azure ギャラリー イメージ (サード パーティが公開)  | サポートされています | サポート対象のオペレーティング システムで VM が実行されている場合にサポートされます。
 カスタム イメージ (サード パーティが公開)| サポートされています | サポート対象のオペレーティング システムで VM が実行されている場合にサポートされます。
 Site Recovery を使用する VM | サポートされていません | バックエンドで Site Recovery を使用して、VM のリージョン間でリソースを移動します。 Site Recovery を既に使用している場合は、レプリケーションを無効にしてから準備プロセスを開始します。
-RBAC ポリシー | サポートされていません | VM のロールベースのアクセス制御 (RBAC) ポリシーは、ターゲット リージョンの VM にコピーされません。
+Azure RBAC ポリシー | サポートされていません | VM の Azure ロールベースのアクセス制御 (Azure RBAC) ポリシーは、ターゲット リージョンの VM にコピーされません。
 拡張機能 | サポートされていません | 拡張機能はターゲット リージョンの VM にコピーされません。 移動の完了後に手動でインストールします。
 
 

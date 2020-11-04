@@ -9,18 +9,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 0b80c2f125e7eddaa427b75e3e0fe2aff6c679be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 663bd56104893259ad9d2ead54ebe5b2d25e01f4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334329"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636359"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure Data Factory での JSON 形式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-**JSON ファイルを解析する場合や、JSON 形式にデータを書き込む場合**は、この記事に従ってください。 
+**JSON ファイルを解析する場合や、JSON 形式にデータを書き込む場合** は、この記事に従ってください。 
 
 JSON 形式は、以下のコネクタでサポートされています。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、および [SFTP](connector-sftp.md)。
 
@@ -30,12 +30,12 @@ JSON 形式は、以下のコネクタでサポートされています。[Amazo
 
 | プロパティ         | 説明                                                  | 必須 |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | データセットの type プロパティは、**Json** に設定する必要があります。 | はい      |
-| location         | ファイルの場所の設定。 ファイル ベースの各コネクタには、固有の場所の種類と `location` でサポートされるプロパティがあります。 **詳細については、コネクタの記事でデータセットのプロパティに関するセクションを参照してください**。 | はい      |
+| type             | データセットの type プロパティは、 **Json** に設定する必要があります。 | はい      |
+| location         | ファイルの場所の設定。 ファイル ベースの各コネクタには、固有の場所の種類と `location` でサポートされるプロパティがあります。 **詳細については、コネクタの記事でデータセットのプロパティに関するセクションを参照してください** 。 | はい      |
 | encodingName     | テスト ファイルの読み取り/書き込みに使用するエンコードの種類です。 <br>使用できる値は次のとおりです。"UTF-8"、"UTF-16"、"UTF-16BE"、"UTF-32"、"UTF-32BE"、"US-ASCII"、"UTF-7"、"BIG5"、"EUC-JP"、"EUC-KR"、"GB2312"、"GB18030"、"JOHAB"、"SHIFT-JIS"、"CP875"、"CP866"、"IBM00858"、"IBM037"、"IBM273"、"IBM437"、"IBM500"、"IBM737"、"IBM775"、"IBM850"、"IBM852"、"IBM855"、"IBM857"、"IBM860"、"IBM861"、"IBM863"、"IBM864"、"IBM865"、"IBM869"、"IBM870"、"IBM01140"、"IBM01141"、"IBM01142"、"IBM01143"、"IBM01144"、"IBM01145"、"IBM01146"、"IBM01147"、"IBM01148"、"IBM01149"、"ISO-2022-JP"、"ISO-2022-KR"、"ISO-8859-1"、"ISO-8859-2"、"ISO-8859-3"、"ISO-8859-4"、"ISO-8859-5"、"ISO-8859-6"、"ISO-8859-7"、"ISO-8859-8"、"ISO-8859-9"、"ISO-8859-13"、"ISO-8859-15"、"WINDOWS-874"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255"、"WINDOWS-1256"、"WINDOWS-1257"、"WINDOWS-1258"。| いいえ       |
 | compression | ファイル圧縮を構成するためのプロパティのグループ。 アクティビティの実行中に圧縮/圧縮解除を行う場合は、このセクションを構成します。 | いいえ |
-| type<br/>( *`compression` の下にあります*) | JSON ファイルの読み取り/書き込みに使用される圧縮コーデックです。 <br>使用できる値は、**bzip2**、**gzip**、**deflate**、**ZipDeflate**、**TarGzip**、**snappy**、または **lz4** です。 既定では圧縮されません。<br>現在、コピー アクティビティでは "snappy" と "lz4" はサポートされておらず、マッピング データ フローでは "ZipDeflate" はサポートされていないことに**注意**してください。<br>コピー アクティビティを使用して **ZipDeflate**/**TarGzip** ファイルを圧縮解除し、ファイルベースのシンク データ ストアに書き込む場合、ファイルは既定で `<path specified in dataset>/<folder named as source compressed file>/` フォルダーに解凍されることに**注意**してください。圧縮ファイル名をフォルダー構造として保持するかどうかを制御するには、[コピー アクティビティのソース](#json-as-source)に対して `preserveZipFileNameAsFolder`/`preserveCompressionFileNameAsFolder` を使用します。| いいえ。  |
-| level<br/>( *`compression` の下にあります*) | 圧縮率です。 <br>使用できる値は、**Optimal** または **Fastest** です。<br>- **Fastest:** 圧縮操作は可能な限り短時間で完了しますが、圧縮後のファイルが最適に圧縮されていない場合があります。<br>- **Optimal**: 圧縮操作で最適に圧縮されますが、操作が完了するまでに時間がかかる場合があります。 詳細については、 [圧縮レベル](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) に関するトピックをご覧ください。 | いいえ       |
+| type<br/>( *`compression` の下にあります* ) | JSON ファイルの読み取り/書き込みに使用される圧縮コーデックです。 <br>使用できる値は、 **bzip2** 、 **gzip** 、 **deflate** 、 **ZipDeflate** 、 **TarGzip** 、 **snappy** 、または **lz4** です。 既定では圧縮されません。<br>現在、コピー アクティビティでは "snappy" と "lz4" はサポートされておらず、マッピング データ フローでは "ZipDeflate" はサポートされていないことに **注意** してください。<br>コピー アクティビティを使用して **ZipDeflate**/**TarGzip** ファイルを圧縮解除し、ファイルベースのシンク データ ストアに書き込む場合、ファイルは既定で `<path specified in dataset>/<folder named as source compressed file>/` フォルダーに解凍されることに **注意** してください。圧縮ファイル名をフォルダー構造として保持するかどうかを制御するには、 [コピー アクティビティのソース](#json-as-source)に対して `preserveZipFileNameAsFolder`/`preserveCompressionFileNameAsFolder` を使用します。| いいえ。  |
+| level<br/>( *`compression` の下にあります* ) | 圧縮率です。 <br>使用できる値は、 **Optimal** または **Fastest** です。<br>- **Fastest:** 圧縮操作は可能な限り短時間で完了しますが、圧縮後のファイルが最適に圧縮されていない場合があります。<br>- **Optimal** : 圧縮操作で最適に圧縮されますが、操作が完了するまでに時間がかかる場合があります。 詳細については、 [圧縮レベル](/dotnet/api/system.io.compression.compressionlevel) に関するトピックをご覧ください。 | いいえ       |
 
 Azure Blob Storage 上の JSON データセットの例を次に示します。
 
@@ -71,39 +71,39 @@ JSON ファイルからデータを抽出してシンク データ ストアお�
 
 ### <a name="json-as-source"></a>ソースとしての JSON
 
-コピー アクティビティの ***\*source\**** セクションでは、次のプロパティがサポートされます。
+コピー アクティビティの **_\_source\*** * セクションでは、次のプロパティがサポートされます。
 
 | プロパティ      | 説明                                                  | 必須 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | コピー アクティビティのソースの type プロパティは、**JSONSource** に設定する必要があります。 | はい      |
-| formatSettings | プロパティのグループ。 後の **JSON の読み取り設定**に関する表を参照してください。 | いいえ       |
-| storeSettings | データ ストアからデータを読み取る方法を指定するプロパティのグループ。 ファイル ベースの各コネクタには、`storeSettings` に、固有のサポートされる読み取り設定があります。 **詳細については、コネクタの記事でコピー アクティビティのプロパティに関するセクションを参照してください**。 | いいえ       |
+| type          | コピー アクティビティのソースの type プロパティは、 **JSONSource** に設定する必要があります。 | はい      |
+| formatSettings | プロパティのグループ。 後の **JSON の読み取り設定** に関する表を参照してください。 | いいえ       |
+| storeSettings | データ ストアからデータを読み取る方法を指定するプロパティのグループ。 ファイル ベースの各コネクタには、`storeSettings` に、固有のサポートされる読み取り設定があります。 **詳細については、コネクタの記事でコピー アクティビティのプロパティに関するセクションを参照してください** 。 | いいえ       |
 
-`formatSettings` でサポートされている **JSON の読み取り設定**:
+`formatSettings` でサポートされている **JSON の読み取り設定** :
 
 | プロパティ      | 説明                                                  | 必須 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | formatSettings の type は、**JsonReadSettings** に設定する必要があります。 | はい      |
+| type          | formatSettings の type は、 **JsonReadSettings** に設定する必要があります。 | はい      |
 | compressionProperties | 特定の圧縮コーデックのデータを圧縮解除する方法のプロパティ グループ。 | いいえ       |
-| preserveZipFileNameAsFolder<br>(" *`compressionProperties`->`type` の下に `ZipDeflateReadSettings` として*")  | **ZipDeflate** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの ZIP ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>/<folder named as source zip file>/` に書き込みます。<br>- **false** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>` に直接書き込みます。 競合または予期しない動作を避けるために、異なるソース ZIP ファイルに重複したファイル名がないことを確認します。  | いいえ |
-| preserveCompressionFileNameAsFolder<br>(" *`compressionProperties`->`type` の下に `TarGZipReadSettings` として*") | **TarGzip** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの圧縮ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、Data Factory により圧縮解除されたファイルが `<path specified in dataset>/<folder named as source compressed file>/` に書き込まれます。 <br>- **false** に設定した場合、Data Factory により圧縮解除されたファイルが `<path specified in dataset>` に直接書き込まれます。 競合または予期しない動作を避けるために、異なるソース ファイルに重複したファイル名がないことを確認します。 | いいえ |
+| preserveZipFileNameAsFolder<br>(" *`compressionProperties`->`type` の下に `ZipDeflateReadSettings` として* ")  | **ZipDeflate** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの ZIP ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>/<folder named as source zip file>/` に書き込みます。<br>- **false** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>` に直接書き込みます。 競合または予期しない動作を避けるために、異なるソース ZIP ファイルに重複したファイル名がないことを確認します。  | いいえ |
+| preserveCompressionFileNameAsFolder<br>(" *`compressionProperties`->`type` の下に `TarGZipReadSettings` として* ") | **TarGzip** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの圧縮ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、Data Factory により圧縮解除されたファイルが `<path specified in dataset>/<folder named as source compressed file>/` に書き込まれます。 <br>- **false** に設定した場合、Data Factory により圧縮解除されたファイルが `<path specified in dataset>` に直接書き込まれます。 競合または予期しない動作を避けるために、異なるソース ファイルに重複したファイル名がないことを確認します。 | いいえ |
 
 ### <a name="json-as-sink"></a>シンクとしての JSON
 
-コピー アクティビティの ***\* sink \**** セクションでは、次のプロパティがサポートされます。
+コピー アクティビティの **_\_sink\*** * セクションでは、次のプロパティがサポートされます。
 
 | プロパティ      | 説明                                                  | 必須 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | コピー アクティビティのソースの type プロパティは、**JSONSink** に設定する必要があります。 | はい      |
-| formatSettings | プロパティのグループ。 後の **JSON の書き込み設定**に関する表を参照してください。 | いいえ       |
-| storeSettings | データ ストアにデータを書き込む方法を指定するプロパティのグループ。 ファイル ベースの各コネクタには、`storeSettings` に、固有のサポートされる書き込み設定があります。 **詳細については、コネクタの記事でコピー アクティビティのプロパティに関するセクションを参照してください**。 | いいえ       |
+| type          | コピー アクティビティのソースの type プロパティは、 **JSONSink** に設定する必要があります。 | はい      |
+| formatSettings | プロパティのグループ。 後の **JSON の書き込み設定** に関する表を参照してください。 | いいえ       |
+| storeSettings | データ ストアにデータを書き込む方法を指定するプロパティのグループ。 ファイル ベースの各コネクタには、`storeSettings` に、固有のサポートされる書き込み設定があります。 **詳細については、コネクタの記事でコピー アクティビティのプロパティに関するセクションを参照してください** 。 | いいえ       |
 
-`formatSettings` でサポートされている **JSON の書き込み設定**:
+`formatSettings` でサポートされている **JSON の書き込み設定** :
 
 | プロパティ      | 説明                                                  | 必須                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | formatSettings の type は、**JsonWriteSettings** に設定する必要があります。 | はい                                                   |
-| filePattern |各 JSON ファイルに格納されたデータのパターンを示します。 使用できる値は、**setOfObjects** (JSON 行) と **arrayOfObjects** です。 **既定**値は **setOfObjects** です。 これらのパターンの詳細については、「[JSON ファイルのパターン](#json-file-patterns)」セクションを参照してください。 |いいえ |
+| type          | formatSettings の type は、 **JsonWriteSettings** に設定する必要があります。 | はい                                                   |
+| filePattern |各 JSON ファイルに格納されたデータのパターンを示します。 使用できる値は、 **setOfObjects** (JSON 行) と **arrayOfObjects** です。 **既定** 値は **setOfObjects** です。 これらのパターンの詳細については、「[JSON ファイルのパターン](#json-file-patterns)」セクションを参照してください。 |いいえ |
 
 ### <a name="json-file-patterns"></a>JSON ファイルのパターン
 

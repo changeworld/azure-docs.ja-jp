@@ -5,16 +5,16 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: cc2eb7ecb7f0587c065aac1cfb57cfae10b732ac
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: dd0ed78c56e4d656a2ecee6395d831ed093e85b5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168292"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677360"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Azure FarmBeats のトラブルシューティング
 
-この記事では、Azure FarmBeats の一般的な問題の解決策を示します。 さらに支援が必要な場合は、[Q&A サポート フォーラム](https://aka.ms/farmbeatssupport)に問い合わせるか、farmbeatssupport@microsoft.com にメールでご連絡ください。
+この記事では、Azure FarmBeats の一般的な問題の解決策を示します。 さらに支援が必要な場合は、[Q&A サポート フォーラム](/answers/topics/azure-farmbeats.html)に問い合わせるか、farmbeatssupport@microsoft.com にメールでご連絡ください。
 
 > [!NOTE]
   > 4 月中に FarmBeats をインストールし、ジョブが空のエラー メッセージで失敗する場合は、重要な保健機関や安全機関へのサポートを優先するために、インストールにバッチ クォータが割り当てられていない可能性があります。 詳細については、 [こちら](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) をご覧ください。 ジョブを正常に実行するには、Batch アカウントへの VM の割り当てを要求する必要があります。
@@ -289,7 +289,7 @@ ms.locfileid: "92168292"
 2. **[検索]** ボックスで、FarmBeats Datahub リソース グループを探します。
 3. **[リソース グループ]** ダッシュボードで、 *datahublogs\** ストレージ アカウントを探します。 たとえば、 *datahublogsmvxmq* のようになります。  
 4. **[名前]** 列でストレージ アカウントを選択し、 **[ストレージ アカウント]** ダッシュボードを表示します。
-5. **[datahubblogs\*]** ペインで **[Explorer で開く]** を選択し、 **[Azure Storage Explorer を開く]** アプリケーションを表示します。
+5. **[datahubblogs\*] *_ ペインで _* [Explorer で開く]** を選択し、 **[Azure Storage Explorer を開く]** アプリケーションを表示します。
 6. 左側のペインで **[BLOB コンテナー]** を選択した後、Azure Data Factory ログの **job-logs** または App Service ログの **appinsights-logs** を選択します。
 7. **[ダウンロード]** を選択して、コンピューター上のローカル フォルダーにログをダウンロードします。
 
@@ -301,7 +301,7 @@ ms.locfileid: "92168292"
 2. **[検索]** ボックスで、FarmBeats Accelerator リソース グループを探します。
 3. **[リソース グループ]** ダッシュボードで、 *storage\** ストレージ アカウントを探します。 たとえば、 *storagedop4k\** のようになります。
 4. **[名前]** 列のストレージ アカウントを選択し、 **ストレージ アカウント** ダッシュボードを表示します。
-5. **[storage\*]** ペインで **[Explorer で開く]** を選択し、Azure Storage Explorer アプリケーションを開きます。
+5. **[storage\*] *_ ペインで _* [Explorer で開く]** を選択し、Azure Storage Explorer アプリケーションを開きます。
 6. 左側のペインで **[BLOB コンテナー]** を選択した後、Azure Data Factory ログの **job-logs** または App Service ログの **appinsights-logs** を選択します。
 7. **[ダウンロード]** を選択して、コンピューター上のローカル フォルダーにログをダウンロードします。
 
@@ -331,22 +331,22 @@ ms.locfileid: "92168292"
 
 3. Data Factory の [概要] ページで、 **[Author and Monitor]\(作成と監視\)** をクリックします。 ブラウザーに新しいタブが表示されます。 **[監視]** をクリックします。
 
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="Sku: Datahub タグが強調表示されているスクリーンショット。":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="[監視] メニュー オプションが強調表示されているスクリーンショット。":::
 
 4. 気象ジョブの実行の一部であるパイプライン実行の一覧が表示されます。 ログを収集するジョブをクリックします。
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="Sku: Datahub タグが強調表示されているスクリーンショット。":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="[パイプラインの実行] メニュー オプションと選択されたジョブが強調表示されているスクリーンショット。":::
 
 5. パイプラインの概要ページに、アクティビティの実行の一覧が表示されます。 ログを収集するアクティビティの実行 ID をメモします。
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="Sku: Datahub タグが強調表示されているスクリーンショット。":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="アクティビティの実行の一覧を示すスクリーンショット。":::
 
 6. Azure portal の FarmBeats リソース グループに戻り、名前が **datahublogs-XXXX** のストレージ アカウントをクリックします。
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="Sku: Datahub タグが強調表示されているスクリーンショット。":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="datahublogs-XXXX という名前のストレージ アカウントが強調表示されているスクリーンショット。":::
 
 7. **[Containers]\(コンテナー\)**  ->  **[adfjobs]** をクリックします。 検索ボックスに、上記の手順 5 でメモしたジョブの実行 ID を入力します。
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="Sku: Datahub タグが強調表示されているスクリーンショット。":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="プロジェクト FarmBeats":::
 
 8. 検索結果には、このジョブに関連するログを持つフォルダーが表示されます。 問題のデバッグの支援を受けるには、ログをダウンロードして farmbeatssupport@microsoft.com に送信してください。

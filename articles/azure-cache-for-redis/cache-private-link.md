@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 93a21b627acfb127c98ead465ebeadc8a472bdfd
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: efba69372f46c9b8a7f2857e37b34ec8c88654a0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122706"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546281"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure Private Link を使用した Azure Cache for Redis (パブリック プレビュー)
 この記事では、Azure portal を使用して、仮想ネットワークと、プライベート エンドポイントを利用する Azure Cache for Redis インスタンスを作成する方法について学習します。 また、既存の Azure Cache for Redis インスタンスにプライベート エンドポイントを追加する方法について学習します。
@@ -19,7 +19,7 @@ ms.locfileid: "92122706"
 Azure プライベート エンドポイントは、Azure Private Link を使用した Azure Cache for Redis にプライベートかつ安全に接続するネットワーク インターフェイスです。 
 
 ## <a name="prerequisites"></a>前提条件
-* Azure サブスクリプション -  [無料アカウントを作成します](https://azure.microsoft.com/free/)
+* Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 
 > [!IMPORTANT]
 > プライベート エンドポイントを使用するには、Azure Cache for Redis インスタンスが 2020 年 7 月 28 日より後に作成されている必要があります。
@@ -71,7 +71,13 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
    
 1. **[新規]** ページで、 **[データベース]** を選択し、 **[Azure Cache for Redis]** を選択します。
 
-    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="[リソースの作成] を選択します。" は、 *\<DNS name>.redis.cache.windows.net* になります。 | 
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="[Azure Cache for Redis] を選択します。":::
+   
+1. **[新規 Redis Cache]** ページで、新しいキャッシュの設定を構成します。
+   
+   | 設定      | 推奨値  | 説明 |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **DNS 名** | グローバルに一意の名前を入力します。 | キャッシュ名は 1 から 63 文字の文字列で、数字、英字、ハイフンのみを使用する必要があります。 名前の先頭と末尾には数字または文字を使用する必要があり、連続するハイフンを含めることはできません。 キャッシュ インスタンスの " *ホスト名* " は、 *\<DNS name>.redis.cache.windows.net* になります。 | 
    | **サブスクリプション** | ドロップダウンで、ご自身のサブスクリプションを選択します。 | この新しい Azure Cache for Redis インスタンスが作成されるサブスクリプション。 | 
    | **リソース グループ** | ドロップ ダウンでリソース グループを選択するか、 **[新規作成]** を選択し、新しいリソース グループの名前を入力します。 | その中にキャッシュやその他のリソースを作成するリソース グループの名前。 すべてのアプリ リソースを 1 つのリソース グループに配置することで、それらをまとめて簡単に管理または削除できます。 | 
    | **場所** | ドロップ ダウンで場所を選択します。 | キャッシュを使用する他のサービスの近くの[リージョン](https://azure.microsoft.com/regions/)を選択します。 |
@@ -83,7 +89,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 1. **[追加]** ボタンをクリックして、プライベート エンドポイントを作成します。
 
-    :::image type="content" source="media/cache-private-link/3-add-private-endpoint.png" alt-text="[リソースの作成] を選択します。":::
+    :::image type="content" source="media/cache-private-link/3-add-private-endpoint.png" alt-text="[ネットワーク] で、プライベート エンドポイントを追加する。":::
 
 1. **[プライベート エンドポイントの作成]** ページで、前のセクションで作成した仮想ネットワークとサブネットを使用してプライベート エンドポイントの設定を構成し、 **[OK]** を選択します。 
 
@@ -98,11 +104,11 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 1. 必要に応じて、 **[タグ]** タブで、リソースを分類する場合は名前と値を入力します。 
 
-1.  **[確認および作成]** を選択します。 [確認および作成] タブが表示され、Azure によって構成が検証されます。
+1. **[Review + create]\(レビュー + 作成\)** を選択します。 [確認および作成] タブが表示され、Azure によって構成が検証されます。
 
 1. 緑色の検証に成功のメッセージが表示された後、 **[作成]** を選択します。
 
-キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]**  ページで進行状況を監視できます。  **[状態]**  に **[実行中]** と表示されている場合は、キャッシュを使用する準備ができています。 
+キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に " **実行中** " と表示されている場合は、キャッシュを使用する準備ができています。 
     
 > [!IMPORTANT]
 > 
@@ -164,7 +170,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 1. Azure portal で、 **Azure Cache for Redis** を検索し、Enter キーを押すか、検索候補からそれを選択します。
 
-    :::image type="content" source="media/cache-private-link/4-search-for-cache.png" alt-text="[リソースの作成] を選択します。":::
+    :::image type="content" source="media/cache-private-link/4-search-for-cache.png" alt-text="Azure Cache for Redis を検索する。":::
 
 2. プライベート エンドポイントを追加するキャッシュ インスタンスを選択します。
 
@@ -172,7 +178,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 4. **[プライベート エンドポイント]** ボタンをクリックして、プライベート エンドポイントを作成します。
 
-    :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="[リソースの作成] を選択します。":::
+    :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="プライベート エンドポイントを追加する。":::
 
 5. **[プライベート エンドポイントの作成] ページ** で、プライベート エンドポイントの設定を構成します。
 
@@ -195,12 +201,11 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 11. 必要に応じて、 **[タグ]** タブで、リソースを分類する場合は名前と値を入力します。
 
-12.  **[確認および作成]** を選択します。  **[確認および作成]**   タブが表示され、Azure によって構成が検証されます。
+12. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認および作成]** タブが表示され、Azure によって構成が検証されます。
 
 13. 緑色の **検証に成功** のメッセージが表示された後、 **[作成]** を選択します。
 
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Private Link の詳細については、[Azure Private Link のドキュメント](https://docs.microsoft.com/azure/private-link/private-link-overview)を参照してください。 
-
+Azure Private Link の詳細については、[Azure Private Link のドキュメント](../private-link/private-link-overview.md)を参照してください。
