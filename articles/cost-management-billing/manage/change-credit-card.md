@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: banders
 ms.openlocfilehash: f773c964d900c45a51eac433c3616a6e4b8978ae
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92131141"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>Azure のクレジット カードの追加または更新
@@ -116,7 +116,7 @@ Azure portal で、クレジット カードの詳細を編集できます (有�
    ![メニューの支払い方法を示すスクリーン ショット](./media/change-credit-card/payment-methods-tab-mca.png)
 1. **[クレジット カード]** セクションで、編集するクレジット カードを見つけます。
 1. 行の末尾にある省略記号 (`...`) を選択します。  
-    :::image type="content" source="./media/change-credit-card/edit-delete-credit-card-mca.png" alt-text="置換オプションを示すスクリーンショット" :::
+    :::image type="content" source="./media/change-credit-card/edit-delete-credit-card-mca.png" alt-text="省略記号を示すスクリーンショット" :::
 1. クレジット カードの詳細を編集するには、コンテキスト メニューから **[編集]** を選択します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
