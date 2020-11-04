@@ -12,6 +12,12 @@
       href: cloud-services-dotnet-get-started.md
     - name: Python for Visual Studio クラウド サービスの例
       href: cloud-services-python-ptvs.md
+- name: 概念
+  items:
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
 - name: 操作方法
   items:
     - name: プラン

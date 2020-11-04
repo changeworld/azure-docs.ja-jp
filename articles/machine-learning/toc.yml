@@ -98,7 +98,7 @@
     - name: エンドツーエンドの MLOps の例
       href: 'https://github.com/microsoft/MLOps'
     - name: Open Datasets (パブリック)
-      href: /azure/open-datasets/samples?context=azure/machine-learning/context/ml-context
+      href: ../open-datasets/samples.md?context=azure%252fmachine-learning%252fcontext%252fml-context
 - name: 概念
   items:
     - name: コストの計画と管理
@@ -446,7 +446,7 @@
             - name: カスタム Docker イメージを使用する
               href: how-to-deploy-custom-docker-image.md
             - name: IoT Edge
-              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+              href: ../iot-edge/tutorial-deploy-machine-learning.md?context=azure%252fmachine-learning%252fservice%252fcontext%252fml-context
             - name: FPGA 推論
               href: how-to-deploy-fpga-web-service.md
         - name: トラブルシューティングとデバッグ
@@ -549,7 +549,7 @@
   items:
     - name: Python SDK
       displayName: 'api, core, package, python, class'
-      href: 'https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py'
+      href: /python/api/overview/azure/ml/intro?view=azure-ml-py
     - name: R SDK
       displayName: 'api, core, package, R, class'
       href: 'https://azure.github.io/azureml-sdk-for-r/reference/index.html'
@@ -557,7 +557,7 @@
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/azureml/'
+      href: /rest/api/azureml/
     - name: デザイナー モジュール リファレンス
       displayName: 'module, reference, algorithm, studio'
       href: algorithm-module-reference/module-reference.md
@@ -588,7 +588,7 @@
       displayName: 'bugs, errors, troubleshoot'
       href: resource-known-issues.md
     - name: ユーザー フォーラム
-      href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning.html'
+      href: /answers/topics/azure-machine-learning.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: Microsoft の ML 製品の比較
