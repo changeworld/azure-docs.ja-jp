@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: 2808f0d3b99257d52b2d400424f256f980005863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bb5dccfc99a693ec89ed08ac31b77eb16442f73
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88607201"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129968"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft 商業マーケットプレースでのプライベート オファー
 
@@ -22,26 +22,26 @@ ms.locfileid: "88607201"
 
 オンライン市場でクラウド ソリューションを見つけて、試して、購入している企業顧客はますます増加しています。 公開元は、Marketplace 上でプライベート オファーを使用して、企業が必要とする能力と共に、カスタマイズされたソリューションをターゲット顧客と非公開で共有できるようになりました。
 
-- "*価格交渉*" によって、公開元は、一般公開されているオファーとは異なる値引きや公表されない価格設定を展開できます。
-- "*プライベートな取引条件*" によって、公開元は、特定の顧客に合うように取引条件を調整できます。
-- "*構成の特化*" によって、公開元は、各自の仮想マシン、Azure アプリケーション、SaaS アプリを提供するオファーを個々の顧客のニーズに合うように調整できます。 公開元は、このオプションを使用して、すべての顧客に幅広く製品を公開する前に、その新機能に事前にアクセスすることもできます。
+- " *価格交渉* " によって、公開元は、一般公開されているオファーとは異なる値引きや公表されない価格設定を展開できます。
+- " *プライベートな取引条件* " によって、公開元は、特定の顧客に合うように取引条件を調整できます。
+- " *構成の特化* " によって、公開元は、各自の仮想マシン、Azure アプリケーション、SaaS アプリを提供するオファーを個々の顧客のニーズに合うように調整できます。 公開元は、このオプションを使用して、すべての顧客に幅広く製品を公開する前に、その新機能に事前にアクセスすることもできます。
 
 公開元は、プライベート オファーを利用して、一般に公開される Marketplace の世界規模の利用可用性を活かすことができるうえに、取引と構成をカスタマイズするために必要な交渉を柔軟に行って、それらを提供できます。 さらに、これらの特性により、企業がクラウド上のマーケットプレースを活発に利用するための道が開きます。 企業は、各自が想定した望みどおりの方法で、購入と販売を行うことができます。
 
 現時点では、プライベート オファーは、仮想マシン、Azure アプリケーション (ソリューション テンプレートまたはマネージド アプリケーションとして実装)、および SaaS アプリを提供するために利用できます。
 
-<!--- Like public offers, private offers can be created and managed via the [Cloud Partner Portal](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md). Customers can be granted or revoked access to private offers in minutes.
+<!--- Like public offers, private offers can be created and managed via the [Cloud Partner Portal](). Customers can be granted or revoked access to private offers in minutes.
 --->
 
 ## <a name="creating-private-offers-using-plans"></a>プランを使用したプライベート オファーの作成
 
-公開元は、新しいプラン (以前は SKU と呼ばれていました) を作成し、それらをプライベートに設定することによって、"*プランを含む新規または既存のオファー*" のプライベート版を簡単に作成できます。 各オファーには、最大 45 個のプライベート プランを含めることができます。
+公開元は、新しいプラン (以前は SKU と呼ばれていました) を作成し、それらをプライベートに設定することによって、" *プランを含む新規または既存のオファー* " のプライベート版を簡単に作成できます。 各オファーには、最大 45 個のプライベート プランを含めることができます。
 
-<!--- [Private SKUs](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) --->
+<!--- [Private SKUs]() --->
 
 プライベート プランはオファーのコンポーネントであり、ターゲット顧客のみが表示し、購入することができます。 プライベート プランでは、基本イメージを再利用でき、パブリック プランに対して既に発行されているオファーのメタデータも再利用できます。 公開元は、このオプションを使用して、パブリック オファーのプライベート版を複数作成でき、同じ基本イメージとオファーのメタデータを複数のバージョンで公開する必要はありません。 仮想マシンと Azure アプリケーションを提供するオファーに限り、プライベート プランとパブリック プランで基本イメージを共有しているときに、オファーの基本イメージを変更すると、その基本イメージを使用しているすべてのパブリック プランとプライベート プランに変更が反映されます。
 
-"*プライベート プランのみが含まれている新しいオファー*" の場合、公開元は、他のオファーと同じようにオファーを作成でき、作成後にプランをプライベートとしてマークします。 プライベート プランのみを含むオファーの場合、そのオファーに関連付けられていない顧客は、Microsoft 商業マーケットプレースでも [Azure portal](https://azure.microsoft.com/features/azure-portal/) でも、オファーを検出したりアクセスしたりすることはできません。
+" *プライベート プランのみが含まれている新しいオファー* " の場合、公開元は、他のオファーと同じようにオファーを作成でき、作成後にプランをプライベートとしてマークします。 プライベート プランのみを含むオファーの場合、そのオファーに関連付けられていない顧客は、Microsoft 商業マーケットプレースでも [Azure portal](https://azure.microsoft.com/features/azure-portal/) でも、オファーを検出したりアクセスしたりすることはできません。
 
 >[!NOTE]
 >プライベート プランのみを含むプランは、パブリック Azure Marketplace または AppSource には表示されません。
@@ -69,5 +69,5 @@ Azure portal にサインインした顧客は、[Marketplace] ナビゲーシ�
 <!---
 ## Next steps
 
-To start using private offers, follow the steps in the [Private SKUs and Plans](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) guide.
+To start using private offers, follow the steps in the [Private SKUs and Plans]() guide.
 --->

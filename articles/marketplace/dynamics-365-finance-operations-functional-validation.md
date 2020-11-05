@@ -7,12 +7,12 @@ ms.topic: article
 author: emuench
 ms.author: navits
 ms.date: 07/17/2020
-ms.openlocfilehash: 10137e59e0ea06fa785fccc215c867b6d8c0cb76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9685081c0beacd745a83067b9d9876384933377
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651158"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131243"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 Finance and Operations の機能検証
 
@@ -22,14 +22,14 @@ ms.locfileid: "91651158"
 - ソリューションの [Lifecycle Services](https://lcs.dynamics.com/) (LCS) 環境を示すスクリーンショットを提出します。
 
 > [!NOTE]
-> 以降の再認証の発行では、デモは必要ありません。 詳細については、[AppSource Policy のドキュメント](https://docs.microsoft.com/legal/marketplace/certification-policies#1440-dynamics-365-finance-ops)を参照してください。
+> 以降の再認証の発行では、デモは必要ありません。 詳細については、[AppSource Policy のドキュメント](/legal/marketplace/certification-policies#1440-dynamics-365-finance-ops)を参照してください。
 
 ## <a name="how-to-validate"></a>検証方法
 
 機能検証には、次の 2 つのオプションがあります。
 
 - 太平洋標準時 (PST) の営業時間中に 30 分間の電話会議を開催して、[LCS](https://lcs.dynamics.com/) 環境とソリューションのデモンストレーションと記録を行います。
-- パートナー センターで、[[コマーシャル マーケットプレース]](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) >  **[概要]** にアクセスし、プランの [Supplemental Content]\(補足コンテンツ\) タブでデモ ビデオ (URL から) と LCS のスクリーンショットをアップロードします。
+- パートナー センターで、 [[コマーシャル マーケットプレース]](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) >  **[概要]** にアクセスし、プランの [Supplemental Content]\(補足コンテンツ\) タブでデモ ビデオ (URL から) と LCS のスクリーンショットをアップロードします。
 
 Microsoft 認定チームはビデオとファイルをレビューしてから、ソリューションを承認するか、次の手順について電子メールで通知します。
 
@@ -65,7 +65,7 @@ Microsoft 認定チームはビデオとファイルをレビューしてから�
     | <ul><li>Power BI レポート モデル</li><li>BPM コンポーネント</li></ul><br>**Power BI** セクションには、コンポーネントは必要ありません。 | [![[パッケージの内容] 画面 3](media/dynamics-365-finance-operations/package-contents-3-45.png)](media/dynamics-365-finance-operations/package-contents-3.png#lightbox) |
     | <ul><li>プロセス データ パッケージ</li><li>ソリューション ライセンス契約とプライバシー ポリシー</li></ul><br>**[GER コンフィギュレーション]** と **[Power BI レポート モデル]** セクションは、必要に応じて Finance and Operations プランに含めることができます。 | [![[パッケージの内容] 画面 4](media/dynamics-365-finance-operations/package-contents-4-45.png)](media/dynamics-365-finance-operations/package-contents-4.png#lightbox) |
 
-    LCS ポータルの各セクションの詳細については、「[LCS ユーザー ガイド](https://docs.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/lcs-user-guide)」を参照してください。
+    LCS ポータルの各セクションの詳細については、「[LCS ユーザー ガイド](/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/lcs-user-guide)」を参照してください。
 
 3. パートナー センターにアップロードします。
 
@@ -76,4 +76,4 @@ Microsoft 認定チームはビデオとファイルをレビューしてから�
 
 ## <a name="next-steps"></a>次のステップ
 
-プランの作成の詳細については、「[Dynamics 365 for Operations オファーの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer)」を参照してください。
+プランの作成の詳細については、「[Dynamics 365 for Operations オファーの作成](./partner-center-portal/create-new-operations-offer.md)」を参照してください。

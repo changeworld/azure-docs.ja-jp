@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 10/19/2020
-ms.openlocfilehash: 343a6c92c9d77b5ef589477802015c6346a95ea9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 819b0401b8516538c6fdd12b47e57f79ec45ae09
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520993"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131090"
 ---
 # <a name="co-sell-partner-engagement"></a>共同販売のパートナー エンゲージメント
 
@@ -40,15 +40,15 @@ ms.locfileid: "92520993"
 
 ## <a name="co-sell-publishing-steps-and-requirements"></a>共同販売の公開手順と要件
 
-以下の表に、マーケットプレースのプランを共同販売の準備完了または共同販売インセンティブ対象状態にするための手順と要件を示します。 パートナー センターで、すべての商業マーケットプレース プランの種類を共同販売用に構成できるわけではありません。 最新情報については、「[パートナー センターの [共同販売] オプション](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)」を参照してください。 
+以下の表に、マーケットプレースのプランを共同販売の準備完了または共同販売インセンティブ対象状態にするための手順と要件を示します。 パートナー センターで、すべての商業マーケットプレース プランの種類を共同販売用に構成できるわけではありません。 最新情報については、「[パートナー センターの [共同販売] オプション](./partner-center-portal/commercial-marketplace-co-sell.md)」を参照してください。 
 
 |手順    |プランの種類    |必要条件    |共同販売の状態    |
 |----    |-------------    |------------    |---------------   |
 |<ol start=1><li> パートナー センターでアカウントを作成し、ご自分のプランをコマーシャル マーケットプレースに公開します。</li>|All|<li>オファーがコマーシャル マーケットプレースの公開要件を満たしていること。</li><li>パートナーセンターに完全なビジネス プロファイルが用意されていること。</li>|準備不完了|
-|<ol start=2><li>必要な共同販売資料を送信します。</li>|[パートナー センターで共同販売オプション](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)が " *ある* " IP プラン|[パートナー センターで必要な資料をアップロードしていること](#how-to-submit-co-sell-materials-in-partner-center)|共同販売の準備完了|
-||[パートナー センターで共同販売オプション](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)が " *ない* " IP プラン|<li>[クラウド スペシャリスト](https://partner.microsoft.com/campaigns/ced-nomination-form/)と連携し、必要な共同販売ドキュメントを提供するように依頼します。|共同販売の準備完了|
+|<ol start=2><li>必要な共同販売資料を送信します。</li>|[パートナー センターで共同販売オプション](./partner-center-portal/commercial-marketplace-co-sell.md)が " *ある* " IP プラン|[パートナー センターで必要な資料をアップロードしていること](#how-to-submit-co-sell-materials-in-partner-center)|共同販売の準備完了|
+||[パートナー センターで共同販売オプション](./partner-center-portal/commercial-marketplace-co-sell.md)が " *ない* " IP プラン|<li>[クラウド スペシャリスト](https://partner.microsoft.com/campaigns/ced-nomination-form/)と連携し、必要な共同販売ドキュメントを提供するように依頼します。|共同販売の準備完了|
 ||コンサルティング サービス|<li>[クラウド スペシャリスト](https://partner.microsoft.com/campaigns/ced-nomination-form/)と連携し、必要な共同販売ドキュメントを提供するように依頼します。</li><li>アクティブな Gold コンピテンシー</li>|共同販売の準備完了|
-|<ol start=3><li>IP 共同販売インセンティブの資格を得ます</li>|Azure アプリケーション、Azure コンテナー、IoT Edge モジュール、SaaS、VM|共同販売の準備完了を達成した後は、2 つの追加要件があります。 <ul> 要件 1: 次のいずれかを達成します。<ul><li>*組織レベル:* 過去 12 か月間に $100,000 USD の Azure 使用による収益を満たしたか、超えています。</li><li>*プラン レベル:* マーケットプレースで請求された累積収益が $100,000 USD です。</li></ul><br>要件 2: プランのインフラストラクチャの 50% 超が Azure 上で実行されている必要があります。<ul><li>[パートナー センターで共同販売オプション](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)が " *ある* " IP プラン: レビューのために、パートナー センターに共同販売ドキュメントを含むアーキテクチャ図をアップロードします。</li><li>[パートナー センターで共同販売オプション](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)が " *ない* " IP プラン: アーキテクチャ図を OCP GTM にアップロードします。|Azure IP 共同販売インセンティブ対象|
+|<ol start=3><li>IP 共同販売インセンティブの資格を得ます</li>|Azure アプリケーション、Azure コンテナー、IoT Edge モジュール、SaaS、VM|共同販売の準備完了を達成した後は、2 つの追加要件があります。 <ul> 要件 1: 次のいずれかを達成します。<ul><li>*組織レベル:* 過去 12 か月間に $100,000 USD の Azure 使用による収益を満たしたか、超えています。</li><li>*プラン レベル:* マーケットプレースで請求された累積収益が $100,000 USD です。</li></ul><br>要件 2: プランのインフラストラクチャの 50% 超が Azure 上で実行されている必要があります。<ul><li>[パートナー センターで共同販売オプション](./partner-center-portal/commercial-marketplace-co-sell.md)が " *ある* " IP プラン: レビューのために、パートナー センターに共同販売ドキュメントを含むアーキテクチャ図をアップロードします。</li><li>[パートナー センターで共同販売オプション](./partner-center-portal/commercial-marketplace-co-sell.md)が " *ない* " IP プラン: アーキテクチャ図を OCP GTM にアップロードします。|Azure IP 共同販売インセンティブ対象|
 ||Dynamics|<li>ISV コネクト Premium レベルへのアクティブな登録があること。</li>|Business Applications 共同販売インセンティブ対象|
 
 ## <a name="how-to-submit-co-sell-materials-in-partner-center"></a>パートナー センターで共同販売資料を送信する方法

@@ -3,12 +3,12 @@ title: Azure Pipelines とテンプレートを使用した CI/CD
 description: Azure Resource Manager テンプレートを使用して、Azure Pipelines で継続的インテグレーションを構成する方法について説明します。 PowerShell スクリプトを使用する方法、またはファイルをステージングの場所にコピーしてそこからデプロイする方法を示します。
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: 6784df30340e4c54b8b1d6e82b45046666824315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86ad2839375b73bf9595cf3369960e614ec03e67
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653402"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233816"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>Azure Pipelines を使用した ARM テンプレートの統合
 
@@ -16,11 +16,11 @@ Azure Resource Manager テンプレート (ARM テンプレート) を Azure Pip
 
 この記事では、Azure Pipelines を使用してテンプレートをデプロイする 2 つの方法について説明します。 この記事では、次の方法について説明します。
 
-* **Azure PowerShell スクリプトを実行するタスクを追加する**。 このオプションでは、ローカル テストの実行時に使用したものと同じスクリプトを使用するため、開発ライフ サイクル全体で一貫性が保たれるという利点があります。 スクリプトによってテンプレートがデプロイされますが、他の操作を実行することもできます (パラメーターとして使用する値の取得など)。
+* **Azure PowerShell スクリプトを実行するタスクを追加する** 。 このオプションでは、ローカル テストの実行時に使用したものと同じスクリプトを使用するため、開発ライフ サイクル全体で一貫性が保たれるという利点があります。 スクリプトによってテンプレートがデプロイされますが、他の操作を実行することもできます (パラメーターとして使用する値の取得など)。
 
    Visual Studio には、PowerShell スクリプトを含む [Azure リソース グループ プロジェクト](create-visual-studio-deployment-project.md)が用意されています。 このスクリプトでは、プロジェクトの成果物が、Resource Manager からアクセスできるストレージ アカウントにステージされます。 成果物とはプロジェクト内の項目のことで、リンクされたテンプレート、スクリプト、アプリケーション バイナリなどが該当します。 プロジェクトのスクリプトを引き続き使用する場合は、この記事に示されている PowerShell スクリプト タスクを使用します。
 
-* **コピー タスクとデプロイ タスクを追加する**。 このオプションでは、プロジェクト スクリプトに代わる便利な方法が提供されます。 パイプラインに 2 つのタスクを構成します。 1 つのタスクによって、成果物がアクセス可能な場所にステージングされます。 もう 1 つのタスクによって、その場所からテンプレートがデプロイされます。
+* **コピー タスクとデプロイ タスクを追加する** 。 このオプションでは、プロジェクト スクリプトに代わる便利な方法が提供されます。 パイプラインに 2 つのタスクを構成します。 1 つのタスクによって、成果物がアクセス可能な場所にステージングされます。 もう 1 つのタスクによって、その場所からテンプレートがデプロイされます。
 
 ## <a name="prepare-your-project"></a>プロジェクトを準備する
 
@@ -70,7 +70,7 @@ steps:
   inputs:
     azureSubscription: 'script-connection'
     ScriptType: 'FilePath'
-    ScriptPath: './Deploy-Template.ps1'
+    ScriptPath: './Deploy-AzTemplate.ps1'
     ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateFile templates\mainTemplate.json
     azurePowerShellVersion: 'LatestVersion'
 ```

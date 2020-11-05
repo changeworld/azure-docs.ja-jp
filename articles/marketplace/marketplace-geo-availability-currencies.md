@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: d04f95372eb050c3eea08d50d4c9bdbd3a0232b1
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c277525927f7f74f281220bf5e593e98509d8237
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282341"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126687"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>コマーシャル マーケットプレースで利用可能な地域と通貨のサポート
 
@@ -204,4 +204,4 @@ Microsoft は、顧客からはその現地通貨で支払いを受け取り、�
 - [IoT Edge モジュール プランの作成](partner-center-portal/azure-iot-edge-module-creation.md)
 - [管理サービス オファーの作成](partner-center-portal/create-new-managed-service-offer.md)
 - [Power BI アプリを作成する](partner-center-portal/create-power-bi-app-offer.md)
-- [SaaS オファーを作成する](partner-center-portal/create-new-saas-offer.md)
+- [SaaS オファーを作成する](./create-new-saas-offer.md)

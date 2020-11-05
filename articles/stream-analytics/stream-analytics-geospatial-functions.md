@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: f47f34b60c858bb9a0feafd25176e4a811046630
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44e445f6d1dce8193109d6b5ad1742210458e74c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75426225"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130410"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Stream Analytics 地理空間関数の概要
 
@@ -26,7 +26,7 @@ Azure Stream Analytics の地理空間関数は、地理空間データのスト
 * ジオフェンス
 * セル サイト間での電話の追跡
 
-Stream Analytics クエリ言語には、組み込みの地理空間関数が 7 つ (**CreateLineString**、**CreatePoint**、**CreatePolygon**、**ST_DISTANCE**、**ST_OVERLAPS**、**ST_INTERSECTS**、**ST_WITHIN**) あります。
+Stream Analytics クエリ言語には、組み込みの地理空間関数が 7 つ ( **CreateLineString** 、 **CreatePoint** 、 **CreatePolygon** 、 **ST_DISTANCE** 、 **ST_OVERLAPS** 、 **ST_INTERSECTS** 、 **ST_WITHIN** ) あります。
 
 ## <a name="createlinestring"></a>CreateLineString
 
@@ -53,7 +53,7 @@ FROM input
 
  {"type" : "LineString", "coordinates" : [ [20.2321, -87.33], [10.0, 10.0], [10.5, 10.5] ]}
 
-詳しくは、[CreateLineString](https://docs.microsoft.com/stream-analytics-query/createlinestring) のリファレンスをご覧ください。
+詳しくは、[CreateLineString](/stream-analytics-query/createlinestring) のリファレンスをご覧ください。
 
 ## <a name="createpoint"></a>CreatePoint
 
@@ -80,7 +80,7 @@ FROM input
   
  {"type" : "Point", "coordinates" : [20.2321, -87.33]}  
 
-詳しくは、[CreatePoint](https://docs.microsoft.com/stream-analytics-query/createpoint) のリファレンスをご覧ください。
+詳しくは、[CreatePoint](/stream-analytics-query/createpoint) のリファレンスをご覧ください。
 
 ## <a name="createpolygon"></a>CreatePolygon
 
@@ -107,7 +107,7 @@ FROM input
  
  {"type" : "Polygon", "coordinates" : [[ [20.2321, -87.33], [10.0, 10.0], [10.5, 10.5], [20.2321, -87.33] ]]}
 
-詳しくは、[CreatePolygon](https://docs.microsoft.com/stream-analytics-query/createpolygon) のリファレンスをご覧ください。
+詳しくは、[CreatePolygon](/stream-analytics-query/createpolygon) のリファレンスをご覧ください。
 
 
 ## <a name="st_distance"></a>ST_DISTANCE
@@ -121,7 +121,7 @@ FROM Cars c
 JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 ```
 
-詳しくは、[ST_DISTANCE](https://docs.microsoft.com/stream-analytics-query/st-distance) のリファレンスをご覧ください。
+詳しくは、[ST_DISTANCE](/stream-analytics-query/st-distance) のリファレンスをご覧ください。
 
 ## <a name="st_overlaps"></a>ST_OVERLAPS
 `ST_OVERLAPS` 関数は、2 つのポリゴンを比較します。 ポリゴンが重なっている場合、この関数は 1 を返します。 ポリゴンが重なっていない場合、この関数は 0 を返します。 
@@ -142,7 +142,7 @@ FROM Cars c, Storm s
 JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 ```
 
-詳しくは、[ST_OVERLAPS](https://docs.microsoft.com/stream-analytics-query/st-overlaps) のリファレンスをご覧ください。
+詳しくは、[ST_OVERLAPS](/stream-analytics-query/st-overlaps) のリファレンスをご覧ください。
 
 ## <a name="st_intersects"></a>ST_INTERSECTS
 `ST_INTERSECTS` 関数は、2 つの LineString を比較します。 LineString が交差する場合、この関数は 1 を返します。 LineString が交差しない場合、この関数は 0 を返します。
@@ -168,7 +168,7 @@ FROM input
   
  0  
 
-詳しくは、[ST_INTERSECTS](https://docs.microsoft.com/stream-analytics-query/st-intersects) のリファレンスをご覧ください。
+詳しくは、[ST_INTERSECTS](/stream-analytics-query/st-intersects) のリファレンスをご覧ください。
 
 ## <a name="st_within"></a>ST_WITHIN
 `ST_WITHIN` 関数は、ポイントまたはポリゴンが特定のポリゴン内にあるかどうかを判断します。 ポイントまたはポリゴンが特定のポリゴンに含まれている場合、この関数は 1 を返します。 ポイントまたはポリゴンが宣言されたポリゴン内にない場合、この関数は 0 を返します。
@@ -194,12 +194,12 @@ FROM input
   
  1  
 
-詳しくは、[ST_WITHIN](https://docs.microsoft.com/stream-analytics-query/st-within) のリファレンスをご覧ください。
+詳しくは、[ST_WITHIN](/stream-analytics-query/st-within) のリファレンスをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](/rest/api/streamanalytics/)

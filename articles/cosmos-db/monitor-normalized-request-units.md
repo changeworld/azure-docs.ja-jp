@@ -6,14 +6,15 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 06/25/2020
-ms.openlocfilehash: 183b161039b86ce824fd0bfde82cf291d54024fc
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: dc47f2f7a0f1586b197d14015fe2167293c806c6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91801479"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099336"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>Azure Cosmos コンテナーまたはアカウントの正規化された RU/秒を監視する方法
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Monitor for Azure Cosmos DB では、アカウントを監視したり、ダッシュボードを作成したりするためのメトリック ビューが提供されています。 Azure Cosmos DB のメトリックは既定で収集されるので、この機能を使用するために何かを明示的に有効にしたり構成したりする必要はありません。
 
@@ -23,7 +24,7 @@ Azure Monitor for Azure Cosmos DB では、アカウントを監視したり、�
 
 特定のパーティション キーの範囲で正規化された RU/秒の消費量が 100% に達したときに、クライアントが 1 秒間の時間枠内に、その特定のパーティション キー範囲への要求をまだ行っている場合は、レート制限エラーが発生します。 クライアントは、提案された待機時間を考慮して、要求を再度試みる必要があります。 SDK を使用すると、適切に待機して事前に構成された時間を再試行することで、この状況に簡単に対処できます。  正規化された RU が100% に達したため、RU レート制限エラーを確認する必要はありません。 これは、正規化された RU がすべてのパーティション キー範囲にわたる最大使用量を表す 1 つの値であり、あるパーティション キー範囲がビジー状態でも、他のパーティション キー範囲で問題なく要求に対応できるためです。 たとえば、パーティション キー範囲のすべての RU/秒を消費するストアド プロシージャなどの 1 回の操作によって、正規化された RU/秒消費量の短時間のスパイクが発生します。 このような場合、要求レートが低い場合や、別のパーティション キー範囲で他のパーティションへの要求が行われている場合は、即時にレート制限エラーは発生しません。 
 
-Azure Monitor メトリックでは、 **[合計要求数]** メトリックを使用して、SQL API の状態コードごとに操作を確認できます。 後で、429 状態コードによってこれらの要求をフィルターし、**操作の種類**別に分割することができます。  
+Azure Monitor メトリックでは、 **[合計要求数]** メトリックを使用して、SQL API の状態コードごとに操作を確認できます。 後で、429 状態コードによってこれらの要求をフィルターし、 **操作の種類** 別に分割することができます。  
 
 レート制限されている要求を確認するには、診断ログからこの情報を取得することをお勧めします。
 
@@ -41,25 +42,25 @@ Azure Monitor メトリックでは、 **[合計要求数]** メトリックを�
 
    :::image type="content" source="./media/monitor-normalized-request-units/monitor-metrics-blade.png" alt-text="Azure Monitor のメトリック ペイン":::
 
-3. **[メトリック]** ウィンドウから、 **[リソースの選択]** を選択し、必要な**サブスクリプション**と**リソース グループ**を選択します。 **[リソースの種類]** で、 **[Azure Cosmos DB accounts]\(Azure Cosmos DB アカウント\)** を選択し、既存の Azure Cosmos アカウントの一つを選択し、 **[適用]** を選択します。
+3. **[メトリック]** ウィンドウから、 **[リソースの選択]** を選択し、必要な **サブスクリプション** と **リソース グループ** を選択します。 **[リソースの種類]** で、 **[Azure Cosmos DB accounts]\(Azure Cosmos DB アカウント\)** を選択し、既存の Azure Cosmos アカウントの一つを選択し、 **[適用]** を選択します。
 
-   :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="Azure Monitor のメトリック ペイン":::
+   :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="メトリックを表示する Azure Cosmos アカウントを選択する":::
 
 4. 次に、使用可能なメトリックの一覧からメトリックを選択できます。 要求ユニット、ストレージ、待機時間、可用性、Cassandra などに固有のメトリックを選択できます。 この一覧で使用可能なすべてのメトリックの詳細については、「[カテゴリ別のメトリック](monitor-cosmos-db-reference.md)」の記事を参照してください。 この例では、 **[Normalized RU Consumption]\(正規化された RU 消費量\)** メトリックを選択し、集計値として **[最大]** を選択します。
 
    これらの詳細に加えて、メトリックの **[時間の範囲]** と **[時間の粒度]** を選択することもできます。 最大で、過去 30 日間のメトリックを表示できます。  フィルターを適用すると、そのフィルターに基づいてグラフが表示されます。
 
-   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="Azure Monitor のメトリック ペイン":::
+   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="Azure portal からのメトリックの選択":::
 
 ### <a name="filters-for-normalized-request-unit-consumption"></a>正規化された要求ユニット消費量をフィルターする
 
-メトリックと、特定の **CollectionName**、**DatabaseName**、**PartitionKeyRangeID**、**Region** によって表示されるグラフをフィルターすることもできます。 メトリックをフィルターするには **[フィルターの追加]** を選択し、調べたい **CollectionName** などの必要なプロパティと対応する値を選択します。 これで、グラフには、選択した期間中にコンテナーで消費された、正規化された RU 消費量のユニットが表示されます。  
+メトリックと、特定の **CollectionName** 、 **DatabaseName** 、 **PartitionKeyRangeID** 、 **Region** によって表示されるグラフをフィルターすることもできます。 メトリックをフィルターするには **[フィルターの追加]** を選択し、調べたい **CollectionName** などの必要なプロパティと対応する値を選択します。 これで、グラフには、選択した期間中にコンテナーで消費された、正規化された RU 消費量のユニットが表示されます。  
 
 **[Apply splitting]\(分割の適用\)** オプションを使用すると、メトリックをグループ化できます。  
 
 次の図に示すように、各コンテナーの正規化された要求ユニット消費量のメトリックが表示されます。
 
-:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="Azure Monitor のメトリック ペイン":::
+:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="正規化された要求ユニット消費量メトリックにフィルターを適用する":::
 
 ## <a name="next-steps"></a>次のステップ
 

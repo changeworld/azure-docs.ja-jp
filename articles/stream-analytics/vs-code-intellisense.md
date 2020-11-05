@@ -6,16 +6,16 @@ author: su-jie
 ms.author: sujie
 ms.date: 4/11/2020
 ms.topic: how-to
-ms.openlocfilehash: bd72866e3e3db21691fda6aaec864a76af7414a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 756604b71efd1715ae3b4ca3d5eebf0fdfa41e34
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903721"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129798"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>Visual Studio Code 用の Azure Stream Analytics ツールでの IntelliSense
 
-IntelliSense は、[VS Code 用 Azure Stream Analytics ツール](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa&ssr=false#overview)の [Stream Analytics クエリ言語](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?toc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fstream-analytics%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fbread%2Ftoc.json)で使用できます。 IntelliSense は、次のような多くの機能を備えたコード補完支援機能です: メンバーの一覧表示、パラメーター ヒント、クイック ヒント、入力候補。 IntelliSense 機能は、"コード補完"、"コンテンツ アシスト"、"コード ヒント" といった他の名前で呼ばれることがあります。
+IntelliSense は、[VS Code 用 Azure Stream Analytics ツール](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa&ssr=false#overview)の [Stream Analytics クエリ言語](/stream-analytics-query/stream-analytics-query-language-reference?bc=https%253a%252f%252fdocs.microsoft.com%252fazure%252fbread%252ftoc.json&toc=https%253a%252f%252fdocs.microsoft.com%252fazure%252fstream-analytics%252ftoc.json)で使用できます。 IntelliSense は、次のような多くの機能を備えたコード補完支援機能です: メンバーの一覧表示、パラメーター ヒント、クイック ヒント、入力候補。 IntelliSense 機能は、"コード補完"、"コンテンツ アシスト"、"コード ヒント" といった他の名前で呼ばれることがあります。
 
 ![IntelliSense のデモ](./media/vs-code-intellisense/intellisense.gif)
 
@@ -53,7 +53,7 @@ VS Code 用 Stream Analytics ツールの IntelliSense では、言語サーバ�
 
 ### <a name="parameter-info"></a>パラメーター ヒント
 
-IntelliSense の**パラメーター ヒント**オプションを使用すると、パラメーター リストが表示され、関数で必要とされるパラメーターの数、名前、およびデータ型について確認できます。 太字で表示されるパラメーターは、入力中の関数で次に必要なパラメーターを示しています。
+IntelliSense の **パラメーター ヒント** オプションを使用すると、パラメーター リストが表示され、関数で必要とされるパラメーターの数、名前、およびデータ型について確認できます。 太字で表示されるパラメーターは、入力中の関数で次に必要なパラメーターを示しています。
 
 パラメーター リストは入れ子にされた関数についても表示されます。 他の関数のパラメーターとして関数を入力する場合、パラメーター リストには内部関数のパラメーターが表示されます。 内部関数のパラメーター リストが完了すると、パラメーター リストには再び外部関数のパラメーターが表示されます。
 
@@ -61,7 +61,7 @@ IntelliSense の**パラメーター ヒント**オプションを使用する�
 
 ### <a name="quick-info"></a>クイック ヒント
 
-言語サービスで提供されているように、コード内の各識別子の**クイック ヒント**を見ることができます。 識別子の例としては、入力、出力、中間結果セット、関数などがあります。 識別子の上にマウスのポインターを置くと、ポップアップ ウィンドウにその宣言が表示されます。 入力のプロパティとデータ スキーマ (構成されている場合) および中間データ セットが表示されます。
+言語サービスで提供されているように、コード内の各識別子の **クイック ヒント** を見ることができます。 識別子の例としては、入力、出力、中間結果セット、関数などがあります。 識別子の上にマウスのポインターを置くと、ポップアップ ウィンドウにその宣言が表示されます。 入力のプロパティとデータ スキーマ (構成されている場合) および中間データ セットが表示されます。
 
 ![クイック ヒント](./media/vs-code-intellisense/quick-info.gif)
 

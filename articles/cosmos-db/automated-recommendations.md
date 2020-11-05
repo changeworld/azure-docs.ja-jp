@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 8fa2fdf23a0d71b854e043b66c0aed7e944c5f39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9eb55030c7ec52f9b2ac79fbab19944f0a3e190
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87449750"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087827"
 ---
 # <a name="automated-recommendations-for-azure-cosmos-db"></a>Azure Cosmos DB の自動化された推奨事項
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB を含むすべてのクラウド サービスは、新しい特徴、機能、機能強化によって頻繁に更新されます。 ご利用のアプリケーションに対して、最新のパフォーマンスとセキュリティの更新プログラムを継続的に適用することが重要です。 Azure portal には、アプリケーションのパフォーマンスを最大限に引き出すことができるカスタマイズされた推奨事項が表示されます。 Azure Cosmos DB のアドバイザリ エンジンによって、Azure Cosmos DB リソースの使用量の履歴が継続的に分析され、ワークロード パターンに基づいて推奨事項が提供されます。 これらの推奨事項は、パーティション分割、インデックス作成、ネットワーク、セキュリティなどの領域に対応しています。これらのカスタマイズされた推奨事項は、アプリケーションのパフォーマンス向上に役立ちます。
 
@@ -26,9 +27,9 @@ Azure Cosmos DB に関する推奨事項は、次の方法で表示できます�
 
    :::image type="content" source="./media/automated-recommendations/cosmos-db-pane-recommendations.png" alt-text="Azure Cosmos DB ペインからの推奨事項の表示":::
 
-- また、コスト、セキュリティ、信頼性、パフォーマンス、オペレーショナル エクセレンスなどのさまざまなバケット別に分類された、[Azure Advisor](../advisor/advisor-overview.md) による推奨事項を確認することもできます。 特定のサブスクリプションを選択し、リソースの種類 (**Azure Cosmos DB アカウント**) でフィルター処理できます。  特定の推奨事項を選択すると、ワークロードを活用するために実行できるアクションが表示されます。
+- また、コスト、セキュリティ、信頼性、パフォーマンス、オペレーショナル エクセレンスなどのさまざまなバケット別に分類された、[Azure Advisor](../advisor/advisor-overview.md) による推奨事項を確認することもできます。 特定のサブスクリプションを選択し、リソースの種類 ( **Azure Cosmos DB アカウント** ) でフィルター処理できます。  特定の推奨事項を選択すると、ワークロードを活用するために実行できるアクションが表示されます。
 
-   :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="Azure Cosmos DB ペインからの推奨事項の表示":::
+   :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="Azure Advisor ペインからの推奨事項の表示":::
 
 Azure Cosmos DB ペインに表示されるすべての推奨事項が Azure Advisor で使用できるとは限りません。また、その逆の場合もあります。 これは、Azure Advisor ペイン、Azure Cosmos DB ペイン、またはその両方に当てはまる推奨事項の種類に基づいているためです。
 

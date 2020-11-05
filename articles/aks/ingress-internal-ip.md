@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスターで内部のプライ
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 2055946728231452b5359bbe4c98892cba72cfec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ef83c25f4af85fcf8dbb1ee78bd3f797e5a3581
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855808"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131141"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で内部の仮想ネットワークにイングレス コントローラーを作成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "88855808"
 
 既定では、NGINX イングレス コントローラーは動的パブリック IP アドレスの割り当てによって作成されます。 一般的な構成要件は、内部のプライベート ネットワークと IP アドレスを使用することです。 この手法では、外部アクセスなしで、サービスへのアクセスを内部ユーザーに制限できます。
 
-次の例のマニフェスト ファイルを使用して、*internal-ingress.yaml* という名前のファイルを作成します。 この例では、*loadBalancerIP* リソースに *10.240.0.42* を割り当てます。 イングレス コント ローラーで使用する場合は、独自の内部 IP アドレスを指定します。 この IP アドレスが仮想ネットワーク内でまだ使用されていないことを確認します。 また、既存の仮想ネットワークとサブネットを使用している場合は、適切なアクセス許可を使用して AKS クラスターを構成し、仮想ネットワークとサブネットを管理する必要もあります。 詳細については、「[Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する][aks-configure-kubenet-networking]」または「[Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する][aks-configure-advanced-networking]」を参照してください。
+次の例のマニフェスト ファイルを使用して、 *internal-ingress.yaml* という名前のファイルを作成します。 この例では、 *loadBalancerIP* リソースに *10.240.0.42* を割り当てます。 イングレス コント ローラーで使用する場合は、独自の内部 IP アドレスを指定します。 この IP アドレスが仮想ネットワーク内でまだ使用されていないことを確認します。 また、既存の仮想ネットワークとサブネットを使用している場合は、適切なアクセス許可を使用して AKS クラスターを構成し、仮想ネットワークとサブネットを管理する必要もあります。 詳細については、「[Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する][aks-configure-kubenet-networking]」または「[Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する][aks-configure-advanced-networking]」を参照してください。
 
 ```yaml
 controller:
@@ -50,7 +50,7 @@ controller:
 イングレス コントローラーも Linux ノード上でスケジュールする必要があります。 Windows Server ノードでは、イングレス コントローラーを実行しないでください。 ノード セレクターは、`--set nodeSelector` パラメーターを使用して指定され、Linux ベース ノード上で NGINX イングレス コントローラーを実行するように Kubernetes スケジューラに指示されます。
 
 > [!TIP]
-> 次の例では、*ingress-basic* という名前のイングレス リソースの Kubernetes 名前空間が作成されます。 必要に応じて、ご自身の環境の名前空間を指定できます。 AKS クラスターが RBAC 対応でない場合は、Helm コマンドに `--set rbac.create=false` を追加してください。
+> 次の例では、 *ingress-basic* という名前のイングレス リソースの Kubernetes 名前空間が作成されます。 必要に応じて、ご自身の環境の名前空間を指定できます。 AKS クラスターが RBAC 対応でない場合は、Helm コマンドに `--set rbac.create=false` を追加してください。
 
 > [!TIP]
 > クラスター内のコンテナーへの要求で[クライアント ソース IP の保持][client-source-ip]を有効にする場合は、Helm インストール コマンドに `--set controller.service.externalTrafficPolicy=Local` を追加します。 クライアント ソース IP が要求ヘッダーの *X-Forwarded-For* の下に格納されます。 クライアント ソース IP の保持が有効になっているイングレス コントローラーを使用する場合、TLS パススルーは機能しません。
@@ -111,7 +111,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -149,7 +149,7 @@ spec:
     spec:
       containers:
       - name: ingress-demo
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -292,7 +292,7 @@ kubectl delete namespace ingress-basic
 helm list --namespace ingress-basic
 ```
 
-次の出力例に示すように、*nginx-ingress* および *aks-helloworld* という名前のグラフを探します。
+次の出力例に示すように、 *nginx-ingress* および *aks-helloworld* という名前のグラフを探します。
 
 ```
 $ helm list --namespace ingress-basic

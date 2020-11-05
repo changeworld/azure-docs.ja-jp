@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: aee5cb077604e5fc95647eca0e6570ea3582a785
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 29bd4dc5cabe8b29efe7b89395c5e7d36bd0347a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91822990"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129781"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Power BI 出力
 
@@ -51,7 +51,7 @@ Power BI では、先入れ先出し (FIFO) のアイテム保持ポリシーが
 
 Azure Stream Analytics では、出力スキーマが変更されると、データ モデルが実行時に動的に更新されます。 列名の変更、列の型の変更、列の追加または削除は、すべて追跡されます。
 
-次の表は、Power BI データセットとテーブルが存在しない場合の、[Stream Analytics データ型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)から Power BI の [Entity Data Model (EDM) 型](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model)へのデータ型の変換を示します。
+次の表は、Power BI データセットとテーブルが存在しない場合の、[Stream Analytics データ型](/stream-analytics-query/data-types-azure-stream-analytics)から Power BI の [Entity Data Model (EDM) 型](/dotnet/framework/data/adonet/entity-data-model)へのデータ型の変換を示します。
 
 Stream Analytics から | Power BI へ
 -----|-----
@@ -76,7 +76,7 @@ Datetime | String | String |  Datetime | String
 
 ## <a name="output-batch-size"></a>出力バッチ サイズ
 
-出力バッチ サイズについては、「[Power BI REST API の制限事項](https://msdn.microsoft.com/library/dn950053.aspx)」を参照してください。
+出力バッチ サイズについては、「[Power BI REST API の制限事項](/power-bi/developer/automation/api-rest-api-limitations)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

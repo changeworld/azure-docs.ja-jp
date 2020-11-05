@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
 ms.date: 10/19/2020
-ms.openlocfilehash: b927e90c60110d6922649b75b6549528a2a9a40f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ead367568762d4b76de7164feb56b7a31cd53e0d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283367"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129118"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>VM イメージの SAS URI を生成する方法
 
@@ -59,7 +59,7 @@ SAS アドレス (URL) の作成には、次の 2 つの一般的なツールが
 
 ### <a name="using-tool-2-azure-cli"></a>ツール 2 の使用: Azure CLI
 
-1. [Microsoft Azure CLI](https://azure.microsoft.com/documentation/articles/xplat-cli-install/) をダウンロードしてインストールします。 Windows と macOS のほか、各種 Linux ディストリビューション向けのバージョンが用意されています。
+1. [Microsoft Azure CLI](/cli/azure/install-azure-cli) をダウンロードしてインストールします。 Windows と macOS のほか、各種 Linux ディストリビューション向けのバージョンが用意されています。
 2. PowerShell ファイル (.ps1 ファイル拡張子) を作成し、次のコードをコピーして、ローカルに保存します。
 
     ```JSON
@@ -82,7 +82,7 @@ SAS アドレス (URL) の作成には、次の 2 つの一般的なツールが
 2. 次のいずれかの方法を使用して、管理者特権でこのスクリプトを実行し、コンテナーレベルのアクセスのための SAS 接続文字列を作成します。
 
     - コンソールからスクリプトを実行します。 Windows で、スクリプトを右クリックし、 **[管理者として実行]** を選択します。
-    - [Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise) などの PowerShell スクリプト エディターからスクリプトを実行します。 この画面には、このエディター内の SAS 接続文字列の作成が示されています。
+    - [Windows PowerShell ISE](/powershell/scripting/components/ise/introducing-the-windows-powershell-ise) などの PowerShell スクリプト エディターからスクリプトを実行します。 この画面には、このエディター内の SAS 接続文字列の作成が示されています。
 
     [![PowerShell エディター内での SAS 接続文字列の作成](media/vm/create-sas-uri-power-shell-ise.png)](media/vm/create-sas-uri-power-shell-ise.png#lightbox)
 

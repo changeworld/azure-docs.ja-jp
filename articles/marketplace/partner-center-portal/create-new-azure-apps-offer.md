@@ -7,12 +7,12 @@ ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 6bd43f89ff6e341756c1706eb96d07510c6fb1a4
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9ae770a21e93a0c8ab3827e91f15e163d7a875b4
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428202"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130206"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure アプリケーション オファーを作成する
 
@@ -34,25 +34,25 @@ Azure アプリケーション オファーを設計、構築、およびテス�
 
 商業マーケットプレース用に Azure アプリケーション オファーを準備する際には、次のリソースを確認してください。
 
-* [Azure Resource Manager テンプレートについての理解](../../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure Resource Manager テンプレートについての理解](../../azure-resource-manager/templates/template-syntax.md)
 
 * クイック スタート:
 
     * [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)
     * [Azure テンプレートのベスト プラクティス ガイド](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
-    * [アプリケーション定義の発行](../../managed-applications/publish-service-catalog-app.md)
-    * [サービス カタログ アプリのデプロイ](../../managed-applications/deploy-service-catalog-quickstart.md)
+    * [アプリケーション定義の発行](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md)
+    * [サービス カタログ アプリのデプロイ](../../azure-resource-manager/managed-applications/deploy-service-catalog-quickstart.md)
 
 * チュートリアル:
 
-    * [定義ファイルの作成](../../managed-applications/publish-service-catalog-app.md)
-    * [マーケットプレース アプリケーションの発行](../../managed-applications/publish-marketplace-app.md)
+    * [定義ファイルの作成](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md)
+    * [マーケットプレース アプリケーションの発行]()
 
 * サンプル:
 
-    * [Azure CLI](../../managed-applications/cli-samples.md)
-    * [Azure PowerShell](../../managed-applications/powershell-samples.md)
-    * [マネージド アプリケーション ソリューション](../../managed-applications/sample-projects.md)
+    * [Azure CLI](../../azure-resource-manager/managed-applications/cli-samples.md)
+    * [Azure PowerShell](../../azure-resource-manager/managed-applications/powershell-samples.md)
+    * [マネージド アプリケーション ソリューション](../../azure-resource-manager/managed-applications/sample-projects.md)
 
 「[Azure Marketplace 向けのソリューション テンプレートとマネージド アプリケーションの作成](https://channel9.msdn.com/Events/Build/2018/BRK3603)」ビデオでは、Azure アプリケーション オファーの種類について包括的に紹介しています。
 
@@ -67,8 +67,8 @@ Azure アプリケーション オファーを設計、構築、およびテス�
 
 Azure アプリケーションを管理するためのスクリプト環境として、次のいずれか一方または両方を選択します。
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
-* [Azure CLI](https://docs.microsoft.com/cli/azure)
+* [Azure PowerShell](/powershell/azure/)
+* [Azure CLI](/cli/azure)
 
 開発環境には次にツールを加えることを推奨します｡
 
@@ -84,17 +84,17 @@ Azure アプリケーションを管理するためのスクリプト環境と�
 
 Azure アプリケーション プランには、ソリューション テンプレートとマネージド アプリケーションの 2 種類があります。
 
-* **ソリューション テンプレート** は、マーケットプレースでソリューションを発行するための主要な手段の 1 つです。 ソリューションで、単一の仮想マシン (VM) の範囲を超える追加のデプロイと構成の自動化が必要な場合は、このプランの種類を使用します。 ソリューション テンプレートを使うと、複雑な IaaS ソリューションを提供するための VM、ネットワーク、ストレージ リソースなどの複数のリソースの提供を自動化できます。  ソリューション テンプレートの作成について詳しくは、[Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。
+* **ソリューション テンプレート** は、マーケットプレースでソリューションを発行するための主要な手段の 1 つです。 ソリューションで、単一の仮想マシン (VM) の範囲を超える追加のデプロイと構成の自動化が必要な場合は、このプランの種類を使用します。 ソリューション テンプレートを使うと、複雑な IaaS ソリューションを提供するための VM、ネットワーク、ストレージ リソースなどの複数のリソースの提供を自動化できます。  ソリューション テンプレートの作成について詳しくは、[Azure Resource Manager](../../azure-resource-manager/management/overview.md)に関するページをご覧ください。
 
-* **マネージド アプリケーション** はソリューション テンプレートと似ていますが、大きな違いが 1 つあります。 マネージド アプリケーションでは、アプリの発行元によって管理されているリソース グループが、リソースのデプロイ先となります。 リソース グループはユーザーのサブスクリプション内に存在しますが、そのリソース グループにアクセスできるのは、発行元のテナントの ID です。 発行元は、ソリューションの継続的なサポートにかかるコストを指定します。 フル マネージドのターンキー アプリケーションを簡単に構築して顧客に提供するには、マネージド アプリケーションを使用します。  マネージド アプリケーションの利点と種類について詳しくは、「[Azure マネージド アプリケーションの概要](../../managed-applications/overview.md)」をご覧ください。
+* **マネージド アプリケーション** はソリューション テンプレートと似ていますが、大きな違いが 1 つあります。 マネージド アプリケーションでは、アプリの発行元によって管理されているリソース グループが、リソースのデプロイ先となります。 リソース グループはユーザーのサブスクリプション内に存在しますが、そのリソース グループにアクセスできるのは、発行元のテナントの ID です。 発行元は、ソリューションの継続的なサポートにかかるコストを指定します。 フル マネージドのターンキー アプリケーションを簡単に構築して顧客に提供するには、マネージド アプリケーションを使用します。  マネージド アプリケーションの利点と種類について詳しくは、「[Azure マネージド アプリケーションの概要](../../azure-resource-manager/managed-applications/overview.md)」をご覧ください。
 
 ## <a name="technical-requirements"></a>技術的な要件
 
 すべての Azure アプリケーションでは、`.zip` アーカイブのルート フォルダーに少なくとも 2 つのファイルが含まれています。
 
-* [mainTemplate.json](../../azure-resource-manager/resource-group-overview.md) という名前の Resource Manager テンプレート ファイル。  このテンプレートでは、顧客の Azure サブスクリプションにデプロイするリソースが定義されます。 Resource Manager テンプレートの例については、[Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates/)または対応する [GitHub: Azure Resource Manager クイックスタート テンプレート](https://github.com/azure/azure-quickstart-templates) リポジトリをご覧ください。
+* [mainTemplate.json](../../azure-resource-manager/management/overview.md) という名前の Resource Manager テンプレート ファイル。  このテンプレートでは、顧客の Azure サブスクリプションにデプロイするリソースが定義されます。 Resource Manager テンプレートの例については、[Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates/)または対応する [GitHub: Azure Resource Manager クイックスタート テンプレート](https://github.com/azure/azure-quickstart-templates) リポジトリをご覧ください。
 
-* [createUiDefinition.json](../../managed-applications/create-uidefinition-overview.md) という名前の、Azure アプリケーション作成エクスペリエンス用のユーザー インターフェイス定義。  ユーザー インターフェイスでは、コンシューマーがパラメーター値を入力できるようにする要素を指定します。
+* [createUiDefinition.json](../../azure-resource-manager/managed-applications/create-uidefinition-overview.md) という名前の、Azure アプリケーション作成エクスペリエンス用のユーザー インターフェイス定義。  ユーザー インターフェイスでは、コンシューマーがパラメーター値を入力できるようにする要素を指定します。
 
 すべての新しい Azure アプリケーション オファーには、[Azure パートナーの顧客の使用状況の属性 GUID](../azure-partner-customer-usage-attribution.md) が含まれている必要があります。 
 
@@ -136,7 +136,7 @@ Azure アプリケーション プランには、ソリューション テンプ
 
 一定期間、体験版を有効にするには、 **[体験版を有効にする]** チェック ボックスをオンにします。 オファーから体験版を削除するには、このチェック ボックスをオフにします。 このトピックの後の方の「[体験版の技術的な構成](#test-drive-technical-configuration)」セクションで、体験版環境を構成します。
 
-詳細については、[商業マーケットプレースでのオファーの体験](test-drive.md)に関するページを参照してください。 また、[体験版のベスト プラクティス](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)を参照し、[体験版の概要に関する PDF](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) をダウンロードすることもできます (ポップアップ ブロックがオフになっていることを確認してください)
+詳細については、[商業マーケットプレースでのオファーの体験](../what-is-test-drive.md)に関するページを参照してください。 また、[体験版のベスト プラクティス](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)を参照し、[体験版の概要に関する PDF](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) をダウンロードすることもできます (ポップアップ ブロックがオフになっていることを確認してください)
 
 >[!Note]
 >すべての Azure アプリケーションは Azure Resource Manager テンプレートを使用して実装されるため、Azure アプリケーションで使用可能な体験版の種類は [Azure Resource Manager ベースの体験版](../azure-resource-manager-test-drive.md)のみです。
@@ -465,8 +465,8 @@ USD (USD = 米国ドル) で設定された価格は、保存時の最新の為�
 
 すべての Azure アプリケーション プラン パッケージの `.zip` アーカイブのルート フォルダーには、次の 2 つのファイルが含まれている必要があります。
 
-* [mainTemplate.json](../../azure-resource-manager/resource-group-overview.md) という名前の Resource Manager テンプレート ファイル。 このテンプレートにより、顧客の Azure サブスクリプションへのリソースのデプロイが自動化されます。  Resource Manager テンプレートの例については、[Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/documentation/templates/)または対応する [GitHub: Azure Resource Manager クイックスタート テンプレート](https://github.com/azure/azure-quickstart-templates) リポジトリをご覧ください。
-* [createUiDefinition.json](../../azure-resource-manager/managed-application-createuidefinition-overview.md) という名前の、Azure アプリケーション作成エクスペリエンス用のユーザー インターフェイス定義。
+* [mainTemplate.json](../../azure-resource-manager/management/overview.md) という名前の Resource Manager テンプレート ファイル。 このテンプレートにより、顧客の Azure サブスクリプションへのリソースのデプロイが自動化されます。  Resource Manager テンプレートの例については、[Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/documentation/templates/)または対応する [GitHub: Azure Resource Manager クイックスタート テンプレート](https://github.com/azure/azure-quickstart-templates) リポジトリをご覧ください。
+* [createUiDefinition.json](../../azure-resource-manager/managed-applications/create-uidefinition-overview.md) という名前の、Azure アプリケーション作成エクスペリエンス用のユーザー インターフェイス定義。
 
 サポートされる最大ファイル サイズは次のとおりです。
 
@@ -486,7 +486,7 @@ USD (USD = 米国ドル) で設定された価格は、保存時の最新の為�
 
 #### <a name="enable-just-in-time-jit-access"></a>Just-In-Time (JIT) アクセスの有効化
 
-このプランに対して Just-In-Time (JIT) アクセスを有効にするには、このオプションを選択します。  JIT アクセスによって、発行元は、トラブルシューティングやメンテナンスを行うために、マネージド アプリケーションのリソースに対して昇格されたアクセス権を要求することができます。 発行元は、リソースへの読み取り専用アクセス権を常に所有していますが、特定の期間にさらに大きなアクセス権を持つことができます。  詳しくは、「[Azure Managed Applications でジャストインタイム アクセスを有効にして要求する](../../managed-applications/request-just-in-time-access.md)」をご覧ください。  マネージド アプリケーションの顧客に対し、発行元のアカウントに永続アクセス権を付与するよう要求するには、このオプションをオフのままにします。
+このプランに対して Just-In-Time (JIT) アクセスを有効にするには、このオプションを選択します。  JIT アクセスによって、発行元は、トラブルシューティングやメンテナンスを行うために、マネージド アプリケーションのリソースに対して昇格されたアクセス権を要求することができます。 発行元は、リソースへの読み取り専用アクセス権を常に所有していますが、特定の期間にさらに大きなアクセス権を持つことができます。  詳しくは、「[Azure Managed Applications でジャストインタイム アクセスを有効にして要求する](../../azure-resource-manager/managed-applications/request-just-in-time-access.md)」をご覧ください。  マネージド アプリケーションの顧客に対し、発行元のアカウントに永続アクセス権を付与するよう要求するには、このオプションをオフのままにします。
 
 >[!Note]
 >この機能をサポートするには、`createUiDefinition.json` ファイルを更新する必要があります。  
@@ -498,7 +498,7 @@ USD (USD = 米国ドル) で設定された価格は、保存時の最新の為�
 * **完全モード** では、顧客がアプリケーションを再デプロイすると、`mainTemplate.json` で定義されていない管理対象リソース グループのリソースは削除されます。 
 * **増分モード** では、アプリケーションを再デプロイしても、既存のリソースは変更されずに残ります。
 
-デプロイ モードの詳細については、「[Azure Resource Manager のデプロイ モード](../../azure-resource-manager/deployment-modes.md)」をご覧ください。
+デプロイ モードの詳細については、「[Azure Resource Manager のデプロイ モード](../../azure-resource-manager/templates/deployment-modes.md)」をご覧ください。
 
 #### <a name="notification-endpoint-url"></a>通知エンドポイント URL
 
@@ -543,7 +543,7 @@ USD (USD = 米国ドル) で設定された価格は、保存時の最新の為�
 
 ## <a name="test-drive"></a>体験版
 
-購入前に顧客がオファーを試すことができるデモ (体験版) を設定します。 顧客が一定期間オファーを試すことができるデモ環境を作成するには、[コマーシャル マーケットプレースでのオファーの体験版](test-drive.md)に関する記事をご覧ください。
+購入前に顧客がオファーを試すことができるデモ (体験版) を設定します。 顧客が一定期間オファーを試すことができるデモ環境を作成するには、[コマーシャル マーケットプレースでのオファーの体験版](../what-is-test-drive.md)に関する記事をご覧ください。
 
 体験版を有効にするには、 [[オファーのセットアップ]](#test-drive) タブで **[体験版を有効にする]** チェック ボックスをオンにします。オファーから体験版を削除するには、このチェック ボックスをオフにします。
 
@@ -555,7 +555,7 @@ USD (USD = 米国ドル) で設定された価格は、保存時の最新の為�
 
 体験版をお客様に代わってデプロイできるようにするには、固有の Azure サブスクリプションを別に作成して指定します (Power BI 体験版では不要)。
 
-* **Azure サブスクリプション ID** (Azure Resource Manager および Logic Apps では必須) – リソースの使用状況レポート用および課金用の Azure アカウント サービスへのアクセス権を付与するサブスクリプション ID を入力します。 まだお持ちでない場合、体験版に使用するために[別個の Azure サブスクリプションの作成](../../billing/billing-create-subscription.md)を検討することをお勧めします。 Azure サブスクリプション ID は、 [Azure portal](https://portal.azure.com/) にログインし、左側にあるメニューの **[サブスクリプション]** タブに移動して見つけることができます。 このタブを選択すると、ご自分のサブスクリプション ID (例: "a83645ac-1234-5ab6-6789-1h234g764ghty") が表示されます。
+* **Azure サブスクリプション ID** (Azure Resource Manager および Logic Apps では必須) – リソースの使用状況レポート用および課金用の Azure アカウント サービスへのアクセス権を付与するサブスクリプション ID を入力します。 まだお持ちでない場合、体験版に使用するために[別個の Azure サブスクリプションの作成](../../cost-management-billing/manage/create-subscription.md)を検討することをお勧めします。 Azure サブスクリプション ID は、 [Azure portal](https://portal.azure.com/) にログインし、左側にあるメニューの **[サブスクリプション]** タブに移動して見つけることができます。 このタブを選択すると、ご自分のサブスクリプション ID (例: "a83645ac-1234-5ab6-6789-1h234g764ghty") が表示されます。
 * **Azure AD テナント ID** (必須) – ご利用の Azure Active Directory (AD) [テナント ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) を入力します。 この ID を見つけるには、 [Azure portal](https://portal.azure.com/) にサインインして左側のメニューで [Active Directory] タブを選択し、 **[プロパティ]** を選んでから、一覧表示される **ディレクトリ ID** 番号 (50c464d3-4930-494c-963c-1e951d15360e など) を探します。 また、[https://www.whatismytenantid.com](https://www.whatismytenantid.com) で URL のドメイン名を使用して、組織のテナント ID を検索することもできます。
 * **Azure AD テナント名** (Dynamic 365 では必須) – 自分の Azure Active Directory (AD) 名を入力します。 この名前を見つけるには、[Azure portal](https://portal.azure.com/) にサインインします。右上隅にある自分のアカウント名の下に、テナント名が表示されます。
 * **Azure AD アプリ ID** (必須) – ご利用の Azure Active Directory (AD) [アプリケーション ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) を入力します。 この ID を見つけるには、 [Azure portal](https://portal.azure.com/) にサインインして左側のナビゲーション メニューで [Active Directory] タブを選択し、 **[アプリの登録]** を選択してから、表示される **アプリケーション ID** 番号 (50c464d3-4930-494c-963c-1e951d15360e など) を探します。

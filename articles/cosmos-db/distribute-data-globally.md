@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: ddb6bc297a32be856172707a220fe1dfaefb9f6d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 709c802b8b23a39a0f723db3ac7b4636a0c53930
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487451"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096769"
 ---
 # <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>Azure Cosmos DB を使用してデータをグローバルに分散させる
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 現在のアプリケーションには、優れた応答性と、常時接続が求められます。 待機時間の短縮と高可用性を実現するには、これらのアプリケーションのインスタンスをそのユーザーの近くにあるデータ センターにデプロイする必要があります。 これらのアプリケーションは、通常は複数のデータ センターにデプロイされ、グローバル分散型と呼ばれています。 グローバル分散型アプリケーションには、アプリケーションでそのユーザーの近くにあるデータのコピーを操作できるようにするために、世界中のデータを透過的にレプリケートできる、グローバルに分散されたデータベースが必要です。 
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 08/07/2020
-ms.openlocfilehash: 34af52b32d9e31ad003c5e95e288f88b157a944a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d253bda69839c76aed0170f9a79a03b7d4bf1a79
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710619"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130108"
 ---
 # <a name="create-a-managed-service-offer"></a>管理サービス オファーの作成
 
@@ -36,7 +36,7 @@ ms.locfileid: "91710619"
 **[オファー ID]** を入力します。 これは、ご自分のアカウント内の各オファーに対する一意の識別子です。
 
 * この ID は、マーケットプレース オファーの Web アドレスと Azure Resource Manager テンプレート (該当する場合) で顧客に表示されます。
-* 使用できるのは小文字と数字だけです。 ハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。 たとえば、「**test-offer-1**」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
+* 使用できるのは小文字と数字だけです。 ハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。 たとえば、「 **test-offer-1** 」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
 * **[作成]** を選択した後で、オファー ID を変更することはできません。
 
 **[オファーのエイリアス]** を入力します。 これは、パートナー センター内でオファーに使用される名前です。
@@ -52,7 +52,7 @@ ms.locfileid: "91710619"
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
-[マネージド サービスの認定ポリシー](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)上、 **[リードの宛先]** は必須です。 これにより、顧客がオファーをデプロイするたびに、CRM システムにレコードが作成されます。
+[マネージド サービスの認定ポリシー](/legal/marketplace/certification-policies#700-managed-services)上、 **[リードの宛先]** は必須です。 これにより、顧客がオファーをデプロイするたびに、CRM システムにレコードが作成されます。
 
 詳しくは、[リード管理の概要](./commercial-marketplace-get-customer-leads.md)に関する記事をご覧ください。
 
@@ -77,7 +77,7 @@ ms.locfileid: "91710619"
 このページでは、オファーのマーケットプレースの詳細 (オファーの名前、説明、画像など) を定義できます。
 
 > [!NOTE]
-> オファー登録情報の内容 (説明、ドキュメント、スクリーンショット、使用条件など) は、オファーの説明が "このアプリケーションは、<英語以外の言語> でのみ利用可能です" という文言で始まっていれば、英語である必要はありません。 また、オファー登録情報のコンテンツで使用されている言語以外の言語でコンテンツを提供するための*役に立つリンクの URL* を提供することもできます。
+> オファー登録情報の内容 (説明、ドキュメント、スクリーンショット、使用条件など) は、オファーの説明が "このアプリケーションは、<英語以外の言語> でのみ利用可能です" という文言で始まっていれば、英語である必要はありません。 また、オファー登録情報のコンテンツで使用されている言語以外の言語でコンテンツを提供するための *役に立つリンクの URL* を提供することもできます。
 
 Azure portal でのオファー情報の表示例を次に示します。
 
@@ -120,11 +120,11 @@ Azure portal でのオファー情報の表示例を次に示します。
 
 ### <a name="contact-information"></a>連絡先情報
 
-このセクションでは、**サポートの連絡先**と**エンジニアリングの連絡先**の名前、メール、電話番号を入力する必要があります。 この情報は顧客には表示されませんが、Microsoft で利用できるようになり、CSP パートナーに提供される場合もあります。
+このセクションでは、 **サポートの連絡先** と **エンジニアリングの連絡先** の名前、メール、電話番号を入力する必要があります。 この情報は顧客には表示されませんが、Microsoft で利用できるようになり、CSP パートナーに提供される場合もあります。
 
 ### <a name="support-urls"></a>サポート URL
 
-**Azure グローバル ユーザー** または **Azure Government ユーザー**をサポートする場合、それらの URL をここで指定します。
+**Azure グローバル ユーザー** または **Azure Government ユーザー** をサポートする場合、それらの URL をここで指定します。
 
 ### <a name="marketplace-images"></a>マーケットプレースの画像
 
@@ -137,7 +137,7 @@ Azure portal でのオファー情報の表示例を次に示します。
 
 #### <a name="store-logos"></a>ストア ロゴ
 
-**大**サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、**小**および**中**サイズのロゴを作成します。 必要に応じて、別の画像に置き換えることもできます。
+**大** サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、 **小** および **中** サイズのロゴを作成します。 必要に応じて、別の画像に置き換えることもできます。
 
 - **大** (216 x 216 から 350 x 350 px、必須)
 - **中** (90 x 90 px、省略可能)
@@ -191,7 +191,7 @@ Azure portal でのオファー情報の表示例を次に示します。
 
 ### <a name="pricing-and-availability"></a>価格と可用性
 
-現在、マネージド サービス オファーに使用できる価格モデルは 1 つのみです。**ライセンス持ち込み (BYOL)** 。 これは、このオファーに関連するコストはお客様が顧客に直接請求し、Microsoft はお客様に料金を一切請求しないことを意味します。
+現在、マネージド サービス オファーに使用できる価格モデルは 1 つのみです。 **ライセンス持ち込み (BYOL)** 。 これは、このオファーに関連するコストはお客様が顧客に直接請求し、Microsoft はお客様に料金を一切請求しないことを意味します。
 
 **[Plan visibility]\(プランの可視性\)** セクションでは、このプランを [非公開](../../marketplace/private-offers.md)にする必要があるかどうかを指定します。 **[This is a private plan]\(これは非公開プランです\)** ボックスをオフのままにすると、プランは特定の顧客 (または特定の数の顧客) に制限されません。
 
@@ -201,7 +201,7 @@ Azure portal でのオファー情報の表示例を次に示します。
 このプランを特定の顧客だけが利用できるようにするには、 **[はい]** を選択します。 その場合は、顧客のサブスクリプション ID を指定して顧客を特定する必要があります。 これらは、1 つずつ入力するか (最大 10 件のサブスクリプション)、または .csv ファイルをアップロードして入力する (最大 10,000 件のサブスクリプション) ことができます。 オファーをテストして検証できるように、ここではお客様自身のサブスクリプションを必ず含めてください。
 
 > [!IMPORTANT]
-> プランをパブリックとして公開した後でプライベートに変更することはできません。 どの顧客がプランを受け入れて、リソースを委任できるようにするかを制御するには、プライベート プランを使用します。 パブリック プランの場合、対象範囲を特定の顧客に制限したり、対象となる顧客数を限定したりできません (ただし、必要に応じてプランの販売を完全に中止することはできます)。 オファーを発行し、カスタマーがそれを受け入れた後に[委任へのアクセス権を削除](../../lighthouse/how-to/remove-delegation.md)できるのは、 その**ロールの定義**セットに「[管理されたサービスの登録割り当て削除ロール](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)」の**承認**を含めた場合に限ります。 また、カスタマーに連絡して、[アクセスを削除](../../lighthouse/how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers)するよう依頼することもできます。
+> プランをパブリックとして公開した後でプライベートに変更することはできません。 どの顧客がプランを受け入れて、リソースを委任できるようにするかを制御するには、プライベート プランを使用します。 パブリック プランの場合、対象範囲を特定の顧客に制限したり、対象となる顧客数を限定したりできません (ただし、必要に応じてプランの販売を完全に中止することはできます)。 オファーを発行し、カスタマーがそれを受け入れた後に [委任へのアクセス権を削除](../../lighthouse/how-to/remove-delegation.md)できるのは、 その **ロールの定義** セットに「 [管理されたサービスの登録割り当て削除ロール](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)」の **承認** を含めた場合に限ります。 また、カスタマーに連絡して、[アクセスを削除](../../lighthouse/how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers)するよう依頼することもできます。
 
 ### <a name="technical-configuration"></a>技術的な構成
 
@@ -214,9 +214,9 @@ Azure portal でのオファー情報の表示例を次に示します。
 
 #### <a name="manifest"></a>Manifest
 
-最初に、マニフェストの**バージョン**を指定します。 *n.n.n* という形式を使用します (たとえば、1.2.5)。
+最初に、マニフェストの **バージョン** を指定します。 *n.n.n* という形式を使用します (たとえば、1.2.5)。
 
-次に、お客様の**テナント ID** を指定します。 これは、組織の Azure Active Directory (Azure AD) テナント ID に関連付けられた GUID です。つまり、顧客のリソースにアクセスする管理テナントです。 これが手元にない場合は、Azure portal の右上にあるお客様のアカウント名をポイントするか、 **[ディレクトリの切り替え]** を選択することで確認できます。
+次に、お客様の **テナント ID** を指定します。 これは、組織の Azure Active Directory (Azure AD) テナント ID に関連付けられた GUID です。つまり、顧客のリソースにアクセスする管理テナントです。 これが手元にない場合は、Azure portal の右上にあるお客様のアカウント名をポイントするか、 **[ディレクトリの切り替え]** を選択することで確認できます。
 
 オファーの新しいバージョンを発行し、更新されたマニフェストを作成する必要がある場合は、 **[+ 新しいマニフェスト]** を選択します。 必ず、バージョン番号を以前のマニフェスト バージョンから増加してください。
 
@@ -227,19 +227,19 @@ Azure portal でのオファー情報の表示例を次に示します。
 各プランに対して最大 20 個の承認を作成できます。
 
 > [!TIP]
-> ほとんどの場合、一連の個々のユーザー アカウントではなく、Azure AD のユーザー グループまたはサービス プリンシパルにロールを割り当てます。 これにより、実際のアクセス要件が変更されたときに、プランを更新して再発行することなく、個々のユーザーのアクセス権を追加または削除できます。 Azure AD グループにロールを割り当てる場合、[ **[グループの種類]** が、 **[Office 365]** ではなく **[セキュリティ]** であることを確認してください](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。 その他の推奨事項については、「[Azure Lighthouse のシナリオにおけるテナント、ロール、ユーザー](../../lighthouse/concepts/tenants-users-roles.md)」をご覧ください。
+> ほとんどの場合、一連の個々のユーザー アカウントではなく、Azure AD のユーザー グループまたはサービス プリンシパルにロールを割り当てます。 これにより、実際のアクセス要件が変更されたときに、プランを更新して再発行することなく、個々のユーザーのアクセス権を追加または削除できます。 Azure AD グループにロールを割り当てる場合、 [ **[グループの種類]** が、 **[Office 365]** ではなく **[セキュリティ]** であることを確認してください](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。 その他の推奨事項については、「[Azure Lighthouse のシナリオにおけるテナント、ロール、ユーザー](../../lighthouse/concepts/tenants-users-roles.md)」をご覧ください。
 
-**承認**ごとに、以下を指定する必要があります。 その後、 **[新しい承認]** を必要な回数だけ選択して、ユーザーやロールの定義を追加します。
+**承認** ごとに、以下を指定する必要があります。 その後、 **[新しい承認]** を必要な回数だけ選択して、ユーザーやロールの定義を追加します。
 
 - **Azure AD Object ID (Azure AD オブジェクト ID)** :顧客のリソースに対する特定のアクセス許可を付与される ([ロールの定義] で定義される) ユーザー、ユーザー グループ、またはアプリケーションの Azure AD 識別子。
 - **Azure AD Object Display Name (Azure AD オブジェクトの表示名)** :顧客がこの承認の目的を理解するのに役立つフレンドリ名。 この名前は、顧客がリソースを委任するときに表示されます。
-- **ロール定義**: 一覧から、使用可能な Azure AD の組み込みロールのいずれかを選択します。 このロールにより、 **[Azure AD Object ID]\(Azure AD オブジェクト ID\)** フィールド内のユーザーに与えられる、実際の顧客のリソースに対するアクセス許可が決定されます。 これらのロールについては、[組み込みロール](../../role-based-access-control/built-in-roles.md)に関する記事と、「[Azure Lighthouse 用のロールのサポート](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-lighthouse)」をご覧ください。
+- **ロール定義** : 一覧から、使用可能な Azure AD の組み込みロールのいずれかを選択します。 このロールにより、 **[Azure AD Object ID]\(Azure AD オブジェクト ID\)** フィールド内のユーザーに与えられる、実際の顧客のリソースに対するアクセス許可が決定されます。 これらのロールについては、[組み込みロール](../../role-based-access-control/built-in-roles.md)に関する記事と、「[Azure Lighthouse 用のロールのサポート](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-lighthouse)」をご覧ください。
   > [!NOTE]
   > 適用される新しい組み込みロールが Azure に追加されると、ここで使用できるようになりますが、表示されるまでに時間がかかる場合があります。
-- **Assignable Roles (割り当て可能なロール)** :このオプションは、この承認の **[ロール定義]** で [ユーザー アクセス管理者] を選択した場合のみ表示されます。 その場合、割り当て可能なロールをここで 1 つ以上追加する必要があります。 **[Azure AD オブジェクト ID]** フィールド内のユーザーは、これらのロールを[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md)に割り当てることができます。これは、[修復可能なポリシーをデプロイする](../../lighthouse/how-to/deploy-policy-remediation.md)ために必要です。 ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可はこのユーザーに適用されないことに注意してください。
+- **Assignable Roles (割り当て可能なロール)** :このオプションは、この承認の **[ロール定義]** で [ユーザー アクセス管理者] を選択した場合のみ表示されます。 その場合、割り当て可能なロールをここで 1 つ以上追加する必要があります。 **[Azure AD オブジェクト ID]** フィールド内のユーザーは、これらのロールを [マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md)に割り当てることができます。これは、 [修復可能なポリシーをデプロイする](../../lighthouse/how-to/deploy-policy-remediation.md)ために必要です。 ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可はこのユーザーに適用されないことに注意してください。
 
 > [!TIP]
-> 必要に応じて[委任へのアクセス権を削除](../../lighthouse/how-to/remove-delegation.md)できるようにするには、 その**ロールの定義**セットに、 [「管理されたサービスの登録割り当て削除ロール」](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)の**承認**を含めます。 このロールが割り当てられていない場合、委任されたリソースは顧客のテナント内のユーザーによってのみ削除できます。
+> 必要に応じて [委任へのアクセス権を削除](../../lighthouse/how-to/remove-delegation.md)できるようにするには、 その **ロールの定義** セットに、 [「管理されたサービスの登録割り当て削除ロール」](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)の **承認** を含めます。 このロールが割り当てられていない場合、委任されたリソースは顧客のテナント内のユーザーによってのみ削除できます。
 
 プランのすべてのセクションを完成したら、 **[+ 新しいプランの作成]** を必要な回数選択して、追加のプランを作成できます。 終了したら、 **[保存]** を選択します。
 
@@ -264,7 +264,7 @@ Azure portal でのオファー情報の表示例を次に示します。
 
 顧客はオファーをデプロイすると、[Azure の委任されたリソース管理](../../lighthouse/concepts/azure-delegated-resource-management.md)のためにサブスクリプションまたはリソースを委任できるようになります。 このプロセスの詳細については、「[顧客オンボーディング プロセス](../../lighthouse/how-to/publish-managed-services-offers.md#the-customer-onboarding-process)」を参照してください。
 
-いつでも[更新済みバージョンのオファー](update-existing-offer.md)を公開できます。 たとえば、以前に公開されたオファーに新しいロールの定義を追加したい場合があります。 そうすると、オファーを既に追加している顧客には、Azure portal の [ **[サービス プロバイダー]** ](../../lighthouse/how-to/view-manage-service-providers.md) ページに、更新が利用可能であることを知らせるアイコンが表示されます。 各顧客は、変更を確認して、新しいバージョンに更新する必要があるかどうかを決定できます。
+いつでも[更新済みバージョンのオファー](update-existing-offer.md)を公開できます。 たとえば、以前に公開されたオファーに新しいロールの定義を追加したい場合があります。 そうすると、オファーを既に追加している顧客には、Azure portal の [ **[サービス プロバイダー]**](../../lighthouse/how-to/view-manage-service-providers.md) ページに、更新が利用可能であることを知らせるアイコンが表示されます。 各顧客は、変更を確認して、新しいバージョンに更新する必要があるかどうかを決定できます。
 
 ## <a name="next-steps"></a>次のステップ
 

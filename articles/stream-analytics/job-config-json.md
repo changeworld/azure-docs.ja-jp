@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/14/2020
-ms.openlocfilehash: f2dd759203655746601699f665436c78ee0758f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb1a1a0b9f3a5996af56ff2c4e2de91d78a6c260
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885497"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129339"
 ---
 # <a name="azure-stream-analytics-jobconfigjson-fields"></a>Azure Stream Analytics JobConfig.json フィールド
 
@@ -58,4 +58,4 @@ ms.locfileid: "90885497"
 * [Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-visual-studio-code.md)
 * [Visual Studio Code を使用してサンプル データで Stream Analytics クエリをローカルでテストする](visual-studio-code-local-run.md)
 * [Visual Studio Code を使用してライブ ストリーム入力に対して Stream Analytics クエリをローカルでテストする](visual-studio-code-local-run-live-input.md)
-*[CI/CD npm パッケージを使用して Azure Stream Analytics ジョブをデプロイする](setup-cicd-vs-code.md)
+*[CI/CD npm パッケージを使用して Azure Stream Analytics ジョブをデプロイする](./cicd-overview.md)

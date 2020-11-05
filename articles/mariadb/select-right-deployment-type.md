@@ -1,17 +1,17 @@
 ---
 title: 適切なデプロイの種類の選択 - Azure Database for MariaDB
 description: この記事では、Azure Database for MariaDB をサービスとしてのインフラストラクチャ (IaaS) またはサービスとしてのプラットフォーム (PaaS) としてデプロイする前に考慮すべき要素について説明します。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 5be6b97ed1647ad09a2abc3360b4f3a42c25ad62
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d8885e374142b3d916803fc472ae18351ca6d470
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424915"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240275"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Azure で適切な MariaDB サーバーオプションを選択する
 

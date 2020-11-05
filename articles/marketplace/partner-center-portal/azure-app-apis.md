@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 51de1ab26318a02381ed95f00eadcc4e892f2f57
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 87f27f316914f3efce5a750f50471c65dceca84e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371632"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127843"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>パートナー センターで Azure アプリをオンボードするためのパートナー センター申請 API
 
@@ -29,9 +29,9 @@ Azure 製品向けのパートナー センター API を使用するには、�
 
 パートナー センター申請 API を呼び出すコードを書き始める前に、次の前提条件が満たされていることを確認してください。
 
-- 自分 (または自分の組織) に Azure AD ディレクトリがあり、自分がそのディレクトリに対する[グローバル管理者](../../active-directory/roles/permissions-reference.md)のアクセス許可を持っている必要があります。 Microsoft 365 または Microsoft の他のビジネス サービスをすでに使用している場合、Azure AD ディレクトリをすでに所有しています。 そうでなければ、[パートナー センターで新しい Azure AD を無料で作成](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account)できます。
+- 自分 (または自分の組織) に Azure AD ディレクトリがあり、自分がそのディレクトリに対する[グローバル管理者](../../active-directory/roles/permissions-reference.md)のアクセス許可を持っている必要があります。 Microsoft 365 または Microsoft の他のビジネス サービスをすでに使用している場合、Azure AD ディレクトリをすでに所有しています。 そうでなければ、[パートナー センターで新しい Azure AD を無料で作成](/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account)できます。
 
-- [Azure AD アプリケーションをパートナー センター アカウントと関連付け](https://docs.microsoft.com/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services#associate-an-azure-ad-application-with-your-windows-partner-center-account)、テナント ID、クライアント ID、キーを取得する必要があります。 Azure AD アクセス トークンを取得するにはこれらの値が必要です。Microsoft Store 申請 API への呼び出しにこれらを使用します。
+- [Azure AD アプリケーションをパートナー センター アカウントと関連付け](/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services#associate-an-azure-ad-application-with-your-windows-partner-center-account)、テナント ID、クライアント ID、キーを取得する必要があります。 Azure AD アクセス トークンを取得するにはこれらの値が必要です。Microsoft Store 申請 API への呼び出しにこれらを使用します。
 
 #### <a name="how-to-associate-an-azure-ad-application-with-your-partner-center-account"></a>Azure AD アプリケーションをパートナー センター アカウントと関連付ける方法
 
@@ -40,16 +40,16 @@ Microsoft Store 申請 API を使用するには、Azure AD アプリケーシ�
 >[!Note]
 >このタスクは 1 度だけ実行する必要があります。 テナント ID、クライアント ID、キーがあれば、新しい Azure AD アクセス トークンを作成する必要がある度にそれらを再利用できます。
 
-1. パートナー センターで、[組織のパートナー センター アカウントを組織の Azure AD ディレクトリに関連付けます](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center)。
-1. 次に、パートナー センターの **[アカウント設定]** セクションの **[ユーザー]** ページから、パートナー センター アカウントの申請にアクセスするために使用するアプリまたはサービスを表す [Azure AD アプリケーションを追加](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#add-azure-ad-applications-to-your-partner-center-account)します。 このアプリケーションに **マネージャー** ロールを確実に割り当てます。 アプリケーションがまだ Azure AD ディレクトリに存在しない場合、[パートナー センターで新しい Azure AD アプリケーションを作成](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#create-a-new-azure-ad-application-account-in-your-organizations-directory-and-add-it-to-your-partner-center-account)できます。
+1. パートナー センターで、[組織のパートナー センター アカウントを組織の Azure AD ディレクトリに関連付けます](/windows/uwp/publish/associate-azure-ad-with-partner-center)。
+1. 次に、パートナー センターの **[アカウント設定]** セクションの **[ユーザー]** ページから、パートナー センター アカウントの申請にアクセスするために使用するアプリまたはサービスを表す [Azure AD アプリケーションを追加](/windows/uwp/publish/add-users-groups-and-azure-ad-applications#add-azure-ad-applications-to-your-partner-center-account)します。 このアプリケーションに **マネージャー** ロールを確実に割り当てます。 アプリケーションがまだ Azure AD ディレクトリに存在しない場合、[パートナー センターで新しい Azure AD アプリケーションを作成](/windows/uwp/publish/add-users-groups-and-azure-ad-applications#create-a-new-azure-ad-application-account-in-your-organizations-directory-and-add-it-to-your-partner-center-account)できます。
 1. **[ユーザー]** ページに戻り、Azure AD アプリケーションの名前をクリックしてアプリケーション設定に移動し、 **テナント ID** と **クライアント ID** の値を書き留めます。
-1. **[新しいキーを追加]** をクリックします。 次の画面で、 **キー** の値を書き留めます。 このページを離れると、この情報にアクセスすることはできなくなります。 詳細については、「[Azure AD アプリケーションのキーを管理する](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#manage-keys)」を参照してください。
+1. **[新しいキーを追加]** をクリックします。 次の画面で、 **キー** の値を書き留めます。 このページを離れると、この情報にアクセスすることはできなくなります。 詳細については、「[Azure AD アプリケーションのキーを管理する](/windows/uwp/publish/add-users-groups-and-azure-ad-applications#manage-keys)」を参照してください。
 
 ### <a name="step-2-obtain-an-azure-ad-access-token"></a>手順 2:Azure AD アクセス トークンを取得する
 
 パートナー センター申請 API のメソッドを呼び出す前に、API の各メソッドの **Authorization** ヘッダーに渡す Azure AD アクセス トークンを取得する必要があります。 アクセス トークンを取得したら、期限が切れる 60 分が経過する前に使用します。 トークンの有効期限が切れたら、トークンを更新して、将来の API 呼び出しで使用できるようにします。
 
-アクセス トークンを取得するには、「[クライアント資格情報を使用したサービス間の呼び出し](https://azure.microsoft.com/documentation/articles/active-directory-protocols-oauth-service-to-service/)」の指示に従って、`HTTP POST` を `https://login.microsoftonline.com/<tenant_id>/oauth2/token` エンドポイントに送信します。 要求のサンプルを次に示します。
+アクセス トークンを取得するには、「[クライアント資格情報を使用したサービス間の呼び出し](../../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)」の指示に従って、`HTTP POST` を `https://login.microsoftonline.com/<tenant_id>/oauth2/token` エンドポイントに送信します。 要求のサンプルを次に示します。
 
 JSONCopy
 ```Json

@@ -7,22 +7,22 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/06/2020
-ms.openlocfilehash: b4e34befbf28de2b985ff49ce17a87a25842015e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80567a211f08d6322c80b6645f8b70ec7df64b59
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87901693"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130665"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Azure Stream Analytics 用のイベント順序ポリシーの構成
 
-この記事では、Azure Stream Analytics で遅延到着と順不同のイベント ポリシーを設定し、使用する方法について説明します。 クエリで [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) 句を使用する場合のみ、これらのポリシーが適用されます。また、これらはクラウド入力ソースにのみ適用されます。
+この記事では、Azure Stream Analytics で遅延到着と順不同のイベント ポリシーを設定し、使用する方法について説明します。 クエリで [TIMESTAMP BY](/stream-analytics-query/timestamp-by-azure-stream-analytics) 句を使用する場合のみ、これらのポリシーが適用されます。また、これらはクラウド入力ソースにのみ適用されます。
 
 ## <a name="event-time-and-arrival-time"></a>イベント時間と到着時間
 
-Stream Analytics ジョブは、*イベント時間*または*到着時間*のいずれかに基づいてイベントを処理できます。 **イベント/アプリケーション時間**は、イベント ペイロードに含まれるタイムスタンプです (イベントが生成された時間)。 **到着時刻**は、イベントが入力ソース (イベント ハブ/IoT ハブ/Blob ストレージ) に到達した時間のタイムスタンプです。 
+Stream Analytics ジョブは、 *イベント時間* または *到着時間* のいずれかに基づいてイベントを処理できます。 **イベント/アプリケーション時間** は、イベント ペイロードに含まれるタイムスタンプです (イベントが生成された時間)。 **到着時刻** は、イベントが入力ソース (イベント ハブ/IoT ハブ/Blob ストレージ) に到達した時間のタイムスタンプです。 
 
-既定では、Stream Analytics は*到着時間*でイベントを処理しますが、クエリで [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) 節を使用することによって、*イベント時間*でイベントを処理することもできます。 遅延着信と順不同のポリシーは、イベント時間でイベントを処理する場合にのみ適用できます。 これらの設定を構成するときに、自分のシナリオの待機時間と正確性の要件を考慮に入れてください。 
+既定では、Stream Analytics は *到着時間* でイベントを処理しますが、クエリで [TIMESTAMP BY](/stream-analytics-query/timestamp-by-azure-stream-analytics) 節を使用することによって、 *イベント時間* でイベントを処理することもできます。 遅延着信と順不同のポリシーは、イベント時間でイベントを処理する場合にのみ適用できます。 これらの設定を構成するときに、自分のシナリオの待機時間と正確性の要件を考慮に入れてください。 
 
 ## <a name="what-is-late-arrival-policy"></a>遅延到着ポリシーとは
 
@@ -79,8 +79,8 @@ Stream Analytics ジョブは、*イベント時間*または*到着時間*の�
 ## <a name="why-do-i-see-a-delay-of-5-seconds-even-when-my-late-arrival-policy-is-set-to-0"></a>遅延到着ポリシーが 0 に設定されていても 5 秒の遅延があるのはなぜですか?
 これは、入力をまったく受け取ったことがない入力パーティションが存在する場合に発生します。 この動作を検証するため、パーティションごとの入力メトリックを確認できます。 
 
-パーティションに、構成されている遅延到着のしきい値を超えるデータがない場合は、イベントの順序に関する考慮事項のセクションで説明しているように、Stream Analytics により、アプリケーションのタイムスタンプが進められます。 このために、推定到着時間が必要です。 パーティションにどのようなデータも存在したことがない場合、Stream Analytics では、到着時刻は*ローカル時刻- 5 秒*であると推定します。 このパーティションには、どのようなデータも存在したことがないため、5 秒の透かしの遅延が表示される可能性があります。  
+パーティションに、構成されている遅延到着のしきい値を超えるデータがない場合は、イベントの順序に関する考慮事項のセクションで説明しているように、Stream Analytics により、アプリケーションのタイムスタンプが進められます。 このために、推定到着時間が必要です。 パーティションにどのようなデータも存在したことがない場合、Stream Analytics では、到着時刻は *ローカル時刻- 5 秒* であると推定します。 このパーティションには、どのようなデータも存在したことがないため、5 秒の透かしの遅延が表示される可能性があります。  
 
 ## <a name="next-steps"></a>次のステップ
 * [時間の処理に関する考慮事項](stream-analytics-time-handling.md)
-* [Stream Analytics で使用できるメトリック](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-monitoring#metrics-available-for-stream-analytics)
+* [Stream Analytics で使用できるメトリック](./stream-analytics-monitoring.md#metrics-available-for-stream-analytics)

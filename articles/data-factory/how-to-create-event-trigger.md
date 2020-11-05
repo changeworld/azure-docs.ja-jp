@@ -5,18 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
+author: chez-charlie
+ms.author: chez
 manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: 10f0079f47e5d2fd99b358fcc5cfb4c80aa9bd91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de416277de34e1c3717d581697f05c98c48d1959
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84508898"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146009"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>イベントに応答してパイプラインを実行するトリガーを作成する
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "84508898"
 
 このセクションでは、Azure Data Factory ユーザー インターフェイス内でイベント トリガーを作成する方法について説明します。
 
-1. **作成キャンバス**に移動します
+1. **作成キャンバス** に移動します
 
 1. 左下隅にある **[トリガー]** ボタンをクリックします
 
@@ -50,7 +50,7 @@ ms.locfileid: "84508898"
 1. [Azure サブスクリプション] ドロップダウンからストレージ アカウントを選択するか、ストレージ アカウントのリソース ID を使用して手動で選択します。 イベントを発生させるコンテナーを選択します。 コンテナーの選択は省略可能ですが、すべてのコンテナーを選択すると、多数のイベントが発生する可能性があることに注意してください。
 
    > [!NOTE]
-   > 現在、イベント トリガーでサポートされているのは、Azure Data Lake Storage Gen2 と汎用バージョン 2 のストレージ アカウントのみです。 少なくとも、ストレージ アカウントに対する*所有者*のアクセス権が必要です。  Azure Event Grid の制限により、Azure Data Factory は、ストレージ アカウントあたり最大 500 のイベント トリガーのみをサポートします。
+   > 現在、イベント トリガーでサポートされているのは、Azure Data Lake Storage Gen2 と汎用バージョン 2 のストレージ アカウントのみです。 少なくとも、ストレージ アカウントに対する *所有者* のアクセス権が必要です。  Azure Event Grid の制限により、Azure Data Factory は、ストレージ アカウントあたり最大 500 のイベント トリガーのみをサポートします。
 
 1. **[Blob path begins with]** (次で始まる BLOB パス) と **[Blob path ends with]** (次で終わる BLOB パス) のプロパティでは、イベントを受け取るコンテナー、フォルダー、および BLOB の名前を指定できます。 イベント トリガーでは、これらのプロパティの少なくとも 1 つを定義する必要があります。 この記事で後述する例に示すように、 **[Blob path begins with]\(Blob パスの先頭\)** と **[Blob path ends with]\(Blob パスの末尾\)** のプロパティにはさまざまなパターンを使用できます。
 
@@ -69,11 +69,11 @@ ms.locfileid: "84508898"
 
 1. このトリガーにパイプラインをアタッチするには、パイプライン キャンバスにアクセスし、 **[トリガーの追加]** をクリックして **[新規作成/編集]** を選択します。 サイド ナビゲーションが表示されたら、 **[Choose trigger...]** (トリガーの選択...) ドロップダウンをクリックし、作成したトリガーを選択します。 **[次へ: データのプレビュー]** をクリックして構成が正しいことを確認し、 **[次へ]** をクリックして [データのプレビュー] が正しいことを確認します。
 
-1. パイプラインにパラメーターがある場合は、トリガー実行パラメーター サイド ナビゲーションで指定できます。 イベント トリガーは、BLOB のフォルダー パスとファイル名を、プロパティ `@trigger().outputs.body.folderPath` および `@trigger().outputs.body.fileName` にキャプチャします。 パイプラインでこれらのプロパティの値を使用するには、プロパティをパイプライン パラメーターにマップする必要があります。 プロパティをパラメーターにマップしたら、パイプライン全体で `@pipeline().parameters.parameterName` 式を使用して、トリガーでキャプチャされた値にアクセスできます。 終了したら **[完了]** をクリックします。
+1. パイプラインにパラメーターがある場合は、トリガー実行パラメーター サイド ナビゲーションで指定できます。 イベント トリガーは、BLOB のフォルダー パスとファイル名を、プロパティ `@triggerBody().folderPath` および `@triggerBody().fileName` にキャプチャします。 パイプラインでこれらのプロパティの値を使用するには、プロパティをパイプライン パラメーターにマップする必要があります。 プロパティをパラメーターにマップしたら、パイプライン全体で `@pipeline().parameters.parameterName` 式を使用して、トリガーでキャプチャされた値にアクセスできます。 終了したら **[完了]** をクリックします。
 
     ![パイプライン パラメーターへのプロパティのマッピング](media/how-to-create-event-trigger/event-based-trigger-image4.png)
 
-前の例では、トリガーは .csv で終わる BLOB パスがコンテナー sample-data のフォルダー event-testing で作成されたときに起動するように構成されています。 **folderPath** と **fileName** のプロパティは、新しい BLOB の場所をキャプチャします。 たとえば、MoviesDB.csv が sample-data/event-testing のパスに追加された場合、`@trigger().outputs.body.folderPath` には `sample-data/event-testing` の値が、`@trigger().outputs.body.fileName` には `moviesDB.csv` の値が含まれます。 これらの値は、例では、パイプライン パラメーター `sourceFolder` および `sourceFile` にマップされ、それぞれ `@pipeline().parameters.sourceFolder` および `@pipeline().parameters.sourceFile` としてパイプライン全体で使用できます。
+前の例では、トリガーは .csv で終わる BLOB パスがコンテナー sample-data のフォルダー event-testing で作成されたときに起動するように構成されています。 **folderPath** と **fileName** のプロパティは、新しい BLOB の場所をキャプチャします。 たとえば、MoviesDB.csv が sample-data/event-testing のパスに追加された場合、`@triggerBody().folderPath` には `sample-data/event-testing` の値が、`@triggerBody().fileName` には `moviesDB.csv` の値が含まれます。 これらの値は、例では、パイプライン パラメーター `sourceFolder` および `sourceFile` にマップされ、それぞれ `@pipeline().parameters.sourceFolder` および `@pipeline().parameters.sourceFile` としてパイプライン全体で使用できます。
 
 ## <a name="json-schema"></a>JSON スキーマ
 

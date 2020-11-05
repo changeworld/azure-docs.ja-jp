@@ -8,12 +8,12 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/15/2020
 ms.custom: contperfq2
-ms.openlocfilehash: f7c08172f3a60487ae6e15260a0cd5fc5e4a712c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c4fdf8e986b9c98588689a57bde8ca9464667abe
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740749"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129543"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Azure の消費コミットメントのベネフィット
 
@@ -45,10 +45,10 @@ ms.locfileid: "92740749"
  
 3. オファーには **[Azure ベネフィット対象]** のバッジが付けられており、このオファーに関連付けられているソフトウェア/IP のコストは、組織に請求されるすべての Azure サービスに加えて、組織の Azure の消費コミットメントに貢献することが示されています。
 
-    :::image type="content" source="media/azure-benefit/azure-benefit-eligible-badge.png" alt-text="Azure ベネフィット対象のバッジ。&quot;:::
+    :::image type="content" source="media/azure-benefit/azure-benefit-eligible-badge.png" alt-text="Azure ベネフィット対象のバッジ。":::
 
    > [!NOTE]
-   > Azure Marketplace のデプロイを通じて組織に請求される Microsoft Azure サービスは、組織のコミットメントに対して本質的に貢献します。 &quot;Azure ベネフィット対象" オファーには、サードパーティ ベンダーによって計上されたソフトウェア/IP のコストでも、Azure Marketplace 請求書の 100% が付与されるという追加の利点があります。
+   > Azure Marketplace のデプロイを通じて組織に請求される Microsoft Azure サービスは、組織のコミットメントに対して本質的に貢献します。 "Azure ベネフィット対象" オファーには、サードパーティ ベンダーによって計上されたソフトウェア/IP のコストでも、Azure Marketplace 請求書の 100% が付与されるという追加の利点があります。
 
 4. Azure Marketplace から直接オファーを購入または作成します。 Microsoft は、ソフトウェア/IP のコストを含め、各請求書期間における組織の Azure の消費コミットメントに対して、適格なオファーの購入の 100% を付与します。
 
@@ -57,4 +57,4 @@ ms.locfileid: "92740749"
 
 ## <a name="next-steps"></a>次の手順
 
-- 組織で Azure Marketplace を活用する方法の詳細については、Microsoft Learn モジュール「[Azure Marketplace を使用してクラウドの調達とガバナンスを簡素化する](https://aka.ms/cm.marketplaceprocurement)」で学習してください。
+- 組織で Azure Marketplace を活用する方法の詳細については、Microsoft Learn モジュール「[Azure Marketplace を使用してクラウドの調達とガバナンスを簡素化する](/learn/modules/simplify-cloud-procurement-governance-azure-marketplace/)」で学習してください。

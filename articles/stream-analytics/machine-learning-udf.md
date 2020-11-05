@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: a24d1716448363a199151a50a260bbdbd1e8e634
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14f7462aec65d2a13eb36b291331c347b995d281
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249486"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130682"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics と Azure Machine Learning の統合 (プレビュー)
 
@@ -23,13 +23,13 @@ ms.locfileid: "91249486"
 
 機械学習モデルを関数として Stream Analytics ジョブに追加する前に、次の手順を完了します。
 
-1. Azure Machine Learning を使用して、[モデルを Web サービスとしてデプロイ](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)します。
+1. Azure Machine Learning を使用して、[モデルを Web サービスとしてデプロイ](../machine-learning/how-to-deploy-and-where.md)します。
 
 2. スコアリング スクリプトには、スキーマ仕様を生成するために Azure Machine Learning によって使用される[サンプルの入力と出力](../machine-learning/how-to-deploy-and-where.md)が必要です。 Stream Analytics は、スキーマを使用して Web サービスの関数シグネチャを理解します。 この[サンプルの Swagger 定義](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json)を、それが正しく設定されていることを確認するための参照として使用できます。
 
 3. Web サービスが JSON シリアル化データを受け入れて返すことを確認します。
 
-4. 高スケールの運用デプロイ向けの [Azure Kubernetes Service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) にモデルをデプロイします。 Web サービスがジョブからの要求数を処理できない場合、Stream Analytics ジョブのパフォーマンスが低下し、待機時間に影響します。 Azure Container Instances にデプロイされたモデルは、Azure portal を使用する場合にのみサポートされます。 [Azure Machine Learning デザイナー](https://docs.microsoft.com/azure/machine-learning/concept-designer)を使用して作成されるモデルは、Stream Analytics ではまだサポートされていません。
+4. 高スケールの運用デプロイ向けの [Azure Kubernetes Service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) にモデルをデプロイします。 Web サービスがジョブからの要求数を処理できない場合、Stream Analytics ジョブのパフォーマンスが低下し、待機時間に影響します。 Azure Container Instances にデプロイされたモデルは、Azure portal を使用する場合にのみサポートされます。 [Azure Machine Learning デザイナー](../machine-learning/concept-designer.md)を使用して作成されるモデルは、Stream Analytics ではまだサポートされていません。
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>機械学習モデルをジョブに追加する
 
@@ -51,13 +51,13 @@ Azure portal または Visual Studio Code から直接、Azure Machine Learning 
 
    :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="VS Code で UDF を追加する":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="VS Code で UDF を追加する":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="VS Code で Azure Machine Learning UDF を追加する":::
 
 2. 関数名を入力し、CodeLens の **[Select from your subscriptions]\(サブスクリプションから選択する\)** を使用して、構成ファイルの設定を指定します。
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="VS Code で UDF を追加する":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="VS Code で Azure Machine Learning UDF を選択する":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="VS Code で UDF を追加する":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="VS Code で Azure Machine Learning UDF を構成する":::
 
 次の表は、Stream Analytics の Azure Machine Learning Service 関数の各プロパティの説明です。
 

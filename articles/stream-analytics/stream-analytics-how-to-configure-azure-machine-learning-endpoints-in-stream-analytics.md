@@ -7,28 +7,28 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/11/2019
-ms.openlocfilehash: 4bcff14f655385aa467878f21927ac091095c91f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 236191710dac19a08db0e8ce94dc695d393009a7
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015517"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127129"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Stream Analytics (プレビュー) への Azure Machine Learning Studio (クラシック) の統合
-Stream Analytics では、Azure Machine Learning Studio (クラシック) のエンドポイントを呼び出す、ユーザー定義の関数をサポートしています。 この機能でサポートされている REST API の詳細については、「 [Stream Analytics の REST API ライブラリ](https://msdn.microsoft.com/library/azure/dn835031.aspx)」を参照してください。 この資料では、Stream Analytics にこの機能を正しく実装するために必要な補足的な情報を示します。 チュートリアルも用意しており、 [ここ](stream-analytics-machine-learning-integration-tutorial.md)から確認できます。
+Stream Analytics では、Azure Machine Learning Studio (クラシック) のエンドポイントを呼び出す、ユーザー定義の関数をサポートしています。 この機能でサポートされている REST API の詳細については、「 [Stream Analytics の REST API ライブラリ](/rest/api/streamanalytics/)」を参照してください。 この資料では、Stream Analytics にこの機能を正しく実装するために必要な補足的な情報を示します。 チュートリアルも用意しており、 [ここ](stream-analytics-machine-learning-integration-tutorial.md)から確認できます。
 
 ## <a name="overview-azure-machine-learning-studio-classic-terminology"></a>概要:Azure Machine Learning Studio (クラシック) の用語
-Microsoft Azure Machine Learning Studio (クラシック) には、データを活用した予測分析ソリューションの構築、テスト、デプロイをドラッグ アンド ドロップで行うことができる、コラボレーションに対応したツールがあります。 このツールは、*Azure Machine Learning Studio (クラシック)* と呼ばれています。 Studio (クラシック) は、Machine Learning リソースと通信し、設計を簡単に構築、テストおよび反復処理するために使用できます。 これらのリソースとその定義のとおりです。
+Microsoft Azure Machine Learning Studio (クラシック) には、データを活用した予測分析ソリューションの構築、テスト、デプロイをドラッグ アンド ドロップで行うことができる、コラボレーションに対応したツールがあります。 このツールは、 *Azure Machine Learning Studio (クラシック)* と呼ばれています。 Studio (クラシック) は、Machine Learning リソースと通信し、設計を簡単に構築、テストおよび反復処理するために使用できます。 これらのリソースとその定義のとおりです。
 
-* **ワークスペース**: *ワークスペース* は、その他のすべての Machine Learning リソースを管理および制御するためにそれらを保持するコンテナーです。
-* **実験**: *実験* は、データセットを使用して機械学習モデルをトレーニングするデータ科学者によって作成されます。
-* **エンドポイント**: *エンドポイント* は、機能を入力として取得し、特定の機械学習モデルを適用し、スコア付けされた出力を返す Studio (クラシック) のオブジェクトです。
-* **スコア付け Web サービス**: *スコア付け Web サービス* とは、前述のエンドポイントの集合です。
+* **ワークスペース** : *ワークスペース* は、その他のすべての Machine Learning リソースを管理および制御するためにそれらを保持するコンテナーです。
+* **実験** : *実験* は、データセットを使用して機械学習モデルをトレーニングするデータ科学者によって作成されます。
+* **エンドポイント** : *エンドポイント* は、機能を入力として取得し、特定の機械学習モデルを適用し、スコア付けされた出力を返す Studio (クラシック) のオブジェクトです。
+* **スコア付け Web サービス** : *スコア付け Web サービス* とは、前述のエンドポイントの集合です。
 
 各エンドポイントには、バッチの実行と同期の実行用の API があります。 Stream Analytics では、同期実行を使用します。 この特定のサービスは、Azure Machine Learning Studio (クラシック) では[要求応答サービス](../machine-learning/classic/consume-web-services.md)と呼ばれています。
 
 ## <a name="studio-classic-resources-needed-for-stream-analytics-jobs"></a>Stream Analytics のジョブに必要な Studio (クラシック) リソース
-Stream Analytics のジョブを正常に処理するには、Request/Response のエンドポイント、 [apikey](https://docs.microsoft.com/azure/machine-learning/studio/consume-web-services)および Swagger 定義のすべてが必要になります。 Stream Analytics には、Swagger エンドポイントの URL を作成し、インターフェイスを検索し、既定の UDF の定義をユーザーに返す追加エンドポイントがあります。
+Stream Analytics のジョブを正常に処理するには、Request/Response のエンドポイント、 [apikey](../machine-learning/classic/consume-web-services.md)および Swagger 定義のすべてが必要になります。 Stream Analytics には、Swagger エンドポイントの URL を作成し、インターフェイスを検索し、既定の UDF の定義をユーザーに返す追加エンドポイントがあります。
 
 ## <a name="configure-a-stream-analytics-and-studio-classic-udf-via-rest-api"></a>REST API を使用した Stream Analytics および Studio (クラシック) UDF の構成
 REST API を使用すると、ジョブを構成して Studio (クラシック) 関数を呼び出すことができます。 手順は次のとおりです。
@@ -41,7 +41,7 @@ REST API を使用すると、ジョブを構成して Studio (クラシック) 
 6. ジョブの開始
 
 ## <a name="creating-a-udf-with-basic-properties"></a>基本的なプロパティを持つ UDF の作成
-次に、Azure Machine Learning Studio (クラシック) のエンドポイントにバインドされる *newudf* という名前のスカラー UDF を作成するサンプル コードの例に示します。 *エンドポイント* (サービス URI) は、選択したサービスの API のヘルプ ページにあり、*apiKey* はサービスのメイン ページにあります。
+次に、Azure Machine Learning Studio (クラシック) のエンドポイントにバインドされる *newudf* という名前のスカラー UDF を作成するサンプル コードの例に示します。 *エンドポイント* (サービス URI) は、選択したサービスの API のヘルプ ページにあり、 *apiKey* はサービスのメイン ページにあります。
 
 ```
     PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
@@ -188,11 +188,11 @@ PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers
 
 
 ## <a name="get-help"></a>ヘルプの参照
-詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください
+詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](/answers/topics/azure-stream-analytics.html)を参照してください
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](/rest/api/streamanalytics/)

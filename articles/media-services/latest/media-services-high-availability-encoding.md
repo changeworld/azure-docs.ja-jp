@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 0b6233552501fbe1578f3abe4e203d725ecddb4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2493a3a1e4fbb49c0b7f6dad29771b6e9faae8e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707797"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146809"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Media Services とビデオ オン デマンド(VOD) を使用した高可用性
 
@@ -26,7 +26,7 @@ ms.locfileid: "91707797"
 
 ## <a name="high-availability-for-vod"></a>VOD のための高可用性
 
-Azure アーキテクチャ ドキュメントには [Geodes](/azure/architecture/patterns/geodes) という高可用性設計パターンがあります。 これには、スケーラビリティと回復性を提供するために、重複するリソースが異なる地理的リージョンにデプロイされる方法が記載されています。  Azure サービスを使用して、冗長性、正常性の監視、負荷分散、データのバックアップと回復など、高可用性設計のさまざまな考慮事項に対応するアーキテクチャを作成できます。  このようなアーキテクチャの 1 つを以下に示します。ここでは、ソリューションで使用される各サービスの詳細と、個々のサービスを使用して VOD アプリケーション用の高可用性アーキテクチャを作成する方法が記載されています。
+Azure アーキテクチャ ドキュメントには [Geodes](https://docs.microsoft.com/azure/architecture/patterns/geodes) という高可用性設計パターンがあります。 これには、スケーラビリティと回復性を提供するために、重複するリソースが異なる地理的リージョンにデプロイされる方法が記載されています。  Azure サービスを使用して、冗長性、正常性の監視、負荷分散、データのバックアップと回復など、高可用性設計のさまざまな考慮事項に対応するアーキテクチャを作成できます。  このようなアーキテクチャの 1 つを以下に示します。ここでは、ソリューションで使用される各サービスの詳細と、個々のサービスを使用して VOD アプリケーション用の高可用性アーキテクチャを作成する方法が記載されています。
 
 ### <a name="sample"></a>サンプル
 
@@ -87,4 +87,4 @@ Media Services とビデオ オン デマンド (VOD) を使用した高可用�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [コード サンプル](/samples/browse/?products=azure-media-services)を確認する
+* [コード サンプル](https://docs.microsoft.com/samples/browse/?products=azure-media-services)を確認する

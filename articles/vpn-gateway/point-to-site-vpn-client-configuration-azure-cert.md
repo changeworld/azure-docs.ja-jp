@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 10/28/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3a7a9711f04a4b54459d57a05ae65b4eedf1d6b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 517b006b013bddbe4e7e7a3d44be74dfa36cc154
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986639"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042594"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>ネイティブ Azure 証明書認証の P2S 構成のための VPN クライアント構成ファイルを作成およびインストールする
 
@@ -34,8 +34,8 @@ VPN クライアント構成ファイルは、ZIP ファイルに含まれてい
 
 PowerShell または Azure Portal を使用してクライアント構成ファイルを生成することができます。 どちらの方法でも、同じ zip ファイルが返されます。 そのファイルを解凍して、次のフォルダーを表示します。
 
-  * **WindowsAmd64** および **WindowsX86**。Windows の 32 ビットと 64 ビットのインストーラー パッケージがそれぞれに含まれています。 **WindowsAmd64** インストーラー パッケージは、Amd だけでなく、サポートされている 64 ビットの Windows クライアントを対象としています。
-  * **Generic**。これには、独自の VPN クライアント構成の作成に使用される全般的な情報が含まれています。 Generic フォルダーが提供されるのは、IKEv2 または SSTP+IKEv2 がゲートウェイ上で構成された場合です。 構成されているのが SSTP のみの場合、Generic フォルダーは存在しません。
+  * **WindowsAmd64** および **WindowsX86** 。Windows の 32 ビットと 64 ビットのインストーラー パッケージがそれぞれに含まれています。 **WindowsAmd64** インストーラー パッケージは、Amd だけでなく、サポートされている 64 ビットの Windows クライアントを対象としています。
+  * **Generic** 。これには、独自の VPN クライアント構成の作成に使用される全般的な情報が含まれています。 Generic フォルダーが提供されるのは、IKEv2 または SSTP+IKEv2 がゲートウェイ上で構成された場合です。 構成されているのが SSTP のみの場合、Generic フォルダーは存在しません。
 
 ### <a name="generate-files-using-the-azure-portal"></a><a name="zipportal"></a>Azure Portal を使用してルールを生成する
 
@@ -60,26 +60,14 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 
 ## <a name="windows"></a><a name="installwin"></a>Windows
 
-バージョンがクライアントのアーキテクチャと一致する限り、各 Windows クライアント コンピューターで同じ VPN クライアント構成パッケージを使用できます。 サポートされているクライアント オペレーティング システムの一覧については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md#P2S)」のポイント対サイトに関するセクションを参照してください。
-
->[!NOTE]
->接続元の Windows クライアント コンピューターの管理者権限が必要です。
->
->
-
-証明書認証用にネイティブ Windows VPN クライアントを構成するには、次の手順を実行してください。
-
-1. Windows コンピューターのアーキテクチャに対応する VPN クライアント構成ファイルを選択します。 64 ビットのプロセッサ アーキテクチャの場合は、"VpnClientSetupAmd64" インストーラー パッケージを選択します。 32 ビットのプロセッサ アーキテクチャの場合は、"VpnClientSetupX86" インストーラー パッケージを選択します。 
-2. パッケージをダブルクリックしてインストールします。 SmartScreen ポップアップが表示された場合は、 **[詳細]** 、 **[実行]** の順にクリックしてください。
-3. クライアント コンピューターで **[ネットワークの設定]** に移動し、 **[VPN]** をクリックします。 VPN 接続により、その接続先の仮想ネットワークの名前が表示されます。 
-4. 接続を試行する前に、クライアント コンピューターにクライアント証明書をインストール済みであることを確認します。 ネイティブ Azure 証明書の認証タイプを使用する場合、認証にはクライアント証明書が必要です。 証明書の生成の詳細については、「[証明書の生成](vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert)」をご覧ください。 クライアント証明書のインストール方法については、[クライアント証明書のインストール](point-to-site-how-to-vpn-client-install-azure-cert.md)に関するページをご覧ください。
+[!INCLUDE [Windows instructions](../../includes/vpn-gateway-p2s-client-configuration-windows.md)]
 
 ## <a name="mac-os-x"></a><a name="installmac"></a>Mac (OS X)
 
  Azure に接続するすべての Mac で、ネイティブの IKEv2 VPN クライアントを手動で構成する必要があります。 Azure では、ネイティブの Azure 証明書の認証用の mobileconfig ファイルは提供されません。 **Generic** には、構成に必要な情報がすべて揃っています。 ダウンロードに、Generic フォルダーが表示されない場合は、IKEv2 がトンネルの種類として選択されていない可能性があります。 VPN Gateway Basic SKU は IKEv2 をサポートしていないことに注意してください。 IKEv2 を選択したら、もう一度 zip ファイルを生成して、Generic フォルダーを取得します。<br>Generic フォルダーには、次のファイルが含まれています。
 
-* **VpnSettings.xml**。サーバー アドレスやトンネルの種類など、重要な設定が含まれています。 
-* **VpnServerRoot.cer**。P2S 接続の設定中に Azure VPN ゲートウェイを検証するために必要なルート証明書が含まれています。
+* **VpnSettings.xml** 。サーバー アドレスやトンネルの種類など、重要な設定が含まれています。 
+* **VpnServerRoot.cer** 。P2S 接続の設定中に Azure VPN ゲートウェイを検証するために必要なルート証明書が含まれています。
 
 証明書認証用に Mac 上でネイティブ VPN クライアントを構成するには、次の手順を実行してください。 Azure に接続するすべての Mac でこれらの手順を完了する必要があります。
 
@@ -97,14 +85,14 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
    **[インターフェイス]** の値は "VPN"、 **[VPN タイプ]** の値は "IKEv2" です。 **[サービス名]** フィールドにプロファイルの名前を指定し、 **[作成]** をクリックして VPN クライアント接続プロファイルを作成します。
 
    ![スクリーンショットには [ネットワーク] ウィンドウが表示され、インターフェイス、VPN の種類の選択、サービス名の入力オプションが表示されています。](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
-4. **Generic** フォルダーの **VpnSettings.xml** ファイルから、**VpnServer** タグの値をコピーします。 この値をプロファイルの **[サーバー アドレス]** フィールドと **[リモート ID]** フィールドに貼り付けます。
+4. **Generic** フォルダーの **VpnSettings.xml** ファイルから、 **VpnServer** タグの値をコピーします。 この値をプロファイルの **[サーバー アドレス]** フィールドと **[リモート ID]** フィールドに貼り付けます。
 
    ![サーバー情報](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
-5. **[認証設定]** をクリックし、 **[証明書]** を選択します。 **Catalina** の場合は、 **[None]\(なし\)** をクリックし、 **[certificate]\(証明書\)** をクリックします。
+5. **[認証設定]** をクリックし、 **[証明書]** を選択します。   **Catalina** の場合は、 **[None]\(なし\)** をクリックし、 **[certificate]\(証明書\)** をクリックします。
 
    ![認証設定](./media/point-to-site-vpn-client-configuration-azure-cert/authsettings.png)
 
-   * Catalina の場合は、 **[None]\(なし\)** を選択し、 **[Certificate]\(証明書\)** を選択します。 正しい証明書を**選択**してください。
+   * Catalina の場合は、 **[None]\(なし\)** を選択し、 **[Certificate]\(証明書\)** を選択します。 正しい証明書を **選択** してください。
    
    ![スクリーンショットには [ネットワーク] ウィンドウが表示され、[認証設定] に [なし] が選択され、[証明書] が選択されています。](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
 
@@ -152,7 +140,7 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 5. ダウンロード クライアント構成ファイルに含まれる **Generic** フォルダーから **VpnSettings.xml** ファイルを開きます。 **VpnServer** というタグを検索して、"azuregateway" で始まり ".cloudapp.net" で終わる名前をコピーします。
 
    ![名前をコピーする](./media/point-to-site-vpn-client-configuration-azure-cert/vpnserver.png)
-6. この名前を、 **[ゲートウェイ]** セクションの、新しい VPN 接続の **[アドレス]** フィールドに貼り付けます。 次に、 **[証明書]** フィールドの最後のフォルダー アイコンを選択して、**Generic** フォルダーに移動し、**VpnServerRoot** ファイルを選択します。
+6. この名前を、 **[ゲートウェイ]** セクションの、新しい VPN 接続の **[アドレス]** フィールドに貼り付けます。 次に、 **[証明書]** フィールドの最後のフォルダー アイコンを選択して、 **Generic** フォルダーに移動し、 **VpnServerRoot** ファイルを選択します。
 7. 接続の **[クライアント]** セクションの **[認証]** で、 **[Certificate/private key]\(証明書/秘密キー\)** を選びます。 **[証明書]** と **[秘密キー]** で、前に作成した証明書および秘密キーを選びます。 **[オプション]** で、 **[Request an inner IP address]\(内部 IP アドレスを要求する\)** をオンにします。 **[追加]** をクリックします。
 
    ![内部 IP アドレスを要求する](./media/point-to-site-vpn-client-configuration-azure-cert/turnon.png)

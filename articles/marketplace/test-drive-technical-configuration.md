@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 1772a61f45d88e0b63346c41d557cfddf35ab4a7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bf253c4e3b273bc1500e5abbd4dfc045a7909ffd
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892623"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125684"
 ---
 # <a name="test-drive-technical-configuration"></a>体験版の技術的な構成
 
@@ -50,7 +50,7 @@ Microsoft は、サービスのプロビジョニングとプロビジョニン�
 
 - **体験版の期間** (必須) – 体験版がアクティブな状態であり続ける期間の長さを時間数で入力します。 この期間が終わると、体験版は自動的に終了します。
 
-- **Azure リソース グループ名** (必須) – ロジック アプリの体験版が保存される [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md#resource-groups)名を入力します。
+- **Azure リソース グループ名** (必須) – ロジック アプリの体験版が保存される [Azure リソース グループ](../azure-resource-manager/management/overview.md#resource-groups)名を入力します。
 
 - **Azure logic app name (Azure ロジック アプリ名)** (必須) – 体験版をユーザーに割り当てるロジック アプリの名前を入力します。 このロジック アプリは、上記の Azure リソース グループに保存される必要があります。
 
@@ -60,7 +60,7 @@ Microsoft は、サービスのプロビジョニングとプロビジョニン�
 
 インタラクティブな Power BI の視覚化を示したい製品では、埋め込みリンクを使用して、カスタムビルドされたダッシュボードを体験版として共有できます。それ以上の技術的な構成は不要です。 ここで必要なことは、埋め込み Power BI の URL をアップロードすることだけです。
 
-Power BI アプリの設定の詳細については、[Power BI アプリとは](https://docs.microsoft.com/power-bi/service-template-apps-overview)に関するページを参照してください。
+Power BI アプリの設定の詳細については、[Power BI アプリとは](/power-bi/service-template-apps-overview)に関するページを参照してください。
 
 ## <a name="deployment-subscription-details"></a>デプロイ サブスクリプションの詳細
 

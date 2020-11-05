@@ -7,23 +7,23 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/03/2020
-ms.openlocfilehash: 07cbb28b98fcbac1932424c1c72f388813ec2400
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e5bcdaeaf1ec99387a708199f4353736b6bc60f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86037564"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129849"
 ---
 # <a name="autoscale-stream-analytics-jobs-using-azure-automation"></a>Azure Automation を使用した Stream Analytics ジョブの自動スケーリング
 
 自動スケーリングを構成すると、Stream Analytics ジョブのコストを最適化することができます。 自動スケーリングを使用すると、入力負荷の変化に合わせて、ジョブのストリーミング ユニット数 (SU) が増減します。 ジョブを過剰にプロビジョニングする代わりに、スケールアップおよびダウンを必要に応じて行うことができます。 自動スケーリングするようにジョブを構成する方法には、次の 2 つがあります。
-1. **スケジュールを事前定義する**: 予測可能な入力負荷がある場合に使用します。 たとえば、日中に入力イベントの割合が高いことが予想され、より多くの SU を使用してジョブを実行したい場合に使用できます。
-2. **ジョブ メトリックに基づいてスケールアップおよびスケールダウン操作をトリガーする**: 予測可能な入力負荷がない場合に使用します。 入力イベントやバックログされた入力イベントの数などのジョブ メトリックに基づいて、SU の数を動的に変更できます。
+1. **スケジュールを事前定義する** : 予測可能な入力負荷がある場合に使用します。 たとえば、日中に入力イベントの割合が高いことが予想され、より多くの SU を使用してジョブを実行したい場合に使用できます。
+2. **ジョブ メトリックに基づいてスケールアップおよびスケールダウン操作をトリガーする** : 予測可能な入力負荷がない場合に使用します。 入力イベントやバックログされた入力イベントの数などのジョブ メトリックに基づいて、SU の数を動的に変更できます。
 
 ## <a name="prerequisites"></a>前提条件
 ジョブの自動スケーリングの構成を開始する前に、次の手順を実行します。
-1. [並列トポロジ](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)になるよう、ジョブを最適化する。 ジョブの実行中にジョブのスケールを変更できる場合、ジョブは並列トポロジであり、自動スケーリングできるように構成できます。
-2. "RunAsAccount" オプションを有効にして [Azure Automation アカウントを作成する](https://docs.microsoft.com/azure/automation/automation-create-standalone-account)。 このアカウントには、Stream Analytics ジョブを管理するためのアクセス許可が必要です。
+1. [並列トポロジ](./stream-analytics-parallelization.md)になるよう、ジョブを最適化する。 ジョブの実行中にジョブのスケールを変更できる場合、ジョブは並列トポロジであり、自動スケーリングできるように構成できます。
+2. "RunAsAccount" オプションを有効にして [Azure Automation アカウントを作成する](../automation/automation-create-standalone-account.md)。 このアカウントには、Stream Analytics ジョブを管理するためのアクセス許可が必要です。
 
 ## <a name="set-up-azure-automation"></a>Azure Automation の設定
 ### <a name="configure-variables"></a>変数の構成
@@ -66,14 +66,14 @@ Azure Automation では、Runbook をトリガーするスケジュールを構�
 
 ## <a name="autoscale-based-on-load"></a>負荷に基づく自動スケーリング
 入力負荷を予測できない場合もあります。 そのような場合、最小値と最大値の範囲内で段階的にスケールアップまたはダウンする方がより適しています。 Stream Analytics ジョブのアラート ルールで、ジョブ メトリックがしきい値を上回った場合や下回った場合に Runbook をトリガーするように構成できます。
-1. Azure Automation アカウントで、**minSU** と **maxSU** という名前の 2 つの整数変数を作成します。 これにより、ジョブが段階的にスケーリングする境界が設定されます。
+1. Azure Automation アカウントで、 **minSU** と **maxSU** という名前の 2 つの整数変数を作成します。 これにより、ジョブが段階的にスケーリングする境界が設定されます。
 2. 新しい Runbook を 2 つ作成します。 ジョブの SU を **maxSU** 値まで段階的に増加させる [StepScaleUp PowerShell スクリプト](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/StepScaleUp.ps1)を使用できます。 また、ジョブの SU を **minSU** 値に達するまで段階的に減少させる [StepScaleDown PowerShell スクリプト](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/StepScaleDown.ps1)も使用できます。 または、SU 値をどの値にスケーリングしたいかが具体的に決まっているなら、前のセクションの Runbook を使用することもできます。
 3. Stream Analytics ジョブで、 **[監視]** の下にある **[アラート ルール]** を選択します。 
 4. 2 つのアクション グループを作成します。 1 つはスケールアップ操作用で、もう 1 つはスケールダウン操作用です。 **[アクションの管理]** を選択し、 **[アクション グループの追加]** をクリックします。 
 5. 必須フィールドに入力します。 **[アクションの種類]** は、 **[Automation Runbook]** を選択します。 アラートが発生したときにトリガーする Runbook を選択します。 次に、アクション グループを作成します。
 
    ![アクション グループの作成](./media/autoscale/create-actiongroup.png)
-6. ジョブで、[ **[新しいアラート ルール]** ](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#set-up-alerts-in-the-azure-portal) を作成します。 選択したメトリックに基づいて条件を指定します。 自動スケールリング ロジックの定義で使用をお勧めするメトリックは、[ *[入力イベント]* 、 *[SU % 使用率]* 、または *[バックログされた入力イベント]* ](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-monitoring#metrics-available-for-stream-analytics) です。 また、スケールアップ操作をトリガーする場合は、 *[集約粒度]* と *[評価の頻度]* を 1 分間に指定して使用することをお勧めします。 そうすることにより、ジョブで入力ボリュームの急増に対処するために必要となる十分なリソースを確保できます。
+6. ジョブで、 [ **[新しいアラート ルール]**](./stream-analytics-set-up-alerts.md#set-up-alerts-in-the-azure-portal) を作成します。 選択したメトリックに基づいて条件を指定します。 自動スケールリング ロジックの定義で使用をお勧めするメトリックは、 [ *[入力イベント]* 、 *[SU % 使用率]* 、または *[バックログされた入力イベント]*](./stream-analytics-monitoring.md#metrics-available-for-stream-analytics) です。 また、スケールアップ操作をトリガーする場合は、 *[集約粒度]* と *[評価の頻度]* を 1 分間に指定して使用することをお勧めします。 そうすることにより、ジョブで入力ボリュームの急増に対処するために必要となる十分なリソースを確保できます。
 7. 最後の手順で作成したアクション グループを選択し、アラートを作成します。
 8. ジョブ メトリックの条件に基づいてトリガーする追加のスケーリング操作ごとに、手順 2 から 4 を繰り返します。
 

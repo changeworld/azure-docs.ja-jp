@@ -7,14 +7,15 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
 ms.custom: contperfq1
-ms.openlocfilehash: f8bcadf25ac8e001657f2be012f99ddb507e672d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb6d1cb684f4c2e3f563d5690c804d64c97ff70c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445179"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096735"
 ---
 # <a name="command-line-and-powershell-reference-for-azure-cosmos-db-emulator"></a>Azure Cosmos DB エミュレーターのコマンドラインと PowerShell リファレンス
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos Emulator は、ローカル開発目的で Azure Cosmos DB サービスをエミュレートするローカル環境を提供するものです。 [エミュレーターのインストール](local-emulator.md)後、コマンド ラインと PowerShell コマンドでエミュレーターを制御できます。 この記事では、コマンドラインと PowerShell コマンドを使用してエミュレーターを起動、停止し、オプションを構成し、その他の操作を実行する方法について説明します。 インストール場所からコマンドを実行する必要があります。
 

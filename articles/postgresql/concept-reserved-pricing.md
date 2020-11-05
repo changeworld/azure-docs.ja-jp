@@ -1,17 +1,17 @@
 ---
 title: 予約済みコンピューティングの価格 - Azure Database for PostgreSQL - Single Server
 description: 予約容量を使用して Azure Database for PostgreSQL 計算リソースを前払いする
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: ca2e988067add1513036e2f314e84a7ba6908cdd
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: dcc6cc40c936876c856326e330b67ef465f90cde
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488063"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240445"
 ---
 # <a name="prepay-for-azure-database-for-postgresql---single-server-compute-resources-with-reserved-capacity"></a>Azure Database for PostgreSQL の前払い - 予約容量を持つ Single Server 計算リソース
 

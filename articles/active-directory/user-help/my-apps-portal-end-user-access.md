@@ -12,12 +12,12 @@ ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: e54f153738d232eaddff8b0fc499a763581ca726
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 61dd185d00cef2382763e7435c081e1d412cdb92
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277420"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127878"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>マイ アプリ ポータルからアプリにサインインして開始する
 
@@ -151,7 +151,7 @@ ms.locfileid: "92277420"
 
 **アプリ** ページに到達した後、次の操作を実行できます。
 
-- [プロファイルの情報を変更する](my-apps-portal-end-user-update-profile.md)
+- [プロファイルの情報を変更する](./my-account-portal-settings.md)
 
 - [グループ関連の情報を表示し、更新する](my-apps-portal-end-user-groups.md)
 

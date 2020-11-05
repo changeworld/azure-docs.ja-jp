@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: c40f1762ea7c87ea73ec20e47b0398e0d3e364b4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 69c8f9f01241100a81ddd1707dbd226e6bf56c2f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677128"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089017"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM 製品/サービスを IT Service Management Connector に追加する
 この記事では、ITSM 製品/サービスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。 ITSMC の詳細については、[概要](./itsmc-overview.md)に関する記事をご覧ください。
@@ -36,7 +36,7 @@ ms.locfileid: "92677128"
 
 次の前提条件が満たされていることを確認してください。
 
-- ITSMC がインストールされている。 詳細情報: [IT Service Management Connector ソリューションの追加](./itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- ITSMC がインストールされている。 詳細情報: [IT Service Management Connector ソリューションの追加](./itsmc-overview.md#add-it-service-management-connector)。
 - Service Manager Web アプリケーション (Web アプリ) がデプロイされ構成されている。 Web アプリに関する情報については、[こちら](#create-and-deploy-service-manager-web-app-service)をご覧ください。
 - ハイブリッド接続が作成および構成されている。 詳細情報: [ハイブリッド接続の構成](#configure-the-hybrid-connection)。
 - サポートされている Service Manager のバージョン: 2012 R2 または 2016。
@@ -184,7 +184,7 @@ Service Manager インスタンスを Azure の ITSMC に接続するハイブ�
 
 ### <a name="prerequisites"></a>前提条件
 次の前提条件が満たされていることを確認してください。
-- ITSMC がインストールされている。 詳細情報: [IT Service Management Connector ソリューションの追加](./itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- ITSMC がインストールされている。 詳細情報: [IT Service Management Connector ソリューションの追加](./itsmc-overview.md#add-it-service-management-connector)。
 - ServiceNow でサポートされているバージョン: Orlando、New York、Madrid、London、Kingston、Jakarta、Istanbul、Helsinki、Geneva。
 > [!NOTE]
 > ITSMC では、ServiceNow からの公式の SaaS サービスのみがサポートされています。 ServiceNow のプライベート デプロイはサポートされていません。 
@@ -316,7 +316,7 @@ ServiceNow 接続を作成するには、次の手順に従います。
 次の前提条件が満たされていることを確認してください。
 
 
-- ITSMC がインストールされている。 詳細情報: [IT Service Management Connector ソリューションの追加](./itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- ITSMC がインストールされている。 詳細情報: [IT Service Management Connector ソリューションの追加](./itsmc-overview.md#add-it-service-management-connector)。
 - Provance アプリが Azure AD で登録されており、クライアント ID が使用可能である。 詳細については、[Active Directory 認証の構成方法](../../app-service/configure-authentication-provider-aad.md)に関する記事をご覧ください。
 
 - ユーザー ロール: 管理者。
@@ -373,7 +373,7 @@ Provance 接続を作成するには、次の手順に従います。
 
 次の前提条件が満たされていることを確認してください。
 
-- ITSMC がインストールされている。 詳細情報: [IT Service Management Connector ソリューションの追加](./itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- ITSMC がインストールされている。 詳細情報: [IT Service Management Connector ソリューションの追加](./itsmc-overview.md#add-it-service-management-connector)。
 - クライアント ID が生成されている。 詳細情報: [Cherwell のクライアント ID を生成する](#generate-client-id-for-cherwell)。
 - ユーザー ロール: 管理者。
 

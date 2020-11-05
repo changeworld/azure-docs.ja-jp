@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d18cf248aa94e23abfa6e2b9467bb1167a32a6f1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2bbdbc7a0ed71634522bd68dbf0807264a409525
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490528"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101733"
 ---
 # <a name="configure-access-to-azure-cosmos-db-from-virtual-networks-vnet"></a>仮想ネットワーク (VNet) からの Azure Cosmos DB へのアクセスを構成する
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos アカウントは、仮想ネットワーク (VNet) の特定のサブネットからのアクセスのみを許可するように構成することができます。 [サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)が仮想ネットワーク内のサブネット上の Azure Cosmos DB にアクセスできるようにすることで、そのサブネットからのトラフィックは、サブネットと仮想ネットワークの ID を使用して Azure Cosmos DB に送信されます。 Azure Cosmos DB サービス エンドポイントが有効になると、Azure Cosmos アカウントにサブネットを追加することで、サブネットへのアクセスを制限できます。
 
@@ -49,7 +50,7 @@ Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワーク�
 
 1. 仮想ネットワークから Azure Cosmos DB アカウントへのアクセスを有効にすると、この選択したサブネットからのトラフィックのみが許可されます。 追加した仮想ネットワークとサブネットは、次のスクリーン ショットのように表示されます。
 
-   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png" alt-text="仮想ネットワークとサブネットを選択する":::
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png" alt-text="正常に構成された仮想ネットワークとサブネット":::
 
 > [!NOTE]
 > 仮想ネットワーク サービス エンドポイントを有効にするには、次のサブスクリプションのアクセス許可が必要です。
@@ -69,7 +70,7 @@ Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワーク�
 
 1. 新しい仮想ネットワークを作成するために必要な詳細を指定し、 **[作成]** を選択します。 "Microsoft.AzureCosmosDB" 用のサービス エンドポイントが有効になっているサブネットが作成されます。
 
-   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png" alt-text="仮想ネットワークとサブネットを選択する":::
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png" alt-text="仮想ネットワークと新しい仮想ネットワークのサブネットを選択する":::
 
 ご使用の Azure Cosmos DB アカウントを Azure Cognitive Search などのその他の Azure サービスで使用していたり、それが Stream Analytics または Power BI からアクセスされる場合は、 **[Accept connections from within global Azure datacenters]** \(グローバル Azure データセンター内からの接続を受け入れる\) をオンにしてアクセスを許可します。
 
@@ -83,7 +84,7 @@ Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワーク�
 
 1. 仮想ネットワークまたはサブネットの横にある **[...]** を選択し、 **[削除]** を選択し、仮想ネットワークまたはサブネットのルールを削除します。
 
-   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png" alt-text="仮想ネットワークとサブネットを選択する":::
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png" alt-text="仮想ネットワークを削除する":::
 
 1. **[保存]** を選択して変更を保存します。
 

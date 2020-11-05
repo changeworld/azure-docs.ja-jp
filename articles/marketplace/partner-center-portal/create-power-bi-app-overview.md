@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: 2f34723bec6dc2212f8897eca849e6535d737fc8
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: af77f18771d8e18ee86b79360ac03307d3330cb0
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397421"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131430"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI アプリの作成の概要
 
@@ -33,22 +33,22 @@ ms.locfileid: "91397421"
 
 これらは主な公開手順です。
 
-1. Power BI でアプリケーションを作成します。 パッケージのインストール リンクを受け取ります。これは、オファーの主な技術資産です。 パートナー センターでオファーを作成する前に、テスト パッケージを運用前環境に送信します。 詳細については、[Power BI アプリ](https://docs.microsoft.com/power-bi/service-template-apps-overview)に関するページを参照してください。
+1. Power BI でアプリケーションを作成します。 パッケージのインストール リンクを受け取ります。これは、オファーの主な技術資産です。 パートナー センターでオファーを作成する前に、テスト パッケージを運用前環境に送信します。 詳細については、[Power BI アプリ](/power-bi/service-template-apps-overview)に関するページを参照してください。
 2. 公式名、説明、ロゴなどのマーケティング資料を追加します。
 3. 使用条件、プライバシー ポリシー、サポート ポリシー、ユーザー ヘルプなど、オファーの法的およびサポート ドキュメントを含めます。
 4. オファーを作成する - パートナー センターを使用して、オファーの説明、マーケティング資料、法的情報、サポート情報、資産の仕様などの詳細を編集します。
 5. それを公開するために送信します。
 6. AppSource オンボーディング チームによって、アプリのテスト、検証、および認定が行われる、パートナー センターでプロセスを監視します。
 7. 認定された後、アプリをそのテスト環境で確認してからリリースします。 これで、AppSource に一覧表示されます ("一般公開" される)。
-8. Power BI で、パッケージを運用環境に送信します。 詳細については、[Power BI アプリ リリースの管理](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release)に関する記述を参照してください。
+8. Power BI で、パッケージを運用環境に送信します。 詳細については、[Power BI アプリ リリースの管理](/power-bi/service-template-apps-create#manage-the-template-app-release)に関する記述を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 テンプレート、ヒント、およびサンプルを提供する、以下のリンクを確認してください。
 
-- [Power BI アプリを作成する](https://docs.microsoft.com/power-bi/service-template-apps-create)
-- [Power BI アプリの作成に関するヒント](https://docs.microsoft.com/power-bi/service-template-apps-tips)
-- [サンプル](https://docs.microsoft.com/power-bi/service-template-apps-samples)
+- [Power BI アプリを作成する](/power-bi/service-template-apps-create)
+- [Power BI アプリの作成に関するヒント](/power-bi/service-template-apps-tips)
+- [サンプル](/power-bi/service-template-apps-samples)
 
 ## <a name="requirements"></a>必要条件
 
@@ -56,13 +56,13 @@ ms.locfileid: "91397421"
 
 ### <a name="technical-requirements"></a>技術的な要件
 
-必要となる主な技術資産は [Power BI アプリ](https://go.microsoft.com/fwlink/?linkid=2028636)です。 これは、プライマリ データセット、レポート、またはダッシュボードのコレクションです。 オプションの接続済みサービスと埋め込みデータセットも含まれています。これは、以前は[コンテンツ パック](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction)と呼ばれていました。 この種類のアプリの開発について詳しくは、[Power BI アプリ](https://go.microsoft.com/fwlink/?linkid=2028636)に関するページを参照してください。
+必要となる主な技術資産は [Power BI アプリ](/power-bi/connect-data/service-template-apps-overview)です。 これは、プライマリ データセット、レポート、またはダッシュボードのコレクションです。 オプションの接続済みサービスと埋め込みデータセットも含まれています。これは、以前は[コンテンツ パック](/power-bi/service-organizational-content-pack-introduction)と呼ばれていました。 この種類のアプリの開発について詳しくは、[Power BI アプリ](/power-bi/connect-data/service-template-apps-overview)に関するページを参照してください。
 
 #### <a name="get-an-installation-web-address"></a>インストール Web アドレスを取得する
 
 Power BI アプリをビルドできるのは、[Power BI](https://powerbi.microsoft.com/) 環境内のみです。
 
-1. [Power BI Pro ライセンス](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro)でサインインします。
+1. [Power BI Pro ライセンス](/power-bi/service-admin-purchasing-power-bi-pro)でサインインします。
 2. Power BI でアプリを作成してテストします。
 3. アプリのインストール Web アドレスを受け取ったら、パートナー センターの **[技術的な構成]** ページに追加します。
 

@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: 24adbfe38a3d43a83307fb8726849f7c73def3f3
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ecbafe0d3f39b1bd6f7c494695ea17e067f0c79e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283379"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129280"
 ---
 ## <a name="generalize-the-image"></a>イメージを汎用化する
 
@@ -20,7 +20,7 @@ Azure Marketplace のすべてのイメージは汎用的な方法で再利用�
 
 ### <a name="for-windows"></a>Windows の場合
 
-Windows OS ディスクは、[sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview) ツールを使用して一般化されます。 後で OS を更新または再構成する場合は、sysprep を再び実行する必要があります。
+Windows OS ディスクは、[sysprep](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview) ツールを使用して一般化されます。 後で OS を更新または再構成する場合は、sysprep を再び実行する必要があります。
 
 > [!WARNING]
 > 更新プログラムが自動的に実行される可能性があるため、sysprep を実行した後、デプロイされるまでは VM をオフにしてください。 このシャットダウンで、以降の更新プログラムによるオペレーティング システムまたはインストール済みサービスへのインスタンス固有の変更が行われなくなります。 sysprep の実行に関する詳細については、[VHD を一般化する手順](../../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)に関する記事を参照してください。

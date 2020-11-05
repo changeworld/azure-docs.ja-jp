@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 08/25/2020
-ms.openlocfilehash: 2dca0ae02f2d079e98b51e1222114db1f2104b96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 925bc79d54def3f2aec4657196b8cea53704396f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030799"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130648"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure Table ストレージを使用して商用マーケットプレースのリードを管理する
 
@@ -26,7 +26,7 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 
     1. 左側のメニュー バーにある **[+ リソースの作成]** を選択します。 **[新規]** ウィンドウが右側に表示されます。
     1. **[新規]** ウィンドウで **[ストレージ]** を選択します。 **[おすすめ]** の一覧が右側に表示されます。
-    1. **[ストレージ アカウント]** を選択して、アカウントの作成を開始します。 [ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)に関するページの手順に従います。
+    1. **[ストレージ アカウント]** を選択して、アカウントの作成を開始します。 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md?tabs=azure-portal)に関するページの手順に従います。
 
         :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png" alt-text="Azure ストレージ アカウントを作成する手順。":::
 
@@ -38,7 +38,7 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 
 1. Azure portal の **[ホーム]** ページから **[すべてのリソースを表示する]** を選択して、お使いのストレージ アカウントにアクセスします。 Azure portal の左側のメニュー バーから **[すべてのリソース]** を選択することもできます。
 
-    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="Azure ストレージ アカウントを作成する手順。":::
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="Azure ストレージ アカウントにアクセスする。":::
 
 1. ストレージ アカウントのウィンドウで、 **[アクセス キー ]** を選択し、キーの **[接続文字列]** 値をコピーします。 この値を保存します。これは、Azure Marketplace オファーのリードを受信するために発行ポータル内で提供する必要がある **[ストレージ アカウント接続文字列]** の値です。
 
@@ -48,7 +48,7 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
     DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.screens.net
     ```
 
-    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Azure ストレージ アカウントを作成する手順。":::
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Azure ストレージ キー。":::
 
 
 1. ストレージ アカウント ウィンドウで、 **[テーブル]** を選択し、 **[+ テーブル]** を選択してテーブルを作成します。 テーブルの名前を入力し、 **[OK]** を選択します。 この値を保存します。これは、リードを受信したときに電子メール通知を受け取るようにフローを構成する場合に必要になります。
@@ -59,7 +59,7 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 
 ## <a name="optional-use-power-automate-to-get-lead-notifications"></a>(省略可能) Power Automate を使用してリード通知を取得する
 
-[Power Automate](https://docs.microsoft.com/flow/) を使用して、Azure Storage テーブルにリードが追加されるたびに通知を自動的に送信できます。 アカウントを持っていない場合は、[無料アカウントにサインアップ](https://flow.microsoft.com/)できます。
+[Power Automate](/flow/) を使用して、Azure Storage テーブルにリードが追加されるたびに通知を自動的に送信できます。 アカウントを持っていない場合は、[無料アカウントにサインアップ](https://flow.microsoft.com/)できます。
 
 ### <a name="lead-notification-example"></a>潜在顧客の通知の例
 
@@ -108,7 +108,7 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 
    **[作成]** を選択すると、 **[エンティティの取得]** ウィンドウが表示されます。 ここで、 **[詳細オプションの表示]** を選択し、次のボックスに情報を指定します。
 
-   * **テーブル**:お使いのテーブルの名前を選択します ([テーブルの作成](#create-a-table-in-your-storage-account)に関するセクションから)。 次の画像は、この例で `marketplaceleads` テーブルが選択されているときに表示されるプロンプトです。
+   * **テーブル** :お使いのテーブルの名前を選択します ( [テーブルの作成](#create-a-table-in-your-storage-account)に関するセクションから)。 次の画像は、この例で `marketplaceleads` テーブルが選択されているときに表示されるプロンプトです。
 
      ![[エンティティの取得] ウィンドウ](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
@@ -128,14 +128,14 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 
 1. 条件の設定を完了するには、次の手順を実行します。
     1. ドロップダウン リストから **[が次の値より大きい]** を選択します。
-    2. 値として「**0**」を入力します。
+    2. 値として「 **0** 」を入力します。
 
         ![[条件] ウィンドウ](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-condition.png)
 
    次の数個の手順では、条件の結果に基づいて実行するアクションを設定します。
 
    * 条件が **[If no] (いいえの場合)** に解決される場合は、何もしません。
-   * 条件を解決すると**はいの場合**は、メールを送信するために職場または学校のアカウントに接続するアクションをトリガーします。 
+   * 条件を解決すると **はいの場合** は、メールを送信するために職場または学校のアカウントに接続するアクションをトリガーします。 
 
 1. **[はいの場合]** の下で **[アクションの追加]** のリンクを選択します。
 
@@ -151,8 +151,8 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 1. [Office 365 Outlook] ウィンドウで、以下のボックスの情報を指定します。
 
     1. **[宛先]** :この通知を受信するすべてのユーザーの電子メール アドレスを入力します。
-    1. **Subject**:電子メールの件名を入力します。 たとえば、「**新しいリード!** 」と入力します。
-    1. **本文**:各電子メールに含めるテキストを追加し (省略可能)、`body('Get_entities')?['value']` を貼り付けます。
+    1. **Subject** :電子メールの件名を入力します。 たとえば、「 **新しいリード!** 」と入力します。
+    1. **本文** :各電子メールに含めるテキストを追加し (省略可能)、`body('Get_entities')?['value']` を貼り付けます。
 
     >[!NOTE]
     >この電子メールの本文に追加の静的または動的データ ポイントを挿入できます。
@@ -185,7 +185,7 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 
 1. **[潜在顧客]** セクションで、 **[接続]** を選択します。
 
-    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="Azure ストレージ アカウントを作成する手順。":::
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="[潜在顧客]":::
 
 1. **[接続の詳細]** ポップアップ ウィンドウで、 **[リードのターゲット]** として **[Azure テーブル]** を選択します。 
      ![リード管理、接続の詳細](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)
@@ -193,7 +193,7 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 1. 前の手順に従って作成した Azure ストレージ アカウントの接続文字列を **[ストレージ アカウント接続文字列]** ボックスに貼り付けます。
      ![リード管理、接続の詳細のストレージ アカウント](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-connection-details.png)
 
-1. **連絡先の電子メール**: 新しいリードを受信したときに、メール通知を受け取る必要がある社内のユーザーにメールを送信します。 セミコロンで区切って複数の電子メールを指定できます。
+1. **連絡先の電子メール** : 新しいリードを受信したときに、メール通知を受け取る必要がある社内のユーザーにメールを送信します。 セミコロンで区切って複数の電子メールを指定できます。
 
 1. **[OK]** を選択します。
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: e0dcd5db36e41093bf1cd75779770b04df2fc26a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99c60cf541b3997f2aeca2ccef5a5af6b9c88e08
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710653"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131498"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI アプリ オファーを作成する
 
@@ -39,7 +39,7 @@ ms.locfileid: "91710653"
 **[オファー ID]** を入力します。 これは、ご自分のアカウント内の各オファーに対する一意の識別子です。
 
 - この ID は、マーケットプレース オファーの Web アドレスと Azure Resource Manager テンプレート (該当する場合) で顧客に表示されます。
-- 使用できるのは小文字と数字だけです。 ハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。 たとえば、ここに「**test-offer-1**」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
+- 使用できるのは小文字と数字だけです。 ハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。 たとえば、ここに「 **test-offer-1** 」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
 - **[作成]** を選択した後で、オファー ID を変更することはできません。
 
 **[オファーのエイリアス]** を入力します。 これは、パートナー センター内でオファーに使用される名前です。
@@ -55,10 +55,10 @@ ms.locfileid: "91710653"
 
 これには、選択した内容に基づき、このオファーで操作を実行するためのリンクが含まれています。 次に例を示します。
 
-- オファーがドラフトの場合 - [ドラフトのオファーを削除する](update-existing-offer.md#delete-a-draft-offer)
+- オファーがドラフトの場合 - ドラフトのオファーを削除する
 - オファーが発行中の場合 - [オファーの販売を停止する](update-existing-offer.md#stop-selling-an-offer-or-plan)
-- オファーがプレビューの場合 - [公開する](publishing-status.md#publisher-approval)
-- 発行を完了していない場合 - [発行を取り消す](update-existing-offer.md#cancel-publishing)
+- オファーがプレビューの場合 - [公開する](../review-publish-offer.md#previewing-and-approving-your-offer)
+- 公開元のサインアウトを完了していない場合 - [発行をキャンセルする](../review-publish-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>オファーのセットアップ
 
@@ -186,13 +186,13 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 
 ### <a name="contact-information"></a>連絡先情報
 
-**サポートの連絡先**と**エンジニアリングの連絡先**の名前、メール、電話番号を入力する必要があります。 この情報は顧客には表示されません。 これは Microsoft で利用することができ、クラウド ソリューション プロバイダー (CSP) パートナーに提供される場合があります。
+**サポートの連絡先** と **エンジニアリングの連絡先** の名前、メール、電話番号を入力する必要があります。 この情報は顧客には表示されません。 これは Microsoft で利用することができ、クラウド ソリューション プロバイダー (CSP) パートナーに提供される場合があります。
 
 - サポートの連絡先 (必須):サポートに関する一般的な質問用です。
 - エンジニアリングの連絡先 (必須):技術的な質問と認定に関する問題用です。
 - CSP プログラムの連絡先 (省略可能):リセラーからの CSP プログラムに関する質問用です。
 
-**[サポートの連絡先]** セクションに、パートナーがオファーのサポートを確認できる**サポート Web サイト**の Web アドレスを指定します。
+**[サポートの連絡先]** セクションに、パートナーがオファーのサポートを確認できる **サポート Web サイト** の Web アドレスを指定します。
 
 ### <a name="supporting-documents"></a>サポート ドキュメント
 
@@ -209,7 +209,7 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 
 #### <a name="store-logos"></a>ストア ロゴ
 
-**大**サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、**小**サイズのロゴを作成します。 これは、必要に応じて、後で別の画像に置き換えることができます。
+**大** サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、 **小** サイズのロゴを作成します。 これは、必要に応じて、後で別の画像に置き換えることができます。
 
 - **大** (216 x 216 から 350 x 350 px、必須)
 - **小** (48 x 48 px、省略可能)
@@ -234,7 +234,7 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 
 ## <a name="technical-configuration"></a>技術的な構成
 
-Power BI サービスでアプリを運用環境に昇格させ、顧客がアプリをインストールできるようにするための Power BI アプリ インストーラー リンクを提供します。 詳しくは、「[Power BI でダッシュボードとレポートを含むアプリを発行する](https://docs.microsoft.com/power-bi/service-create-distribute-apps)」をご覧ください。
+Power BI サービスでアプリを運用環境に昇格させ、顧客がアプリをインストールできるようにするための Power BI アプリ インストーラー リンクを提供します。 詳しくは、「[Power BI でダッシュボードとレポートを含むアプリを発行する](/power-bi/service-create-distribute-apps)」をご覧ください。
 
 ## <a name="supplemental-content"></a>補足コンテンツ
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: ec2f2f572caa69a9017bfa6da0de404db5b4fd2a
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 49fa0c849a6b2eab0647922a711c50b4fe762584
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905011"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095664"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-powershell"></a>クイックスタート: Azure PowerShell を使用した Azure DDoS Protection Standard の作成と構成
 
@@ -88,8 +88,6 @@ Get-AzDdosProtectionPlan -ResourceGroupName MyResourceGroup -Name MyDdosProtecti
 ```
 
 コマンドで DDoS 保護プランの正しい詳細が返されることを確認します。
-
-シミュレーションを通じたテスト
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

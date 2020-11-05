@@ -3,12 +3,12 @@ title: Kubernetes 用の Azure Policy の概要
 description: Azure Policy で Rego および Open Policy Agent を使用して、Azure 内またはオンプレミスで Kubernetes を実行しているクラスターを管理する方法について説明します。
 ms.date: 09/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: bd0dc08583b126b6260999ace14d8fc13c52c1f7
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1e85d7af26e52ea38c09ec0c052b5c6a2787bb80
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676695"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146298"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Kubernetes 用の Azure Policy について理解する
 
@@ -37,7 +37,7 @@ Kubernetes クラスターで Azure Policy を有効にして使用するには�
    - [AKS エンジン](#install-azure-policy-add-on-for-aks-engine)
 
    > [!NOTE]
-   > インストールの一般的な問題については、[Azure Policy アドオンのトラブルシューティング](../troubleshoot/general.md#add-on-installation-errors)に関するページを参照してください。
+   > インストールの一般的な問題については、[Azure Policy アドオンのトラブルシューティング](../troubleshoot/general.md#add-on-for-kubernetes-installation-errors)に関するページを参照してください。
 
 1. [Kubernetes 用の Azure Policy 言語を理解する](#policy-language)
 

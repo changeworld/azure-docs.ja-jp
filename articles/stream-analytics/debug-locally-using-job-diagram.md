@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: e9d6bbdf325c0da96b81c1f2146da284ea744def
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: c32ba468979e4566d8e349d481eddca7d407b659
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218257"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130988"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Visual Studio のジョブ ダイアグラムを使用して Azure Stream Analytics のクエリをローカルでデバッグする
 
@@ -119,7 +119,7 @@ Azure Stream Analytics スクリプトは、入力データを出力データに
 
 * 認証モデルの制限により、Power BI と Azure Data Lake Storage Gen1 の出力シンクはサポートされていません。
 
-* クラウド入力オプションのみが[日時ポリシー](stream-analytics-out-of-order-and-late-events.md)をサポートしており、ローカル入力オプションではサポートされていません。
+* クラウド入力オプションのみが[日時ポリシー](./stream-analytics-time-handling.md)をサポートしており、ローカル入力オプションではサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

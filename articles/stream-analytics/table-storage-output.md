@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 3e5b747e55c8f246167bcf8bbde3542146e69706
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea775ef472687485dbd2f30c4f60adc33c0eaa73
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891960"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127350"
 ---
 # <a name="table-storage-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Table Storage 出力
 
@@ -28,7 +28,7 @@ ms.locfileid: "90891960"
 | テーブル名 |テーブルの名前。 テーブルが存在しない場合は、テーブルが作成されます。 |
 | パーティション キー |パーティション キーが含まれる出力列の名前です。 パーティション キーは、エンティティのプライマリ キーの最初の部分を形成する、テーブル内のパーティションの一意識別子です。 最大サイズが 1 KB の文字列値です。 |
 | 行キー |行キーが含まれる出力列の名前です。 行キーは、パーティション内のエンティティの一意識別子です。 これにより、エンティティのプライマリ キーの 2 番目の部分が形成されます。 行キーは、最大サイズが 1 KB の文字列値です。 |
-| バッチ サイズ |バッチ操作のレコードの数です。 ほとんどのジョブは既定値 (100) で十分です。 この設定の変更について詳しくは、[テーブル バッチ操作の仕様](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.tablebatchoperation)に関するページを参照してください。 |
+| バッチ サイズ |バッチ操作のレコードの数です。 ほとんどのジョブは既定値 (100) で十分です。 この設定の変更について詳しくは、[テーブル バッチ操作の仕様](/java/api/com.microsoft.azure.storage.table.tablebatchoperation)に関するページを参照してください。 |
 
 ## <a name="partitioning"></a>パーティション分割
 

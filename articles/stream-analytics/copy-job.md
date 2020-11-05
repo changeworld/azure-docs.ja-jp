@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/11/2019
-ms.openlocfilehash: e0214cb9515a5974f1de9a27760dc037f7593f30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba63358347cf9722d2cafa35598b9b3b37f49dc3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892318"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129458"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブをコピーまたはバックアップする
 
-Visual Studio Code または Visual Studio を使用して、デプロイされた Azure Stream Analytics ジョブをコピーまたはバックアップできます。 別のリージョンにジョブをコピーしても、最後の出力時刻はコピーされません。 そのため、コピーされたジョブを開始するときに、[**最終停止時刻**](https://docs.microsoft.com/azure/stream-analytics/start-job#start-options)を使用することはできません。
+Visual Studio Code または Visual Studio を使用して、デプロイされた Azure Stream Analytics ジョブをコピーまたはバックアップできます。 別のリージョンにジョブをコピーしても、最後の出力時刻はコピーされません。 そのため、コピーされたジョブを開始するときに、 [**最終停止時刻**](./start-job.md#start-options)を使用することはできません。
 
 ## <a name="before-you-begin"></a>開始する前に
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
@@ -27,7 +27,7 @@ Visual Studio Code または Visual Studio を使用して、デプロイされ�
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
-1. Visual Studio Code のアクティビティ バーの **[Azure]** アイコンをクリックし、**Stream Analytics ノード**を展開します。 ジョブは、サブスクリプションの下に表示されます。
+1. Visual Studio Code のアクティビティ バーの **[Azure]** アイコンをクリックし、 **Stream Analytics ノード** を展開します。 ジョブは、サブスクリプションの下に表示されます。
 
    ![Stream Analytics Explorer を開く](./media/vscode-explore-jobs/open-explorer.png)
 
@@ -45,7 +45,7 @@ Visual Studio Code または Visual Studio を使用して、デプロイされ�
 
 ## <a name="visual-studio"></a>Visual Studio
 
-1. [デプロイされた Azure Stream Analytics ジョブをプロジェクトにエクスポートする指示](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-vs-tools#export-jobs-to-a-project)に従います。
+1. [デプロイされた Azure Stream Analytics ジョブをプロジェクトにエクスポートする指示](./stream-analytics-vs-tools.md#export-jobs-to-a-project)に従います。
 
 2. クエリ エディターで \*.asaql ファイルを開き、スクリプト エディターで **[Azure に送信]** を選択し、指示に従ってジョブを別のリージョンに発行するか、新しい名前を使用してバックアップします。
 

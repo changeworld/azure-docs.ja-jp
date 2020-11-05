@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 78a81a2d392363ac45979fd28138f838653a2358
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d84e1508dec4d4a5802f7a2ac8c0e6ada5a8044c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89380528"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128693"
 ---
 # <a name="how-to-add-technical-details-for-your-saas-offer"></a>貴社の SaaS オファーの技術的な詳細を追加する方法
 
@@ -36,9 +36,9 @@ ms.locfileid: "89380528"
   > [!IMPORTANT]
   > これは、コマーシャル マーケットプレース経由で購入された貴社の顧客の SaaS サブスクリプションに関する更新の通知を受け取る唯一の方法であるため、貴社は Webhook を、24 時間 365 日稼働している必要があります。
 
-- **[Azure Active Directory テナント ID]** (必須) – 貴社の Azure Active Directory (Azure AD) アプリのテナント ID を見つけるには、Azure Active Directory の [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ブレードに移動します。 **[表示名]** 列で、アプリを選択します。 次いで、一覧から**ディレクトリ (テナント) ID** 番号 (例: `50c464d3-4930-494c-963c-1e951d15360e`) を見つけます。
+- **[Azure Active Directory テナント ID]** (必須) – 貴社の Azure Active Directory (Azure AD) アプリのテナント ID を見つけるには、Azure Active Directory の [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ブレードに移動します。 **[表示名]** 列で、アプリを選択します。 次いで、一覧から **ディレクトリ (テナント) ID** 番号 (例: `50c464d3-4930-494c-963c-1e951d15360e`) を見つけます。
 
-- **[Azure Active Directory アプリケーション ID]** (必須) – 貴社の[アプリケーション ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) を見つけるには、Azure Active Directory の [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ブレードに移動します。 **[表示名]** 列で、アプリを選択します。 次いで、一覧からアプリケーション (クライアント) ID 番号 (例: `50c464d3-4930-494c-963c-1e951d15360e`) を見つけます。
+- **[Azure Active Directory アプリケーション ID]** (必須) – 貴社の [アプリケーション ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) を見つけるには、Azure Active Directory の [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ブレードに移動します。 **[表示名]** 列で、アプリを選択します。 次いで、一覧からアプリケーション (クライアント) ID 番号 (例: `50c464d3-4930-494c-963c-1e951d15360e`) を見つけます。
 
 **[下書きの保存]** を選択してから、次の[プランの概要] タブに移動します。
 

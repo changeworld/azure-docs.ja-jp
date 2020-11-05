@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 9a7f36299d235ca2578a1ff3518650c5632ef046
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0b79fa22d3203504e63161aba03b32830d74d016
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209239"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131277"
 ---
 # <a name="remove-vms-from-change-tracking-and-inventory"></a>変更履歴とインベントリから VM を削除する
 
@@ -22,7 +22,7 @@ ms.locfileid: "92209239"
 
 ## <a name="to-remove-your-vms"></a>VM を削除するには
 
-1. Azure portal で、Azure portal の上部のナビゲーションから **[Cloud Shell]** を起動します。 Azure Cloud Shell について初めて学ぶ場合は、「[Azure Cloud Shell の概要](/cloud-shell/overview)」を参照してください。
+1. Azure portal で、Azure portal の上部のナビゲーションから **[Cloud Shell]** を起動します。 Azure Cloud Shell について初めて学ぶ場合は、「[Azure Cloud Shell の概要](../../cloud-shell/overview.md)」を参照してください。
 
 2. 次のコマンドを使用して、管理から削除するマシンの UUID を特定します。
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 0307fcee207f045c2808b3c66e9911623391d486
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 47733f4b141b0064e966d0c083fd6414405f65f9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905012"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095545"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>クイックスタート: Azure CLI を使用した Azure DDoS Protection Standard の作成と構成
 
@@ -107,8 +107,6 @@ az network ddos-protection show \
 
 コマンドで DDoS Protection プランの正しい詳細が返されることを確認します。
 
-シミュレーションを通じたテスト
-
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 次のチュートリアルのためにリソースを保持しておくことができます。 不要になったら、 _MyResourceGroup_ リソース グループを削除します。 リソース グループを削除する際に、DDoS Protection プランとその関連リソースもすべて削除します。 
@@ -133,7 +131,7 @@ DDoS Protection プランを削除する場合は、最初にそのプランか�
 
 ## <a name="next-steps"></a>次のステップ
 
-DDoS Protection プラン用にテレメトリを表示および構成する方法を学習するには、チュートリアルに進んでください。
+DDoS 保護プラン用にテレメトリを表示および構成する方法を学習するには、チュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [DDoS 保護テレメトリの表示と構成](telemetry-monitoring-alerting.md)

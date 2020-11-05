@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 8b5c106c1464ec6d77305b1985cc8dbd51e2b4db
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: c703dd4053cc27d469d83d344da910e8e5b23ddb
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519479"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129900"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Azure Stream Analytics ジョブからマネージド ID を使用して Azure SQL Database にアクセスする (プレビュー)
 
@@ -60,7 +60,7 @@ Azure Stream Analytics では、Azure SQL Database 出力シンクに対する[�
 
    ![Active Directory 管理者を追加する](./media/sql-db-output-managed-identity/add-admin.png)
 
-   [Active Directory 管理者] ページには、Active Directory のメンバーとグループがすべて表示されます。 淡色表示されているユーザーまたはグループは、Azure Active Directory 管理者としてサポートされていないため選択できません。 「 [Azure Active Directory 認証を使用して SQL Database または Azure Synapse を認証する](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)」の「 **Azure Active Directory の機能と制限事項** 」セクションでサポートされている管理者の一覧を参照してください。 Azure のロール ベースのアクセス制御 (Azure RBAC) はポータルにのみ適用され、SQL Server には反映されません。 また、選択されたユーザーまたはグループは、次のセクションで **包含データベース ユーザー** を作成することができるユーザーです。
+   [Active Directory 管理者] ページには、Active Directory のメンバーとグループがすべて表示されます。 淡色表示されているユーザーまたはグループは、Azure Active Directory 管理者としてサポートされていないため選択できません。 「 [Azure Active Directory 認証を使用して SQL Database または Azure Synapse を認証する](../azure-sql/database/authentication-aad-overview.md#azure-ad-features-and-limitations)」の「 **Azure Active Directory の機能と制限事項** 」セクションでサポートされている管理者の一覧を参照してください。 Azure のロール ベースのアクセス制御 (Azure RBAC) はポータルにのみ適用され、SQL Server には反映されません。 また、選択されたユーザーまたはグループは、次のセクションで **包含データベース ユーザー** を作成することができるユーザーです。
 
 1. **[Active Directory 管理者]** ページの **[保存]** を選択します。 管理者を変更するプロセスには数分かかります。
 

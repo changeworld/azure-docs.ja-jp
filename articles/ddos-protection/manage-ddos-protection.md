@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 358fccec56f81ee41acc2898751b8848beaeb168
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: fc60ca462a2891cc022847e056e32239f2675f70
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92904999"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094576"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>クイックスタート: Azure DDoS Protection Standard の作成と構成
 
@@ -84,8 +84,6 @@ DDoS Protection プランでは、サブスクリプションの境界を越え�
 3. 一覧から DDoS 保護プランを選択します。
 
 _MyVnet_ 仮想ネットワークが一覧表示されます。 
-
-シミュレーションを通じたテスト
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

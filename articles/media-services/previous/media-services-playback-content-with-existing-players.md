@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: bd09b734f1ac5ac3c98b6c0c717a48de19b0106f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2036fa056932f9bbd2f14b4005fa54321b1a382
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261072"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095715"
 ---
 # <a name="playing-your-content-with-existing-players"></a>既存のプレーヤーによるコンテンツの再生
 
@@ -34,7 +34,7 @@ Azure Media Services は、スムーズ ストリーミング、HTTP ライブ �
 
 いくつかの考慮事項が適用されます。
 
-* **Media Services コンテンツ プレーヤー**を既定のストリーミング エンドポイントから再生します。 既定以外のストリーミング エンドポイントから再生する場合は、別のプレーヤーを使用します たとえば、[Azure Media Player](https://aka.ms/azuremediaplayer) を使用します。
+* **Media Services コンテンツ プレーヤー** を既定のストリーミング エンドポイントから再生します。 既定以外のストリーミング エンドポイントから再生する場合は、別のプレーヤーを使用します たとえば、[Azure Media Player](https://aka.ms/azuremediaplayer) を使用します。
 
 ![AMSPlayer][AMSPlayer]
 
@@ -51,11 +51,11 @@ Azure Media Services は、スムーズ ストリーミング、HTTP ライブ �
 
 #### <a name="playready-with-token"></a>トークンを使用した PlayReady
 
-[https://sltoken.azurewebsites.net](https://sltoken.azurewebsites.net)
+[http://reference.dashif.org/dash.js/nightly/samples/dash-if-reference-player/index.html](http://reference.dashif.org/dash.js/nightly/samples/dash-if-reference-player/index.html)
 
 ### <a name="dash-players"></a>DASH Players
 
-[https://dashplayer.azurewebsites.net](https://dashplayer.azurewebsites.net)
+"https://dashplayer.azurewebsites.net"
 
 [https://dashif.org](https://dashif.org)
 

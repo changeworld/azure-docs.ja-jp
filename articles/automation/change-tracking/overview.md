@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: f4fc464da08128b7f2ecd0a037213d5f40aa65e0
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 39caa60196eca1afb7df1b0acbecddb557796fc3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670736"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130342"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>変更履歴とインベントリの概要
 
@@ -93,7 +93,7 @@ Windows と Linux の両方でファイルの変更を追跡する場合、変�
 
 ## <a name="tracking-file-content-changes"></a>ファイル コンテンツの変更を追跡する
 
-Change Tracking とインベントリを使用すると、Windows または Linux のファイルのコンテンツを表示できます。 ファイルを変更するたびに、変更履歴とインベントリによって、[Azure Storage アカウント](/storage/common/storage-account-create)にファイルのコンテンツが格納されます。 ファイルを追跡しているときに、変更前後のそのコンテンツを表示できます。 ファイルのコンテンツは、インラインで、または並べて表示できます。
+Change Tracking とインベントリを使用すると、Windows または Linux のファイルのコンテンツを表示できます。 ファイルを変更するたびに、変更履歴とインベントリによって、[Azure Storage アカウント](../../storage/common/storage-account-create.md)にファイルのコンテンツが格納されます。 ファイルを追跡しているときに、変更前後のそのコンテンツを表示できます。 ファイルのコンテンツは、インラインで、または並べて表示できます。
 
 ![ファイル内の変更を表示する](./media/overview/view-file-changes.png)
 
@@ -158,7 +158,7 @@ Change Tracking とインベントリを使用すると、Windows レジスト�
 |サービス|250|
 |デーモン|250|
 
-変更履歴とインベントリを使用しているマシンでの Log Analytics の平均データ使用量は、1 か月あたり約 40 MB です (環境によって異なります)。 Log Analytics ワークスペースの使用量と推定コスト機能を使用して、Change Tracking とインベントリによって取り込まれたデータを使用状況グラフに表示できます。 このデータ ビューを使用して、データの使用量を評価し、それが請求にどのように影響しているかを判断します。 「[ご自分の使用量を理解してコストを見積もる](/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs)」を参照してください。
+変更履歴とインベントリを使用しているマシンでの Log Analytics の平均データ使用量は、1 か月あたり約 40 MB です (環境によって異なります)。 Log Analytics ワークスペースの使用量と推定コスト機能を使用して、Change Tracking とインベントリによって取り込まれたデータを使用状況グラフに表示できます。 このデータ ビューを使用して、データの使用量を評価し、それが請求にどのように影響しているかを判断します。 「[ご自分の使用量を理解してコストを見積もる](../../azure-monitor/platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs)」を参照してください。
 
 ### <a name="microsoft-service-data"></a>Microsoft サービス データ
 

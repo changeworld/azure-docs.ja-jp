@@ -1,18 +1,18 @@
 ---
 title: プライベート リンク - Azure CLI - Azure Database for MySQL
 description: Azure CLI から Azure Database for MySQL 用のプライベート リンクを構成する方法について説明します。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b6c26c99d68e5b92477a4d7f2c6734190d112aba
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a2ec1c609fc0562c6c8181a934e742daa9a5a4f9
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538767"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241550"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>CLI を使用して Azure Database for MySQL 用のプライベート リンクを作成および管理する
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/15/2020
-ms.openlocfilehash: 7b91cf3d49d88501fb908d157892ec3eb24bee6e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 1c89887117c10ca77ec4c04b3adbe3e2d9923479
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283134"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126840"
 ---
 # <a name="virtual-machine-sas-failure-messages"></a>仮想マシンの SAS のエラー メッセージ
 
@@ -29,7 +29,7 @@ ms.locfileid: "92283134"
 | SAS URI の "st" および "se" パラメーターで完全な日付と時刻が指定されていない | `Failure: Copying Images. Not able to download blob due to incorrect SAS Uri.` | SAS URI の **開始日** および **終了日** パラメーター (`st` および`se` 部分文字列) は、`11-02-2017T00:00:00Z` のように、完全な日時形式になっている必要があります。 短縮バージョンは無効です (Azure CLI の一部のコマンドでは、簡略化された値が既定で生成されることがあります)。 |
 |  |  |  |
 
-詳細については、[Shared Access Signature (SAS) の使用](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)に関する記事を参照してください。
+詳細については、[Shared Access Signature (SAS) の使用](../storage/common/storage-sas-overview.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

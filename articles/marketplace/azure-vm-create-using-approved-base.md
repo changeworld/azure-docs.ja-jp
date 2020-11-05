@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: 34d64d70c657712bb44aa6331b53f014349a0dda
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c28595458fea61f66b6930ce72fa0702e00aecd9
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283388"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129298"
 ---
 # <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>承認済みのベースを使用して Azure 仮想マシンを作成する方法
 
@@ -32,7 +32,7 @@ ms.locfileid: "92283388"
 
 ### <a name="linux"></a>Linux
 
-さまざまな承認済みの Linux ディストリビューションが Azure から提供されています。 現在のリストについては、「[Azure で動作保証済みの Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)」を参照してください。
+さまざまな承認済みの Linux ディストリビューションが Azure から提供されています。 現在のリストについては、「[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)」を参照してください。
 
 ## <a name="create-vm-on-the-azure-portal"></a>Azure portal で VM を作成する
 
@@ -46,7 +46,7 @@ ms.locfileid: "92283388"
 
 6. デプロイする VM のサイズを選択します。
 
-    :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="Gen 1 または Gen 2 を選択します。":::
+    :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="選択したイメージで推奨される VM サイズを選択します。":::
 
 7. VM の作成に必要なその他の詳細を指定します。
 8. **[確認と作成]** を選択して、選択内容を確認します。 緑色の **検証に成功** のメッセージが表示されたら、 **[作成]** を選択します。

@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 08/27/2020
-ms.openlocfilehash: d794716fe1f4717acbabfd90643b72c682e475bc
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 9f58d03e2cfa7e1ab9c359cdb6600c42c8970a9a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370595"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125803"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>パートナー センターで商業マーケットプレース アカウントを管理する
 
@@ -71,7 +71,7 @@ ms.locfileid: "92370595"
 1. パートナー センターの[商業マーケットプレースの概要ページ](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)に移動します。
 2. [プロファイル] セクションで、 **[Payout Profile]\(支払いプロファイル\)** の横にある **[更新]** を選択します。
 3. **支払い方法を選択する** : 銀行口座または PayPal。
-4. **支払情報を追加する** : たとえば、口座の種類 (当座預金または普通預金) を選択し、口座名義人の名前、口座番号、銀行支店コード、請求先住所、電話番号、PayPal メール アドレスなどを入力します。 \* アカウントの支払い方法として PayPal を使用する場合の詳細およびご利用の市場地域における PayPal の対応状況については、「[PayPal 情報](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)」を参照してください。
+4. **支払情報を追加する** : たとえば、口座の種類 (当座預金または普通預金) を選択し、口座名義人の名前、口座番号、銀行支店コード、請求先住所、電話番号、PayPal メール アドレスなどを入力します。 \* アカウントの支払い方法として PayPal を使用する場合の詳細およびご利用の市場地域における PayPal の対応状況については、「[PayPal 情報](/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)」を参照してください。
 
 > [!IMPORTANT]
 > 支払いアカウントを変更すると、最大で支払い期間 1 回分の遅延が支払いに発生する可能性があります。 この遅延は、支払い受取口座が初めて設定された場合と同様に、口座変更の場合にも確認が必要となるために発生します。 アカウントが確認された後も、お支払いは引き続き一括払いになります。期日が現在の支払い期間内にある支払いは、次の支払い期間に追加されます。  
@@ -98,7 +98,7 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 
 居住国が米国以外である場合、パートナー様は、租税条約上の権利を利用できる可能性があります。 これらの権利は国および地域によって異なりますが、Microsoft によって源泉徴収される税額を軽減できる可能性があります。 租税条約上の権利は、W-8BEN フォームの Part II に記入することで申し立てることができます。 お住まいの国または地域の適切な機関に問い合わせ、これらの権利が適用されるかどうかを確認することをお勧めします。
 
-[Windows アプリ開発者または Windows ゲーム開発者および Azure Marketplace 発行元向けの税の詳細をご覧ください](https://docs.microsoft.com/windows/uwp/publish/tax-details-for-paid-apps)。
+[Windows アプリ開発者または Windows ゲーム開発者および Azure Marketplace 発行元向けの税の詳細をご覧ください](/windows/uwp/publish/tax-details-for-paid-apps)。
 
 #### <a name="payout-hold-status"></a>支払い保留状態
 
@@ -113,7 +113,7 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 
 ### <a name="devices"></a>デバイス
 
-デバイス管理設定は、UWP の発行にのみ適用されます。 [詳細については、こちらを参照してください](https://docs.microsoft.com/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info)。
+デバイス管理設定は、UWP の発行にのみ適用されます。 [詳細については、こちらを参照してください](/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info)。
 
 ### <a name="tracking-guids"></a>[Tracking GUIDs]\(追跡 GUID\)
 
@@ -196,7 +196,7 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 招待状を再送信する必要がある場合は、 **[ユーザー]** ページにアクセスして、ユーザーの一覧で招待を探し、そのメール アドレスまたは " *Invitation pending (承認待ちの招待)* " というテキストを選択します。 その後、ページ下部の **[Resend invitation]\(招待の再送信\)** を選択してください。
 
 > [!NOTE]
-> 組織で[ディレクトリ統合](https://go.microsoft.com/fwlink/p/?LinkID=724033)を使用してオンプレミスのディレクトリ サービスを Azure AD と同期させている場合は、新しいユーザー、グループ、Azure AD アプリケーションをパートナー センターに作成することはできません。 それらを表示してパートナー センターに追加するためには、あなた (またはオンプレミス ディレクトリ内の別の管理者) がそれらを直接オンプレミス ディレクトリに作成する必要があります。
+> 組織で[ディレクトリ統合](/previous-versions/azure/azure-services/jj573653(v=azure.100))を使用してオンプレミスのディレクトリ サービスを Azure AD と同期させている場合は、新しいユーザー、グループ、Azure AD アプリケーションをパートナー センターに作成することはできません。 それらを表示してパートナー センターに追加するためには、あなた (またはオンプレミス ディレクトリ内の別の管理者) がそれらを直接オンプレミス ディレクトリに作成する必要があります。
 
 ### <a name="remove-a-user"></a>ユーザーの削除
 
@@ -302,7 +302,7 @@ Microsoft Azure AD でのデータの読み取り/書き込みを Azure AD ア�
 > [!NOTE]
 > Commercial Marketplace プログラムでは、グローバル管理者、経営担当者、財務担当者、およびマーケターのロールは使用されません。 これらのロールのユーザーへの割り当ては無効です。 ユーザーにアクセス許可を付与するのは、マネージャー ロールと開発者ロールだけです。
 
-Azure Active Directory (AD)、クラウド ソリューション プロバイダー (CSP)、コントロール パネル ベンダー (CPV)、ゲスト ユーザー、Microsoft Partner Network (MPN) など、その他のパートナー センター領域におけるロールとアクセス許可の管理について詳しくは、[パートナー センターにおけるユーザー ロールとアクセス許可の割り当て](https://docs.microsoft.com/partner-center/permissions-overview)に関するページを参照してください。
+Azure Active Directory (AD)、クラウド ソリューション プロバイダー (CSP)、コントロール パネル ベンダー (CPV)、ゲスト ユーザー、Microsoft Partner Network (MPN) など、その他のパートナー センター領域におけるロールとアクセス許可の管理について詳しくは、[パートナー センターにおけるユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)に関するページを参照してください。
 
 ## <a name="manage-tenants"></a>テナントを管理する
 

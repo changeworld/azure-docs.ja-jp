@@ -3,12 +3,12 @@ title: サービス エンドポイントを使用してアクセスを制限す
 description: Azure 仮想ネットワークのサービス エンドポイントを使用して Azure コンテナー レジストリへのアクセスを制限します。 サービス エンドポイント アクセスは、Premium サービス レベルの機能です。
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 3472549827781c6ed2f6be0417866747c81edd93
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 5f9bc7c9a6c8f2061765510a6396611502fd4a2a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215503"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026226"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Azure 仮想ネットワークのサービス エンドポイントを使用してコンテナー レジストリへのアクセスを制限する
 
@@ -189,7 +189,6 @@ az group delete --name myResourceGroup
 
 
 <!-- LINKS - External -->
-[aci-helloworld]: https://hub.docker.com/r/microsoft/aci-helloworld/
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

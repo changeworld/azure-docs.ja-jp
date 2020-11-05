@@ -8,18 +8,18 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 8653279c353ad679503f2501afeb14725c7fc215
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: a14ccb74e6f0ac2454255d609662706cb53ede31
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329034"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129594"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>仮想マシンのオファーを計画する方法
 
 この記事では、仮想マシン (VM) のオファーをコマーシャル マーケットプレースに発行するためのさまざまなオプションと要件について説明します。 VM オファーは、Azure Marketplace を通じてデプロイおよび課金される取引可能なオファーです。
 
-開始する前に、[パートナー センターでコマーシャル マーケットプレース アカウントを作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)し、アカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
+開始する前に、[パートナー センターでコマーシャル マーケットプレース アカウントを作成](./partner-center-portal/create-account.md)し、アカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
 ### <a name="technical-fundamentals"></a>技術的基礎
 
@@ -70,7 +70,7 @@ Microsoft アカウント (MSA) または Azure Active Directory (Azure AD) の�
 
 VM オファーには、1 つ以上のプランが必要です。 プランでは、ソリューションのスコープと制限、および関連する価格を定義します。 オファーに対して複数のプランを作成し、顧客にさまざまな技術やライセンスのオプション、および無料試用版を提供することができます。 価格モデル、無料試用版、プライベート プランなど、プランに関する一般的なガイダンスについては、「[コマーシャル マーケットプレース オファーのプランと価格](plans-pricing.md)」を参照してください。 
 
-VM は商取引が可能で、従量課金制またはライセンス持ち込み (BYOL) のライセンス モデルを使用します。 商用トランザクションは Microsoft がホストし、公開元に代わって顧客に請求します。 公開元にとっては、顧客と Microsoft との間で推奨される支払い関係 (Enterprise Agreement など) を利用できる利点があります。 詳細については、「[コマーシャル マーケットプレースの販売機能](https://docs.microsoft.com/azure/marketplace/marketplace-commercial-transaction-capabilities-and-considerations)」を参照してください。
+VM は商取引が可能で、従量課金制またはライセンス持ち込み (BYOL) のライセンス モデルを使用します。 商用トランザクションは Microsoft がホストし、公開元に代わって顧客に請求します。 公開元にとっては、顧客と Microsoft との間で推奨される支払い関係 (Enterprise Agreement など) を利用できる利点があります。 詳細については、「[コマーシャル マーケットプレースの販売機能](./marketplace-commercial-transaction-capabilities-and-considerations.md)」を参照してください。
 
 > [!NOTE]
 > Enterprise Agreement に関連付けられている年額コミットメントは VM の Azure 利用には使えますが、公開元のソフトウェア ライセンス料金には使えません。
@@ -84,7 +84,7 @@ VM オファーで使用可能なライセンス オプションは次のとお�
 | ライセンス オプション | トランザクション プロセス |
 | --- | --- |
 | 無料試用版 | 1、3、または 6 か月の無料試用版を顧客に提供します。 |
-| 体験版 | このオプションを使用すると、顧客は追加コストなしで VM を評価できます。 試用版を体験するには、既存の Azure 顧客である必要はありません。 詳細については、「[体験版とは](https://docs.microsoft.com/azure/marketplace/what-is-test-drive)」を参照してください。 |
+| 体験版 | このオプションを使用すると、顧客は追加コストなしで VM を評価できます。 試用版を体験するには、既存の Azure 顧客である必要はありません。 詳細については、「[体験版とは](./what-is-test-drive.md)」を参照してください。 |
 | BYOL | ライセンス持ち込みオプションを使用すると、顧客は既存のソフトウェア ライセンスを Azure に持ち込むことができます。\* |
 | 使用量ベース | 従量課金制とも呼ばれるこのオプションを使用すると、顧客は 1 時間ごとの支払いが可能になります。 |
 | 対話型デモ  | 対話型デモを使って、ソリューションのガイド付きエクスペリエンスを顧客に提供します。 そのベネフィットは、複雑なソリューションの複雑なセットアップなしで試用エクスペリエンスを提供できることです。 |
@@ -129,7 +129,7 @@ CRM の接続は、オファーの作成時または作成後にいつでも追�
 パートナー センターでオファーを作成するときに、 **[CSP を通じた再販]** タブが表示されます。このオプションを使用すると、Microsoft クラウド ソリューション プロバイダー (CSP) プログラムに参加しているパートナーは、バンドルされたオファーの一部として VM を再販できます。 すべてのライセンス持ち込み (BYOL) プランは、自動的にこのプログラムにオプトインされます。 BYOL 以外のプランをオプトインすることもできます。 詳細については、「[クラウド ソリューション プロバイダー プログラム](cloud-solution-providers.md)」を参照してください。 
 
 > [!NOTE]
-> クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。 Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「 [**クラウド ソリューション プロバイダー**](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)」を参照してください。
+> クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。 Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「 [**クラウド ソリューション プロバイダー**](./cloud-solution-providers.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

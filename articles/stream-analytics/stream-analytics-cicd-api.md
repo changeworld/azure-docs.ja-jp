@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: ed11488f397704be782a092d6cdc6463449cc71e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7e56758a1a76933d6bb18883aa15ce33ce2e89e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86039077"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130920"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>API を使用して IoT Edge 上に Stream Analytics 向けの CI/CD を実装する
 
@@ -136,7 +136,7 @@ JSON での要求本文の例:
 } 
 ```
  
-詳しくは、[API のドキュメント](/rest/api/streamanalytics/stream-analytics-job)をご覧ください。  
+詳しくは、[API のドキュメント](/rest/api/streamanalytics/)をご覧ください。  
  
 ## <a name="publish-edge-package"></a>Edge パッケージを発行する 
  
@@ -258,5 +258,5 @@ curl -d –X GET https://management.azure.com/subscriptions/{subscriptionid}/res
 ## <a name="next-steps"></a>次のステップ 
  
 * [Azure Stream Analytics on IoT Edge](stream-analytics-edge.md)
-* [ASA on IoT Edge チュートリアル](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
+* [ASA on IoT Edge チュートリアル](../iot-edge/tutorial-deploy-stream-analytics.md)
 * [Visual Studio Tools を使用して Stream Analytics Edge ジョブを作成する](stream-analytics-tools-for-visual-studio-edge-jobs.md)

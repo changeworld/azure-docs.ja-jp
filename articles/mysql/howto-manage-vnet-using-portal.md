@@ -1,17 +1,17 @@
 ---
 title: VNet エンドポイントの管理 - Azure portal - Azure Database for MySQL
 description: Azure portal を使用して、Azure Database for MySQL VNet のサービス エンドポイントとルールを作成および管理します
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 4eda84803f5d132f9f4ea4f413da67b9585b4776
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5273681f23f6eea54c35e5cacea487dab18793e2
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546383"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240785"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Azure portal を使用して、Azure Database for MySQL VNet のサービス エンドポイントと VNet ルールを作成および管理する
 Virtual Network (VNet) サービス エンドポイントおよびルールは、仮想ネットワークのプライベート アドレス空間を Azure Database for MySQL サーバーに拡張します。 制限事項も含め、Azure Database for MySQL VNet サービス エンドポイントの概要については、[Azure Database for MySQL サーバー VNet サービス エンドポイント ](concepts-data-access-and-security-vnet.md) に関する記事を参照してください。 VNet サービス エンドポイントは、Azure Database for MySQL でサポートされるすべてのリージョンで利用できます。
@@ -36,7 +36,13 @@ Virtual Network (VNet) サービス エンドポイントおよびルールは�
 
 4. VNet ルール名を入力し、サブスクリプション、仮想ネットワーク、サブネット名を選択して、 **[有効にする]** をクリックします。 これにより、 **Microsoft.SQL** サービス タグを使用してサブネット上で VNet サービス エンドポイントが自動的に有効になります。
 
-   :::image type="content" source="./media/howto-manage-vnet-using-portal/2-configure-vnet.png" alt-text="Azure Portal - [接続のセキュリティ] のクリック" へのアクセス許可を持っている必要があります。 このアクセス許可は、既定では組み込みのサービス管理者のロールに含まれ、カスタム ロールを作成することで変更できます。
+   :::image type="content" source="./media/howto-manage-vnet-using-portal/2-configure-vnet.png" alt-text="Azure portal - VNet の構成":::
+
+   アカウントには、仮想ネットワークとサービス エンドポイントを作成するためのアクセス許可が必要です。
+
+   サービス エンドポイントは、仮想ネットワークへの書き込みアクセス権を持つユーザーが仮想ネットワーク上で個別に構成できます。
+    
+   Azure サービス リソースへのアクセスを VNet に限定するには、ユーザーが、追加されるサブネットの "Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/" へのアクセス許可を持っている必要があります。 このアクセス許可は、既定では組み込みのサービス管理者のロールに含まれ、カスタム ロールを作成することで変更できます。
     
    [組み込みロール](../role-based-access-control/built-in-roles.md)と、特定のアクセス許可を[カスタム ロール](../role-based-access-control/custom-roles.md)に割り当てる方法の詳細をご覧ください。
     
@@ -48,7 +54,7 @@ Virtual Network (VNet) サービス エンドポイントおよびルールは�
 
 5. 有効になったら、 **[OK]** をクリックすると、VNet ルールと共に VNet サービス エンドポイントが有効になっていることが表示されます。
 
-   :::image type="content" source="./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png" alt-text="Azure Portal - [接続のセキュリティ] のクリック":::
+   :::image type="content" source="./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png" alt-text="VNet サービス エンドポイントが有効で、VNet ルールが作成されている":::
 
 ## <a name="next-steps"></a>次のステップ
 - 同様に、スクリプトを作成して、[Azure CLI を使用して、VNet サービス エンドポイントを有効にし、Azure Database for MySQL の VNET ルールを作成](howto-manage-vnet-using-cli.md)できます。

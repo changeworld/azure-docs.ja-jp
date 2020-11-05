@@ -5,12 +5,12 @@ description: テイントと容認、ノード セレクターとアフィニテ
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: b8077a772d6fdc4b911fabdfa893a15dcd7615db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0c1f587b4e52607e9466300f976a52874c9e5ad
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87530063"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125633"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス
 
@@ -33,8 +33,8 @@ AKS クラスターを作成するときは、GPU のサポートや多数の強
 
 Kubernetes スケジューラでは、テイントと容認を使用して、ノードで実行できるワークロードを制限できます。
 
-* **テイント**は、ノードに適用されて、特定のポッドのみをそのノードでスケジュールできることを示します。
-* **容認**は、ポッドに適用されて、ポッドがノードのテイントを "*許容する*" ことを許可します。
+* **テイント** は、ノードに適用されて、特定のポッドのみをそのノードでスケジュールできることを示します。
+* **容認** は、ポッドに適用されて、ポッドがノードのテイントを " *許容する* " ことを許可します。
 
 ポッドを AKS クラスターにデプロイするときは、容認とテイントが一致している場合にのみ、ノードでポッドがスケジュールされます。 たとえば、GPU のサポートを備えたノード用のノード プールが AKS クラスターにあると仮定します。 *gpu* などの名前と、スケジュールのための値を定義します。 この値を *NoSchedule* に設定した場合、ポッドで適切な容認が定義されていない場合、そのノードをポッドにスケジュールすることはできません。
 
@@ -52,7 +52,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -84,10 +84,10 @@ AKS でノード プールをアップグレードすると、テイントと容
   - 元の *node1* と *node2* は削除されます。
 
 - **仮想マシン スケール セットのサポートがないクラスター**
-  - ここでも、2 つのノード クラスター *node1* と *node2* があると仮定します。 アップグレードすると、追加ノード (*node3*) が作成されます。
+  - ここでも、2 つのノード クラスター *node1* と *node2* があると仮定します。 アップグレードすると、追加ノード ( *node3* ) が作成されます。
   - *node1* のテイントが *node3* に適用されて、次に *node1* が削除されます。
-  - 別の新規ノードが作成されます (前の *node1* が削除されたため、名前は *node1* になります)、そして *node2* のテイントが新しい *node1* に適用されます。 次に、*node2* が削除されます。
-  - 要するに、*node1* が *node3* になり、*node2* が *node1* になります。
+  - 別の新規ノードが作成されます (前の *node1* が削除されたため、名前は *node1* になります)、そして *node2* のテイントが新しい *node1* に適用されます。 次に、 *node2* が削除されます。
+  - 要するに、 *node1* が *node3* になり、 *node2* が *node1* になります。
 
 AKS でノード プールをスケーリングするとき、テイントと容認は設計により持ち越されません。
 
@@ -113,7 +113,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -131,7 +131,7 @@ spec:
 
 ### <a name="node-affinity"></a>ノード アフィニティ
 
-ノード セレクターは、特定のノードにポッドを割り当てる基本的な方法です。 "*ノード アフィニティ*" を使用すると柔軟性が増します。 ノード アフィニティでは、ポッドがノードと一致しない場合の動作を定義します。 ポッドがラベル付けされたホストと一致することを、"*必須*" として指定できます。 または、一致することが "*望ましい*" けれども、一致するものがない場合は別のホストでのポッドのスケジュールを許可することもできます。
+ノード セレクターは、特定のノードにポッドを割り当てる基本的な方法です。 " *ノード アフィニティ* " を使用すると柔軟性が増します。 ノード アフィニティでは、ポッドがノードと一致しない場合の動作を定義します。 ポッドがラベル付けされたホストと一致することを、" *必須* " として指定できます。 または、一致することが " *望ましい* " けれども、一致するものがない場合は別のホストでのポッドのスケジュールを許可することもできます。
 
 次の例では、ノード アフィニティを *requiredDuringSchedulingIgnoredDuringExecution* に設定しています。 このアフィニティでは、一致するラベルを持つノードを使用することが要求されます。 使用できるノードがない場合、ポッドはスケジュールの継続を待機する必要があります。 別のノードでポッドをスケジュールできるようにするには、代わりに値を *preferredDuringSchedulingIgnoreDuringExecution* に設定します。
 
@@ -143,7 +143,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -167,7 +167,7 @@ spec:
 
 ### <a name="inter-pod-affinity-and-anti-affinity"></a>ポッド間アフィニティと非アフィニティ
 
-Kubernetes スケジューラでワークロードを論理的に分離する最後の方法では、ポッド間アフィニティまたは非アフィニティを使用します。 設定では、一致するポッドが既にあるノードではポッドをスケジュール "*してはならない*" こと、またはスケジュール "*しなければならない*" ことを定義します。 既定では、Kubernetes スケジューラは、ノードをまたぐレプリカ セットに複数のポッドのスケジュールを試みます。 この動作に関しては、さらに具体的なルールを定義できます。
+Kubernetes スケジューラでワークロードを論理的に分離する最後の方法では、ポッド間アフィニティまたは非アフィニティを使用します。 設定では、一致するポッドが既にあるノードではポッドをスケジュール " *してはならない* " こと、またはスケジュール " *しなければならない* " ことを定義します。 既定では、Kubernetes スケジューラは、ノードをまたぐレプリカ セットに複数のポッドのスケジュールを試みます。 この動作に関しては、さらに具体的なルールを定義できます。
 
 よい例は、Azure Cache for Redis キャッシュも使用している Web アプリケーションです。 ポッドの非アフィニティ ルールを使用すると、複数のノードにレプリカを分散させるよう Kubernetes スケジューラに要求できます。 その後、アフィニティ ルールを使用して、各 Web アプリ コンポーネントが対応するキャッシュと同じホストにスケジュールされるようにすることができます。 複数ノードへのポッドの分散は、次の例のようになります。
 

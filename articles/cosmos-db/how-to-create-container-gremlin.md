@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 55dabccf5a5ab9e81ff0644056002f3beb644fa9
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: f7e9de1f23ec46af08fe96b5db3170fac9a7eb2e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491157"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101631"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API にコンテナーを作成する
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 この記事では、Azure Cosmos DB Gremlin API にコンテナーを作成するいくつかの方法について説明します。 Azure portal、Azure CLI、PowerShell、またはサポートされている SDK を使用して、コンテナーを作成する方法が示されます。 この記事では、コンテナーを作成してパーティション キーを指定し、スループットをプロビジョニングする方法を紹介します。
 

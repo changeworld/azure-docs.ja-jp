@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 7/14/2020
-ms.openlocfilehash: 4c4455d62f32acb1cfebde8f5e4d97de5bda17c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 345b9447daa9fcb5f97ec5d8d00bcf5ea76d958c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89463287"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126738"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 独立系ソフトウェア ベンダー (ISV) コネクト プログラム オンボード ガイド
 
@@ -25,7 +25,7 @@ ms.locfileid: "89463287"
 
 ## <a name="set-up-your-microsoft-partner-center-account"></a>Microsoft パートナー センター アカウントを設定する
 
-ISV コネクト プログラムのアカウントを設定して管理するには、次の記事の手順を実行します: 「[パートナー センターでコマーシャル マーケットプレース アカウントを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)」。 この記事では、新しいアカウントを作成するためのすべての手順と、新しい発行元をコマーシャル マーケットプレース プログラムに追加する方法について説明します。
+ISV コネクト プログラムのアカウントを設定して管理するには、次の記事の手順を実行します: 「[パートナー センターでコマーシャル マーケットプレース アカウントを作成する](./partner-center-portal/create-account.md)」。 この記事では、新しいアカウントを作成するためのすべての手順と、新しい発行元をコマーシャル マーケットプレース プログラムに追加する方法について説明します。
 
 > [!NOTE]
 > この手順では、パートナー センターで " *所有者* " または " *マネージャー* " のロールが必要です。
@@ -66,11 +66,11 @@ ISV コネクト プログラムのアカウントを設定して管理するに
 
 ビジネス アプリケーション ISV コネクト プログラムに登録する最後の手順は、既存のアプリケーションを発行して認定を受けることです。 アプリケーションを AppSource に発行して認定を受けるには、適切なリンクに従ってください。
 
-- [Dynamics 365 Customer Engagement の場合](https://docs.microsoft.com/powerapps/developer/common-data-service/publish-app-appsource) 
-- [Dynamics 365 for Finance and Operations の場合](https://docs.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)
+- [Dynamics 365 Customer Engagement の場合](/powerapps/developer/common-data-service/publish-app-appsource) 
+- [Dynamics 365 for Finance and Operations の場合](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)
 
 > [!IMPORTANT]
-> AppSource でアプリをライブ状態に保つには、6 か月ごとにアプリを再認定する必要があります。 詳細については、「[コマーシャル マーケットプレースの認定ポリシー](https://docs.microsoft.com/legal/marketplace/certification-policies)」を参照してください。
+> AppSource でアプリをライブ状態に保つには、6 か月ごとにアプリを再認定する必要があります。 詳細については、「[コマーシャル マーケットプレースの認定ポリシー](/legal/marketplace/certification-policies)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

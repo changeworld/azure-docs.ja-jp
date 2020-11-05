@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 3b74f3ecdc048b6468906fb46a848d27cd1f23b9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 7008c305525c7564e57fd225e961b462bf6939f2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275424"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130835"
 ---
 # <a name="support-for-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースのサポート
 
@@ -32,7 +32,7 @@ Microsoft コマーシャル マーケットプレースの発行元としての
 
 | サポート窓口 | 説明 |  
 |:--- |:--- |  
-| MSDN フォーラム:[Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/products/azure)にある Marketplace | Microsoft Developer Network のフォーラム。 |  
+| MSDN フォーラム:[Microsoft Q&A 質問ページ](/answers/products/azure)にある Marketplace | Microsoft Developer Network のフォーラム。 |  
 | Stack Overflow:[stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) にある Azure | ソリューションを取得し、Azure Marketplace に関連するあらゆることについて質問するための Stack Overflow 環境。<ul> <li>Stack Overflow:[stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace) にある Azure Marketplace</li> <li>Stack Overflow:[stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager) にある Azure Resource Manager</li> <li>Stack Overflow:[stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine) にある Virtual Machines on Azure</li> <li>Stack Overflow:[stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container) にある Containers on Azure</li> </ul> |
 
 ## <a name="marketing-resources"></a>マーケティング リソース  

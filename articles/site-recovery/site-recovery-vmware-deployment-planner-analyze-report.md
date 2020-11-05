@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery を使用した VMware ディザスター リカバリーについての Deployment Planner レポートを分析する
 description: この記事では、Azure Site Recovery を使用した Azure への VMware ディザスター リカバリーについて Recovery Deployment Planner によって生成されるレポートを分析する方法を説明します。
-author: mayurigupta13
+author: rajeswari-mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/4/2019
-ms.author: mayg
-ms.openlocfilehash: ef4baa4be7f6058ca704f8f499c47099de7c1a85
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.author: ramamill
+ms.openlocfilehash: 7e2db720bb37a25b8511bd1c42c0c18e139aa216
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372091"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186605"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーについての Deployment Planner レポートを分析する
 
@@ -178,7 +178,7 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 
 **[VM Name]\(VM 名\)** :レポートの生成時に VMListFile で使った VM の名前または IP アドレスです。 また、VM にアタッチされたディスク (VMDK) もこの列に一覧表示されます。 vCenter において名前または IP アドレスが重複する VM を区別するために、VM 名には ESXi ホスト名が一緒に表示されます。 このときに表示される ESXi ホストは、プロファイリング期間中、Deployment Planner ツールによって VM が最初に検出されたときに配置されていたホストです。
 
-**[VM Compatibility]\(VM 適合性\)** : 値は **Yes** および **Yes\* *_ です。_* Yes**\* は、[Premium SSD](../virtual-machines/disks-types.md) に適した VM があるインスタンスに付けられます。 ただしこの場合、プロファイリング結果によると変更頻度または IOPS の高いディスクが、P20 または P30 のカテゴリに適しているのに、ディスクのサイズが原因でそれよりも低い P10 または P20 にマッピングされています。 ストレージ アカウントでは、Premium Storage のディスク タイプが、そのサイズに基づいて決定されます。 次に例を示します。
+**[VM Compatibility]\(VM 適合性\)** : 値は **Yes** および **Yes\* *_ です。_* Yes**\* は、 [Premium SSD](../virtual-machines/disks-types.md) に適した VM があるインスタンスに付けられます。 ただしこの場合、プロファイリング結果によると変更頻度または IOPS の高いディスクが、P20 または P30 のカテゴリに適しているのに、ディスクのサイズが原因でそれよりも低い P10 または P20 にマッピングされています。 ストレージ アカウントでは、Premium Storage のディスク タイプが、そのサイズに基づいて決定されます。 次に例を示します。
 * 128 GB 未満の場合は P10
 * 128 ～ 256 GB の場合は P15
 * 256 ～ 512 GB の場合は P20

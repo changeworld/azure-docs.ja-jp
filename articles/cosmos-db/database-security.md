@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: mjbrown
-ms.openlocfilehash: 35bfc45ffffac17a2eca40cb51c2db5d94c140a2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 5b2457018daf716052b81a8b99c21e3248f185eb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487468"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096786"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB のセキュリティ - 概要
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 この記事では、データベースのセキュリティに関するベスト プラクティスと、データベース侵害を防止、検出、および対応するために役立つ Azure Cosmos DB の主な機能について説明します。
 
@@ -79,7 +80,7 @@ ms.locfileid: "92487468"
 |強力なパスワードを持つ管理者アカウント|今でもこの要件について言及する必要があることは信じ難いことですが、一部の競合他社とは異なり、Azure Cosmos DB では、パスワードを持たない管理アカウントは存在できません。<br><br> TLS と HMAC のシークレット ベースの認証によるセキュリティは、既定で組み込まれています。|
 |セキュリティとデータ保護の認証| 最新の認定の一覧については、全体的な [Azure コンプライアンス サイト](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings)のほか、すべての認定を含む最新の [Azure コンプライアンス ドキュメント](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) (Cosmos を検索) を参照してください。 より焦点を絞った記事については、2018 年 4 月 25 日の投稿「Azure #CosmosDB:Secure, private, compliant」(Azure #CosmosDB: セキュリティ保護、プライベート、準拠) を確認してください。これには、SOCS 1/2 Type 2、HITRUST、PCI DSS Level 1、ISO 27001、HIPAA、FedRAMP High のほか多数が含まれています。
 
-次のスクリーン ショットは、監査ログとアクティビティ ログを使用して自分のアカウントを監視する方法を示しています。:::image type="content" source="./media/database-security/nosql-database-security-application-logging.png" alt-text="顧客とデータベース プロバイダーの責任":::
+次のスクリーン ショットは、監査ログとアクティビティ ログを使用して自分のアカウントを監視する方法を示しています。:::image type="content" source="./media/database-security/nosql-database-security-application-logging.png" alt-text="Azure Cosmos DB のアクティビティ ログ":::
 
 <a id="primary-keys"></a>
 
@@ -98,7 +99,7 @@ Cosmos DB アカウント用の 2 つの主キーに加えて、2 つの読み�
 
 主、セカンダリ、読み取り専用、および読み取り書き込みの主キーは、Azure portal で取得と再生成を行うことができます。 手順については、「[アクセス キーを表示、コピー、および再生成する](manage-with-cli.md#regenerate-account-key)」を参照してください。
 
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="顧客とデータベース プロバイダーの責任":::
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Azure portal でのアクセス制御 (IAM) - NoSQL データベースのセキュリティのデモ":::
 
 ## <a name="next-steps"></a>次のステップ
 

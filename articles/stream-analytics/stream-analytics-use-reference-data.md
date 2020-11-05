@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/11/2020
-ms.openlocfilehash: 8aae9a0ff3ffdbd4f6bc93db5c6f15dcb938080e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a08b73a74d30a99ba3c360f012d5917f1d0c8bf
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84196436"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129730"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics での参照に参照データを使用する
 
-参照データ (別名、ルックアップ テーブル) は、静的または本来はあまり変更されない有限のデータ セットであり、データ ストリームのルックアップや増大を行うために使用されます。 たとえば、IoT のシナリオでは、センサーに関する (変化が頻繁ではない) メタデータを参照データに格納し、リアルタイムの IoT データ ストリームと結合することができます。 Azure Stream Analytics は、参照データをメモリに読み込んで、待機時間の短いストリーム処理を実現します。 Azure Stream Analytics ジョブで参照データを使用するには、一般にクエリで[参照データの結合](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics)を使用します。 
+参照データ (別名、ルックアップ テーブル) は、静的または本来はあまり変更されない有限のデータ セットであり、データ ストリームのルックアップや増大を行うために使用されます。 たとえば、IoT のシナリオでは、センサーに関する (変化が頻繁ではない) メタデータを参照データに格納し、リアルタイムの IoT データ ストリームと結合することができます。 Azure Stream Analytics は、参照データをメモリに読み込んで、待機時間の短いストリーム処理を実現します。 Azure Stream Analytics ジョブで参照データを使用するには、一般にクエリで[参照データの結合](/stream-analytics-query/reference-data-join-azure-stream-analytics)を使用します。 
 
 ## <a name="example"></a>例  
 自動車が料金所を通過したときに生成されるイベントのリアルタイム ストリームを作成できます。 料金所では、ライセンス プレートをリアルタイムでキャプチャし、登録の詳細がある静的なデータセットと結合して、有効期限が切れたライセンス プレートを識別できます。  
@@ -33,11 +33,11 @@ Stream Analytics は、参照データの格納レイヤーとして Azure BLOB 
 
 ## <a name="azure-blob-storage"></a>Azure BLOB ストレージ
 
-参照データは、BLOB (入力構成に定義された) のシーケンスとしてモデル化され、BLOB の名前内で指定された日付/時刻の昇順で並べられます。 シーケンス内の最後の BLOB で指定された日付/時刻より**新しい**日付/時刻を使用してシーケンスの末尾に追加することがサポートされている**だけ**です。
+参照データは、BLOB (入力構成に定義された) のシーケンスとしてモデル化され、BLOB の名前内で指定された日付/時刻の昇順で並べられます。 シーケンス内の最後の BLOB で指定された日付/時刻より **新しい** 日付/時刻を使用してシーケンスの末尾に追加することがサポートされている **だけ** です。
 
 ### <a name="configure-blob-reference-data"></a>BLOB 参照データを構成する
 
-参照データを構成するには、まず、タイプが **参照データ**の入力を作成する必要があります。 次の表では、参照データ入力とその説明を作成するときに指定する必要がある各プロパティについて説明します。
+参照データを構成するには、まず、タイプが **参照データ** の入力を作成する必要があります。 次の表では、参照データ入力とその説明を作成するときに指定する必要がある各プロパティについて説明します。
 
 |**プロパティ名**  |**説明**  |
 |---------|---------|
@@ -57,12 +57,12 @@ Stream Analytics は、参照データの格納レイヤーとして Azure BLOB 
 
 ### <a name="generate-reference-data-on-a-schedule"></a>スケジュールに従って参照データを生成する
 
-参照データが変更頻度の低いデータセットである場合、参照データの更新をサポートするには、{date} および {time} 置換トークンを使用する入力構成でパス パターンを指定します。 Stream Analytics は、このパス パターンに基づいて、更新された参照データ定義を取得します。 たとえば、日付形式が "**YYYY-MM-DD**" で、時刻形式が "**HH-mm**" の `sample/{date}/{time}/products.csv` パターンは、更新された BLOB `sample/2015-04-16/17-30/products.csv` を UTC タイム ゾーンの 2015 年 4 月 16 日の午後 5 時 30 分に回収するように Stream Analytics に指示します。
+参照データが変更頻度の低いデータセットである場合、参照データの更新をサポートするには、{date} および {time} 置換トークンを使用する入力構成でパス パターンを指定します。 Stream Analytics は、このパス パターンに基づいて、更新された参照データ定義を取得します。 たとえば、日付形式が " **YYYY-MM-DD** " で、時刻形式が " **HH-mm** " の `sample/{date}/{time}/products.csv` パターンは、更新された BLOB `sample/2015-04-16/17-30/products.csv` を UTC タイム ゾーンの 2015 年 4 月 16 日の午後 5 時 30 分に回収するように Stream Analytics に指示します。
 
 Azure Stream Analytics は、更新された参照データ BLOB を、1 分間隔で自動的にスキャンします。 わずかな遅延ありでタイムスタンプ 10:30:00 で BLOB をアップロードした場合 (たとえば、10:30:30)、この BLOB を参照する Stream Analytics ジョブでわずかな遅延が認識されます。 このようなシナリオを避けるためには、対象の有効時刻 (この例では 10:30:00) より前に、BLOB をアップロードし、Azure Stream Analytics ジョブが十分な時間を持ってメモリ内を探したりロードし、操作を実行できるようにすることをお勧めします。 
 
 > [!NOTE]
-> 現在、Stream Analytics のジョブは、コンピューター時間が、BLOB の名前でエンコードされた時刻まで進んだ場合にのみ、BLOB の更新を検索します。 たとえば、ジョブは、`sample/2015-04-16/17-30/products.csv` を、できるだけ早く、ただし、UTC タイム ゾーンの 2015 年 4 月 16 日午後 5 時 30 分以降に検索します。 BLOB のエンコードされた時刻が、検出された最新時刻よりも前の場合、その BLOB は "*決して*" 検索されません。
+> 現在、Stream Analytics のジョブは、コンピューター時間が、BLOB の名前でエンコードされた時刻まで進んだ場合にのみ、BLOB の更新を検索します。 たとえば、ジョブは、`sample/2015-04-16/17-30/products.csv` を、できるだけ早く、ただし、UTC タイム ゾーンの 2015 年 4 月 16 日午後 5 時 30 分以降に検索します。 BLOB のエンコードされた時刻が、検出された最新時刻よりも前の場合、その BLOB は " *決して* " 検索されません。
 > 
 > たとえば、ジョブによって BLOB `sample/2015-04-16/17-30/products.csv` が検索されると、エンコードされた日付が 2015 年 4 月 16 日午後 5 時 30 分より前のファイルはすべて無視されるため、到着が遅れた `sample/2015-04-16/17-25/products.csv` BLOB が同じコンテナーに作成された場合でも、それはジョブでは使用されません。
 > 
@@ -78,8 +78,8 @@ Azure Stream Analytics は、更新された参照データ BLOB を、1 分間�
 2. 参照データを更新するための推奨方法は次のとおりです。
     * パス パターンで {date}/{time} を使用する
     * ジョブ入力に定義されているコンテナーとパス パターンを使用して、新しい BLOB を追加する
-    * シーケンスの最後の BLOB で指定されている日付/時刻よりも**後の**値を使用する
-3. 参照データの BLOB の並び替えは、BLOB の "最終変更" 時刻では行われ**ません**。{date} および {time} の置換文字を使用して BLOB 名に指定されている時刻と日付によってのみ行われます。
+    * シーケンスの最後の BLOB で指定されている日付/時刻よりも **後の** 値を使用する
+3. 参照データの BLOB の並び替えは、BLOB の "最終変更" 時刻では行われ **ません** 。{date} および {time} の置換文字を使用して BLOB 名に指定されている時刻と日付によってのみ行われます。
 3. 多数の BLOB を列挙する必要がないように、今後処理を行う予定がない非常に古い BLOB は削除することを検討してください。 ASA では、再起動のような一部のシナリオで少量の再処理が必要になる可能性がある点に注意してください。
 
 ## <a name="azure-sql-database"></a>Azure SQL データベース
@@ -94,15 +94,15 @@ Stream Analytics には、Azure SQL Database に対するクエリの実行に�
 
 ### <a name="configure-sql-database-reference"></a>SQL Database 参照を構成する
 
-SQL Database 参照データを構成するには、まず**参照データ**入力を作成する必要があります。 次の表は、参照データ入力の作成中に指定する必要がある各プロパティとその説明を示しています。 詳細については、[SQL Database からの参照データの Azure Stream Analytics ジョブでの使用](sql-reference-data.md)に関するページを参照してください。
+SQL Database 参照データを構成するには、まず **参照データ** 入力を作成する必要があります。 次の表は、参照データ入力の作成中に指定する必要がある各プロパティとその説明を示しています。 詳細については、[SQL Database からの参照データの Azure Stream Analytics ジョブでの使用](sql-reference-data.md)に関するページを参照してください。
 
-参照データ入力として [Azure SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) を使用できます。 [SQL Managed Instance でパブリック エンドポイントを構成](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)してから、Azure Stream Analytics で次の設定を手動で構成する必要があります。 データベースがアタッチされた SQL Server が実行されている Azure 仮想マシンも、以下の設定を手動で構成することによりサポートされます。
+参照データ入力として [Azure SQL Managed Instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) を使用できます。 [SQL Managed Instance でパブリック エンドポイントを構成](../azure-sql/managed-instance/public-endpoint-configure.md)してから、Azure Stream Analytics で次の設定を手動で構成する必要があります。 データベースがアタッチされた SQL Server が実行されている Azure 仮想マシンも、以下の設定を手動で構成することによりサポートされます。
 
 |**プロパティ名**|**説明**  |
 |---------|---------|
 |入力のエイリアス|この入力を参照するジョブ クエリで使用されるわかりやすい名前。|
 |サブスクリプション|サブスクリプションの選択|
-|データベース|参照データを含む Azure SQL Database。 SQL Managed Instance の場合は、ポート 3342 を指定する必要があります。 たとえば、*sampleserver.public.database.windows.net,3342* のようになります|
+|データベース|参照データを含む Azure SQL Database。 SQL Managed Instance の場合は、ポート 3342 を指定する必要があります。 たとえば、 *sampleserver.public.database.windows.net,3342* のようになります|
 |ユーザー名|Azure SQL Database に関連付けられているユーザー名。|
 |Password|Azure SQL Database に関連付けられているパスワード。|
 |定期的に更新|このオプションでは、リフレッシュ レートを選択できます。 "On"(オン) を選択すると、リフレッシュ レートを DD:HH:MM で指定できます。|
@@ -146,6 +146,6 @@ JOIN    refData2 ON refData2.Desc = Step1.Desc
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.get.started]: stream-analytics-get-started.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.get.started]: ./stream-analytics-real-time-fraud-detection.md
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

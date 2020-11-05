@@ -1,17 +1,17 @@
 ---
 title: 停止または開始する - Azure portal - Azure Database for MySQL サーバー
 description: この記事では、Azure Database for MySQL で操作を停止または開始する方法について説明します。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: 95be6aa576d9d059ce419443f8c7e32af5ff397a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 047a24133dfdf68e2176b20cf31a871d11f0d4f9
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826197"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241159"
 ---
 # <a name="stopstart-an-azure-database-for-mysql"></a>Azure Database for MySQL を停止または開始する
 
@@ -48,7 +48,7 @@ ms.locfileid: "91826197"
 
 2.  **[概要]** ページのツール バーで **[起動]** ボタンをクリックします。
 
-    :::image type="content" source="./media/howto-stop-start-server/mysql-start-server.png" alt-text="Azure Database for MySQL サーバーの停止":::
+    :::image type="content" source="./media/howto-stop-start-server/mysql-start-server.png" alt-text="Azure Database for MySQL サーバーの開始":::
 
     > [!NOTE]
     > サーバーが起動した後、すべての管理操作を単一サーバーで使用できるようになります。

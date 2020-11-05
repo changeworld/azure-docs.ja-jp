@@ -8,22 +8,22 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 5776c741bb69d345f191e5673fe388328d0fe7bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93e10baa5281481b57e945f93b7375060b574de5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89015596"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126857"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>管理用 .NET SDK:.NET 用 Azure Stream Analytics API を使用した分析ジョブの設定と実行
 管理用 .NET SDK を使用する .NET 用 Stream Analytics API で、分析ジョブを設定して実行する方法について説明します。 プロジェクトの設定、入力と出力ソース、変換の作成、およびジョブの開始と停止を行います。 分析ジョブでは、BLOB ストレージまたはイベント ハブからデータをストリームできます。
 
-[管理用 Stream Analytics API の管理リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn889315.aspx)を参照してください。
+[管理用 Stream Analytics API の管理リファレンス ドキュメント](/previous-versions/azure/dn889315(v=azure.100))を参照してください。
 
 Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド内のデータのストリーミング データに対する拡張性の高い複雑なイベント処理を実現する、フル マネージドのサービスです。 Stream Analytics により、ユーザーはデータ ストリームを分析するためにストリーミングのジョブを設定でき、ほぼリアルタイムで分析を実行できます。  
 
 > [!NOTE]
-> この記事では、Azure Stream Analytics 管理用 .NET SDK v2.x バージョンを使用してサンプル コードを更新しました。 レガシ (1.x) バージョンの SDK を使用するサンプル コードについては、「[管理用 .NET SDK v1.x: .NET 用 Azure Stream Analytics API を使用した分析ジョブの設定と実行](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1)」を参照してください。
+> この記事では、Azure Stream Analytics 管理用 .NET SDK v2.x バージョンを使用してサンプル コードを更新しました。 レガシ (1.x) バージョンの SDK を使用するサンプル コードについては、「[管理用 .NET SDK v1.x: .NET 用 Azure Stream Analytics API を使用した分析ジョブの設定と実行]()」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 この記事の操作を始める前に、以下の要件を満たしておく必要があります。
@@ -167,7 +167,7 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
    ```
 
 ## <a name="create-a-stream-analytics-input-source"></a>Stream Analytics の入力ソースの作成
-次のコードは、BLOB 入力ソースの種類と CSV シリアル化が指定された Stream Analytics の入力ソースを作成します。 イベント ハブ入力ソースを作成するには、**BlobStreamInputDataSource** の代わりに **EventHubStreamInputDataSource** を使用します。 同様に、入力ソースのシリアル化の種類もカスタマイズすることができます。
+次のコードは、BLOB 入力ソースの種類と CSV シリアル化が指定された Stream Analytics の入力ソースを作成します。 イベント ハブ入力ソースを作成するには、 **BlobStreamInputDataSource** の代わりに **EventHubStreamInputDataSource** を使用します。 同様に、入力ソースのシリアル化の種類もカスタマイズすることができます。
 
    ```csharp
    // Create an input
@@ -285,7 +285,7 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
    ```
 
 ## <a name="get-support"></a>サポートを受ける
-詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください。
+詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](/answers/topics/azure-stream-analytics.html)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 分析ジョブを作成して実行するために .NET SDK を使用する方法の基本を学習できました。 詳細については、以下の記事をお読みください。
@@ -293,9 +293,9 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics 管理用 .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics 管理用 .NET SDK](/previous-versions/azure/dn889315(v=azure.100))
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](/rest/api/streamanalytics/)
 
 <!--Image references-->
 [5]: ./media/markdown-template-for-new-articles/octocats.png
@@ -305,17 +305,17 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
 
 <!--Link references-->
 [azure.blob.storage]: https://azure.microsoft.com/documentation/services/storage/
-[azure.blob.storage.use]: https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/
+[azure.blob.storage.use]: ../storage/blobs/storage-quickstart-blobs-dotnet.md
 
 [azure.event.hubs]: https://azure.microsoft.com/services/event-hubs/
-[azure.event.hubs.developer.guide]: https://msdn.microsoft.com/library/azure/dn789972.aspx
+[azure.event.hubs.developer.guide]: /previous-versions/azure/dn789972(v=azure.100)
 
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
 [stream.analytics.forum]: https://go.microsoft.com/fwlink/?LinkId=512151
 
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
 [stream.analytics.developer.guide]: stream-analytics-developer-guide.md
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

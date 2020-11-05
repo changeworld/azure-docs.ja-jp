@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 122de64e33778966d563cc8e94b46515e54769f7
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 8bedecd4a050c445af0ab0ae0250197369b9173b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331211"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131413"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Cloud パートナー ポータルからパートナー センターへの切り替えに関してよく寄せられる質問
 
@@ -88,14 +88,14 @@ Dynamics Nav Managed Service オファーと Cortana Intelligence オファー�
 | コンテナー | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[Azure Container オファーを作成する](partner-center-portal/create-azure-container-offer.md)」を参照してください。 |
 | コンサルティング サービス | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[コンサルティング サービス オファーを作成する](partner-center-portal/create-consulting-service-offer.md)」を参照してください。 |
 | マネージド サービス | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[管理サービス オファーの作成](partner-center-portal/create-new-managed-service-offer.md)」を参照してください。 |
-| Dynamics Nav Managed Service | いいえ | Dynamics NAV Managed Service は [Dynamics 365 Business Central](https://docs.microsoft.com/dynamics365/business-central/) に発展したため、Dynamics NAV Managed Service のライブ オファーは AppSource から除外されました。 これらのオファーは、顧客が検出できなくなり、パートナー センターには移動されていません。 自分のオファーを AppSource で利用できるようにするには、それらを Dynamics 365 Business Central オファーに適合させた後、[パートナー センター](https://partner.microsoft.com/)に提出してください。 詳細については、「[Dynamics 365 Business Central オファーの作成](partner-center-portal/create-new-business-central-offer.md)」を参照してください。 |
-| Cortana Intelligence | いいえ | Cortana Intelligence の製品ロード マップが発展したため、Cortana Intelligence のライブ オファーは AppSource から除外されました。 これらのオファーは、顧客が検出できなくなり、パートナー センターには移動されていません。 自分のオファーをコマーシャル マーケットプレースで利用できるようにするには、オファーをサービスとしてのソフトウェア (SaaS) オファーに適合させた後、[パートナー センター](https://partner.microsoft.com/)に提出してください。 詳細については、「[SaaS オファー作成のチェックリスト](partner-center-portal/offer-creation-checklist.md)」を参照してください。 |
+| Dynamics Nav Managed Service | いいえ | Dynamics NAV Managed Service は [Dynamics 365 Business Central](/dynamics365/business-central/) に発展したため、Dynamics NAV Managed Service のライブ オファーは AppSource から除外されました。 これらのオファーは、顧客が検出できなくなり、パートナー センターには移動されていません。 自分のオファーを AppSource で利用できるようにするには、それらを Dynamics 365 Business Central オファーに適合させた後、[パートナー センター](https://partner.microsoft.com/)に提出してください。 詳細については、「[Dynamics 365 Business Central オファーの作成](partner-center-portal/create-new-business-central-offer.md)」を参照してください。 |
+| Cortana Intelligence | いいえ | Cortana Intelligence の製品ロード マップが発展したため、Cortana Intelligence のライブ オファーは AppSource から除外されました。 これらのオファーは、顧客が検出できなくなり、パートナー センターには移動されていません。 自分のオファーをコマーシャル マーケットプレースで利用できるようにするには、オファーをサービスとしてのソフトウェア (SaaS) オファーに適合させた後、[パートナー センター](https://partner.microsoft.com/)に提出してください。 詳細については、「[SaaS オファー作成のチェックリスト](./plan-saas-offer.md)」を参照してください。 |
 
 ## <a name="i-cant-find-my-cloud-partner-portal-offers-in-partner-center"></a>パートナー センターで自分の Cloud パートナー ポータル オファーが見つかりません
 
 パートナー センターに表示される内容は、登録されているプログラム、属しているアカウント、割り当てられているユーザー ロールとアクセス許可によって異なります。 利用可能なパートナー センター プログラムは多数あり、複数のプログラムに登録されている可能性があります。 また、同じユーザー資格情報で複数のアカウントにアクセスできる可能性もあります。
 
-Cloud パートナー ポータルで作成したオファーは、パートナー センターでは **コマーシャル マーケットプレース** プログラムの下、およびオファーの作成に使用したアカウントの下にあります。 正しいプログラムと適切なアカウントを表示していることを確認するには、次の手順のようにします。 その他のトラブルシューティングのヒントについては、「[パートナー センター アカウントを管理する](https://docs.microsoft.com/partner-center/partner-center-account-setup)」を参照してください。
+Cloud パートナー ポータルで作成したオファーは、パートナー センターでは **コマーシャル マーケットプレース** プログラムの下、およびオファーの作成に使用したアカウントの下にあります。 正しいプログラムと適切なアカウントを表示していることを確認するには、次の手順のようにします。 その他のトラブルシューティングのヒントについては、「[パートナー センター アカウントを管理する](/partner-center/partner-center-account-setup)」を参照してください。
 
 ### <a name="access-the-right-program-in-partner-center"></a>パートナー センターで正しいプログラムにアクセスする
 
@@ -143,7 +143,7 @@ Cloud パートナー ポータルで作成したオファーは、パートナ�
 
 ### <a name="enhanced-preview-options"></a>拡充されたプレビュー オプション
 
-パートナー センターには、フィルター オプションが改善された[比較機能](partner-center-portal/update-existing-offer.md#compare-changes-to-commercial-marketplace-offers)が含まれています。 これにより、オファーのプレビューとライブ バージョンを比較できます。
+パートナー センターには、フィルター オプションが改善された[比較機能](partner-center-portal/update-existing-offer.md#compare-changes-to-your-offer)が含まれています。 これにより、オファーのプレビューとライブ バージョンを比較できます。
 
 [![パートナー センターの比較機能を示すスクリーンショット。](media/cpp-pc-faq/compare.png "パートナー センターの比較機能を示す")](media/cpp-pc-faq/compare.png#lightbox)
 

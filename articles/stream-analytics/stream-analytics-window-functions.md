@@ -7,20 +7,20 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/16/2020
-ms.openlocfilehash: 4c8d2143d2b6e18de2669a6b45961e601cc394bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4ddffa5f9e9ff4b313f05c9cedb3cb207695225
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707559"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129705"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Stream Analytics ウィンドウ関数の概要
 
 タイム ストリーミング シナリオでは、テンポラル ウィンドウに含まれているデータに対する操作の実行は一般的なパターンです。 Stream Analytics には、ウィンドウ関数に対するネイティブ サポートがあるため、開発者は複雑なストリーム処理ジョブを最小限の作業で作成できます。
 
-選択できる 5 種類のテンポラル ウィンドウには、[**タンブリング**](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics)、[**ホッピング**](https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics)、[**スライディング**](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics)、[**セッション**](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics)、および[**スナップショット**](https://docs.microsoft.com/stream-analytics-query/snapshot-window-azure-stream-analytics) ウィンドウがあります。  ウィンドウ関数は、Stream Analytics ジョブ内のクエリ構文の [**GROUP BY**](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) 句で使用します。 [**Windows()** 関数](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics)を使用して、複数のウィンドウにわたってイベントを集計することもできます。
+選択できる 5 種類のテンポラル ウィンドウには、 [**タンブリング**](/stream-analytics-query/tumbling-window-azure-stream-analytics)、 [**ホッピング**](/stream-analytics-query/hopping-window-azure-stream-analytics)、 [**スライディング**](/stream-analytics-query/sliding-window-azure-stream-analytics)、 [**セッション**](/stream-analytics-query/session-window-azure-stream-analytics)、および [**スナップショット**](/stream-analytics-query/snapshot-window-azure-stream-analytics) ウィンドウがあります。  ウィンドウ関数は、Stream Analytics ジョブ内のクエリ構文の [**GROUP BY**](/stream-analytics-query/group-by-azure-stream-analytics) 句で使用します。 [**Windows()** 関数](/stream-analytics-query/windows-azure-stream-analytics)を使用して、複数のウィンドウにわたってイベントを集計することもできます。
 
-すべての[ウィンドウ](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)操作が、ウィンドウの**終了**時に結果を出力します。 Stream Analytics ジョブを開始するときは、 *[ジョブの出力の開始時刻]* を指定でき、指定した時刻に最初のウィンドウを出力するために、受信ストリームで以前のイベントが自動的にフェッチされます。たとえば、 *[今すぐ]* オプションを使用して開始すると、すぐにデータの出力が開始されます。 ウィンドウの出力は、使用される集計関数に基づく単一のイベントになります。 出力イベントにはウィンドウの終了のタイム スタンプが割り当てられ、すべてのウィンドウ関数が固定長で定義されています。 
+すべての [ウィンドウ](/stream-analytics-query/windowing-azure-stream-analytics)操作が、ウィンドウの **終了** 時に結果を出力します。 Stream Analytics ジョブを開始するときは、 *[ジョブの出力の開始時刻]* を指定でき、指定した時刻に最初のウィンドウを出力するために、受信ストリームで以前のイベントが自動的にフェッチされます。たとえば、 *[今すぐ]* オプションを使用して開始すると、すぐにデータの出力が開始されます。 ウィンドウの出力は、使用される集計関数に基づく単一のイベントになります。 出力イベントにはウィンドウの終了のタイム スタンプが割り当てられ、すべてのウィンドウ関数が固定長で定義されています。 
 
 ![Stream Analytics ウィンドウ関数の概念](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "91707559"
 
 ## <a name="snapshot-window"></a>スナップショット ウィンドウ
 
-スナップショット ウィンドウでは、同じタイムスタンプを持つイベントがグループ化されます。 特定のウィンドウ関数 ([SessionWindow()](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics) など) を必要とする他のウィンドウの種類とは異なり、System.Timestamp() を GROUP BY 句に追加することでスナップショット ウィンドウを適用できます。
+スナップショット ウィンドウでは、同じタイムスタンプを持つイベントがグループ化されます。 特定のウィンドウ関数 ([SessionWindow()](/stream-analytics-query/session-window-azure-stream-analytics) など) を必要とする他のウィンドウの種類とは異なり、System.Timestamp() を GROUP BY 句に追加することでスナップショット ウィンドウを適用できます。
 
 ![Stream Analytics のスナップショット ウィンドウ](media/stream-analytics-window-functions/snapshot.png)
 
@@ -61,6 +61,5 @@ ms.locfileid: "91707559"
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](/rest/api/streamanalytics/)

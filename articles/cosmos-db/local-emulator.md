@@ -7,14 +7,15 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: 9455ac3520192274e80f2d9e0fdfd1c8f8a238a3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b1a0382b6bb650b6761897f4a16f988e5ce00c1e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482623"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088745"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストのために Azure Cosmos エミュレーターをインストールして使用する
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos エミュレーターは、開発目的で Azure Cosmos DB サービスをエミュレートするローカル環境を提供するものです。 Azure Cosmos エミュレーターを使用すると、ローカルでのアプリケーションの開発とテストを、Azure サブスクリプションを作成したりコストをかけたりせずに実施できます。 Azure Cosmos エミュレーターでのアプリケーションの動作に満足できたら、クラウドでの Azure Cosmos アカウントの使用に切り替えることができます。 この記事では、Windows、Linux、macOS、および Windows Docker 環境にエミュレーターをインストールして使用する方法について説明します。
 
@@ -86,13 +87,13 @@ Azure Cosmos エミュレーターは、既定で `C:\Program Files\Azure Cosmos
 
 エミュレーターが起動すると、Windows タスク バーの通知領域にアイコンが表示されます。 この URL `https://localhost:8081/_explorer/index.html` URL の Azure Cosmos データ エクスプローラーがブラウザーで自動的に開きます。
 
-:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="[スタート] ボタンを選択するか Windows キーを押して「Azure Cosmos エミュレーター」と入力し、アプリケーションの一覧からエミュレーターを選択する":::
+:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="Azure Cosmos DB ローカル エミュレーターのタスク バーの通知":::
 
 コマンドラインまたは PowerShell コマンドからエミュレーターを起動および停止することもできます。 詳細については、[コマンドライン ツールのリファレンス](emulator-command-line-parameters.md)の記事を参照してください。
 
 Azure Cosmos エミュレーターは、既定ではポート 8081 でリッスンしているローカル コンピューター ("localhost") で実行されます。 アドレスは `https://localhost:8081/_explorer/index.html` として表示されます。 エクスプローラーを閉じた後にもう一度開く場合は、ブラウザーでこの URL を開くか、次に示すように Windows トレイ アイコンの Azure Cosmos エミュレーターから起動できます。
 
-:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="[スタート] ボタンを選択するか Windows キーを押して「Azure Cosmos エミュレーター」と入力し、アプリケーションの一覧からエミュレーターを選択する":::
+:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="Azure Cosmos ローカル エミュレーターのデータ エクスプローラー起動ツール":::
 
 ## <a name="use-the-emulator-on-docker-for-windows"></a><a id="run-on-windows-docker"></a>Docker for Windows 上でエミュレーターを使用する
 
@@ -295,7 +296,7 @@ Mac 環境では、次の手順に従います。
 
 1. その特定の項目のコンテキスト メニューを開いて *[項目の取得]* を選択し、 *[信頼]*  >  *[この証明書を使用するとき]* オプションの *[常に信頼]* を選択します。 
 
-   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="[スタート] ボタンを選択するか Windows キーを押して「Azure Cosmos エミュレーター」と入力し、アプリケーションの一覧からエミュレーターを選択する":::
+   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="その特定の項目のコンテキスト メニューを開いて [項目の取得] を選択し、[信頼] の [この証明書を使用するとき] オプションで [常に信頼] を選択する":::
   
 ### <a name="option-2-disable-the-ssl-validation-in-the-application"></a><a id="disable-ssl-validation"></a>オプション 2: アプリケーションで SSL 検証を無効にする
 

@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/15/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 452259015cf78234aa6a96194342de20db9a3724
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 615ce7da3ec480b766ceaeb307c50f7cb759fd4a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740874"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100118"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>Azure Cosmos DB - SQL API のデータベースまたはコンテナーで、自動スケーリングのスループットをプロビジョニングする
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、Azure Cosmos DB SQL API のデータベースまたはコンテナー (コレクション、グラフ、またはテーブル) で、自動スケーリングのスループットをプロビジョニングする方法について説明します。 自動スケーリングは、単一のコンテナーを対象に有効にできるほか、データベースを対象に自動スケーリングのスループットをプロビジョニングして、それをデータベースのすべてのコンテナーで共有することもできます。
 
@@ -50,7 +51,7 @@ ms.locfileid: "92740874"
 
 1. **[スケーリング]** で、 **[自動スケーリング]** オプションを選択して **[保存]** します。
 
-   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="コンテナーの作成と、自動スケーリングによってプロビジョニングされたスループットの構成":::
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="既存のコンテナーで自動スケーリングを有効にする":::
 
 > [!NOTE]
 > 既存のデータベースまたはコンテナーで自動スケーリングを有効にする場合、最大 RU/s の開始値は、現在の手動でプロビジョニングされたスループットの設定とストレージに基づいて、システムによって決定されます。 操作が完了したら、必要に応じて最大 RU/s を変更できます。 [詳細情報。](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 

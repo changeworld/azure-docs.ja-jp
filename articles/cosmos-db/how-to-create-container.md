@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: eb9e8caff81e86b7db732c970eee1e1a08be5241
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 302c5d6e8e523a11b8773f10bb6089e3bea09bdd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491106"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101563"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API にコンテナーを作成する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、Azure Cosmos DB SQL API にコンテナーを作成するいくつかの方法について説明します。 Azure portal、Azure CLI、PowerShell、またはサポートされている SDK を使用して、コンテナーを作成する方法が示されます。 この記事では、コンテナーを作成してパーティション キーを指定し、スループットをプロビジョニングする方法を紹介します。
 

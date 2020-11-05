@@ -1,18 +1,18 @@
 ---
 title: データの暗号化 - Azure CLI - Azure Database for PostgreSQL - 単一サーバー
 description: Azure CLI を使用して Azure Database for PostgreSQL 単一サーバーのデータ暗号化を設定および管理する方法について説明します。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7494135cd4912ec8e59a32592ebcca0e0a6813b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 757782e8842fbcaca9c8d95ec8086dd5791a817b
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797816"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240615"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化
 
@@ -49,7 +49,7 @@ Azure CLI を使用して Azure Database for PostgreSQL 単一サーバーのデ
 * カスタマー マネージド キーとして使用するには、キーに次の属性が必要です。
   * 有効期限がない
   * 無効化されていない
-  * **get**、**wrap** および **unwrap** の操作を実行する
+  * **get** 、 **wrap** および **unwrap** の操作を実行する
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>キー操作に対する適切なアクセス許可を設定する
 
@@ -67,7 +67,7 @@ Azure CLI を使用して Azure Database for PostgreSQL 単一サーバーのデ
     az postgres server update --resource-group <resource_group> --name <server_name> --assign-identity
     ```
 
-2. PostgreSQL 単一サーバーの名前である**プリンシパル**に対して、**キーのアクセス許可** (**get**、**wrap**、**unwrap**) を設定します。
+2. PostgreSQL 単一サーバーの名前である **プリンシパル** に対して、 **キーのアクセス許可** ( **get** 、 **wrap** 、 **unwrap** ) を設定します。
 
     ```azurecli-interactive
     az keyvault set-policy --name -g <resource_group> --key-permissions get unwrapKey wrapKey --object-id <principal id of the server>
