@@ -3,18 +3,20 @@ title: Azure Cosmos DB クエリ言語の DateTimeAdd
 description: Azure Cosmos DB の SQL システム関数 DateTimeAdd について説明します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 0b2741a3d2b013ba7bd97038eb4ba4512f36af11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc81849a13fdaef748c5fd631ee66ea5e3eb67c4
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86261577"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335791"
 ---
 # <a name="datetimeadd-azure-cosmos-db"></a>DateTimeAdd (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 指定の数値 (符号付き整数値として) を指定の DateTime 文字列に追加することで生成される DateTime 文字列値を返します。  
   

@@ -3,18 +3,20 @@ title: Azure Cosmos DB で一貫性を管理する
 description: Azure portal、.NET SDK、Java SDK など各種の SDK を使用して、Azure Cosmos DB に整合性レベルを構成、管理する方法について説明します
 author: anfeldma-ms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2b3433d969611fabe1b12a8dcabfe6e50066a8c1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b0c03c2f5313605fbdf288a9262df0852e066efd
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491191"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333479"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB で一貫性レベルを管理する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、Azure Cosmos DB で一貫性レベルを管理する方法について説明します。 読者は、既定の一貫性レベルを構成する方法、既定の一貫性をオーバーライドする方法、セッション トークンを手動を管理する方法、および確率論的有界整合性制約 (PBS) メトリックを確認する方法について学習します。
 
@@ -281,7 +283,7 @@ item = client.ReadItem(doc_link, options)
 
 最終的な整合性は、どのくらい最終的でしょうか。 平均的なケースでは、バージョン履歴と時刻に関して、古さの限度を提示できます。 [**確率的有界整合性制約 (PBS)**](https://pbs.cs.berkeley.edu/) メトリックは、古さの可能性を定量化し、それをメトリックとして表示します。 PBS メトリックを表示するには、Azure portal で Azure Cosmos アカウントに移動します。 **[メトリック]** ウィンドウを開き、 **[整合性]** タブを選択します。 **Probability of strongly consistent reads based on your workload (see PBS) (ワークロードに基づいた、強固な一貫性がある読み取りの確率 (PBS を参照))** という名前のグラフを確認します。
 
-:::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Azure portal の一貫性メニュー":::
+:::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Azure portal の PBS グラフ":::
 
 ## <a name="next-steps"></a>次のステップ
 

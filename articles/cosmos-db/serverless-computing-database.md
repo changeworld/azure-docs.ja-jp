@@ -3,17 +3,19 @@ title: Azure Cosmos DB と Azure Functions を使用したサーバーレス デ
 description: Azure Cosmos DB と Azure Functions の両方を使用して、イベント ドリブンのサーバーレス コンピューティング アプリケーションを作成する方法について説明します。
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 0167dc0b1cbf8cf3b95995645ef24548a05c4343
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 73a34cc27eaba33d04f4d31585c7f494f58e7274
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538648"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334074"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB と Azure Functions を使用したサーバーレス データベース コンピューティング
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 サーバーレス コンピューティングとは、繰り返し可能でステートレスな個々のロジックに集中できる機能です。 個々のロジックにインフラストラクチャの管理は必要ありません。秒単位またはミリ秒単位の実行時間のみリソースを使用します。 サーバーレス コンピューティングのムーブメントの中心には、関数があります。関数は、Azure エコシステムの[Azure Functions](https://azure.microsoft.com/services/functions) で使用できます。 Azure での他のサーバーレス実行環境については、「[Azure でのサーバーレス](https://azure.microsoft.com/solutions/serverless/)」ページをご覧ください。 
 
@@ -61,7 +63,7 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 
 次の図は、このトリガーで Azure Portal で書き込まれるコードを示しています。
 
-:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Azure Cosmos DB と Azure Functions を統合する方法":::
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Azure portal で Cosmos DB 用 Azure Functions トリガーを作成する":::
 
 ### <a name="financial-use-case---timer-trigger-and-input-binding"></a>財務ユース ケース - タイマー トリガーと入力バインディング
 
@@ -75,9 +77,9 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 
 次の図は、このシナリオ用の Azure Portal のコードを示しています。
 
-:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="Azure Cosmos DB と Azure Functions を統合する方法":::
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="財務シナリオのタイマー トリガーの Index.js ファイル":::
 
-:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="Azure Cosmos DB と Azure Functions を統合する方法":::
+:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="財務シナリオのタイマー トリガーの Run.csx ファイル":::
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>ゲームのユース ケース - Cosmos DB 用 Azure Functions トリガーと出力バインディング 
 

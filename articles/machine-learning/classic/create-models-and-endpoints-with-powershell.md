@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: ab14547ef5d9791728ce96fdf2c414945a46aab9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef9ea055f437b53313dc9ee11b0b91f095664f5e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362488"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322853"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>ML Studio (クラシック) と PowerShell を使用して 1 つの実験から複数の Web サービス エンドポイントを作成する
 
-**適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 機械学習について多くの人が考えることは、トレーニング ワークフローと使用アルゴリズムが同じ複数のモデルを作成できないものだろうか、ということです。 ただし、入力としては異なるトレーニング データセットを使用します。 この記事では、Azure Machine Learning Studio (クラシック) で 1 つの実験だけを使い、規模の制約なくこの課題に対応する方法を紹介しています。
 
@@ -28,7 +28,7 @@ ms.locfileid: "91362488"
 
 ただ最良の手法であったとしても、それぞれ固有の拠点を表す 1,000 件ものトレーニング実験を Azure Machine Learning Studio (クラシック) で作成するのは非現実的です。 個々の実験の構成要素が、トレーニング データセットを除いてすべて同じであることを考えると、膨大な手間のかかる作業であるだけでなく非効率な方法でもあります。
 
-さいわい、この処理には [Azure Machine Learning Studio (クラシック) の再トレーニング API](/azure/machine-learning/studio/retrain-machine-learning-model) を使用でき、[Azure Machine Learning Studio (クラシック) PowerShell](powershell-module.md) でタスクを自動化することができます。
+さいわい、この処理には [Azure Machine Learning Studio (クラシック) の再トレーニング API](./retrain-machine-learning-model.md) を使用でき、[Azure Machine Learning Studio (クラシック) PowerShell](powershell-module.md) でタスクを自動化することができます。
 
 > [!NOTE]
 > ここではサンプルの実行時間を短くするために、拠点数を 1,000 から 10 に減らすことにします。 しかし拠点が 1,000 か所あっても原理と手順は同じです。 ただし、1,000 データセットからトレーニングする場合は、次の PowerShell スクリプトを並列に実行できます。 その方法はこの記事で取り上げる範囲を超えていますが、PowerShell のマルチスレッド化の例は、インターネットを検索すれば見つかります。  
@@ -43,19 +43,19 @@ ms.locfileid: "91362488"
 > 
 > 
 
-この実験では **データのインポート** モジュールを使用して、Azure ストレージ アカウントからトレーニング データセット *customer001.csv* をインポートします。 トレーニング データセットを自転車レンタルの全拠点から収集し、*rentalloc001.csv* から *rentalloc10.csv* のファイル名で同じ Blob Storage の場所に保存したとします。
+この実験では **データのインポート** モジュールを使用して、Azure ストレージ アカウントからトレーニング データセット *customer001.csv* をインポートします。 トレーニング データセットを自転車レンタルの全拠点から収集し、 *rentalloc001.csv* から *rentalloc10.csv* のファイル名で同じ Blob Storage の場所に保存したとします。
 
 ![リーダー モジュールが Azure BLOB からデータをインポートする](./media/create-models-and-endpoints-with-powershell/reader-module.png)
 
 **Train Model** モジュールに **Web Service Output** モジュールが追加されていることに注目してください。
 この実験を Web サービスとしてデプロイすると、その出力に関連付けられているエンドポイントから、トレーニング済みのモデルが .ilearner ファイル形式で返されます。
 
-また、**データのインポート** モジュールで使用する URL を定義する Web サービス パラメーターを設定しています。 このパラメーターを使用して、拠点ごとのモデルをトレーニングするためのトレーニング データセットを個別に指定することができます。
-これを行う方法は他にもあります。 Web サービス パラメーターで SQL クエリを使用して、Azure SQL Database のデータベースからデータを取得します。 または、**Web サービスの入力**モジュールを使用してデータセットを Web サービスに渡すことができます。
+また、 **データのインポート** モジュールで使用する URL を定義する Web サービス パラメーターを設定しています。 このパラメーターを使用して、拠点ごとのモデルをトレーニングするためのトレーニング データセットを個別に指定することができます。
+これを行う方法は他にもあります。 Web サービス パラメーターで SQL クエリを使用して、Azure SQL Database のデータベースからデータを取得します。 または、 **Web サービスの入力** モジュールを使用してデータセットを Web サービスに渡すことができます。
 
 ![トレーニング済みのモデル モジュールが Web サービス出力モジュールに出力する](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 
-それではトレーニング データセットとして既定値の *rental001.csv* を使用し、このトレーニング実験を実行してみましょう。 **Evaluate** モジュールの出力を表示 (出力をクリックして **[視覚化]** を選択) すると、*AUC* = 0.91 という良好なパフォーマンスが得られていることを確認できます。 これで、このトレーニング実験から Web サービスをデプロイする準備ができました。
+それではトレーニング データセットとして既定値の *rental001.csv* を使用し、このトレーニング実験を実行してみましょう。 **Evaluate** モジュールの出力を表示 (出力をクリックして **[視覚化]** を選択) すると、 *AUC* = 0.91 という良好なパフォーマンスが得られていることを確認できます。 これで、このトレーニング実験から Web サービスをデプロイする準備ができました。
 
 ## <a name="deploy-the-training-and-scoring-web-services"></a>トレーニング Web サービスとスコア付け Web サービスのデプロイ
 トレーニング Web サービスをデプロイするには、実験キャンバスの下にある **[Set Up Web Service (Web サービスのセットアップ)]** ボタンをクリックし、 **[Deploy Web Service (Web サービスのデプロイ)]** を選びます。 この Web サービスを "Bike Rental Training" と呼ぶことにします。
@@ -92,14 +92,14 @@ For ($i = 1; $i -le 10; $i++){
 }
 ```
 
-これで 10 個のエンドポイントが作成されました。いずれのエンドポイントにも、*customer001.csv* でトレーニングされた同じトレーニング済みモデルが含まれています。 それを Azure Portal で確認することができます。
+これで 10 個のエンドポイントが作成されました。いずれのエンドポイントにも、 *customer001.csv* でトレーニングされた同じトレーニング済みモデルが含まれています。 それを Azure Portal で確認することができます。
 
 ![ポータル内でトレーニング済みモデルの一覧を確認する](./media/create-models-and-endpoints-with-powershell/created-endpoints.png)
 
 ## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>個別のトレーニング データセットを使用するように PowerShell を使ってエンドポイントを更新する
 次に、各顧客の個別のデータで独自にトレーニングされたモデルでエンドポイントを更新します。 ただし最初に、これらのモデルを **Bike Rental Training** Web サービスから生成する必要があります。 **Bike Rental Training** Web サービスに戻りましょう。 10 個の異なるモデルを作成するためには、対応する BES エンドポイントを 10 回、10 個の異なるトレーニング データセットで呼び出す必要があります。 ここでは、PowerShell コマンドレット **InovkeAmlWebServiceBESEndpoint** を使用してこの処理を実行します。
 
-また、Blob Storage アカウントの資格情報を `$configContent` に与える必要があります。 つまり、フィールド `AccountName`、`AccountKey`、`RelativeLocation` です。 `AccountName` には、自分が所有するいずれかのアカウント名を指定できます。アカウント名は、**Azure Portal** ( *[ストレージ]* タブ) に表示されます。 ストレージ アカウントをクリックし、一番下にある **[アクセス キーの管理]** ボタンを押して*プライマリ アクセス キー*をコピーすることによって、対応する `AccountKey` を確認できます。 `RelativeLocation` には、新しいモデルの保存先を、ストレージを起点とする相対パスで指定します。 たとえば、以下のスクリプトでパス `hai/retrain/bike_rental/` が指し示しているのは、`hai` という名前のコンテナーであり、`/retrain/bike_rental/` はサブフォルダーです。 現在サブフォルダーをポータルの UI で作成することはできませんが、[いくつかの Azure ストレージ エクスプローラー](../../storage/common/storage-explorers.md)で作成することはできます。 トレーニング済みの新しいモデル (.ilearner ファイル) は、ストレージに新しいコンテナーを作成して保存することをお勧めします。コンテナーを作成するには、ストレージ ページの一番下にある **[追加]** をクリックし、`retrain` という名前を付けます。 まとめると、以下のスクリプトでは、`AccountName`、`AccountKey`、`RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`) に関して変更が必要となります。
+また、Blob Storage アカウントの資格情報を `$configContent` に与える必要があります。 つまり、フィールド `AccountName`、`AccountKey`、`RelativeLocation` です。 `AccountName` には、自分が所有するいずれかのアカウント名を指定できます。アカウント名は、 **Azure Portal** ( *[ストレージ]* タブ) に表示されます。 ストレージ アカウントをクリックし、一番下にある **[アクセス キーの管理]** ボタンを押して *プライマリ アクセス キー* をコピーすることによって、対応する `AccountKey` を確認できます。 `RelativeLocation` には、新しいモデルの保存先を、ストレージを起点とする相対パスで指定します。 たとえば、以下のスクリプトでパス `hai/retrain/bike_rental/` が指し示しているのは、`hai` という名前のコンテナーであり、`/retrain/bike_rental/` はサブフォルダーです。 現在サブフォルダーをポータルの UI で作成することはできませんが、[いくつかの Azure ストレージ エクスプローラー](../../storage/common/storage-explorers.md)で作成することはできます。 トレーニング済みの新しいモデル (.ilearner ファイル) は、ストレージに新しいコンテナーを作成して保存することをお勧めします。コンテナーを作成するには、ストレージ ページの一番下にある **[追加]** をクリックし、`retrain` という名前を付けます。 まとめると、以下のスクリプトでは、`AccountName`、`AccountKey`、`RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`) に関して変更が必要となります。
 
 ```powershell
 # Invoke the retraining API 10 times
@@ -121,9 +121,9 @@ For ($i = 1; $i -le 10; $i++){
 > 
 > 
 
-上述のように、10 個の異なる BES ジョブ構成 json ファイルを作成する代わりに、構成文字列を動的に作成します。 次に、**InvokeAmlWebServceBESEndpoint** コマンドレットの *jobConfigString* パラメーターにフィードします。 実際にディスク上にコピーを保持する必要はありません。
+上述のように、10 個の異なる BES ジョブ構成 json ファイルを作成する代わりに、構成文字列を動的に作成します。 次に、 **InvokeAmlWebServceBESEndpoint** コマンドレットの *jobConfigString* パラメーターにフィードします。 実際にディスク上にコピーを保持する必要はありません。
 
-問題がなければ、しばらくすると Azure ストレージ アカウントに 10 個の .ilearner ファイルが生成されます (*model001.ilearner* から *model010.ilearner*)。 後は、PowerShell コマンドレット **Patch-AmlWebServiceEndpoint** を使用し、スコア付け Web サービスの 10 個のエンドポイントをこれらのモデルで更新することになります。 既に述べたように更新できるのは、先ほどプログラムから作成した既定以外のエンドポイントだけであることにご注意ください。
+問題がなければ、しばらくすると Azure ストレージ アカウントに 10 個の .ilearner ファイルが生成されます ( *model001.ilearner* から *model010.ilearner* )。 後は、PowerShell コマンドレット **Patch-AmlWebServiceEndpoint** を使用し、スコア付け Web サービスの 10 個のエンドポイントをこれらのモデルで更新することになります。 既に述べたように更新できるのは、先ほどプログラムから作成した既定以外のエンドポイントだけであることにご注意ください。
 
 ```powershell
 # Patch the 10 endpoints with respective .ilearner models
@@ -138,7 +138,7 @@ For ($i = 1; $i -le 10; $i++){
 }
 ```
 
-このコードはすぐに実行が完了すると思われます。 実行が完了すると、10 個の予測 Web サービス エンドポイントが正常に作成されています。 それぞれに、レンタル拠点に固有のデータセットで一意にトレーニングされたトレーニング済みのモデルが含まれます。すべて単一のトレーニング実験から取得されたものです。 これを確認するには、**InvokeAmlWebServiceRRSEndpoint** コマンドレットを使用してこれらのエンドポイントを呼び出し、同じ入力データを提供します。 モデルは異なるトレーニング セットでトレーニングされるため、異なる予測結果が表示されます。
+このコードはすぐに実行が完了すると思われます。 実行が完了すると、10 個の予測 Web サービス エンドポイントが正常に作成されています。 それぞれに、レンタル拠点に固有のデータセットで一意にトレーニングされたトレーニング済みのモデルが含まれます。すべて単一のトレーニング実験から取得されたものです。 これを確認するには、 **InvokeAmlWebServiceRRSEndpoint** コマンドレットを使用してこれらのエンドポイントを呼び出し、同じ入力データを提供します。 モデルは異なるトレーニング セットでトレーニングされるため、異なる予測結果が表示されます。
 
 ## <a name="full-powershell-script"></a>PowerShell スクリプト全体
 以下に、すべてのソース コードを掲載します。

@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 5a04e5a7136ac1a33766bf543a27ff7794498c26
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: be2afad7e7cb08d9c677e589846f3d67cf43e708
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996355"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314232"
 ---
 # <a name="collect-data-from-models-in-production"></a>実稼働環境のモデルからデータを収集する
 
@@ -38,7 +38,7 @@ ms.locfileid: "91996355"
 
 次のデータを収集できます。
 
-* AKS クラスターにデプロイされた Web サービスのモデル入力データ。 音声オーディオ、画像、および動画は、収集 "*されません*"。
+* AKS クラスターにデプロイされた Web サービスのモデル入力データ。 音声オーディオ、画像、および動画は、収集 " *されません* "。
   
 * 実稼働環境入力データを使用したモデル予測
 
@@ -67,11 +67,11 @@ ms.locfileid: "91996355"
 
 - AKS クラスターが必要です。 作成とデプロイの方法については、[デプロイする方法とその場所](how-to-deploy-and-where.md)に関するページを参照してください。
 
-- [環境を設定](how-to-configure-environment.md)し、[Azure Machine Learning Monitoring SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) をインストールします。
+- [環境を設定](how-to-configure-environment.md)し、[Azure Machine Learning Monitoring SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) をインストールします。
 
 ## <a name="enable-data-collection"></a>データ収集を有効にする
 
-[データ収集](https://docs.microsoft.com/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?view=azure-ml-py&preserve-view=true)は、Azure Machine Learning または他のツールを使用してデプロイするモデルに関係なく、有効にすることができます。
+[データ収集](/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?preserve-view=true&view=azure-ml-py)は、Azure Machine Learning または他のツールを使用してデプロイするモデルに関係なく、有効にすることができます。
 
 データ コレクションを有効にするには、次の操作を行う必要があります。
 
@@ -91,7 +91,7 @@ ms.locfileid: "91996355"
     prediction_dc = ModelDataCollector("best_model", designation="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
-    *CorrelationId* は省略可能なパラメーターです。 モデルで必要ない場合は、使用する必要はありません。 *CorrelationId* を使用すると、*LoanNumber*、*CustomerId* などの他のデータとより簡単にマッピングできます。
+    *CorrelationId* は省略可能なパラメーターです。 モデルで必要ない場合は、使用する必要はありません。 *CorrelationId* を使用すると、 *LoanNumber* 、 *CustomerId* などの他のデータとより簡単にマッピングできます。
     
     *Identifier* パラメーターは、BLOB でフォルダー構造を構築するために後で使用します。 生データと処理済みデータの区別に使用できます。
 
@@ -104,7 +104,7 @@ ms.locfileid: "91996355"
     prediction_dc.collect(result) #this call is saving our input data into Azure Blob
     ```
 
-1. AKS にサービスをデプロイしても、データ コレクションは自動的には **true** に設定 "*されません*"。 次の例のように、構成ファイルを更新してください。
+1. AKS にサービスをデプロイしても、データ コレクションは自動的には **true** に設定 " *されません* "。 次の例のように、構成ファイルを更新してください。
 
     ```python
     aks_config = AksWebservice.deploy_configuration(collect_model_data=True)
@@ -153,7 +153,7 @@ ms.locfileid: "91996355"
 
 1. [Power BI Desktop](https://www.powerbi.com) をダウンロードして開きます。
 
-1. **[データを取得]** を選択し、[**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources) を選択します。
+1. **[データを取得]** を選択し、 [**Azure Blob Storage**](/power-bi/desktop-data-sources) を選択します。
 
     [![Power BI BLOB の設定](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
@@ -187,7 +187,7 @@ ms.locfileid: "91996355"
 
 ### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a> Azure Databricks を使用してモデル データを分析する
 
-1. [Azure Databricks ワークスペース](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)を作成します。
+1. [Azure Databricks ワークスペース](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)を作成します。
 
 1. Databricks ワークスペースに移動します。
 

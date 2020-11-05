@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 08/05/2020
-ms.openlocfilehash: 689b90fc1f45faad72640f47e5eebe936d2dc8b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2ece76ef3594cadfa1fcda89259ee18eb1f9084
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87829392"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324848"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>信頼できる機械学習とは (プレビュー)
 
@@ -73,7 +73,7 @@ AI システムにおける不公平性を減らすための 2 つの重要な�
 
 準同型暗号では、暗号化されたデータで計算を行う際に秘密 (復号化) キーを利用する必要がありません。 計算の結果は暗号化され、秘密キーの所有者だけに開示されます。 準同型暗号を使用すると、クラウド オペレーターは、格納および計算するデータに、暗号化されていないアクセスを使用することが一切できなくなります。 計算は、暗号化されたデータに対して直接実行されます。 データ プライバシーは最先端の暗号化に依存し、データ所有者はすべての情報リリースを制御します。 Microsoft での準同型暗号の詳細については、[Microsoft Research](https://www.microsoft.com/research/project/homomorphic-encryption/) に関するページを参照してください。
 
-Azure Machine Learning で準同型暗号の使用を開始するには、[Microsoft SEAL](https://github.com/microsoft/SEAL) の [encrypted-inference](https://pypi.org/project/encrypted-inference/) Python バインドを使用します。 Microsoft SEAL は、オープンソースの準同型暗号化ライブラリであり、ここでは暗号化された整数または実数に対して加算と乗算を行うことができます。 Microsoft SEAL の詳細については、[Azure アーキテクチャ センター](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/homomorphic-encryption-seal)、または [Microsoft Research プロジェクトのページ](https://www.microsoft.com/research/project/microsoft-seal/)を参照してください。
+Azure Machine Learning で準同型暗号の使用を開始するには、[Microsoft SEAL](https://github.com/microsoft/SEAL) の [encrypted-inference](https://pypi.org/project/encrypted-inference/) Python バインドを使用します。 Microsoft SEAL は、オープンソースの準同型暗号化ライブラリであり、ここでは暗号化された整数または実数に対して加算と乗算を行うことができます。 Microsoft SEAL の詳細については、[Azure アーキテクチャ センター](/azure/architecture/solution-ideas/articles/homomorphic-encryption-seal)、または [Microsoft Research プロジェクトのページ](https://www.microsoft.com/research/project/microsoft-seal/)を参照してください。
 
 [Azure Machine Learning で暗号化された推論の Web サービスをデプロイする方法](how-to-homomorphic-encryption-seal.md)については、次のサンプルを参照してください。
 
@@ -96,5 +96,5 @@ Azure Machine Learning SDK を使用して[モデル用のデータシート](ht
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- 詳細については、[責任あるイノベーションのツールキット](https://docs.microsoft.com/azure/architecture/guide/responsible-innovation/)を参照して、ベスト プラクティスを確認します。
+- 詳細については、[責任あるイノベーションのツールキット](/azure/architecture/guide/responsible-innovation/)を参照して、ベスト プラクティスを確認します。
 - 詳細については、機械学習システムのドキュメントに関するガイドラインの [ABOUT ML](https://www.partnershiponai.org/about-ml/) のセットを参照してください。

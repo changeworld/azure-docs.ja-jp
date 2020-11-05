@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 9b2d003ef4938681229317b625aae4526787ac15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c014f14149b903713ae2f03b98956cd4ecaf8a1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898706"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323053"
 ---
 # <a name="convert-to-dataset"></a>データセットへの変換
 
@@ -35,18 +35,18 @@ ms.locfileid: "90898706"
 
 2. データセットを出力する任意のモジュールに、それを接続します。   
 
-    データが[表形式](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true)の場合は、データセットに変換できます。 これには、[データのインポート](import-data.md)を使用して読み込まれたデータ、[データの手動入力](enter-data-manually.md)を使用して作成されたデータ、または[変換の適用](apply-transformation.md)を使用して変換されたデータセットが含まれます。
+    データが[表形式](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py)の場合は、データセットに変換できます。 これには、[データのインポート](import-data.md)を使用して読み込まれたデータ、[データの手動入力](enter-data-manually.md)を使用して作成されたデータ、または[変換の適用](apply-transformation.md)を使用して変換されたデータセットが含まれます。
 
 3.  **[アクション]** ボックスの一覧で、データセットを保存する前にデータのクリーンアップを実行するかどうかを指定します。  
   
-    - **なし**: データをそのまま使用します。  
+    - **なし** : データをそのまま使用します。  
   
-    - **SetMissingValue**:データセット内の特定の値を欠損値に設定します。 既定のプレースホルダーは疑問符 (?) ですが、 **[Custom missing value]\(カスタム欠損値\)** オプションを使用して別の値を入力することもできます。 たとえば、 **[Custom missing value]\(カスタム欠損値\)** に「**Taxi**」と入力すると、データセット内に出てくる **Taxi** という値がすべて欠損値に変わります。
+    - **SetMissingValue** :データセット内の特定の値を欠損値に設定します。 既定のプレースホルダーは疑問符 (?) ですが、 **[Custom missing value]\(カスタム欠損値\)** オプションを使用して別の値を入力することもできます。 たとえば、 **[Custom missing value]\(カスタム欠損値\)** に「 **Taxi** 」と入力すると、データセット内に出てくる **Taxi** という値がすべて欠損値に変わります。
   
-    - **ReplaceValues**:このオプションを使用して、その他の正確な値に置き換えられる単一の正確な値を指定します。 欠損値とカスタム値のどちらを置換するかに応じて、 **[置換]** の方法を次のように設定します。
+    - **ReplaceValues** :このオプションを使用して、その他の正確な値に置き換えられる単一の正確な値を指定します。 欠損値とカスタム値のどちらを置換するかに応じて、 **[置換]** の方法を次のように設定します。
 
       - **[Missing]\(欠損\)** :入力データセット内の欠損値を置き換える場合にこのオプションを選択します。 **[新しい値]** には、欠損値を置き換える値を入力します。
-      - **Custom**:入力データセット内のカスタム値を置き換える場合にこのオプションを選択します。 **[Custom value]\(カスタム値\)** には、検索する値を入力します。 たとえば、欠損値のプレースホルダーとして使用される文字列 `obs` がデータに含まれている場合は、「`obs`」と入力します。 **[新しい値]** には、元の文字列を置き換える新しい値を入力します。
+      - **Custom** :入力データセット内のカスタム値を置き換える場合にこのオプションを選択します。 **[Custom value]\(カスタム値\)** には、検索する値を入力します。 たとえば、欠損値のプレースホルダーとして使用される文字列 `obs` がデータに含まれている場合は、「`obs`」と入力します。 **[新しい値]** には、元の文字列を置き換える新しい値を入力します。
   
     **ReplaceValues** 操作は、完全一致にのみ適用されることに注意してください。 たとえば、`obs.` や `obsolete` といった文字列は影響を受けません。  
  
@@ -70,4 +70,4 @@ ms.locfileid: "90898706"
   
 ## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。

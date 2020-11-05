@@ -11,30 +11,30 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 56ab5ba93545ffdbfd36850c08eda78cc239f694
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: ce80c6bbd3e4a5154e80317c3918776c771e67fb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207123"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318209"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Azure Machine Learning コンピューティング クラスターの作成
 
 Azure Machine Learning ワークスペースで[コンピューティング クラスター](concept-compute-target.md#azure-machine-learning-compute-managed)を作成および管理する方法について説明します。
 
-Azure Machine Learning コンピューティング クラスターを使用して、クラウド内の CPU または GPU コンピューティング ノードのクラスター全体にトレーニングまたはバッチ推論のプロセスを分散させることができます。 GPU を含む VM サイズの詳細については、「[GPU 最適化済み仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)」を参照してください。 
+Azure Machine Learning コンピューティング クラスターを使用して、クラウド内の CPU または GPU コンピューティング ノードのクラスター全体にトレーニングまたはバッチ推論のプロセスを分散させることができます。 GPU を含む VM サイズの詳細については、「[GPU 最適化済み仮想マシンのサイズ](../virtual-machines/sizes-gpu.md)」を参照してください。 
 
 この記事では、次のことについて説明します:
 
 * コンピューティング クラスターを作成する
 * コンピューティング クラスターのコストを削減する
-* クラスターの[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を設定する
+* クラスターの[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を設定する
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)に関するページをご覧ください。
 
-* [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)、または [Azure Machine Learning Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)。
+* [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)、または [Azure Machine Learning Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)。
 
 ## <a name="what-is-a-compute-cluster"></a>コンピューティング クラスターとは
 
@@ -80,7 +80,7 @@ Python で永続的な Azure Machine Learning コンピューティング リソ
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
-Azure Machine Learning コンピューティングを作成するときに、いくつかの詳細プロパティも設定できます。 これらのプロパティを使用すると、永続的なクラスターを固定サイズで、またはサブスクリプションの既存の Azure 仮想ネットワーク内に作成できます。  詳しくは、「[AmlCompute クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true)」をご覧ください。
+Azure Machine Learning コンピューティングを作成するときに、いくつかの詳細プロパティも設定できます。 これらのプロパティを使用すると、永続的なクラスターを固定サイズで、またはサブスクリプションの既存の Azure 仮想ネットワーク内に作成できます。  詳しくは、「[AmlCompute クラス](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?preserve-view=true&view=azure-ml-py)」をご覧ください。
 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -90,7 +90,7 @@ Azure Machine Learning コンピューティングを作成するときに、い
 az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STANDARD_D3_V2
 ```
 
-詳しくは、「[az ml computetarget create amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute&preserve-view=true)」をご覧ください。
+詳しくは、「[az ml computetarget create amlcompute](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute&preserve-view=true)」をご覧ください。
 
 # <a name="studio"></a>[スタジオ](#tab/azure-studio)
 
@@ -217,4 +217,4 @@ VM を作成するときに、スタジオで **[低優先度]** を選択しま
 コンピューティング クラスターを使用して以下を行います。
 
 * [トレーニングの実行を送信する](how-to-set-up-training-targets.md) 
-* [バッチ推論を実行する](how-to-use-parallel-run-step.md)
+* [バッチ推論を実行する](./tutorial-pipeline-batch-scoring-classification.md)

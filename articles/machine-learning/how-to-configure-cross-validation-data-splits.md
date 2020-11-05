@@ -11,12 +11,12 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 3e2711243d7c093d3ab8aa5f0e7ebac0a5ec95f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed11a1b772acb31268f3d0a61fba10301ad62e18
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886195"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320475"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>自動機械学習の実験でデータの分割とクロス検証を構成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "90886195"
 
 Azure Machine Learning では、AutoML を使用して複数の ML モデルを構築する場合、各子実行では、そのモデルの品質メトリック (精度や加重 ACU など) を計算することによって関連モデルを検証する必要があります。 これらのメトリックは、各モデルで行われた予測を、検証データの過去の観測からの実際のラベルと比較することによって計算されます。 
 
-AutoML の実験では、モデルの検証が自動的に実行されます。 次のセクションでは、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) で検証の設定をカスタマイズする方法について説明します。 
+AutoML の実験では、モデルの検証が自動的に実行されます。 次のセクションでは、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) で検証の設定をカスタマイズする方法について説明します。 
 
 コードを使用しないエクスペリエンスの詳細については、[Azure Machine Learning Studio での自動機械学習の実験の作成](how-to-use-automated-ml-for-ml-models.md)に関するページを参照してください。 
 
@@ -47,7 +47,7 @@ AutoML の実験では、モデルの検証が自動的に実行されます。 
 
 ## <a name="default--data-splits-and-cross-validation"></a>既定のデータの分割とクロス検証
 
-[AutoMLConfig](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) オブジェクトを使用して、実験とトレーニングの設定を定義します。 次のコード スニペットでは、必須パラメーターのみが定義されていることに注意してください。つまり、`n_cross_validation` または `validation_ data` のパラメーターは**含まれていません**。
+[AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) オブジェクトを使用して、実験とトレーニングの設定を定義します。 次のコード スニペットでは、必須パラメーターのみが定義されていることに注意してください。つまり、`n_cross_validation` または `validation_ data` のパラメーターは **含まれていません** 。
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
@@ -67,7 +67,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 |トレーニング&nbsp;データ&nbsp;のサイズ| 検証の方法 |
 |---|-----|
 |**20,000&nbsp;行&nbsp;より&nbsp;多い**| トレーニング/検証データの分割が適用されます。 既定では、初期トレーニング データ セットの 10% が検証セットとして取得されます。 次に、その検証セットがメトリックの計算に使用されます。
-|**20,000&nbsp;行&nbsp;より&nbsp;少ない**| クロス検証アプローチが適用されます。 フォールドの既定の数は行数によって異なります。 <br> **データセットが 1,000 行より少ない場合は**、10 個のフォールドが使用されます。 <br> **行が 1,000 から 20,000 の間の場合は**、3 つのフォールドが使用されます。
+|**20,000&nbsp;行&nbsp;より&nbsp;少ない**| クロス検証アプローチが適用されます。 フォールドの既定の数は行数によって異なります。 <br> **データセットが 1,000 行より少ない場合は** 、10 個のフォールドが使用されます。 <br> **行が 1,000 から 20,000 の間の場合は** 、3 つのフォールドが使用されます。
 
 ## <a name="provide-validation-data"></a>検証データを指定する
 
@@ -93,7 +93,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 ## <a name="provide-validation-set-size"></a>検証セットのサイズを指定する
 
-この場合、実験には 1 つのデータセットのみが指定されています。 つまり、`validation_data` パラメーターは**指定されず**、指定されたデータセットは `training_data` パラメーターに割り当てられます。  `AutoMLConfig` オブジェクトでは、検証用にトレーニング データの一部を提示するように `validation_size` パラメーターを設定できます。 これは、検証セットが指定された初期の `training_data` から AutoML によって分割されることを意味します。 この値は 0.0 より大きく 1.0 未満である必要があります (たとえば、0.2 は、データの 20% が検証データ用に提示されることを意味します)。
+この場合、実験には 1 つのデータセットのみが指定されています。 つまり、`validation_data` パラメーターは **指定されず** 、指定されたデータセットは `training_data` パラメーターに割り当てられます。  `AutoMLConfig` オブジェクトでは、検証用にトレーニング データの一部を提示するように `validation_size` パラメーターを設定できます。 これは、検証セットが指定された初期の `training_data` から AutoML によって分割されることを意味します。 この値は 0.0 より大きく 1.0 未満である必要があります (たとえば、0.2 は、データの 20% が検証データ用に提示されることを意味します)。
 
 次のコード例をご覧ください。
 

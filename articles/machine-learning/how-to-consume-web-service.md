@@ -1,7 +1,7 @@
 ---
 title: Web サービスとしてデプロイされるモデル用のクライアントを作成する
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning からモデルがデプロイされたときに生成された Web サービス エンドポイントを呼び出す方法について説明します。 このエンドポイントは、モデルで推論を実行するために呼び出すことができる REST API を公開します。 任意のプログラミング言語を使用して、この API 用のクライアントを作成します。
+description: Azure Machine Learning からモデルがデプロイされたときに生成された Web サービス エンドポイントを呼び出す方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,19 +11,19 @@ ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 5ffdb7a3bb177092d728fbd469aa8cf95e93edb5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 03b077c7cadbfd101705c040e485c5766909c2de
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966102"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318160"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 
 
 Azure Machine Learning モデルを Web サービスとしてデプロイすると、REST API エンドポイントが作成されます。 このエンドポイントにデータを送信し、モデルによって返された予測を受信できます。 このドキュメントでは、C#、Go、Java、Python を使用して Web サービス用のクライアントを作成する方法について説明します。
 
-Web サービスは、ローカル環境、Azure Container Instances、Azure Kubernetes Service、またはフィールド プログラマブル ゲート アレイ (FPGA) にモデルをデプロイするときに作成します。 Web サービスにアクセスするために使用される URI は、[Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) を使用して取得します。 認証が有効になっている場合は、SDK を使用して認証キーまたはトークンを取得することもできます。
+Web サービスは、ローカル環境、Azure Container Instances、Azure Kubernetes Service、またはフィールド プログラマブル ゲート アレイ (FPGA) にモデルをデプロイするときに作成します。 Web サービスにアクセスするために使用される URI は、[Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) を使用して取得します。 認証が有効になっている場合は、SDK を使用して認証キーまたはトークンを取得することもできます。
 
 機械学習 Web サービスを使用するクライアントを作成するための一般的なワークフローは、次のとおりです。
 
@@ -39,7 +39,7 @@ Web サービスは、ローカル環境、Azure Container Instances、Azure Kub
 > [!NOTE]
 > Azure Machine Learning SDK を使用して、Web サービス情報を取得します。 これは Python SDK です。 任意の言語を使用して、サービスに対してクライアントを作成できます。
 
-[azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true) クラスでは、クライアントを作成するために必要な情報が提供されます。 クライアント アプリケーションを作成するときに役立つ `Webservice` プロパティを以下に示します。
+[azureml.core.Webservice](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py) クラスでは、クライアントを作成するために必要な情報が提供されます。 クライアント アプリケーションを作成するときに役立つ `Webservice` プロパティを以下に示します。
 
 * `auth_enabled` - キー認証が有効になっている場合は `True`、それ以外の場合は `False` です。
 * `token_auth_enabled` - トークン認証が有効になっている場合は `True`、それ以外の場合は `False` です。
@@ -59,7 +59,7 @@ Web サービスは、ローカル環境、Azure Container Instances、Azure Kub
     print(service.swagger_uri)
     ```
 
-* `Webservice.list` を使用して、ワークスペース内のモデル用にデプロイされた Web サービスのリストを取得することができます。 フィルターを追加して、返される情報のリストを絞り込むことができます。 フィルター処理できる内容の詳細については、[Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py&preserve-view=true) のリファレンス ドキュメントを参照してください。
+* `Webservice.list` を使用して、ワークスペース内のモデル用にデプロイされた Web サービスのリストを取得することができます。 フィルターを追加して、返される情報のリストを絞り込むことができます。 フィルター処理できる内容の詳細については、[Webservice.list](/python/api/azureml-core/azureml.core.webservice.webservice.webservice?preserve-view=true&view=azure-ml-py) のリファレンス ドキュメントを参照してください。
 
     ```python
     services = Webservice.list(ws)
@@ -77,7 +77,7 @@ Web サービスは、ローカル環境、Azure Container Instances、Azure Kub
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-デプロイされたサービスの名前がわかっている場合は、[az ml service show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) コマンドを使用します。
+デプロイされたサービスの名前がわかっている場合は、[az ml service show](/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) コマンドを使用します。
 
 ```azurecli
 az ml service show -n <service-name>
@@ -117,9 +117,9 @@ Azure Machine Learning には、Web サービスへのアクセスを制御す�
 |Key|既定で無効| 既定で有効|
 |トークン| 利用不可| 既定で無効 |
 
-キーまたはトークンで保護されているサービスに要求を送信する場合は、__Authorization__ ヘッダーを使用してキーまたはトークンを渡します。 キーまたはトークンは `Bearer <key-or-token>` の形式にする必要があります。ここで、`<key-or-token>` はキーまたはトークンの値です。
+キーまたはトークンで保護されているサービスに要求を送信する場合は、 __Authorization__ ヘッダーを使用してキーまたはトークンを渡します。 キーまたはトークンは `Bearer <key-or-token>` の形式にする必要があります。ここで、`<key-or-token>` はキーまたはトークンの値です。
 
-キーとトークンの主な違いは、**キーは静的であり、手動で再生成することができ**、**トークンは有効期限に更新する必要があることです**。 キーベースの認証は、Azure Container Instance と Azure Kubernetes Service でデプロイされた Web サービスでサポートされています。また、トークンベースの認証は Azure Kubernetes サービスのデプロイで**のみ**使用できます。 詳細および具体的なコード サンプルについては、認証に関する[方法](how-to-setup-authentication.md#web-service-authentication)を参照してください。
+キーとトークンの主な違いは、 **キーは静的であり、手動で再生成することができ** 、 **トークンは有効期限に更新する必要があることです** 。 キーベースの認証は、Azure Container Instance と Azure Kubernetes Service でデプロイされた Web サービスでサポートされています。また、トークンベースの認証は Azure Kubernetes サービスのデプロイで **のみ** 使用できます。 詳細および具体的なコード サンプルについては、認証に関する[方法](how-to-setup-authentication.md#web-service-authentication)を参照してください。
 
 
 #### <a name="authentication-with-keys"></a>キーによる認証
@@ -139,7 +139,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> キーを再生成する必要がある場合は、[`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true) を使用します。
+> キーを再生成する必要がある場合は、[`service.regen_key`](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py) を使用します。
 
 #### <a name="authentication-with-tokens"></a>トークンによる認証
 
@@ -527,7 +527,7 @@ print(resp.text)
 
 ## <a name="web-service-schema-openapi-specification"></a>Web サービスのスキーマ (OpenAPI 仕様)
 
-デプロイで自動スキーマ生成を使用した場合は、[swagger_uri プロパティ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=trueswagger-uri)を使用して、サービスに対する OpenAPI 仕様のアドレスを取得できます。 (例: `print(service.swagger_uri)`)。仕様を取得するには、GET 要求を使用するか、ブラウザーで URI を開きます。
+デプロイで自動スキーマ生成を使用した場合は、[swagger_uri プロパティ](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=trueswagger-uri)を使用して、サービスに対する OpenAPI 仕様のアドレスを取得できます。 (例: `print(service.swagger_uri)`)。仕様を取得するには、GET 要求を使用するか、ブラウザーで URI を開きます。
 
 次の JSON ドキュメントは、デプロイに対して生成されるスキーマ (OpenAPI 仕様) の例です。
 
@@ -669,15 +669,15 @@ print(resp.text)
 
 
 > [!TIP]
-> サービスをデプロイした後、スキーマ JSON ドキュメントを取得できます。 ローカル Web サービスの Swagger ファイルへの URI を取得するには、デプロイされた Web サービスの [swagger_uri プロパティ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=trueswagger-uri)を使用します (例: `service.swagger_uri`)。
+> サービスをデプロイした後、スキーマ JSON ドキュメントを取得できます。 ローカル Web サービスの Swagger ファイルへの URI を取得するには、デプロイされた Web サービスの [swagger_uri プロパティ](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=trueswagger-uri)を使用します (例: `service.swagger_uri`)。
 
 ## <a name="consume-the-service-from-power-bi"></a>Power BI からサービスを使用する
 
 Power BI では、予測によって Power BI のデータを拡充できるように、Azure Machine Learning Web サービスの使用がサポートされています。 
 
-Power BI での使用がサポートされている Web サービスを生成するには、Power BI で必要とされる形式をスキーマがサポートしている必要があります。 [Power BI でサポートされているスキーマの作成方法をご確認ください](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#example-entry-script)。
+Power BI での使用がサポートされている Web サービスを生成するには、Power BI で必要とされる形式をスキーマがサポートしている必要があります。 [Power BI でサポートされているスキーマの作成方法をご確認ください](./how-to-deploy-advanced-entry-script.md#power-bi-compatible-endpoint)。
 
-デプロイした Web サービスは、Power BI データフローから使用できます。 [Power BI から Azure Machine Learning Web サービスを使用する方法をご確認ください](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。
+デプロイした Web サービスは、Power BI データフローから使用できます。 [Power BI から Azure Machine Learning Web サービスを使用する方法をご確認ください](/power-bi/service-machine-learning-integration)。
 
 ## <a name="next-steps"></a>次のステップ
 

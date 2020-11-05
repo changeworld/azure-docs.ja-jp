@@ -10,12 +10,12 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: d57de4d52ccf3a029a8dd1350635fb65dd3ac829
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 5b98384d4d735f4c124c6af40d6edbff896900ce
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828320"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320985"
 ---
 # <a name="upgrade-your-data-science-virtual-machine-to-ubuntu-1804"></a>Data Science Virtual Machine を Ubuntu 18.04 にアップグレードする
 
@@ -40,7 +40,7 @@ Azure portal で、検索バーを使用して **[スナップショット]** �
 
 1. **[追加]** を選択します。これにより、 **[スナップショットの作成]** ページに移動します。 ご利用の仮想マシンのサブスクリプションとリソース グループを選択します。 **[リージョン]** では、ターゲット ストレージが存在するリージョンと同じリージョンを選択します。 DSVM ストレージ ディスクと追加のバックアップ オプションを選択します。 このバックアップ シナリオのストレージの種類としては、 **[Standard HDD]** が適しています。
 
-:::image type="content" source="media/ubuntu_upgrade/create-snapshot-options.png" alt-text="Azure portal と検索バーを示すスクリーンショット、[スナップショット] が強調表示されている":::
+:::image type="content" source="media/ubuntu_upgrade/create-snapshot-options.png" alt-text="[スナップショットの作成] のオプションを示すスクリーンショット":::
 
 2. すべての詳細を入力し、検証を通過したら、 **[確認と作成]** を選択して、スナップショットを検証し、作成します。 スナップショットが正常に完了したら、デプロイが完了したことを示すメッセージが表示されます。
 
@@ -65,9 +65,14 @@ Azure portal で、検索バーを使用して **[スナップショット]** �
 
 VM をアップグレードし、再起動したら、SSH を介して VM に再度アクセスしてみてください。 再起動中に IP アドレスが変更された可能性があるため、接続を試みる前に、それを確認します。
 
-エラー「**REMOTE HOST IDENTIFICATION HAS CHANGED**」 (リモート ホスト ID が変更されました) が発生した場合は、SSH 資格情報を再生成する必要があります。
+エラー「 **REMOTE HOST IDENTIFICATION HAS CHANGED** 」 (リモート ホスト ID が変更されました) が発生した場合は、SSH 資格情報を再生成する必要があります。
 
-:::image type="content" source="media/ubuntu_upgrade/remote-host-warning.png" alt-text="Azure portal と検索バーを示すスクリーンショット、[スナップショット] が強調表示されている"
+:::image type="content" source="media/ubuntu_upgrade/remote-host-warning.png" alt-text="リモート ホスト ID が変更されたという警告を示す PowerShell のスクリーンショット":::
+
+このためには、ローカル マシンで、次のコマンドを実行します。
+
+```bash
+ssh-keygen -R "your server hostname or ip"
 ```
 
 以上で、SSH と接続できるようになります。 依然として問題が解決しない場合は、 **[接続]** ページで、 **[SSH の接続の問題のトラブルシューティング]** へのリンクに従います。
@@ -100,17 +105,17 @@ CentOS から移行する場合、またはクリーンな OS インストール
 
 1. Azure portal で、 **[ディスク]** を検索し、 **[追加]** を選択します。これにより、 **[ディスク]** ページが開きます。
 
-:::image type="content" source="media/ubuntu_upgrade/portal-disks-search.png" alt-text="Azure portal と検索バーを示すスクリーンショット、[スナップショット] が強調表示されている":::
+:::image type="content" source="media/ubuntu_upgrade/portal-disks-search.png" alt-text="[ディスク] ページの検索と [追加] ボタンを示す Azure portal のスクリーンショット":::
 
 2. **[サブスクリプション]** 、 **[リソース グループ]** 、 **[リージョン]** を、お使いの VM スナップショットの値に設定します。 作成するディスクの **[名前]** を選択します。
 
 3. **[ソースの種類]** として **[スナップショット]** を選択し、 **[ソース スナップショット]** として VM のスナップショットを選択します。 ディスクを確認して作成します。 
 
-:::image type="content" source="media/ubuntu_upgrade/disk-create-options.png" alt-text="Azure portal と検索バーを示すスクリーンショット、[スナップショット] が強調表示されている":::
+:::image type="content" source="media/ubuntu_upgrade/disk-create-options.png" alt-text="オプションを示すディスク作成ダイアログのスクリーンショット":::
 
 ### <a name="create-a-new-ubuntu-data-science-virtual-machine"></a>新しい Ubuntu Data Science Virtual Machine を作成する
 
-[Azure portal](https://portal.azure.com) または [ARM テンプレート](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager)を使用して、新しい Ubuntu Data Science Virtual Machine を作成します。 
+[Azure portal](https://portal.azure.com) または [ARM テンプレート](./dsvm-tutorial-resource-manager.md)を使用して、新しい Ubuntu Data Science Virtual Machine を作成します。 
 
 ### <a name="recreate-user-accounts-on-your-new-data-science-virtual-machine"></a>新しい Data Science Virtual Machine でユーザー アカウントを再作成する
 
@@ -118,7 +123,7 @@ CentOS から移行する場合、またはクリーンな OS インストール
 
 Linux は十分な柔軟性を備えているため、新しいインストールのディレクトリとパスをカスタマイズして、古いマシンに倣うことができます。 しかし、通常は、最新の Ubuntu の推奨レイアウトを使用して、ユーザー環境とスクリプトを変更して適合させる方が簡単です。
 
-詳細については、「[クイック スタート: Linux (Ubuntu) Data Science Virtual Machine を設定する](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)」を参照してください。
+詳細については、「[クイック スタート: Linux (Ubuntu) Data Science Virtual Machine を設定する](./dsvm-ubuntu-intro.md)」を参照してください。
 
 ### <a name="mount-the-disk-of-the-snapshotted-vm-as-a-data-disk-on-your-new-data-science-virtual-machine"></a>スナップショットを作成した VM のディスクをデータ ディスクとして新しい Data Science Virtual Machine にマウントする
 
@@ -128,7 +133,7 @@ Linux は十分な柔軟性を備えているため、新しいインストー�
 
 3. **[ディスク名]** ドロップダウンで、古い VM のスナップショットから作成したディスクを選択します。
 
-:::image type="content" source="media/ubuntu_upgrade/attach-data-disk.png" alt-text="Azure portal と検索バーを示すスクリーンショット、[スナップショット] が強調表示されている":::
+:::image type="content" source="media/ubuntu_upgrade/attach-data-disk.png" alt-text="ディスク接続オプションを示す DSVM オプション ページのスクリーンショット":::
 
 4. **[保存]** を選択して、仮想マシンを更新します。
 
@@ -147,7 +152,7 @@ Linux は十分な柔軟性を備えているため、新しいインストー�
     
     結果は次の図のようになります。 この図では、ディスク `sda1` はルートにマウントされており、`sdb2` は `/mnt` スクラッチ ディスクです。 古い VM のスナップショットから作成されたデータ ディスクは `sdc1` として識別されますが、マウント場所が示されていないことからわかるように、まだ使用できません。 実際の結果では識別子が異なる場合もありますが、同様のパターンが表示されます。
     
-    :::image type="content" source="media/ubuntu_upgrade/lsblk-results.png" alt-text="Azure portal と検索バーを示すスクリーンショット、[スナップショット] が強調表示されている":::
+    :::image type="content" source="media/ubuntu_upgrade/lsblk-results.png" alt-text="マウントされていないデータ ドライブを示す lsblk 出力のスクリーンショット":::
     
 3. データ ドライブにアクセスするには、データ ドライブの場所を作成してマウントします。 `/dev/sdc1` を、`lsblk` によって返された適切な値に置き換えます。
 
@@ -157,7 +162,7 @@ Linux は十分な柔軟性を備えているため、新しいインストー�
     
 4. これで、`/datadrive` には、古い Data Science Virtual Machine のディレクトリとファイルが含まれます。 目的のディレクトリまたはファイルをデータ ドライブから新しい VM に移動またはコピーします。
 
-詳細については、「[ポータルを利用し、データ ディスクを Linux VM に接続する](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#connect-to-the-linux-vm-to-mount-the-new-disk)」を参照してください。
+詳細については、「[ポータルを利用し、データ ディスクを Linux VM に接続する](../../virtual-machines/linux/attach-disk-portal.md#connect-to-the-linux-vm-to-mount-the-new-disk)」を参照してください。
 
 ## <a name="connect-and-confirm-version-upgrade"></a>接続して、バージョンのアップグレードを確認する
 
@@ -169,13 +174,13 @@ cat /etc/os-release
 
 Ubuntu 18.04 が実行されていることがわかります。
 
-:::image type="content" source="media/ubuntu_upgrade/ssh-os-release.png" alt-text="Azure portal と検索バーを示すスクリーンショット、[スナップショット] が強調表示されている":::
+:::image type="content" source="media/ubuntu_upgrade/ssh-os-release.png" alt-text="OS のバージョン データを示す Ubuntu ターミナルのスクリーンショット":::
 
 バージョンの変更は、Azure portal にも表示されます。
 
-:::image type="content" source="media/ubuntu_upgrade/portal-showing-os-version.png" alt-text="Azure portal と検索バーを示すスクリーンショット、[スナップショット] が強調表示されている":::
+:::image type="content" source="media/ubuntu_upgrade/portal-showing-os-version.png" alt-text="OS のバージョンを含む DSVM のプロパティを示す portal のスクリーンショット":::
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure での Ubuntu Data Science Virtual Machine を使用したデータ サイエンス](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/linux-dsvm-walkthrough)
-- [Azure Data Science Virtual Machine に含まれるツール](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/tools-included)
+- [Azure での Ubuntu Data Science Virtual Machine を使用したデータ サイエンス](./linux-dsvm-walkthrough.md)
+- [Azure Data Science Virtual Machine に含まれるツール](./tools-included.md)

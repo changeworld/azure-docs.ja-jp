@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a36c7076de0c4db64b67f4eba38de4daf4213bca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f46222740ad668b8bb6ec9eb85e78efb0f673528
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446691"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322243"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning でのデータ アクセスをセキュリティ保護する
 
@@ -29,7 +29,7 @@ Azure Machine Learning を使用すると、クラウド内のデータに簡単
     
 ## <a name="data-workflow"></a>データ ワークフロー
 
-クラウドベースのストレージ ソリューションでデータを使用できる場合は、次のデータ配信ワークフローをお勧めします。 このワークフローでは、Azure のクラウドベースのストレージ サービスに [Azure ストレージアカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)とデータがあることを前提としています。 
+クラウドベースのストレージ ソリューションでデータを使用できる場合は、次のデータ配信ワークフローをお勧めします。 このワークフローでは、Azure のクラウドベースのストレージ サービスに [Azure ストレージアカウント](../storage/common/storage-account-create.md?tabs=azure-portal)とデータがあることを前提としています。 
 
 1. 接続情報をご自身の Azure ストレージに格納するための [Azure Machine Learning データストア](#datastores)を作成します。
 
@@ -81,9 +81,9 @@ Azure Machine Learning のデータセットは、データのコピーではあ
 
 データセットには、次の 2 つの種類があります。 
 
-+ [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py&preserve-view=true) は、データストアまたはパブリック URL 内の 1 つまたは複数のファイルを参照します。 データがクレンジング済みで、トレーニング実験で使用できる状態になっている場合は、コンピューティング先に、FileDatasets によって参照されている[ファイルをダウンロードまたはマウント](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets)できます。
++ [FileDataset](/python/api/azureml-core/azureml.data.file_dataset.filedataset?preserve-view=true&view=azure-ml-py) は、データストアまたはパブリック URL 内の 1 つまたは複数のファイルを参照します。 データがクレンジング済みで、トレーニング実験で使用できる状態になっている場合は、コンピューティング先に、FileDatasets によって参照されている[ファイルをダウンロードまたはマウント](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets)できます。
 
-+ [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) は、指定されたファイルまたはファイルのリストを解析して、データを表形式で表します。 TabularDataset を Pandas または Spark DataFrame に読み込んで、さらに操作とクレンジングを行うことができます。 TabularDatasets を作成できるデータ形式の完全な一覧については、[TabularDatasetFactory クラス](https://aka.ms/tabulardataset-api-reference)に関するページをご覧ください。
++ [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) は、指定されたファイルまたはファイルのリストを解析して、データを表形式で表します。 TabularDataset を Pandas または Spark DataFrame に読み込んで、さらに操作とクレンジングを行うことができます。 TabularDatasets を作成できるデータ形式の完全な一覧については、[TabularDatasetFactory クラス](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory)に関するページをご覧ください。
 
 追加のデータセット機能については、次のドキュメントを参照してください。
 
@@ -100,7 +100,7 @@ Azure Machine Learning のデータセットは、データのコピーではあ
      + [デザイナー](tutorial-designer-automobile-price-train-score.md#import-data)
      + [ノートブック](how-to-train-with-datasets.md)
      + [Azure Machine Learning パイプライン](how-to-create-your-first-pipeline.md)
-+ [機械学習パイプライ](how-to-create-your-first-pipeline.md)ンでの[バッチ推論](how-to-use-parallel-run-step.md)によるスコアリングのためのデータセットにアクセスします。
++ [機械学習パイプライ](how-to-create-your-first-pipeline.md)ンでの[バッチ推論](./tutorial-pipeline-batch-scoring-classification.md)によるスコアリングのためのデータセットにアクセスします。
 + [データ ドリフト](#drift)の検出のためのデータセット モニターを設定します。
 
 <a name="label"></a>

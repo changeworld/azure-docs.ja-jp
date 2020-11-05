@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: c0a55780687b4c03d6809d1d740bf0b0afcd63fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05926f7ce25714fb76415802876db0640eb30aae
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908083"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323774"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>デザイナーの例外とエラー コード
 
@@ -23,9 +23,9 @@ ms.locfileid: "90908083"
 
 デザイナーでエラー メッセージを確認するには、次の手順に従います。  
 
-- 失敗したモジュールを選択し、 **[Outputs+logs]\(出力とログ\)** タブにアクセスすると、**azureml-logs** カテゴリの下の **70_driver_log.txt** ファイルに詳細なログがあります。
+- 失敗したモジュールを選択し、 **[Outputs+logs]\(出力とログ\)** タブにアクセスすると、 **azureml-logs** カテゴリの下の **70_driver_log.txt** ファイルに詳細なログがあります。
 
-- 詳細なモジュール エラーについては、**module_statistics** カテゴリの下にある error_info.json で確認できます。
+- 詳細なモジュール エラーについては、 **module_statistics** カテゴリの下にある error_info.json で確認できます。
 
 デザイナーにおけるモジュールのエラー コードを次に示します。
 
@@ -187,9 +187,9 @@ Azure Machine Learning デザイナーでは、Azure ストレージ アカウ�
 
 Azure Machine Learning では、一部の新しいアカウントの種類はサポートされていません。 たとえば、新しい "ホット" または "コールド" ストレージの種類は、Machine Learning には使用できません。 従来のストレージ アカウントおよび "汎用" として作成されたストレージ アカウントはどちらも、正常に動作します。
 
-BLOB への完全なパスを指定した場合は、パスが "**コンテナー/BLOB 名**" として指定されていること、およびコンテナーと BLOB の両方がアカウントに存在することを確認します。  
+BLOB への完全なパスを指定した場合は、パスが " **コンテナー/BLOB 名** " として指定されていること、およびコンテナーと BLOB の両方がアカウントに存在することを確認します。  
 
- パスの先頭にスラッシュを含めることはできません。 たとえば、 **/container/blob** は正しくなく、**container/blob** と入力する必要があります。  
+ パスの先頭にスラッシュを含めることはできません。 たとえば、 **/container/blob** は正しくなく、 **container/blob** と入力する必要があります。  
 
 
 |例外メッセージ|
@@ -491,7 +491,7 @@ Azure Machine Learning では、(モジュールのパラメーターで選択�
 
 **解決策:**
 
-+ エラーを生成したモジュールを開き、ラベル列が存在するかどうかを確認します。 予測しようとしている単一の結果 (または従属変数) が列に含まれてさえいれば、列の名前またはデータ型は関係ありません。 どの列にラベルがあるか不明な場合は、*クラス*や*ターゲット*などの汎用的な名前を探します。 
++ エラーを生成したモジュールを開き、ラベル列が存在するかどうかを確認します。 予測しようとしている単一の結果 (または従属変数) が列に含まれてさえいれば、列の名前またはデータ型は関係ありません。 どの列にラベルがあるか不明な場合は、 *クラス* や *ターゲット* などの汎用的な名前を探します。 
 +  データセットにラベル列が含まれていない場合は、ラベル列がアップストリームで明示的に、または誤って削除された可能性があります。 また、データセットがアップストリームのスコアリング モジュールの出力ではない可能性もあります。
 + ラベル列として列を明示的にマークするには、[メタデータの編集](edit-metadata.md)モジュールを追加して、データセットを接続します。 ラベル列だけを選択し、 **[フィールド]** ドロップダウン リストから **[ラベル]** を選択します。 
 + 間違った列をラベルとして選択した場合は、 **[フィールド]** から **[ラベルのクリア]** を選択して、列のメタデータを修正できます。 
@@ -521,7 +521,7 @@ Azure Machine Learning では、(モジュールのパラメーターで選択�
 
  Azure Machine Learning では、複数の列の名前が同じ場合、このエラーが発生します。 このエラーを受け取る方法の 1 つとして、データセットにヘッダー行がなく、次のような列名が自動的に割り当てられる場合があります。(Col0、Col1 など)  
 
-**解決策:** 複数の列に同じ名前が付けられている場合は、入力データセットとモジュールの間に[メタデータの編集](edit-metadata.md)モジュールを挿入します。 [メタデータの編集](edit-metadata.md)で列セレクターを使って名前を変更する列を選択し、 **[新しい列名]** テキスト ボックスに新しい名前を入力します。  
+**解決策:** 複数の列に同じ名前が付けられている場合は、入力データセットとモジュールの間に [メタデータの編集](edit-metadata.md)モジュールを挿入します。 [メタデータの編集](edit-metadata.md)で列セレクターを使って名前を変更する列を選択し、 **[新しい列名]** テキスト ボックスに新しい名前を入力します。  
 
 |例外メッセージ|
 |------------------------|
@@ -553,7 +553,7 @@ Azure Machine Learning では、(モジュールのパラメーターで選択�
 
  Azure Machine Learning では、列名が重複している場合、つまり一意ではない場合、このエラーが発生します。  
 
-**解決策:** 同じ名前の列がある場合は、入力データセットと、エラーが発生したモジュールの間に、[メタデータの編集](edit-metadata.md)のインスタンスを追加します。 [メタデータの編集](edit-metadata.md)で列セレクターを使って名前を変更する列を選択し、 **[新しい列名]** テキスト ボックスに新しい列名を入力します。 複数の列の名前を変更する場合は、 **[新しい列名]** に入力する値が一意であることを確認します。  
+**解決策:** 同じ名前の列がある場合は、入力データセットと、エラーが発生したモジュールの間に、 [メタデータの編集](edit-metadata.md)のインスタンスを追加します。 [メタデータの編集](edit-metadata.md)で列セレクターを使って名前を変更する列を選択し、 **[新しい列名]** テキスト ボックスに新しい列名を入力します。 複数の列の名前を変更する場合は、 **[新しい列名]** に入力する値が一意であることを確認します。  
 
 |例外メッセージ|
 |------------------------|
@@ -604,7 +604,7 @@ Azure Machine Learning では、(モジュールのパラメーターで選択�
 
  Azure Machine Learning では、選択された列の数が必要とされるより少ない場合、このエラーが発生します。  必要最少数の列が選択されていない場合、このエラーを受け取ります。  
 
-**解決策:** **列セレクター**を使って、列の選択に列を追加します。  
+**解決策:** **列セレクター** を使って、列の選択に列を追加します。  
 
 |例外メッセージ|
 |------------------------|
@@ -713,7 +713,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 **解決策:** このエラーは多くの状況によって発生し、特定の解決策はありません。  
  次の表はこのエラーに対する一般的なメッセージであり、後で状況について具体的に説明します。 
 
- 使用可能な詳細情報がない場合は、[Microsoft Q&A 質問ページでフィードバックを送信](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html)して、エラーが発生したモジュールおよび関連する状況に関する情報を提供してください。
+ 使用可能な詳細情報がない場合は、[Microsoft Q&A 質問ページでフィードバックを送信](/answers/topics/azure-machine-learning-studio-classic.html)して、エラーが発生したモジュールおよび関連する状況に関する情報を提供してください。
 
 |例外メッセージ|
 |------------------------|
@@ -862,7 +862,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
  Azure Machine Learning では、Azure ストレージ アカウントへのアクセスに使用するキーが正しくない場合、このエラーが発生します。 たとえば、コピーして貼り付けるときに Azure ストレージ キーが切り捨てられた場合、または間違ったキーを使用した場合、このエラーが表示される可能性があります。  
 
- Azure ストレージ アカウントのキーの取得方法について詳しくは、[ストレージ アクセス キーの表示、コピー、再生成](https://azure.microsoft.com/documentation/articles/storage-create-storage-account-classic-portal/)に関する記事をご覧ください。  
+ Azure ストレージ アカウントのキーの取得方法について詳しくは、[ストレージ アクセス キーの表示、コピー、再生成](../../storage/common/storage-account-create.md)に関する記事をご覧ください。  
 
 **解決策:** モジュールを見直し、Azure ストレージ キーがアカウントに対して正しいことを確認します。必要な場合は、クラシック Azure portal からキーをもう一度コピーします。  
 
@@ -1027,7 +1027,7 @@ For general information about how the Matchbox recommendation algorithm works, a
   
 -   SAS URI に、有効な BLOB の名前が含まれません。  
 
-**解決策:** 例外がスローされているモジュールを見直します。 指定された BLOB がストレージ アカウントのコンテナーに存在していること、および BLOB を表示できるアクセス許可があることを確認します。 エンコード形式の Excel または CSV を使用している場合、入力が "**コンテナー名/ファイル名**" の形式であることを確認します。 SAS URI に有効な BLOB の名前が含まれていることを確認します。  
+**解決策:** 例外がスローされているモジュールを見直します。 指定された BLOB がストレージ アカウントのコンテナーに存在していること、および BLOB を表示できるアクセス許可があることを確認します。 エンコード形式の Excel または CSV を使用している場合、入力が " **コンテナー名/ファイル名** " の形式であることを確認します。 SAS URI に有効な BLOB の名前が含まれていることを確認します。  
 
 |例外メッセージ|
 |------------------------|
@@ -1083,9 +1083,9 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 機械学習での Hive クエリの使用については、次の記事をご覧ください。
 
-+ [Hive テーブルを作成して Azure Blob Storage からデータを読み込む](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-move-hive-tables)
-+ [Hive クエリを使用してテーブルのデータを探索する](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-explore-data-hive-tables)
-+ [Hive クエリを使用して Hadoop クラスターのデータの特徴を作成する](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-create-features-hive)
++ [Hive テーブルを作成して Azure Blob Storage からデータを読み込む](../team-data-science-process/move-hive-tables.md)
++ [Hive クエリを使用してテーブルのデータを探索する](../team-data-science-process/explore-data-hive-tables.md)
++ [Hive クエリを使用して Hadoop クラスターのデータの特徴を作成する](../team-data-science-process/create-features-hive.md)
 + [SQL ユーザー向け Hive のチート シート (PDF)](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf)
 
   
@@ -1106,8 +1106,8 @@ For general information about how the Matchbox recommendation algorithm works, a
  データベース サーバーに直接ログインしてクエリを実行することにより、Azure ML の外部でクエリが正しく動作することを確認します。  
 
  モジュールの例外により報告された、SQL によって生成されたメッセージがある場合、報告されたエラーに基づいて対処を実行します。 たとえば、エラー メッセージには、発生する可能性の高いエラーに関する具体的なガイダンスが含まれる場合があります。
-+ "*No such column or missing database*" (そのような列はないか、またはデータベースが存在しません) は、列名を誤って入力した可能性があることを示します。 列名が正しいことが確実な場合は、角かっこまたは引用符を使って列の識別子を囲んでみてください。
-+ "*SQL logic error near \<SQL keyword\>* " ("\<SQL keyword\> の近くに SQL ロジック エラーがあります") は、指定されたキーワードの前に構文エラーが存在する可能性があることを示します
++ " *No such column or missing database* " (そのような列はないか、またはデータベースが存在しません) は、列名を誤って入力した可能性があることを示します。 列名が正しいことが確実な場合は、角かっこまたは引用符を使って列の識別子を囲んでみてください。
++ " *SQL logic error near \<SQL keyword\>* " ("\<SQL keyword\> の近くに SQL ロジック エラーがあります") は、指定されたキーワードの前に構文エラーが存在する可能性があることを示します
 
   
 |例外メッセージ|
@@ -1164,7 +1164,7 @@ Azure Machine Learning では、サポートされていない方法を使って
 
 このイベントでのエラー処理は、ビン分割方法のカスタマイズがより広い範囲で可能だった以前のバージョンの Azure Machine Learning で導入されました。 現在は、ビン分割方法はすべてドロップダウン リストでの選択に基づくため、技術的には、このエラーが発生する可能性はありません。
 
- <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
+ <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
 
 |例外メッセージ|
 |------------------------|
@@ -1201,7 +1201,7 @@ Azure Machine Learning では、サポートされていない方法を使って
 
  Azure Machine Learning では、Azure ストレージ コンテナー名が誤って指定される場合、このエラーが発生します。 Azure Blob Storage に書き込むときに、 **[Path to blob beginning with container]\(コンテナーで始まる BLOB へのパス\)** オプションを使用して、コンテナーと BLOB (ファイル) 名の両方を指定していない場合、このエラーを受け取ります。  
 
-**解決策:** [データのエクスポート](export-data.md) モジュールを見直し、BLOB へのパスの指定に、コンテナーとファイル名の両方が**コンテナー/ファイル名**の形式で含まれていることを確認します。  
+**解決策:** [データのエクスポート](export-data.md) モジュールを見直し、BLOB へのパスの指定に、コンテナーとファイル名の両方が **コンテナー/ファイル名** の形式で含まれていることを確認します。  
 
 |例外メッセージ|
 |------------------------|
@@ -1400,7 +1400,7 @@ Exception occurs when label column is missing or has insufficient number of labe
 
 モジュールでラベル列が必要であるのに列選択に含めない場合、またはラベル列の欠損値が多すぎる場合、このエラーが発生します。
 
-前の操作によってデータセットが変更され、ダウンストリーム操作で使用できる行が不足している場合にも、このエラーが発生する可能性があります。 たとえば、**パーティションとサンプル** モジュールで、式を使って値によるデータセットの分割を行っているとします。 使用した式で一致するものが見つからない場合、パーティションによって得たデータセットの 1 つが空になります。
+前の操作によってデータセットが変更され、ダウンストリーム操作で使用できる行が不足している場合にも、このエラーが発生する可能性があります。 たとえば、 **パーティションとサンプル** モジュールで、式を使って値によるデータセットの分割を行っているとします。 使用した式で一致するものが見つからない場合、パーティションによって得たデータセットの 1 つが空になります。
 
 解決策: 
 
@@ -1516,11 +1516,10 @@ Exception occurs when label column is missing or has insufficient number of labe
 
 このエラーは、他の方法では処理されない内部エンジン エラーをキャプチャするために提供されます。 そのため、このエラーの原因は、エラーが生成されたモジュールによって異なる可能性があります。  
 
-詳細なヘルプを受けるには、エラーに付随する詳細なメッセージに、入力として使用したデータなどのシナリオの説明を添えて、[Azure Machine Learning](https://docs.microsoft.com/answers/topics/azure-machine-learning.html) フォーラムに投稿することをお勧めします。 このフィードバックは、エラーの優先順位付けや、さらに取り組むべき最重要問題の特定に役立てられます。  
+詳細なヘルプを受けるには、エラーに付随する詳細なメッセージに、入力として使用したデータなどのシナリオの説明を添えて、[Azure Machine Learning](/answers/topics/azure-machine-learning.html) フォーラムに投稿することをお勧めします。 このフィードバックは、エラーの優先順位付けや、さらに取り組むべき最重要問題の特定に役立てられます。  
 
 |例外メッセージ|
 |------------------------|
 |Library exception. (ライブラリ例外。)|
 |Library exception: {exception}. (ライブラリの例外: {exception}。)|
 |Unknown library exception: {exception}. (不明なライブラリの例外: {exception}。) {customer_support_guidance}。|
-

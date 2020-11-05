@@ -2,20 +2,22 @@
 title: Azure Cosmos DB の Advanced Threat Protection
 description: Azure Cosmos DB で保存データが暗号化される方法と、その実装方法について説明します。
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 57d319d54d15b72747da029d365137f5b5bb384c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ea7524b32b7637aa7c36308f8b869aa5207c08a2
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489253"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334414"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB の Advanced Threat Protection (プレビュー)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB の Advanced Threat Protection は、通常と異なる潜在的に有害なアクセスまたはエクスプロイトが Azure Cosmos DB アカウントに対して試行されたことを検出するセキュリティ インテリジェンスを強化します。 この保護レイヤーにより、セキュリティの専門家でなくても脅威に対処でき、中央のセキュリティ監視システムでそれらを統合管理できます。
 
@@ -81,16 +83,16 @@ Azure Policy を使用して、Cosmos DB の Advanced Threat Protection を有�
 
 1. Azure の **ポリシー - 定義** ページを開き、 **Deploy Advanced Threat Protection for Cosmos DB\(Cosmos DB の Azure Advanced Threat Protection をデプロイする\)** ポリシーを探します。
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="ATP の設定"::: 
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="ポリシーを探す"::: 
 
 1. **[Deploy Advanced Threat Protection for CosmosDB]\(Cosmos DB の Azure Advanced Threat Protection をデプロイする\)** ポリシーをクリックし、 **[割り当て]** をクリックします。
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="ATP の設定":::
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="サブスクリプションまたはグループを選択する":::
 
 
 1. **[スコープ]** フィールドから 3 つのドットをクリックし、Azure サブスクリプションまたはリソース グループを選択し、 **[選択]** をクリックします。
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="ATP の設定":::
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="[ポリシー定義] ページ":::
 
 
 1. その他のパラメーターを入力し、 **[割り当て]** をクリックします。
@@ -104,11 +106,11 @@ Azure Cosmos DB のアクティビティで異常が発生すると、セキュ�
 
  Azure Security Center で、現在の[セキュリティ アラート](../security-center/security-center-alerts-overview.md)を確認して管理することができます。  [Security Center](https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0) で特定のアラートをクリックすると、考えられる原因および潜在的な脅威を調査して緩和するための推奨アクションが表示されます。 次の図は、Security Center に表示されるアラートの詳細の例を示しています。
 
- :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png" alt-text="ATP の設定":::
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png" alt-text="脅威の詳細":::
 
 アラートの詳細と推奨アクションを示すメール通知も送信されます。 次の図はアラート メールの例を示しています。
 
- :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png" alt-text="ATP の設定":::
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png" alt-text="アラートの詳細":::
 
 ## <a name="cosmos-db-atp-alerts"></a>Cosmos DB ATP のアラート
 

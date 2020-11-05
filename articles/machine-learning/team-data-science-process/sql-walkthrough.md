@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d7c02e413fdaa54db431cdac7a3cf7af0bddeb98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 580181aaaea975ee07bcec8108297079c5373b92
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331898"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320428"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Team Data Science Process の活用: SQL Sever の使用
 このチュートリアルでは、SQL Server と公開されているデータセット ([NYC タクシー乗車](https://www.andresmh.com/nyctaxitrips/)データセット) を使って、機械学習モデルを構築してデプロイするプロセスを説明します。 ここで使用する手順は、標準的なデータ サイエンス ワークフローを踏襲しています。つまり、データの取り込みと調査、特徴エンジニアリングによる学習の円滑化を経てモデルを構築し、デプロイします。
@@ -57,7 +57,7 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>予測タスクの例
 *tip\_amount* に基づく 3 つの予測問題について説明します。つまり、
 
-* 二項分類:乗車においてチップが支払われたかどうかを予測します。つまり、*tip\_amount* が $0 より大きい場合は肯定的な例で、*tip\_amount* が $0 の場合は否定的な例です。
+* 二項分類:乗車においてチップが支払われたかどうかを予測します。つまり、 *tip\_amount* が $0 より大きい場合は肯定的な例で、 *tip\_amount* が $0 の場合は否定的な例です。
 * 多クラス分類:乗車で支払われたチップの範囲を予測します。 *tip\_amount* を次の 5 つの箱つまりクラスに分割します。
 
    `Class 0 : tip_amount = $0`
@@ -84,7 +84,7 @@ Azure のデータ サイエンス環境をセット アップするには、
 
 1. [ストレージ アカウントの作成](../../storage/common/storage-account-create.md)
 2. [Azure Machine Learning ワークスペースの作成](../classic/create-workspace.md)
-3. [データ サイエンス仮想マシンをプロビジョニングする](../data-science-virtual-machine/setup-sql-server-virtual-machine.md)。この仮想マシンにより、SQL Server と IPython Notebook サーバーが用意されます。
+3. [データ サイエンス仮想マシンをプロビジョニングする](../data-science-virtual-machine/overview.md)。この仮想マシンにより、SQL Server と IPython Notebook サーバーが用意されます。
    
    > [!NOTE]
    > サンプル スクリプトと IPython Notebook は、セットアップ プロセス中、データ サイエンス仮想マシンにダウンロードされます。 仮想マシンのインストール後スクリプトが完了すると、サンプルは仮想マシンのドキュメント ライブラリに入ります。  
@@ -116,11 +116,11 @@ AzCopy を使用してデータをコピーするには
 ## <a name="bulk-import-data-into-sql-server-database"></a><a name="dbload"></a>SQL Server データベースにデータを一括インポートする
 *Partitioned テーブルと Views* を使用すると、大量のデータを SQL データベースおよび後続のクエリに読み込んだり転送したりする際のパフォーマンスを向上させることができます。 このセクションでは、「 [SQL パーティション テーブルを使用したデータの並行一括インポート](parallel-load-sql-partitioned-tables.md) 」で説明する手順に従ってデータベースを新規作成し、並行してデータをパーティション分割されたテーブルに読み込みます。
 
-1. VM にログオンした状態で、 **SQL Server Management Studio**を起動します。
+1. VM にログオンした状態で、 **SQL Server Management Studio** を起動します。
 2. Windows 認証を使用して接続します。
    
     ![SSMS 接続][12]
-3. まだ SQL Server の認証モードの変更と SQL ログイン ユーザーの新規作成を行っていない場合は、**Sample Scripts** フォルダーにある **change\_auth.sql** という名前のファイルを開きます。 既定のユーザー名とパスワードを変更します。 ツールバーにある **[実行]** をクリックすると、スクリプトが実行されます。
+3. まだ SQL Server の認証モードの変更と SQL ログイン ユーザーの新規作成を行っていない場合は、 **Sample Scripts** フォルダーにある **change\_auth.sql** という名前のファイルを開きます。 既定のユーザー名とパスワードを変更します。 ツールバーにある **[実行]** をクリックすると、スクリプトが実行されます。
    
     ![スクリプトの実行][13]
 4. SQL Server の既定のデータベースとログ フォルダーを確認または変更し、新規作成したデータベースが確実にデータ ディスクに格納されるようにします。 データ ウェアハウス用に最適化された SQL Server VM イメージは、データとログ ディスクが事前構成されています。 VM にデータ ディスクが含まれていなかったため、VM のセットアップ プロセス中に新しい仮想ハードディスクを追加した場合は、既定のフォルダーを次のように変更します。
@@ -129,7 +129,7 @@ AzCopy を使用してデータをコピーするには
      
        ![SQL Server プロパティ][14]
    * 左側の **[ページの選択]** リストから、 **[データベース設定]** を選択します。
-   * **[データベースの既定の場所]** が選択した**データ ディスク**の場所になっているか確認し、なっていなければ変更します。 この場所は、既定の設定で作成した場合に新しいデータベースが存在する場所です。
+   * **[データベースの既定の場所]** が選択した **データ ディスク** の場所になっているか確認し、なっていなければ変更します。 この場所は、既定の設定で作成した場合に新しいデータベースが存在する場所です。
      
        ![SQL Database 既定値][15]  
 5. 新しいデータベースとファイルグループのセットを作成してパーティション分割されたテーブルを保持するには、サンプルのスクリプト **create\_db\_default.sql** を開きます。 スクリプトは、既定のデータの場所に **TaxiNYC** という名前の新しいデータベースと 12 のファイルグループを作成します。 各ファイルグループは、1 か月分の trip\_data と trip\_fare data を保持します。 必要な場合は、データベース名を変更します。 スクリプトを実行するには、 **[実行]** をクリックします。
@@ -137,25 +137,25 @@ AzCopy を使用してデータをコピーするには
    
    * 月単位でデータを分割するパーティション関数を作成します。
    * 各月のデータを別のファイルグループにマップするパーティション スキームを作成します。
-   * パーティション スキームにマッピングされたパーティション テーブルを 2 つ作成します。**nyctaxi\_trip** は trip\_data を保持し、**nyctaxi\_fare** は trip\_fare を保持します。
+   * パーティション スキームにマッピングされたパーティション テーブルを 2 つ作成します。 **nyctaxi\_trip** は trip\_data を保持し、 **nyctaxi\_fare** は trip\_fare を保持します。
      
      **[実行]** をクリックしてスクリプトを実行し、パーティション分割されたテーブルを作成します。
 7. **Sample Scripts** フォルダーには、SQL Server テーブルへのデータの並行一括インポートのデモを行うために用意された 2 つのサンプル PowerShell スクリプトがあります。
    
    * **bcp\_parallel\_generic.ps1** は、テーブルにデータを並行一括インポートする汎用スクリプトです。 このスクリプトを変更し、スクリプト内のコメント行に示されているとおりに入力変数とターゲット変数を設定します。
    * **bcp\_parallel\_nyctaxi.ps1** は汎用スクリプトの構成済みのバージョンであり、NYC タクシー乗車データの両方のテーブルを読み込むために使用できます。  
-8. スクリプト名 **bcp\_parallel\_nyctaxi.ps1** を右クリックしてから、 **[編集]** をクリックして PowerShell で開きます。 事前設定された変数を確認し、選択したデータベース名、入力データ フォルダー、対象のログ フォルダー、およびサンプルのフォーマット ファイル **nyctaxi_trip.xml** と **nyctaxi\_fare.xml** (**Sample Scripts** フォルダーにあります) へのパスに合わせて変更します。
+8. スクリプト名 **bcp\_parallel\_nyctaxi.ps1** を右クリックしてから、 **[編集]** をクリックして PowerShell で開きます。 事前設定された変数を確認し、選択したデータベース名、入力データ フォルダー、対象のログ フォルダー、およびサンプルのフォーマット ファイル **nyctaxi_trip.xml** と **nyctaxi\_fare.xml** ( **Sample Scripts** フォルダーにあります) へのパスに合わせて変更します。
    
     ![データの一括インポート][16]
    
     また、認証モードを選択することもできます。既定は Windows 認証です。 実行するには、ツールバーの緑色の矢印をクリックします。 スクリプトは、24 の一括インポート操作を並行して開始します。パーティション分割されたテーブルごとに 12 の操作を開始します。 上記でセットされた SQL Server の既定のデータ フォルダーを開いて、データ インポートの進行状況を監視できます。
 9. PowerShell スクリプトは、開始時刻と終了時刻を報告します。 一括インポートがすべて完了すると、終了時刻が報告されます。 対象のログ フォルダーをチェックして、一括インポートが成功したこと、つまり、対象のログ フォルダーにエラー報告がされていないことを確認します。
-10. これで、データベースは、探索、特徴エンジニア リング、および必要に応じてその他の操作を行える状態になりました。 テーブルは **[pickup\_datetime]** フィールドに従ってパーティション分割されるので、**WHERE** 句に条件 **pickup\_datetime** が含まれるクエリは、パーティション スキームからメリットを得られます。
+10. これで、データベースは、探索、特徴エンジニア リング、および必要に応じてその他の操作を行える状態になりました。 テーブルは **[pickup\_datetime]** フィールドに従ってパーティション分割されるので、 **WHERE** 句に条件 **pickup\_datetime** が含まれるクエリは、パーティション スキームからメリットを得られます。
 11. **SQL Server Management Studio** で、提供されたサンプルのスクリプト **sample\_queries.sql** を探索します。 サンプル クエリのいずれかを実行するには、クエリ行を強調表示してから、ツールバーの **[実行]** をクリックします。
-12. NYC タクシー乗車データは、2 つの個別のテーブルに読み込まれます。 結合操作を向上させるため、テーブルのインデックスを作成することを強くお勧めします。 サンプルのスクリプト **create\_partitioned\_index.sql** は、パーティション分割されたインデックスを複合結合キー (**medallion、hack\_license、pickup\_datetime**) に作成します。
+12. NYC タクシー乗車データは、2 つの個別のテーブルに読み込まれます。 結合操作を向上させるため、テーブルのインデックスを作成することを強くお勧めします。 サンプルのスクリプト **create\_partitioned\_index.sql** は、パーティション分割されたインデックスを複合結合キー ( **medallion、hack\_license、pickup\_datetime** ) に作成します。
 
 ## <a name="data-exploration-and-feature-engineering-in-sql-server"></a><a name="dbexplore"></a>SQL Server でのデータの探索と特徴エンジニアリング
-このセクションでは、以前作成した SQL Server データベースを使用して、 **SQL Server Management Studio** で直接 SQL クエリを実行することで、データの探索および特徴の生成を行います。 **sample\_queries.sql** という名前のサンプルのスクリプトが、**Sample Scripts** フォルダーに用意されています。 データベース名が既定の名前 (**TaxiNYC**) と異なる場合は、スクリプトのデータベース名を変更します。
+このセクションでは、以前作成した SQL Server データベースを使用して、 **SQL Server Management Studio** で直接 SQL クエリを実行することで、データの探索および特徴の生成を行います。 **sample\_queries.sql** という名前のサンプルのスクリプトが、 **Sample Scripts** フォルダーに用意されています。 データベース名が既定の名前 ( **TaxiNYC** ) と異なる場合は、スクリプトのデータベース名を変更します。
 
 この演習では、以下のことを実行します。
 
@@ -258,7 +258,7 @@ AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 ```
 
 #### <a name="feature-engineering-in-sql-queries"></a>SQL クエリでの特徴エンジニアリング
-ラベルの生成と geography 変換探索クエリは、カウントする部分を削除してラベルや特徴を生成することにも使用できます。 その他の特徴エンジニアリングの SQL の例は、「 [IPython Notebook でのデータの探索と特徴エンジニアリング](#ipnb) 」セクションにあります。 SQL Server データベースのインスタンスで直接実行する SQL クエリを使用して、データセット全体または大規模なサブセットで特徴生成クエリを実行するとより効率的です。 クエリは **SQL Server Management Studio**、IPython Notebook、データベースにローカルやリモートにアクセスできるいずれかの開発ツールまたは環境で実行します。
+ラベルの生成と geography 変換探索クエリは、カウントする部分を削除してラベルや特徴を生成することにも使用できます。 その他の特徴エンジニアリングの SQL の例は、「 [IPython Notebook でのデータの探索と特徴エンジニアリング](#ipnb) 」セクションにあります。 SQL Server データベースのインスタンスで直接実行する SQL クエリを使用して、データセット全体または大規模なサブセットで特徴生成クエリを実行するとより効率的です。 クエリは **SQL Server Management Studio** 、IPython Notebook、データベースにローカルやリモートにアクセスできるいずれかの開発ツールまたは環境で実行します。
 
 #### <a name="preparing-data-for-model-building"></a>モデル作成用にデータを準備する
 次のクエリはテーブル **nyctaxi\_trip** と **nyctaxi\_fare** を結合して、二項分類ラベル **[tipped]** 、多クラス分類ラベル **[tip\_class]** を生成し、結合データセット全体から 1% のランダム サンプルを抽出します。 このクエリをコピーして [Azure Machine Learning Studio](https://studio.azureml.net) の[データのインポート][import-data] モジュールに直接貼り付け、Azure の SQL Server データベース インスタンスから直接データ インジェストを行うことができます。 このクエリは、座標が正しくないレコード (0, 0) を除外します。
@@ -281,7 +281,7 @@ AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 ```
 
 ## <a name="data-exploration-and-feature-engineering-in-ipython-notebook"></a><a name="ipnb"></a>IPython Notebook でのデータの探索と特徴エンジニアリング
-このセクションでは、以前作成した SQL Server データベースに対して Python クエリと SQL クエリの両方を実行し、データの探索と特徴の生成を行います。 **machine-Learning-data-science-process-sql-story.ipynb** という名前のサンプルの IPython Notebooks が、**Sample IPython Notebooks** フォルダーに用意されています。 このノートブックは [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks)からも入手できます。
+このセクションでは、以前作成した SQL Server データベースに対して Python クエリと SQL クエリの両方を実行し、データの探索と特徴の生成を行います。 **machine-Learning-data-science-process-sql-story.ipynb** という名前のサンプルの IPython Notebooks が、 **Sample IPython Notebooks** フォルダーに用意されています。 このノートブックは [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks)からも入手できます。
 
 ビッグ データを使用する場合は、次の推奨される手順に従ってください。
 
@@ -423,7 +423,7 @@ plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
 ![プロット #6][6]
 
-同様に、**rate\_code** と **trip\_distance** のリレーションシップを確認できます。
+同様に、 **rate\_code** と **trip\_distance** のリレーションシップを確認できます。
 
 ```sql
 plt.scatter(df1['passenger_count'], df1['trip_distance'])
@@ -432,12 +432,12 @@ plt.scatter(df1['passenger_count'], df1['trip_distance'])
 ![プロット #8][8]
 
 ### <a name="sub-sampling-the-data-in-sql"></a>SQL でのデータのサブサンプリング
-[Azure Machine Learning Studio](https://studio.azureml.net) でモデル作成用のデータを準備する際、**SQL クエリをデータのインポート モジュールで直接使用する**か、エンジニアリングとサンプリングが行われたデータを新しいテーブルで保持するかを決定できます。新しいテーブルは、簡単な **SELECT * FROM <your\_new\_table\_name>** によって[データのインポート][import-data] モジュールで使用できます。
+[Azure Machine Learning Studio](https://studio.azureml.net) でモデル作成用のデータを準備する際、 **SQL クエリをデータのインポート モジュールで直接使用する** か、エンジニアリングとサンプリングが行われたデータを新しいテーブルで保持するかを決定できます。新しいテーブルは、簡単な **SELECT * FROM <your\_new\_table\_name>** によって [データのインポート][import-data] モジュールで使用できます。
 
 このセクションでは、サンプリング データとエンジニアリング データを保持するためにテーブルを新規作成します。 モデルを構築するための直接的な SQL クエリの例は、「 [SQL Server でのデータの探索と特徴エンジニアリング](#dbexplore) 」セクションに記載されています。
 
 #### <a name="create-a-sample-table-and-populate-with-1-of-the-joined-tables-drop-table-first-if-it-exists"></a>サンプルのテーブルを作成し、結合されたテーブルの 1% を入力します。 存在する場合は最初にテーブルを削除します。
-このセクションでは、テーブルの **nyctaxi\_trip** と **nyctaxi\_fare** を結合し、1% のランダム サンプルを抽出して、**nyctaxi\_one\_percent** という名前の新しいテーブルにサンプリングされたデータを保持します。
+このセクションでは、テーブルの **nyctaxi\_trip** と **nyctaxi\_fare** を結合し、1% のランダム サンプルを抽出して、 **nyctaxi\_one\_percent** という名前の新しいテーブルにサンプリングされたデータを保持します。
 
 ```sql
 cursor = conn.cursor()
@@ -463,7 +463,7 @@ cursor.commit()
 ```
 
 ### <a name="data-exploration-using-sql-queries-in-ipython-notebook"></a>IPython Notebook での SQL クエリを使用したデータの探索
-このセクションでは、上記で作成した新しいテーブルに保持されている 1% のサンプリングされたデータを使用して、データの分布を探索します。 元のテーブルを使用して、オプションで探索のサンプルを制限する **TABLESAMPLE** を使用し、または **pickup\_datetime** パーティションを使用して結果を指定した期間に限定して同様の探索を行うこともできます。これは、「[SQL サーバーでのデータの探索と特徴エンジニアリング](#dbexplore)」セクションで説明しています。
+このセクションでは、上記で作成した新しいテーブルに保持されている 1% のサンプリングされたデータを使用して、データの分布を探索します。 元のテーブルを使用して、オプションで探索のサンプルを制限する **TABLESAMPLE** を使用し、または **pickup\_datetime** パーティションを使用して結果を指定した期間に限定して同様の探索を行うこともできます。これは、「 [SQL サーバーでのデータの探索と特徴エンジニアリング](#dbexplore)」セクションで説明しています。
 
 #### <a name="exploration-daily-distribution-of-trips"></a>探索:1 日ごとの乗車の分布
 
@@ -585,7 +585,7 @@ cursor.commit()
 ```
 
 #### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>特徴エンジニアリング: 10 進数の緯度と経度から抽出する場所特徴
-この例では、"緯度" フィールドや "経度" フィールドの 10 進数表記を、国または地域、都市、町、ブロックなどの異なる粒度に細分化します。新しい geo フィールドは実際の場所にマップされていません。 Geocode の場所のマッピングの詳細については、「[Bing マップの REST サービス](https://msdn.microsoft.com/library/ff701710.aspx)」を参照してください。
+この例では、"緯度" フィールドや "経度" フィールドの 10 進数表記を、国または地域、都市、町、ブロックなどの異なる粒度に細分化します。新しい geo フィールドは実際の場所にマップされていません。 Geocode の場所のマッピングの詳細については、「[Bing マップの REST サービス](/bingmaps/rest-services/locations/find-a-location-by-point)」を参照してください。
 
 ```sql
 nyctaxi_one_percent_insert_col = '''
@@ -650,10 +650,10 @@ pd.read_sql(query,conn)
 1. **[データの入力と出力]** セクションにある [[データのインポート]][import-data] モジュール を使用して、Azure Machine Learning にデータを取り込みます。 詳細については、[データのインポート][import-data] モジュールのリファレンス ページを参照してください。
    
     ![Azure Machine Learning の [データのインポート]][17]
-2. **[プロパティ]** パネルで、**Azure SQL Database** を**データ ソース**として選択します。
+2. **[プロパティ]** パネルで、 **Azure SQL Database** を **データ ソース** として選択します。
 3. データベースの DNS 名を **[データベース サーバー名]** フィールドに入力します。 形式: `tcp:<your_virtual_machine_DNS_name>,1433`
 4. **データベース名** を対応するフィールドに入力します。
-5. <**SQL ユーザー名**> を **[Server user account name (サーバーのユーザー アカウント名)]** に、<**パスワード**> を **[Server user account password (サーバーのユーザー アカウントのパスワード)]** に入力します。
+5. < **SQL ユーザー名** > を **[Server user account name (サーバーのユーザー アカウント名)]** に、< **パスワード** > を **[Server user account password (サーバーのユーザー アカウントのパスワード)]** に入力します。
 7. **データベース クエリ** テキスト編集領域で、必要なデータベース フィールド (ラベルなどの計算フィールドなど) を抽出するクエリを貼り付けてから、データを希望するサンプルのサイズにダウンサンプリングします。
 
 SQL Server データベースから直接データを読み取る、二項分類の実験の例を次の図に示します。 同様の実験を、多クラス分類と回帰問題で構築することができます。
@@ -661,7 +661,7 @@ SQL Server データベースから直接データを読み取る、二項分類
 ![Azure Machine Learning のトレーニング][10]
 
 > [!IMPORTANT]
-> 前のセクションに記載されたモデリング データの抽出とサンプリングのクエリの例では、 **3 つのモデリングの演習用のラベルはすべてクエリに含まれています**。 各モデリングの演習における重要な (必須の) 手順は、他の 2 つの問題用の不要なラベルと、その他のすべての**ターゲット リーク**を**除外する**ことです。 たとえば、二項分類を使用する場合は、ラベル **tipped** を使用し、フィールド **[tip\_class]** 、 **[tip\_amount]** 、 **[total\_amount]** は除外します。 使用しないものは支払われたチップを意味しているため、ターゲットのリークになります。
+> 前のセクションに記載されたモデリング データの抽出とサンプリングのクエリの例では、 **3 つのモデリングの演習用のラベルはすべてクエリに含まれています** 。 各モデリングの演習における重要な (必須の) 手順は、他の 2 つの問題用の不要なラベルと、その他のすべての **ターゲット リーク** を **除外する** ことです。 たとえば、二項分類を使用する場合は、ラベル **tipped** を使用し、フィールド **[tip\_class]** 、 **[tip\_amount]** 、 **[total\_amount]** は除外します。 使用しないものは支払われたチップを意味しているため、ターゲットのリークになります。
 > 
 > 不要な列またはターゲット リークを除外するには、[データセット内の列の選択][select-columns]モジュールまたは[メタデータの編集][edit-metadata]を使用できます。 詳細については、[データセット内の列の選択][select-columns]と[メタデータの編集][edit-metadata]のリファレンス ページを参照してください。
 > 
@@ -675,7 +675,7 @@ SQL Server データベースから直接データを読み取る、二項分類
 1. スコア付け実験の作成。
 2. Web サービスのデプロイ。
 
-**終了した**トレーニング実験からスコア付け実験を作成するには、下部の操作バーにある **[スコア付け実験の作成]** をクリックしてください。
+**終了した** トレーニング実験からスコア付け実験を作成するには、下部の操作バーにある **[スコア付け実験の作成]** をクリックしてください。
 
 ![Azure スコアリング][18]
 
@@ -685,7 +685,7 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 2. 予想される入力データ スキーマを表す論理 **入力ポート** を特定する。
 3. 予想される Web サービスの出力スキーマを表す論理 **出力ポート** を特定する。
 
-スコア付け実験が作成されたら、それを確認し、必要に応じて調整します。 一般的な調整は、入力データセットやクエリをラベル フィールドを除くものに置き換えることです。これらのラベルは、サービスの呼び出し時にスキーマで使用できないためです。 入力データセットまたはクエリのサイズを、入力スキーマを示すのに十分な 2、3 個のレコードまで削減することをお勧めします。 出力ポートでは、一般的に、すべての入力フィールドを除外し、[データセット内の列の選択][select-columns]モジュールを使用して、**スコアリングしたラベル**と**スコアリングした確率**のみを出力に含めます。
+スコア付け実験が作成されたら、それを確認し、必要に応じて調整します。 一般的な調整は、入力データセットやクエリをラベル フィールドを除くものに置き換えることです。これらのラベルは、サービスの呼び出し時にスキーマで使用できないためです。 入力データセットまたはクエリのサイズを、入力スキーマを示すのに十分な 2、3 個のレコードまで削減することをお勧めします。 出力ポートでは、一般的に、すべての入力フィールドを除外し、 [データセット内の列の選択][select-columns]モジュールを使用して、 **スコアリングしたラベル** と **スコアリングした確率** のみを出力に含めます。
 
 サンプルのスコア付け実験を次の図に示します。 デプロイできる状態になったら、下部の操作バーにある **[Web サービスの発行]** ボタンをクリックします。
 
@@ -722,6 +722,6 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 
 
 <!-- Module References -->
-[edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[edit-metadata]: /azure/machine-learning/studio-module-reference/edit-metadata
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset
+[import-data]: /azure/machine-learning/studio-module-reference/import-data

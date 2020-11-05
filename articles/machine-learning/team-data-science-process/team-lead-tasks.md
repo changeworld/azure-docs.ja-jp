@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df7d2278487c1b098615a14562c498b9187c56eb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75864283"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321201"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Team Data Science Process チームでのチーム リーダーのタスク
 
-この記事では、"*チーム リーダー*" がデータ サイエンス チームで行うタスクについて説明します。 リーム リーダーの目的は、[Team Data Science Process](overview.md) (TDSP) を標準とするチーム コラボレーション環境を確立することです。 TDSP は、コラボレーションとチーム学習の向上を支援するように設計されています。 
+この記事では、" *チーム リーダー* " がデータ サイエンス チームで行うタスクについて説明します。 リーム リーダーの目的は、[Team Data Science Process](overview.md) (TDSP) を標準とするチーム コラボレーション環境を確立することです。 TDSP は、コラボレーションとチーム学習の向上を支援するように設計されています。 
 
 TDSP は、予測分析ソリューションとインテリジェント アプリケーションを効率的に実現するアジャイルで反復的なデータ サイエンス手法です。 このプロセスによって、Microsoft や業界のベスト プラクティスと構造が抽出されます。  ゴールは、データ サイエンス イニシアチブの実装を成功させ、分析プログラムの利点を完全に実現することです。 TDSP を標準とするデータ サイエンス チームの個人的役割とそれに関連したタスクの概要については、「[Team Data Science Process の役割とタスク](roles-tasks.md)」をご覧ください。
 
@@ -29,19 +29,19 @@ TDSP は、予測分析ソリューションとインテリジェント アプ�
 
 ![チーム リーダーのタスクのワークフロー](./media/team-lead-tasks/team-leads-1-creating-teams.png)
 
-1. Azure DevOps でグループの組織に**チーム プロジェクト**を作成します。 
+1. Azure DevOps でグループの組織に **チーム プロジェクト** を作成します。 
   
 1. 既定のチーム リポジトリの名前を **TeamUtilities** に変更します。
   
 1. チーム プロジェクトに新しい **TeamTemplate** リポジトリを作成します。 
   
-1. グループの **GroupUtilities** および **GroupProjectTemplate** リポジトリの内容を、**TeamUtilities** および **TeamTemplate** リポジトリにインポートします。 
+1. グループの **GroupUtilities** および **GroupProjectTemplate** リポジトリの内容を、 **TeamUtilities** および **TeamTemplate** リポジトリにインポートします。 
   
-1. チーム メンバーを追加し、アクセス許可を構成して、**セキュリティ制御**を設定します。
+1. チーム メンバーを追加し、アクセス許可を構成して、 **セキュリティ制御** を設定します。
   
 1. 必要に応じて、チームのデータおよび分析リソースを作成します。
    - チーム固有のユーティリティを **TeamUtilities** リポジトリに追加します。 
-   - チーム全体にとって役立つデータ資産を格納するための **Azure ファイル ストレージ**を作成します。 
+   - チーム全体にとって役立つデータ資産を格納するための **Azure ファイル ストレージ** を作成します。 
    - Azure ファイル ストレージをチーム リーダーの **Data Science Virtual Machine** (DSVM) にマウントし、データ資産を追加します。
 
 以下のチュートリアルでは、その手順を詳しく説明します。
@@ -61,9 +61,9 @@ TDSP は、予測分析ソリューションとインテリジェント アプ�
 
 - Azure サブスクリプション。
 - コンピューターにインストールされた Git。 DSVM を使用している場合、Git は事前にインストールされています。 それ以外の場合は、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)をご覧ください。
-- DSVM を使用する場合は、Azure で作成して構成された Windows または Linux の DSVM。 詳細と手順については、[Data Science Virtual Machine ドキュメント](/azure/machine-learning/data-science-virtual-machine/)を参照してください。
-- Windows DSVM の場合、[Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) をコンピューターにインストールしておきます。 *README.md* ファイルを下にスクロールして **[Download and Install]** セクションを見つけ、**最新のインストーラー**を選択します。 インストーラー ページから *.exe* インストーラーをダウンロードして実行します。 
-- Linux DSVM の場合は、DSVM で設定されて Azure DevOps に追加された SSH 公開キー。 詳細と手順については、[プラットフォームとツールの付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成**に関するセクションをご覧ください。 
+- DSVM を使用する場合は、Azure で作成して構成された Windows または Linux の DSVM。 詳細と手順については、[Data Science Virtual Machine ドキュメント](../data-science-virtual-machine/index.yml)を参照してください。
+- Windows DSVM の場合、[Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) をコンピューターにインストールしておきます。 *README.md* ファイルを下にスクロールして **[Download and Install]** セクションを見つけ、 **最新のインストーラー** を選択します。 インストーラー ページから *.exe* インストーラーをダウンロードして実行します。 
+- Linux DSVM の場合は、DSVM で設定されて Azure DevOps に追加された SSH 公開キー。 詳細と手順については、 [プラットフォームとツールの付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成** に関するセクションをご覧ください。 
 
 ## <a name="create-a-team-project-and-repositories"></a>チーム プロジェクトとリポジトリの作成
 
@@ -77,7 +77,7 @@ TDSP は、予測分析ソリューションとインテリジェント アプ�
 - 複数のデータ サイエンス チームが存在しない小規模なデータ サイエンス グループ。 
 - 複数のデータ サイエンス チームが存在し、グループ レベルのスプリントの計画などのアクティビティでチーム間のコラボレーションを最適化することを求めている大規模なデータ サイエンス グループ。 
 
-チームで 1 つのグループ プロジェクトの下にチーム固有のリポジトリを作成することを選択した場合、チーム リーダーは、 *\<TeamName>Template* や *\<TeamName>Utilities* のような名前のリポジトリを作成する必要があります。 次に例を示します。*TeamATemplate* および *TeamAUtilities*。 
+チームで 1 つのグループ プロジェクトの下にチーム固有のリポジトリを作成することを選択した場合、チーム リーダーは、 *\<TeamName>Template* や *\<TeamName>Utilities* のような名前のリポジトリを作成する必要があります。 次に例を示します。 *TeamATemplate* および *TeamAUtilities* 。 
 
 どのような場合でも、チーム リーダーは、設定および複製するテンプレート リポジトリとユーティリティ リポジトリを、チーム メンバーに知らせる必要があります。 プロジェクト リーダーは、個別のプロジェクトまたは 1 つのプロジェクトのどちらであるかにかかわらず、[データ サイエンス チームのプロジェクト リーダーのタスク](project-lead-tasks.md)に関する記事に従って、プロジェクト リポジトリを作成する必要があります。 
 
@@ -89,7 +89,7 @@ TDSP は、予測分析ソリューションとインテリジェント アプ�
    
    ![[新しいプロジェクト] を選択する](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
-1. **[プロジェクトの作成]** ダイアログで、 **[プロジェクト名]** にチームの名前 (例: *MyTeam*) を入力し、 **[Advanced]\(詳細\)** を選択します。 
+1. **[プロジェクトの作成]** ダイアログで、 **[プロジェクト名]** にチームの名前 (例: *MyTeam* ) を入力し、 **[Advanced]\(詳細\)** を選択します。 
    
 1. **[バージョン管理]** で **[Git]** を選択し、 **[作業項目プロセス]** で **[アジャイル]** を選択します。 **[作成]** を選択します。 
    
@@ -106,11 +106,11 @@ TDSP は、予測分析ソリューションとインテリジェント アプ�
 1. **MyTeam** のリポジトリ ページの上部で **MyTeam** リポジトリを選択し、ドロップダウンから **[リポジトリの管理]** を選択します。 
    
    ![[リポジトリの管理] を選択する](./media/team-lead-tasks/team-leads-7-rename-team-project-repo-2.png)
-1. **[プロジェクトの設定]** ページで、**MyTeam** リポジトリの横にある **[...]** を選択し、 **[リポジトリの名前変更]** を選択します。 
+1. **[プロジェクトの設定]** ページで、 **MyTeam** リポジトリの横にある **[...]** を選択し、 **[リポジトリの名前変更]** を選択します。 
    
    ![[リポジトリの名前変更] を選択する](./media/team-lead-tasks/team-leads-8-rename-team-project-repo-3.png)
    
-1. **[MyTeam リポジトリの名前を変更]** ポップアップで「*TeamUtilities*」と入力し、 **[名前の変更]** を選択します。 
+1. **[MyTeam リポジトリの名前を変更]** ポップアップで「 *TeamUtilities* 」と入力し、 **[名前の変更]** を選択します。 
 
 ### <a name="create-the-teamtemplate-repository"></a>TeamTemplate リポジトリを作成する
 
@@ -118,9 +118,9 @@ TDSP は、予測分析ソリューションとインテリジェント アプ�
    
    ![[新しいリポジトリ] を選択する](./media/team-lead-tasks/team-leads-9-create-team-utilities.png)
    
-   または、**MyTeam** プロジェクトの **[概要]** ページの左側のナビゲーションで **[リポジトリ]** を選択し、ページの上部でリポジトリを選択した後、ドロップダウンから **[新しいリポジトリ]** を選択します。
+   または、 **MyTeam** プロジェクトの **[概要]** ページの左側のナビゲーションで **[リポジトリ]** を選択し、ページの上部でリポジトリを選択した後、ドロップダウンから **[新しいリポジトリ]** を選択します。
    
-1. **[新しいリポジトリの作成]** ダイアログで、 **[種類]** として **[Git]** が選択されていることを確認します。 **[リポジトリ名]** に「*TeamTemplate*」と入力し、 **[作成]** を選択します。
+1. **[新しいリポジトリの作成]** ダイアログで、 **[種類]** として **[Git]** が選択されていることを確認します。 **[リポジトリ名]** に「 *TeamTemplate* 」と入力し、 **[作成]** を選択します。
    
    ![リポジトリを作成する](./media/team-lead-tasks/team-leads-10-create-team-utilities-2.png)
    
@@ -140,15 +140,15 @@ TDSP は、予測分析ソリューションとインテリジェント アプ�
    
    ![[インポート] を選択する](./media/team-lead-tasks/import-repo.png)
    
-1. **[Git リポジトリをインポートする]** ダイアログで、 **[ソースの種類]** として **[Git]** を選択し、 **[クローン URL]** にグループ共通テンプレート リポジトリの URL を入力します。 URL は *https:\//\<server name>/\<organization name>/_git/\<repository name>* です。 たとえば、*https:\//dev.azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate* のようになります。 
+1. **[Git リポジトリをインポートする]** ダイアログで、 **[ソースの種類]** として **[Git]** を選択し、 **[クローン URL]** にグループ共通テンプレート リポジトリの URL を入力します。 URL は *https:\//\<server name>/\<organization name>/_git/\<repository name>* です。 たとえば、 *https:\//dev.azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate* のようになります。 
    
 1. **[インポート]** を選択します。 グループ テンプレート リポジトリの内容が、チーム テンプレート リポジトリにインポートされます。 
    
    ![グループ共通テンプレート リポジトリをインポートする](./media/team-lead-tasks/import-repo-2.png)
    
-1. プロジェクトの **[リポジトリ]** ページの上部にあるドロップダウンで、**TeamUtilities** リポジトリを選択します。
+1. プロジェクトの **[リポジトリ]** ページの上部にあるドロップダウンで、 **TeamUtilities** リポジトリを選択します。
    
-1. インポート プロセスを繰り返して、グループ共通ユーティリティ リポジトリ (例: *GroupUtilities*) の内容を、**TeamUtilities** リポジトリにインポートします。 
+1. インポート プロセスを繰り返して、グループ共通ユーティリティ リポジトリ (例: *GroupUtilities* ) の内容を、 **TeamUtilities** リポジトリにインポートします。 
    
 2 つのチーム リポジトリに、対応するグループ共通リポジトリのファイルが含まれるようになりました。 
 
@@ -180,7 +180,7 @@ Azure DevOps でファイルやフォルダーの変更、アップロード、�
    
    ![変更をコミットする](./media/team-lead-tasks/commit.png)
 
-ローカル コンピューターまたは DSVM でリポジトリの作業を行うには、最初にリポジトリをローカル コンピューターにコピーまたは "*複製*" した後、変更をコミットして共有チーム リポジトリにプッシュします。 
+ローカル コンピューターまたは DSVM でリポジトリの作業を行うには、最初にリポジトリをローカル コンピューターにコピーまたは " *複製* " した後、変更をコミットして共有チーム リポジトリにプッシュします。 
 
 リポジトリを複製するには:
 
@@ -194,14 +194,14 @@ Azure DevOps でファイルやフォルダーの変更、アップロード、�
    
 1. ローカル コンピューターで、次のディレクトリを作成します。
    
-   - Windows の場合:**C:\GitRepos\MyTeam**
+   - Windows の場合: **C:\GitRepos\MyTeam**
    - Linux の場合: **$home/GitRepos/MyTeam** 
    
 1. 作成したディレクトリに移動します。
    
 1. Git Bash で、コマンド `git clone <clone URL>` を実行します。\<clone URL> は、 **[複製]** ダイアログからコピーした URL です。
    
-   たとえば、**TeamUtilities** リポジトリをローカル コンピューターの *MyTeam* ディレクトリに複製するには、次のいずれかのコマンドを使用します。 
+   たとえば、 **TeamUtilities** リポジトリをローカル コンピューターの *MyTeam* ディレクトリに複製するには、次のいずれかのコマンドを使用します。 
    
    **HTTPS 接続:**
    
@@ -296,7 +296,7 @@ Azure HDInsight Spark クラスターなど、他のリソースをチームと�
    
 1. 使用するストレージ アカウントを選択するか、選択したサブスクリプションに新しいストレージ アカウントを作成します。 Azure ファイル ストレージの名前には、小文字、数字、ハイフンを使用できます。
    
-1. ストレージのマウントと共有を容易にするため、Enter キーを押すか、「*Y*」と入力して、Azure ファイル ストレージの情報を現在のディレクトリ内のテキスト ファイルに保存します。 このテキスト ファイルを **TeamTemplate** リポジトリにチェックインし (理想的には、**Docs\DataDictionaries** の下)、チームのすべてのプロジェクトでアクセス可能にすることができます。 また、次のセクションで Azure DSVM に Azure ファイル ストレージをマウントするためにも、ファイルの情報が必要です。 
+1. ストレージのマウントと共有を容易にするため、Enter キーを押すか、「 *Y* 」と入力して、Azure ファイル ストレージの情報を現在のディレクトリ内のテキスト ファイルに保存します。 このテキスト ファイルを **TeamTemplate** リポジトリにチェックインし (理想的には、 **Docs\DataDictionaries** の下)、チームのすべてのプロジェクトでアクセス可能にすることができます。 また、次のセクションで Azure DSVM に Azure ファイル ストレージをマウントするためにも、ファイルの情報が必要です。 
    
 ### <a name="mount-azure-file-storage-on-your-local-machine-or-dsvm"></a>ローカル コンピューターまたは DSVM に Azure ファイル ストレージをマウントする
 
@@ -316,9 +316,9 @@ Azure HDInsight Spark クラスターなど、他のリソースをチームと�
      bash AttachFileShare.sh
      ```
    
-1. 前のステップで Azure ファイル ストレージの情報ファイルを保存した場合は、Enter キーを押すか、「*Y*」と入力して続行します。 作成したファイルの完全なパスと名前を入力します。 
+1. 前のステップで Azure ファイル ストレージの情報ファイルを保存した場合は、Enter キーを押すか、「 *Y* 」と入力して続行します。 作成したファイルの完全なパスと名前を入力します。 
    
-   Azure ファイル ストレージの情報ファイルがない場合は、「*n*」と入力し、指示に従ってサブスクリプション、Azure ストレージ アカウント、Azure ファイル ストレージの情報を入力します。
+   Azure ファイル ストレージの情報ファイルがない場合は、「 *n* 」と入力し、指示に従ってサブスクリプション、Azure ストレージ アカウント、Azure ファイル ストレージの情報を入力します。
    
 1. ファイル共有をマウントするローカル ドライブまたは TDSP ドライブの名前を入力します。 既存のドライブ名の一覧が画面に表示されます。 まだ存在しないドライブ名を指定します。
    

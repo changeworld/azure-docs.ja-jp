@@ -3,17 +3,19 @@ title: Azure Cosmos DB のコンテナーを照会する
 description: インパーティション クエリとクロスパーティション クエリを使用して、Azure Cosmos DB 内のコンテナーのクエリを実行する方法について説明します
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: e948031d3d1d03890bfcfccd65424a15e6e314cd
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0f08ca84597b08b9a236b7bfb0fc9c849423a752
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276117"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335893"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Azure Cosmos コンテナーを照会する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、Azure Cosmos DB のコンテナー (コレクション、グラフ、またはテーブル) のクエリを実行する方法について説明します。 特に、Azure Cosmos DB でのインパーティション クエリとクロスパーティション クエリの動作について説明します。
 
@@ -47,7 +49,7 @@ ms.locfileid: "92276117"
     SELECT * FROM c WHERE c.Location = 'Seattle`
 ```
 
-各物理パーティションには、独自のインデックスがあります。 そのため、コンテナーに対してクロスパーティション クエリを実行すると、実質的には物理パーティション "*ごと*" に 1 つのクエリが実行されることになります。 Azure Cosmos DB によって、異なる物理パーティションに対する結果が自動的に集計されます。
+各物理パーティションには、独自のインデックスがあります。 そのため、コンテナーに対してクロスパーティション クエリを実行すると、実質的には物理パーティション " *ごと* " に 1 つのクエリが実行されることになります。 Azure Cosmos DB によって、異なる物理パーティションに対する結果が自動的に集計されます。
 
 異なる物理パーティション内のインデックスは、互いに独立しています。 Azure Cosmos DB にはグローバル インデックスはありません。
 
@@ -57,9 +59,9 @@ Azure Cosmos DB SDK 1.9.0 以降では、並列クエリ実行オプションが
 
 次のパラメーターを調整することで、並列クエリの実行を管理できます。
 
-- **MaxConcurrency**: コンテナーのパーティションに対する同時ネットワーク接続数の上限を設定します。 このプロパティを `-1` に設定した場合、SDK によって並列処理次数が管理されます。  `MaxConcurrency` が `0` に設定されている場合は、コンテナーのパーティションに対して 1 つのネットワーク接続が存在します。
+- **MaxConcurrency** : コンテナーのパーティションに対する同時ネットワーク接続数の上限を設定します。 このプロパティを `-1` に設定した場合、SDK によって並列処理次数が管理されます。  `MaxConcurrency` が `0` に設定されている場合は、コンテナーのパーティションに対して 1 つのネットワーク接続が存在します。
 
-- **MaxBufferedItemCount**:クエリの待ち時間とクライアント側のメモリ使用率のバランスを調整します。 このオプションを省略するか -1 に設定した場合、並列クエリの実行中にバッファリングされる項目の数は SDK によって管理されます。
+- **MaxBufferedItemCount** :クエリの待ち時間とクライアント側のメモリ使用率のバランスを調整します。 このオプションを省略するか -1 に設定した場合、並列クエリの実行中にバッファリングされる項目の数は SDK によって管理されます。
 
 Azure Cosmos DB ではクロスパーティション クエリを並列化できるため、クエリの待機時間は通常、システムによって[物理パーティション](partitioning-overview.md#physical-partitions)が追加されると適切にスケーリングされます。 一方、RU 使用量は、物理パーティションの合計数が増えるにつれて大幅に増加します。
 

@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 83c0fd796b7527c6f5e396a813def984b88ee9ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f432b417140440584bf4dfd01ed45814a746953
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440356"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320922"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine でサポートされているデータ プラットフォーム
 
@@ -103,5 +103,4 @@ Azure Blob Storage または Azure Data Lake Storage から、Microsoft MMLSpark
 
 DSVM 上の Spark インスタンスから Blob ストレージまたは Azure Data Lake Storage に格納されているデータにアクセスするには、$SPARK_HOME/conf/core-site.xml.template にあるテンプレートに基づいて `core-site.xml` ファイルを作成して構成する必要があります。 Blob ストレージと Azure Data Lake Storage にアクセスするための適切な資格情報も必要です。 (テンプレート ファイルでは、Blob ストレージおよび Azure Data Lake Storage の構成にプレースホルダーが使用されることに注意してください。)
 
-Azure Data Lake Storage サービス資格情報の作成方法の詳細情報については、[Azure Data Lake Storage Gen1 に対する認証](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)に関する記事を参照してください。 Blob ストレージまたは Azure Data Lake Storage の資格情報が core-site.xml ファイルに入力されると、URI プレフィックス wasb:// または adl:// を使用して、それらのソースに格納されたデータを参照できます。
-
+Azure Data Lake Storage サービス資格情報の作成方法の詳細情報については、[Azure Data Lake Storage Gen1 に対する認証](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md)に関する記事を参照してください。 Blob ストレージまたは Azure Data Lake Storage の資格情報が core-site.xml ファイルに入力されると、URI プレフィックス wasb:// または adl:// を使用して、それらのソースに格納されたデータを参照できます。

@@ -4,16 +4,18 @@ description: 一般的な変更フィードの設計パターンの概要
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: ebd1c4f71d71ca70f6d10763d538b1877b0c3539
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 443d00e61e593daacca04a4451b90bb78cc7d854
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489355"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334607"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィードの設計パターン
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB の変更フィードによって、大量の書き込みを伴う大規模なデータセットを効率的に処理できます。 変更フィードは、データセット全体にクエリを実行して変更内容を確認する方法に代わる機能を提供します。 このドキュメントでは、一般的な変更フィードの設計パターン、設計のトレードオフ、および変更フィードの制限事項について重点的に説明します。
 
@@ -38,7 +40,7 @@ Azure Cosmos DB の変更フィードでは、特定のイベントに基づい�
 Azure Cosmos DB の変更フィードは、IoT のリアルタイム ストリーム処理や運用データのリアルタイム分析処理に使用できます。
 たとえば、デバイス、センサー、インフラストラクチャ、アプリケーションからイベント データを受信および格納し、こうしたイベントを [Spark](../hdinsight/spark/apache-spark-overview.md) でリアルタイムに処理できます。 次の図は、変更フィードを使用して、Azure Cosmos DB でラムダ アーキテクチャを実装する方法を示しています。
 
-:::image type="content" source="./media/change-feed/lambda.png" alt-text="Azure Cosmos DB の変更フィードを使用してリアルタイム分析とイベント ドリブンのコンピューティング シナリオを強化" border="false":::
+:::image type="content" source="./media/change-feed/lambda.png" alt-text="取り込みとクエリに対応する Azure Cosmos DB ベースのラムダ パイプライン" border="false":::
 
 多くの場合、ストリーム処理の実装では、最初に大量の受信データを Azure Event Hub や Apache Kafka などの一時メッセージ キューに受信します。 変更フィードは、高いデータ インジェスト率の持続と、読み取りと書き込みの低待機時間の保証をサポートする Azure Cosmos DB の機能により、優れた代替手段となっています。 メッセージ キューに優る Azure Cosmos DB の変更フィードの利点は次のとおりです。
 

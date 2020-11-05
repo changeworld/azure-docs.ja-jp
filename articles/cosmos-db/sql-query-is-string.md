@@ -3,18 +3,21 @@ title: Azure Cosmos DB クエリ言語の IS_STRING
 description: Azure Cosmos DB での SQL システム関数 IS_STRING について学習します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: a717f343b0f46522a3ce2bb56c32e3f15998d777
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9bef240563c2b82074cfd1ebf217fbcbf8117c75
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78303768"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333904"
 ---
 # <a name="is_string-azure-cosmos-db"></a>IS_STRING (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  指定した式の型が文字列であるかどうかを示すブール値を返します。  
   
 ## <a name="syntax"></a>構文

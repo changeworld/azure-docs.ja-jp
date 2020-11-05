@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: 374cc79b42d2dcaed0312c0ec205073906ce1fc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e042fd62d99c9fdf88a144c93739bf1f3f08a78c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530676"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325575"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code を使用した対話型デバッグ
 
@@ -38,7 +38,7 @@ Azure Machine Learning 拡張機能を使用して、クラウドに送信する
 > Windows では、[Linux コンテナーを使用するように Docker を構成](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)してください。
 
 > [!TIP]
-> 必須ではありませんが、Windows の場合は [Linux 用 Windows サブシステム (WSL) 2 で Docker を使用する](https://docs.microsoft.com/windows/wsl/tutorials/wsl-containers#install-docker-desktop)ことを強くお勧めします。
+> 必須ではありませんが、Windows の場合は [Linux 用 Windows サブシステム (WSL) 2 で Docker を使用する](/windows/wsl/tutorials/wsl-containers#install-docker-desktop)ことを強くお勧めします。
 
 > [!IMPORTANT]
 > 実験をローカルで実行する前に、Docker が実行されていることを確認してください。
@@ -51,7 +51,7 @@ Azure Machine Learning 拡張機能を使用して、クラウドに送信する
 1. **[実験]** ノードを右クリックし、 **[実験の作成]** を選択します。 プロンプトが表示されたら、実験の名前を指定します。
 1. **[実験]** ノードを展開し、実行する実験を右クリックして、 **[実験の実行]** を選択します。
 1. 実験を実行するオプションの一覧から、 **[ローカル]** を選択します。
-1. **Windows で初めて使用する場合のみ**。 ファイル共有を許可するように求めるメッセージが表示されたら、 **[はい]** を選択します。 ファイル共有を有効にすると、Docker では、スクリプトが格納されているディレクトリをコンテナーにマウントできます。 さらに、Docker では、実行からのログと出力をシステムの一時ディレクトリに格納することもできます。
+1. **Windows で初めて使用する場合のみ** 。 ファイル共有を許可するように求めるメッセージが表示されたら、 **[はい]** を選択します。 ファイル共有を有効にすると、Docker では、スクリプトが格納されているディレクトリをコンテナーにマウントできます。 さらに、Docker では、実行からのログと出力をシステムの一時ディレクトリに格納することもできます。
 1. 実験をデバッグするには **[はい]** を選択します。 それ以外の場合は、 **[いいえ]** を選択します。 [いいえ] を選択すると、デバッガーにアタッチせずにローカルで実験が実行されます。
 1. **[新しい実行構成を作成する]** を選択して、実行構成を作成します。 実行構成によって、実行するスクリプト、依存関係、および使用されるデータセットが定義されます。 または、既存のものがある場合は、ドロップダウンから選択します。
     1. 環境を選択します。 [Azure Machine Learning のキュレーションされた環境](resource-curated-environments.md)のいずれかから選択することも、独自のものを作成することもできます。
@@ -86,10 +86,10 @@ Azure Machine Learning 拡張機能を使用して、クラウドに送信する
 
 ### <a name="prerequisites"></a>前提条件
 
-* __Azure Virtual Network__ を使用するように構成された __Azure Machine Learning ワークスペース__。
-* パイプライン ステップの一部として Python スクリプトを使用する __Azure Machine Learning パイプライン__。 たとえば、PythonScriptStep です。
-* Azure Machine Learning コンピューティング クラスター。これは __仮想ネットワーク内__ にあり、__パイプラインによってトレーニングのために使用されます__。
-* __仮想ネットワーク内__ に存在する __開発環境__。 開発環境は、次のいずれかになります。
+* __Azure Virtual Network__ を使用するように構成された __Azure Machine Learning ワークスペース__ 。
+* パイプライン ステップの一部として Python スクリプトを使用する __Azure Machine Learning パイプライン__ 。 たとえば、PythonScriptStep です。
+* Azure Machine Learning コンピューティング クラスター。これは __仮想ネットワーク内__ にあり、 __パイプラインによってトレーニングのために使用されます__ 。
+* __仮想ネットワーク内__ に存在する __開発環境__ 。 開発環境は、次のいずれかになります。
 
   * 仮想ネットワーク内の Azure 仮想マシン
   * 仮想ネットワーク内の Notebook VM のコンピューティング インスタンス
@@ -339,7 +339,7 @@ ip_address: 10.3.0.5
 場合によっては、モデル デプロイに含まれる Python コードを対話的にデバッグする必要が生じることがあります。 たとえば、エントリ スクリプトが失敗し、追加のログ記録によっても理由を特定できない場合がこれにあたります。 VS Code と debugpy を使用すると、Docker コンテナー内で実行されているコードにアタッチできます。
 
 > [!IMPORTANT]
-> このデバッグ方法は、`Model.deploy()` と `LocalWebservice.deploy_configuration` を使用してローカルでモデルをデプロイしている場合は機能しません。 代わりに、[Model.package()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-) クラスを使用してイメージを作成する必要があります。
+> このデバッグ方法は、`Model.deploy()` と `LocalWebservice.deploy_configuration` を使用してローカルでモデルをデプロイしている場合は機能しません。 代わりに、[Model.package()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-) クラスを使用してイメージを作成する必要があります。
 
 ローカル Web サービスのデプロイでは、ローカル システムで動作する Docker インストールが必要です。 Docker の使用の詳細については、[Docker のドキュメント](https://docs.docker.com/)を参照してください。 コンピューティング インスタンスを使用する場合は、Docker が既にインストールされていることに注意してください。
 

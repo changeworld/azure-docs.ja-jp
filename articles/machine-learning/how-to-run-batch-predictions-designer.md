@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 21dad66670da7a538039ae795d6be87cc4dbce96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f070cfc1fd9b4326c5a80ce31f6263aadbe8e8bc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883086"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325450"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーを使用してバッチ予測を実行する
 
@@ -29,7 +29,7 @@ ms.locfileid: "90883086"
 > * パイプライン エンドポイントを使用する
 > * エンドポイントのバージョンを管理する
 
-SDK を使用してバッチ スコアリング サービスを設定する方法については、付属の[ガイド](how-to-run-batch-predictions.md)を参照してください。
+SDK を使用してバッチ スコアリング サービスを設定する方法については、付属の[ガイド](./tutorial-pipeline-batch-scoring-classification.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,7 +45,7 @@ SDK を使用してバッチ スコアリング サービスを設定する方�
 
 1. 予測の作成に使用するモデルをトレーニングするトレーニング パイプラインを選択します。
 
-1. パイプラインを**送信**します。
+1. パイプラインを **送信** します。
 
     ![パイプラインを送信する](./media/how-to-run-batch-predictions-designer/run-training-pipeline.png)
 
@@ -80,7 +80,7 @@ SDK を使用してバッチ スコアリング サービスを設定する方�
 
 1. **[発行]** ボタンを選びます。
 
-1. 表示されたダイアログで、**[PipelineEndpoint]** のドロップダウンを展開し、**[New PipelineEndpoint]\(新しい PipelineEndpoint\)** を選択します。
+1. 表示されたダイアログで、 **[PipelineEndpoint]** のドロップダウンを展開し、 **[New PipelineEndpoint]\(新しい PipelineEndpoint\)** を選択します。
 
 1. エンドポイント名と説明 (省略可能) を指定します。
 
@@ -99,7 +99,7 @@ SDK を使用してバッチ スコアリング サービスを設定する方�
 
 このセクションでは、パイプラインの手動実行を設定し、パイプライン パラメーターを変更して新しいデータをスコア付けします。 
 
-1. デプロイが完了したら、**[エンドポイント]** セクションに移動します。
+1. デプロイが完了したら、 **[エンドポイント]** セクションに移動します。
 
 1. **[Pipeline endpoints]\(パイプライン エンドポイント\)** を選択します。
 
@@ -125,11 +125,11 @@ SDK を使用してバッチ スコアリング サービスを設定する方�
 
 ### <a name="use-the-rest-endpoint"></a>REST エンドポイントを使用する
 
-パイプライン エンドポイントと発行されたパイプラインを使用する方法についての情報は、**[エンドポイント]** セクションにあります。
+パイプライン エンドポイントと発行されたパイプラインを使用する方法についての情報は、 **[エンドポイント]** セクションにあります。
 
 パイプライン エンドポイントの REST エンドポイントは、実行の概要パネルで確認できます。 エンドポイントを呼び出すことにより、既定の発行済みパイプラインを使用します。
 
-発行済みパイプラインは、**[Published pipelines]\(発行済みパイプライン\)** ページでも使用できます。 発行済みパイプラインを選択すると、グラフの右側にある **[Published pipeline overview]\(発行済みパイプラインの概要\)** パネルにそのパイプラインの REST エンドポイントが表示されます。 
+発行済みパイプラインは、 **[Published pipelines]\(発行済みパイプライン\)** ページでも使用できます。 発行済みパイプラインを選択すると、グラフの右側にある **[Published pipeline overview]\(発行済みパイプラインの概要\)** パネルにそのパイプラインの REST エンドポイントが表示されます。 
 
 REST 呼び出しを行うには、OAuth 2.0 ベアラー型認証ヘッダーが必要です。 ワークスペースの認証を設定し、パラメーター化された REST を呼び出す方法については、次の[チュートリアル セクション](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint)をご覧ください。
 

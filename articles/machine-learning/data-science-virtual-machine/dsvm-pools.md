@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 0745957620aab7ed4d08cb016c706b56e6da1c5a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 789c6c36def21bfe1c2acc8797c1847455a5c86c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708970"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324393"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Data Science Virtual Machine の共有プールを作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "91708970"
 
 AI/データ サイエンス チーム全体で共有される対話型 VM のプールにより、ユーザーは、ユーザーのセットごとに専用のインスタンスを持つ代わりに DSVM の使用可能なインスタンスにログインできます。 この設定により、リソースの可用性の向上と効率的な利用が可能になります。
 
-対話型 VM プールの作成には、[Azure 仮想マシン スケール セット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) テクノロジを使用します。 スケール セットを使って、負荷分散と自動スケーリングが行われる同一の VM のグループを作成して管理できます。
+対話型 VM プールの作成には、[Azure 仮想マシン スケール セット](../../virtual-machine-scale-sets/index.yml) テクノロジを使用します。 スケール セットを使って、負荷分散と自動スケーリングが行われる同一の VM のグループを作成して管理できます。
 
 ユーザーは、メイン プールの IP または DNS アドレスにログインします。 スケール セットは、セッションをスケール セット内の使用可能な DSVM に自動的にルーティングします。 ログインする VM に関係なく、ユーザーは一貫した、精通している環境を望むので、スケール セット内の VM のすべてのインスタンスは Azure Files 共有や NFS (Network File System) 共有などの共有ネットワーク ドライブをマウントします。 通常、ユーザーの共有ワークスペースは各インスタンスにマウントされている共有ファイル ストアに保持されます。
 
@@ -53,7 +53,7 @@ az group deployment create --resource-group  [[NAME OF RESOURCE GROUP ABOVE]]  -
 
 [Azure ファイル共有をマウントするスクリプト](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/General/mountazurefiles.sh)も、GitHub の Azure DataScienceVM リポジトリにあります。 スクリプトは、パラメーター ファイルで指定されているマウント ポイントに Azure ファイル共有をマウントします。 またスクリプトは、初期ユーザーのホーム ディレクトリにマウントされたドライブへのソフト リンクも作成します。 Azure Files 共有内のユーザー固有の notebook ディレクトリは `$HOME/notebooks/remote` ディレクトリにソフトリンクされており、ユーザーは Jupyter ノートブックにアクセスしてそれを実行および保存できます。 VM 上に追加ユーザーを作成して各ユーザーの Jupyter ワークスペースで Azure ファイル共有をポイントするときも同じ規則を使用できます。
 
-仮想マシン スケール セットは自動スケーリングをサポートします。 追加インスタンスを作成するとき、およびインスタンスをスケールダウンするときのルールを設定できます。 たとえば、VM がまったく使われていないときはゼロ インスタンスにスケールダウンしてクラウド ハードウェア使用コストを節約できます。 仮想マシン スケール セットのドキュメント ページには、[自動スケーリング](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview)に関する詳しい手順が記載されています。
+仮想マシン スケール セットは自動スケーリングをサポートします。 追加インスタンスを作成するとき、およびインスタンスをスケールダウンするときのルールを設定できます。 たとえば、VM がまったく使われていないときはゼロ インスタンスにスケールダウンしてクラウド ハードウェア使用コストを節約できます。 仮想マシン スケール セットのドキュメント ページには、[自動スケーリング](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md)に関する詳しい手順が記載されています。
 
 ## <a name="next-steps"></a>次のステップ
 

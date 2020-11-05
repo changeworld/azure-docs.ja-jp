@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 62edee6a882191551ce2409646ea8b617576c059
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c479a64b2100cfc1a6fdf17f5e6f5636d3a689d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651155"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322228"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Azure Machine Learning を使用した分散トレーニング
 
@@ -24,7 +24,7 @@ ms.locfileid: "89651155"
 
 ## <a name="deep-learning-and-distributed-training"></a>ディープ ラーニングと分散トレーニング 
 
-分散トレーニングには主に、[データ並列](#data-parallelism)と[モデル並列](#model-parallelism)の 2 つの種類があります。 ディープ ラーニング モデルにおける分散トレーニングでは、[Azure Machine Learning SDK in Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) は、人気のあるフレームワークの PyTorch および TensorFlow との統合をサポートしています。 どちらのフレームワークも、分散トレーニングにおいてデータ並列を採用しており、コンピューティング速度を最適化するために [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) を活用できます。 
+分散トレーニングには主に、[データ並列](#data-parallelism)と[モデル並列](#model-parallelism)の 2 つの種類があります。 ディープ ラーニング モデルにおける分散トレーニングでは、[Azure Machine Learning SDK in Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) は、人気のあるフレームワークの PyTorch および TensorFlow との統合をサポートしています。 どちらのフレームワークも、分散トレーニングにおいてデータ並列を採用しており、コンピューティング速度を最適化するために [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) を活用できます。 
 
 * [PyTorch を使用した分散トレーニング](how-to-train-pytorch.md#distributed-training)
 
@@ -51,6 +51,6 @@ ms.locfileid: "89651155"
 ## <a name="next-steps"></a>次のステップ
 
 * Python SDK を利用し、[モデル トレーニング用のコンピューティング ターゲットを使用する](how-to-set-up-training-targets.md)方法について学習します。
-* 技術的な例については、[リファレンス アーキテクチャ シナリオ](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/training-deep-learning)を参照してください。
+* 技術的な例については、[リファレンス アーキテクチャ シナリオ](/azure/architecture/reference-architectures/ai/training-deep-learning)を参照してください。
 * [TensorFlow を使用して ML モデルをトレーニングする](how-to-train-tensorflow.md)。
-* [PyTorch を使用してモデルをトレーニングする](how-to-train-pytorch.md)。 
+* [PyTorch を使用してモデルをトレーニングする](how-to-train-pytorch.md)。

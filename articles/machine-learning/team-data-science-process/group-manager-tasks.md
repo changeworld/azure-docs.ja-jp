@@ -10,27 +10,27 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4ec7f4242e5046e90fdf0eb8c6c0579f402e4f55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc4262d0190084064103aeabe48bec806213ea7f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76721355"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321221"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>Team Data Science Process のグループ マネージャーのタスク
 
-この記事では、データ サイエンス組織の "*グループ マネージャー*" が行うタスクについて説明します。 グループ マネージャーは、企業のデータ サイエンス ユニット全体を管理します。 データ サイエンス ユニット内には複数のチームがあり、それぞれのチームが、異なるビジネスの多数のデータ サイエンス プロジェクトに携わっている場合があります。 グループ マネージャーの目標は、[Team Data Science Process](overview.md) (TDSP) を標準とするグループ コラボレーション環境を確立することです。 TDSP を標準とするデータ サイエンス チームのすべての個人的役割とそれに関連したタスクの概要については、「[Team Data Science Process の役割とタスク](roles-tasks.md)」をご覧ください。
+この記事では、データ サイエンス組織の " *グループ マネージャー* " が行うタスクについて説明します。 グループ マネージャーは、企業のデータ サイエンス ユニット全体を管理します。 データ サイエンス ユニット内には複数のチームがあり、それぞれのチームが、異なるビジネスの多数のデータ サイエンス プロジェクトに携わっている場合があります。 グループ マネージャーの目標は、[Team Data Science Process](overview.md) (TDSP) を標準とするグループ コラボレーション環境を確立することです。 TDSP を標準とするデータ サイエンス チームのすべての個人的役割とそれに関連したタスクの概要については、「[Team Data Science Process の役割とタスク](roles-tasks.md)」をご覧ください。
 
 次の図では、6 つの主要なグループ マネージャー セットアップ タスクを示します。 グループ マネージャーは、そのタスクを代理人に委任する場合もありますが、グループ マネージャーの役割に関連付けられているタスクに変わりはありません。
 
 ![グループ マネージャーのタスク](./media/group-manager-tasks/tdsp-group-manager.png)
 
-1. グループに対して **Azure DevOps 組織**をセットアップします。
-2. Azure DevOps 組織に既定の **GroupCommon プロジェクト**を作成します。
+1. グループに対して **Azure DevOps 組織** をセットアップします。
+2. Azure DevOps 組織に既定の **GroupCommon プロジェクト** を作成します。
 3. Azure Repos で **GroupProjectTemplate** リポジトリを作成します。
 4. Azure Repos で **GroupUtilities** リポジトリを作成します。
 5. Microsoft TDSP チームの **ProjectTemplate** リポジトリ と **Utilities** リポジトリの内容を、グループ共通リポジトリにインポートします。
-6. チーム メンバーがグループにアクセスするための**メンバーシップ**と**アクセス許可**を設定します。
+6. チーム メンバーがグループにアクセスするための **メンバーシップ** と **アクセス許可** を設定します。
 
 以下のチュートリアルでは、その手順を詳しく説明します。 
 
@@ -53,7 +53,7 @@ ms.locfileid: "76721355"
    
 1. サインアップ ダイアログ ボックスで、Azure DevOps 組織の名前を指定し、ホスト リージョンの割り当てを受け入れるか、ドロップダウンで別のリージョンを選択します。 その後 **[続行]** を選択します。 
 
-1. **[プロジェクトを作成して開始します]** で「*GroupCommon*」と入力し、 **[プロジェクトの作成]** を選択します。 
+1. **[プロジェクトを作成して開始します]** で「 *GroupCommon* 」と入力し、 **[プロジェクトの作成]** を選択します。 
    
    ![Create project](./media/group-manager-tasks/create-project.png)
 
@@ -65,9 +65,9 @@ ms.locfileid: "76721355"
 
 Azure Repos では、グループ用に次の種類のリポジトリをホストします。
 
-- **グループ共通リポジトリ**: データ サイエンス ユニット内の複数のチームが多数のデータ サイエンス プロジェクト用に使用できる汎用リポジトリ。 
-- **チーム リポジトリ**: データ サイエンス ユニット内の特定のチーム用のリポジトリ。 これらはチームのニーズに固有のリポジトリであり、そのチーム内の複数のプロジェクトに使用できますが、データ サイエンス ユニット内の複数のチームで使用できるほどの汎用性はありません。
-- **プロジェクト リポジトリ**: 特定のプロジェクト用のリポジトリ。 このようなリポジトリは、チーム内の複数のプロジェクト用や、データ サイエンス ユニット内の他のチーム用の、十分な汎用性はありません。
+- **グループ共通リポジトリ** : データ サイエンス ユニット内の複数のチームが多数のデータ サイエンス プロジェクト用に使用できる汎用リポジトリ。 
+- **チーム リポジトリ** : データ サイエンス ユニット内の特定のチーム用のリポジトリ。 これらはチームのニーズに固有のリポジトリであり、そのチーム内の複数のプロジェクトに使用できますが、データ サイエンス ユニット内の複数のチームで使用できるほどの汎用性はありません。
+- **プロジェクト リポジトリ** : 特定のプロジェクト用のリポジトリ。 このようなリポジトリは、チーム内の複数のプロジェクト用や、データ サイエンス ユニット内の他のチーム用の、十分な汎用性はありません。
 
 プロジェクトでグループ共通リポジトリを設定するには、次のようにします。 
 - 既定の **GroupCommon** リポジトリの名前を **GroupProjectTemplate** に変更します
@@ -83,11 +83,11 @@ Azure Repos では、グループ用に次の種類のリポジトリをホス�
    
    ![リポジトリの管理](./media/group-manager-tasks/rename-groupcommon-repo-3.png)
    
-1. **[プロジェクトの設定]** ページで、**GroupCommon** の横にある **[...]** を選択し、 **[リポジトリの名前変更]** を選択します。 
+1. **[プロジェクトの設定]** ページで、 **GroupCommon** の横にある **[...]** を選択し、 **[リポジトリの名前変更]** を選択します。 
    
    ![[...]、[リポジトリの名前変更] の順に選択する](./media/group-manager-tasks/rename-groupcommon-repo-4.png)
    
-1. **[GroupCommon リポジトリの名前を変更]** ポップアップで、「*GroupProjectTemplate*」と入力して、 **[名前の変更]** を選択します。 
+1. **[GroupCommon リポジトリの名前を変更]** ポップアップで、「 *GroupProjectTemplate* 」と入力して、 **[名前の変更]** を選択します。 
    
    ![リポジトリの名前を変更する](./media/group-manager-tasks/rename-groupcommon-repo-6.png)
 
@@ -101,17 +101,17 @@ Azure Repos では、グループ用に次の種類のリポジトリをホス�
    
    ![[新しいリポジトリ] を選択する](./media/group-manager-tasks/create-grouputilities-repo-1.png)
    
-1. **[新しいリポジトリの作成]** ダイアログで、 **[種類]** として **[Git]** を選択し、 **[リポジトリ名]** に「*GroupUtilities*」と入力して、 **[作成]** を選択します。
+1. **[新しいリポジトリの作成]** ダイアログで、 **[種類]** として **[Git]** を選択し、 **[リポジトリ名]** に「 *GroupUtilities* 」と入力して、 **[作成]** を選択します。
    
    ![GroupUtilities リポジトリを作成する](./media/group-manager-tasks/create-grouputilities-repo-2.png)
    
-1. **[プロジェクトの設定]** ページの左側のナビゲーションで、 **[リポジトリ]** の下の **[リポジトリ]** を選択すると、次の 2 つのグループ リポジトリが表示されます: **GroupProjectTemplate** と **GroupUtilities**。
+1. **[プロジェクトの設定]** ページの左側のナビゲーションで、 **[リポジトリ]** の下の **[リポジトリ]** を選択すると、次の 2 つのグループ リポジトリが表示されます: **GroupProjectTemplate** と **GroupUtilities** 。
    
    ![2 つのグループ リポジトリ](./media/group-manager-tasks/two-repositories.png)
 
 ## <a name="import-the-microsoft-tdsp-team-repositories"></a>Microsoft TDSP チーム リポジトリをインポートする
 
-チュートリアルのこの部分では、Microsoft TDSP チームによって管理されている **ProjectTemplate** および **Utilities** リポジトリの内容を、**GroupProjectTemplate** および **GroupUtilities** リポジトリにインポートします。 
+チュートリアルのこの部分では、Microsoft TDSP チームによって管理されている **ProjectTemplate** および **Utilities** リポジトリの内容を、 **GroupProjectTemplate** および **GroupUtilities** リポジトリにインポートします。 
 
 TDSP チーム リポジトリをインポートするには:
 
@@ -121,13 +121,13 @@ TDSP チーム リポジトリをインポートするには:
    
    ![[インポート] を選択する](./media/group-manager-tasks/import-repo.png)
    
-1. **[Git リポジトリをインポートする]** ダイアログで、 **[ソースの種類]** として **[Git]** を選択し、 **[クローン URL]** に「*https:\//github.com/Azure/Azure-TDSP-ProjectTemplate.git*」と入力します。 その後、 **[インポート]** を選択します。 Microsoft TDSP チームの ProjectTemplate リポジトリの内容が、GroupProjectTemplate リポジトリにインポートされます。 
+1. **[Git リポジトリをインポートする]** ダイアログで、 **[ソースの種類]** として **[Git]** を選択し、 **[クローン URL]** に「 *https:\//github.com/Azure/Azure-TDSP-ProjectTemplate.git* 」と入力します。 その後、 **[インポート]** を選択します。 Microsoft TDSP チームの ProjectTemplate リポジトリの内容が、GroupProjectTemplate リポジトリにインポートされます。 
    
    ![Microsoft TDSP チーム リポジトリをインポートする](./media/group-manager-tasks/import-repo-2.png)
    
-1. **[リポジトリ]** ページの上部にあるドロップダウンで、**GroupUtilities** リポジトリを選択します。
+1. **[リポジトリ]** ページの上部にあるドロップダウンで、 **GroupUtilities** リポジトリを選択します。
    
-1. インポート プロセスを繰り返して、Microsoft TDSP チームの **Utilities** リポジトリ *https:\//github.com/Azure/Azure-TDSP-Utilities.git* の内容を、**GroupUtilities** リポジトリにインポートします。 
+1. インポート プロセスを繰り返して、Microsoft TDSP チームの **Utilities** リポジトリ *https:\//github.com/Azure/Azure-TDSP-Utilities.git* の内容を、 **GroupUtilities** リポジトリにインポートします。 
    
 2 つの各グループ リポジトリに、Microsoft TDSP チームの対応するリポジトリの、 *.git* ディレクトリ内のものを除くすべてのファイルが含まれるようになります。 
 
@@ -167,11 +167,11 @@ TDSP チーム リポジトリをインポートするには:
 
 - DSVM を作成する場合は、Azure サブスクリプション。
 - コンピューターにインストールされた Git。 DSVM を使用している場合、Git は事前にインストールされています。 それ以外の場合は、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)をご覧ください。
-- DSVM を使用する場合は、Azure で作成して構成された Windows または Linux の DSVM。 詳細と手順については、[Data Science Virtual Machine ドキュメント](/azure/machine-learning/data-science-virtual-machine/)を参照してください。
-- Windows DSVM の場合、[Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) をコンピューターにインストールしておきます。 *README.md* ファイルを下にスクロールして **[Download and Install]** セクションを見つけ、**最新のインストーラー**を選択します。 インストーラー ページから *.exe* インストーラーをダウンロードして実行します。 
-- Linux DSVM の場合は、DSVM で設定されて Azure DevOps に追加された SSH 公開キー。 詳細と手順については、[プラットフォームとツールの付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成**に関するセクションをご覧ください。 
+- DSVM を使用する場合は、Azure で作成して構成された Windows または Linux の DSVM。 詳細と手順については、[Data Science Virtual Machine ドキュメント](../data-science-virtual-machine/index.yml)を参照してください。
+- Windows DSVM の場合、[Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) をコンピューターにインストールしておきます。 *README.md* ファイルを下にスクロールして **[Download and Install]** セクションを見つけ、 **最新のインストーラー** を選択します。 インストーラー ページから *.exe* インストーラーをダウンロードして実行します。 
+- Linux DSVM の場合は、DSVM で設定されて Azure DevOps に追加された SSH 公開キー。 詳細と手順については、 [プラットフォームとツールの付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成** に関するセクションをご覧ください。 
 
-最初に、リポジトリをローカル コンピューターにコピーまたは "*複製*" します。 
+最初に、リポジトリをローカル コンピューターにコピーまたは " *複製* " します。 
    
 1. **GroupCommon** プロジェクトの **[概要]** ページで、 **[リポジトリ]** を選択し、ページの上部で複製するリポジトリを選択します。
    
@@ -183,14 +183,14 @@ TDSP チーム リポジトリをインポートするには:
    
 1. ローカル コンピューターで、次のディレクトリを作成します。
    
-   - Windows の場合:**C:\GitRepos\GroupCommon**
+   - Windows の場合: **C:\GitRepos\GroupCommon**
    - Linux の場合: ホーム ディレクトリ上の **$/GitRepos/GroupCommon** 
    
 1. 作成したディレクトリに移動します。
    
 1. Git Bash で、コマンド `git clone <clone URL>.` を実行します。
    
-   たとえば、次のコマンドのいずれかで、**GroupUtilities** リポジトリがローカル コンピューターの *GroupCommon* ディレクトリに複製されます。 
+   たとえば、次のコマンドのいずれかで、 **GroupUtilities** リポジトリがローカル コンピューターの *GroupCommon* ディレクトリに複製されます。 
    
    **HTTPS 接続:**
    

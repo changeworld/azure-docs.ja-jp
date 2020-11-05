@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 69d6b8abc99863f29f82abcb44e18b426c5a456c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dc6fb64f6e8695d84e292322293998e2f4cb0a3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85959145"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324784"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>Data Science Virtual Machine で共通 ID を設定する
 
@@ -23,9 +23,9 @@ Data Science Virtual Machine (DSVM) などの Microsoft Azure 仮想マシン (V
 
 Active Directory は一般的な ID プロバイダーであり、Azure 上でクラウド サービスとしてもオンプレミスのディレクトリとしてもサポートされています。 Azure Active Directory (Azure AD) またはオンプレミスの Active Directory を使って、スタンドアロン DSVM 上で、または Azure 仮想マシン スケール セット内の DSVM のクラスター上で、ユーザーを認証できます。 これを行うには、DSVM インスタンスを Active Directory ドメインに参加させます。
 
-Active Directory が既にある場合は、それを共通の ID プロバイダーとして使用できます。 Active Directory がない場合は、[Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/) (Azure AD DS) を介して、Azure で管理された Active Directory インスタンスを実行できます。
+Active Directory が既にある場合は、それを共通の ID プロバイダーとして使用できます。 Active Directory がない場合は、[Azure Active Directory Domain Services](../../active-directory-domain-services/index.yml) (Azure AD DS) を介して、Azure で管理された Active Directory インスタンスを実行できます。
 
-[Azure AD](https://docs.microsoft.com/azure/active-directory/) のドキュメントでは、オンプレミスのディレクトリ (ある場合) への Azure AD の接続に関するガイダンスなど、詳細な[管理手順](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution)が説明されています。
+[Azure AD](../../active-directory/index.yml) のドキュメントでは、オンプレミスのディレクトリ (ある場合) への Azure AD の接続に関するガイダンスなど、詳細な[管理手順](../../active-directory/hybrid/whatis-hybrid-identity.md)が説明されています。
 
 この記事では、Azure AD DS を使って Azure 上に完全に管理された Active Directory ドメイン サービスを設定する方法について説明します。 その後、管理された Active Directory ドメインに DSVM を参加させることができます。 このアプローチでは、ユーザーは共通のユーザー アカウントと資格情報を介して DSVM (および他の Azure リソース) のプールにアクセスできます。
 
@@ -45,7 +45,7 @@ Azure AD DS により、Azure 上でフル マネージドのサービスを提�
       
         ![[ユーザー] ウィンドウ](./media/add-user.png)
     
-   1. **名前**や**ユーザー名**など、ユーザーの詳細を入力します。 ユーザー名のドメイン名の部分は、既定の初期ドメイン名 "<ドメイン名>.onmicrosoft.com"、または検証済みの非フェデレーション [カスタム ドメイン名](../../active-directory/add-custom-domain.md) ("contoso.com" など) のいずれかである必要があります。
+   1. **名前** や **ユーザー名** など、ユーザーの詳細を入力します。 ユーザー名のドメイン名の部分は、既定の初期ドメイン名 "<ドメイン名>.onmicrosoft.com"、または検証済みの非フェデレーション [カスタム ドメイン名](../../active-directory/fundamentals/add-custom-domain.md) ("contoso.com" など) のいずれかである必要があります。
     
    1. このプロセスの完了後、ユーザーに提供できるように、生成されたユーザー パスワードをコピーするか、メモしておきます。
     
@@ -55,11 +55,11 @@ Azure AD DS により、Azure 上でフル マネージドのサービスを提�
     
    1. 新しいユーザーがサインインできるように、それらのユーザーに生成されたパスワードを安全に配布します。
 
-1. Azure AD DS インスタンスを作成します。 「[Azure portal を使用して Azure Active Directory Domain Services を有効にする](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)」(「インスタンスを作成して基本的な設定を構成する」セクション) の手順に従います。 Azure AD DS 内のパスワードが同期されるように、Active Directory 内の既存のユーザー パスワードを更新することが重要です。 そのセクションの「Azure portal の [基本] ウィンドウのフィールドに必要事項を入力して Azure AD DS インスタンスを作成します」で説明されているように、DNS を Azure AD DS に追加することも重要です。
+1. Azure AD DS インスタンスを作成します。 「[Azure portal を使用して Azure Active Directory Domain Services を有効にする](../../active-directory-domain-services/tutorial-create-instance.md)」(「インスタンスを作成して基本的な設定を構成する」セクション) の手順に従います。 Azure AD DS 内のパスワードが同期されるように、Active Directory 内の既存のユーザー パスワードを更新することが重要です。 そのセクションの「Azure portal の [基本] ウィンドウのフィールドに必要事項を入力して Azure AD DS インスタンスを作成します」で説明されているように、DNS を Azure AD DS に追加することも重要です。
 
 1. 前述の手順の「仮想ネットワークを作成して構成する」セクションで作成した仮想ネットワーク内に、別の DSVM サブネットを作成します。
 1. DSVM サブネットに 1 つまたは複数の DSVM インスタンスを作成します。
-1. [手順](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm )に従って、DSVM を Active Directory に追加します。 
+1. [手順](../../active-directory-domain-services/join-ubuntu-linux-vm.md)に従って、DSVM を Active Directory に追加します。 
 1. ワークスペースを任意のマシンにマウントできるように、ホームまたはノートブック ディレクトリをホストするための Azure Files 共有をマウントします。 (厳格なファイル レベルのアクセス許可が必要な場合は、1 つまたは複数の VM でネットワーク ファイル システム [NFS] を実行する必要があります。)
 
    1. [Azure ファイル共有を作成します](../../storage/files/storage-how-to-create-file-share.md)。
@@ -79,6 +79,3 @@ Azure AD DS により、Azure 上でフル マネージドのサービスを提�
 ## <a name="next-steps"></a>次のステップ
 
 * [クラウド リソースにアクセスするための資格情報を安全に保存する](dsvm-secure-access-keys.md)
-
-
-

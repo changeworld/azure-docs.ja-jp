@@ -11,16 +11,16 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2, devx-track-python, deploy
-ms.openlocfilehash: 18b1c155c0bb85e346ec28d5c145e6578ca3ec48
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 6ac28e430681f35d9935cf0f484529074403bf54
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999071"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324971"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>Azure Machine Learning を使用して ML モデルをフィールド プログラマブル ゲート アレイ (FPGA) にデプロイする 
 
-この記事では、FPGA と、[Azure Machine Learning](overview-what-is-azure-ml.md) の[Hardware Accelerated Models Python パッケージ](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py&preserve-view=true)を使用して ML モデルを Azure FPGA にデプロイする方法について説明します。
+この記事では、FPGA と、[Azure Machine Learning](overview-what-is-azure-ml.md) の[Hardware Accelerated Models Python パッケージ](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py)を使用して ML モデルを Azure FPGA にデプロイする方法について説明します。
 
 ## <a name="what-are-fpgas"></a>FPGA とは
 FPGA には、プログラミング可能なロジック ブロックの配列と、再構成可能な相互接続の階層が含まれています。 相互接続を使用して、製造後にさまざまな方法でこれらのブロックを構成できます。 他のチップと比較して、FPGA はプログラミング可能であることとパフォーマンスを兼ね備えています。 
@@ -52,11 +52,11 @@ Azure FPGA は Azure Machine Learning と統合されています。 Azure で�
 
 待ち時間とスループットを最適化するには、FPGA モデルにデータを送信するクライアントが上記のいずれかのリージョン (モデルをデプロイするリージョン) にある必要があります。
 
-**Azure VM の PBS ファミリ**には、Intel Arria 10 FPGA が含まれています。 Azure のクォータの割り当てを確認すると、"Standard PBS Family vCPUs" と表示されます。 PB6 VM には、6 つの vCPUs と 1 つの FPGA が搭載されています。 PB6 VM は、FPGA へのモデル デプロイ中に Azure Machine Learning によって自動的にプロビジョニングされます。 Azure ML でのみ使用され、任意のビットストリームは実行できません。 たとえば、暗号化、エンコードなどを行うビットストリームで FPGA をフラッシュすることはできません。
+**Azure VM の PBS ファミリ** には、Intel Arria 10 FPGA が含まれています。 Azure のクォータの割り当てを確認すると、"Standard PBS Family vCPUs" と表示されます。 PB6 VM には、6 つの vCPUs と 1 つの FPGA が搭載されています。 PB6 VM は、FPGA へのモデル デプロイ中に Azure Machine Learning によって自動的にプロビジョニングされます。 Azure ML でのみ使用され、任意のビットストリームは実行できません。 たとえば、暗号化、エンコードなどを行うビットストリームで FPGA をフラッシュすることはできません。
 
 ## <a name="deploy-models-on-fpgas"></a>モデルの FPGA でのデプロイ
 
-[Azure Machine Learning Hardware Accelerated Models](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py&preserve-view=true) を使用して、モデルを FPGA 上の Web サービスとしてデプロイできます。 FPGA を使用すると、単一のバッチ サイズでも、待機時間が極端に短い推論を実行できます。 
+[Azure Machine Learning Hardware Accelerated Models](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py) を使用して、モデルを FPGA 上の Web サービスとしてデプロイできます。 FPGA を使用すると、単一のバッチ サイズでも、待機時間が極端に短い推論を実行できます。 
 
 この例では、TensorFlow グラフを作成して入力画像を前処理し、それを FPGA 上で ResNet 50 を使用する特徴抽出器にした後、ImageNet データ セットでトレーニング済みの分類子を使って機能を実行します。 次に、モデルが AKS クラスターにデプロイされます。
 
@@ -68,7 +68,7 @@ Azure FPGA は Azure Machine Learning と統合されています。 Azure で�
  
 - Hardware Accelerated Models パッケージ: `pip install --upgrade azureml-accel-models[cpu]`    
     
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
+- [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
 
 - FPGA クォータ。 [クォータの要求](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2nac9-PZhBDnNSV2ITz0LNUN0U5S0hXRkNITk85QURTWk9ZUUFUWkkyTC4u)を送信するか、次の CLI コマンドを実行してクォータを確認します。 
 
@@ -80,7 +80,7 @@ Azure FPGA は Azure Machine Learning と統合されています。 Azure で�
 
 ### <a name="define-the-tensorflow-model"></a>TensorFlow モデルを定義する
 
-まず [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) を使用してサービス定義を作成します。 サービス定義は、TensorFlow に基づいてグラフ (入力、特徴抽出器、分類子) のパイプラインを記述しているファイルです。 デプロイ コマンドは、定義とグラフを ZIP ファイルに圧縮し、その ZIP を Azure Blob Storage にアップロードします。 DNN は、FPGA 上で実行するように既にデプロイされています。
+まず [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) を使用してサービス定義を作成します。 サービス定義は、TensorFlow に基づいてグラフ (入力、特徴抽出器、分類子) のパイプラインを記述しているファイルです。 デプロイ コマンドは、定義とグラフを ZIP ファイルに圧縮し、その ZIP を Azure Blob Storage にアップロードします。 DNN は、FPGA 上で実行するように既にデプロイされています。
 
 1. Azure Machine Learning ワークスペースを読み込む
 
@@ -143,7 +143,7 @@ Azure FPGA は Azure Machine Learning と統合されています。 Azure で�
                                   outputs={'output_alias': classifier_output})
    ```
 
-1. **モデル変換と推論の要求に使用するため**、入出力のテンソルを保存します。 
+1. **モデル変換と推論の要求に使用するため** 、入出力のテンソルを保存します。 
 
    ```python
    input_tensors = in_images.name
@@ -223,7 +223,7 @@ FPGA にデプロイする前に、モデルを [ONNX](https://onnx.ai/) 形式�
 
 ### <a name="containerize-and-deploy-the-model"></a>モデルのコンテナー化とデプロイ
 
-次に、変換されたモデルとすべての依存関係から Docker イメージを作成します。  この Docker イメージをデプロイし、インスタンス化できるようになります。  サポートされているデプロイ先には、クラウド内の Azure Kubernetes Service (AKS) や [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview) のようなエッジ デバイスなどがあります。  登録した Docker イメージにタグと説明を追加することもできます。
+次に、変換されたモデルとすべての依存関係から Docker イメージを作成します。  この Docker イメージをデプロイし、インスタンス化できるようになります。  サポートされているデプロイ先には、クラウド内の Azure Kubernetes Service (AKS) や [Azure Data Box Edge](../databox-online/azure-stack-edge-overview.md) のようなエッジ デバイスなどがあります。  登録した Docker イメージにタグと説明を追加することもできます。
 
    ```python
    from azureml.core.image import Image
@@ -297,7 +297,7 @@ FPGA にデプロイする前に、モデルを [ONNX](https://onnx.ai/) 形式�
 
 #### <a name="deploy-to-a-local-edge-server"></a>ローカル エッジ サーバーにデプロイする
 
-すべての [Azure Data Box Edge デバイス](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview
+すべての [Azure Data Box Edge デバイス](../databox-online/azure-stack-edge-overview.md
 )には、モデルを実行するための FPGA が含まれています。  FPGA 上で一度に実行できるモデルは 1 つだけです。  別のモデルを実行するには、単に新しいコンテナーをデプロイします。 手順とサンプル コードは、[この Azure サンプル](https://github.com/Azure-Samples/aml-hardware-accelerated-models)に含まれています。
 
 ### <a name="consume-the-deployed-model"></a>配置したモデルを使用する
@@ -349,7 +349,7 @@ for top in sorted_results[:5]:
 
 ### <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-不要なコストを回避するには、Web サービス、イメージ、モデルのリソースを**この順序で**クリーンアップします。
+不要なコストを回避するには、Web サービス、イメージ、モデルのリソースを **この順序で** クリーンアップします。
 
 ```python
 aks_service.delete()

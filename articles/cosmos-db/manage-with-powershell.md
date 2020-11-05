@@ -3,18 +3,20 @@ title: PowerShell を使用して Azure Cosmos DB Core (SQL) API リソースを
 description: PowerShell を使用して Azure Cosmos DB Core (SQL) API リソースを管理します。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: c56f3b561dbced9f00bb2616f5709a51fa02fbcb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2d99a760e3bf44febcee05bf9827479616bf7bd6
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92481008"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333443"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>PowerShell を使用して Azure Cosmos DB Core (SQL) API リソースを管理する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 以下のガイドでは、PowerShell を使用して、Cosmos アカウント、データベース、コンテナー、スループットなど、Azure Cosmos DB Core (SQL) API リソースの管理をスクリプト処理および自動化する方法について説明します。 他の API 用の PowerShell コマンドレットについては、[Cassandra 用の PowerShell サンプル](powershell-samples-cassandra.md)、[MongoDB API 用の PowerShell サンプル](powershell-samples-mongodb.md)、[Gremlin 用の PowerShell サンプル](powershell-samples-gremlin.md)、[Table 用の PowerShell サンプル](powershell-samples-table.md)に関する記述を参照してください。
 
@@ -78,7 +80,7 @@ New-AzCosmosDBAccount `
 * `$resourceGroupName` Cosmos アカウントのデプロイ先となる Azure リソース グループ。 あらかじめ存在している必要があります。
 * `$locations` データベース アカウントのリージョン。`FailoverPriority 0` を持つリージョンが書き込みリージョンです。
 * `$accountName` Azure Cosmos アカウントの名前。 小文字で一意の名前にする必要があります。使用できるのは、英数字と "-" 文字のみで、長さは 3 から 31 文字としてください。
-* `$apiKind` 作成する Cosmos アカウントの種類。 詳細については、[Cosmos DB の API](introduction.md#develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis) に関するページを参照してください。
+* `$apiKind` 作成する Cosmos アカウントの種類。 詳細については、[Cosmos DB の API](introduction.md#simplified-application-development) に関するページを参照してください。
 * `$consistencyPolicy`、`$maxStalenessInterval`、`$maxStalenessPrefix` Azure Cosmos アカウントの既定の一貫性レベルと設定。 詳細については、[Azure Cosmos DB の一貫性レベル](consistency-levels.md)に関する記事をご覧ください。
 
 Azure Cosmos アカウントは、IP ファイアウォール、仮想ネットワーク サービス エンドポイント、プライベート エンドポイントを使用して構成できます。 Azure Cosmos DB 用に IP ファイアウォールを構成する方法については、[IP ファイアウォールの構成](how-to-configure-firewall.md)に関する記事を参照してください。 Azure Cosmos DB のサービス エンドポイントを有効にする方法については、「[仮想ネットワークからのアクセスの構成](how-to-configure-vnet-service-endpoint.md)」を参照してください。 Azure Cosmos DB のプライベート エンドポイントを有効にする方法については、「[プライベート エンドポイントからのアクセスを構成する](how-to-configure-private-endpoints.md)」を参照してください。

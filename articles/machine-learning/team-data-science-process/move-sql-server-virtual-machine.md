@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8350437d04fd019aab8fb22be8ad0e9a4a2831d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c80a90b07e25942e751d52cafa47f6e3e94852ab
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012180"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320334"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Azure 仮想マシン上の SQL Server にデータを移動する
 
@@ -41,9 +41,9 @@ Machine Learning 用に Azure SQL Database にデータを移動するための�
 ## <a name="prerequisites"></a><a name="prereqs"></a>前提条件
 このチュートリアルでは、以下があることを前提としています。
 
-* **Azure サブスクリプション**。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
-* **Azure ストレージ アカウント**。 このチュートリアルのデータを格納するには、Azure ストレージ アカウントを使用します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」を参照してください。 ストレージ アカウントを作成した後は、ストレージにアクセスするために使用するアカウント キーを取得する必要があります。 「[ストレージ アカウントのアクセス キーの管理](../../storage/common/storage-account-keys-manage.md)」をご覧ください。
-* **Azure VM 上に SQL Server**がプロビジョニングされていること。 手順については、「 [高度な分析のために Azure SQL Server 仮想マシンを IPython Notebook サーバーとして設定する](../data-science-virtual-machine/setup-sql-server-virtual-machine.md)」を参照してください。
+* **Azure サブスクリプション** 。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+* **Azure ストレージ アカウント** 。 このチュートリアルのデータを格納するには、Azure ストレージ アカウントを使用します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」を参照してください。 ストレージ アカウントを作成した後は、ストレージにアクセスするために使用するアカウント キーを取得する必要があります。 「[ストレージ アカウントのアクセス キーの管理](../../storage/common/storage-account-keys-manage.md)」をご覧ください。
+* **Azure VM 上に SQL Server** がプロビジョニングされていること。 手順については、「 [高度な分析のために Azure SQL Server 仮想マシンを IPython Notebook サーバーとして設定する](../data-science-virtual-machine/overview.md)」を参照してください。
 * **Azure PowerShell** がローカルにインストールされ構成されていること。 手順については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/)」を参照してください。
 
 ## <a name="moving-data-from-a-flat-file-source-to-sql-server-on-an-azure-vm"></a><a name="filesource_to_sqlonazurevm"></a> フラット ファイル ソースから Azure VM 上の SQL Server にデータを移動する
@@ -58,7 +58,7 @@ BCP は、SQL Server と一緒にインストールされるコマンド ライ�
 
 > [!NOTE]
 > **BCP 用のデータの場所**  
-> 必須ではありませんが、ターゲットの SQL Server と同じマシン上にソース データを含むファイルがある場合、高速転送 (ネットワークの速度とローカル ディスク IO の速度の差) を使用できます。 さまざまなファイル コピー ツール ([AZCopy](../../storage/common/storage-use-azcopy.md)、[Azure ストレージ エクスプローラー](https://storageexplorer.com/)、またはリモート デスクトップ プロトコル (RDP) を介した Windows のコピーと貼り付けなど) を使って、データを含むフラット ファイルを SQL Server がインストールされているマシンに移動できます。
+> 必須ではありませんが、ターゲットの SQL Server と同じマシン上にソース データを含むファイルがある場合、高速転送 (ネットワークの速度とローカル ディスク IO の速度の差) を使用できます。 さまざまなファイル コピー ツール ([AZCopy](../../storage/common/storage-use-azcopy-v10.md)、[Azure ストレージ エクスプローラー](https://storageexplorer.com/)、またはリモート デスクトップ プロトコル (RDP) を介した Windows のコピーと貼り付けなど) を使って、データを含むフラット ファイルを SQL Server がインストールされているマシンに移動できます。
 >
 >
 
@@ -82,7 +82,7 @@ BCP は、SQL Server と一緒にインストールされるコマンド ライ�
 
     `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attempt -t \t -r \n`
 
-> **BCP 挿入の最適化** こうした挿入を最適化するには、「 [一括インポートを最適化するためのガイドライン](https://technet.microsoft.com/library/ms177445%28v=sql.105%29.aspx) 」の記事を参照してください。
+> **BCP 挿入の最適化** こうした挿入を最適化するには、「 [一括インポートを最適化するためのガイドライン](/previous-versions/sql/sql-server-2008-r2/ms177445(v=sql.105)) 」の記事を参照してください。
 >
 >
 
@@ -133,7 +133,7 @@ Set-ExecutionPolicy Restricted #reset the execution policy
 ```
 
 ### <a name="bulk-insert-sql-query"></a><a name="insert-tables-bulkquery"></a>一括挿入 SQL クエリ
-[一括挿入 SQL クエリ](https://msdn.microsoft.com/library/ms188365)は、行/列ベースのファイルからデータをデータベースにインポートする場合に使用できます (サポートされるタイプについては「[一括エクスポートまたは一括インポートのデータの準備 (SQL Server)](https://msdn.microsoft.com/library/ms188609)」のトピックで説明されています)。
+[一括挿入 SQL クエリ](/sql/t-sql/statements/bulk-insert-transact-sql)は、行/列ベースのファイルからデータをデータベースにインポートする場合に使用できます (サポートされるタイプについては「[一括エクスポートまたは一括インポートのデータの準備 (SQL Server)](/sql/relational-databases/import-export/prepare-data-for-bulk-export-or-import-sql-server)」のトピックで説明されています)。
 
 一括挿入用のいくつかのサンプル コマンドを以下に示します。  
 
@@ -158,10 +158,10 @@ Set-ExecutionPolicy Restricted #reset the execution policy
 
 ### <a name="built-in-utilities-in-sql-server"></a><a name="sql-builtin-utilities"></a>
 SQL Server 統合サービス (SSIS) を使用して、フラット ファイルから Azure の SQL Server VM にデータをインポートすることができます。
-SSIS は 2 つの Studio 環境で使用できます。 詳細については、「 [統合サービス (SSIS) と Studio 環境](https://technet.microsoft.com/library/ms140028.aspx)」を参照してください:。
+SSIS は 2 つの Studio 環境で使用できます。 詳細については、「 [統合サービス (SSIS) と Studio 環境](/sql/integration-services/integration-services-ssis-development-and-management-tools)」を参照してください:。
 
-* SQL Server データ ツールの詳細については、「 [Microsoft SQL Server データ ツール](https://msdn.microsoft.com/data/tools.aspx)  
-* インポート/エクスポート ウィザードの詳細については、「 [SQL Server のインポートおよびエクスポート ウィザード](https://msdn.microsoft.com/library/ms141209.aspx)
+* SQL Server データ ツールの詳細については、「 [Microsoft SQL Server データ ツール](/sql/ssdt/download-sql-server-data-tools-ssdt)  
+* インポート/エクスポート ウィザードの詳細については、「 [SQL Server のインポートおよびエクスポート ウィザード](/sql/integration-services/import-export-data/import-and-export-data-with-the-sql-server-import-and-export-wizard)
 
 ## <a name="moving-data-from-on-premises-sql-server-to-sql-server-on-an-azure-vm"></a><a name="sqlonprem_to_sqlonazurevm"></a>オンプレミスの SQL Server から Azure VM 上の SQL Server にデータを移動する
 次の移行方法を使用することもできます。
@@ -177,13 +177,13 @@ SSIS は 2 つの Studio 環境で使用できます。 詳細については、
 **Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード** は、オンプレミスの SQL Server インスタンスから Azure VM の SQL Server にデータを簡単に移行するためのお勧めの方法です。 詳しい手順や、その他の代替策の詳細については、「[Azure VM の SQL Server へのデータベースの移行](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)」を参照してください。
 
 ### <a name="export-to-flat-file"></a><a name="export-flat-file"></a>フラット ファイルへのエクスポート
-「 [データの一括インポートと一括エクスポート (SQL Server)](https://msdn.microsoft.com/library/ms175937.aspx) 」のトピックで説明されているように、さまざまな方法を使用してオンプレミスの SQL Server からデータを一括エクスポートできます。 このドキュメントでは、一例として一括コピー プログラム (BCP) について説明します。 データをフラット ファイルにエクスポートした後は、一括インポートを使用して別の SQL Server にそのデータをインポートできます。
+「 [データの一括インポートと一括エクスポート (SQL Server)](/sql/relational-databases/import-export/bulk-import-and-export-of-data-sql-server) 」のトピックで説明されているように、さまざまな方法を使用してオンプレミスの SQL Server からデータを一括エクスポートできます。 このドキュメントでは、一例として一括コピー プログラム (BCP) について説明します。 データをフラット ファイルにエクスポートした後は、一括インポートを使用して別の SQL Server にそのデータをインポートできます。
 
 1. 次のように bcp ユーティリティを使用して、オンプレミスの SQL Server からファイルにデータをエクスポートします
 
     `bcp dbname..tablename out datafile.tsv -S    servername\sqlinstancename -T -t \t -t \n -c`
 2. 手順 1 でエクスポートされたテーブル スキーマに対して `create database` と `create table` を使用して、データベースとテーブルを Azure の SQL Server VM に作成します。
-3. エクスポート/インポートされているデータのテーブルのスキーマを記述するためのフォーマット ファイルを作成します。 フォーマット ファイルの詳細については、「 [フォーマット ファイルの作成 (SQL Server)](https://msdn.microsoft.com/library/ms191516.aspx)」を参照してください。
+3. エクスポート/インポートされているデータのテーブルのスキーマを記述するためのフォーマット ファイルを作成します。 フォーマット ファイルの詳細については、「 [フォーマット ファイルの作成 (SQL Server)](/sql/relational-databases/import-export/create-a-format-file-sql-server)」を参照してください。
 
     SQL Server コンピューターから BCP を実行する場合のフォーマット ファイルの生成
 
@@ -202,8 +202,8 @@ SSIS は 2 つの Studio 環境で使用できます。 詳細については、
 ### <a name="database-back-up-and-restore"></a><a name="sql-backup"></a>データベースのバックアップと復元
 SQL Server は以下のものをサポートします。
 
-1. [データベースのバックアップと復元機能](https://msdn.microsoft.com/library/ms187048.aspx) (ローカル ファイルに対するバックアップと復元、または BLOB への BACPAC エクスポート) と[データ層アプリケーション](https://msdn.microsoft.com/library/ee210546.aspx) (BACPAC を使用)。
-2. コピーされたデータベースを使用して Azure で SQL Server VM を直接作成する機能、または SQL Database 内の既存のデータベースにコピーする機能。 詳細については、「 [Use the Copy Database Wizard](https://msdn.microsoft.com/library/ms188664.aspx)」を参照してください。
+1. [データベースのバックアップと復元機能](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) (ローカル ファイルに対するバックアップと復元、または BLOB への BACPAC エクスポート) と[データ層アプリケーション](/sql/relational-databases/data-tier-applications/data-tier-applications) (BACPAC を使用)。
+2. コピーされたデータベースを使用して Azure で SQL Server VM を直接作成する機能、または SQL Database 内の既存のデータベースにコピーする機能。 詳細については、「 [Use the Copy Database Wizard](/sql/relational-databases/databases/use-the-copy-database-wizard)」を参照してください。
 
 SQL Server Management Studio のデータベースのバックアップ/復元オプションのスクリーンショットを次に示します。
 

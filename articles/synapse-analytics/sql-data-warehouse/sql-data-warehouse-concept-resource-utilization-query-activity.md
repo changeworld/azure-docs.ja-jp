@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 334d37ad36336d1aa737894482fd8f66e929c822
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f66efb9112a9342122f5b56ab11b862ce3c7c61b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87077686"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314430"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Azure Synapse Analytics でのリソース使用状況とクエリ アクティビティの監視
 
@@ -45,7 +45,7 @@ Azure portal では、Synapse SQL に対して以下のメトリックを使用�
 
 メトリックを表示してアラートを設定するときに考慮が必要な事項は次のとおりです。
 
-- 使用される DWU は、SQL プール全体の**使用に関する高レベル表現**のみを表しており、使用率を包括的に示すものではありません。 スケールアップまたはスケールダウンするかどうかを判断するには、コンカレンシー、メモリ、tempdb、アダプティブ キャッシュ容量など、DWU の影響を受ける可能性があるすべての要素を考慮してください。 [さまざまな DWU 設定でワークロードを実行して](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units)、ビジネス目標を達成するために最適な動作を判断することをお勧めします。
+- 使用される DWU は、SQL プール全体の **使用に関する高レベル表現** のみを表しており、使用率を包括的に示すものではありません。 スケールアップまたはスケールダウンするかどうかを判断するには、コンカレンシー、メモリ、tempdb、アダプティブ キャッシュ容量など、DWU の影響を受ける可能性があるすべての要素を考慮してください。 [さまざまな DWU 設定でワークロードを実行して](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units)、ビジネス目標を達成するために最適な動作を判断することをお勧めします。
 - サーバー自体ではなく、特定のデータ ウェアハウスについての接続の失敗と成功がレポートされます。
 - データ ウェアハウスがアイドル状態であっても、メモリの割合には使用率が反映されます。アクティブなワークロードのメモリ消費は反映されません。 追加のキャッシュ容量のスケーリングによってワークロードのパフォーマンスが要件を満たすように向上するかどうかに関する総合的な意思決定を行うために、このメトリックとその他 (tempdb、gen2 キャッシュ) を使用して追跡します。
 
@@ -53,7 +53,7 @@ Azure portal では、Synapse SQL に対して以下のメトリックを使用�
 
 T-SQL を使用して Synapse SQL を監視するときのプログラム エクスペリエンスでは、動的管理ビュー (DMV) のセットがサービスによって提供されます。 これらのビューは、アクティブのトラブルシューティングを行うときと、ワークロードでパフォーマンスのボトルネックを特定するときに役に立ちます。
 
-Synapse SQL に適用される DMV の一覧を表示するには、この[ドキュメント](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs)を参照してください。 
+Synapse SQL に適用される DMV の一覧を表示するには、この[ドキュメント](../sql/reference-tsql-system-views.md#dedicated-sql-pool-dynamic-management-views-dmvs)を参照してください。 
 
 ## <a name="metrics-and-diagnostics-logging"></a>メトリックと診断のロギング 
 

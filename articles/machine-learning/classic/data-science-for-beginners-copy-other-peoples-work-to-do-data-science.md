@@ -9,19 +9,19 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 59343c500f50430530b24fbfb7d747108377efd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84caf1ea684e46eec00f8479bd0e7c4123e731b1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91339914"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322797"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>他のユーザーの成果物をコピーしてデータ サイエンスを実行する
 ## <a name="video-5-data-science-for-beginners-series"></a>ビデオ 5: 初心者向けデータ サイエンス シリーズ
 データ サイエンスの企業秘密の 1 つは、自分の代わりに他のユーザーに作業してもらうことです。 自分の Machine Learning の実験に使用するクラスタリング アルゴリズムの例を、Azure AI ギャラリーで検索します。
 
 > [!IMPORTANT]
-> **Cortana Intelligence ギャラリー**は、**Azure AI ギャラリー**と名前が変更されました。 その結果、このトランスクリプトのテキストとイメージは、以前の名前が使用されているビデオとは多少異なります。
+> **Cortana Intelligence ギャラリー** は、 **Azure AI ギャラリー** と名前が変更されました。 その結果、このトランスクリプトのテキストとイメージは、以前の名前が使用されているビデオとは多少異なります。
 >
 
 このシリーズを最大限に活用するには、このビデオをすべて視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
@@ -58,7 +58,7 @@ Microsoft では、[Azure Machine Learning Studio (クラシック)](https://azu
 一番上の **[試験的機能]** をクリックすると、評価の高い最新の実験が多数ギャラリーに表示されます。 その他の実験を検索するには、画面上部の **[Browse All (すべて参照)]** をクリックしてください。そこで検索語句を入力したり、検索フィルターを選択したりすることができます。
 
 ## <a name="find-and-use-a-clustering-algorithm-example"></a>クラスタリング アルゴリズム サンプルの検索と使用
-たとえばクラスター解析の実例を見てみたいという場合は、「**clustering sweep**」と入力して実験を検索します。
+たとえばクラスター解析の実例を見てみたいという場合は、「 **clustering sweep** 」と入力して実験を検索します。
 
 ![Search for clustering experiments](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/search-for-clustering-experiments.png)
 
@@ -74,7 +74,7 @@ Microsoft では、[Azure Machine Learning Studio (クラシック)](https://azu
 
 ![[Studio (クラシック) で開く] ボタン](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/open-in-studio.png)
 
-このリンクをクリックすると、**Azure Machine Learning Studio (クラシック)** が表示されます。 実験のコピーが作成され、自分のワークスペースに配置されます。 ここには投稿者のデータセットとそのすべての処理、その投稿者が使用したすべてのアルゴリズム、結果の保存方法が含まれています。
+このリンクをクリックすると、 **Azure Machine Learning Studio (クラシック)** が表示されます。 実験のコピーが作成され、自分のワークスペースに配置されます。 ここには投稿者のデータセットとそのすべての処理、その投稿者が使用したすべてのアルゴリズム、結果の保存方法が含まれています。
 
 ![Machine Learning Studio (クラシック) でギャラリー実験を開く - クラスタリング アルゴリズム サンプル](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cluster-experiment-open-in-studio.png)
 
@@ -91,4 +91,4 @@ Microsoft Azure Machine Learning Studio (クラシック) の "初心者向け�
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Machine Learning Studio (クラシック) で初めてのデータ サイエンス実験を実行してみる](create-experiment.md)
-* [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/overview-what-is-azure-ml)
+* [Microsoft Azure での Machine Learning の概要を学習する](../overview-what-is-azure-ml.md)

@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 09/17/2020
-ms.openlocfilehash: 65a627cc009699660de0897ce853acaa78381f6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0ee83cdf3ea710974ce6985db3fc8ce8782351c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275984"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315799"
 ---
 # <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Azure での Ubuntu Data Science Virtual Machine を使用したデータ サイエンス
 
@@ -26,10 +26,10 @@ ms.locfileid: "91275984"
 
 Linux DSVM を使用する前に、以下の前提条件を満たしている必要があります。
 
-* **Azure サブスクリプション**。 Azure サブスクリプションを取得するには、「[無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free/)」をご覧ください。
+* **Azure サブスクリプション** 。 Azure サブスクリプションを取得するには、「[無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free/)」をご覧ください。
 
-* [**Ubuntu Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) 仮想マシンのプロビジョニングについては、[Ubuntu Data Science Virtual Machine のプロビジョニング](linux-dsvm-intro.md)に関するページをご覧ください。
-* お使いのコンピューターに [**X2Go**](https://wiki.x2go.org/doku.php) がインストールされており、XFCE セッションが開かれている。 詳細については、「[X2Go クライアントをインストールして構成する](linux-dsvm-intro.md#x2go)」をご覧ください。
+* [**Ubuntu Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) 仮想マシンのプロビジョニングについては、[Ubuntu Data Science Virtual Machine のプロビジョニング](./release-notes.md)に関するページをご覧ください。
+* お使いのコンピューターに [**X2Go**](https://wiki.x2go.org/doku.php) がインストールされており、XFCE セッションが開かれている。 詳細については、「[X2Go クライアントをインストールして構成する](dsvm-ubuntu-intro.md#x2go)」をご覧ください。
 * スクロールをスムーズにするために、DSVM の FireFox Web ブラウザーで `about:config` の `gfx.xrender.enabled` フラグを切り替えます。 [詳細については、こちらを参照してください](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 また、`mousewheel.enable_pixel_scrolling` を `False` に設定することを検討してください。 [詳細については、こちらを参照してください](https://support.mozilla.org/questions/981140)。
 
 ## <a name="download-the-spambase-dataset"></a>spambase データセットをダウンロードする
@@ -62,7 +62,7 @@ mv headers spambaseHeaders.data
 
 このデータセットには、各メールに関する何種類かの統計情報が含まれています。
 
-* **word\_freq\__WORD_** のような列は、メール内の全単語のうち *WORD* と一致する単語の割合を示しています。 たとえば、**word\_freq\_make** が **1** の場合、メール内の全単語の 1% が *make* です。
+* **word\_freq\__WORD_** のような列は、メール内の全単語のうち *WORD* と一致する単語の割合を示しています。 たとえば、 **word\_freq\_make** が **1** の場合、メール内の全単語の 1% が *make* です。
 * **char\_freq\__CHAR_** のような列は、メール内の全文字のうち *CHAR* と一致する文字の割合を示しています。
 * **capital\_run\_length\_longest** は、連続する大文字の最大の長さを示しています。
 * **capital\_run\_length\_average** は、連続する大文字の平均の長さを示しています。
@@ -213,7 +213,7 @@ accuracy
 
 - [イメージ内で製品を検出するエンド ツー エンド ソリューションを構築するための攻略ガイド](https://github.com/Azure/cortana-intelligence-product-detection-from-images):イメージ検出は、イメージ内のオブジェクトを特定して分類する手法です。 このテクノロジには、多くの現実のビジネス分野に大きなメリットをもたらす可能性があります。 たとえば、小売り業者は、この手法を使用して、顧客が棚から選ぶ製品を判断できます。 この情報は、店舗が製品在庫を管理するのに役立ちます。 
 
-- [音声のディープ ラーニング](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): このチュートリアルでは、[都市音声データセット](https://urbansounddataset.weebly.com/)の音声イベントを検出するためのディープ ラーニング モデルをトレーニングする方法を説明します。 また、音声データを操作する方法の概要についてもこのチュートリアルで説明します。
+- [音声のディープ ラーニング](/archive/blogs/machinelearning/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure): このチュートリアルでは、[都市音声データセット](https://urbansounddataset.weebly.com/)の音声イベントを検出するためのディープ ラーニング モデルをトレーニングする方法を説明します。 また、音声データを操作する方法の概要についてもこのチュートリアルで説明します。
 
 - [テキスト ドキュメントの分類](https://github.com/anargyri/lstm_han): このチュートリアルでは、2 つの異なるニューラル ネットワーク アーキテクチャを構築してトレーニングする方法を示します。Hierarchical Attention Network と Long Short Term Memory (LSTM) です。 これらのニューラル ネットワークでは、ディープ ラーニング用の Keras API を使用して、テキスト ドキュメントを分類します。 Keras は、最も普及している 3 つのディープ ラーニング フレームワーク (Microsoft Cognitive Toolkit、TensorFlow、および Theano) のフロントエンドです。
 
@@ -315,7 +315,7 @@ DSVM の Anaconda ディストリビューションには、Jupyter Notebook (Py
 
 ### <a name="rattle"></a>Rattle
 
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (*R* *A*nalytical *T*ool *T*o *L*earn *E*asily) は、データ マイニング用のグラフィカル R ツールです。 Rattle には、直感的なインターフェイスが用意され、データの読み込み、探索、変換のほか、モデルの構築と評価を簡単に行うことができます。 「[Rattle:R 向けのデータ マイニング GUI](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf)」に、Rattle の機能を説明するチュートリアルが記載されています。
+[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) ( *R* *A* nalytical *T* ool *T* o *L* earn *E* asily) は、データ マイニング用のグラフィカル R ツールです。 Rattle には、直感的なインターフェイスが用意され、データの読み込み、探索、変換のほか、モデルの構築と評価を簡単に行うことができます。 「[Rattle:R 向けのデータ マイニング GUI](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf)」に、Rattle の機能を説明するチュートリアルが記載されています。
 
 Rattle をインストールして起動するには、これらのコマンドを実行します。
 
@@ -328,12 +328,12 @@ rattle()
 > [!NOTE]
 > DSVM に Rattle をインストールする必要はありません。 ただし、Rattle を開いたときに、追加のパッケージをインストールするように求められる場合があります。
 
-Rattle では、タブベースのインターフェイスを使用します。 タブのほとんどは、 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) に関する記事の手順に対応しています (データの読み込みや探索など)。 データ サイエンス プロセスは、タブの左から右へと進んで行きます。 最後のタブには、Rattle で実行された R コマンドのログが含まれます。
+Rattle では、タブベースのインターフェイスを使用します。 タブのほとんどは、 [Team Data Science Process](../team-data-science-process/index.yml) に関する記事の手順に対応しています (データの読み込みや探索など)。 データ サイエンス プロセスは、タブの左から右へと進んで行きます。 最後のタブには、Rattle で実行された R コマンドのログが含まれます。
 
 データセットを読み込んで構成するには:
 
 1. ファイルを読み込むには、 **[Data]\(データ\)** タブを選択します。
-1. **[Filename]\(ファイル名\)** の横にあるセレクターを選択し、**spambaseHeaders.data** を選択します。
+1. **[Filename]\(ファイル名\)** の横にあるセレクターを選択し、 **spambaseHeaders.data** を選択します。
 1. ファイルを読み込むには、 **[Execute]\(実行\)** を選択します。 各列の概要 (識別されたデータ型、その列が入力、ターゲット、またはその他の種類の変数かどうか、一意の値の数など) が表示されます。
 1. Rattle では、 **spam** 列がターゲットとして正しく識別されます。 **spam** 列を選択し、 **[Target Data Type]\(ターゲットのデータ型\)** を **[Categoric]\(分類\)** に設定します。
 
@@ -349,15 +349,15 @@ Rattle では、タブベースのインターフェイスを使用します。 
 1. **word_freq_remove** と **word_freq_you** については、 **[Histogram]\(ヒストグラム\)** を選択します。
 1. **[実行]** を選択します。 1 つのグラフ ウィンドウに両方の密度プロットが表示され、メールには _you_ という単語が _remove_ よりもはるかに頻繁に出現していることが明らかです。
 
-**相関関係**プロットも興味深いものです。 プロットを作成するには:
+**相関関係** プロットも興味深いものです。 プロットを作成するには:
 
 1. **[Type]\(種類\)** で **[Correlation]\(相関関係\)** を選択します。
 1. **[実行]** を選択します。
 1. 推奨される変数の最大数が 40 である旨の警告が表示されます。 **[Yes (はい)]** を選択して、プロットを表示します。
 
-興味深い相関関係が表示されます。たとえば、_technology_ は _HP_ および _labs_ と強い相関があります。 また、_650_ とも強い相関があります。これは、データセットの提供者の市外局番が 650 であるためです。
+興味深い相関関係が表示されます。たとえば、 _technology_ は _HP_ および _labs_ と強い相関があります。 また、 _650_ とも強い相関があります。これは、データセットの提供者の市外局番が 650 であるためです。
 
-単語間の相関関係の数値は、 **[Explore]\(探索\)** ウィンドウで確認できます。 興味深いことに、たとえば、_technology_ は _your_ および _money_ と負の相関があります。
+単語間の相関関係の数値は、 **[Explore]\(探索\)** ウィンドウで確認できます。 興味深いことに、たとえば、 _technology_ は _your_ および _money_ と負の相関があります。
 
 Rattle では、データセットを変換して、一般的な問題の一部を処理することができます。 たとえば、特徴のスケール変更、欠落値の補完、外れ値の処理、およびデータが欠落している変数または観測値の削除を行うことができます。 また、Rattle は観測値と変数の間の相関ルールを特定することもできます。 これらのタブについては、この入門チュートリアルでは説明しません。
 
@@ -387,13 +387,13 @@ Rattle の便利な機能に、複数の機械学習メソッドを実行し、�
 
 1. **[Type]\(種類\)** で **[All]\(すべて\)** を選択します。
 1. **[実行]** を選択します。
-1. Rattle の実行が完了すると、**SVM** のような任意の **[Type]\(種類\)** の値を選択し、結果を表示できます。
+1. Rattle の実行が完了すると、 **SVM** のような任意の **[Type]\(種類\)** の値を選択し、結果を表示できます。
 1. また、 **[Evaluate]\(評価\)** タブを使用して、検証セットに対する各モデルのパフォーマンスを比較することもできます。たとえば、 **[Error Matrix (誤差マトリックス)]** を選択すると、検証セットに対する各モデルの混同行列、全体の誤差、および平均クラス誤差が表示されます。 また、ROC 曲線のプロット、感度解析の実行、および他の種類のモデル評価を行うこともできます。
 
 モデルの構築が完了したら、 **[Log]\(ログ\)** タブを選択して、セッション中に Rattle によって実行された R コードを表示します。 **[Export (エクスポート)]** をクリックすると、保存することができます。
 
 > [!NOTE]
-> 現在のリリースの Rattle にはバグがあります。 スクリプトを変更したり、スクリプトを使って後で手順を繰り返したりするには、ログのテキストの「*Export this log ...* 」の前に **#** 文字を挿入する必要があります。
+> 現在のリリースの Rattle にはバグがあります。 スクリプトを変更したり、スクリプトを使って後で手順を繰り返したりするには、ログのテキストの「 *Export this log ...* 」の前に **#** 文字を挿入する必要があります。
 
 ### <a name="postgresql-and-squirrel-sql"></a>PostgreSQL と SQuirreL SQL
 
@@ -416,7 +416,7 @@ host    all             all             127.0.0.1/32            ident
 host    all             all             ::1/128                 ident
 ```
 
-ユーザー名とパスワードを使用してログインできるように、「**IPv4 local connections**」という行を、**ident** の代わりに **md5** を使用するように変更します。
+ユーザー名とパスワードを使用してログインできるように、「 **IPv4 local connections** 」という行を、 **ident** の代わりに **md5** を使用するように変更します。
 
 ```
 # IPv4 local connections:
@@ -467,19 +467,19 @@ CREATE TABLE data (word_freq_make real, word_freq_address real, word_freq_all re
 1. **[Windows]**  >  **[View Drivers]\(ドライバーの表示\)** を選択します。
 1. **[PostgreSQL]** を右クリックし、 **[Modify Driver]\(ドライバーの変更\)** を選択します。
 1. **[Extra Class Path]\(その他のクラス パス\)**  >  **[Add]\(追加\)** を選択します。
-1. **[File Name]\(ファイル名\)** に「 **/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar**」と入力します。
+1. **[File Name]\(ファイル名\)** に「 **/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar** 」と入力します。
 1. **[Open (開く)]** を選択します。
-1. **[List Drivers]\(ドライバーの一覧表示\)** を選択します。 **[Class Name]\(クラス名\)** で、**org.postgresql.Driver** を選択し、 **[OK]** を選択します。
+1. **[List Drivers]\(ドライバーの一覧表示\)** を選択します。 **[Class Name]\(クラス名\)** で、 **org.postgresql.Driver** を選択し、 **[OK]** を選択します。
 
 ローカル サーバーへの接続を設定するには:
 
 1. **[Windows]**  >  **[View Aliases]\(エイリアスの表示\)** を選択します。
-1. **+** ボタンを選択して、新しいエイリアスを作成します。 新しいエイリアス名として、「**Spam database**」と入力します。 
+1. **+** ボタンを選択して、新しいエイリアスを作成します。 新しいエイリアス名として、「 **Spam database** 」と入力します。 
 1. **[Driver]\(ドライバー\)** で、 **[PostgreSQL]** を選択します。
-1. URL を「**jdbc:postgresql://localhost/spam**」に設定します。
+1. URL を「 **jdbc:postgresql://localhost/spam** 」に設定します。
 1. ユーザー名とパスワードを入力します。
 1. **[OK]** を選択します。
-1. **[Connection (接続)]** ウィンドウを開くには、**Spam database** エイリアスをダブルクリックします。
+1. **[Connection (接続)]** ウィンドウを開くには、 **Spam database** エイリアスをダブルクリックします。
 1. **[接続]** を選択します。
 
 クエリを実行するには:
@@ -494,7 +494,7 @@ CREATE TABLE data (word_freq_make real, word_freq_address real, word_freq_all re
 SELECT avg(word_freq_make), spam from data group by spam;
 ```
 
-また、*3d* が高い頻度で含まれるメールの特徴を調べます。
+また、 *3d* が高い頻度で含まれるメールの特徴を調べます。
 
 ```SQL
 SELECT * from data order by word_freq_3d desc;
@@ -538,5 +538,3 @@ GO
 ```
 
 SQuirreL SQL を使用してクエリを実行することもできます。 SQL Server JDBC ドライバーを使用して PostgreSQL の場合と同様の手順を実行します。 JDBC ドライバーは /usr/share/java/jdbcdrivers/sqljdbc42.jar フォルダーにあります。
-
-

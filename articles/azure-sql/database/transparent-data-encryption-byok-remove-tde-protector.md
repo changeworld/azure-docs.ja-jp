@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: 657e3967d9e34147364114cec4d946e900f60032
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a879ac81859c855bb7b7bc2eddb1e3c9b62adb34
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791377"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321400"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>PowerShell を使用した Transparent Data Encryption (TDE) 保護機能の削除
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -41,7 +41,7 @@ Key Vault で TDE 保護機能を削除したら、最大 10 分ですべての�
 
 - Azure サブスクリプションがあり、そのサブスクリプションの管理者である必要があります。
 - Azure PowerShell がインストールされ、実行されている必要があります。
-- このハウツー ガイドでは、Azure Key Vault のキーを Azure SQL Database または Azure Synapse (以前の SQL Data Warehouse) の TDE 保護機能として既に使用していることを前提としています。 詳細については、[BYOK をサポートする Transparent Data Encryption](transparent-data-encryption-byok-overview.md) に関する記事をご覧ください。
+- このハウツー ガイドは、Azure SQL Database または Azure Synapse (旧称 Data Warehouse) の TDE 保護機能として、Azure Key Vault のキーを既に使用していることを前提としています。 詳細については、[BYOK をサポートする Transparent Data Encryption](transparent-data-encryption-byok-overview.md) に関する記事をご覧ください。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

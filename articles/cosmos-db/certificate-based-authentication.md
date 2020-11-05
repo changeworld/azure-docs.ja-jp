@@ -3,18 +3,20 @@ title: Azure Cosmos DB と Active Directory を使用した証明書ベースの
 description: 証明書ベースの認証で Azure Cosmos DB のキーにアクセスするように Azure AD ID を構成する方法について説明します。
 author: voellm
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 3f787840422e61d6f43081d991ffc3ef28da6976
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e0913351d40cd75da17d16cca119b4ad5ce20de0
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486533"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334703"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Azure AD ID で Azure Cosmos DB アカウントのキーにアクセスするための証明書ベースの認証
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 証明書ベースの認証では、Azure Active Directory (Azure AD) をクライアント証明書と共に使用してクライアント アプリケーションを認証できます。 ID が必要になるコンピューター (オンプレミスのコンピューターや Azure の仮想マシンなど) では証明書ベースの認証を実行できます。 それにより、アプリケーションは、キーを直接アプリケーション内に保持しなくても Azure Cosmos DB キーを読み取ることができます。 この記事では、サンプルの Azure AD アプリケーションを作成し、そこに証明書ベースの認証を構成し、新しいアプリケーション ID を使用して Azure にサインインした後、そのアプリケーションで Azure Cosmos アカウントのキーを取得する方法について説明します。 この記事では、Azure PowerShell を使用して ID を設定した後、Azure Cosmos アカウントのキーを認証してそれにアクセスする C# サンプル アプリを提供します。  
 
@@ -32,29 +34,21 @@ ms.locfileid: "92486533"
 
 1. **[Azure Active Directory]** ウィンドウを開き、 **[アプリの登録]** ウィンドウに移動し、 **[新規登録]** を選択します。 
 
-   :::image type="content" source="./media/certificate-based-authentication/new-app-registration.png" alt-text="Active Directory での新しいアプリケーションの登録&quot;:::
+   :::image type="content" source="./media/certificate-based-authentication/new-app-registration.png" alt-text="Active Directory での新しいアプリケーションの登録":::
 
 1. **[アプリケーションを登録する]** フォームに次の詳細を入力します。  
 
-   * **[名前]** – アプリケーションの名前を指定します。&quot;sampleApp" などの任意の名前を指定できます。
+   * **[名前]** – アプリケーションの名前を指定します。"sampleApp" などの任意の名前を指定できます。
    * **[サポートされているアカウントの種類]** – **[Accounts in this organizational directory only (Default Directory)]\(この組織のディレクトリ内のアカウントのみ (既定のディレクトリ))** を選択して、現在のディレクトリ内のリソースがこのアプリケーションにアクセスできるようにします。 
    * **[リダイレクト URL]** – アプリケーションの種類として **[Web]** を選択し、そのアプリケーションがホストされている URL を指定します。任意の URL を指定できます。 この例では、`https://sampleApp.com` などのテスト URL を指定できます。アプリが存在しなくてもかまいません。
 
-   :::image type="content" source="./media/certificate-based-authentication/register-sample-web-app.png" alt-text="Active Directory での新しいアプリケーションの登録&quot;:::
-
-1. **[アプリケーションを登録する]** フォームに次の詳細を入力します。  
-
-   * **[名前]** – アプリケーションの名前を指定します。&quot;sampleApp":::
+   :::image type="content" source="./media/certificate-based-authentication/register-sample-web-app.png" alt-text="サンプル Web アプリケーションの登録":::
 
 1. フォームに入力したら **[登録]** を選択します。
 
 1. アプリが登録されたら、 **[Application(client) ID] (アプリケーション (クライアント) ID)** と **[オブジェクト ID]** を書き留めておきます。これらの詳細は、次の手順で使用します。 
 
-   :::image type="content" source="./media/certificate-based-authentication/get-app-object-ids.png" alt-text="Active Directory での新しいアプリケーションの登録&quot;:::
-
-1. **[アプリケーションを登録する]** フォームに次の詳細を入力します。  
-
-   * **[名前]** – アプリケーションの名前を指定します。&quot;sampleApp":::
+   :::image type="content" source="./media/certificate-based-authentication/get-app-object-ids.png" alt-text="アプリケーションおよびオブジェクト ID を取得する":::
 
 ## <a name="install-the-azuread-module"></a>AzureAD モジュールをインストールする
 
@@ -107,11 +101,7 @@ New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyId
 
 上のコマンドでは、次のスクリーンショットのような出力が表示されます。
 
-:::image type="content" source="./media/certificate-based-authentication/certificate-based-credential-output.png" alt-text="Active Directory での新しいアプリケーションの登録&quot;:::
-
-1. **[アプリケーションを登録する]** フォームに次の詳細を入力します。  
-
-   * **[名前]** – アプリケーションの名前を指定します。&quot;sampleApp":::
+:::image type="content" source="./media/certificate-based-authentication/certificate-based-credential-output.png" alt-text="証明書ベースの資格情報の作成での出力":::
 
 ## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>新しい ID を使用するように Azure Cosmos アカウントを構成する
 
@@ -121,11 +111,7 @@ New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyId
 
 1. **[追加]** および **[ロールの割り当ての追加]** を選択します。 次のスクリーンショットに示すように、 **[共同作成者]** ロールを使用して、前の手順で作成した sampleApp を追加します。
 
-   :::image type="content" source="./media/certificate-based-authentication/configure-cosmos-account-with-identify.png" alt-text="Active Directory での新しいアプリケーションの登録&quot;:::
-
-1. **[アプリケーションを登録する]** フォームに次の詳細を入力します。  
-
-   * **[名前]** – アプリケーションの名前を指定します。&quot;sampleApp":::
+   :::image type="content" source="./media/certificate-based-authentication/configure-cosmos-account-with-identify.png" alt-text="新しい ID を使用するように Azure Cosmos アカウントを構成する":::
 
 1. フォームに入力したら **[保存]** を選択します。
 
@@ -166,11 +152,7 @@ Azure portal から、証明書ベースの資格情報を Azure AD 内のクラ
 
 前のコマンドでは、Azure Cosmos アカウントのプライマリおよびセカンダリ 主キーが表示されます。 キー取得要求が成功し、そのイベントが "sampleApp" アプリケーションによって開始されたことを検証するには、Azure Cosmos アカウントのアクティビティ ログを表示できます。
 
-:::image type="content" source="./media/certificate-based-authentication/activity-log-validate-results.png" alt-text="Active Directory での新しいアプリケーションの登録&quot;:::
-
-1. **[アプリケーションを登録する]** フォームに次の詳細を入力します。  
-
-   * **[名前]** – アプリケーションの名前を指定します。&quot;sampleApp":::
+:::image type="content" source="./media/certificate-based-authentication/activity-log-validate-results.png" alt-text="Azure AD でのキー取得の呼び出しを検証する":::
 
 ## <a name="access-the-keys-from-a-c-application"></a>C# アプリケーションからキーにアクセスする 
 
@@ -258,11 +240,9 @@ namespace TodoListDaemonWithCert
 
 次のスクリーンショットに示すように、このスクリプトではプライマリおよびセカンダリ 主キーが出力されます。
 
-:::image type="content" source="./media/certificate-based-authentication/csharp-application-output.png" alt-text="Active Directory での新しいアプリケーションの登録&quot;:::
+:::image type="content" source="./media/certificate-based-authentication/csharp-application-output.png" alt-text="csharp アプリケーションの出力":::
 
-1. **[アプリケーションを登録する]** フォームに次の詳細を入力します。  
-
-   * **[名前]** – アプリケーションの名前を指定します。&quot;sampleApp" アプリケーションによって開始されたことを検証するには、Azure Cosmos アカウントのアクティビティ ログを表示できます。 
+前のセクションと同様に、キー取得要求イベントが "sampleApp" アプリケーションによって開始されたことを検証するには、Azure Cosmos アカウントのアクティビティ ログを表示できます。 
 
 
 ## <a name="next-steps"></a>次のステップ

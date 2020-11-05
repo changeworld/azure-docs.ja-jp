@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 133c7e95e620bfea51d1d6c9f6fd1d2946eeca33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7c442aaf6484e8e47bd6d00c91023fba43af75d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91340462"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325021"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>R での Azure Machine Learning Studio (classic) の使用を開始する
 
-**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![いいえ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 <!-- Stephen F Elston, Ph.D. -->
@@ -140,7 +140,7 @@ RStudio の使用方法の詳細については、「[RStudio ドキュメント
 
 #### <a name="load-the-dataset"></a><a id="loading"></a>データセットの読み込み
 
-最初に、**csdairydata.csv** ファイルを Machine Learning スタジオに読み込みます。
+最初に、 **csdairydata.csv** ファイルを Machine Learning スタジオに読み込みます。
 
 1. Machine Learning スタジオ環境を起動します。
 1. 画面の左下の **[+ 新規]** を選択し、 **[データセット]** を選択します。
@@ -154,12 +154,12 @@ RStudio の使用方法の詳細については、「[RStudio ドキュメント
 いくつかのデータを Machine Learning スタジオに読み込んだので、分析をするために実験を作成する必要があります。  
 
 1. 画面の左下の **[+ 新規]** を選択し、 **[Experiments]\(実験\)**  >  **[Blank Experiment]\(空の実験\)** を選択します。
-1. 実験を選択し、ページ上部のタイトル **[... に関して作成された実験]** を変更することで、実験に名前を付けます。 たとえば、「**カリフォルニア乳製品分析**」に変更します。
+1. 実験を選択し、ページ上部のタイトル **[... に関して作成された実験]** を変更することで、実験に名前を付けます。 たとえば、「 **カリフォルニア乳製品分析** 」に変更します。
 1. 実験ページの左側で、 **[保存済みのデータセット]**  >  **[マイ データセット]** の順に選択します。 前にアップロードした **cadairydata.csv** ファイルが表示されます。
-1. **csdairydata.csv データセット**を実験にドラッグします。
-1. 左側のペインの上部にある **[実験項目の検索]** ボックスで、「[Execute R Script][execute-r-script]」と入力します。 検索一覧に、モジュールが表示されます。
+1. **csdairydata.csv データセット** を実験にドラッグします。
+1. 左側のペインの上部にある **[実験項目の検索]** ボックスで、「 [Execute R Script][execute-r-script]」と入力します。 検索一覧に、モジュールが表示されます。
 1. [Execute R Script][execute-r-script] モジュールを、パレットにドラッグします。
-1. **csdairydata.csv データセット**の出力を、[Execute R Script][execute-r-script] の左端の入力 (**データセット 1**) に接続します。
+1. **csdairydata.csv データセット** の出力を、 [Execute R Script][execute-r-script] の左端の入力 ( **データセット 1** ) に接続します。
 1. **[保存]** を選択します。
 
 この時点で、実験はこの例のように表示されます。
@@ -169,7 +169,7 @@ RStudio の使用方法の詳細については、「[RStudio ドキュメント
 
 #### <a name="check-on-the-data"></a>データのチェック
 
-実験に読み込んだデータを調べましょう。 実験で、**cadairydata.csv データセット**の出力を選択し、 **[視覚化]** を選択します。 こちらのような結果が表示されます。
+実験に読み込んだデータを調べましょう。 実験で、 **cadairydata.csv データセット** の出力を選択し、 **[視覚化]** を選択します。 こちらのような結果が表示されます。
 
 ![cadairydata.csv データセットのサマリーを示すスクリーンショット。](./media/r-quickstart/fig4.png)
 
@@ -231,13 +231,13 @@ load("src/yourData.rdata") # Reads a zipped R data file
    maml.mapOutputPort('cadairydata')
    ```
 
-1. zip ファイルを作成し、スクリプトをこの zip ファイルにコピーします。 Windows の場合、ファイルを右クリックし、 **[送る]**  >  **[圧縮フォルダー]** の順に選択します。 この操作により、**simpleplot.R** ファイルを含む新しい zip ファイルが作成されます。
+1. zip ファイルを作成し、スクリプトをこの zip ファイルにコピーします。 Windows の場合、ファイルを右クリックし、 **[送る]**  >  **[圧縮フォルダー]** の順に選択します。 この操作により、 **simpleplot.R** ファイルを含む新しい zip ファイルが作成されます。
 
-1. ファイルを、Machine Learning スタジオの**データセット**に追加し、種類を **zip** に指定します。 データセットに zip ファイルが表示されるようになります。
+1. ファイルを、Machine Learning スタジオの **データセット** に追加し、種類を **zip** に指定します。 データセットに zip ファイルが表示されるようになります。
 
-1. この zip ファイルを**データセット**から **ML スタジオのキャンバス**にドラッグします。
+1. この zip ファイルを **データセット** から **ML スタジオのキャンバス** にドラッグします。
 
-1. **zip データ アイコン**の出力を、[R スクリプトの実行][execute-r-script]モジュールの**スクリプト バンドル**入力に接続します。
+1. **zip データ アイコン** の出力を、 [R スクリプトの実行][execute-r-script]モジュールの **スクリプト バンドル** 入力に接続します。
 
 1. [Execute R Script][execute-r-script] モジュールのコード ウィンドウに、`source()` 関数を zip ファイル名を指定して入力します。 この例では、「`source("src/simpleplot.R")`」と入力しました。
 
@@ -255,7 +255,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 cadairydata <- maml.mapInputPort(1)
 ```
 
-**[実行]** ボタンを選択して、実験を実行します。 実行が完了したら、[[Execute R Script]][execute-r-script] モジュールを選択し、プロパティ ペインの **[出力ログの表示]** を選択します。 ブラウザーで新しいページが開き、output.log ファイルの内容が表示されます。 下へスクロールすると、次のような出力が表示されます。
+**[実行]** ボタンを選択して、実験を実行します。 実行が完了したら、 [[Execute R Script]][execute-r-script] モジュールを選択し、プロパティ ペインの **[出力ログの表示]** を選択します。 ブラウザーで新しいページが開き、output.log ファイルの内容が表示されます。 下へスクロールすると、次のような出力が表示されます。
 
 ```output
 [ModuleOutput] InputDataStructure
@@ -404,7 +404,7 @@ maml.mapOutputPort('cadairydata')
 [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 ```
 
-Month の型は、**Factor w/ 14 levels** になりました。 1 年には 12 か月しかないため、この型は問題です。 また、結果データセット ポートの **[視覚化]** における型が **Categorical** であることもチェックできます。
+Month の型は、 **Factor w/ 14 levels** になりました。 1 年には 12 か月しかないため、この型は問題です。 また、結果データセット ポートの **[視覚化]** における型が **Categorical** であることもチェックできます。
 
 問題は、Month 列が体系的にコード化されなかったことです。 ある月が April と呼ばれる場合もあれば、Apr と省略される場合もあります。この問題は、文字列を 3 文字にトリミングすることで解決できます。 コード行は、次の例のようになります。
 
@@ -453,7 +453,7 @@ R データフレームは、強力なフィルター処理機能をサポート
 このデータセットに適用する必要があるフィルター処理はわずかです。 cadairydata データフレームの列を調べると、2 つの不要な列があるのがわかります。 最初の列には行番号が含まれ、あまり役に立ちません。 二番目の Year.Month 列には、重複する情報が含まれています。 次の R コードを使用して、これらの列を簡単に除外できます。
 
 > [!NOTE]
-> これからこのセクションで、[Execute R Script][execute-r-script] モジュールに追加するコードを示します。 `str()` 関数の "*前*" に、新しく各行を追加します。 この関数を使用し、Machine Learning スタジオで結果を検証します。
+> これからこのセクションで、[Execute R Script][execute-r-script] モジュールに追加するコードを示します。 `str()` 関数の " *前* " に、新しく各行を追加します。 この関数を使用し、Machine Learning スタジオで結果を検証します。
 
 次の行を、[Execute R Script][execute-r-script]モジュールの R コードに追加します。
 
@@ -932,7 +932,7 @@ outframe
 
 ### <a name="create-the-dataframe-for-analysis"></a>分析用のデータフレームを作成する
 
-最初に、新しい [Execute R Script][execute-r-script] モジュールを実験に追加します。 既存の R スクリプトの実行モジュールの[結果データセット][execute-r-script]出力を、新しいモジュールの**データセット 1** 入力に接続します。 結果はこちらの例のようになります。
+最初に、新しい [Execute R Script][execute-r-script] モジュールを実験に追加します。 既存の R スクリプトの実行モジュールの [結果データセット][execute-r-script]出力を、新しいモジュールの **データセット 1** 入力に接続します。 結果はこちらの例のようになります。
 
 ![新しい Execute R Script モジュールが追加された実験を示す図。](./media/r-quickstart/fig21.png)
 
@@ -1029,10 +1029,10 @@ summary(milk.lm)
 ##
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
-## (Intercept)       6.33e+00   1.45e-01   43.60   <2e-16 ***
-## Time              1.63e-09   1.72e-10    9.47   <2e-16 ***
+## (Intercept)       6.33e+00   1.45e-01   43.60   <2e-16 **_
+## Time              1.63e-09   1.72e-10    9.47   <2e-16 _*_
 ## I(Month.Count^2) -1.71e-06   4.89e-06   -0.35    0.726
-## I(Month.Count^3) -3.24e-08   1.49e-08   -2.17    0.031 *  
+## I(Month.Count^3) -3.24e-08   1.49e-08   -2.17    0.031 _  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
@@ -1062,10 +1062,10 @@ summary(milk.lm)
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
 ## (Intercept)       6.38e+00   4.07e-02   156.6   <2e-16 ***
-## Time              1.57e-09   4.32e-11    36.3   <2e-16 ***
-## I(Month.Count^3) -3.76e-08   2.50e-09   -15.1   <2e-16 ***
+## Time              1.57e-09   4.32e-11    36.3   <2e-16 **_
+## I(Month.Count^3) -3.76e-08   2.50e-09   -15.1   <2e-16 _*_
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '_*_' 0.001 '_*' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
 ## Residual standard error: 0.0417 on 213 degrees of freedom
 ## Multiple R-squared:  0.941,  Adjusted R-squared:  0.94
@@ -1113,21 +1113,21 @@ summary(milk.lm2)
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
 ## Time              1.57e-09   2.72e-11    57.7   <2e-16 ***
-## I(Month.Count^3) -3.74e-08   1.57e-09   -23.8   <2e-16 ***
-## MonthApr          6.40e+00   2.63e-02   243.3   <2e-16 ***
-## MonthAug          6.38e+00   2.63e-02   242.2   <2e-16 ***
-## MonthDec          6.38e+00   2.64e-02   241.9   <2e-16 ***
-## MonthFeb          6.31e+00   2.63e-02   240.1   <2e-16 ***
-## MonthJan          6.39e+00   2.63e-02   243.1   <2e-16 ***
-## MonthJul          6.39e+00   2.63e-02   242.6   <2e-16 ***
-## MonthJun          6.38e+00   2.63e-02   242.4   <2e-16 ***
-## MonthMar          6.42e+00   2.63e-02   244.2   <2e-16 ***
-## MonthMay          6.43e+00   2.63e-02   244.3   <2e-16 ***
-## MonthNov          6.34e+00   2.63e-02   240.6   <2e-16 ***
-## MonthOct          6.37e+00   2.63e-02   241.8   <2e-16 ***
-## MonthSep          6.34e+00   2.63e-02   240.6   <2e-16 ***
+## I(Month.Count^3) -3.74e-08   1.57e-09   -23.8   <2e-16 **_
+## MonthApr          6.40e+00   2.63e-02   243.3   <2e-16 _*_
+## MonthAug          6.38e+00   2.63e-02   242.2   <2e-16 _*_
+## MonthDec          6.38e+00   2.64e-02   241.9   <2e-16 _*_
+## MonthFeb          6.31e+00   2.63e-02   240.1   <2e-16 _*_
+## MonthJan          6.39e+00   2.63e-02   243.1   <2e-16 _*_
+## MonthJul          6.39e+00   2.63e-02   242.6   <2e-16 _*_
+## MonthJun          6.38e+00   2.63e-02   242.4   <2e-16 _*_
+## MonthMar          6.42e+00   2.63e-02   244.2   <2e-16 _*_
+## MonthMay          6.43e+00   2.63e-02   244.3   <2e-16 _*_
+## MonthNov          6.34e+00   2.63e-02   240.6   <2e-16 _*_
+## MonthOct          6.37e+00   2.63e-02   241.8   <2e-16 _*_
+## MonthSep          6.34e+00   2.63e-02   240.6   <2e-16 _*_
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '_*_' 0.001 '_*' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
 ## Residual standard error: 0.0263 on 202 degrees of freedom
 ## Multiple R-squared:     1,    Adjusted R-squared:     1
@@ -1276,9 +1276,9 @@ maml.mapOutputPort('RMS.df')
 
 RStudio はドキュメントが整っています。 ここでは、使用を開始するための RStudio ドキュメントの重要なセクションに対するリンクをいくつか示します。
 
-* **プロジェクトの作成**:RStudio を使用して、R コードをプロジェクトに編成して管理できます。 詳細については、「[プロジェクトの使用](https://support.rstudio.com/hc/articles/200526207-Using-Projects)」をご覧ください。 これらの手順に従って、この記事の R コードの例に関するプロジェクトを作成します。
-* **R コードの編集と実行**:RStudio は、R コードを編集し実行するための統合環境を提供します。 詳細については、「[コードの編集と実行](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code)」をご覧ください。
-* **Debug**: RStudio には、強力なデバッグ機能が搭載されています。 デバッグ機能の詳細については、「[RStudio でのデバッグ](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio)」をご覧ください。 ブレークポイントのトラブルシューティング機能の詳細については、「[Breakpoint Troubleshooting (ブレークポイントのトラブルシューティング)](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)」を参照してください。
+* **プロジェクトの作成** :RStudio を使用して、R コードをプロジェクトに編成して管理できます。 詳細については、「[プロジェクトの使用](https://support.rstudio.com/hc/articles/200526207-Using-Projects)」をご覧ください。 これらの手順に従って、この記事の R コードの例に関するプロジェクトを作成します。
+* **R コードの編集と実行** :RStudio は、R コードを編集し実行するための統合環境を提供します。 詳細については、「[コードの編集と実行](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code)」をご覧ください。
+* **Debug** : RStudio には、強力なデバッグ機能が搭載されています。 デバッグ機能の詳細については、「[RStudio でのデバッグ](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio)」をご覧ください。 ブレークポイントのトラブルシューティング機能の詳細については、「[Breakpoint Troubleshooting (ブレークポイントのトラブルシューティング)](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)」を参照してください。
 
 ## <a name="further-reading"></a><a id="appendixb"></a>参考資料
 
@@ -1289,12 +1289,12 @@ RStudio はドキュメントが整っています。 ここでは、使用を�
 
 R の使用を開始するのに役立つ書籍は、多数存在します。
 
-* Norman Matloff による『**The Art of R Programming: A Tour of Statistical Software Design**』は、R のプログラミングに関する優れた入門書です。
-* Paul Teetor による『**R Cookbook**』は、R の使用に関する問題と解決のアプローチが記載されています。
-* Robert Kabacoff による『**R in Action**』はもう 1 つの有用な入門書です。 手引書 [Quick R Web サイト](https://www.statmethods.net/)は有効なリソースです。
-* Patrick Burns による『**R Inferno**』は、R でのプログラミングで発生する可能性のあるいくつかの厄介で困難なトピックに対処している、驚くほどユーモアにあふれた本です。この本は、「[The R Inferno](https://www.burns-stat.com/documents/books/the-r-inferno/)」で無料で入手できます。
-* Hadley Wickham による『**Advanced R**』では、R の高度なトピックが詳しく説明されています。この本のオンライン版は、「[Advanced R](http://adv-r.had.co.nz/)」で無料で入手できます。
-* Paul Cowpertwait と Andrew Metcalfe による書籍『**Introductory Time Series with R**』は、時系列分析で R を使用する際の入門書です。 さらに多くの理論的テキストが、R の例を提供しています。
+* Norman Matloff による『 **The Art of R Programming: A Tour of Statistical Software Design** 』は、R のプログラミングに関する優れた入門書です。
+* Paul Teetor による『 **R Cookbook** 』は、R の使用に関する問題と解決のアプローチが記載されています。
+* Robert Kabacoff による『 **R in Action** 』はもう 1 つの有用な入門書です。 手引書 [Quick R Web サイト](https://www.statmethods.net/)は有効なリソースです。
+* Patrick Burns による『 **R Inferno** 』は、R でのプログラミングで発生する可能性のあるいくつかの厄介で困難なトピックに対処している、驚くほどユーモアにあふれた本です。この本は、「 [The R Inferno](https://www.burns-stat.com/documents/books/the-r-inferno/)」で無料で入手できます。
+* Hadley Wickham による『 **Advanced R** 』では、R の高度なトピックが詳しく説明されています。この本のオンライン版は、「 [Advanced R](http://adv-r.had.co.nz/)」で無料で入手できます。
+* Paul Cowpertwait と Andrew Metcalfe による書籍『 **Introductory Time Series with R** 』は、時系列分析で R を使用する際の入門書です。 さらに多くの理論的テキストが、R の例を提供しています。
 
 役に立つインターネット リソースをいくつか紹介します。
 

@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8f54ece9a932ed4cc0adc29747e1c58ee22646c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ee2280aba99606d9e31a0e565a67cd6202df3c2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333870"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317026"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>データセットでデータ ドリフトを検出する (プレビュー)
 
@@ -28,22 +28,22 @@ ms.locfileid: "91333870"
 データ ドリフトを監視し、ドリフトが大きい場合のアラートを設定する方法について説明します。  
 
 Azure Machine Learning データセット モニター (プレビュー) を使用すると、次のことを実行できます。
-* **データのドリフトを分析**して、時間の経過と共にどのように変化するかを把握する。
-* **モデル データを監視**して、トレーニング用データセットと供給データセットの違いを確認する。  [デプロイされたモデルからモデル データを収集すること](how-to-enable-data-collection.md)から始めます。
-* **新しいデータを監視**して、ベースライン データセットとターゲット データセットの違いを確認する。
-* **データの特徴をプロファイリング**して、時間の経過と共に統計的な特性がどのように変化するかを追跡する。
-* **データ ドリフトに関するアラートを設定**して、潜在的な問題を早期に警告する。 
+* **データのドリフトを分析** して、時間の経過と共にどのように変化するかを把握する。
+* **モデル データを監視** して、トレーニング用データセットと供給データセットの違いを確認する。  [デプロイされたモデルからモデル データを収集すること](how-to-enable-data-collection.md)から始めます。
+* **新しいデータを監視** して、ベースライン データセットとターゲット データセットの違いを確認する。
+* **データの特徴をプロファイリング** して、時間の経過と共に統計的な特性がどのように変化するかを追跡する。
+* **データ ドリフトに関するアラートを設定** して、潜在的な問題を早期に警告する。 
 
 モニターの作成には、[Azure Machine Learning のデータセット](how-to-create-register-datasets.md)が使用されます。 データセットには timestamp 列が含まれている必要があります。
 
-データ ドリフト メトリックは、Python SDK または Azure Machine Learning Studio を使用して確認できます。  その他のメトリックと分析情報は、Azure Machine Learning ワークスペースに関連付けられている [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) リソースを通じて利用できます。
+データ ドリフト メトリックは、Python SDK または Azure Machine Learning Studio を使用して確認できます。  その他のメトリックと分析情報は、Azure Machine Learning ワークスペースに関連付けられている [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) リソースを通じて利用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
 データセット モニターを作成して使用するには、以下が必要です。
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)。
-* [Azure Machine Learning SDK for Python がインストール済み](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) (これには azureml-datasets パッケージが含まれています)。
+* [Azure Machine Learning SDK for Python がインストール済み](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (これには azureml-datasets パッケージが含まれています)。
 * データのファイル パス、ファイル名、または列にタイムスタンプが指定された構造化 (表形式) データ。
 
 ## <a name="what-is-data-drift"></a>データの誤差とは
@@ -73,7 +73,7 @@ Azure Machine Learning では、データセット モニターを使用し、�
 
 データ ドリフトに関するアルゴリズムは、データの変化を総合的に測定するだけでなく、どの特徴に詳細な調査が必要であるかがわかるようになっています。 データセット モニターでは、`timeseries` データセット内の新しいデータをプロファイリングすることによって、ほかにも多数のメトリックが生成されます。 
 
-[Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) を使用することで、モニターによって生成されるすべてのメトリックについてカスタム アラートを設定できます。 データセット モニターを使用すると、データの問題を迅速に検出し、考えられる原因を特定することによって問題のデバッグ時間を短縮できます。  
+[Azure Application Insights](../azure-monitor/app/app-insights-overview.md) を使用することで、モニターによって生成されるすべてのメトリックについてカスタム アラートを設定できます。 データセット モニターを使用すると、データの問題を迅速に検出し、考えられる原因を特定することによって問題のデバッグ時間を短縮できます。  
 
 概念的には、Azure Machine Learning でデータセット モニターを設定するシナリオは主に 3 つあります。
 
@@ -102,7 +102,7 @@ Machine Learning データセットを使用して、データ ドリフトを�
 
 ### <a name="python-sdk"></a><a name="sdk-dataset"></a>Python SDK
 
-[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) クラスの [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) メソッドによって、データセットのタイムスタンプ列が定義されます。
+[`Dataset`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) クラスの [`with_timestamp_columns()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) メソッドによって、データセットのタイムスタンプ列が定義されます。
 
 ```python 
 from azureml.core import Workspace, Dataset, Datastore
@@ -129,7 +129,7 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-データセットの `timeseries` 特性を使用する完全な例については、[ノートブックの例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb)または [Datasets SDK のドキュメント](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)を参照してください。
+データセットの `timeseries` 特性を使用する完全な例については、[ノートブックの例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb)または [Datasets SDK のドキュメント](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)を参照してください。
 
 ### <a name="azure-machine-learning-studio"></a><a name="studio-dataset"></a>Azure Machine Learning Studio
 
@@ -139,13 +139,13 @@ Azure Machine Learning Studio を使用してデータセットを作成する�
 
 [![パーティション形式](./media/how-to-monitor-datasets/partition-format.png)](media/how-to-monitor-datasets/partition-format-expand.png)
 
-**スキーマ**設定では、指定されたデータセットの仮想または実際の列からタイムスタンプ列を指定します。
+**スキーマ** 設定では、指定されたデータセットの仮想または実際の列からタイムスタンプ列を指定します。
 
 :::image type="content" source="media/how-to-monitor-datasets/timestamp.png" alt-text="タイムスタンプを設定する":::
 
 この場合のように、データが日付でパーティション分割されている場合は、partition_timestamp も指定できます。  こうすることで、より効率的に日付を処理できます。
 
-:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="タイムスタンプを設定する":::
+:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="パーティションのタイムスタンプ":::
 
 
 ## <a name="create-dataset-monitors"></a>データセット モニターを作成する
@@ -208,18 +208,18 @@ monitor = monitor.enable_schedule()
 
 1. [スタジオのホームページ](https://ml.azure.com)に移動します。
 1. 左側の **[データセット]** タブを選択します。 
-1. **データセット モニター**を選択します。
+1. **データセット モニター** を選択します。
    ![モニターの一覧](./media/how-to-monitor-datasets/monitor-list.png)
 
 1. **[+ モニターの作成]** をクリックし、 **[次へ]** をクリックしてウィザードの手順を続行します。  
 
-:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="タイムスタンプを設定する":::
+:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="[モニターの作成] ウィザード":::
 
-* **ターゲット データセットを選択します**。  ターゲット データセットは、データ ドリフトの分析対象となる、タイムライン列が指定された表形式のデータセットです。 ターゲット データセットは、ベースライン データセットと共通の特徴を備え、かつ、新しいデータが追加される `timeseries` データセットである必要があります。 ターゲット データセット内の履歴データを分析することも、新しいデータを監視することもできます。
+* **ターゲット データセットを選択します** 。  ターゲット データセットは、データ ドリフトの分析対象となる、タイムライン列が指定された表形式のデータセットです。 ターゲット データセットは、ベースライン データセットと共通の特徴を備え、かつ、新しいデータが追加される `timeseries` データセットである必要があります。 ターゲット データセット内の履歴データを分析することも、新しいデータを監視することもできます。
 
 * **ベースライン データセットを選択します。**  時間の経過に沿ってターゲット データセットと比較するベースラインとして使用される表形式のデータセットを選択します。  ベースライン データセットには、ターゲット データセットと共通の特徴が含まれている必要があります。  ターゲット データセットのスライスを使用する時間範囲を選択するか、ベースラインとして使用する別のデータセットを指定します。
 
-* **モニターの設定**。  以下は、スケジュールされたデータセット モニター パイプラインを作成する場合の設定です。 
+* **モニターの設定** 。  以下は、スケジュールされたデータセット モニター パイプラインを作成する場合の設定です。 
 
     | 設定 | 説明 | ヒント | 変更可能 | 
     | ------- | ----------- | ---- | ------- |
@@ -240,7 +240,7 @@ monitor = monitor.enable_schedule()
 
 データ ドリフトの規模に関する最上位レベルの分析情報と、さらに調査すべき特徴の見所から始めます。
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="タイムスタンプを設定する":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="ドリフトの概要":::
 
 
 | メトリック | 説明 | 
@@ -253,7 +253,7 @@ monitor = monitor.enable_schedule()
 
 指定した期間内のデータセットとターゲット データセットの違いを確認します。  100% に近いほど、2 つのデータセットの違いは大きくなります。
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="タイムスタンプを設定する":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="ドリフトの規模の傾向":::
 
 ### <a name="drift-magnitude-by-features"></a>特徴ごとのドリフトの規模
 
@@ -263,7 +263,7 @@ monitor = monitor.enable_schedule()
 
 Azure Machine Learning Studio で、グラフ内のバーをクリックすると、その日付の特徴レベルの詳細が表示されます。 既定では、同じ特徴について、ベースライン データセットの分布と最近の実行時の分布が表示されます。
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="タイムスタンプを設定する":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="特徴ごとのドリフトの規模":::
 
 これらのメトリックは、Python SDK で、`DataDriftDetector` オブジェクトに `get_metrics()` メソッドを実行して取得することもできます。
 
@@ -271,7 +271,7 @@ Azure Machine Learning Studio で、グラフ内のバーをクリックする�
 
 最後に、下にスクロールして、個々の特徴の詳細を確認します。  グラフの上にあるプルダウンを使用して特徴を選択し、詳細を確認するメトリックを選択します。
 
-:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="タイムスタンプを設定する":::
+:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="数値の特徴グラフと比較":::
 
 グラフのメトリックは、特徴の種類によって異なります。
 
@@ -288,18 +288,18 @@ Azure Machine Learning Studio で、グラフ内のバーをクリックする�
     
     | メトリック | 説明 |  
     | ------ | ----------- |  
-    | ユークリッド距離     |  カテゴリ列に対して計算されます。 ユークリッド距離は 2 つのベクトルに対して計算され、2 つのデータセットからの同じカテゴリ列の経験的分布から生成されます。 0 は、経験的分布に差がないことを示します。  0 から外れるほど、この列のドリフトは大きくなります。 傾向は、このメトリックの時系列プロットから観察でき、ドリフトが生じている特徴を明らかにするために役立ちます。  |
+    | ユークリッド距離     |  カテゴリ列に対して計算されます。  ユークリッド距離は 2 つのベクトルに対して計算され、2 つのデータセットからの同じカテゴリ列の経験的分布から生成されます。  0 は、経験的分布に差がないことを示します。    0 から外れるほど、この列のドリフトは大きくなります。  傾向は、このメトリックの時系列プロットから観察でき、ドリフトが生じている特徴を明らかにするために役立ちます。  |
     | 一意の値の数 | 特徴の一意の値 (カーディナリティ) の数。 |
 
 このグラフで、1 つの日付を選択して、表示された特徴のターゲットとこの日付の間の特徴の分布を比較します。 数値の特徴の場合、これは 2 つの確率分布を示します。  特徴が数値の場合、横棒グラフが表示されます。
 
-:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="タイムスタンプを設定する":::
+:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="ターゲットと比較する日付を選択する":::
 
 ## <a name="metrics-alerts-and-events"></a>メトリック、アラート、イベント
 
-メトリックは、Machine Learning ワークスペースに関連付けられている [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) リソースで照会できます。 カスタム アラート ルールの設定や、アクション (メール、SMS、プッシュ、音声、Azure 関数など) をトリガーするためのアクション グループの設定など、Application Insights のすべての機能にアクセスすることができます。 詳細については、Application Insights の包括的ドキュメントを参照してください。 
+メトリックは、Machine Learning ワークスペースに関連付けられている [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) リソースで照会できます。 カスタム アラート ルールの設定や、アクション (メール、SMS、プッシュ、音声、Azure 関数など) をトリガーするためのアクション グループの設定など、Application Insights のすべての機能にアクセスすることができます。 詳細については、Application Insights の包括的ドキュメントを参照してください。 
 
-最初に、[Azure portal](https://portal.azure.com) に移動し、ワークスペースの **[概要]** ページを選択します。  関連付けられている Application Insights リソースが右端に表示されます。
+最初に、 [Azure portal](https://portal.azure.com) に移動し、ワークスペースの **[概要]** ページを選択します。  関連付けられている Application Insights リソースが右端に表示されます。
 
 [![Azure portal の概要](./media/how-to-monitor-datasets/ap-overview.png)](media/how-to-monitor-datasets/ap-overview-expanded.png)
 
@@ -322,6 +322,6 @@ Azure Machine Learning Studio で、グラフ内のバーをクリックする�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Machine Learning Studio](https://ml.azure.com) または [Python ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datadrift-tutorial/datadrift-tutorial.ipynb)に移動して、データセット モニターを設定する。
-* [Azure Kubernetes Service にデプロイされたモデル](how-to-monitor-data-drift.md)でデータ ドリフトを設定する方法を確認する。
+* [Azure Kubernetes Service にデプロイされたモデル](./how-to-enable-data-collection.md)でデータ ドリフトを設定する方法を確認する。
 * [Event Grid](how-to-use-event-grid.md) を使用してデータセット ドリフト モニターを設定する。 
 * 問題が発生している場合は、[一般的なトラブルシューティングのヒント](resource-known-issues.md#data-drift)に関するページを参照してください。

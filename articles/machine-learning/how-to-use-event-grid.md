@@ -11,16 +11,16 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 77d2f600a651f44abddf4a77f2a01486fa0259f2
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1fd177273c9dafb04add64d8a8bfef1d81cc65d0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428424"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319317"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Azure Machine Learning イベントに基づいてアプリケーション、プロセス、または CI/CD ワークフローをトリガーする (プレビュー)
 
-この記事では、[Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) によって特定の条件が検出された場合に、Azure Machine Learning イベント (失敗通知メールや ML パイプラインの実行など) に基づいて、イベント ドリブンなアプリケーション、プロセス、または CI/CD ワークフローを設定する方法について説明します。
+この記事では、[Azure Event Grid](../event-grid/index.yml) によって特定の条件が検出された場合に、Azure Machine Learning イベント (失敗通知メールや ML パイプラインの実行など) に基づいて、イベント ドリブンなアプリケーション、プロセス、または CI/CD ワークフローを設定する方法について説明します。
 
 Azure Machine Learning は、モデルのトレーニング、モデルのデプロイ、監視など、機械学習プロセスのライフサイクル全体を管理します。 Event Grid を使用して、最新のサーバーレス アーキテクチャを使用することで、Azure Machine Learning イベント (トレーニングの実行の完了、モデルの登録とデプロイ、データ ドリフトの検出など) に対応できます。 その後、ワークスペースにおける実行状態の変更、実行の完了、モデルの登録、モデルのデプロイ、データ ドリフトの検出などのイベントをサブスクライブして使用できます。
 
@@ -42,7 +42,7 @@ Azure Event Grid は、Azure Machine Learning やその他の Azure サービス
 
 ![Azure Event Grid の機能モデル](./media/concept-event-grid-integration/azure-event-grid-functional-model.png)
 
-イベント ソースとイベント ハンドラーの詳細については、「[Event Grid とは](/azure/event-grid/overview)」を参照してください。
+イベント ソースとイベント ハンドラーの詳細については、「[Event Grid とは](../event-grid/overview.md)」を参照してください。
 
 ### <a name="event-types-for-azure-machine-learning"></a>Azure Machine Learning のイベントの種類
 
@@ -58,9 +58,9 @@ Azure Machine Learning は、機械学習のライフサイクルのさまざま
 
 ### <a name="filter--subscribe-to-events"></a>イベントをフィルター処理およびサブスクライブする
 
-これらのイベントは Azure Event Grid を通じて発行されます。 お客様は Azure portal、PowerShell、または Azure CLI を使用して、[1 つまたは複数のイベントの種類およびフィルター条件を指定する](/azure/event-grid/event-filtering)ことによってイベントを簡単にサブスクライブできます。 
+これらのイベントは Azure Event Grid を通じて発行されます。 お客様は Azure portal、PowerShell、または Azure CLI を使用して、[1 つまたは複数のイベントの種類およびフィルター条件を指定する](../event-grid/event-filtering.md)ことによってイベントを簡単にサブスクライブできます。 
 
-イベントを設定するときに、フィルターを適用して、特定のイベント データでのみトリガーするようにできます。 実行状態変更イベントについての次の例では、実行の種類でフィルター処理できます。 イベントは、条件が満たされた場合にのみトリガーされます。 フィルター処理できるイベン トデータの詳細については、[Azure Machine Learning イベント グリッド スキーマ](/azure/event-grid/event-schema-machine-learning)に関する記事を参照してください。 
+イベントを設定するときに、フィルターを適用して、特定のイベント データでのみトリガーするようにできます。 実行状態変更イベントについての次の例では、実行の種類でフィルター処理できます。 イベントは、条件が満たされた場合にのみトリガーされます。 フィルター処理できるイベン トデータの詳細については、[Azure Machine Learning イベント グリッド スキーマ](../event-grid/event-schema-machine-learning.md)に関する記事を参照してください。 
 
 Azure Machine Learning イベントのサブスクリプションは、Azure ロールベースのアクセス制御 (Azure RBAC) によって保護されています。 ワークスペースの[共同作成者または所有者](how-to-assign-roles.md#default-roles)だけが、イベント サブスクリプションの作成、更新、削除を行うことができます。  イベント サブスクリプションの[作成](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest&preserve-view=true)中、または作成後に、イベント サブスクリプションをフィルター処理することができます。 
 
@@ -92,7 +92,7 @@ Azure Machine Learning イベントのサブスクリプションは、Azure ロ
   --advanced-filter data.ModelTags.key1 StringIn ('value1')
   ```
 
-  フィルターを適用する方法の詳細については、「[Event Grid のイベントのフィルター処理](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)」をご覧ください。
+  フィルターを適用する方法の詳細については、「[Event Grid のイベントのフィルター処理](../event-grid/how-to-filter-events.md)」をご覧ください。
 
 ## <a name="consume-machine-learning-events"></a>Machine Learning イベントを使用する
 
@@ -133,7 +133,7 @@ Azure Event Grid を使用すると、Azure Machine Learning イベントによ�
 
 ### <a name="set-up-with-the-cli"></a>CLI を使用した設定
 
-最新の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) をインストールするか、Azure サブスクリプションの一部として提供されている Azure Cloud Shell を使用することができます。
+最新の [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) をインストールするか、Azure サブスクリプションの一部として提供されている Azure Cloud Shell を使用することができます。
 
 Event Grid 拡張機能をインストールするには、CLI から次のコマンドを使用します。
 
@@ -160,7 +160,7 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 ### <a name="example-send-email-alerts"></a>例:メール アラートを送信する
 
-[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) を使用して、すべてのイベントのメールを構成します。 条件を使用してカスタマイズし、共同作業を行うチーム全体でコラボレーションと意識を高める受信者を指定します。
+[Azure Logic Apps](../logic-apps/index.yml) を使用して、すべてのイベントのメールを構成します。 条件を使用してカスタマイズし、共同作業を行うチーム全体でコラボレーションと意識を高める受信者を指定します。
 
 1. Azure portal で、Azure Machine Learning ワークスペースに移動し、左側のバーの [イベント] タブを選択します。 ここで、 __[ロジック アプリ]__ を選択します。 
 
@@ -200,9 +200,9 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 開始する前に、次の操作を行います。
 
 * データセット モニターを設定して、ワークスペース内の[データの誤差を検出する](how-to-monitor-datasets.md)
-* 発行される [Azure Data Factory パイプライン](https://docs.microsoft.com/azure/data-factory/)を作成する。
+* 発行される [Azure Data Factory パイプライン](../data-factory/index.yml)を作成する。
 
-この例では、単純な Data Factory パイプラインを使用してファイルを blob ストアにコピーし、発行された Machine Learning パイプラインを実行します。 このシナリオの詳細については、[Azure Data Factory の Machine Learning の手順](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service)を設定する方法を参照してください。
+この例では、単純な Data Factory パイプラインを使用してファイルを blob ストアにコピーし、発行された Machine Learning パイプラインを実行します。 このシナリオの詳細については、[Azure Data Factory の Machine Learning の手順](../data-factory/transform-data-machine-learning-service.md)を設定する方法を参照してください。
 
 ![ML 実行 Pipeline1 を供給する data1 のコピーがあるファクトリ リソースのトレーニング パイプラインを示すスクリーンショット。](./media/how-to-use-event-grid/adf-mlpipeline-stage.png)
 
@@ -251,4 +251,3 @@ Event Grid の詳細について理解し、Azure Machine Learning のイベン�
 - [Event Grid について](../event-grid/overview.md)
 
 - [Azure Machine Learning 用のイベント スキーマ](../event-grid/event-schema-machine-learning.md)
-

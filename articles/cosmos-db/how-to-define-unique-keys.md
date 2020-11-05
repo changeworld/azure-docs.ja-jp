@@ -3,18 +3,20 @@ title: Azure Cosmos コンテナーの一意のキーを定義する
 description: Azure portal、PowerShell、.NET、Java、およびその他のさまざまな SDK を使用して、Azure Cosmos コンテナーの一意のキーを定義する方法について説明します。
 author: ThomasWeiss
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: thweiss
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 968ae8e582587564f1e268f16c18cf6d562d4333
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 55fc5222c1c245c56ba0a26caa816c5c845147c1
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279544"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336624"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Azure Cosmos コンテナーの一意のキーを定義する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、Azure Cosmos コンテナーを作成するときに、[一意のキー](unique-keys.md) を定義するさまざまな方法を示します。 現在、Azure portal を使用するか、Sdk のいずれかでこの操作を実行することになります。
 

@@ -11,22 +11,22 @@ ms.subservice: core
 ms.date: 02/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ac7420e47077e4e2b5bcfce0f33766554cd5c76d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1789f83f048a2ab0fb75aa33635e58b0850b865b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89647332"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319128"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Azure Kubernetes Service の Machine Learning Web サービスで Azure AD ID を使用する
 
-このガイドでは、Azure Kubernetes Service でデプロイされた機械学習モデルに Azure Active Directory (AAD) ID を割り当てる方法について説明します。 [AAD ポッド ID](https://github.com/Azure/aad-pod-identity) プロジェクトでは、[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) と Kubernetes プリミティブを使用することで、アプリケーションで AAD を使ってクラウド リソースに安全にアクセスできます。 これにより、資格情報を埋め込んだり、トークンを `score.py` スクリプト内で直接管理したりしなくても、お客様の Web サービスで Azure リソースに安全にアクセスできます。 この記事では、Azure ID を作成して Azure Kubernetes Service クラスターにインストールし、デプロイ済みの Web サービスに ID を割り当てる手順について説明します。
+このガイドでは、Azure Kubernetes Service でデプロイされた機械学習モデルに Azure Active Directory (AAD) ID を割り当てる方法について説明します。 [AAD ポッド ID](https://github.com/Azure/aad-pod-identity) プロジェクトでは、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) と Kubernetes プリミティブを使用することで、アプリケーションで AAD を使ってクラウド リソースに安全にアクセスできます。 これにより、資格情報を埋め込んだり、トークンを `score.py` スクリプト内で直接管理したりしなくても、お客様の Web サービスで Azure リソースに安全にアクセスできます。 この記事では、Azure ID を作成して Azure Kubernetes Service クラスターにインストールし、デプロイ済みの Web サービスに ID を割り当てる手順について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Machine Learning service 向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)、または [Azure Machine Learning Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)。
+- [Machine Learning service 向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)、または [Azure Machine Learning Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)。
 
-- `kubectl` コマンドを使用した AKS クラスターへのアクセス。 詳細については、「[クラスターへの接続](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)」を参照してください。
+- `kubectl` コマンドを使用した AKS クラスターへのアクセス。 詳細については、「[クラスターへの接続](../aks/kubernetes-walkthrough.md#connect-to-the-cluster)」を参照してください。
 
 - お客様の AKS クラスターにデプロイされた Azure Machine Learning Web サービス。
 
@@ -42,13 +42,13 @@ ms.locfileid: "89647332"
 
 1. AKS クラスターに [AAD ポッド ID](https://github.com/Azure/aad-pod-identity#getting-started) をインストールするには、次のコマンドのいずれかを使用します。
 
-    * AKS クラスターで **RBAC が有効**な場合、次のコマンドを使用します。
+    * AKS クラスターで **RBAC が有効** な場合、次のコマンドを使用します。
     
         ```azurecli-interactive
         kubectl apply -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
         ```
     
-    * AKS クラスターで **RBAC が有効でない**場合、次のコマンドを使用します。
+    * AKS クラスターで **RBAC が有効でない** 場合、次のコマンドを使用します。
     
         ```azurecli-interactive
         kubectl apply -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
@@ -75,7 +75,7 @@ ms.locfileid: "89647332"
 
 ## <a name="assign-azure-identity-to-machine-learning-web-service"></a>Machine Learning Web サービスに Azure ID を割り当てる
 
-次の手順では、前のセクションで作成した Azure ID を、**セレクター ラベル**を通じて AKS Web サービスに割り当てます。
+次の手順では、前のセクションで作成した Azure ID を、 **セレクター ラベル** を通じて AKS Web サービスに割り当てます。
 
 まず、Azure ID を割り当てたい AKS クラスター内にあるデプロイの名前と名前空間を特定します。 この情報は、次のコマンドを実行することで取得できます。 名前空間はご自分の Azure Machine Learning ワークスペース名にする必要があります。また、デプロイ名はポータルに表示されているご自分のエンドポイント名にする必要があります。
 
@@ -126,7 +126,7 @@ spec:
 
 ## <a name="assign-the-appropriate-roles-to-your-azure-identity"></a>適切なロールを Azure ID に割り当てる
 
-他の Azure リソースにアクセスするために、[適切なロールを Azure マネージド ID に割り当てます](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)。 割り当てようとしているロールに正しい**データ アクション**が含まれていることを確認します。 たとえば、[ストレージ BLOB データ閲覧者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)ではストレージ BLOB への読み取りアクセス許可が付与されますが、汎用の[閲覧者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)では付与されません。
+他の Azure リソースにアクセスするために、[適切なロールを Azure マネージド ID に割り当てます](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 割り当てようとしているロールに正しい **データ アクション** が含まれていることを確認します。 たとえば、[ストレージ BLOB データ閲覧者ロール](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)ではストレージ BLOB への読み取りアクセス許可が付与されますが、汎用の[閲覧者ロール](../role-based-access-control/built-in-roles.md#reader)では付与されません。
 
 ## <a name="use-azure-identity-with-your-machine-learning-web-service"></a>Machine Learning Web サービスで Azure ID を使用する
 
@@ -134,7 +134,7 @@ AKS クラスターにモデルをデプロイします。 `score.py` スクリ�
 
 ### <a name="access-key-vault-from-your-web-service"></a>Web サービスから Key Vault にアクセスする
 
-**キー コンテナー**内のシークレットへの Azure ID 読み取りアクセスを許可すると、次のコードを使用して `score.py` でそれにアクセスできます。
+**キー コンテナー** 内のシークレットへの Azure ID 読み取りアクセスを許可すると、次のコードを使用して `score.py` でそれにアクセスできます。
 
 ```python
 from azure.identity import DefaultAzureCredential
@@ -153,7 +153,7 @@ secret = secret_client.get_secret(my_secret_name)
 ```
 
 > [!IMPORTANT]
-> この例では、DefaultAzureCredential を使用します。 特定のアクセス ポリシーを使用して ID アクセスを付与するには、[Azure CLI を使用して Key Vault アクセスを割り当てる](/azure/key-vault/general/assign-access-policy-cli)方法に関するページを参照してください。
+> この例では、DefaultAzureCredential を使用します。 特定のアクセス ポリシーを使用して ID アクセスを付与するには、[Azure CLI を使用して Key Vault アクセスを割り当てる](../key-vault/general/assign-access-policy-cli.md)方法に関するページを参照してください。
 
 ### <a name="access-blob-from-your-web-service"></a>Web サービスから BLOB にアクセスする
 

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: a6612f3df5fba834dff8fc60e90c359ceff4cbe1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7e189885fbf7befcaea3f63148a42c81dc1da03e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743108"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320496"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のために開発環境をセットアップする
 
@@ -55,7 +55,7 @@ Azure Machine Learning のために Python 開発環境を構成する方法に�
 
 この JSON ファイルは、Python スクリプトまたは Jupyter Notebook を含むディレクトリ構造内にある必要があります。 それは、同じディレクトリ内、 *.azureml* という名前のサブディレクトリ内、または親ディレクトリ内に置くことができます。
 
-コードからこのファイルを使用するには、[`Workspace.from_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#from-config-path-none--auth-none---logger-none---file-name-none-&preserve-view=true) メソッドを使用します。 このコードは、ファイルから情報を読み込み、ワークスペースに接続します。
+コードからこのファイルを使用するには、[`Workspace.from_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#from-config-path-none--auth-none---logger-none---file-name-none-&preserve-view=true) メソッドを使用します。 このコードは、ファイルから情報を読み込み、ワークスペースに接続します。
 
 次のいずれかの方法で、ワークスペース構成ファイルを作成します。
 
@@ -67,7 +67,7 @@ Azure Machine Learning のために Python 開発環境を構成する方法に�
 
 * Azure Machine Learning Python SDK
 
-    Azure Machine Learning ワークスペースに接続するためのスクリプトを作成し、 [`write_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) メソッドを使用してファイルを生成し、それを *.azureml/config.json* として保存します。 必ず `subscription_id`、`resource_group`、`workspace_name` を独自の値に置き換えてください。
+    Azure Machine Learning ワークスペースに接続するためのスクリプトを作成し、 [`write_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) メソッドを使用してファイルを生成し、それを *.azureml/config.json* として保存します。 必ず `subscription_id`、`resource_group`、`workspace_name` を独自の値に置き換えてください。
 
     ```python
     from azureml.core import Workspace
@@ -97,7 +97,7 @@ Azure Machine Learning のために Python 開発環境を構成する方法に�
     > Linux または macOS 上で Bash 以外のシェル (例: zsh) を使用している場合、一部のコマンドを実行するとエラーが発生する可能性があります。 この問題を回避するには、`bash` コマンドを使用して新しい Bash シェルを開始し、そこでコマンドを実行します。
 
 1. 新しく作成された Python 仮想環境をアクティブにします。
-1. [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) をインストールします。
+1. [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) をインストールします。
 1. Azure Machine Learning ワークスペースを使用するようにローカル環境を構成するには、[ワークスペース構成ファイルを作成する](#workspace)か、既存のものを使用します。
 
 ローカル環境をセットアップしたので、Azure Machine Learning の操作を開始する準備ができました。 使用を開始するには、[Azure Machine Learning Python のファースト ステップ ガイド](tutorial-1st-experiment-sdk-setup-local.md) を参照してください。
@@ -223,7 +223,7 @@ Azure Databricks が Azure Machine Learning と連携する仕組み:
 
 ### <a name="set-up-your-databricks-cluster"></a>Databricks クラスターを設定する
 
-[Databricks クラスター](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)を作成します。 一部の設定は、Databricks に自動化された機械学習用の SDK をインストールする場合にのみ適用されます。
+[Databricks クラスター](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)を作成します。 一部の設定は、Databricks に自動化された機械学習用の SDK をインストールする場合にのみ適用されます。
 **クラスターの作成には数分かかります。**
 
 次の設定を使用します。
@@ -297,4 +297,4 @@ ML 以外の Databricks ラインタイム 7.0 以前の場合は、[init スク
 ## <a name="next-steps"></a>次のステップ
 
 - MNIST データセットを使用して Azure Machine Learning 上で[モデルをトレーニングする](tutorial-train-models-with-aml.md)
-- [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) リファレンスを表示する
+- [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) リファレンスを表示する

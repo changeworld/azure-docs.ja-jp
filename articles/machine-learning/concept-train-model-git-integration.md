@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: 71ac7793fe5226215c5d4eab98f84dba356b114c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f13773a8e3e78451dfb587e55c40a20d1b4b385c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275967"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324773"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning との Git 統合
 
@@ -39,7 +39,7 @@ Azure Machine Learning では、ワークスペース内のすべてのユーザ
 
 ## <a name="authenticate-your-git-account-with-ssh"></a>SSH を使用して Git アカウントを認証する
 ### <a name="generate-a-new-ssh-key"></a>新しい SSH キーを生成する
-1) Azure Machine Learning の [Notebook] タブで[ターミナル ウィンドウを開き](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal)ます。
+1) Azure Machine Learning の [Notebook] タブで[ターミナル ウィンドウを開き](./how-to-run-jupyter-notebooks.md#terminal)ます。
 
 2) 次のテキストを自分のメール アドレスに置き換えて貼り付けます。
 
@@ -89,7 +89,7 @@ cat ~/.ssh/id_rsa.pub
 
 + [GitLab](https://docs.gitlab.com/ee/ssh/#adding-an-ssh-key-to-your-gitlab-account)
 
-+ [Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs) **手順 2** から開始します。
++ [Azure DevOps](/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs) **手順 2** から開始します。
 
 + [BitBucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2)。 **手順 4** から開始します。
 
@@ -115,7 +115,7 @@ Warning: Permanently added 'github.com,192.30.255.112' (RSA) to the list of know
 
 SSH では、サーバーの SSH フィンガープリントが表示され、確認を求めるメッセージが表示される場合があります。 表示されているフィンガープリントが SSH 公開キー ページのいずれかのフィンガープリントに一致していることを確認する必要があります。
 
-SSH は、不明なホストに接続するときにこのフィンガープリントを表示して、[中間者攻撃](https://technet.microsoft.com/library/cc959354.aspx)から保護します。 ホストのフィンガープリントを受け入れると、フィンガープリントが変更されない限り、SSH によって再度メッセージが表示されることはありません。
+SSH は、不明なホストに接続するときにこのフィンガープリントを表示して、[中間者攻撃](/previous-versions/windows/it-pro/windows-2000-server/cc959354(v=technet.10))から保護します。 ホストのフィンガープリントを受け入れると、フィンガープリントが変更されない限り、SSH によって再度メッセージが表示されることはありません。
 
 3) 接続を続行するかどうかを確認するメッセージが表示されたら、「`yes`」と入力します。 Git はリポジトリを複製し、以降の Git コマンドで SSH と接続するように元のリモートを設定します。
 
@@ -178,7 +178,7 @@ Git 情報は、トレーニング実行のプロパティに格納されます�
 
 ### <a name="python-sdk"></a>Python SDK
 
-トレーニング実行を送信すると、[Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) オブジェクトが返されます。 このオブジェクトの `properties` 属性には、ログに記録された git 情報が含まれています。 たとえば、次のコードではコミット ハッシュを取得します。
+トレーニング実行を送信すると、[Run](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) オブジェクトが返されます。 このオブジェクトの `properties` 属性には、ログに記録された git 情報が含まれています。 たとえば、次のコードではコミット ハッシュを取得します。
 
 ```python
 run.properties['azureml.git.commit']
@@ -192,7 +192,7 @@ CLI コマンド `az ml run` を使用して、実行からプロパティを取
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'
 ```
 
-詳細については、[az ml run](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest&preserve-view=true) のリファレンス ドキュメントを参照してください。
+詳細については、[az ml run](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest) のリファレンス ドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

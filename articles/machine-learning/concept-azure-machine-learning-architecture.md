@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 71032c49ac5164f13189baf64668f8998fdc186a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c96263b5d40d4f6a4904a6da3d40ad98ac81f030
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276086"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322316"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
@@ -53,9 +53,9 @@ ms.locfileid: "91276086"
 
 Azure Machine Learning には、機械学習タスク用に構成された以下の 2 つのフル マネージド クラウドベース仮想マシン (VM) が導入されています。
 
-* <a name="compute-instance"></a> **コンピューティング インスタンス**:コンピューティング インスタンスは、機械学習用にインストールされた複数のツールと環境を含む VM です。 コンピューティング インスタンスの主な用途は、開発ワークステーションです。  セットアップを行うことなく、サンプル ノートブックの実行を開始できます。 コンピューティング インスタンスは、トレーニング ジョブと推論ジョブのコンピューティング先として使用できます。
+* <a name="compute-instance"></a> **コンピューティング インスタンス** :コンピューティング インスタンスは、機械学習用にインストールされた複数のツールと環境を含む VM です。 コンピューティング インスタンスの主な用途は、開発ワークステーションです。  セットアップを行うことなく、サンプル ノートブックの実行を開始できます。 コンピューティング インスタンスは、トレーニング ジョブと推論ジョブのコンピューティング先として使用できます。
 
-* **コンピューティング クラスター**:コンピューティング クラスターは、マルチノード スケーリング機能を備えた VM のクラスターです。 コンピューティング クラスターは、大規模なジョブと運用環境のコンピューティング先に適しています。  クラスターは、ジョブが送信されるときに自動的にスケールアップされます。  トレーニング コンピューティング ターゲットとして、または開発/テスト デプロイのために使用します。
+* **コンピューティング クラスター** :コンピューティング クラスターは、マルチノード スケーリング機能を備えた VM のクラスターです。 コンピューティング クラスターは、大規模なジョブと運用環境のコンピューティング先に適しています。  クラスターは、ジョブが送信されるときに自動的にスケールアップされます。  トレーニング コンピューティング ターゲットとして、または開発/テスト デプロイのために使用します。
 
 トレーニング コンピューティング ターゲットの詳細については、「[トレーニング コンピューティング ターゲット](concept-compute-target.md#train)」を参照してください。  デプロイメント コンピューティング ターゲットの詳細については、「[デプロイメント ターゲット](concept-compute-target.md#deploy)」を参照してください。
 
@@ -102,7 +102,7 @@ Azure Machine Learning では、すべての実行を記録して、実験に次
 
 [ワークスペース](#workspace) > [実験](#experiments) > [実行](#runs) > **実行構成**
 
-実行構成は、指定されたコンピューティング先でのスクリプトの実行方法を定義します。 構成を使用して、スクリプト、コンピューティング先、実行する Azure ML 環境、任意の分散ジョブ固有の構成、いくつかの追加のプロパティを指定します。 実行のための構成可能なオプションのセット全体の詳細については、[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) に関する記事を参照してください。
+実行構成は、指定されたコンピューティング先でのスクリプトの実行方法を定義します。 構成を使用して、スクリプト、コンピューティング先、実行する Azure ML 環境、任意の分散ジョブ固有の構成、いくつかの追加のプロパティを指定します。 実行のための構成可能なオプションのセット全体の詳細については、[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) に関する記事を参照してください。
 
 実行構成は、トレーニング スクリプトが含まれるディレクトリ内のファイルに保持できます。   またはメモリ内オブジェクトとして構築して実行の送信に使用できます。
 
@@ -145,7 +145,7 @@ Scikit-learn を使用したモデルのトレーニングの例については�
 
 [ワークスペース](#workspace) > **モデル**
 
-**モデル レジストリ**により、Azure Machine Learning ワークスペース内のすべてのモデルを追跡できます。
+**モデル レジストリ** により、Azure Machine Learning ワークスペース内のすべてのモデルを追跡できます。
 
 モデルは、名前とバージョンによって識別されます。 既存のモデルと同じ名前でモデルを登録するたびに、レジストリではそれが新しいバージョンと見なされます。 バージョンはインクリメントされ、新しいモデルは同じ名前で登録されます。
 
@@ -162,9 +162,9 @@ Scikit-learn を使用したモデルのトレーニングの例については�
 
 [登録済みのモデル](#register-model)をサービス エンドポイントとしてデプロイします。 次のコンポーネントが必要です。
 
-* **環境**。 この環境は、推論用モデルを実行するために必要な依存関係をカプセル化します。
-* **スコアリング コード**。 このスクリプトは、要求を受け入れ、モデルを使用してその要求にスコアを付け、その結果を返します。
-* **推論構成**。 推論構成では、サービスとしてのモデルを実行するために必要な環境、エントリ スクリプト、およびその他のコンポーネントを指定します。
+* **環境** 。 この環境は、推論用モデルを実行するために必要な依存関係をカプセル化します。
+* **スコアリング コード** 。 このスクリプトは、要求を受け入れ、モデルを使用してその要求にスコアを付け、その結果を返します。
+* **推論構成** 。 推論構成では、サービスとしてのモデルを実行するために必要な環境、エントリ スクリプト、およびその他のコンポーネントを指定します。
 
 これらのコンポーネントの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
@@ -233,10 +233,10 @@ Azure IoT Edge ではモジュールが実行されるのを保証し、モジ�
 > 以下に "(プレビュー)" と付記されているツールは、現在、パブリック プレビュー段階です。
 > プレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-+  [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) を使用して、Python 環境でサービスを操作します。
++  [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) を使用して、Python 環境でサービスを操作します。
 + [Azure Machine Learning SDK for R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) を使用して、R 環境でサービスを操作します (プレビュー)。
 + [Azure Machine Learning デザイナー](concept-designer.md)を使用して、コードを記述せずにワークフローの手順を行います。 
-+ [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) を自動化に使用します。
++ [Azure Machine Learning CLI](./reference-azure-machine-learning-cli.md) を自動化に使用します。
 + [多数モデル ソリューション アクセラレータ](https://aka.ms/many-models) (プレビュー) は Azure Machine Learning 上に構築されており、数百または数千もの機械学習モデルをトレーニング、操作、管理できます。
 
 ## <a name="next-steps"></a>次のステップ

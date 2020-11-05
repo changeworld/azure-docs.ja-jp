@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 09/30/2020
-ms.openlocfilehash: 1120a3636b7ce24dde0d33c213f9063f910123c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e410cbc7813031929ea040b2cc4fb2967b99c1b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530631"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319343"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>VS Code 拡張機能 (プレビュー) を使用して Azure Machine Learning リソースを管理する
 
@@ -47,7 +47,7 @@ VS Code 拡張機能を使用して Azure Machine Learning リソースを管理
 
 ワークスペースを作成する別の方法として、次のものがあります。
 
-- **[表示] > [コマンド パレット]** からコマンド パレットを開いて、テキスト プロンプトに「**Azure ML:Create Workspace**」と入力します。
+- **[表示] > [コマンド パレット]** からコマンド パレットを開いて、テキスト プロンプトに「 **Azure ML:Create Workspace** 」と入力します。
 - Azure Machine Learning ビューの上部にある `+` アイコンをクリックします。
 - 他のリソースをプロビジョニングするときにワークスペースを選択するように求めるメッセージが表示されたら、新しいワークスペースを作成します。
 
@@ -56,8 +56,8 @@ VS Code 拡張機能を使用して Azure Machine Learning リソースを管理
 1. ワークスペースが含まれているサブスクリプション ノードを展開します。
 1. 削除するワークスペースを右クリックします。
 1. 削除するかどうかを選択します。
-    - *[Only the workspace] (ワークスペースのみ)* :このオプションを選択すると、ワークスペース Azure リソース**のみ**が削除されます。 ワークスペースがアタッチされていたリソース グループ、ストレージ アカウント、その他のリソースは Azure に残ります。
-    - *[With associated resources] (関連するリソースを含む)* :このオプションを選択すると、ワークスペースが削除され、**さらに**関連付けられているすべてのリソースが削除されます。
+    - *[Only the workspace] (ワークスペースのみ)* :このオプションを選択すると、ワークスペース Azure リソース **のみ** が削除されます。 ワークスペースがアタッチされていたリソース グループ、ストレージ アカウント、その他のリソースは Azure に残ります。
+    - *[With associated resources] (関連するリソースを含む)* :このオプションを選択すると、ワークスペースが削除され、 **さらに** 関連付けられているすべてのリソースが削除されます。
 
 ## <a name="datastores"></a>データストア
 
@@ -97,7 +97,7 @@ VS Code 拡張機能を使用して Azure Machine Learning リソースを管理
 現在のところ、拡張機能では次のデータセットの種類がサポートされています。
 
 - *[表形式]* :データフレーム (Pandas または PySpark) にデータを具体化できます。
-- *ファイル*:ファイルまたはファイルのコレクション。 コンピューティングにファイルをダウンロードまたはマウントできます。
+- *ファイル* :ファイルまたはファイルのコレクション。 コンピューティングにファイルをダウンロードまたはマウントできます。
 
 詳細については、[データセット](concept-data.md#datasets)に関するページを参照してください
 
@@ -159,11 +159,11 @@ VS Code 拡張機能を使用して Azure Machine Learning リソースを管理
 1. 次のように入力します。
     1. 環境の名前を指定します
     1. 環境構成を定義します。
-        - *キュレーションされた環境*:Azure Machine Learning の構成済み環境。 JSON ファイルの `dependencies` プロパティを変更することで、環境をさらにカスタマイズできます。 [キュレーションされた環境](resource-curated-environments.md)の詳細については、こちらを参照してください。
-        - *Conda 依存関係ファイル*:Anaconda 環境では、環境定義を含むファイルを指定できます。
-        - *pip 要件ファイル*:pip 環境では、環境定義を含むファイルを指定できます。
-        - *既存の Conda 環境*:このオプションを選択すると、ローカル PC の conda 環境が検索され、選択した環境から環境を構築しようとします。
-        - *Custom*:独自のチャネルと依存関係を定義します
+        - *キュレーションされた環境* :Azure Machine Learning の構成済み環境。 JSON ファイルの `dependencies` プロパティを変更することで、環境をさらにカスタマイズできます。 [キュレーションされた環境](resource-curated-environments.md)の詳細については、こちらを参照してください。
+        - *Conda 依存関係ファイル* :Anaconda 環境では、環境定義を含むファイルを指定できます。
+        - *pip 要件ファイル* :pip 環境では、環境定義を含むファイルを指定できます。
+        - *既存の Conda 環境* :このオプションを選択すると、ローカル PC の conda 環境が検索され、選択した環境から環境を構築しようとします。
+        - *Custom* :独自のチャネルと依存関係を定義します
     1. エディターで構成ファイルが開きます。 構成に問題がなければ、 **[保存して続行]** を選択するか、VS Code コマンドパレット ( **[表示] > [コマンド パレット]** ) を開いて **Azure ML:Save and Continue** と入力します。
 
 ### <a name="view-environment-configurations"></a>環境構成を表示する
@@ -257,7 +257,7 @@ Azure Machine Learning Studio で実験を表示するには、以下の操作�
     1. コンピューティング インスタンスの名前を指定します。
     1. 一覧から VM のサイズを選択します。
     1. SSH アクセスを有効にするかどうかを選択します。
-        1. SSH アクセスを有効にする場合は、SSH 公開キーまたはキーを含むファイルも指定する必要があります。 詳細については、[Azure での SSH キーの作成と使用のガイド](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)に関するページを参照してください。
+        1. SSH アクセスを有効にする場合は、SSH 公開キーまたはキーを含むファイルも指定する必要があります。 詳細については、[Azure での SSH キーの作成と使用のガイド](../virtual-machines/linux/mac-create-ssh-keys.md)に関するページを参照してください。
 
 ### <a name="stop-or-restart-compute-instance"></a>コンピューティング インスタンスの停止または再起動
 
@@ -293,7 +293,7 @@ Azure Machine Learning Studio で実験を表示するには、以下の操作�
 1. **[コンピューティング クラスター]** ノードを右クリックし、 **[Create Compute] (コンピューティングの作成)** を選択します。
 1. 次のように入力します。
     1. コンピューティングの種類を選択します
-    1. VM のサイズを選択します。 [VM サイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)に関する詳細を表示します。
+    1. VM のサイズを選択します。 [VM サイズ](../virtual-machines/sizes.md)に関する詳細を表示します。
     1. コンピューティングの名前を指定します。
 
 ### <a name="view-compute-configuration"></a>コンピューティング構成の表示
@@ -325,7 +325,7 @@ Azure Machine Learning Studio で実験を表示するには、以下の操作�
 1. 次のように入力します。
     1. コンピューティング ターゲットの名前を指定します
     1. 新しい環境を選択または作成します。
-    1. 実行するスクリプトの名前を入力するか、**Enter** キーを押してローカル コンピューターのスクリプトをブラウズします。
+    1. 実行するスクリプトの名前を入力するか、 **Enter** キーを押してローカル コンピューターのスクリプトをブラウズします。
     1. (省略可能) トレーニング実行用のデータ参照を作成するかどうかを選択します。 この操作を行うと、実行構成でデータセットを定義するように求められます。
         1. 登録されているデータセットの 1 つを選択して実行構成にリンクします。エディターでデータセットの構成ファイルが開きます。 構成に問題がなければ、 **[保存して続行]** を選択するか、VS Code コマンドパレット ( **[表示] > [コマンド パレット]** ) を開いて **Azure ML:Save and Continue** と入力します。
     1. 構成に問題がなければ、 **[保存して続行]** を選択するか、VS Code コマンドパレット ( **[表示] > [コマンド パレット]** ) を開いて **Azure ML:Save and Continue** と入力します。

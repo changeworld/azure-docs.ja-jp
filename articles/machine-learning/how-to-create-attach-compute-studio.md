@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: c22593fbd1e1653efa98c760d5bbb73b03761059
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6cb455880852295d7176e813208a93919a2c14bb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708397"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318261"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning スタジオでモデルのトレーニングとデプロイのためのコンピューティング先を作成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "91708397"
 
 ## <a name="whats-a-compute-target"></a>コンピューティング先とは 
 
-Azure Machine Learning では、さまざまなリソースまたは環境でご利用のモデルをトレーニングでき、それらを総称して[__コンピューティング先__](concept-azure-machine-learning-architecture.md#compute-targets)と呼びます。 コンピューティング先は、ローカル マシンでも、Azure Machine Learning コンピューティング、Azure HDInsight、リモート仮想マシンなどのクラウド リソースでもかまいません。  [モデルをデプロイする場所と方法](how-to-deploy-and-where.md)に関するページで説明されているように、モデルのデプロイ用のコンピューティング先を作成することもできます。
+Azure Machine Learning では、さまざまなリソースまたは環境でご利用のモデルをトレーニングでき、それらを総称して [__コンピューティング先__](concept-azure-machine-learning-architecture.md#compute-targets)と呼びます。 コンピューティング先は、ローカル マシンでも、Azure Machine Learning コンピューティング、Azure HDInsight、リモート仮想マシンなどのクラウド リソースでもかまいません。  [モデルをデプロイする場所と方法](how-to-deploy-and-where.md)に関するページで説明されているように、モデルのデプロイ用のコンピューティング先を作成することもできます。
 
 ## <a name="view-compute-targets"></a><a id="portal-view"></a>コンピューティング先を表示する
 
@@ -59,11 +59,11 @@ Azure Machine Learning では、さまざまなリソースまたは環境でご
 
 1. コンピューティング先がない場合は、ページの中央にある **[作成]** を選択します。
   
-    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="コンピューティング先の一覧を表示する":::
+    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="コンピューティング先を作成する":::
 
 1. コンピューティング リソースの一覧が表示されたら、一覧の上にある **[+新規]** を選択します。
 
-    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="コンピューティング先の一覧を表示する":::
+    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="[新規] の選択":::
 
 
 1. コンピューティングの種類のフォームに入力します。
@@ -77,14 +77,14 @@ Azure Machine Learning では、さまざまなリソースまたは環境でご
 
 1. 一覧からコンピューティング先を選択することによって、作成操作の状態を表示します。
 
-    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="コンピューティング先の一覧を表示する":::
+    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="一覧からコンピューティングの状態を表示する":::
 
 
 ### <a name="compute-instance"></a>コンピューティング インスタンス
 
 [上の手順](#portal-create)を使用して、コンピューティング インスタンスを作成します。  その後、次のようにフォームに入力します。
 
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="コンピューティング先の一覧を表示する":::
+:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="新しいコンピューティング インスタンスの作成":::
 
 
 |フィールド  |説明  |
@@ -93,7 +93,7 @@ Azure Machine Learning では、さまざまなリソースまたは環境でご
 |仮想マシンのタイプ |  CPU または GPU を選択します。 このタイプは作成後に変更することはできません     |
 |仮想マシンのサイズ     |  サポートされる仮想マシンのサイズがお客様のリージョンで制限されている可能性があります。 [利用可能な製品のリスト](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)に関するページを確認してください     |
 |SSH アクセスの有効化/無効化     |   SSH アクセスは既定では無効になっています。  SSH アクセスは、 作成後に変更することはできません。 [VS Code Remote](how-to-set-up-vs-code-remote.md) を使用して対話形式でデバッグする場合は、アクセスを有効にする必要があります   |
-|詳細設定     |  省略可能。 仮想ネットワークを構成する。 **[リソース グループ]** 、 **[仮想ネットワーク]** 、および **[サブネット]** を指定して、Azure Virtual Network (vnet) 内にコンピューティング インスタンスを作成します。 詳細については、vnet でのこれらの[ネットワーク要件](how-to-enable-virtual-network.md#compute-instance)に関するページを参照してください。  |
+|詳細設定     |  省略可能。 仮想ネットワークを構成する。 **[リソース グループ]** 、 **[仮想ネットワーク]** 、および **[サブネット]** を指定して、Azure Virtual Network (vnet) 内にコンピューティング インスタンスを作成します。 詳細については、vnet でのこれらの[ネットワーク要件](./how-to-secure-training-vnet.md)に関するページを参照してください。  |
 
 ### <a name="compute-clusters"></a><a name="amlcompute"></a> コンピューティング クラスター
 
@@ -108,7 +108,7 @@ Azure Machine Learning では、さまざまなリソースまたは環境でご
 |仮想マシンのサイズ     |  サポートされる仮想マシンのサイズがお客様のリージョンで制限されている可能性があります。 [利用可能な製品のリスト](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)に関するページを確認してください     |
 |最小ノード数 | プロビジョニングするノードの最小数。 専用のノード数を指定する場合は、その数をここで設定します。 最小値を 0 に設定することにより、コストを節約できます。この場合、クラスターがアイドル状態であれば、ノードに対する課金は発生しません。 |
 |ノードの最大数 | プロビジョニングするノードの最大数。 コンピューティングは、ジョブが送信されるときにこのノードの最大数まで自動スケーリングされます。 |
-|詳細設定     |  省略可能。 仮想ネットワークを構成する。 **[リソース グループ]** 、 **[仮想ネットワーク]** 、および **[サブネット]** を指定して、Azure Virtual Network (vnet) 内にコンピューティング インスタンスを作成します。 詳細については、vnet でのこれらの[ネットワーク要件](how-to-enable-virtual-network.md#compute-instance)に関するページを参照してください。   また、リソースへのアクセスを許可するには、[マネージド ID](#managed-identity) をアタッチします。     |
+|詳細設定     |  省略可能。 仮想ネットワークを構成する。 **[リソース グループ]** 、 **[仮想ネットワーク]** 、および **[サブネット]** を指定して、Azure Virtual Network (vnet) 内にコンピューティング インスタンスを作成します。 詳細については、vnet でのこれらの[ネットワーク要件](./how-to-secure-training-vnet.md)に関するページを参照してください。   また、リソースへのアクセスを許可するには、[マネージド ID](#managed-identity) をアタッチします。     |
 
 #### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> マネージド ID を設定する
 
@@ -136,12 +136,12 @@ Azure Machine Learning では、さまざまなリソースまたは環境でご
 |仮想マシンのサイズ     |  サポートされる仮想マシンのサイズがお客様のリージョンで制限されている可能性があります。 [利用可能な製品のリスト](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)に関するページを確認してください     |
 |クラスターの目的  | **[運用]** または **[開発テスト]** を選択します。 |
 |ノードの数 | ノードの数に仮想マシンのコア数 (vCPU) を掛けた値は 12 以上である必要があります。 |
-| ネットワーク構成 | **[詳細]** を選択して、既存の仮想ネットワーク内にコンピューティングを作成します。 仮想ネットワークでの AKS の詳細については、[プライベート エンドポイントと仮想ネットワークでのトレーニング中や推論中のネットワークの分離](how-to-enable-virtual-network.md#aksvnet)に関するページを参照してください。 |
+| ネットワーク構成 | **[詳細]** を選択して、既存の仮想ネットワーク内にコンピューティングを作成します。 仮想ネットワークでの AKS の詳細については、[プライベート エンドポイントと仮想ネットワークでのトレーニング中や推論中のネットワークの分離](./how-to-secure-inferencing-vnet.md)に関するページを参照してください。 |
 | SSL 構成を有効にする | これを使用して、コンピューティングの SSL 証明書を構成します。 |
 
 ### <a name="attached-compute"></a>アタッチ型コンピューティング
 
-Azure Machine Learning ワークスペースの外部に作成されたコンピューティング先を使用するには、それらをアタッチする必要があります。 コンピューティング ターゲットをアタッチすることで、ワークスペースで利用できるようにします。  **トレーニング**のためのコンピューティング先をアタッチするには、**アタッチ型コンピューティング**を使用します。  **推論**のための AKS クラスターをアタッチするには、**推論クラスター**を使用します。
+Azure Machine Learning ワークスペースの外部に作成されたコンピューティング先を使用するには、それらをアタッチする必要があります。 コンピューティング ターゲットをアタッチすることで、ワークスペースで利用できるようにします。  **トレーニング** のためのコンピューティング先をアタッチするには、 **アタッチ型コンピューティング** を使用します。  **推論** のための AKS クラスターをアタッチするには、 **推論クラスター** を使用します。
 
 [上の手順](#portal-create)を使用して、コンピューティングをアタッチします。  その後、次のようにフォームに入力します。
 
@@ -157,8 +157,8 @@ Azure Machine Learning ワークスペースの外部に作成されたコンピ
     > [!NOTE]
     > パスワードよりも安全な SSH キーを使用することをお勧めします。 パスワードはブルート フォース攻撃に対して脆弱です。 SSH キーは暗号署名に依存します。 Azure Virtual Machines で使用するための SSH キーを作成する方法の詳細については、次のドキュメントを参照してください。
     >
-    > * [Linux または macOS で SSH キーを作成して使用する](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
-    > * [Windows で SSH キーを作成して使用する](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
+    > * [Linux または macOS で SSH キーを作成して使用する](../virtual-machines/linux/mac-create-ssh-keys.md)
+    > * [Windows で SSH キーを作成して使用する](../virtual-machines/linux/ssh-from-windows.md)
 
 1. __[接続]__ を選択します。 
 
@@ -176,4 +176,4 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 * [チュートリアル:モデルのトレーニング](tutorial-train-models-with-aml.md)に関する記事では、マネージド コンピューティング先を使用してモデルをトレーニングします。
 * より優れたモデルを構築するために、[ハイパーパラメーター](how-to-tune-hyperparameters.md)を効率的に調整する方法を学習します。
 * モデルのトレーニングが済んだら、[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)を確認します。
-* [Azure Machine Learning と Azure Virtual Network を使用する](how-to-enable-virtual-network.md)
+* [Azure Machine Learning と Azure Virtual Network を使用する](./how-to-network-security-overview.md)

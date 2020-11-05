@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: a1a09357c7f80d4af0198a33a2e0007782ef232f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91d6d15fc8855b49bece3a7ed903074e716b7ac4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905244"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319421"
 ---
 # <a name="poisson-regression"></a>ポワソン回帰
 
@@ -29,7 +29,7 @@ ms.locfileid: "90905244"
 - ポワソン分布が離散型分布であるため、このメソッドを非整数と使用することが重要でない。
 
 > [!TIP]
-> ターゲットがカウントでない場合、ポワソン回帰が適切なメソッドではない可能性が高くなります。 [デザイナーでその他の回帰モジュール](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference#machine-learning-algorithms)を試してください。 
+> ターゲットがカウントでない場合、ポワソン回帰が適切なメソッドではない可能性が高くなります。 [デザイナーでその他の回帰モジュール](./module-reference.md#machine-learning-algorithms)を試してください。 
 
 回帰メソッドを設定したら、予測する値のサンプルを含むデータセットを使用して、モデルをトレーニングする必要があります。 その後、トレーニング済みのモデルは、予測に使用できます。
 
@@ -49,7 +49,7 @@ ms.locfileid: "90905244"
 
 ## <a name="how-to-configure-poisson-regression"></a>ポワソン回帰を構成する方法
 
-1. デザイナーでパイプラインに**ポワソン回帰**モジュールを追加します。 このモジュールは、 **[Machine Learning Algorithms]\(機械学習アルゴリズム\)** の **[回帰]** カテゴリにあります。
+1. デザイナーでパイプラインに **ポワソン回帰** モジュールを追加します。 このモジュールは、 **[Machine Learning Algorithms]\(機械学習アルゴリズム\)** の **[回帰]** カテゴリにあります。
 
 2. 適切な種類のトレーニング データが含まれるデータセットを追加します。 
 
@@ -59,9 +59,9 @@ ms.locfileid: "90905244"
   
     - **Single Parameter (単一パラメーター)** : モデルの構成方法を決めている場合は、特定の値のセットを引数として渡します。
   
-    - **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわからない場合は、[[モデルのハイパーパラメーターの調整]](tune-model-hyperparameters.md) モジュールを使用してパラメーターのスイープを行います。 トレーナーは、指定された複数の値で繰り返し最適な構成を見つけます。
+    - **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわからない場合は、 [[モデルのハイパーパラメーターの調整]](tune-model-hyperparameters.md) モジュールを使用してパラメーターのスイープを行います。 トレーナーは、指定された複数の値で繰り返し最適な構成を見つけます。
   
-4. **最適化の公差**:最適化中に、公差の間隔を定義する値を入力します。 値が低いほど、学習の速度は遅くなりその正確度は高くなります。
+4. **最適化の公差** :最適化中に、公差の間隔を定義する値を入力します。 値が低いほど、学習の速度は遅くなりその正確度は高くなります。
 
 5. **[L1 正則化の重み]** と **[L2 正則化の重み]** :L1 と L2 の正則化に使用する値を入力します。 *[正則化]* では、トレーニング データに依存しない、こうしたモデルの側面に関するアルゴリズムに制約が追加されます。 正則化は通常、オーバーフィットを回避するときにも使用されます。 
 
@@ -73,9 +73,9 @@ ms.locfileid: "90905244"
 
     このモジュールでは、L1 正則化と L2 正則化の組み合わせを適用できます。 L1 と L2 の正則化を組み合わせることにより、パラメーター値の絶対値にペナルティを適用することができます。 学習器は、損失の最小化とのトレードオフにおいて、ペナルティを最小限に抑えようとします。
 
-    L1 および L2 の正則化の詳細については、「[機械学習向けの L1 および L2 正規化](https://msdn.microsoft.com/magazine/dn904675.aspx)」を参照してください。
+    L1 および L2 の正則化の詳細については、「[機械学習向けの L1 および L2 正規化](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning)」を参照してください。
 
-6. **L-BFGS のメモリ サイズ**:モデルの調整と最適化のために予約するメモリの量を指定します。
+6. **L-BFGS のメモリ サイズ** :モデルの調整と最適化のために予約するメモリの量を指定します。
 
      L-BFGS は、BFGS (Broyden–Fletcher–Goldfarb–Shanno) アルゴリズムに基づいて最適化するための特定のメソッドです。 このメソッドでは、制限されたメモリ量 (L) を使用して次のステップ指示が計算されます。
 
@@ -83,9 +83,9 @@ ms.locfileid: "90905244"
 
 7. トレーニング データセットと未トレーニング モデルをトレーニング モジュールのいずれかに接続します。 
 
-    - **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[モデルのトレーニング](train-model.md) モジュールを使用します。
+    - **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、 [モデルのトレーニング](train-model.md) モジュールを使用します。
 
-    - **[Create trainer mode]\(トレーナー モードの作成\)** を **[Parameter Range]\(パラメーター範囲\)** を設定する場合は、[[Tune Model Hyperparameters]\(モデルのハイパーパラメーターの調整\)](tune-model-hyperparameters.md) モジュールを使用します。
+    - **[Create trainer mode]\(トレーナー モードの作成\)** を **[Parameter Range]\(パラメーター範囲\)** を設定する場合は、 [[Tune Model Hyperparameters]\(モデルのハイパーパラメーターの調整\)](tune-model-hyperparameters.md) モジュールを使用します。
 
     > [!WARNING]
     > 
@@ -105,4 +105,4 @@ ms.locfileid: "90905244"
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。

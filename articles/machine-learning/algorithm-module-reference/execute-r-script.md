@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: a86c0b115ef866453e457ad528dd694ed7b49b48
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 0a3dbb42e69978a8a4895f44b57cc3ca5353e799
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330395"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323734"
 ---
 # <a name="execute-r-script-module"></a>R スクリプトの実行モジュール
 
@@ -121,7 +121,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="access-to-registered-dataset"></a>登録済みデータセットへのアクセス
 
-ワークスペースに[登録されているデータセットにアクセス](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets#access-datasets-in-your-script)するには、次のサンプル コードを参照してください。
+ワークスペースに[登録されているデータセットにアクセス](../how-to-create-register-datasets.md)するには、次のサンプル コードを参照してください。
 
 ```R
         azureml_main <- function(dataframe1, dataframe2){
@@ -505,4 +505,4 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。

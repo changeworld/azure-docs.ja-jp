@@ -10,18 +10,18 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 09/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: d462ed4627254275703d88cadbaf5d55a106da55
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1a6708214eadb2f5d0d66d72f5db5cb4a195d206
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330130"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324869"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Azure Machine Learning におけるディープ ラーニングと機械学習の違い
 
 この記事では、ディープ ラーニングと機械学習の違いとそれらが幅広い人工知能のカテゴリにどのように収まるかについて説明します。 不正行為の検出、音声と顔の認識、センチメント分析、タイムシリーズ予測など、Azure Machine Learning に基づいて構築できるディープ ラーニング ソリューションについて説明します。
 
-ご利用のソリューションにふさわしいアルゴリズムを選択する方法については、[機械学習アルゴリズムのチート シート](algorithm-cheat-sheet.md)に関するページを参照してください。
+ご利用のソリューションにふさわしいアルゴリズムを選択する方法については、[機械学習アルゴリズムのチート シート](https://docs.microsoft.com/azure/machine-learning/algorithm-cheat-sheet?WT.mc_id=docs-article-lazzeri)に関するページを参照してください。
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>ディープ ラーニング、機械学習、AI
 
@@ -29,9 +29,9 @@ ms.locfileid: "91330130"
 
 ディープラーニングと機械学習とAI の比較については、次の定義を考慮してください。
 
-- **ディープ ラーニング**は、人工ニューラル ネットワークに基づく機械学習のサブセットです。 人工ニューラル ネットワークの構造は複数の入力層、出力層、隠れ層で構成されるため、"_学習プロセス_" は "_ディープ_" です。 各層には、入力データを次の層で特定の予測タスクに使用できる情報に変換するためのユニットが含まれています。 この構造により、マシンは独自のデータ処理を通じて学習できるようになります。
+- **ディープ ラーニング** は、人工ニューラル ネットワークに基づく機械学習のサブセットです。 人工ニューラル ネットワークの構造は複数の入力層、出力層、隠れ層で構成されるため、" _学習プロセス_ " は " _ディープ_ " です。 各層には、入力データを次の層で特定の予測タスクに使用できる情報に変換するためのユニットが含まれています。 この構造により、マシンは独自のデータ処理を通じて学習できるようになります。
 
-- **機械学習**は人工知能のサブセットであり、マシンが経験を用いてタスクを向上させることができる手法 (ディープ ラーニングなど) が使用されます。 "_学習プロセス_" の基になるのは次のような手順です。
+- **機械学習** は人工知能のサブセットであり、マシンが経験を用いてタスクを向上させることができる手法 (ディープ ラーニングなど) が使用されます。 " _学習プロセス_ " の基になるのは次のような手順です。
 
    1. アルゴリズムにデータをフィードします。 (このステップでは、機能の抽出の実行などにより、モデルに追加情報を提供できます。)
    1. このデータを使用して、モデルをトレーニングします。
@@ -69,11 +69,11 @@ ms.locfileid: "91330130"
 
 ### <a name="object-detection"></a>オブジェクトの検出
 
-ディープ ラーニングは、多くのオブジェクト検出のユース ケースで適用されています。 オブジェクトの検出は、画像の分類と画像のローカライズの 2 つの部分で構成されます。 "_画像の分類_" では、車や人など、画像のオブジェクトが識別されます。 "_画像のローカライズ_" では、これらのオブジェクトの特定の場所が提供されます。 
+ディープ ラーニングは、多くのオブジェクト検出のユース ケースで適用されています。 オブジェクトの検出は、画像の分類と画像のローカライズの 2 つの部分で構成されます。 " _画像の分類_ " では、車や人など、画像のオブジェクトが識別されます。 " _画像のローカライズ_ " では、これらのオブジェクトの特定の場所が提供されます。 
 
 オブジェクト検出は、ゲーム、小売、旅行、自動運転車などの業界で既に使用されています。
 
-Azure Machine Learning でオープンソース フレームワークの画像分類モデルを使用する方法について説明します。[Pytorch モデルを使用して画像を分類する](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
+Azure Machine Learning でオープンソース フレームワークの画像分類モデルを使用する方法について説明します。[Pytorch モデルを使用して画像を分類する](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)
 
 ### <a name="image-caption-generation"></a>画像キャプションの生成
 
@@ -93,7 +93,7 @@ Azure Machine Learning でオープンソース フレームワークの画像�
 
 企業では、インサイダー取引を検出したり、政府の規制を遵守したりするために、ディープ ラーニングを使用してテキスト分析が行われます。 もう 1 つの一般的な例である保険金詐欺では、大量のドキュメントを分析して、不正な保険請求の可能性を認識するために、テキスト分析がよく使用されています。 
 
-Azure Machine Learning で TensorFlow モデルを使用する方法について説明します。[TensorFlow モデルを使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+Azure Machine Learning で TensorFlow モデルを使用する方法について説明します。[TensorFlow モデルを使用して手書きの数字を分類する](./how-to-train-tensorflow.md?WT.mc_id=docs-article-lazzeri)
 
 ## <a name="artificial-neural-networks"></a>人工ニューラル ネットワーク
 
@@ -117,8 +117,8 @@ Azure Machine Learning で TensorFlow モデルを使用する方法について
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri) には、オープンソース ディープ ラーニング モデルの使用に関連するオプションが他にもあります。次の記事でそれらを紹介します。
+[Azure Machine Learning](./index.yml?WT.mc_id=docs-article-lazzeri) には、オープンソース ディープ ラーニング モデルの使用に関連するオプションが他にもあります。次の記事でそれらを紹介します。
 
-- [TensorFlow エスティメーターと Keras を使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
+- [TensorFlow エスティメーターと Keras を使用して手書きの数字を分類する](./how-to-train-keras.md?WT.mc_id=docs-article-lazzeri)
 
-- [Chainer モデルを使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models)
+- [Chainer モデルを使用して手書きの数字を分類する](./how-to-set-up-training-targets.md)

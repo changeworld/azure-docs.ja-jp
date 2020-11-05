@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: 57108bed97b59513309213d55a0654f4405d509c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da1f73e3d31e162801e540e4d4ed5881041c4178
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90893317"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320771"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>クラウドで自動機械学習を使用してモデルをトレーニングする
 
@@ -43,9 +43,9 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>リソースを作成する
 
-まだ存在しない場合、[`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py&preserve-view=true) ターゲットをワークスペース (`ws`) に作成します。
+まだ存在しない場合、[`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?preserve-view=true&view=azure-ml-py) ターゲットをワークスペース (`ws`) に作成します。
 
-**推定所要時間**: AmlCompute ターゲットの作成には約 5 分かかります。
+**推定所要時間** : AmlCompute ターゲットの作成には約 5 分かかります。
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -90,7 +90,7 @@ else:
 
 ## <a name="access-data-using-tabulardataset-function"></a>TabularDataset 関数を使用してデータにアクセスする
 
-training_data ([`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) として) とラベルを定義しました。これらは、[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) で 自動 ML に渡されます。 `TabularDataset` メソッド `from_delimited_files` は既定で `infer_column_types` を true に設定します。これにより、自動的に列の型が推測されます。 
+training_data ([`TabularDataset`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) として) とラベルを定義しました。これらは、[`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) で 自動 ML に渡されます。 `TabularDataset` メソッド `from_delimited_files` は既定で `infer_column_types` を true に設定します。これにより、自動的に列の型が推測されます。 
 
 列の型を手動で設定する場合は、各列の型を手動で設定するように `set_column_types` 引数を設定できます。 次のコード サンプルでは、sklearn パッケージのデータが使用されています。
 
@@ -200,7 +200,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-results"></a>結果を探索する
 
-[トレーニングのチュートリアル](tutorial-auto-train-models.md#explore-the-results)で紹介したものと同じ [Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)を使用して、結果のグラフと表を表示することができます。
+[トレーニングのチュートリアル](tutorial-auto-train-models.md#explore-the-results)で紹介したものと同じ [Jupyter ウィジェット](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)を使用して、結果のグラフと表を表示することができます。
 
 ```python
 from azureml.widgets import RunDetails

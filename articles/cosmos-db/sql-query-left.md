@@ -3,18 +3,21 @@ title: Azure Cosmos DB クエリ言語の LEFT
 description: Azure Cosmos DB での SQL システム関数 LEFT について学習します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 0eac35a91e4d5158335d6797d49a09f8f6f391e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 647bee87283f26b0d1ce832b2b2aaac690c05b92
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78303751"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333734"
 ---
 # <a name="left-azure-cosmos-db"></a>LEFT (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  指定された文字数分、文字列の左側の部分を返します。  
   
 ## <a name="syntax"></a>構文

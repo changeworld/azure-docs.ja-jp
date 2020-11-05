@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 18f9af0198c7a89b607630c686fbf8dafdd01a50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72cdfe2ebe79abb9649ac497a6ecddda8918b951
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841955"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322277"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning でのコンピューティング先とは
 
-"*コンピューティング ターゲット*" とは、トレーニング スクリプトを実行したり、サービスのデプロイをホストしたりする、指定されたコンピューティング リソースまたは環境のことです。 この場所は、ローカル コンピューターでも、クラウドベースのコンピューティング リソースでもかまいません。 コンピューティング ターゲットを使用すると、コードを変更しなくても、後でコンピューティング環境を容易に変更できます。
+" *コンピューティング ターゲット* " とは、トレーニング スクリプトを実行したり、サービスのデプロイをホストしたりする、指定されたコンピューティング リソースまたは環境のことです。 この場所は、ローカル コンピューターでも、クラウドベースのコンピューティング リソースでもかまいません。 コンピューティング ターゲットを使用すると、コードを変更しなくても、後でコンピューティング環境を容易に変更できます。
 
 一般的なモデル開発ライフサイクルでは、次のことを行う可能性があります。
 
@@ -44,7 +44,7 @@ Azure Machine Learning では、異なるコンピューティング先に対し
 
 推論を実行すると、Azure Machine Learning によって、モデルおよびそれを使用するために必要な関連リソースをホストする Docker コンテナーが作成されます。 このコンテナーはその後、次のいずれかのデプロイ シナリオで使用されます。
 
-* リアルタイムの推論に使用される "*Web サービス*" として。 Web サービスのデプロイでは、次のいずれかのコンピューティング先が使用されます。
+* リアルタイムの推論に使用される " *Web サービス* " として。 Web サービスのデプロイでは、次のいずれかのコンピューティング先が使用されます。
 
     * [ローカル コンピューター](how-to-attach-compute-targets.md#local)
     * [Azure Machine Learning コンピューティング インスタンス](how-to-create-manage-compute-instance.md)
@@ -52,9 +52,9 @@ Azure Machine Learning では、異なるコンピューティング先に対し
     * [Azure Kubernetes Service](how-to-create-attach-kubernetes.md)
     * Azure Functions (プレビュー)。 Functions へのデプロイは、Azure Machine Learning のみに依存して Docker コンテナーが構築されます。 そこから、Functions を使用してデプロイされます。 詳細については、「[Azure Functions に機械学習モデルをデプロイする (プレビュー)](how-to-deploy-functions.md)」を参照してください。
 
-* データのバッチを定期的に処理するために使用される "_バッチ推論_" エンドポイントとして。 バッチ推論には、[Azure Machine Learning コンピューティング クラスター](how-to-create-attach-compute-cluster.md)が使用されます。
+* データのバッチを定期的に処理するために使用される " _バッチ推論_ " エンドポイントとして。 バッチ推論には、[Azure Machine Learning コンピューティング クラスター](how-to-create-attach-compute-cluster.md)が使用されます。
 
-* _IoT デバイス_に (プレビュー)。 IoT デバイスへのデプロイでは、Azure Machine Learning のみに依存して Docker コンテナーが構築されます。 そこから、Azure IoT Edge を使用してデプロイされます。 詳細については、[IoT Edge モジュールとしてのデプロイ (プレビュー)](/azure/iot-edge/tutorial-deploy-machine-learning) に関する記事を参照してください。
+* _IoT デバイス_ に (プレビュー)。 IoT デバイスへのデプロイでは、Azure Machine Learning のみに依存して Docker コンテナーが構築されます。 そこから、Azure IoT Edge を使用してデプロイされます。 詳細については、[IoT Edge モジュールとしてのデプロイ (プレビュー)](../iot-edge/tutorial-deploy-machine-learning.md) に関する記事を参照してください。
 
 [モデルをコンピューティング ターゲットにデプロイする場所と方法](how-to-deploy-and-where.md)に関するページを参照してください。
 
@@ -85,11 +85,11 @@ Azure Machine Learning コンピューティング インスタンスまたは�
 
 
 > [!NOTE]
-> コンピューティング "*クラスター*" がアイドル状態の場合、ノードは 0 に自動スケーリングされるため、使用されていないときは料金がかかりません。 コンピューティング" *インスタンス*" は常にオンであり、自動スケーリングされません。 追加コストを回避するには、使用していないときに[コンピューティング インスタンスを停止](how-to-create-manage-compute-instance.md#manage)します。
+> コンピューティング " *クラスター* " がアイドル状態の場合、ノードは 0 に自動スケーリングされるため、使用されていないときは料金がかかりません。 コンピューティング" *インスタンス* " は常にオンであり、自動スケーリングされません。 追加コストを回避するには、使用していないときに[コンピューティング インスタンスを停止](how-to-create-manage-compute-instance.md#manage)します。
 
 ### <a name="supported-vm-series-and-sizes"></a>サポートされている VM シリーズおよびサイズ
 
-Azure Machine Learning でマネージド コンピューティング リソースのノード サイズを選択すると、Azure で使用可能な VM サイズの中から選択できます。 Azure では、さまざまなワークロードに対応する Linux および Windows の幅広いサイズが提供されています。 詳細については、[VM の種類とサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)に関するページを参照してください。
+Azure Machine Learning でマネージド コンピューティング リソースのノード サイズを選択すると、Azure で使用可能な VM サイズの中から選択できます。 Azure では、さまざまなワークロードに対応する Linux および Windows の幅広いサイズが提供されています。 詳細については、[VM の種類とサイズ](../virtual-machines/sizes.md)に関するページを参照してください。
 
 VM サイズを選択する際には次のような例外と制限事項があります。
 
@@ -133,11 +133,11 @@ Azure Machine Learning コンピューティングにより、特定のハード
 
 *RDMA 対応
 
-分離の詳細については、「[Azure パブリック クラウドでの分離](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices)」を参照してください。
+分離の詳細については、「[Azure パブリック クラウドでの分離](../security/fundamentals/isolation-choices.md)」を参照してください。
 
 ## <a name="unmanaged-compute"></a>アンマネージド コンピューティング
 
-アンマネージド コンピューティング先は、Azure Machine Learning によって管理*されません*。 この種類のコンピューティング ターゲットは、Azure Machine Learning の外部で作成してからワークスペースに接続します。 アンマネージド コンピューティング リソースでは、機械学習ワークロードのパフォーマンスを維持するため、または向上させるために追加の手順が必要になる場合があります。
+アンマネージド コンピューティング先は、Azure Machine Learning によって管理 *されません* 。 この種類のコンピューティング ターゲットは、Azure Machine Learning の外部で作成してからワークスペースに接続します。 アンマネージド コンピューティング リソースでは、機械学習ワークロードのパフォーマンスを維持するため、または向上させるために追加の手順が必要になる場合があります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,18 +3,20 @@ title: Azure Cosmos の非パーティション分割コンテナーをパーテ
 description: 既存のすべての非パーティション分割コンテナーをパーティション分割コンテナーに移行する方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/25/2019
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 01e61abacac63d698456c3ab25826f9799d2837e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: edb6114406922d55c439ae7426a2be933bba4aee
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482283"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334091"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>非パーティション分割コンテナーをパーティション分割コンテナーに移行する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB では、パーティション キーのないコンテナーの作成がサポートされています。 現在は、Azure CLI とバージョン 2.x 以下の Azure Cosmos DB SDK (.Net、Java、NodeJs) を使って、非パーティション分割コンテナーを作成できます。 Azure portal を使って非パーティション分割コンテナーを作成することはできません。 ただし、そのような非パーティション分割コンテナーはエラスティックではなく、ストレージ容量 20 GB およびスループット制限 10 K RU/秒の固定です。
 

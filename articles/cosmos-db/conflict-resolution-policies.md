@@ -3,18 +3,20 @@ title: Azure Cosmos DB での競合解決の種類と解決ポリシー
 description: この記事では、Azure Cosmos DB の競合カテゴリと競合解決ポリシーについて説明します。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 69bc58e7d217bbd902a82a15333eee6df40a21c9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ba55d88de3a5a4087db30613b22a7d2441de9be1
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276342"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334380"
 ---
 # <a name="conflict-types-and-resolution-policies-when-using-multiple-write-regions"></a>複数の書き込みリージョンを使用する場合の競合の種類と解決ポリシー
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 競合と競合解決ポリシーは、複数の書き込みリージョンを使用して Azure Cosmos DB アカウントが構成されている場合に該当します。
 

@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/01/2020
-ms.openlocfilehash: 3470f969034a051b17e762b685a89c0f910e0cbb
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b8ca96dd0b11f7a4c76f7a954959ef5005fb4a40
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747119"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323981"
 ---
 # <a name="monitor-azure-machine-learning"></a>Azure Machine Learning の監視
 
@@ -30,9 +30,9 @@ Azure リソースに依存するクリティカルなアプリケーション�
 
 ## <a name="what-is-azure-monitor"></a>Azure Monitor とは
 
-Azure Machine Learning は [Azure Monitor](/azure/azure-monitor/overview) を使用して監視データを作成します。これは、Azure のフルスタック監視サービスです。 Azure Monitor には、Azure リソースを監視するための完全な機能セットが用意されています。 また、他のクラウドやオンプレミスのリソースも監視できます。
+Azure Machine Learning は [Azure Monitor](../azure-monitor/overview.md) を使用して監視データを作成します。これは、Azure のフルスタック監視サービスです。 Azure Monitor には、Azure リソースを監視するための完全な機能セットが用意されています。 また、他のクラウドやオンプレミスのリソースも監視できます。
 
-まず「[Azure Monitor を使用した Azure リソースの監視](/azure/azure-monitor/insights/monitor-azure-resource)」の記事にある次の概念の説明をお読みください。
+まず「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/insights/monitor-azure-resource.md)」の記事にある次の概念の説明をお読みください。
 
 - Azure Monitor とは
 - 監視に関連するコスト
@@ -43,11 +43,11 @@ Azure Machine Learning は [Azure Monitor](/azure/azure-monitor/overview) を使
 以下のセクションでは、この記事に基づき、Azure Machine Learning のために収集された特定のデータについて説明します。 これらのセクションでは、Azure ツールを使用してデータ収集を構成し、このデータを分析する例も紹介します。
 
 > [!TIP]
-> Azure Monitor に関連したコストを把握するには、[使用量と推定コスト](/azure/azure-monitor/platform/usage-estimated-costs)に関する記事を参照してください。 データが Azure Monitor に表示されるまでにかかる時間を把握するには、[ログ データのインジェスト時間](/azure/azure-monitor/platform/data-ingestion-time)に関する記事を参照してください。
+> Azure Monitor に関連したコストを把握するには、[使用量と推定コスト](../azure-monitor/platform/usage-estimated-costs.md)に関する記事を参照してください。 データが Azure Monitor に表示されるまでにかかる時間を把握するには、[ログ データのインジェスト時間](../azure-monitor/platform/data-ingestion-time.md)に関する記事を参照してください。
 
 ## <a name="monitoring-data-from-azure-machine-learning"></a>Azure Machine Learning の監視データ
 
-Azure Machine Learning は、他の Azure リソースと同じ種類の監視データを収集します。これについては、[Azure リソースの監視データ](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data-from-Azure-resources)に関する記事を参照してください。 
+Azure Machine Learning は、他の Azure リソースと同じ種類の監視データを収集します。これについては、[Azure リソースの監視データ](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)に関する記事を参照してください。 
 
 Azure Machine Learning によって作成されるログおよびメトリックの詳細なリファレンスについては、「[Azure Machine Learning 監視データのリファレンス](monitor-resource-reference.md)」を参照してください。
 
@@ -59,7 +59,7 @@ Azure Machine Learning によって作成されるログおよびメトリック
 
 リソース ログは、診断設定を作成して 1 つ以上の場所にルーティングするまでは収集および格納されません。
 
-Azure portal、CLI、または PowerShell を使用して診断設定を作成するプロセスの詳細については、「[Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する](/azure/azure-monitor/platform/diagnostic-settings)」を参照してください。 診断設定を作成するときは、収集するログのカテゴリを指定します。 Azure Machine Learning のカテゴリは、「[Azure Machine Learning 監視データのリファレンス](monitor-resource-reference.md#resource-logs)」に記載されています。
+Azure portal、CLI、または PowerShell を使用して診断設定を作成するプロセスの詳細については、「[Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する](../azure-monitor/platform/diagnostic-settings.md)」を参照してください。 診断設定を作成するときは、収集するログのカテゴリを指定します。 Azure Machine Learning のカテゴリは、「[Azure Machine Learning 監視データのリファレンス](monitor-resource-reference.md#resource-logs)」に記載されています。
 
 > [!IMPORTANT]
 > これらの設定を有効にするには、追加の Azure サービス (ストレージ アカウント、イベント ハブ、または Log Analytics) が必要であり、コストが増加する可能性があります。 推定コストを計算するには、[Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator)にアクセスしてください。
@@ -79,7 +79,7 @@ Azure Machine Learning の次のログを構成できます。
 
 ## <a name="analyzing-metrics"></a>メトリックの分析
 
-**Azure Monitor** のメニューから **[Metrics]\(メトリック\)** を開き、Azure Machine Learning のメトリックを、他の Azure サービスからのメトリックと一緒に分析することができます。 このツールの使用方法の詳細については、「[Azure メトリックス エクスプローラーの概要](/azure/azure-monitor/platform/metrics-getting-started)」を参照してください。
+**Azure Monitor** のメニューから **[Metrics]\(メトリック\)** を開き、Azure Machine Learning のメトリックを、他の Azure サービスからのメトリックと一緒に分析することができます。 このツールの使用方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../azure-monitor/platform/metrics-getting-started.md)」を参照してください。
 
 収集されるプラットフォーム メトリックの一覧については、「[Azure Machine Learning 監視データのリファレンス メトリック](monitor-resource-reference.md#metrics)」を参照してください。
 
@@ -87,7 +87,7 @@ Azure Machine Learning のすべてのメトリックは、 **Machine Learning S
 
 ![Machine Learning Service ワークスペースが選択されているメトリックス エクスプローラー](./media/monitor-azure-machine-learning/metrics.png)
 
-参考のために、[Azure Monitor でサポートされているすべてのリソース メトリック](/azure/azure-monitor/platform/metrics-supported)の一覧を確認できます。
+参考のために、[Azure Monitor でサポートされているすべてのリソース メトリック](../azure-monitor/platform/metrics-supported.md)の一覧を確認できます。
 
 ### <a name="filtering-and-splitting"></a>フィルター処理と分割
 
@@ -95,7 +95,7 @@ Azure Machine Learning のすべてのメトリックは、 **Machine Learning S
 
 また、メトリックをディメンションで分割して、メトリックのセグメントを互いに比較してどのように異なるかを視覚化することもできます。 たとえば、 **パイプラインのステップの種類** を分割して、パイプラインで使用されているステップの種類の数を確認します。
 
-フィルター処理と分割の詳細については、[Azure Monitor の高度な機能](/azure/azure-monitor/platform/metrics-charts)に関する記事をご覧ください。
+フィルター処理と分割の詳細については、[Azure Monitor の高度な機能](../azure-monitor/platform/metrics-charts.md)に関する記事をご覧ください。
 
 <a id="analyzing-log-data"></a>
 ## <a name="analyzing-logs"></a>ログの分析
@@ -111,14 +111,14 @@ Azure Monitor のログのデータはテーブルに格納され、各テーブ
 | AmlComputeJobEvent | Azure Machine Learning コンピューティングで実行されているジョブからのイベント。 |
 
 > [!IMPORTANT]
-> Azure Machine Learning のメニューから **[ログ]** を選択すると、クエリのスコープが現在のワークスペースに設定された状態で Log Analytics が開きます。 つまり、ログ クエリには、そのリソースからのデータのみが含まれます。 他のデータベースのデータや他の Azure サービスのデータを含むクエリを実行する場合は、 **Azure Monitor** のメニューから **[ログ]** を選択します。 詳細については、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](/azure/azure-monitor/log-query/scope/)」を参照してください。
+> Azure Machine Learning のメニューから **[ログ]** を選択すると、クエリのスコープが現在のワークスペースに設定された状態で Log Analytics が開きます。 つまり、ログ クエリには、そのリソースからのデータのみが含まれます。 他のデータベースのデータや他の Azure サービスのデータを含むクエリを実行する場合は、 **Azure Monitor** のメニューから **[ログ]** を選択します。 詳細については、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](../azure-monitor/log-query/scope.md)」を参照してください。
 
 ログおよびメトリックの詳細なリファレンスについては、「[Azure Machine Learning 監視データのリファレンス](monitor-resource-reference.md)」を参照してください。
 
 ### <a name="sample-kusto-queries"></a>サンプル Kusto クエリ
 
 > [!IMPORTANT]
-> [サービス名] のメニューから **[ログ]** を選択すると、クエリのスコープが現在の Azure Machine Learning ワークスペースに設定された状態で Log Analytics が開きます。 つまり、ログ クエリには、そのリソースからのデータのみが含まれます。 他のワークスペースのデータや他の Azure サービスのデータを含むクエリを実行する場合は、 **[Azure Monitor]** メニューから **[ログ]** を選択します。 詳細については、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](/azure/azure-monitor/log-query/scope/)」を参照してください。
+> [サービス名] のメニューから **[ログ]** を選択すると、クエリのスコープが現在の Azure Machine Learning ワークスペースに設定された状態で Log Analytics が開きます。 つまり、ログ クエリには、そのリソースからのデータのみが含まれます。 他のワークスペースのデータや他の Azure サービスのデータを含むクエリを実行する場合は、 **[Azure Monitor]** メニューから **[ログ]** を選択します。 詳細については、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](../azure-monitor/log-query/scope.md)」を参照してください。
 
 次に、Azure Machine Learning リソースの監視に使用できるクエリを示します。 
 
@@ -156,7 +156,7 @@ Azure Monitor のログのデータはテーブルに格納され、各テーブ
 
 ## <a name="alerts"></a>アラート
 
-Azure Machine Learning のアラートにアクセスするには、 **Azure Monitor** のメニューから **[アラート]** を開きます。 アラートの作成の詳細については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](/azure/azure-monitor/platform/alerts-metric)」を参照してください。
+Azure Machine Learning のアラートにアクセスするには、 **Azure Monitor** のメニューから **[アラート]** を開きます。 アラートの作成の詳細については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../azure-monitor/platform/alerts-metric.md)」を参照してください。
 
 次の表に、Azure Machine Learning の一般的および推奨されるメトリック アラート ルールを示します。
 
@@ -170,4 +170,4 @@ Azure Machine Learning のアラートにアクセスするには、 **Azure Mon
 
 - ログおよびメトリックのリファレンスについては、「[Azure Machine Learning 監視データのリファレンス](monitor-resource-reference.md)」を参照してください。
 - Azure Machine Learning に関連したクォータの操作については、「[Azure リソースのクォータの管理と要求](how-to-manage-quotas.md)」を参照してください。
-- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](/azure/azure-monitor/insights/monitor-azure-resource)」を参照してください。
+- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/insights/monitor-azure-resource.md)」を参照してください。

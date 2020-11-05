@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 195c334500c8c540d819e949353b34bea65b3d4f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: d96f5c0b6b1bb4a38724f53de68c9aad6608b258
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741900"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316593"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML パイプラインのステップ間でのデータの移動 (Python)
 
@@ -33,7 +33,7 @@ ms.locfileid: "92741900"
 - 永続化する `PipelineData` から新しい `Dataset` オブジェクトを作成する
 
 > [!TIP]
-> パイプライン ステップ間で一時データを渡したり、パイプラインの実行後にデータを保持したりするためのエクスペリエンスの向上は、パブリック プレビュー クラス [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) と [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) で使用できます。  これらのクラスは[試験段階の](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true#&preserve-view=truestable-vs-experimental)プレビュー機能であり、いつでも変更される可能性があります。
+> パイプライン ステップ間で一時データを渡したり、パイプラインの実行後にデータを保持したりするためのエクスペリエンスの向上は、パブリック プレビュー クラス [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) と [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) で使用できます。  これらのクラスは[試験段階の](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental)プレビュー機能であり、いつでも変更される可能性があります。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -42,7 +42,7 @@ ms.locfileid: "92741900"
 
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
 
-- [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)、または [Azure Machine Learning Studio](https://ml.azure.com/) へのアクセス。
+- [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)、または [Azure Machine Learning Studio](https://ml.azure.com/) へのアクセス。
 
 - Azure Machine Learning ワークスペース。
   
@@ -55,13 +55,13 @@ ms.locfileid: "92741900"
    ws = Workspace.from_config()
    ```
 
-- 一部の既存のデータ。 この記事では、[Azure Blob コンテナー](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)の使用方法について簡単に説明します。
+- 一部の既存のデータ。 この記事では、[Azure Blob コンテナー](../storage/blobs/storage-blobs-overview.md)の使用方法について簡単に説明します。
 
 - 省略可能:既存の機械学習パイプライン ([Azure Machine Learning SDK を使用した機械学習パイプラインの作成および実行](how-to-create-your-first-pipeline.md)に関する記事に記載されているものなど)。
 
 ## <a name="use-dataset-objects-for-pre-existing-data"></a>既存のデータに `Dataset` オブジェクトを使用する 
 
-パイプラインにデータを取り込む方法としては、[データセット](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py&preserve-view=true) オブジェクトを使用することをお勧めします。 `Dataset` オブジェクトは、ワークスペース全体で使用できる永続データを表します。
+パイプラインにデータを取り込む方法としては、[データセット](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) オブジェクトを使用することをお勧めします。 `Dataset` オブジェクトは、ワークスペース全体で使用できる永続データを表します。
 
 `Dataset` オブジェクトを作成および登録する方法は多数あります。 表形式データセットは、1つまたは複数のファイルで使用できる区切られたデータ用です。 ファイル データセットは、バイナリ データ (画像など) または解析するデータ用です。 `Dataset` オブジェクトを作成する最も簡単なプログラム的方法は、ワークスペース ストレージまたはパブリック URL で既存の Blob を使用することです。
 
@@ -81,7 +81,7 @@ cats_dogs_dataset = Dataset.File.from_files(
 
 データセットのパスをスクリプトに渡すには、`Dataset` オブジェクトの `as_named_input()` メソッドを使用します。 生成された `DatasetConsumptionConfig` オブジェクトを引数としてスクリプトに渡すか、またはパイプライン スクリプトへの `inputs` 引数を使用して、`Run.get_context().input_datasets[]` を使ってデータセットを取得することができます。
 
-名前付き入力を作成したら、アクセス モード (`as_mount()` または `as_download()`) を選択できます。 スクリプトがデータセット内のすべてのファイルを処理し、コンピューティング リソースのディスクがデータセットに対して十分な大きさである場合は、ダウンロード アクセス モードを選択することをお勧めします。 ダウンロード アクセス モードを使用すると、実行時のデータ ストリーミングのオーバーヘッドを回避できます。 スクリプトがデータセットのサブセットにアクセスする場合、またはそれがコンピューティングに対して大きすぎる場合は、マウント アクセス モードを使用します。 詳細については、「[マウントとダウンロード](https://docs.microsoft.com/azure/machine-learning/how-to-train-with-datasets#mount-vs-download)」をご覧ください
+名前付き入力を作成したら、アクセス モード (`as_mount()` または `as_download()`) を選択できます。 スクリプトがデータセット内のすべてのファイルを処理し、コンピューティング リソースのディスクがデータセットに対して十分な大きさである場合は、ダウンロード アクセス モードを選択することをお勧めします。 ダウンロード アクセス モードを使用すると、実行時のデータ ストリーミングのオーバーヘッドを回避できます。 スクリプトがデータセットのサブセットにアクセスする場合、またはそれがコンピューティングに対して大きすぎる場合は、マウント アクセス モードを使用します。 詳細については、「[マウントとダウンロード](./how-to-train-with-datasets.md#mount-vs-download)」をご覧ください
 
 データセットをパイプライン ステップに渡すには、次の手順を実行します。
 
@@ -158,7 +158,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-pipelinedata-for-intermediate-data"></a>中間データに `PipelineData` を使用する
 
-`Dataset` オブジェクトは永続データを表しますが、パイプラインのステップから出力される一時的なデータには [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) オブジェクトが使用されます。 `PipelineData` オブジェクトの有効期間は 1 つのパイプライン ステップより長くなるため、それらをパイプライン定義スクリプトで定義します。 `PipelineData` オブジェクトを作成するときは、名前と、データを格納するデータストアを指定する必要があります。 `arguments` と `outputs` の " _両方_ " の引数を使用して、`PipelineData` オブジェクトを `PythonScriptStep` に渡します。
+`Dataset` オブジェクトは永続データを表しますが、パイプラインのステップから出力される一時的なデータには [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) オブジェクトが使用されます。 `PipelineData` オブジェクトの有効期間は 1 つのパイプライン ステップより長くなるため、それらをパイプライン定義スクリプトで定義します。 `PipelineData` オブジェクトを作成するときは、名前と、データを格納するデータストアを指定する必要があります。 `arguments` と `outputs` の " _両方_ " の引数を使用して、`PipelineData` オブジェクトを `PythonScriptStep` に渡します。
 
 ```python
 
@@ -186,7 +186,7 @@ PipelineData("clean_data", datastore=def_blob_store, output_mode="upload", outpu
 > 前のスニペットは、呼び出しの形式を示しており、Microsoft のサンプルには含まれていません。 さまざまな引数を、自分のプロジェクトの値に置き換える必要があります。
 
 > [!TIP]
-> パイプライン ステップ間で中間データを渡すためのエクスペリエンスの向上は、パブリック プレビュー クラス [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) で使用できます。 `OutputFileDatasetConfig` を使用したコード例については、[2 ステップの ML パイプラインを構築する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)方法を参照してください。
+> パイプライン ステップ間で中間データを渡すためのエクスペリエンスの向上は、パブリック プレビュー クラス [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) で使用できます。 `OutputFileDatasetConfig` を使用したコード例については、[2 ステップの ML パイプラインを構築する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)方法を参照してください。
 
 
 ### <a name="use-pipelinedata-as-outputs-of-a-training-step"></a>トレーニング ステップの出力として `PipelineData` を使用する
@@ -202,7 +202,7 @@ with open(args.output_path, 'w') as f:
     f.write("Step 1's output")
 ```
 
-`is_directory` 引数を `True` に設定して `PipelineData` を作成した場合、`os.makedirs()` の呼び出しを実行するだけで十分であり、その後、パスに任意のファイルを自由に書き込むことができます。 詳しくは、[PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) のリファレンス ドキュメントをご覧ください。
+`is_directory` 引数を `True` に設定して `PipelineData` を作成した場合、`os.makedirs()` の呼び出しを実行するだけで十分であり、その後、パスに任意のファイルを自由に書き込むことができます。 詳しくは、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) のリファレンス ドキュメントをご覧ください。
 
 
 ### <a name="read-pipelinedata-as-inputs-to-non-initial-steps"></a>最初以外のステップへの入力として `PipelineData` を読み取る
@@ -240,7 +240,7 @@ pipeline = Pipeline(workspace=ws, steps=[step1, step2])
 > 前のスニペットは、呼び出しの形式を示しており、Microsoft のサンプルには含まれていません。 さまざまな引数を、自分のプロジェクトの値に置き換える必要があります。
 
 > [!TIP]
-> パイプライン ステップ間で中間データを渡すためのエクスペリエンスの向上は、パブリック プレビュー クラス [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) で使用できます。 `OutputFileDatasetConfig` を使用したコード例については、[2 ステップの ML パイプラインを構築する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)方法を参照してください。
+> パイプライン ステップ間で中間データを渡すためのエクスペリエンスの向上は、パブリック プレビュー クラス [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) で使用できます。 `OutputFileDatasetConfig` を使用したコード例については、[2 ステップの ML パイプラインを構築する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)方法を参照してください。
 
 前に示したように、最初のステップで 1 つのファイルを書き込んだ場合、それは次のように使用されます。 
 
@@ -262,7 +262,7 @@ step1_output_ds.register(name="processed_data", create_new_version=True)
 
 ```
 > [!TIP]
-> パイプライン実行の外部に中間データを保持するためのエクスペリエンスの向上は、パブリック プレビュー クラス [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) で使用できます。 `OutputFileDatasetConfig` を使用したコード例については、[2 ステップの ML パイプラインを構築する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)方法を参照してください。
+> パイプライン実行の外部に中間データを保持するためのエクスペリエンスの向上は、パブリック プレビュー クラス [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) で使用できます。 `OutputFileDatasetConfig` を使用したコード例については、[2 ステップの ML パイプラインを構築する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)方法を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

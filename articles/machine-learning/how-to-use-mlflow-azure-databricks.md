@@ -11,18 +11,18 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: c6bcf6f228049c4f5c4d1cd0d22cb69fb9677c1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e72784dbdcf08d672a8498609ca3a5bbd11e632d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91340422"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319035"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>MLflow と Azure Machine Learning を使用した Azure Databricks ML 実験の追跡 (プレビュー)
 
 この記事では、MLflow の追跡 URI とログ API (まとめて [MLflow Tracking](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api) と呼ばれる) を有効にして、Azure Databricks (ADB) 実験、MLflow、および Azure Machine Learning を接続する方法について説明します。
 
-[MLflow](https://www.mlflow.org) は、機械学習の実験のライフ サイクルを管理するためのオープンソース ライブラリです。 MLflow Tracking は、トレーニング実行のメトリックとモデル成果物のログ記録と追跡を行う、MLflow のコンポーネントです。 [Azure Databricks と MLflow](https://docs.microsoft.com/azure/databricks/applications/mlflow/)の詳細を参照してください。 
+[MLflow](https://www.mlflow.org) は、機械学習の実験のライフ サイクルを管理するためのオープンソース ライブラリです。 MLflow Tracking は、トレーニング実行のメトリックとモデル成果物のログ記録と追跡を行う、MLflow のコンポーネントです。 [Azure Databricks と MLflow](/azure/databricks/applications/mlflow/)の詳細を参照してください。 
 
 MLflow と Azure Machine Learning のその他の機能統合については、[MLflow と Azure Machine Learning を使用して実験の実行を追跡し、エンドポイントを作成する](how-to-use-mlflow.md)方法に関するページを参照してください。
 
@@ -35,8 +35,8 @@ MLflow と Azure Machine Learning のその他の機能統合については、[
 ## <a name="prerequisites"></a>前提条件
 
 * `azureml-mlflow` パッケージをインストールします。 
-    * このパッケージからは自動的に、MLflow がワークスペースにアクセスするための接続を提供する、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) の `azureml-core` が持ち込まれます。
-* [Azure Databricks ワークスペースおよびクラスター](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)。
+    * このパッケージからは自動的に、MLflow がワークスペースにアクセスするための接続を提供する、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) の `azureml-core` が持ち込まれます。
+* [Azure Databricks ワークスペースおよびクラスター](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)。
 * [Azure Machine Learning ワークスペースを作成](how-to-manage-workspace.md)します。
 
 ## <a name="track-azure-databricks-runs"></a>Azure Databricks の実行を追跡する
@@ -134,7 +134,7 @@ mlflow.set_experiment(experimentName)
 
 ### <a name="set-mlflow-tracking-to-only-track-in-your-azure-machine-learning-workspace"></a>ご利用の Azure Machine Learning ワークスペースでのみ追跡するように MLflow Tracking を設定する
 
-追跡対象の実験を 1 か所で管理する場合は、Azure Machine Learning ワークスペースで**のみ**追跡するように MLflow 追跡を設定できます。 
+追跡対象の実験を 1 か所で管理する場合は、Azure Machine Learning ワークスペースで **のみ** 追跡するように MLflow 追跡を設定できます。 
 
 次のコードをスクリプトに含めます。
 
@@ -156,9 +156,9 @@ mlflow.log_metric('epoch_loss', loss.item())
 
 バックエンド追跡サーバーは、既定では Azure Databricks ワークスペースです。ただし、[Azure Machine Learning ワークスペースでのみ追跡するように MLflow Tracking を設定](#set-mlflow-tracking-to-only-track-in-your-azure-machine-learning-workspace)することを選択した場合は除外されます。その場合、バックエンド追跡サーバーは Azure Machine Learning ワークスペースになります。   
 
-* **名前付きの登録済みモデルが存在しない場合**、メソッドにより新しいモデルが登録され、バージョン 1 が作成され、MLflow オブジェクト ModelVersion が返されます。 
+* **名前付きの登録済みモデルが存在しない場合** 、メソッドにより新しいモデルが登録され、バージョン 1 が作成され、MLflow オブジェクト ModelVersion が返されます。 
 
-* **名前付きの登録済みモデルが既にある場合**は、メソッドにより新しいモデル バージョンが作成され、バージョン オブジェクトが返されます。 
+* **名前付きの登録済みモデルが既にある場合** は、メソッドにより新しいモデル バージョンが作成され、バージョン オブジェクトが返されます。 
 
 ```python
 mlflow.spark.log_model(model, artifact_path = "model", 
@@ -234,4 +234,4 @@ display(preds)
 
 * [モデルを管理します](concept-model-management-and-deployment.md)。
 * [MLflow と Azure Machine Learning を使用して実験の実行を追跡し、エンドポイントを作成します](how-to-use-mlflow.md)。 
-* [Azure Databricks と MLflow](https://docs.microsoft.com/azure/databricks/applications/mlflow/)の詳細を参照してください。
+* [Azure Databricks と MLflow](/azure/databricks/applications/mlflow/)の詳細を参照してください。

@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2020
-ms.openlocfilehash: edd2b3e02c1a768b1f18a62faaf9b59539b92774
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: be8d6ca79a43ddd2bd709390dd476cb9dcfa7b29
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739151"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323945"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Azure Machine Learning データの監視のリファレンス
 
@@ -22,7 +22,7 @@ ms.locfileid: "92739151"
 
 ## <a name="metrics"></a>メトリック
 
-このセクションには、Azure Machine Learning 用に自動的に収集されたすべてのプラットフォーム メトリックが一覧表示されています。 これらのメトリックのリソース プロバイダーは、[Microsoft.MachineLearningServices/workspaces](/azure/azure-monitor/platform/metrics-supported#microsoftmachinelearningservicesworkspaces) です。
+このセクションには、Azure Machine Learning 用に自動的に収集されたすべてのプラットフォーム メトリックが一覧表示されています。 これらのメトリックのリソース プロバイダーは、[Microsoft.MachineLearningServices/workspaces](../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces) です。
 
 **Model**
 
@@ -73,7 +73,7 @@ ms.locfileid: "92739151"
 
 ## <a name="metric-dimensions"></a>メトリック ディメンション
 
-メトリック ディメンションの詳細については、「[多次元メトリック](/azure/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics)」を参照してください。
+メトリック ディメンションの詳細については、「[多次元メトリック](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics)」を参照してください。
 
 Azure Machine Learning では、次のディメンションがメトリックに関連付けられています。
 
@@ -87,7 +87,7 @@ Azure Machine Learning では、次のディメンションがメトリックに
 | NodeId | ジョブが実行されている場所で作成されたノードの ID。 CpuUtilization と GpuUtilization でのみ使用できます。 |
 | RunId | 実行/ジョブの ID。 CpuUtilization と GpuUtilization でのみ使用できます。 |
 | ComputeType | 実行で使用されるコンピューティングの種類。 完了した実行、失敗した実行、および開始された実行に対してのみ使用できます。 |
-| PipelineStepType | 実行で使用される [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py&preserve-view=true) の種類。 完了した実行、失敗した実行、および開始された実行に対してのみ使用できます。 |
+| PipelineStepType | 実行で使用される [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?preserve-view=true&view=azure-ml-py) の種類。 完了した実行、失敗した実行、および開始された実行に対してのみ使用できます。 |
 | PublishedPipelineId | 実行で使用される公開済みパイプラインの ID。 完了した実行、失敗した実行、および開始された実行に対してのみ使用できます。 |
 | RunType | 実行の種類。 完了した実行、失敗した実行、および開始された実行に対してのみ使用できます。 |
 
@@ -116,7 +116,7 @@ RunType ディメンションの有効な値は次のとおりです。
 
 このセクションでは、Azure Machine Learning ワークスペース用に収集できるリソース ログの種類を示します。
 
-リソース プロバイダーと種類:[Microsoft.MachineLearningServices/workspace](/azure/azure-monitor/platform/resource-logs-categories#microsoftmachinelearningservicesworkspaces)。
+リソース プロバイダーと種類:[Microsoft.MachineLearningServices/workspace](../azure-monitor/platform/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces)。
 
 | カテゴリ | 表示名 |
 | ----- | ----- |
@@ -231,4 +231,4 @@ RunType ディメンションの有効な値は次のとおりです。
 ## <a name="see-also"></a>関連項目
 
 - Azure Machine Learning の説明については、「[Azure Machine Learning の監視](monitor-azure-machine-learning.md)」を参照してください。
-- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](/azure/azure-monitor/insights/monitor-azure-resource)」を参照してください。
+- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/insights/monitor-azure-resource.md)」を参照してください。

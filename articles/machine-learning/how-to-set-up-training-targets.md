@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 53d821809820b11a9a126a826db79726dd43e382
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8280af20d63da969504cda8ffe875405d4bf0218
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708239"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324716"
 ---
 # <a name="configure-and-submit-training-runs"></a>トレーニングの実行を構成して送信する
 
@@ -24,25 +24,25 @@ ms.locfileid: "91708239"
 
 トレーニングの場合は、ローカル コンピューター上で開始し、後でクラウドベースのクラスターにスケール アウトするのが一般的です。 Azure Machine Learning では、トレーニング スクリプトを変更しなくても、さまざまなコンピューティング先でスクリプトを実行できます。
 
-必要なのは、**スクリプト実行構成**内で各コンピューティング先の環境を定義することだけです。  その後、異なるコンピューティング先でトレーニング実験を実行するときは、そのコンピューティングの実行構成を指定します。
+必要なのは、 **スクリプト実行構成** 内で各コンピューティング先の環境を定義することだけです。  その後、異なるコンピューティング先でトレーニング実験を実行するときは、そのコンピューティングの実行構成を指定します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を試してください
-* [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) (1.13.0 以降)
+* [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (1.13.0 以降)
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)、`ws`
 * コンピューティング先、`my_compute_target`。  [コンピューティング ターゲットを作成する](how-to-create-attach-compute-studio.md) 
 
 ## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>スクリプト実行構成とは
-[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) は、トレーニングの実行を実験の一部として送信するのに必要な情報を構成するために使用されます。
+[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) は、トレーニングの実行を実験の一部として送信するのに必要な情報を構成するために使用されます。
 
 ScriptRunConfig オブジェクトを使用して、トレーニング実験を送信します。  このオブジェクトには以下のものが含まれます。
 
-* **source_directory**:トレーニング スクリプトが格納されているソース ディレクトリ
-* **script**:実行するトレーニング スクリプト
-* **compute_target**: 実行が行われるコンピューティング ターゲット
-* **環境**: スクリプトを実行する場合に使用する環境
-* および、いくつかの構成可能な追加のオプション (詳細については、該当する[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)を参照してください)
+* **source_directory** :トレーニング スクリプトが格納されているソース ディレクトリ
+* **script** :実行するトレーニング スクリプト
+* **compute_target** : 実行が行われるコンピューティング ターゲット
+* **環境** : スクリプトを実行する場合に使用する環境
+* および、いくつかの構成可能な追加のオプション (詳細については、該当する[リファレンス ドキュメント](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)を参照してください)
 
 ## <a name="train-your-model"></a><a id="submit"></a>モデルをトレーニングする
 
@@ -79,7 +79,7 @@ experiment = Experiment(workspace=ws, name=experiment_name)
 ## <a name="create-an-environment"></a>環境の作成
 Azure Machine Learning [環境](concept-environments.md)は、機械学習トレーニングが行われる環境をカプセル化したものです。 そこでは、トレーニングとスコアリングのスクリプトに関連する、Python パッケージ、Docker イメージ、環境変数、およびソフトウェア設定が指定されます。 また、実行時間 (Python、Spark、または Docker) も指定されます。
 
-独自の環境を定義することも、Azure ML のキュレーションされた環境を使用することもできます。 [キュレーションされた環境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments#use-a-curated-environment)とは、ワークスペース内で既定で使用できる定義済みの環境です。 これらの環境は、キャッシュされた Docker イメージでバックアップされ、実行の準備コストを下げます。 利用可能なキュレーション環境の完全な一覧については、「[Azure Machine Learning のキュレーションされた環境](https://docs.microsoft.com/azure/machine-learning/resource-curated-environments)」を参照してください。
+独自の環境を定義することも、Azure ML のキュレーションされた環境を使用することもできます。 [キュレーションされた環境](./how-to-use-environments.md#use-a-curated-environment)とは、ワークスペース内で既定で使用できる定義済みの環境です。 これらの環境は、キャッシュされた Docker イメージでバックアップされ、実行の準備コストを下げます。 利用可能なキュレーション環境の完全な一覧については、「[Azure Machine Learning のキュレーションされた環境](./resource-curated-environments.md)」を参照してください。
 
 リモート コンピューティング先の場合は、一般的なキュレーション環境のいずれかを使用して開始できます。
 
@@ -94,7 +94,7 @@ myenv = Environment.get(workspace=ws, name="AzureML-Minimal")
   
 ### <a name="local-compute-target"></a><a name="local"></a>ローカル コンピューティング先
 
-コンピューティング先が**ローカル コンピューター**である場合は、スクリプトが実行される Python 環境で、必要なすべてのパッケージが使用できることをユーザー自身で確認する必要があります。  `python.user_managed_dependencies` を使用すると、現在の Python 環境 (または指定したパス上の Python) を使用できます。
+コンピューティング先が **ローカル コンピューター** である場合は、スクリプトが実行される Python 環境で、必要なすべてのパッケージが使用できることをユーザー自身で確認する必要があります。  `python.user_managed_dependencies` を使用すると、現在の Python 環境 (または指定したパス上の Python) を使用できます。
 
 ```python
 from azureml.core import Environment
@@ -130,12 +130,12 @@ script_run_config.run_config.target = my_compute_target
 実行に対する既定の最大許容時間をオーバーライドしたい場合は、 **`max_run_duration_seconds`** パラメーターを使用してそれを行うことができます。 この値よりも時間がかかる場合は、システムによって自動的に実行のキャンセルが試みられます。
 
 ### <a name="specify-a-distributed-job-configuration"></a>分散ジョブの構成を指定する
-分散トレーニング ジョブを実行する場合は、分散ジョブ固有の構成を **`distributed_job_config`** パラメーターに指定します。 サポートされている構成の種類には、[MpiConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true)、[TensorflowConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true)、および [PyTorchConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?view=azure-ml-py&preserve-view=true) があります。 
+分散トレーニング ジョブを実行する場合は、分散ジョブ固有の構成を **`distributed_job_config`** パラメーターに指定します。 サポートされている構成の種類には、[MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py)、[TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py)、および [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) があります。 
 
 Horovod、TensorFlow、PyTorch の各分散ジョブの実行の詳細と例については、以下を参照してください。
 
-* [TensorFlow モデルをトレーニングする](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow#distributed-training)
-* [PyTorch モデルをトレーニングする](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch#distributed-training)
+* [TensorFlow モデルをトレーニングする](./how-to-train-tensorflow.md#distributed-training)
+* [PyTorch モデルをトレーニングする](./how-to-train-pytorch.md#distributed-training)
 
 ## <a name="submit-the-experiment"></a>実験を送信する
 
@@ -158,7 +158,7 @@ run.wait_for_completion(show_output=True)
 >
 > 同様に、トレーニング実行のログを `./logs` フォルダーに書き込むこともできます。 Azure Machine Learning の [ TensorBoard 統合](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/tensorboard/export-run-history-to-tensorboard/export-run-history-to-tensorboard.ipynb)を利用するには､このフォルダーに TensorBoard のログを書き込むようにします｡ 実行中に、TensorBoard を起動して、それらログをストリーミングできます｡  過去のどの実行についても､後でログを復元することができます。
 >
-> たとえば､リモート トレーニングの実行後に *outputs*フォルダーに書き込まれたファイルをローカル コンピューターには､次のコードを使用します。 `run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
+> たとえば､リモート トレーニングの実行後に *outputs* フォルダーに書き込まれたファイルをローカル コンピューターには､次のコードを使用します。 `run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
 
 ## <a name="git-tracking-and-integration"></a><a id="gitintegration"></a>Git の追跡と統合
 
@@ -179,5 +179,5 @@ run.wait_for_completion(show_output=True)
 * [Scikit-learn](how-to-train-scikit-learn.md)、[TensorFlow](how-to-train-tensorflow.md)、[PyTorch](how-to-train-pytorch.md) など、特定の ML フレームワークを使用してモデルをトレーニングする方法を参照してください。
 * より優れたモデルを構築するために、[ハイパーパラメーター](how-to-tune-hyperparameters.md)を効率的に調整する方法を学習します。
 * モデルのトレーニングが済んだら、[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)を確認します。
-* [ScriptRunConfig クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) SDK リファレンスを表示します。
-* [Azure Machine Learning と Azure Virtual Network を使用する](how-to-enable-virtual-network.md)
+* [ScriptRunConfig クラス](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) SDK リファレンスを表示します。
+* [Azure Machine Learning と Azure Virtual Network を使用する](./how-to-network-security-overview.md)

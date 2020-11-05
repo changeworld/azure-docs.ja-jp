@@ -3,18 +3,21 @@ title: Azure Cosmos DB クエリ言語の ST_ISVALID
 description: Azure Cosmos DB の SQL システム関数 ST_ISVALID について説明します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8fbddbe82ae13585b8259a66dffaeef8024baf5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b20e57672e86c2b5a6a2a25151d779ea7bc92f3
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71349366"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335162"
 ---
 # <a name="st_isvalid-azure-cosmos-db"></a>ST_ISVALID (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  指定された GeoJSON Point、Polygon、または LineString 式が有効かどうかを示すブール値を返します。  
   
 ## <a name="syntax"></a>構文

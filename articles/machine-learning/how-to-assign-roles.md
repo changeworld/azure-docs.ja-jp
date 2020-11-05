@@ -11,16 +11,16 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18, devx-track-azurecli
-ms.openlocfilehash: cba01684457c8b3a7f6c8c51c7d202bf8963658e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: aa84d7cce09b370ab35ef67029f4dbe2ca29cabb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736613"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320839"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへのアクセスの管理
 
-この記事では、Azure Machine Learning ワークスペースへのアクセスを管理する方法について説明します。 Azure リソースへのアクセスの管理には、[Azure ロールベースのアクセス制御 (Azure RBAC)](/azure/role-based-access-control/overview) が使用されます。 Azure Active Directory のユーザーには、リソースへのアクセス権を付与する特定のロールが割り当てられます。 Azure には、組み込みロールと、カスタム ロールを作成する機能の両方が用意されています。
+この記事では、Azure Machine Learning ワークスペースへのアクセスを管理する方法について説明します。 Azure リソースへのアクセスの管理には、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) が使用されます。 Azure Active Directory のユーザーには、リソースへのアクセス権を付与する特定のロールが割り当てられます。 Azure には、組み込みロールと、カスタム ロールを作成する機能の両方が用意されています。
 
 ## <a name="default-roles"></a>既定のロール
 
@@ -34,18 +34,18 @@ Azure Machine Learning ワークスペースは Azure リソースの 1 つで�
 | **カスタム ロール** | ワークスペース内の特定のコントロールまたはデータ プレーン操作へのアクセスをカスタマイズできます。 たとえば、実行の送信、コンピューティングの作成、モデルの配置、データセットの登録などです。 |
 
 > [!IMPORTANT]
-> ロール アクセス権は、Azure の複数のレベルにスコープ指定できます。 たとえば、ワークスペースへの所有者アクセス権を持つユーザーであっても、そのワークスペースが含まれるリソース グループへの所有者アクセス権を持っていないことがあります。 詳細については、「[Azure RBAC のしくみ](/azure/role-based-access-control/overview#how-azure-rbac-works)」を参照してください。
+> ロール アクセス権は、Azure の複数のレベルにスコープ指定できます。 たとえば、ワークスペースへの所有者アクセス権を持つユーザーであっても、そのワークスペースが含まれるリソース グループへの所有者アクセス権を持っていないことがあります。 詳細については、「[Azure RBAC のしくみ](../role-based-access-control/overview.md#how-azure-rbac-works)」を参照してください。
 
-特定の組み込みロールの詳細については、「[Azure の組み込みロール](/azure/role-based-access-control/built-in-roles)」を参照してください。
+特定の組み込みロールの詳細については、「[Azure の組み込みロール](../role-based-access-control/built-in-roles.md)」を参照してください。
 
 ## <a name="manage-workspace-access"></a>ワークスペース アクセスの管理
 
 ワークスペースの所有者は、ワークスペースのロールを追加および削除できます。 ユーザーにロールを割り当てることもできます。 アクセスを管理する方法を確認するには、次のリンクを使用します。
-- [Azure portal UI](/azure/role-based-access-control/role-assignments-portal)
-- [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
-- [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
-- [REST API](/azure/role-based-access-control/role-assignments-rest)
-- [Azure リソース マネージャーのテンプレート](/azure/role-based-access-control/role-assignments-template)
+- [Azure portal UI](../role-based-access-control/role-assignments-portal.md)
+- [PowerShell](../role-based-access-control/role-assignments-powershell.md)
+- [Azure CLI](../role-based-access-control/role-assignments-cli.md)
+- [REST API](../role-based-access-control/role-assignments-rest.md)
+- [Azure リソース マネージャーのテンプレート](../role-based-access-control/role-assignments-template.md)
 
 [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) をインストール済みの場合は、CLI コマンドを使用してユーザーにロールを割り当てることができます。
 
@@ -65,7 +65,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 
 ## <a name="azure-machine-learning-operations"></a>Azure Machine Learning の操作
 
-多くの操作とタスクのための Azure Machine Learning の組み込みアクションがあります。 完全な一覧については、[Azure リソース プロバイダーの操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)に関するページを参照してください。
+多くの操作とタスクのための Azure Machine Learning の組み込みアクションがあります。 完全な一覧については、[Azure リソース プロバイダーの操作](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices)に関するページを参照してください。
 
 ## <a name="mlflow-operations-in-azure-machine-learning"></a>Azure Machine Learning での MLflow 操作
 
@@ -135,7 +135,7 @@ az role definition create --role-definition data_scientist_role.json
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
-カスタム ロールの詳細については、「[Azure カスタム ロール](/azure/role-based-access-control/custom-roles)」を参照してください。 カスタム ロールで使用できる操作 (アクションとアクション以外) の詳細については、「[リソース プロバイダー操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)」を参照してください。
+カスタム ロールの詳細については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。 カスタム ロールで使用できる操作 (アクションとアクション以外) の詳細については、「[リソース プロバイダー操作](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices)」を参照してください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -165,7 +165,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
 ### <a name="q-are-we-publishing-azure-built-in-roles-for-the-machine-learning-service"></a>Q. Machine Learning service に対して Azure 組み込みロールを公開していますか?
 
-現在、Machine Learning service 用の [Azure 組み込みロール](/azure/role-based-access-control/built-in-roles)は公開していません。 一度公開された組み込みロールは更新できません。お客様のシナリオとフィードバックに基づいてロールの定義を確定しています。 
+現在、Machine Learning service 用の [Azure 組み込みロール](../role-based-access-control/built-in-roles.md)は公開していません。 一度公開された組み込みロールは更新できません。お客様のシナリオとフィードバックに基づいてロールの定義を確定しています。 
 
 <a id="customroles"></a>
 
@@ -419,7 +419,7 @@ Azure CLI で、次のコマンドを実行します。
 az provider operation show –n Microsoft.MachineLearningServices
 ```
 
-これらは、[リソース プロバイダー操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)の一覧にもあります。
+これらは、[リソース プロバイダー操作](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices)の一覧にもあります。
 
 
 ### <a name="q-what-are-some-common-gotchas-when-using-azure-rbac"></a>Q. Azure RBAC を使用する場合の一般的な注意事項は何ですか?
@@ -427,18 +427,18 @@ az provider operation show –n Microsoft.MachineLearningServices
 Azure ロールベースのアクセス制御 (Azure RBAC) を使用している間は、次の点に注意する必要があります。
 
 - ワークスペースなど、Azure でリソースを作成する場合、ワークスペースの直接の所有者ではありません。 ロールは、そのサブスクリプションで承認されている最も高いスコープのロールから継承されます。 例として、Machine Learning ワークスペースを作成するアクセス許可を持っているネットワーク管理者の場合、そのワークスペースに対して、所有者ロールではなく、ネットワーク管理者ロールが割り当てられます。
-- 同じ Azure Active Directory ユーザーに 2 つのロールの割り当てがあり、Actions/NotActions のセクションが競合している場合、あるロールの NotActions に一覧表示されている操作は、他のロールで Actions としても一覧表示されている場合、有効にならない可能性があります。 Azure がロールの割り当てを解析する方法の詳細については、「[ユーザーがリソースへのアクセス権を持っているどうかを Azure RBAC が特定する方法](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource)」を参照してください。
+- 同じ Azure Active Directory ユーザーに 2 つのロールの割り当てがあり、Actions/NotActions のセクションが競合している場合、あるロールの NotActions に一覧表示されている操作は、他のロールで Actions としても一覧表示されている場合、有効にならない可能性があります。 Azure がロールの割り当てを解析する方法の詳細については、「[ユーザーがリソースへのアクセス権を持っているどうかを Azure RBAC が特定する方法](../role-based-access-control/overview.md#how-azure-rbac-determines-if-a-user-has-access-to-a-resource)」を参照してください。
 - VNet 内にコンピューティング リソースをデプロイするには、次のアクションのアクセス許可を明示的に付与する必要があります。
     - VNet リソース上の "Microsoft.Network/virtualNetworks/join/action"。
     - サブネット リソース上の "Microsoft.Network/virtualNetworks/subnet/join/action"。
     
-    ネットワークでの Azure RBAC の詳細については、[ネットワークの組み込みロール](/azure/role-based-access-control/built-in-roles#networking)に関するページを参照してください。
+    ネットワークでの Azure RBAC の詳細については、[ネットワークの組み込みロール](../role-based-access-control/built-in-roles.md#networking)に関するページを参照してください。
 
 - 新しいロールの割り当てがスタック全体のキャッシュされたアクセス許可に対して有効になるには、最大で 1 時間かかることがあります。
 
 ### <a name="q-what-permissions-do-i-need-to-use-a-user-assigned-managed-identity-with-my-amlcompute-clusters"></a>Q. ユーザー割り当てのマネージド ID を Amlcompute クラスターで使用するには、どのようなアクセス許可が必要ですか?
 
-Amlcompute クラスターでユーザー割り当て ID を割り当てるには、コンピューティングを作成するための書き込みアクセス許可と、[マネージド ID オペレーター ロール](/azure/role-based-access-control/built-in-roles#managed-identity-operator)を持っている必要があります。 マネージド ID を使用した Azure RBAC の詳細については、[ユーザー割り当て ID の管理方法](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)に関するページを参照してください。
+Amlcompute クラスターでユーザー割り当て ID を割り当てるには、コンピューティングを作成するための書き込みアクセス許可と、[マネージド ID オペレーター ロール](../role-based-access-control/built-in-roles.md#managed-identity-operator)を持っている必要があります。 マネージド ID を使用した Azure RBAC の詳細については、[ユーザー割り当て ID の管理方法](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)に関するページを参照してください。
 
 
 ### <a name="q-do-we-support-role-based-access-control-on-the-studio-portal"></a>Q. Studio ポータルでロールベースのアクセス制御はサポートされていますか?
@@ -480,4 +480,4 @@ az role definition update --role-definition update_def.json --subscription <sub-
 - [エンタープライズ セキュリティの概要](concept-enterprise-security.md)
 - [仮想ネットワークの分離とプライバシーの概要](how-to-network-security-overview.md)
 - [チュートリアル:モデルをトレーニングする](tutorial-train-models-with-aml.md)
-- [リソース プロバイダー操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)
+- [リソース プロバイダー操作](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices)

@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: c9cfe05b6547cbdc61a1c8cc6223f08900cf09d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a588195f2095b2d0cb261e1573eeb9ec881f2fd
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91339677"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322844"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (クラシック) Web サービスをデプロイする
 
-**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 Azure Machine Learning Studio (クラシック) を使用すると、予測分析ソリューションを構築してテストできます。 その後、Web サービスとしてソリューションをデプロイできます。
@@ -36,7 +36,7 @@ BES への入力は、RRS で使用されるデータ入力と似ています。
 
 * **[トレーニング実験を作成する]** - Studio (クラシック) では、供給するトレーニング データを活用した予測分析モデルを、大規模な組み込みの機械学習アルゴリズムを使用して、トレーニングおよびテストできます。
 * **[予測実験に変換する]** - 既存のデータでモデルが学習され、それを使用して新しいデータをスコア付けする準備ができると、予測用に実験を用意し、合理化します。
-* これを**[新しい Web サービス]** または**[従来の Web サービス]** として**デプロイ**する - Azure Web サービスとして予測実験をデプロイすると、ユーザーはデータをモデルに送信して、モデルの予測を受信できるようになります。
+* これを **[新しい Web サービス]** または **[従来の Web サービス]** として **デプロイ** する - Azure Web サービスとして予測実験をデプロイすると、ユーザーはデータをモデルに送信して、モデルの予測を受信できるようになります。
 
 ## <a name="create-a-training-experiment"></a>トレーニング実験を作成する
 
@@ -67,7 +67,7 @@ BES への入力は、RRS で使用されるデータ入力と似ています。
 ![スコア付け実験に変換する](./media/publish-a-machine-learning-web-service/figure-1.png)
 
 ### <a name="set-up-web-service-button"></a>[Web サービスの設定] ボタン
-(実験キャンバスの下部にある **[実行]** をクリックして) 実験を実行したら、(**[予測 Web サービス]** オプションを選択して)**[Web サービスの設定]** ボタンをクリックします。 **[Web サービスの設定]** によって、トレーニング実験を予測実験に変換する次の 3 つの手順が実行されます。
+(実験キャンバスの下部にある **[実行]** をクリックして) 実験を実行したら、( **[予測 Web サービス]** オプションを選択して) **[Web サービスの設定]** ボタンをクリックします。 **[Web サービスの設定]** によって、トレーニング実験を予測実験に変換する次の 3 つの手順が実行されます。
 
 1. トレーニング済みのモデルを、(実験キャンバスの左側にある) モジュール パレットの **[トレーニング済みのモデル]** セクションに保存します。 次に、機械学習アルゴリズムと[モデルのトレーニング][train-model] モジュールを、保存したトレーニング済みのモデルに置き換えます。
 2. 実験が分析され、明らかにトレーニングのためにのみ使用されて不要になったモジュールが削除されます。
@@ -83,7 +83,7 @@ BES への入力は、RRS で使用されるデータ入力と似ています。
 
 トレーニング実験を予測実験に変換すると、これらのモジュールの一部は不要になったり、別の役割を果たすようになります。
 
-* **データ**- このサンプル データセット内のデータは、スコア付け中には使用されません。Web サービスのユーザーは、スコア付けするデータを指定します。 ただし、データ型など、このデータセットからのメタデータは、トレーニング済みのモデルで使用されます。 このため、このメタデータを提供できるように、予測実験のデータセットを保持する必要があります。
+* **データ** - このサンプル データセット内のデータは、スコア付け中には使用されません。Web サービスのユーザーは、スコア付けするデータを指定します。 ただし、データ型など、このデータセットからのメタデータは、トレーニング済みのモデルで使用されます。 このため、このメタデータを提供できるように、予測実験のデータセットを保持する必要があります。
 
 * **準備** -スコア付けのために送信されるユーザー データによっては、これらのモジュールが受信データの処理に必要な場合と必要でない場合があります。 **[Web サービスの設定]** ボタンではこれらは処理されないため、ユーザーがどのように処理するかを決める必要があります。
   
@@ -91,7 +91,7 @@ BES への入力は、RRS で使用されるデータ入力と似ています。
 
 * **トレーニング** - これらのモジュールは、モデルのトレーニングに使用します。 **[Web サービスの設定]** をクリックすると、これらのモジュールはトレーニング済みのモデルを含む 1 つのモジュールに置き換えられます。 この新しいモジュールは、モジュール パレットの **[Trained Models (トレーニング済みのモデル)]** セクションに保存されます。
 
-* **スコア** - この例では、データ ストリームをテスト データとトレーニング データに分割するために、[データの分割][split]モジュールが使用されます。 予測実験ではもうトレーニングを行わないため、[データの分割][split]を削除できます。 同様に、2 番目の[モデルのスコア付け][score-model]モジュールと[モデルの評価][evaluate-model]モジュールは、テスト データの結果を比較するために使用されるため、これらのモジュールも予測実験では不要です。 ただし、残りの[モデルのスコア付け][score-model]モジュールは、Web サービスを通じてスコア結果を返すために必要です。
+* **スコア** - この例では、データ ストリームをテスト データとトレーニング データに分割するために、 [データの分割][split]モジュールが使用されます。 予測実験ではもうトレーニングを行わないため、[データの分割][split]を削除できます。 同様に、2 番目の[モデルのスコア付け][score-model]モジュールと[モデルの評価][evaluate-model]モジュールは、テスト データの結果を比較するために使用されるため、これらのモジュールも予測実験では不要です。 ただし、残りの[モデルのスコア付け][score-model]モジュールは、Web サービスを通じてスコア結果を返すために必要です。
 
 **[Web サービスの設定]** をクリックした後で、この例がどのようになるのかを次に示します。
 
@@ -100,23 +100,23 @@ BES への入力は、RRS で使用されるデータ入力と似ています。
 **[Web サービスの設定]** によって実行された作業は、実験を Web サービスとしてデプロイするための準備として十分な場合があります。 ただし、実験に合わせて追加の作業を実行する可能性があります。
 
 #### <a name="adjust-input-and-output-modules"></a>入力と出力のモジュールを調整する
-トレーニング実験では、トレーニング データのセットを使用して、機械学習アルゴリズムが必要とする形式でデータを取得するいくつかの処理を実行しました。 Web サービスを通じて受信することを想定しているデータでこの処理が不要な場合は、**Web サービスの入力モジュール**の出力を実験の別のノードに接続することで、これを回避できます。 この場所のモデルにユーザーのデータが届くようになります。
+トレーニング実験では、トレーニング データのセットを使用して、機械学習アルゴリズムが必要とする形式でデータを取得するいくつかの処理を実行しました。 Web サービスを通じて受信することを想定しているデータでこの処理が不要な場合は、 **Web サービスの入力モジュール** の出力を実験の別のノードに接続することで、これを回避できます。 この場所のモデルにユーザーのデータが届くようになります。
 
-たとえば、既定では、上の図で示すように、**[Web サービスの設定]** によって、**Web サービスの入力**モジュールがデータ フローの上部に配置されます。 ただし、**Web サービスの入力**をデータ処理モジュールの先に手動で配置することができます。
+たとえば、既定では、上の図で示すように、 **[Web サービスの設定]** によって、 **Web サービスの入力** モジュールがデータ フローの上部に配置されます。 ただし、 **Web サービスの入力** をデータ処理モジュールの先に手動で配置することができます。
 
 ![Web サービス入力の移動](./media/convert-training-experiment-to-scoring-experiment/figure4.png)
 
 Web サービスを通じて提供される入力データが、これで処理なしでモデルのスコア付けモジュールに直接渡されるようになりました。
 
 同様に、既定では **Web サービスの設定** によって、Web サービスの出力モジュールがデータ フローの下部に置かれます。 この例では、Web サービスはユーザーに、完全な入力データのベクトルとスコア付けの結果を含む[モデルのスコア付け][score-model]モジュールの出力を返します。
-ただし、別のものを返したい場合は、**Web サービスの出力**モジュールの前に別のモジュールを追加することができます。 
+ただし、別のものを返したい場合は、 **Web サービスの出力** モジュールの前に別のモジュールを追加することができます。 
 
-たとえば、入力データのベクトル全体ではなく、スコア付けの結果のみを返すようにする場合は、[データセット内の列の選択][select-columns]モジュールを追加して、スコア付けの結果以外のすべての列を除外できます。 次に、**Web サービスの出力**モジュールを[データセット内の列の選択][select-columns]モジュールの出力に移動します。 実験は次のようになります。
+たとえば、入力データのベクトル全体ではなく、スコア付けの結果のみを返すようにする場合は、[データセット内の列の選択][select-columns]モジュールを追加して、スコア付けの結果以外のすべての列を除外できます。 次に、 **Web サービスの出力** モジュールを [データセット内の列の選択][select-columns]モジュールの出力に移動します。 実験は次のようになります。
 
 ![Web サービス出力の移動](./media/convert-training-experiment-to-scoring-experiment/figure5.png)
 
 #### <a name="add-or-remove-additional-data-processing-modules"></a>データ処理モジュールを追加または削除する
-スコア付け中に必要ないことがわかっているモジュールが、他にも実験に存在する場合は、それらを削除できます。 たとえば、**Web サービスの入力**モジュールをデータ処理モジュールの後の地点に移動したため、[見つからないデータのクリーンアップ][clean-missing-data] モジュールを予測実験から削除できます。
+スコア付け中に必要ないことがわかっているモジュールが、他にも実験に存在する場合は、それらを削除できます。 たとえば、 **Web サービスの入力** モジュールをデータ処理モジュールの後の地点に移動したため、 [見つからないデータのクリーンアップ][clean-missing-data] モジュールを予測実験から削除できます。
 
 これで、予測実験が次のようになります。
 
@@ -138,7 +138,7 @@ Web サービス パラメーターとその使用方法の詳細については
 
 予測実験の準備ができたので、新しい (Resource Manager ベースの) Azure Web サービスとしてこれをデプロイできます。 Web サービスを使用してユーザーはデータをモデルに送信でき、モデルは予測を返します。
 
-予測実験をデプロイするには、実験キャンバスの下部にある **[実行]** をクリックします。 実験の実行が終了したら **[Web サービスのデプロイ]** をクリックし、**Web サービスのデプロイ [新規]** を選択します。  Machine Learning Studio (クラシック) Web サービス ポータルのデプロイ ページが開きます。
+予測実験をデプロイするには、実験キャンバスの下部にある **[実行]** をクリックします。 実験の実行が終了したら **[Web サービスのデプロイ]** をクリックし、 **Web サービスのデプロイ [新規]** を選択します。  Machine Learning Studio (クラシック) Web サービス ポータルのデプロイ ページが開きます。
 
 > [!NOTE] 
 > 新しい Web サービスをデプロイするには、Web サービスのデプロイ先となるサブスクリプションで十分なアクセス許可を持っている必要があります。 詳しくは、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](manage-new-webservice.md)」をご覧ください。 
@@ -242,7 +242,7 @@ Web サービスは、Machine Learning Studio (クラシック) Web サービス
 
 要求 - 応答 Web サービスをテストするには、Web サービス ダッシュボードで **[テスト]** をクリックします。 ダイアログ ボックスが表示され、サービスへのデータの入力が促されます。 これらはスコア付け実験で想定される列になります。 データのセットを入力し、 **[OK]** をクリックします。 Web サービスによって生成された結果がダッシュボードの下部に表示されます。
 
-「新しい Web サービス」セクションで説明したように、**[テスト]** プレビュー リンクをクリックして、サービスを Azure Machine Learning Studio (クラシック) Web サービス ポータルでテストできます。
+「新しい Web サービス」セクションで説明したように、 **[テスト]** プレビュー リンクをクリックして、サービスを Azure Machine Learning Studio (クラシック) Web サービス ポータルでテストできます。
 
 バッチ実行サービスをテストするには、 **[テスト]** プレビュー リンクをクリックします。 バッチ テストのページで、入力の下の [参照] をクリックし、適切なサンプル値を含む CSV ファイルを選択します。 CSV ファイルがなく、Machine Learning Studio (クラシック) を使用して予測実験を作成した場合は、予測実験用のデータ セットをダウンロードし、それを使用できます。
 
@@ -250,7 +250,7 @@ Web サービスは、Machine Learning Studio (クラシック) Web サービス
 
 **[構成]** ページで、サービスの表示名を変更したり、説明を付けたりできます。 この名前と説明は、Web サービスを管理する [Azure Portal](https://portal.azure.com/) に表示されます。
 
-**INPUT SCHEMA**、**OUTPUT SCHEMA**、**Web SERVICE PARAMETER** の各列に文字列を入力し、入力データ、出力データ、Web サービス パラメーターの説明を追加できます。 これらの説明は、Web サービスのサンプル コードのドキュメントで使用されます。
+**INPUT SCHEMA** 、 **OUTPUT SCHEMA** 、 **Web SERVICE PARAMETER** の各列に文字列を入力し、入力データ、出力データ、Web サービス パラメーターの説明を追加できます。 これらの説明は、Web サービスのサンプル コードのドキュメントで使用されます。
 
 ログ記録を有効にすれば、Web サービスのアクセスで発生するすべてのエラーを診断できます。 詳細については、[Machine Learning Studio (クラシック) Web サービスのログ記録の有効化](web-services-logging.md)に関するページを参照してください。
 
@@ -282,7 +282,7 @@ Web サービスを更新するには、Web サービスのデプロイに使用
 > [!NOTE]
 > たとえば元の Web サービスの構成に変更を加えた場合や新しい表示名または説明を入力した場合、それらの値をもう一度入力する必要が生じます。
 
-Web サービスを更新するオプションの 1 つに、モデルをプログラムによって再トレーニングする方法があります。 詳細については、[プログラムによる Machine Learning Studio (クラシック) のモデルの再トレーニング](/azure/machine-learning/studio/retrain-machine-learning-model)に関するページを参照してください。
+Web サービスを更新するオプションの 1 つに、モデルをプログラムによって再トレーニングする方法があります。 詳細については、[プログラムによる Machine Learning Studio (クラシック) のモデルの再トレーニング](./retrain-machine-learning-model.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -305,11 +305,11 @@ Web サービスを更新するオプションの 1 つに、モデルをプロ�
 
 [webserviceparameters]: web-service-parameters.md
 [deploy]: deploy-a-machine-learning-web-service.md
-[clean-missing-data]: https://msdn.microsoft.com/library/azure/d2c5ca2f-7323-41a3-9b7e-da917c99f0c4/
-[evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-[train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
-[export-data]: https://msdn.microsoft.com/library/azure/7a391181-b6a7-4ad4-b82d-e419c0d6522c/
+[clean-missing-data]: /azure/machine-learning/studio-module-reference/clean-missing-data
+[evaluate-model]: /azure/machine-learning/studio-module-reference/evaluate-model
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset
+[import-data]: /azure/machine-learning/studio-module-reference/import-data
+[score-model]: /azure/machine-learning/studio-module-reference/score-model
+[split]: /azure/machine-learning/studio-module-reference/split-data
+[train-model]: /azure/machine-learning/studio-module-reference/train-model
+[export-data]: /azure/machine-learning/studio-module-reference/export-data

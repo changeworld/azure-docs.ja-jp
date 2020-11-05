@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: 2f115313b17ed159973d2545b947e2ff031508eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff0378871139a038f096a44b9ee0c6af2cb67d73
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362335"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325814"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>機械学習モデルの再トレーニングとデプロイ
 
-**適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 再トレーニングは、機械学習モデルが正確であり、利用できる最も関連性の高いデータに基づいている状態を確保するための 1 つの方法です。 この記事では、Studio (クラシック) で新しい Web サービスとして機械学習モデルを再トレーニングし、デプロイする方法について説明します。 従来の Web サービスを再トレーニングする方法については、[こちらのハウツー記事を参照](retrain-classic-web-service.md)してください。
@@ -27,9 +27,9 @@ ms.locfileid: "91362335"
 
 次の手順に従って、機械学習の新しい Web サービスを再トレーニングし、デプロイします。
 
-1. **再トレーニング Web サービス**をデプロイする
-1. **再トレーニング Web サービス**を使用して新しいモデルをトレーニングする
-1. 新しいモデルを使用するように既存の**予測実験**を更新する
+1. **再トレーニング Web サービス** をデプロイする
+1. **再トレーニング Web サービス** を使用して新しいモデルをトレーニングする
+1. 新しいモデルを使用するように既存の **予測実験** を更新する
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -92,11 +92,11 @@ BES サンプル コードは、ファイルをローカル ドライブ ("C:\te
 1. 左側のナビゲーションで **[その他のサービス]** をクリックし、 **[ストレージ アカウント]** を探して選択します。
 1. ストレージ アカウントの一覧から、再トレーニング済みのモデルを格納するいずれかのアカウントを選択します。
 1. 左側のナビゲーションで **[アクセス キー]** をクリックします。
-1. **プライマリ アクセス キー**をコピーして保存します。
+1. **プライマリ アクセス キー** をコピーして保存します。
 1. 左側のナビゲーション列で、 **[BLOB]** をクリックします。
 1. 既存のコンテナーを選択するか、コンテナーを新規作成して、名前を保存します。
 
-*StorageAccountName*、*StorageAccountKey*、および *StorageContainerName* 宣言を見つけて、ポータルから保存した値を更新します。
+*StorageAccountName* 、 *StorageAccountKey* 、および *StorageContainerName* 宣言を見つけて、ポータルから保存した値を更新します。
 
 ```csharp
 const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
@@ -108,7 +108,7 @@ const string StorageContainerName = "mycontainer"; // Replace this with your Azu
 
 ### <a name="specify-the-output-location"></a>出力場所の指定
 
-要求ペイロードで出力場所を指定する場合は、*RelativeLocation* で指定されたファイルの拡張子を `ilearner` として指定する必要があります。
+要求ペイロードで出力場所を指定する場合は、 *RelativeLocation* で指定されたファイルの拡張子を `ilearner` として指定する必要があります。
 
 ```csharp
 Outputs = new Dictionary<string, AzureBlobDataReference>() {
@@ -130,11 +130,11 @@ Outputs = new Dictionary<string, AzureBlobDataReference>() {
 
 アプリケーションを実行すると、評価結果へのアクセスに必要な URL と Shared Access Signature トークンが出力に示されます。
 
-再トレーニング済みモデルのパフォーマンス結果を確認するには、*output2* の出力結果の *BaseLocation*、*RelativeLocation*、*SasBlobToken* を組み合わせて、ブラウザーのアドレス バーに完全な URL を貼り付けます。
+再トレーニング済みモデルのパフォーマンス結果を確認するには、 *output2* の出力結果の *BaseLocation* 、 *RelativeLocation* 、 *SasBlobToken* を組み合わせて、ブラウザーのアドレス バーに完全な URL を貼り付けます。
 
 この結果で、新しくトレーニングされたモデルのパフォーマンスが、既存のモデルよりも優れているかどうかを確認します。
 
-出力結果の *BaseLocation*、*RelativeLocation*、*SasBlobToken* を保存します。
+出力結果の *BaseLocation* 、 *RelativeLocation* 、 *SasBlobToken* を保存します。
 
 ## <a name="update-the-predictive-experiment"></a>予測実験を更新する
 
@@ -144,7 +144,7 @@ Outputs = new Dictionary<string, AzureBlobDataReference>() {
 
 ### <a name="get-the-web-service-definition-object"></a>Web サービス定義オブジェクトを取得する
 
-次に、[Get-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservice) コマンドレットを呼び出して Web サービス定義オブジェクトを取得します。
+次に、[Get-AzMlWebService](/powershell/module/az.machinelearning/get-azmlwebservice) コマンドレットを呼び出して Web サービス定義オブジェクトを取得します。
 
 ```azurepowershell
 $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
@@ -167,7 +167,7 @@ Tags : {}
 
 ### <a name="export-the-web-service-definition-object-as-json"></a>Web サービス定義オブジェクトを JSON としてエクスポートする
 
-新しいトレーニング済みモデルを使用するようにトレーニング済みモデルの定義を変更するには、最初にこれを [Export-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) コマンドレットを使用して、JSON フォーマット ファイルにインポートする必要があります。
+新しいトレーニング済みモデルを使用するようにトレーニング済みモデルの定義を変更するには、最初にこれを [Export-AzMlWebService](/powershell/module/az.machinelearning/export-azmlwebservice) コマンドレットを使用して、JSON フォーマット ファイルにインポートする必要があります。
 
 ```azurepowershell
 Export-AzMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
@@ -194,7 +194,7 @@ Export-AzMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.jso
 
 ### <a name="import-the-json-into-a-web-service-definition-object"></a>JSON を Web サービス定義オブジェクトにインポートする
 
-[Import-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/import-azmlwebservice) コマンドレットを使用して、変更された JSON ファイルを予測実験の更新に使用できる Web サービス定義オブジェクトに変換します。
+[Import-AzMlWebService](/powershell/module/az.machinelearning/import-azmlwebservice) コマンドレットを使用して、変更された JSON ファイルを予測実験の更新に使用できる Web サービス定義オブジェクトに変換します。
 
 ```azurepowershell
 $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
@@ -202,7 +202,7 @@ $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
 
 ### <a name="update-the-web-service"></a>Web サービスを更新する
 
-最後に、[Update-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) コマンドレットを使用して、予測実験を更新します。
+最後に、[Update-AzMlWebService](/powershell/module/az.machinelearning/update-azmlwebservice) コマンドレットを使用して、予測実験を更新します。
 
 ```azurepowershell
 Update-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'

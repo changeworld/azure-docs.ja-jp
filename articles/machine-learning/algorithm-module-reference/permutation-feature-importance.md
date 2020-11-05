@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
-ms.openlocfilehash: ecf739ea838ad3742612eab7a1b42ac8c8ac455a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bddd9a6825899f646a86ae274c539b54156667c5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905267"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319403"
 ---
 # <a name="permutation-feature-importance"></a>順列の特徴量の重要度
 
@@ -22,9 +22,9 @@ ms.locfileid: "90905267"
 
 このモジュールでは、特徴の値は一度に 1 列ずつランダムにシャッフルされます。 その前後のモデルのパフォーマンスが測定されます。 標準メトリックの 1 つを選択してパフォーマンスを測定できます。
 
-モジュールから返されるスコアは、順列の後のトレーニング済みモデルのパフォーマンスの*変化*を表しています。 重要な特徴は、通常、シャッフル プロセスの影響を受けやすいため、重要度スコアが高くなります。 
+モジュールから返されるスコアは、順列の後のトレーニング済みモデルのパフォーマンスの *変化* を表しています。 重要な特徴は、通常、シャッフル プロセスの影響を受けやすいため、重要度スコアが高くなります。 
 
-この記事では、順列の特徴量、その理論上の基礎、および機械学習でのその応用について概要を示します。[順列の特徴量の重要度](https://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx)。  
+この記事では、順列の特徴量、その理論上の基礎、および機械学習でのその応用について概要を示します。[順列の特徴量の重要度](/archive/blogs/machinelearning/permutation-feature-importance)。  
 
 ## <a name="how-to-use-permutation-feature-importance"></a>順列の特徴量の重要度の使用方法
 
@@ -63,10 +63,10 @@ ms.locfileid: "90905267"
 
 Permutation Feature Importance (順列の特徴量の重要度) は、各特徴列の値を一度に 1 列ずつランダムに変更することによって機能します。 その後、モデルを評価します。 
 
-このモジュールによって提供される順位付けは、[Filter Based Feature Selection (フィルターに基づく特徴選択)](filter-based-feature-selection.md) から得られるものとは異なることがよくあります。 Filter Based Feature Selection (フィルターに基づく特徴選択) では、モデルの作成 "*前*" にスコアが計算されます。 
+このモジュールによって提供される順位付けは、[Filter Based Feature Selection (フィルターに基づく特徴選択)](filter-based-feature-selection.md) から得られるものとは異なることがよくあります。 Filter Based Feature Selection (フィルターに基づく特徴選択) では、モデルの作成 " *前* " にスコアが計算されます。 
 
 この違いの理由は、Permutation Feature Importance (順列の特徴量の重要度) では、特徴量と目標値の間の関連付けが測定されないためです。 代わりに、モデルからの予測に対して各特徴量がどの程度の影響を与えるかをキャプチャします。
   
 ## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。

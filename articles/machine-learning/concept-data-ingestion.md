@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 18bbecbe811a9f0bc6a56194830c7e92d8770979
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 401398da4d71f32973f720dd0ca5cc9b550892e8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890179"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323035"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Azure Machine Learning ワークフローのデータ インジェスト オプション
 
@@ -33,7 +33,7 @@ ms.locfileid: "90890179"
 
 ## <a name="azure-data-factory"></a>Azure Data Factory
 
-[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) では、データ ソース監視のネイティブ サポートとデータ インジェスト パイプラインのトリガーが提供されています。  
+[Azure Data Factory](../data-factory/introduction.md) では、データ ソース監視のネイティブ サポートとデータ インジェスト パイプラインのトリガーが提供されています。  
 
 次の表は、データ インジェスト ワークフローで Azure Data Factory を使用する場合の長所と短所をまとめたものです。
 
@@ -41,11 +41,11 @@ ms.locfileid: "90890179"
 ---|---
 データの抽出、読み込み、変換を目的として構築されています。|現時点では、Azure Data Factory パイプライン タスクの限定セットが提供されています 
 データ移動とデータ変換を大規模に調整するためのデータ駆動型ワークフローを作成できます。|構築と保守にコストがかかります。 詳細については、Azure Data Factory の [価格に関するページ](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)を参照してください。
-[Azure Databricks](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook) や [Azure Functions](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity) など、さまざまな Azure ツールと統合 | スクリプトをネイティブに実行せず、代わりにスクリプトの実行を個別のコンピューティングに依存します 
+[Azure Databricks](../data-factory/transform-data-using-databricks-notebook.md) や [Azure Functions](../data-factory/control-flow-azure-function-activity.md) など、さまざまな Azure ツールと統合 | スクリプトをネイティブに実行せず、代わりにスクリプトの実行を個別のコンピューティングに依存します 
 データ ソースによってトリガーされるデータ インジェストをネイティブにサポートします| 
 データ準備とモデル トレーニングのプロセスが異なります。|
 Azure Data Factory データフローの埋め込みデータ系列機能|
-コードの作成経験が少ない方向けに、スクリプトを使用しない方法として[ユーザー インターフェイス](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal)が提供されています |
+コードの作成経験が少ない方向けに、スクリプトを使用しない方法として[ユーザー インターフェイス](../data-factory/quickstart-create-data-factory-portal.md)が提供されています |
 
 次の手順と図は、Azure Data Factory のデータ インジェスト ワークフローを示しています。
 
@@ -60,7 +60,7 @@ Azure Data Factory データフローの埋め込みデータ系列機能|
 
 ## <a name="azure-machine-learning-python-sdk"></a>Azure Machine Learning Python SDK 
 
-[Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml) を使用して、[Azure Machine Learning パイプライン](how-to-create-your-first-pipeline.md)の手順にデータ インジェスト タスクを組み込むことができます。
+[Python SDK](/python/api/overview/azure/ml) を使用して、[Azure Machine Learning パイプライン](how-to-create-your-first-pipeline.md)の手順にデータ インジェスト タスクを組み込むことができます。
 
 次の表は、データ インジェスト タスクに SDK と ML パイプラインの手順を使用する場合の長所と短所をまとめたものです。
 

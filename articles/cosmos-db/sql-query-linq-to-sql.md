@@ -3,17 +3,19 @@ title: Azure Cosmos DB での LINQ から SQL への変換
 description: サポートされている LINQ 演算子と、Azure Cosmos DB の SQL クエリに LINQ クエリをマップする方法について説明します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 7/29/2020
 ms.author: tisande
-ms.openlocfilehash: 4f5e88e7201c4097e2f8d654b8780ea12816b15d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 38d37d03c99bd3a39b00276da110ea0ef6bb962e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485105"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332374"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ から SQL への変換
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB クエリ プロバイダーは、LINQ クエリから Cosmos DB SQL クエリへのマッピングをベスト エフォートで実行します。 LINQ から変換される SQL クエリを取得する場合、生成された `IQueryable` オブジェクトで `ToString()` メソッドを使用します。 以下の説明では、[LINQ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) の基本的知識を前提としています。
 

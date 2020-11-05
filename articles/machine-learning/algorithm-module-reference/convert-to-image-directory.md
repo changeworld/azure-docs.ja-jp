@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/09/2020
-ms.openlocfilehash: 2e597299c9b157d79a5317c97550fc30820636d6
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 8abcbc74506599e7896ad6d41b9444e946172283
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940364"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324902"
 ---
 # <a name="convert-to-image-directory"></a>イメージ ディレクトリへの変換
 
-この記事では、イメージ ディレクトリへの変換モジュールを使用して画像データセットを *Image Directory*データ型に変換する方法について説明します。これは、Azure Machine Learning デザイナーの画像関連タスク (画像分類など) で使用される標準のデータ形式です。
+この記事では、イメージ ディレクトリへの変換モジュールを使用して画像データセットを *Image Directory* データ型に変換する方法について説明します。これは、Azure Machine Learning デザイナーの画像関連タスク (画像分類など) で使用される標準のデータ形式です。
 
 ## <a name="how-to-use-convert-to-image-directory"></a>イメージ ディレクトリへの変換を使用する方法  
 
@@ -49,20 +49,20 @@ ms.locfileid: "91940364"
 
     スコアリングの場合、イメージ データセットのフォルダーには、未分類のイメージのみを含める必要があります。
 
-1. イメージ ディレクトリ モジュールへの変換の入力は**ファイル データセット**でなければならないため、[イメージ データセットはファイル データセットとしてワークスペースに登録します。](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)
+1. イメージ ディレクトリ モジュールへの変換の入力は **ファイル データセット** でなければならないため、 [イメージ データセットはファイル データセットとしてワークスペースに登録します。](../how-to-create-register-datasets.md)
 
 1. 登録されているイメージ データセットをキャンバスに追加します。 登録されているデータセットは、キャンバスの左側にあるモジュール一覧の **データセット** カテゴリで確認できます。 現在、デザイナーでは、イメージデータセットの視覚化はサポートされていません。
 
     > [!WARNING]
-    > **データのインポート** モジュールの出力型は DataFrame Directory であるため、**データのインポート** モジュールを使用して画像データセットをインポートすることは**できません**。
+    > **データのインポート** モジュールの出力型は DataFrame Directory であるため、 **データのインポート** モジュールを使用して画像データセットをインポートすることは **できません** 。
 
-1. **イメージ ディレクトリへの変換**モジュールをキャンバスに追加します。 このモジュールは、モジュール一覧の [Computer Vision/Image Data Transformation]\(Computer Vision/イメージ データ変換\) カテゴリにあります。 これをイメージ データセットに接続します。
+1. **イメージ ディレクトリへの変換** モジュールをキャンバスに追加します。 このモジュールは、モジュール一覧の [Computer Vision/Image Data Transformation]\(Computer Vision/イメージ データ変換\) カテゴリにあります。 これをイメージ データセットに接続します。
     
 3.  パイプラインを送信します。 このモジュールは、GPU または CPU 上で実行できます。
 
 ## <a name="results"></a>結果
 
-**イメージ ディレクトリへの変換**モジュールの出力は **Image Directory** 形式であり、入力ポートの形式が同様に Image Directory である他の画像関連モジュールに接続できます。
+**イメージ ディレクトリへの変換** モジュールの出力は **Image Directory** 形式であり、入力ポートの形式が同様に Image Directory である他の画像関連モジュールに接続できます。
 
 ![イメージ ディレクトリへの変換の出力](./media/module/convert-to-image-directory-output.png)
 
@@ -82,4 +82,4 @@ ms.locfileid: "91940364"
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。

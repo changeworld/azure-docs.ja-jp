@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 0cc367b86507d6d819608795851052e8a0c1c73b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67d17af4f615907ca50b27ce8fa26973e5869608
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890307"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314242"
 ---
 # <a name="score-model"></a>モデルのスコア付け
 
@@ -24,7 +24,7 @@ ms.locfileid: "90890307"
 
 ## <a name="how-to-use"></a>使用方法
 
-1. **モデルのスコア付け**モジュールをパイプラインに追加します。
+1. **モデルのスコア付け** モジュールをパイプラインに追加します。
 
 2. トレーニング済みモデルと新しい入力データを含むデータセットを接続します。 
 
@@ -48,8 +48,8 @@ ms.locfileid: "90890307"
 
 ## <a name="publish-scores-as-a-web-service"></a>Web サービスとしてスコアを公開する
 
-スコア付けの一般的な用途は、予測 Web サービスの一部として出力を返すことです。 詳細については、Azure Machine Learning デザイナーでのパイプラインに基づいたリアルタイム エンドポイントのデプロイ方法に関する[このチュートリアル](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy)を参照してください。
+スコア付けの一般的な用途は、予測 Web サービスの一部として出力を返すことです。 詳細については、Azure Machine Learning デザイナーでのパイプラインに基づいたリアルタイム エンドポイントのデプロイ方法に関する[このチュートリアル](../tutorial-designer-automobile-price-deploy.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。

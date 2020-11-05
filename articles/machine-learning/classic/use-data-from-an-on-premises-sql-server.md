@@ -9,21 +9,21 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 695539e4739002480b3622eb217ef920d4cb34e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 279c07ff892cb261c8bda1937c6e9f8f1b6c6793
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357490"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325702"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>SQL Server データベースを使用して Azure Machine Learning Studio (クラシック) で分析を実行する
 
-**適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
-多くの場合、オンプレミス データを操作する企業は、機械学習のワークロードのためにクラウドの拡張性と俊敏性という利点を活用しようと考えます。 しかし、オンプレミス データをクラウドに移動するために現在のビジネス プロセスおよびワークフローが中断されることは望みません。 Azure Machine Learning Studio (クラシック) では、現在、SQL Server データベースからのデータの読み取りと、そのデータを使用したモデルのトレーニングとスコア付けがサポートされています。 クラウドとオンプレミス サーバー間で、手動でデータをコピーして同期する必要がなくなりました。 代わりに、Azure Machine Learning Studio (クラシック) の**データのインポート** モジュールを使用すれば、トレーニングおよびスコア付けジョブのために SQL Server データベースから直接読み取ることができます。
+多くの場合、オンプレミス データを操作する企業は、機械学習のワークロードのためにクラウドの拡張性と俊敏性という利点を活用しようと考えます。 しかし、オンプレミス データをクラウドに移動するために現在のビジネス プロセスおよびワークフローが中断されることは望みません。 Azure Machine Learning Studio (クラシック) では、現在、SQL Server データベースからのデータの読み取りと、そのデータを使用したモデルのトレーニングとスコア付けがサポートされています。 クラウドとオンプレミス サーバー間で、手動でデータをコピーして同期する必要がなくなりました。 代わりに、Azure Machine Learning Studio (クラシック) の **データのインポート** モジュールを使用すれば、トレーニングおよびスコア付けジョブのために SQL Server データベースから直接読み取ることができます。
 
-この記事では、SQL Server データを Azure Machine Learning Studio (クラシック) で受け取る方法の概要について説明します。 ワークスペース、モジュール、データセット、実験 "*など*" の Studio (クラシック) の概念を理解していることが前提となっています。
+この記事では、SQL Server データを Azure Machine Learning Studio (クラシック) で受け取る方法の概要について説明します。 ワークスペース、モジュール、データセット、実験 " *など* " の Studio (クラシック) の概念を理解していることが前提となっています。
 
 > [!NOTE]
 > この機能は、無料のワークスペースでは使用できません。 Machine Learning の価格とレベルの詳細については、 [Azure Machine Learning の価格](https://azure.microsoft.com/pricing/details/machine-learning/)に関するページを参照してください。
@@ -83,24 +83,24 @@ Data Factory セルフホステッド統合ランタイムを設定して使用�
 3. 画面の下部の **[新しいデータ ゲートウェイ]** をクリックします。
 
     ![新しいデータ ゲートウェイ](./media/use-data-from-an-on-premises-sql-server/new-data-gateway-button.png)
-4. **[新しいデータ ゲートウェイ]** ダイアログ ボックスで**ゲートウェイ名**を入力し、必要に応じて**説明**を追加します。 右下隅の矢印をクリックし、構成の次の手順に進みます。
+4. **[新しいデータ ゲートウェイ]** ダイアログ ボックスで **ゲートウェイ名** を入力し、必要に応じて **説明** を追加します。 右下隅の矢印をクリックし、構成の次の手順に進みます。
 
     ![ゲートウェイの名前と説明を入力](./media/use-data-from-an-on-premises-sql-server/new-data-gateway-dialog-enter-name.png)
 5. [Download and register data gateway (データ ゲートウェイのダウンロードと登録)] ダイアログで、ゲートウェイ登録キーをクリップボードにコピーします。
 
     ![データ ゲートウェイをダウンロードして登録](./media/use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
 6. <span id="note-1" class="anchor"></span>まだ Microsoft Data Management Gateway をダウンロードしてインストールしていない場合は、 **[Download data management gateway (データ管理ゲートウェイのダウンロード)]** をクリックします。 Microsoft ダウンロード センターに移動するので、必要なゲートウェイのバージョンを選択し、それをダウンロードしてインストールします。 インストールの前提条件、インストールの手順、およびトラブルシューティングのヒントの詳細については、「 [Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](../../data-factory/tutorial-hybrid-copy-portal.md)」という記事の冒頭のセクションを参照してください。
-7. ゲートウェイがインストールされると、Data Management Gateway 構成マネージャーが開き、 **[ゲートウェイの登録]** ダイアログが表示されます。 クリップボードにコピーした**ゲートウェイ登録キー**を貼り付け、 **[登録]** をクリックします。
-8. 既にゲートウェイがインストールされている場合は、Data Management Gateway 構成マネージャーを実行します。 **[キーの変更]** をクリックして、前の手順でクリップボードにコピーした**ゲートウェイ登録キー**を貼り付け、 **[OK]** をクリックします。
+7. ゲートウェイがインストールされると、Data Management Gateway 構成マネージャーが開き、 **[ゲートウェイの登録]** ダイアログが表示されます。 クリップボードにコピーした **ゲートウェイ登録キー** を貼り付け、 **[登録]** をクリックします。
+8. 既にゲートウェイがインストールされている場合は、Data Management Gateway 構成マネージャーを実行します。 **[キーの変更]** をクリックして、前の手順でクリップボードにコピーした **ゲートウェイ登録キー** を貼り付け、 **[OK]** をクリックします。
 9. インストールの完了時に、Microsoft Data Management Gateway 構成マネージャーの **[ゲートウェイの登録]** ダイアログが表示されます。 前の手順でクリップボードにコピーしたゲートウェイ登録キーを貼り付け、 **[登録]** をクリックします。
 
     ![ゲートウェイを登録](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-register-gateway.png)
 10. Microsoft Data Management Gateway 構成マネージャーの **[ホーム]** タブで以下の値が設定されていれば、ゲートウェイの構成は完了です。
 
-    * **ゲートウェイ名**と**インスタンス名**がゲートウェイの名前に設定されている。
+    * **ゲートウェイ名** と **インスタンス名** がゲートウェイの名前に設定されている。
     * **[登録]** が **[登録済み]** に設定されている。
     * **[状態]** が **[開始]** に設定されている。
-    * 下部のステータス バーに、緑色のチェック マークと共に "**Data Management Gateway クラウド サービスに接続済み**" と表示されている。
+    * 下部のステータス バーに、緑色のチェック マークと共に " **Data Management Gateway クラウド サービスに接続済み** " と表示されている。
 
       ![Data Management Gateway マネージャー](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-registered.png)
 
@@ -123,7 +123,7 @@ Data Factory セルフホステッド統合ランタイムを設定して使用�
 Studio (クラシック) で各ワークスペースに対して複数のゲートウェイを作成してセットアップできます。 たとえば、開発中はテスト データ ソースに接続するゲートウェイを使用し、運用データ ソース用には別のゲートウェイを使う場合があります。 Azure Machine Learning Studio (クラシック) では、企業の環境に応じて、複数のゲートウェイを柔軟にセットアップできます。 現在、複数のワークスペースでゲートウェイを共有することはできず、1 台のコンピューターには 1 つのゲートウェイだけをインストールできます。 詳細については、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](../../data-factory/tutorial-hybrid-copy-portal.md)」を参照してください。
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>手順 2:ゲートウェイを使用してオンプレミス データ ソースからデータを読み取る
-ゲートウェイをセットアップした後は、SQL Server データベースからデータを入力する実験に**データのインポート** モジュールを追加できます。
+ゲートウェイをセットアップした後は、SQL Server データベースからデータを入力する実験に **データのインポート** モジュールを追加できます。
 
 1. Machine Learning Studio (クラシック) で **[実験]** タブを選択し、左下隅の **[+ 新規]** をクリックして、 **[Blank Experiment]\(空の実験\)** を選択します (または使用可能ないくつかのサンプル実験のいずれかを選択します)。
 2. **データのインポート** モジュールを見つけて、実験キャンバスにドラッグします。
@@ -134,7 +134,7 @@ Studio (クラシック) で各ワークスペースに対して複数のゲー�
 5. インストールして登録した **データ ゲートウェイ** を選択します。 別のゲートウェイをセットアップするには、[(add new Data Gateway…) ((新しいデータ ゲートウェイを追加...))] を選択します。
 
    ![データのインポート モジュールのデータ ゲートウェイを選択](./media/use-data-from-an-on-premises-sql-server/import-data-select-on-premises-data-source.png)
-6. SQL **データベース サーバー名**と**データベース名**を、実行する SQL **データベース クエリ**と共に入力します。
+6. SQL **データベース サーバー名** と **データベース名** を、実行する SQL **データベース クエリ** と共に入力します。
 7. **[ユーザー名とパスワード]** の下の **[Enter values (値の入力)]** をクリックし、データベース資格情報を入力します。 SQL Server の構成方法に応じて、Windows 統合認証または SQL Server 認証を使用できます。
 
    ![データベースの資格情報を入力](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)
@@ -144,6 +144,6 @@ Studio (クラシック) で各ワークスペースに対して複数のゲー�
    ![データのインポート モジュールのプロパティ](./media/use-data-from-an-on-premises-sql-server/import-data-properties-entered.png)
 8. **[実行]** をクリックして、実験を実行します。
 
-実験の実行が終了した後、**データのインポート** モジュールの出力ポートをクリックし、 **[視覚化]** を選択すると、データベースからインポートしたデータを視覚化できます。
+実験の実行が終了した後、 **データのインポート** モジュールの出力ポートをクリックし、 **[視覚化]** を選択すると、データベースからインポートしたデータを視覚化できます。
 
 実験の開発が完了したら、モデルをデプロイし、運用可能にすることができます。 **データのインポート** モジュールで構成されている SQL Server データベースのデータは、Batch Execution Service を使用して読み取られ、スコア付けに使用されます。 オンプレミス データのスコア付けには Request Response Service を使用できますが、代わりに [Excel アドイン](excel-add-in-for-web-services.md) を使用することをお勧めします。 現時点では、 **データのエクスポート** による SQL Server データベースへの書き込みは、実験でも公開済み Web サービスでもサポートされていません。
