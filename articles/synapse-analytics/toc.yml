@@ -529,6 +529,8 @@
       items:
         - name: コピー アクティビティを使用して SQL プールにデータを読み込む
           href: quickstart-copy-activity-load-sql-pool.md
+        - name: マッピング データ フローを使用してデータを変換する
+          href: quickstart-data-flow.md
     - name: 概念
       items:
         - name: パイプラインとアクティビティ

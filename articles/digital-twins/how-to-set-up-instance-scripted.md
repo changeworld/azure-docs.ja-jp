@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 10d4d07a61bc4ebec789d53e4271a3bcdc7ba76b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 5806ea094abd3431cd7e22064c6acd8ad150726a
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205569"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495027"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure Digital Twins インスタンスと認証を設定する (スクリプト化)
 
@@ -43,7 +43,7 @@ ms.locfileid: "92205569"
 
 このデプロイ スクリプトを Cloud Shell で実行する手順を次に示します。
 1. ブラウザーで [[Azure Cloud Shell]](https://shell.azure.com/) ウィンドウに移動します。 次のコマンドを使用してサインインします。
-    ```azurecli
+    ```azurecli-interactive
     az login
     ```
     CLI で既定のブラウザーを開くことができる場合、開いたブラウザに Azure サインイン ページが読み込まれます。 それ以外の場合は、 *https://aka.ms/devicelogin* でブラウザー ページを開き、ターミナルに表示されている認証コードを入力します。
@@ -54,17 +54,17 @@ ms.locfileid: "92205569"
 
 1. [ファイルのアップロード/ダウンロード] アイコンを選択し、[アップロード] を選択します。
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="PowerShell バージョンが選択されていることを示す Cloud Shell ウィンドウ":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="[アップロード] アイコンが選択されていることを示す Cloud Shell ウィンドウ":::
 
     お使いのコンピューター上の _**deploy.ps1**_ ファイルに移動し ( _Azure_Digital_Twins_end_to_end_samples > scripts > **deploy.ps1**_ )、[開く] をクリックします。 これにより、そのファイルが Cloud Shell にアップロードされ、Cloud Shell ウィンドウで実行できるようになります。
 
 4. Cloud Shell ウィンドウで `./deploy.ps1` コマンドを送信することによってスクリプトを実行します。 次のコマンドをコピーできます (Cloud Shell に貼り付けるには、Windows と Linux では **Ctrl+Shift+V** 、macOS では **Cmd+Shift+V** を使用できます。 右クリック メニューを使用することもできます)。
 
-    ```azurecli
+    ```azurecli-interactive
     ./deploy.ps1
     ```
 
-    このスクリプトによって、Azure Digital Twins インスタンスが作成されて、Azure ユーザーにそのインスタンスの *[Azure Digital Twins 所有者 (プレビュー)]* ロールが割り当てられます。
+    このスクリプトによって、Azure Digital Twins インスタンスが作成されて、Azure ユーザーにそのインスタンスの *Azure Digital Twins Data Owner (Azure Digital Twins データ所有者)* ロールが割り当てられます。
 
     スクリプトにより自動化された設定手順が実行されると、次の値を渡すよう求められます。
     * インスタンス用: 使用する Azure サブスクリプションの *サブスクリプション ID*
@@ -74,15 +74,15 @@ ms.locfileid: "92205569"
 
 このスクリプトからの出力ログの抜粋を次に示します。
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="PowerShell バージョンが選択されていることを示す Cloud Shell ウィンドウ" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="デプロイ スクリプトの実行による入力と出力のログを示す Cloud Shell ウィンドウ" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
 
 スクリプトが正常に完了した場合は、最終的な出力として `Deployment completed successfully` が表示されます。 それ以外の場合は、エラー メッセージに対処してから、スクリプトを再実行します。 それにより、既に完了した手順はバイパスされ、前に中断された時点から再び入力の要求が開始されます。
 
 > [!NOTE]
-> このスクリプトは現在、Azure Digital Twins 内の必要な管理ロール ( *[Azure Digital Twins 所有者 (プレビュー)]* ) を、Cloud Shell からスクリプトを実行している同じユーザーに割り当てています。 このロールを、このインスタンスを管理するだれか他のユーザーに割り当てる必要がある場合は、Azure portal ([手順](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) または CLI ([手順](how-to-set-up-instance-cli.md#set-up-user-access-permissions)) を使用してこれを実行できます。
+> このスクリプトは現在、Azure Digital Twins 内の必要な管理ロール ( *Azure Digital Twins Data Owner (Azure Digital Twins データ所有者)* ) を、Cloud Shell からスクリプトを実行している同じユーザーに割り当てています。 このロールを、このインスタンスを管理するだれか他のユーザーに割り当てる必要がある場合は、Azure portal ([手順](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) または CLI ([手順](how-to-set-up-instance-cli.md#set-up-user-access-permissions)) を使用してこれを実行できます。
 
 >[!NOTE]
->現在のところ、スクリプト化されたセットアップには **既知の問題** があります。一部のユーザー (特に、個人の [Microsoft アカウント (MSA) のユーザー](https://account.microsoft.com/account)) に対して、 **" _Azure Digital Twins Owner (プレビュー)_ " にロールの割り当てを作成できないことがあります** 。
+>現在のところ、スクリプト化されたセットアップには **既知の問題** があります。一部のユーザー (特に、個人の [Microsoft アカウント (MSA) のユーザー](https://account.microsoft.com/account)) に対して、 **_Azure Digital Twins Data Owner (Azure Digital Twins データ所有者)_ へのロールの割り当てを作成できない** ことがあります。
 >
 >ロール割り当ての妥当性はこの記事の後半にある「 [*ユーザー ロールの割り当てを確認する*](#verify-user-role-assignment)」セクションで確認できます。また、必要に応じて、 [Azure portal](how-to-set-up-instance-portal.md#set-up-user-access-permissions) または [CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions) を使用して手動でロール割り当てを設定できます。
 >
@@ -106,7 +106,7 @@ ms.locfileid: "92205569"
 
 [[Azure Digital Twins] ページ](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances)からインスタンスの名前を選択して、インスタンスの *[概要]* ページを開きます。 その *[名前]* 、 *[リソース グループ]* 、 *[ホスト名]* をメモします。 これらは、後でそのインスタンスを識別して接続するために必要になる場合があります。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="PowerShell バージョンが選択されていることを示す Cloud Shell ウィンドウ":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="インスタンスの [概要] ページの重要な値の強調表示":::
 
 ### <a name="verify-user-role-assignment"></a>ユーザー ロールの割り当てを確認する
 

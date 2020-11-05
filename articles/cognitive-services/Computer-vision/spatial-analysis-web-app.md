@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: aahi
-ms.openlocfilehash: 8032c3607dd74cddbaa5fd6690a95ebdf218809a
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 3bc03cf03f8a8e0f2a222ca1089618eaade9485d
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91628196"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496071"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>方法:人数カウント Web アプリをデプロイする
 
@@ -63,14 +63,14 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 
 ### <a name="deploy-the-container-on-azure-iot-edge-on-the-host-computer"></a>ホスト コンピューター上の Azure IoT Edge にコンテナーをデプロイする
 
-Azure CLI を使用して、空間分析コンテナーを IoT モジュールとしてホスト コンピューターにデプロイします。 デプロイ プロセスには、デプロイに必要なコンテナー、変数、構成の概要を示す配置マニフェスト ファイルが必要です。 GitHub にサンプルの[配置マニフェスト](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/)があります。これには、*spatial-analysis* コンテナーの基本的なデプロイ構成が含まれています。 
+Azure CLI を使用して、空間分析コンテナーを IoT モジュールとしてホスト コンピューターにデプロイします。 デプロイ プロセスには、デプロイに必要なコンテナー、変数、構成の概要を示す配置マニフェスト ファイルが必要です。 GitHub には、 [Azure Stack Edge に固有の配置マニフェスト](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/)の例と [Azure Stack Edge 以外に固有の配置マニフェスト](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)の例があります。これらには、 *spatial-analysis* コンテナーの基本的なデプロイ構成が含まれています。 
 
 > [!NOTE] 
-> *spatial-analysis-telegraf* および *spatial-analysis-diagnostics* コンテナーはオプションです。 これらは、*DeploymentManifest.json* ファイルから削除することもできます。 詳細については、[テレメトリとトラブルシューティング](./spatial-analysis-logging.md)に関する記事をご覧ください。 [Github](https://go.microsoft.com/fwlink/?linkid=2142179) にサンプル *DeploymentManifest.json* ファイルがあります。 
+> *spatial-analysis-telegraf* および *spatial-analysis-diagnostics* コンテナーはオプションです。 これらは、 *DeploymentManifest.json* ファイルから削除することもできます。 詳細については、[テレメトリとトラブルシューティング](./spatial-analysis-logging.md)に関する記事をご覧ください。 GitHub には、 [Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)用と別の [デスクトップ コンピューター](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)用の 2 つのサンプル *DeploymentManifest.json* ファイルがあります
 
 ### <a name="set-environment-variables"></a>環境変数の設定
 
-IoT Edge モジュールのほとんどの**環境変数**は、上記のサンプル *DeploymentManifest.json* ファイルに既に設定されています。 このファイルで、次のように、`BILLING_ENDPOINT` および `API_KEY` 環境変数を検索します。 以前に作成したエンドポイント URI と API キーに値を置き換えます。 EULA 値が "accept" に設定されていることを確認します。 
+IoT Edge モジュールのほとんどの **環境変数** は、上記のリンク先のサンプル *DeploymentManifest.json* ファイルに既に設定されています。 このファイルで、次のように、`BILLING_ENDPOINT` および `API_KEY` 環境変数を検索します。 以前に作成したエンドポイント URI と API キーに値を置き換えます。 EULA 値が "accept" に設定されていることを確認します。 
 
 ```json
 "EULA": { 
@@ -89,7 +89,7 @@ IoT Edge モジュールのほとんどの**環境変数**は、上記のサン�
 
 *spatial-analysis* コンテナーの初期構成が完了しました。次に、操作のパラメーターを構成し、それらをデプロイに追加します。 
 
-まず、サンプルの[配置マニフェスト](https://go.microsoft.com/fwlink/?linkid=2142179)を更新し、次に示すように `cognitiveservices.vision.spatialanalysis-personcount` の operationId を構成します。
+まず、上記のリンク先のサンプル配置マニフェストを更新し、次に示すように `cognitiveservices.vision.spatialanalysis-personcount` の operationId を構成します。
 
 
 ```json
@@ -107,7 +107,7 @@ IoT Edge モジュールのほとんどの**環境変数**は、上記のサン�
 },
 ```
 
-[配置マニフェスト](https://go.microsoft.com/fwlink/?linkid=2142179)が更新されたら、カメラの製造元の指示に従ってカメラをインストールし、カメラの URL、ユーザー名、パスワードを構成します。 
+配置マニフェストが更新されたら、カメラの製造元の指示に従ってカメラをインストールし、カメラの URL、ユーザー名、パスワードを構成します。 
 
 次に、`VIDEO_URL` をカメラの RTSP URL に設定し、カメラに接続するための資格情報を設定します。
 
@@ -122,7 +122,7 @@ IoT Edge モジュールのほとんどの**環境変数**は、上記のサン�
 
 ### <a name="execute-the-deployment"></a>デプロイを実行する
 
-[配置マニフェスト](https://go.microsoft.com/fwlink/?linkid=2142179)が完成したら、Azure CLI で次のコマンドを使用して、コンテナーを IoT Edge モジュールとしてホスト コンピューターにデプロイします。
+配置マニフェストが完成したら、Azure CLI で次のコマンドを使用して、コンテナーを IoT Edge モジュールとしてホスト コンピューターにデプロイします。
 
 ```azurecli
 az login
@@ -137,7 +137,7 @@ az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge devic
 * IoT Edge デバイス名: ホスト コンピューターの IoT Edge デバイス名。
 * サブスクリプション:サブスクリプションの ID または名前。
 
-このコマンドによってデプロイが開始されます。Azure portal の Azure IoT Hub インスタンスでデプロイの状態を確認できます。 デバイスでコンテナー イメージのダウンロードが終了し、実行が開始されるまで、状態に "*417 - デバイスのデプロイ構造が設定されていません*" と表示されることがあります。
+このコマンドによってデプロイが開始されます。Azure portal の Azure IoT Hub インスタンスでデプロイの状態を確認できます。 デバイスでコンテナー イメージのダウンロードが終了し、実行が開始されるまで、状態に " *417 - デバイスのデプロイ構造が設定されていません* " と表示されることがあります。
 
 ### <a name="validate-that-the-deployment-was-successful"></a>デプロイが成功したことを検証する
 
@@ -145,7 +145,7 @@ Azure portal の IoT Hub インスタンスで、spatial-analysis モジュー�
 
 ![デプロイの検証の例](./media/spatial-analysis/deployment-verification.png)
 
-この時点で、spatial-analysis コンテナーは操作を実行しています。 `cognitiveservices.vision.spatialanalysis-personcount` 操作の AI 分析情報が生成され、これらの分析情報がテレメトリとして Azure IoT Hub インスタンスにルーティングされます。 追加のカメラを構成するには、[配置マニフェスト](https://go.microsoft.com/fwlink/?linkid=2142179) ファイルを更新し、デプロイをもう一度実行します。
+この時点で、spatial-analysis コンテナーは操作を実行しています。 `cognitiveservices.vision.spatialanalysis-personcount` 操作の AI 分析情報が生成され、これらの分析情報がテレメトリとして Azure IoT Hub インスタンスにルーティングされます。 追加のカメラを構成するには、配置マニフェスト ファイルを更新し、デプロイをもう一度実行します。
 
 ## <a name="person-counting-web-application"></a>人数カウント Web アプリ
 
@@ -156,7 +156,7 @@ Azure portal の IoT Hub インスタンスで、spatial-analysis モジュー�
 このアプリのコンテナー フォームは、Azure Container Registry で利用できます。 次の docker pull コマンドを使用してダウンロードします。 アクセス トークンについては、Microsoft (projectarchon@microsoft.com) にお問い合わせください。
 
 ```bash
-docker login rtvsofficial.azurecr.io -u <token name> -p <password>
+docker login rtvsofficial.azurecr.io -u <token name> -p <password>
 docker pull rtvsofficial.azurecr.io/acceleratorapp.personcount:1.0
 ```
 
@@ -178,7 +178,7 @@ docker push [desired local image name]
 
 ### <a name="configure-the-app"></a>Configure the app 
 
-セットアップが完了するまで待ち、Azure portal でリソースに移動します。 **構成**セクションに移動し、次の 2 つの**アプリケーション設定**を追加します。
+セットアップが完了するまで待ち、Azure portal でリソースに移動します。 **構成** セクションに移動し、次の 2 つの **アプリケーション設定** を追加します。
 
 * `EventHubConsumerGroup` - Azure IoT Hub のコンシューマー グループの文字列名。IoT Hub に新しいコンシューマー グループを作成することも、既定のグループを使用することもできます。 
 * `IotHubConnectionString` - Azure IoT Hub への接続文字列。これは、Azure IoT Hub リソースの ![[パラメーターの構成]](./media/spatial-analysis/solution-app-config-page.png) のキー セクションから取得できます。

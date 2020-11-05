@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 06/25/2020
+ms.date: 10/19/2020
 ms.author: aahi
-ms.openlocfilehash: 12c09ad8e1db3914263fcc864c9c2d09069d63a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 172e684c6edbab4d7d47c8cf78e35ae38de3a0af
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85412585"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461789"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Text Analytics API のバージョン 3.x への移行
 
@@ -33,7 +33,12 @@ Text Analytics API のバージョン 2.1 を使用している場合、この�
 
 ### <a name="rest-api"></a>REST API
 
-アプリケーションで REST API を使用している場合は、その要求エンドポイントを感情分析用の v3 エンドポイントに更新します。 たとえば、`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment` となります。 また、[JSON 応答](how-tos/text-analytics-how-to-sentiment-analysis.md#view-the-results)で返されるセンチメント ラベルを使用するようアプリケーションを更新することも必要になります。 
+アプリケーションで REST API を使用している場合は、その要求エンドポイントを感情分析用の v3 エンドポイントに更新します。 たとえば、`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment` となります。 また、[API の応答](how-tos/text-analytics-how-to-sentiment-analysis.md#view-the-results)で返されるセンチメント ラベルを使用するようアプリケーションを更新することも必要になります。 
+
+JSON 応答の例については、リファレンス ドキュメントを参照してください。
+* [バージョン 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
+* [Version 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Sentiment) 
+* [Version 3.1-preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Sentiment)
 
 ### <a name="client-libraries"></a>クライアント ライブラリ
 
@@ -60,7 +65,12 @@ Entity Linking
 NER
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
 
-また、[JSON 応答](how-tos/text-analytics-how-to-entity-linking.md#view-results)で返される[エンティティ カテゴリ](named-entity-types.md)を使用するようアプリケーションを更新することも必要になります。
+また、[API の応答](how-tos/text-analytics-how-to-entity-linking.md#view-results)で返される[エンティティ カテゴリ](named-entity-types.md)を使用するようアプリケーションを更新することも必要になります。
+
+JSON 応答の例については、リファレンス ドキュメントを参照してください。
+* [バージョン 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+* [Version 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral) 
+* [Version 3.1-preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/EntitiesRecognitionGeneral)
 
 ### <a name="client-libraries"></a>クライアント ライブラリ
 
@@ -77,7 +87,12 @@ NER
 
 ### <a name="rest-api"></a>REST API
 
-アプリケーションで REST API を使用している場合は、その要求エンドポイントを言語検出用の v3 エンドポイントに更新します。 たとえば、`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages` となります。 また、[JSON 応答](how-tos/text-analytics-how-to-language-detection.md#step-3-view-the-results)で `score` ではなく `ConfidenceScore` を使用するようアプリケーションを更新することも必要になります。 
+アプリケーションで REST API を使用している場合は、その要求エンドポイントを言語検出用の v3 エンドポイントに更新します。 たとえば、`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages` となります。 また、[API の応答](how-tos/text-analytics-how-to-language-detection.md#step-3-view-the-results)で `score` ではなく `ConfidenceScore` を使用するようアプリケーションを更新することも必要になります。 
+
+JSON 応答の例については、リファレンス ドキュメントを参照してください。
+* [バージョン 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)
+* [Version 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) 
+* [Version 3.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
 
 ### <a name="client-libraries"></a>クライアント ライブラリ
 
@@ -96,6 +111,11 @@ NER
 
 アプリケーションで REST API を使用している場合は、その要求エンドポイントをキー フレーズ抽出用の v3 エンドポイントに更新します。 例: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`
 
+JSON 応答の例については、リファレンス ドキュメントを参照してください。
+* [バージョン 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)
+* [Version 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) 
+* [Version 3.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/KeyPhrases)
+
 ### <a name="client-libraries"></a>クライアント ライブラリ
 
 [!INCLUDE [Client library migration information](includes/client-library-migration-section.md)]
@@ -105,7 +125,6 @@ NER
 
 ## <a name="see-also"></a>関連項目
 
-* [Text Analytics API v2 のリファレンス](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/)
 * [Text Analytics API とは](overview.md)
 * [言語サポート](language-support.md)
 * [モデルのバージョン管理](concepts/model-versioning.md)

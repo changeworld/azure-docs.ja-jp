@@ -1,4 +1,4 @@
-- name: Azure DB for PostgreSQL のドキュメント
+- name: Azure Database for PostgreSQL のドキュメント
   href: index.yml
 - name: 概要
   items:
@@ -255,6 +255,9 @@
             - name: Azure PowerShell
               href: howto-restore-server-powershell.md
               displayName: 'restore, georestore, geo-restore, outage'
+            - name: 削除されたサーバーの復元
+              href: howto-restore-dropped-server.md
+              displayName: 'restore server,dropped, recover'
         - name: 認証を有効にする
           items:
             - name: ユーザーの作成

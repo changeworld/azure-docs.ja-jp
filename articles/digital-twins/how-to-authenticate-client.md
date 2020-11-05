@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d71a7535c40d240b6c9bf53cff906f12b4b8b5df
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 84cb7e7e98e81e242ec1cac554fe073370e45645
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204301"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495778"
 ---
 # <a name="write-client-app-authentication-code"></a>クライアント アプリの認証コードを書き込む
 
@@ -20,7 +20,7 @@ ms.locfileid: "92204301"
 
 Azure Digital Twins では [OAUTH 2.0 に基づく Azure AD セキュリティ トークン](../active-directory/develop/security-tokens.md#json-web-tokens-jwts-and-claims)を使用して認証が実行されます。 ご使用の SDK を認証するには、Azure Digital Twins に対する適切なアクセス許可を持つベアラー トークンを取得し、API 呼び出しと共にこれを渡す必要があります。 
 
-この記事では、`Azure.Identity` クライアント ライブラリを使用して資格情報を取得する方法について説明します。 この記事では C# のコード サンプルを示していますが ( [.NET (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core) 用に記述する内容など)、使用する SDK に関係なく `Azure.Identity` のバージョンを使用できます (Azure Digital Twins で使用できる SDK の詳細については、 [*Azure Digital Twins API と SDK の使用方法*](how-to-use-apis-sdks.md)に関する記事をご覧ください)。
+この記事では、`Azure.Identity` クライアント ライブラリを使用して資格情報を取得する方法について説明します。 この記事では C# のコード サンプルを示していますが ( [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) 用に記述する内容など)、使用する SDK に関係なく `Azure.Identity` のバージョンを使用できます (Azure Digital Twins で使用できる SDK の詳細については、 [*Azure Digital Twins API と SDK の使用方法*](how-to-use-apis-sdks.md)に関する記事をご覧ください)。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -84,6 +84,10 @@ try
 }
 ```
 
+#### <a name="set-up-local-azure-credentials"></a>ローカルの Azure 資格情報を設定する
+
+[!INCLUDE [Azure Digital Twins: local credentials prereq (inner)](../../includes/digital-twins-local-credentials-inner.md)]
+
 ### <a name="managedidentitycredential-method"></a>ManagedIdentityCredential メソッド
 
 [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?preserve-view=true&view=azure-dotnet) メソッドは、Azure Functions を使用する場合など、[マネージド ID (MSI)](../active-directory/managed-identities-azure-resources/overview.md) が必要な場合に適しています。
@@ -106,8 +110,8 @@ client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
 [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) メソッドは、対話型アプリケーションを対象としており、認証用の Web ブラウザーが開きます。 対話型認証が必要な場合には、これを `DefaultAzureCredential` の代わりに使用できます。
 
 対話型のブラウザー資格情報を使用するには、Azure Digital Twins API へのアクセス許可がある **アプリの登録** が必要になります。 このアプリの登録を設定する手順については、 [*方法:アプリ登録の作成*](how-to-create-app-registration.md)に関するページを参照してください。 アプリの登録が設定されたら、次のものが必要になります。
-* アプリの登録の " *アプリケーション (クライアント) ID* " ([確認の手順](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
-* アプリの登録の " *ディレクトリ (テナント) ID* " ([確認の手順](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
+* アプリの登録の " *アプリケーション (クライアント) ID* " ( [確認の手順](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
+* アプリの登録の " *ディレクトリ (テナント) ID* " ( [確認の手順](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
 * Azure Digital Twins インスタンスの URL ([確認の手順](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
 
 `InteractiveBrowserCredential` を使用して認証された SDK クライアントを作成するコードの例を次に示します。

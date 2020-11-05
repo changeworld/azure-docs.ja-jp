@@ -10,17 +10,17 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: fe4f0cdcdb863582560b0eba3a22e95b93ff858b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7df082cd5044f142d8d5900ec1fff6c182262bd9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150944"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425114"
 ---
 # <a name="disclosure-design-patterns"></a>設計パターンを開示する
 合成音声エクスペリエンスの適切な[開示レベル](concepts-disclosure-guidelines.md#disclosure-assessment)が決定されたので、考えられる設計パターンについて検討するよい機会です。
 ## <a name="overview"></a>概要
-合成音声エクスペリエンスに適用できる、さまざまな開示の設計パターンがあります。 開示評価の結果が "高開示" であった場合、[**明示的開示**](#explicit-disclosure)、つまり、合成音声の出自をありのままに伝えることをお勧めします。 [**暗黙的開示**](#implicit-disclosure)には、要求される開示レベルの高低に関係なく、音声エクスペリエンスを向上させる合図と対話パターンが含まれます。
+合成音声エクスペリエンスに適用できる、さまざまな開示の設計パターンがあります。 開示評価の結果が "高開示" であった場合、 [**明示的開示**](#explicit-disclosure)、つまり、合成音声の出自をありのままに伝えることをお勧めします。 [**暗黙的開示**](#implicit-disclosure)には、要求される開示レベルの高低に関係なく、音声エクスペリエンスを向上させる合図と対話パターンが含まれます。
 ![さまざまな開示パターン](media/responsible-ai/disclosure-patterns/affordances.png)
 
 
@@ -184,7 +184,7 @@ Recommendations
 
 デジタル アシスタントができることに関して正確な期待を設定することで、暗黙的に開示を達成できます。 サンプル コマンドを提供して、デジタル アシスタントと対話する方法をユーザーが学べるようにします。また、エクスペリエンスの早い段階から合成音声について詳しく知るための状況依存ヘルプを提供します。
 
-![視覚的な合図とフィードバック](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
+![作成できる会話への既定の応答集の例。](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
 
 ### <a name="conversational-transparency"></a>会話のわかりやすさ
 
