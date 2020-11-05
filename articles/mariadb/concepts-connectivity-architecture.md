@@ -1,17 +1,17 @@
 ---
 title: 接続アーキテクチャ - Azure Database for MariaDB
 description: Azure Database for MariaDB サーバーの接続アーキテクチャについて説明します。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: c3f557c757a46252b9fa0416cc62a827b233f1b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9c1331b7d868c29fddf7b709912e87d55d73c45
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88065354"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241448"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Azure Database for MariaDB の接続アーキテクチャ
 この記事では、Azure Database for MariaDB 接続アーキテクチャと、Azure 内外の両方のクライアントからトラフィックがどのように Azure Database for MariaDB インスタンスに転送されるかについて説明します。
@@ -74,7 +74,7 @@ Azure Database for MariaDB への接続は、受信接続を Microsoft のクラ
 
 ## <a name="connection-redirection"></a>接続のリダイレクト
 
-Azure Database for MariaDB を使うと、クライアント アプリケーションと MariaDB サーバーの間のネットワーク待機時間の短縮に役立つ、**リダイレクト**という追加接続ポリシーがサポートされます。 この機能を使うと、Azure Database for MariaDB サーバーに対する最初の TCP セッションが確立された後、MariaDB サーバーがホストされているノードのバックエンド アドレスが、サーバーからクライアントに返されます。 その後、後続のパケットはすべて、ゲートウェイをバイパスして、サーバーに直接送信されます。 パケットがサーバーに直接送信されるため、待機時間とスループットのパフォーマンスが改善されます。
+Azure Database for MariaDB を使うと、クライアント アプリケーションと MariaDB サーバーの間のネットワーク待機時間の短縮に役立つ、 **リダイレクト** という追加接続ポリシーがサポートされます。 この機能を使うと、Azure Database for MariaDB サーバーに対する最初の TCP セッションが確立された後、MariaDB サーバーがホストされているノードのバックエンド アドレスが、サーバーからクライアントに返されます。 その後、後続のパケットはすべて、ゲートウェイをバイパスして、サーバーに直接送信されます。 パケットがサーバーに直接送信されるため、待機時間とスループットのパフォーマンスが改善されます。
 
 この機能は、エンジンのバージョンが 10.2 と 10.3 の Azure Database for MariaDB サーバーでサポートされています。
 

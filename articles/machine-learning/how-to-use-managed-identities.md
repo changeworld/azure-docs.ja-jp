@@ -10,16 +10,16 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: c4ea7609c343532f17144e388be7583eab427eee
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3490e3004e5f5dd99795967f0deb8510200fa50b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440452"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311037"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Azure Machine Learning でマネージド ID を使用する (プレビュー)
 
-[マネージド ID](/azure/active-directory/managed-identities-azure-resources/overview) を使用すると、" *リソースへのアクセスに必要な最低限のアクセス許可* " でワークスペースを構成できます。 
+[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用すると、" *リソースへのアクセスに必要な最低限のアクセス許可* " でワークスペースを構成できます。 
 
 Azure Machine Learning ワークスペースを信頼できる方法で構成する場合、ワークスペースに関連付けられているさまざまなサービスのアクセス レベルが適切であることを確認することが重要です。 たとえば機械学習ワークフロー時に、ワークスペースでは、Docker イメージ用に Azure Container Registry (ACR) と、トレーニング データ用にストレージ アカウントへのアクセスが必要です。 
 
@@ -37,9 +37,9 @@ Azure Machine Learning ワークスペースを信頼できる方法で構成す
 
 - Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)に関するページをご覧ください。
 - [Machine Learning service 用 Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)
-- [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。
-- ロールを割り当てるには、Azure サブスクリプションのログインに [マネージド ID オペレーター](/azure/role-based-access-control/built-in-roles#managed-identity-operator) ロール、または必要なアクション ( __所有者__ など) を付与するその他のロールが含まれている必要があります。
-- [マネージド ID](/azure/active-directory/managed-identities-azure-resources/overview) の作成と操作に慣れている必要があります。
+- [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?view=azure-ml-py)。
+- ロールを割り当てるには、Azure サブスクリプションのログインに [マネージド ID オペレーター](../role-based-access-control/built-in-roles.md#managed-identity-operator) ロール、または必要なアクション ( __所有者__ など) を付与するその他のロールが含まれている必要があります。
+- [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) の作成と操作に慣れている必要があります。
 
 ## <a name="configure-managed-identities"></a>マネージド ID の構成
 
@@ -56,10 +56,10 @@ Azure Machine Learning ワークスペースを信頼できる方法で構成す
 
 ACR 管理者ユーザーがサブスクリプション ポリシーによって禁止されている場合は、まず管理者ユーザーなしで ACR を作成し、それをワークスペースに関連付けます。 また、管理者ユーザーが無効になっている既存の ACR がある場合は、それをワークスペースにアタッチすることもできます。
 
-```--admin-enabled``` 引数を設定せずに [Azure CLI から ACR を作成する](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli)か、管理者ユーザーを有効にせずに Azure portal から ACR を作成します。 次に、Azure Machine Learning ワークスペースを作成するときに、ACR の Azure リソース ID を指定します。 次の例は、既存の ACR を使用する新しい Azure ML ワークスペースを作成する方法を示しています。
+```--admin-enabled``` 引数を設定せずに [Azure CLI から ACR を作成する](../container-registry/container-registry-get-started-azure-cli.md)か、管理者ユーザーを有効にせずに Azure portal から ACR を作成します。 次に、Azure Machine Learning ワークスペースを作成するときに、ACR の Azure リソース ID を指定します。 次の例は、既存の ACR を使用する新しい Azure ML ワークスペースを作成する方法を示しています。
 
 > [!TIP]
-> `--container-registry` パラメーターの値を取得するには、[az acr show](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az_acr_show) コマンドを使用して ACR の情報を表示します。 `id` フィールドに、ACR のリソース ID が表示されます。
+> `--container-registry` パラメーターの値を取得するには、[az acr show](/cli/azure/acr?view=azure-cli-latest#az_acr_show) コマンドを使用して ACR の情報を表示します。 `id` フィールドに、ACR のリソース ID が表示されます。
 
 ```azurecli-interactive
 az ml workspace create -w <workspace name> \
@@ -106,7 +106,7 @@ az ml workspace create -w <workspace name> \
 
 # <a name="python"></a>[Python](#tab/python)
 
-[AmlComputeProvisioningConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration?view=azure-ml-py) でコンピューティング クラスターを作成する場合は、`identity_type` パラメーターを使用してマネージド ID の種類を設定します。
+[AmlComputeProvisioningConfiguration](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration?view=azure-ml-py) でコンピューティング クラスターを作成する場合は、`identity_type` パラメーターを使用してマネージド ID の種類を設定します。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -190,7 +190,7 @@ env.python.user_managed_dependencies = True
 
         UAI リソース ID は、ユーザー割り当て ID の Azure リソース ID で、`/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAI name>` の形式です。
 
-1. [Workspace.set_connection メソッド](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-)を使用して、ワークスペース接続の外部 ACR と __ユーザー割り当てマネージド ID__ のクライアント ID を指定します。
+1. [Workspace.set_connection メソッド](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-)を使用して、ワークスペース接続の外部 ACR と __ユーザー割り当てマネージド ID__ のクライアント ID を指定します。
 
     ```python
     workspace.set_connection(
@@ -210,7 +210,7 @@ env = Environment(name="my-env")
 env.docker.base_image = "<acr url>/my-repo/my-image:latest"
 ```
 
-必要に応じて [RegistryIdentity](https://docs.microsoft.com/python/api/azureml-core/azureml.core.container_registry.registryidentity?view=azure-ml-py) を使用することで、環境定義自体でマネージド ID リソース URL とクライアント ID を指定できます。 レジストリ ID を明示的に使用すると、それ以前に指定したワークスペースの接続がオーバーライドされます。
+必要に応じて [RegistryIdentity](/python/api/azureml-core/azureml.core.container_registry.registryidentity?view=azure-ml-py) を使用することで、環境定義自体でマネージド ID リソース URL とクライアント ID を指定できます。 レジストリ ID を明示的に使用すると、それ以前に指定したワークスペースの接続がオーバーライドされます。
 
 ```python
 from azureml.core.container_registry import RegistryIdentity

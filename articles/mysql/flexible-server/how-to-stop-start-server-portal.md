@@ -1,17 +1,17 @@
 ---
 title: 停止または開始する - Azure portal - Azure Database for MySQL フレキシブル サーバー
 description: この記事では、Azure portal を使用して Azure Database for MySQL で操作を停止または開始する方法について説明します。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: e3e08ae9bbf00e1c9a44e6ba913cac1d842928b7
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 15b08ea67afe0d307470b5a4fb0f7d26e0f4ea82
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91567497"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241924"
 ---
 # <a name="stopstart-an-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL を停止または開始する - フレキシブル サーバー (プレビュー)
 
@@ -36,7 +36,7 @@ ms.locfileid: "91567497"
 
 3.  **[はい]** をクリックして、サーバーが停止していることを確認します。
 
-    :::image type="content" source="media/how-to-stop-start-server-portal/confirm-stop.png" alt-text="フレキシブル サーバーを停止します。"::: 
+    :::image type="content" source="media/how-to-stop-start-server-portal/confirm-stop.png" alt-text="フレキシブル サーバーが停止していることを確認します。"::: 
 
 > [!NOTE]
 > サーバーが停止すると、そのフレキシブル サーバーに対して他の管理操作は実行できません。
@@ -47,7 +47,7 @@ ms.locfileid: "91567497"
 
 2.  **[概要]** ページのツール バーで **[起動]** ボタンをクリックします。
 
-    :::image type="content" source="media/how-to-stop-start-server-portal/start-server.png" alt-text="フレキシブル サーバーを停止します。":::  
+    :::image type="content" source="media/how-to-stop-start-server-portal/start-server.png" alt-text="フレキシブル サーバーを起動します。":::  
 
 > [!NOTE]
 > サーバーが起動した後、すべての管理操作をフレキシブル サーバーで使用できるようになります。

@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 08981ad21c15b6fc375e2e0733564c40d54932ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce068f1b43fcd6611d4abf65029cbcc5de3b7d30
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708256"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311603"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>解釈可能性パッケージを使用して、Python ML モデルと予測について説明する (プレビュー)
 
@@ -354,7 +354,7 @@ Azure Machine Learning Studio の視覚化ダッシュボードにアクセス�
    [![AzureML studio での [実験] の視覚化ダッシュボードのローカルな特徴の重要度](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * **[モデル]** ウィンドウ
-  1. 「[Azure Machine Learning を使用してモデルをデプロイする](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)」の手順に従って元のモデルを登録している場合は、左側のウィンドウの **[モデル]** を選択してそれを表示できます。
+  1. 「 [Azure Machine Learning を使用してモデルをデプロイする](./how-to-deploy-and-where.md)」の手順に従って元のモデルを登録している場合は、左側のウィンドウの **[モデル]** を選択してそれを表示できます。
   1. モデルを選択してから **[説明]** タブを選択して、説明の視覚化ダッシュボードを表示します。
 
 ## <a name="interpretability-at-inference-time"></a>推論時の解釈可能性
@@ -419,7 +419,7 @@ Azure Machine Learning Studio の視覚化ダッシュボードにアクセス�
 
 1. 次の手順に従って、コンピューティング先にイメージをデプロイします。
 
-   1. 必要に応じて、「[Azure Machine Learning を使用してモデルをデプロイする](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)」の手順に従って元の予測モデルを登録します。
+   1. 必要に応じて、「[Azure Machine Learning を使用してモデルをデプロイする](./how-to-deploy-and-where.md)」の手順に従って元の予測モデルを登録します。
 
    1. スコアリング ファイルを作成します。
 
@@ -553,4 +553,3 @@ Azure Machine Learning Studio の視覚化ダッシュボードにアクセス�
 [モデルの解釈可能性の詳細について学習する](how-to-machine-learning-interpretability.md)
 
 [Azure Machine Learning の解釈可能性サンプル ノートブックを確認する](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
-

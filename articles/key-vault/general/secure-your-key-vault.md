@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: b04bd6975a2ba8824124c769e66da1e4ebe7534a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 585f5998eb953c8ed90a47922d76f32897c0f915
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309935"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285840"
 ---
 # <a name="secure-access-to-a-key-vault"></a>キー コンテナーへのアクセスをセキュリティで保護する
 
@@ -26,9 +26,9 @@ Key Vault の詳細については、「[Azure Key Vault について](overview.
 
 キー コンテナーへのアクセスは、2 つのインターフェイス ( **管理プレーン** と **データ プレーン** ) を使用して制御します。 管理プレーンでは、Key Vault 自体の管理を行います。 このプレーンでは、キー コンテナーの作成および削除、Key Vault のプロパティの取得、アクセス ポリシーの更新などの操作を行います。 データ プレーンでは、キー コンテナーに格納されているデータを操作します。 キー、シークレット、証明書の追加、削除、および変更を行うことができます。
 
-認証については、両方のプレーンで [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) が使用されます。 承認については、管理プレーンによって [Azure ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) が使用され、データ プレーンによって [Key Vault アクセス ポリシー](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)と [Key Vault データ プレーン操作用の Azure RBAC (プレビュー)](https://docs.microsoft.com/azure/key-vault/general/rbac-guide) が使用されます。
+認証については、両方のプレーンで [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) が使用されます。 承認については、管理プレーンによって [Azure ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) が使用され、データ プレーンによって [Key Vault アクセス ポリシー](./assign-access-policy-portal.md)と [Key Vault データ プレーン操作用の Azure RBAC (プレビュー)](./rbac-guide.md) が使用されます。
 
-いずれのプレーン内でもキー コンテナーにアクセスするには、すべての呼び出し元 (ユーザーまたはアプリケーション) が適切な認証と承認を必要とします。 認証では、呼び出し元の ID が確立されます。 承認では、呼び出し元が実行できる操作が決定されます。 Key Vault による認証は、特定の **セキュリティ プリンシパル** の ID の認証を行う [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) と連携して機能します。
+いずれのプレーン内でもキー コンテナーにアクセスするには、すべての呼び出し元 (ユーザーまたはアプリケーション) が適切な認証と承認を必要とします。 認証では、呼び出し元の ID が確立されます。 承認では、呼び出し元が実行できる操作が決定されます。 Key Vault による認証は、特定の **セキュリティ プリンシパル** の ID の認証を行う [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) と連携して機能します。
 
 セキュリティ プリンシパルは、Azure リソースへのアクセスを要求するユーザー、グループ、サービス、またはアプリケーションを表すオブジェクトです。 すべてのセキュリティ プリンシパルには、Azure によって一意の **オブジェクト ID** が割り当てられます。
 
@@ -36,7 +36,7 @@ Key Vault の詳細については、「[Azure Key Vault について](overview.
 
 * **グループ** セキュリティ プリンシパルでは、Azure Active Directory 内に作成されたユーザーのセットが示されます。 グループに割り当てられたすべてのロールまたはアクセス許可は、グループ内のすべてのユーザーに付与されます。
 
-* **サービス プリンシパル** は、アプリケーションまたはサービス、つまりユーザーまたはグループではなくコードを示すセキュリティ プリンシパルの一種です。 サービス プリンシパルのオブジェクト ID は **クライアント ID** と呼ばれ、ユーザー名のように機能します。 サービス プリンシパルの **クライアント シークレット** または **証明書** は、パスワードのように機能します。 多くの Azure サービスによって、 **クライアント ID** および **証明書** の自動管理による [マネージド ID](/azure/active-directory/managed-identities-azure-resources/overview) の割り当てがサポートされます。 マネージド ID は、Azure 内での認証で最も安全かつ推奨されるオプションです。
+* **サービス プリンシパル** は、アプリケーションまたはサービス、つまりユーザーまたはグループではなくコードを示すセキュリティ プリンシパルの一種です。 サービス プリンシパルのオブジェクト ID は **クライアント ID** と呼ばれ、ユーザー名のように機能します。 サービス プリンシパルの **クライアント シークレット** または **証明書** は、パスワードのように機能します。 多くの Azure サービスによって、 **クライアント ID** および **証明書** の自動管理による [マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) の割り当てがサポートされます。 マネージド ID は、Azure 内での認証で最も安全かつ推奨されるオプションです。
 
 Key Vault の認証の詳細については、「[Azure Key Vault に対する認証](authentication.md)」を参照してください
 
@@ -48,7 +48,7 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 - **ユーザーのみ** : ユーザーは、テナントに登録されている任意のアプリケーションからキー コンテナーにアクセスします。 この種類のアクセスの例として、Azure PowerShell や Azure portal があります。 このシナリオが機能するには、ユーザーの `objectId` をアクセス ポリシーで指定する必要があり、`applicationId` を指定 _しない_ ようにするか、または `null` にする必要があります。
 - **アプリケーションとユーザー** ( _複合 ID_ とも呼ばれます): ユーザーは、特定のアプリケーションからキー コンテナーにアクセスする必要があり、 _かつ_ そのアプリケーションは On-Behalf-Of 認証 (OBO) フローを使用してそのユーザーを偽装する必要があります。 このシナリオが機能するには、`applicationId` と `objectId` の両方をアクセス ポリシーで指定する必要があります。 `applicationId` によってその必要なアプリケーションが識別され、`objectId` によってそのユーザーが識別されます。 現時点では、このオプションはデータ プレーンの Azure RBAC (プレビュー) では使用できません。
 
-すべての種類のアクセスで、アプリケーションは Azure AD を使用して認証します。 アプリケーションでは、アプリケーションの種類に基づいて[サポートされる認証方法](../../active-directory/develop/authentication-scenarios.md)が使用されます。 アプリケーションでは、アクセス権を付与するプレーン内のリソース用のトークを取得します。 このリソースは、管理プレーンまたはデータ プレーン内にあるエンドポイントであり、Azure 環境に基づいています。 アプリケーションでは、このトークンを使用して、Key Vault に REST API 要求を送信します。 詳細については、[認証フロー全体](../../active-directory/develop/v2-oauth2-auth-code-flow.md)に関するページを確認してください。
+すべての種類のアクセスで、アプリケーションは Azure AD を使用して認証します。 アプリケーションでは、アプリケーションの種類に基づいて[サポートされる認証方法](../../active-directory/develop/authentication-vs-authorization.md)が使用されます。 アプリケーションでは、アクセス権を付与するプレーン内のリソース用のトークを取得します。 このリソースは、管理プレーンまたはデータ プレーン内にあるエンドポイントであり、Azure 環境に基づいています。 アプリケーションでは、このトークンを使用して、Key Vault に REST API 要求を送信します。 詳細については、[認証フロー全体](../../active-directory/develop/v2-oauth2-auth-code-flow.md)に関するページを確認してください。
 
 1 つのメカニズムで両方のプレーンを認証するモデルには次のようないくつかの利点があります。
 
@@ -69,9 +69,9 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 
 ## <a name="management-plane-and-azure-rbac"></a>管理プレーンと Azure RBAC
 
-管理プレーンでは、[Azure ロールベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) を使用して、呼び出し元が実行できる操作を承認します。 Azure RBAC モデルでは、各 Azure サブスクリプションに Azure AD のインスタンスが用意されています。 このディレクトリからユーザー、グループ、アプリケーションにアクセス権を付与します。 Azure サブスクリプションに含まれていて Azure Resource Manager デプロイ モデルを使用しているリソースを管理するためのアクセス権が付与されます。
+管理プレーンでは、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を使用して、呼び出し元が実行できる操作を承認します。 Azure RBAC モデルでは、各 Azure サブスクリプションに Azure AD のインスタンスが用意されています。 このディレクトリからユーザー、グループ、アプリケーションにアクセス権を付与します。 Azure サブスクリプションに含まれていて Azure Resource Manager デプロイ モデルを使用しているリソースを管理するためのアクセス権が付与されます。
 
-リソース グループ内にキー コンテナーを作成し、Azure AD を使用してアクセスを管理します。 リソース グループ内のキー コンテナーを管理する権限をユーザーまたはグループに付与します。 適切な Azure ロールを割り当てることにより、特定のスコープ レベルでアクセス権を付与します。 キー コンテナーを管理するためのアクセス権をユーザーに付与するには、定義済みの[キー コンテナー共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-contributor)ロールを特定のスコープでこのユーザーに割り当てます。 Azure ロールには以下のスコープ レベルを割り当てることができます。
+リソース グループ内にキー コンテナーを作成し、Azure AD を使用してアクセスを管理します。 リソース グループ内のキー コンテナーを管理する権限をユーザーまたはグループに付与します。 適切な Azure ロールを割り当てることにより、特定のスコープ レベルでアクセス権を付与します。 キー コンテナーを管理するためのアクセス権をユーザーに付与するには、定義済みの[キー コンテナー共同作成者](../../role-based-access-control/built-in-roles.md#key-vault-contributor)ロールを特定のスコープでこのユーザーに割り当てます。 Azure ロールには以下のスコープ レベルを割り当てることができます。
 
 - **サブスクリプション** :サブスクリプション レベルで割り当てられた Azure ロールは、そのサブスクリプション内のすべてのリソース グループとリソースに適用されます。
 - **[リソース グループ]** :リソース グループ レベルで割り当てられた Azure ロールは、そのリソース グループ内のすべてのリソースに適用されます。
@@ -79,7 +79,7 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 
 定義済みのロールが複数あります。 定義済みのロールがニーズに合わない場合は、独自のロールを定義できます。 詳細については、[Azure の組み込みロール](../../role-based-access-control/built-in-roles.md)に関するページを参照してください。 
 
-`Microsoft.Authorization/roleAssignments/write` および `Microsoft.Authorization/roleAssignments/delete` のアクセス許可 ([ユーザー アクセス管理者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator)や[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)など) が必要です
+`Microsoft.Authorization/roleAssignments/write` および `Microsoft.Authorization/roleAssignments/delete` のアクセス許可 ([ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)や[所有者](../../role-based-access-control/built-in-roles.md#owner)など) が必要です
 
 > [!IMPORTANT]
 > ユーザーがキー コンテナーの管理プレーンに対する `Contributor` 権限を持っている場合は、そのユーザーは Key Vault アクセス ポリシーを設定することで、データ プレーンへのアクセス権を自分自身に付与できます。 ご利用のキー コンテナーへの `Contributor` ロール アクセス権を持つユーザーの管理は厳密に行う必要があります。 承認されたユーザーだけがコンテナー、キー、シークレット、証明書にアクセスできるようにします。
@@ -92,7 +92,7 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 
 ユーザー、グループ、またはアプリケーションには、キー コンテナー内のキーやシークレットに対して特定の操作を行うためのアクセス権を付与します。 Key Vault では、1 つのキー コンテナーに対して最大 1,024 個のアクセス ポリシー エントリがサポートされています。 データ プレーンのアクセス権を複数のユーザーに付与するには、Azure AD セキュリティ グループを作成し、そのグループにユーザーを追加します。
 
-コンテナーとシークレットの操作の完全な一覧については、こちらを参照してください。[Key Vault 操作のリファレンス](https://docs.microsoft.com/rest/api/keyvault/#vault-operations)
+コンテナーとシークレットの操作の完全な一覧については、こちらを参照してください。[Key Vault 操作のリファレンス](/rest/api/keyvault/#vault-operations)
 
 <a id="key-vault-access-policies"></a> Key Vault アクセス ポリシーでは、キー、シークレット、および証明書へのアクセス許可が個別に付与されます。  キー、シークレット、証明書へのアクセス許可は、コンテナー レベルになります。 
 
@@ -109,13 +109,13 @@ Azure のロールベースのアクセス制御は、Azure Key Vault データ 
 
 Azure ロールが Azure AD セキュリティ プリンシパルに割り当てられると、Azure によりそのセキュリティ プリンシパルのリソースへのアクセス権が付与されます。 アクセスのスコープは、サブスクリプション、リソース グループ、キー コンテナー、または個別のキー、シークレット、または証明書のレベルで指定できます。 Azure AD セキュリティ プリンシパルは、Azure リソースのユーザー、グループ、アプリケーション サービス プリンシパル、または[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) の場合があります。
 
-コンテナー アクセス ポリシーに勝る Azure RBAC アクセス許可を使用する主なベネフィットは、一元的なアクセス制御管理と [Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) との統合です。 Privileged Identity Management では、時間ベースおよび承認ベースのロールのアクティブ化を提供して、対象リソースに対する過剰、不要、または誤用であるアクセス許可のリスクを軽減します。
+コンテナー アクセス ポリシーに勝る Azure RBAC アクセス許可を使用する主なベネフィットは、一元的なアクセス制御管理と [Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md) との統合です。 Privileged Identity Management では、時間ベースおよび承認ベースのロールのアクティブ化を提供して、対象リソースに対する過剰、不要、または誤用であるアクセス許可のリスクを軽減します。
 
 RBAC を使用した Key Vault データ プレーンの詳細については、[Azure のロールベースのアクセス制御を使用した Key Vault のキー、証明書、シークレット (プレビュー)](rbac-guide.md) に関する記事を参照してください
 
 ## <a name="firewalls-and-virtual-networks"></a>ファイアウォールと仮想ネットワーク
 
-追加のセキュリティ層のために、ファイアウォールと仮想ネットワーク規則を構成できます。 既定で (インターネット トラフィックを含む) すべてのネットワークからのトラフィックに対するアクセスを拒否するように Key Vault ファイアウォールと仮想ネットワークを構成することができます。 特定の [Azure 仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)やパブリック インターネット IP アドレスの範囲からのトラフィックにアクセスを許可できるため、アプリケーションに対してセキュリティで保護されたネットワーク境界を構築することができます。
+追加のセキュリティ層のために、ファイアウォールと仮想ネットワーク規則を構成できます。 既定で (インターネット トラフィックを含む) すべてのネットワークからのトラフィックに対するアクセスを拒否するように Key Vault ファイアウォールと仮想ネットワークを構成することができます。 特定の [Azure 仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)やパブリック インターネット IP アドレスの範囲からのトラフィックにアクセスを許可できるため、アプリケーションに対してセキュリティで保護されたネットワーク境界を構築することができます。
 
 サービス エンドポイントの使用方法の例をいくつか次に示します。
 
@@ -144,7 +144,7 @@ Azure サービスでプライベート リンクを使用する一般的なシ�
  
 - **独自のサービスへの拡張** : Azure 上のコンシューマーに対し、同じエクスペリエンスと機能でプライベートにサービスを提供できます。 Standard Azure Load Balancer の内側にサービスを配置することで、サービスを Private Link 対応にすることができます。 そうすれば、コンシューマーは自身の仮想ネットワーク内のプライベート エンドポイントを使用して直接そのサービスに接続できます。 接続要求は、承認呼び出しフローを使用して管理できます。 Azure Private Link は、異なる Azure Active Directory テナントに属するコンシューマーとサービスに対しても機能します。 
 
-プライベート エンドポイントの詳細については、[Key Vault と Azure Private Link](https://docs.microsoft.com/azure/key-vault/general/private-link-service) に関する記事を参照してください
+プライベート エンドポイントの詳細については、[Key Vault と Azure Private Link](./private-link-service.md) に関する記事を参照してください
 
 ## <a name="example"></a>例
 
@@ -184,11 +184,11 @@ Azure サービスでプライベート リンクを使用する一般的なシ�
 
 | Role | 管理プレーンのアクセス許可 | データ プレーンのアクセス許可 - コンテナー アクセス ポリシー | データ プレーンのアクセス許可 - Azure RBAC (プレビュー)  |
 | --- | --- | --- | --- |
-| セキュリティ チーム | [Key Vault Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-contributor) | 証明書: すべての操作 <br> キー: すべての操作 <br> シークレット: すべての操作 | [Key Vault Administrator (プレビュー)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-administrator-preview) |
+| セキュリティ チーム | [Key Vault Contributor](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | 証明書: すべての操作 <br> キー: すべての操作 <br> シークレット: すべての操作 | [Key Vault Administrator (プレビュー)](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
 | 開発者と&nbsp;運用者 | Key Vault デプロイ アクセス許可<br><br> **注** :このアクセス許可により、デプロイされた VM によりキー コンテナーからシークレットが取り込まれることが許可されます。 | なし | なし |
 | 監査者 | なし | 証明書: 一覧表示 <br> キー: 一覧表示<br>シークレット: 一覧表示<br><br> **注** :このアクセス許可により、監査者はログに出力されないキーとシークレットの属性 (タグ、ライセンス認証を行った日付、有効期限) を調べることができます。 | [Key Vault Reader (プレビュー)]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
-| Azure Storage アカウント | なし | キー: 取得、一覧表示、キーのラップ、キーのラップ解除 <br> | [Key Vault Crypto Service Encryption](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-crypto-service-encryption-preview) |
-| Application | なし | シークレット: 取得、一覧表示 <br> 証明書: 取得、一覧表示 | [Key Vault Reader (プレビュー)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview)、[Key Vault シークレット ユーザー (プレビュー)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-secrets-user-preview) |
+| Azure Storage アカウント | なし | キー: 取得、一覧表示、キーのラップ、キーのラップ解除 <br> | [Key Vault Crypto Service Encryption](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-preview) |
+| Application | なし | シークレット: 取得、一覧表示 <br> 証明書: 取得、一覧表示 | [Key Vault Reader (プレビュー)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview)、[Key Vault シークレット ユーザー (プレビュー)](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
 
 この 3 つのチーム ロールでは、Key Vault アクセス許可に加えて、他のリソースへのアクセス権も必要です。 VM (または Azure App Service の Web Apps 機能) をデプロイするには、開発者と運用者はアクセス権をデプロイする必要があります。 監査者には、Key Vault のログが格納されているストレージ アカウントに対する読み取りアクセス権が必要です。
 
@@ -200,10 +200,10 @@ Azure サービスでプライベート リンクを使用する一般的なシ�
 ## <a name="resources"></a>リソース
 
 - [Azure Key Vault について](overview.md)
-- [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
+- [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)
 - [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)
-- [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
-- [Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview)
+- [Azure RBAC](../../role-based-access-control/overview.md)
+- [Private Link](../../private-link/private-link-overview.md)
 
 ## <a name="next-steps"></a>次の手順
 

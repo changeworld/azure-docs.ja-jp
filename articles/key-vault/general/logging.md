@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 162e40555e11dff716b58eec4b1168728257693e
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 5423fc27ecc58bcd79b36a845e4b7569f342f712
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131175"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286694"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault のログ記録
 
@@ -26,7 +26,7 @@ ms.locfileid: "92131175"
 * ログにアクセスできるユーザーを制限することでログのセキュリティを保護するには、標準的な Azure アクセス制御方法を使用します。
 * ストレージ アカウントに保持する必要がなくなったログは削除します。
 
-Key Vault の概要については、「[Azure Key Vault とは](overview.md)」を参照してください。 Key Vault が使用可能な場所については、[価格に関するページ](https://azure.microsoft.com/pricing/details/key-vault/)をご覧ください。 [Azure Monitor for Key Vault](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview) の使用に関する詳細です。
+Key Vault の概要については、「[Azure Key Vault とは](overview.md)」を参照してください。 Key Vault が使用可能な場所については、[価格に関するページ](https://azure.microsoft.com/pricing/details/key-vault/)をご覧ください。 [Azure Monitor for Key Vault](../../azure-monitor/insights/key-vault-insights-overview.md) の使用に関する詳細です。
 
 ## <a name="interpret-your-key-vault-logs"></a>Key Vault のログを解釈する
 
@@ -88,32 +88,32 @@ Key Vault の概要については、「[Azure Key Vault とは](overview.md)」
 | operationName | REST API コマンド |
 | --- | --- |
 | **認証** |Azure Active Directory エンドポイント経由で認証します |
-| **VaultGet** |[キー コンテナーに関する情報を取得します](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
-| **VaultPut** |[キー コンテナーを作成または更新します](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
-| **VaultDelete** |[キー コンテナーを削除します](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
-| **VaultPatch** |[Key Vault を更新します](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
-| **VaultList** |[リソース グループ内のすべてのキー コンテナーを一覧表示します](https://msdn.microsoft.com/library/azure/mt620027.aspx) |
-| **KeyCreate** |[キーを作成します](https://msdn.microsoft.com/library/azure/dn903634.aspx) |
-| **KeyGet** |[キーに関する情報を取得します](https://msdn.microsoft.com/library/azure/dn878080.aspx) |
-| **KeyImport** |[コンテナーにキーをインポートします](https://msdn.microsoft.com/library/azure/dn903626.aspx) |
-| **KeyBackup** |[キーをバックアップします](https://msdn.microsoft.com/library/azure/dn878058.aspx) |
-| **KeyDelete** |[キーを削除します](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
-| **KeyRestore** |[キーを復元します](https://msdn.microsoft.com/library/azure/dn878106.aspx) |
-| **KeySign** |[キーで署名します](https://msdn.microsoft.com/library/azure/dn878096.aspx) |
-| **KeyVerify** |[キーで確認します](https://msdn.microsoft.com/library/azure/dn878082.aspx) |
-| **KeyWrap** |[キーをラップします](https://msdn.microsoft.com/library/azure/dn878066.aspx) |
-| **KeyUnwrap** |[キーのラップを解除します](https://msdn.microsoft.com/library/azure/dn878079.aspx) |
-| **KeyEncrypt** |[キーで暗号化します](https://msdn.microsoft.com/library/azure/dn878060.aspx) |
-| **KeyDecrypt** |[キーで復号化します](https://msdn.microsoft.com/library/azure/dn878097.aspx) |
-| **KeyUpdate** |[キーを更新します](https://msdn.microsoft.com/library/azure/dn903616.aspx) |
-| **KeyList** |[コンテナー内のキーを一覧表示します](https://msdn.microsoft.com/library/azure/dn903629.aspx) |
-| **KeyListVersions** |[キーのバージョンを一覧表示します](https://msdn.microsoft.com/library/azure/dn986822.aspx) |
-| **SecretSet** |[シークレットを作成します](https://msdn.microsoft.com/library/azure/dn903618.aspx) |
-| **SecretGet** |[シークレットを取得します](https://msdn.microsoft.com/library/azure/dn903633.aspx) |
-| **SecretUpdate** |[シークレットを更新します](https://msdn.microsoft.com/library/azure/dn986818.aspx) |
-| **SecretDelete** |[シークレットを削除します](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
-| **SecretList** |[コンテナー内のシークレットを一覧表示します](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
-| **SecretListVersions** |[シークレットのバージョンを一覧表示します](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
+| **VaultGet** |[キー コンテナーに関する情報を取得します](/rest/api/keyvault/vaults) |
+| **VaultPut** |[キー コンテナーを作成または更新します](/rest/api/keyvault/vaults) |
+| **VaultDelete** |[キー コンテナーを削除します](/rest/api/keyvault/vaults) |
+| **VaultPatch** |[Key Vault を更新します](/rest/api/keyvault/vaults) |
+| **VaultList** |[リソース グループ内のすべてのキー コンテナーを一覧表示します](/rest/api/keyvault/vaults) |
+| **KeyCreate** |[キーを作成します](/rest/api/keyvault/createkey) |
+| **KeyGet** |[キーに関する情報を取得します](/rest/api/keyvault/getkey) |
+| **KeyImport** |[コンテナーにキーをインポートします](/rest/api/keyvault/vaults) |
+| **KeyBackup** |[キーをバックアップします](/rest/api/keyvault/backupkey) |
+| **KeyDelete** |[キーを削除します](/rest/api/keyvault/deletekey) |
+| **KeyRestore** |[キーを復元します](/rest/api/keyvault/restorekey) |
+| **KeySign** |[キーで署名します](/rest/api/keyvault/sign) |
+| **KeyVerify** |[キーで確認します](/rest/api/keyvault/vaults) |
+| **KeyWrap** |[キーをラップします](/rest/api/keyvault/wrapkey) |
+| **KeyUnwrap** |[キーのラップを解除します](/rest/api/keyvault/unwrapkey) |
+| **KeyEncrypt** |[キーで暗号化します](/rest/api/keyvault/encrypt) |
+| **KeyDecrypt** |[キーで復号化します](/rest/api/keyvault/decrypt) |
+| **KeyUpdate** |[キーを更新します](/rest/api/keyvault/updatekey) |
+| **KeyList** |[コンテナー内のキーを一覧表示します](/rest/api/keyvault/vaults) |
+| **KeyListVersions** |[キーのバージョンを一覧表示します](/rest/api/keyvault/getkeyversions) |
+| **SecretSet** |[シークレットを作成します](/rest/api/keyvault/updatecertificate) |
+| **SecretGet** |[シークレットを取得します](/rest/api/keyvault/getsecret) |
+| **SecretUpdate** |[シークレットを更新します](/rest/api/keyvault/updatesecret) |
+| **SecretDelete** |[シークレットを削除します](/rest/api/keyvault/deletesecret) |
+| **SecretList** |[コンテナー内のシークレットを一覧表示します](/rest/api/keyvault/vaults) |
+| **SecretListVersions** |[シークレットのバージョンを一覧表示します](/rest/api/keyvault/getsecretversions) |
 | **VaultAccessPolicyChangedEventGridNotification** | コンテナーのアクセス ポリシーが変更されたイベントが公開されました |
 | **SecretNearExpiryEventGridNotification** |有効期限が近づいているシークレット イベントが公開されました |
 | **SecretExpiredEventGridNotification** |期限切れのシークレット イベントが公開されました |

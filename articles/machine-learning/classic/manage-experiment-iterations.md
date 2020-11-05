@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 374320c0becfecc6691af91b36a1d80b087300e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c958de5e49fbb7519ae71b13e9deba9af0c698de
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361945"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312873"
 ---
 # <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (classic) で実験の実行を管理する
 
-**適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 予測可能な分析モデルの開発では、十分にトレーニングされた有効なモデルが作成されるまで、実験におけるさまざまな関数とパラメーターを繰り返し調整します。 このプロセスでは、実験パラメーターと構成のさまざまなイテレーションを追跡することが重要になります。
@@ -38,7 +38,7 @@ ms.locfileid: "91361945"
 ## <a name="view-the-run-history"></a>実行履歴を表示する
 これまでに実行したすべての実験のバージョンは、開いている実験で **[実行履歴を表示]** をクリックすると表示できます。
 
-たとえば、[線形回帰][linear-regression]モジュールを使用して実験を作成し、実験の結果に対して**学習速度**の値を変更した効果を観察したいと仮定します。 次のように、このパラメーターでさまざまな値を使用し、実験を何度か実行します。
+たとえば、 [線形回帰][linear-regression]モジュールを使用して実験を作成し、実験の結果に対して **学習速度** の値を変更した効果を観察したいと仮定します。 次のように、このパラメーターでさまざまな値を使用し、実験を何度か実行します。
 
 | 学習速度の値 | 実行の開始時刻 |
 | --- | --- |
@@ -58,14 +58,14 @@ ms.locfileid: "91361945"
 > 
 > 
 
-Machine Learning Studio (クラシック) の **[実験]** タブにある実験の一覧には、常に最新バージョンの実験が表示されます。 以前に実行した実験を開く場合 (**[前回の実行]** または **[実行履歴を表示]** を使用して)、**[実行履歴を表示]** をクリックし、**状態**が**編集可能**なイテレーションを選ぶと、ドラフト バージョンに戻ることができます。
+Machine Learning Studio (クラシック) の **[実験]** タブにある実験の一覧には、常に最新バージョンの実験が表示されます。 以前に実行した実験を開く場合 ( **[前回の実行]** または **[実行履歴を表示]** を使用して)、 **[実行履歴を表示]** をクリックし、 **状態** が **編集可能** なイテレーションを選ぶと、ドラフト バージョンに戻ることができます。
 
 ## <a name="run-a-previous-experiment"></a>前の実験を実行する
 **[前回の実行]** または **[実行履歴を表示]** をクリックして前回の実行を開くと、完了した実験を読み取り専用モードで表示できます。
 
-実験のイテレーションを前回の実行に対して構成した方法で開始する場合は、実行を開き、**[名前を付けて保存]** をクリックします。 これにより、空の実行履歴と、前回の実行のコンポーネントやパラメーター値をすべて持った新しい実験が新しいタイトルで作成されます。 この新しい実験は Machine Learning Studio (クラシック) ホーム ページの **[実験]** タブに表示されるため、それを変更して実行することにより、実験のこのイテレーションの新しい実行履歴を開始できます。 
+実験のイテレーションを前回の実行に対して構成した方法で開始する場合は、実行を開き、 **[名前を付けて保存]** をクリックします。 これにより、空の実行履歴と、前回の実行のコンポーネントやパラメーター値をすべて持った新しい実験が新しいタイトルで作成されます。 この新しい実験は Machine Learning Studio (クラシック) ホーム ページの **[実験]** タブに表示されるため、それを変更して実行することにより、実験のこのイテレーションの新しい実行履歴を開始できます。 
 
-たとえば、前のセクションで示した実験の実行履歴があると仮定します。 **[学習速度]** パラメーターを 0.4 に設定した場合の結果を観察し、**[Number of training epochs]** パラメーターでさまざまな値を試します。
+たとえば、前のセクションで示した実験の実行履歴があると仮定します。 **[学習速度]** パラメーターを 0.4 に設定した場合の結果を観察し、 **[Number of training epochs]** パラメーターでさまざまな値を試します。
 
 1. **[実行履歴を表示]** をクリックし、午後 4時 28 分 36 秒に実行した実験のイテレーションを開きます (パラメーター値は 0.4 に設定されています)。
 2. **[名前を付けて保存]** をクリックします。
@@ -76,4 +76,4 @@ Machine Learning Studio (クラシック) の **[実験]** タブにある実験
 これで、このバージョンの実験を引き続き変更、実行して、作業を記録する新しい実行履歴をビルドできます。
 
 <!-- Module References -->
-[linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
+[linear-regression]: /azure/machine-learning/studio-module-reference/linear-regression

@@ -1,18 +1,18 @@
 ---
 title: データの暗号化 - Azure CLI - Azure Database for MySQL
 description: Azure CLI を使用して Azure Database for MySQL のデータ暗号化を設定し、管理する方法について説明します。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eb83cd4fe7e98b1cde6dcee5d3f25fa5e35f1d2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07d2e9fa98c24695a119c651539d4003ecd8524a
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87799821"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242094"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL のデータ暗号化
 
@@ -50,7 +50,7 @@ Azure CLI を使用して Azure Database for MySQL のデータ暗号化を設�
 * カスタマー マネージド キーとして使用するには、キーに次の属性が必要です。
   * 有効期限がない
   * 無効化されていない
-  * **get**、**wrap**、**unwrap** の操作を実行する
+  * **get** 、 **wrap** 、 **unwrap** の操作を実行する
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>キー操作に対する適切なアクセス許可を設定する
 

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 2100572c0bcf5bf65fe5a70ab9e552c2d7f72934
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48f223a55e4a1e4db4ac7057065d67ae64fa0f2c
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983259"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288462"
 ---
 # <a name="authentication-requests-and-responses"></a>認証、要求、応答
 
@@ -39,7 +39,7 @@ Azure Key Vault には、クラウド アプリケーションのシークレッ
 
 Azure Key Vault は、JSON 形式の要求と応答をサポートします。 Azure Key Vault に対する要求は、HTTPS を使用し、いくつかの URL パラメーターと JSON でエンコードされた要求および応答の本文を含んで、有効な Azure Key Vault の URL に送られます。
 
-このトピックでは、Azure Key Vault サービスの詳細について説明します。 認証/承認およびアクセス トークンを取得する方法など、Azure REST インターフェイスの使用に関して詳しくは、[Azure REST API リファレンス](https://docs.microsoft.com/rest/api/azure)をご覧ください。
+このトピックでは、Azure Key Vault サービスの詳細について説明します。 認証/承認およびアクセス トークンを取得する方法など、Azure REST インターフェイスの使用に関して詳しくは、[Azure REST API リファレンス](/rest/api/azure)をご覧ください。
 
 ## <a name="request-url"></a>要求 URL  
  キー管理操作には HTTP DELETE、GET、PATCH、PUT、HTTP POST が使用され、既存のキー オブジェクトに対する暗号操作には HTTP POST が使用されます。 特定の HTTP 動詞をサポートできないクライアントも、X-HTTP-REQUEST ヘッダーを使う POST を使用して、目的の動詞を指定できます。通常は本文を必要としない要求でも、HTTP POST を使用するときは (DELETE の代わりに POST を使用する場合など)、空の本文を含める必要があります。  
@@ -111,7 +111,7 @@ Azure Key Vault は、JSON 形式の要求と応答をサポートします。 A
 ## <a name="authentication"></a>認証  
  Azure Key Vault に対するすべての要求は、認証を受ける必要があります。 Azure Key Vault は、OAuth2 [[RFC6749](https://tools.ietf.org/html/rfc6749)] を使用して取得できる Azure Active Directory アクセス トークンをサポートしています。 
  
- アプリケーションの登録と、Azure Key Vault を使用するための認証について詳しくは、[Azure AD でのクライアント アプリケーションの登録](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad)に関するページをご覧ください。
+ アプリケーションの登録と、Azure Key Vault を使用するための認証について詳しくは、[Azure AD でのクライアント アプリケーションの登録](/rest/api/azure/index#register-your-client-application-with-azure-ad)に関するページをご覧ください。
  
  HTTP Authorization ヘッダーを使用して、サービスにアクセス トークンを送信する必要があります。  
 
@@ -133,5 +133,4 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 -   authorization:要求のアクセス トークンの取得に使用できる OAuth2 承認サービスのアドレス。  
 
--   resource:承認要求で使用するリソースの名前 (`https://vault.azure.net`)。  
-
+-   resource:承認要求で使用するリソースの名前 (`https://vault.azure.net`)。

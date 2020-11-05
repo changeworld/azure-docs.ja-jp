@@ -1,17 +1,17 @@
 ---
 title: 高可用性 - Azure Database for MySQL
 description: この記事では、Azure Database for MySQL での高可用性について情報を提供します
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: 668243f66deff67a923097c116c4b150d0256992
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b301946ce818559510b4e401b1f0aaf7c235d5a3
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90882558"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242298"
 ---
 # <a name="high-availability-in-azure-database-for-mysql"></a>Azure Database for MySQL での高可用性
 Azure Database for MySQL サービスでは、[99.99%](https://azure.microsoft.com/support/legal/sla/mysql) のアップタイムという財務的な裏付けのあるサービス レベル アグリーメント (SLA) で、高レベルの可用性が保証されています。 Azure Database for MySQL では、ユーザーが開始したコンピューティングのスケーリング操作などの計画的なイベント中や、基になるハードウェア、ソフトウェア、ネットワークの障害などの計画外のイベントが発生したときに高可用性が提供されます。 Azure Database for MySQL は、ほとんどの重大な状況から迅速に復旧でき、このサービスを使用するとアプリケーションのダウンタイムが事実上なくなります。
@@ -46,7 +46,7 @@ Azure Database for MySQL は、計画的なダウンタイム操作中に高可�
 計画外のダウンタイムは、基になるハードウェアの障害、ネットワークの問題、ソフトウェアのバグなど、予期しない障害の結果として発生する可能性があります。 データベース サーバーが予期せず停止した場合は、新しいデータベース サーバーが数秒で自動的にプロビジョニングされます。 リモート ストレージは、新しいデータベース サーバーに自動的に接続されます。 MySQL エンジンによって、WAL およびデータベース ファイルを使用して復旧操作が実行され、データベース サーバーが開かれてクライアントからの接続が可能になります。 コミットされていないトランザクションは失われ、アプリケーションが再試行する必要があります。 計画外のダウンタイムは回避できませんが、Azure Database for MySQL では、データベース サーバーとストレージ レイヤーの両方で、ユーザーの介入を必要とすることなく自動的に復旧操作を実行することでダウンタイムが軽減されます。 
 
 
-:::image type="content" source="./media/concepts-high-availability/availability-for-mysql-server.png" alt-text="Azure MySQL でのエラスティック スケーリングのビュー":::
+:::image type="content" source="./media/concepts-high-availability/availability-for-mysql-server.png" alt-text="Azure MySQL での高可用性のビュー":::
 
 ### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>計画外のダウンタイム: 障害シナリオとサービス復旧
 いくつかの障害シナリオと、Azure Database for MySQL が自動的に復旧されるしくみを次に示します。

@@ -8,17 +8,17 @@ ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: tables
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e643a7ce5ccf4aa5107df1e505d90a0767517350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a7502d48095fe18b983c1971d5145f51e766c95
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89070413"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93306899"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Azure PowerShell を使用した Azure Table Storage 操作の実行 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
-Azure Table Storage は NoSQL データストアであり、これを使用することで、構造化された非リレーショナル データの巨大なセットを格納および照会できます。 このサービスのメイン コンポーネントは、テーブル、エンティティ、プロパティです。 テーブルは、エンティティのコレクションです。 エンティティは、プロパティのセットです。 各エンティティには、最大 252 個のプロパティを含めることができます。これらはすべて名前と値のペアです。 この記事では、Azure Table Storage サービスの概念について理解しているユーザーを対象としています。 詳しくは、「[テーブル サービス データ モデルについて](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)」および「[.NET を使用して Azure Table Storage を使用する](../../cosmos-db/table-storage-how-to-use-dotnet.md)」をご覧ください。
+Azure Table Storage は NoSQL データストアであり、これを使用することで、構造化された非リレーショナル データの巨大なセットを格納および照会できます。 このサービスのメイン コンポーネントは、テーブル、エンティティ、プロパティです。 テーブルは、エンティティのコレクションです。 エンティティは、プロパティのセットです。 各エンティティには、最大 252 個のプロパティを含めることができます。これらはすべて名前と値のペアです。 この記事では、Azure Table Storage サービスの概念について理解しているユーザーを対象としています。 詳しくは、「[テーブル サービス データ モデルについて](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)」および「[.NET を使用して Azure Table Storage を使用する](../../cosmos-db/tutorial-develop-table-dotnet.md)」をご覧ください。
 
 このハウツー記事では、Azure Table Storage の一般的な操作について取り上げます。 学習内容は次のとおりです。 
 
@@ -38,7 +38,7 @@ Azure Table Storage は NoSQL データストアであり、これを使用す�
 > PowerShell からこの Azure 機能を使用するには、`Az` モジュールがインストールされている必要があります。 `AzTable` の現在のバージョンは、以前の AzureRM モジュールと互換性がありません。
 > 必要に応じて、[Az モジュールの最新のインストール手順](/powershell/azure/install-az-ps)に従ってください。
 
-Azure PowerShell をインストールまたは更新した後は、エンティティを管理するコマンドを含む **AzTable** モジュールをインストールする必要があります。 このモジュールをインストールするには、PowerShell を管理者として実行し、**Install-Module** コマンドを使用します。
+Azure PowerShell をインストールまたは更新した後は、エンティティを管理するコマンドを含む **AzTable** モジュールをインストールする必要があります。 このモジュールをインストールするには、PowerShell を管理者として実行し、 **Install-Module** コマンドを使用します。
 
 > [!IMPORTANT]
 > モジュール名の互換性の理由から、PowerShell ギャラリーではこれと同じモジュールが古い名前 `AzureRmStorageTables` でまだ公開されています。 このドキュメントでは、新しい名前のみを参照します。
@@ -57,7 +57,7 @@ Add-AzAccount
 
 ## <a name="retrieve-list-of-locations"></a>場所の一覧を取得する
 
-使用する場所がわからない場合、利用できる場所を一覧表示できます。 一覧が表示されたら、使用する場所を見つけます。 これらの例では、**eastus** を使用しています。 後で使用するために、この値を変数 **location** に保存します。
+使用する場所がわからない場合、利用できる場所を一覧表示できます。 一覧が表示されたら、使用する場所を見つけます。 これらの例では、 **eastus** を使用しています。 後で使用するために、この値を変数 **location** に保存します。
 
 ```powershell
 Get-AzLocation | select Location
@@ -68,7 +68,7 @@ $location = "eastus"
 
 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドでリソース グループを作成します。 
 
-Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 将来使用するために、リソース グループ名を変数に保存します。 この例では、*pshtablesrg* という名前のリソース グループを *eastus* リージョンに作成しています。
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 将来使用するために、リソース グループ名を変数に保存します。 この例では、 *pshtablesrg* という名前のリソース グループを *eastus* リージョンに作成しています。
 
 ```powershell
 $resourceGroup = "pshtablesrg"

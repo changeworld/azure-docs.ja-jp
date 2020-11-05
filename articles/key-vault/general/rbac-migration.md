@@ -9,18 +9,18 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e06a7a759c712b47f3a725a3c49a660226da6a09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23a36bfc048a6214ccb79b793a23c21d5f8e305e
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90064081"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288274"
 ---
 # <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-preview-permission-model"></a>コンテナー アクセス ポリシーから Azure ロールベースのアクセス制御 (プレビュー) アクセス許可モデルへの移行
 
 コンテナー アクセス ポリシー モデルは、キー、シークレット、証明書へのアクセスを提供するために Key Vault に組み込まれた既存の承認システムです。 Key Vault スコープで、セキュリティ プリンシパル (ユーザー、グループ、サービス プリンシパル、マネージド ID) に個々のアクセス許可を割り当てることにより、アクセスを制御できます。 
 
-Azure ロールベースのアクセス制御 (Azure RBAC) は [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 上に構築された承認システムであり、Azure リソースに対するアクセスをきめ細かく管理できます。 Key Vault キー、シークレット、証明書アクセス管理のための Azure RBAC は、現在パブリック プレビュー段階です。 Azure RBAC では、ロールの割り当てを作成することによって、リソースへのアクセスを制御します。これには、セキュリティ プリンシパル、ロールの定義 (定義済みの一連のアクセス許可)、スコープ (リソースのグループまたは個々のリソース) の 3 つの要素が含まれます。 詳細については、[Azure ロールベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) に関するページを参照してください。
+Azure ロールベースのアクセス制御 (Azure RBAC) は [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 上に構築された承認システムであり、Azure リソースに対するアクセスをきめ細かく管理できます。 Key Vault キー、シークレット、証明書アクセス管理のための Azure RBAC は、現在パブリック プレビュー段階です。 Azure RBAC では、ロールの割り当てを作成することによって、リソースへのアクセスを制御します。これには、セキュリティ プリンシパル、ロールの定義 (定義済みの一連のアクセス許可)、スコープ (リソースのグループまたは個々のリソース) の 3 つの要素が含まれます。 詳細については、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) に関するページを参照してください。
 
 Azure RBAC に移行する前に、その利点と制限事項を理解しておくことが重要です。
 
@@ -28,7 +28,7 @@ Azure RBAC に移行する前に、その利点と制限事項を理解してお
 - Azure リソースの統一されたアクセス制御モデルを提供 - Azure サービス間で同じ API を使用
 - 管理者向けの一元化されたアクセス管理 - すべての Azure リソースを 1 つのビューで管理
 - 時間ベースのアクセス制御を実現する [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) との統合
-- 拒否の割り当て - 特定のスコープでセキュリティ プリンシパルを除外する機能 詳細については、「[Azure 拒否割り当てについて](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments)」を参照してください
+- 拒否の割り当て - 特定のスコープでセキュリティ プリンシパルを除外する機能 詳細については、「[Azure 拒否割り当てについて](../../role-based-access-control/deny-assignments.md)」を参照してください
 
 Azure RBAC の短所は以下のとおりです。
 - ロールの割り当ての待機時間 - ロールの割り当てが適用されるまでに数分かかることがあります。 コンテナー アクセス ポリシーはすぐに割り当てられます。
@@ -36,7 +36,7 @@ Azure RBAC の短所は以下のとおりです。
 
 ## <a name="access-policies-to-azure-roles-mapping"></a>Azure ロール マッピングへのアクセス ポリシー
 
-Azure RBAC には、ユーザー、グループ、サービス プリンシパル、マネージド ID に割り当てることのできる Azure 組み込みロールがいくつかあります。 組み込みロールが組織の特定のニーズを満たさない場合は、独自の [Azure カスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)を作成することができます。
+Azure RBAC には、ユーザー、グループ、サービス プリンシパル、マネージド ID に割り当てることのできる Azure 組み込みロールがいくつかあります。 組み込みロールが組織の特定のニーズを満たさない場合は、独自の [Azure カスタム ロール](../../role-based-access-control/custom-roles.md)を作成することができます。
 
 キー、証明書、およびシークレットのアクセス管理のための Key Vault 組み込みロールは以下のとおりです。
 - Key Vault Administrator (プレビュー)
@@ -47,7 +47,7 @@ Azure RBAC には、ユーザー、グループ、サービス プリンシパ�
 - Key Vault Secrets Officer (プレビュー)
 - Key Vault Secrets User (プレビュー)
 
-既存の組み込みロールの詳細については、「[Azure 組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)」を参照してください。
+既存の組み込みロールの詳細については、「[Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
 コンテナー アクセス ポリシーは、個別に選択したアクセス許可、または定義済みのアクセス許可テンプレートを使用して割り当てることができます。
 
@@ -102,10 +102,10 @@ Key Vault 用の Azure RBAC では、次のスコープでロールを割り当�
 ## <a name="vault-access-policy-to-azure-rbac-migration-steps"></a>コンテナー アクセス ポリシーの Azure RBAC への移行の手順
 Azure RBAC とコンテナー アクセス ポリシーのアクセス許可モデルにはさまざまな違いがあります。 移行中の停止を避けるために、以下の手順をお勧めします。
  
-1. **ロールの特定と割り当て**: 上記のマッピングの表に基づいて組み込みのロールを特定し、必要に応じてカスタム ロールを作成します。 スコープのマッピングのガイダンスに基づいて、スコープでロールを割り当てます。 キー コンテナーにロールを割り当てる方法の詳細については、[Azure ロールベースのアクセス制御で Key Vault へのアクセスを提供する (プレビュー)](rbac-guide.md) に関するページを参照してください
-1. **ロールの割り当ての検証**: Azure RBAC でのロールの割り当ては、反映されるまでに数分かかることがあります。 ロールの割り当てを確認する方法のガイドについては、[スコープでロールの割り当てを一覧表示する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal#list-role-assignments-for-a-user-at-a-scope)方法に関するページを参照してください
-1. **キー コンテナーでの監視とアラートの構成**: ログの記録を有効にし、アクセス拒否の例外に対するアラートを設定することが重要です。 詳細については、「[Azure Key Vault の監視とアラート](https://docs.microsoft.com/azure/key-vault/general/alert)」を参照してください。
-1. **Key Vault で Azure ロールベースのアクセス制御の許可モデルを設定**: Azure RBAC のアクセス許可モデルを有効にすると、既存のアクセス ポリシーがすべて無効になります。 エラーが発生した場合は、既存のすべてのアクセス ポリシーをそのままに、アクセス許可モデルを元通りに切り替えることができます。
+1. **ロールの特定と割り当て** : 上記のマッピングの表に基づいて組み込みのロールを特定し、必要に応じてカスタム ロールを作成します。 スコープのマッピングのガイダンスに基づいて、スコープでロールを割り当てます。 キー コンテナーにロールを割り当てる方法の詳細については、[Azure ロールベースのアクセス制御で Key Vault へのアクセスを提供する (プレビュー)](rbac-guide.md) に関するページを参照してください
+1. **ロールの割り当ての検証** : Azure RBAC でのロールの割り当ては、反映されるまでに数分かかることがあります。 ロールの割り当てを確認する方法のガイドについては、[スコープでロールの割り当てを一覧表示する](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope)方法に関するページを参照してください
+1. **キー コンテナーでの監視とアラートの構成** : ログの記録を有効にし、アクセス拒否の例外に対するアラートを設定することが重要です。 詳細については、「[Azure Key Vault の監視とアラート](./alert.md)」を参照してください。
+1. **Key Vault で Azure ロールベースのアクセス制御の許可モデルを設定** : Azure RBAC のアクセス許可モデルを有効にすると、既存のアクセス ポリシーがすべて無効になります。 エラーが発生した場合は、既存のすべてのアクセス ポリシーをそのままに、アクセス許可モデルを元通りに切り替えることができます。
 
 > [!NOTE]
 > Azure RBAC アクセス許可モデルが有効になっている場合、アクセス ポリシーの更新を試みるすべてのスクリプトが失敗します。 Azure RBAC を使用するように、これらのスクリプトを更新することが重要です。
@@ -116,6 +116,6 @@ Azure RBAC とコンテナー アクセス ポリシーのアクセス許可モ�
 
 ## <a name="learn-more"></a>詳細情報
 
-- [Azure RBAC の概要](https://docs.microsoft.com/azure/role-based-access-control/overview)
-- [カスタム ロールのチュートリアル](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-cli)
+- [Azure RBAC の概要](../../role-based-access-control/overview.md)
+- [カスタム ロールのチュートリアル](../../role-based-access-control/tutorial-custom-role-cli.md)
 - [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)

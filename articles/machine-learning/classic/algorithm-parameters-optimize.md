@@ -9,18 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 0ed958d24a7ff499c8cf33974648afb0f4e0a81d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b08318d4c12fd2e6ea8055771ca6792b0fb280dd
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91367990"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307868"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-machine-learning-studio-classic"></a>Machine Learning Studio (classic) でアルゴリズムを最適化するためにパラメーターを選択する
 
-**適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-このトピックでは、Azure Machine Learning Studio (クラシック) でアルゴリズムに適したハイパーパラメーター セットを選択する方法について説明します。 ほとんどの機械学習アルゴリズムに、設定が必要なパラメーターがあります。 モデルをトレーニングするときは、これらのパラメーターに値を提供する必要があります。 トレーニングしたモデルの有効性は、選んだモデル パラメーターによって決まります。 パラメーターの最適なセットを見つけるプロセスのことを、*モデルの選択*といいます。
+このトピックでは、Azure Machine Learning Studio (クラシック) でアルゴリズムに適したハイパーパラメーター セットを選択する方法について説明します。 ほとんどの機械学習アルゴリズムに、設定が必要なパラメーターがあります。 モデルをトレーニングするときは、これらのパラメーターに値を提供する必要があります。 トレーニングしたモデルの有効性は、選んだモデル パラメーターによって決まります。 パラメーターの最適なセットを見つけるプロセスのことを、 *モデルの選択* といいます。
 
 
 
@@ -28,17 +28,17 @@ ms.locfileid: "91367990"
 
 最適なパラメーター セットを見つけるプロセスには、次の 4 つの手順があります。
 
-1. **パラメーター空間を定義する**:アルゴリズムについて、検討の対象にする正確なパラメーター値をまず決めます。
-2. **クロス検証の設定を定義する**:データセットのクロス検証のフォールドを選ぶ方法を決定します。
-3. **メトリックを定義する**: その後、パラメーターの最適なセットを判別するために使うメトリックを決めます。たとえば、確度、二乗平均平方根の誤差、精度、再現率、f スコアなどがあります。
-4. **トレーニング、評価、および比較を行う**: パラメーター値の一意の組み合わせごとに、ユーザーが定義した誤差メトリックを使い、それに基づいて、クロス検証を実行します。 評価と比較が済むと、最適なモデルを選ぶことができます。
+1. **パラメーター空間を定義する** :アルゴリズムについて、検討の対象にする正確なパラメーター値をまず決めます。
+2. **クロス検証の設定を定義する** :データセットのクロス検証のフォールドを選ぶ方法を決定します。
+3. **メトリックを定義する** : その後、パラメーターの最適なセットを判別するために使うメトリックを決めます。たとえば、確度、二乗平均平方根の誤差、精度、再現率、f スコアなどがあります。
+4. **トレーニング、評価、および比較を行う** : パラメーター値の一意の組み合わせごとに、ユーザーが定義した誤差メトリックを使い、それに基づいて、クロス検証を実行します。 評価と比較が済むと、最適なモデルを選ぶことができます。
 
 次の図は、Azure Machine Learning Studio (クラシック) でこのプロセスを実施する方法を示しています。
 
 ![最適なパラメーター セットを検索します](./media/algorithm-parameters-optimize/fig1.png)
 
 ## <a name="define-the-parameter-space"></a>パラメーター空間を定義する
-パラメーターのセットは、モデルの初期化ステップで定義できます。 すべての Machine Learning アルゴリズムのパラメーター ウィンドウには 2 つのトレーナー モードがあります。"*1 つのパラメーター*" と "*パラメーター範囲*" です。 パラメーター範囲モードを選びます。 パラメーター範囲モードでは、各パラメーターに複数の値を入力できます。 テキスト ボックスには、コンマ区切りの値を入力できます。
+パラメーターのセットは、モデルの初期化ステップで定義できます。 すべての Machine Learning アルゴリズムのパラメーター ウィンドウには 2 つのトレーナー モードがあります。" *1 つのパラメーター* " と " *パラメーター範囲* " です。 パラメーター範囲モードを選びます。 パラメーター範囲モードでは、各パラメーターに複数の値を入力できます。 テキスト ボックスには、コンマ区切りの値を入力できます。
 
 ![2 クラスのブースト デシジョン ツリー、1 つのパラメーター](./media/algorithm-parameters-optimize/fig2.png)
 
@@ -66,12 +66,12 @@ ms.locfileid: "91367990"
 
 ![ブースト デシジョン ツリー分類子](./media/algorithm-parameters-optimize/fig6a.png)
 
-次に検証データセットでモデルの評価が実行されます。 モジュールの左側の出力ポートは、パラメーター値の関数としての異なるメトリックを示しています。 右側の出力ポートからは、選択されたメトリック (ここでは**確度**) に従う最適なモデルに対応するトレーニング済みのモデルを使用できます。  
+次に検証データセットでモデルの評価が実行されます。 モジュールの左側の出力ポートは、パラメーター値の関数としての異なるメトリックを示しています。 右側の出力ポートからは、選択されたメトリック (ここでは **確度** ) に従う最適なモデルに対応するトレーニング済みのモデルを使用できます。  
 
 ![検証データセット](./media/algorithm-parameters-optimize/fig6b.png)
 
 右側の出力ポートを視覚化すると、選択された正確なパラメーターを確認できます。 このモデルは、トレーニング済みのモデルとして保存した後、テスト セットのスコア付けや、運用可能な Web サービスとして使用できます。
 
 <!-- Module References -->
-[partition-and-sample]: https://msdn.microsoft.com/library/azure/a8726e34-1b3e-4515-b59a-3e4a475654b8/
-[tune-model-hyperparameters]: https://msdn.microsoft.com/library/azure/038d91b6-c2f2-42a1-9215-1f2c20ed1b40/
+[partition-and-sample]: /azure/machine-learning/studio-module-reference/partition-and-sample
+[tune-model-hyperparameters]: /azure/machine-learning/studio-module-reference/tune-model-hyperparameters

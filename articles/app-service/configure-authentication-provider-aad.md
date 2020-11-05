@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 4022ca97f88e2f06d3b4c1eeb103bb60d1856eda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2968fd84febdd3b98aa5d8b42cbf3fb66cad2036
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962147"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289797"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Azure AD ログインを使用するように App Service または Azure Functions アプリを構成する
 
@@ -83,14 +83,14 @@ App Service アプリを構成するとき、次の情報が必要になりま�
 1. **[API の公開]**  >  **[設定]** を選択します。 シングルテナント アプリの場合は、App Service アプリの URL を貼り付けて **[保存]** を選択します。マルチテナント アプリの場合は、テナントで検証済みのいずれかのドメインに基づく URL を貼り付けて、 **[保存]** を選択します。
 
    > [!NOTE]
-   > この値は、アプリの登録の**アプリケーション ID の URI** です。 Web アプリでクラウドの API にアクセスする必要がある場合、クラウド App Service リソースの構成時、**Web アプリのアプリケーション ID URI** が必要になります。 たとえば、クラウド サービスで Web アプリにアクセスを明示的に与える場合にこれを利用できます。
+   > この値は、アプリの登録の **アプリケーション ID の URI** です。 Web アプリでクラウドの API にアクセスする必要がある場合、クラウド App Service リソースの構成時、 **Web アプリのアプリケーション ID URI** が必要になります。 たとえば、クラウド サービスで Web アプリにアクセスを明示的に与える場合にこれを利用できます。
 
 1. **[Scope の追加]** を選択します。
-   1. **[スコープ名]** に、「*user_impersonation*」と入力します。
-   1. 同意ページでユーザーに表示する同意スコープの名前と説明をテキスト ボックスに入力します。 たとえば、「*Access my app*」と入力します。
+   1. **[スコープ名]** に、「 *user_impersonation* 」と入力します。
+   1. 同意ページでユーザーに表示する同意スコープの名前と説明をテキスト ボックスに入力します。 たとえば、「 *Access my app* 」と入力します。
    1. **[スコープの追加]** を選択します。
 1. (省略可能) クライアント シークレットを作成するには、 **[Certificates & secrets]\(証明書とシークレット)**  >  **[New client secret]\(新しいクライアント シークレット)**  >  **[追加]** を選択します。 ページに表示されるクライアント シークレットの値をコピーします。 二度と表示されることはありません。
-1. (省略可能) 複数の**応答 URL** を追加するには、 **[認証]** を選択します。
+1. (省略可能) 複数の **応答 URL** を追加するには、 **[認証]** を選択します。
 
 ### <a name="enable-azure-active-directory-in-your-app-service-app"></a><a name="secrets"> </a>App Service アプリで Azure Active Directory を有効にする
 
@@ -102,10 +102,10 @@ App Service アプリを構成するとき、次の情報が必要になりま�
 
     |フィールド|説明|
     |-|-|
-    |クライアント ID| アプリの登録の**アプリケーション (クライアント) ID** を使用します。 |
-    |発行者の URL| `<authentication-endpoint>/<tenant-id>/v2.0` を使用し、 *\<authentication-endpoint>* を[クラウド環境の認証エンドポイント](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (たとえば、グローバル Azure の場合、"https://login.microsoft.com") に置き換え、さらに、 *\<tenant-id>* を、アプリ登録が作成された**ディレクトリ (テナント) ID** に置き換えます。 この値は、ユーザーを正しい Azure AD テナントにリダイレクトするため、および適切なメタデータをダウンロードして、適切なトークン署名キーやトークン発行者のクレーム値などを特定するために使用されます。 Azure AD v1 を使用するアプリケーションと Azure Functions アプリの場合は、URL の `/v2.0` を省略します。|
+    |クライアント ID| アプリの登録の **アプリケーション (クライアント) ID** を使用します。 |
+    |発行者の URL| `<authentication-endpoint>/<tenant-id>/v2.0` を使用し、 *\<authentication-endpoint>* を [クラウド環境の認証エンドポイント](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (たとえば、グローバル Azure の場合、"https://login.microsoftonline.com") に置き換え、さらに、 *\<tenant-id>* を、アプリ登録が作成された **ディレクトリ (テナント) ID** に置き換えます。 この値は、ユーザーを正しい Azure AD テナントにリダイレクトするため、および適切なメタデータをダウンロードして、適切なトークン署名キーやトークン発行者のクレーム値などを特定するために使用されます。 Azure AD v1 を使用するアプリケーションと Azure Functions アプリの場合は、URL の `/v2.0` を省略します。|
     |クライアント シークレット (省略可能)| アプリの登録で生成したクライアント シークレットを使用します。|
-    |許可されるトークン対象ユーザー| これがクラウドまたはサーバー アプリで、Web アプリからの認証トークンを許可する場合は、Web アプリの**アプリケーション ID URI** をここに追加します。 構成された **[クライアント ID]** は、*常に*、許可された対象ユーザーであると暗黙的に見なされます。 |
+    |許可されるトークン対象ユーザー| これがクラウドまたはサーバー アプリで、Web アプリからの認証トークンを許可する場合は、Web アプリの **アプリケーション ID URI** をここに追加します。 構成された **[クライアント ID]** は、 *常に* 、許可された対象ユーザーであると暗黙的に見なされます。 |
 
 2. **[OK]** を選択し、 **[保存]** を選択します。
 
@@ -113,7 +113,7 @@ App Service アプリを構成するとき、次の情報が必要になりま�
 
 ## <a name="configure-a-native-client-application"></a>ネイティブ クライアント アプリケーションを構成する
 
-**Active Directory 認証ライブラリ**などのクライアント ライブラリを使用してアプリでホストされている Web API への認証を許可するように、ネイティブ クライアントを登録できます。
+**Active Directory 認証ライブラリ** などのクライアント ライブラリを使用してアプリでホストされている Web API への認証を許可するように、ネイティブ クライアントを登録できます。
 
 1. [Azure portal] で、 **[Active Directory]** 、 **[アプリの登録]** 、 **[新規登録]** の順に選択します。
 1. **[アプリケーションの登録]** ページで、アプリの登録の **[名前]** を入力します。
@@ -124,7 +124,7 @@ App Service アプリを構成するとき、次の情報が必要になりま�
 1. **［作成］** を選択します
 1. アプリの登録が作成されたら、 **[アプリケーション (クライアント) ID]** の値をコピーします。
 1. **[API のアクセス許可]** 、 **[アクセス許可の追加]** 、 **[自分の API]** の順に選択します。
-1. App Service アプリ用に以前に作成したアプリの登録を選択します。 アプリの登録が表示されない場合は、「[App Service アプリに対するアプリ登録を Azure AD で作成する](#register)」で **user_impersonation** スコープを追加したことを確認します。
+1. App Service アプリ用に以前に作成したアプリの登録を選択します。 アプリの登録が表示されない場合は、「 [App Service アプリに対するアプリ登録を Azure AD で作成する](#register)」で **user_impersonation** スコープを追加したことを確認します。
 1. **[委任されたアクセス許可]** で、 **[user_impersonation]** を選択し、 **[アクセス許可の追加]** を選択します。
 
 これで、ユーザーに代わって App Service アプリにアクセスできるネイティブ クライアント アプリケーションが構成されました。
@@ -140,9 +140,9 @@ App Service アプリを構成するとき、次の情報が必要になりま�
 1. アプリの登録が作成されたら、 **[アプリケーション (クライアント) ID]** の値をコピーします。
 1. **[証明書とシークレット]**  >  **[新しいクライアント シークレット]**  >  **[追加]** を選択します。 ページに表示されるクライアント シークレットの値をコピーします。 二度と表示されることはありません。
 
-これで、`resource` パラメーターをターゲット アプリの**アプリケーション ID URI** に設定することで、[クライアント ID とクライアント シークレットを使用してアクセス トークンを要求](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret)できます。 その後、標準の [OAuth 2.0 Authorization ヘッダー](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#use-the-access-token-to-access-the-secured-resource)を使用して、結果として得られたアクセス トークンをターゲット アプリに提示できます。また、App Service の認証/承認によって、通常どおりトークンが検証および使用され、呼び出し元 (この場合はユーザーではなくアプリケーション) が認証されたことが示されます。
+これで、`resource` パラメーターをターゲット アプリの **アプリケーション ID URI** に設定することで、 [クライアント ID とクライアント シークレットを使用してアクセス トークンを要求](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret)できます。 その後、標準の [OAuth 2.0 Authorization ヘッダー](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#use-the-access-token-to-access-the-secured-resource)を使用して、結果として得られたアクセス トークンをターゲット アプリに提示できます。また、App Service の認証/承認によって、通常どおりトークンが検証および使用され、呼び出し元 (この場合はユーザーではなくアプリケーション) が認証されたことが示されます。
 
-現時点で、これによって Azure AD テナント内の_すべて_のクライアント アプリケーションがアクセス トークンを要求し、ターゲット アプリに対して認証を行うことができます。 また、"_承認_" を実施して特定のクライアント アプリケーションのみを許可する場合は、追加の構成を行う必要があります。
+現時点で、これによって Azure AD テナント内の _すべて_ のクライアント アプリケーションがアクセス トークンを要求し、ターゲット アプリに対して認証を行うことができます。 また、" _承認_ " を実施して特定のクライアント アプリケーションのみを許可する場合は、追加の構成を行う必要があります。
 
 1. 保護する App Service または関数アプリを表すアプリ登録のマニフェストで、[アプリ ロールを定義](../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md)します。
 1. 承認する必要があるクライアントを表すアプリの登録で、 **[API のアクセス許可]**  >  **[アクセス許可の追加]**  >  **[自分の API]** を選択します。

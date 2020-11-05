@@ -11,12 +11,12 @@ ms.author: laobri
 ms.date: 04/24/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e847f62c2ae3d1d68c39685a38b67e1d0ada8c2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82e128ffdc215a084110a68170ac12accd8fca0e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91251016"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308124"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning service のワークスペース データをエクスポートまたは削除する
 
@@ -50,7 +50,7 @@ Azure Machine Learning では、個人データは実行履歴ドキュメント
 
 個人のユーザー情報が含まれている可能性がある実行履歴ドキュメントは、ストレージ アカウントの BLOB ストレージ (`/azureml` のサブフォルダー) に格納されます。 データは、ポータルからダウンロードおよび削除することができます。
 
-:::image type="content" source="media/how-to-export-delete-data/storage-account-folders.png" alt-text="削除アイコンが強調表示されているポータルのスクリーンショット":::
+:::image type="content" source="media/how-to-export-delete-data/storage-account-folders.png" alt-text="ポータル内のストレージ アカウントの中にある azureml ディレクトリのスクリーンショット":::
 
 ## <a name="export-and-delete-machine-learning-resources-using-azure-machine-learning-studio"></a>Azure Machine Learning Studio を使用して機械学習リソースをエクスポートおよび削除する
 
@@ -62,7 +62,7 @@ Studio を使用して、実験の実行からトレーニング アーティフ
 
 登録済みのモデルをダウンロードするには、目的の **[モデル]** に移動し、 **[ダウンロード]** を選択します。 
 
-:::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="削除アイコンが強調表示されているポータルのスクリーンショット":::
+:::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="[ダウンロード] オプションが強調表示されている Studio モデル ページのスクリーンショット":::
 
 ## <a name="export-and-delete-resources-using-the-python-sdk"></a>Python SDK を使用してリソースをエクスポートおよび削除する
 
@@ -84,8 +84,7 @@ model_output_port.download('.', show_progress=True)
 
 | Type | 関数呼び出し | Notes | 
 | --- | --- | --- |
-| `Workspace` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete-delete-dependent-resources-false--no-wait-false-) | `delete-dependent-resources` を使用して削除を連鎖させる |
-| `Model` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--) | | 
-| `ComputeTarget` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--) | |
-| `WebService` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true) | | 
-
+| `Workspace` | [`delete`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete-delete-dependent-resources-false--no-wait-false-) | `delete-dependent-resources` を使用して削除を連鎖させる |
+| `Model` | [`delete`](/python/api/azureml-core/azureml.core.model%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--) | | 
+| `ComputeTarget` | [`delete`](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--) | |
+| `WebService` | [`delete`](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py) | |

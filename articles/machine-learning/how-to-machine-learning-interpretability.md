@@ -11,12 +11,12 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: d063af3ba3b9261100af5e48a2c507a80ac76d98
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f98e18abb8ba06ea632ee9c63c1a726879e825d2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322361"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311514"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning におけるモデルの解釈可能性 (プレビュー)
 
@@ -39,7 +39,7 @@ ms.locfileid: "91322361"
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Azure Machine Learning での解釈可能性
 
-解釈可能性クラスは、次の SDK パッケージを介して利用可能になります。[Azure Machine Learning 用の SDK パッケージをインストールする](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)方法を確認してください。
+解釈可能性クラスは、次の SDK パッケージを介して利用可能になります。[Azure Machine Learning 用の SDK パッケージをインストールする](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)方法を確認してください。
 
 * `azureml.interpret`。Microsoft でサポートされている機能が含まれます。
 
@@ -53,7 +53,7 @@ SDK のクラスとメソッドを使用して、次のことを行うことが�
 + 対話型の視覚化ダッシュボードを使用して、トレーニング時のデータと説明のパターンを検出する。
 
 
-機械学習では、**特徴**は、ターゲット データ ポイントの予測に使用されるデータ フィールドです。 たとえば、信用リスクを予測するために、年齢、アカウント サイズ、およびアカウントの有効期間のデータ フィールドが使用されるとします。 この場合、年齢、アカウント サイズ、およびアカウントの有効期間が**特徴**です。 特徴の重要度から、各データ フィールドがモデルの予測にどのような影響を与えたかがわかります。 たとえば、年齢は予測で頻繁に使用されるが、アカウントのサイズと有効期間は予測値に大きな影響を与えない場合があります。 このプロセスにより、データ サイエンティストは結果の予測を説明でき、利害関係者はモデルで最も重要な機能を認識できます。
+機械学習では、 **特徴** は、ターゲット データ ポイントの予測に使用されるデータ フィールドです。 たとえば、信用リスクを予測するために、年齢、アカウント サイズ、およびアカウントの有効期間のデータ フィールドが使用されるとします。 この場合、年齢、アカウント サイズ、およびアカウントの有効期間が **特徴** です。 特徴の重要度から、各データ フィールドがモデルの予測にどのような影響を与えたかがわかります。 たとえば、年齢は予測で頻繁に使用されるが、アカウントのサイズと有効期間は予測値に大きな影響を与えない場合があります。 このプロセスにより、データ サイエンティストは結果の予測を説明でき、利害関係者はモデルで最も重要な機能を認識できます。
 
 サポートされている解釈可能性の手法、サポートされる機械学習モデル、およびサポートされている実行環境については、こちらをご覧ください。
 
@@ -64,12 +64,12 @@ SDK のクラスとメソッドを使用して、次のことを行うことが�
 
 |解釈可能性の手法|説明|Type|
 |--|--|--------------------|
-|SHAP Tree Explainer| [SHAP](https://github.com/slundberg/shap) の Tree Explainer は、**ツリーおよびツリーのアンサンブル**に固有の多項式時間高速 SHAP 値推定アルゴリズムに注目します。|モデル固有|
+|SHAP Tree Explainer| [SHAP](https://github.com/slundberg/shap) の Tree Explainer は、 **ツリーおよびツリーのアンサンブル** に固有の多項式時間高速 SHAP 値推定アルゴリズムに注目します。|モデル固有|
 |SHAP Deep Explainer| SHAP による説明に基づくと、Deep Explainer は [SHAP NIPS の論文](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)で説明されている DeepLIFT との接続上に構築されているディープ ラーニング モデルでの SHAP 値に対する高速近似アルゴリズムです。 **TensorFlow** モデルおよび TensorFlow バックエンドを使用する **Keras** モデルがサポートされています (PyTorch の暫定サポートもあります)"。|モデル固有|
-|SHAP Linear Explainer| SHAP の Linear Explainer では、**線形モデル**の SHAP 値を計算し、必要に応じて機能間の相関関係を考慮します。|モデル固有|
-|SHAP Kernel Explainer| SHAP の Kernel Explainer では、特別に重み付けされたローカル線形回帰を使用して、**任意のモデル**の SHAP 値を推定します。|モデル非依存|
-|Mimic Explainer (グローバル サロゲート)| Mimic Explainer は、[グローバル サロゲート モデル](https://christophm.github.io/interpretable-ml-book/global.html)をトレーニングしてブラックボックス モデルを模倣するアイデアに基づいています。 グローバル サロゲート モデルは、**任意のブラック ボックス モデル**の予測をできる限り正確に近似するためにトレーニングされた本質的に解釈可能なモデルです。 データ サイエンティストは、サロゲート モデルを解釈してブラック ボックス モデルについての結論を導き出すことができます。 サロゲート モデルとして、次のいずれかの解釈可能なモデルを使用できます。LightGBM (LGBMExplainableModel)、線形回帰 (LinearExplainableModel)、確率勾配降下説明可能モデル (SGDExplainableModel)、およびデシジョン ツリー (DecisionTreeExplainableModel)。|モデル非依存|
-|Permutation Feature Importance Explainer (PFI)| Permutation Feature Importance は、[Breiman のランダム フォレスト論文](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (セクション 10 を参照してください) から着想を得た、分類および回帰モデルの説明に使用される手法です。 概要を説明すると、データセット全体に対して一度に 1 つの特徴のデータをランダムにシャッフルし、対象のパフォーマンス メトリックがどのくらい変化するかを計算するしくみです。 変化が大きいほど、その特徴の重要度は高くなります。 PFI では、**基になる任意のモデル**の全体的な動作を説明できますが、個々の予測については説明しません。 |モデル非依存|
+|SHAP Linear Explainer| SHAP の Linear Explainer では、 **線形モデル** の SHAP 値を計算し、必要に応じて機能間の相関関係を考慮します。|モデル固有|
+|SHAP Kernel Explainer| SHAP の Kernel Explainer では、特別に重み付けされたローカル線形回帰を使用して、 **任意のモデル** の SHAP 値を推定します。|モデル非依存|
+|Mimic Explainer (グローバル サロゲート)| Mimic Explainer は、[グローバル サロゲート モデル](https://christophm.github.io/interpretable-ml-book/global.html)をトレーニングしてブラックボックス モデルを模倣するアイデアに基づいています。 グローバル サロゲート モデルは、 **任意のブラック ボックス モデル** の予測をできる限り正確に近似するためにトレーニングされた本質的に解釈可能なモデルです。 データ サイエンティストは、サロゲート モデルを解釈してブラック ボックス モデルについての結論を導き出すことができます。 サロゲート モデルとして、次のいずれかの解釈可能なモデルを使用できます。LightGBM (LGBMExplainableModel)、線形回帰 (LinearExplainableModel)、確率勾配降下説明可能モデル (SGDExplainableModel)、およびデシジョン ツリー (DecisionTreeExplainableModel)。|モデル非依存|
+|Permutation Feature Importance Explainer (PFI)| Permutation Feature Importance は、[Breiman のランダム フォレスト論文](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (セクション 10 を参照してください) から着想を得た、分類および回帰モデルの説明に使用される手法です。 概要を説明すると、データセット全体に対して一度に 1 つの特徴のデータをランダムにシャッフルし、対象のパフォーマンス メトリックがどのくらい変化するかを計算するしくみです。 変化が大きいほど、その特徴の重要度は高くなります。 PFI では、 **基になる任意のモデル** の全体的な動作を説明できますが、個々の予測については説明しません。 |モデル非依存|
 
 
 
@@ -83,8 +83,8 @@ SDK のクラスとメソッドを使用して、次のことを行うことが�
 
 `TabularExplainer` ではまた、Direct SHAP Explainer より大きな機能とパフォーマンスの強化も行われています。
 
-* **初期化データセットの要約作成**。 説明の速度が最も重要な場合、初期化データセットを要約し、代表的なサンプルの小さなセットを生成します。これにより、全体的な特徴と個々の特徴の重要度の値の生成速度が向上します。
-* **評価データ セットのサンプリング**。 ユーザーが評価サンプルの大きなセットを渡しても、実際にはそれらのすべてを評価する必要がない場合は、サンプリング パラメーターを true に設定し、全体的なモデルの説明の計算を高速化できます。
+* **初期化データセットの要約作成** 。 説明の速度が最も重要な場合、初期化データセットを要約し、代表的なサンプルの小さなセットを生成します。これにより、全体的な特徴と個々の特徴の重要度の値の生成速度が向上します。
+* **評価データ セットのサンプリング** 。 ユーザーが評価サンプルの大きなセットを渡しても、実際にはそれらのすべてを評価する必要がない場合は、サンプリング パラメーターを true に設定し、全体的なモデルの説明の計算を高速化できます。
 
 次の図は、サポートされている Explainer の現在の構造を示しています。
 

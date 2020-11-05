@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/12/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: df9447160fe6a0aa2a3ae001ad8a337c3ff488f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97d0f822e63bb6eb32b1cd2f211621af8ad1c4b8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275945"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313996"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Azure Machine Learning SDK for Python を使用して機械学習パイプラインのスケジュールを設定する
 
@@ -66,7 +66,7 @@ from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
 
 ### <a name="create-a-time-based-schedule"></a>時刻ベースのスケジュールを作成する
 
-`ScheduleRecurrence` コンストラクターには、次のいずれかの文字列である必要な `frequency` 引数があります。"Minute"、"Hour"、"Day"、"Week"、または "Month"。 また、スケジュールの開始から次の開始までの経過時間の `frequency` 単位を指定する整数の `interval` 引数も必要です。 省略可能な引数を使用すると、[ScheduleRecurrence SDK に関するドキュメント](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py&preserve-view=true)で詳しく説明されているように、開始時間をより具体的に指定できます。
+`ScheduleRecurrence` コンストラクターには、次のいずれかの文字列である必要な `frequency` 引数があります。"Minute"、"Hour"、"Day"、"Week"、または "Month"。 また、スケジュールの開始から次の開始までの経過時間の `frequency` 単位を指定する整数の `interval` 引数も必要です。 省略可能な引数を使用すると、[ScheduleRecurrence SDK に関するドキュメント](/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?preserve-view=true&view=azure-ml-py)で詳しく説明されているように、開始時間をより具体的に指定できます。
 
 15 分ごとに実行を開始する `Schedule` を作成します。
 
@@ -81,13 +81,13 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 ### <a name="create-a-change-based-schedule"></a>変更ベースのスケジュールを作成する
 
-ファイルの変更によってトリガーされるパイプラインは、時間ベースのスケジュールよりも効率的な場合があります。 たとえば、ファイルが変更されたとき、または新しいファイルがデータ ディレクトリに追加されたときに、前処理手順を実行することもできます。 データストアまたはデータストア内の特定のディレクトリ内の変更に対する変更を監視できます。 特定のディレクトリを監視する場合、そのディレクトリのサブディレクトリ内の変更は、実行をトリガー _しません_。
+ファイルの変更によってトリガーされるパイプラインは、時間ベースのスケジュールよりも効率的な場合があります。 たとえば、ファイルが変更されたとき、または新しいファイルがデータ ディレクトリに追加されたときに、前処理手順を実行することもできます。 データストアまたはデータストア内の特定のディレクトリ内の変更に対する変更を監視できます。 特定のディレクトリを監視する場合、そのディレクトリのサブディレクトリ内の変更は、実行をトリガー _しません_ 。
 
-ファイルに対応する `Schedule` を作成するには、[Schedule.create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-) の呼び出しに `datastore` パラメーターを設定する必要があります。 フォルダーを監視するには、`path_on_datastore` 引数を設定します。
+ファイルに対応する `Schedule` を作成するには、[Schedule.create](/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-) の呼び出しに `datastore` パラメーターを設定する必要があります。 フォルダーを監視するには、`path_on_datastore` 引数を設定します。
 
 `polling_interval` 引数を使用すると、データストアが変更されたかどうかを確認する頻度を分単位で指定できます。
 
-パイプラインが [DataPath](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py&preserve-view=true) [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py&preserve-view=true) を使用して構築されている場合は、`data_path_parameter_name` 引数を設定することによって、その変数を変更されたファイルの名前に設定できます。
+パイプラインが [DataPath](/python/api/azureml-core/azureml.data.datapath.datapath?preserve-view=true&view=azure-ml-py) [PipelineParameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?preserve-view=true&view=azure-ml-py) を使用して構築されている場合は、`data_path_parameter_name` 引数を設定することによって、その変数を変更されたファイルの名前に設定できます。
 
 ```python
 datastore = Datastore(workspace=ws, name="workspaceblobstore")
@@ -153,4 +153,3 @@ stop_by_schedule_id(ws, schedule_id)
 
 * [パイプライン](concept-ml-pipelines.md)に関する詳細情報
 * [Jupyter を使用した Azure Machine Learning の探索](samples-notebooks.md)に関する詳細情報
-

@@ -9,25 +9,25 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 38072e95ed89d8fbc095e2f8ed41ea1381636300
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: f3775e73ce8f152fe39bc8170bbeba054f856630
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015157"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286594"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する (プレビュー)
 
 > [!NOTE]
-> Key Vault リソース プロバイダーでは、**コンテナー**と**マネージド HSM** という 2 種類のリソースがサポートされています。 この記事で説明するアクセス制御は、**コンテナー**にのみ適用されます。 マネージド HSM のアクセス制御の詳細については、「[マネージド HSM アクセス制御](../managed-hsm/access-control.md)」を参照してください。
+> Key Vault リソース プロバイダーでは、 **コンテナー** と **マネージド HSM** という 2 種類のリソースがサポートされています。 この記事で説明するアクセス制御は、 **コンテナー** にのみ適用されます。 マネージド HSM のアクセス制御の詳細については、「[マネージド HSM アクセス制御](../managed-hsm/access-control.md)」を参照してください。
 
-Azure ロールベースのアクセス制御 (Azure RBAC) は [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 上に構築された承認システムであり、Azure リソースに対するアクセスをきめ細かく管理できます。
+Azure ロールベースのアクセス制御 (Azure RBAC) は [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 上に構築された承認システムであり、Azure リソースに対するアクセスをきめ細かく管理できます。
 
 Azure RBAC を使用すると、キー、シークレット、および証明書のアクセス許可を管理できます。 すべてのキー コンテナーにわたるすべてのアクセス許可を管理できる 1 つの場所が用意されています。 
 
 Azure RBAC モデルには、さまざまなスコープ レベル (管理グループ、サブスクリプション、リソース グループ、または個別のリソース) にアクセス許可を設定する機能があります。  また、Key Vault 用の Azure RBAC には、個々のキー、シークレット、および証明書に対して個別のアクセス許可を持たせる機能もあります
 
-詳細については、[Azure ロールベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) に関するページを参照してください。
+詳細については、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) に関するページを参照してください。
 
 ## <a name="best-practices-for-individual-keys-secrets-and-certificates"></a>個々のキー、シークレット、および証明書のベスト プラクティス
 
@@ -59,7 +59,7 @@ Azure Key Vault 管理ガイドラインの詳細については、以下を参�
 | Key Vault Secrets Officer (プレビュー)| キーコンテナーのシークレットに対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
 | Key Vault Secrets User (プレビュー)| シークレット コンテンツを読み取ります。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 4633458b-17de-408a-b874-0445c86b69e6 |
 
-Azure 組み込みロールの定義の詳細については、「[Azure 組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)」を参照してください。
+Azure 組み込みロールの定義の詳細については、「[Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
 ## <a name="using-azure-rbac-secret-key-and-certificate-permissions-with-key-vault"></a>Key Vault での Azure RBAC シークレット、キー、および証明書のアクセス許可の使用
 
@@ -70,7 +70,7 @@ Key Vault の新しい Azure RBAC アクセス許可モデルには、コンテ�
 ロールの割り当てを追加するには、以下が必要です。
 
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-- `Microsoft.Authorization/roleAssignments/write` および `Microsoft.Authorization/roleAssignments/delete` のアクセス許可 ([ユーザー アクセス管理者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator)や[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)など)
+- `Microsoft.Authorization/roleAssignments/write` および `Microsoft.Authorization/roleAssignments/delete` のアクセス許可 ([ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)や[所有者](../../role-based-access-control/built-in-roles.md#owner)など)
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Key Vault で Azure RBAC アクセス許可を有効にする
 
@@ -194,7 +194,7 @@ Key Vault の [アクセス制御 (IAM)] タブに移動し、このリソース
 
 ### <a name="creating-custom-roles"></a>カスタム ロールの作成 
 
-[az role definition create コマンド](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create)
+[az role definition create コマンド](/cli/azure/role/definition#az-role-definition-create)
 
 **(CLI bash スクリプト)</br>**
 ```azurecli
@@ -216,7 +216,7 @@ az role definition create --role-definition '{ \
 
 カスタム ロールの作成方法の詳細については、以下を参照してください。
 
-[Azure カスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
+[Azure カスタム ロール](../../role-based-access-control/custom-roles.md)
 
 ## <a name="known-limits-and-performance"></a>既知の制限とパフォーマンス
 
@@ -226,5 +226,5 @@ az role definition create --role-definition '{ \
 
 ## <a name="learn-more"></a>詳細情報
 
-- [Azure RBAC の概要](https://docs.microsoft.com/azure/role-based-access-control/overview)
-- [カスタム ロールのチュートリアル](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-cli)
+- [Azure RBAC の概要](../../role-based-access-control/overview.md)
+- [カスタム ロールのチュートリアル](../../role-based-access-control/tutorial-custom-role-cli.md)

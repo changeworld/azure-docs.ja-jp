@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d16d14ff51cb9a7e71193d93c6755a8e4cb93ed0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9277d100eb6744adfc20fbba9f96b822654e64a3
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89481411"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287706"
 ---
 # <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>Azure portal を使用して Key Vault アクセス ポリシーを割り当てる
 
@@ -23,7 +23,7 @@ Key Vault アクセス ポリシーは、特定のサービス プリンシパ�
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 
-Azure Active Directory での Azure portal を通じたグループの作成の詳細については、[基本グループの作成とメンバーの追加](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)に関する記事を参照してください。
+Azure Active Directory での Azure portal を通じたグループの作成の詳細については、[基本グループの作成とメンバーの追加](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)に関する記事を参照してください。
 
 ## <a name="assign-an-access-policy"></a>アクセス ポリシーを割り当てる
 

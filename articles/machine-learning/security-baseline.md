@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: cb403e2d1b11391ca3917478955dc282a174ae88
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: ccc9f7c2521f846529642c644e70654d17ae54ce
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426308"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305716"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure Machine Learning の Azure セキュリティ ベースライン
 
@@ -21,7 +21,7 @@ Microsoft Azure Machine Learning の Azure セキュリティ ベースライン
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、 [Azure セキュリティ ベンチマークの「ネットワークのセキュリティ](/azure/security/benchmarks/security-control-network-security)」を参照してください。*
+*詳細については、 [Azure セキュリティ ベンチマークの「ネットワークのセキュリティ](../security/benchmarks/security-control-network-security.md)」を参照してください。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1:仮想ネットワーク内の Azure リソースを保護する
 
@@ -71,11 +71,11 @@ Azure Firewall を使用して、Azure Machine Learning ワークスペースと
 
 有効化され、悪意のあるネットワーク トラフィックに対して "アラートおよび拒否" するように構成された脅威インテリジェンスベースのフィルター処理とともに、組織の各ネットワーク境界に Azure Firewall をデプロイします。
 
-- [DDoS 保護を構成する方法](../virtual-network/manage-ddos-protection.md)
+- [DDoS 保護を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
 - [Azure Firewall の内側で Azure Machine Learning のワークスペースを使用する](how-to-access-azureml-behind-firewall.md)
 
-- [Azure Security Center 脅威インテリジェンスの詳細](/azure/security-center/security-center-alerts-service-layer)
+- [Azure Security Center 脅威インテリジェンスの詳細](../security-center/azure-defender.md)
 
 **Azure Security Center の監視** : はい
 
@@ -145,7 +145,7 @@ Azure Machine Learning service では、複雑さが最小限になるように�
 
 [説明] フィールドをサポートする Azure Machine Learning 仮想ネットワーク内のリソースでは、ネットワーク間のトラフィックを許可するルールを文書化するために使用します。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視** : 適用外
 
@@ -155,7 +155,7 @@ Azure Machine Learning service では、複雑さが最小限になるように�
 
 **ガイダンス** : Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Machine Learning に関連したネットワーク リソースの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](/azure/azure-monitor/platform/activity-log-view)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -165,7 +165,7 @@ Azure Machine Learning service では、複雑さが最小限になるように�
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳しくは、「 [Azure Security ベンチマーク:ログ記録と監視](/azure/security/benchmarks/security-control-logging-monitoring)」を参照してください。*
+*詳しくは、「 [Azure Security ベンチマーク:ログ記録と監視](../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1:承認された時刻同期ソースを使用する
 
@@ -197,7 +197,7 @@ Azure Machine Learning service では、複雑さが最小限になるように�
 
 - [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/platform/platform-logs-overview.md)
 
-- [Azure Machine Learning でログ記録を有効にする](/azure/machine-learning/how-to-enable-logging)
+- [Azure Machine Learning でログ記録を有効にする](./how-to-track-experiments.md)
 
 - [Azure Machine Learning の監視](monitor-azure-machine-learning.md)
 
@@ -237,7 +237,7 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
 
 - [Log Analytics ワークスペースで Azure Machine Learning に対するクエリを実行する方法](monitor-azure-machine-learning.md#analyzing-log-data)
 
-- [Azure Machine Learning でログ記録を有効にする](/azure/machine-learning/how-to-enable-logging)
+- [Azure Machine Learning でログ記録を有効にする](./how-to-track-experiments.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -299,7 +299,7 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
 
 ## <a name="identity-and-access-control"></a>ID とアクセスの制御
 
-*詳細については、 [Azure セキュリティ ベンチマークの「ID およびアクセス制御](/azure/security/benchmarks/security-control-identity-access-control)」を参照してください。*
+*詳細については、 [Azure セキュリティ ベンチマークの「ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
@@ -311,7 +311,7 @@ Azure AD PowerShell モジュールを使用してアドホック クエリを�
 
 - [Azure Machine Learning の Azure ロールベースのアクセス制御の概要](how-to-assign-roles.md)
 
-- [PowerShell を使用して Azure Active Directory でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [PowerShell を使用して Azure Active Directory でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
 **Azure Security Center の監視** : はい
 
@@ -333,7 +333,7 @@ Azure AD PowerShell モジュールを使用してアドホック クエリを�
 
 - [既定の Machine Learning ロールの詳細](how-to-assign-roles.md#default-roles)
 
-- [Privileged Identity Management について](/azure/active-directory/privileged-identity-management/)
+- [Privileged Identity Management について](../active-directory/privileged-identity-management/index.yml)
 
 **Azure Security Center の監視** : はい
 
@@ -377,7 +377,7 @@ Azure AD PowerShell モジュールを使用してアドホック クエリを�
 
 **ガイダンス** : Azure Active Directory セキュリティ レポートと監視を使用して、環境内で疑わしいアクティビティや安全でないアクティビティが発生したときに検出します。 Azure Security Center を使用して ID およびアクセス アクティビティを監視します。
 
-- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](../security-center/security-center-identity-access.md)
 
@@ -417,11 +417,11 @@ Azure AD PowerShell モジュールを使用してアドホック クエリを�
  
 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用して、環境内で疑わしいアクティビティまたは安全ではないアクティビティが発生したときにログとアラートを生成します。
 
-- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring)
+- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
 - [Azure AD の ID およびアクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
-- [Azure AD Privileged Identity Management (PIM) をデプロイする](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [Azure AD Privileged Identity Management (PIM) をデプロイする](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
 **Azure Security Center の監視** : はい
 
@@ -434,7 +434,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用
 このプロセスを効率化するには、Azure AD ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics ワークスペース内で必要なアラートを構成できます。
  
  
-- [Azure アクティビティ ログを Azure Monitor と統合する方法](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure アクティビティ ログを Azure Monitor と統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure Security Center の監視** : 適用外
 
@@ -444,7 +444,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用
 
 **ガイダンス** : Azure AD Identity Protection 機能を使用して、ユーザー ID に関連して検出された疑わしいアクションに対する自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。
  
-- [Azure AD の危険なサインインを表示する方法](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
  
 - [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
  
@@ -464,13 +464,13 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、 [Azure セキュリティ ベンチマークの「データ保護](/azure/security/benchmarks/security-control-data-protection)」を参照してください。*
+*詳細については、 [Azure セキュリティ ベンチマークの「データ保護](../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
 **ガイダンス** : 機密情報を格納または処理する Azure リソースを追跡しやすくするには、タグを使用します。
  
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視** : 適用外
 
@@ -480,11 +480,11 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用
 
 **ガイダンス** : 環境の種類やデータの機密度レベルなど、個々のセキュリティ ドメイン用の個別のサブスクリプションと管理グループを使用して分離を実装します。 アプリケーションやエンタープライズ環境で必要とされる Azure リソースへのアクセス レベルを制限できます。 Azure RBAC を使用して Azure リソースへのアクセスを制御できます。
  
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](../governance/management-groups/create.md)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
  
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視** : 適用外
 
@@ -554,7 +554,7 @@ Microsoft では、Machine Learning 用の基になるインフラストラク�
 
 - [Azure での保存時の暗号化の概要](../security/fundamentals/encryption-atrest.md)
 
-- [ユーザーが管理する暗号化キーを構成する方法](../storage/common/storage-encryption-keys-portal.md)
+- [ユーザーが管理する暗号化キーを構成する方法](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 **Azure Security Center の監視** : 適用外
 
@@ -572,7 +572,7 @@ Microsoft では、Machine Learning 用の基になるインフラストラク�
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
-*詳細については、 [Azure セキュリティ ベンチマークの「脆弱性の管理](/azure/security/benchmarks/security-control-vulnerability-management)」を参照してください。*
+*詳細については、 [Azure セキュリティ ベンチマークの「脆弱性の管理](../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
@@ -580,7 +580,7 @@ Microsoft では、Machine Learning 用の基になるインフラストラク�
 
 Azure Machine Learning では、さまざまなコンピューティング リソース (ユーザー独自のコンピューティング リソース含む) にわたって、さまざまなサポートが提供されています。 ユーザーの組織がコンピューティング リソースを所有している場合は、Azure 仮想マシン、コンテナー イメージ、および SQL サーバーに対して脆弱性評価を実行することに関する Azure Security Center の推奨事項に従います。
 
-- [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Security Center の監視** : 適用外
 
@@ -592,9 +592,9 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
 
 Azure Machine Learning では、さまざまなコンピューティング リソース (ユーザー独自のコンピューティング リソース含む) にわたって、さまざまなサポートが提供されています。 ユーザーの組織がコンピューティング リソースを所有している場合は、Azure Automation Update Management を使用して、最新のセキュリティ更新プログラムが Windows および Linux VM にインストールされていることを確認します。 Windows VM については、Windows Update が有効になっていて、自動的に更新するよう設定されていることを確認します。
 
-- [Azure で仮想マシンに対して Update Management を構成する方法](/azure/automation/automation-update-management)
+- [Azure で仮想マシンに対して Update Management を構成する方法](../automation/update-management/overview.md)
 
-- [Security Center によって監視される Azure セキュリティ ポリシーについて理解する](../security-center/security-center-policy-definitions.md)
+- [Security Center によって監視される Azure セキュリティ ポリシーについて理解する](../security-center/policy-reference.md)
 
 **Azure Security Center の監視** : 適用外
 
@@ -612,7 +612,7 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
 
 **ガイダンス** : Azure Machine Learning では、さまざまなコンピューティング リソース (ユーザー独自のコンピューティング リソース含む) にわたって、さまざまなサポートが提供されています。 ユーザーの組織がコンピューティング リソースを所有している場合は、Azure 仮想マシン、コンテナー イメージ、および SQL サーバーに対して脆弱性評価を実行することに関する Azure Security Center の推奨事項に従います。 スキャン結果を一定の間隔でエクスポートして、前回のスキャンと結果を比較し、脆弱性が修復されていることを確認します。 Azure Security Center によって提案された脆弱性管理の推奨事項を使用する場合は、選択したソリューションのポータルに切り替えてスキャン データの履歴を表示できます。
 
-- [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Security Center の監視** : 適用外
 
@@ -628,7 +628,7 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、 [Azure セキュリティ ベンチマークの「インベントリと資産の管理](/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
+*詳細については、 [Azure セキュリティ ベンチマークの「インベントリと資産の管理](../security/benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1:自動化された資産検出ソリューションを使用する
 
@@ -638,7 +638,7 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
 
 - [Azure Resource Graph Explorer を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-- [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
@@ -650,7 +650,7 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
 
 **ガイダンス** :メタデータを追加して Azure リソースにタグを適用すると、それらのリソースが各分類に応じて論理的に整理されます。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視** : 適用外
 
@@ -662,15 +662,15 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
  
  
  
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
  
  
  
-- [管理グループを作成する方法](../governance/management-groups/create.md)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
  
  
  
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視** : 適用外
 
@@ -784,7 +784,7 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
 
 **ガイダンス** : Azure Machine Learning では、さまざまなコンピューティング リソース (ユーザー独自のコンピューティング リソース含む) にわたって、さまざまなサポートが提供されています。 ユーザーの組織がコンピューティング リソースを所有している場合は、スクリプトの種類に基づき、オペレーティング システム固有の構成またはサードパーティのリソースを使用して、ユーザーの Azure コンピューティング リソースでスクリプトを実行する機能を制限できます。  また、Azure Security Center の適応型アプリケーション制御を使用して、Azure Virtual Machines 上で承認されたソフトウェアのみを実行し、すべての承認されていないソフトウェアが実行されないようにすることもできます。
 
-- [Windows 環境で PowerShell スクリプトの実行を制御する方法](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [Windows 環境で PowerShell スクリプトの実行を制御する方法](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
 - [Azure Security Center の適応型アプリケーション制御を使用する方法](../security-center/security-center-adaptive-application.md)
 
@@ -802,7 +802,7 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、 [Azure セキュリティ ベンチマークの「セキュリティで保護された構成](/azure/security/benchmarks/security-control-secure-configuration)」を参照してください。*
+*詳細については、 [Azure セキュリティ ベンチマークの「セキュリティで保護された構成](../security/benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
@@ -814,7 +814,7 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 Azure Machine Learning では、作業を追跡するために Git リポジトリが完全にサポートされています。したがって、自分の共有ワークスペース ファイル システムにリポジトリをクローンしたり、ローカル ワークステーションで Git を使用したり、CI/CD パイプラインから Git を使用したり、Machine Learning 環境の一部としてセキュリティで保護された構成がコード リソースに適用されるようにしたりできます。
 
-- [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [チュートリアル:コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)
 
@@ -870,7 +870,7 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
 
 Microsoft によって公開された Azure Marketplace の仮想マシン イメージが Microsoft によって管理および維持されることに注意してください。 
 
-- [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/deploy-vulnerability-assessment-vm.md)
 
 - [ARM テンプレートから Azure 仮想マシンを作成する方法](../virtual-machines/windows/ps-template.md)
 
@@ -892,9 +892,9 @@ Microsoft によって公開された Azure Marketplace の仮想マシン イ�
 
 Azure Machine Learning では、作業を追跡するために Git リポジトリが完全にサポートされています。したがって、自分の共有ワークスペース ファイル システムにリポジトリをクローンしたり、ローカル ワークステーションで Git を使用したり、CI/CD パイプラインから Git を使用したり、Machine Learning 環境の一部としてセキュリティで保護された構成がコード リソースに適用されるようにしたりできます。
 
-- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Azure Repos のドキュメント](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos のドキュメント](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center の監視** : 適用外
 
@@ -958,7 +958,7 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
 
 Azure Machine Learning では、さまざまなコンピューティング リソース (ユーザー独自のコンピューティング リソース含む) にわたって、さまざまなサポートが提供されています。 ユーザーの組織がコンピューティング リソースを所有している場合は、Azure Security Center Compute &amp; アプリを使用し、VM、サーバー、およびコンテナーの推奨事項に従います。
 
-- [Azure Security Center のコンテナーの推奨事項を理解する](/azure/security-center/security-center-container-recommendations)
+- [Azure Security Center のコンテナーの推奨事項を理解する](../security-center/container-security.md)
 
 **Azure Security Center の監視** : 適用外
 
@@ -978,11 +978,11 @@ Azure Machine Learning では、カスタマー マネージド キーを使用�
 
 - [Azure リソースに対してマネージド ID を使用する方法](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [キー コンテナーを作成する方法](/azure/key-vault/quick-create-portal)
+- [キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md)
 
-- [Key Vault に対して認証を行う方法](https://docs.microsoft.com/azure/key-vault/general/authentication)
+- [Key Vault に対して認証を行う方法](../key-vault/general/authentication.md)
 
-- [Key Vault のアクセス ポリシーを割り当てる方法](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+- [Key Vault のアクセス ポリシーを割り当てる方法](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center の監視** : はい
 
@@ -1013,7 +1013,7 @@ Azure Machine Learning では、カスタマー マネージド キーを使用�
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、 [Azure セキュリティ ベンチマークの「マルウェアからの防御](/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
+*詳細については、 [Azure セキュリティ ベンチマークの「マルウェアからの防御](../security/benchmarks/security-control-malware-defense.md)」を参照してください。*
 
 ### <a name="81-use-centrally-managed-antimalware-software"></a>8.1:一元管理されるマルウェア対策ソフトウェアを使用する
 
@@ -1023,7 +1023,7 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
 
 - [Azure に対して Microsoft Antimalware を構成する方法](../security/fundamentals/antimalware.md)
 
-- [Azure Security Center での脅威の防止](../security-center/threat-protection.md)
+- [Azure Security Center での脅威の防止](../security-center/azure-defender.md)
 
 **Azure Security Center の監視** : 適用外
 
@@ -1053,7 +1053,7 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳細については、 [Azure セキュリティ ベンチマークの「データの復旧](/azure/security/benchmarks/security-control-data-recovery)」を参照してください。*
+*詳細については、 [Azure セキュリティ ベンチマークの「データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
 
@@ -1070,7 +1070,7 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
 **ガイダンス** : Azure Machine Learning service では、接続されたデータ ストアのデータ管理によってデータがバックアップされます。 VM の Azure Backup を有効にし、必要な頻度と保持期間を構成します。 Azure Key Vault でカスタマー マネージド キーをバックアップする
 
 - [Azure 仮想マシンのバックアップからファイルを復旧する方法](../backup/backup-azure-restore-files-from-vm.md)
-- [Azure でキー コンテナーのキーを復元する方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center の監視** : 適用外
 
@@ -1095,9 +1095,9 @@ Key Vault で論理的な削除と消去保護を有効にして、偶発的ま�
  
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
-- [Key Vault で論理的な削除と消去保護を有効にする方法](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Key Vault で論理的な削除と消去保護を有効にする方法](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-- [Azure Blob Storage の論理的な削除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Azure Blob Storage の論理的な削除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center の監視** : 適用外
 
@@ -1105,7 +1105,7 @@ Key Vault で論理的な削除と消去保護を有効にして、偶発的ま�
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、 [Azure セキュリティ ベンチマークの「インシデント対応](/azure/security/benchmarks/security-control-incident-response)」を参照してください。*
+*詳細については、 [Azure セキュリティ ベンチマークの「インシデント対応](../security/benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
@@ -1129,7 +1129,7 @@ Key Vault で論理的な削除と消去保護を有効にして、偶発的ま�
 
 - [Security alerts in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [タグを使用した Azure リソースの整理](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視** : はい
 
@@ -1179,7 +1179,7 @@ Key Vault で論理的な削除と消去保護を有効にして、偶発的ま�
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、 [Azure セキュリティ ベンチマークの「侵入テストとレッド チーム演習](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)」を参照してください。*
+*詳細については、 [Azure セキュリティ ベンチマークの「侵入テストとレッド チーム演習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、確実に修復されるようにする
 
@@ -1195,5 +1195,5 @@ Key Vault で論理的な削除と消去保護を有効にして、偶発的ま�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: 931aea02d0a3c26bb5c2e7158f9c4360976d3af5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c55c87cd8ab1b2cd1dbaf2c877eb341744d822ef
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440520"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287459"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault のバックアップ
 
@@ -25,9 +25,9 @@ ms.locfileid: "92440520"
 
 Azure Key Vault は、可用性を維持し、データの損失を防ぐうえで役立つ機能を自動的に提供します。 業務上の正当かつ重要な理由がある場合にのみ、シークレットをバックアップするようにしてください。 キー コンテナーにシークレットをバックアップすると、シークレットの有効期限が切れたりシークレットのローテーションを行ったりした際に、ログ、アクセス許可、およびバックアップの一式を複数維持しなければならないなど、運用上の負担が発生します。
 
-Key Vault を使用すると、障害状況下で可用性を維持し、ユーザーの介入なしに自動的に要求をペア リージョンにフェールオーバーできます。 詳細については、「[Azure Key Vault の可用性と冗長性](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance)」を参照してください。
+Key Vault を使用すると、障害状況下で可用性を維持し、ユーザーの介入なしに自動的に要求をペア リージョンにフェールオーバーできます。 詳細については、「[Azure Key Vault の可用性と冗長性](./disaster-recovery-guidance.md)」を参照してください。
 
-不注意や悪意によってシークレットが削除されないようにする場合は、キー コンテナーに論理的な削除と消去保護の機能を構成します。 詳細については、「[Azure Key Vault の論理的な削除の概要](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)」を参照してください。
+不注意や悪意によってシークレットが削除されないようにする場合は、キー コンテナーに論理的な削除と消去保護の機能を構成します。 詳細については、「[Azure Key Vault の論理的な削除の概要](./soft-delete-overview.md)」を参照してください。
 
 ## <a name="limitations"></a>制限事項
 
@@ -123,4 +123,4 @@ az keyvault secret restore --file {File Path} --vault-name {Key Vault Name} --su
 
 ## <a name="next-steps"></a>次のステップ
 
-Key Vault の[ログ記録と監視](https://docs.microsoft.com/azure/key-vault/general/logging)を有効にします。
+Key Vault の[ログ記録と監視](./logging.md)を有効にします。

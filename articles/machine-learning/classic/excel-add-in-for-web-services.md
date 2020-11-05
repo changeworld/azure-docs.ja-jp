@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 69eefce50cefe9f54ed931c96ccbe94b2057cae4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb87afcc6edc02d241dca763aff9ecdd594e4711
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362369"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310087"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (クラシック) Web サービスの Excel アドイン
 
-**適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 Excel を使用すると、コードを作成することなく、直接 Web サービスを簡単に呼び出すことができます。
@@ -28,7 +28,7 @@ Excel を使用すると、コードを作成することなく、直接 Web サ
 1. [サンプルの Excel ファイル](https://aka.ms/amlexcel-sample-2)を開きます。このファイルには、Excel アドインと、タイタニック号の乗客に関するデータが含まれます。 
  
     > [!NOTE]
-    > - ファイルに関係する Web サービスの一覧が表示され、下部に [Auto-predict]\(自動予測\) のチェックボックスが表示されます。 自動予測を有効にすると、入力が変更されるたびに**すべての**サービスの予測が更新されます。 オフにした場合は、[Predict All]\(すべて予測\) をクリックして更新する必要があります。 サービス レベルで自動予測を有効にするには、手順 6 に移動します。
+    > - ファイルに関係する Web サービスの一覧が表示され、下部に [Auto-predict]\(自動予測\) のチェックボックスが表示されます。 自動予測を有効にすると、入力が変更されるたびに **すべての** サービスの予測が更新されます。 オフにした場合は、[Predict All]\(すべて予測\) をクリックして更新する必要があります。 サービス レベルで自動予測を有効にするには、手順 6 に移動します。
     > - Azure Machine Learning Excel アドインでは、読み込みのために Office アドイン ストアが呼び出されます。 組織で Office アドイン ストアへのアクセスが禁止されている場合、アドインの読み込み時にエラーが発生します。 この場合は、Microsoft 365 管理センターから Azure Machine Learning Excel アドインをデプロイしてください。 その後、アドインを呼び出し、URL と API キーを貼り付けて、Web サービスを手動で追加します。
 
  
@@ -67,19 +67,19 @@ Web サービスの API キーを取得します。 取得元は、クラシッ�
 
 1. [Azure Machine Learning Web サービス](https://services.azureml.net) ポータルで、 **[WEB サービス]** をクリックし、Web サービスを選択します。 
 2. **[Consume (使用)]** をクリックします。
-3. **[Basic consumption info (基本的な実行情報)]** を探します。 **主キー**と**要求応答** URL をコピーして保存します。
+3. **[Basic consumption info (基本的な実行情報)]** を探します。 **主キー** と **要求応答** URL をコピーして保存します。
 
 ## <a name="steps-to-add-a-new-web-service"></a>新しい Web サービスを追加する手順
 
 1. Web サービスをデプロイするか、既存の Web サービスを使用します。 Web サービスのデプロイの詳細については、[チュートリアル 3: 信用リスク モデルのデプロイ](tutorial-part3-credit-risk-deploy.md)を参照してください。
 2. **[Consume (使用)]** をクリックします。
-3. **[Basic consumption info (基本的な実行情報)]** を探します。 **主キー**と**要求応答** URL をコピーして保存します。
+3. **[Basic consumption info (基本的な実行情報)]** を探します。 **主キー** と **要求応答** URL をコピーして保存します。
 4. Excel で、 **[Web サービス]** セクションに移動します ( **[予測]** セクションにいる場合は、戻る矢印をクリックして Web サービスの一覧に移動します)。
    
     ![Web サービスの選択への移動](./media/excel-add-in-for-web-services/image3.png)
 5. **[Web サービスの追加]** をクリックします。
-6. **URL**というラベルが付いた、Excel アドインのテキスト ボックスに URL を貼り付けます。
-7. **API キー**というラベルが付いたテキスト ボックスに API/主キーを貼り付けます。
+6. **URL** というラベルが付いた、Excel アドインのテキスト ボックスに URL を貼り付けます。
+7. **API キー** というラベルが付いたテキスト ボックスに API/主キーを貼り付けます。
 8. **[追加]** をクリックします。
    
     ![クラシック Web サービスの URL と API キー。](./media/excel-add-in-for-web-services/image6.png)
@@ -88,4 +88,4 @@ Web サービスの API キーを取得します。 取得元は、クラシッ�
 ## <a name="sharing-your-workbook"></a>ブックを共有する
 ブックを保存すると、追加した Web サービス用の API/主キーも保存されます。 このため、信頼できる個人とのみブックを共有することをお勧めします。
 
-ご質問は、次のコメント セクション、または[フォーラム](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)までお寄せください。
+ご質問は、次のコメント セクション、または[フォーラム](/answers/topics/azure-machine-learning.html)までお寄せください。

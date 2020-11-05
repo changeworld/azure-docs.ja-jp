@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: c8d2304017a8fccd83c9c64559b8c5edf48481b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e8f1d2964f42c480026d13bed59921dd3f07610
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604120"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286227"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault 認証の基礎
 
@@ -24,8 +24,8 @@ Azure Key Vault を使用すると、シークレット、キー、証明書な�
 
 このドキュメントは、次の概念を熟知していることを前提としています。 これらの概念に慣れていない場合は、先に進む前にヘルプのリンクを参照してください。
 
-* Azure Active Directory ([リンク](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis))
-* セキュリティ プリンシパル ([リンク](https://docs.microsoft.com/azure/key-vault/general/authentication#app-identity-and-security-principals))
+* Azure Active Directory ([リンク](../../active-directory/fundamentals/active-directory-whatis.md))
+* セキュリティ プリンシパル ([リンク](./authentication.md#app-identity-and-security-principals))
 
 ## <a name="key-vault-configuration-steps-summary"></a>Key Vault の構成手順の概要
 
@@ -42,14 +42,14 @@ Azure Key Vault を使用すると、シークレット、キー、証明書な�
 Azure Active Directory でユーザーまたはアプリケーションを登録する方法については、以下のドキュメントのリンクを参照してください。
 **ユーザーを登録する場合はパスワードを作成し、アプリケーションの場合はクライアント シークレットまたはクライアント証明書の資格情報を作成してください。**
 
-* Azure Active Directory でのユーザーの登録 ([リンク](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory))
-* Azure Active Directory でのアプリケーションの登録 ([リンク](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app))
+* Azure Active Directory でのユーザーの登録 ([リンク](../../active-directory/fundamentals/add-users-azure-active-directory.md))
+* Azure Active Directory でのアプリケーションの登録 ([リンク](../../active-directory/develop/quickstart-register-app.md))
 
 ## <a name="assign-your-security-principal-a-role-in-azure-active-directory"></a>Azure Active Directory でセキュリティ プリンシパルにロールを割り当てる
 
 Azure Active Directory でセキュリティ プリンシパルにアクセス許可を割り当てるには、ロールベースのアクセス制御 (RBAC) を使用します。 これらのアクセス許可は、ロールの割り当てと呼ばれます。
 
-Key Vault のコンテキストにおいては、これらのロールの割り当てによって、Key Vault の管理プレーン (コントロール プレーンとも呼ばれます) に対するセキュリティ プリンシパルのアクセス レベルが決まります。 これらのロールの割り当てにより、データ プレーンのシークレットへの直接的なアクセスは提供されませんが、Key Vault のプロパティを管理するためのアクセスは提供されます。 たとえば、**閲覧者ロール**を割り当てられたユーザーまたはアプリケーションは、Key Vault ファイアウォールの設定を変更することはできません。一方、**共同作成者ロール**を割り当てられたユーザーまたはアプリケーションは、変更を行うことができます。 どちらのロールも、Key Vault のデータ プレーンへのアクセス権を割り当てられるまでは、シークレット、キー、証明書の値の作成や取得などの操作を実行するために、直接アクセスすることはできません。 これについては、次のステップで説明します。
+Key Vault のコンテキストにおいては、これらのロールの割り当てによって、Key Vault の管理プレーン (コントロール プレーンとも呼ばれます) に対するセキュリティ プリンシパルのアクセス レベルが決まります。 これらのロールの割り当てにより、データ プレーンのシークレットへの直接的なアクセスは提供されませんが、Key Vault のプロパティを管理するためのアクセスは提供されます。 たとえば、 **閲覧者ロール** を割り当てられたユーザーまたはアプリケーションは、Key Vault ファイアウォールの設定を変更することはできません。一方、 **共同作成者ロール** を割り当てられたユーザーまたはアプリケーションは、変更を行うことができます。 どちらのロールも、Key Vault のデータ プレーンへのアクセス権を割り当てられるまでは、シークレット、キー、証明書の値の作成や取得などの操作を実行するために、直接アクセスすることはできません。 これについては、次のステップで説明します。
 
 >[!IMPORTANT]
 > 共同作成者ロールまたは所有者ロールを持つユーザーは、既定では、Key Vault に格納されているシークレットに対する操作を実行するためのアクセス権を持っていませんが、共同作成者および所有者のロールにより、Key Vault に格納されているシークレットに対するアクセス ポリシーを追加または削除するためのアクセス許可は提供されます。 したがって、これらのロールが割り当てられたユーザーは、Key Vault 内のシークレットにアクセスするためのアクセス権を、自分自身に付与することができます。 このため、共同作成者ロールまたは所有者ロールには管理者のみがアクセスできるようにすることをお勧めします。 Key Vault からのシークレットの取得だけが必要なユーザーとアプリケーションには、閲覧者ロールを付与する必要があります。 **詳細については、次のセクションで説明します。**
@@ -57,8 +57,8 @@ Key Vault のコンテキストにおいては、これらのロールの割り�
 >[!NOTE]
 > Azure Active Directory のテナント レベルでロールの割り当てをユーザーに割り当てると、このアクセス許可のセットは、割り当てのスコープ内にあるすべてのサブスクリプション、リソース グループ、リソースに継承されます。 最小限の特権のプリンシパルに従うには、このロールの割り当てをさらに細かいスコープで行うことができます。 たとえば、1 人のユーザーに、サブスクリプション レベルでは閲覧者ロールを割り当て、1 つのキー コンテナーについては所有者ロールを割り当てることができます。 より細かいスコープでロールの割り当てを行うには、サブスクリプション、リソース グループ、またはキー コンテナーの ID およびアクセス管理 (IAM) の設定にアクセスします。
 
-* Azure Active Directory のロールの詳細 ([リンク](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles))
-* ロールの割り当ての割り当てまたは削除の詳細 ([リンク](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal))
+* Azure Active Directory のロールの詳細 ([リンク](../../role-based-access-control/built-in-roles.md))
+* ロールの割り当ての割り当てまたは削除の詳細 ([リンク](../../role-based-access-control/role-assignments-portal.md))
 
 ## <a name="configure-key-vault-access-policies-for-your-security-principal"></a>セキュリティ プリンシパルに対して Key Vault のアクセス ポリシーを構成する
 
@@ -121,8 +121,8 @@ Key Vault のロールの割り当ては、キー、シークレット、証明�
 
 Key Vault RBAC の詳細については、次のドキュメントを参照してください。
 
-* Azure Key Vault RBAC ([リンク](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#management-plane-and-azure-rbac))
-* Azure Key Vault RBAC のロール (プレビュー) ([リンク](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-administrator-preview))
+* Azure Key Vault RBAC ([リンク](./secure-your-key-vault.md#management-plane-and-azure-rbac))
+* Azure Key Vault RBAC のロール (プレビュー) ([リンク](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview))
 
 ## <a name="configure-key-vault-firewall"></a>Key Vault ファイアウォールを構成する
 
@@ -132,9 +132,9 @@ Key Vault ファイアウォールを有効にするには、Key Vault ポータ
 
 * Key Vault ファイアウォールの許可リストに IPv4 アドレスを追加します。 このオプションは、静的 IP アドレスを持つアプリケーションに最適です。
 
-* Key Vault ファイアウォールに仮想ネットワークを追加します。 このオプションは、Virtual Machines などの動的 IP アドレスを持つ Azure リソースに最適です。 Azure リソースを仮想ネットワークに追加し、その仮想ネットワークを Key Vault ファイアウォールの許可リストに追加することができます。 このオプションの場合、仮想ネットワーク内のプライベート IP アドレスであるサービス エンドポイントが使用されます。 これにより、追加の保護レイヤーが提供され、Key Vault と仮想ネットワークの間のトラフィックがパブリック インターネット経由でルーティングされることはありません。 サービス エンドポイントの詳細については、次のドキュメントを参照してください。 ([リンク](https://docs.microsoft.com/azure/key-vault/general/network-security))
+* Key Vault ファイアウォールに仮想ネットワークを追加します。 このオプションは、Virtual Machines などの動的 IP アドレスを持つ Azure リソースに最適です。 Azure リソースを仮想ネットワークに追加し、その仮想ネットワークを Key Vault ファイアウォールの許可リストに追加することができます。 このオプションの場合、仮想ネットワーク内のプライベート IP アドレスであるサービス エンドポイントが使用されます。 これにより、追加の保護レイヤーが提供され、Key Vault と仮想ネットワークの間のトラフィックがパブリック インターネット経由でルーティングされることはありません。 サービス エンドポイントの詳細については、次のドキュメントを参照してください。 ([リンク](./network-security.md))
 
-* Key Vault にプライベート リンク接続を追加します。 このオプションを使用すると、仮想ネットワークが Key Vault の特定のインスタンスに直接接続され、Key Vault は実質的に仮想ネットワークの内部に取り込まれます。 Key Vault へのプライベート エンドポイント接続を構成する方法の詳細については、こちらの[リンク](https://docs.microsoft.com/azure/key-vault/general/private-link-service)を参照してください
+* Key Vault にプライベート リンク接続を追加します。 このオプションを使用すると、仮想ネットワークが Key Vault の特定のインスタンスに直接接続され、Key Vault は実質的に仮想ネットワークの内部に取り込まれます。 Key Vault へのプライベート エンドポイント接続を構成する方法の詳細については、こちらの[リンク](./private-link-service.md)を参照してください
 
 ## <a name="test-your-service-principals-ability-to-access-key-vault"></a>サービス プリンシパルが Key Vault にアクセスできることをテストする
 
@@ -142,11 +142,11 @@ Key Vault ファイアウォールを有効にするには、Key Vault ポータ
 
 ### <a name="authentication-process-for-users-examples"></a>ユーザーの認証プロセス (例)
 
-* ユーザーは、Azure portal にログインして Key Vault を使用することができます。 [Key Vault ポータルのクイックスタート](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)
+* ユーザーは、Azure portal にログインして Key Vault を使用することができます。 [Key Vault ポータルのクイックスタート](./quick-create-portal.md)
 
-* ユーザーは Azure CLI を使用して Key Vault を使用できます。 [Key Vault Azure CLI クイックスタート](https://docs.microsoft.com/azure/key-vault/general/quick-create-cli)
+* ユーザーは Azure CLI を使用して Key Vault を使用できます。 [Key Vault Azure CLI クイックスタート](./quick-create-cli.md)
 
-* ユーザーは Azure PowerShell を使用して Key Vault を使用できます。 [Key Vault Azure PowerShell クイックスタート](https://docs.microsoft.com/azure/key-vault/general/quick-create-powershell)
+* ユーザーは Azure PowerShell を使用して Key Vault を使用できます。 [Key Vault Azure PowerShell クイックスタート](./quick-create-powershell.md)
 
 ### <a name="azure-active-directory-authentication-process-for-applications-or-services-examples"></a>アプリケーションまたはサービスの Azure Active Directory 認証プロセス (例)
 
@@ -156,7 +156,7 @@ Key Vault ファイアウォールを有効にするには、Key Vault ポータ
 
 * Azure Active Directory トークンを取得するため、Azure リソースで MSI 認証を使用します。 
 
-* MSI 認証について詳しく学習します ([リンク](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview))
+* MSI 認証について詳しく学習します ([リンク](../../active-directory/managed-identities-azure-resources/overview.md))
 
 ### <a name="authentication-process-for-application-python-example"></a>アプリケーションの認証プロセス (Python の例)
 
@@ -196,4 +196,4 @@ if __name__ == "__main__":
 
 ## <a name="next-steps"></a>次の手順
 
-Key Vault 認証の詳細については、次のドキュメントを参照してください。 [Key Vault の認証](https://docs.microsoft.com/azure/key-vault/general/authentication)
+Key Vault 認証の詳細については、次のドキュメントを参照してください。 [Key Vault の認証](./authentication.md)

@@ -11,12 +11,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 29f1949cbe9998ac569b0389986023a72e7845b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8c6ee3d5eecc02ac921d7b10f2394380af684c2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89070918"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309023"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Azure Data Science VM 用のディープ ラーニングと AI のフレームワーク
 以下の一覧では、DSVM でのディープ ラーニング フレームワークを示します。
@@ -55,7 +55,7 @@ ms.locfileid: "89070918"
 | サポートされるバージョン | 10.0.130|
 | サポートされている DSVM エディション      | Windows Server 2019<br>Ubuntu 18.04<br> Windows 2016<br> Ubuntu 16.04  |
 | DSVM での構成/インストール方法  |_nvidia-smi_ はシステム パスから実行できます。  |
-| 実行方法      | コマンド プロンプト (Windows) またはターミナル (Linux) を開いて、_nvidia-smi_ を実行します。 |
+| 実行方法      | コマンド プロンプト (Windows) またはターミナル (Linux) を開いて、 _nvidia-smi_ を実行します。 |
 
 
 ## <a name="horovod"></a>[Horovod](https://github.com/uber/horovod)
@@ -76,7 +76,7 @@ ms.locfileid: "89070918"
 | DSVM での構成/インストール方法  | Keras は、Windows では Python 3.6 に、Linux では Python 3.5 にインストールされます |
 | 実行方法      | ターミナルで適切な環境をアクティブ化した後、Python を実行します。 |
 
-## <a name="microsoft-cognitive-toolkit-cntk"></a>[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
+## <a name="microsoft-cognitive-toolkit-cntk"></a>[Microsoft Cognitive Toolkit (CNTK)](/cognitive-toolkit/)
 
 | カテゴリ | 値 |
 | ------------- | ------------- |
@@ -110,7 +110,7 @@ ms.locfileid: "89070918"
 | サポートされている DSVM エディション      | Windows Server 2019<br>Ubuntu 18.04<br> Windows 2016<br> Ubuntu 16.04   |
 | 何を目的としていますか? | GPU アクティビティをクエリするための NVIDIA ツール |
 | DSVM での構成/インストール方法  | `nvidia-smi` はシステム パス上にあります。 |
-| 実行方法      | **GPU を備えた**仮想マシンで、コマンド プロンプト (Windows の場合) またはターミナル (Linux の場合) を開き、`nvidia-smi` を実行します。 |
+| 実行方法      | **GPU を備えた** 仮想マシンで、コマンド プロンプト (Windows の場合) またはターミナル (Linux の場合) を開き、`nvidia-smi` を実行します。 |
 
 ## <a name="pytorch"></a>[PyTorch](https://pytorch.org/)
 
@@ -146,5 +146,5 @@ ms.locfileid: "89070918"
 | ------------- | ------------- |
 | サポートされるバージョン | 1.0.3 |
 | サポートされている DSVM エディション      | Ubuntu 16.04 |
-| DSVM での構成/インストール方法  |Theano は Python 2.7 (_root_) および Python 3.5 (_py35_) 環境にインストールされます。 |
+| DSVM での構成/インストール方法  |Theano は Python 2.7 ( _root_ ) および Python 3.5 ( _py35_ ) 環境にインストールされます。 |
 | 実行方法      |  ターミナル: 必要な Python バージョン (root または py35) をアクティブ化し、Python を実行した後、Theano をインポートします。<br/>* Jupyter: Python 2.7 または 3.5 カーネルを選択した後、Theano をインポートします。  <br/>最近の数式カーネル ライブラリ (MKL) バグを回避するには、まず、MKL スレッドレイヤーを次のように設定する必要があります。<br/><br/>`export MKL_THREADING_LAYER=GNU`  |

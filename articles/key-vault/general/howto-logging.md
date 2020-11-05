@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8a975673bec3b3579eaa699f873fe8c4b1481d38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e0007f3b0dad8a68e9d81cebbe9fe24b5a7db3c
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744667"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285652"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Key Vault のログ記録を有効にする方法
 
@@ -118,7 +118,7 @@ Key Vault のログ記録を有効にするには、Azure CLI の [az monitor di
 az monitor diagnostic-settings create --storage-account "<storage-account-id>" --resource "<key-vault-resource-id>" --name "Key vault logs" --logs '[{"category": "AuditEvent","enabled": true}]' --metrics '[{"category": "AllMetrics","enabled": true}]'
 ```
 
-Azure PowerShell では、[Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) コマンドレットを使用し、 **-Enabled** フラグを **$true** に設定して、カテゴリを `AuditEvent` に設定します (Key Vault ログ記録の唯一のカテゴリ)。
+Azure PowerShell では、 [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) コマンドレットを使用し、 **-Enabled** フラグを **$true** に設定して、カテゴリを `AuditEvent` に設定します (Key Vault ログ記録の唯一のカテゴリ)。
 
 ```powershell-interactive
 Set-AzDiagnosticSetting -ResourceId "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category "AuditEvent"
@@ -147,7 +147,7 @@ Set-AzDiagnosticSetting "<key-vault-resource-id>" -StorageAccountId $sa.id -Enab
   * これらのキーまたはシークレットの作成、変更、または削除。
   * 署名、確認、暗号化、復号化、キーのラップとラップ解除、シークレットの取得、およびキーとシークレット (およびそのバージョン) の一覧表示。
 * 結果として 401 応答が発生する、認証されていない要求。 たとえば、ベアラー トークンを持たない要求、形式が正しくない要求、有効期限切れの要求、または無効なトークンを持つ要求です。  
-* 期限切れ間近、期限切れ、コンテナーのアクセス ポリシーが変更された場合の Event Grid の通知イベント (新しいバージョンのイベントはログに記録されません)。 キー コンテナーに作成されたイベント サブスクリプションがあるかどうかに関係なく、イベントはログに記録されます。 詳細については、[Key Vault 用の Event Grid イベント スキーマ](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault)に関するページを参照してください。
+* 期限切れ間近、期限切れ、コンテナーのアクセス ポリシーが変更された場合の Event Grid の通知イベント (新しいバージョンのイベントはログに記録されません)。 キー コンテナーに作成されたイベント サブスクリプションがあるかどうかに関係なく、イベントはログに記録されます。 詳細については、[Key Vault 用の Event Grid イベント スキーマ](../../event-grid/event-schema-key-vault.md)に関するページを参照してください。
 
 ## <a name="access-your-logs"></a>ログへのアクセス
 

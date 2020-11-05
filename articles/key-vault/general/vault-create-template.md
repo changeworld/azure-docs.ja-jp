@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1f62e0b3a40382c911cd07c777c521adb3649c4d
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d6f3d2051790ba02f5e4ea1687830ccbdf6dcf21
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282320"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285132"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure キー コンテナーとコンテナーのアクセス ポリシーを作成する方法
 
@@ -84,7 +84,7 @@ ms.locfileid: "92282320"
 
 ```
 
-Key Vault テンプレート設定の詳細については、[Key Vault ARM テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults)に関するページを参照してください。
+Key Vault テンプレート設定の詳細については、[Key Vault ARM テンプレート リファレンス](/azure/templates/microsoft.keyvault/vaults)に関するページを参照してください。
 
 > [!IMPORTANT]
 > テンプレートが再デプロイされると、キー コンテナー内の既存のアクセス ポリシーがオーバーライドされます。 キー コンテナーへのアクセスが失われないように、`accessPolicies` プロパティに既存のアクセス ポリシーを設定することをお勧めします。 
@@ -160,7 +160,7 @@ Key Vault テンプレート設定の詳細については、[Key Vault ARM テ�
 }
 
 ```
-Key Vault テンプレート設定の詳細については、[Key Vault ARM テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/accesspolicies)に関するページを参照してください。
+Key Vault テンプレート設定の詳細については、[Key Vault ARM テンプレート リファレンス](/azure/templates/microsoft.keyvault/vaults/accesspolicies)に関するページを参照してください。
 
 ## <a name="more-key-vault-resource-manager-templates"></a>その他の Key Vault Resource Manager テンプレート
 
@@ -168,13 +168,13 @@ Key Vault オブジェクトで使用できる Resource Manager テンプレー�
 
 | シークレット | [キー] | 証明書 |
 |--|--|--|
-|<ul><li>[クイックスタート](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-template)<li>[参照](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)|該当なし|該当なし|
+|<ul><li>[クイックスタート](../secrets/quick-create-template.md)<li>[参照](/azure/templates/microsoft.keyvault/vaults/secrets)|該当なし|該当なし|
 
-その他の Key Vault テンプレートについては、次を参照してください。[Key Vault Resource Manager リファレンス](https://docs.microsoft.com/azure/templates/microsoft.keyvault/allversions)。
+その他の Key Vault テンプレートについては、次を参照してください。[Key Vault Resource Manager リファレンス](/azure/templates/microsoft.keyvault/allversions)。
 
 ## <a name="deploy-the-templates"></a>テンプレートの配備
 
-Azure portal を使うと、次に示すように、 **[エディターで独自のテンプレートを作成する]** オプションを使って上記のテンプレートをデプロイできます。次のページに説明があります:「[カスタム テンプレートからリソースをデプロイする](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template)」。
+Azure portal を使うと、次に示すように、 **[エディターで独自のテンプレートを作成する]** オプションを使って上記のテンプレートをデプロイできます。次のページに説明があります:「 [カスタム テンプレートからリソースをデプロイする](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)」。
 
 また、上記のテンプレートをファイルに保存し、次のコマンドを使用することもできます。[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) および [az group deployment create](/cli/azure/group/deployment#az-group-deployment-create):
 

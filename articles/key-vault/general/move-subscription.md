@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: c92671028f851a456b3222100e33958c9e26466a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e0cd4cad74257dbf83ec8d30405eacca341a8d31
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785325"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289524"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault を別のサブスクリプションに移動する
 
@@ -100,9 +100,9 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 
 これで、コンテナーが正しいテナント ID に関連付けられ、古いアクセス ポリシー エントリが削除されたので、Azure PowerShell の [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) コマンドレットまたは Azure CLI の [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) コマンドを使用して新しいアクセス ポリシー エントリを設定します。
 
-Azure リソースのマネージド ID を使用している場合は、新しい Azure Active Directory テナントにも更新する必要があります。 マネージド ID の詳細については、[マネージド ID の概要](/azure/active-directory/managed-identities-azure-resources/overview)に関するページを参照してください。
+Azure リソースのマネージド ID を使用している場合は、新しい Azure Active Directory テナントにも更新する必要があります。 マネージド ID の詳細については、[マネージド ID の概要](../../active-directory/managed-identities-azure-resources/overview.md)に関するページを参照してください。
 
 マネージド ID を使用している場合、以前の ID は正しい Azure Active Directory テナントに存在しないため、ID を更新する必要もあります。 この問題を解決するには、次のドキュメントを参照してください。 
 
-* [MSI の更新](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)
-* [サブスクリプションを新しいディレクトリに移転する](https://docs.microsoft.com/azure/role-based-access-control/transfer-subscription)
+* [MSI の更新](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)
+* [サブスクリプションを新しいディレクトリに移転する](../../role-based-access-control/transfer-subscription.md)

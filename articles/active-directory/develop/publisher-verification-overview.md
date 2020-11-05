@@ -12,16 +12,20 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 2a8f9734714f0439383f6242cda3b51690284852
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1e913e3a5356ad7f49d8b3066f5bd3da7eddd2c2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363421"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308781"
 ---
 # <a name="publisher-verification"></a>発行者の確認
 
-発行者の確認は、管理者とエンド ユーザーが、Microsoft ID プラットフォームと統合するアプリケーション開発者の信頼性を理解するのに役立ちます。 アプリケーションが発行者確認済みとしてマークされている場合は、[Microsoft Partner Network](https://partner.microsoft.com/membership) アカウントを使用する ID の[確認](/partner-center/verification-responses)プロセスが完了していることを発行者が確認し、発行者がこの MPN アカウントをアプリケーションの登録に関連付けていることを意味します。 
+発行者の確認は、管理者とエンド ユーザーが、Microsoft ID プラットフォームと統合するアプリケーション開発者の信頼性を理解するのに役立ちます。 
+
+> [!VIDEO https://www.youtube.com/embed/IYRN2jDl5dc]
+
+アプリケーションが発行者確認済みとしてマークされている場合は、[Microsoft Partner Network](https://partner.microsoft.com/membership) アカウントを使用する ID の[確認](/partner-center/verification-responses)プロセスが完了していることを発行者が確認し、発行者がこの MPN アカウントをアプリケーションの登録に関連付けていることを意味します。 
 
 Azure AD の同意プロンプトや他の画面に、青い "確認済み" バッジが表示されます。![同意プロンプト](./media/publisher-verification-overview/consent-prompt.png)
 

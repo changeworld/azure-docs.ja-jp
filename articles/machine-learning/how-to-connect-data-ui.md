@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to
-ms.openlocfilehash: 116dd65bf04c01f513e196a2f1b37d54aacbf1fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8868b930abe28ed205446df0c6c9b0f111213eb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841358"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312781"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Azure Machine Learning スタジオを使用してデータに接続する
 
@@ -31,7 +31,7 @@ ms.locfileid: "91841358"
 
 Azure Machine Learning のデータ アクセス ワークフロー全体におけるデータストアとデータセットの位置付けの詳細については、[データへの安全なアクセス](concept-data.md#data-workflow)に関する記事を参照してください。
 
-コード ファーストでのエクスペリエンスについては、次の記事を参照して、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) を使用してください。
+コード ファーストでのエクスペリエンスについては、次の記事を参照して、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) を使用してください。
 * [データストアを使用して Azure ストレージ サービスに接続する](how-to-access-data.md)。 
 * [Azure Machine Learning データセットを作成する](how-to-create-register-datasets.md)。 
 
@@ -48,21 +48,21 @@ Azure Machine Learning のデータ アクセス ワークフロー全体にお�
 
 ## <a name="create-datastores"></a>データストアの作成
 
-データストアは、[これらの Azure Storage ソリューション](how-to-access-data.md#matrix)から作成できます。 **サポートされていないストレージ ソリューションの場合**、および ML 実験中のデータ エグレス コストを節約するためには、サポートされている Azure Storage ソリューションに[データを移行](how-to-access-data.md#move)する必要があります。 [データストアに関する詳細を参照してください](how-to-access-data.md)。 
+データストアは、[これらの Azure Storage ソリューション](how-to-access-data.md#matrix)から作成できます。 **サポートされていないストレージ ソリューションの場合** 、および ML 実験中のデータ エグレス コストを節約するためには、サポートされている Azure Storage ソリューションに [データを移行](how-to-access-data.md#move)する必要があります。 [データストアに関する詳細を参照してください](how-to-access-data.md)。 
 
 
 
 Azure Machine Learning Studio を使用して、少ない手順で新しいデータストアを作成します。
 
 > [!IMPORTANT]
-> データ ストレージ アカウントが仮想ネットワーク内にある場合は、Studio がデータにアクセスできるようにするために、追加の構成手順が必要になります。 適切な構成手順を適用するため、[ネットワーク分離とプライバシー](how-to-enable-virtual-network.md#machine-learning-studio)に関する記事を参照してください。
+> データ ストレージ アカウントが仮想ネットワーク内にある場合は、Studio がデータにアクセスできるようにするために、追加の構成手順が必要になります。 適切な構成手順を適用するため、[ネットワーク分離とプライバシー](how-to-enable-studio-virtual-network.md)に関する記事を参照してください。
 
 1. [Azure Machine Learning Studio](https://ml.azure.com/) にサインインします。
 1. 左側のウィンドウの **[管理]** で、 **[データストア]** を選択します。
 1. **[+ 新しいデータストア]** を選択します。
 1. 新しいデータストアのフォームに入力します。 このフォームは、選択した Azure Storage の種類と認証の種類に基づいて、インテリジェントに自動更新されます。 このフォームを設定するために必要な認証資格情報の場所については、[ストレージ アクセスとアクセス許可](#access-validation)に関するセクションを参照してください。
 
-次の例は、**Azure BLOB データストア**を作成するときにフォームがどのように表示されるかを示しています。
+次の例は、 **Azure BLOB データストア** を作成するときにフォームがどのように表示されるかを示しています。
 
 ![新しいデータストアのフォームに入力する](media/how-to-connect-data-ui/new-datastore-form.png)
 
@@ -86,7 +86,7 @@ Studio でデータセットを作成するには、次の手順を実行しま�
 1. **[データセットの作成]** を選択して、データセットのソースを選択します。 このソースには、ローカル ファイル、データストア、パブリック URL、または [Azure Open Datasets](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md) を指定できます。
 1. データセットの種類として **[表形式]** または **[ファイル]** を選択します。
 1. **[次へ]** を選択して、 **[データストアとファイルの選択]** フォームを開きます。 このフォームでは、作成後にデータセットを保存する場所を選択し、データセットに使用するデータ ファイルを選択します。
-    1. データが仮想ネットワーク内にある場合は、検証のスキップを有効にします。 [仮想ネットワークの分離とプライバシー](how-to-enable-virtual-network.md#machine-learning-studio)について理解を深める。
+    1. データが仮想ネットワーク内にある場合は、検証のスキップを有効にします。 [仮想ネットワークの分離とプライバシー](how-to-enable-studio-virtual-network.md)について理解を深める。
     1. 表形式データセットの場合は、'timeseries' 特性を指定して、データセットに対する時間に関連する操作を有効にできます。 [timeseries 特性をデータセットに追加する](how-to-monitor-datasets.md#studio-dataset)方法を確認してください。
 1. **[次へ]** を選択して **[Settings and preview]/(設定とプレビュー/)** および **[Schema]\(スキーマ\)** フォームを設定します。これらのフォームはファイルの種類に基づいてインテリジェントに設定され、これらのフォームで、作成前にデータセットを構成することができます。 
 1. **[次へ]** を選択して、 **[詳細の確認]** フォームを確認します。 選択内容を確認し、データセットについてのオプションのデータ プロファイルを作成します。 [データ プロファイル](#profile)についてさらに理解を深める。
@@ -136,13 +136,13 @@ Azure ストレージ サービスに安全に接続できるように、Azure M
 
 ### <a name="virtual-network"></a>仮想ネットワーク
 
-データ ストレージ アカウントが**仮想ネットワーク**内にある場合、Azure Machine Learning がデータにアクセスできるようにするためには、追加の構成手順が必要になります。 データストアを作成して登録するときに適切な構成手順が適用されるように、[ネットワーク分離とプライバシー](how-to-enable-virtual-network.md#machine-learning-studio)に関する記事を参照してください。  
+データ ストレージ アカウントが **仮想ネットワーク** 内にある場合、Azure Machine Learning がデータにアクセスできるようにするためには、追加の構成手順が必要になります。 データストアを作成して登録するときに適切な構成手順が適用されるように、[ネットワーク分離とプライバシー](how-to-enable-studio-virtual-network.md)に関する記事を参照してください。  
 
 ### <a name="access-validation"></a>アクセス検証
 
-**最初のデータストアの作成と登録のプロセスの一部として**、Azure Machine Learning により、基になるストレージ サービスが存在すること、およびユーザーが指定したプリンシパル (ユーザー名、サービス プリンシパル、または SAS トークン) で指定したストレージにアクセスできることが自動的に検証されます。
+**最初のデータストアの作成と登録のプロセスの一部として** 、Azure Machine Learning により、基になるストレージ サービスが存在すること、およびユーザーが指定したプリンシパル (ユーザー名、サービス プリンシパル、または SAS トークン) で指定したストレージにアクセスできることが自動的に検証されます。
 
-**データストアの作成後**、この検証は、データストア オブジェクトが取得されるたび**ではなく**、基になるストレージ コンテナーにアクセスする必要があるメソッドに対してのみ実行されます。 たとえば、データストアからファイルをダウンロードする場合は検証が行われますが、既定のデータストアを変更するだけの場合は、検証は行われません。
+**データストアの作成後** 、この検証は、データストア オブジェクトが取得されるたび **ではなく** 、基になるストレージ コンテナーにアクセスする必要があるメソッドに対してのみ実行されます。 たとえば、データストアからファイルをダウンロードする場合は検証が行われますが、既定のデータストアを変更するだけの場合は、検証は行われません。
 
 基になるストレージ サービスへのアクセスを認証するには、作成するデータストアの種類に従って、アカウント キー、Shared Access Signature (SAS) トークン、またはサービス プリンシパルを指定します。 [ストレージの種類のマトリックス](how-to-access-data.md#matrix)には、各データストアの種類に対応する、サポートされている認証の種類が一覧表示されています。
 
@@ -153,7 +153,7 @@ Azure ストレージ サービスに安全に接続できるように、Azure M
       1. アカウント キーの場合、 **[設定]** ペインの **[アクセス キー]** に移動します。
       1. SAS トークンの場合は、 **[設定]** ペインの **[共有アクセス署名]** に移動します。
 
-* 認証に[サービス プリンシパル](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)を使用する予定の場合は、 **[アプリの登録]** に移動して、使用するアプリを選択します。
+* 認証に [サービス プリンシパル](../active-directory/develop/howto-create-service-principal-portal.md)を使用する予定の場合は、 **[アプリの登録]** に移動して、使用するアプリを選択します。
     * 対応する **[概要]** ページに、テナント ID やクライアント ID などの必要な情報が記載されています。
 
 > [!IMPORTANT]
@@ -161,7 +161,7 @@ Azure ストレージ サービスに安全に接続できるように、Azure M
 
 ### <a name="permissions"></a>アクセス許可
 
-Azure BLOB コンテナーと Azure Data Lake Gen 2 ストレージの場合は、認証資格情報に**ストレージ BLOB データ閲覧者**アクセスがあることを確認します。 [ストレージ BLOB データ閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)の詳細については、こちらを参照してください。 
+Azure BLOB コンテナーと Azure Data Lake Gen 2 ストレージの場合は、認証資格情報に **ストレージ BLOB データ閲覧者** アクセスがあることを確認します。 [ストレージ BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)の詳細については、こちらを参照してください。 
 
 ## <a name="train-with-datasets"></a>データセットを使用したトレーニング
 

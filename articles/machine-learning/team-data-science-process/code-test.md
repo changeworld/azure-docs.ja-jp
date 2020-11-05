@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: fc837405e03ffac41d216a5ba18384208b07aaf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcebc568db4a0d2b4b287045ba0a67c88d9b8c92
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090299"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312678"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Team Data Science Process と Azure DevOps Services を使用した Azure でのデータ サイエンス コードのテスト
 この記事では、データ サイエンス ワークフローでコードをテストするうえでの予備的ガイドラインについて取り上げます。 このようなテストにより、データ サイエンティストは、秩序立った効率的な方法で、自分のコードの品質と期待される成果をチェックすることができます。 ここでは、[UCI 成人収入データセットを使用した Team Data Science Process (TDSP) プロジェクト](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)を用います。以前、コード テストの実行方法を紹介する際に発行したものです。 
@@ -89,7 +89,7 @@ ms.locfileid: "87090299"
 
       ![予測値を確認するためのコード](./media/code-test/check_prediction_values.PNG)
 
-1. すべてのテスト関数を、**test_funcs.py** という Python スクリプトにまとめます。
+1. すべてのテスト関数を、 **test_funcs.py** という Python スクリプトにまとめます。
 
     ![テスト関数の Python スクリプト](./media/code-test/create_file_test_func.PNG)
 
@@ -124,7 +124,7 @@ ms.locfileid: "87090299"
 
     ![テンプレートのリストおよび [空のプロセス] ボタン](./media/code-test/start_empty_process_template.PNG)
 
-    d. ビルドに名前を付けて、エージェントを選択します。 DSVM を使用してビルド プロセスを完了する場合、ここでは既定値を選択できます。 エージェントの設定の詳細については、「[Build and release agents (ビルド エージェントとリリース エージェント)](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts)」を参照してください。
+    d. ビルドに名前を付けて、エージェントを選択します。 DSVM を使用してビルド プロセスを完了する場合、ここでは既定値を選択できます。 エージェントの設定の詳細については、「[Build and release agents (ビルド エージェントとリリース エージェント)](/azure/devops/pipelines/agents/agents?view=vsts)」を参照してください。
     
     ![ビルドとエージェントの選択](./media/code-test/select_agent.PNG)
 
@@ -134,7 +134,7 @@ ms.locfileid: "87090299"
 
     f. PowerShell の詳細で、必要な情報を入力します (PowerShell の名前やバージョンなど)。 種類には **[インライン スクリプト]** を選択してください。 
     
-    **[インライン スクリプト]** の下のボックスに、「**python test1.py**」と入力することができます。 Python の環境変数が正しく設定されていることを確認します。 別のバージョンまたは別のカーネルの Python が必要な場合は、そのパスを明示的に指定できます (下図参照)。 
+    **[インライン スクリプト]** の下のボックスに、「 **python test1.py** 」と入力することができます。 Python の環境変数が正しく設定されていることを確認します。 別のバージョンまたは別のカーネルの Python が必要な場合は、そのパスを明示的に指定できます (下図参照)。 
     
     ![PowerShell の詳細](./media/code-test/powershell_scripts.PNG)
 
@@ -155,7 +155,7 @@ ms.locfileid: "87090299"
 * ここで説明した概要と UCI 収入予測シナリオの例を、独自のデータ サイエンス プロジェクトで実際に行ってみます。
 
 ## <a name="references"></a>References
-* [Team Data Science Process とは](https://aka.ms/tdsp)
+* [Team Data Science Process とは](./index.yml)
 * [Visual Studio のテスト ツール](https://www.visualstudio.com/vs/features/testing-tools/)
 * [Azure DevOps のテスト リソース](https://www.visualstudio.com/team-services/)
 * [データ サイエンス仮想マシン](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 817b9bfc0af054b344ca9f770085ac022a8e6eac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb28b4b678b37f69331b2ecff6272fd7aa64d191
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89380575"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287620"
 ---
 # <a name="assign-a-key-vault-access-policy-using-azure-powershell"></a>Azure PowerShell を使用して Key Vault アクセス ポリシーを割り当てる
 
@@ -29,7 +29,7 @@ Azure PowerShell を使用して Azure Active Directory にグループを作成
 
 1. コマンドをローカルで実行するには、[Azure PowerShell](/powershell/azure/) をインストールします (まだインストールしていない場合)。
 
-    コマンドを直接クラウドで実行するには、[Azure Cloud Shell](/azure/cloud-shell/overview) を使用します。
+    コマンドを直接クラウドで実行するには、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用します。
 
 1. ローカル PowerShell のみ:
 

@@ -9,12 +9,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 12e939b8fb66b3cffbee49a4b3bedd74b71d7232
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2174044a1a913663e255b125f2ea89c312f5e9d3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91339910"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307699"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>データ サイエンス用のデータの準備はお済みですか?
 ## <a name="video-2-data-science-for-beginners-series"></a>ビデオ 2: 初心者向けデータ サイエンス シリーズ
@@ -37,7 +37,7 @@ ms.locfileid: "91339910"
 * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
 ## <a name="transcript-is-your-data-ready-for-data-science"></a>トランスクリプト: データ サイエンス用のデータの準備はお済みですか?
-"データ サイエンス用のデータの準備はお済みですか?" へようこそ。 これは、"*初心者向けデータ サイエンス*" シリーズの 2 番目のビデオです。  
+"データ サイエンス用のデータの準備はお済みですか?" へようこそ。 これは、" *初心者向けデータ サイエンス* " シリーズの 2 番目のビデオです。  
 
 データ サイエンスから必要な回答を得るには、高品質の原材料を提供して操作できるようにする必要があります。 ピザを作るのと同じで、最初の材料が良いほど最終的な製品も良くなります。 
 
@@ -99,8 +99,8 @@ ms.locfileid: "91339910"
 
 関連性があり、連続していて、正確で、かつ十分なデータがあれば、ある程度高品質なデータ サイエンスを実行するために必要なすべての材料が揃っています。
 
-Microsoft Azure Machine Learning Studio (クラシック) の*初心者向けデータ サイエンス*にある他の 4 つのビデオも必ず確認してください。
+Microsoft Azure Machine Learning Studio (クラシック) の *初心者向けデータ サイエンス* にある他の 4 つのビデオも必ず確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Machine Learning Studio (クラシック) で最初のデータ サイエンス実験を試行する](create-experiment.md)
-* [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/overview-what-is-azure-ml)
+* [Microsoft Azure での Machine Learning の概要を学習する](../overview-what-is-azure-ml.md)

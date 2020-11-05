@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 6091ccbb64ec880224e861e1b8ee2bd39363385c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 9a01dabbd0a3e9d76caaead544be655b9505030d
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342384"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289202"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Just-In-Time アクセスを使用して管理ポートをセキュリティで保護する
 
@@ -36,7 +36,7 @@ JIT の動作と基になるロジックの詳細については、[Just-In-Time
 |リリース状態:|一般提供 (GA)|
 |価格:|[サーバー用 Azure Defender](defender-for-servers-introduction.md) が必要|
 |サポートされている VM:|![はい](./media/icons/yes-icon.png) Azure Resource Manager を介してデプロイされた VM。<br>![いいえ](./media/icons/no-icon.png) クラシック デプロイ モデルを使用してデプロイされた VM。 [これらのデプロイ モデルの詳細](../azure-resource-manager/management/deployment-models.md)。<br>![いいえ](./media/icons/no-icon.png) [Azure Firewall Manager](../firewall-manager/overview.md) によって制御される Azure Firewall によって保護されている VM。|
-|必要なロールとアクセス許可:|**閲覧者**と**セキュリティ閲覧者**ロールは、JIT の状態とパラメーターの両方を表示できます。<br>JIT で動作するカスタム ロールを作成するには、「[JIT を構成して使用するために必要なアクセス許可は何ですか?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)」を参照してください。<br>VM への JIT アクセスを要求する必要があり、他の JIT 操作を実行しないユーザーに対して、最小特権のロールを作成するには、Security Center GitHub コミュニティ ページにある [Set-JitLeastPrivilegedRole スクリプト](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role)を使用します。|
+|必要なロールとアクセス許可:|**閲覧者** と **セキュリティ閲覧者** ロールは、JIT の状態とパラメーターの両方を表示できます。<br>JIT で動作するカスタム ロールを作成するには、「[JIT を構成して使用するために必要なアクセス許可は何ですか?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)」を参照してください。<br>VM への JIT アクセスを要求する必要があり、他の JIT 操作を実行しないユーザーに対して、最小特権のロールを作成するには、Security Center GitHub コミュニティ ページにある [Set-JitLeastPrivilegedRole スクリプト](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role)を使用します。|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
 |||
 
@@ -53,7 +53,7 @@ Security Center またはプログラムを使用して、独自のカスタム 
 
 ### <a name="enable-jit-on-your-vms-from-azure-security-center"></a>Azure Security Center から VM で JIT を有効にする <a name="jit-asc"></a>
 
-:::image type="content" source="./media/security-center-just-in-time/jit-config-security-center.gif" alt-text="Azure Security Center での JIT VM アクセスの構成&quot;:::
+:::image type="content" source="./media/security-center-just-in-time/jit-config-security-center.gif" alt-text="Azure Security Center での JIT VM アクセスの構成":::
 
 Security Center から、JIT VM アクセスを有効にして構成することができます。
 
@@ -69,7 +69,7 @@ Security Center から、JIT VM アクセスを有効にして構成すること
     - **[未構成]** - JIT は有効になっていないが、JIT をサポートできる VM。 これらの VM では JIT を有効にすることをお勧めします。
     - **[サポート外]** - JIT が有効になっておらず、機能をサポートしていない VM。 VM は次の理由によりこのタブに表示される場合があります。
       - ネットワーク セキュリティ グループ (NSG) がない - JIT には NSG を構成する必要があります
-      - クラシック VM - Azure Resource Manager を使用してデプロイされた VM は JIT でサポートされますが、&quot;クラシック デプロイ" はサポートされません。 [クラシックと Azure Resource Manager のデプロイ モデルの詳細](../azure-resource-manager/management/deployment-models.md)。
+      - クラシック VM - Azure Resource Manager を使用してデプロイされた VM は JIT でサポートされますが、"クラシック デプロイ" はサポートされません。 [クラシックと Azure Resource Manager のデプロイ モデルの詳細](../azure-resource-manager/management/deployment-models.md)。
       - その他 - サブスクリプションまたはリソース グループのセキュリティ ポリシーで JIT ソリューションが無効になっている場合は、VM がこのタブに表示されることがあります。
 
 1. **[未構成]** タブで、JIT で保護する VM をマークし、 **[VM で JIT を有効にする]** を選択します。 
@@ -184,13 +184,13 @@ PowerShell を使用して Just-In-Time VM アクセスを有効にするには�
         id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";
         ports=(@{
              number=22;
-             protocol="\*";
-             allowedSourceAddressPrefix=@("\*");
+             protocol="*";
+             allowedSourceAddressPrefix=@("*");
              maxRequestAccessDuration="PT3H"},
              @{
              number=3389;
-             protocol="\*";
-             allowedSourceAddressPrefix=@("\*");
+             protocol="*";
+             allowedSourceAddressPrefix=@("*");
              maxRequestAccessDuration="PT3H"})})
     ```
 
@@ -241,23 +241,7 @@ Azure portal (Security Center または Azure 仮想マシン) またはプロ�
 
 VM で JIT が有効になっている場合は、それに接続するためのアクセス権を要求する必要があります。 JIT を有効にした方法に関係なく、サポートされているいずれかの方法でアクセス権を要求できます。
 
-:::image type="content" source="./media/security-center-just-in-time/jit-request-security-center.gif" alt-text="Azure Security Center での JIT VM アクセスの構成&quot;:::
-
-Security Center から、JIT VM アクセスを有効にして構成することができます。
-
-1. Azure Defender ダッシュボードを開き、高度な保護領域から **[Just In Time VM アクセス]** を選択します。
-
-    **[Just-In-Time VM アクセス]** ページが開き、VM が次のタブにグループ化されます。
-
-    - **[構成済み]** - Just-In-Time VM アクセスをサポートするように既に構成されている VM。 [構成済み] タブには VM ごとに以下が表示されます。
-        - 過去 7 日間に承認された JIT 要求の数
-        - 最終アクセス日時
-        - 構成されている接続の詳細
-        - 最後のユーザー
-    - **[未構成]** - JIT は有効になっていないが、JIT をサポートできる VM。 これらの VM では JIT を有効にすることをお勧めします。
-    - **[サポート外]** - JIT が有効になっておらず、機能をサポートしていない VM。 VM は次の理由によりこのタブに表示される場合があります。
-      - ネットワーク セキュリティ グループ (NSG) がない - JIT には NSG を構成する必要があります
-      - クラシック VM - Azure Resource Manager を使用してデプロイされた VM は JIT でサポートされますが、&quot;クラシック デプロイ":::
+:::image type="content" source="./media/security-center-just-in-time/jit-request-security-center.gif" alt-text="Security Center からの JIT アクセス権の要求":::
 
 1. **[Just In Time VM アクセス]** ページで、 **[構成済み]** タブを選択します。
 
@@ -274,7 +258,7 @@ Security Center から、JIT VM アクセスを有効にして構成すること
 1. **[Open ports]\(ポートを開く\)** を選択します。
 
 > [!NOTE]
-> アクセスを要求しているユーザーがプロキシの背後にいる場合は、**My IP** オプションが機能しない場合があります。 組織のすべての IP アドレス範囲を定義する必要がある場合があります。
+> アクセスを要求しているユーザーがプロキシの背後にいる場合は、 **My IP** オプションが機能しない場合があります。 組織のすべての IP アドレス範囲を定義する必要がある場合があります。
 
 
 

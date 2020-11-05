@@ -1,17 +1,17 @@
 ---
 title: パブリック ネットワーク アクセスを拒否する - Azure portal - Azure Database for MySQL
 description: Azure portal を使用して Azure Database for MySQL でパブリック ネットワーク アクセスを拒否するように構成する方法について説明します
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: eb5c4e4c4dfb73b2f7c9dc9f2629296790790885
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a98ab9ea347ba4d9ec53c80626f97b429e083cb1
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896134"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242383"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-mysql-using-azure-portal"></a>Azure portal を使用して Azure Database for MySQL でパブリック ネットワーク アクセスを拒否する
 
@@ -39,7 +39,7 @@ ms.locfileid: "90896134"
 
 1. 接続のセキュリティの設定が正常に有効化されたことを確認する通知が表示されます。
 
-    :::image type="content" source="./media/howto-deny-public-network-access/setting-deny-public-network-access-success.png" alt-text="Azure Database for MySQL のネットワーク アクセスの拒否":::
+    :::image type="content" source="./media/howto-deny-public-network-access/setting-deny-public-network-access-success.png" alt-text="Azure Database for MySQL のネットワーク アクセスの拒否の成功":::
 
 ## <a name="next-steps"></a>次のステップ
 

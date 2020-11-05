@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0bdf2c4dda3e272ae04681f886f6e4da31dcebd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7931ad9e55d62d5fa2b1828d276e56f7c8cd02e1
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569829"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286484"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Azure CLI の使用による ExpressRoute Direct の構成
 
@@ -208,14 +208,6 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
    "type": "Microsoft.Network/expressRoutePorts"
    }  
    ```
-
-## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>認可状 (LOA) を生成する
-
-最近作成された ExpressRoute Direct リソース名、リソース グループ名、および LOA を作成する顧客名を入力し、ドキュメントを格納するファイルの場所を (必要に応じて) 定義します。 ファイル パスが参照されていない場合、ドキュメントは現在のディレクトリにダウンロードされます。
-
-```azurecli
-az network express-route port generate-loa -n Contoso-Direct -g Contoso-Direct-rg --customer-name Contoso --destination C:\Users\SampleUser\Downloads\LOA.pdf
-```
 
 ## <a name="change-adminstate-for-links"></a><a name="state"></a>リンクの AdminState を変更する
 

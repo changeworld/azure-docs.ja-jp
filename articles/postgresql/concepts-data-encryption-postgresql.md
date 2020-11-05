@@ -1,17 +1,17 @@
 ---
 title: カスタマーマネージド キーを使用したデータ暗号化 - Azure Database for PostgreSQL - 単一サーバー
 description: カスタマーマネージド キーによる Azure Database for PostgreSQL 単一サーバーのデータ暗号化では、保存データの保護に Bring Your Own Key (BYOK) を使用できます。 また、組織でキーとデータの管理における職務の分離を実装することもできます。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: c07f59ae183c2d4ac920c6b3773fc6d177622ad2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 078b0fe63cf89f2736a8707ad561c798c4818317
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490188"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242417"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>カスタマーマネージド キーを使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化
 
@@ -79,7 +79,7 @@ Key Vault を構成するための要件を以下に示します。
 * DEK のラップとラップ解除操作のためのより高速なアクセスを保証するために、Key Vault と Azure Database for PostgreSQL 単一サーバーが同じリージョンに存在することを確認します。
 * Azure KeyVault を **プライベート エンドポイントと選択されたネットワーク** のみにロックダウンし、 *信頼された Microsoft* サービスのみがリソースを保護できるようにします。
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Bring Your Own Key の概要を示す図":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="trusted-service-with-AKV":::
 
 カスタマーマネージド キーを構成する場合の推奨事項は次のとおりです。
 

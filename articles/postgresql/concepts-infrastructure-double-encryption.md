@@ -1,17 +1,17 @@
 ---
 title: インフラストラクチャの二重暗号化 - Azure Database for PostgreSQL
 description: インフラストラクチャの二重暗号化を使用して、サービス マネージド キーで 2 番目の暗号化レイヤーを追加する方法について説明します。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: d3a3582891ab3d3e4bfb53cbba0c0b2826cba56b
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 03d52611c89012d1132b4a27820f7f47e6cdd512
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123356"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242026"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Azure Database for PostgreSQL インフラストラクチャの二重暗号化
 

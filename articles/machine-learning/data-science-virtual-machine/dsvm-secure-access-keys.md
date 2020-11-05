@@ -10,20 +10,20 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 1cb0c5094d49eac5a1c8f63406a28d2927d8fa94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5604e42c2c27463e10c136ccd18c3c21846fc5a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79477325"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309147"
 ---
 # <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine にアクセス資格情報を安全に保存する
 
 クラウド アプリケーションのコードには、クラウド サービスを認証するための資格情報を含めるのが一般的です。 これらの資格情報をどのように管理し、セキュリティで保護するかは、クラウド アプリケーションを構築する際によく知られている課題です。 資格情報は、開発者のワークステーションに一切表示されず、ソース管理でも確認されないことが理想的です。
 
-[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) 機能を使用すると、Azure Active Directory (Azure AD) 内で自動的にマネージド ID を Azure サービスに付与することで、この問題が簡単に解決されます。 この ID を使用すると、コードに資格情報が含まれていなくても、Azure AD 認証をサポートする任意のサービスの認証を行えます。
+[Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) 機能を使用すると、Azure Active Directory (Azure AD) 内で自動的にマネージド ID を Azure サービスに付与することで、この問題が簡単に解決されます。 この ID を使用すると、コードに資格情報が含まれていなくても、Azure AD 認証をサポートする任意のサービスの認証を行えます。
 
-資格情報をセキュリティで保護するには、Windows インストーラー (MSI) と、シークレットおよび暗号化キーを安全に格納するための Azure のマネージド サービスである [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) を組み合わせて使用する方法があります。 マネージド ID を使用してキー コンテナーにアクセスし、キー コンテナーから承認済みのシークレットと暗号化キーを取得することができます。
+資格情報をセキュリティで保護するには、Windows インストーラー (MSI) と、シークレットおよび暗号化キーを安全に格納するための Azure のマネージド サービスである [Azure Key Vault](../../key-vault/index.yml) を組み合わせて使用する方法があります。 マネージド ID を使用してキー コンテナーにアクセスし、キー コンテナーから承認済みのシークレットと暗号化キーを取得することができます。
 
 Azure リソースのマネージド ID と Key Vault に関するドキュメントは、これらのサービスの詳細情報についての包括的なリソースで構成されています。 この記事の残りの部分では、データ サイエンス仮想マシン (DSVM) で MSI と Key Vault を使用して Azure リソースにアクセスする基本的な方法について説明します。 
 

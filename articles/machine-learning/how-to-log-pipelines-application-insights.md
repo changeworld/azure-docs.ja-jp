@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8a3a82e091791b39ddf36e39987590dcddea320f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 624409be4d7e2cfba37dbe16e083904766ae1389
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897502"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309654"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Application Insights でアラートとデバッグ用に機械学習パイプラインのログ ファイルを収集する
 
@@ -38,7 +38,7 @@ ms.locfileid: "90897502"
 
 このセクションでは、Azure Machine Learning パイプラインから OpenCensus を使用する方法のみを説明します。 詳細なチュートリアルについては、「[OpenCensus Azure Monitor Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)」(OpenCensus の Azure Monitor エクスポーター) を参照してください
 
-PythonScriptStep を Azure ML パイプラインに追加します。 opencensus-ext-azure での依存関係を使用して [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true) を構成します。 `APPLICATIONINSIGHTS_CONNECTION_STRING` 環境変数を構成します。
+PythonScriptStep を Azure ML パイプラインに追加します。 opencensus-ext-azure での依存関係を使用して [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py) を構成します。 `APPLICATIONINSIGHTS_CONNECTION_STRING` 環境変数を構成します。
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -153,7 +153,7 @@ Application Insights の結果には、ログ メッセージとレベル、フ�
 
 ### <a name="additional-helpful-queries"></a>その他の便利なクエリ
 
-以下のクエリの中には 'customDimensions.Level' が使用されているものがあります。 これらの重大度レベルは、Python ログが最初に送信されたレベルに対応します。 その他のクエリ情報については、「[Azure Monitor ログクエリ](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)」を参照してください。
+以下のクエリの中には 'customDimensions.Level' が使用されているものがあります。 これらの重大度レベルは、Python ログが最初に送信されたレベルに対応します。 その他のクエリ情報については、「[Azure Monitor ログクエリ](/azure/data-explorer/kusto/query/)」を参照してください。
 
 | 使用事例                                                               | クエリ                                                                                              |
 |------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
@@ -166,4 +166,4 @@ Application Insights の結果には、ログ メッセージとレベル、フ�
 
 Application Insights インスタンスに作成されたログは、クエリ結果に基づいて [Azure Monitor アラート](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on)の設定で使用できます。
 
-また、クエリの結果を [Azure ダッシュボード](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards#add-logs-analytics-query)に追加して、詳細な分析情報を得ることもできます。
+また、クエリの結果を [Azure ダッシュボード](../azure-monitor/learn/tutorial-app-dashboards.md#add-logs-query)に追加して、詳細な分析情報を得ることもできます。

@@ -1,18 +1,18 @@
 ---
 title: Private Link - Azure CLI - Azure Database for MariaDB
 description: Azure CLI から Azure Database for MariaDB 用のプライベート リンクを構成する方法について説明します
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fb3ed4e41125131538957addce5bf935b897b581
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c7f95b2009521b054958be48e444a129b0a59ed3
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537220"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242893"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>CLI を使用して Azure Database for MariaDB 用の Private Link を作成および管理する
 
@@ -185,7 +185,7 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
 
 6. (省略可能) 左側のメニューからデータベースを参照して、MariaDB データベースからの情報を作成または照会します
 
-8. myVm へのリモート デスクトップ接続を閉じます。
+8. myVM へのリモート デスクトップ接続を閉じます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする 
 不要になったら、az group delete を使用して、リソース グループとそのすべてのリソースを削除できます。 

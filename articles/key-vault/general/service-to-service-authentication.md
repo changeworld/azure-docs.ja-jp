@@ -8,23 +8,23 @@ ms.author: mbaldwin
 ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: key-vault
-ms.openlocfilehash: 1a6ec20d860a409bbe7d3114c54e1e46a75968a0
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ac3ee108fc63441b2a9381b9e7624631bdca4e5b
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970114"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289822"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET を使用した Azure Key Vault に対するサービス間認証
 
 > [!NOTE]
-> **Microsoft.Azure.Services.AppAuthentication** は、新しい Key Vault SDK での使用には非推奨になりました。 これは、.NET、Java、TypeScript、Python 向けに提供されている新しい **Azure ID クライアント ライブラリ**に置き換えられています。新規の開発ではすべて、これを使用する必要があります。 詳細については、こちらをご覧ください。[コードでの Key Vault に対する認証](https://docs.microsoft.com/azure/key-vault/general/developers-guide#azure-identity-client-libraries)
+> **Microsoft.Azure.Services.AppAuthentication** は、新しい Key Vault SDK での使用には非推奨になりました。 これは、.NET、Java、TypeScript、Python 向けに提供されている新しい **Azure ID クライアント ライブラリ** に置き換えられています。新規の開発ではすべて、これを使用する必要があります。 詳細については、こちらをご覧ください。[コードでの Key Vault に対する認証](./developers-guide.md#azure-identity-client-libraries)
 
 Azure Key Vault に対する認証を行うには、Azure Active Directory (Azure AD) の資格情報として、共有シークレットまたは証明書のいずれかが必要です。
 
 このような資格情報を管理することは困難な場合があります。 資格情報をソース ファイルまたは構成ファイルに含めて、アプリにバンドルしたくなります。 .NET 用の `Microsoft.Azure.Services.AppAuthentication` ライブラリを使うと、この問題が簡略化されます。 これにより、ローカルでの開発中は認証に開発者の資格情報が使用されます。 その後、ソリューションを Azure にデプロイすると、このライブラリは、自動的にアプリケーションの資格情報に切り替わります。 ローカル開発時に開発者の資格情報を使用すると、Azure AD 資格情報を作成したり、開発者間で資格情報を共有したりする必要がないため、より安全です。
 
-`Microsoft.Azure.Services.AppAuthentication` ライブラリで認証が自動的に管理されます。これにより、資格情報ではなく、ソリューションに重点を置くことができます。 これは、Microsoft Visual Studio、Azure CLI、Azure AD の統合認証を使用したローカル開発をサポートしています。 マネージド ID をサポートする Azure リソースにデプロイすると、ライブラリでは [Azure リソースのマネージド ID](../../active-directory/msi-overview.md) が自動的に使用されます。 コードまたは構成を変更する必要はありません。 マネージド ID を利用できない場合や、ローカル開発中に開発者のセキュリティ コンテキストを特定できない場合、ライブラリでは、Azure AD の[クライアントの資格情報](../../azure-resource-manager/resource-group-authenticate-service-principal.md)を直接使用することもサポートされます。
+`Microsoft.Azure.Services.AppAuthentication` ライブラリで認証が自動的に管理されます。これにより、資格情報ではなく、ソリューションに重点を置くことができます。 これは、Microsoft Visual Studio、Azure CLI、Azure AD の統合認証を使用したローカル開発をサポートしています。 マネージド ID をサポートする Azure リソースにデプロイすると、ライブラリでは [Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) が自動的に使用されます。 コードまたは構成を変更する必要はありません。 マネージド ID を利用できない場合や、ローカル開発中に開発者のセキュリティ コンテキストを特定できない場合、ライブラリでは、Azure AD の[クライアントの資格情報](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)を直接使用することもサポートされます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,7 +36,7 @@ Azure Key Vault に対する認証を行うには、Azure Active Directory (Azur
 
 .NET アプリケーションの場合、マネージド ID を利用する最も簡単な方法は、`Microsoft.Azure.Services.AppAuthentication` パッケージを経由する方法です。 次のようにして使い始めることができます。
 
-1. **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[ソリューションの NuGet パッケージの管理]** を選択して、[Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) および [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet パッケージに対する参照をプロジェクトに追加します。
+1. **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[ソリューションの NuGet パッケージの管理]** を選択して、 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) および [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet パッケージに対する参照をプロジェクトに追加します。
 
 1. 次のコードを追加します。
 
@@ -55,7 +55,7 @@ Azure Key Vault に対する認証を行うには、Azure Active Directory (Azur
 
 スレッドセーフな `AzureServiceTokenProvider` クラスは、トークンをメモリにキャッシュし、有効期限の直前に Azure AD から取得します。 これは、`GetAccessTokenAsync` メソッドを呼び出す前に、トークンの有効期限を確認する必要がないことを意味します。 
 
-`GetAccessTokenAsync` メソッドには、リソース識別子が必要です。 Microsoft Azure サービスの詳細については、「[Azure リソースのマネージド ID とは](../../active-directory/msi-overview.md)」を参照してください。
+`GetAccessTokenAsync` メソッドには、リソース識別子が必要です。 Microsoft Azure サービスの詳細については、「[Azure リソースのマネージド ID とは](../../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
 
 ## <a name="local-development-authentication"></a>ローカル開発用における認証
 
@@ -65,7 +65,7 @@ Azure Key Vault に対する認証を行うには、Azure Active Directory (Azur
 
 ローカル コンピューターでは、Azure リソースのマネージド ID はサポートされません。 その結果、`Microsoft.Azure.Services.AppAuthentication` ライブラリは、ローカル開発環境で実行するために開発者の資格情報を使用します。 ソリューションを Azure にデプロイすると、このライブラリは、マネージド ID を使用して OAuth 2.0 クライアント資格情報の付与フローに切り替えます。 この方法では、同じコードをローカルでもリモートでも、心配せずにテストできます。
 
-ローカル開発では、`AzureServiceTokenProvider` は、**Visual Studio**、**Azure コマンド ライン インターフェイス** (CLI)、**Azure AD 統合認証**を使用してトークンをフェッチします。 このライブラリは、各オプションを順番に試行し、最初に成功したオプションを使用します。 どのオプションも機能しない場合、詳しい情報と共に `AzureServiceTokenProviderException` 例外がスローされます。
+ローカル開発では、`AzureServiceTokenProvider` は、 **Visual Studio** 、 **Azure コマンド ライン インターフェイス** (CLI)、 **Azure AD 統合認証** を使用してトークンをフェッチします。 このライブラリは、各オプションを順番に試行し、最初に成功したオプションを使用します。 どのオプションも機能しない場合、詳しい情報と共に `AzureServiceTokenProviderException` 例外がスローされます。
 
 #### <a name="authenticating-with-visual-studio"></a>Visual Studio での認証
 
@@ -85,15 +85,15 @@ Visual Studio を使用して認証するには:
 
 Azure CLI を使用するには:
 
-1. Windows タスクバーで Azure CLI を検索して、**Microsoft Azure コマンド プロンプト**を開きます。
+1. Windows タスクバーで Azure CLI を検索して、 **Microsoft Azure コマンド プロンプト** を開きます。
 
-1. Azure portal にサインインします。*az login* で Azure にサインインします。
+1. Azure portal にサインインします。 *az login* で Azure にサインインします。
 
-1. 「*az account get-access-token --resource https:\//vault.azure.net*」と入力して、アクセスを確認します。 エラーが発生した場合は、適切なバージョンの Azure CLI が正しくインストールされていることを確認してください。
+1. 「 *az account get-access-token --resource https:\//vault.azure.net* 」と入力して、アクセスを確認します。 エラーが発生した場合は、適切なバージョンの Azure CLI が正しくインストールされていることを確認してください。
 
-   Azure CLI が既定のディレクトリにインストールされていない場合は、`AzureServiceTokenProvider` で Azure CLI のパスが見つけられないことを報告するエラーが発生することがあります。 **AzureCLIPath** 環境変数を使用して、Azure CLI のインストール フォルダーを定義してください。 `AzureServiceTokenProvider` は、必要な場合に、**AzureCLIPath** 環境変数に指定されたディレクトリを **Path** 環境変数に追加します。
+   Azure CLI が既定のディレクトリにインストールされていない場合は、`AzureServiceTokenProvider` で Azure CLI のパスが見つけられないことを報告するエラーが発生することがあります。 **AzureCLIPath** 環境変数を使用して、Azure CLI のインストール フォルダーを定義してください。 `AzureServiceTokenProvider` は、必要な場合に、 **AzureCLIPath** 環境変数に指定されたディレクトリを **Path** 環境変数に追加します。
 
-1. 複数のアカウントを使用して Azure CLI にサインインしている場合、または使用しているアカウントで複数のサブスクリプションにアクセスできる場合は、使用するサブスクリプションを指定する必要があります。 コマンド「*az account set --subscription <subscription-id>* 」を入力します。
+1. 複数のアカウントを使用して Azure CLI にサインインしている場合、または使用しているアカウントで複数のサブスクリプションにアクセスできる場合は、使用するサブスクリプションを指定する必要があります。 コマンド「 *az account set --subscription <subscription-id>* 」を入力します。
 
 このコマンドは、エラーが発生した場合にのみ出力を生成します。 現在のアカウント設定を確認するには、コマンド `az account list` を入力します。
 
@@ -101,7 +101,7 @@ Azure CLI を使用するには:
 
 Azure AD の認証を使用するには、次の点を確認します。
 
-- ご利用のオンプレミスの Active Directory が Azure AD と同期していること。 詳細については、「[Azure Active Directory でのハイブリッド ID とは](../../active-directory/connect/active-directory-aadconnect.md)」を参照してください。
+- ご利用のオンプレミスの Active Directory が Azure AD と同期していること。 詳細については、「[Azure Active Directory でのハイブリッド ID とは](../../active-directory/hybrid/whatis-hybrid-identity.md)」を参照してください。
 
 - ご自分のコードが、ドメインに参加しているコンピューターで実行されていること。
 
@@ -131,7 +131,7 @@ Azure にサインインした後、`AzureServiceTokenProvider` ではサービ�
 
 ## <a name="running-the-application-using-managed-identity-or-user-assigned-identity"></a>マネージド ID またはユーザー割り当て ID を使用してアプリケーションを実行する
 
-Azure App Service 上またはマネージド ID が有効な Azure VM 上でコードを実行すると、ライブラリは自動的にマネージド ID を使用します。 コードの変更は必要ありませんが、マネージド ID にはキー コンテナーに対する *GET* アクセス許可が必要です。 キー コンテナーの "*アクセス ポリシー*" を通して、マネージド ID に *GET* アクセス許可を付与できます。
+Azure App Service 上またはマネージド ID が有効な Azure VM 上でコードを実行すると、ライブラリは自動的にマネージド ID を使用します。 コードの変更は必要ありませんが、マネージド ID にはキー コンテナーに対する *GET* アクセス許可が必要です。 キー コンテナーの " *アクセス ポリシー* " を通して、マネージド ID に *GET* アクセス許可を付与できます。
 
 また、ユーザー割り当て ID を使用して認証することもできます。 ユーザー割り当て ID の詳細については、「[Azure リソースのマネージド ID とは](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)」を参照してください。 ユーザー割り当て ID を使用して認証するには、接続文字列内でユーザー割り当て ID のクライアント ID を指定する必要があります。 接続文字列は、「[接続文字列のサポート](#connection-string-support)」で指定されています。
 
@@ -217,7 +217,7 @@ Azure App Service 上またはマネージド ID が有効な Azure VM 上でコ
     RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}
     ```
 
-    たとえば、キー コンテナーの名前が *myKeyVault* で、*myCert* という名前の証明書を作成した場合、証明書の識別子は次のようになります。
+    たとえば、キー コンテナーの名前が *myKeyVault* で、 *myCert* という名前の証明書を作成した場合、証明書の識別子は次のようになります。
 
     ```azurecli
     RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier=https://myKeyVault.vault.azure.net/secrets/myCert
@@ -229,10 +229,10 @@ Azure App Service 上またはマネージド ID が有効な Azure VM 上でコ
 
 - [Azure リソースのマネージド ID](../..//active-directory/managed-identities-azure-resources/overview.md)
 - Visual Studio の認証
-- [Azure CLI 認証](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
+- [Azure CLI 認証](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
 - [統合 Windows 認証](/aspnet/web-api/overview/security/integrated-windows-authentication)
 
-プロセスを制御するには、接続文字列を `AzureServiceTokenProvider` のコンストラクターに渡すか、*AzureServicesAuthConnectionString* 環境変数に指定して、使用します。  次のオプションがサポートされています。
+プロセスを制御するには、接続文字列を `AzureServiceTokenProvider` のコンストラクターに渡すか、 *AzureServicesAuthConnectionString* 環境変数に指定して、使用します。  次のオプションがサポートされています。
 
 | 接続文字列のオプション | シナリオ | 説明|
 |:--------------------------------|:------------------------|:----------------------------|
@@ -262,7 +262,7 @@ Azure App Service 上またはマネージド ID が有効な Azure VM 上でコ
 
 #### <a name="azure-cli-is-not-installed-youre-not-logged-in-or-you-dont-have-the-latest-version"></a>Azure CLI がインストールされていないか、ログインしていないか、または最新バージョンがない
 
-*az account get-access-token* を実行して、Azure CLI にトークンが表示されるかどうかを確認します。 **そのようなプログラムが見つからない**場合は、[最新バージョンの Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をインストールします。 サインインを要求される場合があります。
+*az account get-access-token* を実行して、Azure CLI にトークンが表示されるかどうかを確認します。 **そのようなプログラムが見つからない** 場合は、 [最新バージョンの Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をインストールします。 サインインを要求される場合があります。
 
 #### <a name="azureservicetokenprovider-cant-find-the-path-for-azure-cli"></a>AzureServiceTokenProvider で Azure CLI のパスを見つけることができない
 
@@ -276,7 +276,7 @@ Azure CLI を使って、使用するアカウントがあるものに既定の�
 
 #### <a name="unauthorized-access-access-denied-forbidden-or-similar-error"></a>未承認のアクセス、アクセスの拒否、禁止、または同様のエラー
 
-使用されているプリンシパルに、アクセスしようとしているリソースへのアクセス権がありません。 ユーザー アカウントまたは App Service の MSI に、リソースへの "共同作成者" アクセス権を付与します。 これは、サンプルをローカル コンピューターで実行しているか、Azure の App Service にデプロイしたかによって異なります。 キー コンテナーなどの一部のリソースには、ユーザー、アプリ、グループなどのプリンシパルへのアクセス権の付与に使用する独自の[アクセス ポリシー](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#data-plane-and-access-policies)もあります。
+使用されているプリンシパルに、アクセスしようとしているリソースへのアクセス権がありません。 ユーザー アカウントまたは App Service の MSI に、リソースへの "共同作成者" アクセス権を付与します。 これは、サンプルをローカル コンピューターで実行しているか、Azure の App Service にデプロイしたかによって異なります。 キー コンテナーなどの一部のリソースには、ユーザー、アプリ、グループなどのプリンシパルへのアクセス権の付与に使用する独自の[アクセス ポリシー](./secure-your-key-vault.md#data-plane-and-access-policies)もあります。
 
 ### <a name="common-issues-when-deployed-to-azure-app-service"></a>Azure App Service にデプロイするときの一般的な問題
 
@@ -289,11 +289,11 @@ Azure CLI を使って、使用するアカウントがあるものに既定の�
 #### <a name="cant-retrieve-tokens-when-debugging-app-in-iis"></a>IIS 内でアプリをデバッグするときにトークンを取得できない
 
 既定では、AppAuth は IIS の別のユーザー コンテキストで実行されます。 そのため、開発者 ID を使用してアクセス トークンを取得するためのアクセス権はありません。 次の 2 つの手順に従って、ユーザー コンテキストで実行するように IIS を構成できます。
-- 現在のユーザー アカウントとして実行するように Web アプリのアプリケーション プールを構成します。 詳細については、[こちら](https://docs.microsoft.com/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities)をご覧ください。
-- "SetProfileEnvironment" を "True" に構成します。 詳細については、[こちら](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)をご覧ください。 
+- 現在のユーザー アカウントとして実行するように Web アプリのアプリケーション プールを構成します。 詳細については、[こちら](/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities)をご覧ください。
+- "SetProfileEnvironment" を "True" に構成します。 詳細については、[こちら](/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)をご覧ください。 
 
     - %windir%\System32\inetsrv\config\applicationHost.config にアクセスします
     - "setProfileEnvironment" を検索します。 "False" に設定されている場合は、"True" に変更します。 これが存在しない場合は、processModel 要素 (/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment) に属性として追加し、それを "True" に設定します。
 
 - 詳細については、「[Azure リソースの管理 ID について](../../active-directory/managed-identities-azure-resources/index.yml)」を参照してください。
-- [Azure AD の認証シナリオ](../../active-directory/develop/active-directory-authentication-scenarios.md)について詳細を参照する。
+- [Azure AD の認証シナリオ](../../active-directory/develop/authentication-vs-authorization.md)について詳細を参照する。

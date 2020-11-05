@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: ff08af00649cf61134c3e27d07b329e40169ea66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbac7c8818300ffb09959969e6b79f949177f457
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91339934"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307676"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>データで回答できる質問をする
 ## <a name="video-3-data-science-for-beginners-series"></a>ビデオ 3: 初心者向けデータ サイエンス シリーズ
@@ -43,7 +43,7 @@ ms.locfileid: "91339934"
 このビデオを最大限に活用するためにまず、このシリーズの 1 と 2 である "データ サイエンスが回答する 5 つの質問" と "データ サイエンス用のデータの準備はお済みですか?" を視聴するようお勧めします。
 
 ## <a name="ask-a-sharp-question"></a>シャープな質問をする
-これまで、データ サイエンスが、名前 (カテゴリまたはラベルとも呼ばれます) と数値を使用して質問に対する回答を予測するプロセスであることを説明してきました。 ただし、どのような質問でも可能なわけではありません。"*シャープな質問*" である必要があります。
+これまで、データ サイエンスが、名前 (カテゴリまたはラベルとも呼ばれます) と数値を使用して質問に対する回答を予測するプロセスであることを説明してきました。 ただし、どのような質問でも可能なわけではありません。" *シャープな質問* " である必要があります。
 
 あいまいな質問には、名前や数値で答える必要がないからです。 シャープな質問であることが必須です。
 
@@ -69,9 +69,9 @@ ms.locfileid: "91339934"
 ## <a name="reformulate-your-question"></a>質問を考え直す
 質問を言い換えてみることで、より意味のある結果が得られることがあります。
 
-"これはデータ ポイント A かデータ ポイント B か" という質問では、 何かのカテゴリ (または名前やラベル) を予測します。 この質問に回答するには、"*分類アルゴリズム*" を使用します。
+"これはデータ ポイント A かデータ ポイント B か" という質問では、 何かのカテゴリ (または名前やラベル) を予測します。 この質問に回答するには、" *分類アルゴリズム* " を使用します。
 
-"どのくらいの量か" または "どのくらいの数か" という質問では、 数量を予測します。 この質問に回答するには、"*回帰アルゴリズム*" を使用します。
+"どのくらいの量か" または "どのくらいの数か" という質問では、 数量を予測します。 この質問に回答するには、" *回帰アルゴリズム* " を使用します。
 
 これらの質問をどのように変換できるかを確認するには、"新聞のどの記事がこの読者にとって最も興味深いか" という質問に注目します。 これは、さまざまな可能性から 1 つの選択肢の予測を求める質問です。 つまり "A、B、C、D のどれか" は、分類アルゴリズムを使用します。
 
@@ -91,4 +91,4 @@ Microsoft Azure Machine Learning Studio (クラシック) の "初心者向け�
 
 ## <a name="next-steps"></a>次のステップ
 * [Machine Learning Studio (クラシック) で最初のデータ サイエンス実験を試行する](create-experiment.md)
-* [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/overview-what-is-azure-ml)
+* [Microsoft Azure での Machine Learning の概要を学習する](../overview-what-is-azure-ml.md)

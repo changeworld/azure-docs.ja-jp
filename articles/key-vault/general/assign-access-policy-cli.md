@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 32a323e8cc56a8c45b18737bb55ebe19d4be27c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59ba81944ecdf4f2b6322f4298e61df33f5b1da8
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89380563"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289176"
 ---
 # <a name="assign-a-key-vault-access-policy"></a>Key Vault アクセス ポリシーを割り当てる
 
@@ -29,7 +29,7 @@ Azure Active Directory での Azure CLI を使用したグループの作成の�
 
 1. Azure CLI コマンドをローカルで実行するには、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をインストールします。
  
-    コマンドをクラウドで直接実行するには、[Azure Cloud Shell](/azure/cloud-shell/overview) を使用します。
+    コマンドをクラウドで直接実行するには、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用します。
 
 1. ローカル CLI のみ: `az login` を使用して Azure にサインインします。
 

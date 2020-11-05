@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: cff4704b388594511809d92957cbbce97e948f2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca369f8a3e680a4d2aae49df83dda0cdd3dc4075
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362420"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310153"
 ---
 # <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (classic) でモデルのパフォーマンスを評価する
 
-**適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 この記事では、Azure Machine Learning Studio (classic) でモデルのパフォーマンスを監視するために使用できるメトリックについて説明します。  モデルのパフォーマンスの評価は、データ サイエンス プロセスの重要な段階の 1 つです。 その評価は、トレーニングしたモデルによるデータセットのスコア付け (予測) がどれほど成功したかを示す指標になります。 Azure Machine Learning Studio (クラシック) では、 
@@ -47,7 +47,7 @@ ms.locfileid: "91362420"
 以下の各セクションでは、シンプルな回帰モデルと分類モデルを作成し、[[モデルの評価]][evaluate-model] モジュールと [[モデルのクロス検証]][cross-validate-model] モジュールを使用してそれぞれのパフォーマンスを評価します。
 
 ## <a name="evaluating-a-regression-model"></a>回帰モデルの評価
-自動車の大きさ、馬力、エンジンの仕様などの特徴を利用して、価格を予測するとします。 これは、ターゲット変数 (*価格*) が連続数値になる典型的な回帰問題です。 自動車のさまざまな特徴の値に基づいて価格を予測する線形回帰モデルを作成できます。 この回帰モデルを使用して、トレーニングで使用したのと同じデータセットのスコア付けを行うことができます。 自動車の価格を予測したら、その予測と実際の価格の差異の平均値に基づいてモデルのパフォーマンスを評価できます。 その一例として、Machine Learning Studio (クラシック) の *[保存されたデータセット]* セクションにある **自動車価格データ (生データ) データセット** を使用します。
+自動車の大きさ、馬力、エンジンの仕様などの特徴を利用して、価格を予測するとします。 これは、ターゲット変数 ( *価格* ) が連続数値になる典型的な回帰問題です。 自動車のさまざまな特徴の値に基づいて価格を予測する線形回帰モデルを作成できます。 この回帰モデルを使用して、トレーニングで使用したのと同じデータセットのスコア付けを行うことができます。 自動車の価格を予測したら、その予測と実際の価格の差異の平均値に基づいてモデルのパフォーマンスを評価できます。 その一例として、Machine Learning Studio (クラシック) の *[保存されたデータセット]* セクションにある **自動車価格データ (生データ) データセット** を使用します。
 
 ### <a name="creating-the-experiment"></a>実験の作成
 Azure Machine Learning Studio (クラシック) で以下のモジュールをワークスペースに追加します。
@@ -58,14 +58,14 @@ Azure Machine Learning Studio (クラシック) で以下のモジュールを�
 * [モデルのスコア付け][score-model]
 * [モデルの評価][evaluate-model]
 
-図 1 のようにポートを接続し、[[モデルのトレーニング]][train-model] モジュールのラベル列を *price* に設定します。
+図 1 のようにポートを接続し、 [[モデルのトレーニング]][train-model] モジュールのラベル列を *price* に設定します。
 
 ![回帰モデルの評価](./media/evaluate-model-performance/1.png)
 
 図 1. 回帰モデルの評価。
 
 ### <a name="inspecting-the-evaluation-results"></a>評価結果の確認
-実験を実行したら、[[モデルの評価]][evaluate-model] モジュールの出力ポートをクリックし、"*視覚化*" を選択して評価結果を確認できます。 回帰モデルで使用できる評価メトリックは、"*平均絶対誤差*"、"*二乗平均絶対誤差*"、"*相対絶対誤差*"、"*相対二乗誤差*"、"*決定係数*" です。
+実験を実行したら、 [[モデルの評価]][evaluate-model] モジュールの出力ポートをクリックし、" *視覚化* " を選択して評価結果を確認できます。 回帰モデルで使用できる評価メトリックは、" *平均絶対誤差* "、" *二乗平均絶対誤差* "、" *相対絶対誤差* "、" *相対二乗誤差* "、" *決定係数* " です。
 
 ここでは、予測の値と実際の値の差異のことを「誤差」といいます。 予測の値と実際の値の差が負の値になることもあるので、通常は、この差の絶対値または 2 乗が計算され、すべての事例の誤差が全体でどれほどの大きさになっているかを確認します。 誤差のメトリックでは、実際の値に対する予測の値の平均偏差に基づいて回帰モデルの予測パフォーマンスを測定します。 誤差の値が小さければ小さいほど、モデルの予測が正確だということになります。 全体の誤差のメトリックがゼロであれば、そのモデルはデータに完璧に適合しています。
 
@@ -100,14 +100,14 @@ Azure Machine Learning Studio (クラシック) で以下のモジュールを�
 * [モデルのスコア付け][score-model]
 * [モデルの評価][evaluate-model]
 
-図 5 のようにポートを接続し、[[モデルのトレーニング]][train-model] モジュールのラベル列を *income* に設定します。
+図 5 のようにポートを接続し、 [[モデルのトレーニング]][train-model] モジュールのラベル列を *income* に設定します。
 
 ![二項分類モデルの評価](./media/evaluate-model-performance/5.png)
 
 図 5: 二項分類モデルの評価。
 
 ### <a name="inspecting-the-evaluation-results"></a>評価結果の確認
-実験を実行したら、[[モデルの評価]][evaluate-model] モジュールの出力ポートをクリックし、"*視覚化*" を選択して評価結果を確認できます (図 7)。 二項分類モデルで使用できる評価メトリックは、"*精度*"、"*正確度*"、"*再現率*"、"*F1 スコア*"、"*AUC*" です。 さらに、このモジュールは、真陽性、偽陰性、偽陽性、真陰性の数を示す混同行列と "*ROC*"、"*正確度/再現性*"、"*リフト*" の曲線を出力します。
+実験を実行したら、 [[モデルの評価]][evaluate-model] モジュールの出力ポートをクリックし、" *視覚化* " を選択して評価結果を確認できます (図 7)。 二項分類モデルで使用できる評価メトリックは、" *精度* "、" *正確度* "、" *再現率* "、" *F1 スコア* "、" *AUC* " です。 さらに、このモジュールは、真陽性、偽陰性、偽陽性、真陰性の数を示す混同行列と " *ROC* "、" *正確度/再現性* "、" *リフト* " の曲線を出力します。
 
 精度とは、簡単に言えば正しく分類された事例の比率です。 分類モデルを評価するときは通常、精度のメトリックに最初に注目します。 しかし、テスト データのバランスが悪い (ほとんどの事例が一方のクラスに属している )場合や、一方のクラスのパフォーマンスに主な関心がある場合には、実際には精度によって分類モデルの有効性が捕捉されるわけではありません。 たとえば、収入レベルの分類シナリオで、99% が年収 5 万ドル以下の層に属するデータをテストしているとしましょう。 どの事例についても "<=50K" の層を予測することで、0.99 の精度を達成することが可能です。 この分類モデルのパフォーマンスは非常に高いように思えるかもしれませんが、実際のところ、高収入の人たち (1%) を正確に分類することはできません。
 
@@ -117,15 +117,15 @@ Azure Machine Learning Studio (クラシック) で以下のモジュールを�
 
 図 6: 二項分類の混同行列。
 
-収入の分類問題に戻りましょう。分類モデルのパフォーマンスを評価するために、いくつかのことを確認したいと思います。 まず思い浮かぶのは次のような点です。モデルによって年収が 5 万ドル超えと予測された人 (TP+FP) のうち、その分類が正しかった人 (TP) の割合はどれほどでしょうか。 これを確かめるには、モデルの**精度** (正しく分類された陽性の比率:TP/(TP+FP)) を確認します。 また、次のような疑問も思い浮かびます。年収が 5 万ドルを超える高収入の従業員 (TP+FN) のうち、その分類モデルによって正しく分類された人 (TP) の割合はどれほどでしょうか。 これは実際には**再現率**または真陽性率になります。つまり、分類子の TP/(TP+FN) になります。 お気づきかもしれませんが、精度と再現率はトレードオフの関係になっています。 たとえば、比較的バランスの取れたデータセットの場合、ほとんどを正の事例として予測する分類モデルは、再現率が高くなります。一方、負の事例の多くが間違って分類され、偽陽性の数が多くなるので、精度は低めになります。 評価結果の出力ページ (図 7 の左上の部分) にある**精度/再現率**曲線をクリックすれば、この 2 つのメトリックがどう変化するかを示すプロットを表示できます。
+収入の分類問題に戻りましょう。分類モデルのパフォーマンスを評価するために、いくつかのことを確認したいと思います。 まず思い浮かぶのは次のような点です。モデルによって年収が 5 万ドル超えと予測された人 (TP+FP) のうち、その分類が正しかった人 (TP) の割合はどれほどでしょうか。 これを確かめるには、モデルの **精度** (正しく分類された陽性の比率:TP/(TP+FP)) を確認します。 また、次のような疑問も思い浮かびます。年収が 5 万ドルを超える高収入の従業員 (TP+FN) のうち、その分類モデルによって正しく分類された人 (TP) の割合はどれほどでしょうか。 これは実際には **再現率** または真陽性率になります。つまり、分類子の TP/(TP+FN) になります。 お気づきかもしれませんが、精度と再現率はトレードオフの関係になっています。 たとえば、比較的バランスの取れたデータセットの場合、ほとんどを正の事例として予測する分類モデルは、再現率が高くなります。一方、負の事例の多くが間違って分類され、偽陽性の数が多くなるので、精度は低めになります。 評価結果の出力ページ (図 7 の左上の部分) にある **精度/再現率** 曲線をクリックすれば、この 2 つのメトリックがどう変化するかを示すプロットを表示できます。
 
 ![二項分類の評価結果](./media/evaluate-model-performance/7.png)
 
 図 7: 二項分類の評価結果。
 
-**F1 スコア**もよく使うメトリックです。この場合は、精度と再現率の両方を考慮に入れます。 つまり、その 2 つのメトリックの調和平均であり、F1 = 2 (精度 x 再現率) / (精度 + 再現率) という計算になります。 F1 スコアは、1 つの数字で評価を要約するための便利な方法ですが、分類モデルの動作の仕組みをより詳しく把握するには、精度と再現率の両方を併せて確認することをお勧めします。
+**F1 スコア** もよく使うメトリックです。この場合は、精度と再現率の両方を考慮に入れます。 つまり、その 2 つのメトリックの調和平均であり、F1 = 2 (精度 x 再現率) / (精度 + 再現率) という計算になります。 F1 スコアは、1 つの数字で評価を要約するための便利な方法ですが、分類モデルの動作の仕組みをより詳しく把握するには、精度と再現率の両方を併せて確認することをお勧めします。
 
-さらに、**受信者操作特性 (ROC)** 曲線とそれに対応する**曲線下面積 (AUC)** 値で真陽性率と偽陽性率の対比を確認できます。 この曲線が左上隅に近いほど、分類モデルのパフォーマンスは良好です (つまり、真陽性率が高く、偽陽性率が低くなります)。 ほぼ当てずっぽうのような予測をする傾向の強い分類モデルでは、プロットの対角線に近い曲線になります。
+さらに、 **受信者操作特性 (ROC)** 曲線とそれに対応する **曲線下面積 (AUC)** 値で真陽性率と偽陽性率の対比を確認できます。 この曲線が左上隅に近いほど、分類モデルのパフォーマンスは良好です (つまり、真陽性率が高く、偽陽性率が低くなります)。 ほぼ当てずっぽうのような予測をする傾向の強い分類モデルでは、プロットの対角線に近い曲線になります。
 
 ### <a name="using-cross-validation"></a>クロス検証の使用
 回帰の例と同じく、クロス検証を使用して、データの各サブセットのトレーニング、スコア付け、評価を自動的に反復実行できます。 また、[[モデルのクロス検証]][cross-validate-model] モジュールでは、トレーニングしていないロジスティック回帰モデルとデータセットを使用できます。 [[モデルのクロス検証]][cross-validate-model] モジュールのプロパティで、ラベル列を *income* に設定する必要があります。 実験を実行して、[[モデルのクロス検証]][cross-validate-model] モジュールの該当する出力ポートをクリックすれば、各分割処理の二項分類メトリック値とそれぞれの平均偏差と標準偏差を確認できます。 
@@ -155,7 +155,7 @@ Azure Machine Learning Studio (クラシック) で以下のモジュールを�
 
 [[モデルのトレーニング]][train-model] モジュールのラベル列のインデックスを 5 に設定します。 このデータセットにはヘッダー行がありませんが、クラス ラベルが第 5 列にあります。
 
-[[データのインポート]][import-data] モジュールをクリックし、"*データ ソース*" プロパティを "*HTTP を使用する Web URL*" に設定し、"*URL*" を http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data に設定します。
+[[データのインポート]][import-data] モジュールをクリックし、" *データ ソース* " プロパティを " *HTTP を使用する Web URL* " に設定し、" *URL* " を http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data に設定します。
 
 [[データの分割]][split] モジュールでトレーニングに使用する事例の割合を設定します (0.7 など)。
 
@@ -182,12 +182,12 @@ Azure Machine Learning Studio (クラシック) で以下のモジュールを�
 図 13. 多クラス分類モデルのクロス検証の結果。
 
 <!-- Module References -->
-[cross-validate-model]: https://msdn.microsoft.com/library/azure/75fb875d-6b86-4d46-8bcc-74261ade5826/
-[evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
-[linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
-[multiclass-decision-forest]: https://msdn.microsoft.com/library/azure/5e70108d-2e44-45d9-86e8-94f37c68fe86/
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-[train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
-[two-class-logistic-regression]: https://msdn.microsoft.com/library/azure/b0fd7660-eeed-43c5-9487-20d9cc79ed5d/
+[cross-validate-model]: /azure/machine-learning/studio-module-reference/cross-validate-model
+[evaluate-model]: /azure/machine-learning/studio-module-reference/evaluate-model
+[linear-regression]: /azure/machine-learning/studio-module-reference/linear-regression
+[multiclass-decision-forest]: /azure/machine-learning/studio-module-reference/multiclass-decision-forest
+[import-data]: /azure/machine-learning/studio-module-reference/import-data
+[score-model]: /azure/machine-learning/studio-module-reference/score-model
+[split]: /azure/machine-learning/studio-module-reference/split-data
+[train-model]: /azure/machine-learning/studio-module-reference/train-model
+[two-class-logistic-regression]: /azure/machine-learning/studio-module-reference/two-class-logistic-regression

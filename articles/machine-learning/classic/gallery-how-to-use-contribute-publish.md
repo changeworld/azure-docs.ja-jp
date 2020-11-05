@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 1c03f52802881bcf4c916ce3ed438e465e574090
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc405c56538ab305d6e0b8a22c1095458cb1264e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91340357"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309884"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure AI ギャラリーでリソースなどを共有し、発見する
 
-**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 
@@ -31,7 +31,7 @@ ms.locfileid: "91340357"
 Azure AI ギャラリーには、Microsoft とデータ サイエンス コミュニティのメンバーから投稿された多数のさまざまなリソースが含まれています。 これには以下が含まれます。
 
 * **実験** - ギャラリーには、Azure Machine Learning Studio (クラシック) で開発されたさまざまな実験が含まれています。 特定の機械学習手法を示す簡単な概念実証の実験から、複雑な機械学習の問題用の熟成されたソリューションまで広範囲に渡ります。
-* **チュートリアル**: Machine Learning のテクノロジと概念を紹介するか、Machine Learning に関する問題を解決するための高度な手法を説明するさまざまなチュートリアルを使用できます。
+* **チュートリアル** : Machine Learning のテクノロジと概念を紹介するか、Machine Learning に関する問題を解決するための高度な手法を説明するさまざまなチュートリアルを使用できます。
 * **コレクション** - コレクションでは、特定のソリューションまたは概念に対応する実験、API、およびその他のギャラリー リソースをグループ化できます。
 * **カスタム モジュール** - Studio (クラシック) ワークスペースにカスタム モジュールをダウンロードして、独自の実験で使用できます。
 
@@ -48,12 +48,12 @@ LinkedIn や Twitter の共有機能を使用するか、またはリンクを�
 
 サインインすると、ギャラリー コミュニティのメンバーになります。 これにより、リソースをダウンロードするか、または独自のギャラリー項目を投稿することで、あなたが見つけたソリューションを他のユーザーが利用できるようになります。
 
-**実験**、**カスタム モジュール**をダウンロードして、独自の分析ソリューションの開発に使用できます。
-**実験**、**チュートリアル**、および**コレクション**をギャラリーに投稿できます。
+**実験** 、 **カスタム モジュール** をダウンロードして、独自の分析ソリューションの開発に使用できます。
+**実験** 、 **チュートリアル** 、および **コレクション** をギャラリーに投稿できます。
 
 ## <a name="download-experiments-modules"></a>実験、モジュールのダウンロード
 
-独自の Machine Learning Studio (classic) ワークスペースに**実験**、**カスタム モジュール**をダウンロードして、独自のソリューションの開発に使用できます。
+独自の Machine Learning Studio (classic) ワークスペースに **実験** 、 **カスタム モジュール** をダウンロードして、独自のソリューションの開発に使用できます。
 
 AI ギャラリー内からリソースをダウンロードするには:
 
@@ -80,7 +80,7 @@ Studio (クラシック) 内からリソースをダウンロードするには�
 
 ## <a name="contribute-experiments"></a>実験を投稿する
 
-分析手法を例示するためや、他のユーザーがソリューションをすぐに開始できるようにするために、Studio (クラシック) 内で開発した**実験**を投稿できます。
+分析手法を例示するためや、他のユーザーがソリューションをすぐに開始できるようにするために、Studio (クラシック) 内で開発した **実験** を投稿できます。
 ギャラリーではあなたの投稿は他のユーザーから見られるので、投稿のビュー数とダウンロード数を確認できます。
 ユーザーがコメントを追加したり、投稿をデータ サイエンス コミュニティの他のメンバーと共有したりすることもできます。
 また、Disqus などのディスカッション ツールを使ってログインすると、投稿へのコメントに関する通知を受け取ることができます。
@@ -144,7 +144,7 @@ Studio (クラシック) 内からリソースをダウンロードするには�
 
 ## <a name="contribute-tutorials-and-collections"></a>チュートリアルおよびコレクションの投稿
 
-機械学習の概念を説明する**チュートリアル**をギャラリー内に記述したり、特定のソリューションに関連する複数のリソースをグループ化した**コレクション**を作成したりすると、他のユーザーに役立つ場合があります。
+機械学習の概念を説明する **チュートリアル** をギャラリー内に記述したり、特定のソリューションに関連する複数のリソースをグループ化した **コレクション** を作成したりすると、他のユーザーに役立つ場合があります。
 
 1. ご自身の Microsoft アカウントを使用して、ギャラリーにサインインします。
 

@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 6bd86dc855e5a312550abe050603aeaf45b075ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 550603b9315c1abaa025aac804afc4fe674159d2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362352"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310014"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) から製品内ユーザー データをエクスポートおよび削除する
 
-**適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 
@@ -43,15 +43,15 @@ Machine Learning Studio (クラシック) には、次の 2 種類のユーザ�
 
 Machine Learning Studio (クラシック) には 3 種類のアカウントがあります。 所有しているアカウントの種類によって、データの格納方法と、データの削除またはエクスポートの方法が決まります。
 
-- **ゲスト ワークスペース**は、無料の匿名アカウントです。 電子メール アドレスやパスワードなどの資格情報を指定することなく、サインアップします。
+- **ゲスト ワークスペース** は、無料の匿名アカウントです。 電子メール アドレスやパスワードなどの資格情報を指定することなく、サインアップします。
     -  ゲスト ワークスペースの有効期限が切れると、データは削除されます。
     - ゲスト ユーザーは、UI、REST API、または PowerShell パッケージを介して顧客データをエクスポートできます。
-- **無料のワークスペース**は、Microsoft アカウントの資格情報 (電子メール アドレスとパスワード) を使用してサインインする無料アカウントです。
+- **無料のワークスペース** は、Microsoft アカウントの資格情報 (電子メール アドレスとパスワード) を使用してサインインする無料アカウントです。
     - データ主体の権利 (DSR) 要求の影響を受ける、個人データおよび顧客データをエクスポートおよび削除できます。
     - UI、REST API、または PowerShell パッケージを介して顧客データをエクスポートすることができます。
     - Azure AD アカウントを使用していない無料のワークスペースの場合は、Privacy Portal を使用してテレメトリをエクスポートすることができます。
     - ワークスペースを削除する場合は、個人の顧客データもすべて削除します。
-- **標準ワークスペース**は、サインイン資格情報を使用してアクセスする有料アカウントです。
+- **標準ワークスペース** は、サインイン資格情報を使用してアクセスする有料アカウントです。
     - DSR 要求の影響を受ける、個人データおよび顧客データをエクスポートおよび削除できます。
     - データには Azure Privacy Portal を介してアクセスできます。
     - UI、REST API、または PowerShell パッケージを介して個人データおよび顧客データをエクスポートすることができます。
@@ -78,4 +78,4 @@ PowerShell では、コマンドを使用して Azure Machine Learning Studio (�
 
 ## <a name="next-steps"></a>次のステップ
 
-Web サービスや契約プランの課金が説明されているドキュメントについては、[Azure Machine Learning Studio (クラシック) REST API リファレンス](https://docs.microsoft.com/rest/api/machinelearning/)に関するページを参照してください。 
+Web サービスや契約プランの課金が説明されているドキュメントについては、[Azure Machine Learning Studio (クラシック) REST API リファレンス](/rest/api/machinelearning/)に関するページを参照してください。

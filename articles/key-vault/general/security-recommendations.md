@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 0c541c848290988bb1f358f045abb2d0cd221de7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f96df14fb754578b58fb67ac116ac79cff3ffdcb
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87386760"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289846"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Azure Key Vault のセキュリティに関する推奨事項
 
@@ -24,7 +24,7 @@ ms.locfileid: "87386760"
 この記事に記載されているいくつかの推奨事項は、Azure Security Center によって自動的に監視できます。 Azure Security Center は、Azure のリソースを保護するための防御の最前線です。 これにより Azure リソースのセキュリティの状態が定期的に分析され、潜在的なセキュリティ脆弱性が特定されます。 その後、それらに対処する方法の推奨事項を提供します。
 
 - Azure Security Center の推奨事項の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項](../../security-center/security-center-recommendations.md)」を参照してください。
-- Azure Security Center については、「[Azure Security Center とは](../../security-center/security-center-intro.md)」を参照してください。
+- Azure Security Center については、「[Azure Security Center とは](../../security-center/security-center-introduction.md)」を参照してください。
 
 ## <a name="data-protection"></a>データ保護
 
@@ -54,4 +54,4 @@ ms.locfileid: "87386760"
 
 ## <a name="next-steps"></a>次のステップ
 
-アプリケーション プロバイダーに追加のセキュリティ要件があるかどうかを確認する。 セキュリティで保護されたアプリケーションの開発の詳細については、[セキュリティで保護された開発に関するドキュメント](../../security/fundamentals/abstract-develop-secure-apps.md)を参照してください。
+アプリケーション プロバイダーに追加のセキュリティ要件があるかどうかを確認する。 セキュリティで保護されたアプリケーションの開発の詳細については、[セキュリティで保護された開発に関するドキュメント](https://azure.microsoft.com/resources/develop-secure-applications-on-azure/)を参照してください。

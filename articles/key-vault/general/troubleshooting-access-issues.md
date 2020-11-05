@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 155837802bd19ec1bb4e41484e229e1f5daef658
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1437ef8675d0ddc96eb7fc641b3663b66c3ea11b
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125254"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285236"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Azure Key Vault のアクセス ポリシーの問題のトラブルシューティング
 
@@ -20,11 +20,11 @@ ms.locfileid: "92125254"
 
 ### <a name="how-can-i-identify-how-and-when-key-vaults-are-accessed"></a>キー コンテナーが、いつ、どのようにアクセスされているのかを確認するにはどうすればよいですか?
 
-1 つまたは複数のキー コンテナーを作成したら、いつ、どのように、誰によってキー コンテナーがアクセスされるのかを監視するのが一般的です。 Azure Key Vault のログを有効にすることによって、監視を行うことができます。ログを有効にするためのステップバイステップ ガイドについては、[こちら](https://docs.microsoft.com/azure/key-vault/general/logging)をご覧ください。
+1 つまたは複数のキー コンテナーを作成したら、いつ、どのように、誰によってキー コンテナーがアクセスされるのかを監視するのが一般的です。 Azure Key Vault のログを有効にすることによって、監視を行うことができます。ログを有効にするためのステップバイステップ ガイドについては、[こちら](./logging.md)をご覧ください。
 
 ### <a name="how-can-i-monitor-vault-availability-service-latency-periods-or-other-performance-metrics-for-key-vault"></a>キー コンテナーの可用性、サービスの待ち時間、または他のパフォーマンス メトリックを監視するにはどうすればよいですか?
 
-サービスのスケーリングを開始すると、キー コンテナーに送信される要求の数が増加します。 それにより要求の待機時間が長くなる可能性があり、極端な場合には要求がスロットルされてサービスのパフォーマンスに影響を与えます。 キー コンテナーのパフォーマンス メトリックを監視し、特定のしきい値についてアラートを受け取ることができます。監視を構成するためのステップバイステップ ガイドについては、[こちら](https://docs.microsoft.com/azure/key-vault/general/alert)をご覧ください。
+サービスのスケーリングを開始すると、キー コンテナーに送信される要求の数が増加します。 それにより要求の待機時間が長くなる可能性があり、極端な場合には要求がスロットルされてサービスのパフォーマンスに影響を与えます。 キー コンテナーのパフォーマンス メトリックを監視し、特定のしきい値についてアラートを受け取ることができます。監視を構成するためのステップバイステップ ガイドについては、[こちら](./alert.md)をご覧ください。
 
 ### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>アクセス ポリシーを変更できません。どのような方法で有効にできますか。
 アクセス ポリシーを変更するために必要な AAD アクセス許可がユーザーに与えられている必要があります。 この場合、上位の共同作成者ロールをユーザーに与える必要があります。
@@ -53,7 +53,7 @@ Azure CLI の `az keyvault set-policy` コマンド、または Azure PowerShell
 
 現在、Key Vault の再デプロイでは、Key Vault のアクセス ポリシーが削除され、ARM テンプレートのアクセス ポリシーに置き換えられます。 Key Vault のアクセス ポリシーに増分オプションはありません。 Key Vault のアクセス ポリシーを保持するには、Key Vault の既存のアクセス ポリシーを読み取り、ARM テンプレートにそれらのポリシーを設定して、アクセスの停止を回避する必要があります。
 
-このシナリオに役立つ可能性があるもう 1 つの選択肢は、アクセス ポリシーの代替として RBAC ロールを利用することです。 RBAC を使用すると、ポリシーを再度指定しなくても、キー コンテナーを再デプロイできます。 このソリューションの詳細は[こちら](https://docs.microsoft.com/azure/key-vault/general/rbac-guide)でご覧いただけます。
+このシナリオに役立つ可能性があるもう 1 つの選択肢は、アクセス ポリシーの代替として RBAC ロールを利用することです。 RBAC を使用すると、ポリシーを再度指定しなくても、キー コンテナーを再デプロイできます。 このソリューションの詳細は[こちら](./rbac-guide.md)でご覧いただけます。
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>次のエラーの種類に対して推奨されるトラブルシューティングの手順
 

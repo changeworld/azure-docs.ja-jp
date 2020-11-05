@@ -11,12 +11,12 @@ author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a36f69c9956dd05c5fbd85d7e37b90c0b1e4c21e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09eeafa99c14984f74f8807014f646379c7507f0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897658"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314217"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML Web サービス エンドポイントからのデータを監視および収集する
 
@@ -182,7 +182,7 @@ Azure Application Insights では、Azure Machine Learning ワークスペース
 
     [![監視の [概要] タブ](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
-1. score.py ファイルからログに記録された情報を表示するには、__traces__ テーブルを参照してください。 次のクエリは、__input__ 値が記録されたログを検索しています。
+1. score.py ファイルからログに記録された情報を表示するには、 __traces__ テーブルを参照してください。 次のクエリは、 __input__ 値が記録されたログを検索しています。
 
     ```kusto
     traces
@@ -204,9 +204,9 @@ Web サービスの要求情報をログするには、`print` ステートメ�
 ## <a name="export-data-for-retention-and-processing"></a>保持と処理のためにデータをエクスポートする
 
 >[!Important]
-> Azure Application Insights では、BLOB ストレージへのエクスポートのみがサポートされています。 この実装の制限の詳細については、[App Insights からのテレメトリのエクスポート](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry#continuous-export-advanced-storage-configuration)に関するページを参照してください。
+> Azure Application Insights では、BLOB ストレージへのエクスポートのみがサポートされています。 この実装の制限の詳細については、[App Insights からのテレメトリのエクスポート](../azure-monitor/app/export-telemetry.md#continuous-export-advanced-storage-configuration)に関するページを参照してください。
 
-Application Insights の[連続エクスポート](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)を使用して、保有期間の設定を定義できる BLOB ストレージ アカウントにデータをエクスポートします。 Application Insights では、データは JSON 形式でエクスポートされます。 
+Application Insights の[連続エクスポート](../azure-monitor/app/export-telemetry.md)を使用して、保有期間の設定を定義できる BLOB ストレージ アカウントにデータをエクスポートします。 Application Insights では、データは JSON 形式でエクスポートされます。 
 
 :::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="連続エクスポート":::
 
@@ -215,8 +215,8 @@ Application Insights の[連続エクスポート](https://docs.microsoft.com/az
 この記事では、Web サービス エンドポイントのログを有効にし、ログを表示する方法について説明しました。 次のステップのために、以下の記事をご覧ください。
 
 
-* [AKS クラスターにモデルをデプロイする方法](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service)
+* [AKS クラスターにモデルをデプロイする方法](./how-to-deploy-azure-kubernetes-service.md)
 
-* [Azure Container Instances にモデルをデプロイする方法](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-container-instance)
+* [Azure Container Instances にモデルをデプロイする方法](./how-to-deploy-azure-container-instance.md)
 
-* [MLOps: Azure Machine Learning でモデルを管理、デプロイ、および監視する](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment)」を参照して、運用環境のモデルから収集されたデータの利用の詳細について確認してください。 このようなデータは、機械学習プロセスを継続的に改善するのに役立ちます。
+* [MLOps: Azure Machine Learning でモデルを管理、デプロイ、および監視する](./concept-model-management-and-deployment.md)」を参照して、運用環境のモデルから収集されたデータの利用の詳細について確認してください。 このようなデータは、機械学習プロセスを継続的に改善するのに役立ちます。

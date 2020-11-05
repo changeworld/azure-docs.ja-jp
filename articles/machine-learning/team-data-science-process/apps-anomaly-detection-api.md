@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: f3f35bb7002ea976305b31a27fa6efebecf07710
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e210c1683d5f14181bc0549e73a892eb91d2e746
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087165"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305699"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning 異常検出 API
 
@@ -28,9 +28,9 @@ ms.locfileid: "86087165"
 
 この API で時系列データから検出できる異常パターンのタイプは次のとおりです。
 
-* **正と負の値の傾向**:たとえば、コンピューティングのメモリ使用量を監視する場合は、上昇傾向が関心の対象となります。メモリ使用量の上昇はメモリ リークの兆候であるためです。
-* **値のダイナミック レンジの変化**:たとえば、サービスによってスローされる例外を監視する場合、値のダイナミック レンジの変化は、クラウド サービスの正常性が不安定になっていることを示す可能性があります。
-* **スパイクと DIP**:たとえば、サービスへのログインの失敗の数や、eコマース サイトのチェックアウトの数を監視している場合、スパイクや DIP は異常な動作を示している可能性があります。
+* **正と負の値の傾向** :たとえば、コンピューティングのメモリ使用量を監視する場合は、上昇傾向が関心の対象となります。メモリ使用量の上昇はメモリ リークの兆候であるためです。
+* **値のダイナミック レンジの変化** :たとえば、サービスによってスローされる例外を監視する場合、値のダイナミック レンジの変化は、クラウド サービスの正常性が不安定になっていることを示す可能性があります。
+* **スパイクと DIP** :たとえば、サービスへのログインの失敗の数や、eコマース サイトのチェックアウトの数を監視している場合、スパイクや DIP は異常な動作を示している可能性があります。
 
 こうした Machine Learning を使用した検出は、時間の経過に伴う値の変化を追跡し、異常が記録されたときの値の継続的な変化を報告します。 これらはアドホックなしきい値の調整を必要とせず、スコアを使用して誤検知率を制御できます。 異常検出 API は、一定時間 KPI を追跡することによるサービスの監視、各種メトリック (検索回数、クリック数など) に基づく使用状況の監視、各種カウンター (メモリ、CPU、ファイル読み取りなど) を一定時間追跡することによるパフォーマンスの監視など、さまざまなシナリオで役に立ちます。
 
@@ -39,20 +39,20 @@ ms.locfileid: "86087165"
 * たとえば目的のデータに関して異常検出 API から得られた結果は、 [Web アプリケーション](https://anomalydetection-aml.azurewebsites.net/) を使用して評価し、視覚化することができます。
 
 > [!NOTE]
-> [この API](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2) を利用した **IT Anomaly Insights ソリューション**をお試しください
+> [この API](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2) を利用した **IT Anomaly Insights ソリューション** をお試しください
 >
 <!-- This Solution is no longer available
 > To get this end to end solution deployed to your Azure subscription <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**Start here >**</a>
 -->
 
 ## <a name="api-deployment"></a>API のデプロイ
-API を使用するには、Azure Machine Learning Web サービスとしてホストされる Azure サブスクリプションに API をデプロイする必要があります。  これは [Azure AI ギャラリー](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2)から実行できます。  季節性検出を含む異常検出と季節性検出を含まない異常検出という、2 つの Azure Machine Learning Studio (クラシック) Web サービス (およびその関連リソース) が Azure サブスクリプションにデプロイされます。  デプロイが完了したら、[Azure Machine Learning Studio (クラシック) Web サービス](https://services.azureml.net/webservices/) ページから API を管理できます。  このページから、エンドポイントの場所、API キー、API を呼び出すためのサンプル コードを検索できます。  詳細な手順については、[こちら](/azure/machine-learning/studio/manage-new-webservice)を参照してください。
+API を使用するには、Azure Machine Learning Web サービスとしてホストされる Azure サブスクリプションに API をデプロイする必要があります。  これは [Azure AI ギャラリー](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2)から実行できます。  季節性検出を含む異常検出と季節性検出を含まない異常検出という、2 つの Azure Machine Learning Studio (クラシック) Web サービス (およびその関連リソース) が Azure サブスクリプションにデプロイされます。  デプロイが完了したら、[Azure Machine Learning Studio (クラシック) Web サービス](https://services.azureml.net/webservices/) ページから API を管理できます。  このページから、エンドポイントの場所、API キー、API を呼び出すためのサンプル コードを検索できます。  詳細な手順については、[こちら](../classic/manage-new-webservice.md)を参照してください。
 
 ## <a name="scaling-the-api"></a>API のスケーリング
 既定では、デプロイは、1,000 件のトランザクション/月と 2 時間のコンピューティング時間/月が含まれる Dev/Test 料金プランで実行されます。  ニーズに応じて別のプランにアップグレードできます。  さまざまなプランの料金の詳細については、[こちらの](https://azure.microsoft.com/pricing/details/machine-learning/)「実稼働 Web API の価格」を参照してください。
 
 ## <a name="managing-aml-plans"></a>AML プランの管理
-課金プランは、[こちら](https://services.azureml.net/plans/)で管理できます。  プラン名は、API のデプロイ時に選択したリソース グループ名とサブスクリプションに固有の文字列に基づきます。  プランをアップグレードする手順については、[こちらの](/azure/machine-learning/studio/manage-new-webservice)「課金プランの管理」セクションを参照してください。
+課金プランは、[こちら](https://services.azureml.net/plans/)で管理できます。  プラン名は、API のデプロイ時に選択したリソース グループ名とサブスクリプションに固有の文字列に基づきます。  プランをアップグレードする手順については、[こちらの](../classic/manage-new-webservice.md)「課金プランの管理」セクションを参照してください。
 
 ## <a name="api-definition"></a>API の定義
 この Web サービスは、REST ベースの API を HTTPS 経由で提供しますが、これは Web アプリケーションやモバイル アプリケーション、R、Python、Excel などを含むさまざまな方法で使用できます。時系列データを REST API 呼び出しによってこのサービスに送信することができ、後述する 3 つの異常の種類の組み合わせを実行します。
@@ -197,4 +197,3 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
 
 [1]: ./media/apps-anomaly-detection-api/anomaly-detection-score.png
 [2]: ./media/apps-anomaly-detection-api/anomaly-detection-seasonal.png
-

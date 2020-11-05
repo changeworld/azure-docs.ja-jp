@@ -1,17 +1,17 @@
 ---
 title: カスタマー マネージド キーを使用したデータ暗号化 - Azure Database for MySQL
 description: カスタマーマネージド キーによる Azure Database for MySQL のデータ暗号化では、保存データの保護に Bring Your Own Key (BYOK) を使用できます。 また、組織でキーとデータの管理における職務の分離を実装することもできます。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: c7b4d4cf61c1d605bd632ac6fe210171b2ebe01b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 23cf8a79c4978ccb3a65ad968b2ed5a01bb3d0ec
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544122"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242332"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure Database for MySQL のデータの暗号化
 
@@ -80,7 +80,7 @@ Key Vault を構成するための要件を以下に示します。
 * DEK のラップおよびラップ解除操作のアクセスを高速化するために、Key Vault と Azure Database for MySQL が同じリージョンにあることを確認します。
 * Azure KeyVault を **プライベート エンドポイントと選択されたネットワーク** のみにロックダウンし、 *信頼された Microsoft* サービスのみがリソースを保護できるようにします。
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Bring Your Own Key の概要を示す図":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="trusted-service-with-AKV":::
 
 カスタマーマネージド キーを構成する場合の推奨事項は次のとおりです。
 

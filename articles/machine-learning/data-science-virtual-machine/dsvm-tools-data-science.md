@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 15c3f3994b9d519a4144fa2c2e1418e92cdbd6ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 087679c49c3cc025268e6f895757ae5f5c47c917
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012408"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309111"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine 上の機械学習ツールとデータ サイエンス ツール
 Azure Data Science Virtual Machine (DSVM) には、Python、R、Julia などの一般的な言語で使用できる、機械学習のための豊富な一連のツールやライブラリが備わっています。
@@ -24,7 +24,7 @@ Azure Data Science Virtual Machine (DSVM) には、Python、R、Julia などの�
 
 ## <a name="azure-machine-learning-sdk-for-python"></a>Azure Machine Learning SDK for Python
 
-[Azure Machine Learning SDK for Python の詳細についてはこちら ](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) を参照してください。
+[Azure Machine Learning SDK for Python の詳細についてはこちら ](../overview-what-is-azure-ml.md) を参照してください。
 
 | カテゴリ | 値 |
 | ------------- | ------------- |
@@ -32,7 +32,7 @@ Azure Data Science Virtual Machine (DSVM) には、Python、R、Julia などの�
 | サポートされているエディション     | Windows (Conda 環境:AzureML)、Linux (Conda 環境: py36)    |
 | 標準的な使用      | 一般的な機械学習プラットフォーム      |
 | 構成またはインストール方法      |  GPU サポートと共にインストールされます   |
-| 使用または実行方法      | Python SDK および Azure CLI として。 Windows エディションでは conda 環境 `AzureML` に、*または* Linux エディションでは `py36` にアクティブ化します。      |
+| 使用または実行方法      | Python SDK および Azure CLI として。 Windows エディションでは conda 環境 `AzureML` に、 *または* Linux エディションでは `py36` にアクティブ化します。      |
 | サンプルへのリンク      | サンプルの Jupyter ノートブックは、`AzureML` ディレクトリの notebooks の下に含まれています。  |
 | 関連するツール      | Visual Studio Code、Jupyter   |
 
@@ -113,5 +113,3 @@ DSVM には、DSVM 用の Anaconda Python ディストリビューションの�
 | 標準的な使用      |  抽出、変換、読み込み (ETL) を必要としない、インプレース データ探索用。 CSV、JSON、リレーショナル テーブル、および Hadoop などのさまざまなデータ ソースとフォーマットのクエリ。     |
 | 使用と実行方法      | デスクトップ ショートカット  <br/> [10 分で Drill を使ってみる](https://drill.apache.org/docs/drill-in-10-minutes/)  |
 | DSVM 上の関連ツール      |   Rattle、Weka、SQL Server Management Studio      |
-
-

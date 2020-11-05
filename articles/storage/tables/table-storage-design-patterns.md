@@ -9,12 +9,12 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 41e07087574989935e89ba2c1f4c09a3c12b192d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 20e776e649d13e435a7bc9215802fcd89efe0867
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215605"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307467"
 ---
 # <a name="table-design-patterns"></a>テーブルの設計パターン
 この記事では、Table service ソリューションで使用するのに適したパターンをいくつか紹介します。 また、他のテーブル ストレージ設計の記事で説明されている問題やトレードオフの一部に実際に対処する方法についても説明します。 次の図は、さまざまなパターンの関係をまとめたものです。  
@@ -22,7 +22,7 @@ ms.locfileid: "92215605"
 ![関連するデータを検索する](media/storage-table-design-guide/storage-table-design-IMAGE05.png)
 
 
-上記のパターン マップには、このガイドに記載されているパターン (青) とアンチパターン (オレンジ) の関係の一部が示されています。 検討する価値があるパターンは他にもたくさんあります。 たとえば、Table サービス向けの主なシナリオの 1 つに、[コマンド クエリ責務分離 (CQRS) パターン](https://msdn.microsoft.com/library/azure/jj554200.aspx)からの[具体化されたビュー パターン](https://msdn.microsoft.com/library/azure/dn589782.aspx)の使用があります。  
+上記のパターン マップには、このガイドに記載されているパターン (青) とアンチパターン (オレンジ) の関係の一部が示されています。 検討する価値があるパターンは他にもたくさんあります。 たとえば、Table サービス向けの主なシナリオの 1 つに、[コマンド クエリ責務分離 (CQRS) パターン](/previous-versions/msp-n-p/jj554200(v=pandp.10))からの[具体化されたビュー パターン](/previous-versions/msp-n-p/dn589782(v=pandp.10))の使用があります。  
 
 ## <a name="intra-partition-secondary-index-pattern"></a>パーティション内のセカンダリ インデックス パターン
 異なる **RowKey** 値 (同じパーティション内) を使用して各エンティティの複数のコピーを格納し、異なる **RowKey** 値を使用した高速で効率的な参照と代替の並べ替え順序を可能にします。 コピー間の更新の一貫性は、EGT を使用して保つことができます。  
@@ -49,7 +49,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 * Sales 部署において、従業員 ID、000100 から 000199 を指定して、すべての従業員を検索するには: $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000100') and (RowKey le 'empid_000199') を使用します。  
 * Sales 部署において、'a' で始まる電子メール アドレスを持つすべての従業員を検索するには:$filter=(PartitionKey eq 'Sales') and (RowKey ge 'email_a') and (RowKey lt 'email_b') を使用します。  
   
-  上記の例で使用しているフィルター構文は、Table service REST API の構文です。詳細については、[エンティティのクエリ](https://msdn.microsoft.com/library/azure/dd179421.aspx)に関するページを参照してください。  
+  上記の例で使用しているフィルター構文は、Table service REST API の構文です。詳細については、[エンティティのクエリ](/rest/api/storageservices/Query-Entities)に関するページを参照してください。  
 
 ### <a name="issues-and-considerations"></a>問題と注意事項
 このパターンの実装方法を決めるときには、以下の点に注意してください。  
@@ -105,7 +105,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 * 従業員 ID 順で格納された、従業員 ID が **000100** から **000199** の範囲の Sales 部署のすべての従業員を検索するには、$filter=(PartitionKey eq 'empid_Sales') と (RowKey ge '000100') および (RowKey le '000199') を使用します。  
 * Sales 部署において、電子メール アドレス順で格納された電子メール アドレスで、'a' で始まる電子メール アドレスを持つすべての従業員を検索するには: $filter=(PartitionKey eq 'email_Sales') and (RowKey ge 'a') and (RowKey lt 'b') を使用します。  
 
-上記の例で使用しているフィルター構文は、Table service REST API の構文です。詳細については、[エンティティのクエリ](https://msdn.microsoft.com/library/azure/dd179421.aspx)に関するページを参照してください。  
+上記の例で使用しているフィルター構文は、Table service REST API の構文です。詳細については、[エンティティのクエリ](/rest/api/storageservices/Query-Entities)に関するページを参照してください。  
 
 ### <a name="issues-and-considerations"></a>問題と注意事項
 このパターンの実装方法を決めるときには、以下の点に注意してください。  
@@ -156,7 +156,7 @@ Azure キューを使用すると、2 つ以上のパーティションまたは
 ### <a name="recovering-from-failures"></a>エラーからの回復
 worker ロールがアーカイブ操作を再開する必要がある場合、手順 **4** と **5** の操作が *べき等* になっていることが重要です。 Table service を使用している場合、手順 **4** で「挿入または置換」操作を使用する必要があります。手順 **5** では、使用しているクライアント ライブラリ で "存在する場合は削除" 操作を使用する必要があります。 他のストレージ システムを使用する場合は、適切なべき等操作を使用する必要があります。  
 
-worker ロールが手順 **6** を完了しない場合は、タイムアウトの後、メッセージが worker ロール準備完了のキューに表示され再処理を試みます。 worker ロールは、キュー上のメッセージを読み取った回数を確認し、必要に応じて、別のキューに送信することで、調査のために "有害" メッセージとしてフラグを設定できます。 キュー メッセージの読み取りとデキューカウントのチェックに関する詳細については、 [メッセージを取得](https://msdn.microsoft.com/library/azure/dd179474.aspx)を参照してください。  
+worker ロールが手順 **6** を完了しない場合は、タイムアウトの後、メッセージが worker ロール準備完了のキューに表示され再処理を試みます。 worker ロールは、キュー上のメッセージを読み取った回数を確認し、必要に応じて、別のキューに送信することで、調査のために "有害" メッセージとしてフラグを設定できます。 キュー メッセージの読み取りとデキューカウントのチェックに関する詳細については、 [メッセージを取得](/rest/api/storageservices/Get-Messages)を参照してください。  
 
 Table サービスと Queue サービスのエラーには一時的なエラーもあります。クライアント アプリケーションには、そうしたエラーに対処する適切な再試行ロジックを組み込む必要があります。  
 
@@ -634,7 +634,7 @@ var employees = employeeTable.ExecuteQuery(employeeQuery);
 
 そのようなときには必ず、アプリケーションのパフォーマンスを綿密にテストする必要があります。  
 
-Table サービスに対してクエリを実行した場合、一度に返されるエンティティの数は最大 1,000 件、クエリの実行時間は最大 5 秒間です。 結果として返されるエンティティが 1,000 件を超える場合、クエリが 5 秒以内に完了しなかった場合、またはクエリがパーティションの境界をまたいで実行される場合には、Table service によって継続トークンが返されます。クライアント アプリケーションはこのトークンを使って、続きとなるエンティティを要求します。 継続トークンの詳細については、「[クエリのタイムアウトと改ページ](https://msdn.microsoft.com/library/azure/dd135718.aspx)」をご覧ください。  
+Table サービスに対してクエリを実行した場合、一度に返されるエンティティの数は最大 1,000 件、クエリの実行時間は最大 5 秒間です。 結果として返されるエンティティが 1,000 件を超える場合、クエリが 5 秒以内に完了しなかった場合、またはクエリがパーティションの境界をまたいで実行される場合には、Table service によって継続トークンが返されます。クライアント アプリケーションはこのトークンを使って、続きとなるエンティティを要求します。 継続トークンの詳細については、「[クエリのタイムアウトと改ページ](/rest/api/storageservices/Query-Timeout-and-Pagination)」をご覧ください。  
 
 ストレージ クライアント ライブラリを使用している場合には、Table service からエンティティが返されるたびに継続トークンが自動で処理されます。 以下の C# コード サンプルではストレージ クライアント ライブラリを使用しているため、Table サービスが応答で返した継続トークンが自動的に処理されます。  
 

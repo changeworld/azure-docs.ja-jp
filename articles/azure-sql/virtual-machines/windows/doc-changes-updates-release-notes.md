@@ -11,12 +11,12 @@ ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/15/2020
-ms.openlocfilehash: 1d6eb4df91ce912832d15835a00bdb287f67e787
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 249e65b5a9440678015598d9969c0d2ed689c626
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789745"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285361"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server に関するドキュメントの変更
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -88,7 +88,7 @@ Azure では、SQL Server のイメージを組み込んだ仮想マシン (VM) 
 | **別のリージョンへの SQL Server VM の移行** | Azure Site Recovery を使用して、[異なるリージョン間で SQL Server VM を移行](move-sql-vm-different-region.md)します。 |
 |  **新しい SQL IaaS インストール モード** | SQL Server サービスの再開を回避するため、SQL Server IaaS 拡張機能を[軽量モード](sql-server-iaas-agent-extension-automate-management.md)でインストールできるようになりました。  |
 | **SQL Server エディションの変更** | SQL Server VM の [エディション プロパティ](change-sql-server-edition.md)を変更できるようになりました。 |
-| **SQL VM リソースプロバイダーに対する変更** | 新しい SQL IaaS モードを使用して、[SQL Server VM を SQL VM リソース プロバイダーに登録](sql-vm-resource-provider-register.md)できます。 この機能には、[Windows Server 2008 のイメージ](sql-vm-resource-provider-register.md#management-modes)が含まれます。|
+| **SQL VM リソースプロバイダーに対する変更** | 新しい SQL IaaS モードを使用して、[SQL Server VM を SQL VM リソース プロバイダーに登録](sql-vm-resource-provider-register.md)できます。 この機能には、[Windows Server 2008 のイメージ](sql-server-iaas-agent-extension-automate-management.md#management-modes)が含まれます。|
 | **Azure ハイブリッド特典を使用するライセンス持ち込みイメージ** | Azure Marketplace からデプロイされたライセンス持ち込みイメージを使用して、[ライセンスの種類を従量課金制に](licensing-model-azure-hybrid-benefit-ahb-change.md#remarks)切り替えることができるようになりました。| 
 | **Azure portal での新しい SQL Server VM の管理** | Azure portal で SQL Server VM を管理する新しい方法が導入されました。 詳細については、「[Azure portal で SQL Server VM を管理する](manage-sql-vm-portal.md)」を参照してください。  | 
 | **SQL Server 2008 および 2008 R2 の延長サポート** | " *そのまま* " Azure VM に移行することで、SQL Server 2008 および SQL Server 2008 R2 の [サポートを延長](sql-server-2008-extend-end-of-support.md)します。 | 
