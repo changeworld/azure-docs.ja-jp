@@ -3,18 +3,20 @@ title: Azure Cosmos DB クエリ言語の数学関数
 description: 引数として指定された入力値に基づいて計算を実行し、数値を返す、Azure Cosmos DB の数学関数について学びます。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: bd53feb175c5be77f559a4d2e724a55e41df48eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dc3631b738da78df83113d89d23051033674d11
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85562831"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338373"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>数学関数 (Azure Cosmos DB)  
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 各数学関数は、引数として提供された入力値に基づいて計算を実行し、数値を返します。
 

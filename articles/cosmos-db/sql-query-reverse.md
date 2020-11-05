@@ -3,18 +3,21 @@ title: Azure Cosmos DB クエリ言語の REVERSE
 description: Azure Cosmos DB の SQL システム関数 REVERSE について説明します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: a22e1c8a5f4350bd2f966ee48f96368c648a4a1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d70d65609211ea18f566dbae42aca5231ed2eb7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78302170"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341581"
 ---
 # <a name="reverse-azure-cosmos-db"></a>REVERSE (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  文字列値を反転して返します。  
   
 ## <a name="syntax"></a>構文

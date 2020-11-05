@@ -3,18 +3,20 @@ title: Azure Cosmos DB クエリ言語の RegexMatch
 description: Azure Cosmos DB の RegexMatch SQL システム関数について説明します
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 620ffcb379f9fa1402e422c13bcadf8da4047409
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 7f5b2831f45e902b312636e4133557a16ee7ec95
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283332"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341639"
 ---
 # <a name="regexmatch-azure-cosmos-db"></a>REGEXMATCH (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 正規表現の機能を提供します。 正規表現は、テキストのパターンを見つけるための簡潔で柔軟性の高い表記法です。 Azure Cosmos DB では、[PERL 互換正規表現 (PCRE)](http://www.pcre.org/) を使用します。 
 

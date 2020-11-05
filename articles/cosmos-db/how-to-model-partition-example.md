@@ -3,18 +3,20 @@ title: 現実の例を使用して Azure Cosmos DB のデータをモデル化�
 description: Azure Cosmos DB Core API を使用して現実の例をモデル化およびパーティション分割する方法について説明します
 author: ThomasWeiss
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 8e9d11ed39d6e4dc7ad432659534e7dd14fcf1ec
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ef999d4b452f3f31942e1fb2ddb46efe760acff0
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277992"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342149"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>現実の例を使用して Azure Cosmos DB のデータをモデル化およびパーティション分割する方法
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、[データ モデリング](modeling-data.md)、[パーティション分割](partitioning-overview.md)、[プロビジョニング済みスループット](request-units.md)などの Azure Cosmos DB のいくつかの概念を基にして、現実世界のデータ設計に取り組む方法を示します。
 
@@ -137,7 +139,7 @@ ms.locfileid: "92277992"
 
 ユーザーの取得は、`users` コンテナーから対応する項目を読み取ることによって行われます。
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q1.png" alt-text="users コンテナーへの 1 つの項目の書き込み" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q1.png" alt-text="users コンテナーからの 1 つの項目の取得" border="false":::
 
 | **待機時間** | **RU 料金** | **パフォーマンス** |
 | --- | --- | --- |
@@ -147,7 +149,7 @@ ms.locfileid: "92277992"
 
 **[C1]** と同様に、`posts` コンテナーに書き込むことだけが必要です。
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="users コンテナーへの 1 つの項目の書き込み" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="posts コンテナーへの 1 つの項目の書き込み" border="false":::
 
 | **待機時間** | **RU 料金** | **パフォーマンス** |
 | --- | --- | --- |
@@ -157,7 +159,7 @@ ms.locfileid: "92277992"
 
 最初に、`posts` コンテナーから対応するドキュメントを取得します。 ただし、それだけでは不十分です。仕様では、投稿の作成者のユーザー名と、投稿に付いているコメントといいね! の数を集計する必要があります。これには、さらに 3 つの SQL クエリを発行する必要があります。
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q2.png" alt-text="users コンテナーへの 1 つの項目の書き込み" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q2.png" alt-text="投稿の取得と追加データの集計" border="false":::
 
 各追加クエリでは、それぞれのコンテナーのパーティション キーでフィルター処理を行います。これこそが、パフォーマンスとスケーラビリティを最大にする必要がある部分です。 ただし、最終的には 1 つの投稿を返すために 4 つの操作を実行する必要があるので、その改善は次の繰り返しで行います。
 
@@ -169,7 +171,7 @@ ms.locfileid: "92277992"
 
 最初に、その特定のユーザーに対応する投稿をフェッチする SQL クエリを使用して、目的の投稿を取得する必要があります。 ただし、作成者のユーザー名およびコメントといいね! の数を集計するため、追加のクエリを発行する必要があります。
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q3.png" alt-text="users コンテナーへの 1 つの項目の書き込み" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q3.png" alt-text="1 人のユーザーのすべての投稿を取得し、追加データを集計する" border="false":::
 
 この実装では、多くの欠点が示されています。
 
@@ -184,7 +186,7 @@ ms.locfileid: "92277992"
 
 コメントは、対応する項目を `posts` コンテナーに書き込むことによって作成されます。
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="users コンテナーへの 1 つの項目の書き込み" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="posts コンテナーへの 1 つの項目の書き込み" border="false":::
 
 | **待機時間** | **RU 料金** | **パフォーマンス** |
 | --- | --- | --- |
@@ -194,7 +196,7 @@ ms.locfileid: "92277992"
 
 最初に、やはりその投稿のすべてのコメントをフェッチするクエリを実行し、コメントごとに個別にユーザー名を集計する必要もあります。
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q4.png" alt-text="users コンテナーへの 1 つの項目の書き込み" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q4.png" alt-text="1 つの投稿に対するすべてのコメントを取得し、追加データを集計する" border="false":::
 
 メイン クエリはコンテナーのパーティション キーでフィルター処理されますが、ユーザー名の個別集計は全体的なパフォーマンスに悪影響を与えます。 それについては後で改善します。
 
@@ -206,7 +208,7 @@ ms.locfileid: "92277992"
 
 **[C3]** と同じように、`posts` コンテナーに対応する項目を作成します。
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="users コンテナーへの 1 つの項目の書き込み" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="posts コンテナーへの 1 つの項目の書き込み" border="false":::
 
 | **待機時間** | **RU 料金** | **パフォーマンス** |
 | --- | --- | --- |
@@ -216,7 +218,7 @@ ms.locfileid: "92277992"
 
 **[Q4]** と同じように、その投稿に対するいいね! のクエリを実行した後、それらのユーザー名を集計します。
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q5.png" alt-text="users コンテナーへの 1 つの項目の書き込み" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q5.png" alt-text="1 つの投稿に対するすべてのいいね! を取得し、追加データを集計する" border="false":::
 
 | **待機時間** | **RU 料金** | **パフォーマンス** |
 | --- | --- | --- |
@@ -226,7 +228,7 @@ ms.locfileid: "92277992"
 
 作成日の降順に並べ替えられた `posts` コンテナーのクエリを実行することによって最新の投稿をフェッチした後、各投稿のユーザー名およびコメントといいね! の数を集計します。
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q6.png" alt-text="users コンテナーへの 1 つの項目の書き込み" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q6.png" alt-text="最新の投稿を取得し、追加データを集計する" border="false":::
 
 やはり、最初のクエリでは `posts` コンテナーのパーティション キーによるフィルター処理は行われないので、コストのかかるファンアウトが発生します。この場合は、はるかに大きい結果セットを対象とし、結果を `ORDER BY` 句で並べ替えるためさらに悪くなり、要求ユニットに関していっそう高価になります。
 
@@ -337,7 +339,7 @@ function createComment(postId, comment) {
 
 この例では、`users` コンテナーの変更フィードを使用して、ユーザーが自分のユーザー名を更新するたびに対応します。 それが発生したら、`posts` コンテナーで別のストアド プロシージャを呼び出すことによって、変更を反映します。
 
-:::image type="content" source="./media/how-to-model-partition-example/denormalization-1.png" alt-text="users コンテナーへの 1 つの項目の書き込み" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-1.png" alt-text="posts コンテナーへのユーザー名の非正規化" border="false":::
 
 ```javascript
 function updateUsernames(userId, username) {
@@ -377,7 +379,7 @@ function updateUsernames(userId, username) {
 
 これで、非正規化が行われたので、その要求を処理するために必要なのは 1 つの項目をフェッチすることだけです。
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q2.png" alt-text="users コンテナーへの 1 つの項目の書き込み" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q2.png" alt-text="posts コンテナーからの 1 つの項目の取得" border="false":::
 
 | **待機時間** | **RU 料金** | **パフォーマンス** |
 | --- | --- | --- |
@@ -387,7 +389,7 @@ function updateUsernames(userId, username) {
 
 ここでも、ユーザー名をフェッチしていた余分な要求を行わなくてよくなり、パーティション キーでフィルター処理を行う 1 つのクエリだけになります。
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q4.png" alt-text="users コンテナーへの 1 つの項目の書き込み" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q4.png" alt-text="投稿のすべてのコメントの取得" border="false":::
 
 | **待機時間** | **RU 料金** | **パフォーマンス** |
 | --- | --- | --- |
@@ -397,7 +399,7 @@ function updateUsernames(userId, username) {
 
 いいね! を一覧表示するときもまったく同じ状況です。
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q5.png" alt-text="users コンテナーへの 1 つの項目の書き込み" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q5.png" alt-text="投稿のすべてのいいね! の取得" border="false":::
 
 | **待機時間** | **RU 料金** | **パフォーマンス** |
 | --- | --- | --- |
@@ -411,7 +413,7 @@ function updateUsernames(userId, username) {
 
 この要求は既に、追加のクエリを不要にする V2 で導入された改善によるメリットがあります。
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q3.png" alt-text="users コンテナーへの 1 つの項目の書き込み" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q3.png" alt-text="ユーザーの投稿を短い形式で一覧表示するクエリを示す図。" border="false":::
 
 しかし、残りのクエリではまだ、`posts` コンテナーのパーティション キーによるフィルター処理が行われていません。
 
@@ -455,11 +457,11 @@ function updateUsernames(userId, username) {
 
 その非正規化を実現するには、再び変更フィードを使用します。 今回は、`posts` コンテナーの変更フィードに対応して、新しい投稿または更新された投稿を `users` コンテナーにディスパッチします。 また、投稿の一覧表示では完全なコンテンツを取得する必要はないので、処理で切り詰めることができます。
 
-:::image type="content" source="./media/how-to-model-partition-example/denormalization-2.png" alt-text="users コンテナーへの 1 つの項目の書き込み" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-2.png" alt-text="users コンテナーへの投稿の非正規化" border="false":::
 
 これで、クエリを `users` コンテナーにルーティングし、コンテナーのパーティション キーでフィルター処理できるようになりました。
 
-:::image type="content" source="./media/how-to-model-partition-example/V3-Q3.png" alt-text="users コンテナーへの 1 つの項目の書き込み" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V3-Q3.png" alt-text="ユーザーのすべての投稿の取得" border="false":::
 
 | **待機時間** | **RU 料金** | **パフォーマンス** |
 | --- | --- | --- |
@@ -469,7 +471,7 @@ function updateUsernames(userId, username) {
 
 ここでも似た状況に対応する必要があります。V2 で導入された非正規化により、残っていた不要な追加クエリが除去された後も、残りのクエリではコンテナーのパーティション キーによるフィルター処理が行われていません。
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q6.png" alt-text="users コンテナーへの 1 つの項目の書き込み" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q6.png" alt-text="最近作成された x 件の投稿を短い形式で一覧表示するクエリを示す図。" border="false":::
 
 同じ方法で、この要求のパフォーマンスとスケーラビリティを最大限にするには、1 つのパーティションのみにヒットすることが必要です。 これは、限られた数の項目だけを取得する必要があるので、考えられることです。このブログ作成プラットフォームのホーム ページを設定するには、最新の 100 件の投稿を取得するだけでよく、データ セット全体をページ分割する必要はありません。
 
@@ -494,7 +496,7 @@ function updateUsernames(userId, username) {
 
 非正規化を実現するには、その新しいコンテナーに投稿をディスパッチするために前に導入した変更フィード パイプラインでフックすることだけが必要です。 考慮する必要がある 1 つの重要な点は、最新の 100 件の投稿のみが格納されることを確認する必要があることです。そうでない場合は、コンテナーのコンテンツがパーティションの最大サイズを超えて拡大する可能性があります。 これを行うには、ドキュメントがコンテナーに追加されるたびに[事後トリガー](stored-procedures-triggers-udfs.md#triggers)を呼び出します。
 
-:::image type="content" source="./media/how-to-model-partition-example/denormalization-3.png" alt-text="users コンテナーへの 1 つの項目の書き込み" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-3.png" alt-text="feed コンテナーへの投稿の非正規化" border="false":::
 
 コレクションを切り詰める事後トリガーの本体を次に示します。
 
@@ -545,7 +547,7 @@ function truncateFeed() {
 
 最後のステップは、新しい `feed` コンテナーにクエリを再ルーティングすることです。
 
-:::image type="content" source="./media/how-to-model-partition-example/V3-Q6.png" alt-text="users コンテナーへの 1 つの項目の書き込み" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V3-Q6.png" alt-text="最新の投稿の取得" border="false":::
 
 | **待機時間** | **RU 料金** | **パフォーマンス** |
 | --- | --- | --- |

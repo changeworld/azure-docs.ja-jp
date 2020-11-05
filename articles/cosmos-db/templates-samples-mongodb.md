@@ -3,17 +3,19 @@ title: MongoDB 用 Azure Cosmos DB API の Resource Manager テンプレート
 description: Azure Resource Manager テンプレートを使用して、MongoDB 用 Azure Cosmos DB API を作成および構成します。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: mjbrown
-ms.openlocfilehash: 974ddf4e5e6353eeb53ad90a16740909466016cf
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7664d48bad153b34e7557e9faaf4c8aa0d4215ad
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477064"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340627"
 ---
 # <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure Cosmos DB MongoDB API リソースを管理する
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 この記事では、ご利用の MongoDB API の Azure Cosmos DB アカウント、データベース、およびコレクションのデプロイと管理に役立つ Azure Resource Manager テンプレートの使用方法について説明します。
 

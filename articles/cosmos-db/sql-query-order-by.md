@@ -3,17 +3,19 @@ title: Azure Cosmos DB での ORDER BY 句
 description: Azure Cosmos DB の SQL の ORDER BY 句について説明します。 Azure Cosmos DB JSON クエリ言語として SQL を使用します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: tisande
-ms.openlocfilehash: c4ae66884602989284a427bdc33de7612bd9a8df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 887dc13eb5e351688718d2a221e69499557b23e5
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84484336"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338301"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での ORDER BY 句
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 省略可能な `ORDER BY` 句では、クエリによって返される結果の並べ替え順序を指定します。
 
@@ -79,7 +81,7 @@ ORDER BY <sort_specification>
     ]
 ```
 
-次のクエリは、家族 `id` をその項目の作成日の順序で取得します。 項目 `creationDate` は、*エポック時間*、つまり、1970 年 1 月 1 日からの経過時間を秒で表す数字です。
+次のクエリは、家族 `id` をその項目の作成日の順序で取得します。 項目 `creationDate` は、 *エポック時間* 、つまり、1970 年 1 月 1 日からの経過時間を秒で表す数字です。
 
 ```sql
     SELECT f.id, f.creationDate

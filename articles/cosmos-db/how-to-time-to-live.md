@@ -3,18 +3,20 @@ title: Azure Cosmos DB で Time to Live を構成および管理する
 description: Azure Cosmos DB でコンテナーと項目の Time to Live を構成および管理する方法について説明します
 author: anfeldma-ms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 340ec7c16c5ed3e477cc2c4505c8b018d2d39a06
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2ddba95f9ccc25d536638dbc68c41027d26e71c7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486006"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341010"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Azure Cosmos DB で Time to Live を構成する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB では、コンテナー レベルで Time to Live (TTL) の構成を選択することも、コンテナーでの設定後に項目レベルでそれをオーバーライドすることもできます。 Azure portal または言語固有の SDK を使用して、コンテナーの TTL を構成できます。 項目レベルの TTL オーバーライドは、SDK を使用して構成できます。
 

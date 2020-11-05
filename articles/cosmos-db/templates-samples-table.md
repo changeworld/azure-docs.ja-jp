@@ -3,17 +3,19 @@ title: Azure Cosmos DB Table API の Resource Manager テンプレート
 description: Azure Resource Manager テンプレートを使用して、Azure Cosmos DB Table API を作成および構成します。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-table
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: ef7749a2fa9c7a45cc4e2854e2eb4fcdc9792425
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e8fb47cc54d520d44085c8d007a4dfe92972d1d4
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477030"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340585"
 ---
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure Cosmos DB Table API リソースを管理する
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 この記事では、ご利用の Azure Cosmos DB アカウント、データベース、およびコンテナーのデプロイと管理に役立つ Azure Resource Manager テンプレートの使用方法について説明します。
 

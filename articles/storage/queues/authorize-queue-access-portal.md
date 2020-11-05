@@ -11,16 +11,16 @@ ms.author: tamram
 ms.reviewer: ozguns
 ms.subservice: queues
 ms.custom: contperfq1
-ms.openlocfilehash: 2593f1b7ea4cfabe0243fe6f830d718896e68473
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc6c4e57d0e04cc85bd83c11ba583b3f0b24fa82
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715508"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345994"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>Azure portal でキュー データへのアクセスの承認方法を選択する
 
-[Azure portal](https://portal.azure.com) を使用してキュー データにアクセスするときに、ポータルでは内部的に Azure Storage への要求が発行されます。 Azure Storage への要求は、Azure AD アカウントまたはストレージ アカウント アクセス キーのいずれかを使用して承認できます。 ポータルでは、どの方法を使用しているかを示し、適切なアクセス許可がある場合は、それら 2 つを切り替えることができます。  
+[Azure portal](https://portal.azure.com) を使用してキュー データにアクセスするときに、ポータルでは内部的に Azure Storage への要求が発行されます。 Azure Storage への要求は、Azure AD アカウントまたはストレージ アカウント アクセス キーのいずれかを使用して承認できます。 ポータルでは、どの方法を使用しているかを示し、適切なアクセス許可がある場合は、それら 2 つを切り替えることができます。
 
 ## <a name="permissions-needed-to-access-queue-data"></a>キュー データにアクセスするために必要なアクセス許可
 
@@ -37,13 +37,13 @@ Azure portal でキュー データへのアクセスを承認する方法に応
 Azure portal でキュー データにアクセスしようとすると、ポータルではまず **Microsoft.Storage/storageAccounts/listkeys/action** を含むロールがお客様に割り当てられているかどうかが確認されます。 このアクションを持つロールが割り当てられている場合、ポータルではキュー データにアクセスするためにアカウント キーが使用されます。 このアクションを持つロールが割り当てられていない場合、ポータルは、Azure AD アカウントを使用してデータへのアクセスを試みます。
 
 > [!NOTE]
-> 従来のサブスクリプション管理者ロールであるサービス管理者と共同管理者には、Azure Resource Manager の[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールと同等のものが含まれています。 **所有者**ロールには、**Microsoft.Storage/storageAccounts/listkeys/action** を含むすべてのアクションが含まれているので、これらの管理者ロールのいずれかを持つユーザーは、アカウント キーを持つキュー データにもアクセスできます。 詳細については、「[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)」を参照してください。
+> 従来のサブスクリプション管理者ロールであるサービス管理者と共同管理者には、Azure Resource Manager の[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールと同等のものが含まれています。 **所有者** ロールには、 **Microsoft.Storage/storageAccounts/listkeys/action** を含むすべてのアクションが含まれているので、これらの管理者ロールのいずれかを持つユーザーは、アカウント キーを持つキュー データにもアクセスできます。 詳細については、「[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)」を参照してください。
 
 ### <a name="use-your-azure-ad-account"></a>自分の Azure AD アカウントを使用する
 
 Azure AD アカウントを使用して、Azure portal からキュー データにアクセスするには、次のステートメントが両方とも自分に当てはまる必要があります。
 
-- Azure Resource Manager の[リーダー](../../role-based-access-control/built-in-roles.md#reader)ロールが、少なくとも、ストレージ アカウント以上のレベルを範囲として割り当てられている。 **リーダー**役割は最も制限の厳しいアクセス許可を付与しますが、ストレージ アカウントの管理リソースへのアクセス権を付与する別の Azure Resource Manager ロールも受け入れることができます。
+- Azure Resource Manager の[リーダー](../../role-based-access-control/built-in-roles.md#reader)ロールが、少なくとも、ストレージ アカウント以上のレベルを範囲として割り当てられている。 **リーダー** 役割は最も制限の厳しいアクセス許可を付与しますが、ストレージ アカウントの管理リソースへのアクセス権を付与する別の Azure Resource Manager ロールも受け入れることができます。
 - キュー データへのアクセスを提供する組み込みロールまたはカスタム ロールのいずれかが割り当てられている。
 
 **リーダー** ロールの割り当てまたは別の Azure Resource Manager ロールの割り当てが必要であるため、ユーザーは Azure portal でストレージ アカウントの管理リソースを表示したり移動したりできます。 キュー データへのアクセスを許可する Azure ロールでは、ストレージ アカウントの管理リソースへのアクセスは許可されません。 ポータルでキュー データにアクセスするためには、ユーザーにはストレージ アカウント リソースを移動する許可が必要です。 この要件に関する詳細については、「[ポータルへのアクセス用の閲覧者ロールの割り当て](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access)」を参照してください。
@@ -55,14 +55,14 @@ Azure AD アカウントを使用して、Azure portal からキュー データ
 
 カスタム ロールは、組み込みロールによって提供される同じアクセス許可のさまざまな組み合わせをサポートできます。 Azure カスタム ロールを作成する方法の詳細については、「[Azure のカスタム ロール](../../role-based-access-control/custom-roles.md)」と「[Azure リソースのロール定義の概要](../../role-based-access-control/role-definitions.md)」を参照してください。
 
-従来のサブスクリプション管理者ロールでキューを一覧表示することはサポートされていません。 キューを一覧表示するには、ユーザーには Azure Resource Manager **リーダー** ロール、**ストレージ キュー データ閲覧者**ロール、または**ストレージ キュー データ共同作成者**ロールが割り当てられている必要があります。
+従来のサブスクリプション管理者ロールでキューを一覧表示することはサポートされていません。 キューを一覧表示するには、ユーザーには Azure Resource Manager **リーダー** ロール、 **ストレージ キュー データ閲覧者** ロール、または **ストレージ キュー データ共同作成者** ロールが割り当てられている必要があります。
 
 > [!IMPORTANT]
-> Azure portal の Storage Explorer のプレビュー バージョンでは、キュー データを表示および変更するための Azure AD 資格情報の使用はサポートされていません。 Azure portal の Storage Explorer では、データは常にアカウント キーを使用してアクセスされます。 Azure portal で Storage Explorer を使用するには、**Microsoft. Storage/storageAccounts/listkeys/action** を含むロールが割り当てられている必要があります。
+> Azure portal の Storage Explorer のプレビュー バージョンでは、キュー データを表示および変更するための Azure AD 資格情報の使用はサポートされていません。 Azure portal の Storage Explorer では、データは常にアカウント キーを使用してアクセスされます。 Azure portal で Storage Explorer を使用するには、 **Microsoft. Storage/storageAccounts/listkeys/action** を含むロールが割り当てられている必要があります。
 
 ## <a name="navigate-to-queues-in-the-azure-portal"></a>Azure portal でキューに移動する
 
-ポータルでキュー データを表示するには、ストレージ アカウントの **[概要]** に移動し、**キュー**のリンクをクリックします。 または、メニューの **[Queue サービス]** セクションに移動することもできます。
+ポータルでキュー データを表示するには、ストレージ アカウントの **[概要]** に移動し、 **キュー** のリンクをクリックします。 または、メニューの **[Queue サービス]** セクションに移動することもできます。
 
 :::image type="content" source="media/authorize-queue-access-portal/queue-access-portal.png" alt-text="Azure portal でキュー データに移動する方法を示すスクリーンショット":::
 
@@ -72,21 +72,21 @@ Azure AD アカウントを使用して、Azure portal からキュー データ
 
 ### <a name="authenticate-with-the-account-access-key"></a>アカウント アクセス キーを使用して認証を行う
 
-アカウント アクセス キーを使用して認証を行う場合、ポータルには認証方法として**アクセス キー**が指定されていることが次のように示されます。
+アカウント アクセス キーを使用して認証を行う場合、ポータルには認証方法として **アクセス キー** が指定されていることが次のように示されます。
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-method-access-key.png" alt-text="Azure portal でキュー データに移動する方法を示すスクリーンショット":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-method-access-key.png" alt-text="アカウント キーを使用して現在キューにアクセスしているユーザーを示すスクリーンショット":::
 
 Azure AD アカウントの使用に切り替えるには、図内で強調表示されているリンクをクリックします。 割り当てられている Azure ロールを通じて適切なアクセス許可が付与されている場合は、続行できます。 ただし、適切なアクセス許可を持っていない場合は、次のようなエラー メッセージが表示されます。
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-error-azure-ad.png" alt-text="Azure portal でキュー データに移動する方法を示すスクリーンショット":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-error-azure-ad.png" alt-text="Azure AD アカウントがアクセスをサポートしていないかどうかを示すエラー":::
 
 キューは、Azure AD アカウントにそれらを表示するアクセス許可がない場合には表示されないことに注意してください。 認証に再度アクセス キーを使用するには、 **[Switch to access key]\(アクセス キーへの切り替え\)** リンクをクリックします。
 
 ### <a name="authenticate-with-your-azure-ad-account"></a>Azure AD アカウントを使用して認証を行う
 
-Azure AD アカウントを使用して認証を行う場合は、ポータルに認証方法として **Azure AD ユーザー アカウント**が指定されていることが次のように示されます。
+Azure AD アカウントを使用して認証を行う場合は、ポータルに認証方法として **Azure AD ユーザー アカウント** が指定されていることが次のように示されます。
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-method-azure-ad.png" alt-text="Azure portal でキュー データに移動する方法を示すスクリーンショット":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-method-azure-ad.png" alt-text="Azure AD アカウントを使用して現在キューにアクセスしているユーザーを示すスクリーンショット":::
 
 アカウント アクセス キーの使用に切り替えるには、図内で強調表示されているリンクをクリックします。 アカウント キーへのアクセスがある場合は、続行できます。 ただし、アカウント キーにアクセスできない場合は、Azure portal にエラー メッセージが表示されます。
 

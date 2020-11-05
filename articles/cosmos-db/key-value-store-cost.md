@@ -3,18 +3,20 @@ title: キー値ストアとしての Azure Cosmos DB に対する要求ユニ�
 description: Azure Cosmos DB がキー/値ストアとして使用されているとき、シンプルな書き込みと読み取り操作を行う際に発生する要求ユニット料金について説明しています。
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 08/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8d04c670010e3595d8f30c7ffcd34d99e27374cb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 9354ae0a22ef2e8ab4ee6a57563d3f3c4c8e4547
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488454"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339305"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>キー値ストアとしての Azure Cosmos DB - コストの概要
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB は、高可用性で大規模なアプリケーションを簡単に構築するための、マルチモデルなグローバル分散データベース サービスです。 既定では、Azure Cosmos DB が取り込むすべてのデータのインデックスが効率よく自動作成されます。 これにより、データに対する高速かつ一貫性のある [SQL](./sql-query-getting-started.md) (および [JavaScript](stored-procedures-triggers-udfs.md)) クエリが可能になります。 
 

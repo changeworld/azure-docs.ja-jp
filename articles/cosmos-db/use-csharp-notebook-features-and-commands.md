@@ -3,18 +3,20 @@ title: Azure Cosmos DB の C# ノートブックで組み込みのノートブ�
 description: Azure Cosmos DB の組み込み C# ノートブックを使用して、組み込みのコマンドと機能で一般的な操作を実行する方法について説明します。
 author: deborahc
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 47ac6b4caf97b264df58732f8d031fc63091171e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67fe71d8e2d6ab239989cb30e9bf5a1b4d731037
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019268"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340481"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>Azure Cosmos DB の C# ノートブックで組み込みのノートブック コマンドと機能を使用する (プレビュー)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB の組み込みの Jupyter ノートブックを使用すると、Azure portal のデータを分析して視覚化することができます。 この記事では、C# ノートブックで組み込みのノートブック コマンドと機能を使用して一般的な操作を行う方法について説明します。
 
@@ -113,16 +115,16 @@ for (int i = 0; i < 5; i++) {
 ## <a name="use-built-in-nteract-data-explorer"></a>組み込みの nteract データ エクスプローラーを使用する
 組み込みの [nteract データ エクスプローラー](https://blog.nteract.io/designing-the-nteract-data-explorer-f4476d53f897)を使用すると、項目のコレクションをフィルター処理したり視覚化したりできます。 セルで、視覚化する変数を最後の行に配置します。すると、セルを実行するときに、その変数が nteract に自動的に表示されます。
 
-たとえば、*GetingStarted_Csharp.ipynb* の例では、変数 ``telemetryEvents`` を結果と共に出力できます。 サンプル全体については、[ノートブックの GettingStarted_Csharp.ipynb](https://github.com/Azure-Samples/cosmos-notebooks/blob/master/CSharp_quickstarts/GettingStarted_CSharp.ipynb) を参照してください。 
+たとえば、 *GetingStarted_Csharp.ipynb* の例では、変数 ``telemetryEvents`` を結果と共に出力できます。 サンプル全体については、[ノートブックの GettingStarted_Csharp.ipynb](https://github.com/Azure-Samples/cosmos-notebooks/blob/master/CSharp_quickstarts/GettingStarted_CSharp.ipynb) を参照してください。 
 
 :::image type="content" source="media/use-notebook-features-and-commands/csharp-query-cell.png" alt-text="Csharp のクエリ セル":::
 
-:::image type="content" source="media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png" alt-text="Csharp のクエリ セル":::
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png" alt-text="nteract データ エクスプローラー":::
 
 ## <a name="use-built-in-dictionary-viewer"></a>組み込みの辞書ビューアーを使用する
 組み込みの辞書ビューアーを使用して、変数を表示できます。 セルで、視覚化する変数を最後の行に配置します。すると、セルを実行するときに、その変数が自動的に表示されます。
 
-:::image type="content" source="media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png" alt-text="Csharp のクエリ セル":::
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png" alt-text="組み込みの辞書ビューアー":::
 
 ## <a name="upload-json-items-to-a-container"></a>JSON 項目をコンテナーにアップロードする
 ``%%upload`` マジックコマンドを使用して、JSON ファイルから指定された Azure Cosmos コンテナーにデータをアップロードできます。 次のコマンドを使用して項目をアップロードします。
@@ -160,7 +162,7 @@ Total RUs consumed : 25022.58
 ## <a name="reset-notebooks-workspace"></a>ノートブック ワークスペースをリセットする
 ノートブック ワークスペースをリセットし、既定の設定に戻すには、コマンド バーで **[Reset Workspace]\(ワークスペースのリセット\)** を選択します。 これでインストールされているカスタム パッケージがすべて削除され、Jupyter サーバーが再起動されます。 ノートブック、ファイル、Azure Cosmos リソースは影響を受けません。  
 
-:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Csharp のクエリ セル":::
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="ノートブック ワークスペースをリセットする":::
 
 ## <a name="next-steps"></a>次のステップ
 

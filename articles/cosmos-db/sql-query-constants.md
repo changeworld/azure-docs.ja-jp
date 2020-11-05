@@ -3,17 +3,19 @@ title: Azure Cosmos DB の SQL 定数
 description: Azure Cosmos DB 内の SQL クエリ定数を使用して特定のデータ値を表す方法について説明します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0973dca980b65b85ac66cc1b3c9ed45f0f9c779
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74873422"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339206"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB の SQL クエリ定数  
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
  リテラル値またはスカラー値としても知られる定数は、特定のデータ値を表す記号です。 定数の形式は、その定数が表す値のデータ型に依存します。  
   
@@ -23,10 +25,10 @@ ms.locfileid: "74873422"
 |-|-|  
 |**Undefined**|単一の値: **undefined**|  
 |**Null**|単一の値: **Null**|  
-|**Boolean**|値: **false**、**true**。|  
+|**Boolean**|値: **false** 、 **true** 。|  
 |**Number**|倍精度浮動小数点数、IEEE 754 標準。|  
 |**String**|0 個以上の Unicode 文字のシーケンス。 文字列は、一重引用符または二重引用符で囲む必要があります。|  
-|**Array**|0 個以上の要素のシーケンス。 各要素には、**Undefined** を除く、任意のスカラー データ型の値を指定できます。|  
+|**Array**|0 個以上の要素のシーケンス。 各要素には、 **Undefined** を除く、任意のスカラー データ型の値を指定できます。|  
 |**Object**|0 個以上の名前/値ペアの順序なしのセット。 名前は Unicode 文字列で、値は **Undefined** 以外の任意のスカラー データ型を指定できます。|  
   
 ## <a name="syntax"></a><a name="bk_syntax"></a>構文

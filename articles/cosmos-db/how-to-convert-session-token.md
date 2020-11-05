@@ -3,18 +3,20 @@ title: .NET SDK でセッション トークン形式を変換する方法 - Azu
 description: 異なる .NET SDK バージョン間での互換性を保証するためにセッション トークン形式を変換する方法について説明します。
 author: vinhms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: vitrinh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ff66c2cb355e2070cdf30444c52d1accacac8964
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7ed06eeb7330989b4a251dc77e516eb8ac578bff
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490443"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342047"
 ---
 # <a name="convert-session-token-formats-in-net-sdk"></a>.NET SDK でセッション トークン形式を変換する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、SDK バージョン間での互換性を保証するために、異なるセッション トークン形式間で変換を行う方法について説明します。
 

@@ -3,18 +3,20 @@ title: Azure Cosmos DB でリージョン間の競合を管理する
 description: 最終書き込み者優先またはカスタムの競合解決ポリシーを作成して、Azure Cosmos DB での競合を管理する方法について説明します
 author: anfeldma-ms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3edaf55c8acb4def4f074c0d8f96eb399d98b6ce
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8f98c2201159350f5774f4d2b05102384f31f3af
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491089"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339344"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Azure Cosmos DB での競合解決ポリシーの管理
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 マルチリージョン書き込みを使用すると、複数のクライアントが同じ項目に書き込んだときに競合が発生する場合があります。 競合が発生した場合は、さまざまな競合解決ポリシーを使用してその競合を解決できます。 この記事では、競合解決ポリシーを管理する方法について説明します。
 

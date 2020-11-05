@@ -3,17 +3,19 @@ title: Azure Cosmos DB での OFFSET LIMIT 句
 description: OFFSET LIMIT 句を使用して、 Azure Cosmos DB へのクエリを実行するときに特定の値をスキップして取得する方法について学習する
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: 9342c0c10ed4f7287716d21823fddfe992e0568f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 459bd8511577067766cf488f53df57c1dc33fad1
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87432707"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338298"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での OFFSET LIMIT 句
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 OFFSET LIMIT 句は、スキップした後、クエリからいくつかの値を取得するオプションの句です。 OFFSET LIMIT 句には、OFFSET の数と LIMIT の数が必要です。
 

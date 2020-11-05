@@ -3,18 +3,20 @@ title: Azure Cosmos DB SDK でストアド プロシージャ、トリガー、�
 description: Azure Cosmos DB SDK を使用してストアド プロシージャ、トリガー、およびユーザー定義関数を呼び出す方法について説明します
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3744029b72a12cee1543a17bf1dee67a080904c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 022a45199cfc2d467b1d0d408e86cb5d621070d9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253056"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339854"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を登録および使用する方法
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB の SQL API は、JavaScript で記述されたストアド プロシージャ、トリガー、およびユーザー定義関数 (UDF) の登録および呼び出しをサポートします。 SQL API [.NET](sql-api-sdk-dotnet.md)、[.NET Core](sql-api-sdk-dotnet-core.md)、[Java](sql-api-sdk-java.md)、[JavaScript](sql-api-sdk-node.md)、[Node.js](sql-api-sdk-node.md)、または [Python](sql-api-sdk-python.md) SDK を使用して、ストアド プロシージャを登録および起動できます。 ストアド プロシージャ、トリガー、およびユーザー定義関数を定義したら、それらを読み込み、データ エクスプローラーを使用して [Azure portal](https://portal.azure.com/) で表示できます。
 

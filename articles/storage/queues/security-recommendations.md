@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 1b13bcbe17ac546030b177eea2b2bf8a290a6af6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9ec7dcc12b7452ee4bd40fab9b2bc53b5cca9be3
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781568"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348810"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Queue storage のセキュリティに関する推奨事項
 

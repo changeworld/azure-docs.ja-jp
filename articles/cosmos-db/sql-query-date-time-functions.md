@@ -3,18 +3,20 @@ title: Azure Cosmos DB クエリ言語の日付と時刻関数
 description: DateTime および timestamp の操作を実行する Azure Cosmos DB の日付と時刻の SQL システム関数について説明します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 1ea838224f9d91b000100d5fa9308289619fd963
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8b6e932f4cd5f4119d93f3fed7db524f65cbc1f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88605184"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338953"
 ---
 # <a name="date-and-time-functions-azure-cosmos-db"></a>日付と時刻関数 (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 日付と時刻関数を使用すると、Azure Cosmos DB で DateTime と timestamp の操作を実行できます。
 

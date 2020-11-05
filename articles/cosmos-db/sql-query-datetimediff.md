@@ -3,19 +3,20 @@ title: Azure Cosmos DB クエリ言語の DateTimeDiff
 description: Azure Cosmos DB での SQL システム関数 DateTimeDiff について学習します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: b90b45072128252e8abc22d3422c84c813808119
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09b801c48bf2998a2d8926009cae76287c1ac9b6
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87446373"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342268"
 ---
 # <a name="datetimediff-azure-cosmos-db"></a>DateTimeDiff (Azure Cosmos DB)
-
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 *StartDate* と *EndDate* で指定された 2 つの日付間の差を、指定された DateTimePart 境界の数で (符号付き整数値として) で返します。
   
 ## <a name="syntax"></a>構文

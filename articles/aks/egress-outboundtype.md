@@ -3,15 +3,13 @@ title: Azure Kubernetes Service (AKS) でユーザー定義ルート (UDR) を�
 description: Azure Kubernetes Service (AKS) でカスタム エグレス ルートを定義する方法について説明します
 services: container-service
 ms.topic: article
-ms.author: juluk
 ms.date: 06/29/2020
-author: jluk
-ms.openlocfilehash: d8ae03d52691a6c30f78439a579e7e7c136dda76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 103d7dc76dee56a336f08f2cc0c7c8489c0bc565
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975288"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348136"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>ユーザー定義ルートを使用してクラスターのエグレスをカスタマイズする
 
@@ -28,7 +26,7 @@ AKS クラスターからのエグレスは、特定のシナリオに合わせ�
 * クラスターの作成時にのみ OutboundType を定義できます。後で更新することはできません。
 * `outboundType` を設定するには、`vm-set-type` を `VirtualMachineScaleSets`、`load-balancer-sku` を `Standard` に設定した AKS クラスターが必要です。
 * `outboundType` の値を `UDR` に設定するには、クラスターの送信接続が有効なユーザー定義ルートが必要です。
-* `outboundType` の値を `UDR` に設定すると、ロード バランサーにルーティングされるイングレス ソース IP がクラスターのエグレス方向の送信先アドレスと**一致しない**可能性があります。
+* `outboundType` の値を `UDR` に設定すると、ロード バランサーにルーティングされるイングレス ソース IP がクラスターのエグレス方向の送信先アドレスと **一致しない** 可能性があります。
 
 ## <a name="overview-of-outbound-types-in-aks"></a>AKS の送信の種類の概要
 
@@ -64,7 +62,7 @@ AKS クラスターは、事前に構成されたサブネットを持つ既存�
 
 #### <a name="load-balancer-creation-with-userdefinedrouting"></a>UserDefinedRouting を使用したロード バランサーの作成
 
-UDR の送信の種類を使用する AKS クラスターは、種類が "loadBalancer" の最初の Kubernetes サービスがデプロイされている場合にのみ、Standard Load Balancer (SLB) を受信します。 ロード バランサーは、"*受信*" 要求用のパブリック IP アドレスと、"*受信*" 要求用のバックエンド プールで構成されます。 受信規則は Azure クラウド プロバイダーによって構成されますが、送信の種類が UDR であるため、**送信パブリック IP アドレスも送信規則も構成されません**。 UDR は引き続きエグレス トラフィックの唯一のソースとなります。
+UDR の送信の種類を使用する AKS クラスターは、種類が "loadBalancer" の最初の Kubernetes サービスがデプロイされている場合にのみ、Standard Load Balancer (SLB) を受信します。 ロード バランサーは、" *受信* " 要求用のパブリック IP アドレスと、" *受信* " 要求用のバックエンド プールで構成されます。 受信規則は Azure クラウド プロバイダーによって構成されますが、送信の種類が UDR であるため、 **送信パブリック IP アドレスも送信規則も構成されません** 。 UDR は引き続きエグレス トラフィックの唯一のソースとなります。
 
 Azure ロード バランサーでは、[規則が設定されるまでは料金が発生しません](https://azure.microsoft.com/pricing/details/load-balancer/)。
 
@@ -74,7 +72,7 @@ Azure ロード バランサーでは、[規則が設定されるまでは料金
 
 > [!IMPORTANT]
 > UDR の送信の種類には、ルート テーブルに 0.0.0.0/0 へのルートと NVA の次のホップの宛先 (ネットワーク仮想アプライアンス) が存在している必要があります。
-> ルート テーブルには、SNAT へのパブリック IP がないインターネットへの既定の 0.0.0.0/0 が既に存在します。このルートを追加しても、エグレスは提供されません。 AKS は、インターネットを指す 0.0.0.0.0/0 のルートを作成せず、NVA やゲートウェイなどを指すルートを作成したことを検証します。UDR の送信の種類を使用する場合、サービスの種類 **loadbalancer** が構成されていない限り、*受信要求*用のロード バランサーのパブリック IP アドレスは作成されません。 UDR の送信の種類が設定されている場合、**送信要求**用のパブリック IP アドレスが AKS によって作成されることはありません。
+> ルート テーブルには、SNAT へのパブリック IP がないインターネットへの既定の 0.0.0.0/0 が既に存在します。このルートを追加しても、エグレスは提供されません。 AKS は、インターネットを指す 0.0.0.0.0/0 のルートを作成せず、NVA やゲートウェイなどを指すルートを作成したことを検証します。UDR の送信の種類を使用する場合、サービスの種類 **loadbalancer** が構成されていない限り、 *受信要求* 用のロード バランサーのパブリック IP アドレスは作成されません。 UDR の送信の種類が設定されている場合、 **送信要求** 用のパブリック IP アドレスが AKS によって作成されることはありません。
 
 ## <a name="next-steps"></a>次のステップ
 

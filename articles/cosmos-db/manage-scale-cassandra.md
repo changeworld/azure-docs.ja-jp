@@ -3,17 +3,19 @@ title: Azure Cosmos DB で Cassandra API を使用してエラスティックに
 description: Azure Cosmos DB Cassandra API アカウントのスケールに使用できるオプションと、それらの長所と短所について説明します
 author: TheovanKraay
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: cbd5dbd81cf8cda117447a15d4a73ae8a546f181
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: aad2e80598146be7b45a8a7b8a02cfe050163102
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482521"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340959"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API アカウントをエラスティックにスケーリングする
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Azure Cosmos DB の Cassandra 用 API のエラスティック特性を調べるためのさまざまなオプションがあります。 Azure Cosmos DB で効果的にスケールする方法を理解するには、システムのパフォーマンス要求を考慮して適切な量の要求ユニット (RU/秒) をプロビジョニングする方法を理解することが重要です。 要求ユニットの詳細については、[要求ユニット](request-units.md)に関する記事を参照してください。 
 

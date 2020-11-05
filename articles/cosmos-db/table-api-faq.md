@@ -3,17 +3,19 @@ title: Azure Cosmos DB の Table API についてよく寄せられる質問
 description: Azure Cosmos DB の Table API についてよく寄せられる質問とその回答を紹介します
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-table
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: sngun
-ms.openlocfilehash: 77e74a36d7b353d0713a7bf17f7a6341558f0739
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c5404c026385f9ebf06c4f0289a4db0bf944d172
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485003"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341238"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Azure Cosmos DB の Table API についてよく寄せられる質問
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 Azure Cosmos DB Table API は [Azure portal](https://portal.azure.com) で利用できます。まず、Azure サブスクリプションにサインアップする必要があります。 サインアップしたら、Azure サブスクリプションに Azure Cosmos DB Table API アカウントを追加し、アカウントにテーブルを追加できます。 サポートされている言語および関連するクイックスタートは、「[Azure Cosmos DB の概要: Table API](table-introduction.md)」で確認できます。
 

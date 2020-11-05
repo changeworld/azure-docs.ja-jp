@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: cbaca0b9d608d7703beec559e5434f52308629ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e1c5d696e97ac6e14c1739be2feb93814975586
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91709106"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347065"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Marketplace で Azure Container オファーを作成する
 
@@ -36,7 +36,7 @@ ms.locfileid: "91709106"
 **[オファー ID]** を入力します。 これは、ご自分のアカウント内の各オファーに対する一意の識別子です。
 
 - この ID は、マーケットプレース オファーの Web アドレスと Azure Resource Manager テンプレート (該当する場合) で顧客に表示されます。
-- 使用できるのは小文字と数字だけです。 ハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。 たとえば、「**test-offer-1**」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
+- 使用できるのは小文字と数字だけです。 ハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。 たとえば、「 **test-offer-1** 」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
 - **[作成]** を選択した後で、オファー ID を変更することはできません。
 
 **[オファーのエイリアス]** を入力します。 これは、パートナー センター内でオファーに使用される名前です。
@@ -52,10 +52,10 @@ ms.locfileid: "91709106"
 
 このページには、オファーの現在の状態に基づくさまざまなリンクが示されます。 次に例を示します。
 
-- オファーがドラフトの場合 - [ドラフトのオファーを削除する](update-existing-offer.md#delete-a-draft-offer)
+- オファーがドラフトの場合 - ドラフトのオファーを削除する
 - オファーが発行中の場合 - [オファーの販売を停止する](update-existing-offer.md#stop-selling-an-offer-or-plan)
-- オファーがプレビューの場合 - [公開する](publishing-status.md#publisher-approval)
-- 公開元のサインアウトを完了していない場合 - [公開を取り消す](update-existing-offer.md#cancel-publishing)
+- オファーがプレビューの場合 - [公開する](../review-publish-offer.md#previewing-and-approving-your-offer)
+- 公開元のサインアウトを完了していない場合 - [発行をキャンセルする](../review-publish-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>オファーのセットアップ
 
@@ -65,7 +65,7 @@ ms.locfileid: "91709106"
 
 パートナー センターを使用してオファーをコマーシャル マーケットプレースに発行する場合、それを顧客関係管理 (CRM) システムに接続できます。 これにより、自社の製品に顧客が関心を示したり、製品を使用したりした場合はすぐにその顧客の連絡先情報を受信できるようになります。
 
-1. **潜在顧客の送信先となるリードのターゲットを選択します**。 パートナー センターでは、次の CRM システムがサポートされています。
+1. **潜在顧客の送信先となるリードのターゲットを選択します** 。 パートナー センターでは、次の CRM システムがサポートされています。
 
    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) for Customer Engagement
    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
@@ -172,7 +172,7 @@ Microsoft では、商業マーケットプレースの取り引きに役立つ�
 
 ### <a name="contact-information"></a>連絡先情報
 
-**サポートの連絡先**と**エンジニアリングの連絡先**の名前、メール、電話番号を入力する必要があります。 この情報は顧客には表示されませんが、Microsoft で利用可能になります。 また、クラウド ソリューション プロバイダー (CSP) パートナーに提供される場合もあります。
+**サポートの連絡先** と **エンジニアリングの連絡先** の名前、メール、電話番号を入力する必要があります。 この情報は顧客には表示されませんが、Microsoft で利用可能になります。 また、クラウド ソリューション プロバイダー (CSP) パートナーに提供される場合もあります。
 
 - サポートの連絡先 (必須):サポートに関する一般的な質問用です。
 - エンジニアリングの連絡先 (必須):技術的な質問と認定に関する問題用です。
@@ -180,7 +180,7 @@ Microsoft では、商業マーケットプレースの取り引きに役立つ�
 
 **[サポートの連絡先]** セクションで、 **[サポート Web サイト]** を指定します。ここで、グローバル Azure、Azure Government、またはその両方におけるオファーの提供状況に基づき、パートナーはオファーのサポートを検索できます。
 
-**[CSP プログラムの連絡先]** セクションで、リンク (**CSP プログラムの宣材**) を入力します。このリンクでは、CSP パートナーはオファーの宣材を検索できます。
+**[CSP プログラムの連絡先]** セクションで、リンク ( **CSP プログラムの宣材** ) を入力します。このリンクでは、CSP パートナーはオファーの宣材を検索できます。
 
 #### <a name="additional-marketplace-listing-resources"></a>マーケットプレースのリスト登録に関するその他のリソース
 
@@ -197,7 +197,7 @@ Microsoft では、商業マーケットプレースの取り引きに役立つ�
 
 #### <a name="store-logos"></a>ストア ロゴ
 
-**大**サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、**小**および**中**サイズのロゴを作成します。 必要に応じて、これらを別の画像に置き換えることもできます。
+**大** サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、 **小** および **中** サイズのロゴを作成します。 必要に応じて、これらを別の画像に置き換えることもできます。
 
 - **大** (216 x 216 から 350 x 350 px、必須)
 - **中** (90 x 90 px、省略可能)
@@ -223,23 +223,23 @@ Microsoft では、商業マーケットプレースの取り引きに役立つ�
 
 これは、Azure Marketplace の **[オファーのリスト登録]** ページを示しています。
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="Microsoft 商業マーケットプレース向け標準契約を使用する チェックボックスの画像。" :::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="Azure Marketplace の [オファーのリスト登録] ページの画像。" :::
 
 これは、Azure Marketplace の検索結果を示しています。
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="Microsoft 商業マーケットプレース向け標準契約を使用する チェックボックスの画像。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="Azure Marketplace の検索結果の画像。":::
 
 これは、Azure portal の **[オファーのリスト登録]** ページを示しています。
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="Microsoft 商業マーケットプレース向け標準契約を使用する チェックボックスの画像。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="Azure portal の [オファーのリスト登録] ページの画像。":::
 
 これは、Azure portal の検索結果を示しています。
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="Microsoft 商業マーケットプレース向け標準契約を使用する チェックボックスの画像。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="Azure portal の検索結果の画像。":::
 
 ## <a name="preview"></a>プレビュー
 
-[プレビュー] タブでは、一般公開する前にオファーを検証するため、限定の**プレビュー対象ユーザー**を選択できます。
+[プレビュー] タブでは、一般公開する前にオファーを検証するため、限定の **プレビュー対象ユーザー** を選択できます。
 
 > [!IMPORTANT]
 > **[プレビュー]** でオファーを表示したら、 **[一般公開する]** を選択し、オファーを一般公開する必要があります。
@@ -281,7 +281,7 @@ Azure サブスクリプション ID は少なくとも 1 つ追加します。�
 > [!NOTE]
 > **[作成]** を選択した後で、プラン ID を変更することはできません。
 
-**[プラン名]** ボックスに、このプランの名前を入力します。 この名前は、顧客がオファー内のどのプランを選択するかを決めるときに表示されます。 このオファーのプランごとに一意の名前を作成します。 たとえば、**Windows Server 2016** と **Windows Server 2019** のプランで **Windows Server** のオファー名を使用できます。
+**[プラン名]** ボックスに、このプランの名前を入力します。 この名前は、顧客がオファー内のどのプランを選択するかを決めるときに表示されます。 このオファーのプランごとに一意の名前を作成します。 たとえば、 **Windows Server 2016** と **Windows Server 2019** のプランで **Windows Server** のオファー名を使用できます。
 
 ### <a name="plan-setup"></a>プランのセットアップ
 
@@ -328,11 +328,11 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 以下はプラン詳細を閲覧するときの Azure Marketplace のフィールドです。
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="Microsoft 商業マーケットプレース向け標準契約を使用する チェックボックスの画像。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="Azure Marketplace でプラン詳細を閲覧するときに表示されるフィールドの画像。":::
 
 以下は Azure portal のプラン詳細です。
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Microsoft 商業マーケットプレース向け標準契約を使用する チェックボックスの画像。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Azure portal のプラン詳細の画像。":::
 
 ### <a name="plan-availability"></a>プランの可用性
 
@@ -357,19 +357,19 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 **Azure サブスクリプション ID** - 使用状況が報告され、コンテナー イメージが含まれる Azure Container Registry に対してサービスが課金されるサブスクリプション ID を入力します。 この ID は Azure portal の[[サブスクリプション] ページ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にあります。
 
-**Azure リソース グループ名** - Azure Container Registry とコンテナー イメージが含まれる[リソース グループ](../../azure-resource-manager/management/manage-resource-groups-portal.md)の名前を指定します。 リソース グループにはサブスクリプション ID (上記) でアクセスできる必要があります。 この名前は Azure portal の [[リソース グループ]](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) ページにあります。
+**Azure リソース グループ名** - Azure Container Registry とコンテナー イメージが含まれる [リソース グループ](../../azure-resource-manager/management/manage-resource-groups-portal.md)の名前を指定します。 リソース グループにはサブスクリプション ID (上記) でアクセスできる必要があります。 この名前は Azure portal の [[リソース グループ]](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) ページにあります。
 
 **Azure コンテナー レジストリ名** - コンテナー イメージが含まれる [Azure Container Registry](../../container-registry/container-registry-intro.md) の名前を指定します。 このコンテナー レジストリは、前に指定した Azure リソース グループに存在する必要があります。 完全なログイン サーバー名ではなく、レジストリ名のみを含めます。 名前からは必ず **azurecr.io** を除外してください。 レジストリ名は、Azure portal の[[コンテナー レジストリ] ページ](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)にあります。
 
-**Azure Container Registry の管理者ユーザー名** – コンテナー イメージが含まれる Azure Container Registry にリンクされている[管理者ユーザー名](../../container-registry/container-registry-authentication.md#admin-account)) を指定します。 このユーザー名とパスワードは、自社からレジストリにアクセスするために必要です。 管理者ユーザー名とパスワードを取得するには、Azure コマンド ライン インターフェイス (CLI) で **admin-enabled** プロパティを **[True]** に設定します。 必要に応じて、Azure portal で **[管理者ユーザー]** を **[有効にする]** に設定できます。
+**Azure Container Registry の管理者ユーザー名** – コンテナー イメージが含まれる Azure Container Registry にリンクされている [管理者ユーザー名](../../container-registry/container-registry-authentication.md#admin-account)) を指定します。 このユーザー名とパスワードは、自社からレジストリにアクセスするために必要です。 管理者ユーザー名とパスワードを取得するには、Azure コマンド ライン インターフェイス (CLI) で **admin-enabled** プロパティを **[True]** に設定します。 必要に応じて、Azure portal で **[管理者ユーザー]** を **[有効にする]** に設定できます。
 
- :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Microsoft 商業マーケットプレース向け標準契約を使用する チェックボックスの画像。":::
+ :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="[コンテナー レジストリの更新] ダイアログ ボックスの画像。":::
 
-**Azure Container Registry のパスワード** - コンテナー イメージが含まれる Azure Container Registry に関連付けられている管理者ユーザー名のパスワードを指定します。 このユーザー名とパスワードは、自社からレジストリにアクセスするために必要です。 **[コンテナー レジストリ]**  >  **[アクセス キー]** に移動するか、Azure CLI で [show コマンド](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)を使用することで、Azure portal からパスワードを取得できます。
+**Azure Container Registry のパスワード** - コンテナー イメージが含まれる Azure Container Registry に関連付けられている管理者ユーザー名のパスワードを指定します。 このユーザー名とパスワードは、自社からレジストリにアクセスするために必要です。 **[コンテナー レジストリ]**  >  **[アクセス キー]** に移動するか、Azure CLI で [show コマンド](/cli/azure/acr/credential#az-acr-credential-show)を使用することで、Azure portal からパスワードを取得できます。
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Microsoft 商業マーケットプレース向け標準契約を使用する チェックボックスの画像。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="[アクセス キー]メニューの画像。":::
 
-**Azure Container Registry 内のリポジトリ名**。 イメージが含まれる Azure Container Registry リポジトリの名前を指定します。 レジストリにイメージをプッシュするときに、リポジトリの名前を含めます。 リポジトリの名前は、[[コンテナー レジストリ]](https://azure.microsoft.com/services/container-registry/) >  **[リポジトリ]** ページに移動すると見つかります。 詳細については、「[Azure Portal でコンテナー レジストリ リポジトリを表示する](../../container-registry/container-registry-repositories.md)」を参照してください。
+**Azure Container Registry 内のリポジトリ名** 。 イメージが含まれる Azure Container Registry リポジトリの名前を指定します。 レジストリにイメージをプッシュするときに、リポジトリの名前を含めます。 リポジトリの名前は、 [[コンテナー レジストリ]](https://azure.microsoft.com/services/container-registry/) >  **[リポジトリ]** ページに移動すると見つかります。 詳細については、「[Azure Portal でコンテナー レジストリ リポジトリを表示する](../../container-registry/container-registry-repositories.md)」を参照してください。
 
 > [!NOTE]
 > 設定した名前は変更できません。 アカウント内のオファー別に一意の名前を使用します。
@@ -380,9 +380,9 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 ### <a name="image-tag"></a>イメージ タグ
 
-このフィールドには、サポートされているすべてのプラットフォームで最新バージョンのイメージを指す**最新**のタグを含める必要があります。 バージョン タグも含める必要があります (たとえば、xx.xx.xx から始まり、xx は数字です)。 複数のプラットフォームを対象とするには、顧客は[マニフェスト タグ](https://github.com/estesp/manifest-tool)を使用する必要があります。 マニフェスト タグで参照されるすべてのタグも、アップロードできるように追加する必要があります。
+このフィールドには、サポートされているすべてのプラットフォームで最新バージョンのイメージを指す **最新** のタグを含める必要があります。 バージョン タグも含める必要があります (たとえば、xx.xx.xx から始まり、xx は数字です)。 複数のプラットフォームを対象とするには、顧客は[マニフェスト タグ](https://github.com/estesp/manifest-tool)を使用する必要があります。 マニフェスト タグで参照されるすべてのタグも、アップロードできるように追加する必要があります。
 
-マニフェスト タグ (最新のタグを除く) はすべて X.Y **-** か X.Y.Z- で始める必要があります。X、Y、Z は整数です。 たとえば、**最新**のタグが 1.0.1-linux-x64、1.0.1-linux-arm32、1.0.1-windows-arm32 を指す場合、これら 6 つのタグをこのフィールドに追加する必要があります。 詳細については、[Azure Container の技術資産の準備](create-azure-container-technical-assets.md)に関する記事を参照してください。
+マニフェスト タグ (最新のタグを除く) はすべて X.Y **-** か X.Y.Z- で始める必要があります。X、Y、Z は整数です。 たとえば、 **最新** のタグが 1.0.1-linux-x64、1.0.1-linux-arm32、1.0.1-windows-arm32 を指す場合、これら 6 つのタグをこのフィールドに追加する必要があります。 詳細については、[Azure Container の技術資産の準備](create-azure-container-technical-assets.md)に関する記事を参照してください。
 
 > [!NOTE]
 > テスト中にイメージを識別できるように、必ずテスト タグをイメージに追加してください。

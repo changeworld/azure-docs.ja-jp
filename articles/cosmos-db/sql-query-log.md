@@ -3,18 +3,21 @@ title: Azure Cosmos DB クエリ言語の LOG
 description: 指定された数値式の自然対数を返す Azure Cosmos DB の LOG SQL システム関数について学ぶ
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 74d07076fb322214348d52fe65dbc98bdff3cd44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44a9d5b273e13886b0674b3b2e9f5f7a75e72fcc
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798263"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338579"
 ---
 # <a name="log-azure-cosmos-db"></a>LOG (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  指定された数値式の自然対数を返します。  
   
 ## <a name="syntax"></a>構文
@@ -39,7 +42,7 @@ LOG (<numeric_expr> [, <base>])
   
   既定では、LOG() は自然対数を返します。 省略可能な底パラメーターを使用して、対数の底を別の値に変更できます。  
   
-  自然対数は **e** を底とする対数です。ここで、**e** は 2.718281828 にほぼ等しい無理定数です。  
+  自然対数は **e** を底とする対数です。ここで、 **e** は 2.718281828 にほぼ等しい無理定数です。  
   
   数値の指数の自然対数は数自体です: LOG( EXP( n ) ) = n。 数値の自然対数の指数は数自体です: EXP( LOG( n ) ) = n。
 

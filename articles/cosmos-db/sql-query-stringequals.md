@@ -3,18 +3,20 @@ title: Azure Cosmos DB クエリ言語の StringEquals
 description: Azure Cosmos DB の StringEquals SQL システム関数で、1 つ目の文字列式が 2 つ目の文字列式と一致するかどうかを示すブール値を返す方法について説明します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 57d124421082e1c38fab4d982687a8e6c970505e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47d899534de535b5cd6a7c3fb2df78cdadbe11f2
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83853694"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338052"
 ---
 # <a name="stringequals-azure-cosmos-db"></a>STRINGEQUALS (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
  1 つ目の文字列式と 2 つ目の文字列式が一致するかどうかを示すブール値を返します。  
   

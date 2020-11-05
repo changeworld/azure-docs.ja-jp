@@ -3,18 +3,21 @@ title: Azure Cosmos DB のサービス要求タイムアウト例外をトラブ
 description: Azure Cosmos DB のサービス要求タイムアウト例外を診断して修正する方法について説明します。
 author: j82w
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 76a1558534728613dcdedc78b64a0366f2bd643d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e52acd2f7f594523059b22fefd121314bd77921
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871073"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340068"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-timeout-exceptions"></a>Azure Cosmos DB の要求タイムアウト例外の問題を診断してトラブルシューティングする
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 Azure Cosmos DB で HTTP 408 要求タイムアウトが返されました。
 
 ## <a name="troubleshooting-steps"></a>トラブルシューティングの手順

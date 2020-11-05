@@ -6,14 +6,15 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: f6a348ceb30806259035cb71bb4165b736949272
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0791ed6882feedeab47b75eff6a69bf0a49ab7ee
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480073"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341292"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Synapse Link for Azure Cosmos DB についてよく寄せられる質問
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 Azure Synapse Link for Azure Cosmos DB により、Azure Cosmos DB と Azure Synapse Analytics の間が緊密に統合されます。 これにより、お客様は、トランザクション ワークロードからパフォーマンスを完全に分離し、ETL パイプラインを使用せずに、運用データに対してほぼリアルタイムの分析を実行できます。 この記事では、Synapse Link for Azure Cosmos DB についてよく寄せられる質問に回答します。
 
@@ -156,7 +157,7 @@ Azure Cosmos DB では、トランザクション ワークロードと分析ワ
 
 トランザクション ストア コンテナーは、次のアイコンで表されます。
 
-:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="分析ストアが有効な Azure Cosmos DB コンテナーのアイコン":::
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="トランザクション ストアが有効な Azure Cosmos DB コンテナーのアイコン":::
  
 ### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-azure-synapse-studio"></a>Azure Synapse Studio から Azure Cosmos DB 資格情報を渡すにはどうすればよいですか?
 

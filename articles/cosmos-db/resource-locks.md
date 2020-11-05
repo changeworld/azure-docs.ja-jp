@@ -3,17 +3,19 @@ title: Azure Cosmos DB リソースが削除または変更されないように
 description: Azure リソース ロックを使用して Azure Cosmos DB リソースが削除または変更されないようにします。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: mjbrown
-ms.openlocfilehash: b23fb22a99705e1bf37de7a7982513ff692d8f6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5243419d8e2c4780708e9bdee0d57f2734fe78b2
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91771003"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341962"
 ---
 # <a name="prevent-azure-cosmos-db-resources-from-being-deleted-or-changed"></a>Azure Cosmos DB リソースが削除または変更されないようにする
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 管理者は、Azure Cosmos アカウント、データベース、またはコンテナーをロックし、組織の他のユーザーが誤って重要なリソースを削除したり変更したりするのを防止しなければならないことがあります。 ロック レベルは CanNotDelete または ReadOnly に設定できます。
 

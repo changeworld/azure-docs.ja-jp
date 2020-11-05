@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: cc09912bb0c9ab553d180ff5cc06fc52c4c5cc0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c578febf088148e9e0496d87b715c953c5bd9d36
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261056"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348374"
 ---
 # <a name="service-bus-topics-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Service Bus トピック出力
 
-Service Bus キューには、送信者から受信者への一対一の通信方法が用意されています。 [Service Bus のトピック](https://msdn.microsoft.com/library/azure/hh367516.aspx)では、一対多の形式の通信を行うことができます。
+Service Bus キューには、送信者から受信者への一対一の通信方法が用意されています。 [Service Bus のトピック](/previous-versions/azure/hh367516(v=azure.100))では、一対多の形式の通信を行うことができます。
 
 次の表に、Service Bus トピックの出力を作成するためのプロパティの名前とその説明を示します。
 
@@ -45,7 +45,7 @@ Service Bus キューには、送信者から受信者への一対一の通信�
 
 ## <a name="custom-metadata-properties-for-output"></a>出力用のカスタム メタデータ プロパティ
 
-ご自分の送信メッセージにクエリ列をユーザー プロパティとして添付できます。 これらの列はペイロードに入りません。 これらのプロパティは、出力メッセージにディクショナリの形式で表示されます。 "*キー*" は列名で、"*値*" はプロパティ ディクショナリの列値です。 Record と Array を除き、すべての Stream Analytics データ型がサポートされています。
+ご自分の送信メッセージにクエリ列をユーザー プロパティとして添付できます。 これらの列はペイロードに入りません。 これらのプロパティは、出力メッセージにディクショナリの形式で表示されます。 " *キー* " は列名で、" *値* " はプロパティ ディクショナリの列値です。 Record と Array を除き、すべての Stream Analytics データ型がサポートされています。
 
 次の例では、`DeviceId` フィールドと `DeviceStatus` フィールドがメタデータに追加されています。
 
@@ -61,11 +61,11 @@ Service Bus キューには、送信者から受信者への一対一の通信�
 
 次に示すのは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) を利用して EventHub で検査される出力メッセージ プロパティの図です。
 
-:::image type="content" source="media/service-bus-topics-output/custom-properties.png" alt-text="プロパティ列":::
+:::image type="content" source="media/service-bus-topics-output/custom-properties.png" alt-text="イベント カスタム プロパティ":::
 
 ## <a name="system-properties"></a>システム プロパティ
 
-クエリ列を、[システム プロパティ](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true)として送信 Service Bus キューまたはトピック メッセージに添付できます。 これらの列はペイロードに含まれず、代わりに対応する BrokeredMessage [システム プロパティ](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) には、クエリ列の値が設定されます。
+クエリ列を、[システム プロパティ](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties)として送信 Service Bus キューまたはトピック メッセージに添付できます。 これらの列はペイロードに含まれず、代わりに対応する BrokeredMessage [システム プロパティ](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties) には、クエリ列の値が設定されます。
 システムプロパティ (`MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`) はサポートされています。
 
 これらの列の文字列値は、対応するシステム プロパティ値の型として解析され、解析エラーはデータ エラーとして扱われます。

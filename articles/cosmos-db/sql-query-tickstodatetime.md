@@ -3,18 +3,20 @@ title: Azure Cosmos DB クエリ言語の TicksToDateTime
 description: Azure Cosmos DB での SQL システム関数 TicksToDateTime について学習します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 89a8dba97725049b86fc6b38c09e0dd125bb48d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f40286a39694307ac43ecd60f6861d509f760990
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88608664"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340799"
 ---
 # <a name="tickstodatetime-azure-cosmos-db"></a>TicksToDateTime (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 指定したティック値を DateTime に変換します。
   
@@ -26,7 +28,7 @@ TicksToDateTime (<Ticks>)
 
 ## <a name="arguments"></a>引数
 
-"*ティック*"  
+" *ティック* "  
 
 Unix エポックから経過した現在の 100 ナノ秒ティック数を示す符号付き数値です。 つまり、1970 年 1 月 1 日木曜日 00 時 00 分 00 秒から経過した 100 ナノ秒ティック数です。
 

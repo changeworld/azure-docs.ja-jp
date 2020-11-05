@@ -2,20 +2,22 @@
 title: Azure Cosmos DB で合成パーティション キーを作成する
 description: Azure Cosmos コンテナーで合成パーティション キーを使用して、データとワークロードをパーティション キーに均等に分散させる方法について説明します。
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: a50de7154bd768f5cc4c25062ec3ce05c0f37328
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6b8bc44f1ba5624c37620205aaa574e618ef395f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279857"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340653"
 ---
 # <a name="create-a-synthetic-partition-key"></a>合成パーティション キーの作成
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-数百から数千というように、多数の個別の値を備えたパーティション キーにすることをお勧めします。 目標は、これらのパーティション キー値に関連付けられている項目の間でデータとワークロードを均等に分散することです。 このようなプロパティがデータに存在しない場合、"*合成パーティション キー*" を構築できます。 このドキュメントでは、Cosmos コンテナーの合成パーティション キーを生成するためのいくつかの基本的な手法について説明します。
+数百から数千というように、多数の個別の値を備えたパーティション キーにすることをお勧めします。 目標は、これらのパーティション キー値に関連付けられている項目の間でデータとワークロードを均等に分散することです。 このようなプロパティがデータに存在しない場合、" *合成パーティション キー* " を構築できます。 このドキュメントでは、Cosmos コンテナーの合成パーティション キーを生成するためのいくつかの基本的な手法について説明します。
 
 ## <a name="concatenate-multiple-properties-of-an-item"></a>項目の複数のプロパティを連結する
 

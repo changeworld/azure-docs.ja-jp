@@ -3,17 +3,19 @@ title: Azure Cosmos DB での GROUP BY 句
 description: Azure Cosmos DB の GROUP BY 句について説明します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: tisande
-ms.openlocfilehash: b602b56d37cec0e23d31318f6675d031bdd6bcdb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71314e6999031f52ebbfc582b43684ab5a17a261
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83700988"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338800"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での GROUP BY 句
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 GROUP BY 句では、指定した 1 つ以上のプロパティの値に従ってクエリの結果を分割します。
 

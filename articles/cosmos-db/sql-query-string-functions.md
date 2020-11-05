@@ -3,18 +3,20 @@ title: Azure Cosmos DB クエリ言語の文字列関数
 description: Azure Cosmos DB での文字列 SQL システム関数について説明します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 6ec1d83b97fadf3954a936847e8e8faeb47d1458
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 4516bb9c426355de1fa2ce19befddef896a2de3e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276074"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338103"
 ---
 # <a name="string-functions-azure-cosmos-db"></a>文字列関数 (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 文字列関数を使用すると、Azure Cosmos DB 内の文字列に対して操作を実行できます。
 

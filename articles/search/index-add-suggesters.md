@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e439f7d2b0232a2e1c36517f24723e4e16f7e6bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8959bf84e2b5629e03c2571fa494b96cec4f8e9
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537601"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347643"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>クエリでオートコンプリートと候補の結果を有効にする suggester を作成する
 
-Azure Cognitive Search では、[検索インデックス](search-what-is-an-index.md)に追加された **suggester** コンストラクトによって、"逐次検索" が有効になります。 suggester では、2 つのエクスペリエンスがサポートされています。部分的な入力を補完して用語クエリ全体を作成する "*オートコンプリート*" と、特定の一致へのクリック スルーを促す "*候補*" です。 オートコンプリートでは、クエリが生成されます。 候補では、一致するドキュメントが生成されます。
+Azure Cognitive Search では、 [検索インデックス](search-what-is-an-index.md)に追加された **suggester** コンストラクトによって、"逐次検索" が有効になります。 suggester では、2 つのエクスペリエンスがサポートされています。部分的な入力を補完して用語クエリ全体を作成する " *オートコンプリート* " と、特定の一致へのクリック スルーを促す " *候補* " です。 オートコンプリートでは、クエリが生成されます。 候補では、一致するドキュメントが生成されます。
 
 次のスクリーンショットは、[C# で初めてアプリを作成する](tutorial-csharp-type-ahead-and-suggestions.md)方法に関するページのものですが、その両方を示しています。 オートコンプリートを使用すると、可能性のある語句が予測され、"tw" に "in" が補完されます。 候補はミニ検索結果であり、ホテル名のようなフィールドには、インデックスから一致するホテルの検索ドキュメントが表示されます。 候補については、説明的な情報を提供する任意のフィールドを表示できます。
 
@@ -30,7 +30,7 @@ Azure Cognitive Search では、[検索インデックス](search-what-is-an-ind
 
 + クエリ要求では、[後で示す API 一覧](#how-to-use-a-suggester)のいずれかを呼び出します。
 
-文字列フィールドの場合、フィールドごとに逐次検索のサポートが有効になります。 スクリーンショットに示したものと同様のエクスペリエンスを求めているのであれば、同じ検索ソリューション内に両方の先行入力の動作を実装できます。 どちらの要求でも特定のインデックスの*documents* コレクションをターゲットとし、ユーザーが入力文字列を 3 文字以上指定した時点から応答が返されます。
+文字列フィールドの場合、フィールドごとに逐次検索のサポートが有効になります。 スクリーンショットに示したものと同様のエクスペリエンスを求めているのであれば、同じ検索ソリューション内に両方の先行入力の動作を実装できます。 どちらの要求でも特定のインデックスの *documents* コレクションをターゲットとし、ユーザーが入力文字列を 3 文字以上指定した時点から応答が返されます。
 
 ## <a name="what-is-a-suggester"></a>suggester とは
 
@@ -52,7 +52,7 @@ suggester は、いくつかのプロパティを備えていますが、基本�
 
 一方、候補では、フィールド選択が選択的である場合により良い結果が得られます。 候補は検索ドキュメントのプロキシであるため、単一の結果を最もよく表すフィールドが必要になることに注意してください。 複数の一致を区別する名前、タイトル、またはその他の固有のフィールドが最適です。 フィールドが反復される値で構成されている場合、候補は同じ結果で構成され、ユーザーはどれをクリックすればよいかがわかりません。
 
-両方の逐次検索エクスペリエンスを満たすには、オートコンプリートに必要なすべてのフィールドを追加しますが、その後、 **$select**、 **$top**、 **$filter**、**searchFields** を使用して、候補の結果を制御します。
+両方の逐次検索エクスペリエンスを満たすには、オートコンプリートに必要なすべてのフィールドを追加しますが、その後、 **$select** 、 **$top** 、 **$filter** 、 **searchFields** を使用して、候補の結果を制御します。
 
 ### <a name="choose-analyzers"></a>アナライザーの選択
 
@@ -146,14 +146,14 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 クエリには suggester が使用されています。 suggester を作成したら、search-as-you-type エクスペリエンス用の次の API のいずれかを呼び出します。
 
-+ [検索候補 REST API](/rest/api/searchservice/suggestions) 
-+ [オートコンプリート REST API](/rest/api/searchservice/autocomplete) 
-+ [SuggestWithHttpMessagesAsync method](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?
++ [検索候補 REST API](/rest/api/searchservice/suggestions)
++ [オートコンプリート REST API](/rest/api/searchservice/autocomplete)
++ [SuggestWithHttpMessagesAsync メソッド](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync)
 + [AutocompleteWithHttpMessagesAsync メソッド](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync)
 
 検索アプリケーションでは、クライアント コードで、[jQuery UI Autocomplete](https://jqueryui.com/autocomplete/) などのライブラリを利用して、部分クエリを収集し、一致を提供する必要があります。 このタスクの詳細については、[クライアント コードへのオートコンプリートまたは候補の結果の追加](search-autocomplete-tutorial.md)に関するページを参照してください。
 
-API の使用方法については、オートコンプリート REST API の次の呼び出しで説明します。 この例では、2 つのポイントがあります。 第一に、すべてのクエリと同様に、操作はインデックスの documents コレクションに対して行われ、クエリには **search** パラメーターが含まれます。この場合、部分クエリが提供されます。 第二に、**suggesterName** を要求に追加する必要があります。 インデックスで suggester が定義されていない場合、オートコンプリートまたは検索候補の呼び出しは失敗します。
+API の使用方法については、オートコンプリート REST API の次の呼び出しで説明します。 この例では、2 つのポイントがあります。 第一に、すべてのクエリと同様に、操作はインデックスの documents コレクションに対して行われ、クエリには **search** パラメーターが含まれます。この場合、部分クエリが提供されます。 第二に、 **suggesterName** を要求に追加する必要があります。 インデックスで suggester が定義されていない場合、オートコンプリートまたは検索候補の呼び出しは失敗します。
 
 ```http
 POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
@@ -166,8 +166,6 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 ## <a name="sample-code"></a>サンプル コード
 
 + [C# での最初のアプリの作成 (レッスン 3 - 逐次検索の追加)](tutorial-csharp-type-ahead-and-suggestions.md)サンプルでは、suggester の構築、提案されたクエリ、オートコンプリート、ファセット ナビゲーションが示されています。 このコード サンプルはサンドボックスの Azure Cognitive Search サービスで実行され、事前に読み込まれたホテルのインデックスが使用されるので、F5 キーを押すだけでアプリケーションを実行できます。 サブスクリプションやサインインは必要ありません。
-
-+ [DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) は、C# と Java 両方のコードが含まれる古いサンプルです。 それでも、suggester の構築、提案されたクエリ、オートコンプリート、ファセット ナビゲーションが示されています。 このコード サンプルでは、ホストされた [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) サンプル データが使用されます。 
 
 ## <a name="next-steps"></a>次のステップ
 

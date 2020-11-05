@@ -3,17 +3,19 @@ title: Azure Cosmos DB の SQL サブクエリ
 description: Azure Cosmos DB の SQL サブクエリ、その一般的なユース ケース、およびさまざまな種類のサブクエリについて説明します
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5f209229d17a2587258d21ee90e7560e629d082
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74870566"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340857"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Azure Cosmos DB の SQL サブクエリの例
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 サブクエリは、別のクエリ内で入れ子になったクエリです。 サブクエリは、内部クエリまたは内部選択とも呼ばれます。 サブクエリを含むステートメントは通常、外部クエリと呼ばれます。
 
@@ -23,16 +25,16 @@ ms.locfileid: "74870566"
 
 サブクエリには、主に次の 2 種類があります。
 
-* **相関**:外部クエリからの値を参照するサブクエリ。 サブクエリは、外部クエリが処理する行ごとに 1 回評価されます。
-* **非相関**:外部クエリから独立しているサブクエリ。 外部クエリに依存せずに単独で実行できます。
+* **相関** :外部クエリからの値を参照するサブクエリ。 サブクエリは、外部クエリが処理する行ごとに 1 回評価されます。
+* **非相関** :外部クエリから独立しているサブクエリ。 外部クエリに依存せずに単独で実行できます。
 
 > [!NOTE]
 > Azure Cosmos DB は相関サブクエリのみをサポートします。
 
 サブクエリは、返される行と列の数に基づいてさらに分類できます。 次の 3 種類があります。
-* **テーブル**:複数の行と複数の列を返します。
-* **複数値**:複数の行と 1 つの列を返します。
-* **スカラー**:1 つの行と 1 つの列を返します。
+* **テーブル** :複数の行と複数の列を返します。
+* **複数値** :複数の行と 1 つの列を返します。
+* **スカラー** :1 つの行と 1 つの列を返します。
 
 Azure Cosmos DB の SQL クエリは常に 1 つの列 (単純な値または複合ドキュメントのどちらか) を返します。 したがって、Azure Cosmos DB では、複数値サブクエリとスカラー サブクエリのみを適用できます。 複数値サブクエリは、関係式として FROM 句でのみ使用できます。 スカラー サブクエリは、SELECT または WHERE 句でスカラー式として、あるいは FROM 句で関係式として使用できます。
 

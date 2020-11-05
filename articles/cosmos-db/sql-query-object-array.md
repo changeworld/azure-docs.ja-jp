@@ -3,17 +3,19 @@ title: Azure Cosmos DB での配列とオブジェクトの操作
 description: Azure Cosmos DB で配列とオブジェクトを作成するための SQL 構文について説明します。 またこの記事では、配列オブジェクトに対して操作を実行するいくつかの例も示します
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 2b882e1e39f035d27fc6d09d1a9d0c04691b499c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80d158e209943d65b9934d5425ccce7d69422bc4
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426250"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338361"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Azure Cosmos DB での配列とオブジェクトの操作
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB SQL API の重要な機能は、配列とオブジェクトの作成です。
 

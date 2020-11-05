@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: seo-javascript-september2019, devx-track-js
-ms.openlocfilehash: 77c35ae4b9e845cd3c0f638407c0d71c36fcf9f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5a9fb1a179164d24c84213762ee7e2332a1aa25
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289686"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345943"
 ---
 # <a name="how-to-use-azure-queue-storage-from-nodejs"></a>Node.js から Azure Queue Storage を使用する方法
 
@@ -42,7 +42,7 @@ ms.locfileid: "91289686"
 
 # <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
 
-1. コマンド ウィンドウに「**npm install \@azure/storage-queue**」と入力します。
+1. コマンド ウィンドウに「 **npm install \@azure/storage-queue** 」と入力します。
 
 1. **node\_modules** フォルダーが作成されたことを確認します。 そのフォルダー内には、ストレージにアクセスするために必要なクライアント ライブラリを含む **\@azure/storage-queue** パッケージが見つかります。
 
@@ -74,7 +74,7 @@ var azure = require('azure-storage');
 
 # <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
 
-次のコードは、`AZURE_STORAGE_CONNECTION_STRING` という名前の環境変数の値を取得し、それを使用して [QueueServiceClient](/javascript/api/@azure/storage-queue/queueserviceclient) オブジェクトを作成します。 次に、**QueueServiceClient** オブジェクトを使用して [QueueClient](/javascript/api/@azure/storage-queue/queueclient) オブジェクトを作成します。 **QueueClient** オブジェクトを使用すると、特定のキューを操作できます。
+次のコードは、`AZURE_STORAGE_CONNECTION_STRING` という名前の環境変数の値を取得し、それを使用して [QueueServiceClient](/javascript/api/@azure/storage-queue/queueserviceclient) オブジェクトを作成します。 次に、 **QueueServiceClient** オブジェクトを使用して [QueueClient](/javascript/api/@azure/storage-queue/queueclient) オブジェクトを作成します。 **QueueClient** オブジェクトを使用すると、特定のキューを操作できます。
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_CreateQueue":::
 
@@ -82,7 +82,7 @@ var azure = require('azure-storage');
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-Azure モジュールは、Azure ストレージ アカウントに接続するために必要な情報として、環境変数 `AZURE_STORAGE_ACCOUNT` と `AZURE_STORAGE_ACCESS_KEY`、または `AZURE_STORAGE_CONNECTION_STRING` を読み取ります。 これらの環境変数が設定されていない場合は、**createQueueService** を呼び出すときにアカウント情報を指定する必要があります。
+Azure モジュールは、Azure ストレージ アカウントに接続するために必要な情報として、環境変数 `AZURE_STORAGE_ACCOUNT` と `AZURE_STORAGE_ACCESS_KEY`、または `AZURE_STORAGE_CONNECTION_STRING` を読み取ります。 これらの環境変数が設定されていない場合は、 **createQueueService** を呼び出すときにアカウント情報を指定する必要があります。
 
 次のコードは、 **QueueService** オブジェクトを作成し、これによってキューを操作できるようにします。
 
@@ -114,7 +114,7 @@ queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-キューにメッセージを挿入するには、**createMessage** メソッドを呼び出して新しいメッセージを作成し、それをキューに追加します。
+キューにメッセージを挿入するには、 **createMessage** メソッドを呼び出して新しいメッセージを作成し、それをキューに追加します。
 
 ```javascript
 queueSvc.createMessage('myqueue', "Hello world!", function(error, results, response){
@@ -160,13 +160,13 @@ queueSvc.peekMessages('myqueue', function(error, results, response){
 
 # <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
 
-[updateMessage](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--number--queueupdatemessageoptions-) を呼び出すことにより、キュー内のメッセージの内容をインプレースで変更します。 
+[updateMessage](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--number--queueupdatemessageoptions-) を呼び出すことにより、キュー内のメッセージの内容をインプレースで変更します。
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_UpdateMessage":::
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-**updateMessage** を呼び出すことにより、キュー内のメッセージの内容をインプレースで変更します。 
+**updateMessage** を呼び出すことにより、キュー内のメッセージの内容をインプレースで変更します。
 
 ```javascript
 queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
@@ -206,7 +206,7 @@ queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-メッセージを取得するには、**getMessages** メソッドを呼び出します。 この呼び出しによりそのメッセージはキュー内で非表示になるため、他のクライアントは処理できません。 アプリケーションでメッセージが処理されたら、 **deleteMessage** を呼び出してキューからこのメッセージを削除します。
+メッセージを取得するには、 **getMessages** メソッドを呼び出します。 この呼び出しによりそのメッセージはキュー内で非表示になるため、他のクライアントは処理できません。 アプリケーションでメッセージが処理されたら、 **deleteMessage** を呼び出してキューからこのメッセージを削除します。
 
 ```javascript
 queueSvc.getMessages('myqueue', function(error, results, response){
@@ -234,10 +234,10 @@ queueSvc.getMessages('myqueue', function(error, results, response){
 
 キューからのメッセージの取得をカスタマイズする方法は 2 つあります。
 
-* [options.numberOfMessages](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#numberofmessages) - メッセージのバッチ (最大 32) を取得します。
-* [options.visibilityTimeout](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout) - 非表示タイムアウトを長くするか、または短くします。
+- [options.numberOfMessages](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#numberofmessages) - メッセージのバッチ (最大 32) を取得します。
+- [options.visibilityTimeout](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout) - 非表示タイムアウトを長くするか、または短くします。
 
-次の例では、**receiveMessages** メソッドを使用して、1 回の呼び出しで 5 つのメッセージを取得します。 その後、`for` ループを使用して、各メッセージを処理します。 また、このメソッドで返されるすべてのメッセージの非表示タイムアウトを 5 分に設定します。
+次の例では、 **receiveMessages** メソッドを使用して、1 回の呼び出しで 5 つのメッセージを取得します。 その後、`for` ループを使用して、各メッセージを処理します。 また、このメソッドで返されるすべてのメッセージの非表示タイムアウトを 5 分に設定します。
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_DequeueMessages":::
 
@@ -245,8 +245,8 @@ queueSvc.getMessages('myqueue', function(error, results, response){
 
 キューからのメッセージの取得をカスタマイズする方法は 2 つあります。
 
-* `options.numOfMessages` - メッセージをバッチで取得する (最大 32 個)。
-* `options.visibilityTimeout` - 非表示タイムアウトを長くするか、短くする。
+- `options.numOfMessages` - メッセージをバッチで取得する (最大 32 個)。
+- `options.visibilityTimeout` - 非表示タイムアウトを長くするか、短くする。
 
 次のコード例では、 **getMessages** メソッドを使用して、1 回の呼び出しで 15 個のメッセージを取得します。 その後、`for` ループを使用して、各メッセージを処理します。 また、このメソッドで返されるすべてのメッセージの非表示タイムアウトを 5 分に設定します。
 
@@ -301,7 +301,7 @@ queueSvc.getQueueMetadata('myqueue', function(error, results, response){
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-キューの一覧表示を取得するには、 **listQueuesSegmented**を使用します。 特定のプレフィックスでフィルター処理した一覧を取得するには、 **listQueuesSegmentedWithPrefix**を使用します。
+キューの一覧表示を取得するには、 **listQueuesSegmented** を使用します。 特定のプレフィックスでフィルター処理した一覧を取得するには、 **listQueuesSegmentedWithPrefix** を使用します。
 
 ```javascript
 queueSvc.listQueuesSegmented(null, function(error, results, response){
@@ -311,7 +311,7 @@ queueSvc.listQueuesSegmented(null, function(error, results, response){
 });
 ```
 
-すべてのキューを返せない場合は、さらに多くの結果を取得するために、**listQueuesSegmented** の最初のパラメーター、または **listQueuesSegmentedWithPrefix** の 2 番目のパラメーターとして `result.continuationToken` を渡します。
+すべてのキューを返せない場合は、さらに多くの結果を取得するために、 **listQueuesSegmented** の最初のパラメーター、または **listQueuesSegmentedWithPrefix** の 2 番目のパラメーターとして `result.continuationToken` を渡します。
 
 ---
 
@@ -319,7 +319,7 @@ queueSvc.listQueuesSegmented(null, function(error, results, response){
 
 # <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
 
-キューとそこに含まれているすべてのメッセージを削除するには、**QueueClient** オブジェクトに対して [deleteQueue](/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-) メソッドを呼び出します。
+キューとそこに含まれているすべてのメッセージを削除するには、 **QueueClient** オブジェクトに対して [deleteQueue](/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-) メソッドを呼び出します。
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_DeleteQueue":::
 
@@ -337,7 +337,7 @@ queueSvc.deleteQueue(queueName, function(error, response){
 });
 ```
 
-すべてのメッセージを削除することなくキューからクリアするには、**clearMessages** を呼び出します。
+すべてのメッセージを削除することなくキューからクリアするには、 **clearMessages** を呼び出します。
 
 ---
 
@@ -347,8 +347,8 @@ queueSvc.deleteQueue(queueName, function(error, response){
 
 これで、Queue ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 
-* 新機能を確認するには、[Azure Storage チーム ブログ][Azure Storage Team Blog]にアクセスしてください。
-* GitHub 上の [JavaScript 用の Azure Storage クライアント ライブラリ][Azure Storage client library for JavaScript]のリポジトリにアクセスしてください。
+- 新機能を確認するには、[Azure Storage チーム ブログ][Azure Storage Team Blog]にアクセスしてください。
+- GitHub 上の [JavaScript 用の Azure Storage クライアント ライブラリ][Azure Storage client library for JavaScript]のリポジトリにアクセスしてください。
 
 [Azure Storage client library for JavaScript]: https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage#azure-storage-client-library-for-javascript
 [Azure Storage Team Blog]: https://techcommunity.microsoft.com/t5/azure-storage/bg-p/AzureStorageBlog

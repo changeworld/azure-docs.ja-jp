@@ -3,18 +3,20 @@ title: Azure Cosmos DB SQL SDK の接続モード
 description: Azure Cosmos DB SQL SDK で使用可能なさまざまな接続モードについて説明します。
 author: ealsur
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: maquaran
-ms.custom: devx-track-dotnet
-ms.openlocfilehash: d88d52f67274d14836520494580e9208ce4eecbe
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.custom: devx-track-dotnet, contperfq2
+ms.openlocfilehash: 892d73c2b23a9806cd38b188f594f129fda9303d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283122"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340721"
 ---
 # <a name="azure-cosmos-db-sql-sdk-connectivity-modes"></a>Azure Cosmos DB SQL SDK の接続モード
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 クライアントが Azure Cosmos DB に接続する方法は、特に監視対象となるクライアント側の待機時間について、パフォーマンスに重要な影響を及ぼします。 Azure Cosmos DB では、ゲートウェイ モードと呼ばれる HTTPS を介したシンプルなオープン RESTful プログラミング モデルが提供されます。 さらに、直接モードと呼ばれる効率的な TCP プロトコルも提供されます。これは、通信モデルでは RESTful でもあり、初期認証とトラフィックの暗号化に TLS が使用されます。
 

@@ -6,13 +6,13 @@ ms.author: krishmam
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: b58a2b4cb5cd083f837eb598d4e5f330783181c6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/29/2020
+ms.openlocfilehash: b344e9e24d15189b805f586227c7253395e8448e
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91279996"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348986"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Azure Stream Analytics の入力について
 
@@ -22,11 +22,11 @@ Stream Analytics には、入力として次の 4 種類のリソースを使用
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) 
 - [Azure BLOB Storage](https://azure.microsoft.com/services/storage/blobs/) 
-- [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) 
+- [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) 
 
 これらの入力ソースは、Stream Analytics ジョブと同じ Azure サブスクリプションに存在していても、異なるサブスクリプションに存在していてもかまいません。
 
-Stream Analytics ジョブへの入力の作成、編集、テストは、[Azure portal](stream-analytics-quick-create-portal.md#configure-job-input)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput)、[.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions)、[REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input)、[Visual Studio](stream-analytics-tools-for-visual-studio-install.md) を使用して行えます。
+Stream Analytics ジョブへの入力の作成、編集、テストは、[Azure portal](stream-analytics-quick-create-portal.md#configure-job-input)、[Azure PowerShell](/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput)、[.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions)、[REST API](/rest/api/streamanalytics/2016-03-01/inputs)、[Visual Studio](stream-analytics-tools-for-visual-studio-install.md) を使用して行えます。
 
 ## <a name="stream-and-reference-inputs"></a>ストリームと参照入力
 データがそのデータ ソースにプッシュされると、Stream Analytics ジョブによって使用され、リアルタイムで処理されます。 入力は 2 つのタイプであるデータ ストリーム入力と参照データ入力に分けられます。
@@ -37,7 +37,7 @@ Stream Analytics ジョブへの入力の作成、編集、テストは、[Azure
 ストリーミングによるデータ入力の詳細については、「[Stream Analytics に入力としてデータをストリーム配信する](stream-analytics-define-inputs.md)」を参照してください
 
 ### <a name="reference-data-input"></a>参照データ入力
-Stream Analytics は、"*参照データ*" と呼ばれる入力もサポートします。 参照データは、完全に静的であるか、ゆっくりと変化しているかのいずれかです。 これは通常、相関関係の関連付けと参照を実行するために使用されます。 たとえば、SQL の結合を実行して静的な値を参照する場合と同様に、データ ストリーム入力のデータを参照データのデータに結合できます。 Azure Blob ストレージ、Azure Data Lake Storage Gen2、Azure SQL Database が現在、参照データの入力ソースとしてサポートされています。 クエリの複雑さと割り当てられているストリーミング ユニットに応じて、参照データのソース BLOB には最大 300 MB というサイズ制限があります (詳細については、参照データのドキュメントの「[サイズ制限](stream-analytics-use-reference-data.md#size-limitation)」セクションをご覧ください)。
+Stream Analytics は、" *参照データ* " と呼ばれる入力もサポートします。 参照データは、完全に静的であるか、ゆっくりと変化しているかのいずれかです。 これは通常、相関関係の関連付けと参照を実行するために使用されます。 たとえば、SQL の結合を実行して静的な値を参照する場合と同様に、データ ストリーム入力のデータを参照データのデータに結合できます。 Azure Blob ストレージ、Azure Data Lake Storage Gen2、Azure SQL Database が現在、参照データの入力ソースとしてサポートされています。 クエリの複雑さと割り当てられているストリーミング ユニットに応じて、参照データのソース BLOB には最大 300 MB というサイズ制限があります (詳細については、参照データのドキュメントの「[サイズ制限](stream-analytics-use-reference-data.md#size-limitation)」セクションをご覧ください)。
 
 参照データ入力に関する詳細については、「[Stream Analytics での参照に参照データを使用する](stream-analytics-use-reference-data.md)」を参照してください
 

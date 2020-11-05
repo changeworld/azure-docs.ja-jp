@@ -3,18 +3,21 @@ title: Azure Cosmos DB クエリ言語の IS_PRIMITIVE
 description: Azure Cosmos DB での SQL システム関数 IS_PRIMITIVE について学習します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 04c8e41f1a431b329f2093851e4430e69ab6aee3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6006a56fd9a8ed6bcb323aebb4e075fa42a2966e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78303785"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341877"
 ---
 # <a name="is_primitive-azure-cosmos-db"></a>IS_PRIMITIVE (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  指定した式の型がプリミティブ (文字列、ブール値、数値、または null) であるかどうかを示すブール値を返します。  
   
 ## <a name="syntax"></a>構文

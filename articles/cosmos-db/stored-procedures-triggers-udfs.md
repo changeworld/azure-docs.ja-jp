@@ -3,18 +3,20 @@ title: Azure Cosmos DB でストアドプロシージャ、トリガー、UDF �
 description: この記事では、Azure Cosmos DB のストアド プロシージャ、トリガー、ユーザー定義関数などの概念について説明します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: e12bae14ede90a3b93a69d963981f097818e65ab
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0bd572da9bba9048e2c8b9c4b426056620c4c265
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480226"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340704"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>ストアド プロシージャ、トリガー、およびユーザー定義関数
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB では、言語が統合された JavaScript によるトランザクション実行が行えます。 Azure Cosmos DB で SQL API を使用するとき、 **ストアド プロシージャ** 、 **トリガー** 、および **ユーザー定義関数 (UDF)** を JavaScript 言語で記述できます。 データベース エンジン内でロジックを実行されるロジックを JavaScript で記述することができます。 トリガー、ストアド プロシージャ、および UDF は、[Azure portal](https://portal.azure.com/)、[Azure Cosmos DB の JavaScript 言語統合クエリ API](javascript-query-api.md)、[Cosmos DB SQL API クライアント SDK](how-to-use-stored-procedures-triggers-udfs.md) を使用して作成および実行できます。
 

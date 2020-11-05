@@ -3,18 +3,21 @@ title: Azure Cosmos DB クエリ言語の PI
 description: Azure Cosmos DB での SQL システム関数 PI について学習します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 27832008e8922e339a648985192a58b111555bc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ebe94d8b06c342fc61fae4255fa354150974c4f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71349654"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341712"
 ---
 # <a name="pi-azure-cosmos-db"></a>PI (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  PI の定数値を返します。  
   
 ## <a name="syntax"></a>構文

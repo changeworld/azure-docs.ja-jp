@@ -3,18 +3,21 @@ title: Azure Cosmos DB クエリ言語の IS_BOOL
 description: Azure Cosmos DB での SQL システム関数 IS_BOOL について学習します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: b7f1cfb09121309e246b314d57a5e4e475bd0983
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4f64a4f6cc738865a3663ddbbab26728b86a8b4
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78303870"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338732"
 ---
 # <a name="is_bool-azure-cosmos-db"></a>IS_BOOL (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  指定した式の型がブール値であるかどうかを示すブール値を返します。  
   
 ## <a name="syntax"></a>構文

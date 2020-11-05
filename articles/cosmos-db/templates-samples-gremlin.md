@@ -3,17 +3,19 @@ title: Azure Cosmos DB Gremlin API の Resource Manager テンプレート
 description: Azure Resource Manager テンプレートを使用して、Azure Cosmos DB Gremlin API を作成および構成します。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: mjbrown
-ms.openlocfilehash: 92266eb59892b68044fa69f548de829398be66dc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2fee06a2ceb9b8062b5150e5716f1ee9abf15cff
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477115"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340630"
 ---
 # <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure Cosmos DB Gremlin API リソースを管理する
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 この記事では、ご利用の Azure Cosmos DB アカウント、データベース、およびグラフのデプロイと管理に役立つ Azure Resource Manager テンプレートの使用方法について説明します。
 

@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 7b016468d858162123e2796e0d76b83b0a1bbf33
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7621a19b510d302454465f9fcbacec27a14dddf9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480056"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340177"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link for Azure Cosmos DB:凖リアルタイム分析のユース ケース
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 [Azure Synapse Link](synapse-link.md) for Azure Cosmos DB は、クラウド ネイティブのハイブリッド トランザクションと分析処理 (HTAP) の機能です。これを使用すると、オペレーション データの準リアルタイム分析を実行できます。 Synapse Link によって、Azure Cosmos DB と Azure Synapse Analytics の間で緊密でシームレスな統合が作成されます。
 
@@ -70,7 +71,7 @@ ms.locfileid: "92480056"
 
 小売業者は、現在、顧客と企業の両方の需要を満たす、セキュリティで保護されたスケーラブルな eコマース ソリューションを構築する必要があります。 これらの eコマース ソリューションで、カスタマイズされた製品やオファーによって顧客を引き込み、取引を迅速かつ安全に処理し、フルフィルメントと顧客サービスに集中する必要があります。 最新の Synapse Link for Azure Cosmos DB と共に Azure Cosmos DB を使用することで、小売業者は、顧客向けにパーソナル化されたレコメンデーションをリアルタイムで生成できます。 次のアーキテクチャに示すように、小売業者は、低待機時間と調整可能な整合性の設定を使用して、ただちに分析情報を入手できます。
 
-:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="サプライ チェーン分析での Azure Synapse Link for Azure Cosmos DB" border="false":::
+:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="リアルタイム パーソナル化での Azure Synapse Link for Azure Cosmos DB" border="false":::
 
 Synapse Link for Azure Cosmos DB のユース ケース:
 
@@ -82,7 +83,7 @@ Synapse Link for Azure Cosmos DB のユース ケース:
 
 次のアーキテクチャでは、IoT 予測メンテナンスで Azure Synapse Link for Azure Cosmos DB のクラウド ネイティブ HTAP 機能を活用しています。
 
-:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="サプライ チェーン分析での Azure Synapse Link for Azure Cosmos DB" border="false" :::
+:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="IOT 予測メンテナンスでの Azure Synapse Link for Azure Cosmos DB" border="false" :::
 
 Synapse Link for Azure Cosmos DB のユース ケース:
 
@@ -104,7 +105,7 @@ Synapse Link for Azure Cosmos DB のユース ケース:
 
 Azure Synapse Link を使用すると、Azure Cosmos DB でトランザクション ワークロードを強化できるだけでなく、過去のオペレーション データの準リアルタイム分析ワークロードを実行できます。 これは ETL の要件なしで実行され、トランザクション ワークロードからのパフォーマンスの分離が保証されます。
 
-次の図は、Azure Cosmos DB を使用したワークロード パターンを示しています。:::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="サプライ チェーン分析での Azure Synapse Link for Azure Cosmos DB" border="false":::
+次の図は、Azure Cosmos DB を使用したワークロード パターンを示しています。:::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="Azure Synapse Link for Azure Cosmos DB のワークロード パターン" border="false":::
 
 ここでは、20 の国/地域にわたってグローバルな運用を行っている eコマース企業 CompanyXYZ の例を示し、在庫管理プラットフォームのトランザクションと分析の両方の要件に対応する単一のリアルタイム データベースとして Azure Cosmos DB を選択することの利点を示します。
 

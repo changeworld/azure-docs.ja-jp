@@ -2,19 +2,21 @@
 title: Qlik Sense を Azure Cosmos DB に接続してデータを可視化する
 description: この記事では、Azure Cosmos DB を Qlik Sense に接続してデータを可視化するのに必要な手順を説明します。
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 author: SnehaGunda
 ms.author: sngun
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 986db85ddbf741dc459625dbd763b9cbbba1c429
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2401786a82b6a3e5bf6c6a893a8e7cd3656f3402
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85263349"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340432"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Qlik Sense を Azure Cosmos DB に接続してデータを可視化する
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 Qlik Sense は、さまざまなソースからのデータを 1 つのビューに結合するデータ視覚化ツールです。 Qlik Sense はデータ内の可能なすべての関係をインデックス化するので、データを直ちに分析して理解することができます。 Qlik Sense を使用して Azure Cosmos DB データを視覚化できます。 この記事では、Azure Cosmos DB を Qlik Sense に接続してデータを可視化するのに必要な手順を説明します。 
 
@@ -62,15 +64,15 @@ Qlik Sense は、さまざまなソースからのデータを 1 つのビュー
 
 4. **[ユーザー DSN]** に切り替え、既に作成した ODBC 接続を選択します。 接続の名前を付けて、 **[作成]** を選択します。 
 
-   :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="新規 Qlik Sense アプリの作成":::
+   :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="新しい接続を作成する":::
 
 5. 接続を作成した後、ビデオ ゲーム データが配置されているデータベースとコレクションを選択し、プレビューすることができます。
 
-   :::image type="content" source="./media/visualize-qlik-sense/choose-database-and-collection.png" alt-text="新規 Qlik Sense アプリの作成"::: 
+   :::image type="content" source="./media/visualize-qlik-sense/choose-database-and-collection.png" alt-text="データベースとコレクションの選択"::: 
 
 6. 次に **[データの追加]** を選択して Qlik Sense にデータを読み込みます。 Qlik Sense にデータを読み込んだ後、分析情報を生成してデータを分析することができます。 その分析情報を使用することも、ビデオ ゲーム売上を調べる独自のアプリを作成することもできます。 次の図に示します 
 
-   :::image type="content" source="./media/visualize-qlik-sense/visualize-data.png" alt-text="新規 Qlik Sense アプリの作成":::
+   :::image type="content" source="./media/visualize-qlik-sense/visualize-data.png" alt-text="データの視覚化":::
 
 ### <a name="limitations-when-connecting-with-odbc"></a>ODBC による接続時の制限事項 
 

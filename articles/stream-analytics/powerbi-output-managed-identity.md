@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: 85925369da8fec83a613226fe248b396fd88105a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29f02f80aa5bff1304dc593d68954e15fe6e66bb
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89613405"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346436"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する
 
@@ -23,7 +23,7 @@ Power BI への出力の[マネージド ID 認証](../active-directory/managed-
 
 この機能を使用するには、次のものが必要です。
 
-- [Pro ライセンス](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro)を持つ Power BI アカウント。
+- [Pro ライセンス](/power-bi/service-admin-purchasing-power-bi-pro)を持つ Power BI アカウント。
 
 - Power BI アカウント内のアップグレードされたワークスペース。 詳細については、この機能の [Power BI のお知らせ](https://powerbi.microsoft.com/blog/announcing-new-workspace-experience-general-availability-ga/)に関する記事を参照してください。
 
@@ -35,7 +35,7 @@ Power BI への出力の[マネージド ID 認証](../active-directory/managed-
 
 2. 出力を構成する前に、この記事の「[Stream Analytics ジョブに Power BI ワークスペースへのアクセス権を付与する](#give-the-stream-analytics-job-access-to-your-power-bi-workspace)」の手順に従って、Power BI ワークスペースへの Stream Analytics ジョブのアクセス権を付与します。
 
-3. Stream Analytic のジョブの **[出力]** セクションに移動し、 **[+ 追加**] を選択し、 **[Power BI]** を選択します。 次に、 **[承認]** ボタンを選択し、Power BI アカウントでログインします。
+3. Stream Analytic のジョブの **[出力]** セクションに移動し、 **[+ 追加** ] を選択し、 **[Power BI]** を選択します。 次に、 **[承認]** ボタンを選択し、Power BI アカウントでログインします。
 
    ![Power BI アカウントを承認する](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-authorize-powerbi.png)
 
@@ -45,7 +45,7 @@ Power BI への出力の[マネージド ID 認証](../active-directory/managed-
 
 ## <a name="azure-resource-manager-deployment"></a>Azure Resource Manager デプロイ
 
-Azure Resource Manager を使用すると、Stream Analytics ジョブのデプロイを完全に自動化できます。 Azure PowerShell または [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用して、Resource Manager テンプレートをデプロイできます。 次の例では、Azure CLI を使用しています。
+Azure Resource Manager を使用すると、Stream Analytics ジョブのデプロイを完全に自動化できます。 Azure PowerShell または [Azure CLI](/cli/azure/) を使用して、Resource Manager テンプレートをデプロイできます。 次の例では、Azure CLI を使用しています。
 
 
 1. Resource Manager テンプレートのリソース セクションに次のプロパティを含めることで、マネージド ID を持つ **Microsoft.StreamAnalytics/streamingjobs** リソースを作成できます。
@@ -160,9 +160,9 @@ Stream Analytics ジョブが作成されたので、Power BI ワークスペー
 ### <a name="use-the-power-bi-ui"></a>Power BI UI を使用する
 
    > [!Note]
-   > UI を使用して Stream Analytics ジョブを Power BI ワークスペースに追加するには、Power BI 管理ポータルの **[開発者向け設定]** でサービス プリンシパル アクセスを有効にする必要もあります。 詳細については、「[サービス プリンシパルの使用を始める](https://docs.microsoft.com/power-bi/developer/embed-service-principal)」を参照してください。
+   > UI を使用して Stream Analytics ジョブを Power BI ワークスペースに追加するには、Power BI 管理ポータルの **[開発者向け設定]** でサービス プリンシパル アクセスを有効にする必要もあります。 詳細については、「[サービス プリンシパルの使用を始める](/power-bi/developer/embed-service-principal)」を参照してください。
 
-1. ワークスペースのアクセス設定に移動します。 詳細については、次の記事を参照してください。「[ワークスペースへのアクセスを許可する](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces#give-access-to-your-workspace)」
+1. ワークスペースのアクセス設定に移動します。 詳細については、次の記事を参照してください。「[ワークスペースへのアクセスを許可する](/power-bi/service-create-the-new-workspaces#give-access-to-your-workspace)」
 
 2. テキストボックスに Stream Analytics ジョブの名前を入力し、アクセス レベルとして **[Contributor]\(共同作成者\)** を選択します。
 
@@ -195,7 +195,7 @@ Add-PowerBIWorkspaceUser -WorkspaceId <group-id> -PrincipalId <principal-id> -Pr
 
 ### <a name="use-the-power-bi-rest-api"></a>Power BI REST API を使用する
 
-"グループ ユーザーの追加" REST API を直接使用して、Stream Analytics ジョブを共同作成者としてワークスペースに追加することもできます。 この API の完全なドキュメントは次の場所にあります。[グループ - グループ ユーザーの追加](https://docs.microsoft.com/rest/api/power-bi/groups/addgroupuser)。
+"グループ ユーザーの追加" REST API を直接使用して、Stream Analytics ジョブを共同作成者としてワークスペースに追加することもできます。 この API の完全なドキュメントは次の場所にあります。[グループ - グループ ユーザーの追加](/rest/api/power-bi/groups/addgroupuser)。
 
 **要求のサンプル**
 ```http

@@ -3,18 +3,21 @@ title: Azure Cosmos DB の "見つかりません" 例外をトラブルシュ�
 description: "\"見つかりません\" 例外を診断して修正する方法について説明します。"
 author: j82w
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 83b28c562dca0c20b6f78058f1c7f7def60416ee
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: f0fa8e5923639ea74a83a9a775bd5d580234b7ed
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496089"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340126"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Azure Cosmos DB の "見つかりません" 例外を診断してトラブルシューティングする
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 HTTP 状態コード 404 は、リソースがもう存在しないことを表します。
 
 ## <a name="expected-behavior"></a>正しい動作

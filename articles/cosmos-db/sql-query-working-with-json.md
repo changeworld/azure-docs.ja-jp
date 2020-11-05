@@ -3,17 +3,19 @@ title: Azure Cosmos DB での JSON の使用
 description: 入れ子になった JSON プロパティに対するクエリの実行とアクセス、および Azure Cosmos DB での特殊文字の使用について説明します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/19/2020
 ms.author: tisande
-ms.openlocfilehash: 355f73d46215aa9e05f4ea6d91bb173c77509b63
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9a9300db1adc3ff238c44887012400702690b0e8
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270855"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337831"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>Azure Cosmos DB での JSON の使用
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB の SQL (Core) API では、項目は JSON として保存されます。 型システムおよび式は、JSON 型のみを扱うように制限されます。 詳細については、[JSON の仕様](https://www.json.org/)に関する記事を参照してください。
 

@@ -5,17 +5,19 @@ author: anfeldma-ms
 ms.custom: devx-track-java
 ms.author: anfeldma
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 24e9087a175385f8e5c347a1d2df3b2785868506
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b33524acd09cbf565127dc81ef2b5bfa16b4504d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327856"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339769"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 を使用するようにアプリケーションを移行する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!IMPORTANT]  
 > この SDK の詳細については、Azure Cosmos DB Java SDK v4 の[リリース ノート](sql-api-sdk-java-v4.md)、[Maven リポジトリ](https://mvnrepository.com/artifact/com.azure/azure-cosmos)、Azure Cosmos DB Java SDK v4 の[パフォーマンスに関するヒント](performance-tips-java-sdk-v4-sql.md)、Azure Cosmos DB Java SDK v4 の[トラブルシューティング ガイド](troubleshoot-java-sdk-v4-sql.md)を参照してください。
@@ -62,11 +64,11 @@ Azure Cosmos DB Sync Java SDK 2.x.x を使用している場合、Azure Cosmos D
 
 * Azure Cosmos DB Java SDK 3.x.x と 4.0 では、Sync API と Async API の両方が提供されています。
 
-  * **Java SDK 4.0**: クラス名で `Cosmos` の後に `Async` が追加されていない限り、すべてのクラスは Sync API に属します。
+  * **Java SDK 4.0** : クラス名で `Cosmos` の後に `Async` が追加されていない限り、すべてのクラスは Sync API に属します。
 
-  * **Java SDK 3.x.x**: クラス名で `Cosmos` の後に `Async` が追加されていない限り、すべてのクラスは Async API に属します。
+  * **Java SDK 3.x.x** : クラス名で `Cosmos` の後に `Async` が追加されていない限り、すべてのクラスは Async API に属します。
 
-  * **Async Java SDK 2.x.x**: クラス名は Sync Java SDK 2.x.x に似ていますが、名前は *Async* で始まります。
+  * **Async Java SDK 2.x.x** : クラス名は Sync Java SDK 2.x.x に似ていますが、名前は *Async* で始まります。
 
 ### <a name="hierarchical-api-structure"></a>階層型の API 構造
 

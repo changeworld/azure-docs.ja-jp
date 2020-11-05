@@ -4,13 +4,12 @@ description: Azure Kubernetes Service (AKS) で Azure Policy を使用してポ�
 services: container-service
 ms.topic: article
 ms.date: 09/22/2020
-author: jluk
-ms.openlocfilehash: 5178aa30c3bfec014dd10e2c4f3de182aaef7e68
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 8e437095b3d527647a453ba89adaa2ab62672177
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900116"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348527"
 ---
 # <a name="secure-pods-with-azure-policy"></a>Azure Policy を使用したポッドのセキュリティ保護
 

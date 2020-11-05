@@ -3,19 +3,21 @@ title: Azure Cosmos DB 変更フィードを使用してリアルタイムのデ
 description: この記事では、小売企業が変更フィードを活用してユーザーのパターンを理解し、リアルタイムでのデータ分析を実行して視覚化する方法について説明します。
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: 84a39ade902bd22d67e9b3a7d40b392bfd83dfd3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d0eef49ea82afe50c5e178de9ad5e82bcb0db0eb
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475917"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342166"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB 変更フィードを使用してリアルタイムのデータ分析を視覚化する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB 変更フィードは、Azure Cosmos コンテナーのレコードが作成または変更されるたびに、それらのレコードのフィードを継続的かつ増分的に取得するメカニズムです。 変更フィードのサポートは、コンテナーに加えられた変更をリッスンすることで機能します。 変更されたドキュメントは、変更された順に並べ替えられた一覧に出力されます。 変更フィードについて詳しくは、[変更フィードでの作業](change-feed.md)に関する記事をご覧ください。 
 
@@ -170,7 +172,7 @@ Cosmos コンテナーで新しいドキュメントが作成されるか、ま�
 
 3. **コレクション** 名と **データベース** 名を追加します (別の名前にすることを選択していない限り、これらの名前は **changefeedlabcollection** と **changefeedlabdatabase** にしてください)。
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="プロジェクトのビジュアル":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="接続文字列を更新する":::
  
 4. 編集したすべてのファイルの変更を保存します。  
 
@@ -180,7 +182,7 @@ Cosmos コンテナーで新しいドキュメントが作成されるか、ま�
 
 7. [Azure portal](https://portal.azure.com/)、リソース グループ内の Cosmos DB アカウント、 **データ エクスプローラー** の順に移動すると、 **changefeedlabcollection** にランダム化されたデータがインポートされたことが確認できます。
  
-   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="プロジェクトのビジュアル":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="ポータルで生成されたデータ":::
 
 ## <a name="set-up-a-stream-analytics-job"></a>Stream Analytics のジョブを設定する
 
@@ -190,7 +192,7 @@ Azure Stream Analytics は、ストリーミング データをリアルタイ�
 
 2. 以下に示すように、 **[入力]** を選択します。  
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="プロジェクトのビジュアル":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="入力を作成する":::
 
 3. **[+ ストリーム入力の追加]** を選択します。 次に、ドロップダウン メニューから **[イベント ハブ]** を選択します。  
 
@@ -222,7 +224,7 @@ Azure Stream Analytics は、ストリーミング データをリアルタイ�
 
 8. その後、 **streamjob1** に戻り、 **[クエリの編集]** を選択します。
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="プロジェクトのビジュアル":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="クエリを編集する":::
  
 9. クエリ ウィンドウに次のクエリを貼り付けます。 **AVERAGE PRICE** クエリは、ユーザーによって閲覧されたすべての商品の平均価格、ユーザーのカートに追加されたすべての商品の平均価格、ユーザーによって購入されたすべての商品の平均価格を計算します。 このメトリックは、e コマース企業が商品を販売する価格や投資する在庫を決定するのに役立ちます。 たとえば、閲覧された商品の平均価格が購入された商品の平均価格を大幅に上回る場合、企業はより価格の低い商品を在庫に追加することを選択する可能性があります。
 
@@ -315,7 +317,7 @@ Power BI は、データを分析し、洞察を共有する一連のビジネ�
 
    これらのグラフを表示するダッシュボードの例は次のようになります。
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="プロジェクトのビジュアル":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="スクリーンショットには、[Average Price of Items by Action]\(アクションごとの品目の平均価格)、[Unique Visitors]\(一意の訪問者)、[Revenue]\(収益)、および [Top 5 Items Purchased]\(上位 5 つの購入品目) という名前のグラフを含むサンプルのダッシュボードが表示されています。":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>省略可能:eコマース サイトの視覚化
 
@@ -329,13 +331,13 @@ Power BI は、データを分析し、洞察を共有する一連のビジネ�
 
 2. **topItems** コレクションを選択し、 **[スケールと設定]** で、topItems が 30 秒ごとに更新されるように、 **[Time to Live]** を **[30 秒]** に設定します。
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="プロジェクトのビジュアル":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Time to Live":::
 
 3. **topItems** コレクションに最も頻繁に購入された商品のデータを入力するには、 **streamjob1** に戻り、新しい **出力** を追加します。 **[Cosmos DB]** を選択します。
 
 4. 以下の図に示すように、必須フィールドに入力します。
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="プロジェクトのビジュアル":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Cosmos の出力":::
  
 5. ラボの前のパートでオプションの TOP 5 クエリを追加した場合は、パート 5a に進みます。 それ以外の場合は、パート 5b に進みます。
 

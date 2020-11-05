@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2020
 ms.author: kumud
-ms.openlocfilehash: a13a2a081815f2a3b668caf9b4e78c2208601cb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3a30d13aeef2ffd8e03a5a5d7ddf8b58a336ee5
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84702994"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348323"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell"></a>Azure で IPv6 デュアル スタック アプリケーションをデプロイする - PowerShell
 
@@ -30,7 +30,7 @@ PowerShell をローカルにインストールして使用することを選択
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-デュアル スタック仮想ネットワークを作成する前に、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) でリソース グループを作成する必要があります。 次の例では、*myRGDualStack* という名前のリソース グループを *east us* の場所に作成します。
+デュアル スタック仮想ネットワークを作成する前に、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) でリソース グループを作成する必要があります。 次の例では、 *myRGDualStack* という名前のリソース グループを *east us* の場所に作成します。
 
 ```azurepowershell-interactive
    $rg = New-AzResourceGroup `
@@ -39,7 +39,7 @@ PowerShell をローカルにインストールして使用することを選択
 ```
 
 ## <a name="create-ipv4-and-ipv6-public-ip-addresses"></a>IPv4 および IPv6 パブリック IP アドレスを作成する
-インターネットから仮想マシンにアクセスするには、ロード バランサーの IPv4 および IPv6 パブリック IP アドレスが必要です。 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用してパブリック IP アドレスを作成します。 次の例では、*dsRG1* リソース グループ内に *dsPublicIP_v4* および *dsPublicIP_v6* という名前の IPv4 および IPv6 パブリック IP アドレスを作成します。
+インターネットから仮想マシンにアクセスするには、ロード バランサーの IPv4 および IPv6 パブリック IP アドレスが必要です。 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用してパブリック IP アドレスを作成します。 次の例では、 *dsRG1* リソース グループ内に *dsPublicIP_v4* および *dsPublicIP_v6* という名前の IPv4 および IPv6 パブリック IP アドレスを作成します。
 
 ```azurepowershell-interactive
 $PublicIP_v4 = New-AzPublicIpAddress `
@@ -84,7 +84,7 @@ RDP 接続を使用して仮想マシンにアクセスするには、[New-AzPub
 
 ### <a name="create-front-end-ip"></a>フロントエンド IP を作成する
 
-[New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) を使用して、フロントエンド IP を作成します。 次の例では、*dsLbFrontEnd_v4* および *dsLbFrontEnd_v6* という名前の IPv4 および IPv6 フロントエンド IP 構成を作成します。
+[New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) を使用して、フロントエンド IP を作成します。 次の例では、 *dsLbFrontEnd_v4* および *dsLbFrontEnd_v6* という名前の IPv4 および IPv6 フロントエンド IP 構成を作成します。
 
 ```azurepowershell-interactive
 $frontendIPv4 = New-AzLoadBalancerFrontendIpConfig `
@@ -99,7 +99,7 @@ $frontendIPv6 = New-AzLoadBalancerFrontendIpConfig `
 
 ### <a name="configure-back-end-address-pool"></a>バックエンド アドレス プールを構成する
 
-[New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) を使用して、バックエンド アドレス プールを作成します。 残りの手順では、VM をこのバックエンド プールにアタッチします。 次の例では、IPV4 と IPv6 の両方の NIC 構成を持つ VM を含めるための、*dsLbBackEndPool_v4* および *dsLbBackEndPool_v6* という名前のバックエンド アドレス プールを作成します。
+[New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) を使用して、バックエンド アドレス プールを作成します。 残りの手順では、VM をこのバックエンド プールにアタッチします。 次の例では、IPV4 と IPv6 の両方の NIC 構成を持つ VM を含めるための、 *dsLbBackEndPool_v4* および *dsLbBackEndPool_v6* という名前のバックエンド アドレス プールを作成します。
 
 ```azurepowershell-interactive
 $backendPoolv4 = New-AzLoadBalancerBackendAddressPoolConfig `
@@ -117,7 +117,7 @@ $probe = New-AzLoadBalancerProbeConfig -Name MyProbe -Protocol tcp -Port 3389 -I
 
 ロード バランサー規則の目的は、一連の VM に対するトラフィックの分散方法を定義することです。 着信トラフィック用のフロントエンド IP 構成と、トラフィックを受信するためのバックエンド IP プールを、必要な発信元ポートと宛先ポートと共に定義します。 確実に正常な VM のみでトラフィックを受信するために、必要に応じて、正常性プローブを定義できます。 Basic Load Balancer では IPv4 プローブを使用して、VM 上の IPv4 と IPv6 の両方のエンドポイントの正常性を評価します。 Standard Load Balancer には、明示的な IPv6 正常性プローブのサポートが含まれます。
 
-[Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) を使用して、ロード バランサー規則を作成します。 次の例では、*dsLBrule_v4* および *dsLBrule_v6* という名前のロード バランサー規則を作成し、IPv4 および IPv6 フロントエンド IP 構成に応じて、*TCP* ポート *80* のトラフィックを負荷分散します。
+[Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) を使用して、ロード バランサー規則を作成します。 次の例では、 *dsLBrule_v4* および *dsLBrule_v6* という名前のロード バランサー規則を作成し、IPv4 および IPv6 フロントエンド IP 構成に応じて、 *TCP* ポート *80* のトラフィックを負荷分散します。
 
 ```azurepowershell-interactive
 $lbrule_v4 = New-AzLoadBalancerRuleConfig `
@@ -141,7 +141,7 @@ $lbrule_v6 = New-AzLoadBalancerRuleConfig `
 
 ### <a name="create-load-balancer"></a>ロード バランサーの作成
 
-[New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) を使用して、Standard ロード バランサーを作成します。 次の例では、前述の手順で作成した IPv4 と IPv6 フロントエンド IP の構成、バックエンド プール、および負荷分散規則を使用して、*myLoadBalancer* という名前のパブリック Standard Load Balancer を作成します。
+[New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) を使用して、Standard ロード バランサーを作成します。 次の例では、前述の手順で作成した IPv4 と IPv6 フロントエンド IP の構成、バックエンド プール、および負荷分散規則を使用して、 *myLoadBalancer* という名前のパブリック Standard Load Balancer を作成します。
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer `
@@ -151,8 +151,8 @@ $lb = New-AzLoadBalancer `
 -Sku "Standard" `
 -FrontendIpConfiguration $frontendIPv4,$frontendIPv6 `
 -BackendAddressPool $backendPoolv4,$backendPoolv6 `
--LoadBalancingRule $lbrule_v4,$lbrule_v6
-
+-LoadBalancingRule $lbrule_v4,$lbrule_v6 `
+-probe $probe
 ```
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する
@@ -160,7 +160,7 @@ VM をいくつかデプロイしてから、バランサーをテストでき�
 ### <a name="create-an-availability-set"></a>可用性セットの作成
 アプリの高可用性を高めるには、可用性セットに VM を配置します。
 
-可用性セットを作成するには、[New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) を使用します。 次の例では、*myAvailabilitySet* という名前の可用性セットを作成します。
+可用性セットを作成するには、[New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) を使用します。 次の例では、 *myAvailabilitySet* という名前の可用性セットを作成します。
 
 ```azurepowershell-interactive
 $avset = New-AzAvailabilitySet `
@@ -223,7 +223,7 @@ $nsg = New-AzNetworkSecurityGroup `
 ```
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用して仮想ネットワークを作成します。 次の例では、*mySubnet* と共に *dsVnet* という名前の仮想ネットワークを作成します。
+[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用して仮想ネットワークを作成します。 次の例では、 *mySubnet* と共に *dsVnet* という名前の仮想ネットワークを作成します。
 
 ```azurepowershell-interactive
 # Create dual stack subnet
@@ -245,17 +245,17 @@ $vnet = New-AzVirtualNetwork `
 [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) を使用して仮想 NIC を作成します。 次の例では、IPv4 と IPv6 の両方の構成を持つ 2 つの仮想 NIC を作成します。 (以降の手順では、アプリ用に作成する VM ごとに仮想 NIC を 1 つ)。
 
 ```azurepowershell-interactive
-  $Ip4Config=New-AzNetworkInterfaceIpConfig `
-    -Name dsIp4Config `
+  $Ip4Config=New-AzNetworkInterfaceIpConfig `
+    -Name dsIp4Config `
     -Subnet $vnet.subnets[0] `
-    -PrivateIpAddressVersion IPv4 `
+    -PrivateIpAddressVersion IPv4 `
     -LoadBalancerBackendAddressPool $backendPoolv4 `
     -PublicIpAddress  $RdpPublicIP_1
       
-  $Ip6Config=New-AzNetworkInterfaceIpConfig `
-    -Name dsIp6Config `
+  $Ip6Config=New-AzNetworkInterfaceIpConfig `
+    -Name dsIp6Config `
     -Subnet $vnet.subnets[0] `
-    -PrivateIpAddressVersion IPv6 `
+    -PrivateIpAddressVersion IPv6 `
     -LoadBalancerBackendAddressPool $backendPoolv6
     
   $NIC_1 = New-AzNetworkInterface `
@@ -265,10 +265,10 @@ $vnet = New-AzVirtualNetwork `
     -NetworkSecurityGroupId $nsg.Id `
     -IpConfiguration $Ip4Config,$Ip6Config 
     
-  $Ip4Config=New-AzNetworkInterfaceIpConfig `
-    -Name dsIp4Config `
+  $Ip4Config=New-AzNetworkInterfaceIpConfig `
+    -Name dsIp4Config `
     -Subnet $vnet.subnets[0] `
-    -PrivateIpAddressVersion IPv4 `
+    -PrivateIpAddressVersion IPv4 `
     -LoadBalancerBackendAddressPool $backendPoolv4 `
     -PublicIpAddress  $RdpPublicIP_2  
 
@@ -347,8 +347,8 @@ foreach ($NIC in $NICsInRG) {
 
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Azure portal で IPv6 デュアル スタック仮想ネットワークを表示する
 次のようにして、Azure portal で IPv6 デュアル スタック仮想ネットワークを表示することができます。
-1. ポータルの検索バーで、「*dsVnet*」と入力します。
-2. 検索結果に **dsVnet** が表示されたら、それを選択します。 これにより、*dsVnet* という名前のデュアル スタック仮想ネットワークの **[概要]** ページが起動します。 デュアル スタック仮想ネットワークには、*dsSubnet* という名前のデュアル スタック サブネットにある、IPv4 と IPv6 の両方の構成を持つ 2 つの NIC が表示されます。
+1. ポータルの検索バーで、「 *dsVnet* 」と入力します。
+2. 検索結果に **dsVnet** が表示されたら、それを選択します。 これにより、 *dsVnet* という名前のデュアル スタック仮想ネットワークの **[概要]** ページが起動します。 デュアル スタック仮想ネットワークには、 *dsSubnet* という名前のデュアル スタック サブネットにある、IPv4 と IPv6 の両方の構成を持つ 2 つの NIC が表示されます。
 
   ![Azure の IPv6 デュアル スタック仮想ネットワーク](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 

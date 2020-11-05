@@ -3,12 +3,12 @@ title: リソースの名前付けに関する制限事項
 description: Azure リソースの名前付けに関する規則と制限事項を示します。
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: ff92eff9351e944f8baa11cf981e8511ad8e4ae1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 206bd6604ecd9dfece9c946c653b2720e75ff1e3
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653368"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347796"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure リソースの名前付け規則と制限事項
 
@@ -489,11 +489,12 @@ ms.locfileid: "91653368"
 > | azureFirewalls | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | bastionHosts | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | connections | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
-> | dnsZones | resource group | 1-63 文字<br><br>2 から 34 のラベル<br><br>各ラベルは、ピリオドで区切られた一連の文字です。 たとえば、**contoso.com** には 2 つのラベルがあります。 | 各ラベルには、英数字、アンダースコア、およびハイフンを含めることができます。<br><br>各ラベルはピリオドで区切られます。 |
+> | dnsZones | resource group | 1-63 文字<br><br>2 から 34 のラベル<br><br>各ラベルは、ピリオドで区切られた一連の文字です。 たとえば、 **contoso.com** には 2 つのラベルがあります。 | 各ラベルには、英数字、アンダースコア、およびハイフンを含めることができます。<br><br>各ラベルはピリオドで区切られます。 |
 > | expressRouteCircuits | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | firewallPolicies | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | firewallPolicies/ruleGroups | ファイアウォール ポリシー | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | frontDoors | グローバル | 5-64 | 英数字とハイフン。<br><br>先頭と末尾には英数字を使用します。 |
+> | frontdoorWebApplicationFirewallPolicies | resource group | 1-128 | 英数字。<br><br>文字で開始します。 |
 > | loadBalancers | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | loadBalancers/inboundNatRules | ロード バランサー | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | localNetworkGateways | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
@@ -501,7 +502,7 @@ ms.locfileid: "91653368"
 > | networkSecurityGroups | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | networkSecurityGroups/securityRules | ネットワーク セキュリティ グループ | 1 ～ 80 |  英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | networkWatchers | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
-> | privateDnsZones | resource group | 1-63 文字<br><br>2 から 34 のラベル<br><br>各ラベルは、ピリオドで区切られた一連の文字です。 たとえば、**contoso.com** には 2 つのラベルがあります。 | 各ラベルには、英数字、アンダースコア、およびハイフンを含めることができます。<br><br>各ラベルはピリオドで区切られます。 |
+> | privateDnsZones | resource group | 1-63 文字<br><br>2 から 34 のラベル<br><br>各ラベルは、ピリオドで区切られた一連の文字です。 たとえば、 **contoso.com** には 2 つのラベルがあります。 | 各ラベルには、英数字、アンダースコア、およびハイフンを含めることができます。<br><br>各ラベルはピリオドで区切られます。 |
 > | privateDnsZones / virtualNetworkLinks | プライベート DNS ゾーン | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | publicIPAddresses | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | publicIPPrefixes | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
@@ -550,7 +551,7 @@ ms.locfileid: "91653368"
 > [!div class="mx-tableFixed"]
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
-> | dashboards | resource group | 3-160 | 英数字とハイフン。<br><br>制限のある文字を使用するには、**hidden-title** という名前のタグを、使用するダッシュボード名とともに追加します。 ポータルでは、ダッシュボードを表示するときにその名前が表示されます。 |
+> | dashboards | resource group | 3-160 | 英数字とハイフン。<br><br>制限のある文字を使用するには、 **hidden-title** という名前のタグを、使用するダッシュボード名とともに追加します。 ポータルでは、ダッシュボードを表示するときにその名前が表示されます。 |
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 

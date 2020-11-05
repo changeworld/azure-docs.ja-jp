@@ -4,17 +4,19 @@ description: この記事では、Azure Cosmos DB 内の変更フィードの読
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 0252af90a6afb5b2a59620afaa61702f208991e7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7021367e1230573343ddf57ccd399d998ad5280e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785257"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339276"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB の変更フィードの読み取り
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB の変更フィードは、プッシュ モデルかプル モデルのいずれかを使用して操作できます。 プッシュ モデルでは、変更フィード プロセッサによって、作業が、その作業を処理するためのビジネス ロジックを備えたクライアントにプッシュされます。 ただし、作業を確認して最後に処理された作業の状態を保存する場合の複雑さは、変更フィード プロセッサ内で処理されます。
 

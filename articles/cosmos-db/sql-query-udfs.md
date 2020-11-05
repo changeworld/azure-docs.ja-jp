@@ -3,18 +3,20 @@ title: Azure Cosmos DB でのユーザー定義関数 (UDF)
 description: Azure Cosmos DB でのユーザー定義関数について説明します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: c17fcbb7f6cd2d7f4948defad49e8319a013eb86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c7050042d59156e1203b5830d710e61bd8eb382
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91262061"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341894"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure Cosmos DB でのユーザー定義関数 (UDF)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 SQL API ではユーザー定義関数 (UDF) のサポートを提供しています。 スカラー UDF を使用して、0 個またはいくつかの引数を渡し、1 つの引数を結果として返すことができます。 API によって、引数のそれぞれが有効な JSON 値であることがチェックされます。  
 

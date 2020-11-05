@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/09/2020
-ms.openlocfilehash: 46102305e99c94fc71ad0934a2c0063fdcbeec4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3599052e49b91747580bf506f06ebfb8d2e34423
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87317792"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346810"
 ---
 # <a name="create-an-azure-container-offer"></a>Azure Container オファーを作成する
 
@@ -38,8 +38,8 @@ ms.locfileid: "87317792"
 
 コンテナー イメージを管理するためのスクリプト環境として、次のいずれか一方または両方を選択します。
 
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-3.7.0&viewFallbackFrom=azps-3.6.1)
-- [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
+- [Azure PowerShell](/powershell/azure/)
+- [Azure CLI](/cli/azure/)。
 
 開発環境には次にツールを加えることを推奨します｡
 

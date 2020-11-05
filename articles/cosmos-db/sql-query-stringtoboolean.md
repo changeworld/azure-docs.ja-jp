@@ -3,18 +3,21 @@ title: Azure Cosmos DB クエリ言語での StringToBoolean
 description: Azure Cosmos DB の SQL システム関数 StringToBoolean について説明します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: ce11db91eff51e669f0917fbf34b1d560d0e9f07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ad7ca9e2e50395effcc50e776eee3f1740fbb7a
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78296543"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337916"
 ---
 # <a name="stringtoboolean-azure-cosmos-db"></a>StringToBoolean (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  ブール値に変換された式を返します。 式を変換できない場合は、undefined を返します。  
   
 ## <a name="syntax"></a>構文

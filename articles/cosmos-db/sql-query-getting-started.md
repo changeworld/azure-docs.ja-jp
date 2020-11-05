@@ -3,17 +3,19 @@ title: Azure Cosmos DB で SQL クエリの使用を開始する
 description: SQL クエリを使用して Azure Cosmos DB からデータのクエリを実行する方法について説明します。 Azure Cosmos DB のコンテナーにサンプル データをアップロードしてクエリを実行できます。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: tisande
-ms.openlocfilehash: a95fe72df152e297114f4bde59b11137c6accdb6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7a4b2a778fc3d520c0ce85bed5bec0b49fc14384
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488148"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341911"
 ---
 # <a name="getting-started-with-sql-queries"></a>SQL クエリの使用を開始する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB SQL API アカウントでは、次の 2 つの方法でデータを読み取ることができます。
 

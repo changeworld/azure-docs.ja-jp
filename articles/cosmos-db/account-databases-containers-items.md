@@ -4,18 +4,18 @@ description: この記事では、Azure Cosmos のアカウント、データベ
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
-ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 1178a5e2850279820925c9bd02554ec7d5adf9e6
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 37f1c9f59b6ffb45e1b874d2a6969bf263d2d5eb
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283288"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341367"
 ---
 # <a name="azure-cosmos-db-resource-model"></a>Azure Cosmos DB リソース モデル
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB はフルマネージドのサービスとしてのプラットフォーム (PaaS) です。 Azure Cosmos DB の使用を開始するには、最初に、Azure サブスクリプション内に Azure Cosmos アカウントを作成し、その下にデータベース、コンテナー、項目を作成する必要があります。 この記事では、Azure Cosmos DB リソース モデルと、リソース モデル階層内のさまざまなエンティティについて説明します。
 
@@ -33,7 +33,7 @@ Azure サブスクリプションでアカウントを作成したら、デー�
 
 次の画像は、Azure Cosmos DB アカウントのさまざまなエンティティの階層を示しています。
 
-:::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos アカウントの階層" border="false":::
+:::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos アカウントのエンティティ" border="false":::
 
 ## <a name="azure-cosmos-databases"></a>Azure Cosmos データベース
 

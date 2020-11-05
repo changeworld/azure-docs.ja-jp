@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: 4ee442d1983e4f7c1825690e1c780454272971aa
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b59bc33698be516ec5a2e289b52dafcb9e9efcbe
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521307"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341860"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure リージョン間で Azure VM を移動するためのサポート
 
@@ -101,7 +101,7 @@ SUSE Linux Enterprise Server 15 および 15 SP1 |  すべての SUSE 15 およ�
 **設定** | **サポート** | **詳細**
 --- | --- | ---
 サイズ | 少なくとも 2 つの CPU コアと 1 GB の RAM を備えた任意の Azure VM サイズ | [Azure 仮想マシンのサイズ](../virtual-machines/sizes-general.md)を確認してください。
-可用性セット | 現在、サポートされていません | 既定のオプションを使用して可用性セットを持つ Azure VM を移動コレクションに追加すると、準備プロセスが失敗します。 VM を可用性ゾーンに移動するか、単一インスタンス VM として移動するかを選択できます。 これらの設定は、ターゲット プロパティの編集ページで変更できます。
+可用性セット | サポートされています | サポートされています。
 可用性ゾーン | サポートされています | ターゲット リージョンのサポートによってはサポートされます。
 Azure ギャラリー イメージ (Microsoft が公開) | サポートされています | サポート対象のオペレーティング システムで VM が実行されている場合にサポートされます。
 Azure ギャラリー イメージ (サード パーティが公開)  | サポートされています | サポート対象のオペレーティング システムで VM が実行されている場合にサポートされます。

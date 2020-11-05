@@ -3,17 +3,19 @@ title: Azure Cosmos DB Capacity Planner を使用してコストを見積もる
 description: Azure Cosmos DB Capacity Planner を使用すると、ワークロードに必要なスループット (RU/秒) とコストを見積もることができます。 この記事では、新しいバージョンの Capacity Planner を使用して、必要なスループットとコストを見積もる方法について説明します。
 author: deborahc
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: dech
-ms.openlocfilehash: 5b1edb5bbd3ac6fa415f24670c98cd99ffb74fc6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 017aeaaa24e8ac2d493d0de81a7abb655bae5611
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488505"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342081"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner"></a>Azure Cosmos DB Capacity Planner を使用して RU/秒を見積もる
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 ワークロードにとって適切な量のプロビジョニング済みスループット、つまり[要求ユニット (RU/秒)](request-units.md) を使用して Azure Cosmos データベースとコンテナーを構成することは、コストとパフォーマンスの最適化に不可欠です。 この記事では、Azure Cosmos DB [Capacity Planner](https://cosmos.azure.com/capacitycalculator/) を使用して、ワークロードに必要な RU/秒とコストの見積もりを取得する方法について説明します。 
 
@@ -62,7 +64,7 @@ Capacity Planner は、2 つのモードで使用できます。
 
 また、 **[Save Estimate]\(見積もりの保存\)** ボタンを使用して、現在の見積もりを含む CSV ファイルをダウンロードすることもできます。 
 
-:::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode.png" alt-text="Capacity Planner の基本モード":::
+:::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode.png" alt-text="Capacity Planner の詳細モード":::
 
 Azure Cosmos DB Capacity Planner に表示される価格は、スループットとストレージの公開価格料金に基づいた見積もりです。 すべての価格は米ドルで表示されます。 リージョン別のすべての料金を確認するには、[Azure Cosmos DB の価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。  
 

@@ -8,12 +8,12 @@ ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 404f435e321e53694807a627121d84f6cbf6724d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4e31af3a66927e0c93caf477a7daf1b86eebf8f5
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359681"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348697"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>マネージド ディスクのパフォーマンス レベル (プレビュー)
 
@@ -55,10 +55,6 @@ Azure Disk Storage には現在、短期間の予期しないトラフィック�
 - ディスクのレベルを変更する前に、VM の割り当てを解除するか、実行中の VM からディスクを切断する必要があります。
 - P60、P70、P80 の各パフォーマンス レベルの使用は、4,096 GiB 以上のディスクに制限されています。
 - ディスクのパフォーマンス レベルは、24 時間ごとに 1 回だけダウングレードできます。
-
-## <a name="regional-availability"></a>リージョン別の提供状況
-
-管理ディスクのパフォーマンス レベルを調整できるかどうかは、現在、米国東部2、米国中南部、米国中西部、オーストラリア南部東部リージョンのプレミアム SSD でのみご利用いただけます。
 
 ## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>ベースライン レベルよりも高いレベルで空のデータ ディスクを作成する
 

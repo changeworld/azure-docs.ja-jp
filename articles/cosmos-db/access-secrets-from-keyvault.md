@@ -4,19 +4,19 @@ description: Azure Key Vault を使用し、Azure Cosmos DB の接続文字列�
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
-ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9c4f9954977d6c5523bc70586d3b0cbb0328bcd8
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6c5ef4f0ee0d68e2eae755f000423db4620b834d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278039"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341384"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Key Vault を使用して Azure Cosmos キーをセキュリティ保護する 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 >[!IMPORTANT]
 > Azure Cosmos DB キーにアクセスするために推奨されるソリューションは、[システムによって割り当てられたマネージド ID](managed-identity-based-authentication.md) を使用することです。 サービスでマネージド ID を利用できない場合は、[証明書ベースのソリューション](certificate-based-authentication.md)を使用します。 マネージド ID ソリューションと証明書ベースのソリューションのどちらもニーズを満たしていない場合は、次のキー コンテナー ソリューションを使用してください。
@@ -61,20 +61,20 @@ Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るた�
 
 1. Azure Web アプリケーションを作成します。または、[GitHub リポジトリ](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/Demo/keyvaultdemo)からアプリケーションをダウンロードできます。 これは単純な MVC アプリケーションです。  
 
-2. ダウンロードしたアプリケーションを解凍し、**HomeController.cs** ファイルを開きます。 次の行のシークレット ID を更新します。
+2. ダウンロードしたアプリケーションを解凍し、 **HomeController.cs** ファイルを開きます。 次の行のシークレット ID を更新します。
 
    `var secret = await keyVaultClient.GetSecretAsync("<Your Key Vault’s secret identifier>")`
 
-3. ファイルを**保存**し、ソリューションを**ビルド**します。  
+3. ファイルを **保存** し、ソリューションを **ビルド** します。  
 4. 次は、Azure にアプリケーションをデプロイします。 プロジェクトを右クリックし、 **[発行]** を選択します。 新しいアプリ サービス プロファイルを作成し (アプリの名前は WebAppKeyVault1 とします)、 **[発行]** を選択します。   
 
 5. アプリケーションがデプロイされたら、 Azure Portal で、デプロイした Web アプリケーションに移動し、そのアプリケーションの **[マネージド サービス ID]** をオンにします。  
 
-   :::image type="content" source="./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png" alt-text="シークレットを作成します":::
+   :::image type="content" source="./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png" alt-text="マネージド サービス ID":::
 
 アプリケーションをすぐに実行すると、次のエラーが表示されます。このアプリケーションに Key Vault のアクセス許可を付与していないためです。
 
-:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-without-access.png" alt-text="シークレットを作成します":::
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-without-access.png" alt-text="アクセス許可なしでデプロイされたアプリケーション":::
 
 ## <a name="register-the-application--grant-permissions-to-read-the-key-vault"></a>アプリケーションの登録および Key Vault を読み取るアクセス許可の付与
 
@@ -84,13 +84,13 @@ Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るた�
 
 2. **[アクセス ポリシー]** を開き、 **[+ 新規追加]** を選択し、デプロイした Web アプリケーションを探して、アクセス許可を選択して **[OK]** を選択します。  
 
-   :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="シークレットを作成します":::
+   :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="アクセス ポリシーの追加":::
 
 ここで、アプリケーションを実行すると、Key Vault からシークレットを読み取ることができます。
 
-:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="シークレットを作成します":::
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="シークレットと一緒にデプロイされたアプリケーション":::
  
-同様に、Key Vault にアクセスするユーザーを追加できます。 自分自身を Key Vaultに追加する必要があります。これには、**アクセスポリシー** をクリックしてから、Visual Studio でアプリケーションを実行するために必要なすべてのアクセス許可を付与します。 このアプリケーションをデスクトップから実行するとき、自分の ID が使用されます。
+同様に、Key Vault にアクセスするユーザーを追加できます。 自分自身を Key Vaultに追加する必要があります。これには、 **アクセスポリシー** をクリックしてから、Visual Studio でアプリケーションを実行するために必要なすべてのアクセス許可を付与します。 このアプリケーションをデスクトップから実行するとき、自分の ID が使用されます。
 
 ## <a name="next-steps"></a>次のステップ
 

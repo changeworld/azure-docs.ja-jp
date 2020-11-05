@@ -3,17 +3,19 @@ title: Azure Cosmos DB コネクタ用 Power BI チュートリアル
 description: この Power BI のチュートリアルでは、JSON をインポートしたり、洞察に富むレポートを作成したり、Cosmos DB および Power BI コネクタを使用してデータを視覚化する方法を説明します。
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: a7e5443869efd7f37153b47e4d9c3eaa39f9c41d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3b47c7e8f31b51d51f5fad20cc068debb1dc2927
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475279"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339735"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Power BI コネクタを使用して Azure Cosmos DB データを視覚化する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 [Power BI](https://powerbi.microsoft.com/) は、ダッシュボードやレポートを作成して共有できるオンライン サービスです。 Power BI Desktop は、さまざまなデータ ソースからのデータを取得できるレポート作成ツールです。 Azure Cosmos DB は、Power BI Desktop で使用できるデータ ソースの 1 つです。 Power BI 用の Azure Cosmos DB コネクタを使用して、Power BI Desktop を Azure Cosmos DB アカウントに接続できます。  Azure Cosmos DB データを Power BI にインポートした後、それを変換したり、レポートを作成したり、そのレポートを Power BI に発行したりできます。   
 
@@ -82,7 +84,7 @@ Azure Cosmos DB アカウントから火山データを取得し、対話型の 
 
 4. **[Azure]** をクリックし、 **[Azure Cosmos DB (ベータ版)]** を選択して、 **[接続]** をクリックします。 
 
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Power BI Desktop のデータの取得 - Power BI コネクタ":::
 
 5. **[Preview Connector] \(プレビュー コネクタ)** ページで、 **[続行]** をクリックします。 **[Azure Cosmos DB]** ウィンドウが表示されます。
 
@@ -100,61 +102,65 @@ Azure Cosmos DB アカウントから火山データを取得し、対話型の 
     
     プレビュー ウィンドウに、 **Record** アイテムの一覧が表示されます。  Power BI では、ドキュメントは **Record** タイプとして表されます。 同様に、ドキュメント内の入れ子になった JSON ブロックも、 **Record** として表されます。
     
-    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbinavigator.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
+    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbinavigator.png" alt-text="Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - ナビゲーション ウィンドウ":::
 
 12. データを変換するには、 **[編集]** をクリックしてクエリ エディターを新しいウィンドウで起動します。
 
 ## <a name="flattening-and-transforming-json-documents"></a>JSON ドキュメントをフラット化して変換する
 1. [Power BI Query Editor] \(Power BI クエリ エディター) ウィンドウに切り替えます。中央のウィンドウに **[ドキュメント]** 列が表示されます。
 
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png" alt-text="Power BI Desktop クエリ エディター":::
 
 1. **[ドキュメント]** 列ヘッダーの右側にある展開コントロールをクリックします。  フィールドの一覧を示すコンテキスト メニューが表示されます。  Volcano Name、Country、Region、Location、Elevation、Type、Status、Last Know Eruption など、レポートに必要なフィールドを選択します。 **[Use original column name as prefix]\(元の列名をプレフィックスとして使用する\)** チェックボックスをオフにし、 **[OK]** をクリックします。
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png" alt-text="Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - ドキュメントの展開":::
 
 1. 中央のウィンドウに、選択したフィールドを含む結果のプレビューが表示されます。
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png" alt-text="Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - フラット化された結果":::
 
 1. この例では、Location プロパティは、ドキュメント内の GeoJSON ブロックです。  ご覧のように、Power BI Desktop では Location は **Record** タイプとして表されます。  
 
 1. [Document.Location] 列ヘッダーの右側にある展開コントロールをクリックします。  type フィールドと coordinates フィールドを含むコンテキスト メニューが表示されます。  coordinates フィールドを選択してみましょう。 **[Use original column name as prefix]\(元の列名をプレフィックスとして使用する\)** が選択されていないことを確認し、 **[OK]** をクリックします。
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png" alt-text="Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - 場所レコード":::
 
 1. 中央のウィンドウに、 **List** タイプの [coordinates] 列が表示されます。  このチュートリアルの冒頭に示されているように、ここで使用する GeoJSON データは、Latitude 値と Longitude 値が coordinates 配列に記録された Point タイプです。
    
    coordinates[0] 要素は経度を表し、coordinates[1] は緯度を表します。
 
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ" など、新しい列の名前を入力します。
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png" alt-text="Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - 座標一覧":::
+
+1. coordinates 配列をフラット化するために、LatLong という **カスタム列** を作成します。  **[列の追加]** リボンを選択し、 **[カスタム列]** をクリックします。  **[カスタム列]** ウィンドウが表示されます。
+
+1. "LatLong" など、新しい列の名前を入力します。
 
 1. 次に、新しい列のカスタム式を指定します。  たとえば、次のような式を使用して、緯度と経度の値をコンマ区切りで連結します: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 **[OK]** をクリックします。
    
    DAX 関数など Data Analysis Expressions (DAX) の詳細については、「[Power BI Desktop における DAX の基本事項](/power-bi/desktop-quickstart-learn-dax-basics)」を参照してください。
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - カスタム列の追加":::
 
 1. これで、中央のウィンドウに、値が入力された新しい LatLong 列が表示されます。
     
-    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
+    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png" alt-text="Azure Cosmos DB コネクタの Power BI チュートリアル - カスタム LatLong 列":::
     
     新しい列でエラーが発生する場合は、クエリ設定で適用された手順が次の図と一致することを確認してください。
     
-    :::image type="content" source="./media/powerbi-visualize/power-bi-applied-steps.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
+    :::image type="content" source="./media/powerbi-visualize/power-bi-applied-steps.png" alt-text="適用された手順は、Source、Navigation、Expanded Document、Expanded Document.Location、Added Custom である必要がある":::
     
     手順が異なる場合は、余分な手順を削除し、カスタム列をもう一度追加してみてください。 
 
 1. **[終了して適用]** をクリックしてデータ モデルを保存します。
 
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicloseapply.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicloseapply.png" alt-text="Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - 閉じて適用":::
 
 <a id="build-the-reports"></a>
 ## <a name="build-the-reports"></a>レポートを作成する
 
 Power BI Desktop レポート ビューは、データを視覚化するためにレポート作成を開始できる場所です。  **[レポート]** キャンバスにフィールドをドラッグ アンド ドロップすることにより、レポートを作成できます。
 
-:::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview2.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
+:::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview2.png" alt-text="Power BI Desktop のレポート ビュー - 必要なフィールドをドラッグ アンド ドロップします":::
 
 レポート ビューには以下が表示されます。
 
@@ -182,18 +188,18 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
 1. 資格情報が認証されると、選択済みの宛先にレポートが発行されます。
 1. レポートを PowerBI.com に表示して共有するには、 **['PowerBITutorial.pbix' を Power BI で開く]** をクリックします。
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png" alt-text="Power BI への発行が成功しました!Power BI でチュートリアルを開く":::
 
 ## <a name="create-a-dashboard-in-powerbicom"></a>PowerBI.com でのダッシュボードの作成
 レポートが用意できたので、PowerBI.com で共有しましょう。
 
 レポートを Power BI Desktop から PowerBI.com に発行すると、PowerBI.com テナントに **[レポート]** と **[データセット]** が生成されます。 たとえば、 **PowerBITutorial** という名前のレポートを PowerBI.com に発行すると、PowerBI.com の **[レポート]** セクションと **[データセット]** セクションの両方に PowerBITutorial が表示されます。
 
-   :::image type="content" source="./media/powerbi-visualize/powerbi-reports-datasets.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
+   :::image type="content" source="./media/powerbi-visualize/powerbi-reports-datasets.png" alt-text="PowerBI.com の新しいレポートとデータセットのスクリーンショット":::
 
 共有可能なダッシュ ボードを作成するには、PowerBI.com レポートで **[ライブ ページをピン留めする]** ボタンをクリックします。
 
-   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
+   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="レポートを PowerBI.com にピン留めする方法のスクリーンショット":::
 
 その後、「 [レポートからタイルをピン留め](https://powerbi.microsoft.com/documentation/powerbi-service-pin-a-tile-to-a-dashboard-from-a-report/#pin-a-tile-from-a-report) 」の指示に従って、新しいダッシュボードを作成します。 
 
@@ -204,13 +210,13 @@ There are two ways to refresh data, ad hoc and scheduled.
 
 For an ad hoc refresh, simply click on the eclipses (…) by the **Dataset**, e.g. PowerBITutorial. You should see a list of actions including **Refresh Now**. Click **Refresh Now** to refresh the data.
 
-:::image type="content" source="./media/powerbi-visualize/power-bi-refresh-now.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
+:::image type="content" source="./media/powerbi-visualize/power-bi-refresh-now.png" alt-text="Screenshot of Refresh Now in PowerBI.com":::
 
 For a scheduled refresh, do the following.
 
 1. Click **Schedule Refresh** in the action list. 
 
-    :::image type="content" source="./media/powerbi-visualize/power-bi-schedule-refresh.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
+    :::image type="content" source="./media/powerbi-visualize/power-bi-schedule-refresh.png" alt-text="Screenshot of the Schedule Refresh in PowerBI.com":::
 2. In the **Settings** page, expand **Data source credentials**. 
 3. Click on **Edit credentials**. 
    

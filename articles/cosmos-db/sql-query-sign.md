@@ -3,18 +3,21 @@ title: Azure Cosmos DB クエリ言語の SIGN
 description: Azure Cosmos DB の SQL システム関数 SIGN について説明します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 84335acbee1e4166e5346f5c5cac6ef8dae11e99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02fceb8ac594a8caff8942b8a7cb0c6bcd2a47e3
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78302068"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339612"
 ---
 # <a name="sign-azure-cosmos-db"></a>SIGN (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  指定された数値式の正 (+1)、ゼロ (0)、または負 (-1) の符号を返します。  
   
 ## <a name="syntax"></a>構文
