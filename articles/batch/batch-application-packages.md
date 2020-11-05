@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-csharp
 - contperfq1
 ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "91277701"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ
@@ -37,11 +37,11 @@ Azure Batch では、" *アプリケーション* " という用語は、プー�
 
 各 *アプリケーション パッケージ* は、アプリケーション バイナリとサポート ファイルを含む .zip ファイルです。 .zip 形式のみがサポートされます。
 
-:::image type="content" source="media/batch-application-packages/app_pkg_01.png" alt-text="アプリケーションとアプリケーション パッケージの概要を示す図。&quot;:::
+:::image type="content" source="media/batch-application-packages/app_pkg_01.png" alt-text="アプリケーションとアプリケーション パッケージの概要を示す図。":::
 
 アプリケーション パッケージはプールまたはタスク レベルで指定できます。
 
-- **プールのアプリケーション パッケージ** は、プール内の &quot; すべて " のノードにデプロイされます。 アプリケーションがデプロイされるのは、ノードがプールに参加するときと、ノードが再起動または再イメージ化されるときです。
+- **プールのアプリケーション パッケージ** は、プール内の " すべて " のノードにデプロイされます。 アプリケーションがデプロイされるのは、ノードがプールに参加するときと、ノードが再起動または再イメージ化されるときです。
   
     プールのアプリケーション パッケージは、プール内のすべてのノードがジョブのタスクを実行するときに適しています。 プールの作成時に、デプロイする 1 つ以上のアプリケーション パッケージを指定できます。 また、既存のプールのパッケージを追加または更新することもできます。 既存のプールに新しいパッケージをインストールするには、そのノードを再起動する必要があります。
 
@@ -77,11 +77,7 @@ Batch サービスは、Azure Storage を使ってアプリケーション パ�
 
 Batch アカウントのアプリケーションを表示するには、左側のナビゲーション メニューで **[アプリケーション]** を選択します。
 
-:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="アプリケーションとアプリケーション パッケージの概要を示す図。&quot;:::
-
-アプリケーション パッケージはプールまたはタスク レベルで指定できます。
-
-- **プールのアプリケーション パッケージ** は、プール内の &quot; すべて ":::
+:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="Azure portal の [アプリケーション] メニュー項目のスクリーンショット。":::
 
 このメニュー オプションを選択すると、 **[アプリケーション]** ウィンドウが開きます。 このウィンドウには、アカウント内に存在する各アプリケーションの ID と以下のプロパティが表示されます。
 
@@ -105,11 +101,7 @@ Batch アカウントのアプリケーションを表示するには、左側�
 
 ご利用の Batch アカウントで、 **[アプリケーション]** 、 **[追加]** の順に選択します。
 
-:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="アプリケーションとアプリケーション パッケージの概要を示す図。&quot;:::
-
-アプリケーション パッケージはプールまたはタスク レベルで指定できます。
-
-- **プールのアプリケーション パッケージ** は、プール内の &quot; すべて ":::
+:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Azure portal での新しいアプリケーションの作成プロセスのスクリーンショット。":::
 
 次の情報を入力します。
 
@@ -136,11 +128,7 @@ Batch アカウントのアプリケーションを表示するには、左側�
 
 既存のアプリケーション パッケージを更新または削除するには、Batch アカウントの **[アプリケーション]** セクションでアプリケーションを選択します。 変更するアプリケーション パッケージの行の省略記号を選択し、実行する操作を選びます。
 
-:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="アプリケーションとアプリケーション パッケージの概要を示す図。&quot;:::
-
-アプリケーション パッケージはプールまたはタスク レベルで指定できます。
-
-- **プールのアプリケーション パッケージ** は、プール内の &quot; すべて ":::
+:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Azure portal のアプリケーション パッケージの更新および削除オプションを示すスクリーンショット。":::
 
 **[更新]** を選択した場合は、新しい .zip ファイルをアップロードできます。 これにより、そのバージョン用にアップロードした前の .zip ファイルが置き換えられます。
 

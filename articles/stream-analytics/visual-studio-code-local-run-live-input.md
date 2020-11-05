@@ -6,12 +6,12 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/14/2019
 ms.topic: how-to
-ms.openlocfilehash: 944c1a8cc4606c5e614f17cd0590331826527a7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd4966ee75e9dc0ff401823e4291f8d299c8893c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892167"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122896"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>Visual Studio Code を使用してライブ ストリーム入力に対して Stream Analytics クエリをローカルでテストする
 
@@ -29,7 +29,7 @@ Visual Studio Code の Azure Stream Analytics ツールを使用して、Stream 
 
    ![Input フォルダーから入力を追加する](./media/quick-create-visual-studio-code/add-input-from-inputs-folder.png)
 
-   または、**Ctrl + Shift + P** キーを選択してコマンド パレットを開き、 **[ASA: 入力の追加]** を入力します。
+   または、 **Ctrl + Shift + P** キーを選択してコマンド パレットを開き、 **[ASA: 入力の追加]** を入力します。
 
    ![Visual Studio Code で Stream Analytics 入力を追加する](./media/quick-create-visual-studio-code/add-input.png)
 
@@ -73,4 +73,4 @@ Visual Studio Code の Azure Stream Analytics ツールを使用して、Stream 
 
 * [Visual Studio Code で使用する Azure Stream Analytics ジョブの詳細 (プレビュー)](visual-studio-code-explore-jobs.md)
 
-* [npm パッケージを使用して CI/CD パイプラインを設定する](setup-cicd-vs-code.md)
+* [npm パッケージを使用して CI/CD パイプラインを設定する](./cicd-overview.md)

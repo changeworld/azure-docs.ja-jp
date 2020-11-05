@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: sngun
-ms.openlocfilehash: 08cc3b08611947ac32973b2dfb01060140dc0798
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 683fc553e7712e2a760a0af1b601207cb20f2f55
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743898"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092808"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Azure Cosmos DB コントロール プレーン操作を監査する方法
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB のコントロール プレーンとは、Azure Cosmos アカウントでさまざまな一連の操作を実行できる RESTful サービスです。 これは、パブリック リソース モデル (例: データベース、アカウント) とエンドユーザーに対するさまざまな操作を公開し、リソース モデルに対してアクションを実行します。 Azure Cosmos アカウントまたはコンテナーに対する変更も、コントロール プレーンの操作に含まれます。 たとえば、Azure Cosmos アカウントの作成、リージョンの追加、スループットの更新、リージョンのフェールオーバー、VNet の追加などの操作は、コントロール プレーン操作の一部です。 この記事では、Azure Cosmos DB でコントロール プレーン操作を監査する方法について説明します。 Azure Cosmos アカウントでのコントロール プレーンの操作は、Azure CLI、PowerShell、または Azure portal を使用して実行できます。それに対し、コンテナーには Azure CLI または PowerShell を使用できます。
 
@@ -29,7 +30,7 @@ Azure Cosmos DB のコントロール プレーンとは、Azure Cosmos アカ�
 
 Azure Cosmos DB でコントロール プレーン操作を監査する前に、アカウントでのキーベースのメタデータ書き込みアクセスを無効にします。 キーベースのメタデータ書き込みアクセスが無効になっている場合、アカウント キーを使用して Azure Cosmos アカウントに接続しているクライアントは、アカウントにアクセスできません。 書き込みアクセスを無効にするには、`disableKeyBasedMetadataWriteAccess` プロパティを true に設定します。 このプロパティを設定すると、適切なロールベースのアクセス制御 (RBAC) ロールと資格情報を持つユーザーは、すべてのリソースに変更を加えることができます。 このプロパティを設定する方法の詳細については、「[SDK からの変更を防止する](role-based-access-control.md#prevent-sdk-changes)」の記事を参照してください。 
 
-`disableKeyBasedMetadataWriteAccess` が有効になった後で、SDK ベースのクライアントで作成または更新操作を実行すると、「"*Azure Cosmos DB エンドポイント経由での 'ContainerNameorDatabaseName' リソースに対する "POST" 操作は許可されません*"」エラーが返されます。 お使いのアカウントでのこのような操作へのアクセスを有効にするか、Azure Resource Manager、Azure CLI、または Azure PowerShell を使用して作成/更新操作を実行する必要があります。 切り替えて戻るには、[Cosmos SDK からの変更の防止](role-based-access-control.md#prevent-sdk-changes)に関する記事の説明に従って、Azure CLI を使用して disableKeyBasedMetadataWriteAccess を **false** に設定します。 `disableKeyBasedMetadataWriteAccess` の値を、true ではなく false に変更してください。
+`disableKeyBasedMetadataWriteAccess` が有効になった後で、SDK ベースのクライアントで作成または更新操作を実行すると、「" *Azure Cosmos DB エンドポイント経由での 'ContainerNameorDatabaseName' リソースに対する "POST" 操作は許可されません* "」エラーが返されます。 お使いのアカウントでのこのような操作へのアクセスを有効にするか、Azure Resource Manager、Azure CLI、または Azure PowerShell を使用して作成/更新操作を実行する必要があります。 切り替えて戻るには、 [Cosmos SDK からの変更の防止](role-based-access-control.md#prevent-sdk-changes)に関する記事の説明に従って、Azure CLI を使用して disableKeyBasedMetadataWriteAccess を **false** に設定します。 `disableKeyBasedMetadataWriteAccess` の値を、true ではなく false に変更してください。
 
 メタデータ書き込みアクセスを無効にする場合は、次の点を考慮してください。
 
@@ -69,17 +70,17 @@ Azure portal を使用して、コントロール プレーン操作の診断ロ
 
 次のスクリーンショットでは、Azure Cosmos アカウントの整合性レベルが変更されたときのログがキャプチャされています。
 
-:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="コントロール プレーン要求のログを有効にする":::
+:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="VNet が追加されたときのコントロール プレーンのログ":::
 
 次のスクリーンショットは、Cassandra アカウントのキースペースまたはテーブルが作成されたとき、およびスループットが更新されたときにログをキャプチャします。 次のスクリーンショットに示すように、データベースやコンテナーでの作成と更新の操作に関するコントロール プレーンのログは、個別にログに記録されます。
 
-:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="コントロール プレーン要求のログを有効にする":::
+:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="スループットが更新されたときのコントロール プレーンのログ":::
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>特定の操作に関連付けられている ID を識別する
 
-さらにデバッグする場合は、アクティビティ ID の使用または操作のタイムスタンプにより、**アクティビティ ログ** 内の特定の操作を特定できます。 タイムスタンプは、アクティビティ ID が明示的に渡されていない一部の Resource Manager クライアントに使用されます。 アクティビティ ログには、操作が開始された ID の詳細が示されます。 次のスクリーンショットは、アクティビティ ID を使用し、アクティビティ ログでその ID に関連付けられている操作を検索する方法を示しています。
+さらにデバッグする場合は、アクティビティ ID の使用または操作のタイムスタンプにより、 **アクティビティ ログ** 内の特定の操作を特定できます。 タイムスタンプは、アクティビティ ID が明示的に渡されていない一部の Resource Manager クライアントに使用されます。 アクティビティ ログには、操作が開始された ID の詳細が示されます。 次のスクリーンショットは、アクティビティ ID を使用し、アクティビティ ログでその ID に関連付けられている操作を検索する方法を示しています。
 
-:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="コントロール プレーン要求のログを有効にする":::
+:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="アクティビティ ID を使用して操作を検索する":::
 
 ## <a name="control-plane-operations-for-azure-cosmos-account"></a>Azure Cosmos アカウントのコントロール プレーン操作
 
@@ -170,29 +171,29 @@ API 固有の操作の操作名の形式は、次のとおりです。
 次に、コントロール プレーン操作の診断ログを取得する例をいくつか示します。
 
 ```kusto
-AzureDiagnostics 
-| where Category startswith "ControlPlane"
+AzureDiagnostics 
+| where Category startswith "ControlPlane"
 | where OperationName contains "Update"
-| project httpstatusCode_s, statusCode_s, OperationName, resourceDetails_s, activityId_g
+| project httpstatusCode_s, statusCode_s, OperationName, resourceDetails_s, activityId_g
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
 | where TimeGenerated >= todatetime('2020-05-14T17:37:09.563Z')
-| project TimeGenerated, OperationName, apiKind_s, apiKindResourceType_s, operationType_s, resourceDetails_s
+| project TimeGenerated, OperationName, apiKind_s, apiKindResourceType_s, operationType_s, resourceDetails_s
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersUpdate"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersUpdate"
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersThroughputUpdate"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersThroughputUpdate"
 ```
 
 activityId と、コンテナー削除操作を開始した呼び出し元を取得するクエリ。

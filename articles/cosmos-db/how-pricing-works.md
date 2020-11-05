@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: b7d54dfe2efa82aaa650168c476da03d89fe4527
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 978a2909202e01d8c58ba9253bfe0b3996b72d56
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490494"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100883"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Azure Cosmos DB の価格モデル
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB の価格モデルにより、コストの管理と計画が合理化されます。 Azure Cosmos DB では、データベースに対して行った操作と、データに使用されるストレージに対して課金されます。
 

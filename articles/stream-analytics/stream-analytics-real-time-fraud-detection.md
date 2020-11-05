@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3bfc03dd7a04bea7e69aa1b62cef267a81b650f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba216e41672e1d19e552b3f82a2ea65da7d3a435
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86037615"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124579"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure Stream Analytics の使用:リアルタイムでの不正検出
 
@@ -43,11 +43,11 @@ ms.locfileid: "86037615"
     >[!NOTE]
     >ダウンロードされた zip ファイルが Windows によってブロックされる可能性があります。 ファイルを解凍できない場合は、ファイルを右クリックし、 **[プロパティ]** を選びます。 "このファイルは他のコンピューターから取得したものです。このコンピューターを保護するため、このファイルへのアクセスはブロックされる可能性があります" というメッセージが表示されたら、 **[ブロック解除]** オプションをオンにして、 **[適用]** をクリックします。
 
-Streaming Analytics ジョブの結果を確認する場合は、Azure Blob Storage コンテナーの内容を表示するためのツールも必要です。 Visual Studio を使っている場合は、[Azure Tools for Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) または [Visual Studio Cloud Explorer](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) を使うことができます。 または、[Azure Storage Explorer](https://storageexplorer.com/) や [Cerulean](https://www.cerebrata.com/products/cerulean/features/azure-storage) などのスタンドアロン ツールをインストールすることもできます。 
+Streaming Analytics ジョブの結果を確認する場合は、Azure Blob Storage コンテナーの内容を表示するためのツールも必要です。 Visual Studio を使っている場合は、[Azure Tools for Visual Studio](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) または [Visual Studio Cloud Explorer](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer) を使うことができます。 または、[Azure Storage Explorer](https://storageexplorer.com/) や [Cerulean](https://www.cerebrata.com/products/cerulean/features/azure-storage) などのスタンドアロン ツールをインストールすることもできます。 
 
 ## <a name="create-an-azure-event-hubs-to-ingest-events"></a>イベントを取り込むための Azure Event Hubs を作成する
 
-データ ストリームを分析するには、Azure に "*取り込む*" 必要があります。 データを取り込む一般的な方法は、[Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) を使うことです。Azure Event Hubs は、1 秒間に数百万件のイベントを取り込み、処理して、イベント情報を格納することができます。 このチュートリアルでは、イベント ハブを作成し、呼び出しイベント ジェネレーター アプリでそのイベント ハブに呼び出しデータを送信します。
+データ ストリームを分析するには、Azure に " *取り込む* " 必要があります。 データを取り込む一般的な方法は、[Azure Event Hubs](../event-hubs/event-hubs-about.md) を使うことです。Azure Event Hubs は、1 秒間に数百万件のイベントを取り込み、処理して、イベント情報を格納することができます。 このチュートリアルでは、イベント ハブを作成し、呼び出しイベント ジェネレーター アプリでそのイベント ハブに呼び出しデータを送信します。
 
 >[!NOTE]
 >この手順についてさらに詳しくは、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」をご覧ください。 
@@ -57,7 +57,7 @@ Streaming Analytics ジョブの結果を確認する場合は、Azure Blob Stor
 
 1. Azure portal にログインし、画面の左上にある **[リソースの作成]** をクリックします。
 
-2. 左側のメニューで **[すべてのサービス]** を選択し、 **[Analytics]** カテゴリの **[Event Hubs]** の横にある**星 (`*`)** を選択します。 左側のナビゲーション メニューの **[お気に入り]** に **[Event Hubs]** が追加されていることを確認します。 
+2. 左側のメニューで **[すべてのサービス]** を選択し、 **[Analytics]** カテゴリの **[Event Hubs]** の横にある **星 (`*`)** を選択します。 左側のナビゲーション メニューの **[お気に入り]** に **[Event Hubs]** が追加されていることを確認します。 
 
    ![Event Hubs を検索する](./media/stream-analytics-real-time-fraud-detection/select-event-hubs-menu.png)
 
@@ -221,7 +221,7 @@ TelcoGenerator アプリを開始する前に、作成したイベント ハブ�
 
 ここで作成するクエリは、変換されたデータを画面に表示するだけです。 後のセクションでは、出力シンクとそのシンクに変換されたデータを書き込むクエリを構成します。
 
-言語に関する詳細については、 [Azure Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)を参照してください。
+言語に関する詳細については、 [Azure Stream Analytics クエリ言語リファレンス](/stream-analytics-query/stream-analytics-query-language-reference)を参照してください。
 
 ### <a name="get-sample-data-for-testing-queries"></a>クエリをテストするためのサンプル データを取得する
 
@@ -291,7 +291,7 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
 リージョンごとに受信通話の数をカウントしたいものとします。 ストリーミング データでは、カウントのような集計関数を実行する場合、ストリームを時間単位に分割する必要があります (データ ストリーム自体は実質的にエンドレスであるため)。 これを行うには、Streaming Analytics の[ウィンドウ関数](stream-analytics-window-functions.md)を使います。 その後、そのウィンドウ内のデータを単位として処理できます。
 
-この変換では、重ならないテンポラル ウィンドウのシーケンスを使います。各ウィンドウの個別のデータ セットをグループ化して集計できます。 この種のウィンドウは、"*タンブリング ウィンドウ*" と呼ばれます。 タンブリング ウィンドウでは、発信元の国/地域を表す `SwitchNum` でグループ化された受信通話の数を取得できます。 
+この変換では、重ならないテンポラル ウィンドウのシーケンスを使います。各ウィンドウの個別のデータ セットをグループ化して集計できます。 この種のウィンドウは、" *タンブリング ウィンドウ* " と呼ばれます。 タンブリング ウィンドウでは、発信元の国/地域を表す `SwitchNum` でグループ化された受信通話の数を取得できます。 
 
 1. コード エディターでクエリを次のように変更します。
 
@@ -303,13 +303,13 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
     GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
     ```
 
-    このクエリでは、`FROM` 句で `Timestamp By` キーワードを使って、タンブリング ウィンドウの定義に使う入力ストリームのタイムスタンプ フィールドを指定します。 この場合、ウィンドウは各レコードの `CallRecTime` フィールドによってデータをセグメントに分割します。 フィールドを指定しないと、各イベントがイベント ハブに到着した時刻がウィンドウ化操作に使われます。 「[Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)」(Stream Analytics クエリ言語リファレンス) の「Arrival Time Vs Application Time」(到着時刻とアプリケーション時刻) をご覧ください。 
+    このクエリでは、`FROM` 句で `Timestamp By` キーワードを使って、タンブリング ウィンドウの定義に使う入力ストリームのタイムスタンプ フィールドを指定します。 この場合、ウィンドウは各レコードの `CallRecTime` フィールドによってデータをセグメントに分割します。 フィールドを指定しないと、各イベントがイベント ハブに到着した時刻がウィンドウ化操作に使われます。 「[Stream Analytics Query Language Reference](/stream-analytics-query/stream-analytics-query-language-reference)」(Stream Analytics クエリ言語リファレンス) の「Arrival Time Vs Application Time」(到着時刻とアプリケーション時刻) をご覧ください。 
 
     プロジェクションに含まれる `System.Timestamp` は、各ウィンドウの終わりのタイムスタンプを返します。 
 
-    タンブリング ウィンドウを使うことを指定するには、`GROUP BY` 句で [TUMBLINGWINDOW](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) 関数を使います。 この関数では、時間単位 (1 マイクロ秒から 1 日まで) とウィンドウ サイズ (単位数) を指定します。 この例では、タンブリング ウィンドウは 5 秒間隔で構成されるので、5 秒間の国/地域別の通話数が表示されます。
+    タンブリング ウィンドウを使うことを指定するには、`GROUP BY` 句で [TUMBLINGWINDOW](/stream-analytics-query/tumbling-window-azure-stream-analytics) 関数を使います。 この関数では、時間単位 (1 マイクロ秒から 1 日まで) とウィンドウ サイズ (単位数) を指定します。 この例では、タンブリング ウィンドウは 5 秒間隔で構成されるので、5 秒間の国/地域別の通話数が表示されます。
 
-2. もう一度 **[Test]** をクリックします。 結果では、**WindowEnd** のタイムスタンプが 5 秒刻みになっていることに注目してください。
+2. もう一度 **[Test]** をクリックします。 結果では、 **WindowEnd** のタイムスタンプが 5 秒刻みになっていることに注目してください。
 
    ![13 レコードを示す集計の Stream Analytics ジョブの出力](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-aggregation.png)
  
@@ -407,7 +407,7 @@ BLOB ストレージ内のファイルの内容を調べると、次のような
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-不正検出シナリオから続けて読むことができ、このチュートリアルで作成したリソースを使う他の記事があります。 続けて読む場合は、「**次のステップ**」をご覧ください。
+不正検出シナリオから続けて読むことができ、このチュートリアルで作成したリソースを使う他の記事があります。 続けて読む場合は、「 **次のステップ** 」をご覧ください。
 
 一方、これで終了し、作成したリソースがもう必要ない場合は、不要な Azure の料金が発生しないように削除できます。 その場合は、次のようにすることをお勧めします。
 
@@ -420,7 +420,7 @@ BLOB ストレージ内のファイルの内容を調べると、次のような
 
 ## <a name="get-support"></a>サポートを受ける
 
-詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください。
+詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](/answers/topics/azure-stream-analytics.html)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -432,5 +432,5 @@ Stream Analytics の一般的な情報について詳しくは、以下の記事
 
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](/rest/api/streamanalytics/)

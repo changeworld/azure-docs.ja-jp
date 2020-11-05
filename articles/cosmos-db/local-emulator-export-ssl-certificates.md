@@ -7,14 +7,15 @@ ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
 ms.custom: devx-track-python, devx-track-java, contperfq1
-ms.openlocfilehash: f747cc6405cef07510766bcfa4c826aec9d9857b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 79e2b58ea342c9449faba108881c65d0bd8de856
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490409"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085804"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>Java、Python、および Node.js アプリで使用する Azure Cosmos DB エミュレーター証明書のエクスポート
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB エミュレーターでは、Azure Cosmos DB サービスを開発目的でエミュレートするローカル環境を利用できます。 Azure Cosmos エミュレーターでは、TLS 接続を介したセキュリティで保護された通信のみがサポートされます。
 
@@ -36,31 +37,31 @@ Windows 証明書ストアと統合されていない言語およびランタイ
 
 1. **[詳細]** 、 **[OK]** の順にクリックします。
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 1":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 2":::
 
 1. **[ファイルへコピー...]** をクリックします。
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 1":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 3":::
 
 1. **[次へ]** をクリックします。
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 1":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 4":::
 
 1. **[No, do not export private key (いいえ、秘密キーをエクスポートしません)]** をクリックしてから、 **[次へ]** をクリックします。
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 1":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 5":::
 
 1. **[Base 64 encoded X.509 (.CER)]** をクリックしてから、 **[次へ]** をクリックします。
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 1":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 6":::
 
 1. 証明書に名前を付けます。 ここでは「 **documentdbemulatorcert** 」と入力し、 **[次へ]** をクリックします。
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 1":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 7":::
 
 1. **[完了]** をクリックします。
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 1":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 8":::
 
 ## <a name="use-the-certificate-with-java-apps"></a>Java アプリで証明書を使用する
 
@@ -98,7 +99,7 @@ Node.js SDK からエミュレーターに接続すると、TLS 検証が無効�
 
 Windows トレイで実行されている Azure Cosmos DB エミュレーターから **[データのリセット]** を選択すると、エミュレーター証明書を強制的に再生成することができます。 この操作を実行すると、エミュレーターによってローカルに保存されたすべてのデータも消去されることに注意してください。
 
-:::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 1":::
+:::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png" alt-text="Azure Cosmos DB ローカル エミュレーターの [データのリセット]":::
 
 証明書を Java 証明書ストアにインストールした場合、または他の場所で使用した場合は、現在の証明書を使用して証明書を再インポートする必要があります。 証明書を更新するまで、アプリケーションはローカル エミュレーターに接続できません。
 

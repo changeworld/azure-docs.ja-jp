@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: c421c730321213a9adbf0a0043874a21ba26bb05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2afebe61c4b2998692c823e66d8fc73584ec1dc2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906246"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125650"
 ---
 # <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>Azure Stream Analytics ジョブの Azure Resource Manager テンプレートをエクスポートする
 
@@ -58,9 +58,9 @@ Visual Studio Code を使用した Stream Analytics ジョブの管理の詳細�
 
 前のセクションで生成した Azure Resource Manager のテンプレートを使用して Azure Stream Analytics ジョブをデプロイする準備ができました。
 
-PowerShell ウィンドウで、次のコマンドを実行します。 *ResourceGroupName*、*TemplateFile*、および *TemplateParameterFile* は、必ず実際のリソース グループ名、およびジョブ ワークスペースの **[Deploy] フォルダー**内の *JobTemplate.json* と *JobTemplate.parameters.json* ファイルへの完全ファイル パスに置き換えてください。
+PowerShell ウィンドウで、次のコマンドを実行します。 *ResourceGroupName* 、 *TemplateFile* 、および *TemplateParameterFile* は、必ず実際のリソース グループ名、およびジョブ ワークスペースの **[Deploy] フォルダー** 内の *JobTemplate.json* と *JobTemplate.parameters.json* ファイルへの完全ファイル パスに置き換えてください。
 
-PowerShell が構成されていない場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-Az-ps)の手順に従ってください。
+PowerShell が構成されていない場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)の手順に従ってください。
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName "<your resource group>" -TemplateFile "<path to JobTemplate.json>" -TemplateParameterFile "<path to JobTemplate.parameters.json>"

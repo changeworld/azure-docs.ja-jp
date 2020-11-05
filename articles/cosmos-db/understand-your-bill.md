@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d1b03417b81299ca959670287e252402e994f15a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7b26c88bcbd303f00dc6163dd0323b07cbb83dcf
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476401"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073827"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Azure Cosmos DB の課金内容を理解する
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 完全に管理されたクラウドネイティブ データベース サービスとして、Azure Cosmos DB では、データベース操作と使用ストレージに対してのみ請求することで、課金を簡略化しています。 オンプレミスまたは IaaS でホストされている別のサービスに比べ、追加のライセンス料、ハードウェア、ユーティリティのコスト、設備のコストは発生しません。 Azure Cosmos DB の複数リージョンの機能を考えると、データベース サービスでは、既存のオンプレミスまたは IaaS ソリューションに比べ、コストが大幅に削減されます。
 
@@ -102,7 +103,7 @@ ms.locfileid: "92476401"
 
 * 1 か月を 720 時間として、300 時間分のスループットは 120-K RU/秒でプロビジョニングして、残りの 420 時間分のスループットは 155-K RU/秒でプロビジョニングした場合、1 か月の料金は、300 x $9.60/時間 + 420 x $12.40/時間 = $2,880 + $5,208 = $8,088/月となります。 
 
-:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="専用スループットの課金の例":::
+:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="共有スループットの課金の例":::
 
 ## <a name="billing-examples-with-geo-replication-and-multi-region-writes"></a>geo レプリケーションとマルチリージョンの書き込みでの課金の例  
 
@@ -192,7 +193,7 @@ ms.locfileid: "92476401"
 
 1 か月 720 時間の間にプロビジョニングされたスループットの合計の変化を視覚的に示すと、次の図のようになります。 
 
-:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="専用スループットの課金の例":::
+:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="実際の例":::
 
 月額の合計 (1 か月 30 日/720 時間と仮定) は次のように計算されます。
 

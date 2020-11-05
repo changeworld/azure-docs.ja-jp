@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 8/6/2020
-ms.openlocfilehash: 4c6d1d3877629150493ee2a57a04573760d2772a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a130345a755644874b4547a5906101b593664a6
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88870019"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123474"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics と Power BI:ストリーミング データのリアルタイム分析ダッシュボード
 
@@ -42,7 +42,7 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
 3. **[+ 追加]**  >  **[Power BI]** の順に選択します。 続けて、フォームに次の詳細を入力し、独自のユーザー ID を使用して Power BI に接続するために **[承認]** を選択します (トークンは 90日間有効です)。 
 
 >[!NOTE]
->運用ジョブの場合は、[マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)ように接続することをお勧めします。
+>運用ジョブの場合は、[マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する](./powerbi-output-managed-identity.md)ように接続することをお勧めします。
 
    |**設定**  |**推奨値**  |
    |---------|---------|
@@ -57,7 +57,7 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
    > このデータセットとテーブルは Power BI アカウントに明示的に作成しないことをお勧めします。 Stream Analytics ジョブを開始すると自動的に作成され、Power BI への出力が開始されます。 ジョブ クエリで結果が返されない場合、データセットとテーブルは作成されません。
    >
 
-4. **[承認する]** を選択すると、ポップアップ ウィンドウが開き、Power BI アカウントに対する認証のための資格情報を入力するよう求められます。 認可が成功したら、設定を**保存**します。
+4. **[承認する]** を選択すると、ポップアップ ウィンドウが開き、Power BI アカウントに対する認証のための資格情報を入力するよう求められます。 認可が成功したら、設定を **保存** します。
 
 8. **Create** をクリックしてください。
 
@@ -68,7 +68,7 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
 
 現時点では、他のフラグでデータセットを作成することはできません。
 
-Power BI データセットの詳細については、[Power BI REST API](https://msdn.microsoft.com/library/mt203562.aspx) リファレンスを参照してください。
+Power BI データセットの詳細については、[Power BI REST API](/rest/api/power-bi/) リファレンスを参照してください。
 
 
 ## <a name="write-the-query"></a>クエリを作成する
@@ -231,6 +231,6 @@ Power BI で承認が更新されると、承認の領域に緑色のアラー�
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics の出力](stream-analytics-define-outputs.md)
-* [Azure Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics の管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-* [マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)
+* [Azure Stream Analytics クエリ言語リファレンス](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics の管理 REST API リファレンス](/rest/api/streamanalytics/)
+* [マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する](./powerbi-output-managed-identity.md)

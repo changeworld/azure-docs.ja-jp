@@ -12,27 +12,27 @@ ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: fbea4ef39b970f667c5dddec52f56a428d401f65
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8da9e97aaa2c6d99990df4221d8b6e99ab18ac83
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277461"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124814"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>My Apps ポータルからアクセス レビューを実行する
 
-職場または学校アカウントを Web ベースの**マイ アプリ** ポータルで使用して、アプリとグループのアクセス レビューを実行できます。 アクセス レビューを使用すると、期限切れのアクセスやアクセス要件の変化を管理し、それらが確認および更新されるようにすることができます。
+職場または学校アカウントを Web ベースの **マイ アプリ** ポータルで使用して、アプリとグループのアクセス レビューを実行できます。 アクセス レビューを使用すると、期限切れのアクセスやアクセス要件の変化を管理し、それらが確認および更新されるようにすることができます。
 
 **マイ アプリ** ポータルにアクセスできない場合は、ヘルプデスクに連絡してアクセス許可を得てください。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->このコンテンツは、**マイ アプリ**のユーザーを対象としています。 管理者の方は、「[アプリケーション管理のドキュメント](../manage-apps/index.yml)」で、クラウドベースのアプリの設定と管理の方法を詳しくご覧いただけます。
+>このコンテンツは、 **マイ アプリ** のユーザーを対象としています。 管理者の方は、「[アプリケーション管理のドキュメント](../manage-apps/index.yml)」で、クラウドベースのアプリの設定と管理の方法を詳しくご覧いただけます。
 
 ## <a name="manage-access-reviews"></a>アクセス レビューを管理する
 
-自身のアクセス レビューを実行するアクセス許可を管理者から与えられている場合は、**マイ アプリ** ポータル ページの **[アクセス レビュー]** タイルから、グループまたはアプリ アクセスを管理できます。
+自身のアクセス レビューを実行するアクセス許可を管理者から与えられている場合は、 **マイ アプリ** ポータル ページの **[アクセス レビュー]** タイルから、グループまたはアプリ アクセスを管理できます。
 
 >[!Note]
 >**[アクセス レビュー]** タイルが表示されない場合は、アクセス レビューを実行するアクセス許可がないか、承認を待っている保留中のレビューがないことを意味します。 タイルへのアクセス権が必要な場合は、ヘルプ デスクにお問い合わせください。
@@ -76,5 +76,5 @@ ms.locfileid: "92277461"
 ## <a name="next-steps"></a>次のステップ
 
 - [マイ アプリ ポータルでアプリにアクセスして使用する](my-apps-portal-end-user-access.md)
-- [プロファイルの情報を変更する](my-apps-portal-end-user-update-profile.md)
+- [プロファイルの情報を変更する](./my-account-portal-settings.md)
 - [グループ関連の情報を表示し、更新する](my-apps-portal-end-user-groups.md)

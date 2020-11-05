@@ -8,20 +8,21 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/06/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df25ab4b0f5593ab21336d002ad2f9f10795bdcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74d851a28712beb80bf2a7aa196e471ef4f15074
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570557"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085736"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Gremlin SDK で Azure Cosmos DB リソース トークンを使用する
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 この記事では、[Azure Cosmos DB リソース トークン](secure-access-to-data.md)を使用して、Gremlin SDK 経由で Graph データベースにアクセスする方法について説明します。
 
 ## <a name="create-a-resource-token"></a>リソース グループを作成する
 
-Apache TinkerPop Gremlin SDK には、リソース トークンを作成するための API がありません。 "*リソース トークン*" という用語は、Azure Cosmos DB の概念です。 リソース トークンを作成するには、[Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) をダウンロードします。 ご利用のアプリケーションでリソース トークンを作成し、それらを使用して Graph データベースにアクセスする必要がある場合は、個別の SDK が 2 つ必要です。
+Apache TinkerPop Gremlin SDK には、リソース トークンを作成するための API がありません。 " *リソース トークン* " という用語は、Azure Cosmos DB の概念です。 リソース トークンを作成するには、[Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) をダウンロードします。 ご利用のアプリケーションでリソース トークンを作成し、それらを使用して Graph データベースにアクセスする必要がある場合は、個別の SDK が 2 つ必要です。
 
 リソース トークンの上位にあるオブジェクト モデル階層を次のアウトラインで示します。
 
@@ -100,7 +101,7 @@ builder.authProperties(authenticationProperties);
 
 ## <a name="permission"></a>権限
 
-アプリケーションでリソース トークン使用中に発生する一般的なエラーは、"Insufficient permissions provided in the authorization header for the corresponding request. Please retry with another authorization header." (対応する要求の認証ヘッダーに与えられているアクセス許可が不十分です。別の認証ヘッダーを使用して再試行してください。) です。 Gremlin トラバーサルでエッジまたは頂点の書き込みが試みられたが、リソース トークンからは*読み取り*アクセス許可しか付与されていない場合、このエラーが返されます。 次のステップのいずれかが含まれているかどうかを確認するために、ご利用のトラバーサルを調べてください: *.addV()* 、 *.addE()* 、 *.drop()* 、 *.property()* 。
+アプリケーションでリソース トークン使用中に発生する一般的なエラーは、"Insufficient permissions provided in the authorization header for the corresponding request. Please retry with another authorization header." (対応する要求の認証ヘッダーに与えられているアクセス許可が不十分です。別の認証ヘッダーを使用して再試行してください。) です。 Gremlin トラバーサルでエッジまたは頂点の書き込みが試みられたが、リソース トークンからは *読み取り* アクセス許可しか付与されていない場合、このエラーが返されます。 次のステップのいずれかが含まれているかどうかを確認するために、ご利用のトラバーサルを調べてください: *.addV()* 、 *.addE()* 、 *.drop()* 、 *.property()* 。
 
 ## <a name="next-steps"></a>次のステップ
 * Azure Cosmos DB の [Azure ロールベースのアクセス制御 (Azure RBAC)](role-based-access-control.md)

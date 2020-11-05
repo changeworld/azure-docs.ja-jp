@@ -12,12 +12,12 @@ ms.date: 03/21/2019
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: c5d1b08944417493d175de23c7738db58f1c7bd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c148e673b8ada549a6543f8f35634aaf29abff0
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798008"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123950"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>My Apps ポータルに関する問題を解決する
 
@@ -39,7 +39,7 @@ My Apps によるセキュリティで保護されたサインイン拡張機能
 
 - ブラウザーの拡張機能設定がオンになっていることを確認してください。
 
-- ブラウザーを再起動し、**My Apps** ポータルに再度サインインしてみます。
+- ブラウザーを再起動し、 **My Apps** ポータルに再度サインインしてみます。
 
 - ブラウザーの Cookie を消去して **My Apps** ポータルに再度サインインしてみます。
 
@@ -87,7 +87,7 @@ My Apps によるセキュリティで保護されたサインイン拡張機能
 
 - [マイ アプリ ポータルのアプリにアクセスして使用する](my-apps-portal-end-user-access.md)。
 
-- [プロファイル情報を変更する](my-apps-portal-end-user-update-profile.md)。
+- [プロファイル情報を変更する](./my-account-portal-settings.md)。
 
 - [グループ関連の情報を表示し、更新する](my-apps-portal-end-user-groups.md)。
 

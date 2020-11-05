@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: ec8f27d0376f7187fd36b3feba556dbced0946e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5057eb8c84e839f504060228986ea759c8bdc3d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90930925"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123169"
 ---
 # <a name="continuous-integration-and-deployment-cicd-for-azure-stream-analytics"></a>Azure Stream Analytics の継続的インテグレーションと継続的デプロイ (CI/CD)
 
@@ -27,7 +27,7 @@ Stream Analytics の CI/CD パイプラインは、このガイドの手順に�
 
 1. Azure Stream Analytics クエリを作成します。
 
-   [Visual Studio Code](quick-create-vs-code.md) 用または [Visual Studio](stream-analytics-quick-create-vs.md) 用の Azure Stream Analytics ツールを使用して、[クエリをローカルで作成、テスト](develop-locally.md)します。 ローカル プロジェクトに[既存のジョブをエクスポート](visual-studio-code-explore-jobs.md#export-a-job-to-a-local-project)することもできます。
+   [Visual Studio Code](./quick-create-visual-studio-code.md) 用または [Visual Studio](stream-analytics-quick-create-vs.md) 用の Azure Stream Analytics ツールを使用して、[クエリをローカルで作成、テスト](develop-locally.md)します。 ローカル プロジェクトに[既存のジョブをエクスポート](visual-studio-code-explore-jobs.md#export-a-job-to-a-local-project)することもできます。
 
 2. Azure Stream Analytics プロジェクトを Git リポジトリなどのソース管理システムにコミットします。
 

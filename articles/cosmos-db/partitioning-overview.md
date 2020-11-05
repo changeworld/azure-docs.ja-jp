@@ -6,14 +6,15 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 353abe5ac55e49e01f6a99f72307b8525a72fc00
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 7c05ca6462d49d1d41791e5b93b7723ac681d448
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281090"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080834"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割と水平スケーリング
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB では、パーティション分割を使用して、データベースの個別のコンテナーをスケーリングし、アプリケーションのパフォーマンスのニーズを満たします。 パーティション分割では、コンテナー内の項目が、" *論理パーティション* " と呼ばれる特定のサブセットに分割されます。 論理パーティションは、コンテナー内の各項目に関連付けられている " *パーティション キー* " の値に基づいて形成されます。 1 つの論理パーティション内のすべての項目で、パーティション キーの値は同じです。
 
@@ -73,7 +74,7 @@ Azure Cosmos DB は、ハッシュベースのパーティション分割を使�
 
 次の図は、グローバルに分散されている物理パーティションに論理パーティションがどのようにマップされているかを示しています。
 
-:::image type="content" source="./media/partitioning-overview/logical-partitions.png" alt-text="物理パーティションの数の表示" border="false":::
+:::image type="content" source="./media/partitioning-overview/logical-partitions.png" alt-text="Azure Cosmos DB パーティション分割を示す図" border="false":::
 
 ## <a name="choosing-a-partition-key"></a><a id="choose-partitionkey"></a>パーティション キーを使用する場合
 

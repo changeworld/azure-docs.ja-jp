@@ -6,14 +6,15 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/17/2020
-ms.openlocfilehash: cd2bc3ec7e70049ee7e2c700731515a272e541dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7ec71220b75647e789508c760e50957b3b497fa
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87094659"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090037"
 ---
 # <a name="how-to-request-quota-increase-for-azure-cosmos-db-resources"></a>Azure Cosmos DB リソースのクォータの増加を要求する方法
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB のリソースには[既定のクォータ/制限](concepts-limits.md)があります。 ただし、ワークロードに既定値よりも多くのクォータが必要な場合があります。 そのような場合は、Azure Cosmos DB チームに連絡してクォータの増加を要求する必要があります。 この記事では、Azure Cosmos DB リソースのクォータの増加を要求する方法について説明します。 また、サブスクリプションがリージョンにアクセスできるようにする方法について説明します。
 
@@ -37,7 +38,7 @@ Azure Cosmos DB のリソースには[既定のクォータ/制限](concepts-lim
 
 1. このフォームで、以下の詳細を入力します。
 
-   * **説明**:既定値ではなぜ不十分であるか、実際のワークロードなど、要求の簡単な説明を入力します。 クォータの増加対象のリソースの種類に基づいて、以下の詳細を **[説明]** フィールドに入力することが必須となっています。
+   * **説明** :既定値ではなぜ不十分であるか、実際のワークロードなど、要求の簡単な説明を入力します。 クォータの増加対象のリソースの種類に基づいて、以下の詳細を **[説明]** フィールドに入力することが必須となっています。
 
      **[Regions requests] (リージョンの要求)** : 要求が、許可リストにリージョンを追加することに該当する場合、以下の値を入力する必要があります。
 
@@ -59,7 +60,7 @@ Azure Cosmos DB のリソースには[既定のクォータ/制限](concepts-lim
 
    * **[重大度]** :ビジネスへの影響に基づいて、選択可能ないずれかの重大度レベルを選択します。
 
-   * **[ご希望の連絡方法]** :**メール**または**電話**のいずれかによる連絡を選択できます。
+   * **[ご希望の連絡方法]** : **メール** または **電話** のいずれかによる連絡を選択できます。
 
 1. フォームに、連絡可能な時間帯、サポート言語、連絡先情報、メール、電話番号など、残りの詳細情報を入力します。
 

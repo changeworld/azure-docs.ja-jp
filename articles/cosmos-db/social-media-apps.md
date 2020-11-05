@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: 7118a12a5a92912c51bb35d8b516d5b8e2f45388
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 329c4b40f11b36de80581d4a1396813bc8de5c73
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478152"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097330"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB によるソーシャル化
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 大規模に相互接続された社会で生きていると、日々の生活の中で **ソーシャル ネットワーク** に参加することになります。 ソーシャル ネットワークを使用して、友人や同僚、家族と交流し、共通の関心を持つ人々と情熱を分かち合うこともあります。
 
@@ -171,7 +172,7 @@ Azure Cosmos DB では、自動的なインデックス付けによって、す�
 
 この情報を調べることで、重要な情報とそうでない情報をすぐに見つけることができるため、次のように "ラダー" を作成できます。
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="相対リレーショナル モデルを示す図" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="ラダー パターンの図" border="false":::
 
 最小の段はユーザーチャンクと呼ばれます。これは、ユーザーを識別する情報の最小単位であり、データの重複に対して使用されます。 重複するデータのサイズを "表示する" 情報だけに減らすことで、大規模な更新の可能性を低減しています。
 
@@ -248,7 +249,7 @@ Cosmos DB では、すべてのパーティションでクエリ ([集計](https
 
 トラフィックやリソースの消費量 ([RU](request-units.md) (要求ユニット) で測定) は、時間の経過と共に増加します。 ユーザー ベースが拡大すると、読み取りと書き込みの頻度が増えます。 ユーザー ベースによるコンテンツの作成や読み取りが多くなり始めます。 そのため、 **スループットを拡張する** 機能が重要です。 RU は簡単に増やすことができます。 そのためには、Azure portal で数回クリックするか [API でコマンドを発行](/rest/api/cosmos-db/replace-an-offer)します。
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="相対リレーショナル モデルを示す図":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="スケールアップとパーティション キーの定義":::
 
 状況が好転し続けるとどうなるでしょう。 自分のプラットフォームが、他のリージョン、国、または大陸のユーザーのに認識されて、使われるようになることを想像してください。 嬉しい驚きですね。
 
@@ -258,13 +259,13 @@ Cosmos DB を使用すると、数回のクリックで[データをグローバ
 
 データをグローバルにレプリケートするときは、クライアントがそのデータを利用できるかどうかを確認する必要があります。 Web フロントエンドを使用する場合、またはモバイル クライアントから API にアクセスする場合は、[Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) をデプロイし、必要なリージョンすべてに Azure App Service の複製を作成します。その際に、拡張されたグローバル カバレッジをサポートするためのパフォーマンス構成を使用します。 フロントエンドまたは API にアクセスしたクライアントは、最も近い App Service にルーティングされ、その APP Service はローカルの Cosmos DB レプリカに接続されます。
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="相対リレーショナル モデルを示す図" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="ソーシャル プラットフォームへのグローバル カバレッジの追加" border="false":::
 
 ## <a name="conclusion"></a>まとめ
 
 この記事では、低コストのサービスを使用して Azure で完全なソーシャル ネットワークを作成する代替手段を明らかにしています。 多層ストレージ ソリューションと "ラダー" と呼ばれるデータ分散の使用を促進することによって結果をもたらします。
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="相対リレーショナル モデルを示す図" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="ソーシャル ネットワーキングでの Azure サービス間の対話を示す図" border="false":::
 
 実際には、この種のシナリオに対応する特効薬はありません。 優れたソーシャル アプリケーションを提供する Azure Cosmos DB の速度と自由度、Azure Cognitive Search のような最高クラスの検索ソリューションの背後にあるインテリジェンス、言語に依存しないアプリケーションではなく、強力なバックグラウンド プロセスをホストする Azure App Services の柔軟性、大量のデータを保存する拡張可能な Azure Storage と Azure SQL Database、プロセスにフィードバックを提供することができ、適切なコンテンツを適切なユーザーに提供するうえで役立つ知識とインテリジェンスを生み出す Azure Machine Learning の分析力など、優れたサービスの組み合わせによって生まれる相乗効果により、優れた体験を構築することが可能になります。
 

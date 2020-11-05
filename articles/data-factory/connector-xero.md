@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/22/2020
+ms.date: 10/29/2020
 ms.author: jingwang
-ms.openlocfilehash: 89ac5645ccbb9c926bc5ff70605dd1e5de14e823
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 342d0aabe2222393f33aa4ce93646da9f29cf1fb
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427616"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926463"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Azure Data Factory を使用して Xero からデータをコピーする
 
@@ -210,7 +210,7 @@ Xero からデータをコピーするは、コピー アクティビティの�
 
 Xero クエリを指定する際には、次の点に注意してください。
 
-- 複雑な項目を含むテーブルは、複数のテーブルに分割されます。 たとえば、銀行取引には複雑なデータ構造 "LineItems" が含まれるため、銀行取引のデータはテーブル `Bank_Transaction` と `Bank_Transaction_Line_Items` にマップされ、それらをリンクするための外部キーとして `Bank_Transaction_ID` が使用されます。
+- 複雑な項目を含むテーブルは、複数のテーブルに分割されます。 たとえば、銀行トランザクションには複雑なデータ構造 "LineItems" が含まれるため、銀行トランザクションのデータはテーブル `Bank_Transaction` および `Bank_Transaction_Line_Items` にマップされ、それらをリンクするための外部キーとして `Bank_Transaction_ID` が使用されます。
 
 - Xero データは 2 つのスキーマを通じて使用できます。`Minimal` (既定) と `Complete` です。 Complete スキーマには、目的のクエリを実行する前に追加データ (例: ID 列) を必要とする、前提条件呼び出しテーブルが含まれます。
 

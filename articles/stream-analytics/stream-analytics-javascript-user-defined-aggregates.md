@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
 ms.custom: devx-track-js
-ms.openlocfilehash: 6e43a43d929d256bc2a12b6b243d9620c5bd1aba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8891bb5cd3b8bd8ae9e02c871d6d0ffe42078c0b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317703"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124766"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure Stream Analytics の JavaScript ユーザー定義集計
  
@@ -114,7 +114,7 @@ deaccumulateState() メソッドは、以前の状態とホップの状態に基
 computeResult() メソッドは、現在の状態に基づいて集計の結果を返します。 このメソッドは、タイム ウィンドウ (TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW、または SESSIONWINDOW) の最後に呼び出されます。
 
 ## <a name="javascript-uda-supported-input-and-output-data-types"></a>JavaScript UDA がサポートする入力と出力のデータ型
-JavaScript UDA のデータ型については、[JavaScript UDF の統合](stream-analytics-javascript-user-defined-functions.md)に関するページの「**Stream Analytics と JavaScript の型変換**」のセクションをご覧ください。
+JavaScript UDA のデータ型については、 [JavaScript UDF の統合](stream-analytics-javascript-user-defined-functions.md)に関するページの「 **Stream Analytics と JavaScript の型変換** 」のセクションをご覧ください。
 
 ## <a name="adding-a-javascript-uda-from-the-azure-portal"></a>Azure Portal から JavaScript UDA を追加する
 
@@ -226,12 +226,12 @@ GROUP BY TumblingWindow(minute, 5)
 
 ## <a name="get-help"></a>ヘルプの参照
 
-更にヘルプが必要な場合は、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください。
+更にヘルプが必要な場合は、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](/answers/topics/azure-stream-analytics.html)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics の管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics クエリ言語リファレンス](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics の管理 REST API リファレンス](/rest/api/streamanalytics/)

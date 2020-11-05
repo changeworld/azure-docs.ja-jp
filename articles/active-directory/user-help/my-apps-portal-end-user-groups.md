@@ -12,12 +12,12 @@ ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: f2774750b61ce92b3b34f6a5cbd961e4faa7d3e7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: cff1298f12d26b1260213d75701c282e0a82511d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277500"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124154"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>マイ アプリ ポータルでグループ情報を更新する
 
@@ -166,6 +166,6 @@ Web ベースの **マイ アプリ** ポータルでは、職場または学校
 
 - [マイ アプリ ポータルのアプリにアクセスして使用する](my-apps-portal-end-user-access.md)。
 
-- [プロファイル情報を変更する](my-apps-portal-end-user-update-profile.md)。
+- [プロファイル情報を変更する](./my-account-portal-settings.md)。
 
 - [自分のアクセス レビューを実行する](my-apps-portal-end-user-access-reviews.md)。

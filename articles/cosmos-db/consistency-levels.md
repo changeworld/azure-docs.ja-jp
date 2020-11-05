@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 77af5a66ba349e5985e3b27b07c82a1595ccc8a1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 742ff2e6cff4569b5b7eeb131cd4394277b6c3cd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547080"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100458"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB の整合性レベル
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 高可用性もしくは待機時間の短縮、またはその両方のためにレプリケーションに依存する分散データベースでは、[PACLC の定理](https://en.wikipedia.org/wiki/PACELC_theorem)で定義されているとおり、読み取りの整合性、可用性、待機時間、スループットの間で基本的なトレードオフが必要になります。 厳密な整合性モデルの線形化可能性は、データ プログラミングの標準基準です。 しかし、大きな距離にわたってデータをレプリケートしてコミットする必要があるため、長い書き込み待機時間により高いコストが追加されます。 また、すべてのリージョンでデータをレプリケートしてコミットすることはできないため、強固な整合性は (障害発生時の) 可用性の低下の影響を受ける場合もあります。 最終的な整合性では可用性とパフォーマンスは向上しますが、すべてのリージョンでデータが完全に一致しない可能性があるため、アプリケーションのプログラミングは困難になります。
 
@@ -53,7 +54,9 @@ Azure Cosmos DB では、読み取り要求の 100 パーセントが、選択�
 
   次のグラフィックでは、音符の厳密な一貫性を図解しています。 データが "米国西部 2" リージョンに書き込まれると、他のリージョンからデータを読み取るとき、最新の値が取得されます。
 
-  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="範囲としての整合性" は 2 つの方法で構成できます。
+  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="厳密な整合性レベルの図":::
+
+- **有界整合性制約** :読み取りでは、整合性のあるプレフィックスの優先が保証されます。 読み取りは、最大でアイテムの *"K"* 個のバージョン (更新)、あるいは期間 *"T"* のどちらか早く達した方の分だけ書き込みよりも遅れる場合があります。 つまり、有界整合性制約を選択する場合、"整合性制約" は 2 つの方法で構成できます。
 
 - アイテムのバージョンの数 ( *K* )
 - 書き込みに対して読み取りが遅れる可能性がある期間 ( *T* )
@@ -71,7 +74,7 @@ Azure Cosmos DB では、読み取り要求の 100 パーセントが、選択�
 
   世界中に分散されているアプリケーションで、書き込み時の待ち時間が短く、全体のグローバルな順序保証が求められるとき、有界整合性制約が頻繁に選ばれています。 有界整合性制約は、グループの共同作業と共有、株式相場表示器、発行とサブスクライブまたはキューなどを特徴とするアプリケーションに最適です。次のグラフィックでは、音符の有界整合性制約整合性を図解しています。 データが "米国西部 2" リージョンに書き込まれた後、"米国東部 2" リージョンと "オーストラリア東部" リージョンでは、構成された最大遅延時間または最大操作に基づき、書き込まれた値を読み取ります。
 
-  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="範囲としての整合性":::
+  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="有界整合性制約の整合性レベルの図":::
 
 - **セッション** :単一のクライアント セッション内の読み取りでは、整合性のあるプレフィックス、単調読み取り、単調書き込み、自己書き込みの読み取り、読み取り後の書き込みの優先が保証されます。 これは、単一の「ライター」セッションを使用するか、複数のライターのセッション トークンを共有することを前提としています。
 
@@ -84,7 +87,7 @@ Azure Cosmos DB では、読み取り要求の 100 パーセントが、選択�
 
   セッション整合性は、1 つのリージョンのアプリケーションと世界中に分散されたアプリケーションの両方で最も広く使用されている整合性レベルです。 書き込みの待機時間、可用性、読み取りスループットは最終的整合性レベルと同等ですが、ユーザーのコンテキスト内で動作するよう作成されたアプリケーションのニーズに適した整合性保証が提供されます。 次のグラフィックでは、音符のセッション整合性を図解しています。 「米国西部 2 ライター」と「米国東部 2 リーダー」は同じセッション (セッション A) を使用しているため、どちらも同時に同じデータを読み取ります。 一方、"オーストラリア東部" リージョンでは "セッション B" が使用されているため、後でデータを受け取るとき、書き込みと同じ順序になります。
 
-  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="範囲としての整合性":::
+  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="セッションの整合性レベルの図":::
 
 - **整合性のあるプレフィックス** :返される更新には、それ以外の全更新の一部のプレフィックスが含まれます (ギャップなし)。 整合性のあるプレフィックスの整合性レベルでは、読み取りの際、書き込みを順序どおりに参照することが保証されます。
 
@@ -99,12 +102,12 @@ Azure Cosmos DB では、読み取り要求の 100 パーセントが、選択�
 
 次のグラフィックでは、音符の整合性のあるプレフィックスの整合性を図解しています。 すべてのリージョンで、読み取りで順序が乱れた書き込みに遭遇することはありません。
 
-  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="範囲としての整合性":::
+  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="整合性のあるプレフィックスの図":::
 
 - **Eventual** :読み取りの順序の保証はありません。 さらに書き込みがない場合、レプリカが最終的に収束します。  
 クライアントが以前に読み取ったものより古い値を読み取ることがあるため、最終的整合性は最も弱い形態の整合性です。 最終的整合性は、順序保証がアプリケーションで要求されないときに最適です。 たとえば、リツイート、いいね、スレッド化されていないコメントなどです。 次のグラフィックでは、音符の最終的整合性を図解しています。
 
-  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="範囲としての整合性":::
+  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="最終的な整合性の図":::
 
 ## <a name="consistency-guarantees-in-practice"></a>整合性の実際の保証
 

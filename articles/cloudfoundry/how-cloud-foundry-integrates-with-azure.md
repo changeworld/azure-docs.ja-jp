@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: f3b84ba1c3571e3660d1d71a0167a7489c6ec4ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 897d7f662c4cad4df92eeec66820a0e8cf17b8ad
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82145121"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040610"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Cloud Foundry と Azure を統合する
 
@@ -32,21 +32,21 @@ Bosh では、ディスクの作成および削除ルーチンに、Azure CPI (C
 [マネージド ディスク](https://azure.microsoft.com/services/managed-disks/)を使用できるようになり、管理されたセキュリティと信頼性の高いディスク ストレージが仮想マシンに提供されます。 ユーザーは、スケーリングと HA のためにストレージ アカウントを操作する必要がなくなりました。 Azure によって、ディスクが自動的に配置されます。 Azure CPI は、新しいデプロイか既存のデプロイかにかかわらず、CF デプロイ中にマネージド ディスクの作成または移行を処理します。 これは PCF 1.11 でサポートされています。 また、参考として、オープンソースの Cloud Foundry の[マネージド ディスク ガイダンス](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/managed-disks)を調べることもできます。 
 ### <a name="availability-zone-"></a>可用性ゾーン *
 クラウドネイティブ アプリケーション プラットフォームとして、Cloud Foundry は、[4 つのレベルの高可用性](https://docs.pivotal.io/pivotalcf/2-1/concepts/high-availability.html)を持つように設計されています。 最初の 3 つのレベルのソフトウェア障害は CF システム自体で処理できますが、プラットフォームのフォールト トレランスはクラウド プロバイダーによって提供されます。 主要な CF コンポーネントは、クラウド プロバイダーのプラットフォーム HA ソリューションで保護する必要があります。 たとえば、GoRouter、Diego Brain、CF データベース、サービス タイルなどです。 既定では、データ センター内のクラスター間のフォールト トレランスには、[Azure 可用性セット](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/deploy-cloudfoundry-with-availability-sets)が使用されます。
-しかし、[Azure 可用性ゾーン](https://docs.microsoft.com/azure/availability-zones/az-overview )がリリースされたため、フォールト トレランスが次のレベルに引き上げられ、データ センター間の冗長性で待機時間が少なくなります。
+しかし、[Azure 可用性ゾーン](../availability-zones/az-overview.md)がリリースされたため、フォールト トレランスが次のレベルに引き上げられ、データ センター間の冗長性で待機時間が少なくなります。
 Azure 可用性ゾーンは、VM のセットを 2 つ以上のデータ センターに配置することで HA を実現し、VM の各セットは他のセットと重複しています。 1 つのゾーンがダウンしても、他のセットはまだ利用することができ、災害からは隔離されています。
 > [!NOTE] 
-> Azure 可用性ゾーンは、まだ一部のリージョンでは提供されていません。最新の[サポートされているリージョンの一覧についてのお知らせ](https://docs.microsoft.com/azure/availability-zones/az-overview)を確認してください。 Open Source Cloud Foundry については、[Azure Availability Zone for open source Cloud Foundry guidance (オープン ソースの Cloud Foundry 用の Azure 可用性ゾーン ガイダンス)](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/availability-zone) を確認してください。
+> Azure 可用性ゾーンは、まだ一部のリージョンでは提供されていません。最新の[サポートされているリージョンの一覧についてのお知らせ](../availability-zones/az-overview.md)を確認してください。 Open Source Cloud Foundry については、[Azure Availability Zone for open source Cloud Foundry guidance (オープン ソースの Cloud Foundry 用の Azure 可用性ゾーン ガイダンス)](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/availability-zone) を確認してください。
 
 ## <a name="2-network-routing"></a>2.ネットワーク ルーティング
 既定では、受信 CF API/アプリ要求に対して Azure 基本ロード バランサーが使用され、要求は Gorouter に転送されます。 Diego Brain、MySQL、ERT などの CF コンポーネントも、ロード バランサーを使用して HA のトラフィックを分散することができます。 また、Azure には完全に管理された負荷分散ソリューションのセットが用意されています。 TLS または SSL 終端 ("SSL オフロード") または HTTP/HTTPS 要求ごとのアプリケーション レイヤー処理が必要な場合は、Application Gateway を検討してください。 レイヤー 4 の高可用性とスケーラビリティの負荷分散については、標準ロード バランサーを検討してください。
 ### <a name="azure-application-gateway-"></a>Azure Application Gateway *
-[Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) は、SSL オフロード、エンドツーエンド TLS、Web アプリケーション ファイアウォール、Cookie ベースのセッション アフィニティなど、レイヤー 7 のさまざまな負荷分散機能を提供します。 [Application Gateway は、Open Source Cloud Foundry で構成](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway)することができます。 PCF については、POC テストの [PCF 2.1 リリース ノート](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway)を確認してください。
+[Azure Application Gateway](../application-gateway/overview.md) は、SSL オフロード、エンドツーエンド TLS、Web アプリケーション ファイアウォール、Cookie ベースのセッション アフィニティなど、レイヤー 7 のさまざまな負荷分散機能を提供します。 [Application Gateway は、Open Source Cloud Foundry で構成](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway)することができます。 PCF については、POC テストの [PCF 2.1 リリース ノート](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway)を確認してください。
 
 ### <a name="azure-standard-load-balancer-"></a>Azure Standard Load Balancer *
-Azure Load Balancer は、レイヤー 4 のロード バランサーです。 負荷分散セット内のサービスのインスタンス間でトラフィックを分散するために使用されます。 標準バージョンには、基本バージョンに加えて、[高度な機能](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)が用意されています。 例 1。 バックエンド プールの上限が、100 から 1,000 VM に上げられました。  2. エンドポイントで、1 つの可用性セットだけではなく複数の可用性セットをサポートできるようになりました。  3. HA ポート、より豊富な監視データなど、追加の機能があります。 Azure 可用性ゾーンに移行する場合は、標準ロード バランサーが必要です。 新たにデプロイする場合は、Azure Standard Load Balancer で始めることをお勧めします。 
+Azure Load Balancer は、レイヤー 4 のロード バランサーです。 負荷分散セット内のサービスのインスタンス間でトラフィックを分散するために使用されます。 標準バージョンには、基本バージョンに加えて、[高度な機能](../load-balancer/load-balancer-overview.md)が用意されています。 例 1。 バックエンド プールの上限が、100 から 1,000 VM に上げられました。  2. エンドポイントで、1 つの可用性セットだけではなく複数の可用性セットをサポートできるようになりました。  3. HA ポート、より豊富な監視データなど、追加の機能があります。 Azure 可用性ゾーンに移行する場合は、標準ロード バランサーが必要です。 新たにデプロイする場合は、Azure Standard Load Balancer で始めることをお勧めします。 
 
 ## <a name="3-authentication"></a>3.認証 
-[Cloud Foundry User Account and Authentication](https://docs.cloudfoundry.org/concepts/architecture/uaa.html) は、CF とそのさまざまなコンポーネントの中心的な ID 管理サービスです。 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) は、Microsoft が提供する、マルチテナントに対応したクラウドベースのディレクトリおよび ID 管理サービスです。 既定では、Cloud Foundry 認証には UAA が使用されます。 高度なオプションとして、UAA は外部ユーザー ストアとして Azure AD もサポートしています。 Azure AD ユーザーは、Cloud Foundry アカウントなしで、LDAP ID を使用して Cloud Foundry にアクセスすることができます。 PCF で UAA 用に Azure AD を構成するには、[こちらの手順](https://docs.pivotal.io/p-identity/1-6/azure/index.html)に従ってください。
+[Cloud Foundry User Account and Authentication](https://docs.cloudfoundry.org/concepts/architecture/uaa.html) は、CF とそのさまざまなコンポーネントの中心的な ID 管理サービスです。 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) は、Microsoft が提供する、マルチテナントに対応したクラウドベースのディレクトリおよび ID 管理サービスです。 既定では、Cloud Foundry 認証には UAA が使用されます。 高度なオプションとして、UAA は外部ユーザー ストアとして Azure AD もサポートしています。 Azure AD ユーザーは、Cloud Foundry アカウントなしで、LDAP ID を使用して Cloud Foundry にアクセスすることができます。 PCF で UAA 用に Azure AD を構成するには、[こちらの手順](https://docs.pivotal.io/p-identity/1-6/azure/index.html)に従ってください。
 
 ## <a name="4-data-storage-for-cloud-foundry-runtime-system"></a>4.Cloud Foundry ランタイム システムのデータ ストレージ
 Cloud Foundry には、Azure blobstore または Azure MySQL/PostgreSQL サービスをアプリケーション ランタイム システム ストレージ用に使用するための広範な拡張性があります。
@@ -67,7 +67,7 @@ Azure のサービス ブローカーは、Azure サービスへのアプリケ�
 
 ## <a name="6-metrics-and-logging"></a>6.メトリックとログ
 Azure Log Analytics Nozzle は Cloud Foundry コンポーネントであり、[Cloud Foundry loggregator firehose](https://docs.cloudfoundry.org/loggregator/architecture.html) から [Azure Monitor ログ](https://azure.microsoft.com/services/log-analytics/)にメトリックを転送します。 Nozzle を使用すると、複数のデプロイにわたる CF のシステム正常性とパフォーマンスのメトリックを収集、表示、および分析することができます。
-Open Source と Pivotal の両方の Cloud Foundry 環境に Azure Log Analytics Nozzle をデプロイし、Azure Monitor ログ コンソールからデータにアクセスする方法を確認するには、[こちら](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle)をクリックしてください。 
+Open Source と Pivotal の両方の Cloud Foundry 環境に Azure Log Analytics Nozzle をデプロイし、Azure Monitor ログ コンソールからデータにアクセスする方法を確認するには、[こちら](./cloudfoundry-oms-nozzle.md)をクリックしてください。 
 > [!NOTE]
 > PCF 2.0 からは、既定では VM の BOSH 正常性メトリックが Loggregator Firehose に転送され、Azure Monitor ログ コンソールに統合されます。
 
@@ -76,7 +76,7 @@ Open Source と Pivotal の両方の Cloud Foundry 環境に Azure Log Analytics
 ## <a name="7-cost-saving"></a>7.コストの削減
 ### <a name="cost-saving-for-devtest-environments"></a>開発/テスト環境でのコスト削減
 #### <a name="b-series-"></a>B シリーズ: *
-Pivotal Cloud Foundry の運用環境では、F および D VM シリーズが一般的に推奨されていましたが、新しい "バースト対応の" [B シリーズ](https://azure.microsoft.com/blog/introducing-b-series-our-new-burstable-vm-size/)が選択肢に加わりました。 Web サーバー、小規模なデータベース、開発とテスト環境など、CPU が常時最大限のパフォーマンスを発揮している必要のないワークロードでは、B シリーズのバースト可能な VM が最適です。 このようなワークロードでは通常、負荷の急増に対応できることがパフォーマンスの要件となります。 0\.05 米国ドル/時間 (F1) と比較して、0.012 米国ドル/時間 (B1) です。詳細については、[VM サイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)と[料金](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)の完全な一覧を参照してください。 
+Pivotal Cloud Foundry の運用環境では、F および D VM シリーズが一般的に推奨されていましたが、新しい "バースト対応の" [B シリーズ](https://azure.microsoft.com/blog/introducing-b-series-our-new-burstable-vm-size/)が選択肢に加わりました。 Web サーバー、小規模なデータベース、開発とテスト環境など、CPU が常時最大限のパフォーマンスを発揮している必要のないワークロードでは、B シリーズのバースト可能な VM が最適です。 このようなワークロードでは通常、負荷の急増に対応できることがパフォーマンスの要件となります。 0\.05 米国ドル/時間 (F1) と比較して、0.012 米国ドル/時間 (B1) です。詳細については、[VM サイズ](../virtual-machines/sizes-general.md)と[料金](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)の完全な一覧を参照してください。 
 #### <a name="managed-standard-disk"></a>マネージド Standard ディスク: 
 運用環境で信頼性の高いパフォーマンスを得るには、Premium ディスクが推奨されていました。  [マネージド ディスク](https://azure.microsoft.com/services/managed-disks/)により、Standard ストレージでも同様の信頼性が得られるようになりました。ただし、パフォーマンスは異なります。 開発/テスト環境や重要度が低い環境のようなパフォーマンスが重視されないワークロードの場合、マネージド Standard ディスクは低コストな代替オプションになります。  
 ### <a name="cost-saving-in-general"></a>一般的なコスト削減 
@@ -91,5 +91,4 @@ Pivotal は、PCF ユーザー向けに [Small Footprint ERT](https://docs.pivot
 
 ## <a name="next-steps"></a>次の手順
 Azure の統合機能は、Pivotal Cloud Foundry で利用できるようになる前に、まずは [Open Source Cloud Foundry](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/) で利用することができます。 \* のマークが付いている機能は、PCF ではまだ利用できません。 Azure Stack との Cloud Foundry 統合も、このドキュメントでは説明されていません。
-\* のマークが付いている機能の PCF サポート、または Azure Stack との Cloud Foundry 統合の最新の状況については、Pivotal および Microsoft のアカウント マネージャーに問い合わせてください。 
-
+\* のマークが付いている機能の PCF サポート、または Azure Stack との Cloud Foundry 統合の最新の状況については、Pivotal および Microsoft のアカウント マネージャーに問い合わせてください。

@@ -9,13 +9,13 @@ ms.date: 03/28/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 7f03072c2b7ee1f08fc5fa306da6c5b8368742ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/29/2020
 ms.locfileid: "67181745"
 ---
-キャッシュをダッシュボードにピン留めしていなかった場合には、[Azure Portal](https://portal.azure.com) で **[すべてのサービス]** を使ってキャッシュを検索してください。
+キャッシュをダッシュボードにピン留めしていなかった場合には、 [Azure Portal](https://portal.azure.com) で **[すべてのサービス]** を使ってキャッシュを検索してください。
 
 ![Azure Cache for Redis の参照ブレード](media/redis-cache-browse/redis-cache-browse.png)
 

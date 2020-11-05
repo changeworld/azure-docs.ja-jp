@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 7b96bc456d2dc0e3f1a1110f36b61be4accfbd8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c12c4b9f4a3757a3974e4aff7699d0265bfd7840
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488509"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124375"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>スループット向上のために Azure Stream Analytics ジョブをスケーリングする
 この記事では、Stream Analytics クエリをチューニングして、Streaming Analytics ジョブのスループットを向上させる方法について説明します。 次のガイドを使用して、高い負荷を処理し、より多くのシステム リソース (より多くの帯域幅、より多くの CPU リソース、より多くのメモリなど) を利用するようにジョブをスケーリングできます。
@@ -24,7 +24,7 @@ ms.locfileid: "89488509"
 入力のパーティション間でクエリが本質的に完全並列化可能な場合は、次の手順に従うことができます。
 1.  **PARTITION BY** キーワードを使用して、クエリを驚異的並列として作成します。 詳しくは、[このページ](stream-analytics-parallelization.md)の驚異並列ジョブのセクションをご覧ください。
 2.  クエリで使用される出力の種類に応じて、一部の出力は並列化できない可能性や、驚異的並列とするためにさらに構成が必要な場合があります。 たとえば、PowerBI の出力は並列化できません。 出力は、出力シンクに送信する前に常にマージされます。 BLOB、Table、ADLS、Service Bus、Azure 関数は自動的に並列化されます。 SQL と Azure Synapse Analytics の出力には、並列化のオプションがあります。 イベント ハブでは、PartitionKey 構成を **PARTITION BY** フィールド (通常は PartitionId) と一致するように設定する必要があります。 イベント ハブの場合は、パーティション間でのクロスオーバーを回避するために、すべての入力とすべての出力でパーティション数が一致することにも注意してください。 
-3.  **6 SU** (1 つのコンピューティング ノードの全容量) でクエリを実行して達成可能な最大スループットを測定し、**GROUP BY** を使用する場合は、ジョブで処理できるグループ数 (カーディナリティ) を測定します。 ジョブがシステム リソース制限に達した場合の一般的な症状は次のとおりです。
+3.  **6 SU** (1 つのコンピューティング ノードの全容量) でクエリを実行して達成可能な最大スループットを測定し、 **GROUP BY** を使用する場合は、ジョブで処理できるグループ数 (カーディナリティ) を測定します。 ジョブがシステム リソース制限に達した場合の一般的な症状は次のとおりです。
     - SU % 使用率のメトリックが 80% を超えている。 これは、メモリ使用率が高いことを示します。 このメトリックの増加に影響する要因については、[こちら](stream-analytics-streaming-unit-consumption.md)をご覧ください。 
     -   出力タイムスタンプが実時間よりも遅れている。 クエリ ロジックによっては、出力タイムスタンプに、実時間からの論理オフセットがある場合があります。 ただし、それらはほぼ同じ速度で進行します。 出力タイムスタンプの遅れが徐々に増加している場合は、システムが過負荷になっていることを示しています。 ダウンストリーム出力のシンク調整、または高 CPU 使用率の結果である可能性があります。 現時点では CPU 使用率のメトリックを提供していないため、2 つを区別するのは困難な可能性があります。
         - 問題の原因がシンク調整の場合は、出力パーティション (また、ジョブを完全並列化可能に保つには入力パーティションも) の数を増やすか、シンクのリソースの量 (CosmosDB の要求ユニット数など) を増やすことが必要な場合があります。
@@ -38,7 +38,7 @@ ms.locfileid: "89488509"
 
 ## <a name="case-2---if-your-query-is-not-embarrassingly-parallel"></a>ケース 2 - クエリが驚異的並列でない場合。
 クエリが驚異的並列でない場合は、次の手順に従うことができます。
-1.  まず **PARTITION BY** を指定しないでクエリを開始してパーティション分割の複雑さを回避し、次に[ケース 1](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions) と同様に 6 SU でクエリを実行して最大負荷を測定します。
+1.  まず **PARTITION BY** を指定しないでクエリを開始してパーティション分割の複雑さを回避し、次に [ケース 1](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions) と同様に 6 SU でクエリを実行して最大負荷を測定します。
 2.  スループットについて予想される負荷を達成できる場合は完了です。 または、3 SU と 1 SU で実行している同じジョブを測定して、シナリオに合った SU の最小数を調べることもできます。
 3.  目的のスループットを達成できない場合は、可能であればクエリを複数のステップに分割し (複数ステップがまだない場合)、クエリの各ステップに最大 6 SU を割り当てます。 たとえば、3 つのステップがある場合は、[スケール] オプションで 18 SU を割り当てます。
 4.  このようなジョブを実行する場合、Stream Analytics は、専用の 6 SU リソースを持つ独自のノードに各ステップを配置します。 
@@ -78,13 +78,13 @@ ms.locfileid: "89488509"
 
 
 ## <a name="get-help"></a>ヘルプの参照
-詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください。
+詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](/answers/topics/azure-stream-analytics.html)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](/rest/api/streamanalytics/)
 
 <!--Image references-->
 
@@ -97,10 +97,9 @@ ms.locfileid: "89488509"
 <!--Link references-->
 
 [microsoft.support]: https://support.microsoft.com
-[azure.event.hubs.developer.guide]: https://msdn.microsoft.com/library/azure/dn789972.aspx
+[azure.event.hubs.developer.guide]: /previous-versions/azure/dn789972(v=azure.100)
 
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
-
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

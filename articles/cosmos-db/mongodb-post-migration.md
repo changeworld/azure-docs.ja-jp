@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: jasonh
-ms.openlocfilehash: 6733e0f6447d055da8d349940bc7c7665e003e33
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3b0c291f942cd970f7996f0b9fa599ee8cabfdab
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475602"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096446"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API 使用時の移行後の最適化手順
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 MongoDB データベースに格納されているデータを Azure Cosmos DB の MongoDB 用 API に移行した後、Azure Cosmos DB に接続してデータを管理できます。 このガイドでは、移行後に考慮すべき手順を提供します。 移行手順については、[MongoDB を Azure Cosmos DB の MongoDB 用 API に移行するためのチュートリアル](../dms/tutorial-mongodb-cosmos-db.md)をご覧ください。
 

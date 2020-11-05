@@ -9,14 +9,15 @@ ms.date: 05/28/2019
 ms.author: jasonh
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2d113189d1361122305f92bc86c46346e1e700f4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: eb611c77abe5bf9067bfdbabd1e2c5d2ee90ac23
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489372"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100492"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Graph Bulk Executor .NET ライブラリを使って Azure Cosmos DB Gremlin API の一括操作を実行する
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 このチュートリアルでは、Azure CosmosDB の Bulk Executor .NET ライブラリを使って、Azure Cosmos DB Gremlin API コンテナーにグラフ オブジェクトをインポートし、更新する手順を紹介しています。 この手順では、[Bulk Executor ライブラリ](./bulk-executor-overview.md)の Graph クラスを利用してプログラムから Vertex オブジェクトと Edge オブジェクトを作成し、1 回のネットワーク要求につき複数それらを挿入します。 この動作を Bulk Executor ライブラリで構成することにより、データベース リソースとローカル メモリ リソースの両方を最大限に活用することができます。
 

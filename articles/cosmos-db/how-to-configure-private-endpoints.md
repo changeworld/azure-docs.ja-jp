@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: thweiss
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c9821e53abcdf95c6cf235cb9d39cd310fcfb66f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 4ba4e5f462a3cc88de5b23b32a5e749f9363e93f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279718"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081894"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Cosmos アカウントの Azure Private Link を構成する
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Private Link を使用すると、プライベート エンドポイント経由で Azure Cosmos アカウントに接続できます。 プライベート エンドポイントは、仮想ネットワークのサブネットにある一組のプライベート IP アドレスです。 これで、プライベート IP アドレスを使用して Azure Cosmos アカウントへのアクセスを制限できるようになります。 Private Link を制限付き NSG ポリシーと結合することで、データ流出のリスクを軽減することができます。 プライベート エンドポイントの詳細については、[Azure Private Link](../private-link/private-link-overview.md) に関する記事を参照してください。
 
@@ -35,7 +36,7 @@ Azure portal を使用して、次の手順で既存の Azure Cosmos アカウ�
 
 1. 設定の一覧から **[プライベート エンドポイント接続]** を選択し、 **[プライベート エンドポイント]** を選択します。
 
-   :::image type="content" source="./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png" alt-text="Azure portal でプライベート エンドポイントを作成するための選択&quot;:::
+   :::image type="content" source="./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png" alt-text="Azure portal でプライベート エンドポイントを作成するための選択":::
 
 1. **[プライベート エンドポイントの作成 - 基本]** ペインで次の詳細を入力または選択します。
 
@@ -57,7 +58,7 @@ Azure portal を使用して、次の手順で既存の Azure Cosmos アカウ�
     | サブスクリプション| サブスクリプションを選択します。 |
     | リソースの種類 | **AzureCosmosDB/databaseAccounts** を選択します。 |
     | リソース |自分の Azure Cosmos アカウントを選択します。 |
-    |ターゲット サブリソース |マップする Azure Cosmos DB API の種類を選択します。 既定では SQL、MongoDB、Cassandra API では、1 つしか選択できません。 Gremlin と Table API のような API は SQL API と相互運用可能であるため、**SQL** を選択することもできます。 |
+    |ターゲット サブリソース |マップする Azure Cosmos DB API の種類を選択します。 既定では SQL、MongoDB、Cassandra API では、1 つしか選択できません。 Gremlin と Table API のような API は SQL API と相互運用可能であるため、 **SQL** を選択することもできます。 |
     |||
 
 1. **[Next:構成]** を選択します。
@@ -74,7 +75,7 @@ Azure portal を使用して、次の手順で既存の Azure Cosmos アカウ�
     |||
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認と作成]** ページで、Azure によって構成が検証されます。
-1. &quot;**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。
+1. " **証に成功しました** " というメッセージが表示されたら、 **[作成]** を選択します。
 
 Azure Cosmos アカウントの Private Link を承認すると、Azure portal の **[ファイアウォールと仮想ネットワーク]** ペインにある **[すべてのネットワーク]** オプションは使用できなくなります。
 
@@ -98,46 +99,7 @@ Azure Cosmos アカウントの Private Link を承認すると、Azure portal �
 1. 先ほど作成したプライベート エンドポイントを検索します。 この例では **cdbPrivateEndpoint3** です。
 1. **[概要]** タブを選択して、DNS の設定と IP アドレスを表示します。
 
-:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Azure portal でプライベート エンドポイントを作成するための選択&quot;:::
-
-1. **[プライベート エンドポイントの作成 - 基本]** ペインで次の詳細を入力または選択します。
-
-    | 設定 | 値 |
-    | ------- | ----- |
-    | **プロジェクトの詳細** | |
-    | サブスクリプション | サブスクリプションを選択します。 |
-    | Resource group | リソース グループを選択します。|
-    | **インスタンスの詳細** |  |
-    | 名前 | プライベート エンドポイントの名前を入力します。 この名前が使用済みの場合は、一意の名前を作成します。 |
-    |リージョン| Private Link をデプロイするリージョンを選択します。 仮想ネットワークが存在する場所と同じ場所にプライベート エンドポイントを作成します。|
-    |||
-1. **[Next:リソース]** を選択します。
-1. **[プライベート エンドポイントの作成 - リソース]** で、次の情報を入力または選択します。
-
-    | 設定 | 値 |
-    | ------- | ----- |
-    |接続方法  | **[マイ ディレクトリ内の Azure リソースに接続します]** を選択します。 <br/><br/> これで、いずれかのリソースを選択して Private Link を設定できるようになります。 または、他のユーザーがあなたと共有したリソース ID またはエイリアスを使用して、そのユーザーのリソースに接続できます。|
-    | サブスクリプション| サブスクリプションを選択します。 |
-    | リソースの種類 | **AzureCosmosDB/databaseAccounts** を選択します。 |
-    | リソース |自分の Azure Cosmos アカウントを選択します。 |
-    |ターゲット サブリソース |マップする Azure Cosmos DB API の種類を選択します。 既定では SQL、MongoDB、Cassandra API では、1 つしか選択できません。 Gremlin と Table API のような API は SQL API と相互運用可能であるため、**SQL** を選択することもできます。 |
-    |||
-
-1. **[Next:構成]** を選択します。
-1. **[Create a private endpoint - Configuration]/(プライベート エンドポイントの作成 - 構成/)** で次の情報を入力または選択します。
-
-    | 設定 | 値 |
-    | ------- | ----- |
-    |**ネットワーク**| |
-    | 仮想ネットワーク| 仮想ネットワークを選択します。 |
-    | Subnet | サブネットを選択します。 |
-    |**プライベート DNS の統合**||
-    |プライベート DNS ゾーンとの統合 |**[はい]** を選択します。 <br><br/> プライベート エンドポイントに非公開で接続するには、DNS レコードが必要です。 プライベート エンドポイントとプライベート DNS ゾーンを統合することをお勧めします。 また、独自の DNS サーバーを使用したり、仮想マシン上のホスト ファイルを使用して DNS レコードを作成したりすることもできます。 |
-    |プライベート DNS ゾーン |**privatelink.documents.azure.com** を選択します。 <br><br/> プライベート DNS ゾーンは自動的に決定されます。 Azure portal を使用して変更することはできません。|
-    |||
-
-1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認と作成]** ページで、Azure によって構成が検証されます。
-1. &quot;**証に成功しました**":::
+:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Azure portal のプライベート IP アドレス":::
 
 プライベート エンドポイントごとに複数の IP アドレスが作成されます。
 
@@ -450,46 +412,7 @@ PowerShell スクリプトでは、`GroupId` 変数に 1 つの値のみを含�
 
 テンプレートが正常にデプロイされると、次の図に示すような出力が表示されます。 プライベート エンドポイントが正しく設定されている場合、`provisioningState` 値は `Succeeded` です。
 
-:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Azure portal でプライベート エンドポイントを作成するための選択&quot;:::
-
-1. **[プライベート エンドポイントの作成 - 基本]** ペインで次の詳細を入力または選択します。
-
-    | 設定 | 値 |
-    | ------- | ----- |
-    | **プロジェクトの詳細** | |
-    | サブスクリプション | サブスクリプションを選択します。 |
-    | Resource group | リソース グループを選択します。|
-    | **インスタンスの詳細** |  |
-    | 名前 | プライベート エンドポイントの名前を入力します。 この名前が使用済みの場合は、一意の名前を作成します。 |
-    |リージョン| Private Link をデプロイするリージョンを選択します。 仮想ネットワークが存在する場所と同じ場所にプライベート エンドポイントを作成します。|
-    |||
-1. **[Next:リソース]** を選択します。
-1. **[プライベート エンドポイントの作成 - リソース]** で、次の情報を入力または選択します。
-
-    | 設定 | 値 |
-    | ------- | ----- |
-    |接続方法  | **[マイ ディレクトリ内の Azure リソースに接続します]** を選択します。 <br/><br/> これで、いずれかのリソースを選択して Private Link を設定できるようになります。 または、他のユーザーがあなたと共有したリソース ID またはエイリアスを使用して、そのユーザーのリソースに接続できます。|
-    | サブスクリプション| サブスクリプションを選択します。 |
-    | リソースの種類 | **AzureCosmosDB/databaseAccounts** を選択します。 |
-    | リソース |自分の Azure Cosmos アカウントを選択します。 |
-    |ターゲット サブリソース |マップする Azure Cosmos DB API の種類を選択します。 既定では SQL、MongoDB、Cassandra API では、1 つしか選択できません。 Gremlin と Table API のような API は SQL API と相互運用可能であるため、**SQL** を選択することもできます。 |
-    |||
-
-1. **[Next:構成]** を選択します。
-1. **[Create a private endpoint - Configuration]/(プライベート エンドポイントの作成 - 構成/)** で次の情報を入力または選択します。
-
-    | 設定 | 値 |
-    | ------- | ----- |
-    |**ネットワーク**| |
-    | 仮想ネットワーク| 仮想ネットワークを選択します。 |
-    | Subnet | サブネットを選択します。 |
-    |**プライベート DNS の統合**||
-    |プライベート DNS ゾーンとの統合 |**[はい]** を選択します。 <br><br/> プライベート エンドポイントに非公開で接続するには、DNS レコードが必要です。 プライベート エンドポイントとプライベート DNS ゾーンを統合することをお勧めします。 また、独自の DNS サーバーを使用したり、仮想マシン上のホスト ファイルを使用して DNS レコードを作成したりすることもできます。 |
-    |プライベート DNS ゾーン |**privatelink.documents.azure.com** を選択します。 <br><br/> プライベート DNS ゾーンは自動的に決定されます。 Azure portal を使用して変更することはできません。|
-    |||
-
-1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認と作成]** ページで、Azure によって構成が検証されます。
-1. &quot;**証に成功しました**":::
+:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Resource Manager テンプレートのデプロイの出力":::
 
 テンプレートがデプロイされると、プライベート IP アドレスがサブネット内で予約されます。 Azure Cosmos アカウントのファイアウォール規則は、プライベート エンドポイントからの接続のみを受け入れるように構成されています。
 

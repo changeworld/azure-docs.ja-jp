@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: c66845a801b93db4ba718bc0aba5c39eabdd24b4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 10f2158edc12e7242c65a2e8ba58a18d390d47c8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791972"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091312"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ
 
@@ -188,7 +188,7 @@ GTID を有効にして整合性動作を構成するには、[Azure portal](how
 データが非同期にならないようにするため、また潜在的なデータの損失や破損を防ぐために、一部のサーバー パラメーターは、読み取りレプリカの使用時に更新されないようにロックされます。
 
 次のサーバー パラメーターは、ソースとレプリカの両サーバーでロックされます。
-- [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) 
+- [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) 
 - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
 
 [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) パラメーターは、レプリカ サーバーでロックされます。 

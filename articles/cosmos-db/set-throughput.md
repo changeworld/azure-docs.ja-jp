@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 7caa29807f2779ee1f52cb22de2bf95fdb9cb37e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4d03e651006661a2fa82901d64f8fb6ac2236210
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367127"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098775"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB におけるスループットのプロビジョニングの概要
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB では、データベースとコンテナーでプロビジョニング済みのスループットを設定できます。 プロビジョニング済みスループットには、標準 (手動) と自動スケールの 2 種類があります。 この記事では、プロビジョニング済みスループットのしくみについて概説します。 
 
@@ -72,7 +73,7 @@ Azure Cosmos DB アカウントに 25 個以上のコンテナーを持つ共有
 
 ワークロードでデータベース内のすべてのコレクションを削除および再作成する必要がある場合は、空のデータベースを削除し、コレクションの作成前に新しいデータベースを再作成することをお勧めします。 次の図は、物理パーティションで、データベース内のさまざまなコンテナーに属する 1 つ以上の論理パーティションをホストできる方法を示しています。
 
-:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="コンテナーの 1 つ以上の論理パーティションをホストする物理パーティション" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="異なるコンテナーに属する 1 つ以上の論理パーティションをホストする物理パーティション" border="false":::
 
 ## <a name="set-throughput-on-a-database-and-a-container"></a>データベースとコンテナーでスループットを設定する
 
@@ -81,7 +82,7 @@ Azure Cosmos DB アカウントに 25 個以上のコンテナーを持つ共有
 * *K* RU の標準 (手動) プロビジョニング済みスループットで、 *Z* という名前の Azure Cosmos データベースを作成できます。 
 * 次に、データベース内に *A* 、 *B* 、 *C* 、 *D* 、 *E* という名前の 5 つのコンテナーを作成します。 コンテナー B を作成するときに、必ず **[Provision dedicated throughput for this container]\(このコンテナーの専用スループットをプロビジョニングする\)** オプションを有効にし、このコンテナーにプロビジョニングされているスループットの " *P* " RU を明示的に構成します。 共有および専用のスループットを構成できるのは、データベースとコンテナーを作成する場合のみになります。 
 
-   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="コンテナーの 1 つ以上の論理パーティションをホストする物理パーティション":::
+   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="コンテナー レベルでのスループットの設定":::
 
 * *K* RU のスループットは、 *A* 、 *C* 、 *D* 、 *E* の 4 つのコンテナーにわたって共有されます。使用可能なスループットの正確な量は、 *A* 、 *C* 、 *D* 、 *E* のそれぞれで異なります。 個々のコンテナーのスループットに対する SLA はありません。
 * コンテナー *B* は常に *P* RU のスループットを取得することが保証されます。 それは SLA によって裏付けられます。

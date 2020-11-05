@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 58b57bd592ec0b302724f9339c0e0d48fed42d15
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 3f4c33a88d9a8fbf2c3d64135d93da54cf75fab3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281176"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097507"
 ---
 # <a name="optimize-request-cost-in-azure-cosmos-db"></a>Azure Cosmos DB での要求コストを最適化する
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 この記事では、読み取りと書き込みの要求が[要求ユニット](request-units.md)にどのように変換されるか、およびこれらの要求のコストを最適化する方法について説明します。 読み取り操作には、ポイント読み取りとクエリが含まれます。 書き込み操作には、アイテムの挿入、置換、削除、upsert が含まれます。
 
@@ -34,7 +35,7 @@ Azure Cosmos DB での読み取り操作は、通常、以下のように RU 消
 
 ### <a name="role-of-the-consistency-level"></a>整合性レベルのロール
 
-**厳密** または **有界整合性制約** のいずれかの[整合性レベル](consistency-levels.md)を使用する場合、すべての読み取り操作 (ポイント読み取りまたはクエリ) の RU コストが 2 倍になります。
+**厳密** または **有界整合性制約** のいずれかの [整合性レベル](consistency-levels.md)を使用する場合、すべての読み取り操作 (ポイント読み取りまたはクエリ) の RU コストが 2 倍になります。
 
 ### <a name="point-reads"></a>ポイント読み取り
 

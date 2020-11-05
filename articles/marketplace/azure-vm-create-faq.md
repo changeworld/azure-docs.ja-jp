@@ -7,12 +7,12 @@ ms.topic: guide
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/15/2020
-ms.openlocfilehash: 131cd9b1de82213d89ee07f30aed25544f6fcb18
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 88ec58ca9bcfa5c64036d3b65e77f3248e26357d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283423"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124953"
 ---
 # <a name="common-questions-about-vm-in-azure-marketplace"></a>Azure Marketplace の VM についての一般的な質問
 
@@ -22,7 +22,7 @@ ms.locfileid: "92283423"
 
 Azure Resource Manager デプロイ モデルを使用している場合、3 つのオプションがあります。
 
-- [Azure portal を使用してルートベースの VPN ゲートウェイを作成する](../vpn-gateway/create-routebased-vpn-gateway-portal.md)
+- [Azure portal を使用してルートベースの VPN ゲートウェイを作成する](../vpn-gateway/tutorial-create-gateway-portal.md)
 - [Azure PowerShell を使用してルートベースの VPN ゲートウェイを作成する](../vpn-gateway/create-routebased-vpn-gateway-powershell.md)
 - [CLI を使用してルートベースの VPN ゲートウェイを作成する](../vpn-gateway/create-routebased-vpn-gateway-cli.md)
 
@@ -32,7 +32,7 @@ Azure Resource Manager デプロイ モデルを使用している場合、3 つ
 
 ## <a name="in-a-vm-how-do-i-manage-the-custom-script-extension-in-the-startup-task"></a>VM で、スタートアップ タスクのカスタム スクリプト拡張機能を管理するにはどうすればよいですか?
 
-Azure PowerShell モジュールと Azure Resource Manager テンプレートを使用したカスタム スクリプト拡張機能の使用方法と、Windows システムでのトラブルシューティング手順の詳細については、「[Windows でのカスタムのスクリプト拡張機能](/azure/virtual-machines/extensions/custom-script-windows)」を参照してください。
+Azure PowerShell モジュールと Azure Resource Manager テンプレートを使用したカスタム スクリプト拡張機能の使用方法と、Windows システムでのトラブルシューティング手順の詳細については、「[Windows でのカスタムのスクリプト拡張機能](../virtual-machines/extensions/custom-script-windows.md)」を参照してください。
 
 ## <a name="are-32-bit-applications-or-services-supported-in-azure-marketplace"></a>32 ビットのアプリケーションやサービスは Azure Marketplace でサポートされていますか?
 
@@ -40,7 +40,7 @@ Azure PowerShell モジュールと Azure Resource Manager テンプレートを
 
 詳細と例については、次の記事をご覧ください。
 
-- [32 ビット アプリケーションの実行](https://docs.microsoft.com/windows/desktop/WinProg64/running-32-bit-applications)
+- [32 ビット アプリケーションの実行](/windows/desktop/WinProg64/running-32-bit-applications)
 - [Azure 仮想マシンでの 32 ビット オペレーティング システムのサポート](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)
 - [Microsoft Azure 仮想マシンのマイクロソフト サーバー ソフトウェアのサポート](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
 

@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: reference
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: b4d5b3682114d44ceaadc73252f355e4cdc9cc66
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 03941c3abe833deb218844cc60e2f04556fccc22
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548445"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078205"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Azure IoT Hub の監視データのリファレンス
 
@@ -60,9 +60,9 @@ Azure IoT Hub の監視データの収集と分析の詳細については、「
 |メトリックの表示名|メトリック|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |期限切れ C2D メッセージ (プレビュー)|C2DMessagesExpired|Count|合計|有効期限が切れた cloud-to-device メッセージの数|なし|
-|C2D メッセージ配信完了|c2d.commands.egress.<br>complete.success|Count|合計|デバイスで正常に完了した Cloud to Device メッセージ配信の数|なし|
-|破棄した C2D メッセージ|c2d.commands.egress.<br>abandon.success|Count|合計|デバイスで中止された Cloud to Device メッセージの数|なし|
-|C2D メッセージ拒否数|c2d.commands.egress.<br>reject.success|Count|合計|デバイスで拒否された Cloud to Device メッセージの数|なし|
+|C2D メッセージ配信完了|c2d.commands.egress.complete.success|Count|合計|デバイスで正常に完了した Cloud to Device メッセージ配信の数|なし|
+|破棄した C2D メッセージ|c2d.commands.egress.abandon.success|Count|合計|デバイスで中止された Cloud to Device メッセージの数|なし|
+|C2D メッセージ拒否数|c2d.commands.egress.reject.success|Count|合計|デバイスで拒否された Cloud to Device メッセージの数|なし|
 
 **[ユニット]** 値が **Count** のメトリックの場合、合計 (Sum) の集計のみが有効です。 Minimum、Maximum、Average の集計では、常に 1 が返されます。 詳細については、「[サポートされる集計](#supported-aggregations)」を参照してください。
 
@@ -113,7 +113,7 @@ Azure IoT Hub の監視データの収集と分析の詳細については、「
 |メトリックの表示名|メトリック|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |デバイスの総数 (非推奨)|devices.totalDevices|Count|合計|IoT Hub に登録されたデバイスの数|なし|
-|接続されているデバイス (非推奨) |devices.connectedDevices.<br>allProtocol|Count|合計|IoT Hub に接続されているデバイスの数|なし|
+|接続されているデバイス (非推奨) |devices.connectedDevices.allProtocol|Count|合計|IoT Hub に接続されているデバイスの数|なし|
 |デバイスの合計数 (プレビュー)|totalDeviceCount|Count|Average|IoT Hub に登録されたデバイスの数|なし|
 |接続されているデバイス (プレビュー)|connectedDeviceCount|Count|Average|IoT Hub に接続されているデバイスの数|なし|
 
@@ -127,9 +127,9 @@ Azure IoT Hub の監視データの収集と分析の詳細については、「
 
 |メトリックの表示名|メトリック|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
-|調整エラーの数|d2c.telemetry.ingress.<br>sendThrottle|Count|合計|デバイスのスループット調整による調整エラーの数|なし|
-|テレメトリ メッセージ送信試行|d2c.telemetry.ingress.<br>allProtocol|Count|合計|IoT Hub への送信が試行された Device to Cloud テレメトリ メッセージの数|なし|
-|送信済みテレメトリ メッセージ|d2c.telemetry.ingress.<br>success|Count|合計|IoT Hub に正常に送信された Device to Cloud テレメトリ メッセージの数|なし|
+|調整エラーの数|d2c.telemetry.ingress.sendThrottle|Count|合計|デバイスのスループット調整による調整エラーの数|なし|
+|テレメトリ メッセージ送信試行|d2c.telemetry.ingress.allProtocol|Count|合計|IoT Hub への送信が試行された Device to Cloud テレメトリ メッセージの数|なし|
+|送信済みテレメトリ メッセージ|d2c.telemetry.ingress.success|Count|合計|IoT Hub に正常に送信された Device to Cloud テレメトリ メッセージの数|なし|
 
 **[ユニット]** 値が **Count** のメトリックの場合、合計 (Sum) の集計のみが有効です。 Minimum、Maximum、Average の集計では、常に 1 が返されます。 詳細については、「[サポートされる集計](#supported-aggregations)」を参照してください。
 
@@ -150,8 +150,8 @@ Azure IoT Hub の監視データの収集と分析の詳細については、「
 
 |メトリックの表示名|メトリック|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
-|Event Grid 配信 (プレビュー)|EventGridDeliveries|Count|合計|Event Grid に発行された IoT Hub イベントの数。 成功および失敗した要求の数には、Result ディメンションを使用します。 EventType ディメンションはイベントの種類 (https://aka.ms/ioteventgrid) ) を示します。|Result、<br/>EventType<br>" *詳細については、「[メトリック ディメンション](#metric-dimensions)」を参照してください。* "|
-|Event Grid の待機時間 (プレビュー)|EventGridLatency|ミリ秒|Average|oT Hub イベントが生成されてから、そのイベントが Event Grid に発行されるまでの平均待機時間 (ミリ秒)。 この数は、すべてのイベントの種類の間の平均値です。 特定の種類のイベントの待機時間を確認するには、EventType ディメンションを使用します。|EventType<br>" *詳細については、「[メトリック ディメンション](#metric-dimensions)」を参照してください。* "|
+|Event Grid の配信数 (プレビュー)|EventGridDeliveries|Count|合計|Event Grid に発行された IoT Hub イベントの数。 成功および失敗した要求の数には、Result ディメンションを使用します。 EventType ディメンションはイベントの種類 (https://aka.ms/ioteventgrid) ) を示します。|Result、<br/>EventType<br>" *詳細については、「 [メトリック ディメンション](#metric-dimensions)」を参照してください。* "|
+|Event Grid の待機時間 (プレビュー)|EventGridLatency|ミリ秒|Average|oT Hub イベントが生成されてから、そのイベントが Event Grid に発行されるまでの平均待機時間 (ミリ秒)。 この数は、すべてのイベントの種類の間の平均値です。 特定の種類のイベントの待機時間を確認するには、EventType ディメンションを使用します。|EventType<br>" *詳細については、「 [メトリック ディメンション](#metric-dimensions)」を参照してください。* "|
 
 **[ユニット]** 値が **Count** のメトリックの場合、合計 (Sum) の集計のみが有効です。 Minimum、Maximum、Average の集計では、常に 1 が返されます。 詳細については、「[サポートされる集計](#supported-aggregations)」を参照してください。
 
@@ -161,13 +161,13 @@ Azure IoT Hub の監視データの収集と分析の詳細については、「
 |---|---|---|---|---|---|
 |完了したジョブ|jobs.completed|Count|合計|完了したジョブの数。|なし|
 |失敗したジョブ一覧の呼び出し|jobs.listJobs.failure|Count|合計|失敗したジョブ一覧の呼び出しの数。|なし|
-|失敗したメソッド呼び出しジョブの作成|jobs.createDirectMethodJob.<br>failure|Count|合計|作成に失敗したダイレクト メソッド呼び出しジョブの数。|なし|
-|失敗したツイン更新ジョブの作成|jobs.createTwinUpdateJob.<br>failure|Count|合計|作成に失敗したツイン更新ジョブの数。|なし|
+|失敗したメソッド呼び出しジョブの作成|jobs.createDirectMethodJob.failure|Count|合計|作成に失敗したダイレクト メソッド呼び出しジョブの数。|なし|
+|失敗したツイン更新ジョブの作成|jobs.createTwinUpdateJob.failure|Count|合計|作成に失敗したツイン更新ジョブの数。|なし|
 |失敗したジョブの取り消し|jobs.cancelJob.failure|Count|合計|失敗したジョブ取り消しの呼び出し。|なし|
 |失敗したジョブ クエリ|jobs.queryJobs.failure|Count|合計|失敗したジョブ クエリの呼び出しの数。|なし|
 |失敗したジョブ|jobs.failed|Count|合計|失敗したジョブの数。|なし|
 |成功したジョブ一覧の呼び出し|jobs.listJobs.success|Count|合計|正常に実行されたジョブ一覧の呼び出しの数。|なし|
-|成功したメソッド呼び出しジョブの作成|jobs.createDirectMethodJob.<br>success|Count|合計|正常に作成されたダイレクト メソッド呼び出しジョブの数。|なし|
+|成功したメソッド呼び出しジョブの作成|jobs.createDirectMethodJob.success|Count|合計|正常に作成されたダイレクト メソッド呼び出しジョブの数。|なし|
 |成功したツイン更新ジョブの作成|jobs.createTwinUpdateJob.<br>success|Count|合計|正常に作成されたツイン更新ジョブの数。|なし|
 |成功したジョブの取り消し|jobs.cancelJob.success|Count|合計|正常に実行されたジョブ取り消しの呼び出し。|なし|
 |成功したジョブ クエリ|jobs.queryJobs.success|Count|合計|正常に実行されたクエリ ジョブの呼び出しの数。|なし|
@@ -178,26 +178,26 @@ Azure IoT Hub の監視データの収集と分析の詳細については、「
 
 |メトリックの表示名|メトリック|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
-| Routing Delivery Attempts (ルーティングの配信試行) (プレビュー) |RoutingDeliveries | Count | 合計 |これはルーティングの配信に関するメトリックです。 ディメンションを使用して、特定のエンドポイントまたは特定のルーティング ソースに向けた配信の状態を特定します。| Result、<br>RoutingSource、<br>endpointType、<br>FailureReasonCategory、<br>EndpointName<br>" *詳細については、「[メトリック ディメンション](#metric-dimensions)」を参照してください。* " |
-| Routing Delivery Data Size In Bytes (バイト単位でのルーティング配信のデータ サイズ) (プレビュー)|RoutingDataSizeInBytesDelivered| バイト | 合計 |IoT Hub によってカスタム エンドポイントと組み込みエンドポイントにルーティングされた合計バイト数。 ディメンションを使用して、特定のエンドポイントまたは特定のルーティング ソースに向けてルーティングされたデータ サイズを特定します。| RoutingSource、<br>EndpointType<br>EndpointName<br>" *詳細については、「[メトリック ディメンション](#metric-dimensions)」を参照してください。* "|
-| Routing Latency (ルーティングの待機時間) (プレビュー) |RoutingDeliveryLatency| ミリ秒 | Average |これはルーティングの配信待機時間に関するメトリックです。 ディメンションを使用して、特定のエンドポイントまたは特定のルーティング ソースに向けた待機時間を特定します。| RoutingSource、<br>endpointType、<br>EndpointName<br>" *詳細については、「[メトリック ディメンション](#metric-dimensions)」を参照してください。* "|
-|ルーティング: ストレージに配信された BLOB|d2c.endpoints.egress.<br>storage.blobs|Count|合計|IoT Hub ルーティングで BLOB がストレージ エンドポイントに配信された回数。|なし|
-|ルーティング: ストレージに配信されたデータ|d2c.endpoints.egress.<br>storage.bytes|バイト|合計|IoT Hub ルーティングでストレージ エンドポイントに配信されたデータの量 (バイト)。|なし|
-|ルーティング: Event Hub のメッセージの待機時間|d2c.endpoints.latency.<br>eventHubs|ミリ秒|Average|IoT Hub への受信メッセージと、カスタム エンドポイント型の Event Hub への受信メッセージの間の平均待機時間 (ミリ秒)。 これには、組み込みエンドポイントへのメッセージ ルート (イベント) は含まれません。|なし|
-|ルーティング: Service Bus キューのメッセージの待機時間|d2c.endpoints.latency.<br>serviceBusQueues|ミリ秒|Average|IoT Hub への受信メッセージと、Service Bus キュー エンドポイントへの受信メッセージの間の平均待機時間 (ミリ秒)。|なし|
-|ルーティング: Service Bus トピックのメッセージの待機時間|d2c.endpoints.latency.<br>serviceBusTopics|ミリ秒|Average|IoT Hub への受信メッセージと、Service Bus トピック エンドポイントへの受信メッセージの間の平均待機時間 (ミリ秒)。|なし|
-|ルーティング: メッセージ/イベントのメッセージの待機時間|d2c.endpoints.latency.<br>builtIn.events|ミリ秒|Average|IoT Hub への受信メッセージと、組み込みエンドポイント (メッセージ/イベント) およびフォールバック ルートへの受信メッセージの間の平均待機時間 (ミリ秒)。|なし|
-|ルーティング: ストレージのメッセージの待機時間|d2c.endpoints.latency.<br>storage|ミリ秒|Average|IoT Hub への受信メッセージと、ストレージ エンドポイントへの受信メッセージの間の平均待機時間 (ミリ秒)。|なし|
-|ルーティング: Event Hub に配信されたメッセージ|d2c.endpoints.egress.<br>eventHubs|Count|合計|IoT Hub ルーティングにより、メッセージがカスタム エンドポイント型の Event Hub に正常に配信された回数。 これには、組み込みエンドポイントへのメッセージ ルート (イベント) は含まれません。|なし|
-|ルーティング: Service Bus キューに配信されたメッセージ|d2c.endpoints.egress.<br>serviceBusQueues|Count|合計|IoT Hub ルーティングにより、メッセージが Service Bus キュー エンドポイントに正常に配信された回数。|なし|
-|ルーティング: Service Bus トピックに配信されたメッセージ|d2c.endpoints.egress.<br>serviceBusTopics|Count|合計|IoT Hub ルーティングにより、メッセージが Service Bus トピック エンドポイントに正常に配信された回数。|なし|
-|ルーティング: フォールバックのために配信されたメッセージ|d2c.telemetry.egress.<br>fallback|Count|合計|IoT Hub ルーティングにより、フォールバック ルートに関連付けられているエンドポイントにメッセージが配信された回数。|なし|
-|ルーティング: メッセージ/イベントに配信されたメッセージ|d2c.endpoints.egress.<br>builtIn.events|Count|合計|IoT Hub ルーティングにより、メッセージが組み込みのエンドポイント (メッセージ/イベント) とフォールバック ルートに正常に配信された回数。|なし|
-|ルーティング: ストレージに配信されたメッセージ|d2c.endpoints.egress.<br>storage|Count|合計|IoT Hub ルーティングにより、メッセージがストレージ エンドポイントに正常に配信された回数。|なし|
-|ルーティング: 配信されたテレメトリ メッセージ|d2c.telemetry.egress.<br>success|Count|合計|IoT Hub ルーティングを使用して、メッセージがすべてのエンドポイントに正常に配信された回数。 メッセージが複数のエンドポイントにルーティングされている場合、この値は正常に配信されるたびに 1 つずつ増えます。 メッセージが同じエンドポイントに複数回配信されている場合、この値は正常に配信されるたびに 1 つずつ増えます。|なし|
-|ルーティング: 破棄されたテレメトリ メッセージ |d2c.telemetry.egress.<br>dropped|Count|合計|デッド エンドポイントであるため、メッセージが IoT Hub ルーティングで破棄された回数。 この値では、フォールバック ルートに配信されるメッセージはカウントされません。破棄されたメッセージはそこには配信されないためです。|なし|
-|ルーティング: 互換性のないテレメトリ メッセージ|d2c.telemetry.egress.<br>無効|Count|合計|エンドポイントと互換性がないため、IoT Hub ルーティングでメッセージを配信できなかった回数。 Iot Hub がエンドポイントにメッセージを配信しようとしたときに一時的でないエラーで失敗する場合、そのメッセージはエンドポイントに適合していません。 無効なメッセージは再試行されません。 この値に再試行回数は含まれません。|なし|
-|ルーティング: 孤立したテレメトリ メッセージ |d2c.telemetry.egress.<br>orphaned|Count|合計|フォールバック ルートが無効にされたときにどのルーティング クエリにも一致しなかったため、IoT Hub ルーティングによってメッセージが孤立した回数。|なし|
+| Routing Delivery Attempts (ルーティングの配信試行) (プレビュー) |RoutingDeliveries | Count | 合計 |これはルーティングの配信に関するメトリックです。 ディメンションを使用して、特定のエンドポイントまたは特定のルーティング ソースに向けた配信の状態を特定します。| Result、<br>RoutingSource、<br>endpointType、<br>FailureReasonCategory、<br>EndpointName<br>" *詳細については、「 [メトリック ディメンション](#metric-dimensions)」を参照してください。* " |
+| Routing Delivery Data Size In Bytes (バイト単位でのルーティング配信のデータ サイズ) (プレビュー)|RoutingDataSizeInBytesDelivered| バイト | 合計 |IoT Hub によってカスタム エンドポイントと組み込みエンドポイントにルーティングされた合計バイト数。 ディメンションを使用して、特定のエンドポイントまたは特定のルーティング ソースに向けてルーティングされたデータ サイズを特定します。| RoutingSource、<br>EndpointType<br>EndpointName<br>" *詳細については、「 [メトリック ディメンション](#metric-dimensions)」を参照してください。* "|
+| Routing Latency (ルーティングの待機時間) (プレビュー) |RoutingDeliveryLatency| ミリ秒 | Average |これはルーティングの配信待機時間に関するメトリックです。 ディメンションを使用して、特定のエンドポイントまたは特定のルーティング ソースに向けた待機時間を特定します。| RoutingSource、<br>endpointType、<br>EndpointName<br>" *詳細については、「 [メトリック ディメンション](#metric-dimensions)」を参照してください。* "|
+|ルーティング: ストレージに配信された BLOB|d2c.endpoints.egress.storage.blobs|Count|合計|IoT Hub ルーティングで BLOB がストレージ エンドポイントに配信された回数。|なし|
+|ルーティング: ストレージに配信されたデータ|d2c.endpoints.egress.storage.bytes|バイト|合計|IoT Hub ルーティングでストレージ エンドポイントに配信されたデータの量 (バイト)。|なし|
+|ルーティング: Event Hub のメッセージの待機時間|d2c.endpoints.latency.eventHubs|ミリ秒|Average|IoT Hub への受信メッセージと、カスタム エンドポイント型の Event Hub への受信メッセージの間の平均待機時間 (ミリ秒)。 これには、組み込みエンドポイントへのメッセージ ルート (イベント) は含まれません。|なし|
+|ルーティング: Service Bus キューのメッセージの待機時間|d2c.endpoints.latency.serviceBusQueues|ミリ秒|Average|IoT Hub への受信メッセージと、Service Bus キュー エンドポイントへの受信メッセージの間の平均待機時間 (ミリ秒)。|なし|
+|ルーティング: Service Bus トピックのメッセージの待機時間|d2c.endpoints.latency.serviceBusTopics|ミリ秒|Average|IoT Hub への受信メッセージと、Service Bus トピック エンドポイントへの受信メッセージの間の平均待機時間 (ミリ秒)。|なし|
+|ルーティング: メッセージ/イベントのメッセージの待機時間|d2c.endpoints.latency.builtIn.events|ミリ秒|Average|IoT Hub への受信メッセージと、組み込みエンドポイント (メッセージ/イベント) およびフォールバック ルートへの受信メッセージの間の平均待機時間 (ミリ秒)。|なし|
+|ルーティング: ストレージのメッセージの待機時間|d2c.endpoints.latency.storage|ミリ秒|Average|IoT Hub への受信メッセージと、ストレージ エンドポイントへの受信メッセージの間の平均待機時間 (ミリ秒)。|なし|
+|ルーティング: Event Hub に配信されたメッセージ|d2c.endpoints.egress.eventHubs|Count|合計|IoT Hub ルーティングにより、メッセージがカスタム エンドポイント型の Event Hub に正常に配信された回数。 これには、組み込みエンドポイントへのメッセージ ルート (イベント) は含まれません。|なし|
+|ルーティング: Service Bus キューに配信されたメッセージ|d2c.endpoints.egress.serviceBusQueues|Count|合計|IoT Hub ルーティングにより、メッセージが Service Bus キュー エンドポイントに正常に配信された回数。|なし|
+|ルーティング: Service Bus トピックに配信されたメッセージ|d2c.endpoints.egress.serviceBusTopics|Count|合計|IoT Hub ルーティングにより、メッセージが Service Bus トピック エンドポイントに正常に配信された回数。|なし|
+|ルーティング: フォールバックのために配信されたメッセージ|d2c.telemetry.egress.fallback|Count|合計|IoT Hub ルーティングにより、フォールバック ルートに関連付けられているエンドポイントにメッセージが配信された回数。|なし|
+|ルーティング: メッセージ/イベントに配信されたメッセージ|d2c.endpoints.egress.builtIn.events|Count|合計|IoT Hub ルーティングにより、メッセージが組み込みのエンドポイント (メッセージ/イベント) とフォールバック ルートに正常に配信された回数。|なし|
+|ルーティング: ストレージに配信されたメッセージ|d2c.endpoints.egress.storage|Count|合計|IoT Hub ルーティングにより、メッセージがストレージ エンドポイントに正常に配信された回数。|なし|
+|ルーティング: 配信されたテレメトリ メッセージ|d2c.telemetry.egress.success|Count|合計|IoT Hub ルーティングを使用して、メッセージがすべてのエンドポイントに正常に配信された回数。 メッセージが複数のエンドポイントにルーティングされている場合、この値は正常に配信されるたびに 1 つずつ増えます。 メッセージが同じエンドポイントに複数回配信されている場合、この値は正常に配信されるたびに 1 つずつ増えます。|なし|
+|ルーティング: 破棄されたテレメトリ メッセージ |d2c.telemetry.egress.dropped|Count|合計|デッド エンドポイントであるため、メッセージが IoT Hub ルーティングで破棄された回数。 この値では、フォールバック ルートに配信されるメッセージはカウントされません。破棄されたメッセージはそこには配信されないためです。|なし|
+|ルーティング: 互換性のないテレメトリ メッセージ|d2c.telemetry.egress.invalid|Count|合計|エンドポイントと互換性がないため、IoT Hub ルーティングでメッセージを配信できなかった回数。 Iot Hub がエンドポイントにメッセージを配信しようとしたときに一時的でないエラーで失敗する場合、そのメッセージはエンドポイントに適合していません。 無効なメッセージは再試行されません。 この値に再試行回数は含まれません。|なし|
+|ルーティング: 孤立したテレメトリ メッセージ |d2c.telemetry.egress.orphaned|Count|合計|フォールバック ルートが無効にされたときにどのルーティング クエリにも一致しなかったため、IoT Hub ルーティングによってメッセージが孤立した回数。|なし|
 
 **[ユニット]** 値が **Count** のメトリックの場合、合計 (Sum) の集計のみが有効です。 Minimum、Maximum、Average の集計では、常に 1 が返されます。 詳細については、「[サポートされる集計](#supported-aggregations)」を参照してください。
 
@@ -689,4 +689,4 @@ IoT Hub 構成ログでは、自動デバイス管理機能セットのイベン
 ## <a name="see-also"></a>参照
 
 * Azure IoT Hub の監視については、[Azure IoT Hub の監視](monitor-iot-hub.md)に関するページを参照してください。
-* Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](/azure/azure-monitor/insights/monitor-azure-resources)」を参照してください。
+* Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](/azure/azure-monitor/insights/monitor-azure-resource)」を参照してください。

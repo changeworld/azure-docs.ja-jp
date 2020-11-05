@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 493064bc22b1144df6878d71c99e50fd7c15ba1d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1390f5db6e0f0370788bef60d5a2cafee1e8a96d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482232"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080653"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Azure Policy を使用して Azure Cosmos DB リソースのガバナンスとコントロールを実装する
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 [Azure Policy](../governance/policy/overview.md) は、組織のガバナンス標準の実施、リソースのコンプライアンスの評価、自動修復の実装を支援します。 一般的なユースケースには、セキュリティ、コスト管理、構成の一貫性などがあります。
 
@@ -126,7 +127,7 @@ az provider show --namespace Microsoft.DocumentDB --expand "resourceTypes/aliase
 - 2 つのアカウントのうち、アカウントを複数の書き込み場所で構成する必要があるポリシーに準拠しているのは 0 個です。
 - 2 つのアカウントのうち、許可されている Azure リージョンにリソースがデプロイされたポリシーに準拠しているのは 0 個です。
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="Azure Cosmos DB の組み込みポリシー定義の検索":::
+:::image type="content" source="./media/policy/compliance.png" alt-text="リストされている Azure Policy の割り当てに関するコンプライアンス結果":::
 
 準拠していないリソースを修復するには、[Azure Policy でのリソースの修復方法](../governance/policy/how-to/remediate-resources.md)に関する記事を参照してください。
 

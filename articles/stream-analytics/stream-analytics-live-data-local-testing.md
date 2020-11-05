@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: fe1caca11ec0a3d89ddae140d00cd3556b9d3d89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0788d8b4f659364fcedc690185c9159a24434125
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044466"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123916"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Visual Studio の Azure Stream Analytics ツールを使用してライブ データをローカルにテストする (プレビュー)
 
@@ -31,7 +31,7 @@ Visual Studio の Azure Stream Analytics ツールを使用すると、Azure Eve
 
 ## <a name="local-testing-with-live-data"></a>ライブ データでのローカル テスト
 
-1. [Visual Studio で Azure Stream Analytics クラウド プロジェクト](stream-analytics-quick-create-vs.md)を作成した後、**script.asaql** を開きます。 ローカル テストでは、ローカル入力とローカル出力が既定で使用されます。
+1. [Visual Studio で Azure Stream Analytics クラウド プロジェクト](stream-analytics-quick-create-vs.md)を作成した後、 **script.asaql** を開きます。 ローカル テストでは、ローカル入力とローカル出力が既定で使用されます。
 
    ![Azure Stream Analytics Visual Studio のローカル入力とローカル出力](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-local-input-output.png)
 
@@ -59,7 +59,7 @@ Visual Studio の Azure Stream Analytics ツールを使用すると、Azure Eve
 
 * 認証モデルの制限により、Power BI と Azure Data Lake Storage は、出力シンクとしてサポートされていません。
 
-* クラウド入力オプションのみが[日時ポリシー](stream-analytics-out-of-order-and-late-events.md)をサポートしており、ローカル入力オプションではサポートされていません。
+* クラウド入力オプションのみが[日時ポリシー](./stream-analytics-time-handling.md)をサポートしており、ローカル入力オプションではサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

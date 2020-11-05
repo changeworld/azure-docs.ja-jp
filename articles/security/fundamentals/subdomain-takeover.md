@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2020
 ms.author: memildin
-ms.openlocfilehash: bde4b21f9dfff62ef43afc9c9d8e5a858631d304
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1837d84c97227ba3d8743c3717e2f68dafd6b95
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447373"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911394"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>未解決の DNS エントリを防ぎ、サブドメインの乗っ取りを回避する
 
@@ -41,7 +41,7 @@ ms.locfileid: "91447373"
 
     1. Azure リソースは、不要になるとプロビジョニング解除または削除されます。 
     
-        この時点で、CNAME レコード `greatapp.contoso.com` を DNS ゾーンから削除する*必要があります*。 CNAME レコードが削除されていない場合でも、アクティブなドメインとして公開されますが、トラフィックはアクティブな Azure リソースにルーティングされません。 これは、"未解決の" DNS レコードの定義です。
+        この時点で、CNAME レコード `greatapp.contoso.com` を DNS ゾーンから削除する *必要があります* 。 CNAME レコードが削除されていない場合でも、アクティブなドメインとして公開されますが、トラフィックはアクティブな Azure リソースにルーティングされません。 これは、"未解決の" DNS レコードの定義です。
 
     1. 未解決のサブドメイン `greatapp.contoso.com` が現在脆弱であり、別の Azure サブスクリプションのリソースに割り当てられることで乗っ取られる可能性があります。
 
@@ -51,7 +51,7 @@ ms.locfileid: "91447373"
 
     1. 脅威アクターは、以前に管理していたリソースと同じ FQDN を使用して Azure リソースをプロビジョニングします。 この例では、 `app-contogreat-dev-001.azurewebsites.net`です。
 
-    1. この時点で、サブドメイン `myapp.contoso.com` に送信されるトラフィックは、コンテンツが制御される悪意のあるアクターのリソースにルーティングされます。
+    1. この時点で、サブドメイン `greatapp.contoso.com` に送信されるトラフィックは、コンテンツが制御される悪意のあるアクターのリソースにルーティングされます。
 
 
 
@@ -119,7 +119,7 @@ CNAME が他の DNS サービス内にあり、Azure リソースを示してい
 
 ### <a name="run-the-script"></a>スクリプトを実行する
 
-PowerShell スクリプト (**Get-DanglingDnsRecords.ps1**) の詳細を確認し、GitHub (https://aka.ms/DanglingDNSDomains ) からダウンロードしてください。
+PowerShell スクリプト ( **Get-DanglingDnsRecords.ps1** ) の詳細を確認し、GitHub (https://aka.ms/DanglingDNSDomains ) からダウンロードしてください。
 
 ## <a name="remediate-dangling-dns-entries"></a>未解決の DNS エントリを修復する 
 

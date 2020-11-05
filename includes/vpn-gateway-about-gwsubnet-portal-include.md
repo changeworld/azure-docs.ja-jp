@@ -9,10 +9,10 @@ ms.date: 09/24/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 92a6fef3305891b47c4dc2e0f0432e1079df5a69
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "71266541"
 ---
 仮想ネットワーク ゲートウェイは、"ゲートウェイ サブネット" と呼ばれる特定のサブネットを使用します。 ゲートウェイ サブネットは、仮想ネットワークの構成時に指定した仮想ネットワーク IP アドレス範囲に含まれます。 そこには、仮想ネットワーク ゲートウェイのリソースやサービスによって使用される IP アドレスが含まれます。 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a917ade5da6938487076b983bd42ce9b27672c49
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 09c35ff8c045fa7d912324886fb31b02e606d2f8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637005"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089085"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory 用の Azure セキュリティ ベースライン
 
@@ -688,9 +688,9 @@ Azure 仮想マシン (VM) で Integration Runtime を実行している場合�
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
-* [Azure の Update Management ソリューション](https://docs.microsoft.com/azure/automation/automation-update-management)
+* [Azure の Update Management ソリューション](https://docs.microsoft.com/azure/automation/update-management/overview)
 
-* [Azure VM の更新プログラムとパッチの管理](https://docs.microsoft.com/azure/automation/automation-tutorial-update-management)
+* [Azure VM の更新プログラムとパッチの管理](https://docs.microsoft.com/azure/automation/update-management/manage-updates-for-vm)
 
 * [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
@@ -702,9 +702,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス** :Azure 仮想マシン (VM) で Integration Runtime を実行している場合は、サードパーティ修正プログラム管理ソリューションを使用できます。 Azure Update Management のソリューションを使用すると、仮想マシンの更新プログラムと修正プログラムを管理できます。 Update Management は、サポート対象の Windows システムへの修正プログラムの適用を、ローカルに構成された更新リポジトリに依存しています。 System Center Updates Publisher (Updates Publisher) などのツールを使用して、カスタム更新プログラムを Windows Server Update Services (WSUS) に公開できます。 このシナリオでは、サード パーティ製ソフトウェアで Configuration Manager を更新リポジトリとして使用するマシンに、Update Management で修正プログラムを適用できます。
 
-* [Azure の Update Management ソリューション](https://docs.microsoft.com/azure/automation/automation-update-management)
+* [Azure の Update Management ソリューション](https://docs.microsoft.com/azure/automation/update-management/overview)
 
-* [Azure VM の更新プログラムとパッチの管理](https://docs.microsoft.com/azure/automation/automation-tutorial-update-management)
+* [Azure VM の更新プログラムとパッチの管理](https://docs.microsoft.com/azure/automation/update-management/manage-updates-for-vm)
 
 **Azure Security Center の監視** : 現在は使用できません
 
@@ -940,7 +940,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
-**ガイダンス** : Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
+**ガイダンス** :Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
 * [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 

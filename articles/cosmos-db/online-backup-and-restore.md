@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 7c506d66c101c2770cffb8cc8d105b2f841c539a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 43625a80df76ff35b8bb1804df5f5fd1524326c5
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279490"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097534"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB でのオンライン バックアップとオンデマンドのデータ復元
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB では、データのバックアップが一定の間隔で自動的に取得されます。 自動バックアップは、データベース操作のパフォーマンスや可用性に影響を与えずに取得されます。 すべてのバックアップは別々のストレージ サービス内に個別に保存されます。これらのバックアップは、リージョンの障害からの回復性を確保するためにグローバルにレプリケートされます。 自動バックアップは、Azure Cosmos アカウント、データベース、またはコンテナーを誤って削除または更新した後でデータの回復が必要になったシナリオの場合に役に立ちます。
 
@@ -51,11 +52,11 @@ Azure Cosmos DB によって、データが 4 時間ごとと任意の時点で�
 
    * **Copies of data retained (保持するデータのコピー数)** - 既定では、データの 2 つのバックアップ コピーが無料で提供されます。 2 つ以上のコピーが必要な場合は、追加料金が発生します。 追加コピーの正確な価格については、[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)の「消費されたストレージ」セクションを参照してください。
 
-   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="GRS Azure Storage 内のすべての Cosmos DB エンティティの定期的な完全バックアップ" border="true":::
+   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="既存の Azure Cosmos アカウントのバックアップ間隔と保有期間を構成する" border="true":::
 
 アカウント作成の間にバックアップ オプションを構成する場合は、 **バックアップ ポリシー** を構成することができます。これは、 **定期的** または **継続的** です。 定期的なポリシーでは、バックアップ間隔とバックアップ保有期間を構成できます。 継続的ポリシーは、現在、サインアップのみで使用できます。 Azure Cosmos DB チームによりワークロードが評価されて、要求が承認されます。
 
-:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="GRS Azure Storage 内のすべての Cosmos DB エンティティの定期的な完全バックアップ" border="true":::
+:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="新しい Azure Cosmos アカウントに対して定期的または継続的バックアップ ポリシーを構成する" border="true":::
 
 ## <a name="request-data-restore-from-a-backup"></a>バックアップからのデータ復元を要求する
 
@@ -80,7 +81,7 @@ Azure Cosmos アカウント名、データベース名、コンテナー名に�
 
 次のスクリーンショットは、Azure portal を使ってデータを復元するコンテナー (コレクション/グラフ/テーブル) に関するサポート リクエストを作成する方法を示しています。 要請の優先度付けに役立つように、データの種類、復元の目的、データが削除された時刻などの追加の詳細を提示します。
 
-:::image type="content" source="./media/online-backup-and-restore/backup-support-request-portal.png" alt-text="GRS Azure Storage 内のすべての Cosmos DB エンティティの定期的な完全バックアップ":::
+:::image type="content" source="./media/online-backup-and-restore/backup-support-request-portal.png" alt-text="Azure portal を使用してバックアップのサポート リクエストを作成する":::
 
 ## <a name="considerations-for-restoring-the-data-from-a-backup"></a>バックアップからのデータ復元に関する考慮事項
 

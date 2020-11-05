@@ -7,12 +7,12 @@ ms.subservice: workloads
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 793a8f291be4fcca6fad19d486849253dddc089f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18f9f62ba28595289d37975200352c26788e69cc
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84754322"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040034"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Microsoft Azure の Cloud Foundry に最初のアプリをデプロイする
 
@@ -41,14 +41,14 @@ cf login -a https://api.SYSTEMDOMAINURL --skip-ssl-validation
 
 Cloud Controller にログインするよう求められます。 マーケットプレースのデプロイ手順から取得した管理者アカウントの資格情報を使用します。
 
-Cloud Foundry には名前空間として "*org*" や "*space*" が用意されており、共有デプロイ内でチームや環境を分離します。 PCF のマーケットプレースのデプロイには、オートスケーリング サービスや Azure Service Broker などのベース コンポーネントが含まれるように作成された、既定の "*system*" org や一連の space が含まれています。 ここでは、"*system*" space を選択します。
+Cloud Foundry には名前空間として " *org* " や " *space* " が用意されており、共有デプロイ内でチームや環境を分離します。 PCF のマーケットプレースのデプロイには、オートスケーリング サービスや Azure Service Broker などのベース コンポーネントが含まれるように作成された、既定の " *system* " org や一連の space が含まれています。 ここでは、" *system* " space を選択します。
 
 
 ## <a name="create-an-org-and-space"></a>org と space を作成する
 
 「`cf apps`」と入力すると、system org 内の system space にデプロイされている一連のシステム アプリケーションが表示されます。 
 
-"*system*" org はシステム アプリケーション用に予約することをお勧めします。このため、サンプル アプリケーションを配置する org と space を作成します。
+" *system* " org はシステム アプリケーション用に予約することをお勧めします。このため、サンプル アプリケーションを配置する org と space を作成します。
 
 ```bash
 cf create-org myorg
@@ -95,7 +95,7 @@ mvn clean package
 cf push
 ```
 
-アプリケーションを "*プッシュ*" すると、Cloud Foundry がアプリケーションの種類 (このケースでは Java アプリ) を検出し、その依存関係 (このケースでは Spring フレームワーク) を特定します。 その後、コードを実行するために必要なすべてが、*droplet* と呼ばれるスタンドアロンのコンテナー イメージにパッケージされます。 最後に、Cloud Foundry は環境内で使用できるマシンの 1 つにアプリケーションをスケジュールし、そのマシンへの URL を作成します。これはコマンドの出力から入手できます。
+アプリケーションを " *プッシュ* " すると、Cloud Foundry がアプリケーションの種類 (このケースでは Java アプリ) を検出し、その依存関係 (このケースでは Spring フレームワーク) を特定します。 その後、コードを実行するために必要なすべてが、 *droplet* と呼ばれるスタンドアロンのコンテナー イメージにパッケージされます。 最後に、Cloud Foundry は環境内で使用できるマシンの 1 つにアプリケーションをスケジュールし、そのマシンへの URL を作成します。これはコマンドの出力から入手できます。
 
 ![cf push コマンドの出力][cf-push-output]
 
@@ -114,7 +114,7 @@ Cloud Foundry CLI を使用して、名前でアプリケーションのログ�
 cf logs hello-spring-cloud
 ```
 
-既定では、ログ コマンドは "*tail*" を使用します。これにより、新しいログが書き込まれると表示されます。 新しいログが表示されているかを確認するには、ブラウザーで hello-spring-cloud アプリを最新の情報に更新します。
+既定では、ログ コマンドは " *tail* " を使用します。これにより、新しいログが書き込まれると表示されます。 新しいログが表示されているかを確認するには、ブラウザーで hello-spring-cloud アプリを最新の情報に更新します。
 
 既に書き込まれているログを表示するには、`recent` スイッチを追加します。
 
@@ -146,7 +146,7 @@ cf scale -i 2 hello-spring-cloud
 [oss-cf-bosh]: https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs
 [pcf-azuremarketplace-pivotaldocs]: https://docs.pivotal.io/pivotalcf/customizing/pcf_azure.html
 [cf-cli]: https://github.com/cloudfoundry/cli
-[cloudshell-docs]: https://docs.microsoft.com/azure/cloud-shell/overview
+[cloudshell-docs]: ../cloud-shell/overview.md
 [cf-orgs-spaces-docs]: https://docs.cloudfoundry.org/concepts/roles.html
 [spring-boot]: https://projects.spring.io/spring-boot/
 [spring-framework]: https://spring.io

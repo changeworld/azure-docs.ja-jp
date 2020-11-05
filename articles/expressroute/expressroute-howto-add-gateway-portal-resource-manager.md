@@ -9,10 +9,10 @@ ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 843d0b8cfd75e8cbdf45ac535cc9486aa42442d6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "91761841"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
@@ -56,13 +56,11 @@ ms.locfileid: "91761841"
 1. VNet の **[設定]** セクションで、 **[サブネット]** を選択し、[サブネット] 設定を展開します。
 1. **[サブネット]** 設定で、 **[+ ゲートウェイ サブネット]** を選択し、ゲートウェイ サブネットを追加します。 
    
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-gateway-subnet.png" alt-text="ゲートウェイ サブネットを追加する&quot;:::
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-gateway-subnet.png" alt-text="ゲートウェイ サブネットを追加する":::
 
-1. サブネットの **[名前]** には、&quot;GatewaySubnet" という値が自動的に入力されます。 この値は、Azure がゲートウェイ サブネットとしてこのサブネットを認識するために必要になります。 自動入力される **[アドレス範囲]** の値は、実際の構成要件に合わせて調整してください。 /27 以上 (/26 や /25 など) のゲートウェイ サブネットを作成することをお勧めします。 次に、 **[OK]** を選択して値を保存し、ゲートウェイ サブネットを作成します。
+1. サブネットの **[名前]** には、"GatewaySubnet" という値が自動的に入力されます。 この値は、Azure がゲートウェイ サブネットとしてこのサブネットを認識するために必要になります。 自動入力される **[アドレス範囲]** の値は、実際の構成要件に合わせて調整してください。 /27 以上 (/26 や /25 など) のゲートウェイ サブネットを作成することをお勧めします。 次に、 **[OK]** を選択して値を保存し、ゲートウェイ サブネットを作成します。
 
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="ゲートウェイ サブネットを追加する&quot;:::
-
-1. サブネットの **[名前]** には、&quot;GatewaySubnet":::
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="サブネットの追加":::
 
 ## <a name="create-the-virtual-network-gateway"></a>仮想ネットワーク ゲートウェイを作成する
 
@@ -83,17 +81,13 @@ ms.locfileid: "91761841"
 
 1. **[確認および作成]** 、 **[作成]** の順に選択して、ゲートウェイの作成を開始します。 設定が検証されて、ゲートウェイが作動します。 仮想ネットワーク ゲートウェイの作成は、完了するまでに最大で 45 分かかる場合があります。
 
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/gateway.png" alt-text="ゲートウェイ サブネットを追加する&quot;:::
-
-1. サブネットの **[名前]** には、&quot;GatewaySubnet":::
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/gateway.png" alt-text="[仮想ネットワーク ゲートウェイの作成] ページのフィールド":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ExpressRoute ゲートウェイが不要になった場合は、仮想ネットワーク リソース グループでゲートウェイを見つけて、 **[削除]** を選択します。 ゲートウェイが回線に確実に接続されていないようにします。
 
-:::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/delete-gateway.png" alt-text="ゲートウェイ サブネットを追加する&quot;:::
-
-1. サブネットの **[名前]** には、&quot;GatewaySubnet":::
+:::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/delete-gateway.png" alt-text="仮想ネットワーク ゲートウェイの削除":::
 
 ## <a name="next-steps"></a>次のステップ
 VNet ゲートウェイを作成したので、VNet を ExpressRoute 回線にリンクできます。 

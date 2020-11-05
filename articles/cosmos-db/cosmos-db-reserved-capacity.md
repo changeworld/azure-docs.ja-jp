@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 90717f329cc366dbb951b24da0ffc1b65881a865
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 27725b1a3dd6059010ce67977c39891a012c037e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487519"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097636"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB の予約容量でコストを最適化する
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB の予約容量を利用すると、Azure Cosmos DB リソースの 1 年間または 3 年間の予約をコミットすることによって、経費を節減できます。 Azure Cosmos DB の予約容量では、Cosmos DB リソース用にプロビジョニングされたスループットで割引を受けることができます。 リソースとはたとえば、データベースやコンテナー (テーブル、コレクション、およびグラフ) です。
 
@@ -66,7 +67,7 @@ Azure Cosmos DB の予約容量は、[Azure portal](https://portal.azure.com) �
 
 4. 次の表で説明するように、必須フィールドに入力します。
 
-   :::image type="content" source="./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png" alt-text="予約容量に関する推奨事項":::
+   :::image type="content" source="./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png" alt-text="予約容量フォームに入力する":::
 
    |フィールド  |説明  |
    |---------|---------|
@@ -82,7 +83,7 @@ Azure Cosmos DB の予約容量は、[Azure portal](https://portal.azure.com) �
 
 6. **[購入予約]** ウィンドウで、予約の割引と価格を確認します。 この予約価格は、すべてのリージョンでスループットがプロビジョニングされている Azure Cosmos DB リソースに適用されます。  
 
-   :::image type="content" source="./media/cosmos-db-reserved-capacity/reserved-capacity-summary.png" alt-text="予約容量に関する推奨事項":::
+   :::image type="content" source="./media/cosmos-db-reserved-capacity/reserved-capacity-summary.png" alt-text="予約容量の概要":::
 
 7. **[Review + buy]\(レビュー + 購入\)** 、 **[今すぐ購入]** の順に選択します。 購入が成功すると、次のようなページが表示されます。
 

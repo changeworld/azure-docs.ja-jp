@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 529b1ce8026d9880bbc8caf87ab59148baf92df3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 9b08b59090d9dd23405f8a0ba86ce608e3a64902
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019462"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123763"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Azure Stream Analytics と Azure Machine Learning Studio (classic) を使用した感情分析の実行
 
@@ -202,7 +202,7 @@ Stream Analytics は、SQL ベースの宣言型クエリを使用し、入力�
 
 2. ページの最上部にある **[開始]** を選択します。
 
-3. **[ジョブの開始]** で **[カスタム]** を選択し、CSV ファイルを BLOB ストレージにアップロードした時刻の 1 日前を選びます。 設定が終了したら、**[開始]** を選択します。  
+3. **[ジョブの開始]** で **[カスタム]** を選択し、CSV ファイルを BLOB ストレージにアップロードした時刻の 1 日前を選びます。 設定が終了したら、 **[開始]** を選択します。  
 
 ### <a name="check-the-output"></a>出力をチェックする
 
@@ -211,7 +211,7 @@ Stream Analytics は、SQL ベースの宣言型クエリを使用し、入力�
 2. BLOB ストレージのコンテンツの確認に通常使用しているツールがある場合は、そのツールを使用してコンテナーを確認します。 別の方法として、Azure Portal で次の手順を実行します。
 
       1. Azure portal でストレージ アカウントを検索し、このアカウント内でコンテナーを検索します。 このコンテナー内には 2 つのファイルがあります。サンプル ツイートが含まれているファイルと、Stream Analytics ジョブで生成された CSV ファイルです。
-      2. 生成されたファイルを右クリックし、**[ダウンロード]** を選択します。
+      2. 生成されたファイルを右クリックし、 **[ダウンロード]** を選択します。
 
 3. 生成された CSV ファイルを開きます。 次の例のように表示されます。  
 
@@ -227,6 +227,6 @@ Stream Analytics は、SQL ベースの宣言型クエリを使用し、入力�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](/stream-analytics-query/stream-analytics-query-language-reference)
 * [REST API と Machine Learning Studio (classic) を統合する](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](/rest/api/streamanalytics/)

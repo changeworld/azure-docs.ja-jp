@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: f8885229c8ab6784c6c0bf45487812fcc43f9b22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 766d3f8d4d4c03fb4fe173dbb12eb85bb09cd71a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903824"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124171"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code"></a>Visual Studio Code のジョブ ダイアグラムを使用して Azure Stream Analytics のクエリをローカルでデバッグする
 
@@ -56,7 +56,7 @@ Azure Stream Analytics スクリプトは、入力データを出力データに
    > [!div class="mx-imgBorder"]
    > ![ジョブ ダイアグラムのメトリック](./media/debug-locally-using-job-diagram-vs-code/job-metrics.png)
 
-3. 入力メトリックを表示するには、ドロップダウンから入力データ ソースの名前を選択します。 次のスクリーンショットの入力ソースの名前は "*見積もり*" になっています。 入力メトリックの詳細については、「[Stream Analytics ジョブ監視とクエリの監視方法の概要](stream-analytics-monitoring.md)」を参照してください。
+3. 入力メトリックを表示するには、ドロップダウンから入力データ ソースの名前を選択します。 次のスクリーンショットの入力ソースの名前は " *見積もり* " になっています。 入力メトリックの詳細については、「[Stream Analytics ジョブ監視とクエリの監視方法の概要](stream-analytics-monitoring.md)」を参照してください。
 
    > [!div class="mx-imgBorder"]
    > ![ジョブ ダイアグラムの入力メトリック](./media/debug-locally-using-job-diagram-vs-code/input-metrics.png)
@@ -104,7 +104,7 @@ Azure Stream Analytics スクリプトは、入力データを出力データに
 
 * C# カスタム コードと Azure Machine Learning 関数はサポートされていません。 
 
-* クラウド入力オプションでのみ[日時ポリシー](stream-analytics-out-of-order-and-late-events.md)がサポートされており、ローカル入力オプションではサポートされていません。
+* クラウド入力オプションでのみ[日時ポリシー](./stream-analytics-time-handling.md)がサポートされており、ローカル入力オプションではサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

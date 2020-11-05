@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a5af62cd8c110e38ffd2a72ef2441a8e548e1ece
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 92bd3ff925080def4b2f074d07e662dfdbdbee01
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475483"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080852"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でのストレージ コストを最適化する
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB では、無制限のストレージとスループットを提供します。 Azure Cosmos コンテナーまたはデータベース上でプロビジョニング/構成する必要のあるスループットとは異なり、ストレージは使用料に基づいて課金されます。 使用する論理ストレージに対してのみ課金され、ストレージを事前に予約する必要はありません。 ストレージは、Azure Cosmos コンテナーに対して追加または削除したデータに基づいて、自動的にスケール アップ/ダウンします。
 

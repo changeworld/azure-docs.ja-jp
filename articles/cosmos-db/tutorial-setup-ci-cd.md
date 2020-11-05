@@ -8,14 +8,15 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7aace0b1ee6963aa220a60a11d02c370bf4d822a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2b74198f83ef972540038269d83048bfd1adda62
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476554"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073895"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps で Azure Cosmos DB エミュレーター ビルド タスクを使用して CI/CD パイプラインを設定する
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB エミュレーターでは、Azure Cosmos DB サービスを開発目的でエミュレートするローカル環境を利用できます。 エミュレーターを使用すれば、Azure サブスクリプションを作成したりコストをかけたりせずに、アプリケーションをローカルで開発してテストできます。 
 
@@ -34,7 +35,7 @@ Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクで
 > [!NOTE]
 > 拡張機能を Azure DevOps 組織にインストールするには、アカウント所有者またはプロジェクト コレクション管理者である必要があります。 アクセス許可はないものの、アカウント メンバーである場合は、代わりに拡張機能を要求できます。 [詳細情報。](/azure/devops/marketplace/faq-extensions?preserve-view=true&view=vsts)
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="Azure DevOps Marketplace で Azure Cosmos DB Emulator ビルド タスクを見つけてインストールする":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="拡張機能のインストール先となる Azure DevOps 組織を選択する":::
 
 ## <a name="create-a-build-definition"></a>ビルド定義の作成
 
@@ -42,11 +43,11 @@ Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクで
 
 1. 新しいビルド定義を作成するには、Azure DevOps で **[ビルド]** タブに移動します。 **[+新規]** を選択します。 \> **[新しいビルド パイプライン]**
 
-   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png" alt-text="Azure DevOps Marketplace で Azure Cosmos DB Emulator ビルド タスクを見つけてインストールする":::
+   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png" alt-text="新しいビルド パイプラインを作成する":::
 
 2. 目的の **ソース** 、 **チーム プロジェクト** 、 **リポジトリ** 、および **手動のビルドとスケジュールされたビルドの既定のブランチ** を選択します。 必要なオプションを選択した後、 **[続行]** を選択します
 
-   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="Azure DevOps Marketplace で Azure Cosmos DB Emulator ビルド タスクを見つけてインストールする":::
+   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="ビルド パイプラインのチーム プロジェクト、リポジトリ、およびブランチを選択する":::
 
 3. 最後に、ビルド パイプラインに使用したいテンプレートを選択します。 このチュートリアルでは、 **ASP.NET** テンプレートを選択します。 これで、Azure Cosmos DB エミュレーター ビルド タスクを使用するために設定できるビルド パイプラインが作成されました。 
 
@@ -66,7 +67,7 @@ Start-CosmosDbEmulator
 
 1. 次に、エミュレーター ビルド タスクを追加するために、エージェント ジョブの横にある **[+]** 記号を選択します。 検索ボックスで **cosmos** を検索し、 **Azure Cosmos DB Emulator** を選択してエージェント ジョブに追加します。 このビルド タスクは、Cosmos DB エミュレーターのインスタンスが既に実行されている状態でコンテナーを起動します。 Azure Cosmos DB Emulator タスクは、エミュレーターが実行状態であることを想定している他のタスクの前に配置する必要があります。
 
-   :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="Azure DevOps Marketplace で Azure Cosmos DB Emulator ビルド タスクを見つけてインストールする":::
+   :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="エミュレーター ビルド タスクをビルド定義に追加する":::
 
 このチュートリアルでは、テストの実行前にエミュレーターを使用できるようにするために、先頭にタスクを追加します。
 
@@ -159,21 +160,21 @@ namespace todo.Tests
 
 Visual Studio Test タスクの [実行オプション] に移動します。 **[設定ファイル]** オプションで、 **.runsettings** ファイルを使用して構成されたテストを指定します。 **[テスト実行パラメーターのオーバーライド]** オプションで、「`-endpoint $(CosmosDbEmulator.Endpoint)`」と入力します。 これを行うことで、 **.runsettings** ファイルで定義されたエンドポイントではなく、エミュレーター ビルド タスクのエンドポイントを参照するよう、Test タスクが構成されます。  
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_5.png" alt-text="Azure DevOps Marketplace で Azure Cosmos DB Emulator ビルド タスクを見つけてインストールする":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_5.png" alt-text="エミュレーター ビルド タスクのエンドポイントを使ってエンドポイント変数をオーバーライドする":::
 
 ## <a name="run-the-build"></a>ビルドを実行します
 
 次に、ビルドを **保存してキューに登録** します。 
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_1.png" alt-text="Azure DevOps Marketplace で Azure Cosmos DB Emulator ビルド タスクを見つけてインストールする":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_1.png" alt-text="ビルドのスクリーンショット。[保存してキューに登録] が選択されています。":::
 
 ビルドが開始されたら、Cosmos DB エミュレーター タスクによって、エミュレーターがインストールされた Docker イメージのプルが開始されたことを確認します。 
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_4.png" alt-text="Azure DevOps Marketplace で Azure Cosmos DB Emulator ビルド タスクを見つけてインストールする":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_4.png" alt-text="Cosmos DB エミュレーター タスクがプルダウンされている画面のスクリーンショット。":::
 
 ビルドが完了したら、ビルド タスクの後に Cosmos DB エミュレーターに対してすべてのテストが実行され、成功することを確認します。
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/buildComplete_1.png" alt-text="Azure DevOps Marketplace で Azure Cosmos DB Emulator ビルド タスクを見つけてインストールする":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/buildComplete_1.png" alt-text="[概要] タブの進捗値のスクリーンショット。":::
 
 ## <a name="next-steps"></a>次のステップ
 

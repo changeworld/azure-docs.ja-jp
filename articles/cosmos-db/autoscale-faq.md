@@ -6,14 +6,15 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: 5905471dad5cf4e2e8191894af52c503c23e9036
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 58e7d54750da86b8a700a4f2195bc4cfa012ae4b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277962"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092689"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB の自動スケーリングでプロビジョニングされたスループットについてよく寄せられる質問
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB で自動スケーリング プロビジョニング スループットを使用すると、使用状況に応じてお使いのデータベースまたはコンテナーの RU/秒が自動的に管理およびスケーリングされます。 この記事では、自動スケーリング モードについてよく寄せられる質問に回答します。
 
@@ -108,9 +109,9 @@ Azure Cosmos DB では、Shared スループット データベースあたり 2
 #### <a name="lowering-the-max-rus"></a>最大 RU/秒を引き下げる
 最大 RU/秒を引き下げる場合に設定できる最小値は `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100)` です (値は最も近い 1,000 RU/秒に丸められます)。 
 
-例 1:20,000 RU/秒 (2,000 から 20,000 RU/秒の間でのスケーリング) の最大 RU/秒と 50 GB のストレージを備えた自動スケーリング コンテナーがあるとします。 設定できる最大 RU/秒の最小値は次のとおりです: MAX(4,000, 20,000 / 10, **50 * 100**) = 5,000 RU/秒 (500 から 5,000 RU/秒の間でのスケーリング)。
+例 1:20,000 RU/秒 (2,000 から 20,000 RU/秒の間でのスケーリング) の最大 RU/秒と 50 GB のストレージを備えた自動スケーリング コンテナーがあるとします。 設定できる最大 RU/秒の最小値は次のとおりです: MAX(4,000, 20,000 / 10, **50 * 100** ) = 5,000 RU/秒 (500 から 5,000 RU/秒の間でのスケーリング)。
 
-例 2:100,000 RU/秒の最大 RU/秒と 100 GB のストレージを備えた自動スケーリング コンテナーがあるとします。 ここで、最大 RU/秒を最大 150,000 RU/秒 (15,000 から 150,000 RU/秒の間でのスケーリング) までスケーリングするとします。 ここで設定できる最大 RU/秒の最小値は次のとおりです: MAX(4,000, **150,000 / 10**, 100 * 100) = 15,000 RU/秒 (1,500 から 15,000 RU/秒の間でのスケーリング)。 
+例 2:100,000 RU/秒の最大 RU/秒と 100 GB のストレージを備えた自動スケーリング コンテナーがあるとします。 ここで、最大 RU/秒を最大 150,000 RU/秒 (15,000 から 150,000 RU/秒の間でのスケーリング) までスケーリングするとします。 ここで設定できる最大 RU/秒の最小値は次のとおりです: MAX(4,000, **150,000 / 10** , 100 * 100) = 15,000 RU/秒 (1,500 から 15,000 RU/秒の間でのスケーリング)。 
 
 Shared スループット データベースの場合、最大 RU/秒を引き下げる場合に設定できる最小値は `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100,  4000 + (MAX(Container count - 25, 0) * 1000))` です (値は最も近い 1,000 RU/秒に丸められます)。  
 

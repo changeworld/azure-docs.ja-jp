@@ -9,14 +9,15 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: 84d96344f20c56c9fab9eb5b3affcca3a437c096
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eab24c317513382afdd452843bc09e845ca90452
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324554"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096497"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js Mongoose アプリケーションを Azure Cosmos DB に接続する
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 このチュートリアルでは、Cosmos DB にデータを格納するときに [Mongoose フレームワーク](https://mongoosejs.com/)を使用する方法を示します。 このチュートリアルでは、Azure Cosmos DB の MongoDB 用 API を使用します。 知らない場合に備えて説明すると、Mongoose は、Node.js での MongoDB 用のオブジェクト モデル化フレームワークです。アプリケーション データをモデル化するための単純なスキーマベース ソリューションが提供されます。
 
@@ -38,11 +39,11 @@ Cosmos アカウントを作成しましょう。 使用するアカウントが
 
 ### <a name="create-a-database"></a>データベースを作成する 
 このアプリケーションでは、Azure Cosmos DB でコレクションを作成する 2 つの方法について説明します。 
-- **各オブジェクト モデルを個別のコレクションに格納する**:[専用のスループットを使用してデータベースを作成する](set-throughput.md#set-throughput-on-a-database)ことをお勧めします。 この容量モデルを使用すると、コスト効率が向上します。
+- **各オブジェクト モデルを個別のコレクションに格納する** : [専用のスループットを使用してデータベースを作成する](set-throughput.md#set-throughput-on-a-database)ことをお勧めします。 この容量モデルを使用すると、コスト効率が向上します。
 
     :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text="Node.js のチュートリアル - Mongoose Node モジュールで使用するために、データ エクスプローラーで Azure Cosmos DB アカウントのデータベースを作成する方法を示す Azure portal のスクリーンショット":::
 
-- **すべてのオブジェクト モデルを 1 つの Cosmos DB コレクションに格納する**:すべてのモデルを 1 つのコレクションに格納する場合は、[スループットのプロビジョニング] オプションを選択せずに、新しいデータベースを作成できます。 この容量モデルを使用すると、すべてのオブジェクト モデルに対して独自のスループット容量を持つ各コレクションが作成されます。
+- **すべてのオブジェクト モデルを 1 つの Cosmos DB コレクションに格納する** :すべてのモデルを 1 つのコレクションに格納する場合は、[スループットのプロビジョニング] オプションを選択せずに、新しいデータベースを作成できます。 この容量モデルを使用すると、すべてのオブジェクト モデルに対して独自のスループット容量を持つ各コレクションが作成されます。
 
 データベースを作成したら、以下の `COSMOSDB_DBNAME` 環境変数で名前を使用します。
 
@@ -197,7 +198,7 @@ Cosmos アカウントを作成しましょう。 使用するアカウントが
 
 1. ここで、Azure Portal に移動すると、Cosmos DB に作成された 2 つのコレクションに気が付きます。
 
-   :::image type="content" source="./media/mongodb-mongoose/mongo-mutliple-collections.png" alt-text="Node.js のチュートリアル - Mongoose Node モジュールで使用するために、データ エクスプローラーで Azure Cosmos DB アカウントのデータベースを作成する方法を示す Azure portal のスクリーンショット":::
+   :::image type="content" source="./media/mongodb-mongoose/mongo-mutliple-collections.png" alt-text="Node.js チュートリアル - Azure Cosmos DB アカウントを示し、複数のコレクション名が強調表示されている Azure portal のスクリーンショット - Node データベース":::
 
 1. 最後に、Cosmos DB からデータを読み取りましょう。 既定の Mongoose 処理モデルを使用しているため、読み取り方法は Mongoose の他の読み取りと同じです。
 
@@ -302,7 +303,7 @@ Cosmos アカウントを作成しましょう。 使用するアカウントが
 
 1. ここで、Azure Portal に戻ると、```alldata``` というコレクションが 1 つだけがあり、'Family' と 'VacationDestinations' 両方のデータが含まれていることがわかります。
 
-   :::image type="content" source="./media/mongodb-mongoose/mongo-collections-alldata.png" alt-text="Node.js のチュートリアル - Mongoose Node モジュールで使用するために、データ エクスプローラーで Azure Cosmos DB アカウントのデータベースを作成する方法を示す Azure portal のスクリーンショット":::
+   :::image type="content" source="./media/mongodb-mongoose/mongo-collections-alldata.png" alt-text="Node.js チュートリアル - Azure Cosmos DB アカウントを示し、コレクション名が強調表示されている Azure portal のスクリーンショット - Node データベース":::
 
 1. また、各オブジェクトには ```__type``` と呼ばれる別の属性があることも確認できます。これが 2 つの異なるオブジェクト モデルを区別するために使用されます。
 

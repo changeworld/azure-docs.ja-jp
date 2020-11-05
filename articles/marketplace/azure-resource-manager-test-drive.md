@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: keferna
 author: keferna
-ms.openlocfilehash: 8ccc4cb6a6f95cfc51fb7e265e455131bc6393c2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1af2793bc32c1f3cdbdcd016562b761e05427073
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735606"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125140"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager の体験版
 
 この種類は、Azure Marketplace または AppSource にオファーがあっても、体験版は Azure リソースだけでビルドさせたい場合に使用します。 Azure Resource Manager (ARM) テンプレートは、ソリューションが最適に表現されるように設計する Azure リソースのコード化されたコンテナーです。 体験版では、提供された ARM テンプレートが取得されて、必要なすべてのリソースがリソース グループにデプロイされます。 これは、仮想マシンまたは Azure アプリのオファーの唯一の体験版オプションです。
 
-ARM テンプレートについてよく知らない場合は、「[Azure Resource Manager とは](../azure-resource-manager/resource-group-overview.md)」および「[ARM テンプレートの構造と構文について](../azure-resource-manager/resource-group-authoring-templates.md)」を読み、独自のテンプレートをビルドしてテストする方法をよく理解してください。
+ARM テンプレートについてよく知らない場合は、「[Azure Resource Manager とは](../azure-resource-manager/management/overview.md)」および「[ARM テンプレートの構造と構文について](../azure-resource-manager/templates/template-syntax.md)」を読み、独自のテンプレートをビルドしてテストする方法をよく理解してください。
 
 **ホストされた** 体験版または **ロジック アプリ** の体験版については、「 [体験版とは](what-is-test-drive.md)」を参照してください。
 
@@ -34,7 +34,7 @@ ARM テンプレートについてよく知らない場合は、「[Azure Resour
 
   - **コールド** – この種類のインスタンスは、リージョンごとにデプロイできる可能性があるインスタンスの総数を表します。 コールド インスタンスでは、顧客が体験版を要求したときのデプロイ用に体験版の完全な Resource Manager テンプレートが必要です。そのため、" *コールド* " インスタンスでは、読み込みが " *ホット* " インスタンスよりもはるかに遅くなります。 トレードオフとして、体験版の期間のみの支払いで済みます。" *ホット* " インスタンスのように Azure サブスクリプションで常に実行されていることは " *ありません* "。
 
-- **体験版の Azure Resource Manager テンプレート** – 目的の Azure Resource Manager テンプレートが含まれている .zip をアップロードします。 Azure Resource Manager テンプレートの作成については、記事「[クイック スタート: Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)」を参照してください。
+- **体験版の Azure Resource Manager テンプレート** – 目的の Azure Resource Manager テンプレートが含まれている .zip をアップロードします。 Azure Resource Manager テンプレートの作成については、記事「[クイック スタート: Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)」を参照してください。
 
     > [!note]
     > 正常に公開するには、ARM テンプレートのフォーマットを検証することが重要です。 これを行うには、(1) [オンライン API ツール](https://docs.microsoft.com/rest/api/resources/deployments/validate)を使用するか、(2) [テスト配置](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal)を使用するという 2 つの方法があります。

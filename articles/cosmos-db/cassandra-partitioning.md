@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: f12919cd35441c6c198269e2f79c705c1d304acd
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ba615d3e41393afe007238a0fe1e694732ad123e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278825"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087640"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API でのパーティション分割
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 この記事では、Azure Cosmos DB Cassandra API におけるパーティション分割のしくみについて説明します。 
 
@@ -83,11 +84,11 @@ insert into uprofile.user (user, id, message) values ('theo', 2, 'hello again');
 
 データは返されると、Apache Cassandra で想定されているように、クラスター化キーによって並べ替えられます。
 
-:::image type="content" source="./media/cassandra-partitioning/select-from-pk.png" alt-text="パーティション":::
+:::image type="content" source="./media/cassandra-partitioning/select-from-pk.png" alt-text="クラスター化キーによって並べ替えられた、返されたデータを示すスクリーンショット。":::
 
 この方法でモデル化されたデータを使用して、各パーティションに複数のレコードを割り当て、ユーザー別にグループ化することができます。 そのため、`partition key` (この場合は `user`) によって効率的にルーティングされるクエリを発行して、特定のユーザーのすべてのメッセージを取得できます。 
 
-:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning2.png" alt-text="パーティション" border="false":::
+:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning2.png" alt-text="各パーティションに複数のレコードを割り当てて、ユーザー別にグループ化する方法を示す図。" border="false":::
 
 
 ## <a name="composite-partition-key"></a>複合パーティション キー

@@ -7,14 +7,16 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: jasonwhowell
 ms.author: jasonh
-ms.openlocfilehash: 4b082c89684bc06346fa933aad6be97dc371bc3f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 00394e60ad1cf86bfd75a86a0b6630505c7d7356
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490579"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100390"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin サーバーの応答ヘッダー
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
+
 この記事では、要求の実行時に Cosmos DB Gremlin サーバーから呼び出し元に返されるヘッダーについて説明します。 これらのヘッダーは、要求パフォーマンスのトラブルシューティング、Cosmos DB サービスとネイティブに統合されるアプリケーションの構築、カスタマー サポートの簡素化に役立ちます。
 
 これらのヘッダーへの依存関係があると、アプリケーションの移植性が他の Gremlin の実装に限定されることに注意してください。 その代わり、Cosmos DB Gremlin との統合はより緊密になります。 これらのヘッダーは TinkerPop 標準ではありません。

@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: e772701396f172eaab906f99463bd9019728b531
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa75a553ffc131f4827aa045849f1317d894ddc5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90930997"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123152"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>CI/CD ツールを使用して Azure Stream Analytics ジョブのビルド、テスト、デプロイを自動化する
 
@@ -21,11 +21,11 @@ Azure Stream Analytics の CI/CD npm パッケージを使用すると、Azure S
 
 ## <a name="installation"></a>インストール
 
-[パッケージは直接ダウンロードする](https://www.npmjs.com/package/azure-streamanalytics-cicd)か、`npm install -g azure-streamanalytics-cicd` コマンドを使用して[グローバルに](https://docs.npmjs.com/downloading-and-installing-packages-globally)インストールすることができます。 推奨されるのは、コマンドを使用した方法です。このコマンドは、**Azure Pipelines** でビルド パイプラインの PowerShell または Azure CLI スクリプト タスクにも使用できます。
+[パッケージは直接ダウンロードする](https://www.npmjs.com/package/azure-streamanalytics-cicd)か、`npm install -g azure-streamanalytics-cicd` コマンドを使用して[グローバルに](https://docs.npmjs.com/downloading-and-installing-packages-globally)インストールすることができます。 推奨されるのは、コマンドを使用した方法です。このコマンドは、 **Azure Pipelines** でビルド パイプラインの PowerShell または Azure CLI スクリプト タスクにも使用できます。
 
 ## <a name="build-the-project"></a>プロジェクトのビルド
 
-**asa-streamanalytics-cicd** の npm パッケージには、Stream Analytics [Visual Studio Code プロジェクト](quick-create-vs-code.md)または [Visual Studio プロジェクト](stream-analytics-quick-create-vs.md)の Azure Resource Manager テンプレートを生成するためのツールが用意されています。 また、この npm パッケージは、Windows、macOS、Linux 上で、Visual Studio Code や Visual Studio をインストールせずに使用することもできます。
+**asa-streamanalytics-cicd** の npm パッケージには、Stream Analytics [Visual Studio Code プロジェクト](./quick-create-visual-studio-code.md)または [Visual Studio プロジェクト](stream-analytics-quick-create-vs.md)の Azure Resource Manager テンプレートを生成するためのツールが用意されています。 また、この npm パッケージは、Windows、macOS、Linux 上で、Visual Studio Code や Visual Studio をインストールせずに使用することもできます。
 
 パッケージのインストール後、次のコマンドを使用して Stream Analytics プロジェクトをビルドしてください。
 
@@ -137,7 +137,7 @@ azure-streamanalytics-cicd addtestcase -project "/Users/roger/projects/samplejob
 ```
 ---
 
-テスト構成ファイルが空の場合、次の内容がファイルに書き込まれます。 それ以外の場合は、**TestCases** の配列にテスト ケースが追加されます。 必要な入力構成は、入力構成ファイルに存在すれば、それに従って自動的に入力されます。 それ以外の場合は、既定値が構成されます。 テストを実行する前に、各入力の **FilePath** と必要な出力を指定する必要があります。 構成は手動で変更できます。
+テスト構成ファイルが空の場合、次の内容がファイルに書き込まれます。 それ以外の場合は、 **TestCases** の配列にテスト ケースが追加されます。 必要な入力構成は、入力構成ファイルに存在すれば、それに従って自動的に入力されます。 それ以外の場合は、既定値が構成されます。 テストを実行する前に、各入力の **FilePath** と必要な出力を指定する必要があります。 構成は手動で変更できます。
 
 テスト検証で特定の出力を無視したい場合は、必要な出力の **Required** フィールドを **false** に設定してください。
 
@@ -170,7 +170,7 @@ azure-streamanalytics-cicd addtestcase -project "/Users/roger/projects/samplejob
 
 ### <a name="run-a-unit-test"></a>単体テストを実行する
 
-以下のコマンドを使用すると、プロジェクトのテスト ケースを複数実行することができます。 テスト結果の概要は出力フォルダーに生成されます。 このプロセスの終了コードは、すべてのテストに合格した場合は **0**、例外が発生した場合は **-1**、テストで不合格となった場合は **-2** になります。
+以下のコマンドを使用すると、プロジェクトのテスト ケースを複数実行することができます。 テスト結果の概要は出力フォルダーに生成されます。 このプロセスの終了コードは、すべてのテストに合格した場合は **0** 、例外が発生した場合は **-1** 、テストで不合格となった場合は **-2** になります。
 
 ```powershell
 azure-streamanalytics-cicd test -project <projectFullPath> [-testConfigPath <testConfigFileFullPath>] [-outputPath <outputPath>] [-customCodeZipFilePath <zipFilePath>]
