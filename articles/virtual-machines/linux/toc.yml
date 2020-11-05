@@ -581,8 +581,8 @@
           href: ../managed-disk-from-image-version.md
     - name: VM のセキュリティ保護
       items:
-        - name: Recommendations
-          href: security-recommendations.md
+        - name: 推奨事項
+          href: ../security-recommendations.md
         - name: ジャストインタイム アクセス
           href: ../../security-center/security-center-just-in-time.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Bastion を使用する
@@ -717,7 +717,7 @@
             - name: エージェントの更新
               href: ../extensions/update-linux-agent.md
         - name: 予測実行の軽減
-          href: mitigate-se.md
+          href: ../mitigate-se.md
         - name: メタデータの監視
           href: instance-metadata-service.md
         - name: REST による使用状況メトリックの取得
@@ -949,7 +949,7 @@
           href: /azure/architecture/topics/high-performance-computing/
         - name: IBM Db2 pureScale
           items:
-            - name: アーキテクチャ
+            - name: Architecture
               href: ibm-db2-purescale-azure.md
             - name: デプロイ
               href: deploy-ibm-db2-purescale-azure.md
@@ -1045,7 +1045,7 @@
         - name: 高速ネットワークの使用
           href: ../../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: パブリック DNS 名の割り当て
-          href: portal-create-fqdn.md
+          href: ../create-fqdn.md
         - name: 接続されていない NIC の検索と削除
           href: find-unattached-nics.md
         - name: DNS の解決

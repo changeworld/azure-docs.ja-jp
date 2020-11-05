@@ -1,4 +1,4 @@
-- name: Azure DB for MySQL のドキュメント
+- name: Azure Database for MySQL のドキュメント
   href: index.yml
 - name: 概要
   items:

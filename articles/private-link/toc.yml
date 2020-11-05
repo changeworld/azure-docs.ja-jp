@@ -39,6 +39,8 @@
           href: tutorial-private-endpoint-sql-portal.md
         - name: SQL サーバーに接続する - PowerShell
           href: tutorial-private-endpoint-sql-powershell.md
+        - name: SQL サーバーに接続する - Azure CLI
+          href: tutorial-private-endpoint-sql-cli.md
 - name: 概念
   items:
     - name: プライベート エンドポイント

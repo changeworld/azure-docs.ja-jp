@@ -21,13 +21,13 @@
     - name: 1 Synapse ワークスペースを作成する
       href: get-started-create-workspace.md
       displayName: 'get, started'
-    - name: 2 SQL プールを使用して分析する
+    - name: 2 専用 SQL プールを使用して分析する
       href: get-started-analyze-sql-pool.md
       displayName: 'get, started'
     - name: 3 Spark を使用して分析する
       href: get-started-analyze-spark.md
       displayName: 'get, started'
-    - name: 4 SQL オンデマンドを使用して分析する
+    - name: 4 サーバーレス SQL プールを使用して分析する
       href: get-started-analyze-sql-on-demand.md
       displayName: 'get, started'
     - name: 5 ストレージ アカウント内のデータを分析する
@@ -119,7 +119,7 @@
                   href: ../sql-database/sql-database-control-access.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Synapse ワークスペースのマネージド ID
                   href: ./security/synapse-workspace-managed-identity.md
-                - name: プールとオンデマンド
+                - name: SQL プール
                   href: ./sql/access-control.md
                   displayname: 'access, control'
         - name: ツール統合 (AI、ETL、BI)
@@ -149,6 +149,8 @@
                   displayname: links
                 - name: マネージド Vnet を使用してリンクされたサービスをプロビジョニングしてセキュリティで保護する
                   href: ./data-integration/linked-service.md
+                - name: 制限されたネットワークから Synapse ワークスペースに接続する
+                  href: security/how-to-connect-to-workspace-from-restricted-network.md
 - name: Synapse SQL
   items:
     - name: 概要
@@ -156,10 +158,10 @@
         - name: Synapse SQL アーキテクチャ
           href: sql/overview-architecture.md
           displayName: overview
-        - name: SQL オンデマンド
+        - name: サーバーレス SQL プール
           href: sql/on-demand-workspace-overview.md
           displayname: overview
-        - name: SQL プール
+        - name: 専用 SQL プール
           href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
           displayname: overview
         - name: アーキテクチャ
@@ -168,17 +170,17 @@
           href: sql/overview-features.md
         - name: リソース使用量モデル
           href: sql/resource-consumption-models.md
-        - name: SQL オンデマンドのベスト プラクティス
+        - name: ベスト プラクティス サーバーレス SQL プール
           href: sql/best-practices-sql-on-demand.md
-        - name: SQL プールのベスト プラクティス
+        - name: ベスト プラクティス専用 SQL プール
           href: sql/best-practices-sql-pool.md
     - name: クイックスタート
       items:
-        - name: Synapse Studio を使用して SQL プールを作成する
+        - name: Synapse Studio を使用して専用 SQL プールを作成する
           href: quickstart-create-sql-pool-studio.md
-        - name: Azure portal を使用して SQL プールを作成する
+        - name: Azure portal を使用して専用 SQL プールを作成する
           href: quickstart-create-sql-pool-portal.md
-        - name: SQL プールを使用したデータの読み込み
+        - name: 専用の SQL プールを使用してデータを読み込む
           items:
             - name: COPY ステートメント
               href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -189,11 +191,11 @@
             - name: Synapse Studio
               href: quickstart-load-studio-sql-pool.md
               displayname: sql pool
-        - name: SQL オンデマンドを使用する
+        - name: サーバーレス SQL プールを使用する
           href: quickstart-sql-on-demand.md
     - name: チュートリアル
       items:
-        - name: SQL オンデマンドを使用してデータを分析する
+        - name: サーバーレス SQL プールを使用してデータを分析する
           href: ./sql/tutorial-data-analyst.md
         - name: Power BI Desktop
           href: ./sql/tutorial-connect-power-bi-desktop.md
@@ -517,12 +519,16 @@
           href: ../cosmos-db/synapse-link-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Apache Spark を使用して Azure Cosmos DB 分析ストアに対してクエリを実行する
           href: ./synapse-link/how-to-query-analytical-store-spark.md
-        - name: Apache Spark を使用して Synapse Link のデータを SQL プールにコピーする
+        - name: Apache Spark を使用して Synapse Link のデータを専用 SQL プールにコピーする
           href: ./synapse-link/how-to-copy-to-sql-pool.md
-        - name: SQL オンデマンドを使用して Azure Cosmos DB 分析ストアのクエリを実行する
+        - name: サーバーレス SQL プールを使用して Azure Cosmos DB 分析ストアのクエリを実行する
           href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
 - name: パイプラインとデータ フロー
   items:
+    - name: クイックスタート
+      items:
+        - name: コピー アクティビティを使用して SQL プールにデータを読み込む
+          href: quickstart-copy-activity-load-sql-pool.md
     - name: 概念
       items:
         - name: パイプラインとアクティビティ
@@ -1013,7 +1019,7 @@
       href: ./sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: お客様によるセルフヘルプ
       items:
-        - name: SQL オンデマンド
+        - name: サーバーレス SQL プール
           href: sql/resources-self-help-sql-on-demand.md
     - name: パートナー
       items:

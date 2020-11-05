@@ -127,6 +127,8 @@
       href: ../../web-application-firewall/security-baseline.md
     - name: Batch のセキュリティ ベースライン
       href: ../../batch/security-baseline.md
+    - name: Cloud Services のセキュリティ ベースライン
+      href: ../../cloud-services/security-baseline.md
     - name: Cloud Shell のセキュリティ ベースライン
       href: ../../cloud-shell/security-baseline.md
     - name: Cognitive Services のセキュリティ ベースライン
@@ -177,5 +179,7 @@
       href: ../../virtual-machines/windows/security-baseline.md
     - name: Virtual Network のセキュリティ ベースライン
       href: ../../virtual-network/security-baseline.md
+    - name: Virtual WAN のセキュリティ ベースライン
+      href: ../../virtual-wan/security-baseline.md
     - name: VPN Gateway のセキュリティ ベースライン
       href: ../../vpn-gateway/security-baseline.md

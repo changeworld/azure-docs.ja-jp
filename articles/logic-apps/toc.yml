@@ -147,6 +147,7 @@
       items:
         - name: 統合アカウントを作成する
           href: logic-apps-enterprise-integration-create-integration-account.md
+          displayName: 'Azure CLI, az logic integration-account create, integration-account'
         - name: 取引先
           href: logic-apps-enterprise-integration-partners.md
         - name: アグリーメント

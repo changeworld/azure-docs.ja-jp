@@ -437,5 +437,7 @@
       href: limits-quotas-constraints.md
     - name: Azure のクラウドとリージョン
       href: azure-clouds-regions.md
+    - name: リージョンのコード名とエンドポイント
+      href: azure-regions-code-names.md
     - name: ドキュメントの更新
       href: docs-release-notes.md

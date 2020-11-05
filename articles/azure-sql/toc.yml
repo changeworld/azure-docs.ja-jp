@@ -361,7 +361,7 @@
               href: database/network-access-controls-overview.md
             - name: DNS エイリアス
               href: database/dns-alias-overview.md
-            - name: vNet エンドポイント
+            - name: VNet エンドポイント
               href: database/vnet-service-endpoint-rule-overview.md
             - name: Private Link
               href: database/private-endpoint-overview.md
@@ -993,6 +993,8 @@
                   href: virtual-machines/windows/application-patterns-development-strategies.md
             - name: 管理
               items:
+                - name: SQL IaaS Agent 拡張機能
+                  href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
                 - name: 専用ホスト
                   href: virtual-machines/windows/dedicated-host.md
                 - name: SQL 2008 および R2 のサポートの延長
@@ -1021,12 +1023,14 @@
                   href: virtual-machines/windows/change-sql-server-version.md
                 - name: ストレージ
                   href: virtual-machines/windows/storage-configuration.md
+                - name: 自動修正
+                  href: virtual-machines/windows/automated-patching.md
                 - name: Azure Key Vault の統合
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
                 - name: 記憶域を UltraSSD に移行する
                   href: virtual-machines/windows/storage-migrate-to-ultradisk.md
-                - name: SQL VM RP への登録
-                  displayName: 'resource provider, registration'
+                - name: SQL IaaS Agent 拡張機能をインストールする
+                  displayName: 'resource provider, registration, sql vm rp'
                   items:
                     - name: 自動登録
                       href: virtual-machines/windows/sql-vm-resource-provider-automatic-registration.md
@@ -1034,12 +1038,6 @@
                       href: virtual-machines/windows/sql-vm-resource-provider-register.md
                     - name: 複数の VM の一括登録
                       href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
-                - name: 管理タスクの自動化
-                  items:
-                    - name: SQL Server IaaS Agent 拡張機能の使用
-                      href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
-                    - name: 自動修正
-                      href: virtual-machines/windows/automated-patching.md
             - name: 移行
               items:
                 - name: SQL Server データベースを VM へ

@@ -3,8 +3,10 @@
 - name: 概要
   href: media-services-overview.md
   items:
-    - name: シナリオと可用性
+    - name: 一般的なシナリオ
       href: scenarios-and-availability.md
+    - name: リージョン別の提供状況
+      href: availability-regions-v-2.md
     - name: 概念
       href: media-services-concepts.md
 - name: はじめに

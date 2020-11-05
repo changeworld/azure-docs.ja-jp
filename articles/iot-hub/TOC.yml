@@ -74,7 +74,7 @@
           href: tutorial-routing-view-message-routing-results.md
     - name: メッセージ エンリッチメント
       href: tutorial-message-enrichments.md
-    - name: メトリックと診断ログの使用
+    - name: メトリックとログを使用する
       href: tutorial-use-metrics-and-diags.md
     - name: 手動フェールオーバーの実行
       href: tutorial-manual-failover.md
@@ -171,7 +171,7 @@
           href: iot-hub-amqp-support.md
         - name: 用語集
           href: iot-hub-devguide-glossary.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md

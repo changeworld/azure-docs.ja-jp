@@ -557,8 +557,8 @@
           href: ../managed-disk-from-image-version.md
     - name: VM のセキュリティ保護
       items:
-        - name: Recommendations
-          href: security-recommendations.md
+        - name: 推奨事項
+          href: ../security-recommendations.md
         - name: ジャストインタイム アクセス
           href: ../../security-center/security-center-just-in-time.md
         - name: Bastion を使用する
@@ -666,7 +666,7 @@
         - name: Azure VM エージェント
           href: ../extensions/agent-windows.md
         - name: 予測実行の軽減
-          href: mitigate-se.md
+          href: ../mitigate-se.md
         - name: メタデータの監視
           href: instance-metadata-service.md
         - name: 入れ子になった仮想化の有効化
@@ -959,7 +959,7 @@
         - name: 高速ネットワークの使用
           href: ../../virtual-network/create-vm-accelerated-networking-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: パブリック DNS 名の割り当て
-          href: portal-create-fqdn.md
+          href: ../create-fqdn.md
         - name: DNS の解決
           href: ../../dns/dns-for-azure-services.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: マネージド ID の構成
