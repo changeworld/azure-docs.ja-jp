@@ -18,7 +18,7 @@ ms.locfileid: "92547157"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>クイック スタート:Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
-このクイックスタートでは、[Azure Portal](https://portal.azure.com/) を使用して、Asure Storage 内にコンテナーを作成したり、そのコンテナー内のブロック BLOB をアップロードおよびダウンロードしたりする方法を説明します。
+このクイックスタートでは、[Azure Portal](https://portal.azure.com/) を使用して、Azure Storage 内にコンテナーを作成したり、そのコンテナー内のブロック BLOB をアップロードおよびダウンロードしたりする方法を説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,7 +47,7 @@ Azure Portal で新しいコンテナーにブロック BLOB をアップロー�
 1. コンテナーを選択して、それに含まれている BLOB の一覧を表示します。 このコンテナーは新しいため、BLOB はまだ含まれていません。
 1. **[アップロード]** ボタンを選択してアップロード ブレードを開き、ローカル ファイル システムを参照して、ブロック BLOB としてアップロードするファイルを見つけます。 必要に応じて **詳細** セクションを展開し、アップロード操作に関する他の設定を構成することができます。
 
-    :::image type="content" source="media/storage-quickstart-blobs-portal/upload-blob.png" alt-text="Azure Portal でコンテナーを作成する方法を示したスクリーンショット":::
+    :::image type="content" source="media/storage-quickstart-blobs-portal/upload-blob.png" alt-text="Azure portal を使用してローカル ドライブから BLOB をアップロードする方法を示したスクリーン ショット":::
 
 1. **[アップロード]** ボタンを選択して、BLOB をアップロードします。
 1. この方法で、希望する数の BLOB をアップロードします。 これで新しい BLOB がコンテナー内で一覧表示されていることを確認できます。
@@ -59,7 +59,7 @@ Azure Portal で新しいコンテナーにブロック BLOB をアップロー�
 1. 前のセクションでアップロードした BLOB の一覧に移動します。
 1. ダウンロードする BLOB を右クリックし、 **[ダウンロード]** を選択します。
 
-    :::image type="content" source="media/storage-quickstart-blobs-portal/download-blob.png" alt-text="Azure Portal でコンテナーを作成する方法を示したスクリーンショット":::
+    :::image type="content" source="media/storage-quickstart-blobs-portal/download-blob.png" alt-text="Azure Portal で BLOB をダウンロードする方法を示したスクリーンショット":::
 
 ## <a name="delete-a-block-blob"></a>ブロック BLOB を削除する
 
@@ -71,7 +71,7 @@ Azure portal で 1 つ以上の BLOB を削除するには、次の手順に従�
 1. 選択した BLOB を削除するには、 **[削除]** ボタンを選択します。
 1. ダイアログで、削除を確認し、BLOB スナップショットも削除するかどうかを指定します。
 
-:::image type="content" source="media/storage-quickstart-blobs-portal/delete-blobs.png" alt-text="Azure Portal でコンテナーを作成する方法を示したスクリーンショット":::
+:::image type="content" source="media/storage-quickstart-blobs-portal/delete-blobs.png" alt-text="Azure portal から BLOB を削除する方法を示したスクリーンショット":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

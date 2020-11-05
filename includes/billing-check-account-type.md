@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/01/2019
 ms.author: amberb
 ms.openlocfilehash: 6787983421285122834479cb652fec52ee7bf72b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "91360695"
 ---
 1. [Azure portal](https://portal.azure.com) にサインインする

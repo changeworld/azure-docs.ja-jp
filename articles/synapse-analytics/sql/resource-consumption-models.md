@@ -160,7 +160,7 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000c')
 
 #### <a name="rest-apis"></a>REST API
 
-DWU を変更するには、[データベースの作成または更新](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) REST API を使います。 次の例では、サーバー MyServer でホストされているデータベース MySQLDW のサービス レベル目標を DW1000c に設定します。 サーバーは "ResourceGroup1" という名前の Asure リソース グループ内にあります。
+DWU を変更するには、[データベースの作成または更新](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) REST API を使います。 次の例では、サーバー MyServer でホストされているデータベース MySQLDW のサービス レベル目標を DW1000c に設定します。 サーバーは "ResourceGroup1" という名前の Azure リソース グループ内にあります。
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1

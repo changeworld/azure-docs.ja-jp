@@ -37,7 +37,7 @@ Azure PowerShell コマンドレットまたは REST API を使用して、多�
 
 ## <a name="pause-data-warehouse-example"></a>データ ウェアハウスの一時停止の例
 
-"Server01" という名前のサーバーでホストされている "Database02" という名前のデータベースを一時停止します。  サーバーは "ResourceGroup1" という名前の Asure リソース グループ内にあります。
+"Server01" という名前のサーバーでホストされている "Database02" という名前のデータベースを一時停止します。  サーバーは "ResourceGroup1" という名前の Azure リソース グループ内にあります。
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
