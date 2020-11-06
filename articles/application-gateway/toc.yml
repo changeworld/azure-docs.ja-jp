@@ -80,7 +80,7 @@
           href: redirect-overview.md
         - name: HTTP ヘッダーと URL を書き換える
           href: rewrite-http-headers-url.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -287,7 +287,7 @@
       href: ../azure-resource-manager/management/overview.md
     - name: Resource Manager テンプレート
       displayName: ARM
-      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways'
+      href: /azure/templates/microsoft.network/applicationgateways
 - name: リソース
   items:
     - name: テンプレートの作成

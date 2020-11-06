@@ -29,6 +29,9 @@
     - name: データベースの破損を軽減する
       href: how-to-fix-corrupt-database.md
       displayName: corrupt data
+    - name: バージョン管理ポリシー
+      href: concepts-version-policy.md
+      displayName: version policy
 - name: シングル サーバー
   expanded: true
   items:

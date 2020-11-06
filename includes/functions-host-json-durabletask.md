@@ -7,41 +7,17 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 6e253604c57d73c2a89ccfa5cff7efe9e572d11d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24dc2cad8d299d150adddc03de5e9006fc831fc6
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89094348"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061629"
 ---
 [Durable Functions](../articles/azure-functions/durable-functions-overview.md) の構成設定。
 
-### <a name="durable-functions-1x"></a>Durable Functions 1.x
-
-```json
-{
-  "durableTask": {
-    "hubName": "MyTaskHub",
-    "controlQueueBatchSize": 32,
-    "partitionCount": 4,
-    "controlQueueVisibilityTimeout": "00:05:00",
-    "workItemQueueVisibilityTimeout": "00:05:00",
-    "maxConcurrentActivityFunctions": 10,
-    "maxConcurrentOrchestratorFunctions": 10,
-    "maxQueuePollingInterval": "00:00:30",
-    "azureStorageConnectionStringName": "AzureWebJobsStorage",
-    "trackingStoreConnectionStringName": "TrackingStorage",
-    "trackingStoreNamePrefix": "DurableTask",
-    "traceInputsAndOutputs": false,
-    "logReplayEvents": false,
-    "eventGridTopicEndpoint": "https://topic_name.westus2-1.eventgrid.azure.net/api/events",
-    "eventGridKeySettingName":  "EventGridKey",
-    "eventGridPublishRetryCount": 3,
-    "eventGridPublishRetryInterval": "00:00:30",
-    "eventGridPublishEventTypes": ["Started", "Completed", "Failed", "Terminated"]
-  }
-}
-```
+> [!NOTE]
+> Durable Functions のすべてのメジャー バージョンは、Azure Functions ランタイムのすべてのバージョンでサポートされています。 ただし、host.json 構成のスキーマは、Azure Functions ランタイムのバージョンと使用する Durable Functions 拡張機能のバージョンによって若干異なります。 次の例は、Azure Functions 2.0 および3.0 で使用するためのものです。 どちらの例でも、Azure Functions 1.0 を使用している場合、使用可能な設定は同じですが、host.json の "durableTask" セクションは、"extensions" の下のフィールドとしてではなく、host.json 構成のルートに配置する必要があります。
 
 ### <a name="durable-functions-2x"></a><a name="durable-functions-2-0-host-json"></a>Durable Functions 2.x
 
@@ -92,6 +68,35 @@ ms.locfileid: "89094348"
 
 ```
 
+### <a name="durable-functions-1x"></a>Durable Functions 1.x
+
+```json
+{
+  "extensions": {
+    "durableTask": {
+      "hubName": "MyTaskHub",
+      "controlQueueBatchSize": 32,
+      "partitionCount": 4,
+      "controlQueueVisibilityTimeout": "00:05:00",
+      "workItemQueueVisibilityTimeout": "00:05:00",
+      "maxConcurrentActivityFunctions": 10,
+      "maxConcurrentOrchestratorFunctions": 10,
+      "maxQueuePollingInterval": "00:00:30",
+      "azureStorageConnectionStringName": "AzureWebJobsStorage",
+      "trackingStoreConnectionStringName": "TrackingStorage",
+      "trackingStoreNamePrefix": "DurableTask",
+      "traceInputsAndOutputs": false,
+      "logReplayEvents": false,
+      "eventGridTopicEndpoint": "https://topic_name.westus2-1.eventgrid.azure.net/api/events",
+      "eventGridKeySettingName":  "EventGridKey",
+      "eventGridPublishRetryCount": 3,
+      "eventGridPublishRetryInterval": "00:00:30",
+      "eventGridPublishEventTypes": ["Started", "Completed", "Failed", "Terminated"]
+    }
+  }
+}
+```
+
 タスク ハブの名前は、先頭文字をアルファベットとする必要があります。また、使用できるのはアルファベットと数値だけです。 指定しない場合、関数アプリの既定のタスク ハブ名は **DurableFunctionsHub** です。 詳細については、[タスク ハブ](../articles/azure-functions/durable-functions-task-hubs.md)に関するページをご覧ください。
 
 |プロパティ  |Default | 説明 |
@@ -104,7 +109,7 @@ ms.locfileid: "89094348"
 |workItemQueueVisibilityTimeout |5 分|デキューされた作業項目キュー メッセージの表示タイムアウト。|
 |maxConcurrentActivityFunctions |現在のマシン上のプロセッサ数の 10 倍|1 つのホスト インスタンスで同時に処理できるアクティビティ関数の最大数。|
 |maxConcurrentOrchestratorFunctions |現在のマシン上のプロセッサ数の 10 倍|1 つのホスト インスタンスで同時に処理できるオーケストレーター関数の最大数。|
-|maxQueuePollingInterval|30 秒|コントロールおよび作業項目キューの最大ポーリング間隔 (*hh:mm:ss* 形式)。 値が高くなるほどメッセージ処理の待機時間が長くなる可能性があります。 値が低くなるほどストレージ コストが高くなる可能性があります。これは、ストレージ トランザクションが増加するからです。|
+|maxQueuePollingInterval|30 秒|コントロールおよび作業項目キューの最大ポーリング間隔 ( *hh:mm:ss* 形式)。 値が高くなるほどメッセージ処理の待機時間が長くなる可能性があります。 値が低くなるほどストレージ コストが高くなる可能性があります。これは、ストレージ トランザクションが増加するからです。|
 |azureStorageConnectionStringName |AzureWebJobsStorage|基になる Azure Storage リソースの管理に使用される Azure Storage 接続文字列を含むアプリ設定の名前。|
 |azureStorageConnectionStringName||履歴テーブルとインスタンス テーブルに使用する接続文字列の名前。 指定しない場合は、`connectionStringName` (Durable 2.x) または `azureStorageConnectionStringName` (Durable 1.x) 接続が使用されます。|
 |trackingStoreNamePrefix||`trackingStoreConnectionStringName` が指定されているときに履歴テーブルとインスタンス テーブルに使用されるプレフィックス。 設定されていない場合、既定のプレフィックス値は `DurableTask` になります。 `trackingStoreConnectionStringName` が指定されていない場合、履歴テーブルとインスタンス テーブルは `hubName` 値をプレフィックスとして使用し、`trackingStoreNamePrefix` の設定はすべて無視されます。|
@@ -113,7 +118,7 @@ ms.locfileid: "89094348"
 |eventGridTopicEndpoint ||Azure Event Grid カスタム トピック エンドポイントの URL。 このプロパティが設定されている場合は、オーケストレーションのライフ サイクル通知イベントがこのエンドポイントに発行されます。 このプロパティは、アプリ設定の解決をサポートします。|
 |eventGridKeySettingName ||`EventGridTopicEndpoint` での Azure Event Grid カスタム トピックによる認証に使用されるキーを含むアプリ設定の名前。|
 |eventGridPublishRetryCount|0|Event Grid トピックへの発行が失敗した場合に再試行する回数。|
-|eventGridPublishRetryInterval|5 分|Event Grid の発行を再試行する間隔 (*hh:mm:ss* 形式)。|
+|eventGridPublishRetryInterval|5 分|Event Grid の発行を再試行する間隔 ( *hh:mm:ss* 形式)。|
 |eventGridPublishEventTypes||Event Grid に発行するイベントの種類の一覧。 指定されていない場合は、すべてのイベントの種類が発行されます。 指定できる値は、`Started`、`Completed`、`Failed`、`Terminated` です。|
 |useAppLease|true|`true` に設定すると、アプリはタスク ハブ メッセージを処理する前にアプリレベルの BLOB リースを取得する必要があります。 詳細については、[ディザスター リカバリーと geo ディストリビューション](../articles/azure-functions/durable/durable-functions-disaster-recovery-geo-distribution.md)に関するドキュメントを参照してください。 v2.3.0 以降で利用可能です。
 |useLegacyPartitionManagement|true|`false` に設定した場合は、スケールアウト時に関数の実行が重複する可能性を抑えるパーティション管理アルゴリズムを使用します。v2.3.0 以降で利用可能です。 既定値は、将来のリリースで `false` に変更される予定です。|

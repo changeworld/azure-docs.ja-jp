@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 47eae616ffc62e42448da23fb02152dae17aa548
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 29518fb971649087d8a5afa39d69c7fc2c014f98
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92116747"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331162"
 ---
 | リソース | 移行先 | ハード制限 |
 |----------|--------------|------------|
@@ -21,7 +21,7 @@ ms.locfileid: "92116747"
 | ストレージ同期サービスごとの同期グループ数 | 200 の同期グループ | はい |
 | ストレージ同期サービスごとの登録サーバー数 | 99 サーバー | はい |
 | 同期グループあたりのクラウド エンドポイント数 | 1 クラウド エンドポイント | はい |
-| 同期グループあたりのサーバー エンドポイント数 | 50 サーバー エンドポイント | いいえ |
+| 同期グループあたりのサーバー エンドポイント数 | 100 個のサーバー エンドポイント | はい |
 | サーバーあたりのサーバー エンドポイント数 | 30 個のサーバー エンドポイント | はい |
 | 同期グループあたりのファイル システム オブジェクト数 (ディレクトリとファイル) | 1 億オブジェクト | いいえ |
 | ディレクトリ内のファイル システム オブジェクト (ディレクトリとファイル) の最大数 | 500 万オブジェクト | はい |

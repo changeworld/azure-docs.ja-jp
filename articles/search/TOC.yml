@@ -34,7 +34,7 @@
       href: search-get-started-java.md
     - name: JavaScript
       href: search-get-started-javascript.md
-    - name: postman
+    - name: REST
       href: search-get-started-postman.md
     - name: PowerShell
       href: search-get-started-powershell.md
@@ -94,6 +94,8 @@
   items:
     - name: フルテキスト検索
       href: search-lucene-query-architecture.md
+    - name: 関連性のスコアリング
+      href: index-similarity-and-scoring.md
     - name: インデクサー
       href: search-indexer-overview.md
     - name: AI エンリッチメント
@@ -294,8 +296,6 @@
       items:
         - name: 結果を操作する
           href: search-pagination-page-layout.md
-        - name: 関連性のスコアリング
-          href: index-similarity-and-scoring.md
         - name: スコアリング プロファイル
           href: index-add-scoring-profiles.md
         - name: 類似性アルゴリズム

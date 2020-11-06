@@ -662,6 +662,8 @@
               href: how-to-time-to-live.md
             - name: 一意のキーの定義
               href: how-to-define-unique-keys.md
+            - name: トランザクション バッチ操作の実行
+              href: transactional-batch.md
         - name: パフォーマンス
           items:
             - name: クエリ
@@ -753,8 +755,6 @@
               href: create-sql-api-java-changefeed.md
         - name: サーバー側プログラミング
           items:
-            - name: トランザクション バッチ操作の実行
-              href: transactional-batch.md
             - name: ストアド プロシージャ、トリガー、UDF の記述
               href: how-to-write-stored-procedures-triggers-udfs.md
             - name: JavaScript クエリ API を使用したストアド プロシージャとトリガーの記述

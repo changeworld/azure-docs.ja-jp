@@ -14,6 +14,7 @@
     - name: リリース ノート
       href: release-notes.md
 - name: クイックスタート
+  expanded: true
   items:
     - name: はじめに
       href: get-started.md
@@ -170,7 +171,9 @@
           href: sql/overview-features.md
         - name: リソース使用量モデル
           href: sql/resource-consumption-models.md
-        - name: ベスト プラクティス サーバーレス SQL プール
+        - name: データ処理量
+          href: sql/data-processed.md
+        - name: SQL オンデマンドのベスト プラクティス
           href: sql/best-practices-sql-on-demand.md
         - name: ベスト プラクティス専用 SQL プール
           href: sql/best-practices-sql-pool.md

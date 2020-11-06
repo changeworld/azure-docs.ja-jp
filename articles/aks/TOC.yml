@@ -154,6 +154,8 @@
           href: cluster-container-registry-integration.md
         - name: 仮想ノードの作成
           items:
+            - name: 仮想ノードの使用
+              href: virtual-nodes.md
             - name: Azure CLI の使用
               href: virtual-nodes-cli.md
             - name: Azure ポータルの使用

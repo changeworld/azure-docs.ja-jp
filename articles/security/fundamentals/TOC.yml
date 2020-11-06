@@ -68,6 +68,8 @@
   items:
     - name: Microsoft Antimalware
       href: antimalware.md
+    - name: Microsoft Antimalware のコード サンプル
+      href: antimalware-code-samples.md
     - name: 仮想マシンのセキュリティの概要
       href: virtual-machines-overview.md
     - name: ベスト プラクティス - IaaS ワークロード

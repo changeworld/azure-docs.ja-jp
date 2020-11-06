@@ -307,6 +307,8 @@
           href: cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Marketplace の測定サービス
       items:
+        - name: 異常検出サービス
+          href: partner-center-portal/anomaly-detection-service-for-metered-billing.md
         - name: 認証の戦略
           href: partner-center-portal/marketplace-metering-service-authentication.md
         - name: Marketplace の測定サービス API

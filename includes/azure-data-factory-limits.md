@@ -5,15 +5,15 @@ services: data-factory
 author: chez-charlie
 ms.service: data-factory
 ms.topic: include
-ms.date: 10/06/2020
+ms.date: 10/28/2020
 ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: a5ea95e0ea958c495e28eaa1fee72e34362157a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cbe179d015c71094e6813666a6fd0cee3e5e3c2
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91859849"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92909099"
 ---
 Azure Data Factory は、お客様のサブスクリプションが互いのワークロードから保護されるように、次の既定の制限が設定されているマルチテナント サービスです。 サブスクリプションの上限まで制限を引き上げるには、サポートにお問い合わせください。
 
@@ -25,10 +25,10 @@ Azure Data Factory は、お客様のサブスクリプションが互いのワ�
 | データ ファクトリ内のエンティティ (パイプライン、データセット、トリガー、リンクされたサービス、プライベート エンドポイント、統合ランタイムなど) の合計数 | 5,000 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 1 つのサブスクリプションでの Azure-SSIS Integration Runtime の CPU コア数の合計 | 256 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | データ ファクトリあたりの同時実行パイプラインの実行数 (ファクトリ内のすべてのパイプライン間で共有) | 10,000  | 10,000 |
-| [Azure Integration Runtime リージョン](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)あたり、サブスクリプションあたりの同時実行外部アクティビティの実行数<br><small>外部アクティビティは統合ランタイムで管理されますが、リンクされたサービスで実行されます (Databricks、ストアド プロシージャ、HDInsight、Web などを含む)。</small> | 3,000 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
-| [Azure Integration Runtime リージョン](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)あたり、サブスクリプションあたりの同時実行パイプライン アクティビティの実行数 <br><small>パイプライン アクティビティは統合ランタイムで実行されます (Lookup、GetMetadata、Delete を含む)。</small>| 1,000 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
-| [Azure Integration Runtime リージョン](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)あたり、サブスクリプションあたりの同時実行オーサリング操作数<br><small>接続のテスト、フォルダー一覧とテーブル一覧の参照、データのプレビューを含みます。 | 200 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
-| [Azure Integration Runtime リージョン](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)あたり、サブスクリプションあたりの同時実行データ統合単位<sup>1</sup>の消費| リージョン グループ 1<sup>2</sup>: 6,000<br>リージョン グループ 2<sup>2</sup>: 3,000<br>リージョン グループ 3<sup>2</sup>: 1,500 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
+| [Azure Integration Runtime リージョン](../articles/data-factory/concepts-integration-runtime.md#azure-ir-location)あたり、サブスクリプションあたりの同時実行外部アクティビティの実行数<br><small>外部アクティビティは統合ランタイムで管理されますが、リンクされたサービスで実行されます (Databricks、ストアド プロシージャ、HDInsight、Web などを含む)。この制限は、セルフホステッド IR には適用されません。</small> | 3,000 | 3,000 |
+| [Azure Integration Runtime リージョン](../articles/data-factory/concepts-integration-runtime.md#azure-ir-location)あたり、サブスクリプションあたりの同時実行パイプライン アクティビティの実行数 <br><small>パイプライン アクティビティは統合ランタイムで実行されます (Lookup、GetMetadata、Delete を含む)。この制限は、セルフホステッド IR には適用されません。</small> | 1,000 | 1,000                                                        |
+| [Azure Integration Runtime リージョン](../articles/data-factory/concepts-integration-runtime.md#azure-ir-location)あたり、サブスクリプションあたりの同時実行オーサリング操作数<br><small>接続のテスト、フォルダー一覧とテーブル一覧の参照、データのプレビューを含みます。この制限は、セルフホステッド IR には適用されません。</small> | 200 | 200                                                          |
+| [Azure Integration Runtime リージョン](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)あたり、サブスクリプションあたりの同時実行データ統合単位<sup>1</sup>の消費| リージョン グループ 1<sup>2</sup>: 6,000<br>リージョン グループ 2<sup>2</sup>: 3,000<br>リージョン グループ 3<sup>2</sup>: 1,500 | リージョン グループ 1<sup>2</sup>: 6,000<br/>リージョン グループ 2<sup>2</sup>: 3,000<br/>リージョン グループ 3<sup>2</sup>: 1,500 |
 | パイプラインあたりの最大アクティビティ数 (コンテナーの内部アクティビティを含む) | 40 | 40 |
 | 単一のセルフホステッド統合ランタイムに対して作成できる、リンクされた統合ランタイムの最大数 | 100 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | パイプラインあたりの最大パラメーター数 | 50 | 50 |
@@ -40,7 +40,7 @@ Azure Data Factory は、お客様のサブスクリプションが互いのワ�
 | パイプラインのアクティビティ実行の最大タイムアウト | 7 日 | 7 日 |
 | パイプライン オブジェクトのオブジェクトあたりのバイト数<sup>3</sup> | 200 KB | 200 KB |
 | データセットおよびリンクされたサービス オブジェクトのオブジェクトあたりのバイト数<sup>3</sup> | 100 KB | 2,000 KB |
-| コピー アクティビティの実行あたりのデータ統合単位<sup>1</sup> | 256 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
+| コピー アクティビティの実行あたりのデータ統合単位<sup>1</sup> | 256 | 256 |
 | API 呼び出しの書き込み | 1,200/h | 1,200/h<br/><br/> この制限は、Azure Data Factory ではなく、Azure Resource Manager によって課せられます。 |
 | API 呼び出しの読み取り | 12,500/時 | 12,500/時<br/><br/> この制限は、Azure Data Factory ではなく、Azure Resource Manager によって課せられます。 |
 | 1 分あたりの監視クエリ | 1,000 | 1,000 |
@@ -53,7 +53,7 @@ Azure Data Factory は、お客様のサブスクリプションが互いのワ�
 
 <sup>2</sup> [Azure Integration Runtime](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) は、データ コンプライアンス、効率、およびネットワーク エグレス コストの削減を実現するために[グローバルに使用できます](https://azure.microsoft.com/global-infrastructure/services/)。 
 
-| リージョン グループ | リージョン | 
+| リージョン グループ | リージョン |
 | -------- | ------ |
 | リージョン グループ 1 | 米国中部、米国東部、東 US2、北ヨーロッパ、西ヨーロッパ、米国西部、米国西部 2 |
 | リージョン グループ 2 | オーストラリア東部、オーストラリア南東部、ブラジル南部、インド中部、東日本、米国中北部、米国中南部、東南アジア、米国中西部 |
@@ -71,7 +71,7 @@ Azure Data Factory は、お客様のサブスクリプションが互いのワ�
 | パイプライン オブジェクトのオブジェクトあたりのバイト数<sup>1</sup> |200 KB |200 KB |
 | データセットとリンクされたサービス オブジェクトのオブジェクトあたりのバイト数<sup>1</sup> |100 KB |2,000 KB |
 | サブスクリプション内の Azure HDInsight オンデマンドのクラスター コア数<sup>2</sup> |60 |[サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
-| コピー アクティビティの実行 1 回あたりのクラウド データ移動単位<sup>3</sup> |32 |[サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
+| コピー アクティビティの実行 1 回あたりのクラウド データ移動単位<sup>3</sup> |32 |32 |
 | パイプラインのアクティビティ実行の再試行カウント |1,000 |MaxInt (32 ビット) |
 
 <sup>1</sup> パイプライン、データ セット、およびリンクされたサービス オブジェクトは、ワークロードの論理的なグループ化を表します。 これらのオブジェクトの制限は、Azure Data Factory で移動したり処理したりできるデータ量には関係ありません。 Data Factory は、数ペタバイトのデータ処理までスケーリングできるように設計されています。
