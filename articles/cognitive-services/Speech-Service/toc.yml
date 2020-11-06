@@ -419,8 +419,6 @@
                   href: 'http://aka.ms/speech/va-samples'
                 - name: 音声アシスタントの FAQ
                   href: faq-voice-assistants.md
-                - name: Speech SDK
-                  href: speech-sdk.md
                 - name: カスタム コマンドによる保存データの暗号化
                   href: custom-commands-encryption-of-data-at-rest.md
         - name: Direct Line Speech
