@@ -70,6 +70,8 @@
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: Container Instances の使用
           href: deploy-form-recognizer-on-container-instances.md
+        - name: Cognitive Services コンテナーのドキュメント
+          href: ../containers/index.yml
     - name: モデルのバックアップと復旧
       href: disaster-recovery.md
 - name: リファレンス

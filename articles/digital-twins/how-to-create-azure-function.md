@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0cc3a335e5fbe037742767a3b59243e366f094ee
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 5352a95b865851be937af7b9f19268afd23148db
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495920"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280033"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>データを処理するために Azure Functions アプリを接続する
 
@@ -29,6 +29,10 @@ ms.locfileid: "92495920"
 3. 認証コードを関数に追加する (Azure Digital Twins にアクセスできるようにするため)
 4. 関数アプリを Azure に発行する
 5. Azure 関数アプリの[セキュリティ](concepts-security.md) アクセスを設定する
+
+## <a name="prerequisite-set-up-azure-digital-twins-instance"></a>前提条件:Azure Digital Twins インスタンスを設定する
+
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
 ## <a name="create-an-azure-functions-app-in-visual-studio"></a>Visual Studio で Azure Functions アプリを作成する
 
@@ -50,7 +54,7 @@ Visual Studio 2019 では、 _[ファイル] > [新規作成] > [プロジェク
 
 ## <a name="write-an-azure-function-with-an-event-grid-trigger"></a>Event Grid トリガーを使用して Azure 関数を作成する
 
-関数アプリに SDK を追加することによって、Azure 関数を作成できます。 関数アプリと Azure Digital Twins のやり取りには、[.NET (C#) 用の Azure Digital Twin SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) を使用します。 
+関数アプリに SDK を追加することによって、Azure 関数を作成できます。 関数アプリと Azure Digital Twins のやり取りには、[.NET (C#) 用の Azure Digital Twin SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) を使用します。 
 
 SDK を使用するには、次のパッケージをプロジェクトに含める必要があります。 Visual Studio の NuGet パッケージ マネージャーを使用してパッケージをインストールするか、`dotnet` コマンドライン ツールを使用してパッケージを追加することができます。 次のいずれかの方法を選択します。 
 

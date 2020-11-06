@@ -39,8 +39,6 @@
           href: how-to-automatic-language-detection.md
         - name: バッチ文字起こし API を使用する
           href: batch-transcription.md
-        - name: 発音を評価する
-          href: how-to-pronunciation-assessment.md
     - name: チュートリアル
       items:
         - name: Blob Storage に格納された音声を認識する
@@ -530,6 +528,8 @@
           href: deploy-speech-on-container-instances.md
         - name: コンテナーの FAQ
           href: speech-container-faq.md
+        - name: Cognitive Services コンテナーのドキュメント
+          href: ../containers/index.yml
 - name: デバイス
   items:
     - name: Speech Devices のドキュメント

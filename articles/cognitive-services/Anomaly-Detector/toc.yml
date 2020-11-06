@@ -40,6 +40,8 @@
           displayName: 'docker, container, apikey, billing, log, mount, run, pull, port'
         - name: Container Instances の使用
           href: how-to/deploy-anomaly-detection-on-container-instances.md
+        - name: Cognitive Services コンテナーのドキュメント
+          href: ../containers/index.yml
 - name: 概念
   items:
     - name: Anomaly Detection API のベスト プラクティス

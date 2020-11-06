@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 8f56538470b8a52697e2d5c4154a6a6807a0cfde
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 549e1808a3b449f7d29b968cde76ef29391880b3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489015"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100618"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure Digital Twins の既知の問題
 
@@ -32,7 +32,7 @@ Azure Digital Twins では特に、これは次のコマンド グループに�
 
 または、Azure portal の [Cloud Shell] ペインを開き、そこから Cloud Shell 作業を完了することができます。
 
-:::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="&quot;Cloud Shell&quot; アイコンが強調表示されている Azure portal のビューと、ポータル ウィンドウの下部に表示されている Cloud Shell":::
+:::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="Cloud Shell アイコンが強調表示されている Azure portal と、ポータル ウィンドウの下部に表示されている Cloud Shell のビュー" lightbox="media/includes/portal-cloud-shell.png":::
 
 最終的には、別の解決策として、コンピューターに [Azure CLI をインストール](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)して、Azure CLI コマンドをローカルで実行できるようにします。 ローカル CLI ではこの問題は発生しません。
 

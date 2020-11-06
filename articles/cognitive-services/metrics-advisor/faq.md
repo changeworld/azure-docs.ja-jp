@@ -10,22 +10,18 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: mbullwin
-ms.openlocfilehash: 6b5292ca7e1220b60b1b2a2501b3150550da8db9
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: da4dc3579630d641fcbc1d4321b56de0cc09d555
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131685"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893579"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Metrics Advisor に関してよく寄せられる質問
 
 ### <a name="what-is-the-cost-of-my-instance"></a>インスタンスのコストはどのくらいですか?
 
 現在プレビュー期間中であり、インスタンスの使用にコストはかかりません。
-
-### <a name="why-is-the-demo-website-readonly"></a>デモ Web サイトが読み取り専用なのはなぜですか?
-
-[デモ Web サイト](https://anomaly-detector.azurewebsites.net/)は一般公開されています。 データが誤ってアップロードされるのを防ぐために、このインスタンスは読み取り専用となっています。
 
 ### <a name="why-cant-i-create-the-resource-the-pricing-tier-is-unavailable-and-it-says-you-have-already-created-1-s0-for-this-subscription"></a>リソースを作成できないのはなぜですか? "価格レベル" を表示することができず、"このサブスクリプションに対して 1 件の S0 を既に作成していますか?" と表示されます。
 
@@ -92,7 +88,7 @@ Metrics Advisor でデータを取り込むには、1 つのタイムスタン�
 
 これらのクエリからは 1 つのタイムスタンプのデータだけが返され、Metrics Advisor によって取り込まれるすべてのディメンションの組み合わせが含まれることに注意してください。 
 
-:::image type="content" source="media/query-result.png" alt-text="F0 リソースが既に存在する場合のメッセージ" lightbox="media/query-result.png":::
+:::image type="content" source="media/query-result.png" alt-text="1 つのタイムスタンプによるクエリの結果" lightbox="media/query-result.png":::
 
 
 ### <a name="how-do-i-detect-spikes--dips-as-anomalies"></a>急増と急減を異常として検出するには、どうすればよいですか?
@@ -131,7 +127,7 @@ Metrics Advisor でデータを取り込むには、1 つのタイムスタン�
 
 Metric Advisor を使用すると、階層トポロジの 1 つのノードからドリルダウンまたはロールアップする任意のパスをユーザーが指定できます。 より正確には、階層のトポロジは、ツリー構造ではなく有向非巡回グラフです。 次のように、可能性のあるすべてのディメンションの組み合わせで構成される完全な階層トポロジがあります。 
 
-:::image type="content" source="media/dimension-combinations-view.png" alt-text="F0 リソースが既に存在する場合のメッセージ" lightbox="media/dimension-combinations-view.png":::
+:::image type="content" source="media/dimension-combinations-view.png" alt-text="相互に接続された複数の頂点とエッジと、S、DC、M および対応する 1 から 6 の範囲の値でラベルが付けられた複数のディメンションで構成される、階層トポロジの図" lightbox="media/dimension-combinations-view.png":::
 
 理論的には、ディメンション `Service` に `Ls` 個の個別値があり、ディメンション `Data center` に `Ldc` 個の個別値があり、ディメンション `Machine` に `Lm` 個の個別値がある場合、階層トポロジには `(Ls + 1) * (Ldc + 1) * (Lm + 1)` 個のディメンションの組み合わせが存在する可能性があります。 
 
@@ -145,5 +141,4 @@ Metric Advisor を使用すると、階層トポロジの 1 つのノードか�
 
 ## <a name="next-steps"></a>次の手順
 - [Metrics Advisor の概要](overview.md)
-- [デモ サイトを試す](quickstarts/explore-demo.md)
 - [Web ポータルを使用する](quickstarts/web-portal.md)

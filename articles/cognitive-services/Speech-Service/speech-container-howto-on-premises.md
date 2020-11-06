@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/29/2020
+ms.date: 10/30/2020
 ms.author: aahi
-ms.openlocfilehash: aa1cb6e9fdd504622b2f444d511a8dd0e5fc1ca8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 277a3c1c53564d7c5dff6a87381680a7f41606de
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82608382"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131600"
 ---
 # <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>Kubernetes および Helm と共に Speech サービス コンテナーを使用する
 
@@ -35,7 +35,7 @@ ms.locfileid: "82608382"
 
 ## <a name="the-recommended-host-computer-configuration"></a>推奨されるホスト コンピューターの構成
 
-詳しくは、[Speech サービスのコンテナー ホスト コンピューター][speech-container-host-computer]に関する記事をご覧ください。 この "*Helm チャート*" では、ユーザーが指定しているデコードの数 (同時要求数) に基づいて、CPU とメモリの要件が自動的に計算されます。 さらに、オーディオ/テキスト入力の最適化が `enabled` として構成されているかどうかに基づいて調整されます。 Helm チャートの既定値では、同時要求の数は 2、最適化は無効です。
+詳しくは、[Speech サービスのコンテナー ホスト コンピューター][speech-container-host-computer]に関する記事をご覧ください。 この " *Helm チャート* " では、ユーザーが指定しているデコードの数 (同時要求数) に基づいて、CPU とメモリの要件が自動的に計算されます。 さらに、オーディオ/テキスト入力の最適化が `enabled` として構成されているかどうかに基づいて調整されます。 Helm チャートの既定値では、同時要求の数は 2、最適化は無効です。
 
 | サービス | CPU/コンテナー | メモリ/コンテナー |
 |--|--|--|
@@ -46,68 +46,26 @@ ms.locfileid: "82608382"
 
 ホスト コンピューターには使用可能な Kubernetes クラスターがあることが想定されます。 ホスト コンピューターへの Kubernetes クラスターの展開方法の概念を理解するには、[Kubernetes クラスターの展開](../../aks/tutorial-kubernetes-deploy-cluster.md)に関するこのチュートリアルをご覧ください。
 
-### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Kubernetes クラスターと Docker の資格情報を共有する
-
-Kubernetes クラスターで `containerpreview.azurecr.io` コンテナー レジストリの構成済みイメージに対して `docker pull` を実行できるようにするには、Docker の資格情報をクラスターに転送する必要があります。 下の [`kubectl create`][kubectl-create] コマンドを実行し、コンテナー レジストリのアクセスの前提条件から提供された資格情報に基づいて、"*docker-registry シークレット*" を作成します。
-
-適切なコマンド ライン インターフェイスから、次のコマンドを実行します。 `<username>`、`<password>`、`<email-address>` は、コンテナー レジストリの資格情報に置き換えてください。
-
-```console
-kubectl create secret docker-registry mcr \
-    --docker-server=containerpreview.azurecr.io \
-    --docker-username=<username> \
-    --docker-password=<password> \
-    --docker-email=<email-address>
-```
-
-> [!NOTE]
-> `containerpreview.azurecr.io` コンテナー レジストリへのアクセス権が既にある場合は、代わりに汎用フラグを使って Kubernetes シークレットを作成できます。 Docker 構成 JSON に対して実行する次のコマンドを検討してください。
-> ```console
->  kubectl create secret generic mcr \
->      --from-file=.dockerconfigjson=~/.docker/config.json \
->      --type=kubernetes.io/dockerconfigjson
-> ```
-
-シークレットが正常に作成されると、次の出力がコンソールに表示されます。
-
-```console
-secret "mcr" created
-```
-
-シークレットが作成されたことを確認するには、`secrets` フラグを指定して [`kubectl get`][kubectl-get] を実行します。
-
-```console
-kubectl get secrets
-```
-
-`kubectl get secrets` を実行すると、構成されているすべてのシークレットが表示されます。
-
-```console
-NAME    TYPE                              DATA    AGE
-mcr     kubernetes.io/dockerconfigjson    1       30s
-```
-
 ## <a name="configure-helm-chart-values-for-deployment"></a>展開に対する Helm チャートの値を構成する
 
-Microsoft によって提供されているすべてのパブリックに使用可能な Helm チャートについては、[Microsoft Helm Hub][ms-helm-hub] をご覧ください。 Microsoft Helm Hub で、**Cognitive Services Speech On-Premises Chart** を探します。 **Cognitive Services Speech On-Premises** チャートをインストールしますが、最初に明示的な構成で `config-values.yaml` ファイルを作成する必要があります。 最初に、Helm インスタンスに Microsoft リポジトリを追加しましょう。
+Microsoft によって提供されているすべてのパブリックに使用可能な Helm チャートについては、[Microsoft Helm Hub][ms-helm-hub] をご覧ください。 Microsoft Helm Hub で、 **Cognitive Services Speech On-Premises Chart** を探します。 **Cognitive Services Speech On-Premises** チャートをインストールしますが、最初に明示的な構成で `config-values.yaml` ファイルを作成する必要があります。 最初に、Helm インスタンスに Microsoft リポジトリを追加しましょう。
 
 ```console
 helm repo add microsoft https://microsoft.github.io/charts/repo
 ```
 
-次に、Helm チャートの値を構成します。 次の YAML をコピーし、`config-values.yaml` という名前のファイルに貼り付けます。 **Cognitive Services Speech On-Premises Helm Chart** のカスタマイズについて詳しくは、「[Helm チャートをカスタマイズする](#customize-helm-charts)」をご覧ください。 `# {ENDPOINT_URI}` と `# {API_KEY}` のコメントを独自の値に置き換えます。
+次に、Helm チャートの値を構成します。 次の YAML をコピーし、`config-values.yaml` という名前のファイルに貼り付けます。 **Cognitive Services Speech On-Premises Helm Chart** のカスタマイズについて詳しくは、「 [Helm チャートをカスタマイズする](#customize-helm-charts)」をご覧ください。 `# {ENDPOINT_URI}` と `# {API_KEY}` のコメントを独自の値に置き換えます。
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
-
 # speech-to-text configurations
 speechToText:
   enabled: true
   numberOfConcurrentRequest: 3
   optimizeForAudioFile: true
   image:
-    registry: containerpreview.azurecr.io
-    repository: microsoft/cognitive-services-speech-to-text
+    registry: mcr.microsoft.com
+    repository: azure-cognitive-services/speechservices/speech-to-text
     tag: latest
     pullSecrets:
       - mcr # Or an existing secret
@@ -122,8 +80,8 @@ textToSpeech:
   numberOfConcurrentRequest: 3
   optimizeForTurboMode: true
   image:
-    registry: containerpreview.azurecr.io
-    repository: microsoft/cognitive-services-text-to-speech
+    registry: mcr.microsoft.com
+    repository: azure-cognitive-services/speechservices/speech-to-text
     tag: latest
     pullSecrets:
       - mcr # Or an existing secret
@@ -138,15 +96,15 @@ textToSpeech:
 
 ### <a name="the-kubernetes-package-helm-chart"></a>Kubernetes パッケージ (Helm チャート)
 
-"*Helm チャート*" には、`containerpreview.azurecr.io` コンテナー レジストリからプルする Docker イメージの構成が含まれます。
+" *Helm チャート* " には、`mcr.microsoft.com` コンテナー レジストリからプルする Docker イメージの構成が含まれます。
 
 > [Helm チャート][helm-charts] は、関連する Kubernetes リソースのセットが記述されているファイルのコレクションです。 1 つのチャートを使って、memcached ポッドのような単純なものや、HTTP サーバー、データベース、キャッシュなどを含む完全な Web アプリ スタックのような複雑なものを、展開できます。
 
-提供されている 「*Helm チャート*」では、テキスト読み上げサービスと音声テキスト変換サービス両方の Speech サービスの Docker イメージが、`containerpreview.azurecr.io` コンテナー レジストリからプルされます。
+提供されている 「 *Helm チャート* 」では、テキスト読み上げサービスと音声テキスト変換サービス両方の Speech サービスの Docker イメージが、`mcr.microsoft.com` コンテナー レジストリからプルされます。
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>Kubernetes クラスターに Helm チャートをインストールする
 
-"*Helm チャート*" をインストールするには、[`helm install`][helm-install-cmd] コマンドを実行する必要があります。`<config-values.yaml>` は、適切なパスとファイル名の引数に置き換えます。 以下で参照されている `microsoft/cognitive-services-speech-onpremise` Helm チャートは、[こちらの Microsoft Helm Hub][ms-helm-hub-speech-chart] で入手できます。
+" *Helm チャート* " をインストールするには、 [`helm install`][helm-install-cmd] コマンドを実行する必要があります。`<config-values.yaml>` は、適切なパスとファイル名の引数に置き換えます。 以下で参照されている `microsoft/cognitive-services-speech-onpremise` Helm チャートは、[こちらの Microsoft Helm Hub][ms-helm-hub-speech-chart] で入手できます。
 
 ```console
 helm install onprem-speech microsoft/cognitive-services-speech-onpremise \
@@ -231,7 +189,7 @@ horizontalpodautoscaler.autoscaling/text-to-speech-autoscaler   Deployment/text-
 
 ### <a name="verify-helm-deployment-with-helm-tests"></a>Helm テストで Helm の展開を検証する
 
-インストールされた Helm チャートでは、検証を行うのに便利な "*Helm テスト*" が定義されています。 これらのテストでは、サービスの準備状態が検証されます。 **音声テキスト変換**サービスと**テキスト読み上げ**サービスの両方を検証するため、[helm test][helm-test] コマンドを実行します。
+インストールされた Helm チャートでは、検証を行うのに便利な " *Helm テスト* " が定義されています。 これらのテストでは、サービスの準備状態が検証されます。 **音声テキスト変換** サービスと **テキスト読み上げ** サービスの両方を検証するため、 [helm test][helm-test] コマンドを実行します。
 
 ```console
 helm test onprem-speech
@@ -249,7 +207,7 @@ RUNNING: text-to-speech-readiness-test
 PASSED: text-to-speech-readiness-test
 ```
 
-"*Helm テスト*" を実行する代わりに、`kubectl get all` コマンドから "*外部 IP*" アドレスおよび対応するポートを収集することもできます。 IP とポートを使用して、Web ブラウザーを開き、`http://<external-ip>:<port>:/swagger/index.html` に移動して、API Swagger ページを表示します。
+" *Helm テスト* " を実行する代わりに、`kubectl get all` コマンドから " *外部 IP* " アドレスおよび対応するポートを収集することもできます。 IP とポートを使用して、Web ブラウザーを開き、`http://<external-ip>:<port>:/swagger/index.html` に移動して、API Swagger ページを表示します。
 
 ## <a name="customize-helm-charts"></a>Helm チャートをカスタマイズする
 
