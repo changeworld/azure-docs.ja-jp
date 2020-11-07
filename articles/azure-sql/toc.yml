@@ -283,7 +283,7 @@
               href: database/geo-distributed-application-configure-tutorial.md
             - name: アクティブな地理的レプリケーション
               href: database/active-geo-replication-configure-portal.md
-        - name: セキュリティ
+        - name: Security
           items:
             - name: セキュリティを構成する
               href: database/secure-database-tutorial.md
@@ -351,7 +351,7 @@
               href: database/sql-data-sync-best-practices.md
             - name: データ同期のトラブルシューティング
               href: database/sql-data-sync-troubleshoot.md
-        - name: セキュリティ
+        - name: Security
           items:
             - name: Azure SQL 監査
               href: database/auditing-overview.md
@@ -890,7 +890,7 @@
               href: /sql/database-engine/configure-windows/sql-server-service-broker?toc=%252fazure%252fazure-sql%252ftoc.json
             - name: データベース メール
               href: /sql/relational-databases/database-mail/database-mail?toc=%252fazure%252fazure-sql%252ftoc.json
-        - name: セキュリティ
+        - name: Security
           items:
             - name: パブリック エンドポイントのセキュリティ保護
               href: managed-instance/public-endpoint-overview.md
@@ -1130,7 +1130,7 @@
             - name: アーカイブ済みの従来の RM ドキュメント
               href: /previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-create
             - name: SQL Server Data Tools (SSDT)
-              href: //sql/ssdt/download-sql-server-data-tools-ssdt
+              href: /sql/ssdt/download-sql-server-data-tools-ssdt
             - name: SQL Server Management Studio (SSMS)
               href: /sql/ssms/download-sql-server-management-studio-ssms
             - name: SQL Server のツール
