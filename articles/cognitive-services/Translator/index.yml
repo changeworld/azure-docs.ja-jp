@@ -13,18 +13,18 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/14/2019
   ms.author: erhopf
-  ms.openlocfilehash: 5c25a45e02433ece463198e4cfd4a26758031a27
-  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.openlocfilehash: 4fe9c22a126f1fca63ad689c8de27e822b838110
+  ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/22/2020
-  ms.locfileid: "92368674"
+  ms.lasthandoff: 11/08/2020
+  ms.locfileid: "94364668"
 landingContent:
-- title: '[変換者]'
+- title: Translator
   linkLists:
   - linkListType: overview
     links:
-    - text: '[変換者]'
+    - text: Translator
       url: translator-info-overview.md
     - text: Custom Translator
       url: translator-info-overview.md
@@ -33,14 +33,14 @@ landingContent:
     - text: コンプライアンス
       url: https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/
     - text: サブスクリプションの作成
-      url: translator-text-how-to-signup.md
+      url: ./translator-how-to-signup.md
     - text: よく寄せられる質問
       url: https://www.microsoft.com/translator/faq.aspx
 - title: はじめに
   linkLists:
   - linkListType: quickstart
     links:
-    - text: クイック スタート
+    - text: クイックスタート
       url: quickstart-translator.md
   - linkListType: tutorial
     links:

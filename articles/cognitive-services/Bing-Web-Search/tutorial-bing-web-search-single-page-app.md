@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 3c404f0028705754a68be113a331132eec02f7cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 010b65a170d05fb0d2cc55e7519fd27df8b751e1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91304034"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095443"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>チュートリアル:Bing Web Search API を使用して単一ページの Web アプリを作成する
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、またはマイクロソフトエンタープライズ契約の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
 この単一ページのアプリは、Bing Web Search API から検索結果を取得、解析、および表示する方法を示しています。 このチュートリアルでは、定型の HTML と CSS を使用し、JavaScript コードに焦点を当てています。 HTML、CSS、および JS ファイルとクイック スタート手順は、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) に掲載されています。
 
@@ -133,7 +138,7 @@ function bingSearchOptions(form) {
 
 **[レベル上げ]** チェックボックスがオンの場合、`answerCount` パラメーターがクエリに追加されます。 `answerCount` は `promote` パラメーターを使用する際に必要です。 このスニペットでは、使用できるすべての結果の種類を返す `9` に値が設定されています。
 > [!NOTE]
-> 結果の種類のレベルを上げても、検索結果に含まれることは*保証*されません。 レベル上げの効果は、その種類の結果の順位を、通常の順位よりも上げるというものです。 検索結果を特定の種類だけに制限するには、`responseFilter` クエリ パラメーターを使用するか、Bing Image Search や Bing News Search など、より具体的なエンドポイントを呼び出します。
+> 結果の種類のレベルを上げても、検索結果に含まれることは *保証* されません。 レベル上げの効果は、その種類の結果の順位を、通常の順位よりも上げるというものです。 検索結果を特定の種類だけに制限するには、`responseFilter` クエリ パラメーターを使用するか、Bing Image Search や Bing News Search など、より具体的なエンドポイントを呼び出します。
 
 `textDecoration` および `textFormat` クエリ パラメーターをスクリプトにハードコーディングして、検索用語が検索結果内で太字で表示されるようにします。 これらのパラメーターは必須ではありません。
 
@@ -284,7 +289,7 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> HTTP 要求が成功しても、検索自体が成功したとは*限りません*。 検索操作でエラーが発生した場合、Bing Web Search API は 200 以外の HTTP 状態コードを返し、JSON 応答にエラー情報を含めます。 要求のレートが制限されている場合、API は空の応答を返します。
+> HTTP 要求が成功しても、検索自体が成功したとは *限りません* 。 検索操作でエラーが発生した場合、Bing Web Search API は 200 以外の HTTP 状態コードを返し、JSON 応答にエラー情報を含めます。 要求のレートが制限されている場合、API は空の応答を返します。
 
 先ほどの両方の関数内にあるコードの多くは、エラー処理専用のものです。 エラーは次の段階で発生する場合があります。
 

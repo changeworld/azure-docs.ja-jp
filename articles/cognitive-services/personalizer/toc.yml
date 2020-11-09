@@ -12,7 +12,7 @@
 - name: クイックスタート
   items:
     - name: SDK の使用
-      href: sdk-learning-loop.md
+      href: ./quickstart-personalizer-sdk.md
 - name: チュートリアル
   items:
     - name: Web アプリの使用
@@ -88,7 +88,7 @@
         - name: .NET
           items:
             - name: リファレンス
-              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet'
+              href: /dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet
             - name: NuGet パッケージ
               href: 'https://go.microsoft.com/fwlink/?linkid=2092272'
         - name: Go
@@ -98,13 +98,13 @@
         - name: Node.js
           items:
             - name: リファレンス
-              href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest'
+              href: /javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest
             - name: NPM
               href: 'https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0'
         - name: Python
           items:
             - name: リファレンス
-              href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python'
+              href: /python/api/overview/azure/cognitiveservices/personalizer?view=azure-python
             - name: Pypi パッケージ
               href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
 - name: リソース

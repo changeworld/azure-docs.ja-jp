@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: 1befc26d6c6d0a12af57c8a0d3d0e6d32f363f19
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 10cee7f5b0deff37a9b1df1937fe8f6ed8431daa
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096897"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135982"
 ---
 このガイドでは、Linux 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します
 
@@ -23,7 +23,7 @@ ms.locfileid: "92096897"
 
 ## <a name="system-requirements"></a>システム要件
 
-Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7 または 8、CentOS 7 または 8)
+Linux。[サポートされている Linux ディストリビューションとターゲット アーキテクチャ](~/articles/cognitive-services/speech-service/speech-sdk.md)の一覧を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,19 +33,14 @@ Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7 または 8、CentOS 7 �
 
 * サポートされている Linux プラットフォームでは、特定のライブラリがインストールされている必要があります (Secure Sockets Layer サポート用に `libssl`、サウンド サポート用に `libasound2`)。 これらのライブラリの正しいバージョンをインストールするために必要なコマンドについては、下記のディストリビューションを参照してください。
 
-   * Ubuntu の場合:
+   * Ubuntu/Debian の場合:
 
      ```sh
      sudo apt-get update
      sudo apt-get install build-essential libssl1.0.0 libasound2 wget
      ```
 
-   * Debian 9 の場合:
-
-     ```sh
-     sudo apt-get update
-     sudo apt-get install build-essential libssl1.0.2 libasound2 wget
-     ```
+     libssl1.0.0 が使用できない場合は、libssl1.0.x (ここで、x は 0 より大) または libssl1.1 を代わりにインストールします。
 
    * RHEL または CentOS の場合:
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: trbye
-ms.openlocfilehash: 613ee87064cc3b0bbbae8b8ac2e31a5ed60d39f2
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: eae4aece79cd387aaa7e708591ca31442eaa05c3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097203"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93136047"
 ---
 このガイドでは、Python 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。 このパッケージ名の使用を自分で開始する場合は、`pip install azure-cognitiveservices-speech` を実行します。
 
@@ -20,25 +20,20 @@ ms.locfileid: "92097203"
 - 以下のオペレーティング システム用の Python Speech SDK パッケージを入手できます。
   - Windows: x64 および x86
   - Mac: macOS X バージョン 10.12 以降
-  - Linux: x64 上の Ubuntu 16.04 または 18.04、Debian 9、RHEL 7 または 8、CentOS 7 または 8
+  - Linux。[サポートされている Linux ディストリビューションとターゲット アーキテクチャ](~/articles/cognitive-services/speech-service/speech-sdk.md)の一覧を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 - サポートされている Linux プラットフォームでは、特定のライブラリがインストールされている必要があります (Secure Sockets Layer サポート用に `libssl`、サウンド サポート用に `libasound2`)。 これらのライブラリの正しいバージョンをインストールするために必要なコマンドについては、下記のディストリビューションを参照してください。
 
-  - Ubuntu では、以下のコマンドを実行して、必要なパッケージをインストールします。
+  - Ubuntu/Debian では、次のコマンドを実行して、必要なパッケージをインストールします。
 
     ```sh
     sudo apt-get update
     sudo apt-get install build-essential libssl1.0.0 libasound2
     ```
 
-  - Debian 9 では、以下のコマンドを実行して、必要なパッケージをインストールします。
-
-    ```sh
-    sudo apt-get update
-    sudo apt-get install build-essential libssl1.0.2 libasound2
-    ```
+    libssl1.0.0 が使用できない場合は、libssl1.0.x (ここで、x は 0 より大) または libssl1.1 を代わりにインストールします。
 
   - RHEL または CentOS では、以下のコマンドを実行して、必要なパッケージをインストールします。
 

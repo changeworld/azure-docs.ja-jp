@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 925a5000f9778689660765ef715dd8760d5340a2
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 466129e8435ef694821b078592a100a111a43f3a
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495970"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242281"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>クイック スタート - ADT Explorer を使用して、Azure Digital Twins のサンプル シナリオを精査する
 
@@ -41,50 +41,36 @@ Azure Digital Twins を使用すると、現実の環境のライブ モデル�
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Azure Digital Twins と ADT エクスプローラーを設定する
 
-Azure Digital Twins を操作する際の最初の手順は、 **Azure Digital Twins インスタンス** の設定です。 サービスのインスタンスを作成すると、それにサンプル データを設定できるようになります (後でこのクイックスタートの中で行います)。
+Azure Digital Twins を操作する際の最初の手順は、 **Azure Digital Twins インスタンスを設定する** ことです。 サービスのインスタンスを作成し、ADT Explorer で認証するための **資格情報を設定** したら、 **ADT Explorer でインスタンスに接続** し、このクイックスタートの後半でサンプル データを設定することができます。
 
-さらに、ADT エクスプローラーが自分のコンピューター上で動作し、Azure Digital Twins インスタンスにアクセスできるように、アクセス許可を設定します。 これで、サンプル アプリを使用して、インスタンスとそのデータを精査できるようになります。
+このセクションの残りの部分では、これらの手順について説明します。
 
-### <a name="set-up-azure-digital-twins-instance-and-app-registration"></a>Azure Digital Twins インスタンスとアプリの登録を設定する
+### <a name="set-up-azure-digital-twins-instance"></a>Azure Digital Twins インスタンスを設定する
 
-まず、 **Azure Digital Twins インスタンスを設定** し、その操作を可能にするために必要な認証を設定します。 このためには、 [*操作方法の手順に従うため、インスタンスと認証を設定する方法*](how-to-set-up-instance-portal.md)に関するページを参照してください。 推奨されるエクスペリエンスに応じて、[Azure portal](how-to-set-up-instance-portal.md)、[CLI](how-to-set-up-instance-cli.md)、または [ Cloud Shell の自動デプロイ スクリプト サンプル](how-to-set-up-instance-scripted.md)用のセットアップに関する記事が用意されています。 すべてのバージョンの説明には、各手順が正しく完了し、新しいインスタンスを使用する準備ができていることを確認する手順も含まれています。
-* Azure Digital Twins インスタンスの設定後、インスタンスの " **_ホスト名_** " ( [ポータルで確認してください](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) が必要になります。
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
-ADT Explorer アプリケーションを認証するには、 **アプリの登録** も設定する必要があります。 [*アプリの登録の作成方法*](how-to-create-app-registration.md)に関するページでの指示に従って設定します。 
-* アプリの登録が完了したら、登録の " **_アプリケーション (クライアント) ID_** " および " **_ディレクトリ (テナント) ID_** " ( [ポータルで確認してください](how-to-create-app-registration.md#collect-client-id-and-tenant-id)) が必要になります。
+### <a name="set-up-local-azure-credentials"></a>ローカルの Azure 資格情報を設定する
 
-### <a name="set-adt-explorer-permissions"></a>ADT エクスプローラーのアクセス許可を設定する
+ADT Explorer アプリケーションは、ローカル コンピューターで実行された Azure Digital Twins インスタンスに対し、[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) (`Azure.Identity` ライブラリの一部) を使用してユーザーの認証を行います。 Azure Digital Twins に対してクライアント アプリの認証を行う各種の方法について詳しくは、 [*アプリ認証コードを作成する方法*](how-to-authenticate-client.md)に関するページで確認します。
 
-次に、作成した Azure Digital Twins インスタンスを ADT Explorer で操作するための準備を行います。これは、ローカルでホストされる Web アプリケーションです。 Azure portal の [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) ページにアクセスして、前のセクションで作成した **アプリの登録** の名前を一覧から選択します。
+この種類の認証では、ADT Explorer によってローカル環境内で資格情報が検索されます。たとえば、ローカル [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) や Visual Studio または Visual Studio Code での Azure ログインなどです。 つまり、ADT Explorer アプリの資格情報を設定するには、これらのメカニズムのいずれかを使用して、 **ローカルで Azure にログイン** する必要があります。
 
-その登録のメニューから *[認証]* を選択し、 *[+ プラットフォームを追加]* をクリックします。
+これらの方法のいずれかを使用して既に Azure にログインしている場合は、[次のセクション](#run-and-configure-adt-explorer)に進むことができます。
 
-:::image type="content" source="media/quickstart-adt-explorer/authentication-pre.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。" lightbox="media/quickstart-adt-explorer/authentication-pre.png":::
+それ以外の場合は、これらの手順を使用してローカル **Azure CLI** をインストールできます。
+1. [**こちらのインストール リンク**](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)のプロセスに従って、お使いの OS に一致するインストールを完了します。
+2. お使いのコンピューターでコンソール ウィンドウを開きます。
+3. `az login` を実行し、認証プロンプトに従って Azure アカウントにログインします。
 
-続けて表示される *[プラットフォームの構成]* ページで *[Web]* を選択します。
-次のように構成の詳細を入力します。
-* **[リダイレクト URI]** : リダイレクト URI として「 *http://localhost:3000* 」を追加します。
-* **[暗黙の付与]** : *[アクセス トークン]* のチェック ボックスをオンにします。
+これを実行した後は、ADT Explorer は、次のセクションで 実行されたときに、Azure 資格情報を自動的に取得するはずです。
 
-*[構成]* をクリックして完了します。
-
-:::row:::
-    :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/authentication-configure-web.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。":::
-    :::column-end:::
-    :::column:::
-    :::column-end:::
-:::row-end:::
-
-ADT エクスプローラーで使用される Web 構成の設定は、これで完了です。 Azure portal の [認証] タブにそれが反映されています。 下のセクションを確認したら、 *[保存]* をクリックします。
-
-:::image type="content" source="media/quickstart-adt-explorer/authentication-post.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。":::
+認証コンソール ウィンドウは、必要に応じて閉じることができます。または、次の手順で使用するために開いたままにしておくこともできます。
 
 ### <a name="run-and-configure-adt-explorer"></a>ADT エクスプローラーを実行して構成する
 
 次に、ADT エクスプローラー アプリケーションを実行し、自分の Azure Digital Twins インスタンス用に構成します。
 
-ダウンロードして解凍した、 _**Azure_Digital_Twins__ADT__explorer**_ フォルダーに移動します。 *Azure_Digital_Twins__ADT__explorer/client/src* というフォルダーの場所でコマンド プロンプトを開きます。
+ダウンロードして解凍した、 _**Azure_Digital_Twins__ADT__explorer**_ フォルダーに移動します。 コンソール ウィンドウを開いて、 *Azure_Digital_Twins__ADT__explorer/client/src* フォルダーの場所に移動します。
 
 `npm install` を実行して、必須の依存関係をすべてダウンロードします。
 
@@ -92,16 +78,13 @@ ADT エクスプローラーで使用される Web 構成の設定は、これ�
 
 数秒後、ブラウザー ウィンドウが開き、ブラウザーにアプリが表示されます。
 
-:::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。" lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
+:::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは ADT エクスプローラーと呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが存在する。画面上にはまだデータが入力されていない。" lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
 
 設定したインスタンスを操作できるように ADT Explorer を構成するため、ウィンドウ上部の *[サインイン]* ボタン (下のイメージに表示) をクリックします。 
 
-:::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。" lightbox="media/quickstart-adt-explorer/sign-in.png":::
+:::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="ADT エクスプローラーのウィンドウ上部付近にあるサインイン アイコンが強調表示されている。このアイコンには、人のシンプルなシルエットに鍵のシルエットが重なるように表示されている。" lightbox="media/quickstart-adt-explorer/sign-in.png":::
 
-「[前提条件](#prerequisites)」セクションで前もって収集した重要な情報を入力します。
-* アプリケーション (クライアント) ID
-* ディレクトリ (テナント) ID
-* Azure Digital Twins インスタンスの URL (" *https://<インスタンスのホスト名>* " という形式)
+「 [前提条件](#prerequisites)」セクションで先ほど収集した " *Azure Digital Twins インスタンスの URL* " を *https://{インスタンス ホスト名}* の形式で入力します。
 
 >[!NOTE]
 > 同じアイコンを選択して [サインイン] ボックスを呼び出すことで、この情報はいつでも再表示して編集することができます。 指定した値は維持されます。
@@ -134,21 +117,21 @@ Azure Digital Twins ソリューションで実行する最初の手順は、対
 
 *[モデル ビュー]* ボックスの *[Upload a Model]\(モデルのアップロード\)* アイコンをクリックします。
 
-:::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。" lightbox="media/quickstart-adt-explorer/upload-model.png":::
+:::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="[モデル ビュー] ボックスの中央のアイコンが強調表示されている。クラウドに向かう矢印を示している。" lightbox="media/quickstart-adt-explorer/upload-model.png":::
  
 1. 表示されたファイル セレクター ボックスで、ダウンロードしたリポジトリの *Azure_Digital_Twins__ADT__explorer/client/examples* フォルダーに移動します。
 2. *Room.json* と *Floor.json* を選択し、[OK] をクリックします。 (必要であればさらに別のモデルをアップロードすることもできますが、このクイックスタートでは使用しません。)
 3. Azure アカウントへのサインインを求めるポップアップ ダイアログに従います。
 
 >[!NOTE]
->次のようなエラー メッセージが表示されることがあります。:::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。" border="false"::: 
+>次のようなエラー メッセージが表示されることがあります。:::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="&quot;Error: Error fetching models: ClientAuthError: Error opening popup window. This can happen if you are using IE or if popups are blocked in the browser. &quot; (エラー: モデルをフェッチしているときにエラーが発生しました: ClientAuthError: ポップアップ ウィンドウを開いているときにエラーが発生しました。これは、IE を使用しているか、ポップアップがブラウザーでブロックされている場合に発生します。) という、一番下に [閉じる] ボタンを備えたポップアップが表示される" border="false"::: 
 > ポップアップ ブロッカーを無効にするか、別のブラウザーを使用してみてください。
 
 ADT エクスプローラーによって、これらのモデル ファイルが Azure Digital Twins インスタンスにアップロードされます。 これらは、フレンドリ名と完全なモデル ID と共に *[モデル ビュー]* ボックスに表示されます。 *[モデルの表示]* という情報バブルをクリックすると、それらの背後にある DTDL コードが表示されます。
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。" lightbox="media/quickstart-adt-explorer/model-info.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="Floor (dtmi:example:Floor;1) と Room (dtmi:example:Room;1) という 2 つのモデルの定義が一覧表示されている [モデル ビュー] ボックス。各モデルの [モデルの表示] アイコン (円の中にアルファベットの &quot;i&quot;) が強調表示されている。" lightbox="media/quickstart-adt-explorer/model-info.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -172,7 +155,7 @@ ADT エクスプローラーによって、これらのモデル ファイルが
 
 *[グラフ ビュー]* ボックスの *[Import Graph]\(グラフのインポート\)* アイコンをクリックします。
 
-:::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。" lightbox="media/quickstart-adt-explorer/import-graph.png":::
+:::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="[グラフ ビュー] ボックスで強調表示されているアイコン。クラウドに向かう矢印を示している。" lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
 ファイル セレクター ボックスで *Azure_Digital_Twins__ADT__explorer/client/examples* フォルダーに移動し、 _**buildingScenario.xlsx**_ スプレッドシート ファイルを選択します。 このファイルには、サンプル グラフの説明が含まれています。 [OK] をタップします。
 
@@ -182,7 +165,7 @@ ADT エクスプローラーによって、これらのモデル ファイルが
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/graph-preview-save.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。" lightbox="media/quickstart-adt-explorer/graph-preview-save.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/graph-preview-save.png" alt-text="[Graph Preview]\(グラフのプレビュー\) ペインで強調表示されている [保存] アイコン" lightbox="media/quickstart-adt-explorer/graph-preview-save.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -192,7 +175,7 @@ ADT エクスプローラーによって、これらのモデル ファイルが
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/import-success.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。" lightbox="media/quickstart-adt-explorer/import-success.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/import-success.png" alt-text="グラフのインポート成功を示すダイアログ ボックス。インポートに成功し、4 つのツイン、2 つのリレーションシップがインポートされたことを示している。" lightbox="media/quickstart-adt-explorer/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -202,7 +185,7 @@ ADT エクスプローラーによって、これらのモデル ファイルが
 
 これでグラフが ADT エクスプローラーにアップロードされました。 グラフを表示するには、ADT Explorer ウィンドウの上部付近にある *[Graph エクスプローラー]* ボックスの *[クエリの実行]* ボタンをクリックします。 
 
-:::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。" lightbox="media/quickstart-adt-explorer/run-query.png":::
+:::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="ウィンドウ上部付近にある [クエリの実行] ボタンが強調表示されている" lightbox="media/quickstart-adt-explorer/run-query.png":::
 
 すべてのデジタル ツインを選択して表示する既定のクエリが実行されます。 ADT エクスプローラーによって、すべてのツインとリレーションシップがサービスから取得され、それらによって定義されたグラフが *[グラフ ビュー]* ボックスに描画されます。
 
@@ -210,7 +193,7 @@ ADT エクスプローラーによって、これらのモデル ファイルが
 
 次は、アップロードしたサンプル シナリオのグラフを確認しましょう。
 
-:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。":::
+:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="ツイン グラフが存在する [グラフ ビュー] ボックスのビュー。&quot;floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;room1&quot; という円に接続されている。&quot;floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;room0&quot; という円に接続されている。":::
 
 円 (グラフの "ノード") はデジタル ツインを表し、線はリレーションシップを表しています。 *Floor0* ツインには *Room0* が、そして *Floor1* ツインには *Room1* が含まれていることがわかります。
 
@@ -224,7 +207,7 @@ ADT エクスプローラーによって、これらのモデル ファイルが
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/properties-room0.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。" lightbox="media/quickstart-adt-explorer/properties-room0.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/properties-room0.png" alt-text="枠で強調表示された [Property Explorer]\(プロパティ エクスプローラー\) ボックスに Room0 のプロパティが表示されている。たとえば、$dtId フィールドは &quot;Room0&quot;、Temperature フィールドは 70、Humidity フィールドは 30 となっている。" lightbox="media/quickstart-adt-explorer/properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -236,7 +219,7 @@ ADT エクスプローラーによって、これらのモデル ファイルが
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/properties-room1.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。" lightbox="media/quickstart-adt-explorer/properties-room1.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/properties-room1.png" alt-text="枠で強調表示された [Property Explorer]\(プロパティ エクスプローラー\) ボックスに Room1 のプロパティが表示されている。たとえば、$dtId フィールドは &quot;Room1&quot;、Temperature フィールドは 80、Humidity フィールドは 60 となっている。" lightbox="media/quickstart-adt-explorer/properties-room1.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -260,7 +243,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 
 先ほどツインのプロパティを確認したことを思い出してください。 *Room0* の温度は **70** 度、 *Room1* の温度は **80** 度です。 したがって、ここで結果として返されるのは _**Room1**_ だけです。
     
-:::image type="content" source="media/quickstart-adt-explorer/result-query-property-before.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。" lightbox="media/quickstart-adt-explorer/result-query-property-before.png":::
+:::image type="content" source="media/quickstart-adt-explorer/result-query-property-before.png" alt-text="プロパティ クエリの結果 (Room1 のみが表示されている)" lightbox="media/quickstart-adt-explorer/result-query-property-before.png":::
 
 >[!TIP]
 > 上記のクエリでは、その他の比較演算子 ( *<* 、 *>* 、 *=* 、 *!=* ) もサポートされます。 こういったさまざまな値やさまざまなツイン プロパティをクエリに当てはめながら、独自の質問の答えを導き出してみてください。
@@ -275,7 +258,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/new-properties-room0.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。" lightbox="media/quickstart-adt-explorer/new-properties-room0.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/new-properties-room0.png" alt-text="Room0 のプロパティを表示する [Property Explorer]\(プロパティ エクスプローラー\) ボックス。温度の値が編集可能な状態で &quot;76&quot; と表示されている。また、[保存] アイコンが強調表示されている。" lightbox="media/quickstart-adt-explorer/new-properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -293,7 +276,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 
 *Room0* の温度が **70** 度から **76** 度に変更されたので、今度は、両方のツインが結果に表示されているはずです。
 
-:::image type="content" source="media/quickstart-adt-explorer/result-query-property-after.png" alt-text="矢印で接続された 4 つの円形ノードから成るグラフの画面&quot;Floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;Room1&quot; という円に接続されている。&quot;Floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;Room0&quot; という円に接続されている。&quot;Floor1&quot; と &quot;Floor0&quot; は接続されていない。" lightbox="media/quickstart-adt-explorer/result-query-property-after.png":::
+:::image type="content" source="media/quickstart-adt-explorer/result-query-property-after.png" alt-text="プロパティ クエリの結果 (Room0 と Room1 の両方が表示されている)" lightbox="media/quickstart-adt-explorer/result-query-property-after.png":::
 
 ## <a name="review-and-contextualize-learnings"></a>学習内容の復習とまとめ
 
@@ -315,12 +298,6 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 引き続き Azure Digital Twins のチュートリアルに進む予定の場合は、それらの記事に、このクイックスタートで使用したインスタンスを再利用できるので、それを削除する必要はありません。
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
-
-次に、クライアント アプリ用に作成した Azure Active Directory アプリの登録を次のコマンドで削除します。
-
-```azurecli-interactive
-az ad app delete --id <your-application-ID>
-```
 
 最後に、ローカル コンピューターにダウンロードしたプロジェクトのサンプル フォルダー ( _**Azure_Digital_Twins__ADT__explorer**_ ) を削除します。 zip されているバージョンと解凍されたバージョンの両方を削除する必要がある場合があります。
 

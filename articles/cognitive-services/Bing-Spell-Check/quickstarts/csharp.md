@@ -11,14 +11,19 @@ ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d11430ab02b37d066fb74dcc1b67833577471fd3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 060b648a0d1ee963b44c25e45a7de2888f662335
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323043"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084138"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>クイック スタート:Bing Spell Check REST API と C# を使用してスペルをチェックする
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関するページを参照してください。
 
 このクイック スタートを使用して、Bing Spell Check の REST API を呼び出してみましょう。 このシンプルな C# アプリケーションは、API に要求を送信して、一連の修正候補を返します。 
 
@@ -31,7 +36,7 @@ ms.locfileid: "91323043"
      
    Visual Studio にこのパッケージをインストールするには
 
-     1. **ソリューション エクスプローラー**で、ソリューション ファイルを右クリックします。
+     1. **ソリューション エクスプローラー** で、ソリューション ファイルを右クリックします。
      1. **[ソリューションの NuGet パッケージの管理]** を選択します。
      1. *Newtonsoft.json* を探してパッケージをインストールします。
 
@@ -150,7 +155,7 @@ static void Main(string[] args)
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-プロジェクトをビルドして実行します。 Visual Studio を使用している場合は、**F5** キーを押してファイルをデバッグします。
+プロジェクトをビルドして実行します。 Visual Studio を使用している場合は、 **F5** キーを押してファイルをデバッグします。
 
 ## <a name="example-json-response"></a>JSON の応答例
 

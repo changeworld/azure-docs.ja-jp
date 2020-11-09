@@ -11,14 +11,19 @@ ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: d44fe58eb17e7f11dc64ee1426df7f356cb91aef
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9ba749d671e24e86e2cd0a299e98ba03e47cf354
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85602756"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101682"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Bing News Search API とは
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関するページを参照してください。
 
 Bing News Search API を使用すると、Bing のコグニティブ ニュース検索機能を簡単にアプリケーションに統合することができます。 [Bing News](https://www.bing.com/news) と同様のエクスペリエンスを API から利用して検索クエリを送信し、関連するニュース記事を受信することができます。
 
@@ -28,7 +33,7 @@ Bing News Search API で得られるのはニュース検索の結果だけで�
 
 Bing News Search API は主に、関連するニュース記事を検索して返すものですが、同時に、インテリジェントで的を絞ったニュース検索を Web 上で行うための機能をいくつか備えています。
 
-|機能  |説明  |
+|特徴量  |説明  |
 |---------|---------|
 |[検索語句の提案と使用](concepts/search-for-news.md#suggest-and-use-search-terms)     | [Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) を使用して、入力時に候補検索用語を表示することで、検索のエクスペリエンスを向上させます。         |
 |[通常のニュースを取得する](concepts/search-for-news.md#get-general-news)     | Bing News Search API に検索クエリを送信し、関連するニュース記事の一覧を取得することによってニュースを検索します。           |
@@ -50,7 +55,7 @@ Bing News Search API は RESTful Web サービスです。HTTP 要求を作成�
 
 初めての API 要求を簡単に体験したい場合は、[REST API](quickstart.md) またはいずれかの [SDK](sdk.md) のクイック スタートをお試しください。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [Bing News Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) のリファレンス セクションには、画像ベースの検索結果を要求するために使用できるエンドポイント、ヘッダー、API 応答、およびクエリ パラメーターに関する定義と情報が含まれています。
 * [Bing の利用と表示の要件](./useanddisplayrequirements.md)に関するトピックでは、Bing Search API を使用して得られるコンテンツと情報の許可される使用方法が指定されています。

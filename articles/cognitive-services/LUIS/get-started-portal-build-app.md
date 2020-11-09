@@ -5,36 +5,37 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: 38fffd7793e1f5bd59ac6dde4499b2eb25009b52
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 74866c65111fae9e6fb3b79d9b59819b14b03c16
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91303861"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131474"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータルで新しいアプリを作成する
 
-このクイック スタートでは、LUIS ポータルで新しいアプリを構築します。 まず、アプリ、**意図**、および**エンティティ**の基本パーツを作成します。 次いで、インタラクティブ テスト パネルにユーザーの発話例を入力し、予測される意図を取得して、アプリをテストします。
+このクイック スタートでは、LUIS ポータルで新しいアプリを構築します。 まず、アプリ、 **意図** 、および **エンティティ** の基本パーツを作成します。 次いで、インタラクティブ テスト パネルにユーザーの発話例を入力し、予測される意図を取得して、アプリをテストします。
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-an-app"></a>アプリを作成する
 
-1. コンテキスト ツールバーの **[+ New app for conversation]\(+ 会話用の新しいアプリ\)** を選択し、再び **[+ New app for conversation]\(+ 会話用の新しいアプリ\)** を選択します。
+アプリケーションを作成するには、 **[+ 新しいアプリ]** をクリックします。 
 
-    > [!div class="mx-imgBorder"]
-    > [![LUIS ポータルのアプリ新規作成のスクリーンショット](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
+表示されたウィンドウで、次の情報を入力します。
 
-1. ポップアップ ウィンドウで、以下の設定を使用してアプリを構成した後、 **[完了]** を選択します。
+|名前  |説明  |
+|---------|---------|
+|名前     | アプリの名前。 たとえば、"home automation" など。 必須。        |
+|カルチャ     | アプリによって認識され、話される言語。 必須。   |
+|説明 | アプリの説明。 省略可能。
+|予測リソース | クエリを受け取る予測リソース。 省略可能。 |
 
-   |設定名| 値 | 目的|
-   |--|--|--|
-   |名前|`myEnglishApp`|LUIS アプリの一意の名前<br>required|
-   |カルチャ|**英語**|ユーザーの発話の言語、**en-us**<br>required|
-   |説明 (省略可能)|`App made with LUIS Portal`|アプリの説明<br>省略可能|
-   |予測リソース (省略可能) |-  |選択しないでください。 作成と 1,000 件の予測エンドポイント要求に無料で使用できるスターター キーが LUIS から提供されます。 |
+**[完了]** を選択します。
 
-   ![新規アプリの設定入力のスクリーンショット](./media/get-started-portal-build-app/create-new-app-settings.png)
+>[!NOTE]
+>カルチャは、アプリケーションを作成した後に変更できません。
+
 
 ## <a name="create-intents"></a>意図の作成
 
@@ -45,14 +46,14 @@ LUIS アプリを作成したら、意図を作成する必要があります。
 
 アプリの 2 つの _目的_ は次の意図に対応しています。
 
-|Intent|ユーザーから発せられたテキストの例<br>"_発話_" と呼ばれる|
+|Intent|ユーザーから発せられたテキストの例<br>" _発話_ " と呼ばれる|
 |--|--|
 |ApplyForJob|`I want to apply for the new software engineering position in Cairo.`|
 |FindForm|`Where is the job transfer form hrf-123456?`|
 
 意図を作成するには、次の手順を実行します。
 
-1. アプリの作成が完了すると、 **[ビルド]** セクションに **[意図]** ページが表示されます。 **［作成］** を選択します
+1. アプリが作成されたら、 **[ビルド]** セクションの **[意図]** ページが表示されていることを確認します。 **［作成］** を選択します
 
    [![新しい意図を作成するために [作成] が選択されているスクリーンショット](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
@@ -60,14 +61,9 @@ LUIS アプリを作成したら、意図を作成する必要があります。
 
 ## <a name="add-an-example-utterance"></a>発話の例を追加する
 
-意図を作成したら、発話の例を追加します。 発話の例は、ユーザーがチャット ボットや他のクライアント アプリケーションに入力するテキストです。 ユーザーのテキストの意図を、LUIS 意図にマッピングします。
+意図を作成したら、発話の例を追加します。 発話の例は、ユーザーがチャット ボットや他のクライアント アプリケーションに入力するテキストです。 ユーザーのテキストの意図を、LUIS 意図にマッピングします。 このアプリケーション例の `FindForm` 意図では、発話の例にフォーム番号を含めます。 ユーザーの要求を実行するためにクライアント アプリケーションはフォーム番号が必要なので、発話にそれを含めることは重要です。
 
-このアプリケーション例の `FindForm` 意図では、発話の例にフォーム番号を含めます。 ユーザーの要求を実行するためにクライアント アプリケーションはフォーム番号が必要なので、発話にそれを含めることは重要です。
-
-> [!div class="mx-imgBorder"]
-> [![FindForm 意図に発話の例を入力しているスクリーンショット](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
-
-`FindForm` 意図に次の 15 の発話の例を追加します。
+`FindForm` の **[意図]** ページで、 **[発話の例]** の下に次の発話例を追加します。 
 
 |#|発話の例|
 |--|--|
@@ -129,7 +125,7 @@ LUIS アプリを作成したら、意図を作成する必要があります。
    |`Barking dogs are annoying`|
    |`Penguins in the ocean`|
 
-   このアプリの場合、これらの発話の例は、ドメイン外です。 ドメインに動物または海洋が含まれる場合、**None** 意図には別の発話の例を使用する必要があります。
+   このアプリの場合、これらの発話の例は、ドメイン外です。 ドメインに動物または海洋が含まれる場合、 **None** 意図には別の発話の例を使用する必要があります。
 
 ## <a name="train-the-app"></a>アプリをトレーニングする
 
@@ -137,7 +133,7 @@ LUIS アプリを作成したら、意図を作成する必要があります。
 
 ## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>発話の例内の正規表現エンティティを見る
 
-1. 左側のメニューから **[意図]** を選択して、エンティティが **FindForm** 意図内にあることを確認します。 その後、**FindForm** 意図を選択します。
+1. 左側のメニューから **[意図]** を選択して、エンティティが **FindForm** 意図内にあることを確認します。 その後、 **FindForm** 意図を選択します。
 
    エンティティは、発話の例の中の出現箇所でマークされます。
 

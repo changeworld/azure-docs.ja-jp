@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 09/09/2020
+ms.date: 11/02/2020
 ms.author: aahi
 keywords: テキスト マイニング、感情分析、テキスト分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 544de4adb1891c3d558a524466a076daefb42aa4
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: d58c501af3d90fec1eea43d13fa2383c8e847f18
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647459"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289701"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Text Analytics API とは
 
@@ -29,7 +29,9 @@ Text Analytics API は、テキスト マイニングとテキスト分析のた
 
 ## <a name="sentiment-analysis"></a>センチメント分析
 
-[感情分析](how-tos/text-analytics-how-to-sentiment-analysis.md)を使用して、テキストのマイニングにより肯定的または否定的な感情の手がかりを探すことで、ブランドまたはトピックに対して人々がどのように考えているかを突き止めます。 この API 機能は、ドキュメントごとに 0 から 1 までの感情スコアを返します。1 が最も肯定的となります。
+[感情分析](how-tos/text-analytics-how-to-sentiment-analysis.md)を使用して、テキストのマイニングにより肯定的または否定的な感情の手がかりを探すことで、ブランドまたはトピックに対して人々がどのように考えているかを突き止めます。 
+
+この機能は、文章とドキュメントレベルでサービスによって検出された最も高い信頼度スコアに基づいて、センチメント ラベル ("negative"、"neutral"、"positive" など) を提供します。 また、この機能は、positive、neutral、negative (肯定的、中立的、否定的) のセンチメントに関し、各ドキュメントとその中の文章に対して 0 と 1 の間の信頼度スコアを返します。 また、[コンテナーを使用して](how-tos/text-analytics-how-to-install-containers.md)オンプレミスでサービスを実行することもできます。
 
 バージョン 3.1 プレビュー以降では、オピニオン マイニングは感情分析の 1 つの機能となっています。 この機能は、自然言語処理 (NLP) ではアスペクトベースの感情分析とも呼ばれます。テキストに含まれるアスペクト (製品やサービスの属性など) に関連した意見について、より粒度の細かい情報が得られます。
 

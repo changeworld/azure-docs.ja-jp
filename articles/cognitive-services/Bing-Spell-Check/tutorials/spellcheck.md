@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: b87a2cd3e6edc6a47de77f475c40d30ce1606e01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8fa86ef33fe7b0d9e97aebca96b3aa5465f24a4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316615"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099863"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>チュートリアル:Web ページのスペル チェック クライアントを構築する
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関するページを参照してください。
 
 このチュートリアルでは、ユーザーが Bing Spell Check API にクエリを実行できる Web ページを作成します。 このアプリケーションのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html) で入手できます。
 
@@ -123,7 +128,7 @@ GetSubscriptionKeyLocalStorage ヘルパー関数は、まず適切な cookie �
     }
 ```
 
-getSubscriptionKey ヘルパー関数は、**invalidate** という 1 つのパラメーターを受け取ります。 **invalidate** が **true** の場合、getSubscriptionKey は、Bing Spell Check API キーが含まれている cookie を削除します。 **invalidate** が **false** の場合、getSubscriptionKey は、Bing Spell Check API キーの値を返します。
+getSubscriptionKey ヘルパー関数は、 **invalidate** という 1 つのパラメーターを受け取ります。 **invalidate** が **true** の場合、getSubscriptionKey は、Bing Spell Check API キーが含まれている cookie を削除します。 **invalidate** が **false** の場合、getSubscriptionKey は、Bing Spell Check API キーの値を返します。
 
 ```html
     function getSubscriptionKey(invalidate) {
@@ -237,7 +242,7 @@ XMLHttpRequest オブジェクトで発生する可能性があるエラー イ�
     });
 ```
 
-要求を送信します。 bingSpellCheck 関数、**script** タグ、および **head** タグを閉じます。
+要求を送信します。 bingSpellCheck 関数、 **script** タグ、および **head** タグを閉じます。
 
 ```html
     request.send();
@@ -288,7 +293,7 @@ Bing ロゴを表示します。
 
 ## <a name="display-results"></a>結果を表示する
 
-ブラウザーで Web ページを開きます。 プロンプトで、Bing Spell Check API サブスクリプション キーを入力します。 **[スペル チェック]** テキスト ボックスにクエリを入力し (例: "Hollo, wlrd!")、**Enter** キーを押します。 Web ページに、クエリの結果が表示されます。
+ブラウザーで Web ページを開きます。 プロンプトで、Bing Spell Check API サブスクリプション キーを入力します。 **[スペル チェック]** テキスト ボックスにクエリを入力し (例: "Hollo, wlrd!")、 **Enter** キーを押します。 Web ページに、クエリの結果が表示されます。
 
 ```json
 {

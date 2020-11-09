@@ -16,7 +16,7 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: はじめに
+    - name: 作業開始
       href: get-started.md
       displayName: 'get, started, quickstart'
     - name: 1 Synapse ワークスペースを作成する
@@ -50,13 +50,13 @@
   items:
     - name: クイックスタート
       items:
-        - name: Azure portal を使用して Synapse ワークスペースを作成する
+        - name: Azure portal を使用してワークスペースを作成する
           href: quickstart-create-workspace.md
           displayName: quickstart
-        - name: Azure CLI を使用して Synapse ワークスペースを作成する
+        - name: Azure CLI を使用してワークスペースを作成する
           href: quickstart-create-workspace-cli.md
           displayName: quickstart
-        - name: Azure PowerShell を使用して Synapse ワークスペースを作成する
+        - name: Azure PowerShell を使用してワークスペースを作成する
           href: quickstart-create-workspace-powershell.md
           displayName: quickstart
         - name: テンプレートを使用したデプロイ
@@ -338,6 +338,12 @@
               displayname: 'workload, management'
     - name: 操作方法ガイド
       items:
+        - name: バックアップと復元
+          items:
+            - name: 復元ポイントの作成
+              href: ./backuprestore/sqlpool-create-restore-point.md
+            - name: Synapse SQL プールを復元する
+              href: ./backuprestore/restore-sql-pool.md
         - name: 管理および監視
           items:
             - name: Gen2 キャッシュの監視

@@ -6,42 +6,34 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 05/05/2020
+ms.date: 10/30/2020
 ms.topic: include
-ms.openlocfilehash: fda9df6c7e9651bbd3b0b70ad9d47f23c0c19d01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e592c11062e81d48014a90895a0e42b460d4b77c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541435"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128236"
 ---
 ## <a name="sign-in-to-luis-portal"></a>LUIS ポータルにサインインする
 
 LUIS の新しいユーザーは、次の手順に従う必要があります。
 
-1. [LUIS ポータル](https://www.luis.ai)にサインインし、ご自分の国/地域を選択して利用規約に同意します。 代わりに **[マイ アプリ]** が表示される場合は、LUIS リソースが既に存在しているため、次の手順に進んでアプリを作成してください。 サポートされているリージョンについては、[リージョンと関連付けられているキーの作成と公開](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions)に関する記事を参照してください。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、国/地域を選択して利用規約に同意します。 代わりに **[マイ アプリ]** が表示される場合は、LUIS リソースが既に存在しているため、次の手順に進んでアプリを作成してください。 次の 2 つの方法でサインアップできます。
 
-1. **[Create Azure resource]\(Azure リソースの作成\)** を選択し、 **[Create an authoring resource to migrate your apps to]\(アプリの移行先となるオーサリング リソースの作成\)** を選択します。
+    * Azure リソースの使用 (推奨) - LUIS アカウントを新規または既存の Azure 作成リソースにリンクすることができます。 これは、既に移行済みのサインアップと同じです。 後で[移行プロセス](../luis-migration-authoring.md#what-is-migration)を実行する必要はありません。
 
-    ![Language Understanding のオーサリング リソースの種類を選択する](../media/luis-how-to-azure-subscription/sign-in-create-resource.png)
+    * 試用キーの使用。 これにより、設定する必要のない試用版リソースを使って LUIS にサインインできます。 このオプションを選択した場合は、最終的に[アカウントを移行](../luis-migration-authoring.md#migration-steps)し、アプリケーションを作成リソースにリンクする必要があります。
 
-1. リソースの詳細を入力します。
+1. 表示された **[Choose an authoring]\(作成の選択\)** ウィンドウで、Azure サブスクリプションと LUIS 作成リソースを見つけます。 リソースがない場合は、新しいものを作成できます。
 
-    ![[Create a new resource for authoring]\(オーサリング用の新しいリソースの作成\) ペインを示すスクリーンショット。](../media/migrate-authoring-key/choose-authoring-resource-form.png)
-
-    **新しい作成リソースを作成する**ときは、次の情報を指定します。
-
-    * **[Resource name]\(リソース名\)** - 選択したカスタム名。オーサリングおよび予測エンドポイント クエリの URL の一部として使用されます。
-    * **[Tenant]\(テナント\)** - Azure サブスクリプションが関連付けられているテナント。
-    * **[Subscription name]\(サブスクリプション名\)** - リソースに対して課金されるサブスクリプション。
-    * **[Resource group]\(リソース グループ\)** - 選択または作成するカスタム リソース グループ名。 リソース グループを使用すると、アクセスと管理のために Azure リソースをグループ化できます。
-    * **[Location]\(場所\)** - 場所の選択肢は、**リソース グループ**の選択に基づいて決まります。
+    :::image type="content" source="../media/luis-how-to-azure-subscription/choose-authoring-resource.png" alt-text="Language Understanding の作成リソースの種類を選択します。":::
+    
+    新しい作成リソースを作成するときは、次の情報を指定します。
+    * **[テナント名]** - Azure サブスクリプションが関連付けられているテナント。
+    * **[Azure サブスクリプション名]** - リソースに対して課金されるサブスクリプション。
+    * **[Azure リソース グループ名]** - 選択または作成するカスタム リソース グループ名。 リソース グループを使用すると、アクセスと管理のために Azure リソースをグループ化できます。
+    * **[Azure リソース名]** - 選択するカスタム名。作成および予測エンドポイント クエリの URL の一部として使用されます。
     * **[Pricing tier]\(価格レベル\)** - 価格レベルによって、1 秒および 1 か月あたりの最大トランザクション数が決まります。
 
-1. 作成するリソースの概要が表示されます。 **[次へ]** を選択します。
 
-    ![Azure アカウントにリンクするためのオプションが含まれたウェルカム ページを示すスクリーンショット。](../media/sign-in/sign-in-confirm-key-selection.png)
-
-1. **[続行]** を選択して確認します。
-
-    ![Azure アカウントにリンクした後のウェルカム ページを示すスクリーンショット。](../media/sign-in/sign-in-confirm-continue.png)

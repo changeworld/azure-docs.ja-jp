@@ -10,14 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2c52f909cf3cc77b4f5e40ee9804d0c473e575c5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6f5da1d17722f89bee88a4b69177583e095eeac3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85601940"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094287"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>Bing Video Search API とは
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関するページを参照してください。
 
 Bing Video Search API を使用すると、サービスやアプリケーションに動画の検索機能を簡単に追加することができます。 この API を使用してユーザーの検索クエリを送信すると、[Bing Video](https://www.bing.com/video) のような関連性のある高品質の動画を取得して表示できます。 この API は、動画のみを含んだ検索結果に使用します。 [Bing Web Search API](../bing-web-search/search-the-web.md) は、Web ページ、動画、ニュース、画像など、他の種類の Web コンテンツを返すことができます。
 

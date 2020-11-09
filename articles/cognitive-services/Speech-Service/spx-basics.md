@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: bceffe5c53b9cbc863fd9c923ffa4718ebd50436
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 7ca290b7b7df9e4e03aec78b611361ba52942523
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893817"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286684"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Speech CLI の基本を学ぶ
 
@@ -65,15 +65,16 @@ Speech CLI を使用すると、音声認識および合成に加えて、音声
 spx translate --microphone --source en-US --target ru-RU --output file C:\some\file\path\russian_translation.txt
 ```
 
-このコマンドでは、ソース (翻訳**元**言語) と、ターゲット (翻訳**先**言語) の両方を指定します。 `--microphone` 引数を使用して、現在のアクティブな入力デバイスでオーディオをリッスンし、`ENTER` キーを押すと停止します。 出力はターゲット言語へのテキスト翻訳で、テキスト ファイルに書き込まれます。
+このコマンドでは、ソース (翻訳 **元** 言語) と、ターゲット (翻訳 **先** 言語) の両方を指定します。 `--microphone` 引数を使用して、現在のアクティブな入力デバイスでオーディオをリッスンし、`ENTER` キーを押すと停止します。 出力はターゲット言語へのテキスト翻訳で、テキスト ファイルに書き込まれます。
 
 > [!NOTE]
 > サポートされているすべての言語と対応するロケール コードの一覧については、「[音声サービスの言語と音声のサポート](language-support.md)」を参照してください。
 
 ### <a name="configuration-files-in-the-datastore"></a>データストア内の構成ファイル
 
-Speech CLI では、ローカルの Speech CLI データストアに格納されている、Speech CLI 呼び出し内で @ 記号を使用して名前が指定される構成ファイル内の複数の設定の読み取りと書き込みを行うことができます。 Speech CLI では、新しい設定は、現在の作業ディレクトリに作成された新しい `./spx/data` サブディレクトリに保存されます。
-Speech CLI で構成値を探すとき、最初に現在の作業ディレクトリが検索され、次に `./spx/data` パスが検索されます。
+Speech CLI の動作は、構成ファイルの設定に依存する場合があります。これは、@ 記号を使用して Speech CLI 呼び出し内で参照できます。
+Speech CLI では、新しい設定は、現在の作業ディレクトリに作成される新しい `./spx/data` サブディレクトリに保存されます。
+構成値をシークする際は、Speech CLI によって現在の作業ディレクトリ、次に `./spx/data` のデータストア、その次に `spx` バイナリの最後の読み取り専用データストアを含むその他のデータストアが検索されます。
 以前は、データストアを使用して `@key` 値と `@region` 値を保存していたため、各コマンド ライン呼び出しでそれらを指定する必要はありませんでした。
 さらに、構成ファイルを使用して独自の構成設定を保存したり、これらを使用して実行時に生成された URL やその他の動的コンテンツを渡したりすることもできます。
 
@@ -158,13 +159,13 @@ C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
 spx synthesize --foreach in @C:\your\path\to\text_synthesis.tsv
 ```
 
-このコマンドは、`.tsv` ファイルの**各**レコードに対して `spx synthesize --text Sample text to synthesize --audio output C:\batch_wav_output\wav_1.wav` を実行するのと同じです。 注意すべき点がいくつかあります。
+このコマンドは、`.tsv` ファイルの **各** レコードに対して `spx synthesize --text Sample text to synthesize --audio output C:\batch_wav_output\wav_1.wav` を実行するのと同じです。 注意すべき点がいくつかあります。
 
 * 列ヘッダーの `audio.output` と `text` はそれぞれ、コマンド ライン引数の `--audio output` と `--text` に対応します。 `--audio output` のようなマルチパートのコマンド ライン引数は、スペースなし、先頭ダッシュなし、文字列区切りのピリオド (例: `audio.output`) を使用してファイル内で書式設定する必要があります。 その他の既存のコマンド ライン引数は、このパターンを使用して追加列としてファイルに追加できます。
 * ファイルがこのように書式設定されている場合は、追加の引数を `--foreach` に渡す必要はありません。
-* 必ず、`.tsv` 内の各値を **タブ**で区切ってください。
+* 必ず、`.tsv` 内の各値を **タブ** で区切ってください。
 
-ただし、次の例のような `.tsv` ファイルがあり、列ヘッダーがコマンド ライン引数と**一致しない**場合は、次のようになります。
+ただし、次の例のような `.tsv` ファイルがあり、列ヘッダーがコマンド ライン引数と **一致しない** 場合は、次のようになります。
 
 ```output
 wav_path    str_text
@@ -181,4 +182,4 @@ spx synthesize --foreach audio.output;text in @C:\your\path\to\text_synthesis.ts
 
 ## <a name="next-steps"></a>次のステップ
 
-* SDK を使用して[音声認識](./quickstarts/speech-to-text-from-microphone.md)または[音声合成](./quickstarts/text-to-speech.md)のクイックスタートを完了します。
+* Speech CLI を使用して[音声認識](get-started-speech-to-text.md?pivots=programmer-tool-spx)または[音声合成](get-started-text-to-speech.md?pivots=programmer-tool-spx)のクイックスタートを完了します。

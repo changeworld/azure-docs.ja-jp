@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 5256db4547f8c19960a6f470ce3c84b2eef25e24
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 444b76a594e768face892462da12a1cbb35a5106
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776614"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324680"
 ---
 # <a name="getting-started"></a>作業の開始
 
@@ -35,15 +35,15 @@ ms.locfileid: "91776614"
 
 ### <a name="containerized-services-optional"></a>コンテナー化されたサービス (オプション)
 
-アプリケーションまたはワークロードが非常に大規模なデータセットを使用している場合、プライベート ネットワークを必要とする場合、またはクラウドに接続できない場合は、クラウド サービスと通信できない可能性があります。 このような状況で、コンテナー化された Cognitive Services には次のような利点があります。
+アプリケーションまたはワークロードで大規模なデータセットが使用されている場合、プライベート ネットワークが必要な場合、またはクラウドに接続できない場合は、クラウド サービスと通信できない可能性があります。 このような状況で、コンテナー化された Cognitive Services には次のような利点があります。
 
-* **低い接続性**:コンテナー化された Cognitive Services は、クラウド内とクラウド外の両方のコンピューティング環境にデプロイできます。 アプリケーションがクラウドに接続できない場合、コンテナー化された Cognitive Services をアプリケーションにデプロイすることを検討してください。
+* **低い接続性** :コンテナー化された Cognitive Services は、クラウド内とクラウド外の両方のコンピューティング環境にデプロイできます。 アプリケーションがクラウドに接続できない場合、コンテナー化された Cognitive Services をアプリケーションにデプロイすることを検討してください。
 
-* **低待機時間**:コンテナー化されたサービスはクラウドとの間のラウンドトリップ通信を必要としないため、応答が返されるときの待機時間が非常に短くなります。
+* **低待機時間** :コンテナー化されたサービスはクラウドとの間のラウンドトリップ通信を必要としないため、応答が返されるときの待機時間が非常に短くなります。
 
-* **プライバシーとデータ セキュリティ**:コンテナー化されたサービスをプライベート ネットワークに展開して、機密データがネットワークから出ないようにすることができます。
+* **プライバシーとデータ セキュリティ** :コンテナー化されたサービスをプライベート ネットワークに展開して、機密データがネットワークから出ないようにすることができます。
 
-* **高いスケーラビリティ**:コンテナー化されたサービスには "レート制限" がなく、ユーザーが管理するコンピューター上で実行されます。 そのため、より大規模なワークロードを処理するために、Cognitive Services を際限なく拡張できます。
+* **高いスケーラビリティ** :コンテナー化されたサービスには "レート制限" がなく、ユーザーが管理するコンピューター上で実行されます。 そのため、より大規模なワークロードを処理するために、Cognitive Services を際限なく拡張できます。
 
 コンテナー化された Cognitive Service を作成するには、[こちらガイド](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support?tabs=luis)に従ってください。
 
@@ -70,7 +70,7 @@ Azure Databricks は、Apache Spark ベースの分析プラットフォーム�
 必要に応じて、Synapse Analytics を使用して Spark クラスターを作成できます。 Azure Synapse Analytics では、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられています。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを大規模に使用しながら、各自の条件で自由にデータのクエリを実行できます。 Synapse Analytics の使用を開始するには、次の手順を実行します。
 
 1. [Synapse ワークスペースを作成する (プレビュー)](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)。
-1. [Azure portal を使用して Apache Spark プール (プレビュー) を作成する](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-portal)。
+1. [Azure portal を使用して、新しいサーバーレス Apache Spark プール (プレビュー) を作成する](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-portal)。
 
 Synapse Analytics では、ビッグ データ向けの Cognitive Services が既定でインストールされています。
 
@@ -100,7 +100,7 @@ Spark クラスターと環境を設定した後、短いサンプルを実行�
 
     **［作成］** を選択します
 
-1. 次のコード スニペットを新しいノートブックに貼り付けます。
+1. こちらのコード スニペットを新しいノートブックに貼り付けます。
 
 ```python
 from mmlspark.cognitive import *

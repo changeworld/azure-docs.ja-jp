@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 9a5749d115a4d5d9ce1e0ac454609c7b639c2f8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e1b666e8929309778fc7b72e034a425c841fc2f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309768"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095919"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>チュートリアル:Web ページ上で検索候補を取得する
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関するページを参照してください。
 
 このチュートリアルでは、ユーザーが Bing Autosuggest API にクエリを実行できる Web ページを作成します。
 
@@ -119,7 +124,7 @@ GetSubscriptionKeyLocalStorage ヘルパー関数は、まず適切な Cookie �
     }
 ```
 
-getSubscriptionKey ヘルパー関数は、**invalidate** という 1 つのパラメーターを受け取ります。 **invalidate** が **true** の場合、getSubscriptionKey は Bing Autosuggest API キーが含まれている Cookie を削除します。 **invalidate** が **false** の場合、getSubscriptionKey は Bing Autosuggest API のキーの値を返します。
+getSubscriptionKey ヘルパー関数は、 **invalidate** という 1 つのパラメーターを受け取ります。 **invalidate** が **true** の場合、getSubscriptionKey は Bing Autosuggest API キーが含まれている Cookie を削除します。 **invalidate** が **false** の場合、getSubscriptionKey は Bing Autosuggest API のキーの値を返します。
 
 ```html
     function getSubscriptionKey(invalidate) {
@@ -233,7 +238,7 @@ XMLHttpRequest オブジェクトで発生する可能性があるエラー イ�
     });
 ```
 
-要求を送信します。 bingAutosuggest 関数、**script** タグ、および **head** タグを閉じます。
+要求を送信します。 bingAutosuggest 関数、 **script** タグ、および **head** タグを閉じます。
 
 ```html
     request.send();

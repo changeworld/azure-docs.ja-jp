@@ -11,14 +11,19 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: eae9565db5fd88a38343423422cfcc92a3fac33f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0abd03338982c866c92a8462e1e840651a9c2759
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88936811"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101784"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>クイック スタート:C# を使用して Bing Custom Search エンドポイントを呼び出す 
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関するページを参照してください。
 
 このクイックスタートでは、Bing Custom Search インスタンスに検索結果を要求する方法を学習します。 このアプリケーションは C# で記述されていますが、Bing Custom Search API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs) で入手できます。
 
@@ -31,7 +36,7 @@ ms.locfileid: "88936811"
 - [Bing Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/2.0.0) の NuGet パッケージ 
 
    Visual Studio にこのパッケージをインストールするには: 
-     1. **ソリューション エクスプローラー**で目的のプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 
+     1. **ソリューション エクスプローラー** で目的のプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 
      2. *Microsoft.Azure.CognitiveServices.Search.CustomSearch* を検索して選択し、このパッケージをインストールします。
 
    Bing Custom Search NuGet パッケージをインストールすると、次のパッケージも Visual Studio によってインストールされます。

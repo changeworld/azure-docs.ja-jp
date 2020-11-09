@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.custom: devx-track-java
 ms.author: erhopf
-ms.openlocfilehash: 093e5482896e2af8008f20826e30443bdeb9aae9
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 142d4504ab12e7df5cc1e009038554a5b90dff0c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097033"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135787"
 ---
 このガイドでは、64 ビット Java 8 JRE 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。 このパッケージ名の使用を自分で開始する場合、Java SDK は Maven Central Repository で使用できません。 Gradle または `pom.xml` 依存関係ファイルを使用しているかどうかに関係なく、`https://csspeechstorage.blob.core.windows.net/maven/` を指すカスタム リポジトリを追加する必要があります (パッケージ名については以下を参照してください)。
 
@@ -30,7 +30,7 @@ ms.locfileid: "92097033"
 - 以下のオペレーティング システム用の Java Speech SDK パッケージを入手できます。
   - Windows: 64 ビットのみ
   - Mac: macOS X バージョン 10.13 以降
-  - Linux: Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7 または 8、CentOS 7 または 8 の 64 ビットのみ
+  - Linux。[サポートされている Linux ディストリビューションとターゲット アーキテクチャ](~/articles/cognitive-services/speech-service/speech-sdk.md)の一覧を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,19 +39,14 @@ ms.locfileid: "92097033"
 - [Eclipse Java IDE](https://www.eclipse.org/downloads/) (Java が既にインストールされている必要があります)
 - サポートされている Linux プラットフォームでは、特定のライブラリがインストールされている必要があります (Secure Sockets Layer サポート用に `libssl`、サウンド サポート用に `libasound2`)。 これらのライブラリの正しいバージョンをインストールするために必要なコマンドについては、下記のディストリビューションを参照してください。
 
-  - Ubuntu では、以下のコマンドを実行して、必要なパッケージをインストールします。
+  - Ubuntu/Debian では、次のコマンドを実行して、必要なパッケージをインストールします。
 
     ```sh
     sudo apt-get update
     sudo apt-get install build-essential libssl1.0.0 libasound2
     ```
 
-  - Debian 9 では、以下のコマンドを実行して、必要なパッケージをインストールします。
-
-    ```sh
-    sudo apt-get update
-    sudo apt-get install build-essential libssl1.0.2 libasound2
-    ```
+    libssl1.0.0 が使用できない場合は、libssl1.0.x (ここで、x は 0 より大) または libssl1.1 を代わりにインストールします。
 
   - RHEL または CentOS では、以下のコマンドを実行して、必要なパッケージをインストールします。
 

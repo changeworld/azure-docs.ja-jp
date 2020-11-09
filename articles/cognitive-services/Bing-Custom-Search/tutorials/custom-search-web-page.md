@@ -10,14 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: a07365dd313f75a844e41b71427d8ddcf78ded85
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 25d716513c7ceb9311588b75b0fad1c68bf71bfd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91742504"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081112"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>チュートリアル:Custom Search Web ページの作成
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
 Bing Custom Search を使用すると、関心のあるトピックに合わせてカスタマイズした検索エクスペリエンスを作成できます。 たとえば、検索エクスペリエンスを提供する武術に関する Web サイトを所有している場合は、Bing が検索するドメイン、サブサイト、および Web ページを指定できます。 ユーザーは、関係のないコンテンツが含まれる可能性がある通常の検索結果のページを移動し続けるのではなく、関心のあるコンテンツに合わせてカスタマイズされた検索結果を参照できます。 
 
@@ -35,7 +40,7 @@ Bing Custom Search を使用すると、関心のあるトピックに合わせ�
 ## <a name="prerequisites"></a>前提条件
 
 - チュートリアルを進めるには、Bing Custom Search API のサブスクリプション キーが必要です。  キーを取得するには、Azure portal で [Bing Custom Search リソースを作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch)してください。
-- まだ Visual Studio 2017 以降をインストールしていない場合は、**無料**の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。
+- まだ Visual Studio 2017 以降をインストールしていない場合は、 **無料** の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。
 
 ## <a name="create-a-custom-search-instance"></a>カスタム検索インスタンスの作成
 
@@ -130,7 +135,7 @@ Bing Custom Search インスタンスを作成するには:
 - オプション 1: 提供される JavaScript スニペットをアプリケーションに統合する。
 - オプション 2:提供される HTML エンドポイントを使用する。
 
-このチュートリアルの残りの部分では、**オプション 1: Javascript スニペット**について説明します。  
+このチュートリアルの残りの部分では、 **オプション 1: Javascript スニペット** について説明します。  
 
 ## <a name="set-up-your-visual-studio-solution"></a>Visual Studio ソリューションのセットアップ
 
@@ -148,7 +153,7 @@ Bing Custom Search インスタンスを作成するには:
 
 ## <a name="edit-indexcshtml"></a>index.cshtml の編集
 
-1. **[ソリューション エクスプローラー]** で **[ページ]** を展開し、**index.cshtml** をダブルクリックしてこのファイルを開きます。  
+1. **[ソリューション エクスプローラー]** で **[ページ]** を展開し、 **index.cshtml** をダブルクリックしてこのファイルを開きます。  
   
    ![ページを展開して index.cshtml を選択したソリューション エクスプローラーのスクリーンショット](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
   

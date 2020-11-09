@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: 01262ee0271849793c4393b1ea8e18c4179ad4e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f85ba0c64db23e156f384fadcc5ca7bf84a58d4
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334730"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130743"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>チュートリアル:Language Understanding (LUIS) で機械学習エンティティを使用して、ユーザーの発話から構造化データを抽出する
 
@@ -72,7 +72,7 @@ ms.locfileid: "91334730"
     |--|
     |`pickup a cheddar cheese pizza large with extra anchovies`|
 
-    最初に左端のテキスト `pickup` の直前を選択し (#1)、次に右端のテキスト `anchovies` の直後に移動します (#2 - これでラベル付けプロセスは終了です)。 ポップアップ メニューが表示されます。 ポップアップ ボックスに、エンティティの名前として `Order` を入力します (#3)。 次に、一覧から `Order Create new entity` を選択します (#4)。
+    カーソルをクリックし、最初のサンプル意図のテキストの上にドラッグします。 表示されたメニューで、エンティティの名前として `Order` を入力します。 その後、一覧から `Order Create new entity` を選択します。
 
     ![完全な注文のテキストの先頭と末尾にラベルを付る](media/tutorial-machine-learned-entity/mark-complete-order.png)
 
@@ -94,9 +94,9 @@ ms.locfileid: "91334730"
 
 ### <a name="improve-size-extraction-with-phrase-list"></a>語句一覧を使用してサイズの抽出を改善する
 
-1. 左側のメニューから **[エンティティ]** を選択して、**Order** エンティティを選択します。
+1. 左側のメニューから **[エンティティ]** を選択して、 **Order** エンティティを選択します。
 
-1. **[Schema and features]\(スキーマと特徴量\)** タブで、**Size** サブエンティティを選択して、 **[+ Add feature]\(+ 特徴量の追加\)** を選択します。
+1. **[Schema and features]\(スキーマと特徴量\)** タブで、 **Size** サブエンティティを選択して、 **[+ Add feature]\(+ 特徴量の追加\)** を選択します。
 
 1. ドロップダウン メニューで **[Create new phrase list]\(新しい語句一覧の作成\)** を選択します。
 
@@ -131,7 +131,7 @@ ms.locfileid: "91334730"
 
 1. エンティティの一覧から **Order** を選択します。
 
-1. **[Schema and features]\(スキーマと特徴量\)** タブで、**Size** エンティティを選択して、 **[+ Add feature]\(+ 特徴量の追加\)** を選択します。
+1. **[Schema and features]\(スキーマと特徴量\)** タブで、 **Size** エンティティを選択して、 **[+ Add feature]\(+ 特徴量の追加\)** を選択します。
 
 1. ドロップダウン リストから **[@ SizeListentity]** を選択します。
 
@@ -151,7 +151,7 @@ ms.locfileid: "91334730"
 
 1. エンティティの一覧から **Order** を選択します。
 
-1. **[Schema and features]\(スキーマと特徴量\)** タブで、**Quantity** エンティティを選択して、 **[+ Add feature]\(+ 特徴量の追加\)** を選択します。
+1. **[Schema and features]\(スキーマと特徴量\)** タブで、 **Quantity** エンティティを選択して、 **[+ Add feature]\(+ 特徴量の追加\)** を選択します。
 
 1. ドロップダウン リストから **@ number** を選択します。
 
@@ -247,11 +247,11 @@ ms.locfileid: "91334730"
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. アドレス バーで URL の末尾に移動し、_YOUR_QUERY_HERE_ を、対話型テスト パネルで入力したクエリに置き換えます。
+1. アドレス バーで URL の末尾に移動し、 _YOUR_QUERY_HERE_ を、対話型テスト パネルで入力したクエリに置き換えます。
 
     `2 small cheese pizzas for pickup`
 
-    最後の querystring パラメーターは `query` です。これは発話の**クエリ**です。
+    最後の querystring パラメーターは `query` です。これは発話の **クエリ** です。
 
     ```json
     {
