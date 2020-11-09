@@ -36,18 +36,20 @@
       href: tutorial-virtual-network.md
     - name: 9 - 仮想マシンのバックアップ
       href: tutorial-backup-vms.md
-    - name: 10 - VM の管理
+    - name: 10 - ディザスター リカバリーの有効化
+      href: tutorial-disaster-recovery.md
+    - name: 11 - VM の管理
       displayName: scope policy RBAC lock tag
       href: tutorial-govern-resources.md
-    - name: 11 - VM の追跡と更新
+    - name: 12 - VM の追跡と更新
       href: tutorial-config-management.md
-    - name: 12 - VM の監視
+    - name: 13 - VM の監視
       href: tutorial-monitor.md
-    - name: 13 - VM のセキュリティの管理
+    - name: 14 - VM のセキュリティの管理
       href: tutorial-azure-security.md
-    - name: 14 - SQL\IIS\.NET スタックのインストール
+    - name: 15 - SQL\IIS\.NET スタックのインストール
       href: tutorial-iis-sql.md
-    - name: 15 - SSL による Web サーバーのセキュリティ保護
+    - name: 16 - SSL による Web サーバーのセキュリティ保護
       href: tutorial-secure-web-server.md
 - name: サンプル
   items:
@@ -270,7 +272,7 @@
         - name: 予約インスタンス
           items:
             - name: VM の前払い
-              href: prepay-reserved-vm-instances.md
+              href: ../prepay-reserved-vm-instances.md
             - name: 専用ホストの前払い
               href: ../prepay-dedicated-hosts-reserved-instances.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: Azure の予約とは
@@ -337,7 +339,7 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: インフラストラクチャの自動化
       href: ../infrastructure-automation.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティとポリシー
           href: ../security-policy.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -557,7 +559,7 @@
           href: ../managed-disk-from-image-version.md
     - name: VM のセキュリティ保護
       items:
-        - name: 推奨事項
+        - name: Recommendations
           href: ../security-recommendations.md
         - name: ジャストインタイム アクセス
           href: ../../security-center/security-center-just-in-time.md

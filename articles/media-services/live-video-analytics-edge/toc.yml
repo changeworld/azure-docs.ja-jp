@@ -95,6 +95,8 @@
       href: use-azure-portal-to-invoke-direct-methods.md
     - name: Azure Stack Edge へのデプロイ
       href: deploy-azure-stack-edge-how-to.md
+    - name: シグナル ゲートの構成
+      href: configure-signal-gate-how-to.md
     - name: トラブルシューティング
       href: troubleshoot-how-to.md
 - name: リファレンス

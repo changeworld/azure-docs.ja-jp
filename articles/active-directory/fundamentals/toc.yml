@@ -27,7 +27,7 @@
       items:
         - name: MFA の有効化
           href: concept-fundamentals-mfa-get-started.md
-        - name: セキュリティの既定値群
+        - name: セキュリティの既定値
           href: concept-fundamentals-security-defaults.md
         - name: レガシ認証をブロックする
           href: concept-fundamentals-block-legacy-authentication.md
@@ -120,6 +120,8 @@
           href: customize-branding.md
         - name: '"サインイン状態の維持" の構成'
           href: keep-me-signed-in.md
+        - name: テナント ID を検索する方法
+          href: active-directory-how-to-find-tenant.md
         - name: Azure サブスクリプションを関連付ける
           href: active-directory-how-subscriptions-associated-directory.md
         - name: プライバシー情報を追加する

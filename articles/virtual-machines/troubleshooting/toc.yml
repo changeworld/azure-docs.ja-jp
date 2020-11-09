@@ -109,6 +109,8 @@
           href: unresponsive-vm-apply-group-policy.md
         - name: セキュリティ ポリシーの適用時に VM が応答しない
           href: unresponsive-vm-apply-security-policy.md
+        - name: ローカル セッション マネージャーの待機中に VM が応答しない
+          href: vm-unresponsive-wait-local-session-manager.md
         - name: Windows ブート マネージャー エラー - 無効なイメージ ハッシュ状態
           href: windows-boot-error-invalid-image-hash.md
         - name: Windows STOP エラー - 無効なシステム構成情報
@@ -117,6 +119,8 @@
           href: troubleshoot-windows-stop-error.md
         - name: Windows STOP エラー - システム プロセスは終了しました
           href: windows-stop-error-system-process-terminated.md
+        - name: Windows STOP エラー - システム スレッド例外が処理されませんでした
+          href: windows-stop-error-system-thread-exception-not-handled.md
 - name: VM に接続できない
   items:
     - name: RDP

@@ -30,6 +30,10 @@
   items:
     - name: Key Vault のコード サンプル
       href: /samples/browse/?expanded=azure&products=azure-key-vault
+- name: 概念
+  items:
+    - name: キーの種類、アルゴリズム、および操作
+      href: about-keys-details.md
 - name: リファレンス
   items:
     - name: Azure PowerShell

@@ -90,7 +90,7 @@
       href: concept-feature-management.md
     - name: イベント処理
       href: concept-app-configuration-event.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: カスタマー マネージド キーの暗号化
           href: concept-customer-managed-keys.md
@@ -140,8 +140,6 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2103727'
         - name: Azure SDK for JavaScript
           href: 'https://go.microsoft.com/fwlink/?linkid=2103664'
-        - name: REST API
-          href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
     - name: 機能の管理
       items:
         - name: .NET Core ライブラリ
@@ -156,6 +154,52 @@
           href: /powershell/module/az.appconfiguration/
         - name: Terraform
           href: 'https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html'
+    - name: REST API
+      items:
+        - name: 概要
+          href: rest-api.md
+        - name: リソース
+          items:
+            - name: '[キー]'
+              href: ./rest-api-keys.md
+            - name: キー値
+              href: ./rest-api-key-value.md
+            - name: ラベル
+              href: ./rest-api-labels.md
+            - name: Locks
+              href: ./rest-api-locks.md
+            - name: リビジョン
+              href: ./rest-api-revisions.md
+        - name: Protocol
+          items:
+            - name: 認証
+              href: ./rest-api-authentication-index.md
+              items:
+                - name: Azure Active Directory 認証
+                  href: rest-api-authentication-azure-ad.md
+                - name: HMAC 認証
+                  href: rest-api-authentication-hmac.md
+            - name: 承認
+              href: ./rest-api-authorization-index.md
+              items:
+                - name: Azure Active Directory 認可
+                  href: rest-api-authorization-azure-ad.md
+                - name: HMAC 認可
+                  href: rest-api-authorization-hmac.md
+            - name: 整合性モデル
+              href: ./rest-api-consistency.md
+            - name: 共通のヘッダー
+              href: ./rest-api-headers.md
+            - name: Throttling
+              href: ./rest-api-throttling.md
+            - name: バージョン管理
+              href: ./rest-api-versioning.md
+        - name: 開発
+          items:
+            - name: Fiddler
+              href: ./rest-api-fiddler.md
+            - name: postman
+              href: ./rest-api-postman.md
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

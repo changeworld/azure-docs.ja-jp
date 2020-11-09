@@ -70,6 +70,8 @@
           href: ../fundamentals/active-directory-whatis.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: ドメイン名を管理する
           href: domains-manage.md
+        - name: 管理対象としてサブドメインを確認する
+          href: domains-verify-custom-subdomain.md
         - name: ディレクトリを削除する
           href: directory-delete-howto.md
         - name: 複数のディレクトリ

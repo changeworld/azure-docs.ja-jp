@@ -399,6 +399,9 @@
         - name: リモート コンピューティング ターゲットを使用する
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
+        - name: Databricks で自動 ML を使用する
+          displayName: automl
+          href: how-to-configure-databricks-automl-environment.md
         - name: 予測モデルを自動トレーニングする
           displayName: time series
           href: how-to-auto-train-forecast.md
