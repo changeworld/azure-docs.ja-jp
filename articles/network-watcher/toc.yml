@@ -64,6 +64,8 @@
           href: connection-monitor-preview-create-using-portal.md
         - name: ARMClient の使用
           href: connection-monitor-preview-create-using-arm-client.md
+        - name: PowerShell の使用
+          href: connection-monitor-create-using-powershell.md
     - name: 接続モニターへの移行 (プレビュー)
       items:
         - name: Network Performance Monitor から

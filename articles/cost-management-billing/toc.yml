@@ -120,6 +120,8 @@
           href: understand/subscription-transfer.md
         - name: パートナー間でのサブスクリプションの譲渡 (プレビュー)
           href: manage/azure-plan-subscription-transfer-partners.md
+        - name: Azure EA ポータルの概要
+          href: manage/ea-portal-get-started.md
 - name: 操作方法ガイド
   items:
     - name: Cost Management と Billing を構成する
@@ -200,8 +202,6 @@
               href: manage/cancel-azure-subscription.md
         - name: Enterprise Agreement サブスクリプションの管理
           items:
-            - name: Azure EA ポータルの概要
-              href: manage/ea-portal-get-started.md
             - name: Azure における EA のロール
               href: manage/understand-ea-roles.md
             - name: Azure EA Portal の管理

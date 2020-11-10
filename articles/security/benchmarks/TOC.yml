@@ -86,7 +86,7 @@
     - name: Azure Database for PostgreSQL - Hyperscale のセキュリティ ベースライン
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: Azure Databricks のセキュリティ ベースライン
-      href: ../../azure-databricks/security-baseline.md
+      href: /azure/databricks/scenarios/security-baseline
     - name: Azure DNS のセキュリティ ベースライン
       href: ../../dns/security-baseline.md
     - name: Azure DevTest Labs のセキュリティ ベースライン
@@ -118,7 +118,7 @@
     - name: Azure Sentinel のセキュリティ ベースライン
       href: ../../sentinel/security-baseline.md
     - name: Azure SQL Database のセキュリティ ベースライン
-      href: ../../sql-database/security-baseline.md
+      href: ../../azure-sql/database/security-baseline.md
     - name: Azure Storage のセキュリティ ベースライン
       href: ../../storage/common/security-baseline.md
     - name: Azure Traffic Manager のセキュリティ ベースライン
@@ -154,7 +154,7 @@
     - name: HDInsight のセキュリティ ベースライン
       href: ../../hdinsight/security-baseline.md
     - name: Key Vault のセキュリティ ベースライン
-      href: ../../key-vault/security-baseline.md
+      href: ../../key-vault/general/security-baseline.md
     - name: Logic Apps のセキュリティ ベースライン
       href: ../../logic-apps/security-baseline.md
     - name: Network Watcher のセキュリティベースライン

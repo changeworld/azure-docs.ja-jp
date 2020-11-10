@@ -40,6 +40,8 @@
       href: front-door-backend-pool.md
     - name: Front Door でのキャッシュ
       href: front-door-caching.md
+    - name: DDoS 保護
+      href: front-door-ddos.md
     - name: Front Door に関する FAQ
       href: front-door-faq.md
     - name: geo フィルタリング

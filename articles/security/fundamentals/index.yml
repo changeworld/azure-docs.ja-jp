@@ -12,12 +12,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 10/28/2019
-  ms.openlocfilehash: 62a0bc67624c27ccd8185edb8be1a8cb3f16a9b1
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 95136ee22ec6799a4e35b9b4619d62994d708fc1
+  ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "81115223"
+  ms.lasthandoff: 11/10/2020
+  ms.locfileid: "94410081"
 landingContent:
 - title: Azure のセキュリティについて
   linkLists:
@@ -46,7 +46,7 @@ landingContent:
   - linkListType: overview
     links:
     - text: Azure Security Center
-      url: ../../security-center/security-center-intro.md
+      url: ../../security-center/security-center-introduction.md
   - linkListType: concept
     links:
     - text: 管理と監視
@@ -76,7 +76,7 @@ landingContent:
     - text: 保存時の暗号化
       url: encryption-atrest.md
     - text: データ保護
-      url: database-security-overview.md
+      url: ../../azure-sql/database/security-overview.md
     - text: ネットワークのセキュリティ
       url: network-overview.md
     - text: 仮想マシンのセキュリティ
@@ -86,16 +86,16 @@ landingContent:
   - linkListType: learn
     links:
     - text: クラウド アプリケーションをセキュリティで保護する
-      url: https://docs.microsoft.com/learn/paths/secure-your-cloud-apps/
+      url: /learn/paths/secure-your-cloud-apps/
 - title: セキュリティ スキルの構築
   linkLists:
   - linkListType: learn
     links:
     - text: ネットワーク セキュリティを実装する
-      url: https://docs.microsoft.com/learn/paths/implement-network-security
+      url: /learn/paths/implement-network-security
     - text: ID とアクセスを管理する
-      url: https://docs.microsoft.com/learn/paths/manage-identity-and-access
+      url: /learn/paths/manage-identity-and-access
     - text: リソース管理のセキュリティを実装する
-      url: https://docs.microsoft.com/learn/paths/implement-resource-mgmt-security
+      url: /learn/paths/implement-resource-mgmt-security
     - text: 仮想マシン ホストのセキュリティを実装する
       url: https://docs.microsoft.com/learn/paths/implement-host-security

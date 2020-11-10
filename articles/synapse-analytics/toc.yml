@@ -173,7 +173,7 @@
           href: sql/resource-consumption-models.md
         - name: データ処理量
           href: sql/data-processed.md
-        - name: SQL オンデマンドのベスト プラクティス
+        - name: ベスト プラクティス サーバーレス SQL プール
           href: sql/best-practices-sql-on-demand.md
         - name: ベスト プラクティス専用 SQL プール
           href: sql/best-practices-sql-pool.md
