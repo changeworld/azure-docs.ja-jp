@@ -8,16 +8,20 @@ ms.technology: azure-cli
 ms.service: azure-cli
 ms.devlang: azurecli
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f7e067d663145e2edc39f8d4b90fdd91ff2f75d0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 923eee619fdff7b128d9429f38cf713803cc6a13
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440733"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347396"
 ---
 ### <a name="prepare-your-environment-for-the-azure-cli"></a>Azure CLI の環境を準備する
 
-- Azure CLI コマンドを実行するには、Azure CLI の[ローカル インストール](/cli/azure/install-azure-cli)を行うか、bash 環境を使用して [Azure Cloud Shell](/azure/cloud-shell/quickstart) を開始します。
+- Bash 環境で [Azure Cloud Shell](/azure/cloud-shell/quickstart) を使用します。
 
-- ローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az-login) コマンドを使用して Azure CLI でサインインします。  ターミナルに表示される手順に従って、認証プロセスを完了します。  追加のサインイン オプションについては、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli)」を参照してください。
-- 初回使用時に確認を求められたら、Azure CLI 拡張機能をインストールします。  拡張機能について詳しくは、「[Azure CLI で拡張機能を使用する](/cli/azure/azure-cli-extensions-overview)」を参照してください。
+   [![埋め込みの起動](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell を起動する")](https://shell.azure.com)   
+- 必要に応じて、Azure CLI を[インストール](/cli/azure/install-azure-cli)して、CLI リファレンス コマンドを実行します。
+   - ローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az-login) コマンドを使用して Azure CLI でサインインします。  認証プロセスを完了するには、ターミナルに表示される手順に従います。  追加のサインイン オプションについては、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli)」を参照してください。
+  - 初回使用時にインストールを求められたら、Azure CLI 拡張機能をインストールします。  拡張機能の詳細については、「[Azure CLI で拡張機能を使用する](/cli/azure/azure-cli-extensions-overview)」を参照してください。
+  - [az version](/cli/azure/reference-index?#az_version) を実行し、インストールされているバージョンおよび依存ライブラリを検索します。 最新バージョンにアップグレードするには、[az upgrade](/cli/azure/reference-index?#az_upgrade) を実行します。
+

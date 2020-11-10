@@ -10,14 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: fa518900b05ba552cb066fbf55e4dbeaa6c681e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57edc16f4396e0fe71380d4f51fa9e0dcca1ef03
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86183207"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090819"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Bing Custom Search エクスペリエンスを構成する
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
 カスタム検索インスタンスでは、ユーザーが関心を寄せている Web サイトからのみのコンテンツを含むように、検索エクスペリエンスを調整できます。 Bing では、Web 全体の検索を実行するのではなく、関心のある Web のスライスのみを検索します。 Web のカスタム ビューを作成するには、Bing Custom Search [ポータル](https://customsearch.ai)を使用します。
 
@@ -146,7 +151,7 @@ Web ページを一番上にピン留めする方法は 2 つあります。
 
 ## <a name="view-statistics"></a>統計を表示する
 
-適切なレベルで Custom Search にサブスクライブすると ([価格のページ](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)を参照)、実稼働インスタンスに **[統計]** タブが追加されます。 [統計] タブには、通話ボリューム、上位のクエリ、地理的分散、応答コード、セーフ サーチなど、Custom Search の使用状況に関する詳細情報が表示されます。 提供されているコントロールを使用して、詳細情報をフィルター処理できます。
+適切なレベルで Custom Search にサブスクライブすると ( [価格のページ](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)を参照)、実稼働インスタンスに **[統計]** タブが追加されます。 [統計] タブには、通話ボリューム、上位のクエリ、地理的分散、応答コード、セーフ サーチなど、Custom Search の使用状況に関する詳細情報が表示されます。 提供されているコントロールを使用して、詳細情報をフィルター処理できます。
 
 ## <a name="usage-guidelines"></a>使用上のガイドライン
 

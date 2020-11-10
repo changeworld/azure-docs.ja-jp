@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 166d598528d8fe38e2bc22b76c659326c5e0ba45
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4337d6bb108042a909250b3d87d13ab60357cfec
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288785"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311116"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) を使用して Synapse SQL に接続する
 > [!div class="op_single_selector"]
@@ -26,9 +26,9 @@ ms.locfileid: "91288785"
 > 
 > 
 
-[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) から SQL オンデマンド (プレビュー) または SQL プール リソースを使用して、Azure Synapse Analytics の Synapse SQL に接続し、クエリを実行することができます。 
+[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) からサーバーレス SQL プール (プレビュー) または専用 SQL プール リソースを使用して、Azure Synapse Analytics の Synapse SQL に接続し、クエリを実行することができます。 
 
-### <a name="supported-tools-for-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) でサポートされるツール
+### <a name="supported-tools-for-serverless-sql-pool-preview"></a>サーバーレス SQL プール (プレビュー) でサポートされるツール
 
 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) は、バージョン 1.18.0 以降、完全にサポートされます。 SSMS は、バージョン 18.5 以降、部分的にサポートされています。接続してクエリを実行する場合にのみ使用できます。
 
@@ -40,40 +40,40 @@ ms.locfileid: "91288785"
 開始する前に、以下の前提条件を確認してください。  
 
 * [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)。 
-* SQL プールの場合、既存のデータ ウェアハウスが必要です。 作成するには、[SQL プールの作成](../quickstart-create-sql-pool-portal.md)に関する記事を参照してください。 SQL オンデマンドの場合は、あらかじめ作成時点でワークスペースにプロビジョニングされています。 
+* 専用 SQL プールの場合、既存のデータ ウェアハウスが必要です。 作成するには、[専用 SQL プールの作成](../quickstart-create-sql-pool-portal.md)に関する記事を参照してください。 サーバーレス SQL プールの場合は、Built-in という名前で、あらかじめ作成時点でワークスペースにプロビジョニングされています。 
 * 完全修飾 SQL サーバー名。 この名前を見つける方法については、「[Synapse SQL に接続する](connect-overview.md)」を参照してください。
 
 ## <a name="connect"></a>接続する
 
-### <a name="sql-pool"></a>SQL プール
+### <a name="dedicated-sql-pool"></a>専用 SQL プール
 
-SQL プールを使用して Synapse SQL に接続するには、次の手順に従います。 
+専用 SQL プールを使用して Synapse SQL に接続するには、次の手順に従います。 
 
 1. SQL Server Management Studio (SSMS) を開きます。 
 1. **[サーバーへの接続]** ダイアログ ボックスの各フィールドに値を入力し、 **[接続]** を選択します。 
   
     ![サーバーに接続する 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
-   * **[サーバー名]** : 前の手順で特定した**サーバー名**を入力します。
-   * **認証**:認証の種類を選択します ( **[SQL Server 認証]** 、 **[Active Directory 統合認証]** など)。
+   * **[サーバー名]** : 前の手順で特定した **サーバー名** を入力します。
+   * **認証** :認証の種類を選択します ( **[SQL Server 認証]** 、 **[Active Directory 統合認証]** など)。
    * **[ユーザー名]** と **[パスワード]** : 先ほど [SQL Server 認証] を選択した場合は、ユーザー名とパスワードを入力します。
 
-1. **オブジェクト エクスプローラー**で Azure SQL Server を展開します。 サンプル AdventureWorksDW データベースなど、サーバーに関連付けられているデータベースを確認できます。 データベースを展開することで、テーブルを表示できます。
+1. **オブジェクト エクスプローラー** で Azure SQL Server を展開します。 サンプル AdventureWorksDW データベースなど、サーバーに関連付けられているデータベースを確認できます。 データベースを展開することで、テーブルを表示できます。
    
     ![AdventureWorksDW を探索する 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 
-### <a name="sql-on-demand-preview"></a>SQL オンデマンド (プレビュー)
+### <a name="serverless-sql-pool-preview"></a>サーバーレス SQL プール (プレビュー)
 
-SQL オンデマンドを使用して Synapse SQL に接続するには、次の手順に従います。 
+サーバーレス SQL プールを使用して Synapse SQL に接続するには、次の手順に従います。 
 
 1. SQL Server Management Studio (SSMS) を開きます。
 1. **[サーバーへの接続]** ダイアログ ボックスの各フィールドに値を入力し、 **[接続]** を選択します。 
    
     ![サーバーに接続する 2](./media/get-started-ssms/connect-object-explorer1.png)
    
-   * **[サーバー名]** : 前の手順で特定した**サーバー名**を入力します。
-   * **認証**:認証の種類を選択します ( **[SQL Server 認証]** 、 **[Active Directory 統合認証]** など)。
+   * **[サーバー名]** : 前の手順で特定した **サーバー名** を入力します。
+   * **認証** :認証の種類を選択します ( **[SQL Server 認証]** 、 **[Active Directory 統合認証]** など)。
    * **[ユーザー名]** と **[パスワード]** : 先ほど [SQL Server 認証] を選択した場合は、ユーザー名とパスワードを入力します。
    * **[接続]** を選択します。
 
@@ -84,7 +84,7 @@ SQL オンデマンドを使用して Synapse SQL に接続するには、次の
 
 ## <a name="run-a-sample-query"></a>サンプル クエリの実行
 
-### <a name="sql-pool"></a>SQL プール
+### <a name="dedicated-sql-pool"></a>専用 SQL プール
 
 これでデータベース接続が確立されました。データを照会することができます。
 
@@ -104,7 +104,7 @@ SQL オンデマンドを使用して Synapse SQL に接続するには、次の
    
     ![クエリ結果 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/results.png)
 
-### <a name="sql-on-demand"></a>SQL オンデマンド
+### <a name="serverless-sql-pool"></a>サーバーレス SQL プール
 
 これでデータベース接続が確立されました。データを照会することができます。
 

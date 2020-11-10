@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Node.js で Azure Cache for Redis を使用する
+title: 'クイックスタート: Node.js で Azure Cache for Redis を使用する'
 description: このクイック スタートでは、Node.js と node_redis で Azure Cache for Redis を使用する方法について説明します。
 author: yegu-ms
 ms.service: cache
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: ce570475617236bb99f1bca7a07dc95e1f3285aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa22cffc1fc38e055c6c2bb504c311c012f31ac2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91330997"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087147"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>クイック スタート:Node.js で Azure Cache for Redis を使用する
+# <a name="quickstart-use-azure-cache-for-redis-in-nodejs"></a>クイックスタート: Node.js で Azure Cache for Redis を使用する
 
 このクイック スタートでは、Azure 内の任意のアプリケーションからアクセスできるセキュリティで保護された専用キャッシュにアクセスするために、Azure Cache for Redis を Node.js アプリに組み込みます。
 
@@ -51,7 +51,7 @@ var client = redis.createClient(6380, process.env.REDISCACHEHOSTNAME,
     {auth_pass: process.env.REDISCACHEKEY, tls: {servername: process.env.REDISCACHEHOSTNAME}});
 ```
 
-コード内の操作ごとに新しい接続を作成せず、 可能な限り接続を再利用してください。 
+コード内の操作ごとに新しい接続を作成しないでください。 可能な限り接続を再利用してください。 
 
 ## <a name="create-a-new-nodejs-app"></a>新しい Node.js アプリを作成する
 
@@ -121,7 +121,7 @@ node redistest.js
 
 [Azure portal](https://portal.azure.com) にサインインし、 **[リソース グループ]** を選択します。
 
-**[名前でフィルター]** テキスト ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** を選択し、 **[リソース グループの削除]** を選択します。
+**[名前でフィルター]** テキスト ボックスにリソース グループの名前を入力します。 この記事の手順では、 *TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** を選択し、 **[リソース グループの削除]** を選択します。
 
 ![Azure リソース グループを削除する](./media/cache-nodejs-get-started/redis-cache-delete-resource-group.png)
 

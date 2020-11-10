@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 622ead2ab58075fe6edbe2c013f14391624fd2b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b911181abea06894873e64da51afbb8799f1066a
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88590457"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927840"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Azure Dedicated HSM サービスのトラブルシューティング
 
@@ -71,7 +71,7 @@ HSM がスタンプあたり 2 つ、またリージョンあたり 4 つを超�
 ###  <a name="how-do-i-see-hsms-when-provisioned"></a>プロビジョニング時に HSM を表示する方法
 Dedicated HSM はホワイトリストに登録されたサービスであるため、Azure portal では "非表示の型" と見なされます。 HSM リソースを表示するには、下に示すように [非表示の型の表示] チェック ボックスをオンにする必要があります。 HSM の後ろには常に NIC リソースが表示されるため、SSH を使用して HSM に接続する際は、あらかじめここで IP アドレスを調べることができます。
 
-![サブネットの委任](./media/troubleshoot/hsm-provisioned.png)
+![[非表示の型の表示] チェック ボックスが強調表示されているスクリーンショット](./media/troubleshoot/hsm-provisioned.png)
 
 ## <a name="networking-resources"></a>ネットワーク リソース
 
@@ -85,7 +85,7 @@ Dedicated HSM では、ユーザーのプライベート IP アドレス空間�
 
 Dedicated HSM 用に支給されるサンプル テンプレートでは、HSM の IP が特定のサブネット範囲から自動的に取得されることを想定しています。 HSM の IP アドレスを明示的に指定する場合は、ARM テンプレートの "NetworkInterfaces" 属性を使用してください。 
 
-![サブネットの委任](./media/troubleshoot/private-ip-address.png)
+![Dedicated HSM 用のサンプル テンプレートを示すスクリーンショット。](./media/troubleshoot/private-ip-address.png)
 
 ## <a name="hsm-initialization"></a>HSM の初期化
 

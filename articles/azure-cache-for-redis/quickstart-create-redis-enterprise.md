@@ -6,21 +6,19 @@ ms.author: yegu
 ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 05/12/2020
-ms.openlocfilehash: 3df6cb1afe8a6249eadbbd3f61619e66be2d2478
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/28/2020
+ms.openlocfilehash: bd5e05f38d34199d9012c52ca3fdad33af231aad
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83402488"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127987"
 ---
 # <a name="quickstart-create-an-enterprise-tier-cache-preview"></a>クイック スタート:Enterprise レベルのキャッシュを作成する (プレビュー)
 
 Azure Cache for Redis の Enterprise レベルは、Azure 上で完全に統合されたマネージド [Redis Enterprise](https://redislabs.com/redis-enterprise/) を提供します。 このレベルは、現在、プレビューとして提供されています。 このプレビューには、次の 2 つの新しいレベルがあります。
 * Enterprise。データは、仮想マシンの揮発性メモリ (DRAM) を使用して格納されます
-* Enterprise SSD。データは、揮発性メモリと不揮発性メモリ (NVMe) の両方を使用して格納されます。
-
-プレビューに参加するうえで費用はかかりません。 興味がある方は、[Azure Marketplace](https://aka.ms/redispreviewsignup/) の **[連絡する]** からご登録ください。 参加可能人数は非常に限られているため、プレビューへの参加が認められる保証はありません。
+* Enterprise Flash。データは、揮発性メモリと不揮発性メモリ (NVMe または SSD) の両方を使用して格納されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,14 +27,9 @@ Azure Cache for Redis の Enterprise レベルは、Azure 上で完全に統合�
 ## <a name="create-a-cache"></a>キャッシュの作成
 1. キャッシュを作成するには、プレビュー招待内のリンクを使用して Azure portal にサインインし、 **[リソースの作成]** を選択します。
 
-   > [!IMPORTANT] 
-   > Marketplace 内の "*Azure Cache for Redis, Enterprise Tiers*" 直接をサブスクライブしないでください。
-   > この手順は、Azure Cache for Redis ポータルの UI によって自動的に実行されます。
-   >
-   
 1. **[新規]** ページで、 **[データベース]** を選択し、 **[Azure Cache for Redis]** を選択します。
    
-   ![Azure Cache for Redis を選択する](media/cache-create/new-cache-menu.png)
+   :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="[Azure Cache for Redis] を選択する":::
    
 1. **[新規 Redis Cache]** ページで、新しいキャッシュの設定を構成します。
    
@@ -44,41 +37,41 @@ Azure Cache for Redis の Enterprise レベルは、Azure 上で完全に統合�
    | ------------ |  ------- | -------------------------------------------------- |
    | **サブスクリプション** | ドロップダウンで、ご自身のサブスクリプションを選択します。 | この新しい Azure Cache for Redis インスタンスが作成されるサブスクリプション。 | 
    | **リソース グループ** | ドロップ ダウンでリソース グループを選択するか、 **[新規作成]** を選択し、新しいリソース グループの名前を入力します。 | その中にキャッシュやその他のリソースを作成するリソース グループの名前。 すべてのアプリ リソースを 1 つのリソース グループに配置することで、それらをまとめて簡単に管理または削除できます。 | 
-   | **DNS 名** | グローバルに一意の名前を入力します。 | キャッシュ名は 1 から 63 文字の文字列で、数字、英字、ハイフンのみを使用する必要があります。 名前の先頭と末尾には数字または文字を使用する必要があり、連続するハイフンを含めることはできません。 キャッシュ インスタンスの "*ホスト名*" は、 *\<DNS name>.<Azure region>.redisenterprise.cache.azure.net* になります。 | 
-   | **場所** | ドロップ ダウンで場所を選択します。 | Enterprise レベルは、米国西部、米国東部 2、および西ヨーロッパで利用できます。 |
-   | **Cache tier (キャッシュ レベル)** | ドロップダウンして、*Enterprise DRAM* または *Enterprise SSD* レベルとサイズを選択します。 |  レベルによって、キャッシュに使用できるのサイズ、パフォーマンス、および機能が決まります。 |
+   | **DNS 名** | グローバルに一意の名前を入力します。 | キャッシュ名は 1 から 63 文字の文字列で、数字、英字、ハイフンのみを使用する必要があります。 名前の先頭と末尾には数字または文字を使用する必要があり、連続するハイフンを含めることはできません。 キャッシュ インスタンスの " *ホスト名* " は、 *\<DNS name>.<Azure region>.redisenterprise.cache.azure.net* になります。 | 
+   | **場所** | ドロップ ダウンで場所を選択します。 | Enterprise レベルは、プレビュー期間中は一部の Azure リージョンでのみ利用できます。 |
+   | **キャッシュの種類** | ドロップダウンして、 *Enterprise* または *Enterprise Flash* レベルとサイズを選択します。 |  レベルによって、キャッシュに使用できるのサイズ、パフォーマンス、および機能が決まります。 |
    
-   ![Enterprise レベルの基本設定](media/cache-create/enterprise-tier-basics.png) 
+   :::image type="content" source="media/cache-create/enterprise-tier-basics.png" alt-text="Enterprise レベルの基本設定":::
+
+   > [!NOTE] 
+   > 続行する前に、[使用条件] の下にあるチェック ボックスを必ずオンにしてください。
+   >
 
 1. **ネットワーク** を選択してスキップします。
 
    > [!NOTE] 
-   > プライベート リンクのサポートは後で提供されます。
+   > プライベート リンク オプションはロールアウト中であるため、お客様のリージョンではすぐに使用できない場合があります。
    >
 
-1. **高度** を選択します。
+1. **Next:Advanced\(次へ: 詳細設定\)** を選択し、 **Clustering policy\(クラスタリング ポリシー\)** を **Enterprise** に設定します。
    
    既定の設定をそのまま使用することも、必要に応じて変更することもできます。 **[Allow access only via TLS]\(TLS 経由でのみアクセスを許可する\)** をオンにした場合、アプリケーションから新しいキャッシュにアクセスするために TLS を使用する必要があります。
 
-   ![Enterprise レベルの詳細設定](media/cache-create/enterprise-tier-advanced.png) 
+   :::image type="content" source="media/cache-create/enterprise-tier-advanced.png" alt-text="Enterprise レベルの詳細設定":::
 
    > [!NOTE] 
-   > Enterprise SSD レベルでは Redis モジュールはまだサポートされていません。 Redis モジュールの使用を計画している場合は、必ず Enterprise レベルのキャッシュを選択してください。
+   > Enterprise Flash レベルでは、Redis モジュールはまだサポートされていません。 Redis モジュールの使用を計画している場合は、必ず Enterprise レベルのキャッシュを選択してください。
    >
    
 1. **タグ** を選択してスキップします。
 
-1. **概要** を選択します。
+1. **確認と作成** をクリックします。
 
-   ![Enterprise レベルの概要](media/cache-create/enterprise-tier-summary.png) 
+   :::image type="content" source="media/cache-create/enterprise-tier-summary.png" alt-text="Enterprise レベルの概要":::
 
-1. **[ご契約条件]** の下のチェック ボックスをオンにし、設定を確認して、 **[確認と作成]** を選択します。
+1. 設定を確認し、 **[作成]** をクリックします。
    
-   キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に "**実行中**" と表示されている場合は、キャッシュを使用する準備ができています。
-
-   > [!NOTE] 
-   > Enterprise レベルのキャッシュが作成されてからしばらくすると、"*Azure Cache for Redis, Enterprise Tiers*" を構成するための "**アクションが必要です**" という内容の電子メールが Azure Marketplace から届きます。 このアクションは必要ありません。 その電子メールは無視してかまいません。
-   >
+   キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に " **実行中** " と表示されている場合は、キャッシュを使用する準備ができています。
 
 ## <a name="next-steps"></a>次のステップ
 

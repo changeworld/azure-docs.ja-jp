@@ -1,6 +1,6 @@
 ---
-title: クエリ結果をストレージに格納する
-description: この記事では、SQL オンデマンド (プレビュー) を使用してクエリ結果をストレージに格納する方法を学習します。
+title: サーバーレス SQL プールからクエリの結果を格納する
+description: この記事では、サーバーレス SQL プール (プレビュー) を使用してクエリの結果をストレージに格納する方法を学習します。
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -9,20 +9,20 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e5fda5e7a5caf72df3d4c80e37a684232ca5541
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 50897d81ed5ef2fc33e458bd46d9229f6184fea8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91289363"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322611"
 ---
-# <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure Synapse Analytics を使用して SQL オンデマンド (プレビュー) でクエリ結果をストレージに格納する
+# <a name="store-query-results-to-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プール (プレビュー) を使用してクエリの結果をストレージに格納する
 
-この記事では、SQL オンデマンド (プレビュー) を使用してクエリ結果をストレージに格納する方法を学習します。
+この記事では、サーバーレス SQL プール (プレビュー) を使用してクエリの結果をストレージに格納する方法を学習します。
 
 ## <a name="prerequisites"></a>前提条件
 
-最初の手順として、クエリを実行する**データベースを作成**します。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、データ ソース、データベース スコープの資格情報、これらのサンプルでデータの読み取りに使用される外部ファイル形式が作成されます。
+最初の手順として、クエリを実行する **データベースを作成** します。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、データ ソース、データベース スコープの資格情報、これらのサンプルでデータの読み取りに使用される外部ファイル形式が作成されます。
 
 この記事の手順に従って、データ ソース、データベース スコープの資格情報、出力ストレージへのデータの書き込みに使用される外部ファイル形式を作成してください。
 

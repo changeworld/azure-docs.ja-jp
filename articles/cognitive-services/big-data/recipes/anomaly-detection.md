@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: 4f6fa73130e3e78b573a866dbb6524acbc88c50c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa650fe9cb7df64a6a7a948224be225ecfad9057
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88691464"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324615"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>レシピ: ビッグ データの Cognitive Services を使用した予測メンテナンス
 
-このレシピでは、IoT デバイス予測メンテナンスのために Spark で Azure Synapse Analytics および Cognitive Services を使用する方法を説明します。 [CosmosDB と Synapse Link](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) のサンプルに基づいて進めていきます。 単純にするために、このレシピでは、CosmosDB および Synapse Link を通じてストリーミング データを取得するのではなく、CSV ファイルから直接データを読み取ります。 Synapse Link のサンプルを参照することを強くお勧めします。
+このレシピでは、IoT デバイス予測メンテナンスのために Apache Spark で Azure Synapse Analytics および Cognitive Services を使用する方法を説明します。 [CosmosDB と Synapse Link](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) のサンプルに基づいて進めていきます。 単純にするために、このレシピでは、CosmosDB および Synapse Link を通じてストリーミング データを取得するのではなく、CSV ファイルから直接データを読み取ります。 Synapse Link のサンプルを参照することを強くお勧めします。
 
 ## <a name="hypothetical-scenario"></a>架空のシナリオ
 
@@ -31,7 +31,7 @@ ms.locfileid: "88691464"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
-* [Spark プール](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool)で構成された [Azure Synapse ワークスペース](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)
+* [サーバーレス Apache Spark プール](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool)で構成された [Azure Synapse ワークスペース](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)
 
 ## <a name="setup"></a>セットアップ
 

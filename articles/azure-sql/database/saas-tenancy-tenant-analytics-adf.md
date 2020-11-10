@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 860fcb2948869d21eb78d0b318074b9a5e2ba0b9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 97dc53c9870112dc5d547ab477e54f15f802cc05
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790323"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310652"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Azure SQL Database、Azure Synapse Analytics、Data Factory、Power BI による SaaS 分析を調べる
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 このチュートリアルでは、分析シナリオについて最初から最後まで説明します。 このシナリオでは、テナント データを分析することでソフトウェア ベンダーのスマートな意思決定能力がどのように向上するのかを説明します。 各テナント データベースから抽出されたデータを使用した分析によって、テナントの動作 (Wingtip Tickets SaaS サンプル アプリケーションの使用など) に関する洞察を獲得します。 このシナリオには、次の 3 つの手順が含まれます。
 
-1. 各テナント データベースから分析ストア (この場合は SQL プール) に **データを抽出** します。
+1. 各テナント データベースから分析ストア (この場合は専用 SQL プール) に **データを抽出** します。
 2. 分析処理のために、 **抽出されたデータを最適化** します。
 3. **ビジネス インテリジェンス** ツールを使用して、意思決定を支援する有益な洞察を引き出します。
 
@@ -45,7 +45,7 @@ SaaS アプリケーションは、クラウドに膨大な量のテナント �
 
 すべてのデータが 1 つのマルチテナント データベースに存在する場合は、すべてのテナントのデータに簡単にアクセスできます。 しかし、何千ものデータベースに分散している場合、アクセスは複雑になります。 この複雑さを軽減する 1 つの方法として、クエリ用の分析データベースまたはデータ ウェアハウスにデータを抽出します。
 
-このチュートリアルでは、Wingtip Tickets アプリケーションのエンド ツー エンドの分析シナリオを紹介します。 最初に、[Azure Data Factory (ADF)](../../data-factory/introduction.md) をオーケストレーション ツールとして使って、各テナント データベースからチケットの販売および関連するデータを抽出します。 このデータは、分析ストアのステージング テーブルに読み込まれます。 分析ストアには、SQL Database または SQL プールを使用できます。 このチュートリアルでは、分析ストアとして [Azure Synapse Analytics (旧称 SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) を使います。
+このチュートリアルでは、Wingtip Tickets アプリケーションのエンド ツー エンドの分析シナリオを紹介します。 最初に、[Azure Data Factory (ADF)](../../data-factory/introduction.md) をオーケストレーション ツールとして使って、各テナント データベースからチケットの販売および関連するデータを抽出します。 このデータは、分析ストアのステージング テーブルに読み込まれます。 分析ストアには、SQL Database または専用 SQL プールを使用できます。 このチュートリアルでは、分析ストアとして [Azure Synapse Analytics (旧称 SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) を使います。
 
 次に、抽出されたデータを変換して一連の[スター スキーマ](https://www.wikipedia.org/wiki/Star_schema) テーブルに読み込みます。 これらのテーブルは、中央のファクト テーブルと関連するディメンション テーブルで構成されます。
 
@@ -87,7 +87,7 @@ SaaS アプリケーションは、クラウドに膨大な量のテナント �
 
 Wingtip Tickets アプリでは、テナントのトランザクション データは多くのデータベースに分散されます。 Azure Data Factory (ADF) を使って、データ ウェアハウスへのこのデータの抽出、読み込み、変換 (ELT) を調整します。 最も効率的に Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータを読み込むため、ADF は中間 BLOB ファイルにデータを抽出した後、[PolyBase](../../synapse-analytics/sql-data-warehouse/design-elt-data-loading.md) を使ってデータ ウェアハウスにデータを読み込みます。
 
-この手順において、チュートリアルで使われるその他のリソースをデプロイします。つまり、 _tenantanalytics_ という名前の SQL プール、 _dbtodwload-\<user\>_ という名前の Azure Data Factory、 _wingtipstaging\<user\>_ という名前の Azure ストレージ アカウントです。 ストレージ アカウントは、抽出されたデータ ファイルを、データ ウェアハウスに読み込む前に、BLOB として一時的に保持するために使われます。 この手順では、データ ウェアハウス スキーマもデプロイし、ELT プロセスを調整する ADF パイプラインを定義します。
+この手順において、チュートリアルで使われるその他のリソースをデプロイします。つまり、 _tenantanalytics_ という名前の専用 SQL プール、 _dbtodwload-\<user\>_ という名前の Azure Data Factory、 _wingtipstaging\<user\>_ という名前の Azure ストレージ アカウントです。 ストレージ アカウントは、抽出されたデータ ファイルを、データ ウェアハウスに読み込む前に、BLOB として一時的に保持するために使われます。 この手順では、データ ウェアハウス スキーマもデプロイし、ELT プロセスを調整する ADF パイプラインを定義します。
 
 1. PowerShell ISE で *…\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1* を開き、次のように設定します。
     - **$DemoScenario** = **2** : テナント分析データ ウェアハウス、BLOB ストレージ、データ ファクトリをデプロイする
@@ -159,7 +159,7 @@ Azure Data Factory は、データの抽出、読み込み、変換の調整に�
 
 **パイプライン 3 - TableCopy** は、SQL Database の行バージョン番号 ( _rowversion_ ) を使って、変更または更新された行を識別します。 このアクティビティは、ソース テーブルから行を抽出するために開始と終了の行バージョンを検索します。 各テナント データベースに格納されている **CopyTracker** テーブルは、各実行において各ソース テーブルから抽出された最後の行を追跡します。 新しい行または変更された行は、データ ウェアハウス内の対応するステージング テーブル **raw_Tickets** 、 **raw_Customers** 、 **raw_Venues** 、 **raw_Events** にコピーされます。 最後に、次の抽出の最初の行バージョンとして使われるために、最後の行バージョンが **CopyTracker** テーブルに保存されます。
 
-また、3 つのリンクされたサービスがパラメーター化されており、データ ファクトリをソース SQL Database、ターゲット SQL プール、および中間 BLOB ストレージにそれぞれリンクしています。 **[作成者]** タブで **[接続]** をクリックして、次の図のように、リンクされたサービスを調べます。
+また、3 つのリンクされたサービスがパラメーター化されており、データ ファクトリをソース SQL Database、ターゲット専用 SQL プール、および中間 Blob Storage にそれぞれリンクしています。 **[作成者]** タブで **[接続]** をクリックして、次の図のように、リンクされたサービスを調べます。
 
 ![adf_linkedservices](./media/saas-tenancy-tenant-analytics-adf/linkedservices.JPG)
 

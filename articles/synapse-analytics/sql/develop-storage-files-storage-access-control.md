@@ -1,6 +1,6 @@
 ---
-title: SQL オンデマンド (プレビュー) のストレージ アカウント アクセスを制御する
-description: SQL オンデマンド (プレビュー) が Azure Storage にアクセスする方法と、Azure Synapse Analytics で SQL オンデマンドのストレージ アクセスを制御する方法について説明します。
+title: サーバーレス SQL プール (プレビュー) のストレージ アカウント アクセスを制御する
+description: サーバーレス SQL プール (プレビュー) が Azure Storage にアクセスする方法と、Azure Synapse Analytics でサーバーレス SQL プールのストレージ アクセスを制御する方法について説明します。
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,31 +9,31 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 182ab55f8e86d972293222f8a3bcf32dada89328
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 958f371a0018d20331e73d0eabba9354614d121c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449465"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315737"
 ---
-# <a name="control-storage-account-access-for-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) のストレージ アカウント アクセスを制御する
+# <a name="control-storage-account-access-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プール (プレビュー) のストレージ アカウント アクセスを制御する
 
-SQL オンデマンドのクエリは、Azure Storage から直接ファイルを読み取ります。 Azure Storage 上のファイルへのアクセス許可は次の 2 つのレベルで制御されます。
+サーバーレス SQL プールのクエリは、Azure Storage から直接ファイルを読み取ります。 Azure Storage 上のファイルへのアクセス許可は次の 2 つのレベルで制御されます。
 - **ストレージ レベル** - ユーザーには、基になるストレージ ファイルにアクセスするためのアクセス許可が必要です。 ストレージの管理者は、ファイルの読み取り/書き込み、またはストレージへのアクセスに使用される SAS キーの生成を Azure AD プリンシパルに許可する必要があります。
-- **SQL サービス レベル** - ユーザーには、[外部テーブル](develop-tables-external-tables.md)からデータを読み取るための `SELECT` 権限、または `OPENROWSET` を実行するための `ADMINISTER BULK ADMIN` 権限が必要です。また、ストレージへのアクセスに使用される資格情報を使用する権限も必要です。
+- **SQL サービス レベル** - ユーザーには、 [外部テーブル](develop-tables-external-tables.md)からデータを読み取るための `SELECT` 権限、または `OPENROWSET` を実行するための `ADMINISTER BULK ADMIN` 権限が必要です。また、ストレージへのアクセスに使用される資格情報を使用する権限も必要です。
 
 この記事では、使用できる資格情報の種類と、SQL および Azure AD のユーザーに対して資格情報の参照がどのように実行されるかについて説明します。
 
 ## <a name="supported-storage-authorization-types"></a>サポートされているストレージ承認の種類
 
-SQL オンデマンド リソースにログインしたユーザーには、Azure Storage 内のファイルにアクセスしてクエリを実行する権限が必要です (ファイルが一般公開されていない場合)。 3 種類の承認 ([ユーザー ID](?tabs=user-identity)、[Shared access signature](?tabs=shared-access-signature)、[マネージド ID](?tabs=managed-identity)) を使用して、非パブリック ストレージにアクセスできます。
+サーバーレス SQL プールにログインしたユーザーには、Azure Storage 内のファイルにアクセスしてクエリを実行する権限が必要です (ファイルが一般公開されていない場合)。 3 種類の承認 ([ユーザー ID](?tabs=user-identity)、[Shared access signature](?tabs=shared-access-signature)、[マネージド ID](?tabs=managed-identity)) を使用して、非パブリック ストレージにアクセスできます。
 
 > [!NOTE]
-> **Azure AD パススルー**は、ワークスペースを作成するときの既定の動作です。
+> **Azure AD パススルー** は、ワークスペースを作成するときの既定の動作です。
 
 ### <a name="user-identity"></a>[ユーザー ID](#tab/user-identity)
 
-**ユーザー ID** ("Azure AD パススルー" とも呼ばれる) は、SQL オンデマンドにログインしている Azure AD ユーザーの ID がデータ アクセスの承認に使用される承認の種類です。 データにアクセスする前に、Azure Storage の管理者が Azure AD ユーザーにアクセス許可を付与する必要があります。 下の表に示されているように、これは SQL ユーザーの種類ではサポートされていません。
+**ユーザー ID** ("Azure AD パススルー" とも呼ばれる) は、サーバーレス SQL プールにログインしている Azure AD ユーザーの ID がデータ アクセスの承認に使用される承認の種類です。 データにアクセスする前に、Azure Storage の管理者が Azure AD ユーザーにアクセス許可を付与する必要があります。 下の表に示されているように、これは SQL ユーザーの種類ではサポートされていません。
 
 > [!IMPORTANT]
 > ID を使用してデータにアクセスするには、Storage Blob データの所有者/共同作成者/閲覧者のロールを持っている必要があります。
@@ -46,10 +46,10 @@ SQL オンデマンド リソースにログインしたユーザーには、Azu
 
 **Shared Access Signature (SAS)** を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 SAS を使用すると、お客様はアカウント キーを共有することなく、クライアントにストレージ アカウントのリソースへのアクセス権を付与できます。 SAS を使用すると、有効期間、付与されるアクセス許可、許容される IP アドレス範囲、受け入れ可能なプロトコル (https/http) など、SAS を使用しているクライアントに付与するアクセス権の種類をきめ細かく制御できます。
 
-SAS トークンを取得するには、**Azure portal -> [ストレージ アカウント] -> [Shared Access Signature] -> [アクセス許可の構成] -> [Generate SAS and connection string]\(SAS と接続文字列を生成する\)** に移動します。
+SAS トークンを取得するには、 **Azure portal -> [ストレージ アカウント] -> [Shared Access Signature] -> [アクセス許可の構成] -> [Generate SAS and connection string]\(SAS と接続文字列を生成する\)** に移動します。
 
 > [!IMPORTANT]
-> SAS トークンが生成されると、トークンの先頭に疑問符 ("?") が含まれます。 SQL オンデマンドでトークンを使用するには、資格情報を作成するときに疑問符 ("?") を削除する必要があります。 次に例を示します。
+> SAS トークンが生成されると、トークンの先頭に疑問符 ("?") が含まれます。 サーバーレス SQL プールでトークンを使用するには、資格情報を作成するときに疑問符 ("?") を削除する必要があります。 次に例を示します。
 >
 > SAS トークン: ?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D
 
@@ -57,7 +57,7 @@ SAS トークンを使用したアクセスを有効にするには、データ�
 
 ### <a name="managed-identity"></a>[Managed Identity](#tab/managed-identity)
 
-**マネージ ID** は MSI とも呼ばれます。 これは、SQL オンデマンドに Azure サービスを提供する Azure Active Directory (Azure AD) の機能です。 また、Azure AD で自動的に管理される ID をデプロイします。 この ID を使用して、Azure Storage でのデータ アクセスの要求を承認できます。
+**マネージ ID** は MSI とも呼ばれます。 これは、サーバーレス SQL プールに Azure サービスを提供する Azure Active Directory (Azure AD) の機能です。 また、Azure AD で自動的に管理される ID をデプロイします。 この ID を使用して、Azure Storage でのデータ アクセスの要求を承認できます。
 
 データにアクセスする前に、Azure Storage の管理者が、データにアクセスするためのアクセス許可をマネージド ID に付与する必要があります。 マネージド ID へのアクセス許可の付与は、他の Azure AD ユーザーにアクセス許可を付与するのと同じ方法で行われます。
 
@@ -95,7 +95,7 @@ SAS トークンを使用したアクセスを有効にするには、データ�
 
 ## <a name="credentials"></a>資格情報
 
-Azure Storage にあるファイルに対してクエリを実行するには、SQL オンデマンド エンドポイントに、認証情報を含む資格情報が必要です。 2 種類の資格情報が使用されます。
+Azure Storage にあるファイルに対してクエリを実行するには、サーバーレス SQL プール エンドポイントに、認証情報を含む資格情報が必要です。 2 種類の資格情報が使用されます。
 - サーバーレベル資格情報は、`OPENROWSET` 関数を使用して実行されるアドホック クエリに使用されます。 資格情報名はストレージ URL と一致する必要があります。
 - データベース スコープ資格情報は、外部テーブルに使用されます。 外部テーブルは、ストレージへのアクセスに使用する必要がある資格情報を使用して `DATA SOURCE` を参照します。
 
@@ -119,7 +119,7 @@ GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 
 ## <a name="server-scoped-credential"></a>サーバースコープ資格情報
 
-サーバースコープ資格情報が使用されるのは、`DATA_SOURCE` が指定されない `OPENROWSET` 関数を SQL ログインが呼び出して、ストレージ アカウント上のファイルを読み取るときです。 サーバースコープ資格情報の名前は、Azure Storage の URL と一致する**必要があります**。 資格情報を追加するには、[CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を実行します。 CREDENTIAL NAME 引数の指定が必要になります。 それは、ストレージ内のデータへのパスの一部またはパス全体に一致している必要があります (下記参照)。
+サーバースコープ資格情報が使用されるのは、`DATA_SOURCE` が指定されない `OPENROWSET` 関数を SQL ログインが呼び出して、ストレージ アカウント上のファイルを読み取るときです。 サーバースコープ資格情報の名前は、Azure Storage の URL と一致する **必要があります** 。 資格情報を追加するには、[CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を実行します。 CREDENTIAL NAME 引数の指定が必要になります。 それは、ストレージ内のデータへのパスの一部またはパス全体に一致している必要があります (下記参照)。
 
 > [!NOTE]
 > 引数 `FOR CRYPTOGRAPHIC PROVIDER` はサポートされていません。
@@ -144,7 +144,7 @@ SQL ユーザーが Azure AD 認証を使用してストレージにアクセス
 
 次のスクリプトによって作成されるサーバーレベル資格情報は、`OPENROWSET` 関数が SAS トークンを使用して Azure Storage 上の任意のファイルにアクセスするために使用できます。 この資格情報を作成すると、`OPENROWSET` 関数を実行する SQL プリンシパルが有効になり、資格情報名の URL と一致する Azure Storage 上の SAS キーで保護されたファイルを読み取ります。
 
-<*mystorageaccountname*> は、実際のストレージ アカウント名に、<*mystorageaccountcontainername*> は、実際のコンテナー名に置き換えてください。
+< *mystorageaccountname* > は、実際のストレージ アカウント名に、< *mystorageaccountcontainername* > は、実際のコンテナー名に置き換えてください。
 
 ```sql
 CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]

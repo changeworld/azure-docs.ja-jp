@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d7d82db7fc8a39a0865e80ee7873ee849627c583
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 454dc593dca216d3805036ce78ec9986cf317d4e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791071"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145856"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure portal で Windows 仮想マシン上に SQL Server 2017 を作成する
 
@@ -47,7 +47,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[+ 追加]** を選択して、 **[Select SQL deployment option]\(SQL デプロイ オプションの選択\)** ページを開きます。 **[SQL 仮想マシン]** タイル上の **[詳細の表示]** を選択することで、追加情報を表示できます。
 1. **Free SQL Server License: ドロップダウンから SQL Server 2017 Developer on Windows Server 2016** イメージを選択します。
 
-   ![新規検索ウィンドウ](./media/sql-vm-create-portal-quickstart/select-sql-2017-vm-image.png)
+   ![Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016 イメージを選択する画面のスクリーンショット。](./media/sql-vm-create-portal-quickstart/select-sql-2017-vm-image.png)
 
 1. **［作成］** を選択します
 

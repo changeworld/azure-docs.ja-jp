@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfc5126c0cce89502b0f1d8b17c06519f338fe52
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1709bd42fb77bd4f18b8a5e9d1af6e07be67b6c4
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370850"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043077"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory とは
 
@@ -93,7 +93,7 @@ Azure AD とそのドキュメントをより深く理解するために、次�
 |アカウント管理者|この従来のサブスクリプション管理者ロールは、概念的にはサブスクリプションの課金の所有者です。 このロールは、[Azure アカウント センター](https://account.azure.com/Subscriptions)にアクセスでき、アカウント内の全サブスクリプションの管理を可能にします。 詳細については、[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)に関する記事を参照してください。|
 |サービス管理者|この従来のサブスクリプション管理者ロールでは、アクセスを含め、すべての Azure リソースを管理することができます。 このロールは、サブスクリプション スコープで所有者ロールを割り当てられているユーザーと同等のアクセス権を持ちます。 詳細については、[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)に関する記事を参照してください。|
 |所有者|このロールは、アクセスを含め、すべての Azure リソースを管理するのに役立ちます。 このロールは、Azure リソースへのきめ細かなアクセス管理を提供する Azure ロールベース アクセス制御 (Azure RBAC) と呼ばれる新しい承認システムをベースに構築されています。 詳細については、[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)に関する記事を参照してください。|
-|Azure AD 全体管理者|この管理者ロールは、Azure AD テナントを作成したユーザーに自動的に割り当てられます。 全体管理者は、Azure AD と Azure AD にフェデレーションされたすべてのサービス (Exchange Online、SharePoint Online、Skype for Business Online など) に対して、すべての管理機能を実行できます。 全体管理者は複数人配置することができますが、管理者ロールをユーザーに割り当てることができるのは全体管理者に限られます (これには他の全体管理者を割り当てることも含まれます)。 この管理者ロールは、Azure portal ではグローバル管理者と呼ばれていますが、Microsoft Graph API と Azure AD PowerShell では **社内管理者** と呼ばれています。さまざまな管理者ロールの詳細については、 [Azure Active Directory での管理者ロールのアクセス許可](../roles/permissions-reference.md)に関する記事をご覧ください。|
+|Azure AD 全体管理者|この管理者ロールは、Azure AD テナントを作成したユーザーに自動的に割り当てられます。 全体管理者は、Azure AD と Azure AD にフェデレーションされたすべてのサービス (Exchange Online、SharePoint Online、Skype for Business Online など) に対して、すべての管理機能を実行できます。 全体管理者は複数人配置することができますが、管理者ロールをユーザーに割り当てることができるのは全体管理者に限られます (これには他の全体管理者を割り当てることも含まれます)。 この管理者ロールは、Azure portal では全体管理者と呼ばれますが、Microsoft Graph API および Azure AD PowerShell では **社内管理者** と呼ばれることにご注意ください。 さまざまな管理者ロールの詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../roles/permissions-reference.md)」を参照してください。|
 |Azure サブスクリプション| Azure クラウド サービスの支払いに使用されます。 多数のサブスクリプションをご利用いただけます。サブスクリプションはクレジット カードにリンクされます。|
 |Azure テナント| Azure AD の信頼された専用インスタンスであり、組織が Microsoft Azure、Microsoft Intune、Microsoft 365 などの Microsoft クラウド サービスのサブスクリプションにサインアップしたときに自動的に作成されます。 1 つの Azure テナントは単一の組織を表します。|
 |シングル テナント| 専用の環境で他のサービスにアクセスする Azure テナントは、単一のテナントと見なされます。|

@@ -7,18 +7,22 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 399ae682028479f801b82b6273f7d1429cfa1b97
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: b31e3d44cc66e97506b29b81cef5b8d981d05e39
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494856"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279427"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Twins のモデルを管理する
 
-[**DigitalTwinsModels API**](/rest/api/digital-twins/dataplane/models)、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)、または [Azure Digital Twins CLI](how-to-use-cli.md) の使用について、Azure Digital Twins インスタンスで認識されている[モデル](concepts-models.md)を管理できます。 
+[**DigitalTwinsModels API**](/rest/api/digital-twins/dataplane/models)、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)、または [Azure Digital Twins CLI](how-to-use-cli.md) の使用について、Azure Digital Twins インスタンスで認識されている[モデル](concepts-models.md)を管理できます。 
 
 管理操作には、モデルのアップロード、検証、取得、および削除が含まれます。 
+
+## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
 ## <a name="create-models"></a>モデルを作成する
 
@@ -137,10 +141,9 @@ client.CreateModels(dtdlStrings);
 Azure Digital Twins インスタンスに格納されているモデルを一覧表示したり、取得したりすることができます。 
 
 そのためのオプションを次に示します。
-* すべてのモデルの取得
 * 単一のモデルの取得
-* 依存関係を持つ単一つのモデルの取得
-* モデルのメタデータの取得
+* すべてのモデルの取得
+* モデルのメタデータと依存関係を取得する
 
 呼び出し例を次に示します。
 
@@ -148,19 +151,16 @@ Azure Digital Twins インスタンスに格納されているモデルを一覧
 // 'client' is a valid DigitalTwinsClient object
 
 // Get a single model, metadata and data
-ModelData md1 = client.GetModel(id);
+DigitalTwinsModelData md1 = client.GetModel(id);
 
 // Get a list of the metadata of all available models
-Pageable<ModelData> pmd2 = client.GetModels();
-
-// Get a list of metadata and full model definitions
-Pageable<ModelData> pmd3 = client.GetModels(null, true);
+Pageable<DigitalTwinsModelData> pmd2 = client.GetModels();
 
 // Get models and metadata for a model ID, including all dependencies (models that it inherits from, components it references)
-Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
+Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(new GetModelsOptions { IncludeModelDefinition = true });
 ```
 
-モデルを取得するための API 呼び出しはすべて `ModelData` オブジェクトを返します。 `ModelData` には、名前、DTMI、モデルの作成日など、Azure Digital Twins インスタンスに格納されているモデルに関するメタデータが含まれます。 `ModelData` オブジェクトには、必要に応じてモデル自体を含めることもできます。 パラメーターによっては、取得呼び出しを使用して、メタデータのみ (これは、使用可能なツールの UI の一覧やモデル全体を表示するシナリオで役に立ちます)、またはモデル全体を取得できます。
+モデルを取得するための API 呼び出しはすべて `DigitalTwinsModelData` オブジェクトを返します。 `DigitalTwinsModelData` には、名前、DTMI、モデルの作成日など、Azure Digital Twins インスタンスに格納されているモデルに関するメタデータが含まれます。 `DigitalTwinsModelData` オブジェクトには、必要に応じてモデル自体を含めることもできます。 パラメーターによっては、取得呼び出しを使用して、メタデータのみ (これは、使用可能なツールの UI の一覧やモデル全体を表示するシナリオで役に立ちます)、またはモデル全体を取得できます。
 
 `RetrieveModelWithDependencies` 呼び出しでは、要求されたモデルだけでなく、要求されたモデルが依存しているすべてのモデルも返されます。
 

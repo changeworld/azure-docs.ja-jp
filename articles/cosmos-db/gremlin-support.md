@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 10/13/2020
 ms.author: sngun
-ms.openlocfilehash: f435185d0f00d8f64425e3f2b7081e0ee9a393ce
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c1af35b754362a230e77c7a3326de8ddb8a09d62
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276217"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082999"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Azure Cosmos DB での Gremlin グラフのサポートと、TinkerPop 機能との互換性
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Azure Cosmos DB は、[Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps) と呼ばれる、[Apache TinkerPop](https://tinkerpop.apache.org) のグラフ トラバーサル言語をサポートしています。 Gremlin 言語を使用して、グラフ エンティティ (頂点と辺) の作成、エンティティ内のプロパティの変更、クエリとトラバーサルの実行、エンティティの削除を行うことができます。
 
@@ -167,31 +168,31 @@ Azure Cosmos DB によって提供された書き込みに最適化されたエ�
 
 ## <a name="behavior-differences"></a>動作の違い
 
-* Azure Cosmos DB Graph エンジンでは ***幅優先*** トラバーサルが実行されますが、TinkerPop Gremlin では深さ優先になります。 この動作により、Cosmos DB のように水平方向にスケーラブルなシステムでのパフォーマンスが向上します。
+* Azure Cosmos DB Graph エンジンでは "* **幅優先** _" トラバーサルが実行されますが、TinkerPop Gremlin では深さ優先になります。 この動作により、Cosmos DB のように水平方向にスケーラブルなシステムでのパフォーマンスが向上します。
 
 ## <a name="unsupported-features"></a>サポートされていない機能
 
-***[Gremlin バイトコード](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** は、プログラミング言語に依存しない、グラフ トラバーサルの仕様です。 Cosmos DB Graph ではまだサポートされていません。 `GremlinClient.SubmitAsync()` を使用して、トラバーサルをテキスト文字列として渡してください。
+"_ * **[Gremlin バイトコード](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)** _" は、プログラミング言語に依存しない、グラフ トラバーサルの仕様です。 Cosmos DB Graph ではまだサポートされていません。 `GremlinClient.SubmitAsync()` を使用して、トラバーサルをテキスト文字列として渡してください。
 
-***`property(set, 'xyz', 1)`*** set カーディナリティは現在サポートされていません。 代わりに `property(list, 'xyz', 1)` を使用してください 詳細については、[TinkerPop での頂点プロパティ](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties)に関する記事を参照してください。
+_ * **`property(set, 'xyz', 1)`** _ set カーディナリティは現在サポートされていません。 代わりに `property(list, 'xyz', 1)` を使用してください 詳細については、[TinkerPop での頂点プロパティ](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties)に関する記事を参照してください。
 
-***`match()` ステップ*** は、現在利用できません。 このステップでは、宣言型のクエリ機能が提供されます。
+"_ * **`match()` ステップ** _" は、現在利用できません。 このステップでは、宣言型のクエリ機能が提供されます。
 
-頂点または辺の ***プロパティとしてのオブジェクト*** はサポートされていません。 プロパティには、プリミティブ型または配列のみを指定できます。
+頂点または辺の "_ * **プロパティとしてのオブジェクト** _" はサポートされていません。 プロパティには、プリミティブ型または配列のみを指定できます。
 
-***配列プロパティによる並べ替え*** (`order().by(<array property>)`) はサポートされていません。 プリミティブ型での並べ替えのみがサポートされています。
+"_ * **配列プロパティによる並べ替え** _" (`order().by(<array property>)`) はサポートされていません。 プリミティブ型での並べ替えのみがサポートされています。
 
-***非プリミティブ JSON 型*** はサポートされていません。 `string` 型、`number` 型、または `true`/`false` 型を使用してください。 `null` 値はサポートされていません。 
+"_ * **非プリミティブ JSON 型** _" はサポートされていません。 `string` 型、`number` 型、または `true`/`false` 型を使用してください。 `null` 値はサポートされていません。 
 
-***GraphSONv3*** シリアライザーは現在サポートされていません。 接続構成で `GraphSONv2` シリアライザー、リーダー、およびライター クラスを使用してください。 Azure Cosmos DB Gremlin API によって返される結果は、GraphSON 形式と同じ形式ではありません。 
+_ * **GraphSONv3** _ シリアライザーは現在サポートされていません。 接続構成で `GraphSONv2` シリアライザー、リーダー、およびライター クラスを使用してください。 Azure Cosmos DB Gremlin API によって返される結果は、GraphSON 形式と同じ形式ではありません。 
 
-**ラムダ式と関数** は現在サポートされていません。 これには、`.map{<expression>}`、`.by{<expression>}`、および `.filter{<expression>}` 関数が含まれます。 詳細について、および Gremlin の手順を使用してこれらを書き換える方法については、[ラムダ式に関する注意事項](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas)に関する記事を参照してください。
+_ **ラムダ式と関数** は現在サポートされていません。 これには、`.map{<expression>}`、`.by{<expression>}`、および `.filter{<expression>}` 関数が含まれます。 詳細について、および Gremlin の手順を使用してこれらを書き換える方法については、[ラムダ式に関する注意事項](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas)に関する記事を参照してください。
 
-* システムの分散型の性質により、 ***トランザクション*** はサポートされていません。  Gremlin アカウントで "自分の書き込みを読み取る" ように適切な整合性モデルを構成し、オプティミスティック同時実行制御を使用して、競合する書き込みを解決してください。
+* システムの分散型の性質により、"***トランザクション** _" はサポートされていません。  Gremlin アカウントで "自分の書き込みを読み取る" ように適切な整合性モデルを構成し、オプティミスティック同時実行制御を使用して、競合する書き込みを解決してください。
 
 ## <a name="known-limitations"></a>既知の制限事項
 
-**トラバーサル中の `.V()` ステップによる Gremlin クエリのインデックス使用率** :現時点では、トラバーサルの最初の `.V()` 呼び出しのみによって、アタッチされているフィルターまたは述語を解決するために、インデックスが利用されます。 後続の呼び出しでは、インデックスが参照されないため、クエリの待機時間とコストが増加する可能性があります。
+_ **トラバーサル中の `.V()` ステップによる Gremlin クエリのインデックス使用率** :現時点では、トラバーサルの最初の `.V()` 呼び出しのみによって、アタッチされているフィルターまたは述語を解決するために、インデックスが利用されます。 後続の呼び出しでは、インデックスが参照されないため、クエリの待機時間とコストが増加する可能性があります。
     
     Assuming default indexing, a typical read Gremlin query that starts with the `.V()` step would use parameters in its attached filtering steps, such as `.has()` or `.where()` to optimize the cost and performance of the query. For example:
 
@@ -219,7 +220,7 @@ Azure Cosmos DB によって提供された書き込みに最適化されたエ�
 
     You can review the performance of the queries by using the [Gremlin `executionProfile()` step](graph-execution-profile.md).
 
-## <a name="next-steps"></a>既定のインデックス作成を前提とすると、`.V()` ステップによって開始された通常の読み取り Gremlin クエリでは、`.has()` や `.where()` など、アタッチされたフィルター処理のステップの中でパラメーターが使用され、クエリのコストとパフォーマンスが最適化されます。
+## <a name="next-steps"></a>次のステップ
 
-* 次に例を示します。 
-* ただし、2 つ以上の `.V()` ステップが Gremlin クエリ内に含まれている場合、そのクエリのデータの解決は最適でない可能性があります。
+* [SDK を使用](create-graph-dotnet.md)してグラフ アプリケーションの構築を開始する 
+* Azure Cosmos DB の[グラフ サポート](graph-introduction.md)の詳細について説明します。

@@ -8,12 +8,12 @@ ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-t
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 48e6a2a6bcf20e22edbf0d2f98607b8310d2f22d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 55c352df83e8f72a418452dd28d621556b207e5e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91307859"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332170"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:Node.js を使用して Azure Database for MySQL に接続してデータを照会する
 
@@ -50,7 +50,7 @@ ms.locfileid: "91307859"
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 
-1. 次のコマンドを実行して、**Node.js** と、Node.js 用のパッケージ マネージャー **npm** をインストールします。
+1. 次のコマンドを実行して、 **Node.js** と、Node.js 用のパッケージ マネージャー **npm** をインストールします。
 
    ```bash
    sudo apt-get install -y nodejs npm
@@ -66,9 +66,9 @@ ms.locfileid: "91307859"
    ```
 3. npm list の出力テキストを確認してインストール結果を検証します。 バージョン番号は、新しいパッチのリリースに伴って変わる場合があります。
 
-### <a name="mac-os"></a>Mac OS
+### <a name="macos"></a>macOS
 
-1. 次のコマンドを入力して **brew** をインストールします。これは、Mac OS X と **Node.js** に対応する使いやすいパッケージ マネージャーです。
+1. 次のコマンドを入力して **brew** をインストールします。これは、macOS と **Node.js** に対応する使いやすいパッケージ マネージャーです。
 
    ```bash
    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -90,7 +90,7 @@ ms.locfileid: "91307859"
 Azure Database for MySQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. Azure portal の左側のメニューにある **[すべてのリソース]** を選択し、作成したサーバー (例: **mydemoserver**) を検索します。
+2. Azure portal の左側のメニューにある **[すべてのリソース]** を選択し、作成したサーバー (例: **mydemoserver** ) を検索します。
 3. サーバー名を選択します。
 4. サーバーの **[概要]** パネルから、 **[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
  :::image type="content" source="./media/connect-nodejs/server-name-azure-database-mysql.png" alt-text="Azure Database for MySQL サーバー名":::
@@ -172,7 +172,7 @@ function queryDatabase(){
 
 ## <a name="read-data"></a>データの読み取り
 
-接続し、**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
+接続し、 **SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
 
 MySQL サーバーとやり取りするには、[mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) メソッドを使用します。 サーバーとの接続を確立するには、[connect()](https://github.com/mysqljs/mysql#establishing-connections) メソッドを使用します。 MySQL データベースに対して SQL クエリを実行するには、[query()](https://github.com/mysqljs/mysql#performing-queries) メソッドを使用します。 クエリの結果は、results 配列を使って保存します。
 
@@ -225,7 +225,7 @@ function readData(){
 
 ## <a name="update-data"></a>データの更新
 
-接続し、**UPDATE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
+接続し、 **UPDATE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
 
 MySQL サーバーとやり取りするには、[mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) メソッドを使用します。 サーバーとの接続を確立するには、[connect()](https://github.com/mysqljs/mysql#establishing-connections) メソッドを使用します。 MySQL データベースに対して SQL クエリを実行するには、[query()](https://github.com/mysqljs/mysql#performing-queries) メソッドを使用します。 
 
@@ -274,7 +274,7 @@ function updateData(){
 
 ## <a name="delete-data"></a>データの削除
 
-接続し、**DELETE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
+接続し、 **DELETE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
 
 MySQL サーバーとやり取りするには、[mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) メソッドを使用します。 サーバーとの接続を確立するには、[connect()](https://github.com/mysqljs/mysql#establishing-connections) メソッドを使用します。 MySQL データベースに対して SQL クエリを実行するには、[query()](https://github.com/mysqljs/mysql#performing-queries) メソッドを使用します。 
 
@@ -319,6 +319,16 @@ function deleteData(){
                 else  console.log('Done.') 
         });
 };
+```
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このクイックスタートで使用したすべてのリソースをクリーンアップするには、次のコマンドを使用してリソース グループを削除します。
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>次のステップ

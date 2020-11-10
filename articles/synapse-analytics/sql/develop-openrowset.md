@@ -1,6 +1,6 @@
 ---
-title: SQL オンデマンド (プレビュー) で OPENROWSET を使用する方法
-description: この記事では、SQL オンデマンド (プレビュー) での OPENROWSET の構文と、引数の使用方法について説明します。
+title: サーバーレス SQL プール (プレビュー) で OPENROWSET を使用する方法
+description: この記事では、サーバーレス SQL プール (プレビュー) での OPENROWSET の構文について説明し、引数の使用方法について解説します。
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 355e300ec9f3671cf29ccc763e211a9bb3806f64
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e7713239391b49663328a7a058f8f6fd5b444335
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474786"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341333"
 ---
-# <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) で OPENROWSET を使用する方法
+# <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プール (プレビュー) を使う際の OPENROWSET の使用方法
 
-`OPENROWSET(BULK...)` 関数を使用すると、Azure Storage 内のファイルにアクセスできます。 `OPENROWSET` 関数は、リモート データ ソース (ファイルなど) の内容を読み取って行のセットとして返します。 SQL オンデマンド (プレビュー) リソース内では、OPENROWSET 関数を呼び出し、BULK オプションを指定することによって、OPENROWSET BULK 行セット プロバイダーにアクセスします。  
+`OPENROWSET(BULK...)` 関数を使用すると、Azure Storage 内のファイルにアクセスできます。 `OPENROWSET` 関数は、リモート データ ソース (ファイルなど) の内容を読み取って行のセットとして返します。 サーバーレス SQL プール (プレビュー) リソース内では、OPENROWSET 関数を呼び出し、BULK オプションを指定することによって、OPENROWSET BULK 行セット プロバイダーにアクセスします。  
 
 `OPENROWSET` 関数は、テーブル名 `OPENROWSET` であるかのように、クエリの `FROM` 句で参照できます。 組み込みの BULK プロバイダーによる一括操作がサポートされ、ファイルのデータを行セットとして読み取り、返すことができます。
 
@@ -95,6 +95,8 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 [ , FIELDQUOTE = 'quote_characters' ]
 [ , DATA_COMPRESSION = 'data_compression_method' ]
 [ , PARSER_VERSION = 'parser_version' ]
+[ , HEADER_ROW = { TRUE | FALSE } ]
+[ , DATAFILETYPE = { 'char' | 'widechar' } ]
 ```
 
 ## <a name="arguments"></a>引数
@@ -111,7 +113,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 - '\<prefix>://\<storage_account_path>/\<storage_path>' という形式の絶対パスを使用すると、ユーザーがファイルを直接読み取ることができるようになります。
 - '<storage_path>' という形式の相対パスは、`DATA_SOURCE` パラメーターと一緒に使用する必要があり、`EXTERNAL DATA SOURCE` に定義された<storage_account_path> の場所にあるファイル パターンを指定します。 
 
- 以下に、特定の外部データ ソースにリンクする、関連する <storage account path> 値を示します。 
+以下に、特定の外部データ ソースにリンクする、関連する <storage account path> 値を示します。 
 
 | 外部データ ソース       | Prefix | ストレージ アカウント パス                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |
@@ -124,18 +126,20 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 
 '\<storage_path>'
 
- 読み取り対象のフォルダーまたはファイルを指す、ストレージ内のパスを指定します。 パスがコンテナーまたはフォルダーを指している場合は、その特定のコンテナーまたはフォルダーからすべてのファイルが読み取られます。 サブフォルダー内のファイルは含まれません。 
+読み取り対象のフォルダーまたはファイルを指す、ストレージ内のパスを指定します。 パスがコンテナーまたはフォルダーを指している場合は、その特定のコンテナーまたはフォルダーからすべてのファイルが読み取られます。 サブフォルダー内のファイルは含まれません。 
 
- ワイルドカードを使用して、複数のファイルまたはフォルダーを対象にすることができます。 連続しない複数のワイルドカードを使用できます。
+ワイルドカードを使用して、複数のファイルまたはフォルダーを対象にすることができます。 連続しない複数のワイルドカードを使用できます。
 次に示すのは、 */csv/population* で始まるすべてのフォルダーから、 *population* で始まるすべての *csv* ファイルを読み取る例です。  
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
-unstructured_data_path でフォルダーを指定すると、SQL オンデマンド クエリはそのフォルダーからファイルを取得します。 
+unstructured_data_path をフォルダーとして指定すると、サーバーレス SQL プール クエリによってそのフォルダーからファイルが取得されます。 
+
+例のように、パスの末尾に /* を指定することで、フォルダーをスキャンするようサーバーレス SQL プールに指示できます: `https://sqlondemandstorage.blob.core.windows.net/csv/population/**`
 
 > [!NOTE]
-> Hadoop や PolyBase とは異なり、SQL オンデマンドではサブフォルダーは返されません。 また、Hadoop や PolyBase とは異なり、SQL オンデマンドでは、ファイル名が下線 (_) やピリオド (.) で始まるファイルが返されます。
+> Hadoop や PolyBase とは異なり、サーバーレス SQL プールの場合、パスの末尾に /** を指定しない限りサブフォルダーは返されません。 また、Hadoop や PolyBase とは異なり、サーバーレス SQL プールの場合、ファイル名が下線 (_) やピリオド (.) で始まるファイルが返されます。
 
-次の例で、unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/` の場合、SQL オンデマンド クエリでは、mydata.txt と _hidden.txt からの行が返されます。 mydata2.txt と mydata3.txt はサブフォルダー内にあるため、これらは返されません。
+次の例で unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/` の場合、サーバーレス SQL プール クエリによって、mydata.txt および _hidden.txt から行が返されます。 mydata2.txt と mydata3.txt はサブフォルダー内にあるため、これらは返されません。
 
 ![外部テーブルの再帰型データ](./media/develop-openrowset/folder-traversal.png)
 
@@ -144,12 +148,13 @@ unstructured_data_path でフォルダーを指定すると、SQL オンデマ�
 WITH 句を使用すると、ファイルから読み取る列を指定できます。
 
 - CSV データ ファイルの場合、すべての列を読み取るには、列名とそのデータ型を指定します。 列のサブセットが必要な場合は、序数を使用して、元のデータ ファイルから序数で列を選択します。 列は、序数の指定によってバインドされます。 
-
-    > [!IMPORTANT]
-    > CSV ファイルの場合、WITH 句は必須です。
-    >
+    > [!TIP]
+    > CSV ファイルの場合は WITH 句を省略することもできます。 データ型は、ファイルの内容から自動的に推論されます。 HEADER_ROW 引数を使用してヘッダー行の存在を指定することができます。この場合、列名はヘッダー行から読み取られます。 詳細については、「[スキーマの自動検出](#automatic-schema-discovery)」を参照してください。
     
-- Parquet データ ファイルの場合は、元のデータ ファイル内の列名と一致する列名を指定します。 列は名前によってバインドされます。 WITH 句を省略すると、Parquet ファイルのすべての列が返されます。
+- Parquet データ ファイルの場合は、元のデータ ファイル内の列名と一致する列名を指定します。 列は名前によってバインドされます (大文字と小文字が区別されます)。 WITH 句を省略すると、Parquet ファイルのすべての列が返されます。
+    > [!IMPORTANT]
+    > Parquet ファイル内の列名では大文字と小文字が区別されます。 大文字と小文字の区別が Parquet ファイル内の列名と異なる列名を指定すると、その列に対して NULL 値が返されます。
+
 
 column_name = 出力列の名前。 指定した場合、この名前はソース ファイル内の列名をオーバーライドします。
 
@@ -205,6 +210,10 @@ PARSER_VERSION = 'parser_version'
 
 CSV パーサー バージョン 1.0 が既定であり、機能が豊富です。 バージョン 2.0 はパフォーマンス重視で構築されており、すべてのオプションとエンコードがサポートされているわけではありません。 
 
+CSV パーサー バージョン 1.0 の詳細:
+
+- 次のオプションはサポートされていません。HEADER_ROW。
+
 CSV パーサー バージョン 2.0 の詳細:
 
 - すべてのデータ型がサポートされているわけではありません。
@@ -212,22 +221,97 @@ CSV パーサー バージョン 2.0 の詳細:
 - 次のオプションはサポートされていません。DATA_COMPRESSION
 - 引用符で囲まれた空の文字列 ("") は、空の文字列として解釈されます。
 
+HEADER_ROW = { TRUE | FALSE }
+
+CSV ファイルにヘッダー行を含めるかどうかを指定します。 既定値は FALSE です。 PARSER_VERSION='2.0' でサポートされています。 TRUE の場合、列名は、FIRSTROW 引数に従って最初の行から読み取られます。
+
+DATAFILETYPE = { 'char' | 'widechar' }
+
+エンコードを指定します。UTF8 にはchar が使用され、UTF16 ファイルには widechar が使用されます。
+
+## <a name="fast-delimited-text-parsing"></a>高速の区切りテキスト解析
+
+使用できる区切りテキスト パーサーのバージョンは 2 つあります。 既定の CSV パーサー バージョン 1.0 は機能が豊富です。一方、パーサー バージョン 2.0 はパフォーマンス重視で構築されています。 パーサー 2.0 のパフォーマンス強化は、高度な解析手法とマルチスレッド処理によってもたらされています。 ファイル サイズが大きくなるほど、速度の違いが大きくなります。
+
+## <a name="automatic-schema-discovery"></a>スキーマの自動検出
+
+スキーマがわからない場合や、WITH 句を省略してスキーマを指定していない場合でも、CSV と Parquet の両方のファイルに簡単にクエリを実行できます。 列名とデータ型はファイルから推論されます。
+
+Parquet ファイルには、読み取られる列のメタデータが含まれています。型マッピングについては、「[Parquet の型マッピング](#type-mapping-for-parquet)」を参照してください。 サンプルについては、「[スキーマを指定せずに Parquet ファイルを読み取る](#read-parquet-files-without-specifying-schema)」を参照してください。
+
+CSV ファイルの場合、列名はヘッダー行から読み取ることができます。 HEADER_ROW 引数を使用して、ヘッダー行が存在するかどうかを指定できます。 HEADER_ROW = FALSE の場合、汎用の列名が使用されます: C1、C2、...Cn の n はファイル内の列番号です。 データ型は、最初の 100 データ行から推論されます。 サンプルについては、「[スキーマを指定せずに CSV ファイルを読み取る](#read-csv-files-without-specifying-schema)」を参照してください。
+
+> [!IMPORTANT]
+> 情報不足のために適切なデータ型を推論できず、代わりにより大きいデータ型が使用される場合もあります。 この場合、パフォーマンスのオーバーヘッドが発生します。特に、varchar (8000) として推論される文字型の列で大きな影響があります。 最適なパフォーマンスを得るには、[推論されたデータ型を確認](best-practices-sql-on-demand.md#check-inferred-data-types)し、[適切なデータ型を使用](best-practices-sql-on-demand.md#use-appropriate-data-types)してください。
+
+### <a name="type-mapping-for-parquet"></a>Parquet の型マッピング
+
+Parquet ファイルには、すべての列の型の説明が含まれています。 次の表では、Parquet 型を SQL ネイティブ型にマップする方法について説明します。
+
+| Parquet 型 | Parquet 論理型 (注釈) | SQL データ型 |
+| --- | --- | --- |
+| BOOLEAN | | bit |
+| BINARY / BYTE_ARRAY | | varbinary |
+| DOUBLE | | float |
+| FLOAT | | real |
+| INT32 | | INT |
+| INT64 | | bigint |
+| INT96 | |datetime2 |
+| FIXED_LEN_BYTE_ARRAY | |binary |
+| BINARY |UTF8 |varchar \*(UTF8 照合順序) |
+| BINARY |STRING |varchar \*(UTF8 照合順序) |
+| BINARY |ENUM|varchar \*(UTF8 照合順序) |
+| BINARY |UUID |UNIQUEIDENTIFIER |
+| BINARY |DECIMAL |decimal |
+| BINARY |JSON |varchar(max) \*(UTF8 照合順序) |
+| BINARY |BSON |varbinary(max) |
+| FIXED_LEN_BYTE_ARRAY |DECIMAL |decimal |
+| BYTE_ARRAY |INTERVAL |varchar(max)、標準化された形式にシリアル化 |
+| INT32 |INT(8, true) |smallint |
+| INT32 |INT(16, true) |smallint |
+| INT32 |INT(32, true) |INT |
+| INT32 |INT(8, false) |tinyint |
+| INT32 |INT(16, false) |INT |
+| INT32 |INT(32, false) |bigint |
+| INT32 |DATE |date |
+| INT32 |DECIMAL |decimal |
+| INT32 |TIME (MILLIS)|time |
+| INT64 |INT(64, true) |bigint |
+| INT64 |INT(64, false) |decimal (20,0) |
+| INT64 |DECIMAL |decimal |
+| INT64 |TIME (MICROS / NANOS) |time |
+|INT64 |TIMESTAMP (MILLIS / MICROS / NANOS) |datetime2 |
+|[複合型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |リスト |varchar(max)、JSON にシリアル化 |
+|[複合型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|MAP|varchar(max)、JSON にシリアル化 |
+
 ## <a name="examples"></a>例
 
-次の例では、population*.csv ファイルから序数 1 と 4 の 2 列だけが返されます。 ファイルにはヘッダー行がないため、最初の行から読み取りを開始します。
+### <a name="read-csv-files-without-specifying-schema"></a>スキーマを指定せずに CSV ファイルを読み取る
+
+次の例では、列名とデータ型を指定せずに、ヘッダー行を含む CSV ファイルを読み取ります。 
 
 ```sql
-SELECT * 
+SELECT 
+    *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population*.csv',
-        FORMAT = 'CSV',
-        FIRSTROW = 1
-    )
-WITH (
-    [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2 1,
-    [population] bigint 4
-) AS [r]
+    BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    FORMAT = 'CSV',
+    PARSER_VERSION = '2.0',
+    HEADER_ROW = TRUE) as [r]
 ```
+
+次の例では、列名とデータ型を指定せずに、ヘッダー行を含まない CSV ファイルを読み取ります。 
+
+```sql
+SELECT 
+    *
+FROM OPENROWSET(
+    BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    FORMAT = 'CSV',
+    PARSER_VERSION = '2.0') as [r]
+```
+
+### <a name="read-parquet-files-without-specifying-schema"></a>スキーマを指定せずに Parquet ファイルを読み取る
 
 次の例では、列名とデータ型を指定せずに、census データ セットの最初の行のすべての列が Parquet 形式で返されます。 
 
@@ -241,6 +325,42 @@ FROM
     ) AS [r]
 ```
 
+### <a name="read-specific-columns-from-csv-file"></a>CSV ファイルから特定の列を読み取る
+
+次の例では、population*.csv ファイルから序数 1 と 4 の 2 列だけが返されます。 ファイルにはヘッダー行がないため、最初の行から読み取りを開始します。
+
+```sql
+SELECT 
+    * 
+FROM OPENROWSET(
+        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population*.csv',
+        FORMAT = 'CSV',
+        FIRSTROW = 1
+    )
+WITH (
+    [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2 1,
+    [population] bigint 4
+) AS [r]
+```
+
+### <a name="read-specific-columns-from-parquet-file"></a>Parquet ファイルから特定の列を読み取る
+
+次の例では、census データ セットから最初の行の 2 列のみが Parquet 形式で返されます。 
+
+```sql
+SELECT 
+    TOP 1 *
+FROM  
+    OPENROWSET(
+        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        FORMAT='PARQUET'
+    )
+WITH (
+    [stateName] VARCHAR (50),
+    [population] bigint
+) AS [r]
+```
+
 ## <a name="next-steps"></a>次のステップ
 
-その他のサンプルについては、[データ ストレージに対するクエリに関するクイックスタート](query-data-storage.md)を参照して、`OPENROWSET` を使用して [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md)、および [JSON](query-json-files.md) ファイル形式を読み取る方法について学習してください。 また、[CETAS](develop-tables-cetas.md) を使用してクエリの結果を Azure Storage に保存する方法も確認できます。
+その他のサンプルについては、[データ ストレージに対するクエリに関するクイックスタート](query-data-storage.md)を参照して、`OPENROWSET` を使用して [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md)、および [JSON](query-json-files.md) ファイル形式を読み取る方法について学習してください。 最適なパフォーマンスが得られるように、[ベスト プラクティス](best-practices-sql-on-demand.md)をご確認ください。 また、[CETAS](develop-tables-cetas.md) を使用してクエリの結果を Azure Storage に保存する方法も確認できます。

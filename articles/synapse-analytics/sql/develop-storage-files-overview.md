@@ -1,6 +1,6 @@
 ---
-title: SQL オンデマンド (プレビュー) でストレージ上のファイルにアクセスする
-description: Synapse SQL 内で SQL オンデマンド (プレビュー) リソースを使用してストレージ ファイルに対してクエリを実行する方法について説明します。
+title: サーバーレス SQL プール (プレビュー) でストレージ上のファイルにアクセスする
+description: Azure Synapse Analytics のサーバーレス SQL プール (プレビュー) を使用してストレージ ファイルにクエリを実行する方法について説明します。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8884f62ba015cc4b33b75a133f21264dac6430e5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 73a5414a979742c4a7df16dcd2a5edda3748abef
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288989"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315929"
 ---
-# <a name="access-external-storage-in-synapse-sql-on-demand"></a>Synapse SQL (オンデマンド) で外部ストレージにアクセスする
+# <a name="access-external-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プール (プレビュー) を使用して外部ストレージにアクセスする
 
-このドキュメントでは、ユーザーが Synapse SQL (オンデマンド) で、Azure Storage に格納されているファイルからデータを読み取る方法について説明します。 ユーザーは、ストレージにアクセスするための次のオプションを使用できます。
+このドキュメントでは、ユーザーがサーバーレス SQL プールで、Azure Storage に格納されているファイルからデータを読み取る方法について説明します。 ユーザーは、ストレージにアクセスするための次のオプションを使用できます。
 
 - [OPENROWSET](develop-openrowset.md) 関数。Azure Storage 内のファイルに対するアドホック クエリを有効にします。
 - [外部テーブル](develop-tables-external-tables.md)。外部ファイル セット上に構築された定義済みのデータ構造です。
@@ -27,7 +27,7 @@ ms.locfileid: "91288989"
 
 ## <a name="query-files-using-openrowset"></a>OPENROWSET を使用してファイルに対してクエリを実行する
 
-OPENROWSET を使用すると、ユーザーはストレージにアクセスできる場合に、Azure Storage 上の外部ファイルに対してクエリを実行できます。 Synapse SQL オンデマンド エンドポイントに接続されているユーザーは、次のクエリを使用して、Azure Storage 上のファイルの内容を読み取る必要があります。
+OPENROWSET を使用すると、ユーザーはストレージにアクセスできる場合に、Azure Storage 上の外部ファイルに対してクエリを実行できます。 サーバーレス SQL プールに接続されているユーザーは、次のクエリを使用して、Azure Storage 上のファイルの内容を読み取る必要があります。
 
 ```sql
 SELECT * FROM

@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 05d7316ceccd67a8eeb1d081843307162ff210c1
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 989115224489ff8fff360a34b27c338ea3e33058
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558637"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145822"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Azure Defender for container registries の概要
 
@@ -32,6 +32,12 @@ Security Center では、スキャナーによる検出結果がフィルター�
 
 問題があるときにだけ通知することにより、Security Center では不要な情報アラートの可能性が減ります。
 
+
+> [!TIP]
+> Security Center のコンテナーのセキュリティ機能の詳細については、以下をご覧ください。
+>
+> - [Azure Security Center とコンテナーのセキュリティ](container-security.md)
+> - [Azure Defender for Kubernetes の概要](defender-for-kubernetes-introduction.md)
 
 ## <a name="when-are-images-scanned"></a>イメージはどのような場合にスキャンされますか。
 
@@ -81,10 +87,5 @@ Security Center では、スキャナーによる検出結果がフィルター�
 
 ## <a name="next-steps"></a>次のステップ
 
-Security Center のコンテナーのセキュリティ機能の詳細については、以下をご覧ください。
-
-- [Azure Security Center とコンテナーのセキュリティ](container-security.md)
-
-- [Azure Defender for Kubernetes の概要](defender-for-kubernetes-introduction.md)
-
-
+> [!div class="nextstepaction"]
+> [イメージの脆弱性をスキャンする](defender-for-container-registries-usage.md)

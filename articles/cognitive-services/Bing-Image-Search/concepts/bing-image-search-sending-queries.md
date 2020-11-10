@@ -11,14 +11,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: d833b017004365e9dad7241e360f42ff41a55883
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f697449fffe6c93d8e5082b210678d3f51c0c736
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67542754"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084412"
 ---
 # <a name="customize-and-suggest-image-search-queries"></a>画像検索クエリをカスタマイズおよび提案する
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
 この記事を使用して、クエリをカスタマイズし、Bing Image Search API に送信する検索語句を提案する方法について学習します。
 
@@ -28,9 +33,9 @@ ms.locfileid: "67542754"
 
 ## <a name="pivot-the-query"></a>クエリをピボットする
 
-元の検索クエリを Bing が分割できる場合、返された [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) オブジェクトには `pivotSuggestions` が含まれます。 ピボット候補を任意の検索語句としてユーザーに表示できます。 たとえば、元のクエリが「*Microsoft Surface*」である場合、そのクエリが Bing によって *Microsoft* と *Surface* に分割され、それぞれについてピボット候補を得ることができます。 このような候補は、任意のクエリ語句としてユーザーに表示できます。
+元の検索クエリを Bing が分割できる場合、返された [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) オブジェクトには `pivotSuggestions` が含まれます。 ピボット候補を任意の検索語句としてユーザーに表示できます。 たとえば、元のクエリが「 *Microsoft Surface* 」である場合、そのクエリが Bing によって *Microsoft* と *Surface* に分割され、それぞれについてピボット候補を得ることができます。 このような候補は、任意のクエリ語句としてユーザーに表示できます。
 
-次の例は、*Microsoft Surface* に関するピボット候補を示しています。  
+次の例は、 *Microsoft Surface* に関するピボット候補を示しています。  
 
 ```json
 {
@@ -102,12 +107,12 @@ The following shows an example of the pivot queries.
 ## <a name="expand-the-query"></a>クエリを展開する
 
 Bing がクエリを展開して元の検索を絞り込むことができる場合、[Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) オブジェクトには `queryExpansions` フィールドが含まれます。 たとえば、クエリが *Microsoft Surface* であれば、クエリは次のように展開されます。
-- Microsoft Surface **Pro 3**。
-- Microsoft Surface **RT**。
-- Microsoft Surface **Phone**。
-- Microsoft Surface **Hub**。
+- Microsoft Surface **Pro 3** 。
+- Microsoft Surface **RT** 。
+- Microsoft Surface **Phone** 。
+- Microsoft Surface **Hub** 。
 
-次の例は、*Microsoft Surface* の展開されたクエリを示しています。
+次の例は、 *Microsoft Surface* の展開されたクエリを示しています。
 
 ```json
 {

@@ -1,6 +1,6 @@
 ---
-title: SQL オンデマンド (プレビュー) で外部テーブルを作成および使用する
-description: このセクションでは、SQL オンデマンド (プレビュー) で外部テーブルを作成および使用する方法を学習します。
+title: サーバーレス SQL プール (プレビュー) で外部テーブルを作成および使用する
+description: このセクションでは、サーバーレス SQL プール (プレビュー) で外部テーブルを作成および使用する方法を学習します。
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 182deba959144f6a3992bb41243f29023bad5e5c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0a52db131311d9956cf7217d910f22c3a4f07738
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289329"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314725"
 ---
-# <a name="create-and-use-external-tables-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure Synapse Analytics を使用して SQL オンデマンド (プレビュー) で外部テーブルを作成および使用する
+# <a name="create-and-use-external-tables-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プール (プレビュー) を使用して外部テーブルを作成および使用する
 
-このセクションでは、SQL オンデマンド (プレビュー) で[外部テーブル](develop-tables-external-tables.md)を作成および使用する方法を学習します。 外部テーブルは、SQL オンデマンドで外部データへのアクセスを制御する場合や、Power BI などのツールを SQL オンデマンドと組み合わせて使用する場合に便利です。 外部テーブルは、次の 2 種類のストレージにアクセスできます。
+このセクションでは、サーバーレス SQL プール (プレビュー) で[外部テーブル](develop-tables-external-tables.md)を作成および使用する方法を学習します。 外部テーブルは、サーバーレス SQL プールで外部データへのアクセスを制御する場合や、Power BI などのツールをサーバーレス SQL プールと組み合わせて使用する場合に便利です。 外部テーブルは、次の 2 種類のストレージにアクセスできます。
 - パブリック ストレージ。ユーザーは、パブリック ストレージ ファイルにアクセスします。
 - 保護されたストレージ。ユーザーは、Synapse ワークスペースの SAS 資格情報、Azure AD ID、またはマネージド ID を使用して、ストレージ ファイルにアクセスします。
 

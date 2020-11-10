@@ -10,17 +10,17 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bbd82f856213bb36e71625eabc8bce9999ccd53f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 532ada430e7ff2ae76eb0cfbc389792bb0d98209
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289397"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322690"
 ---
 # <a name="connect-to-synapse-sql"></a>Synapse SQL に接続する
 Azure Synapse Analytics の Synapse SQL 機能に接続します。
 
-## <a name="supported-tools-for-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) でサポートされるツール
+## <a name="supported-tools-for-serverless-sql-pool-preview"></a>サーバーレス SQL プール (プレビュー) でサポートされるツール
 
 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) は、バージョン 1.18.0 以降で完全にサポートされます。 SSMS は、バージョン 18.5 以降で部分的にサポートされ、接続してクエリを実行する場合にのみ使用できます。
 
@@ -31,8 +31,8 @@ Azure Synapse Analytics の Synapse SQL 機能に接続します。
 
 ## <a name="find-your-server-name"></a>サーバー名を検索する
 
-次の例の SQL プールのサーバー名は、showdemoweu.sql.azuresynapse.net です。
-次の例の SQL オンデマンドのサーバー名は、showdemoweu-ondemand.sql.azuresynapse.net です。
+次の例の専用 SQL プールのサーバー名は、showdemoweu.sql.azuresynapse.net です。
+次の例のサーバーレス SQL プールのサーバー名は、showdemoweu-ondemand.sql.azuresynapse.net です。
 
 完全修飾サーバー名を検索するには、次の手順に従います。
 
@@ -46,9 +46,9 @@ Azure Synapse Analytics の Synapse SQL 機能に接続します。
 
 ![Full server name](./media/connect-overview/server-connect-example.png)
 
-## <a name="sql-on-demand"></a>**SQL オンデマンド**
+## <a name="serverless-sql-pool"></a>**サーバーレス SQL プール**
 
-![SQL オンデマンドの完全なサーバー名](./media/connect-overview/server-connect-example-sqlod.png)
+![サーバーの完全名 (サーバーレス SQL プール)](./media/connect-overview/server-connect-example-sqlod.png)
 
 ## <a name="supported-drivers-and-connection-strings"></a>サポートされるドライバーと接続文字列
 Synapse SQL プールでは、[ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx)、[ODBC](https://msdn.microsoft.com/library/jj730314.aspx)、[PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)、および [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx) がサポートされています。 最新のバージョンとドキュメントを確認するには、これらドライバーのいずれかを選択してください。 使用しているドライバーの接続文字列を Azure portal から自動的に生成するには、上の例にある **[データベース接続文字列の表示]** を選択します。 以下に、各ドライバーの接続文字列の例を示します。
@@ -92,7 +92,7 @@ Synapse SQL では、接続とオブジェクトの作成時に一部の設定�
 
 ## <a name="recommendations"></a>Recommendations
 
-**SQL オンデマンド** クエリを実行するために推奨されるツールは、[Azure Data Studio](get-started-azure-data-studio.md) と Azure Synapse Studio です。
+**サーバーレス SQL プール** クエリを実行するために推奨されるツールは、[Azure Data Studio](get-started-azure-data-studio.md) と Azure Synapse Studio です。
 
 ## <a name="next-steps"></a>次のステップ
 Visual Studio を使用して接続とクエリを行うには、 [Visual Studio を使用したクエリ](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページをご覧ください。 認証オプションの詳細については、[Synapse SQL に対する認証](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。

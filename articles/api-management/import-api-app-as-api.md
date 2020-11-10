@@ -1,6 +1,6 @@
 ---
 title: Azure Portal を使用して API アプリを API としてインポートする | Microsoft Docs
-description: このチュートリアルでは、API Management (APIM) を使用して API アプリを API としてインポートする方法を示します。
+description: この記事では、API Management (APIM) を使用して API アプリを API としてインポートする方法を示します。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,15 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 007598046ae64b390d44e61438b69bd26024b1c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41209233ec59f578db4ff7fd344bb96aefeb975e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626889"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146775"
 ---
 # <a name="import-an-api-app-as-an-api"></a>API アプリを API としてインポートする
 
@@ -48,7 +48,7 @@ ms.locfileid: "91626889"
 
     Swagger が見つからない場合、APIM は API を "パススルー" API として公開します。 
 5. API URL サフィックスを追加します。 サフィックスは、この APIM インスタンスでこの特定の API を識別する名前です。 この APIM インスタンス内で一意である必要があります。
-6. API を成果物に関連付けることで API を公開します。 この場合、"*無制限*" の成果物が使用されます。  API を公開して開発者が利用できるようにするには、その API を成果物に追加します。 API の作成時に行うことも、後で設定することもできます。
+6. API を成果物に関連付けることで API を公開します。 この場合、" *無制限* " の成果物が使用されます。  API を公開して開発者が利用できるようにするには、その API を成果物に追加します。 API の作成時に行うことも、後で設定することもできます。
 
     製品には、1 つまたは複数の API が関連付けられています。 複数の API を組み込み、開発者ポータルを通じてそれらを開発者に提供できます。 開発者は、まず製品をサブスクライブして API へのアクセス権を取得する必要があります。 サブスクライブすると、その製品の API に適したサブスクリプション キーを受け取ります。 APIM インスタンスを作成した場合は、既に管理者になっているため、既定ですべての製品をサブスクライブしています。
 
@@ -56,7 +56,7 @@ ms.locfileid: "91626889"
 
     * **スターター**
     * **無制限**   
-7. 他の API 設定を入力します。 値は、作成時に設定することも、後で **[設定]** タブに移動して構成することもできます。設定については、「[最初の API のインポートと発行](import-and-publish.md#import-and-publish-a-backend-api)」のチュートリアルで説明されています。
+7. 他の API 設定を入力します。 値は、作成時に設定することも、後で **[設定]** タブに移動して構成することもできます。設定については、「 [最初の API のインポートと発行](import-and-publish.md#import-and-publish-a-backend-api)」のチュートリアルで説明されています。
 8. **［作成］** を選択します
 
 ## <a name="test-the-new-api-in-the-azure-portal"></a>Azure portal での新しい API のテスト

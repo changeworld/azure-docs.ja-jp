@@ -1,6 +1,6 @@
 ---
 title: 共有データベース
-description: Azure Synapse Analytics は、Apache Spark でデータベースを作成することで SQL オンデマンド (プレビュー) エンジンと SQL プール エンジンからアクセスできるようにする共有メタデータ モデルを提供します。
+description: Azure Synapse Analytics は、サーバーレス Apache Spark プールでデータベースを作成することでサーバーレス SQL プール (プレビュー) エンジンと SQL プール エンジンからアクセスできるようにする共有メタデータ モデルを提供します。
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,36 +10,36 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 58c1aea944d89872a79d0672a925b1696791c1a8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e17eb44a5f4f4aace9ce9d541b8218b35db0f5d3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260854"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317839"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure Synapse Analytics の共有データベース
 
-Azure Synapse Analytics では、さまざまな計算ワークスペース エンジンが、Spark プール (プレビュー) と SQL オンデマンド (プレビュー) エンジンの間でデータベースとテーブルを共有できます。
+Azure Synapse Analytics では、さまざまな計算ワークスペース エンジンが、サーバーレス Apache Spark プール (プレビュー) とサーバーレス SQL プール (プレビュー) エンジンの間でデータベースとテーブルを共有できます。
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Spark ジョブを使用して作成されたデータベースは、その同じ名前で、SQL オンデマンド エンジンも含め、ワークスペース内の現在および将来のすべての Spark プール (プレビュー) から参照できるようになります。
+Spark ジョブを使用して作成されたデータベースは、その同じ名前で、サーバーレス SQL プール エンジンも含め、ワークスペース内の現在および将来のすべての Spark プール (プレビュー) から参照できるようになります。
 
-Spark の既定のデータベース (`default` と呼ばれる) は、`default` と呼ばれるデータベースとして SQL オンデマンド コンテキストにも表示されます。
+Spark の既定のデータベース (`default` と呼ばれる) は、`default` と呼ばれるデータベースとしてサーバーレス SQL プール コンテキストにも表示されます。
 
-データベースは SQL オンデマンドに非同期的に同期されるため、表示されるまでに遅延が発生します。
+データベースはサーバーレス SQL プールに非同期的に同期されるため、表示されるまでに遅延が発生します。
 
 ## <a name="manage-a-spark-created-database"></a>Spark で作成されたデータベースを管理する
 
 Spark を使用して、Spark で作成されたデータベースを管理します。 たとえば、Spark プール ジョブを使用してこれを削除したり、Spark からその内部にテーブルを作成したりします。
 
-SQL オンデマンドを使用して Spark で作成されたデータベースにオブジェクトを作成した場合、またはデータベースを削除しようとした場合、操作は成功します。 ただし、元の Spark データベースは変更されません。
+サーバーレス SQL プールを使用して Spark で作成されたデータベースにオブジェクトを作成した場合、またはデータベースを削除しようとした場合、操作は成功します。 ただし、元の Spark データベースは変更されません。
 
 ## <a name="how-name-conflicts-are-handled"></a>名前の競合の処理方法
 
-Spark データベースの名前が既存の SQL オンデマンド データベースの名前と競合している場合は、SQL オンデマンドで Spark データベースに対してサフィックスが追加されます。 SQL オンデマンドでのサフィックスは `_<workspace name>-ondemand-DefaultSparkConnector` です。
+Spark データベースの名前が既存のサーバーレス SQL プール データベースの名前と競合している場合は、サーバーレス SQL プールで Spark データベースに対してサフィックスが追加されます。 サーバーレス SQL プールでのサフィックスは `_<workspace name>-ondemand-DefaultSparkConnector` です。
 
-たとえば、`mydb` という名前の Spark データベースが Azure Synapse ワークスペース `myws` で作成され、その名前を持つ SQL オンデマンド データベースが既に存在する場合は、SQL オンデマンドの Spark データベースを `mydb_myws-ondemand-DefaultSparkConnector` という名前を使用して参照する必要があります。
+たとえば、`mydb` という名前の Spark データベースが Azure Synapse ワークスペース `myws` で作成され、その名前が付いたサーバーレス SQL プール データベースが既に存在する場合は、サーバーレス SQL プールの Spark データベースを `mydb_myws-ondemand-DefaultSparkConnector` という名前を使用して参照する必要があります。
 
 > [!CAUTION]
 > 注意:この動作に依存しないようにしてください。
@@ -58,7 +58,7 @@ Spark データベースおよびテーブルは、SQL エンジン内のそれ�
 
 ## <a name="examples"></a>例
 
-### <a name="create-and-connect-to-spark-database-with-sql-on-demand"></a>SQL オンデマンドを使用して Spark データベースを作成して接続する
+### <a name="create-and-connect-to-spark-database-with-serverless-sql-pool"></a>サーバーレス SQL プールを使用して Spark データベースを作成して接続する
 
 まず、ワークスペースに既に作成済みの Spark クラスターを使用して、`mytestdb` という名前の新しい Spark データベースを作成します。 たとえば、次の .NET for Spark ステートメントで Spark C# ノートブックを使用して、これを実現できます。
 
@@ -66,7 +66,7 @@ Spark データベースおよびテーブルは、SQL エンジン内のそれ�
 spark.Sql("CREATE DATABASE mytestdb")
 ```
 
-少し時間が経過すると、SQL オンデマンドからデータベースを確認できるようになります。 たとえば、SQL オンデマンドから次のステートメントを実行します。
+少し時間が経過すると、サーバーレス SQL プールからデータベースを確認できるようになります。 たとえば、サーバーレス SQL プールから次のステートメントを実行します。
 
 ```sql
 SELECT * FROM sys.databases;

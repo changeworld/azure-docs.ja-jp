@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 708b8255f6cf7c60e2d2fc7fbd280b477c06a3d6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a0fbcab194b90bbe89948fee1efb604266dbbb0f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503285"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311745"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>ワークスペース、データ、およびパイプラインへのアクセスを管理する
 
@@ -94,21 +94,21 @@ Azure Synapse ワークスペースへの運用環境のデプロイでは、お
 基礎となるデータへのアクセス制御は、次の 3 つの部分に分かれています。
 
 - ストレージ アカウントへのデータプレーン アクセス (上の手順 2 で既に構成済み)
-- SQL データベースへのデータプレーン アクセス (SQL プールと SQL オンデマンドの両方)
-- ストレージ アカウントを介した SQL オンデマンド データベースの資格情報の作成
+- SQL データベースへのデータプレーン アクセス (専用 SQL プールとサーバーレス SQL プールの両方)
+- ストレージ アカウントを介したサーバーレス SQL プール データベースの資格情報の作成
 
 ## <a name="access-control-to-sql-databases"></a>SQL データベースに対するアクセス制御
 
 > [!TIP]
 > 以下の手順は、すべての SQL データベースへのユーザー アクセスを付与するために、SQL データベース **ごと** に実行する必要があります。ただし、ユーザーに sysadmin ロールを割り当てることができる「 [サーバー レベルのアクセス許可](#server-level-permission)」セクションは除きます。
 
-### <a name="sql-on-demand"></a>SQL オンデマンド
+### <a name="serverless-sql-pool"></a>サーバーレス SQL プール
 
 このセクションでは、特定のデータベースへのアクセス許可、またはサーバーのフル アクセス許可をユーザーに付与する方法に関する例を示します。
 
 #### <a name="database-level-permission"></a>データベース レベルのアクセス許可
 
-ユーザーに **単一の** SQL オンデマンド データベースへのアクセスを許可するには、次の例の手順に従います。
+ユーザーに **単一の** サーバーレス SQL プール データベースへのアクセスを許可するには、次の例の手順に従います。
 
 1. ログインを作成します
 
@@ -140,14 +140,14 @@ Azure Synapse ワークスペースへの運用環境のデプロイでは、お
 
 #### <a name="server-level-permission"></a>サーバー レベルのアクセス許可
 
-**すべての** SQL オンデマンド データベースへのフル アクセス許可をユーザーに付与するには、次の例の手順に従います。
+**すべての** サーバーレス SQL プール データベースへのフル アクセス許可をユーザーに付与するには、次の例の手順に従います。
 
 ```sql
 CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
 ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 ```
 
-### <a name="sql-pools"></a>SQL プール
+### <a name="dedicated-sql-pool"></a>専用 SQL プール
 
 ユーザーに **単一の** SQL データベースへのアクセスを許可するには、次の手順に従います。
 
@@ -167,18 +167,18 @@ ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 
 > [!IMPORTANT]
 > *db_owner* アクセス許可を付与することが望ましくない場合は、 *db_datareader* および *db_datawriter* を読み取りまたは書き込みアクセス許可のために使用することができます。
-> Spark ユーザーが Spark と SQL プールとの間で直接読み取りまたは書き込みを行うには、 *db_owner* アクセス許可が必要です。
+> Spark ユーザーが Spark と専用 SQL プールとの間で直接読み取りまたは書き込みを行うには、 *db_owner* アクセス許可が必要です。
 
-ユーザーを作成した後、SQL オンデマンドでストレージ アカウントに対してクエリを実行できることを検証します。
+ユーザーを作成した後、サーバーレス SQL プールを使用してストレージ アカウントにクエリを実行できることを検証します。
 
 ## <a name="access-control-to-workspace-pipeline-runs"></a>ワークスペースのパイプラインの実行に対するアクセス制御
 
 ### <a name="workspace-managed-identity"></a>ワークスペースのマネージド ID
 
 > [!IMPORTANT]
-> SQL プールを参照するデータセットまたはアクティビティを含むパイプラインを正常に実行するには、ワークスペース ID に SQL プールへの直接アクセスを許可する必要があります。
+> 専用 SQL プールを参照するデータセットまたはアクティビティを含むパイプラインを正常に実行するには、ワークスペース ID に SQL プールへの直接アクセスを許可する必要があります。
 
-各 SQL プールで次のコマンドを実行して、ワークスペース マネージド ID が SQL プール データベースでパイプラインを実行できるようにします。
+各専用 SQL プールで次のコマンドを実行して、ワークスペース マネージド ID が SQL プール データベースでパイプラインを実行できるようにします。
 
 ```sql
 --Create user in DB

@@ -1,14 +1,14 @@
 ---
 title: Azure VMware Solution のネットワークと接続
-description: Azure VMWare Solution のネットワークと接続の説明。
+description: Azure VMware Solution のネットワークと接続の説明。
 ms.topic: include
 ms.date: 09/28/2020
-ms.openlocfilehash: 1d43a8a49fc56a6a5b534a89fd1dfc2f5ae2d478
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47b5fab8430f4e462f1e4a0e8cb6ddb69ec38c02
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91574460"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925028"
 ---
 <!-- Used in introduction.md and concepts-networking.md -->
 
@@ -16,7 +16,4 @@ Azure VMware Solution は、オンプレミスおよび Azure ベースの環境
 
 プライベート クラウドをデプロイすると、管理、プロビジョニング、および vMotion 用のプライベート ネットワークが作成されます。 これらのプライベート ネットワークを使用して、vCenter と NSX-T Manager、および仮想マシンの vMotion またはデプロイにアクセスします。  ExpressRoute Global Reach は、プライベート クラウドをオンプレミス環境に接続するために使用されます。 この接続には、サブスクリプション内に ExpressRoute 回線がある仮想ネットワークが必要です。
 
-
-
->[!NOTE]
->プライベート クラウドをデプロイするときに、運用ネットワーク上の VM を使用するために、インターネットと Azure サービスへのアクセスがプロビジョニングされ、提供されます。  既定では、新しいプライベート クラウドのインターネット アクセスは無効になっており、いつでも有効または無効にすることができます。
+Web サーバーや仮想マシンなどのリソースからは、Azure Virtual WAN パブリック IP 機能を使用してインターネットにアクセスできます。  新しいプライベート クラウドのインターネット アクセスは、既定で無効になっています。 詳細については、「[Azure VMware Solution でパブリック IP 機能を使用する方法](../public-ip-usage.md)」を参照してください。

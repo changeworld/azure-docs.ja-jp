@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: e72d1161f80ad92c1e4cfc7fd2c9fde0d46e77b9
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 97853f0524b794169de3aaaec33cf1b30949d930
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332010"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92901549"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは
 
@@ -29,19 +29,19 @@ Azure Security Center は、データ センターのセキュリティ体制を
 
 Azure Security Center は、3 つの緊急性が高いセキュリティの課題を対処します。
 
--   **急速に変化するワークロード**: これはクラウドの強みであり、課題でもあります。 一方、エンド ユーザーはより多くの処理を実行できます。 さらに、使用および作成されている常に変化するサービスが、お客様のセキュリティ基準に準拠し、セキュリティのベスト プラクティスに従っていることを確認するにはどうすればよいでしょうか。
+-   **急速に変化するワークロード** : これはクラウドの強みであり、課題でもあります。 一方、エンド ユーザーはより多くの処理を実行できます。 さらに、使用および作成されている常に変化するサービスが、お客様のセキュリティ基準に準拠し、セキュリティのベスト プラクティスに従っていることを確認するにはどうすればよいでしょうか。
 
--   **ますます高度になる攻撃**: ワークロードをどこで実行する場合でも、攻撃はますます高度になっています。 パブリック クラウドのワークロードを保護する必要があります。これは実質的にインターネットに接続しているワークロードであり、セキュリティのベスト プラクティスに従わないと、さらに脆弱になる可能性があります。
+-   **ますます高度になる攻撃** : ワークロードをどこで実行する場合でも、攻撃はますます高度になっています。 パブリック クラウドのワークロードを保護する必要があります。これは実質的にインターネットに接続しているワークロードであり、セキュリティのベスト プラクティスに従わないと、さらに脆弱になる可能性があります。
 
--   **セキュリティ スキルの不足**: セキュリティ アラートとアラート システムの数は、環境が保護されているかどうかを確認するために必要な経歴と経験を持つ管理者の数を上回っています。 最近の攻撃の最新情報を把握し続けることは常に課題であり、セキュリティの世界が絶え間なく変化する最前線に立ち続けることは不可能です。
+-   **セキュリティ スキルの不足** : セキュリティ アラートとアラート システムの数は、環境が保護されているかどうかを確認するために必要な経歴と経験を持つ管理者の数を上回っています。 最近の攻撃の最新情報を把握し続けることは常に課題であり、セキュリティの世界が絶え間なく変化する最前線に立ち続けることは不可能です。
 
 このような課題からお客様自身を保護できるように、Security Center には次のツールが用意されています。
 
--   **セキュリティ体制を強化する**:Security Center を使用すると、ご自分の環境を評価することができ、リソースの状態や、それらがセキュリティで保護されているかどうかを把握できます。
+-   **セキュリティ体制を強化する** :Security Center を使用すると、ご自分の環境を評価することができ、リソースの状態や、それらがセキュリティで保護されているかどうかを把握できます。
 
--   **脅威からの保護**:Security Center ではワークロードが評価され、脅威防止の推奨事項とセキュリティ アラートが生成されます。
+-   **脅威からの保護** :Security Center ではワークロードが評価され、脅威防止の推奨事項とセキュリティ アラートが生成されます。
 
--   **より迅速にセキュリティ保護**:Security Center では、すべてがクラウドの速度で行われます。 ネイティブに統合されているので、Security Center のデプロイは容易であり、Azure サービスを自動的にプロビジョニングしたり、保護できます。
+-   **より迅速にセキュリティ保護** :Security Center では、すべてがクラウドの速度で行われます。 ネイティブに統合されているので、Security Center のデプロイは容易であり、Azure サービスを自動的にプロビジョニングしたり、保護できます。
 
 > [!NOTE]
 > このサービスは [Azure Lighthouse](../lighthouse/overview.md) をサポートしているため、サービス プロバイダーは各自のテナントにサインインして、顧客から委任されたサブスクリプションやリソース グループを管理することができます。 Azure Security Center のシナリオでは、個々のリソース グループではなく、サブスクリプションを委任する必要があります。
@@ -62,27 +62,27 @@ Azure Security Center を使用すると、セキュリティ体制を強化で�
 
 ### <a name="manage-organization-security-policy-and-compliance"></a>組織のセキュリティ ポリシーとコンプライアンスの管理
 
-これは、ワークロードがセキュリティで保護されていることを把握し、確実にするための基本的なセキュリティです。まず、セキュリティ ポリシーを適切に調整して配置することから始めます。 Security Center のすべてのポリシーは Azure Policy 制御を基礎にして構築されているため、**世界レベルのポリシー ソリューション**のすべての範囲と柔軟性を利用できます。 Security Center では、管理グループ、サブスクリプション全体、さらにはテナント全体に対して実行するようにポリシーを設定できます。
+これは、ワークロードがセキュリティで保護されていることを把握し、確実にするための基本的なセキュリティです。まず、セキュリティ ポリシーを適切に調整して配置することから始めます。 Security Center のすべてのポリシーは Azure Policy 制御を基礎にして構築されているため、 **世界レベルのポリシー ソリューション** のすべての範囲と柔軟性を利用できます。 Security Center では、管理グループ、サブスクリプション全体、さらにはテナント全体に対して実行するようにポリシーを設定できます。
 
 :::image type="content" source="./media/security-center-intro/sc-dashboard.png" alt-text="ポリシー管理ページ":::
 
-Security Center を使用すると、**シャドウ IT のサブスクリプションを特定する**ことができます。 ダッシュボードで**未カバー**のラベルが付いたサブスクリプションを見ると、新しくサブスクリプションが作成されたときにすぐに把握できます。また、ポリシーによって保護され、Azure Security Center によって保護されていることを確認できます。
+Security Center を使用すると、 **シャドウ IT のサブスクリプションを特定する** ことができます。 ダッシュボードで **未カバー** のラベルが付いたサブスクリプションを見ると、新しくサブスクリプションが作成されたときにすぐに把握できます。また、ポリシーによって保護され、Azure Security Center によって保護されていることを確認できます。
 
-:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="ポリシー管理ページ":::
+:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Security Center のポリシー ダッシュボード":::
 
 ### <a name="continuous-assessments"></a>継続的な評価
 
 Security Center では、ワークロード全体に展開されている新しいリソースが継続的に検出され、セキュリティのベスト プラクティスに従って構成されているかどうかが評価され、そうでない場合はフラグが立てられます。また、マシンを保護するために必要な修正点について、優先順位が付けられた推奨事項一覧が表示されます。
 
-Security Center では、全体的なセキュリティ体制に対する各推奨事項の重要度が理解しやすいよう、推奨事項がセキュリティ コントロールにグループ化され、各コントロールには**セキュア スコア**値が追加されます。 これは、**セキュリティ作業の優先度付け**を可能にするうえで重要です。
+Security Center では、全体的なセキュリティ体制に対する各推奨事項の重要度が理解しやすいよう、推奨事項がセキュリティ コントロールにグループ化され、各コントロールには **セキュア スコア** 値が追加されます。 これは、 **セキュリティ作業の優先度付け** を可能にするうえで重要です。
 
-:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="ポリシー管理ページ":::
+:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Security Center のセキュア スコア":::
 
 ### <a name="network-map"></a>ネットワーク マップ
 
-ネットワークのセキュリティ状態を継続的に監視するために Security Center に用意されている最も強力なツールの 1 つとして、**ネットワーク マップ**があります。 このマップを使用すると、ワークロードのトポロジを確認できるため、各ノードが正しく構成されているかどうかを確認できます。 ノードがどのように接続されているかを確認できます。これにより、攻撃者がネットワークに侵入しやすくなる可能性がある望ましくない接続をブロックすることができます。
+ネットワークのセキュリティ状態を継続的に監視するために Security Center に用意されている最も強力なツールの 1 つとして、 **ネットワーク マップ** があります。 このマップを使用すると、ワークロードのトポロジを確認できるため、各ノードが正しく構成されているかどうかを確認できます。 ノードがどのように接続されているかを確認できます。これにより、攻撃者がネットワークに侵入しやすくなる可能性がある望ましくない接続をブロックすることができます。
 
-:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="ポリシー管理ページ":::
+:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Security Center のネットワーク マップ":::
 
 
 ### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>推奨されるコントロールを構成してセキュリティを最適化し、強化する
@@ -93,7 +93,7 @@ Azure Security Center が持つ価値の中心は、その推奨事項にあり�
 
 推奨事項を利用すると、各リソースの攻撃対象領域を減らすことができます。 これには、Azure 仮想マシン、Azure 以外のサーバー、SQL や Storage アカウントなどの Azure PaaS サービスなどが含まれます。リソースの種類によって評価方法は異なり、固有の基準があります。
 
-:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="ポリシー管理ページ":::
+:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="Security Center の推奨事項例":::
 
 ## <a name="protect-against-threats"></a>脅威からの保護
 
@@ -101,11 +101,11 @@ Security Center の脅威の防止機能により、Azure 内のサービスと�
 
 Security Center の脅威の防止機能には、サイバー キルチェーン分析に基づいて環境内のアラートを自動的に相関させるフュージョン キルチェーン分析が含まれており、攻撃キャンペーンの詳細 (開始点、リソースに対する影響の種類) を詳細に把握することができます。
 
-:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="ポリシー管理ページ":::
+:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="セキュリティのアラート":::
 
-### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>Microsoft Defender Advanced Threat Protection との統合
+### <a name="integration-with-microsoft-defender-for-endpoint"></a>Microsoft Defender for Endpoint との統合
 
-Security Center には、Microsoft Defender Advanced Threat Protection との自動ネイティブ統合機能が備わっています。 つまり、Windows マシンと Linux マシンは、構成を行うことなく Security Center の推奨事項および評価と完全に統合されます。
+Security Center には、Microsoft Defender for Endpoint との、自動的でネイティブな統合機能が備わっています。 つまり、Windows マシンと Linux マシンは、構成を行うことなく Security Center の推奨事項および評価と完全に統合されます。
 
 さらに、Security Center では、サーバー環境のアプリケーション制御ポリシーを自動化することができます。 Security Center の適応型アプリケーション制御を使用すると、Windows サーバー全体の包括的なアプリの承認リストを作成できます。 ルールを作成して違反を確認する必要はありません。すべて自動的に行われます。
 
@@ -123,7 +123,7 @@ Security Center には、Azure SQL 内のデータの自動分類を実行する
 
 ## <a name="get-secure-faster"></a>より迅速にセキュリティ保護
 
-ネイティブの Azure 統合 (Azure Policy、Azure Monitor ログなど) が、他の Microsoft セキュリティ ソリューション (Microsoft Cloud App Security、Windows Defender Advanced Threat Protection など) とのシームレスな統合と組み合わされているため、包括的なセキュリティ ソリューションを実現できるだけでなく、オンボードと展開も簡単です。
+ネイティブの Azure 統合 (Azure Policy、Azure Monitor ログなど) が、他の Microsoft セキュリティ ソリューション (Microsoft Cloud App Security、Microsoft Defender for Endpoint など) とのシームレスな統合と組み合わされているため、包括的なセキュリティ ソリューションを実現できるだけでなく、オンボードと展開も簡単です。
 
 さらに、Azure 以外にも、他のクラウド上やオンプレミスのデータ センター内で実行されているワークロードにソリューション全体を拡張することもできます。
 

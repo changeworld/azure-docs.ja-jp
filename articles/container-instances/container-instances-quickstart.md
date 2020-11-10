@@ -9,12 +9,12 @@ ms.custom:
 - mvc
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 41e064d34f9fdb004feb72d7becdb08fe377aec5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1c327fc7fc067948b5022f989e6c86f99573bd1a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91271224"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100186"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用してコンテナー インスタンスを Azure にデプロイする
 
@@ -24,17 +24,17 @@ ms.locfileid: "91271224"
 
 ![Azure Container Instances にデプロイされたアプリのブラウザーでの表示][aci-app-browser]
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント][azure-account] を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Azure Cloud Shell または Azure CLI のローカル インストールを使用して、このクイック スタートを完了できます。 Azure CLI をローカルで使用する場合は、バージョン 2.0.55 以降をお勧めします。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
+- このクイックスタートには、Azure CLI のバージョン 2.0.55 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Azure のコンテナー インスタンスは、すべての Azure リソースと同様に、リソース グループにデプロイする必要があります。 リソース グループを使用すると、関連する Azure リソースを整理して管理できます。
 
-まず、次の [az group create][az-group-create] コマンドを使用して、*myResourceGroup* という名前のリソース グループを *eastus* の場所に作成します。
+まず、次の [az group create][az-group-create] コマンドを使用して、 *myResourceGroup* という名前のリソース グループを *eastus* の場所に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -122,7 +122,7 @@ listening on port 80
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-コンテナーでの処理が完了したら、[az container delete][az-container-delete] コマンドを使用して、そのコンテナーを削除します。
+コンテナーを使い終えたら、[az container delete][az-container-delete] コマンドを使用して、そのコンテナーを削除します。
 
 ```azurecli-interactive
 az container delete --resource-group myResourceGroup --name mycontainer
@@ -136,7 +136,7 @@ az container list --resource-group myResourceGroup --output table
 
 **mycontainer** コンテナーは、コマンドの出力に表示されません。 リソース グループに別のコンテナーがない場合、出力は表示されません。
 
-*myResourceGroup* リソース グループとそこに含まれるすべてのリソースの処理が完了したら、[az group delete][az-group-delete] コマンドを使用してそれを削除します。
+*myResourceGroup* リソース グループとそこに含まれるすべてのリソースの処理が完了したら、 [az group delete][az-group-delete] コマンドを使用してそれを削除します。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

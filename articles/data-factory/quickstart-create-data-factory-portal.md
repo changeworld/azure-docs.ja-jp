@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: d52e8e0157c891cf8be6c610b7c0185d83ef9f06
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 519447dfffaa660131fa587eaef946c76f66983b
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638059"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027331"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>クイック スタート:Azure Data Factory UI を使用してデータ ファクトリを作成する 
 
@@ -61,6 +61,8 @@ ms.locfileid: "92638059"
 1. **[場所]** で、データ ファクトリの場所を選択します。
 
    この一覧に表示されるのは、Data Factory でサポートされ、かつ Azure Data Factory のメタ データが格納される場所のみです。 Data Factory で使用する関連データ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (Azure HDInsight など) は他のリージョンで実行できます。
+
+1. **Next:Git configuration\(次へ: Git の構成\)** を選択し、 **Configure Git later\(後で Git を構成する\)** を選択します。
 
 1. **［作成］** を選択します 作成後、 **[リソースに移動]** を選択して、 **[Data Factory]** ページに移動します。 
 

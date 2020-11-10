@@ -8,12 +8,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: 375149047d51574e14df15b6385b8c296d49a8ec
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 631717252abe956357cf8b588fa653890037bbc9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85254703"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322181"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>クイック スタート:Linux (Ubuntu) Data Science Virtual Machine を設定する
 
@@ -41,23 +41,23 @@ Data Science Virtual Machine Ubuntu 18.04 のインスタンスを作成する�
 
     1. **[基本]** :
     
-       * **サブスクリプション**:複数のサブスクリプションがある場合は、マシンが作成されて課金されるサブスクリプションを選択します。 そのサブスクリプションに対するリソース作成権限が必要です。
+       * **サブスクリプション** :複数のサブスクリプションがある場合は、マシンが作成されて課金されるサブスクリプションを選択します。 そのサブスクリプションに対するリソース作成権限が必要です。
        * **[リソース グループ]** :新しいグループを作成するか、既存のグループを使用します。
        * **[仮想マシン名]** : 仮想マシンの名前を入力します。 この名前は Azure portal で使用されます。
        * **[リージョン]** :最適なデータ センターを選択します。 ネットワーク アクセスを最速にするために、データの大半が存在するデータセンターか、物理的に最も近くにあるデータセンターを選びます。 詳細については、[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)に関する記事を参照してください。
-       * **イメージ**:既定値をそのまま使用します。
-       * **Size**:このオプションには、一般的なワークロードに適したサイズが自動的に設定されます。 詳細については、[Azure の Linux VM のサイズ](../../virtual-machines/linux/sizes.md)に関する記事を参照してください。
+       * **イメージ** :既定値をそのまま使用します。
+       * **Size** :このオプションには、一般的なワークロードに適したサイズが自動的に設定されます。 詳細については、[Azure の Linux VM のサイズ](../../virtual-machines/sizes.md)に関する記事を参照してください。
        * **[認証の種類]** : 設定を迅速に行うには、[パスワード] を選択します。 
          
          > [!NOTE]
-         > JupyterHub を使用する場合は、JupyterHub は SSH 公開キーを使用するように構成されて "*いない*" ため、必ず [パスワード] を選択します。
+         > JupyterHub を使用する場合は、JupyterHub は SSH 公開キーを使用するように構成されて " *いない* " ため、必ず [パスワード] を選択します。
 
-       * **[ユーザー名]** : 管理者のユーザー名を入力します。 このユーザー名を使用して、仮想マシンにログインします。 このユーザー名は Azure ユーザー名と同じである必要はありません。 大文字は使用 "*しない*" でください。
+       * **[ユーザー名]** : 管理者のユーザー名を入力します。 このユーザー名を使用して、仮想マシンにログインします。 このユーザー名は Azure ユーザー名と同じである必要はありません。 大文字は使用 " *しない* " でください。
          
          > [!IMPORTANT]
          > ユーザー名に大文字を使用すると、JupyterHub が機能しなくなり、500 内部サーバー エラーが発生します。
 
-       * **パスワード**:仮想マシンへのログインに使用するパスワードを入力します。    
+       * **パスワード** :仮想マシンへのログインに使用するパスワードを入力します。    
     
    1. **[Review + create]\(レビュー + 作成\)** を選択します。
    1. **[レビュー + 作成]**
@@ -95,12 +95,12 @@ Linux VM は、既に X2Go サーバーでプロビジョニングされてお�
 1. X2Go クライアントを実行します。 [新しいセッション] ウィンドウが自動的にポップアップ表示されない場合は、[セッション] > [新しいセッション] に移動します。
 
 1. 結果の構成ウィンドウで、次の構成パラメーターを入力します。
-   * **[Session] \(セッション) タブ**:
+   * **[Session] \(セッション) タブ** :
      * **[Host]\(ホスト\)** : 前にメモした VM の IP アドレスを入力します。
      * **[Login]\(ログイン\)** : Linux VM 上のユーザー名を入力します。
      * **[SSH Port]\(SSH ポート\)** : 既定値の 22 のままにします。
      * **[Session Type]\(セッションの種類\)** : 値を **XFCE** に変更します。 現在、Linux VM でサポートされるのは XFCE デスクトップのみです。
-   * **[Media]\(メディア\) タブ**: 音声のサポートとクライアントの印刷を使用しない場合は、それらをオフにできます。
+   * **[Media]\(メディア\) タブ** : 音声のサポートとクライアントの印刷を使用しない場合は、それらをオフにできます。
    * **[Shared folders]\(共有フォルダー\)** : このタブを使用して、VM にマウントするクライアント マシン ディレクトリを追加します。 
 
    ![X2go の構成](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
@@ -126,7 +126,7 @@ Ubuntu DSVM は、マルチユーザーの Jupyter サーバーである [Jupyte
       ![Jupyter ログインを入力する](./media/dsvm-ubuntu-intro/jupyter-login.png)
 
 >[!NOTE]
-> この段階で 500 エラーが発生した場合、ユーザー名に大文字を使用した可能性があります。 これは、JupyterHub と、それが使用する PAMAuthenticator の間の既知の相互作用です。 
+> この段階で 500 エラーが発生した場合、ユーザー名に大文字を使用した可能性があります。 これは、JupyterHub と、それが使用する PAMAuthenticator の間の既知の相互作用です。 "このページに到達できない" というエラーが返される場合は、おそらくネットワーク セキュリティ グループのアクセス許可を調整する必要があります。 Azure portal で、リソース グループ内のネットワーク セキュリティ グループ リソースを見つけます。 パブリック インターネットから JupyterHub にアクセスするには、ポート 8000 を開放する必要があります。 (Just-In-Time アクセスの構成を強くおすすめします。この図を見ると、VM が Just-In-Time アクセスを使用するように構成されていることがわかります。 「[Just-In-Time アクセスを使用して管理ポートをセキュリティで保護する](../../security-center/security-center-just-in-time.md)」を参照してください。)![ネットワーク セキュリティ グループの構成](./media/dsvm-ubuntu-intro/nsg-permissions.png)
 
    1. 入手できる多くのサンプル ノートブックを参照します。
 
@@ -144,6 +144,6 @@ c.Spawner.default_url = '/lab'
 
 * [Linux Data Science Virtual Machine でのデータ サイエンス](linux-dsvm-walkthrough.md)に関するチュートリアルでは、ここでプロビジョニングされた Linux DSVM を使用して、一般的なデータ サイエンス タスクをいくつか実行する方法を示します。 
 * この記事で説明しているツールを試して、DSVM 上のさまざまなデータ サイエンス ツールを確認します。 VM にインストールされているツールの基本的な概要と詳細情報を入手できる場所は、仮想マシン内のシェルで `dsvm-more-info` を実行して確認することもできます。  
-* [Team Data Science Process](https://aka.ms/tdsp)を使用して、分析ソリューションを体系的に構築する方法を確認します。
+* [Team Data Science Process](../team-data-science-process/index.yml)を使用して、分析ソリューションを体系的に構築する方法を確認します。
 * Azure AI サービスを使用する機械学習とデータ分析のサンプルについては、[Azure AI Gallery](https://gallery.azure.ai/) を参照してください。
 * この仮想マシンに適した[リファレンス ドキュメント](./reference-ubuntu-vm.md)を参照してください。

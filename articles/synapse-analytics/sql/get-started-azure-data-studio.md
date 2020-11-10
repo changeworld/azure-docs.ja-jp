@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: c3c1b61cb4f799b79ca00fc92ffadc2374a61c03
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: fb4c7f8ba49cf701ef13cb57ab2b323a94c928cc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132467"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323826"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Azure Data Studio (プレビュー) を使用して Synapse SQL に接続する
 
@@ -42,11 +42,11 @@ Synapse SQL に接続するには、Azure Data Studio を開いて **[新しい�
 * **データベース:** データベース名
 
 > [!NOTE]
-> **SQL オンデマンド (プレビュー)** を使用する場合、URL は次のようになります。
+> **サーバーレス SQL プール (プレビュー)** を使用する場合、URL は次のようになります。
 >
 > - `<Azure Synapse workspace name>`-ondemand.sql.azuresynapse.net
 >
-> **SQL プール** を使用する場合、URL は次のようになります。
+> **専用 SQL プール** を使用する場合、URL は次のようになります。
 >
 > - `<Azure Synapse workspace name>`.sql.azuresynapse.net
 
@@ -77,7 +77,7 @@ Azure Active Directory を使用するには、必要な認証の種類を選択
 
 ![新しいクエリ](./media/get-started-azure-data-studio/5-new-query.png)
 
-たとえば、SQL オンデマンドを使用して [Parquet ファイルを照会](query-parquet-files.md)するには、次の Transact-SQL ステートメントを使用します。
+たとえば、サーバーレス SQL プールを使用して [Parquet ファイルを照会](query-parquet-files.md)するには、次の Transact-SQL ステートメントを使用します。
 
 ```sql
 SELECT COUNT(*)

@@ -9,16 +9,16 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 3c269f07c177d99e46dcc343b80979835b429b68
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0ea46122cffe03ffe2e6a4e07afc6995d88a3acb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369354"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93306988"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics での Apache Spark
 
-Apache Spark は、ビッグデータ分析アプリケーションのパフォーマンスを向上させるメモリ内処理をサポートする並列処理フレームワークです。 Azure Synapse Analytics の Apache Spark は、Apache Spark を Microsoft がクラウドに実装したものです。 Azure Synapse では、Spark プール (プレビュー) を Azure に簡単に作成して構成することができます。 Azure Synapse の Spark プールは、Azure Storage および Azure Data Lake Generation 2 ストレージと互換性があります。 そのため、Azure Spark プールを使用して、Azure に格納されているデータを処理することができます。
+Apache Spark は、ビッグデータ分析アプリケーションのパフォーマンスを向上させるメモリ内処理をサポートする並列処理フレームワークです。 Azure Synapse Analytics の Apache Spark は、Apache Spark を Microsoft がクラウドに実装したものです。 Azure Synapse では、サーバーレス Apache Spark プール (プレビュー) を Azure に簡単に作成して構成することができます。 Azure Synapse の Spark プールは、Azure Storage および Azure Data Lake Generation 2 ストレージと互換性があります。 そのため、Spark プールを使用して、Azure に格納されているデータを処理することができます。
 
 ![Spark: 一元化されたフレームワーク](./media/apache-spark-overview/spark-overview.png)
 

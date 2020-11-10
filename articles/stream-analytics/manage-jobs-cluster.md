@@ -8,14 +8,14 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 6b475e34c01ca26abd3d8ab1d904521de19f941b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 01efb5736d7becf1b46c7c2898c22648b0421dd1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90945215"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305812"
 ---
-# <a name="create-and-delete-jobs-in-an-azure-stream-analytics-cluster"></a>Azure Stream Analytics クラスターでのジョブの作成と削除
+# <a name="add-and-remove-jobs-in-an-azure-stream-analytics-cluster"></a>Azure Stream Analytics クラスターのジョブを追加、削除する
 
 Stream Analytics クラスター上で、複数の Azure Stream Analytics ジョブを実行できます。 クラスター上でのジョブの実行は、クラスターにジョブを追加してジョブを開始する単純な 2 段階のプロセスです。 この記事では、既存のクラスターからジョブを追加および削除する方法について説明します。 クイックスタートに従って [Stream Analytics クラスターを作成](create-cluster.md)します (まだお持ちでない場合)。
 

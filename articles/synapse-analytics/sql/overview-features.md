@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: f159e38eb66e1758feaf743c32d8de30c614b234
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fe30a2a0885e1a579eb32ad84ef467f7162febe4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288513"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310320"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Azure Synapse SQL でサポートされる Transact-SQL 機能
 
@@ -79,11 +79,11 @@ Synapse SQL では、組み込みのセキュリティ機能を使用し、デ�
 | **ユーザー** |  なし (データベースでサポートされるのは包含ユーザーのみ) | はい |
 | **[包含ユーザー](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)** | はい。 **注:** 制限のない管理者になれる Azure AD ユーザーは 1 人だけです | はい |
 | **SQL ユーザー名とパスワードによる認証**| はい | はい |
-| **Azure Active Directory (AAD) 認証**| はい。Azure AD ユーザー | はい。Azure AD ログインとユーザー |
-| **Storage の Azure Active Directory (AAD) パススルー認証** | はい | はい |
+| **Azure Active Directory (Azure AD) 認証**| はい。Azure AD ユーザー | はい。Azure AD ログインとユーザー |
+| **Storage の Azure Active Directory (Azure AD) パススルー認証** | はい | はい |
 | **Storage の SAS トークン認証** | いいえ | はい。[EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) またはインスタンスレベルの [CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) で [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用。 |
 | **Storage のアクセス キー認証** | はい。[EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) で [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用 | いいえ |
-| **Storage の[マネージド ID](../security/synapse-workspace-managed-identity.md) 認証** | はい。[マネージド サービス ID 資格情報](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)を使用 | はい。`Managed Identity` 資格情報を使用。 |
+| **Storage の [マネージド ID](../security/synapse-workspace-managed-identity.md) 認証** | はい。[マネージド サービス ID 資格情報](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)を使用 | はい。`Managed Identity` 資格情報を使用。 |
 | **Storage のアプリケーション ID 認証** | [はい](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | いいえ |
 | **アクセス許可 - オブジェクトレベル** | はい。ユーザーへのアクセス許可の付与、拒否、取り消しを行う機能を含む | はい。サポートされているシステム オブジェクトでのユーザーまたはログインへのアクセス許可の付与、拒否、取り消しを行う機能を含む |
 | **アクセス許可 - スキーマレベル** | はい。スキーマでのユーザーまたはログインへのアクセス許可の付与、拒否、取り消しを行う機能を含む | はい。スキーマでのユーザーまたはログインへのアクセス許可の付与、拒否、取り消しを行う機能を含む |
@@ -103,7 +103,7 @@ Synapse SQL では、組み込みのセキュリティ機能を使用し、デ�
 | **[ファイアウォール規則](../security/synapse-workspace-ip-firewall.md)**| はい | はい |
 | **[プライベート エンドポイント](../security/synapse-workspace-managed-private-endpoints.md)**| はい | はい |
 
-SQL プールと SQL オンデマンドでは、標準の Transact-SQL 言語を使用してデータのクエリを実行します。 詳細な相違点については、[Transact-SQL 言語のリファレンス](/sql/t-sql/language-reference)を参照してください。
+専用 SQL プールとサーバーレス SQL プールでは、標準の Transact-SQL 言語を使用してデータのクエリを実行します。 詳細な相違点については、[Transact-SQL 言語のリファレンス](/sql/t-sql/language-reference)を参照してください。
 
 ## <a name="tools"></a>ツール
 
@@ -118,7 +118,7 @@ SQL プールと SQL オンデマンドでは、標準の Transact-SQL 言語を
 | **SQL Server Management Studio** | はい | はい。バージョン 18.5 以上。 |
 
 > [!NOTE]
-> SSMS を使用して SQL オンデマンド (プレビュー) に接続し、クエリを実行できます。 これはバージョン 18.5 以降、部分的にサポートされています。接続してクエリを実行する場合にのみ使用できます。
+> SSMS を使用してサーバーレス SQL プール (プレビュー) に接続し、クエリを実行できます。 これはバージョン 18.5 以降、部分的にサポートされています。接続してクエリを実行する場合にのみ使用できます。
 
 標準の Transact-SQL 言語が使用されるほとんどのアプリケーションでは、プロビジョニングとサーバーレス両方の Synapse SQL 消費モデルのクエリを実行できます。
 
@@ -150,7 +150,7 @@ SQL プールと SQL オンデマンドでは、標準の Transact-SQL 言語を
 | **[CDM](https://docs.microsoft.com/common-data-model/)** | いいえ | いいえ |
 
 ## <a name="next-steps"></a>次のステップ
-SQL プールと SQL オンデマンドのベスト プラクティスに関する追加情報については、次の記事を参照してください。
+専用 SQL プールとサーバーレス SQL プールのベスト プラクティスに関する追加情報については、次の記事を参照してください。
 
-- [SQL プールのベスト プラクティス](best-practices-sql-pool.md)
-- [SQL オンデマンドのベスト プラクティス](best-practices-sql-on-demand.md)
+- [専用 SQL プールのベスト プラクティス](best-practices-sql-pool.md)
+- [サーバーレス SQL プールのベスト プラクティス](best-practices-sql-on-demand.md)

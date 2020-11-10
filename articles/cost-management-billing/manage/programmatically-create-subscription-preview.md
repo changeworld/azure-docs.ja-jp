@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 10/29/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c63733a66a2bb4e320a24649dfe82eac259e79ae
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 3ffdeb0add8622e1b9f28f9603dc146b78f742cd
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131107"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043291"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>プレビュー API を使用してプログラムで Azure サブスクリプションを作成する
 
@@ -45,7 +45,7 @@ ms.locfileid: "92131107"
 
 アカウント所有者に関連付けられた登録アカウントに追加されると、アカウントと登録の関係を使用してサブスクリプション料金の請求先が決定されます。 このアカウント内で作成されたすべてのサブスクリプションは、アカウントが含まれる EA 登録に課金されます。 サブスクリプションを作成するには、サブスクリプションを所有するための登録アカウントおよびユーザー プリンシパルに関する値を受け渡す必要があります。
 
-次のコマンドを実行するには、サブスクリプションが既定で作成されるディレクトリである、アカウント所有者の "*ホーム ディレクトリ*" にサインインしている必要があります。
+次のコマンドを実行するには、サブスクリプションが既定で作成されるディレクトリである、アカウント所有者の " *ホーム ディレクトリ* " にサインインしている必要があります。
 
 ### <a name="rest"></a>[REST](#tab/rest)
 
@@ -177,7 +177,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 
 | 要素名  | 必須 | 型   | 説明 |
 |---------------|----------|--------|----|
-| `Name` | いいえ      | String | サブスクリプションの表示名です。 指定されていない場合は、"*Microsoft Azure エンタープライズ*" などのプラン名に設定されます。 |
+| `Name` | いいえ      | String | サブスクリプションの表示名です。 指定されていない場合は、" *Microsoft Azure エンタープライズ* " などのプラン名に設定されます。 |
 | `OfferType`   | はい      | String | サブスクリプション オファー。 EA では、[MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (運用環境用) と [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開発/テスト用。[EA ポータルを使用してオンに設定する必要があります](https://ea.azure.com/helpdocs/DevOrTestOffer)) の 2 つのオプションがあります。                |
 | `EnrollmentAccountObjectId`      | はい       | String | サブスクリプションが作成された、請求先の登録アカウントのオブジェクト ID。 この値は、`Get-AzEnrollmentAccount` から取得する GUID です。 |
 | `OwnerObjectId`      | いいえ       | String | サブスクリプションの作成時にサブスクリプションに Azure RBAC 所有者として追加するユーザーのオブジェクト ID。  |
@@ -198,7 +198,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 
 | 要素名  | 必須 | 型   | 説明 |
 |---------------|----------|--------|------------|
-| `display-name` | いいえ      | String | サブスクリプションの表示名です。 指定されていない場合は、"*Microsoft Azure エンタープライズ*" などのプラン名に設定されます。|
+| `display-name` | いいえ      | String | サブスクリプションの表示名です。 指定されていない場合は、" *Microsoft Azure エンタープライズ* " などのプラン名に設定されます。|
 | `offer-type`   | はい      | String | サブスクリプションのオファーです。 EA では、[MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (運用環境用) と [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開発/テスト用。[EA ポータルを使用してオンに設定する必要があります](https://ea.azure.com/helpdocs/DevOrTestOffer)) の 2 つのオプションがあります。                |
 | `enrollment-account-object-id`      | はい       | String | サブスクリプションが作成された、請求先の登録アカウントのオブジェクト ID。 この値は、`az billing enrollment-account list` から取得する GUID です。 |
 | `owner-object-id`      | いいえ       | String | サブスクリプションの作成時にサブスクリプションに Azure RBAC 所有者として追加するユーザーのオブジェクト ID。  |
@@ -212,7 +212,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 ### <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Azure Enterprise のサブスクリプション作成 API の制限事項
 
 - この API を使用して作成できるのは、Azure Enterprise サブスクリプションのみです。
-- 登録アカウントあたりのサブスクリプションの上限数は 2000 です。 その後、アカウントの追加のサブスクリプションは、Azure portal でのみ作成することができます。 API を使用してさらにサブスクリプションを作成する場合は、別の登録アカウントを作成します。
+- 登録アカウントあたりのサブスクリプションの上限数は 2000 です。 その後、アカウントの追加のサブスクリプションは、Azure portal でのみ作成することができます。 API を使用してさらにサブスクリプションを作成する場合は、別の登録アカウントを作成します。 サブスクリプションは、2000 の上限数に達するまでキャンセル、削除、および譲渡できます。
 - アカウント所有者ではないが、Azure RBAC で登録アカウントに追加されたユーザーは、Azure portal でサブスクリプションを作成することはできません。
 - サブスクリプションが作成されるテナントを選択することはできません。 サブスクリプションは常に、アカウント所有者のホーム テナント内に作成されます。 サブスクリプションを別のテナントに移動する場合は、[テナントのサブスクリプションの変更](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)に関する記事を参照してください。
 
@@ -324,7 +324,7 @@ API 応答には、自分にサブスクリプションを作成するための�
 
 ### <a name="create-a-subscription-for-an-invoice-section"></a>請求書セクションのサブスクリプションを作成する
 
-次の例では、*Dev Team Subscription* という名前で種類が *Microsoft Azure プラン*であるサブスクリプションを、*Development* 請求書セクションを対象に作成します。 サブスクリプションは *Contoso finance* の課金プロファイルに請求され、請求書の *Development* セクションに表示されます。
+次の例では、 *Dev Team Subscription* という名前で種類が *Microsoft Azure プラン* であるサブスクリプションを、 *Development* 請求書セクションを対象に作成します。 サブスクリプションは *Contoso finance* の課金プロファイルに請求され、請求書の *Development* セクションに表示されます。
 
 次の要求を実行します。その際、`<invoiceSectionId>` を 2 番目のステップでコピーした `invoiceSectionId` (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX```) と置き換えます。 2 番目の手順でコピーした `billingProfileId` と `skuId` を API の要求パラメーターで渡します。 所有者を指定するには、[ユーザー オブジェクト ID を取得する方法](grant-access-to-create-subscription.md#userObjectId)を参照してください。
 
@@ -350,7 +350,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 
 ```
 
-| 要素名  | 必須 | 型   | 説明                                                                                               |
+| 要素名  | 必須 | Type   | 説明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | はい      | String | サブスクリプションの表示名です。|
 | `billingProfileId`   | はい      | String | サブスクリプションの料金に対して課金される課金プロファイルの ID です。  |
@@ -504,7 +504,7 @@ API 応答には、顧客向けのリセラーが一覧表示されます。
 
 ### <a name="create-a-subscription-for-a-customer"></a>顧客のサブスクリプションを作成する
 
-次の例では、*Dev Team subscription* という名前のサブスクリプションを *Fabrikam toys* 用に作成し、*Wingtip* リセラーをそのサブスクリプションに関連付けます。 
+次の例では、 *Dev Team subscription* という名前のサブスクリプションを *Fabrikam toys* 用に作成し、 *Wingtip* リセラーをそのサブスクリプションに関連付けます。 
 
 次の要求を実行します。その際、`<customerId>` を 2 番目のステップでコピーした `id` (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) と置き換えます。 2 番目のステップでコピーしたオプションの *resellerId* を API の要求パラメーターで渡します。
 
@@ -519,7 +519,7 @@ POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/c
 }'
 ```
 
-| 要素名  | 必須 | 型   | 説明                                                                                               |
+| 要素名  | 必須 | Type   | 説明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | はい      | String | サブスクリプションの表示名です。|
 | `skuId` | はい      | String | Azure プランの SKU ID です。 種類が Microsoft Azure プランであるサブスクリプションには *0001* を使用します。 |

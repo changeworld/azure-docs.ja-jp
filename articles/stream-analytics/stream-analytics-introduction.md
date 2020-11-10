@@ -1,19 +1,19 @@
 ---
 title: Azure Stream Analytics の概要
-description: モノのインターネット (IoT) からのストリーミング データをリアルタイムで分析するのに役立つ管理されたサービスである Stream Analytics について説明します。
+description: モノのインターネット (IoT) からのストリーミング データをリアルタイムで分析するのに役立つ管理サービスである Stream Analytics について説明します。
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
-ms.custom: mvc
-ms.date: 10/9/2020
-ms.openlocfilehash: 10ffe7c2544be2bf2c09ae39f323b1e643063d27
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.custom: mvc, contperfq2
+ms.date: 11/03/2020
+ms.openlocfilehash: d81858db3f4d09b834a9199804a6f2631828496b
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91892882"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342234"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Azure Stream Analytics とは
 
@@ -35,7 +35,7 @@ Azure Stream Analytics ジョブは、入力、クエリ、および出力で構
 
 * Azure Functions、Service Bus Topics、Queues などのサービスにデータを送信して、通信またはダウンストリームのカスタム ワークフローをトリガーする。
 * リアルタイムのダッシュボード作成のためにデータを Power BI ダッシュボードに送信する。
-* 履歴データに基づいて機械学習モデルをトレーニングするか、またはバッチ分析を実行するために、データを他の Azure ストレージ サービス (例: Azure Data Lake、Azure Synapse Analytics など) に格納する。
+* 履歴データに基づいて機械学習モデルをトレーニングするか、またはバッチ分析を実行するために、データを他の Azure ストレージ サービス (Azure Data Lake、Azure Synapse Analytics など) に格納する。
 
 次の図は、データがどのように Stream Analytics に送信され、分析され、さらに格納やプレゼンテーションなどの他のアクションのために送信されるかを示しています。
 
@@ -47,17 +47,17 @@ Azure Stream Analytics は、あらゆるジョブの規模に対応するスケ
 
 ## <a name="ease-of-getting-started"></a>簡単に始められる
 
-Azure Stream Analytics は、簡単に始めることができます。 何回かクリックして複数のソースやシンクに接続するだけで、エンド ツー エンドのパイプラインが作成されます。 Stream Analytics は、ストリーミング データ インジェストのためには [Azure Event Hubs](/azure/event-hubs/) や [Azure IoT Hub](/azure/iot-hub/) に、履歴データの取り込みのためには [Azure Blob Storage](/azure/storage/common/storage-introduction) に接続できます。 また、ストリーミング データに結合して参照操作を実行するために使用できる Azure Blob Storage または [SQL Database](stream-analytics-use-reference-data.md#azure-sql-database) からの静的な、またはゆっくり変化する参照データをジョブ入力に含めることもできます。
+Azure Stream Analytics は、簡単に始めることができます。 何回かクリックして複数のソースやシンクに接続するだけで、エンド ツー エンドのパイプラインが作成されます。 Stream Analytics は、ストリーミング データ インジェストのためには Azure Event Hubs や Azure IoT Hub に、履歴データの取り込みのためには Azure Blob Storage に接続できます。 また、ストリーミング データに結合して参照操作を実行するために使用できる Azure Blob Storage または SQL Database からの静的な、またはゆっくり変化する参照データをジョブ入力に含めることもできます。
 
-Stream Analytics は、[Azure Blob Storage](/azure/storage/common/storage-introduction)、[Azure SQL Database](/azure/sql-database/)、[Azure Data Lake Store](/azure/data-lake-store/)、[Azure CosmosDB](/azure/cosmos-db/introduction) などのさまざまなストレージ システムにジョブ出力をルーティングできます。 さらに、Azure Synapse Analytics または HDInsight を使用してストリーム出力に対してバッチ分析を実行したり、別のサービスに出力を送信したりすることもできます。たとえば、Event Hubs に送信して利用したり、[Power BI](https://docs.microsoft.com/power-bi/) に送信してリアルタイムに視覚化したりすることができます。
+Stream Analytics は、Azure Blob Storage、Azure SQL Database、Azure Data Lake Store、Azure CosmosDB などのさまざまなストレージ システムにジョブ出力をルーティングできます。 さらに、Azure Synapse Analytics または HDInsight を使用してストリーム出力に対してバッチ分析を実行したり、別のサービスに出力を送信したりすることもできます。たとえば、Event Hubs に送信して利用したり、Power BI に送信してリアルタイムに視覚化したりすることができます。
 
 Stream Analytics の出力の完全な一覧については、「[Azure Stream Analytics からの出力を理解する](stream-analytics-define-outputs.md)」を参照してください。
 
 ## <a name="programmer-productivity"></a>プログラマの生産性
 
-Azure Stream Analytics では、移動中のデータを分析するための強力な時間的制約によって拡張された SQL クエリ言語を使用します。 ジョブはまた、Azure PowerShell、Azure CLI、[Stream Analytics Visual Studio ツール](stream-analytics-tools-for-visual-studio-install.md)、[Stream Analytics Visual Studio Code 拡張機能](quick-create-visual-studio-code.md)、Azure Resource Manager テンプレートなどの開発者ツールを使用して作成することもできます。 開発者ツールを使用することで、変換クエリをオフラインで開発したり、[CI/CD パイプライン](stream-analytics-tools-for-visual-studio-cicd.md)を使用して Azure にジョブを送ったりすることができます。
+Azure Stream Analytics では、移動中のデータを分析するための強力な時間的制約によって拡張された SQL クエリ言語を使用します。 ジョブはまた、Azure PowerShell、Azure CLI、Stream Analytics Visual Studio ツール、[Stream Analytics Visual Studio Code 拡張機能](quick-create-visual-studio-code.md)、Azure Resource Manager テンプレートなどの開発者ツールを使用して作成することもできます。 開発者ツールを使用することで、変換クエリをオフラインで開発したり、CI/CD パイプラインを使用して Azure にジョブを送ったりすることができます。
 
-Stream Analytics クエリ言語には、ストリーミング データを分析するための豊富な関数が用意されているため、CEP (Complex Event Procssing、複合イベント処理) を実行することができます。 このクエリ言語では、シンプルなデータ操作、集計および分析関数、[地理空間機能](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-geospatial-functions)、[パターン マッチング](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics)、[異常検出](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-machine-learning-anomaly-detection)がサポートされています。 ポータルや Microsoft の開発ツールを使用してクエリを編集し、ライブ ストリームから抽出されたサンプル データを使用してそれをテストできます。
+Stream Analytics クエリ言語には、ストリーミング データを分析するための豊富な関数が用意されているため、CEP (Complex Event Procssing、複合イベント処理) を実行することができます。 このクエリ言語では、シンプルなデータ操作、集計および分析関数、地理空間機能、パターン マッチング、異常検出がサポートされています。 ポータルや Microsoft の開発ツールを使用してクエリを編集し、ライブ ストリームから抽出されたサンプル データを使用してそれをテストできます。
 
 クエリ言語の機能は、別の関数を定義したり呼び出したりすることで拡張することができます。 Azure Machine Learning ソリューションを利用するために Azure 機械学習で関数呼び出しを定義したり、Stream Analytics クエリの一部として複雑な計算を実行するために JavaScript または C# のユーザー定義関数 (UDF) またはユーザー定義集計を統合したりすることができます。
 
@@ -80,15 +80,15 @@ Azure Stream Analytics は世界中の複数のリージョンで使用でき、
 
 ### <a name="reliability"></a>[信頼性]
 
-厳密には、Azure Stream Analytics で保証されるイベントの処理は 1 回、イベントの配信は 1 回以上となります。そのため、イベントが失われることはありません。 [イベント配信の保証](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)に関するページで説明されているように、選択した出力が提供される厳密に 1 回だけの処理が保証されます。
+厳密には、Azure Stream Analytics で保証されるイベントの処理は 1 回、イベントの配信は 1 回以上となります。そのため、イベントが失われることはありません。 イベント配信の保証に関するページで説明されているように、選択した出力が提供される厳密に 1 回だけの処理が保証されます。
 
 Azure Stream Analytics には、イベントの配信に失敗した場合のために、組み込みの回復機能が備わっています。 Stream Analytics にはまた、ジョブの状態を保持するための組み込みのチェックポイントも用意されており、反復可能な結果が提供されます。
 
-Stream Analytics は、マネージド サービスとして、分レベルの細分性で 99.9% の可用性のイベント処理が保証されます。 詳細については、「[Stream Analytics の SLA](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/)」のページを参照してください。 
+Stream Analytics は、マネージド サービスとして、分レベルの細分性で 99.9% の可用性のイベント処理が保証されます。 
 
 ### <a name="security"></a>セキュリティ
 
-セキュリティに関しては、Azure Stream Analytics では、すべての着信および発信の通信が暗号化され、TLS 1.2 がサポートされています。 組み込みのチェックポイントも暗号化されます。 Stream Analytics では、すべての処理はメモリ内で実行されるため、受信データが格納されることはありません。 [Stream Analytics クラスター](https://docs.microsoft.com/azure/stream-analytics/cluster-overview)でジョブを実行している場合、Stream Analytics は Azure Virtual Network (VNET) もサポートします。
+セキュリティに関しては、Azure Stream Analytics では、すべての着信および発信の通信が暗号化され、TLS 1.2 がサポートされています。 組み込みのチェックポイントも暗号化されます。 Stream Analytics では、すべての処理はメモリ内で実行されるため、受信データが格納されることはありません。 [Stream Analytics クラスター](./cluster-overview.md)でジョブを実行している場合、Stream Analytics は Azure Virtual Network (VNET) もサポートします。
 
 ### <a name="compliance"></a>コンプライアンス
 

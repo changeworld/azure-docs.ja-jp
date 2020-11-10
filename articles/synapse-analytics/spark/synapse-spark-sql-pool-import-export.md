@@ -1,6 +1,6 @@
 ---
-title: Spark プール (プレビュー) と SQL プールの間でのデータのインポートとエクスポート
-description: この記事では、SQL プールと Spark プール (プレビュー) の間でデータを移動するためにカスタム コネクタを使用する方法について説明します。
+title: サーバーレス Apache Spark プール (プレビュー) と SQL プールの間でのデータのインポートとエクスポート
+description: この記事では、専用 SQL プールとサーバーレス Apache Spark プール (プレビュー) の間でデータを移動するためにカスタム コネクタを使用する方法について説明します。
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 11f73d2becb40b800c49afe0cd58f56953f8d42d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ee82fbaa9687e064747908600c7e5c9017f8f1a9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91259920"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323887"
 ---
 # <a name="introduction"></a>はじめに
 
-Synapse SQL コネクタへの Azure Synapse の Apache Spark は、Azure Synapse の Spark プール (プレビュー) と SQL プールの間でデータを効率的に転送するように設計されています。 Synapse SQL コネクタへの Azure Synapse の Apache Spark は、SQL プールでのみ機能し、SQL オンデマンドでは機能しません。
+Synapse SQL コネクタへの Azure Synapse の Apache Spark は、Azure Synapse のサーバーレス Apache Spark プール (プレビュー) と SQL プールの間でデータを効率的に転送するように設計されています。 Synapse SQL コネクタへの Azure Synapse の Apache Spark は、専用 SQL プールでのみ機能し、サーバーレス SQL プールでは機能しません。
 
 ## <a name="design"></a>デザイン
 
 Spark プールと SQL プールの間でのデータの転送は、JDBC を使用して行うことができます。 ただし、Spark プールや SQL プールといった 2 つの分散システムでは、JDBC はシリアル データ転送のボトルネックになる傾向があります。
 
-Synapse SQL コネクタへの Azure Synapse の Apache Spark プールは、Apache Spark 用のデータ ソースの実装です。 これにより、Azure Data Lake Storage Gen2 と SQL プールの PolyBase が使用され、Spark クラスターと Synapse SQL インスタンスの間でデータが効率的に転送されます。
+Synapse SQL コネクタへの Azure Synapse の Apache Spark プールは、Apache Spark 用のデータ ソースの実装です。 これにより、Azure Data Lake Storage Gen2 と専用 SQL プールの PolyBase が使用され、Spark クラスターと Synapse SQL インスタンスの間でデータが効率的に転送されます。
 
 ![コネクタ アーキテクチャ](./media/synapse-spark-sqlpool-import-export/arch1.png)
 
@@ -32,7 +32,7 @@ Synapse SQL コネクタへの Azure Synapse の Apache Spark プールは、Apa
 
 システム間の認証は、Azure Synapse Analytics でシームレスに行われます。 トークン サービスは Azure Active Directory に接続し、ストレージ アカウントまたはデータ ウェアハウス サーバーにアクセスするときに使用するセキュリティ トークンを取得します。
 
-このため、ストレージ アカウントとデータ ウェアハウス サーバーで AAD 認証が構成されている限り、資格情報を作成したり、コネクタ API でそれらを指定したりする必要はありません。 そうでない場合は、SQL 認証を指定できます。 詳細については、「[使用法](#usage)」セクションを参照してください。
+このため、ストレージ アカウントとデータ ウェアハウス サーバーで Azure AD 認証が構成されている限り、資格情報を作成したり、コネクタ API でそれらを指定したりする必要はありません。 そうでない場合は、SQL 認証を指定できます。 詳細については、「[使用法](#usage)」セクションを参照してください。
 
 ## <a name="constraints"></a>制約
 
@@ -40,7 +40,7 @@ Synapse SQL コネクタへの Azure Synapse の Apache Spark プールは、Apa
 
 ## <a name="prerequisites"></a>前提条件
 
-- データの転送先および転送元となるデータベースおよび SQL プールにある、**db_exporter** ロールのメンバーである必要があります。
+- データの転送先および転送元となるデータベースおよび SQL プールにある、 **db_exporter** ロールのメンバーである必要があります。
 - 既定のストレージ アカウントのストレージ BLOB データ共同作成者ロールのメンバーである必要があります。
 
 ユーザーを作成するには、SQL プール データベースに接続し、これらの例に従います。
@@ -67,7 +67,7 @@ EXEC sp_addrolemember 'db_exporter',[mike@contoso.com]
 
 import ステートメントは必要ありません。ノートブック エクスペリエンスのために事前にインポートされています。
 
-### <a name="transfer-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>ワークスペースに接続されている SQL プールとの間でのデータを転送する
+### <a name="transfer-data-to-or-from-a-dedicated-sql-pool-attached-within-the-workspace"></a>ワークスペースに接続されている専用 SQL プールとの間でのデータを転送する
 
 > [!NOTE]
 > **import はノートブック エクスペリエンスには必要ありません**
@@ -91,12 +91,12 @@ val df = spark.read.sqlanalytics("<DBName>.<Schema>.<TableName>")
 df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-Write API では、SQL プールにテーブルを作成してから、Polybase を呼び出してデータを読み込みます。  テーブルは SQL プールに存在することはできません。存在する場合、"... という名前のオブジェクトが既に存在します" という内容のエラーが返されます。
+Write API では、専用 SQL プールにテーブルを作成してから、Polybase を呼び出してデータを読み込みます。  テーブルは専用 SQL プールに存在することはできません。存在する場合、"... という名前のオブジェクトが既に存在します" という内容のエラーが返されます。
 
 TableType の値
 
-- Constants.INTERNAL - SQL プール内のマネージド テーブル
-- Constants.EXTERNAL - SQL プール内の外部テーブル
+- Constants.INTERNAL - 専用 SQL プール内のマネージド テーブル
+- Constants.EXTERNAL - 専用 SQL プール内の外部テーブル
 
 SQL プールのマネージド テーブル
 
@@ -106,10 +106,10 @@ df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 
 SQL プールの外部テーブル
 
-SQL プールの外部テーブルに書き込むには、EXTERNAL DATA SOURCE と EXTERNAL FILE FORMAT が SQL プールに存在している必要があります。  詳細については、SQL プールでの[外部データ ソース](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)および[外部ファイル形式](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)の作成に関するページを参照してください。  SQL プールに外部データ ソースと外部ファイル形式を作成する例を以下に示します。
+専用 SQL プールの外部テーブルに書き込むには、EXTERNAL DATA SOURCE と EXTERNAL FILE FORMAT が専用 SQL プールに存在している必要があります。  詳細については、専用 SQL プールでの[外部データ ソース](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)および[外部ファイル形式](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)の作成に関するページを参照してください。  専用 SQL プールに外部データ ソースと外部ファイル形式を作成する例を以下に示します。
 
 ```sql
---For an external table, you need to pre-create the data source and file format in SQL pool using SQL queries:
+--For an external table, you need to pre-create the data source and file format in dedicated SQL pool using SQL queries:
 CREATE EXTERNAL DATA SOURCE <DataSourceName>
 WITH
   ( LOCATION = 'abfss://...' ,
@@ -134,7 +134,7 @@ df.write.
 
 ```
 
-### <a name="if-you-transfer-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>ワークスペースの外部にある SQL プールまたはデータベースとの間でデータを転送する場合
+### <a name="transfer-data-to-or-from-a-dedicated-sql-pool-or-database-outside-the-workspace"></a>ワークスペースの外部にある専用 SQL プールまたはデータベースとの間でデータを転送する
 
 > [!NOTE]
 > import はノートブック エクスペリエンスには必要ありません
@@ -160,11 +160,11 @@ option(Constants.SERVER, "samplews.database.windows.net").
 sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-### <a name="use-sql-auth-instead-of-aad"></a>AAD ではなく SQL 認証を使用する
+### <a name="use-sql-auth-instead-of-azure-ad"></a>Azure AD ではなく SQL 認証を使用する
 
 #### <a name="read-api"></a>Read API
 
-現在、コネクタでは、ワークスペースの外部にある SQL プールに対するトークンベースの認証はサポートされていません。 SQL 認証の使用が必要になります。
+現在、コネクタでは、ワークスペースの外部にある専用 SQL プールに対するトークンベースの認証はサポートされていません。 SQL 認証の使用が必要になります。
 
 ```scala
 val df = spark.read.
@@ -227,7 +227,7 @@ scala_df.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 
 - "synapse" 以下のすべてのフォルダーの ACL を Azure portal から設定できる必要があります。 ルート "/" フォルダーに ACL を設定するには、以下の手順に従ってください。
 
-- AAD を使用して Storage Explorer からワークスペースに接続されているストレージ アカウントに接続します。
+- Azure AD を使用して Storage Explorer からワークスペースに接続されているストレージ アカウントに接続します。
 - アカウントを選択し、ワークスペースの ADLS Gen2 URL と既定のファイル システムを指定します。
 - 一覧表示されたストレージ アカウントが表示されたら、一覧表示されているワークスペースを右クリックし、[アクセスの管理] を選択します。
 - "実行" のアクセス許可がある / フォルダーにユーザーを追加します。 [OK] を選択します。
@@ -237,5 +237,5 @@ scala_df.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure portal を使用して SQL プールを作成する](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
+- [Azure portal を使用して専用 SQL プールを作成する](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 - [Azure portal を使用して新しい Apache Spark プールを作成する](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md) 

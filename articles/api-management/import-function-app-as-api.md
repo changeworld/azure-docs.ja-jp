@@ -1,7 +1,7 @@
 ---
 title: Azure 関数アプリを API として API Management にインポートする
 titleSuffix: Azure API Management
-description: このチュートリアルでは、Azure Function App を API として Azure API Management にインポートする方法について説明します。
+description: この記事では、Azure Function App を API として Azure API Management にインポートする方法について説明します。
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -10,15 +10,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: be8a8f35ece946d1be907b2ca13a640bebbb4ee5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01ac59ec435b19f5da56ca345840628964263a47
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627025"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147030"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure API Management で Azure Function App を API としてインポートする
 
@@ -50,28 +50,28 @@ Azure API Management は、Azure Function App の新しい API としてのイ�
 
 2. **[Add a new API]\(新しい API の追加\)** の一覧で **[Functions App]\(Function App\)** を選択します。
 
-    ![Function App から追加する](./media/import-function-app-as-api/add-01.png)
+    ![[Function App] タイルを示すスクリーンショット。](./media/import-function-app-as-api/add-01.png)
 
 3. **[参照する]** をクリックして、インポートする Function を選択します。
 
-    ![Function App から追加する](./media/import-function-app-as-api/add-02.png)
+    ![[参照する] ボタンが強調表示されているスクリーンショット。](./media/import-function-app-as-api/add-02.png)
 
 4. **[Functions App]\(Function App\)** セクションをクリック、使用可能な Function App の一覧から選択します。
 
-    ![Function App から追加する](./media/import-function-app-as-api/add-03.png)
+    ![[Function App] セクションが強調表示されているスクリーンショット。](./media/import-function-app-as-api/add-03.png)
 
 5. 関数のインポート元となる Function App を検索してクリックし、 **[選択]** をクリックします。
 
-    ![Function App から追加する](./media/import-function-app-as-api/add-04.png)
+    ![関数のインポート元となる Function App と [選択] ボタンが強調表示されているスクリーンショット。](./media/import-function-app-as-api/add-04.png)
 
 6. インポートする Function を選択して、 **[選択]** をクリックします。
 
-    ![Function App から追加する](./media/import-function-app-as-api/add-05.png)
+    ![インポートする Function と [選択] ボタンが強調表示されているスクリーンショット。](./media/import-function-app-as-api/add-05.png)
 
     > [!NOTE]
     > HTTP トリガーに基づかない Function のみをインポートして、承認レベル設定を *Anonymous* または *Function* に設定できます。
 
-7. **[完全]** ビューに切り替え、 **[製品]** を新しい API に割り当てます。 必要に応じて、作成時に他のフィールドを指定することも、後で **[設定]** タブに移動して構成することもできます。設定については、「[最初の API のインポートと発行](import-and-publish.md#import-and-publish-a-backend-api)」のチュートリアルで説明されています。
+7. **[完全]** ビューに切り替え、 **[製品]** を新しい API に割り当てます。 必要に応じて、作成時に他のフィールドを指定することも、後で **[設定]** タブに移動して構成することもできます。設定については、「 [最初の API のインポートと発行](import-and-publish.md#import-and-publish-a-backend-api)」のチュートリアルで説明されています。
 8. **Create** をクリックしてください。
 
 ## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a> Azure Function App を既存の API に追加する
@@ -82,27 +82,27 @@ Azure API Management は、Azure Function App の新しい API としてのイ�
 
 2. Azure Function App のインポート先となる API を選択します。 **[...]** をクリックして、コンテキスト メニューから **[インポート]** を選択します。
 
-    ![Function App から追加する](./media/import-function-app-as-api/append-01.png)
+    ![[インポート] メニュー オプションが強調表示されているスクリーンショット。](./media/import-function-app-as-api/append-01.png)
 
 3. **[Function App]** タイルをクリックします。
 
-    ![Function App から追加する](./media/import-function-app-as-api/append-02.png)
+    ![[Function App] タイルが強調表示されているスクリーンショット。](./media/import-function-app-as-api/append-02.png)
 
 4. ポップアップ ウィンドウで、 **[参照]** をクリックします。
 
-    ![Function App から追加する](./media/import-function-app-as-api/append-03.png)
+    ![[参照] ボタンを示すスクリーンショット。](./media/import-function-app-as-api/append-03.png)
 
 5. **[Functions App]\(Function App\)** セクションをクリック、使用可能な Function App の一覧から選択します。
 
-    ![Function App から追加する](./media/import-function-app-as-api/add-03.png)
+    ![Function App の一覧が強調表示されているスクリーンショット。](./media/import-function-app-as-api/add-03.png)
 
 6. 関数のインポート元となる Function App を検索してクリックし、 **[選択]** をクリックします。
 
-    ![Function App から追加する](./media/import-function-app-as-api/add-04.png)
+    ![関数のインポート元となる Function App が強調表示されているスクリーンショット。](./media/import-function-app-as-api/add-04.png)
 
 7. インポートする Function を選択して、 **[選択]** をクリックします。
 
-    ![Function App から追加する](./media/import-function-app-as-api/add-05.png)
+    ![インポートする関数が強調表示されているスクリーンショット。](./media/import-function-app-as-api/add-05.png)
 
 8. **[インポート]** をクリックします。
 
@@ -112,8 +112,8 @@ Azure API Management は、Azure Function App の新しい API としてのイ�
 
 Azure Function App のインポートによって、次が自動的に生成されます。
 
-* apim-{<*お使いの Azure API Management サービス インスタンス名*>} という名前の、Function App 内のホスト キー。
-* {<*お使いの Azure Function App のインスタンス名*>}-key という名前の、Azure API Management インスタンス内の名前付きの値。作成されたホスト キーが含まれます。
+* apim-{< *お使いの Azure API Management サービス インスタンス名* >} という名前の、Function App 内のホスト キー。
+* {< *お使いの Azure Function App のインスタンス名* >}-key という名前の、Azure API Management インスタンス内の名前付きの値。作成されたホスト キーが含まれます。
 
 2019 年 4 月 4 日より後に作成された API では、ホスト キーが HTTP 要求のヘッダーで API Management から Function App に渡されます。 以前の API では、ホスト キーが[クエリ パラメーター](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)として渡されます。 関数アプリに関連付けられている *Backend* エンティティの `PATCH Backend` [REST API 呼び出し](/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract)では、この動作が変わる可能性があります。
 
@@ -128,11 +128,11 @@ Azure Function App のインポートによって、次が自動的に生成さ�
 
 2. 概要から **[Function App settings]\(Function App の設定\)** を選択します。
 
-    ![Function App から追加する](./media/import-function-app-as-api/keys-02-a.png)
+    ![[Function App settings]\(Function App の設定\) オプションが強調表示されているスクリーンショット。](./media/import-function-app-as-api/keys-02-a.png)
 
 3. キーは **[ホスト キー]** セクションに配置されています。
 
-    ![Function App から追加する](./media/import-function-app-as-api/keys-02-b.png)
+    ![[ホスト キー] セクションが強調表示されているスクリーンショット。](./media/import-function-app-as-api/keys-02-b.png)
 
 ### <a name="access-the-named-value-in-azure-api-management"></a>Azure API Management の名前付きの値にアクセスする
 

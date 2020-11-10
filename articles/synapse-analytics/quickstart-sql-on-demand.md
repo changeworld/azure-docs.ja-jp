@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:SQL オンデマンドを使用する
-description: このクイックスタートでは、SQL オンデマンド (プレビュー) を使用してさまざまな種類のファイルにクエリを実行する方法について説明します。
+title: 'クイックスタート: サーバーレス SQL プールを使用する'
+description: このクイックスタートでは、サーバーレス SQL プール (プレビュー) を使用してさまざまな種類のファイルに簡単にクエリを実行する方法について説明します。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: fe07192b0077518cdd73092f53342c298034cfa8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b2e502a984e71a06eb57b345371d70d659c6a031
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86274171"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321682"
 ---
-# <a name="quickstart-use-sql-on-demand"></a>クイック スタート:SQL オンデマンドを使用する
+# <a name="quickstart-use-serverless-sql-pool"></a>クイックスタート: サーバーレス SQL プールを使用する
 
-Synapse SQL オンデマンド (プレビュー) は、Azure Storage に配置されたファイルに対して SQL クエリを実行できるサーバーレス クエリ サービスです。 このクイックスタートでは、SQL オンデマンドを使用してさまざまな種類のファイルにクエリを実行する方法について説明します。 サポートされている形式の一覧については、[OPENROWSET](sql/develop-openrowset.md) のページを参照してください。
+Synapse サーバーレス SQL プール (プレビュー) は、Azure Storage に配置されたファイルに対して SQL クエリを実行できるサーバーレス クエリ サービスです。 このクイックスタートでは、サーバーレス SQL プールを使用してさまざまな種類のファイルにクエリを実行する方法について説明します。 サポートされている形式の一覧については、[OPENROWSET](sql/develop-openrowset.md) のページを参照してください。
 
 このクイックスタートでは、CSV、Apache Parquet、および JSON ファイルに対してクエリを実行します。
 
@@ -34,8 +34,8 @@ Synapse SQL オンデマンド (プレビュー) は、Azure Storage に配置�
 
 | パラメーター                                 | 説明                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| SQL オンデマンド サービス エンドポイント アドレス    | サーバー名として使用されます                                   |
-| SQL オンデマンド サービス エンドポイント リージョン     | サンプルで使用するストレージを決定するために使用されます |
+| サーバーレス SQL プール サービス エンドポイント アドレス    | サーバー名として使用されます                                   |
+| サーバーレス SQL プール サービス エンドポイント リージョン     | サンプルで使用するストレージを決定するために使用されます |
 | エンドポイント アクセスのユーザー名とパスワード | エンドポイントへのアクセスに使用されます                               |
 | ビューの作成に使用するデータベース         | サンプルの開始点として使用されるデータベース       |
 
@@ -44,7 +44,7 @@ Synapse SQL オンデマンド (プレビュー) は、Azure Storage に配置�
 サンプルを使用する前に、次の作業を行います。
 
 - ビューのデータベースを作成します (ビューを使用する場合)
-- SQL オンデマンドがストレージ内のファイルにアクセスするために使用する資格情報を作成します
+- サーバーレス SQL プールがストレージ内のファイルにアクセスするために使用する資格情報を作成します
 
 ### <a name="create-database"></a>データベースの作成
 
@@ -62,7 +62,7 @@ CREATE DATABASE mydbname
 
 ### <a name="create-data-source"></a>データ ソースの作成
 
-SQL オンデマンドを使用してクエリを実行するには、ストレージ内のファイルにアクセスするために SQL オンデマンドが使用するデータ ソースを作成します。
+サーバーレス SQL プールを使用してクエリを実行するには、ストレージ内のファイルにアクセスするためにサーバーレス SQL プールが使用するデータ ソースを作成します。
 次のコード スニペットを実行し、このセクションのサンプルで使用するデータ ソースを作成します。
 
 ```sql
@@ -115,7 +115,7 @@ WHERE
 次のサンプルは、Parquet ファイルのクエリを実行するための自動スキーマ推論機能を示しています。 これはスキーマを指定せずに 2017 年 9 月の行の数を返します。
 
 > [!NOTE]
-> Parquet ファイルを読み取るときに `OPENROWSET WITH` 句で列を指定する必要はありません。 この場合、SQL オンデマンドは Parquet ファイル内のメタデータを利用し、名前で列をバインドします。
+> Parquet ファイルを読み取るときに `OPENROWSET WITH` 句で列を指定する必要はありません。 この場合、サーバーレス SQL プールは Parquet ファイル内のメタデータを利用し、名前で列をバインドします。
 
 ```sql
 SELECT COUNT_BIG(*)
@@ -153,7 +153,7 @@ FROM OPENROWSET
 
 ### <a name="query-json-files"></a>JSON ファイルのクエリ
 
-次のクエリでは、[JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して、「*Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected articles*」という書籍からスカラー値 (タイトル、出版社) を取得する方法について説明しています。
+次のクエリでは、 [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用して、「 *Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected articles* 」という書籍からスカラー値 (タイトル、出版社) を取得する方法について説明しています。
 
 ```sql
 SELECT

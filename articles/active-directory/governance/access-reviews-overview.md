@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 09/08/2020
+ms.date: 10/29/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: b454ced085ec3d73f3ca0f761abb6c5de44244ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3f52b8d4e56ec854f93940ea77f09c3dff1d362e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89594341"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096004"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD アクセス レビューとは
 
@@ -79,9 +79,9 @@ Azure AD を使用すると、組織内のユーザーおよび外部ユーザ�
 - アクセス レビューを実行するグループ所有者
 - アクセス レビューを実行するアプリケーション所有者
 
-アクセス レビューを設定したり、設定を構成したり、レビューの決定を適用したりするグローバル管理者またはユーザー管理者ロールを持つユーザーには、Azure AD Premium P2 ライセンスは必要**ありません**。
+アクセス レビューを設定したり、設定を構成したり、レビューの決定を適用したりするグローバル管理者またはユーザー管理者ロールを持つユーザーには、Azure AD Premium P2 ライセンスは必要 **ありません** 。
 
-自分自身の組織のユーザーの 1 人に割り当てる有料の Azure AD Premium P2 ライセンスごとに、Azure AD 企業間 (B2B) を使用して、外部ユーザー無料利用分に従って最大 5 人までのゲスト ユーザーを招待できます。 これらのゲスト ユーザーも Azure AD Premium P2 の機能を使用できます。 詳細については、[Azure AD B2B コラボレーションのライセンス ガイダンス](../external-identities/licensing-guidance.md)を参照してください。
+Azure AD ゲスト ユーザー アクセスは、1:5 の比率の課金モデルに代わる、月間アクティブ ユーザー (MAU) の課金モデルに基づいています。 詳細については、[Azure AD External Identities の価格](../external-identities/external-identities-pricing.md)に関するページを参照してください。
 
 ライセンスの詳細については、[Azure Active Directory ポータルを使用したライセンスの割り当てと削除](../fundamentals/license-users-groups.md)に関するページを参照してください。
 

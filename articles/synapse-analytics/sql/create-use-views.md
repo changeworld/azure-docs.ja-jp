@@ -1,6 +1,6 @@
 ---
-title: SQL オンデマンド (プレビュー) でビューを作成および使用する
-description: このセクションでは、ビューを作成および使用して、SQL オンデマンド (プレビュー) クエリをラップする方法を学習します。 ビューを使用すると、これらのクエリを再利用できます。 ビューは、Power BI などのツールを SQL オンデマンドと組み合わせて使用する場合にも必要になります。
+title: サーバーレス SQL プール (プレビュー) でビューを作成および使用する
+description: このセクションでは、ビューを作成および使用して、サーバーレス SQL プール (プレビュー) クエリをラップする方法を学習します。 ビューを使用すると、これらのクエリを再利用できます。 ビューは、Power BI などのツールをサーバーレス SQL プールと組み合わせて使用する場合にも必要になります。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: f91611ab3c75a96f13ab84312ca0b2157e69af0d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d578529839afb5393dd013cb10f48c755f08addd
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91289312"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316233"
 ---
-# <a name="create-and-use-views-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure Synapse Analytics を使用して SQL オンデマンド (プレビュー) でビューを作成および使用する
+# <a name="create-and-use-views-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プール (プレビュー) を使用してビューを作成および使用する
 
-このセクションでは、ビューを作成および使用して、SQL オンデマンド (プレビュー) クエリをラップする方法を学習します。 ビューを使用すると、これらのクエリを再利用できます。 ビューは、Power BI などのツールを SQL オンデマンドと組み合わせて使用する場合にも必要になります。
+このセクションでは、ビューを作成および使用して、サーバーレス SQL プール (プレビュー) クエリをラップする方法を学習します。 ビューを使用すると、これらのクエリを再利用できます。 ビューは、Power BI などのツールをサーバーレス SQL プールと組み合わせて使用する場合にも必要になります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -26,7 +26,7 @@ ms.locfileid: "91289312"
 
 ## <a name="create-a-view"></a>ビューの作成
 
-ビューは、通常の SQL Server ビューを作成するのと同じ方法で作成できます。 次のクエリによって、*population.csv* ファイルを読み取るビューが作成されます。
+ビューは、通常の SQL Server ビューを作成するのと同じ方法で作成できます。 次のクエリによって、 *population.csv* ファイルを読み取るビューが作成されます。
 
 > [!NOTE]
 > クエリの最初の行 ([mydbname]) は、自分で作成したデータベースを使用するように変更してください。
@@ -57,7 +57,7 @@ WITH (
 
 この例のビューでは、基になるファイルへの絶対パスを使用する `OPENROWSET` 関数が使用されます。 ストレージのルート URL の `EXTERNAL DATA SOURCE` がある場合は、`DATA_SOURCE` と相対ファイル パスと共に `OPENROWSET` を使用できます。
 
-```
+```sql
 CREATE VIEW TaxiView
 AS SELECT *, nyc.filepath(1) AS [year], nyc.filepath(2) AS [month]
 FROM
@@ -72,7 +72,7 @@ FROM
 
 ビューは、SQL Server クエリ内でビューを使用するのと同じ方法でクエリ内で使用できます。
 
-次のクエリは、「[ビューの作成](#create-a-view)」で作成した *population_csv* ビューの使用方法を示しています。 これにより、国/地域名が 2019 年の人口の降順に返されます。
+次のクエリは、「 [ビューの作成](#create-a-view)」で作成した *population_csv* ビューの使用方法を示しています。 これにより、国/地域名が 2019 年の人口の降順に返されます。
 
 > [!NOTE]
 > クエリの最初の行 ([mydbname]) は、自分で作成したデータベースを使用するように変更してください。

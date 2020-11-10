@@ -11,14 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
-ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad021b4d219353a6037988c164bb34cac6761682
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84696713"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078630"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>検索応答に含まれる回答をフィルタリングする  
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
 Web のクエリを実行すると、Bing はその検索で見つけたすべての関連コンテンツを返します。 たとえば、検索クエリが "sailing+dinghies" の場合、応答に次のような回答が含まれる可能性があります。
 
@@ -111,7 +116,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:con
 > [!NOTE]
 > クエリによっては、`site:` クエリ演算子を使用した場合、[safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) 設定にかかわらず、成人向けのコンテンツが応答に含まれることがあります。 `site:` の使用は、そのサイト上のコンテンツを承知していて、なおかつ成人向けのコンテンツが含まれていても問題がないシナリオに限定してください。
 
-### <a name="freshness"></a>freshness
+### <a name="freshness"></a>鮮度
 
 Web 回答の結果を、特定の期間中に Bing が検出した Web ページに限定するには、[freshness](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness) クエリ パラメーターを、大文字と小文字が区別されない次の値のいずれかに設定します。
 
@@ -131,7 +136,7 @@ Web 回答の結果を、特定の期間中に Bing が検出した Web ペー�
 
 ## <a name="limiting-the-number-of-answers-in-the-response"></a>応答の回答数を制限する
 
-Bing では、複数の回答の種類を JSON 応答で返すことができます。 たとえば、*sailing+dinghies* クエリを実行すると、Bing からは `webpages`、`images`、`videos`、および `relatedSearches` が返されます。
+Bing では、複数の回答の種類を JSON 応答で返すことができます。 たとえば、 *sailing+dinghies* クエリを実行すると、Bing からは `webpages`、`images`、`videos`、および `relatedSearches` が返されます。
 
 ```json
 {

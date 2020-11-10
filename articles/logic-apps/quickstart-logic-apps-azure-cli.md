@@ -6,26 +6,28 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
-ms.date: 07/30/2020
-ms.openlocfilehash: e6e53755d9231008d0f48c755ff9da297d7305d7
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.date: 10/28/2020
+ms.openlocfilehash: 0d7f455e748a52595839cc509720bf7ad5b9b617
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747171"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099064"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用してロジック アプリを作成し、管理する
 
-このクイックスタートでは、[Azure CLI Logic Apps 拡張機能](/cli/azure/ext/logic/logic?view=azure-cli-latest) (`az logic`) を使用してロジック アプリを作成し、管理する方法について説明します。 ロジック アプリ ワークフロー定義用の JSON ファイルを使用して、コマンド ラインからロジック アプリを作成することができます。 その後、コマンド ラインから、`list`、`show` (`get`)、`update`、`delete` などの操作を実行してロジック アプリを管理できます。
+このクイックスタートでは、[Azure CLI Logic Apps 拡張機能](/cli/azure/ext/logic/logic) (`az logic`) を使用してロジック アプリを作成し、管理する方法について説明します。 ロジック アプリ ワークフロー定義用の JSON ファイルを使用して、コマンド ラインからロジック アプリを作成することができます。 その後、コマンド ラインから、`list`、`show` (`get`)、`update`、`delete` などの操作を実行してロジック アプリを管理できます。
 
 > [!WARNING]
 > Azure CLI Logic Apps 拡張機能は、現在、" *試験段階* " であり、" *カスタマーサポートの対象外* " です。 この CLI 拡張機能は、特に運用環境での使用を選択する場合、慎重に使用してください。
 
+Logic Apps を初めて使用する場合は、[Azure portal](quickstart-create-first-logic-app-workflow.md)、[Visual Studio](quickstart-create-logic-apps-with-visual-studio.md)、および [Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md) を使用して初めてのロジック アプリを作成する方法も学習できます。
+
 ## <a name="prerequisites"></a>前提条件
 
 * アクティブなサブスクリプションが含まれる Azure アカウント。 Azure サブスクリプションをお持ちでない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
-* ご利用のローカル コンピューターに [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) がインストールされていること。
-* ご利用のローカル コンピューターに [Azure CLI Logic Apps 拡張機能](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest) がインストールされていること。 この拡張機能をインストールするには、コマンド `az extension add --name logic` を使用します。
+* ご利用のローカル コンピューターに [Azure CLI](/cli/azure/install-azure-cli) がインストールされていること。
+* ご利用のローカル コンピューターに [Azure CLI Logic Apps 拡張機能](/cli/azure/azure-cli-extensions-list) がインストールされていること。 この拡張機能をインストールするには、コマンド `az extension add --name logic` を使用します。
 * ロジック アプリを作成する [Azure リソース グループ](#example---create-resource-group)。
 
 ### <a name="prerequisite-check"></a>前提条件のチェック
@@ -33,8 +35,8 @@ ms.locfileid: "92747171"
 開始する前に、環境を検証します。
 
 * Azure portal にサインインし、`az login` を実行して、ご利用のサブスクリプションがアクティブであることを確認します。
-* `az --version` を実行して、ターミナルまたはコマンド ウィンドウの Azure CLI のバージョンを確認します。 最新バージョンについては、[最新のリリース ノート](/cli/azure/release-notes-azure-cli?tabs=azure-cli&view=azure-cli-latest)を参照してください。
-  * 最新バージョンを使用していない場合は、[オペレーティング システムまたはプラットフォーム用のインストール ガイド](/cli/azure/install-azure-cli?view=azure-cli-latest)に従ってインストールを更新します。
+* `az --version` を実行して、ターミナルまたはコマンド ウィンドウの Azure CLI のバージョンを確認します。 最新バージョンについては、[最新のリリース ノート](/cli/azure/release-notes-azure-cli?tabs=azure-cli)を参照してください。
+  * 最新バージョンを使用していない場合は、[オペレーティング システムまたはプラットフォーム用のインストール ガイド](/cli/azure/install-azure-cli)に従ってインストールを更新します。
 
 ### <a name="example---create-resource-group"></a>例 - リソース グループの作成
 
@@ -67,7 +69,7 @@ Azure CLI を使用して、[新しいロジック アプリを作成する](#cr
 
 ## <a name="create-logic-apps-from-cli"></a>CLI からロジック アプリを作成する
 
-コマンド [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create) と定義の JSON ファイルを使用して、Azure CLI からロジック アプリのワークフローを作成することができます。
+コマンド [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) と定義の JSON ファイルを使用して、Azure CLI からロジック アプリのワークフローを作成することができます。
 
 ```azurecli
 
@@ -84,16 +86,16 @@ az logic workflow create --definition
 
 ```
 
-コマンドには、次の[必須パラメーター](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create-required-parameters)を含める必要があります。
+コマンドには、次の[必須パラメーター](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-required-parameters)を含める必要があります。
 
-| パラメーター | 値 | 説明 |
+| パラメーター | [値] | 説明 |
 | --------- | ----- | ----------- |
 | ワークフロー定義 | `--definition` | ロジック アプリの[ワークフロー定義](#workflow-definition)を含む JSON ファイル。 |
 | 場所 | `--location -l` | ロジック アプリを配置する Azure リージョン。 |
 | 名前 | `--name -n` | ロジック アプリの名前。 名前に含めることができるのは、文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`()`)、ピリオド (`.`) のみです。 また、名前はリージョン全体で一意である必要があります。 |
 | リソース グループ名 | `--resource-group -g` | ロジック アプリを作成する [Azure リソース グループ](../azure-resource-manager/management/overview.md)。 ロジック アプリのリソース グループがまだない場合は、開始する前に、[リソース グループを作成](#example---create-resource-group)します。 |
 
-さらに、[省略可能なパラメーター](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create-optional-parameters)を追加して、ロジック アプリのアクセス制御、エンドポイント、統合アカウント、統合サービス環境、状態、リソース タグを構成することもできます。
+さらに、[省略可能なパラメーター](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-optional-parameters)を追加して、ロジック アプリのアクセス制御、エンドポイント、統合アカウント、統合サービス環境、状態、リソース タグを構成することもできます。
 
 ### <a name="example---create-logic-app"></a>例 - ロジック アプリの作成
 
@@ -109,9 +111,9 @@ az logic workflow create --resource-group "testResourceGroup" --location "westus
 
 ## <a name="update-logic-apps-from-cli"></a>CLI からロジック アプリを更新する
 
-コマンド [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create) を使用して、Azure CLI からロジック アプリのワークフローを更新することもできます。
+コマンド [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) を使用して、Azure CLI からロジック アプリのワークフローを更新することもできます。
 
-コマンドには、[ロジック アプリを作成する](#create-logic-apps-from-cli)場合と同じ[必須パラメーター](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create-required-parameters)を含める必要があります。 また、ロジック アプリを作成する場合と同じ[省略可能なパラメーター](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create-optional-parameters)を追加することもできます。
+コマンドには、[ロジック アプリを作成する](#create-logic-apps-from-cli)場合と同じ[必須パラメーター](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-required-parameters)を含める必要があります。 また、ロジック アプリを作成する場合と同じ[省略可能なパラメーター](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-optional-parameters)を追加することもできます。
 
 ```azurecli
 
@@ -142,16 +144,16 @@ az logic workflow create --resource-group "testResourceGroup" --location "westus
 
 ## <a name="delete-logic-apps-from-cli"></a>CLI からロジック アプリを削除する
 
-コマンド [`az logic workflow delete`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-delete) を使用して、Azure CLI からロジック アプリのワークフローを削除することができます。
+コマンド [`az logic workflow delete`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-delete) を使用して、Azure CLI からロジック アプリのワークフローを削除することができます。
 
-コマンドには、次の[必須パラメーター](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-delete-required-parameters)を含める必要があります。
+コマンドには、次の[必須パラメーター](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-delete-required-parameters)を含める必要があります。
 
-| パラメーター | 値 | 説明 |
+| パラメーター | [値] | 説明 |
 | --------- | ----- | ----------- |
 | 名前 | `--name -n` | ロジック アプリの名前。 |
 | リソース グループ名 | `-resource-group -g` | ロジック アプリを配置するリソース グループ。 |
 
-[省略可能なパラメーター](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-delete-optional-parameters)を含めて、確認プロンプト `--yes -y` をスキップすることもできます。
+[省略可能なパラメーター](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-delete-optional-parameters)を含めて、確認プロンプト `--yes -y` をスキップすることもできます。
 
 ```azurecli
 
@@ -185,7 +187,7 @@ az logic workflow delete --resource-group "testResourceGroup" --name "testLogicA
 
 ## <a name="show-logic-apps-in-cli"></a>CLI でロジック アプリを表示する
 
-コマンド [`az logic workflow show`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show) を使用して、特定のロジック アプリ ワークフローを取得することができます。
+コマンド [`az logic workflow show`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-show) を使用して、特定のロジック アプリ ワークフローを取得することができます。
 
 ```azurecli
 
@@ -194,9 +196,9 @@ az logic workflow show --name
 
 ```
 
-コマンドには、次の[必須パラメーター](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show-required-parameters)を含める必要があります
+コマンドには、次の[必須パラメーター](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-show-required-parameters)を含める必要があります
 
-| パラメーター | 値 | 説明 |
+| パラメーター | [値] | 説明 |
 | --------- | ----- | ----------- |
 | 名前 | `--name -n` | ロジック アプリの名前。 |
 | リソース グループ名 | `--resource-group -g` | ロジック アプリを配置するリソース グループの名前。 |
@@ -213,11 +215,11 @@ az logic workflow show --resource-group "testResourceGroup" --name "testLogicApp
 
 ## <a name="list-logic-apps-in-cli"></a>CLI でロジック アプリを一覧表示する
 
-コマンド [`az logic workflow list`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-list) を使用して、ロジック アプリをサブスクリプション別に一覧表示できます。 このコマンドでは、ロジック アプリのワークフローの JSON コードが返されます。
+コマンド [`az logic workflow list`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-list) を使用して、ロジック アプリをサブスクリプション別に一覧表示できます。 このコマンドでは、ロジック アプリのワークフローの JSON コードが返されます。
 
-次の[省略可能なパラメーター](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-list-optional-parameters)を使用して、結果をフィルター処理することができます。
+次の[省略可能なパラメーター](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-list-optional-parameters)を使用して、結果をフィルター処理することができます。
 
-| パラメーター | 値 | 説明 |
+| パラメーター | [値] | 説明 |
 | --------- | ----- | ----------- |
 | リソース グループ名 | `--resource-group -g` | 結果をフィルター処理するリソース グループの名前。 |
 | 項目数 | `--top` | 結果に含める項目の数。 |
@@ -263,9 +265,9 @@ Expecting value: line 1 column 1 (char 0)
 
 `az logic` コマンドでは、次の省略可能なグローバル Azure CLI パラメーターを使用できます。
 
-| パラメーター | 値 | 説明 |
+| パラメーター | [値] | 説明 |
 | --------- | ----- | ----------- |
-| 出力形式 | `--output -o` | [出力形式](/cli/azure/format-output-azure-cli?view=azure-cli-latest)を既定の JSON から変更します。 |
+| 出力形式 | `--output -o` | [出力形式](/cli/azure/format-output-azure-cli)を既定の JSON から変更します。 |
 | エラーのみを表示 | `--only-show-errors` | 警告を表示せず、エラーのみを表示します。 |
 | "詳細" | `--verbose` | 詳細ログを表示します。 |
 | デバッグ | `--debug` | すべてのデバッグ ログを表示します。 |
@@ -274,8 +276,11 @@ Expecting value: line 1 column 1 (char 0)
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure/?view=azure-cli-latest)のページを参照してください。
-
-CLI を使用して基本的なロジック アプリを作成する方法の例については、[サンプル スクリプトとワークフロー定義](sample-logic-apps-cli-script.md)に関するページを参照してください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure/)のページを参照してください。
 
 その他の Logic Apps CLI スクリプトのサンプルについては、[Microsoft のコード サンプル ブラウザー](/samples/browse/?products=azure-logic-apps)を参照してください。
+
+次に、サンプル スクリプトとワークフロー定義を使用して、Azure CLI からサンプル アプリ ロジックを作成できます。
+
+> [!div class="nextstepaction"]
+> [サンプル スクリプトを使用してロジック アプリを作成する](sample-logic-apps-cli-script.md)。

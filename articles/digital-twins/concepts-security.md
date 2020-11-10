@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6784ca9dbc32811a02f4454be94d220c634318f5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 349f57299387b616373bb5fb4d295da8df8ee493
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503319"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279891"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure Digital Twins をセキュリティで保護する
 
@@ -72,7 +72,7 @@ Azure には、Azure Digital Twins [データ プレーン API](how-to-use-apis-
 自動化されたシナリオでロールを参照する場合は、名前ではなく **ID** を使用して参照することをお勧めします。 名前はリリースによって変わる可能性がありますが、ID は変わらないため、自動化の場合はより安定した参照になります。
 
 > [!TIP]
-> `New-AzRoleAssignment` ([ reference](/powershell/module/az.resources/new-azroleassignment?view=azps-4.8.0)) などのコマンドレットを使用してロールを割り当てる場合は、`-RoleDefinitionName` ではなく `-RoleDefinitionId` パラメーターを使用して、ロールの名前ではなく ID を渡すことができます。
+> `New-AzRoleAssignment` ([ reference](/powershell/module/az.resources/new-azroleassignment)) などのコマンドレットを使用してロールを割り当てる場合は、`-RoleDefinitionName` ではなく `-RoleDefinitionId` パラメーターを使用して、ロールの名前ではなく ID を渡すことができます。
 
 ### <a name="permission-scopes"></a>アクセス許可のスコープ
 
@@ -88,6 +88,32 @@ Azure には、Azure Digital Twins [データ プレーン API](how-to-use-apis-
 ### <a name="troubleshooting-permissions"></a>アクセス許可のトラブルシューティング
 
 ユーザーが自分のロールで許可されていないアクションの実行を試みた場合、`403 (Forbidden)` と書かれた、サービス要求からのエラーが表示されることがあります。 詳細とトラブルシューティングの手順については、" [*Azure Digital Twins 要求が失敗しました: 状態 403 (許可されていません)*](troubleshoot-error-403.md)" といったエラーのトラブルシューティングに関するページを参照してください。
+
+## <a name="service-tags"></a>サービス タグ
+
+**サービス タグ** は、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。これにより、ネットワーク セキュリティ規則に対する頻繁な更新の複雑さを最小限に抑えられます。 サービス タグの詳細については、"  [*仮想ネットワーク タグ* " ](../virtual-network/service-tags-overview.md)に関するページを参照してください。 
+
+サービス タグを使用して、 [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md#security-rules) または  [Azure Firewall](../firewall/service-tags.md) に対してネットワーク アクセス制御を定義するには、セキュリティ規則を作成するときに特定の IP アドレスの代わりにサービス タグを使用します。 規則の適切な " *ソース* "  または " *宛先* "  フィールドにサービス タグ名 (この場合は  **AzureDigitalTwins** ) を指定することにより、対応するサービスのトラフィックを許可または拒否することができます。 
+
+**AzureDigitalTwins** サービス タグの詳細を以下に示します。
+
+| タグ | 目的 | 受信または送信で使用できるか | リージョン別か | Azure Firewall と共に使用できるか |
+| --- | --- | --- | --- | --- |
+| AzureDigitalTwins | Azure Digital Twins<br>注:このタグ、またはこのタグによってカバーされる IP アドレスを使用すれば、[イベント ルート](concepts-route-events.md)用に構成されたエンドポイントへのアクセスを制限することができます。 | 受信 | いいえ | はい |
+
+### <a name="using-service-tags-for-accessing-event-route-endpoints"></a>サービス タグを使用したイベント ルート エンドポイントへのアクセス 
+
+Azure Digital Twins でサービス タグを使用して [イベント ルート](concepts-route-events.md) エンドポイントにアクセスする手順を次に示します。
+
+1. 最初に、Azure の IP 範囲とサービス タグを示す次の JSON ファイル参照をダウンロードします。 [" *Azure の IP 範囲とサービス タグ* "](https://www.microsoft.com/download/details.aspx?id=56519)。 
+
+2. JSON ファイル内で "AzureDigitalTwins" IP 範囲を検索します。  
+
+3. エンドポイントに接続されている外部リソース (たとえば、[Event Grid](../event-grid/overview.md)、[Event Hub](../event-hubs/event-hubs-about.md)、[Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)、または[配信不能イベント](concepts-route-events.md#dead-letter-events)用の [Azure Storage](../storage/blobs/storage-blobs-overview.md)) のドキュメントを参照して、そのリソースに対して IP フィルターを設定する方法を確認します。
+
+4. " *手順 2* " からの IP 範囲を使用して、外部リソースに対して IP フィルターを設定します。  
+
+5. 必要に応じて、IP 範囲を定期的に更新します。 範囲は時間の経過と共に変化する可能性があるため、これらを定期的にチェックし、必要に応じて更新することをお勧めします。 これらの更新の頻度は異なる場合がありますが、1 週間に 1 回チェックすることをお勧めします。
 
 ## <a name="encryption-of-data-at-rest"></a>保存データの暗号化
 

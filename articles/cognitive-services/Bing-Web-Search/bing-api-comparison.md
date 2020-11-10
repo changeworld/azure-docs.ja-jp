@@ -10,14 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 82b1f13562a49284059c25bcbd39a33daf949dcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a982c150349ca31fdf93a38b38910c3572b14d2f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74775542"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078766"
 ---
 # <a name="what-are-the-bing-search-apis"></a>Bing Search API とは
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
 Bing Search API を使用すると、広告を除外して Web ページ、画像、ニュース、場所などを検索する、Web に接続されたアプリやサービスを構築できます。 Bing Search REST API または SDK を使用して検索要求を送信することにより、Web 検索の関連情報とコンテンツを取得できます。 この記事では、さまざまな Bing Search API、およびアプリケーションやサービスにコグニティブな検索を統合する方法について説明します。 価格およびレート制限は、API によって異なる場合があります。
 

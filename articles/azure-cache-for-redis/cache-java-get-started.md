@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Java で Azure Cache for Redis を使用する
+title: 'クイックスタート: Java で Azure Cache for Redis を使用する'
 description: このクイック スタートでは、Azure Cache for Redis を使用する新しい Java アプリを作成します
 author: yegu-ms
 ms.service: cache
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 16a912b2530d567a11a81fc10e9e09eee572e7e6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: edb80ab3107cbd0a5ddd802d56a60ce77affb2f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87528832"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088116"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-java"></a>クイック スタート:Java で Azure Cache for Redis を使用する
+# <a name="quickstart-use-azure-cache-for-redis-in-java"></a>クイックスタート: Java で Azure Cache for Redis を使用する
 
 このクイック スタートでは、Azure 内の任意のアプリケーションからアクセスできるセキュリティで保護された専用キャッシュにアクセスするために、Azure Cache for Redis を [Jedis](https://github.com/xetorthio/jedis) Redis クライアントを使用する Java アプリに組み込みます。
 
@@ -46,8 +46,8 @@ export REDISCACHEKEY=<YOUR_PRIMARY_ACCESS_KEY>
 
 プレースホルダーを次の値に置き換えます。
 
-- `<YOUR_HOST_NAME>`:Azure portal の Azure Cache for Redis リソースの *[プロパティ]* セクションから取得された DNS ホスト名。
-- `<YOUR_PRIMARY_ACCESS_KEY>`:Azure portal の Azure Cache for Redis リソースの *[アクセス キー]* セクションから取得されたプライマリ アクセス キー。
+- `<YOUR_HOST_NAME>`:Azure portal の Azure Cache for Redis リソースの *[プロパティ]* セクションから取得した DNS ホスト名。
+- `<YOUR_PRIMARY_ACCESS_KEY>`:Azure portal の Azure Cache for Redis リソースの *[アクセス キー]* セクションから取得したプライマリ アクセス キー。
 
 ## <a name="create-a-new-java-app"></a>新しい Java アプリを作成する
 
@@ -59,7 +59,7 @@ mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -Darchetyp
 
 新しい *redistest* プロジェクト ディレクトリに移動します。
 
-*pom.xml* ファイルを開き、[Jedis](https://github.com/xetorthio/jedis) の依存関係を追加します。
+*pom.xml* ファイルを開き、 [Jedis](https://github.com/xetorthio/jedis) の依存関係を追加します。
 
 ```xml
     <dependency>
@@ -154,7 +154,7 @@ mvn exec:java -D exec.mainClass=example.demo.App
 
 1. [Azure portal](https://portal.azure.com) にサインインし、 **[リソース グループ]** を選択します。
 
-1. **[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** を選択し、 **[リソース グループの削除]** を選択します。
+1. **[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、 *TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** を選択し、 **[リソース グループの削除]** を選択します。
 
    ![Azure リソース グループが削除された](./media/cache-java-get-started/azure-cache-redis-delete-resource-group.png)
 

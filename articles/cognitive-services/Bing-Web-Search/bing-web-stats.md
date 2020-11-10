@@ -11,14 +11,19 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: ad2ac118908f1c1f77ea204ae2400913ac0807cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8523792de5e43cedd35594f8eec8b6517bf69fa
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86147399"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078732"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Bing Search API に分析を追加する
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
 Bing Statistics は、Bing Search API に分析情報を提供します。 こうした分析には、呼び出しのボリューム、上位のクエリ文字列、地理的な分布などが含まれます。 [Azure portal](https://ms.portal.azure.com) で Bing Statistics を有効にするには、Azure リソースに移動し、 **[Enable Bing Statistics]\(Bing Statisticsを有効にする\)** をクリックします。
 
@@ -46,16 +51,16 @@ Bing では、分析データが 24 時間ごとに更新され、[分析ダッ�
 
 - **[リソース ID]** : Azure サブスクリプションを識別する一意のリソース ID です。 複数の Bing Search API 階層をサブスクライブしている場合、一覧には複数の ID が含まれます。 既定では、すべてのリソースが選択されています。  
   
-- **市場**: 結果の取得元の市場です。 たとえば、en-us (英語、米国) などです。 既定では、すべての市場が選択されています。 呼び出しに市場が指定されておらず、Bing がユーザーの市場を特定できない場合、`en-WW` 市場が Bing で使用される市場になります。  
+- **市場** : 結果の取得元の市場です。 たとえば、en-us (英語、米国) などです。 既定では、すべての市場が選択されています。 呼び出しに市場が指定されておらず、Bing がユーザーの市場を特定できない場合、`en-WW` 市場が Bing で使用される市場になります。  
   
-- **エンドポイント**: Bing Search API のエンドポイントです。 一覧には、有料サブスクリプションを持っているすべてのエンドポイントが含まれます。 既定では、すべてのエンドポイントが選択されています。  
+- **エンドポイント** : Bing Search API のエンドポイントです。 一覧には、有料サブスクリプションを持っているすべてのエンドポイントが含まれます。 既定では、すべてのエンドポイントが選択されています。  
 
-- **時間枠**: レポートの期間です。 以下を指定できます。
+- **時間枠** : レポートの期間です。 以下を指定できます。
   - **[すべて]** : 最大 13 か月分のデータが含まれます  
-  - **過去 24 時間**:過去 24 時間の分析情報が含まれます  
-  - **過去 1 週間**:7 日前からの分析情報が含まれます  
-  - **過去 1 か月**:30 日前からの分析情報が含まれます  
-  - **カスタム日付範囲**:使用可能な場合、指定した日付範囲からの分析情報が含まれます  
+  - **過去 24 時間** :過去 24 時間の分析情報が含まれます  
+  - **過去 1 週間** :7 日前からの分析情報が含まれます  
+  - **過去 1 か月** :30 日前からの分析情報が含まれます  
+  - **カスタム日付範囲** :使用可能な場合、指定した日付範囲からの分析情報が含まれます  
 
 ## <a name="charts-and-graphs"></a>チャートとグラフ
 

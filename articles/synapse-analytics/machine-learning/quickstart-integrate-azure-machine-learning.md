@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 141cc47adb398cbd5730fbe33bcd90fece809ed3
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 2597aa1f0589fea75af0a3ac41244e3718d5eb3e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91543301"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307953"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>クイック スタート:Synapse で Azure Machine Learning のリンクされたサービスを新規作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "91543301"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)。
-- ADLS Gen2 ストレージ アカウントが既定のストレージとして構成されている [Synapse Analytics ワークスペース](../get-started-create-workspace.md)。 使用する ADLS Gen2 ファイル システムの**ストレージ BLOB データ共同作成者**である必要があります。
+- ADLS Gen2 ストレージ アカウントが既定のストレージとして構成されている [Synapse Analytics ワークスペース](../get-started-create-workspace.md)。 使用する ADLS Gen2 ファイル システムの **ストレージ BLOB データ共同作成者** である必要があります。
 - [Azure Machine Learning ワークスペース](/azure/machine-learning/how-to-manage-workspace)。
 - リンクされたサービスの作成に使用できるサービス プリンシパルとシークレットを作成するには、アクセス許可 (またはアクセス許可を持つユーザーからの要求) が必要です。 このサービス プリンシパルには Azure Machine Learning ワークスペースの共同作成者ロールが割り当てられている必要があることに注意してください。
 
@@ -66,7 +66,7 @@ ms.locfileid: "91543301"
 
 2. 以下をフォームに入力します。
 
-   - サービス プリンシパル ID: これはアプリケーションの**アプリケーション (クライアント) ID** です。
+   - サービス プリンシパル ID: これはアプリケーションの **アプリケーション (クライアント) ID** です。
   
      > [!NOTE]
      > アプリケーションの名前ではありません。 この ID は、アプリケーションの ID の概要ページで確認できます。 これは、"81707eac-ab38-406u-8f6c-10ce76a568d5" のような長い文字列になります。
@@ -79,5 +79,5 @@ ms.locfileid: "91543301"
 
 ## <a name="next-steps"></a>次の手順
 
-- [チュートリアル: 機械学習モデル スコアリング ウィザード - SQL プール](tutorial-sql-pool-model-scoring-wizard.md)
+- [チュートリアル: 機械学習モデル スコアリング ウィザード - 専用 SQL プール](tutorial-sql-pool-model-scoring-wizard.md)
 - [Azure Synapse Analytics の Machine Learning 機能 (ワークスペース プレビュー)](what-is-machine-learning.md)

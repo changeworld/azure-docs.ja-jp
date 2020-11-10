@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick,
-ms.openlocfilehash: da4cef50610b219689e2271e9f70fd1adb1a235f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 979e360bb920fc3b34a201b1287b50b141bffa9b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540508"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313613"
 ---
 # <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>チュートリアル:Azure Automated ML と Apache Spark を使用した実験の実行
 
@@ -29,13 +29,16 @@ Azure Machine Learning は、機械学習モデルのトレーニング、デプ
 - モデルの精度を計算する
 
 ### <a name="before-you-begin"></a>始める前に
-- [Apache Spark プールの作成チュートリアル](../quickstart-create-apache-spark-pool-studio.md)に従って、Apache Spark プールを作成します。
+
+- [サーバーレス Apache Spark プールの作成に関するクイックスタート](../quickstart-create-apache-spark-pool-studio.md)に従って、サーバーレス Apache Spark プールを作成します。
 - 既存の Azure Machine Learning ワークスペースがない場合は、[Azure Machine Learning ワークスペースのセットアップのチュートリアル](https://docs.microsoft.com/azure/machine-learning/tutorial-1st-experiment-sdk-setup)を完了します。 
 
 ### <a name="understand-regression-models"></a>回帰モデルについて
-*回帰モデル*は、独立した予測子に基づいて数値の出力値を予測します。 回帰の目的は、1 つの変数が他の変数にどのように影響するかを推定することによって、独立した予測変数間の関係を確立することです。  
+
+*回帰モデル* は、独立した予測子に基づいて数値の出力値を予測します。 回帰の目的は、1 つの変数が他の変数にどのように影響するかを推定することによって、独立した予測変数間の関係を確立することです。  
 
 ### <a name="regression-analysis-example-on-the-nyc-taxi-data"></a>NYC タクシー データの回帰分析の例
+
 この例では、Spark を使用して、ニューヨークからのタクシー乗車のチップ データに対して、いくつかの分析を実行します。 データは [Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) から入手できます。 このデータセットのサブセットには、イエロー タクシー乗車に関する情報が格納され、各乗車、出発時刻と到着時刻、場所、料金、およびその他の関心の高い属性に関する情報が含まれます。
 
 > [!IMPORTANT]
@@ -125,7 +128,7 @@ training_data, validation_data = taxi_df.randomSplit([0.8,0.2], 223)
 この手順により、完成したモデルをテストするためのデータ ポイントがモデルのトレーニングに使用されていないことが保証されます。 
 
 ## <a name="connect-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへの接続
-Azure Machine Learning の**ワークスペース**は、Azure サブスクリプションとリソースの情報を受け取るクラスです。 また、これにより、お客様のモデル実行を監視して追跡するためのクラウド リソースが作成されます。 この手順では、既存の Azure Machine Learning ワークスペースからワークスペース オブジェクトを作成します。
+Azure Machine Learning の **ワークスペース** は、Azure サブスクリプションとリソースの情報を受け取るクラスです。 また、これにより、お客様のモデル実行を監視して追跡するためのクラウド リソースが作成されます。 この手順では、既存の Azure Machine Learning ワークスペースからワークスペース オブジェクトを作成します。
    
 ```python
 from azureml.core import Workspace
@@ -143,7 +146,7 @@ ws = Workspace(workspace_name = workspace_name,
 ```
 
 ## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>データフレームを Azure Machine Learning データセットに変換する
-リモート実験を送信するには、データセットを Azure Machine Learning の ```TabularDatset``` に変換する必要があります。 [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) は、指定されたファイルを解析して、データを表形式で表します。
+リモート実験を送信するには、データセットを Azure Machine Learning の ```TabularDatset``` に変換する必要があります。 [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) は、指定されたファイルを解析して、データを表形式で表します。
 
 次のコードは、既存のワークスペースと、既定の Azure Machine Learning の既定のデータストアを取得します。 次に、データストアとファイルの場所をパス パラメーターに渡して、新しい ```TabularDataset``` を作成します。 
 
@@ -165,7 +168,7 @@ dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'tra
 
 ![アップロードされたデータセットの画像。](./media/apache-spark-machine-learning-aml-notebook/upload-dataset.png)
 
-## <a name="submit-an-auto-ml-experiment"></a>Auto ML 実験の送信
+## <a name="submit-an-automl-experiment"></a>AutoML 実験を送信する
 
 #### <a name="define-training-settings"></a>トレーニングの設定を定義する
 

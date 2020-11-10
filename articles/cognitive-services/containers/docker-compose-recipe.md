@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 10/29/2020
 ms.author: aahi
-ms.openlocfilehash: 740311226a662ea3d3f8bba3ee5156e14f74516b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cedcf8a3fcd656c4af0ca7493c598791d35d20d9
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88244297"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130563"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>Docker Compose を使用して複数のコンテナーをデプロイする
 
@@ -35,24 +35,17 @@ ms.locfileid: "88244297"
   * F0 または Standard 価格レベルのみの **Computer Vision** リソース。
   * F0 または Standard 価格レベルのみの **Form Recognizer** リソース。
   * S0 価格レベルの **Cognitive Services** リソース。
-
-## <a name="request-access-to-the-container-registry"></a>コンテナー レジストリへのアクセスの要求
-
-[Cognitive Services Speech コンテナー要求フォーム](https://aka.ms/speechcontainerspreview/)に記入して送信します。 
-
-[!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
-
-[!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
+* ゲート プレビュー コンテナーを使用している場合、[オンライン要求フォーム](https://aka.ms/csgate/)に入力して使用する必要があります。
 
 ## <a name="docker-compose-file"></a>Docker Compose ファイル
 
-YAML ファイルには、デプロイされるすべてのサービスが定義されています。 これらのサービスは、`DockerFile` または既存のコンテナー イメージのどちらかに依存します。 この例では、2 つのプレビュー イメージを使用します。 次の YAML ファイルをコピーして貼り付け、*docker-compose.yaml* という名前で保存します。 ファイルで適切な **apikey**、**billing**、および **EndpointUri** の値を指定します。
+YAML ファイルには、デプロイされるすべてのサービスが定義されています。 これらのサービスは、`DockerFile` または既存のコンテナー イメージのどちらかに依存します。 この例では、2 つのプレビュー イメージを使用します。 次の YAML ファイルをコピーして貼り付け、 *docker-compose.yaml* という名前で保存します。 ファイルで適切な **apikey** 、 **billing** 、および **EndpointUri** の値を指定します。
 
 ```yaml
 version: '3.7'
 services:
   forms:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer"
+    image: "mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout"
     environment:
        eula: accept
        billing: # < Your form recognizer billing URL >
@@ -70,7 +63,7 @@ services:
       - "5010:5000"
 
   ocr:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-read"
+    image: "mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview"
     environment:
       eula: accept
       apikey: # < Your computer vision API key >
@@ -80,16 +73,16 @@ services:
 ```
 
 > [!IMPORTANT]
-> ホスト マシン上に、**volumes** ノード以下に指定されているディレクトリを作成します。 ボリューム バインドを使用してイメージをマウントする前にディレクトリが存在している必要があるので、この方法が必要です。
+> ホスト マシン上に、 **volumes** ノード以下に指定されているディレクトリを作成します。 ボリューム バインドを使用してイメージをマウントする前にディレクトリが存在している必要があるので、この方法が必要です。
 
 ## <a name="start-the-configured-docker-compose-services"></a>構成された Docker Compose サービスを開始する
 
 Docker Compose ファイルを使用すると、定義されたサービスのライフ サイクルのすべての段階 (サービスの開始、停止、再構築、サービス状態の表示、ログのストリーミング) を管理できます。 プロジェクト ディレクトリ (docker-compose.yaml ファイルがある場所) からコマンドライン インターフェイスを開きます。
 
 > [!NOTE]
-> エラーを避けるために、ホスト マシンと Docker エンジンがドライブを適切に共有していることを確認します。 たとえば、*E:\publicpreview* が *docker-compose.yaml* ファイルのディレクトリとして使用されている場合、ドライブ **E** を Docker と共有します。
+> エラーを避けるために、ホスト マシンと Docker エンジンがドライブを適切に共有していることを確認します。 たとえば、 *E:\publicpreview* が *docker-compose.yaml* ファイルのディレクトリとして使用されている場合、ドライブ **E** を Docker と共有します。
 
-コマンドライン インターフェイスから次のコマンドを実行して、*docker-compose.yaml* ファイルに定義されているすべてのサービスを開始 (または再開) します。
+コマンドライン インターフェイスから次のコマンドを実行して、 *docker-compose.yaml* ファイルに定義されているすべてのサービスを開始 (または再開) します。
 
 ```console
 docker-compose up
@@ -98,8 +91,8 @@ docker-compose up
 この構成を使用して **docker-compose up** コマンドを初めて実行するとき、Docker は **services** ノード下に構成されているイメージを取得してから、それらをダウンロードしてマウントします。
 
 ```console
-Pulling forms (containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:)...
-latest: Pulling from microsoft/cognitive-services-form-recognizer
+Pulling forms (mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout:)...
+latest: Pulling from azure-cognitive-services/form-recognizer/layout
 743f2d6c1f65: Pull complete
 72befba99561: Pull complete
 2a40b9192d02: Pull complete
@@ -113,8 +106,8 @@ fd93b5f95865: Pull complete
 ef41dcbc5857: Pull complete
 4d05c86a4178: Pull complete
 34e811d37201: Pull complete
-Pulling ocr (containerpreview.azurecr.io/microsoft/cognitive-services-read:)...
-latest: Pulling from microsoft/cognitive-services-read
+Pulling ocr (mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview:)...
+latest: Pulling from /azure-cognitive-services/vision/read:3.1-preview
 f476d66f5408: Already exists
 8882c27f669e: Already exists
 d9af21273955: Already exists
@@ -166,13 +159,13 @@ ocr_1    | Application started. Press Ctrl+C to shut down.
 
 ```
 IMAGE ID            REPOSITORY                                                                 TAG
-2ce533f88e80        containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer   latest
-4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-read              latest
+2ce533f88e80        mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout          latest
+4be104c126c5        mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview         latest
 ```
 
 ### <a name="test-containers"></a>テスト コンテナー
 
-ホスト コンピューター上でブラウザーを開き、 http://localhost:5021/swagger/index.html のように、*docker-compose.yaml* ファイルで指定されたポートを使用して **localhost** にアクセスします。 たとえば、API の **[使ってみる]** 機能を使用して、Form Recognizer エンドポイントをテストできます。 両方のコンテナーの swagger ページを使用およびテストできます。
+ホスト コンピューター上でブラウザーを開き、 http://localhost:5021/swagger/index.html のように、 *docker-compose.yaml* ファイルで指定されたポートを使用して **localhost** にアクセスします。 たとえば、API の **[使ってみる]** 機能を使用して、Form Recognizer エンドポイントをテストできます。 両方のコンテナーの swagger ページを使用およびテストできます。
 
 ![Form Recognizer コンテナー](media/form-recognizer-swagger-page.png)
 

@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 07342cb31f1c44273f98a97b018620538f86c17f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2e06f0918ce23beded7475f644e7cc6019facacc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287731"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322585"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>Azure Synapse Link (プレビュー) で Apache Spark を使用して Azure Cosmos DB と対話する
 
@@ -35,9 +35,9 @@ Azure Cosmos DB 分析ストアに対してクエリを実行するために使�
 
 エクスペリエンスの違いは、Azure Cosmos DB コンテナー内の基になるデータの変更が、Spark で実行される分析に自動的に反映されるかどうかです。 コンテナーの分析ストアに対して Spark DataFrame が登録されるか、Spark テーブルが作成されると、その分析ストア内のデータの現在のスナップショットに関するメタデータが Spark にフェッチされ、後続の分析が効率的にプッシュダウンされます。 Spark は遅延評価ポリシーに従うため、Spark DataFrame でアクションが呼び出されるか、Spark テーブルに対して SparkSQL クエリが実行されない限り、基になるコンテナーの分析ストアから実際のデータはフェッチされないことに注意してください。
 
-**Spark DataFrame に読み込む**場合、フェッチされたメタデータは Spark セッションの有効期間を通じてキャッシュされるため、DataFrame の作成時に、そのDataFrame で呼び出される後続のアクションが分析ストアのスナップショットに対して評価されます。
+**Spark DataFrame に読み込む** 場合、フェッチされたメタデータは Spark セッションの有効期間を通じてキャッシュされるため、DataFrame の作成時に、そのDataFrame で呼び出される後続のアクションが分析ストアのスナップショットに対して評価されます。
 
-一方、**Spark テーブルを作成する**場合、分析ストアの状態のメタデータは Spark にキャッシュされず、Spark テーブルに対して SparkSQL のクエリが実行されるたびに再読み込みが行われます。
+一方、 **Spark テーブルを作成する** 場合、分析ストアの状態のメタデータは Spark にキャッシュされず、Spark テーブルに対して SparkSQL のクエリが実行されるたびに再読み込みが行われます。
 
 このため、Spark DataFrame に読み込むことと、Spark テーブルを作成することは、Spark 分析を分析ストアの固定スナップショットに対して評価するか、分析ストアの最新のスナップショットに対して評価するかに基づいて選択できます。
 
@@ -209,7 +209,7 @@ query.awaitTermination()
     ]
 }
 ```
-リモートの Spark ジョブ定義を Synapse Spark プールに送信する場合は、こちらの[チュートリアル](../spark/apache-spark-job-definitions.md)に従って外部ライブラリを参照する方法を確認できます。
+リモートの Spark ジョブ定義をサーバーレス Apache Spark プールに送信する場合は、こちらの[チュートリアル](../spark/apache-spark-job-definitions.md)に従って外部ライブラリを参照する方法を確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 

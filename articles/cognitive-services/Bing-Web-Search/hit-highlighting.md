@@ -11,14 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
-ms.openlocfilehash: a6d394fec6e7cf0a230f61ad05c236a1f84dad9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea9cd9cf064b9c07016bc5e166cc4ec4c041b146
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68854051"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078545"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>装飾マーカーを使用してテキストを強調表示する
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
 Bing は検索語の強調表示をサポートしています。検索語の強調表示により、一部の結果の表示文字列内で検索語 (または Bing が関連すると見なしたその他の語) がマークされます。 たとえば、Web ページ結果の `name`、 `displayUrl`、および `snippet` の各フィールドには、マークされた検索語が含まれる場合があります。 
 
@@ -36,7 +41,7 @@ Bing は、既定で、表示文字列に強調表示のマーカーを含めま
 
 Bing には、マーカーとして Unicode 文字または HTML タグのいずれかを使用するオプションが用意されています。 使用するマーカーを指定するには、[textFormat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) クエリ パラメーターを含めます。 
 
-| 値             | マーカー                       |
+| 値             | Marker                       |
 |-------------------|------------------------------|
 | `textFormat=Raw`  | Unicode 文字 (既定) |
 | `textFormat=HTML` | HTML 文字              |

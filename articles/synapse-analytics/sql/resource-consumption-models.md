@@ -9,22 +9,22 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 394521156d6192d25c3a4d254ac2c9b94c6231f5
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 1a78142ded7be46bdc06c49d6e0a26ef8b266300
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093550"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318390"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL のリソースの使用
 
 この記事では、Synapse SQL (プレビュー) のリソースの使用モデルについて説明します。
 
-## <a name="sql-on-demand"></a>SQL オンデマンド
+## <a name="serverless-sql-pool"></a>サーバーレス SQL プール
 
-SQL オンデマンドは、適切なサイズを選択する必要がない、クエリごとの従量課金サービスです。 システムは要件に基づいて自動的に調整されるため、インフラストラクチャの管理やソリューションに適したサイズを選択する作業から解放されます。
+サーバーレス SQL プールは、適切なサイズを選択する必要がない、クエリごとの従量課金サービスです。 システムは要件に基づいて自動的に調整されるため、インフラストラクチャの管理やソリューションに適したサイズを選択する作業から解放されます。
 
-## <a name="sql-pool---data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>SQL プール - Data Warehouse ユニット (DWU) とコンピューティング Data Warehouse ユニット (cDWU)
+## <a name="dedicated-sql-pool---data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>専用 SQL プール - Data Warehouse ユニット (DWU) とコンピューティング Data Warehouse ユニット (cDWU)
 
 最適な Data Warehouse ユニット (DWU) の数の選択についての推奨事項と、ユニットの数を変更する方法を示します。
 
@@ -50,12 +50,12 @@ DWU の数を増やすと、次のメリットが得られます。
 
 サービス レベル目標 (SLO) は、データ ウェアハウスのコストとパフォーマンス レベルを決定するスケーラビリティ設定です。 Gen2 用のサービス レベルは、コンピューティング データ ウェアハウス単位 (cDWU) で測定されます (例: DW2000c)。 Gen1 サービス レベルは DWU の単位で計測されます (例: DW2000)。
 
-サービス レベル目標 (SLO) は、データ ウェアハウスのコストとパフォーマンス レベルを決定するスケーラビリティ設定です。 Gen2 SQL プールのサービス レベルは、DW2000c など、Data Warehouse ユニット (DWU) で測定されます。
+サービス レベル目標 (SLO) は、データ ウェアハウスのコストとパフォーマンス レベルを決定するスケーラビリティ設定です。 Gen2 専用 SQL プールのサービス レベルは、DW2000c など、Data Warehouse ユニット (DWU) で測定されます。
 
 > [!NOTE]
 > Azure Synapse Analytics Gen2 には、最近になって、最低 100 cDWU のコンピューティング レベルをサポートするための新しいスケール機能が追加されました。 現在 Gen1 を使用していて小さいコンピューティング レベルを必要とする既存のデータ ウェアハウスでは、現在追加コストなしで利用可能なリージョンで Gen2 にアップグレードできます。  お使いのリージョンがまだサポートされていない場合は、サポートされているリージョンにアップグレードできます。 詳細については、[Gen2 へのアップグレード](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
 
-T-SQL では、SERVICE_OBJECTIVE 設定によって SQL プールのサービス レベルとパフォーマンス レベルが決定されます。
+T-SQL では、SERVICE_OBJECTIVE 設定によって専用 SQL プールのサービス レベルとパフォーマンス レベルが決まります。
 
 ```sql
 CREATE DATABASE mySQLDW
@@ -160,7 +160,7 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000c')
 
 #### <a name="rest-apis"></a>REST API
 
-DWU を変更するには、[データベースの作成または更新](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) REST API を使います。 次の例では、サーバー MyServer でホストされているデータベース MySQLDW のサービス レベル目標を DW1000c に設定します。 サーバーは "ResourceGroup1" という名前の Azure リソース グループ内にあります。
+DWU を変更するには、[データベースの作成または更新](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) REST API を使います。 次の例では、サーバー MyServer でホストされているデータベース MySQLDW のサービス レベル目標を DW1000c に設定します。 サーバーは "ResourceGroup1" という名前の Asure リソース グループ内にあります。
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -204,7 +204,7 @@ AND       major_resource_id = 'MySQLDW'
 ;
 ```
 
-この DMV は、操作や操作の状態 (IN_PROGRESS または COMPLETED のどちらか) などの SQL プールに対するさまざまな管理操作に関する情報を返します。
+この DMV は、操作や操作の状態 (IN_PROGRESS または COMPLETED のどちらか) などの専用 SQL プールに対するさまざまな管理操作に関する情報を返します。
 
 ### <a name="the-scaling-workflow"></a>スケーリングのワークフロー
 

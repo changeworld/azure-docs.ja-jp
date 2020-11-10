@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Web ツールを使用して Azure Synapse Analytics で Apache Spark プールを作成する
-description: このクイックスタートでは、Web ツールを使用して Azure Synapse Analytics で Apache Spark プールを作成し、Spark SQL クエリを実行する方法を示します。
+title: 'クイックスタート: Web ツールを使用してサーバーレス Apache Spark プールを作成する'
+description: このクイックスタートでは、Web ツールを使用して Azure Synapse Analytics でサーバーレス Apache Spark プールを作成し、Spark SQL クエリを実行する方法について説明します。
 services: synapse-analytics
 author: euangMS
 ms.author: euang
@@ -9,16 +9,16 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.openlocfilehash: a4583e7fbf1eeaf4447e1e717c716159af645bfa
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b20f2ce88695cb68de496d126c5e3cd52f9eb6c8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742554"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316138"
 ---
-# <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>クイック スタート:Web ツールを使用して Azure Synapse Analytics で Apache Spark プールを作成する
+# <a name="quickstart-create-a-serverless-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>クイックスタート: Web ツールを使用して Azure Synapse Analytics でサーバーレス Apache Spark プールを作成する
 
-このクイックスタートでは、Web ツールを使用して Azure Synapse で Apache Spark プール (プレビュー) を作成する方法について説明します。 次に、Apache Spark プールに接続し、ファイルとテーブルに対して Spark SQL クエリを実行する方法について説明します。 Apache Spark により、メモリ内処理を使用した、高速のデータ分析とクラスター コンピューティングが可能になります。 Azure Synapse の Spark については、[Azure Synapse 上の Apache Spark の概要に関するページ](./spark/apache-spark-overview.md)を参照してください。
+このクイックスタートでは、Web ツールを使用して Azure Synapse でサーバーレス Apache Spark プール (プレビュー) を作成する方法について説明します。 次に、Apache Spark プールに接続し、ファイルとテーブルに対して Spark SQL クエリを実行する方法について説明します。 Apache Spark により、メモリ内処理を使用した、高速のデータ分析とクラスター コンピューティングが可能になります。 Azure Synapse の Spark については、[Azure Synapse 上の Apache Spark の概要に関するページ](./spark/apache-spark-overview.md)を参照してください。
 
 > [!IMPORTANT]
 > Spark インスタンスの料金は、それを使用しているかどうかに関係なく、分単位で課金されます。 必ず、Spark インスタンスの使用を終了した後にシャットダウンするか、短いタイムアウトを設定してください。 詳しくは、この記事の「 **リソースのクリーンアップ** 」をご覧ください。
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 - [Synapse Analytics ワークスペース](quickstart-create-workspace.md)
-- [Apache Spark プール](quickstart-create-apache-spark-pool-studio.md)
+- [サーバーレス Apache Spark プール](quickstart-create-apache-spark-pool-studio.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -132,9 +132,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 11. 以前に実行した各セルには、 **History Server** と **監視** にアクセスするためのオプションがありました。 リンクをクリックすると、ユーザー エクスペリエンスのさまざまな部分に移動します。
 
+> [!NOTE]
+> [Apache Spark の公式ドキュメント](https://spark.apache.org/docs/latest/)の一部では、Spark コンソールの使用を前提としていますが、これは Synapse Spark では利用できません。 代わりに、[ノートブック](quickstart-apache-spark-notebook.md)または [IntelliJ](./spark/intellij-tool-synapse.md) のエクスペリエンスを使用してください。
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Azure Synapse では Azure Data Lake Storage にデータが保存されます。 Spark インスタンスが使用されていない場合は、そのインスタンスを安全にシャットダウンできます。 Azure Synapse Apache Spark プールは、使用されていない場合でも、実行されている限り課金されます。 
+Azure Synapse では Azure Data Lake Storage にデータが保存されます。 Spark インスタンスが使用されていない場合は、そのインスタンスを安全にシャットダウンできます。 サーバーレス Apache Spark プールは、使用されていない場合でも、実行されている限り課金されます。 
 
 プールの料金はストレージの料金の何倍にもなるため、使用しない場合は Spark インスタンスをシャットダウンするのが経済的にも合理的です。
 
@@ -142,11 +145,10 @@ Spark インスタンスがシャットダウンされるようにするには�
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Azure Synapse Apache Spark プールを作成し、基本的な Spark SQL クエリを実行する方法を学習しました。
+このクイックスタートでは、サーバーレス Apache Spark プールを作成し、基本的な Spark SQL クエリを実行する方法を学習しました。
 
 - [Azure Synapse Analytics](overview-what-is.md)
 - [.NET for Apache Spark のドキュメント](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Apache Spark の公式ドキュメント](https://spark.apache.org/docs/latest/)
 
->[!NOTE]
-> Apache Spark の公式ドキュメントの一部では、Spark コンソールの使用を前提としていますが、これは Azure Synapse Spark では利用できません。 代わりに、[ノートブック](quickstart-apache-spark-notebook.md)または [IntelliJ](./spark/intellij-tool-synapse.md) のエクスペリエンスを使用してください。
+
+

@@ -1,6 +1,6 @@
 ---
-title: SQL オンデマンド (プレビュー) を使用してストレージ内のデータに対してクエリを実行する
-description: この記事では、Azure Synapse Analytics 内の SQL オンデマンド (プレビュー) リソースを使用して、Azure のストレージに対してクエリを実行する方法について説明します。
+title: サーバーレス SQL プールを使用してデータ ストレージにクエリを実行する
+description: この記事では、Azure Synapse Analytics 内のサーバーレス SQL プール (プレビュー) リソースを使用して、Azure のストレージに対してクエリを実行する方法について説明します。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,27 +9,27 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0ac54eb5d6350cc234eb7036a3a1dc97a4f1b083
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3fd3a94efd6e7870ae3919a011fc24f66b97c559
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288377"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310945"
 ---
-# <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Synapse SQL 内で SQL オンデマンド (プレビュー) リソースを使用してストレージ ファイルに対してクエリを実行する
+# <a name="query-storage-files-with-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プール (プレビュー) を使用してストレージ ファイルにクエリを実行する
 
-SQL オンデマンド (プレビュー) を使用すると、データ レイク内のデータに対してクエリを実行できます。 これには、半構造化と非構造化のデータのクエリに対応する T-SQL クエリ領域が用意されています。 クエリでは、次の T-SQL の側面がサポートされています。
+サーバーレス SQL プール (プレビュー) を使用すると、データ レイク内のデータに対してクエリを実行できます。 これには、半構造化と非構造化のデータのクエリに対応する T-SQL クエリ領域が用意されています。 クエリでは、次の T-SQL の側面がサポートされています。
 
 - 大部分の [SQL 関数と演算子](overview-features.md)を含む、完全な [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 領域。
 - CREATE EXTERNAL TABLE AS SELECT ([CETAS](develop-tables-cetas.md)) は、[外部テーブル](develop-tables-external-tables.md)を作成し、次に並行して、Transact-SQL SELECT ステートメントの結果を Azure Storage にエクスポートします。
 
-現在サポートされているものとされていないものの詳細については、[SQL オンデマンドの概要](on-demand-workspace-overview.md)に関する記事、または以下の記事をご覧ください。
+現在サポートされているものとされていないものの詳細については、[サーバーレス SQL プールの概要](on-demand-workspace-overview.md)に関する記事、または以下の記事をご覧ください。
 - [ストレージ アクセスの開発](develop-storage-files-overview.md)に関する記事では、[外部テーブル](develop-tables-external-tables.md)と [OPENROWSET](develop-openrowset.md) 関数を使用してストレージからデータを読み取る方法について説明しています。
 - [ストレージ アクセスの制御](develop-storage-files-storage-access-control.md)に関する記事では、SAS 認証を使用するか、ワークスペースのマネージド ID を使用して、Synapse SQL からストレージにアクセスできるようにする方法について説明しています。
 
 ## <a name="overview"></a>概要
 
-Azure Storage ファイルに格納されているデータに対するインプレース クエリのスムーズな実行をサポートするために、SQL オンデマンドでは、次の追加機能を持つ [OPENROWSET](develop-openrowset.md) 関数が使用されます。
+Azure Storage ファイルに格納されているデータに対するインプレース クエリのスムーズな実行をサポートするために、サーバーレス SQL プールでは、次の追加機能を備えた [OPENROWSET](develop-openrowset.md) 関数が使用されます。
 
 - [複数のファイルまたはフォルダーに対してクエリを実行する](#query-multiple-files-or-folders)
 - [PARQUET ファイル形式](#query-parquet-files)
@@ -146,7 +146,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*
 
 ## <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>複合型と入れ子または繰り返しのデータ構造を操作する
 
-([Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) ファイルなどの) 入れ子または繰り返しのデータ型に格納されているデータのスムーズな操作を可能にするために、SQL オンデマンドに次の拡張機能が追加されています。
+([Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) ファイルなどの) 入れ子または繰り返しのデータ型に格納されているデータのスムーズな操作を可能にするために、サーバーレス SQL プールに次の拡張機能が追加されています。
 
 #### <a name="project-nested-or-repeated-data"></a>入れ子にされたデータまたは繰り返しのデータを射影する
 
@@ -228,7 +228,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*
 
 ### <a name="demo-setup"></a>デモのセットアップ
 
-最初の手順として、クエリを実行する**データベースを作成**します。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 
+最初の手順として、クエリを実行する **データベースを作成** します。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 
 
 このセットアップ スクリプトにより、データ ソース、データベース スコープの資格情報、これらのサンプルでデータの読み取りに使用される外部ファイル形式が作成されます。
 

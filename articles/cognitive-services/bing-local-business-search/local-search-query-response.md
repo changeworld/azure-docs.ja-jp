@@ -10,14 +10,19 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: rosh
-ms.openlocfilehash: 25bcdb89002fec4f9b67b091996d7bf80bcf21c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e26d128fea7208206be8a7329522f8202051215
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74326734"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095409"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Bing Local Business Search API クエリと応答の送信と使用
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
 Bing Local Business Search API から、検索クエリをそのエンドポイントに送信し、必須の `Ocp-Apim-Subscription-Key` ヘッダーを含めることで、ローカルの結果を得ることができます。 使用可能な[ヘッダー](local-search-reference.md#headers)と[パラメーター](local-search-reference.md#query-parameters)と共に、検索対象の領域の[地理的境界](specify-geographic-search.md)と、返される場所の[カテゴリ](local-search-query-response.md)を指定して、検索をカスタマイズすることができます。
 

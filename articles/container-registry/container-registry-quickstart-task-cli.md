@@ -4,12 +4,12 @@ description: Azure Container Registry コマンドを使用して、Azure クラ
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 36921900f64d458f1f2591897e32c98f6d22a550
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 1b4dcc05747ceae52c649c366c3faf437e77b560
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538214"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098911"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>クイック スタート:Azure Container Registry タスクを使用したコンテナー イメージのビルドと実行
 
@@ -17,17 +17,17 @@ ms.locfileid: "91538214"
 
 このクイック スタートの後に、[チュートリアル](container-registry-tutorial-quick-task.md)を使用して ACR タスクのより高度な機能について説明します。 ACR タスクでは、コードのコミットに基づくイメージのビルドまたは基本イメージの更新を自動化したり、他のシナリオ間で複数のコンテナーを並列にテストしたりすることができます。 
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント][azure-account] を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Azure Cloud Shell または Azure CLI のローカル インストールを使用して、このクイック スタートを完了できます。 これをローカルで使用する場合は、バージョン 2.0.58 以降をお勧めします。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+    
+- このクイックスタートには、Azure CLI のバージョン 2.0.58 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 コンテナー レジストリがまだない場合は、最初に [az group create][az-group-create] コマンドを使用してリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+次の例では、 *myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -35,7 +35,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
-[az acr create][az-acr-create] コマンドを使用してコンテナー レジストリを作成します。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 次の例では、*myContainerRegistry008* を使用しています。 これを一意の値に更新します。
+[az acr create][az-acr-create] コマンドを使用してコンテナー レジストリを作成します。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 次の例では、 *myContainerRegistry008* を使用しています。 これを一意の値に更新します。
 
 ```azurecli-interactive
 az acr create --resource-group myResourceGroup \
@@ -46,10 +46,10 @@ az acr create --resource-group myResourceGroup \
 
 ## <a name="build-and-push-image-from-a-dockerfile"></a>Dockerfile からのイメージのビルドとプッシュ
 
-ここでは、Azure Container Registry を使用してイメージをビルドし、プッシュします。 まず、ローカル作業ディレクトリを作成してから、`FROM hello-world` の 1 行だけが記述された *Dockerfile* という名前の Dockerfile を作成します。 これは、Docker Hub の `hello-world` イメージから Linux コンテナー イメージをビルドする単純な例です。 独自の標準的な Dockerfile を作成して他のプラットフォーム用のイメージをビルドすることができます。 Bash シェルで作業している場合は、次のコマンドで Dockerfile を作成してください。
+ここでは、Azure Container Registry を使用してイメージをビルドし、プッシュします。 まず、ローカル作業ディレクトリを作成してから、`FROM mcr.microsoft.com/hello-world` の 1 行だけが記述された *Dockerfile* という名前の Dockerfile を作成します。 これは、Microsoft Container Registry でホストされている `hello-world` イメージから Linux コンテナー イメージをビルドする単純な例です。 独自の標準的な Dockerfile を作成して他のプラットフォーム用のイメージをビルドすることができます。 Bash シェルで作業している場合は、次のコマンドで Dockerfile を作成してください。
 
 ```bash
-echo FROM hello-world > Dockerfile
+echo FROM mcr.microsoft.com/hello-world > Dockerfile
 ```
 
 [az acr build][az-acr-build] コマンドを実行してイメージをビルドし、正常にイメージがビルドされたら、それをレジストリにプッシュします。 次の例では、`sample/hello-world:v1` イメージをビルドしてプッシュします。 コマンドの最後にある `.` では、Dockerfile の位置を設定します。この場合は現在のディレクトリです。
@@ -78,8 +78,8 @@ Waiting for agent...
 2019/03/18 21:57:00 Successfully obtained source code and scanned for dependencies
 2019/03/18 21:57:00 Launching container with name: build
 Sending build context to Docker daemon  13.82kB
-Step 1/1 : FROM hello-world
-latest: Pulling from library/hello-world
+Step 1/1 : FROM mcr.microsoft.com/hello-world
+latest: Pulling from hello-world
 Digest: sha256:2557e3c07ed1e38f26e389462d03ed943586fxxxx21577a99efb77324b0fe535
 Successfully built fce289e99eb9
 Successfully tagged mycontainerregistry008.azurecr.io/sample/hello-world:v1

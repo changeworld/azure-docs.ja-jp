@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/26/2020
 ms.author: memildin
-ms.openlocfilehash: ba0c68589f7ea4b32970e3ad81fea5175b998dc7
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 549a95b0b2ffc2b2d2bf5670a961e0454683e33a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629155"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026719"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Security Center に対する今後の重要な変更
 
@@ -42,27 +42,19 @@ ms.locfileid: "92629155"
 
 Azure セキュリティ ベンチマークは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインのセットです。 [Azure セキュリティ ベンチマークの詳細を確認してください](../security/benchmarks/introduction.md)。
 
-ベンチマークのカバレッジを拡大するために、次の 29 個の新しい推奨事項が Security Center に追加されます。
+ベンチマークのカバレッジを拡大するために、次の 18 個の新しい推奨事項が Security Center に追加されます。
 
 プレビューの推奨事項によってリソースが異常な状態になることはありません。これらの推奨事項は、セキュリティ スコアの計算には含まれません。 これらの推奨事項はプレビュー期間が終了した時点でスコアに反映されるため、可能な限り修復してください。 これらの推奨事項に対応する方法については、「[Azure Security Center の修復レコメンデーション](security-center-remediate-recommendations.md)」を参照してください。
 
 - 仮想マシンに対して Azure Backup を有効にする必要がある
-- SQL サーバーの監査のリテンション期間は少なくとも 90 日に設定する必要がある
-- App Service の診断ログを有効にする必要がある 
 - MySQL データベース サーバーで [SSL 接続を強制する] が有効でなければならない
 - PostgreSQL データベース サーバーで [SSL 接続を強制する] が有効でなければならない
-- API アプリでは FTPS を必須とする
-- 関数アプリでは FTPS を必須とする
-- Web アプリでは FTPS を必須とする
 - Azure Database for MariaDB の geo 冗長バックアップを有効にする必要がある
 - Azure Database for MySQL の geo 冗長バックアップを有効にする必要がある
 - Azure Database for PostgreSQL の geo 冗長バックアップを有効にする必要がある
 - API アプリに対して Java を最新バージョンに更新する必要がある
 - 関数アプリに対して Java を最新バージョンに更新する必要がある
 - Web アプリに対して Java を最新バージョンに更新する必要がある
-- API アプリではマネージド ID を使用する必要がある
-- 関数アプリではマネージド ID を使用する必要がある
-- Web アプリではマネージド ID を使用する必要がある
 - API アプリに対して PHP を最新バージョンに更新する必要がある
 - Web アプリに対して PHP を最新バージョンに更新する必要がある
 - MariaDB サーバーに対してプライベート エンドポイントを有効にする必要がある
@@ -71,9 +63,6 @@ Azure セキュリティ ベンチマークは Microsoft が作成したもの�
 - API アプリに対して Python を最新バージョンに更新する必要がある
 - 関数アプリに対して Python を最新バージョンに更新する必要がある
 - Web アプリに対して Python を最新バージョンに更新する必要がある
-- API アプリに対して TLS を最新バージョンに更新する必要がある
-- 関数アプリに対して TLS を最新バージョンに更新する必要がある
-- Web アプリに対して TLS を最新バージョンに更新する必要がある
 - Web アプリではすべての受信要求に対して SSL 証明書を要求する必要がある
 
 関連リンク:

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: b4bc291c21ca1ccabec3cfd9544deaa5d45fcf51
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7fde67ab9b9160bb89493748d09e83bd9cfcff34
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787195"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091703"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure Digital Twins のトラブルシューティング: メトリック
 
@@ -64,7 +64,7 @@ API 要求に関連するメトリック:
 課金に関連するメトリック:
 
 >[!NOTE]
-> プレビュー期間中は、 **課金されません** 。 これらのメトリックは選択可能なリストに表示されますが、プレビュー期間中は適用されません。また、サービスがプレビューの範囲を超えない限り、0 のままになります。
+>これらのメトリックは引き続き選択可能なリストに表示されますが、サービスの新しい価格が使用できるようになるまで 0 のままになります。 詳細については、「 [*Azure Digital Twins の価格*](https://azure.microsoft.com/pricing/details/digital-twins/)」を参照してください。
 
 | メトリック | メトリックの表示名 | ユニット | 集計の種類| 説明 | Dimensions |
 | --- | --- | --- | --- | --- | --- |

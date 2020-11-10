@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: f124eb24dcdc9e6437c803d1066d6ca86d5c32ab
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d085d59dc1dbe09c014dcaf5aa239805824354f0
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440809"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279956"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure Digital Twins の内外でイベントをルーティングする
 
 Azure Digital Twins は、 **イベント ルート** を使用して、サービスの外部のコンシューマーにデータを送信します。 
 
-プレビュー期間中は、Azure Digital Twins データを送信する主なケースが 2 つあります。
+Azure Digital Twins データを送信する主なケースが 2 つあります。
 * Azure Digital Twins グラフの 1 つのツインから別のツインにデータを送信する。 たとえば、あるデジタル ツインのプロパティが変更された際、それに応じて別のデジタル ツインに通知し、更新する必要がある場合があります。
 * データを下流のデータ サービスに送信して、追加のストレージまたは処理 ( *データ エグレス* とも呼ばれます) を行います。 たとえば、
   - 病院は、Azure Digital Twins イベント データを [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md) に送信して、一括分析に関連するイベントの時系列データを記録することができます。
@@ -38,7 +38,7 @@ Azure Digital Twins は、 **イベント ルート** を使用して、サー�
 
 ### <a name="event-routes-for-internal-digital-twin-events"></a>内部デジタル ツイン イベントのイベント ルート
 
-現在のプレビュー リリースでは、イベント ルートはツイン グラフ内のイベントを処理し、デジタル ツインからデジタル ツインにデータを送信するためにも使用されます。 これは、Event Grid 経由でイベント ルートを [Azure Functions](../azure-functions/functions-overview.md) などのコンピューティング リソースに接続して行われます。 これらの関数は、ツインがイベントを受信して応答する方法を定義します。 
+イベント ルートはツイン グラフ内のイベントを処理し、デジタル ツインからデジタル ツインにデータを送信するためにも使用されます。 これは、Event Grid 経由でイベント ルートを [Azure Functions](../azure-functions/functions-overview.md) などのコンピューティング リソースに接続して行われます。 これらの関数は、ツインがイベントを受信して応答する方法を定義します。 
 
 イベント ルート経由で受信したイベントに基づいて、コンピューティング リソースがツイン グラフを変更する場合は、事前に変更するツインを把握しておくことをお勧めします。 
 
@@ -50,7 +50,7 @@ Azure Digital Twins は、 **イベント ルート** を使用して、サー�
 
 ## <a name="create-an-endpoint"></a>エンドポイントの作成
 
-イベント ルートを定義するには、開発者が最初にエンドポイントを定義する必要があります。 **エンドポイント** は、ルート接続をサポートする Azure Digital Twins の外部の宛先です。 現在のプレビュー リリースでサポートされている宛先は次のとおりです。
+イベント ルートを定義するには、開発者が最初にエンドポイントを定義する必要があります。 **エンドポイント** は、ルート接続をサポートする Azure Digital Twins の外部の宛先です。 サポートされる宛先:
 * Event Grid カスタム トピック
 * イベント ハブ
 * Service Bus
@@ -73,19 +73,19 @@ Azure Digital Twins は、 **イベント ルート** を使用して、サー�
  
 イベント ルートを作成するには、Azure Digital Twins [**コントロール プレーン API**](how-to-manage-routes-apis-cli.md#create-an-event-route)、 [**CLI コマンド**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)、または [**Azure portal**](how-to-manage-routes-portal.md#create-an-event-route) を使用できます。 
 
-次に示すのは、`CreateEventRoute` [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview) 呼び出しを使用して、クライアント アプリケーション内でイベント ルートを作成する例です。 
+次に示すのは、`CreateOrReplaceEventRouteAsync` [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 呼び出しを使用して、クライアント アプリケーション内でイベント ルートを作成する例です。 
 
 ```csharp
-EventRoute er = new EventRoute("endpointName");
-er.Filter("true"); //Filter allows all messages
-await client.CreateEventRoute("routeName", er);
+string eventFilter = "$eventType = 'DigitalTwinTelemetryMessages' or $eventType = 'DigitalTwinLifecycleNotification'";
+var er = new DigitalTwinsEventRoute("endpointName", eventFilter);
+await client.CreateOrReplaceEventRouteAsync("routeName", er);
 ```
 
-1. まず、`EventRoute` オブジェクトが作成され、コンストラクターはエンドポイントの名前を受け取ります。 この `endpointName` フィールドは、Event Hub、Event Grid、または Service Bus などのエンドポイントを識別します。 この登録呼び出しを行う前に、これらのエンドポイントをサブスクリプションに作成し、コントロール プレーン API を使用して Azure Digital Twins にアタッチする必要があります。
+1. まず、`DigitalTwinsEventRoute` オブジェクトが作成され、コンストラクターはエンドポイントの名前を受け取ります。 この `endpointName` フィールドは、Event Hub、Event Grid、または Service Bus などのエンドポイントを識別します。 この登録呼び出しを行う前に、これらのエンドポイントをサブスクリプションに作成し、コントロール プレーン API を使用して Azure Digital Twins にアタッチする必要があります。
 
 2. また、イベント ルート オブジェクトには [**Filter**](how-to-manage-routes-apis-cli.md#filter-events)フィールドがあります。このルートの後に続くイベントの種類を制限するために使用できます。 `true` のフィルターを使用すると、追加のフィルター処理を適用せずにルートが有効になります (`false` のフィルターによって、ルートは無効になります)。 
 
-3. このイベント ルート オブジェクトは、ルートの名前と共に `CreateEventRoute` に渡されます。
+3. このイベント ルート オブジェクトは、ルートの名前と共に `CreateOrReplaceEventRouteAsync` に渡されます。
 
 > [!TIP]
 > すべての SDK 関数に同期バージョンと非同期バージョンがあります。

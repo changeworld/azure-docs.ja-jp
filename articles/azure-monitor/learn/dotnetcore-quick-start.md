@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: a12fe837bfd9606d07c7be71851880d2cebb9d61
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bd45284bfea09935ea48445d816f3b91272f68fc
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89055483"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925851"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>ASP.NET Core Web アプリケーションの監視を開始する
 
@@ -61,19 +61,19 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
 ## <a name="configure-app-insights-sdk"></a>App Insights SDK を構成する
 
-1. Visual Studio で ASP.NET Core Web アプリ **プロジェクト**を開き、**ソリューション エクスプローラー**で AppName を右クリックして **[追加]**  >  **[Application Insights Telemetry]** を選択します。
+1. Visual Studio で ASP.NET Core Web アプリ **プロジェクト** を開き、 **ソリューション エクスプローラー** で AppName を右クリックして **[追加]**  >  **[Application Insights Telemetry]** を選択します。
 
     ![Application Insights Telemetry の追加](./media/dotnetcore-quick-start/2vsaddappinsights.png)
 
 2. **[作業の開始]** をクリックします
 
-3. アカウントとサブスクリプションを選択します。Azure portal で作成した**既存のリソース**を選択し、 **[登録]** をクリックします。
+3. アカウントとサブスクリプションを選択します。Azure portal で作成した **既存のリソース** を選択し、 **[登録]** をクリックします。
 
 4. **[プロジェクト]**  >  **[NuGet パッケージの管理]**  >  **[パッケージ ソース: nuget.org]**  >  **[更新]** の順に選択して、Application Insights SDK パッケージを最新の安定版リリースに更新します。
 
 5. **[デバッグ]**  >  **[Start without Debugging (デバッグなしで開始)]** (Ctrl+F5) を選択して、アプリを起動します。
 
-    ![Application Insights の概要メニュー](./media/dotnetcore-quick-start/3debug.png)
+    ![[Start without Debugging]\(デバッグなしで開始\) メニュー オプションを示すスクリーンショット。](./media/dotnetcore-quick-start/3debug.png)
 
 > [!NOTE]
 > データがポータルに表示されるようになるまで、3 ～ 5 分かかります。 このアプリがトラフィックの少ないテスト アプリである場合、ほとんどのメトリックはアクティブな要求や操作がある場合にのみキャプチャされることに留意してください。
@@ -88,7 +88,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
    ![アプリケーション マップ](./media/dotnetcore-quick-start/5appmap.png)
 
-3. **[アプリ分析]** アイコン ![[アプリケーション マップ] アイコン](./media/dotnetcore-quick-start/006.png) **[Analytics 内のビュー]** をクリックします。 これにより、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **Application Insights 分析**が開きます。 この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
+3. **[アプリ分析]** アイコン ![[アプリケーション マップ] アイコン](./media/dotnetcore-quick-start/006.png) **[Analytics 内のビュー]** をクリックします。 これにより、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **Application Insights 分析** が開きます。 この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
 
    ![一定の期間にわたるユーザー要求に関する Analytics グラフ](./media/dotnetcore-quick-start/6analytics.png)
 
@@ -107,7 +107,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 > 既存のリソース グループを使用した場合、以下の手順ではうまくいきません。個々の Application Insights リソースを削除する必要があります。 リソース グループを削除すると、そのグループに属している内在するリソースがすべて削除されるので注意してください。
 
 1. Azure Portal の左側のメニューから、 **[リソース グループ]** 、 **[myResourceGroup]** の順にクリックします。
-2. リソース グループのページで **[削除]** をクリックし、テキスト ボックスに「**myResourceGroup**」と入力してから **[削除]** をクリックします。
+2. リソース グループのページで **[削除]** をクリックし、テキスト ボックスに「 **myResourceGroup** 」と入力してから **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 

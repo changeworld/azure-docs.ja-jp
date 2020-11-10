@@ -11,20 +11,25 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: 677f6089f649aae720a6303a7e1512e3c7ebeca7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c328c681874ba171eab1341a16cf059e359feea
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "66390136"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93076280"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>ランキングを使用して Bing Web Search API の結果を表示する方法  
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
 検索の各応答には、[RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) 回答が含まれます。これには、検索結果の表示方法が指定されています。 ランキング応答は、従来の検索結果ページに対してメインライン コンテンツとサイドバー コンテンツによって結果をグループ化します。 結果を従来のメインラインおよびサイドバー形式で表示しない場合は、メインラインのコンテンツの視認性をサイドバーのコンテンツよりも高くする必要があります。  
 
 各グループ (メインラインまたはサイドバー) 内で、[Items](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) 配列は、コンテンツの表示順序を指定します。 各項目では、回答内の結果を次の 2 つの方法で識別できます。  
 
--   `answerType` および `resultIndex` — `answerType` フィールドは、回答 (Web ページ、ニュースなど) を識別し、`resultIndex` は、回答内の結果 (ニュース記事など) を識別します。 インデックスは、0 から始まります。  
+-   `answerType` および `resultIndex` — `answerType` フィールドは、回答 (Web ページ、ニュースなど) を識別し、`resultIndex` は、回答内の結果 (ニュース記事など) を識別します。 インデックスは 0 から始まります。  
 
 -   `value` — `value` フィールドには、回答または回答内の結果の ID に一致する ID が含まれます。 回答または結果のいずれかに ID が含まれています。両方には含まれていません。  
 

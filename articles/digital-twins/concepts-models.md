@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c71a7d4737ad34c43df1aa302d9517c61ed400b2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: fecadf3cd6fd0d654315038680b9aa3fa2b71782
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440792"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913910"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure Digital Twins のツイン モデルについて
 
@@ -20,9 +20,9 @@ Azure Digital Twins の重要な特性は、独自のボキャブラリを定義
 
 モデルは、オブジェクト指向プログラミング言語の **クラス** に似ており、実際の作業環境における 1 つの特定の概念のデータ シェイプを定義します。 モデルには名前 ( *Room* や *TemperatureSensor* など) があり、プロパティ、テレメトリまたはイベント、環境内でこの型のエンティティに何ができるかを説明するコマンドなどの要素が含まれています。 後で、これらのモデルを使用して、この型の説明と一致する特定のエンティティを表す [**デジタル ツイン**](concepts-twins-graph.md)を作成します。
 
-モデルは、JSON-LD ベースの **Digital Twin Definition Language (DTDL)** を使用して記述されます。  
+Azure Digital Twins のモデルは、JSON-LD ベースの **Digital Twin Definition language (DTDL)** で表現されます。  
 
-## <a name="digital-twin-definition-language-dtdl-for-writing-models"></a>モデルを記述するための Digital Twin Definition Language (DTDL)
+## <a name="digital-twin-definition-language-dtdl-for-models"></a>モデル用の Digital Twin Definition Language (DTDL)
 
 Azure Digital Twins のモデルは、Digital Twins Definition language (DTDL) を使用して定義されます。 DTDL は JSON-LD に基づいており、プログラミング言語に依存しません。 DTDL は Azure Digital Twins 専用ではなく、[IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)などの他の IoT サービスのデバイス データを表すためにも使用されます。 
 
@@ -227,6 +227,12 @@ DTDL によると、 *Property* および *Telemetry* 属性のスキーマは�
 ## <a name="validating-models"></a>モデルの検証
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
+
+## <a name="converting-industry-standard-models"></a>業界標準モデルの変換
+
+Azure Digital Twins の外部に RDF や OWL などの業界標準に基づく既存のモデルがある場合、Azure Digital Twins でそれらを使用するには、 **それらを DTDL に変換** する必要があります。 DTDL のバージョンは、その後、Azure Digital Twins 内で、モデルの信頼できるソースとなります。
+
+このプロセスの詳細については、 [" *業界標準モデルを変換する方法*](how-to-convert-models.md)" に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

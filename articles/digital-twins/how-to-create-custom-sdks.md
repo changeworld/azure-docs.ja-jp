@@ -8,26 +8,26 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 53887b7487c3f0bb70c9f8cc7cd61246fabc0b37
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 158d22ffb3bc5486e0523c07cc2c022c49f2ee9c
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970131"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145601"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>AutoRest を使用して Azure Digital Twins 用のカスタム SDK を作成する
 
-現時点では、Azure Digital Twins API と対話するために公開されている唯一のデータ プレーン SDK は、.NET (C#)、JavaScript、および Java を対象としています。 これらの SDK と一般的な API については、「["*Azure Digital Twins の API および SDK を使用する方法*](how-to-use-apis-sdks.md)" に関するページで参照してください。 別の言語で作業している場合、この記事では、AutoRest を使用して、任意の言語で独自のデータ プレーン SDK を生成する方法について説明します。
+現時点では、Azure Digital Twins API と対話するために公開されている唯一のデータ プレーン SDK は、.NET (C#)、JavaScript、および Java を対象としています。 これらの SDK と一般的な API については、「 [" *Azure Digital Twins の API および SDK を使用する方法*](how-to-use-apis-sdks.md)" に関するページで参照してください。 別の言語で作業している場合、この記事では、AutoRest を使用して、任意の言語で独自のデータ プレーン SDK を生成する方法について説明します。
 
 >[!NOTE]
-> 必要に応じて、AutoRest を使用して、コントロール プレーン SDK を生成することもできます。 これを行うには、データ プレーンではなく、[コントロール プレーンの Swagger フォルダー]] (https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) ) の最新**コントロール プレーン Swagger** (OpenAPI) ファイルを使用して、この記事の手順を実行します。
+> 必要に応じて、AutoRest を使用して、コントロール プレーン SDK を生成することもできます。 これを行うには、データ プレーンではなく、 [コントロール プレーンの Swagger フォルダー](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/)の最新 **コントロール プレーン Swagger** (OpenAPI) ファイルを使用して、この記事の手順を行います。
 
 ## <a name="set-up-your-machine"></a>コンピューターをセットアップする
 
 SDK を生成するには、次のものが必要です。
 * [AutoRest](https://github.com/Azure/autorest)、バージョン 2.0.4413 (バージョン 3 は現在サポートされていません)
 * [Node.js](https://nodejs.org) (AutoRest の前提条件として)
-* [データ プレーンの Swagger フォルダー](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)の最新 Azure Digital Twins **データ プレーン Swagger** (OpenAPI) ファイル、および例を含む付属のフォルダー。  ローカル コンピューターに Swagger ファイル (*digitaltwins.json*) と例のフォルダーをダウンロードします。
+* [データ プレーンの Swagger フォルダー](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)の最新 Azure Digital Twins **データ プレーン Swagger** (OpenAPI) ファイル、および例を含む付属のフォルダー。  ローカル コンピューターに Swagger ファイル ( *digitaltwins.json* ) と例のフォルダーをダウンロードします。
 
 お使いのコンピューターに上記の一覧にあるものがすべて備わったら、AutoRest を使用して SDK を作成することができます。
 
@@ -55,17 +55,17 @@ AutoRest では、幅広い言語コード ジェネレーターがサポート�
 
 AutoRest によって生成されたファイルは、.NET ソリューションに直接追加することができます。 ただし、Azure Digital Twins SDK を複数の異なるプロジェクト (クライアント アプリ、Azure Functions アプリなど) に含めることが必要になる場合があります。 このため、生成されたファイルから個別のプロジェクト (.NET クラス ライブラリ) をビルドすると便利な場合があります。 その後、このクラス ライブラリ プロジェクトを、プロジェクト参照として複数のソリューションに含めることができます。
 
-このセクションでは、SDK をクラス ライブラリとしてビルドする方法について説明します。これは独自のプロジェクトであり、他のプロジェクトに含めることができます。 以下の手順は **Visual Studio** に依存しています ([こちら](https://visualstudio.microsoft.com/downloads/)から最新バージョンをインストールできます)。
+このセクションでは、SDK をクラス ライブラリとしてビルドする方法について説明します。これは独自のプロジェクトであり、他のプロジェクトに含めることができます。 以下の手順は **Visual Studio** に依存しています ( [こちら](https://visualstudio.microsoft.com/downloads/)から最新バージョンをインストールできます)。
 
 次に手順を示します。
 
 1. クラス ライブラリ用の新しい Visual Studio ソリューションを作成します
-2. プロジェクト名として「*ADTApi*」を使用します
+2. プロジェクト名として「 *ADTApi* 」を使用します
 3. ソリューション エクスプローラーで、生成されたソリューションの *ADTApi* プロジェクトを右クリックし、 *[追加] > [既存の項目...]* の順に選択します
 4. SDK を生成したフォルダーを検索し、ルート レベルにあるファイルを選択します
 5. [OK] を押します
 6. プロジェクトにフォルダーを追加します (ソリューション エクスプローラーでプロジェクトを右クリックし、 *[追加] > [新しいフォルダー]* の順に選択)
-7. フォルダーに「*Models*」という名前を付けます
+7. フォルダーに「 *Models* 」という名前を付けます
 8. ソリューション エクスプローラーで *Models* フォルダーを右クリックし、 *[追加] > [既存の項目...]* の順に選択します
 9. 生成された SDK の *Models* フォルダー内のファイルを選択し、[OK] を押します
 
@@ -76,7 +76,7 @@ SDK を正常にビルドするには、プロジェクトに次の参照が必�
 これらを追加するには、 *[ツール] > [NuGet パッケージ マネージャー] > [ソリューションの NuGet パッケージの管理...]* の順に選択します。
 
 1. パネルで、 *[参照]* タブが選択されていることを確認します
-2. 「*Microsoft.Rest*」を検索します
+2. 「 *Microsoft.Rest* 」を検索します
 3. `ClientRuntime` パッケージと `ClientRuntime.Azure` パッケージを選択し、ソリューションに追加します
 
 これで、プロジェクトをビルドし、作成した Azure Digital Twins アプリケーションにプロジェクト参照として含めることができます。
@@ -117,40 +117,25 @@ AutoRest では、SDK に対して 2 種類のページング パターンが生
 * クエリ API を除くすべての API 向け
 * クエリ API 向け
 
-クエリ以外のページング パターンでは、それぞれの呼び出しに 2 つのバージョンがあります。
-* 最初の呼び出しを行うバージョン (`DigitalTwins.ListEdges()` など)
-* 次のページを取得するためのバージョン。 これらの呼び出しには、"Next" というサフィックスが付いています (`DigitalTwins.ListEdgesNext()`)
+非クエリのページング パターンでは、次のコード スニペットは、Azure Digital Twins から外部へのリレーションシップの一覧をページ単位で取得する方法を示しています。
 
-次のコード スニペットは、Azure Digital Twins から外部へのリレーションシップの一覧をページ単位で取得する方法を示しています。
 ```csharp
-try
-{
-    // List to hold the results in
-    List<object> relList = new List<object>();
-    // Enumerate the IPage object returned to get the results
-    // ListAsync will throw if an error occurs
-    IPage<object> relPage = await client.DigitalTwins.ListEdgesAsync(id);
-    relList.AddRange(relPage);
-    // If there are more pages, the NextPageLink in the page is set
-    while (relPage.NextPageLink != null)
+ try 
+ {
+     // List the relationships.
+    AsyncPageable<BasicRelationship> results = client.GetRelationshipsAsync<BasicRelationship>(srcId);
+    Console.WriteLine($"Twin {srcId} is connected to:");
+    // Iterate through the relationships found.
+    int numberOfRelationships = 0;
+    await foreach (string rel in results)
     {
-        // Get more pages...
-        relPage = await client.DigitalTwins.ListEdgesNextAsync(relPage.NextPageLink);
-        relList.AddRange(relPage);
+         ++numberOfRelationships;
+         // Do something with each relationship found
+         Console.WriteLine($"Found relationship-{rel.Name}->{rel.TargetId}");
     }
-    Console.WriteLine($"Found {relList.Count} relationships on {id}");
-    // Do something with each object found
-    // As relationships are custom types, they are JSON.Net types
-    foreach (JObject r in relList)
-    {
-        string relId = r.Value<string>("$edgeId");
-        string relName = r.Value<string>("$relationship");
-        Console.WriteLine($"Found relationship {relId} from {id}");
-    }
-}
-catch (ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error retrieving relationships on {id}: {e.Response.StatusCode}");
+    Console.WriteLine($"Found {numberOfRelationships} relationships on {srcId}");
+} catch (RequestFailedException rex) {
+    Console.WriteLine($"Relationship retrieval error: {rex.Status}:{rex.Message}");   
 }
 ```
 

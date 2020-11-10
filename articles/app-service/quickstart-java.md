@@ -10,12 +10,12 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: f6a4045308aa0ae8488839b0d5ea4d476c4dc883
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 3c5a04bd14bdcbf250908db78c622b963f191d91
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776325"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333088"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>クイック スタート:Azure App Service で Java アプリを作成する
 
@@ -71,7 +71,7 @@ Azure App Service へのデプロイ プロセスでは、Azure CLI から Azure
 次の Maven コマンドを実行して、デプロイを構成します。 このコマンドは、App Service オペレーティング システム、Java バージョン、および Tomcat バージョンを設定するのに役立ちます。
 
 ```bash
-mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 ```
 
 ::: zone pivot="platform-windows"
@@ -79,9 +79,10 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
 # <a name="java-se"></a>[Java SE](#tab/javase)
 
 1. **Subscription** オプションのプロンプトが表示されたら、行頭に番号出力を入力して適切な `Subscription` を選択します。
-1. **Web App** オプションのプロンプトが表示されたら、Enter キーを押して既定オプション `<create>` を受け入れます。
-1. **OS** オプションのプロンプトが表示されたら、「`2`」と入力して **windows** を選択します。
-1. Enter キーを押して、既定の Java バージョン 1.8 を使用します。
+1. **Web App** オプションのプロンプトが表示されたら、Enter キーを押して既定のオプションである `<create>` を受け入れるか、既存のアプリを選択します。
+1. **OS** オプションのプロンプトが表示されたら、「`3`」と入力して **Windows** を選択します。
+1. **価格レベル** オプションのプロンプトが表示されたら、「`2`」と入力して **B2** を選択します。
+1. Enter キーを押して、既定の Java バージョンである **Java 8** を使用します。
 1. 最後のプロンプトで Enter キーを押して、選択内容を確認します。
 
     要約出力は、次に示すスニペットのようになります。
@@ -92,7 +93,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
     AppName : spring-boot-1599007390755
     ResourceGroup : spring-boot-1599007390755-rg
     Region : westeurope
-    PricingTier : PremiumV2_P1v2
+    PricingTier : Basic_B2
     OS : Windows
     Java : 1.8
     WebContainer : java 8
@@ -110,10 +111,11 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
 # <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
 1. **Subscription** オプションのプロンプトが表示されたら、行頭に番号出力を入力して適切な `Subscription` を選択します。
-1. **Web App** オプションのプロンプトが表示されたら、Enter キーを押して既定オプション `<create>` を受け入れます。
-1. **OS** オプションのプロンプトが表示されたら、「`2`」と入力して **windows** を選択します。
-1. Enter キーを押して、既定の Java バージョン 1.8 を使用します。
-1. Enter キーを押して、既定の Web コンテナーである Tomcat 8.5 を使用します。
+1. **Web App** オプションのプロンプトが表示されたら、Enter キーを押して既定のオプションである `<create>` を受け入れるか、既存のアプリを選択します。
+1. **OS** オプションのプロンプトが表示されたら、「`3`」と入力して **Windows** を選択します。
+1. **価格レベル** オプションのプロンプトが表示されたら、「`2`」と入力して **B2** を選択します。
+1. Enter キーを押して、既定の Java バージョンである **Java 8** を使用します。
+1. Enter キーを押して、既定の Web コンテナーである **Tomcat 8.5** を使用します。
 1. 最後のプロンプトで Enter キーを押して、選択内容を確認します。
 
     要約出力は、次に示すスニペットのようになります。
@@ -124,7 +126,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
     AppName : helloworld-1599003152123
     ResourceGroup : helloworld-1599003152123-rg
     Region : westeurope
-    PricingTier : PremiumV2_P1v2
+    PricingTier : Basic_B2
     OS : Windows
     Java : 1.8
     WebContainer : tomcat 8.5
@@ -147,9 +149,10 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
 ### <a name="java-se"></a>[Java SE](#tab/javase)
 
 1. **Subscription** オプションのプロンプトが表示されたら、行頭に番号出力を入力して適切な `Subscription` を選択します。
-1. **Web App** オプションのプロンプトが表示されたら、Enter キーを押して既定オプション `<create>` を受け入れます。
-1. **OS** オプションのプロンプトが表示されたら、Enter キーを押して **linux** を選択します。
-1. Enter キーを押して、既定の Java バージョン 1.8 を使用します。
+1. **Web App** オプションのプロンプトが表示されたら、Enter キーを押して既定のオプションである `<create>` を受け入れるか、既存のアプリを選択します。
+1. **OS** オプションのプロンプトが表示されたら、Enter キーを押して **Linux** を選択します。
+1. **価格レベル** オプションのプロンプトが表示されたら、「`2`」と入力して **B2** を選択します。
+1. Enter キーを押して、既定の Java バージョンである **Java 8** を使用します。
 1. 最後のプロンプトで Enter キーを押して、選択内容を確認します。
 
     ```
@@ -158,7 +161,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
     AppName : spring-boot-1599007116351
     ResourceGroup : spring-boot-1599007116351-rg
     Region : westeurope
-    PricingTier : PremiumV2_P1v2
+    PricingTier : Basic_B2
     OS : Linux
     RuntimeStack : JAVA 8-jre8
     Deploy to slot : false
@@ -175,10 +178,11 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
 ### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
 1. **Subscription** オプションのプロンプトが表示されたら、行頭に番号出力を入力して適切な `Subscription` を選択します。
-1. **Web App** オプションのプロンプトが表示されたら、Enter キーを押して既定オプション `<create>` を受け入れます。
-1. **OS** オプションのプロンプトが表示されたら、Enter キーを押して **linux** を選択します。
-1. Enter キーを押して、既定の Java バージョン 1.8 を使用します。
-1. Enter キーを押して、既定の Web コンテナーである Tomcat 8.5 を使用します。
+1. **Web App** オプションのプロンプトが表示されたら、Enter キーを押して既定のオプションである `<create>` を受け入れるか、既存のアプリを選択します。
+1. **OS** オプションのプロンプトが表示されたら、Enter キーを押して **Linux** を選択します。
+1. **価格レベル** オプションのプロンプトが表示されたら、「`2`」と入力して **B2** を選択します。
+1. Enter キーを押して、既定の Java バージョンである **Java 8** を使用します。
+1. Enter キーを押して、既定の Web コンテナーである **Tomcat 8.5** を使用します。
 1. 最後のプロンプトで Enter キーを押して、選択内容を確認します。
 
     ```
@@ -187,7 +191,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
     AppName : helloworld-1599003744223
     ResourceGroup : helloworld-1599003744223-rg
     Region : westeurope
-    PricingTier : PremiumV2_P1v2
+    PricingTier : Basic_B2
     OS : Linux
     RuntimeStack : TOMCAT 8.5-jre8
     Deploy to slot : false
@@ -214,9 +218,9 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
 `<resourceGroup>` | true | Web アプリの Azure リソース グループ。 | 0.1.0 以降
 `<appName>` | true | Web アプリの名前。 | 0.1.0 以降
 `<region>` | true | Web アプリがホストされるリージョンを指定します。既定値は **westeurope** です。 すべての有効なリージョンについては、「[サポートされているリージョン](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)」を参照してください。 | 0.1.0 以降
-`<pricingTier>` | false | Web アプリの価格レベル。 既定値は **P1V2** です。| 0.1.0 以降
-`<runtime>` | true | ランタイム環境の構成の詳細については、[こちら](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)を参照してください。 | 0.1.0 以降
-`<deployment>` | true | デプロイ構成の詳細については、[こちら](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)を参照してください。 | 0.1.0 以降
+`<pricingTier>` | false | Web アプリの価格レベル。 運用ワークロードの場合の既定値は **P1V2** ですが、Java Dev/Test の場合は **B2** が推奨される最小構成です。 [詳細情報](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0 以降
+`<runtime>` | true | ランタイム環境の構成の詳細については、[こちら](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)を参照してください。 | 0.1.0 以降
+`<deployment>` | true | デプロイ構成の詳細については、[こちら](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)を参照してください。 | 0.1.0 以降
 
 `<appName>` と `<resourceGroup>` の値 (デモでは `helloworld-1590394316693` と `helloworld-1590394316693-rg`) に注意してください。これらは後で使用します。
 
@@ -225,7 +229,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
 
 ## <a name="deploy-the-app"></a>アプリケーションのデプロイ
 
-Maven プラグインでは、Azure CLI からのアカウント資格情報を App Services へのデプロイに使用します。 続行する前に、[Azure CLI にサインイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)します。
+Maven プラグインでは、Azure CLI からのアカウント資格情報を App Services へのデプロイに使用します。 続行する前に、[Azure CLI にサインイン](/cli/azure/authenticate-azure-cli)します。
 
 ```azurecli
 az login

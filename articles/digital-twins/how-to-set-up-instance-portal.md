@@ -7,12 +7,13 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0dfc93987fb2ca25b9e397e4aa91adcaaafd8a38
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.custom: contperfq2
+ms.openlocfilehash: bd8fec0ae5b6ece1626049953b1f4afd3a581d97
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478858"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280595"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure Digital Twins インスタンスと認証を設定する (ポータル)
 
@@ -35,7 +36,7 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する":::
 
-検索ボックスで " *Azure Digital Twins* " を検索し、結果から **[Azure Digital Twins (Preview)]\(Azure Digital Twins (プレビュー)\)** サービスを選択します。 _[作成]_ ボタンを選択して、サービスの新しいインスタンスを作成します。
+検索ボックスで *Azure Digital Twins* を検索し、結果から **[Azure Digital Twins]** サービスを選択します。 _[作成]_ ボタンを選択して、サービスの新しいインスタンスを作成します。
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Azure Digital Twins サービスのページから [作成] を選択する":::
 

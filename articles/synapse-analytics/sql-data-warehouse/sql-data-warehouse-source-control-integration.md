@@ -1,6 +1,6 @@
 ---
 title: ソース管理の統合
-description: Azure Repos (Git および GitHub) を使用したネイティブなソース管理の統合による、SQL プールのエンタープライズ クラスのデータベース DevOps エクスペリエンス。
+description: Azure Repos (Git および GitHub) を使用したネイティブなソース管理の統合による、専用 SQL プールのエンタープライズ クラスのデータベース DevOps エクスペリエンス。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 84abfea39cb7311e7cd60346d936c08c28c334d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4751f3cf213098873b0c53b15df82f57d155787a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89441323"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313301"
 ---
-# <a name="source-control-integration-for-sql-pool"></a>SQL プールのためのソース管理の統合
+# <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールを対象としたソース管理の統合
 
-このチュートリアルでは、SQL Server Data Tools (SSDT) データベース プロジェクトをソース管理と統合する方法について概説します。  ソース管理の統合は、Azure Synapse Analytics の SQL プール リソースを使用して継続的インテグレーションと継続的デプロイのパイプラインを構築するための最初の手順です。
+このチュートリアルでは、SQL Server Data Tools (SSDT) データベース プロジェクトをソース管理と統合する方法について概説します。  ソース管理の統合は、Azure Synapse Analytics の専用 SQL プール リソースを使用して継続的インテグレーションと継続的デプロイのパイプラインを構築するための最初の手順です。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -53,7 +53,7 @@ Visual Studio を使用したプロジェクトの接続の詳細については
 
 ## <a name="create-and-connect-your-project"></a>プロジェクトを作成して接続する
 
-1. Visual Studio で、**ローカルの複製されたリポジトリ**に、ディレクトリとローカル Git リポジトリの両方を含む新しい SQL Server データベース プロジェクトを作成します。
+1. Visual Studio で、 **ローカルの複製されたリポジトリ** に、ディレクトリとローカル Git リポジトリの両方を含む新しい SQL Server データベース プロジェクトを作成します。
 
    ![新しいプロジェクトの作成](./media/sql-data-warehouse-source-control-integration/5-create-new-project.png "新しいプロジェクトの作成")  
 
@@ -85,8 +85,8 @@ Visual Studio を使用したプロジェクトの接続の詳細については
 
    ![確認](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "変更を確認する")
 
-4. (**省略可能**) SSDT を使用し、Schema Compare を使用してターゲット データ ウェアハウスへの変更を更新し、Azure Repo リポジトリおよびローカル リポジトリ内のオブジェクト定義に確実にデータ ウェアハウスが反映されるようにします。
+4. ( **省略可能** ) SSDT を使用し、Schema Compare を使用してターゲット データ ウェアハウスへの変更を更新し、Azure Repo リポジトリおよびローカル リポジトリ内のオブジェクト定義に確実にデータ ウェアハウスが反映されるようにします。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [SQL プールのための開発](sql-data-warehouse-overview-develop.md)
+- [専用 SQL プールのための開発](sql-data-warehouse-overview-develop.md)

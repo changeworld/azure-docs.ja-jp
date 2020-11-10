@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 38aea30c5f716df927b5924754eb07e7f94c7ebc
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: da2535a9764c909af3a491402311fe263dbb48fb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92038652"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331045"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure Virtual WAN は GA ですか。
 
@@ -259,6 +259,8 @@ ExpressRoute 回線が仮想ハブに接続されている場合、Microsoft エ
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Virtual WAN に IPv6 のサポートはありますか。
 
 IPv6 は、Virtual WAN ハブとそのゲートウェイではサポートされていません。 IPv4 および IPv6 をサポートする VNet があり、その VNet を Virtual WAN に接続する必要がある場合、このシナリオは現在サポートされていません。 
+
+Azure Firewall 経由のインターネット ブレークアウトを使用したポイント対サイトの (ユーザー) VPN シナリオでは、おそらく、仮想 WAN ハブに対してトラフィックを強制するために、クライアント デバイスの IPv6 接続を無効にする必要があります。 最近のデバイスでは、IPv6 アドレスが既定で使用されるためです。
 
 ### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>さまざまな Virtual WAN 機能を自動化するスクリプトで使用される、推奨される API バージョンは何ですか。
 

@@ -7,18 +7,18 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 9a804bd40635cd039a2c099f98351b2487c554d3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 64ccc9c91d9ead567035b1f7f35e0a0088b6200b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075537"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124188"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>クイック スタート:Spring Boot アプリに機能フラグを追加する
 
 このクイックスタートでは、Azure App Configuration を Spring Boot Web アプリに組み込み、機能管理のエンドツーエンド実装を作成します。 App Configuration サービスを使用し、すべての機能フラグを一箇所に格納し、その状態を制御できます。
 
-Spring Boot 機能管理ライブラリは、包括的な機能フラグのサポートにより、フレームワークを拡張します。 これらのライブラリは、Azure のライブラリには一切依存**しません**。 また、Spring Boot 構成プロバイダーを介して、App Configuration とシームレスに統合されます。
+Spring Boot 機能管理ライブラリは、包括的な機能フラグのサポートにより、フレームワークを拡張します。 これらのライブラリは、Azure のライブラリには一切依存 **しません** 。 また、Spring Boot 構成プロバイダーを介して、App Configuration とシームレスに統合されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,7 +47,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
    * **Java** で **Maven** プロジェクトを生成します。
    * **Spring Boot** のバージョンとして、2.0 以降を指定します。
-   * アプリケーションの**グループ (Group)** と**成果物 (Artifact)** の名前を指定します。  この記事では、`com.example` と `demo` を使用します。
+   * アプリケーションの **グループ (Group)** と **成果物 (Artifact)** の名前を指定します。  この記事では、`com.example` と `demo` を使用します。
    * **Spring Web** の依存関係を追加します。
 
 1. 前の各オプションを指定してから、 **[プロジェクトの生成]** を選択します。 メッセージが表示されたら、ローカル コンピューターにプロジェクトをダウンロードします。
@@ -131,7 +131,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
     }
     ```
 
-1. アプリのパッケージ ディレクトリに、*MessageProperties.java* という名前の新しい Java ファイルを作成します。
+1. アプリのパッケージ ディレクトリに、 *MessageProperties.java* という名前の新しい Java ファイルを作成します。
 
     ```java
     package com.example.demo;
@@ -154,7 +154,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
     }
     ```
 
-1. アプリのパッケージ ディレクトリに、*HelloController.java* という名前の新しい Java ファイルを作成します。
+1. アプリのパッケージ ディレクトリに、 *HelloController.java* という名前の新しい Java ファイルを作成します。
 
     ```java
     package com.example.demo;
@@ -185,7 +185,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
     }
     ```
 
-1. アプリの templates ディレクトリに、*welcome.html* という名前の新しい HTML ファイルを作成します。
+1. アプリの templates ディレクトリに、 *welcome.html* という名前の新しい HTML ファイルを作成します。
 
     ```html
     <!DOCTYPE html>
@@ -286,7 +286,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
 1. ブラウザー ウィンドウを開き、`http://localhost:8080/welcome` に移動します。
 
-    ![クイック スタートのアプリ (ローカルで起動)](./media/quickstarts/spring-boot-feature-flag-local-before.png)
+    ![ウェルカム メッセージが表示されたブラウザー ウィンドウを示すスクリーンショット。](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
 1. App Configuration ポータルで **[Feature Manager]\(機能マネージャー\)** を選択し、 **[Beta]\(ベータ\)** キーの状態を **[On]\(オン\)** に変更します。
 
@@ -296,7 +296,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
 1. ブラウザー ページを最新の情報に更新して新しい構成設定を確認します。
 
-    ![クイック スタートのアプリ (ローカルで起動)](./media/quickstarts/spring-boot-feature-flag-local-after.png)
+    ![ウェルカム メッセージが表示され、[Beta]\(ベータ\) リンクが強調表示されたブラウザー ウィンドウを示すスクリーンショット。](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

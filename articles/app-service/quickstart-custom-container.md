@@ -7,12 +7,12 @@ ms.date: 10/21/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 1411491906e763a52ee1b6a66df1dea183b91973
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b3d9e2e275b4c0d000759878557e5e14f7dfc04f
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425865"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925749"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Azure でカスタム コンテナーを実行する
 
@@ -81,7 +81,7 @@ ms.locfileid: "92425865"
 
    デプロイが完了するまで待ちます。 **[発行]** ページに、後で使用するリポジトリ名が表示されるようになります。
 
-   ![プロジェクトの概要ページから発行する](./media/quickstart-custom-container/published-docker-repository-vs2019.png)
+   ![リポジトリ名が強調表示されているスクリーンショット。](./media/quickstart-custom-container/published-docker-repository-vs2019.png)
 
 1. 後で使用するのでこのリポジトリ名をコピーします。
 

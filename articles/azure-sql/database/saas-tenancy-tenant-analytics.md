@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: dd77305a1b2f7d11a2e371f7682855e15739ee7d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 98896b5b728a729a29f989b3b9a76f29131af8d7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790935"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305972"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>抽出されたデータを使用したクロステナント分析 - シングルテナント アプリ
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "92790935"
 
 すべてのデータが 1 つのマルチテナント データベースに存在する場合は、すべてのテナントのデータに簡単にアクセスできます。 しかし、何千もの可能性があるデータベースに分散している場合、アクセスは複雑になります。 複雑さを軽減し、トランザクション データに対する分析クエリの影響を最小限に押さえる 1 つの方法は、目的に合うように設計された分析データベースまたはデータ ウェアハウスにデータを抽出することです。
 
-このチュートリアルでは、Wingtip Tickets SaaS アプリケーション用の完全な分析シナリオを紹介します。 最初に、 *エラスティック ジョブ* を使用して、各テナント データベースからデータを抽出し、それを分析ストア内のステージング テーブルに読み込みます。 分析ストアには、SQL Database または SQL プールを使用できます。 大規模なデータ抽出には、[Azure Data Factory](../../data-factory/introduction.md) が推奨されます。
+このチュートリアルでは、Wingtip Tickets SaaS アプリケーション用の完全な分析シナリオを紹介します。 最初に、 *エラスティック ジョブ* を使用して、各テナント データベースからデータを抽出し、それを分析ストア内のステージング テーブルに読み込みます。 分析ストアには、SQL Database または専用 SQL プールを使用できます。 大規模なデータ抽出には、[Azure Data Factory](../../data-factory/introduction.md) が推奨されます。
 
 次に、集計データを一連の[スター スキーマ](https://www.wikipedia.org/wiki/Star_schema) テーブルに変換します。 これらのテーブルは、中央のファクト テーブルと関連するディメンション テーブルで構成されます。  Wingtip Tickets では:
 
@@ -55,7 +55,7 @@ ms.locfileid: "92790935"
  
 ![architectureOverView](./media/saas-tenancy-tenant-analytics/StarSchema.png)
 
-最後に、 **PowerBI** を使用して分析ストアに対してクエリが実行され、テナントの動作と Wingtip Tickets アプリケーションの使用に関する洞察が強調表示されます。 以下を行うクエリを実行します。
+最後に、 **Power BI** を使用して分析ストアに対してクエリが実行され、テナントの動作と Wingtip Tickets アプリケーションの使用に関する分析情報が強調表示されます。 以下を行うクエリを実行します。
  
 - 各会場の相対的な人気を示す
 - さまざまなイベントのチケットの売上パターンを強調表示する

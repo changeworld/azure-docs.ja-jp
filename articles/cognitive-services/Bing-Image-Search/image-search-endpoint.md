@@ -10,14 +10,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 38416f6a580d270aefc287de0c198bd418a44db9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ed48a46a01cee5a7a981d4e863f981010b44112
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74072623"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084257"
 ---
 # <a name="endpoints-for-the-bing-image-search-api"></a>Bing Image Search API のエンドポイント
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
 **Image Search API** には 3 つのエンドポイントが含まれています。  エンドポイント 1 は、クエリに基づいて Web からの画像を返します。 エンドポイント 2 は [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) を返します。  エンドポイント 3 は注目の画像を返します。
 
@@ -25,12 +30,12 @@ ms.locfileid: "74072623"
 
 Bing API を使用して画像の結果を取得するには、次のエンドポイントのいずれかに要求を送信します。 ヘッダーと URL パラメーターを使用して、さらに詳細を定義します。
 
-**エンドポイント 1:** `?q=""` によって定義されたユーザーの検索クエリに関連する画像を返します。
+**エンドポイント 1:**`?q=""` によって定義されたユーザーの検索クエリに関連する画像を返します。
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search
 ```
 
-**エンドポイント 2:** `GET` または `POST` を使用して、画像に関する分析情報を返します。
+**エンドポイント 2:**`GET` または `POST` を使用して、画像に関する分析情報を返します。
 ```
  GET or POST https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```
@@ -51,7 +56,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/trending
 画像検索要求に対する応答には、結果が JSON オブジェクトとして含まれます。 結果の解析例については、[チュートリアル](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)と[ソース コード](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app-source)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-**Bing** API では、種類に応じた結果を返す検索アクションがサポートされます。 すべての検索エンドポイントは、結果を JSON 応答オブジェクトとして返します。  すべてのエンドポイントは、特定の言語や場所を経度、緯度、検索半径によって返すクエリをサポートします。
+**Bing** API では、種類に応じた結果を返す検索アクションがサポートされます。  すべての検索エンドポイントは、結果を JSON 応答オブジェクトとして返します。  すべてのエンドポイントは、特定の言語や場所を経度、緯度、検索半径によって返すクエリをサポートします。
 
 各エンドポイントでサポートされるパラメーターについて詳しくは、各種類のリファレンス ページをご覧ください。
 Image Search API を使用した基本的な要求の例については、[Image Search クイック スタート](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/search-the-web)のページをご覧ください。

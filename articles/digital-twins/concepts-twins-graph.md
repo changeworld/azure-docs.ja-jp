@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c41ffcd552cddf981c2ed54d1d78c7cb2e8698c5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c62d1a0b17fda2531a963c292fbd16aaf3a551b3
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440836"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145992"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>デジタル ツインとツイン グラフについて理解する
 
@@ -45,11 +45,14 @@ Azure Digital Twins インスタンスでデジタル ツインを作成する�
 
 [DigitalTwins API](/rest/api/digital-twins/dataplane/twins) を使用して、 *Room* 型のツインをインスタンス化するクライアント コードのスニペットを次に示します。
 
-Azure Digital Twins の現在のプレビューでは、ツインを作成する前に、ツインのすべてのプロパティを初期化しておく必要があります。 これを行うには、必要な初期化値を提供する JSON ドキュメントを作成します。
+ツインは作成時にそのプロパティを初期化できます。あるいは後で設定できます。 プロパティを初期化してツインを作成するには、必要な初期化値を与える JSON ドキュメントを作成します。
 
 [!INCLUDE [Azure Digital Twins code: create twin](../../includes/digital-twins-code-create-twin.md)]
 
 ディクショナリを使用する代わりに、`BasicDigitalTwin` という名称のヘルパー クラスを使用し、"ツイン" オブジェクトにプロパティ フィールドをもっと直接的に格納することもできます。 ヘルパー クラスとその使用例の詳細については、「 [*デジタル ツインを作成するセクション*](how-to-manage-twin.md#create-a-digital-twin)」を参照してください。このセクションは *「デジタル ツインを管理する」方法* を参照してください。
+
+>[!NOTE]
+>ツイン プロパティはオプションとして扱われ、初期化する必要がありませんが、ツインの作成時にそのあらゆる [コンポーネント](concepts-models.md#elements-of-a-model)を設定する **必要があります** 。 空のオブジェクトにすることができますが、コンポーネント自体は存在する必要があります。
 
 ### <a name="create-relationships"></a>リレーションシップの作成
 
@@ -60,13 +63,15 @@ Azure Digital Twins の現在のプレビューでは、ツインを作成する
 await CreateRoom("Cafe", 70, 66);
 await CreateFloor("GroundFloor", averageTemperature=70);
 // Create relationships
-Dictionary<string, object> targetrec = new Dictionary<string, object>()
+var relationship = new BasicRelationship
 {
-    { "$targetId", "Cafe" }
+    TargetId = "Cafe",
+    Name = "contains"
 };
 try
 {
-    await client.DigitalTwins.AddEdgeAsync("GroundFloor", "contains", "GF-to-Cafe", targetrec);
+    string relId = $"GroundFloor-contains-Cafe";
+    await client.CreateOrReplaceRelationshipAsync("GroundFloor", relId, relationship);
 } catch(ErrorResponseException e)
 {
     Console.WriteLine($"*** Error creating relationship: {e.Response.StatusCode}");

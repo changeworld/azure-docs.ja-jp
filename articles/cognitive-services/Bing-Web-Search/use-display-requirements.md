@@ -10,14 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93be72f2afcda90dde1b74c5ee317a7ad3350be1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60499887"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075689"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Bing Search API の利用と表示の要件
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
 この使用/表示要件は、次の Bing Search API のコンテンツと関連情報 (リレーションシップ、メタデータ、その他のシグナルを含む) を実装するあらゆる場合に適用されます。
 
@@ -39,7 +44,7 @@ ms.locfileid: "60499887"
 |Answer     | 応答で返される結果のカテゴリ。 たとえば、Bing Web Search API からの応答であれば、回答として返される可能性のあるカテゴリは Web ページの結果、画像、ビデオ、およびニュースになります。 |
 |Response     | Search API の単一の呼び出しにより取得される回答すべてと、その関連データ。 |
 |結果    | 回答に含まれる情報項目。 たとえば、1 つのニュース記事に関連するデータのセットは、ニュース回答の結果です。 |
-|Search API    | Bing Custom Search API、Bing Entity Search API、Bing Image Search API、Bing News Search API、Bing Video Search API、Bing Visual Search API、Local Business Search API、Bing Web Search API の総称。 |
+|検索 API    | Bing Custom Search API、Bing Entity Search API、Bing Image Search API、Bing News Search API、Bing Video Search API、Bing Visual Search API、Local Business Search API、Bing Web Search API の総称。 |
 
 ## <a name="bing-spell-check-and-bing-autosuggest-api-restrictions"></a>Bing Spell Check と Bing Autosuggest API の制限
 
@@ -99,7 +104,7 @@ ms.locfileid: "60499887"
 ### <a name="notices-and-branding"></a>通知とブランディング 
 次の処理が必要です。
 
-- ユーザーが検索クエリを入力できるユーザー エクスペリエンス (UX) の近くの目立つ位置に、[Microsoft のプライバシーに関する声明](https://go.microsoft.com/fwlink/?LinkId=521839) をリンク先とする有効なハイパーリンクを配置してください。 そのハイパーリンクのラベルは、"**Microsoft のプライバシーに関する声明**" とします。
+- ユーザーが検索クエリを入力できるユーザー エクスペリエンス (UX) の近くの目立つ位置に、[Microsoft のプライバシーに関する声明](https://go.microsoft.com/fwlink/?LinkId=521839) をリンク先とする有効なハイパーリンクを配置してください。 そのハイパーリンクのラベルは、" **Microsoft のプライバシーに関する声明** " とします。
 
 - ユーザーが検索クエリを入力できるユーザー エクスペリエンス (UX) の近くの目立つ位置に、「[Bing Trademark Usage Guidelines (Bing の商標利用ガイドライン)](https://go.microsoft.com/fwlink/?linkid=833278)」に従って Bing のブランド表示を配置してください。 配置するブランド表示では、インターネット検索エクスペリエンスに Microsoft の技術を利用していることをユーザーに明示する必要があります。
 
@@ -114,7 +119,7 @@ ms.locfileid: "60499887"
 メッセージング アプリやソーシャル メディアの投稿を通じてユーザーが Search API からの応答を別のユーザーに転送することが許可されている場合は、次の要件が適用されます。 
 
 - 転送される応答は、次の条件を満たす必要があります。
-  - 転送元のユーザーの元に表示された応答のコンテンツに変更を加えていないコンテンツで構成されていること (形式を変更することは問題ありません)。
+  - 転送元のユーザーの元に表示された応答のコンテンツに変更を加えていないコンテンツで構成されていること  (形式を変更することは問題ありません)。
   - メタデータ形式のデータが含まれていないこと。
   - Bing Web Search API、Bing Image Search API、Bing News Search API、Bing Video Search API、Bing Visual Search API からの応答については、その応答が Bing を利用しているインターネット検索エクスペリエンスにより得られたものである旨の文言を表示すること。 たとえば、"Powered by Bing"、"Bing でこの画像の詳細を確認する" などの文言を表示したり、Bing ロゴを使用したりする方法が考えられます。
   - Bing Custom Search API からの応答については、その応答がインターネット検索エクスペリエンスにより得られたものである旨の文言を表示すること。 たとえば、"この検索結果の詳細を確認する" などの文言を表示する方法が考えられます。

@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 93f23cdcfb3fb7107e3b1838b48b3e58ccc2d028
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d0805aaf694f1569e613ab74135c95e454adbdc0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288768"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315068"
 ---
 # <a name="cetas-with-synapse-sql"></a>Synapse SQL での CETAS
 
-SQL プールまたは SQL オンデマンド (プレビュー) の CREATE EXTERNAL TABLE AS SELECT (CETAS) を使用して、次のタスクを実行できます。  
+専用 SQL プールまたはサーバーレス SQL プール (プレビュー) の CREATE EXTERNAL TABLE AS SELECT (CETAS) を使用して、次のタスクを実行できます。  
 
 - 外部テーブルを作成する
 - Transact-SQL SELECT ステートメントの結果を並行して次にエクスポートする:
@@ -27,13 +27,13 @@ SQL プールまたは SQL オンデマンド (プレビュー) の CREATE EXTER
   - Azure Storage BLOB
   - Azure Data Lake Storage Gen2
 
-## <a name="cetas-in-sql-pool"></a>SQL プールでの CETAS
+## <a name="cetas-in-dedicated-sql-pool"></a>専用 SQL プールでの CETAS
 
-SQL プールの場合、CETAS の使用法と構文については、[CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関する記事をご覧ください。 また、SQL プールを使用した CTAS のガイダンスについては、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関する記事を参照してください。
+専用 SQL プールの場合、CETAS の使用法と構文については、[CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関する記事をご覧ください。 また、専用 SQL プールを使用した CTAS のガイダンスについては、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関する記事を参照してください。
 
-## <a name="cetas-in-sql-on-demand"></a>SQL オンデマンドでの CETAS
+## <a name="cetas-in-serverless-sql-pool"></a>サーバーレス SQL プールでの CETAS
 
-SQL オンデマンドを使用する場合は、CETAS を使用して外部テーブルを作成し、クエリ結果を Azure Storage Blob または Azure Data Lake Storage Gen2 にエクスポートします。
+サーバーレス SQL プールを使用する場合は、CETAS を使用して外部テーブルを作成し、クエリ結果を Azure Storage Blob または Azure Data Lake Storage Gen2 にエクスポートします。
 
 ## <a name="syntax"></a>構文
 
@@ -56,7 +56,7 @@ CREATE EXTERNAL TABLE [ [database_name  . [ schema_name ] . ] | schema_name . ] 
 
 *[ [ *database_name* . [ *schema_name* ] . ] | *schema_name* . ] *table_name**
 
-作成するテーブルの 1 つから 3 つの部分で構成される名前。 外部テーブルの場合、SQL オンデマンドではテーブルのメタデータのみが格納されます。 SQL オンデマンドでは、実際のデータの移動または格納は行われません。
+作成するテーブルの 1 つから 3 つの部分で構成される名前。 外部テーブルの場合、サーバーレス SQL プールではテーブルのメタデータのみが格納されます。 サーバーレス SQL プールでは、実際のデータの移動または格納は行われません。
 
 LOCATION = *'path_to_folder'*
 

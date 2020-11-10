@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: d06d1b0553161523708f4bb142f1c715a77eb2dd
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: fa7faf64e1889ef2d1abe644f23f0be363709a6b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461109"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322711"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>クイック スタート:Synapse ワークスペースを作成する
 このクイックスタートでは、Azure portal を使用して Azure Synapse ワークスペースを作成する手順について説明します。
@@ -65,6 +65,6 @@ Azure Synapse ワークスペースのマネージド ID には、既にスト�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [SQL プールを作成する](quickstart-create-sql-pool-studio.md) 
-* [Apache Spark プールを作成する](quickstart-create-apache-spark-pool-portal.md)
-* [SQL オンデマンドを使用する](quickstart-sql-on-demand.md)
+* [専用 SQL プールを作成する](quickstart-create-sql-pool-studio.md) 
+* [サーバーレス Apache Spark プールを作成する](quickstart-create-apache-spark-pool-portal.md)
+* [サーバーレス SQL プールを使用する](quickstart-sql-on-demand.md)

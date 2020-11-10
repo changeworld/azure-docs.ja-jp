@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 08/26/2020
 ms.author: martinle
 ms.reviewer: euang
-ms.openlocfilehash: 90e7297236994650e0820e883c94a98b29c49fb7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1cdb010e34674d52ebe2135ad1591a163a078708
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249418"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324957"
 ---
 # <a name="securing-your-credentials-through-linked-services-with-the-tokenlibrary"></a>リンクされたサービスと TokenLibrary を使用して資格情報をセキュリティで保護する
 外部ソースからデータにアクセスすることは、よくあるパターンです。 外部データソースで匿名アクセスが許可されていない限り、資格情報、シークレット、または接続文字列を使用して接続をセキュリティで保護することがおそらく必要になります。  
@@ -122,5 +122,5 @@ print(accountKey)
 
 ## <a name="next-steps"></a>次のステップ
 
-- [SQL プールへの書き込み](./synapse-spark-sql-pool-import-export.md)
+- [専用 SQL プールへの書き込み](./synapse-spark-sql-pool-import-export.md)
 

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2bac9645fa66cd33c7cda79f16628c1104e27d7d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 00b4f38f4a2a44b88718224db2b2442033816f83
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480549"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313892"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>Azure Synapse Analytics の IP ファイアウォール規則 (プレビュー)
 
@@ -21,7 +21,7 @@ ms.locfileid: "92480549"
 
 ## <a name="ip-firewall-rules"></a>IP ファイアウォール規則
 
-IP ファイアウォール規則は、各要求の発信元 IP アドレスに基づいて Synapse ワークスペースへのアクセス権を付与または拒否します。 お使いのワークスペースに対して IP ファイアウォール規則を構成できます。 ワークスペース レベルで構成された IP ファイアウォール規則は、ワークスペースのすべてのパブリック エンドポイント (SQL プール、SQL オンデマンド、および開発) に適用されます。
+IP ファイアウォール規則は、各要求の発信元 IP アドレスに基づいて Synapse ワークスペースへのアクセス権を付与または拒否します。 お使いのワークスペースに対して IP ファイアウォール規則を構成できます。 ワークスペース レベルで構成された IP ファイアウォール規則は、ワークスペースのすべてのパブリック エンドポイント (専用 SQL プール、サーバーレス SQL プール、開発) に適用されます。
 
 ## <a name="create-and-manage-ip-firewall-rules"></a>IP ファイアウォール規則の作成および管理
 
@@ -37,7 +37,7 @@ IP ファイアウォール規則を Synapse ワークスペースに追加す�
 
 ## <a name="connect-to-synapse-from-your-own-network"></a>独自のネットワークから Synapse に接続する
 
-Synapse Studio を使用して、Synapse ワークスペースに接続できます。 また、SQL Server Management Studio (SSMS) を使用して、ワークスペース内の SQL リソース (SQL プールと SQL オンデマンド) に接続することもできます。
+Synapse Studio を使用して、Synapse ワークスペースに接続できます。 また、SQL Server Management Studio (SSMS) を使用して、ワークスペース内の SQL リソース (専用 SQL プールとサーバーレス SQL プール) に接続することもできます。
 
 ネットワークおよびローカル コンピューターのファイアウォールで、Synapse Studio に対して TCP ポート 80、443、および 1443 での送信通信を許可するように設定してください。
 

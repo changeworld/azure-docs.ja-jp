@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: b723c77b193b499286a692bd5145131a904a7f07
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d7c5bd2d1918ecebe2d2aabc213de43e7cdb1fef
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369337"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93306974"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>チュートリアル:Apache Spark MLlib と Azure Synapse Analytics を使用して機械学習アプリを構築する
 
-この記事では、Apache Spark [MLlib](https://spark.apache.org/mllib/) を使用し、Azure のオープン データセットに対してシンプルな予測分析を実行する機械学習アプリケーションの作成方法について説明します。 Spark には、組み込みの機械学習ライブラリが用意されています。 この例では、ロジスティック回帰による*分類*を使用しています。
+この記事では、Apache Spark [MLlib](https://spark.apache.org/mllib/) を使用し、Azure のオープン データセットに対してシンプルな予測分析を実行する機械学習アプリケーションの作成方法について説明します。 Spark には、組み込みの機械学習ライブラリが用意されています。 この例では、ロジスティック回帰による *分類* を使用しています。
 
 MLlib は、機械学習タスクに役立つ多数のユーティリティを提供するコア Spark ライブラリです。これには、次のことに適したユーティリティが含まれます。
 
@@ -31,9 +31,9 @@ MLlib は、機械学習タスクに役立つ多数のユーティリティを�
 
 ## <a name="understand-classification-and-logistic-regression"></a>分類およびロジスティック回帰について
 
-一般的な Machine Learning タスクである*分類*は、入力データをカテゴリに分類するプロセスです。 ユーザーが指定した入力データに*ラベル*を割り当てる方法を決定するのは、分類アルゴリズムの仕事です。 たとえば、株式情報を入力として受け取り、株式を、売却する必要のある株式と保持する必要のある株式の 2 つのカテゴリに分類する機械学習アルゴリズムを考えてみます。
+一般的な Machine Learning タスクである *分類* は、入力データをカテゴリに分類するプロセスです。 ユーザーが指定した入力データに *ラベル* を割り当てる方法を決定するのは、分類アルゴリズムの仕事です。 たとえば、株式情報を入力として受け取り、株式を、売却する必要のある株式と保持する必要のある株式の 2 つのカテゴリに分類する機械学習アルゴリズムを考えてみます。
 
-*ロジスティック回帰*は、分類に使用できるアルゴリズムです。 Spark のロジスティック回帰 API は、 *二項分類*(入力データを 2 つのグループのいずれかに分類する) に適しています。 ロジスティック回帰の詳細については、 [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)を参照してください。
+*ロジスティック回帰* は、分類に使用できるアルゴリズムです。 Spark のロジスティック回帰 API は、 *二項分類* (入力データを 2 つのグループのいずれかに分類する) に適しています。 ロジスティック回帰の詳細については、 [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)を参照してください。
 
 要約すると、ロジスティック回帰のプロセスにより、入力ベクトルがどちらか 1 つのグループに属している確率を予測するために使用できる *ロジスティック関数* が生成されます。
 
@@ -49,7 +49,7 @@ MLlib は、機械学習タスクに役立つ多数のユーティリティを�
 ## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Apache Spark MLlib 機械学習アプリを作成する
 
 1. PySpark カーネルを使用してノートブックを作成します。 手順については、「[ノートブックの作成](../quickstart-apache-spark-notebook.md#create-a-notebook)」を参照してください。
-2. このアプリケーションに必要な型をインポートします。 次のコードをコピーして空のセルに貼り付け、**Shift + Enter** を押すか、コードの左側にある青い再生アイコンを使用して、セルを実行します。
+2. このアプリケーションに必要な型をインポートします。 次のコードをコピーして空のセルに貼り付け、 **Shift + Enter** を押すか、コードの左側にある青い再生アイコンを使用して、セルを実行します。
 
     ```python
     import matplotlib.pyplot as plt
@@ -71,7 +71,7 @@ MLlib は、機械学習タスクに役立つ多数のユーティリティを�
 
 生データは Parquet 形式であるため、Spark コンテキストを使用して、ファイルをデータフレームとして、直接メモリにプルできます。 次のコードでは既定のオプションを使用していますが、必要に応じて、データ型とその他のスキーマ属性のマッピングを強制的に行うこともできます。
 
-1. 次の行を実行して、新しいセルにコードを貼り付けて、Spark データフレームを作成します。 これにより、Open Dataset API を介してデータが取得されます。 このデータをすべてプルすると、約 15 億行が生成されます。 Spark プール (プレビュー) のサイズによっては、生データが大きすぎるか、その操作に時間がかかりすぎる可能性があります。 このデータを、より小さいものにフィルター処理することができます。 次のコード例では、start_date と end_date を使用し、1 か月分のデータを返すフィルターを適用します。
+1. 次の行を実行して、新しいセルにコードを貼り付けて、Spark データフレームを作成します。 これにより、Open Dataset API を介してデータが取得されます。 このデータをすべてプルすると、約 15 億行が生成されます。 サーバーレス Apache Spark プール (プレビュー) のサイズによっては、生データが大きすぎるか、その操作に時間がかかりすぎる可能性があります。 このデータを、より小さいものにフィルター処理することができます。 次のコード例では、start_date と end_date を使用し、1 か月分のデータを返すフィルターを適用します。
 
     ```python
     from azureml.opendatasets import NycTlcYellow
@@ -112,7 +112,7 @@ sampled_taxi_df.createOrReplaceTempView("nytaxi")
 
 ## <a name="understand-the-data"></a>データを理解する
 
-通常は、データの理解を深めるために、この時点で、*探索的データ分析* (EDA) のフェーズを実行します。 次のコードに、データの状態と品質に関する結論に導くヒントに関連するデータの 3 つの異なる視覚化を示しています。
+通常は、データの理解を深めるために、この時点で、 *探索的データ分析* (EDA) のフェーズを実行します。 次のコードに、データの状態と品質に関する結論に導くヒントに関連するデータの 3 つの異なる視覚化を示しています。
 
 ```python
 # The charting package needs a Pandas dataframe or numpy array do the conversion
@@ -193,7 +193,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 
 ## <a name="create-a-logistic-regression-model"></a>ロジスティック回帰モデルを作成する
 
-最後のタスクは、ラベル付けされたデータをロジスティック回帰で分析できる形式に変換することです。 ロジスティック回帰アルゴリズムへの入力は、*ラベルと特徴ベクトルのペア*のセットである必要があります。ここで*特徴ベクトル*とは、入力ポイントを表す数のベクトルです。 そのため、カテゴリ列を数値に変換する必要があります。 `trafficTimeBins` 列と `weekdayString` 列については、整数表現への変換が必要です。 変換を実行する方法は多数ありますが、この例で採用されている方法は、一般的な方法である *OneHotEncoding* です。
+最後のタスクは、ラベル付けされたデータをロジスティック回帰で分析できる形式に変換することです。 ロジスティック回帰アルゴリズムへの入力は、 *ラベルと特徴ベクトルのペア* のセットである必要があります。ここで *特徴ベクトル* とは、入力ポイントを表す数のベクトルです。 そのため、カテゴリ列を数値に変換する必要があります。 `trafficTimeBins` 列と `weekdayString` 列については、整数表現への変換が必要です。 変換を実行する方法は多数ありますが、この例で採用されている方法は、一般的な方法である *OneHotEncoding* です。
 
 ```python
 # Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed

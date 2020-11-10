@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Synapse Studio を使用して Apache Spark プール (プレビュー) を作成する
-description: このガイドの手順に従って、Synapse Studio を使用して新しい Apache Spark プールを作成します。
+title: 'クイックスタート: Synapse Studio を使用してサーバーレス Apache Spark プール (プレビュー) を作成する'
+description: このガイドの手順に従って、Synapse Studio を使用してサーバーレス Apache Spark プールを作成します。
 services: synapse-analytics
 author: saveenr
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 10/16/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c497b9974ad2d6fdd9482ae673de5807669d8ff5
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 313ad0c620fe06158e96c208ae265702134b58d1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748253"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324157"
 ---
-# <a name="quickstart-create-an-apache-spark-pool-preview-using-synapse-studio"></a>クイック スタート:Synapse Studio を使用して Apache Spark プール (プレビュー) を作成する
+# <a name="quickstart-create-a-serverless-apache-spark-pool-preview-using-synapse-studio"></a>クイックスタート: Synapse Studio を使用してサーバーレス Apache Spark プール (プレビュー) を作成する
 
 Azure Synapse Analytics には、データの取り込み、変換、モデル化、分析、および提供に役立つさまざまな分析エンジンが用意されています。 Apache Spark プールは、オープンソースのビッグ データ コンピューティング機能を提供します。 お使いの Synapse ワークスペースに Apache Spark プールを作成した後、データを読み込み、モデル化し、処理し、提供して分析情報を得ることができます。  
 
@@ -47,7 +47,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 ## <a name="launch-synapse-studio"></a>Synapse Studio を起動する 
 
-ワークスペースの概要で **[Synapse Studio の起動]** を選択して、Apache Spark プールを作成する場所を開きます。 検索バーにサービス名を入力するか、またはリソース名を直接入力します。
+ワークスペースの概要から **[Workspace web URL]\(ワークスペース Web URL\)** を選択して Synapse Studio を開きます。
 
 ![[Synapse Studio の起動] が強調表示されている Azure portal の Synapse ワークスペースの概要。](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)
 

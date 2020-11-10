@@ -8,16 +8,16 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 3c7f9ed9558adc9d129d1df767a05aff1fa4c66c
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 4c2900ed5ebe0df3ed827acc1a16caff3beaf4d4
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047388"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241091"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Azure Digital Twins インスタンスを別の Azure リージョンに移動する
 
-Azure Digital Twins インスタンスをリージョン間で移動する必要がある場合、現在のプロセスでは、**新しいリージョンでリソースを再作成**してから、元のリソースを削除します。 このプロセスの終わりには、更新された場所を除いて最初のものと同じである新しい Azure Digital Twins インスタンスを操作することになります。
+Azure Digital Twins インスタンスをリージョン間で移動する必要がある場合、現在のプロセスでは、 **新しいリージョンでリソースを再作成** してから、元のリソースを削除します。 このプロセスの終わりには、更新された場所を除いて最初のものと同じである新しい Azure Digital Twins インスタンスを操作することになります。
 
 この記事では、新しいインスタンスを元のインスタンスと一致させるために必要なすべてをコピーして、完全な移動を実行する方法についてのガイダンスを提供します。
 
@@ -35,25 +35,25 @@ Azure Digital Twins インスタンスをリージョン間で移動する必要
 Azure Digital Twins インスタンスを再作成する前に、元のインスタンスのコンポーネントを確認し、再作成する必要があるすべての要素を明確に把握しておくことをお勧めします。
 
 考慮する必要があるいくつかの質問を次に示します。
-* どのような**モデル**がインスタンスにアップロードされているか? いくつあるか?
-* インスタンス内の**ツイン**は何か? いくつあるか?
-* インスタンス内の**グラフ**の一般的な形状はどのようなものか? リレーションシップはいくつあるか?
-* どのような**エンドポイント**がインスタンスにあるか?
-* どのような**ルート**がインスタンスにあるか? フィルターはあるか?
-* インスタンスはどこで**他の Azure サービスに接続**するか? 一般的な統合ポイントの例を次に示します。
+* どのような **モデル** がインスタンスにアップロードされているか? いくつあるか?
+* インスタンス内の **ツイン** は何か? いくつあるか?
+* インスタンス内の **グラフ** の一般的な形状はどのようなものか? リレーションシップはいくつあるか?
+* どのような **エンドポイント** がインスタンスにあるか?
+* どのような **ルート** がインスタンスにあるか? フィルターはあるか?
+* インスタンスはどこで **他の Azure サービスに接続** するか? 一般的な統合ポイントの例を次に示します。
     - Event Grid、Event Hub、または Service Bus
     - Azure Functions
     - Logic Apps
     - Time Series Insights
     - Azure Maps
     - デバイス プロビジョニング サービス (DPS)
-* インスタンスに接続する**個人または会社のアプリ**には、他にどのようなものがあるか?
+* インスタンスに接続する **個人または会社のアプリ** には、他にどのようなものがあるか?
 
 この情報は、[Azure portal](https://portal.azure.com)、[Azure Digital Twins の API と SDK](how-to-use-apis-sdks.md)、[Azure Digital Twins CLI コマンド](how-to-use-cli.md)、または [Azure Digital Twins (ADT) エクスプローラー](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) サンプルを使用して収集できます。
 
 ## <a name="prepare"></a>準備
 
-このセクションでは、元のインスタンスから**元のモデル、ツイン、グラフをダウンロード**することによってインスタンスを再作成するための準備をします。 これを行うために、この記事では、[Azure Digital Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) サンプルを使用しています。
+このセクションでは、元のインスタンスから **元のモデル、ツイン、グラフをダウンロード** することによってインスタンスを再作成するための準備をします。 これを行うために、この記事では、[Azure Digital Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) サンプルを使用しています。
 
 >[!NOTE]
 >モデルやグラフを含むファイルがインスタンスに既に存在している場合があります。 その場合、すべてを再度ダウンロードする必要はありません。不足しているものや、これらのファイルを最初にアップロードした後に変更された可能性があるもの (新しいデータで更新された可能性があるツインなど) のみをダウンロードしてください。
@@ -62,7 +62,7 @@ Azure Digital Twins インスタンスを再作成する前に、元のインス
 
 [Azure Digital Twins (ADT) Explorer サンプル](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)は、グラフの視覚的な表現をサポートするクライアント アプリのサンプルであり、インスタンスとの視覚的な対話機能を備えています。 この記事では、これを使用して、モデル、ツイン、グラフをダウンロードして、後で再アップロードする方法について説明します。
 
-ただし、これは**サンプル**であって、完全なツールではないことにご注意ください。 ストレス テストが行われておらず、大きなサイズのグラフを処理するように構築されていませんでした。 そのため、次のようなすぐに使えるサンプルの制限事項に留意してください。
+ただし、これは **サンプル** であって、完全なツールではないことにご注意ください。 ストレス テストが行われておらず、大きなサイズのグラフを処理するように構築されていませんでした。 そのため、次のようなすぐに使えるサンプルの制限事項に留意してください。
 * このサンプルは現在、最大 1,000 ノードと 2,000 のリレーションシップのグラフ サイズでのみテストされています
 * このサンプルは、断続的なエラーが発生した場合の再試行はサポートしません
 * このサンプルでは、アップロードされたデータが不完全かどうかについて、ユーザーに通知を行いません
@@ -76,11 +76,12 @@ Azure Digital Twins インスタンスを再作成する前に、元のインス
 
 ADT Explorer の設定を進めるには、まず、サンプル アプリケーション コードをダウンロードして設定し、コンピューター上で実行します。 
 
-サンプルにはこちらからアクセスします: [Azure Digital Twins (ADT) エクスプローラー](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 *[Download ZIP]\(ZIP のダウンロード\)* ボタンをクリックして、このサンプル コードの *.ZIP* ファイルを _**ADT_Explorer.zip**_ としてご自分のマシンにダウンロードしてください。 ファイルを解凍します。
+サンプルにはこちらからアクセスします: [Azure Digital Twins (ADT) エクスプローラー](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 *[ZIP のダウンロード]* ボタンをクリックして、このサンプル コードの *.ZIP* ファイルを、ご利用のマシンに _**Azure_Digital_Twins__ADT__explorer.zip**_ としてダウンロードします。 ファイルを解凍します。
 
-次に、コンピューター上で実行するために ADT エクスプローラーのアクセス許可を設定します。 これを行うには、Azure Digital Twins クイックスタートの「[*ADT エクスプローラーのアクセス許可を設定する*](quickstart-adt-explorer.md#set-adt-explorer-permissions)」セクションの手順に従います。
-
-最後に、ADT エクスプローラーを実行し、元の Azure Digital Twins インスタンスに接続するように構成します。 クイックスタートの「[*ADT エクスプローラーを実行して構成する*](quickstart-adt-explorer.md#run-and-configure-adt-explorer)」セクションの手順に従います。
+次に、ADT エクスプローラーのアクセス許可を設定し、構成します。 これを行うには、Azure Digital Twins クイックスタートの「 [*Azure Digital Twins と ADT エクスプローラーを設定する*](quickstart-adt-explorer.md#set-up-azure-digital-twins-and-adt-explorer)」セクションの指示に従います。 このセクションでは、次の手順について説明します。
+1. Azure Digital Twins インスタンスを設定する (インスタンスが既に用意されているため、この部分はスキップできます)
+2. インスタンスへのアクセスを提供するようにローカルの Azure 資格情報を設定する
+3. ADT エクスプローラーを実行し、インスタンスに接続するように構成する 移動する元の Azure Digital Twins インスタンスの **ホスト名** を使用します。
 
 これで、コンピューター上のブラウザーで ADT エクスプローラー サンプル アプリが実行されます。 このサンプルが、元の Azure Digital Twins インスタンスに接続していることを確認します。
 
@@ -88,7 +89,7 @@ ADT Explorer の設定を進めるには、まず、サンプル アプリケー
 
 接続を確認するには、 *[クエリの実行]* ボタンをクリックして既定のクエリを実行します。このクエリにより、 *[グラフ エクスプローラー]* ボックスのグラフにすべてのツインとリレーションシップが表示されます。
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは ADT エクスプローラーと呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが存在する。画面上にはまだデータが入力されていない。" lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="ウィンドウ上部付近にある [クエリの実行] ボタンが強調表示されている" lightbox="media/how-to-move-regions/run-query.png":::
 
 この記事の後半で、ADT エクスプローラーを再び使用して、これらのアイテムをターゲット リージョンの新しいインスタンスに再アップロードします。そのため、ADT エクスプローラーは実行したままでかまいません。
 
@@ -100,7 +101,7 @@ ADT Explorer の設定を進めるには、まず、サンプル アプリケー
  
 次に、 *[グラフ ビュー]* ボックス内の *[グラフのエクスポート]* アイコンをクリックします。
 
-:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは ADT エクスプローラーと呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが存在する。画面上にはまだデータが入力されていない。" lightbox="media/how-to-move-regions/export-graph.png":::
+:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="[グラフ ビュー] ボックスで強調表示されているアイコン。クラウドから外に向かう矢印を示している。" lightbox="media/how-to-move-regions/export-graph.png":::
 
 これにより、 *[グラフ ビュー]* で *[ダウンロード]* リンクが有効になります。 これを選択して、モデル、ツイン、リレーションシップなど、クエリ結果の JSON ベースの表現をダウンロードします。 これにより、 *.json* ファイルがコンピューターにダウンロードされます。
 
@@ -113,14 +114,11 @@ ADT Explorer の設定を進めるには、まず、サンプル アプリケー
 
 ### <a name="create-a-new-instance"></a>新しいインスタンスの作成
 
-まず、**Azure Digital Twins の新しいインスタンスをターゲット リージョンに作成**します。 これを行うには、「[*方法: インスタンスと認証を設定する*](how-to-set-up-instance-portal.md)」の手順に従いますが、次のことに注意してください。
-* 別のリソース グループにある**場合**は、新しいインスタンスは同じ名前のままにすることができます。 元のインスタンスを含む同じリソース グループを使用する必要がある場合、新しいインスタンスには別個の名前が必要になります。
+まず、 **Azure Digital Twins の新しいインスタンスをターゲット リージョンに作成** します。 これを行うには、「 [*方法: インスタンスと認証を設定する*](how-to-set-up-instance-portal.md)」の手順に従いますが、次のことに注意してください。
+* 別のリソース グループにある **場合** は、新しいインスタンスは同じ名前のままにすることができます。 元のインスタンスを含む同じリソース グループを使用する必要がある場合、新しいインスタンスには別個の名前が必要になります。
 * 場所の入力を求められたら、ターゲットの新しいリージョンを入力します。
-* アプリの登録を再作成する**必要はありません**。 新しいインスタンスでは、既存のものと同じアプリ登録を再利用できます。
-    - [スクリプト](how-to-set-up-instance-scripted.md)による設定の記事を使用している場合、プロンプトが表示されたときに新しい名前を入力する代わりに、既存のアプリ登録の詳細を再入力できます。
-    - [ポータル](how-to-set-up-instance-portal.md)または [CLI](how-to-set-up-instance-cli.md) からの手動設定の記事を使用している場合、*Azure Digital Twins インスタンスの作成*および*ユーザーのアクセス許可の設定*の各手順の後に停止できます。 *クライアント アプリケーションのアクセス許可の設定*を続行する必要はありません。
 
-これが完了した後は、対象のデータを使用して新しいインスタンスの設定を続けるために、新しいインスタンスの**ホスト名**が必要になります。 セットアップ中にこの情報をメモしていない場合、[以下の手順](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)に従って Azure portal から今すぐ取得できます。
+これが完了した後は、対象のデータを使用して新しいインスタンスの設定を続けるために、新しいインスタンスの **ホスト名** が必要になります。 セットアップ中にこの情報をメモしていない場合、[以下の手順](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)に従って Azure portal から今すぐ取得できます。
 
 ### <a name="repopulate-old-instance"></a>古いインスタンスへのデータ再入力
 
@@ -130,15 +128,15 @@ ADT Explorer の設定を進めるには、まず、サンプル アプリケー
 
 このセクションでは、モデル、ツイン、グラフを新しいインスタンスに再アップロードできます。 モデル、ツイン、またはグラフが元のインスタンスにないか、それらを新しいインスタンスに移動したくない場合は、スキップして[次のセクション](#recreate-endpoints-and-routes)に進むことができます。
 
-それ以外の場合、続行するには、**ADT エクスプローラー**を実行しているブラウザー ウィンドウに戻り、以下の手順に従います。
+それ以外の場合、続行するには、 **ADT エクスプローラー** を実行しているブラウザー ウィンドウに戻り、以下の手順に従います。
 
 ##### <a name="connect-to-the-new-instance"></a>新しいインスタンスへの接続
 
 ADT エクスプローラーは現在、元の Azure Digital Twins インスタンスに接続しています。 ウィンドウの上部にある *[サインイン]* ボタンをクリックして、新しいインスタンスを指すように接続を切り替えます。 
 
-:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは ADT エクスプローラーと呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが存在する。画面上にはまだデータが入力されていない。" lightbox="media/how-to-move-regions/sign-in.png":::
+:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="ADT エクスプローラーのウィンドウ上部付近にあるサインイン アイコンが強調表示されている。このアイコンには、人のシンプルなシルエットに鍵のシルエットが重なるように表示されている。" lightbox="media/how-to-move-regions/sign-in.png":::
 
-アプリの登録を再利用しているので、必要なのは *ADT URL* を置き換えることだけです。 この値を *https://{新しいインスタンスのホスト名}* に変更します。
+*ADT URL* を新しいインスタンスに置き換えます。 この値を *https://{新しいインスタンスのホスト名}* に変更します。
 
 *[接続]* をクリックします。 Azure の資格情報を使用して再度ログインするか、インスタンスに対する同意をこのアプリケーションに付与するか、あるいはその両方を行うように求められる場合があります。
 
@@ -146,9 +144,9 @@ ADT エクスプローラーは現在、元の Azure Digital Twins インスタ�
 
 次に、以前にダウンロードしたソリューション コンポーネントを新しいインスタンスにアップロードします。
 
-**モデル、ツイン、グラフ**をアップロードするには、 *[グラフ ビュー]* ボックスにある *[グラフのインポート]* アイコンをクリックします。 このオプションは、(グラフで現在使用されていないモデルも含めて) これら 3 つのコンポーネントすべてを一度にアップロードします。
+**モデル、ツイン、グラフ** をアップロードするには、 *[グラフ ビュー]* ボックスにある *[グラフのインポート]* アイコンをクリックします。 このオプションは、(グラフで現在使用されていないモデルも含めて) これら 3 つのコンポーネントすべてを一度にアップロードします。
 
-:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは ADT エクスプローラーと呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが存在する。画面上にはまだデータが入力されていない。" lightbox="media/how-to-move-regions/import-graph.png":::
+:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="[グラフ ビュー] ボックスで強調表示されているアイコン。クラウドに向かう矢印を示している。" lightbox="media/how-to-move-regions/import-graph.png":::
 
 ファイル選択ボックスで、ダウンロードしたグラフに移動します。 グラフの *.json* ファイルを選択して *[開く]* をクリックします。
 
@@ -158,7 +156,7 @@ ADT エクスプローラーは現在、元の Azure Digital Twins インスタ�
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/graph-preview-save.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは ADT エクスプローラーと呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが存在する。画面上にはまだデータが入力されていない。" lightbox="media/how-to-move-regions/graph-preview-save.png":::
+        :::image type="content" source="media/how-to-move-regions/graph-preview-save.png" alt-text="[Graph Preview]\(グラフのプレビュー\) ペインで強調表示されている [保存] アイコン" lightbox="media/how-to-move-regions/graph-preview-save.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -168,7 +166,7 @@ ADT エクスプローラーにより、(ツインとリレーションシップ
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは ADT エクスプローラーと呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが存在する。画面上にはまだデータが入力されていない。" lightbox="media/how-to-move-regions/import-success.png":::
+        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="グラフのインポート成功を示すダイアログ ボックス。インポートに成功し、2 つのモデル、4 つのツイン、2 つのリレーションシップがインポートされたことを示している。" lightbox="media/how-to-move-regions/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -178,22 +176,22 @@ ADT エクスプローラーにより、(ツインとリレーションシップ
 
 すべてが正常にアップロードされたことを確認するには、 *[グラフ エクスプローラー]* ボックスにある *[クエリの実行]* ボタンをクリックして、すべてのツインとリレーションシップをグラフに表示する既定のクエリを実行します。 これにより、 *[モデル ビュー]* のモデルの一覧も更新されます。
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは ADT エクスプローラーと呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが存在する。画面上にはまだデータが入力されていない。" lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="ウィンドウ上部付近にある、以前と同じ [クエリの実行] ボタンが強調表示されている" lightbox="media/how-to-move-regions/run-query.png":::
 
 すべてのツインとリレーションシップを表示したグラフが *[グラフ エクスプローラー]* ボックスに表示されます。 *[モデル ビュー]* ボックスにもモデルの一覧が表示されます。
 
-:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは ADT エクスプローラーと呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが存在する。画面上にはまだデータが入力されていない。" lightbox="media/how-to-move-regions/post-upload.png":::
+:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="[モデル ビュー] ボックス内で強調表示された 2 つのモデルと、[グラフ エクスプローラー] ボックス内で強調表示されたグラフを表示する ADT エクスプローラーのビュー" lightbox="media/how-to-move-regions/post-upload.png":::
 
 これにより、モデル、ツイン、グラフがターゲット リージョンの新しいインスタンスに再アップロードされたことが確認できます。
 
 #### <a name="recreate-endpoints-and-routes"></a>エンドポイントとルートの再作成
 
-元のインスタンスに**エンドポイントやルート**がある場合、新しいインスタンスでそれらを再作成する必要があります。 エンドポイントまたはルートが元のインスタンスにないか、それらを新しいインスタンスに移動したくない場合は、スキップして[次のセクション](#re-link-connected-resources)に進むことができます。
+元のインスタンスに **エンドポイントやルート** がある場合、新しいインスタンスでそれらを再作成する必要があります。 エンドポイントまたはルートが元のインスタンスにないか、それらを新しいインスタンスに移動したくない場合は、スキップして[次のセクション](#re-link-connected-resources)に進むことができます。
 
-それ以外の場合は、次に進み、「[*方法: エンドポイントとルートを管理する*](how-to-manage-routes-portal.md)」の手順に従います。このとき、新しいインスタンスを使用して、次の点に注意してください。 
-* エンドポイントに使用している Event Grid、Event Hub、または Service Bus リソースを再作成する**必要はありません** (エンドポイントに関する指示の「*前提条件*」セクション)。 必要なのは、Azure Digital Twins インスタンスでエンドポイントを再作成することだけです。
-* エンドポイントとルートの**名前**は別のインスタンスにスコープ設定されるため、再利用できます。
-* 作成するルートに必要な**フィルター**があれば、必ず追加してください。
+それ以外の場合は、次に進み、「 [*方法: エンドポイントとルートを管理する*](how-to-manage-routes-portal.md)」の手順に従います。このとき、新しいインスタンスを使用して、次の点に注意してください。 
+* エンドポイントに使用している Event Grid、Event Hub、または Service Bus リソースを再作成する **必要はありません** (エンドポイントに関する指示の「 *前提条件* 」セクション)。 必要なのは、Azure Digital Twins インスタンスでエンドポイントを再作成することだけです。
+* エンドポイントとルートの **名前** は別のインスタンスにスコープ設定されるため、再利用できます。
+* 作成するルートに必要な **フィルター** があれば、必ず追加してください。
 
 #### <a name="re-link-connected-resources"></a>接続されたリソースの再リンク
 
@@ -201,7 +199,7 @@ ADT エクスプローラーにより、(ツインとリレーションシップ
 
 元のインスタンスに接続している他のリソースがないか、それらを新しいインスタンスに移動したくない場合は、スキップして[次のセクション](#verify)に進むことができます。
 
-それ以外の場合、先に進むには、対象のシナリオで接続されているリソースを考慮してください。 接続しているリソースを削除して再作成する必要はありません。代わりに、その**ホスト名**を使用して Azure Digital Twins インスタンスに接続するポイントを編集し、元のインスタンスではなく新しいインスタンスのホスト名を使用するようにこれを更新する必要があるだけです。
+それ以外の場合、先に進むには、対象のシナリオで接続されているリソースを考慮してください。 接続しているリソースを削除して再作成する必要はありません。代わりに、その **ホスト名** を使用して Azure Digital Twins インスタンスに接続するポイントを編集し、元のインスタンスではなく新しいインスタンスのホスト名を使用するようにこれを更新する必要があるだけです。
 
 編集する必要があるリソースは正確にはシナリオによって異なりますが、一般的な統合ポイントの例を次に示します。
 * Azure Functions。 そのコードに元のインスタンスのホスト名が含まれている Azure 関数がある場合、この値を新しいインスタンスのホスト名に更新して関数を再発行する必要があります。
@@ -210,7 +208,8 @@ ADT エクスプローラーにより、(ツインとリレーションシップ
 * Time Series Insights
 * Azure Maps
 * デバイス プロビジョニング サービス (DPS)
-* Azure の外部の個人または会社のアプリ。このような**クライアント アプリ**の例としては、「[*チュートリアル: クライアント アプリをコーディングする*](tutorial-code.md)」で作成した、インスタンスに接続して Azure Digital Twins API を呼び出すアプリがあります。
+* Azure の外部の個人または会社のアプリ。このような **クライアント アプリ** の例としては、「 [*チュートリアル: クライアント アプリをコーディングする*](tutorial-code.md)」で作成した、インスタンスに接続して Azure Digital Twins API を呼び出すアプリがあります。
+* Azure AD アプリ登録は再作成する **必要がありません** 。 [アプリ登録](how-to-create-app-registration.md)を使用して Azure Digital Twins API に接続する場合、新しいインスタンスで同じアプリ登録を再利用できます。
 
 この手順を完了すると、ターゲット リージョンの新しいインスタンスは元のインスタンスのコピーになります。
 
@@ -226,7 +225,7 @@ ADT エクスプローラーにより、(ツインとリレーションシップ
 
 ## <a name="clean-up-source-resources"></a>ソース リソースをクリーンアップする
 
-これで、元のインスタンスのデータと接続のコピーを使用して新しいインスタンスがターゲット リージョンに設定されたので、**元のインスタンスを削除**することができます。
+これで、元のインスタンスのデータと接続のコピーを使用して新しいインスタンスがターゲット リージョンに設定されたので、 **元のインスタンスを削除** することができます。
 
 これは [Azure portal](https://portal.azure.com)、[CLI](how-to-use-cli.md)、または[コントロール プレーン API](how-to-use-apis-sdks.md#overview-control-plane-apis) を使用して実行できます。
 
@@ -234,4 +233,4 @@ Azure portal を使用してインスタンスを削除するには、ブラウ�
 
 *[削除]* ボタンをクリックし、画面の指示に従って削除を完了します。
 
-:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは ADT エクスプローラーと呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが存在する。画面上にはまだデータが入力されていない。":::
+:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="Azure portal の [概要] タブでの Azure Digital Twins インスタンスの詳細のビュー。[削除] ボタンが強調表示されている":::

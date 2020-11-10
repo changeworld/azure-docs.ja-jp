@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 1027b4f37160281bcf298e57e890b73b472526a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7eaf311a8e8c3fb3c3699b8624def4923bead420
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308760"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043058"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>チュートリアル:DMS を使用して SQL Server を Azure SQL Database にオフラインで移行する
 
@@ -65,7 +65,7 @@ Azure Database Migration Service を使用して、SQL Server インスタンス
 
 - 仮想ネットワークのネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への以下のインバウンド通信ポートが確実にブロックされないようにします:443、53、9354、445、12000。 Azure 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)に関する記事を参照してください。
 - [データベース エンジン アクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
-- Azure Database Migration Service でソース SQL Server にアクセスできるように Windows ファイアウォールを開放します。既定では TCP ポート 1433 が使用されます。
+- Azure Database Migration Service でソース SQL Server にアクセスできるように Windows ファイアウォールを開放します。既定では TCP ポート 1433 が使用されます。 使用している既定のインスタンスが他のポートでリッスンしている場合は、それをファイアウォールに追加してください。
 - 動的ポートを使用して複数の名前付き SQL Server インスタンスを実行している場合は、SQL Browser サービスを有効にし、ファイアウォール経由の UDP ポート 1434 へのアクセスを許可することをお勧めします。これにより、Azure Database Migration Service はソース サーバー上の名前付きインスタンスに接続できるようになります。
 - ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
 - Azure SQL Database のサーバー レベル IP [ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service がターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用する仮想ネットワークのサブネット範囲を指定します。
@@ -77,7 +77,7 @@ Azure Database Migration Service を使用して、SQL Server インスタンス
 SQL Server インスタンスから Azure SQL Database の単一データベースまたはプールされたデータベースにデータを移行する前に、SQL Server データベースを評価して、移行を妨げる問題がないかどうかを確認する必要があります。 Data Migration Assistant v3.3 以降を使用し、[SQL Server の移行評価の実行](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)に関する記事の手順に従って、オンプレミス データベースの評価を完了してください。 必要な手順の概要は次のとおりです。
 
 1. Data Migration Assistant で、新規 (+) アイコンを選択し、 **[評価]** プロジェクト タイプを選択します。
-2. プロジェクト名を指定し、 **[Source server type]\(ソース サーバーの種類\)** テキスト ボックスで **SQL Server**、 **[ターゲット サーバーの種類]** テキスト ボックスで **Azure SQL Database** を選択した後、 **[作成]** を選択してプロジェクトを作成します。
+2. プロジェクト名を指定し、 **[Source server type]\(ソース サーバーの種類\)** テキスト ボックスで **SQL Server** 、 **[ターゲット サーバーの種類]** テキスト ボックスで **Azure SQL Database** を選択した後、 **[作成]** を選択してプロジェクトを作成します。
 
     Azure SQL Database の単一データベースまたはプールされたデータベースに移行するソース SQL Server データベースを評価する際には、次のいずれかまたは両方の評価レポート タイプを選択できます。
 
@@ -88,7 +88,7 @@ SQL Server インスタンスから Azure SQL Database の単一データベー�
 
 3. Data Migration Assistant の **[オプション]** 画面で、 **[次へ]** を選択します。
 4. **[ソースの選択]** 画面の **[サーバーへの接続]** ダイアログ ボックスで、SQL Server への接続詳細を入力し、 **[接続]** を選択します。
-5. **[Add sources]\(ソースの追加\)** ダイアログ ボックスで、**AdventureWorks2012**、 **[追加]** 、 **[Start Assessment]\(評価の開始\)** の順に選択します。
+5. **[Add sources]\(ソースの追加\)** ダイアログ ボックスで、 **AdventureWorks2012** 、 **[追加]** 、 **[Start Assessment]\(評価の開始\)** の順に選択します。
 
     > [!NOTE]
     > SSIS を使用する場合、現在、DMA ではソース SSISDB の評価はサポートされていません。 ただし、SSIS プロジェクト/パッケージは、Azure SQL Database によってホストされている移行先 SSISDB に再デプロイされるため、評価/検証されます。 SSIS パッケージの移行の詳細については、記事「[SQL Server Integration Services パッケージを Azure に移行する](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)」を参照してください。
@@ -99,8 +99,8 @@ SQL Server インスタンスから Azure SQL Database の単一データベー�
 
     Azure SQL Database のデータベースの場合、この評価では、単一データベースまたはプールされたデータベースへのデプロイで、機能パリティの問題と移行の障害となっている問題が特定されます。
 
-    - **SQL Server の機能類似性**カテゴリでは、幅広い推奨事項や、Azure で利用できる代替アプローチ、および移行プロジェクトの計画に役立つ移行手順を確認できます。
-    - **互換性問題**カテゴリでは、部分的にサポートされている機能やサポートされていない機能を確認できます。この情報は、SQL Server データベースから Azure SQL Database への移行を妨げる可能性がある互換性の問題を反映しています。 また、それらの問題への対処に役立つ推奨事項も確認できます。
+    - **SQL Server の機能類似性** カテゴリでは、幅広い推奨事項や、Azure で利用できる代替アプローチ、および移行プロジェクトの計画に役立つ移行手順を確認できます。
+    - **互換性問題** カテゴリでは、部分的にサポートされている機能やサポートされていない機能を確認できます。この情報は、SQL Server データベースから Azure SQL Database への移行を妨げる可能性がある互換性の問題を反映しています。 また、それらの問題への対処に役立つ推奨事項も確認できます。
 
 6. 特定のオプションを選択して、移行を妨げる問題と機能の類似性の問題についての評価結果をレビューします。
 
@@ -125,7 +125,7 @@ SQL Server インスタンスから Azure SQL Database の単一データベー�
     ![Data Migration Assistant プロジェクトを作成する](media/tutorial-sql-server-to-azure-sql/dma-create-project.png)
 
 4. **[作成]** を選択してプロジェクトを作成します。
-5. Data Migration Assistant で、SQL Server のソース接続詳細を指定し、 **[接続]** を選択した後、**AdventureWorks2012** データベースを選択します。
+5. Data Migration Assistant で、SQL Server のソース接続詳細を指定し、 **[接続]** を選択した後、 **AdventureWorks2012** データベースを選択します。
 
     ![Data Migration Assistant のソース接続詳細](media/tutorial-sql-server-to-azure-sql/dma-source-connect.png)
 
@@ -149,7 +149,7 @@ SQL Server インスタンスから Azure SQL Database の単一データベー�
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
 
-1. Azure portal にサインインします。 **サブスクリプション**を検索して選択します。
+1. Azure portal にサインインします。 **サブスクリプション** を検索して選択します。
 
    ![ポータルのサブスクリプションの表示](media/tutorial-sql-server-to-azure-sql/portal-select-subscription1.png)
 
@@ -247,7 +247,7 @@ SQL Server インスタンスから Azure SQL Database の単一データベー�
 
 4. **[保存]** を選択し、 **[Migration summary]\(移行の概要\)** 画面の **[アクティビティ名]** テキスト ボックスで、移行アクティビティの名前を指定します。
 
-5. **[検証オプション]** セクションを展開して **[検証オプションの選択]** 画面を表示し、移行したデータベースで**スキーマ比較**、**データの整合性**、**クエリの正確さ**を検証するかどうかを指定します。
+5. **[検証オプション]** セクションを展開して **[検証オプションの選択]** 画面を表示し、移行したデータベースで **スキーマ比較** 、 **データの整合性** 、 **クエリの正確さ** を検証するかどうかを指定します。
 
     ![検証オプションを選択する](media/tutorial-sql-server-to-azure-sql/dms-configuration2.png)
 

@@ -10,14 +10,19 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 110cef117683b20170649a231226c8193496edf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5fbecd9c2fd6e3a9f1be29598bad50da4b77bbb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68423907"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084614"
 ---
 # <a name="using-ranking-to-display-entity-search-results"></a>ランキングを使用したエンティティ検索結果の表示  
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
 エンティティ検索の各応答には、[RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) 回答が含まれます。これには、Bing Entity Search API によって返される検索結果の表示方法が指定されています。 ランキング応答により、結果がポール コンテンツ、メインライン コンテンツ、およびサイドバー コンテンツにグループ化されます。 ポールの結果は、最も重要または主要な結果であるため、最初に表示する必要があります。 残りの結果を従来のメインラインおよびサイドバー形式で表示しない場合は、メインラインのコンテンツをサイドバーのコンテンツより高い優先度で表示する必要があります。 
   
@@ -26,7 +31,7 @@ ms.locfileid: "68423907"
 
 |フィールド | 説明  |
 |---------|---------|
-|`answerType` および `resultIndex` | `answerType` は、回答 (Entity または Place) を識別し、`resultIndex` は、その回答内の結果を識別します (エンティティなど)。 インデックスは、0 から始まります。|
+|`answerType` と `resultIndex` | `answerType` は、回答 (Entity または Place) を識別し、`resultIndex` は、その回答内の結果を識別します (エンティティなど)。 インデックスは、0 から始まります。|
 |`value`    | `value` には、回答または回答内の結果の ID に一致する ID が含まれます。 回答または結果のいずれかに ID が含まれています。両方には含まれていません。 |
   
 `answerType` と `resultIndex` の使用は、2 段階のプロセスです。 最初に、`answerType` を使用して、表示する結果が含まれる回答を識別します。 次に、`resultIndex` を使用して、その回答の結果にインデックスを付け、表示する結果を取得します。 (`answerType` 値は、[SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) オブジェクト内のフィールドの名前です)。すべての回答の結果を一緒に表示する場合、ランキング応答の項目には、`resultIndex` フィールドは含まれません。
