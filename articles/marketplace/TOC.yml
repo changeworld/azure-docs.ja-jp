@@ -81,12 +81,36 @@
       href: publisher-guide-by-offer-type.md
     - name: Azure アプリケーション プラン
       items:
-        - name: ソリューション テンプレート オファーの計画
-          href: marketplace-solution-templates.md
-        - name: マネージド アプリケーション オファーの計画
-          href: marketplace-managed-apps.md
+        - name: Azure アプリケーション オファーを計画する
+          items:
+            - name: Azure アプリケーション オファーを計画する
+              href: plan-azure-application-offer.md
+            - name: ソリューション テンプレートを計画する
+              href: plan-azure-app-solution-template.md
+            - name: マネージド アプリケーションを計画する
+              href: plan-azure-app-managed-app.md
         - name: Azure アプリケーション オファーの作成と発行
-          href: partner-center-portal/create-new-azure-apps-offer.md
+          items:
+            - name: Azure アプリケーション オファーを作成する
+              href: create-new-azure-apps-offer.md
+            - name: Azure アプリケーション オファーのプロパティを構成する
+              href: create-new-azure-apps-offer-properties.md
+            - name: Azure アプリケーション オファーのリストを構成する
+              href: create-new-azure-apps-offer-listing.md
+            - name: プレビュー対象ユーザーの追加
+              href: create-new-azure-apps-offer-preview.md
+            - name: 技術的な詳細の追加
+              href: create-new-azure-apps-offer-technical.md
+            - name: プランを作成する
+              href: create-new-azure-apps-offer-plans.md
+            - name: ソリューション テンプレート プランを作成する
+              href: create-new-azure-apps-offer-solution.md
+            - name: マネージド アプリケーション プランを作成する
+              href: create-new-azure-apps-offer-managed.md
+            - name: Azure アプリケーション オファーのテストと発行
+              href: create-new-azure-apps-offer-test-publish.md
+        - name: Azure アプリケーション オファーを市場に投入する
+          href: create-new-azure-apps-offer-marketing.md
         - name: Azure アプリケーションの従量制課金
           href: partner-center-portal/azure-app-metered-billing.md
         - name: レビュー フィードバックの処理
