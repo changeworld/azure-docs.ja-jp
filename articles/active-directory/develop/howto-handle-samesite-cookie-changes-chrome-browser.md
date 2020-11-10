@@ -49,9 +49,9 @@ Web アプリを更新しないと、この新しい動作によって認証エ�
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-次の表は、ASP.NET と ASP.NET Core サンプルでの SameSite の変更を回避するプル要求を示しています。
+次の表は、ASP.NET と ASP.NET Core サンプルでの SameSite の変更を回避する pull request を示しています。
 
-| サンプル | プル要求 |
+| サンプル | Pull request |
 | ------ | ------------ |
 |  [ASP.NET Core Web アプリの増分チュートリアル](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2)  |  [SameSite Cookie の修正 #261](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/pull/261)  |
 |  [ASP.NET MVC Web アプリのサンプル](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)  |  [SameSite Cookie の修正 #35](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/pull/35)  |
@@ -70,7 +70,7 @@ ASP.NET と ASP.NET Core で SameSite cookie を処理する方法の詳細に�
 
 # <a name="java"></a>[Java](#tab/java)
 
-| サンプル | プル要求 |
+| サンプル | Pull request |
 | ------ | ------------ |
 |  [ms-identity-java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp)  | [SameSite Cookie の修正 #24](https://github.com/Azure-Samples/ms-identity-java-webapp/pull/24)
 |  [ms-identity-java-webapi](https://github.com/Azure-Samples/ms-identity-java-webapi)  | [SameSite Cookie の修正 #4](https://github.com/Azure-Samples/ms-identity-java-webapi/pull/4)
