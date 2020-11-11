@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/27/2020
-ms.openlocfilehash: 6354b0a1df9d8c331de0731b230d628ac4e435df
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.date: 10/30/2020
+ms.openlocfilehash: 8a9c022400f739276060c3d8a275d06bc5ea8579
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891404"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147235"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>マッピング データ フローでのシンク変換
 
@@ -72,6 +72,23 @@ Azure Data Factory から、[90 を超えるネイティブ コネクタ](connec
 **Use TempDB (TempDB を使用):** 既定では、Data Factory には、読み込みプロセスの一部としてデータを格納するために、グローバル一時テーブルが使用されます。 あるいは、[Use TempDB]\(TempDB を使用\) オプションをオフにし、代わりに、このシンクに使用されているデータベース内にあるユーザー データベースに、一時的に保持するテーブルを格納するように Data Factory に求めることもできます。
 
 ![TempDB](media/data-flow/tempdb.png "TempDB")
+
+## <a name="cache-sink"></a>キャッシュ シンク
+ 
+*キャッシュ シンク* は、データ フローによって、データ ストアではなく Spark キャッシュにデータが書き込まれる場合に使用されます。 マッピング データ フローでは、 *キャッシュ参照* を使用して、同じフロー内でこのデータを何度も参照できます。 これは、式の一部としてデータを参照したいが、列を明示的に結合したくない場合に便利です。 キャッシュ シンクが有用である一般的な例としては、データ ストアで最大値を検索することや、エラー コードをエラー メッセージ データベースと照合することが挙げられます。 
+
+キャッシュ シンクに書き込むには、シンク変換を追加し、シンクの種類として **[キャッシュ]** を選択します。 他のシンクの種類とは異なり、外部ストアに書き込むのではないため、データセットやリンクされたサービスを選択する必要はありません。 
+
+![キャッシュ シンクの選択](media/data-flow/select-cache-sink.png "キャッシュ シンクの選択")
+
+シンクの設定で、必要に応じてキャッシュ シンクのキー列を指定できます。 これは、キャッシュ参照で `lookup()` 関数を使用する場合に、一致条件として使用されます。 キー列を指定する場合は、キャッシュ参照で `outputs()` 関数は使用できません。 キャッシュ参照構文の詳細については、[キャッシュされた参照](concepts-data-flow-expression-builder.md#cached-lookup)に関する記事を参照してください。
+
+![キャッシュ シンクのキー列](media/data-flow/cache-sink-key-columns.png "キャッシュ シンクのキー列")
+
+たとえば、`cacheExample` というキャッシュ シンクに 1 つのキー列 `column1` を指定する場合、`cacheExample#lookup()` の呼び出しに、キャッシュ シンク内のどの行と照合するかを指定する 1 つのパラメーターを含めます。 この関数によって、マップされた各列のサブ列を含む 1 つの複合列が出力されます。
+
+> [!NOTE]
+> キャッシュ シンクは、キャッシュ参照を使用してそれを参照する変換から、完全に独立したデータ ストリームに存在する必要があります。 また、キャッシュ シンクは、最初に書き込まれるシンクである必要があります。 
 
 ## <a name="field-mapping"></a>フィールドのマッピング
 

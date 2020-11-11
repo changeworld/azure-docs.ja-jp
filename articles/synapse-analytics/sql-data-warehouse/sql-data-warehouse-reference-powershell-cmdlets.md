@@ -1,6 +1,6 @@
 ---
-title: PowerShell と REST API
-description: データベースを一時停止および再開する方法など、Azure Synapse Analytics SQL プールの主な PowerShell コマンドレットを確認してください。
+title: 専用 SQL プール用の PowerShell と REST API
+description: データベースを一時停止および再開する方法など、Azure Synapse Analytics での専用 SQL プール用の主要な PowerShell コマンドレット。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: aaf290fac71fec0ff4106e3f8a1895dd65b94e09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a86676f1a7939ff33deeeeae8d3f45c8238645d5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072895"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305297"
 ---
-# <a name="powershell--rest-apis-for-azure-synapse-analytics-sql-pool"></a>Azure Synapse Analytics SQL プールの PowerShell と REST API
+# <a name="powershell--rest-apis-for-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics での専用 SQL プール用の PowerShell と REST API 
 
-Azure PowerShell コマンドレットまたは REST API を使用して、多くの Azure Synapse Analytics SQL プール管理タスクを管理できます。  以下に示す例では、PowerShell コマンドを使用して、SQL プールで一般的なタスクを自動化する方法を示しています。  適切な REST の例については、 [REST を使用したのスケーラビリティの管理](sql-data-warehouse-manage-compute-rest-api.md)に関する記事をご覧ください。
+Azure PowerShell コマンドレットまたは REST API を使用して、多くの専用 SQL プール管理タスクを管理できます。  以下の例では、PowerShell コマンドを使用して、専用 SQL プールでの一般的なタスクを自動化する方法を示します。  適切な REST の例については、 [REST を使用したのスケーラビリティの管理](sql-data-warehouse-manage-compute-rest-api.md)に関する記事をご覧ください。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -37,7 +37,7 @@ Azure PowerShell コマンドレットまたは REST API を使用して、多�
 
 ## <a name="pause-data-warehouse-example"></a>データ ウェアハウスの一時停止の例
 
-"Server01" という名前のサーバーでホストされている "Database02" という名前のデータベースを一時停止します。  サーバーは "ResourceGroup1" という名前の Azure リソース グループ内にあります。
+"Server01" という名前のサーバーでホストされている "Database02" という名前のデータベースを一時停止します。  サーバーは "ResourceGroup1" という名前の Asure リソース グループ内にあります。
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"

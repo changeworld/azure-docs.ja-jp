@@ -1,6 +1,6 @@
 ---
-title: SQL プール用の PolyBase データ読み込み戦略を設計する
-description: ETL の代わりに、データの読み込みまたは SQL プール用に抽出、読み込み、変換 (ELT) プロセスを設計します。
+title: 専用 SQL プール用の PolyBase データ読み込み戦略を設計する
+description: ETL の代わりに、専用 SQL を使用したデータの読み込み用に抽出、読み込み、変換 (ELT) プロセスを設計します。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: dbbed2ccaa62a99bb54a6d3d2eecf0c644281404
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a57abd080bdbbaefbe07258a2b241c093dc8c441
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474667"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308742"
 ---
-# <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Azure Synapse SQL プール用の PolyBase データ読み込み戦略を設計する
+# <a name="design-a-polybase-data-loading-strategy-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics で専用 SQL プール用の PolyBase データ読み込み戦略を設計する
 
 従来の SMP データ ウェアハウスでは、データの読み込みに ETL (抽出、変換、読み込み) プロセスが使用されます。 Azure SQL プールは、コンピューティング リソースとストレージ リソースのスケーラビリティと柔軟性を活かした超並列処理 (MPP: Massively Parallel Processing) アーキテクチャです。 抽出、読み込み、変換 (ELT) プロセスを利用することで、組み込みの分散クエリ処理機能の利点を活かすと共に、読み込む前にデータを事前に変換するために必要なリソースをなくすことができます。
 
@@ -29,12 +29,12 @@ SQL プールは、Polybase 以外にもさまざまな読み込み方法 (BCP�
 
 ELT (抽出、読み込み、変換) とは、データがソース システムから抽出されてデータ ウェアハウスに読み込まれ、その後変換されるプロセスです。
 
-SQL プール用に PolyBase ELT を実装する基本的な手順は次のとおりです。
+専用 SQL プール用に PolyBase ELT を実装する基本的な手順は次のとおりです。
 
 1. ソース データをテキスト ファイルに抽出します。
 2. そのデータを Azure Blob Storage または Azure Data Lake Store に配置します。
 3. 読み込むデータを準備します。
-4. PolyBase を使用して、SQL プール ステージング テーブルにデータを読み込む
+4. PolyBase を使用して専用 SQL プール ステージング テーブルにデータを読み込みます。
 5. データを変換します。
 6. 運用環境テーブルにデータを挿入します。
 
@@ -85,11 +85,11 @@ Azure Storage へのデータの移動で使用できるツールやサービス
 
 - [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) サービス - ネットワークのスループット、パフォーマンス、予測可能性を向上させます。 ExpressRoute は、専用プライベート接続を通してデータを Azure にルーティングするサービスです。 ExpressRoute 接続では、パブリック インターネットを通してデータをルーティングすることはありません。 ExpressRoute 接続は、パブリック インターネットを通る一般的な接続に比べて安全性と信頼性が高く、待機時間も短く、高速です。
 - [AZCopy ユーティリティ](../../storage/common/storage-use-azcopy-v10.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) - パブリック インターネットを通してデータを Azure Storage に移動します。 このユーティリティは、データ サイズが 10 TB より小さい場合に機能します。 AZCopy を使用して読み込みを定期的に実行するには、ネットワーク速度をテストして、許容可能かどうかを確認してください。
-- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) - ゲートウェイをローカル サーバーにインストールできます。 その後、ローカル サーバーから Azure Storage にデータを移動するためのパイプラインを作成できます。 SQL プールで Data Factory を使用する方法については、[SQL プールへのデータの読み込み](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
+- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) - ゲートウェイをローカル サーバーにインストールできます。 その後、ローカル サーバーから Azure Storage にデータを移動するためのパイプラインを作成できます。 専用 SQL プールで Data Factory を使用する方法については、[専用 SQL プールへのデータの読み込み](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
 
 ## <a name="3-prepare-the-data-for-loading"></a>3.読み込むデータを準備する
 
-SQL プールに読み込む前に、ストレージ アカウント内でデータを準備し、整理する必要がある場合があります。 データの準備は、データがソース内にあるとき、データをテキスト ファイルにエクスポートするとき、またはデータが Azure Storage に配置された後に実施できます。  データの操作は、プロセスの早い段階の方が、最も簡単に行えます。  
+専用 SQL プールに読み込む前に、ストレージ アカウント内でデータを準備し、整理する必要がある場合があります。 データの準備は、データがソース内にあるとき、データをテキスト ファイルにエクスポートするとき、またはデータが Azure Storage に配置された後に実施できます。  データの操作は、プロセスの早い段階の方が、最も簡単に行えます。  
 
 ### <a name="define-external-tables"></a>外部テーブルを定義する
 
@@ -110,7 +110,7 @@ SQL プールに読み込む前に、ストレージ アカウント内でデー
 - SQL プールの変換先テーブルの列とデータ型に合わせて、テキスト ファイルのデータを書式設定します。 外部テキスト ファイルとデータ ウェアハウス テーブルの間でデータ型の不整合があると、読み込みの際に行が拒否されます。
 - テキスト ファイル内のフィールドは終端記号で区切ります。  ソース データに含まれていない文字または文字シーケンスを使用するようにしてください。 [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) で指定した終端記号を使用します。
 
-## <a name="4-load-the-data-into-sql-pool-staging-tables-using-polybase"></a>4.PolyBase を使用して SQL プール ステージング テーブルにデータを読み込む
+## <a name="4-load-the-data-into-dedicated-sql-pool-staging-tables-using-polybase"></a>4.PolyBase を使用して専用 SQL プール ステージング テーブルにデータを読み込みます
 
 これがステージング テーブルにデータを読み込むための最善の方法です。 ステージング テーブルを使用すると、運用環境のテーブルに支障をきたすことなく、エラーを処理することができます。 また、ステージング テーブルを使用すれば、運用テーブルにデータを挿入する前に、SQL プールの組み込みの分散クエリ処理機能を使用してデータを変換できます。
 
@@ -125,7 +125,7 @@ PolyBase を使用してデータを読み込むには、次のいずれかの�
 
 ### <a name="non-polybase-loading-options"></a>PolyBase 以外の読み込みオプション
 
-使用するデータが PolyBase と互換性がない場合は、[bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) または [SQLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) を使用できます。 bcp では、Azure Blob Storage を通さずに SQL プールに直接読み込みます。また、小規模の読み込みのみを対象とします。 これらのオプションの読み込みパフォーマンスは、PolyBase と比べてはるかに低速であることに注意してください。
+使用するデータが PolyBase と互換性がない場合は、[bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) または [SQLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) を使用できます。 bcp を使用すると、Azure Blob Storage を通さずに専用 SQL プールに直接読み込まれます。また、これは小規模の読み込みのみを対象とします。 これらのオプションの読み込みパフォーマンスは、PolyBase と比べてはるかに低速であることに注意してください。
 
 ## <a name="5-transform-the-data"></a>5.データの変換
 

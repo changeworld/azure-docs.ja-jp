@@ -9,31 +9,29 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: 14f0c7177953e43b0c58b4f5432d0c08c5f03f45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7cf86824bef5b6f521df0f0446d5337e2b7c418a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87876616"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130138"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code 用の PySpark 対話型環境を設定する
 
 以下の手順では、VS Code に PySpark 対話型環境を設定する方法を示します。 この手順は、Windows 以外のユーザーのみを対象とします。
 
-**python/pip** コマンドを使用して、ホーム パスに仮想環境を構築します。 別のバージョンを使用する場合は、**python/pip** コマンドの既定のバージョンを手動で変更する必要があります。 詳細については、[update-alternatives](https://linux.die.net/man/8/update-alternatives) を参照してください。
+**python/pip** コマンドを使用して、ホーム パスに仮想環境を構築します。 別のバージョンを使用する場合は、 **python/pip** コマンドの既定のバージョンを手動で変更する必要があります。 詳細については、[update-alternatives](https://linux.die.net/man/8/update-alternatives) を参照してください。
 
 1. [Python](https://www.python.org/downloads/) と [pip](https://pip.pypa.io/en/stable/installing/) をインストールします。
 
    * [https://www.python.org/downloads/](https://www.python.org/downloads/) から Python をインストールします。 
    * pip を [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) からインストールします (Python インストールからインストールされてない場合)。
-   * 次のコマンドを使用して、Python と pip が正常にインストールされていることを確認します。 (省略可能)
-
-        ![Python pip バージョンの確認コマンド](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
+   * 必要に応じてコマンド `python --version` および `pip --version` をそれぞれ使用して、Python と pip が正常にインストールされていることを確認します。 
 
      > [!NOTE]
      > Python は、macOS の既定のバージョンを使用する代わりに、手動でインストールすることをお勧めします。
 
-2. 以下のコマンドを実行して、**virtualenv** をインストールします。
+2. 以下のコマンドを実行して、 **virtualenv** をインストールします。
 
    ```bash
    pip install virtualenv
@@ -53,7 +51,7 @@ sudo apt-get install libkrb5-dev
 sudo apt-get install python-dev
 ```
 
-VS Code を再起動し、VS Code エディターに戻り、**Spark: PySPark Interactive** コマンドを実行します。
+VS Code を再起動し、VS Code エディターに戻り、 **Spark: PySPark Interactive** コマンドを実行します。
 
 ## <a name="next-steps"></a>次のステップ
 

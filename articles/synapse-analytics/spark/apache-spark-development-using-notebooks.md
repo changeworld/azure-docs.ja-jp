@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 02f304af10ae1907326d3f77f318a058155a4c21
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ea765ae5ff93625cc6a0ed36776a8925e5fce836
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738744"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311135"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Synapse Studio (プレビュー) ノートブックを作成、開発、管理する
 
@@ -112,7 +112,7 @@ Synapse Studio ノートブックでは、異なる言語間でデータや変�
 
 Azure Synapse Studio ノートブックは、IDE スタイルの IntelliSense をセル エディターに取り込むために、Monaco エディターと統合されています。 構文の強調表示、エラー マーカー、および自動コード補完は、コードを記述したり、問題をより迅速に特定したりするために役立ちます。
 
-IntelliSense の機能は、言語によって異なる成熟度レベルにあります。 次の表を使用して、サポートされているものを確認してください。
+IntelliSense の機能は、言語によって異なる成熟度レベルにあります。 次の表を使用して、サポートされている内容を確認してください。
 
 |Languages| 構文の強調表示 | 構文のエラー マーカー  | 構文のコード補完 | 変数のコード補完| システム関数のコード補完| ユーザー関数のコード補完| スマート インデント | コードの折りたたみ|
 |--|--|--|--|--|--|--|--|--|
@@ -203,7 +203,7 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
 
 ### <a name="spark-progress-indicator"></a>Spark 進行状況インジケーター
 
-Azure Synapse Studio ノートブックは、純粋に Spark ベースです。 コード セルは、Spark プールに対してリモートで実行されます。 Spark ジョブの進行状況インジケーターは、リアルタイムの進行状況バーで示されます。これは、ジョブの実行状態を把握するのに役立ちます。
+Azure Synapse Studio ノートブックは、純粋に Spark ベースです。 コード セルは、サーバーレス Apache Spark プールに対してリモートで実行されます。 Spark ジョブの進行状況インジケーターは、リアルタイムの進行状況バーで示されます。これは、ジョブの実行状態を把握するのに役立ちます。
 ジョブごとまたはステージごとのタスク数は、Spark ジョブの並列レベルを識別するのに役立ちます。 また、ジョブ (またはステージ) の名前のリンクを選択することで、特定のジョブ (またはステージ) の Spark UI をさらに掘り下げて調べることもできます。
 
 
@@ -277,7 +277,7 @@ df = spark.read.option("header", "true") \
 
 表形式の結果ビューには、横棒グラフ、折れ線グラフ、円グラフ、散布図、および面グラフを作成するためのオプションが表示されます。 コードを記述しなくても、データを視覚化できます。 グラフは **[グラフのオプション]** でカスタマイズできます。 
 
-既定では、 **%%sql** マジック コマンドの出力が、レンダリングされたテーブル ビューに表示されます。 Spark DataFrame、Pandas DataFrames、List または Resilient Distributed Dataset (RDD) 関数で <code>display(df)</code> を呼び出して、レンダリングされたテーブル ビューを生成することができます。
+既定では、 **%%sql** マジック コマンドの出力が、レンダリングされたテーブル ビューに表示されます。 Spark DataFrame、Pandas DataFrame、List、または Resilient Distributed Dataset (RDD) 関数で <code>display(df)</code> を呼び出して、レンダリングされたテーブル ビューを生成することができます。
 
    [![builtin-charts](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png#lightbox)
 

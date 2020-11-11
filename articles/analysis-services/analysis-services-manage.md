@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 697e5484c007c095201344fb4829a92eb642a6e3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 91ffcac98b2b919a8fc131d235e699aad4fa215d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014853"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078902"
 ---
 # <a name="manage-analysis-services"></a>Analysis Services を管理する
 Azure に Analysis Services サーバーを作成した後は、すぐに、または後で、管理タスクを行うことが必要になる場合があります。 たとえば、データ更新処理の実行、サーバー上のモデルにアクセスできるユーザーの制御、サーバーの正常性の監視などです。 Azure Portal または SQL Server Management Studio (SSMS) のどちらかでしか実行できないもの、またはどちらでも実行できるものがあります。
@@ -20,7 +20,7 @@ Azure に Analysis Services サーバーを作成した後は、すぐに、ま�
 ## <a name="azure-portal"></a>Azure portal
 [Azure Portal](https://portal.azure.com/) では、サーバーの作成と削除、サーバー リソースの監視、サイズの変更、サーバーにアクセスできるユーザーの管理を行うことができます。  問題がある場合は、サポート要求を送信することもできます。
 
-![Azure でサーバー名を取得する](./media/analysis-services-manage/aas-manage-portal.png)
+![サーバーの作成と削除、サーバー リソースの監視、サイズの変更、サーバーにアクセスできるユーザーの管理を行うことができる Azure portal を示すスクリーンショット。](./media/analysis-services-manage/aas-manage-portal.png)
 
 ## <a name="sql-server-management-studio"></a>SQL Server Management Studio
 Azure のサーバーへの接続は、組織内のサーバー インスタンスへの接続と同じです。 SSMS では、データの処理、処理スクリプトの作成、ロールの管理、PowerShell の使用など、多くの同じタスクを実行できます。
@@ -39,7 +39,7 @@ Azure のサーバーへの接続は、組織内のサーバー インスタン�
 1. 接続する前に、サーバー名を取得する必要があります。 **Azure Portal** でサーバーを選び、 **[概要]**  >  **[サーバー名]** のサーバー名をコピーします。
    
     ![Azure でサーバー名を取得する](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
-2. SSMS の**オブジェクト エクスプローラー**で、 **[接続]**  >  **[Analysis Services]** の順にクリックします。
+2. SSMS の **オブジェクト エクスプローラー** で、 **[接続]**  >  **[Analysis Services]** の順にクリックします。
 3. **[サーバーへの接続]** ダイアログ ボックスで、サーバー名を貼り付けてから、 **[認証]** で次のいずれかの認証の種類を選びます。   
     > [!NOTE]
     > 認証の種類として、 **[Active Directory - MFA サポートで汎用]** が推奨されます。

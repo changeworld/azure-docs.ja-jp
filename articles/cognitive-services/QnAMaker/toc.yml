@@ -94,6 +94,8 @@
       href: troubleshooting.md
     - name: 質問と回答のペア
       href: Concepts/question-answer-set.md
+    - name: 正確な回答
+      href: reference-precise-answering.md
     - name: セキュリティで保護された SharePoint ファイルの追加
       href: How-To/add-sharepoint-datasources.md
       displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'

@@ -3,12 +3,12 @@ title: ACR タスクからのクロスレジストリ認証
 description: Azure リソースのマネージド ID を使用して、別のプライベート Azure コンテナー レジストリにアクセスできるように、Azure Container Registry タスク (ACR タスク) を構成します
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: 8b961a2ff6a795f03798cc6f6a7d303391036ef8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a460102eafa5c1eda2f37330887d985387d5df5
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86057359"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026260"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>ACR タスクでの Azure マネージド ID を使用したクロスレジストリ認証 
 
@@ -39,16 +39,12 @@ Azure リソースを作成するために、この記事では Azure CLI バー
 
 ## <a name="prepare-base-registry"></a>基本レジストリの準備
 
-最初に作業ディレクトリを作成し、その後、次の内容を含む Dockerfile という名前のファイルを作成します。 この単純な例では、Docker Hub のパブリック イメージから Node.js 基本イメージをビルドします。
-    
-```bash
-echo FROM node:9-alpine > Dockerfile
-```
+デモンストレーション目的で、1 回限りの操作として、[az acr import][az-acr-import] を実行して、Docker Hub から基本レジストリにパブリック Node.js イメージをインポートします。 実際には、組織内の別のチームまたはプロセスが基本レジストリのイメージを保持することがあります。
 
-現在のディレクトリで、[az acr build][az-acr-build] コマンドを実行して基本イメージをビルドし、基本レジストリにプッシュします。 実際には、組織内の別のチームまたはプロセスが基本レジストリを保持することがあります。
-    
 ```azurecli
-az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file Dockerfile .
+az acr import --name mybaseregistry \
+  --source docker.io/library/node:9-alpine \
+  --image baseimages/node:9-alpine 
 ```
 
 ## <a name="define-task-steps-in-yaml-file"></a>タスクのステップを YAML ファイルで定義する
@@ -223,7 +219,7 @@ The push refers to repository [myregistry.azurecr.io/hello-world]
 Run ID: cf10 was successful after 32s
 ```
 
-[az acr repository show-tags][az-acr-repository-show-tags] コマンドを実行して、イメージがビルドされ、*myregistry* に正常にプッシュされたことを確認します。
+[az acr repository show-tags][az-acr-repository-show-tags] コマンドを実行して、イメージがビルドされ、 *myregistry* に正常にプッシュされたことを確認します。
 
 ```azurecli
 az acr repository show-tags --name myregistry --repository hello-world --output tsv

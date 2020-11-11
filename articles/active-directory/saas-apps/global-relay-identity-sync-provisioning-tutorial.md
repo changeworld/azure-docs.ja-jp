@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2020
 ms.author: Zhchia
-ms.openlocfilehash: 400e82780abd08e0db4f49d72b352e290ea1f212
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 9445004170fb06a3d563982da51f89535464e328
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900288"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927993"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために Global Relay Identity Sync を構成する
 
@@ -33,6 +33,10 @@ ms.locfileid: "92900288"
 > * ユーザーがアクセスを必要としなくなったときに Global Relay Identity Sync から削除する
 > * Azure AD と Azure AD and Global Relay Identity Sync の間でユーザー属性の同期を維持する
 > * Global Relay Identity Sync でグループとグループ メンバーシップをプロビジョニングする
+
+
+> [!NOTE]
+> セキュリティ上の問題のため、サポートされなくなった SCIM 承認方法が、Global Relay Identity Sync プロビジョニング コネクタによって利用されています。 Global Relay により、さらに安全な承認方法に切り替える作業が進められています。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -4,12 +4,12 @@ description: この記事では、Azure Backup サービスを使用した Azure
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: f318d785fdfa5b72050bdd805ecfe801d307b9a7
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 74e2facfd9fd6073acc1f939c3d2ba922e3ac931
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172835"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925579"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>よく寄せられる質問 - Azure VM のバックアップ
 
@@ -53,7 +53,7 @@ Recovery Services コンテナーと VM が異なるリソース グループに
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>最近いくつかの VM で Azure Disk Encryption を有効にしました。 既存のバックアップは今後も正常に機能しますか。
 
-Azure Backup に Key Vault へのアクセス許可を付与してください。 [Azure Backup PowerShell](backup-azure-vms-automation.md) ドキュメントの**バックアップの有効化**に関するセクションの説明に従って、PowerShell でアクセス許可を指定します。
+Azure Backup に Key Vault へのアクセス許可を付与してください。 [Azure Backup PowerShell](backup-azure-vms-automation.md) ドキュメントの **バックアップの有効化** に関するセクションの説明に従って、PowerShell でアクセス許可を指定します。
 
 ### <a name="i-migrated-vm-disks-to-managed-disks-will-my-backups-continue-to-work"></a>VM ディスクをマネージド ディスクに移行しました。 既存のバックアップは今後も正常に機能しますか。
 
@@ -69,13 +69,17 @@ Azure Backup に Key Vault へのアクセス許可を付与してください�
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>進行中のバックアップ ジョブを取り消すことはできますか。
 
-はい。 **スナップショットの作成中**状態のバックアップ ジョブは取り消すことができます。 スナップショットからのデータ転送が進行中である場合は、ジョブを取り消せません。
+はい。 **スナップショットの作成中** 状態のバックアップ ジョブは取り消すことができます。 スナップショットからのデータ転送が進行中である場合は、ジョブを取り消せません。
 
 ### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>Azure Backup サービスによって作成されたリソース グループ (例: `AzureBackupRG_<geo>_<number>`) に対するロックを有効にしました。 既存のバックアップは今後も正常に機能しますか。
 
 Azure Backup サービスによって作成されたリソース グループをロックする場合は、復元ポイントの最大限度が 18 であるため、バックアップは失敗し始めます。
 
 今後のバックアップを成功させるために、ロックを解除し、そのリソース グループからの復元ポイント コレクションをクリアします。 復元ポイント コレクションをクリアするには、[こちらの手順に従います](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal)。
+
+### <a name="i-have-a-lock-at-the-resource-group-level-that-contains-all-the-resources-related-to-my-virtual-machine-will-my-backup-work"></a>仮想マシンに関連するすべてのリソースを含むリソース グループ レベルでロックされています。 バックアップは機能しますか?
+
+Azure Backup では、ResourcePointCollections オブジェクトを格納するための別のリソース グループが `AzureBackupRG_<geo>_<number>` の形式で作成されます。 このリソース グループはサービスが所有するため、これをロックするとバックアップは失敗します。 ロックを適用できるのは、顧客が作成したリソース グループのみです。
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>Azure Backup は Standard SSD マネージド ディスクをサポートしていますか。
 
@@ -145,7 +149,7 @@ PowerShell でこれを行う方法の詳細については、[こちら](backup
 
 ### <a name="how-do-i-restore-a-vm-to-the-same-availability-sets"></a>同じ可用性セットに VM を復元するには、どうすればよいですか。
 
-マネージド ディスクの Azure VM については、マネージド ディスクとして復元しているときに、可用性セットへの復元オプションがテンプレートに提供されます。 このテンプレートには、**可用性セット**と呼ばれる入力パラメーターがあります。
+マネージド ディスクの Azure VM については、マネージド ディスクとして復元しているときに、可用性セットへの復元オプションがテンプレートに提供されます。 このテンプレートには、 **可用性セット** と呼ばれる入力パラメーターがあります。
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>復元のパフォーマンスを高めるには、どうすればよいですか。
 
@@ -180,9 +184,9 @@ VM のバックアップは、変更されたポリシーまたは新しいポ�
 2. Azure Backup で構成された仮想マシンを移動するには、次の手順を実行します。
 
    1. 仮想マシンの場所を探します。
-   2. 名前付けパターン `AzureBackupRG_<location of your VM>_1` を持つリソース グループを探します。 たとえば、*AzureBackupRG_westus2_1* となります
+   2. 名前付けパターン `AzureBackupRG_<location of your VM>_1` を持つリソース グループを探します。 たとえば、 *AzureBackupRG_westus2_1* となります
    3. Azure portal で、 **[非表示の型の表示]** をオンにします。
-   4. `AzureBackup_<name of your VM that you're trying to move>_###########` という名前パターンを持つ、**Microsoft.Compute/restorePointCollections** 型のリソースを検索します。
+   4. `AzureBackup_<name of your VM that you're trying to move>_###########` という名前パターンを持つ、 **Microsoft.Compute/restorePointCollections** 型のリソースを検索します。
    5. このリソースを削除します。 この操作では、インスタント復旧ポイントのみが削除され、コンテナー内のバックアップされたデータは削除されません。
    6. 削除操作が完了したら、仮想マシンを移動できます。
 

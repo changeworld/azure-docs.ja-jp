@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 25eaca08202bd01ad4777fdb73eb75abff458c29
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f065b1bc98eab86542ecff73e1471e4d90cd4182
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677859"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339536"
 ---
 # <a name="vm-certification-troubleshooting"></a>VM 認定のトラブルシューティング
 
@@ -81,6 +81,45 @@ VM 拡張機能が正しくアクティブ化されていることを確認す�
 > VM の一般化の詳細については、以下を参照してください。
 > - [Linux ドキュメント](azure-vm-create-using-approved-base.md#generalize-the-image)
 > - [Windows ドキュメント](../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)
+
+
+## <a name="vhd-specifications"></a>VHD の仕様
+
+### <a name="conectix-cookie-and-other-vhd-specifications"></a>Conectix Cookie とその他の VHD の仕様
+'conectix' 文字列は VHD 仕様の一部で、以下の VHD フッターでファイル作成者を識別する 8 バイトの 'Cookie' として定義されています。 Microsoft によって作成されたすべての vhd ファイルにこの Cookie があります。 
+
+VHD でフォーマットされた BLOB には、512 バイトのフッターが必要です。こちらが VHD フッターの形式です。
+
+|ハード ディスク フッターのフィールド|サイズ (バイト)|
+|---|---|
+クッキー|8
+特徴|4
+File Format Version\(ファイル形式のバージョン\)|4
+Data Offset\(データ オフセット\)|8
+タイム スタンプ|4
+Creator Application\(作成者のアプリケーション\)|4
+Creator Version\(作成者のバージョン\)|4
+Creator Host OS\(作成者のホスト OS\)|4
+[元のサイズ]|8
+現在のサイズ|8
+Disk Geometry\(ディスク ジオメトリ\)|4
+ディスクの種類|4
+Checksum|4
+一意の ID|16
+Saved State\(保存された状態\)|1
+予約されています。|427
+
+
+### <a name="vhd-specifications"></a>VHD の仕様
+シームレスな発行エクスペリエンスを実現するために、 **VHD が次の条件を満たしている** ことを確認してください。
+* Cookie に "conectix" という文字列が含まれていること
+* ディスクの種類が [容量固定] であること
+* VHD の仮想サイズが 20 MB 以上であること
+* VHD がアラインされていること (つまり、仮想サイズが 1 MB の倍数であること)
+* VHD BLOB の長さ = 仮想サイズ + VHD フッターの長さ (512)
+
+VHD の仕様は[こちら](https://www.microsoft.com/download/details.aspx?id=23850)からダウンロードできます。
+
 
 ## <a name="software-compliance-for-windows"></a>Windows のソフトウェア コンプライアンス
 

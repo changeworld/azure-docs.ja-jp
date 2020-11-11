@@ -1,7 +1,7 @@
 ---
 title: 認証の設定
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で、さまざまなリソースとワークフローの認証を設定して構成する方法について説明します。 サービス内で認証を構成して使用するには、開発またはテストの目的で単純な UI ベースの認証を使用する方法から、完全な Azure Active Directory サービス プリンシパル認証を使用する方法まで、幅広い複数の方法があります。
+description: Azure Machine Learning で、さまざまなリソースとワークフローの認証を設定して構成する方法について説明します。
 services: machine-learning
 author: cjgronlund
 ms.author: cgronlun
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 8eb042b214ba1e4aea1eda1c65996d55ddde216e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: fd6f933e1b3c1e7c003f62e03215273e3d28ea5c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741882"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318539"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning のリソースとワークフローの認証を設定する
 
@@ -38,7 +38,7 @@ Azure Machine Learning ワークスペース、および Web サービスとし�
 ## <a name="interactive-authentication"></a>対話型認証
 
 > [!IMPORTANT]
-> 対話型認証では、ブラウザーが使用され、Cookie (サードパーティの Cookie を含む) が必要です。 Cookie を無効にしている場合は、"サインインできませんでした" などのエラーを受け取る場合があります。 このエラーは、[Azure Multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-howitworks) を有効にしている場合にも発生する場合があります。
+> 対話型認証では、ブラウザーが使用され、Cookie (サードパーティの Cookie を含む) が必要です。 Cookie を無効にしている場合は、"サインインできませんでした" などのエラーを受け取る場合があります。 このエラーは、[Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) を有効にしている場合にも発生する場合があります。
 
 ドキュメントとサンプルのほとんどの例では、対話型認証が使用されています。 たとえば、SDK を使用する場合は、UI ベースの認証フローを使用して自動的に入力を求める関数呼び出しが 2 つあります。
 
@@ -77,7 +77,7 @@ Azure Machine Learning ワークスペース、および Web サービスとし�
 >
 > 最小限のアクセス権を付与する理由は、サービス プリンシパルがパスワードを使用して認証を行うためであり、パスワードがオートメーション スクリプトの一部として格納される可能性があるからです。 パスワードが漏洩した場合、特定のタスクに必要な最小限のアクセス権のみを保持しているため、SP が悪意を持って使用される可能性が最小限に抑えられます。
 
-SP を作成し、ワークスペースへのアクセス権を付与する最も簡単な方法は、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)を使用することです。 サービス プリンシパルを作成して、ワークスペースへのアクセス権を付与するには、次の手順に従います。
+SP を作成し、ワークスペースへのアクセス権を付与する最も簡単な方法は、[Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)を使用することです。 サービス プリンシパルを作成して、ワークスペースへのアクセス権を付与するには、次の手順に従います。
 
 > [!NOTE]
 > これらのすべての手順を実行するには、サブスクリプションの管理者である必要があります。
@@ -92,7 +92,7 @@ SP を作成し、ワークスペースへのアクセス権を付与する最�
 
     [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-    その他の認証方法については、「[Azure CLI を使用してサインインする](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)」を参照してください。
+    その他の認証方法については、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest)」を参照してください。
 
 1. Azure Machine Learning 拡張機能をインストールします。
 
@@ -190,11 +190,11 @@ ws.get_details()
 
 ### <a name="use-a-service-principal-from-the-azure-cli"></a>Azure CLI からのサービス プリンシパルの使用
 
-サービス プリンシパルは Azure CLI コマンドに使用できます。 詳細については、「[サービス プリンシパルを使用したサインイン](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest&preserve-view=true#sign-in-using-a-service-principal)」を参照してください。
+サービス プリンシパルは Azure CLI コマンドに使用できます。 詳細については、「[サービス プリンシパルを使用したサインイン](/cli/azure/create-an-azure-service-principal-azure-cli?preserve-view=true&view=azure-cli-latest#sign-in-using-a-service-principal)」を参照してください。
 
 ### <a name="use-a-service-principal-with-the-rest-api-preview"></a>REST API でのサービス プリンシパルの使用 (プレビュー)
 
-サービス プリンシパルを使用して、Azure Machine Learning [REST API](https://docs.microsoft.com/rest/api/azureml/) (プレビュー) に対する認証を行うこともできます。 Azure Active Directory の[クライアント資格情報付与フロー](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)を使用します。これにより、自動化されたワークフローでヘッドレス認証に対するサービス間の呼び出しが許可されます。 これらの例は、Python と Node.js の両方で [ADAL ライブラリ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)と共に実装されていますが、OpenID Connect 1.0 をサポートする任意のオープンソース ライブラリを使用することもできます。
+サービス プリンシパルを使用して、Azure Machine Learning [REST API](/rest/api/azureml/) (プレビュー) に対する認証を行うこともできます。 Azure Active Directory の[クライアント資格情報付与フロー](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)を使用します。これにより、自動化されたワークフローでヘッドレス認証に対するサービス間の呼び出しが許可されます。 これらの例は、Python と Node.js の両方で [ADAL ライブラリ](../active-directory/azuread-dev/active-directory-authentication-libraries.md)と共に実装されていますが、OpenID Connect 1.0 をサポートする任意のオープンソース ライブラリを使用することもできます。
 
 > [!NOTE]
 > MSAL js は ADAL より新しいライブラリですが、MSAL.js によってクライアント資格情報を使用したサービス間認証を行うことはできません。これは、主に、特定のユーザーに関連付けられた対話型/UI 認証を目的とするクライアント側ライブラリであるためです。 次に示すように、ADAL を使用して、REST API で自動化されたワークフローを構築することをお勧めします。
@@ -280,6 +280,62 @@ print(token_response)
 ```
 
 `token_response["accessToken"]` を使用して、認証トークンをフェッチします。 トークンを使用して API を呼び出す方法の例については、[REST API のドキュメント](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API)を参照してください。
+
+#### <a name="java"></a>Java
+
+Java では、標準の REST 呼び出しを使用してベアラー トークンを取得します。
+
+```java
+String tenantId = "your-tenant-id";
+String clientId = "your-client-id";
+String clientSecret = "your-client-secret";
+String resourceManagerUrl = "https://management.azure.com";
+
+HttpRequest tokenAuthenticationRequest = tokenAuthenticationRequest(tenantId, clientId, clientSecret, resourceManagerUrl);
+
+HttpClient client = HttpClient.newBuilder().build();
+Gson gson = new Gson();
+HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+if (response.statusCode == 200)
+{
+     body = gson.fromJson(body, AuthenticationBody.class);
+
+    // ... etc ... 
+}
+// ... etc ...
+
+static HttpRequest tokenAuthenticationRequest(String tenantId, String clientId, String clientSecret, String resourceManagerUrl){
+    String authUrl = String.format("https://login.microsoftonline.com/%s/oauth2/token", tenantId);
+    String clientIdParam = String.format("client_id=%s", clientId);
+    String resourceParam = String.format("resource=%s", resourceManagerUrl);
+    String clientSecretParam = String.format("client_secret=%s", clientSecret);
+
+    String bodyString = String.format("grant_type=client_credentials&%s&%s&%s", clientIdParam, resourceParam, clientSecretParam);
+
+    HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create(authUrl))
+            .POST(HttpRequest.BodyPublishers.ofString(bodyString))
+            .build();
+    return request;
+}
+
+class AuthenticationBody {
+    String access_token;
+    String token_type;
+    int expires_in;
+    String scope;
+    String refresh_token;
+    String id_token;
+    
+    AuthenticationBody() {}
+}
+```
+
+上記のコードでは、 例外と `200 OK` 以外の状態コードを処理する必要がありますが、パターンが示されています。 
+
+- クライアント ID とシークレットを使用して、プログラムがアクセス可能であることを確認する
+- テナント ID を使用して、`login.microsoftonline.com` が調べる場所を指定する
+- 認証トークンのソースとして Azure Resource Manager を使用する
 
 ## <a name="web-service-authentication"></a>Web サービス認証
 

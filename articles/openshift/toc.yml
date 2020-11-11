@@ -24,6 +24,8 @@
       href: howto-add-update-pull-secret.md
     - name: Azure Red Hat OpenShift 4 クラスターの DNS 転送を構成する
       href: dns-forwarding.md
+    - name: Azure Red Hat OpenShift 4 の組み込みのコンテナー レジストリを構成する
+      href: built-in-container-registry.md
     - name: Azure Red Hat OpenShift 4 クラスターの Azure Active Directory 認証を構成する
       items:
         - name: Azure Active Directory 認証を構成する (CLI)
@@ -44,6 +46,10 @@
               href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
             - name: Azure Red Hat OpenShift 3.11 で Azure Monitor for containers を無効にする (プレビュー)
               href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
+    - name: Azure Red Hat OpenShift 4 クラスター上の Open Liberty/WebSphere Liberty
+      items:
+        - name: Azure Red Hat OpenShift 4 クラスターに Open Liberty/WebSphere Liberty アプリをデプロイする
+          href: howto-deploy-java-liberty-app.md
     - name: Azure Red Hat OpenShift 3.11
       items:
         - name: Azure Red Hat OpenShift 3.11 向けに Azure Red Hat OpenShift 開発環境を設定する

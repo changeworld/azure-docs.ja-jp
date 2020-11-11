@@ -1,6 +1,6 @@
 ---
-title: SQL オンデマンド (プレビュー) を使用して Parquet の入れ子にされた型に対するクエリを実行する
-description: この記事では、SQL オンデマンド (プレビュー) を使用して Parquet の入れ子にされた型に対してクエリを実行する方法について説明します。
+title: サーバーレス SQL プール (プレビュー) を使用して Parquet の入れ子にされた型に対するクエリを実行する
+description: この記事では、サーバーレス SQL プール (プレビュー) を使用して Parquet の入れ子にされた型に対してクエリを実行する方法について説明します。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 08502704515c791bf63f4803b7446a0471c0a869
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3463e4dfc423a3f12ce7a42cb0def36574bcb2d3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288258"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312005"
 ---
-# <a name="query-nested-types-in-parquet-and-json-files-by-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics の SQL オンデマンド (プレビュー) を使用して Parquet および JSON ファイルで入れ子にされた型に対してクエリを実行する
+# <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プール (プレビュー) を使用して Parquet および JSON ファイルで入れ子にされた型に対してクエリを実行する
 
-この記事では、Azure Synapse Analytics の SQL オンデマンド (プレビュー) を使用してクエリを作成する方法について説明します。 このクエリでは、Parquet の入れ子にされた型が読み取られます。
+この記事では、Azure Synapse Analytics のサーバーレス SQL プール (プレビュー) を使用してクエリを作成する方法について説明します。 このクエリでは、Parquet の入れ子にされた型が読み取られます。
 入れ子になった型は、オブジェクトまたは配列を表す複雑な構造体です。 入れ子になった型は、次のように格納できます。 
 - [Parquet](query-parquet-files.md): 配列とオブジェクトを含む複数の複合列を格納できます。
 - 階層型の [JSON ファイル](query-json-files.md): 複雑な JSON ドキュメントを 1 つの列として読み取ることができます。
 - Azure Cosmos DB コレクション (現在はゲート付きパブリック プレビュー): すべてのドキュメントに複雑な入れ子になったプロパティを含めることができます。
 
-Azure Synapse SQL オンデマンドでは、入れ子にされたすべての型が JSON オブジェクトと配列として書式設定されます。 そのため、[JSON 関数を使用して複雑なオブジェクトを抽出または変更する](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server)ことも、[OPENJSON 関数を使用して JSON データを解析する](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server)こともできます。 
+サーバーレス SQL プールでは、入れ子にされたすべての型が JSON オブジェクトと配列として書式設定されます。 そのため、[JSON 関数を使用して複雑なオブジェクトを抽出または変更する](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server)ことも、[OPENJSON 関数を使用して JSON データを解析する](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server)こともできます。 
 
 次に、入れ子になったオブジェクトを含む JSON ファイル [COVID-19 Open Research Dataset](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) からスカラー値とオブジェクト値を抽出するクエリの例を示します。 
 

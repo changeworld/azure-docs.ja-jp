@@ -1,5 +1,5 @@
 ---
-title: アプリを Azure AD アプリ ギャラリーで公開する
+title: アプリを Azure Active Directory アプリ ギャラリーで発行する
 description: シングル サインオンをサポートするアプリケーションを Azure Active Directory アプリ ギャラリーに掲載する方法を説明します。
 services: active-directory
 author: kenwith
@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/19/2020
+ms.date: 11/03/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5ade98e04853ae8293f762f237b3b3154c876f7e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d6df94cca46d82c3e066779cd28584c84f12fbce
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275706"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339437"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>アプリを Azure AD アプリ ギャラリーで公開する
 
@@ -60,11 +60,28 @@ Azure AD ギャラリーにアプリを追加すると、次のような利点�
 5. アプリを送信します。
 6. Microsoft Partner Network に参加します。
 
+## <a name="what-is-the-azure-ad-application-gallery"></a>Azure AD アプリケーション ギャラリーとは
+
+- 顧客は考えられる最良のシングル サインオン エクスペリエンスを探しています。
+- アプリケーションの構成は簡単で最小限です。
+- クイック検索でギャラリー内のアプリケーションが検索されます。
+- Free、Basic、Premium すべての Azure AD ユーザーがこの情報を使用できます。
+- 共通の顧客向けの詳細な構成手順チュートリアルがあります。
+- System for Cross-domain Identity Management ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) を使用している顧客は、同じアプリのプロビジョニングを使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
 テストには、2 人以上のユーザーが登録されている永続的なアカウントが必要です。
 
+- フェデレーション アプリケーション (Open ID と SAML/WS-Fed) の場合、Azure AD アプリ ギャラリーに一覧表示するには、アプリケーションでサービスとしてのソフトウェア (SaaS) モデルをサポートする必要があります。 エンタープライズ ギャラリー アプリケーションでは、特定の顧客ではなく複数の顧客構成をサポートする必要があります。
+- Open ID Connect の場合、アプリケーションはマルチテナントである必要があり、[Azure AD 同意フレームワーク](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)がアプリケーションに適切に実装されている必要があります。 ユーザーは、すべての顧客がアプリケーションへの同意を提供できるように、共通エンドポイントにサインイン要求を送信できます。 トークンで受け取ったテナント ID とユーザーの UPN に基づいてユーザー アクセスを制御できます。
+- SAML 2.0/WS-Fed の場合、ご利用のアプリケーションには、SP または IDP モードで SAML/WS-Fed SSO 統合を行う機能を備えている必要があります。 要求を送信する前に、この機能が正しく動作していることを確認してください。
+- パスワード SSO の場合、シングル サインオンが期待どおりに動作するように、アプリケーションでフォーム認証をサポートしてパスワード保管を行えることを確認します。
+- テストには、2 人以上のユーザーが登録されている永続的なアカウントが必要です。
+
+**開発者向け Azure AD の取得方法**
+
+すべての Premium Azure AD 機能を持つ無料のテスト アカウントを入手できます。90 日間無料で、開発作業を行っている限り、延長することができます: https://docs.microsoft.com/office/developer-program/office-365-developer-program
 
 ## <a name="step-1---choose-the-right-single-sign-on-standard-for-your-app"></a>ステップ 1 - アプリに適したシングル サインオン標準を選択する
 
@@ -159,9 +176,9 @@ HTML のサインイン ページがある Web アプリケーションを作成
 
 テナントの用意ができたら、シングル サインオン アクセスを有効にしてテストする必要があります。 
 
-**OIDC または Oath アプリケーション**の場合、マルチテナント アプリケーションとして[アプリケーションを登録](quickstart-register-app.md)します。 ‎[サポートされているアカウントの種類] で、[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント] オプションを選択します。
+**OIDC または Oath アプリケーション** の場合、マルチテナント アプリケーションとして [アプリケーションを登録](quickstart-register-app.md)します。 ‎[サポートされているアカウントの種類] で、[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント] オプションを選択します。
 
-**SAML ベース、および WS-Fed ベースのアプリケーション**の場合、Azure AD で汎用 SAML テンプレートを使用して [SAML ベースのシングル サインオン アプリケーションを構成](../manage-apps/configure-saml-single-sign-on.md)します。
+**SAML ベース、および WS-Fed ベースのアプリケーション** の場合、Azure AD で汎用 SAML テンプレートを使用して [SAML ベースのシングル サインオン アプリケーションを構成](../manage-apps/configure-saml-single-sign-on.md)します。
 
 必要に応じて、[シングルテナント アプリケーションをマルチテナントに変換](howto-convert-app-to-be-multi-tenant.md)することもできます。
 
@@ -256,6 +273,16 @@ OpenID Connect を使用してギャラリー内の一覧にご利用のアプ�
 
 > [!NOTE]
 > アクセスに問題がある場合は、アカウントの作成に関する前のセクションを確認してください。 それでもうまくいかない場合は、[Azure AD SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。
+
+### <a name="list-requests-by-customers"></a>顧客による一覧表示の要求
+
+顧客は、 **[App requests by Customers]\(顧客によるアプリ要求\)**  >  **[新しい要求の送信]** を選択することで、アプリケーションの一覧表示の要求を送信できます。
+
+![顧客が要求したアプリ タイルを示します](./media/howto-app-gallery-listing/customer-submit-request.png)
+
+顧客が要求したアプリケーションのフローは。次のとおりです。
+
+![顧客が要求したアプリ フローを示します](./media/howto-app-gallery-listing/customer-request-2.png)
 
 
 ### <a name="timelines"></a>タイムライン

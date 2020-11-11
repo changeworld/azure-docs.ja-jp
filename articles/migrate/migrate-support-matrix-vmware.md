@@ -3,12 +3,12 @@ title: Azure Migrate での VMware 評価サポート
 description: Azure Migrate Server Assessment を使用した VMware VM の評価のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 0fd884a7d95edaf6586e7eecd644400c05c15e5a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 8b119b56e7e4c7fac74c57cc5c48fb44f91a7ee6
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315807"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345433"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評価のサポートマトリックス 
 
@@ -66,14 +66,13 @@ Azure Migrate では、[Azure Migrate アプライアンス](migrate-appliance.m
 
 **サポート** | **詳細**
 --- | ---
-**サポートされているマシン** | 現在、アプリ検出は VMware VM でのみサポートされています。
+**サポートされているマシン** | 現在、アプリ検出は VMware VM でのみサポートされています。 各 Azure Migrate アプライアンスから最大 10,000 台の VMware VM にインストールされているアプリを検出できます。
+**オペレーティング システム** | アプリ検出は、すべてのバージョンの Windows および Linux が実行されている VM でサポートされています。
+**VM 要件** | アプリを検出する VM に VMware ツールがインストールされ、実行されている必要があります。 <br/><br/> VMware ツールのバージョンは、10.2.0 以降である必要があります。<br/><br/> VM には、PowerShell バージョン 2.0 以降がインストールされている必要があります。
 **検出** | アプリ検出はエージェントレスです。 マシンのゲスト資格情報を使用し、WMI と SSH 呼び出しを使用してマシンにリモートでアクセスします。
-**VM のサポート** | アプリ検出は、すべてのバージョンの Windows および Linux が実行されている VM でサポートされています。
 **vCenter** | 評価に使用される vCenter Server の読み取り専用アカウントは、アプリケーション検出用の VM と対話するために、 **[Virtual Machines]**  >  **[Guest Operations]\(ゲスト操作\)** に対して有効になっている特権が必要です。
 **VM アクセス** | アプリの検出では、VM 上にアプリケーション検出用のローカル ユーザー アカウントが必要です。<br/><br/> 現在、Azure Migrate ではすべての Windows サーバーに対して 1 つの資格情報と、すべての Linux サーバーに対して 1 つの資格情報を使用することがサポートされています。<br/><br/> Windows VM 用にゲスト ユーザー アカウントを作成し、すべての Linux VM 用に通常/標準ユーザー アカウント (非 sudo アクセス) を作成します。
-**VMware ツール** | 検出する VM に VMware ツールがインストールされ、実行されている必要があります。 <br/><br/> VMware ツールのバージョンは、10.2.0 以降である必要があります。
-**PowerShell** | VM には、PowerShell バージョン 2.0 以降がインストールされている必要があります。
-**ポート アクセス** | 検出する VM を実行している ESXi ホストでは、Azure Migrate アプライアンスが TCP ポート 443 に接続できる必要があります。
+**ポート アクセス** | アプリを検出する VM が実行されている ESXi ホストでは、Azure Migrate アプライアンスが TCP ポート 443 に接続できる必要があります。 アプリ情報を含むファイルをダウンロードするため、vCenter Server から ESXI ホスト接続が返されます。
 **制限** | アプリ検出では、各 Azure Migrate アプライアンスで最大 1 万の VM を検出できます。
 
 

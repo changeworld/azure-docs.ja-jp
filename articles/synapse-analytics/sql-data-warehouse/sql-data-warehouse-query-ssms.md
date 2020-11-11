@@ -1,6 +1,6 @@
 ---
 title: SSMS との接続
-description: SQL Server Management Studio (SSMS) を使用して Azure Synapse Analytics に接続し、クエリを実行します。
+description: SQL Server Management Studio (SSMS) を使用して Azure Synapse Analytics の専用 SQL プールに接続し、クエリを実行します。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 772e4253244f5e13a60f155549d5f5513695e5fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2fab8f02f31897a2e3d38094b9bd365f8e921e9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85200751"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325328"
 ---
-# <a name="connect-to-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) を使用して Azure Synapse Analytics に接続する
+# <a name="connect-to-a-dedicated-sql-pool-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) を使用して Azure Synapse Analytics の専用 SQL プールに接続する
 
 > [!div class="op_single_selector"]
 >
@@ -34,11 +34,11 @@ SQL Server Management Studio (SSMS) を使用して、Azure Synapse 内のデー
 
 このチュートリアルを使用するには、次のものが必要です。
 
-* 既存の SQL プール。 作成するには、[SQL プールの作成](create-data-warehouse-portal.md)に関する記事を参照してください。
+* 既存の専用 SQL プール。 作成するには、[専用 SQL プールの作成](create-data-warehouse-portal.md)に関するページを参照してください。
 * SQL Server Management Studio (SSMS) をインストールしている。 [SSMS をダウンロード](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)していない場合はダウンロードします (無料)。
-* 完全修飾 SQL サーバー名。 この情報については、[SQL プールへの接続](sql-data-warehouse-connect-overview.md)に関する記事を参照してください。
+* 完全修飾 SQL サーバー名。 この情報については、[専用 SQL プールへの接続](sql-data-warehouse-connect-overview.md)に関するページを参照してください。
 
-## <a name="1-connect-to-your-sql-pool"></a>1.SQL プールに接続する
+## <a name="1-connect-to-your-dedicated-sql-pool"></a>1.専用 SQL プールに接続する
 
 1. SSMS を開きます。
 2. **[ファイル]**  >  **[オブジェクト エクスプローラーを接続]** を選択してオブジェクト エクスプローラーを開きます。
@@ -48,7 +48,7 @@ SQL Server Management Studio (SSMS) を使用して、Azure Synapse 内のデー
 
    ![[サーバーへの接続]](./media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
 
-   * **[サーバー名]** : 前の手順で特定した**サーバー名**を入力します。
+   * **[サーバー名]** : 前の手順で特定した **サーバー名** を入力します。
    * **[認証]** : **[SQL Server 認証]** または **[Active Directory 統合認証]** を選択します。
    * **[ユーザー名]** と **[パスワード]** : 先ほど [SQL Server 認証] を選択した場合は、ユーザー名とパスワードを入力します。
    * **[Connect]** をクリックします。
@@ -79,4 +79,4 @@ SQL Server Management Studio (SSMS) を使用して、Azure Synapse 内のデー
 
 ## <a name="next-steps"></a>次のステップ
 
-これで接続してクエリを実行することができます。[Power BI でデータを視覚化](sql-data-warehouse-get-started-visualize-with-power-bi.md)してみてください。 Azure Active Directory 認証を使用するために環境を構成する方法については、[SQL プールの認証](sql-data-warehouse-authentication.md)に関するページを参照してください。
+これで接続してクエリを実行することができます。[Power BI でデータを視覚化](sql-data-warehouse-get-started-visualize-with-power-bi.md)してみてください。 Azure Active Directory 認証を使用するために環境を構成する方法については、[専用 SQL プールの認証](sql-data-warehouse-authentication.md)に関するページを参照してください。

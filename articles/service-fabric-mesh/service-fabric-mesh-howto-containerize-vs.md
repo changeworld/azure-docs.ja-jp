@@ -5,12 +5,12 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: a995f30872216a8b704d3d1714bbece4bb8271f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f236292fff0d0e806e6eec32e1e058cbf67545c
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840066"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93144479"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>既存の .NET アプリを Service Fabric Mesh 用にコンテナー化する
 
@@ -45,21 +45,27 @@ git clone https://github.com/MikkelHegn/ContainersSFLab.git
  
 Service Fabric Mesh ツールを使用して、既存の ASP.NET または Console プロジェクトにコンテナー オーケストレーション サポートを追加します。手順は次のとおりです。
 
-Visual Studio のソリューション エクスプ ローラーで、プロジェクト名 (この例では **eShopLegacyWebForms**) を右クリックし、 **[追加]**  >  **[コンテナー オーケストレーター サポート]** を選択します。
+Visual Studio のソリューション エクスプ ローラーで、プロジェクト名 (この例では **eShopLegacyWebForms** ) を右クリックし、 **[追加]**  >  **[コンテナー オーケストレーター サポート]** を選択します。
 **[コンテナー オーケストレーター サポートの追加]** ダイアログが表示されます。
 
 ![Visual Studio の [コンテナー オーケストレーター サポートの追加] ダイアログ](./media/service-fabric-mesh-howto-containerize-vs/add-container-orchestration-support.png)
 
 ドロップダウン リストから **[Service Fabric Mesh]** を選択し、 **[OK]** をクリックします。
 
+
+>[!NOTE]
+> 2020 年 11 月 2 日より、Docker の無料プラン アカウントから Docker Hub に対する匿名と認証済みの要求に[ダウンロード レート制限](https://docs.docker.com/docker-hub/download-rate-limit/)が適用されるようになり、IP アドレスによって実施されます。 詳細については、「[Docker Hub での認証](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub)」を参照してください。
+>
+> レートが制限されないようにするには、Dockerfile の既定の `FROM microsoft/aspnet:4.7.2-windowsservercore-1803 AS base` が `FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-1803 AS base` に置き換えられていることを確認します
+
 ツールによって Docker がインストールされ、プロジェクトに Dockerfile が追加されて、プロジェクト用の docker イメージがプルダウンされます。  
-Service Fabric Mesh のアプリケーション プロジェクトがソリューションに追加されます。 これには、Mesh の発行プロファイルと構成ファイルが含まれています。 プロジェクトの名前は、ご使用のプロジェクト名の末尾に "Application" を連結したものになります (例: **eShopLegacyWebFormsApplication**)。 
+Service Fabric Mesh のアプリケーション プロジェクトがソリューションに追加されます。 これには、Mesh の発行プロファイルと構成ファイルが含まれています。 プロジェクトの名前は、ご使用のプロジェクト名の末尾に "Application" を連結したものになります (例: **eShopLegacyWebFormsApplication** )。 
 
 新しい Mesh プロジェクトに、次の 2 つのフォルダーが表示されていることを確認してください。
-- **App Resources**: 追加の Mesh リソース (ネットワークなど) を記述した YAML ファイルが含まれています。
-- **Service Resources**: デプロイ時のアプリの実行方法について記述した service.yaml ファイルが含まれています。
+- **App Resources** : 追加の Mesh リソース (ネットワークなど) を記述した YAML ファイルが含まれています。
+- **Service Resources** : デプロイ時のアプリの実行方法について記述した service.yaml ファイルが含まれています。
 
-コンテナー オーケストレーション サポートがアプリに追加された後、**F5** キーを押すと、ローカルの Service Fabric Mesh クラスター上で .NET アプリをデバッグできます。 次に示すのは、Service Fabric Mesh クラスターで実行されている eShop ASP.NET アプリです。 
+コンテナー オーケストレーション サポートがアプリに追加された後、 **F5** キーを押すと、ローカルの Service Fabric Mesh クラスター上で .NET アプリをデバッグできます。 次に示すのは、Service Fabric Mesh クラスターで実行されている eShop ASP.NET アプリです。 
 
 ![eShop アプリ](./media/service-fabric-mesh-howto-containerize-vs/eshop-running.png)
 

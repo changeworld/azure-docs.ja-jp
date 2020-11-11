@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: b65c37ab06092be63cbb2ad9fb5e23cdb8324e80
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c8ffe78e885eedd84c4cf6948954a7d3477a5cff
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476163"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911819"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>暗号化されたデバイスで LVM と RAID を構成する
 
@@ -368,7 +368,7 @@ mount -a
 lsblk -fs
 df -h
 ```
-![マウントされたファイル システムに関する情報](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
+![スクリーンショットには、data0 および data1 としてマウントされたファイル システムが表示されているコンソール ウィンドウが示されています。](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
 
 この **lsblk** のバリエーションでは、依存関係を逆順にしてデバイスを一覧表示しています。 このオプションを使用すると、元の /dev/sd[disk] デバイス名ではなく、論理ボリューム別にグループ化されたデバイスを識別できます。
 
@@ -437,7 +437,7 @@ done
 lsblk -fs
 df -h
 ```
-![マウントされたファイル システムに関する情報](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
+![スクリーンショットには、raiddata としてマウントされているファイル システムが表示されたコンソール ウィンドウが示されています。](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
 
 Azure Disk Encryption で暗号化されたデバイスの上位に作成された RAID ボリュームのマウント ポイント オプションに、 **nofail** オプションが追加されていることを確認することが重要です。 起動プロセス中 (またはメンテナンス モード中) の OS の停止を防ぐことができます。
 

@@ -3,23 +3,41 @@ title: Azure Cosmos DB で複数リージョン書き込みを構成する方法
 description: Azure Cosmos DB で異なる SDK を使用して、アプリケーションに複数リージョン書き込みを構成する方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 95337f88133c9493250e9197654288dc0af59ed1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a2b1ca8434c40eca610f95a3031e677782866e04
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486142"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342013"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>Azure Cosmos DB を使用するアプリケーションで複数リージョン書き込みを構成する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 複数の書き込みリージョンが有効なアカウントが作成されたら、お使いのアプリケーションで DocumentClient 用の ConnectionPolicy に対して 2 つの変更を行って、Azure Cosmos DB で複数リージョン書き込み機能とマルチホーミング機能を有効にする必要があります。 ConnectionPolicy の中で、UseMultipleWriteLocations を true に設定し、アプリケーションのデプロイ先となるリージョンの名前を SetCurrentLocation に渡します。 これにより、渡された場所との地理的な近接性に基づいて PreferredLocations プロパティが設定されます。 後で新しいリージョンがアカウントに追加された場合でも、アプリケーションの更新や再デプロイを行う必要はなく、近接するリージョンが自動的に検出され、リージョンのイベントが発生した場合は自動ホーミングが実行されます。
 
 > [!Note]
 > 初期構成が単一書き込みリージョンである Cosmos アカウントを、ダウンタイムなしで複数書き込みリージョンに構成できます。 詳細については、[複数書き込みリージョンの構成](how-to-manage-database-account.md#configure-multiple-write-regions)に関する記事を参照してください。
+
+## <a name="azure-portal"></a><a id="portal"></a> Azure portal
+
+Azure portal から複数リージョン書き込みを有効にするには、次の手順に従います。
+
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+
+1. Azure Cosmos アカウントに移動して、メニューから **[データをグローバルにレプリケートする]** ウィンドウを開きます。
+
+1. **複数リージョン書き込み** のオプションで、 **[有効]** を選択します。 読み取りと書き込みリージョンに、既存のリージョンが自動的に追加されます。
+
+1. 追加のリージョンを追加するには、マップ上のアイコンを選択するか、 **[リージョンの追加]** ボタンを選択します。 追加するすべてのリージョンで、読み取りと書き込みの両方が有効になります。
+
+1. リージョンの一覧を更新したら、 **[保存]** を選択して変更を適用します。
+
+   :::image type="content" source="./media/how-to-multi-master/enable-multi-region-writes.png" alt-text="Azure portal を使用した複数リージョン書き込みを有効にするスクリーンショット" lightbox="./media/how-to-multi-master/enable-multi-region-writes.png":::
 
 ## <a name="net-sdk-v2"></a><a id="netv2"></a>.NET SDK v2
 

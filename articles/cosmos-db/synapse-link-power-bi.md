@@ -1,21 +1,22 @@
 ---
-title: Synapse Link で Azure Cosmos DB データを分析するための Power BI とサーバーレス Synapse SQL プール
-description: Azure Cosmos DB の Synapse Link 上にサーバーレス Synapse SQL プール データベースおよびビューを構築し、Azure Cosmos コンテナーに対してクエリを実行し、Power BI を使用してそれらのビュー上にモデルを構築する方法について説明します。
+title: Synapse Link で Azure Cosmos DB データを分析するための Power BI とサーバーレス SQL プール
+description: Azure Cosmos DB の Synapse Link 上に Synapse SQL サーバーレス データベースおよびビューを構築し、Azure Cosmos DB コンテナーに対してクエリを実行し、それらのビュー上に Power BI を使用してモデルを構築する方法について説明します。
 author: ArnoMicrosoft
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
-ms.openlocfilehash: 6e77746d21d63cf1460b9e460e470a3bd12ce656
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 55a73ada39f4f48aeb22c5482bd85d1092d54c35
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480039"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342251"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>Synapse Link で Azure Cosmos DB データを分析するための Power BI とサーバーレス Synapse SQL プールを使用する (プレビュー) 
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-この記事では、Azure Cosmos DB の Synapse Link 上にサーバーレス Synapse SQL プール (旧称 **SQL オンデマンド** ) データベースおよびビューを構築する方法について説明します。 Azure Cosmos コンテナーに対してクエリを実行し、そのクエリを反映するために、それらのビュー上に Power BI でモデルを構築します。
+この記事では、Azure Cosmos DB の Synapse Link 上にサーバーレス SQL プール データベースおよびビューを構築する方法について説明します。 Azure Cosmos DB コンテナーに対してクエリを実行し、そのクエリを反映するために、それらのビュー上に Power BI でモデルを構築します。
 
 このシナリオでは、パートナー小売店での Surface 製品の売上に関するダミー データを使用します。 大所帯への近さと、特定の週の広告の効果に基づいた店舗ごとの収益を分析します。 この記事では **RetailSales** と **StoreDemographics** という名前の 2 つのビューと、それらの間のクエリを作成します。 この [GitHub](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) リポジトリからサンプル製品データを取得できます。
 
@@ -41,7 +42,7 @@ Synapse ワークスペースで、 **[開発]** タブをクリックし、 **+
 
 :::image type="content" source="./media/synapse-link-power-bi/add-sql-script.png" alt-text="Synapse Analytics ワークスペースに SQL スクリプトを追加する":::
 
-すべてのワークスペースに、サーバーレス SQL エンドポイントが付属しています。 SQL スクリプトを作成したら、上部のツール バーから **SQL オンデマンド** に接続します。
+すべてのワークスペースに、サーバーレス SQL エンドポイントが付属しています。 SQL スクリプトを作成したら、上部のツール バーから **[組み込み]** に接続します。
 
 :::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="SQL スクリプトで、ワークスペースのサーバーレス SQL エンドポイントを使用できるようにする":::
 
@@ -144,4 +145,4 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 
 [T-SQL で Azure Synapse Link を使用して Azure Cosmos DB のデータのクエリを実行する](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)
 
-サーバーレス Synapse SQL プールを使用して、[Azure Open Datasets を分析し、Azure Synapse Studio で結果を視覚化する](../synapse-analytics/sql/tutorial-data-analyst.md)
+サーバーレス SQL プールを使用して、[Azure Open Datasets を分析し、Azure Synapse Studio で結果を視覚化する](../synapse-analytics/sql/tutorial-data-analyst.md)

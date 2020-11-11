@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 2/27/2020
-ms.openlocfilehash: 7cc18980d1dddc33ddf98f06de70449dee22e2ac
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.date: 10/30/2020
+ms.openlocfilehash: 336021792b7e5340e35a0c59e0f113d4dad9307d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92484595"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128965"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>ダンプと復元を使用した Azure Database for MySQL への MySQL データベースの移行
 
@@ -20,6 +20,8 @@ ms.locfileid: "92484595"
 この記事では、Azure Database for MySQL でデータベースをバックアップして復元する一般的な 2 つの方法について説明します
 - コマンド ラインからのダンプと復元 (mysqldump を使用)
 - PHPMyAdmin を使用したダンプと復元
+
+データベースを Azure Database for MySQL に移行する方法の詳細と使用例については、[データベースの移行ガイド](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide)も参照してください。 このガイドでは、Azure への MySQL 移行の計画と実行を成功させるためのガイダンスが提供されています。
 
 ## <a name="before-you-begin"></a>開始する前に
 このハウツー ガイドの手順を実行するには、以下が必要です。
@@ -168,5 +170,5 @@ $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin -p testdb < testdb_b
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Database for MySQL にアプリケーションを接続します](./howto-connection-string.md)。
-- Azure Database for MySQL へのデータベースの移行については、「[データベース移行ガイド](https://aka.ms/datamigration)」をご覧ください。
+- Azure Database for MySQL へのデータベースの移行については、「[データベース移行ガイド](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide)」をご覧ください。
 - データベースのサイズが 1 TB を超える大規模なデータベースを移行しようとしている場合、並列エクスポートおよびインポートがサポートされる **mydumper/myloader** などのコミュニティ ツールの使用を検討してください。 [大規模な MySQL データベースを移行する方法](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699)について確認します。

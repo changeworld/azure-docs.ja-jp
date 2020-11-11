@@ -3,12 +3,12 @@ title: Azure Migrate アプライアンスの FAQ
 description: Azure Migrate アプライアンスに関する一般的な質問の回答を示します。
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: e0fd170859de2d4a9d38fdba0fff0575921c6d32
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 7be6260a7d3eb25ce2854f6949554e2c66019980
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314773"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337593"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate アプライアンス:一般的な質問
 
@@ -42,12 +42,13 @@ Azure Migrate アプライアンスに関する詳細を示します。
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>アプライアンスはどのように Azure に接続しますか。
 
-アプライアンスはインターネット経由、または Azure ExpressRoute を使用して接続できます。 これらの [URL](./migrate-appliance.md#url-access) が、Azure に接続するためのアプライアンスで承認されていることを確認します。
+アプライアンスはインターネット経由、または Azure ExpressRoute を使用して接続できます。 
 
-- Azure Migrate レプリケーション トラフィックに Azure ExpressRoute を使用するには、Microsoft ピアリングまたは既存のパブリック ピアリングが必要です (新しい ER 作成では、パブリック ピアリングは非推奨となっています)。
-- プライベート ピアリング (のみ) が有効になっている Azure ExpressRoute 経由のレプリケーションはサポートされていません。
+- アプライアンスがそれらの [Azure URL](./migrate-appliance.md#url-access) に接続できることを確認してください。 
+- ExpressRoute と Microsoft ピアリングを使用できます。  パブリック ピアリングは非推奨となり、新しい ExpressRoute 回線には使用できません。
+- プライベート ピアリングのみはサポートされていません。
 
-Microsoft ピアリングが構成された Azure ExpressRoute は、レプリケーション トラフィックの推奨ルーティング ドメインです。
+
 
 ## <a name="does-appliance-analysis-affect-performance"></a>アプライアンス分析はパフォーマンスに影響しますか。
 
@@ -65,9 +66,9 @@ Azure Migrate アプライアンスでは、パフォーマンス データを�
 
 Azure Migrate アプライアンスが VM 上で収集するデータの詳細については、次の記事を参照してください。
 
-- **VMware VM**:収集データを[レビュー](migrate-appliance.md#collected-data---vmware)します。
-- **Hyper-V VM**:収集データを[レビュー](migrate-appliance.md#collected-data---hyper-v)します。
-- **物理サーバーまたは仮想サーバー**: 収集データを[レビュー](migrate-appliance.md#collected-data---physical)します。
+- **VMware VM** :収集データを [レビュー](migrate-appliance.md#collected-data---vmware)します。
+- **Hyper-V VM** :収集データを [レビュー](migrate-appliance.md#collected-data---hyper-v)します。
+- **物理サーバーまたは仮想サーバー** : 収集データを [レビュー](migrate-appliance.md#collected-data---physical)します。
 
 ## <a name="how-is-data-stored"></a>データをどのように格納するか
 

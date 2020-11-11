@@ -9,12 +9,12 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 205aed1811c3d9d21a10be7bc4f01c73eb7295b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17418b0255182934045acc9174b34cff2aefff99
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89254802"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307446"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Azure Machine Learning で実験を追跡してモデルをデプロイする
 
@@ -26,11 +26,11 @@ ms.locfileid: "89254802"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Azure Machine Learning ワークスペースをプロビジョニングする](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace)必要があります
+* [Azure Machine Learning ワークスペースをプロビジョニングする](../how-to-manage-workspace.md#create-a-workspace)必要があります
 
 ## <a name="create-a-new-notebook"></a>新しいノートブックを作成する
 
-Azure Machine Learning および MLFlow SDK は Data Science VM にプレインストールされており、**azureml_py36_\*** conda 環境でアクセスできます。 Jupyterlab でランチャーをクリックし、次のカーネルを選択します。
+Azure Machine Learning および MLFlow SDK は Data Science VM にプレインストールされており、* *azureml_py36_\** _ conda 環境でアクセスできます。 Jupyterlab でランチャーをクリックし、次のカーネルを選択します。
 
 ![カーネルの選択](./media/how-to-track-experiments/experiment-tracking-1.png)
 
@@ -137,7 +137,7 @@ with mlflow.start_run():
 
 __[新しい推論クラスター]__ ウィンドウで、次の項目の詳細を入力します。
 
-* コンピューティング名
+_ コンピューティング名
 * Kubernetes Service - [新規作成] を選択します
 * リージョンを選択します
 * VM サイズを選択します (このチュートリアルでは、既定の Standard_D3_v2 で十分です)
@@ -159,7 +159,7 @@ __[新しい推論クラスター]__ ウィンドウで、次の項目の詳細�
 
 コードなしのデプロイとは、特定のスコアリング スクリプトを指定しなくても、モデル成果物から直接デプロイできることを意味します。
 
-糖尿病モデルをデプロイするには、[Azure Machine Learning Studio](https://ml.azure.com) の左側のメニューに移動し、 __[モデル]__ を選択します。 次に、登録されている diabetes_model をクリックします。
+糖尿病モデルをデプロイするには、 [Azure Machine Learning Studio](https://ml.azure.com) の左側のメニューに移動し、 __[モデル]__ を選択します。 次に、登録されている diabetes_model をクリックします。
 
 ![モデルの選択](./media/how-to-track-experiments/mlflow-experiments-3.png)
 
@@ -204,4 +204,4 @@ print(output)
 
 ## <a name="next-steps"></a>次の手順
 
-* [AzureML でのモデルのデプロイ](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)の詳細を確認する
+* [AzureML でのモデルのデプロイ](../how-to-deploy-and-where.md)の詳細を確認する

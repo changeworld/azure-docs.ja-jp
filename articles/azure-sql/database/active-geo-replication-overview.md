@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 35aff26eac3dd456db55204b662cb9b8a6bb9f2b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 7c16e3b991bffd9c6bbcc4759a07b9e122ef5b72
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672973"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125344"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>アクティブ geo レプリケーションの作成と使用 - Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -132,7 +132,7 @@ ms.locfileid: "92672973"
 > プライマリのトランザクション ログ速度は、セカンダリのコンピューティング サイズが小さいことに関連しない理由によりスロットルされる可能性があります。 この種類のスロットリングは、セカンダリのコンピューティング サイズがプライマリよりも同じかそれ以上である場合にも発生する可能性があります。 さまざまな種類のログ速度スロットリングの待機の種類などの詳細については、「[トランザクション ログ速度ガバナンス](resource-limits-logical-server.md#transaction-log-rate-governance)」を参照してください。
 
 > [!NOTE]
-> Azure SQL Database の構成可能なバックアップ ストレージの冗長性は、現在、東南アジアの Azure リージョンでのみ一般提供されています。 ソース データベースがローカル冗長またはゾーン冗長のバックアップ ストレージの冗長性を使用して作成されている場合、別の Azure リージョンにセカンダリ データベースを作成することはできません。 
+> Azure SQL Database の構成可能なバックアップ ストレージの冗長性は、現在、ブラジル南部ではパブリック プレビューとして利用でき、一般公開されているのは東南アジアの Azure リージョンのみです。 ソース データベースがローカル冗長またはゾーン冗長のバックアップ ストレージの冗長性を使用して作成されている場合、別の Azure リージョンにセカンダリ データベースを作成することはできません。 
 
 SQL Database のコンピューティング サイズの詳細については、[SQL Database サービス レベル](purchasing-models.md)に関するページをご覧ください。
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: f4bddf1746a9d680897428f1aa0afdb35d93e470
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b8ef1c14089744defaf6de5b3cf9e72d281452b6
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631276"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027110"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -35,6 +35,10 @@ ExpressRoute 接続では、公共のインターネットを利用できませ�
 ### <a name="how-much-does-expressroute-cost"></a>ExpressRoute の料金はいくらですか。
 
 料金情報については、「 [ExpressRoute 料金](https://azure.microsoft.com/pricing/details/expressroute/) 」を参照してください。
+
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-this-bandwidth-allocated-for-ingress-and-egress-traffic-separately"></a>特定の帯域幅の ExpressRoute 回線を購入した場合、この帯域幅はイングレス トラフィックとエグレス トラフィックに個別に割り当てられますか？
+
+はい、ExpressRoute 回線の帯域幅は二重です。 たとえば、200 Mbps の ExpressRoute 回線を購入した場合、イングレス トラフィックの場合は 200 Mbps、エグレス トラフィックの場合は 200 Mbps を調達していることになります。
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>特定の帯域幅の ExpressRoute 回線に対して料金を支払っている場合、ネットワーク サービス プロバイダーから同じ速度の VPN 接続を購入する必要がありますか。
 

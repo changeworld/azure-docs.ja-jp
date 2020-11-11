@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab9d544cc205d2971b2097110d8c36c5d85fa1fd
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: e4c020a9be7683bf045dbcc747dad3cb45058dd7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144991"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077678"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>方法:条件付きアクセスを使用して信頼されていないネットワークからのアクセスに対して MFA を必須にする   
 
@@ -54,11 +54,11 @@ Azure AD 条件付きアクセスを使用すると、アクセス許可を付�
 
 - あらゆる場所を含める 
 
-   ![条件付きアクセス](./media/untrusted-networks/02.png)
+   :::image type="content" source="./media/untrusted-networks/02.png" alt-text="[構成] が [はい] に設定され、[含める] タブが表示され、[あらゆる場所] オプションが選択されて強調表示されている [Azure AD の場所] ペインのスクリーンショット。" border="false":::
 
 - すべての信頼できる場所を除外する 
 
-   ![条件付きアクセス](./media/untrusted-networks/01.png)
+   :::image type="content" source="./media/untrusted-networks/01.png" alt-text="[構成] が [はい] に設定され、[除外] タブが表示され、[すべての信頼できる場所] オプションが選択されて強調表示されている [Azure AD の場所] ペインのスクリーンショット。" border="false":::
 
 ## <a name="policy-deployment"></a>ポリシーのデプロイ
 

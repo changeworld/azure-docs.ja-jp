@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d81a8b3a1596e8a447f7a2434e52df8c89b416b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 887adb3e8b0a5f0410fc9a7732e2220049b7ba6c
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87085267"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927194"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Azure portal を介した Azure HANA L インスタンスの制御
 このドキュメントでは、[HANA Large Instances](./hana-overview-architecture.md) が [Azure portal](https://portal.azure.com) で提供される方法、および自動的にデプロイされる HANA Large Instance ユニットについて Azure portal で実行できるアクティビティについて説明します。 Azure portal での HANA Large Instances の表示は、HANA Large Instances 用の Azure リソース プロバイダー (現在はパブリック プレビュー) によって提供されます
@@ -54,7 +54,7 @@ HANA Large Instance のデプロイ要求を送信するときは、HANA Large I
 
 新しい Azure リソース グループを探すには、Azure portal の左側のナビゲーション ウィンドウ内を移動して、ご自分のサブスクリプションのリソース グループを一覧表示します
 
-![Azure portal のナビゲーション ウィンドウ](./media/hana-li-portal/portal-resource-group.png)
+![[リソース グループ] オプションが強調表示されているスクリーンショット。](./media/hana-li-portal/portal-resource-group.png)
 
 リソース グループの一覧では、HANA Large Instances のデプロイに使用したサブスクリプションでのフィルター処理が必要な場合があります
 
@@ -106,7 +106,7 @@ HANA Large Instance ユニットの概要だけでなく、特定のユニット
 
 記録される主要なアクティビティの 1 つは、ユニットの再起動です。 表示されるデータには、アクティビティの状態、アクティビティがトリガーされたときのタイムスタンプ、アクティビティをトリガーしたサブスクリプション ID、アクティビティをトリガーした Azure ユーザーが含まれます。 
 
-記録される別のアクティビティは、Azure メタ データでのユニットに対する変更です。 開始された再起動以外に、**Write HANAInstances** のアクティビティを確認できます。 この種のアクティビティでは、HANA Large Instance ユニット自体への変更は行われませんが、Azure でのユニットのメタ データに変更が文書化されます。 一覧表示されるケースでは、タグを追加および削除しました (次のセクションを参照)。
+記録される別のアクティビティは、Azure メタ データでのユニットに対する変更です。 開始された再起動以外に、 **Write HANAInstances** のアクティビティを確認できます。 この種のアクティビティでは、HANA Large Instance ユニット自体への変更は行われませんが、Azure でのユニットのメタ データに変更が文書化されます。 一覧表示されるケースでは、タグを追加および削除しました (次のセクションを参照)。
 
 ## <a name="add-and-delete-an-azure-tag-to-a-hana-large-instance-unit"></a>HANA Large Instance ユニットの Azure タグを追加および削除する
 別に、HANA Large Instance ユニットに[タグ](../../../azure-resource-manager/management/tag-resources.md)を追加する可能性があります。 タグを割り当てる方法は、VM へのタグの割り当てと同じです。 VM と同様に、タグは Azure メタ データ内に存在し、HANA Large Instances では、VM に対するタグと同じ制限があります。
@@ -119,7 +119,7 @@ HANA Large Instance ユニットの概要だけでなく、特定のユニット
 
 ![Azure portal での HLI プロパティの上部](./media/hana-li-portal/portal-properties-top.png)
 
-最初のいくつかのデータ項目は、概要画面で既に見たものです。 しかし、データの重要な部分は ExpressRoute 回線 ID です。この ID は、最初にデプロイされたユニットが引き渡し時に取得されました。 サポート ケースによっては、そのデータを求められることがあります。 重要なデータ エントリは、スクリーンショットの下部に示されています。 表示されるデータは、HANA Large Instance スタック内のご自分の**テナント**に対してストレージを分離する NFS ストレージ ヘッドの IP アドレスです。 この IP アドレスは、[ストレージ スナップショット バックアップの構成ファイル](./hana-backup-restore.md#set-up-storage-snapshots)を編集するときにも必要です。 
+最初のいくつかのデータ項目は、概要画面で既に見たものです。 しかし、データの重要な部分は ExpressRoute 回線 ID です。この ID は、最初にデプロイされたユニットが引き渡し時に取得されました。 サポート ケースによっては、そのデータを求められることがあります。 重要なデータ エントリは、スクリーンショットの下部に示されています。 表示されるデータは、HANA Large Instance スタック内のご自分の **テナント** に対してストレージを分離する NFS ストレージ ヘッドの IP アドレスです。 この IP アドレスは、[ストレージ スナップショット バックアップの構成ファイル](./hana-backup-restore.md#set-up-storage-snapshots)を編集するときにも必要です。 
 
 プロパティ ウィンドウを下にスクロールすると、ご自分の HANA Large Instance ユニットの一意のリソース ID や、デプロイに割り当てられたサブスクリプション ID のような、その他のデータが表示されます。
 

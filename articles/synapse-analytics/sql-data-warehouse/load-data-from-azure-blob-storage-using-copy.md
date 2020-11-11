@@ -11,12 +11,12 @@ ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: d2c2673e6863725e064f3ad8561ab77eb1b051eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb5984ba5d5764ee2ffa3f28e2d95612c14f7e27
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371526"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025937"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>チュートリアル:ニューヨークのタクシー データセットを読み込む
 
@@ -52,7 +52,7 @@ SQL プールは、定義された一連の[コンピューティング リソ�
 
 2. **[新規]** ページの **[データベース]** を選択し、 **[新規]** ページの **[おすすめ]** で **[Azure Synapse Analytics]** を選択します。
 
-    ![データ ウェアハウスを作成する](./media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
+    ![スクリーンショットには、Azure portal 内のデータベースから選択された SQL Data Warehouse が示されています。](./media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
 
 3. フォームに次の情報を入力します。
 
@@ -63,7 +63,7 @@ SQL プールは、定義された一連の[コンピューティング リソ�
    | **リソース グループ** | myResourceGroup       | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関するページを参照してください。 |
    | **ソースの選択**  | 空のデータベース        | 空のデータベースの作成を指定します。 データ ウェアハウスはデータベースの一種です。 |
 
-    ![データ ウェアハウスを作成する](./media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
+    ![スクリーンショットには、これらの値を入力できる [SQL Data Warehouse] ウィンドウが示されています。](./media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
 
 4. **[サーバー]** を選択して、新しいデータベース用の新しいサーバーを作成して構成します。 **[新しいサーバー]** フォームには次の情報を入力してください。
 
@@ -100,7 +100,7 @@ SQL プールは、定義された一連の[コンピューティング リソ�
 > [!NOTE]
 > Azure Synapse Analytics の通信は、ポート 1433 で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、サーバーに接続することはできません。
 
-1. デプロイが完了したら、左側のメニューから **[SQL データベース]** を選択し、 **[SQL データベース]** ページで、 **[mySampleDatabase]** を選択します。 このデータベースの概要ページが開くと、完全修飾サーバー名 (**mynewserver-20180430.database.windows.net** など) や追加の構成オプションが表示されます。
+1. デプロイが完了したら、左側のメニューから **[SQL データベース]** を選択し、 **[SQL データベース]** ページで、 **[mySampleDatabase]** を選択します。 このデータベースの概要ページが開くと、完全修飾サーバー名 ( **mynewserver-20180430.database.windows.net** など) や追加の構成オプションが表示されます。
 
 2. この完全修飾サーバー名をコピーします。以降のクイック スタートでサーバーとそのデータベースに接続する際に必要となります。 次に、サーバー名を選択して、サーバー設定を開きます。
 
@@ -131,7 +131,7 @@ Azure portal 上で、サーバーの完全修飾サーバー名を取得しま�
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. 左側のメニューから **[Azure Synapse Analytics]** を選択し、 **[Azure Synapse Analytics]** ページで目的のデータベースを選択します。
-3. そのデータベースの Azure Portal ページの **[基本]** ウィンドウで、**サーバー名**を見つけてコピーします。 この例の完全修飾名は mynewserver-20180430.database.windows.net です。
+3. そのデータベースの Azure Portal ページの **[基本]** ウィンドウで、 **サーバー名** を見つけてコピーします。 この例の完全修飾名は mynewserver-20180430.database.windows.net です。
 
     ![接続情報](././media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
 
@@ -165,7 +165,7 @@ Azure portal 上で、サーバーの完全修飾サーバー名を取得しま�
 
 データの読み込みに専用のログインとユーザーを作成することをお勧めします。 その後、適切な最大メモリ割り当てを有効にする[リソース クラス](resource-classes-for-workload-management.md)に読み込みユーザーを追加します。
 
-現在はサーバー管理者として接続しているので、ログインとユーザーを作成することができます。 以下の手順を使って、**LoaderRC20** という名前のログインとユーザーを作成します。 その後、そのユーザーを **staticrc20** リソース クラスに割り当てます。
+現在はサーバー管理者として接続しているので、ログインとユーザーを作成することができます。 以下の手順を使って、 **LoaderRC20** という名前のログインとユーザーを作成します。 その後、そのユーザーを **staticrc20** リソース クラスに割り当てます。
 
 1. SSMS で **[master]** を右クリックしてドロップダウン メニューを表示し、 **[新しいクエリ]** を選びます。 新しいクエリ ウィンドウが開きます。
 
@@ -202,7 +202,7 @@ Azure portal 上で、サーバーの完全修飾サーバー名を取得しま�
 
     ![新しいログインで接続する](./media/load-data-from-azure-blob-storage-using-polybase/connect-as-loading-user.png)
 
-2. 完全修飾サーバー名を入力し、ログインとして「**LoaderRC20**」と入力します。  LoaderRC20 のパスワードを入力します。
+2. 完全修飾サーバー名を入力し、ログインとして「 **LoaderRC20** 」と入力します。  LoaderRC20 のパスワードを入力します。
 
 3. **[接続]** を選択します。
 
@@ -511,7 +511,7 @@ Azure portal 上で、サーバーの完全修飾サーバー名を取得しま�
 
 4. 作成したサーバーを削除するには、前の図の **mynewserver-20180430.database.windows.net** を選び、 **[削除]** を選択します。  サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、注意してください。
 
-5. リソース グループを削除するには、**myResourceGroup** を選択して、 **[リソース グループの削除]** を選択します。
+5. リソース グループを削除するには、 **myResourceGroup** を選択して、 **[リソース グループの削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

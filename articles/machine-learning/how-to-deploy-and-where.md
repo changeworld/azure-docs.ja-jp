@@ -1,22 +1,22 @@
 ---
 title: モデルをデプロイする方法と場所
 titleSuffix: Azure Machine Learning
-description: Azure Container Instances、Azure Kubernetes Service、Azure IoT Edge、フィールド プログラマブル ゲート アレイなど、Azure Machine Learning モデルをデプロイする方法と場所について説明します。
+description: Azure Container Instances、Azure Kubernetes Service、Azure IoT Edge、FPGA など、Azure Machine Learning モデルをデプロイする方法と場所について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
-ms.date: 09/17/2020
+ms.date: 11/02/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 2642af3490cd69a3e793f020c193d83d2966e1ab
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: fa8d40e4817b6adb42da6daa3035bd1c4a67c5d8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744623"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325280"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをデプロイする
 
@@ -45,7 +45,7 @@ Web サービスとして Azure クラウドに、または Azure IoT Edge デ�
 
 - Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)に関するページをご覧ください。
 - モデルです。 トレーニング済みのモデルがない場合、[こちらのチュートリアル](https://aka.ms/azml-deploy-cloud)で提供されているモデルと依存関係のファイルを使用できます。
-- [Python 用 Azure Machine Learning ソフトウェア開発キット (SDK)](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)。
+- [Python 用 Azure Machine Learning ソフトウェア開発キット (SDK)](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)。
 
 ---
 
@@ -70,7 +70,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config(path=".file-path/ws_config.json")
 ```
 
-SDK を使用してワークスペースに接続する方法の詳細については、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true#&preserve-view=trueworkspace) のドキュメントをご覧ください。
+SDK を使用してワークスペースに接続する方法の詳細については、[Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true#workspace) のドキュメントをご覧ください。
 
 
 ---
@@ -81,10 +81,13 @@ SDK を使用してワークスペースに接続する方法の詳細につい�
 登録済みモデルは、モデルを構成する 1 つまたは複数のファイルの論理コンテナーです。 たとえば、複数のファイルに格納されているモデルがある場合は、ワークスペースに単一モデルとしてそれらを登録できます。 ファイルの登録後は、その登録済みモデルをダウンロードするかデプロイし、登録されたすべてのファイルを受信できます。
 
 > [!TIP] 
-> バージョンを追跡するためにモデルを登録することをお勧めしますが、必須ではありません。 モデルを登録しないで続行する場合は、[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true) または [InferenceConfig](./reference-azure-machine-learning-cli.md#inference-configuration-schema) でソース ディレクトリを指定し、確実にそのソース ディレクトリ内にモデルが存在するようにする必要があります。
+> バージョンを追跡するためにモデルを登録することをお勧めしますが、必須ではありません。 モデルを登録しないで続行する場合は、[InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py) または [InferenceConfig](./reference-azure-machine-learning-cli.md#inference-configuration-schema) でソース ディレクトリを指定し、確実にそのソース ディレクトリ内にモデルが存在するようにする必要があります。
 
 > [!TIP]
 > モデルを登録するときは、(トレーニングの実行から) クラウドの場所またはローカル ディレクトリのパスを指定します。 このパスは、登録プロセスの一部としてアップロードするファイルを見つけるためだけのものです。 エントリ スクリプトで使用されるパスと一致する必要はありません。 詳細については、「[エントリ スクリプトでモデル ファイルを検索する](./how-to-deploy-advanced-entry-script.md#load-registered-models)」を参照してください。
+
+> [!IMPORTANT]
+> Azure Machine Learning スタジオの [モデル] ページの [`Tags` でフィルター] オプションを使用するとき、お客様は `TagName : TagValue` を使用するのではなく、`TagName=TagValue` を (スペースなしで) 使用してください。
 
 次の例では、モデルを登録する方法を示します。
 
@@ -114,7 +117,7 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
 
 ### <a name="register-a-model-from-an-azure-ml-training-run"></a>Azure ML トレーニングの実行からモデルを登録する
 
-  SDK を使用してモデルをトレーニングする場合、モデルのトレーニング方法に応じて、[Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true) オブジェクトまたは [AutoMLRun](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun) オブジェクトのいずれかを受け取ることができます。 各オブジェクトは、実験の実行によって作成されたモデルを登録するために使用できます。
+  SDK を使用してモデルをトレーニングする場合、モデルのトレーニング方法に応じて、[Run](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py) オブジェクトまたは [AutoMLRun](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun) オブジェクトのいずれかを受け取ることができます。 各オブジェクトは、実験の実行によって作成されたモデルを登録するために使用できます。
 
   + `azureml.core.Run` オブジェクトからモデルを登録する
  
@@ -125,7 +128,7 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
     print(model.name, model.id, model.version, sep='\t')
     ```
 
-    `model_path` パラメーターは、クラウドでのモデルの場所を示します。 この例では、1 つのファイルへのパスが使用されます。 モデルの登録に複数のファイルを含めるには、`model_path` を、それらのファイルが含まれているフォルダーのパスに設定します。 詳細については、[Run.register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) のドキュメントを参照してください。
+    `model_path` パラメーターは、クラウドでのモデルの場所を示します。 この例では、1 つのファイルへのパスが使用されます。 モデルの登録に複数のファイルを含めるには、`model_path` を、それらのファイルが含まれているフォルダーのパスに設定します。 詳細については、[Run.register_model](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) のドキュメントを参照してください。
 
   + `azureml.train.automl.run.AutoMLRun` オブジェクトからモデルを登録する
 
@@ -167,7 +170,7 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
 
   モデルの登録に複数のファイルを含めるには、`model_path` を、それらのファイルが含まれているフォルダーのパスに設定します。
 
-詳細については、[Model クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true)のドキュメントを参照してください。
+詳細については、[Model クラス](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py)のドキュメントを参照してください。
 
 Azure Machine Learning 以外でトレーニングされたモデルの使用の詳細については、[既存のモデルをデプロイする方法](how-to-deploy-existing-model.md)に関する記事を参照してください。
 
@@ -223,7 +226,7 @@ inference_config = InferenceConfig(entry_script='path-to-score.py',
 
 環境の詳細については、[トレーニングとデプロイのための環境の作成と管理](how-to-use-environments.md)に関する記事を参照してください。
 
-推論構成の詳細については、[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true) クラスのドキュメントを参照してください。
+推論構成の詳細については、[InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py) クラスのドキュメントを参照してください。
 
 ---
 
@@ -301,7 +304,7 @@ service.wait_for_deployment(show_output = True)
 print(service.state)
 ```
 
-詳細については、[LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true)、[Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)、および [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py&preserve-view=true) のドキュメントを参照してください。
+詳細については、[LocalWebservice](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py)、[Model.deploy()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)、および [Webservice](/python/api/azureml-core/azureml.core.webservice.webservice?preserve-view=true&view=azure-ml-py) のドキュメントを参照してください。
 
 ---
 
@@ -326,7 +329,7 @@ Azure Machine Learning のコンピューティング先は、Azure Machine Lear
 Azure Machine Learning コンピューティングを使用したバッチ推論のチュートリアルについては、[バッチ予測を実行する方法](tutorial-pipeline-batch-scoring-classification.md)に関するページを参照してください。
 
 ### <a name="iot-edge-inference"></a><a id="iotedge"></a> IoT Edge の推論
-エッジにデプロイするためのサポートは現在、プレビューの段階にあります。 詳細については、[IoT Edge モジュールとしての Azure Machine Learning のデプロイ](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-machine-learning)に関する記事を参照してください。
+エッジにデプロイするためのサポートは現在、プレビューの段階にあります。 詳細については、[IoT Edge モジュールとしての Azure Machine Learning のデプロイ](../iot-edge/tutorial-deploy-machine-learning.md)に関する記事を参照してください。
 
 ## <a name="delete-resources"></a>リソースを削除する
 
@@ -343,7 +346,7 @@ Azure Machine Learning コンピューティングを使用したバッチ推論
 デプロイされた Web サービスを削除するには、`service.delete()` を使用します。
 登録済みのモデルを削除するには、`model.delete()` を使用します。
 
-詳細については、[WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--) と [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--) のドキュメントを参照してください。
+詳細については、[WebService.delete()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--) と [Model.delete()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--) のドキュメントを参照してください。
 
 ---
 
@@ -359,4 +362,3 @@ Azure Machine Learning コンピューティングを使用したバッチ推論
 * [Application Insights を使用して Azure Machine Learning のモデルを監視する](how-to-enable-app-insights.md)
 * [実稼働環境でモデルのデータを収集する](how-to-enable-data-collection.md)
 * [モデル デプロイのイベント アラートおよびトリガーを作成する](how-to-use-event-grid.md)
-

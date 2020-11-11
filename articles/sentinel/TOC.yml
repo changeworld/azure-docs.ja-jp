@@ -199,6 +199,8 @@
           href: bookmarks.md
         - name: ライブストリームを使用した検出
           href: livestream.md
+        - name: REST-API を使用したハンティング クエリの管理
+          href: hunting-with-rest-api.md
     - name: Azure Sentinel の削除
       href: offboard.md
 - name: リファレンス (新規)

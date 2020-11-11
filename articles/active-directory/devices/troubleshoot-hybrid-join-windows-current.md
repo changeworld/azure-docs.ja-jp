@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ec59c07d66150bf7b184c149a9b1ed9015c17645
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e235bf90568a1382a5ecee3ff4d2283aaa32f10b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89433655"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083218"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング
 
@@ -99,7 +99,7 @@ WamDefaultAuthority: organizations
 
 #### <a name="workplacejoined--no"></a>WorkplaceJoined :NO
 
-このフィールドは、デバイスが ("*ワークプレースに参加済み*" としてマークされた) 個人所有のデバイスとして Azure AD に登録されているかどうかを示します。 ドメインに参加していて、なおかつハイブリッド Azure AD 参加済みのコンピューターでは、この値は **NO** になります。 この値が **YES** である場合、ハイブリッド Azure AD 参加が完了する前に、職場または学校アカウントが追加されています。 この場合、Windows 10 バージョン 1607 以降を使用しているときは、このアカウントは無視されます。
+このフィールドは、デバイスが (" *ワークプレースに参加済み* " としてマークされた) 個人所有のデバイスとして Azure AD に登録されているかどうかを示します。 ドメインに参加していて、なおかつハイブリッド Azure AD 参加済みのコンピューターでは、この値は **NO** になります。 この値が **YES** である場合、ハイブリッド Azure AD 参加が完了する前に、職場または学校アカウントが追加されています。 この場合、Windows 10 バージョン 1607 以降を使用しているときは、このアカウントは無視されます。
 
 #### <a name="azureadjoined--yes"></a>AzureAdJoined :YES
 
@@ -135,9 +135,9 @@ WamDefaultAuthority: organizations
 1. イベント ビューアーで **[User Device Registration]\(ユーザー デバイス登録\)** イベントのログを開きます。 **[Applications and Services Log]\(アプリケーションとサービスのログ\)**  >  **[Microsoft]**  >  **[Windows]**  >  **[User Device Registration]\(ユーザー デバイス登録\)** の下にあります。
 2. イベント ID が 304、305、307 のイベントを探します。
 
-![エラー ログ イベント](./media/troubleshoot-hybrid-join-windows-current/1.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/1.png" alt-text="イベント ビューアーのスクリーンショット。ID 304 のイベントが選択され、その情報が表示され、エラー コードとフェーズが強調表示されている。" border="false":::
 
-![エラー ログ イベント](./media/troubleshoot-hybrid-join-windows-current/2.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/2.png" alt-text="イベント ビューアーのスクリーンショット。ID 305 のイベントが表示され、その情報が表示され、エラー コードが強調表示されている。" border="false":::
 
 ### <a name="step-4-check-for-possible-causes-and-resolutions-from-the-lists-below"></a>手順 4:以下の一覧から考えられる原因と解決策を確認する
 
@@ -210,7 +210,7 @@ WamDefaultAuthority: organizations
 1. イベント ビューアーで **[User Device Registration]\(ユーザー デバイス登録\)** イベントのログを開きます。 **[Applications and Services Log]\(アプリケーションとサービスのログ\)**  >  **[Microsoft]**  >  **[Windows]**  >  **[User Device Registration]\(ユーザー デバイス登録\)** の下にあります。
 2. イベント ID が 201 のイベントを探します。
 
-![エラー ログ イベント](./media/troubleshoot-hybrid-join-windows-current/5.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/5.png" alt-text="イベント ビューア―のスクリーンショット。ID 201 のイベントが選択され、その情報が表示され、エラー コードが強調表示されている。" border="false":::
 
 ###### <a name="network-errors"></a>ネットワーク エラー
 
@@ -255,7 +255,7 @@ WamDefaultAuthority: organizations
 1. イベント ビューアーで **[User Device Registration]\(ユーザー デバイス登録\)** イベントのログを開きます。 **[Applications and Services Log]\(アプリケーションとサービスのログ\)**  >  **[Microsoft]**  >  **[Windows]**  >  **[User Device Registration]\(ユーザー デバイス登録\)** の下にあります。
 2. イベント ID が 305 のイベントを探します。
 
-![エラー ログ イベント](./media/troubleshoot-hybrid-join-windows-current/3.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/3.png" alt-text="イベント ビューア―のスクリーンショット。ID 305 のイベントが表示されている。その情報が表示され、ADAL エラー コードと状態が強調表示されている。" border="false":::
 
 ##### <a name="configuration-errors"></a>構成エラー
 
@@ -330,7 +330,7 @@ WamDefaultAuthority: organizations
 1. イベント ビューアーで **[User Device Registration]\(ユーザー デバイス登録\)** イベントのログを開きます。 **[Applications and Services Log]\(アプリケーションとサービスのログ\)**  >  **[Microsoft]**  >  **[Windows]**  >  **[User Device Registration]\(ユーザー デバイス登録\)** の下にあります。
 2. イベント ID が 204 のイベントを探します。
 
-![エラー ログ イベント](./media/troubleshoot-hybrid-join-windows-current/4.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/4.png" alt-text="イベント ビューア―のスクリーンショット。ID 204 のイベントに関する情報が表示され、エラー コード、HTTP 状態、およびメッセージが強調表示されている。" border="false":::
 
 ##### <a name="http-errors-returned-from-drs-server"></a>DRS サーバーから返される HTTP エラー
 
@@ -390,11 +390,11 @@ WamDefaultAuthority: organizations
 [https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH) から Auth.zip ファイルをダウンロードします。
 
 1. ファイルを解凍し、インクルード ファイルの **start-auth.txt** と **stop-auth.txt** という名前を **start-auth.cmd** と **stop-auth.cmd** に変更します。
-1. 管理者特権でのコマンド プロンプトから、**start-auth.cmd** を実行します。
+1. 管理者特権でのコマンド プロンプトから、 **start-auth.cmd** を実行します。
 1. アカウントの切り替えを使用して、問題のあるユーザーとの別のセッションに切り替えます。
 1. 問題を再現します。
 1. アカウントの切り替えを使用して、トレースを実行している管理者セッションに戻ります。
-1. 管理者特権でのコマンド プロンプトから、**stop-auth.cmd** を実行します。
+1. 管理者特権でのコマンド プロンプトから、 **stop-auth.cmd** を実行します。
 1. スクリプトが実行されたフォルダーから **Authlogs** フォルダーを Zip 形式で送信します。
 
 ## <a name="troubleshoot-post-join-issues"></a>参加後の問題のトラブルシューティング

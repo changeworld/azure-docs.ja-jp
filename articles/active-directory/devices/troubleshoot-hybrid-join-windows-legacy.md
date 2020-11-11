@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 361b27ce84417b30fe58ac7651f70f8c72f8a16a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a4e8ec75d6610e19f241d2047518c3a43132a6e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627374"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079021"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>ハイブリッド Azure Active Directory 参加済みダウンレベル デバイスのトラブルシューティング 
 
@@ -51,11 +51,11 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
 
 1. ハイブリッド Azure AD 参加を実行したユーザー アカウントでサインオンします。
 1. コマンド プロンプトを開きます 
-1. 「`"%programFiles%\Microsoft Workplace Join\autoworkplace.exe" /i`」と入力します。
+1. 「`"%programFiles%\Microsoft Workplace Join\autoworkplace.exe" /i`」と入力します
 
 このコマンドにより、参加状態の詳細を示すダイアログ ボックスが表示されます。
 
-![[Workplace Join for Windows (Windows の社内参加)]](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/01.png" alt-text="[Workplace Join for Windows] ダイアログ ボックスのスクリーンショット。特定のデバイスがワークプレースに参加していることを示す、メール アドレスが含まれるテキスト。" border="false":::
 
 ## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>手順 2: ハイブリッド Azure AD 参加状態を評価する 
 
@@ -65,18 +65,18 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
 
 - AD FS または Azure AD が正しく構成されていない問題、またはネットワークの問題
 
-    ![[Workplace Join for Windows (Windows の社内参加)]](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/02.png" alt-text="[Workplace Join for Windows] ダイアログ ボックスのスクリーンショット。アカウントの認証中にエラーが発生したことがテキストで報告されています。" border="false":::
     
    - Autoworkplace.exe が Azure AD または AD FS で自動的に認証できない場合。 これは、AD FS が見つからないか正しく構成されていない (フェデレーション ドメインの場合)、Azure AD シームレス シングル サインオンが見つからないか正しく構成されていない (マネージド ドメインの場合)、またはネットワークの問題によって発生する可能性があります。 
    - 多要素認証 (MFA) がユーザーに対して有効化/構成され、WIAORMULTIAUTHN が AD FS サーバーで構成されていない可能性があります。 
-   - また、ホーム領域検出 (HRD) ページがユーザーの操作を待っているため、**autoworkplace.exe** では、トークンのサイレント要求ができなくなっていることも考えられます。
+   - また、ホーム領域検出 (HRD) ページがユーザーの操作を待っているため、 **autoworkplace.exe** では、トークンのサイレント要求ができなくなっていることも考えられます。
    - AD FS と Azure AD の URL がクライアントの IE のイントラネット ゾーンにない可能性があります。
-   - ネットワーク接続の問題により、**autoworkplace.exe** で AD FS または Azure AD の URL にアクセスできない場合があります。 
+   - ネットワーク接続の問題により、 **autoworkplace.exe** で AD FS または Azure AD の URL にアクセスできない場合があります。 
    - **utoworkplace.exe** は、クライアントに、クライアントから組織のオンプレミスの AD ドメイン コントローラーまでの直接の見通し線があることを必要とします。つまり、ハイブリッド Azure AD 参加は、クライアントが組織のイントラネットに接続されている場合にのみ成功します。
    - 組織は Azure AD シームレス シングル サインオンを使用しており、デバイスの IE イントラネット設定には `https://autologon.microsoftazuread-sso.com` または `https://aadg.windows.net.nsatc.net` が存在せず、イントラネット ゾーンについて **[スクリプトを介したステータス バーの更新を許可する]** が有効にされていません。
 - ドメイン ユーザーとしてサインオンしていない
 
-   ![[Workplace Join for Windows (Windows の社内参加)]](./media/troubleshoot-hybrid-join-windows-legacy/03.png)
+   :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/03.png" alt-text="[Workplace Join for Windows] ダイアログ ボックスのスクリーンショット。アカウントの検証中にエラーが発生したことがテキストで報告されています。" border="false":::
 
    これが発生する理由はいくつかあります。
 
@@ -84,13 +84,13 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
    - クライアントはドメイン コントローラーに接続できません。    
 - クォータに達している
 
-    ![[Workplace Join for Windows (Windows の社内参加)]](./media/troubleshoot-hybrid-join-windows-legacy/04.png)
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/04.png" alt-text="[Workplace Join for Windows] ダイアログ ボックスのスクリーンショット。ユーザーの参加済みデバイスの最大数に達したため、エラーがテキストで報告されています。" border="false":::
 
 - サービスが応答していない 
 
-    ![[Workplace Join for Windows (Windows の社内参加)]](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/05.png" alt-text="[Workplace Join for Windows] ダイアログ ボックスのスクリーンショット。サーバーが応答しなかったことが原因でエラーが発生したことがテキストで報告されています。" border="false":::
 
-状態に関する情報は、**Applications and Services Log\Microsoft-Workplace Join** のイベント ログで確認することもできます。
+状態に関する情報は、 **Applications and Services Log\Microsoft-Workplace Join** のイベント ログで確認することもできます。
   
 **ハイブリッド Azure AD 参加に失敗する最も一般的な原因:** 
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 10/10/2018
+ms.date: 10/30/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61f82e94f506cc403106912e24532f9d5263a60d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cd91d1d2c9f5a4a413f9ea64cfdef649823d0f09
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896468"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131022"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する
 
@@ -77,7 +77,7 @@ MIM 2016 Service Pack 1 および Microsoft Graph の MIM 管理エージェン�
 
 オンプレミスの Active Directory にゲスト ユーザー オブジェクトを作成する場合の出発点として使用できる PowerShell サンプル スクリプトがあります。
 
-[ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=51495)からスクリプトと Readme ファイルをダウンロードできます。 **スクリプトと Readme を選択して、Azure AD B2B ユーザーの on-prem.zip** ファイルを取得します。
+スクリプトと Readme ファイルは、「[Connector for Microsoft Identity Manager 2016 および Forefront Identity Manager 2010 R2](https://www.microsoft.com/download/details.aspx?id=51495)」からダウンロードできます。 ダウンロード パッケージで、 **スクリプトと Readme を選択して、Azure AD B2B ユーザーの on-prem.zip** ファイルを取得します。
 
 スクリプトを使用する前に、関連する Readme ファイルの前提条件と重要な考慮事項を確認してください。 また、スクリプトはサンプルとしてのみ提供されている点を理解してください。 開発チームまたはパートナーは、スクリプトを実行する前にカスタマイズして確認する必要があります。
 

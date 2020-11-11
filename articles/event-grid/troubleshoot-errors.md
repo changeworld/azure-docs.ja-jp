@@ -3,12 +3,12 @@ title: Azure Event Grid - トラブルシューティング ガイド
 description: この記事では、エラー コード、エラー メッセージ、説明、および推奨されるアクションの一覧を示します。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: ab52cea6ab43763cf2d9dc2b57b7f369072a399e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1dd464339e7654f8886224ff07cf368b4724ff82
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119040"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041385"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>Azure Event Grid エラーのトラブルシューティング
 このトラブルシューティング ガイドでは、Azure Event Grid のエラー コード、エラー メッセージ、エラーの説明、およびこれらのエラーを受け取ったときに実行する必要がある推奨されるアクションの一覧を示します。 
@@ -16,8 +16,8 @@ ms.locfileid: "86119040"
 ## <a name="error-code-400"></a>エラー コード:400
 | エラー コード | エラー メッセージ | 説明 | 推奨 |
 | ---------- | ------------- | ----------- | -------------- | 
-| HttpStatusCode.BadRequest<br/>400 | Topic name must be between 3 and 50 characters in length. (トピック名の長さは 3 文字から 50 文字でなければなりません。) | カスタム トピック名の長さは 3 文字から 50 文字でなければなりません。 トピック名には、英数字、数字、および "-" 文字のみを使用できます。 また、名前を次の予約語で開始することはできません。 <ul><li>Microsoft</li><li>EventGrid</li><li>システム</li></ul> | トピック名の要件に準拠した別のトピック名を選択します。 |
-| HttpStatusCode.BadRequest<br/>400 | Domain name must be between 3 and 50 characters in length. (ドメイン名の長さは 3 文字から 50 文字でなければなりません。) | ドメイン名の長さは 3 文字から 50 文字でなければなりません。 トピック名には、英数字、数字、および "-" 文字のみを使用できます。 また、名前を次の予約語で開始することはできません。<ul><li>Microsoft</li><li>EventGrid</li><li>システム</li> | ドメイン名の要件に準拠した別のドメイン名を選択します。 |
+| HttpStatusCode.BadRequest<br/>400 | Topic name must be between 3 and 50 characters in length. (トピック名の長さは 3 文字から 50 文字でなければなりません。) | カスタム トピック名の長さは 3 文字から 50 文字でなければなりません。 トピック名には、英数字、数字、および "-" 文字のみを使用できます。 また、名前を次の予約語で開始することはできません。 <ul><li>Microsoft-</li><li>EventGrid-</li><li>System-</li></ul> | トピック名の要件に準拠した別のトピック名を選択します。 |
+| HttpStatusCode.BadRequest<br/>400 | Domain name must be between 3 and 50 characters in length. (ドメイン名の長さは 3 文字から 50 文字でなければなりません。) | ドメイン名の長さは 3 文字から 50 文字でなければなりません。 ドメイン名に使用できるのは、英数字、数字、および "-" 文字のみです。 また、名前を次の予約語で開始することはできません。<ul><li>Microsoft-</li><li>EventGrid-</li><li>System-</li> | ドメイン名の要件に準拠した別のドメイン名を選択します。 |
 | HttpStatusCode.BadRequest<br/>400 | 有効期限が無効です。 | イベント サブスクリプションの有効期限は、イベント サブスクリプションがいつ終了するかを決定します。 この値は、将来の有効な DateTime 値である必要があります。| イベント サブスクリプションの有効期限が有効な DateTime 形式であり、将来の日付に設定されていることを確認します。 |
 
 ## <a name="error-code-409"></a>エラー コード:409

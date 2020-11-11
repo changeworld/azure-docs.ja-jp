@@ -1,6 +1,6 @@
 ---
-title: ログを取得して Azure Arc 対応データ コントローラーのトラブルシューティングを行う
-description: サービス ログを取得して、Azure Arc 対応データ コントローラーのトラブルシューティングを行います。
+title: ログを取得して Azure Arc 対応データ サービスのトラブルシューティングを行う
+description: データ コントローラーからログ ファイルを取得して、Azure Arc 対応データ サービスのトラブルシューティングを行う方法について説明します。
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,27 +9,27 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 625092e0557d40051e1ffd538a496c20edc0222f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0c4cff7583f08fe27649cee464fcef802cddd88f
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320200"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234047"
 ---
-# <a name="get-azure-arc-enabled-data-services-logs"></a>Azure Arc 対応データ サービスのログを取得する
+# <a name="get-logs-to-troubleshoot-azure-arc-enabled-data-services"></a>ログを取得して Azure Arc 対応データ サービスのトラブルシューティングを行う
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-先に進む前に、次のものが必要です。
+作業を進めるには、以下が必要です。
 
-* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. [インストール手順](./install-client-tools.md)。
-* Azure Arc 対応データ サービス コントローラーにサインインするための管理者アカウント。
+* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. 詳細については、[Azure Arc データ サービスをデプロイおよび管理するためのクライアント ツールをインストールする](./install-client-tools.md)方法に関するページを参照してください。
+* Azure Arc 対応データ コントローラーにサインインするための管理者アカウント。
 
-## <a name="get-azure-arc-enabled-data-services-logs"></a>Azure Arc 対応データ サービスのログを取得する
+## <a name="get-log-files"></a>ログ ファイルの取得
 
-トラブルシューティングのために、すべてのポッドまたは特定のポッドで Azure Arc 対応データ サービスのログを取得できます。 これは、`kubectl logs` コマンドなどの標準の Kubernetes ツールを使用して実行できます。この記事では、すべてのログを一度に取得できる [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] ツールを使用します。
+トラブルシューティングの目的で、すべてのポッドまたは特定のポッドでサービスのログを取得できます。 1 つは、`kubectl logs` コマンドなどの標準の Kubernetes ツールを使用する方法です。 この記事では、[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] ツールを使用します。これにより、一度にすべてのログを簡単に取得できます。
 
 1. 管理者アカウントでデータ コントローラーにサインインします。
 
@@ -53,13 +53,13 @@ ms.locfileid: "92320200"
 
 ## <a name="options"></a>オプション
 
-`azdata arc dc debug copy-logs` には、出力を管理するための次のオプションが用意されています。
+`azdata arc dc debug copy-logs` コマンドには、出力を管理するための次のオプションが用意されています。
 
 * `--target-folder` パラメーターを使用して、ログ ファイルを別のディレクトリに出力します。
 * `--skip-compress` パラメーターを省略することで、ファイルを圧縮します。
-* `--exclude-dumps` を省略することで、メモリ ダンプをトリガーして含めます。 Microsoft サポートがメモリ ダンプを要求していない限り、この方法は推奨されません。 メモリ ダンプを取得するには、データ コントローラーの作成時に、データ コントローラーの `allowDumps` 設定が `true` に設定されている必要があります。
+* `--exclude-dumps` を省略することで、メモリ ダンプをトリガーして含めます。 Microsoft サポートがメモリ ダンプを要求していない限り、この方法は推奨されません。 メモリ ダンプを取得するには、データ コントローラーの作成時に、データ コントローラーの `allowDumps` が `true` に設定されている必要があります。
 * 名前によって特定のポッド (`--pod`) またはコンテナー (`--container`) のログのみを収集するフィルター処理を行います。
-* `--resource-kind` と `--resource-name` パラメーターを渡すことによって、特定のカスタム リソースのログを収集するフィルター処理を行います。 `resource-kind` パラメーターの値は、`kubectl get customresourcedefinition` コマンド で取得できるカスタム リソース定義名のいずれかにする必要があります。
+* `--resource-kind` と `--resource-name` パラメーターを渡すことによって、特定のカスタム リソースのログを収集するフィルター処理を行います。 `resource-kind` パラメーターの値は、カスタム リソース定義名のいずれかにする必要があります。 これらの名前を取得するには、コマンド `kubectl get customresourcedefinition` を使用します。
 
 これらのパラメーターを使用して、次の例の `<parameters>` を置き換えることができます。 
 
@@ -73,7 +73,7 @@ azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps -
 #azdata arc dc debug copy-logs --target-folder C:\temp\logs --exclude-dumps --skip-compress --resource-kind postgresql-12 --resource-name pg1 --namespace arc
 ```
 
-フォルダー階層の例。 フォルダー階層は、ポッド名、コンテナー、コンテナー内のディレクトリ階層によって整理されます。
+次に、フォルダー階層の例を示します。 これは、順番にポッド名、コンテナー、コンテナー内のディレクトリ階層ごとに整理されています。
 
 ```output
 <export directory>

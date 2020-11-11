@@ -1,23 +1,25 @@
 ---
-title: Virtual WAN でパブリック IP 機能を使用する方法
+title: Azure VMware Solution でパブリック IP 機能を使用する方法
 description: この記事では、Azure Virtual WAN でパブリック IP 機能を使用する方法について説明します。
 ms.topic: how-to
-ms.date: 10/30/2020
-ms.openlocfilehash: 61ed6487bc000a35fd25cabde2b562b6eb08da46
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.date: 10/28/2020
+ms.openlocfilehash: f51f00a9adc1fd122e723909ecaa6193c152d496
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048306"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912669"
 ---
-# <a name="how-to-use-the-public-ip-functionality-in-azure-virtual-wan"></a>Azure Virtual WAN でパブリック IP 機能を使用する方法
+# <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>Azure VMware Solution でパブリック IP 機能を使用する方法
 
-パブリック IP は、Azure VMware Solution 接続の新機能であり、お客様は 2 つの方法でパブリック インターネット アクセスを有効にすることができます。 
+パブリック IP は、Azure VMware Solution 接続の新機能です。 これにより、Web サーバー、仮想マシン (VM)、およびパブリック ネットワーク経由でアクセス可能なホストなどのリソースが作成されます。 
+
+パブリック インターネット アクセスは、次の 2 つの方法で有効にします。 
 
 - アプリケーションは、HTTP/HTTPS トラフィックの Application Gateway ロード バランサーでホストおよび公開することができます。
 - Azure Virtual WAN でパブリック IP 機能を使用して公開されます。
 
-Azure VMware Solution のプライベート クラウド デプロイの一環として、パブリック IP 機能を有効にすると、オートメーションで必要なコンポーネントが自動的に作成されて有効になります。
+Azure VMware Solution のプライベート クラウド デプロイの一環として、パブリック IP 機能を有効にすると、オートメーションで必要なコンポーネントが作成されて有効になります。
 
 -  Virtual WAN
 
@@ -25,7 +27,7 @@ Azure VMware Solution のプライベート クラウド デプロイの一環�
 
 -  パブリック IP を使用する Azure Firewall サービス
 
-この記事では、Virtual WAN でパブリック IP 機能を使用して、Web サーバー、仮想マシン (VM)、およびホストなどのリソースにパブリックネット ワーク経由でアクセスできるようにする方法について詳しく説明します。
+この記事では、Virtual WAN でパブリック IP 機能を使用する方法について詳しく説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,19 +50,19 @@ Web サーバーによって、その要求が受信され、要求された情�
 
 ## <a name="deploy-virtual-wan"></a>Virtual WAN をデプロイする
 
-1. Azure portal にサインインし、**Azure VMware Solution** を検索して選択します。
+1. Azure portal にサインインし、 **Azure VMware Solution** を検索して選択します。
 
 1. Azure VMware Solution プライベート クラウドを選択します。
 
-   :::image type="content" source="media/public-ip-usage/avs-private-cloud-resource.png" alt-text="パブリック IP アーキテクチャの図" border="true" lightbox="media/public-ip-usage/avs-private-cloud-resource.png":::
+   :::image type="content" source="media/public-ip-usage/avs-private-cloud-resource.png" alt-text="Azure VMware Solution プライベート クラウドを選択する。" border="true" lightbox="media/public-ip-usage/avs-private-cloud-resource.png":::
 
 1. **[管理]** で、 **[接続]** を選択します。
 
-   :::image type="content" source="media/public-ip-usage/avs-private-cloud-manage-menu.png" alt-text="パブリック IP アーキテクチャの図" border="true" lightbox="media/public-ip-usage/avs-private-cloud-manage-menu.png":::
+   :::image type="content" source="media/public-ip-usage/avs-private-cloud-manage-menu.png" alt-text="[管理] で、[接続] を選択する。" border="true" lightbox="media/public-ip-usage/avs-private-cloud-manage-menu.png":::
 
 1. **[パブリック IP]** タブを選択してから、 **[構成]** を選びます。
 
-   :::image type="content" source="media/public-ip-usage/connectivity-public-ip-tab.png" alt-text="パブリック IP アーキテクチャの図" border="true" lightbox="media/public-ip-usage/connectivity-public-ip-tab.png":::
+   :::image type="content" source="media/public-ip-usage/connectivity-public-ip-tab.png" alt-text="[パブリック IP] タブを選択してから、[構成] を選ぶ。" border="true" lightbox="media/public-ip-usage/connectivity-public-ip-tab.png":::
 
 1. 既定値をそのまま使用するか変更してから、 **[作成]** を選択します。
 
@@ -81,44 +83,44 @@ Web サーバーによって、その要求が受信され、要求された情�
 
 以下の手順に従って、さらにパブリック IP アドレスを確認して追加することができます。
 
-1. Azure portal で、**Firewall** を検索して選択します。
+1. Azure portal で、 **Firewall** を検索して選択します。
 
 1. デプロイされているファイアウォールを選んでから、 **[Visit Azure Firewall Manager to configure and manage this firewall]\(Azure Firewall Manager にアクセスして、このファイアウォールを構成および管理する\)** を選択します。
 
-   :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="パブリック IP アーキテクチャの図" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
+   :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="デプロイされているファイアウォールを選択する。" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
 
 1. **[セキュリティ保護付き仮想ハブ]** を選択し、一覧から仮想ハブを選びます。
 
-   :::image type="content" source="media/public-ip-usage/select-virtual-hub.png" alt-text="パブリック IP アーキテクチャの図" lightbox="media/public-ip-usage/select-virtual-hub.png":::
+   :::image type="content" source="media/public-ip-usage/select-virtual-hub.png" alt-text="[セキュリティ保護付き仮想ハブ] を選択し、一覧から仮想ハブを選ぶ。" lightbox="media/public-ip-usage/select-virtual-hub.png":::
 
 1. 仮想ハブ ページで、 **[パブリック IP 構成]** を選択します。さらにパブリック IP アドレスを追加するには、 **[追加]** を選択します。 
 
-   :::image type="content" source="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png" alt-text="パブリック IP アーキテクチャの図" border="true" lightbox="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png":::
+   :::image type="content" source="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png" alt-text="仮想ハブ ページで、[パブリック IP 構成] を選択する。" border="true" lightbox="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png":::
 
 1. 必要な IP の数を指定し、 **[追加]** を選択します。
 
-   :::image type="content" source="media/public-ip-usage/add-number-of-ip-addresses-required.png" alt-text="パブリック IP アーキテクチャの図" border="true":::
+   :::image type="content" source="media/public-ip-usage/add-number-of-ip-addresses-required.png" alt-text="[追加] を選択し、必要な IP アドレスの数を指定してから、[追加] を選択する。" border="true":::
 
 
 ## <a name="create-firewall-policies"></a>ファイアウォール ポリシーを作成する
 
 すべてのコンポーネントがデプロイされたら、追加されたリソース グループで表示することができます。 次の手順は、ファイアウォール ポリシーの追加です。
 
-1. Azure portal で、**Firewall** を検索して選択します。
+1. Azure portal で、 **Firewall** を検索して選択します。
 
 1. デプロイされているファイアウォールを選んでから、 **[Visit Azure Firewall Manager to configure and manage this firewall]\(Azure Firewall Manager にアクセスして、このファイアウォールを構成および管理する\)** を選択します。
 
-   :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="パブリック IP アーキテクチャの図" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
+   :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="デプロイされているファイアウォールを選択する。" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
 
 1. **[Azure Firewall ポリシー]** 、 **[Azure Firewall ポリシーの作成]** の順に選択します。
 
-   :::image type="content" source="media/public-ip-usage/create-firewall-policy.png" alt-text="パブリック IP アーキテクチャの図" border="true" lightbox="media/public-ip-usage/create-firewall-policy.png":::
+   :::image type="content" source="media/public-ip-usage/create-firewall-policy.png" alt-text="[Azure Firewall ポリシー]、[Azure Firewall ポリシーの作成] の順に選択する。" border="true" lightbox="media/public-ip-usage/create-firewall-policy.png":::
 
 1. **[基本]** タブで、必要な詳細を指定し、 **[次へ : DNS 設定]** を選択します。 
 
 1. **[DNS]** タブで、 **[無効にする]** を選択してから、 **[次へ : 規則]** を選択します。
 
-1. **[規則コレクションの追加]** を選択して、以下の詳細を指定し、 **[追加]** を選択してから **[次へ : 脅威インテリジェンス**] を選択します。
+1. **[規則コレクションの追加]** を選択して、以下の詳細を指定し、 **[追加]** を選択してから **[次へ : 脅威インテリジェンス** ] を選択します。
 
    -  名前
    -  規則コレクションの種類 - DNAT
@@ -126,8 +128,8 @@ Web サーバーによって、その要求が受信され、要求された情�
    -  規則コレクションのアクション - 許可
    -  規則の名前
    -  ソースの種類 - **IPaddress**
-   -  ソース - **\***
-   -  プロトコル – **TCP**
+   -  ソース - * *\** _
+   -  プロトコル – _ *TCP**
    -  宛先ポート – **80**
    -  送信先の種類 – **IP アドレス**
    -  宛先 – **パブリック IP アドレス**
@@ -138,13 +140,13 @@ Web サーバーによって、その要求が受信され、要求された情�
 
 1. **[Associate virtual hub]\(仮想ハブの関連付け\)** を選択します。
 
-   :::image type="content" source="media/public-ip-usage/associate-virtual-hubs-azure-firewall-policy.png" alt-text="パブリック IP アーキテクチャの図" border="true" lightbox="media/public-ip-usage/associate-virtual-hubs-azure-firewall-policy.png":::
+   :::image type="content" source="media/public-ip-usage/associate-virtual-hubs-azure-firewall-policy.png" alt-text="[ハブ] タブで、[Associate virtual hub]\(仮想ハブの関連付け\) を選択する。" border="true" lightbox="media/public-ip-usage/associate-virtual-hubs-azure-firewall-policy.png":::
 
 1. 一覧からハブを選び、 **[追加]** を選択します。
 
-   :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="パブリック IP アーキテクチャの図" border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
+   :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="一覧からハブを選び、[追加] を選択する。" border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
 
-1. **次へ :タグ**を選択します。 
+1. **次へ :タグ** を選択します。 
 
 1. (省略可能) 名前と値のペアを作成して、リソースを分類します。 
 

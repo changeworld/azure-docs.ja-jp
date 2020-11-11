@@ -6,21 +6,21 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 5bd637f4e4a786cd4cba0f70c4b2349e354469fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88f1c88e721419bf944207b9c748b9250a25f428
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657474"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348068"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps 内のワークフロー アクションを繰り返す、または配列を処理するループを作成する
 
-ロジック アプリで配列を処理するために、["Foreach" ループ](#foreach-loop)を作成できます。 このループでは、配列の項目ごとに 1 つ以上のアクションが繰り返されます。 "Foreach" ループで処理できる配列項目の数に対する制限については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページを参照してください。 
+ロジック アプリで配列を処理するために、["Foreach" ループ](#foreach-loop)を作成できます。 このループでは、配列の項目ごとに 1 つ以上のアクションが繰り返されます。 "Foreach" ループで処理できる配列項目の数に対する制限については、「[コンカレンシー、ループ、および分割処理の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)」を参照してください。
 
-条件が満たされるか、状態が変更されるまでアクションを繰り返すには、["Until" ループ](#until-loop)を作成できます。 ロジック アプリでは最初にループ内部のすべてのアクションが実行されて、条件または状態がチェックされます。 条件が満たされると、ループが停止します。 そうでない場合は、ループが繰り返されます。 ロジック アプリの実行での "Until" ループの数に対する制限については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページを参照してください。 
+条件が満たされるか、状態が変更されるまでアクションを繰り返すには、["Until" ループ](#until-loop)を作成できます。 ロジック アプリでは最初にループ内部のすべてのアクションが実行されて、条件または状態がチェックされます。 条件が満たされると、ループが停止します。 そうでない場合は、ループが繰り返されます。 ロジック アプリの実行で処理できる "Until" ループの数に対する制限については、「[コンカレンシー、ループ、および分割処理の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)」を参照してください。
 
 > [!TIP]
-> 配列を受け取るトリガーがあり、各配列項目のワークフローを実行する場合は、[**SplitOn** トリガー プロパティ](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)を使用してその配列を "*バッチ解除*" できます。 
+> 配列を受け取るトリガーがあり、各配列項目のワークフローを実行する場合は、 [**SplitOn** トリガー プロパティ](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)を使用してその配列を " *バッチ解除* " できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,7 +34,9 @@ ms.locfileid: "89657474"
 
 "Foreach" ループは、配列項目ごとに 1 つ以上のアクションを繰り返し、配列でのみ動作します。 "Foreach" ループを使用する場合の考慮事項のいくつかを次に示します。
 
-* 既定では、"Foreach" ループ内のイテレーションは同時または並列に実行されます。 この動作は、[Power Automate の **Apply to each** ループ](/power-automate/apply-to-each)とは異なっています。このループ内では、イテレーションは一度に 1 つずつ、つまり順番に実行されます。 ただし、[シーケンシャル "Foreach" ループ イテレーションを設定する](#sequential-foreach-loop)こともできます。 たとえば、"Foreach" ループ内の次のイテレーションを[遅延アクション](../connectors/connectors-native-delay.md)を使用して一時停止するには、そのループが順番に実行されるように設定する必要があります。
+* "Foreach" ループは、制限された数の配列項目を処理できます。 この制限については、「[コンカレンシー、ループ、および分割処理の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)」を参照してください。
+
+* 既定では、"Foreach" ループ内のイテレーションは同時または並列に実行されます。 この動作は、 [Power Automate の **Apply to each** ループ](/power-automate/apply-to-each)とは異なっています。このループ内では、イテレーションは一度に 1 つずつ、つまり順番に実行されます。 ただし、[シーケンシャル "Foreach" ループ イテレーションを設定する](#sequential-foreach-loop)こともできます。 たとえば、"Foreach" ループ内の次のイテレーションを[遅延アクション](../connectors/connectors-native-delay.md)を使用して一時停止するには、そのループが順番に実行されるように設定する必要があります。
 
   この既定の動作の例外は、入れ子になったループです。このループでは、イテレーションは常に、並列ではなく順番に実行されます。 入れ子になったループ内の項目に対して並列で操作を実行するには、[子ロジック アプリ](../logic-apps/logic-apps-http-endpoint.md)を作成して呼び出します。
 
@@ -50,11 +52,11 @@ ms.locfileid: "89657474"
 2. RSS トリガーと電子メール送信アクションの間に、"Foreach" ループを追加します。 
 
    1. ステップの間にループを追加するには、これらのステップ間の矢印の上にポインターを移動します。 
-   表示される**プラス記号** ( **+** ) を選択し、 **[アクションの追加]** を選択します。
+   表示される **プラス記号** ( **+** ) を選択し、 **[アクションの追加]** を選択します。
 
       ![[アクションの追加] を選択](media/logic-apps-control-flow-loops/add-for-each-loop.png)
 
-   1. 検索ボックスで、 **[すべて]** を選択します。 検索ボックスに、フィルターとして「for each」と入力します。 アクションの一覧から、次のアクションを選択します。**For each - コントロール**
+   1. 検索ボックスで、 **[すべて]** を選択します。 検索ボックスに、フィルターとして「for each」と入力します。 アクションの一覧から、次のアクションを選択します。 **For each - コントロール**
 
       !["For each" ループを追加](media/logic-apps-control-flow-loops/select-for-each.png)
 
@@ -63,13 +65,13 @@ ms.locfileid: "89657474"
    ![動的コンテンツ リストから選択する](media/logic-apps-control-flow-loops/for-each-loop-dynamic-content-list.png)
 
    > [!NOTE] 
-   > 選択できるのは。前のステップからの配列の出力 "*のみ*" です。
+   > 選択できるのは。前のステップからの配列の出力 " *のみ* " です。
 
    選択した配列がここに表示されます。
 
    ![配列を選択する](media/logic-apps-control-flow-loops/for-each-loop-select-array.png)
 
-4. 各配列項目でアクションを実行するには、**電子メールを送信する** アクションをループにドラッグします。 
+4. 各配列項目でアクションを実行するには、 **電子メールを送信する** アクションをループにドラッグします。 
 
    ロジック アプリは次の例のようになります。
 
@@ -122,7 +124,7 @@ ms.locfileid: "89657474"
 
 既定では、"Foreach" ループのサイクルは並列に実行されます。 各サイクルをシーケンシャルに実行するには、ループの **[シーケンシャル]** オプションを設定します。 予測可能な結果が想定されるループ内でループや変数を入れ子にしている場合、"Foreach" ループは順番に実行する必要があります。 
 
-1. ループの右上隅で、**省略記号** ( **...** ) > **[設定]** と選択します。
+1. ループの右上隅で、 **省略記号** ( **...** ) > **[設定]** と選択します。
 
    !["Foreach" ループで、[...] > [設定] を選択する](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
 
@@ -150,7 +152,7 @@ ms.locfileid: "89657474"
 
 ## <a name="until-loop"></a>"Until" ループ
   
-アクションを実行し、条件が満たされるか、状態が変更されるまで繰り返すには、これらのアクションを "Until" ループに入れます。 ロジック アプリでは最初にループ内部のすべてのアクションが実行されて、条件または状態がチェックされます。 条件が満たされると、ループが停止します。 そうでない場合は、ループが繰り返されます。
+アクションを実行し、条件が満たされるか、状態が変更されるまで繰り返すには、これらのアクションを "Until" ループに入れます。 ロジック アプリでは最初にループ内部のすべてのアクションが実行されて、条件または状態がチェックされます。 条件が満たされると、ループが停止します。 そうでない場合は、ループが繰り返されます。 ロジック アプリの実行で処理できる "Until" ループの数に対する制限については、「[コンカレンシー、ループ、および分割処理の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)」を参照してください。
 
 "Until" ループを使用できる一般的なシナリオをいくつか紹介します。
 
@@ -189,7 +191,7 @@ ms.locfileid: "89657474"
 
    ![変数のプロパティを設定する](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
-   | プロパティ | 値 | 説明 |
+   | プロパティ | [値] | 説明 |
    | -------- | ----- | ----------- |
    | **名前** | 制限 | 変数の名前 | 
    | **Type** | Integer | 変数のデータ型 | 
@@ -213,7 +215,7 @@ ms.locfileid: "89657474"
 
    ![変数の値を増やすアクションを追加する](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable.png)
 
-1. **[名前]** には、**Limit** 変数を選択します。 **[値]** には、「1」と入力します。 
+1. **[名前]** には、 **Limit** 変数を選択します。 **[値]** には、「1」と入力します。 
 
      !["Limit" を 1 ずつ増やす](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
 
@@ -230,10 +232,10 @@ ms.locfileid: "89657474"
 
       ![電子メールのプロパティを設定する](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-      | プロパティ | 値 | 説明 |
+      | プロパティ | [値] | 説明 |
       | -------- | ----- | ----------- | 
       | **To** | *\<email-address\@domain>* | 受信者の電子メール アドレス。 テストのために、自分の電子メール アドレスを使用します。 | 
-      | **件名** | "Limit" の現在の値は **Limit** | 電子メールの件名を指定します。 この例では、**Limit** 変数が含まれていることを確認してください。 | 
+      | **件名** | "Limit" の現在の値は **Limit** | 電子メールの件名を指定します。 この例では、 **Limit** 変数が含まれていることを確認してください。 | 
       | **本文** | <*email-content*> | 送信する電子メール メッセージの内容を指定します。 この例では、任意のテキストを入力してください。 | 
       |||| 
 

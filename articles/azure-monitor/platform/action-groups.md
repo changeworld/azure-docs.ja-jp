@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: f65707d80461385c28369e75a294865e03f8c662
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: cbe3ef7080397b135ea0fb17cd50de9b1ccfdf09
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367739"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336121"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 1 つのサブスクリプションで最大 2,000 のアクション グループを構成できます。
@@ -287,7 +287,9 @@ Webhook は、次のルールを使用して再処理されます。
 
 アクション グループには、限られた数の Webhook アクションを保持できます。
 
-### <a name="service-tag"></a>サービス タグ
+ソース IP アドレスを頻繁に更新すると、Webhook で非常に時間がかかることがあります。 *ActionGroup* に **サービス タグ** を使用すると、IP アドレスに対する手動での頻繁な更新の複雑さを最小限に抑えることができます。 上で共有されているソース IP アドレスの範囲プレフィックスは Microsoft によって自動的に管理され、 **サービス タグ** に囲まれています。
+
+#### <a name="service-tag"></a>サービス タグ
 サービス タグは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。これにより、ActionGroup のネットワーク セキュリティ規則に対する頻繁な更新の複雑さを最小限に抑えられます。
 
 1. [Azure サービス] の下の Azure portal で、" *ネットワーク セキュリティ グループ* " を検索します。
@@ -311,8 +313,6 @@ Webhook は、次のルールを使用して再処理されます。
     1.  **[追加]** をクリックします。
     
     :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="サービス タグを追加する方法の例。"border="true":::
-
-ActionGroup に **サービス タグ** を使用すると、IP アドレスに対する頻繁な更新の複雑さを最小限に抑えることができます。
 
 ## <a name="next-steps"></a>次のステップ
 * 詳細については、「[SMS アラート動作](./alerts-sms-behavior.md)」を参照してください。  

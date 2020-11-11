@@ -1,6 +1,6 @@
 ---
-title: SQL オンデマンド (プレビュー) を使用して CSV ファイルに対してクエリを実行する
-description: この記事では、SQL オンデマンド (プレビュー) を使用して、さまざまなファイル形式の単一の CSV ファイルに対してクエリを実行する方法について説明します。
+title: サーバーレス SQL プール (プレビュー) を使用して CSV ファイルに対してクエリを実行する
+description: この記事では、サーバーレス SQL プール (プレビュー) を使用して、さまざまなファイル形式の単一の CSV ファイルに対してクエリを実行する方法について説明します。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: d2f8a30503e14e647cbc9151ebcea7efa000ca07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e5a64a75ca6cde4172e49eb77dde42a44c06d5e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288292"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321450"
 ---
 # <a name="query-csv-files"></a>CSV ファイルに対してクエリを実行する
 
-この記事では、Azure Synapse Analytics の SQL オンデマンド (プレビュー) を使用して、単一の CSV ファイルに対してクエリを実行する方法について説明します。 CSV ファイルには、次のようなさまざまな形式があります。 
+この記事では、Azure Synapse Analytics の サーバーレス SQL プール (プレビュー) を使用して、単一の CSV ファイルに対してクエリを実行する方法について説明します。 CSV ファイルには、次のようなさまざまな形式があります。 
 
 - ヘッダー行を含む、ヘッダー行を含まない
 - コンマ区切りの値およびタブ区切りの値
@@ -95,7 +95,7 @@ from openrowset(
 
 ## <a name="prerequisites"></a>前提条件
 
-最初の手順として、テーブルが作成される**データベースを作成**します。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、データ ソース、データベース スコープの資格情報、これらのサンプルで使用される外部ファイル形式が作成されます。
+最初の手順として、テーブルが作成される **データベースを作成** します。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、データ ソース、データベース スコープの資格情報、これらのサンプルで使用される外部ファイル形式が作成されます。
 
 ## <a name="windows-style-new-line"></a>Windows スタイルの改行
 

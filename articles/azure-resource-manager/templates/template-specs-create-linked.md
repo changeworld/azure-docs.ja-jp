@@ -2,17 +2,17 @@
 title: リンクされたテンプレートを使用してテンプレート スペックを作成する
 description: リンクされたテンプレートを使用してテンプレート スペックを作成する方法について説明します。
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: adcce8194f380b90eb9a29f4da25763e112b9f12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.openlocfilehash: b1862789ede4a9d2ab8c57bdb913c449a560dc58
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728541"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321593"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>チュートリアル:リンクされたテンプレートを使用してテンプレート スペックを作成する (プレビュー)
 
-[リンクされたテンプレート](linked-templates.md#linked-template)を使用して[テンプレート スペック](template-specs.md)を作成する方法について説明します。 テンプレート スペックは、ARM テンプレートを組織内の他のユーザーと共有するために使用します。 この記事では、[デプロイ リソース](/azure/templates/microsoft.resources/deployments)の `relativePath` プロパティを使用して、メイン テンプレートとそのリンクされたテンプレートをパッケージ化するテンプレート スペックを作成する方法について説明します。
+メイン テンプレートと[リンクされたテンプレート](linked-templates.md#linked-template)を使用して[テンプレート スペック](template-specs.md)を作成する方法について説明します。 テンプレート スペックは、ARM テンプレートを組織内の他のユーザーと共有するために使用します。 この記事では、[デプロイ リソース](/azure/templates/microsoft.resources/deployments)の `relativePath` プロパティを使用して、メイン テンプレートとそのリンクされたテンプレートをパッケージ化するテンプレート スペックを作成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,7 +35,7 @@ ms.locfileid: "91728541"
 
 `relativePath` プロパティは、常に `relativePath` を宣言しているテンプレート ファイルを基準とした相対パスであるため、linkedTemplate.json から呼び出される別の linkedTemplate2.json が存在し、linkedTemplate2.json が同じ artifacts サブフォルダーに格納されている場合は、linkedTemplate.json で指定される relativePath は単に `linkedTemplate2.json` となります。
 
-1. 次の JSON を使用してメイン テンプレートを作成します。 メイン テンプレートを **azuredeploy.json** としてローカル コンピューターに保存します。 このチュートリアルでは、**c:\Templates\linkedTS\azuredeploy.json** パスに保存したものと仮定していますが、任意のパスを使用できます。
+1. 次の JSON を使用してメイン テンプレートを作成します。 メイン テンプレートを **azuredeploy.json** としてローカル コンピューターに保存します。 このチュートリアルでは、 **c:\Templates\linkedTS\azuredeploy.json** パスに保存したものと仮定していますが、任意のパスを使用できます。
 
     ```json
     {

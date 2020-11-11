@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: aecc64c5fa923bc29d34efd3969c2c12f30153c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 351a9742e9d839a8e217fdea35cad922acc3339f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320104"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095674"
 ---
 # <a name="handling-review-feedback-for-azure-application-offers"></a>Azure アプリケーション オファーのレビュー フィードバックの処理
 
@@ -37,14 +37,14 @@ ms.locfileid: "87320104"
 1. [発行手順] フォームの **[Microsoft によるレビュー]** セクションで、PR リンクを選択してブラウザーを起動し、この PR の **[概要]** (ホーム) ページに移動します。 次の図は、Contoso のサンプル アプリ オファーの重大な問題のホーム ページの例を示しています。 このページには、Azure アプリで検出されたレビューの問題に関する有用な概要情報が含まれています。
 
     [![pull request のホーム ページ](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
-    <br/> "*拡大するには画像をクリックしてください。* "
+    <br/> " *拡大するには画像をクリックしてください。* "
 
-1. (省略可能) ウィンドウの右側にある **[ポリシー]** セクションで、問題のメッセージを選択して (この例では、**Policy Validation failed\(ポリシーの検証に失敗しました\)** )、問題の低レベルの詳細 (関連付けられているログ ファイルを含む) を調査します。 通常、エラーはログ ファイルの下部に表示されます。
+1. (省略可能) ウィンドウの右側にある **[ポリシー]** セクションで、問題のメッセージを選択して (この例では、 **Policy Validation failed\(ポリシーの検証に失敗しました\)** )、問題の低レベルの詳細 (関連付けられているログ ファイルを含む) を調査します。 通常、エラーはログ ファイルの下部に表示されます。
 
-1. ホーム ページの左側にあるメニューで、**ファイル**を選択して、このオファーの技術資産を構成するリスト ファイルを表示します。 検出された重大な問題について説明するコメントが Microsoft のレビュー担当者によって追加されているはずです。 次の例では、2 つの問題が検出されました。
+1. ホーム ページの左側にあるメニューで、 **ファイル** を選択して、このオファーの技術資産を構成するリスト ファイルを表示します。 検出された重大な問題について説明するコメントが Microsoft のレビュー担当者によって追加されているはずです。 次の例では、2 つの問題が検出されました。
 
-    [![pull request のホーム ページ](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
-    <br/> "*拡大するには画像をクリックしてください。* "
+    [![[ファイル] と、検出された 2 つの問題が強調表示されたスクリーンショット。](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
+    <br/> " *拡大するには画像をクリックしてください。* "
 
 1. 左側のツリーで各コメント ノードを選択して、周囲のコードのコンテキスト内のコメントに移動します。 チームのプロジェクト内のソース コードを修正し、コメントで説明されている問題を修正します。
 

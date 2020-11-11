@@ -1,6 +1,6 @@
 ---
-title: SQL オンデマンド (プレビュー) を使用して Parquet ファイルに対してクエリを実行する
-description: この記事では、SQL オンデマンド (プレビュー) を使用して Parquet ファイルに対してクエリを実行する方法について説明します。
+title: サーバーレス SQL プール (プレビュー) を使用して Parquet ファイルに対してクエリを実行する
+description: この記事では、サーバーレス SQL プール (プレビュー) を使用して Parquet ファイルに対してクエリを実行する方法について説明します。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 35eef6951f844ab60caec70033e41e23a7920d3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3559b3724d14be6aade07c4884190afce30c0715
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288309"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93306858"
 ---
-# <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics の SQL オンデマンド (プレビュー) を使用して Parquet ファイルに対してクエリを実行する
+# <a name="query-parquet-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プール (プレビュー) を使用して Parquet ファイルのクエリを実行する
 
-この記事では、Parquet ファイルを読み取る SQL オンデマンド (プレビュー) を使用してクエリを作成する方法について説明します。
+この記事では、Parquet ファイルを読み取るサーバーレス SQL プール (プレビュー) を使用してクエリを作成する方法について説明します。
 
 ## <a name="quickstart-example"></a>クイック スタートの例
 
@@ -72,7 +72,7 @@ from openrowset(
 
 ## <a name="prerequisites"></a>前提条件
 
-最初の手順は、[NYC Yellow Taxi](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) ストレージ アカウントを参照するデータソースで**データベースを作成**することです。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、これらのサンプルで使用されるデータ ソース、データベース スコープの資格情報、および外部ファイル形式が作成されます。
+最初の手順は、 [NYC Yellow Taxi](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) ストレージ アカウントを参照するデータソースで **データベースを作成** することです。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、これらのサンプルで使用されるデータ ソース、データベース スコープの資格情報、および外部ファイル形式が作成されます。
 
 ## <a name="dataset"></a>データセット
 
@@ -111,7 +111,7 @@ Parquet ファイルを読み取るときに、OPENROWSET WITH 句を使用す�
 次のサンプルは、Parquet ファイルを対象にした自動スキーマ推論機能を示しています。 この場合はスキーマを指定しなくても 2017 年 9 月の行の数が返されます。
 
 > [!NOTE]
-> Parquet ファイルを読み取るときに OPENROWSET WITH 句で列を指定する必要はありません。 この場合、SQL オンデマンド Query サービスでは Parquet ファイル内のメタデータが利用され、名前によって列がバインドされます。
+> Parquet ファイルを読み取るときに OPENROWSET WITH 句で列を指定する必要はありません。 この場合、サーバーレス SQL プールのクエリ サービスにより、Parquet ファイル内のメタデータが利用され、名前によって列がバインドされます。
 
 ```sql
 SELECT TOP 10 *
@@ -128,7 +128,7 @@ FROM
 このサンプルで指定されたデータ セットは、個別のサブフォルダーに分割 (パーティション分割) されます。 filepath 関数を使用して、特定のパーティションをターゲットにすることができます。 この例では、2017 年の最初の 3 か月について、年、月、および payment_type 別の料金が示されています。
 
 > [!NOTE]
-> SQL オンデマンド クエリは、Hive/Hadoop パーティション構成と互換性があります。
+> サーバーレス SQL プールのクエリは、Hive/Hadoop パーティション構成と互換性があります。
 
 ```sql
 SELECT
@@ -155,43 +155,7 @@ ORDER BY
 
 ## <a name="type-mapping"></a>型のマッピング
 
-Parquet ファイルには、すべての列の型の説明が含まれています。 次の表では、Parquet 型を SQL ネイティブ型にマップする方法について説明します。
-
-| Parquet 型 | Parquet 論理型 (注釈) | SQL データ型 |
-| --- | --- | --- |
-| BOOLEAN | | bit |
-| BINARY / BYTE_ARRAY | | varbinary |
-| DOUBLE | | float |
-| FLOAT | | real |
-| INT32 | | INT |
-| INT64 | | bigint |
-| INT96 | |datetime2 |
-| FIXED_LEN_BYTE_ARRAY | |binary |
-| BINARY |UTF8 |varchar \*(UTF8 照合順序) |
-| BINARY |STRING |varchar \*(UTF8 照合順序) |
-| BINARY |ENUM|varchar \*(UTF8 照合順序) |
-| BINARY |UUID |UNIQUEIDENTIFIER |
-| BINARY |DECIMAL |decimal |
-| BINARY |JSON |varchar(max) \*(UTF8 照合順序) |
-| BINARY |BSON |varbinary(max) |
-| FIXED_LEN_BYTE_ARRAY |DECIMAL |decimal |
-| BYTE_ARRAY |INTERVAL |varchar(max)、標準化された形式にシリアル化 |
-| INT32 |INT(8, true) |smallint |
-| INT32 |INT(16, true) |smallint |
-| INT32 |INT(32, true) |INT |
-| INT32 |INT(8, false) |tinyint |
-| INT32 |INT(16, false) |INT |
-| INT32 |INT(32, false) |bigint |
-| INT32 |DATE |date |
-| INT32 |DECIMAL |decimal |
-| INT32 |TIME (MILLIS)|time |
-| INT64 |INT(64, true) |bigint |
-| INT64 |INT(64, false) |decimal (20,0) |
-| INT64 |DECIMAL |decimal |
-| INT64 |TIME (MICROS / NANOS) |time |
-|INT64 |TIMESTAMP (MILLIS / MICROS / NANOS) |datetime2 |
-|[複合型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |リスト |varchar(max)、JSON にシリアル化 |
-|[複合型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|MAP|varchar(max)、JSON にシリアル化 |
+Parquet の型と SQL のネイティブ型のマッピングについては、[Parquet の型マッピング](develop-openrowset.md#type-mapping-for-parquet)に関するページを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

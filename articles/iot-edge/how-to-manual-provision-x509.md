@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: kgremban
-ms.openlocfilehash: b1aa12bd73772b5d6332a36d749ec4d7d10d4026
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: abb3aa9ca7c9697fef1cf456964154249f0d69f3
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048187"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913978"
 ---
 # <a name="set-up-an-azure-iot-edge-device-with-x509-certificate-authentication"></a>Azure IoT Edge デバイスに X.509 証明書認証を設定する
 
@@ -26,11 +26,11 @@ ms.locfileid: "92048187"
 
 手動プロビジョニングの場合、IoT Edge デバイスの認証には 2 つのオプションがあります。
 
-* **対称キー**: IoT Hub で新しいデバイス ID を作成すると、サービスによって 2 つのキーが作成されます。 いずれかのキーをデバイスに配置すると、認証時にそのキーが IoT Hub に提供されます。
+* **対称キー** : IoT Hub で新しいデバイス ID を作成すると、サービスによって 2 つのキーが作成されます。 いずれかのキーをデバイスに配置すると、認証時にそのキーが IoT Hub に提供されます。
 
   この認証方法は比較的すばやく開始できますが、それほど安全ではありません。
 
-* **X.509 自己署名**: 2 つの X.509 ID 証明書を作成し、デバイスに配置します。 IoT Hub で新しいデバイス ID を作成するときは、両方の証明書の拇印を指定します。 デバイスが IoT Hub に対して認証されると、その証明書が提示され、それらが拇印と一致することが IoT Hub によって確認できます。
+* **X.509 自己署名** : 2 つの X.509 ID 証明書を作成し、デバイスに配置します。 IoT Hub で新しいデバイス ID を作成するときは、両方の証明書の拇印を指定します。 デバイスが IoT Hub に対して認証されると、その証明書が提示され、それらが拇印と一致することが IoT Hub によって確認できます。
 
   この認証方法はより安全であり、運用環境のシナリオの場合に推奨されます。
 
@@ -44,17 +44,32 @@ X.509 証明書を使用した手動プロビジョニングには、バージ�
 
 ## <a name="create-certificates-and-thumbprints"></a>証明書と拇印を作成する
 
+デバイス ID 証明書は、信頼する証明書チェーンを介して最上位の X.509 証明機関 (CA) 証明書につながるリーフ証明書です。 デバイス ID 証明書の共通名 (CN) は、IoT ハブ内のデバイスに付けるデバイス ID に設定されている必要があります。
 
+デバイス ID 証明書は、IoT Edge デバイスのプロビジョニングと、Azure IoT Hub でのデバイス認証を行うためにのみ使用されます。 証明書に署名するためのものではありません (IoT Edge デバイスから確認のためにモジュールまたはリーフ デバイスに提示される CA 証明書とは異なります)。 詳細については、[Azure IoT Edge 証明書の使用方法に関する詳細](iot-edge-certs.md)のページを参照してください。
 
-<!-- TODO -->
+デバイス ID 証明書を作成すると、2 つのファイルができます。証明書の公開部分を含む .cer または pem ファイルと、証明書の秘密キーを含む .cer または pem ファイルです。
+
+X.509 を使用して手動でプロビジョニングするには、次のファイルが必要です。
+
+* デバイス ID 証明書と秘密キー証明書の 2 つのセット。 IoT Edge ランタイムには、証明書/キー ファイルのセットが 1 つ用意されています。
+* 両方のデバイス ID 証明書から取得された拇印。 拇印の値は SHA-1 ハッシュの場合は 40 桁の 16 進数、SHA-256 ハッシュの場合は 64 桁の 16 進数です。 両方の拇印は、デバイスの登録時に IoT Hub に提供されます。
+
+使用できる証明書がない場合は、[デモ証明書を作成して IoT Edge デバイスの機能をテスト](how-to-create-test-certificates.md)できます。 この記事に記載されている手順に従って、証明書作成スクリプトを設定し、ルート CA 証明書を作成してから、2 つの IoT Edge デバイス ID 証明書を作成します。
+
+証明書から拇印を取得する方法の 1 つは、次の openssl コマンドを使用することです。
+
+```cmd
+openssl x509 -in <certificate filename>.pem -text -fingerprint
+```
 
 ## <a name="register-a-new-device"></a>新しいデバイスを登録する
 
 IoT Hub に接続するすべてのデバイスには、cloud-to-device または device-to-cloud 通信の追跡に使用されるデバイス ID があります。 デバイスをその接続情報で構成します。これには、IoT ハブ ホスト名、デバイス ID、IoT Hub に対して認証を行うためにデバイスで使用される情報が含まれます。
 
-X.509 証明書認証の場合、この情報は、デバイス ID 証明書から取得した "*拇印*" の形で提供されます。 これらの拇印は、サービスが接続時にデバイスを認識できるように、デバイスの登録時に IoT Hub に付与されます。
+X.509 証明書認証の場合、この情報は、デバイス ID 証明書から取得した " *拇印* " の形で提供されます。 これらの拇印は、サービスが接続時にデバイスを認識できるように、デバイスの登録時に IoT Hub に付与されます。
 
-複数のツールを使用して IoT Hub に新しい IoT Edge デバイスを登録し、その証明書の拇印をアップロードできます。 
+複数のツールを使用して IoT Hub に新しい IoT Edge デバイスを登録し、その証明書の拇印をアップロードできます。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -82,7 +97,7 @@ Azure portal の IoT Hub で、IoT Edge デバイスは、エッジ対応では�
 
 ### <a name="view-iot-edge-devices-in-the-azure-portal"></a>Azure portal で IoT Edge デバイスを表示する
 
-IoT ハブに接続するすべてのエッジ対応デバイスが、**IoT Edge** ページに一覧表示されます。
+IoT ハブに接続するすべてのエッジ対応デバイスが、 **IoT Edge** ページに一覧表示されます。
 
 ![IoT ハブ内のすべての IoT Edge デバイスを表示する](./media/how-to-manual-provision-symmetric-key/portal-view-devices.png)
 
@@ -160,10 +175,10 @@ Linux デバイスでは、config.yaml ファイルを編集してこの情報�
 
 1. 次のフィールドを更新します。
 
-   * **iothub_hostname**: デバイスの接続先となる IoT ハブのホスト名。 たとえば、`{IoT hub name}.azure-devices.net` のようにします。
-   * **device_id**: デバイスを登録したときに指定した ID。
-   * **identity_cert**: デバイス上の ID 証明書の URI。 たとえば、`file:///path/identity_certificate.pem` のようにします。
-   * **identity_pk**: 指定された ID 証明書の秘密キー ファイルの URI。 たとえば、`file:///path/identity_key.pem` のようにします。
+   * **iothub_hostname** : デバイスの接続先となる IoT ハブのホスト名。 たとえば、`{IoT hub name}.azure-devices.net` のようにします。
+   * **device_id** : デバイスを登録したときに指定した ID。
+   * **identity_cert** : デバイス上の ID 証明書の URI。 たとえば、`file:///path/identity_certificate.pem` のようにします。
+   * **identity_pk** : 指定された ID 証明書の秘密キー ファイルの URI。 たとえば、`file:///path/identity_key.pem` のようにします。
 
 1. ファイルを保存して閉じます。
 
@@ -202,17 +217,17 @@ Linux デバイスでは、config.yaml ファイルを編集してこの情報�
 
 3. 入力を求められたら、次の情報を指定します。
 
-   * **IotHubHostName**: デバイスの接続先となる IoT ハブのホスト名。 たとえば、`{IoT hub name}.azure-devices.net` のようにします。
-   * **DeviceId**: デバイスを登録したときに指定した ID。
-   * **X509IdentityCertificate**: デバイス上の ID 証明書の絶対パス。 たとえば、`C:\path\identity_certificate.pem` のようにします。
-   * **X509IdentityPrivateKey**: 指定された ID 証明書の秘密キー ファイルの絶対パス。 たとえば、`C:\path\identity_key.pem` のようにします。
+   * **IotHubHostName** : デバイスの接続先となる IoT ハブのホスト名。 たとえば、`{IoT hub name}.azure-devices.net` のようにします。
+   * **DeviceId** : デバイスを登録したときに指定した ID。
+   * **X509IdentityCertificate** : デバイス上の ID 証明書の絶対パス。 たとえば、`C:\path\identity_certificate.pem` のようにします。
+   * **X509IdentityPrivateKey** : 指定された ID 証明書の秘密キー ファイルの絶対パス。 たとえば、`C:\path\identity_key.pem` のようにします。
 
 デバイスを手動でプロビジョニングする場合は、追加のパラメーターを使用して、プロセスを次のように変更できます。
 
 * プロキシ サーバーを経由するようトラフィックを誘導する
 * 特定の edgeAgent コンテナー イメージを宣言し、それがプライベート レジストリに存在する場合は資格情報を提供する
 
-これらの追加パラメーターの詳細については、「[PowerShell scripts for IoT Edge on Windows](reference-windows-scripts.md)」(Windows 上の IoT Edge 用の PowerShell スクリプト) を参照してください。
+これらの追加パラメーターの詳細については、「[Windows 上の IoT Edge 用の PowerShell スクリプト](reference-windows-scripts.md)」を参照してください。
 
 ---
 

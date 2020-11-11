@@ -471,7 +471,7 @@
       items:
         - name: 操作の監視
           href: iot-hub-operations-monitoring.md
-        - name: 診断設定への移行
+        - name: Azure Monitor への移行
           href: iot-hub-migrate-to-diagnostics-settings.md
         - name: TLS 1.0 および 1.1 の廃止
           href: iot-hub-tls-deprecating-1-0-and-1-1.md

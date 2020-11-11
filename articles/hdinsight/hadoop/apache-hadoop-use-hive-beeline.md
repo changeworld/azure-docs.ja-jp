@@ -6,18 +6,20 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 08/21/2020
-ms.custom: contperfq1
-ms.openlocfilehash: f6d8f804fa26383435d191af27289ffd2ecb3e0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/28/2020
+ms.custom: contperfq1, contperfq2
+ms.openlocfilehash: 756c87299db85e426b4793d51bea833aa694a830
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88755094"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145958"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Hive で Apache Beeline クライアントを使用する
 
-[Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) を使用して HDInsight 上で Hive クエリを実行する方法について説明します。
+この記事では、コマンド ライン [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) クライアントを使用して、SSH 接続を介して Apache Hive クエリを作成および実行する方法について説明します。
+
+## <a name="background"></a>バックグラウンド
 
 Beeline は、HDInsight クラスターのヘッド ノードに含まれている Hive クライアントです。 HDInsight クラスターにインストールされている Beeline クライアントに接続したり、Beeline をローカルにインストールしたりするには、[Apache Beeline への接続またはインストール](connect-install-beeline.md)に関する記事を参照してください。 Beeline は、JDBC を使用して、HDInsight クラスターでホストされる HiveServer2 サービスに接続します。 Beeline を使用して、インターネット経由でで、HDInsight での Hive にリモートでアクセスすることもできます。 次の例は、Beeline から HDInsight への接続に使用される最も一般的な接続文字列を示します。
 
@@ -27,9 +29,7 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
 
 * クラスターのプライマリ ストレージの URI スキームに注目してください。 たとえば、Azure Storage の場合は `wasb://`、Azure Data Lake Storage Gen2 の場合は`abfs://`、Azure Data Lake Storage Gen1 の場合は `adl://` です。 Azure Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。 詳細については、[安全な転送](../../storage/common/storage-require-secure-transfer.md)に関するページを参照してください。
 
-* オプション 1: SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。 このドキュメントのほとんどの手順では、SSH セッションからクラスターへの Beeline を使用していることを前提としています。
-
-* オプション 2:ローカルの Beeline クライアント。
+* SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。 このドキュメントのほとんどの手順では、SSH セッションからクラスターへの Beeline を使用していることを前提としています。 ローカルの Beeline クライアントを使用することもできますが、この記事では、その手順については説明しません。
 
 ## <a name="run-a-hive-query"></a>Hive クエリを実行する
 
@@ -56,7 +56,7 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
     show tables;
     ```
 
-    新しいクラスターでは、1 つのテーブル (**hivesampletable**) だけが表示されます。
+    新しいクラスターでは、1 つのテーブル ( **hivesampletable** ) だけが表示されます。
 
 4. 次のコマンドを使用して、hivesampletable のスキーマを表示します。
 
@@ -86,7 +86,7 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
 
     この情報は、テーブル内の列を説明します。
 
-5. 次のステートメントを入力して、HDInsight クラスター付属のサンプル データを使用する **log4jLogs**という名前のテーブルを作成します。(URI スキームに基づいて必要に応じて修正してください。)
+5. 次のステートメントを入力して、HDInsight クラスター付属のサンプル データを使用する **log4jLogs** という名前のテーブルを作成します。(URI スキームに基づいて必要に応じて修正してください。)
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -110,7 +110,7 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
     |ステートメント |説明 |
     |---|---|
     |DROP TABLE|テーブルが存在する場合は削除されます。|
-    |CREATE EXTERNAL TABLE|Hive に**外部**テーブルを作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。|
+    |CREATE EXTERNAL TABLE|Hive に **外部** テーブルを作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。|
     |ROW FORMAT|データがどのように書式設定されるか。 ここでは、各ログのフィールドは、スペースで区切られています。|
     |STORED AS TEXTFILE LOCATION|データの格納場所とファイル形式。|
     |SELECT|**t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 この値を含む行が 3 行あるため、このクエリでは値 **3** が返されます。|
@@ -119,7 +119,7 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
    > [!NOTE]  
    > 基になるデータが外部ソースによって更新されると考えられる場合は、外部テーブルを使用する必要があります。 たとえば、データの自動アップロード処理や MapReduce 操作の場合です。
    >
-   > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
+   > 外部テーブルを削除しても、データは削除 **されません** 。テーブル定義のみが削除されます。
 
     このコマンドの出力は次のテキストのようになります。
 
@@ -157,13 +157,13 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
 
 この例は、前の例からの続きです。 次の手順でファイルを作成し、Beeline を使用してそれを実行します。
 
-1. 次のコマンドを使用して、**query.hql** という名前の新しいファイルを作成します。
+1. 次のコマンドを使用して、 **query.hql** という名前の新しいファイルを作成します。
 
     ```bash
     nano query.hql
     ```
 
-1. ファイルの内容として、次のテキストを使用します。 このクエリは、**errorLogs** という名前の新しい '内部' テーブルを作成します。
+1. ファイルの内容として、次のテキストを使用します。 このクエリは、 **errorLogs** という名前の新しい '内部' テーブルを作成します。
 
     ```hiveql
     CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
@@ -176,12 +176,12 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
     |---|---|
     |CREATE TABLE IF NOT EXISTS|テーブルが存在しない場合は作成されます。 **EXTERNAL** キーワードが使用されていないため、このステートメントは内部テーブルを作成します。 内部テーブルは Hive データ ウェアハウスに格納され、完全に Hive によって管理されます。|
     |STORED AS ORC|Optimized Row Columnar (ORC) 形式でデータを格納します。 ORC 形式は、Hive データを格納するための高度に最適化された効率的な形式です。|
-    |INSERT OVERWRITE ...SELECT|**[ERROR]** を含む **log4jLogs** テーブルの列を選択し、**errorLogs** テーブルにデータを挿入します。|
+    |INSERT OVERWRITE ...SELECT|**[ERROR]** を含む **log4jLogs** テーブルの列を選択し、 **errorLogs** テーブルにデータを挿入します。|
 
     > [!NOTE]  
     > 外部テーブルとは異なり、内部テーブルを削除すると基盤となるデータも削除されます。
 
-1. ファイルを保存するには、**Ctrl**+**X** キーを押し、**Y** キー、**Enter** キーの順に押します。
+1. ファイルを保存するには、 **Ctrl**+**X** キーを押し、 **Y** キー、 **Enter** キーの順に押します。
 
 1. 次を使用し、Beeline でファイルを実行します。
 
@@ -192,7 +192,7 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
     > [!NOTE]  
     > `-i` パラメーターは Beeline を開始し、`query.hql` ファイル内のステートメントを実行します。 クエリが完了すると、`jdbc:hive2://headnodehost:10001/>` プロンプトが表示されます。 ファイルは、`-f` パラメーターを使用して実行することもできます。この場合、クBeeline はクエリの完了後に終了します。
 
-1. **errorLogs** テーブルが作成されたことを確認するには、**errorLogs** からすべての行を返す次のステートメントを使用します。
+1. **errorLogs** テーブルが作成されたことを確認するには、 **errorLogs** からすべての行を返す次のステートメントを使用します。
 
     ```hiveql
     SELECT * from errorLogs;

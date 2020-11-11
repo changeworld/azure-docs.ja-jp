@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 0ed8533b093c5af0d8aefdcd5175bed63f37a76c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57cd9b55f529bde3f6bcb0a25a95c70333f6d8dd
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85507672"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130954"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して、StorSimple Virtual Array のサポート要求を記録します
 
 ## <a name="overview"></a>概要
 
-StorSimple デバイス マネージャーのサービスの概要ブレードには、**新しいサポート要求を記録**する機能が用意されています。 この記事では、ポータル内から新しいサポート要求を記録し、そのライフサイクルを管理する方法について説明します。
+StorSimple デバイス マネージャーのサービスの概要ブレードには、 **新しいサポート要求を記録** する機能が用意されています。 この記事では、ポータル内から新しいサポート要求を記録し、そのライフサイクルを管理する方法について説明します。
 
 ## <a name="new-support-request"></a>新しいサポート要求
 
@@ -35,25 +35,25 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 
 1. StorSimple デバイス マネージャー サービスに移動します。 サービスの概要ブレードの設定で、 **[サポート + トラブルシューティング]** セクションに移動し、 **[新しいサポート要求]** をクリックします。
    
-    ![新しいサポート要求](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
+    ![スクリーンショットは、新しいサポート要求の [基本] ペインを示しています。](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
 
 2. **[基本]** ブレードで、次の操作を行います。
 
     1. **[問題の種類]** ドロップダウン リストで **[技術]** を選択します。 
     
-    2. 現在の**サブスクリプション**、**サービス**の種類、および**リソース** (StorSimple デバイス マネージャー サービス) が自動的に選択されています。 
+    2. 現在の **サブスクリプション** 、 **サービス** の種類、および **リソース** (StorSimple デバイス マネージャー サービス) が自動的に選択されています。 
 
     3. 問題が発生しているサービスに登録されている 1 台以上のデバイスを指定します。
 
-    4. 複数の**サポート プラン**がサブスクリプションに関連付けられている場合は、適切なプランを選択します。 テクニカル サポートを利用するには、有料サポート プランに加入している必要があります。
+    4. 複数の **サポート プラン** がサブスクリプションに関連付けられている場合は、適切なプランを選択します。 テクニカル サポートを利用するには、有料サポート プランに加入している必要があります。
 
-3. **手順 2.** で **[重大度]** を選択し、問題がアレイまたは StorSimple デバイス マネージャー サービスに関連付けられているかどうかを指定します。 また、この問題の**カテゴリ**を選択し、問題の**詳細**を指定します。
+3. **手順 2.** で **[重大度]** を選択し、問題がアレイまたは StorSimple デバイス マネージャー サービスに関連付けられているかどうかを指定します。 また、この問題の **カテゴリ** を選択し、問題の **詳細** を指定します。
    
-    ![新しいサポート要求](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
+    ![スクリーンショットは、サポート要求の [問題の種類]、[カテゴリ]、[詳細] を入力できる [問題] ペインを示しています。](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
 
 4. **手順 3.** で、連絡先情報を指定します。 Microsoft サポートでは、この情報を使用してお客様に連絡し、詳細、診断、および解決策に関する情報を提供します。
    
-    ![新しいサポート要求](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
+    ![スクリーンショットは、[Contact information]\(連絡先情報\) ペインを示しています。](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
 
 ## <a name="manage-a-support-request"></a>サポート要求を管理する
 

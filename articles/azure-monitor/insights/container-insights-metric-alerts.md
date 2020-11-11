@@ -2,13 +2,13 @@
 title: Azure Monitor for containers からのメトリック アラート
 description: この記事では、Azure Monitor for containers から利用可能なパブリック プレビュー段階の推奨メトリック アラートを確認します。
 ms.topic: conceptual
-ms.date: 10/09/2020
-ms.openlocfilehash: 7d9e6cb9a89dfe65777f8bcf507186e24d38a422
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.date: 10/28/2020
+ms.openlocfilehash: cda5639fdf72f5731af851860f37afa888e7d965
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308638"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927823"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Azure Monitor for containers からの推奨メトリック アラート (プレビュー)
 
@@ -24,7 +24,7 @@ Azure Monitor のアラートに詳しくない場合は、事前に「[Microsof
 
 * カスタム メトリックは、一部の Azure リージョンでのみ利用できます。 サポートされているリージョンの一覧については、「[サポートされているリージョン](../platform/metrics-custom-overview.md#supported-regions)」を参照してください。
 
-* メトリック アラート、および追加メトリックの導入をサポートするためのエージェントの必要最小限のバージョンは、AKS の場合は **microsoft/oms:ciprod05262020** 、Azure Arc 対応 Kubernetes クラスターの場合は **microsoft/oms:ciprod09252020** です。
+* メトリック アラートおよび追加メトリックの導入をサポートするためのエージェントの必要最小限のバージョンは、AKS の場合は **mcr.microsoft.com/azuremonitor/containerinsights/ciprod:ciprod05262020** 、Azure Arc 対応 Kubernetes クラスターの場合は **mcr.microsoft.com/azuremonitor/containerinsights/ciprod:ciprod09252020** です。
 
     お使いのクラスターで新しいバージョンのエージェントが実行されていることを確認するには、次のいずれかの手順を行います。
 

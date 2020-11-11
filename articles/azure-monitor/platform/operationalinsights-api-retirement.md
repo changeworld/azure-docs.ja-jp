@@ -5,20 +5,20 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/02/2020
-ms.openlocfilehash: ad3287651716580aaf6ab8c5e819fd92a70e695d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.date: 10/29/2020
+ms.openlocfilehash: 7ddfb3221c73c740a339dd8d9d4f60cca46c6425
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144105"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026770"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>OperationalInsights API バージョンの提供終了
-Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、API の提供終了を少なくともその 12 か月前に通知します。 **OperationalInsights** リソース プロバイダー API の新しいバージョン (2020-08-01) がリリースされたため、2023 年 10 月 31 日に以前の API バージョンをすべて提供終了します。
+Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、API の提供終了を少なくともその 12 か月前に通知します。 **OperationalInsights** リソース プロバイダー API の新しいバージョン (2020-08-01) がリリースされたため、2024 年 2 月 29 日に以前の API バージョンは廃止されます。
 
 バージョン 2020-08-01 の使用をすぐに開始することをお勧めします。これにより、[専用クラスター](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters)、[カスタマー マネージド キー](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys)、[プライベート リンク](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)、[データ エクスポート](https://docs.microsoft.com/azure/azure-monitor/platform/logs-data-export)などの新機能のメリットを得ることができます。 また、新しい機能や機能性、および最適化は、現在の API にのみ追加されます。
 
-2023 年 10 月 31 日以降、Azure Monitor は 2020-08-01 より前の API バージョンをサポートしなくなります。 アップグレードしない場合でも、以前のバージョンから送信される要求は、2023 年 10 月 31 日まで引き続き Azure Monitor サービスによって処理されます。
+2024 年 2 月 29 日以降、Azure Monitor では 2020-08-01 より前の API バージョンがサポートされなくなります。 アップグレードしない場合でも、以前のバージョンから送信される要求は、2024 年 2 月 29 日まで引き続き Azure Monitor サービスによって処理されます。
 
 ## <a name="migration-steps"></a>移行の手順
 使用する構成方法に応じて、 **REST** 要求と **Resource Manager テンプレート** で新しいバージョンを更新する必要があります。 API バージョンを更新するには、下の例に従います。

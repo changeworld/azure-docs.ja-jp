@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: e22908dc5d445f105c199e594443cd051eb4be41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82763842e6145b3883c46bcb9ddb45b7836c3cf2
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051357"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241822"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 
@@ -239,7 +239,7 @@ UDP の負荷分散では、バックエンド エンドポイントからカス
 
 お客様のファイアウォール ポリシーでプローブの[ソース IP](#probesource) を許可しない場合、正常性プローブはお客様のインスタンスに到達できないため失敗します。  さらに、正常性プローブが失敗するため、Load Balancer はインスタンスをダウンとしてマークします。  この誤った構成は、お客様の負荷分散アプリケーションのシナリオが失敗する原因となる可能性があります。
 
-Load Balancer の正常性プローブによってお客様のインスタンスがアップとしてマークされるには、Azure の[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)とローカル ファイアウォールのポリシーで、この IP アドレスを許可する**必要があります**。  既定では、正常性プローブのトラフィックを許可するための[サービス タグ](../virtual-network/security-overview.md#service-tags) AzureLoadBalancer がすべてのネットワーク セキュリティ グループに含まれています。
+Load Balancer の正常性プローブによってお客様のインスタンスがアップとしてマークされるには、Azure の [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)とローカル ファイアウォールのポリシーで、この IP アドレスを許可する **必要があります** 。  既定では、正常性プローブのトラフィックを許可するための[サービス タグ](../virtual-network/security-overview.md#service-tags) AzureLoadBalancer がすべてのネットワーク セキュリティ グループに含まれています。
 
 正常性プローブの失敗をテストしたい場合、または個別のインスタンスをダウンとしてマークしたい場合は、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)を使用し、正常性プローブ (宛先ポートまたは[ソース IP](#probesource)) を明示的にブロックしてプローブの失敗をシミュレートできます。
 

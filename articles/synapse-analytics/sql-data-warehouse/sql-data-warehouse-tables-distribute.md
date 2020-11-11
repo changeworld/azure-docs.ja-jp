@@ -1,6 +1,6 @@
 ---
 title: 分散テーブルの設計ガイダンス
-description: Synapse SQL プールのハッシュ分散テーブルおよびラウンド ロビン分散テーブルを設計するためのレコメンデーション。
+description: Azure Synapse Analytics で専用 SQL プールを使用して、ハッシュ分散およびラウンド ロビン分散の各テーブルを設計するための推奨事項。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 10d37dd5fd9703246913959b9eeec3e1fbc2e913
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a3715abdebce319979d867d12764a22b4ed16c35
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487009"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323616"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Synapse SQL プールでの分散テーブルの設計に関するガイダンス
+# <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics で専用 SQL プールを使用して分散テーブルを設計するためのガイダンス
 
-Synapse SQL プールのハッシュ分散テーブルおよびラウンドロビン分散テーブルを設計するためのレコメンデーション。
+専用 SQL プールでハッシュ分散およびラウンドロビン分散の各テーブルを設計するための推奨事項。
 
-この記事では、Synapse SQL のデータ分散とデータ移動の概念を理解していることを前提としています。  詳細については、[Azure Synapse Analytics のアーキテクチャ](massively-parallel-processing-mpp-architecture.md)に関する記事を参照してください。
+この記事では、専用 SQL プールのデータ分散とデータ移動の概念を理解していることを前提としています。  詳細については、[Azure Synapse Analytics のアーキテクチャ](massively-parallel-processing-mpp-architecture.md)に関する記事を参照してください。
 
 ## <a name="what-is-a-distributed-table"></a>分散テーブルについて
 
@@ -36,7 +36,7 @@ Synapse SQL プールのハッシュ分散テーブルおよびラウンドロ�
 
 - テーブルの大きさはどの程度か。
 - どの程度の頻度でテーブルが更新されるか。
-- Synapse SQL プール内にファクト テーブルとディメンション テーブルがあるか。
+- 専用 SQL プール内にファクトおよびディメンションのテーブルがあるか。
 
 ### <a name="hash-distributed"></a>ハッシュによる分散
 
@@ -44,7 +44,7 @@ Synapse SQL プールのハッシュ分散テーブルおよびラウンドロ�
 
 ![分散テーブル](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "分散テーブル")  
 
-同一値は常に同じディストリビューションにハッシュされるため、データ ウェアハウスには行の位置情報に関する組み込みのナレッジがあります。 Synapse SQL プールではこのナレッジを使用して、クエリ時のデータ移動を最小化し、クエリ パフォーマンスを向上させます。
+同一値は常に同じディストリビューションにハッシュされるため、データ ウェアハウスには行の位置情報に関する組み込みのナレッジがあります。 専用 SQL プールではこのナレッジを使用して、クエリ時のデータ移動を最小化し、クエリ パフォーマンスを向上させます。
 
 ハッシュ分散テーブルは、スター スキーマにある大規模なファクト テーブルに適しています。 非常に多数の行を格納し、その上で高度なパフォーマンスを実現できます。 もちろん、期待通りの分散システムのパフォーマンスを得るために役立つ設計上の考慮事項はいくつかあります。 適切なディストリビューション列を選択することはそのような考慮事項の 1 つであり、この記事で説明されています。
 
@@ -113,7 +113,7 @@ WITH
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>データ移動を最小化するディストリビューション列を選択する
 
-正確なクエリ結果を得るために、クエリでは 1 つの計算ノードから別の計算ノードへとデータを移動させる場合があります。 データ移動は、一般的に、クエリに分散テーブルでの結合と集計が含まれる場合に発生します。 データ移動を最小化するディストリビューション列を選択することが、Synapse SQL プールのパフォーマンスを最適化するための最も重要な戦略の 1 つです。
+正確なクエリ結果を得るために、クエリでは 1 つの計算ノードから別の計算ノードへとデータを移動させる場合があります。 データ移動は、一般的に、クエリに分散テーブルでの結合と集計が含まれる場合に発生します。 データ移動を最小化できるディストリビューション列を選択することが、専用 SQL プールのパフォーマンスを最適化するための最も重要な戦略の 1 つです。
 
 データ移動を最小化するために、以下のようなディストリビューション列を選択します。
 
@@ -225,5 +225,5 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 分散テーブルを作成するには、以下のいずれかのステートメントを使用します。
 
-- [CREATE TABLE (Synapse SQL プール)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE TABLE AS SELECT (Synapse SQL プール)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE (専用 SQL プール)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE AS SELECT (専用 SQL プール)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

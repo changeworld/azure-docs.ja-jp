@@ -4,17 +4,17 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
-ms.openlocfilehash: b62e5057d8f144fc56d0e35927d17de27a1c8863
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cec44bbabdb7d528c30a8d3396b819f2eb3c5386
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255251"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93235893"
 ---
 機能は簡単にセットアップできますが、問題が発生しないという意味ではありません。 目的のエンドポイントへのアクセスに関して問題が発生した場合は、アプリのコンソールからの接続をテストするために、いくつかのユーティリティを利用できます。 利用できるコンソールが 2 つあります。 1 つは Kudu コンソールで、もう 1 つは Azure portal 内のコンソールです。 アプリから Kudu コンソールにアクセスするには、 **[ツール]**  >  **[Kudu]** の順に移動します。 [サイト名].scm.azurewebsites.net で Kudo コンソールにアクセスすることもできます。 Web サイトが読み込まれたら、 **[デバッグ コンソール]** タブに移動します。お使いのアプリから Azure portal によってホストされたコンソールにアクセスするには、 **[ツール]**  >  **[コンソール]** の順に移動します。
 
 #### <a name="tools"></a>ツール
-ネイティブ Windows アプリでは、**ping**、**nslookup**、**tracert** の各ツールは、セキュリティの制約により、コンソールから使用することはできません ([カスタム Windows コンテナー](../articles/app-service/quickstart-custom-container.md)で動作します)。 それを補うために、2 つの独立したツールが追加されています。 DNS 機能をテストするために、**nameresolver.exe** という名前のツールを追加しました。 の構文は次のとおりです。
+ネイティブ Windows アプリでは、 **ping** 、 **nslookup** 、 **tracert** の各ツールは、セキュリティの制約により、コンソールから使用することはできません ( [カスタム Windows コンテナー](../articles/app-service/quickstart-custom-container.md)で動作します)。 それを補うために、2 つの独立したツールが追加されています。 DNS 機能をテストするために、 **nameresolver.exe** という名前のツールを追加しました。 の構文は次のとおりです。
 
 ```console
 nameresolver.exe hostname [optional: DNS Server]
@@ -46,7 +46,7 @@ tcpping.exe hostname [optional: port]
 * 宛先は RFC1918 以外のアドレスであり、WEBSITE_VNET_ROUTE_ALL が 1 に設定されていないこと。
 * 統合サブネットからのエグレスをブロックしている NSG は存在するか。
 * Azure ExpressRoute または VPN をまたがって移動する場合は、オンプレミスのゲートウェイがトラフィック バックアップを Azure にルーティングするように構成されているか。 仮想ネットワーク内のエンドポイントには到達できるが、オンプレミスに到達できない場合は、ルートを確認します。
-* 統合サブネットに委任を設定するための十分なアクセス許可があるか。 リージョン VNet 統合が構成されている間、統合サブネットは Microsoft.Web に委任されます。 VNet 統合 UI では、Microsoft.Web に対するサブネットが自動的に委任されます。 アカウントに委任を設定するための十分なネットワークのアクセス許可がない場合は、サブネットを委任するために、統合サブネットに属性を設定できるユーザーが必要になります。 統合サブネットを手動で委任するには、Azure Virtual Network サブネット UI にアクセスして、Microsoft.Web の委任を設定します。
+* 統合サブネットに委任を設定するための十分なアクセス許可があるか。 リージョン VNet 統合が構成されている間、統合サブネットは Microsoft.Web/serverFarms に委任されます。 VNet 統合 UI では、Microsoft.Web/serverFarms に対するサブネットが自動的に委任されます。 アカウントに委任を設定するための十分なネットワークのアクセス許可がない場合は、サブネットを委任するために、統合サブネットに属性を設定できるユーザーが必要になります。 統合サブネットを手動で委任するには、Azure Virtual Network サブネット UI にアクセスして、Microsoft.Web/serverFarms の委任を設定します。
 
 **ゲートウェイが必要な VNet 統合**
 * ポイント対サイトのアドレス範囲が RFC 1918 の範囲 (10.0.0.0-10.255.255.255/172.16.0.0-172.31.255.255/192.168.0.0-192.168.255.255) にあるか。
@@ -74,7 +74,7 @@ tcpping.exe hostname [optional: port]
 test-netconnection hostname [optional: -Port]
 ```
 
-* VM 上でアプリケーションを起動し、**tcpping** を使用して、アプリのコンソールからそのホストとポートへのアクセスをテストします。
+* VM 上でアプリケーションを起動し、 **tcpping** を使用して、アプリのコンソールからそのホストとポートへのアクセスをテストします。
 
 #### <a name="on-premises-resources"></a>オンプレミスのリソース ####
 

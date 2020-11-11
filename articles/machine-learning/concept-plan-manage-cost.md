@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 031ec44cec473d9f2b2f05669aa3fc18084985f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8554bf4385c7ddad540b8ba807988618fe80b53
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704730"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322982"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning のコストを計画して管理する
 
@@ -53,15 +53,17 @@ Azure Machine Learning アカウントにリソースを作成する前に、[Az
 
 ## <a name="get-cost-alerts"></a>コストのアラートを受け取る
 
-[予算](../cost-management/tutorial-acm-create-budgets.md)を作成してコストを管理し、異常な支出や超過出費のリスクについて関係者に自動的に通知する[アラート](../cost-management/cost-mgt-alerts-monitor-usage-spending.md)を作成します。 アラートは、予算とコストのしきい値と比較した支出に基づきます。 予算とアラートは、Azure サブスクリプションとリソース グループに対して作成されるため、全体的なコスト監視戦略の一環として役立ちます。 ただし、予算とアラートは、概要レベルでコストを追跡するように設計されているため、個々の Azure サービスのコストを管理する機能は限定されていることがあります。
+[予算](../cost-management-billing/costs/tutorial-acm-create-budgets.md)を作成してコストを管理し、異常な支出や超過出費のリスクについて関係者に自動的に通知する[アラート](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md)を作成します。 アラートは、予算とコストのしきい値と比較した支出に基づきます。 予算とアラートは、Azure サブスクリプションとリソース グループに対して作成されるため、全体的なコスト監視戦略の一環として役立ちます。 ただし、予算とアラートは、概要レベルでコストを追跡するように設計されているため、個々の Azure サービスのコストを管理する機能は限定されていることがあります。
 
 ## <a name="monitor-costs"></a>コストを監視する
 
-Azure Machine Learning でリソースを使用すると、コストが発生します。 Azure リソースの使用のユニット コストは、期間 (秒、分、時間、日) や要求ユニット使用量によって異なります。 Azure Machine Learning を使い始めるとすぐにコストが発生します。 これらのコストは、Azure portal の [[コスト分析]](../cost-management/quick-acm-cost-analysis.md) ペインに表示されます。
+Azure Machine Learning でリソースを使用すると、コストが発生します。 Azure リソースの使用のユニット コストは、期間 (秒、分、時間、日) や要求ユニット使用量によって異なります。 Azure Machine Learning を使い始めるとすぐにコストが発生します。 これらのコストは、Azure portal の [[コスト分析]](../cost-management-billing/costs/quick-acm-cost-analysis.md) ペインに表示されます。
 
 さまざまな時間間隔でグラフとテーブルにコストを表示できます。 予算や予想コストを基準としてコストを表示することもできます。 より長い期間の時系列ビューに切り替えると、支出の傾向を特定し、超過出費が発生した可能性のある時期を確認するのに役立ちます。 予算を作成したら、それを超えた箇所を確認します。  
 
-Machine Learning の個別のサービス領域については表示されません。  代わりに、Machine Learning ワークスペースに追加したさまざまなリソースについて表示されます。
+Machine Learning の個別のサービス領域については表示されません。  代わりに、Machine Learning ワークスペースに追加したさまざまなリソースについて表示されます。 
+
+Machine Learning ワークスペース自体には直接のコストがかかりませんが、マネージド コンピューティング リソースに対しては課金されることに注意してください。 そのため、ワークスペースにタグを追加した場合、それに直接のコストが発生しないため、[コスト分析] ペインでは、ワークスペースに対してこれが反映されます。 タグによる正確なコスト管理を行うには、関連付けられているコンピューティング リソースにタグを付ける必要があります。  
 
 ## <a name="use-azure-machine-learning-compute-cluster-amlcompute"></a>Azure Machine Learning コンピューティング クラスター (AmlCompute) を使用する
 
@@ -84,7 +86,7 @@ AmlCompute クラスターは、ワークロードに基づいて動的にスケ
 + 反復の少ない実験を実行する場合は、この時間を短くしてコストを節約します。
 + 反復の多い開発またはテストの実験を実行する場合は、トレーニング スクリプトまたは環境を変更するたびに、常にスケールアップとスケールダウンの料金が発生しないように、時間を長くする必要がある場合があります。
 
-AmlCompute クラスターは、[AmlCompute SDK クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true)、[AmlCompute CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)、[REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable) を使用して、Azure portal の変化するワークロード要件に合わせて構成できます。
+AmlCompute クラスターは、[AmlCompute SDK クラス](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?preserve-view=true&view=azure-ml-py)、[AmlCompute CLI](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)、[REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable) を使用して、Azure portal の変化するワークロード要件に合わせて構成できます。
 
 ```azurecli
 az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 --min-nodes 0 --max-nodes 5 --idle-seconds-before-scaledown 300
@@ -94,7 +96,7 @@ az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 
 
 AmlCompute には、[クォータ (制限) の構成](how-to-manage-quotas.md#azure-machine-learning-compute)が付随します。 このクォータは VM ファミリ (たとえば、Dv2 シリーズ、NCv3 シリーズ) 別であり、各サブスクリプションのリージョンによって異なります。 サブスクリプションは小さい既定値で開始されますが、この設定を使用して、サブスクリプションでのスピンアップに使用できる AmlCompute リソースの量を制御できます。 
 
-また、サブスクリプション内の各ワークスペースに対し、[VM ファミリ別のワークスペース レベル クォータ](how-to-manage-quotas.md#workspace-level-quota)を構成します。 それにより、各ワークスペースで発生する可能性があるコストをより細かく制御し、特定の VM ファミリを制限できます。 
+また、サブスクリプション内の各ワークスペースに対し、[VM ファミリ別のワークスペース レベル クォータ](how-to-manage-quotas.md#workspace-level-quotas)を構成します。 それにより、各ワークスペースで発生する可能性があるコストをより細かく制御し、特定の VM ファミリを制限できます。 
 
 ワークスペース レベルでクォータを設定するには、[Azure portal](https://portal.azure.com) で始めます。  サブスクリプション内の任意のワークスペースを選択し、左側のペインで **[Usages + quotas]\(使用量 + クォータ\)** を選択します。 次に、 **[クォータの構成]** タブを選択して、クォータを表示します。 このクォータは、複数のワークスペースに影響する設定であるため、設定するにはサブスクリプション スコープの特権が必要です。
 

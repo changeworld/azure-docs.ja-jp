@@ -3,12 +3,12 @@ title: Azure Functions 2.x の host.json のリファレンス
 description: Azure Functions の v2 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: f58eefd636b2bd59d6b3656bf162f7d601f7ff85
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 0b6fbe2553541b6260697584fa7066cdcb1fe122
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167655"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93284506"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 以降の host.json のリファレンス 
 
@@ -116,6 +116,11 @@ ms.locfileid: "92167655"
     },
     "managedDependency": {
         "enabled": true
+    },
+    "retry": {
+      "strategy": "fixedDelay",
+      "maxRetryCount": 5,
+      "delayInterval": "00:00:05"
     },
     "singleton": {
       "lockPeriod": "00:00:15",
@@ -349,6 +354,28 @@ Application Insights など、関数アプリのログの動作を制御しま�
 ## <a name="queues"></a>queues
 
 構成設定は、[Storage キュー トリガーとバインディング](functions-bindings-storage-queue-output.md#host-json)に関する記事に記載されています。  
+
+## <a name="retry"></a>retry
+
+アプリ内のすべての実行に対する[再試行ポリシー](./functions-bindings-error-pages.md#retry-policies) オプションを制御します。
+
+```json
+{
+    "retry": {
+        "strategy": "fixedDelay",
+        "maxRetryCount": 2,
+        "delayInterval": "00:00:03"  
+    }
+}
+```
+
+|プロパティ  |Default | 説明 |
+|---------|---------|---------| 
+|strategy|null|必須。 使用する再試行戦略。 有効な値は `fixedDelay` または `exponentialBackoff`です。|
+|maxRetryCount|null|必須。 関数の実行ごとに許可される再試行の最大回数。 `-1` は、無制限に再試行することを意味します。|
+|delayInterval|null|`fixedDelay` 戦略で再試行の間に使用される遅延。|
+|minimumInterval|null|`exponentialBackoff` 戦略を使用する場合の最小再試行遅延。|
+|maximumInterval|null|`exponentialBackoff` 戦略を使用する場合の最大再試行遅延。| 
 
 ## <a name="sendgrid"></a>sendGrid
 

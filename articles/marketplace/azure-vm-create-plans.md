@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 922f4a2785a0b7260bcd0aae19c0172a2fa7a782
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: bc5e98484560fcc15e0ea3e289069c84687f158c
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283396"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040522"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>仮想マシン オファーのプラン作成する方法
 
@@ -184,6 +184,30 @@ Azure Marketplace で表示する、最大 6 個の推奨される仮想マシ�
 ### <a name="properties"></a>Properties
 
 **[Support accelerated networking]\(高速ネットワークのサポート\)** で、VM で [高速ネットワーク](https://go.microsoft.com/fwlink/?linkid=2124513)をサポートするかどうかを選択します。
+
+### <a name="generations"></a>ジェネレーション
+
+仮想マシンの生成では、それによって使用される仮想ハードウェアが定義されます。 顧客のニーズに基づいて、第 1 世代 VM、第 2 世代 VM、またはその両方を発行できます。
+
+1. 新しいオファーを作成するときに、 **[Generation type]\(世代\)** を選択し、要求されたイメージの詳細を入力します。
+
+    :::image type="content" source="./media/create-vm/azure-vm-generations-image-details.png" alt-text="[Generation]\(世代\) ドロップダウン ボックスの表示。":::
+
+2. プランに別の世代を追加するには、 **[Add generation]\(世代の追加\)** を選択します。
+
+    :::image type="content" source="./media/create-vm/azure-vm-generations-add.png" alt-text="[Add generation]\(世代の追加\) リンクのビュー。":::
+
+    次に、世代の詳細を入力します。
+
+    :::image type="content" source="./media/create-vm/azure-vm-generations-details.png" alt-text="[世代の詳細] ウィンドウの表示。":::
+
+    選択した **[Generation ID]\(世代 ID\)** が、製品の URL や ARM テンプレート (該当する場合) などで顧客に表示されます。 小文字の英数字、ダッシュ、アンダースコアのみを使用してください。発行後に変更することはできません。
+
+3. 第 1 世代が既に発行されている既存の VM を更新するには、 **[技術的な構成]** ページで詳細を編集するだけです。
+
+    :::image type="content" source="./media/create-vm/azure-vm-generations-updating.png" alt-text="プランの [技術的な構成] ページの表示。":::
+
+第 1 世代と第 2 世代の機能の違いの詳細については、「[Azure での第 2 世代 VM のサポート](../virtual-machines/generation-2.md)」を参照してください。
 
 ### <a name="vm-images"></a>VM イメージ
 

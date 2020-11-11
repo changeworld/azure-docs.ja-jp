@@ -6,14 +6,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: how-to
-ms.date: 03/16/2020
+ms.date: 10/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 136d0627e701104e9958d51b2e37256de5659f25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cba81b8415f0f9cf7253e674e90ae09718b94d54
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87271418"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130478"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics on IoT Edge
  
@@ -24,19 +24,19 @@ Azure Stream Analytics on IoT Edge は [Azure IoT Edge](https://azure.microsoft.
 ## <a name="scenarios"></a>シナリオ
 ![IoT Edge の概要図](media/stream-analytics-edge/ASAedge-highlevel-diagram.png)
 
-* **コマンドと制御の待機時間が短い**:たとえば、製造安全システムは、非常に短い待機時間で運用データに応答する必要があります。 ASA on IoT Edge を使用することで、センサー データをほぼリアルタイムで分析し、異常を検出した際はコマンドを発行してマシンを停止したり、アラートをトリガーしたりできます。
-*   **クラウドへの接続が制限されている**:リモート採掘装置、接続された船舶、海洋掘削など、ミッション クリティカルなシステムでは、クラウド接続が断続的なときでも、データを分析し、そのデータに対応する必要があります。 ASA では、ネットワーク接続とは関係なくストリーミング ロジックが実行され、さらなる処理や保存のためにクラウドに送信するデータを選択できます。
-* **帯域幅が制限されている**:ジェット エンジンやコネクテッド カーによって生成されるデータ量は膨大になる可能性があるため、クラウドに送信する前に、データをフィルター処理または前処理する必要があります。 ASA を使用すると、クラウドに送信する必要があるデータをフィルター処理したり集計したりできます。
-* **コンプライアンス**:法令順守では、一部のデータについてはクラウドに送信する前に、ローカルでの匿名化または集計が必要になる可能性があります。
+* **コマンドと制御の待機時間が短い** :たとえば、製造安全システムは、非常に短い待機時間で運用データに応答する必要があります。 ASA on IoT Edge を使用することで、センサー データをほぼリアルタイムで分析し、異常を検出した際はコマンドを発行してマシンを停止したり、アラートをトリガーしたりできます。
+*   **クラウドへの接続が制限されている** :リモート採掘装置、接続された船舶、海洋掘削など、ミッション クリティカルなシステムでは、クラウド接続が断続的なときでも、データを分析し、そのデータに対応する必要があります。 ASA では、ネットワーク接続とは関係なくストリーミング ロジックが実行され、さらなる処理や保存のためにクラウドに送信するデータを選択できます。
+* **帯域幅が制限されている** :ジェット エンジンやコネクテッド カーによって生成されるデータ量は膨大になる可能性があるため、クラウドに送信する前に、データをフィルター処理または前処理する必要があります。 ASA を使用すると、クラウドに送信する必要があるデータをフィルター処理したり集計したりできます。
+* **コンプライアンス** :法令順守では、一部のデータについてはクラウドに送信する前に、ローカルでの匿名化または集計が必要になる可能性があります。
 
 ## <a name="edge-jobs-in-azure-stream-analytics"></a>Azure Stream Analytics のエッジ ジョブ
 ### <a name="what-is-an-edge-job"></a>"エッジ" ジョブとは
 
-ASA エッジ ジョブは、[Azure IoT Edge デバイス](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)に展開されたコンテナー内で実行されます。 これは 2 つの部分で構成されます。
+ASA エッジ ジョブは、[Azure IoT Edge デバイス](../iot-edge/about-iot-edge.md)に展開されたコンテナー内で実行されます。 これは 2 つの部分で構成されます。
 1.  ジョブ定義の役割を担うクラウド部分: ユーザーが、クラウド内の入力、出力、クエリ、およびその他の設定 (順不同のイベントなど) を定義します。
 2.  IoT デバイス上で実行されているモジュール。 ASA エンジンが含まれ、クラウドからジョブ定義を受け取ります。 
 
-ASA では、IoT ハブを使用してエッジ ジョブをデバイスに展開します。 IoT Edge の展開の詳細については、[こちら](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring)をご覧ください。
+ASA では、IoT ハブを使用してエッジ ジョブをデバイスに展開します。 IoT Edge の展開の詳細については、[こちら](../iot-edge/module-deployment-monitoring.md)をご覧ください。
 
 ![Azure Stream Analytics エッジ ジョブ](media/stream-analytics-edge/stream-analytics-edge-job.png)
 
@@ -47,42 +47,42 @@ ASA では、IoT ハブを使用してエッジ ジョブをデバイスに展�
 | 手順 | Notes |
 | --- | --- |
 | **ストレージ コンテナーを作成する** | ストレージ コンテナーを使用してジョブ定義を保存します。コンテナーには、IoT デバイスからアクセスできます。 <br>  既存のストレージ コンテナーを再利用できます。 |
-| **ASA エッジ ジョブを作成する** | 新しいジョブを作成し、**ホスティング環境**として **Edge** を選択します。 <br> このジョブはクラウドから作成および管理され、お使いの IoT Edge デバイスで実行されます。 |
-| **デバイス上に IoT Edge 環境を設定する** | [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) または [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) 用の手順。|
+| **ASA エッジ ジョブを作成する** | 新しいジョブを作成し、 **ホスティング環境** として **Edge** を選択します。 <br> このジョブはクラウドから作成および管理され、お使いの IoT Edge デバイスで実行されます。 |
+| **デバイス上に IoT Edge 環境を設定する** | [Windows](../iot-edge/quickstart.md) または [Linux](../iot-edge/quickstart-linux.md) 用の手順。|
 | **ASA を IoT Edge デバイスに展開する** | ASA ジョブ定義は、先ほど作成したストレージ コンテナーにエクスポートされます。 |
 
-最初の ASA ジョブを IoT Edge に展開するには、[順を追って解説したこちらのチュートリアル](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)に従ってください。 次のビデオは、IoT Edge デバイスで Stream Analytics ジョブを実行するプロセスを理解するのに役立ちます。  
+最初の ASA ジョブを IoT Edge に展開するには、[順を追って解説したこちらのチュートリアル](../iot-edge/tutorial-deploy-stream-analytics.md)に従ってください。 次のビデオは、IoT Edge デバイスで Stream Analytics ジョブを実行するプロセスを理解するのに役立ちます。  
 
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T157/player]
 
 #### <a name="create-a-storage-container"></a>ストレージ コンテナーを作成する
 ASA のコンパイルされたクエリとジョブ構成をエクスポートするには、ストレージ コンテナーが必要です。 これは、特定のクエリで ASA Docker イメージを構成するときに使用されます。 
-1. Azure Portal からストレージ アカウントを作成するには、[こちらの手順](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)に従ってください。 ASA でアカウントを使用するために、オプションを変更する必要はありません。
+1. Azure Portal からストレージ アカウントを作成するには、[こちらの手順](../storage/common/storage-account-create.md)に従ってください。 ASA でアカウントを使用するために、オプションを変更する必要はありません。
 2. 新しく作成したストレージ アカウントで、Blob Storage コンテナーを作成します。
     1. **[BLOB]** 、 **[+ コンテナー]** の順にクリックします。 
     2. 名前を入力し、コンテナーを **[プライベート]** のままにします。
 
 #### <a name="create-an-asa-edge-job"></a>ASA Edge ジョブを作成する
 > [!Note]
-> このチュートリアルでは、Azure Portal を使用した ASA ジョブの作成について説明します。 [Visual Studio プラグインを使用して ASA エッジ ジョブを作成する](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)こともできます
+> このチュートリアルでは、Azure Portal を使用した ASA ジョブの作成について説明します。 [Visual Studio プラグインを使用して ASA エッジ ジョブを作成する](./stream-analytics-tools-for-visual-studio-edge-jobs.md)こともできます
 
 1. Azure Portal で、新しい "Stream Analytics ジョブ" を作成します。 新しい ASA ジョブを作成するには、[こちらの直接リンク](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob)を参照してください。
 
-2. 作成画面で、**ホスティング環境**として **Edge** を選択します (次の図を参照)
+2. 作成画面で、 **ホスティング環境** として **Edge** を選択します (次の図を参照)
 
    ![Edge 上に Stream Analytics ジョブを作成する](media/stream-analytics-edge/create-asa-edge-job.png)
 3. ジョブ定義
-    1. **入力ストリームの定義**。 ジョブに対して 1 つ以上の入力ストリームを定義します。
+    1. **入力ストリームの定義** 。 ジョブに対して 1 つ以上の入力ストリームを定義します。
     2. 参照データの定義 (省略可能)。
-    3. **出力ストリームの定義**。 ジョブに対して 1 つ以上の出力ストリームを定義します。 
-    4. **クエリの定義**。 インライン エディターを使用して、クラウドで ASA クエリを定義します。 ASA エッジに対して有効になっている構文が、コンパイラによって自動的にチェックされます。 サンプル データをアップロードして、クエリをテストすることもできます。 
+    3. **出力ストリームの定義** 。 ジョブに対して 1 つ以上の出力ストリームを定義します。 
+    4. **クエリの定義** 。 インライン エディターを使用して、クラウドで ASA クエリを定義します。 ASA エッジに対して有効になっている構文が、コンパイラによって自動的にチェックされます。 サンプル データをアップロードして、クエリをテストすることもできます。 
 
 4. **[IoT Edge の設定]** メニュー で、ストレージ コンテナー情報を設定します。
 
 5. オプション設定を設定します
-    1. **イベントの順序付け**。 ポータルで順不同ポリシーを構成できます。 ドキュメントは[こちら](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)で入手できます。
-    2. **ロケール**。 内部化形式を設定します。
+    1. **イベントの順序付け** 。 ポータルで順不同ポリシーを構成できます。 ドキュメントは[こちら](/stream-analytics-query/time-skew-policies-azure-stream-analytics)で入手できます。
+    2. **ロケール** 。 内部化形式を設定します。
 
 
 
@@ -95,9 +95,9 @@ ASA のコンパイルされたクエリとジョブ構成をエクスポート�
 これを行うには、次の手順に従う必要があります。
 - IoT ハブを作成します。
 - Docker と IoT Edge ランタイムをエッジ デバイスにインストールします。
-- IoT ハブで **IoT Edge デバイス**としてデバイスを設定します。
+- IoT ハブで **IoT Edge デバイス** としてデバイスを設定します。
 
-この手順の説明については、[Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) または [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) の IoT Edge ドキュメントを参照してください。  
+この手順の説明については、[Windows](../iot-edge/quickstart.md) または [Linux](../iot-edge/quickstart-linux.md) の IoT Edge ドキュメントを参照してください。  
 
 
 ####  <a name="deployment-asa-on-your-iot-edge-devices"></a>ASA を IoT Edge デバイスに展開する
@@ -110,14 +110,14 @@ ASA のコンパイルされたクエリとジョブ構成をエクスポート�
 
 > [!Note]
 > この手順中に、ASA によって、ストレージ コンテナー内に "EdgeJobs" という名前のフォルダーが作成されます (まだ存在しない場合)。 "EdgeJobs" フォルダーには、展開ごとに新しいサブフォルダーが作成されます。
-> ジョブを IoT Edge デバイスに展開すると、ASA は、ジョブ定義ファイルに対して共有アクセス署名 (SAS) を作成します。 SAS キーは、デバイス ツインを使用して、IoT Edge デバイスに安全に送信されます。 このキーの有効期限は、作成日から 3 年間です。 IoT Edge ジョブを更新すると SAS が変更されますが、イメージのバージョンは変更されません。 **更新**したら、以下の展開ワークフローに従ってください。更新通知がデバイスに記録されます。
+> ジョブを IoT Edge デバイスに展開すると、ASA は、ジョブ定義ファイルに対して共有アクセス署名 (SAS) を作成します。 SAS キーは、デバイス ツインを使用して、IoT Edge デバイスに安全に送信されます。 このキーの有効期限は、作成日から 3 年間です。 IoT Edge ジョブを更新すると SAS が変更されますが、イメージのバージョンは変更されません。 **更新** したら、以下の展開ワークフローに従ってください。更新通知がデバイスに記録されます。
 
 
-IoT Edge の展開の詳細については、[こちらのページ](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring)をご覧ください。
+IoT Edge の展開の詳細については、[こちらのページ](../iot-edge/module-deployment-monitoring.md)をご覧ください。
 
 
 ##### <a name="configure-routes"></a>ルートを構成する
-IoT Edge は、モジュール間およびモジュールと IoT ハブの間でメッセージを宣言的にルーティングするための方法を提供します。 完全な構文については、[こちら](https://docs.microsoft.com/azure/iot-edge/module-composition)をご覧ください。
+IoT Edge は、モジュール間およびモジュールと IoT ハブの間でメッセージを宣言的にルーティングするための方法を提供します。 完全な構文については、[こちら](../iot-edge/module-composition.md)をご覧ください。
 ASA ジョブに作成された入力および出力の名前を、ルーティングのエンドポイントとして使用できます。  
 
 ###### <a name="example"></a>例
@@ -132,20 +132,20 @@ ASA ジョブに作成された入力および出力の名前を、ルーティ�
 }
 
 ```
-この例は、次の図で説明するシナリオのルートを示しています。 これには "**ASA**" というエッジ ジョブが含まれており、入力の名前は "**temperature**" で、出力の名前は "**alert**" です。
+この例は、次の図で説明するシナリオのルートを示しています。 これには " **ASA** " というエッジ ジョブが含まれており、入力の名前は " **temperature** " で、出力の名前は " **alert** " です。
 ![メッセージ ルーティングの例の図](media/stream-analytics-edge/edge-message-routing-example.png)
 
 この例は、次のルートを定義しています。
-- **temperature** という名前の入力に対して、**tempSensor** からのすべてのメッセージが、**ASA** という名前のモジュールに送信されます。
+- **temperature** という名前の入力に対して、 **tempSensor** からのすべてのメッセージが、 **ASA** という名前のモジュールに送信されます。
 - **ASA** モジュールのすべての出力が、このデバイス ($upstream) にリンクされた IoT ハブに送信されます。
-- **ASA** モジュールのすべての出力が、**tempSensor** の **control** エンドポイントに送信されます。
+- **ASA** モジュールのすべての出力が、 **tempSensor** の **control** エンドポイントに送信されます。
 
 
 ## <a name="technical-information"></a>技術情報
 ### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>クラウド ジョブと比較した IoT Edge ジョブの現在の制限事項
 目的は、IoT Edge ジョブとクラウド ジョブの間の類似性を確認することです。 SQL クエリ言語のほとんどの機能がサポートされており、クラウドと IoT Edge の両方で同じロジックを実行できます。
 ただし、次の機能はエッジ ジョブではまだサポートされていません。
-* JavaScript でのユーザー定義関数 (UDF)。 UDF は、[IoT Edge ジョブ向けの C#](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf) (プレビュー) で使用できます。
+* JavaScript でのユーザー定義関数 (UDF)。 UDF は、[IoT Edge ジョブ向けの C#](./stream-analytics-edge-csharp-udf.md) (プレビュー) で使用できます。
 * ユーザー定義集計 (UDA)。
 * Azure ML 関数。
 * 1 つの手順での 14 を超える集計の使用。
@@ -158,14 +158,14 @@ ASA ジョブに作成された入力および出力の名前を、ルーティ�
 ### <a name="runtime-and-hardware-requirements"></a>ランタイムとハードウェア要件
 ASA on IoT Edge を実行するには、[Azure IoT Edge](https://azure.microsoft.com/campaigns/iot-edge/) を実行できるデバイスが必要です。 
 
-ASA と Azure IoT Edge では、**Docker** コンテナーを使用して、複数のホスト オペレーティング システム (Windows、Linux) で実行されるポータブル ソリューションを提供します。
+ASA と Azure IoT Edge では、 **Docker** コンテナーを使用して、複数のホスト オペレーティング システム (Windows、Linux) で実行されるポータブル ソリューションを提供します。
 
 ASA on IoT Edge は、x86-64 または ARM (Advanced RISC Machines) アーキテクチャの両方で実行される Windows および Linux イメージとして使用可能になります。 
 
 
 ### <a name="input-and-output"></a>入力と出力
 #### <a name="input-and-output-streams"></a>入力ストリームと出力ストリーム
-ASA Edge ジョブは、IoT Edge デバイスで実行されている他のモジュールから入力と出力を取得できます。 特定のモジュールとの接続を確立するには、展開時にルーティング構成を設定します。 詳細については、[IoT Edge モジュールの構成に関するドキュメント](https://docs.microsoft.com/azure/iot-edge/module-composition)をご覧ください。
+ASA Edge ジョブは、IoT Edge デバイスで実行されている他のモジュールから入力と出力を取得できます。 特定のモジュールとの接続を確立するには、展開時にルーティング構成を設定します。 詳細については、[IoT Edge モジュールの構成に関するドキュメント](../iot-edge/module-composition.md)をご覧ください。
 
 入力と出力の両方で、CSV 形式および JSON 形式がサポートされます。
 
@@ -176,7 +176,7 @@ ASA ジョブで作成した入力ストリームおよび出力ストリーム�
 
 
 ##### <a name="reference-data"></a>参照データ
-参照データ (ルックアップ テーブルとも呼ばれます) は、有限のデータ セットで、本来は静的であるか、あまり変更されません。 これは、参照の実行やデータ ストリームとの関連付けに使用されます。 Azure Stream Analytics ジョブで参照データを使用するには、一般にクエリで[参照データの結合](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics)を使用します。 詳しくは、「[Stream Analytics での参照に参照データを使用する](stream-analytics-use-reference-data.md)」をご覧ください。
+参照データ (ルックアップ テーブルとも呼ばれます) は、有限のデータ セットで、本来は静的であるか、あまり変更されません。 これは、参照の実行やデータ ストリームとの関連付けに使用されます。 Azure Stream Analytics ジョブで参照データを使用するには、一般にクエリで[参照データの結合](/stream-analytics-query/reference-data-join-azure-stream-analytics)を使用します。 詳しくは、「[Stream Analytics での参照に参照データを使用する](stream-analytics-use-reference-data.md)」をご覧ください。
 
 ローカルの参照データのみがサポートされます。 ジョブが IoT Edge デバイスに展開されると、ユーザー定義のファイル パスから参照データが読み込まれます。
 
@@ -184,7 +184,7 @@ Edge 上で参照データを使用してジョブを作成するには:
 
 1. ジョブに対して新しい入力を作成します。
 
-2. **ソースの種類**として**参照データ**を選択します。
+2. **ソースの種類** として **参照データ** を選択します。
 
 3. デバイス上で参照データ ファイルを準備します。 Windows コンテナーの場合は、ローカル ドライブ上に参照データ ファイルを配置し、ローカル ドライブを Docker コンテナーと共有します。 Linux コンテナーの場合は、Docker ボリュームを作成し、ボリュームにデータ ファイルを設定します。
 
@@ -206,33 +206,33 @@ IoT Edge の更新プログラム上の参照データは、デプロイによ�
 
 このバージョン情報は、2019 年 6 月 27 日に最終更新が行われました。
 
-- イメージ: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-linux-amd64`
-   - 基本イメージ: microsoft/dotnet:2.1.6-runtime-alpine3.7
+- イメージ: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.9-linux-amd64`
+   - 基本イメージ: mcr.microsoft.com/dotnet/core/runtime:2.1.13-alpine
    - プラットフォーム:
       - アーキテクチャ: amd64
       - OS: linux
-  
-- イメージ: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-linux-arm32v7`
-   - 基本イメージ: microsoft/dotnet:2.1.6-runtime-bionic-arm32v7
+ 
+- イメージ: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.9-linux-arm32v7`
+   - 基本イメージ: mcr.microsoft.com/dotnet/core/runtime:2.1.13-bionic-arm32v7
    - プラットフォーム:
       - アーキテクチャ: arm
       - OS: linux
-  
-- イメージ: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-windows-amd64`
-   - 基本イメージ: microsoft/dotnet:2.1.6-runtime-nanoserver-1809
+ 
+- イメージ: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.9-linux-arm64`
+   - 基本イメージ: mcr.microsoft.com/dotnet/core/runtime:3.0-bionic-arm64v8
    - プラットフォーム:
-      - アーキテクチャ: amd64
-      - OS: windows
+      - アーキテクチャ: arm64
+      - OS: linux
       
       
 ## <a name="get-help"></a>ヘルプの参照
-詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください。
+詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](/answers/topics/azure-stream-analytics.html)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure IoT Edge の詳細](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
-* [ASA on IoT Edge チュートリアル](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
-* [Visual Studio Tools を使用して Stream Analytics Edge ジョブを作成する](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
+* [Azure IoT Edge の詳細](../iot-edge/about-iot-edge.md)
+* [ASA on IoT Edge チュートリアル](../iot-edge/tutorial-deploy-stream-analytics.md)
+* [Visual Studio Tools を使用して Stream Analytics Edge ジョブを作成する](./stream-analytics-tools-for-visual-studio-edge-jobs.md)
 * [API を使用して Stream Analytics 向けの CI/CD を実装する](stream-analytics-cicd-api.md)
 
 <!--Link references-->
@@ -240,5 +240,5 @@ IoT Edge の更新プログラム上の参照データは、デプロイによ�
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

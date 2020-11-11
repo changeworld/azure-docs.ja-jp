@@ -2,13 +2,13 @@
 title: 概念 - ストレージ
 description: Azure VMware Solution プライベート クラウドの主なストレージ機能について説明します。
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 02378040061080d3c9abbfafb26180c9d22e9073
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 11/03/2020
+ms.openlocfilehash: 394b755f5dc8fdbcaa6092419e9451ae1691aa67
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316819"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289259"
 ---
 #  <a name="azure-vmware-solution-storage-concepts"></a>Azure VMware Solution のストレージの概念
 
@@ -28,7 +28,7 @@ Azure VMware Solution のプライベート クラウドは、ネイティブの
 
 ## <a name="data-at-rest-encryption"></a>保存データの暗号化
 
-vSAN データストアでは、既定で保存データの暗号化が使用されます。 この暗号化ソリューションは KMS ベースで、キーの管理のために vCenter の操作をサポートしています。 キーは暗号化された状態で保存され、HSM ベースの Azure Key Vault マスター キーによってラップされています。 なんらかの理由でホストがクラスターから削除されると、SSD 上のデータはすぐに無効になります。
+vSAN データストアでは、既定で保存データの暗号化が使用されます。 この暗号化ソリューションは KMS ベースで、キーの管理のために vCenter の操作をサポートしています。 キーは暗号化された状態で保存され、Azure Key Vault マスター キーによってラップされています。 なんらかの理由でホストがクラスターから削除されると、SSD 上のデータはすぐに無効になります。
 
 ## <a name="scaling"></a>Scaling
 

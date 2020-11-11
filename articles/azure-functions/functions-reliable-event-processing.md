@@ -3,14 +3,14 @@ title: Azure Functions の信頼性の高いイベント処理
 description: Azure Functions でイベント ハブ メッセージの紛失を防ぐ
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/01/2020
 ms.author: cshoe
-ms.openlocfilehash: 93a12d40e876293eb587ffba865a1d3b1f5f4983
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaafe6d4080d85822ec5af9639c27fc8c55c2ce6
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86506028"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287230"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions の信頼性の高いイベント処理
 
@@ -50,7 +50,7 @@ Azure Functions は、次の手順を実行しながら Event Hubs イベント�
 
 この動作により、いくつかの重要な点がわかります。
 
-- *ハンドルされない例外が発生すると、メッセージが失われることがあります。* 実行で例外が発生した場合も、ポインターは進行します。
+- *ハンドルされない例外が発生すると、メッセージが失われることがあります。* 実行で例外が発生した場合も、ポインターは進行します。  [再試行ポリシー](./functions-bindings-error-pages.md#retry-policies)を設定すると、再試行ポリシー全体が評価されるまで、ポインターの進行が遅れます。
 - *関数は、最低 1 回の配信を保証します。* コードおよび依存システムでは、[同じメッセージが 2 回受信される可能性があることに留意する必要があります。](./functions-idempotent.md)
 
 ## <a name="handling-exceptions"></a>例外の処理
@@ -59,9 +59,9 @@ Azure Functions は、次の手順を実行しながら Event Hubs イベント�
 
 ### <a name="retry-mechanisms-and-policies"></a>再試行メカニズムとポリシー
 
-一時的な例外もあり、これらは後でもう一度操作を実行しようとしても再表示されません。 このため、最初の手順では常に操作を再試行します。 再試行処理規則は自分で書くこともできますが、非常に一般的であるため、使用できるツールは多数あります。 これらのライブラリを使用すると、処理順序も維持された堅牢な再試行ポリシーを定義できます。
+一時的な例外もあり、これらは後でもう一度操作を実行しようとしても再表示されません。 このため、最初の手順では常に操作を再試行します。  関数アプリの[再試行ポリシー](./functions-bindings-error-pages.md#retry-policies)を利用するか、関数の実行内で再試行ロジックを作成することができます。
 
-関数にエラー処理ライブラリを導入すると、基本的な再試行ポリシーと高度な再試行ポリシーの両方を定義できます。 たとえば、次の規則で示すワークフローに従うポリシーを実装できます。
+関数にエラー処理動作を組み込むと、基本的な再試行ポリシーと高度な再試行ポリシーの両方を定義できます。 たとえば、次の規則で示すワークフローに従うポリシーを実装できます。
 
 - メッセージを 3 回挿入してみます (再試行の間に遅延が発生する可能性があります)。
 - 再試行が最終的にすべて失敗した場合は、メッセージをキューに追加して、ストリームで処理を続行できるようにします。
@@ -69,10 +69,6 @@ Azure Functions は、次の手順を実行しながら Event Hubs イベント�
 
 > [!NOTE]
 > [Polly](https://github.com/App-vNext/Polly) は、C# アプリケーションの復元性および一時的なエラー処理ライブラリの例です。
-
-コンパイル済み C# クラス ライブラリを使用する場合、[例外フィルター](/dotnet/csharp/language-reference/keywords/try-catch)を使用すると、ハンドルされない例外が発生したときにコードを実行できます。
-
-例外フィルターの使用方法を示すサンプルについては、[Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) リポジトリを参照してください。
 
 ## <a name="non-exception-errors"></a>例外以外のエラー
 

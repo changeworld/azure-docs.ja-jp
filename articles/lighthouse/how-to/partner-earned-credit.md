@@ -1,14 +1,14 @@
 ---
 title: パートナー ID をリンクして、委任されたリソースに対する影響を追跡する
 description: パートナー ID を関連付けて、Azure Lighthouse を通じて管理している顧客のリソースでパートナー獲得クレジット (PEC) を受け取る方法について説明します。
-ms.date: 10/13/2020
+ms.date: 10/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 95483cfabb7632182a7c23ae4963f2d38a2bd2c3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: fcbcc70e380116b8e9f9b1c1e365dee1adb87a99
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019913"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080279"
 ---
 # <a name="link-your-partner-id-to-track-your-impact-on-delegated-resources"></a>パートナー ID をリンクして、委任されたリソースに対する影響を追跡する 
 
@@ -20,9 +20,9 @@ ms.locfileid: "92019913"
 
 ## <a name="associate-your-partner-id-when-you-onboard-new-customers"></a>新しい顧客をオンボードするときにパートナー ID を関連付ける
 
-Azure Resource Manager テンプレート (ARM テンプレート) を使用して顧客をオンボードするときに、次のプロセスを使用してパートナー ID をリンクします (該当する場合は、パートナー獲得クレジットが有効になります)。 これらの手順を完了するには、自分の [MPN パートナー ID](/partner-center/partner-center-account-setup#locate-your-mpn-id) を把握しておく必要があります。 パートナー プロファイルに表示されている**関連付けられている MPN ID** を必ず使用してください。
+Azure Resource Manager テンプレート (ARM テンプレート) を使用して顧客をオンボードするときに、次のプロセスを使用してパートナー ID をリンクします (該当する場合は、パートナー獲得クレジットが有効になります)。 これらの手順を完了するには、自分の [MPN パートナー ID](/partner-center/partner-center-account-setup#locate-your-mpn-id) を把握しておく必要があります。 パートナー プロファイルに表示されている **関連付けられている MPN ID** を必ず使用してください。
 
-わかりやすくするために、テナントにサービス プリンシパル アカウントを作成して**関連付けられている MPN ID** にリンクし、[PEC の対象となる Azure の組み込みロール](/partner-center/azure-roles-perms-pec)を使用してオンボードするすべての顧客へのアクセス権を付与することをお勧めします。
+わかりやすくするために、テナントにサービス プリンシパル アカウントを作成して **関連付けられている MPN ID** にリンクし、 [PEC の対象となる Azure の組み込みロール](/partner-center/azure-roles-perms-pec)を使用してオンボードするすべての顧客へのアクセス権を付与することをお勧めします。
 
 1. 管理しているテナント内に[サービス プリンシパル アカウントを作成](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)します。 この例では、このサービス プリンシパルに *"プロバイダー オートメーション アカウント"* という名前を使用します。
 1. そのサービス プリンシパル アカウントを使用して、管理しているテナント内の[関連付けられている MPN ID にリンク](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id)します。 これを行う必要があるのは 1 回だけです。
@@ -34,7 +34,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) を使用し�
 
 ## <a name="add-your-partner-id-to-previously-onboarded-customers"></a>以前にオンボードされた顧客にパートナー ID を追加する
 
-既に顧客をオンボードしている場合、プロバイダー オートメーション アカウントのサービス プリンシパルを追加するために、別のデプロイを実行する必要はありません。 代わりに、その顧客のテナントで作業するためのアクセス権が既に与えられているユーザー アカウントに、**関連付けられている MPN ID** をリンクすることができます。 [PEC の資格がある Azure 組み込みロール](/partner-center/azure-roles-perms-pec)がアカウントに付与されていることを確認してください。
+既に顧客をオンボードしている場合、プロバイダー オートメーション アカウントのサービス プリンシパルを追加するために、別のデプロイを実行する必要はありません。 代わりに、その顧客のテナントで作業するためのアクセス権が既に与えられているユーザー アカウントに、 **関連付けられている MPN ID** をリンクすることができます。 [PEC の資格がある Azure 組み込みロール](/partner-center/azure-roles-perms-pec)がアカウントに付与されていることを確認してください。
 
 アカウントが、管理しているテナント内の[関連付けられている MPN ID にリンク](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id)されると、その顧客への影響に対する表彰を追跡できるようになります。
 
@@ -42,7 +42,9 @@ Azure Resource Manager テンプレート (ARM テンプレート) を使用し�
 
 [Azure portal で PEC の詳細を表示](/partner-center/partner-earned-credit-explanation#azure-cost-management)し、PEC の特典を受けたコストを確認することができます。 PEC は、MCA に署名して Azure プランに加入している CSP 顧客にのみ適用されることに注意してください。
 
-上記の手順に従っても、関連付けが表示されない場合は、Azure portal でサポート リクエストを開いてください。
+上記の手順に従っても、期待される関連付けが表示されない場合は、Azure portal でサポート リクエストを開いてください。
+
+また、[パートナー センター SDK](/partner-center/develop/get-invoice-unbilled-consumption-lineitems) を使用し、`rateOfPartnerEarnedCredit` にフィルターを適用して、サブスクリプションの PEC 検証を自動化することもできます。
 
 ## <a name="next-steps"></a>次の手順
 

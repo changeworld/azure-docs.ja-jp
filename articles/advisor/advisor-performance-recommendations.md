@@ -3,12 +3,12 @@ title: Advisor を使用して Azure アプリのパフォーマンスを向上�
 description: Azure Advisor のパフォーマンスに関する推奨事項を使用すると、ビジネスに不可欠なアプリケーションのスピードと応答性を向上させることができます。
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 44252171a714acec0a9c0e83c9272b2f845560b3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 6a008411d4422853e6a98fad59bd4519b42a9548
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077815"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308681"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 
@@ -22,7 +22,7 @@ Azure Advisor によって、長い TTL が構成されている Traffic Manager
 
 ## <a name="improve-database-performance-by-using-sql-database-advisor-temporarily-disabled"></a>SQL Database Advisor を使用してデータベースのパフォーマンスを向上させる (一時的に無効)
 
-Azure Advisor では、すべての Azure リソースに関して一貫性のある推奨事項が一元的にまとめて示されます。 SQL Database Advisor と統合して、データベースのパフォーマンスを向上させるための推奨事項を生成します。 SQL Database Advisor は、データベースの使用履歴を分析することで、パフォーマンスを評価します。 その後、データベースの一般的なワークロードを実行する上で最適な推奨事項が提示されます。
+Azure Advisor では、すべての Azure リソースに関して一貫性のある推奨事項が一元的にまとめて示されます。 SQL Database Advisor と統合して、データベースのパフォーマンスを向上させるための推奨事項を生成します。  SQL Database Advisor は、データベースの使用履歴を分析することで、パフォーマンスを評価します。 その後、データベースの一般的なワークロードを実行する上で最適な推奨事項が提示されます。
 
 > [!NOTE]
 > 推奨事項を取得する前に、データベースを約 1 週間使用する必要があり、その 1 週間にある程度の一貫性のあるアクティビティが存在する必要があります。 SQL Database Advisor は、ランダムでむらのあるアクティビティよりも、一貫性のあるアクティビティのクエリ パターンをより簡単に最適化できます。
@@ -108,7 +108,7 @@ Advisor では、データベースに読み込む際にバッチ サイズを�
 
 ## <a name="co-locate-the-storage-account-in-the-same-region-to-minimize-latency-when-loading"></a>読み込み時の待機時間を最小限に抑えるために、ストレージ アカウントを同じリージョン内に配置する
 
-Advisor によって、SQL プールとは異なるリージョンから読み込んでいるかどうかが検出されます。 データを読み込むときの待機時間を最小限に抑えるには、SQL プールと同じリージョン内にあるストレージ アカウントから読み込むことを検討してください。 この変更により、待機時間を最小限に抑え、読み込みパフォーマンスを向上させることができます。
+Advisor によって、専用 SQL プールとは異なるリージョンから読み込んでいるかどうかが検出されます。 データを読み込むときの待機時間を最小限に抑えるには、専用 SQL プールと同じリージョン内にあるストレージ アカウントから読み込むことを検討してください。 この変更により、待機時間を最小限に抑え、読み込みパフォーマンスを向上させることができます。
 
 ## <a name="use-a-supported-kubernetes-version"></a>サポートされている Kubernetes バージョンを使用する
 
@@ -120,17 +120,17 @@ Advisor によって、サポートされていないバージョンの Kubernet
 長期間にわたって CPU の使用率が高いと、ワークロードのクエリ パフォーマンスが低速に陥る可能性があります。 CPU サイズを増やすと、データベース クエリのランタイムを最適化し、全体のパフォーマンスを向上させることができます。 Advisor によって、CPU 使用率が高く CPU 制約があるワークロードを実行している可能性が高いサーバーが特定され、コンピューティングのスケーリングが推奨されます。
 
 ### <a name="reduce-memory-constraints-on-your-azure-database-for-mysql-azure-database-for-postgresql-and-azure-database-for-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>Azure Database for MySQL、Azure Database for PostgreSQL、および Azure Database for MariaDB サーバーのメモリの制約を減らすか、メモリ最適化 SKU に移行します。
-キャッシュ ヒット率が低いと、クエリ パフォーマンスが低下し IOPS が高くなる可能性があります。 この状態は、不適切なクエリ プランまたはメモリを集中的に使用するワークロードによって発生する可能性があります。 クエリ プランを修正するか、Azure Database for PostgreSQL、Azure Database for MySQL、または Azure Database for MariaDB サーバーの [メモリを増やす](../postgresql/concepts-pricing-tiers.md)と、データベース ワークロードの実行を最適化するために役立ちます。 Azure Advisor によって、この高いバッファー プール チャーンの影響を受けるサーバーが特定されます。 次のいずれかの操作を実行することをお勧めします。 
+キャッシュ ヒット率が低いと、クエリ パフォーマンスが低下し IOPS が高くなる可能性があります。 この状態は、不適切なクエリ プランまたはメモリを集中的に使用するワークロードによって発生する可能性があります。 クエリ プランを修正するか、Azure Database for PostgreSQL、Azure Database for MySQL、または Azure Database for MariaDB サーバーの[メモリを増やす](../postgresql/concepts-pricing-tiers.md)と、データベース ワークロードの実行を最適化する上で役立ちます。 Azure Advisor によって、この高いバッファー プール チャーンの影響を受けるサーバーが特定されます。 次のいずれかの操作を実行することをお勧めします。 
 - クエリ プランを修正する
 - より多くのメモリを持つ SKU に移行する 
 - ストレージ サイズを増やして IOPS を増やす。
 
 ### <a name="use-an-azure-database-for-mysql-or-azure-database-for-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Azure Database for MySQL または Azure Database for PostgreSQL の読み取りレプリカを使用して、読み取りの負荷が高いワークロードの読み取りをスケールアウトする
-Advisor を使用すると、サーバー上での過去 7 日間にわたる書き込みに対する読み取りの比率など、ワークロードベースのヒューリステックを活用して、読み取りの負荷が高いワークロードを特定できます。 読み取りまたは書き込みの比率が高い Azure Database for PostgreSQL または Azure Database for MySQL のリソースがあると、CPU またはメモリの競合が発生し、クエリのパフォーマンスが低下する可能性があります。  [レプリカ](../postgresql/howto-read-replicas-portal.md)を追加すると、レプリカ サーバーへの読み取りをスケールアウトし、プライマリ サーバーでの CPU またはメモリの制約を回避できます。 Advisor によってワークロードの読み取りの負荷が高いサーバーが特定され、 [読み取りレプリカ](../postgresql/concepts-read-replicas.md) を追加して読み取りワークロードの一部をオフロードすることが推奨されます。
+Advisor を使用すると、サーバー上での過去 7 日間にわたる書き込みに対する読み取りの比率など、ワークロードベースのヒューリステックを活用して、読み取りの負荷が高いワークロードを特定できます。 読み取りまたは書き込みの比率が高い Azure Database for PostgreSQL または Azure Database for MySQL のリソースがあると、CPU またはメモリの競合が発生し、クエリのパフォーマンスが低下する可能性があります。 [レプリカ](../postgresql/howto-read-replicas-portal.md)を追加すると、レプリカ サーバーへの読み取りをスケールアウトし、プライマリ サーバーでの CPU またはメモリの制約を回避できます。 Advisor によってワークロードの読み取りの負荷が高いサーバーが特定され、[読み取りレプリカ](../postgresql/concepts-read-replicas.md)を追加して読み取りワークロードの一部をオフロードすることが推奨されます。
 
 
 ### <a name="scale-your-azure-database-for-mysql-azure-database-for-postgresql-or-azure-database-for-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Azure Database for MySQL、Azure Database for PostgreSQL、または Azure Database for MariaDB サーバーをより高い SKU に拡張して接続の制約を防ぐ
-データベース サーバーへの新しい接続ごとにメモリが占有されます。 メモリの [上限](../postgresql/concepts-limits.md)が原因でサーバーへの接続がエラーになっている場合は、データベース サーバーのパフォーマンスが低下します。 Azure Advisor によって、実行中のサーバーのうち、多数の接続エラーが発生しているものが特定されます。 次のいずれかのアクションを実行して、サーバーの接続制限をアップグレードし、サーバーにより多くのメモリを割り当てることが推奨されます。
+データベース サーバーへの新しい接続ごとにメモリが占有されます。 メモリの[上限](../postgresql/concepts-limits.md)が原因でサーバーへの接続がエラーになっている場合は、データベース サーバーのパフォーマンスが低下します。 Azure Advisor によって、実行中のサーバーのうち、多数の接続エラーが発生しているものが特定されます。 次のいずれかのアクションを実行して、サーバーの接続制限をアップグレードし、サーバーにより多くのメモリを割り当てることが推奨されます。
 - コンピューティングをスケールアップする。 
 - メモリ最適化 SKU を使用する (これにより、コアあたりのコンピューティングが増えます)。
 

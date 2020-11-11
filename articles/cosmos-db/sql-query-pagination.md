@@ -4,16 +4,18 @@ description: ページングの概念と継続トークンについて説明し�
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 2e899e76a1e68e120e0419926f8169785146bbfc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8219611ac2334594dc826db3c8191102d7383835
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485037"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338273"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Azure Cosmos DB での改ページ
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB では、クエリ結果が複数のページにわたる場合があります。 このドキュメントでは、Azure Cosmos DB のクエリ エンジンがクエリ結果を複数のページに分割するかどうかを決定するために使用する条件について説明します。 複数ページにまたがるクエリ結果を管理するために、オプションで継続トークンを使用できます。
 
@@ -45,12 +47,13 @@ Azure Cosmos DB では、クエリ結果が複数のページにわたる場合�
 
 ## <a name="continuation-tokens"></a>継続トークン
 
-.NET SDK および Java SDK では、クエリの進行状況のブックマークとして、継続トークンを必要に応じて使用できます。 Azure Cosmos DB のクエリ実行は、サーバー側ではステートレスであり、継続トークンを利用していつでも再開できます。 継続トークンは、Node.js SDK や Python SDK ではサポートされていません。
+.NET SDK および Java SDK では、クエリの進行状況のブックマークとして、継続トークンを必要に応じて使用できます。 Azure Cosmos DB のクエリ実行は、サーバー側ではステートレスであり、継続トークンを利用していつでも再開できます。 継続トークンは、Node.js SDK ではサポートされていません。 Python SDK では、単一パーティション クエリでサポートされています。PK は、クエリ自体に含めるには十分でないため、options オブジェクトで指定する必要があります。
 
 継続トークンを使用する例を次に示します。
 
 - [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/Queries/Program.cs#L699-L734)
 - [Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L216)
+- [Python SDK](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/test/test_query.py#L533)
 
 クエリから継続トークンが返される場合、追加のクエリ結果が存在します。
 

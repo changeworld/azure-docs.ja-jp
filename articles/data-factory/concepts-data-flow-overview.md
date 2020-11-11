@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 09/02/2020
-ms.openlocfilehash: 7d73d832f96d087964c46c6c735c0385832c08db
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 32f1602c91d17ef2ad3283d4bc03d00d432641aa
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370914"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027603"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory のマッピング データ フロー
 
@@ -37,17 +37,17 @@ ms.locfileid: "91370914"
 
 マッピング データ フローには、変換ロジックを簡単に構築するために設計された独自の作成キャンバスがあります。 データ フロー キャンバスは、上部バー、グラフ、および構成パネルの 3 つの部分に分かれています。 
 
-![キャンバス](media/data-flow/canvas1.png "キャンバス")
+![スクリーンショットには、上部バー、グラフ、および構成パネルにラベルが付いたデータ フロー キャンバスが示されています。](media/data-flow/canvas1.png "キャンバス")
 
 ### <a name="graph"></a>グラフ
 
 グラフには変換ストリームが表示されます。 ここにはソース データが 1 つ以上のシンクに流れるときのソース データの系列が表示されます。 新しいソースを追加するには、 **[ソースの追加]** を選択します。 新しい変換を追加するには、既存の変換の右下にあるプラス記号を選択します。 詳しくは、[データ フロー グラフの管理](concepts-data-flow-manage-graph.md)方法に関するページを参照してください。
 
-![キャンバス](media/data-flow/canvas2.png "キャンバス")
+![スクリーンショットには、[検索] テキスト ボックスがあるキャンバスのグラフ部分が示されています。](media/data-flow/canvas2.png "キャンバス")
 
 ### <a name="configuration-panel"></a>構成パネル
 
-構成パネルには、現在選択されている変換に固有の設定が表示されます。 変換が選択されていない場合は、データ フローが表示されます。 データ フロー全般の構成では、 **[General]\(全般\)** タブで名前および説明を編集したり、 **[Parameters]\(パラメーター\)** タブを使用してパラメーターを追加したりできます。詳しくは、「[マッピング データ フローのパラメーター](parameters-data-flow.md)」を参照してください。
+構成パネルには、現在選択されている変換に固有の設定が表示されます。 変換が選択されていない場合は、データ フローが表示されます。 データ フロー全般の構成では、 **[General]\(全般\)** タブで名前および説明を編集したり、 **[Parameters]\(パラメーター\)** タブを使用してパラメーターを追加したりできます。詳しくは、「 [マッピング データ フローのパラメーター](parameters-data-flow.md)」を参照してください。
 
 各変換には、少なくとも 4 つの構成タブが含まれます。
 

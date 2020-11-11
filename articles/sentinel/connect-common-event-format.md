@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel Preview に CEF データを接続する | Microsoft Docs
-description: Linux マシンをプロキシとして使用して、Azure Sentinel に共通イベント形式 (CEF) メッセージを送信する外部ソリューションを接続します。
+description: Linux マシンをログ フォワーダーとして使用して、Azure Sentinel に共通イベント形式 (CEF) メッセージを送信する外部ソリューションを接続します。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: dae8ce6cbad1ae08898ae439c1f621bef185b5df
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e8d1704b7f6048c14528b784f22d60b01592b54f
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747894"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347609"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>共通イベント形式を使用して外部ソリューションを接続する
 
@@ -50,40 +50,49 @@ Syslog ソースと Syslog フォワーダーの間で TLS 通信を使用する
  
 ## <a name="prerequisites"></a>前提条件
 
-プロキシとして使用する Linux マシンで、次のいずれかのオペレーティングシステムが実行されていることを確認します。
+ログ フォワーダーとして使用する Linux マシンで、次のいずれかのオペレーティング システムが実行されていることを確認します。
 
 - 64 ビット
-  - CentOS 7 とサブバージョン、およびそれ以降 (6 は不可)
+  - サブバージョンを含む CentOS 7 と 8 (6 は不可)
   - Amazon Linux 2017.09
   - Oracle Linux 7
-  - Red Hat Enterprise Linux (RHEL) Server 7 とサブバージョン、およびそれ以降 (6 は不可)
+  - サブバージョンを含む Red Hat Enterprise Linux (RHEL) Server 7 と 8 (6 は不可)
   - Debian GNU/Linux 8 および 9
   - Ubuntu Linux 14.04 LTS、16.04 LTS、および 18.04 LTS
-  - SUSE Linux Enterprise Server 12
+  - SUSE Linux Enterprise Server 12、15
+
 - 32 ビット
-   - CentOS 7
-   - Oracle Linux 7
-   - Red Hat Enterprise Linux Server 7
-   - Debian GNU/Linux 8 および 9
-   - Ubuntu Linux 14.04 LTS および 16.04 LTS
+  - サブバージョンを含む CentOS 7 と 8 (6 は不可)
+  - Oracle Linux 7
+  - サブバージョンを含む Red Hat Enterprise Linux (RHEL) Server 7 と 8 (6 は不可)
+  - Debian GNU/Linux 8 および 9
+  - Ubuntu Linux 14.04 LTS および 16.04 LTS
  
- - デーモンのバージョン
-   - Syslog-ng:2.1 - 3.22.1
-   - Rsyslog: v8
+- デーモンのバージョン
+  - Syslog-ng:2.1 - 3.22.1
+  - Rsyslog: v8
   
- - サポートされている Syslog RFC
-   - Syslog RFC 3164
-   - Syslog RFC 5424
+- サポートされている Syslog RFC
+  - Syslog RFC 3164
+  - Syslog RFC 5424
  
 マシンが次の要件も満たしていることを確認します。 
+
 - アクセス許可
-    - マシンに対する管理者特権のアクセス許可 (sudo) が必要です。 
+  - マシンに対する管理者特権のアクセス許可 (sudo) が必要です。 
+
 - ソフトウェア要件
-    - マシンで Python 2.7 が実行されていることを確認します。
+  - マシンで Python 2.7 が実行されていることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、CEF アプライアンスを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+このドキュメントでは、Azure Sentinel がセキュリティ ソリューションおよびアプライアンスから CEF ログを収集する方法について学習しました。 お使いのソリューションを Azure Sentinel に接続する方法については、次の記事を参照してください。
+
+- 手順 1: [Syslog/CEF フォワーダーをデプロイして CEF に接続する](connect-cef-agent.md)
+- 手順 2: [ソリューション固有の手順を実行する](connect-cef-solution-config.md)
+- 手順 3: [接続を検証する](connect-cef-verify.md)
+
+Azure Sentinel で収集したデータの処理に関する詳細については、次の記事を参照してください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
 

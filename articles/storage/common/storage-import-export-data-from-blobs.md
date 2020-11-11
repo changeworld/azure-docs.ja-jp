@@ -5,15 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/20/2020
+ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: bfbef5ce3ba7675aff88df654a5ba6572c38adbe
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 39f9a5802d7f10753c8ea81bf414da195e137cc6
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440734"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234139"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage からデータをエクスポートする
 
@@ -78,7 +79,7 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
 
     - BLOB リスト ファイルからエクスポートすることができます。
 
-        ![BLOB リスト ファイルからエクスポートする](./media/storage-import-export-data-from-blobs/export-from-blob6.png)  
+        ![BLOB リスト ファイルからエクスポートする](./media/storage-import-export-data-from-blobs/export-from-blob6.png)
 
    > [!NOTE]
    > データ コピー時にエクスポートする BLOB が使用中の場合、Azure Import/Export サービスは BLOB のスナップショットを作成し、スナップショットをコピーします。
@@ -177,6 +178,93 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
     az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true
     ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+以下の手順を使用して、Azure PowerShell でエクスポート ジョブを作成します。
+
+[!INCLUDE [azure-powershell-requirements-h3.md](../../../includes/azure-powershell-requirements-h3.md)]
+
+> [!IMPORTANT]
+> **Az.ImportExport** PowerShell モジュールがプレビュー段階にある間は、`Install-Module` コマンドレットを使用して、これを別途インストールする必要があります。 この PowerShell モジュールは、一般提供されると、将来の Az PowerShell モジュール リリースに含まれ、既定で Azure Cloud Shell 内から使用できるようになります。
+
+```azurepowershell-interactive
+Install-Module -Name Az.ImportExport
+```
+
+### <a name="create-a-job"></a>ジョブの作成
+
+1. ディスクを受け取ることができる場所の一覧を取得するには、[Get-AzImportExportLocation](/powershell/module/az.importexport/get-azimportexportlocation) コマンドレットを使用します。
+
+   ```azurepowershell-interactive
+   Get-AzImportExportLocation
+   ```
+
+1. 次の [New-AzImportExport](/powershell/module/az.importexport/new-azimportexport) の例を実行して、既存のストレージ アカウントを使用するエクスポート ジョブを作成します。
+
+   ```azurepowershell-interactive
+   $Params = @{
+      ResourceGroupName = 'myierg'
+      Name = 'Myexportjob1'
+      Location = 'westus'
+      BackupDriveManifest = $true
+      DiagnosticsPath = 'waimportexport'
+      ExportBlobListblobPath = '\'
+      JobType = 'Export'
+      LogLevel = 'Verbose'
+      ShippingInformationRecipientName = 'Microsoft Azure Import/Export Service'
+      ShippingInformationStreetAddress1 = '3020 Coronado'
+      ShippingInformationCity = 'Santa Clara'
+      ShippingInformationStateOrProvince = 'CA'
+      ShippingInformationPostalCode = '98054'
+      ShippingInformationCountryOrRegion = 'USA'
+      ShippingInformationPhone = '4083527600'
+      ReturnAddressRecipientName = 'Gus Poland'
+      ReturnAddressStreetAddress1 = '1020 Enterprise way'
+      ReturnAddressCity = 'Sunnyvale'
+      ReturnAddressStateOrProvince = 'CA'
+      ReturnAddressPostalCode = '94089'
+      ReturnAddressCountryOrRegion = 'USA'
+      ReturnAddressPhone = '4085555555'
+      ReturnAddressEmail = 'gus@contoso.com'
+      StorageAccountId = '/subscriptions/<SubscriptionId>/resourceGroups/myierg/providers/Microsoft.Storage/storageAccounts/myssdocsstorage'
+   }
+   New-AzImportExport @Params
+   ```
+
+    > [!TIP]
+    > 1 人のユーザーの電子メール アドレスを指定する代わりに、グループ メール アドレスを提供します。 これにより、管理者が離れる場合でも、通知を受信します。
+
+   このジョブは、ストレージ アカウント内のすべての BLOB をエクスポートします。 エクスポートする BLOB を指定するには、この **-ExportBlobListblobPath** の値を次のように置き換えます。
+
+   ```azurepowershell-interactive
+   -ExportBlobListblobPath $root\logo.bmp
+   ```
+
+   このパラメーター値では、ルート コンテナー内の *logo.bmp* という名前の BLOB がエクスポートされます。
+
+   また、プレフィックスを使用して、コンテナー内のすべての BLOB を選択するオプションもあります。 この **-ExportBlobListblobPath** の値を次のように置き換えます。
+
+   ```azurepowershell-interactive
+   -ExportBlobListblobPath '/myiecontainer'
+   ```
+
+   詳細については、「[有効な BLOB パスの例](#examples-of-valid-blob-paths)」を参照してください。
+
+   > [!NOTE]
+   > データ コピー時にエクスポートする BLOB が使用中の場合、Azure Import/Export サービスは BLOB のスナップショットを作成し、スナップショットをコピーします。
+
+1. [Get-AzImportExport](/powershell/module/az.importexport/get-azimportexport) コマンドレットを使用して、リソース グループ myierg のすべてのジョブを表示します。
+
+   ```azurepowershell-interactive
+   Get-AzImportExport -ResourceGroupName myierg
+   ```
+
+1. ジョブを更新するかジョブをキャンセルするには、[Update-AzImportExport](/powershell/module/az.importexport/update-azimportexport) コマンドレットを実行します。
+
+   ```azurepowershell-interactive
+   Update-AzImportExport -Name MyIEjob1 -ResourceGroupName myierg -CancelRequested
+   ```
+
 ---
 
 <!--## (Optional) Step 2: -->
@@ -208,7 +296,7 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
 
 ドライブのロックを解除するには、次のコマンドを使用します。
 
-   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from Encryption blade in Azure portal> /driveLetter:<Drive letter>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from Encryption blade in Azure portal> /driveLetter:<Drive letter>`
 
 サンプル入力の例を次に示します。
 
@@ -232,14 +320,14 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
 
     パラメーターについては次の表で説明します。
 
-    |コマンド ライン パラメーター|説明|  
-    |--------------------------|-----------------|  
-    |**/logdir:**|省略可能。 ログ ディレクトリ。 詳細ログ ファイルは、このディレクトリに書き込まれます。 指定されていない場合、現在のディレクトリがログ ディレクトリとして使用されます。|  
-    |**/sn:**|必須。 エクスポート ジョブのストレージ アカウント名です。|  
-    |**/sk:**|コンテナー SAS が指定されていない場合のみ必須。 エクスポート ジョブのストレージ アカウントのアカウント キーです。|  
-    |**/csas:**|ストレージ アカウント キーが指定されていない場合のみ必須。 エクスポート ジョブでエクスポートされる BLOB を一覧表示するためのコンテナー SAS です。|  
-    |**/ExportBlobListFile:**|必須。 エクスポートする BLOB の BLOB パスや BLOB パスのプレフィックスの一覧を含む XML ファイルへのパス。 インポート/エクスポート サービス REST API の [Put Job](/rest/api/storageimportexport/jobs) 操作の `BlobListBlobPath` 要素で使用されるファイル形式です。|  
-    |**/DriveSize:**|必須。 エクスポート ジョブに使用するドライブのサイズ ( *例:* 500 GB、1.5 TB)。|  
+    |コマンド ライン パラメーター|説明|
+    |--------------------------|-----------------|
+    |**/logdir:**|省略可能。 ログ ディレクトリ。 詳細ログ ファイルは、このディレクトリに書き込まれます。 指定されていない場合、現在のディレクトリがログ ディレクトリとして使用されます。|
+    |**/sn:**|必須。 エクスポート ジョブのストレージ アカウント名です。|
+    |**/sk:**|コンテナー SAS が指定されていない場合のみ必須。 エクスポート ジョブのストレージ アカウントのアカウント キーです。|
+    |**/csas:**|ストレージ アカウント キーが指定されていない場合のみ必須。 エクスポート ジョブでエクスポートされる BLOB を一覧表示するためのコンテナー SAS です。|
+    |**/ExportBlobListFile:**|必須。 エクスポートする BLOB の BLOB パスや BLOB パスのプレフィックスの一覧を含む XML ファイルへのパス。 インポート/エクスポート サービス REST API の [Put Job](/rest/api/storageimportexport/jobs) 操作の `BlobListBlobPath` 要素で使用されるファイル形式です。|
+    |**/DriveSize:**|必須。 エクスポート ジョブに使用するドライブのサイズ ( *例:* 500 GB、1.5 TB)。|
 
     「[PreviewExport コマンドの例](#example-of-previewexport-command)」を参照してください。
 
@@ -247,38 +335,38 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
 
 ### <a name="example-of-previewexport-command"></a>PreviewExport コマンドの例
 
-次の例は `PreviewExport` コマンドを示しています。  
+次の例は `PreviewExport` コマンドを示しています。
 
 ```powershell
     WAImportExport.exe PreviewExport /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /ExportBlobListFile:C:\WAImportExport\mybloblist.xml /DriveSize:500GB
-```  
-
-エクスポート BLOB 一覧ファイルには、次のように BLOB 名や BLOB のプレフィックスが含まれる場合があります。  
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>  
-<BlobList>  
-<BlobPath>pictures/animals/koala.jpg</BlobPath>  
-<BlobPathPrefix>/vhds/</BlobPathPrefix>  
-<BlobPathPrefix>/movies/</BlobPathPrefix>  
-</BlobList>  
 ```
 
-Azure Import/Export ツールでは、エクスポートするすべての BLOB を一覧表示し、必要なオーバーヘッドを考慮に入れて指定したサイズのドライブにそれらを詰め込む方法を計算し、BLOB とドライブの使用状況の情報を保持するために必要なドライブの数を推定します。  
+エクスポート BLOB 一覧ファイルには、次のように BLOB 名や BLOB のプレフィックスが含まれる場合があります。
 
-情報ログを省略した出力の例を次に示します。  
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<BlobList>
+<BlobPath>pictures/animals/koala.jpg</BlobPath>
+<BlobPathPrefix>/vhds/</BlobPathPrefix>
+<BlobPathPrefix>/movies/</BlobPathPrefix>
+</BlobList>
+```
+
+Azure Import/Export ツールでは、エクスポートするすべての BLOB を一覧表示し、必要なオーバーヘッドを考慮に入れて指定したサイズのドライブにそれらを詰め込む方法を計算し、BLOB とドライブの使用状況の情報を保持するために必要なドライブの数を推定します。
+
+情報ログを省略した出力の例を次に示します。
 
 ```powershell
-Number of unique blob paths/prefixes:   3  
-Number of duplicate blob paths/prefixes:        0  
-Number of nonexistent blob paths/prefixes:      1  
+Number of unique blob paths/prefixes:   3
+Number of duplicate blob paths/prefixes:        0
+Number of nonexistent blob paths/prefixes:      1
 
-Drive size:     500.00 GB  
-Number of blobs that can be exported:   6  
-Number of blobs that cannot be exported:        2  
-Number of drives needed:        3  
-        Drive #1:       blobs = 1, occupied space = 454.74 GB  
-        Drive #2:       blobs = 3, occupied space = 441.37 GB  
+Drive size:     500.00 GB
+Number of blobs that can be exported:   6
+Number of blobs that cannot be exported:        2
+Number of drives needed:        3
+        Drive #1:       blobs = 1, occupied space = 454.74 GB
+        Drive #2:       blobs = 3, occupied space = 441.37 GB
         Drive #3:       blobs = 2, occupied space = 131.28 GB
 ```
 

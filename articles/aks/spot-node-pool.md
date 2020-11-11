@@ -1,18 +1,18 @@
 ---
-title: プレビュー - Azure Kubernetes Service (AKS) クラスターにスポット ノード プールを追加する
+title: Azure Kubernetes Service (AKS) クラスターにスポット ノード プールを追加する
 description: Azure Kubernetes Service (AKS) クラスターにスポット ノード プールを追加する方法について説明します。
 services: container-service
 ms.service: container-service
 ms.topic: article
-ms.date: 02/25/2020
-ms.openlocfilehash: dbb003c287a18810c2c14c4f2ea401fa55cca427
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: 5fd97560c3a6e41b49beb957c7b8d79369799c21
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87987292"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078953"
 ---
-# <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>プレビュー - Azure Kubernetes Service (AKS) クラスターにスポット ノード プールを追加する
+# <a name="add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターにスポット ノード プールを追加する
 
 スポット ノード プールは、[スポット仮想マシン スケール セット][vmss-spot]によってサポートされるノード プールです。 AKS クラスターのノードにスポット VM を使用すると、Azure の未使用の容量を利用できるため、コストが大幅に削減されます。 使用可能な未使用の容量は、ノード サイズ、リージョン、時刻などの多くの要因によって異なります。
 
@@ -24,49 +24,13 @@ ms.locfileid: "87987292"
 
 この記事は、Kubernetes および Azure Load Balancer の基本的な概念を理解していることを前提としています。 詳細については、「[Azure Kubernetes Services (AKS) における Kubernetes の中心概念][kubernetes-concepts]」を参照してください。
 
-現在、この機能はプレビュー段階にあります。
-
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-スポット ノード プールを使用するクラスターを作成する場合は、そのクラスターも、ノード プールと *Standard* SKU ロード バランサーに仮想マシン スケール セットを使用する必要があります。 また、スポット ノード プールを使用するクラスターを作成した後、さらにノード プールを追加することも必要です。 ノード プールの追加についてはこの後の手順で説明されますが、最初に、プレビュー機能を有効にする必要があります。
+スポット ノード プールを使用するクラスターを作成する場合は、そのクラスターも、ノード プールと *Standard* SKU ロード バランサーに仮想マシン スケール セットを使用する必要があります。 また、スポット ノード プールを使用するクラスターを作成した後、さらにノード プールを追加することも必要です。 ノード プールの追加についてはこの後の手順で説明されます。
 
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-### <a name="register-spotpoolpreview-preview-feature"></a>spotpoolpreview プレビュー機能を登録する
-
-スポット ノード プールを使用する AKS クラスターを作成するには、サブスクリプションで *spotpoolpreview* 機能フラグを有効にする必要があります。 この機能は、クラスターを構成するときに、最新のサービス拡張機能のセットを提供します。
-
-次の例に示すように、[az feature register][az-feature-register] コマンドを使用して *spotpoolpreview* 機能フラグを登録します。
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "spotpoolpreview"
-```
-
-状態が *[登録済み]* と表示されるまでに数分かかります。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/spotpoolpreview')].{Name:name,State:properties.state}"
-```
-
-準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
-
-スポット ノード プールを使用する AKS クラスターを作成するには、*aks-preview* CLI 拡張機能バージョン 0.4.32 以上が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
- 
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+この記事では、Azure CLI バージョン 2.14 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
 ### <a name="limitations"></a>制限事項
 
@@ -78,7 +42,7 @@ az extension update --name aks-preview
 * スポット ノード プールは、仮想マシン スケール セットを使用する必要があります。
 * 作成後に ScaleSetPriority または SpotMaxPrice を変更することはできません。
 * SpotMaxPrice を設定するときは、この値を -1 か、または小数点以下最大 5 桁の正の値にする必要があります。
-* スポット ノード プールにはラベル *kubernetes.azure.com/scalesetpriority:spot*、taint *kubernetes.azure.com/scalesetpriority=spot:NoSchedule* が割り当てられ、システム ポッドにはアンチアフィニティが割り当てられます。
+* スポット ノード プールにはラベル *kubernetes.azure.com/scalesetpriority:spot* 、taint *kubernetes.azure.com/scalesetpriority=spot:NoSchedule* が割り当てられ、システム ポッドにはアンチアフィニティが割り当てられます。
 * スポット ノード プールでワークロードをスケジュールするには、[対応する toleration][spot-toleration] を追加する必要があります。
 
 ## <a name="add-a-spot-node-pool-to-an-aks-cluster"></a>AKS クラスターにスポット ノード プールを追加する
@@ -100,7 +64,7 @@ az aks nodepool add \
     --no-wait
 ```
 
-既定では、複数のノード プールを含む AKS クラスターを作成する場合は、その AKS クラスター内に *Regular* の *priority* を持つノード プールを作成します。 上のコマンドは、*Spot* の *priority* を持つ既存の AKS クラスターに補助ノード プールを追加します。 *Spot* の *priority* により、ノード プールがスポット ノード プールになります。 上の例では、*eviction-policy* パラメーターは、既定値である *Delete* に設定されています。 [eviction policy][eviction-policy] を *Delete* に設定すると、ノード プールの基になるスケール セット内のノードは、排除されたときに削除されます。 また、eviction policy を *Deallocate* に設定することもできます。 eviction policy を *Deallocate* に設定すると、基になるスケール セット内のノードは、排除時に停止済み/割り当て解除済み状態に設定されます。 停止済み/割り当て解除済み状態のノードはコンピューティング クォータには含まれず、クラスターのスケーリングやアップグレードで問題を発生させる場合があります。 *priority* および *eviction-policy* 値は、ノード プールの作成中にのみ設定できます。 これらの値を後で更新することはできません。
+既定では、複数のノード プールを含む AKS クラスターを作成する場合は、その AKS クラスター内に *Regular* の *priority* を持つノード プールを作成します。 上のコマンドは、 *Spot* の *priority* を持つ既存の AKS クラスターに補助ノード プールを追加します。 *Spot* の *priority* により、ノード プールがスポット ノード プールになります。 上の例では、 *eviction-policy* パラメーターは、既定値である *Delete* に設定されています。 [eviction policy][eviction-policy] を *Delete* に設定すると、ノード プールの基になるスケール セット内のノードは、排除されたときに削除されます。 また、eviction policy を *Deallocate* に設定することもできます。 eviction policy を *Deallocate* に設定すると、基になるスケール セット内のノードは、排除時に停止済み/割り当て解除済み状態に設定されます。 停止済み/割り当て解除済み状態のノードはコンピューティング クォータには含まれず、クラスターのスケーリングやアップグレードで問題を発生させる場合があります。 *priority* および *eviction-policy* 値は、ノード プールの作成中にのみ設定できます。 これらの値を後で更新することはできません。
 
 このコマンドではまた、スポット ノード プールで使用することが推奨される[クラスター オートスケーラー][cluster-autoscaler]も有効になります。 クラスターで実行されているワークロードに基づいて、クラスター オートスケーラーは、ノード プール内のノードの数をスケールアップおよびスケールダウンします。 スポット ノード プールでは、追加のノードが引き続き必要な場合、クラスター オートスケーラーは排除の後にノードの数をスケールアップします。 ノード プールに含めることができるノードの最大数を変更する場合は、クラスター オートスケーラーに関連付けられている `maxCount` 値も調整する必要があります。 クラスター オートスケーラーを使用しない場合は、排除により、スポット プールが最終的に 0 まで減少し、追加のスポット ノードを受信するための手動操作が必要になります。
 
@@ -136,7 +100,7 @@ spec:
 ## <a name="max-price-for-a-spot-pool"></a>スポット プールの最大価格
 リージョンと SKU に基づいて、[スポット インスタンスの価格は変動します][pricing-spot]。 詳細については、[Linux][pricing-linux] および [Windows][pricing-windows] での価格を参照してください。
 
-可変する価格に対して、最大 5 桁の小数点以下を使用して、最大価格を米ドル (USD) で設定することができます。 たとえば、*0.98765* という値は、1 時間あたり 0.98765 米国ドルの最大価格になります。 最大価格を *-1* に設定すると、インスタンスは価格に基づいて排除されません。 インスタンスの価格は、使用可能な容量とクォータがある限り、現在のスポットの価格または標準インスタンスの価格のいずれか低い方になります。
+可変する価格に対して、最大 5 桁の小数点以下を使用して、最大価格を米ドル (USD) で設定することができます。 たとえば、 *0.98765* という値は、1 時間あたり 0.98765 米国ドルの最大価格になります。 最大価格を *-1* に設定すると、インスタンスは価格に基づいて排除されません。 インスタンスの価格は、使用可能な容量とクォータがある限り、現在のスポットの価格または標準インスタンスの価格のいずれか低い方になります。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -148,14 +112,8 @@ spec:
 <!-- LINKS - Internal -->
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-group-deploy-create]: /cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create
+[azure-cli-install]: /cli/azure/install-azure-cli
 [az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add
-[az-provider-register]: /cli/azure/provider#az-provider-register
-[az-template-deploy]: ../azure-resource-manager/templates/deploy-cli.md#deployment-scope
 [cluster-autoscaler]: cluster-autoscaler.md
 [eviction-policy]: ../virtual-machine-scale-sets/use-spot.md#eviction-policy
 [kubernetes-concepts]: concepts-clusters-workloads.md

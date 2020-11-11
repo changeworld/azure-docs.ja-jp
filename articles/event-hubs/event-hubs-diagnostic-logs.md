@@ -2,13 +2,13 @@
 title: 診断ログの設定 - Azure Event Hub | Microsoft Docs
 description: Azure のイベント ハブのアクティビティ ログおよび診断ログを設定する方法について説明します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: ccd38d8924765df7bfd91b4fc26bb5304f6f180d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/27/2020
+ms.openlocfilehash: a7230746dc4225b04b0507c872416368aa14442b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88927733"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912601"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Azure イベント ハブの診断ログを設定する
 
@@ -28,7 +28,7 @@ Azure Event Hubs の 2 種類のログを表示できます。
 2. 左側のウィンドウで **[監視]** の下にある **[診断設定]** を選択してから、 **[+ 診断設定の追加]** を選択します。 
 
     ![[診断設定] ページ - 診断設定の追加](./media/event-hubs-diagnostic-logs/diagnostic-settings-page.png)
-4. **[Category details] (カテゴリの詳細)** セクションで、有効にする**診断ログの種類**を選択します。 これらのカテゴリの詳細については、この記事の後半で説明します。 
+4. **[Category details] (カテゴリの詳細)** セクションで、有効にする **診断ログの種類** を選択します。 これらのカテゴリの詳細については、この記事の後半で説明します。 
 5. **[Destination details] (送信先の詳細)** セクションで、アーカイブ ターゲット (送信先) を設定します (例: ストレージ アカウント、イベント ハブ、Log Analytics ワークスペース)。
 
     ![診断設定の追加ページ](./media/event-hubs-diagnostic-logs/aDD-diagnostic-settings-page.png)
@@ -188,7 +188,6 @@ Kafka ユーザー エラー ログの JSON には、次の表に示す要素が
 | `Message` | 情報メッセージ。エラーに関する詳細情報を提供します |
 
 ## <a name="event-hubs-virtual-network-connection-event-schema"></a>Event Hubs 仮想ネットワーク接続イベントのスキーマ
-
 Event Hubs 仮想ネットワーク (VNet) 接続イベントの JSON には、次の表に示す要素が含まれます。
 
 | 名前 | 説明 |
@@ -196,10 +195,12 @@ Event Hubs 仮想ネットワーク (VNet) 接続イベントの JSON には、�
 | `SubscriptionId` | Azure サブスクリプション ID |
 | `NamespaceName` | 名前空間名 |
 | `IPAddress` | Event Hubs サービスに接続しているクライアントの IP アドレス |
-| `Action` | 接続要求を評価するときに Event Hubs サービスによって実行されたアクション。 サポートされているアクションは、**接続の受け入れ**と**接続の拒否**です。 |
+| `Action` | 接続要求を評価するときに Event Hubs サービスによって実行されたアクション。 サポートされているアクションは、 **接続の受け入れ** と **接続の拒否** です。 |
 | `Reason` | アクションが実行された理由を提供します |
 | `Count` | 指定されたアクションの発生回数 |
 | `ResourceId` | Azure Resource Manager リソース ID。 |
+
+仮想ネットワーク ログが生成されるのは、名前空間で **選択されたネットワーク** から、または **特定の IP アドレス** (IP フィルター規則) からのアクセスが許可されている場合のみです。 これらの機能を使用して名前空間へのアクセスを制限せずに、Azure Event Hubs 名前空間に接続しているクライアントの IP アドレスを追跡する仮想ネットワーク ログを取得する場合は、次の回避策を使用できます。 IP フィルター処理を有効にし、アドレス指定可能な IPv4 の範囲の合計 (1.0.0.0/1 - 255.0.0.0/1) を追加します。 Event Hubs では IPv6 範囲はサポートされていません。 
 
 ### <a name="example"></a>例
 

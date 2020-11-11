@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/06/2020
-ms.openlocfilehash: b681e3fa4963a8fe899ccbad8dbf1bbdfbe452ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a02ea022bedd92e9deaa0730cc1be051a9d20c88
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326904"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145686"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Azure Monitor のコンテナー監視ソリューション
 
@@ -112,11 +112,11 @@ Azure Kubernetes Service (AKS) でホストされている Kubernetes 環境に�
 Windows を実行しているコンピューターに Docker エンジンをインストールして構成する方法の詳細については、「[Windows 上の Docker エンジン](/virtualization/windowscontainers/manage-docker/configure-docker-daemon)」をご覧ください。
 
 > [!IMPORTANT]
-> Docker は、コンテナー ホストに [Log Analytics エージェント for Linux](../learn/quick-collect-linux-computer.md) をインストールする**前**に起動しておく必要があります。 Docker をインストールした後で Log Analytics エージェント for Linux をインストールしている場合は、エージェントをインストールし直す必要があります。 Docker の詳細については、[Docker の Web サイト](https://www.docker.com)を参照してください。
+> Docker は、コンテナー ホストに [Log Analytics エージェント for Linux](../learn/quick-collect-linux-computer.md) をインストールする **前** に起動しておく必要があります。 Docker をインストールした後で Log Analytics エージェント for Linux をインストールしている場合は、エージェントをインストールし直す必要があります。 Docker の詳細については、[Docker の Web サイト](https://www.docker.com)を参照してください。
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Linux コンテナー ホストをインストールして構成する
 
-Docker をインストールした後で、コンテナー ホストの次の設定を使用して、Docker で使用するためにエージェントを構成します。 まず、Log Analytics のワークスペース ID とキーが必要です。これらは Azure Portal 上で見つけることができます。 ワークスペースで **[クイック スタート]**  >  **[コンピューター]** をクリックして、**ワークスペース ID** と**主キー**を表示します。  両方をコピーしてお使いのエディターに貼り付けます。
+Docker をインストールした後で、コンテナー ホストの次の設定を使用して、Docker で使用するためにエージェントを構成します。 まず、Log Analytics のワークスペース ID とキーが必要です。これらは Azure Portal 上で見つけることができます。 ワークスペースで **[クイック スタート]**  >  **[コンピューター]** をクリックして、 **ワークスペース ID** と **主キー** を表示します。  両方をコピーしてお使いのエディターに貼り付けます。
 
 **CoreOS を除くすべての Linux コンテナー ホスト**
 
@@ -476,12 +476,12 @@ Helm を使用して Linux Kubernetes 環境内に Log Analytics エージェン
  
     RESOURCES:
     ==> v1/Secret
-    NAME            TYPE    DATA  AGE
-    omsagent-msoms  Opaque  3     17m
+    NAME            TYPE    DATA  AGE
+    omsagent-msoms  Opaque  3     17m
  
     ==> v1beta1/DaemonSet
-    NAME            DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE-SELECTOR  AGE
-    omsagent-msoms  3        3        3      3           3          <none>         17m
+    NAME            DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE-SELECTOR  AGE
+    omsagent-msoms  3        3        3      3           3          <none>         17m
     ```
    
     詳細については、[コンテナー ソリューション Helm チャート](https://aka.ms/omscontainerhelm)に関するページを参照してください。
@@ -513,7 +513,7 @@ Windows および Hyper-V コンテナーの監視を有効にするには、コ
 
 Service Fabric で実行されている Windows コンテナーを監視できます。 ただし、現在 Service Fabric でサポートされているのは、[Azure で実行される仮想マシン](../learn/quick-collect-azurevm.md)と[オンプレミス環境で Windows を実行するコンピューター](../platform/agent-windows.md)のみです。
 
-Windows でコンテナー監視ソリューションが正しく設定されていることを確認できます。 管理パックが正常にダウンロードされているかどうかを確認するには、*ContainerManagement.xxx* を探します。 ファイルは C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs フォルダーにあります。
+Windows でコンテナー監視ソリューションが正しく設定されていることを確認できます。 管理パックが正常にダウンロードされているかどうかを確認するには、 *ContainerManagement.xxx* を探します。 ファイルは C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs フォルダーにあります。
 
 ## <a name="solution-components"></a>ソリューションのコンポーネント
 
@@ -574,7 +574,7 @@ Azure portal でソリューションを有効化すると、コンテナー ホ
 
 ダッシュボードの各エリアは、収集されたデータに対して実行された検索の結果を視覚的に表したものです。
 
-![コンテナー ダッシュボード](./media/containers/containers-dash01.png)
+![収集されたデータを表示するためのダッシュボードを示すスクリーンショット。 ](./media/containers/containers-dash01.png)
 
 ![コンテナー ダッシュボード](./media/containers/containers-dash02.png)
 
@@ -599,9 +599,9 @@ Log Analytics が開き、コンテナーの状態に関する情報が表示さ
 2. Log Analytics が開き、次のようにコンテナーの状態が表示されます。  
    ![コンテナーの状態](./media/containers/containers-log-search.png)
 3. Failed 行を展開し、[+] をクリックして、クエリにその条件を追加します。 その後、クエリで Summarize 行をコメント アウトします。
-   ![失敗したコンテナー](./media/containers/containers-state-failed-select.png)  
+   ![コメント アウトする必要がある行を示すスクリーンショット。](./media/containers/containers-state-failed-select.png)  
 1. クエリを実行し、結果内の行を展開して、イメージ ID を表示します。  
-   ![失敗したコンテナー](./media/containers/containers-state-failed.png)  
+   ![イメージ ID を表示する方法を示すスクリーンショット。](./media/containers/containers-state-failed.png)  
 1. ログ クエリに以下を入力します。 `ContainerImageInventory | where ImageID == <ImageID>` により、停止したイメージと失敗したイメージのサイズと数など、イメージに関する詳細が表示されます。  
    ![失敗したコンテナー](./media/containers/containers-failed04.png)
 
@@ -620,7 +620,7 @@ Log Analytics が開き、コンテナーの状態に関する情報が表示さ
 
 ### <a name="to-query-logs-for-container-data"></a>コンテナー データのログをクエリするには
 
-* 最近失敗したことがわかっているイメージを選択し、そのエラー ログを見つけます。 まず、**ContainerInventory** 検索で、そのイメージを実行しているコンテナー名を特定します。 たとえば、`ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"` を検索します。  
+* 最近失敗したことがわかっているイメージを選択し、そのエラー ログを見つけます。 まず、 **ContainerInventory** 検索で、そのイメージを実行しているコンテナー名を特定します。 たとえば、`ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"` を検索します。  
     ![Ubuntu コンテナーの検索](./media/containers/search-ubuntu.png)
 
   結果内の任意の行を展開すると、そのコンテナーの詳細が表示されます。

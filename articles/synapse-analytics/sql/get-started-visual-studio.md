@@ -1,6 +1,6 @@
 ---
 title: Visual Studio と SSDT を使用して Synapse SQL に接続してクエリを実行する
-description: Visual Studio と Azure Synapse Analytics を使用して、SQL プールに対してクエリを実行します。
+description: Visual Studio を使用して Azure Synapse Analytics を使用した専用 SQL プールに対するクエリを実行します。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,15 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 93c975bbbc69a43f1bd47bd4b1e7b857338ac1c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 098256c3174f5a737bec4f6a62cb1d2af99e6f4f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87089245"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311073"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Visual Studio と SSDT を使用して Synapse SQL に接続する
+
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
@@ -26,19 +27,20 @@ ms.locfileid: "87089245"
 > 
 > 
 
-Visual Studio と Azure Synapse Analytics を使用して、SQL プールに対してクエリを実行します。 この方法では、Visual Studio 2019 の SQL Server Data Tools (SSDT) 拡張機能が使用されます。 
+Visual Studio を使用して Azure Synapse Analytics を使用した専用 SQL プールに対するクエリを実行します。 この方法では、Visual Studio 2019 の SQL Server Data Tools (SSDT) 拡張機能が使用されます。 
 
 > [!NOTE]
-> SQL オンデマンド (プレビュー) は、SSDT ではサポートされていません。
+> サーバーレス SQL プール (プレビュー) は、SSDT ではサポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
+
 このチュートリアルを使用するには、次のコンポーネントが必要です。
 
-* 既存の SQL プール。 ない場合は、「[SQL プールを作成する](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照して、この前提条件を完了してください。
+* 既存の専用 SQL プール。 存在しない場合は、[専用 SQL プールの作成](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照して、この前提条件を完了してください。
 * Visual Studio 用の SSDT。 Visual Studio をお持ちの方は既にこのコンポーネントを所有していると思われます。 インストールの手順とオプションの詳細については、 [Visual Studio と SSDT のインストール](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
-* 完全修飾 SQL サーバー名。 このサーバー名を特定するには、「[SQL プールに接続する](connect-overview.md)」を参照してください。
+* 完全修飾 SQL サーバー名。 このサーバー名を確認するには、[専用 SQL プールへの接続](connect-overview.md)に関するページを参照してください。
 
-## <a name="1-connect-to-sql-pool"></a>1.SQL プールに接続する
+## <a name="1-connect-to-a-dedicated-sql-pool"></a>1.専用 SQL プールに接続する
 1. Visual Studio 2019 を開きます。
 2. **[表示]**  >  **[SQL Server オブジェクト エクスプローラー]** の順に選択して、SQL Server オブジェクト エクスプローラーを開きます。
    
@@ -50,8 +52,8 @@ Visual Studio と Azure Synapse Analytics を使用して、SQL プールに対�
    
     ![[サーバーへの接続]](./media/get-started-visual-studio/connection-dialog.png)
    
-   * **[サーバー名]** : 前の手順で特定した**サーバー名**を入力します。
-   * **認証**: **[SQL Server 認証]** または **[Active Directory 統合認証]** を選択します。
+   * **[サーバー名]** : 前の手順で特定した **サーバー名** を入力します。
+   * **認証** : **[SQL Server 認証]** または **[Active Directory 統合認証]** を選択します。
    * **[ユーザー名]** と **[パスワード]** : 先ほど [SQL Server 認証] を選択した場合は、ユーザー名とパスワードを入力します。
    * **[Connect]** をクリックします。
 5. 確認のために、Azure SQL Server を展開します。 サーバーに関連付けられているデータベースが表示されます。 AdventureWorksDW を展開すると、サンプル データベース内のテーブルが表示されます。
@@ -79,5 +81,5 @@ Visual Studio と Azure Synapse Analytics を使用して、SQL プールに対�
 
 ## <a name="next-steps"></a>次のステップ
 これで接続してクエリを実行することができます。[Power BI でデータを視覚化](get-started-power-bi-professional.md)してみてください。
-Azure Active Directory 認証を使用するために環境を構成する方法については、[SQL プールの認証](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
+Azure Active Directory 認証を使用するために環境を構成する方法については、[専用 SQL プールの認証](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
  

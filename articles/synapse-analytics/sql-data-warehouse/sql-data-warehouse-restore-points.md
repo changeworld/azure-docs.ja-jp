@@ -1,6 +1,6 @@
 ---
 title: ユーザー定義の復元ポイント
-description: SQL プールの復元ポイントを作成する方法。
+description: 専用 SQL プールの復元ポイントを作成する方法。
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 66a2dad9396e8bf7c8ef49db529f7a5486cc8a8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d7266e0b84ae57682ddcfe7195be9574a702c74
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87089209"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313245"
 ---
-# <a name="user-defined-restore-points"></a>ユーザー定義の復元ポイント
+# <a name="user-defined-restore-points-for-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 内の専用 SQL プールのユーザー定義の復元ポイント
 
-この記事では、PowerShell と Azure portal を使用して、Azure Synapse Analytics で SQL プールの新しいユーザー定義の復元ポイントを作成する方法について説明します。
+この記事では、PowerShell と Azure portal を使用して、Azure Synapse Analytics で専用 SQL プールの新しいユーザー定義の復元ポイントを作成する方法について説明します。
 
 ## <a name="create-user-defined-restore-points-through-powershell"></a>PowerShell を使用してユーザー定義の復元ポイントを作成する
 
@@ -62,9 +62,9 @@ Get-AzSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName
 
 1. [Azure portal](https://portal.azure.com/) アカウントにサインインします。
 
-2. 復元ポイントを作成する SQL プールに移動します。
+2. 復元ポイントを作成する専用 SQL プールに移動します。
 
-3. 左側のウィンドウで **[概要]** を選択し、 **[+ 新しい復元ポイント]** を選択します。 [新しい復元ポイント] ボタンが有効でない場合は、SQL プールが一時停止されていないことを確認します。
+3. 左側のウィンドウで **[概要]** を選択し、 **[+ 新しい復元ポイント]** を選択します。 [新しい復元ポイント] ボタンが有効でない場合は、専用 SQL プールが一時停止されていないことを確認します。
 
     ![新しい復元ポイント](./media/sql-data-warehouse-restore-points/creating-restore-point-01.png)
 
@@ -74,7 +74,7 @@ Get-AzSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName
 
 ## <a name="next-steps"></a>次のステップ
 
-- [既存の SQL プールを復元する](sql-data-warehouse-restore-active-paused-dw.md)
-- [削除された SQL プールを復元する](sql-data-warehouse-restore-deleted-dw.md)
-- [geo バックアップ SQL プールからの復元](sql-data-warehouse-restore-from-geo-backup.md)
+- [既存の専用 SQL プールを復元する](sql-data-warehouse-restore-active-paused-dw.md)
+- [削除された専用 SQL プールを復元する](sql-data-warehouse-restore-deleted-dw.md)
+- [geo バックアップ専用 SQL プールから復元する](sql-data-warehouse-restore-from-geo-backup.md)
 

@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4b512d0817c56bc2daabff057c8bc4aa1afa1dee
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 44c9dbb0eed5e8f7a868832af93a3b841f67f784
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826506"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310698"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>Azure Synapse Analytics で .NET for Apache Spark を使用する
 
@@ -68,7 +68,7 @@ Azure Synapse Analytics を使用して [Synapse Spark プールの Apache Spark
 
 新しいノートブックを作成する場合は、使用するビジネス ロジックを表現する言語カーネルを選択します。 C# など、いくつかの言語ではカーネルのサポートを利用できます。
 
-ご利用の Azure Synapse Analytics ノートブック内で .NET for Apache Spark を使用するには、カーネルとして **.NET Spark (C#)** を選択し、ノートブックを既存の Spark プールにアタッチします。
+ご利用の Azure Synapse Analytics ノートブック内で .NET for Apache Spark を使用するには、カーネルとして **.NET Spark (C#)** を選択し、ノートブックを既存のサーバーレス Apache Spark プールにアタッチします。
 
 .Net Spark ノートブックは .NET インタラクティブ エクスペリエンスに基づいており、Spark セッション変数 `spark` があらかじめ定義された状態で、すぐに利用できる .NET for Spark を使用する機能を備えたインタラクティブ C# エクスペリエンスを備えています。
 

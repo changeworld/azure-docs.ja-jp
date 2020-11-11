@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 5cfd76d6b2f6bb9429a7605ac05adb23d87a80d3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 76ecd811ab0bffe20b4bddcc4dc2eacaffaed588
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790884"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308337"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure SQL Transparent Data Encryption
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -156,7 +156,7 @@ Transparent Data Encryption がカスタマー マネージド キーを使用�
 
 - Azure Active Directory でサーバーのマネージド ID を削除する
 
-データベースにアクセスできなくなる一般的な原因については、[こちら](/sql/relational-databases/security/encryption/troubleshoot-tde?view=azuresqldb-current#common-errors-causing-databases-to-become-inaccessible)を参照してください。
+データベースにアクセスできなくなる一般的な原因については、[こちら](/sql/relational-databases/security/encryption/troubleshoot-tde?view=azuresqldb-current&preserve-view=true#common-errors-causing-databases-to-become-inaccessible)を参照してください。
 
 ## <a name="monitoring-of-the-customer-managed-tde"></a>カスタマー マネージド TDE の監視
 
@@ -179,7 +179,7 @@ Key Vault の TDE 保護機能で暗号化されたバックアップを復元�
 
 これを軽減するには、ターゲット サーバーに対して [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) コマンドレットを実行するか、ターゲット マネージド インスタンスに対して [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) を実行して、使用可能なキーの一覧を返し、不足しているキーを識別します。 すべてのバックアップを復元できるようにするには、復元のターゲット サーバーが必要なすべてのキーにアクセスできることを確認します。 これらのキーを TDE 保護機能としてマークする必要はありません。
 
-SQL Database のバックアップ回復の詳細については、[SQL Database のデータベース回復](recovery-using-backups.md)に関する記事を参照してください。 SQL プールのバックアップの回復の詳細については、[SQL プールの復旧](../../synapse-analytics/sql-data-warehouse/backup-and-restore.md)に関する記事をご覧ください。 SQL Managed Instance を使用した SQL Server のネイティブのバックアップと復元については、[クイックスタート: SQL Managed Instance へのデータベースの復元](../managed-instance/restore-sample-database-quickstart.md)に関するページを参照してください
+SQL Database のバックアップ回復の詳細については、[SQL Database のデータベース回復](recovery-using-backups.md)に関する記事を参照してください。 Azure Synapse Analytics の専用 SQL プールのバックアップ復旧の詳細については、[専用 SQL プールの復旧](../../synapse-analytics/sql-data-warehouse/backup-and-restore.md)に関するページを参照してください。 SQL Managed Instance を使用した SQL Server のネイティブのバックアップと復元については、[クイックスタート: SQL Managed Instance へのデータベースの復元](../managed-instance/restore-sample-database-quickstart.md)に関するページを参照してください
 
 ログ ファイルに関するその他の考慮事項:TDE 保護機能が交換され、データベースが新しい TDE 保護機能を使用している場合でも、バックアップ ログ ファイルは元の TDE 保護機能で暗号化されたままになっています。  復元時に、データベースを復元するには両方のキーが必要になります。  サービス マネージド TDE を使用するようにデータベースが変更された場合でも、Azure Key Vault に格納されている TDE 保護機能がログ ファイルで使用されている場合は、復元時にこのキーが必要になります。
 

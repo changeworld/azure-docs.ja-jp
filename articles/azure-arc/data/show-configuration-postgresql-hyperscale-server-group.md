@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 716759fd6542cd473c236992ac88b69bfe5d0a66
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a268cd6b2fa3da6846554e3d1b170298abec7f18
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148018"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279403"
 ---
 # <a name="show-the-configuration-of-an-arc-enabled-postgresql-hyperscale-server-group"></a>Arc 対応 PostgreSQL Hyperscale サーバー グループの構成を表示する
 
@@ -210,7 +210,7 @@ Spec:
       Name:  citus
       Name:  pg_stat_statements
   Scale:
-    Shards:  2
+    Workers:  2
   Scheduling:
     Default:
       Resources:
@@ -236,20 +236,50 @@ Status:
 Events:               <none>
 ```
 
+>[!NOTE]
+>2020 年 10 月のリリースより前では、前の例の `Workers` は `Shards` でした。 詳細については、「[リリースノート - Azure Arc 対応データ サービス (プレビュー)](release-notes.md)」を参照してください。
+
 先述の `servergroup` の説明のいくつかの特定の重要ポイントに注目してみましょう。 それにより、このサーバー グループについて何がわかりますか?
 
 - これは Postgres のバージョン 12 です。 
-   > 種類: `postgresql-12`
+   > ```json
+   > Kind:         `postgresql-12`
+   > ```
 - 2020 年 8 月中に作成されました。
-   > 作成タイムスタンプ: `2020-08-31T21:01:07Z`
+   > ```json
+   > Creation Timestamp:  `2020-08-31T21:01:07Z`
+   > ```
 - このサーバー グループには、2 つの Postgres 拡張 `citus` と `pg_stat_statements` が作成されました。
-   > エンジン:拡張機能: 名前:`citus`名前: `pg_stat_statements`
+   > ```json
+   > Engine:
+   >    Extensions:
+   >      Name:  `citus`
+   >      Name:  `pg_stat_statements`
+   > ```
 - それは 2 つのワーカー ノードを使用しています
-   > スケール:シャード: `2`
+   > ```json
+   > Scale:
+   >    Workers:  `2`
+   > ```
 - ノードあたり 1 CPU/仮想コアと 512 MB の RAM の使用が保証されています。 4 つ以上の CPU/仮想コアと 1024 MB のメモリを使用します。
-   > スケジュール設定:既定値は リソース:    制限:     CPU:   4       メモリ:1024Mi     要求:     CPU:   1       メモリ:512Mi
+   > ```json
+   > Scheduling:
+   >    Default: 
+   >      Resources:
+   >        Limits:
+   >          Cpu:     4
+   >          Memory:  1024Mi
+   >        Requests:
+   >          Cpu:     1
+   >          Memory:  512Mi
+   > ```
  - クエリに使用でき、問題ありません。 すべてのノードが稼働しています。
-   > ステータス:準備完了 ポッド:       3/3 状態:            Ready
+   > ```json
+   > Status:
+   >  ...
+   >  Ready Pods:         3/3
+   >  State:              Ready
+   > ```
 
 **azdata を使用する:**
 
@@ -292,7 +322,7 @@ kubectl によって返されるものとよく似た形式と内容で、以下
       ]
     },
     "scale": {
-      "shards": 2
+      "workers": 2
     },
     "scheduling": {
       "default": {

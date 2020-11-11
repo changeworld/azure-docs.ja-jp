@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/12/2020
-ms.openlocfilehash: 7dd23f481409eb3498893c1c7f9c0fd8311b9af2
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 0a06bbeb4946f03b9cb6e5b1400521a0abffdd7f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901593"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913536"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Synapse Analytics (旧称: Azure SQL Data Warehouse) のデータのコピーと変換を行う
 
@@ -42,7 +42,7 @@ ms.locfileid: "92901593"
 
 - SQL 認証を使って、およびサービス プリンシパルまたは Azure リソースのマネージド ID で Azure Active Directory (Azure AD) アプリケーション トークン認証を使って、データをコピーする。
 - ソースとして、SQL クエリまたはストアド プロシージャを使用してデータを取得する。 Azure Synapse Analytics ソースから並列コピーを行うことを選択することもできます。詳細については、「[Synapse Analytics からの並列コピー](#parallel-copy-from-synapse-analytics)」セクションを参照してください。
-- シンクとして、[PolyBase](#use-polybase-to-load-data-into-azure-synapse-analytics) または [COPY ステートメント](#use-copy-statement) (プレビュー)、あるいは一括挿入を使用してデータを読み込む。 コピーのパフォーマンスを向上させるために、PolyBase または COPY ステートメント (プレビュー) をお勧めします。 コネクタでは、宛先テーブルが存在しない場合は、送信元スキーマに基づくその自動作成もサポートされています。
+- シンクとして、[PolyBase](#use-polybase-to-load-data-into-azure-synapse-analytics) または [COPY ステートメント](#use-copy-statement)、あるいは一括挿入を使用してデータを読み込みます。 コピーのパフォーマンスを向上させるために、PolyBase または COPY ステートメントをお勧めします。 コネクタでは、宛先テーブルが存在しない場合は、送信元スキーマに基づくその自動作成もサポートされています。
 
 > [!IMPORTANT]
 > Azure Data Factory Integration Runtime を使ってデータをコピーする場合は、Azure サービスが[論理 SQL サーバー](../azure-sql/database/logical-servers.md)にアクセスできるように[サーバーレベルのファイアウォール規則](../azure-sql/database/firewall-configure.md)を構成します。
@@ -51,7 +51,7 @@ ms.locfileid: "92901593"
 ## <a name="get-started"></a>はじめに
 
 > [!TIP]
-> 最高のパフォーマンスを実現するには、PolyBase を使用して、Azure Synapse Analytics にデータを読み込みます。 詳細については、「[PolyBase を使用して Azure Synapse Analytics にデータを読み込む](#use-polybase-to-load-data-into-azure-synapse-analytics)」をご覧ください。 ユース ケースを使用したチュートリアルについては、[Azure Data Factory を使用して 1 TB のデータを 15 分以内に Azure Synapse Analytics に読み込む方法](load-azure-sql-data-warehouse.md)に関する記事をご覧ください。
+> 最高のパフォーマンスを実現するには、PolyBase または COPY ステートメントを使用して、Azure Synapse Analytics にデータを読み込みます。 詳細については、「[PolyBase を使用して Azure Synapse Analytics にデータを読み込む](#use-polybase-to-load-data-into-azure-synapse-analytics)」および [COPY ステートメントを使用して Azure Synapse Analytics にデータを読み込む](#use-copy-statement)方法に関するセクションを参照してください。 ユース ケースを使用したチュートリアルについては、[Azure Data Factory を使用して 1 TB のデータを 15 分以内に Azure Synapse Analytics に読み込む方法](load-azure-sql-data-warehouse.md)に関する記事をご覧ください。
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -478,7 +478,7 @@ WHERE s.name='[your schema]' AND t.name = '[your table name]'
 - ソース データのストアと形式が、本来は PolyBase でサポートされていない形式の場合は、代わりに **[PolyBase を使用したステージング コピー](#staged-copy-by-using-polybase)** を使います。 ステージング コピー機能はスループットも優れています。 データは、PolyBase と互換性のある形式に自動的に変換され、Azure Blob Storage に格納されます。その後、PolyBase が呼び出されて、Azure Synapse Analytics にデータが読み込まれます。
 
 > [!TIP]
-> 「[PolyBase の使用に関するベスト プラクティス](#best-practices-for-using-polybase)」をご覧ください。 Azure Integration Runtime で PolyBase を使用する場合、有効なデータ統合単位 (DIU) は常に 2 です。 ストレージからのデータの読み込みは Synapse エンジンによって行われるため、DIU をチューニングしてもパフォーマンスには影響しません。
+> 「[PolyBase の使用に関するベスト プラクティス](#best-practices-for-using-polybase)」をご覧ください。 Azure Integration Runtime で PolyBase を使用している場合、直接またはステージングされているストレージから Synapse への[データ統合ユニット (DIU)](copy-activity-performance-features.md#data-integration-units) は常に 2 になります。 ストレージからのデータの読み込みは Synapse エンジンによって行われるため、DIU をチューニングしてもパフォーマンスには影響しません。
 
 コピー アクティビティの `polyBaseSettings` では、次の PolyBase 設定がサポートされています。
 
@@ -507,7 +507,8 @@ Azure Synapse Analytics の PolyBase では、Azure Blob、Azure Data Lake Stora
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | アカウント キー認証、マネージド ID 認証 |
 
     >[!IMPORTANT]
-    >VNet サービス エンドポイントを使用して Azure Storage が構成されている場合は、マネージド ID 認証を使用する必要があります。「[Azure Storage で VNet サービス エンドポイントを使用した場合の影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)」を参照してください。 Data Factory で必要な構成については、[Azure Blob のマネージド ID 認証](connector-azure-blob-storage.md#managed-identity)と [Azure Data Lake Storage Gen2 のマネージド ID 認証](connector-azure-data-lake-storage.md#managed-identity)のセクションをそれぞれ参照してください。
+    >- ストレージのリンクされたサービスに対してマネージド ID 認証を使用する場合は、[Azure Blob](connector-azure-blob-storage.md#managed-identity) と [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) に必要な各構成について確認してください。
+    >- Azure Storage が VNet サービス エンドポイントを使用して構成されている場合は、ストレージ アカウントで [allow trusted Microsoft service]\(信頼された Microsoft サービスを許可する\) を有効にしたマネージド ID 認証を使用する必要があります。詳細については「[Azure Storage で VNet サービス エンドポイントを使用した場合の影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)」を参照してください。
 
 2. **ソース データ形式** は、次のように構成された **Parquet** 、 **ORC** 、または **区切りテキスト** です。
 
@@ -567,7 +568,8 @@ Azure Synapse Analytics の PolyBase では、Azure Blob、Azure Data Lake Stora
 この機能を使用するには、中間ストレージとして Azure Storage アカウントを参照する **アカウント キーまたはマネージド ID の認証** を使用して、 [Azure Blob Storage のリンクされたサービス](connector-azure-blob-storage.md#linked-service-properties)または [Azure Data Lake Storage Gen2 のリンクされたサービス](connector-azure-data-lake-storage.md#linked-service-properties)を作成します。
 
 >[!IMPORTANT]
->VNet サービス エンドポイントを使用してステージング Azure Storage が構成されている場合は、マネージド ID 認証を使用する必要があります。「[Azure Storage で VNet サービス エンドポイントを使用した場合の影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)」を参照してください。 Data Factory で必要な構成については、[Azure Blob - マネージド ID 認証](connector-azure-blob-storage.md#managed-identity)に関するセクションと [Azure Data Lake Storage Gen2 - マネージド ID 認証](connector-azure-data-lake-storage.md#managed-identity)に関するセクションを参照してください。
+>- ステージングのリンクされたサービスに対してマネージド ID 認証を使用する場合は [Azure Blob](connector-azure-blob-storage.md#managed-identity) と [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) に必要な各構成について確認してください。
+>- ステージング Azure Storage が VNet サービス エンドポイントを使用して構成されている場合は、ストレージ アカウントで [allow trusted Microsoft service]\(信頼された Microsoft サービスを許可する\) を有効にしたマネージド ID 認証を使用する必要があります。詳細については「[Azure Storage で VNet サービス エンドポイントを使用した場合の影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)」を参照してください。 
 
 ```json
 "activities":[
@@ -673,7 +675,7 @@ Azure Synapse Analytics の [COPY ステートメント](/sql/t-sql/statements/c
 >現在、Data Factory では、下記の COPY ステートメントと互換性のあるソースからのコピーのみがサポートされています。
 
 >[!TIP]
->Azure Integration Runtime で COPY ステートメントを使用する場合、有効なデータ統合単位 (DIU) は常に 2 です。 ストレージからのデータの読み込みは Synapse エンジンによって行われるため、DIU をチューニングしてもパフォーマンスには影響しません。
+>Azure Integration Runtime で COPY ステートメントを使用する場合、有効な[データ統合単位 (DIU)](copy-activity-performance-features.md#data-integration-units) は常に 2 です。 ストレージからのデータの読み込みは Synapse エンジンによって行われるため、DIU をチューニングしてもパフォーマンスには影響しません。
 
 COPY ステートメントを使用する場合、次の構成がサポートされます。
 
@@ -687,7 +689,8 @@ COPY ステートメントを使用する場合、次の構成がサポートさ
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | [区切りテキスト](format-delimited-text.md)<br/>[Parquet](format-parquet.md)<br/>[ORC](format-orc.md) | アカウント キー認証、サービス プリンシパル認証、マネージド ID 認証 |
 
     >[!IMPORTANT]
-    >VNet サービス エンドポイントを使用して Azure Storage が構成されている場合は、マネージド ID 認証を使用する必要があります。「[Azure Storage で VNet サービス エンドポイントを使用した場合の影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)」を参照してください。 Data Factory で必要な構成については、[Azure Blob のマネージド ID 認証](connector-azure-blob-storage.md#managed-identity)と [Azure Data Lake Storage Gen2 のマネージド ID 認証](connector-azure-data-lake-storage.md#managed-identity)のセクションをそれぞれ参照してください。
+    >- ストレージのリンクされたサービスに対してマネージド ID 認証を使用する場合は、[Azure Blob](connector-azure-blob-storage.md#managed-identity) と [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) に必要な各構成について確認してください。
+    >- Azure Storage が VNet サービス エンドポイントを使用して構成されている場合は、ストレージ アカウントで [allow trusted Microsoft service]\(信頼された Microsoft サービスを許可する\) を有効にしたマネージド ID 認証を使用する必要があります。詳細については「[Azure Storage で VNet サービス エンドポイントを使用した場合の影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)」を参照してください。
 
 2. 形式設定は次のとおりです。
 
@@ -769,7 +772,10 @@ Azure Synapse Analytics に固有の設定は、ソース変換の **[Source Opt
 
 **[入力]\(Input\)** : テーブルにあるソースを指す (```Select * from <table-name>``` に相当) かカスタム SQL クエリを入力するかを選択します。
 
-**[Enable Staging]\(ステージングを有効にする\)** Synapse DW ソースを使用する運用ワークロードでは、このオプションを使用することを強くお勧めします。 パイプラインから Synapse ソースを使用してデータ フロー アクティビティを実行すると、ADF によってステージングの場所のストレージ アカウントの入力が求められ、ステージング データの読み込みにそれが使用されます。 Synapse DW からデータを読み込む最も速いメカニズムです。
+**[Enable Staging]\(ステージングを有効にする\)** Azure Synapse Analytics ソースを使用する運用ワークロードでは、このオプションを使用することを強くお勧めします。 パイプラインから Azure Synapse Analytics ソースを使用して[データ フロー アクティビティ](control-flow-execute-data-flow-activity.md)を実行すると、ADF によってステージングの場所のストレージ アカウントの入力が求められ、ステージング データの読み込みにそれが使用されます。 Azure Synapse Analytics からデータを読み込む最も速いメカニズムです。
+
+- ストレージのリンクされたサービスに対してマネージド ID 認証を使用する場合は、[Azure Blob](connector-azure-blob-storage.md#managed-identity) と [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) に必要な各構成について確認してください。
+- Azure Storage が VNet サービス エンドポイントを使用して構成されている場合は、ストレージ アカウントで [allow trusted Microsoft service]\(信頼された Microsoft サービスを許可する\) を有効にしたマネージド ID 認証を使用する必要があります。詳細については「[Azure Storage で VNet サービス エンドポイントを使用した場合の影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)」を参照してください。
 
 **Query** : [Input] フィールドで [Query] を選択した場合は、ソースに対する SQL クエリを入力します。 この設定により、データセットで選択したすべてのテーブルがオーバーライドされます。 ここでは **Order By** 句はサポートされていませんが、完全な SELECT FROM ステートメントを設定することができます。 ユーザー定義のテーブル関数を使用することもできます。 **select * from udfGetData()** は、テーブルを返す SQL の UDF です。 このクエリでは、お使いのデータ フローで使用できるソース テーブルが生成されます。 テスト対象またはルックアップ対象の行を減らすうえでも、クエリの使用は有効な手段です。
 
@@ -798,7 +804,10 @@ Azure Synapse Analytics に固有の設定は、シンク変換の **[設定]** 
 - [再作成]:テーブルが削除され、再作成されます。 新しいテーブルを動的に作成する場合に必要です。
 - [切り詰め]:ターゲット テーブルのすべての行が削除されます。
 
-**[Enable staging]\(ステージングの有効化\):** Azure Synapse Analytics に書き込むときに、 [PolyBase](/sql/relational-databases/polybase/polybase-guide) を使用するかどうかを指定します。
+**[Enable staging]\(ステージングの有効化\):** Azure Synapse Analytics に書き込むときに、[PolyBase](/sql/relational-databases/polybase/polybase-guide) を使用するかどうかを指定します。 ステージング ストレージは[データ フローの実行アクティビティ](control-flow-execute-data-flow-activity.md)で構成されます。 
+
+- ストレージのリンクされたサービスに対してマネージド ID 認証を使用する場合は、[Azure Blob](connector-azure-blob-storage.md#managed-identity) と [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) に必要な各構成について確認してください。
+- Azure Storage が VNet サービス エンドポイントを使用して構成されている場合は、ストレージ アカウントで [allow trusted Microsoft service]\(信頼された Microsoft サービスを許可する\) を有効にしたマネージド ID 認証を使用する必要があります。詳細については「[Azure Storage で VNet サービス エンドポイントを使用した場合の影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)」を参照してください。
 
 **Batch size** : 各バケットに書き込まれる行数を制御します。 バッチ サイズを大きくすると、圧縮とメモリの最適化が向上しますが、データをキャッシュする際にメモリ不足の例外が発生するリスクがあります。
 

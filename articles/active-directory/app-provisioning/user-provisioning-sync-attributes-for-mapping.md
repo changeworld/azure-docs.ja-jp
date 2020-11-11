@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 05/13/2019
 ms.author: kenwith
-ms.openlocfilehash: 00c4dec329456409bc8d5b77dca72f25daf9f5c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cecdda27139aa1dd0733b50898db9db70aa34dc3
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84781075"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040988"
 ---
 # <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>アプリケーションにプロビジョニングするためにオンプレミスの Active Directory から Azure AD に属性を同期する
 
@@ -41,16 +41,16 @@ Azure AD から SaaS アプリにユーザー アカウントをプロビジョ�
    > [!NOTE]
    > **[使用可能な属性]** での検索は、大文字と小文字が区別されます。
 
-   ![Azure Active Directory Connect ウィザードの [ディレクトリ拡張機能] 選択ページ](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-directory-extensions.png)
+   ![[ディレクトリ拡張機能] 選択ページを示すスクリーンショット](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-directory-extensions.png)
 
 5. Azure AD Connect ウィザードを終了し、完全同期サイクルの実行を許可します。 サイクルが完了したら、スキーマが拡張され、オンプレミスの AD と Azure AD の間で新しい値が同期されます。
  
-6. これで、Azure portal で[ユーザー属性マッピングを編集する](customize-application-attributes.md)際に、追加した属性が **[ソース属性]** の一覧に `<attributename> (extension_<appID>_<attributename>)` の形式で含まれるようになります。 属性を選択し、プロビジョニングのためにターゲット アプリケーションにマップします。
+6. これで、Azure portal で [ユーザー属性マッピングを編集する](customize-application-attributes.md)際に、追加した属性が **[ソース属性]** の一覧に `<attributename> (extension_<appID>_<attributename>)` の形式で含まれるようになります。 属性を選択し、プロビジョニングのためにターゲット アプリケーションにマップします。
 
    ![Azure Active Directory Connect ウィザードの [ディレクトリ拡張機能] 選択ページ](./media/user-provisioning-sync-attributes-for-mapping/attribute-mapping-extensions.png)
 
 > [!NOTE]
-> オンプレミスの AD から参照属性 (**managedby** や **DN/DistinguishedName** など) をプロビジョニングする機能は、現在サポートされていません。 [ユーザーの声](https://feedback.azure.com/forums/169401-azure-active-directory)に関するページで、この機能の要求をお送りください。 
+> オンプレミスの AD から参照属性 ( **managedby** や **DN/DistinguishedName** など) をプロビジョニングする機能は、現在サポートされていません。 [ユーザーの声](https://feedback.azure.com/forums/169401-azure-active-directory)に関するページで、この機能の要求をお送りください。 
 
 ## <a name="next-steps"></a>次のステップ
 

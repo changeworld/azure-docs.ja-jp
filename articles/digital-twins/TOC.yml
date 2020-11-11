@@ -111,7 +111,7 @@
       items:
         - name: Azure Monitor のメトリックを表示する
           href: troubleshoot-metrics.md
-        - name: 診断ログの有効化
+        - name: 診断ログの有効化とクエリ
           href: troubleshoot-diagnostics.md
         - name: アラートを有効にする
           href: troubleshoot-alerts.md

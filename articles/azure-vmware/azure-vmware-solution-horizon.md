@@ -3,12 +3,12 @@ title: Azure VMware Solution 上に Horizon をデプロイする
 description: Azure VMware Solution 上に VMware Horizon をデプロイする方法について説明します。
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 6a466aea5cbdf4452a2c46b455932042d920c3b9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: babce512b896009c08165d2e3d9aec7c33724bf4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369014"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321351"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Azure VMware Solution 上に Horizon をデプロイする 
 
@@ -211,3 +211,6 @@ Horizon インフラストラクチャ VM は、標準のデプロイ アーキ�
 | Windows ファイル共有               | D4sv3          |         | *省略可能*                               |
 
 インフラストラクチャ VM のコストは、上記の例の 2,000 デスクトップ デプロイでは、ユーザー単位で 1 か月ごとに \$0.36 になります。 この例では、2020 年 6 月の米国東部での Azure インスタンスの価格が使用されています。 価格は、リージョン、選択したオプション、およびタイミングによって異なる場合があります。
+
+## <a name="next-steps"></a>次のステップ
+Azure VMware Solution 上の VMware Horizon の詳細については、[VMware Horizon に関する FAQ](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/products/horizon/vmw-horizon-on-microsoft-azure-vmware-solution-faq.pdf) を参照してください。

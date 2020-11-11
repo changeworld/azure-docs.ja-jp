@@ -5,17 +5,18 @@ author: bwren
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/17/2020
+ms.date: 10/28/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: 43a059354c70c792592ba46aa3d5b63677bda4eb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: eb06fda43590198f1b2643c8362f774a031eaef9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488352"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096282"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB 監視データのリファレンス
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 この記事では、Azure Cosmos DB のパフォーマンスと可用性を分析する目的で収集されるログとメトリック データのリファレンスを提供します。 Azure Cosmos DB の監視データを収集して分析する方法については、[Azure Cosmos DB の監視](monitor-cosmos-db.md)に関するページを参照してください。
 
@@ -41,6 +42,8 @@ ms.locfileid: "92488352"
 | **duration** | **duration_d** | 操作時間 (ミリ秒)。 |
 | **requestLength** | **requestLength_s** | 要求の長さ (バイト単位)。 |
 | **responseLength** | **responseLength_s** | 応答の長さ (バイト単位)。|
+| **resourceTokenPermissionId** | **resourceTokenPermissionId_s** | このプロパティは、指定したリソース トークンのアクセス許可 ID を示します。 アクセス許可の詳細については、[データへのアクセスのセキュリティ保護](./secure-access-to-data.md#permissions)に関するページを参照してください。 |
+| **resourceTokenPermissionMode** | **resourceTokenPermissionMode_s** | このプロパティは、リソース トークンの作成時に設定したアクセス許可モードを示します。 アクセス許可モードとして指定できるのは、"all" や "read" などの値です。 アクセス許可の詳細については、[データへのアクセスのセキュリティ保護](./secure-access-to-data.md#permissions)に関するページを参照してください。 |
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | [リソース トークン](./secure-access-to-data.md#resource-tokens)が認証に使われると、この値は空ではありません。 値は、ユーザーのリソース ID を示します。 |
 | **responseLength** | **responseLength_s** | 応答の長さ (バイト単位)。|
 

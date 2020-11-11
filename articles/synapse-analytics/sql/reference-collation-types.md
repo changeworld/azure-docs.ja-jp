@@ -1,6 +1,6 @@
 ---
 title: 照合順序のサポート
-description: Azure Synapse SQL でサポートされる照合順序の種類
+description: Azure Synapse Analytics での Synapse SQL の照合順序の種類のサポート
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: reference
@@ -8,25 +8,25 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5e46cd744be609adff764edfe5a506b710e9d788
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 436dbac814197556385a33d956928f97fd4716bf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288071"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311913"
 ---
-# <a name="database-collation-support-for-synapse-sql"></a>Synapse SQL でのデータベースの照合順序のサポート
+# <a name="database-collation-support-for-synapse-sql-in-azure-synapse-analytics"></a>Azure Synapse Analytics での Synapse SQL のデータベース照合順序のサポート 
 
 照合順序を使用して、文字ベースのデータ型に対するロケール、コード ページ、並べ替え順序、および大文字と小文字の区別の規則を指定します。 選択されると、照合順序情報を必要とするすべての列と式が、選択された照合順序をデータベース設定から継承します。 既定の継承は、文字ベースのデータ型に対する別の照合順序を明示的に宣言することによって上書きできます。
 
-新しい SQL プール データベースを作成するときに、Azure portal から既定のデータベースの照合順序を変更できます。 この機能により、サポートされる 3800 個のデータベースの照合順序のいずれかを使用して、新しいデータベースをさらに簡単に作成できるようになりました。
+新しい専用 SQL プール データベースを作成するときに、Azure portal から既定のデータベースの照合順序を変更できます。 この機能により、サポートされる 3800 個のデータベースの照合順序のいずれかを使用して、新しいデータベースをさらに簡単に作成できるようになりました。
 
-CREATE DATABASE ステートメントを使用した作成時には、既定の Synapse SQL オンデマンドデータベースの照合順序を指定できます。
+CREATE DATABASE ステートメントを使用した作成時には、既定のサーバーレス SQL プール データベースの照合順序を指定できます。
 
 ## <a name="change-collation"></a>照合順序を変更する
-SQL プール データベースの既定の照合順序を変更するには、プロビジョニング エクスペリエンスで [Collation] フィールドを更新します。 たとえば、既定の照合順序を大文字と小文字が区別されるように変更する場合は、[Collation] の名前を SQL_Latin1_General_CP1_CI_AS から SQL_Latin1_General_CP1_CS_AS に変更します。 
+専用 SQL プール データベースの既定の照合順序を変更するには、プロビジョニング エクスペリエンスで [Collation] フィールドを更新します。 たとえば、既定の照合順序を大文字と小文字が区別されるように変更する場合は、[Collation] の名前を SQL_Latin1_General_CP1_CI_AS から SQL_Latin1_General_CP1_CS_AS に変更します。 
 
-SQL オンデマンド データベースの既定の照合順序を変更するには、ALTER DATABASE ステートメントを使用できます。
+サーバーレス SQL プール データベースの既定の照合順序を変更するには、ALTER DATABASE ステートメントを使用します。
 
 ## <a name="list-of-unsupported-collation-types"></a>サポートされていない照合順序の種類の一覧
 *    Japanese_Bushu_Kakusu_140_BIN
@@ -98,7 +98,7 @@ SQL オンデマンド データベースの既定の照合順序を変更する
 *    Japanese_XJIS_140_CS_AS_KS
 *    Japanese_XJIS_140_CS_AS_KS_WS
 
-また、SQL プールでは、次の照合順序の種類はサポートされていません。
+また、専用 SQL プールでは、次の照合順序の種類はサポートされていません。
 
 *    SQL_EBCDIC1141_CP1_CS_AS
 *    SQL_EBCDIC277_2_CP1_CS_AS
@@ -113,9 +113,9 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
 
 ## <a name="next-steps"></a>次のステップ
 
-SQL プールと SQL オンデマンドのベスト プラクティスに関する追加情報については、次の記事を参照してください。
+専用 SQL プールとサーバーレス SQL プールのベスト プラクティスに関する追加情報については、次の記事を参照してください。
 
-- [SQL プールのベスト プラクティス](best-practices-sql-pool.md)
-- [SQL オンデマンドのベスト プラクティス](best-practices-sql-on-demand.md)
+- [専用 SQL プールのベスト プラクティス](best-practices-sql-pool.md)
+- [サーバーレス SQL プールのベスト プラクティス](best-practices-sql-on-demand.md)
 
 

@@ -8,12 +8,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.openlocfilehash: a0349a3fe21bdc0b73252bce1207c9f3b53dc15f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d41629dd9a56272af89a06cb55e9bd88b604baee
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143739"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927908"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor ブックのデータ ソース
 
@@ -77,7 +77,7 @@ Azure Monitor には、Windows または Linux ゲスト オペレーティン�
 
 クエリ コントロールでこのデータ ソースを使用するには、 **[クエリの種類]** ドロップダウンを使用して [Azure の正常性] を選択し、ターゲットとなるリソースを選択します。 正常性フィルターのドロップダウンを使用して、ご自分の分析ニーズに合わせて興味深いリソースの問題のサブセットを選択します。
 
-![アラート クエリのスクリーンショット](./media/workbooks-overview/resource-health.png)
+![正常性フィルターの一覧を表示するアラート クエリのスクリーンショット。](./media/workbooks-overview/resource-health.png)
 
 ## <a name="json"></a>JSON
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: 920f6cc7eaef6d25fa700e2f8ca8277efee671d1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 55a4e50e3a85eccb9517cf682b67268e633abecc
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425394"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081231"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure Security Center 内のセキュリティ スコア
 
@@ -162,6 +162,14 @@ ARG を使用して複数のサブスクリプションのセキュリティ ス
 
 次の表に、Azure Security Center のセキュリティ コントロールを示します。 コントロールごとに、" *すべて* " のリソースにおいて、コントロールに示されている " *すべて* " の推奨事項を修復した場合に取得できるセキュリティ スコアのポイントの最大数が表示されます。 
 
+Security Center で用意されている一連のセキュリティ推奨事項は、各組織の環境で使用可能なリソースに合わせて調整されています。 推奨事項は、[ポリシーを無効にしたり](tutorial-security-policy.md#disable-security-policies-and-disable-recommendations)、[推奨事項から特定のリソースを除外したり](exempt-resource.md)して、さらにカスタマイズできます。 
+ 
+どの組織でも、割り当てられている Azure Policy イニシアティブを慎重に確認することをお勧めします。 
+
+> [!TIP]
+> イニシアティブのレビューと編集の詳細については、「[セキュリティ ポリシーの操作](tutorial-security-policy.md)」を参照してください。 
+
+Security Center の既定のセキュリティ イニシアティブは業界のベストプラクティスと基準に基づいていますが、以下に示す組み込みの推奨事項が組織に完全には適合しない場合があります。 したがって、既定のイニシアティブを組織独自のポリシーに合わせて (セキュリティを損なわずに) 調整する必要が生じることがあります。 満たす必要がある業界標準、規制標準、およびベンチマークがこれに当たります。<br><br>
 <div class="foo">
 
 <style type="text/css"> .tg  {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:18px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-cly1{text-align:left;vertical-align:middle} .tg .tg-lboi{border-color:inherit;text-align:left;vertical-align:middle} </style>
@@ -182,7 +190,7 @@ ARG を使用して複数のサブスクリプションのセキュリティ ス
     <td class="tg-lboi"; width=55%>- 仮想マシンの管理ポートは、Just-In-Time ネットワーク アクセス制御によって保護されている必要があります<br>- 仮想マシンをネットワーク セキュリティ グループに関連付ける必要があります<br>- お使いの仮想マシンの管理ポートを閉じておく必要があります</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">システム更新プログラムの適用 (最大スコア 6)</p></strong>システムの更新プログラムにより、組織は、運用効率を維持し、セキュリティ脆弱性を軽減し、エンド ユーザーにより安定した環境を提供することができます。 更新プログラムを適用しないと、修正プログラムが脆弱性に適用されないままになるため、環境は攻撃を受けやすくなります。 このような脆弱性は悪用され、データ損失、データ流出、ランサムウェア、リソースの不正使用を引き起こす可能性があります。 システムの更新プログラムを展開するには、<a href="/azure/automation/automation-update-management">Update Management ソリューション</a>を使用して仮想マシンの修正プログラムと更新プログラムを管理します。 更新プログラムの管理は、ソフトウェア リリースの展開と保守を制御するプロセスです。</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">システム更新プログラムの適用 (最大スコア 6)</p></strong>システムの更新プログラムにより、組織は、運用効率を維持し、セキュリティ脆弱性を軽減し、エンド ユーザーにより安定した環境を提供することができます。 更新プログラムを適用しないと、修正プログラムが脆弱性に適用されないままになるため、環境は攻撃を受けやすくなります。 このような脆弱性は悪用され、データ損失、データ流出、ランサムウェア、リソースの不正使用を引き起こす可能性があります。 システムの更新プログラムを展開するには、<a href="/azure/automation/update-management/overview">Update Management ソリューション</a>を使用して仮想マシンの修正プログラムと更新プログラムを管理します。 更新プログラムの管理は、ソフトウェア リリースの展開と保守を制御するプロセスです。</td>
     <td class="tg-lboi"; width=55%>- お使いのマシンで監視エージェントの正常性の問題を解決する必要があります<br>- Virtual Machine Scale Sets に監視エージェントをインストールする必要があります<br>- お使いのマシンに監視エージェントをインストールする必要があります<br>- クラウド サービス ロールの OS バージョンを更新する必要があります<br>- Virtual Machine Scale Sets にシステムの更新プログラムをインストールする必要があります<br>- お使いのマシンにシステムの更新プログラムをインストールする必要があります<br>- システムの更新プログラムを適用するには、マシンを再起動する必要があります<br>- Kubernetes サービスを脆弱性のない Kubernetes バージョンにアップグレードする必要があります<br>- お使いの仮想マシンに監視エージェントをインストールする必要があります<br>- Log Analytics エージェントを Windows ベースの Azure Arc マシン (プレビュー) にインストールする必要があります<br>- Log Analytics エージェントを Linux ベースの Azure Arc マシン (プレビュー) にインストールする必要があります</td>
   </tr>
   <tr>

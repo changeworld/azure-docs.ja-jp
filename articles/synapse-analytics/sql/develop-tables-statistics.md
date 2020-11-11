@@ -11,30 +11,30 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: cefc6cc72ed8d74663464f4ac2d672369cd9d31c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf85b0ea658ae6459644dd710630a30f78ad99aa
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288666"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339395"
 ---
 # <a name="statistics-in-synapse-sql"></a>Synapse SQL の統計
 
-この記事では、次の Synapse SQL リソースを使用してクエリ最適化統計を作成および更新するためのレコメンデーションと例を示します: SQL プールと SQL オンデマンド (プレビュー)。
+この記事では、Synapse SQL リソースの専用 SQL プールとサーバーレス SQL プール (プレビュー)を使用してクエリ最適化統計を作成および更新するためのレコメンデーションと例を示します。
 
-## <a name="statistics-in-sql-pool"></a>SQL プールの統計
+## <a name="statistics-in-dedicated-sql-pool"></a>専用 SQL プールの統計
 
 ### <a name="why-use-statistics"></a>統計を使用する理由
 
-SQL プール リソースがデータに関する情報を多く持っているほど、クエリを高速に実行できます。 SQL プールにデータを読み込んだ後、データに関する統計を収集することは、クエリ最適化のために実行できる最も重要なことの 1 つです。  
+専用 SQL プールにあるデータに関する情報が多ければ多いほど、クエリをより高速に実行できます。 専用 SQL プールにデータを読み込んだ後、データに関する統計を収集することは、クエリ最適化のために実行できる最も重要なことの 1 つです。  
 
-SQL プール クエリ オプティマイザーは、コストベースのオプティマイザーです。 オプティマイザーでは、さまざまなクエリ プランのコストが比較されて、最も低コストのプランが選択されます。 多くの場合、それは最も高速に実行されるプランが選択されます。
+専用 SQL プール クエリ オプティマイザーは、コストベースのオプティマイザーです。 オプティマイザーでは、さまざまなクエリ プランのコストが比較されて、最も低コストのプランが選択されます。 多くの場合、それは最も高速に実行されるプランが選択されます。
 
 たとえば、クエリでフィルター処理されている日付に対して返されるのは 1 行であるとオプティマイザーで推定されると、1 つのプランが選択されます。 選択された日付で返されるのが 100 万行であると推定された場合は、別のプランが返されます。
 
 ### <a name="automatic-creation-of-statistics"></a>統計の自動作成
 
-データベースの AUTO_CREATE_STATISTICS オプションが `ON` に設定されている場合、SQL プールでは足りない統計に対して受信ユーザー クエリが分析されます。  統計が足りない場合、クエリ オプティマイザーでは、クエリ述語または結合条件内の個々の列で統計を作成します。 
+データベースの AUTO_CREATE_STATISTICS オプションが `ON` に設定されている場合、専用 SQL プール エンジンでは足りない統計に対して受信ユーザー クエリが分析されます。  統計が足りない場合、クエリ オプティマイザーでは、クエリ述語または結合条件内の個々の列で統計を作成します。 
 
 この関数は、クエリ プランに対するカーディナリティ評価を改善するために使用されます。
 
@@ -74,7 +74,7 @@ SET AUTO_CREATE_STATISTICS ON
 > [!NOTE]
 > 統計の作成は、各ユーザー コンテキスト内の [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) にログ記録されます。
 
-自動統計が作成されると､_WA_Sys_<16 進 8 桁の列 ID>_<16 進 8 桁のテーブル ID> の形式でログ記録されます。 作成済みの統計は、[DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) コマンドを実行して表示できます。
+自動統計が作成されると､ _WA_Sys_ <16 進 8 桁の列 ID>_<16 進 8 桁のテーブル ID> の形式でログ記録されます。 作成済みの統計は、[DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) コマンドを実行して表示できます。
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -99,9 +99,9 @@ table_name は、表示する統計が格納されているテーブルの名前
 
 ### <a name="determine-last-statistics-update"></a>統計の最終更新日を特定する
 
-クエリのトラブルシューティングを行うときに最初に尋ねる質問の 1 つが、「**統計は最新の状態ですか**」というものです。
+クエリのトラブルシューティングを行うときに最初に尋ねる質問の 1 つが、「 **統計は最新の状態ですか** 」というものです。
 
-この質問は、データの経過時間で答えられるものではありません。 基になるデータに重要な変更がない場合は、最新の統計オブジェクトが古い可能性があります。 行数が大幅に変わった場合や、列の値の分布に大きな変化が起きた場合は、"*その後で*" 統計を更新する必要があります。
+この質問は、データの経過時間で答えられるものではありません。 基になるデータに重要な変更がない場合は、最新の統計オブジェクトが古い可能性があります。 行数が大幅に変わった場合や、列の値の分布に大きな変化が起きた場合は、" *その後で* " 統計を更新する必要があります。
 
 前回の統計が更新されてからテーブル内のデータが変更されたかどうかを判断するために利用できる動的管理ビューはありません。 統計情報の経過期間がわかると、全体像の一部を把握できます。 
 
@@ -137,7 +137,7 @@ WHERE
     st.[user_created] = 1;
 ```
 
-たとえば、データ ウェアハウスの**日付列**では、通常、統計を頻繁に更新する必要があります。 新しい行がデータ ウェアハウスに読み込まれるたびに、新しい読み込みの日付またはトランザクションの日付が追加されます。 これらの追加によってデータの分布が変わり、統計が古くなります。
+たとえば、データ ウェアハウスの **日付列** では、通常、統計を頻繁に更新する必要があります。 新しい行がデータ ウェアハウスに読み込まれるたびに、新しい読み込みの日付またはトランザクションの日付が追加されます。 これらの追加によってデータの分布が変わり、統計が古くなります。
 
 顧客テーブルの性別列の統計は更新する必要がないと考えられます。 顧客間で分布が一定であると仮定すると、テーブル バリエーションに新しい行を追加しても、データの分布が変わることはありません。
 
@@ -166,7 +166,7 @@ WHERE
 #### <a name="create-single-column-statistics-with-default-options"></a>既定のオプションを使用した単一列統計の作成
 
 列の統計を作成するには、統計オブジェクトの名前と列の名前を指定します。
-次の構文では、既定のオプションをすべて使用しています。 既定で、SQL プールでは統計を作成するときに、テーブルの **20%** がサンプリングされます。
+次の構文では、既定のオプションをすべて使用しています。 既定では、専用 SQL プールでは統計を作成するときに、テーブルの **20%** をサンプリングします。
 
 ```sql
 CREATE STATISTICS [statistics_name]
@@ -245,7 +245,7 @@ CREATE STATISTICS stats_col1
 > [!NOTE]
 > クエリ結果の行数の推定に使用されるヒストグラムは、統計オブジェクト定義に示されている最初の列にのみ使用できます。
 
-次の例では、ヒストグラムは *product\_category* で使用されます。 列間の統計は、*product\_category* と *product\_sub_category* で計算されます。
+次の例では、ヒストグラムは *product\_category* で使用されます。 列間の統計は、 *product\_category* と *product\_sub_category* で計算されます。
 
 ```sql
 CREATE STATISTICS stats_2cols
@@ -425,12 +425,12 @@ UPDATE STATISTICS [schema_name].[table_name];
 UPDATE STATISTICS dbo.table1;
 ```
 
-UPDATE STATISTICS ステートメントは簡単に使用できます。 このステートメントはテーブルの*すべて*の統計を更新するので、必要以上の処理が実行されます。 
+UPDATE STATISTICS ステートメントは簡単に使用できます。 このステートメントはテーブルの *すべて* の統計を更新するので、必要以上の処理が実行されます。 
 
 パフォーマンスが問題でない場合は、この手法が、統計が最新の状態であることを保証する最も簡単で最も包括的な方法です。
 
 > [!NOTE]
-> テーブルのすべての統計を更新する場合、SQL プールでは、統計オブジェクトごとにテーブルのスキャンを実行してサンプリングします。 テーブルが大きく、多数の列と統計が含まれている場合は、ニーズに基づいて個々の統計を更新する方が効率的です。
+> テーブルのすべての統計を更新する場合、専用 SQL プールでは、統計オブジェクトごとにテーブルのスキャンを実行してサンプリングします。 テーブルが大きく、多数の列と統計が含まれている場合は、ニーズに基づいて個々の統計を更新する方が効率的です。
 
 `UPDATE STATISTICS` プロシージャの実装については、[一時テーブル](develop-tables-temporary.md)に関する記事をご覧ください。 実装方法は前述の `CREATE STATISTICS` プロシージャと若干異なりますが、結果は同じです。
 完全な構文については、「[UPDATE STATISTICS ](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。
@@ -512,7 +512,7 @@ DBCC SHOW_STATISTICS() は、統計オブジェクト内に保持されている
 
 ヘッダーは、統計に関するメタデータです。 ヒストグラムには、統計オブジェクトの最初のキー列の値の分布が表示されます。 
 
-密度ベクトルは、列間の相関関係を測定します。 SQL プールでは、統計オブジェクト内のデータを使用してカーディナリティ推定値を計算します。
+密度ベクトルは、列間の相関関係を測定します。 専用 SQL プールでは、統計オブジェクト内のデータを使用してカーディナリティ推定値を計算します。
 
 #### <a name="show-header-density-and-histogram"></a>ヘッダー、密度、ヒストグラムの表示
 
@@ -546,7 +546,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 
 ### <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS() の相違点
 
-SQL Server に比べ、SQL プールでは、`DBCC SHOW_STATISTICS()` がより厳密に実装されています。
+SQL Server に比べ、専用 SQL プールには、`DBCC SHOW_STATISTICS()` がより厳密に実装されています。
 
 - ドキュメントに記載されていない機能はサポートされていません。
 - Stats_stream は使用できません。
@@ -556,25 +556,25 @@ SQL Server に比べ、SQL プールでは、`DBCC SHOW_STATISTICS()` がより�
 - 列名を使用して、統計オブジェクトを識別することはできません。
 - カスタム エラー 2767 はサポートされていません。
 
-### <a name="next-steps"></a>次のステップ
 
-クエリのパフォーマンスをさらに向上させるには、[ワークロードの監視](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事を参照してください
-
-## <a name="statistics-in-sql-on-demand-preview"></a>SQL オンデマンドの統計 (プレビュー)
+## <a name="statistics-in-serverless-sql-pool-preview"></a>サーバーレス SQL プールの統計 (プレビュー)
 
 統計は、特定のデータセット (ストレージ パス) の特定の列ごとに作成されます。
 
+> [!NOTE]
+> LOB 列に対して統計を作成することはできません。
+
 ### <a name="why-use-statistics"></a>統計を使用する理由
 
-SQL オンデマンド (プレビュー) がデータに関する情報を多く持っているほど、それに対するクエリを高速に実行できます。 データに関する統計情報を収集することが、クエリの最適化のために実行できる最も重要なことの 1 つです。 
+サーバーレス SQL プール (プレビュー) にあるデータに関する情報が多ければ多いほど、それに対するクエリをより高速に実行できます。 データに関する統計情報を収集することが、クエリの最適化のために実行できる最も重要なことの 1 つです。 
 
-SQL オンデマンドのクエリ オプティマイザーは、コストベースのオプティマイザーです。 オプティマイザーでは、さまざまなクエリ プランのコストが比較されて、最も低コストのプランが選択されます。 多くの場合、それは最も高速に実行されるプランが選択されます。 
+サーバーレス SQL プール クエリ オプティマイザーは、コストベースのオプティマイザーです。 オプティマイザーでは、さまざまなクエリ プランのコストが比較されて、最も低コストのプランが選択されます。 多くの場合、それは最も高速に実行されるプランが選択されます。 
 
 たとえば、クエリでフィルター処理されている日付に対して返されるのは 1 行であるとオプティマイザーで推定されると、1 つのプランが選択されます。 選択された日付で返されるのが 100 万行であると推定された場合は、別のプランが返されます。
 
 ### <a name="automatic-creation-of-statistics"></a>統計の自動作成
 
-SQL オンデマンドでは、足りない統計に対して受信ユーザー クエリが分析されます。 統計が足りない場合、クエリ オプティマイザーでは、クエリ述語または結合条件内の個々の列で統計を作成することで、クエリ プランに対するカーディナリティ評価が改善されます。
+サーバーレス SQL プールでは、足りない統計について受信ユーザー クエリを分析します。 統計が足りない場合、クエリ オプティマイザーでは、クエリ述語または結合条件内の個々の列で統計を作成することで、クエリ プランに対するカーディナリティ評価が改善されます。
 
 SELECT ステートメントによって統計の自動作成がトリガーされます。
 
@@ -585,7 +585,7 @@ SELECT ステートメントによって統計の自動作成がトリガーさ�
 
 ### <a name="manual-creation-of-statistics"></a>統計の手動作成
 
-SQL オンデマンドでは、手動で統計を作成できます。 CSV ファイルについては、統計の自動作成が CSV ファイルに対して有効になっていないため、統計を手動で作成する必要があります。 
+サーバーレス SQL プールでは、手動で統計を作成できます。 CSV ファイルについては、統計の自動作成が CSV ファイルに対して有効になっていないため、統計を手動で作成する必要があります。 
 
 統計を手動で作成する方法については、次の例を参照してください。
 
@@ -593,7 +593,7 @@ SQL オンデマンドでは、手動で統計を作成できます。 CSV フ�
 
 ファイル内のデータの変更、ファイルの削除、ファイルの追加により、データの分布が変化し、統計が古くなります。 その場合、統計を更新する必要があります。
 
-データが大幅に変更された場合、SQL オンデマンドによって統計が自動的に再作成されます。 統計が自動的に作成されるたびに、データセットの現在の状態 (ファイル パス、サイズ、最終変更日) も保存されます。
+データが大幅に変更された場合、サーバーレス SQL プールによって統計が自動的に再作成されます。 統計が自動的に作成されるたびに、データセットの現在の状態 (ファイル パス、サイズ、最終変更日) も保存されます。
 
 統計が古くなった場合、新しい統計が作成されます。 アルゴリズムによってデータが処理され、データセットの現在の状態と比較されます。 変更のサイズが特定のしきい値を超える場合、古い統計が削除され、新しいデータセットに再作成されます。
 
@@ -602,9 +602,9 @@ SQL オンデマンドでは、手動で統計を作成できます。 CSV フ�
 > [!NOTE]
 > Parquet ファイルについては、統計の自動再作成が有効になっています。 CSV ファイルについては、CSV ファイルの統計の自動作成がサポートされるまでは、統計を手動で削除して作成する必要があります。 統計を削除および作成する方法については、以下の例を確認してください。
 
-クエリのトラブルシューティングを行うときに最初に尋ねる質問の 1 つが、「**統計は最新の状態ですか**」というものです。
+クエリのトラブルシューティングを行うときに最初に尋ねる質問の 1 つが、「 **統計は最新の状態ですか** 」というものです。
 
-行数が大幅に変わった場合や、列の値の分布で重大な変更があった場合は、"*その後で*" 統計を更新する必要があります。
+行数が大幅に変わった場合や、列の値の分布で重大な変更があった場合は、" *その後で* " 統計を更新する必要があります。
 
 > [!NOTE]
 > 列の値の分布に重要な変更がある場合は、最後に更新された時刻に関係なく統計を更新する必要があります。
@@ -616,7 +616,7 @@ SQL オンデマンドでは、手動で統計を作成できます。 CSV フ�
 統計を更新する際の基本原則は、次のとおりです。
 
 - 更新された統計オブジェクトが少なくとも 1 つはデータセットに含まれていることを確認します。 これにより、統計の更新の一環として、サイズ (行数とページ数) 情報が更新されます。
-- JOIN、GROUP BY、ORDER BY、DISTINCT の各句に関与している列を重視します。
+- WHERE、JOIN、GROUP BY、ORDER BY、DISTINCT の各句に関与している列を重視します。
 - トランザクションの日付などの "昇順キー" 列の値は、統計ヒストグラムに含まれないため、これらの列の更新頻度を増やします。
 - 静的な分布列の更新頻度を減らします。
 
@@ -629,12 +629,12 @@ SQL オンデマンドでは、手動で統計を作成できます。 CSV フ�
 > [!NOTE]
 > 現時点では、単一列統計のみを作成できます。
 >
-> プロシージャ sp_create_file_statistics の名前が sp_create_openrowset_statistics に変更されます。 public データベース ロールに sp_create_file_statistics と sp_drop_file_statistics に対する EXECUTE 権限があるときは、ADMINISTER BULK OPERATIONS 権限が public サーバー ロールに許可されます。 これは将来変更される可能性があります。
+> sp_create_openrowset_statistics と sp_drop_openrowset_statistics を実行するには、ADMINISTER BULK OPERATIONS または ADMINISTER DATABASE BULK OPERATIONS のアクセス許可が必要です。
 
 統計を作成するには、次のストアド プロシージャを使用します。
 
 ```sql
-sys.sp_create_file_statistics [ @stmt = ] N'statement_text'
+sys.sp_create_openrowset_statistics [ @stmt = ] N'statement_text'
 ```
 
 引数: [ @stmt = ] N'statement_text' - 統計に使用する列の値を返す Transact-SQL ステートメントを指定します。 TABLESAMPLE を使用して、使用するデータのサンプルを指定できます。 TABLESAMPLE が指定されていない場合、FULLSCAN が使用されます。
@@ -650,7 +650,7 @@ sys.sp_create_file_statistics [ @stmt = ] N'statement_text'
 
 列の統計を作成するには、統計が必要な列を返すクエリを指定します。
 
-SQL オンデマンドで統計を作成するとき、特に指定がなければ、データセットで提供されるデータの 100% が既定で使用されます。
+サーバーレス SQL プールで統計を作成するとき、特に指定がなければ、データセットで提供されるデータの 100% が既定で使用されます。
 
 たとえば、population.csv ファイルに基づいたデータセットの year 列に対して既定のオプション (FULLSCAN) で統計を作成するには、次のようにします。
 
@@ -666,7 +666,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT year
+EXEC sys.sp_create_openrowset_statistics N'SELECT year
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv'',
         FORMAT = ''CSV'',
@@ -698,7 +698,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT payment_type
+EXEC sys.sp_create_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
@@ -712,18 +712,18 @@ FROM OPENROWSET(
 統計を更新するには、統計を削除して作成する必要があります。 統計を削除するには、次のストアド プロシージャを使用します。
 
 ```sql
-sys.sp_drop_file_statistics [ @stmt = ] N'statement_text'
+sys.sp_drop_openrowset_statistics [ @stmt = ] N'statement_text'
 ```
 
 > [!NOTE]
-> プロシージャ sp_drop_file_statistics の名前が sp_drop_openrowset_statistics に変更されます。 public データベース ロールに sp_create_file_statistics と sp_drop_file_statistics に対する EXECUTE 権限があるときは、ADMINISTER BULK OPERATIONS 権限が public サーバー ロールに許可されます。 これは将来変更される可能性があります。
+> sp_create_openrowset_statistics と sp_drop_openrowset_statistics を実行するには、ADMINISTER BULK OPERATIONS または ADMINISTER DATABASE BULK OPERATIONS のアクセス許可が必要です。
 
 引数: [ @stmt = ] N'statement_text' - 統計の作成時に使用したものと同じ Transact-SQL ステートメントを指定します。
 
 population.csv ファイルに基づいたデータセットの year 列の統計を更新するには、統計を削除して作成する必要があります。
 
 ```sql
-EXEC sys.sp_drop_file_statistics N'SELECT payment_type
+EXEC sys.sp_drop_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
@@ -743,7 +743,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT payment_type
+EXEC sys.sp_create_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
@@ -816,4 +816,6 @@ CREATE STATISTICS sState
 
 ## <a name="next-steps"></a>次のステップ
 
-クエリ パフォーマンスのさらなる向上については、[SQL プールのベスト プラクティス](best-practices-sql-pool.md#maintain-statistics)に関するページを参照してください。
+専用 SQL プールのクエリのパフォーマンスをさらに向上させる方法については、[ワークロードの監視](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)と[専用 SQL プールのベスト プラクティス](best-practices-sql-pool.md#maintain-statistics)に関するページを参照してください。
+
+サーバーレス SQL プールのクエリのパフォーマンスをさらに向上させる方法については、[サーバーレス SQL プールのベスト プラクティス](best-practices-sql-on-demand.md)に関するページを参照してください。

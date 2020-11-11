@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2
-ms.openlocfilehash: d27c65938d10f9061961ebb585327bc77d8b2859
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 681e965d5fb64e35374b580cbbb238defd619492
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092462"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311479"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>自動機械学習実験の結果を評価
 
@@ -41,7 +41,7 @@ ms.locfileid: "92092462"
 
 自動機械学習の実験を実行した後、機械学習ワークスペースの [Azure Machine Learning スタジオ](overview-what-is-machine-learning-studio.md)から実行の履歴を確認できます。 
 
-SDK の実験では、`RunDetails` [Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)を使用すると実行中に同じ結果が表示されます。
+SDK の実験では、`RunDetails` [Jupyter ウィジェット](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)を使用すると実行中に同じ結果が表示されます。
 
 次の手順とアニメーションは、特定のモデルの実行履歴およびパフォーマンス メトリックとグラフをスタジオで表示する方法を示しています。
 
@@ -159,7 +159,7 @@ Azure Machine Learning で自動的に作成されたモデルのリフトとベ
 
 ### <a name="what-does-a-good-model-look-like"></a>適切なモデルはどのようなものでしょうか？
 
-より高いリフト曲線 (モデルがベースラインを上回っている) は、よりパフォーマンスが優れたモデルを示します。 
+より高パフォーマンスのモデルには、ベースラインから離れたグラフの高い位置にリフト曲線があります。 
 
 #### <a name="example-1-a-classification-model-that-performs-poorly-compared-to-a-random-selection-model"></a>例 1:ランダム選択モデルと比較してパフォーマンスが低い分類モデル
 ![ランダム選択モデルよりも悪い分類モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve1.png)
@@ -234,12 +234,12 @@ normalized_root_mean_squared_log_error|正規化された対数平均平方二�
 各実行の後で、各回帰モデルの予測と True のグラフを表示できます。 データのプライバシーを保護するため、値はビンにまとめられており、各ビンのサイズはグラフ領域の下部に棒グラフとして示されます。 許容誤差を示す明るい網掛け領域で、予測モデルをモデルの理想値と比較できます。
 
 ### <a name="what-does-a-good-model-look-like"></a>適切なモデルはどのようなものでしょうか？
-このグラフを使用してモデルのパフォーマンスを測定できます。予測値が y=x の線に近いほど、予測モデルの精度が高いことを示します。
+このグラフを使用してモデルのパフォーマンスを測定できます。予測値が y=x の線に近いほど、予測モデルのパフォーマンスが高いことを示します。
 
-#### <a name="example-1-a-classification-model-with-low-accuracy"></a>例 1:精度の低い分類モデル
+#### <a name="example-1-a-regression-model-with-low-performance"></a>例 1:パフォーマンスの低い回帰モデル
 ![予測精度の低い回帰モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
 
-#### <a name="example-2-a-regression-model-with-high-accuracy"></a>例 2:精度の高い回帰モデル 
+#### <a name="example-2-a-regression-model-with-high-performance"></a>例 2:パフォーマンスの高い回帰モデル
 ![予測精度が高い回帰モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)
 
 <a name="histo"></a> 
@@ -254,7 +254,7 @@ normalized_root_mean_squared_log_error|正規化された対数平均平方二�
 #### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>例 1:エラーにバイアスを持つ回帰モデル
 ![エラーにバイアスを持つ SA 回帰モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)
 
-#### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>例 2:エラーがより均等に配分される回帰モデル
+#### <a name="example-2-a-regression-model-with-a-more-even-distribution-of-errors"></a>例 2:エラーがより均等に配分される回帰モデル
 ![エラーがより均等に配分される回帰モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
 
 <a name="explain-model"></a>

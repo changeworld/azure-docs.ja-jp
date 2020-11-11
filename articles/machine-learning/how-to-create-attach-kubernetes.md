@@ -1,7 +1,7 @@
 ---
 title: Azure Kubernetes Service を作成してアタッチする
 titleSuffix: Azure Machine Learning
-description: Azure Kubernetes Service (AKS) を使用して、機械学習モデルを Web サービスとしてデプロイできます。 Azure Machine Learning を使用して新しい AKS クラスターを作成する方法について説明します。 また、既存の AKS クラスターを Azure Machine Learning ワークスペースにアタッチする方法についても説明します。
+description: Azure Machine Learning を使用して新しい Azure Kubernetes Service クラスターを作成する方法、または既存の AKS クラスターをワークスペースに接続する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: 1126798bdf07f54811c83b932af9928f3e3115dc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9b14ba12c9f9b679d1d63008d31825647f42619d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792006"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318056"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成してアタッチする
 
@@ -26,25 +26,25 @@ Azure Machine Learning では、トレーニング済みの機械学習モデル
 
 - Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)に関するページをご覧ください。
 
-- [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)、または [Azure Machine Learning Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)。
+- [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)、または [Azure Machine Learning Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)。
 
-- Azure ML ワークスペースと AKS クラスター間の通信をセキュリティで保護するために Azure Virtual Network の使用を計画している場合は、[トレーニング中や推論中のネットワークの分離](how-to-enable-virtual-network.md)に関する記事をご覧ください。
+- Azure ML ワークスペースと AKS クラスター間の通信をセキュリティで保護するために Azure Virtual Network の使用を計画している場合は、[トレーニング中や推論中のネットワークの分離](./how-to-network-security-overview.md)に関する記事をご覧ください。
 
 ## <a name="limitations"></a>制限事項
 
 - Basic Load Balancer (BLB) ではなく **Standard Load Balancer (SLB)** をクラスターにデプロイする必要がある場合は、AKS ポータル、CLI、または SDK でクラスターを作成し、AML ワークスペースに **アタッチ** してください。
 
-- パブリック IP アドレスの作成を制限する Azure Policy がある場合、AKS クラスターの作成は失敗します。 AKS では、[エグレス トラフィック](/azure/aks/limit-egress-traffic)にパブリック IP が必要です。 エグレス トラフィックに関する記事では、いくつかの完全修飾ドメイン名を除き、パブリック IP を介したクラスターからのエグレス トラフィックをロックダウンする方法についても説明されています。 パブリック IP を有効にするには、次の 2 つの方法があります。
+- パブリック IP アドレスの作成を制限する Azure Policy がある場合、AKS クラスターの作成は失敗します。 AKS では、[エグレス トラフィック](../aks/limit-egress-traffic.md)にパブリック IP が必要です。 エグレス トラフィックに関する記事では、いくつかの完全修飾ドメイン名を除き、パブリック IP を介したクラスターからのエグレス トラフィックをロックダウンする方法についても説明されています。 パブリック IP を有効にするには、次の 2 つの方法があります。
     - クラスターで、BLB または SLB で既定で作成されるパブリック IP を使用する
-    - クラスターをパブリック IP なしで作成し、パブリック IP をユーザ定義のルートを使用したファイアウォールで設定する。 詳細については、「[ユーザー定義ルートを使用してクラスターのエグレスをカスタマイズする](/azure/aks/egress-outboundtype)」を参照してください。
+    - クラスターをパブリック IP なしで作成し、パブリック IP をユーザ定義のルートを使用したファイアウォールで設定する。 詳細については、「[ユーザー定義ルートを使用してクラスターのエグレスをカスタマイズする](../aks/egress-outboundtype.md)」を参照してください。
     
     AML コントロール プレーンからこのパブリック IP への通信はありません。 これはデプロイのため、AKS コントロール プレーンと通信します。 
 
-- [API サーバーへのアクセスが有効な承認済みの IP 範囲](/azure/aks/api-server-authorized-ip-ranges)を持つ AKS クラスターを **アタッチ** する場合は、AKS クラスターの AML コントロール プレーンの IP 範囲を有効にします。 AML コントロール プレーンは、ペアになっているリージョンにまたがってデプロイされ、AKS クラスター上に推論ポッドをデプロイします。 API サーバーにアクセスできない場合、推論ポッドをデプロイすることはできません。 AKS クラスターで IP 範囲を有効にする場合、[ペアになっているリージョン](/azure/best-practices-availability-paired-regions)の両方に対して [IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=56519)を使用します。
+- [API サーバーへのアクセスが有効な承認済みの IP 範囲](../aks/api-server-authorized-ip-ranges.md)を持つ AKS クラスターを **アタッチ** する場合は、AKS クラスターの AML コントロール プレーンの IP 範囲を有効にします。 AML コントロール プレーンは、ペアになっているリージョンにまたがってデプロイされ、AKS クラスター上に推論ポッドをデプロイします。 API サーバーにアクセスできない場合、推論ポッドをデプロイすることはできません。 AKS クラスターで IP 範囲を有効にする場合、[ペアになっているリージョン](../best-practices-availability-paired-regions.md)の両方に対して [IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=56519)を使用します。
 
     承認済みの IP 範囲は、Standard Load Balancer でのみ機能します。
 
-- (Azure Private Link を使用して) プライベート AKS クラスターを使用する場合は、最初にクラスターを作成してから、ワークスペースにそれを **アタッチ** する必要があります。 詳細については、「[プライベート Azure Kubernetes Service クラスターを作成する](/azure/aks/private-clusters)」を参照してください。
+- (Azure Private Link を使用して) プライベート AKS クラスターを使用する場合は、最初にクラスターを作成してから、ワークスペースにそれを **アタッチ** する必要があります。 詳細については、「[プライベート Azure Kubernetes Service クラスターを作成する](../aks/private-clusters.md)」を参照してください。
 
 - AKS クラスターのコンピューティング名は、Azure ML ワークスペース内で一意である必要があります。
     - 名前は必須であり、3 文字から 24 文字の長さにする必要があります。
@@ -70,7 +70,7 @@ Azure Machine Learning では、トレーニング済みの機械学習モデル
 
 ## <a name="azure-kubernetes-service-version"></a>Azure Kubernetes Service のバージョン
 
-Azure Kubernetes Service では、さまざまな Kubernetes バージョンを使用してクラスターを作成できます。 使用可能なバージョンの詳細については、「[Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン](/azure/aks/supported-kubernetes-versions)」を参照してください。
+Azure Kubernetes Service では、さまざまな Kubernetes バージョンを使用してクラスターを作成できます。 使用可能なバージョンの詳細については、「[Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン](../aks/supported-kubernetes-versions.md)」を参照してください。
 
 次のいずれかの方法を使用して Azure Kubernetes Service クラスターを **作成する** 場合、作成されるクラスターの" *バージョンを選択することはできません* "。
 
@@ -124,7 +124,7 @@ Result
 1.16.13
 ```
 
-**利用可能なバージョンをプログラムで確認する** には、 [Container Service Client - List Orchestrators](https://docs.microsoft.com/rest/api/container-service/container%20service%20client/listorchestrators) REST API を使用します。 使用可能なバージョンを見つけるには、`orchestratorType` が `Kubernetes` になっているエントリを確認します。 関連付けられている `orchestrationVersion` エントリには、ワークスペースに **アタッチ** できるバージョンが含まれています。
+**利用可能なバージョンをプログラムで確認する** には、 [Container Service Client - List Orchestrators](/rest/api/container-service/container%20service%20client/listorchestrators) REST API を使用します。 使用可能なバージョンを見つけるには、`orchestratorType` が `Kubernetes` になっているエントリを確認します。 関連付けられている `orchestrationVersion` エントリには、ワークスペースに **アタッチ** できるバージョンが含まれています。
 
 Azure Machine Learning を使用してクラスターを **作成** するときに使用される既定のバージョンを見つけるには、`orchestratorType` が `Kubernetes`、`default` が `true` になっているエントリを見つけます。 関連付けられている `orchestratorVersion` 値が既定のバージョンです。 次の JSON スニペットは、エントリの例を示しています。
 
@@ -183,10 +183,10 @@ aks_target.wait_for_completion(show_output = True)
 
 この例で使われているクラス、メソッド、パラメーターの詳細については、次のリファレンス ドキュメントをご覧ください。
 
-* [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py&preserve-view=true)
+* [AksCompute.ClusterPurpose](/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?preserve-view=true&view=azure-ml-py)
 * [AksCompute.provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [ComputeTarget.create](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#create-workspace--name--provisioning-configuration-)
-* [ComputeTarget.wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#wait-for-completion-show-output-false-)
+* [ComputeTarget.create](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#create-workspace--name--provisioning-configuration-)
+* [ComputeTarget.wait_for_completion](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#wait-for-completion-show-output-false-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -194,7 +194,7 @@ aks_target.wait_for_completion(show_output = True)
 az ml computetarget create aks -n myaks
 ```
 
-詳細については、[az ml computetarget create aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) に関するリファレンスを参照してください。
+詳細については、[az ml computetarget create aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) に関するリファレンスを参照してください。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -215,12 +215,12 @@ Azure サブスクリプションに既に AKS クラスターがあり、その
 > [!WARNING]
 > ワークスペースから同じ AKS クラスターに対して複数のアタッチメントを同時に作成することは避けてください。 たとえば、2 つの異なる名前を使用して 1 つの AKS クラスターをワークスペースにアタッチすることが該当します。 アタッチを繰り返すたびに、先行する既存のアタッチメントが切断されます。
 >
-> TLS やその他のクラスター構成設定を変更するためなど、AKS クラスターを再度アタッチしたい場合は、[AksCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#detach--) を使用して既存のアタッチメントを先に削除しておいてください。
+> TLS やその他のクラスター構成設定を変更するためなど、AKS クラスターを再度アタッチしたい場合は、[AksCompute.detach()](/python/api/azureml-core/azureml.core.compute.akscompute?preserve-view=true&view=azure-ml-py#detach--) を使用して既存のアタッチメントを先に削除しておいてください。
 
 Azure CLI または portal を使用した AKS クラスターの作成の詳細については、次の記事をご覧ください。
 
-* [AKS クラスターの作成 (CLI)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest&preserve-view=true#az-aks-create)
-* [AKS クラスターの作成 (ポータル)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest&preserve-view=true)
+* [AKS クラスターの作成 (CLI)](/cli/azure/aks?bc=%252fazure%252fbread%252ftoc.json&preserve-view=true&toc=%252fazure%252faks%252fTOC.json&view=azure-cli-latest#az-aks-create)
+* [AKS クラスターの作成 (ポータル)](../aks/kubernetes-walkthrough-portal.md?preserve-view=true&view=azure-cli-latest)
 * [AKS クラスターの作成 (Azure クイックスタート テンプレートでの ARM テンプレート)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
 
 次の例では、既存の AKS クラスターをワークスペースにアタッチする方法を示します。
@@ -248,8 +248,8 @@ aks_target.wait_for_completion(show_output = True)
 この例で使われているクラス、メソッド、パラメーターの詳細については、次のリファレンス ドキュメントをご覧ください。
 
 * [AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py&preserve-view=true)
-* [AksCompute.attach](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#attach-workspace--name--attach-configuration-)
+* [AksCompute.ClusterPurpose](/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?preserve-view=true&view=azure-ml-py)
+* [AksCompute.attach](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#attach-workspace--name--attach-configuration-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -271,7 +271,7 @@ az aks show -n myexistingcluster -g myresourcegroup --query id
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-詳細については、[az ml computetarget attach aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-attach-aks) に関するリファレンスをご覧ください。
+詳細については、[az ml computetarget attach aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks) に関するリファレンスをご覧ください。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -284,7 +284,7 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 ワークスペースからクラスターをデタッチするには、次のいずれかの方法を使用します。
 
 > [!WARNING]
-> Azure Machine Learning スタジオ、SDK、または機械学習のための Azure CLI 拡張機能を使用して AKS クラスターをデタッチしても、 **AKS クラスターは削除されません** 。 クラスターを削除する方法については、[AKS と共に Azure CLI を使用する](/azure/aks/kubernetes-walkthrough#delete-the-cluster)方法に関するページをご覧ください。
+> Azure Machine Learning スタジオ、SDK、または機械学習のための Azure CLI 拡張機能を使用して AKS クラスターをデタッチしても、 **AKS クラスターは削除されません** 。 クラスターを削除する方法については、[AKS と共に Azure CLI を使用する](../aks/kubernetes-walkthrough.md#delete-the-cluster)方法に関するページをご覧ください。
 
 # <a name="python"></a>[Python](#tab/python)
 

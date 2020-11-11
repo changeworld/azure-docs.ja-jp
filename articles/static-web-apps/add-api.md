@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: c84367a5e3ab57090f59196e8474c14cba87f32b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e90c023fa74711246c2e6e69eb576695e86a457
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250149"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128506"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Azure Functions を使用して Azure Static Web Apps プレビューに API を追加する
 
@@ -33,17 +33,17 @@ Azure Functions との統合を使用して、Azure Static Web Apps にサーバ
 次の手順では、新しいリポジトリを作成し、お使いのコンピューターにファイルを複製する方法を示します。
 
 1. GitHub にログインしていることを確認し、 https://github.com/staticwebdev/vanilla-basic/generate に移動して新しいリポジトリを作成します。
-1. _[リポジトリ名]_ ボックスに、「**my-vanilla-api**」と入力します。
+1. _[リポジトリ名]_ ボックスに、「 **my-vanilla-api** 」と入力します。
 1. **[Create repository from template]\(テンプレートからリポジトリを作成する\)** をクリックします。
 
    :::image type="content" source="media/add-api/create-repository.png" alt-text="vanilla-basic から新しいリポジトリを作成する":::
 
 プロジェクトが作成されたら、ブラウザー内の新しいリポジトリの URL をコピーします。 この URL を Visual Studio Code で使用して、Git リポジトリを複製します。
 
-1. コマンド パレットでコマンドを開くには、**F1** キーを押します。
-1. URL を _Git:Clone_ プロンプトに貼り付け、**Enter** キーを押します。
+1. コマンド パレットでコマンドを開くには、 **F1** キーを押します。
+1. URL を _Git:Clone_ プロンプトに貼り付け、 **Enter** キーを押します。
 
-   :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="vanilla-basic から新しいリポジトリを作成する":::
+   :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="Visual Studio Code を使用して GitHub プロジェクトを複製する":::
 
     画面の指示に従って、プロジェクトを複製するリポジトリの場所を選択します。
 
@@ -51,22 +51,22 @@ Azure Functions との統合を使用して、Azure Static Web Apps にサーバ
 
 次に、アプリケーションの API として Azure Functions プロジェクトを作成します。 
 
-1. _my-vanilla-api_ プロジェクト内に、**api** という名前のサブフォルダーを作成します。
+1. _my-vanilla-api_ プロジェクト内に、 **api** という名前のサブフォルダーを作成します。
 1. **F1** キーを押してコマンド パレットを開きます。
-1. 「**Azure Functions:Create New Project...** 」と入力します
+1. 「 **Azure Functions:Create New Project...** 」と入力します
 1. **Enter** キーを押します
 1. **[参照]** を選択します
 1. プロジェクト ワークスペースのディレクトリとして **api** フォルダーを選択します
 1. **[選択]** を選択します
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="vanilla-basic から新しいリポジトリを作成する":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="スクリーンショットには、A P I フォルダーと [選択] ボタンが示されています。":::
 
 1. プロンプトで、次の情報を入力します。
 
     - _Select a language (言語を指定してください)_ : **[JavaScript]** を選択します
     - _Select a template for your project's first function (プロジェクトの最初の関数のテンプレートを選択してください)_ : **[HTTP トリガー]** を選択します
-    - _Provide a function name (関数名を指定してください):_ 「**GetMessage**」と入力します
-    - _承認レベル_: **[匿名]** を選択します。これにより、すべてのユーザーが関数エンドポイントを呼び出せるようになります。
+    - _Provide a function name (関数名を指定してください):_ 「 **GetMessage** 」と入力します
+    - _承認レベル_ : **[匿名]** を選択します。これにより、すべてのユーザーが関数エンドポイントを呼び出せるようになります。
         - 承認レベルの詳細については、[承認キー](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)に関するページを参照してください。
 
 HTTP によってトリガーされた関数により、Visual Studio Code で Azure Functions プロジェクトが生成されます。
@@ -90,7 +90,7 @@ HTTP によってトリガーされた関数により、Visual Studio Code で A
 
 次に、メッセージをフロントエンドに返すように `GetMessage` 関数を変更します。
 
-1. 以下のコードを使用して、_api/GetMessage/index.js_ の下の `GetMessage` 関数を更新します。
+1. 以下のコードを使用して、 _api/GetMessage/index.js_ の下の `GetMessage` 関数を更新します。
 
     ```javascript
     module.exports = async function (context, req) {
@@ -145,15 +145,15 @@ Visual Studio Code を [Azure Functions Core Tools](../azure-functions/functions
 
     Core Tools では、実行中のアプリケーションの出力が _[TERMINAL]\(ターミナル\)_ パネルに表示されます。 出力の一部として、HTTP によってトリガーされる関数の URL エンドポイントがローカルで実行されていることを確認できます。
 
-    :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="vanilla-basic から新しいリポジトリを作成する":::
+    :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="スクリーンショットには、U R L が表示されている [TERMINAL]\(ターミナル\) タブが示されています。":::
 
 1. Core Tools が実行されている状態で、次の URL に移動して、API が正しく実行されていることを確認します。`http://localhost:7071/api/message`
 
    ブラウザーの応答は、次の例のようになります。
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="vanilla-basic から新しいリポジトリを作成する":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="Alt text スクリーンショットには、ブラウザー上のテキスト応答が示されています。":::
 
-1. デバッグ セッションを停止するには、**Shift + F5** キーを押します。
+1. デバッグ セッションを停止するには、 **Shift + F5** キーを押します。
 
 ### <a name="call-the-api-from-the-application"></a>アプリケーションから API を呼び出す
 
@@ -195,11 +195,11 @@ Azure にデプロイすると、API への要求は、`api` ルートに送信�
 
 1. **F5** キーを押して、API プロジェクトを開始します。
 
-1. **F1** キーを押し、**Live Server:Open with Live Server** を選択して Live Server を起動します。
+1. **F1** キーを押し、 **Live Server:Open with Live Server** を選択して Live Server を起動します。
 
     これで、Web ページに API メッセージが表示されます。
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-4.png" alt-text="vanilla-basic から新しいリポジトリを作成する":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-4.png" alt-text="スクリーンショットには、ブラウザー上の A P I メッセージが示されています。":::
 
    > [!NOTE]
    > 他の HTTP サーバーまたはプロキシを使用して、`index.html` ファイルを処理できます。 `file:///` から `index.html` にアクセスすることはできません。
@@ -211,28 +211,28 @@ Azure にデプロイすると、API への要求は、`api` ルートに送信�
 Visual Studio Code を使用して、変更をコミットし、リモート Git リポジトリにプッシュします。
 
 1. **F1** キーを押してコマンド パレットを開きます。
-1. 「**Git:Commit All**」と入力します
+1. 「 **Git:Commit All** 」と入力します
 1. コミット メッセージを追加して **Enter** キーを押します
 1. **F1** キーを押します
-1. 「**Git: push**」と入力し、**Enter** キーを押します
+1. 「 **Git: push** 」と入力し、 **Enter** キーを押します
 
 ## <a name="create-a-static-web-app"></a>静的 Web アプリを作成する
 
 1. [Azure Portal](https://portal.azure.com) に移動します
 1. **[リソースの作成]** をクリックします
-1. 「**Static Web App**」で検索します
+1. 「 **Static Web App** 」で検索します
 1. **[Static Web App (Preview)]\(静的 Web アプリ (プレビュー)\)** をクリックします
 1. **[作成]** をクリックします。
 
 次に、アプリ固有の設定を追加します。
 
-1. お使いの "_Azure サブスクリプション_" を選択します
-1. "_リソース グループ_" を選択するか、新しく作成します
+1. お使いの " _Azure サブスクリプション_ " を選択します
+1. " _リソース グループ_ " を選択するか、新しく作成します
 1. アプリに **my-vanilla-api** という名前を付けます
-1. 最も近い "_リージョン_" を選択します
+1. 最も近い " _リージョン_ " を選択します
 1. **[無料]** _SKU_ を選択します
 1. **[GitHub でサインイン]** ボタンをクリックし、GitHub で認証します
-1. 希望する "_組織_" を選択します
+1. 希望する " _組織_ " を選択します
 1. **[リポジトリ]** ドロップダウンから _my-vanilla-api_ を選択します
 1. _[ブランチ]_ ドロップダウンから **[master]** を選択します
 1. **[次へ: ビルド >]** ボタンをクリックして、ビルド構成を編集します。
@@ -240,32 +240,34 @@ Visual Studio Code を使用して、変更をコミットし、リモート Git
 次に、ビルドの詳細を以下のように追加します。
 
 1. _[App location]\(アプリの場所\)_ に「 **/** 」と入力します。
-1. _[Api location]\(Api の場所\)_ ボックスに「**api**」と入力します。
+1. _[Api location]\(Api の場所\)_ ボックスに「 **api** 」と入力します。
 1. _[App artifact location]\(アプリ成果物の場所\)_ から既定値をクリアし、このボックスを空のままにします。
 1. **[Review + create]\(レビュー + 作成\)** をクリックします。
 1. **[作成]** ボタンをクリックします
 
     _[作成]_ ボタンをクリックすると、Azure によって 2 つの処理が行われます。 まず、アプリをサポートするように基盤となるクラウド サービスが作成されます。 次に、バックグラウンド プロセスによって、アプリケーションのビルドと配置が開始されます。
 
-1. **[リソースに移動]** ボタンをクリックして、Web アプリの "_概要_" ページに移動します。
+1. **[リソースに移動]** ボタンをクリックして、Web アプリの " _概要_ " ページに移動します。
 
     アプリがバックグラウンドでビルドされているときに、リンクを含むバナーをクリックして、ビルドの状態を表示できます。
 
-    :::image type="content" source="media/add-api/github-action-flag.png" alt-text="vanilla-basic から新しいリポジトリを作成する" ページの _[URL]_ リンクをクリックすると、Web アプリに移動できます。
+    :::image type="content" source="media/add-api/github-action-flag.png" alt-text="GitHub ワークフロー":::
 
-    :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="vanilla-basic から新しいリポジトリを作成する":::
+1. 配置が完了したら、" _概要_ " ページの _[URL]_ リンクをクリックすると、Web アプリに移動できます。
+
+    :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="Azure portal から静的アプリの URL にアクセスする":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このアプリケーションを今後の使用のために保持したくない場合は、次の手順に従って、Azure の静的 Web アプリとその関連リソースを削除できます。
 
 1. [Azure Portal](https://portal.azure.com) に移動します
-1. 上部の検索バーで、 「**リソース グループ**」 と入力します
+1. 上部の検索バーで、 「 **リソース グループ** 」 と入力します
 1. **[リソース グループ]** をクリックします
 1. **[myResourceGroup]** を選択します
 1. _[myResourceGroup]_ ページで、一覧表示されたリソースが、削除しようとするリソースであることを確認します。
 1. **[削除]** を選択します
-1. テキスト ボックスに「**myResourceGroup**」と入力します
+1. テキスト ボックスに「 **myResourceGroup** 」と入力します
 1. **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ

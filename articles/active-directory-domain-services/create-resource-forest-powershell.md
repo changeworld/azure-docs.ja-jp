@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: joflore
-ms.openlocfilehash: e914c273adc632449ed31915127fe6d261a8d56c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 32ec3eface215330aba9e40b46e45b97b5c07091
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960951"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041098"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Azure Active Directory Domain Services のリソース フォレスト、およびオンプレミス ドメインへの送信フォレストの信頼を、Azure PowerShell を使用して作成する
 
@@ -51,8 +51,8 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 * Azure AD PowerShell をインストールして構成します。
     * 必要であれば、手順に従って、[Azure AD PowerShell モジュールをインストールして Azure AD に接続](/powershell/azure/active-directory/install-adv2)します。
     * 必ず [Connect-AzureAD][Connect-AzureAD] コマンドレットを使用して Azure AD テナントにサインインしてください。
-* Azure AD DS を有効にするには、Azure AD テナントに "*全体管理者*" 特権が必要です。
-* 必要な Azure AD DS リソースを作成するためには、ご利用の Azure サブスクリプションに "*共同作成者*" 特権が必要です。
+* Azure AD DS を有効にするには、Azure AD テナントに " *全体管理者* " 特権が必要です。
+* 必要な Azure AD DS リソースを作成するためには、ご利用の Azure サブスクリプションに " *共同作成者* " 特権が必要です。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -74,19 +74,19 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
 Azure AD DS には、Azure AD からのサービス プリンシパル同期データが必要です。 このプリンシパルは、マネージド ドメイン リソース フォレストを作成するより前に、Azure AD テナントに作成する必要があります。
 
-Azure AD DS による通信や、それ自身の認証が行えるようにするため、Azure AD サービス プリンシパルを作成します。 ID *2565bd9d-da50-47d4-8b85-4c97f669dc36* を持つ *Domain Controller Services* という名前の特定のアプリケーション ID が使用されます。 このアプリケーション ID は変更しないでください。
+Azure AD DS による通信や、それ自身の認証が行えるようにするため、Azure AD サービス プリンシパルを作成します。 ID *6ba9a5d4-8456-4118-b521-9c5ca10cdf84* を持つ *Domain Controller Services* という名前の特定のアプリケーション ID が使用されます。 このアプリケーション ID は変更しないでください。
 
 [New-AzureADServicePrincipal][New-AzureADServicePrincipal] コマンドレットを使用して Azure AD サービス プリンシパルを作成します。
 
 ```powershell
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 ```
 
 ## <a name="create-a-managed-domain-resource-forest"></a>マネージド ドメイン リソース フォレストを作成する
 
 マネージド ドメイン リソース フォレストを作成するには、`New-AzureAaddsForest` スクリプトを使用します。 このスクリプトは、一方向にバインドされたフォレストの作成 (次のセクション参照) など、マネージド ドメイン リソース フォレストの作成と管理をサポートする広範なコマンド セットの一部です。 これらのスクリプトは [PowerShell ギャラリー](https://www.powershellgallery.com/)から入手でき、Azure AD エンジニアリング チームによってデジタル署名されています。
 
-1. まず、[New-AzResourceGroup][New-AzResourceGroup] コマンドレットを使用してリソース グループを作成します。 次の例では、リソース グループは *myResourceGroup* という名前が付けられ、*westus* リージョンに作成されます。 独自の名前と希望するリージョンを使用します。
+1. まず、[New-AzResourceGroup][New-AzResourceGroup] コマンドレットを使用してリソース グループを作成します。 次の例では、リソース グループは *myResourceGroup* という名前が付けられ、 *westus* リージョンに作成されます。 独自の名前と希望するリージョンを使用します。
 
     ```azurepowershell
     New-AzResourceGroup `
@@ -107,7 +107,7 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
     | サブスクリプション                 | *-azureSubscriptionId*    | Azure AD DS の請求に使用されるサブスクリプション ID。 サブスクリプションの一覧は、[Get-AzureRMSubscription][Get-AzureRMSubscription] コマンドレットを使用して取得できます。 |
     | リソース グループ               | *-aaddsResourceGroupName* | マネージド ドメインおよび関連付けられているリソースのリソース グループの名前。 |
     | 場所                     | *-aaddsLocation*          | 使用しているマネージド ドメインがホストされる Azure リージョン。 利用可能なリージョンについては、[Azure AD DS でサポートされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all)を参照してください。 |
-    | Azure AD DS 管理者    | *-aaddsAdminUser*         | 最初のマネージド ドメイン管理者のユーザー プリンシパル名。 このアカウントは、Azure Active Directory の既存のクラウド ユーザー アカウントである必要があります。 このユーザー、およびスクリプトを実行しているユーザーは、*AAD DC 管理者*グループに追加されます。 |
+    | Azure AD DS 管理者    | *-aaddsAdminUser*         | 最初のマネージド ドメイン管理者のユーザー プリンシパル名。 このアカウントは、Azure Active Directory の既存のクラウド ユーザー アカウントである必要があります。 このユーザー、およびスクリプトを実行しているユーザーは、 *AAD DC 管理者* グループに追加されます。 |
     | Azure AD DS ドメイン名      | *-aaddsDomainName*        | フォレスト名の選択方法に関する前のガイダンスに基づく、マネージド ドメインの FQDN。 |
 
     Azure 仮想ネットワークと Azure AD DS サブネットがまだ存在しない場合は、`New-AzureAaddsForest` スクリプトを実行することにより、これらのリソースを作成できます。 このスクリプトでは、オプションで次を指定することにより、ワークロード サブネットも作成できます。
@@ -117,11 +117,11 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
     | 仮想ネットワーク名              | *-aaddsVnetName*                  | マネージド ドメインの仮想ネットワークの名前。|
     | アドレス空間                     | *-aaddsVnetCIDRAddressSpace*      | CIDR 表記の仮想ネットワークのアドレス範囲 (仮想ネットワークを作成する場合)。|
     | Azure AD DS サブネット名           | *-aaddsSubnetName*                | マネージド ドメインをホストしている *aaddsVnetName* 仮想ネットワークのサブネットの名前。 このサブネットには、独自の VM やワークロードをデプロイしないでください。 |
-    | Azure AD DS のアドレス範囲         | *-aaddsSubnetCIDRAddressRange*    | AAD DS インスタンスの、CIDR 表記のサブネット アドレス範囲 (*192.168.1.0/24* など)。 アドレス範囲は、仮想ネットワークのアドレス範囲に含まれており、他のサブネットとは異なる範囲である必要があります。 |
+    | Azure AD DS のアドレス範囲         | *-aaddsSubnetCIDRAddressRange*    | AAD DS インスタンスの、CIDR 表記のサブネット アドレス範囲 ( *192.168.1.0/24* など)。 アドレス範囲は、仮想ネットワークのアドレス範囲に含まれており、他のサブネットとは異なる範囲である必要があります。 |
     | ワークロード サブネット名 (オプション)   | *-workloadSubnetName*             | 独自のアプリケーション ワークロード用に作成する *aaddsVnetName* 仮想ネットワークのサブネットの省略可能な名前。 VM とアプリケーションは、ピアリングされた Azure 仮想ネットワークに代わりに接続することもできます。 |
-    | ワークロードのアドレス範囲 (オプション) | *-workloadSubnetCIDRAddressRange* | アプリケーション ワークロードの、CIDR 表記の省略可能なサブネット アドレス範囲 (*192.168.2.0/24* など)。 アドレス範囲は、仮想ネットワークのアドレス範囲に含まれており、他のサブネットとは異なる範囲である必要があります。|
+    | ワークロードのアドレス範囲 (オプション) | *-workloadSubnetCIDRAddressRange* | アプリケーション ワークロードの、CIDR 表記の省略可能なサブネット アドレス範囲 ( *192.168.2.0/24* など)。 アドレス範囲は、仮想ネットワークのアドレス範囲に含まれており、他のサブネットとは異なる範囲である必要があります。|
 
-1. 次に、`New-AzureAaaddsForest` スクリプトを使用して、マネージド ドメイン リソース フォレストを作成します。 次の例では、*addscontoso.com* という名前のフォレストを作成し、ワークロード サブネットを作成します。 独自のパラメーター名と IP アドレス範囲、または既存の仮想ネットワークを指定します。
+1. 次に、`New-AzureAaaddsForest` スクリプトを使用して、マネージド ドメイン リソース フォレストを作成します。 次の例では、 *addscontoso.com* という名前のフォレストを作成し、ワークロード サブネットを作成します。 独自のパラメーター名と IP アドレス範囲、または既存の仮想ネットワークを指定します。
 
     ```azurepowershell
     New-AzureAaddsForest `
@@ -163,7 +163,7 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
     * `ping` やリモート デスクトップなどを使用して、オンプレミスのドメイン コントローラーがマネージド VM に接続できることを確認します。
     * もう一度 `ping` などのユーティリティを使用して、管理 VM がオンプレミスのドメイン コントローラーに接続できることを確認します。
 
-1. Azure portal で、**Azure AD Domain Services** を検索して選択します。 使用するマネージド ドメイン (*aaddscontoso.com* など) を選択し、状態のレポートが **[Running]\(実行中\)** になるまで待ちます。
+1. Azure portal で、 **Azure AD Domain Services** を検索して選択します。 使用するマネージド ドメイン ( *aaddscontoso.com* など) を選択し、状態のレポートが **[Running]\(実行中\)** になるまで待ちます。
 
     実行中になったら、[Azure 仮想ネットワークの DNS 設定を更新](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)し、[Azure AD DS のユーザー アカウントを有効化](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)して、マネージド ドメイン リソース フォレストの構成を完了します。
 
@@ -195,14 +195,14 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 | 名前                               | スクリプト パラメーター     | 説明 |
 |:-----------------------------------|:---------------------|:------------|
-| Azure AD DS ドメイン名            | *-ManagedDomainFqdn* | マネージド ドメインの FQDN (*aaddscontoso.com* など) |
-| オンプレミスの AD DS ドメイン名      | *-TrustFqdn*         | 信頼済みフォレストの FQDN (*onprem.contoso.com* など) |
+| Azure AD DS ドメイン名            | *-ManagedDomainFqdn* | マネージド ドメインの FQDN ( *aaddscontoso.com* など) |
+| オンプレミスの AD DS ドメイン名      | *-TrustFqdn*         | 信頼済みフォレストの FQDN ( *onprem.contoso.com* など) |
 | 信頼フレンドリ名                | *-TrustFriendlyName* | 信頼関係のフレンドリ名。 |
 | オンプレミス AD DS DNS の IP アドレス | *-TrustDnsIPs*       | 一覧表示されている信頼される側のドメインの DNS サーバー IPv4 アドレスの、コンマ区切りの一覧。 |
 | 信頼パスワード                     | *-TrustPassword*     | 信頼関係の複雑なパスワード。 このパスワードは、オンプレミスの AD DS で一方向の受信の信頼を作成するときにも入力されます。 |
-| 資格情報                        | *-Credentials*       | Azure に対する認証に使用される資格情報。 ユーザーは、*AAD DC 管理者グループ*に含まれている必要があります。 指定されていない場合は、スクリプトにより認証が要求されます。 |
+| 資格情報                        | *-Credentials*       | Azure に対する認証に使用される資格情報。 ユーザーは、 *AAD DC 管理者グループ* に含まれている必要があります。 指定されていない場合は、スクリプトにより認証が要求されます。 |
 
-次の例では、*myAzureADDSTrust* という名前の信頼関係を *onprem.contoso.com* に対して作成します。 独自のパラメーター名とパスワードを使用してください。
+次の例では、 *myAzureADDSTrust* という名前の信頼関係を *onprem.contoso.com* に対して作成します。 独自のパラメーター名とパスワードを使用してください。
 
 ```azurepowershell
 Add-AaddsResourceForestTrust `
@@ -223,7 +223,7 @@ Add-AaddsResourceForestTrust `
 1. **[スタート] | [管理ツール] | [DNS]** の順に選択します。
 1. *myAD01* などの DNS サーバーを右クリックし、 **[プロパティ]** を選択します。
 1. **[フォワーダー]** 、 **[編集]** の順に選択して、他のフォワーダーを追加します。
-1. マネージド ドメインの IP アドレス (*10.0.1.4* と *10.0.1.5* など) を追加します。
+1. マネージド ドメインの IP アドレス ( *10.0.1.4* と *10.0.1.5* など) を追加します。
 1. ローカルのコマンド プロンプトで、マネージド ドメイン リソース フォレスト ドメイン名の **nslookup** を使用して、名前解決を検証します。 たとえば、`Nslookup aaddscontoso.com` を実行すると、マネージド ドメイン リソース フォレストの 2 つの IP アドレスが返されるはずです。
 
 ## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>オンプレミス ドメインに受信フォレストの信頼を作成する
@@ -235,10 +235,10 @@ Add-AaddsResourceForestTrust `
 1. **[スタート] | [管理ツール] | [Active Directory Active Directory ドメインと信頼関係]** の順に選択します。
 1. *onprem.contoso.com* などのドメインを右クリックし、 **[プロパティ]** を選択します。
 1. **[信頼]** タブ、 **[新しい信頼]** の順に選択します。
-1. マネージド ドメインの名前 (*aaddscontoso.com* など) を入力し、 **[次へ]** を選択します。
-1. **フォレストの信頼**を作成するオプションを選択して、**一方向: 受信**の信頼を作成します。
+1. マネージド ドメインの名前 ( *aaddscontoso.com* など) を入力し、 **[次へ]** を選択します。
+1. **フォレストの信頼** を作成するオプションを選択して、 **一方向: 受信** の信頼を作成します。
 1. **[This domain only]\(このドメインのみ\)** に信頼を作成することを選択します。 次の手順では、Azure portal でマネージド ドメインに対する信頼を作成します。
-1. **フォレスト全体の認証**を使用することを選択してから、信頼パスワードを入力して確認します。 これと同じパスワードを、次のセクションの Azure portal にも入力します。
+1. **フォレスト全体の認証** を使用することを選択してから、信頼パスワードを入力して確認します。 これと同じパスワードを、次のセクションの Azure portal にも入力します。
 1. 既定のオプションを使用して次のいくつかのウィンドウをステップ実行し、オプションの **[確認しない]** を選択します。 そのマネージド ドメイン リソース フォレストに対する委任された管理者アカウントには、必要なアクセス許可が付与されていないため、この信頼関係は検証できません。 この動作は仕様です。
 1. **[完了]** を選択します。
 
@@ -297,12 +297,12 @@ Windows Server 仮想マシンをマネージド ドメインのリソース ド
 
 1. **[Active Directory ユーザーとコンピューター]** を開きます。
 1. ドメイン名を右クリックし、 **[新規]** を選択してから、 **[組織単位]** を選択します。
-1. [名前] ボックスで、「*LocalObjects*」と入力して、 **[OK]** を選択します。
+1. [名前] ボックスで、「 *LocalObjects* 」と入力して、 **[OK]** を選択します。
 1. ナビゲーション ウィンドウで右クリックして、 **[LocalObjects]** を選択します。 **[新規]** を選択してから、 **[グループ]** を選択します。
-1. **[グループ名]** ボックスに「*FileServerAccess*」と入力します。 **[グループのスコープ]** の場合は、 **[ドメイン ローカル]** を選択してから、 **[OK]** を選択します。
+1. **[グループ名]** ボックスに「 *FileServerAccess* 」と入力します。 **[グループのスコープ]** の場合は、 **[ドメイン ローカル]** を選択してから、 **[OK]** を選択します。
 1. コンテンツ ウィンドウで、 **[FileServerAccess]** をダブルクリックします。 **[メンバー]** 、 **[追加]** 、 **[場所]** の順に選択します。
 1. **[場所]** ビューからご利用のオンプレミスの Active Directory を選択して、 **[OK]** を選択します。
-1. **[選択するオブジェクト名を入力してください]** ボックスに「*Domain Users*」と入力します。 **[名前の確認]** を選択してから、オンプレミスの Active Directory の資格情報を入力して、 **[OK]** を選択します。
+1. **[選択するオブジェクト名を入力してください]** ボックスに「 *Domain Users* 」と入力します。 **[名前の確認]** を選択してから、オンプレミスの Active Directory の資格情報を入力して、 **[OK]** を選択します。
 
     > [!NOTE]
     > 信頼関係は一方向のみであるため、資格情報を指定する必要があります。 つまり、マネージド ドメインからのユーザーは、リソースにアクセスすることも、信頼された (オンプレミスの) ドメイン内のユーザーやグループを検索することもできません。
@@ -311,11 +311,11 @@ Windows Server 仮想マシンをマネージド ドメインのリソース ド
 
 #### <a name="create-a-file-share-for-cross-forest-access"></a>フォレスト間のアクセス用にファイル共有を作成する
 
-1. マネージド ドメイン リソース フォレストに参加している Windows Server VM 上に、フォルダーを作成し、「*CrossForestShare*」などの名前を入力します。
+1. マネージド ドメイン リソース フォレストに参加している Windows Server VM 上に、フォルダーを作成し、「 *CrossForestShare* 」などの名前を入力します。
 1. フォルダーを右クリックし、 **[プロパティ]** を選択します。
 1. **[セキュリティ]** タブを選択してから、 **[編集]** を選択します。
 1. *[CrossForestShare のアクセス許可]* ダイアログ ボックスで **[追加]** を選択します。
-1. **[選択するオブジェクト名を入力してください]** に、「*FileServerAccess*」と入力し、 **[OK]** を選択します。
+1. **[選択するオブジェクト名を入力してください]** に、「 *FileServerAccess* 」と入力し、 **[OK]** を選択します。
 1. **[グループまたはユーザー名]** 一覧から *[FileServerAccess]* を選択します。 **[FileServerAccess のアクセス許可]** 一覧で、 **[変更]** アクセス許可と **[書き込み]** アクセス許可に対して *[許可]* を選択し、 **[OK]** を選択します。
 1. **[共有]** タブを選択してから、 **[詳細な共有]** を選択します。
 1. **[このフォルダーを共有する]** を選択し、次に *CrossForestShare* など、ファイル共有の覚えやすい名前を **[共有名]** に入力します。
@@ -376,7 +376,7 @@ Windows Server 仮想マシンをマネージド ドメインのリソース ド
     Install-Script -Name Remove-AaddsResourceForestTrust
     ```
 
-1. 次に、`Remove-AaddsResourceForestTrust` スクリプトを使用して、フォレストの信頼を削除します。 次の例では、*aaddscontoso.com* という名前のマネージド ドメイン フォレストと *onprem.contoso.com* という名前のオンプレミスのフォレストとの間の、*myAzureADDSTrust* という名前の信頼が削除されます。 削除する独自のマネージド ドメイン フォレスト名とオンプレミスのフォレスト名を指定します。
+1. 次に、`Remove-AaddsResourceForestTrust` スクリプトを使用して、フォレストの信頼を削除します。 次の例では、 *aaddscontoso.com* という名前のマネージド ドメイン フォレストと *onprem.contoso.com* という名前のオンプレミスのフォレストとの間の、 *myAzureADDSTrust* という名前の信頼が削除されます。 削除する独自のマネージド ドメイン フォレスト名とオンプレミスのフォレスト名を指定します。
 
     ```powershell
     Remove-AaddsResourceForestTrust `

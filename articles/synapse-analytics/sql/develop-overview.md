@@ -10,22 +10,22 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f4c61b43855e4a845956a937d9d9cfe738d6f47a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a24a61e26bdfaba0619e3965e95b1828380a1c8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90032947"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322102"
 ---
 # <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>Azure Synapse Analytics の Synapse SQL 機能の設計上の決定とコーディング技法
-この記事では、Synapse SQL の SQL プールと SQL オンデマンド (プレビュー) 機能に関するリソースの一覧を紹介します。 推奨される記事は、次の 2 つのセクションに分かれています。重要な設計上の決定と、開発およびコーディング技法。
+この記事では、Synapse SQL の専用 SQL プールとサーバーレス SQL プール (プレビュー) の関数に関するリソースの一覧を紹介します。 推奨される記事は、次の 2 つのセクションに分かれています。重要な設計上の決定と、開発およびコーディング技法。
 
 これらの記事の目的は、Synapse Analytics 内の Synapse SQL コンポーネントの最適な技術的手法を開発するために役立つことです。
 
 ## <a name="key-design-decisions"></a>主要な設計上の決定
 以下の記事では、Synapse SQL 開発の概念と設計上の決定について説明します。
 
-| [アーティクル] | SQL プール | SQL オンデマンド |
+| [アーティクル] | 専用 SQL プール | サーバーレス SQL プール |
 | ------- | -------- | ------------- |
 | [接続](connect-overview.md)                    | ○ | ○ |
 | [リソース クラスとコンカレンシー](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | [はい]    | いいえ |
@@ -44,7 +44,7 @@ ms.locfileid: "90032947"
 
 次に、開発のための特定のコーディング技法、ヒント、およびレコメンデーションに焦点を合わせた重要な記事を紹介します。
 
-| [アーティクル] | SQL プール | SQL オンデマンド |
+| [アーティクル] | 専用 SQL プール | サーバーレス SQL プール |
 | ------- | -------- | ------------- |
 | [ストアド プロシージャ](develop-stored-procedures.md)  | [はい]                | いいえ                      |
 | [ラベル](develop-label.md)                           | [はい]                | いいえ                      |

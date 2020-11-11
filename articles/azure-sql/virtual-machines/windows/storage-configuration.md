@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: ebeee228d8c936732465359dfa264d822cbecb1e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3a4b7d68d7cd21ccb4b7eb8b97e0d331fb236e96
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793077"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146724"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM のストレージの構成
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,7 +44,7 @@ Azure で SQL Server 仮想マシン (VM) イメージを構成するとき、Az
 
 SQL Server のギャラリー イメージを使用して Azure VM をプロビジョニングするときは、 **[SQL Server の設定]** タブの **[構成の変更]** を選択して、パフォーマンス最適化ストレージの構成ページを開きます。 既定値のままにすることも、ワークロードに基づいてご自分のニーズに最適なディスク構成の種類に変更することもできます。 
 
-![プロビジョニング中の SQL Server VM ストレージの構成](./media/storage-configuration/sql-vm-storage-configuration-provisioning.png)
+![[SQL Server の設定] タブと [構成の変更] オプションが強調表示されているスクリーンショット。](./media/storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
 **[ストレージの最適化]** では、SQL Server をデプロイする対象のワークロードの種類を選択します。 **[全般]** 最適化オプションの既定では、最大 5,000 IOPS のデータ ディスクが 1 つ使用され、この同じドライブをデータ、トランザクション ログ、TempDB ストレージに使用します。 **[トランザクション処理]** (OLTP) または **[データ ウェアハウス]** を選択すると、データ用とトランザクション ログ用にそれぞれ個別のディスクが作成され、TempDB 用にはローカル SSD が使用されます。 **[トランザクション処理]** と **[データ ウェアハウス]** でストレージに違いはありませんが、 [ストライプの構成とトレース フラグ](#workload-optimization-settings)が変更されます。 Premium Storage を選択すると、 [SQL Server VM のパフォーマンスのベスト プラクティス](performance-guidelines-best-practices.md)に関する記事に従って、キャッシュがデータ ドライブについては " *読み取り専用* " に、ログ ドライブについては " *なし* " に設定されます。 
 
@@ -103,7 +103,7 @@ Azure によるストレージ設定の構成方法の詳細については、�
 
 ストレージ設定を変更するには、 **[設定]** の下で **[構成]** を選択します。 
 
-![既存の SQL Server VM 用のストレージを構成する](./media/storage-configuration/sql-vm-storage-configuration-existing.png)
+![[構成] オプションと [ストレージ使用量] セクションが強調表示されているスクリーンショット。](./media/storage-configuration/sql-vm-storage-configuration-existing.png)
 
 SQL Server VM の作成プロセス中に構成されたドライブのディスク設定を変更できます。 **[ドライブの拡張]** を選択するとドライブ変更ページが開き、ディスクの種類を変更したり、ディスクを追加したりすることができます。 
 

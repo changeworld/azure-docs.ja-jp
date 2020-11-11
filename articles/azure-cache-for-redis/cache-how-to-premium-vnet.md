@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: eb70e7cfec4e6f3e7e55fa74bbdd6cee43493576
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a55db6a9db8cc53da15ba6e818db7b78b72cefc9
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537883"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927738"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Premium Azure Cache for Redis の Virtual Network のサポートを構成する方法
 Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能を含め、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 VNet とは、クラウド内のプライベート ネットワークです。 VNet を使用して Azure Cache for Redis インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、VNet 内の仮想マシンとアプリケーションからしかアクセスできません。 この記事では、Premium Azure Cache for Redis インスタンスの仮想ネットワークのサポートを構成する方法について説明します。
@@ -34,7 +34,53 @@ Azure Cache for Redis には、クラスタリング、永続性、仮想ネッ�
    
 2. **[新規]** ページで、 **[データベース]** を選択し、 **[Azure Cache for Redis]** を選択します。
 
-    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="リソースの作成。" と表示されている場合は、キャッシュを使用する準備ができています。 キャッシュが作成されたら、 **[リソース]** メニューの **[仮想ネットワーク]** をクリックすることで、VNet の構成を表示できます。
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="[Azure Cache for Redis] を選択します。":::
+
+3. **[新規 Redis Cache]** ページで、新しい Premium キャッシュの設定を構成します。
+   
+   | 設定      | 推奨値  | 説明 |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **DNS 名** | グローバルに一意の名前を入力します。 | キャッシュ名は 1 から 63 文字の文字列で、数字、英字、ハイフンのみを使用する必要があります。 名前の先頭と末尾には数字または文字を使用する必要があり、連続するハイフンを含めることはできません。 キャッシュ インスタンスの " *ホスト名* " は、 *\<DNS name>.redis.cache.windows.net* になります。 | 
+   | **サブスクリプション** | ドロップダウンでご自身のサブスクリプションを選択します。 | この新しい Azure Cache for Redis インスタンスが作成されるサブスクリプション。 | 
+   | **リソース グループ** | ドロップダウンでリソース グループを選択するか、 **[新規作成]** を選択して新しいリソース グループ名を入力します。 | その中にキャッシュやその他のリソースを作成するリソース グループの名前。 すべてのアプリ リソースを 1 つのリソース グループに配置することで、それらをまとめて簡単に管理または削除できます。 | 
+   | **場所** | ドロップダウンで場所を選択します。 | キャッシュを使用する他のサービスの近くの[リージョン](https://azure.microsoft.com/regions/)を選択します。 |
+   | **キャッシュの種類** | ドロップダウンで Premium キャッシュを選択し、Premium 機能を構成します。 詳細については、「[Azure Cache for Redis の価格](https://azure.microsoft.com/pricing/details/cache/)」を参照してください。 |  価格レベルによって、キャッシュに使用できるのサイズ、パフォーマンス、および機能が決まります。 詳細については、[Azure Cache for Redis の概要](cache-overview.md)に関するページを参照してください。 |
+
+4. **[ネットワーク]** タブを選択するか、ページの下部にある **[ネットワーク]** ボタンをクリックします。
+
+5. **[ネットワーク]** タブで、接続方法として **[仮想ネットワーク]** を選択します。 新しい仮想ネットワークを使用するには、まず [Azure portal を使用した仮想ネットワークの作成](../virtual-network/manage-virtual-network.md#create-a-virtual-network)に関するページまたは「 [Azure portal を使用した仮想ネットワーク (クラシック) の作成](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal)」の手順に従ってそれを作成した後、 **[New Azure Cache for Redis]\(新しい Azure Cache for Redis\)** ブレードに戻り、Premium キャッシュを作成して構成します。
+
+   > [!IMPORTANT]
+   > Azure Cache for Redis を Resource Manager VNet にデプロイする場合、キャッシュは、Azure Cache for Redis インスタンス以外のリソースを含まない専用サブネット内に存在する必要があります。 Resource Manager VNet で他のリソースが含まれる Resource Manager VNet のサブネットに Azure Cache for Redis をデプロイしようとすると、そのデプロイは失敗します。
+   > 
+   > 
+
+   | 設定      | 推奨値  | 説明 |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **Virtual Network** | ドロップダウンでご利用の仮想ネットワークを選択します。 | ご自分のキャッシュと同じサブスクリプションと場所に存在する仮想ネットワークを選択します。 | 
+   | **サブネット** | ドロップダウンでサブネットを選択します。 | サブネットのアドレス範囲は CIDR 表記である必要があります (例: 192.168.1.0/24)。 仮想ネットワークのアドレス空間に含まれている必要があります。 | 
+   | **静的 IP アドレス** | (省略可能) 静的 IP アドレスを入力します。 | 静的 IP を指定しなかった場合は、IP アドレスが自動的に選ばれます。 | 
+
+   > [!IMPORTANT]
+   > Azure は、各サブネット内で一部の IP アドレスを予約し、これらのアドレスを使用することはできません。 サブネットの最初と最後の IP アドレスは、Azure サービスで使用される 3 つ以上のアドレスと共に、プロトコル準拠に予約されます。 詳細については、「 [これらのサブネット内の IP アドレスの使用に関する制限はありますか](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
+   > 
+   > Azure VNET インフラストラクチャによって使用される IP アドレスに加えて、サブネットの各 Redis インスタンスは、シャードごとに 2 つの IP アドレスおよびロード バランサー用に 1 つの追加 IP アドレスを使用します。 クラスター化されていないキャッシュは、1 つのシャードを持つと見なされます。
+   > 
+   > 
+
+6. **[次へ: 詳細]** タブを選択するか、ページの下部にある **[次へ: 詳細]** ボタンをクリックします。
+
+7. Premium キャッシュ インスタンスの **[詳細]** タブで、非 TLS ポート、クラスタリング、データ永続化の設定を構成します。 
+
+8. **[次へ: タグ]** タブを選択するか、ページの下部にある **[次へ: タグ]** ボタンをクリックします。
+
+9. 必要に応じて、 **[タグ]** タブで、リソースを分類する場合は名前と値を入力します。 
+
+10. **[Review + create]\(レビュー + 作成\)** を選択します。 [確認および作成] タブが表示され、Azure によって構成が検証されます。
+
+11. 緑色の検証に成功のメッセージが表示された後、 **[作成]** を選択します。
+
+キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に " **実行中** " と表示されている場合は、キャッシュを使用する準備ができています。 キャッシュが作成されたら、 **[リソース]** メニューの **[仮想ネットワーク]** をクリックすることで、VNet の構成を表示できます。
 
 ![仮想ネットワーク][redis-cache-vnet-info]
 
@@ -85,7 +131,7 @@ Azure Cache for Redis が VNet でホストされている場合は、次の表�
 | ポート | Direction | トランスポート プロトコル | 目的 | ローカル IP | リモート IP |
 | --- | --- | --- | --- | --- | --- |
 | 80、443 |送信 |TCP |Azure Storage/PKI (インターネット) に対する Redis の依存関係 | (Redis サブネット) |* |
-| 443 | 送信 | TCP | Azure Key Vault に対する Redis の依存関係 | (Redis サブネット) | AzureKeyVault <sup>1</sup> |
+| 443 | 送信 | TCP | Azure Key Vault と Azure Monitor に対する Redis の依存関係 | (Redis サブネット) | AzureKeyVault、AzureMonitor <sup>1</sup> |
 | 53 |送信 |TCP/UDP |DNS (インターネット/VNet) に対する Redis の依存関係 | (Redis サブネット) | 168.63.129.16 および 169.254.169.254 <sup>2</sup> およびサブネットのカスタム DNS サーバー <sup>3</sup> |
 | 8443 |送信 |TCP |Redis の内部通信 | (Redis サブネット) | (Redis サブネット) |
 | 10221-10231 |送信 |TCP |Redis の内部通信 | (Redis サブネット) | (Redis サブネット) |
@@ -94,7 +140,7 @@ Azure Cache for Redis が VNet でホストされている場合は、次の表�
 | 15000-15999 |送信 |TCP |Redis および geo レプリケーションの内部通信 | (Redis サブネット) |(Redis サブネット) (geo レプリカ ピア サブネット) |
 | 6379-6380 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
 
-<sup>1</sup> Resource Manager ネットワーク セキュリティ グループにサービス タグ 'AzureKeyVault' を使用できます。
+<sup>1</sup> Resource Manager ネットワーク セキュリティ グループでサービス タグ "AzureKeyVault" と "AzureMonitor" を使用できます。
 
 <sup>2</sup> Microsoft が所有するこれらの IP アドレスは、Azure DNS を提供するホスト VM をアドレス指定するために使用されます。
 
@@ -126,9 +172,9 @@ Azure Virtual Network 内のキャッシュ間で geo レプリケーション�
 Azure Cache for Redis のネットワーク接続要件には、仮想ネットワークで最初から満たされていないものがある可能性があります。 仮想ネットワーク内で使用したときに正常に動作させるには、Azure Cache for Redis に次の項目すべてが必要になります。
 
 * 世界各国の Azure Storage エンドポイントに対する発信ネットワーク接続 これには、Azure Cache for Redis インスタンスと同じリージョンにあるエンドポイントと、 **他の** Azure リージョンにあるストレージ エンドポイントが含まれます。 Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net* 、 *blob.core.windows.net* 、 *queue.core.windows.net* 、 *file.core.windows.net* 。 
-* *ocsp.msocsp.com* 、 *mscrl.microsoft.com* 、 *crl.microsoft.com* に対する発信ネットワーク接続。 この接続は、TLS/SSL 機能をサポートするために必要です。
+* *ocsp.digicert.com* 、 *crl4.digicert.com* 、 *ocsp.msocsp.com* 、 *mscrl.microsoft.com* 、 *crl3.digicert.com* 、 *cacerts.digicert.com* 、 *oneocsp.microsoft.com* 、 *crl.microsoft.com* への送信ネットワーク接続。 この接続は、TLS/SSL 機能をサポートするために必要です。
 * 仮想ネットワークの DNS 構成は、前述したすべてのエンドポイントとドメインを解決できるようにする必要があります。 これらの DNS 要件を満たすには、仮想ネットワークの有効な DNS インフラストラクチャを構成し、保守します。
-* 次の DNS ドメインで解決される次の Azure Monitoring エンドポイントに対する発信ネットワーク接続: shoebox2-black.shoebox2.metrics.nsatc.net、north-prod2.prod2.metrics.nsatc.net、azglobal-black.azglobal.metrics.nsatc.net、shoebox2-red.shoebox2.metrics.nsatc.net、east-prod2.prod2.metrics.nsatc.net、azglobal-red.azglobal.metrics.nsatc.net。
+* 以下の DNS ドメインで解決される次の Azure Monitoring エンドポイントに対する発信ネットワーク接続: *shoebox2-black.shoebox2.metrics.nsatc.net* 、 *north-prod2.prod2.metrics.nsatc.net* 、 *azglobal-black.azglobal.metrics.nsatc.net* 、 *shoebox2-red.shoebox2.metrics.nsatc.net* 、 *east-prod2.prod2.metrics.nsatc.net* 、 *azglobal-red.azglobal.metrics.nsatc.net* 。
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>VNET で自分のキャッシュの動作を確認するにはどうすればよいですか
 

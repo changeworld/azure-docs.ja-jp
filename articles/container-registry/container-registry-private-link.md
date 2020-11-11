@@ -3,12 +3,12 @@ title: プライベート リンクを設定する
 description: コンテナー レジストリにプライベート エンドポイントを設定し、ローカル仮想ネットワークでプライベート リンク経由のアクセスを有効にします。 プライベート リンク アクセスは、Premium サービス レベルの機能です。
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 6bea4b2a6bedeac9dd0ff36631ba46adf4be4f8f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3193c65a2021d29f03bd9ae6cbc00fd6c349d9bf
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148478"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342302"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Azure Private Link を使用して Azure Container Registry にプライベートで接続する
 
@@ -24,7 +24,7 @@ ms.locfileid: "92148478"
 ## <a name="prerequisites"></a>前提条件
 
 * この記事の Azure CLI の手順を使用する場合は、Azure CLI バージョン 2.6.0 以降をお勧めします。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。 または、[Azure Cloud Shell](../cloud-shell/quickstart.md) で実行します。
-* コンテナー レジストリがまだない場合は、1 つ作成し (Premium レベルが必要)、Docker Hub から `hello-world` などのサンプル イメージを[インポート](container-registry-import-images.md)します。 たとえば、[Azure portal][quickstart-portal] または [Azure CLI][quickstart-cli] を使用してレジストリを作成します。
+* コンテナー レジストリがまだない場合は、1 つ作成し (Premium レベルが必要)、Microsoft Container Registry から `mcr.microsoft.com/hello-world` などのサンプル パブリック イメージを[インポート](container-registry-import-images.md)します。 たとえば、[Azure portal][quickstart-portal] または [Azure CLI][quickstart-cli] を使用してレジストリを作成します。
 * 別の Azure サブスクリプションのプライベート リンクを使用してレジストリ アクセスを構成するには、そのサブスクリプションで Azure Container Registry のリソース プロバイダーを登録する必要があります。 次に例を示します。
 
   ```azurecli
@@ -387,7 +387,12 @@ az acr private-endpoint-connection list \
 
 この例のプライベート エンドポイントは、基本仮想ネットワークに関連付けられているプライベート DNS ゾーンと統合されます。 このセットアップでは、Azure から提供される DNS サー日を直接利用し、レジストリのパブリック FQDN を仮想ネットワークのそのプライベート IP アドレスに解決します。 
 
-プライベート リンクでは、カスタム DNS ソリューションによるものも含め、プライベート ゾーンを使用する追加の DNS 構成シナリオがサポートされます。 たとえば、カスタム DNS ソリューションを仮想ネットワークにデプロイしたり、ネットワークのオンプレミスで VPN ゲートウェイを利用して仮想ネットワークに接続したりします。 そのようなシナリオでレジストリのパブリック FQDN をプライベート IP アドレスに解決するには、Azure DNS サービスのサーバーレベル フォワーダーを構成する必要があります (168.63.129.16)。 構成のオプションと手順は、厳密には、既存のネットワークや DNS によって異なります。 サンプルが必要であれば、[Azure プライベート エンドポイント DNS 構成](../private-link/private-endpoint-dns.md)に関するページを参照してください。
+プライベート リンクでは、カスタム DNS ソリューションによるものも含め、プライベート ゾーンを使用する追加の DNS 構成シナリオがサポートされます。 たとえば、カスタム DNS ソリューションを仮想ネットワークにデプロイしたり、ネットワークのオンプレミスで VPN ゲートウェイまたは Azure ExpressRoute を利用して仮想ネットワークに接続したりします。 
+
+そのようなシナリオでレジストリのパブリック FQDN をプライベート IP アドレスに解決するには、Azure DNS サービスのサーバーレベル フォワーダーを構成する必要があります (168.63.129.16)。 構成のオプションと手順は、厳密には、既存のネットワークや DNS によって異なります。 サンプルが必要であれば、[Azure プライベート エンドポイント DNS 構成](../private-link/private-endpoint-dns.md)に関するページを参照してください。
+
+> [!IMPORTANT]
+> 高可用性を実現するために複数のリージョンでプライベート エンドポイントを作成した場合は、リージョンごとに個別のリソース グループを使用し、仮想ネットワークとそれに関連付けられたプライベート DNS ゾーンをそこに配置することをお勧めします。 この構成を使用すると、同じプライベート DNS ゾーンの共有による予期しない DNS 解決が発生するのを防ぎます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

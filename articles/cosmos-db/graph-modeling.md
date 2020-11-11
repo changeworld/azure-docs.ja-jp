@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: jasonh
-ms.openlocfilehash: 2176708d3b5371a9bb66a59a7c6c0af56c337e28
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 70cbe3a7dae243105a659e1363a44f17f03758e2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490630"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129645"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API のグラフ データのモデリング
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 次のドキュメントは、グラフ データのモデリングの推奨事項を提供することを目的としています。 この手順は、データの進化に合わせて、グラフ データベース システムのスケーラビリティとパフォーマンスを確保するうえで不可欠です。 効率的なデータ モデルは、大規模なグラフで特に重要です。
 
@@ -77,7 +78,7 @@ ms.locfileid: "92490630"
 
 * **プロパティが埋め込まれた頂点** :このアプローチでは、キーと値のペアの一覧を利用して、頂点内でエンティティのすべてのプロパティを表します。 このアプローチにより、モデルの複雑さが軽減され、クエリがシンプルになり、トラバーサルのコスト効率が高くなります。
 
-:::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="プロパティに頂点を使用するエンティティ モデル。" border="false":::
+:::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="図には、前の図の Luis 頂点と、i d、ラベル、およびプロパティが示されています。" border="false":::
 
 > [!NOTE]
 > 上記の例は、エンティティ プロパティを分割する 2 つの方法の比較を示すためにのみ、簡略化されたグラフ モデルを示しています。
@@ -105,7 +106,7 @@ Edge オブジェクトには、`out()` または `outE()` 関数を使用した
 * 一般的でない用語を使用して、リレーションシップにラベルを付ける。
 * リレーションシップ名を使用して、ソースの頂点のラベルとターゲットの頂点のラベルを関連付ける。
 
-:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="プロパティに頂点を使用するエンティティ モデル。" border="false":::
+:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="リレーションシップのラベル付けの例。" border="false":::
 
 トラバーサーがエッジのフィルター処理に使用するラベルを具体的にするほど良くなります。 この決定は、クエリのコストにも大きな影響を与える可能性があります。 クエリのコストは、[executionProfile ステップを使用](graph-execution-profile.md)していつでも評価できます。
 

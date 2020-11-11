@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cb0138603cad52c40b3471c60104f091367e88e9
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 4e6b0afab5c86131575d0e3d12b9984a8463f5a3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636903"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321096"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>1 TB のデータを Data Factory を使用して 15 分以内に Azure Synapse Analytics に読み込む
 > [!NOTE]
@@ -65,7 +65,7 @@ Azure Synapse Analytics は、 **Azure Data Factory** を使用するといっ�
   >
   >
 
-    6,000 DWU の Synapse SQL プールを作成するには、パフォーマンス スライダーを右端まで移動します。
+    6,000 DWU の 専用 SQL プールを作成するには、パフォーマンス スライダーを右端まで移動します。
 
     ![パフォーマンス スライダー](media/data-factory-load-sql-data-warehouse/performance-slider.png)
 

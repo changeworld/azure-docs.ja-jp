@@ -37,6 +37,10 @@
           href: test-drive-technical-configuration.md
         - name: Azure Resource Manager の体験版
           href: azure-resource-manager-test-drive.md
+        - name: ホストされた体験版の詳細な構成
+          href: test-drive-hosted-detailed-config.md
+        - name: ホストされた体験版の Azure サブスクリプションを設定する
+          href: test-drive-azure-subscription-setup.md
     - name: Azure パートナーの顧客の使用状況の属性
       href: azure-partner-customer-usage-attribution.md
     - name: 市場投入時のオプション
@@ -270,15 +274,15 @@
     - name: コマーシャル マーケットプレースの分析
       href: partner-center-portal/analytics.md
     - name: '[Summary]\(概要\) ダッシュボード'
-      href: partner-center-portal/summary-dashboard.md
+      href: summary-dashboard.md
     - name: '[注文] ダッシュボード'
-      href: partner-center-portal/orders-dashboard.md
+      href: orders-dashboard.md
     - name: '[使用状況] ダッシュボード'
-      href: partner-center-portal/usage-dashboard.md
-    - name: 顧客ダッシュボード
-      href: partner-center-portal/customer-dashboard.md
+      href: usage-dashboard.md
+    - name: '[顧客] ダッシュボード'
+      href: customer-dashboard.md
     - name: '[Marketplace の分析情報] ダッシュボード'
-      href: partner-center-portal/insights-dashboard.md
+      href: insights-dashboard.md
     - name: '[ダウンロード] ダッシュボード'
       href: partner-center-portal/downloads-dashboard.md
     - name: '[評価とレビュー] ダッシュボード'

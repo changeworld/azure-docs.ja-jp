@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 10/27/2020
+ms.date: 11/03/2020
 ms.custom: generated
-ms.openlocfilehash: d9881fe91885a9a97b51da176be98a9ed6d007ba
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e337cef9121dc5992f87b9996cfd01d16d9cc188
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900764"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309378"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure リソース プロバイダーの操作
 
@@ -843,7 +843,6 @@ Azure サービス:[Application Gateway](../application-gateway/index.yml)、[Az
 > | Microsoft.Network/azureFirewalls/networkRuleCollections/read | Azure Firewall NetworkRuleCollection を取得します |
 > | Microsoft.Network/azureFirewalls/networkRuleCollections/write | Azure Firewall NetworkRuleCollection を作成または更新します |
 > | Microsoft.Network/azureFirewalls/networkRuleCollections/delete | Azure Firewall NetworkRuleCollection を削除します |
-> | Microsoft.Network/azureWebCategories/read | Azure の Web カテゴリを取得します |
 > | Microsoft.Network/bastionHosts/read | 踏み台ホストを取得します |
 > | Microsoft.Network/bastionHosts/write | 踏み台ホストを作成または更新します |
 > | Microsoft.Network/bastionHosts/delete | 踏み台ホストを削除します |
@@ -1243,8 +1242,6 @@ Azure サービス:[Application Gateway](../application-gateway/index.yml)、[Az
 > | Microsoft.Network/virtualHubs/bgpConnections/read | 仮想ハブのハブ BGP 接続の子リソースを取得します |
 > | Microsoft.Network/virtualHubs/bgpConnections/write | 仮想ハブのハブ BGP 接続の子リソースを作成または更新します |
 > | Microsoft.Network/virtualHubs/bgpConnections/delete | 仮想ハブのハブ BGP 接続の子リソースを削除します |
-> | Microsoft.Network/virtualHubs/bgpConnections/advertisedRoutes/action | VirtualRouter でアドバタイズされたルートを取得します |
-> | Microsoft.Network/virtualHubs/bgpConnections/learnedRoutes/action | VirtualRouter で学習されたルートを取得します |
 > | Microsoft.Network/virtualHubs/hubRouteTables/read | 仮想ハブのルート テーブルの子リソースを取得します |
 > | Microsoft.Network/virtualHubs/hubRouteTables/write | 仮想ハブのルート テーブルの子リソースを作成または更新します |
 > | Microsoft.Network/virtualHubs/hubRouteTables/delete | 仮想ハブのルート テーブルの子リソースを削除します |
@@ -1332,9 +1329,6 @@ Azure サービス:[Application Gateway](../application-gateway/index.yml)、[Az
 > | microsoft.network/vpngateways/startpacketcapture/action | リソースに従って、VPN ゲートウェイのパケット キャプチャを開始します |
 > | microsoft.network/vpngateways/stoppacketcapture/action | sasURL を使用して、VPN ゲートウェイのパケット キャプチャを停止します |
 > | microsoft.network/vpngateways/listvpnconnectionshealth/action | VpnGateway 上のすべての接続または接続のサブセットの接続の正常性を取得します |
-> | microsoft.network/vpnGateways/natRules/read | NAT ルール リソースを取得します |
-> | microsoft.network/vpnGateways/natRules/write | NAT ルール リソースを設定します |
-> | microsoft.network/vpnGateways/natRules/delete | NAT ルール リソースを削除します |
 > | microsoft.network/vpnGateways/vpnConnections/read | VpnConnection を取得します。 |
 > | microsoft.network/vpnGateways/vpnConnections/write | VpnConnection を設定します。 |
 > | microsoft.network/vpnGateways/vpnConnections/delete | VpnConnection を削除します。 |
@@ -1522,6 +1516,7 @@ Azure サービス:[Storage](../storage/index.yml)
 > | Microsoft.Storage/locations/usages/read | 指定されたサブスクリプションのリソースの制限と現在の使用回数を返します。 |
 > | Microsoft.Storage/operations/read | 非同期操作の状態をポーリングします。 |
 > | Microsoft.Storage/skus/read | Microsoft.Storage でサポートされている SKU を一覧表示します。 |
+> | Microsoft.Storage/storageAccounts/updateInternalProperties/action |  |
 > | Microsoft.Storage/storageAccounts/hnsonmigration/action | ユーザーはストレージ アカウントで進行中の Hns 移行を中止できます |
 > | Microsoft.Storage/storageAccounts/hnsonmigration/action | ユーザーは hns アカウントの種類に移行できます |
 > | Microsoft.Storage/storageAccounts/restoreBlobRanges/action | BLOB の範囲を指定した時間の状態に復元します |
@@ -1572,6 +1567,7 @@ Azure サービス:[Storage](../storage/index.yml)
 > | Microsoft.Storage/storageAccounts/fileServices/shares/read | ファイル共有を一覧表示します |
 > | Microsoft.Storage/storageAccounts/fileServices/shares/write | ファイル共有を作成または更新します |
 > | Microsoft.Storage/storageAccounts/inventoryPolicies/delete |  |
+> | Microsoft.Storage/storageAccounts/inventoryPolicies/read |  |
 > | Microsoft.Storage/storageAccounts/inventoryPolicies/read |  |
 > | Microsoft.Storage/storageAccounts/inventoryPolicies/write |  |
 > | Microsoft.Storage/storageAccounts/localUsers/delete | ローカル ユーザーを削除します |
@@ -2128,18 +2124,19 @@ Azure サービス:[Azure SignalR Service](../azure-signalr/index.yml)
 > | Microsoft.SignalRService/SignalR/privateEndpointConnections/read | プライベート エンドポイント接続を読み取ります |
 > | Microsoft.SignalRService/SignalR/privateLinkResources/read | すべての SignalR Private Link リソースを一覧表示します |
 > | **DataAction** | **説明** |
-> | Microsoft.SignalRService/SignalR/serverConnection/action | サーバー接続を開始します。 |
-> | Microsoft.SignalRService/SignalR/clientConnection/action | グループのクライアント接続を追加または削除するか、クライアント接続を閉じます。 |
-> | Microsoft.SignalRService/SignalR/user/action | グループのユーザーを追加または削除します。 |
-> | Microsoft.SignalRService/SignalR/clientConnection/read | 接続の存在を確認します。 |
-> | Microsoft.SignalRService/SignalR/clientConnection/write | クライアント接続にメッセージを直接送信します。 |
-> | Microsoft.SignalRService/SignalR/group/read | グループの存在を確認します。 |
-> | Microsoft.SignalRService/SignalR/group/write | 1 つまたは一部のグループのクライアント接続にメッセージをブロードキャストします。 |
-> | Microsoft.SignalRService/SignalR/hub/write | このハブに接続されているすべてのクライアント接続にメッセージをブロードキャストします。 |
-> | Microsoft.SignalRService/SignalR/service/accessKey/action | ClientToken に署名するための一時的な AccessKey を取得します。 |
-> | Microsoft.SignalRService/SignalR/service/clientToken/action | クライアント接続を開始するための ClientToken を取得します。 |
-> | Microsoft.SignalRService/SignalR/user/read | ユーザーの存在と、グループに含まれていたかどうかを確認します。 |
-> | Microsoft.SignalRService/SignalR/user/write | 複数のクライアント接続を持つ可能性のあるユーザーにメッセージを送信します。 |
+> | Microsoft.SignalRService/SignalR/auth/accessKey/action | ClientToken に署名するための一時的な AccessKey を生成します。 |
+> | Microsoft.SignalRService/SignalR/auth/clientToken/action | クライアント接続を開始するための ClientToken を生成します。 |
+> | Microsoft.SignalRService/SignalR/clientConnection/send/action | クライアント接続にメッセージを直接送信します。 |
+> | Microsoft.SignalRService/SignalR/clientConnection/read | クライアント接続の存在を確認します。 |
+> | Microsoft.SignalRService/SignalR/clientConnection/write | クライアント接続を閉じます。 |
+> | Microsoft.SignalRService/SignalR/group/send/action | メッセージをグループにブロードキャストします。 |
+> | Microsoft.SignalRService/SignalR/group/read | グループの存在、またはグループ内のユーザーの存在を確認します。 |
+> | Microsoft.SignalRService/SignalR/group/write | グループに参加するか、グループから脱退します。 |
+> | Microsoft.SignalRService/SignalR/hub/send/action | ハブ内のすべてのクライアント接続にメッセージをブロードキャストします。 |
+> | Microsoft.SignalRService/SignalR/serverConnection/write | サーバー接続を開始します。 |
+> | Microsoft.SignalRService/SignalR/user/send/action | 複数のクライアント接続で構成されている可能性のあるユーザーにメッセージを送信します。 |
+> | Microsoft.SignalRService/SignalR/user/read | ユーザーの存在を確認します。 |
+> | Microsoft.SignalRService/SignalR/user/write |  |
 
 ### <a name="microsoftweb"></a>microsoft.web
 
@@ -3256,6 +3253,11 @@ Azure サービス:[Data Factory](../data-factory/index.yml)
 > | Microsoft.DataFactory/factories/linkedServices/read | リンクされたサービスを読み取ります。 |
 > | Microsoft.DataFactory/factories/linkedServices/delete | リンクされたサービスを削除します。 |
 > | Microsoft.DataFactory/factories/linkedServices/write | リンクされたサービスを作成または更新します。 |
+> | Microsoft.DataFactory/factories/managedVirtualNetworks/read | マネージド仮想ネットワークを読み取ります。 |
+> | Microsoft.DataFactory/factories/managedVirtualNetworks/write | マネージド仮想ネットワークを作成または更新します。 |
+> | Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints/read | マネージド プライベート エンドポイントを読み取ります。 |
+> | Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints/write | マネージド プライベート エンドポイントを作成または更新します。 |
+> | Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints/delete | マネージド プライベート エンドポイントを削除します。 |
 > | Microsoft.DataFactory/factories/operationResults/read | 操作の結果を取得します。 |
 > | Microsoft.DataFactory/factories/pipelineruns/read | パイプライン実行を読み取ります。 |
 > | Microsoft.DataFactory/factories/pipelineruns/cancel/action | 実行 ID に指定されたパイプラインの実行を取り消します。 |
@@ -3862,6 +3864,8 @@ Azure サービス:[Azure SQL Database](../azure-sql/database/index.yml)、[Azur
 > | Microsoft.Sql/instancePools/delete | インスタンス プールを削除します。 |
 > | Microsoft.Sql/instancePools/usages/read | インスタンス プールの使用状況情報を取得します |
 > | Microsoft.Sql/locations/read | 指定されたサブスクリプションで使用可能な場所を取得します。 |
+> | Microsoft.Sql/locations/administratorAzureAsyncOperation/read | マネージド インスタンスの Azure 非同期管理者操作の結果を取得します。 |
+> | Microsoft.Sql/locations/administratorOperationResults/read | マネージド インスタンス管理者操作の結果を取得します。 |
 > | Microsoft.Sql/locations/auditingSettingsAzureAsyncOperation/read | 拡張サーバー BLOB 監査ポリシー設定操作の結果を取得します。 |
 > | Microsoft.Sql/locations/auditingSettingsOperationResults/read | サーバー BLOB 監査ポリシーの設定操作の結果を取得します。 |
 > | Microsoft.Sql/locations/capabilities/read | 指定された場所でのこのサブスクリプションの機能を取得します。 |
@@ -3883,6 +3887,8 @@ Azure サービス:[Azure SQL Database](../azure-sql/database/index.yml)、[Azur
 > | Microsoft.Sql/locations/extendedAuditingSettingsOperationResults/read | 拡張サーバー BLOB 監査ポリシー設定操作の結果を取得します。 |
 > | Microsoft.Sql/locations/firewallRulesAzureAsyncOperation/read | ファイアウォール規則操作の状態を取得します。 |
 > | Microsoft.Sql/locations/firewallRulesOperationResults/read | ファイアウォール規則操作の状態を取得します。 |
+> | Microsoft.Sql/locations/hybridLinkAzureAsyncOperation/read | Azure SQL Managed Instance での長期ハイブリッド リンクの非同期操作の状態を取得します。 |
+> | Microsoft.Sql/locations/hybridLinkOperationResults/read | 長期ハイブリッド リンクの非同期操作の状態を取得します。 |
 > | Microsoft.Sql/locations/instanceFailoverGroups/read | インスタンス フェールオーバー グループの一覧を返すか、指定されたインスタンス フェールオーバー グループのプロパティを取得します。 |
 > | Microsoft.Sql/locations/instanceFailoverGroups/write | 指定されたパラメーターでインスタンス フェールオーバー グループを作成するか、指定されたインスタンス フェールオーバー グループのプロパティまたはタグを更新します。 |
 > | Microsoft.Sql/locations/instanceFailoverGroups/delete | 既存のインスタンス フェールオーバー グループを削除します。 |
@@ -3998,6 +4004,9 @@ Azure サービス:[Azure SQL Database](../azure-sql/database/index.yml)、[Azur
 > | Microsoft.Sql/managedInstances/encryptionProtector/revalidate/action | 指定されたサーバー暗号化の保護機能のプロパティを更新します。 |
 > | Microsoft.Sql/managedInstances/encryptionProtector/read | サーバー暗号化の保護機能の一覧を返すか、指定されたサーバー暗号化の保護機能のプロパティを取得します。 |
 > | Microsoft.Sql/managedInstances/encryptionProtector/write | 指定されたサーバー暗号化の保護機能のプロパティを更新します。 |
+> | Microsoft.Sql/managedInstances/hybridLink/read | ハイブリッド リンクの一覧を返します。または、指定された分散可用性グループのプロパティを取得します。 |
+> | Microsoft.Sql/managedInstances/hybridLink/write | パラメーターが指定されたハイブリッド リンクを作成または更新します。 |
+> | Microsoft.Sql/managedInstances/hybridLink/delete | 分散可用性グループが指定されたハイブリッド リンクを削除します。 |
 > | Microsoft.Sql/managedInstances/inaccessibleManagedDatabases/read | マネージド インスタンス内のアクセスできないマネージド データベースの一覧を取得します |
 > | Microsoft.Sql/managedInstances/keys/read | マネージド インスタンス キーの一覧を返すか、指定されたマネージド インスタンス キーのプロパティを取得します。 |
 > | Microsoft.Sql/managedInstances/keys/write | 指定されたパラメーターでキーを作成するか、指定されたマネージド インスタンス キーのプロパティまたはタグを更新します。 |
@@ -4091,7 +4100,7 @@ Azure サービス:[Azure SQL Database](../azure-sql/database/index.yml)、[Azur
 > | Microsoft.Sql/servers/databases/dataMaskingPolicies/rules/delete | 指定されたデータベースのデータ マスク ポリシー ルールを削除します。 |
 > | Microsoft.Sql/servers/databases/dataWarehouseQueries/read | 選択したクエリ ID のデータ ウェアハウス分散クエリ情報を返します。 |
 > | Microsoft.Sql/servers/databases/dataWarehouseQueries/dataWarehouseQuerySteps/read | 選択したステップ ID のデータ ウェアハウス クエリの分散クエリ ステップ情報を返します。 |
-> | Microsoft.Sql/servers/databases/dataWarehouseUserActivities/read | 実行中のクエリと中断されたクエリを含む SQL Data Warehouse インスタンスのユーザー アクティビティを取得します |
+> | Microsoft.Sql/servers/databases/dataWarehouseUserActivities/read | 実行中および一時停止中のクエリを含む Azure Synapse Analytics 専用 SQL プールのユーザー アクティビティを取得します |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/read | 指定されたデータベースで構成されている拡張 BLOB 監査ポリシーの詳細を取得します。 |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/write | 指定されたデータベースの拡張 BLOB 監査ポリシーを変更します。 |
 > | Microsoft.Sql/servers/databases/extensions/read | データベースの拡張機能のコレクションを取得します。 |
@@ -6541,6 +6550,9 @@ Azure サービス:[Key Vault](../key-vault/index.yml)
 > | Microsoft.KeyVault/vaults/eventGridFilters/read | Key Vault の EventGrid サブスクリプションが表示されていることを Microsoft.KeyVault に通知します |
 > | Microsoft.KeyVault/vaults/eventGridFilters/write | Key Vault の新しい EventGrid サブスクリプションが作成されていることを Microsoft.KeyVault に通知します |
 > | Microsoft.KeyVault/vaults/eventGridFilters/delete | Key Vault の EventGrid サブスクリプションが削除されていることを Microsoft.KeyVault に通知します |
+> | Microsoft.KeyVault/vaults/keys/read | 指定されたコンテナー内のキーを一覧表示するか、指定されたキーの現在のバージョンを読み取ります。 |
+> | Microsoft.KeyVault/vaults/keys/write | 新しいキーを作成するか、既存のキーを更新します。 |
+> | Microsoft.KeyVault/vaults/keys/versions/read | 指定されたキーのバージョンを一覧表示するか、指定されたバージョンのキーを読み取ります。 |
 > | Microsoft.KeyVault/vaults/secrets/read | シークレットの値ではなく、プロパティを表示します。 |
 > | Microsoft.KeyVault/vaults/secrets/write | 新しいシークレットを作成するか、既存のシークレットの値を更新します。 |
 > | **DataAction** | **説明** |
@@ -8283,6 +8295,7 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.OperationalInsights/workspaces/query/SqlDataClassification/read | SqlDataClassification テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/SQLQueryPerformance/read | SQLQueryPerformance テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/SqlVulnerabilityAssessmentResult/read | SqlVulnerabilityAssessmentResult テーブルからデータを読み取ります |
+> | Microsoft.OperationalInsights/workspaces/query/SqlVulnerabilityAssessmentScanStatus/read | SqlVulnerabilityAssessmentScanStatus テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/StorageBlobLogs/read | StorageBlobLogs テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/StorageFileLogs/read | StorageFileLogs テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/StorageQueueLogs/read | StorageQueueLogs テーブルからデータを読み取ります |

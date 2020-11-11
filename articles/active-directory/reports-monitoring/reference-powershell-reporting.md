@@ -18,12 +18,12 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4353ed5413f76b13425a59d31bb6108542e3bd23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25f3402864e2ba873ce63acb6cedcd3f2ea018f7
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231131"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123134"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>レポート用の Azure AD PowerShell コマンドレット
 
@@ -59,7 +59,7 @@ Azure Active Directory (Azure AD) レポートを使用すると、自分の方�
 
 次の図は、このコマンドの例を示しています。 
 
-![[Data Summary]\(データの概要\) ボタン](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
+![スクリーンショットには、Get-AzureADAuditDirectoryLogs コマンドの結果が示されています。](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
 
 
 
@@ -81,7 +81,7 @@ Azure Active Directory (Azure AD) レポートを使用すると、自分の方�
 
 次の図は、このコマンドの例を示しています。 
 
-![[Data Summary]\(データの概要\) ボタン](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
+![スクリーンショットには、Get-AzureADAuditSignInLogs コマンドの結果が示されています。](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
 
 
 

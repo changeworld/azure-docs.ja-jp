@@ -44,7 +44,7 @@
   items:
     - name: コンテナー サポート
       href: cognitive-services-container-support.md
-    - name: コンテナー イメージ タグ
+    - name: コンテナー イメージ タグとリリース ノート
       href: ./containers/container-image-tags.md
     - name: コンテナーに関する FAQ
       href: ./containers/container-faq.md

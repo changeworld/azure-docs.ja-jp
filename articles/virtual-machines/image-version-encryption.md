@@ -6,30 +6,30 @@ ms.service: virtual-machines
 ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: 73a7090afe771eef82523753c4067399d9f5dd5e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: e0534fa6eaccbfb9318369e0a4224d84fa8de7c8
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048085"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347711"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>プレビュー:イメージの暗号化にカスタマー マネージド キーを使用する
 
 ギャラリー イメージはマネージド ディスクとして保存されるため、サーバー側暗号化を使用して自動的に暗号化されます。 サーバー側暗号化には、利用可能な最強のブロック暗号の 1 つである 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)が使われ、FIPS 140-2 に準拠しています。 Azure マネージド ディスクの基になっている暗号化モジュールについて詳しくは、「[暗号化 API:次世代](/windows/desktop/seccng/cng-portal)」を参照してください。
 
-プラットフォーム マネージド キーを利用すると、お使いのイメージを暗号化することも、独自のキーを使用することも、または両方を共に使用して二重に暗号化することもできます。 独自のキーを使用して暗号化を管理する場合は、イメージ内のすべてのディスクの暗号化と暗号化解除に使用する*カスタマー マネージド キー*を指定できます。 
+プラットフォーム マネージド キーを利用すると、お使いのイメージを暗号化することも、独自のキーを使用することも、または両方を共に使用して二重に暗号化することもできます。 独自のキーを使用して暗号化を管理する場合は、イメージ内のすべてのディスクの暗号化と暗号化解除に使用する *カスタマー マネージド キー* を指定できます。 
 
 カスタマー マネージド キーを使用したサーバー側暗号化には、Azure Key Vault が使用されます。 [ご使用の RSA キー](../key-vault/keys/hsm-protected-keys.md)を Key Vault にインポートするか、Azure Key Vault で新しい RSA キーを生成することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、お使いのイメージに使用するディスク暗号化が既に設定されている必要があります。
+この記事においては、イメージのレプリケート先となる各リージョンにディスク暗号化セットが既に用意されている必要があります。
 
-- カスタマー マネージド キーのみを [Azure portal](./disks-enable-customer-managed-keys-portal.md) または [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset) で使用する場合は、**サーバー側の暗号化でカスタマー マネージド キーを有効にする**方法に関するページを参照してください。
+- カスタマー マネージド キーのみを [Azure portal](./disks-enable-customer-managed-keys-portal.md) または [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset) で使用する場合は、 **サーバー側の暗号化でカスタマー マネージド キーを有効にする** 方法に関するページを参照してください。
 
-- プラットフォーム マネージド キーとユーザー マネージド キーの両方を (二重暗号化)、[Azure portal](./disks-enable-double-encryption-at-rest-portal.md) または [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md) で使用する場合は、**保存時の二重暗号化を有効にする**方法に関するページを参照してください。
+- プラットフォーム マネージド キーとユーザー マネージド キーの両方を (二重暗号化)、 [Azure portal](./disks-enable-double-encryption-at-rest-portal.md) または [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md) で使用する場合は、 **保存時の二重暗号化を有効にする** 方法に関するページを参照してください。
     > [!IMPORTANT]
     > Azure portal にアクセスするには、このリンク[https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates)を使用します。 現時点では、このリンクを使用しないと、パブリックの Azure portal には保存時の二重暗号化が表示されません。
 
@@ -134,7 +134,7 @@ New-AzGalleryImageVersion `
 
 ## <a name="cli"></a>CLI 
 
-パブリック プレビューでは、まずこの機能を登録することが必要になります。
+パブリック プレビューでは、まずこの機能を登録する必要があります。 登録には約 30 分かかります。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name SIGEncryption
@@ -211,7 +211,7 @@ az sig image-version create \
 
 1. **[イメージ バージョンを作成する]** ページで、 **[暗号化]** タブを選択します。
 2. **[暗号化の種類]** で、 **[カスタマー マネージド キーを使用した保存時の暗号化]** または **[Double encryption with platform-managed and customer-managed keys]** \(プラットフォーム マネージド キーとカスタマー マネージド キーを使用した二重暗号化\) を選択します。 
-3. イメージ内の各ディスクについて、使用する**ディスク暗号化セット**をドロップダウンから選択します。 
+3. イメージ内の各ディスクについて、使用する **ディスク暗号化セット** をドロップダウンから選択します。 
 
 ### <a name="create-the-vm"></a>VM の作成
 

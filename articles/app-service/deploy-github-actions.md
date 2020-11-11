@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure
-ms.openlocfilehash: 638dfc63b6a37bae3905703bbd5ecabaa94d2020
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6c768df964d46364a8ca501c078dbecaf1aaa21f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783081"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095562"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub Actions を使用した App Service へのデプロイ
 
@@ -74,6 +74,9 @@ GitHub Actions 用の Azure App Services での認証で推奨される方法は
 1. **[概要]** ページで、 **[発行プロファイルの取得]** オプションを選択します。
 
 1. ダウンロードしたファイルを保存します。 このファイルの内容を使用して、GitHub シークレットを作成します。
+
+> [!NOTE]
+> 2020 年 10 月の時点では、Linux Web アプリでは、 **発行プロファイルをダウンロードする前に** 、アプリ設定 `WEBSITE_WEBDEPLOY_USE_SCM` を `true` に設定する必要があります。 この要件は、今後削除される予定です。
 
 # <a name="service-principal"></a>[サービス プリンシパル](#tab/userlevel)
 
