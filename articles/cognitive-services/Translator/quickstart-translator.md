@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Translator, Translator サービス, テキストの翻訳, テキストの表記変換, 言語の検出
-ms.openlocfilehash: 8250141c2baa92478c5929a300ec7b17b8ed7131
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 68bbb31ae87ebbb84cda752c2f4a7c1bd1116dda
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322509"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369530"
 ---
 # <a name="quickstart-get-started-with-translator"></a>クイックスタート: Translator を使ってみる
 
@@ -105,7 +105,7 @@ REST を介して Translator サービスを呼び出すときは、必ず各要
   <th>説明</th>
   <tr>
     <td>認証ヘッダー</td>
-    <td>"<em>必須の要求ヘッダー</em>" です。<br/><code>Ocp-Apim-Subscription-Key</code><br/><br/>"<em>Cognitive Services リソースを使用している場合は、必須の要求ヘッダーです。Translator リソースを使用している場合は、省略可能です。</em>"<br/><code>Ocp-Apim-Subscription-Region</code><br/><br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。</td>
+    <td>"<em>必須の要求ヘッダー</em>" です。<br/><code>Ocp-Apim-Subscription-Key</code><br/><br/>"<em>Cognitive Services リソースを使用している場合は、必須の要求ヘッダーです。Translator リソースを使用している場合は、省略可能です。</em>"<br/><code>Ocp-Apim-Subscription-Region</code><br/><br/><a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
@@ -123,7 +123,7 @@ REST を介して Translator サービスを呼び出すときは、必ず各要
 
 ## <a name="keys-and-endpoints"></a>[Keys and endpoints]\(キーとエンドポイント)
 
-このページのサンプルでは、わかりやすくするために、ハードコーディングされたキーとエンドポイントを使用しています。 **終わったらコードからキーを削除し** 、 **公開しない** よう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)に関するページを参照してください。
+このページのサンプルでは、わかりやすくするために、ハードコーディングされたキーとエンドポイントを使用しています。 **終わったらコードからキーを削除し** 、 **公開しない** よう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](../cognitive-services-security.md)に関するページを参照してください。
 
 ## <a name="translate-text"></a>テキストを翻訳する 
 
@@ -686,7 +686,7 @@ print(json.dumps(response, sort_keys=True, ensure_ascii=False, indent=4, separat
 
 ### <a name="detect-source-language-without-translation"></a>翻訳せずにソース言語を検出する
 
-Translator サービスでは、翻訳を実行せずに、ソース テキストの言語を検出することもできます。 これを行うには、[`/detect`](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) エンドポイントを使用します。 
+Translator サービスでは、翻訳を実行せずに、ソース テキストの言語を検出することもできます。 これを行うには、[`/detect`](./reference/v3-0-detect.md) エンドポイントを使用します。 
 
 # <a name="c"></a>[C#](#tab/csharp)
 

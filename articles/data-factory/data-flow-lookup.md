@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/28/2020
-ms.openlocfilehash: a4fcdad0efda1ab2a43be65865e3aac59f7ef3e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/30/2020
+ms.openlocfilehash: 7ed1d9db09357b0702188c01a802600ff6350aff
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84187606"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147268"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>マッピング データ フローでの参照変換
 
@@ -27,7 +27,7 @@ ms.locfileid: "84187606"
 
 ## <a name="configuration"></a>構成
 
-![参照変換](media/data-flow/lookup1.png "参照")
+![スクリーンショットには、次のテキストで説明されているラベルを含む [参照設定] タブが示されています。](media/data-flow/lookup1.png "参照")
 
 **[Primary stream]\(プライマリ ストリーム\):** データの受信ストリーム。 このストリームは、結合の左側に相当します。
 
@@ -65,9 +65,13 @@ ms.locfileid: "84187606"
 
 ![ブロードキャスト結合](media/data-flow/broadcast.png "ブロードキャスト結合")
 
-結合変換、参照変換、および存在変換では、一方または両方のデータ ストリームがワーカー ノードのメモリに収まる場合、**ブロードキャスト**を有効にすることでパフォーマンスを最適化できます。 既定では、ある一方をブロードキャストするかどうかは、Spark エンジンによって自動的に決定されます。 ブロードキャストする側を手動で選択するには **[Fixed]\(固定\)** を選択します。
+結合変換、参照変換、および存在変換では、一方または両方のデータ ストリームがワーカー ノードのメモリに収まる場合、 **ブロードキャスト** を有効にすることでパフォーマンスを最適化できます。 既定では、ある一方をブロードキャストするかどうかは、Spark エンジンによって自動的に決定されます。 ブロードキャストする側を手動で選択するには **[Fixed]\(固定\)** を選択します。
 
 **Off** オプションを使用してブロードキャストを無効にすることは、タイムアウト エラーが発生していない限り推薦されません。
+
+## <a name="cached-lookup"></a>キャッシュされた参照
+
+同じソースに対して複数の小さい参照を実行する場合、キャッシュされたシンクと参照は、参照変換よりも適切なユース ケースである可能性があります。 キャッシュ シンクがより適切な一般的な例としては、データ ストアで最大値を検索することや、エラー コードをエラー メッセージ データベースと照合することが挙げられます。 詳細については、[キャッシュ シンク](data-flow-sink.md#cache-sink) と [キャッシュされた参照](concepts-data-flow-expression-builder.md#cached-lookup)に関するページをご覧ください。
 
 ## <a name="data-flow-script"></a>データ フローのスクリプト
 
@@ -85,7 +89,7 @@ ms.locfileid: "84187606"
 ```
 ### <a name="example"></a>例
 
-![参照変換](media/data-flow/lookup-dsl-example.png "参照")
+![スクリーンショットには、次のコードの [参照設定] タブが示されています。](media/data-flow/lookup-dsl-example.png "参照")
 
 次のコード スニペットには、上記の参照構成に対するデータ フロー スクリプトが含まれています。
 

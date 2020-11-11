@@ -11,40 +11,35 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a249d5f3c47e8e8789f91f355c791cc50341ab01
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: ec45ce7634b7bc0a8f38f354112cdc2e172f1e17
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827908"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288369"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory Identity Protection についてよく寄せられる質問
 
 ## <a name="dismiss-user-risk-known-issues"></a>"ユーザー リスクを無視する" の既知の問題
 
-従来の Identity Protection で**ユーザー リスクを無視する**と、Identity Protection のユーザーのリスク履歴のアクターが **Azure AD** に設定されます。
+従来の Identity Protection で **ユーザー リスクを無視する** と、Identity Protection のユーザーのリスク履歴のアクターが **Azure AD** に設定されます。
 
-Identity Protection で**ユーザー リスクを無視する**と、Identity Protection のユーザーのリスク履歴のアクターが **\<Admin’s name with a hyperlink pointing to user’s blade\>** に設定されます。
+Identity Protection で **ユーザー リスクを無視する** と、Identity Protection のユーザーのリスク履歴のアクターが **\<Admin’s name with a hyperlink pointing to user’s blade\>** に設定されます。
 
 現在、ユーザー リスクの無視フローに遅延が発生するという既知の問題があります。 "ユーザー リスク ポリシー" がある場合、このポリシーによって、[ユーザー リスクを無視する] をクリックしてから数分以内に、無視されたユーザーへの適用が停止されます。 ただし、無視されたユーザーの "リスク状態" が UX で更新されるまでに既知の遅延があります。 回避策としては、ブラウザー レベルでページを更新して最新のユーザーの "リスク状態" を確認します。
 
-## <a name="risky-users-report-known-issues"></a>"危険なユーザー レポート" の既知の問題
-
-**[ユーザー名]** フィールドに対するクエリでは大文字と小文字が区別されますが、 **[名前]** フィールドに対するクエリでは大文字と小文字が区別されません。
-
-**[日付を次のように表示]** を切り替えると、 **[リスクの最終更新日時]** 列が非表示になります。 列を再度追加するには、[危険なユーザー] ブレードの上部にある **[列]** をクリックします。
-
-従来の Identity Protection で**すべてのイベントを無視する**と、リスク検出の状態が **[クローズ (解決済み)]** に設定されます。
-
-## <a name="risky-sign-ins-report-known-issues"></a>"リスクの高いサインイン レポート" の既知の問題
-
-リスク検出で **[解決]** を行うと、状態が **[ユーザーが、リスク ベースのポリシーに要求された MFA に成功しました]** に設定されます。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 ### <a name="why-is-a-user-is-at-risk"></a>ユーザーがリスクにさらされるのはなぜですか?
 
 Azure AD Identity Protection のお客様であれば、[危険なユーザー](howto-identity-protection-investigate-risk.md#risky-users)のビューにアクセスして、危険度の高いユーザーをクリックしてください。 下部のドロワーの [リスクの履歴] タブに、ユーザー リスクが変化する原因となったすべてのイベントが表示されます。 そのユーザーの危険なサインインをすべて表示するには、[ユーザーの危険なサインイン] をクリックします。 このユーザーの危険の検出をすべて表示するには、[ユーザーのリスクの検出] をクリックします。
+
+## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>サインインがブロックされたのに、Identity Protection でリスクの検出が生成されなかったのはなぜですか?
+サインインはいくつかの理由でブロックされる可能性があります。 Identity Protection を使用すると、認証要求で正しい資格情報が使用されたときのリスクの検出だけが生成されることに注意してください。 ユーザーが正しくない資格情報を使用した場合は、不正なアクターによって正しい資格情報が使用されているのでない限り、資格情報の侵害のリスクがないため、Identity Protection によってフラグは設定されません。 ユーザーがサインインをブロックされても Identity Protection の検出が生成されない場合に可能性がある理由としては、次のようなものがあります。
+* IP アドレスからの悪意のあるアクティビティのため、 **IP がブロックされる可能性があります** 。 IP ブロック メッセージを見ても、資格情報が正しかったかどうかはわかりません。 IP がブロックされていて、正しい資格情報が使用されていない場合、Identity Protection の検出は生成されません。
+* **[スマート ロックアウト](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)** により、複数回失敗した後でアカウントのサインインがブロックされることがあります
+* リスク レベル以外の条件を使用して認証要求をブロックする **条件付きアクセス ポリシー** が適用されている可能性があります
 
 ### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>特定の種類の検出のレポートを取得する方法はありますか?
 

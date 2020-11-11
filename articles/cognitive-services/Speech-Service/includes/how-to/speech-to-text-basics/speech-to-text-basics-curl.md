@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/09/2020
 ms.author: v-jawe
-ms.openlocfilehash: 36d12b29054f736b65af5ac411adbc26d870b982
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0964872d03d6e321d25d51a18edbb4a6f0be8a4f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014149"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425255"
 ---
 このクイックスタートでは、Speech Service と cURL を使用して音声をテキストに変換する方法について学習します。
 
@@ -32,4 +32,4 @@ ms.locfileid: "92014149"
 
 :::code language="curl" source="~/cognitive-services-quickstart-code/curl/speech/speech-to-text.sh" id="response":::
 
-詳細については、[音声テキスト変換 REST API リファレンス](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text)を参照してください。
+詳細については、[音声テキスト変換 REST API リファレンス](../../../rest-speech-to-text.md)を参照してください。

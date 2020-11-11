@@ -1,7 +1,7 @@
 ---
 title: モデルのメモリと CPU の使用状況をプロファイルする
 titleSuffix: Azure Machine Learning
-description: モデルのメモリと CPU の使用状況をプロファイルする方法について説明します
+description: デプロイ前にモデルをプロファイルする方法について説明します。 プロファイルによって、モデルのメモリと CPU の使用率が決まります。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,12 +12,12 @@ ms.topic: conceptual
 zone_pivot_groups: aml-control-methods
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 95f35c2734e0a8dbc39d409847976b8b31716f81
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: b9ae40b3d2673961f9b84ed702f18b25b79b6d0c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998773"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320405"
 ---
 # <a name="profile-your-model-to-determine-resource-utilization"></a>モデルをプロファイルしてリソース使用状況を判断する
 

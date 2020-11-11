@@ -41,8 +41,6 @@
           href: batch-transcription.md
     - name: チュートリアル
       items:
-        - name: Blob Storage に格納された音声を認識する
-          href: quickstarts/from-blob.md
         - name: テナント モデルを使用して精度を向上させる
           href: tutorial-tenant-model.md
     - name: カスタマイズ

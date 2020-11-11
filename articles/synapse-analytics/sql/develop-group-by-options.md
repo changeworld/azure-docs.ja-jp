@@ -11,25 +11,26 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 0d9d28bacac02326ee781ca56309b7a72e921960
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d160040620fcaa60a8adc955efcc54ac3ca2609e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289171"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321438"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>Synapse SQL の GROUP BY オプション
+
 Synapse SQL によって、さまざまな GROUP BY オプションを実装してソリューションを開発できます。 
 
-## <a name="what-does-group-by-do"></a>GROUP BY で行われる操作
+## <a name="what-group-by-does"></a>GROUP BY の役割
 
 [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL 句は、行のサマリー セットにデータを集計します。
 
-SQL オンデマンドでは、あらゆる種類の GROUP BY オプションがサポートされています。 SQL プールでは、限られた数の GROUP BY オプションがサポートされています。
+サーバーレス SQL プールでは、あらゆる種類の GROUP BY オプションをサポートしています。 専用 SQL プールでは、限られた数の GROUP BY オプションをサポートしています。
 
-## <a name="group-by-options-supported-in-sql-pool"></a>SQL プールでサポートされている GROUP BY オプション
+## <a name="group-by-options-supported-in-dedicated-sql-pool"></a>専用 SQL プールでサポートされている GROUP BY オプション
 
-GROUP BY には、SQL プールではサポートされないオプションがいくつかあります。 これらのオプションには、次の回避策があります。
+GROUP BY には、専用 SQL プールではサポートされないオプションがいくつかあります。 これらのオプションには、次の回避策があります。
 
 * GROUP BY with ROLLUP
 * GROUPING SETS

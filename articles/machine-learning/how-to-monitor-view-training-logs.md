@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: aa4b55cb0700a47d9235a1d526ef1b1678d6db8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7929c80f4f90de82c516b746310b5e58819a16bc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333819"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316674"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML 実行のログとメトリックを監視および表示する
 
@@ -58,7 +58,7 @@ ms.locfileid: "91333819"
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>Jupyter Notebook ウィジェットを使用して実行を監視する
 
-**ScriptRunConfig** メソッドを使用して実行を送信するときに、[Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)を使用して実行の進行状況を確認できます。 実行の送信と同様に、このウィジェットも非同期です。また、ジョブが完了するまで 10 秒から 15 秒ごとにライブ更新を提供します。
+**ScriptRunConfig** メソッドを使用して実行を送信するときに、 [Jupyter ウィジェット](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)を使用して実行の進行状況を確認できます。 実行の送信と同様に、このウィジェットも非同期です。また、ジョブが完了するまで 10 秒から 15 秒ごとにライブ更新を提供します。
 
 実行が完了するのを待っている間、Jupyter ウィジェットを表示します。
     
@@ -105,7 +105,9 @@ RunDetails(run).show()
 
 ログに記録されたメトリックを含む、完了した実行レコードを参照するには、[Azure Machine Learning Studio](https://ml.azure.com) を使用します。
 
-**[実験]** タブに移動し、実験を選択します。 実験実行ダッシュボードでは、実行ごとに追跡されたメトリックとログを確認できます。 
+**[実験]** タブに移動します。複数の実験にわたってワークスペース内のすべての実行を表示するには、 **[すべての実行]** タブを選択します。上部のメニュー バーに実験フィルターを適用することで、特定の実験の実行をドリルダウンできます。 
+
+個々の実験ビューで、 **[すべての実験の]** タブを選択します。実験実行ダッシュボードでは、実行ごとに追跡されたメトリックとログを確認できます。 
 
 特定の実行にドリルダウンしてその出力やログを表示したり、実験のスナップショットをダウンロードして他のユーザーと実験フォルダーを共有したりできます。
 
@@ -132,4 +134,3 @@ RunDetails(run).show()
 * [Azure Machine Learning デザイナーで実験を追跡してログを有効にする](how-to-track-designer-experiments.md)方法を学習します。
 
 * 最適なモデルを登録し、チュートリアルでデプロイする方法の例については、「[Azure Machine Learning で画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)」をご覧ください。
-

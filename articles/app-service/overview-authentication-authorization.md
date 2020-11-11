@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: e984332e6e93fc9a42123d06f320a66073585bff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09460e4e38ea1842d58ecf3a9b3cd00a072c271e
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89596041"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286906"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service および Azure Functions での認証と承認
 
@@ -29,7 +29,7 @@ Azure App Service は組み込みの認証と認可のサポートを提供す�
 > 認証/承認機能は、"簡単認証" と呼ばれることもあります。
 
 > [!NOTE]
-> この機能を有効にすると、[HTTPS を適用](configure-ssl-bindings.md#enforce-https)するための App Service 構成設定に関係なく、アプリケーションへのセキュリティで保護されていない HTTP 要求が**すべて** HTTPS に自動的にリダイレクトされます。 必要に応じて、[認証設定構成ファイル](app-service-authentication-how-to.md#configuration-file-reference)の `requireHttps` 設定を使用してこれを無効にすることができますが、セキュリティで保護されていない HTTP 接続でセキュリティ トークンが送信されないように注意する必要があります。
+> この機能を有効にすると、 [HTTPS を適用](configure-ssl-bindings.md#enforce-https)するための App Service 構成設定に関係なく、アプリケーションへのセキュリティで保護されていない HTTP 要求が **すべて** HTTPS に自動的にリダイレクトされます。 必要に応じて、[認証設定構成ファイル](app-service-authentication-how-to.md#configuration-file-reference)の `requireHttps` 設定を使用してこれを無効にすることができますが、セキュリティで保護されていない HTTP 接続でセキュリティ トークンが送信されないように注意する必要があります。
 
 ネイティブ モバイル アプリに固有の情報については、[Azure App Service でのモバイル アプリ用のユーザー認証と認可](/previous-versions/azure/app-service-mobile/app-service-mobile-auth)に関する記事をご覧ください。
 
@@ -77,7 +77,7 @@ App Service が提供する組み込みのトークン ストアは、Web アプ
 
 ID トークン、アクセス トークン、更新トークンは認証されたセッションに対してキャッシュされ、関連付けられているユーザーだけがアクセスできます。  
 
-お使いのアプリでトークンを使う必要がない場合は、お使いのアプリの**認証と承認**のページでトークン ストアを無効にできます。
+お使いのアプリでトークンを使う必要がない場合は、お使いのアプリの **認証と承認** のページでトークン ストアを無効にできます。
 
 ### <a name="logging-and-tracing"></a>ログとトレース
 
@@ -104,8 +104,8 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 
 認証フローは、プロバイダーによる違いはありませんが、プロバイダーの SDK でサインインするかどうかによって異なります。
 
-- プロバイダーの SDK を使わない場合:アプリケーションは、フェデレーション サインインを App Service に委任します。 これはブラウザー アプリで通常のケースであり、プロバイダーのログイン ページをユーザーに表示することができます。 サーバーのコードがサインイン プロセスを管理するので、"_サーバー主導のフロー_" または "_サーバー フロー_" とも呼ばれます。 このケースはブラウザー アプリに適用されます。 また、Mobile Apps クライアント SDK を使ってユーザーをサインインさせるネイティブ アプリにも適用されます。その場合は、SDK が Web ビューを開いて App Service 認証でユーザーをサインインさせます。 
-- プロバイダーの SDK を使う場合:アプリケーションは、ユーザーを手動でプロバイダーにサインインさせてから、検証のために App Service に認証トークンを送信します。 これはブラウザーレス アプリで通常のケースであり、プロバイダーのサインイン ページをユーザーに表示することはできません。 アプリケーションのコードがサインイン プロセスを管理するので、"_クライアント主導のフロー_" または "_クライアント フロー_" とも呼ばれます。 このケースは、REST API、[Azure Function](../azure-functions/functions-overview.md)、JavaScript ブラウザー クライアント、およびいっそう柔軟なサインイン プロセスを必要とするブラウザー アプリに適用されます。 また、プロバイダーの SDK を使ってユーザーをサインインさせるネイティブ モバイル アプリにも適用されます。
+- プロバイダーの SDK を使わない場合:アプリケーションは、フェデレーション サインインを App Service に委任します。 これはブラウザー アプリで通常のケースであり、プロバイダーのログイン ページをユーザーに表示することができます。 サーバーのコードがサインイン プロセスを管理するので、" _サーバー主導のフロー_ " または " _サーバー フロー_ " とも呼ばれます。 このケースはブラウザー アプリに適用されます。 また、Mobile Apps クライアント SDK を使ってユーザーをサインインさせるネイティブ アプリにも適用されます。その場合は、SDK が Web ビューを開いて App Service 認証でユーザーをサインインさせます。 
+- プロバイダーの SDK を使う場合:アプリケーションは、ユーザーを手動でプロバイダーにサインインさせてから、検証のために App Service に認証トークンを送信します。 これはブラウザーレス アプリで通常のケースであり、プロバイダーのサインイン ページをユーザーに表示することはできません。 アプリケーションのコードがサインイン プロセスを管理するので、" _クライアント主導のフロー_ " または " _クライアント フロー_ " とも呼ばれます。 このケースは、REST API、[Azure Function](../azure-functions/functions-overview.md)、JavaScript ブラウザー クライアント、およびいっそう柔軟なサインイン プロセスを必要とするブラウザー アプリに適用されます。 また、プロバイダーの SDK を使ってユーザーをサインインさせるネイティブ モバイル アプリにも適用されます。
 
 > [!NOTE]
 > App Service または [Azure Functions](../azure-functions/functions-overview.md) の別の REST API への App Service 内の信頼されたブラウザー アプリからの呼び出しは、サーバー主導のフローを使って認証することができます。 詳細については、「[Azure App Service での認証と認可のカスタマイズ](app-service-authentication-how-to.md)」を参照してください。
@@ -146,6 +146,9 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 
 > [!CAUTION]
 > この方法でのアクセスの制限は、アプリへのすべての呼び出しに適用されますが、これは、多くのシングルページ アプリケーションのように、一般公開されているホーム ページを必要とするアプリには適切でない場合があります。
+
+> [!NOTE]
+> 既定では、Azure AD テナント内のすべてのユーザーが Azure AD にアプリケーションのトークンを要求できます。 定義されている一連のユーザーに対してアプリへのアクセスを制限する場合は、[Azure AD でアプリケーションを構成](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)できます。
 
 ## <a name="more-resources"></a>その他のリソース
 

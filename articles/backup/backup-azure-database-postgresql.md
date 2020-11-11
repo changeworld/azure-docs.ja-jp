@@ -4,12 +4,12 @@ description: 長期保有を指定した Azure Database for PostgreSQL のバッ
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3c326ff197f18333812438719908daced2b268bb
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: edbfdb6ea741cdb344a121acdbee3b8bd4bc743c
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173577"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927891"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>長期保有を指定した Azure Database for PostgreSQL のバックアップ (プレビュー)
 
@@ -32,7 +32,7 @@ Azure Backup と Azure Database Services を連携させることで、バック
 |サポート  |詳細  |
 |---------|---------|
 |サポートされているデプロイ   |  Azure Database for PostgreSQL スタンドアロン単一サーバー     |
-|サポート対象の Azure リージョン |  米国東部、米国東部 2、米国中南部、米国西部 |
+|サポート対象の Azure リージョン |  米国東部、米国東部 2、米国中部、米国中南部、米国西部、米国西部 2、米国中西部、ブラジル南部、カナダ中部、北ヨーロッパ、西ヨーロッパ、英国南部、英国西部、ドイツ中西部、スイス北部、スイス西部、東アジア、東南アジア、東日本、西日本、韓国中部、韓国南部、インド中部、オーストラリア東部、オーストラリア中部、オーストラリア中部 2、アラブ首長国連邦北部  |
 |サポートされる Azure PostgreSQL のバージョン    |   9.5、9.6、10、11      |
 
 ## <a name="feature-considerations-and-limitations"></a>機能の考慮事項と制限事項

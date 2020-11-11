@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4d15f78c19b5f142f8879d54a1ae32e229ce7f50
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 21c2329ec58e414ebfedaa4c49d5f690f47cac72
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896584"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913893"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>ズーム レベルとタイル グリッド
 
@@ -28,41 +28,41 @@ Azure Maps では、球面メルカトル図法の座標系 (EPSG: 3857) が使�
 
 ズーム レベル 1 では、4 つのタイル (2 × 2 個の正方形) を使用して世界地図がレンダリングされます
 
-:::image type="content" source="./media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png" alt-text="ワールドマップタイル":::
+:::image type="content" source="./media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png" alt-text="2 x 2 の地図タイル レイアウト":::
 
 ズーム レベルを 1 つ追加するごとに、タイルが 4 分割され、2<sup>ズーム</sup> x 2<sup>ズーム</sup> 個のグリッドが作成されます。 ズーム レベル 22 の場合、グリッドは 2<sup>22</sup> x 2<sup>22</sup> となり、4,194,304 x 4,194,304 個のタイル (合計 17,592,186,044,416 個のタイル) になります。
 
 Web および Android 用の Azure Maps 対話型コントロールでは、25 のズーム レベル (0 から 24 までの番号が付けられている) がサポートされます。 ただし、道路データをズーム レベルで使用できるのは、タイルが使用可能な場合のみです。
 
-次の表では、タイルのサイズが 512 ピクセルの正方形であるズーム レベルに対する値の完全な一覧を示します。
+次の表では、緯度 0 でタイルのサイズが 512 ピクセルの正方形であるズーム レベルに対する値の完全な一覧を示します。
 
 |ズーム レベル|メートル/ピクセル|メートル/タイル一辺|
 |--- |--- |--- |
-|0|156543|40075008|
-|1|78271.5|20037504|
-|2|39135.8|10018764.8|
-|3|19567.9|5009382.4|
-|4|9783.9|2504678.4|
-|5|4892|1252352|
-|6|2446|626176|
-|7|1223|313088|
-|8|611.5|156544|
-|9|305.7|78259.2|
-|10|152.9|39142.4|
-|11|76.4|19558.4|
-|12|38.2|9779.2|
-|13|19.1|4889.6|
-|14|9.6|2457.6|
-|15|4.8|1228.8|
-|16|2.4|614.4|
-|17|1.2|307.2|
-|18|0.6|152.8|
-|19|0.3|76.4|
-|20|0.15|38.2|
-|21|0.075|19.1|
-|22|0.0375|9.55|
-|23|0.01875|4.775|
-|24|0.009375|2.3875|
+| 0 | 156543 | 40075017 |
+| 1 | 78271.5 | 20037508 |
+| 2 | 39135.8 | 10018754 |
+| 3 | 19567.88 | 5009377.1 |
+| 4 | 9783.94 | 2504688.5 |
+| 5 | 4891.97 | 1252344.3 |
+| 6 | 2445.98 | 626172.1 |
+| 7 | 1222.99 | 313086.1 |
+| 8 | 611.5 | 156543 |
+| 9 | 305.75 | 78271.5 |
+| 10 | 152.87 | 39135.8 |
+| 11 | 76.44 | 19567.9 |
+| 12 | 38.219 | 9783.94 |
+| 13 | 19.109 | 4891.97 |
+| 14 | 9.555 | 2445.98 |
+| 15 | 4.777 | 1222.99 |
+| 16 | 2.3887 | 611.496 |
+| 17 | 1.1943 | 305.748 |
+| 18 | 0.5972 | 152.874 |
+| 19 | 0.14929 | 76.437 |
+| 20 | 0.14929 | 38.2185 |
+| 21 | 0.074646 | 19.10926 |
+| 22 | 0.037323 | 9.55463 |
+| 23 | 0.0186615 | 4.777315 |
+| 24 | 0.00933075 | 2.3886575 |
 
 ## <a name="pixel-coordinates"></a>ピクセル座標
 
@@ -76,7 +76,7 @@ var mapHeight = mapWidth;
 
 地図の幅と高さはズーム レベルによって異なるため、ピクセル座標もそうです。 地図の左上隅にあるピクセルは、常にピクセル座標が (0, 0) です。 地図の右下隅にあるピクセルのピクセル座標は *(width-1, height-1)* 、または前のセクションの式を参照すると *(tileSize \* 2 <sup>zoom</sup>–1, tileSize \* 2 <sup>zoom</sup>–1)* になります。 たとえば、レベル 2 で 512 の正方形のタイルを使用する場合、ピクセル座標は次のように (0, 0) から (2047, 2047) の範囲になります。
 
-:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="ワールドマップタイル":::
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="ピクセル寸法を示す地図":::
 
 緯度と経度の値、および詳細レベルを指定すると、ピクセル XY 座標は次のように計算されます。
 
@@ -102,7 +102,7 @@ var numberOfTilesHigh = numberOfTilesWide;
 
 各タイルには、左上の (0, 0) から右下の *(2 <sup>zoom</sup>–1, 2 <sup>zoom</sup>–1)* の範囲の XY 座標が与えられます。 たとえば、ズーム レベル 3 の場合、タイルの座標は次のように (0, 0) から (7, 7) までの範囲になります。
 
-:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="ワールドマップタイル":::
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="タイル座標の地図":::
 
 ピクセル XY 座標のペアを指定すると、そのピクセルを含むタイルの XY 座標を簡単に特定できます。
 
@@ -116,13 +116,13 @@ var tileY = Math.floor(pixelY / tileSize);
 
 使用するズーム レベルを決定する際は、それぞれの場所が、そのタイル上の固定された位置に配置されるということに注意してください。 つまり、特定の区域を表示するために必要なタイル数は、ズーム グリッドが世界地図上のどこに配置されるかによって左右されます。 たとえば、互いに 900 メートル離れた 2 つの地点がある場合、ズーム レベル 17 では、それらの地点間のルートを 3 つのタイルで表示できる *場合もあります* が、 西側の地点がタイルの右寄りにあり、東側の地点がタイルの左寄りにある場合は、タイルが 4 個必要になる可能性もあります。
 
-:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png" alt-text="ワールドマップタイル":::
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png" alt-text="ズームのデモ スケール":::
 
 ズーム レベルが決定したら、x と y の値を計算できます。 各ズーム グリッドの左上隅のタイルは x=0, y=0 となり、右下隅のタイルは x=2<sup>zoom-1</sup>, y=2<sup>zoom-1</sup> となります。
 
 次に示すのは、ズーム レベル 1 のズーム グリッドです。
 
-:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/api_x_y.png" alt-text="ワールドマップタイル":::
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/api_x_y.png" alt-text="ズーム レベル 1 のズーム グリッド":::
 
 ## <a name="quadkey-indices"></a>quadkey インデックス
 
@@ -143,7 +143,7 @@ quadkey = 100111 (base 2) = 213 (base 4) = "213"
 
 `Qquadkeys` には、興味深い特徴がいくつかあります。 1 つ目として、`quadkey` の長さ (桁数) は、対応するタイルのズーム レベルと同じになります。 2 つ目として、任意のタイルの `quadkey` は、その親タイルの `quadkey` (前のレベルで、それを含むタイル) で開始されます。 次の例で示すように、タイル 2 はタイル 20 から 23 の親です。
 
-:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png" alt-text="ワールドマップタイル":::
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png" alt-text="quadkey タイルのピラミッド":::
 
 最後に、`quadkeys` では、通常は XY 空間内のタイルの近接性が保持される 1 次元のインデックス キーが提供されます。 言い換えると、XY 座標が近い 2 つのタイルは、通常、`quadkeys` も比較的近くなります。 これは、隣接するタイルがグループで要求されることが多く、ディスクの読み取り回数を最小限に抑えるには、これらのタイルを同じディスク ブロックに保持することが望ましいため、データベースのパフォーマンスを最適化するために重要なことです。
 

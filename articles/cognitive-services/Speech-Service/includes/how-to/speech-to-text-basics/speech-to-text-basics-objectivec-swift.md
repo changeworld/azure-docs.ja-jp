@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 9/22/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 8eb74d13c15be619512376da326a94876563f898
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: bc67c3433c939be39453c954ada1171dc210b692
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761629"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425091"
 ---
 Swift および Objective-C 用の Speech SDK を使用して、音声からテキストへの文字起こしができます。
 
@@ -27,7 +27,4 @@ Swift および Objective-C 用の Speech SDK を使用して、音声からテ�
 * [Swift で音声を認識する (iOS)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/ios/from-microphone)
 * [その他の iOS 向け Objective-C サンプル](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios)
 
-オンラインの「[Objective-C 向け Speech SDK リファレンス](https://docs.microsoft.com/objectivec/cognitive-services/speech/)」もご覧いただけます。
-
-
-
+オンラインの「[Objective-C 向け Speech SDK リファレンス](/objectivec/cognitive-services/speech/)」もご覧いただけます。

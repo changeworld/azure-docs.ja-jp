@@ -471,6 +471,8 @@
               href: flexible-server/concepts-high-availability.md
         - name: 監視とログ
           items:
+            - name: サーバー パラメーター
+              href: flexible-server/concepts-server-parameters.md
             - name: 低速クエリ ログ
               href: flexible-server/concepts-slow-query-logs.md
             - name: 監査ログ

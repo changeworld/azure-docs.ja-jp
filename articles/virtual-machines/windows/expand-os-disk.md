@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: b739bb94911e24002b359aabfa23583ecfc9de85
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3908e5f4b7b246fe1c74e5ac4d20053242ece9f6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336005"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927687"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>仮想マシンの OS ドライブを展開する方法
 
@@ -32,8 +32,9 @@ ms.locfileid: "91336005"
 > [!IMPORTANT]
 > Azure 仮想マシンの OS またはデータ ディスクのサイズを変更するには、仮想マシンの割り当てを解除する必要があります。
 >
-> ディスクを拡張した後、大きいディスクを活用するには、[OS 内のボリュームを拡張する](#expand-the-volume-within-the-os)必要があります。
+> 既存のディスクの縮小はサポートされておらず、データ損失に至る可能性があります。
 > 
+> ディスクを拡張した後、大きいディスクを活用するには、[OS 内のボリュームを拡張する](#expand-the-volume-within-the-os)必要があります。
 
 ## <a name="resize-a-managed-disk-in-the-azure-portal"></a>Azure portal でマネージド ディスクのサイズを変更する
 
@@ -45,11 +46,11 @@ ms.locfileid: "91336005"
  
 3. **[ディスク名]** で、サイズを変更するディスクを選択します。
 
-    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="メニューの [設定] セクションで [ディスク] オプションが選択されているのを示すスクリーンショット。":::
+    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="ディスク名が選択されている [ディスク] ウィンドウを示すスクリーンショット。":::
 
 4. 左側のメニューの **[設定]** で **[構成]** を選択します。
 
-    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="メニューの [設定] セクションで [ディスク] オプションが選択されているのを示すスクリーンショット。":::
+    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="メニューの [設定] セクションで [構成] オプションが選択されているのを示すスクリーンショット。":::
 
 5. **[サイズ (GiB)]** で、必要なディスク サイズを選択します。
    
@@ -57,11 +58,11 @@ ms.locfileid: "91336005"
    > 新しいサイズには、既存のディスク サイズより大きい値を指定する必要があります。 OS ディスクで許可される最大値は、2,048 GB です。 (VHD BLOB はこのサイズよりも大きくすることができます。ただし、OS の実行に使用できるのは、最初の 2,048 GB の領域のみです。)
    > 
 
-    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="メニューの [設定] セクションで [ディスク] オプションが選択されているのを示すスクリーンショット。":::
+    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="ディスク サイズが選択された [構成] ウィンドウを示すスクリーンショット。":::
 
 6. **[保存]** を選択します。
 
-    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="メニューの [設定] セクションで [ディスク] オプションが選択されているのを示すスクリーンショット。":::
+    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="[保存] ボタンが選択された [構成] ウィンドウを示すスクリーンショット。":::
 
 
 ## <a name="resize-a-managed-disk-by-using-powershell"></a>PowerShell を使用してマネージド ディスクのサイズを変更する
@@ -230,11 +231,11 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 
 ## <a name="expand-the-volume-within-the-os"></a>OS 内のボリュームを拡張する
 
-VM のディスクを拡張したら、OS に移動して、新しい領域を含めるようにボリュームを拡張する必要があります。 パーティションを拡張するには、いくつかの方法があります。 このセクションには、**DiskPart** を使用してパーティションを拡張するために、RDP コネクションを使用した VM への接続が含まれています。
+VM のディスクを拡張したら、OS に移動して、新しい領域を含めるようにボリュームを拡張する必要があります。 パーティションを拡張するには、いくつかの方法があります。 このセクションには、 **DiskPart** を使用してパーティションを拡張するために、RDP コネクションを使用した VM への接続が含まれています。
 
 1. VM への RDP 接続を開きます。
 
-2. コマンド プロンプトを開き、「**diskpart**」と入力します。
+2. コマンド プロンプトを開き、「 **diskpart** 」と入力します。
 
 3. **DISKPART** プロンプトで「`list volume`」と入力します。 拡張するボリュームをメモします。
 

@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 2f61fef58485a905b96bdada32b915106e60d1a8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c2ee32b3ced8fdcd5f9f889c4fd0183e46ad5d8d
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425138"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346011"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Java から Queue ストレージを使用する方法
 
@@ -152,6 +152,7 @@ final String storageConnectionString =
     "AccountName=your_storage_account;" +
     "AccountKey=your_storage_account_key";
 ```
+
 この文字列を、 *ServiceConfiguration.cscfg* という名前のサービス構成ファイルに格納できます。 Microsoft Azure ロール内で実行されているアプリの場合は、 **RoleEnvironment.getConfigurationSettings** を呼び出して接続文字列にアクセスします。 次の例では、 **StorageConnectionString** という名前の *Setting* 要素から接続文字列を取得しています。
 
 ```java
@@ -600,10 +601,10 @@ catch (Exception e)
 
 これで、Queue ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 
-* [Azure Storage SDK for Java][Azure Storage SDK for Java]
-* [Azure ストレージ クライアント SDK リファレンス][Azure Storage Client SDK Reference]
-* [Azure Storage Services REST API (Azure Storage サービスの REST API)][Azure Storage Services REST API]
-* [Azure のストレージ チーム ブログ][Azure Storage Team Blog]
+- [Azure Storage SDK for Java][Azure Storage SDK for Java]
+- [Azure ストレージ クライアント SDK リファレンス][Azure Storage Client SDK Reference]
+- [Azure Storage Services REST API (Azure Storage サービスの REST API)][Azure Storage Services REST API]
+- [Azure のストレージ チーム ブログ][Azure Storage Team Blog]
 
 [Azure SDK for Java]: https://github.com/azure/azure-sdk-for-java
 [Azure Storage SDK for Java]: https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e76c5f51486f7c1673fb5359eabc99ee41130472
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0ab17e5c0a024fec938f1b588cc4ce69bf16a878
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278858"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083254"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Azure portal を使用してデバイス ID を管理する
 
@@ -143,7 +143,7 @@ BitLocker キーを表示またはコピーするには、デバイスの所有�
 1. **[Azure Active Directory]**  >  **[デバイス]** の順に移動します。
 1. **[新しいデバイスのフィルターの改善された機能をお試しください。クリックすると、プレビューが有効になります。]** というバナーを選択します。
 
-**[すべてのデバイス]** ビューに**フィルターを追加**できるようになりました。
+**[すべてのデバイス]** ビューに **フィルターを追加** できるようになりました。
 
 ## <a name="configure-device-settings"></a>デバイス設定の構成
 
@@ -163,14 +163,14 @@ Azure portal でデバイスの設定を表示または管理するには、次�
 > [!NOTE]
 > **[ユーザーはデバイスを Azure AD に参加させることができます]** 設定は、Windows 10 上の Azure AD 参加にのみ適用されます。
 
-- **[Azure AD 参加済みデバイスの追加のローカル管理者]** - デバイスに対するローカル管理者権限が付与されるユーザーを選択できます。 これらのユーザーは、Azure AD の "*デバイス管理者*" ロールに追加されます。 Azure AD のグローバル管理者とデバイスの所有者には、既定でローカル管理者権限が付与されます。 このオプションは、Azure AD Premium や Enterprise Mobility Suite (EMS) などの製品を通じて使用できる Premium Edition 機能です。
+- **[Azure AD 参加済みデバイスの追加のローカル管理者]** - デバイスに対するローカル管理者権限が付与されるユーザーを選択できます。 これらのユーザーは、Azure AD の " *デバイス管理者* " ロールに追加されます。 Azure AD のグローバル管理者とデバイスの所有者には、既定でローカル管理者権限が付与されます。 このオプションは、Azure AD Premium や Enterprise Mobility Suite (EMS) などの製品を通じて使用できる Premium Edition 機能です。
 - **[ユーザーはデバイスを Azure AD に登録できます]** - Windows 10 (個人用)、iOS、Android、および macOS デバイスを Azure AD に登録できるようにするには、この設定を構成する必要があります。 **[なし]** を選択した場合、デバイスは Azure AD に登録できません。 Microsoft Intune または Mobile Device Management (MDM) for Microsoft 365 への登録には、この登録が必要です。 これらのサービスのいずれかを構成した場合は、 **[すべて]** が選択され、 **[なし]** は選択できなくなります。
 - **[デバイスを参加させるには Multi-factor Auth が必要]** - デバイスを Azure AD に参加させるときに、ユーザーが追加の認証要素の提供を求められるようにするかどうかを選ぶことができます。 既定値は **No** です。 デバイスの登録時に多要素認証を必要とすることをお勧めします。 このサービスの多要素認証を有効にする前に、デバイスを登録するユーザーに対して多要素認証が構成されていることを確認する必要があります。 他の Azure Multi-Factor Authentication サービスの詳細については、[Azure Multi-Factor Authentication の概要](../authentication/concept-mfa-howitworks.md)に関するページを参照してください。 
 
 > [!NOTE]
 > **[デバイスを参加させるには多要素認証が必要]** 設定は、Azure AD に参加しているか Azure AD に登録されているデバイスに適用されます。 この設定は、ハイブリッド Azure AD 参加済みデバイスには適用されません。
 
-- **[デバイスの最大数]** - この設定では、Azure AD でユーザーが持つことができる、Azure AD に参加しているか Azure AD に登録されているデバイスの最大数を選択できます。 ユーザーがこのクォータに達した場合、1 つ以上の既存のデバイスを削除するまでデバイスを追加できなくなります。 既定値は **50**です。
+- **[デバイスの最大数]** - この設定では、Azure AD でユーザーが持つことができる、Azure AD に参加しているか Azure AD に登録されているデバイスの最大数を選択できます。 ユーザーがこのクォータに達した場合、1 つ以上の既存のデバイスを削除するまでデバイスを追加できなくなります。 既定値は **50** です。
 
 > [!NOTE]
 > **[デバイスの最大数]** 設定は、Azure AD に参加しているか Azure AD に登録されているデバイスに適用されます。 この設定は、ハイブリッド Azure AD 参加済みデバイスには適用されません。
@@ -194,11 +194,11 @@ Azure portal でデバイスの設定を表示または管理するには、次�
 - アクティビティのイニシエーターまたはアクター ("だれが" を指す)
 - アクティビティ ("どうした" を指す)
 
-![監査ログ](./media/device-management-azure-portal/63.png)
+:::image type="content" source="./media/device-management-azure-portal/63.png" alt-text="[デバイス] ページの [アクティビティ] セクションにあるテーブルのスクリーンショット。4 つの監査ログの日付、ターゲット、アクター、およびアクティビティが一覧表示されている。" border="false":::
 
 リスト ビューをカスタマイズするには、ツール バーの **[列]** をクリックします。
 
-![監査ログ](./media/device-management-azure-portal/64.png)
+:::image type="content" source="./media/device-management-azure-portal/64.png" alt-text="[デバイス] ページのツールバーを示しているスクリーンショット。[列] 項目が強調表示されている。" border="false":::
 
 報告されるデータを有用なものだけに絞り込むために、次のフィールドを使用して監査データをフィルター処理できます。
 
@@ -211,7 +211,7 @@ Azure portal でデバイスの設定を表示または管理するには、次�
 
 フィルターだけでなく、特定のエントリを検索することができます。
 
-![監査ログ](./media/device-management-azure-portal/65.png)
+:::image type="content" source="./media/device-management-azure-portal/65.png" alt-text="監査データのフィルター コントロールのスクリーンショット。[カテゴリ]、[アクティビティのリソースの種類]、[アクティビティ]、[期間]、[移行先]、[アクター] の各フィールドと、検索フィールドが表示されている。" border="false":::
 
 ## <a name="next-steps"></a>次のステップ
 

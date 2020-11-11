@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 9d304767cf28c0e9230c93d5b9e7504b03ed25d4
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 1ac27f8fe0c6c608bfc261e9ac2d96651c94b341
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018884"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040076"
 ---
 # <a name="animated-character-detection-preview"></a>アニメーション化されたキャラクターの検出 (プレビュー)
 
@@ -96,7 +96,7 @@ Video Indexer 有料アカウントをお持ちの場合は、最初に Custom V
 1. [Video Indexer](https://vi.microsoft.com/) Web サイトに移動してサインインします。
 1. ページの右上隅にあるコンテンツ モデルのカスタマイズ ボタンをクリックします。
 
-    ![コンテンツ モデルのカスタマイズ](./media/animated-characters-recognition/content-model-customization.png)
+    ![右上隅の [コンテンツ モデルのカスタマイズ] ボタンが選択されている [Video Indexer] ページを示しているスクリーンショット。](./media/animated-characters-recognition/content-model-customization.png)
 1. [model customization]\(モデルのカスタマイズ\) セクションの **[アニメーション化されたキャラクター]** タブにアクセスします。
 1. **[モデルを追加]** をクリックします。
 1. モデルの名前を入力し、Enter キーを押して名前を保存します。

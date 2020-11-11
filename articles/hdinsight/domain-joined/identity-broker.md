@@ -1,20 +1,20 @@
 ---
-title: 資格情報の管理に ID ブローカー (プレビュー) を使用する - Azure HDInsight
+title: Azure HDInsight ID ブローカー (HIB)
 description: ドメイン参加済みの Apache Hadoop クラスターの認証を簡略化するための Azure HDInsight ID ブローカーについて説明します。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
-ms.date: 09/23/2020
-ms.openlocfilehash: 99ea17dad4f99cdab3fb44b8031e60e6cf69879c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 11/03/2020
+ms.openlocfilehash: df4faf367951402914abb03285498e0da6f3105f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543153"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337678"
 ---
-# <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID ブローカー (プレビュー)
+# <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight ID ブローカー (HIB)
 
 この記事では、Azure HDInsight ID ブローカー機能を設定して使用する方法について説明します。 この機能を使用すると、Azure Active Directory Domain Services (Azure AD DS) の従来のパスワード ハッシュを必要とせずに多要素認証を実施しながら、Apache Ambari で最新の OAuth 認証を使用することができます。
 
@@ -45,7 +45,7 @@ HDInsight ID ブローカーにより、パスワード ハッシュを Azure AD
 
 次の図は、フェデレーション ユーザーの基本認証フローを示しています。 まず、ゲートウェイで [ROPC フロー](../../active-directory/develop/v2-oauth-ropc.md)を使用した認証が試みられます。 Azure AD に同期されたパスワード ハッシュがない場合は、フォールバックして AD FS エンドポイントを検出し、AD FS エンドポイントへアクセスすることで認証が完了します。
 
-:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="HDInsight ID ブローカーによる認証フローを示す図。":::
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="基本認証を使用したアーキテクチャを示す図。":::
 
 
 ## <a name="enable-hdinsight-id-broker"></a>HDInsight ID ブローカーを有効にする
@@ -83,7 +83,7 @@ HDInsight ID ブローカー機能によって、クラスターに追加の VM 
         {
             "autoscale": null,
             "name": "idbrokernode",
-            "targetInstanceCount": 1,
+            "targetInstanceCount": 2,
             "hardwareProfile": {
                 "vmSize": "Standard_A2_V2"
             },
@@ -100,6 +100,9 @@ HDInsight ID ブローカー機能によって、クラスターに追加の VM 
 .
 .
 ```
+
+ARM テンプレートの完全なサンプルについては、[こちら](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template)で公開されているテンプレートを参照してください。
+
 
 ## <a name="tool-integration"></a>ツールの統合
 
@@ -132,6 +135,8 @@ OAuth トークンを取得した後、クラスター ゲートウェイへの 
 ```bash
 curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By:<username@domain.com>"
 ``` 
+
+Beeline と Livy を使用する場合は、[こちら](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/HIB/HIBSamples)で提供されているサンプル コードに従い、OAuth を使用してクラスターに接続するようにクライアントをセットアップすることもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

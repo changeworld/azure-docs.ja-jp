@@ -1,6 +1,6 @@
 ---
-title: SQL オンデマンド (プレビュー) を使用して JSON ファイルに対してクエリを実行する
-description: このセクションでは、Azure Synapse Analytics の SQL オンデマンドを使用して JSON ファイルを読み取る方法について説明します。
+title: サーバーレス SQL プール (プレビュー) を使用して JSON ファイルに対してクエリを実行する
+description: このセクションでは、Azure Synapse Analytics の サーバーレス SQL プールを使用して JSON ファイルを読み取る方法について説明します。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 86ed3f005788627166c65b30398279f04388546c
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5dbad07401d77a15cd860a8ae492560c5fced819
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930851"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310618"
 ---
-# <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics の SQL オンデマンド (プレビュー) を使用して JSON ファイルに対してクエリを実行する
+# <a name="query-json-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プール (プレビュー) を使用して JSON ファイルのクエリを実行する
 
-この記事では、Azure Synapse Analytics の SQL オンデマンド (プレビュー) を使用してクエリを作成する方法について説明します。 このクエリの目的は、[OPENROWSET](develop-openrowset.md) を使用して JSON ファイルを読み取ることです。 
+この記事では、Azure Synapse Analytics のサーバーレス SQL プール (プレビュー) を使用してクエリを作成する方法について説明します。 このクエリの目的は、[OPENROWSET](develop-openrowset.md) を使用して JSON ファイルを読み取ることです。 
 - 複数の JSON ドキュメントが JSON 配列として格納されている標準の JSON ファイル。
 - JSON ドキュメントが改行文字で区切られている行区切りの JSON ファイル。 これらの種類のファイルの一般的な拡張機能には、`jsonl`、`ldjson`、および `ndjson` があります。
 

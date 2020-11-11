@@ -17,12 +17,12 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e1ac0033b7ed2de90ece481cd02d64970ff5f9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f48c26a65314e2f23513fba155f07db3805a516
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85608111"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123066"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>トラブルシューティング:Azure Active Directory アクティビティ ログにデータが見つからない 
 
@@ -32,7 +32,7 @@ ms.locfileid: "85608111"
 
 Azure Portal でいくつかの操作を実行したので、`Activity logs > Audit Logs` ブレードでこれらの操作の監査ログが表示されるはずですが、見つかりません。
 
- ![レポーティング](./media/troubleshoot-missing-audit-data/01.png)
+ ![スクリーンショットには、監査ログエントリが示されています。](./media/troubleshoot-missing-audit-data/01.png)
  
 ### <a name="cause"></a>原因
 
@@ -53,7 +53,7 @@ Azure Portal でいくつかの操作を実行したので、`Activity logs > Au
 
 最近 Azure portal にサインインしたので `Activity logs > Sign-ins` ブレードにこれらの操作のサインイン ログが表示されるはずですが、見つかりません。
 
- ![レポーティング](./media/troubleshoot-missing-audit-data/02.png)
+ ![スクリーンショットには、アクティビティ ログのサインインが示されています。](./media/troubleshoot-missing-audit-data/02.png)
  
 ### <a name="cause"></a>原因
 
@@ -74,7 +74,7 @@ Azure Portal でいくつかの操作を実行したので、`Activity logs > Au
 
 Azure portal で 30 日より前のサインイン データおよび監査データを表示できません。 なぜですか? 
 
- ![レポーティング](./media/troubleshoot-missing-audit-data/03.png)
+ ![スクリーンショットには、[日付] メニューが示されています。](./media/troubleshoot-missing-audit-data/03.png)
 
 ### <a name="cause"></a>原因
 

@@ -3,12 +3,12 @@ title: Windows 用のゲスト構成ポリシーを作成する方法
 description: Windows に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 563b178b9ba92125967c779b59a78a8e105ec744
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 325b00ac1cc747555d38b4c250709638f5e74d95
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542864"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348884"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows 用のゲスト構成ポリシーを作成する方法
 
@@ -23,8 +23,12 @@ Windows の監査時に、ゲスト構成では [Desired State Configuration](/p
 Azure または非 Azure マシンの状態を検証するための独自の構成を作成するには、次のアクションを使用します。
 
 > [!IMPORTANT]
+> Azure Government と Azure 中国環境でのゲスト構成を使用したカスタム ポリシー定義は、プレビュー機能です。
+>
 > Azure の仮想マシンで監査を実行するには、ゲスト構成拡張機能が必要です。
 > すべての Windows マシンに拡張機能を大規模にデプロイするには、ポリシー定義 `Deploy prerequisites to enable Guest Configuration Policy on Windows VMs` を割り当てます。
+> 
+> カスタム コンテンツ パッケージでは、秘密や機密情報を使用しないでください。
 
 ## <a name="install-the-powershell-module"></a>PowerShell モジュールをインストールする
 
@@ -487,9 +491,13 @@ New-GuestConfigurationPackage `
 
 ## <a name="policy-lifecycle"></a>ポリシーのライフサイクル
 
-ポリシーの更新をリリースする場合、注意が必要な 2 つのフィールドがあります。
+ポリシーの更新をリリースする場合、注意が必要な 3 つのフィールドがあります。
 
-- **バージョン** :`New-GuestConfigurationPolicy` コマンドレットを実行するときは、現在発行されているバージョンより大きいバージョン番号を指定する必要があります。 プロパティによって、更新されたパッケージをエージェントが認識できるように、ゲスト構成割り当てのバージョンが更新されます。
+> [!NOTE]
+> ゲスト構成割り当ての `version` プロパティは、Microsoft によってホストされているパッケージにのみ影響します。 カスタム コンテンツのバージョン管理のベストプラクティスは、ファイル名にバージョンを含めることです。
+
+- **バージョン** :`New-GuestConfigurationPolicy` コマンドレットを実行するときは、現在発行されているバージョンより大きいバージョン番号を指定する必要があります。
+- **contentUri** :`New-GuestConfigurationPolicy` コマンドレットを実行するときは、パッケージの場所の URI を指定する必要があります。 ファイル名にパッケージのバージョンを含めると、各リリースでこのプロパティの値が変更されます。
 - **contentHash** : このプロパティは、`New-GuestConfigurationPolicy` コマンドレットによって自動的に更新されます。 `New-GuestConfigurationPackage` によって作成されるパッケージのハッシュ値です。 このプロパティは、発行する `.zip` ファイルに対して適切なものである必要があります。 **contentUri** プロパティのみが更新された場合、拡張機能ではコンテンツ パッケージが受け入れられません。
 
 更新されたパッケージをリリースする最も簡単な方法は、この記事で説明されているプロセスを繰り返し、更新されたバージョン番号を指定することです。 このプロセスにより、すべてのプロパティが正しく更新されることが保証されます。

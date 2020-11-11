@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: ee5a88dfcc3b4ab29cd3ad8c5ff7c4701d1fced6
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 95c3ad6f689893195e0e5c17c59ab31143cf238d
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339715"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346521"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>適応型アプリケーション制御を使用して、マシンの攻撃対象領域を減らす
 
@@ -53,7 +53,7 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
 |リリース状態:|一般提供 (GA)|
 |価格:|[Azure Defender for servers](defender-for-servers-introduction.md) が必要|
 |サポートされているマシン:|![Yes](./media/icons/yes-icon.png) Windows および Linux を実行する Azure と Azure 以外のマシン<br>![Yes](./media/icons/yes-icon.png) [Azure Arc](../azure-arc/index.yml) マシン|
-|必要なロールとアクセス許可:|**セキュリティ閲覧者**および**閲覧者**のいずれのロールでも、グループと、既知の安全なアプリケーションのリストを表示できます<br>**共同作成者**および**セキュリティ管理者**のいずれのロールでも、グループと、既知の安全なアプリケーションのリストを編集できます|
+|必要なロールとアクセス許可:|**セキュリティ閲覧者** および **閲覧者** のいずれのロールでも、グループと、既知の安全なアプリケーションのリストを表示できます<br>**共同作成者** および **セキュリティ管理者** のいずれのロールでも、グループと、既知の安全なアプリケーションのリストを編集できます|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
 |||
 
@@ -61,7 +61,7 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
 
 ## <a name="enable-application-controls-on-a-group-of-machines"></a>マシンのグループに対してアプリケーション制御を有効にする
 
-類似した一連のアプリケーションを一貫して実行する、サブスクリプション内のマシンのグループが Security Center によって特定された場合は、次の推奨事項が示されます: **安全なアプリケーションの定義のために適応型アプリケーション制御をマシンで有効にする必要がある**。
+類似した一連のアプリケーションを一貫して実行する、サブスクリプション内のマシンのグループが Security Center によって特定された場合は、次の推奨事項が示されます: **安全なアプリケーションの定義のために適応型アプリケーション制御をマシンで有効にする必要がある** 。
 
 推奨事項を選択するか、適応型アプリケーション制御ページを開いて、推奨される既知の安全なアプリケーションのリストとマシンのグループを表示します。
 
@@ -78,7 +78,7 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
     - **推奨** - 同じアプリケーションを一貫して実行し、許可リストが構成されていないマシンのグループ。 これらのグループに対して適応型アプリケーション制御を有効にすることをお勧めします。
     
       > [!TIP]
-      > "REVIEWGROUP" というプレフィックスが付いたグループ名が表示される場合は、部分的に一貫性のあるアプリケーションのリストがあるマシンが含まれます。 Security Center でパターンは表示できませんが、このグループを参照し、「[グループの適応型アプリケーション制御規則の編集](#edit-a-groups-adaptive-application-controls-rule)」の説明に従って、いくつかの適応型アプリケーション制御規則を "_お客様_" が手動で定義できるかどうかを確認することが推奨されます。
+      > "REVIEWGROUP" というプレフィックスが付いたグループ名が表示される場合は、部分的に一貫性のあるアプリケーションのリストがあるマシンが含まれます。 Security Center でパターンは表示できませんが、このグループを参照し、「 [グループの適応型アプリケーション制御規則の編集](#edit-a-groups-adaptive-application-controls-rule)」の説明に従って、いくつかの適応型アプリケーション制御規則を " _お客様_ " が手動で定義できるかどうかを確認することが推奨されます。
       >
       > 「[グループ間でマシンを移動する](#move-a-machine-from-one-group-to-another)」の説明に従って、このグループから他のグループにマシンを移動することもできます。
 
@@ -135,7 +135,7 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
 
       ![カスタム規則を追加する](./media/security-center-adaptive-application/adaptive-application-add-custom-rule.png)
 
-   1. 既知の安全なパスを定義する場合は、 **[規則の種類]** を [パス] に変更します。 パスにはワイルドカードを含めることができます。
+   1. 既知の安全なパスを定義する場合は、 **[規則の種類]** を [パス] に変更して、1 つのパスを入力します。 パスにはワイルドカードを含めることができます。
    
       > [!TIP]
       > パスのワイルドカードが役立つ場合があるシナリオには、次のようなものがあります。
@@ -156,12 +156,12 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
 
     このウィンドウには、グループの名前 (変更可能)、OS の種類、場所、およびその他の関連する詳細が表示されます。
 
-    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="Azure ダッシュボードから適応型アプリケーション制御を開く" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
+    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="適応型アプリケーション制御の [グループ設定] ページ" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
 
     > [!IMPORTANT]
-    > [ファイルの種類の保護モード] 設定の **[強制]** オプションは、**すべての**シナリオで淡色表示されます。 現時点では、利用できる強制オプションはありません。 
+    > [ファイルの種類の保護モード] 設定の **[強制]** オプションは、 **すべての** シナリオで淡色表示されます。 現時点では、利用できる強制オプションはありません。 
     >
-    > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="Azure ダッシュボードから適応型アプリケーション制御を開く":::
+    > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="ファイル保護の強制モードは永続的に淡色表示されます。利用できる強制オプションはありません。":::
 
 1. 必要に応じて、グループの名前やファイルの種類の保護モードを変更します。
 
@@ -232,7 +232,7 @@ REST API から使用できる関数をいくつか以下に示します。
 
 * **Get** を使用すると、すべての推奨データ (つまり、マシン、発行元またはパスの規則のリスト) を含む JSON が取得されます。
 
-* **Put** を使用すると、規則が構成されます (この要求の本文として、**Get** で取得した JSON を使用)。
+* **Put** を使用すると、規則が構成されます (この要求の本文として、 **Get** で取得した JSON を使用)。
  
    > [!IMPORTANT]
    > **Put** 関数には、Get コマンドによって返される JSON に含まれるものより少ない数のパラメーターが必要です。

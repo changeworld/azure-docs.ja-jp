@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 340b0ed02821fb98f271539ac39e0ccad8581082
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27069cf38da2567a3af3ed0fb65baead43665186
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87904005"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369479"
 ---
 # <a name="translator-30-breaksentence"></a>Translator 3.0:BreakSentence
 
@@ -35,18 +35,18 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 | クエリ パラメーター | 説明 |
 | -------| ----------- |
-| api-version <img width=200/>   | "**必須のクエリ パラメーター**" です。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。 |
-| language | "**省略可能なクエリ パラメーター**" です。<br/>入力テキストの言語を示す言語タグ。 コードを指定しないと、言語の自動検出が適用されます。 |
-| script    | "**省略可能なクエリ パラメーター**" です。<br/>入力テキストで使われているスクリプトを示すスクリプト タグ。 スクリプトを指定しないと、言語の既定のスクリプトと見なされます。  | 
+| api-version <img width=200/>   | " **必須のクエリ パラメーター** " です。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。 |
+| language | " **省略可能なクエリ パラメーター** " です。<br/>入力テキストの言語を示す言語タグ。 コードを指定しないと、言語の自動検出が適用されます。 |
+| script    | " **省略可能なクエリ パラメーター** " です。<br/>入力テキストで使われているスクリプトを示すスクリプト タグ。 スクリプトを指定しないと、言語の既定のスクリプトと見なされます。  | 
 
 要求ヘッダーには次のものがあります。
 
 | ヘッダー | 説明 |
 | ------- | ----------- |
-| 認証ヘッダー <img width=200/>  | "**必須の要求ヘッダー**" です。<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。 |
-| Content-Type | "**必須の要求ヘッダー**" です。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json` |
-| Content-Length    | "**必須の要求ヘッダー**" です。<br/>要求本文の長さです。  | 
-| X-ClientTraceId   | **オプション**。<br/>要求を一意に識別する、クライアントで生成された GUID。 クエリ パラメーター `ClientTraceId` を使ってクエリ文字列内にトレース ID を含める場合、このヘッダーを省略できることに注意してください。  | 
+| 認証ヘッダー <img width=200/>  | " **必須の要求ヘッダー** " です。<br/><a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。 |
+| Content-Type | " **必須の要求ヘッダー** " です。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json` |
+| Content-Length    | " **必須の要求ヘッダー** " です。<br/>要求本文の長さです。  | 
+| X-ClientTraceId   | **オプション** 。<br/>要求を一意に識別する、クライアントで生成された GUID。 クエリ パラメーター `ClientTraceId` を使ってクエリ文字列内にトレース ID を含める場合、このヘッダーを省略できることに注意してください。  | 
 
 ## <a name="request-body"></a>要求本文
 
@@ -141,7 +141,7 @@ JSON 応答の例を次に示します。
   </tr>
 </table> 
 
-エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ [v3 Translator のリファレンス ページ](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)で、一般的なエラー コードを確認できます。 
+エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ [v3 Translator のリファレンス ページ](./v3-0-reference.md#errors)で、一般的なエラー コードを確認できます。 
 
 ## <a name="examples"></a>例
 
@@ -150,4 +150,3 @@ JSON 応答の例を次に示します。
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'How are you? I am fine. What did you do today?'}]"
 ```
-

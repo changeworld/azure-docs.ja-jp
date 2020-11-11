@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: 0f0bfa693086a3a097df219132d696a1d04e6f56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03c1badf984fb150631c157f3fdc07856b60e965
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87286038"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088899"
 ---
 # <a name="what-is-ip-address-1686312916"></a>IP アドレス 168.63.129.16 とは
 
@@ -32,15 +32,20 @@ IP アドレス 168.63.129.16 は、Azure プラットフォーム リソース�
 - VM が、Azure の DHCP サービスから動的 IP アドレスを取得できるようにします。
 - PaaS ロールに対するゲスト エージェントのハートビート メッセージを有効にする。
 
+> [!NOTE]
+> 非仮想ネットワーク シナリオ (クラシック) の場合、168.63.129.16 ではなくプライベート IP アドレスが使用されます。 このプライベート IP アドレスは、DHCP を介して動的に検出されます。 168.63.129.16 に固有のファイアウォール規則は、必要に応じて調整する必要があります。
+
 ## <a name="scope-of-ip-address-1686312916"></a>IP アドレス 168.63.129.16 のスコープ
 
 パブリック IP アドレス 168.63.129.16 は、すべてのリージョンおよびすべての国内クラウドで使用されます。 この特殊なパブリック IP アドレスは Microsoft が所有しており、変化しません。 (VM 内のアウトバウンド方向の) ローカル ファイアウォール ポリシーで、この IP アドレスを許可することをお勧めします。 この特殊な IP アドレスからメッセージを受信できるのは内部 Azure プラットフォームだけであるため、この IP アドレスとリソースの間の通信は安全です。 このアドレスがブロックされると、さまざまなシナリオで予期しない動作が発生する場合があります。 168.63.129.16 は[ホスト ノードの仮想 IP](../virtual-network/security-overview.md#azure-platform-considerations) であるため、ユーザー定義ルートの対象にはなりません。
 
-- VM エージェントでは、ポート 80、443、32526 を介した WireServer (168.63.129.16) とのアウトバウンド通信が必要です。 これらは、VM 上のローカル ファイアウォールでは開いている必要があります。 これらのポート上での 168.63.129.16 との通信は、構成されたネットワーク セキュリティ グループの対象ではありません。
-- 168.63.129.16 では、VM に DNS サービスを提供できます。 これが望ましくない場合、このトラフィックは VM 上のローカル ファイアウォールでブロックすることができます。 既定では、[AzurePlatformDNS](../virtual-network/service-tags-overview.md#available-service-tags) サービス タグを活用して具体的にターゲットを絞らない限り、DNS 通信は構成されたネットワーク セキュリティ グループの対象になりません。 NSG 経由での Azure DNS への DNS トラフィックをブロックするには、[AzurePlatformDNS](../virtual-network/service-tags-overview.md#available-service-tags) へのトラフィックを拒否するアウトバウンド規則を作成し、"宛先ポート範囲" として "*" を、プロトコルとして "すべて" を指定します。
-- VM がロード バランサー バックエンド プールの一部である場合、[正常性プローブ](../load-balancer/load-balancer-custom-probe-overview.md)通信を、168.63.129.16 から発信できるようにする必要があります。 既定のネットワーク セキュリティ グループの構成には、この通信を許可する規則があります。 この規則では、[AzureLoadBalancer](../virtual-network/service-tags-overview.md#available-service-tags) サービス タグが活用されます。 必要に応じて、このトラフィックは、ネットワーク セキュリティ グループを構成することによってブロックできます。ただし、これによって失敗するプローブが発生します。
+- VM エージェントでは、ポート 80/tcp と 32526/tcp を介した WireServer (168.63.129.16) とのアウトバウンド通信が必要です。 これらは、VM 上のローカル ファイアウォールでは開いている必要があります。 これらのポート上での 168.63.129.16 との通信は、構成されたネットワーク セキュリティ グループの対象ではありません。
 
-仮想ネットワーク以外のシナリオ (クラシック) では、正常性プローブのソースはプライベート IP であり、168.63.129.16 は使用されません。
+- 168.63.129.16 では、VM に DNS サービスを提供できます。 これが望ましくない場合は、168.63.129.16 ポート 53/udp および 53/tcp へのアウトバウンド トラフィックを VM 上のローカル ファイアウォールでブロックできます。
+
+  既定では、[AzurePlatformDNS](../virtual-network/service-tags-overview.md#available-service-tags) サービス タグを活用して具体的にターゲットを絞らない限り、DNS 通信は構成されたネットワーク セキュリティ グループの対象になりません。 NSG 経由での Azure DNS への DNS トラフィックをブロックするには、[AzurePlatformDNS](../virtual-network/service-tags-overview.md#available-service-tags) へのトラフィックを拒否するアウトバウンド規則を作成し、"宛先ポート範囲" として "*" を、プロトコルとして "すべて" を指定します。
+
+- VM がロード バランサー バックエンド プールの一部である場合、[正常性プローブ](../load-balancer/load-balancer-custom-probe-overview.md)通信を、168.63.129.16 から発信できるようにする必要があります。 既定のネットワーク セキュリティ グループの構成には、この通信を許可する規則があります。 この規則では、[AzureLoadBalancer](../virtual-network/service-tags-overview.md#available-service-tags) サービス タグが活用されます。 必要に応じて、このトラフィックは、ネットワーク セキュリティ グループを構成することによってブロックできます。ただし、これによって失敗するプローブが発生します。
 
 ## <a name="next-steps"></a>次のステップ
 

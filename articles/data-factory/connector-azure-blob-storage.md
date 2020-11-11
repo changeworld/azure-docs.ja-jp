@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/12/2020
-ms.openlocfilehash: af03dde724b4f1ec75c9505bb2f9311ad09f5fd0
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 10/28/2020
+ms.openlocfilehash: 5969c449afe203ec9a014d2da78b56eeeb837590
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635917"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913366"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure BLOB ストレージのデータをコピーおよび変換する
 
@@ -48,9 +48,6 @@ ms.locfileid: "92635917"
 - そのままの BLOB のコピー、または[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用した BLOB の解析/生成。
 - [コピー中のファイル メタデータの保持](#preserving-metadata-during-copy)。
 
->[!IMPORTANT]
->Azure Storage のファイアウォール設定で **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** オプションを有効にした場合で、なおかつ、Azure Integration Runtime を使用して BLOB ストレージに接続する場合は、 [マネージド ID 認証](#managed-identity)を使用する必要があります。
-
 ## <a name="get-started"></a>はじめに
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
@@ -67,7 +64,8 @@ ms.locfileid: "92635917"
 - [Azure リソース認証用のマネージド ID](#managed-identity)
 
 >[!NOTE]
->PolyBase を使用して Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータを読み込むときに、ソースまたはステージング BLOB ストレージが Azure Virtual Network エンドポイントで構成されている場合、PolyBase で要求されるマネージド ID 認証を使用する必要があります。 セルフホステッド統合ランタイム バージョン 3.18 以降を使用する必要もあります。 構成の前提条件の詳細については、「[マネージド ID の認証](#managed-identity)」を参照してください。
+>- Azure Storage ファイアウォールで有効にした **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** オプションを利用することで、パブリック Azure 統合ランタイムを使用して BLOB ストレージに接続する場合は、[マネージド ID 認証](#managed-identity)を使用する必要があります。
+>- PolyBase または COPY ステートメントを使用して Azure Synapse Analytics にデータを読み込むときに、ソースまたはステージング BLOB ストレージが Azure Virtual Network エンドポイントで構成されている場合は、Synapse の要求に従ってマネージド ID 認証を使用する必要があります。 構成の前提条件の詳細については、「[マネージド ID の認証](#managed-identity)」を参照してください。
 
 >[!NOTE]
 >Azure HDInsight および Azure Machine Learning のアクティビティは、Azure BLOB ストレージ アカウント キーを使用する認証のみをサポートします。
@@ -286,7 +284,7 @@ Azure Storage 認証の全般的な情報については、「[Azure Active Dire
     - **シンクとして** 、 **アクセス制御 (IAM)** で、少なくとも **ストレージ BLOB データ共同作成者** のロールを付与します。
 
 >[!IMPORTANT]
->PolyBase を使用して (ソースまたはステージングとしての) BLOB ストレージから Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータを読み込む場合、BLOB ストレージにマネージド ID 認証を使用するときは、必ず[こちらのガイダンス](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)の手順 1 と 2 にも従ってください。 これらの手順により、サーバーが Azure AD に登録され、ストレージ BLOB データ共同作成者のロールがサーバーに割り当てられます。 残りの処理は Data Factory によって行われます。 Azure Virtual Network エンドポイントで BLOB ストレージを構成した場合、PolyBase を使用してそこからデータを読み込むには、PolyBase で要求されるマネージド ID 認証を使用する必要があります。
+>PolyBase または COPY ステートメントを使用して (ソースまたはステージングとしての) BLOB ストレージから Azure Synapse Analytics にデータを読み込む場合に、BLOB ストレージに対してマネージド ID 認証を使用するときは、必ず[こちらのガイダンス](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)の手順 1 から 3 にも従ってください。 これらの手順により、サーバーが Azure AD に登録され、ストレージ BLOB データ共同作成者のロールがサーバーに割り当てられます。 残りの処理は Data Factory によって行われます。 Azure Virtual Network エンドポイントを使用して Blob Storage を構成する場合は、さらに Synapse の要求に従って、Azure Storage アカウントで、 **[ファイアウォールと仮想ネットワーク]** 設定メニューの **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** をオンにする必要があります。
 
 Azure BLOB ストレージのリンクされたサービスでは、次のプロパティがサポートされます。
 
@@ -377,7 +375,7 @@ Azure BLOB ストレージでは、形式ベースのコピー ソースの `sto
 | プロパティ                 | 説明                                                  | 必須                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | `storeSettings` の **type** プロパティは **AzureBlobStorageReadSettings** に設定する必要があります。 | はい                                           |
-| **_コピーするファイルを特定する:_* _ |  |  |
+| "**_コピーするファイルを特定する:_* "_ |  |  |
 | オプション 1: 静的パス<br> | データセットに指定されている所定のコンテナーまたはフォルダー/ファイル パスからコピーします。 コンテナーまたはフォルダーからすべての BLOB をコピーする場合は、さらに `wildcardFileName` を `_` として指定します。 |  |
 | オプション 2: BLOB プレフィックス<br>- prefix | ソース オブジェクトをフィルター処理するためにデータセット内に構成されている、特定のコンテナー下の BLOB 名のプレフィックス。 名前が `container_in_dataset/this_prefix` で始まる BLOB が選択されます。 ワイルドカード フィルターより優れたパフォーマンスを提供する、BLOB ストレージ用のサービス側フィルターを利用します。 | いいえ                                                          |
 | オプション 3: ワイルドカード<br>- wildcardFolderPath | ソース フォルダーをフィルター処理するためにデータセットで構成されている、特定のコンテナーの下のワイルドカード文字を含むフォルダーのパス。 <br>使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。 フォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 <br>「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | いいえ                                            |
@@ -388,8 +386,8 @@ Azure BLOB ストレージでは、形式ベースのコピー ソースの `sto
 | deleteFilesAfterCompletion | 宛先ストアに正常に移動した後、バイナリ ファイルをソース ストアから削除するかどうかを示します。 ファイルの削除はファイルごとに行われるので、コピー操作が失敗した場合、一部のファイルが既に宛先にコピーされソースからは削除されているが、他のファイルはまだソース ストアに残っていることがわかります。 <br/>このプロパティは、バイナリ ファイルのコピー シナリオでのみ有効です。 既定値: false。 |いいえ |
 | modifiedDatetimeStart    | ファイルは、属性 (最終変更日時) に基づいてフィルター処理されます。 <br>最終変更時刻が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の間に含まれる場合は、ファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br> プロパティは、ファイル属性フィルターをデータセットに適用しないことを意味する **NULL** にすることができます。  `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が **NULL** の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。  `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が **NULL** の場合は、最終変更日時属性が datetime 値未満であるファイルが選択されます。<br/>`fileListPath` を構成する場合、このプロパティは適用されません。 | いいえ                                            |
 | modifiedDatetimeEnd      | 上記と同じです。                                               | いいえ                                            |
-| enablePartitionDiscovery | パーティション分割されているファイルの場合、ファイル パスからのパーティションを解析し、追加のソース列として追加するかどうかを指定します。<br/>指定できる値は **false** (既定値) と **true** です。 | いいえ                                            |
-| partitionRootPath | パーティション検出が有効になっている場合、パーティション分割されているフォルダーをデータ列として読み取る目的で絶対ルート パスを指定します。<br/><br/>指定されない場合、既定では、<br/>- ソースでファイルのデータセットまたはリストにあるファイル パスを使用するとき、パーティション ルート パスはデータセットに構成されているパスになります。<br/>- ワイルドカード フォルダー フィルターを使用する場合、パーティションのルート パスは最初のワイルドカードの前のサブパスです。<br/>- プレフィックスを使用する場合、パーティションのルート パスは最後の "/" の前のサブパスです。 <br/><br/>たとえば、データセット内のパスを "root/folder/year=2020/month=08/day=27" として構成するとします。<br/>- パーティション ルート パスを "root/folder/year=2020" として指定する場合、コピー アクティビティによって、ファイル内の列に加え、さらに 2 つの列、`month` と `day` がそれぞれ値 "08" と "27" で生成されます。<br/>- パーティション ルート パスが指定されない場合、追加の列は生成されません。 | いいえ                                            |
+| enablePartitionDiscovery | パーティション分割されているファイルの場合は、ファイル パスのパーティションを解析し、それを追加のソース列として追加するかどうかを指定します。<br/>指定できる値は **false** (既定値) と **true** です。 | いいえ                                            |
+| partitionRootPath | パーティション検出が有効になっている場合は、パーティション分割されたフォルダーをデータ列として読み取るための絶対ルート パスを指定します。<br/><br/>これが指定されていない場合は、既定で次のようになります。<br/>- ソース上のデータセットまたはファイルの一覧内のファイル パスを使用する場合、パーティションのルート パスはそのデータセットで構成されているパスです。<br/>- ワイルドカード フォルダー フィルターを使用する場合、パーティションのルート パスは最初のワイルドカードの前のサブパスです。<br/>- プレフィックスを使用する場合、パーティションのルート パスは最後の "/" の前のサブパスです。 <br/><br/>たとえば、データセット内のパスを "root/folder/year=2020/month=08/day=27" として構成するとします。<br/>- パーティションのルート パスを "root/folder/year=2020" として指定した場合は、コピー アクティビティによって、ファイル内の列とは別に、それぞれ "08" と "27" の値を持つ `month` と `day` という 2 つの追加の列が生成されます。<br/>- パーティションのルート パスが指定されない場合、追加の列は生成されません。 | いいえ                                            |
 | maxConcurrentConnections | ストレージへのコンカレント接続数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ                                            |
 
 > [!NOTE]

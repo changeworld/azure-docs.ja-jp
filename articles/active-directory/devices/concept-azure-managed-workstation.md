@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84d0731a67ac47b8b0fc73cb485857458b3febbb
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 6837bbdb63caf0fb1ecb3f6e520d5f3623483b44
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093312"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083237"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>セキュリティで保護された Azure マネージド ワークステーションを理解する
 
@@ -94,12 +94,15 @@ ms.locfileid: "92093312"
 
 このソリューションでは、[Microsoft Autopilot](/windows/deployment/windows-autopilot/windows-autopilot) テクノロジと最新の技術要件を満たすハードウェアを使用して、信頼のルートをデプロイします。 ワークステーションをセキュリティで保護するため、Autopilot では Microsoft OEM 用に最適化された Windows 10 デバイスが利用できます。 これらのデバイスは、製造元から既知の正常な状態で提供されます。 Autopilot では、セキュリティで保護されていない可能性があるデバイスを再イメージ化する代わりに、Windows デバイスを “ビジネスに即応する” 状態に変換できます。 設定とポリシーを適用し、アプリをインストールし、Windows 10 のエディションも変更します。 たとえば、Autopilot では、高度な機能が使用できるように、デバイスの Windows インストールを Windows 10 Pro から Windows 10 Enterprise に変更することができます。
 
-![セキュリティで保護されたワークステーションのレベル](./media/concept-azure-managed-workstation/supplychain.png)
+:::image type="complex" source="./media/concept-azure-managed-workstation/supplychain.png" alt-text="セキュリティで保護されたワークステーションのライフ サイクルを示している図。" border="false":::
+図の上部近くに、デバイス ベンダーが示されている。 そのベンダーから出ている矢印は、ワークステーションを購入した顧客と、"Fulfill and Deliver (対応と配送)" というラベルの付いたトラックを指している。 そのトラックから出ている矢印は、"Deploy (デプロイ)" というラベルの付いたワークステーションを使用している人物の絵を指している。 その人物から、セルフ サービス エクスペリエンスというラベルの付いた矢印が、"Ready for Business (ビジネスに即応)" というラベルの付いた画面に向かって伸びている。 その画面の下に、"Managed Secured (セキュリティで保護された管理)" というラベルの付いたアイコンが図示されている。 画面から、"Steady State Usage (定常状態の使用)" と "Manage and Keep Current (管理して最新を保つ)" というラベルの付いた矢印が、"End of Life (サポート終了)" アイコンと "Break-Fix/Reset (故障 - 修理/再設定)" アイコンを指している。 最後の矢印は、"Break-Fix (故障 - 修理)" アイコンから "Ready for Business (ビジネスに即応)" 画面に戻っている。
+:::image-end:::
 
 ## <a name="device-roles-and-profiles"></a>デバイスのロールとプロファイル
 
-このガイダンスでは、ユーザー、開発者、および IT スタッフにとってより安全性の高いソリューションを作成するのに役立ついくつかのセキュリティ プロファイルとロールについて取り上げています。 これらのプロファイルは、強化された、またはセキュリティで保護されたワークステーションからメリットが得られる一般的なユーザーのために、使いやすさとリスクのバランスを取ります。 ここで提供されている設定の構成は、業界で広く認められている標準に基づいています。 このガイダンスでは、Windows 10 を強化し、デバイスまたはユーザーの侵害に関連するリスクを軽減する方法を示します。 最新のハードウェア テクノロジと信頼のルート デバイスを活用するには、[デバイス正常性構成証明](https://techcommunity.microsoft.com/t5/Intune-Customer-Success/Support-Tip-Using-Device-Health-Attestation-Settings-as-Part-of/ba-p/282643)を使用します。これは、**高セキュリティ** プロファイルで開始すると有効になります。 この機能は、デバイスの初期ブート中に攻撃者が永続性を維持できないようにするために用意されています。 セキュリティ機能とリスクの管理に役立つポリシーとテクノロジを使用します。
-![セキュリティで保護されたワークステーションのレベル](./media/concept-azure-managed-workstation/seccon-levels.png)
+このガイダンスでは、ユーザー、開発者、および IT スタッフにとってより安全性の高いソリューションを作成するのに役立ついくつかのセキュリティ プロファイルとロールについて取り上げています。 これらのプロファイルは、強化された、またはセキュリティで保護されたワークステーションからメリットが得られる一般的なユーザーのために、使いやすさとリスクのバランスを取ります。 ここで提供されている設定の構成は、業界で広く認められている標準に基づいています。 このガイダンスでは、Windows 10 を強化し、デバイスまたはユーザーの侵害に関連するリスクを軽減する方法を示します。 最新のハードウェア テクノロジと信頼のルート デバイスを活用するには、 [デバイス正常性構成証明](https://techcommunity.microsoft.com/t5/Intune-Customer-Success/Support-Tip-Using-Device-Health-Attestation-Settings-as-Part-of/ba-p/282643)を使用します。これは、 **高セキュリティ** プロファイルで開始すると有効になります。 この機能は、デバイスの初期ブート中に攻撃者が永続性を維持できないようにするために用意されています。 セキュリティ機能とリスクの管理に役立つポリシーとテクノロジを使用します。
+
+:::image type="content" source="./media/concept-azure-managed-workstation/seccon-levels.png" alt-text="ロール (ユーザーや開発者など)、プロファイル (基本や拡張など)、セキュリティ制御 (アプリやアクション、機能など) を示している図。" border="false":::
 
 * **基本的なセキュリティ** – 標準的なマネージド ワークステーションは、ほとんどの自宅や小規模企業で手始めとして使用するのに適しています。 これらのデバイスは Azure AD に登録され、Intune で管理されます。 このプロファイルは、ユーザーにアプリケーションの実行と Web サイトの閲覧を許可します。 [Microsoft Defender](https://www.microsoft.com/windows/comprehensive-security) などのマルウェア対策ソリューションを有効にする必要があります。
 

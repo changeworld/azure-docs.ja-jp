@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/09/2020
 ms.author: v-jawe
-ms.openlocfilehash: 029cb1e59876eb01c609ef8b7ba0412ed35a2a1b
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 8a877e1773431053c5ad7344209076cb868a0ee3
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940747"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94424904"
 ---
 このクイックスタートでは、Speech Service と cURL を使用してテキストを音声に変換する方法について学習します。
 
@@ -26,7 +26,7 @@ ms.locfileid: "91940747"
 - Speech Service のリージョン。
 
 次の値を変更することもできます。
-- オーディオ出力形式を制御する `X-Microsoft-OutputFormat` ヘッダー値。 サポートされているオーディオ出力形式の一覧については、[REST API リファレンス](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech#audio-outputs)を参照してください。
+- オーディオ出力形式を制御する `X-Microsoft-OutputFormat` ヘッダー値。 サポートされているオーディオ出力形式の一覧については、[REST API リファレンス](../../../rest-text-to-speech.md#audio-outputs)を参照してください。
 - 出力音声。 対象の Speech エンドポイントで使用可能な音声の一覧を取得するには、次のセクションを参照してください。
 - 出力ファイル。 この例では、サーバーからの応答を `output.wav` という名前のファイルに送信します。
 

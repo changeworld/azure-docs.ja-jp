@@ -1,7 +1,7 @@
 ---
 title: REST を使用して ML リソースを管理する
 titleSuffix: Azure Machine Learning
-description: REST API を使用して Azure ML リソースを作成、実行、削除する方法について説明します
+description: REST API を使用して、ワークスペースなどの Azure Machine Learning リソースを作成、実行、および削除する方法、またはモデルを登録する方法について説明します。
 author: lobrien
 ms.author: laobri
 services: machine-learning
@@ -10,18 +10,18 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b733fbc44deefe46e3496e288ebad525346ef005
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09a0580adbe6d51e4de811a57ee17203d65a2435
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322310"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316905"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>REST を使用して Azure ML リソースの作成、実行、削除を行う
 
 
 
-Azure ML リソースを管理するには、いくつかの方法があります。 [ポータル](https://portal.azure.com/)、[コマンド ライン インターフェイス](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)、または [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) を使用できます。 または、REST API を選択することもできます。 REST API では、標準的な方法で HTTP 動詞を使用して、リソースの作成、取得、更新、および削除を行います。 REST API は、HTTP 要求を作成できるすべての言語またはツールで使用できます。 REST は構造がわかりやすいため、多くの場合、スクリプト環境や MLOps オートメーションに適しています。 
+Azure ML リソースを管理するには、いくつかの方法があります。 [ポータル](https://portal.azure.com/)、[コマンド ライン インターフェイス](/cli/azure/?preserve-view=true&view=azure-cli-latest)、または [Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) を使用できます。 または、REST API を選択することもできます。 REST API では、標準的な方法で HTTP 動詞を使用して、リソースの作成、取得、更新、および削除を行います。 REST API は、HTTP 要求を作成できるすべての言語またはツールで使用できます。 REST は構造がわかりやすいため、多くの場合、スクリプト環境や MLOps オートメーションに適しています。 
 
 この記事では、次のことについて説明します。
 
@@ -35,10 +35,10 @@ Azure ML リソースを管理するには、いくつかの方法がありま�
 
 ## <a name="prerequisites"></a>前提条件
 
-- 管理者権限を持っている **Azure サブスクリプション**。 そのようなサブスクリプションがない場合は、[無料または有料の個人用サブスクリプション](https://aka.ms/AMLFree)をお試しください
-- [Azure Machine Learning ワークスペース](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
-- 管理 REST 要求でサービス プリンシパル認証が使用されている。 ワークスペースにサービス プリンシパルを作成するには、[Azure Machine Learning のリソースとワークフローの認証を設定する方法](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)に関する記事に記載されている手順に従ってください
-- **curl** ユーティリティ。 **curl** プログラムは、[Linux 用 Windows サブシステム](https://aka.ms/wslinstall/)または任意の UNIX ディストリビューションで使用できます。 PowerShell では、**curl** は **Invoke-WebRequest** の別名であり、`curl -d "key=val" -X POST uri` は `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri` になります。 
+- 管理者権限を持っている **Azure サブスクリプション** 。 そのようなサブスクリプションがない場合は、[無料または有料の個人用サブスクリプション](https://aka.ms/AMLFree)をお試しください
+- [Azure Machine Learning ワークスペース](./how-to-manage-workspace.md)
+- 管理 REST 要求でサービス プリンシパル認証が使用されている。 ワークスペースにサービス プリンシパルを作成するには、[Azure Machine Learning のリソースとワークフローの認証を設定する方法](./how-to-setup-authentication.md#service-principal-authentication)に関する記事に記載されている手順に従ってください
+- **curl** ユーティリティ。 **curl** プログラムは、 [Linux 用 Windows サブシステム](/windows/wsl/install-win10)または任意の UNIX ディストリビューションで使用できます。 PowerShell では、 **curl** は **Invoke-WebRequest** の別名であり、`curl -d "key=val" -X POST uri` は `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri` になります。 
 
 ## <a name="retrieve-a-service-principal-authentication-token"></a>サービス プリンシパルの認証トークンを取得する
 
@@ -48,7 +48,7 @@ Azure ML リソースを管理するには、いくつかの方法がありま�
 - クライアント ID (作成されたトークンに関連付けられます)
 - クライアント シークレット (これは保護する必要があります)
 
-これらの値は、サービス プリンシパルの作成に対する応答から取得する必要があります。 これらの値の取得については、「[Azure Machine Learning のリソースとワークフローの認証を設定する](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)」で説明しています。 会社のサブスクリプションを使用している場合は、サービス プリンシパルを作成するアクセス許可がない可能性があります。 その場合は、[無料または有料の個人用サブスクリプション](https://aka.ms/AMLFree)を使用する必要があります。
+これらの値は、サービス プリンシパルの作成に対する応答から取得する必要があります。 これらの値の取得については、「[Azure Machine Learning のリソースとワークフローの認証を設定する](./how-to-setup-authentication.md#service-principal-authentication)」で説明しています。 会社のサブスクリプションを使用している場合は、サービス プリンシパルを作成するアクセス許可がない可能性があります。 その場合は、[無料または有料の個人用サブスクリプション](https://aka.ms/AMLFree)を使用する必要があります。
 
 トークンを取得するには:
 
@@ -236,7 +236,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/com
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-名前付きコンピューティング リソースを作成または上書きするには、PUT 要求を使用します。 以下では、おなじみの `your-subscription-id`、`your-resource-group`、`your-workspace-name`、`your-access-token` の置き換えに加えて、`your-compute-name` と、`location`、`vmSize`、`vmPriority`、`scaleSettings`、`adminUserName`、`adminUserPassword` の値を置き換えてください。 [Machine Learning コンピューティング - 作成または更新に関する SDK リファレンス](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)で指定されているように、次のコマンドを実行すると、30 分後にスケールダウンされる、専用の単一ノードの Standard_D1 (基本的な CPU コンピューティング リソース) が作成されます。
+名前付きコンピューティング リソースを作成または上書きするには、PUT 要求を使用します。 以下では、おなじみの `your-subscription-id`、`your-resource-group`、`your-workspace-name`、`your-access-token` の置き換えに加えて、`your-compute-name` と、`location`、`vmSize`、`vmPriority`、`scaleSettings`、`adminUserName`、`adminUserPassword` の値を置き換えてください。 [Machine Learning コンピューティング - 作成または更新に関する SDK リファレンス](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)で指定されているように、次のコマンドを実行すると、30 分後にスケールダウンされる、専用の単一ノードの Standard_D1 (基本的な CPU コンピューティング リソース) が作成されます。
 
 ```bash
 curl -X PUT \
@@ -271,7 +271,7 @@ curl -X PUT \
 
 ### <a name="create-an-experimental-run"></a>実験用の実行を作成する
 
-実験内の実行を開始するには、トレーニング スクリプトと関連ファイル、および実行の定義 JSON ファイルを含む zip フォルダーが必要です。 この zip フォルダーのルート ディレクトリには、Python エントリ ファイルを含める必要があります。 例として、次のような単純な Python プログラムを、**train.zip** というフォルダーに zip 圧縮します。
+実験内の実行を開始するには、トレーニング スクリプトと関連ファイル、および実行の定義 JSON ファイルを含む zip フォルダーが必要です。 この zip フォルダーのルート ディレクトリには、Python エントリ ファイルを含める必要があります。 例として、次のような単純な Python プログラムを、 **train.zip** というフォルダーに zip 圧縮します。
 
 ```python
 # hello.py
@@ -349,7 +349,7 @@ curl 'https://{regional-api-server}/history/v1.0/subscriptions/{your-subscriptio
 
 ### <a name="delete-resources-you-no-longer-need"></a>不要になったリソースを削除する
 
-一部の (すべてではありません) リソースでは DELETE 動詞がサポートされています。 削除のユース ケース用の REST API に取り組む前に、[API リファレンス](https://docs.microsoft.com/rest/api/azureml/)を確認してください。 たとえば、モデルを削除するには、次を使用できます。
+一部の (すべてではありません) リソースでは DELETE 動詞がサポートされています。 削除のユース ケース用の REST API に取り組む前に、[API リファレンス](/rest/api/azureml/)を確認してください。 たとえば、モデルを削除するには、次を使用できます。
 
 ```bash
 curl
@@ -422,6 +422,6 @@ Azure Machine Learning ワークスペースでは、一部の操作に対して
 
 ## <a name="next-steps"></a>次のステップ
 
-- 完全な [AzureML REST API リファレンス](https://docs.microsoft.com/rest/api/azureml/)を確認します。
-- デザイナーを使用して、[デザイナーを使用して自動車の価格を予測する](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score)方法を学習します。
-- [Jupyter ノートブックを使用した Azure Machine Learning](https://docs.microsoft.com/azure//machine-learning/samples-notebooks) について調べます。
+- 完全な [AzureML REST API リファレンス](/rest/api/azureml/)を確認します。
+- デザイナーを使用して、[デザイナーを使用して自動車の価格を予測する](./tutorial-designer-automobile-price-train-score.md)方法を学習します。
+- [Jupyter ノートブックを使用した Azure Machine Learning](..//machine-learning/samples-notebooks.md) について調べます。

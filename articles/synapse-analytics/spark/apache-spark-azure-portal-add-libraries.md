@@ -9,16 +9,16 @@ ms.date: 10/16/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 31201bb7168910915ee33d4361bf944e7669db66
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: fbcc7ffbde49acfd9afc180418d618060eb923c1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737976"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313533"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark 用のライブラリを管理する
 
-ライブラリでは、プログラムまたはプロジェクトに含めることができる再利用可能なコードが提供されます。 サードパーティのコードまたはローカル環境でビルドされたコードをアプリケーションで使用できるようにするには、いずれかの Spark プール (プレビュー) にライブラリをインストールします。 Spark プールにインストールされたライブラリは、同じプールを使用するすべてのセッションで使用できるようになります。 
+ライブラリでは、プログラムまたはプロジェクトに含めることができる再利用可能なコードが提供されます。 サードパーティのコードまたはローカル環境でビルドされたコードをアプリケーションで使用できるようにするには、いずれかのサーバーレス Apache Spark プール (プレビュー) にライブラリをインストールします。 Spark プールにインストールされたライブラリは、同じプールを使用するすべてのセッションで使用できるようになります。 
 
 ## <a name="default-installation"></a>既定のインストール
 Azure Synapse Analytics の Apache Spark には、Anacondas の完全インストールと追加のライブラリがあります。 完全なライブラリの一覧については、[Apache Spark のバージョンのサポート](apache-spark-version-support.md)に関するページを参照してください。 

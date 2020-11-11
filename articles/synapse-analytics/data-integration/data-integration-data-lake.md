@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: cc5c72c2d0db7c17fdbc29e7fb815f1d06134730
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f06777e559187a57bfe0625cde700f30fb636a2b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033219"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309335"
 ---
 # <a name="ingest-data-into-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 にデータを取り込む 
 
@@ -22,8 +22,8 @@ ms.locfileid: "90033219"
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
-* **Microsoft Azure Storage アカウント**:"*ソース*" データ ストアとして Azure Data Lake Gen 2 を使用します。 ストレージ アカウントがない場合の作成手順については、「[Azure Storage アカウントの作成](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください。
+* **Azure サブスクリプション** :Azure サブスクリプションをお持ちでない場合は、開始する前に [無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
+* **Microsoft Azure Storage アカウント** :" *ソース* " データ ストアとして Azure Data Lake Gen 2 を使用します。 ストレージ アカウントがない場合の作成手順については、「[Azure Storage アカウントの作成](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください。
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 
@@ -38,7 +38,7 @@ Azure Synapse Analytics で、リンクされたサービスとは、他のサ�
 
 ## <a name="create-pipeline"></a>パイプラインの作成
 
-パイプラインには、一連のアクティビティを実行するための論理フローが含まれています。 このセクションでは、Azure Data Lake Gen 2 から SQL プールにデータを取り込むコピー アクティビティを含んだパイプラインを作成します。
+パイプラインには、一連のアクティビティを実行するための論理フローが含まれています。 このセクションでは、Azure Data Lake Gen 2 から専用 SQL プールにデータを取り込むコピー アクティビティを含んだパイプラインを作成します。
 
 1. **[調整]** タブに移動します。パイプライン ヘッダーの横にある正符号アイコンを選択し、 **[パイプライン]** を選択します。
 1. アクティビティ ウィンドウの **[Move and Transform]\(移動と変換\)** で、 **[データ コピー]** をパイプライン キャンバス上にドラッグします。
@@ -67,9 +67,9 @@ Azure Synapse Analytics で、リンクされたサービスとは、他のサ�
 1. ツール バーの **[トリガーの追加]** を選択し、 **[Trigger Now]\(今すぐトリガー\)** を選択します。 **[Pipeline Run]\(パイプラインの実行\)** ページで **[完了]** を選択します。  
 1. 左側のサイドバーにある **[監視]** タブに移動します。 手動トリガーによってトリガーされたパイプラインの実行が表示されます。 **[アクション]** 列のリンクを使用して、アクティビティの詳細を表示したりパイプラインを再実行したりできます。
 1. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択します。 この例では、アクティビティが 1 つだけなので、一覧に表示されるエントリは 1 つのみです。 コピー操作の詳細を確認するために、 **[アクション]** 列にある **[詳細]** リンク (眼鏡アイコン) を選択します。 再度パイプラインの実行ビューに移動するには、一番上にある **[Pipeline Runs]\(パイプラインの実行\)** を選択します。 表示を更新するには、 **[最新の情報に更新]** を選択します。
-1. データが SQL プールに正しく書き込まれていることを確認します。
+1. データが専用 SQL プールに正しく書き込まれていることを確認します。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Synapse Analytics のデータ統合の詳細については、「[SQL プールへのデータの取り込み](data-integration-sql-pool.md)」を参照してください。
+Synapse Analytics のデータ統合の詳細については、[専用 SQL プールへのデータの取り込み](data-integration-sql-pool.md)に関するページを参照してください。

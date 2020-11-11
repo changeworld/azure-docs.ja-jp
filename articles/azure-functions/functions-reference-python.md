@@ -4,18 +4,22 @@ description: Python を使用して関数を開発する方法について説明
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 0de25cc804844b5aa414e521fa641761d9a4b4f4
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3d459f4249c65f2d09f9d8df6e7958adf852a2ea
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108424"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346317"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
 この記事では、Python を使用した Azure Functions の開発について紹介します。 以下の内容は、「[Azure Functions の開発者向けガイド](functions-reference.md)」を既に読んでいることを前提としています。
 
-Python でのスタンドアロンの関数のサンプル プロジェクトについては、[Python 関数のサンプル](/samples/browse/?products=azure-functions&languages=python)を参照してください。
+Python 開発者は、次のいずれかの記事にも興味があるかもしれません。
+
+| 作業の開始 | 概念| シナリオとサンプル |
+| -- | -- | -- | 
+| <ul><li>[Visual Studio Code を使用した Python 関数](./functions-create-first-function-vs-code.md?pivots=programming-language-python)</li><li>[ターミナルとコマンド プロンプトを使用した Python 関数](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)</li></ul> | <ul><li>[開発者ガイド](functions-reference.md)</li><li>[ホスティング オプション](functions-scale.md)</li><li>[パフォーマンスに関する考慮事項&nbsp;](functions-best-practices.md)</li></ul> | <ul><li>[PyTorch を使用した画像の分類](machine-learning-pytorch.md)</li><li>[Azure Automation サンプル](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[TensorFlow を使用した機械学習](functions-machine-learning-tensorflow.md)</li><li>[Python サンプルの参照](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 ## <a name="programming-model"></a>プログラミング モデル
 
@@ -44,7 +48,7 @@ def main(req: azure.functions.HttpRequest) -> str:
     return f'Hello, {user}!'
 ```
 
-[azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python) パッケージに含まれる Python の注釈を使用すると、入力と出力がご利用のメソッドにバインドされます。
+[azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true) パッケージに含まれる Python の注釈を使用すると、入力と出力がご利用のメソッドにバインドされます。
 
 ## <a name="alternate-entry-point"></a>代替エントリ ポイント
 
@@ -194,7 +198,7 @@ def main(req: func.HttpRequest,
 
 出力バインディングの値として関数の戻り値を使用するには、バインディングの `name` プロパティを `function.json` 内の `$return` に設定する必要があります。
 
-複数の出力を生成するには、[`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python) インターフェイスによって提供される `set()` メソッドを使用して、バインディングに値を割り当てます。 たとえば、次の関数を使用すると、キューにメッセージをプッシュすることに加え、HTTP 応答を返すこともできます。
+複数の出力を生成するには、[`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) インターフェイスによって提供される `set()` メソッドを使用して、バインディングに値を割り当てます。 たとえば、次の関数を使用すると、キューにメッセージをプッシュすることに加え、HTTP 応答を返すこともできます。
 
 ```json
 {
@@ -310,7 +314,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 ほとんどの Azure Functions アプリケーションの場合、既定の構成が適しています。 ただし、ワークロード プロファイルに基づく構成を採用することで、アプリケーションのスループットのパフォーマンスを向上させることができます。 最初の手順は、実行しているワークロードの種類を理解することです。
 
-|| I/O バウンド ワークロード | CPU バウンド ワークロード |
+|&nbsp;| I/O バウンド ワークロード | CPU バウンド ワークロード |
 |--| -- | -- |
 |関数アプリの特性| <ul><li>アプリで多くの同時呼び出しを処理する必要がある。</li> <li> アプリは、ネットワーク呼び出しやディスクの読み取り/書き込みなど、大量の I/O イベントを処理します。</li> </ul>| <ul><li>アプリでは、イメージのサイズ変更など、長時間実行される計算が行われます。</li> <li>アプリでは、データの変換が行われます。</li> </ul> |
 |例| <ul><li>Web API</li><ul> | <ul><li>データ処理</li><li> 機械学習推論</li><ul>|
@@ -381,7 +385,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT は、需要に応じてアプリケーション�
 
 ## <a name="context"></a>Context
 
-実行中に関数の呼び出しコンテキストを取得するには、そのシグニチャに [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) 引数を含めます。
+実行中に関数の呼び出しコンテキストを取得するには、そのシグニチャに [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) 引数を含めます。
 
 次に例を示します。
 
@@ -394,7 +398,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-[**コンテキスト**](/python/api/azure-functions/azure.functions.context?view=azure-python) クラスには次の文字列属性が含まれています。
+[**コンテキスト**](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) クラスには次の文字列属性が含まれています。
 
 `function_directory` 関数が実行されるディレクトリです。
 
@@ -746,7 +750,7 @@ CORS は、Python 関数アプリでは完全にサポートされています�
 
 詳細については、次のリソースを参照してください。
 
-* [Azure Functions パッケージ API のドキュメント](/python/api/azure-functions/azure.functions?view=azure-python)
+* [Azure Functions パッケージ API のドキュメント](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true)
 * [Azure Functions のベスト プラクティス](functions-best-practices.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 * [Blob Storage のバインド](functions-bindings-storage-blob.md)
@@ -755,5 +759,5 @@ CORS は、Python 関数アプリでは完全にサポートされています�
 * [タイマー トリガー](functions-bindings-timer.md)
 
 
-[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python
-[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python
+[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python&preserve-view=true
+[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python&preserve-view=true

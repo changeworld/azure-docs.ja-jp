@@ -1,26 +1,21 @@
 ---
-title: アプリケーションへのユーザー アクセスの削除方法 | Microsoft Docs
-description: アプリケーションへのユーザー アクセスの削除方法について理解します。
+title: Azure Active Directory でアプリケーションへのユーザーのアクセスを削除する方法
+description: Azure Active Directory でアプリケーションへのユーザーのアクセスを削除する方法について説明します
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 10/17/2018
+ms.date: 11/02/2020
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f9626c256755e2fce81b593d95b8680f4bb55ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8544c35d77dfc32ece9b21a602f301ab15c22439
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763161"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288314"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>アプリケーションへのユーザー アクセスの削除方法
 
@@ -36,31 +31,15 @@ ms.locfileid: "84763161"
 
 ## <a name="i-want-to-delete-an-application-entirely"></a>アプリケーションを完全に削除する必要がある
 
-**アプリケーションを削除する**には、次の手順に従います。
-
-1. [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
-
-2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
-
-3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
-
-4. Azure Active Directory の左側にあるナビゲーション メニューで **[エンタープライズ アプリケーション]** をクリックします。
-
-5. **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
-
-   * ここに表示したいアプリケーションが表示されない場合は、 **[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、 **[表示]** オプションを **[すべてのアプリケーション]** に設定します。
-
-6. 削除するアプリケーションを選択します。
-
-7. アプリケーションが読み込まれたら、上部アプリケーションの **[概要]** ウィンドウで **[削除]** アイコンをクリックします。
+[アプリケーション管理に関するクイックスタート シリーズ](delete-application-portal.md)には、Azure Active Directory テナントからのアプリケーションの削除に関するガイダンスが含まれています。
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>すべてのアプリケーションに対して今後のユーザーの同意操作をすべて無効にする必要がある
 
 ディレクトリ全体でユーザーの同意を無効にすると、エンドユーザーはすべてのアプリケーションに同意できなくなります。 管理者は、依然としてユーザーに代わって同意できます。 アプリケーションの同意と、これを行う理由または行わない理由の詳細については、「[ユーザーおよび管理者の同意について](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)」をご覧ください。 「[アクセス許可と同意](../develop/v2-permissions-and-consent.md)」も参照してください。
 
-**ディレクトリ全体で今後のユーザーの同意動作をすべて無効にする**には、次の手順に従います。
+**ディレクトリ全体で今後のユーザーの同意動作をすべて無効にする** には、次の手順に従います。
 
-1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
+1.  [**Azure Portal**](https://portal.azure.com/) を開き、 **グローバル管理者** としてサインインします。
 
 2.  **[Azure Active Directory 拡張機能]** を開きます 
 

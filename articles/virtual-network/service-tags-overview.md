@@ -13,19 +13,19 @@ ms.workload: infrastructure-services
 ms.date: 07/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 863ab9b600b81006cdeb670811c61ed961e8c623
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.openlocfilehash: 8aae75aca585c30c0678c88247a8ecfe8a0b801d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170261"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340262"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ
 <a name="network-service-tags"></a>
 
 サービス タグは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。これにより、ネットワーク セキュリティ規則に対する頻繁な更新の複雑さを最小限に抑えられます。
 
-サービス タグを使用して、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) または  [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags) でのネットワーク アクセス制御を定義できます。 セキュリティ規則を作成するときに、特定の IP アドレスの代わりにサービス タグを使用します。 規則の適切な " *ソース* "  または "  *宛先* "  フィールドにサービス タグ名 ( **ApiManagement** など) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。
+サービス タグを使用して、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)または [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags) でのネットワーク アクセス制御を定義できます。 セキュリティ規則を作成するときに、特定の IP アドレスの代わりにサービス タグを使用します。 規則の適切な *ソース* または *宛先* フィールドにサービス タグ名 ( **ApiManagement** など) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。
 
 サービス タグを使用すると、ネットワーク分離を実現し、パブリック エンドポイントを持つ Azure サービスへのアクセス時に一般のインターネットから Azure リソースを保護できます。 受信/送信ネットワーク セキュリティ グループ規則を作成して、 **インターネット** との間のトラフィックを拒否し、 **AzureCloud** または他の特定の Azure サービスの [利用可能なサービス タグ](#available-service-tags)との間のトラフィックを許可します。
 
@@ -62,6 +62,7 @@ ms.locfileid: "92170261"
 | **AzureDataExplorerManagement** | Azure Data Explorer 管理。 | 受信 | いいえ | いいえ |
 | **AzureDataLake** | Azure Data Lake Storage Gen1。 | 送信 | いいえ | はい |
 | **AzureDevSpaces** | Azure Dev Spaces。 | 送信 | いいえ | いいえ |
+| **AzureDigitalTwins** | Azure Digital Twins。<br/><br/>*注:* このタグ、またはこのタグによってカバーされる IP アドレスを使用すれば、イベント ルート用に構成されたエンドポイントへのアクセスを制限することができます。 *現在、このタグは Azure portal 経由で構成できません。* | 受信 | いいえ | はい |
 | **AzureEventGrid** | Azure Event Grid。 | 両方 | いいえ | いいえ |
 | **AzureFrontDoor.Frontend** <br/> **AzureFrontDoor.Backend** <br/> **AzureFrontDoor.FirstParty**  | Azure Front Door。 | 両方 | いいえ | いいえ |
 | **AzureInformationProtection** | Azure Information Protection。<br/><br/>*注:* このタグは、 **AzureActiveDirectory** 、 **AzureFrontDoor.Frontend** 、および **AzureFrontDoor.FirstParty** タグに依存します。 | 送信 | いいえ | いいえ |
@@ -83,7 +84,6 @@ ms.locfileid: "92170261"
 | **DataFactory**  | Azure Data Factory | 両方 | いいえ | いいえ |
 | **DataFactoryManagement** | Azure Data Factory の管理トラフィック。 | 送信 | いいえ | いいえ |
 | **Dynamics365ForMarketingEmail** | Dynamics 365 のマーケティング電子メール サービスのアドレス範囲。 | 送信 | はい | いいえ |
-| **ElasticAFD** | エラスティック Azure Front Door。 | 両方 | いいえ | いいえ |
 | **EventHub** | Azure Event Hubs。 | 送信 | はい | はい |
 | **GatewayManager** | Azure VPN Gateway と Application Gateway 専用デプロイのための管理トラフィック。 | 受信 | いいえ | いいえ |
 | **GuestAndHybridManagement** | Azure Automation とゲスト構成。 | 送信 | いいえ | はい |

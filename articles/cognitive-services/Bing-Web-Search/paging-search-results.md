@@ -11,17 +11,17 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: aahi
-ms.openlocfilehash: e7613f4b6bb301c603ae5ded98f271f3cb98b340
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1a52471240ca80335690568faed7849eabc30baf
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074099"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381067"
 ---
 # <a name="how-to-page-through-results-from-the-bing-search-apis"></a>Bing Search API から結果をページングする方法
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
@@ -73,15 +73,15 @@ Host: api.cognitive.microsoft.com
 Bing Image API と Video API を使用する場合は、`nextOffset` の値を使用して、検索結果の重複を避けることができます。 `Images` または `Videos` 応答オブジェクトから値を取得し、要求の中で `offset` パラメーターと共に使用します。  
 
 > [!NOTE]
-> Bing Web Search API から返される結果には、Web ページ、画像、動画、ニュースが含まれます。 Bing Web Search API からの検索結果をページングするとき、[Web ページ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage)のみがページングされ、画像やニュースなど、他の種類の応答はページングされません。 `WebPage` オブジェクトの検索結果には、他の種類の応答にも表示される結果が含まれることがあります。
+> Bing Web Search API から返される結果には、Web ページ、画像、動画、ニュースが含まれます。 Bing Web Search API からの検索結果をページングするとき、[Web ページ](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage)のみがページングされ、画像やニュースなど、他の種類の応答はページングされません。 `WebPage` オブジェクトの検索結果には、他の種類の応答にも表示される結果が含まれることがあります。
 >
 > フィルター値を指定せずに `responseFilter` クエリ パラメーターを使用する場合、`count` パラメーターと `offset` パラメーターを使用しないでください。 
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Bing Web Search API とは](bing-api-comparison.md)
-* [Bing Web Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
-* [Bing Custom Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
-* [Bing News Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)
-* [Bing Video Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)
-* [Bing Image Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Bing Web Search API v7 リファレンス](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
+* [Bing Custom Search API v7 リファレンス](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
+* [Bing News Search API v7 リファレンス](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)
+* [Bing Video Search API v7 リファレンス](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)
+* [Bing Image Search API v7 リファレンス](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

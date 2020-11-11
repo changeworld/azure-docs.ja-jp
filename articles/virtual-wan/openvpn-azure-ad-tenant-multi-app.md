@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: 57fd36366eef284e2975633fbb34549f4316cde6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fcc79991918aecfc26933f2ef5b6e80ea7fa88c
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90988271"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043434"
 ---
 # <a name="create-an-azure-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN プロトコル接続用の Azure Active Directory (AD) テナントを作成する
 
@@ -53,13 +53,13 @@ P2S 構成には、リモート クライアントを接続するためのパラ
 
 2. VPN サーバーの構成を関連付けるハブを選択し、省略記号 (...) をクリックします。
 
-    ![新しいサイト](media/openvpn-azure-ad-tenant-multi-app/p2s4.jpg)
+    ![メニューで [仮想ハブを編集する] が選択されていることを示すスクリーンショット。](media/openvpn-azure-ad-tenant-multi-app/p2s4.jpg)
 
 3. **[仮想ハブを編集する]** をクリックします。
 
 4. **[ポイント対サイト ゲートウェイを含める]** チェック ボックスをオンにし、必要な **[ゲートウェイ スケール ユニット]** を選択します。
 
-    ![新しいサイト](media/openvpn-azure-ad-tenant-multi-app/p2s2.jpg)
+    ![[仮想ハブを編集する] ダイアログ ボックスを示すスクリーンショット。ここでは、ゲートウェイのスケール ユニットを選択できます。](media/openvpn-azure-ad-tenant-multi-app/p2s2.jpg)
 
 5. VPN クライアントの IP アドレスの割り当て元となる **[アドレス プール]** を入力します。
 
@@ -101,51 +101,51 @@ VPN プロファイルを使用してクライアントを構成します。
 
 1. ページ上で、 **[インポート]** を選択します。
 
-    ![import](./media/openvpn-azure-ad-tenant-multi-app/import/import1.jpg)
+    ![プラスのメニューで [インポート] が選択されていることを示すスクリーンショット。](./media/openvpn-azure-ad-tenant-multi-app/import/import1.jpg)
 
 2. プロファイル xml ファイルを参照し、選択します。 ファイルが選択された状態で、 **[開く]** を選択します。
 
-    ![import](./media/openvpn-azure-ad-tenant-multi-app/import/import2.jpg)
+    ![[開く] ダイアログ ボックスを示すスクリーンショット。ここでは、ファイルを選択できます。](./media/openvpn-azure-ad-tenant-multi-app/import/import2.jpg)
 
 3. プロファイルの名前を指定し、 **[保存]** を選択します。
 
-    ![import](./media/openvpn-azure-ad-tenant-multi-app/import/import3.jpg)
+    ![[接続名] が追加され、[保存] ボタンが選択されていることを示すスクリーンショット。](./media/openvpn-azure-ad-tenant-multi-app/import/import3.jpg)
 
 4. **[接続]** を選択して VPN に接続します。
 
-    ![import](./media/openvpn-azure-ad-tenant-multi-app/import/import4.jpg)
+    ![作成したばかりの接続用の [接続] ボタンを示すスクリーンショット。](./media/openvpn-azure-ad-tenant-multi-app/import/import4.jpg)
 
 5. 接続されると、アイコンが緑色に変わり、 **[接続済み]** と表示されます。
 
-    ![import](./media/openvpn-azure-ad-tenant-multi-app/import/import5.jpg)
+    ![[接続済み] 状態の接続と [切断] オプションを示すスクリーンショット。](./media/openvpn-azure-ad-tenant-multi-app/import/import5.jpg)
 
 #### <a name="to-delete-a-client-profile"></a><a name="delete"></a>クライアント プロファイルを削除するには
 
 1. 削除するクライアント プロファイルの横にある省略記号 (...) を選択します。 **[削除]** を選択します。
 
-    ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
+    ![メニューで [削除] が選択されていることを示すスクリーンショット。](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
 
 2. **[削除]** を選択して削除します。
 
-    ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
+    ![[確認] ダイアログ ボックスと [削除] オプションまたは [キャンセル] オプションを示すスクリーンショット。](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
 
 #### <a name="to-diagnose-connection-issues"></a><a name="diagnose"></a>接続の問題を診断するには
 
-1. 接続の問題を診断するには、**診断**ツールを使用します。 診断する VPN 接続の横にある省略記号 (...) を選択して、メニューを表示します。 次に、 **[診断]** を選択します。
+1. 接続の問題を診断するには、 **診断** ツールを使用します。 診断する VPN 接続の横にある省略記号 (...) を選択して、メニューを表示します。 次に、 **[診断]** を選択します。
 
-    ![診断](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose1.jpg)
+    ![メニューで [診断] が選択されていることを示すスクリーンショット。](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose1.jpg)
 
 2. **[接続プロパティ]** ページで、 **[Run Diagnosis]\(診断の実行\)** を選択します。
 
-    ![診断](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose2.jpg)
+    ![接続の [Run Diagnosis]\(診断の実行\) ボタンを示すスクリーンショット。](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose2.jpg)
 
 3. 自分の資格情報でサインインします。
 
-    ![診断](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose3.jpg)
+    ![このアクションの [サインイン] ダイアログ ボックスを示すスクリーンショット。](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose3.jpg)
 
 4. 診断結果を確認します。
 
-    ![診断](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose4.jpg)
+    ![診断の結果を示すスクリーンショット。](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose4.jpg)
 
 ## <a name="10-view-your-virtual-wan"></a><a name="viewwan"></a>10.仮想 WAN を表示する
 

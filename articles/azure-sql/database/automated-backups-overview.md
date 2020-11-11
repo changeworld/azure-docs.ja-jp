@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
-ms.date: 10/05/2020
-ms.openlocfilehash: dc6d083efd1d39d96f9df995fe5e7e4bcc95abff
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 10/30/2020
+ms.openlocfilehash: a97e39314b4dc15a360a01408f183a3f9a19c76f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675317"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131362"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自動バックアップ - Azure SQL Database および SQL Managed Instance
 
@@ -50,7 +50,7 @@ SQL Database の場合、バックアップ ストレージの冗長性は、デ
 > ゾーン冗長ストレージは現在、[特定のリージョン](../../storage/common/storage-redundancy.md#zone-redundant-storage)でのみ利用できます。 
 
 > [!NOTE]
-> Azure SQL Database に対して構成可能なバックアップ ストレージの冗長性は、現在、東南アジアの Azure リージョンでのみ一般提供されています。 この機能は、Hyperscale レベルではまだ使用できません。 
+> Azure SQL Database の [Configurable Backup Storage Redundancy]\(構成可能なバックアップ ストレージの冗長性\) は、ブラジル南部ではパブリック プレビューとして利用でき、一般公開されているのは東南アジアの Azure リージョンのみです。 この機能は、Hyperscale レベルではまだ使用できません。 
 
 ### <a name="backup-usage"></a>バックアップの用途
 
@@ -371,7 +371,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 ## <a name="configure-backup-storage-redundancy"></a>バックアップ ストレージの冗長性を構成する
 
 > [!NOTE]
-> SQL Managed Instance のバックアップに対する構成可能なストレージの冗長性は、マネージド インスタンス作成プロセスの間にのみ指定できます。 リソースがプロビジョニングされた後に、バックアップ ストレージ冗長性オプションを変更することはできません。 SQL Database については、現在、この機能のパブリック プレビューは東南アジア Azure リージョンでのみ利用できます。 
+> SQL Managed Instance のバックアップに対する構成可能なストレージの冗長性は、マネージド インスタンス作成プロセスの間にのみ指定できます。 リソースがプロビジョニングされた後に、バックアップ ストレージ冗長性オプションを変更することはできません。 SQL Database の場合、現在、この機能のパブリック プレビューはブラジル南部で使用可能であり、東南アジアの Azure リージョンで一般提供されています。 
 
 マネージド インスタンスのバックアップ ストレージに対する冗長性を設定できるのは、インスタンスの作成時のみです。 SQL Database については、データベースを作成するときに設定するか、または既存のデータベースに対して更新することができます。 既定値は geo 冗長ストレージ (RA-GRS) です。 ローカル冗長 (LRS)、ゾーン冗長 (ZRS)、geo 冗長 (RA-GRS) の各バックアップ ストレージ間の価格の違いについては、[マネージド インスタンスの価格のページ](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)を参照してください。
 

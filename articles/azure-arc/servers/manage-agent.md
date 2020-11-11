@@ -1,18 +1,18 @@
 ---
 title: Azure Arc 対応サーバー エージェントの管理
 description: この記事では、Azure Arc 対応サーバー Connected Machine エージェントのライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。
-ms.date: 10/21/2020
+ms.date: 10/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 184b0425b956232b4485047cafb00a7ced21c7dd
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 63db1177b193cad66208964ec377fab0779f23ba
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371428"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130971"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Connected Machine エージェントの管理と保守
 
-Windows または Linux 用 Azure Arc 対応サーバー Connected Machine エージェントを最初にデプロイした後、エージェントを再構成したり、アップグレードしたり、ライフサイクルの提供終了段階に達した場合にコンピューターから削除したりする必要がある場合があります。 これらのルーチン メンテナンス タスクを手動またはオートメーションを介して管理することで、オペレーション エラーと経費の両方を減らすことができます。
+Windows または Linux 用 Azure Arc 対応サーバー Connected Machine エージェントを最初にデプロイした後、エージェントの再構成、アップグレード、またはコンピューターからの削除が必要になることがあります。 これらのルーチン メンテナンス タスクを手動またはオートメーションを介して管理することで、オペレーション エラーと経費の両方を減らすことができます。
 
 ## <a name="before-uninstalling-agent"></a>エージェントをアンインストールする前に
 
@@ -38,7 +38,11 @@ Azure Arc 対応サーバーで管理する必要がなくなったサーバー�
 
 ## <a name="upgrading-agent"></a>エージェントのアップグレード
 
-Windows および Linux 用の Azure Connected Machine エージェントは、要件に応じて、手動または自動で最新リリースにアップグレードできます。 次の表では、サポートされている、エージェントのアップグレード方法について説明します。
+Azure Connected Machine エージェントは、バグの修正、安定性の向上、および新機能に対応するために定期的に更新されます。 [Azure Advisor](../../advisor/advisor-overview.md) を使用すると、最新バージョンのマシン エージェントを使用していないリソースが特定され、最新バージョンへのアップグレードが推奨されます。 Arc 対応サーバーを選択したときに表示される **[概要]** ページのバナーによって、または、Azure portal を介して Advisor にアクセスしたときに通知されます。
+
+Windows および Linux 用の Azure Connected Machine エージェントは、要件に応じて、手動または自動で最新リリースにアップグレードできます。
+
+次の表では、サポートされている、エージェントのアップグレード方法について説明します。
 
 | オペレーティング システム | アップグレード方法 |
 |------------------|----------------|

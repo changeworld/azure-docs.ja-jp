@@ -2,19 +2,19 @@
 title: Azure VM から Azure Automation の Update Management を有効にする
 description: この記事では、Azure VM から Update Management を有効にする方法について説明します。
 services: automation
-ms.date: 09/16/2020
+ms.date: 11/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 2d81b822986f641e64b9211300f83e3b254f316d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 1ed4ad3e1bae34b5007d13c7d092f46e972ac8a8
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221879"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347082"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>Azure VM から Update Management を有効にする
 
-この記事では、Azure VM を使用して、他のマシンで [Update Management](overview.md) 機能を有効にする方法について説明します。 Azure VM を大規模に有効にするには、Update Management を使用して既存の VM を有効にする必要があります。
+この記事では、1 つまたは複数の Azure 仮想マシン (VM) で [Update Management](overview.md) 機能を有効にする方法について説明します。 Azure VM を大規模に有効にするには、Update Management を使用して既存の Azure VM を有効にする必要があります。
 
 > [!NOTE]
 > Update Management を有効にする際、Log Analytics ワークスペースと Automation アカウントのリンクは特定のリージョンでのみサポートされています。 サポートされているマッピング ペアの一覧については、[Automation アカウントと Log Analytics ワークスペースのリージョン マッピング](../how-to/region-mappings.md)に関する記事をご覧ください。

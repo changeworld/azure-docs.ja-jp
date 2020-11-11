@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 6bfea42c6fca3369485ccf7a47158f7420df9c9c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 5714a2fd79d01f4cbc445c1ec1a726209ab6d427
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790034"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124936"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>ワークグループ可用性グループを構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -62,11 +62,11 @@ DNS サフィックスを構成するには、次の手順に従います。
 1. **[詳細...]** を選択して、 **[DNS サフィックスと NetBIOS コンピューター名]** ダイアログ ボックスを開きます。 
 1. **[このコンピュータのプライマリ DNS サフィックス]** の下に DNS サフィックスの名前 (`ag.wgcluster.example.com` など) を入力し、 **[OK]** を選択します。 
 
-   ![DNS サフィックスを追加する](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
+   ![スクリーンショットには、[DNS サフィックス] ダイアログ ボックスと [NetBIOS コンピュータ名] ダイアログ ボックスが表示されています。このダイアログ ボックスで値を入力できます。](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
 
 1. **[フル コンピューター名]** に DNS サフィックスが表示されていることを確認した後、 **[OK]** を選択して変更を保存します。 
 
-   ![DNS サフィックスを追加する](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
+   ![スクリーンショットは、完全なコンピューター名を表示する場所を示しています。](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
 
 1. 再起動を求めるメッセージが表示されたら、サーバーを再起動します。 
 1. 可用性グループに使用する他のすべてのノードで、これらの手順を繰り返します。 

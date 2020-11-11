@@ -1,20 +1,20 @@
 ---
-title: PowerShell を使用した Synapse Studio (プレビュー) 接続のトラブルシューティング
+title: Synapse Studio の接続についてのトラブルシューティング
 description: PowerShell を使用した Azure Synapse Studio 接続のトラブルシューティング
-author: julieMSFT
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.author: jrasnick
+ms.date: 10/30/2020
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7cf9f18701317482284a3f1fa4b69a2c2927f64a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e5e433fd857f638c1c13e4545c19e0b6314ee62e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287714"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146508"
 ---
-# <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>PowerShell スクリプトを使用した Azure Synapse Studio (プレビュー) 接続に関する問題の診断
+# <a name="troubleshoot-synapse-studio-connectivity-with-powershell"></a>PowerShell を使用した Synapse Studio 接続のトラブルシューティング
 
 Azure Synapse Studio (プレビュー) の正常な動作は、一連の Web API エンドポイントに依存しています。 このガイドは、次のような場合に接続の問題の原因を特定するのに役立ちます。
 - Azure Synapse Studio にアクセスするためのローカル ネットワーク (企業のファイアウォールの内側にあるネットワークなど) を構成しようとしている。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1157a18954c30e1f1d93aa33dbea6104491b5353
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d7e019e7759e22e945bddee477a4cb77f17350b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396453"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913825"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>分離されたネットワークでの Azure Disk Encryption
 
@@ -25,12 +25,12 @@ Azure Disk Encryption は多数のコンポーネントに依存しており、�
 
 各ディストリビューションに必要なパッケージを次に示します。 サポートされているディストリビューションとボリュームの種類の完全な一覧については、「[サポートされている VM とオペレーティング システム](disk-encryption-overview.md#supported-vms-and-operating-systems)」を参照してください。
 
-- **Ubuntu 14.04、16.04、18.04**: lsscsi、psmisc、at、cryptsetup-bin、python-parted、python-six、procps
-- **CentOS 7.2 - 7.7**: lsscsi、psmisc、lvm2、uuid、at、patch、cryptsetup、cryptsetup-reencrypt、pyparted、procps-ng、util-linux
-- **CentOS 6.8**: lsscsi、psmisc、lvm2、uuid、at、cryptsetup-reencrypt、pyparted、python-six
-- **RedHat 7.2 - 7.7**: lsscsi、psmisc、lvm2、uuid、at、patch、cryptsetup、cryptsetup-reencrypt、procps-ng、util-linux
-- **RedHat 6.8**: lsscsi、psmisc、lvm2、uuid、at、patch、cryptsetup-reencrypt
-- **openSUSE 42.3、SLES 12-SP4、12-SP3**: lsscsi、cryptsetup
+- **Ubuntu 14.04、16.04、18.04** : lsscsi、psmisc、at、cryptsetup-bin、python-parted、python-six、procps、grub-pc-bin
+- **CentOS 7.2 - 7.7** : lsscsi、psmisc、lvm2、uuid、at、patch、cryptsetup、cryptsetup-reencrypt、pyparted、procps-ng、util-linux
+- **CentOS 6.8** : lsscsi、psmisc、lvm2、uuid、at、cryptsetup-reencrypt、pyparted、python-six
+- **RedHat 7.2 - 7.7** : lsscsi、psmisc、lvm2、uuid、at、patch、cryptsetup、cryptsetup-reencrypt、procps-ng、util-linux
+- **RedHat 6.8** : lsscsi、psmisc、lvm2、uuid、at、patch、cryptsetup-reencrypt
+- **openSUSE 42.3、SLES 12-SP4、12-SP3** : lsscsi、cryptsetup
 
 Red Hat では、プロキシが必要な場合は、サブスクリプション マネージャーと yum が正しく設定されていることを確認する必要があります。 詳細については、「[How to troubleshoot subscription-manager and yum problems](https://access.redhat.com/solutions/189533)」(subscription-manager と yum の問題をトラブルシューティングする方法) を参照してください。  
 

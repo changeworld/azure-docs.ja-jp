@@ -5,16 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: d26354d8c247f0839bb96564c4e004158743bd88
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 36540de8924a1433f16f942d9aedc059efae05de
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742205"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348680"
 ---
 # <a name="update-management-overview"></a>Update Management の概要
 
-Azure Automation の Update Management を使用すると、Azure、オンプレミス環境、およびその他のクラウド環境で、Azure での Windows と Linux マシンに対するオペレーティング システムの更新プログラムを管理できます。 すべてのエージェント マシンで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。
+Azure Automation の Update Management を使用すると、Azure、オンプレミス環境、およびその他のクラウド環境で、Azure での Windows と Linux 仮想マシンに対するオペレーティング システムの更新プログラムを管理できます。 すべてのエージェント マシンで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。
 
 > [!NOTE]
 > Update Management で構成されたコンピューターを使用して Azure Automation からカスタム スクリプトを実行することはできません。 このコンピューターで実行できるのは、Microsoft が署名した更新プログラム スクリプトのみです。
@@ -25,12 +25,12 @@ Update Management をデプロイしてマシンを管理できるようにす�
 
 ## <a name="about-update-management"></a>Update Management について
 
-Update Management で管理されるマシンでは、評価の実行とデプロイの更新に次の構成が使用されます。
+Update Management で管理されるマシンでは、評価の実行と更新のデプロイは次に依存します。
 
-* Windows または Linux 用の Log Analytics エージェント
+* Windows または Linux 用の [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)
 * PowerShell Desired State Configuration (DSC) (Linux の場合)
-* Automation Hybrid Runbook Worker
-* Microsoft Update または Windows Server Update Services (WSUS) (Windows マシンの場合)
+* Automation Hybrid Runbook Worker (マシンで Update Management を有効にすると自動的にインストールされます)
+* Microsoft Update または [Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) (WSUS) (Windows マシンの場合)
 * プライベートまたはパブリックの更新リポジトリ (Linux マシンの場合)
 
 次の図に、ワークスペース内の接続されたすべての Windows Server および Linux サーバーに対する、Update Management による評価の実行方法とセキュリティ更新プログラムの適用方法を示します。
@@ -64,7 +64,7 @@ Update Management では、同期先として構成されたソースに基づ�
 
 ### <a name="supported-client-types"></a>サポートされているクライアントの種類
 
-次の表は、更新プログラムの評価および修正プログラムの適用でサポートされているオペレーティング システムの一覧です。 修正プログラムを適用するには、Hybrid Runbook Worker が必要です。 Hybrid Runbook Worker の要件の詳細については、「[Windows Hybrid Runbook Worker をデプロイする](../automation-windows-hrw-install.md)」と「[Linux Hybrid Runbook Worker を展開する](../automation-linux-hrw-install.md)」を参照してください。
+次の表は、更新プログラムの評価および修正プログラムの適用でサポートされているオペレーティング システムの一覧です。 ファイルの部分置換を適用するには、Hybrid Runbook Worker が必要です。これは、仮想マシンまたはサーバーの Update Management による管理を有効にしたときに自動的にインストールされます。 Hybrid Runbook Worker のシステム要件の詳細については、「[Windows Hybrid Runbook Worker をデプロイする](../automation-windows-hrw-install.md)」と「[Linux Hybrid Runbook Worker を展開する](../automation-linux-hrw-install.md)」を参照してください。
 
 > [!NOTE]
 > Linux マシンの更新プログラムの評価は、Automation アカウントと Log Analytics ワークスペースの[マッピング テーブル](../how-to/region-mappings.md#supported-mappings)に記載されている特定のリージョンでのみサポートされています。
@@ -97,7 +97,7 @@ Update Management では、同期先として構成されたソースに基づ�
 
 #### <a name="windows"></a>Windows
 
-WSUS サーバーと通信するように Windows エージェントを構成するか、Microsoft Update へのアクセスが必要です。 Log Analytics エージェントの詳細については、「[Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md)」を参照してください。 ハイブリッド マシンの場合は、最初にマシンを [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)に接続し、次に Azure Policy を使用して [Windows Azure Arc マシンに Log Analytics エージェントをデプロイする](../../governance/policy/samples/built-in-policies.md#monitoring)組み込みポリシーを割り当てることにより、Windows 用の Log Analytics エージェントをインストールすることをお勧めします。 Azure Monitor for VMs を使用してマシンの監視も行う場合は、代わりに [Azure Monitor for VMs を有効にする](../../governance/policy/samples/built-in-initiatives.md#monitoring)イニシアティブを使用します。
+WSUS サーバーと通信するように Windows エージェントを構成するか、Microsoft Update へのアクセスが必要です。 ハイブリッド マシンの場合は、最初にマシンを [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)に接続し、次に Azure Policy を使用して [Windows Azure Arc マシンに Log Analytics エージェントをデプロイする](../../governance/policy/samples/built-in-policies.md#monitoring)組み込みポリシーを割り当てることにより、Windows 用の Log Analytics エージェントをインストールすることをお勧めします。 また、Azure Monitor for VMs を使用してマシンの監視も行う場合は、代わりに [Azure Monitor for VMs を有効にする](../../governance/policy/samples/built-in-initiatives.md#monitoring)イニシアティブを使用します。
 
 Microsoft Endpoint Configuration Manager は、Update Management と組み合わせて使用できます。 統合シナリオの詳細については、「[Update Management を使用して、Microsoft Endpoint Configuration Manager クライアントに更新プログラムを展開する](mecmintegration.md)」を参照してください。 Configuration Manager 環境のサイトによって管理されている Windows サーバーでは、[Windows 用の Log Analytics エージェント](../../azure-monitor/platform/agent-windows.md)が必要です。 
 
@@ -113,7 +113,7 @@ Linux の場合、マシンでは、プライベートまたはパブリック�
 > [!NOTE]
 > Linux マシンの更新プログラムの評価は、特定のリージョンでのみサポートされています。 Automation アカウントと Log Analytics ワークスペースの[マッピング テーブル](../how-to/region-mappings.md#supported-mappings)を参照してください。
 
-Log Analytics エージェントの詳細については、「[Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md)」を参照してください。 ハイブリッド マシンの場合は、最初にマシンを [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)に接続し、次に Azure Policy を使用して [Linux Azure Arc マシンに Log Analytics エージェントをデプロイする](../../governance/policy/samples/built-in-policies.md#monitoring)組み込みポリシーを割り当てることにより、Linux 用の Log Analytics エージェントをインストールすることをお勧めします。 Azure Monitor for VMs を使用してマシンの監視も行う場合は、代わりに [Azure Monitor for VMs を有効にする](../../governance/policy/samples/built-in-initiatives.md#monitoring)イニシアティブを使用します。
+ハイブリッド マシンの場合は、最初にマシンを [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)に接続し、次に Azure Policy を使用して [Linux Azure Arc マシンに Log Analytics エージェントをデプロイする](../../governance/policy/samples/built-in-policies.md#monitoring)組み込みポリシーを割り当てることにより、Linux 用の Log Analytics エージェントをインストールすることをお勧めします。 また、Azure Monitor for VMs を使用してマシンの監視も行う場合は、代わりに [Azure Monitor for VMs を有効にする](../../governance/policy/samples/built-in-initiatives.md#monitoring)イニシアティブを使用します。
 
 Azure Marketplace から入手できるオンデマンドの Red Hat Enterprise Linux (RHEL) イメージから作成した VM は、Azure にデプロイされた [Red Hat Update Infrastructure (RHUI)](../../virtual-machines/workloads/redhat/redhat-rhui.md) にアクセスするよう登録されています。 その他の Linux ディストリビューションは、そのディストリビューションでサポートされている方法を使用して、ディストリビューションのオンライン ファイル リポジトリから更新する必要があります。
 
@@ -247,9 +247,11 @@ Update Management を有効にし、管理するマシンを選択するには�
 
 - 1 台以上の Azure マシンと Azure 以外のマシン (Arc 対応サーバーを含む) に対しては、お使いの [Automation アカウント](enable-from-automation-account.md)から。
 
-- [選択した Azure VM](enable-from-vm.md) に対しては、Azure portal の [仮想マシン] ページから。 このシナリオは、Linux VM 用と Windows VM 用があります。
+- **Enable-AutomationSolution** [Runbook](enable-from-runbook.md) メソッドを使用することで。
 
-- [複数の Azure VM](enable-from-portal.md) に対しては、Azure portal の [仮想マシン] ページからそれらを選択することで。
+- [選択した Azure VM](enable-from-vm.md) に対しては、Azure portal の **[仮想マシン]** ページから。 このシナリオは、Linux VM 用と Windows VM 用があります。
+
+- [複数の Azure VM](enable-from-portal.md) に対しては、Azure portal の **[仮想マシン]** ページからそれらを選択することで。
 
 > [!NOTE]
 > Update Management では、Log Analytics ワークスペースを Automation アカウントにリンクする必要があります。 サポートされているリージョンの確定的な一覧については、[Azure でのワークスペースのマッピング](../how-to/region-mappings.md)に関する記事をご覧ください。 リージョン マッピングは、Automation アカウントとは別のリージョンの VM を管理する機能には影響しません。

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c706ba6847334648fade1e8983e00433d3fa618
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: dcabd01cfbda8cd892c82b391bf649b2b464d6fb
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978205"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927772"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>1 つの Azure リージョン内での SAP HANA の可用性
 この記事では、1 つの Azure リージョン内での複数の可用性シナリオについて説明します。 Azure には多くのリージョンがあり、世界中に分散しています。 Azure リージョンの一覧については、「[Azure リージョン](https://azure.microsoft.com/regions/)」をご覧ください。 1 つの Azure リージョン内の VM に SAP HANA をデプロイする場合は、Microsoft から単一の VM と HANA インスタンスのデプロイが提供されています。 可用性を高める場合は、可用性のために HANA システム レプリケーションを使う 2 つの VM と 2 つの HANA インスタンスを [Azure 可用性セット](../../windows/tutorial-availability-sets.md)内にデプロイできます。 
@@ -78,7 +78,7 @@ Azure 可用性セット内の 2 つの Azure VM を使用するときに、2 �
 
 アーキテクチャは次のようになります。
 
-![ストレージ レプリケーションを示した 2 つの VM の図](./media/sap-hana-availability-one-region/two_vm_storage_replication.PNG) 
+![2 つの VM によるストレージ レプリケーションのアーキテクチャを示す図。](./media/sap-hana-availability-one-region/two_vm_storage_replication.PNG) 
 
 この設定は、優れた RPO (Recovery Point Objective) および RTO (Recovery Time Objective) 時間の実現には、あまり適していません。 特に RTO 時間は、コピーされたバックアップを使用して、データベース全体を完全に復元する必要があるため、困難が生じます。 ただし、このセットアップは、メイン インスタンスでの意図しないデータ削除からの復旧には役立ちます。 この設定では、特定時点への復元、データ抽出、メイン インスタンスへの削除されたデータのインポートが、いつでも可能です。 そのため、バックアップ コピーの手法を他の高可用性機能と組み合わせて使用すると、有効な場合があります。 
 

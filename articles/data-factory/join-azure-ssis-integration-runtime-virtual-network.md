@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/13/2020
+ms.date: 11/02/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 0e9c669f2994e896205762c5f3f4df1b5fe214ae
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e73126cfc54294a7b9d54ff62c406d5e686ac470
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637226"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186775"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
 
@@ -99,7 +99,7 @@ SSIS パッケージで、特定の静的パブリック IP アドレスのみ�
 
 - 仮想ネットワークのリソース グループ (独自のパブリック IP アドレスを使用する場合は、パブリック IP アドレスのリソース グループ) が特定の Azure ネットワーク リソースを作成および削除できることを確認します。 詳細については、「[リソース グループを設定する](#resource-group)」を参照してください。 
 
-- [Azure-SSIS IR のカスタムの設定](./how-to-configure-azure-ssis-ir-custom-setup.md)に関する記事で説明されているように Azure-SSIS IR をカスタマイズすると、Azure-SSIS IR ノードは、事前に定義された範囲の 172.16.0.0 から 172.31.255.255 のプライベート IP アドレスを取得します。 そのため、仮想またはオンプレミス ネットワークのプライベート IP アドレスの範囲がこの範囲と競合しないようにしてください。
+- [Azure-SSIS IR のカスタム セットアップ](./how-to-configure-azure-ssis-ir-custom-setup.md)に関する記事で説明されているように Azure-SSIS IR をカスタマイズすると、そのノードを管理する内部プロセスでは、事前に定義された 172.16.0.0 ～ 172.31.255.255 の範囲からプライベート IP アドレスを消費します。 結果として、仮想またはオンプレミスのネットワークのプライベート IP アドレスの範囲が、この範囲と競合しないようにしてください。
 
 次の図は、Azure-SSIS IR に必要な接続を示しています。
 

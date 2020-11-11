@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: d7f1f1f004fb8c9c4d67f409072ce061c6047569
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: fa05f8a8b05a0acddae906a93c90c42424466969
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127013"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322599"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Azure Cosmos DB 用の Azure Synapse Link (プレビュー) でサポートされる機能
 
@@ -40,7 +40,7 @@ Synapse Link を有効にしなくても、Azure Cosmos DB コンテナーに接
 | **書き込み**   | Azure Synapse ランタイムを使用して Azure Cosmos DB コンテナーにデータを書き込むことができる | はい | いいえ |
 
 * Spark から Azure Cosmos DB コンテナーにデータを書き込む場合、この処理は Azure Cosmos DB のトランザクション ストアを介して行われます。 これは要求ユニットを使用することによって、Azure Cosmos DB のトランザクション パフォーマンスに影響を与えます。
-* 外部テーブルを通じた SQL プールの統合は現在サポートされていません。
+* 外部テーブルを介した専用 SQL プールの統合は現在、サポートされていません。
  
 ## <a name="supported-code-generated-actions-for-spark"></a>Spark に対してサポートされているコード生成アクション
 
@@ -64,4 +64,4 @@ Synapse Link を有効にしなくても、Azure Cosmos DB コンテナーに接
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos DB 用の Synapse Link に接続する](../quickstart-connect-synapse-link-cosmos-db.md)方法を確認する
-* [Spark を使用して分析ストアにクエリを実行する方法を学習する](how-to-query-analytical-store-spark.md)
+* [Spark を使用して Cosmos DB 分析ストアにクエリを実行する方法を確認する](how-to-query-analytical-store-spark.md)

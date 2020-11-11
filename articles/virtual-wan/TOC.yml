@@ -15,10 +15,6 @@
       href: virtual-wan-expressroute-portal.md
 - name: 概念
   items:
-    - name: Security
-      items:
-        - name: セキュリティ ベースライン
-          href: security-baseline.md
     - name: リモート作業
       items:
         - name: リモートでの作業のサポート
@@ -109,6 +105,8 @@
           href: about-vpn-profile-download.md
         - name: グローバルおよびハブベースのプロファイル
           href: global-hub-profile.md
+        - name: Windows 10 向けに Azure VPN クライアントを構成する
+          href: openvpn-azure-ad-client.md
         - name: OpenVPN クライアントを構成する
           href: howto-openvpn-clients.md?
         - name: Always-On VPN ユーザー トンネルを構成する
@@ -119,8 +117,6 @@
           href: openvpn-azure-ad-mfa.md
         - name: Azure AD 認証を構成する
           href: virtual-wan-point-to-site-azure-ad.md
-        - name: Windows 10 向けに Azure VPN クライアントを構成する
-          href: openvpn-azure-ad-client.md
         - name: マルチアプリケーション Azure AD 認証を構成する
           href: openvpn-azure-ad-tenant-multi-app.md
     - name: ルーティング
@@ -135,7 +131,7 @@
               href: virtual-wan-route-table-nva-portal.md
             - name: Azure PowerShell
               href: virtual-wan-route-table-nva.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: Azure Firewall をハブにデプロイする
           href: howto-firewall.md

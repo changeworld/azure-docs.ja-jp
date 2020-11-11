@@ -11,23 +11,23 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: 6c328c681874ba171eab1341a16cf059e359feea
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 20501d0993cc4566a79d6e916d801911606bea35
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93076280"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380451"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>ランキングを使用して Bing Web Search API の結果を表示する方法  
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
-> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
-検索の各応答には、[RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) 回答が含まれます。これには、検索結果の表示方法が指定されています。 ランキング応答は、従来の検索結果ページに対してメインライン コンテンツとサイドバー コンテンツによって結果をグループ化します。 結果を従来のメインラインおよびサイドバー形式で表示しない場合は、メインラインのコンテンツの視認性をサイドバーのコンテンツよりも高くする必要があります。  
+検索の各応答には、[RankingResponse](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) 回答が含まれます。これには、検索結果の表示方法が指定されています。 ランキング応答は、従来の検索結果ページに対してメインライン コンテンツとサイドバー コンテンツによって結果をグループ化します。 結果を従来のメインラインおよびサイドバー形式で表示しない場合は、メインラインのコンテンツの視認性をサイドバーのコンテンツよりも高くする必要があります。  
 
-各グループ (メインラインまたはサイドバー) 内で、[Items](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) 配列は、コンテンツの表示順序を指定します。 各項目では、回答内の結果を次の 2 つの方法で識別できます。  
+各グループ (メインラインまたはサイドバー) 内で、[Items](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) 配列は、コンテンツの表示順序を指定します。 各項目では、回答内の結果を次の 2 つの方法で識別できます。  
 
 -   `answerType` および `resultIndex` — `answerType` フィールドは、回答 (Web ページ、ニュースなど) を識別し、`resultIndex` は、回答内の結果 (ニュース記事など) を識別します。 インデックスは 0 から始まります。  
 
@@ -35,11 +35,11 @@ ms.locfileid: "93076280"
 
 ID を使用するのは簡単です。必要があるのは、ランキング ID を回答またはその結果の ID と一致させることだけです。 回答オブジェクトに `id` フィールドが含まれている場合は、すべての回答の結果を一緒に表示します。 たとえば、`News` オブジェクトに `id` フィールドが含まれている場合は、すべてのニュース記事を一緒に表示します。 `News` オブジェクトに `id` フィールドが含まれていない場合は、各ニュース記事に `id` フィールドが含まれており、ランキング応答によって、ニュース記事と他の回答の結果がミックスされます。  
 
-`answerType` と `resultIndex` を使用するのはもう少し複雑です。 `answerType` を使用して、表示する結果が含まれる回答を識別します。 次に、`resultIndex` を使用してその回答の結果にインデックスを付けて、表示する結果を取得できるようにします  (`answerType` 値は、[SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) オブジェクト内のフィールドの名前です)。すべての回答の結果を一緒に表示する場合、ランキング応答の項目には、`resultIndex` フィールドは含まれません。  
+`answerType` と `resultIndex` を使用するのはもう少し複雑です。 `answerType` を使用して、表示する結果が含まれる回答を識別します。 次に、`resultIndex` を使用してその回答の結果にインデックスを付けて、表示する結果を取得できるようにします  (`answerType` 値は、[SearchResponse](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) オブジェクト内のフィールドの名前です)。すべての回答の結果を一緒に表示する場合、ランキング応答の項目には、`resultIndex` フィールドは含まれません。  
 
 ## <a name="ranking-response-example"></a>ランキング応答の例
 
-次に示すのは、[RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) の例です。 Web 回答には `id` フィールドが含まれていないため、ランキングに基づいてすべての Web ページが個別に表示されます (各 Web ページには `id` フィールドが含まれています)。 画像、ビデオ、および関連検索の回答には `id` フィールドが含まれているため、これらの回答のそれぞれの結果がランキングに基づいて一緒に表示されます。
+次に示すのは、[RankingResponse](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) の例です。 Web 回答には `id` フィールドが含まれていないため、ランキングに基づいてすべての Web ページが個別に表示されます (各 Web ページには `id` フィールドが含まれています)。 画像、ビデオ、および関連検索の回答には `id` フィールドが含まれているため、これらの回答のそれぞれの結果がランキングに基づいて一緒に表示されます。
 
 ```json
 {  

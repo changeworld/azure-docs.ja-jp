@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1cb49fc33567b13065351a28a557232212c6adc4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1d32aa011e9e816f97b050d43f9558af0cf82e90
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479342"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319652"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics (旧称 SQL DW) アーキテクチャ
 
@@ -25,8 +25,8 @@ Azure Synapse は、エンタープライズ データ ウェアハウスとビ�
 
 - Synapse SQL:完全な T-SQL ベースの分析
 
-  - SQL プール (プロビジョニング済み DWU での従量課金) – 一般公開
-  - SQL オンデマンド (処理された TB 単位の課金) – (プレビュー)
+  - 専用 SQL プール (プロビジョニング済み DWU での従量課金) – 一般公開
+  - サーバーレス SQL プール (処理された TB 単位の課金) – (プレビュー)
 - Spark:緊密に統合された Apache Spark (プレビュー)
 - データ統合:ハイブリッド データ統合 (プレビュー)
 - Studio: 統一ユーザー エクスペリエンス。  (プレビュー)
@@ -35,7 +35,7 @@ Azure Synapse は、エンタープライズ データ ウェアハウスとビ�
 
 ## <a name="synapse-sql-architecture-components"></a>Synapse SQL アーキテクチャのコンポーネント
 
-[Synapse SQL](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) では、スケールアウト アーキテクチャを活用して、複数のノードにデータの演算処理を分散します。 スケール単位は、[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)と呼ばれるコンピューティング能力の抽象化です。 コンピューティングをストレージから切り離すことで、システム内のデータとは無関係に、コンピューティングをスケーリングできるようになります。
+[Synapse SQL](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse) では、スケールアウト アーキテクチャを活用して、複数のノードにデータの演算処理を分散します。 スケール単位は、[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)と呼ばれるコンピューティング能力の抽象化です。 コンピューティングをストレージから切り離すことで、システム内のデータとは無関係に、コンピューティングをスケーリングできるようになります。
 
 ![Synapse SQL アーキテクチャ](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 

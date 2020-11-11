@@ -13,34 +13,34 @@ ms.workload: iaas-sql-server
 ms.date: 09/21/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b83a44db98907f505c7bf0d8302470cf3031a967
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d6900d0fdf656fa8309b18971691bb35587f7f4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761262"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286070"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Azure 内の複数の SQL 仮想マシンを SQL VM リソースプロバイダーに登録する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-この記事では、Azure 内のご自分の SQL Server 仮想マシン (VM) を、`Register-SqlVMs` PowerShell コマンドレットを使用して、SQL VM リソースプロバイダーに一括登録する方法について説明します。
+この記事では、Azure 内のご自分の SQL Server 仮想マシン (VM) を、`Register-SqlVMs` PowerShell コマンドレットを使用して、SQL VM リソースプロバイダーに一括登録する方法について説明します。 SQL VM リソース プロバイダーに登録すると、[SQL IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)がインストールされます。
 
 この記事では、SQL Server VM を一括で登録する方法について説明します。 また、[すべての SQL Server VM を自動的に](sql-vm-resource-provider-automatic-registration.md)登録したり、[個別に](sql-vm-resource-provider-register.md)登録したりすることができます。 
 
 ## <a name="overview"></a>概要
 
-`Register-SqlVMs` コマンドレットを使用すると、指定のサブスクリプションの一覧、リソース グループ、特定の仮想マシンの一覧にあるすべての仮想マシンを登録できます。 このコマンドレットは、仮想マシンを "_ライトウェイト_" 管理モードで登録し、[レポートとログ ファイル](#output-description)の両方を生成します。 
+`Register-SqlVMs` コマンドレットを使用すると、指定のサブスクリプションの一覧、リソース グループ、特定の仮想マシンの一覧にあるすべての仮想マシンを登録できます。 このコマンドレットは、仮想マシンを " _ライトウェイト_ " 管理モードで登録し、 [レポートとログ ファイル](#output-description)の両方を生成します。 
 
 登録プロセスにはリスクがなく、ダウンタイムは発生せず、SQL Server も仮想マシンも再起動されません。 
 
-リソース プロバイダーの詳細については、[SQL VM リソース プロバイダー](sql-vm-resource-provider-register.md)に関するページを参照してください。 
+詳細については、[SQL VM リソース プロバイダー](sql-vm-resource-provider-register.md)に関するページを参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
 SQL Server VM をリソースプロバイダーに登録するには、以下のものが必要になります。 
 
 - [リソース プロバイダーに登録](sql-vm-resource-provider-register.md#register-subscription-with-rp)されており、未登録の SQL Server 仮想マシンが含まれている [Azure サブスクリプション](https://azure.microsoft.com/free/)。 
-- 仮想マシンの登録に使用されるクライアント資格情報は、Azure ロールの**仮想マシンの共同作成者**、**共同作成者**、または **所有者**のいずれかに存在します。 
+- 仮想マシンの登録に使用されるクライアント資格情報は、Azure ロールの **仮想マシンの共同作成者** 、 **共同作成者** 、または **所有者** のいずれかに存在します。 
 - 最新バージョンの [Az PowerShell](/powershell/azure/new-azureps-module-az)。 
 - 最新バージョンの [Az. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0)。
 
@@ -227,7 +227,7 @@ Please find the detailed report in  file RegisterSqlVMScriptReport1571314821.txt
 
 指定のスクリプトを使用して SQL Server VM をリソースプロバイダーに登録するときは、次の点を考慮してください。
 
-- リソース プロバイダーに登録するには、SQL Server VM でゲスト エージェントが実行されている必要があります。 Windows Server 2008 のイメージにはゲスト エージェントがないため、これらの仮想マシンは失敗します。そのため、[NoAgent 管理モード](sql-vm-resource-provider-register.md#management-modes)を使用して手動で登録する必要があります。
+- リソース プロバイダーに登録するには、SQL Server VM でゲスト エージェントが実行されている必要があります。 Windows Server 2008 のイメージにはゲスト エージェントがないため、これらの仮想マシンは失敗します。そのため、[NoAgent 管理モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)を使用して手動で登録する必要があります。
 - 透過的なエラーを解決するための再試行ロジックが組み込まれています。 仮想マシンが正常に登録されていれば、短時間の処理になります。 ただし、登録が失敗した場合は、各仮想マシンで再試行されます。  実際の所要時間は、エラーの種類と数によって異なりますが、登録プロセスが完了するまでの時間は十分に確保するようにしてください。 
 
 ## <a name="full-script"></a>完全なスクリプト

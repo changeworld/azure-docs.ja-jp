@@ -4,12 +4,12 @@ description: Linux にランタイムと SDK をインストールし、ロー�
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 39ed4a394a54112c03145c0d481e5459ecbf6d8b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 14b8a278605a908b4182c724831b2e42de54a753
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675279"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086892"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -175,7 +175,7 @@ SDK インストールに付属する Service Fabric ランタイムには、次
 
 # <a name="container-based-local-cluster"></a>[コンテナーベースのローカル クラスター](#tab/localclusteroneboxcontainer)
 
-コンテナーベースの [Onebox Service Fabric クラスター](https://hub.docker.com/r/microsoft/service-fabric-onebox/)を起動します。
+コンテナーベースの [Onebox Service Fabric](https://hub.docker.com/_/microsoft-service-fabric-onebox) クラスターを起動します。
 
 1. Moby をインストールして、Docker コンテナーをデプロイできるようにします。
     ```bash

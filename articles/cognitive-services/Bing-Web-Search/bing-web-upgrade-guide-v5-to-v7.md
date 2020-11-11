@@ -11,17 +11,17 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 95e80907220a58243844b80d81dc187f8dc4c8bc
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 39848bcaded1669c6a6efd5b649ecf8e8343a596
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078698"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381118"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Bing Web Search API v5 から v7 へのアップグレード
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
@@ -80,14 +80,14 @@ Blocked|InvalidRequest.Blocked
 
 ### <a name="headers"></a>ヘッダー
 
-- オプションの [Pragma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) 要求ヘッダーが追加されました。 既定では、Bing はキャッシュされたコンテンツがある場合にそれを返します。 キャッシュされたコンテンツを Bing が返さないようにするには、Pragma ヘッダーを no-cache に設定します (例: Pragma: no-cache)。
+- オプションの [Pragma](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) 要求ヘッダーが追加されました。 既定では、Bing はキャッシュされたコンテンツがある場合にそれを返します。 キャッシュされたコンテンツを Bing が返さないようにするには、Pragma ヘッダーを no-cache に設定します (例: Pragma: no-cache)。
 
 ### <a name="query-parameters"></a>クエリ パラメーター
 
-- [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) クエリ パラメーターが追加されました。 応答に含める回答の数を指定するには、このパラメーターを使用します。 回答は、ランキングに基づいて選択されます。 たとえば、このパラメーターを 3 に設定すると、上位の 3 つの回答が応答に含まれます。  
+- [answerCount](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) クエリ パラメーターが追加されました。 応答に含める回答の数を指定するには、このパラメーターを使用します。 回答は、ランキングに基づいて選択されます。 たとえば、このパラメーターを 3 に設定すると、上位の 3 つの回答が応答に含まれます。  
 
-- [promote](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) クエリ パラメーターが追加されました。 ランキングに関係なく 1 つ以上の回答タイプを明示的に含めるには、このパラメーターを `answerCount` と共に使用します。 たとえば、ビデオと画像を応答に昇格させるには、promote を *videos, images* に設定します。 昇格させる回答の一覧は、`answerCount` の制限にはカウントされません。 たとえば、`answerCount` が 2、`promote` が *videos, images* に設定されている場合、応答には Web ページ、ニュース、ビデオ、および画像が含まれる可能性があります。
+- [promote](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) クエリ パラメーターが追加されました。 ランキングに関係なく 1 つ以上の回答タイプを明示的に含めるには、このパラメーターを `answerCount` と共に使用します。 たとえば、ビデオと画像を応答に昇格させるには、promote を *videos, images* に設定します。 昇格させる回答の一覧は、`answerCount` の制限にはカウントされません。 たとえば、`answerCount` が 2、`promote` が *videos, images* に設定されている場合、応答には Web ページ、ニュース、ビデオ、および画像が含まれる可能性があります。
 
 ### <a name="object-changes"></a>オブジェクトの変更
 
-- `someResultsRemoved` フィールドが [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) オブジェクトに追加されました。 このフィールドには、応答において Web 回答のいくつかの結果が除外されているかどうかを示すブール値が含まれています。  
+- `someResultsRemoved` フィールドが [WebAnswer](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) オブジェクトに追加されました。 このフィールドには、応答において Web 回答のいくつかの結果が除外されているかどうかを示すブール値が含まれています。

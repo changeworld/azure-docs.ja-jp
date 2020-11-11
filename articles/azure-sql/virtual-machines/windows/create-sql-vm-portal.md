@@ -14,12 +14,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6658dcd54c7290bbbad0c24c1cc0debd5ead8b18
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 347948734da439691bced01cf3693d0990567748
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789864"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146230"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>Azure portal を使用して SQL Server がインストールされた Windows 仮想マシンをプロビジョニングする方法
 
@@ -196,7 +196,7 @@ SQL Server 認証を有効にしない場合は、VM のローカル管理者ア
 
 **[SQL Server の設定]** タブの **[ストレージの構成]** で、 **[構成の変更]** を選択してパフォーマンス最適化ストレージの構成ページを開き、ストレージの要件を指定します。
 
-![SQL VM Storage の構成](./media/create-sql-vm-portal/sql-vm-storage-configuration-provisioning.png)
+![ストレージ構成を変更できる場所を示すスクリーンショット。](./media/create-sql-vm-portal/sql-vm-storage-configuration-provisioning.png)
 
 **[ストレージの最適化]** で、次のいずれかのオプションを選択します。
 

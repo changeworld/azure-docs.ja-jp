@@ -10,13 +10,13 @@ manager: anandsub
 ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/08/2020
-ms.openlocfilehash: 43e3916e47aa0305209b8e6e32803426ac1ebe3d
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/02/2020
+ms.openlocfilehash: 78e230453e256e90803b3607fa02904f90774881
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637566"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325092"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -26,10 +26,14 @@ ms.locfileid: "92637566"
 - Data Factory サービスには、変更について JSON エンティティを格納するためのリポジトリが含まれていません。 変更を保存する唯一の方法は **[すべて公開]** ボタンを使用することであり、変更内容はすべて、Data Factory サービスに直接公開されます。
 - Data Factory サービスは、コラボレーションとバージョン管理で最適化されていません。
 
-効率的に作成できるよう、Azure Data Factory では、Azure Repos または GitHub のいずれかで Git リポジトリを構成することができます。 Git はバージョン管理システムであり、変更追跡や共同作業を簡単にします。 このチュートリアルでは、Git リポジトリを構成し、そこで作業する方法を簡単に説明し、ベスト プラクティスとトラブルシューティング ガイドを提示します。
+効率的に作成できるよう、Azure Data Factory では、Azure Repos または GitHub のいずれかで Git リポジトリを構成することができます。 Git はバージョン管理システムであり、変更追跡や共同作業を簡単にします。 この記事では、Git リポジトリを構成し、そこで作業する方法を簡単に説明し、ベスト プラクティスとトラブルシューティング ガイドを提示します。
 
 > [!NOTE]
 > Azure Data Factory Git 統合は、Azure Government クラウドでは利用できません。
+
+Azure Data Factory を Git と統合する方法の詳細については、次の 15 分のチュートリアル ビデオをご覧ください。
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4GNKv]
 
 ## <a name="advantages-of-git-integration"></a>Git 統合の利点
 
@@ -38,7 +42,7 @@ Git 統合が作成作業にもたらす利点をいくつか下の一覧にま�
 -   **ソース管理:** データ ファクトリのワークロードの重要性が高まると、ソース管理に関して以下に示すような優れた機能を利用するために、そのファクトリと Git を統合する必要性を感じることも出てくると思われます。
     -   変更の追跡と監査の機能
     -   バグの原因となっている変更を元に戻す機能
--   **途中保存:** データ ファクトリ サービスに対して作成するとき、変更内容を下書きとして保存することはできません。公開内容はすべて、データ ファクトリの妥当性確認に合格する必要があります。 パイプラインが完了していない場合、あるいは単純に、コンピューターがクラッシュしたとき、変更内容が失われては困るときに、Git 統合によって、データ ファクトリ リソースの状態に関係なく、データ ファクトリ リソースを増分方式で変更することができます。 Git リポジトリを構成すると、変更内容を保存できます。変更内容を満足できるまでテストしてから公開できます。
+-   **途中保存:** データ ファクトリ サービスに対して作成するとき、変更内容を下書きとして保存することはできません。公開内容はすべて、データ ファクトリの妥当性確認に合格する必要があります。 パイプラインが完了していない場合、あるいは単純に、コンピューターがクラッシュして変更内容が失われては困るときに、Git 統合によって、データ ファクトリ リソースの状態に関係なく、データ ファクトリ リソースを増分方式で変更することができます。 Git リポジトリを構成すると、変更内容を保存できます。変更内容を満足できるまでテストしてから公開できます。
 -   **コラボレーションと統制:** 同じファクトリに多数のチーム メンバーが貢献している場合には、コード レビューのプロセスを通じてチームメイトが相互に協力して作業できるようにしたいと思うこともあるかもしれません。 共同作成者ごとにアクセス許可を変えるようにファクトリを設定することもできます。 一部のチーム メンバーに Git 経由での変更のみを許可し、チーム内の特定の人間にファクトリの変更を公開することを許可します。
 -   **CI/CD の改善:** [継続的デリバリー プロセス](continuous-integration-deployment.md)で複数の環境にデプロイしている場合、Git 統合で特定のアクションが簡単になります。 そうしたアクションの例を次に示します。
     -   "開発" ファクトリに何か変更があった時点ですぐに自動でトリガーされるようにリリース パイプラインを構成します。
@@ -48,29 +52,45 @@ Git 統合が作成作業にもたらす利点をいくつか下の一覧にま�
 > [!NOTE]
 > Git リポジトリが構成されている場合、Azure Data Factory UX では Data Factory サービスを使用した直接作成は無効になります。 PowerShell または SDK を使用して行われた変更は、Data Factory サービスに直接発行され、Git には入力されません。
 
+## <a name="connect-to-a-git-repository"></a>Git リポジトリに接続する
+
+Azure Repos と GitHub の両方で Git リポジトリをデータ ファクトリに接続するには、4 つの方法があります。 Git リポジトリに接続した後、 [管理ハブ](author-management-hub.md)の **[ソース管理]** セクションにある **[Git 構成]** で構成を表示し、管理することができます。
+
+### <a name="configuration-method-1-home-page"></a>構成方法 1:ホーム ページ
+
+Azure Data Factory のホームページで、 **[Set up Code Repository]\(コード リポジトリの設定\)** を選択します。
+
+![ホーム ページからコード リポジトリを構成する](media/author-visually/configure-repo.png)
+
+### <a name="configuration-method-2-authoring-canvas"></a>構成方法 2:作成キャンバス
+
+Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロップダウン メニューを選択し、 **[Set up Code Repository]\(コード リポジトリの設定\)** を選択します。
+
+![コード リポジトリ設定を作成から構成する](media/author-visually/configure-repo-2.png)
+
+### <a name="configuration-method-3-management-hub"></a>構成方法 3:管理ハブ
+
+ADF UX で管理ハブに移動します。 **[ソース管理]** セクションで **[Git 構成]** を選択します。 接続されているリポジトリがない場合は、 **[Set up Code Repository]\(コード リポジトリの設定\)** をクリックします。
+
+![コード リポジトリ設定を管理ハブから構成する](media/author-visually/configure-repo-3.png)
+
+### <a name="configuration-method-4-during-factory-creation"></a>構成方法 4:ファクトリの作成時
+
+Azure portal で新しいデータ ファクトリを作成するときに、 **[Git 構成]** タブで Git リポジトリの情報を構成できます。
+
+> [!NOTE]
+> Azure portal で git を構成する場合は、プロジェクト名やリポジトリ名などの設定を、ドロップダウン リストの一部としてではなく、手動で入力する必要があります。
+
+![コード リポジトリ設定を Azure portal から構成する](media/author-visually/configure-repo-4.png)
+
 ## <a name="author-with-azure-repos-git-integration"></a>Azure Repos Git 統合を使用した作成
 
 Azure Repos Git 統合を使ったビジュアルの作成では、データ ファクトリ パイプラインでの作業時にソース管理とコラボレーションがサポートされます。 ソース管理やコラボレーション、バージョン管理などで､データ ファクトリを Azure Repos Git 統合リポジトリに関連付けることができます。 各 Azure Repos Git 組織は複数のレポジトリを持つことができますが､1つの Azure Repos Git リポジトリに関連付けられるデータ ファクトリの数は 1 つだけです｡ Azure Repos アカウントまたはリポジトリがない場合は、[こちらの手順](/azure/devops/organizations/accounts/create-organization-msa-or-work-student)に従ってリソースを作成します。
 
 > [!NOTE]
-> スクリプトとデータ ファイルは Azure Repos Git リポジトリに格納できます。 ただし、Azure Storage に手動でファイルをアップロードする必要があります。 Data Factory パイプラインは、Azure Repos Git リポジトリに保存されているスクリプトまたはデータ ファイルを Azure Storage に自動的にアップロードしません。
+> スクリプトとデータ ファイルは Azure Repos Git リポジトリに格納できます。 ただし、Azure Storage に手動でファイルをアップロードする必要があります。 データ ファクトリ パイプラインは、Azure Repos Git リポジトリに保存されているスクリプトまたはデータ ファイルを Azure Storage に自動的にアップロードしません。
 
-### <a name="configure-an-azure-repos-git-repository-with-azure-data-factory"></a>Azure Data Factory で Azure Repos Git リポジトリを構成する
-
-データ ファクトリで Azure Repos Git リポジトリを構成する方法は 2 通りあります。
-
-#### <a name="configuration-method-1-azure-data-factory-home-page"></a>構成方法 1:Azure Data Factory のホーム ページ
-
-Azure Data Factory のホームページで、 **[Set up Code Repository]\(コード リポジトリの設定\)** を選択します。
-
-![Azure Repos コード リポジトリを構成する](media/author-visually/configure-repo.png)
-
-#### <a name="configuration-method-2-ux-authoring-canvas"></a>構成方法 2:UX 作成キャンバス
-Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロップダウン メニューを選択し、 **[Set up Code Repository]\(コード リポジトリの設定\)** を選択します。
-
-![UX 作成のコード リポジトリ設定の構成](media/author-visually/configure-repo-2.png)
-
-どちらの方法でも、リポジトリ設定の構成ウィンドウが開きます。
+### <a name="azure-repos-settings"></a>Azure Repos の設定
 
 ![コード リポジトリ設定の構成](media/author-visually/repo-settings.png)
 
@@ -95,6 +115,9 @@ Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロッ�
 
 別の Azure Active Directory テナントで Azure Repos Git リポジトリを作成できます。 別の Azure AD テナントを指定するには、使用している Azure サブスクリプションの管理者のアクセス許可が必要です。 詳細については、[サブスクリプション管理者の変更](../cost-management-billing/manage/add-change-subscription-administrator.md#to-assign-a-user-as-an-administrator)に関する記事を参照してください。
 
+> [!IMPORTANT]
+> 別の Azure Active Directory に接続するには、ログインしているユーザーがその Active Directory の一部である必要があります。 
+
 ### <a name="use-your-personal-microsoft-account"></a>個人用の Microsoft アカウントを使用する
 
 Git の統合に個人用の Microsoft アカウントを使用するには、Azure の個人用のリポジトリを組織の Active Directory にリンクできます。
@@ -117,27 +140,7 @@ Data Factory と GitHub の統合では、パブリック GitHub (つまり [htt
 
 GitHub リポジトリを構成するには、使用している Azure サブスクリプションの管理者のアクセス許可が必要です。
 
-この機能の概要とデモンストレーションについては、以下の 9 分間の動画を視聴してください。
-
-> [!VIDEO https://channel9.msdn.com/shows/azure-friday/Azure-Data-Factory-visual-tools-now-integrated-with-GitHub/player]
-
-### <a name="configure-a-github-repository-with-azure-data-factory"></a>Azure Data Factory で GitHub リポジトリを構成する
-
-データ ファクトリで GitHub リポジトリを構成するには 2 つの方法があります。
-
-#### <a name="configuration-method-1-azure-data-factory-home-page"></a>構成方法 1:Azure Data Factory のホーム ページ
-
-Azure Data Factory のホームページで、 **[Set up Code Repository]\(コード リポジトリの設定\)** を選択します。
-
-![Azure Repos コード リポジトリを構成する](media/author-visually/configure-repo.png)
-
-#### <a name="configuration-method-2-ux-authoring-canvas"></a>構成方法 2:UX 作成キャンバス
-
-Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロップダウン メニューを選択し、 **[Set up Code Repository]\(コード リポジトリの設定\)** を選択します。
-
-![UX 作成のコード リポジトリ設定の構成](media/author-visually/configure-repo-2.png)
-
-どちらの方法でも、リポジトリ設定の構成ウィンドウが開きます。
+### <a name="github-settings"></a>GitHub の設定
 
 ![GitHub リポジトリの設定](media/author-visually/github-integration-image2.png)
 
@@ -155,6 +158,38 @@ Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロッ�
 | **[Import existing Data Factory resources to repository]\(既存の Data Factory リソースをリポジトリにインポートする\)** | UX 作成キャンバスからの既存のデータ ファクトリ リソースを GitHub リボジトリにインポートするかどうかを指定します。 オンにすると、JSON 形式でデータ ファクトリ リソースを関連付けられている Git リポジトリにインポートします。 このアクションでは、各リソースが個別にエクスポートされます (つまり、リンクされたサービスとデータセットは、異なる JSON にエクスポートされます)。 このボックスを選択しなかった場合、既存のリソースはインポートされません。 | 選択済み (既定値) |
 | **ソースをインポートするブランチ** | データ ファクトリのリソース (パイプライン、データセット、リンクされたサービスなど) をインポートするブランチを指定します。 次のブランチのいずれかにリソースをインポートできます。a. コラボレーション b. 新規作成 c. 既存のものを使用 |  |
 
+### <a name="github-organizations"></a>GitHub 組織
+
+GitHub 組織に接続するには、Azure Data Factory のアクセス許可を組織に付与する必要があります。 組織に対する管理者アクセス許可を持つユーザーは、以下の手順を実行して、データ ファクトリに接続できるようにする必要があります。
+
+#### <a name="connecting-to-github-for-the-first-time-in-azure-data-factory"></a>Azure Data Factory で初めて GitHub に接続する
+
+初めて Azure Data Factory から GitHub に接続している場合は、これらの手順に従って GitHub 組織に接続します。
+
+1. [Git 構成] ウィンドウの *[GitHub アカウント]* フィールドに組織名を入力します。 GitHub にログインするためのプロンプトが表示されます。 
+1. 資格情報を使用してログインします。
+1. Azure Data Factory を *AzureDataFactory* と呼ばれるアプリケーションとして認可するように求められます。 この画面には、ADF が組織にアクセスするためにアクセス許可を付与するためのオプションが表示されます。 アクセス許可を付与するオプションが表示されない場合は、GitHub でアクセス許可を手動で付与するように管理者に依頼してください。
+
+これらの手順に従うと、ファクトリは組織内のパブリックとプライベートの両方のリポジトリに接続できるようになります。 接続できない場合は、ブラウザーのキャッシュをクリアして再試行してください。
+
+#### <a name="already-connected-to-github-using-a-personal-account"></a>個人アカウントを使用して既に GitHub に接続している
+
+既に GitHub に接続していて、個人アカウントへのアクセス許可のみが付与されている場合は、以下の手順に従って、組織にアクセス許可を付与します。 
+
+1. GitHub に移動して **[設定]** を開きます。
+
+    ![GitHub の設定を開く](media/author-visually/github-settings.png)
+
+1. **[アプリケーション]** を選択します。 **[Authorized OAuth Apps]\(認可済み OAuth アプリ\)** タブに *AzureDataFactory* が表示されます。
+
+    ![OAuth アプリの選択](media/author-visually/github-organization-select-application.png)
+
+1. アプリケーションを選択し、アプリケーションに組織へのアクセス権を付与します。
+
+    ![アクセス権の付与](media/author-visually/github-organization-grant.png)
+
+これらの手順に従うと、ファクトリは組織内のパブリックとプライベートの両方のリポジトリに接続できるようになります。 
+
 ### <a name="known-github-limitations"></a>GitHub の既知の制限事項
 
 - スクリプトとデータ ファイルは GitHub リポジトリに格納できます。 ただし、Azure Storage に手動でファイルをアップロードする必要があります。 Data Factory パイプラインでは、GitHub リポジトリに保存されているスクリプトまたはデータ ファイルが Azure Storage に自動的にアップロードされません。
@@ -163,7 +198,6 @@ Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロッ�
 
 - Data Factory ビジュアル作成ツールと GitHub の統合は、一般的に利用できるバージョンの Data Factory でのみ機能します。
 
-- Azure Data Factory は、GitHub 組織のアカウントをサポートしていません。
 
 - 1 つの GitHub ブランチからは、リソースの種類ごとに最大 1,000 のエンティティ (パイプライン、データセットなど) をフェッチできます。 この制限に達した場合は、リソースを個別のファクトリに分割することをお勧めします。 Azure DevOps Git にはこのような制限はありません。
 

@@ -11,21 +11,23 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: e8f78d6031e57da42e1d69587aedca0763c9fec2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0b2c03c5c7ea8c65cb1cde3cbdb73b6bb838dc06
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289074"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324452"
 ---
 # <a name="use-query-labels-in-synapse-sql"></a>Synapse SQL でクエリ ラベルを使用する
+
 この記事には、Synapse SQL でクエリ ラベルを使用する際の重要なヒントが含まれています。
 
 > [!NOTE]
-> SQL オンデマンド (プレビュー) では、ラベル付けクエリはサポートされていません。
+> サーバーレス SQL プール (プレビュー) では、ラベル付けクエリはサポートされていません。
 
 ## <a name="what-are-query-labels"></a>クエリ ラベルとは
-SQL プールでは、クエリ ラベルと呼ばれる概念がサポートされています。 難解な領域に入る前に、1 つの例を説明しましょう。
+
+専用 SQL プールでは、クエリ ラベルと呼ばれる概念がサポートされています。 難解な領域に入る前に、1 つの例を説明しましょう。
 
 ```sql
 SELECT *

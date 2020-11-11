@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: e00ab059c68d7a3f2288d94894199773cab63ac5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1826b66b0548b7567af59de64549c7eb700025c3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86039298"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130903"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>SQL Database からの参照データを Azure Stream Analytics ジョブに使用する
 
@@ -99,7 +99,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
    ![Visual Studio での新しい Stream Analytics 入力](./media/sql-reference-data/stream-analytics-vs-input.png)
 
-2. **ソリューション エクスプローラー**で、**Input.json** をダブルクリックします。
+2. **ソリューション エクスプローラー** で、 **Input.json** をダブルクリックします。
 
 3. **[Stream Analytics Input Configuration]\(Stream Analytics の入力構成\)** を設定します。 データベース名、サーバー名、更新の種類、更新間隔を選択します。 `DD:HH:MM` の形式で更新間隔を指定します。
 
@@ -156,7 +156,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
  
 2. デルタ クエリを作成します。 
    
-   このクエリでは、開始時刻 **\@deltaStartTime** と終了時刻 **\@deltaEndTime** の間に挿入または削除された SQL Database のすべての行が取得されます。 デルタ クエリでは、スナップショット クエリと同じ列および列の**_操作_** を返す必要があります。 この列では、 **\@deltaStartTime** と **\@deltaEndTime** の間に行が挿入または削除されたかどうかが定義されています。 結果の行には、レコードが挿入された場合は **1**、削除された場合は **2** のフラグが設定されます。 また、差分期間内のすべての更新が適切にキャプチャされるようにするために、SQL Server 側から**透かし**を追加する必要があります。 **透かし**なしでデルタ クエリを使用すると、参照データセットに誤りが生じる可能性があります。  
+   このクエリでは、開始時刻 **\@deltaStartTime** と終了時刻 **\@deltaEndTime** の間に挿入または削除された SQL Database のすべての行が取得されます。 デルタ クエリでは、スナップショット クエリと同じ列および列の **_操作_** を返す必要があります。 この列では、 **\@deltaStartTime** と **\@deltaEndTime** の間に行が挿入または削除されたかどうかが定義されています。 結果の行には、レコードが挿入された場合は **1** 、削除された場合は **2** のフラグが設定されます。 また、差分期間内のすべての更新が適切にキャプチャされるようにするために、SQL Server 側から **透かし** を追加する必要があります。 **透かし** なしでデルタ クエリを使用すると、参照データセットに誤りが生じる可能性があります。  
 
    更新されたレコードの場合、テンポラル テーブルでは挿入と削除の操作をキャプチャすることによってブックキーピングが行われます。 その場合、Stream Analytics ランタイムでは、前のスナップショットにデルタ クエリの結果を適用することによって、参照データが最新の状態に維持されます。 デルタ クエリの例を次に示します。
 
@@ -173,7 +173,36 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
    Stream Analytics ランタイムでは、デルタ クエリに加えてスナップショット クエリが定期的に実行されてチェックポイントが保存される場合があることに注意してください。
 
 ## <a name="test-your-query"></a>クエリをテストする
-   クエリで、Stream Analytics ジョブによって参照データとして使用される予期されるデータセットが返されることを確認することが重要です。 クエリをテストするには、ポータルの [ジョブ トポロジ] セクションの [入力] に移動します。 SQL Database 参照入力で、サンプル データを選択することができます。 サンプルが利用できるようになったら、ファイルをダウンロードし、返されるデータが予想どおりであるかどうかを確認します。 開発を最適化し、イテレーションをテストする場合、[Visual Studio の Stream Analytics ツール](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)を使用することをお勧めします。 または希望する他の任意のツールを使用して、まずクエリによって Azure SQL Database から正しい結果が返されることを確認してから、Stream Analytics ジョブでそれを使用することもできます。 
+   クエリで、Stream Analytics ジョブによって参照データとして使用される予期されるデータセットが返されることを確認することが重要です。 クエリをテストするには、ポータルの [ジョブ トポロジ] セクションの [入力] に移動します。 SQL Database 参照入力で、サンプル データを選択することができます。 サンプルが利用できるようになったら、ファイルをダウンロードし、返されるデータが予想どおりであるかどうかを確認します。 開発を最適化し、イテレーションをテストする場合、[Visual Studio の Stream Analytics ツール](./stream-analytics-tools-for-visual-studio-install.md)を使用することをお勧めします。 または希望する他の任意のツールを使用して、まずクエリによって Azure SQL Database から正しい結果が返されることを確認してから、Stream Analytics ジョブでそれを使用することもできます。 
+
+### <a name="test-your-query-with-visual-studio-code"></a>Visual Studio Code を使用してクエリをテストする
+
+   Visual Studio Code に [Azure Stream Analytics Tools](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) と [SQL Server (mssql)](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) をインストールし、ASA プロジェクトを設定します。 詳細については、「[クイック スタート: Visual Studio Code で Azure Stream Analytics ジョブを作成する](./quick-create-visual-studio-code.md)」と [SQL Server (mssql) 拡張機能のチュートリアル](/sql/tools/visual-studio-code/sql-server-develop-use-vscode)を参照してください。
+
+1. SQL 参照データの入力を構成します。
+   
+   ![SQL 参照データの入力を構成する](./media/sql-reference-data/configure-sql-reference-data-input.png)
+
+2. SQL Server アイコンを選択し、 **[接続の追加]** をクリックします。
+   
+   ![SQL Server アイコンをクリックし、[接続の追加] をクリックする](./media/sql-reference-data/add-sql-connection.png)
+
+3. 接続情報を入力します。
+   
+   ![Visual Studio での Stream Analytics の入力構成](./media/sql-reference-data/fill-connection-information.png)
+
+4. 参照 SQL を右クリックし、 **[クエリの実行]** を選択します。
+   
+   ![Visual Studio での Stream Analytics の入力構成](./media/sql-reference-data/execute-query.png)
+
+5. 接続を選択します。
+   
+   ![Visual Studio での Stream Analytics の入力構成](./media/sql-reference-data/choose-connection.png)
+
+6. クエリ結果の確認と検証を行います。
+   
+   ![Visual Studio での Stream Analytics の入力構成](./media/sql-reference-data/verify-result.png)
+
 
 ## <a name="faqs"></a>FAQ
 

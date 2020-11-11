@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: a19f0a204bec1c0a43a84d93c2dc4b70ef6ecbe6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a27199930587c1a096dd99462ebd0c9d65054ee
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069912"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369360"
 ---
 # <a name="personalizer-service-encryption-of-data-at-rest"></a>Personalizer サービスによる保存データの暗号化
 
@@ -30,4 +30,4 @@ Personalizer サービスでは、クラウドに永続化されるときにデ�
 ## <a name="next-steps"></a>次のステップ
 
 * [Personalizer サービス カスタマー マネージド キー要求フォーム](https://aka.ms/cogsvc-cmk)
-* [Azure Key Vault の詳細を確認する](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Azure Key Vault の詳細を確認する](../../key-vault/general/overview.md)

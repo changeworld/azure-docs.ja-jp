@@ -8,12 +8,12 @@ author: georgewallace
 ms.author: gwallace
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3082f30f46a1e450a9ac42958163894c014de66d
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 3864d48399f00d5cfbdfa0a94939be0d88a73322
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737201"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92928061"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Azure Red Hat OpenShift 4 のプライベート クラスターを作成する
 
@@ -229,7 +229,7 @@ az aro list-credentials \
 
 ブラウザーでコンソールの URL にアクセスし、`kubeadmin` 資格情報を使用してログインします。
 
-![Azure Red Hat OpenShift ログイン画面](media/aro4-login.png)
+![Azure Red Hat OpenShift ログイン画面を示すスクリーンショット。](media/aro4-login.png)
 
 ## <a name="install-the-openshift-cli"></a>OpenShift CLI をインストールする
 

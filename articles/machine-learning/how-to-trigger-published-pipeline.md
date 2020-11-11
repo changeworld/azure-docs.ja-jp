@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 02/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4
-ms.openlocfilehash: 2e3544bee5158a855467f8cb142f176df2187ef5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64f1c83a570e936759d674f40db201fb2f2cd0e5
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318298"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146264"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>ロジック アプリから Machine Learning パイプラインの実行をトリガーする
 
@@ -55,7 +55,7 @@ ms.locfileid: "91318298"
 
 1. BLOB の追加または変更を監視するための BLOB ストレージ アカウントの接続情報を入力します。 監視するコンテナーを選択します。 
  
-    自動で機能する、更新をポーリングする**間隔**と**頻度**を選択します。  
+    自動で機能する、更新をポーリングする **間隔** と **頻度** を選択します。  
 
     > [!NOTE]
     > このトリガーでは、選択したコンテナーは監視されますが、サブフォルダーは監視されません。
@@ -94,6 +94,9 @@ ms.locfileid: "91318298"
     > ![HTTP 設定](media/how-to-trigger-published-pipeline/http-settings.png)
 
 1. **[保存]** を選択するとスケジュールの準備ができます。
+
+> [!IMPORTANT]
+> ロールベースのアクセス制御 (RBAC) を使用してパイプラインへのアクセスを管理している場合は、[パイプライン シナリオ (トレーニングまたはスコアリング) のアクセス許可を設定](how-to-assign-roles.md#q-what-are-the-permissions-needed-to-perform-some-common-scenarios-in-the-azure-machine-learning-service)します。
 
 ## <a name="next-steps"></a>次のステップ
 

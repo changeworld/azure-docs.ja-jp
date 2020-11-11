@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 5c1a7de386baeb4b89fd12bd89236ea2e0348a57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5627aa614a7e2819b6f3cc1401c8458552e57219
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357218"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085175"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Service Fabric Explorer を使用したクラスターの視覚化
 
@@ -69,7 +69,7 @@ Service Fabric クラスターのノードは、障害ドメインとアップ�
 
 アプリケーション ビューでは、Service Fabric の論理階層 (アプリケーション、サービス、パーティション、レプリカ) 内を移動できます。
 
-次の例では、**MyApp** アプリケーションは、**MyStatefulService** と **WebService** の 2 つのサービスで構成されています。 **MyStatefulService** はステートフルであるため、1 つのプライマリ レプリカと 2 つのセカンダリ レプリカがあるパーティションが 1 つ含まれています。 これに対して、WebSvcService はステートレスであり、インスタンスが 1 つだけ含まれています。
+次の例では、 **MyApp** アプリケーションは、 **MyStatefulService** と **WebService** の 2 つのサービスで構成されています。 **MyStatefulService** はステートフルであるため、1 つのプライマリ レプリカと 2 つのセカンダリ レプリカがあるパーティションが 1 つ含まれています。 これに対して、WebSvcService はステートレスであり、インスタンスが 1 つだけ含まれています。
 
 ![Service Fabric Explorer のアプリケーション ビュー][sfx-application-tree]
 
@@ -117,7 +117,7 @@ EventStore は Service Fabric Explorer と REST API で使用可能な Service F
 ## <a name="image-store-viewer"></a>Image Store Viewer
 Image Store Viewer は、Native Image Store を使用している場合に提供される機能であり、これを使用して、イメージ ストアの現在の内容を表示したり、ファイルやフォルダーの情報を取得したり、ファイルやフォルダーを削除したりできます。
 
-![Service Fabric Explorer のクラスター マップ][sfx-imagestore]
+![Image Store Viewer を示しているスクリーンショット。][sfx-imagestore]
 
 ## <a name="backup-and-restore"></a>バックアップと復元
 Service Fabric Explorer には、[バックアップと復元](./service-fabric-reliable-services-backup-restore.md)とのインターフェイスを提供する機能が用意されています。 SFX でバックアップと復元の機能を表示するには、詳細設定モードを有効にする必要があります。

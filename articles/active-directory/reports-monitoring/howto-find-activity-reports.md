@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b705cf6ac6fd25c7794db7651db5bc5c5c0e790c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42afa073da9197c12e4cbd316d311a7699d9a95f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230621"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131056"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure Portal でアクティビティ レポートを見つける
 
@@ -48,7 +48,7 @@ ms.locfileid: "89230621"
 
 ### <a name="filtering-on-audit-logs"></a>監査ログのフィルター処理
 
-監査レポートで高度なフィルター処理を使用すると、 **[カテゴリ]** フィルターで指定することで、特定のカテゴリの監査データにアクセスできます。 たとえば、ユーザーに関連するすべてのアクティビティを表示するには、**UserManagement** カテゴリを選択します。 
+監査レポートで高度なフィルター処理を使用すると、 **[カテゴリ]** フィルターで指定することで、特定のカテゴリの監査データにアクセスできます。 たとえば、ユーザーに関連するすべてのアクティビティを表示するには、 **UserManagement** カテゴリを選択します。 
 
 次のようなカテゴリがあります。
 
@@ -91,7 +91,7 @@ ms.locfileid: "89230621"
 
 ## <a name="sign-ins-report"></a>サインイン レポート 
 
-**[サインイン]** ビューには、すべてのユーザー サインインと、**アプリケーションの使用状況**レポートが表示されます。 アプリケーションの使用状況に関する情報は、 **[エンタープライズ アプリケーション]** の概要の **[管理]** セクションで確認することもできます。
+**[サインイン]** ビューには、すべてのユーザー サインインと、 **アプリケーションの使用状況** レポートが表示されます。 アプリケーションの使用状況に関する情報は、 **[エンタープライズ アプリケーション]** の概要の **[管理]** セクションで確認することもできます。
 
 サインイン レポートにアクセスするには:
 
@@ -149,7 +149,7 @@ ms.locfileid: "89230621"
 
 アクティビティ ログ (監査またはサインイン) をダウンロードしましたが、選択した期間のレコードがまったく表示されません。 なぜですか? 
 
- ![レポーティング](./media/troubleshoot-missing-data-download/01.png)
+ ![スクリーンショットには、アクティビティ レポートの [ダウンロード] ボタンが示されています。](./media/troubleshoot-missing-data-download/01.png)
  
 #### <a name="cause"></a>原因
 
@@ -165,7 +165,7 @@ Azure portal でアクティビティ ログをダウンロードする場合は
 
 Azure Portal でいくつかの操作を実行したので、`Activity logs > Audit Logs` ブレードでこれらの操作の監査ログが表示されるはずですが、見つかりません。
 
- ![レポーティング](./media/troubleshoot-missing-audit-data/01.png)
+ ![スクリーンショットには、アクティビティ レポートが示されています。](./media/troubleshoot-missing-audit-data/01.png)
  
 #### <a name="cause"></a>原因
 
@@ -186,7 +186,7 @@ Azure Portal でいくつかの操作を実行したので、`Activity logs > Au
 
 最近 Azure portal にサインインしたので `Activity logs > Sign-ins` ブレードにこれらの操作のサインイン ログが表示されるはずですが、見つかりません。
 
- ![レポーティング](./media/troubleshoot-missing-audit-data/02.png)
+ ![スクリーンショットには、Azure Active Directory の [サインイン] が示されています。](./media/troubleshoot-missing-audit-data/02.png)
  
 #### <a name="cause"></a>原因
 
@@ -207,7 +207,7 @@ Azure Portal でいくつかの操作を実行したので、`Activity logs > Au
 
 Azure portal で 30 日より前のサインイン データおよび監査データを表示できません。 なぜですか? 
 
- ![レポーティング](./media/troubleshoot-missing-audit-data/03.png)
+ ![スクリーンショットには、[日付] メニューが示されています。](./media/troubleshoot-missing-audit-data/03.png)
 
 #### <a name="cause"></a>原因
 

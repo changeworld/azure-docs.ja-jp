@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: daebd6a4a00d82706ceda68f94736f21b8fe5a84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1dd4baecd0e1f817c93652fbc0766069ccf5583
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81606394"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040137"
 ---
 # <a name="creating-a-new-branch-in-mapping-data-flow"></a>マッピング データ フローでの新しい分岐の作成
 
@@ -23,8 +23,8 @@ ms.locfileid: "81606394"
 
 他の変換と同様に、変換リストから新しい分岐を追加できます。 **[New Branch]** (新しい分岐) は、分岐しようとしている変換の後に既存の変換が行われる場合にのみ、アクションとして利用可能になります。
 
-![新しい分岐の追加](media/data-flow/new-branch2.png "新しい分岐の追加")
+![[Multiple inputs/outputs]\(複数の入出力\) メニューの [New branch]\(新しい分岐\) オプションを示しているスクリーンショット。](media/data-flow/new-branch2.png "新しい分岐の追加")
 
 次の例では、データ フローがタクシー乗車データを読み取っています。 曜日とベンダーの両方で集計された出力が必要です。 同じソースから読み取る 2 つの異なるデータ フローを作成するのではなく、新しい分岐を追加できます。 これにより、両方の集計を同じデータ フローの一部として実行できます。 
 
-![新しい分岐の追加](media/data-flow/new-branch.png "新しい分岐の追加")
+![ソースからの 2 つの分岐があるデータ フローを示しているスクリーンショット。](media/data-flow/new-branch.png "新しい分岐の追加")

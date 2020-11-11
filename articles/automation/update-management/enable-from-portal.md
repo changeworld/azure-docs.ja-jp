@@ -5,16 +5,16 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 681c5e169acc30cc6708b56b5ba180d2729919e5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 73813ffbb6ac1839a48fc455dec5f6ad26ed0164
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221736"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348791"
 ---
 # <a name="enable-update-management-from-the-azure-portal"></a>Azure portal から Update Management を有効にする
 
-この記事では、ブラウザーで Azure portal にアクセスして、VM の [Update Management](overview.md) 機能を有効にする方法を説明します。 Azure VM を大規模に有効にするには、Update Management を使用して既存の VM を有効にする必要があります。
+この記事では、ブラウザーで Azure portal にアクセスして、VM の [Update Management](overview.md) 機能を有効にする方法を説明します。 Azure VM を大規模に有効にするには、Update Management を使用して既存の Azure VM を有効にする必要があります。
 
 VM の管理に使用できるリソース グループの数は、[Resource Manager のデプロイの上限](../../azure-resource-manager/templates/cross-scope-deployment.md)によって制限されます。 Resource Manager のデプロイ (更新プログラムのデプロイと混同しないでください) は、デプロイあたり 5 つのリソース グループに制限されています。 それらのリソース グループのうちの 2 つは、Log Analytics ワークスペース、Automation アカウント、および関連リソースを構成するために予約されています。 Update Management による管理のために選択できるリソース グループは、これで 3 つ残ります。 この制限は、Automation 機能によって管理できるリソース グループの数ではなく、同時セットアップのみに適用されます。
 
@@ -33,14 +33,14 @@ https://portal.azure.com で Azure にサインインします。
 
 ## <a name="enable-update-management"></a>Update Management の有効化
 
-1. Azure Portal で**仮想マシン**に移動します。
+1. Azure Portal で **仮想マシン** に移動します。
 
-2. チェックボックスを使用して、Update Management に追加する VM を選択します。 同時に最大 3 つの異なるリソース グループに対してマシンを追加できます。 Azure VM は、ご使用の Automation アカウントの場所に関係なく任意のリージョンに存在できます。
+2. **仮想マシン** ページで、チェックボックスを使用して、Update Management に追加する VM を選択します。 同時に最大 3 つの異なるリソース グループに対してマシンを追加することができます。 Azure VM は、ご使用の Automation アカウントの場所に関係なく任意のリージョンに存在できます。
 
     ![VM の一覧](media/enable-from-portal/vmlist.png)
 
     > [!TIP]
-    > フィルター コントロールを使用して、異なるサブスクリプション、場所、およびリソース グループから VM を選択します。 一番上のチェックボックスをオンにすると、一覧のすべての仮想マシンを選択できます。
+    > フィルター コントロールを使用して、異なるサブスクリプション、場所、およびリソース グループから VM を選択します。 一番上のチェック ボックスをオンにすると、一覧のすべての仮想マシンを選択できます。
 
     [ ![Update Management を有効にする](./media/enable-from-portal/onboard-feature.png)](./media/enable-from-portal/onboard-feature-expanded.png#lightbox)
 

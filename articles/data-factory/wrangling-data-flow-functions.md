@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 3ee7761d43710e0833eb8002851e286ce5449983
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: c56c52193f433571f16e4acf7bd6e7b89641b26f
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636121"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233952"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>ラングリング データ フローの変換関数
 
@@ -25,7 +25,7 @@ Azure Data Factory のラングリング データ フローを使用すると�
 
 現時点では、Power Query M 関数は、作成中に利用可能であっても、そのすべてがデータ ラングリングでサポートされているわけではありません。 ラングリング データ フローを構築しているときに、関数がサポートされていない場合は、次のエラー メッセージが表示されます。
 
-`The wrangling data flow is invalid. Expression.Error: The transformation logic isn't supported. Please try a simpler expression`
+`The Wrangling Data Flow is invalid. Expression.Error: The transformation logic is not supported. Please try a simpler expression.`
 
 サポートされている Power Query M 関数の一覧を次に示します。
 
@@ -76,7 +76,7 @@ Azure Data Factory のラングリング データ フローを使用すると�
 
 [Table.Group](/powerquery-m/table-group) を使用して値を集計します。
 * 集計関数と共に使用する必要があります
-* サポートされている集計関数: [Table.RowCount](/powerquery-m/table-rowcount)、   [List.Sum](/powerquery-m/list-sum)、   [List.Count](/powerquery-m/list-count)、   [List.Average](/powerquery-m/list-average)、   [List.Min](/powerquery-m/list-min)、   [List.Max](/powerquery-m/list-max)、   [List.StandardDeviation](/powerquery-m/list-standarddeviation)、   [List.First](/powerquery-m/list-first)、   [List.Last](/powerquery-m/list-last)
+* サポートされている集計関数: [List.Sum](/powerquery-m/list-sum)、[List.Count](/powerquery-m/list-count)、[List.Average](/powerquery-m/list-average)、[List.Min](/powerquery-m/list-min)、[List.Max](/powerquery-m/list-max)、[List.StandardDeviation](/powerquery-m/list-standarddeviation)、[List.First](/powerquery-m/list-first)、[List.Last](/powerquery-m/list-last)
 
 ## <a name="sorting"></a>並べ替え
 
@@ -96,7 +96,7 @@ Azure Data Factory のラングリング データ フローを使用すると�
 | Table.NestedJoin | 結合を行うだけでは、検証エラーが発生します。 機能させるには、列を展開する必要があります。 |
 | Table.Distinct | 重複する行の削除はサポートされていません。 |
 | Table.RemoveLastN | 下端の行の削除はサポートされていません。 |
-| Table.RowCount | サポートされていませんが、すべてのセルが空である列を追加し (条件列を使用できます)、その後、その列で group by を使用することによって実現できます。 Table.Group はサポートされています。 | 
+| Table.RowCount | サポートされていませんが、値 1 が含まれるカスタム列を追加した後、その列を List.Sum で集計することによって実現できます。 Table.Group はサポートされています。 | 
 | 行レベルのエラー処理 | 行レベルのエラー処理は現在サポートされていません。 たとえば、列から数値以外の値を除外する方法の 1 つは、テキスト列を数値に変換することです。 変換が失敗したすべてのセルはエラー状態になり、フィルター処理する必要があります。 このシナリオは、ラングリング データ フローでは使用できません。 |
 | Table.Transpose | サポートされていません |
 | Table.Pivot | サポートされていません |

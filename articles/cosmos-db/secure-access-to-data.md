@@ -4,17 +4,19 @@ description: 主キー、読み取り専用キー、ユーザー、アクセス�
 author: thomasweiss
 ms.author: thweiss
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 574592d4434b9d8c49086b82bab0b8775fb67e03
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 936e98b3efa27f2d0a85c373ccae0ab223f4fd95
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371734"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340908"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB のデータへのアクセスをセキュリティで保護する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) に格納されたデータへのアクセスをセキュリティ保護する方法の概要を説明します。
 
@@ -118,6 +120,12 @@ User user = await database.CreateUserAsync("User 1");
 
 > [!NOTE]
 > ストアド プロシージャを実行するには、ストアド プロシージャを実行するコンテナーの All 権限を持つ必要があります。
+
+[データ プレーン要求に関する診断ログ](cosmosdb-monitor-resource-logs.md)を有効にすると、アクセス許可に対応する次の 2 つのプロパティがログに記録されます。
+
+* **resourceTokenPermissionId** - このプロパティは、指定したリソース トークンのアクセス許可 ID を示します。 
+
+* **resourceTokenPermissionMode** - このプロパティは、リソース トークンの作成時に設定したアクセス許可モードを示します。 アクセス許可モードとして指定できるのは、"all" や "read" などの値です。
 
 ### <a name="code-sample-to-create-permission"></a>アクセス許可を作成するコード サンプル
 

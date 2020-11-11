@@ -12,6 +12,8 @@
   items:
     - name: SCIM エンドポイントの構築とプロビジョニングの構成
       href: use-scim-to-provision-users-and-groups.md
+    - name: 属性マッピングのカスタマイズ
+      href: customize-application-attributes.md
     - name: アプリ固有のプロビジョニングに関するチュートリアル
       href: /azure/active-directory/saas-apps
 - name: 概念
@@ -30,8 +32,6 @@
   items:
     - name: ギャラリー アプリのプロビジョニングを構成する
       href: configure-automatic-user-provisioning-portal.md
-    - name: 属性マッピングのカスタマイズ
-      href: customize-application-attributes.md
     - name: ユーザーとグループをスコープに含める、または除外する
       items:
         - name: プロビジョニングするユーザーまたはグループの範囲指定

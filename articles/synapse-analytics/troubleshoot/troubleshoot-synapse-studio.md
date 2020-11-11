@@ -8,28 +8,28 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 33022d005deca5d1350278218fb6f1fca1a35ca1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3fe31f83ccc0dcbd2d61a7c70d40a64da08d13a1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287749"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321024"
 ---
 # <a name="azure-synapse-studio-preview-troubleshooting"></a>Azure Synapse Studio (プレビュー) のトラブルシューティング
 
 このトラブルシューティング ガイドでは、ネットワーク接続の問題についてサポート チケットを開くときに入力する情報について説明します。 適切な情報があれば、問題をより迅速に解決できる可能性があります。
 
-## <a name="sql-on-demand-preview-service-connectivity-issue"></a>SQL オンデマンド (プレビュー) サービスの接続の問題
+## <a name="serverless-sql-pool-preview-service-connectivity-issue"></a>サーバーレス SQL プール (プレビュー) サービスの接続の問題
 
 ### <a name="symptom-1"></a>現象 1
 
-[接続先] ドロップダウンで、[SQL オンデマンド] オプションがグレー表示されます。
+[接続先] ドロップダウンで、[Serverless SQL pool]\(サーバーレス SQL プール\) オプションがグレー表示される。
 
 ![現象 1](media/troubleshooting-synapse-studio/symptom1v2.png)
 
 ### <a name="symptom-2"></a>現象 2
 
-"SQL オンデマンド" を使用してクエリを実行すると、"サーバーへの接続を確立できませんでした" というエラー メッセージが表示されます。
+[Serverless SQL pool]\(サーバーレス SQL プール\) を使用してクエリを実行すると、[Failed to establish connection to server]\(サーバーへの接続を確立できませんでした\) というエラー メッセージが表示される。
 
 ![現象 2](media/troubleshooting-synapse-studio/symptom2.png)
  
@@ -45,7 +45,7 @@ ms.locfileid: "91287749"
 
 トラブルシューティングを開始するには、実行した操作を Azure Synapse Studio で再試行してください。
 
-- 現象 1 では、[SQL スクリプト] タブの "データベースの使用" ドロップダウンの右側にある [更新] ボタンを選択し、"SQL オンデマンド" が表示されるかどうかを確認します。
+- 現象 1 については、[SQL スクリプト] タブの [データベースの使用] ドロップダウンの右側にある [更新] ボタンを選択し、[Serverless SQL pool]\(サーバーレス SQL プール\) が表示されるかどうかを確認します。
 - 現象 2 については、クエリをもう一度実行して、正常に実行されているかどうかを確認してください。
 
 問題がまだ発生する場合は、ブラウザーで F12 キーを押して、"開発者ツール" (DevTools) を開きます。
@@ -61,7 +61,7 @@ URL 列が次のパターンに一致する項目を探します。
 
 `https://[*A*]-ondemand.database.windows.net:1443/databases/[*B*]/query?api-version=2018-08-01-preview&application=ArcadiaSqlOnDemandExplorer`
 
-ここで、[*A*] はワークスペース名で、"-ondemand" は "-sqlod" などになります。[*B*] はデータベース名 ("master" など) である必要があります。 URL の値が同じでメソッドの値が異なる (OPTIONS と POST) 項目は、最大 2 つである必要があります。 この 2 つの項目の状態列に "200" または "20x" が表示されているかどうかを確認します。"x" は任意の 1 桁の数字です。
+ここで、[ *A* ] はワークスペース名で、"-ondemand" は "-sqlod" などになります。[ *B* ] はデータベース名 ("master" など) である必要があります。 URL の値が同じでメソッドの値が異なる (OPTIONS と POST) 項目は、最大 2 つである必要があります。 この 2 つの項目の状態列に "200" または "20x" が表示されているかどうかを確認します。"x" は任意の 1 桁の数字です。
 
 いずれか一方に "20x" 以外のものが含まれている場合は、次のようになります。
 
@@ -71,7 +71,7 @@ URL 列が次のパターンに一致する項目を探します。
 
     - ERR_NAME_NOT_RESOLVED が表示され、10 分以内にワークスペースを作成した場合は、10 分間待機してから、問題がまだ存在するかどうかを確認してください。
     - ERR_INTERNET_DISCONNECTED または ERR_NETWORK_CHANGED が表示された場合は、PC ネットワーク接続に問題があることを示している可能性があります。 ネットワーク接続を確認して、操作をやり直してください。
-    - ERR_CONNECTION_RESET、ERR_SSL_PROTOCOL_ERROR、または "SSL" を含むその他のエラー コードが表示された場合は、ローカルの SSL 構成に問題が発生しているか、SQL オンデマンド サーバーへのアクセスがネットワーク管理者によってブロックされていることを示している可能性があります。 サポート チケットを開き、説明にエラー コードを添付します。
+    - ERR_CONNECTION_RESET、ERR_SSL_PROTOCOL_ERROR、その他 "SSL" を含むエラー コードが表示された場合は、ローカルの SSL 構成に問題が発生しているか、サーバーレス SQL プール サーバーへのアクセスがネットワーク管理者によってブロックされていることを示している可能性があります。 サポート チケットを開き、説明にエラー コードを添付します。
     - ERR_NETWORK_ACCESS_DENIED が表示された場合は、ローカル ファイアウォール ポリシーで *.database.windows.net ドメインまたはリモート ポート 1443 へのアクセスがブロックされているかどうかを管理者に確認する必要があります。
     - 必要に応じて、別のコンピューターまたはネットワーク環境で同じ操作を直ちに実行して、PC 上のネットワーク構成の問題を除外します。
 

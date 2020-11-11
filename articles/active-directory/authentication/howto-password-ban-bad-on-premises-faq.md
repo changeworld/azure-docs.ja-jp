@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2f24eb64a5418a9963fd58611314ccbc6b72ec4
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 27075af51c8deb886a060c81927f30bb70b5f638
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968465"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077661"
 ---
 # <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>オンプレミスでの Azure AD パスワード保護に関するよく寄せられる質問
 
@@ -32,9 +32,9 @@ ms.locfileid: "91968465"
 
 **Q:オンプレミスの Azure AD パスワード保護はパブリックでないクラウドでサポートされますか?**
 
-いいえ。オンプレミスの Azure AD パスワード保護は、パブリック クラウドでのみサポートされます。 パブリックでないクラウドの提供開始についての日付は発表されていません。
+オンプレミスの Azure AD パスワード保護は、パブリック クラウドと Arlington クラウドでサポートされます。 その他のクラウドの提供開始についての日付は発表されていません。
 
-Azure AD ポータルでは、パブリック クラウド以外の場合でもオンプレミス固有の [Windows Server Active Directory のパスワード保護] 構成を変更できます。このような変更は保存されますが、そうでなければ実行されません。 パブリック クラウド以外の資格情報が使用されたときのオンプレミスのプロキシ エージェントまたはフォレストの登録はサポートされていません。また、そのような登録の試行は常に失敗します。
+Azure AD ポータルでは、サポートされているクラウド以外の場合でもオンプレミス固有の [Windows Server Active Directory のパスワード保護] 構成を変更できます。このような変更は保存されますが、そうでなければ実行されません。 サポートされていないクラウドでは、オンプレミスのプロキシ エージェントまたはフォレストの登録はサポートされません。そのような登録の試行は常に失敗します。
 
 **Q:どのようにして Azure AD パスワード保護の利点を自分のオンプレミスのユーザーのサブセットに適用できますか?**
 

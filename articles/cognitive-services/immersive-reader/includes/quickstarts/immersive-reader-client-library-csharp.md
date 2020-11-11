@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 1c7587a4434a84c6934179393baa5ae684f9b1fd
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: cef5aaae58797e38745b3f5164c171581a005562
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92116737"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371978"
 ---
 [Immersive Reader](https://www.onenote.com/learningtools) は、新しい読者、言語学習者、ディスレクシア (失読症) などの学習障碍者の読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。 アプリケーションに Immersive Reader を使用すると、テキストを分離することによって、集中しやすくする、よく用いられる単語に画像を表示する、品詞を強調表示する、選択テキストを読み上げる、単語や文章をリアルタイムで翻訳する、といったことができます。
 
@@ -42,7 +42,7 @@ Model-View-Controller が組み込まれた ASP.NET Core Web アプリケーシ�
 
 ### <a name="configure-authentication-values"></a>認証の値の構成
 
-_ソリューション エクスプローラー_ でプロジェクトを右クリックし、 **[ユーザー シークレットの管理]** を選択します。 これにより、 _secrets.json_ という名前のファイルが開きます。 このファイルはソース管理にチェックインされません。 [こちら](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows&preserve-view=true)をご覧ください。 _secrets.json_ の内容を以下のように置き換え、イマーシブ リーダー リソースを作成したときに取得した値を指定します。
+_ソリューション エクスプローラー_ でプロジェクトを右クリックし、 **[ユーザー シークレットの管理]** を選択します。 これにより、 _secrets.json_ という名前のファイルが開きます。 このファイルはソース管理にチェックインされません。 [こちら](/aspnet/core/security/app-secrets?preserve-view=true&tabs=windows&view=aspnetcore-3.1)をご覧ください。 _secrets.json_ の内容を以下のように置き換え、イマーシブ リーダー リソースを作成したときに取得した値を指定します。
 
 ```json
 {
@@ -218,7 +218,7 @@ public async Task<JsonResult> GetTokenAndSubdomain()
 
 ## <a name="add-javascript-to-handle-launching-immersive-reader"></a>Immersive Reader の起動を処理するための JavaScript の追加
 
-イマーシブ リーダー ライブラリは、イマーシブ リーダーの起動、イマーシブ リーダーのボタンの表示などの機能を提供します。 [こちら](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference)をご覧ください。
+イマーシブ リーダー ライブラリは、イマーシブ リーダーの起動、イマーシブ リーダーのボタンの表示などの機能を提供します。 [こちら](../../reference.md)をご覧ください。
 
 _Views\Home\Index.cshtml_ の末尾に、次のコードを追加します。
 

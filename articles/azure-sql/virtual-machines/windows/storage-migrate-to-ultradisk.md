@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4ddafd9fbeda1752a782085244597aea3ccbdd2d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 12ba0900f2499965f7843672183310dfecfbab2b
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91271904"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146673"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>ログ ディスクを Ultra Disk に移行する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -50,7 +50,7 @@ Ultra Disk は、VM のサイズとリージョンのサブセットでサポー
 
 1. **[Ultra Disk の互換性を有効にする]** に対して **[はい]** を選択します。 
 
-   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="Azure portal の [設定] で [ディスク] の追加設定を選択する":::
+   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="[はい] オプションを示すスクリーンショット。":::
 
 1. **[保存]** を選択します。 
 
@@ -150,7 +150,7 @@ SSMS を使用して既存のファイルを新しい場所に移動します。
 1. ウィザードに従って、データベースをデタッチします。 
 1. ファイル エクスプローラーを使用して、ログ ファイルを新しい場所に手動で移動します。
 1. SQL Server Management Studio でデータベースをアタッチします。
-   1. **オブジェクト エクスプローラー**で **[データベース]** を右クリックして、 **[データベースのアタッチ]** を選択します。 
+   1. **オブジェクト エクスプローラー** で **[データベース]** を右クリックして、 **[データベースのアタッチ]** を選択します。 
    1. ダイアログ ボックスを使用して、新しい場所にあるログ ファイルを含めて各ファイルを追加します。 
    1. **[OK]** を選択し、データベースをアタッチします。 
 

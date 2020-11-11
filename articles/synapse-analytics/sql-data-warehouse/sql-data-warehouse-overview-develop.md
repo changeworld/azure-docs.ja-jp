@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics で Synapse SQL プールを開発するためのリソース
-description: Azure Synapse Analytics に関する開発コンセプト、設計上の決定、レコメンデーション、およびコーディング技法。
+title: Azure Synapse Analytics で専用 SQL プールを開発するためのリソース
+description: Azure Synapse Analytics の専用 SQL プールに関する開発コンセプト、設計上の決定、レコメンデーション、およびコーディング技法。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,18 +10,20 @@ ms.subservice: sql-dw
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 95f712f196c37650b52220c9e34f6cb6b50bff23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f158655cd7aeba647480325966c7f0cfcf65b13c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460611"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322132"
 ---
-# <a name="design-decisions-and-coding-techniques-for-a-synapse-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の Synapse SQL プールの設計上の決定とコーディング技法 
- この記事では、Azure Synapse の SQL プールに関する主要な設計上の決定、レコメンデーション、およびコーディング技法をより深く理解するために、追加のリソースについて説明します。
+# <a name="design-decisions-and-coding-techniques-for-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールの設計上の決定とコーディング技法 
+
+ この記事では、Azure Synapse の専用 SQL プールに関する主要な設計上の決定、レコメンデーション、およびコーディング技法をより深く理解するために、追加のリソースについて説明します。
 
 ## <a name="key-design-decisions"></a>主要な設計上の決定
-次の記事では、Azure Synapse の SQL プール機能を使用して分散データウェア ハウスを開発するための概念と設計上の意思決定について説明しています。
+
+次の記事では、Azure Synapse の専用 SQL プール機能を使用して分散データウェア ハウスを開発するための概念と設計上の意思決定について説明しています。
 
 * [connections](../sql/connect-overview.md)
 * [concurrency](resource-classes-for-workload-management.md)
@@ -34,7 +36,8 @@ ms.locfileid: "89460611"
 * [統計](sql-data-warehouse-tables-statistics.md)
 
 ## <a name="development-recommendations-and-coding-techniques"></a>開発における推奨事項とコーディング技法
-次の記事では、SQL プールを開発するための具体的なコーディング技法、ヒント、およびレコメンデーションについて説明しています。
+
+次の記事では、専用 SQL プールを開発するための具体的なコーディング技法、ヒント、およびレコメンデーションについて説明しています。
 
 * [ストアド プロシージャ](sql-data-warehouse-develop-stored-procedures.md)
 * [ラベル](sql-data-warehouse-develop-label.md)
@@ -46,4 +49,5 @@ ms.locfileid: "89460611"
 * [変数の代入](sql-data-warehouse-develop-variable-assignment.md)
 
 ## <a name="next-steps"></a>次のステップ
+
 詳細な参照情報については、[T-SQL ステートメント](sql-data-warehouse-reference-tsql-statements.md)に関するページをご覧ください。

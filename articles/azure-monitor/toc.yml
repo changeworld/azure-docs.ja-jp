@@ -114,15 +114,7 @@
     - name: データ ソース
       href: platform/data-sources.md
     - name: データ プラットフォーム
-      items:
-        - name: 概要
-          href: platform/data-platform.md
-        - name: ログ
-          href: platform/data-platform-logs.md
-        - name: メトリック
-          href: platform/data-platform-metrics.md
-        - name: Event Hubs へのデータのストリーム配信
-          href: platform/stream-monitoring-data-event-hubs.md
+      href: platform/data-platform.md
     - name: データのセキュリティ
       items:
         - name: ログ データ
@@ -188,98 +180,13 @@
               href: app/pricing.md
             - name: ログ データの使用量とコスト
               href: platform/manage-cost-storage.md
-    - name: プラットフォーム ログ
+    - name: Azure Monitor ログ
       items:
         - name: 概要
-          displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/platform-logs-overview.md
-        - name: アクティビティ ログ
-          href: platform/activity-log.md
-        - name: リソース ログ
-          href: platform/resource-logs.md
-        - name: 診断設定
-          displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/diagnostic-settings.md
-    - name: Log Analytics
-      items:
-        - name: 概要
-          displayname: 'Log Analytics, log query, log queries, query, queries'
-          href: log-query/log-query-overview.md
-        - name: チュートリアル
-          displayname: 'Log Analytics workspace, log query, log queries, query, queries'
-          href: log-query/get-started-portal.md
-        - name: クエリ スコープ
-          href: log-query/scope.md
-        - name: Azure Data Explorer でのクエリ
-          href: platform/azure-data-explorer-monitor-proxy.md
-        - name: ログ クエリ
-          items:
-            - name: 標準列
-              href: platform/log-standard-columns.md
-            - name: クエリの監査
-              href: log-query/query-audit.md
-            - name: クエリの最適化
-              href: log-query/query-optimization.md
-            - name: 関数
-              href: log-query/functions.md
-            - name: テキスト データの解析
-              href: log-query/parse-text.md
-            - name: クエリの例
-              href: log-query/saved-queries.md
-            - name: コンピューター グループ
-              href: platform/computer-groups.md
-        - name: クエリ言語
-          items:
-            - name: KQL リファレンス
-              href: /azure/data-explorer/kusto/query/
-            - name: Azure Data Explorer との違い
-              href: log-query/data-explorer-difference.md
-            - name: 例
-              href: log-query/examples.md
-            - name: スマート分析の例
-              href: log-query/smart-analytics.md
-            - name: レッスン
-              items:
-                - name: 文字列操作
-                  href: log-query/string-operations.md
-                - name: 日付と時刻の操作
-                  href: log-query/datetime-operations.md
-                - name: 集計関数
-                  href: log-query/aggregations.md
-                - name: 高度な集計
-                  href: log-query/advanced-aggregations.md
-                - name: 結合
-                  href: log-query/joins.md
-                - name: JSON とデータ構造
-                  href: log-query/json-data-structures.md
-                - name: 詳細クエリ書き込み
-                  href: log-query/advanced-query-writing.md
-                - name: グラフとダイアグラム
-                  href: log-query/charts.md
-                - name: 検索クエリ
-                  href: log-query/search-queries.md
-            - name: チートシート
-              items:
-                - name: SQL
-                  href: log-query/sql-cheatsheet.md
-                - name: Splunk
-                  href: log-query/splunk-cheatsheet.md
-        - name: リソース間のクエリ
-          items:
-            - name: 概要
-              href: log-query/cross-workspace-query.md
-            - name: アプリの式
-              href: log-query/app-expression.md
-            - name: ワークスペースの式
-              href: log-query/workspace-expression.md
-            - name: リソースの式
-              href: log-query/resource-expression.md
-            - name: アプリケーション データ リソースの統合
-              href: log-query/unify-app-resource-data.md
+          displayname: 'Azure Monitor Logs, Logs, Log Analytics, log query, log queries, query, queries'
+          href: platform/data-platform-logs.md
         - name: ワークスペースとクラスター
           items:
-            - name: ワークスペース デプロイの設計
-              href: platform/design-logs-deployment.md
             - name: ワークスペースの作成
               items:
                 - name: Azure portal
@@ -288,6 +195,8 @@
                   href: learn/quick-create-workspace-cli.md
                 - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
+            - name: ワークスペース デプロイの設計
+              href: platform/design-logs-deployment.md
             - name: ワークスペースの監視
               href: platform/monitor-workspace.md
             - name: ワークスペースの削除と復旧
@@ -301,6 +210,50 @@
               href: platform/service-providers.md
             - name: Dedicated クラスター
               href: log-query/logs-dedicated-clusters.md
+        - name: Log Analytics
+          items:
+            - name: 概要
+              displayname: 'Log Analytics, log query, log queries, query, queries'
+              href: log-query/log-analytics-overview.md
+            - name: チュートリアル
+              displayname: 'Log Analytics workspace, log query, log queries, query, queries'
+              href: log-query/log-analytics-tutorial.md
+            - name: クエリ スコープ
+              href: log-query/scope.md
+            - name: クエリの例
+              href: log-query/example-queries.md
+        - name: ログ クエリ
+          items:
+            - name: 概要
+              displayname: 'log query, log queries, query, queries'
+              href: log-query/log-query-overview.md
+            - name: KQL リファレンス
+              href: /azure/data-explorer/kusto/query/
+            - name: サンプル クエリ
+              href: /azure/data-explorer/kusto/query/samples?&pivots=azuremonitor
+            - name: 標準列
+              href: platform/log-standard-columns.md
+            - name: クエリの最適化
+              href: log-query/query-optimization.md
+            - name: 関数
+              href: log-query/functions.md
+            - name: テキスト データの解析
+              href: log-query/parse-text.md
+            - name: コンピューター グループ
+              href: platform/computer-groups.md
+            - name: リソース間のクエリ
+              items:
+                - name: 概要
+                  displayname: cross-resource queries
+                  href: log-query/cross-workspace-query.md
+                - name: アプリの式
+                  href: log-query/app-expression.md
+                - name: ワークスペースの式
+                  href: log-query/workspace-expression.md
+                - name: リソースの式
+                  href: log-query/resource-expression.md
+                - name: アプリケーション データ リソースの統合
+                  href: log-query/unify-app-resource-data.md
         - name: データのエクスポート
           items:
             - name: ワークスペースのデータのエクスポート
@@ -309,16 +262,33 @@
               href: platform/logs-export-logic-app.md
             - name: データ エクスプローラーを使用してエクスポートされたデータにクエリを実行する
               href: platform/azure-data-explorer-query-storage.md
-    - name: メトリックス エクスプローラー
+    - name: Azure Monitor メトリック
       items:
-        - name: メトリックス エクスプローラーの概要
-          href: platform/metrics-getting-started.md
-        - name: メトリックス エクスプローラーの高度な機能
-          href: platform/metrics-charts.md
-        - name: メトリック グラフの例
-          href: platform/metric-chart-samples.md
-        - name: メトリック グラフのトラブルシューティング
-          href: platform/metrics-troubleshoot.md
+        - name: 概要
+          displayname: Metrics
+          href: platform/data-platform-metrics.md
+        - name: メトリックス エクスプローラー
+          items:
+            - name: メトリックス エクスプローラーの概要
+              href: platform/metrics-getting-started.md
+            - name: メトリックス エクスプローラーの高度な機能
+              href: platform/metrics-charts.md
+            - name: メトリック グラフの例
+              href: platform/metric-chart-samples.md
+            - name: メトリック グラフのトラブルシューティング
+              href: platform/metrics-troubleshoot.md
+    - name: プラットフォーム ログ
+      items:
+        - name: 概要
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/platform-logs-overview.md
+        - name: アクティビティ ログ
+          href: platform/activity-log.md
+        - name: リソース ログ
+          href: platform/resource-logs.md
+        - name: 診断設定
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/diagnostic-settings.md
     - name: データ コレクション
       items:
         - name: データ収集ルール

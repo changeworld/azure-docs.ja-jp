@@ -4,12 +4,12 @@ description: Linux VM に対する Azure Policy のゲスト構成ポリシー�
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6b072a615cfc31f250d1a605a20e1628d601bb25
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 240f22a076b5f185ebe3028b201b66d187c9bb2d
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676627"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346878"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux 用のゲスト構成ポリシーを作成する方法
 
@@ -24,7 +24,11 @@ Linux を監査する場合、ゲスト構成では [Chef InSpec](https://www.in
 Azure または非 Azure マシンの状態を検証するための独自の構成を作成するには、次のアクションを使用します。
 
 > [!IMPORTANT]
+> Azure Government 環境と Azure China 環境でのゲスト構成を使用したカスタム ポリシー定義は、プレビュー機能です。
+>
 > Azure の仮想マシンで監査を実行するには、ゲスト構成拡張機能が必要です。 すべての Linux マシンに拡張機能を大規模にデプロイするには、ポリシー定義 `Deploy prerequisites to enable Guest Configuration Policy on Linux VMs` を割り当てます。
+> 
+> カスタム コンテンツ パッケージでは、シークレットや機密情報を使用しないでください。
 
 ## <a name="install-the-powershell-module"></a>PowerShell モジュールをインストールする
 
@@ -49,7 +53,9 @@ Azure または非 Azure マシンの状態を検証するための独自の構�
 - Windows
 
 > [!NOTE]
-> コマンドレット "Test-GuestConfigurationPackage" には、OMI に対する依存関係があるため、OpenSSL バージョン 1.0 が必要です。 これにより、OpenSSL 1.1 以降を使用するすべての環境でエラーが発生します。
+> OMI に対する依存関係があるため、コマンドレット `Test-GuestConfigurationPackage` には OpenSSL バージョン 1.0 が必要です。 これにより、OpenSSL 1.1 以降を使用するすべての環境でエラーが発生します。
+>
+> コマンドレット `Test-GuestConfigurationPackage` の実行は、ゲスト構成モジュール バージョン2.1.0 についてのみ Windows でサポートされています。
 
 ゲスト構成のリソース モジュールには、次のソフトウェアが必要です。
 
@@ -160,7 +166,7 @@ AuditFilePathExists -out ./Config
 - **Name** :ゲスト構成のパッケージ名。
 - **構成** :コンパイル済み構成ドキュメントの完全なパス。
 - **パス** :出力フォルダーのパス。 このパラメーターは省略可能です。 指定しないと、パッケージは現在のディレクトリに作成されます。
-- **ChefProfilePath** : InSpec プロファイルへの完全なパス。 このパラメーターは、Linux を監査するコンテンツを作成する場合にのみサポートされます。
+- **ChefInspecProfilePath** : InSpec プロファイルへの完全なパス。 このパラメーターは、Linux を監査するコンテンツを作成する場合にのみサポートされます。
 
 次のコマンドを実行して、前の手順で指定した構成を使用してパッケージを作成します。
 
@@ -191,7 +197,7 @@ Test-GuestConfigurationPackage `
 コマンドレットでは、PowerShell パイプラインからの入力もサポートされています。 `New-GuestConfigurationPackage` コマンドレットの出力を `Test-GuestConfigurationPackage` コマンドレットにパイプします。
 
 ```azurepowershell-interactive
-New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefProfilePath './' | Test-GuestConfigurationPackage
+New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefInspecProfilePath './' | Test-GuestConfigurationPackage
 ```
 
 次の手順はファイルの Azure Blob Storage への発行です。  コマンド `Publish-GuestConfigurationPackage` には `Az.Storage` モジュールが必要です。
@@ -319,13 +325,16 @@ Configuration AuditFilePathExists
 
 ## <a name="policy-lifecycle"></a>ポリシーのライフサイクル
 
-ポリシー定義の更新をリリースするには、注意が必要な 2 つのフィールドがあります。
+ポリシー定義の更新をリリースするには、注意が必要な 3 つのフィールドがあります。
 
-- **バージョン** :`New-GuestConfigurationPolicy` コマンドレットを実行するときは、現在発行されているバージョンより大きいバージョン番号を指定する必要があります。 プロパティによって、更新されたパッケージをエージェントが認識できるように、ゲスト構成割り当てのバージョンが更新されます。
+> [!NOTE]
+> ゲスト構成割り当ての `version` プロパティは、Microsoft によってホストされているパッケージにのみ影響します。 カスタム コンテンツのバージョン管理のベスト プラクティスは、ファイル名にバージョンを含めることです。
+
+- **バージョン** :`New-GuestConfigurationPolicy` コマンドレットを実行するときは、現在発行されているバージョンより大きいバージョン番号を指定する必要があります。
+- **contentUri** : `New-GuestConfigurationPolicy` コマンドレットを実行するときは、パッケージの場所の URI を指定する必要があります。 ファイル名にパッケージのバージョンを含めると、各リリースでこのプロパティの値が変更されます。
 - **contentHash** : このプロパティは、`New-GuestConfigurationPolicy` コマンドレットによって自動的に更新されます。 `New-GuestConfigurationPackage` によって作成されるパッケージのハッシュ値です。 このプロパティは、発行する `.zip` ファイルに対して適切なものである必要があります。 **contentUri** プロパティのみが更新された場合、拡張機能ではコンテンツ パッケージが受け入れられません。
 
 更新されたパッケージをリリースする最も簡単な方法は、この記事で説明されているプロセスを繰り返し、更新されたバージョン番号を指定することです。 このプロセスにより、すべてのプロパティが正しく更新されることが保証されます。
-
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>タグを使用したゲスト構成ポリシーのフィルター処理
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: c030c1548a931bc749ad799a5aa88813c35d19cd
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 250a06d81f929d0e3d3befa1e7494db13044fc97
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91997023"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101274"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Azure Monitor for Storage でストレージ サービスを監視する
 
@@ -25,11 +25,11 @@ Azure Monitor for Storage では、Azure Storage サービスのパフォーマ�
 
 次のものの組み合わせが提供されます。
 
-* **規模に応じたパースペクティブ**: ストレージ サービスまたは API 操作の正常性に基づいた可用性、ストレージ サービスが受け取る要求の合計数を示す使用状況、ストレージ サービスまたは API 操作の種類で要求の処理にかかる平均時間を示す待機時間のスナップショット ビューが示されます。 BLOB、ファイル、テーブル、キューごとに容量を表示することもできます。
+* **規模に応じたパースペクティブ** : ストレージ サービスまたは API 操作の正常性に基づいた可用性、ストレージ サービスが受け取る要求の合計数を示す使用状況、ストレージ サービスまたは API 操作の種類で要求の処理にかかる平均時間を示す待機時間のスナップショット ビューが示されます。 BLOB、ファイル、テーブル、キューごとに容量を表示することもできます。
 
-* **ドリルダウン分析**: 特定のストレージ アカウントについて、カテゴリ (可用性、パフォーマンス、障害、容量) ごとに問題を診断したり詳細な分析を実行したりするのに役立ちます。 これらのオプションのいずれかを選択すると、メトリックの詳細が表示されます。  
+* **ドリルダウン分析** : 特定のストレージ アカウントについて、カテゴリ (可用性、パフォーマンス、障害、容量) ごとに問題を診断したり詳細な分析を実行したりするのに役立ちます。 これらのオプションのいずれかを選択すると、メトリックの詳細が表示されます。  
 
-* **カスタマイズ可能**: 表示するメトリックの変更したり、制限に合わせたしきい値の変更または設定、独自のブックとして保存することができます。 ブック内のグラフは、Azure ダッシュボードにピン留めできます。  
+* **カスタマイズ可能** : 表示するメトリックの変更したり、制限に合わせたしきい値の変更または設定、独自のブックとして保存することができます。 ブック内のグラフは、Azure ダッシュボードにピン留めできます。  
 
 この機能を使用するために有効にしたり構成したりする必要があるものはなく、ストレージ メトリックはストレージ アカウントから既定で収集されます。 Azure Storage で使用できるメトリックについて詳しく理解したい場合は、[Azure Storage メトリック](../../storage/blobs/monitor-blob-storage.md)に関する記事で Azure Storage のメトリックの説明と定義を確認してください。
 
@@ -67,7 +67,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 **[可用性]** 、 **[E2E Latency]\(E2E 待機時間\)** 、 **[Server Latency]\(サーバー待機時間\)** 、 **[transaction error type/Errors]\(<トランザクション エラーの種類>/エラー\)** の列で値を選択すると、ストレージ アカウントに対して選択した列と一致する、特定の種類のストレージ メトリックに合わせて調整されたレポートに移動します。 各カテゴリのブックの詳細については、後述の「[詳細なストレージ ブック](#detailed-storage-workbooks)」セクションを参照してください。 
 
 >[!NOTE]
->レポートに表示できるエラーの詳細については、[応答の種類のスキーマ](../../storage/blobs/monitor-blob-storage-reference.md#metrics-dimensions)に関する記事で、**ServerOtherError**、**ClientOtherError**、**ClientThrottlingError** などの応答の種類を参照してください。 選択したストレージ アカウントに応じて、3 種類より多くのエラーが報告される場合、他のすべてのエラーは **[その他]** のカテゴリの下に表示されます。
+>レポートに表示できるエラーの詳細については、 [応答の種類のスキーマ](../../storage/blobs/monitor-blob-storage-reference.md#metrics-dimensions)に関する記事で、 **ServerOtherError** 、 **ClientOtherError** 、 **ClientThrottlingError** などの応答の種類を参照してください。 選択したストレージ アカウントに応じて、3 種類より多くのエラーが報告される場合、他のすべてのエラーは **[その他]** のカテゴリの下に表示されます。
 
 既定の **[可用性]** のしきい値は次のとおりです。
 
@@ -94,7 +94,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 2. 一覧からストレージ アカウントを選択します。 [監視] セクションで、[分析情報] を選択します。
 
-    ![選択されたストレージ アカウントの [概要] ページ](./media/storage-insights-overview/storage-account-direct-overview-01.png)
+    ![ストレージ アカウントの [概要] ブック ページを示すスクリーンショット。](./media/storage-insights-overview/storage-account-direct-overview-01.png)
 
 ストレージアカウントの **[概要]** ブックには、複数のストレージ パフォーマンス メトリックが表示され、次の情報をすばやく評価するのに役立ちます。
 
@@ -120,7 +120,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
     ![パフォーマンス レポートの例](./media/storage-insights-overview/storage-account-performance-01.png)
 
-* グリッドに表示されているエラー カテゴリのいずれかを選択して、 **[Failure]\(エラー\)** ブックを開きます。 レポートには、説明されているものと成功した要求を除く他のすべてのクライアント側エラーのメトリック タイル、ClientOtherError 属性に固有のトランザクション**応答の種類**ディメンション メトリックのパフォーマンス グラフ、および **[Transactions by API name]\(API 名別トランザクション\)** と **[Transactions by Response type]\(応答の種類別トランザクション\)** の 2 つのテーブルが表示されます。
+* グリッドに表示されているエラー カテゴリのいずれかを選択して、 **[Failure]\(エラー\)** ブックを開きます。 レポートには、説明されているものと成功した要求を除く他のすべてのクライアント側エラーのメトリック タイル、ClientOtherError 属性に固有のトランザクション **応答の種類** ディメンション メトリックのパフォーマンス グラフ、および **[Transactions by API name]\(API 名別トランザクション\)** と **[Transactions by Response type]\(応答の種類別トランザクション\)** の 2 つのテーブルが表示されます。
 
    ![エラー レポートの例](./media/storage-insights-overview/storage-account-failures-01.png)
 

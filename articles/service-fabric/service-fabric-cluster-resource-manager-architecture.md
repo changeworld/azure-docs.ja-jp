@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 94ed906533d108081d620e9b183ecfee249d85ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e7d5d4b730ef1669bd9bb7d74e35924061f5580
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75551694"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146213"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>クラスター リソース マネージャーのアーキテクチャの概要
 Service Fabric クラスター リソース マネージャーは、クラスターで実行されている中央のサービスです。 これにより、特にリソースの消費量と任意の配置ルールについて、クラスターにおけるサービスの望まれる状態が管理されます。 
@@ -43,7 +43,7 @@ Service Fabric クラスター リソース マネージャーには、クラス
 
 <center>
 
-![リソース バランサーのアーキテクチャ][Image1]
+![Cluster Resource Manager サービスはローカル エージェントからの情報をすべて集計し、その最新の構成に基づいて状況に対応することを示す図。][Image1]
 </center>
 
 実行時には、さまざまな変更が生じる可能性があります。 たとえば、一部のサービスでリソース消費量が変わったり、一部のサービスでエラーが発生したり、クラスターでノードの追加や削除が発生することがあります。 ノード上の変更はすべて集計され、クラスター リソース マネージャー サービスに定期的に送信 (1、2) されます。そこで再度集計され、分析されて格納されます。 このサービスは数秒ごとに変更を確認し、何らかのアクションが必要かどうかを判断します (3)。 たとえば、クラスターに空のノードが追加されたことが検出された場合は、 そのノードに一部のサービスを移動するかどうかを決定します。 また、クラスター リソース マネージャーでは、特定のノードに過剰な負荷がかかっていたり、特定のサービスで障害が発生したか、サービスが削除された場合に、別の場所のリソースを開放したりもします。

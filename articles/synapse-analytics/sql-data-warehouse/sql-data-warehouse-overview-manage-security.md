@@ -1,6 +1,6 @@
 ---
 title: データベースの保護
-description: Synapse SQL プールのリソースでデータベースを保護し、ソリューションを開発するためのヒント。
+description: Azure Synapse Analytics での専用 SQL プールのセキュリティ保護とソリューションの開発に関するヒント。
 author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
@@ -11,14 +11,14 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: c94924c973a1095a4bebf6231d9853968facc1b2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f6c1370cab573926183a937b8e749ef490c19334
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516885"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317702"
 ---
-# <a name="secure-a-database-in-azure-synapse"></a>Azure Synapse でデータベースをセキュリティで保護する
+# <a name="secure-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics で専用 SQL プールをセキュリティで保護する
 
 > [!div class="op_single_selector"]
 >
@@ -27,7 +27,7 @@ ms.locfileid: "92516885"
 > * [暗号化 (ポータル)](sql-data-warehouse-encryption-tde.md)
 > * [暗号化 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
-この記事では、Synapse SQL プールをセキュリティで保護するための基本事項について説明します。 特にこの記事では、アクセスの制限、データの保護、SQL プールを使用してプロビジョニングしたデータベースでのアクティビティの監視を行うためのリソースの概要を説明します。
+この記事では、専用 SQL プールをセキュリティで保護するための基本事項について説明します。 特にこの記事では、専用 SQL プールを使用してアクセスの制限、データの保護、アクティビティの監視を行うためのリソースの概要を説明します。
 
 ## <a name="connection-security"></a>接続のセキュリティ
 
@@ -35,15 +35,15 @@ ms.locfileid: "92516885"
 
 ファイアウォール規則は[論理 SQL サーバー](../../azure-sql/database/logical-servers.md)とそのデータベースの両方で使用され、明示的に承認されていない IP アドレスからの接続試行を拒否します。 アプリケーションまたはクライアント コンピューターのパブリック IP アドレスからの接続を許可するには、まず Azure Portal、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。
 
-ベスト プラクティスとして、可能な限りサーバーレベルのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。  ローカル コンピューターから SQL プールにアクセスするには、TCP ポート 1433 での発信を許可するようにネットワークのファイアウォールとローカル コンピューターを設定してください。  
+ベスト プラクティスとして、可能な限りサーバーレベルのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。  ローカル コンピューターから専用 SQL プールにアクセスするには、TCP ポート 1433 での発信を許可するようにネットワークのファイアウォールとローカル コンピューターを設定します。  
 
 Azure Synapse Analytics は、サーバー レベルの IP ファイアウォール規則を使用します。 データベース レベルの IP ファイアウォール規則はサポートされていません。 詳細については、「[Azure SQL Database ファイアウォール規則](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)」を参照してください
 
-SQL プールへの接続は、既定で暗号化されます。  暗号化を無視するように接続の設定を変更しても、その変更は無視されます。
+専用 SQL プールへの接続は、既定で暗号化されます。  暗号化を無視するように接続の設定を変更しても、その変更は無視されます。
 
 ## <a name="authentication"></a>認証
 
-認証とは、データベースへの接続時に ID を証明する方法のことです。 SQL プールでは現在、ユーザー名とパスワードを使用した SQL Server 認証と、Azure Active Directory による認証がサポートされています。
+認証とは、データベースへの接続時に ID を証明する方法のことです。 専用 SQL プールでは現在、ユーザー名とパスワードを使用した SQL Server 認証と、Azure Active Directory による認証がサポートされています。
 
 データベースのサーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定しています。 これらの資格情報を使用すると、データベース所有者、つまり "dbo" として、そのサーバーにある任意のデータベースを SQL Server 認証を通して認証できます。
 
@@ -57,7 +57,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-次に、サーバー管理者ログインを使用して **SQL プール データベース** に接続し、先ほど作成したサーバー ログインに基づいてデータベース ユーザーを作成します。
+次に、サーバー管理者ログインを使用して **専用 SQL プール データベース** に接続し、先ほど作成したサーバー ログインに基づいてデータベース ユーザーを作成します。
 
 ```sql
 -- Connect to the database and create a database user
@@ -104,4 +104,4 @@ SQL Database では、データベース暗号化キーは組み込まれてい�
 
 ## <a name="next-steps"></a>次のステップ
 
-さまざまなプロトコルでのウェアハウスへの接続の詳細と例については、[SQL プールへの接続](../sql/connect-overview.md)に関する記事をご覧ください。
+さまざまなプロトコルでのウェアハウスへの接続の詳細と例については、[専用 SQL プールへの接続](../sql/connect-overview.md)に関するページを参照してください。

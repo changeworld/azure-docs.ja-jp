@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 10/25/2020
-ms.openlocfilehash: af82b9e2feee3e03d2a0703d771c68b67ddd08c9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a6ada3557350cd3f2f67dad54152eafded6639ec
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791581"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087028"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>Azure Database for MySQL のレプリケーション待ち時間のトラブルシューティング
 
@@ -87,14 +87,14 @@ mysql> SHOW SLAVE STATUS;
 一般的な出力を次に示します。
   
 >[!div class="mx-imgBorder"]
-> :::image type="content" source="./media/howto-troubleshoot-replication-latency/show-status.png" alt-text="レプリケーション待機時間の監視&quot;:::
+> :::image type="content" source="./media/howto-troubleshoot-replication-latency/show-status.png" alt-text="レプリケーション待機時間の監視":::
 
 
 出力には大量の情報が含まれています。 通常は、次の表で説明する行だけに注目する必要があります。
 
 |メトリック|説明|
 |---|---|
-|Slave_IO_State| IO スレッドの現在の状態を表します。 通常、ソース (マスター) サーバーが同期している場合、状態は &quot;Waiting for master to send event&quot; (マスターによるイベントの送信を待機中) です。 &quot;Connecting to master" (マスターに接続中) などの状態は、レプリカがソース サーバーへの接続を失ったことを示します。 ソース サーバーが実行されていることを確認するか、ファイアウォールによって接続がブロックされているかどうかを調べます。|
+|Slave_IO_State| IO スレッドの現在の状態を表します。 通常、ソース (マスター) サーバーが同期している場合、状態は "Waiting for master to send event" (マスターによるイベントの送信を待機中) です。 "Connecting to master" (マスターに接続中) などの状態は、レプリカがソース サーバーへの接続を失ったことを示します。 ソース サーバーが実行されていることを確認するか、ファイアウォールによって接続がブロックされているかどうかを調べます。|
 |Master_Log_File| ソース サーバーの書き込み先のバイナリ ログ ファイルを表します。|
 |Read_Master_Log_Pos| ソース サーバーによって書き込みが行われているバイナリ ログ ファイル内の場所を示します。|
 |Relay_Master_Log_File| レプリカ サーバーによってソース サーバーから読み取りが行われているバイナリ ログ ファイルを表します。|
@@ -236,6 +236,9 @@ Azure Database for MySQL の場合、レプリケーションは既定で、レ�
 binlog_group_commit_sync_delay パラメーターにより、バイナリ ログ ファイルを同期する前にバイナリ ログ コミットが待機するマイクロ秒数が制御されます。 このパラメーターの利点は、トランザクションがコミットされるたびに直ちに適用されるのではなく、ソース サーバーからバイナリ ログの更新が一括送信されることです。 この遅延により、レプリカでの IO が減少し、パフォーマンスを向上させることができます。 
 
 binlog_group_commit_sync_delay パラメーターを 1000 程度に設定すると効果がある場合があります。 その後、レプリケーション待機時間を監視します。 このパラメーターを設定するときは慎重に行い、高コンカレンシー ワークロードに対してのみ使用します。 
+
+> [!IMPORTANT] 
+> レプリカ サーバーでは、binlog_group_commit_sync_delay パラメーターを 0 にすることをお勧めします。 これが推奨されるのは、ソース サーバーとは異なり、レプリカ サーバーの同時実行性が高くないためであり、レプリカ サーバーで binlog_group_commit_sync_delay の値を増やすと、レプリケーションのラグが誤って増加する可能性があります。
 
 多数のシングルトン トランザクションが含まれる低コンカレンシーのワークロードの場合は、binlog_group_commit_sync_delay を設定すると待機時間が長くなる可能性があります。 コミットされるトランザクションが少ない場合でも、一括バイナリ ログ更新に対する IO スレッドの待機により、待機時間が増加する可能性があります。 
 

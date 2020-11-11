@@ -1,7 +1,7 @@
 ---
 title: コードなしのデプロイ (プレビュー)
 titleSuffix: Azure Machine Learning
-description: 入力スクリプトを使用せずにモデルをデプロイする方法について説明します。
+description: コードなしのデプロイでは、エントリ スクリプトを手動で作成することなく、モデルを web サービスとしてデプロイすることができます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,19 +11,19 @@ ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: deploy
 ms.reviewer: larryfr
-ms.openlocfilehash: 32b2afe036b443846199b5e9d74e690859fb581d
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: a17126695aa5138d1df7fd17cfaa2f5f75ad1004
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998859"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324914"
 ---
 # <a name="preview-no-code-model-deployment"></a>(プレビュー) コードなしのモデル デプロイ
 
 コードなしのモデル デプロイは現在プレビュー段階で、次の機械学習フレームワークをサポートしています。
 
 ## <a name="tensorflow-savedmodel-format"></a>TensorFlow SavedModel 形式
-コードなしのモデル デプロイを使用するには、TensorFlow モデルが **SavedModel 形式**で登録されている必要があります。
+コードなしのモデル デプロイを使用するには、TensorFlow モデルが **SavedModel 形式** で登録されている必要があります。
 
 SavedModel の作成方法については、[このリンク](https://www.tensorflow.org/guide/saved_model)を参照してください。
 
@@ -63,7 +63,7 @@ service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
-モデルにスコアを付けるには、「[Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service)」を参照してください。 多くの ONNX プロジェクトでは、protobuf ファイルを使用してトレーニング データと検証データがコンパクトに格納されます。これにより、サービスで想定されているデータ形式がわかりにくい場合があります。 モデル開発者は、開発者向けに次のドキュメントを作成する必要があります。
+モデルにスコアを付けるには、「[Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する](./how-to-consume-web-service.md)」を参照してください。 多くの ONNX プロジェクトでは、protobuf ファイルを使用してトレーニング データと検証データがコンパクトに格納されます。これにより、サービスで想定されているデータ形式がわかりにくい場合があります。 モデル開発者は、開発者向けに次のドキュメントを作成する必要があります。
 
 * 入力形式 (JSON またはバイナリ)
 * 入力データの形式と型 (たとえば、形式 [100,100,3] の浮動小数点数の配列)

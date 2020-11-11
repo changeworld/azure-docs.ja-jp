@@ -8,12 +8,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 8d24eb868a13e7b2d9ff3d2b625302c1c1fcb908
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 69dd2c6cdba41779849b4eb6b889cde9b1d6e5c9
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318009"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913570"
 ---
 # <a name="threat-modeling-tool-update-release-71604081---492019"></a>Threat Modeling Tool 更新プログラム リリース 7.1.60408.1 - 4/9/2019
 
@@ -28,7 +28,7 @@ ms.locfileid: "91318009"
 
 ### <a name="new-stencils-for-azure-key-vault-and-azure-traffic-manager"></a>Azure Key Vault と Azure Traffic Manager の新しいステンシル
 
-![Azure Key Vault のステンシル](./media/threat-modeling-tool-releases-71604081/tmt_keyvault_trafficmanager.PNG)
+![Azure Key Vault と Azure Traffic Manager のアイコンを示しているスクリーンショット。](./media/threat-modeling-tool-releases-71604081/tmt_keyvault_trafficmanager.PNG)
 
 Azure のステンシル セットに Azure Key Vault と Azure Traffic Manager の新しいステンシルと脅威が追加されました。 Azure のステンシル セットに基づくモデルを開くと、ユーザーはモデルに関連付けられたテンプレートを更新するように求められます。 Azure のステンシル セットに基づくモデルの更新は、"ファイル" メニューの "テンプレートの適用" コマンドを使用し、最新の Azure Cloud Services.tb7 ファイルを再適用して手動で開始することもできます。
 
@@ -36,7 +36,7 @@ Azure のステンシル セットに Azure Key Vault と Azure Traffic Manager 
 
 クライアント バージョンの Threat Modeling Tool がアプリケーションのホーム画面に表示され、簡単にアクセスできるようになりました。
 
-![Azure Key Vault のステンシル](./media/threat-modeling-tool-releases-71604081/tmt_version.PNG)
+![Microsoft Threat Modeling Tool とクライアントのバージョン番号を示しているスクリーンショット。](./media/threat-modeling-tool-releases-71604081/tmt_version.PNG)
 
 ### <a name="support-links-have-been-updated"></a>サポート リンクの更新
 

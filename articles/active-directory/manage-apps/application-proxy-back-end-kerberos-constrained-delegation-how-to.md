@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
 ms.reviewer: asteen, japere
-ms.openlocfilehash: 3ca3df010426347846b29734426edfad4536516b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b18eb0f8d57c06e82d243c10bf038a861bcf88d1
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568720"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042703"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Application Proxy のための、制限付き委任構成のトラブルシューティング Kerberos
 
@@ -51,7 +51,7 @@ Azure AD アプリケーション プロキシは、各種のインフラスト�
 
 何が、KCD 問題を示していますか？ KCD SSO が失敗しているいくつかの一般的な指示があります。 ブラウザーに、問題が発生した最初の兆候が表示されます。
 
-![例:KCD の正しくない構成によるエラー](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
+![正しくない K C D 構成エラーの例を示すスクリーンショット。[Incorrect Kerberos constrained delegation]\(Kerberos の制約付き委任が正しくありません\) というエラーが強調表示されています。](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
 
 ![例:権限がないために承認に失敗](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
 
@@ -88,7 +88,7 @@ Azure AD アプリケーション プロキシは、各種のインフラスト�
 ![イベント 12027 (アプリケーション プロキシのイベント ログ)](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic5.png)
 
 1. 内部 DNS では、アプリケーションのアドレスに **CName** ではなく **A** レコードを使用します。
-1. 指定されたターゲット アカウントの SPN を対象とした委任の権限がコネクタ ホストに付与されていることをもう一度確認します。 再確認**任意の認証プロトコルを使用する**が選択されていることを確認します。 このトピックの詳細については、[SSO 構成に関する記事](application-proxy-configure-single-sign-on-with-kcd.md)を参照してください。
+1. 指定されたターゲット アカウントの SPN を対象とした委任の権限がコネクタ ホストに付与されていることをもう一度確認します。 再確認 **任意の認証プロトコルを使用する** が選択されていることを確認します。 このトピックの詳細については、[SSO 構成に関する記事](application-proxy-configure-single-sign-on-with-kcd.md)を参照してください。
 1. Azure AD で、SPN の 1 つだけのインスタンスがあることを確認します。 `setspn -x`任意のドメインのメンバー ホストのコマンド プロンプトからの発行です。
 1. [発行済みの Kerberos トークンの最大サイズ](https://blogs.technet.microsoft.com/askds/2012/09/12/maxtokensize-and-windows-8-and-windows-server-2012/)を制限するようにドメインポリシーが強化されていることを確認します。 このポリシーは、過剰な場合、コネクタがトークンを取得することを停止します。
 
@@ -100,22 +100,22 @@ Azure AD アプリケーション プロキシは、各種のインフラスト�
 
 コネクタから提供された Kerberos チケットの消費者。 この段階で、コネクタが、Kerberos サービス チケットをバックエンドに送信することを予想します。 このチケットは、最初のアプリケーション要求のヘッダーです。
 
-1. ポータルで定義されたアプリケーション内の URL を使用して、コネクタ ホストのブラウザからアプリケーションに直接アクセスできることを認証します。 その後、首尾良くサインインできます。 詳細は、コネクタの**トラブル シューティング**のページをご覧ください。
+1. ポータルで定義されたアプリケーション内の URL を使用して、コネクタ ホストのブラウザからアプリケーションに直接アクセスできることを認証します。 その後、首尾良くサインインできます。 詳細は、コネクタの **トラブル シューティング** のページをご覧ください。
 1. 引き続き、コネクタホストで、ブラウザとアプリケーション間の認証には、 Kerberos を使用していることを確認します。 次のうちの 1 つの行為を行ってください：
-1. Internet Explorer で DevTools を働かせるか (**F12**)、またはコネクタホストから、 [Fiddler](https://blogs.msdn.microsoft.com/crminthefield/2012/10/10/using-fiddler-to-check-for-kerberos-auth/) を使用します。 内部 URL を使用して、アプリケーションに移動します。 アプリケーションからの応答として返された WWW 認証 ヘッダーを調べて、ネゴシエートまたは Kerberos が存在することを確認します。
+1. Internet Explorer で DevTools を働かせるか ( **F12** )、またはコネクタホストから、 [Fiddler](https://blogs.msdn.microsoft.com/crminthefield/2012/10/10/using-fiddler-to-check-for-kerberos-auth/) を使用します。 内部 URL を使用して、アプリケーションに移動します。 アプリケーションからの応答として返された WWW 認証 ヘッダーを調べて、ネゴシエートまたは Kerberos が存在することを確認します。
 
-   - ブラウザからアプリケーションへの応答で返される、次の Kerberos blobは、**YII**で開始します。 これらの文字は、Kerberos が実行されていることを確認します。 一方、Micrisod NT LAN Manager（NTLM） は、いつも**TlRMTVNTUAAB** で始まります。これは、Base64 からデコードされるときにNTLM Security Support Provider (NTLMSSP) を読みます。 blob が開始するときに、この **TlRMTVNTUAAB** を見るときは、Kerberos が利用できないことを意味します。 **TlRMTVNTUAAB** を見なければ、Kerberos は利用できる可能性があります。
+   - ブラウザからアプリケーションへの応答で返される、次の Kerberos blobは、 **YII** で開始します。 これらの文字は、Kerberos が実行されていることを確認します。 一方、Micrisod NT LAN Manager（NTLM） は、いつも **TlRMTVNTUAAB** で始まります。これは、Base64 からデコードされるときにNTLM Security Support Provider (NTLMSSP) を読みます。 blob が開始するときに、この **TlRMTVNTUAAB** を見るときは、Kerberos が利用できないことを意味します。 **TlRMTVNTUAAB** を見なければ、Kerberos は利用できる可能性があります。
 
       > [!NOTE]
       > Fiddler を使用する場合、この方法を利用するには、IIS のアプリケーション構成で拡張保護を一時的に無効化する必要があります。
 
       ![ブラウザーのネットワーク検査ウィンドウ](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic6.png)
 
-   - この図では、blob の先頭が **TIRMTVNTUAAB** で始まっていません。 この例では Kerberos が使用可能であり、および Kerberos blob は**YII** で始まりません。
+   - この図では、blob の先頭が **TIRMTVNTUAAB** で始まっていません。 この例では Kerberos が使用可能であり、および Kerberos blob は **YII** で始まりません。
 
 1. IIS サイトのプロバイダーリストから、NTLM を一時的に削除します。 コネクタのホスト上で Internet Explorer から直接アプリにアクセスします。 NTLM は、プロバイダーの一覧上から、なくなりました。 Kerberos をのみを使用してアプリケーションにアクセスすることができます。 アクセスに失敗した場合、アプリケーションの構成の問題である可能性があります。 Kerberos 認証が機能していません。
 
-   - Kerberos を使用できない場合は、IIS でアプリケーションの認証設定を確認します。 **Negotiate** がリストの最上部にあり、そのすぐ下に NTLM があることを確認します。 **Not Negotiate**が表示される場合、 **Kerberos またはネゴシエート**、または **PKU2U は、** Kerberos が機能するときのみ、存続します。
+   - Kerberos を使用できない場合は、IIS でアプリケーションの認証設定を確認します。 **Negotiate** がリストの最上部にあり、そのすぐ下に NTLM があることを確認します。 **Not Negotiate** が表示される場合、 **Kerberos またはネゴシエート** 、または **PKU2U は、** Kerberos が機能するときのみ、存続します。
 
      ![Windows 認証プロバイダー](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic7.png)
 
@@ -138,11 +138,11 @@ Azure AD アプリケーション プロキシは、各種のインフラスト�
 
       ![Azure Portal の SPN 構成](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic11.png)
 
-   - IIS に移動して、　アプリケーションのための、**構成エディター**のオプションを選択します。 **system.webServer/security/authentication/windowsAuthentication**にナビゲートします。 **UseAppPoolCredentials**の値は、**True**であることを確認してください。
+   - IIS に移動して、　アプリケーションのための、 **構成エディター** のオプションを選択します。 **system.webServer/security/authentication/windowsAuthentication** にナビゲートします。 **UseAppPoolCredentials** の値は、 **True** であることを確認してください。
 
       ![IIS の構成におけるアプリ プールの資格情報オプション](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic12.png)
 
-      この値は**True**に変更できます。 次のコマンドを実行して、バックエンド サーバーからすべてのキャッシュされた Kerberos チケットを削除します：
+      この値は **True** に変更できます。 次のコマンドを実行して、バックエンド サーバーからすべてのキャッシュされた Kerberos チケットを削除します：
 
       ```powershell
       Get-WmiObject Win32_LogonSession | Where-Object {$_.AuthenticationPackage -ne 'NTLM'} | ForEach-Object {klist.exe purge -li ([Convert]::ToString($_.LogonId, 16))}
@@ -150,9 +150,9 @@ Azure AD アプリケーション プロキシは、各種のインフラスト�
 
 詳細については、「[Purge the Kerberos client ticket cache for all sessions](https://gallery.technet.microsoft.com/scriptcenter/Purge-the-Kerberos-client-b56987bf)」 (すべてのセッションの Kerberos クライアント チケットのキャッシュをパージする) をご覧ください。
 
-カーネル モードが有効な場合は、Kerberos 操作のパフォーマンスが向上します。 コンピューター アカウントを使用して復号化る要される、要求されたサービス チケットも生成されます。 このアカウントは、ローカル システムとも呼ばれます。 KCDを破壊するために、この値を **True**に設定します。 アプリケーションがファームの複数のサーバーにわたってホストされている場合です。
+カーネル モードが有効な場合は、Kerberos 操作のパフォーマンスが向上します。 コンピューター アカウントを使用して復号化る要される、要求されたサービス チケットも生成されます。 このアカウントは、ローカル システムとも呼ばれます。 KCDを破壊するために、この値を **True** に設定します。 アプリケーションがファームの複数のサーバーにわたってホストされている場合です。
 
-- 更なるチェックとして、 **拡張** 保護機能も無効にします。 一部のシナリオで、**拡張**保護が、特定の構成で有効化されたときに、保護が KCD を中断します。 こような場合、アプリケーションは、既定の web サイトのサブフォルダーとして発行されました。 このアプリケーションは、匿名認証のためのみに、構成されます。 すべてのダイアログ ボックスは淡色表示され、子オブジェクは、アクティブな設定を継承しないことを提案します。 テストするが、可能な限り、この値が**有効になっている**ように復元することを忘れないように推奨いたします。
+- 更なるチェックとして、 **拡張** 保護機能も無効にします。 一部のシナリオで、 **拡張** 保護が、特定の構成で有効化されたときに、保護が KCD を中断します。 こような場合、アプリケーションは、既定の web サイトのサブフォルダーとして発行されました。 このアプリケーションは、匿名認証のためのみに、構成されます。 すべてのダイアログ ボックスは淡色表示され、子オブジェクは、アクティブな設定を継承しないことを提案します。 テストするが、可能な限り、この値が **有効になっている** ように復元することを忘れないように推奨いたします。
 
   この追加のチェックは、公開されたアプリケーションの使用を追跡できます。 委任に構成されている追加のコネクタを、スピンアップすることができます。 詳細については、より詳細な技術ウォークスルー か、[Azure AD アプリケーション プロキシのトラブルシューティング](https://aka.ms/proxytshootpaper)をご覧ください。
 

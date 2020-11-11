@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 10/06/2020
-ms.openlocfilehash: ff31e29b8c2a36c9aaa3d72eab86340ed405b1ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d22e10a71c3eee2026f55a73074ba02c68c2b78
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91772653"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146179"
 ---
 # <a name="publishing-guide-by-offer-type"></a>プランの種類別の公開ガイド
 
-この記事では、商用マーケットプレースで利用できるオファーの種類について説明します。 商用マーケットプレースで提示されたオファーの構造 (メタデータ、成果物、およびその他のコンテンツを含む) は、*オファーの種類*によって定義されます。
+この記事では、商用マーケットプレースで利用できるオファーの種類について説明します。 商用マーケットプレースで提示されたオファーの構造 (メタデータ、成果物、およびその他のコンテンツを含む) は、 *オファーの種類* によって定義されます。
 
 [公開オプションを決定](determine-your-listing-type.md)した後、パートナー センターでオファーの作成を開始する前に、オファーの種類を選択する必要があります。 オファーの種類は、公開するソリューション、アプリ、またはサービスの種類および Microsoft の製品とサービスとの連携方法に対応します。
 
@@ -30,19 +30,17 @@ ms.locfileid: "91772653"
 
 | **オファリング タイプ**    | **説明**  |
 | :------------------- | :-------------------|
-| [Azure アプリケーション:**マネージド アプリケーション**](marketplace-managed-apps.md) | 次の条件が必須であるときは、オファーの種類として Azure アプリケーション:マネージド アプリケーションを使用します。 <br> <ul> <li>VM または完全な IaaS ベースのソリューションを使用して、サブスクリプション ベースのソリューションを顧客向けにデプロイする。 </li> <li>貴社または貴社の顧客の要件として、ソリューションをパートナーが管理しなければならない。 </li> <ul> |
-| [Azure アプリケーション:**ソリューション テンプレート**](marketplace-solution-templates.md) | 対象となるソリューションに、単独の VM を超える追加のデプロイと構成の自動化が必要となる場合は、オファーの種類として Azure アプリケーション:ソリューション テンプレートを使用します。 ソリューション テンプレートでは、VM を含むがそれに限定されない、さまざまな種類の Azure リソースを使用できます。  |
+| [Azure アプリケーション: **マネージド アプリケーション**](marketplace-managed-apps.md) | 次の条件が必須であるときは、オファーの種類として Azure アプリケーション:マネージド アプリケーションを使用します。 <br> <ul> <li>VM または完全な IaaS ベースのソリューションを使用して、サブスクリプション ベースのソリューションを顧客向けにデプロイする。 </li> <li>貴社または貴社の顧客の要件として、ソリューションをパートナーが管理しなければならない。 </li> <ul> |
+| [Azure アプリケーション: **ソリューション テンプレート**](marketplace-solution-templates.md) | 対象となるソリューションに、単独の VM を超える追加のデプロイと構成の自動化が必要となる場合は、オファーの種類として Azure アプリケーション:ソリューション テンプレートを使用します。 ソリューション テンプレートでは、VM を含むがそれに限定されない、さまざまな種類の Azure リソースを使用できます。  |
   | [**Azure Container**](marketplace-containers.md) | 対象となるソリューションが、Kubernetes ベースの Azure コンテナー サービスとしてプロビジョニングされる Docker コンテナー イメージであるときは、オファーの種類として Azure コンテナーを使用します。 |
 | [**Azure 仮想マシン**](marketplace-virtual-machines.md) | 顧客に関連付けられているサブスクリプションに仮想アプライアンスをデプロイするときは、オファーの種類として仮想マシンを使用します。 |
 | [**コンサルティング サービス**](consulting-services.md) | コンサルティング サービスは、Azure、Dynamics 365、または Power Suite サービスの使用をサポートし、拡張するために、お客様とサービスを結ぶうえで役立ちます。|
 | [**Dynamics 365**](appsource-offer-publishing-guide.md) | Dynamics 365 Business Central、Dynamics 365 Customer Engagement、Power Apps、および Finance and Operations アプリを構築または拡張する AppSource のオファーを公開できます。|
 | [**IoT Edge モジュール**](iot-edge-module.md) | Azure IoT Edge モジュールは、IoT Edge によって管理される計算の最小単位であり、Azure Stream Analytics などの Microsoft サービス、サードパーティー サービス、独自ソリューション固有のコードのいずれかを含めることができます。 |
-| [**管理されたサービス**](partner-center-portal/create-new-managed-service-offer.md) | 管理サービス オファーを作成し、[Azure Lighthouse](/azure/lighthouse/overview) を使用して顧客が委任したサブスクリプションまたはリソース グループを管理できます。|
+| [**管理されたサービス**](partner-center-portal/create-new-managed-service-offer.md) | 管理サービス オファーを作成し、[Azure Lighthouse](../lighthouse/overview.md) を使用して顧客が委任したサブスクリプションまたはリソース グループを管理できます。|
 | [**Power BI アプリ**<br/>**Microsoft 365**](appsource-offer-publishing-guide.md) | Power BI と Microsoft 365 上にビルドされる、または拡張する AppSource のオファーを公開できます。|
-| [**サービスとしてのソフトウェア**](plan-saas-offer.md) | サービスとしてのソフトウェア (SaaS) ベースの技術的ソリューションをサブスクリプションとして顧客が購入できるようにするには、オファーの種類として SaaS を使用します。 |
+| [**サービスとしてのソフトウェア**](plan-saas-offer.md) | サービスとしてのソフトウェア (SaaS) ベースの技術的ソリューションをサブスクリプションとして顧客が購入できるようにするには、オファーの種類として SaaS を使用します。 SaaS オファーのシングル サインオン要件については、「[コマーシャル マーケットプレースにおける Azure AD と取引可能な SaaS オファー](azure-ad-saas.md)」を参照してください。 |
 
-
-リスト オプションとオファーの種類別のシングル サインオンの要件については、「[**Azure AD 要件**](enable-appsource-marketplace-using-azure-ad.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

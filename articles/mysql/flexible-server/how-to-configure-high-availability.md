@@ -1,18 +1,18 @@
 ---
 title: ゾーン冗長の高可用性を管理する - Azure portal - Azure Database for MySQL フレキシブル サーバー
 description: この記事では、Azure portal を使用して Azure Database for MySQL フレキシブル サーバーでのゾーン冗長の高可用性を有効または無効にする方法について説明します。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: 09cd7428519cbf84c785efa16b61b9507a3c0b94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d65b074385311e74444929ef74901e402e29ec03
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90932511"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241737"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL フレキシブル サーバーのゾーン冗長の高可用性を管理する (プレビュー)
 
@@ -32,7 +32,7 @@ ms.locfileid: "90932511"
 
 このセクションでは、特に HA に関連するフィールドの詳細について説明します。 次の手順に従って、柔軟なサーバーの作成中に高可用性を展開できます。
 
-1.   [Azure portal](https://portal.azure.com/) で、[フレキシブル サーバー] を選択し、 **[作成]** をクリックします。  **[サブスクリプション]** 、 **[リソース グループ]** 、 **[サーバー名]** 、 **[リージョン]** 、およびその他のフィールドなどの詳細の入力方法の詳細については、サーバー作成に関するハウツー ドキュメントをご覧ください。
+1.  [Azure portal](https://portal.azure.com/) で、[フレキシブル サーバー] を選択し、 **[作成]** をクリックします。  **[サブスクリプション]** 、 **[リソース グループ]** 、 **[サーバー名]** 、 **[リージョン]** 、およびその他のフィールドなどの詳細の入力方法の詳細については、サーバー作成に関するハウツー ドキュメントをご覧ください。
 
 2.  [可用性] オプションで **[ゾーン冗長の高可用性]** のチェックボックスをオンにします。
 
@@ -41,21 +41,21 @@ ms.locfileid: "90932511"
 4.  [高可用性] オプションをオンにすると、バースト可能レベルは選択できなくなります。 **[汎用]** または **[メモリ最適化]** のどちらかのコンピューティング レベルを選択できます。
 
     > [!IMPORTANT]
-    > ゾーン冗長の高可用性は、***[汎用]*** と ***[メモリ最適化]*** の価格レベルでのみサポートされています。
+    > ゾーン冗長の高可用性は、* *_[汎用]_* _ と _*_[メモリ最適化]_*_ の価格レベルでのみサポートされています。
 
-5.  ドロップダウンから、選択に応じた**コンピューティング サイズ**を選択します。
+5.  ドロップダウンから、選択に応じた _ *[Compute size]\(コンピューティング サイズ\)* * を選択します。
 
-6.  スライディング バーを使用して GiB 単位で**ストレージ サイズ**を選択し、7 日から 35 日の範囲で**バックアップ保持期間**を選択します。   
+6.  スライディング バーを使用して GiB 単位で **ストレージ サイズ** を選択し、7 日から 35 日の範囲で **バックアップ保持期間** を選択します。   
 
 ## <a name="disable-high-availability"></a>高可用性を無効にする
 
 次の手順に従って、既にゾーン冗長で構成されているフレキシブル サーバーの高可用性を無効にします。
 
-1.   [Azure portal](https://portal.azure.com/) で、既存の Azure Database for MySQL フレキシブル サーバーを選択します。
+1.  [Azure portal](https://portal.azure.com/) で、既存の Azure Database for MySQL フレキシブル サーバーを選択します。
 
-2.  フレキシブル サーバー ページで、前面パネルから  **[高可用性]** をクリックして、[高可用性] ページを開きます。
+2.  フレキシブル サーバー ページで、前面パネルから **[高可用性]** をクリックして、[高可用性] ページを開きます。
 
-3.  **[ゾーン冗長の高可用性]** チェックボックスをクリックして、オプションをオフにし、 **[保存]**   をクリックして変更を保存します。
+3.  **[ゾーン冗長の高可用性]** チェックボックスをクリックして、オプションをオフにし、 **[保存]** をクリックして変更を保存します。
 
 4.  高可用性を無効にすることを確認できる確認ダイアログが表示されます。
 
@@ -66,4 +66,4 @@ ms.locfileid: "90932511"
 ## <a name="next-steps"></a>次のステップ
 
 -   [ビジネス継続性](./concepts-business-continuity.md)について確認する
--    [ゾーン冗長の高可用性](./concepts-high-availability.md)について確認する
+-   [ゾーン冗長による高可用性](./concepts-high-availability.md)について確認する

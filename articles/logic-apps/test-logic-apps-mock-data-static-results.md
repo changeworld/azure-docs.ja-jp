@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
-ms.openlocfilehash: b71aae91f4a065b70537a300aa0bd7016edfd4b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 711d753203aeaeba50cea692053a37fcab2e9c7b
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74790283"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027705"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>静的な結果を設定してモック データでロジック アプリをテストする
 
@@ -37,7 +37,7 @@ ms.locfileid: "74790283"
 
 1. 静的な結果を設定するアクションで、次の手順に従います。 
 
-   1. アクションの右上隅で、省略記号 ( *...* ) ボタンを選択し、たとえば次のように**設定な結果**を選択します。
+   1. アクションの右上隅で、省略記号 ( *...* ) ボタンを選択し、たとえば次のように **設定な結果** を選択します。
 
       ![「静的な結果」>「静的な結果を有効にする」の順に選択する](./media/test-logic-apps-mock-data-static-results/select-static-result.png)
 
@@ -130,11 +130,11 @@ ms.locfileid: "74790283"
 
 1. 静的な出力を無効にするアクションを探します。 アクションの右上隅で、テスト ビーカー アイコン (![静的な結果のアイコン](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)) を選択します。
 
-   ![静的な結果を無効にする](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
+   ![テスト ビーカー アイコンを選択できる HTTP アクションを示しているスクリーンショット。](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
 
 1. **[静的な結果の無効化]**  >  **[完了]** の順に選択します。
 
-   ![静的な結果を無効にする](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
+   ![選択できる [静的な結果の無効化] オプションを示しているスクリーンショット。](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 
 ## <a name="reference"></a>リファレンス
 

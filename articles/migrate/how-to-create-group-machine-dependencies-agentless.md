@@ -3,12 +3,12 @@ title: Azure Migrate Server Assessment でエージェントレスの依存関�
 description: Azure Migrate Server Assessment でエージェントレスの依存関係の分析を設定します。
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 57e5add810cf4fac232bce08fc7ca96df0a7c3a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8893b0f41bb7a06c02a6c2aa28002980144b582a
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667471"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337695"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>マシンの依存関係の分析 (エージェントレス)
 
@@ -25,7 +25,7 @@ ms.locfileid: "91667471"
 
 - 依存関係の分析ビューでは、グループのサーバーを追加または削除することはできません。
 - 現在、サーバーのグループに対する依存関係マップは使用できません。
-- 依存関係のデータ収集は、1000 台のサーバーで同時に設定できます。 1000 をバッチ単位としてシーケンス処理することで、さらに多くのサーバーを分析することができます。
+- Azure Migrate プロジェクトでは、依存関係のデータ収集は、1000 台のサーバーで同時に設定できます。 1000 をバッチ単位としてシーケンス処理することで、さらに多くのサーバーを分析することができます。
 
 ## <a name="before-you-start"></a>開始する前に
 
@@ -130,7 +130,7 @@ Destination process (依存先プロセス) | 依存先マシン上のプロセ�
 1. **Azure Migrate:Server Assessment** で、 **[Discovered servers]\(検出済みサーバー\)** をクリックします。
 2. **[依存関係の分析]** アイコンをクリックします。
 3. **[サーバーの削除]** をクリックします。
-3. **[サーバーの削除]** ページで、依存関係の検出を停止する対象の VM が検出された**アプライアンス**を選択します。
+3. **[サーバーの削除]** ページで、依存関係の検出を停止する対象の VM が検出された **アプライアンス** を選択します。
 4. マシン一覧からマシンを選択します。
 5. **[サーバーの削除]** をクリックします。
 

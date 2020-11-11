@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/19/2018
 ms.author: genli
-ms.openlocfilehash: 9b51205fe67bfe5be46491b0238e987fc14f6737
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b7fc4a120f5a4b513e1852fc6e2cf5ab68e9631
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87074352"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101257"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Azure Portal で OS ディスクを復旧 VM に接続して Windows VM のトラブルシューティングを行う
 Azure の Windows 仮想マシン (VM) で起動エラーまたはディスク エラーが発生した場合、仮想ハード ディスク自体でのトラブルシューティング手順の実行が必要な場合があります。 一般的な例として、VM の正常な起動を妨げる失敗したアプリケーション更新が挙げられます。 この記事では、Azure Portal で仮想ハード ディスクを別の Windows VM に接続してエラーを修正し、元の VM を再作成する方法について詳しく説明します。 
@@ -119,11 +119,11 @@ Azure の Windows 仮想マシン (VM) で起動エラーまたはディスク �
     ![データ ディスクをサーバー マネージャーでオフラインに設定](./media/troubleshoot-recovery-disks-portal-windows/server-manager-set-disk-offline.png)
 
 3. 仮想ハード ディスクを VM から切断します。 Azure Portal で VM を選択し、 **[ディスク]** をクリックします。 
-4. **[編集]** を選択し、アタッチした OS ディスクを選択して、 **[デタッチ]** をクリックします。
+4. **[編集]** を選択し、アタッチした OS ディスクを選択して、 **[削除]** をクリックします。
 
     ![既存の仮想ハード ディスクを切断する](./media/troubleshoot-recovery-disks-portal-windows/detach-disk.png)
 
-    VM からデータ ディスクが正常に切断されるまで待ってから、次に進みます。
+    VM から VM が正常に削除されるまで、つまりデータ ディスクが切断されるまで待ってから、次に進みます。
 
 ## <a name="swap-the-os-disk-for-the-vm"></a>VM の OS ディスクをスワップする
 

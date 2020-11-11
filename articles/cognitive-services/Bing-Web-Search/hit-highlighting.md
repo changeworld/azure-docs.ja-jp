@@ -11,17 +11,17 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
-ms.openlocfilehash: ea9cd9cf064b9c07016bc5e166cc4ec4c041b146
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 5c0bed04fccfba1ac06a54d5ddba9033ef05761b
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078545"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380710"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>装飾マーカーを使用してテキストを強調表示する
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
@@ -39,7 +39,7 @@ Bing は、既定で、表示文字列に強調表示のマーカーを含めま
 
 ## <a name="marker-formatting"></a>マーカーの書式設定
 
-Bing には、マーカーとして Unicode 文字または HTML タグのいずれかを使用するオプションが用意されています。 使用するマーカーを指定するには、[textFormat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) クエリ パラメーターを含めます。 
+Bing には、マーカーとして Unicode 文字または HTML タグのいずれかを使用するオプションが用意されています。 使用するマーカーを指定するには、[textFormat](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) クエリ パラメーターを含めます。 
 
 | 値             | Marker                       |
 |-------------------|------------------------------|

@@ -1,6 +1,6 @@
 ---
 title: Azure Synapse Link (プレビュー) でサーバーレス SQL プールを使用して Azure Cosmos DB データのクエリを実行する
-description: この記事では、Azure Synapse Link (プレビュー) で SQL オンデマンドを使用して、Azure Cosmos DB のクエリを実行する方法について説明します。
+description: この記事では、Azure Synapse Link (プレビュー) でサーバーレス SQL プールを使用して、Azure Cosmos DB のクエリを実行する方法について説明します。
 services: synapse analytics
 author: jovanpop-msft
 ms.service: synapse-analytics
@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2b1af6fa5b0ccb95476c4ae169481e4aaa15f4f9
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9f57d435134bffbb8e7576adffeacb92bf687124
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737834"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310311"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Azure Synapse Link (プレビュー) でサーバーレス SQL プールを使用して Azure Cosmos DB データのクエリを実行する
 
 Synapse サーバーレス SQL プールを使用すると、トランザクション ワークロードのパフォーマンスに影響を与えることなく、[Azure Synapse Link](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) で有効になっている Azure Cosmos DB コンテナー内のデータをほぼリアルタイムで分析できます。 T-SQL インターフェイスを使用して[分析ストア](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)および統合された接続からさまざまな BI やアドホック クエリ ツールへのデータのクエリを実行するために、使い慣れた T-SQL 構文が用意されています。
 
-Azure Cosmos DB のクエリを実行する場合、[SQL の関数や演算子](overview-features.md)の大部分を含め、完全な [SELECT](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) のセキュリティが、[OPENROWSET](develop-openrowset.md) 関数によってサポートされます。 また、Azure Blob Storage または Azure Data Lake Storage のデータと共に Azure Cosmos DB からデータを読み取るクエリの結果を、[create external table as select](develop-tables-cetas.md#cetas-in-sql-on-demand) を使用して格納することもできます。 現在は、[CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand) を使用して、サーバーレス SQL プールのクエリの結果を Azure Cosmos DB に格納することはできません。
+Azure Cosmos DB のクエリを実行する場合、[SQL の関数や演算子](overview-features.md)の大部分を含め、完全な [SELECT](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) のセキュリティが、[OPENROWSET](develop-openrowset.md) 関数によってサポートされます。 また、Azure Blob Storage または Azure Data Lake Storage のデータと共に Azure Cosmos DB からデータを読み取るクエリの結果を、[create external table as select](develop-tables-cetas.md#cetas-in-serverless-sql-pool) を使用して格納することもできます。 現在は、CETAS を使用して、サーバーレス SQL プールのクエリの結果を Azure Cosmos DB に格納することはできません。 
 
 この記事では、Synapse Link が有効になっている Azure Cosmos DB コンテナーのデータのクエリを実行する、サーバーレス SQL プールを使用するクエリの作成方法について説明します。 その後は、[この](./tutorial-data-analyst.md)チュートリアルで、Azure Cosmos DB コンテナーに対するサーバーレス SQL プールのビューを構築し、それらを Power BI モデルに接続することの詳細を学習できます。 
 
@@ -358,6 +358,6 @@ GROUP BY geo_id
 
 詳細については、次の記事を参照してください。
 
-- [Azure Synapse Link で Power BI とサーバーレス Synapse SQL プールを使用する](../../cosmos-db/synapse-link-power-bi.md)
-- [SQL オンデマンドでビューを作成および使用する方法](create-use-views.md) 
-- [Azure Cosmos DB に対する SQL オンデマンド ビューの作成と、DirectQuery による Power BI モデルへのそれらの接続に関するチュートリアル](./tutorial-data-analyst.md)
+- [Azure Synapse Link で Power BI とサーバーレス SQL プールを使用する](../../cosmos-db/synapse-link-power-bi.md)
+- [サーバーレス SQL プールでビューを作成および使用する方法](create-use-views.md) 
+- [Azure Cosmos DB に対するサーバーレス SQL プール ビューの作成と、DirectQuery による Power BI モデルへのそれらの接続に関するチュートリアル](./tutorial-data-analyst.md)

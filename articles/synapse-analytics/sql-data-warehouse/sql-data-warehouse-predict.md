@@ -11,19 +11,19 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ef56274e0bda3f1a9d494852520a77ecdfc25799
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8caf6cd5072b4c098adff57194784491c92bb0a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89048008"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325372"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>PREDICT を使用した機械学習モデルのスコア付け
 
 Synapse SQL には、使い慣れた T-SQL 言語を使用して機械学習モデルをスコア付けする機能が用意されています。 T-SQL [PREDICT](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest) を使用すると、履歴データでトレーニングされた既存の機械学習モデルを、ご自分のデータ ウェアハウスのセキュリティで保護された境界内に持ち込んでスコア付けすることができます。 PREDICT 関数によって、入力として [ONNX (Open Neural Network Exchange)](https://onnx.ai/) モデルとデータが受け取られます。 この機能により、重要なデータをスコアリングのためにデータ ウェアハウスの外部に移動する手順が不要になります。 これは、データ プロフェッショナルが使い慣れた T-SQL インターフェイスを使用して機械学習モデルを簡単にデプロイできるようにするだけでなく、タスクに適切なフレームワークを使用してデータ サイエンティストとシームレスに共同作業できるようにすることを目的としています。
 
 > [!NOTE]
-> 現在、この機能は SQL オンデマンドではサポートされていません。
+> 現在、この機能はサーバーレス SQL プールではサポートされていません。
 
 この機能には、モデルが Synapse SQL の外部でトレーニングされている必要があります。 モデルを構築したら、それをデータ ウェアハウスに読み込んで、T-SQL PREDICT 構文でスコア付けし、データから分析情報を得ます。
 
@@ -35,7 +35,7 @@ Synapse SQL では、事前トレーニング済みのモデルが想定され�
 
 - Synapse SQL でサポートされているのは ONNX 形式のモデルのみです。 ONNX は、さまざまなフレームワーク間でモデルを交換して相互運用性を実現できるオープンソース モデル形式です。 既存のモデルを ONNX 形式に変換するには、それをネイティブにサポートしているフレームワークか、変換パッケージを利用できるフレームワークを使用します。 たとえば、[sklearn-onnx](https://github.com/onnx/sklearn-onnx) パッケージでは、scikit-learn モデルが ONNX に変換されます。 [ONNX GitHub リポジトリ](https://github.com/onnx/tutorials#converting-to-onnx-format)によって、サポートされているフレームワークと例のリストが提供されます。
 
-   トレーニングに[自動 ML](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) を使用している場合は、*enable_onnx_compatible_models* パラメーターが TRUE に設定されていることを確認し、ONNX 形式モデルを生成します。 [自動機械学習ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)には、AutoML を使用して ONNX 形式の機械学習モデルを作成する方法の例が示されています。
+   トレーニングに [自動 ML](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) を使用している場合は、 *enable_onnx_compatible_models* パラメーターが TRUE に設定されていることを確認し、ONNX 形式モデルを生成します。 [自動機械学習ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)には、AutoML を使用して ONNX 形式の機械学習モデルを作成する方法の例が示されています。
 
 - 入力データに対しては、次のデータ型がサポートされています。
     - int、bigint、real、float
@@ -80,7 +80,7 @@ WITH (
 
 ## <a name="scoring-the-model"></a>モデルのスコアリング
 
-モデルとデータがデータ ウェアハウスに読み込まれたら、**T-SQL PREDICT** 関数を使用してモデルをスコア付けします。 新しい入力データが、モデルの構築に使用したトレーニング データと同じ形式であることを確認します。 T-SQL PREDICT によって、モデルと新しいスコアリング入力データの 2 つの入力が受け取られ、出力用の新しい列が生成されます。モデルは、変数、リテラル、またはスカラー sub_query として指定できます。 [WITH common_table_expression](https://docs.microsoft.com/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-ver15) を使用して、データ パラメーターの名前付き結果セットを指定します。
+モデルとデータがデータ ウェアハウスに読み込まれたら、 **T-SQL PREDICT** 関数を使用してモデルをスコア付けします。 新しい入力データが、モデルの構築に使用したトレーニング データと同じ形式であることを確認します。 T-SQL PREDICT によって、モデルと新しいスコアリング入力データの 2 つの入力が受け取られ、出力用の新しい列が生成されます。モデルは、変数、リテラル、またはスカラー sub_query として指定できます。 [WITH common_table_expression](https://docs.microsoft.com/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-ver15) を使用して、データ パラメーターの名前付き結果セットを指定します。
 
 次の例は、予測関数を使用したサンプル クエリを示しています。 予測結果を含む *Score* という名前の追加の列と、データ型 *float* が作成されます。 すべての入力データ列と出力予測列が、SELECT ステートメントで表示できるようになります。 詳細については、「[PREDICT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)」を参照してください。
 

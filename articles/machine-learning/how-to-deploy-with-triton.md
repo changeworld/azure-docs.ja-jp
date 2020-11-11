@@ -1,7 +1,7 @@
 ---
 title: Triton を使用した高パフォーマンス モデルのサービス (プレビュー)
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で Triton 推論サーバーを使用してモデルを展開する方法について説明します。
+description: Azure Machine Learning で NVIDIA Triton 推論サーバーを使用してモデルを展開する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 3a3600c4065d331ca1cfc129cd55dd56add21424
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: afa1d958e054a769ea0f19b82afdf55a94c3d0cf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92428349"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309713"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton 推論サーバーを使用した高パフォーマンスのサービス (プレビュー) 
 
@@ -36,7 +36,7 @@ Triton は、" *推論用に最適化された* " フレームワークです。
 
 * **Azure サブスクリプション** 。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
 * Azure Machine Learning で[モデルを展開する方法と場所](how-to-deploy-and-where.md)について理解していること。
-* [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py) **または** [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) と [機械学習拡張機能](reference-azure-machine-learning-cli.md)。
+* [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/?view=azure-ml-py) **または** [Azure CLI](/cli/azure/?view=azure-cli-latest) と [機械学習拡張機能](reference-azure-machine-learning-cli.md)。
 * ローカル テスト用の Docker の動作するインストール。 Docker のインストールと検証の詳細については、[オリエンテーションとセットアップ](https://docs.docker.com/get-started/)に関する Docker ドキュメントを参照してください。
 
 ## <a name="architectural-overview"></a>アーキテクチャの概要
@@ -58,7 +58,7 @@ Triton は、" *推論用に最適化された* " フレームワークです。
 * Triton によって、GPU 使用率を最大化するために要求がバッチ処理されます。
 * クライアントは、 __スコアリング URI__ を使用して要求を行います。 たとえば、「 `https://myserevice.azureml.net/score` 」のように入力します。
 
-:::image type="content" source="./media/how-to-deploy-with-triton/inferenceconfig-deploy.png" alt-text="標準の、Triton を使用しない展開アーキテクチャの図":::
+:::image type="content" source="./media/how-to-deploy-with-triton/inferenceconfig-deploy.png" alt-text="Triton を使用した推論構成の展開":::
 
 モデルの展開に Triton を使用するワークフローは次のとおりです。
 
@@ -228,7 +228,7 @@ res = triton_client.infer(model_name,
 > [!IMPORTANT]
 > `AzureML-Triton` [がキュレーションされた環境](./resource-curated-environments.md)を指定する必要があります。
 >
-> Python コード例では、`AzureML-Triton` を `My-Triton` という名前の別の環境に複製します。 Azure CLI コードでもこの環境が使用されます。 環境の複製の詳細については、[Environment.Clone()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#clone-new-name-) のリファレンスを参照してください。
+> Python コード例では、`AzureML-Triton` を `My-Triton` という名前の別の環境に複製します。 Azure CLI コードでもこの環境が使用されます。 環境の複製の詳細については、[Environment.Clone()](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#clone-new-name-) のリファレンスを参照してください。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -283,7 +283,7 @@ az ml model deploy -n triton-densenet-onnx \
 
 ---
 
-展開が完了すると、スコアリング URI が表示されます。 今回のローカル展開では、`http://localhost:6789/score` です。 クラウドにデプロイする場合は、[az ml service show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) CLI コマンドを使用してスコアリング URI を取得できます。
+展開が完了すると、スコアリング URI が表示されます。 今回のローカル展開では、`http://localhost:6789/score` です。 クラウドにデプロイする場合は、[az ml service show](/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) CLI コマンドを使用してスコアリング URI を取得できます。
 
 スコアリング URI に推論要求を送信するクライアントを作成する方法については、[Web サービスとして展開されたモデルの使用](how-to-consume-web-service.md)に関するページを参照してください。
 

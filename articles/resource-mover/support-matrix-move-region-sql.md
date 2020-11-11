@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 09/07/2020
 ms.author: raynew
-ms.openlocfilehash: 4925f6ffd2383c21f8ff9b0e3196d44fc15bb657
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fda41a22c9bd9c66dd691b283ece10ac044db3ed
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652652"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324582"
 ---
 # <a name="support-for-moving-azure-sql-resources-between-azure-regions"></a>Azure SQL リソースをリージョン間で移動するためのサポート
 
@@ -38,7 +38,7 @@ ms.locfileid: "89652652"
 **自動チューニング** | サポートされていません。 | 対処法:移動後に、自動チューニング設定を行います。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning-enable)。
 **データベースのアラート** | サポートされていません。 | 対処法:移動後に、アラートを設定します。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-portal)。
 **Azure SQL Server 拡張データベース** | サポートされていません | Resource Mover を使用して SQL Server 拡張データベースを移動することはできません。
-**Azure Synapse Analytics** | サポートされていません | Resource Mover を使用して Azure Synapse Analytics (旧称 Azure SQL Data Warehouse) を移動することはできません。
+**Azure Synapse Analytics** | サポートされていません | Resource Mover を使用して Azure Synapse Analytics (旧称 SQL Data Warehouse) を移動することはできません。
 ## <a name="next-steps"></a>次の手順
 
 Resource Mover を使用して [Azure SQL リソース](tutorial-move-region-sql.md)を別のリージョンに移動してみる

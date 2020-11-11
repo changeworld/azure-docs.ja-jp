@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f6d5a9da238c520e2e0ec70ac312dd112aad2fe8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 335cc707cb1192d3dbf08f51e78d4e82441dd05a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789983"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094457"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>複数の Azure リージョンにまたがる SQL Server Always On 可用性グループを構成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "92789983"
 
 次の図は、Azure Virtual Machines での可用性グループの一般的なデプロイを示したものです。
 
-   ![可用性グループ](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png)
+   !["Windows Server フェールオーバー クラスター" と "Always On 可用性グループ" を使用した Azure ロード バランサーと可用性セットを示す図。](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png)
 
 このデプロイでは、すべての仮想マシンが 1 つの Azure リージョンに存在します。 可用性グループ レプリカは、SQL-1 および SQL-2 上の自動フェールオーバーとの同期コミットを持つことができます。 このアーキテクチャを構築するには、[可用性グループのテンプレートまたはチュートリアルに関する記事](availability-group-overview.md)をご覧ください。
 
@@ -53,7 +53,7 @@ ms.locfileid: "92789983"
 
 次の図では、データ センター間のネットワークの通信方法を示します。
 
-   ![可用性グループ](./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png)
+   ![VPN ゲートウェイを使用して通信する異なる Azure リージョンの 2 つの仮想ネットワークを示す図。](./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png)
 
 >[!IMPORTANT]
 >このアーキテクチャでは、Azure リージョン間でレプリケートされるデータに対して送信データ料金がかかります。 「[帯域幅の料金詳細](https://azure.microsoft.com/pricing/details/bandwidth/)」をご覧ください。  
@@ -98,7 +98,7 @@ ms.locfileid: "92789983"
 
    IP アドレス リソースはフェールオーバー クラスター マネージャーで作成できます。 クラスターの名前を選択し、 **[クラスター コア リソース]** の下でクラスター名を右クリックして、 **[プロパティ]** を選択します。 
 
-   ![クラスターのプロパティ](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
+   ![クラスター名、[サーバー名]、[プロパティ] が選択された [フェールオーバー クラスター マネージャー] を示すスクリーンショット。](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
 
    **[プロパティ]** ダイアログ ボックスで、 **[IP アドレス]** の下にある **[追加]** を選択し、リモート ネットワーク領域からクラスター名の IP アドレスを追加します。 **[IP アドレス]** ダイアログ ボックスで **[OK]** を選択し、 **[クラスターのプロパティ]** ダイアログ ボックスでもう一度 **[OK]** を選択して、新しい IP アドレスを保存します。 
 

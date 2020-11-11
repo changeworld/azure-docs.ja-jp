@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
-ms.openlocfilehash: 7fa148579e7525933d388b8a93c9a3476f473cb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd0dbe5912b7c4df3c666c648dbf9a92d5398cf1
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83588617"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369513"
 ---
 # <a name="translator-v20"></a>Translator v2.0
 
@@ -25,7 +25,7 @@ ms.locfileid: "83588617"
 アプリ、Web サイト、ツール、またはその他のソリューションに Translator のバージョン 2 をシームレスに統合して、多言語ユーザー エクスペリエンスを提供できます。 任意のハードウェア プラットフォーム上で使用でき、また任意のオペレーティング システムによって言語の翻訳のほか、テキストの言語検出やテキスト読み上げなど、その他の言語に関連したタスクを業界標準に従って実行できます。 詳細については、「[Translator](../translator-info-overview.md)」を参照してください。
 
 ## <a name="getting-started"></a>作業の開始
-Translator にアクセスするには、[Microsoft Azure にサインアップする](../translator-text-how-to-signup.md)必要があります。
+Translator にアクセスするには、[Microsoft Azure にサインアップする](../translator-how-to-signup.md)必要があります。
 
 ## <a name="authentication"></a>認証 
 Translator への呼び出しでは、いずれも認証にサブスクリプション キーが必要です。 この API では、3 つの認証方法がサポートされています。
@@ -607,11 +607,11 @@ string
 
 * `Category`:翻訳のカテゴリ (ドメイン) を含む文字列。 既定では、 `general`です。
 * `ContentType`:唯一サポートされていて、既定値となっているオプションは `text/plain` です。
-* `IncludeMultipleMTAlternatives`:MT エンジンから複数の翻訳候補を返すかどうかを指定するブール型のフラグ。 有効な値は `true` と `false` です (大文字と小文字は区別されます)。 既定値は `false` で、翻訳候補が 1 つだけ返されます。 フラグを `true` に設定すると、Collaborative Translation Framework (CTF) と完全に統合されている、人工的な翻訳候補の作成機能が有効になります。 この機能では、デコーダーの *n*-best リストから人工的な翻訳候補を追加して、CTF には翻訳がない文章の翻訳候補を返すことができます。
+* `IncludeMultipleMTAlternatives`:MT エンジンから複数の翻訳候補を返すかどうかを指定するブール型のフラグ。 有効な値は `true` と `false` です (大文字と小文字は区別されます)。 既定値は `false` で、翻訳候補が 1 つだけ返されます。 フラグを `true` に設定すると、Collaborative Translation Framework (CTF) と完全に統合されている、人工的な翻訳候補の作成機能が有効になります。 この機能では、デコーダーの *n* -best リストから人工的な翻訳候補を追加して、CTF には翻訳がない文章の翻訳候補を返すことができます。
     - 評価。 評価は、以下のように適用されます。 
          - 最善の自動翻訳は評価 5 になります。
        - CTF からの翻訳候補には、レビュー担当者の権限が反映されます。 その範囲は -10 から +10 です。
-       - 自動的に生成された (*n*-best) 翻訳候補の評価は 0 になり、一致度は 100 になります。
+       - 自動的に生成された ( *n* -best) 翻訳候補の評価は 0 になり、一致度は 100 になります。
     - 翻訳候補の数。 返される翻訳候補の数の最大値は `maxTranslations` に指定されている値ですが、それより小さくなる場合もあります。
     - 言語ペア。 この機能は、簡体中国語と繁体中国語の間では、翻訳方向を問わず使用できません。 Microsoft Translator でサポートされているその他すべての言語ペアに使用できます。
 * `State`:要求と応答の関連付けに役立つユーザー状態。 応答では同じ内容が返されます。
@@ -719,11 +719,11 @@ string
 * `Options`:省略可能。 以下の値を含む `Options` オブジェクト。 これらはすべて省略可能で、最も一般的な設定が既定値です。 指定された要素は、アルファベット順に一覧表示する必要があります。
     - `Category`:翻訳のカテゴリ (ドメイン) を含む文字列。 既定では、 `general`です。
     - `ContentType`:唯一サポートされていて、既定値となっているオプションは `text/plain` です。
-    - `IncludeMultipleMTAlternatives`:MT エンジンから複数の翻訳候補を返すかどうかを指定するブール型のフラグ。 有効な値は `true` と `false` です (大文字と小文字は区別されます)。 既定値は `false` で、翻訳候補が 1 つだけ返されます。 フラグを `true` に設定すると、Collaborative Translations Framework (CTF) と完全に統合されている、人工的な翻訳候補の生成機能が有効になります。 この機能では、デコーダーの *n*-best リストから人工的な翻訳候補を追加して、CTF には翻訳候補がない文章の翻訳候補を返すことができます。
+    - `IncludeMultipleMTAlternatives`:MT エンジンから複数の翻訳候補を返すかどうかを指定するブール型のフラグ。 有効な値は `true` と `false` です (大文字と小文字は区別されます)。 既定値は `false` で、翻訳候補が 1 つだけ返されます。 フラグを `true` に設定すると、Collaborative Translations Framework (CTF) と完全に統合されている、人工的な翻訳候補の生成機能が有効になります。 この機能では、デコーダーの *n* -best リストから人工的な翻訳候補を追加して、CTF には翻訳候補がない文章の翻訳候補を返すことができます。
         - 評価。評価は以下のように適用されます。
           - 最善の自動翻訳は評価 5 になります。
           - CTF からの翻訳候補には、レビュー担当者の権限が反映されます。 その範囲は -10 から +10 です。
-          - 自動的に生成された (*n*-best) 翻訳候補の評価は 0 になり、一致度は 100 になります。
+          - 自動的に生成された ( *n* -best) 翻訳候補の評価は 0 になり、一致度は 100 になります。
         - 翻訳候補の数。 返される翻訳候補の数の最大値は `maxTranslations` に指定されている値ですが、それより小さくなる場合もあります。
         - 言語ペア。 この機能は、簡体中国語と繁体中国語の間では、翻訳方向を問わず使用できません。 Microsoft Translator でサポートされているその他すべての言語ペアに使用できます。
 * `State`:要求と応答の関連付けに役立つユーザー状態。 応答では同じ内容が返されます。
@@ -804,5 +804,3 @@ string
 
 > [!div class="nextstepaction"]
 > [Translator v3 への移行](../migrate-to-v3.md)
-
-

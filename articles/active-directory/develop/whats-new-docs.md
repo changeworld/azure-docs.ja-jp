@@ -1,25 +1,50 @@
 ---
 title: Microsoft ID プラットフォームに関するドキュメントの新着情報
+titleSuffix: Microsoft identity platform
 description: Microsoft ID プラットフォームの新規および更新されたドキュメント。
-ms.date: 10/09/2020
+services: active-directory
+author: mmacy
+manager: CelesteDG
+ms.date: 11/03/2020
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-services: active-directory
-author: mmacy
-manager: CelesteDG
-ms.openlocfilehash: e6b1e16666188b21926d7547d80bda87303bc0f1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d5865810dafef9ce2bb525a8f1b6cdbdb1a86566
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979244"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322561"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft ID プラットフォームに関するドキュメント:新機能
 
 Microsoft ID プラットフォームに関するドキュメントの新着情報へようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [クイックスタート: 認証コード フローを使用して Node.js Web アプリ内でユーザーをサインインさせ、アクセス トークンを取得する](quickstart-v2-nodejs-webapp-msal.md)
+- [方法:Android で MSAL を使用してクロスアプリ SSO を有効にする](msal-android-single-sign-on.md)
+- [開発するモバイル アプリでシングル サインオンとアプリ保護ポリシーをサポートする](mobile-sso-support-overview.md)
+- Microsoft ID プラットフォームに関するドキュメント:新機能 (この記事)
+- [チュートリアル:Blazor WebAssembly アプリでユーザーのサインインを行い、保護された API を呼び出す](tutorial-blazor-webassembly.md)
+- [Microsoft Identity Web 認証ライブラリ](microsoft-identity-web.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [Microsoft ID プラットフォームでの構成可能なトークンの有効期間 (プレビュー)](active-directory-configurable-token-lifetimes.md)
+- [方法: すべての Azure Active Directory ユーザーがマルチテナント アプリケーション パターンを使用してサインインする](howto-convert-app-to-be-multi-tenant.md)
+- [クイック スタート: アプリケーションでサポートされているアカウントを変更する](quickstart-modify-supported-accounts.md)
+- [Microsoft ID プラットフォームのビデオ](identity-videos.md)
+- [Android 用の ADAL から MSAL への移行に関するガイド](migrate-android-adal-msal.md)
+- [クイック スタート:Microsoft ID プラットフォームによって保護されている ASP.NET Web API を呼び出す](quickstart-v2-dotnet-native-aspnet.md)
+- [Microsoft ID プラットフォーム アプリケーションの認証証明書資格情報](active-directory-certificate-credentials.md)
+- [チュートリアル: iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph を呼び出す](tutorial-v2-ios.md)
+- [ユーザーをサインインして、JavaScript シングルページ アプリケーション (SPA) から Microsoft Graph API を呼び出す](tutorial-v2-javascript-spa.md)
+- [チュートリアル:Android アプリケーションで共有デバイス モードを使用する](tutorial-v2-shared-device-mode.md)
 
 ## <a name="september-2020"></a>2020 年 9 月
 
@@ -62,27 +87,3 @@ Microsoft ID プラットフォームに関するドキュメントの新着情�
 - [クイック スタート:Web API を公開するようにアプリケーションを構成する](quickstart-configure-app-expose-web-apis.md)
 - [Microsoft ID プラットフォームのビデオ](identity-videos.md)
 - [クイック スタート:Microsoft ID プラットフォームによって保護されている ASP.NET Web API を呼び出す](quickstart-v2-dotnet-native-aspnet.md)
-
-## <a name="july-2020"></a>2020 年 7 月
-
-### <a name="new-articles"></a>新しい記事
-
-- [アプリケーションを Azure Active Directory アプリケーション ギャラリーに追加する](v2-howto-app-gallery-listing.md)
-- [Azure Active Directory の AppSource 認定を取得する](v2-howto-get-appsource-certified.md)
-
-### <a name="updated-articles"></a>更新された記事
-
-- [Microsoft ID プラットフォームと OAuth2.0 On-Behalf-Of フロー](v2-oauth2-on-behalf-of-flow.md)
-- [リダイレクト URI および応答 URL に関する制約と制限](reply-url.md)
-- [保護された Web API: コード構成](scenario-protected-web-api-app-configuration.md)
-- [保護された Web API: スコープとアプリのロールを検証する](scenario-protected-web-api-verification-scope-app-roles.md)
-- [Web API を呼び出す Web API:アプリのトークンの取得](scenario-web-api-call-api-acquire-token.md)
-- [Web API を呼び出す Web API: コード構成](scenario-web-api-call-api-app-configuration.md)
-- [Web API を呼び出す Web アプリ:アプリのトークンを取得する](scenario-web-app-call-api-acquire-token.md)
-- [ユーザーをサインインさせる Web アプリ:コード構成](scenario-web-app-sign-user-app-configuration.md)
-- [Microsoft ID プラットフォームの概要](v2-overview.md)
-- [Microsoft ID プラットフォームのビデオ](identity-videos.md)
-- [クイック スタート:Java Web アプリに "Microsoft でサインイン" を追加する](quickstart-v2-java-webapp.md)
-- [認証フロー](msal-authentication-flows.md)
-- [ユニバーサル Windows プラットフォーム アプリケーション (XAML) から Microsoft Graph API を呼び出す](tutorial-v2-windows-uwp.md)
-- [MSAL.js を使用してクライアント アプリケーションを初期化する](msal-js-initializing-client-applications.md)

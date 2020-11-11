@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a59939fc7988e1a94bdfb9fac2d77011422e4983
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b763a1cda91886946bba211f589c37940e7c3ae1
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87274682"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042803"
 ---
 # <a name="conditional-access-grant"></a>条件付きアクセス:Grant
 
@@ -43,8 +43,8 @@ ms.locfileid: "87274682"
 
 これらのオプションを組み合わせることを選択する場合、管理者は次の方法を選択できます。
 
-- 選択したコントロールすべてが必要 (コントロール**と**コントロール)
-- 選択したコントロールのいずれかが必要 (コントロール**または**コントロール)
+- 選択したコントロールすべてが必要 (コントロール **と** コントロール)
+- 選択したコントロールのいずれかが必要 (コントロール **または** コントロール)
 
 既定では、条件付きアクセスでは、選択したすべてのコントロールが必要です。
 
@@ -70,7 +70,7 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 
 組織は、選択したクラウド アプリへのアクセス試行を、承認されたクライアント アプリから行うように要求することができます。 これらの承認されたクライアント アプリは、モバイル デバイス管理 (MDM) ソリューションには一切依存せずに、[Intune アプリ保護ポリシー](/intune/app-protection-policy)をサポートします。
 
-この許可の制御を活用するために、条件付きアクセスでは、ブローカー アプリを使用する必要がある Azure Active Directory にデバイスを登録する必要があります。 ブローカー アプリには、iOS 用の Microsoft Authenticator か、Android デバイス用の Microsoft ポータル サイトのいずれかを使用できます。 ユーザーが認証を試みたときにブローカー アプリがデバイスにインストールされていない場合、ユーザーはブローカー アプリをインストールするために、App Store にリダイレクトされます。
+この許可の制御を活用するために、条件付きアクセスでは、ブローカー アプリを使用する必要がある Azure Active Directory にデバイスを登録する必要があります。 ブローカー アプリには、iOS 用の Microsoft Authenticator か、Android デバイス用の Microsoft Authenticator または Microsoft ポータル サイトを使用できます。 ユーザーが認証を試みたときにブローカー アプリがデバイスにインストールされていない場合、ユーザーは必要なブローカー アプリをインストールするために、適切な App/Play ストアにリダイレクトされます。
 
 この設定は、以下の iOS アプリと Android アプリに適用されます。
 
@@ -137,12 +137,12 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 - Nine Mail - Email & Calendar
 
 > [!NOTE]
-> Microsoft Kaizala、Microsoft Skype for Business、および Microsoft Visio では、**アプリの保護ポリシーを必須にする**許可はサポートされていません。 これらのアプリを動作させる必要がある場合は、**承認済みのアプリを必須にする**許可を明示的に使用してください。 この 3 つのアプリケーションでは、2 つの許可の間で or 句を使用することはできません。
+> Microsoft Kaizala、Microsoft Skype for Business、および Microsoft Visio では、 **アプリの保護ポリシーを必須にする** 許可はサポートされていません。 これらのアプリを動作させる必要がある場合は、 **承認済みのアプリを必須にする** 許可を明示的に使用してください。 この 3 つのアプリケーションでは、2 つの許可の間で or 句を使用することはできません。
 
 **解説**
 
 - アプリ保護ポリシーのアプリは、ポリシー保護を含む Intune モバイル アプリケーション管理機能をサポートしています。
-- **アプリの保護ポリシーが必要**の要件:
+- **アプリの保護ポリシーが必要** の要件:
     - デバイス プラットフォームの条件に関しては、iOS と Android のみがサポートされます。
     - デバイスを登録するには、ブローカー アプリが必要です。 iOS では、ブローカー アプリは Microsoft Authenticator であり、Android では Intune ポータル サイト アプリです。
 

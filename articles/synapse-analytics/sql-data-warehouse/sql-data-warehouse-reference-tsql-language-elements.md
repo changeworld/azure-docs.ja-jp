@@ -1,6 +1,6 @@
 ---
-title: T-SQL 言語要素
-description: Synapse SQL プールでサポートされている T-SQL 言語要素のドキュメントへのリンク。
+title: 専用 SQL プールの T-SQL 言語要素
+description: Azure Synapse Analytics の専用 SQL プール用にサポートされている T-SQL 言語要素のドキュメントへのリンク。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: bccbe67c1ea4b93a7a1938fbab6b6f3d06cb5da3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 966df3be13eda4450608d42890fcfe2240ac61a9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289499"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324655"
 ---
-# <a name="t-sql-language-elements-supported-in-synapse-sql-pool"></a>Synapse SQL プールでサポートされている T-SQL 言語要素
+# <a name="t-sql-language-elements-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールの T-SQL 言語要素 
 
-Synapse SQL プールでサポートされている T-SQL 言語要素のドキュメントへのリンク。
+専用 SQL プールでサポートされている T-SQL 言語要素のドキュメントへのリンク。
 
 ## <a name="core-elements"></a>コア要素
 
@@ -290,4 +290,4 @@ Synapse SQL プールでサポートされている T-SQL 言語要素のドキ�
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、[Synapse SQL プールの T-SQL ステートメント](sql-data-warehouse-reference-tsql-statements.md)および[Synapse SQL プールのシステム ビュー](../sql/reference-tsql-system-views.md)に関する記事を参照してください。
+詳細については、[専用 SQL プールの T-SQL ステートメント](sql-data-warehouse-reference-tsql-statements.md)に関するページ、および[専用 SQL プールのシステム ビュー](../sql/reference-tsql-system-views.md)に関するページを参照してください。

@@ -3,12 +3,12 @@ title: レジストリ ログインのトラブルシューティング
 description: Azure Container Registry にログインするときの一般的な問題の現象、原因、対処法
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: f7bac49a79d32af3a0e533f4c4e3431c62b82172
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a00db5cc34da6d90210a22005f33b0ad1bf20f1b
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148444"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348901"
 ---
 # <a name="troubleshoot-registry-login"></a>レジストリ ログインのトラブルシューティング
 
@@ -81,6 +81,7 @@ az acr login --name myregistry
   * パスワード - サービス プリンシパルのパスワード ( *クライアント シークレット* とも呼ばれます)
 * Azure Kubernetes Service や Azure DevOps などの Azure サービスを使用してレジストリにアクセスする場合は、サービスのレジストリ構成を確認します。
 * `--expose-token` オプションを指定して `az acr login` を実行し、Docker デーモンを使用せずにレジストリをログインできるようにする場合は、確実にユーザー名 `00000000-0000-0000-0000-000000000000` で認証します。
+* レジストリが[匿名プル アクセス](container-registry-faq.md#how-do-i-enable-anonymous-pull-access)用に構成されている場合、以前の Docker ログインから格納されている既存の Docker 資格情報により匿名アクセスを防ぐことができます。 レジストリに対して匿名のプル操作を実行する前に、 `docker logout` を実行してください。
 
 関連リンク:
 

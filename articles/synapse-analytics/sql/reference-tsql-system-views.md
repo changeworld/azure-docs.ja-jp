@@ -1,5 +1,5 @@
 ---
-title: Synapse SQL でサポートされるシステム ビュー - ワークスペース プレビュー
+title: Synapse SQL でサポートされるシステム ビュー
 description: Synapse SQL でサポートされているシステム ビューのドキュメントへのリンク。
 author: filippopovic
 ms.service: synapse-analytics
@@ -8,20 +8,21 @@ ms.topic: reference
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7079bbcf3bd7cb7f6073b132cd558386744f6884
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 4e4e6a1607fa42f4be07451f9aa0d8ff923d85d6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092768"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317328"
 ---
 # <a name="system-views-supported-in-synapse-sql"></a>Synapse SQL でサポートされるシステム ビュー
+
 Synapse SQL でサポートされている T-SQL ステートメントのドキュメントへのリンク。
 
 > [!NOTE]
-> Synapse SQL オンデマンドでは SQL Server カタログ ビューのみがサポートされます。  
+> Synapse サーバーレス SQL プールでは SQL Server カタログ ビューのみがサポートされます。  
 
-## <a name="sql-pool-catalog-views"></a>SQL プールのカタログ ビュー
+## <a name="dedicated-sql-pool-and-serverless-sql-pool-catalog-views"></a>専用 SQL プールとサーバーレス SQL プールのカタログ ビュー
 
 * [sys.pdw_column_distribution_properties](/sql/relational-databases/system-catalog-views/sys-pdw-column-distribution-properties-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.pdw_distributions](/sql/relational-databases/system-catalog-views/sys-pdw-distributions-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -47,7 +48,7 @@ Synapse SQL でサポートされている T-SQL ステートメントのドキ�
 * [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (プレビュー)
 * [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (プレビュー)
 
-## <a name="sql-pool-dynamic-management-views-dmvs"></a>SQL プールの動的管理ビュー (DMV)
+## <a name="dedicated-sql-pool-dynamic-management-views-dmvs"></a>専用 SQL プールの動的管理ビュー (DMV)
 
 * [sys.dm_pdw_dms_cores](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-cores-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_pdw_dms_external_work](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-external-work-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -69,9 +70,9 @@ Synapse SQL でサポートされている T-SQL ステートメントのドキ�
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-server-dmvs-applicable-to-sql-pool"></a>SQL プールに適用可能な SQL Server DMV
+## <a name="sql-server-dmvs-applicable-to-dedicated-sql-pool"></a>専用 SQL プールに適用可能な SQL Server DMV
 
-次の DMV は SQL プールに適用できますが、**マスター** データベースに接続して実行する必要があります。
+次の DMV は専用 SQL プールに適用できますが、 **マスター** データベースに接続して実行する必要があります。
 
 * [sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -151,16 +152,16 @@ Synapse SQL でサポートされている T-SQL ステートメントのドキ�
 * [sys.types](/sql/relational-databases/system-catalog-views/sys-types-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.views](/sql/relational-databases/system-catalog-views/sys-views-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-server-dmvs-available-in-sql-pool"></a>SQL プールで使用できる SQL Server DMV
+## <a name="sql-server-dmvs-available-in-dedicated-sql-pool"></a>専用 SQL プールで使用できる SQL Server DMV
 
-SQL プールには、SQL Server の動的管理ビュー (DMV) の多くが公開されます。 これらのビューは、SQL プールでクエリされると、ディストリビューションで実行されている SQL Database の状態を報告します。
+SQL プールには、SQL Server の動的管理ビュー (DMV) の多くが公開されます。 これらのビューは、専用 SQL プールでクエリされると、ディストリビューションで実行されている SQL Database の状態を報告します。
 
 SQL プールと、Analytics Platform System の Parallel Data Warehouse (PDW) では、同じシステム ビューが使用されます。 各 DMV には pdw_node_id という列があります。これは、コンピューティング ノードの識別子です。
 
 > [!NOTE]
 > これらのビューを使用するには、次の表に示すように "pdw_nodes_" を名前に挿入します。
 
-| SQL プールでの DMV 名 | SQL Server Transact-SQL の記事|
+| 専用 SQL プールでの DMV 名 | SQL Server Transact-SQL の記事|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)|
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)|
@@ -222,9 +223,9 @@ SQL プールと、Analytics Platform System の Parallel Data Warehouse (PDW) �
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-session-transactions-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-top-version-generators-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-sql-pool"></a>SQL プールで使用できる SQL Server 2016 PolyBase DMV
+## <a name="sql-server-2016-polybase-dmvs-available-in-dedicated-sql-pool"></a>専用 SQL プールで使用できる SQL Server 2016 PolyBase DMV
 
-次の DMV は SQL プールに適用できますが、**マスター** データベースに接続して実行する必要があります。
+次の DMV は専用 SQL プールに適用できますが、 **マスター** データベースに接続して実行する必要があります。
 
 * [sys.dm_exec_compute_node_errors](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-errors-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_exec_compute_node_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-status-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)

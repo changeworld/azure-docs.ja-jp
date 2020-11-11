@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: 91823ff0d324cd30566948fecd86cc441342f14e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ee6d88b5247209d5628c7f85f1985507d53811d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757046"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913723"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure Private Link のよく寄せられる質問 (FAQ)
 
@@ -49,6 +49,9 @@ ms.locfileid: "91757046"
 ### <a name="can-private-endpoint-connect-to-azure-paas-resources-across-azure-regions"></a>プライベート エンドポイントは、Azure リージョンをまたいで Azure PaaS リソースに接続できますか。
 正解です。 プライベート エンドポイントは、Azure リージョンをまたいで Azure PaaS リソースに接続できます。
 
+### <a name="can-i-modify-my-private-endpoint-network-interface-nic-"></a>プライベート エンドポイント ネットワーク インターフェイス (NIC) を変更できますか。
+プライベート エンドポイントが作成されると、読み取り専用の NIC が割り当てられます。 これは変更できず、プライベート エンドポイントのライフ サイクルの間、そのままになります。
+
 ## <a name="private-link-service"></a>Private Link サービス
  
 ### <a name="what-are-the-pre-requisites-for-creating-a-private-link-service"></a>Private Link サービスを作成するための前提条件は何ですか。 
@@ -71,7 +74,7 @@ Private Link サービスは、次のいくつかの方法でスケーリング�
 - **[すべて]** - すべてのユーザーがサービスを見つけることができます。 
  
 ### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Basic Load Balancer で Private Link サービスを作成することはできますか。 
-いいえ。 Basic Load Balancer では Private Link サービスはサポートされていません。
+不正解です。 Basic Load Balancer では Private Link サービスはサポートされていません。
  
 ### <a name="is-a-dedicated-subnet-required-for-private-link-service"></a>Private Link サービスには専用サブネットが必要ですか。 
 不正解です。 Private Link サービスに専用サブネットは必要ありません。 対象のサービスがデプロイされている VNet 内の任意のサブネットを選択できます。   

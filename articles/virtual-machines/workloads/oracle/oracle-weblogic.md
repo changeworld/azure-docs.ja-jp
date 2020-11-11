@@ -7,20 +7,22 @@ ms.topic: article
 ms.date: 09/23/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: 32f5ae0e06c38f610ae9751d81b7bf77a0ebc050
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d8639214773a4444876b2a89dda5dd831b8c36ce
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149301"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927292"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Azure Virtual Machines で Oracle WebLogic Server を実行するためのソリューションとは
 
 このページでは、Azure Virtual Machines で Oracle WebLogic Server (WLS) を実行するためのソリューションについて説明します。 これらのソリューションは、Oracle と Microsoft が共同で開発およびサポートしています。
 
+また、Azure Kubernetes Service で WLS を実行することもできます。 これを行うための解決策については、[この Microsoft の記事](/azure/virtual-machines/workloads/oracle/weblogic-aks)を参照してください。
+
 WLS は、世界中の最もミッション クリティカルなエンタープライズ Java アプリケーションを複数実行している最先端の Java アプリケーション サーバーです。 WLS は、Oracle ソフトウェア スイートのミドルウェア基盤を形成しています。 Oracle と Microsoft は、最先端のクラウド プラットフォームとして Azure 上でワークロードを実行するための選択肢と柔軟性を WLS の顧客に与えることに取り組んでいます。
 
-Azure WLS ソリューションは、ほとんどの定型操作を自動化することで、Java EE アプリケーションをできるだけ簡単に Azure 仮想マシンにリフト アンド シフトで移行できるようにすることを目的としています。 ソリューションでは、仮想ネットワーク、ストレージ、Java、および Linux のリソースが自動的にプロビジョニングされます。 最低限の手間で、WebLogic Server がインストールされます。 このソリューションでは、ネットワーク セキュリティ グループを使用してセキュリティを設定し、Azure App Gateway によって負荷分散を行い、Azure Active Directory で認証を行います。 また、Oracle クラウドまたは Azure 上の Azure PostgreSQL、Azure SQL、Oracle DB などの既存のデータベースに自動的に接続することもできます。 ソリューションのロード マップには、Oracle Coherence を介した分散ログと分散キャッシュを有効にする機能が含まれています。 Microsoft と Oracle パートナーとなって、WebLogic と Azure Kubernetes Service (AKS) で同様の機能を有効にしています。
+Azure WLS ソリューションは、ほとんどの定型操作を自動化することで、Java EE アプリケーションをできるだけ簡単に Azure 仮想マシンにリフト アンド シフトで移行できるようにすることを目的としています。 ソリューションでは、仮想ネットワーク、ストレージ、Java、および Linux のリソースが自動的にプロビジョニングされます。 最低限の手間で、WebLogic Server がインストールされます。 このソリューションでは、ネットワーク セキュリティ グループを使用してセキュリティを設定し、Azure App Gateway によって負荷分散を行い、Azure Active Directory で認証を行います。 また、Oracle クラウドまたは Azure 上の Azure PostgreSQL、Azure SQL、Oracle DB などの既存のデータベースに自動的に接続することもできます。 ソリューションのロード マップには、Oracle Coherence を介した分散ログと分散キャッシュを有効にする機能が含まれています。  
 
 :::image type="content" source="media/oracle-weblogic/wls-on-azure.gif" alt-text="Azure portal を使用して、Azure に WebLogic Server をデプロイできる":::
 
@@ -50,7 +52,7 @@ _これらのオファーを開発しているエンジニアリング チーム
 
 ソリューションでは、広範な運用環境に対応したデプロイ アーキテクチャが比較的簡単に有効になります。 ビジネス アプリケーションの開発に専念できるようにすることによって、可能な限り最も生産的な方法でほとんどの移行ケースを満たすことができます。
 
-:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="Azure portal を使用して、Azure に WebLogic Server をデプロイできる":::
+:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="複雑な WebLogic サーバーのデプロイが Azure で有効になっている":::
 
 顧客は、ソリューションによって自動的にプロビジョニングされるもの以外に、さらにデプロイをカスタマイズできる完全な柔軟性を得ています。 おそらく顧客は、アプリケーションのデプロイに加え、Azure リソースをそれらのデプロイと統合します。 ソリューションのさらなる改善に関するフィードバックを提供することをお勧めします。
 

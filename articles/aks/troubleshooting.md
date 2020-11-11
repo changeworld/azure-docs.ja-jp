@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) を使用するときに発生する
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: dcbfed4fc83b980b3e54a808406b8d27e1e6c919
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d15e381baf3abdb77f63b17cbd1d33b24f5d3321
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074415"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286770"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -39,18 +39,18 @@ Azure CLI で AKS クラスターをデプロイする場合、ノードあた�
 次の 3 つのケースでは、サブネットのサイズ不足エラーが発生します。
 
 1. AKS Scale または AKS Nodepool scale
-   1. Kubenet を使用している場合、これは `number of free IPs in the subnet` が `number of new nodes requested` **より小さい**場合に発生します。
-   1. Azure CNI を使用している場合、これは `number of free IPs in the subnet` が `number of nodes requested times (*) the node pool's --max-pod value` **より小さい**場合に発生します。
+   1. Kubenet を使用している場合、これは `number of free IPs in the subnet` が `number of new nodes requested` **より小さい** 場合に発生します。
+   1. Azure CNI を使用している場合、これは `number of free IPs in the subnet` が `number of nodes requested times (*) the node pool's --max-pod value` **より小さい** 場合に発生します。
 
 1. AKS Upgrade または AKS Nodepool upgrade
-   1. Kubenet を使用している場合、これは `number of free IPs in the subnet` が `number of buffer nodes needed to upgrade` **より小さい**場合に発生します。
-   1. Azure CNI を使用している場合、これは `number of free IPs in the subnet` が `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` **より小さい**場合に発生します。
+   1. Kubenet を使用している場合、これは `number of free IPs in the subnet` が `number of buffer nodes needed to upgrade` **より小さい** 場合に発生します。
+   1. Azure CNI を使用している場合、これは `number of free IPs in the subnet` が `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` **より小さい** 場合に発生します。
    
    既定では、AKS クラスターによって最大サージ (アップグレード バッファー) 値が 1 に設定されますが、このアップグレード動作は、アップグレードを完了するために必要な使用可能な IP の数を増やす[ノード プールの最大サージ値](upgrade-cluster.md#customize-node-surge-upgrade-preview)を設定することでカスタマイズできます。
 
 1. AKS create または AKS Nodepool add
-   1. Kubenet を使用している場合、これは `number of free IPs in the subnet` が `number of nodes requested for the node pool` **より小さい**場合に発生します。
-   1. Azure CNI を使用している場合、これは `number of free IPs in the subnet` が `number of nodes requested times (*) the node pool's --max-pod value` **より小さい**場合に発生します。
+   1. Kubenet を使用している場合、これは `number of free IPs in the subnet` が `number of nodes requested for the node pool` **より小さい** 場合に発生します。
+   1. Azure CNI を使用している場合、これは `number of free IPs in the subnet` が `number of nodes requested times (*) the node pool's --max-pod value` **より小さい** 場合に発生します。
 
 新しいサブネットを作成することによって、次の軽減策を実行できます。 既存のサブネットの CIDR 範囲を更新できないため、リスク軽減には新しいサブネットを作成するためのアクセス許可が必要です。
 
@@ -113,8 +113,8 @@ AKS クラスター内のエージェント ノードのタグを変更したこ
 このエラーは、複数の理由でクラスターがエラー状態になったときに発生します。 以前に失敗した操作を再試行する前に、次の手順に従ってクラスターのエラー状態を解決してください。
 
 1. クラスターが `failed` 状態から回復するまで、`upgrade` 操作と `scale` 操作は成功しません。 一般的な根本問題と解決策は次のとおりです。
-    * **計算 (CRP) クォータが不足**している状態でのスケーリング。 これを解決するには、まず、クォータの範囲内で安定した目標状態にクラスターをスケールバックします。 次に、最初のクォータ制限を超えて再度スケールアップを試みる前に、[こちらの手順](../azure-portal/supportability/resource-manager-core-quotas-request.md)に従って計算クォータの引き上げを依頼します。
-    * 高度なネットワーク リソースと**不十分なサブネット (ネットワーク) リソース**を使用したクラスターのスケーリング。 これを解決するには、まず、クォータの範囲内で安定した目標状態にクラスターをスケールバックします。 次に、最初のクォータ制限を超えて再度スケールアップを試みる前に、[こちらの手順](../azure-resource-manager/templates/error-resource-quota.md#solution)に従ってリソース クォータの引き上げを依頼します。
+    * **計算 (CRP) クォータが不足** している状態でのスケーリング。 これを解決するには、まず、クォータの範囲内で安定した目標状態にクラスターをスケールバックします。 次に、最初のクォータ制限を超えて再度スケールアップを試みる前に、[こちらの手順](../azure-portal/supportability/resource-manager-core-quotas-request.md)に従って計算クォータの引き上げを依頼します。
+    * 高度なネットワーク リソースと **不十分なサブネット (ネットワーク) リソース** を使用したクラスターのスケーリング。 これを解決するには、まず、クォータの範囲内で安定した目標状態にクラスターをスケールバックします。 次に、最初のクォータ制限を超えて再度スケールアップを試みる前に、[こちらの手順](../azure-resource-manager/templates/error-resource-quota.md#solution)に従ってリソース クォータの引き上げを依頼します。
 2. アップグレードの失敗の根本原因が解決されると、クラスターは成功状態になるはずです。 成功状態が確認されたら、元の操作を再試行します。
 
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-upgraded-or-has-failed-upgrade"></a>クラスターをアップグレードまたはスケーリングしようとしたときに、クラスターがアップグレード中であるか、アップグレードに失敗したというエラーが表示されます。
@@ -130,7 +130,7 @@ AKS クラスター内のエージェント ノードのタグを変更したこ
 
 ## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>自分のクラスターを別のサブスクリプションに移したり、自分のクラスターが含まれる自分のサブスクリプションを新しいテナントに移したりできますか?
 
-AKS クラスターを別のサブスクリプションに移動した場合、またはクラスターのサブスクリプションを新しいテナントに移動した場合、クラスター ID のアクセス許可がないため、クラスターは機能しません。 この制約により、**AKS はサブスクリプションまたはテナント間でのクラスターの移動をサポートしていません**。
+AKS クラスターを別のサブスクリプションに移動した場合、またはクラスターのサブスクリプションを新しいテナントに移動した場合、クラスター ID のアクセス許可がないため、クラスターは機能しません。 この制約により、 **AKS はサブスクリプションまたはテナント間でのクラスターの移動をサポートしていません** 。
 
 ## <a name="im-receiving-errors-trying-to-use-features-that-require-virtual-machine-scale-sets"></a>仮想マシン スケール セットを必要とする機能を使用しようとするとエラーが発生します
 
@@ -142,7 +142,7 @@ AKS クラスターを別のサブスクリプションに移動した場合、�
 
 クラスターのオートスケーラーや複数のノード プールなどの機能を利用するには、`vm-set-type` として仮想マシン スケール セットが必要となります。
 
-適切なドキュメントの「*開始する前に*」のステップに従い、AKS クラスターを正しく作成します。
+適切なドキュメントの「 *開始する前に* 」のステップに従い、AKS クラスターを正しく作成します。
 
 * [クラスター オートスケーラーを使用する](cluster-autoscaler.md)
 * [複数のノード プールを作成し使用する](use-multiple-node-pools.md)
@@ -154,7 +154,7 @@ AKS クラスターを別のサブスクリプションに移動した場合、�
 名前付けの制約は、Azure プラットフォームと AKS の両方によって実装されます。 リソース名またはパラメーターがこれらのいずれかの制約に違反した場合、別の入力を行うように求めるエラーが返されます。 次の一般的な名前付けのガイドラインが適用されます。
 
 * クラスター名は 1 ～ 63 文字にする必要があります。 使用できる文字は、英字、数字、ダッシュ、およびアンダースコアのみです。 先頭と末尾の文字は、文字または数字にしてください。
-* AKS Node/*MC_* リソース グループ名は、リソース グループ名とリソース名を結合します。 `MC_resourceGroupName_resourceName_AzureRegion` の自動生成された構文は、80 文字以内にする必要があります。 必要な場合は、リソース グループ名または AKS クラスター名の長さを短くします。 また、[ノード リソース グループ名をカスタマイズする](cluster-configuration.md#custom-resource-group-name)こともできます。
+* AKS Node/ *MC_* リソース グループ名は、リソース グループ名とリソース名を結合します。 `MC_resourceGroupName_resourceName_AzureRegion` の自動生成された構文は、80 文字以内にする必要があります。 必要な場合は、リソース グループ名または AKS クラスター名の長さを短くします。 また、[ノード リソース グループ名をカスタマイズする](cluster-configuration.md#custom-resource-group-name)こともできます。
 * *dnsPrefix* の最初と最後は英数字の値にする必要があり、1 から 54 文字の間にする必要があります。 有効な文字には英数字の値とハイフン (-) が含まれます。 *dnsPrefix* にはピリオド (.) などの特殊文字を含めることはできません。
 * AKS ノード プール名はすべて小文字にする必要があり、linux ノード プールの場合は 1 - 11 文字、windows ノード プールの場合は 1 - 6 文字にする必要があります。 名前は英字で始める必要があり、使用できる文字は英数字のみです。
 * Linux ノードに管理者のユーザー名を設定する *admin-username* は、文字で始まる必要があります。文字、数字、ハイフン、アンダースコアのみを含めることができ、最大文字数は 64 文字です。
@@ -167,7 +167,7 @@ AKS クラスターを別のサブスクリプションに移動した場合、�
 
 次のクラスター状態の出力に基づきます。
 
-* クラスターが、 *[成功]* または *[失敗]* 以外のプロビジョニング状態の場合は、操作 (*アップグレード / 更新 / 作成 / スケーリング / 削除 / 移行*) が終了するまで待ってください。 前の操作が完了したら、最新のクラスターの操作を再試行します。
+* クラスターが、 *[成功]* または *[失敗]* 以外のプロビジョニング状態の場合は、操作 ( *アップグレード / 更新 / 作成 / スケーリング / 削除 / 移行* ) が終了するまで待ってください。 前の操作が完了したら、最新のクラスターの操作を再試行します。
 
 * クラスターでアップグレードが失敗している場合は、 「[クラスターがエラー状態であり、状態が修正されるまで、アップグレードもスケーリングも機能しないというエラーが表示されます](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed)」で概説されている手順に従ってください。
 
@@ -198,7 +198,7 @@ AKS クラスターからのエグレス トラフィックを制限するとき
 
 必須または任意の推奨される送信ポート、ネットワーク規則と FQDN、およびアプリケーション規則のいずれとも、ご利用の設定が競合していないことを確認します。
 
-## <a name="im-receiving-429---too-many-requests-errors"></a>"429 - 要求が多すぎます" エラーが表示されました 
+## <a name="im-receiving-429---too-many-requests-errors"></a>"429 - 要求が多すぎます" エラーが表示されました
 
 Azure 上の kubernetes クラスター (AKS または no) でスケールアップまたはスケールダウンが頻繁に行われる場合、またはクラスター オートスケーラー (CA) が使用される場合、これらの操作によって多数の HTTP 呼び出しが発生し、その結果、割り当てられたサブスクリプションのクォータを超えてエラーが発生する可能性があります。 エラーは次のようになります。
 
@@ -213,6 +213,12 @@ AKS エンジニアリング チームでは、多くの機能強化が含まれ
 これらの調整エラーはサブスクリプション レベルで測定されることを考慮すると、これらは次の場合にも発生する可能性があります。
 - GET 要求を行うサードパーティ製のアプリケーションがある ( アプリケーションの監視など)。これらの呼び出しの頻度を減らすことをお勧めします。
 - VMSS に AKS クラスター/ノード プールが多数ある場合。 通常、ある特定のサブスクリプションで 20 から 30 未満のクラスターを設定することをお勧めします。
+
+## <a name="my-clusters-provisioning-status-changed-from-ready-to-failed-with-or-without-me-performing-an-operation-what-should-i-do"></a>操作を実行しているかどうかにかかわらず、クラスターのプロビジョニングの状態が "準備完了" から "失敗" に変更されました。 どうすればよいですか。
+
+操作を実行しているかどうかにかかわらず、クラスターのプロビジョニングの状態が *準備完了* から *失敗* に変更され、クラスター上のアプリケーションの実行は続行している場合、この問題はサービスによって自動的に解決される可能性があり、アプリケーションには影響しません。
+
+クラスターのプロビジョニングの状態が *失敗* のままである場合、またはクラスター上のアプリケーションが動作しなくなった場合は、[サポート リクエストを送信](https://azure.microsoft.com/support/options/#submit)してください。
 
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Azure Storage および ASK のトラブルシューティング
@@ -359,7 +365,7 @@ Azure Disk のデタッチに失敗すると、エクスポネンシャル バ�
 | 1.12.0 - 1.12.1 | 0755 |
 | 1.12.2 以上 | 0777 |
 
-ストレージ クラス オブジェクトでマウント オプションを指定できます。 次の例では、*0777* が設定されます。
+ストレージ クラス オブジェクトでマウント オプションを指定できます。 次の例では、 *0777* が設定されます。
 
 ```yaml
 kind: StorageClass
@@ -398,7 +404,7 @@ fixing permissions on existing directory /var/lib/postgresql/data
 
 このエラーは、cifs/SMB プロトコルを使用する Azure Files プラグインにより発生します。 cifs/SMB プロトコルを使用している場合、ファイルとディレクトリのアクセス許可をマウント後に変更することはできません。
 
-この問題を解決するには、*subPath* を Azure Disk プラグインと一緒に使用します。 
+この問題を解決するには、 *subPath* を Azure Disk プラグインと一緒に使用します。 
 
 > [!NOTE] 
 > ext3/4 ディスクの種類の場合、ディスクのフォーマット後に lost+found ディレクトリがあります。
@@ -470,11 +476,8 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 
 ### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>低速のディスクの接続では、GetAzureDiskLun の実行に 10 分から 15 分かかり、エラーが発生します
 
-Kubernetes の **1.15.0 より古いバージョン**では、**WaitForAttach でディスクの LUN を見つけることができない**などのエラーが発生する場合があります。  この問題を回避するには、約 15 分間待機してから再試行します。
+Kubernetes の **1.15.0 より古いバージョン** では、 **WaitForAttach でディスクの LUN を見つけることができない** などのエラーが発生する場合があります。  この問題を回避するには、約 15 分間待機してから再試行します。
 
-<!-- LINKS - internal -->
-[view-master-logs]: view-master-logs.md
-[cluster-autoscaler]: cluster-autoscaler.md
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>kubernetes.io プレフィックスでノード ラベルを使用すると、Kubernetes 1.16 へのアップグレードが失敗するのはなぜですか
 
@@ -487,3 +490,9 @@ Kubernetes [1.16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) �
 3. 古い nodepool を削除します
 
 AKS により、この軽減策を改善するために、nodepool でアクティブなラベルを変化させる機能が調査されています。
+
+
+
+<!-- LINKS - internal -->
+[view-master-logs]: view-master-logs.md
+[cluster-autoscaler]: cluster-autoscaler.md
