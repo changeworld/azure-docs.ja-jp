@@ -3,21 +3,22 @@ title: Azure Maps Search Service を使用して場所を検索する
 description: Azure Maps Search Service について説明します。 この一連の API を使用して、ジオコーディング、逆ジオコーディング、あいまい検索、および交差点住所の逆引き検索を行う方法について説明します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/21/2020
+ms.date: 10/05/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9628ecada2e427f6220ae2a5154cebb8e4958bd0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 00ddb53276c052d538d658f2c40384e86cf72aee
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895700"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910986"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Azure Maps Search Service を使用して場所を検索する
 
 Azure Maps [Search Service](/rest/api/maps/search) は、開発者が住所、場所、名前またはカテゴリ別の事業の一覧、およびその他の地理情報を検索できるように設計された RESTful API のセットです。 サービスでは、従来のジオコーディングをサポートするだけでなく、緯度と経度に基づいて住所や交差道路の逆ジオコーディングを行うこともできます。 検索で返された緯度と経度の値は、[Route](/rest/api/maps/route) サービスや [Weather](/rest/api/maps/weather) サービスなどの他の Azure Maps サービスでパラメーターとして使用できます。
+
 
 この記事では、次の方法について学習します。
 
@@ -44,9 +45,7 @@ Azure Maps [Search Service](/rest/api/maps/search) は、開発者が住所、�
 
 2. 要求を作成するには、 **[新規]** をもう一度選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 要求の **[要求名]** を入力します。 前の手順で作成したコレクションを選択し、 **[Save]\(保存\)** を選択します。
 
-3. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求では、特定の住所 (`400 Braod St, Seattle, WA 98109`) を検索します。
-
-    この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。 要求は次の URL のようになります。
+3. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求では、特定の住所 (`400 Braod St, Seattle, WA 98109`) を検索します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
 
     ```http
     https://atlas.microsoft.com/search/address/json?&subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&language=en-US&query=400 Broad St, Seattle, WA 98109
@@ -60,7 +59,7 @@ Azure Maps [Search Service](/rest/api/maps/search) は、開発者が住所、�
 
 6. 次に、`query` キーを `400 Broa` に設定してみます。
 
-7. **[送信]** ボタンをクリックします。  応答に複数の国からの応答が含まれていることがわかります。 ユーザーの関連領域に結果をジオバイアスするには、常にできるだけ多くの場所の詳細を要求に追加してください。
+7. **[送信]** ボタンをクリックします。 応答に複数の国からの応答が含まれていることがわかります。 ユーザーの関連領域に結果をジオバイアスするには、常にできるだけ多くの場所の詳細を要求に追加してください。
 
 ## <a name="using-fuzzy-search-api"></a>あいまい検索 API の使用
 
@@ -78,7 +77,7 @@ Azure Maps [Fuzzy Search API](/rest/api/maps/search/getsearchfuzzy) では、標
 
 1. Postman アプリで、 **[new]\(新規\)** をクリックし、 **[Request]\(\要求\)** を選択します。 要求の **[要求名]** を入力します。 前のセクションで作成したコレクションを選択するか、新しいコレクションを作成して、 **[Save]\(保存\)** を選択します。
 
-2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。 要求は次の URL のようになります。
+2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
 
     ```http
    https://atlas.microsoft.com/search/fuzzy/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=pizza
@@ -95,11 +94,11 @@ Azure Maps [Fuzzy Search API](/rest/api/maps/search/getsearchfuzzy) では、標
 
 4. 既定の動作では全世界が検索されるので、必要のない結果が返される可能性があります。 次に、米国のみで pizza を検索します。 **[パラメーター]** セクションに `countrySet` キーを追加し、その値を `US` に設定します。 `countrySet` キーを `US` に設定すると、結果が米国に制限されます。
 
-    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="住所の検索":::
+    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="米国で pizza を検索する":::
 
     これで、結果が国コードによってバインドされ、クエリでは米国のピザ レストランが返されます。
 
-5. さらに絞り込んだ検索結果を取得するには、緯度と経度の座標ペアを範囲として検索できます。 coordinate pair. この例では、シアトル スペース ニードルの緯度と経度を使用します。 of the Seattle Space Needle. 半径 400 メートル以内の結果のみを取得したいので、`radius` パラメーターを追加します。 また、`limit` パラメーターを追加して、最寄りの 5 つのピザ屋に結果を制限します。
+5. さらに絞り込んだ検索結果を取得するには、緯度と経度の座標ペアを範囲として検索できます。 座標ペア。 この例では、シアトル スペース ニードルの緯度と経度を使用します。 of the Seattle Space Needle. 半径 400 メートル以内の結果のみを取得したいので、`radius` パラメーターを追加します。 また、`limit` パラメーターを追加して、最寄りの 5 つのピザ屋に結果を制限します。
 
     **[パラメーター]** セクションに次のキー/値のペアを追加します。
 
@@ -143,13 +142,13 @@ Azure Maps [Get Search Address Reverse API]( https://docs.microsoft.com/rest/api
     | returnRoadUse | true | その住所での道路用途の種類が返されます。 使用できるすべての道路用途の種類については、[道路用途の種類](/rest/api/maps/search/getsearchaddressreverse#uri-parameters)に関するセクションをご覧ください。|
     | returnMatchType | true| 一致の種類を返します。 使用できるすべての値については、[住所の逆引き検索の結果](/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult)に関するセクションをご覧ください
 
-   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="住所の検索":::
+   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="逆引き検索":::
 
 5. **[送信]** をクリックして、応答の本体を確認します。
 
 6. 次に、`entityType` キーを追加し、その値を `Municipality` に設定します。 `entityType` キーを使用すると、前の手順の `returnMatchType` キーがオーバーライドされます。 地方自治体に関する情報を要求しているので、`returnSpeedLimit` と `returnRoadUse` も削除する必要があります。  使用できるすべてのエンティティ型については、[エンティティ型](/rest/api/maps/search/getsearchaddressreverse#entitytype)に関するセクションをご覧ください。
 
-    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="住所の検索":::
+    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="エンティティ型の逆引き検索":::
 
 7. **[送信]** をクリックします。 この結果を手順 5 で返された結果と比較します。  要求されたエンティティ型が `municipality` であるため、応答に番地の情報は含まれていません。 また、返された `geometryId` は、Azure Maps Get [Search Polygon API](/rest/api/maps/search/getsearchpolygon) で境界多角形を要求するときに使用できます。
 
@@ -168,7 +167,7 @@ Azure Maps [Get Search Address Reverse API]( https://docs.microsoft.com/rest/api
    https://atlas.microsoft.com/search/address/reverse/crossstreet/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700
     ```
 
-    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="住所の検索":::
+    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="交差道路の検索":::
   
 3. **[送信]** をクリックして、応答の本体を確認します。 応答に `Occidental Avenue South` という `crossStreet` の値が含まれていることがわかります。
 
