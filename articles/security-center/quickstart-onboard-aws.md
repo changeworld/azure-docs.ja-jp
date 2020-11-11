@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: bfb1c0180b50ca95cb2f1fbff62469e63ab5f19d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 3a2de9b167fcbe9dc603d33fd816e70d5c3705e5
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428102"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372780"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Azure Security Center への AWS アカウントの接続
 
@@ -39,7 +39,7 @@ AWS アカウントを Security Center にオンボードすると、AWS Securit
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|プレビュー|
+|リリース状態:|プレビュー<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |価格:|[Azure Defender for servers](defender-for-servers-introduction.md) が必要|
 |必要なロールとアクセス許可:|関連する Azure サブスクリプションの **所有者** または **共同作成者**|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
@@ -71,7 +71,7 @@ Security Center が AWS に対して認証を行えるようにするには、2 
 
 #### <a name="create-an-iam-role-for-security-center"></a>Security Center の IAM ロールを作成する
 1. アマゾン ウェブ サービス コンソールの **[セキュリティ、アイデンティティ、コンプライアンス]** の **[IAM]** を選択します。
-    :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="Security Center の概要ダッシュボードに一覧表示された 3 つの GCP プロジェクト":::
+    :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="AWS サービス":::
 
 1. **[ロール]** 、 **[ロールの作成]** の順に選択します。
 1. **[別の AWS アカウント]** を選択します。
@@ -130,13 +130,13 @@ Security Center が AWS に対して認証を行えるようにするには、2 
 
 1. Security Center のメニューから、 **[マルチ クラウド コネクタ]** を選択します。
 1. **[Add AWS account]\(AWS アカウントの追加\)** を選択します。
-    :::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="Security Center の概要ダッシュボードに一覧表示された 3 つの GCP プロジェクト":::
+    :::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="Security Center のマルチ クラウド コネクタ ページの [Add AWS account]\(AWS アカウントの追加\) ボタン":::
 1. **[AWS authentication]\(AWS 認証\)** タブでオプションを構成します。
     1. コネクタの **表示名** を入力します。
     1. サブスクリプションが正しいことを確認します。 これは、コネクタと AWS Security Hub の推奨事項が追加されるサブスクリプションです。
     1. 「[手順 2. AWS で Security Center に対する認証を設定する](#step-2-set-up-authentication-for-security-center-in-aws)」で選択した認証オプションに応じて、次の操作を行います。
-        - **[Assume Role]\(ロールを想定\)** を選択し、「[Security Center の IAM ロールを作成する](#create-an-iam-role-for-security-center)」から ARN を貼り付けます。
-            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Security Center の概要ダッシュボードに一覧表示された 3 つの GCP プロジェクト":::
+        - **[Assume Role]\(ロールを想定\)** を選択し、「 [Security Center の IAM ロールを作成する](#create-an-iam-role-for-security-center)」から ARN を貼り付けます。
+            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Azure portal で AWS 接続ウィザードの関連フィールドに ARN ファイルを貼り付ける":::
 
             OR
 
@@ -168,7 +168,7 @@ Security Center が AWS に対して認証を行えるようにするには、2 
 - ASC サービスは、新しい AWS EC2 インスタンスを 6 時間ごとにスキャンして探し、構成に従ってそれらオンボードします。
 - Security Center の規制コンプライアンス ダッシュボードに AWS CIS 標準が表示されます。
 - Security Hub ポリシーが有効になっている場合、オンボードが完了してから 5 分から 10 分後、推奨事項が Security Center ポータルと規制コンプライアンス ダッシュボードに表示されます。
-    :::image type="content" source="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png" alt-text="Security Center の概要ダッシュボードに一覧表示された 3 つの GCP プロジェクト":::
+    :::image type="content" source="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png" alt-text="Security Center の推奨事項ページの AWS リソースと推奨事項":::
 
 
 
@@ -178,7 +178,7 @@ Security Center が AWS に対して認証を行えるようにするには、2 
 
 リソースのアクティブな推奨事項を、リソースの種類別にすべて表示するには、Security Center の資産インベントリ ページを使用し、関心のある AWS リソースの種類にフィルターを適用します。
 
-:::image type="content" source="./media/quickstart-onboard-aws/aws-resource-types-in-inventory.png" alt-text="Security Center の概要ダッシュボードに一覧表示された 3 つの GCP プロジェクト"::: 
+:::image type="content" source="./media/quickstart-onboard-aws/aws-resource-types-in-inventory.png" alt-text="AWS オプションを示す資産インベントリ ページのリソースの種類のフィルター"::: 
 
 
 ## <a name="aws-in-security-center-faq"></a>Security Center の AWS に関する FAQ

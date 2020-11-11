@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 78e230453e256e90803b3607fa02904f90774881
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 523f28cdd32c5176160587a8531aa66c0621d5a7
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325092"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330691"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -207,11 +207,11 @@ GitHub 組織に接続するには、Azure Data Factory のアクセス許可を
 
 ### <a name="creating-feature-branches"></a>機能ブランチの作成
 
-データ ファクトリに関連付けられている各 Azure Repos Git リポジトリには、コラボレーション ブランチが存在します。 (`master` は既定のコラボレーション ブランチです)。 ユーザーは、ブランチのドロップダウンで **[+ New Branch]\(新しいブランチ\)** をクリックして機能分岐を作成することもできます。 新しいブランチのウィンドウが表示されたら、機能ブランチの名前を入力します。
+データ ファクトリに関連付けられている各 Azure Repos Git リポジトリには、コラボレーション ブランチが存在します。 (`main` は既定のコラボレーション ブランチです)。 ユーザーは、ブランチのドロップダウンで **[+ New Branch]\(新しいブランチ\)** をクリックして機能分岐を作成することもできます。 新しいブランチのウィンドウが表示されたら、機能ブランチの名前を入力します。
 
 ![新しいブランチを作成する](media/author-visually/new-branch.png)
 
-機能ブランチの変更をコラボレーション ブランチにマージする準備ができたら、ブランチのドロップダウンをクリックし、 **[Create pull request]\(プル要求の作成\)** を選択します。 このアクションで Azure Repos Git に移動します。Azure Repos Git では、pull request の発行、コード レビューの実行、およびコラボレーション ブランチへの変更のマージを行うことができます。 (`master` が既定値です)。 コラボレーション ブランチからは、Data Factory サービスにのみ発行することができます。 
+機能ブランチの変更をコラボレーション ブランチにマージする準備ができたら、ブランチのドロップダウンをクリックし、 **[Create pull request]\(pull request の作成\)** を選択します。 このアクションで Azure Repos Git に移動します。Azure Repos Git では、pull request の発行、コード レビューの実行、およびコラボレーション ブランチへの変更のマージを行うことができます。 (`master` が既定値です)。 コラボレーション ブランチからは、Data Factory サービスにのみ発行することができます。 
 
 ![新しい pull request を作成する](media/author-visually/create-pull-request.png)
 
@@ -252,7 +252,7 @@ Azure Data Factory に指定できる公開ブランチは一度に 1 つとな�
 *   Data Factory に対する読み取りアクセス許可は、チーム メンバー全員に必要です。
 *   Data Factory への発行は、一部の選ばれたメンバーにのみ許可するようにします。 そのためには、Data Factory がある **リソース グループ** で、 **Data Factory 共同作成者** ロールを持つ必要があります。 アクセス許可の詳細については、「[Azure Data Factory のロールとアクセス許可](concepts-roles-permissions.md)」を参照してください。
 
-コラボレーション ブランチへの直接チェックインは許可しないことをお勧めします。 この制限は、すべてのチェックインが「[機能ブランチの作成](source-control.md#creating-feature-branches)」に記載されているプル要求のレビュー プロセスを通過するため、バグを防ぐのに役立ちます。
+コラボレーション ブランチへの直接チェックインは許可しないことをお勧めします。 この制限は、すべてのチェックインが「[機能ブランチの作成](source-control.md#creating-feature-branches)」に記載されている pull request のレビュー プロセスを通過するため、バグを防ぐのに役立ちます。
 
 ### <a name="using-passwords-from-azure-key-vault"></a>Azure Key Vault からのパスワードの使用
 
@@ -268,7 +268,7 @@ Data Factory のリンクされたサービスのすべての接続文字列ま�
 
 1. 現在の Git リポジトリを削除します
 1. 同じ設定で Git を再構成しますが、 **[Import existing Data Factory resources to repository]\(既存の Data Factory リソースをリポジトリにインポートする\)** がオンになっていることを確認し、 **[New branch]\(新しいブランチ\)** を選択します
-1. 変更をコラボレーション ブランチにマージするプル要求を作成します 
+1. 変更をコラボレーション ブランチにマージする pull request を作成します 
 
 以下に、古い発行ブランチが発生する可能性がある状況の例をいくつか示します。
 - ユーザーに複数のブランチがある。 ユーザーが 1 つの機能ブランチで、AKV 関連ではないリンクされたサービスを削除し (非 AKV のリンクされたサービスは、Git にあるかどうかに関係なく、直ちに発行されます)、機能ブランチをコラボレーション ブランチにマージしませんでした。

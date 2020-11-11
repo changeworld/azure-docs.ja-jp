@@ -8,12 +8,12 @@ ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: b6be3c0f3b7ff8e44bd9dda089c803a27e883383
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 25b6bdcb293379e3206cc6714fae65fe40f6e6c5
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783438"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345603"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>クイック スタート:Java 用 Azure Queue storage クライアント ライブラリ v12
 
@@ -21,26 +21,26 @@ Java 用 Azure Queue storage クライアント ライブラリ バージョン 
 
 Java 用 Azure Queue storage クライアント ライブラリ v12 を使用すると、以下のことができます。
 
-* キューを作成する
-* メッセージをキューに追加する
-* キュー内のメッセージを表示する
-* キュー内のメッセージを更新する
-* キューからメッセージを受信して削除する
-* キューを削除する
+- キューを作成する
+- メッセージをキューに追加する
+- キュー内のメッセージを表示する
+- キュー内のメッセージを更新する
+- キューからメッセージを受信して削除する
+- キューを削除する
 
 その他のリソース:
 
-* [API リファレンス ドキュメント](/java/api/overview/azure/storage-queue-readme)
-* [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
-* [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
-* [サンプル](../common/storage-samples-java.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
+- [API リファレンス ドキュメント](/java/api/overview/azure/storage-queue-readme)
+- [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
+- [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
+- [サンプル](../common/storage-samples-java.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java Development Kit (JDK)](/java/azure/jdk/) バージョン 8 以降
-* [Apache Maven](https://maven.apache.org/download.cgi)
-* Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-* Azure Storage アカウント - [ストレージ アカウントの作成](../common/storage-account-create.md)
+- [Java Development Kit (JDK)](/java/azure/jdk/) バージョン 8 以降
+- [Apache Maven](https://maven.apache.org/download.cgi)
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+- Azure Storage アカウント - [ストレージ アカウントの作成](../common/storage-account-create.md)
 
 ## <a name="setting-up"></a>設定
 
@@ -151,9 +151,9 @@ public class App
 
 Azure Queue storage は、多数のメッセージを格納するためのサービスです。 キュー メッセージの許容される最大サイズは 64 KB です。 キューには、ストレージ アカウントの総容量の上限を超えない限り、数百万のメッセージを含めることができます。 キューは通常、非同期的な処理用に作業のバックログを作成するために使用されます。 Queue storage には、3 種類のリソースがあります。
 
-* ストレージ アカウント
-* ストレージ アカウント内のキュー
-* キュー内のメッセージ
+- ストレージ アカウント
+- ストレージ アカウント内のキュー
+- キュー内のメッセージ
 
 次の図に、これらのリソースの関係を示します。
 
@@ -161,22 +161,22 @@ Azure Queue storage は、多数のメッセージを格納するためのサー
 
 これらのリソースとやり取りするには、以下の Java クラスを使用します。
 
-* [QueueClientBuilder](/java/api/com.azure.storage.queue.queueclientbuilder): `QueueClientBuilder` クラスは、`QueueClient` オブジェクトを構成し、インスタンス化します。
-* [QueueServiceClient](/java/api/com.azure.storage.queue.queueserviceclient): `QueueServiceClient` を使用すると、ストレージ アカウント内のすべてのキューを管理できます。
-* [QueueClient](/java/api/com.azure.storage.queue.queueclient): `QueueClient` クラスを使用すると、個々のキューとそのメッセージを管理および操作できます。
-* [QueueMessageItem](/java/api/com.azure.storage.queue.models.queuemessageitem): `QueueMessageItem` クラスは、キューの [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) を呼び出したときに返される個々のオブジェクトを表します。
+- [QueueClientBuilder](/java/api/com.azure.storage.queue.queueclientbuilder): `QueueClientBuilder` クラスは、`QueueClient` オブジェクトを構成し、インスタンス化します。
+- [QueueServiceClient](/java/api/com.azure.storage.queue.queueserviceclient): `QueueServiceClient` を使用すると、ストレージ アカウント内のすべてのキューを管理できます。
+- [QueueClient](/java/api/com.azure.storage.queue.queueclient): `QueueClient` クラスを使用すると、個々のキューとそのメッセージを管理および操作できます。
+- [QueueMessageItem](/java/api/com.azure.storage.queue.models.queuemessageitem): `QueueMessageItem` クラスは、キューの [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) を呼び出したときに返される個々のオブジェクトを表します。
 
 ## <a name="code-examples"></a>コード例
 
 以下のサンプル コード スニペットは、Java 用 Azure Queue storage クライアント ライブラリを使用して以下の操作を実行する方法を示します。
 
-* [接続文字列を取得する](#get-the-connection-string)
-* [キューを作成する](#create-a-queue)
-* [メッセージをキューに追加する](#add-messages-to-a-queue)
-* [キュー内のメッセージを表示する](#peek-at-messages-in-a-queue)
-* [キュー内のメッセージを更新する](#update-a-message-in-a-queue)
-* [キューからメッセージを受信して削除する](#receive-and-delete-messages-from-a-queue)
-* [キューを削除する](#delete-a-queue)
+- [接続文字列を取得する](#get-the-connection-string)
+- [キューを作成する](#create-a-queue)
+- [メッセージをキューに追加する](#add-messages-to-a-queue)
+- [キュー内のメッセージを表示する](#peek-at-messages-in-a-queue)
+- [キュー内のメッセージを更新する](#update-a-message-in-a-queue)
+- [キューからメッセージを受信して削除する](#receive-and-delete-messages-from-a-queue)
+- [キューを削除する](#delete-a-queue)
 
 ### <a name="get-the-connection-string"></a>接続文字列を取得する
 
@@ -202,7 +202,6 @@ String connectStr = System.getenv("AZURE_STORAGE_CONNECTION_STRING");
 
 > [!IMPORTANT]
 > キュー名に使用できるのは小文字、数字、ハイフンのみであり、名前の先頭は文字または数字にする必要があります。 各ハイフンの前後にはハイフン以外の文字を指定する必要があります。 また、名前は 3 から 63 文字で指定する必要があります。 キューの名前付け規則の詳細については、「[キューとメタデータの名前付け規則](/rest/api/storageservices/naming-queues-and-metadata)」を参照してください。
-
 
 [QueueClient](/java/api/com.azure.storage.queue.queueclient) クラスのインスタンスを作成します。 次に、[create](/java/api/com.azure.storage.queue.queueclient.create) メソッドを呼び出して、ストレージ アカウントにキューを作成します。
 
@@ -266,7 +265,7 @@ System.out.println("\nUpdating the third message in the queue...");
 // Update a message using the result that
 // was saved when sending the message
 queueClient.updateMessage(result.getMessageId(),
-                          result.getPopReceipt(), 
+                          result.getPopReceipt(),
                           "Third message has been updated",
                           Duration.ofSeconds(1));
 ```
@@ -374,4 +373,4 @@ Done
 > [!div class="nextstepaction"]
 > [Java クラウド開発者向けの Azure](/azure/developer/java/)
 
-* その他の Azure Queue storage サンプル アプリについては、[Azure Queue storage SDK v12 Java クライアント ライブラリのサンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue) ページを参照してください。
+- その他の Azure Queue storage サンプル アプリについては、[Azure Queue storage SDK v12 Java クライアント ライブラリのサンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue) ページを参照してください。

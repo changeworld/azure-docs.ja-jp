@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 646be410cceb214efad19757378c74f086e58578
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8166e2a937b905ae153e6b86cb026ff2be2415a8
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89263069"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360549"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>Windows VM のシステム割り当てマネージド ID を使用して Resource Manager にアクセスする
 
@@ -37,10 +37,11 @@ ms.locfileid: "89263069"
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
 ## <a name="grant-your-vm-access-to-a-resource-group-in-resource-manager"></a>Resource Manager で VM にリソース グループへのアクセスを許可する
+
 Azure リソースのマネージド ID を使用すると、Azure AD 認証をサポートするリソースに対して認証するためのアクセス トークンをコードで取得できます。  Azure Resource Manager は、Azure AD の認証をサポートします。  最初に、Resource Manager のリソース (ここでは、VM が含まれているリソース グループ) へのアクセスをこの VM のシステム割り当てマネージド ID に許可する必要があります。  
 
-1.  **リソース グループ**のタブに移動します。 
-2.  **Windows VM** 用に作成した特定の**リソース グループ**を選択します。 
+1.  **リソース グループ** のタブに移動します。 
+2.  **Windows VM** 用に作成した特定の **リソース グループ** を選択します。 
 3.  左側のパネルの **[アクセス制御 (IAM)]** に移動します。 
 4.  **Windows VM** 用の新しいロールの割り当てについて **[ロール割り当ての追加]** を実行します。  **[閲覧者]** として **[ロール]** を選択します。 
 5.  次のドロップダウンで、 **[アクセスの割り当て先]** として **[仮想マシン]** リソースを選択します。 
@@ -51,11 +52,11 @@ Azure リソースのマネージド ID を使用すると、Azure AD 認証を�
 
 ## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager"></a>VM のシステム割り当てマネージド ID を使用してアクセス トークンを取得し、それを使用して Azure Resource Manager を呼び出す 
 
-ここでは、**PowerShell** を使用する必要があります。  **PowerShell** をインストールしていない場合は、[ここ](/powershell/azure/)からダウンロードします。 
+ここでは、 **PowerShell** を使用する必要があります。  **PowerShell** をインストールしていない場合は、 [ここ](/powershell/azure/)からダウンロードします。 
 
 1.  ポータルで **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、 **[概要]** の **[接続]** をクリックします。 
-2.  Windows VM を作成したときに追加した**ユーザー名**と**パスワード**を入力します。 
-3.  これで、仮想マシンを使用する**リモート デスクトップ接続**が作成されました。リモート セッションで **PowerShell** を開きます。 
+2.  Windows VM を作成したときに追加した **ユーザー名** と **パスワード** を入力します。 
+3.  これで、仮想マシンを使用する **リモート デスクトップ接続** が作成されました。リモート セッションで **PowerShell** を開きます。 
 4.  Invoke-WebRequest コマンドレットを使用して、Azure リソース エンドポイントのローカル マネージド ID に、Azure Resource Manager のアクセス トークンを取得するよう要求します。
 
     ```powershell

@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: f946a657b5129f773319d73fb428fe0108bac20f
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 52772519cc3b9aebc42175e812ad47ae54b529e9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123564"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336683"
 ---
 # <a name="what-is-azure-data-box"></a>Azure Data Box とは何ですか?
 
@@ -90,12 +90,12 @@ Data Box に含まれるコンポーネントを次に示します。
 
 * **Data Box デバイス** - プライマリ ストレージを提供し、クラウド ストレージとの通信を管理する物理デバイスです。デバイス上に保存されたすべてのデータのセキュリティと機密性も確保されます。 Data Box デバイスでは、80 TB のストレージ容量を使用できます。 
 
-    ![Data Box の正面と背面](media/data-box-overview/data-box-combined3.png)
+    ![Data Box の正面と背面](media/data-box-overview/data-box-combined.png)
 
     
 * **Data Box サービス** - さまざまな地理的場所からアクセスできる Web インターフェイスから、Data Box デバイスを管理できる、Azure portal の拡張機能。 Data Box サービスを使用すると、Data Box デバイスの日常的な管理を実行できます。 サービス タスクには、注文の作成と管理、警告の表示と管理、共有の管理が含まれます。  
 
-    ![Azure portal の Data Box サービス](media/data-box-overview/data-box-service1.png)
+    ![Azure portal の Data Box サービス](media/data-box-overview/data-box-service.png)
 
     詳細については、「[Use the Data Box service to administer your Data Box device (Data Box サービスを使用した Data Box デバイスの管理)](data-box-portal-ui-admin.md)」を参照してください。
 
@@ -142,7 +142,7 @@ Data Box は、サービスが展開されているリージョン、デバイ�
 
 ### <a name="for-import"></a>インポートの場合
 
-- **サービスの提供状況** - Data Box をインポートまたはエクスポートの注文で使用する場合、リージョン別の提供状況を確認するには、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関する記事を参照してください。 Data Box のエクスポート機能は現在プレビューの段階です。 
+- **サービスの提供状況** - Data Box をインポートまたはエクスポートの注文で使用する場合、リージョン別の提供状況を確認するには、 [リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関する記事を参照してください。 Data Box のエクスポート機能は現在プレビューの段階です。 
 
     インポートの注文の場合、Data Box は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](../azure-government/documentation-government-welcome.md)」を参照してください。 
 

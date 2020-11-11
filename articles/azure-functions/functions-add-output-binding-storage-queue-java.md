@@ -7,24 +7,24 @@ ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: faa4df8633c34b23703a3fe9fa405bad959ec894
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: b4381c4acbea8a3b7d86d9c32aaf9cea24cf15fa
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167204"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422656"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Java 関数を Azure Storage に接続する
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-この記事では、[前のクイック スタートの記事](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser)で作成した関数を Azure Storage キューと統合する方法を説明します。 この関数に追加する出力バインドは、HTTP 要求のデータをキュー内のメッセージに書き込みます。
+この記事では、[前のクイック スタートの記事](./create-first-function-cli-java.md?tabs=bash,browser)で作成した関数を Azure Storage キューと統合する方法を説明します。 この関数に追加する出力バインドは、HTTP 要求のデータをキュー内のメッセージに書き込みます。
 
 ほとんどのバインドでは、バインドされているサービスにアクセスするために関数が使用する、保存されている接続文字列が必要です。 この接続を簡単にするために、関数アプリで作成したストレージ アカウントを使用します。 このアカウントへの接続は、既に `AzureWebJobsStorage` という名前のアプリ設定に保存されています。  
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事の作業を始める前に、[Java クイックスタートのパート 1](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser) の手順を完了しておきます。
+この記事の作業を始める前に、[Java クイックスタートのパート 1](./create-first-function-cli-java.md?tabs=bash,browser) の手順を完了しておきます。
 
 ## <a name="download-the-function-app-settings"></a>関数アプリの設定をダウンロードする
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 7301f6bbb33c3eedff2e8c41edeaacb3df66d4c2
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 220f9fffd6c0f9b959230964a9ec79f4e209bd54
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342027"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372541"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Azure Defender for SQL の概要
 
@@ -23,8 +23,8 @@ Azure Defender for SQL には、Azure Security Center の[データ セキュリ
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|**Azure Defender for Azure SQL database servers** - 一般提供 (GA)<br>**Azure Defender for SQL servers on machines** - プレビュー|
-|価格:|**Azure Defender for SQL** を構成する 2 つのプランの課金については、[価格に関するページ](security-center-pricing.md)をご覧ください。|
+|リリース状態:|**Azure Defender for Azure SQL database servers** - 一般提供 (GA)<br>**Azure Defender for SQL servers on machines** - プレビュー<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|価格:|**Azure Defender for SQL** を構成する 2 つのプランの課金については、 [価格に関するページ](security-center-pricing.md)をご覧ください。|
 |保護される SQL のバージョン:|Azure SQL データベース <br>Azure SQL Managed Instance<br>Azure Synapse Analytics (旧称 SQL DW)<br>SQL Server (サポートされているすべてのバージョン)|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov|
 |||

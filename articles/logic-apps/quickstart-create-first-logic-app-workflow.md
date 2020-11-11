@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/30/2020
-ms.openlocfilehash: 7ec4515d5f1d096cfb83f06c398da4c1254279f6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7433c51b45b0d8459ad1959b29f61660537b8851
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099149"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337459"
 ---
 # <a name="quickstart-create-your-first-logic-apps-workflow---azure-portal"></a>クイックスタート: 初めての Logic Apps ワークフローを作成する - Azure portal
 
@@ -112,7 +112,7 @@ ms.locfileid: "93099149"
 
 ## <a name="add-the-send-email-action"></a>"電子メールの送信" アクションを追加する
 
-[ロジック アプリのトリガーを追加](#add-rss-trigger)した後は、[アクション](../logic-apps/logic-apps-overview.md#logic-app-concepts)を追加して、ロジック アプリで RSS フィードをチェックしたときに新しい項目が検出された場合の反応を指定する必要があります。 また、[Logic Apps、Azure Functions、および Azure Storage を使用して電子メールを処理する](/tutorial-process-email-attachments-workflow.md)方法のチュートリアルのように、はるかに複雑なアクションを含むロジック アプリを作成することもできます。
+[ロジック アプリのトリガーを追加](#add-rss-trigger)した後は、[アクション](../logic-apps/logic-apps-overview.md#logic-app-concepts)を追加して、ロジック アプリで RSS フィードをチェックしたときに新しい項目が検出された場合の反応を指定する必要があります。 また、[Logic Apps、Azure Functions、および Azure Storage を使用して電子メールを処理する](/azure/logic-apps/tutorial-process-email-attachments-workflow)方法のチュートリアルのように、はるかに複雑なアクションを含むロジック アプリを作成することもできます。
 
 > [!NOTE]
 > この例では、Office 365 Outlook を電子メール サービスとして使います。 別のサポートされている電子メール サービスを自分のロジック アプリで使用している場合、ユーザー インターフェイスの外観が異なる場合があります。 ただし、別の電子メール サービスに接続するための基本的な概念は同じです。

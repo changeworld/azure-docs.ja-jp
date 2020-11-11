@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 57fc0ebc10158b41539d4802aa6a8ebdd466dd90
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 50f15d041f9bcea66400eda0877e9d7914335d74
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783302"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345722"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>クイック スタート:Python 用 Azure Queue storage クライアント ライブラリ v12
 
@@ -21,26 +21,26 @@ Python 用 Azure Queue storage クライアント ライブラリ バージョ�
 
 Python 用 Azure Queue storage クライアント ライブラリ v12 を使用すると、以下のことができます。
 
-* キューを作成する
-* メッセージをキューに追加する
-* キュー内のメッセージを表示する
-* キュー内のメッセージを更新する
-* キューからメッセージを受信する
-* キューからメッセージを削除する
-* キューを削除する
+- キューを作成する
+- メッセージをキューに追加する
+- キュー内のメッセージを表示する
+- キュー内のメッセージを更新する
+- キューからメッセージを受信する
+- キューからメッセージを削除する
+- キューを削除する
 
 その他のリソース:
 
-* [API リファレンス ドキュメント](/python/api/azure-storage-queue/index)
-* [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)
-* [パッケージ (Python Package Index)](https://pypi.org/project/azure-storage-queue/)
-* [サンプル](../common/storage-samples-python.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
+- [API リファレンス ドキュメント](/python/api/azure-storage-queue/index)
+- [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)
+- [パッケージ (Python Package Index)](https://pypi.org/project/azure-storage-queue/)
+- [サンプル](../common/storage-samples-python.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-* Azure Storage アカウント - [ストレージ アカウントの作成](../common/storage-account-create.md)
-* [オペレーティング システムには Python](https://www.python.org/downloads/) - 2.7、3.5 以上
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+- Azure Storage アカウント - [ストレージ アカウントの作成](../common/storage-account-create.md)
+- [オペレーティング システムには Python](https://www.python.org/downloads/) - 2.7、3.5 以上
 
 ## <a name="setting-up"></a>設定
 
@@ -101,9 +101,9 @@ pip install azure-storage-queue
 
 Azure Queue storage は、多数のメッセージを格納するためのサービスです。 キュー メッセージの許容される最大サイズは 64 KB です。 キューには、ストレージ アカウントの総容量の上限を超えない限り、数百万のメッセージを含めることができます。 キューは通常、非同期的な処理用に作業のバックログを作成するために使用されます。 Queue storage には、3 種類のリソースがあります。
 
-* ストレージ アカウント
-* ストレージ アカウント内のキュー
-* キュー内のメッセージ
+- ストレージ アカウント
+- ストレージ アカウント内のキュー
+- キュー内のメッセージ
 
 次の図に、これらのリソースの関係を示します。
 
@@ -111,22 +111,22 @@ Azure Queue storage は、多数のメッセージを格納するためのサー
 
 これらのリソースとやり取りするには、以下の Python クラスを使用します。
 
-* [QueueServiceClient](/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient): `QueueServiceClient` を使用すると、ストレージ アカウント内のすべてのキューを管理できます。
-* [QueueClient](/python/api/azure-storage-queue/azure.storage.queue.queueclient): `QueueClient` クラスを使用すると、個々のキューとそのメッセージを管理および操作できます。
-* [QueueMessage](/python/api/azure-storage-queue/azure.storage.queue.queuemessage): `QueueMessage` クラスは、キューの [receive_messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) を呼び出したときに返される個々のオブジェクトを表します。
+- [QueueServiceClient](/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient): `QueueServiceClient` を使用すると、ストレージ アカウント内のすべてのキューを管理できます。
+- [QueueClient](/python/api/azure-storage-queue/azure.storage.queue.queueclient): `QueueClient` クラスを使用すると、個々のキューとそのメッセージを管理および操作できます。
+- [QueueMessage](/python/api/azure-storage-queue/azure.storage.queue.queuemessage): `QueueMessage` クラスは、キューの [receive_messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) を呼び出したときに返される個々のオブジェクトを表します。
 
 ## <a name="code-examples"></a>コード例
 
 以下のサンプル コード スニペットは、Python 用 Azure Queue storage クライアント ライブラリを使用して以下の操作を実行する方法を示します。
 
-* [接続文字列を取得する](#get-the-connection-string)
-* [キューを作成する](#create-a-queue)
-* [メッセージをキューに追加する](#add-messages-to-a-queue)
-* [キュー内のメッセージを表示する](#peek-at-messages-in-a-queue)
-* [キュー内のメッセージを更新する](#update-a-message-in-a-queue)
-* [キューからメッセージを受信する](#receive-messages-from-a-queue)
-* [キューからメッセージを削除する](#delete-messages-from-a-queue)
-* [キューを削除する](#delete-a-queue)
+- [接続文字列を取得する](#get-the-connection-string)
+- [キューを作成する](#create-a-queue)
+- [メッセージをキューに追加する](#add-messages-to-a-queue)
+- [キュー内のメッセージを表示する](#peek-at-messages-in-a-queue)
+- [キュー内のメッセージを更新する](#update-a-message-in-a-queue)
+- [キューからメッセージを受信する](#receive-messages-from-a-queue)
+- [キューからメッセージを削除する](#delete-messages-from-a-queue)
+- [キューを削除する](#delete-a-queue)
 
 ### <a name="get-the-connection-string"></a>接続文字列を取得する
 
@@ -316,5 +316,5 @@ Done
 > [!div class="nextstepaction"]
 > [Python 開発者向けの Azure](/azure/python/)
 
-* 詳細については、「[Python 用 Azure Storage ライブラリ](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage)」を参照してください。
-* その他の Azure Queue storage サンプル アプリについては、[Azure Queue storage v12 Python クライアント ライブラリのサンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples) ページを参照してください。
+- 詳細については、「[Python 用 Azure Storage ライブラリ](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage)」を参照してください。
+- その他の Azure Queue storage サンプル アプリについては、[Azure Queue storage v12 Python クライアント ライブラリのサンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples) ページを参照してください。

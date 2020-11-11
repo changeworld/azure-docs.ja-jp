@@ -9,16 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: ff14f8a9f236701889aea95911f2a1e381eabf83
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fce098767fffd36376399bbd9396699e3d9fbfd3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90945239"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392080"
 ---
 # <a name="deploy-azure-sql-edge-with-docker"></a>Docker を使用して Azure SQL Edge をデプロイする
 
-このクイックスタートでは、Docker を使用することで Azure SQL Edge のコンテナー イメージをプルして実行します。 次に、**sqlcmd** と接続して最初のデータベースを作成し、クエリを実行します。
+このクイックスタートでは、Docker を使用することで Azure SQL Edge のコンテナー イメージをプルして実行します。 次に、 **sqlcmd** と接続して最初のデータベースを作成し、クエリを実行します。
 
 このイメージは、Ubuntu 18.04 に基づく Azure SQL Edge で構成されています。 イメージは Linux の Docker エンジン 1.8+ または Mac/Windows 用 Docker で使用することができます。
 
@@ -28,7 +28,7 @@ ms.locfileid: "90945239"
 - Docker **overlay2** ストレージ ドライバー。 ほとんどのユーザーでは、これが既定値です。 このストレージ プロバイダーを使用しておらず、変更が必要であることがわかった場合は、[overlay2 の構成に関する Docker のドキュメント](https://docs.docker.com/storage/storagedriver/overlayfs-driver/#configure-docker-with-the-overlay-or-overlay2-storage-driver)上で、その手順と警告について確認してください。
 - 10 GB 以上のディスク領域。
 - 1 GB 以上の RAM。
-- [Azure SQL Edge のハードウェア要件](https://docs.microsoft.com/azure/azure-sql-edge/features#hardware-support)。
+- [Azure SQL Edge のハードウェア要件](./features.md#hardware-support)。
 
 
 ## <a name="pull-and-run-the-container-image"></a>コンテナー イメージのプルと実行
@@ -69,8 +69,8 @@ ms.locfileid: "90945239"
 
     | パラメーター | 説明 |
     |-----|-----|
-    | **-e "ACCEPT_EULA=Y"** |  **ACCEPT_EULA** 変数を任意の値に設定し、[使用許諾契約書](https://go.microsoft.com/fwlink/?linkid=2139274)の承諾を確定します。 Azure SQL Edge イメージに必要な設定。 |
-    | **-e "MSSQL_SA_PASSWORD=yourStrong(!)Password"** | 8 文字以上の、[Azure SQL Edge のパスワード要件](https://docs.microsoft.com/sql/relational-databases/security/password-policy)を満たす強力なパスワードを指定します。 Azure SQL Edge イメージに必要な設定。 |
+    | **-e "ACCEPT_EULA=Y"** |  **ACCEPT_EULA** 変数を任意の値に設定し、 [使用許諾契約書](https://go.microsoft.com/fwlink/?linkid=2139274)の承諾を確定します。 Azure SQL Edge イメージに必要な設定。 |
+    | **-e "MSSQL_SA_PASSWORD=yourStrong(!)Password"** | 8 文字以上の、[Azure SQL Edge のパスワード要件](/sql/relational-databases/security/password-policy)を満たす強力なパスワードを指定します。 Azure SQL Edge イメージに必要な設定。 |
     | **-p 1433:1433** | ホスト環境の TCP ポート (最初の値) とコンテナーの TCP ポート (2 番目の値) をマップします。 この例では、コンテナー内では Azure SQL Edge によって TCP 1433 がリッスンされており、これがホスト上ではポート 1433 に公開されます。 |
     | **--name azuresqledge** | ランダムに生成された名前ではなく、コンテナーのカスタム名を指定します。 複数のコンテナーを実行する場合は、この同じ名前を再利用することはできません。 |
     | **-d** | コンテナーをバックグラウンド (デーモン) で実行します |
@@ -134,11 +134,11 @@ ms.locfileid: "90945239"
    > [!TIP]
    > コマンド ラインでパスワードを省略すると、入力を求められます。
 
-3. 成功すると、**sqlcmd** コマンド プロンプト `1>` が表示されます。
+3. 成功すると、 **sqlcmd** コマンド プロンプト `1>` が表示されます。
 
 ## <a name="create-and-query-data"></a>データの作成とクエリ
 
-以下のセクションでは、**sqlcmd** と Transact-SQL を使用して新しいデータベースを作成し、データを追加して簡単なクエリを実行します。
+以下のセクションでは、 **sqlcmd** と Transact-SQL を使用して新しいデータベースを作成し、データを追加して簡単なクエリを実行します。
 
 ### <a name="create-a-new-database"></a>新しいデータベースの作成
 

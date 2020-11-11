@@ -7,12 +7,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b36a71899be43f40ec16c76b5e53c8c3e7fb3552
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2ea92ad2e9c81b568e11ff97d7b6a88eeb4f188e
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124528"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346572"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Stream Analytics ジョブを作成する
 
@@ -28,7 +28,7 @@ Azure PowerShell モジュールは、PowerShell コマンドレットまたは�
 
 * このクイック スタートには、Azure PowerShell モジュールが必要です。 ローカル マシンにインストールされているバージョンを調べるには、`Get-Module -ListAvailable Az` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。
 
-* 一部の IoT Hub アクションは Azure PowerShell でサポートされていないため、Azure CLI バージョン 2.0.70 以降および Azure CLI の IoT 拡張機能を使用して完了する必要があります。 [Azure CLI をインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)し、`az extension add --name azure-iot` を使用して IoT 拡張機能をインストールします。
+* 一部の IoT Hub アクションは Azure PowerShell でサポートされていないため、Azure CLI バージョン 2.0.70 以降および Azure CLI の IoT 拡張機能を使用して完了する必要があります。 [Azure CLI をインストール](/cli/azure/install-azure-cli)し、`az extension add --name azure-iot` を使用して IoT 拡張機能をインストールします。
 
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
@@ -68,9 +68,9 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
 
 次の Azure CLI コード ブロックでは、ジョブに必要な入力データを準備するための多くのコマンドが実行されます。 コードを理解するためにセクションを確認してください。
 
-1. PowerShell ウィンドウで [az login](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) コマンドを実行して、ご利用の Azure アカウントにサインインします。
+1. PowerShell ウィンドウで [az login](/cli/azure/authenticate-azure-cli) コマンドを実行して、ご利用の Azure アカウントにサインインします。
 
-    サインインに成功すると、Azure CLI からサブスクリプションの一覧が返されます。 このクイック スタートに使用しているサブスクリプションをコピーし、[az account set](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) コマンドを実行してそのサブスクリプションを選択します。 PowerShell を使用した前のセクションで選択したのと同じサブスクリプションを選択します。 `<your subscription name>` は、必ず実際のサブスクリプションの名前に置き換えてください。
+    サインインに成功すると、Azure CLI からサブスクリプションの一覧が返されます。 このクイック スタートに使用しているサブスクリプションをコピーし、[az account set](/cli/azure/manage-azure-subscriptions-azure-cli#change-the-active-subscription) コマンドを実行してそのサブスクリプションを選択します。 PowerShell を使用した前のセクションで選択したのと同じサブスクリプションを選択します。 `<your subscription name>` は、必ず実際のサブスクリプションの名前に置き換えてください。
 
     ```azurecli
     az login
@@ -84,7 +84,7 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
     az iot hub create --name "<your IoT Hub name>" --resource-group $resourceGroup --sku S1
     ```
 
-    IoT ハブが作成されたら、[az iot hub show-connection-string](/cli/azure/iot/hub?view=azure-cli-latest) コマンドを使用して IoT ハブの接続文字列を取得します。 IoT ハブを Stream Analytics ジョブへの入力として追加するときに備えて、接続文字列全体をコピーして保存します。
+    IoT ハブが作成されたら、[az iot hub show-connection-string](/cli/azure/iot/hub) コマンドを使用して IoT ハブの接続文字列を取得します。 IoT ハブを Stream Analytics ジョブへの入力として追加するときに備えて、接続文字列全体をコピーして保存します。
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"

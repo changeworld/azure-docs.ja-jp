@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ca3b218da7835ee9f3e9e8653f4829767a1ffb07
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a62aa9df818bb6ff7026d95daa625acabe66b990
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783472"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345637"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>クイック スタート:.NET 用 Azure Queue storage クライアント ライブラリ v12
 
@@ -21,26 +21,26 @@ ms.locfileid: "92783472"
 
 .NET 用 Azure Queue storage クライアント ライブラリ v12 を使用すると、以下のことができます。
 
-* キューを作成する
-* メッセージをキューに追加する
-* キュー内のメッセージを表示する
-* キュー内のメッセージを更新する
-* キューからメッセージを受信する
-* キューからメッセージを削除する
-* キューを削除する
+- キューを作成する
+- メッセージをキューに追加する
+- キュー内のメッセージを表示する
+- キュー内のメッセージを更新する
+- キューからメッセージを受信する
+- キューからメッセージを削除する
+- キューを削除する
 
 その他のリソース:
 
-* [API リファレンス ドキュメント](/dotnet/api/azure.storage.queues)
-* [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
-* [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
-* [サンプル](../common/storage-samples-dotnet.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
+- [API リファレンス ドキュメント](/dotnet/api/azure.storage.queues)
+- [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
+- [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
+- [サンプル](../common/storage-samples-dotnet.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-* Azure Storage アカウント - [ストレージ アカウントの作成](../common/storage-account-create.md)
-* 使用するオペレーティング システム用の最新の [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)。 ランタイムではなく、必ず SDK を入手してください。
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+- Azure Storage アカウント - [ストレージ アカウントの作成](../common/storage-account-create.md)
+- 使用するオペレーティング システム用の最新の [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)。 ランタイムではなく、必ず SDK を入手してください。
 
 ## <a name="setting-up"></a>設定
 
@@ -79,8 +79,6 @@ dotnet add package Azure.Storage.Queues
 1. `using` ディレクティブを追加します
 1. [非同期コードをサポート](/dotnet/csharp/whats-new/csharp-7#async-main)するように `Main` メソッドの宣言を更新します
 
-
-
 コードは次のとおりです。
 
 ```csharp
@@ -107,9 +105,9 @@ namespace QueuesQuickstartV12
 
 Azure Queue storage は、多数のメッセージを格納するためのサービスです。 キュー メッセージの許容される最大サイズは 64 KB です。 キューには、ストレージ アカウントの総容量の上限を超えない限り、数百万のメッセージを含めることができます。 キューは通常、非同期的な処理用に作業のバックログを作成するために使用されます。 Queue storage には、3 種類のリソースがあります。
 
-* ストレージ アカウント
-* ストレージ アカウント内のキュー
-* キュー内のメッセージ
+- ストレージ アカウント
+- ストレージ アカウント内のキュー
+- キュー内のメッセージ
 
 次の図に、これらのリソースの関係を示します。
 
@@ -117,22 +115,22 @@ Azure Queue storage は、多数のメッセージを格納するためのサー
 
 これらのリソースとやり取りするには、以下の .NET クラスを使用します。
 
-* [QueueServiceClient](/dotnet/api/azure.storage.queues.queueserviceclient): `QueueServiceClient` を使用すると、ストレージ アカウント内のすべてのキューを管理できます。
-* [QueueClient](/dotnet/api/azure.storage.queues.queueclient): `QueueClient` クラスを使用すると、個々のキューとそのメッセージを管理および操作できます。
-* [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage): `QueueMessage` クラスは、キューの [ReceiveMessages](/dotnet/api/azure.storage.queues.queueclient.receivemessages) を呼び出したときに返される個々のオブジェクトを表します。
+- [QueueServiceClient](/dotnet/api/azure.storage.queues.queueserviceclient): `QueueServiceClient` を使用すると、ストレージ アカウント内のすべてのキューを管理できます。
+- [QueueClient](/dotnet/api/azure.storage.queues.queueclient): `QueueClient` クラスを使用すると、個々のキューとそのメッセージを管理および操作できます。
+- [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage): `QueueMessage` クラスは、キューの [ReceiveMessages](/dotnet/api/azure.storage.queues.queueclient.receivemessages) を呼び出したときに返される個々のオブジェクトを表します。
 
 ## <a name="code-examples"></a>コード例
 
 以下のサンプル コード スニペットは、.NET 用 Azure Queue storage クライアント ライブラリを使用して以下の操作を実行する方法を示します。
 
-* [接続文字列を取得する](#get-the-connection-string)
-* [キューを作成する](#create-a-queue)
-* [メッセージをキューに追加する](#add-messages-to-a-queue)
-* [キュー内のメッセージを表示する](#peek-at-messages-in-a-queue)
-* [キュー内のメッセージを更新する](#update-a-message-in-a-queue)
-* [キューからメッセージを受信する](#receive-messages-from-a-queue)
-* [キューからメッセージを削除する](#delete-messages-from-a-queue)
-* [キューを削除する](#delete-a-queue)
+- [接続文字列を取得する](#get-the-connection-string)
+- [キューを作成する](#create-a-queue)
+- [メッセージをキューに追加する](#add-messages-to-a-queue)
+- [キュー内のメッセージを表示する](#peek-at-messages-in-a-queue)
+- [キュー内のメッセージを更新する](#update-a-message-in-a-queue)
+- [キューからメッセージを受信する](#receive-messages-from-a-queue)
+- [キューからメッセージを削除する](#delete-messages-from-a-queue)
+- [キューを削除する](#delete-a-queue)
 
 ### <a name="get-the-connection-string"></a>接続文字列を取得する
 
@@ -158,7 +156,6 @@ string connectionString = Environment.GetEnvironmentVariable("AZURE_STORAGE_CONN
 
 > [!IMPORTANT]
 > キュー名に使用できるのは小文字、数字、ハイフンのみであり、名前の先頭は文字または数字にする必要があります。 各ハイフンの前後にはハイフン以外の文字を指定する必要があります。 また、名前は 3 から 63 文字で指定する必要があります。 キューの名前付け規則の詳細については、「[キューとメタデータの名前付け規則](/rest/api/storageservices/naming-queues-and-metadata)」を参照してください。
-
 
 [QueueClient](/dotnet/api/azure.storage.queues.queueclient) クラスのインスタンスを作成します。 次に、[CreateAsync](/dotnet/api/azure.storage.queues.queueclient.createasync) メソッドを呼び出して、ストレージ アカウントにキューを作成します。
 
@@ -336,6 +333,6 @@ Done
 > [!div class="nextstepaction"]
 > [.NET および .NET Core 開発者向けの Azure](/dotnet/azure/)
 
-* 詳細については、「[.NET 用 Azure Storage ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage)」を参照してください。
-* その他の Azure Queue storage サンプル アプリについては、[Azure Queue storage v12 .NET クライアント ライブラリのサンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples) ページを参照してください。
-* .NET Core の詳細については、「[Get started with .NET in 10 minutes (10 分で .NET を使い始める)](https://www.microsoft.com/net/learn/get-started/)」を参照してください。
+- 詳細については、「[.NET 用 Azure Storage ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage)」を参照してください。
+- その他の Azure Queue storage サンプル アプリについては、[Azure Queue storage v12 .NET クライアント ライブラリのサンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples) ページを参照してください。
+- .NET Core の詳細については、「[Get started with .NET in 10 minutes (10 分で .NET を使い始める)](https://www.microsoft.com/net/learn/get-started/)」を参照してください。
