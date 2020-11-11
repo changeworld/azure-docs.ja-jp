@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 84cb7e7e98e81e242ec1cac554fe073370e45645
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: bf7b829d70af27850affe619d47ed4a4f5ec1bea
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495778"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279905"
 ---
 # <a name="write-client-app-authentication-code"></a>クライアント アプリの認証コードを書き込む
 
@@ -20,23 +20,25 @@ ms.locfileid: "92495778"
 
 Azure Digital Twins では [OAUTH 2.0 に基づく Azure AD セキュリティ トークン](../active-directory/develop/security-tokens.md#json-web-tokens-jwts-and-claims)を使用して認証が実行されます。 ご使用の SDK を認証するには、Azure Digital Twins に対する適切なアクセス許可を持つベアラー トークンを取得し、API 呼び出しと共にこれを渡す必要があります。 
 
-この記事では、`Azure.Identity` クライアント ライブラリを使用して資格情報を取得する方法について説明します。 この記事では C# のコード サンプルを示していますが ( [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) 用に記述する内容など)、使用する SDK に関係なく `Azure.Identity` のバージョンを使用できます (Azure Digital Twins で使用できる SDK の詳細については、 [*Azure Digital Twins API と SDK の使用方法*](how-to-use-apis-sdks.md)に関する記事をご覧ください)。
+この記事では、`Azure.Identity` クライアント ライブラリを使用して資格情報を取得する方法について説明します。 この記事では C# のコード サンプルを示していますが ( [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 用に記述する内容など)、使用する SDK に関係なく `Azure.Identity` のバージョンを使用できます (Azure Digital Twins で使用できる SDK の詳細については、 [*Azure Digital Twins API と SDK の使用方法*](how-to-use-apis-sdks.md)に関する記事をご覧ください)。
 
 ## <a name="prerequisites"></a>前提条件
 
-最初に、" [*インスタンスと認証の設定方法*](how-to-set-up-instance-portal.md)" に関する記事のセットアップ手順を完了します。 これにより、Azure Digital Twins のインスタンスが作成され、ユーザーにアクセス許可が与えられ、クライアント アプリケーションに対するアクセス許可が設定されます。 このセットアップがすべて完了したら、クライアント アプリのコードを記述することができます。
+最初に、" [*インスタンスと認証の設定方法*](how-to-set-up-instance-portal.md)" に関する記事のセットアップ手順を完了します。 これにより、Azure Digital Twins インスタンスが作成され、ユーザーにアクセス許可があることが確認されます。 このセットアップが完了したら、クライアント アプリのコードを記述することができます。
 
 先に進むには、コードを記述するクライアント アプリ プロジェクトが必要です。 クライアント アプリ プロジェクトをまだ設定していない場合は、このチュートリアルで使用する基本的なプロジェクトを、選択した言語で作成します。
 
 ## <a name="common-authentication-methods-with-azureidentity"></a>Azure.Identity を使用した一般的な認証方法
 
 `Azure.Identity` は、ベアラー トークンを取得して SDK で認証するために使用できる、資格情報を取得するためのメソッドをいくつか提供するクライアント ライブラリです。 この記事では C# の例を示していますが、次のようないくつかの言語で `Azure.Identity` を表示できます。
+
 * [.NET (C#)](/dotnet/api/azure.identity?preserve-view=true&view=azure-dotnet)
 * [Java](/java/api/overview/azure/identity-readme?preserve-view=true&view=azure-java-stable)
 * [JavaScript](/javascript/api/overview/azure/identity-readme?preserve-view=true&view=azure-node-latest)
 * [Python](/python/api/overview/azure/identity-readme?preserve-view=true&view=azure-python)
 
 `Azure.Identity` で資格情報を取得するための一般的な 3 つのメソッドは次のとおりです。
+
 * [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) では、Azure にデプロイされるアプリケーションに対して既定の `TokenCredential` 認証フローが提供されます。これは、 **ローカル開発に推奨** されています。 また、これを有効にして、この記事で推奨されている他の 2 つのメソッドを試すこともできます。つまり、これで `ManagedIdentityCredential` をラップすることや、構成変数で `InteractiveBrowserCredential` にアクセスすることができます。
 * [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?preserve-view=true&view=azure-dotnet) は、[マネージド ID (MSI)](../active-directory/managed-identities-azure-resources/overview.md) を必要とする場合に適しており、Azure Functions を操作する場合や Azure サービスにデプロイする場合の有力な選択肢です。
 * [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) は、対話型アプリケーションを対象とし、認証された SDK クライアントを作成するために使用できます
