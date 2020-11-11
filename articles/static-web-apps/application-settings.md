@@ -100,7 +100,7 @@ Azure portal には、アプリケーション設定を作成、更新、およ�
 
 1. サイドバーの **[構成]** オプションをクリックします。
 
-1. アプリケーション設定を適用する環境を選択します。 ステージング環境はプル要求が生成されると自動的に作成され、プル要求がマージされると、運用環境に昇格されます。 アプリケーション設定は、環境ごとに設定できます。
+1. アプリケーション設定を適用する環境を選択します。 ステージング環境は pull request が生成されると自動的に作成され、pull request がマージされると、運用環境に昇格されます。 アプリケーション設定は、環境ごとに設定できます。
 
 1. **[追加]** ボタンをクリックして、新しいアプリケーション設定を追加します。
 
@@ -144,7 +144,7 @@ Azure CLI コマンドには、アップロードを実行するために、ア�
 2. リソース グループ名
 3. サブスクリプション ID
 
-:::image type="content" source="media/application-settings/overview.png" alt-text="Azure Static Web Apps の構成ビュー":::
+:::image type="content" source="media/application-settings/overview.png" alt-text="Azure Static Web Apps の概要":::
 
 4. ターミナルまたはコマンド ラインから、次のコマンドを実行します。 `<YOUR_STATIC_SITE_NAME>`、`<YOUR_RESOURCE_GROUP_NAME>`、および `<YOUR_SUBSCRIPTION_ID>` のプレースホルダーは、必ず _[Overview]\(概要\)_ ウィンドウの値に置き換えてください。
 
