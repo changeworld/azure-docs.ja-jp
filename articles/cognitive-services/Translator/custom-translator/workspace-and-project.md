@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 41586b2ec96d30fd583cbc9a746493ed9206548b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28bc07cadf9ffea56059755e243cb3e828077588
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510744"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368969"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Custom Translator ワークスペースとは
 
@@ -25,7 +25,7 @@ ms.locfileid: "88510744"
 
 ## <a name="what-is-a-custom-translator-project"></a>Custom Translator プロジェクトとは
 
-プロジェクトは、モデル、ドキュメント、およびテストのラッパーです。 各プロジェクトには、正しい言語ペアを持ち、そのワークスペースにアップロードされたすべてのドキュメントが自動的に追加されます。 たとえば、英語からスペイン語へのプロジェクトとスペイン語から英語へのプロジェクトの両方がある場合、同じドキュメントが両方のプロジェクトに含まれます。 各プロジェクトには CategoryID が関連付けられており、翻訳のために [V3 API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) のクエリを実行するときに使用されます。 CategoryID は、Custom Translator を使用して構築したカスタマイズ済みシステムから翻訳を取得するために使用されるパラメーターです。
+プロジェクトは、モデル、ドキュメント、およびテストのラッパーです。 各プロジェクトには、正しい言語ペアを持ち、そのワークスペースにアップロードされたすべてのドキュメントが自動的に追加されます。 たとえば、英語からスペイン語へのプロジェクトとスペイン語から英語へのプロジェクトの両方がある場合、同じドキュメントが両方のプロジェクトに含まれます。 各プロジェクトには CategoryID が関連付けられており、翻訳のために [V3 API](../reference/v3-0-translate.md?tabs=curl) のクエリを実行するときに使用されます。 CategoryID は、Custom Translator を使用して構築したカスタマイズ済みシステムから翻訳を取得するために使用されるパラメーターです。
 
 ## <a name="project-categories"></a>プロジェクトのカテゴリ
 
@@ -39,7 +39,7 @@ ms.locfileid: "88510744"
 
 Custom Translator を使用すると、プロジェクトにプロジェクト ラベルを割り当てることができます。 プロジェクト ラベルで、言語ペアとカテゴリが同じ複数のプロジェクトを区別します。 必要な場合を除き、プロジェクト ラベルを使用しないことをお勧めします。
 
-プロジェクト ラベルは CategoryID の一部として使用されます。 プロジェクト ラベルを設定しない場合、またはプロジェクト全体で同様に設定されている場合、同じカテゴリで言語ペアが*異なる*プロジェクトは同じ CategoryID を共有することになります。 このアプローチは、Text Translator API を使用するときに、各プロジェクトに固有の CategoryID について心配することなく、自分も顧客も言語間を切り替えることができるので便利です。
+プロジェクト ラベルは CategoryID の一部として使用されます。 プロジェクト ラベルを設定しない場合、またはプロジェクト全体で同様に設定されている場合、同じカテゴリで言語ペアが *異なる* プロジェクトは同じ CategoryID を共有することになります。 このアプローチは、Text Translator API を使用するときに、各プロジェクトに固有の CategoryID について心配することなく、自分も顧客も言語間を切り替えることができるので便利です。
 
 たとえば、テクノロジ ドメインで英語からフランス語へ、フランス語から英語への翻訳を有効にしたい場合は、英語用 -\> フランス語用とフランス語 -\> 英語用の 2 つのプロジェクトを作成します。 両方に同じカテゴリ (テクノロジ) を指定し、プロジェクト ラベルは空白のままにします。 両方のプロジェクトの CategoryID が一致するので、CategoryID を変更することなく、英語とフランス語の両方の翻訳に対して API のクエリを実行することができます。
 

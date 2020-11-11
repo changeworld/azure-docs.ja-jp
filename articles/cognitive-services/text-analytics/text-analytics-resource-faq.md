@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: aca3b0bea65923cee1bae25020058666c973922c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ffa70afa0edf29181bc622cbef6ff8716134b1f7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73837121"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364940"
 ---
 # <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>Text Analytics Cognitive Service に関してよく寄せられる質問 (FAQ)
 
@@ -29,11 +29,11 @@ ms.locfileid: "73837121"
 
 ## <a name="can-i-add-my-own-training-data-or-models"></a>自分のトレーニング データやモデルを追加できますか。
 
-いいえ。モデルは事前トレーニングされています。 アップロードしたデータに対して行える操作は、スコア付け、キー フレーズ抽出、言語検出に限られます。 カスタム モデルはホストしていません。 カスタムの機械学習モデルを作成し、ホストする場合、[Microsoft R Server の機械学習機能](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package)を検討してください。
+いいえ。モデルは事前トレーニングされています。 アップロードしたデータに対して行える操作は、スコア付け、キー フレーズ抽出、言語検出に限られます。 カスタム モデルはホストしていません。 カスタムの機械学習モデルを作成し、ホストする場合、[Microsoft R Server の機械学習機能](/r-server/r/concept-what-is-the-microsoftml-package)を検討してください。
 
 ## <a name="can-i-request-additional-languages"></a>追加言語を要望できますか。
 
-感情分析とキー フレーズ抽出は、[一部の言語](text-analytics-supported-languages.md)でのみご利用いただけます。 自然言語処理は複雑であり、新しい機能を公開する前に十分な試験が必要になります。 そのため、成熟により多くの時間を要する機能に誰も依存しないように予告サポートは避けています。 
+感情分析とキー フレーズ抽出は、[一部の言語](./language-support.md)でのみご利用いただけます。 自然言語処理は複雑であり、新しい機能を公開する前に十分な試験が必要になります。 そのため、成熟により多くの時間を要する機能に誰も依存しないように予告サポートは避けています。 
 
 次にどの言語に取り組むべきか、優先順位を付けるために、[User Voice](https://cognitive.uservoice.com/forums/555922-text-analytics) で投票にご協力ください。 
 

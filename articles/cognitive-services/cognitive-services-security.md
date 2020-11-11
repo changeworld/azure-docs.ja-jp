@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: ceaa04fdf8776d4fab1db4cfb1b3df4298f28de9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f14ac72443dedc8e33e607a82b2145c7ebf95ad2
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152280"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368782"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services のセキュリティ
 
@@ -222,5 +222,5 @@ Speech サービスでは、現在、カスタマー ロックボックスはサ
 
 ## <a name="next-steps"></a>次のステップ
 
-* さまざまな [Cognitive Services](welcome.md) を調べます
+* さまざまな [Cognitive Services](./what-are-cognitive-services.md) を調べます
 * [Cognitive Services の仮想ネットワーク](cognitive-services-virtual-networks.md)について詳しく学習します

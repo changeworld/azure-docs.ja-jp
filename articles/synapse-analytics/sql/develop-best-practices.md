@@ -10,17 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: fe00d7f107911e2245041419c20f86e2e32a0480
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a5e514602668c96d63562e45fb114cf9770a54a9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289261"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321485"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Synapse SQL 向けの開発に関するベスト プラクティス
+
 この記事では、独自のデータ ウェアハウス ソリューションを開発するにあたってのガイダンスとベスト プラクティスについて説明します。 
 
-## <a name="sql-pool-development-best-practices"></a>SQL プールの開発に関するベスト プラクティス
+## <a name="dedicated-sql-pool-development-best-practices"></a>専用 SQL プールの開発に関するベスト プラクティス
 
 ### <a name="reduce-cost-with-pause-and-scale"></a>一時停止とスケールでコストを削減する
 
@@ -55,12 +56,12 @@ ms.locfileid: "91289261"
 [テーブルの概要](develop-tables-overview.md)、[テーブル分散](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)、[テーブル分散の選択](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関するページも参照してください。
 
 ### <a name="do-not-over-partition"></a>パーティション分割しすぎないようにする
-データをパーティション分割すると、パーティション切り替えを利用してデータを管理したり、パーティションを除外してスキャンを最適化したりできるため、有用ですが、パーティションが多すぎると、クエリの速度が低下する場合があります。  多くの場合、高い粒度でパーティション分割する戦略は、SQL Server では効果的ですが、SQL プールでは効果的ではありません。  
+データをパーティション分割すると、パーティション切り替えを利用してデータを管理したり、パーティションを除外してスキャンを最適化したりできるため、有用ですが、パーティションが多すぎると、クエリの速度が低下する場合があります。  多くの場合、高い粒度でパーティション分割する戦略は、SQL Server では効果的ですが、専用 SQL プールでは効果的ではありません。  
 
 > [!NOTE]
-> 多くの場合、高い粒度でパーティション分割する戦略は、SQL Server では効果的ですが、SQL プールでは効果的ではありません。  
+> 多くの場合、高い粒度でパーティション分割する戦略は、SQL Server では効果的ですが、専用 SQL プールでは効果的ではありません。  
 
-パーティションが多すぎると、各パーティションの行数が 100 万を下回る場合に、クラスター化列ストア インデックスの効果が減少する可能性もあります。 SQL プールによって、データが 60 のデータベースにパーティション分割されます。 
+パーティションが多すぎると、各パーティションの行数が 100 万を下回る場合に、クラスター化列ストア インデックスの効果が減少する可能性もあります。 専用 SQL プールによって、データが 60 のデータベースにパーティション分割されます。 
 
 そのため、パーティションが 100 個あるテーブルを作成すると、パーティションが 6000 個になります。  ワークロードはそれぞれに異なるため、パーティション分割を試して、自分のワークロードに最適な数を判断することをお勧めします。  
 
@@ -95,7 +96,7 @@ DDL を定義するときに、データをサポートする最小のデータ�
 
 ### <a name="optimize-clustered-columnstore-tables"></a>クラスター化列ストア テーブルを最適化する
 
-クラスター化列ストア インデックスは、SQL プールにデータを格納する最も効率的な方法の 1 つです。  既定では、SQL プールのテーブルは、クラスター化列ストアとして作成されます。  
+クラスター化列ストア インデックスは、専用 SQL プールにデータを格納する最も効率的な方法の 1 つです。  既定では、専用 SQL プールのテーブルは、クラスター化された ColumnStore として作成されます。  
 
 列ストア テーブルに対するクエリのパフォーマンスを最大限に引き出すには、セグメントの質が高いことが重要です。  行を列ストア テーブルに書き込む際にメモリ負荷が発生すると、列ストア セグメントの質が低下する可能性があります。  
 
@@ -103,12 +104,12 @@ DDL を定義するときに、データをサポートする最小のデータ�
 
 列ストア セグメントの質を高めることが非常に重要であるため、中規模または大規模リソース クラスのユーザー ID を使用してデータを読み込むことをお勧めします。 低い[データ ウェアハウス ユニット](resource-consumption-models.md)を使用すると、大きいリソース クラスを読み込みユーザーに割り当てることになります。
 
-通常、テーブルあたりの行数が 100 万を超え、各 SQL プール テーブルが 60 個にパーティション分割されるまで、列ストア テーブルでは圧縮された列ストア セグメントにデータがプッシュされません。そのため、テーブルの行数が 6,000 万を超えない限り、列ストア テーブルはクエリにとってメリットがありません。  
+通常、テーブルあたりの行数が 100 万を超え、各専用 SQL プール テーブルが 60 個にパーティション分割されるまで、列ストア テーブルでは圧縮された列ストア セグメントにデータがプッシュされません。そのため、テーブルの行数が 6,000 万を超えない限り、列ストア テーブルはクエリにとってメリットがありません。  
 
 > [!TIP]
 > 6,000 万行未満のテーブルについては、列ストア インデックスを使用しても最適なソリューションを得られない可能性があります。  
 
-さらに、データをパーティション分割する場合は、クラスター化列ストア インデックスの恩恵を受けるには、各パーティションに 100 万行が必要なことを考慮に入れる必要があります。  テーブルに 100 個のパーティションがある場合に、クラスター化列ストアの恩恵を受けるには、少なくとも 60 億行必要です (60 個のディストリビューション "*100 個のパーティション*" 100 万行)。  
+さらに、データをパーティション分割する場合は、クラスター化列ストア インデックスの恩恵を受けるには、各パーティションに 100 万行が必要なことを考慮に入れる必要があります。  テーブルに 100 個のパーティションがある場合に、クラスター化列ストアの恩恵を受けるには、少なくとも 60 億行必要です (60 個のディストリビューション " *100 個のパーティション* " 100 万行)。  
 
 テーブルに 60 億行もない場合は、パーティションの数を減らすか、代わりにヒープ テーブルを使用することを検討してください。  列ストア テーブルの代わりに、ヒープ テーブルをセカンダリ インデックスとともに使用して、パフォーマンスが向上するかどうかを試してみる価値もあります。
 
@@ -116,23 +117,23 @@ DDL を定義するときに、データをサポートする最小のデータ�
 
 [テーブル インデックス](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)、[列ストア インデックス](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、[列ストア インデックスの再構築](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#rebuilding-indexes-to-improve-segment-quality)に関するページもご覧ください。
 
-## <a name="sql-on-demand-development-best-practices"></a>SQL オンデマンド開発に関するベスト プラクティス
+## <a name="serverless-sql-pool-development-best-practices"></a>サーバーレス SQL プールの開発に関するベスト プラクティス
 
 ### <a name="general-considerations"></a>一般的な考慮事項
 
-SQL オンデマンドを使用すると、Azure ストレージ アカウント内のファイルに対してクエリを実行できます。 ローカル ストレージやインジェストの機能はありません。つまり、クエリの対象となるすべてのファイルは SQL オンデマンドの外部にあります。 そのため、ストレージからのファイルの読み取りに関連するものはすべて、クエリのパフォーマンスに影響を与える可能性があります。
+サーバーレス SQL プールを使用すると、Azure ストレージ アカウント内のファイルに対してクエリを実行できます。 ローカル ストレージやインジェストの機能はありません。つまり、クエリの対象となるすべてのファイルはサーバーレス SQL プールの外部にあります。 そのため、ストレージからのファイルの読み取りに関連するものはすべて、クエリのパフォーマンスに影響を与える可能性があります。
 
-### <a name="colocate-azure-storage-account-and-sql-on-demand"></a>Azure Storage アカウントと SQL オンデマンドの併置
+### <a name="colocate-azure-storage-account-and-serverless-sql-pool"></a>Azure Storage アカウントとサーバーレス SQL プールの併置
 
-待機時間を最小限に抑えるには、Azure ストレージ アカウントと SQL オンデマンド エンドポイントを併置します。 ワークスペースの作成中にプロビジョニングされたストレージ アカウントとエンドポイントは同じリージョンに配置されます。
+待機時間を最小限に抑えるには、Azure Storage アカウントとサーバーレス SQL プールのエンドポイントを併置します。 ワークスペースの作成中にプロビジョニングされたストレージ アカウントとエンドポイントは同じリージョンに配置されます。
 
-最適なパフォーマンスを得るために、SQL オンデマンドを使用して他のストレージ アカウントにアクセスする場合は、それらが同じリージョンにあることを確認してください。 そうでない場合、リモート リージョンからエンドポイントのリージョンにデータをネットワーク転送するときの待機時間が長くなります。
+最適なパフォーマンスを得るために、サーバーレス SQL プールを使用して他のストレージ アカウントにアクセスする場合は、それらが同じリージョンにあることを確認してください。 そうでない場合、リモート リージョンからエンドポイントのリージョンにデータをネットワーク転送するときの待機時間が長くなります。
 
 ### <a name="azure-storage-throttling"></a>Azure Storage の帯域幅調整
 
-複数のアプリケーションとサービスがストレージ アカウントにアクセスする場合があります。 アプリケーション、サービス、および SQL オンデマンドのワークロードによって生成される IOPS またはスループットの合計がストレージ アカウントの制限を超えると、ストレージの帯域幅調整が発生します。 ストレージの帯域幅調整が発生すると、クエリのパフォーマンスに多大な悪影響が生じます。
+複数のアプリケーションとサービスがストレージ アカウントにアクセスする場合があります。 アプリケーション、サービス、およびサーバーレス SQL プールのワークロードによって生成される合計 IOPS またはスループットの合計がストレージ アカウントの制限を超えると、ストレージ調整が発生します。 ストレージの帯域幅調整が発生すると、クエリのパフォーマンスに多大な悪影響が生じます。
 
-帯域幅調整が検出された場合、SQL オンデマンドには、このシナリオの処理が組み込まれています。 SQL オンデマンドは、帯域幅調整が解決されるまで、より遅いペースでストレージへの要求を行います。 
+調整が検出されると、サーバーレス SQL プールには、このシナリオの処理が組み込まれています。 サーバーレス SQL プールでは、調整が解決されるまで、より遅いペースでストレージへの要求を行います。 
 
 ただし、最適なクエリ実行のために、クエリの実行中は他のワークロードでストレージ アカウントに負荷をかけないことをお勧めします。
 
@@ -140,7 +141,7 @@ SQL オンデマンドを使用すると、Azure ストレージ アカウント
 
 可能であれば、ファイルを準備してパフォーマンスを向上させることができます。
 
-- CSV を Parquet に変換 - Parquet は列形式です。 圧縮されているため、同じデータが含まれる CSV ファイルよりもファイル サイズが小さくなり、SQL オンデマンドで読み取るために必要な時間とストレージ要求も少なくなります。
+- CSV を Parquet に変換 - Parquet は列形式です。 圧縮されているため、同じデータが含まれる CSV ファイルよりもファイル サイズが小さくなり、サーバーレス SQL プールで読み取るために必要な時間とストレージ要求も少なくなります。
 - クエリが 1 つの大きなファイルを対象としている場合は、複数の小さなファイルに分割すると効果があります。
 - CSV ファイルのサイズを 10 GB 未満にしてください。
 - 1 つの OPENROWSET パスまたは外部テーブル LOCATION に対して、ファイルのサイズを同じにすることをお勧めします。
@@ -148,17 +149,17 @@ SQL オンデマンドを使用すると、Azure ストレージ アカウント
 
 ### <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>fileinfo および filepath 関数を使用して特定のパーティションを対象にする
 
-多くの場合、データはパーティションに編成されます。 特定のフォルダーやファイルに対してクエリを実行するよう、SQL オンデマンドに指示することができます。 こうすることで、クエリで読み取りおよび処理する必要があるファイルの数とデータの量が減ります。 
+多くの場合、データはパーティションに編成されます。 特定のフォルダーやファイルに対してクエリを実行するよう、サーバーレス SQL プールに指示することができます。 こうすることで、クエリで読み取りおよび処理する必要があるファイルの数とデータの量が減ります。 
 
 その結果、パフォーマンスが向上します。 詳細については、[filename](query-data-storage.md#filename-function) 関数、[filepath](query-data-storage.md#filepath-function) 関数、および、[特定のファイルに対してクエリを実行する](query-specific-files.md)方法の例を参照してください。
 
 ストレージ内のデータがパーティション分割されていない場合は、これらの関数を使用してファイルを対象とするクエリを最適化できるよう、データのパーティション分割を検討してください。
 
-SQL オンデマンドから、[パーティション分割された Apache Spark for Azure Synapse 外部テーブルに対してクエリを実行](develop-storage-files-spark-tables.md)すると、必要なファイルだけが自動的にクエリの対象となります。
+サーバーレス SQL プールから、[パーティション分割された Apache Spark for Azure Synapse 外部テーブルに対してクエリを実行](develop-storage-files-spark-tables.md)すると、必要なファイルだけが自動的にクエリの対象となります。
 
 ### <a name="use-cetas-to-enhance-query-performance-and-joins"></a>CETAS を使用してクエリのパフォーマンスと結合を強化する
 
-[CETAS](develop-tables-cetas.md) は、SQL オンデマンドで利用できる最も重要な機能の 1 つです。 CETAS は、外部テーブルのメタデータを作成し、SELECT クエリの結果をストレージ アカウント内の一連のファイルにエクスポートする並列操作です。
+[CETAS](develop-tables-cetas.md) は、サーバーレス SQL プールで利用できる最も重要な機能の 1 つです。 CETAS は、外部テーブルのメタデータを作成し、SELECT クエリの結果をストレージ アカウント内の一連のファイルにエクスポートする並列操作です。
 
 CETAS を使用して、結合された参照テーブルなど、クエリの頻繁に使用される部分を新しいファイル セットに格納できます。 後で、複数のクエリで共通の結合を繰り返す代わりに、この単一の外部テーブルに結合することができます。 
 
@@ -166,7 +167,7 @@ CETAS によって Parquet ファイルが生成されると、最初のクエ�
 
 ### <a name="next-steps"></a>次のステップ
 
-この記事に記載されていない情報が必要な場合は、このページの左側にある**ドキュメントの検索**機能を使用して、SQL プールのすべてのドキュメントを検索してください。  [SQL プールの Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)では、他のユーザーや SQL プール製品グループへの質問を投稿できます。  
+この記事に記載されていない情報が必要な場合は、このページの左側にある **ドキュメントの検索** 機能を使用して、SQL プールのすべてのドキュメントを検索してください。  [Azure Synapse Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)は、他のユーザーや Azure Synapse Analytics 製品グループに質問を投稿できる場所です。 Microsoft では、このフォーラムを積極的に監視し、お客様からの質問に他のユーザーや Microsoft のスタッフが回答しているかどうかを確認しています。  
 
-Microsoft では、このフォーラムを積極的に監視し、お客様からの質問に他のユーザーや Microsoft のスタッフが回答しているかどうかを確認しています。  Stack Overflow で質問したい方のために、[Azure SQL プール Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-sqldw)も用意しています。
+Stack Overflow で質問したい方のために、[Azure Synapse Analytics Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-sqldw)も用意しています。
  

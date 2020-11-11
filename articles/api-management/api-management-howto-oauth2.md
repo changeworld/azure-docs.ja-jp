@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 7f2673bd181bc24d821b41ae1466c05a9593f154
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: fae4e349d46425c0c2b2b923d6a61e2e588708c1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315734"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077253"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法
 
@@ -63,7 +63,7 @@ ms.locfileid: "92315734"
 
 5. 次に、 **[トークン エンドポイントの URL]** 、 **[クライアント認証方法]** 、 **[アクセス トークンの送信方法]** 、および **[既定のスコープ]** を指定します。
 
-    ![OAuth 2.0 の新しいサーバー](./media/api-management-howto-oauth2/oauth-03.png)
+    ![[OAuth2 サービスの追加] 画面を示すスクリーンショット。](./media/api-management-howto-oauth2/oauth-03.png)
 
     Azure Active Directory OAuth 2.0 サーバーでは、 **[Token endpoint URL (トークン エンドポイント URL)]** の形式が以下のようになります。ここで、`<TenantID>` の形式は `yourapp.onmicrosoft.com` です。
 
@@ -78,7 +78,7 @@ ms.locfileid: "92315734"
     - 承認コード付与フローの場合は `/signin-oauth/code/callback/{authServerName}`
     - 暗黙的な許可のフローの場合は `/signin-oauth/implicit/callback`
 
-    ![OAuth 2.0 の新しいサーバー](./media/api-management-howto-oauth2/oauth-04.png)
+    ![新しい OAuth2 サービス用のクライアント資格情報を追加する場所を示すスクリーンショット。](./media/api-management-howto-oauth2/oauth-04.png)
 
     **[承認許可の種類]** を **[リソース所有者のパスワード]** に設定した場合は、 **[リソース所有者のパスワード資格情報]** セクションを使用してそれらの資格情報を指定します。それ以外の場合は、空白のままにすることができます。
 
@@ -96,7 +96,7 @@ ms.locfileid: "92315734"
 
 3. 必要な **[Authorization server (認証サーバー)]** をドロップダウン リストで選択して、 **[保存]** をクリックします。
 
-    ![OAuth 2.0 の設定](./media/api-management-howto-oauth2/oauth-07.png)
+    ![選択した承認サーバーと [保存] ボタンが強調表示されているスクリーンショット。](./media/api-management-howto-oauth2/oauth-07.png)
 
 ## <a name="legacy-developer-portal---test-the-oauth-20-user-authorization"></a><a name="step3"> </a>従来の開発者ポータル - OAuth 2.0 ユーザー承認をテストする
 

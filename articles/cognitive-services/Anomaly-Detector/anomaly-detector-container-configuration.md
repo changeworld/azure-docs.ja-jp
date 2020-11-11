@@ -10,16 +10,16 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: mbullwin
-ms.openlocfilehash: ae987a4239f478162e1e1f251e0d6607d63e02c5
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: c175a52259e9cfe5b4d03ce0279bbe24d16a48ae
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019751"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363716"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Anomaly Detector コンテナーを構成する
 
-**Anomaly Detector**コンテナーのランタイム環境は、`docker run` コマンドの引数を使用して構成されます。 このコンテナーには、いくつかの必須の設定と省略可能な設定があります。 いくつかのコマンドの[例](#example-docker-run-commands)をご覧ください。 このコンテナーに固有の設定は、課金設定です。 
+**Anomaly Detector** コンテナーのランタイム環境は、`docker run` コマンドの引数を使用して構成されます。 このコンテナーには、いくつかの必須の設定と省略可能な設定があります。 いくつかのコマンドの[例](#example-docker-run-commands)をご覧ください。 このコンテナーに固有の設定は、課金設定です。 
 
 ## <a name="configuration-settings"></a>構成設定
 
@@ -28,7 +28,7 @@ ms.locfileid: "92019751"
 |必須|設定|目的|
 |--|--|--|
 |はい|[ApiKey](#apikey-configuration-setting)|課金情報の追跡に使用されます。|
-|いいえ|[ApplicationInsights](#applicationinsights-setting)|[Azure Application Insights](https://docs.microsoft.com/azure/application-insights) テレメトリ サポートをお客様のコンテナーに追加できます。|
+|いいえ|[ApplicationInsights](#applicationinsights-setting)|[Azure Application Insights](/azure/application-insights) テレメトリ サポートをお客様のコンテナーに追加できます。|
 |はい|[Billing](#billing-configuration-setting)|Azure 上のサービス リソースのエンドポイント URI を指定します。|
 |はい|[Eula](#eula-setting)| コンテナーのライセンスに同意していることを示します。|
 |いいえ|[Fluentd](#fluentd-settings)|ログと (必要に応じて) メトリック データを Fluentd サーバーに書き込みます。|
@@ -41,11 +41,11 @@ ms.locfileid: "92019751"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 構成設定
 
-`ApiKey` 設定では、コンテナーの課金情報を追跡するために使用される Azure リソース キーを指定します。 ApiKey の値を指定する必要があります。また、その値は、[`Billing`](#billing-configuration-setting) 構成設定に指定された _Anomaly Detector_ リソースの有効なキーであることが必要です。
+`ApiKey` 設定では、コンテナーの課金情報を追跡するために使用される Azure リソース キーを指定します。 ApiKey の値を指定する必要があります。また、その値は、 [`Billing`](#billing-configuration-setting) 構成設定に指定された _Anomaly Detector_ リソースの有効なキーであることが必要です。
 
 この設定は次の場所で確認できます。
 
-* Azure portal:**Anomaly Detector の** [リソース管理] の **[キー]** の下
+* Azure portal: **Anomaly Detector の** [リソース管理] の **[キー]** の下
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 設定
 
@@ -57,7 +57,7 @@ ms.locfileid: "92019751"
 
 この設定は次の場所で確認できます。
 
-* Azure portal:**Anomaly Detector の** [概要] (ラベルが `Endpoint`)
+* Azure portal: **Anomaly Detector の** [概要] (ラベルが `Endpoint`)
 
 |必須| 名前 | データ型 | 説明 |
 |--|------|-----------|-------------|
@@ -97,8 +97,8 @@ Anomaly Detector コンテナーでは、トレーニングやサービスのデ
 
 以下の例では、`docker run` コマンドの記述方法と使用方法を示す構成設定が使用されています。  コンテナーは一度実行すると、お客様が[停止](anomaly-detector-container-howto.md#stop-the-container)するまで動作し続けます。
 
-* **行連結文字**: 以降のセクションの Docker コマンドには、Bash シェルの行連結文字としてバック スラッシュ (`\`) が使用されています。 お客様のホスト オペレーティング システムの要件に応じて、置換または削除してください。 たとえば、Windows の行連結文字はキャレット (`^`) です。 バック スラッシュをキャレットで置き換えます。 
-* **引数の順序**: Docker コンテナーについて高度な知識がある場合を除き、引数の順序は変更しないでください。
+* **行連結文字** : 以降のセクションの Docker コマンドには、Bash シェルの行連結文字としてバック スラッシュ (`\`) が使用されています。 お客様のホスト オペレーティング システムの要件に応じて、置換または削除してください。 たとえば、Windows の行連結文字はキャレット (`^`) です。 バック スラッシュをキャレットで置き換えます。 
+* **引数の順序** : Docker コンテナーについて高度な知識がある場合を除き、引数の順序は変更しないでください。
 
 中かっこ `{}` の中の値を独自の値で置き換えます。
 
@@ -111,7 +111,7 @@ Anomaly Detector コンテナーでは、トレーニングやサービスのデ
 
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](anomaly-detector-container-howto.md#billing)」を参照してください。
-> ApiKey の値は、Azure Anomaly Detector リソース キー ページにある**キー**です。 
+> ApiKey の値は、Azure Anomaly Detector リソース キー ページにある **キー** です。 
 
 ## <a name="anomaly-detector-container-docker-examples"></a>Anomaly Detector コンテナー docker の例
 

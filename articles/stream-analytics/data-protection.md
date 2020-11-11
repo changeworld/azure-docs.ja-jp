@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: b54076413d3a6cabf2e3ef0b06e8e17875efbf97
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e823322803958f092cee3b6d77e6a0ca7bc6e3f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746407"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074252"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure Stream Analytics でのデータ保護 
 
@@ -73,6 +73,27 @@ Stream Analytics ポータルを使用しても、ストレージ アカウン�
 
    ![プライベート データ ストレージ アカウントの設定](./media/data-protection/storage-account-create.png)
 
+## <a name="private-data-assets-that-are-stored"></a>格納されるプライベート データ資産
+
+Stream Analytics で存続する必要があるプライベート データは、ストレージ アカウントに格納されます。 プライベート データ資産の例を次に示します。 
+
+* 作成したクエリとそれに関連する構成  
+
+* ユーザー定義関数 
+
+* Stream Analytics ランタイムで必要とされるチェックポイント
+
+* 参照データのスナップショット 
+
+Stream Analytics ジョブによって使用される、リソースの接続詳細も保存されます。 ストレージ アカウントを暗号化して、すべてのデータを保護します。 
+
+規制されている業界や環境におけるコンプライアンス義務を果たすために、[Microsoft のコンプライアンス認証](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)に関するページを参照してください。 
+
+## <a name="enables-data-residency"></a>データ所在地を有効にする 
+この機能を使用すると、必要に応じてストレージ アカウントを指定することによって、データ所在地要件を強制的に適用できます。
+
+## <a name="known-issues"></a>既知の問題
+マネージド ID を使用して入力または出力を認証するときに、カスタマー マネージド キーを使用するジョブが失敗するという既知の問題があります。 
 
 ## <a name="next-steps"></a>次のステップ
 

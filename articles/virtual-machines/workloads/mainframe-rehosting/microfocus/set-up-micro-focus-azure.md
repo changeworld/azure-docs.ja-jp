@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 11fde4480f4e2ed9feda00fa2af0e5937a77b9ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd8da9ae7e31fb60ba0ca553f5aa304ccd3621d2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986875"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127180"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Azure で Micro Focus Enterprise Server 5.0 および Enterprise Developer 5.0 をインストールする
 
@@ -47,7 +47,7 @@ Enterprise Server に対応する開発環境は、Microsoft Visual Studio 2017 
 
 ## <a name="install-enterprise-server"></a>Enterprise Server をインストールする
 
-1.  セキュリティや管理容易性を向上させるために、このプロジェクトだけのための新しいリソース グループ (たとえば、**RGMicroFocusEntServer**) を作成することを考慮してください。 Azure での名前の最初の部分を使用してリソースの種類を選択することにより、一覧内で見つけやすくします。
+1.  セキュリティや管理容易性を向上させるために、このプロジェクトだけのための新しいリソース グループ (たとえば、 **RGMicroFocusEntServer** ) を作成することを考慮してください。 Azure での名前の最初の部分を使用してリソースの種類を選択することにより、一覧内で見つけやすくします。
 
 2.  仮想マシンを作成します。 Azure Marketplace から、必要な仮想マシンとオペレーティング システムを選択します。 推奨される設定を次に示します。
 
@@ -61,7 +61,7 @@ Enterprise Server に対応する開発環境は、Microsoft Visual Studio 2017 
 
 5.  残りの設定については既定値を受け入れます。 これらの VM の管理者のために作成したユーザー名とパスワードを覚えておいてください。
 
-6.  仮想マシンが作成されたら、Enterprise Server コンピューターでは **9003、86**、HTTP の場合は **80**、リモート デスクトップ プロトコル (RDP) の場合は **3389**、および Developer コンピューターでは **3389** の受信ポートを開きます。
+6.  仮想マシンが作成されたら、Enterprise Server コンピューターでは **9003、86** 、HTTP の場合は **80** 、リモート デスクトップ プロトコル (RDP) の場合は **3389** 、および Developer コンピューターでは **3389** の受信ポートを開きます。
 
 7.  Enterprise Server 仮想マシンにサインインするには、Azure portal で [ES2 v3 VM] を選択します。 **[概要]** セクションに移動し、 **[接続]** を選択して RDP セッションを起動します。 VM のために作成した資格情報を使用してサインインします。
 
@@ -73,11 +73,11 @@ Enterprise Server に対応する開発環境は、Microsoft Visual Studio 2017 
 
 9.  ファイルをダブルクリックしてインストールを開始します。 最初のウィンドウで、インストールの場所を選択し、使用許諾契約書に同意します。
 
-    ![Micro Focus Enterprise Server の設定画面](media/install-image-1.png)
+    ![スクリーンショットに、インストールを開始できる、Micro Focus Enterprise Server のダイアログ ボックスが示されています。](media/install-image-1.png)
 
     設定が完了すると、次のメッセージが表示されます。
 
-    ![Micro Focus Enterprise Server の設定画面](media/install-image-2.png)
+    ![スクリーンショットに、Micro Focus Enterprise Server のダイアログ ボックスに成功メッセージが示されています。](media/install-image-2.png)
 
  ### <a name="check-for-updates"></a>更新プログラムをチェックする
 
@@ -89,7 +89,7 @@ Enterprise Server に対応する開発環境は、Microsoft Visual Studio 2017 
 
 2.  **[スタート]** \> **[Micro Focus License Manager]\(Micro Focus ライセンス マネージャー\)** \> **[License Administration]\(ライセンス管理\)** の順に選択し、 **[インストール]** タブをクリックします。アップロードするライセンス形式の種類 (ライセンス ファイルまたは 16 文字のライセンス コード) を選択します。 たとえば、ファイルの場合は、 **[License file]\(ライセンス ファイル\)** で、前に VM にアップロードされた `mflic` ファイルを参照し、 **[Install Licenses]\(ライセンスのインストール\)** を選択します。
 
-    ![Micro Focus の [License Administration]\(ライセンス管理\) ダイアログ ボックス](media/install-image-3.png)
+    ![スクリーンショットに、[Install Licenses]\(ライセンスのインストール\) を選択できる Micro Focus の [License Administration]\(ライセンス管理\) ダイアログ ボックスが示されています。](media/install-image-3.png)
 
 3.  Enterprise Server が読み込まれることを確認します。 URL: `http://localhost:86/` を使用して、ブラウザーから [Enterprise Server Administration]\(Enterprise Server の管理\) サイトを起動してみてください。 [Enterprise Server Administration]\(Enterprise Server の管理\) ページが次のように表示されます。
 
@@ -97,7 +97,7 @@ Enterprise Server に対応する開発環境は、Microsoft Visual Studio 2017 
 
 ## <a name="install-enterprise-developer-on-the-developer-machine"></a>開発者のコンピューターに Enterprise Developer をインストールする
 
-1.  前に作成したリソース グループ (たとえば、**RGMicroFocusEntServer**) を選択した後、開発者イメージを選択します。
+1.  前に作成したリソース グループ (たとえば、 **RGMicroFocusEntServer** ) を選択した後、開発者イメージを選択します。
 
 2.  仮想マシンにサインインするには、 **[概要]** セクションに移動し、 **[接続]** を選択します。 このサインインにより、RDP セッションが起動されます。 VM のために作成した資格情報を使用してサインインします。
 

@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: ce9f7e922b9a168205ea1d193830dd654691998a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6477432636db9592d9b0d9c1f90f5eee7d6e00db
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510812"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369003"
 ---
 # <a name="what-are-parallel-documents"></a>並列ドキュメントとは
 
@@ -23,7 +23,7 @@ ms.locfileid: "88510812"
 
 ## <a name="requirements"></a>必要条件
 
-システムをトレーニングするには、10,000 以上の一意のアラインされた並列文が必要です。 この制限は、翻訳モデルのトレーニングを成功させるために、並列文に十分な一意のボキャブラリが確実に含まれるようにするための安全策です。 翻訳システムの品質を向上させるために、並列コンテンツを継続的に追加して保持することをお勧めします。 [文のアライン](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment)に関するページを参照してください。
+システムをトレーニングするには、10,000 以上の一意のアラインされた並列文が必要です。 この制限は、翻訳モデルのトレーニングを成功させるために、並列文に十分な一意のボキャブラリが確実に含まれるようにするための安全策です。 翻訳システムの品質を向上させるために、並列コンテンツを継続的に追加して保持することをお勧めします。 [文のアライン](./sentence-alignment.md)に関するページを参照してください。
 
 Microsoft では、Custom Translator にアップロードするドキュメントが、第三者の著作権または知的財産に違反していないことを必須にしています。 詳細については、[使用条件](https://azure.microsoft.com/support/legal/cognitive-services-terms/)に関するページを参照してください。
 ポータルを使用してドキュメントをアップロードしても、ドキュメント自体の知的財産の所有権は変わりません。

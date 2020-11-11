@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: d9517eef8976e79db21fbe552861d0d59923e8ba
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e3e0ae444e2b3b6ac195a83653baf4b71bac6644
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173948"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363869"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>方法:Text Analytics for Health (プレビュー) を使用する
 
@@ -84,7 +84,7 @@ Text Analytics for Health では、英語のドキュメントのみがサポー
 コンテナーをインストールして実行するには、複数の方法があります。 
 
 - [Azure portal](text-analytics-how-to-install-containers.md?tabs=healthcare) を使用して Text Analytics リソースを作成し、Docker を使用してコンテナーを取得します。
-- 次の PowerShell と [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) のスクリプトを使用して、リソース デプロイ コンテナーの構成を自動化します。
+- 次の PowerShell と [Azure CLI](/cli/azure/?view=azure-cli-latest) のスクリプトを使用して、リソース デプロイ コンテナーの構成を自動化します。
 
 ### <a name="install-the-container-using-azure-web-app-for-containers"></a>Azure Web App for Containers を使用してコンテナーをインストールする
 
@@ -124,7 +124,7 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 Azure コンテナー インスタンス (ACI) を使用して、デプロイを容易にすることもできます。 ACI は、サーバーレスなマネージド Azure 環境内で Docker コンテナーをオンデマンドで実行できるリソースです。 
 
 Azure portal を使用して ACI リソースをデプロイする手順については、[Azure Container Instances の使用方法](text-analytics-how-to-use-container-instances.md)に関する記事を参照してください。 また、Azure CLI を使用して次の PowerShell スクリプトを実行し、コンテナー イメージを使用してサブスクリプションに ACI を作成することもできます。  スクリプトが完了するまで (約 25 から 30 分) 待ってから、最初の要求を送信します。  ACI リソースあたりの CPU の最大数に制限があるため、要求あたり 5 個を超える大きいドキュメント (それぞれ約 5000 文字) を送信することが予想される場合は、このオプションを選択しないでください。
-可用性の情報については、[ACI リージョンのサポート](https://docs.microsoft.com/azure/container-instances/container-instances-region-availability)に関する記事を参照してください。 
+可用性の情報については、[ACI リージョンのサポート](../../../container-instances/container-instances-region-availability.md)に関する記事を参照してください。 
 
 > [!NOTE] 
 > Azure Container Instances には、組み込みドメインに対する HTTPS のサポートは含まれません。 HTTPS が必要な場合は、証明書の作成とドメインの登録など、手動で構成する必要があります。 この手順については、以下の NGINX を参照してください。

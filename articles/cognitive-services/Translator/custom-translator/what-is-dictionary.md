@@ -9,18 +9,18 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f4c3d23f6abbdc20d210e5ddda6c527d27654bb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14ff76e090e628a880290bb0e9f90026260de0c7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510761"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368986"
 ---
 # <a name="what-is-a-dictionary"></a>辞書とは
 
 辞書とは、一連の句または文、そしてそれに対応する翻訳を指定する、アラインされたドキュメントのペアです。 特定の句または文がソースに出現したとき、辞書に指定した翻訳を Microsoft Translator にいつも使用させたい場合は、トレーニングに辞書を使用します。 辞書は、用語集や用語ベースと呼ばれることもあります。 指定したすべての用語を強制的に "置換" する手段が辞書であると考えられます。 さらに、Microsoft カスタム翻訳ツールのサービスは、独自に構築した汎用辞書により高品質の翻訳を実現しています。 汎用辞書を使用している場合でも、単語や文を検索する際はご提供いただいた辞書が優先されます。
 
-辞書が正しく機能するのは、Microsoft の一般ニューラル ネットワークモデルが完全にサポートされる言語ペアのプロジェクトのみです。 [言語の完全な一覧を確認してください](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)。
+辞書が正しく機能するのは、Microsoft の一般ニューラル ネットワークモデルが完全にサポートされる言語ペアのプロジェクトのみです。 [言語の完全な一覧を確認してください](../language-support.md#customization)。
 
 ## <a name="phrase-dictionary"></a>句辞書
 句辞書では大文字と小文字が区別されます。 これは完全一致での検索と置換の操作です。 お客様のモデルのトレーニングに句辞書を含めた場合、そこに記載されている語句は、自分が指定したとおりに翻訳されます。 文の残りの部分は、普通に翻訳されます。 翻訳すべきでない句は、句辞書を使用して指定できます。その場合は、辞書のソース ファイルとターゲット ファイルに同じ未翻訳の句を指定します。

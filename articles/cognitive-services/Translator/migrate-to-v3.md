@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: fb907e0b9c923a77c6956723f6df397fabd84da8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f22213bf192b12e046bab12346e5d5d83fb36b96
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523980"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364277"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator V2 から V3 への移行
 
@@ -37,7 +37,7 @@ Microsoft Translator チームは Translator のバージョン 3 (V3) をリリ
 * 音訳 - 音訳メソッドが API に追加されました。 このメソッドでは、ある文字体系 (アラビア語 など) で書かれた言葉や文章が別の文字体系 (ラテン語 など) に変換されます。
 * 言語 - 新しい "languages" メソッドは、"translate"、"dictionary"、"transliterate" メソッドで使用するために、言語情報を JSON 形式で届けます。
 * 翻訳の新機能 - 別のメソッドとして V2 API に存在した一部の機能に対応する目的で、新しい機能が "translate" メソッドに追加されました。 それには、たとえば、TranslateArray があります。
-* 読み上げメソッド - テキスト読み上げ機能は、Microsoft Translator でサポートから外れました。 テキスト読み上げ機能は、[Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech) で利用できます。
+* 読み上げメソッド - テキスト読み上げ機能は、Microsoft Translator でサポートから外れました。 テキスト読み上げ機能は、[Microsoft Speech Service](../speech-service/text-to-speech.md) で利用できます。
 
 V2 メソッドと V3 メソッドについてまとめた次のリストで、V3 メソッドと、V2 に備わっていた機能を提供する API を確認できます。
 
@@ -47,8 +47,8 @@ V2 メソッドと V3 メソッドについてまとめた次のリストで、V
 | `TranslateArray`      | [Translate](reference/v3-0-translate.md)        |
 | `GetLanguageNames`      | [Languages](reference/v3-0-languages.md)         |
 | `GetLanguagesForTranslate`     | [Languages](reference/v3-0-languages.md)       |
-| `GetLanguagesForSpeak`      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
-| `Speak`     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| `GetLanguagesForSpeak`      | [Microsoft Speech Service](../speech-service/language-support.md#text-to-speech)         |
+| `Speak`     | [Microsoft Speech Service](../speech-service/text-to-speech.md)          |
 | `Detect`     | [Detect](reference/v3-0-detect.md)         |
 | `DetectArray`     | [Detect](reference/v3-0-detect.md)         |
 | `AddTranslation`     | この機能は現在サポートされていません       |

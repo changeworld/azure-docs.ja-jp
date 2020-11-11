@@ -5,19 +5,20 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/20/2020
+ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 1cd1145411fbf4ec4441d612f9552997704f9e5e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7d969392c3245eb81ed07889bd956d2b8e8fb82f
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782401"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234098"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure Import/Export サービスを使用してデータを Azure Files にインポートする
 
-この記事では、Azure Import/Export サービスを使用して大量のデータを Azure Files に安全にインポートする手順を説明します。 このサービスを使用してデータをインポートするには、データが含まれているサポート対象のディスク ドライブを Azure データセンターに送付する必要があります。  
+この記事では、Azure Import/Export サービスを使用して大量のデータを Azure Files に安全にインポートする手順を説明します。 このサービスを使用してデータをインポートするには、データが含まれているサポート対象のディスク ドライブを Azure データセンターに送付する必要があります。
 
 Import/Export サービスでは、Azure Files の Azure Storage へのインポートのみをサポートしています。 Azure Files のエクスポートはサポートしていません。
 
@@ -30,7 +31,7 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
 - 十分な数の[サポートされている種類](storage-import-export-requirements.md#supported-disks)のディスクがある。
 - [サポートされている OS バージョン](storage-import-export-requirements.md#supported-operating-systems)を実行している Windows システムがある。
 - Windows システムで [WAImportExport バージョン 2 をダウンロード](https://aka.ms/waiev2)してください。 既定のフォルダー `waimportexport` に解凍します。 たとえば、「 `C:\WaImportExport` 」のように入力します。
-- FedEx または DHL のアカウントを用意します。 FedEx または DHL 以外の運送業者を使用する場合、`adbops@microsoft.com` から Azure Data Box Operations チームまでお問い合わせください。  
+- FedEx または DHL のアカウントを用意します。 FedEx または DHL 以外の運送業者を使用する場合、`adbops@microsoft.com` から Azure Data Box Operations チームまでお問い合わせください。
     - アカウントは、有効で、残高があり、差出人住所の機能を持っている必要があります。
     - エクスポート ジョブの追跡番号を生成します。
     - すべてのジョブに個別の追跡番号が必要です。 同じ追跡番号を持つ複数のジョブはサポートされていません。
@@ -48,7 +49,7 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
 
 1. ディスク ドライブを SATA コネクタを介して Windows システムに接続します。
 2. 各ドライブに 1 つの NTFS ボリュームを作成します。 ボリュームにドライブ文字を割り当てます。 マウントポイントを使用しないでください。
-3. ツールが配置されているルート フォルダーにある *dataset.csv* ファイルを変更します。 インポート対象がファイルとフォルダーのどちらか一方か両方かに応じて、次の例のようなエントリを *dataset.csv* ファイルに追加します。  
+3. ツールが配置されているルート フォルダーにある *dataset.csv* ファイルを変更します。 インポート対象がファイルとフォルダーのどちらか一方か両方かに応じて、次の例のようなエントリを *dataset.csv* ファイルに追加します。
 
    - **ファイルをインポートするには** :次の例では、コピーするデータは F: ドライブにあります。 ファイル *MyFile1.txt* は *MyAzureFileshare1* のルートにコピーされます。 *MyAzureFileshare1* は、存在しない場合、Azure Storage アカウントに作成されます。 フォルダー構造は維持されます。
 
@@ -241,6 +242,102 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
     ```azurecli
     az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true
     ```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+以下の手順を使用して、Azure PowerShell でインポート ジョブを作成します。
+
+[!INCLUDE [azure-powershell-requirements-h3.md](../../../includes/azure-powershell-requirements-h3.md)]
+
+> [!IMPORTANT]
+> **Az.ImportExport** PowerShell モジュールがプレビュー段階にある間は、`Install-Module` コマンドレットを使用して、これを別途インストールする必要があります。 この PowerShell モジュールは、一般提供されると、将来の Az PowerShell モジュール リリースに含まれ、既定で Azure Cloud Shell 内から使用できるようになります。
+
+```azurepowershell-interactive
+Install-Module -Name Az.ImportExport
+```
+
+### <a name="create-a-job"></a>ジョブの作成
+
+1. 既存のリソース グループを使用することも、リソース グループを作成することもできます。 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを実行して、リソース グループを作成します。
+
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name myierg -Location westus
+   ```
+
+1. 既存のストレージ アカウントを使用することも、ストレージ アカウントを作成することもできます。 ストレージ アカウントを作成するには、[New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) コマンドレットを実行します。
+
+   ```azurepowershell-interactive
+   New-AzStorageAccount -ResourceGroupName myierg -AccountName myssdocsstorage -SkuName Standard_RAGRS -Location westus -EnableHttpsTrafficOnly $true
+   ```
+
+1. ディスクを出荷できる場所の一覧を取得するには、[Get-AzImportExportLocation](/powershell/module/az.importexport/get-azimportexportlocation) コマンドレットを使用します。
+
+   ```azurepowershell-interactive
+   Get-AzImportExportLocation
+   ```
+
+1. `Get-AzImportExportLocation` コマンドレットを `Name` パラメーターと使用して、リージョンの場所を取得します。
+
+   ```azurepowershell-interactive
+   Get-AzImportExportLocation -Name westus
+   ```
+
+1. 次の [New-AzImportExport](/powershell/module/az.importexport/new-azimportexport) の例を実行して、インポート ジョブを作成します。
+
+   ```azurepowershell-interactive
+   $driveList = @(@{
+     DriveId = '9CA995BA'
+     BitLockerKey = '439675-460165-128202-905124-487224-524332-851649-442187'
+     ManifestFile = '\\DriveManifest.xml'
+     ManifestHash = '69512026C1E8D4401816A2E5B8D7420D'
+     DriveHeaderHash = 'AZ31BGB1'
+   })
+
+   $Params = @{
+      ResourceGroupName = 'myierg'
+      Name = 'MyIEjob1'
+      Location = 'westus'
+      BackupDriveManifest = $true
+      DiagnosticsPath = 'waimportexport'
+      DriveList = $driveList
+      JobType = 'Import'
+      LogLevel = 'Verbose'
+      ShippingInformationRecipientName = 'Microsoft Azure Import/Export Service'
+      ShippingInformationStreetAddress1 = '3020 Coronado'
+      ShippingInformationCity = 'Santa Clara'
+      ShippingInformationStateOrProvince = 'CA'
+      ShippingInformationPostalCode = '98054'
+      ShippingInformationCountryOrRegion = 'USA'
+      ShippingInformationPhone = '4083527600'
+      ReturnAddressRecipientName = 'Gus Poland'
+      ReturnAddressStreetAddress1 = '1020 Enterprise way'
+      ReturnAddressCity = 'Sunnyvale'
+      ReturnAddressStateOrProvince = 'CA'
+      ReturnAddressPostalCode = '94089'
+      ReturnAddressCountryOrRegion = 'USA'
+      ReturnAddressPhone = '4085555555'
+      ReturnAddressEmail = 'gus@contoso.com'
+      ReturnShippingCarrierName = 'FedEx'
+      ReturnShippingCarrierAccountNumber = '123456789'
+      StorageAccountId = '/subscriptions/<SubscriptionId>/resourceGroups/myierg/providers/Microsoft.Storage/storageAccounts/myssdocsstorage'
+   }
+   New-AzImportExport @Params
+   ```
+
+   > [!TIP]
+   > 1 人のユーザーの電子メール アドレスを指定する代わりに、グループ メール アドレスを提供します。 これにより、管理者が離れる場合でも、通知を受信します。
+
+1. [Get-AzImportExport](/powershell/module/az.importexport/get-azimportexport) コマンドレットを使用して、myierg リソース グループのすべてのジョブを表示します。
+
+   ```azurepowershell-interactive
+   Get-AzImportExport -ResourceGroupName myierg
+   ```
+
+1. ジョブを更新するかジョブをキャンセルするには、[Update-AzImportExport](/powershell/module/az.importexport/update-azimportexport) コマンドレットを実行します。
+
+   ```azurepowershell-interactive
+   Update-AzImportExport -Name MyIEjob1 -ResourceGroupName myierg -CancelRequested
+   ```
 
 ---
 

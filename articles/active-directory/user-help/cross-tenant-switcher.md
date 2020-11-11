@@ -12,12 +12,12 @@ ms.date: 10/27/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: a8e3b6cfce9bff76ec3989273cadadebb23d6d40
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1af7f2918af7071320244dd35882a8de9717654f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795037"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913247"
 ---
 # <a name="switching-organizations-in-a-portal"></a>ポータルでの組織の切り替え
 

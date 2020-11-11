@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/25/2020
-ms.openlocfilehash: 7ef19e72b519d16da66306e4bf64f70f5c708927
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 0072f0ae862e6484649179626a34e6b28da7d3bd
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678216"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94341057"
 ---
 Python 用 Custom Vision クライアント ライブラリの使用を開始します。 以下の手順に従って、パッケージをインストールし、物体検出モデルを構築するためのコード例を試してみましょう。 プロジェクトを作成し、タグを追加し、プロジェクトをトレーニングして、プロジェクトの予測エンドポイント URL を使用してプログラムでテストします。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
 
@@ -51,7 +51,7 @@ pip install azure-cognitiveservices-vision-customvision
 [!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ObjectDetection/CustomVisionQuickstart.py?name=snippet_imports)]
 
 > [!TIP]
-> クイックスタートのコード ファイル全体を一度にご覧いただけます。 これは [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ObjectDetection/CustomVisionQuickstart.cs) にあり、このクイックスタートのコード例が含まれています。
+> クイックスタートのコード ファイル全体を一度にご覧いただけます。 これは [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ObjectDetection/CustomVisionQuickstart.py) にあり、このクイックスタートのコード例が含まれています。
 
 リソースの Azure エンドポイントとサブスクリプション キー用の変数を作成します。
 
@@ -171,5 +171,5 @@ python CustomVisionQuickstart.py
 > [モデルのテストと再トレーニング](../../test-your-model.md)
 
 * Custom Vision とは
-* このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ObjectDetection/CustomVisionQuickstart.cs) にあります。
+* このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ObjectDetection/CustomVisionQuickstart.py) にあります。
 * [SDK のリファレンス ドキュメント](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python)

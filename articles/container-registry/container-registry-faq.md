@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 4c65ca24b3fa4dccb2bb0060996ade50c90bd02a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a2cddc9bbe868a2d18ee8111aabf6db7dc8643cf
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148532"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346997"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
@@ -262,7 +262,8 @@ ACR は、さまざまなレベルのアクセス許可を提供する[カスタ
 匿名 (パブリック) プル アクセス用の Azure コンテナー レジストリの設定は、現時点ではプレビュー機能です。 レジストリに[スコープ マップ (ユーザー) またはトークン リソース](./container-registry-repository-scoped-permissions.md)がある場合は、サポート チケットを生成する前にそれらを削除してください (システム スコープ マップは無視できます)。 パブリック アクセスを有効にするには、 https://aka.ms/acr/support/create-ticket でサポート チケットを開いてください。 詳細については、[Azure フィードバック フォーラム](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)のページを参照してください。
 
 > [!NOTE]
-> 既知のイメージをプルするために必要な API にのみ、匿名でアクセスできます。 タグ リストやリポジトリ リストなどの操作に関する他の API に匿名でアクセスすることはできません。
+> * 既知のイメージをプルするために必要な API にのみ、匿名でアクセスできます。 タグ リストやリポジトリ リストなどの操作に関する他の API に匿名でアクセスすることはできません。
+> * 匿名のプル操作を実行する前に、`docker logout` を実行して、既存の Docker 資格情報がクリアされていることを確認します。
 
 ## <a name="diagnostics-and-health-checks"></a>診断と正常性チェック
 

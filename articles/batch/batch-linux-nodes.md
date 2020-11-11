@@ -4,12 +4,12 @@ description: Azure Batch の Linux 仮想マシンのプールで並列コンピ
 ms.topic: how-to
 ms.date: 06/01/2018
 ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 9cbf7dcb5b0f6f43b4fc5d69127e817dceea650e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 704b73ab43f40a5542e80ffebc4ab34edfc446dc
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108067"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913791"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Batch プールでの Linux コンピューティング ノードのプロビジョニング
 
@@ -23,7 +23,7 @@ Azure Batch を使用すると、Linux と Windows の両方の仮想マシン�
 ## <a name="virtual-machine-configuration"></a>仮想マシンの構成
 Batch でコンピューティング ノードのプールを作成する場合は、Cloud Services 構成と仮想マシン構成という 2 つのオプションから、ノード サイズとオペレーティング システムを選択できます。
 
-**Cloud Services の構成** では、Windows コンピューティング ノード *のみ*が提供されます。 使用可能なコンピューティング ノードのサイズについては、「[Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md)」を参照してください。使用可能なオペレーティング システムについては、「[Azure ゲスト OS リリースと SDK の互換性対応表](../cloud-services/cloud-services-guestos-update-matrix.md)」を参照してください。 Azure Cloud Services ノードを含むプールを作成する場合は、前に示した記事に記載されているノード サイズと OS ファミリを指定します。 Windows コンピューティング ノードのプールの場合は、Cloud Services が最もよく使用されます。
+**Cloud Services の構成** では、Windows コンピューティング ノード *のみ* が提供されます。 使用可能なコンピューティング ノードのサイズについては、「[Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md)」を参照してください。使用可能なオペレーティング システムについては、「[Azure ゲスト OS リリースと SDK の互換性対応表](../cloud-services/cloud-services-guestos-update-matrix.md)」を参照してください。 Azure Cloud Services ノードを含むプールを作成する場合は、前に示した記事に記載されているノード サイズと OS ファミリを指定します。 Windows コンピューティング ノードのプールの場合は、Cloud Services が最もよく使用されます。
 
 **仮想マシン構成** では、Linux と Windows の両方のコンピューティング ノード イメージが提供されます。 使用可能なコンピューティング ノード サイズについては、「[Azure の仮想マシンのサイズ](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)」(Linux) および「[Azure の仮想マシンのサイズ](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)」(Windows) を参照してください。 仮想マシンの構成ノードを含むプールを作成する場合は、ノードのサイズ、仮想マシン イメージの参照、およびノードにインストールする Batch ノード エージェント SKU を指定する必要があります。
 
@@ -46,7 +46,8 @@ Batch サービスでは、[仮想マシン スケール セット](../virtual-m
 >
 
 ### <a name="node-agent-sku"></a>ノード エージェント SKU
-Batch ノード エージェントは、プール内の各ノードで実行されるプログラムで、ノードと Batch サービスの間のコマンドと制御のインターフェイスを提供します。 オペレーティング システムに応じてさまざまなノード エージェントの実装 (SKU と呼ばれます) があります。 基本的には、仮想マシン構成を作成する場合は、最初に仮想マシン イメージの参照を指定してから、イメージにインストールするノード エージェントを指定します。 通常、各ノード エージェント SKU は、複数の仮想マシン イメージと互換性があります。 ノード エージェント SKU の例をいくつか次に示します。
+
+[Batch ノード エージェント](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)は、プール内の各ノードで実行されるプログラムで、ノードと Batch サービスの間のコマンドと制御のインターフェイスを提供します。 オペレーティング システムに応じてさまざまなノード エージェントの実装 (SKU と呼ばれます) があります。 基本的には、仮想マシン構成を作成する場合は、最初に仮想マシン イメージの参照を指定してから、イメージにインストールするノード エージェントを指定します。 通常、各ノード エージェント SKU は、複数の仮想マシン イメージと互換性があります。 ノード エージェント SKU の例をいくつか次に示します。
 
 * batch.node.ubuntu 18.04
 * batch.node.centos 7
@@ -273,10 +274,10 @@ tvm-1219235766_3-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50002
 tvm-1219235766_4-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50001
 ```
 
-ノードにユーザーを作成するときに、パスワードの代わりに、SSH 公開キーを指定できます。 Python SDK では、[ComputeNodeUser][py_computenodeuser] の **ssh_public_key** パラメーターを使います。 .NET では、[ComputeNodeUser][net_computenodeuser].[SshPublicKey][net_ssh_key] プロパティを使います。
+ノードにユーザーを作成するときに、パスワードの代わりに、SSH 公開キーを指定できます。 Python SDK では、 [ComputeNodeUser][py_computenodeuser] の **ssh_public_key** パラメーターを使います。 .NET では、[ComputeNodeUser][net_computenodeuser].[SshPublicKey][net_ssh_key] プロパティを使います。
 
 ## <a name="pricing"></a>価格
-Azure Batch は Azure Cloud Services と Azure Virtual Machines テクノロジに基づいて構築されています。 Batch サービス自体は、無料で提供されています。そのため、Batch ソリューションによって使用されたコンピューティング リソース (およびそれに付随する関連コスト) に対してのみ課金されます。 **Cloud Services 構成**を選択した場合は、[Cloud Services の料金][cloud_services_pricing]体系に基づいて課金されます。 **仮想マシンの構成**を選択した場合は、[Virtual Machines の料金][vm_pricing]体系に基づいて課金されます。
+Azure Batch は Azure Cloud Services と Azure Virtual Machines テクノロジに基づいて構築されています。 Batch サービス自体は、無料で提供されています。そのため、Batch ソリューションによって使用されたコンピューティング リソース (およびそれに付随する関連コスト) に対してのみ課金されます。 **Cloud Services 構成** を選択した場合は、 [Cloud Services の料金][cloud_services_pricing]体系に基づいて課金されます。 **仮想マシンの構成** を選択した場合は、 [Virtual Machines の料金][vm_pricing]体系に基づいて課金されます。
 
 [アプリケーション パッケージ](batch-application-packages.md)を使ってアプリケーションを Batch ノードにデプロイする場合は、アプリケーション パッケージで使われる Azure Storage リソースにも課金されます。
 

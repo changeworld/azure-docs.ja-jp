@@ -10,17 +10,17 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: 02baea817f2647f056131aa654afb129549a1e4e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: aba990914ea193a7246a24b1502522f6144a0a9c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080976"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367592"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>カスタム自動提案エクスペリエンスを構成する
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
@@ -93,6 +93,6 @@ GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/Suggestions
 
 ## <a name="next-steps"></a>次のステップ
 
-- [カスタム検索候補の取得](./get-custom-suggestions.md)
+- [カスタム検索候補の取得]()
 - [カスタム インスタンスを検索する](./search-your-custom-view.md)
 - [カスタムのホステッド UI を構成して使用する](./hosted-ui.md)

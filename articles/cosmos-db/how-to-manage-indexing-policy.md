@@ -3,18 +3,20 @@ title: Azure Cosmos DB でインデックス作成ポリシーを管理する
 description: インデックス作成ポリシーを管理して、インデックス作成に対してプロパティを含めるか除外する方法、さまざまな Azure Cosmos DB SDK を使用してインデックス作成を定義する方法について説明します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 11/02/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 67d542ffe0279abe72bc74ab207cd5fddd1a4362
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: cd51210a64223fab5d2d48a91bd3d0a6521a9627
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491038"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341316"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でインデックス作成ポリシーを管理する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB では、コンテナーごとに定義された[インデックス作成ポリシー](index-policy.md)に従ってデータのインデックスが作成されます。 新しく作成したコンテナーの既定のインデックス作成ポリシーでは、文字列または数値に範囲インデックスが適用されます。 このポリシーは、独自のカスタム インデックス作成ポリシーでオーバーライドできます。
 
@@ -46,7 +48,7 @@ Azure Cosmos DB では、コンテナーごとに定義された[インデック
     }
 ```
 
-このインデックス作成ポリシーは、```kind```、```dataType```、```precision``` を既定値に手動で設定する下のポリシーと同じです。 これらのプロパティは明示的に設定する必要がなく、インデックス作成ポリシーから完全に除外できます (上記の例を参照)。
+このインデックス作成ポリシーは、```kind```、```dataType```、```precision``` を既定値に手動で設定する下のポリシーと同じです。 これらのプロパティは明示的に設定する必要がなく、インデックス作成ポリシーから完全に除外する必要があります (上記の例を参照)。
 
 ```json
     {
@@ -100,7 +102,7 @@ Azure Cosmos DB では、コンテナーごとに定義された[インデック
     }
 ```
 
-このインデックス作成ポリシーは、```kind```、```dataType```、```precision``` を既定値に手動で設定する下のポリシーと同じです。 これらのプロパティは明示的に設定する必要がなく、インデックス作成ポリシーから完全に除外できます (上記の例を参照)。
+このインデックス作成ポリシーは、```kind```、```dataType```、```precision``` を既定値に手動で設定する下のポリシーと同じです。 これらのプロパティは明示的に設定する必要がなく、インデックス作成ポリシーから完全に除外する必要があります (上記の例を参照)。
 
 ```json
     {
@@ -142,7 +144,7 @@ Azure Cosmos DB では、コンテナーごとに定義された[インデック
 ```
 
 > [!NOTE]
-> 一般的に、モデルに追加される新しいプロパティのインデックスを Azure Cosmos DB がプロアクティブに作成できるよう、 **オプトアウト** インデックス作成ポリシーの使用をお勧めします。
+> 一般的に、データ モデルに追加される新しいプロパティのインデックスを Azure Cosmos DB がプロアクティブに作成できるよう、 **オプトアウト** インデックス作成ポリシーの使用をお勧めします。
 
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>特定のプロパティ パスに対してのみ空間インデックスを使用する
 
@@ -176,7 +178,7 @@ Azure Cosmos DB では、コンテナーごとに定義された[インデック
 
 ## <a name="composite-indexing-policy-examples"></a>複合インデックス作成ポリシーの例
 
-個々のプロパティのパスを含めたり除外したりするほかに、複合インデックスを指定することもできます。 複数のプロパティを対象とする 1 つの `ORDER BY` 句を使用したクエリを実行したい場合は、これらのプロパティに対する[複合インデックス](index-policy.md#composite-indexes)が必要になります。 さらに、複合インデックスには、さまざまなプロパティにフィルターや ORDER BY 句が与えられているクエリでパフォーマンス上の長所があります。
+個々のプロパティのパスを含めたり除外したりするほかに、複合インデックスを指定することもできます。 複数のプロパティを対象とする 1 つの `ORDER BY` 句を使用したクエリを実行したい場合は、これらのプロパティに対する[複合インデックス](index-policy.md#composite-indexes)が必要になります。 さらに、複合インデックスには、さまざまなプロパティに複数のフィルターや、1 つのフィルターと 1 つの ORDER BY 句の両方が与えられているクエリでパフォーマンス上の長所があります。
 
 > [!NOTE]
 > 複合パスではスカラー値のインデックスのみが作成されるため、そのパスには `/?` が暗黙的に含まれています。 複合パスでは `/*` ワイルドカードはサポートされません。 複合パスに `/?` または `/*` を指定しないでください。
@@ -313,7 +315,7 @@ WHERE c.name = "Tim" AND c.age > 18
 
 ### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>インデックス作成をアクティブ状態に保ちながらすべてのプロパティ パスを除外する
 
-このポリシーは、[Time-to-Live (TTL) 機能](time-to-live.md)がアクティブであるものの、(Azure Cosmos DB を純粋なキー/値ストアとして使用するための) セカンダリ インデックスは不要である状況で使用できます。
+このポリシーは、[Time-to-Live (TTL) 機能](time-to-live.md)がアクティブであるものの、(Azure Cosmos DB を純粋なキー/値ストアとして使用するための) 追加のインデックスは不要である状況で使用できます。
 
 ```json
     {
@@ -373,7 +375,7 @@ Azure Cosmos のコンテナーには、そのインデックス作成ポリシ�
 
 ## <a name="use-powershell"></a>PowerShell の使用
 
-カスタム インデックス作成ポリシーを使用したコンテナーの作成の詳細については、[Powershell を使用したカスタム インデックス作成ポリシーでのコンテナーの作成](manage-with-powershell.md#create-container-custom-index)に関する説明を参照してください。
+カスタム インデックス作成ポリシーを使用したコンテナーの作成の詳細については、[PowerShell を使用したカスタム インデックス作成ポリシーでのコンテナーの作成](manage-with-powershell.md#create-container-custom-index)に関する説明を参照してください。
 
 ## <a name="use-the-net-sdk"></a><a id="dotnet-sdk"></a> .NET SDK の使用
 

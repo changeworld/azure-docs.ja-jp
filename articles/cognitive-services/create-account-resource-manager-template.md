@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: d88d613b6edfc6b08d08410cdc7cf481d973512d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9ca92bf81acd72260d89404051f941b317ee3e1d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91348220"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363393"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Cognitive Services リソースを作成する
 
@@ -45,7 +45,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) を使用し�
 :::code language="json" source="~/quickstart-templates/101-cognitive-services-universalkey/azuredeploy.json":::
 
 テンプレートには、1 つの Azure リソースが定義されています。
-* [Microsoft.CognitiveServices/accounts](https://docs.microsoft.com/azure/templates/microsoft.cognitiveservices/accounts): Cognitive Services リソースを作成します。
+* [Microsoft.CognitiveServices/accounts](/azure/templates/microsoft.cognitiveservices/accounts): Cognitive Services リソースを作成します。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
@@ -61,7 +61,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) を使用し�
     |---------|---------|
     | **サブスクリプション** | Azure サブスクリプションを選択します。 |
     | **リソース グループ** | **[新規作成]** を選択し、リソース グループの一意の名前を入力し、 **[OK]** をクリックします。 |
-    | **リージョン** | リージョンを選択します。  たとえば、**East US** などとします。 |
+    | **リージョン** | リージョンを選択します。  たとえば、 **East US** などとします。 |
     | **Cognitive Service 名** | リソースの一意の名前に置き換えます。 次のセクションでデプロイを検証するときに、その名前が必要です。 |
     | **場所** | 上で使用したリージョンに置き換えます。 |
     | **SKU** | リソースの[価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/)。 |
@@ -73,9 +73,9 @@ Azure Resource Manager テンプレート (ARM テンプレート) を使用し�
 # <a name="azure-cli"></a>[Azure CLI](#tab/CLI)
 
 > [!NOTE]
-> `az deployment group` の作成には、Azure CLI バージョン 2.6 以降が必要です。 バージョンを表示するには、`az --version` と入力します。 詳細については、[ドキュメント](https://docs.microsoft.com/cli/azure/deployment/group)を参照してください。
+> `az deployment group` の作成には、Azure CLI バージョン 2.6 以降が必要です。 バージョンを表示するには、`az --version` と入力します。 詳細については、[ドキュメント](/cli/azure/deployment/group)を参照してください。
 
-[ローカル コンピューターで](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Azure コマンド ライン インターフェイス (CLI) を使用するか、ブラウザーで **[使ってみる]** ボタンを使用して、次のスクリプトを実行します。 新しいリソース グループの名前と場所 (`centralus` など) を入力します。ARM テンプレートを使用して、その中に Cognitive Services リソースをデプロイします。 使用した名前を忘れないでください。 後でデプロイを検証するときに使用します。
+[ローカル コンピューターで](/cli/azure/install-azure-cli?view=azure-cli-latest) Azure コマンド ライン インターフェイス (CLI) を使用するか、ブラウザーで **[使ってみる]** ボタンを使用して、次のスクリプトを実行します。 新しいリソース グループの名前と場所 (`centralus` など) を入力します。ARM テンプレートを使用して、その中に Cognitive Services リソースをデプロイします。 使用した名前を忘れないでください。 後でデプロイを検証するときに使用します。
 
 
 ```azurecli-interactive
@@ -140,6 +140,6 @@ az group delete --name $resourceGroupName
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Cognitive Services に対する要求の認証](authentication.md)
-* [Azure Cognitive Services とは](Welcome.md)
+* [Azure Cognitive Services とは](./what-are-cognitive-services.md)
 * [自然言語のサポート](language-support.md)
 * [Docker コンテナーのサポート](cognitive-services-container-support.md)

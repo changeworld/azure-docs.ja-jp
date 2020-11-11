@@ -10,17 +10,17 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: dbd4f32e77dc8d386067987a0ab0436a7875c15e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2a9c6b924f564c96c6018fbc395ad226a383280f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095392"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364651"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Bing Local Business Search API v7 リファレンス
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
@@ -34,7 +34,7 @@ Bing Local Business Search API は、レストラン、ホテル、その他の�
   
 応答に含まれる JSON オブジェクトについては、「[応答オブジェクト](#response-objects)」を参照してください。
 
-結果の使用と表示に関する許可については、[使用と表示の要件](use-display-requirements.md)に関するページを参照してください。
+結果の使用と表示に関する許可については、[使用と表示の要件](../bing-web-search/use-display-requirements.md)に関するページを参照してください。
 
 
   

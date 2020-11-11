@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 6164617c66401811715007548de59ebbf5ff253b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: abf2a274b61c0f209f8ceaecdf1754536c9f53f4
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787484"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347235"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Azure Queue storage 監視データのリファレンス
 
@@ -22,11 +22,11 @@ Azure Storage の監視データの収集と分析の詳細については、「
 
 ## <a name="metrics"></a>メトリック
 
-次の表は、Azure Storage に関して収集されるプラットフォーム メトリックを示しています。 
+次の表は、Azure Storage に関して収集されるプラットフォーム メトリックを示しています。
 
 ### <a name="capacity-metrics"></a>容量メトリック
 
-容量メトリックの値は 1 時間ごとに Azure Monitor に送信され、 毎日更新されます。 時間グレインは、メトリック値が提供される時間間隔を定義します。 すべての容量メトリックに対して、1 時間 (PT1H) の時間グレインがサポートされます。
+容量メトリックの値は毎日 (最大 24 時間) 更新されます。 時間グレインは、メトリック値が提供される時間間隔を定義します。 すべての容量メトリックに対して、1 時間 (PT1H) の時間グレインがサポートされます。
 
 Azure Storage は、Azure Monitor で次の容量メトリックを提供します。
 
@@ -61,7 +61,7 @@ Azure Storage では、Azure Monitor の次のメトリック ディメンショ
 ## <a name="resource-logs-preview"></a>リソース ログ (プレビュー)
 
 > [!NOTE]
-> Azure Monitor の Azure Storage ログはパブリック プレビュー段階にあり、すべてのパブリック クラウド リージョンでプレビュー テスト用に使用できます。 プレビューに登録するには、[こちらのページ](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)を参照してください。  このプレビューでは、汎用 v1 と汎用 v2 ストレージ アカウントの BLOB (Azure Data Lake Storage Gen2 を含む)、ファイル、キュー、テーブル、Premium ストレージ アカウントに対してログが有効になります。 クラシック ストレージ アカウントはサポートされていません。
+> Azure Monitor の Azure Storage ログはパブリック プレビュー段階にあり、すべてのパブリック クラウド リージョンでプレビュー テスト用に使用できます。 プレビューに登録するには、[こちらのページ](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)を参照してください。 このプレビューでは、汎用 v1 と汎用 v2 ストレージ アカウントの BLOB (Azure Data Lake Storage Gen2 を含む)、ファイル、キュー、テーブル、Premium ストレージ アカウントに対してログが有効になります。 クラシック ストレージ アカウントはサポートされていません。
 
 次の表に、Azure Monitor ログまたは Azure Storage で Azure Storage リソース ログが収集される場合のそれらのプロパティを示します。 プロパティによって、操作、サービス、操作の実行に使用された承認の種類が示されます。
 

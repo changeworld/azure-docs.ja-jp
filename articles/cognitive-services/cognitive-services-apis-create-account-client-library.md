@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: pafarley
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: e8628d051db7f5066a81171567f6f7e54fb0ab97
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1fd748a0184c1718ac9450aaca3e2db1a185051a
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91262452"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368952"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-management-client-library"></a>クイック スタート:Azure Management クライアント ライブラリを使用して Cognitive Services リソースを作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "91262452"
 
 Azure Cognitive Services は、開発者が直接的な人工知能 (AI) またはデータ サイエンスのスキルや知識がなくてもコグニティブかつインテリジェントなアプリケーションを構築できる、REST API シリーズとクライアント ライブラリ SDK を含むクラウドベースのサービスです。 開発者は Azure Cognitive Services を使用して、見たり、聞いたり、話したり、理解したり、推論し始めたりできるコグニティブ ソリューションを使用したコグニティブ機能をそのアプリケーションに容易に追加することができます。
 
-個別の AI サービスは、ご利用の Azure サブスクリプションに作成した Azure [リソース](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)によって表されます。 リソースの作成後、生成されたキーとエンドポイントを使用して、アプリケーションを認証できます。
+個別の AI サービスは、ご利用の Azure サブスクリプションに作成した Azure [リソース](../azure-resource-manager/management/manage-resources-portal.md)によって表されます。 リソースの作成後、生成されたキーとエンドポイントを使用して、アプリケーションを認証できます。
 
 ::: zone pivot="programming-language-csharp"
 

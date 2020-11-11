@@ -12,12 +12,12 @@ ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 04/28/2020
 tag: azure-synpase
-ms.openlocfilehash: 2ba0c53b9d0b9791364f532d999d86c74fa21177
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: eae7d0a34d6bd76dae5998f05f9d64e0d40f7d9b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678064"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321606"
 ---
 # <a name="conditional-access-with-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics での条件付きアクセス
 
@@ -29,7 +29,7 @@ ms.locfileid: "92678064"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure Active Directory (Azure AD) 認証をサポートするように Azure SQL Database、Azure SQL Managed Instance、または Azure Synapse の Azure SQL プールを構成する必要があります。 具体的な手順については、「[SQL Database または Azure Synapse で Azure Active Directory 認証を構成して管理する](authentication-aad-configure.md)」を参照してください。  
+- Azure Active Directory (Azure AD) 認証をサポートするように Azure SQL Database、Azure SQL Managed Instance、または Azure Synapse の専用 SQL プールを構成する必要があります。 具体的な手順については、「[SQL Database または Azure Synapse で Azure Active Directory 認証を構成して管理する](authentication-aad-configure.md)」を参照してください。  
 - 多要素認証が有効になっている場合は、最新の SQL Server Management Studio (SSMS) などのサポートされているツールに接続する必要があります。 詳細については、「[SQL Server Management Studio 用に Azure SQL Database の多要素認証を構成する](authentication-mfa-ssms-configure.md)」を参照してください。  
 
 ## <a name="configure-conditional-access"></a>条件付きアクセスを構成する

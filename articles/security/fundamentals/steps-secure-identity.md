@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 18e04350260258b74d746a2796a56d7d3ba46346
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 43974258008e3813a368ab31891251db15060aff
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364118"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127061"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>ID インフラストラクチャをセキュリティ保護する 5 つのステップ
 
@@ -145,7 +145,7 @@ Azure Active Directory には、検出と対応に時間差が生じないよう
 
 ユーザー リスクは、ユーザーの ID がセキュリティ侵害された確率を示すもので、ユーザーの ID に関連付けられている[ユーザー リスク検出](../../active-directory/identity-protection/overview.md)に基づいて計算されます。 ユーザー リスク ポリシーは、特定のユーザーまたはグループに関してリスク レベルを評価する条件付きアクセスポリシーです。 低、中、高のリスクレベルに基づいて、アクセスをブロックしたり、多要素認証を使用して安全なパスワードへの変更を要求したりするよう、ポリシーを構成できます。 Microsoft は、リスクの高いユーザーについて、安全なパスワードへの変更を要求することをお勧めします。
 
-![リスクのフラグ付きユーザー](./media/steps-secure-identity/azure-ad-sec-steps1.png)
+![[ユーザー] が選択された、リスクのフラグが設定されたユーザーを示すスクリーンショット。](./media/steps-secure-identity/azure-ad-sec-steps1.png)
 
 ### <a name="implement-sign-in-risk-policy-using-azure-ad-identity-protection"></a>Azure AD Identity Protection を使用してサインインのリスク ポリシーを実装する
 
@@ -175,7 +175,7 @@ Azure AD Identity Protection で提供される 2 つの重要なレポートを
 1. リスクの高いサインイン レポートでは、調査する必要があるユーザー サインイン アクティビティが明らかになります。正当な所有者がサインインを実行していない可能性があります。
 2. リスクの高いユーザー レポートでは、侵害された可能性があるユーザー アカウントが明らかになります。たとえば、リークが検出された資格情報や、あり得ない移動イベントが発生する別の場所からサインインしたユーザーなどです。
 
-![リスクのフラグ付きユーザー](./media/steps-secure-identity/azure-ad-sec-steps3.png)
+![スクリーンショットに、ユーザーとそのリスク レベルがある Azure AD Identity Protection のウィンドウが示されています。](./media/steps-secure-identity/azure-ad-sec-steps3.png)
 
 ### <a name="audit-apps-and-consented-permissions"></a>監査アプリと同意されたアクセス許可
 

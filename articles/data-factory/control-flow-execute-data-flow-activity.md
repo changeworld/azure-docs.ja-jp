@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 04/30/2020
-ms.openlocfilehash: 5593b0d633b133c8a8295634b674218d5e6c6daf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/28/2020
+ms.openlocfilehash: 753d72b31e4f813d0e7abbbd223e050fd3390411
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89485039"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910765"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory でのデータ フロー アクティビティ
 
@@ -60,7 +60,7 @@ dataflow | 実行されているデータ フローへの参照 | DataFlowRefere
 integrationRuntime | データ フローが実行されているコンピューティング環境です。 指定されていない場合は、自動解決 Azure 統合ランタイムが使用されます。 | IntegrationRuntimeReference | いいえ
 compute.coreCount | Spark クラスター内で使用されるコアの数です。 自動解決 Azure 統合ランタイムが使用されている場合にのみ指定できます。 | 8、16、32、48、80、144、272 | いいえ
 compute.computeType | Spark クラスター内で使用されるコンピューティングの種類です。 自動解決 Azure 統合ランタイムが使用されている場合にのみ指定できます。 | "General"、"ComputeOptimized"、"MemoryOptimized" | いいえ
-staging.linkedService | Azure Synapse Analytics ソースまたはシンクを使用している場合は、PolyBase ステージングに使用するストレージ アカウント | LinkedServiceReference | データ フローが Azure Synapse Analytics に対して読み取りまたは書き込みを行う場合のみ
+staging.linkedService | Azure Synapse Analytics ソースまたはシンクを使用している場合は、PolyBase ステージングに使用するストレージ アカウントを指定します。<br/><br/>Azure Storage が VNet サービス エンドポイントを使用して構成されている場合は、ストレージ アカウントで [信頼された Microsoft サービスを許可する] を有効にしたマネージド ID 認証を使用する必要があります。「[Azure Storage で VNet サービス エンドポイントを使用した場合の影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)」を参照してください。 また、[Azure Blob](connector-azure-blob-storage.md#managed-identity) と [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) に必要な構成についても説明します。<br/> | LinkedServiceReference | データ フローが Azure Synapse Analytics に対して読み取りまたは書き込みを行う場合のみ
 staging.folderPath | Azure Synapse Analytics ソースまたはシンクを使用している場合は、PolyBase ステージングに使用する BLOB ストレージ アカウント内のフォルダー パス | String | データ フローが Azure Synapse Analytics に対して読み取りまたは書き込みを行う場合のみ
 
 ![データ フローの実行](media/data-flow/activity-data-flow.png "データ フローの実行")
@@ -82,7 +82,7 @@ Core Count プロパティと Compute Type プロパティは、実行時に入�
 ![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
 
 > [!IMPORTANT]
-> データ フロー アクティビティでの Integration Runtime の選択は、お使いのパイプラインの*トリガー済みの実行*のみに適用されます。 データ フローを使用したパイプラインのデバッグは、デバッグ セッションで指定されたクラスターで実行されます。
+> データ フロー アクティビティでの Integration Runtime の選択は、お使いのパイプラインの *トリガー済みの実行* のみに適用されます。 データ フローを使用したパイプラインのデバッグは、デバッグ セッションで指定されたクラスターで実行されます。
 
 ### <a name="polybase"></a>PolyBase
 

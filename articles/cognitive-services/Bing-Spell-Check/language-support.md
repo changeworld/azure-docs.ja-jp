@@ -10,23 +10,23 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 2b4e4eb84cecf2f68c50f0a40630cc2e6f34554f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 38bf38f47e4430c847e54bd89f6bf3cd7be50527
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084208"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367082"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>Bing Spell Check API でサポートされる言語と地域のサポート
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
 Bing Spell Check API では次の言語がサポートされています (`spell` モードのみ)。
 
-`en-US` 以外の言語を使用するには、`mkt` を設定し、`Accept-Language` または `setLang` を設定する必要があることに注意してください (「[Spell Check API v7 reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)」(Spell Check API v7 リファレンス) を参照)。
+`en-US` 以外の言語を使用するには、`mkt` を設定し、`Accept-Language` または `setLang` を設定する必要があることに注意してください (「[Spell Check API v7 reference](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)」(Spell Check API v7 リファレンス) を参照)。
 
 | Language    | 言語コード |
 |:----------- |:-------------:|
@@ -73,5 +73,5 @@ Bing Spell Check API では次の言語がサポートされています (`spell
 
 ## <a name="see-also"></a>関連項目
 
-- [Cognitive Services のドキュメント ページ](https://docs.microsoft.com/azure/cognitive-services/)
+- [Cognitive Services のドキュメント ページ](../index.yml)
 - [Cognitive Services の製品ページ](https://azure.microsoft.com/services/cognitive-services/)

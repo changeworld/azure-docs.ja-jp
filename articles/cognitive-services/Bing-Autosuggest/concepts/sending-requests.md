@@ -10,17 +10,17 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: aad00d60c5a1b75e200b49b0cdcf0d396012a5f9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a42b282ac2c42480473186f90a542e33781c8a68
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101954"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364039"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Bing Autosuggest API への要求の送信
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
@@ -38,13 +38,13 @@ Bing API を使用してクエリ候補を取得するには、次のエンド�
 GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions 
 ```
 
-ヘッダー、パラメーター、市場コード、応答オブジェクト、エラーなどについて詳しくは、[Bing Autosuggest API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) のリファレンスをご覧ください。
+ヘッダー、パラメーター、市場コード、応答オブジェクト、エラーなどについて詳しくは、[Bing Autosuggest API v7](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) のリファレンスをご覧ください。
 
 **Bing** API では、種類に応じた結果を返す検索アクションがサポートされます。  すべての検索エンドポイントは、結果を JSON 応答オブジェクトとして返します。
 すべてのエンドポイントは、特定の言語や場所を経度、緯度、検索半径によって返すクエリをサポートします。
 
 各エンドポイントでサポートされるパラメーターについて詳しくは、各種類のリファレンス ページをご覧ください。
-Autosuggest API を使用した基本的な要求の例については、[Autosuggest のクイック スタート](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest)をご覧ください。
+Autosuggest API を使用した基本的な要求の例については、[Autosuggest のクイック スタート](/azure/cognitive-services/Bing-Autosuggest)をご覧ください。
 
 ## <a name="bing-autosuggest-api-requests"></a>Bing Autosuggest API の要求
 
@@ -53,18 +53,18 @@ Autosuggest API を使用した基本的な要求の例については、[Autosu
 
 すべての要求をサーバーから送信することをお勧めします。 クライアント アプリケーションの一部としてキーを配布すると、悪意のあるサードパーティがアクセスする可能性が高くなります。 また、サーバーから呼び出しを行うと、今後の更新プログラムにアップグレードする場所が 1 つで済みます。
 
-要求では、ユーザーの部分検索語句が含まれている [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query) クエリ パラメーターを指定する必要があります。 必須ではありませんが、要求では [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#mkt) クエリ パラメーターも指定するべきです。このパラメーターは、結果取得元の市場を示します。 省略可能なクエリ パラメーターの一覧については、「[Query Parameters (クエリ パラメーター)](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query-parameters)」を参照してください。 すべてのクエリ パラメーターの値は、URL でエンコードする必要があります。
+要求では、ユーザーの部分検索語句が含まれている [q](/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query) クエリ パラメーターを指定する必要があります。 必須ではありませんが、要求では [mkt](/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#mkt) クエリ パラメーターも指定するべきです。このパラメーターは、結果取得元の市場を示します。 省略可能なクエリ パラメーターの一覧については、「[Query Parameters (クエリ パラメーター)](/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query-parameters)」を参照してください。 すべてのクエリ パラメーターの値は、URL でエンコードする必要があります。
 
-要求では、[Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#subscriptionkey) ヘッダーを指定する必要があります。 省略可能ですが、次のヘッダーも指定することをお勧めします。
+要求では、[Ocp-Apim-Subscription-Key](/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#subscriptionkey) ヘッダーを指定する必要があります。 省略可能ですが、次のヘッダーも指定することをお勧めします。
 
-- [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#useragent)
-- [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientid)
-- [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientip)
-- [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#location)
+- [User-Agent](/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#useragent)
+- [X-MSEdge-ClientID](/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientid)
+- [X-Search-ClientIP](/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientip)
+- [X-Search-Location](/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#location)
 
 クライアント IP と場所のヘッダーは、場所に対応したコンテンツを返すために重要です。
 
-すべての要求ヘッダーと応答ヘッダーのリストについては、「[Headers](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#headers)」(ヘッダー) を参照してください。
+すべての要求ヘッダーと応答ヘッダーのリストについては、「[Headers](/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#headers)」(ヘッダー) を参照してください。
 
 > [!NOTE]
 > JavaScript から Bing Autosuggest API を呼び出すときに、ブラウザーの組み込みのセキュリティ機能によっては、これらのヘッダーの値にアクセスできない場合があります。
@@ -110,7 +110,7 @@ cors-proxy-server
 
 `displayText` フィールドには、検索ボックスのドロップダウン リストの設定に使用するクエリ候補が含まれています。 応答に含まれるすべての候補を、指定された順序で表示する必要があります。  
 
-ユーザーがドロップダウン リストからクエリを選択すると、それを使用して [Bing Search API](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) の 1 つを呼び出して自身の結果を表示したり、返された `url` フィールドを使用して Bing 結果ページにそのユーザーを送信したりできます。
+ユーザーがドロップダウン リストからクエリを選択すると、それを使用して [Bing Search API](../../bing-web-search/bing-api-comparison.md?bc=%252fen-us%252fazure%252fbread%252ftoc.json&toc=%252fen-us%252fazure%252fcognitive-services%252fbing-autosuggest%252ftoc.json) の 1 つを呼び出して自身の結果を表示したり、返された `url` フィールドを使用して Bing 結果ページにそのユーザーを送信したりできます。
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -181,5 +181,5 @@ BingAPIs-Market: en-US
 ## <a name="next-steps"></a>次のステップ
 
 - [Bing Autosuggest とは](../get-suggested-search-terms.md)
-- [Bing Autosuggest API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
+- [Bing Autosuggest API v7 リファレンス](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
 - [Bing Autosuggest API から検索語句の候補を取得する](get-suggestions.md)

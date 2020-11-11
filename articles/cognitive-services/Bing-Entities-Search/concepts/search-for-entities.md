@@ -10,17 +10,17 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 532bf806789476c1ec901c1e4ac8522451819625
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 489a158c49bc6695a460fdef5b92606335a07ef6
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085124"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365994"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>Bing Entity API でのエンティティの検索
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
@@ -28,9 +28,9 @@ ms.locfileid: "93085124"
 
 ユーザーが検索語句を入力するための検索ボックスを用意する場合は、[Bing Autosuggest API](../../bing-autosuggest/get-suggested-search-terms.md) を使用することでエクスペリエンスが向上します。 この API は、検索語句をユーザーが入力している最中に、その一部分に基づいてクエリ文字列の候補を返します。
 
-ユーザーが検索語句を入力した後、その語句を URL エンコードしたうえで、[q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) クエリ パラメーターを設定します。 たとえば、ユーザーが「 *Marcus Appel* 」と入力した場合、`q` を *Marcus+Appel* または *Marcus%20Appel* に設定します。
+ユーザーが検索語句を入力した後、その語句を URL エンコードしたうえで、[q](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) クエリ パラメーターを設定します。 たとえば、ユーザーが「 *Marcus Appel* 」と入力した場合、`q` を *Marcus+Appel* または *Marcus%20Appel* に設定します。
 
-検索用語にスペル ミスが含まれていると、検索応答に [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) オブジェクトが含まれます。 このオブジェクトは元のスペルと Bing が検索に使用した修正済みのスペルを示します。
+検索用語にスペル ミスが含まれていると、検索応答に [QueryContext](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) オブジェクトが含まれます。 このオブジェクトは元のスペルと Bing が検索に使用した修正済みのスペルを示します。
 
 ```json
 "queryContext": {
@@ -43,15 +43,15 @@ ms.locfileid: "93085124"
 
 ## <a name="the-bing-entity-search-api-response"></a>Bing Entity Search API の応答
 
-API の応答には、[SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse) オブジェクトが含まれます。 Bing で関連するエンティティまたは場所が検出された場合、オブジェクトには `entities` フィールド、`places` フィールド、またはその両方が含まれます。 それ以外の場合は、応答オブジェクトにはいずれのフィールドも含まれません。
+API の応答には、[SearchResponse](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse) オブジェクトが含まれます。 Bing で関連するエンティティまたは場所が検出された場合、オブジェクトには `entities` フィールド、`places` フィールド、またはその両方が含まれます。 それ以外の場合は、応答オブジェクトにはいずれのフィールドも含まれません。
 > [!NOTE]
 > エンティティの応答では複数の市場がサポートされますが、場所の応答では米国ビジネスの場所しかサポートされません。 
 
-`entities` フィールドは、[Entity](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity) オブジェクトのリストを含む [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)オブジェクトです (`value` フィールドを参照)。 リストには、1 つの主要なエンティティ、複数のあいまいさ排除エンティティ、またはその両方が含まれている場合があります。 
+`entities` フィールドは、[Entity](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity) オブジェクトのリストを含む [EntityAnswer](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)オブジェクトです (`value` フィールドを参照)。 リストには、1 つの主要なエンティティ、複数のあいまいさ排除エンティティ、またはその両方が含まれている場合があります。 
 
 主要なエンティティは、要求を満たす唯一のエンティティだと Bing が認識したときに返されます (どのエンティティが要求を満たすかに関するあいまいさはありません)。 複数のエンティティが要求を満たす可能性がある場合は、リストには複数のあいまいさ排除エンティティが含まれます。 たとえば、要求で映画シリーズの一般的なタイトルを使用している場合、リストにはあいまいさ排除エンティティが含まれる可能性が高くなります。 しかし、要求でシリーズの特定のタイトルを指定した場合、リストには 1 つの主要なエンティティが含まれる可能性が高くなります。
 
-エンティティには、有名な人物 (歌手、俳優、スポーツ選手、モデルなど)、場所やランドマーク (レーニア山やリンカーン記念館など)、もの (バナナ、ゴールデンドゥードル、本、映画のタイトルなど) が含まれます。 [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) フィールドには、エンティティの型を識別するためのヒントが含まれています。 たとえば、それが個人、映画、動物、またはアトラクションかどうかを識別します。 可能な型のリストについては、[エンティティ型](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)のセクションを参照してください。
+エンティティには、有名な人物 (歌手、俳優、スポーツ選手、モデルなど)、場所やランドマーク (レーニア山やリンカーン記念館など)、もの (バナナ、ゴールデンドゥードル、本、映画のタイトルなど) が含まれます。 [entityPresentationInfo](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) フィールドには、エンティティの型を識別するためのヒントが含まれています。 たとえば、それが個人、映画、動物、またはアトラクションかどうかを識別します。 可能な型のリストについては、[エンティティ型](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)のセクションを参照してください。
 
 ```json
 "entityPresentationInfo": {
@@ -179,9 +179,9 @@ API の応答には、[SearchResponse](https://docs.microsoft.com/rest/api/cogni
 
 ## <a name="find-places"></a>場所を探す
 
-`places` フィールドは、[Place](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) オブジェクトのリストを含む [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) オブジェクトです (詳しくは、[エンティティ型](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)に関する記事を参照)。 このリストには、要求を満たす 1 つまたは複数のローカル エンティティが含まれます。
+`places` フィールドは、[Place](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) オブジェクトのリストを含む [LocalEntityAnswer](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) オブジェクトです (詳しくは、[エンティティ型](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)に関する記事を参照)。 このリストには、要求を満たす 1 つまたは複数のローカル エンティティが含まれます。
 
-場所には、レストラン、ホテル、または地元企業が含まれます。 [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) フィールドには、ローカル エンティティの型を識別するためのヒントが含まれています。 リストには、Place、LocalBusiness、Restaurant などのヒントのリストが含まれています。 配列内の連続する各ヒントにより、エンティティの型が絞り込まれます。 可能な型のリストについては、[エンティティ型](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)のセクションを参照してください。
+場所には、レストラン、ホテル、または地元企業が含まれます。 [entityPresentationInfo](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) フィールドには、ローカル エンティティの型を識別するためのヒントが含まれています。 リストには、Place、LocalBusiness、Restaurant などのヒントのリストが含まれています。 配列内の連続する各ヒントにより、エンティティの型が絞り込まれます。 可能な型のリストについては、[エンティティ型](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)のセクションを参照してください。
 
 ```json
 "entityPresentationInfo": {
@@ -194,7 +194,7 @@ API の応答には、[SearchResponse](https://docs.microsoft.com/rest/api/cogni
 > [!NOTE]
 > エンティティの応答では複数の市場がサポートされますが、場所の応答では米国ビジネスの場所しかサポートされません。 
 
-*近くのレストラン* などのローカル対応エンティティ クエリでは、正確な結果を提供するためにユーザーの場所を提供する必要があります。 要求では常に X-Search-Location と X-MSEdge-ClientIP のヘッダーを使用して、ユーザーの場所を指定する必要があります。 Bing では、ユーザーの場所をクエリに使用するメリットが認められると、 [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) の `askUserForLocation` フィールドが **true** に設定されます。 
+*近くのレストラン* などのローカル対応エンティティ クエリでは、正確な結果を提供するためにユーザーの場所を提供する必要があります。 要求では常に X-Search-Location と X-MSEdge-ClientIP のヘッダーを使用して、ユーザーの場所を指定する必要があります。 Bing では、ユーザーの場所をクエリに使用するメリットが認められると、 [QueryContext](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) の `askUserForLocation` フィールドが **true** に設定されます。 
 
 ```json
 {
@@ -295,7 +295,7 @@ Bing Entity API の応答には、第三者が所有する情報が含まれま�
 
 ### <a name="license-attribution"></a>ライセンスの帰属表示
 
-契約規則のリストに [LicenseAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#licenseattribution) 規則が含まれている場合、ライセンスが適用されるコンテンツの直後の行に通知を表示する必要があります。 `LicenseAttribution` 規則では、ライセンスが適用されるプロパティを特定するために `targetPropertyName` フィールドを使用します。
+契約規則のリストに [LicenseAttribution](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#licenseattribution) 規則が含まれている場合、ライセンスが適用されるコンテンツの直後の行に通知を表示する必要があります。 `LicenseAttribution` 規則では、ライセンスが適用されるプロパティを特定するために `targetPropertyName` フィールドを使用します。
 
 `LicenseAttribution` 規則を含む例を次に示します。
 
@@ -305,7 +305,7 @@ Bing Entity API の応答には、第三者が所有する情報が含まれま�
 
 ### <a name="link-and-text-attribution"></a>リンクとテキスト属性
 
-[LinkAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#linkattribution) と [TextAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#textattribution) の規則は通常、データの提供元を明らかにする場合に使用します。 `targetPropertyName` フィールドは、規則が適用されるフィールドを特定するためのものです。
+[LinkAttribution](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#linkattribution) と [TextAttribution](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#textattribution) の規則は通常、データの提供元を明らかにする場合に使用します。 `targetPropertyName` フィールドは、規則が適用されるフィールドを特定するためのものです。
 
 プロバイダーの帰属を示すには属性を適用するコンテンツ (対象となるフィールドなど) の直後に 1 行含めます。 追加した行には、提供元がデータの出典であることを明確に示したラベルを付ける必要があります。 たとえば、"データ元: contoso.com" のようにします。 `LinkAttribution` 規則の場合、提供元の Web サイトへのハイパーリンクを作成する必要があります。
 
@@ -315,7 +315,7 @@ Bing Entity API の応答には、第三者が所有する情報が含まれま�
 
 ### <a name="media-attribution"></a>メディアの帰属表示
 
-エンティティに画像が含まれており、その画像を表示する場合には、提供元の Web サイトへのクリックスルー リンクを提供する必要があります。 エンティティに [MediaAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mediaattribution) 規則が含まれている場合、その規則の URL を使用してクリックスルー リンクを作成します。 含まれていない場合は、画像の `provider` フィールドに含まれる URL を使用してクリックスルー リンクを作成します。
+エンティティに画像が含まれており、その画像を表示する場合には、提供元の Web サイトへのクリックスルー リンクを提供する必要があります。 エンティティに [MediaAttribution](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mediaattribution) 規則が含まれている場合、その規則の URL を使用してクリックスルー リンクを作成します。 含まれていない場合は、画像の `provider` フィールドに含まれる URL を使用してクリックスルー リンクを作成します。
 
 画像の `provider` フィールドと契約規則が含まれる例を次に示します。 例には契約上の規則が含まれているため、イメージの `provider` フィールドを無視して、`MediaAttribution` 規則を適用します。
 

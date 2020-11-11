@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 01a22aa5d2ec7ed54be62f0975b0fefbafd84cd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53c68f44273b14658bd4d95ce7cf3cf847c077d0
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85211563"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025954"
 ---
 # <a name="monitor-workload---azure-portal"></a>ワークロードを監視する - Azure portal
 
@@ -32,9 +32,9 @@ Log Analytics ワークスペースの参照ブレードに移動し、ワーク
 
 ![Log Analytics ワークスペース](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspaces.png)
 
-![Analytics ワークスペースを追加する](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace.png)
+![スクリーンショットに、[追加] を選択できる Log Analytics ワークスペースが示されています。](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace.png)
 
-![Analytics ワークスペースを追加する](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace_2.png)
+![スクリーンショットに、値を入力できる Log Analytics ワークスペースが示されています。](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace_2.png)
 
 ワークスペースの詳細については、次の[ドキュメント](../../azure-monitor/learn/quick-create-workspace.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsond#create-a-workspace)を参照してください。
 

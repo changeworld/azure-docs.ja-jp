@@ -9,20 +9,20 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: d84a0190e13d7bb7664e8792e0047338fe4bf5e2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 55555d81eb531ae5a4d946fa3f661796b3294897
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85961236"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365501"
 ---
 # <a name="what-is-custom-translator"></a>Custom Translator とは
 
 [Custom Translator](https://portal.customtranslator.azure.ai) は、翻訳会社、アプリ開発者、および言語サービス プロバイダーがカスタマイズされたニューラル機械翻訳 (NMT) システムを構築できるようにする Microsoft Translator サービスの一機能です。 カスタマイズされた翻訳システムは、既存のアプリケーション、ワークフロー、および Web サイトにシームレスに統合されます。 [Custom Translator](https://portal.customtranslator.azure.ai/) は、統計的機械翻訳 (SMT) に対して [Microsoft Translator Hub](https://hub.microsofttranslator.com/) が提供するのと同様の機能を提供しますが、ニューラル機械翻訳 (NMT) システム専用です。
 
-[Custom Translator](https://portal.customtranslator.azure.ai) を使用して構築された翻訳システムは、[安全性](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality)、高パフォーマンス、高いスケーラビリティを備えた、同じクラウドベースの Microsoft Translator [Text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) を介して利用できます。この API は、毎日何十億件もの翻訳に利用されています。
+[Custom Translator](https://portal.customtranslator.azure.ai) を使用して構築された翻訳システムは、[安全性](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality)、高パフォーマンス、高いスケーラビリティを備えた、同じクラウドベースの Microsoft Translator [Text API V3](../reference/v3-0-translate.md?tabs=curl) を介して利用できます。この API は、毎日何十億件もの翻訳に利用されています。
 
-Custom Translator は、36 を超える言語をサポートし、NMT で利用可能な言語に直接マップされています。 完全な一覧については、[Microsoft Translator の言語](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)に関するページを参照してください。
+Custom Translator は、36 を超える言語をサポートし、NMT で利用可能な言語に直接マップされています。 完全な一覧については、[Microsoft Translator の言語](../language-support.md#customization)に関するページを参照してください。
 
 ## <a name="features"></a>特徴
 
@@ -34,7 +34,7 @@ Custom Translator は、カスタム翻訳システムを構築し、その後�
 |[ビジネス用語を理解するシステムを構築](what-are-parallel-documents.md)     |  お客様のビジネスや業界で使用されている用語が反映されている対訳ドキュメントを使用して、翻訳システムをカスタマイズおよび構築します。       |
 |[辞書を使用してモデルを構築](what-is-dictionary.md)     |   トレーニング データ セットがない場合は、辞書データのみを使用してモデルをトレーニングすることができます。       |
 |[他の人と共同作業を行う](how-to-manage-settings.md#share-your-workspace)     |   他の人と作業を共有して、チームと共同作業を行います。     |
-|[カスタム翻訳モデルにアクセス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  Microsoft Translator Text API V3 を介して、既存のアプリケーション/プログラムからいつでもカスタム翻訳モデルにアクセスできます。       |
+|[カスタム翻訳モデルにアクセス](../reference/v3-0-translate.md?tabs=curl)     |  Microsoft Translator Text API V3 を介して、既存のアプリケーション/プログラムからいつでもカスタム翻訳モデルにアクセスできます。       |
 
 ## <a name="get-better-translations"></a>より良い翻訳を得る
 

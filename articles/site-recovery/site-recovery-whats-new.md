@@ -3,12 +3,12 @@ title: Azure Site Recovery の最新情報
 description: Azure Site Recovery サービスの新機能と最新の更新プログラムの概要について説明します。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 0c35c8e041e47f02d53c680b5812b10d25d75a67
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 2e85ee19012f6ae13c18e26b3aa0b5ae28bcaade
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425718"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341350"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
@@ -31,6 +31,7 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 
 更新プログラムのインストールとサポートの詳細については、[こちら](service-updates-how-to.md)を参照してください。
 
+## <a name="updates-october-2020"></a>更新プログラム (2020 年 10 月)
 
 ### <a name="update-rollup-51"></a>更新プログラム ロールアップ 51
 
@@ -41,7 +42,9 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 **プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
 **問題の修正/改善点** | Mobility Service に対する新しい Linux のサポートを含む、ロールアップで詳細に説明されているいくつかの修正と改善。
 
-## <a name="update-september-2020"></a>更新 (2020 年 9 月)
+## <a name="updates-september-2020"></a>更新プログラム (2020 年 9 月)
+
+### <a name="update-rollup-50"></a>更新プログラム ロールアップ 50
 
 [更新プログラム ロールアップ 50](https://support.microsoft.com/help/4582666/update-rollup-50-for-azure-site-recovery) では、以下の更新が提供されます。
 

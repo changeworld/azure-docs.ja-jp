@@ -10,17 +10,17 @@ ms.subservice: bing-spell-check
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 905ae56ab8d64f7342c4ee6b9f25d188c907710d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c0453fa99376cb6a5dba1e427cdc0deccb3e03de
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084189"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367048"
 ---
 # <a name="what-is-the-bing-spell-check-api"></a>Bing Spell Check API とは
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関するページを参照してください。
 
@@ -28,7 +28,7 @@ Bing Spell Check API を使用すると、コンテキストに応じた文法�
 
 ## <a name="features"></a>特徴
 
-| 特徴量 | 説明 |
+| 機能 | 説明 |
 |---------|---------|
 |複数のスペル チェック モード     | 複数のスペル チェック モードを使用して、文法やスペルに重点を置いた修正を行うことができます。 |
 |スラングやくだけた言葉遣いの認識     | テキスト内で使用されている日常的な表現やくだけた用語を認識します。         |
@@ -49,4 +49,4 @@ Bing Spell Check API は、HTTP 要求を作成して JSON 応答を解析でき
 
 API を呼び出す準備ができたら、[Cognitive Services API アカウント](../../cognitive-services/cognitive-services-apis-create-account.md)を作成します。 Azure サブスクリプションをお持ちでない場合は、無料で[アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)できます。
 
-[Bing Search API ハブ ページ](../bing-web-search/search-the-web.md)にアクセスして、その他の提供されている API を調べることもできます。
+[Bing Search API ハブ ページ](../bing-web-search/overview.md)にアクセスして、その他の提供されている API を調べることもできます。

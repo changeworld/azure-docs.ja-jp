@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: aa650fe9cb7df64a6a7a948224be225ecfad9057
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d2995f39bc61ae5bb87abafd674f411271e57ca2
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324615"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366283"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>レシピ: ビッグ データの Cognitive Services を使用した予測メンテナンス
 
@@ -31,13 +31,13 @@ ms.locfileid: "93324615"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
-* [サーバーレス Apache Spark プール](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool)で構成された [Azure Synapse ワークスペース](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)
+* [サーバーレス Apache Spark プール](../../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)で構成された [Azure Synapse ワークスペース](../../../synapse-analytics/quickstart-create-workspace.md)
 
 ## <a name="setup"></a>セットアップ
 
 ### <a name="create-an-anomaly-detector-resource"></a>Anomaly Detector リソースを作成する
 
-Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、Translator のリソースを作成します。 次のこともできます。
+Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](../../cognitive-services-apis-create-account.md) または [Azure CLI](../../cognitive-services-apis-create-account-cli.md) を使用して、Translator のリソースを作成します。 次のこともできます。
 
 - [Azure portal](https://portal.azure.com/) で既存のリソースを表示する。
 

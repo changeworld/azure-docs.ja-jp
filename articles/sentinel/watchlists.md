@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: 25252b73f25a96f85d5e2cf1d68b76f9eaa3ca75
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1267f040b13184f50c9d98fe0fb13fb24db0f4f7
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979293"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026838"
 ---
 # <a name="use-azure-sentinel-watchlists"></a>Azure Sentinel ウォッチリストを使用する
 
@@ -23,13 +23,13 @@ Azure Sentinel ウォッチリストを使用すると、Azure Sentinel 環境�
 
 ウォッチリストを使用する一般的なシナリオは次のとおりです。
 
-- IP アドレス、ファイル ハッシュ、およびその他のデータを CSV ファイルから短時間でインポートすることで、迅速に**脅威の調査**とインシデントへの対応を行います。 インポート後は、アラート ルール、脅威ハンティング、ブック、ノートブック、および一般的なクエリの結合とフィルターに、ウォッチリストの名前と値のペアを使用できます。
+- IP アドレス、ファイル ハッシュ、およびその他のデータを CSV ファイルから短時間でインポートすることで、迅速に **脅威の調査** とインシデントへの対応を行います。 インポート後は、アラート ルール、脅威ハンティング、ブック、ノートブック、および一般的なクエリの結合とフィルターに、ウォッチリストの名前と値のペアを使用できます。
 
-- ウォッチリストとして**ビジネス データをインポート**します。 たとえば、システムの特権アクセスが割り当てられているユーザーリスト、または退職した従業員をインポートした後、ウォッチリストを使用して、これらのユーザーによるネットワークへのログインを検出または防止するために使用される許可リストや拒否リストを作成します。
+- ウォッチリストとして **ビジネス データをインポート** します。 たとえば、システムの特権アクセスが割り当てられているユーザーリスト、または退職した従業員をインポートした後、ウォッチリストを使用して、これらのユーザーによるネットワークへのログインを検出または防止するために使用される許可リストや拒否リストを作成します。
 
-- **アラート疲れを軽減**します。 通常はアラートをトリガーするタスクを実行する承認済み IP アドレスのユーザーなど、ユーザー グループからのアラートが表示されないように許可リストを作成し、問題のないイベントがアラートにならないようにします。
+- **アラート疲れを軽減** します。 通常はアラートをトリガーするタスクを実行する承認済み IP アドレスのユーザーなど、ユーザー グループからのアラートが表示されないように許可リストを作成し、問題のないイベントがアラートにならないようにします。
 
-- **イベント データを強化**します。 ウォッチリストを使用して、外部データ ソースから派生した名前と値の組み合わせでイベント データを強化します。
+- **イベント データを強化** します。 ウォッチリストを使用して、外部データ ソースから派生した名前と値の組み合わせでイベント データを強化します。
 
 ## <a name="create-a-new-watchlist"></a>新しいウォッチリストを作成する
 
@@ -47,6 +47,9 @@ Azure Sentinel ウォッチリストを使用すると、Azure Sentinel 環境�
 
     :::image type="content" source="./media/watchlists/sentinel-watchlist-source.png" alt-text="ウォッチリストの [ソース] ページ" lightbox="./media/watchlists/sentinel-watchlist-source.png":::
 
+    > [!NOTE]
+    >
+    > 現在、ファイルのアップロードは、最大 3.8 MB のファイルに制限されています。
 
 1. 情報を見直して、それが正しいことを確認してから、 **[作成]** を選択します。
 
@@ -55,29 +58,26 @@ Azure Sentinel ウォッチリストを使用すると、Azure Sentinel 環境�
 
     ウォッチリストが作成されると、通知が表示されます。
 
-    :::image type="content" source="./media/watchlists/sentinel-watchlist-complete.png" alt-text="ウォッチリストの [ソース] ページ" lightbox="./media/watchlists/sentinel-watchlist-complete.png":::
-
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-complete.png" alt-text="ウォッチリストの作成成功の通知" lightbox="./media/watchlists/sentinel-watchlist-complete.png":::
 
 ## <a name="use-watchlists-in-queries"></a>クエリでウォッチリストを使用する
 
 1. Azure portal で **[Azure Sentinel]**  >  **[構成]**  >  **[ウォッチリスト]** の順に移動し、使用するウォッチリストを選択して、 **[ログ分析で表示]** を選択します。
 
-    :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-list.png" alt-text="ウォッチリストの [ソース] ページ" lightbox="./media/watchlists/sentinel-watchlist-queries-list.png":::
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-list.png" alt-text="クエリでのウォッチリストの使用" lightbox="./media/watchlists/sentinel-watchlist-queries-list.png":::
 
-
-1. ウォッチリストの項目がクエリのために自動的に抽出され、 **[結果]** タブに表示されます。次の例では、**ServerName** および **IpAddress** フィールドの抽出結果を示しています。
+1. ウォッチリストの項目がクエリのために自動的に抽出され、 **[結果]** タブに表示されます。次の例では、 **ServerName** および **IpAddress** フィールドの抽出結果を示しています。
 
     > [!NOTE]
     > クエリのタイムスタンプは、クエリ UI とスケジュールされたアラートの両方で無視されます。
 
-    :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-fields.png" alt-text="ウォッチリストの [ソース] ページ" lightbox="./media/watchlists/sentinel-watchlist-queries-fields.png":::
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-fields.png" alt-text="ウォッチリストのフィールドを使用したクエリ" lightbox="./media/watchlists/sentinel-watchlist-queries-fields.png":::
     
 ## <a name="use-watchlists-in-analytics-rules"></a>分析ルールでウォッチリストを使用する
 
 分析ルールでウォッチリストを使用するには、Azure portal で **[Azure Sentinel]**  >  **[構成]**  >  **[分析]** の順に移動し、クエリで `_GetWatchlist('<watchlist>')` 関数を使用してルールを作成します。
 
-:::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule.png" alt-text="ウォッチリストの [ソース] ページ" lightbox="./media/watchlists/sentinel-watchlist-analytics-rule.png":::
-
+:::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule.png" alt-text="分析ルールでのウォッチリストの使用" lightbox="./media/watchlists/sentinel-watchlist-analytics-rule.png":::
 
 ## <a name="view-list-of-watchlists-aliases"></a>ウォッチリスト エイリアスの一覧を表示する
 

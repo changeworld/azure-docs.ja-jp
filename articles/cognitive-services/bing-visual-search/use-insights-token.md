@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6f4068ece2b08937188397317844a126a9699aee
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ed2c8b4b6dae8713d3ce1c6755c559cda9a9dfb8
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102107"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368884"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>分析情報トークンを使用して画像についての分析情報を取得する
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
@@ -262,7 +262,7 @@ namespace VisualSearchInsightsToken
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
 * Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Bing Search リソースを作成"  target="_blank">Bing Search リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
-* このコードをコンパイルして実行するための、[JDK 7 または 8](https://aka.ms/azure-jdks)。 好みの Java IDE がある場合はそれを使用してもかまいませんが、テキスト エディターで十分です。
+* このコードをコンパイルして実行するための、[JDK 7 または 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)。 好みの Java IDE がある場合はそれを使用してもかまいませんが、テキスト エディターで十分です。
 
 
 ## <a name="run-the-java-application"></a>Java アプリケーションを実行する
@@ -536,4 +536,4 @@ if __name__ == '__main__':
 [Visual Search のシングルページ Web アプリを作成する](tutorial-bing-visual-search-single-page-app.md)  
 [Bing Visual Search API とは](overview.md)  
 [Cognitive Services を試す](https://aka.ms/bingvisualsearchtryforfree)  
-[画像 - Visual Search](https://aka.ms/bingvisualsearchreferencedoc)
+[画像 - Visual Search](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch)

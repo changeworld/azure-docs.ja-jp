@@ -10,17 +10,17 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: aahi
-ms.openlocfilehash: 38191c55afb87151b238069a75a6c86acd8904df
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a27f252f401d0fcf863391a0d45538b01b1141e9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100543"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367286"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>ポータルから Bing Custom Search インスタンスを呼び出す
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
@@ -31,7 +31,7 @@ ms.locfileid: "93100543"
 
 Bing Custom Search [ポータル](https://customsearch.ai)にサインインした後、ご自分の検索インスタンスを選択し、 **[運用]** タブをクリックします。 **[エンドポイント]** で、API エンドポイント (たとえば、Web API) を選択します。 表示されるエンドポイントは、お使いのサブスクリプションによって決まります。
 
-検索クエリを作成するには、エンドポイントのパラメーター値を入力します。 ポータルに表示されるパラメーターは、選択したエンドポイントに応じて変更される可能性があることに注意してください。 詳細については、[Custom Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)を参照してください。 検索インスタンスで使用するサブスクリプションを変更するには、適切なサブスクリプション キーを追加し、該当する市場または言語パラメーターを更新します。
+検索クエリを作成するには、エンドポイントのパラメーター値を入力します。 ポータルに表示されるパラメーターは、選択したエンドポイントに応じて変更される可能性があることに注意してください。 詳細については、[Custom Search API リファレンス](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)を参照してください。 検索インスタンスで使用するサブスクリプションを変更するには、適切なサブスクリプション キーを追加し、該当する市場または言語パラメーターを更新します。
 
 いくつかの重要なパラメーターを次に示します。
 
@@ -65,4 +65,4 @@ Bing Custom Search [ポータル](https://customsearch.ai)にサインインし�
 - [NodeJs を使用してカスタム ビューを呼び出す](./call-endpoint-nodejs.md)
 - [Python を使用してカスタム ビューを呼び出す](./call-endpoint-python.md)
 
-- [C# SDK を使用してカスタム ビューを呼び出す](./sdk-csharp-quick-start.md)
+- [C# SDK を使用してカスタム ビューを呼び出す](./quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)

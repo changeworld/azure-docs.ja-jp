@@ -3,12 +3,12 @@ title: Azure Active Directory を使用したアクセスを承認する
 description: この記事では、Azure Active Directory を使用して Event Hubs リソースへのアクセスを承認する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 1f69c3e5136ab47de4683cc65c32054d067dde13
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: d794b03fdbb5429983788c74cbb05a7c13bf2d76
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332401"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910799"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Azure Active Directory を使用して Event Hubs リソースへのアクセスを承認する
 Azure Event Hubs は、Azure Active Directory (Azure AD) を使用して Event Hubs リソースへの要求を承認することをサポートしています。 Azure AD では、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、セキュリティ プリンシパル (ユーザーまたはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与できます。 ロールとロールの割り当ての詳細については、[各種ロールの理解](../role-based-access-control/overview.md)に関するページを参照してください。
@@ -16,7 +16,7 @@ Azure Event Hubs は、Azure Active Directory (Azure AD) を使用して Event H
 ## <a name="overview"></a>概要
 セキュリティ プリンシパル (ユーザーまたはアプリケーション) が Event Hubs リソースにアクセスしようとした場合、要求は承認される必要があります。 Azure AD では、リソースへのアクセスは 2 段階のプロセスです。 
 
- 1. まず、セキュリティ プリンシパルの ID が認証され、OAuth 2.0 トークンが返されます。 トークンを要求するリソース名は `https://eventhubs.azure.net/` です。 Kafka クライアントの場合、トークンを要求するリソースは `https://<namespace>.servicebus.windows.net` です。
+ 1. まず、セキュリティ プリンシパルの ID が認証され、OAuth 2.0 トークンが返されます。 トークンを要求するリソース名は `https://eventhubs.azure.net/` であり、すべてのクラウド/テナントで同じです。 Kafka クライアントの場合、トークンを要求するリソースは `https://<namespace>.servicebus.windows.net` です。
  1. 次に、指定したリソースへのアクセスを承認するために、トークンが要求の一部として Event Hubs サービスに渡されます。
 
 認証の手順により、実行時にアプリケーション要求に OAuth 2.0 アクセス トークンが含まれる必要があります。 アプリケーションが Azure VM、仮想マシン スケール セット、または Azure 関数アプリなどの Azure エンティティ内から実行されている場合、マネージド ID を使用してリソースにアクセスできます。 マネージド ID によって Event Hubs サービスに対して行われる要求を認証する方法については、[Azure リソースに Azure Active Directory とマネージド ID を使用して Azure Event Hubs リソースへのアクセスを認証する](authenticate-managed-identity.md)方法に関する記事を参照してください。 

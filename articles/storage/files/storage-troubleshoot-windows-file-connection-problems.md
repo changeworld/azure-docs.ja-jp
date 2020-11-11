@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 7ec511400d1e00d37993f2f4ee581bce1bccb897
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 17b2ab53c0154a29f9084f9dd999a53bcf477b72
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715988"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075128"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Windows での Azure Files に関する問題のトラブルシューティング (SMB)
 
-この記事では、Windows クライアントから接続するときに生じる、Microsoft Azure Files に関係する一般的な問題を示します。 これらの問題の考えられる原因と解決策についても説明します。 この記事のトラブルシューティングの手順のほかに、[AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)  を使って Windows クライアント環境が前提条件を適切に満たしているかどうかを確認することもできます。 AzFileDiagnostics は、この記事で説明しているほとんどの症状を自動的に検出し、最適なパフォーマンスが得られる環境のセットアップを支援します。
+この記事では、Windows クライアントから接続するときに生じる、Microsoft Azure Files に関係する一般的な問題を示します。 これらの問題の考えられる原因と解決策についても説明します。 この記事のトラブルシューティングの手順のほかに、[AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) を使って Windows クライアント環境が前提条件を適切に満たしているかどうかを確認することもできます。 AzFileDiagnostics は、この記事で説明しているほとんどの症状を自動的に検出し、最適なパフォーマンスが得られる環境のセットアップを支援します。
 
 > [!IMPORTANT]
 > この記事の内容は SMB 共有にのみ適用されます。 NFS 共有の詳細については、「[Azure NFS ファイル共有に関するトラブルシューティング](storage-troubleshooting-files-nfs.md)」を参照してください。
@@ -55,10 +55,10 @@ Windows 8 以降および Windows Server 2012 以降の OS であれば、暗号
 
 アクセス許可が正しく構成されていることを確認します。
 
-- **Active Directory (AD)** : 「[ID に共有レベルのアクセス許可を割り当てる](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions)」を参照してください。
+- **Active Directory (AD)** : 「 [ID に共有レベルのアクセス許可を割り当てる](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions)」を参照してください。
 
     共有レベルのアクセス許可の割り当ては、Azure AD Connect を使用して Active Directory (AD) から Azure Active Directory (Azure AD) に同期されたグループおよびユーザーに対してサポートされています。  共有レベルのアクセス許可が割り当てられているグループとユーザーが、サポートされていない "クラウド専用" グループではないことを確認します。
-- **Azure Active Directory Domain Services (Azure AD DS)** : 「[ID にアクセス許可を割り当てる](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity)」を参照してください。
+- **Azure Active Directory Domain Services (Azure AD DS)** : 「 [ID にアクセス許可を割り当てる](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity)」を参照してください。
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>Azure ファイル共有をマウントまたはマウント解除するときに、エラー 53、エラー 67、またはエラー 87 が発生する
@@ -134,7 +134,7 @@ Azure Files は、SMB だけでなく、REST もサポートしています。 R
 
 ### <a name="solution-for-cause-2"></a>原因 2 の解決策
 
-次のレジストリ サブキーで、**LmCompatibilityLevel** の値を既定値である 3 に戻します。
+次のレジストリ サブキーで、 **LmCompatibilityLevel** の値を既定値である 3 に戻します。
 
   **HKLM\SYSTEM\CurrentControlSet\Control\Lsa**
 
@@ -177,23 +177,82 @@ Azure ファイル共有が置かれたストレージ アカウントを参照�
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Azure ファイル共有のファイルまたはディレクトリを削除できない
-ファイルを削除しようとすると、次のエラーが表示される場合があります。
+ファイル共有の主な目的の 1 つは、複数のユーザーおよびアプリケーションが、共有内のファイルとディレクトリを同時に操作できることです。 このようなやり取りを支援するために、ファイル共有は、ファイルとディレクトリへのアクセスを複数の方法で提供します。
 
-指定されたリソースは SMB クライアントが削除対象に設定しています。
+SMB 経由でマウントされた Azure ファイル共有からファイルを開くと、アプリケーションまたはオペレーティング システムは、ファイルを参照するファイル ハンドルを要求します。 特に、Azure Files が強制するファイルへの排他アクセスのレベルを指定するファイル ハンドルをアプリケーションが要求するときに、アプリケーションでファイル共有モードが指定されます。 
 
-### <a name="cause"></a>原因
-この問題は、通常、ファイルまたはディレクトリのハンドルが開いている場合に発生します。 
+- `None`: 排他アクセスがあります。 
+- `Read`: ファイルを開いている間、他のユーザーはそのファイルを読み取ることができます。
+- `Write`: ファイルを開いている間、他のユーザーはそのファイルに書き込むことができます。 
+- `ReadWrite`: `Read` と `Write` の両方の共有モードの組み合わせです。
+- `Delete`: ファイルを開いている間、他のユーザーはそのファイルを削除できます。 
 
-### <a name="solution"></a>解決策
+FileREST プロトコルはステートレス プロトコルであるため、ファイル ハンドルの概念はありませんが、類似のメカニズムとして、スクリプト、アプリケーション、またはサービスが使用できるファイルやフォルダーへのアクセスを仲介するためのファイル リースが用意されています。 ファイルがリースされると、ファイル共有モードが `None` のファイル ハンドルと同等として扱われます。 
 
-開いているすべてのハンドルを SMB クライアントで閉じた後も問題が引き続き発生する場合は、次の手順を行います。
+ファイル ハンドルとリースは重要な目的がありますが、ファイル ハンドルやリースが孤立する場合もあります。 この場合、ファイルの変更または削除に関する問題が発生する可能性があります。 次のようなエラー メッセージが表示される場合があります。
 
-- [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell コマンドレットを使用して、開いているハンドルを表示します。
+- ファイルは別のプロセスで使用されているため、このプロセスからアクセスすることはできません。
+- ファイルを別のプログラムで開いているため、アクションを完了できません。
+- ドキュメントは、別のユーザーが編集するためにロックされています。
+- 指定されたリソースは SMB クライアントが削除対象に設定しています。
 
-- [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell コマンドレットを使用して、開いているハンドルを閉じます。 
+この問題の解決策は、問題が孤立したファイル ハンドルまたはリースによって発生しているかどうかによって異なります。 
+
+### <a name="cause-1"></a>原因 1
+ファイル ハンドルが原因で、ファイルまたはディレクトリの変更または削除が妨げられています。 [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell コマンドレットを使用して、開いているハンドルを表示できます。 
+
+すべての SMB クライアントがファイルまたはディレクトリの開いているハンドルを閉じていても、問題が引き続き発生する場合は、ファイル ハンドルを強制的に閉じることができます。
+
+### <a name="solution-1"></a>解決策 1
+ファイル ハンドルを強制的に閉じるには、[Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell コマンドレットを使用します。 
 
 > [!Note]  
 > Get-AzStorageFileHandle および Close-AzStorageFileHandle コマンドレットは、Az PowerShell モジュールのバージョン 2.4 以降に含まれています。 最新の Az PowerShell モジュールをインストールするには、「[Install the Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)」(Azure PowerShell モジュールのインストール) を参照してください。
+
+### <a name="cause-2"></a>原因 2
+ファイルのリースのために、ファイルを変更または削除できません。 ファイルにファイル リースがあるかどうかを次の PowerShell で確認できます。これには、`<resource-group>`、`<storage-account>`、`<file-share>`、`<path-to-file>` を環境に適した値に置き換えます。
+
+```PowerShell
+# Set variables 
+$resourceGroupName = "<resource-group>"
+$storageAccountName = "<storage-account>"
+$fileShareName = "<file-share>"
+$fileForLease = "<path-to-file>"
+
+# Get reference to storage account
+$storageAccount = Get-AzStorageAccount `
+        -ResourceGroupName $resourceGroupName `
+        -Name $storageAccountName
+
+# Get reference to file
+$file = Get-AzStorageFile `
+        -Context $storageAccount.Context `
+        -ShareName $fileShareName `
+        -Path $fileForLease
+
+$fileClient = $file.ShareFileClient
+
+# Check if the file has a file lease
+$fileClient.GetProperties().Value
+```
+
+ファイルにリースがある場合、返されるオブジェクトに次のプロパティが含まれているはずです。
+
+```Output
+LeaseDuration         : Infinite
+LeaseState            : Leased
+LeaseStatus           : Locked
+```
+
+### <a name="solution-2"></a>解決策 2
+ファイルからリースを削除するには、リースをリリースするか、リースを解除します。 リースをリリースするには、リースの作成時に設定した、リースの LeaseId が必要です。 リースを解除するには、LeaseId は必要ありません。
+
+次の例は、原因 2 で示されているファイルのリースを解除する方法を示しています (この例では、原因 2 の PowerShell 変数が引き続き使用されています)。
+
+```PowerShell
+$leaseClient = [Azure.Storage.Files.Shares.Specialized.ShareLeaseClient]::new($fileClient)
+$leaseClient.Break() | Out-Null
+```
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-windows"></a>Windows で Azure Files との間でのファイルのコピーが遅い
@@ -231,7 +290,7 @@ Windows 8.1 または Windows Server 2012 R2 を実行しているクライア�
 既定では、Windows エクスプローラーは管理者として実行されません。 管理コマンド プロンプトから net use を実行すると、ネットワーク ドライブを管理者としてマップすることになります。 マップされたドライブはユーザー主体であるため、異なるユーザー アカウントでドライブがマップされている場合、ログインしているユーザー アカウントにドライブが表示されません。
 
 ### <a name="solution"></a>解決策
-管理者以外のコマンド ラインから共有をマウントします。 そのほか、[この TechNet の記事](https://technet.microsoft.com/library/ee844140.aspx)に従って **EnableLinkedConnections** レジストリ値を構成する方法もあります。
+管理者以外のコマンド ラインから共有をマウントします。 そのほか、 [この TechNet の記事](https://technet.microsoft.com/library/ee844140.aspx)に従って **EnableLinkedConnections** レジストリ値を構成する方法もあります。
 
 <a id="netuse"></a>
 ## <a name="net-use-command-fails-if-the-storage-account-contains-a-forward-slash"></a>ストレージ アカウントにスラッシュが含まれている場合に、net use コマンドが失敗する
@@ -304,7 +363,7 @@ net use コマンドは、スラッシュ (/) をコマンド ライン オプ�
 
 ### <a name="solution"></a>解決策
 
-この問題を解決するには、**DirectoryCacheEntrySizeMax** レジストリ値を、クライアント コンピューターでより大規模なディレクトリ一覧のキャッシュが可能になるように調整します。
+この問題を解決するには、 **DirectoryCacheEntrySizeMax** レジストリ値を、クライアント コンピューターでより大規模なディレクトリ一覧のキャッシュが可能になるように調整します。
 
 - 場所:HKLM\System\CCS\Services\Lanmanworkstation\Parameters
 - 値の名前:DirectoryCacheEntrySizeMax 

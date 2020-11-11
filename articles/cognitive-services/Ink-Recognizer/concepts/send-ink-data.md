@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: 8665e27b6b7c43bce7d749d9bfe0a2f815a0f46d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ecf3ad43b46d491d5f15270790251a0bc4e882e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051102"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365365"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>インク データを Ink Recognizer API に送信する 
 
@@ -64,7 +64,7 @@ Ink Recognizer API は、インク コンテンツから認識したオブジェ
 
 ## <a name="shapes-recognized-by-the-ink-recognizer-api"></a>Ink Recognizer API によって認識されるシェイプ
 
-Ink Recognizer API では、メモを取る際に最も一般的に使用されるシェイプを識別できます。 次の画像はいくつかの基本的な例を示しています。 API によって認識されるシェイプおよびその他のインク コンテンツの完全な一覧については、[API リファレンスの記事](https://go.microsoft.com/fwlink/?linkid=2089907)を参照してください。 
+Ink Recognizer API では、メモを取る際に最も一般的に使用されるシェイプを識別できます。 次の画像はいくつかの基本的な例を示しています。 API によって認識されるシェイプおよびその他のインク コンテンツの完全な一覧については、[API リファレンスの記事](/rest/api/cognitiveservices/inkrecognizer/inkrecognizer)を参照してください。 
 
 ![Ink Recognizer API によって認識されるシェイプの一覧](../media/shapes.png)
 
@@ -84,12 +84,12 @@ Ink Recognizer REST API は、アプリケーションに応じてさまざま�
 
 ## <a name="integrate-the-ink-recognizer-api-with-windows-ink"></a>Ink Recognizer API と Windows Ink を統合する
 
-[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) は、さまざまなデバイスでデジタル インキング エクスペリエンスを可能にするツールとテクノロジを提供します。 Windows Ink プラットフォームと Ink Recognizer API を組み合わせて、デジタル インク ストロークを表示および解釈するアプリケーションを作成できます。
+[Windows Ink](/windows/uwp/design/input/pen-and-stylus-interactions) は、さまざまなデバイスでデジタル インキング エクスペリエンスを可能にするツールとテクノロジを提供します。 Windows Ink プラットフォームと Ink Recognizer API を組み合わせて、デジタル インク ストロークを表示および解釈するアプリケーションを作成できます。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Ink Recognizer API とは](../overview.md)
-* [Ink Recognizer REST API リファレンス](https://go.microsoft.com/fwlink/?linkid=2089907)
+* [Ink Recognizer REST API リファレンス](/rest/api/cognitiveservices/inkrecognizer/inkrecognizer)
 
 * 以下を使用してデジタル インク ストローク データの送信を開始します。
     * [C#](../quickstarts/csharp.md)

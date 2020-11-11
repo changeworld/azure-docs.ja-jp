@@ -10,17 +10,17 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: cb507df53778e1b432370daa050041625a45e06e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: cdbbd6afeedc1c8808e02aefa268be4fe0de5f9f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101971"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363376"
 ---
 # <a name="suggesting-query-terms"></a>検索語句の提案
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
@@ -28,7 +28,7 @@ ms.locfileid: "93101971"
 
 ## <a name="example-request"></a>要求の例
 
-次の例に、 *sail* に対するクエリ文字列の候補を返す要求を示します。 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#query) クエリ パラメーターを設定する際には、忘れずにユーザーの部分的なクエリ用語を URL エンコードします。 たとえば「 *sailing les* 」と入力された場合、`q` を `sailing+les` または `sailing%20les` に設定します。
+次の例に、 *sail* に対するクエリ文字列の候補を返す要求を示します。 [q](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#query) クエリ パラメーターを設定する際には、忘れずにユーザーの部分的なクエリ用語を URL エンコードします。 たとえば「 *sailing les* 」と入力された場合、`q` を `sailing+les` または `sailing%20les` に設定します。
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/suggestions?q=sail&mkt=en-us HTTP/1.1
@@ -39,7 +39,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-次の応答には、候補となる検索語を含んだ [SearchAction](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#searchaction) オブジェクトのリストが格納されます。
+次の応答には、候補となる検索語を含んだ [SearchAction](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#searchaction) オブジェクトのリストが格納されます。
 
 ```json
 {
@@ -58,7 +58,7 @@ Bing Autosuggest API からの検索語の候補を含んだドロップダウ�
 
 ![ドロップダウン検索ボックスによる自動提案リスト](../media/cognitive-services-bing-autosuggest-api/bing-autosuggest-drop-down-list.PNG)
 
-ユーザーがドロップダウン リストからクエリ候補を選択した場合は、`query` フィールドのクエリ用語を使用して [Bing Web Search API](../../bing-web-search/search-the-web.md) を呼び出し、独自にその結果を表示することができます。 または、`url` フィールドの URL を使用して、ユーザーを Bing 検索結果ページに誘導することもできます。
+ユーザーがドロップダウン リストからクエリ候補を選択した場合は、`query` フィールドのクエリ用語を使用して [Bing Web Search API](../../bing-web-search/overview.md) を呼び出し、独自にその結果を表示することができます。 または、`url` フィールドの URL を使用して、ユーザーを Bing 検索結果ページに誘導することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

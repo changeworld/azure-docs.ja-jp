@@ -7,16 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: トラブルシューティング、更新プログラム、バグ、Kinect、フィードバック、回復、ログ記録、ヒント
-ms.openlocfilehash: 2db7b17ffc8b6595107dbc52fae719aa9f2d15db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9711968de061956a945fca183444dd6ebde4ca9c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277095"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356384"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect の既知の問題とトラブルシューティング
 
-このページには、Azure Kinect DK で Sensor SDK を使用する際の既知の問題とトラブルシューティングのヒントが含まれます。 製品のハードウェア固有の問題については、[製品のサポート ページ](https://aka.ms/kinectsupport)も参照してください。
+このページには、Azure Kinect DK で Sensor SDK を使用する際の既知の問題とトラブルシューティングのヒントが含まれます。 製品のハードウェア固有の問題については、[製品のサポート ページ](./index.yml)も参照してください。
 
 ## <a name="known-issues"></a>既知の問題
 
@@ -144,7 +144,7 @@ Body Tracking SDK K4ABT.dll のログ記録は似ていますが、次のよう�
 
 デバイス マネージャーでそのデバイスが列挙されていない場合、サポートされていない USB3 コントローラーに接続されていることが原因である可能性があります。 
 
-Windows 上の Azure Kinect DK では、**Intel**、**Texas Instruments (TI)** 、および **Renesas** の "*ホスト コントローラーのみがサポートされています*"。 Windows プラットフォーム上の Azure Kinect SDK は、1 つの統合されたコンテナー ID に依存しており、同じデバイス上に物理的に配置されている深度、カラー、およびオーディオ デバイスを SDK が検出できるように、USB 2.0 および 3.0 デバイスにまたがる必要があります。 Linux では、そのプラットフォームはコンテナー ID よりもデバイスのシリアル番号により依存するため、より多くのホスト コントローラーがサポートされる可能性があります。 
+Windows 上の Azure Kinect DK では、 **Intel** 、 **Texas Instruments (TI)** 、および **Renesas** の " *ホスト コントローラーのみがサポートされています* "。 Windows プラットフォーム上の Azure Kinect SDK は、1 つの統合されたコンテナー ID に依存しており、同じデバイス上に物理的に配置されている深度、カラー、およびオーディオ デバイスを SDK が検出できるように、USB 2.0 および 3.0 デバイスにまたがる必要があります。 Linux では、そのプラットフォームはコンテナー ID よりもデバイスのシリアル番号により依存するため、より多くのホスト コントローラーがサポートされる可能性があります。 
 
 USB ホスト コントローラーのトピックは、PC に複数のホスト コントローラーがインストールされている場合に、さらに複雑になります。 ホスト コントローラーが混在していると、一部のポートが正常に動作する一方で、他のポートがまったく動作しない問題が発生する可能性があります。 ポートがケースにどのように配線されているかによっては、前面のポートすべてで Azure Kinect との接続に問題が見られる場合があります。
 

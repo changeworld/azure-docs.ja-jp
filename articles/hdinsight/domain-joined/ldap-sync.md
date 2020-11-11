@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 99bd1ac156b12a5be7b8c5c17eb5b568b7070a25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0779ac261fbb4ee91bf63021bb0cc685a371c2b2
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77465668"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234071"
 ---
 # <a name="ldap-sync-in-ranger-and-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight の Ranger と Apache Ambari での LDAP 同期
 
@@ -20,16 +20,19 @@ HDInsight Enterprise セキュリティ パッケージ (ESP) クラスターで
 
 ## <a name="general-guidelines"></a>一般的なガイドライン
 
-* クラスターをデプロイする場合は常にグループを使用します。
-* Ambari と Ranger でグループ フィルターを切り替える代わりに、Azure AD でこれらすべてを管理し、入れ子になったグループを使用して必要なユーザーを取り込むようにします。
-* 同期されたユーザーは、グループの一部でなくなった場合でも削除されません。
-* LDAP フィルターを直接変更する必要がある場合は、UI を最初に使用します。これは、UI にいくつかの検証が含まれているためです。
+* クラスターは、常に 1 つ以上のグループと共にデプロイします。
+* クラスター内でより多くのグループを使用する場合は、Azure Active Directory (Azure AD) でグループ メンバーシップを更新することが理にかなっているかどうかを確認します。
+* クラスター グループを変更する場合は、Ambari を使用して同期フィルターを変更できます。
+* Azure AD でのすべてのグループ メンバーシップの変更は、以降の同期でクラスターに反映されます。 変更は、最初に Azure AD Domain Services (Azure AD DS) に同期され、次にクラスターに同期される必要があります。
+* HDInsight クラスターでは、Samba/Winbind を使用して、クラスター ノードのグループ メンバーシップを投影します。
+* グループ メンバーは、Ambari と Ranger の両方に推移的 (すべてのサブグループとそのメンバー) に同期されます。 
 
 ## <a name="users-are-synced-separately"></a>ユーザーは個別に同期される
 
-Ambari と Ranger は、2 つの異なる目的で使用されるため、ユーザー データベースを共有しません。 ユーザーが Ambari UI を使用する必要がある場合は、そのユーザーを Ambari に同期する必要があります。 ユーザーが Ambari に同期されていない場合、Ambari UI または API はこのユーザーを拒否しますが、システムの他の部分は動作します (これらは Ambari ではなく Ranger または Resource Manager によって保護されます)。 ユーザーを Ranger ポリシーに含める場合は、ユーザーを Ranger に同期します。
-
-セキュリティで保護されたクラスターがデプロイされると、グループ メンバーは推移的に Ambari と Ranger の両方に同期されます (すべてのサブグループとそのメンバー)。 
+ * Ambari と Ranger は、2 つの異なる目的で使用されるため、ユーザー データベースを共有しません。 
+   * ユーザーが Ambari UI を使用する必要がある場合は、そのユーザーを Ambari に同期する必要があります。 
+   * ユーザーが Ambari に同期されていない場合、Ambari UI または API はこのユーザーを拒否しますが、システムの他の部分は動作します (これらは Ambari によってではなく、Ranger または Resource Manager によって保護されます)。
+   * Ranger ポリシーにユーザーまたはグループを含めるには、そのプリンシパルを Ranger で明示的に同期する必要があります。
 
 ## <a name="ambari-user-sync-and-configuration"></a>Ambari のユーザー同期と構成
 
@@ -37,28 +40,20 @@ Ambari と Ranger は、2 つの異なる目的で使用されるため、ユー
 
 ログは `/var/log/ambari-server/ambari-server.log` にあります。 詳細については、「[Ambari のログ レベルの構成](https://docs.cloudera.com/HDPDocuments/Ambari-latest/administering-ambari/content/amb_configure_ambari_logging_level.html)」を参照してください。
 
-Data Lake クラスターでは、ユーザー作成後のフックを使用して、同期されたユーザーのホーム フォルダーが作成され、これらのユーザーがホーム フォルダーの所有者として設定されます。 ユーザーが Ambari に正しく同期されていない場合、ステージングおよびその他の一時フォルダーへのアクセスするときにエラーが発生する可能性があります。
-
-### <a name="update-groups-to-be-synced-to-ambari"></a>Ambari に同期するグループを更新する
-
-Azure AD でグループ メンバーシップを管理できない場合は、次の 2 つの選択肢があります。
-
-* 「[LDAP ユーザーとグループを同期する](https://docs.cloudera.com/HDPDocuments/HDP3/latest/ambari-authentication-ldap-ad/content/authe_ldapad_synchronizing_ldap_users_and_groups.html)」の詳しい説明に従って、1 回限りの同期を実行します。 グループ メンバーシップが変更されるたびに、この同期を再度行う必要があります。
-
-* cron ジョブを作成し、新しいグループで [Ambari API を定期的に](https://community.cloudera.com/t5/Support-Questions/How-do-I-automate-the-Ambari-LDAP-sync/m-p/96634)呼び出します。
+Data Lake クラスターでは、ユーザー作成後のフックを使用して、同期されたユーザーのホーム フォルダーが作成され、これらのユーザーがホーム フォルダーの所有者として設定されます。 ユーザーが Ambari に正しく同期されていない場合、ホーム フォルダーが正しくセットアップされていない可能性があるため、ユーザーはジョブの実行に失敗する可能性があります。
 
 ## <a name="ranger-user-sync-and-configuration"></a>Ranger ユーザーの同期と構成
 
-Ranger には、ユーザーを同期するために 1 時間ごとに実行される組み込みの同期エンジンが用意されています。 ユーザー データベースは Ambari と共有されません。 HDInsight により、管理者ユーザー、ウォッチドッグ ユーザー、およびクラスターの作成中に指定されたグループのメンバーを同期するように検索フィルターが構成されます。 グループ メンバーは、推移的に同期されます。
+Ranger には、ユーザーを同期するために 1 時間ごとに実行される、組み込みの同期エンジンが用意されています。 ユーザー データベースは Ambari と共有されません。 HDInsight により、管理者ユーザー、ウォッチドッグ ユーザー、およびクラスターの作成中に指定されたグループのメンバーを同期するように検索フィルターが構成されます。 グループ メンバーは、推移的に同期されます。
 
-* 増分同期を無効にします。
-* ユーザー グループ同期マップを有効にします。
-* 推移的なグループ メンバーを含める検索フィルターを指定します。
-* ユーザーの sAMAccountName とグループの名前属性を同期します。
+1. 増分同期を無効にします。
+1. ユーザー グループ同期マップを有効にします。
+1. 推移的なグループ メンバーを含める検索フィルターを指定します。
+1. ユーザーの sAMAccountName 属性とグループの name 属性を同期します。
 
 ### <a name="group-or-incremental-sync"></a>グループ同期または増分同期
 
-Ranger ではグループ同期オプションがサポートされますが、これはユーザー フィルターとの積集合として動作します。 グループ メンバーシップとユーザー フィルターの和集合ではありません。 Ranger におけるグループ同期フィルターの一般的なユース ケースは、グループ フィルター (dn = clusteradmingroup) とユーザー フィルター (city = seattle) です。
+Ranger ではグループ同期オプションがサポートされますが、グループ メンバーシップとユーザー フィルターの和集合としてではなく、ユーザー フィルターとの積として機能します。 Ranger におけるグループ同期フィルターの一般的なユース ケースは、グループ フィルター (dn = clusteradmingroup) とユーザー フィルター (city = seattle) です。
 
 増分同期は、既に (最初の) 同期が行われているユーザーに対してのみ動作します。 増分では、最初の同期後にグループに追加された新しいユーザーは同期されません。
 
@@ -73,10 +68,14 @@ Ranger のユーザー同期は、ヘッドノードのいずれかで発生し�
 1. Ambari にログインします。
 1. Ranger 構成セクションにアクセスします。
 1. 詳細 **usersync-log4j** セクションにアクセスします。
-1. `log4j.rootLogger` を `DEBUG` レベルに変更します (変更後は `log4j.rootLogger = DEBUG,logFile,FilterLog` のようになります)。
+1. `log4j.rootLogger` を `DEBUG` レベルに変更します。 変更すると、`log4j.rootLogger = DEBUG,logFile,FilterLog` のようになります。
 1. 構成を保存し、Ranger を再起動します。
+
+## <a name="known-issues-with-ranger-user-sync"></a>Ranger ユーザーの同期に関する既知の問題
+* グループ名に Unicode 文字が含まれている場合、Ranger 同期でそのオブジェクトを同期できません。 ユーザーが国際的な文字を持つグループに属している場合、Ranger は部分的なグループのメンバーシップを同期します。
+* ユーザー名 (sAMAccountName) とグループ名 (name) の長さは 20 文字以下にする必要があります。 グループ名が長い場合、アクセス許可を計算するときに、ユーザーはグループに属していない場合と同様に扱われます。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure HDInsight での認証の問題](./domain-joined-authentication-issues.md)
-* [Azure AD ユーザーを HDInsight クラスターに同期する](../hdinsight-sync-aad-users-to-cluster.md)
+* [HDInsight クラスターへの Azure AD ユーザーの同期](../hdinsight-sync-aad-users-to-cluster.md)

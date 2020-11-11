@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 0033f4919e4e4e5e56e4057e00c393ae7be1ca44
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d5caa9b4168307bb27022b59415e43b37f30bf67
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090564"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367388"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>ホステッド UI エクスペリエンスを構成する
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
@@ -54,7 +54,7 @@ Web アプリ用にホステッド UI を構成するには、次の手順に従
 
 6. **[追加の構成]** で、実際のアプリにとって適切な値を指定します。 これらの設定は省略可能です。 適用または削除の影響を確認するには、右側のプレビュー ウィンドウを参照します。 使用できる構成は次のとおりです。  
 
-7. 検索サブスクリプション キーを入力するか、ドロップダウン リストから 1 つ選択します。 ドロップダウン リストには、使用している Azure アカウントのサブスクリプションからのキーが表示されます。 [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)についてのページを参照してください。  
+7. 検索サブスクリプション キーを入力するか、ドロップダウン リストから 1 つ選択します。 ドロップダウン リストには、使用している Azure アカウントのサブスクリプションからのキーが表示されます。 [Cognitive Services API アカウント](../cognitive-services-apis-create-account.md)についてのページを参照してください。  
 
 8. 自動提案を有効にした場合は、自動提案のサブスクリプション キーを入力するか、ドロップダウン リストから 1 つ選択します。 ドロップダウン リストには、使用している Azure アカウントのサブスクリプションからのキーが表示されます。 カスタム自動提案を利用するには、特定のサブスクリプション レベルが必要です。[価格](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)に関するページをご覧ください。
 
@@ -82,7 +82,7 @@ Web アプリ用にホステッド UI を構成するには、次の手順に従
   `https://ui.customsearch.ai/hosted?customConfig=YOUR-CUSTOM-CONFIG-ID`  
   
   > [!NOTE]
-  > 必要に応じて、次のクエリ パラメーターを URL に追加します。 これらのパラメーターについては、[Custom Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) のリファレンスをご覧ください。
+  > 必要に応じて、次のクエリ パラメーターを URL に追加します。 これらのパラメーターについては、[Custom Search API](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) のリファレンスをご覧ください。
   >
   > - q
   > - mkt
@@ -153,4 +153,4 @@ Web アプリ用にホステッド UI を構成するには、次の手順に従
 ## <a name="next-steps"></a>次のステップ
 
 - [装飾マーカーを使用してテキストを強調表示する](../bing-web-search/hit-highlighting.md)
-- [Web ページのページング](./page-webpages.md)
+- [Web ページのページング](../bing-web-search/paging-search-results.md)

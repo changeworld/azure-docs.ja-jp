@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 419de27ad87b113de62dacb0dc384702420afbd6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 980d3ca52016c65301ea72e4e669c4bafea4c053
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071117"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077202"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法
 
@@ -44,7 +44,7 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 1. Azure portal で Azure API Management サービス インスタンスに移動します。
 2. 一覧から **証明書** を選択します。
 3. **[+ 追加]** ボタンをクリックします。
-    ![クライアント証明書を追加する](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
+    ![[追加] ボタンが強調表示されているスクリーンショット。](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
 4. 証明書を参照し、ID とパスワードを入力します。
 5. **Create** をクリックしてください。
 
@@ -73,7 +73,7 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
 2. **[デザイン]** タブで、 **[バックエンド]** セクションの鉛筆アイコンをクリックします。
 3. **[ゲートウェイ サーバーの資格情報]** を **[クライアント証明書]** に変更し、ドロップダウンから証明書を選択します。
-    ![クライアント証明書を有効にする](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
+    ![ゲートウェイの資格情報を変更して証明書を選択する場所を示すスクリーンショット。](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
 
 4. **[保存]** をクリックします。
 

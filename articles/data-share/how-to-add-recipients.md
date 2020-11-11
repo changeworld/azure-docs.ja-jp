@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
-ms.openlocfilehash: 999966192d92481a9d3eec68cfe804566a27f71e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c446a7f05dce2ea6979e9810e729bdac479ae153
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87513470"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910493"
 ---
 # <a name="how-to-add-a-recipient-to-an-existing-data-share-in-azure-data-share"></a>Azure Data Share で既存のデータ共有に受信者を追加する方法
 
@@ -23,11 +23,11 @@ ms.locfileid: "87513470"
 
 Azure Data Share で、送信した共有に移動し、 **[招待]** タブを選択します。ここには、このデータ共有への招待のすべての受信者が一覧表示されます。 新しい受信者を追加するには、 **[受信者の追加]** をクリックします。
 
-![受信者の追加](./media/how-to/how-to-add-recipients/add-recipient.png)
+![スクリーンショットは、[受信者の追加] が選択されて示されています。](./media/how-to/how-to-add-recipients/add-recipient.png)
 
 ページの右側にパネルが表示されます。 **[受信者の追加]** をクリックし、空白行に新しい受信者のメールアドレスを入力します。 必要な数だけ受信者を追加します。
 
-![受信者の追加](./media/how-to/how-to-add-recipients/add-recipient-side.png)
+![スクリーンショットは、招待を追加して送信できる [受信者の追加] ウィンドウを示しています。](./media/how-to/how-to-add-recipients/add-recipient-side.png)
 
 **[Add and send invitation]\(招待を追加して送信\)** をクリックします。 このデータ共有への招待メールが新しい受信者に送信されます。
 

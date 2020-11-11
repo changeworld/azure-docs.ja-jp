@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 444b76a594e768face892462da12a1cbb35a5106
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 37239f9c7857a8e72bb293cfa3caeb429962a542
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324680"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363342"
 ---
 # <a name="getting-started"></a>作業の開始
 
@@ -31,7 +31,7 @@ ms.locfileid: "93324680"
 
 ### <a name="cloud-services"></a>クラウド サービス
 
-クラウドベースの Cognitive Services は、Azure でホストされているインテリジェントなアルゴリズムです。 これらのサービスは、トレーニングなしですぐに使用でき、インターネット接続のみが必要です。 [Cognitive Service は Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows) で作成できます。
+クラウドベースの Cognitive Services は、Azure でホストされているインテリジェントなアルゴリズムです。 これらのサービスは、トレーニングなしですぐに使用でき、インターネット接続のみが必要です。 [Cognitive Service は Azure portal](../cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows) または [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows) で作成できます。
 
 ### <a name="containerized-services-optional"></a>コンテナー化されたサービス (オプション)
 
@@ -45,7 +45,7 @@ ms.locfileid: "93324680"
 
 * **高いスケーラビリティ** :コンテナー化されたサービスには "レート制限" がなく、ユーザーが管理するコンピューター上で実行されます。 そのため、より大規模なワークロードを処理するために、Cognitive Services を際限なく拡張できます。
 
-コンテナー化された Cognitive Service を作成するには、[こちらガイド](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support?tabs=luis)に従ってください。
+コンテナー化された Cognitive Service を作成するには、[こちらガイド](../cognitive-services-container-support.md?tabs=luis)に従ってください。
 
 ## <a name="create-an-apache-spark-cluster"></a>Apache Spark クラスターの作成
 
@@ -55,8 +55,8 @@ ms.locfileid: "93324680"
 
 Azure Databricks は、Apache Spark ベースの分析プラットフォームです。ワンクリックでのセットアップと効率的なワークフロー、および対話型ワークスペースを提供します。 多くの場合、データ サイエンティスト、エンジニア、およびビジネス アナリスト間の共同作業に使用されます。 Azure Databricks でビッグ データ向けの Cognitive Services を使用するには、次の手順を実行します。
 
-1. [Azure Databricks ワークスペースを作成します](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)
-1. [Databricks に Spark クラスターを作成する](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-a-spark-cluster-in-databricks)
+1. [Azure Databricks ワークスペースを作成します](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)
+1. [Databricks に Spark クラスターを作成する](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal#create-a-spark-cluster-in-databricks)
 1. ビッグ データ向けの Cognitive Services をインストールする
     * Databricks ワークスペースに新しいライブラリを作成します  
        <img src="media/create-library.png" alt="Create library" width="50%"/>
@@ -69,8 +69,8 @@ Azure Databricks は、Apache Spark ベースの分析プラットフォーム�
 
 必要に応じて、Synapse Analytics を使用して Spark クラスターを作成できます。 Azure Synapse Analytics では、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられています。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを大規模に使用しながら、各自の条件で自由にデータのクエリを実行できます。 Synapse Analytics の使用を開始するには、次の手順を実行します。
 
-1. [Synapse ワークスペースを作成する (プレビュー)](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)。
-1. [Azure portal を使用して、新しいサーバーレス Apache Spark プール (プレビュー) を作成する](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-portal)。
+1. [Synapse ワークスペースを作成する (プレビュー)](../../synapse-analytics/quickstart-create-workspace.md)。
+1. [Azure portal を使用して、新しいサーバーレス Apache Spark プール (プレビュー) を作成する](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)。
 
 Synapse Analytics では、ビッグ データ向けの Cognitive Services が既定でインストールされています。
 
@@ -80,9 +80,9 @@ Synapse Analytics では、ビッグ データ向けの Cognitive Services が�
 
 Azure Kubernetes Service の利用を開始するには、次の手順を実行します。
 
-1. [Azure portal を使用して Azure Kubernetes Service (AKS) クラスターをデプロイする](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal)
+1. [Azure portal を使用して Azure Kubernetes Service (AKS) クラスターをデプロイする](../../aks/kubernetes-walkthrough-portal.md)
 1. [Apache Spark 2.4.0 Helm グラフをインストールする](https://hub.helm.sh/charts/microsoft/spark)
-1. [Helm を使用して Cognitive Service コンテナーをインストールする](https://docs.microsoft.com/azure/cognitive-services/computer-vision/deploy-computer-vision-on-premises)
+1. [Helm を使用して Cognitive Service コンテナーをインストールする](../computer-vision/deploy-computer-vision-on-premises.md)
 
 ## <a name="try-a-sample"></a>サンプルを試す
 

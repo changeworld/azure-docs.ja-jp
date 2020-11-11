@@ -3,12 +3,12 @@ title: よく寄せられる質問 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs に関するよく寄せられる質問 (FAQ) とその回答の一覧を示します。
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: 051122c2030683eb2f3c57191dbbfa3bfd2bf6b7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3b55521c9f90192891b450e3e161607a334c3a00
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789371"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909711"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs のよく寄せられる質問
 
@@ -120,6 +120,9 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
 }
 ```
 
+> [!IMPORTANT]
+> 仮想ネットワーク ログが生成されるのは、名前空間で **特定の IP アドレス** (IP フィルター規則) からのアクセスが許可されている場合のみです。 これらの機能を使用して名前空間へのアクセスを制限せずに、Azure Event Hubs 名前空間に接続しているクライアントの IP アドレスを追跡する仮想ネットワーク ログを取得する場合は、次の回避策を使用できます。IP フィルター処理を有効にし、アドレス指定可能な IPv4 の範囲の合計 (1.0.0.0/1 - 255.0.0.0/1) を追加します。 Azure Event Hubs は IPv6 アドレス範囲をサポートしていません。 
+
 ## <a name="apache-kafka-integration"></a>Apache Kafka の統合
 
 ### <a name="how-do-i-integrate-my-existing-kafka-application-with-event-hubs"></a>既存の Kafka アプリケーションを Event Hubs と統合するにはどうしたらよいですか。
@@ -186,7 +189,7 @@ Event Hubs でのスループットは、Event Hubs 経由で入出力される�
 
 ### <a name="is-there-a-limit-on-the-number-of-throughput-units-that-can-be-reservedselected"></a>予約または選択できるスループット ユニットの数に制限はありますか。
 
-Azure portal で Basic または Standard レベルの名前空間を作成する場合、名前空間に対して最大 20 個の TU を選択できます。 これを **正確に** 40 TU に上げるには、[サポート リクエスト](../azure-portal/supportability/how-to-create-azure-support-request.md)を送信します。  
+Azure portal で Basic または Standard レベルの名前空間を作成する場合、名前空間に対して最大 20 個の TU を選択できます。 これを **正確に** 40 TU に上げるには、 [サポート リクエスト](../azure-portal/supportability/how-to-create-azure-support-request.md)を送信します。  
 
 1. **[Event Bus Namespace]\(イベント バス名前空間\)** ページで、左側のメニューの **[新しいサポート リクエスト]** を選択します。 
 1. **[新しいサポート リクエスト]** ページで、次の手順を行います。

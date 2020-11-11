@@ -10,17 +10,17 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: d55ff4ed8717a449628e94a940c0896d31818da2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a0187a5d2be6b2f93897fc358e26ad095e5a70f7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101937"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364583"
 ---
 # <a name="what-is-bing-autosuggest"></a>Bing Autosuggest とは
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関するページを参照してください。
 
@@ -36,7 +36,7 @@ ms.locfileid: "93101937"
 
 Bing Autosuggest API は RESTful Web サービスです。HTTP 要求を実行して JSON を解析できる任意のプログラミング言語から簡単に呼び出すことができます。
 
-1. Bing Search API が利用できる [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。 Azure サブスクリプションをお持ちでない場合は、無料で[アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)できます。
+1. Bing Search API が利用できる [Cognitive Services API アカウント](../cognitive-services-apis-create-account.md)を作成します。 Azure サブスクリプションをお持ちでない場合は、無料で[アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)できます。
 2. アプリケーションの検索ボックスにユーザーが新しい文字を入力するたびに、この API に要求を送信します。
 3. 返された JSON メッセージを解析して API 応答を処理します。
 
@@ -52,11 +52,11 @@ Bing Autosuggest API からの検索語の候補を含んだドロップダウ�
 
 実際に要求を送信してみるには、[最初のクエリを実行する](quickstarts/csharp.md)に関するページを参照してください。
 
-[Bing Autosuggest API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) リファレンスを活用してください。 このリファレンスには、クエリ用語候補を要求する際に使用するエンドポイント、ヘッダー、クエリ パラメーターの一覧と、応答オブジェクトの定義が記載されています。
+[Bing Autosuggest API v7](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) リファレンスを活用してください。 このリファレンスには、クエリ用語候補を要求する際に使用するエンドポイント、ヘッダー、クエリ パラメーターの一覧と、応答オブジェクトの定義が記載されています。
 
-その他の提供されている API については、[Bing Search API ハブ ページ](../bing-web-search/search-the-web.md)をご覧ください。
+その他の提供されている API については、[Bing Search API ハブ ページ](../bing-web-search/overview.md)をご覧ください。
 
 
-[Bing Web Search API](../bing-web-search/search-the-web.md) を使用して Web を検索し、他の [Bing Search API](../bing-web-search/index.yml) を探す方法について説明します。
+[Bing Web Search API](../bing-web-search/overview.md) を使用して Web を検索し、他の [Bing Search API](../bing-web-search/index.yml) を探す方法について説明します。
 
-検索結果の使用に関するルールを逸脱しないよう、[Bing の使用上および表示上の要件](./useanddisplayrequirements.md)に関するページを必ず読んでください。
+検索結果の使用に関するルールを逸脱しないよう、[Bing の使用上および表示上の要件](../bing-web-search/use-display-requirements.md)に関するページを必ず読んでください。

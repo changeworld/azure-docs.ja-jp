@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 37f0a8d1f70fa96db505973d097febabe99ab7a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2716f037de533e14ae8e57706134c8a2b135b440
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88749169"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322379"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 の概要
 
@@ -94,7 +94,7 @@ HDI 4.0 に含まれる Apache Oozie 4.3.1 では以下の点が変更されて�
 * HDInsight 4.0 では、ML Services クラスターの種類がサポートされていません。
 * Hive View は、バージョン番号が 4.1 以上の HDInsight 4.0 クラスターでのみ利用できます。 この番号は、[Ambari Admin]、[バージョン] の順に選択すると見つかります。
 * Apache Zeppelin のシェル インタープリターは、Spark および対話型クエリ クラスターではサポートされていません。
-* Spark-LLAP クラスターでは LLAP を "*無効にする*" ことはできません。 LLAP をオフにすることだけができます。
+* Spark-LLAP クラスターでは LLAP を " *無効にする* " ことはできません。 LLAP をオフにすることだけができます。
 * Azure Data Lake Storage Gen2 では、Jupyter Notebook を Spark クラスターに保存できません。
 * Apache pig は既定では Tez で実行されますが、Mapreduce に変更することもできます
 * 行および列のセキュリティに対する Spark SQL Ranger 統合は非推奨です
@@ -102,5 +102,9 @@ HDI 4.0 に含まれる Apache Oozie 4.3.1 では以下の点が変更されて�
 
 ## <a name="next-steps"></a>次のステップ
 
+* [HBase 移行ガイド](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-migrate-new-version)
+* [Hive 移行ガイド](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-migrate-workloads)
+* [Kafka 移行ガイド](https://docs.microsoft.com/azure/hdinsight/kafka/migrate-versions)
+* [Spark 移行ガイド](https://docs.microsoft.com/azure/hdinsight/spark/migrate-versions)
 * [Azure HDInsight のドキュメント](index.yml)
 * [リリース ノート](hdinsight-release-notes.md)

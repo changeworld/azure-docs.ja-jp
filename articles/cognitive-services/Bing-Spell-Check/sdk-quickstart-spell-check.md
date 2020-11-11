@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3304cc36c37a548eabd3aa6ddc32255f3d09dffb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b2df7bab9bceaefae5793e4802eba6a6aa218e96
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083730"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364804"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>クイック スタート:Bing Spell Check SDK for C# を使用してスペルをチェックする
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関するページを参照してください。
 
@@ -110,4 +110,4 @@ Bing Spell Check SDK をプロジェクトに追加するには、Visual Studio 
 > [シングル ページ Web アプリの作成](tutorials/spellcheck.md)
 
 - [Bing Spell Check API とは](overview.md)
-- [Bing Spell Check C# SDK リファレンス ガイド](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)
+- [Bing Spell Check C# SDK リファレンス ガイド](/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)

@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 97327517b40e715294393a97e8a26c078173e762
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8a662bf94e958d9e96a454ced9c44058b178a8c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510846"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366844"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>並列ドキュメントの文のペアリングとアライン
 
@@ -28,7 +28,7 @@ Custom Translator では、一度に 1 文ずつ、文の翻訳が学習され�
 
 並列ドキュメントがあることがわかっている場合は、事前にアラインされたテキスト ファイルを提供して、文のアラインを上書きすることができます。 両方のドキュメントのすべての文をテキスト ファイルに抽出し、1 行に 1 文を構成し、`.align` の拡張子でアップロードすることができます。 `.align` の拡張子で、文のアラインをスキップする必要があることを Custom Translator に指示します。
 
-最適な結果を得るために、ファイルの 1 行に 1 文ずつを含めます。 不適切なアライン結果になるため、文中には改行文字を入れないでください。
+最適な結果を得るために、ファイルの 1 行に 1 文ずつを含めます。  不適切なアライン結果になるため、文中には改行文字を入れないでください。
 
 ## <a name="suggested-minimum-number-of-sentences"></a>推奨される文の最小数
 
@@ -44,7 +44,7 @@ Custom Translator では、一度に 1 文ずつ、文の翻訳が学習され�
 > [!NOTE]
 > - トレーニングの 10,000 の文の最小数が満たされていない場合、トレーニングは開始されず、失敗します。 
 > - チューニングとテストは省略可能です。 これらを指定しないと、確認とテストに使用するためのトレーニングからの適切な比率がシステムで削除されます。 
-> - モデルは、辞書データのみを使用してトレーニングすることができます。 「[辞書とは](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/what-is-dictionary)」を参照してください。
+> - モデルは、辞書データのみを使用してトレーニングすることができます。 「[辞書とは](./what-is-dictionary.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

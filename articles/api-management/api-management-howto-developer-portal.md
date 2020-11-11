@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 30a6a73768db7b073258487435ddbe6c0daccf16
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 30487218fc95be75d22b5a9ea5a6dbc224ffd025
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317820"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074799"
 ---
 # <a name="overview-of-the-developer-portal"></a>開発者ポータルの概要
 
@@ -126,7 +126,7 @@ API Management サービスが内部 VNet にあり、インターネットか�
 
 CORS ポリシーの状態は、Azure portal の API Management サービスの **[ポータルの概要]** セクションで確認できます。 警告ボックスは、ポリシーが存在しないか、構成が正しくないことを示します。
 
-![API Management 開発者ポータル](media/api-management-howto-developer-portal/cors-azure-portal.png)
+![CORS ポリシーの状態を確認できる場所を示すスクリーンショット。](media/api-management-howto-developer-portal/cors-azure-portal.png)
 
 **[CORS を有効にする]** ボタンをクリックして、CORS ポリシーを自動的に適用します。
 

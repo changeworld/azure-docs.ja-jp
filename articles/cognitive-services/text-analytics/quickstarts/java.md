@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
 ms.custom: seo-java-july2019, seo-java-august2019, devx-track-java
-ms.openlocfilehash: 6c3c613f8733c8f786d121ab33b09afab244b09e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 26ddbf4cf97f5b9161be8b6b4ac3c31f801e82a3
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532275"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365161"
 ---
 # <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Java を使用して Azure Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>
 
-この記事では、 [Text Analytics API シリーズ](//go.microsoft.com/fwlink/?LinkID=759711) を Java で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされているエンティティの識別](#Entities)を行う方法について説明します。
+この記事では、[Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) を Java で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされたエンティティの識別](#Entities)を行う方法について説明します。
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
@@ -35,7 +35,7 @@ ms.locfileid: "90532275"
 
 ## <a name="detect-language"></a>言語を検出する
 
-言語検出 API では、 [言語検出メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)を使用してテキスト ドキュメントの言語を検出します。
+言語検出 API では、[言語検出メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)を使用してテキスト ドキュメントの言語を検出します。
 
 1. 任意の IDE で新しい Java プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 `DetectLanguage.java` という名前のクラスを作成します。
 1. そのクラスに次のコードを追加します。
@@ -553,7 +553,7 @@ public class GetKeyPhrases {
 
 ## <a name="identify-entities"></a>エンティティの識別
 
-Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 [Entities](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) は、テキストから "United States" などの単語を抽出して、その種類や Wikipedia リンクを返します。 "United States" の種類は `location` で、Wikipedia のリンクは `https://en.wikipedia.org/wiki/United_States` です。  次の例では、英語のドキュメントのエンティティを識別しています。
+Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 [Entities](../how-tos/text-analytics-how-to-entity-linking.md) は、テキストから "United States" などの単語を抽出して、その種類や Wikipedia リンクを返します。 "United States" の種類は `location` で、Wikipedia のリンクは `https://en.wikipedia.org/wiki/United_States` です。  次の例では、英語のドキュメントのエンティティを識別しています。
 
 1. 任意の IDE で新しい Java プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 そこに `GetEntities.java` という名前のクラスを作成します。
 1. そのクラスに次のコードを追加します。

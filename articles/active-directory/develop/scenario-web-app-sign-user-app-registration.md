@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b16ee98b44e52482423229a0940c8927a94d4c83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f4ad8db5b750a8e75a921a6d459a1a294a4bad0
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88118673"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910034"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>ユーザーをサインインさせる Web アプリ:アプリの登録
 
@@ -49,21 +49,21 @@ ms.locfileid: "88118673"
 
 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
    1. 自分のアプリケーションでサポートされているアカウントの種類を選択します。 (「[サポートされているアカウントの種類](./v2-supported-account-types.md)」を参照してください。)
-   1. **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します。 たとえば、「**AspNetCore-WebApp**」と入力します。
+   1. **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します。 たとえば、「 **AspNetCore-WebApp** 」と入力します。
    1. **[リダイレクト URI]** に、アプリケーションの種類と認証に成功した後に返されたトークンの応答を受け入れる URI の接続先を追加します。 たとえば、「 **https://localhost:44321** 」と入力します。 次に、 **[登録]** を選択します。
-   ![登録](media/scenario-webapp/scenario-webapp-app-registration-1.png)
+   ![スクリーンショットに、[登録] を選択できる [アプリケーションの登録] ページが示されています。](media/scenario-webapp/scenario-webapp-app-registration-1.png)
 1. **[認証]** メニューを選択し、次の情報を追加します。
    1. **[応答 URL]** で、種類が **Web** の **https://localhost:44321/signin-oidc** を追加します。
    1. **[詳細設定]** セクションの **[ログアウト URL]** を「 **https://localhost:44321/signout-oidc** 」に設定します
    1. **[暗黙的な許可]** の下の **[ID トークン]** を選択します。
    1. **[保存]** を選択します。
-  ![登録](media/scenario-webapp/scenario-webapp-app-registration-2.png)
+  ![スクリーンショットに認証オプションが表示されており、ここで説明された変更を加えられます。](media/scenario-webapp/scenario-webapp-app-registration-2.png)
  
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
    1. 自分のアプリケーションでサポートされているアカウントの種類を選択します。 (「[サポートされているアカウントの種類](./v2-supported-account-types.md)」を参照してください。)
-   1. **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します。 たとえば、「**MailApp-openidconnect-v2**」と入力します。
+   1. **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します。 たとえば、「 **MailApp-openidconnect-v2** 」と入力します。
    1. **[リダイレクト URI (省略可能)]** セクションで、コンボボックスの **[Web]** を選択し、次のリダイレクト URI **https://localhost:44326/** を入力します。
 1. **[登録]** を選択して、アプリケーションを作成します。
 1. **[認証]** メニューを選択します。
@@ -72,7 +72,7 @@ ms.locfileid: "88118673"
 
 # <a name="java"></a>[Java](#tab/java)
 
-1. **[アプリケーションの登録]** ページが表示されたら、アプリケーションの表示名を入力します。 たとえば、「**java-webapp**」と入力します。
+1. **[アプリケーションの登録]** ページが表示されたら、アプリケーションの表示名を入力します。 たとえば、「 **java-webapp** 」と入力します。
 1. **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)]** を選択し、 **[アプリケーションの種類]** に **[Web アプリ / API]** を選択します。
 1. **[登録]** を選択し、アプリケーションを登録します。
 1. 左側のメニューで、 **[認証]** を選択します。 **[リダイレクト URI]** で **[Web]** を選択します。
@@ -97,7 +97,7 @@ ms.locfileid: "88118673"
 # <a name="python"></a>[Python](#tab/python)
 
 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
-   1. **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します。 たとえば、「**python-webapp**」と入力します。
+   1. **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します。 たとえば、「 **python-webapp** 」と入力します。
    1. **[サポートされているアカウントの種類]** を **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)]** に変更します。
    1. **[リダイレクト URI (省略可能)]** セクションで、コンボボックスの **[Web]** を選択し、次のリダイレクト URI **http://localhost:5000/getAToken** を入力します。
 1. **[登録]** を選択して、アプリケーションを作成します。
@@ -119,7 +119,7 @@ ms.locfileid: "88118673"
 > - MyOrg (この組織のディレクトリ内のアカウントのみ)
 > - AnyOrg (任意の組織のディレクトリ内のアカウント)
 >
-> ユーザーが個人の Microsoft アカウント (Skype、Xbox、Outlook.com など) でサインインできるアプリケーションを作成できます。 まず、マルチテナント アプリケーションを作成します。 サポートされているアカウントの種類は、任意の組織のディレクトリ内のアカウントです。 次に、Azure portal から[アプリケーション マニフェスト](./reference-app-manifest.md)の [`accessTokenAcceptedVersion`](./reference-app-manifest.md#accesstokenacceptedversion-attribute) プロパティを **2** に、[`signInAudience`](./reference-app-manifest.md#signinaudience-attribute) プロパティを `AzureADandPersonalMicrosoftAccount` に変更します。 詳細については、ASP.NET Core チュートリアルの「[手順 1.3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant)」を参照してください。 この手順は一般化し、あらゆる言語の Web アプリに適用できます。
+> ユーザーが個人の Microsoft アカウント (Skype、Xbox、Outlook.com など) でサインインできるアプリケーションを作成できます。 まず、マルチテナント アプリケーションを作成します。 サポートされているアカウントの種類は、任意の組織のディレクトリ内のアカウントです。 次に、Azure portal から [アプリケーション マニフェスト](./reference-app-manifest.md)の [`accessTokenAcceptedVersion`](./reference-app-manifest.md#accesstokenacceptedversion-attribute) プロパティを **2** に、 [`signInAudience`](./reference-app-manifest.md#signinaudience-attribute) プロパティを `AzureADandPersonalMicrosoftAccount` に変更します。 詳細については、ASP.NET Core チュートリアルの「[手順 1.3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant)」を参照してください。 この手順は一般化し、あらゆる言語の Web アプリに適用できます。
 
 ## <a name="next-steps"></a>次のステップ
 

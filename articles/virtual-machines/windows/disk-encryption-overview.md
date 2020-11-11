@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4ffed14c1877f92b8f8989ea65500f441506fa34
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ea82724ec534aa896fa012332c10e28050caf825
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977291"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909388"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM 用の Azure Disk Encryption 
 
@@ -37,7 +37,7 @@ Windows VM は、[さまざまなサイズ](../sizes-general.md)で利用でき�
 
 Azure Disk Encryption は、Premium Storage を使用した VM でも利用できます。
 
-Azure Disk Encryption は、[Generation 2 VM](../generation-2.md#generation-1-vs-generation-2-capabilities) と [Lsv2 シリーズ VM](../lsv2-series.md) では使用できません。 例外の詳細については、「[Azure Disk Encryption:サポートされていないシナリオ](disk-encryption-windows.md#unsupported-scenarios)に関する記事を参照してください。
+Azure Disk Encryption は、[第 2 世代 VM](../generation-2.md#generation-1-vs-generation-2-capabilities) では使用できません。 例外の詳細については、「[Azure Disk Encryption:サポートされていないシナリオ](disk-encryption-windows.md#unsupported-scenarios)に関する記事を参照してください。
 
 ### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 

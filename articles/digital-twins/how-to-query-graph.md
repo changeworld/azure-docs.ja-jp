@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7bb38824f2071e2575877940795f9b90a2a384b4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 57b6bac49f0142b008a21accfffb614453cc6aec
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325777"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358152"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital Twins ツイン グラフに対してクエリを実行する
 
@@ -154,21 +154,19 @@ AND T.Temperature = 70
 **特定のプロパティが定義されているかどうか** に基づいて Twins を取得することもできます。 次は、 *Location* プロパティが定義されているツインを取得するクエリです。
 
 ```sql
-SELECT *
-FROM DIGITALTWINS WHERE IS_DEFINED(Location)
+SELECT * FROM DIGITALTWINS WHERE IS_DEFINED(Location)
 ```
 
 「 [デジタル ツインにタグを追加する](how-to-use-tags.md)」で説明されているように、" *タグ* " プロパティを使用してツインを取得する場合に役立ちます。 次は、 *red* のタグが付いているツインをすべて取得するクエリです。
 
 ```sql
-select * from digitaltwins where is_defined(tags.red)
+SELECT * FROM DIGITALTWINS WHERE IS_DEFINED(tags.red)
 ```
 
 **プロパティの型** に基づいてツインを取得することもできます。 次は、 *Temperature* プロパティが数字であるツインを取得するクエリです。
 
 ```sql
-SELECT * FROM DIGITALTWINS T
-WHERE IS_NUMBER(T.Temperature)
+SELECT * FROM DIGITALTWINS T WHERE IS_NUMBER(T.Temperature)
 ```
 
 ### <a name="query-by-model"></a>モデルでクエリを実行する

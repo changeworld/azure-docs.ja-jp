@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: f24c9c372ff91db5836a62ac2d08b569434ff253
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 4fbac2c2d77d838ac7fc4f3caaa73983633c3e03
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761581"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366055"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>クイック スタート: 翻訳のためのカスタム モデルを構築、デプロイ、および使用する
 
@@ -22,14 +22,14 @@ ms.locfileid: "91761581"
 
 ## <a name="prerequisites"></a>前提条件
 
-1. [Custom Translator](https://portal.customtranslator.azure.ai) ポータルを使用するには、サインインするための [Microsoft アカウント](https://signup.live.com)または [Azure AD アカウント](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure でホストされている組織アカウント) が必要になります。
+1. [Custom Translator](https://portal.customtranslator.azure.ai) ポータルを使用するには、サインインするための [Microsoft アカウント](https://signup.live.com)または [Azure AD アカウント](../../../active-directory/fundamentals/active-directory-whatis.md) (Azure でホストされている組織アカウント) が必要になります。
 
-2. Azure portal を通じた Translator Text API へのサブスクリプション。 Custom Translator 内のお客様のワークスペースに関連付ける Translator Text API サブスクリプション キーが必要です。 「[Translator Text API にサインアップする方法](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)」を参照してください。
+2. Azure portal を通じた Translator Text API へのサブスクリプション。 Custom Translator 内のお客様のワークスペースに関連付ける Translator Text API サブスクリプション キーが必要です。 「[Translator Text API にサインアップする方法](../translator-how-to-signup.md)」を参照してください。
 
 3. 上記の両方がある場合は、[カスタム翻訳ツール](https://portal.customtranslator.azure.ai) ポータルにサインインしてワークスペースとプロジェクトを作成し、ファイルをアップロードしてモデルを作成、デプロイします。
 
 >[!Note]
->[対応 VNET](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet) 内に作成された Translator Text API リソース用のワークスペースをカスタム翻訳ツールで作成することはできません。
+>[対応 VNET](../../../api-management/api-management-using-with-vnet.md) 内に作成された Translator Text API リソース用のワークスペースをカスタム翻訳ツールで作成することはできません。
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 
@@ -92,7 +92,7 @@ Custom Translator ポータルのランディング ページで、[新しいプ
 
 ## <a name="use-a-deployed-model"></a>デプロイしたモデルの使用
 
-デプロイしたモデルには、Microsoft Translator [Text API V3 を通じて CategoryID を指定することによって](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)アクセスすることができます。 Translator Text API の詳細については、[API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) Web ページを参照してください。
+デプロイしたモデルには、Microsoft Translator [Text API V3 を通じて CategoryID を指定することによって](../reference/v3-0-translate.md?tabs=curl)アクセスすることができます。 Translator Text API の詳細については、[API リファレンス](../reference/v3-0-reference.md) Web ページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: deaa52494fce387bde2b105de7d34e8a4f0c5c2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fda153d4c48ced17d1a9ba5f060b435b161542e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89612147"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127639"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>ポータルで Azure Stream Analytics ジョブをテストする
 
@@ -29,19 +29,19 @@ Azure Stream Analytics では、ストリーミング入力からイベントを
 
 3. [Stream Analytics ジョブ] ページの **ジョブ トポロジ** の見出しの部分から **クエリ** を選択し､クエリ エディター ウィンドウを開きます。 
 
-4. 受信イベントのサンプル一覧を表示するには、ファイルを含む入力アイコンを選択すると、サンプル イベントが**入力プレビュー**に自動的に表示されます。
+4. 受信イベントのサンプル一覧を表示するには、ファイルを含む入力アイコンを選択すると、サンプル イベントが **入力プレビュー** に自動的に表示されます。
 
    a. ご利用のデータに対するシリアル化の種類では、JSON と CSV のいずれであるかが自動的に検出されます。 ドロップダウン メニューのオプションを変更することで、これを JSON、CSV、AVRO に手動で変更することもできます。
     
-   b. セレクターを使用して、ご利用のデータを**表**または**未加工**の形式で表示します。
+   b. セレクターを使用して、ご利用のデータを **表** または **未加工** の形式で表示します。
     
    c. 表示されたデータが最新でない場合、 **[更新]** を選択して最新のイベントを表示します。
 
-   次の表は、**表形式**でのデータの例です。
+   次の表は、 **表形式** でのデータの例です。
 
    ![表形式の Azure Stream Analytics のサンプル入力](./media/stream-analytics-test-query/asa-sample-table.png)
 
-   次の表は、**未加工の形式**でのデータの例です。
+   次の表は、 **未加工の形式** でのデータの例です。
 
    ![未加工の形式の Azure Stream Analytics のサンプル入力](./media/stream-analytics-test-query/asa-sample-raw.png)
 
@@ -65,7 +65,7 @@ Azure Stream Analytics では、ストリーミング入力からイベントを
 
 10. クエリに変更を加える場合は、 **[クエリの保存]** を選択して新しいクエリ ロジックをテストします。 これにより、クエリを繰り返し変更して、もう一度テストし、出力がどのように変化するかを確認することができます。
 
-11. ブラウザに示された結果を確認したら、ジョブを**開始**できます。
+11. ブラウザに示された結果を確認したら、ジョブを **開始** できます。
 
 ## <a name="upload-sample-data-from-a-local-file"></a>ローカル ファイルからサンプル データをアップロードする
 
@@ -79,11 +79,11 @@ Azure Stream Analytics では、ストリーミング入力からイベントを
 
 4. ローカル ファイルでクエリをテストするには、 **[入力のプレビュー]** タブで **[Upload sample input]\(サンプル入力のアップロード\)** を選択します。 
 
-   ![Azure Stream Analytics のアップロードのサンプル ファイル](./media/stream-analytics-test-query/asa-upload-sample-file.png)
+   ![スクリーンショットに、[サンプル データのアップロード] 入力オプションが示されています。](./media/stream-analytics-test-query/asa-upload-sample-file.png)
 
 5. ローカル ファイルをアップロードしてクエリをテストします。 ファイルは JSON、CSV、または AVRO 形式でのみアップロードできます。 **[OK]** を選択します。
 
-   ![Azure Stream Analytics のアップロードのサンプル ファイル](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
+   ![スクリーンショットに、[サンプル データのアップロード] ダイアログ ボックスが示され、ここでファイルを選択できます。](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
 
 6. ファイルをアップロードするとすぐに、フォーム内のファイルの内容を表形式または未加工の形式で表示することもできます。 **[リセット]** を選択した場合、サンプル データは前のセクションで説明した受信した入力データに戻ります。 他のファイルをアップロードして、いつでもクエリをテストできます。
 
@@ -95,7 +95,7 @@ Azure Stream Analytics では、ストリーミング入力からイベントを
 
    ![Azure Stream Analytics で選択した出力](./media/stream-analytics-test-query/asa-sample-test-selected-output.png)
 
-10. ブラウザに示された結果を確認したら、ジョブを**開始**できます。
+10. ブラウザに示された結果を確認したら、ジョブを **開始** できます。
 
 ## <a name="limitations"></a>制限事項
 
@@ -113,9 +113,9 @@ Azure Stream Analytics では、ストリーミング入力からイベントを
 5.  機械学習はサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
-* [Stream Analytics を使って IoT ソリューションを構築する](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics): このチュートリアルでは、料金所での交通情報をシミュレートするデータ ジェネレーターを使用してエンドツーエンドのソリューションを構築する方法について説明します。
+* [Stream Analytics を使って IoT ソリューションを構築する](./stream-analytics-build-an-iot-solution-using-stream-analytics.md): このチュートリアルでは、料金所での交通情報をシミュレートするデータ ジェネレーターを使用してエンドツーエンドのソリューションを構築する方法について説明します。
 
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](/stream-analytics-query/stream-analytics-query-language-reference)
 
 * [一般的 Stream Analytics 使用状況パターンのクエリ例](stream-analytics-stream-analytics-query-patterns.md)
 

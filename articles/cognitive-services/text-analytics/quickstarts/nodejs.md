@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
 ms.custom: seo-javascript-september2019, devx-track-js
-ms.openlocfilehash: 00026066c90520f59700c7c5ddc33557099b3e8a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 912434f20d00d276bde23803f4560ebd528872d9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309015"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365127"
 ---
 # <a name="quickstart-use-nodejs-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Node.js を使用して Text Analytics Cognitive Service を呼び出す  
 <a name="HOLTop"></a>
 
-この記事では、 [Text Analytics API シリーズ](//go.microsoft.com/fwlink/?LinkID=759711) を Node.JS で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされているエンティティの識別](#Entities)を行う方法について説明します。
+この記事では、[Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) を Node.js で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされたエンティティの識別](#Entities)を行う方法について説明します。
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
@@ -366,7 +366,7 @@ get_key_phrases(documents);
 
 ## <a name="identify-linked-entities"></a>リンクされているエンティティを識別する
 
-Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 [Entities](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) は、テキストから "United States" などの単語を抽出して、その種類や Wikipedia リンクを返します。 "United States" の種類は `location` で、Wikipedia のリンクは `https://en.wikipedia.org/wiki/United_States` です。  次の例では、英語のドキュメントのエンティティを識別しています。
+Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 [Entities](../how-tos/text-analytics-how-to-entity-linking.md) は、テキストから "United States" などの単語を抽出して、その種類や Wikipedia リンクを返します。 "United States" の種類は `location` で、Wikipedia のリンクは `https://en.wikipedia.org/wiki/United_States` です。  次の例では、英語のドキュメントのエンティティを識別しています。
 
 1. 任意の IDE で新しい Node.JS プロジェクトを作成するか、デスクトップにフォルダーを作成します。
 1. 新しい `.js` ファイルに以下のコードを追加します。

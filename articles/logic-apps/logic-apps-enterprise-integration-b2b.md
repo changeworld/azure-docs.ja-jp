@@ -7,13 +7,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 02/10/2020
-ms.openlocfilehash: afae49cf6ee44b138a55f58f415fc761308b7894
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/02/2020
+ms.openlocfilehash: e16cc8934407a5c54c84fd045c99e28116e656c9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542378"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310437"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack を使用して B2B AS2 メッセージを受信して確認する
 
@@ -39,7 +39,7 @@ ms.locfileid: "91542378"
 
 * 統合アカウントで、パートナーの [AS2 契約および X12 契約](logic-apps-enterprise-integration-agreements.md)と共に既に定義されている 2 つ以上の[取引先](../logic-apps/logic-apps-enterprise-integration-partners.md)。
 
-## <a name="add-request-trigger"></a>要求トリガーの追加
+## <a name="add-the-request-trigger"></a>要求トリガーを追加する
 
 この例では、Azure portal のロジック アプリ デザイナーを使用しますが、Visual Studio のロジック アプリ デザイナーを使用して同様のステップに従うこともできます。
 
@@ -59,7 +59,7 @@ ms.locfileid: "91542378"
 
    ![呼び出しを受信するために要求トリガー用に生成された URL](./media/logic-apps-enterprise-integration-b2b/generated-url-request-trigger.png)
 
-## <a name="add-as2-decode-action"></a>AS2 デコード アクションの追加
+## <a name="add-the-as2-decode-action"></a>AS2 デコード アクションを追加する
 
 次に、使用する B2B アクションを追加します。 この例では、AS2 アクションと X12 アクションを使用します。
 
@@ -91,17 +91,25 @@ ms.locfileid: "91542378"
 
 1. **[メッセージ ヘッダー]** プロパティでは、AS2 アクションに必要なヘッダーを入力します。これは、HTTP 要求トリガーによって受信される `headers` のコンテンツによって記述されます。
 
-   トリガーの `headers` 出力を参照する式を入力するには、 **[メッセージ ヘッダー]** ボックス内をクリックします。 動的コンテンツ リストが表示されたら、 **[式]** を選択します。 式エディターに式を入力して、 **[OK]** を選択します。
+   1. トリガーの `headers` 出力を参照する式を入力するには、 **[Switch Message headers to text mode]\(メッセージ ヘッダーをテキスト モードに切り替える\)** を選択します。
 
-   `triggerOutputs()['Headers']`
+      ![[Switch Message headers to text mode]\(メッセージ ヘッダーをテキスト モードに切り替える\) が選択されているスクリーンショット。](./media/logic-apps-enterprise-integration-b2b/as2-decode-switch-text-mode.png)
 
-   この式をこのトークンとして解決するには、[デザイナー] と [コード ビュー] を切り替えます。次に例を示します。
+   1. **[メッセージ ヘッダー]** ボックス内をクリックします。 動的コンテンツ リストが表示されたら、 **[式]** を選択します。 式エディターに式を入力して、 **[OK]** を選択します。
 
-   ![トリガーからの解決済みのヘッダーの出力](./media/logic-apps-enterprise-integration-b2b/resolved-trigger-outputs-headers-expression.png)
+      `triggerOutputs()['Headers']`
+
+      AS2 デコード アクションでは、式はトークンとして表示されるようになりました。
+
+      ![[メッセージ ヘッダー] ボックス内の "@triggerOutputs()['Headers']" トークンを示すスクリーンショット。](./media/logic-apps-enterprise-integration-b2b/as2-decode-message-header-expression.png)
+
+   1. **Headers** トークンに解決される式トークンを取得するには、デザイナーとコード ビューを切り替えます。 この手順の後、AS2 デコード アクションは次の例のようになります。
+
+      ![トリガーからの解決済みのヘッダーの出力](./media/logic-apps-enterprise-integration-b2b/resolved-trigger-outputs-headers-expression.png)
 
 ## <a name="add-response-action-for-message-receipt-notification"></a>メッセージ受信通知の応答アクションを追加する
 
-メッセージを受信したことを取引先に通知するには、**応答** アクションを使用して、AS2 メッセージ処理通知 (MDN) を含む応答を返すことができます。 このアクションを **AS2 デコード** アクションの直後に追加すると、AS2 デコード アクションが失敗した場合、ロジック アプリは処理を続行しません。
+メッセージを受信したことを取引先に通知するには、 **応答** アクションを使用して、AS2 メッセージ処理通知 (MDN) を含む応答を返すことができます。 このアクションを **AS2 デコード** アクションの直後に追加すると、AS2 デコード アクションが失敗した場合、ロジック アプリは処理を続行しません。
 
 1. **[AS2 デコード]** アクションで、 **[新しいステップ]** を選択します。
 
@@ -121,7 +129,7 @@ ms.locfileid: "91542378"
 
    ![条件が追加された条件図形を示すスクリーンショット。](./media/logic-apps-enterprise-integration-b2b/expression-for-evaluating-condition.png)
 
-1. 次に、**AS2 デコード** アクションが成功したかどうかを返す応答を指定します。
+1. 次に、 **AS2 デコード** アクションが成功したかどうかを返す応答を指定します。
 
    1. **AS2 デコード** アクションが成功した場合については、 **[true の場合]** 図形で、 **[アクションの追加]** を選択します。 **[アクションを選択してください]** の下にある検索ボックスに、「`response`」と入力して、 **[応答]** を選択します。
 
@@ -141,13 +149,13 @@ ms.locfileid: "91542378"
 
       ![AS2 MDN にアクセスするための解決済みの式](./media/logic-apps-enterprise-integration-b2b/response-action-success-resolved-expression.png)
 
-   1. **AS2 デコード** アクションが失敗した場合については、 **[false の場合]** 図形で、 **[アクションの追加]** を選択します。 **[アクションを選択してください]** の下にある検索ボックスに、「`response`」と入力して、 **[応答]** を選択します。 必要な状態とエラーを返すように**応答** アクションを設定します。
+   1. **AS2 デコード** アクションが失敗した場合については、 **[false の場合]** 図形で、 **[アクションの追加]** を選択します。 **[アクションを選択してください]** の下にある検索ボックスに、「`response`」と入力して、 **[応答]** を選択します。 必要な状態とエラーを返すように **応答** アクションを設定します。
 
 1. ロジック アプリを保存します。
 
 ## <a name="add-decode-x12-message-action"></a>X12 メッセージのデコード アクションを追加する
 
-1. 次に、**X12 メッセージのデコード** アクションを追加します。 **[応答]** アクションで、 **[アクションの追加]** を選択します。
+1. 次に、 **X12 メッセージのデコード** アクションを追加します。 **[応答]** アクションで、 **[アクションの追加]** を選択します。
 
 1. **[アクションを選択してください]** の下にある検索ボックスに、「`x12 decode`」と入力して、 **[X12 メッセージのデコード]** を選択します。
 

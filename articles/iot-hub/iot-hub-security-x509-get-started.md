@@ -13,16 +13,16 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-csharp
-ms.openlocfilehash: 7c05d6f91f4c05405ba8148b0924a755122f99fe
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a3e328418a0f111cd0b985310ea6dc497999772d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144468"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909796"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT Hub での X.509 セキュリティの設定
 
-このチュートリアルでは、"*X.509 証明書認証*" を使用して Azure IoT Hub をセキュリティで保護するために必要な手順を示します。 わかりやすくするために、オープン ソース ツールの OpenSSL を使用して Windows マシン上でローカルに証明書を作成します。 このチュートリアルはテスト目的でのみ使用することをお勧めします。 運用環境では、"*ルート証明機関 (CA)* " から証明書を購入する必要があります。
+このチュートリアルでは、" *X.509 証明書認証* " を使用して Azure IoT Hub をセキュリティで保護するために必要な手順を示します。 わかりやすくするために、オープン ソース ツールの OpenSSL を使用して Windows マシン上でローカルに証明書を作成します。 このチュートリアルはテスト目的でのみ使用することをお勧めします。 運用環境では、" *ルート証明機関 (CA)* " から証明書を購入する必要があります。 また、実稼働環境では、デバイス証明書または CA 証明書の有効期限が切れたときに証明書のロールオーバーを処理するための戦略が用意されていることを確認します。
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
@@ -40,7 +40,7 @@ IoT Hub の X.509 証明書ベースのセキュリティでは、[X.509 証明�
 
 証明書を取得するために、次のいずれかの方法を選択できます。
 
-* "*ルート証明機関 (CA)* " から X.509 証明書を購入する。 この方法は運用環境に推奨されます。
+* " *ルート証明機関 (CA)* " から X.509 証明書を購入する。 この方法は運用環境に推奨されます。
 
 * [OpenSSL](https://www.openssl.org/) などのサードパーティ製ツールを使用して、独自の X.509 証明書を作成する。 この手法は、テストや開発の目的に適しています。 PowerShell または Bash を使用したテスト用 CA 証明書の生成については、「[Managing test CA certificates for samples and tutorials](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)」(サンプルおよびチュートリアルのためのテスト用 CA 証明書の管理) を参照してください。 このチュートリアルの残りの部分では、「[Managing test CA certificates for samples and tutorials](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)」(サンプルおよびチュートリアルのためのテスト用 CA 証明書の管理) の手順に従って生成したテスト用 CA 証明書を使用します。
 
@@ -51,7 +51,7 @@ IoT Hub の X.509 証明書ベースのセキュリティでは、[X.509 証明�
 
 ## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>IoT ハブに X.509 CA 証明書を登録する
 
-次の手順では、ポータルを使用して IoT ハブに新しい証明機関を追加する方法を示します。
+次の手順では、ポータルを使用して IoT ハブに新しい証明機関を追加する方法を示します。 X.509 証明書 CA 認証を使用する場合は、証明書のロールオーバー戦略の一環として、既存の証明書が期限切れになる前に、新しい証明書を登録してください。
 
 > [!NOTE]
 > IoT ハブに登録可能な X.509 CA 証明書の最大数は 25 です。 詳細については、「[IoT Hub のクォータと調整](iot-hub-devguide-quotas-throttling.md)」を参照してください。
@@ -72,7 +72,7 @@ IoT Hub の X.509 証明書ベースのセキュリティでは、[X.509 証明�
 
    ![証明書の確認](./media/iot-hub-security-x509-get-started/copy-verification-code.png)  
 
-1. **確認コード**をクリップボードにコピーします。 これは、証明書の所有権を確認するために使用します。
+1. **確認コード** をクリップボードにコピーします。 これは、証明書の所有権を確認するために使用します。
 
 1. 「[サンプルおよびチュートリアルのためのテスト用 CA 証明書の管理](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)」の手順 3. に従います。  この手順により、X.509 CA 証明書に関連付けられている秘密キーを使用して、確認コードが署名されます。これで、署名が生成されます。 この署名プロセスを実行するには、OpenSSL などのツールを使用できます。 このプロセスは、[所有証明](https://tools.ietf.org/html/rfc5280#section-3.1)として知られています。
 
@@ -104,7 +104,7 @@ X.509 デバイスを認証するには、最初に CA 証明書を使用して�
 
 1. ソリューション エクスプローラーで **SimulateX509Device** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
 
-1. **[NuGet パッケージ マネージャー]** で **[参照]** を選択し、**Microsoft.Azure.Devices.Client** を検索して選択します。 **[インストール]** を選択します。
+1. **[NuGet パッケージ マネージャー]** で **[参照]** を選択し、 **Microsoft.Azure.Devices.Client** を検索して選択します。 **[インストール]** を選択します。
 
    ![Visual Studio でデバイス SDK NuGet パッケージを追加する](./media/iot-hub-security-x509-get-started/device-sdk-nuget.png)
 
@@ -153,7 +153,7 @@ X.509 デバイスを認証するには、最初に CA 証明書を使用して�
     }
     ```
 
-1. 最後に、**Main** 関数に次のコード行を追加します。このとき、_device-id_、_your-iot-hub-name_、_absolute-path-to-your-device-pfx-file_ の各プレースホルダーを、設定に必要な値に置き換えます。
+1. 最後に、 **Main** 関数に次のコード行を追加します。このとき、 _device-id_ 、 _your-iot-hub-name_ 、 _absolute-path-to-your-device-pfx-file_ の各プレースホルダーを、設定に必要な値に置き換えます。
 
     ```csharp
     try

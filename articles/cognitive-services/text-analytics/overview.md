@@ -12,18 +12,18 @@ ms.date: 11/02/2020
 ms.author: aahi
 keywords: テキスト マイニング、感情分析、テキスト分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d58c501af3d90fec1eea43d13fa2383c8e847f18
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 6d10161609abda321ed1be9dfda0acabf2030c9e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289701"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365297"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Text Analytics API とは
 
 Text Analytics API は、テキスト マイニングとテキスト分析のための自然言語処理 (NLP) 機能を提供するクラウドベースのサービスであり、感情分析、オピニオン マイニング、キー フレーズ抽出、言語検出、名前付きエンティティの認識などを備えています。
 
-この API は、機械学習と AI のアルゴリズムを開発プロジェクトで利用できるようクラウドに集めた [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/) に含まれます。 これらの機能は [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) または[クライアント ライブラリ](quickstarts/text-analytics-sdk.md)で使用できます。
+この API は、機械学習と AI のアルゴリズムを開発プロジェクトで利用できるようクラウドに集めた [Azure Cognitive Services](../index.yml) に含まれます。 これらの機能は [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) または[クライアント ライブラリ](quickstarts/text-analytics-sdk.md)で使用できます。
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
@@ -73,18 +73,18 @@ ID をベースに出力は 1 つの JSON ドキュメントとして返され�
 
 * 最小限のプログラミングが必要:
     * [Text Analytics と Power Automate を使用して Excel 内の情報を抽出する](tutorials/extract-excel-information.md)
-    * [Text Analytics API と MS Flow を使用して、Yammer グループ内のコメントのセンチメントを特定する](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [Text Analytics API と MS Flow を使用して、Yammer グループ内のコメントのセンチメントを特定する](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
     * [Power BI と Text Analytics API を統合して顧客からのフィードバックを分析する](tutorials/tutorial-power-bi-key-phrases.md)
 * プログラミング エクスペリエンスが推奨される:
-    * [Azure Databricks を使用した、ストリーミング データに対する感情分析](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
-    * [テキストの翻訳、センチメントの分析、音声の合成を行う Flask アプリを作成する](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [Azure Databricks を使用した、ストリーミング データに対する感情分析](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
+    * [テキストの翻訳、センチメントの分析、音声の合成を行う Flask アプリを作成する](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
 
 
 <a name="supported-languages"></a>
 
 ## <a name="supported-languages"></a>サポートされている言語
 
-このセクションは見つけやすいように別の記事に移されました。 このコンテンツについては、[Text Analytics API でサポートされている言語](text-analytics-supported-languages.md)に関するページを参照してください。
+このセクションは見つけやすいように別の記事に移されました。 このコンテンツについては、[Text Analytics API でサポートされている言語](./language-support.md)に関するページを参照してください。
 
 <a name="data-limits"></a>
 
@@ -94,7 +94,7 @@ Text Analytics API のエンドポイントはすべて、未加工のテキス�
 
 ## <a name="unicode-encoding"></a>Unicode エンコーディング
 
-Text Analytics API では、テキストの表現と文字数の計算に Unicode エンコーディングが使用されます。 要求は UTF-8 と UTF-16 の両方で提出できます。文字数に測定可能な違いはありません。 Unicode コードポイントは文字の長さのヒューリスティックとして使用され、テキスト分析データを制限するという目的では同等と見なされます。 [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) を利用して文字数を取得する場合、データ サイズの測定に使用しているものと同じ方法を使用することになります。
+Text Analytics API では、テキストの表現と文字数の計算に Unicode エンコーディングが使用されます。 要求は UTF-8 と UTF-16 の両方で提出できます。文字数に測定可能な違いはありません。 Unicode コードポイントは文字の長さのヒューリスティックとして使用され、テキスト分析データを制限するという目的では同等と見なされます。 [`StringInfo.LengthInTextElements`](/dotnet/api/system.globalization.stringinfo.lengthintextelements) を利用して文字数を取得する場合、データ サイズの測定に使用しているものと同じ方法を使用することになります。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -104,6 +104,6 @@ Text Analytics API では、テキストの表現と文字数の計算に Unicod
 
 + 新しいリリースおよび機能については、[Text Analytics API の新機能](whats-new.md)に関するページを参照してください。
 
-+ Azure Databricks を使用するこちらの[感情分析のチュートリアル](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services)では、少し詳しく説明されています。
++ Azure Databricks を使用するこちらの[感情分析のチュートリアル](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services)では、少し詳しく説明されています。
 
 + [外部およびコミュニティ コンテンツに関するページ](text-analytics-resource-external-community.md)には、他のツールやテクノロジと共に Text Analytics API を使用する方法に関するブログ投稿や他の動画の一覧が掲載されています。

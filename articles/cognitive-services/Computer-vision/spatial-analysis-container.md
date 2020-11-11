@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: d84867dbe51b9c6689ecdac2bc80585a88da66b4
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 6ebc1831b990b540bcb9a3856c380c28142af536
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496124"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357115"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>空間分析コンテナー (プレビュー) をインストールして実行する
 
@@ -289,7 +289,7 @@ sudo apt-get update
 1\.0.9 リリースをインストールします。
 
 ```bash
-sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.8*
+sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
 次に、[接続文字列](https://docs.microsoft.com/azure/iot-edge/how-to-register-device#register-in-the-azure-portal)を使用して、ホスト コンピューターを IoT Edge デバイスとして IoT Hub インスタンスに登録します。

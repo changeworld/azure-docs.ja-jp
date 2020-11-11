@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/10/2020
-ms.openlocfilehash: 4b91a9a73035b3add309e72ce544375520cf279e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d28138b251cf159b7cbc5cc6942bb287e57a95d7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278619"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088099"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>Azure Monitor for Key Vault によるキー コンテナー サービスの監視
 Azure Monitor for Key Vault では、Key Vault の要求、パフォーマンス、エラー、および待ち時間の統合ビューが用意され、キー コンテナーを包括的に監視できます。
@@ -20,9 +20,9 @@ Azure Monitor for Key Vault では、Key Vault の要求、パフォーマンス
 ## <a name="introduction-to-azure-monitor-for-key-vault"></a>Azure Monitor for Key Vault の概要
 
 エクスペリエンスについて見ていく前に、情報が提供および視覚化される方法を理解する必要があります。
--    **大規模な分析観点**: 要求、エラーの内訳、および操作と待機時間の概要に基づいて、パフォーマンスのスナップショット ビューを表示します。
--   **ドリルダウン分析**: 特定のキー コンテナーの詳細な分析を実行します。
--    **カスタマイズ可能**: 表示するメトリックの変更したり、制限に合わせたしきい値の変更または設定、独自のブックとして保存することができます。 ブック内のグラフは、Azure ダッシュボードにピン留めできます。
+-    **大規模な分析観点** : 要求、エラーの内訳、および操作と待機時間の概要に基づいて、パフォーマンスのスナップショット ビューを表示します。
+-   **ドリルダウン分析** : 特定のキー コンテナーの詳細な分析を実行します。
+-    **カスタマイズ可能** : 表示するメトリックの変更したり、制限に合わせたしきい値の変更または設定、独自のブックとして保存することができます。 ブック内のグラフは、Azure ダッシュボードにピン留めできます。
 
 Azure Monitor for Key Vault では、ログとメトリックの組み合わせによる、グローバルな監視ソリューションが用意されています。 すべてのユーザーがメトリックベースの監視データにアクセスできますが、ログベースの視覚化を含めた場合、ユーザーは [Azure Key Vault のログ記録を有効](../../key-vault/general/logging.md)にする必要があります。
 
@@ -90,7 +90,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のキ
 
 [操作] ブックでは、ユーザーは、すべてのトランザクションの詳細を詳しく調べることができ、最上位レベルのタイルを使用して結果の状態でフィルター処理できます。
 
-![[操作] ビューのスクリーンショット](./media/key-vaults-insights-overview/info.png)
+![すべてのトランザクションの完全な詳細を含む操作ブックを示すスクリーンショット。](./media/key-vaults-insights-overview/info.png)
 
 ユーザーはまた、上部のテーブルで特定のトランザクションの種類に基づいてビューを詳しく調べることもできます。この上部のテーブルに従って下部のテーブルは動的に更新され、ユーザーはこのテーブルのポップアップ コンテキスト ウィンドウで操作の完全な詳細を確認できます。
 

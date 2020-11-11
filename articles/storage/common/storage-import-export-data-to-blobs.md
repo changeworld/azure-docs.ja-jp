@@ -5,19 +5,20 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/20/2020
+ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: c3be13dade9cae45994b5f7a9d6f7479e2de6256
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 32187b7aedd43a57ffe77c2f8524c54049ba10ae
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460735"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234122"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage にデータをインポートする
 
-この記事では、Azure Import/Export サービスを使用して大量のデータを Azure Blob Storage に安全にインポートする手順について説明します。 Azure BLOB にデータをインポートするには、データが保存されている暗号化されたディスク ドライブを Azure データセンターに送付する必要があります。  
+この記事では、Azure Import/Export サービスを使用して大量のデータを Azure Blob Storage に安全にインポートする手順について説明します。 Azure BLOB にデータをインポートするには、データが保存されている暗号化されたディスク ドライブを Azure データセンターに送付する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,7 +35,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
 * Windows システムに[最新の WAImportExport バージョン 1 をダウンロード](https://www.microsoft.com/download/details.aspx?id=42659)します。 最新バージョンのツールには、BitLocker キーの外部プロテクター、および更新されたロック解除モード機能を許可する、セキュリティ更新プログラムがあります。
 
   * 既定のフォルダー `waimportexportv1` に解凍します。 たとえば、「 `C:\WaImportExportV1` 」のように入力します。
-* FedEx または DHL のアカウントを用意します。 FedEx または DHL 以外の運送業者を使用する場合、`adbops@microsoft.com` から Azure Data Box Operations チームまでお問い合わせください。  
+* FedEx または DHL のアカウントを用意します。 FedEx または DHL 以外の運送業者を使用する場合、`adbops@microsoft.com` から Azure Data Box Operations チームまでお問い合わせください。
   * アカウントは、有効で、残高があり、差出人住所の機能を持っている必要があります。
   * エクスポート ジョブの追跡番号を生成します。
   * すべてのジョブに個別の追跡番号が必要です。 同じ追跡番号を持つ複数のジョブはサポートされていません。
@@ -115,7 +116,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
        * 名前には小文字、数字、ハイフンのみを含めることができます。
        * 名前はアルファベットから始める必要があります。スペースを含めることはできません。
    * サブスクリプションを選択します。
-   * リソース グループを入力または選択します。  
+   * リソース グループを入力または選択します。
 
      ![インポート ジョブを作成する - 手順 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
@@ -221,6 +222,102 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
     ```azurecli
     az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true
     ```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+以下の手順を使用して、Azure PowerShell でインポート ジョブを作成します。
+
+[!INCLUDE [azure-powershell-requirements-h3.md](../../../includes/azure-powershell-requirements-h3.md)]
+
+> [!IMPORTANT]
+> **Az.ImportExport** PowerShell モジュールがプレビュー段階にある間は、`Install-Module` コマンドレットを使用して、これを別途インストールする必要があります。 この PowerShell モジュールは、一般提供されると、将来の Az PowerShell モジュール リリースに含まれ、既定で Azure Cloud Shell 内から使用できるようになります。
+
+```azurepowershell-interactive
+Install-Module -Name Az.ImportExport
+```
+
+### <a name="create-a-job"></a>ジョブの作成
+
+1. 既存のリソース グループを使用することも、リソース グループを作成することもできます。 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを実行して、リソース グループを作成します。
+
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name myierg -Location westus
+   ```
+
+1. 既存のストレージ アカウントを使用することも、ストレージ アカウントを作成することもできます。 ストレージ アカウントを作成するには、[New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) コマンドレットを実行します。
+
+   ```azurepowershell-interactive
+   New-AzStorageAccount -ResourceGroupName myierg -AccountName myssdocsstorage -SkuName Standard_RAGRS -Location westus -EnableHttpsTrafficOnly $true
+   ```
+
+1. ディスクを出荷できる場所の一覧を取得するには、[Get-AzImportExportLocation](/powershell/module/az.importexport/get-azimportexportlocation) コマンドレットを使用します。
+
+   ```azurepowershell-interactive
+   Get-AzImportExportLocation
+   ```
+
+1. `Get-AzImportExportLocation` コマンドレットを `Name` パラメーターと使用して、リージョンの場所を取得します。
+
+   ```azurepowershell-interactive
+   Get-AzImportExportLocation -Name westus
+   ```
+
+1. 次の [New-AzImportExport](/powershell/module/az.importexport/new-azimportexport) の例を実行して、インポート ジョブを作成します。
+
+   ```azurepowershell-interactive
+   $driveList = @(@{
+     DriveId = '9CA995BA'
+     BitLockerKey = '439675-460165-128202-905124-487224-524332-851649-442187'
+     ManifestFile = '\\DriveManifest.xml'
+     ManifestHash = '69512026C1E8D4401816A2E5B8D7420D'
+     DriveHeaderHash = 'AZ31BGB1'
+   })
+
+   $Params = @{
+      ResourceGroupName = 'myierg'
+      Name = 'MyIEjob1'
+      Location = 'westus'
+      BackupDriveManifest = $true
+      DiagnosticsPath = 'waimportexport'
+      DriveList = $driveList
+      JobType = 'Import'
+      LogLevel = 'Verbose'
+      ShippingInformationRecipientName = 'Microsoft Azure Import/Export Service'
+      ShippingInformationStreetAddress1 = '3020 Coronado'
+      ShippingInformationCity = 'Santa Clara'
+      ShippingInformationStateOrProvince = 'CA'
+      ShippingInformationPostalCode = '98054'
+      ShippingInformationCountryOrRegion = 'USA'
+      ShippingInformationPhone = '4083527600'
+      ReturnAddressRecipientName = 'Gus Poland'
+      ReturnAddressStreetAddress1 = '1020 Enterprise way'
+      ReturnAddressCity = 'Sunnyvale'
+      ReturnAddressStateOrProvince = 'CA'
+      ReturnAddressPostalCode = '94089'
+      ReturnAddressCountryOrRegion = 'USA'
+      ReturnAddressPhone = '4085555555'
+      ReturnAddressEmail = 'gus@contoso.com'
+      ReturnShippingCarrierName = 'FedEx'
+      ReturnShippingCarrierAccountNumber = '123456789'
+      StorageAccountId = '/subscriptions/<SubscriptionId>/resourceGroups/myierg/providers/Microsoft.Storage/storageAccounts/myssdocsstorage'
+   }
+   New-AzImportExport @Params
+   ```
+
+   > [!TIP]
+   > 1 人のユーザーの電子メール アドレスを指定する代わりに、グループ メール アドレスを提供します。 これにより、管理者が離れる場合でも、通知を受信します。
+
+1. [Get-AzImportExport](/powershell/module/az.importexport/get-azimportexport) コマンドレットを使用して、myierg リソース グループのすべてのジョブを表示します。
+
+   ```azurepowershell-interactive
+   Get-AzImportExport -ResourceGroupName myierg
+   ```
+
+1. ジョブを更新するかジョブをキャンセルするには、[Update-AzImportExport](/powershell/module/az.importexport/update-azimportexport) コマンドレットを実行します。
+
+   ```azurepowershell-interactive
+   Update-AzImportExport -Name MyIEjob1 -ResourceGroupName myierg -CancelRequested
+   ```
 
 ---
 

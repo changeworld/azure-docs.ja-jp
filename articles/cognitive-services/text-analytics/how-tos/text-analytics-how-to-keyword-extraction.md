@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: e4a652b146286965c68154bd362525861158ecb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44e81286ffa5930b802df3b3bfe657091175f391
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704380"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363635"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>例:Text Analytics を使用してキー フレーズを抽出する方法
 
@@ -23,7 +23,7 @@ ms.locfileid: "91704380"
 
 この機能は、ドキュメントのコレクション内の要点をすばやく特定する必要がある場合に便利です。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、このサービスは話題の中心として "食べ物" と "すばらしいスタッフ" を返します。
 
-詳細については、[サポートされている言語](../text-analytics-supported-languages.md)に関するページを参照してください。
+詳細については、[サポートされている言語](../language-support.md)に関するページを参照してください。
 
 > [!TIP]
 > Text Analytics にはキー フレーズ抽出用の Linux ベースの Docker コンテナー イメージも用意されているため、データの近くに [Text Analytics コンテナーをインストールして実行](text-analytics-how-to-install-containers.md)することができます。
@@ -83,7 +83,7 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 + 要求本文で、この分析のために準備した JSON ドキュメントのコレクションを提供します。
 
 > [!Tip]
-> [Postman](text-analytics-how-to-call-api.md) を使用するか、[ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases)に記載されている **API テスト コンソール**を開き、要求を構造化して POST でサービスに投稿します。
+> [Postman](text-analytics-how-to-call-api.md) を使用するか、 [ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases)に記載されている **API テスト コンソール** を開き、要求を構造化して POST でサービスに投稿します。
 
 ## <a name="step-2-post-the-request"></a>手順 2:要求を投稿する
 

@@ -5,17 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/22/2020
-ms.openlocfilehash: 6d0a29d8ef8123eafd6a1616a24003c1e36e6e59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/30/2020
+ms.openlocfilehash: 1b4959cbf082a589c90034f48d597907c9b7e6cc
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905925"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128931"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>インポートとエクスポートを使用した MySQL データベースの移行
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 この記事では、MySQL Workbench を使用して、Azure Database for MySQL サーバーにデータをインポートおよびエクスポートする 2 つの一般的な方法について説明します。
+
+データベースを Azure Database for MySQL に移行する方法の詳細と使用例については、『[データベース移行ガイド](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide)』も参照してください。 このガイドでは、Azure への MySQL 移行の計画と実行を成功させるためのガイダンスが提供されています。
 
 ## <a name="before-you-begin"></a>開始する前に
 このハウツー ガイドの手順を実行するには、以下が必要です。
@@ -31,7 +33,7 @@ MySQL Workbench、Toad、または Navicat を使用して Azure Database for My
 
 接続情報を MySQL Workbench に追加します。
 
-:::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="Azure Portal で接続情報を見つける":::
+:::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="MySQL Workbench の接続文字列":::
 
 ## <a name="determine-when-to-use-import-and-export-techniques"></a>インポート/エクスポート手法を使用する状況の判断
 
@@ -45,7 +47,7 @@ MySQL Workbench、Toad、または Navicat を使用して Azure Database for My
 - MySQL データベース以外の外部データ ソースからデータを移行する場合は、フラット ファイルを作成し、[mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html) を使用してそれらのファイルをインポートします。
 
 > [!Important]
-> 単一サーバーとフレキシブル サーバーのどちらも、**InnoDB ストレージ エンジン**のみをサポートしています。 Azure Database for MySQL にデータを読み込むときは、データベースのすべてのテーブルで InnoDB ストレージ エンジンが使用されていることを確認します。
+> 単一サーバーとフレキシブル サーバーのどちらも、 **InnoDB ストレージ エンジン** のみをサポートしています。 Azure Database for MySQL にデータを読み込むときは、データベースのすべてのテーブルで InnoDB ストレージ エンジンが使用されていることを確認します。
 > ソース データベースで別のストレージ エンジンが使用されている場合は、データベースを移行する前に InnoDB エンジンに変換してください。 たとえば、MyISAM エンジンを使用する WordPress または Web アプリがある場合は、まず、データを InnoDB テーブルに移行してテーブルを変換します。 テーブルを作成するときに、`ENGINE=INNODB` 句を使用してエンジンを設定し、移行前にデータを互換性のあるテーブルに転送します。
 
    ```sql
@@ -68,7 +70,7 @@ MySQL Workbench では、2 とおりの方法でデータをインポートお�
 > - MySQL フレキシブル サーバーの場合は、"ユーザー名" だけを使用できます。'username@servername' を使用して接続すると、接続は失敗します。
 
 ### <a name="table-data-export-and-import-wizards-from-the-object-browsers-context-menu"></a>オブジェクト ブラウザーのコンテキスト メニューを使用したテーブル データのエクスポート/インポート ウィザード
-:::image type="content" source="./media/concepts-migrate-import-export/p1.png" alt-text="Azure Portal で接続情報を見つける":::
+:::image type="content" source="./media/concepts-migrate-import-export/p1.png" alt-text="オブジェクト ブラウザーのコンテキスト メニューの MySQL Workbench ウィザード":::
 
 テーブル データのウィザードでは、CSV ファイルと JSON ファイルを使用してインポート/エクスポート操作をサポートします。 区切り記号、列の選択、エンコードの選択など、複数の構成オプションがあります。 各ウィザードは、ローカルの MySQL サーバーまたはリモート接続された MySQL サーバーに対して実行できます。 インポート アクションには、テーブル、列、型マッピングが含まれます。
 
@@ -78,23 +80,23 @@ MySQL Workbench では、2 とおりの方法でデータをインポートお�
 次の例では、テーブルを CSV ファイルにエクスポートします。
 1. エクスポートするデータベースのテーブルを右クリックします。
 2. **[Table Data Export Wizard (テーブル データのエクスポート ウィザード)]** を選択します。 エクスポートする列、行のオフセット (該当する場合)、数 (該当する場合) を選択します。
-3. **[エクスポートするデータの選択]** ページで、**[次へ]** をクリックします。 ファイル パスとファイルの種類 (CSV または JSON) を選択します。 また、行区切り記号、文字列を囲む方法、フィールド区切り記号も選択します。
-4. **[Select output file location]\(出力ファイルの場所の選択\)** ページで、**[次へ]** をクリックします。
-5. **[データのエクスポート]** ページで、**[次へ]** をクリックします。
+3. **[エクスポートするデータの選択]** ページで、 **[次へ]** をクリックします。 ファイル パスとファイルの種類 (CSV または JSON) を選択します。 また、行区切り記号、文字列を囲む方法、フィールド区切り記号も選択します。
+4. **[Select output file location]\(出力ファイルの場所の選択\)** ページで、 **[次へ]** をクリックします。
+5. **[データのエクスポート]** ページで、 **[次へ]** をクリックします。
 
 #### <a name="table-data-import-wizard"></a>テーブル データのインポート ウィザード
 次の例では、CSV ファイルからテーブルをインポートします。
 1. インポートするデータベースのテーブルを右クリックします。
-2. インポートする CSV ファイルを参照して選択し、**[次へ]** をクリックします。
-3. インポート先テーブル (新規または既存) を選択し、**[Truncate table before import]\(インポート前にテーブルを切り詰め処理を行う\)** チェック ボックスをオンまたはオフにします。 **[次へ]** をクリックします。
-4. エンコードとインポートする列を選択し、**[次へ]** をクリックします。
-5. **[データのインポート]** ページで、**[次へ]** をクリックします。 データが適宜インポートされます。
+2. インポートする CSV ファイルを参照して選択し、 **[次へ]** をクリックします。
+3. インポート先テーブル (新規または既存) を選択し、 **[Truncate table before import]\(インポート前にテーブルを切り詰め処理を行う\)** チェック ボックスをオンまたはオフにします。 **[次へ]** をクリックします。
+4. エンコードとインポートする列を選択し、 **[次へ]** をクリックします。
+5. **[データのインポート]** ページで、 **[次へ]** をクリックします。 データが適宜インポートされます。
 
 ### <a name="sql-data-export-and-import-wizards-from-the-navigator-pane"></a>ナビゲーター ウィンドウの SQL データのエクスポート/インポート ウィザード
-ウィザードを使用して、MySQL Workbench または mysqldump コマンドで生成された SQL をエクスポートまたはインポートできます。 これらのウィザードには、**ナビゲーター** ウィンドウからアクセスするか、メイン メニューの **[サーバー]** を選択してアクセスします。 次に、**[データのエクスポート]** または **[データのインポート]** を選択します。
+ウィザードを使用して、MySQL Workbench または mysqldump コマンドで生成された SQL をエクスポートまたはインポートできます。 これらのウィザードには、 **ナビゲーター** ウィンドウからアクセスするか、メイン メニューの **[サーバー]** を選択してアクセスします。 次に、 **[データのエクスポート]** または **[データのインポート]** を選択します。
 
 #### <a name="data-export"></a>データのエクスポート
-:::image type="content" source="./media/concepts-migrate-import-export/p2.png" alt-text="Azure Portal で接続情報を見つける":::
+:::image type="content" source="./media/concepts-migrate-import-export/p2.png" alt-text="ナビゲーター ウィンドウを使用した MySQL Workbench データのエクスポート":::
 
 **[データのエクスポート]** タブを使用して、MySQL データをエクスポートできます。
 1. エクスポートする各スキーマを選択し、必要に応じて各スキーマから特定のスキーマ オブジェクト/テーブルを選択して、エクスポートを生成します。 構成オプションには、プロジェクト フォルダーまたは自己完結型 SQL ファイルへのエクスポート、格納されているルーチンとイベントのダンプ、テーブル データのスキップなどがあります。
@@ -102,17 +104,17 @@ MySQL Workbench では、2 とおりの方法でデータをインポートお�
    また、 **[Export a Result Set]\(結果セットのエクスポート\)** を使用して、SQL エディターの特定の結果セットを、CSV、JSON、HTML、XML などの別の形式にエクスポートすることもできます。
 3. エクスポートするデータベース オブジェクトを選択し、関連するオプションを構成します。
 4. **[更新]** をクリックして、現在のオブジェクトを読み込みます。
-5. 必要に応じて、**[詳細オプション]** タブを開き、エクスポート操作を調整します。 たとえば、テーブル ロックの追加、insert ステートメントではなく replace ステートメントの使用、バッククォート文字を含む識別子の引用などを行います。
+5. 必要に応じて、 **[詳細オプション]** タブを開き、エクスポート操作を調整します。 たとえば、テーブル ロックの追加、insert ステートメントではなく replace ステートメントの使用、バッククォート文字を含む識別子の引用などを行います。
 6. **[エクスポートの開始]** をクリックして、エクスポート処理を開始します。
 
 
 #### <a name="data-import"></a>データのインポート
-:::image type="content" source="./media/concepts-migrate-import-export/p3.png" alt-text="Azure Portal で接続情報を見つける":::
+:::image type="content" source="./media/concepts-migrate-import-export/p3.png" alt-text="管理ナビゲーターを使用した MySQL Workbench のデータ インポート":::
 
 **[データのインポート]** タブを使用して、データ エクスポート操作または mysqldump コマンドによってエクスポートされたデータをインポートまたは復元できます。
-1. プロジェクト フォルダーまたは自己完結型 SQL ファイルを選択するか、インポート先スキーマを選択するか、**[新規]** を選択して新しいスキーマを定義します。
+1. プロジェクト フォルダーまたは自己完結型 SQL ファイルを選択するか、インポート先スキーマを選択するか、 **[新規]** を選択して新しいスキーマを定義します。
 2. **[インポートの開始]** をクリックしてインポート処理を開始します。
 
 ## <a name="next-steps"></a>次の手順
 - 別の移行方法として、[Azure Database for MySQL でのダンプと復元を使用した MySQL データベースの移行](concepts-migrate-dump-restore.md)に関する記事を読みます。
-- Azure Database for MySQL へのデータベースの移行については、「[データベース移行ガイド](https://aka.ms/datamigration)」をご覧ください。
+- Azure Database for MySQL へのデータベースの移行については、「[データベース移行ガイド](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide)」をご覧ください。

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: f7dbb79e2d9009b00b21d4c12663d8e6c855a4c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be43d04672dcefe368eb4052b4d1a929e25327ab
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88243753"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366861"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-container-instances"></a>Text Analytics コンテナーを Azure Container Instances にデプロイする
 
@@ -50,7 +50,7 @@ Cognitive Services の [Text Analytics][install-and-run-containers] コンテナ
 ## <a name="next-steps"></a>次のステップ 
 
 * さらに [Cognitive Services コンテナー](../../cognitive-services-container-support.md)を使用する
-* [Text Analytics 接続済みサービス](../vs-text-connected-service.md)を使用する
+* [Text Analytics 接続済みサービス](../index.yml)を使用する
 
 [install-and-run-containers]: ./text-analytics-how-to-install-containers.md
 [container-instances]: https://docs.microsoft.com/azure/container-instances

@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 5e2f5e067f0a1d5c13179b3d6175b3aebf6a43fd
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 71a7041ec02da9a85de411f1113814311c21cd4f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548444"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128881"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Azure IoT Hub の監視
 
@@ -23,7 +23,9 @@ Azure portal の各 IoT ハブの **[概要]** ページには、使用されて
 
 :::image type="content" source="media/monitor-iot-hub/overview-portal.png" alt-text="IoT ハブの [概要] ページの既定のメトリック グラフ。":::
 
-この情報は役立ちますが、1 つの IoT ハブについて利用可能な監視データはごくわずかです。 いくつかの監視データは自動的に収集され、IoT ハブを作成するとすぐに分析に使用できるようになります。 一定の構成によって追加の種類のデータ収集を有効にすることができます。
+メッセージ数の値は 1 分遅れることがあり、IoT Hub サービス インフラストラクチャに関連する理由により、値が更新時に値の上限と下限の間でバウンスする場合があることに注意する必要があります。 この数は、最後の 1 分間に増加した値についてのみ正しくありません。
+
+概要ウィンドウに表示される情報は便利ですが、IoT Hub に使用できる監視データは、ごくわずかな量しか示しません。 いくつかの監視データは自動的に収集され、IoT ハブを作成するとすぐに分析に使用できるようになります。 一定の構成によって追加の種類のデータ収集を有効にすることができます。
 
 ## <a name="what-is-azure-monitor"></a>Azure Monitor とは
 
@@ -54,11 +56,14 @@ Azure IoT Hub によって作成されるメトリックとログの詳細につ
 
 リソース ログは、診断設定を作成して 1 つ以上の場所にルーティングするまでは収集および格納されません。
 
-メトリックとログを Log Analytics ワークスペースにルーティングすると、Azure Monitor ログを使用してそれらを分析できます。Azure Storage にルーティングすると、アーカイブやオフライン分析ができます。Event Hubs エンドポイントにルーティングすると、外部アプリケーション (サードパーティ製の SIEM ツールなど) でそれらを読み取ることができます。
+メトリックとログは、次のような複数の場所にルーティングできます。
+- Azure Monitor には、関連付けられた Log Analytics ワークスペースを使用してログが格納されます。 ここで、Log Analytics を使用してこれらを分析できます。
+- アーカイブとオフライン分析のための Azure Storage 
+- 外部アプリケーションで読み取れる Azure Event Hubs エンドポイント (サードパーティ製の SIEM ツールなど)。
 
 Azure portal で、IoT ハブの左ウィンドウの **[監視]** の下にある **[診断設定]** を選択してから **[診断設定の追加]** を選択すると、IoT ハブによって出力されるログとプラットフォーム メトリックを対象範囲とする診断設定を作成できます。
 
-次のスクリーンショットは、リソース ログの接続操作とすべてのプラットフォーム メトリックを Log Analytics ワークスペースにルーティングするための診断設定を示しています。
+次のスクリーンショットは、リソース ログ タイプの *接続操作* とすべてのプラットフォーム メトリックを Log Analytics ワークスペースにルーティングするための診断設定を示しています。
 
 :::image type="content" source="media/monitor-iot-hub/diagnostic-setting-portal.png" alt-text="IoT ハブの [診断設定] ウィンドウ。":::
 
@@ -82,11 +87,11 @@ Azure IoT Hub に関して収集されるプラットフォーム メトリッ�
 
 カウント単位で収集される IoT Hub のプラットフォーム メトリックについては、一部の集計が有効でない場合や使用できない場合があります。 詳細については、[「Monitoring Azure IoT Hub data reference (Azure IoT Hub 監視データのリファレンス)」の「サポートされる集計」](monitor-iot-hub-reference.md#supported-aggregations)を参照してください。
 
-[ルーティング メトリック](monitor-iot-hub-reference.md#routing-metrics)など、いくつかの IoT Hub メトリックは多次元です。 これらのメトリックについては、[フィルター](/azure-monitor/platform/metrics-charts#apply-filters-to-charts)を適用し、ディメンションに基づいてグラフに[分割](/azure/azure-monitor/platform/metrics-charts#apply-splitting-to-a-chart)することができます。
+[ルーティング メトリック](monitor-iot-hub-reference.md#routing-metrics)など、いくつかの IoT Hub メトリックは多次元です。 これらのメトリックについては、[フィルター](/azure/azure-monitor/platform/metrics-charts#apply-filters-to-charts)を適用し、ディメンションに基づいてグラフに[分割](/azure/azure-monitor/platform/metrics-charts#apply-splitting-to-a-chart)することができます。
 
 ## <a name="analyzing-logs"></a>ログの分析
 
-Azure Monitor ログのデータはテーブルに格納され、各テーブルには独自の一意のプロパティ セットがあります。 Azure Monitor ログの詳細については、Azure Monitor のドキュメントの「[Azure Monitor ログの概要](/azure/azure-monitor/platform/data-platform-logs)」を参照してください。 
+Azure Monitor ログのデータはテーブルに格納され、各テーブルには独自の一意のプロパティ セットがあります。 これらのテーブル内のデータは、Log Analytics ワークスペースに関連付けられており、Log Analytics でクエリを実行できます。 Azure Monitor ログの詳細については、Azure Monitor のドキュメントの「[Azure Monitor ログの概要](/azure/azure-monitor/platform/data-platform-logs)」を参照してください。 
 
 データを Azure Monitor ログにルーティングするには、リソース ログまたはプラットフォーム メトリックを Log Analytics ワークスペースに送信するための診断設定を作成する必要があります。 詳細については、「[コレクションとルーティング](#collection-and-routing)」を参照してください。
 

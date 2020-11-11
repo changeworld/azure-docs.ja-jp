@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea5d24fd36e668fc52a8b5c9a20472c42ef3c420
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 7651f84e14d6ea7dcb4e12d57e2bf494d5aeff1e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825972"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083186"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>方法:Azure AD で古いデバイスを管理する
 
@@ -37,7 +37,7 @@ Azure AD 内の古いデバイスは、組織内のデバイスの一般的な�
 
 ## <a name="detect-stale-devices"></a>古いデバイスの検出
 
-一定期間にわたってクラウド アプリへのアクセスに使用されていない登録済みデバイス、というのが古いデバイスの定義であるため、古いデバイスの検出にはタイムスタンプ関連のプロパティが必要です。 Azure AD では、このプロパティは **ApproximateLastLogonTimestamp** または**アクティビティ タイムスタンプ**と呼ばれます。 現在の時間と**アクティビティ タイムスタンプ**の値の差が、アクティブなデバイスの基準として定義されている期間を超えている場合、デバイスは無効と見なされます。 この**アクティビティ タイムスタンプ**は現在パブリック プレビューです。
+一定期間にわたってクラウド アプリへのアクセスに使用されていない登録済みデバイス、というのが古いデバイスの定義であるため、古いデバイスの検出にはタイムスタンプ関連のプロパティが必要です。 Azure AD では、このプロパティは **ApproximateLastLogonTimestamp** または **アクティビティ タイムスタンプ** と呼ばれます。 現在の時間と **アクティビティ タイムスタンプ** の値の差が、アクティブなデバイスの基準として定義されている期間を超えている場合、デバイスは無効と見なされます。 この **アクティビティ タイムスタンプ** は現在パブリック プレビューです。
 
 ## <a name="how-is-the-value-of-the-activity-timestamp-managed"></a>アクティビティ タイムスタンプの値の管理のしくみは?  
 
@@ -53,13 +53,13 @@ Azure AD 内の古いデバイスは、組織内のデバイスの一般的な�
 
 アクティビティ タイムスタンプの値を取得する方法には、次の 2 つがあります。
 
-- Azure portal の[デバイス ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)の **[アクティビティ]** 列
+- Azure portal の [デバイス ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)の **[アクティビティ]** 列
 
-    ![アクティビティ タイムスタンプ](./media/manage-stale-devices/01.png)
+    :::image type="content" source="./media/manage-stale-devices/01.png" alt-text="Azure portal のページに、デバイスの名前、所有者、およびその他の情報が一覧表示されたスクリーンショット。1 つの列には、アクティビティのタイム スタンプが表示されます。" border="false":::
 
 - [Get-AzureADDevice](/powershell/module/azuread/Get-AzureADDevice) コマンドレット
 
-    ![アクティビティ タイムスタンプ](./media/manage-stale-devices/02.png)
+    :::image type="content" source="./media/manage-stale-devices/02.png" alt-text="コマンド ライン出力を示すスクリーンショット。1 行が強調表示され、ApproximateLastLogonTimeStamp 値のタイム スタンプが一覧表示されます。" border="false":::
 
 ## <a name="plan-the-cleanup-of-your-stale-devices"></a>古いデバイスのクリーンアップを計画する
 

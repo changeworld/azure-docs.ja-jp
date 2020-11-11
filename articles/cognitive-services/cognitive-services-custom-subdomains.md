@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: c7dd916b27cd8005162c09f7e6a090293e336719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95f3de0fe26678f6b4bcd97a78c06e92b72a7135
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83590640"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368816"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Cognitive Services のカスタム サブドメイン名
 
-Azure Cognitive Services では、[Azure portal](https://portal.azure.com)、[Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)、または [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) を通じて作成された各リソースに対して、カスタム サブドメイン名が使用されます。 特定の Azure リージョンのすべてのお客様に共通だった、リージョン エンドポイントとは異なり、カスタム サブドメイン名はリソースに対して一意です。 認証で Azure Active Directory (Azure AD) などの機能を有効にするには、カスタム サブドメイン名が必要です。
+Azure Cognitive Services では、[Azure portal](https://portal.azure.com)、[Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)、または [Azure CLI](/cli/azure/install-azure-cli) を通じて作成された各リソースに対して、カスタム サブドメイン名が使用されます。 特定の Azure リージョンのすべてのお客様に共通だった、リージョン エンドポイントとは異なり、カスタム サブドメイン名はリソースに対して一意です。 認証で Azure Active Directory (Azure AD) などの機能を有効にするには、カスタム サブドメイン名が必要です。
 
 ## <a name="how-does-this-impact-existing-resources"></a>これは既存のリソースにどのように影響しますか?
 
@@ -30,7 +30,7 @@ Azure Cognitive Services では、[Azure portal](https://portal.azure.com)、[Az
 2. **[概要]** ブレードで、 **[カスタム ドメイン名を生成します]** を見つけて選択します。
 3. パネルが開き、リソースの一意のカスタム サブドメインを作成する手順が示されます。
    > [!WARNING]
-   > カスタム サブドメインの名前は、作成後に変更することは**できません**。
+   > カスタム サブドメインの名前は、作成後に変更することは **できません** 。
 
 ## <a name="do-i-need-to-update-my-existing-resources"></a>既存のリソースを更新する必要はありますか?
 
@@ -39,11 +39,11 @@ Azure Cognitive Services では、[Azure portal](https://portal.azure.com)、[Az
 ## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>SDK でリソースのリージョンが要求された場合はどうすればよいですか?
 
 > [!WARNING]
-> 現時点では、Speech Services でカスタム サブドメインはサポート**されていません**。 Speech Services と関連する SDK を使用する場合は、リージョン エンドポイントを使用してください。
+> 現時点では、Speech Services でカスタム サブドメインはサポート **されていません** 。 Speech Services と関連する SDK を使用する場合は、リージョン エンドポイントを使用してください。
 
 リージョン エンドポイントとカスタム サブドメイン名は両方サポートされており、どちらを使用しても変わりはありません。 ただし、完全なエンドポイントが必要です。
 
-リージョン情報は、[Azure portal](https://portal.azure.com) のご利用のリソースの **[概要]** ブレードで確認できます。 リージョン エンドポイントの完全な一覧については、[Is リージョン エンドポイントの一覧はありますか?](#is-there-a-list-of-regional-endpoints) に関するページをご覧ください。
+リージョン情報は、 [Azure portal](https://portal.azure.com) のご利用のリソースの **[概要]** ブレードで確認できます。 リージョン エンドポイントの完全な一覧については、[Is リージョン エンドポイントの一覧はありますか?](#is-there-a-list-of-regional-endpoints) に関するページをご覧ください。
 
 ## <a name="are-custom-subdomain-names-regional"></a>カスタム サブドメイン名はリージョン単位ですか?
 
@@ -98,5 +98,5 @@ Azure Cognitive Services では、[Azure portal](https://portal.azure.com)、[Az
 
 ## <a name="see-also"></a>関連項目
 
-* [Azure Cognitive Services とは](Welcome.md)
+* [Azure Cognitive Services とは](./what-are-cognitive-services.md)
 * [認証](authentication.md)

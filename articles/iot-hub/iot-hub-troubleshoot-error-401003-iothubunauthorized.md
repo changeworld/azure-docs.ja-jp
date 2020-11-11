@@ -11,12 +11,12 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 4979405c7675b5eff9f6940cd34e0c974ebad217
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: af057750e81086bf691b87057da97af3de19cd3b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538274"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909643"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -52,7 +52,7 @@ MQTT の場合、一部の SDK では、SAS トークンが期限切れになっ
 
 ### <a name="cause-2"></a>原因 2
 
-IoT Hub では、認証ヘッダー、規則、またはキーを認証できませんでした。
+IoT Hub では、認証ヘッダー、規則、またはキーを認証できませんでした。 これには、現象に示されたいずれかの理由が考えられます。
 
 ## <a name="solution"></a>解決策
 
@@ -66,10 +66,13 @@ IoT Hub では、認証ヘッダー、規則、またはキーを認証できま
 
 一般に、エラーを修正する方法を説明するエラー メッセージが表示されます。 何らかの理由でエラー メッセージの詳細にアクセスできない場合は、次のことを確認してください。
 
-- 使用する SAS またはその他のセキュリティ トークンの有効期限が切れていないこと。 
+- 使用する SAS またはその他のセキュリティ トークンの有効期限が切れていないこと。
+- X.509 証明書認証の場合、デバイス証明書またはデバイスに関連付けられている CA 証明書の有効期限が切れていません。 IoT Hub での X.509 CA 証明書の登録方法については、「[Azure IoT Hub での X.509 セキュリティの設定](iot-hub-security-x509-get-started.md)」を参照してください。
+- X.509 証明書の拇印認証の場合、デバイス証明書の拇印は IoT Hub に登録されます。
 - 承認の資格情報が使用するプロトコルに適した形式であること。 詳細については、「[IoT Hub へのアクセスの制御](iot-hub-devguide-security.md)」を参照してください。
 - 使用される承認規則に、要求された操作に対するアクセス許可があること。
 
 ## <a name="next-steps"></a>次のステップ
 
-IoT Hub の認証を簡単に受けられるようにするには、[Azure IoT SDK](iot-hub-devguide-sdks.md) を使用することをお勧めします。
+- IoT Hub の認証を簡単に受けられるようにするには、[Azure IoT SDK](iot-hub-devguide-sdks.md) を使用することをお勧めします。
+- IoT Hub での認証の詳細については、「[IoT Hub へのアクセスの制御](iot-hub-devguide-security.md)」を参照してください。

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 8b59bcf3f25921a348e9c5f25e83619d8596ebd5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7e455565a0cd5e1fc96a6fe7d9e0502da3214fcf
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489865"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909915"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure portal を使用して Azure Database for PostgreSQL でのメトリックに対するアラートを設定する - Hyperscale (Citus)
 
@@ -41,13 +41,13 @@ ms.locfileid: "92489865"
 
 4. 以下のように、 **[ルールの作成]** ページが開きます。 必要な情報を入力します。
 
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="アラート ルールを選択する":::
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="メトリック アラート フォームを追加する":::
 
 5. **[条件]** セクション内で、 **[追加]** を選択します。
 
 6. アラート通知のシグナルの一覧からメトリックを選択します。 この例では、[ストレージの割合] を選択します。
    
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png" alt-text="アラート ルールを選択する":::
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png" alt-text="スクリーンショットは、複数のシグナルを表示できる [シグナル ロジックの構成] ページを示しています。":::
 
 7. 次のアラート ロジックを構成します。
 
@@ -58,13 +58,13 @@ ms.locfileid: "92489865"
    
    完了したら、 **[完了]** を選択します。
 
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png" alt-text="アラート ルールを選択する":::
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png" alt-text="スクリーンショットは、アラート ロジックを構成できるウィンドウを示しています。":::
 
 8. **[アクション グループ]** セクション内で **[新規作成]** を選択して、アラートの通知を受信する新しいグループを作成します。
 
 9. [アクション グループの追加] フォームに、名前、短い名前、サブスクリプション、リソース グループを入力します。
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/9-add-action-group.png" alt-text="アラート ルールを選択する":::
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/9-add-action-group.png" alt-text="スクリーンショットは、[アクション グループの追加] フォームを示しています。ここで、説明の値を入力できます。":::
 
 10. アクションの種類で、 **[電子メール/SMS/プッシュ/音声]** を構成します。
     
@@ -72,11 +72,11 @@ ms.locfileid: "92489865"
    
     完了したら、 **[OK]** を選択します。
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/10-action-group-type.png" alt-text="アラート ルールを選択する":::
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/10-action-group-type.png" alt-text="スクリーンショットは、[電子メール/SMS/プッシュ/音声] ウィンドウを示しています。":::
 
 11. [アラート ルール名]、[説明]、[重大度] を指定します。
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png" alt-text="アラート ルールを選択する"::: 
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png" alt-text="スクリーンショットは、[アラートの詳細] ウィンドウを示しています。"::: 
 
 12. **[アラート ルールの作成]** を選択して、アラートを作成します。
 

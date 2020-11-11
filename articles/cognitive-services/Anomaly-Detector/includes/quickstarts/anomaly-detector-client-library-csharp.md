@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/22/2020
 ms.author: mbullwin
-ms.openlocfilehash: 14b361ae2163636864b37d2a063ad10886a9e3c8
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 7969e2011a242152e27d7c1aa67b36d99d92adfe
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93029479"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371573"
 ---
 .NET 用 Anomaly Detector クライアント ライブラリを使ってみます。 サービスによって提供されるアルゴリズムを使用してパッケージをインストールするには、次の手順に従います。 Anomaly Detector サービスにより、業界、シナリオ、データ量に関係なく、最適なモデルを自動的に使用することで、時系列データ内の異常を検出できます。
 
@@ -79,11 +79,11 @@ dotnet add package Microsoft.Azure.CognitiveServices.AnomalyDetector
 
 ## <a name="object-model"></a>オブジェクト モデル
 
-Anomaly Detector クライアントは、キーが含まれている [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials) を使用して Azure に対する認証を行う [AnomalyDetectorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient) オブジェクトです。 クライアントは、[EntireDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync) を使用してデータセット全体の異常検出を行うか、または [LastDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync) を使用して最新のデータ ポイントを対象にすることができます。 [ChangePointDetectAsync](https://aka.ms/anomaly-detector-dotnet-ref) メソッドは、傾向の変化を示すポイントを検出します。
+Anomaly Detector クライアントは、キーが含まれている [ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials) を使用して Azure に対する認証を行う [AnomalyDetectorClient](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient) オブジェクトです。 クライアントは、[EntireDetectAsync()](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync) を使用してデータセット全体の異常検出を行うか、または [LastDetectAsync()](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync) を使用して最新のデータ ポイントを対象にすることができます。 [ChangePointDetectAsync](https://aka.ms/anomaly-detector-dotnet-ref) メソッドは、傾向の変化を示すポイントを検出します。
 
-時系列データは、[Request](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request) オブジェクト内の一連の [Point](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.series?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_Series) として送信されます。 `Request` オブジェクトには、データを説明するプロパティ (たとえば、[細分性](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.granularity)など) と異常検出のパラメーターが含まれます。
+時系列データは、[Request](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request) オブジェクト内の一連の [Point](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.series?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_Series) として送信されます。 `Request` オブジェクトには、データを説明するプロパティ (たとえば、[細分性](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.granularity)など) と異常検出のパラメーターが含まれます。
 
-Anomaly Detector の応答は、使用するメソッドに応じて、[EntireDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse)、[LastDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse)、または [changePointDetectResponse](https://aka.ms/anomaly-detector-dotnet-ref) オブジェクトのいずれかになります。
+Anomaly Detector の応答は、使用するメソッドに応じて、[EntireDetectResponse](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse)、[LastDetectResponse](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse)、または [changePointDetectResponse](https://aka.ms/anomaly-detector-dotnet-ref) オブジェクトのいずれかになります。
 
 ## <a name="code-examples"></a>コード例
 
@@ -97,7 +97,7 @@ Anomaly Detector の応答は、使用するメソッドに応じて、[EntireDe
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-新しいメソッドで、実際のエンドポイントとキーを使用してクライアントをインスタンス化します。 キーを使用して [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials?view=azure-dotnet-preview) オブジェクトを作成し、それをエンドポイントと共に使用して、[AnomalyDetectorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-dotnet-preview) オブジェクトを作成します。
+新しいメソッドで、実際のエンドポイントとキーを使用してクライアントをインスタンス化します。 キーを使用して [ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials?view=azure-dotnet-preview) オブジェクトを作成し、それをエンドポイントと共に使用して、[AnomalyDetectorClient](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-dotnet-preview) オブジェクトを作成します。
 
 [!code-csharp[Client authentication function](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=createClient)]
 
@@ -110,21 +110,21 @@ Anomaly Detector の応答は、使用するメソッドに応じて、[EntireDe
 
 この時系列データは、.csv ファイル形式として書式設定され、Anomaly Detector API に送信されます。
 
-時系列データを読み取るための新しいメソッドを作成し、[Request](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request?view=azure-dotnet-preview) オブジェクトに追加します。 ファイル パスを指定して `File.ReadAllLines()` を呼び出し、[Point](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.point?view=azure-dotnet-preview) オブジェクトのリストを作成して、改行文字をすべて削除します。 値を抽出し、その数値から日付スタンプを分離して、新しい `Point` オブジェクトに追加します。
+時系列データを読み取るための新しいメソッドを作成し、[Request](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request?view=azure-dotnet-preview) オブジェクトに追加します。 ファイル パスを指定して `File.ReadAllLines()` を呼び出し、[Point](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.point?view=azure-dotnet-preview) オブジェクトのリストを作成して、改行文字をすべて削除します。 値を抽出し、その数値から日付スタンプを分離して、新しい `Point` オブジェクトに追加します。
 
-一連のポイントを使用して `Request` オブジェクトを作成し、データ ポイントの[細分性](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) (または周期性) を表す `Granularity.Daily` を作成します。
+一連のポイントを使用して `Request` オブジェクトを作成し、データ ポイントの[細分性](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) (または周期性) を表す `Granularity.Daily` を作成します。
 
 [!code-csharp[load the time series data file](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=GetSeriesFromFile)]
 
 ## <a name="detect-anomalies-in-the-entire-data-set"></a>データ セット全体で異常を検出する
 
-`Request` オブジェクトが含まれているクライアントの [EntireDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_AnomalyDetectorClientExtensions_EntireDetectAsync_Microsoft_Azure_CognitiveServices_AnomalyDetector_IAnomalyDetectorClient_Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_System_Threading_CancellationToken_) メソッドを呼び出すメソッドを作成し、[EntireDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-dotnet-preview) オブジェクトとしての応答を待ちます。 時系列に異常が含まれている場合は、応答の [IsAnomaly](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse.isanomaly?view=azure-dotnet-preview) 値を反復処理し、`true` であるものをすべて出力します。 これらの値は、異常なデータ ポイントが見つかった場合、そのインデックスに対応します。
+`Request` オブジェクトが含まれているクライアントの [EntireDetectAsync()](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_AnomalyDetectorClientExtensions_EntireDetectAsync_Microsoft_Azure_CognitiveServices_AnomalyDetector_IAnomalyDetectorClient_Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_System_Threading_CancellationToken_) メソッドを呼び出すメソッドを作成し、[EntireDetectResponse](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-dotnet-preview) オブジェクトとしての応答を待ちます。 時系列に異常が含まれている場合は、応答の [IsAnomaly](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse.isanomaly?view=azure-dotnet-preview) 値を反復処理し、`true` であるものをすべて出力します。 これらの値は、異常なデータ ポイントが見つかった場合、そのインデックスに対応します。
 
 [!code-csharp[EntireDetectSampleAsync() function](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=entireDatasetExample)]
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>最新のデータ ポイントの異常状態を検出する
 
-`Request` オブジェクトが含まれているクライアントの [LastDetectAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_AnomalyDetectorClientExtensions_LastDetectAsync_Microsoft_Azure_CognitiveServices_AnomalyDetector_IAnomalyDetectorClient_Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_System_Threading_CancellationToken_) メソッドを呼び出すメソッドを作成し、[LastDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-dotnet-preview) オブジェクトとしての応答を待ちます。 応答の [IsAnomaly](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse.isanomaly?view=azure-dotnet-preview) 属性を確認して、送信された最新のデータ ポイントが異常であったかどうかを判断します。
+`Request` オブジェクトが含まれているクライアントの [LastDetectAsync()](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_AnomalyDetectorClientExtensions_LastDetectAsync_Microsoft_Azure_CognitiveServices_AnomalyDetector_IAnomalyDetectorClient_Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_System_Threading_CancellationToken_) メソッドを呼び出すメソッドを作成し、[LastDetectResponse](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-dotnet-preview) オブジェクトとしての応答を待ちます。 応答の [IsAnomaly](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse.isanomaly?view=azure-dotnet-preview) 属性を確認して、送信された最新のデータ ポイントが異常であったかどうかを判断します。
 
 [!code-csharp[LastDetectSampleAsync() function](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=latestPointExample)]
 

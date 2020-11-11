@@ -10,18 +10,18 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 8d49d9b9d29116d95173c1daf5133622c3694de6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95cb4aa5827190abf125669f2423c808cf8c92a5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523997"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368935"
 ---
 # <a name="customize-your-text-translations"></a>テキスト変換をカスタマイズする
 
 カスタム翻訳ツールは、Translator サービスの機能です。ユーザーは、これを使用して、Translator (バージョン 3 のみ) でテキストを翻訳するときに、Microsoft Translator の高度なニューラル機械翻訳をカスタマイズできます。
 
-この機能を [Cognitive Services Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/) と組み合わせて使用し、音声の翻訳をカスタマイズすることもできます。
+この機能を [Cognitive Services Speech](../speech-service/index.yml) と組み合わせて使用し、音声の翻訳をカスタマイズすることもできます。
 
 ## <a name="custom-translator"></a>Custom Translator
 
@@ -37,7 +37,7 @@ Custom Translator を使用すると、独自のビジネスや業界で使用�
 
 適切な種類と量のトレーニング データがあれば、Custom Translator を使用することで、5 から 10 の間あるいはそれ以上の BLEU ポイントの翻訳品質を期待できることも珍しくありません。
 
-使用可能なデータに基づくカスタマイズのさまざまなレベルについて詳しくは、「[Custom Translator User Guide](https://aka.ms/CustomTranslatorDocs)」(Custom Translator ユーザー ガイド) をご覧ください。
+使用可能なデータに基づくカスタマイズのさまざまなレベルについて詳しくは、「[Custom Translator User Guide](./custom-translator/overview.md)」(Custom Translator ユーザー ガイド) をご覧ください。
 
 
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
@@ -64,4 +64,4 @@ Custom Translator を使用すると、独自のビジネスや業界で使用�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Custom Translator を使用してカスタマイズされた言語システムを設定します](https://aka.ms/CustomTranslatorDocs)
+> [Custom Translator を使用してカスタマイズされた言語システムを設定します](./custom-translator/overview.md)

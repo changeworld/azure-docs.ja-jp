@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Azure, Kinect, RGB, IR, 記録, センサー, SDK, アクセス, 深度, ビデオ, カメラ, IMU, モーション, センサー, オーディオ, マイク, Matroska, センサー SDK, ダウンロード, 体, トラッキング, サポート
-ms.openlocfilehash: 61d29284bc2ed9e574e8a19561f19ad6f4259908
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fbfe9c52a46cbf7058e6d5ca91008f1f289bfd2
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277103"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357047"
 ---
 # <a name="azure-kinect-support-options-and-resources"></a>Azure Kinect のサポート オプションとリソース
 
@@ -32,9 +32,9 @@ Azure Kinect のサポートを利用するには、複数の方法がありま�
 
 ### <a name="microsoft-qa"></a>Microsoft Q&A
 
-製品に関する技術的な質問については、Azure に関するコミュニティ サポートの場である [Microsoft Q&A](https://aka.ms/azureqa) をぜひご利用ください。Microsoft のエンジニアや Azure Most Valuable Professional (MVP)、エキスパート コミュニティからすばやく、信頼できる回答が得られます。
+製品に関する技術的な質問については、Azure に関するコミュニティ サポートの場である [Microsoft Q&A](/answers/products/azure) をぜひご利用ください。Microsoft のエンジニアや Azure Most Valuable Professional (MVP)、エキスパート コミュニティからすばやく、信頼できる回答が得られます。
 
-- [Azure Kinect の Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-kinect-dk.html)。質問を投稿したり、既存の質問のライブラリを検索したりすることができます。
+- [Azure Kinect の Microsoft Q&A](/answers/topics/azure-kinect-dk.html)。質問を投稿したり、既存の質問のライブラリを検索したりすることができます。
 
 ### <a name="development-azure-kinect-on-azure"></a>Azure での Azure Kinect の開発
 
@@ -50,7 +50,7 @@ Sensor SDK や Body Tracking SDK をオンプレミスで使用するための�
 
 ### <a name="azure-kinect-dk-device"></a>Azure Kinect DK デバイス
 
-ハードウェア サポートに問い合わせる前に、Azure Kinect DK を設定し、更新していることを確認してください。 デバイスが動作しているかどうかをテストするには、[Azure Kinect ビューアー](azure-kinect-viewer.md)を使用します。 詳細については、[Azure Kinect DK ヘルプ](https://aka.ms/kinectsupport) ページを参照してください。
+ハードウェア サポートに問い合わせる前に、Azure Kinect DK を設定し、更新していることを確認してください。 デバイスが動作しているかどうかをテストするには、[Azure Kinect ビューアー](azure-kinect-viewer.md)を使用します。 詳細については、[Azure Kinect DK ヘルプ](./index.yml) ページを参照してください。
 [既知の問題とトラブルシューティング](troubleshooting.md)を確認することもできます。
 
 デバイスまたはセンサーの機能、ファームウェアの更新、または購入オプションに関するヘルプは、[こちら](https://support.microsoft.com/supportforbusiness/productselection?sapId=f77b1b95-721e-43a0-2db8-b01e81a3f813)を参照してください。

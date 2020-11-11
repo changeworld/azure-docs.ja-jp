@@ -9,17 +9,17 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: swmachan
-ms.openlocfilehash: d8713d20503dc788175a408f5ec652505090396e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1765aaed3c0562da13c539845bfe19f6f85ed4ef
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510829"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369020"
 ---
 # <a name="what-are-trainings-and-models"></a>トレーニングとモデルとは
 
 モデルは、特定の言語ペアの翻訳を提供するシステムです。
-適切なトレーニングの成果がモデルです。 モデルをトレーニングする場合、互いに重複しない 3 種類のドキュメント (トレーニング、チューニング、テスト) が必要です。 ディクショナリ ドキュメント タイプを提供することもできます。 [文のアライン](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)に関するページを参照してください。
+適切なトレーニングの成果がモデルです。 モデルをトレーニングする場合、互いに重複しない 3 種類のドキュメント (トレーニング、チューニング、テスト) が必要です。 ディクショナリ ドキュメント タイプを提供することもできます。 [文のアライン](./sentence-alignment.md#suggested-minimum-number-of-sentences)に関するページを参照してください。
 
 トレーニングをキューに追加するときにトレーニング データのみ入力した場合、チューニングとテストのデータは、Custom Translator によって自動的にアセンブルされます。 トレーニング ドキュメントから文のランダムなサブセットが使用され、これらの文がトレーニング データ自体から除外されます。
 

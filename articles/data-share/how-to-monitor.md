@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
-ms.openlocfilehash: 2a986afa1916d179834c516a26f76a2789f82452
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc400922115f348090677661cd1b30434be19b72
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87511889"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910476"
 ---
 # <a name="monitor-azure-data-share"></a>Azure Data Share の監視  
 
@@ -42,7 +42,7 @@ ms.locfileid: "87511889"
 
 共有の **[履歴]** タブでは、データ プロバイダーからデータ コンシューマーのデータ ストアにデータがいつコピーされるかを表示できます。 各スナップショットの頻度、期間、および状態を監視できます。 
 
-![スナップショットの履歴](./media/sent-shares.png "スナップショットの履歴") 
+![スクリーンショットは、Azure portal に送信された共有を示しています。](./media/sent-shares.png "スナップショットの履歴") 
 
 実行開始日をクリックすると、各スナップショットの実行に関する詳細情報を表示できます。 次に、各データセットの状態をクリックして、転送されたデータの量、コピーされたファイルまたはレコードの数、スナップショットの期間、使用された仮想コアの数、およびエラー メッセージ (ある場合) を表示します。 
 
@@ -52,7 +52,7 @@ ms.locfileid: "87511889"
 
 診断設定を、ログ データまたはイベントを保存するように構成できます。 [監視] > [診断設定] の順に移動し、 **[診断設定を追加する]** を選択します。 目的のログ データまたはイベントを選択し、それらを格納または送信する場所を選択します。 
 
-![スナップショットの履歴](./media/diagnostic-settings.png "診断設定") 
+![スクリーンショットは、Azure portal の [診断設定] ページを示しています。](./media/diagnostic-settings.png "診断設定") 
 
 ## <a name="next-steps"></a>次の手順 
 

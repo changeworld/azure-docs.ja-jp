@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: a706ced5c65b9de3cb3bfdb623d810bb1ea43623
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5c5d7ae4dbf1126d171c78bbd4e353f11402260
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707984"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126721"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースに関するよくあるご質問
 
@@ -46,7 +46,7 @@ Microsoft は多くの国/地域で税金の支払いを管理し、Microsoft �
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースには登録料がかかりますか?
 
-いいえ、コマーシャル マーケットプレースでオファーを発行する場合、料金はかかりません。 取引手数料として、売上のごく一部をいただきます。これは、Marketplace Rewards プログラム、プラットフォームの刷新、コマーシャル マーケットプレースの運用に充てられます。 [Azure IP 共同販売](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell)のインセンティブ付きオファーと、1 つの Microsoft Teams アプリまたは少なくとも 2 つの Microsoft 365 アドイン (Excel、PowerPoint、Word、Outlook、SharePoint) に関連付けられている AppSource の有料 SaaS オファーの場合、この取引手数料が減額されます。
+いいえ、コマーシャル マーケットプレースでオファーを発行する場合、料金はかかりません。 取引手数料として、売上のごく一部をいただきます。これは、Marketplace Rewards プログラム、プラットフォームの刷新、コマーシャル マーケットプレースの運用に充てられます。 [Azure IP 共同販売](./marketplace-co-sell.md)のインセンティブ付きオファーと、1 つの Microsoft Teams アプリまたは少なくとも 2 つの Microsoft 365 アドイン (Excel、PowerPoint、Word、Outlook、SharePoint) に関連付けられている AppSource の有料 SaaS オファーの場合、この取引手数料が減額されます。
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースの発行元としてサインアップするにはどうすればよいですか?
 
@@ -58,10 +58,10 @@ Microsoft は多くの国/地域で税金の支払いを管理し、Microsoft �
 
 顧客がコマーシャル マーケットプレースのオファーを使用する方法は、オファーの作成方法によって異なります。
 
-- 自動的に提供されるソリューションの場合、有料、ライセンス持ち込み (BYOL)、無料のいずれであっても、顧客は "*今すぐ入手*" を勧められます。
-- 体験版 (デモ) がサポートされているオファーでは、顧客は "*体験版*" を使用するよう求められます。 
-- コマーシャル マーケットプレースの外部で試用版を提供するサービスとしてのソフトウェア (SaaS) オファーでは、"*無料試用版*" と表示されます。
-- 簡易登録では、顧客に "*連絡してください*" と要求することができます。
+- 自動的に提供されるソリューションの場合、有料、ライセンス持ち込み (BYOL)、無料のいずれであっても、顧客は " *今すぐ入手* " を勧められます。
+- 体験版 (デモ) がサポートされているオファーでは、顧客は " *体験版* " を使用するよう求められます。 
+- コマーシャル マーケットプレースの外部で試用版を提供するサービスとしてのソフトウェア (SaaS) オファーでは、" *無料試用版* " と表示されます。
+- 簡易登録では、顧客に " *連絡してください* " と要求することができます。
 
 ### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>コマーシャル マーケットプレース向けのオファーを作成するにはどうすればよいですか?
 
@@ -99,14 +99,14 @@ Microsoft は多くの国/地域で税金の支払いを管理し、Microsoft �
 
 パートナー センターでのアクセスの制御に関連する 4 つのロールがあります。
 
-- *マネージャー*:ディレクトリ内のパートナー センター ユーザーの管理と、オファーの作成と更新のためのアクセス許可が提供されます。
-- *開発者*:ユーザーはオファーを作成および更新できます。
-- *財務共同作成者*:支払いレポートを表示するアクセス許可が提供されます。
-- *所有者*:支払いアカウントと税プロファイルを設定できます。 発行元契約に同意したユーザーは、既定で所有者になります。
+- *マネージャー* :ディレクトリ内のパートナー センター ユーザーの管理と、オファーの作成と更新のためのアクセス許可が提供されます。
+- *開発者* :ユーザーはオファーを作成および更新できます。
+- *財務共同作成者* :支払いレポートを表示するアクセス許可が提供されます。
+- *所有者* :支払いアカウントと税プロファイルを設定できます。 発行元契約に同意したユーザーは、既定で所有者になります。
 
-新しいユーザー アカウントを作成するか、基になるディレクトリにゲスト アカウントを招待するには、Azure Active Directory (Azure AD) "*グローバル管理者*" のアクセス許可が必要です。 パートナー センターでは ID モデルに Azure AD が適用され、多くの場合、組織の Azure AD インスタンスは組織の IT チームまたはセキュリティ チームによって管理および制御されます。
+新しいユーザー アカウントを作成するか、基になるディレクトリにゲスト アカウントを招待するには、Azure Active Directory (Azure AD) " *グローバル管理者* " のアクセス許可が必要です。 パートナー センターでは ID モデルに Azure AD が適用され、多くの場合、組織の Azure AD インスタンスは組織の IT チームまたはセキュリティ チームによって管理および制御されます。
 
-詳しくは、「[ユーザー ロールとアクセス許可の割り当て](https://docs.microsoft.com/partner-center/permissions-overview)」をご覧ください。
+詳しくは、「[ユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)」をご覧ください。
 
 ### <a name="do-customers-need-a-subscription-for-microsoft-azure-cloud-services"></a>顧客には Microsoft Azure Cloud Services のサブスクリプションが必要ですか?
 
@@ -175,7 +175,7 @@ Microsoft のリセラーのグローバル ネットワークには、クラウ
 
 ### <a name="what-offer-types-are-transacted-through-microsoft"></a>Microsoft ではどのような種類のオファーが取引されますか?
 
-一部のデリバリー モデルについては、Microsoft を通じて "*今すぐ入手*" オファーを処理できます。 これは現在、次のデリバリー モデルでサポートされています。
+一部のデリバリー モデルについては、Microsoft を通じて " *今すぐ入手* " オファーを処理できます。 これは現在、次のデリバリー モデルでサポートされています。
 - VM イメージ
 - Azure アプリ (マネージド アプリケーション)
 - SaaS アプリ
@@ -195,7 +195,7 @@ Microsoft のリセラーのグローバル ネットワークには、クラウ
 はい、複数の方法で無料試用版を提供できます。
 
 - お勧めの方法は、有料の SaaS オファー (1 か月) および VM イメージ オファー (1 か月、3 か月) の開始時に、無料期間を追加することです。 顧客が受け取る請求は $0.00 になり、試用期間が終了すると、サブスクリプションは自動的に有料に変わります。 契約期間はその時点から始まります。
-- SaaS オファー一覧を作成し、パートナーが選択した Web アドレスに顧客を誘導して、コマーシャル マーケットプレースの外部で試用版を開始することができます。 一部のオファーの種類では、顧客にデモを提供できる "*体験版*" がサポートされています。
+- SaaS オファー一覧を作成し、パートナーが選択した Web アドレスに顧客を誘導して、コマーシャル マーケットプレースの外部で試用版を開始することができます。 一部のオファーの種類では、顧客にデモを提供できる " *体験版* " がサポートされています。
 
 ### <a name="who-pays-for-the-underlying-azure-consumption"></a>基になる Azure の消費に対して支払うのはだれですか?
 
@@ -223,7 +223,7 @@ Microsoft AppSource では、クレジット カードによる支払いがサ�
 
 ### <a name="what-azure-subscription-permissions-are-required-to-complete-a-purchase"></a>購入を完了するために必要な Azure サブスクリプションのアクセス許可は何ですか?
 
-ユーザー アカウントには、Azure サブスクリプションでの "*所有者*" または "*共同作成者*" のアクセス許可が必要です。
+ユーザー アカウントには、Azure サブスクリプションでの " *所有者* " または " *共同作成者* " のアクセス許可が必要です。
 
 ### <a name="in-what-countriesregions-can-customers-purchase-from-microsoft-appsource-and-azure-marketplace"></a>顧客はどの国/地域で Microsoft AppSource および Azure Marketplace から購入できますか?
 
@@ -264,7 +264,7 @@ Microsoft AppSource では、クレジット カードによる支払いがサ�
 
 Microsoft AppSource の場合、顧客は Azure AD のインスタンスと同じ国/地域に請求先住所があるクレジット カードを持っている必要があり、顧客の Azure AD 管理者は、Microsoft AppSource に対する認証がシステムによって妨げられないようにする必要があります。
 
-Azure Marketplace の場合、顧客は、アクティブな Azure サブスクリプションと、そのサブスクリプションに対する "*所有者*" または "*共同作成者*" のアクセス許可があるユーザー アカウントを持っている必要があります。 顧客の Azure 管理者は、使用されているオファーが Azure Policy と競合しないこと、および Azure Marketplace を無効にするようにコスト管理を設定できないことを、確認する必要があります。
+Azure Marketplace の場合、顧客は、アクティブな Azure サブスクリプションと、そのサブスクリプションに対する " *所有者* " または " *共同作成者* " のアクセス許可があるユーザー アカウントを持っている必要があります。 顧客の Azure 管理者は、使用されているオファーが Azure Policy と競合しないこと、および Azure Marketplace を無効にするようにコスト管理を設定できないことを、確認する必要があります。
 
 ## <a name="collection-and-payouts"></a>徴収と支払い
 
@@ -291,19 +291,19 @@ Azure Marketplace の場合、顧客は、アクティブな Azure サブスク�
 
 ### <a name="where-can-i-find-payout-reporting-for-the-commercial-marketplace"></a>コマーシャル マーケットプレースの支払いレポートはどこで入手できますか?
 
-"*所有者*" または "*財務共同作成者*" のアクセス許可を持つユーザーは、パートナー センター内で支払いレポートを見ることができます。 これらのユーザーは、右上の請求書を持っている手のアイコンを選択して、レポートにアクセスできます。
+" *所有者* " または " *財務共同作成者* " のアクセス許可を持つユーザーは、パートナー センター内で支払いレポートを見ることができます。 これらのユーザーは、右上の請求書を持っている手のアイコンを選択して、レポートにアクセスできます。
 
 詳細については、「[支払い明細](/partner-center/payout-statement?context=/azure/marketplace/context/context)」を参照してください。
 
 ### <a name="how-do-i-configure-my-payout-method-and-destination"></a>支払い方法と支払い先はどのようにして構成できますか?
 
-"*所有者*" アクセス許可を持つユーザーは、パートナー センターで支払いアカウントと税フォームを設定できます。 この操作を行うには、右上にある **[設定]** ボタン (歯車アイコン) を選択します。
+" *所有者* " アクセス許可を持つユーザーは、パートナー センターで支払いアカウントと税フォームを設定できます。 この操作を行うには、右上にある **[設定]** ボタン (歯車アイコン) を選択します。
 
 詳細については、「[支払いアカウントと税フォームの設定](/partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context)」を参照してください。
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>コマーシャル マーケットプレースでは、返品と返金はサポートされていますか?
 
-顧客は、指定された期間内にサブスクリプションをキャンセルすることで、返金を受け取ることができます。 月単位のサブスクリプションの場合は 24 時間、年間サブスクリプションの場合は 14 日間です。 ソリューションの使用後に使用量に基づいて課金されるオファーは、返金の対象になりません。
+特定の条件下で、特定の料金については、お客様は返金を受けられます。 毎月課金される定期料金の返金要求は、購入または更新から 24 時間以内に受領される必要があります。 同様に、毎年課金される定期的な料金の返金要求は、購入または更新から 14 日以内に受領される必要があります。 この種類の返金は、使用 (仮想マシン プランまたは従量制課金) からの結果による料金には適用されません。
 
 ## <a name="resources"></a>リソース
 

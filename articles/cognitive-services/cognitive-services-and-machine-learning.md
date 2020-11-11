@@ -7,18 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 0b034d0135c66852b07e0a2ed2fd69e8c3fdc4a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96cca89b1206aaa7890648def694074a18b2aa17
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132842"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368867"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services と機械学習
 
 Cognitive Services は、一般的な問題を解決する機械学習機能を備えています。たとえば、テキストで感情 (センチメント) を分析したり、画像を分析して物や顔を認識したりすることができます。 これらのサービスを使用するために、機械学習やデータ サイエンスに関する特別な知識は必要ありません。 
 
-[Cognitive Services](welcome.md) はサービスの集合であり、それぞれが異なる一般化予測機能をサポートします。 適切なサービスを見つけやすくするために、サービスは複数のカテゴリに分類されています。 
+[Cognitive Services](./what-are-cognitive-services.md) はサービスの集合であり、それぞれが異なる一般化予測機能をサポートします。 適切なサービスを見つけやすくするために、サービスは複数のカテゴリに分類されています。 
 
 |サービス カテゴリ|目的|
 |--|--|
@@ -44,7 +44,7 @@ Cognitive Services は次の場合に使用します。
 
 機械学習システムを構築するプロセスでは、機械学習やデータ サイエンスの知識がある程度必要になります。
 
-機械学習は、[Azure Machine Learning (AML) の製品とサービス](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context)を通じて提供されます。
+機械学習は、[Azure Machine Learning (AML) の製品とサービス](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure%252fmachine-learning%252fstudio%252fcontext%252fml-context)を通じて提供されます。
 
 ## <a name="what-is-a-cognitive-service"></a>Cognitive Services とは
 
@@ -71,13 +71,13 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 
 ### <a name="no-additional-training-data-required"></a>追加のトレーニング データが不要
 
-完全にトレーニングされたモデルを提供するサービスは、"_不透明のボックス_" として扱われます。 その仕組みやトレーニングに使用されたデータを知る必要はありません。 完全にトレーニングされたモデルに自分のデータを取り込むことで予測が得られます。 
+完全にトレーニングされたモデルを提供するサービスは、" _不透明のボックス_ " として扱われます。 その仕組みやトレーニングに使用されたデータを知る必要はありません。 完全にトレーニングされたモデルに自分のデータを取り込むことで予測が得られます。 
 
 ### <a name="some-or-all-training-data-required"></a>トレーニング データが一部または全部必要
 
 一部のサービスでは、自分のデータを取り込んでからモデルをトレーニングすることができます。 これにより、サービスのデータとアルゴリズムに自分のデータを加えてモデルを拡張できます。 出力はニーズに合ったものとなります。 自分のデータを取り込むときに、サービスに固有の方法でデータにタグを付ける必要がある場合があります。 たとえば、花を識別するようにモデルをトレーニングする場合は、花の画像のカタログを、各画像における花の位置と共に提供してモデルをトレーニングできます。 
 
-あるサービスは、独自のデータを強化するためにユーザーにデータの提供を "_許可_" します。 あるサービスは、ユーザーにデータの提供を "_要求_" します。 
+あるサービスは、独自のデータを強化するためにユーザーにデータの提供を " _許可_ " します。 あるサービスは、ユーザーにデータの提供を " _要求_ " します。 
 
 ### <a name="real-time-or-near-real-time-data-required"></a>リアルタイムまたはほぼリアルタイムのデータが必要
 
@@ -91,9 +91,9 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 |--|--|--|--|
 |[Anomaly Detector](./Anomaly-Detector/overview.md)|x|x|x|
 |Bing Search |x|||
-|[Computer Vision](./Computer-vision/Home.md)|x|||
+|[Computer Vision](./computer-vision/overview.md)|x|||
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
-|[Custom Vision](./Custom-Vision-Service/home.md)||x||
+|[Custom Vision](./custom-vision-service/overview.md)||x||
 |[Face](./Face/Overview.md)|x|x||
 |[Form Recognizer](./form-recognizer/overview.md)||x||
 |[Immersive Reader](./immersive-reader/overview.md)|x|||
@@ -101,7 +101,7 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
 |[Personalizer](./personalizer/what-is-personalizer.md)|○*|○*|x|
 |[QnA Maker](./QnAMaker/Overview/overview.md)||x||
-|[Speaker Recognizer](./speaker-recognition/home.md)||x||
+|[Speaker Recognizer](./speech-service/speaker-recognition-overview.md)||x||
 |[Speech のテキスト読み上げ (TTS)](speech-service/text-to-speech.md)|x|x||
 |[Speech の音声テキスト変換 (STT)](speech-service/speech-to-text.md)|x|x||
 |[音声翻訳](speech-service/speech-translation.md)|x|||
@@ -127,16 +127,16 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 
 |Cognitive Service|モデル情報|
 |--|--|
-|[Custom Vision](./custom-vision-service/home.md)|Tensorflow for Android、CoreML for iOS11、ONNX for Windows ML に対して[エクスポート](./Custom-Vision-Service/export-model-python.md)|
+|[Custom Vision](./custom-vision-service/overview.md)|Tensorflow for Android、CoreML for iOS11、ONNX for Windows ML に対して[エクスポート](./Custom-Vision-Service/export-model-python.md)|
 
 ## <a name="learn-more"></a>詳細情報
 
-* [アーキテクチャ ガイド - Microsoft の機械学習製品とは](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
+* [アーキテクチャ ガイド - Microsoft の機械学習製品とは](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
 * [機械学習 - ディープ ラーニングと機械学習の比較の概要](../machine-learning/concept-deep-learning-vs-machine-learning.md)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure portal](cognitive-services-apis-create-account.md) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) で Cognitive Services のアカウントを作成する。
+* [Azure portal](cognitive-services-apis-create-account.md) または [Azure CLI](./cognitive-services-apis-create-account-cli.md) で Cognitive Services のアカウントを作成する。
 * コグニティブ サービスの[認証](authentication.md)方法を確認する。
 * 問題の特定とデバッグに[診断ログ](diagnostic-logging.md)を使用する。 
 * Docker [コンテナー](cognitive-services-container-support.md)に Cognitive Services をデプロイする。

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/11/2020
 ms.author: erhopf
-ms.openlocfilehash: d99cfc8b50155eb4cb2aecb3cb770f71b927ce1d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 01e46ad8d139f2cab2fbb6499dc66c7af5ceb554
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148691"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368765"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Azure Cognitive Services のサポート オプションとヘルプ オプション
 
@@ -32,39 +32,39 @@ Azure Cognitive Services の機能を調べ始めたばかりですか。 今ま
 
 ## <a name="post-a-question-on-microsoft-qa"></a>Microsoft Q&A に質問を投稿する
 
-製品に関する技術的な質問については、Azure に関するコミュニティ サポートの場である [Microsoft Q&A](https://docs.microsoft.com/answers/products/azure?product=all) をぜひご利用ください。Microsoft のエンジニアや Azure Most Valuable Professional (MVP)、エキスパート コミュニティからすばやく、信頼できる回答が得られます。
+製品に関する技術的な質問については、Azure に関するコミュニティ サポートの場である [Microsoft Q&A](/answers/products/azure?product=all) をぜひご利用ください。Microsoft のエンジニアや Azure Most Valuable Professional (MVP)、エキスパート コミュニティからすばやく、信頼できる回答が得られます。
 
 問題に対する回答が検索で見つからない場合は、Microsoft Q&A に新しい質問を送信してください。 質問するときは、次のタグのいずれかを使います。
 
-* [Cognitive Services](https://docs.microsoft.com/answers/topics/azure-cognitive-services.html)
+* [Cognitive Services](/answers/topics/azure-cognitive-services.html)
 
 **Vision**
 
-* [Computer Vision](https://docs.microsoft.com/answers/topics/azure-computer-vision.html)
-* [Custom Vision](https://docs.microsoft.com/answers/topics/azure-custom-vision.html)
-* [Face](https://docs.microsoft.com/answers/topics/azure-face.html)
-* [Form Recognizer](https://docs.microsoft.com/answers/topics/azure-form-recognizer.html)
-* [Video Indexer](https://docs.microsoft.com/answers/topics/azure-media-services.html)
+* [Computer Vision](/answers/topics/azure-computer-vision.html)
+* [Custom Vision](/answers/topics/azure-custom-vision.html)
+* [Face](/answers/topics/azure-face.html)
+* [Form Recognizer](/answers/topics/azure-form-recognizer.html)
+* [Video Indexer](/answers/topics/azure-media-services.html)
 
 **Language**
 
-* [Immersive Reader](https://docs.microsoft.com/answers/topics/azure-immersive-reader.html)
-* [Language Understanding (LUIS)](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)
-* [QnA Maker](https://docs.microsoft.com/answers/topics/azure-qna-maker.html)
-* [Text Analytics](https://docs.microsoft.com/answers/topics/azure-text-analytics.html)
-* [Translator](https://docs.microsoft.com/answers/topics/azure-translator.html)
+* [Immersive Reader](/answers/topics/azure-immersive-reader.html)
+* [Language Understanding (LUIS)](/answers/topics/azure-language-understanding.html)
+* [QnA Maker](/answers/topics/azure-qna-maker.html)
+* [Text Analytics](/answers/topics/azure-text-analytics.html)
+* [Translator](/answers/topics/azure-translator.html)
 
 **Speech**
 
-* [Speech サービス](https://docs.microsoft.com/answers/topics/azure-speech.html)
+* [Speech サービス](/answers/topics/azure-speech.html)
 
 
 **Decision**
 
-* [Anomaly Detector](https://docs.microsoft.com/answers/topics/azure-anomaly-detector.html) 
-* [Content Moderator](https://docs.microsoft.com/answers/topics/azure-content-moderator.html)
+* [Anomaly Detector](/answers/topics/azure-anomaly-detector.html) 
+* [Content Moderator](/answers/topics/azure-content-moderator.html)
 * [Metrics Advisor (プレビュー)]()
-* [Personalizer](https://docs.microsoft.com/answers/topics/azure-personalizer.html)
+* [Personalizer](/answers/topics/azure-personalizer.html)
 
 ## <a name="post-a-question-to-stack-overflow"></a>Stack Overflow に質問を投稿する
 
@@ -143,4 +143,4 @@ Stack Overflow に新しい質問を送信する場合は、次のいずれか�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure Cognitive Services とは](welcome.md)
+> [Azure Cognitive Services とは](./what-are-cognitive-services.md)

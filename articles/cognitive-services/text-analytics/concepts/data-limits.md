@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/14/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 068c2dc698e9f0b6d6f2f6486dff863c1343b178
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 905dde6932afb440c34bcccb563bfda98f23eb7c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88258280"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363835"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Text Analytics API のデータとレートの制限
 <a name="data-limits"></a>
@@ -31,7 +31,7 @@ ms.locfileid: "88258280"
 
 | 制限 | 値 |
 |------------------------|---------------|
-| 1 つのドキュメントの最大サイズ | [StringInfo.LengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) によって計測された 5,120 文字。 また、これは Text Analytics for Health コンテナーにも適用されます。 |
+| 1 つのドキュメントの最大サイズ | [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements) によって計測された 5,120 文字。 また、これは Text Analytics for Health コンテナーにも適用されます。 |
 | 要求全体の最大サイズ | 1 MB。 また、これは Text Analytics for Health コンテナーにも適用されます。 |
 
 1 回の要求で送信できるドキュメントの最大数は、使用している API のバージョンと機能によって異なります。

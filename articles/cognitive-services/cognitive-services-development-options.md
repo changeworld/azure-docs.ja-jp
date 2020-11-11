@@ -8,12 +8,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 05d3ca7cf532b739b943e2a87d5ab29ae66cabd7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4eaa33778287bfcda45547c24e6abe0606b6baa7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548452"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368799"
 ---
 # <a name="cognitive-services-development-options"></a>Cognitive Services の開発オプション
 
@@ -69,7 +69,7 @@ Cognitive Services のビッグ データの詳細については、[概要](./b
 
 ### <a name="azure-functions-and-azure-service-web-jobs"></a>Azure Functions と Azure Service Web ジョブ
 
-[Azure Functions](https://docs.microsoft.com/azure/azure-functions/) と [Azure App Service Web ジョブ](https://docs.microsoft.com/azure/app-service/)はどちらも、開発者向けに設計されたコード第一の統合サービスを提供するものであり、[Azure App Service](https://docs.microsoft.com/azure/app-service/) 上に構築されています。 これらの製品により、コードを記述するためのサーバーレス インフラストラクチャが提供されます。 そのコード内では、クライアント ライブラリと REST API を使用して、サービスを呼び出すことができます。 
+[Azure Functions](../azure-functions/index.yml) と [Azure App Service Web ジョブ](../app-service/index.yml)はどちらも、開発者向けに設計されたコード第一の統合サービスを提供するものであり、[Azure App Service](../app-service/index.yml) 上に構築されています。 これらの製品により、コードを記述するためのサーバーレス インフラストラクチャが提供されます。 そのコード内では、クライアント ライブラリと REST API を使用して、サービスを呼び出すことができます。 
 
 * **対象ユーザー** : 開発者とデータ科学者
 * **利点** :イベントによってトリガーされるコードを実行できるサーバーレス コンピューティング サービス。 
@@ -78,7 +78,7 @@ Cognitive Services のビッグ データの詳細については、[概要](./b
 
 ### <a name="azure-logic-apps"></a>Azure Logic Apps 
 
-[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) を使用すると、Power Automate と同じワークフロー デザイナーとコネクタが共有されますが、Visual Studio や DevOps との統合など、より高度な制御が提供されます。 Power Automate を使用すると、API にプロキシまたはラッパーを提供するサービス固有のコネクタを通じて、ご自分のコグニティブ サービス リソースと簡単に統合できます。 これらは、Power Automate で使用できるものと同じコネクタです。 
+[Azure Logic Apps](../logic-apps/index.yml) を使用すると、Power Automate と同じワークフロー デザイナーとコネクタが共有されますが、Visual Studio や DevOps との統合など、より高度な制御が提供されます。 Power Automate を使用すると、API にプロキシまたはラッパーを提供するサービス固有のコネクタを通じて、ご自分のコグニティブ サービス リソースと簡単に統合できます。 これらは、Power Automate で使用できるものと同じコネクタです。 
 
 * **対象ユーザー** : 開発者、インテグレーター、IT プロフェッショナル、DevOps
 * **利点** :コーディングの少ないソリューションで高度なオプションと統合を提供するデザイナー第一 (宣言型) の開発モデル。
@@ -87,7 +87,7 @@ Cognitive Services のビッグ データの詳細については、[概要](./b
 
 ### <a name="power-automate"></a>Power Automate 
 
-Power Automate は [Power Platform](https://docs.microsoft.com/power-platform/) のサービスであり、コードを記述せずにアプリとサービスの間の自動化されたワークフローを作成するのに役立ちます。 Power Automate ソリューションで Cognitive Services リソースと簡単にやりとりできるように、いくつかのコネクタが用意されています。 Power Automate は Logic Apps の上に構築されています。 
+Power Automate は [Power Platform](/power-platform/) のサービスであり、コードを記述せずにアプリとサービスの間の自動化されたワークフローを作成するのに役立ちます。 Power Automate ソリューションで Cognitive Services リソースと簡単にやりとりできるように、いくつかのコネクタが用意されています。 Power Automate は Logic Apps の上に構築されています。 
 
 * **対象ユーザー** : ビジネス ユーザー (アナリスト)、SharePoint 管理者
 * **利点** :デスクトップからマウス クリック、キーストローク、コピーと貼り付けの手順を記録するだけで、反復的な手動タスクを自動化できます。
@@ -96,7 +96,7 @@ Power Automate は [Power Platform](https://docs.microsoft.com/power-platform/) 
 
 ### <a name="ai-builder"></a>AI Builder 
 
-Microsoft Power Platform の機能である [AI Builder](https://docs.microsoft.com/ai-builder/overview) を使用すると、プロセスを自動化して結果を予測することにより、ビジネスのパフォーマンスを向上させることができます。 AI Builder を使用すると、ポイント アンド クリック エクスペリエンスによりソリューションに AI の機能を組み込むことができます。 Form Recognizer、Text Analytics、Computer Vision などの多くの Cognitive Services がここに直接統合されており、独自のコグニティブ サービスを作成する必要はありません。 
+Microsoft Power Platform の機能である [AI Builder](/ai-builder/overview) を使用すると、プロセスを自動化して結果を予測することにより、ビジネスのパフォーマンスを向上させることができます。 AI Builder を使用すると、ポイント アンド クリック エクスペリエンスによりソリューションに AI の機能を組み込むことができます。 Form Recognizer、Text Analytics、Computer Vision などの多くの Cognitive Services がここに直接統合されており、独自のコグニティブ サービスを作成する必要はありません。 
 
 * **対象ユーザー** : ビジネス ユーザー (アナリスト)、SharePoint 管理者
 * **利点** :ポイント アンド クリック エクスペリエンスにより AI の機能を組み込むターンキー ソリューション。 コーディングやデータ サイエンスのスキルは必要ありません。
@@ -124,24 +124,24 @@ Cognitive Services を使用してアプリケーションまたはワークフ�
 
 | 重要な要素 | サービス | カスタマイズ UI | クイック スタート |
 |--------|---------|------------------|------------|
-| 視覚 | Custom Vision | https://www.customvision.ai/ | [クイックスタート](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/quickstarts/image-classification?pivots=programming-language-csharp) | 
-| 視覚 | Form Recognizer | サンプル ラベル付けツール | [クイックスタート](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool?tabs=v2-0) |
-| 決定 | Content Moderator | https://contentmoderator.cognitive.microsoft.com/dashboard | [クイックスタート](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/human-in-the-loop) |
-| 決定 | Metrics Advisor | https://metricsadvisor.azurewebsites.net/  | [クイックスタート](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor/quickstarts/web-portal) |
-| 決定 | Personalizer | UI は、Azure portal の Personalizer リソースで使用できます。 | [クイックスタート](https://docs.microsoft.com/azure/cognitive-services/personalizer/quickstart-personalizer-sdk) |
+| 視覚 | Custom Vision | https://www.customvision.ai/ | [クイックスタート](./custom-vision-service/quickstarts/image-classification.md?pivots=programming-language-csharp) | 
+| 視覚 | Form Recognizer | サンプル ラベル付けツール | [クイックスタート](./form-recognizer/quickstarts/label-tool.md?tabs=v2-0) |
+| 決定 | Content Moderator | https://contentmoderator.cognitive.microsoft.com/dashboard | [クイックスタート](./content-moderator/review-tool-user-guide/human-in-the-loop.md) |
+| 決定 | Metrics Advisor | https://metricsadvisor.azurewebsites.net/  | [クイックスタート](./metrics-advisor/quickstarts/web-portal.md) |
+| 決定 | Personalizer | UI は、Azure portal の Personalizer リソースで使用できます。 | [クイックスタート](./personalizer/quickstart-personalizer-sdk.md) |
 | Language | Language Understanding (LUIS) | https://www.luis.ai/ | |
-| Language | QnA Maker | https://www.qnamaker.ai/ | [クイックスタート](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base) |
-| Language | Translator、カスタム翻訳ツール | https://portal.customtranslator.azure.ai/ | [クイックスタート](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/quickstart-build-deploy-custom-model) |
-| Speech | カスタム コマンド | https://speech.microsoft.com/ | [クイックスタート](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-commands) |
-| Speech | Custom Speech | https://speech.microsoft.com/ | [クイックスタート](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-speech) |
-| Speech | Custom Voice | https://speech.microsoft.com/ | [クイックスタート](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice) |  
+| Language | QnA Maker | https://www.qnamaker.ai/ | [クイックスタート](./qnamaker/quickstarts/create-publish-knowledge-base.md) |
+| Language | Translator、カスタム翻訳ツール | https://portal.customtranslator.azure.ai/ | [クイックスタート](./translator/custom-translator/quickstart-build-deploy-custom-model.md) |
+| Speech | カスタム コマンド | https://speech.microsoft.com/ | [クイックスタート](./speech-service/custom-commands.md) |
+| Speech | Custom Speech | https://speech.microsoft.com/ | [クイックスタート](./speech-service/how-to-custom-speech.md) |
+| Speech | Custom Voice | https://speech.microsoft.com/ | [クイックスタート](./speech-service/how-to-custom-voice.md) |  
 
 ### <a name="continuous-integration-and-delivery-with-devops-and-github-actions"></a>DevOps と GitHub Actions を使用した継続的インテグレーションと継続的デリバリー
 
 Language Understanding と Speech サービスには、Azure DevOps と GitHub Actions を利用した継続的インテグレーション ソリューションと継続的配置ソリューションが用意されています。 これらのツールは、カスタム モデルのトレーニング、テスト、リリース管理を自動化するために使用されます。 
 
-* [Custom Speech の CI/CD](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-speech-continuous-integration-continuous-deployment)
-* [LUIS 用の CI/CD](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-devops-automation)
+* [Custom Speech の CI/CD](./speech-service/how-to-custom-speech-continuous-integration-continuous-deployment.md)
+* [LUIS 用の CI/CD](./luis/luis-concept-devops-automation.md)
 
 ## <a name="on-prem-containers"></a>オンプレミス コンテナー 
 
@@ -150,4 +150,4 @@ Cognitive Services の多くは、オンプレミスでのアクセスと使用�
 ## <a name="next-steps"></a>次のステップ
 <!--
 * Learn more about low code development options for Cognitive Services -->
-* [Cognitive Services リソースを作成して構築を始める](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Clinux)
+* [Cognitive Services リソースを作成して構築を始める](./cognitive-services-apis-create-account.md?tabs=multiservice%252clinux)

@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f7bfa15b12618715bf0d911e4b4927a1fa327107
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b93ac774dffb837d93853353e83b8da4ab4d8d4
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539131"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027161"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights のログベースのメトリックと事前に集計されたメトリック
 
@@ -41,6 +41,28 @@ ms.locfileid: "91539131"
 
 ここで触れておく必要があることは、インジェスト サンプリングの前に収集エンドポイントでイベントが事前に集計されるということです。つまり、アプリケーションで使用する SDK のバージョンに関係なく、[インジェスト サンプリング](./sampling.md)が事前に集計されたメトリックの精度に影響することはありません。  
 
+### <a name="sdk-supported-pre-aggregated-metrics-table"></a>SDK でサポートされている事前集計されたメトリック テーブル
+
+| 現在の本番環境 SDK | 標準メトリック (SDK 事前集計) | カスタム メトリック (SDK 事前集計なし) | カスタム メトリック (SDK 事前集計あり)|
+|------------------------------|-----------------------------------|----------------------------------------------|---------------------------------------|
+| .NET Core と .NET Framework | サポート対象 (V2.13.1 以降)| [TrackMetric](api-custom-events-metrics.md#trackmetric) を介してサポート対象| [GetMetric](get-metric.md) を介してサポート対象 (V 2.7.2 以降) |
+| Java                         | サポートされていません       | [TrackMetric](api-custom-events-metrics.md#trackmetric) を介してサポート対象| サポートされていません                           |
+| Node.js                      | サポートされていません       | [TrackMetric](api-custom-events-metrics.md#trackmetric) を介してサポート対象| サポートされていません                           |
+| Python                       | サポートされていません       | サポートされています                                 | [OpenCensus.stats](opencensus-python.md#metrics) を介してサポート対象 |  
+
+
+### <a name="codeless-supported-pre-aggregated-metrics-table"></a>コード不要でサポートされる事前集計されたメトリック テーブル
+
+| 現在の本番環境 SDK | 標準メトリック (SDK 事前集計) | カスタム メトリック (SDK 事前集計なし) | カスタム メトリック (SDK 事前集計あり)|
+|-------------------------|--------------------------|-------------------------------------------|-----------------------------------------|
+| ASP.NET                 | サポート対象 <sup>1<sup>    | サポートされていません                             | サポートされていません                           |
+| ASP.NET Core            | サポート対象 <sup>2<sup>    | サポートされていません                             | サポートされていません                           |
+| Java                    | サポートされていません            | サポートされていません                             | [サポートされています](java-in-process-agent.md#metrics) |
+| Node.js                 | サポートされていません            | サポートされていません                             | サポートされていません                           |
+
+1. App Service での ASP.NET コード不要アタッチでは、"完全" 監視モードでのみメトリックが出力されます。 App Service、VM/VMSS、およびオンプレミスの ASP.NET コード不要アタッチでは、ディメンションのない標準メトリックが出力されます。 すべてのディメンションに SDK が必要です。
+2. App Service での ASP.NET Core コード不要アタッチでは、ディメンションのない標準メトリックが出力されます。 すべてのディメンションに SDK が必要です。
+
 ## <a name="using-pre-aggregation-with-application-insights-custom-metrics"></a>Application Insights カスタム メトリックでの事前集計の使用
 
 カスタム メトリックで事前集計を使用することができます。 2 つの主な利点は、カスタム メトリックのディメンションの構成およびアラート生成が可能であり、SDK から Application Insights 収集エンドポイントに送信されるデータ量を減らせることです。
@@ -67,7 +89,7 @@ ms.locfileid: "91539131"
 
 メトリックを Application Insights に取り込むと、[こちら](./pricing.md#pricing-model)で説明されているように、ログベースか事前に集計されているかにかかわらず、取り込まれたデータのサイズに基づいてコストが発生します。 すべてのディメンションを含むカスタム メトリックは常に Application Insights ログストアに格納されます。さらに、カスタム メトリックの事前に集計されたバージョン (ディメンションなし) は既定でメトリック ストアに転送されます。
 
-[[カスタム メトリック ディメンションに関するアラートを有効にします]](#custom-metrics-dimensions-and-pre-aggregation) オプションを選択して、事前に集計されたメトリックのすべてのディメンションをメトリック ストアに格納すると、[カスタム メトリックの価格](https://azure.microsoft.com/pricing/details/monitor/)に基づいて**追加の**コストが生じる可能性があります。
+[[カスタム メトリック ディメンションに関するアラートを有効にします]](#custom-metrics-dimensions-and-pre-aggregation) オプションを選択して、事前に集計されたメトリックのすべてのディメンションをメトリック ストアに格納すると、 [カスタム メトリックの価格](https://azure.microsoft.com/pricing/details/monitor/)に基づいて **追加の** コストが生じる可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 

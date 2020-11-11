@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 426445342263ad10f174ecf7cca926805eb601e6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bdd12b5c866ee723547513e35a5adcfabb59dab9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669634"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364423"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>テキストおよび音声翻訳の言語と地域のサポート
 
@@ -347,7 +347,7 @@ Languages メソッドを使用して、翻訳でサポートされている言�
 | ウェールズ語 | `cy` |
 
 ## <a name="speech-translation"></a>音声翻訳
-音声翻訳は、Cognitive Services Speech サービスで翻訳を使用して利用できます。 音声翻訳の使用に関する詳細を確認したり、[使用可能なすべての言語オプション](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)を表示したりするには、「[Speech Service のドキュメント](https://docs.microsoft.com/azure/cognitive-services/speech-service/)」を参照してください。
+音声翻訳は、Cognitive Services Speech サービスで翻訳を使用して利用できます。 音声翻訳の使用に関する詳細を確認したり、[使用可能なすべての言語オプション](../speech-service/language-support.md)を表示したりするには、「[Speech Service のドキュメント](../speech-service/index.yml)」を参照してください。
 
 ### <a name="speech-to-text"></a>音声テキスト変換
 任意のテキスト言語に翻訳するために、音声をテキストに変換します。 音声テキスト変換は、音声テキスト変換、または音声合成と組み合わせて使用する場合は音声間翻訳に使用されます。

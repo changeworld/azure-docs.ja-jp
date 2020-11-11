@@ -10,17 +10,17 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 43086c245f1d16975eae6951b1e8c2cb56fe5241
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ac581b96ba4e29837570ab8c01bf6c927eb34a28
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098333"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367524"
 ---
 # <a name="spell-check-api-upgrade-guide"></a>Spell Check API のアップグレード ガイド
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
@@ -77,4 +77,4 @@ Blocked|InvalidRequest.Blocked
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [使用と表示の要件](./UseAndDisplayRequirements.md)
+> [使用と表示の要件](../bing-web-search/use-display-requirements.md)

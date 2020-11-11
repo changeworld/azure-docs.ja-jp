@@ -10,17 +10,17 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
-ms.openlocfilehash: 3b922dca46b575abc428aa6e76fb920ffc13d6b0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 06f37404db1c07a97aa1bb2d6b7ca88485dc31a5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86028012"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365183"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Go を使用して Text Analytics Cognitive Service を呼び出す 
 <a name="HOLTop"></a>
 
-この記事では、 [Text Analytics API シリーズ](//go.microsoft.com/fwlink/?LinkID=759711) を Go で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされているエンティティの識別](#Entities)を行う方法について説明します。
+この記事では、[Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) を Go で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされているエンティティの識別](#Entities)を行う方法について説明します。
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
@@ -442,7 +442,7 @@ func main() {
 
 ## <a name="identify-entities"></a>エンティティの識別
 
-Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 [Entities](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) は、テキストから "United States" などの単語を抽出して、その種類や Wikipedia リンクを返します。 "United States" の種類は `location` で、Wikipedia のリンクは `https://en.wikipedia.org/wiki/United_States` です。  次の例では、英語のドキュメントのエンティティを識別しています。
+Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 [Entities](../how-tos/text-analytics-how-to-entity-linking.md) は、テキストから "United States" などの単語を抽出して、その種類や Wikipedia リンクを返します。 "United States" の種類は `location` で、Wikipedia のリンクは `https://en.wikipedia.org/wiki/United_States` です。  次の例では、英語のドキュメントのエンティティを識別しています。
 
 1. 任意のコード エディターで新しい Go プロジェクトを作成します。
 1. 次に示すコードを追加します。

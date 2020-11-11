@@ -10,21 +10,21 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: 8c724925a12535c561b035296e374691f3fb2689
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9c095a46b3a0526b23645c9cbb5e99eb8eda9067
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098350"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366402"
 ---
 # <a name="bing-news-search-api-endpoints"></a>Bing News Search API エンドポイント
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
-> 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
-**News Search API** は、ニュース記事、Web ページ、画像、動画、 [エンティティ](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)を返します。 エンティティには、人物、場所、またはトピックに関する概要情報が含まれます。
+**News Search API** は、ニュース記事、Web ページ、画像、動画、 [エンティティ](../bing-entities-search/overview.md)を返します。 エンティティには、人物、場所、またはトピックに関する概要情報が含まれます。
 
 ## <a name="endpoints"></a>エンドポイント
 
@@ -44,7 +44,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/news/search
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-カテゴリ別にトップ ニュース項目を返します。 `category=business`、`category=sports`、または `category=entertainment` を使用してビジネス、スポーツ、またはエンターテイメントのトップ記事を具体的に要求できます。  `category` パラメーターは、`/news` URL でのみ使用できます。 カテゴリを指定するための正式な要件がいくつかあります。[クエリ パラメーター](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters)に関するドキュメントの `category` に関するページをご覧ください。 検索語を URL エンコードし、それを `q=""` パラメーターに追加することで、クエリを送信します。 可用性については、[サポートされている国/地域と市場](language-support.md#supported-markets-for-news-endpoint)に関する記事を参照してください。
+カテゴリ別にトップ ニュース項目を返します。 `category=business`、`category=sports`、または `category=entertainment` を使用してビジネス、スポーツ、またはエンターテイメントのトップ記事を具体的に要求できます。  `category` パラメーターは、`/news` URL でのみ使用できます。 カテゴリを指定するための正式な要件がいくつかあります。[クエリ パラメーター](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters)に関するドキュメントの `category` に関するページをご覧ください。 検索語を URL エンコードし、それを `q=""` パラメーターに追加することで、クエリを送信します。 可用性については、[サポートされている国/地域と市場](language-support.md#supported-markets-for-news-endpoint)に関する記事を参照してください。
 
 ### <a name="trending-news-topics"></a>ニュース トピックのトレンド 
 
@@ -56,7 +56,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics
 
 ## <a name="next-steps"></a>次のステップ
 
-ヘッダー、パラメーター、市場コード、応答オブジェクト、エラーなどについて詳しくは、[Bing News Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) のリファレンスをご覧ください。
+ヘッダー、パラメーター、市場コード、応答オブジェクト、エラーなどについて詳しくは、[Bing News Search API v7](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) のリファレンスをご覧ください。
 
 各エンドポイントでサポートされるパラメーターについて詳しくは、各種類のリファレンス ページをご覧ください。
-News Search API を使用した基本的な要求の例については、[Bing News Search クイック スタート](https://docs.microsoft.com/azure/cognitive-services/bing-news-search)のページをご覧ください。
+News Search API を使用した基本的な要求の例については、[Bing News Search クイック スタート](/azure/cognitive-services/bing-news-search)のページをご覧ください。

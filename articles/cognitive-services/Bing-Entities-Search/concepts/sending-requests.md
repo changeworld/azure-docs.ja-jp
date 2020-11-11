@@ -10,17 +10,17 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 25750f690129439f0f614724a2bb62b596f322ea
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b290539bf6424895a9685c1e4cdb53d8fb8cfb41
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084988"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365909"
 ---
 # <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Bing Entity Search API への検索要求の送信
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
@@ -40,18 +40,18 @@ https://api.cognitive.microsoft.com/bing/v7.0/entities
 
 ## <a name="specifying-query-parameters-and-headers"></a>クエリ パラメーターとヘッダーの指定
 
-要求では、ユーザーの検索語句が含まれている [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) クエリ パラメーターを指定する必要があります。 要求では [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mkt) クエリ パラメーターも指定する必要があります。このパラメーターは、結果取得元の市場を示します。 省略可能なクエリ パラメーターの一覧については、「[Query Parameters (クエリ パラメーター)](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters)」を参照してください。 すべてのクエリ パラメーターを URL エンコードします。  
+要求では、ユーザーの検索語句が含まれている [q](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) クエリ パラメーターを指定する必要があります。 要求では [mkt](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mkt) クエリ パラメーターも指定する必要があります。このパラメーターは、結果取得元の市場を示します。 省略可能なクエリ パラメーターの一覧については、「[Query Parameters (クエリ パラメーター)](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters)」を参照してください。 すべてのクエリ パラメーターを URL エンコードします。  
   
-要求では、[Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#subscriptionkey) ヘッダーを指定する必要があります。 省略可能ですが、次のヘッダーも指定することをお勧めします。  
+要求では、[Ocp-Apim-Subscription-Key](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#subscriptionkey) ヘッダーを指定する必要があります。 省略可能ですが、次のヘッダーも指定することをお勧めします。  
   
--   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#useragent)  
--   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientid)  
--   [X-MSEdge-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientip)  
--   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#location)  
+-   [User-Agent](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#useragent)  
+-   [X-MSEdge-ClientID](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientid)  
+-   [X-MSEdge-ClientIP](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientip)  
+-   [X-Search-Location](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#location)  
 
 クライアント IP と場所のヘッダーは、場所に対応したコンテンツを返すために重要です。  
 
-すべての要求ヘッダーと応答ヘッダーのリストについては、「[Headers](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers)」(ヘッダー) を参照してください。
+すべての要求ヘッダーと応答ヘッダーのリストについては、「[Headers](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers)」(ヘッダー) を参照してください。
 
 ## <a name="the-request"></a>要求
 
@@ -71,7 +71,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="the-response"></a>応答
 
-前述の要求への応答は次のようになります。 例では、Bing に固有の応答ヘッダーも示されています。 応答オブジェクトについては、「[SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse)」をご覧ください。
+前述の要求への応答は次のようになります。 例では、Bing に固有の応答ヘッダーも示されています。 応答オブジェクトについては、「[SearchResponse](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse)」をご覧ください。
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -140,4 +140,4 @@ BingAPIs-Market: en-US
 ## <a name="next-steps"></a>次のステップ
 
 * [Bing Entity API でのエンティティの検索](search-for-entities.md)
-* [Bing API の使用と表示の要件](../use-display-requirements.md)
+* [Bing API の使用と表示の要件](../../bing-web-search/use-display-requirements.md)

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
 ms.date: 07/17/2020
-ms.openlocfilehash: 5e3606ac04d5023e28bc2304aba79a8211c58881
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a62c7dc8238b642aeaa59a7b470266378832e26e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87133080"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363886"
 ---
 # <a name="whats-new-in-personalizer"></a>Personalizer の新機能
 
@@ -31,7 +31,7 @@ ms.locfileid: "87133080"
 
 ### <a name="may-2020---build-conference"></a>2020 年 5 月 - //Build Conference
 
-**パブリック プレビュー**では、次のものを使用できます。
+**パブリック プレビュー** では、次のものを使用できます。
 
  * 学習動作としての[見習いモード](concept-apprentice-mode.md)。
 
@@ -62,5 +62,5 @@ Build 2019 Conference では、次のプレビュー機能が公開されまし�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [クイック スタート: C# でフィードバック ループを作成する](csharp-quickstart-commandline-feedback-loop.md)
+* [クイック スタート: C# でフィードバック ループを作成する](./quickstart-personalizer-sdk.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
 * [対話型デモを使用する](https://personalizationdemo.azurewebsites.net/)

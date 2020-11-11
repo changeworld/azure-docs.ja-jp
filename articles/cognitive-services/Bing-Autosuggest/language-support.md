@@ -10,17 +10,17 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: d6971dafc7e3157b3de62284b400ebdc6ddc19c0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6156dbe4d189800172250f56ad3ab095bea17bb8
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101903"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364515"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Bing Autosuggest API の言語と地域のサポート
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
@@ -71,5 +71,5 @@ Bing Autosuggest API でサポートされている言語を次に示します�
 
 ## <a name="see-also"></a>関連項目
 
-- [Azure Cognitive Services のドキュメント ページ](https://docs.microsoft.com/azure/cognitive-services/)
+- [Azure Cognitive Services のドキュメント ページ](../index.yml)
 - [Azure Cognitive Services の製品ページ](https://azure.microsoft.com/services/cognitive-services/)

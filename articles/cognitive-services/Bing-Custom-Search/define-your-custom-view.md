@@ -10,17 +10,17 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 57edc16f4396e0fe71380d4f51fa9e0dcca1ef03
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 52819caeb833eb475c8ea2c476ef5ba27681a50c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090819"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367558"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Bing Custom Search エクスペリエンスを構成する
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
@@ -79,16 +79,16 @@ Web スライスを **[アクティブ]** 一覧に追加すると、Bing Custom
 
 ## <a name="search-for-images-and-videos"></a>画像とビデオを検索する
 
-[Bing Custom Image Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) または [Bing Custom Video Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference) を使用すると、Web コンテンツと同様に画像とビデオを検索できます。 このような結果は[ホステッド UI](hosted-ui.md) または API を使用して表示できます。 
+[Bing Custom Image Search API](/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) または [Bing Custom Video Search API](/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference) を使用すると、Web コンテンツと同様に画像とビデオを検索できます。 このような結果は[ホステッド UI](hosted-ui.md) または API を使用して表示できます。 
 
-このような API は、カスタムではない [Bing Image Search](../Bing-Image-Search/overview.md) API と [Bing Video Search](../Bing-Video-Search/search-the-web.md) API と似ていますが、Web 全体を検索するため、`customConfig` クエリ パラメーターは必要ありません。 画像やビデオの操作の詳細については、これらのドキュメント セットを参照してください。 
+このような API は、カスタムではない [Bing Image Search](../Bing-Image-Search/overview.md) API と [Bing Video Search](../bing-video-search/overview.md) API と似ていますが、Web 全体を検索するため、`customConfig` クエリ パラメーターは必要ありません。 画像やビデオの操作の詳細については、これらのドキュメント セットを参照してください。 
 
 ## <a name="test-your-search-instance-with-the-preview-pane"></a>[プレビュー] ウィンドウを使用して検索インスタンスをテストする
 
 ポータルの右側にあるプレビュー ウィンドウを使用して検索インスタンスを試行し、検索クエリとビューの結果を送信することができます。 
 
 1. 検索ボックスの下にある **[My Instance]\(マイ インスタンス\)** を選択します。 **[Bing]** を選択して、検索エクスペリエンスの結果を Bing と比較することができます。 
-2. 安全な検索フィルターと検索する市場を選択します (「[クエリ パラメーター](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)」を参照してください)。
+2. 安全な検索フィルターと検索する市場を選択します (「[クエリ パラメーター](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)」を参照してください)。
 3. クエリを入力し、Enter キーを押すか、または検索アイコンをクリックして、現在の構成から結果を表示します。 **[Web]** 、 **[画像]** 、または **[ビデオ]** のいずれかをクリックして実行する検索の種類を変更することで、対応する結果を取得できます。 
 
 <a name="adjustrank"></a>
@@ -165,4 +165,4 @@ Web ページを一番上にピン留めする方法は 2 つあります。
 - [カスタム検索の呼び出し](./search-your-custom-view.md)
 - [ホストされている UI エクスペリエンスの構成](./hosted-ui.md)
 - [装飾マーカーを使用してテキストを強調表示する](../bing-web-search/hit-highlighting.md)
-- [Web ページのページング](./page-webpages.md)
+- [Web ページのページング](../bing-web-search/paging-search-results.md)
