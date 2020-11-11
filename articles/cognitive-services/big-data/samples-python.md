@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: caf492c2cd3940fd7f37e2a4462c8376a127f393
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 590ddef27315f37719da5b28c68b6c402371e986
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86189313"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363257"
 ---
 # <a name="python-samples-for-cognitive-services-for-big-data"></a>ビッグ データ向け Cognitive Services の Python サンプル
 
@@ -56,7 +56,7 @@ assert service_key != "ADD_YOUR_SUBSCRIPION_KEY"
 
 ## <a name="text-analytics-sample"></a>Text Analytics のサンプル
 
-[Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) サービスには、テキストからインテリジェントな分析情報を抽出するためのアルゴリズムがいくつか用意されています。 たとえば、指定された入力テキストのセンチメントを見つけることができます。 このサービスでは、0.0 と 1.0 の間のスコアが返されます。低いスコアは否定的なセンチメントを示し、高いスコアは肯定的なセンチメントを示します。  このサンプルでは、3 つの単純な文を使用し、それぞれのセンチメントを返します。
+[Text Analytics](../text-analytics/index.yml) サービスには、テキストからインテリジェントな分析情報を抽出するためのアルゴリズムがいくつか用意されています。 たとえば、指定された入力テキストのセンチメントを見つけることができます。 このサービスでは、0.0 と 1.0 の間のスコアが返されます。低いスコアは否定的なセンチメントを示し、高いスコアは肯定的なセンチメントを示します。  このサンプルでは、3 つの単純な文を使用し、それぞれのセンチメントを返します。
 
 ```python
 from pyspark.sql.functions import col
@@ -78,20 +78,20 @@ sentiment = (TextSentiment()
     .setLanguageCol("language"))
 
 # Show the results of your text query in a table format
-display(sentiment.transform(df).select("text", col("sentiment")[0].getItem("score").alias("sentiment")))
+display(sentiment.transform(df).select("text", col("sentiment")[0].getItem("sentiment").alias("sentiment")))
 ```
 
 ### <a name="expected-result"></a>予想される結果
 
 | text                                      | センチメント                                             |
 |:------------------------------------------|:------------------------------------------------------|
-| I am so happy today, its sunny!           | 0.9789592027664185                                    |
-| I am frustrated by this rush hour traffic | 0.023795604705810547                                  |
-| The cognitive services on spark aint bad  | 0.8888956308364868                                    |
+| I am so happy today, its sunny!           | ポジティブ                                              |
+| I am frustrated by this rush hour traffic | ネガティブ                                              |
+| The cognitive services on spark aint bad  | ポジティブ                                              |
 
 ## <a name="computer-vision-sample"></a>Computer Vision のサンプル
 
-[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) は、画像を分析して、顔、物体、自然言語による記述などの構造を識別します。 このサンプルでは、一連の画像にタグを付けます。 タグは、認識可能な物体、人物、風景、アクションなど、画像内のものを 1 単語で表したものです。
+[Computer Vision](../computer-vision/index.yml) は、画像を分析して、顔、物体、自然言語による記述などの構造を識別します。 このサンプルでは、一連の画像にタグを付けます。 タグは、認識可能な物体、人物、風景、アクションなど、画像内のものを 1 単語で表したものです。
 
 ```python
 
@@ -126,7 +126,7 @@ display(analysis.transform(df).select("image", "analysis_results.description.tag
 
 ## <a name="bing-image-search-sample"></a>Bing Image Search のサンプル
 
-[Bing Image Search](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview) では、Web を検索して、ユーザーの自然言語クエリに関連する画像を取得します。 このサンプルでは、引用付きの画像を検索するテキスト クエリを使用しています。 クエリに関連する写真を含む画像 URL のリストが返されます。
+[Bing Image Search](../bing-image-search/overview.md) では、Web を検索して、ユーザーの自然言語クエリに関連する画像を取得します。 このサンプルでは、引用付きの画像を検索するテキスト クエリを使用しています。 クエリに関連する写真を含む画像 URL のリストが返されます。
 
 ```python
 from pyspark.ml import PipelineModel
@@ -171,7 +171,7 @@ display(pipeline.transform(bingParameters))
 
 
 ## <a name="speech-to-text-sample"></a>音声テキスト変換のサンプル
-[音声テキスト変換](https://docs.microsoft.com/azure/cognitive-services/speech-service/index-speech-to-text)サービスでは、音声のストリームまたはファイルをテキストに変換します。 このサンプルでは、2 つのオーディオ ファイルを文字に起こします。 最初のファイルは簡単に理解できますが、2 番目のファイルはより難しくなっています。
+[音声テキスト変換](../speech-service/index-speech-to-text.yml)サービスでは、音声のストリームまたはファイルをテキストに変換します。 このサンプルでは、2 つのオーディオ ファイルを文字に起こします。 最初のファイルは簡単に理解できますが、2 番目のファイルはより難しくなっています。
 
 ```python
 
@@ -205,7 +205,7 @@ display(speech_to_text.transform(df).select("url", "text.DisplayText"))
 
 ## <a name="anomaly-detector-sample"></a>Anomaly Detector のサンプル
 
-[Anomaly Detector](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/) は、時系列データ内の不規則性を検出するのに適しています。 このサンプルでは、このサービスを使用して、時系列全体での異常を検出します。
+[Anomaly Detector](../anomaly-detector/index.yml) は、時系列データ内の不規則性を検出するのに適しています。 このサンプルでは、このサービスを使用して、時系列全体での異常を検出します。
 
 ```python
 from pyspark.sql.functions import lit

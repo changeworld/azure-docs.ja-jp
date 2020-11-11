@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: 2b13ac02a8a276b2ef46c8ffd5f13846e394d938
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3bc2d339ade7dade3cf3be6e63e150c77d3c44b4
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166932"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366759"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>方法:Text Analytics API を使用してセンチメントを検出する
 
@@ -23,7 +23,7 @@ Text Analytics API の感情分析機能では、テキストを評価し、各�
 
 感情分析要求の送信後、文レベルやドキュメントレベルのセンチメント ラベル ("negative"、"neutral"、"positive" など) と信頼度スコアが API から返されます。
 
-感情分析はさまざまな言語をサポートしており、さらにプレビューで追加されます。 詳細については、[サポートされている言語](../text-analytics-supported-languages.md)に関するページを参照してください。
+感情分析はさまざまな言語をサポートしており、さらにプレビューで追加されます。 詳細については、[サポートされている言語](../language-support.md)に関するページを参照してください。
 
 ## <a name="sentiment-analysis-versions-and-features"></a>感情分析のバージョンと機能
 
@@ -40,7 +40,7 @@ Text Analytics API の感情分析機能では、テキストを評価し、各�
 
 Sentiment Analysis v3 では、文レベルとドキュメント レベルで返されるセンチメント ラベルとそれぞれの信頼度スコアがテキストに適用されます。 
 
-ラベルは、*positive*、*negative*、および *neutral* です。 ドキュメント レベルでは、*mixed* センチメント ラベルが返されることもあります。 ドキュメントのセンチメントは、次のように決定されます。
+ラベルは、 *positive* 、 *negative* 、および *neutral* です。 ドキュメント レベルでは、 *mixed* センチメント ラベルが返されることもあります。 ドキュメントのセンチメントは、次のように決定されます。
 
 | 文章のセンチメント                                                                            | 返されるドキュメントのラベル |
 |-----------------------------------------------------------------------------------------------|-------------------------|
@@ -76,7 +76,7 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 
 ## <a name="structure-the-request"></a>要求を構造化する
 
-POST 要求を作成します。 次のリファレンス リンクにある [Postman](text-analytics-how-to-call-api.md) または **API テスト コンソール**を使用して、簡単に要求を構造化し、送信することができます。 
+POST 要求を作成します。 次のリファレンス リンクにある [Postman](text-analytics-how-to-call-api.md) または **API テスト コンソール** を使用して、簡単に要求を構造化し、送信することができます。 
 
 #### <a name="version-31-preview1"></a>[Version 3.1-preview.1](#tab/version-3-1)
 
@@ -93,7 +93,7 @@ POST 要求を作成します。 次のリファレンス リンクにある [Po
 Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)を使用して、感情分析用の HTTPS エンドポイントを設定します。 使用するバージョンの正しい URL を指定する必要があります。 次に例を示します。
 
 > [!NOTE]
-> Azure portal で Text Analytics リソースのキーとエンドポイントを確認できます。 それらは、リソースの**クイック スタート** ページの**リソース管理**の下にあります。 
+> Azure portal で Text Analytics リソースのキーとエンドポイントを確認できます。 それらは、リソースの **クイック スタート** ページの **リソース管理** の下にあります。 
 
 #### <a name="version-31-preview1"></a>[Version 3.1-preview.1](#tab/version-3-1)
 
@@ -146,7 +146,7 @@ Text Analytics API はステートレスです。 データはアカウントに
 
 ### <a name="sentiment-analysis-v31-example-response"></a>感情分析 v3.1 の応答の例
 
-Sentiment Analysis v3.1 では、「**Version 3.0**」タブに示した応答オブジェクトに加え意見マイニングが返されます。以下の応答では、"*The restaurant had great food and our waiter was friendly (レストランの食事はすばらしく、ウエーターの態度も良かった)* " という文に、"*food (食事)* " と "*waiter (ウエーター)* " の 2 つのアスペクトが存在します。 それぞれのアスペクトの `relations` プロパティには `ref` 値があり、関連する `documents`、`sentences`、`opinions` オブジェクトへの URI 参照が設定されています。
+Sentiment Analysis v3.1 では、「 **Version 3.0** 」タブに示した応答オブジェクトに加え意見マイニングが返されます。以下の応答では、" *The restaurant had great food and our waiter was friendly (レストランの食事はすばらしく、ウエーターの態度も良かった)* " という文に、" *food (食事)* " と " *waiter (ウエーター)* " の 2 つのアスペクトが存在します。 それぞれのアスペクトの `relations` プロパティには `ref` 値があり、関連する `documents`、`sentences`、`opinions` オブジェクトへの URI 参照が設定されています。
 
 ```json
 {

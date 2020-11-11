@@ -11,17 +11,17 @@ ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: acb32e2fe3dae45cc4a95cea1b9fa4ea01d576c0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f68618c4387bc5105914eccc4e6149650119fd0f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102181"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366079"
 ---
 # <a name="tutorial-find-similar-images-from-previous-searches-using-an-image-insights-token"></a>チュートリアル:画像の分析情報トークンを使用して以前の検索から似た画像を見つける
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
@@ -44,7 +44,7 @@ Visual Search クライアント ライブラリを使用すると、前に実�
 
 ## <a name="get-the-imageinsightstoken-from-the-bing-image-search-client-library"></a>Bing Image Search クライアント ライブラリから ImageInsightsToken を取得する
 
-このアプリケーションでは、[Bing Image Search クライアント ライブラリ](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)によって取得された `ImageInsightsToken` を使用します。 新しい C# コンソール アプリケーションで、`ImageSearchClient()` を使用して API を呼び出すクライアントを作成します。 その後、クエリで `SearchAsync()` を使用します。
+このアプリケーションでは、[Bing Image Search クライアント ライブラリ](../bing-image-search/quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)によって取得された `ImageInsightsToken` を使用します。 新しい C# コンソール アプリケーションで、`ImageSearchClient()` を使用して API を呼び出すクライアントを作成します。 その後、クエリで `SearchAsync()` を使用します。
 
 ```csharp
 var client = new ImageSearchClient(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
@@ -129,7 +129,7 @@ if (visualSearchResults.Tags.Count > 0)
     }
 ```
 
-これらのデータ型の詳細については、「[Images - Visual Search (画像 - Visual Search)](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch)」を参照してください。
+これらのデータ型の詳細については、「[Images - Visual Search (画像 - Visual Search)](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch)」を参照してください。
 
 ## <a name="returned-urls"></a>返された URL
 

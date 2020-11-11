@@ -11,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: mbullwin
-ms.openlocfilehash: 8ef5d8e049ac4a779d5139945bf1073f38eb434c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0982f89d59f2ef9a282a46a93b98801b9df00a40
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017660"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368714"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用した、ストリーミング データの異常検出
 
@@ -47,7 +47,7 @@ ms.locfileid: "92017660"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Azure Event Hubs 名前空間](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)とイベント ハブ。
+- [Azure Event Hubs 名前空間](../../../event-hubs/event-hubs-create.md)とイベント ハブ。
 
 - Event Hubs 名前空間にアクセスするための[接続文字列](../../../event-hubs/event-hubs-get-connection-string.md)。 接続文字列は次のような形式になります。
 
@@ -73,7 +73,7 @@ ms.locfileid: "92017660"
     |**ワークスペース名**     | Databricks ワークスペースの名前を指定します        |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
     |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../../azure-resource-manager/management/overview.md)に関するページをご覧ください。 |
-    |**場所**     | **米国東部 2**またはその他の利用可能なリージョンのいずれかを選択します。 使用可能なリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。        |
+    |**場所**     | **米国東部 2** またはその他の利用可能なリージョンのいずれかを選択します。 使用可能なリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。        |
     |**価格レベル**     |  **Standard** と **Premium** のいずれかを選択します。 **[Trial]\(試用版\)** を選択しないでください。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。       |
 
     **［作成］** を選択します
@@ -95,7 +95,7 @@ ms.locfileid: "92017660"
     以下を除くすべての値は、既定値のままにします。
 
    * クラスターの名前を入力します。
-   * この記事では、**5.2** ランタイムを使用してクラスターを作成します。 **5.3** ランタイムを選択しないでください。
+   * この記事では、 **5.2** ランタイムを使用してクラスターを作成します。 **5.3** ランタイムを選択しないでください。
    * **[Terminate after \_\_ minutes of inactivity]** \(アクティビティが \_\_ 分ない場合は終了する\) チェック ボックスをオンにしてください。 クラスターが使用されていない場合は、クラスターを終了するまでの時間 (分単位) を指定します。
 
      **[クラスターの作成]** を選択します。
@@ -155,7 +155,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
 2. **[+ リソースの作成]** を選択します。
 
-3. Azure Marketplace で、 **[AI + Machine Learning]\(AI + 機械学習\)**  >  **[See all]\(すべて表示\)**  >  **[Cognitive Services - More]\(Cognitive Services - 詳細\)**  >  **[Anomaly Detector]** を選択します。 または、[このリンク](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector)を使用して、 **[Create]\(作成\)** ダイアログ ボックスに直接アクセスすることもできます。
+3. Azure Marketplace で、 **[AI + Machine Learning]\(AI + 機械学習\)**  >  **[See all]\(すべて表示\)**  >  **[Cognitive Services - More]\(Cognitive Services - 詳細\)**  >  **[Anomaly Detector]** を選択します。 または、 [このリンク](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector)を使用して、 **[Create]\(作成\)** ダイアログ ボックスに直接アクセスすることもできます。
 
     ![Anomaly Detector リソースを作成する](../media/tutorials/databricks-cognitive-services-anomaly-detector.png "Anomaly Detector リソースを作成する")
 
@@ -191,7 +191,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
     ![Databricks でノートブックを作成する](../media/tutorials/databricks-create-notebook.png "Databricks でノートブックを作成する")
 
-2. **[Create Notebook]\(ノートブックの作成\)** ダイアログ ボックスに、名前として「**SendTweetsToEventHub**」と入力し、言語として **[Scala]** を選択し、前に作成した Spark クラスターを選択します。
+2. **[Create Notebook]\(ノートブックの作成\)** ダイアログ ボックスに、名前として「 **SendTweetsToEventHub** 」と入力し、言語として **[Scala]** を選択し、前に作成した Spark クラスターを選択します。
 
     ![ノートブックの詳細](../media/tutorials/databricks-notebook-details.png "Databricks でノートブックを作成する")
 
@@ -298,7 +298,7 @@ eventHubClient.get().close()
 pool.shutdown()
 ```
 
-ノートブックを実行するには、**Shift + Enter** キーを押します。 次のスニペットに示されているような出力が表示されます。 出力内の各イベントは、Event Hubs に取り込まれたタイムスタンプと "いいね!" の数の組み合わせです。
+ノートブックを実行するには、 **Shift + Enter** キーを押します。 次のスニペットに示されているような出力が表示されます。 出力内の各イベントは、Event Hubs に取り込まれたタイムスタンプと "いいね!" の数の組み合わせです。
 
 ```output
     Sent event: {"timestamp":"2019-04-24T09:39:40.000Z","favorite":0}
@@ -423,7 +423,7 @@ object AnomalyDetector extends Serializable {
 }
 ```
 
-ノートブックを実行するには、**Shift + Enter** キーを押します。 次のスニペットに示されているような出力が表示されます。
+ノートブックを実行するには、 **Shift + Enter** キーを押します。 次のスニペットに示されているような出力が表示されます。
 
 ```scala
 import java.io.{BufferedReader, DataOutputStream, InputStreamReader}
@@ -497,7 +497,7 @@ class AnomalyDetectorAggregationFunction extends UserDefinedAggregateFunction {
 
 ```
 
-ノートブックを実行するには、**Shift + Enter** キーを押します。 次のスニペットに示されているような出力が表示されます。
+ノートブックを実行するには、 **Shift + Enter** キーを押します。 次のスニペットに示されているような出力が表示されます。
 
 ```scala
 import org.apache.spark.sql.Row

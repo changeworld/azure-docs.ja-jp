@@ -11,17 +11,17 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 1b750554ec231cddd0403c89a33f2af4349ff188
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b6d9ec0760cc8d95f712cfc7a5478de1a99465ef
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098999"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379873"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>チュートリアル:シングルページ Video Search アプリ
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関するページを参照してください。
 Bing Video Search API を使うと、Web を検索して、検索クエリに関連するビデオの結果を取得できます。 このチュートリアルでは、Bing Search API を使用して検索結果をページに表示する単一ページの Web アプリケーションを構築します。 このアプリケーションには、HTML、CSS、JavaScript のコンポーネントが含まれます。
@@ -47,7 +47,7 @@ Bing Video Search API を使うと、Web を検索して、検索クエリに関
 
 このチュートリアルのページでは、すべてが自己完結しています。外部のフレームワーク、スタイル シート、画像ファイルを使用することはありません。 広くサポートされている JavaScript 言語機能のみを使用し、現在のバージョンの主要な Web ブラウザーすべてで動作します。
 
-このチュートリアルでは、ソース コードの一部を選択して説明します。 完全な[ソース コード](tutorial-bing-video-search-single-page-app-source.md)を入手できます。 例を実行するには、ソース コードをコピーしてテキスト エディターに貼り付け、`bing.html` として保存します。
+このチュートリアルでは、ソース コードの一部を選択して説明します。 完全な[ソース コード]()を入手できます。 例を実行するには、ソース コードをコピーしてテキスト エディターに貼り付け、`bing.html` として保存します。
 
 ## <a name="app-components"></a>アプリのコンポーネント
 他の単一ページ Web アプリと同様に、このチュートリアルのアプリケーションには 3 つのパーツが含まれています。

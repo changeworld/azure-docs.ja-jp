@@ -11,17 +11,17 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 010b65a170d05fb0d2cc55e7519fd27df8b751e1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c47a4fbf51b14d9a13237f77c75dbf2839fb5f80
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095443"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381288"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>チュートリアル:Bing Web Search API を使用して単一ページの Web アプリを作成する
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](https://aka.ms/cogsvcs/bingmove)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、またはマイクロソフトエンタープライズ契約の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](https://aka.ms/cogsvcs/bingmigration) に関する記事を参照してください。
 
@@ -36,7 +36,7 @@ ms.locfileid: "93095443"
 > * サブスクリプション キーを管理する
 > * エラーを処理する
 
-このアプリを使用するには、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Bing Search API が必要です。
+このアプリを使用するには、[Azure Cognitive Services アカウント](../cognitive-services-apis-create-account.md)と Bing Search API が必要です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -86,7 +86,7 @@ npm install
 
 ## <a name="query-options"></a>クエリ オプション
 
-HTML フォームには、[Bing Web Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) のクエリ パラメーターにマップされるオプションが含まれています。 この表は、サンプル アプリを使用してユーザーが検索結果をフィルター処理する方法の内訳を示しています。
+HTML フォームには、[Bing Web Search API v7](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) のクエリ パラメーターにマップされるオプションが含まれています。 この表は、サンプル アプリを使用してユーザーが検索結果をフィルター処理する方法の内訳を示しています。
 
 | パラメーター | 説明 |
 |-----------|-------------|
@@ -99,7 +99,7 @@ HTML フォームには、[Bing Web Search API v7](https://docs.microsoft.com/re
 | `offset` | 隠しフィールド。 要求における最初の検索結果のオフセット。ページングに使用されます。 新しい要求ごとに `0` にリセットされます。 |
 
 > [!NOTE]
-> Bing Web Search API には、検索結果を絞り込むための追加のクエリ パラメーターが用意されています。 このサンプルでは、ごく一部のみを使用しています。 使用できるパラメーターの詳細な一覧については、[Bing Web Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters)を参照してください。
+> Bing Web Search API には、検索結果を絞り込むための追加のクエリ パラメーターが用意されています。 このサンプルでは、ごく一部のみを使用しています。 使用できるパラメーターの詳細な一覧については、[Bing Web Search API v7 リファレンス](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters)を参照してください。
 
 `bingSearchOptions()` 関数は、Bing Search API で必要な形式にこれらのオプションを変換します。
 
@@ -303,7 +303,7 @@ function handleBingResponse() {
 
 ## <a name="display-search-results"></a>検索結果を表示する
 
-Bing Web Search API から返される結果の[使用と表示の要件](useanddisplayrequirements.md)があります。 応答にはさまざまな結果の種類が含まれている可能性があるため、最上位レベルの `WebPages` コレクションを反復処理するだけでは不十分です。 その代わり、このサンプル アプリでは `RankingResponse` を使用して仕様に合わせて結果を並べ替えます。
+Bing Web Search API から返される結果の[使用と表示の要件](./use-display-requirements.md)があります。 応答にはさまざまな結果の種類が含まれている可能性があるため、最上位レベルの `WebPages` コレクションを反復処理するだけでは不十分です。 その代わり、このサンプル アプリでは `RankingResponse` を使用して仕様に合わせて結果を並べ替えます。
 
 > [!NOTE]
 > 1 つの結果の種類のみが必要な場合は、クエリ パラメーター `responseFilter` を使用します。また、Bing Image Search など、他の Bing Search エンドポイントのいずれかを使用することを検討します。

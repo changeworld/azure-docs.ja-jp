@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: 887e7432151569eb07e3c9256c7f126e7f884d54
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: a17301e0807877662ae1bf34ade48e90a1d30c0c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017626"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368646"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>チュートリアル:バッチ検出と Power BI を使用して異常を視覚化する
 
@@ -119,7 +119,7 @@ Power Query エディターで **[変換]** リボンをクリックします。
 ## <a name="data-source-privacy-and-authentication"></a>データ ソースのプライバシーと認証
 
 > [!NOTE]
-> データのプライバシーとアクセスのための組織のポリシーに注意してください。 詳細については、[Power BI Desktop のプライバシー レベル](https://docs.microsoft.com/power-bi/desktop-privacy-levels)に関するページを参照してください。
+> データのプライバシーとアクセスのための組織のポリシーに注意してください。 詳細については、[Power BI Desktop のプライバシー レベル](/power-bi/desktop-privacy-levels)に関するページを参照してください。
 
 クエリは外部データ ソースを利用するため、実行しようとすると警告メッセージが表示されることがあります。
 
@@ -164,7 +164,7 @@ Power BI ウィンドウの右側にある **[フィールド]** ウィンドウ
 
 ![新しいクイック メジャー画面のイメージ 2](../media/tutorials/new-quick-measure-2.png)
 
-**[OK]** をクリックすると、フィールドの一覧の下部に `Value for True` フィールドが表示されます。 これを右クリックして、名前を「**異常**」に変更します。 これをグラフの **[値]** に追加します。 次に、 **[形式]** ツールを選択し、X 軸の種類を **[カテゴリ別]** に設定します。
+**[OK]** をクリックすると、フィールドの一覧の下部に `Value for True` フィールドが表示されます。 これを右クリックして、名前を「 **異常** 」に変更します。 これをグラフの **[値]** に追加します。 次に、 **[形式]** ツールを選択し、X 軸の種類を **[カテゴリ別]** に設定します。
 
 ![X 軸の形式変更の画像](../media/tutorials/format-x-axis.png)
 

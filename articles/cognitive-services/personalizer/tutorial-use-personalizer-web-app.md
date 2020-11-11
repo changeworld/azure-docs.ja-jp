@@ -6,12 +6,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e06d191573219df44631f6ffaee86f895166de57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c004887e3883ae711974b544510dff16a98d4ef9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777260"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363920"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>チュートリアル:.NET Web アプリに Personalizer を追加する
 
@@ -30,7 +30,7 @@ Personalizer ループを使用して C# .NET Web アプリをカスタマイズ
 
 ## <a name="select-the-best-content-for-a-web-app"></a>Web アプリに最適なコンテンツの選択
 
-表示する 1 つの最上位項目 (rewardActionId) にパーソナライズする必要がある Web ページ上に_アクション_ (特定の種類のコンテンツ) のリストがある場合、Web アプリで Personalizer を使用する必要があります。 アクション リストの例としては、ニュース記事、ボタンの配置位置、製品名用の単語の選択肢などがあります。
+表示する 1 つの最上位項目 (rewardActionId) にパーソナライズする必要がある Web ページ上に _アクション_ (特定の種類のコンテンツ) のリストがある場合、Web アプリで Personalizer を使用する必要があります。 アクション リストの例としては、ニュース記事、ボタンの配置位置、製品名用の単語の選択肢などがあります。
 
 アクションのリストを、コンテキストの特徴と一緒に Personalizer ループに送信します。 Personalizer によって最適なアクションが 1 つ選択され、そのアクションが Web アプリに表示されます。
 
@@ -44,9 +44,9 @@ Personalizer ループを使用して C# .NET Web アプリをカスタマイズ
 * コーヒー
 * soup
 
-Personalizer によるアクションについての学習を補助するには、各 Rank API 要求で "_アクションと特徴_" および "_コンテキストの特徴_" の両方を送信します。
+Personalizer によるアクションについての学習を補助するには、各 Rank API 要求で " _アクションと特徴_ " および " _コンテキストの特徴_ " の両方を送信します。
 
-モデルの**特徴**は、Web アプリのユーザーベースのメンバー間で集約 (グループ化) できるアクションまたはコンテキストに関する情報です。 特徴は、個別に特定されたもの (ユーザー ID など) でも、詳細に特定されたもの (正確な時刻など) でも_ありません_。
+モデルの **特徴** は、Web アプリのユーザーベースのメンバー間で集約 (グループ化) できるアクションまたはコンテキストに関する情報です。 特徴は、個別に特定されたもの (ユーザー ID など) でも、詳細に特定されたもの (正確な時刻など) でも _ありません_ 。
 
 ### <a name="actions-with-features"></a>アクションと特徴
 
@@ -155,9 +155,9 @@ private string GetUsersTastePreference()
 ## <a name="how-does-the-web-app-use-personalizer"></a>Web アプリで Personalizer を使用する方法
 
 Web アプリで、食べ物の選択肢のリストから最適なアクションを選択するために Personalizer を使用します。 これは、Rank API 呼び出しで次の情報が送信されることで行われます。
-* `taste` や `spiceLevel` などの**アクション**とその特徴
-* 1 日の `time`、ユーザーの `taste` の好み、ブラウザーのユーザー エージェント情報、コンテキストの特徴などの**コンテキスト**の特徴
-* ジュースなどの**除外するアクション**
+* `taste` や `spiceLevel` などの **アクション** とその特徴
+* 1 日の `time`、ユーザーの `taste` の好み、ブラウザーのユーザー エージェント情報、コンテキストの特徴などの **コンテキスト** の特徴
+* ジュースなどの **除外するアクション**
 * Rank API の呼び出しごとに異なる **eventid**
 
 ## <a name="personalizer-model-features-in-a-web-app"></a>Web アプリの Personalizer モデルの特徴
@@ -216,7 +216,7 @@ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/530.99 (KHTML, like Gecko)
 
 * [.NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.1) - サンプルのバックエンド サーバーで .NET Core を使用する
 * [Node.js](https://nodejs.org/) - クライアントまたはフロント エンドがこのアプリケーションに依存している
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)、または [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/) - Visual Studio 2019 の開発者環境または .NET Core CLI を使用してアプリをビルドおよび実行する
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)、または [.NET Core CLI](/dotnet/core/tools/) - Visual Studio 2019 の開発者環境または .NET Core CLI を使用してアプリをビルドおよび実行する
 
 ### <a name="set-up-the-sample"></a>サンプルのセットアップ
 1. Azure Personalizer のサンプルのリポジトリを複製します。
@@ -235,7 +235,7 @@ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/530.99 (KHTML, like Gecko)
 
 1. Azure portal の **[キーとエンドポイント]** タブで、`Endpoint` と、`Key1` または `Key2` (いずれかが動作します) を見つけます。これらが `PersonalizerServiceEndpoint` と `PersonalizerApiKey` です。
 1. **appsettings.json** に `PersonalizerServiceEndpoint` を入力します。
-1. 次のいずれかの方法で、`PersonalizerApiKey` を [アプリ シークレット](https://docs.microsoft.com/aspnet/core/security/app-secrets)として構成します。
+1. 次のいずれかの方法で、`PersonalizerApiKey` を [アプリ シークレット](/aspnet/core/security/app-secrets)として構成します。
 
     * .NET Core CLI を使用している場合は、`dotnet user-secrets set "PersonalizerApiKey" "<API Key>"` コマンドを使用できます。
     * Visual Studio を使用している場合は、プロジェクトを右クリックし、 **[ユーザー シークレットの管理]** メニュー オプションを選択すると、Personalizer のキーを構成することができます。 これにより、Visual Studio によって `secrets.json` ファイルが開かれ、次のようにキーを追加できます。
@@ -250,7 +250,7 @@ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/530.99 (KHTML, like Gecko)
 
 次のいずれかの方法を使用して、HttpRequestFeaturesExample をビルドして実行します。
 
-* Visual Studio 2019:**F5** キーを押す
+* Visual Studio 2019: **F5** キーを押す
 * .NET Core CLI: `dotnet build`、`dotnet run` の順に指定する
 
 Web ブラウザーで Rank 要求と Reward 要求を送信し、その応答と、環境から抽出された HTTP 要求の特徴を確認することができます。
@@ -277,13 +277,13 @@ Web ブラウザーで Rank 要求と Reward 要求を送信し、その応答�
 
 サンプル Web アプリには **C# .NET** サーバーがあります。このサーバーは、特徴のコレクションを管理し、Personalizer のエンドポイントに対する HTTP 呼び出しの送受信を管理します。
 
-サンプル Web アプリでは、**Knockout フロントエンド クライアント アプリケーション**を使用して特徴をキャプチャし、ボタンのクリックや .NET サーバーへのデータ送信などのユーザー インターフェイス アクションを処理します。
+サンプル Web アプリでは、 **Knockout フロントエンド クライアント アプリケーション** を使用して特徴をキャプチャし、ボタンのクリックや .NET サーバーへのデータ送信などのユーザー インターフェイス アクションを処理します。
 
 以下のセクションでは、開発者が Personalizer を使用するために理解しておく必要があるサーバーとクライアントの部分について説明します。
 
 ## <a name="rank-api-client-application-sends-context-to-server"></a>Rank API:クライアント アプリケーションがコンテキストをサーバーに送信する
 
-クライアント アプリケーションは、ユーザーのブラウザー _ユーザー エージェント_を収集します。
+クライアント アプリケーションは、ユーザーのブラウザー _ユーザー エージェント_ を収集します。
 
 > [!div class="mx-imgBorder"]
 > ![HTTPRequestFeaturesExample プロジェクトをビルドして実行します。 ブラウザー ウィンドウが開き、シングル ページ アプリケーションが表示されます。](./media/tutorial-web-app/user-agent.png)
@@ -340,7 +340,7 @@ namespace HttpRequestFeaturesExample
 
 ### <a name="select-best-action"></a>最適なアクションを選択する
 
-サーバーの **PersonalizerController.cs** で、**GenerateRank** サーバー API が Rank API を呼び出すための準備についてまとめます
+サーバーの **PersonalizerController.cs** で、 **GenerateRank** サーバー API が Rank API を呼び出すための準備についてまとめます
 
 * Rank 呼び出し用の新しい `eventId` を作成する
 * アクションのリストを取得する
@@ -564,9 +564,9 @@ Rank API で、選択された最適なアクションの **rewardActionId** を
 
 ## <a name="reward-api-collect-information-for-reward"></a>Reward API: 報酬に関する情報を収集する
 
-特徴を計画するのと同様に、[報酬スコア](concept-rewards.md)は慎重に計画しなければなりません。 通常、報酬スコアは 0 から 1 の値にする必要があります。 値は、ユーザーの行動に基づいてクライアント アプリケーションで部分的に計算したり、ビジネス ロジックと目標に基づいてサーバー上で部分的に計算したり_できます_。
+特徴を計画するのと同様に、[報酬スコア](concept-rewards.md)は慎重に計画しなければなりません。 通常、報酬スコアは 0 から 1 の値にする必要があります。 値は、ユーザーの行動に基づいてクライアント アプリケーションで部分的に計算したり、ビジネス ロジックと目標に基づいてサーバー上で部分的に計算したり _できます_ 。
 
-Azure portal で Personalizer リソース用に構成された**報酬の待機時間**内に、サーバーが Reward API を呼び出さない場合、そのイベントには**既定の報酬** (これも Azure portal で構成されます) が使用されます。
+Azure portal で Personalizer リソース用に構成された **報酬の待機時間** 内に、サーバーが Reward API を呼び出さない場合、そのイベントには **既定の報酬** (これも Azure portal で構成されます) が使用されます。
 
 このサンプル アプリケーションでは、値を選択して、報酬が選択内容にどのような影響を与えるかを確認できます。
 
