@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 10/05/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: d2814a989cb82216081083f3198d52ccd70210ff
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 1ce461f50a6775bf7884fedc4cfa4dc7cb41bb8c
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131923"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408144"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの課金所有権を別のアカウントに譲渡する
 
@@ -24,14 +24,14 @@ ms.locfileid: "92131923"
 
 課金所有権を維持したまま、サブスクリプションの種類を変更する場合は、[別のオファーへの Azure サブスクリプションの切り替え](switch-azure-offer.md)に関するページを参照してください。 サブスクリプション内のリソースにアクセスできるユーザーを制御する場合は、「[Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
-マイクロソフト エンタープライズ契約 (EA) のお客様であれば、お客様のエンタープライズ管理者が、アカウント間でサブスクリプションの課金所有権を移すことができます。 詳細については、「[アカウント所有者を変更する](ea-portal-get-started.md#change-account-owner)」を参照してください。
+マイクロソフト エンタープライズ契約 (EA) のお客様であれば、お客様のエンタープライズ管理者が、アカウント間でサブスクリプションの課金所有権を移すことができます。 詳細については、「[アカウント所有者を変更する](ea-portal-administration.md#change-account-owner)」を参照してください。
 
 アカウントの課金管理者のみがサブスクリプションの所有権を譲渡できます。
 
 ## <a name="transfer-billing-ownership-of-an-azure-subscription"></a>Azure サブスクリプションの課金所有権を譲渡する
 
 1. 譲渡するサブスクリプションがある課金アカウントの管理者として、[Azure portal](https://portal.azure.com) にサインインします。 自分が管理者かどうかわからない場合、または誰であるかを判断する必要がある場合は、「[アカウントの課金管理者を判断する](../understand/subscription-transfer.md#whoisaa)」を参照してください。
-1. "**コスト管理 + 請求**" を検索します。  
+1. " **コスト管理 + 請求** " を検索します。  
    ![Azure portal の検索を表示しているスクリーンショット](./media/billing-subscription-transfer/billing-search-cost-management-billing.png)
 1. 左側のウィンドウで、 **[サブスクリプション]** を選択します。 アクセス権によっては、課金スコープを選択してから、 **[サブスクリプション]** または **[Azure サブスクリプション]** を選択しなければならない場合があります。
 1. 譲渡するサブスクリプションの **[課金所有権の譲渡]** を選択します。  

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 67c52728b72f0941ae3c9b39552ca398c12c67a2
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 40d70c7bd740d8c72ddb72047a3bae3586e1aa1f
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425155"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445253"
 ---
 # <a name="feature-coverage-for-machines"></a>マシンを対象とする機能
 
@@ -35,7 +35,7 @@ ms.locfileid: "92425155"
 |[ファイルレスのセキュリティ アラート](alerts-reference.md#alerts-windows)|✔|✔|✔|はい|
 |[ネットワーク ベースのセキュリティ アラート](other-threat-protections.md#network-layer)|✔|✔|-|はい|
 |[Just In Time VM アクセス](security-center-just-in-time.md)|✔|-|-|はい|
-|[ネイティブ脆弱性評価](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|はい|
+|[ネイティブ脆弱性評価](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|はい|
 |[ファイルの整合性の監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|はい|
 |[アダプティブ アプリケーション制御](security-center-adaptive-application.md)|✔|-|✔|はい|
 |[ネットワーク マップ](security-center-network-recommendations.md#network-map)|✔|✔|-|はい|
@@ -46,7 +46,7 @@ ms.locfileid: "92425155"
 |セキュリティの誤った構成の評価|✔|✔|✔|Azure: いいえ<br><br>Arc 対応:はい|
 |[エンドポイント保護の評価](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: いいえ<br><br>Arc 対応:はい|
 |ディスク暗号化の評価|✔</br>([サポートされるシナリオ](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)の場合)|✔|-|いいえ|
-|サードパーティの脆弱性評価|✔|-|-|いいえ|
+|サードパーティの脆弱性評価|✔|-|✔|いいえ|
 |[ネットワーク セキュリティ評価](security-center-network-recommendations.md)|✔|✔|-|いいえ|
 
 
@@ -59,7 +59,7 @@ ms.locfileid: "92425155"
 |[ファイルレスのセキュリティ アラート](alerts-reference.md#alerts-windows)|-|-|-|はい|
 |[ネットワーク ベースのセキュリティ アラート](other-threat-protections.md#network-layer)|✔|✔|-|はい|
 |[Just In Time VM アクセス](security-center-just-in-time.md)|✔|-|-|はい|
-|[ネイティブ脆弱性評価](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|はい|
+|[ネイティブ脆弱性評価](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|はい|
 |[ファイルの整合性の監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|はい|
 |[アダプティブ アプリケーション制御](security-center-adaptive-application.md)|✔|-|✔|はい|
 |[ネットワーク マップ](security-center-network-recommendations.md#network-map)|✔|✔|-|はい|
@@ -70,7 +70,7 @@ ms.locfileid: "92425155"
 |セキュリティの誤った構成の評価|✔|✔|✔|Azure: いいえ<br><br>Arc 対応:はい|
 |[エンドポイント保護の評価](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|いいえ|
 |ディスク暗号化の評価|✔</br>([サポートされるシナリオ](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)の場合)|✔|-|いいえ|
-|サードパーティの脆弱性評価|✔|-|-|いいえ|
+|サードパーティの脆弱性評価|✔|-|✔|いいえ|
 |[ネットワーク セキュリティ評価](security-center-network-recommendations.md)|✔|✔|-|いいえ|
 
 --- 
