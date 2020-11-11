@@ -13,7 +13,7 @@ ms.locfileid: "92019190"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>GitHub アクションを構成してコンテナー インスタンスを作成する
 
-[GitHub Actions](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) は GitHub の一連の機能であり、コードを格納するのと同じ場所でソフトウェア開発ワークフローを自動化したり、プル要求や問題に対して共同作業を行ったりするために使用します。
+[GitHub Actions](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) は GitHub の一連の機能であり、コードを格納するのと同じ場所でソフトウェア開発ワークフローを自動化したり、pull request や問題に対して共同作業を行ったりするために使用します。
 
 [[Deploy to Azure Container Instances]\(Azure Container Instances にデプロイ\)](https://github.com/azure/aci-deploy) GitHub アクションを使用して、Azure Container Instances への単一のコンテナーのデプロイを自動化します。 このアクションでは、[az container create][az-container-create] コマンドと同様にコンテナー インスタンスのプロパティを設定できます。
 
