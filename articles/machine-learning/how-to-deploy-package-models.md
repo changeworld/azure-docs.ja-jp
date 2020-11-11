@@ -1,7 +1,7 @@
 ---
 title: モデルのパッケージ化
 titleSuffix: Azure Machine Learning
-description: モデルを Dockerfile としてパッケージ化する
+description: モデルをパッケージ化します。 モデルは、後でダウンロードできる docker イメージとしてパッケージ化することも、Dockerfile を作成し、それを使用してイメージをビルドすることもできます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.date: 07/31/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: edaae4f4c06f038d12267e35a2c356af430e1555
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 299eb316b534ddc9d5eee934cc15eae841276038
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998829"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312627"
 ---
 # <a name="how-to-package-a-registered-model-with-docker"></a>Docker を使用して登録済みモデルをパッケージ化する方法
 

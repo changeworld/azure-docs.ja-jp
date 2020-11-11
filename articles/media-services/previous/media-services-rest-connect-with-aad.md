@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: 958bfa605e0195b5f4fde2c0ff53a8ce567f50a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bea4c049c3d7ea17e173f069a3e99cbcca1fe48
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89257145"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041983"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Azure AD 認証を使用して REST で Media Services API にアクセスする
 
@@ -30,13 +30,13 @@ ms.locfileid: "89257145"
 
 Azure Media Services で Azure AD Authentication を使用する場合は、次の 2 つの方法のいずれかで認証できます。
 
-- **ユーザー認証**: Azure Media Services リソースを操作するアプリを使用しているユーザーが認証を受けます。 ユーザーは最初にその操作アプリケーションから資格情報の入力を求められます。 たとえば、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリなどです。 
-- **サービス プリンシパルの認証**: サービスを認証します。 この認証方法がよく使用されるアプリケーションは、デーモン サービス、中間層サービス、またはスケジュールされたジョブを実行するアプリ (例: Web アプリ、関数アプリ、ロジック アプリ、API、マイクロサービス) です。
+- **ユーザー認証** : Azure Media Services リソースを操作するアプリを使用しているユーザーが認証を受けます。 ユーザーは最初にその操作アプリケーションから資格情報の入力を求められます。 たとえば、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリなどです。 
+- **サービス プリンシパルの認証** : サービスを認証します。 この認証方法がよく使用されるアプリケーションは、デーモン サービス、中間層サービス、またはスケジュールされたジョブを実行するアプリ (例: Web アプリ、関数アプリ、ロジック アプリ、API、マイクロサービス) です。
 
-    このチュートリアルでは、Azure AD サービス **プリンシパル認証**を使用して、REST で AMS API にアクセスする方法を説明します。 
+    このチュートリアルでは、Azure AD サービス **プリンシパル認証** を使用して、REST で AMS API にアクセスする方法を説明します。 
 
     > [!NOTE]
-    > Azure Media Services に接続するほとんどのアプリケーションでは、**サービス プリンシパル**が推奨されるベスト プラクティスです。 
+    > Azure Media Services に接続するほとんどのアプリケーションでは、 **サービス プリンシパル** が推奨されるベスト プラクティスです。 
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -71,7 +71,7 @@ Media Services API にアクセスするには、以下のデータ ポイント
 |クライアント ID (アプリケーション ID)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Azure AD アプリケーション (クライアント) ID。 アクセス トークンを取得するには、クライアント ID が必要です。 |
 |クライアント シークレット|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Azure AD アプリケーション キー (クライアント シークレット)。 アクセス トークンを取得するには、クライアント シークレットが必要です。|
 
-### <a name="get-aad-auth-info-from-the-azure-portal"></a>Azure Portal から AAD 認証情報を取得する
+### <a name="get-azure-active-directory-auth-info-from-the-azure-portal"></a>Azure Portal から Azure Active Directory 認証情報を取得する
 
 情報を取得するには、次の手順を実行します。
 
@@ -80,12 +80,12 @@ Media Services API にアクセスするには、以下のデータ ポイント
 3. **[API アクセス]** を選択します。
 4. **[サービス プリンシパルを使って Azure Media Services API に接続する]** をクリックします。
 
-    ![API アクセス](./media/connect-with-rest/connect-with-rest01.png)
+    ![[Media Services] メニューで [API アクセス] が選択され、右側のウィンドウで [サービス プリンシパルを使って Azure Media Services API に接続する] が選択されていることを示すスクリーンショット。](./media/connect-with-rest/connect-with-rest01.png)
 
-5. 既存の **Azure AD アプリケーション**を選択するか、新しいアプリケーションを作成します (後述します)。
+5. 既存の **Azure AD アプリケーション** を選択するか、新しいアプリケーションを作成します (後述します)。
 
     > [!NOTE]
-    > Azure Media REST 要求を成功させるには、呼び出すユーザーに、アクセスしたい Media Services アカウントの**共同作成者**ロールまたは**所有者**ロールが付与されている必要があります。 "リモート サーバーがエラーを返しました: (401) Unauthorized" という例外を受け取る場合は、「[アクセス制御](media-services-use-aad-auth-to-access-ams-api.md#access-control)」を参照してください。
+    > Azure Media REST 要求を成功させるには、呼び出すユーザーに、アクセスしたい Media Services アカウントの **共同作成者** ロールまたは **所有者** ロールが付与されている必要があります。 "リモート サーバーがエラーを返しました: (401) Unauthorized" という例外を受け取る場合は、「[アクセス制御](media-services-use-aad-auth-to-access-ams-api.md#access-control)」を参照してください。
 
     新しい AD アプリケーションを作成する場合は、次の手順を実行します。
     
@@ -94,23 +94,23 @@ Media Services API にアクセスするには、以下のデータ ポイント
    3. **[新規作成]** をもう一度クリックします。
    4. **[保存]** をクリックします。
 
-      ![API アクセス](./media/connect-with-rest/new-app.png)
+      ![[新規作成] ダイアログを示すスクリーンショット。[アプリの作成] テキスト ボックスが強調表示され、[保存] ボタンが選択されています。](./media/connect-with-rest/new-app.png)
 
       ページに新しいアプリケーションが表示されます。
 
 6. **クライアント ID** (アプリケーション ID) を取得します。
     
    1. アプリケーションを選択します。
-   2. 右側のウィンドウから**クライアント ID** を取得します。 
+   2. 右側のウィンドウから **クライアント ID** を取得します。 
 
-      ![API アクセス](./media/connect-with-rest/existing-client-id.png)
+      ![[Azure AD アプリ] と [アプリケーションの管理] が選択され、右側のウィンドウで [クライアント ID] が強調表示されていることを示すスクリーンショット。](./media/connect-with-rest/existing-client-id.png)
 
-7. アプリケーションの**キー** (クライアント シークレット) を取得します。 
+7. アプリケーションの **キー** (クライアント シークレット) を取得します。 
 
    1. **[アプリケーションの管理]** ボタンをクリックします (クライアント ID の情報は **[アプリケーション ID]** の下に表示されます)。 
    2. **[キー]** をクリックします。
     
-       ![API アクセス](./media/connect-with-rest/manage-app.png)
+       ![[アプリケーションの管理] ボタンが選択され、中央のウィンドウで [アプリケーション ID] が強調表示され、右側のウィンドウでは [キー] が選択されていることを示すスクリーンショット。](./media/connect-with-rest/manage-app.png)
    3. **[説明]** と **[有効期限]** に入力し、 **[保存]** をクリックしてアプリケーション キー (クライアント シークレット) を生成します。
     
        **[保存]** ボタンをクリックすると、キー値が表示されます。 ブレードから離れる前に、キー値をコピーします。
@@ -120,11 +120,11 @@ Media Services API にアクセスするには、以下のデータ ポイント
 AD 接続パラメーターの値を web.config ファイルまたは app.config ファイルに追加して、後でコードに使用することができます。
 
 > [!IMPORTANT]
-> **クライアント キー**は重要なシークレットであり、キー コンテナーで適切に保護するか、実稼働環境で暗号化する必要があります。
+> **クライアント キー** は重要なシークレットであり、キー コンテナーで適切に保護するか、実稼働環境で暗号化する必要があります。
 
 ## <a name="get-the-access-token-using-postman"></a>Postman を使用してアクセス トークンを取得する
 
-このセクションでは、**Postman** を使用して JWT ベアラー トークン (アクセス トークン) を返す REST API を実行する方法を示します。 Media Services REST API を呼び出すには、呼び出しに "Authorization" ヘッダーを追加し、各呼び出しに "Bearer *your_access_token*" という値を追加する必要があります (このチュートリアルの次のセクションを参照してください)。 
+このセクションでは、 **Postman** を使用して JWT ベアラー トークン (アクセス トークン) を返す REST API を実行する方法を示します。 Media Services REST API を呼び出すには、呼び出しに "Authorization" ヘッダーを追加し、各呼び出しに "Bearer *your_access_token* " という値を追加する必要があります (このチュートリアルの次のセクションを参照してください)。 
 
 1. **Postman** を開きます。
 2. **[POST]** を選択します。
@@ -135,7 +135,7 @@ AD 接続パラメーターの値を web.config ファイルまたは app.config
 4. **[Headers]\(ヘッダー\)** タブを選択します。
 5. "Key/Value"(キー/値) データ グリッドを使用して **[Headers]\(ヘッダー\)** 情報を入力します。 
 
-    ![データ グリッド](./media/connect-with-rest/headers-data-grid.png)
+    ![[ヘッダー] タブと [一括編集] アクションが選択されていることを示すスクリーンショット。](./media/connect-with-rest/headers-data-grid.png)
 
     または、Postman ウィンドウの右側にある **[Bulk Edit]\(一括編集\)** リンクをクリックし、次のコードを貼り付けます。
 
@@ -160,13 +160,13 @@ AD 接続パラメーターの値を web.config ファイルまたは app.config
 
 8. **[送信]** をクリックします。
 
-    ![トークンを取得する](./media/connect-with-rest/connect-with-rest04.png)
+    ![[投稿] テキスト ボックス、[ヘッダー] タブと [本文] タブ、[access_token] が強調表示され、[送信] が検出されていることを示すスクリーンショット。](./media/connect-with-rest/connect-with-rest04.png)
 
-返される応答には、すべての AMS API にアクセスするために必要な**アクセス トークン**が含まれています。
+返される応答には、すべての AMS API にアクセスするために必要な **アクセス トークン** が含まれています。
 
 ## <a name="test-the-assets-api-using-the-access-token"></a>アクセス トークンを使用して **Assets** API をテストする
 
-このセクションでは、**Postman** を使用して **Assets** API にアクセスする方法について説明します。
+このセクションでは、 **Postman** を使用して **Assets** API にアクセスする方法について説明します。
 
 1. **Postman** を開きます。
 2. **[GET]** を選択します。

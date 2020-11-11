@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57d66c844b7e73f1e3326d628f854a9811ca96fd
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: a07130e55339ed689b65b48e6fd83e65f36d155e
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91802703"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280533"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する
 
@@ -39,7 +39,7 @@ ms.locfileid: "91802703"
 
 ![オンプレミスに直接接続されているアプリケーション](media/migrate-adfs-apps-to-azure/app-integration-before-migration1.png)
 
-**アプリケーションのセキュリティを強化するときの目標は、オンプレミスとクラウドの環境全体で 1 セットのアクセス制御とポリシーを使用することです**。
+**アプリケーションのセキュリティを強化するときの目標は、オンプレミスとクラウドの環境全体で 1 セットのアクセス制御とポリシーを使用することです** 。
 
 ![Azure AD 経由で接続されたアプリケーション](media/migrate-adfs-apps-to-azure/app-integration-after-migration1.png)
 
@@ -86,7 +86,7 @@ Azure AD にアプリ認証を移動するプロセスの間に、アプリと�
 
 運用アプリケーションの構成を更新して、運用 Azure テナントを指し示すようにします。
 
-![移行ステージ 1 ](media/migrate-adfs-apps-to-azure/stage4.jpg)
+![移行ステージ 4 ](media/migrate-adfs-apps-to-azure/stage4.jpg)
 
  AD FS で認証を行うアプリでは、アクセス許可に Active Directory グループを使用する場合があります。 移行を始める前に、オンプレミス環境と Azure AD の間で ID データを同期するには、[Azure AD Connect 同期](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis)を使用します。 アプリケーションが移行されるときに同じユーザーにアクセス権を付与できるよう、移行前にそれらのグループとメンバーシップを確認します。
 
@@ -133,7 +133,7 @@ OAuth 2.0 または OpenID Connect を使用するアプリは、"[アプリの�
 
 SaaS アプリのオンボードに関する問題については、[SaaS アプリケーション統合サポートのエイリアス](mailto:SaaSApplicationIntegrations@service.microsoft.com)にお問い合わせください。
 
-**SSO 用の SAML 署名証明書**: 署名証明書は、すべての SSO デプロイの重要な部分です。 Azure AD では、署名証明書を作成して、SaaS アプリケーションに対する SAML ベースのフェデレーション SSO が確立されます。 ギャラリー アプリケーションまたは非ギャラリー アプリケーションを追加した後、フェデレーション SSO オプションを使用して追加したアプリケーションを構成します。 「[Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on)」をご覧ください。
+**SSO 用の SAML 署名証明書** : 署名証明書は、すべての SSO デプロイの重要な部分です。 Azure AD では、署名証明書を作成して、SaaS アプリケーションに対する SAML ベースのフェデレーション SSO が確立されます。 ギャラリー アプリケーションまたは非ギャラリー アプリケーションを追加した後、フェデレーション SSO オプションを使用して追加したアプリケーションを構成します。 「[Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on)」をご覧ください。
 
 ### <a name="apps-and-configurations-that-can-be-moved-today"></a>今すぐ移動できるアプリと構成
 
@@ -199,7 +199,7 @@ SaaS アプリのオンボードに関する問題については、[SaaS アプ
 | 構成設定| AD FS| Azure AD での構成方法| SAML トークン |
 | - | - | - | - |
 | **アプリのサインオン URL** <p>サービス プロバイダー (SP) によって開始された SAML フローでユーザーがアプリにサインインするための URL。| 該当なし| SAML ベースのサインオンから [基本的な SAML 構成] を開きます| 該当なし |
-| **アプリの応答 URL** <p>ID プロバイダー (IdP) から見たアプリの URL。 IdP は、ユーザーが IdP にサインインした後、ここでユーザーとトークンを送信します。  ‎これは、**SAML アサーション コンシューマー エンドポイント**とも呼ばれます。| **[エンドポイント]** タブを選択します| SAML ベースのサインオンから [基本的な SAML 構成] を開きます| SAML トークンの Destination 要素。 値の例: `https://contoso.my.salesforce.com` |
+| **アプリの応答 URL** <p>ID プロバイダー (IdP) から見たアプリの URL。 IdP は、ユーザーが IdP にサインインした後、ここでユーザーとトークンを送信します。  ‎これは、 **SAML アサーション コンシューマー エンドポイント** とも呼ばれます。| **[エンドポイント]** タブを選択します| SAML ベースのサインオンから [基本的な SAML 構成] を開きます| SAML トークンの Destination 要素。 値の例: `https://contoso.my.salesforce.com` |
 | **アプリのサインアウト URL** <p>これは、ユーザーがアプリからサインアウトしたときに "サインアウト クリーンアップ" 要求が送信される URL です。 IdP は、他のすべてのアプリからユーザーをサインアウトさせる要求も送信します。| **[エンドポイント]** タブを選択します| SAML ベースのサインオンから [基本的な SAML 構成] を開きます| 該当なし |
 | **アプリ識別子** <p>これは、IdP から見たアプリの識別子です。 多くの場合、サインイン URL 値が識別子に使用されます (そうでない場合もあります)。  ‎アプリではこれを "エンティティ ID" と呼ぶこともあります。| **[識別子]** タブを選択します|SAML ベースのサインオンから [基本的な SAML 構成] を開きます| SAML トークンの **Audience** 要素にマッピングします。 |
 | **アプリのフェデレーション メタデータ** <p>これは、アプリのフェデレーション メタデータの場所です。 エンドポイントや暗号化証明書などの特定の構成設定を自動更新するために、IdP によって使用されます。| **[監視]** タブをクリックします| 該当なし。 Azure AD では、アプリケーション フェデレーション メタデータの使用は直接はサポートされていません。 フェデレーション メタデータは手動でインポートできます。| 該当なし |
@@ -257,7 +257,7 @@ AD FS の承認規則の種類の例と、それらを Azure AD にマッピン�
 
 すべてのユーザーにアクセスを許可すると、AD FS では次のようになります。
 
-![移行ステージ 1 ](media/migrate-adfs-apps-to-azure/sso-saml-user-attributes-claims.png)
+![[SAML によるシングル サインオンの設定] ダイアログ ボックスを示すスクリーンショット。](media/migrate-adfs-apps-to-azure/sso-saml-user-attributes-claims.png)
 
 
 これは、次のいずれかの方法で Azure AD にマッピングされます。
@@ -279,7 +279,7 @@ AD FS の承認規則の種類の例と、それらを Azure AD にマッピン�
 AD FS での明示的なグループの承認:
 
 
-![発行承認規則 ](media/migrate-adfs-apps-to-azure/allow-a-group-explicitly-1.png)
+![要求規則 Allow domain admins の [規則の編集] ダイアログ ボックスを示すスクリーンショット。](media/migrate-adfs-apps-to-azure/allow-a-group-explicitly-1.png)
 
 
 規則が Azure AD にマッピングされる方法を次に示します。
@@ -293,7 +293,7 @@ AD FS での明示的なグループの承認:
 
 AD FS での明示的なユーザーの承認:
 
-![発行承認規則 ](media/migrate-adfs-apps-to-azure/authorize-a-specific-user-1.png)
+![入力方向の要求の種類の [プライマリ SID] が表示されている要求規則 Allow domain admins の [規則の編集] ダイアログ ボックスを示すスクリーンショット。](media/migrate-adfs-apps-to-azure/authorize-a-specific-user-1.png)
 
 規則が Azure AD にマッピングされる方法を次に示します。
 
@@ -310,7 +310,7 @@ AD FS の MFA 規則の種類の例と、さまざまな条件に基づいてそ
 
 AD FS での MFA 規則の設定:
 
-![Azure AD MFA の設定](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
+![Azure portal の Azure AD の [条件] を示すスクリーンショット。](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
 
 
 #### <a name="example-1-enforce-mfa-based-on-usersgroups"></a>例 1:ユーザーまたはグループに基づいて MFA を適用する
@@ -326,7 +326,7 @@ Azure AD でユーザーまたはグループに対して MFA 規則を指定し
 
 3. 次に示すように、 **[アクセス制御]** のオプションを構成します。
 
-![AAD MFA の設定](media/migrate-adfs-apps-to-azure/mfa-usersorgroups.png)
+![アクセス権を付与できる [許可] ウィンドウを示すスクリーンショット。](media/migrate-adfs-apps-to-azure/mfa-usersorgroups.png)
 
 
  #### <a name="example-2-enforce-mfa-for-unregistered-devices"></a>例 2:未登録のデバイスに MFA を適用する
@@ -339,7 +339,7 @@ Azure AD で未登録のデバイスに対する MFA 規則を指定します。
 
 3. 次に示すように、 **[アクセス制御]** のオプションを構成します。
 
-![AAD MFA の設定](media/migrate-adfs-apps-to-azure/mfa-unregistered-devices.png)
+![アクセス権を付与し、他の制限を指定できる [許可] ウィンドウを示すスクリーンショット。](media/migrate-adfs-apps-to-azure/mfa-unregistered-devices.png)
 
 
 [複数のコントロールの場合] オプションを [選択したコントロールのいずれかが必要] に設定すると、チェック ボックスで指定した条件のいずれかがユーザーによって満たされると、アプリへのアクセスが許可されることを意味します。
@@ -354,9 +354,9 @@ Azure AD でユーザーの場所に基づいて MFA 規則を指定します。
 
 1. [Azure AD で名前付きの場所を構成します](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations)。それ以外の場合は、企業ネットワーク内部からのフェデレーションが信頼されます。
 
-1. **条件規則**を構成して、MFA を適用する場所を指定します。
+1. **条件規則** を構成して、MFA を適用する場所を指定します。
 
-![Azure AD MFA の設定](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
+![条件ルールの [場所] ウィンドウを示すスクリーンショット。](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
 
 5. 次に示すように、 **[アクセス制御]** のオプションを構成します。
 
@@ -368,14 +368,14 @@ Azure AD でユーザーの場所に基づいて MFA 規則を指定します。
 
 ここでは、AD FS での属性のマッピング方法の例を示します。
 
-![Azure AD MFA の設定](media/migrate-adfs-apps-to-azure/map-emit-attributes-as-claimsrule-1.png)
+![Emit attributes as Claims の [規則の編集] ダイアログ ボックスを示すスクリーンショット。](media/migrate-adfs-apps-to-azure/map-emit-attributes-as-claimsrule-1.png)
 
 
 規則が Azure AD にマッピングされる方法を次に示します。
 
-次に示すように、[Azure portal](https://portal.azure.com/) で **[エンタープライズ アプリケーション]** > **[シングル サインオン]** の順に選択し、 **[SAML トークン属性]** を追加します。
+次に示すように、 [Azure portal](https://portal.azure.com/) で **[エンタープライズ アプリケーション]** > **[シングル サインオン]** の順に選択し、 **[SAML トークン属性]** を追加します。
 
-![Azure AD MFA の設定](media/migrate-adfs-apps-to-azure/map-emit-attributes-as-claimsrule-2.png)
+![エンタープライズ アプリケーションのシングル サインオン ページを示すスクリーンショット。](media/migrate-adfs-apps-to-azure/map-emit-attributes-as-claimsrule-2.png)
 
 
 
@@ -489,5 +489,8 @@ AD FS では、次の 2 つの主な方法で既存の外部ユーザーを設�
 外部ユーザーへの通知: このユーザーのグループは、通常、問題が発生した場合に最も重大な影響を受けます。 セキュリティ対策によって外部パートナーに対して異なる一連の条件付きアクセス規則またはリスク プロファイルが指示されている場合は特にそうです。 外部パートナーがクラウド移行スケジュールを認識していること、および外部コラボレーションに固有のすべてのフローをテストするパイロット デプロイに参加することが推奨される期間が外部パートナーに提供されていることを確認します。 最後に、問題が発生した場合に、ヘルプ デスクにアクセスする方法があることを確認します。
 
 ## <a name="next-steps"></a>次の手順
+
 [Azure AD へのアプリケーション認証の移行](https://aka.ms/migrateapps/whitepaper)に関するドキュメントを読みます<p>
 [条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)と [MFA](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) を設定します
+
+段階的にコード サンプルを試してみる: [開発者向けの AD FS から Azure AD へのアプリケーション移行プレイブック](https://aka.ms/adfsplaybook)

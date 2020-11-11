@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 59ea0258d6262f652e9ac563bbda5ec89c4c5819
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40d1ae4da07e159c24970c065d1c39e22b89a29a
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579468"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280201"
 ---
 # <a name="install-and-use-the-dtdl-authoring-tools"></a>DTDL 作成ツールをインストールして使用する
 
@@ -36,9 +36,9 @@ DTDL 拡張機能をインストールするには、「[Visual Studio Code 用�
 
 - IntelliSense とオートコンプリートは、DTDL モデルの編集中に利用します。
 
-    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense.png" alt-text="VS Code でのモデルの検証":::
+    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense.png" alt-text="VS Code で DTDL モデルに対して IntelliSense を使用する":::
 
-- 新しい DTDL インターフェイスを作成します。 次のコマンドでは、新しいインターフェイスを含む JSON ファイルが作成されます。 インターフェイスには、テレメトリ、プロパティ、コマンド定義の例が含められます。
+- 新しい DTDL インターフェイスを作成します。 **DTDL: Create Interface** を使用すると、新しいインターフェイスを含む JSON ファイルが作成されます。 インターフェイスには、テレメトリ、プロパティ、コマンド定義の例が含められます。
 
 ## <a name="install-and-use-the-visual-studio-extension"></a>Visual Studio 拡張機能をインストールして使用する
 
@@ -47,17 +47,17 @@ Visual Studio 2019 用の DTDL 拡張機能により、以下の DTDL 作成機�
 - DTDL v2 構文の検証。
 - IntelliSense (オートコンプリートを含む) は、言語の構文についてユーザーを支援します。
 
-DTDL 拡張機能をインストールするには、「[VS 2019 に対する DTDL 言語のサポート](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16dtdllanguagesupport)」を参照してください。 Visual Studio の **[拡張機能の管理]** で、**DTDL** を検索することもできます。
+DTDL 拡張機能をインストールするには、「[VS 2019 に対する DTDL 言語のサポート](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16dtdllanguagesupport)」を参照してください。 Visual Studio の **[拡張機能の管理]** で、 **DTDL** を検索することもできます。
 
 拡張機能をインストールしたら、Visual Studio で DTDL モデル ファイルを作成するのに役立てます。
 
 - 拡張機能により、DTDL モデル ファイルでの構文の検証が提供され、次のスクリーンショットに示すように誤りが強調表示されます。
 
-    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-validation-2.png" alt-text="VS Code でのモデルの検証":::
+    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-validation-2.png" alt-text="Visual Studio でのモデルの検証":::
 
 - IntelliSense とオートコンプリートは、DTDL モデルの編集中に利用します。
 
-    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense-2.png" alt-text="VS Code でのモデルの検証":::
+    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense-2.png" alt-text="Visual Studio で DTDL モデルに対して IntelliSense を使用する":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: ce8ff8bedc6f6e4f99a940bbdb26bd3fafc930d8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b708d85e94782ea264432ae3780b2b1f0d240396
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296775"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320820"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 
 
-この記事では、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) の自動機械学習 (AutoML) を使用して、時系列予測回帰モデルを構成およびトレーニングする方法について説明します。 
+この記事では、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) の自動機械学習 (AutoML) を使用して、時系列予測回帰モデルを構成およびトレーニングする方法について説明します。 
 
 これを行うには、次の手順を実行します。 
 
@@ -102,7 +102,7 @@ test_labels = test_data.pop(label).values
 
 `AutoMLConfig` オブジェクトでは、個別のトレーニングおよび検証セットを直接指定できます。   [AutoMLConfig](#configure-experiment) の詳細について参照してください。
 
-時系列の予測の場合、既定では、**ローリング オリジン クロス検証 (ROCV)** のみが検証に使用されます。 トレーニングおよびと検証データを一緒に渡し、`AutoMLConfig` の `n_cross_validations` パラメーターでクロス検証の分割数を設定します。 ROCV を使用すると、起点の時点を使用して系列をトレーニング データと検証データに分割することができます。 時間内の原点をスライドすると、クロス検証のフォールドが生成されます。 この戦略を使用すると、時系列データの整合性を維持し、データ漏えいのリスクを排除できます。
+時系列の予測の場合、既定では、 **ローリング オリジン クロス検証 (ROCV)** のみが検証に使用されます。 トレーニングおよびと検証データを一緒に渡し、`AutoMLConfig` の `n_cross_validations` パラメーターでクロス検証の分割数を設定します。 ROCV を使用すると、起点の時点を使用して系列をトレーニング データと検証データに分割することができます。 時間内の原点をスライドすると、クロス検証のフォールドが生成されます。 この戦略を使用すると、時系列データの整合性を維持し、データ漏えいのリスクを排除できます。
 
 ![ローリング オリジン クロス検証](./media/how-to-auto-train-forecast/ROCV.svg)
 
@@ -120,7 +120,7 @@ AutoML でクロス検証を適用して[モデルのオーバーフィットを
 
 ## <a name="configure-experiment"></a>実験を構成する
 
-[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) オブジェクトは、自動化された機械学習タスクに必要な設定とデータを定義します。 予測モデルの構成は、標準の回帰モデルの設定に似ていますが、特定のモデル、構成オプション、および特徴量化の手順は時系列データ専用です。 
+[`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) オブジェクトは、自動化された機械学習タスクに必要な設定とデータを定義します。 予測モデルの構成は、標準の回帰モデルの設定に似ていますが、特定のモデル、構成オプション、および特徴量化の手順は時系列データ専用です。 
 
 ### <a name="supported-models"></a>サポートされているモデル
 自動機械学習では、モデル作成とチューニング プロセスの一環として、さまざまなモデルとアルゴリズムが自動的に試行されます。 ユーザーは、アルゴリズムを指定する必要はありません。 予測実行では、ネイティブな時系列とディープ ラーニングのモデルはどちらも、レコメンデーション システムの一部です。 次の表は、このモデルのサブセットをまとめたものです。 
@@ -138,7 +138,7 @@ ForecastTCN (プレビュー)| ForecastTCN は、最も要求の厳しい予測�
 
 回帰の問題と同様に、タスクの種類、イテレーションの数、トレーニング データ、クロス検証の数など、標準的なトレーニング パラメーターを定義します。 予測タスクの場合は、実験に影響を与える追加パラメーターを設定する必要があります。 
 
-これらの追加パラメーターの概要を次の表に示します。 構文のデザイン パターンについては、[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true)を参照してください。
+これらの追加パラメーターの概要を次の表に示します。 構文のデザイン パターンについては、[リファレンス ドキュメント](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py)を参照してください。
 
 | パラメーター名&nbsp; | 説明 | 必須 |
 |-------|-------|-------|
@@ -148,11 +148,12 @@ ForecastTCN (プレビュー)| ForecastTCN は、最も要求の厳しい予測�
 |`time_series_id_column_names`|タイムスタンプが同じ複数の行を含むデータ内の時系列を一意に識別するために使用される列名。 時系列識別子が定義されていない場合、データ セットは 1 つの時系列であると見なされます。 単一の時系列の詳細については、[energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand) に関するページを参照してください。||
 |`target_lags`|データの頻度に基づいて対象の値を遅延させる行の数。 このラグは一覧または単一の整数として表されます。 独立変数と依存変数の間のリレーションシップが既定で一致しない場合、または関連付けられていない場合、ラグを使用する必要があります。 ||
 |`feature_lags`| `target_lags` が設定され、`feature_lags` が `auto` に設定されている場合、遅延する機能が自動 ML によって自動的に決定されます。 機能のタイム ラグを有効にすると、精度の向上に役立つ場合があります。 既定では、機能のタイム ラグは無効になっています。 ||
-|`target_rolling_window_size`|予測値の生成に使用する *n* 履歴期間 (トレーニング セットのサイズ以下)。 省略した場合、*n* はトレーニング セットの全体のサイズになります。 モデルのトレーニング時に特定の量の履歴のみを考慮する場合は、このパラメーターを指定します。 [ターゲットのローリング ウィンドウ集計](#target-rolling-window-aggregation)について、詳細情報をご覧ください。||
+|`target_rolling_window_size`|予測値の生成に使用する *n* 履歴期間 (トレーニング セットのサイズ以下)。 省略した場合、 *n* はトレーニング セットの全体のサイズになります。 モデルのトレーニング時に特定の量の履歴のみを考慮する場合は、このパラメーターを指定します。 [ターゲットのローリング ウィンドウ集計](#target-rolling-window-aggregation)について、詳細情報をご覧ください。||
+|`short_series_handling`| 短い時系列処理を有効にして、データの不足によるエラーがトレーニング中に発生しないようにします。 短い時系列処理は、既定で true に設定されています。|
 
 
 次のコードによって、以下の処理が実行されます。 
-* ディクショナリ オブジェクトとして `time-series settings` を作成します。 
+* `ForecastingParameters` クラスを活用して、実験トレーニング用の予測パラメーターを定義します。
 * `time_column_name` をデータ セットの `day_datetime` フィールドに設定します。 
 * `time_series_id_column_names` パラメーターを `"store"` に定義します。 これにより、データ用に **2 つの異なる時系列グループ** (ストア A および B 用) が確実に作成されます。
 * テスト セット全体を予測するために、`forecast_horizon` を 50 に設定します。 
@@ -161,16 +162,18 @@ ForecastTCN (プレビュー)| ForecastTCN は、最も要求の厳しい予測�
 * `target_lags` を推奨される "自動" 設定に設定します。これにより、この値が自動的に検出されます。
 
 ```python
-time_series_settings = {
-    "time_column_name": "day_datetime",
-    "time_series_id_column_names": ["store"],
-    "forecast_horizon": 50,
-    "target_lags": "auto",
-    "target_rolling_window_size": 10,
-}
+from azureml.automl.core.forecasting_parameters import ForecastingParameters
+
+forecasting_parameters = ForecastingParameters(
+    time_column_name='day_datetime', 
+    forecast_horizon=50,
+    time_series_id_column_names=["store"],
+    target_lags='auto',
+    target_rolling_window_size=10
+)
 ```
 
-これらの `time_series_settings` は、`forecasting` のタスクの種類、プライマリ メトリック、終了基準、トレーニング データと共に、標準の `AutoMLConfig` オブジェクトに渡されます。 
+これらの `forecasting_parameters` は、`forecasting` のタスクの種類、プライマリ メトリック、終了基準、トレーニング データと共に、標準の `AutoMLConfig` オブジェクトに渡されます。 
 
 ```python
 from azureml.core.workspace import Workspace
@@ -192,7 +195,7 @@ automl_config = AutoMLConfig(task='forecasting',
 
 ### <a name="featurization-steps"></a>特徴量化の手順
 
-自動機械学習におけるあらゆる実験では、自動スケーリングと正規化の手法が既定でデータに適用されます。 これらの手法は、さまざまなスケールの特徴に反応する "*特定*" のアルゴリズムを支援する**特徴量化**の一種です。 既定の特徴量化の手順の詳細については、[AutoML での特徴量化](how-to-configure-auto-features.md#automatic-featurization)に関するページを参照してください。
+自動機械学習におけるあらゆる実験では、自動スケーリングと正規化の手法が既定でデータに適用されます。 これらの手法は、さまざまなスケールの特徴に反応する " *特定* " のアルゴリズムを支援する **特徴量化** の一種です。 既定の特徴量化の手順の詳細については、[AutoML での特徴量化](how-to-configure-auto-features.md#automatic-featurization)に関するページを参照してください。
 
 ただし、次の手順は `forecasting` のタスクの種類に対してのみ実行されます。
 
@@ -216,7 +219,7 @@ ML モデルのトレーニングに使用されたデータと特徴から確�
 |カスタマイズ|定義|
 |--|--|
 |**列の目的の更新**|指定した列の自動検出された特徴の種類をオーバーライドします。|
-|**トランスフォーマー パラメーターの更新** |指定したトランスフォーマーのパラメーターを更新します。 現在は、*Imputer* (fill_value および median) がサポートされています。|
+|**トランスフォーマー パラメーターの更新** |指定したトランスフォーマーのパラメーターを更新します。 現在は、 *Imputer* (fill_value および median) がサポートされています。|
 |**列の削除** |特徴量化から削除する列を指定します。|
 
 SDK を使用して特徴量化をカスタマイズするには、`AutoMLConfig` オブジェクト内で `"featurization": FeaturizationConfig` を指定します。 [カスタムの特徴量化](how-to-configure-auto-features.md#customize-featurization)について、詳細情報をご覧ください。
@@ -242,7 +245,7 @@ Azure Machine Learning Studio を実験に使用している場合は、[Studio 
 ### <a name="enable-deep-learning"></a>ディープ ラーニングを有効にする
 
 > [!NOTE]
-> 自動機械学習での予測における DNN サポートは**プレビュー**段階です。また、ローカルの実行はサポートされていません。
+> 自動機械学習での予測における DNN サポートは **プレビュー** 段階です。また、ローカルの実行はサポートされていません。
 
 深層ニューラル ネットワーク (DNN) を使用してディープ ラーニングを活用し、モデルのスコアを向上させることもできます。 自動 ML のディープ ラーニングを使用すると、一変量および多変量の時系列データを予測できます。
 
@@ -271,7 +274,7 @@ DNN を利用した詳細なコード例については、[飲料生産予測 �
 
 たとえば、エネルギー需要を予測するとします。 3 日間のローリング ウィンドウの特徴を追加して、暖房が入っている空間の熱変化を考慮することもできます。 この例では、`AutoMLConfig` コンストラクターで `target_rolling_window_size= 3` を設定して、このウィンドウを作成します。 
 
-この表は、ウィンドウ集計が適用されたときに発生する特徴エンジニアリングを示しています。 **最小値、最大値**、**合計値**の列は、定義された設定に基づいて、3 のスライディング ウィンドウで生成されます。 各行には新しい計算済みの特徴があります。2017 年 9 月 8 日の午前 4:00 のタイムスタンプの場合、最大値、最小値、合計値は、2017 年 9 月 8 日午前 1:00 から午前 3:00 までの**需要値**を使用して計算されます。 この 3 のウィンドウは、残りの行のデータを設定するためにシフトされます。
+この表は、ウィンドウ集計が適用されたときに発生する特徴エンジニアリングを示しています。 **最小値、最大値** 、 **合計値** の列は、定義された設定に基づいて、3 のスライディング ウィンドウで生成されます。 各行には新しい計算済みの特徴があります。2017 年 9 月 8 日の午前 4:00 のタイムスタンプの場合、最大値、最小値、合計値は、2017 年 9 月 8 日午前 1:00 から午前 3:00 までの **需要値** を使用して計算されます。 この 3 のウィンドウは、残りの行のデータを設定するためにシフトされます。
 
 ![ターゲットのローリング ウィンドウ](./media/how-to-auto-train-forecast/target-roll.svg)
 
@@ -346,4 +349,3 @@ day_datetime,store,week_of_year
 * [解釈可能性: 自動機械学習のモデルの説明 (プレビュー)](how-to-machine-learning-interpretability-automl.md) について学習する。 
 * [多数モデル ソリューション アクセラレータ](https://aka.ms/many-models)で AutoML を使用して複数のモデルをトレーニングする方法について学習する。
 * 自動機械学習を使用して実験を作成するためのエンド ツー エンドの例については、[チュートリアル](tutorial-auto-train-models.md)に従ってください。
-

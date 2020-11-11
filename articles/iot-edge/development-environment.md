@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 17531c6e38447fba7fe8761a963be39ecfc8f489
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 4064acd6d2857ebc00a38ea7f6ff5d5e30bbd699
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044158"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041370"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>IoT Edge のための開発およびテスト環境の準備
 
@@ -83,7 +83,7 @@ IoT Edge ランタイムは運用環境への配置のみをサポートしま�
 | ツール | 別名 | サポートされているプラットフォーム | 最適な用途 |
 | ---- | ------------- | ------------------- | --------- |
 | IoT Edge Hub 開発ツール  | iotedgehubdev | Windows、Linux、macOS | モジュールをデバッグするためのデバイスのシミュレート。 |
-| IoT Edge 開発コンテナー | microsoft/iotedgedev | Windows、Linux、macOS | 依存関係をインストールせずに開発。 |
+| IoT Edge 開発コンテナー | iotedgedev | Windows、Linux、macOS | 依存関係をインストールせずに開発。 |
 | コンテナーの IoT Edge ランタイム | iotedgec | Windows、Linux、macOS、ARM | ランタイムをサポートしないデバイスでのテスト。 |
 | IoT Edge デバイス コンテナー | toolboc/azure-iot-edge-device-container | Windows、Linux、macOS、ARM | 多数の IoT Edge デバイスが存在する規模の大きいシナリオのテスト。 |
 
@@ -99,7 +99,7 @@ IoT Edge Hub 開発ツールは、IoT Edge 開発ツールだけでなく、Visu
 
 Azure IoT Edge 開発コンテナーは、IoT Edge 開発に必要なすべての依存関係が存在する Docker コンテナーです。 このコンテナーにより、C#、Python、Node.js、Java など、開発にどの言語を使用するとしても簡単に開始できます。 インストールする必要があるのは、開発用マシンにコンテナーをプルするための Docker や Moby などのコンテナー エンジンだけです。
 
-詳細については、[Azure IoT Edge 開発コンテナー](https://hub.docker.com/r/microsoft/iotedgedev/)に関するページを参照してください。
+詳細については、[Azure IoT Edge 開発コンテナー](https://github.com/Azure/iotedgedev/wiki/quickstart-with-iot-edge-dev-container)に関するページを参照してください。
 
 ### <a name="iot-edge-runtime-in-a-container"></a>コンテナーの IoT Edge ランタイム
 

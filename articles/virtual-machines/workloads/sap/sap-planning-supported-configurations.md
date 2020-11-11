@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad1567a3a6cba2c2fbc519ffe5d384aba25ab51d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec29b6489712eeb67783aef03261a3606a390125
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88648991"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926616"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure 仮想マシンの SAP ワークロードでサポートされるシナリオ
 Azure での SAP NetWeaver、Business One、`Hybris`、または S/4HANA システム アーキテクチャの設計により、さまざまなアーキテクチャやツールで、スケーラブルで、効率性、可用性に優れたデプロイを実現するためのさまざまな機会が提供されます。 使用されているオペレーティング システムまたは DBMS によっては、制限があります。 また、オンプレミスでサポートされているすべてのシナリオが、Azure でも同じようにサポートされているわけではありません。 このドキュメントでは、サポートされていない非高可用性構成と高可用性構成、および Azure VM だけを使用するアーキテクチャについて説明します。 [HANA Large Instances](./hana-overview-architecture.md) でサポートされているシナリオについては、「[HANA L インスタンスのサポートされるシナリオ](./hana-supported-scenario.md)」をご覧ください。 
@@ -46,7 +46,7 @@ Azure でサポートされているすべての OS/DBMS の組み合わせに�
 
 図で表すと次のようになります。
 
-![単純な 2 層構成](./media/sap-planning-supported-configurations/three-tier-simple-configuration.png)
+![単純な 3 層構成を示す図。](./media/sap-planning-supported-configurations/three-tier-simple-configuration.png)
 
 運用環境と非運用環境の SQL Server、Oracle、DB2、SAP HANA、maxDB、SAP ASE の DBMS システムに対して、Windows、Red Hat、SUSE、Oracle Linux で、この種の構成がサポートされています。 これは、[Azure HANA Large Instances](./hana-overview-architecture.md) に対する既定のデプロイ構成です。 単純化するため、SAP アプリケーション レイヤーの SAP セントラル サービスと SAP ダイアログ インスタンスは区別しませんでした。 この単純な 3 層構成では、SAP セントラル サービスに対する高可用性保護はありません。
 
@@ -83,7 +83,7 @@ HANA Large Instances のディスク構成は、構成済みで提供されま�
 
 Azure VM 内で複数の SAP ダイアログ インスタンスが実行される 3 層構成は、次のようになります。
 
-![1 つのユニットに複数の DBMS インスタンス](./media/sap-planning-supported-configurations/multiple-dialog-instances.png)
+![Azure VM 内で複数の SAP ダイアログ インスタンスが実行される 3 層構成を示す図。](./media/sap-planning-supported-configurations/multiple-dialog-instances.png)
 
 単純化するため、SAP アプリケーション レイヤーの SAP セントラル サービスと SAP ダイアログ インスタンスは区別しませんでした。 この単純な 3 層構成では、SAP セントラル サービスに対する高可用性保護はありません。 運用システムでは、SAP セントラル サービスを保護しないままにしないことをお勧めします。 SAP セントラル サービスに関するいわゆるマルチ SID 構成と、そのようなマルチ SID 構成の高可用性の詳細については、このドキュメントの後のセクションを参照してください。
 
@@ -121,7 +121,7 @@ Azure VM では、次の高可用性構成が DBMS レベルでサポートさ�
     - [HANA L インスタンスのサポートされるシナリオ - ホストの自動フェールオーバー (1+1)](./hana-supported-scenario.md#host-auto-failover-11)
 
 > [!IMPORTANT]
-> 上で説明したシナリオのいずれでも、1 つの VM で複数の DBMS インスタンスの構成はサポートされていません。 各ケースでは、VM ごとにデプロイできるデータベース インスタンスは 1 つだけで、説明されている高可用性の方法で保護することができます。 Windows または Pacemaker の同じフェールオーバー クラスターで複数の DBMS インスタンスを保護することは、現時点ではサポートされて**いません**。 また、Oracle Data Guard は、VM デプロイごとに 1 つのインスタンスのケースに対してのみサポートされます。 
+> 上で説明したシナリオのいずれでも、1 つの VM で複数の DBMS インスタンスの構成はサポートされていません。 各ケースでは、VM ごとにデプロイできるデータベース インスタンスは 1 つだけで、説明されている高可用性の方法で保護することができます。 Windows または Pacemaker の同じフェールオーバー クラスターで複数の DBMS インスタンスを保護することは、現時点ではサポートされて **いません** 。 また、Oracle Data Guard は、VM デプロイごとに 1 つのインスタンスのケースに対してのみサポートされます。 
 
 さまざまなデータベース システムで、1 つの DBMS インスタンスで複数のデータベースをホストできます。 SAP HANA の場合と同様に、複数のデータベースを複数のデータベース コンテナー (MDC) でホストできます。 これらのマルチデータベース構成が 1 つのフェールオーバー クラスター リソース内で動作している場合、これらの構成はサポートされます。 サポートされない構成は、複数のクラスター リソースが必要になる場合です。 1 つの SQL Server インスタンスの下に複数の SQL Server 可用性グループを定義する構成の場合です。
 
@@ -180,7 +180,7 @@ SAP セントラル サービスは、SAP 構成の 2 番目の単一障害点�
 SAP セントラル サービス クラスターのシナリオで使用できる品質の高可用性 NFS または SMB 共有が提供されるのは Azure Storage の種類のサブセットのみなので、サポートされているストレージの種類の一覧は次のとおりです。
 
 - Windows スケールアウト ファイル サーバーを使用する Windows フェールオーバー クラスター サーバーは、Azure NetApp Files を除くすべてのネイティブ Azure Storage の種類にデプロイできます。 ただし、スループットと IOPS のサービス レベル アグリーメントが優れているため、Premium Storage を利用することをお勧めします。
-- Azure NetApp Files 上の Windows フェールオーバー クラスター サーバーと SMB は、Azure NetApp Files でサポートされています。 Azure Files サービスでの SMB 共有は、現時点ではサポートされて**いません**。
+- Azure NetApp Files 上の Windows フェールオーバー クラスター サーバーと SMB は、Azure NetApp Files でサポートされています。 Azure Files サービスでの SMB 共有は、現時点ではサポートされて **いません** 。
 - SIOS `Datakeeper` に基づく Windows フェールオーバー クラスター サーバーと Windows 共有ディスクは、Azure NetApp Files を除くすべてのネイティブ Azure Storage の種類にデプロイできます。 ただし、スループットと IOPS のサービス レベル アグリーメントが優れているため、Premium Storage を利用することをお勧めします。
 - Azure NetApp Files 上の NFS 共有を使用する SUSE または Red Hat Pacemaker は、Azure NetApp Files でサポートされています。 
 - 2 つの VM 間に `drdb` 構成を使用する SUSE Pacemaker は、Azure NetApp Files を除くネイティブの Azure Storage の種類を使用してサポートされています。 ただし、スループットと IOPS のサービス レベル アグリーメントが優れているため、Premium Storage を利用することをお勧めします。
@@ -208,7 +208,7 @@ SUSE では、Pacemaker に基づくマルチ SID クラスターもサポート
 
 エンキュー レプリケーション サーバーを使用するマルチ SID クラスターは次の図のようになります
 
-![DBMS と ASCS HA の構成](./media/sap-planning-supported-configurations/high-available-multi-system-configuration.png)
+![エンキュー レプリケーション サーバーを使用するマルチ SID クラスターを示す図。](./media/sap-planning-supported-configurations/high-available-multi-system-configuration.png)
 
 
 ## <a name="sap-hana-scale-out-scenarios"></a>SAP HANA のスケールアウト シナリオ
@@ -278,7 +278,7 @@ SAP アプリケーション レイヤーおよび最終的に必要な共有や
 
 
 ## <a name="non-supported-scenario"></a>サポートされていないシナリオ
-Azure アーキテクチャで SAP ワークロードに対してサポートされていない一連のシナリオがあります。 **サポートされていない**とは、SAP と Microsoft ではこれらの構成をサポートできず、そのようなアーキテクチャを確立するためにソフトウェアを提供した最終的なサードパーティに任せる必要があることを意味します。 次の 2 つのカテゴリがあります。
+Azure アーキテクチャで SAP ワークロードに対してサポートされていない一連のシナリオがあります。 **サポートされていない** とは、SAP と Microsoft ではこれらの構成をサポートできず、そのようなアーキテクチャを確立するためにソフトウェアを提供した最終的なサードパーティに任せる必要があることを意味します。 次の 2 つのカテゴリがあります。
 
 - ストレージ ソフト アプライアンス: Azure Marketplace でいくつかのストレージ ソフト アプライアンスが提供されています。 一部のベンダーでは、Azure 上で SAP ソフトウェアに関連してそれらのストレージ ソフト アプライアンスを使用する方法について、独自のドキュメントが提供されています。 そのようなストレージ ソフト アプライアンスが含まれる構成またはデプロイのサポートは、それらのストレージ ソフト アプライアンスのベンダーによって提供される必要があります。 このことは、[SAP サポート ノート #2015553](https://launchpad.support.sap.com/#/notes/2015553) にも記載されています
 - 高可用性フレームワーク: Azure 上の SAP ワークロード用にサポートされている高可用性フレームワークは、Pacemaker と Windows Server フェールオーバー クラスターのみです。 前述のように、SIOS `Datakeeper` のソリューションについては、Microsoft によって説明および文書化されています。 ただし、SIOS `Datakeeper` のコンポーネントは、それらのコンポーネントを提供するベンダーとして SIOS を通してサポートされる必要があります。 さまざまな SAP ノートには、他の認定された高可用性フレームワークの一覧も記載されています。 それらの一部は、サードパーティ ベンダーによって Azure についても認定されています。 ただし、それらの製品を使用した構成のサポートは、製品のベンダーから提供される必要があります。 ベンダーが異なると、SAP サポートへの統合プロセスも異なります。 Azure にデプロイされる SAP 構成で製品を使用することを決定する前に、特定のベンダーに最適なサポート プロセスを明確にする必要があります。

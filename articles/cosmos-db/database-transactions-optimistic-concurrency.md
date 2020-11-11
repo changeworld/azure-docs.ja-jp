@@ -4,17 +4,19 @@ description: この記事では、Azure Cosmos DB でのデータベース ト�
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 17c01188f783664747b7c20b9703ee5d33a8ab3f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: bdfbe5106f220a9fe4a3568709187b9071bc7917
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278741"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334278"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>トランザクションとオプティミスティック同時実行制御
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 データベース トランザクションでは、データの同時変更に対応する、安全で予測可能なプログラミング モデルが提供されます。 SQL Server などの従来のリレーショナル データベースは、ストアド プロシージャやトリガーを使用してビジネス ロジックを記述し、それをサーバーに送信することで、データベース エンジン内で直接実行することができます。 従来のリレーショナル データベースの場合、2 種類のプログラミング言語に対応することが求められます。1 つは、JavaScript、Python、C#、Java などの (非トランザクションの) アプリケーション プログラミング言語であり、もう 1 つはデータベースによってネイティブに実行されるトランザクションのプログラミング言語 (T-SQL など) です。
 
@@ -64,4 +66,5 @@ Azure Cosmos コンテナーに格納されている項目はすべて、シス�
 - [Azure Cosmos のデータベース、コンテナー、およびアイテムの操作](account-databases-containers-items.md)
 - [一貫性レベル](consistency-levels.md)
 - [競合のタイプと解決ポリシー](conflict-resolution-policies.md)
+- [TransactionalBatch の使用](transactional-batch.md)
 - [ストアド プロシージャ、トリガー、およびユーザー定義関数](stored-procedures-triggers-udfs.md)

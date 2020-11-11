@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/29/2020
 ms.author: kenwith
 ms.reviewer: baselden
-ms.openlocfilehash: 327e59d3fee6f23d2635b846e9fb5ab422e0139e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a49dff0e4ac41670800073c02c5a507eb433c326
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87429028"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280444"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>アプリケーションを Azure Active Directory に移行するためのリソース
 
@@ -26,6 +26,7 @@ ms.locfileid: "87429028"
 |:-----------|:-------------|
 |[Migrating your apps to Azure AD](https://aka.ms/migrateapps/whitepaper) (アプリの Azure AD への移行) | このホワイト ペーパーは、移行のメリットを示し、4 つのおおまかなフェーズ (検出、分類、移行、および継続的な管理) を経て移行するための計画を立案する方法について説明します。 プロセスの考え方とプロジェクトを実行しやすいピースに分割する方法について案内します。 ドキュメント全体に、作業中に役立つ重要なリソースへのリンクがあります。 |
 |[Solution guide: Migrating apps from Active Directory Federation Services (AD FS) to Azure AD](https://aka.ms/migrateapps/adfssolutionguide) (ソリューション ガイド: Active Directory フェデレーション サービス (AD FS) から Azure AD へのアプリの移行) | このソリューション ガイドでは、移行ホワイト ペーパーで概要が説明されているアプリケーション移行プロジェクトの 4 つのフェーズの計画と実行について説明します。 このガイドでは、アプリケーションを Azure Directory Federated Services (AD FS) から Azure AD に移行するための具体的な目標に対してこれらのフェーズを適用する方法について説明します。|
+|[開発者向けチュートリアル: 開発者向けの AD FS から Azure AD へのアプリケーション移行プレイブック](https://aka.ms/adfsplaybook) | この ASP.NET コード サンプルのセットと付随するチュートリアルは、Active Directory Federation Services (AD FS) と統合されているアプリケーションを Azure Active Directory (Azure AD) に安全に移行する方法を学習するのに役立ちます。 このチュートリアルは、AD FS と Azure AD の両方でのアプリの構成について学習する必要があるだけでなく、このプロセスでコード ベースによって必要とされる変更についても認識し、確信を持つ開発者を対象にしています。|
 | [Tool: Active Directory Federation Services Migration Readiness Script](https://aka.ms/migrateapps/adfstools) (ツール: Active Directory フェデレーション サービス移行準備スクリプト) | これは、アプリが Azure AD に移行する準備が整っているかどうかを判別するために、オンプレミスの Active Directory フェデレーション サービス (AD FS) サーバーで実行できるスクリプトです。|
 | [Deployment plan: Migrating from AD FS to password hash sync](https://aka.ms/ADFSTOPHSDPDownload) (デプロイ計画: AD FS からパスワード ハッシュの同期への移行) | パスワード ハッシュの同期では、ユーザー パスワードのハッシュがオンプレミスの Active Directory から Azure AD に同期されます。 これにより、Azure AD は、オンプレミスの Active Directory との対話なしでユーザーを認証できます。| 
 | [Deployment plan: Migrating from AD FS to pass-through authentication](https://aka.ms/ADFSTOPTADPDownload) (デプロイ計画: AD FS からパススルー認証への移行)|Azure AD パススルー認証を使用すると、ユーザーは同じパスワードを使用して、オンプレミスのアプリケーションとクラウド ベースのアプリケーションの両方にサインインできます。 この機能は、ユーザーが記憶するパスワードが 1 つ減るため、エクスペリエンスが向上します。 さらに、覚えておく必要があるパスワードが 1 つだけであれば、ユーザーがサインイン方法を忘れる可能性が低くなるため、IT ヘルプデスクのコストが削減されます。 この機能により、ユーザーが Azure AD を使用してサインインするとき、ユーザーのパスワードがオンプレミスの Active Directory に対して直接検証されます。|

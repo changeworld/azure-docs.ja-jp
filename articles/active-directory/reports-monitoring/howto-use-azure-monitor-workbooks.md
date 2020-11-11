@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 510991c1afba9a5ffbfd77e855ee25d8b641bdd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76dc7693b1773038d610f9ed42eddad2c81e3eaf
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226983"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126636"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Active Directory レポートに Azure Monitor ブックを使用する方法
 
@@ -174,7 +174,7 @@ Monitor ブックを使用するためには、次のものが必要となりま
 
 無効化されたサインインに対し、条件付きアクセスの状態別の内訳が得られます。
 
-![条件付きアクセスの状態](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
+![[条件付きアクセスの状態] と [最近のサインイン] を示すスクリーンショット。](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
 
 
 ## <a name="conditional-access-insights"></a>分析情報への条件付きアクセス
@@ -194,12 +194,12 @@ Workbooks には、IT 管理者がそのテナント内の条件付きアクセ�
 
 - **[Data View] (データ ビュー)**
 
-![条件付きアクセスの状態](./media/howto-use-azure-monitor-workbooks/access-insights.png)
+![[条件付きアクセス] ウィンドウを示すスクリーンショット。ここでは、[条件付きアクセス ポリシー] を選択できます。](./media/howto-use-azure-monitor-workbooks/access-insights.png)
 
 
 [影響の概要] には、選択されたポリシーが特定の結果をもたらしたユーザーまたはサインインの数が表示されます。 [合計] は、選択されたポリシーが、選択された [時間の範囲] で評価されたユーザーまたはサインインの数です。 タイルをクリックすると、ブック内のデータがその結果の種類でフィルター処理されます。 
 
-![条件付きアクセスの状態](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
+![[合計]、[成功]、[エラー] などの結果のフィルター処理に使用されるタイルを示すスクリーンショット。](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
 
 このブックにはまた、次の 6 つの各条件で分類された、選択されたポリシーの影響も表示されます。 
 - **[デバイスの状態]**
@@ -209,15 +209,11 @@ Workbooks には、IT 管理者がそのテナント内の条件付きアクセ�
 - **場所**
 - **アプリケーション**
 
-![条件付きアクセスの状態](./media/howto-use-azure-monitor-workbooks/device-platform.png)
+![[合計] をサインインでフィルター処理した結果の詳細を示すスクリーンショット。](./media/howto-use-azure-monitor-workbooks/device-platform.png)
 
 ブックで選択されたパラメーターでフィルター処理された個々のサインインを調査することもできます。 サインインの頻度で並べ替えられた個々のユーザーを検索し、対応するサインイン イベントを表示します。 
 
-![条件付きアクセスの状態](./media/howto-use-azure-monitor-workbooks/filtered.png)
-
-
-
-
+![確認できる個々のサインインを示すスクリーンショット。](./media/howto-use-azure-monitor-workbooks/filtered.png)
 
 ## <a name="sign-ins-by-grant-controls"></a>許可コントロールによるサインイン
 
@@ -254,7 +250,7 @@ Workbooks には、IT 管理者がそのテナント内の条件付きアクセ�
 
 ## <a name="sign-ins-failure-analysis"></a>サインイン エラー分析
 
-**サインイン エラー分析**ブックを使用して、以下のエラーをトラブルシューティングします。
+**サインイン エラー分析** ブックを使用して、以下のエラーをトラブルシューティングします。
 
 - サインイン
 - 条件付きアクセス ポリシー

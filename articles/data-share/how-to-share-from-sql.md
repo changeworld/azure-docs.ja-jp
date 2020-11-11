@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 10/15/2020
-ms.openlocfilehash: 85ddda4bbb6702ed8c82a40d603c8ca87ffb7053
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: c13b71858915ab262ab3e0e99ab8c482d19160ea
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217543"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318505"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics からのデータの共有と受信
 
@@ -275,7 +275,7 @@ SQL ソースからデータを共有するとき、スナップショットの�
 
 >[!NOTE]
 > 1. 10 進の中間型にマップされるデータ型の場合、スナップショットでは、現在、最大 28 の有効桁数がサポートされています。 28 よりも大きな有効桁数を必要とするデータがある場合は、文字列に変換することを検討してください。 
-> 1.  Azure SQL データベースから Azure Synapse Analytics にデータを共有している場合は、すべてのデータ型がサポートされるわけではありません。 詳細については、「[Synapse SQL プールでのテーブルのデータ型](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md)」を参照してください。 
+> 1.  Azure SQL データベースから Azure Synapse Analytics にデータを共有している場合は、すべてのデータ型がサポートされるわけではありません。 詳細については、[専用 SQL プールでのテーブルのデータ型](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md)に関する記事を参照してください。 
 
 ## <a name="sql-always-encrypted-or-dynamic-data-masking"></a>SQL Always Encrypted または動的データ マスク
 現時点では、Azure Data Share では、Always Encrypted が構成された Azure SQL データベースはサポートされていません。 

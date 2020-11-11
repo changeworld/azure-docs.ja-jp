@@ -1,18 +1,18 @@
 ---
 title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
-ms.date: 10/05/2020
+ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8e7cea1d03b0a236b9a485c2e640d7bf3f4e8e7e
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 5f9a110247d4ec93c8f3fb95fc9ed61eb6806787
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132484"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305148"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
-Azure Policy によってリソースの規則が確立されます。 ポリシー定義には、リソースのコンプライアンス[条件](#conditions) と、条件が満たされた場合に実行する効果が記述されます。 条件では、リソース プロパティ [フィールド](#fields)が必要な値と比較されます。 リソース プロパティ フィールドには、[エイリアス](#aliases)を使用することでアクセスします。 リソース プロパティ フィールドは、単一値フィールドまたは複数値の[配列](#understanding-the--alias)です。 条件の評価は、配列では異なります。
+Azure Policy によってリソースの規則が確立されます。 ポリシー定義には、リソースのコンプライアンス[条件](#conditions) と、条件が満たされた場合に実行する効果が記述されます。 条件によって、リソース プロパティ [フィールド](#fields)または[値](#value)が必要な値と比較されます。 リソース プロパティ フィールドには、[エイリアス](#aliases)を使用することでアクセスします。 リソース プロパティ フィールドが配列の場合、特別な[配列のエイリアス](#understanding-the--alias)を使用して、すべての配列メンバーから値を選択し、それぞれに条件を適用することができます。
 [条件](#conditions)の詳細を参照してください。
 
 規則を定義することによって、コストを制御し、リソースをより簡単に管理することができます。 たとえば、特定の種類の仮想マシンのみを許可するように指定することができます。 また、リソースに特定のタグを付けることを必須にすることもできます。 ポリシー割り当ては、子リソースによって継承されます。 リソース グループにポリシー割り当てが適用されると、そのリソース グループ内のすべてのリソースに適用されます。
@@ -291,7 +291,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 **match** 条件と **notMatch** 条件を使用する場合は、任意の数字と一致する `#`、任意の文字と一致する `?`、すべての文字と一致する `.` のほか、一致させる具体的な文字を指定することができます。 **match** と **notMatch** では大文字と小文字が区別されますが、 _stringValue_ を評価するその他すべての条件では大文字と小文字が区別されません。 大文字と小文字が区別されない代替手段は、 **matchInsensitively** と **notMatchInsensitively** で使用できます。
 
-**\[\*\] エイリアス** 配列フィールド値では、配列内の各要素は、要素間で論理 **積** を使用して個別に評価されます。 詳細については、「[\[\*\] エイリアスの評価](../how-to/author-policies-for-arrays.md#evaluating-the--alias)」を参照してください。
+**\[\*\] エイリアス** 配列フィールド値では、配列内の各要素は、要素間で論理 **積** を使用して個別に評価されます。 詳細については、「[配列リソース プロパティを参照する](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties)」を参照してください。
 
 ### <a name="fields"></a>フィールド
 
@@ -463,6 +463,8 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
   このプロパティ内では、[論理演算子](#logical-operators)を使用して複雑な評価要件を作成できます。
 - **\<condition\>** (必須):値は、 **count.where** 条件式を満たした項目数と比較されます。 数値の[条件](../concepts/definition-structure.md#conditions)を使用する必要があります。
 
+Azure Policy で配列プロパティを操作する方法の詳細 (count 式の評価方法に関する詳細な説明を含む) については、「[配列リソース プロパティを参照する](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties)」を参照してください。
+
 #### <a name="count-examples"></a>カウントの例
 
 例 1:配列が空かどうかをチェックします
@@ -542,6 +544,21 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
                     "equals": "3389"
                 }
             ]
+        }
+    },
+    "greater": 0
+}
+```
+
+例 6:`where` 条件内で `field()` 関数を使用して、現在評価されている配列メンバーのリテラル値にアクセスします。 この条件により、偶数の " _優先度_ " 値を持つセキュリティ規則がないことが確認されます。
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+          "value": "[mod(first(field('Microsoft.Network/networkSecurityGroups/securityRules[*].priority')), 2)]",
+          "equals": 0
         }
     },
     "greater": 0
@@ -718,30 +735,20 @@ Azure Policy では、次の種類の効果をサポートしています。
 
 "通常" のエイリアスでは、フィールドは 1 つの値として表されます。 このフィールドは完全一致の比較シナリオ用で、値のセット全体を正確に定義する必要があります。それ以上でもそれ以下でもありません。
 
-**\[\*\]** エイリアスにより、配列内の各要素の値および各要素の特定のプロパティとの比較が可能になります。 このアプローチでは、"全くない"、"1 つ以上が" または "すべてが" のシナリオで、要素のプロパティを比較できます。 もっと複雑なシナリオでは、[count](#count) 条件式を使用します。 例では、 **ipRules\[\*\]** を使用して、すべての _action_ が _Deny_ であるかどうかが検証されますが、存在している規則の数または IP の _value_ は検証されません。
-このサンプル規則では、 **ipRules\[\*\].value** が **10.0.4.1** であるすべての一致がチェックされ、1 つ以上の一致が検索されない場合のみ、 **effectType** が適用されます。
+**\[\*\]** エイリアスは、配列リソース プロパティの要素から選択された値のコレクションを表します。 次に例を示します。
 
-```json
-"policyRule": {
-    "if": {
-        "allOf": [
-            {
-                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
-                "exists": "true"
-            },
-            {
-                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value",
-                "notEquals": "10.0.4.1"
-            }
-        ]
-    },
-    "then": {
-        "effect": "[parameters('effectType')]"
-    }
-}
-```
+| エイリアス | 選択された値 |
+|:---|:---|
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `ipRules` 配列の要素。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `ipRules` 配列の各要素の `action` プロパティの値。 |
 
-詳細については、[[\*] エイリアスの評価](../how-to/author-policies-for-arrays.md#evaluating-the--alias) に関する説明を参照してください。
+[フィールド](#fields)条件で使用すると、配列のエイリアスによって、個々の配列要素をターゲット値と比較できるようになります。 [count](#count) 式と共に使用すると、次のことが可能になります。
+
+- 配列のサイズを確認する
+- 配列要素のすべてまたはいずれかが複雑な条件を満たしているかどうか、またはいずれも満たしていないかを確認する
+- 厳密に ***n*** 個の配列要素が複雑な条件を満たしているかどうかを確認する
+
+詳細および例については、「[配列リソース プロパティを参照する](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

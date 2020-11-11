@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 06/05/2020
 author: jasonwhowell
 ms.author: jasonh
-ms.openlocfilehash: 15b4e6515f98a4d5a65bb5a56bdd5a5f40f90fe8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c005c4fc15f7c7955a7254f386597eee01800da5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408613"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126602"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB Compass を使用して Azure Cosmos DB の MongoDB 用 API に接続する
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 このチュートリアルでは、Cosmos DB にデータを保存および管理するときに [MongoDB Compass](https://www.mongodb.com/products/compass) を使用する方法を説明します。 このチュートリアルでは、Azure Cosmos DB の MongoDB 用 API を使用します。 ご存じない方に説明すると、Compass は MongoDB の GUI です。 データの管理と共に、データの視覚化、アドホック クエリの実行によく使用されます。
 
@@ -40,17 +41,17 @@ Cosmos DB アカウントを Compass に接続するには、次の手順を実�
 
 2. Cosmos DB の **[プライマリ/セカンダリ接続文字列]** の横にある **[クリップボードにコピー]** というボタンをクリックします。 このボタンをクリックすると、接続文字列全体がクリップボードにコピーされます。
 
-    :::image type="content" source="./media/mongodb-compass/mongodb-connection-copy.png" alt-text="[接続文字列] ブレードのスクリーンショット":::
+    :::image type="content" source="./media/mongodb-compass/mongodb-connection-copy.png" alt-text="[クリップボードにコピー] ボタンのスクリーンショット":::
 
 3. デスクトップ/マシンで Compass を開き、 **[Connect]\(接続\)** をクリックし、 **[Connect to]\(接続先\)** をクリックします。
 
 4. Compass によって自動的にクリップボード内の接続文字列が検出され、それを使用して接続するかどうかが確認されます。 次のスクリーンショットで示すように、 **[Yes]\(はい\)** をクリックします。
 
-    :::image type="content" source="./media/mongodb-compass/mongodb-compass-detect.png" alt-text="[接続文字列] ブレードのスクリーンショット":::
+    :::image type="content" source="./media/mongodb-compass/mongodb-compass-detect.png" alt-text="クリップボードに接続文字列があることを説明するダイアログ ボックスを示すスクリーンショット。":::
 
 5. 上の手順で **[Yes]\(はい\)** をクリックすると、接続文字列の詳細が自動的に入力されます。 **[Replica Set Name]\(レプリカ セット名\)** フィールドに自動的に入力された値を削除して、空白のままにします。
 
-    :::image type="content" source="./media/mongodb-compass/mongodb-compass-replica.png" alt-text="[接続文字列] ブレードのスクリーンショット":::
+    :::image type="content" source="./media/mongodb-compass/mongodb-compass-replica.png" alt-text="[Replica Set Name]\(レプリカ セット名\) テキスト ボックスを示すスクリーンショット。":::
 
 6. ページの下部にある **[Connect]\(接続\)** をクリックします。 お使いの Cosmos DB アカウントとデータベースが MongoDB Compass 内に表示されます。
 

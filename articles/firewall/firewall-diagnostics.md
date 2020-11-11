@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 09/17/2020
+ms.date: 11/04/2020
 ms.author: victorh
-ms.openlocfilehash: 784459282007edab599d54edff0d2b38eed07b34
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2899121db4b6a3f202be4860e2e4f43027cdef7c
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320644"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348769"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Azure Firewall のログとメトリックを監視する
 
@@ -44,7 +44,7 @@ Azure Firewall を監視するには、ファイアウォール ログを使用�
 
 
 3. **[診断設定の追加]** を選択します。 **[診断設定]** ページに、診断ログの設定が表示されます。
-5. この例では、Azure Monitor ログにログを保存するため、名前として「**Firewall log analytics**」と入力します。
+5. この例では、Azure Monitor ログにログを保存するため、名前として「 **Firewall log analytics** 」と入力します。
 6. **[ログ]** の下で、 **[AzureFirewallApplicationRule]** 、 **[AzureFirewallNetworkRule]** 、 **[AzureFirewallThreatIntelLog]** 、および **[AzureFirewallDnsProxy]** を選択してログを収集します。
 7. **[Log Analytics への送信]** を選択してワークスペースを構成します。
 8. サブスクリプションを選択します。
@@ -58,7 +58,7 @@ Azure Firewall を監視するには、ファイアウォール ログを使用�
 
 1. ログ データを保存するストレージ アカウントのリソース ID をメモしておきます。 この値の形式は */subscriptions/\<subscriptionId\>/resourceGroups/\<resource group name\>/providers/Microsoft.Storage/storageAccounts/\<storage account name\>* です。
 
-   サブスクリプション内の任意のストレージ アカウントを使用できます。 この情報は、Azure Portal で確認できます。 情報はリソースの**プロパティ** ページにあります。
+   サブスクリプション内の任意のストレージ アカウントを使用できます。 この情報は、Azure Portal で確認できます。 情報はリソースの **プロパティ** ページにあります。
 
 2. ログが有効になっているファイアウォールのリソース ID に注意してください。 この値の形式は */subscriptions/\<subscriptionId\>/resourceGroups/\<resource group name\>/providers/Microsoft.Network/azureFirewalls/\<Firewall name\>* です。
 
@@ -75,13 +75,57 @@ Azure Firewall を監視するには、ファイアウォール ログを使用�
 > [!TIP]
 >診断ログでは別のストレージ アカウントは必要ありません。 アクセス ログとパフォーマンス ログにストレージを使用すると、サービス料金が発生します。
 
+## <a name="enable-diagnostic-logging-by-using-azure-cli"></a>Azure CLI を使用して診断ログを有効にする
+
+アクティビティ ログは、Resource Manager のすべてのリソースで自動的に有効になります。 診断ログで取得できるデータの収集を開始するには、診断ログを有効にする必要があります。
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+### <a name="enable-diagnostic-logging"></a>診断ログの有効化
+
+診断ログを有効にするには次のコマンドを使用します。
+
+1. 診断ログを有効にするには、[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) コマンドを実行します。
+
+   ```azurecli
+   az monitor diagnostic-settings create –name AzureFirewallApplicationRule \
+     --resource Firewall07 --storage-account MyStorageAccount
+   ```
+
+   リソースの診断設定を見るには、[az monitor diagnostic-settings list](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_list) コマンドを実行します。
+
+   ```azurecli
+   az monitor diagnostic-settings list --resource Firewall07
+   ```
+
+   リソースのアクティブな診断設定を見るには、[az monitor diagnostic-settings show](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_show) を使用します。
+
+   ```azurecli
+   az monitor diagnostic-settings show --name AzureFirewallApplicationRule --resource Firewall07
+   ```
+
+1. 設定を更新するには、[az monitor diagnostic-settings update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) コマンドを実行します。
+
+   ```azurecli
+   az monitor diagnostic-settings update --name AzureFirewallApplicationRule --resource Firewall07 --set retentionPolicy.days=365
+   ```
+
+   診断設定を削除するには、[az monitor diagnostic-settings delete](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_delete) コマンドを使用します。
+
+   ```azurecli
+   az monitor diagnostic-settings delete --name AzureFirewallApplicationRule --resource Firewall07
+   ```
+
+> [!TIP]
+>診断ログでは別のストレージ アカウントは必要ありません。 アクセス ログとパフォーマンス ログにストレージを使用すると、サービス料金が発生します。
+
 ## <a name="view-and-analyze-the-activity-log"></a>アクティビティ ログの表示と分析
 
 次のいずれかの方法を使用して、アクティビティ ログのデータを表示および分析できます。
 
-* **Azure Tools**:Azure PowerShell、Azure CLI、Azure REST API、または Azure portal を使用して、アクティビティ ログから情報を取得します。 それぞれの方法の詳細な手順については、「[リソース マネージャーの監査操作](../azure-resource-manager/management/view-activity-logs.md)」を参照してください。
-* **Power BI**: [Power BI](https://powerbi.microsoft.com/pricing) アカウントをまだ所有していない場合は、無料で試すことができます。 [Power BI 用 Azure アクティビティ ログ コンテンツ パック](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)を使用すると、事前に構成されたダッシュボードでデータを分析できます。ダッシュボードは、そのまま使用することも、カスタマイズすることもできます。
-* **Azure Sentinel**:Azure Firewall ログを Azure Sentinel に接続すると、ブック内でログ データを表示し、それを使用してカスタム アラートを作成し、組み込んで、調査を改善することができます。 Azure Sentinel の Azure Firewall データ コネクタは、現在パブリック プレビュー段階にあります。 詳細については、[Azure Firewall からのデータの接続](../sentinel/connect-azure-firewall.md)に関するページを参照してください。
+* **Azure Tools** :Azure PowerShell、Azure CLI、Azure REST API、または Azure portal を使用して、アクティビティ ログから情報を取得します。 それぞれの方法の詳細な手順については、「[リソース マネージャーの監査操作](../azure-resource-manager/management/view-activity-logs.md)」を参照してください。
+* **Power BI** : [Power BI](https://powerbi.microsoft.com/pricing) アカウントをまだ所有していない場合は、無料で試すことができます。 [Power BI 用 Azure アクティビティ ログ コンテンツ パック](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)を使用すると、事前に構成されたダッシュボードでデータを分析できます。ダッシュボードは、そのまま使用することも、カスタマイズすることもできます。
+* **Azure Sentinel** :Azure Firewall ログを Azure Sentinel に接続すると、ブック内でログ データを表示し、それを使用してカスタム アラートを作成し、組み込んで、調査を改善することができます。 Azure Sentinel の Azure Firewall データ コネクタは、現在パブリック プレビュー段階にあります。 詳細については、[Azure Firewall からのデータの接続](../sentinel/connect-azure-firewall.md)に関するページを参照してください。
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>ネットワークおよびアプリケーション ルール ログの表示と分析
 

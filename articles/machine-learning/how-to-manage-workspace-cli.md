@@ -1,7 +1,7 @@
 ---
 title: Azure CLI を使用したワークスペースの作成
 titleSuffix: Azure Machine Learning
-description: Azure CLI を使用して、新しい Azure Machine Learning ワークスペースを作成する方法について説明します。
+description: 機械学習のための Azure CLI 拡張機能を使用して、新しい Azure Machine Learning ワークスペースを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 42f47ad61c0d90752928a8273872b734574e02c3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 181cae525845e7cae5e8f6f178b01ee33999b8b5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740796"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312475"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLI を使用して Azure Machine Learning のワークスペースを作成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "92740796"
 
 * **Azure サブスクリプション** 。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
 
-* ご使用の **ローカル環境** からこのドキュメントの CLI コマンドを使用するには、 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) が必要です。
+* ご使用の **ローカル環境** からこのドキュメントの CLI コマンドを使用するには、 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) が必要です。
 
     [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/) を使用する場合は、ブラウザーを使用してクラウド内に存在する CLI にアクセスします。
 
@@ -45,7 +45,7 @@ CLI で既定のブラウザーを開くことができる場合、開いたブ�
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-その他の認証方法については、「[Azure CLI を使用してサインインする](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)」を参照してください。
+その他の認証方法については、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest)」を参照してください。
 
 ## <a name="install-the-machine-learning-extension"></a>機械学習拡張機能をインストールする
 
@@ -103,7 +103,7 @@ az group create --name <resource-group-name> --location <location>
 }
 ```
 
-リソース グループの操作の詳細については、「[az group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest&preserve-view=true)」を参照してください。
+リソース グループの操作の詳細については、「[az group](//cli/azure/group?preserve-view=true&view=azure-cli-latest)」を参照してください。
 
 ### <a name="automatically-create-required-resources"></a>必要なリソースを自動的に作成する
 
@@ -163,7 +163,7 @@ Microsoft のマネージド キーを使用する代わりに、独自のキー
 `--cmk-keyvault` と `--resource-cmk-uri` パラメーターを使用する前に、まず次のアクションを実行する必要があります。
 
 1. サブスクリプションに対する共同作成者のアクセス許可を使用して、 __Machine Learning アプリ__ (ID とアクセスの管理) を承認します。
-1. [カスタマー マネージド キーの構成](/azure/cosmos-db/how-to-setup-cmk)に関する記事の手順に従って以下を行います。
+1. [カスタマー マネージド キーの構成](../cosmos-db/how-to-setup-cmk.md)に関する記事の手順に従って以下を行います。
     * Azure Cosmos DB プロバイダーを登録する
     * Azure Key Vault を作成して構成する
     * キーを生成する
@@ -226,7 +226,7 @@ Azure Cosmos DB インスタンスを手動で作成する必要はありませ�
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"`
 
     > [!IMPORTANT]
-    > コンテナー レジストリを Azure Machine Learning ワークスペースで使用するには、事前に[管理者アカウント](/azure/container-registry/container-registry-authentication#admin-account)が有効になっている必要があります。
+    > コンテナー レジストリを Azure Machine Learning ワークスペースで使用するには、事前に[管理者アカウント](../container-registry/container-registry-authentication.md#admin-account)が有効になっている必要があります。
 
 ワークスペースで使用するリソースの ID を取得したら、ベース コマンド `az workspace create -w <workspace-name> -g <resource-group-name>` を使用して、既存のリソースのパラメーターと ID を追加します。 たとえば、次のコマンドでは、既存のコンテナー レジストリを使用するワークスペースが作成されます。
 
@@ -282,7 +282,7 @@ az ml workspace list
 ]
 ```
 
-詳細については、[az ml workspace list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-list) のドキュメントをご覧ください。
+詳細については、[az ml workspace list](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-list) のドキュメントをご覧ください。
 
 ## <a name="get-workspace-information"></a>ワークスペース情報の取得
 
@@ -315,7 +315,7 @@ az ml workspace show -w <workspace-name> -g <resource-group-name>
 }
 ```
 
-詳細については、[az ml workspace show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-show) のドキュメントをご覧ください。
+詳細については、[az ml workspace show](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-show) のドキュメントをご覧ください。
 
 ## <a name="update-a-workspace"></a>ワークスペースの更新
 
@@ -348,7 +348,7 @@ az ml workspace update -w <workspace-name> -g <resource-group-name>
 }
 ```
 
-詳細については、「[az ml workspace update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-update)」のドキュメントをご覧ください。
+詳細については、「[az ml workspace update](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-update)」のドキュメントをご覧ください。
 
 ## <a name="share-a-workspace-with-another-user"></a>別のユーザーとワークスペースの共有
 
@@ -360,7 +360,7 @@ az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user>
 
 Azure Machine Learning を使用した Azure ロールベースのアクセス制御 (Azure RBAC) の詳細については、[ユーザーとロールの管理](how-to-assign-roles.md)に関するページを参照してください。
 
-詳細については、[az ml workspace share](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-share) のドキュメントをご覧ください。
+詳細については、[az ml workspace share](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-share) のドキュメントをご覧ください。
 
 ## <a name="sync-keys-for-dependent-resources"></a>依存リソースのキーの同期
 
@@ -372,7 +372,7 @@ az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>
 
 キーの変更の詳細については、「[ストレージ アカウント キーの再生成](how-to-change-storage-access-key.md)」を参照してください。
 
-詳細については、[az ml workspace sync-keys](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-sync-keys) のドキュメントをご覧ください。
+詳細については、[az ml workspace sync-keys](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-sync-keys) のドキュメントをご覧ください。
 
 ## <a name="delete-a-workspace"></a>ワークスペースを削除する
 
@@ -391,7 +391,7 @@ az ml workspace delete -w <workspace-name> -g <resource-group-name>
 az group delete -g <resource-group-name>
 ```
 
-詳細については、[az ml workspace delete](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-delete) のドキュメントをご覧ください。
+詳細については、[az ml workspace delete](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-delete) のドキュメントをご覧ください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -412,4 +412,4 @@ Azure Machine Learning ワークスペースでは、一部の操作に対して
 
 ## <a name="next-steps"></a>次のステップ
 
-機械学習の Azure CLI 拡張機能の詳細については、[az ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest&preserve-view=true) のドキュメントを参照してください。
+機械学習の Azure CLI 拡張機能の詳細については、[az ml](/cli/azure/ext/azure-cli-ml/ml?preserve-view=true&view=azure-cli-latest) のドキュメントを参照してください。

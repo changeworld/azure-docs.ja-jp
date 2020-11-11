@@ -14,14 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 6597baa67bcd2e26f3b8aeaa98c1776b5fc47430
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3c0ba55541baf3f31952b82a2fa357b48a5f1a9
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993273"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148356"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel のユーザーとエンティティの行動分析 (UEBA) を使用して高度な脅威を特定する
+
+> [!IMPORTANT]
+>
+> - UEBA およびエンティティ ページ機能は、次の Azure Sentinel の地域とリージョンで **一般提供** になりました。
+>    - 米国地域
+>    - 西ヨーロッパ リージョン
+>    - オーストラリア地域
+>
+> - 他のすべての地域およびリージョンでは、これらの機能は **パブリック プレビュー** 段階のままであり、サービス レベル アグリーメントなしで提供されます。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>ユーザーとエンティティの行動分析 (UEBA) の概要
 
@@ -47,13 +56,15 @@ UEBA ソリューションに対する Gartner のパラダイムから着想を
 
 - **分析:** さまざまな機械学習 (ML) アルゴリズムを使用して、Azure Sentinel は異常なアクティビティを特定し、コンテキスト エンリッチメントの形式で明確かつ簡潔に証拠を提供します。そのいくつかの例を次に示します。
 
-    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/behavior-analytics-top-down.png" alt-text="エンティティの行動分析のアーキテクチャ" の結果は特定された異常を示します。
+    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/behavior-analytics-top-down.png" alt-text="行動分析のアウトサイドイン アプローチ":::
+
+Azure Sentinel は、セキュリティ アナリストが、ユーザーのベースライン プロファイルのコンテキストで、かつそれとの比較で異常なアクティビティを明確に理解するために役立つアーティファクトを提供します。 ユーザー (またはホスト、またはアドレス) によって実行されたアクションは、次のようにコンテキストから評価されます。ここで、"true" の結果は特定された異常を示します。
 - 地理的な場所、デバイス、環境にまたがって。
 - 時間と頻度の期間にまたがって (ユーザー独自の履歴と比較して)。
 - ピアの行動と比較して。
 - 組織の行動と比較して。
 
-    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/context.png" alt-text="エンティティの行動分析のアーキテクチャ":::
+    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/context.png" alt-text="エンティティのコンテキスト":::
 
 
 ### <a name="scoring"></a>ポイントの計算
@@ -62,9 +73,41 @@ UEBA ソリューションに対する Gartner のパラダイムから着想を
 
 この動作の例については、[Microsoft Cloud App Security](https://techcommunity.microsoft.com/t5/microsoft-security-and/prioritize-user-investigations-in-cloud-app-security/ba-p/700136) で行動分析がどのように使用されているかを参照してください。
 
+## <a name="entities-in-azure-sentinel"></a>Azure Sentinel のエンティティ
 
+### <a name="entity-identifiers"></a>エンティティ識別子
 
-## <a name="entity-pages"></a>エンティティ ページ
+アラートには、Azure Sentinel に送信された時点で、データ要素が含まれています。それらは Azure Sentinel によって識別され、ユーザー アカウント、ホスト、IP アドレスなどのエンティティとして分類されます。 ときによって、エンティティに関する十分な情報がアラートに含まれていない場合に、この識別が困難になることがあります。
+
+たとえば、ユーザー アカウントは複数の方法で識別できます。Azure AD アカウントの数値識別子 (GUID) またはユーザー プリンシパル名 (UPN) 値を使用する方法や、ユーザー名と NT ドメイン名を組み合わせて使用する方法です。 データ ソースが異なる場合、同じユーザーが異なる方法で識別されることがあり得ます。 そのため、Azure Sentinel においては、可能な場合は常に、それらの識別子を単一のエンティティにマージして正しく識別できるようにしています。
+
+ただし、いずれかのリソース プロバイダーによって作成されたアラートでエンティティを十分に識別できない場合があります (たとえば、ドメイン名のコンテキストがないユーザー名など)。 このような場合、ユーザー エンティティを同じユーザー アカウントの他のインスタンスとマージすることはできません。これは別個のエンティティとして識別されます。それら 2 つのエンティティは、統合されず分離されたままになります。
+
+この発生リスクを最小限に抑えるために、使用しているすべてのアラート プロバイダーについて、生成されるアラート内でエンティティが正しく識別されることを確実にする必要があります。 さらに、ユーザー アカウント エンティティを Azure Active Directory と同期することで、統合ディレクトリを作成してユーザー アカウント エンティティをマージできるようになります。
+
+現在、次の種類のエンティティが Azure Sentinel で識別されます。
+
+- ユーザー アカウント (Account)
+- Host
+- IP アドレス (IP)
+- マルウェア
+- ファイル
+- Process
+- クラウド アプリケーション (CloudApplication)
+- ドメイン名 (DNS)
+- Azure リソース
+- ファイル (FileHash)
+- レジストリ キー
+- レジストリ値
+- セキュリティ グループ
+- URL
+- IoT デバイス
+- Mailbox
+- メール クラスター
+- メール メッセージ
+- 送信メール
+
+### <a name="entity-pages"></a>エンティティ ページ
 
 検索、アラート、または調査で何らかのエンティティ (現在はユーザーとホストに制限されています) を検出した場合は、そのエンティティを選択して **エンティティ ページ** に移動できます。これは、そのエンティティに関する役立つ情報が豊富に含まれているデータシートです。 このページで見つけることができる情報の種類には、そのエンティティについての基本的な事実、このエンティティに関連した注目すべきイベントのタイムライン、そのエンティティの行動に関する分析情報が含まれます。
  
@@ -77,7 +120,7 @@ UEBA ソリューションに対する Gartner のパラダイムから着想を
 
 ### <a name="the-timeline"></a>タイムライン
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-timeline.png" alt-text="エンティティの行動分析のアーキテクチャ":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-timeline.png" alt-text="エンティティ ページのタイムライン":::
 
 タイムラインは、エンティティ ページが Azure Sentinel の行動分析に寄与している内容の主要な部分です。 ここには、エンティティ関連のイベントに関する項目が表示されるため、特定の期間内のエンティティのアクティビティを理解するのに役立ちます。
 
@@ -105,7 +148,7 @@ UEBA ソリューションに対する Gartner のパラダイムから着想を
 
 エンティティ ページは、複数の使用シナリオの一部になるように設計されており、インシデント管理、調査グラフ、ブックマークから、または Azure Sentinel のメイン メニューの **[エンティティの行動分析]** の下のエンティティ検索ページから直接アクセスできます。
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="エンティティの行動分析のアーキテクチャ":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="エンティティ ページのユース ケース":::
 
 
 ## <a name="data-schema"></a>データ スキーマ
@@ -154,7 +197,7 @@ BehaviorAnalytics
 
 Azure Sentinel は、ユーザーの Azure AD セキュリティ グループ メンバーシップ、メーリング リストなどに基づいて、そのユーザーのピアを計算してランク付けし、1 ～ 20 にランク付けされたピアを **UserPeerAnalytics** テーブルに格納します。 次のスクリーンショットは UserPeerAnalytics テーブルのスキーマを示し、ユーザー Kendall Collins の上位 8 つのランク付けされたピアを表示しています。 Azure Sentinel は、 *用語の出現頻度/逆文書頻度* (TF-IDF) アルゴリズムを使用して、ランク付けを計算するための重みを正規化します。グループが小さいほど、重みが大きくなります。 
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-peers-metadata.png" alt-text="エンティティの行動分析のアーキテクチャ":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-peers-metadata.png" alt-text="ユーザー ピア メタデータ テーブルのスクリーンショット":::
 
 Azure Sentinel GitHub リポジトリで提供されている [Jupyter ノートブック](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/BehaviorAnalytics/UserSecurityMetadata)を使用して、ユーザー ピア メタデータを視覚化できます。 このノートブックを使用する方法の詳細な手順については、[ガイド付き分析 - ユーザー セキュリティ メタデータ](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/BehaviorAnalytics/UserSecurityMetadata/Guided%20Analysis%20-%20User%20Security%20Metadata.ipynb)のノートブックを参照してください。
 
@@ -164,7 +207,7 @@ Azure Sentinel GitHub リポジトリで提供されている [Jupyter ノート
 
 Azure Sentinel は、ユーザーが直接、またはグループやサービス プリンシパル経由でアクセスできる Azure サブスクリプションを評価することによって、Azure リソースへの特定のユーザーによって保持されている直接および推移的なアクセス権を特定します。 この情報や、そのユーザーの Azure AD セキュリティ グループ メンバーシップの完全な一覧は、その後 **UserAccessAnalytics** テーブルに格納されます。 次のスクリーンショットは、ユーザー Alex Johnson に関する UserAccessAnalytics テーブル内のサンプル行を示しています。 **[ソース エンティティ]** はユーザーまたはサービス プリンシパル アカウントであり、 **[ターゲット エンティティ]** はソース エンティティがアクセスできるリソースです。 **[アクセス レベル]** と **[アクセスの種類]** の値は、ターゲット エンティティのアクセス制御モデルによって異なります。 Alex が Azure サブスクリプション *Contoso Hotels Tenant* に対する共同作成者のアクセス権を持っていることがわかります。 このサブスクリプションのアクセス制御モデルは RBAC です。   
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="エンティティの行動分析のアーキテクチャ":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="ユーザー アクセス分析テーブルのスクリーンショット":::
 
 Azure Sentinel GitHub リポジトリの [Jupyter ノートブック](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/BehaviorAnalytics/UserSecurityMetadata) (前に説明したものと同じノートブック) を使用して、アクセス許可分析データを視覚化できます。 このノートブックを使用する方法の詳細な手順については、[ガイド付き分析 - ユーザー セキュリティ メタデータ](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/BehaviorAnalytics/UserSecurityMetadata/Guided%20Analysis%20-%20User%20Security%20Metadata.ipynb)のノートブックを参照してください。
 

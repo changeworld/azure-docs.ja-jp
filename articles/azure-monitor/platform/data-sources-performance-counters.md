@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 71fc3f457338796289c2f6ac54f3bc713a91cc29
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 54e7a781ba9ed3cd4b53e1028c4a3bb79c256aed
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461364"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040890"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Log Analytics エージェントを使用して Windows と Linux のパフォーマンス データ ソースを収集する
 Windows および Linux のパフォーマンス カウンターから、ハードウェア コンポーネント、オペレーティング システム、およびアプリケーションのパフォーマンスに関する情報が得られます。  Azure Monitor では、長期的な分析とレポートのためにパフォーマンス データを集計することに加えて、ほぼリアルタイム (NRT) 分析のために Log Analytics エージェントから頻繁な間隔でパフォーマンス カウンターを収集できます。
@@ -38,7 +38,7 @@ Windows のパフォーマンス カウンターの場合、パフォーマン�
 
 ![Windows パフォーマンス カウンターの構成](media/data-sources-performance-counters/configure-windows.png)
 
-収集する新しい Windows パフォーマンス カウンターを追加するには、次の手順を実行します。
+収集する新しい Windows パフォーマンス カウンターを追加するには、次の手順を実行します。 V2 Windows パフォーマンス カウンターがサポートされていないことにご注意ください。
 
 1. *<オブジェクト (インスタンス)>\<カウンター>* の形式で、テキスト ボックスにカウンターの名前を入力します。  入力を開始すると、入力内容に一致する一般的なカウンターの一覧が表示されます。  一覧からカウンターを選択するか、または独自の名前を入力することができます。  *<オブジェクト>\<カウンター>* を指定して、特定のカウンターのすべてのインスタンスを返すこともできます。  
 

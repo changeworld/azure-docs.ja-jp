@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 909ea33ed96225c75a2d093f5bf2f4878ea51d2e
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 33571283b876506e419ed675dde0988974c3841e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939186"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317868"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure Synapse Analytics のビジネス インテリジェンス パートナー
 
@@ -35,12 +35,13 @@ ms.locfileid: "91939186"
 | ![LogiAnalytics](./media/sql-data-warehouse-partner-business-intelligence/logianalytics_logo.png) |**Logi Analytics**<br>Logi Analytics と連携することで、世界で最も大規模かつ多様なデータ セットの収集、分析、および即時操作が可能になります。 |[製品ページ](https://www.logianalytics.com/)<br>|
 | ![Looker](./media/sql-data-warehouse-partner-business-intelligence/looker_logo.png) |**Looker BI**<br>Looker は社内のすべてのユーザーがビジネスの推進に利用できるデータを探索して理解する機能を提供します。 さらに、Looker は、データ アナリストがそのデータを管理監督するための柔軟で再利用可能なモデリング レイヤーも提供します。  Looker を触媒として使用することによって、企業のカルチャが根本的に変革されます。|[製品ページ](https://looker.com/partners/microsoft-azure/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/looker.looker-analytics-platform-6_20)<br> |
 | ![Microstrategy](./media/sql-data-warehouse-partner-business-intelligence/microstrategy_logo.png) |**MicroStrategy**<br>MicroStrategy プラットフォームは、組織がビジネス データから価値を得ることができるビジネス インテリジェンスおよび分析機能をすべて備えています。 MicroStrategy の強力な分析エンジン、包括的なツールセット、多様なデータ コネクタ、およびオープン アーキテクチャにより、すべてのチームでの分析にアクセスを拡張するために必要なすべてのものが揃います。|[製品ページ](https://www.microstrategy.com/us/product/analytics)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microstrategy.microstrategy_enterprise_platform_vm)<br> |
+| ![Mode Analytics](./media/sql-data-warehouse-partner-business-intelligence/mode-logo.png) |**モード**<br>Mode は、驚くほど速く、予想を超えて優れたデータ分析を使用したチームでの決断に役立つ、分析と BI の最新ソリューションです。 データ チームは、SQL、Python、R、およびビジュアル分析を組み合わせた推奨ワークフローで迅速に対応します。一方で、関係者は、独自にデータを調査、共有しながら、データ チームと足並みを揃えて作業を行います。 あらゆるユーザーがデータにアクセスしやすくなることで、質問から回答までの時間が短縮され、ビジネス上の決断をより速く下すことができるようになります。|[製品ページ](https://mode.com/)<br> |
 | ![Qlik](./media/sql-data-warehouse-partner-business-intelligence/qlik_logo.png) |**Qlik Sense Enterprise**<br>すべてのユーザーが使用できるこのデータ視覚化アプリで洞察を探索します。 Qlik Sense を使用すると、組織内のすべてのユーザーは柔軟な対話型の視覚化を簡単に作成して、意味のある意思決定を行うことができます。 |[製品ページ](https://www.qlik.com/us/products/qlik-sense/enterprise)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/qlik.qlik-sense) |
 | ![SiSense](./media/sql-data-warehouse-partner-business-intelligence/sisense_logo.png) |**SiSense**<br>SiSense は、高パフォーマンスの分析データベース、複数のソースの結合機能、シンプルなデータの抽出 (ETL)、Web ベースのデータ視覚化など、企業がデータを分析して視覚化にする際に必要なツールが含まれた、完全装備のビジネス インテリジェンス ソフトウェアです。 SiSense BI と Analytics を使用して、今すぐ大規模なデータ セットの分析と視覚化を開始できます。 |[製品ページ](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>Tableau のセルフ サービス分析では、フラット ファイルからデータベースに至るまで、さまざまな種類のデータをだれでもが視覚化して理解できるようにします。 Tableau には、Synapse SQL プールへの、最適化されたネイティブのコネクタが備わっており、ライブ データ分析とメモリ内分析の両方がサポートされます。 |[製品ページ](https://www.tableau.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/tableau.tableau-server)<br>|
 | ![Targit](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**Targit (Decision Suite)**<br>Targit Decision Suite の BI プラットフォームは、リアルタイム ダッシュボード、セルフサービス分析、わかりやすいレポート作成機能、魅力的なモバイル機能、簡単なデータ検出テクノロジを備えています。 すべてが 1 つにまとまったソリューションです。 Targit は、行動を起こす勇気を企業にもたらします。 |[製品ページ](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/targit.targit-decision-suite)<br> |
 | ![ThoughtSpot](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**ThoughtSpot**<br>検索を使用して数十億にも及ぶレコードから詳細な分析情報を得たり、思いつきもしなかった内容の質問で AI から分析情報を引き出したりしましょう。 ThoughtSpot は、経営陣が、会社のデータに埋もれている分析情報を数秒で見つけることができるように支援します。 検索を使用して自社のデータを分析し、必要なタイミングで、自動化された分析情報を手に入れられます。|[製品ページ](https://www.thoughtspot.com)<br>|
-| ![Yellowfin](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Yellowfin**<br>Yellowfin は、BARC の「The BI Survey」において "_カスタム_" レポートとダッシュボードの一流ベンダーとして評価されているクラウド BI ベンダーです。 Synapse SQL プールに接続すると、受賞歴のあるコラボレーション BI 機能とロケーション インテリジェンス機能を備えた美しいレポートとダッシュボードが作成されて共有できるようになります。 |[製品ページ](https://www.yellowfinbi.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/yellowfin.yellowfin-for-azure-byol) |
+| ![Yellowfin](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Yellowfin**<br>Yellowfin は、BARC の「The BI Survey」において " _カスタム_ " レポートとダッシュボードの一流ベンダーとして評価されているクラウド BI ベンダーです。 Azure Synapse Analytics の専用 SQL プールに接続すると、受賞歴のあるコラボレーション BI 機能とロケーション インテリジェンス機能を備えた美しいレポートとダッシュボードを作成し、共有できるようになります。 |[製品ページ](https://www.yellowfinbi.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/yellowfin.yellowfin-for-azure-byol) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
 

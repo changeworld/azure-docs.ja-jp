@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 1970709dea67111bfd8b90f9fc315a3b044b2ab9
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 4505deaa4cc11c00c7283ef686827d6893c2742a
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900265"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280421"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP テーブルからデータをコピーする
 
@@ -229,7 +229,7 @@ SAP テーブルからデータをコピーするために、次のプロパテ�
 | `rfcTableFields`                 | SAP テーブルからコピーするフィールド (列)。 たとえば、「 `column0, column1` 」のように入力します。 | いいえ       |
 | `rfcTableOptions`                | SAP テーブルの行をフィルターにかけるためのオプション。 たとえば、「 `COLUMN0 EQ 'SOMEVALUE'` 」のように入力します。 この記事で後に提供する SAP クエリ演算子の表も参照してください。 | いいえ       |
 | `customRfcReadTableFunctionModule` | SAP テーブルからデータを読み取るために使用できるカスタム RFC 関数モジュール。<br>カスタム RFC 関数モジュールを使用して、SAP システムからデータを取得して Data Factory に返す方法を定義できます。 カスタム関数モジュールでは、`/SAPDS/RFC_READ_TABLE2` と同様のインターフェイスが実装されている必要があります (インポート、エクスポート、テーブル)。これは、Data Factory で使用される既定のインターフェイスです。<br>Data Factory | いいえ       |
-| `partitionOption`                  | SAP テーブルから読み取るパーティション メカニズム。 サポートされているオプションは次のとおりです。 <ul><li>`None`</li><li>`PartitionOnInt` (通常の整数値、または `0000012345` のように左側をゼロでパディングした整数値)</li><li>`PartitionOnCalendarYear` ("YYYY" の形式の 4 桁の数字)</li><li>`PartitionOnCalendarMonth` ("YYYYMM" の形式の 6 桁の数字)</li><li>`PartitionOnCalendarDate` ("YYYYMMDD" の形式の 8 桁の数字)</li></ul> | いいえ       |
+| `partitionOption`                  | SAP テーブルから読み取るパーティション メカニズム。 サポートされているオプションは次のとおりです。 <ul><li>`None`</li><li>`PartitionOnInt` (通常の整数値、または `0000012345` のように左側をゼロでパディングした整数値)</li><li>`PartitionOnCalendarYear` ("YYYY" の形式の 4 桁の数字)</li><li>`PartitionOnCalendarMonth` ("YYYYMM" の形式の 6 桁の数字)</li><li>`PartitionOnCalendarDate` ("YYYYMMDD" の形式の 8 桁の数字)</li><li>`PartitionOntime` ("HHMMSS" の形式の 6 桁の数字、`235959` など)</li></ul> | いいえ       |
 | `partitionColumnName`              | データを分割するために使用される列の名前。                | いいえ       |
 | `partitionUpperBound`              | `partitionColumnName` で指定され、パーティション分割を続行するために使用される列の最大値。 | いいえ       |
 | `partitionLowerBound`              | `partitionColumnName` で指定され、パーティション分割を続行するために使用される列の最小値。 (注: パーティション オプションが `PartitionOnInt` の場合、`partitionLowerBound` を "0" にすることはできません) | いいえ       |

@@ -9,12 +9,12 @@ ms.date: 08/05/2020
 ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 34750bcc2e9913b23daa3682d4fdea736f9c7a9a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0f94f694163ba836091e522a29f73cabd64e22b5
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367433"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145941"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Azure portal の設定を管理する
 
@@ -33,7 +33,7 @@ Azure portal にサインインするときに、既定で開かれるサブス�
 
 1. ポータルを起動するときに、既定のサブスクリプションとして使用するサブスクリプションを選択します。 
 
-    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="サブスクリプションによってリソース リストをフィルター処理します。"::: 
+    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="ポータルを起動するときに、既定のサブスクリプションとして使用するサブスクリプションを選択します。"::: 
 
 
 ## <a name="choose-your-default-view"></a>既定のビューを選択する 
@@ -50,7 +50,7 @@ Azure portal にサインインするときに、既定で開かれるページ�
 
 ポータル メニューの既定のモードでは、ページ上でポータル メニューがどれだけの領域を占めるかを制御します。
 
-![テーマが強調表示された Azure portal 設定を示すスクリーンショット](./media/set-preferences/menu-mode.png)
+![ポータル メニューの既定のモードを設定する方法を示すスクリーンショット。](./media/set-preferences/menu-mode.png)
 
 - ポータル メニューは **ポップアップ** モードの場合、必要になるまで表示されません。 メニュー アイコンを選択して、メニューを開いたり閉じたりします。
 

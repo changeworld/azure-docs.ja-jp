@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: b3c8f6015b4627d86a0665865fba2f3fdd39589d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9e43cb9188df8274d5bafa7fd9bc90c24339237
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88080713"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286832"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service のローカル キャッシュの概要
 
@@ -45,7 +45,11 @@ Azure App Service のローカル キャッシュ機能では、コンテンツ�
 * サポートされている方法によるアプリのデプロイは、持続的な共有コンテンツ ストアに直接発行されます。 ローカル キャッシュ内の _D:\home\site_ および _D:\home\siteextensions_ フォルダーを更新するには、アプリを再起動する必要があります。 この記事の後半の情報を参照して、ライフサイクルをシームレスにしてください。
 * SCM サイトの既定のコンテンツ ビューは、引き続き共有コンテンツ ストアのビューです。
 
-## <a name="enable-local-cache-in-app-service"></a>App Service でローカル キャッシュを有効にする
+## <a name="enable-local-cache-in-app-service"></a>App Service でローカル キャッシュを有効にする 
+
+> [!NOTE]
+> ローカル キャッシュは、 **F1** または **D1** レベルではサポートされていません。 
+
 ローカル キャッシュは、予約されたアプリケーション設定を組み合わせて使用して構成します。 このアプリケーション設定は、次の方法を使用して構成できます。
 
 * [Azure Portal](#Configure-Local-Cache-Portal)
@@ -83,12 +87,12 @@ Azure App Service のローカル キャッシュ機能では、コンテンツ�
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>ローカル キャッシュのサイズ設定を変更する
-ローカル キャッシュの既定のサイズは **1 GB**です。 これには、コンテンツ ストアからコピーされる /site フォルダーと /siteextensions フォルダーだけでなく、ローカルで作成されたログとデータのフォルダーが含まれます。 この上限を上げるには、アプリケーション設定 `WEBSITE_LOCAL_CACHE_SIZEINMB`を使用します。 サイズは、アプリごとに最大 **2 GB** (2000 MB) まで増やすことができます。 ローカル キャッシュは、サイズが大きくなると読み込みに時間がかかることにご注意ください。
+ローカル キャッシュの既定のサイズは **1 GB** です。 これには、コンテンツ ストアからコピーされる /site フォルダーと /siteextensions フォルダーだけでなく、ローカルで作成されたログとデータのフォルダーが含まれます。 この上限を上げるには、アプリケーション設定 `WEBSITE_LOCAL_CACHE_SIZEINMB`を使用します。 サイズは、アプリごとに最大 **2 GB** (2000 MB) まで増やすことができます。 ローカル キャッシュは、サイズが大きくなると読み込みに時間がかかることにご注意ください。
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>App Service のローカル キャッシュを使用する場合のベスト プラクティス
 ローカル キャッシュは、 [ステージング環境](../app-service/deploy-staging-slots.md) 機能と併用することをお勧めします。
 
-* 値が `Always` の "*固定の*" アプリケーション設定 `WEBSITE_LOCAL_CACHE_OPTION` を**運用**スロットに追加します。 `WEBSITE_LOCAL_CACHE_SIZEINMB`を使用する場合は、運用スロットにそれも固定の設定として追加します。
+* 値が `Always` の " *固定の* " アプリケーション設定 `WEBSITE_LOCAL_CACHE_OPTION` を **運用** スロットに追加します。 `WEBSITE_LOCAL_CACHE_SIZEINMB`を使用する場合は、運用スロットにそれも固定の設定として追加します。
 * **ステージング** スロットを作成し、ステージング スロットに発行します。 通常は、ステージングのシームレスなビルド、デプロイ、テストのライフサイクルを有効にするためにローカル キャッシュを使用するようにステージング スロットを設定しませんが、運用スロットの場合はローカル キャッシュの利点があります。
 * ステージング スロットに対してサイトをテストします。  
 * 準備ができたら、ステージング スロットと運用スロット間の [スワップ操作](../app-service/deploy-staging-slots.md#Swap) を実行します。  

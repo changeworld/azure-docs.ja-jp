@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 5c87344c4cd179beae6502901a23b2dace6591a7
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 9339ac86595a1edbbd996e410d416074680695ed
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677231"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340039"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database および Azure Synapse Analytics の監査
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -80,7 +80,7 @@ Azure SQL Database および Azure Synapse の監査では、監査レコード�
 以下のセクションでは、Azure Portal を使用した監査の構成について説明します。
 
   > [!NOTE]
-  > 一時停止している Synapse SQL プールで監査を有効にすることはできません。 監査を有効にするには、Synapse SQL プールの一時停止を解除します。 [Synapse SQL プール](../../synapse-analytics/sql/best-practices-sql-pool.md)の詳細を確認してください。
+  > 一時停止している専用 SQL プールで監査を有効にすることはできません。 監査を有効にするには、専用 SQL プールの一時停止を解除します。 専用 SQL プールの詳細については、[こちら](../..//synapse-analytics/sql/best-practices-sql-pool.md)を参照してください。
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 2. **[SQL データベース]** ウィンドウまたは **[SQL サーバー]** ウィンドウの [セキュリティ] 見出しの下にある **[監査]** に移動します。
@@ -104,6 +104,13 @@ Microsoft サポートの操作の監査 (プレビュー) を有効にするに
   > Microsoft サポートの操作の監査 (プレビュー) は、ストレージ アカウントの保存先をサポートしていません。 この機能を有効にするには、Log Analytics ワークスペースまたは Event Hub の保存先を構成する必要があります。
 
 ![Microsoft サポートの操作のスクリーンショット](./media/auditing-overview/support-operations.png)
+
+Log Analytics ワークスペースの Microsoft サポート業務の監査ログを確認するには、次のクエリを使用します。
+
+```kusto
+AzureDiagnostics
+| where Category == "DevOpsOperationsAudit"
+```
 
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>ストレージ保存先への監査
 
@@ -205,9 +212,7 @@ Azure Log Analytics ワークスペースの詳細については、「[Azure Mo
 - 他の方法:
 
   - 複数のファイルまたはログ ファイルが含まれるサブフォルダーをダウンロードした後、前述の SSMS 監査ファイルの統合の指示に従って、ローカルでマージすることができます。
-  - BLOB 監査ログをプログラムで表示します。
-
-    - PowerShell を使用して[拡張イベント ファイルにクエリを実行します](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/)。
+  - BLOB 監査ログをプログラムで表示します。PowerShell を使用して[拡張イベント ファイルにクエリを実行します](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/)。
 
 ## <a name="production-practices"></a><a id="production-practices"></a>運用方法
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: b40afce24fad6bd793a625b11dc5a84f1f021ace
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d3d8908739d6dda76f4c3d44540c36b36115d6f5
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786498"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289399"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure VM における SQL Server についてよく寄せられる質問
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -177,7 +177,7 @@ ms.locfileid: "92786498"
 
 1. **IaaS 拡張機能で SQL Server の名前付きインスタンスを使用できますか?**
    
-   はい。ただし、その名前付きインスタンスが SQL Server の唯一のインスタンスであることと、元の既定のインスタンスが[正しくアンインストールされている](sql-server-iaas-agent-extension-automate-management.md#install-on-a-vm-with-a-single-named-sql-server-instance)ことが条件となります。 既定のインスタンスがなく、1 つの SQL Server VM 上に複数の名前付きインスタンスがある場合は、SQL Server IaaS エージェント拡張機能はインストールに失敗します。 
+   はい。ただし、その名前付きインスタンスが SQL Server の唯一のインスタンスであることと、元の既定のインスタンスが[正しくアンインストールされている](sql-server-iaas-agent-extension-automate-management.md#named-instance-support)ことが条件となります。 既定のインスタンスがなく、1 つの SQL Server VM 上に複数の名前付きインスタンスがある場合は、SQL Server IaaS エージェント拡張機能はインストールに失敗します。  
 
 1. **SQL Server VM から SQL Server と関連するライセンス課金を削除できますか?**
 
@@ -210,7 +210,7 @@ ms.locfileid: "92786498"
 
 1. **SQL Server 2008 / 2008 R2 インスタンスを SQL Server VM リソース プロバイダーに登録した後にアップグレードできますか?**
 
-   はい。 セットアップ メディアを利用し、SQL Server のバージョンやエディションをアップグレードできます。その後、 [SQL IaaS 拡張機能モード](sql-vm-resource-provider-register.md#management-modes)を _エージェントなし_ から _完全_ にアップグレードできます。 アップグレードにより SQL IaaS 拡張機能のあらゆる特典を利用できるようになります。たとえば、ポータルが使いやすくなり、バックアップや修正プログラムの適用を自動化できます。 
+   OS が Windows Server 2008 R2 以降の場合は、可能です。 セットアップ メディアを利用し、SQL Server のバージョンやエディションをアップグレードできます。その後、 [SQL IaaS 拡張機能モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)を _エージェントなし_ から _完全_ にアップグレードできます。 アップグレードにより SQL IaaS 拡張機能のあらゆる特典を利用できるようになります。たとえば、ポータルが使いやすくなり、バックアップや修正プログラムの適用を自動化できます。 OS のバージョンが Windows Server 2008 の場合は、NoAgent モードのみがサポートされます。 
 
 1. **サポートが終了した SQL Server 2008 および SQL Server 2008 R2 インスタンスの無料の延長セキュリティ更新プログラムを取得するどうすればよいですか?**
 

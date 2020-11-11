@@ -1,17 +1,17 @@
 ---
 title: Azure Database for PostgreSQL シングル サーバーでの証明書のローテーション
 description: Azure Database for PostgreSQL シングル サーバーに影響するルート証明書の今後の変更について説明します
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 0eec1538814b93c024fe6a5aa34ee73c4c09184c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 96720e156963a5fb542e72823a602aa2cc6a0ead
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740422"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93349003"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL シングル サーバーのルート CA の変更について
 
@@ -31,9 +31,9 @@ Azure Database for PostgreSQL では、[データベース サーバーに接続
 ## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>データベースが影響を受けるかどうかを確認する方法
 
 SSL/TLS を使用し、ルート証明書を検証しているすべてのアプリケーションで、ルート証明書を更新する必要があります。 お使いの接続で、接続文字列を確認するとルート証明書が検証されているかどうかを、確認することができます。
--   接続文字列に `sslmode=verify-ca` または `sslmode=verify-full` が含まれている場合は、証明書を更新する必要があります。
--   接続文字列に `sslmode=disable`、`sslmode=allow`、`sslmode=prefer`、または `sslmode=require` が含まれている場合は、証明書を更新する必要はありません。 
--   接続文字列で sslmode が指定されていない場合は、証明書を更新する必要はありません。
+-    接続文字列に `sslmode=verify-ca` または `sslmode=verify-full` が含まれている場合は、証明書を更新する必要があります。
+-    接続文字列に `sslmode=disable`、`sslmode=allow`、`sslmode=prefer`、または `sslmode=require` が含まれている場合は、証明書を更新する必要はありません。 
+-    接続文字列で sslmode が指定されていない場合は、証明書を更新する必要はありません。
 
 接続文字列が抽象化されるクライアントを使用している場合、証明書が検証されているかどうかを確認するには、クライアントのドキュメントを参照してください。
 
@@ -43,7 +43,7 @@ PostgreSQL の sslmode を理解するには、PostgreSQL のドキュメント�
 
 ## <a name="what-do-i-need-to-do-to-maintain-connectivity"></a>接続を維持するために必要な作業
 
-証明書の予期しない取り消しによってアプリケーションの可用性が中断されないようにするには、または取り消された証明書を更新するには、以下の手順のようにします。 考え方は、現在の証明書と新しい証明書を組み合わせた新しい *.pem* ファイルを作成し、SSL 証明書の検証の間に、許可された値の 1 つを使用する、というものです。 次の手順を参照してください。
+証明書の予期しない取り消しによってアプリケーションの可用性が中断されないようにするため、または取り消された証明書を更新するため、以下の手順に従います。 考え方は、現在の証明書と新しい証明書を組み合わせた新しい *.pem* ファイルを作成し、SSL 証明書の検証の間に、許可された値の 1 つを使用する、というものです。 次の手順を参照してください。
 
 *   以下のリンクから、BaltimoreCyberTrustRoot と DigiCertGlobalRootG2 のルート CA をダウンロードします。
     *   https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem
@@ -80,19 +80,19 @@ PostgreSQL の sslmode を理解するには、PostgreSQL のドキュメント�
  </br>-----END CERTIFICATE-----
 
 *   元のルート CA pem ファイルを、結合されたルート CA ファイルに置き換えて、アプリケーションやクライアントを再起動します。
-*   将来的に、サーバー側に新しい証明書がデプロイされた後は、CA pem ファイルを DigiCertGlobalRootG2.crt.pem に変更することができます。
+*    将来的に、サーバー側に新しい証明書がデプロイされた後は、CA pem ファイルを DigiCertGlobalRootG2.crt.pem に変更することができます。
 
 ## <a name="what-can-be-the-impact-of-not-updating-the-certificate"></a>証明書を更新しない場合に可能性のある影響
 ここで説明されているように、Baltimore CyberTrust ルート証明書を使用して Azure Database for PostgreSQL への SSL 接続を検証している場合は、データベースに到達できなくなるため、アプリケーションの可用性が中断される可能性があります。 アプリケーションによっては、次のようなさまざまなエラー メッセージが表示される場合があります。
-*   無効な証明書/失効した証明書
-*   接続がタイムアウトしました
+*    無効な証明書/失効した証明書
+*    接続がタイムアウトしました
 
 > [!NOTE]
 > 証明書の変更が行われるまで、 **Baltimore 証明書** を破棄または変更しないでください。 変更が完了すると、Microsoft からメッセージが送信されます。その後、Baltimore 証明書を安全に削除できます。 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-### <a name="1-if-i-am-not-using-ssltls-do-i-still-need-to-update-the-root-ca"></a>1.SSL/TLS を使用していない場合でも、ルート CA を更新する必要がありますか?
+###    <a name="1-if-i-am-not-using-ssltls-do-i-still-need-to-update-the-root-ca"></a>1.SSL/TLS を使用していない場合でも、ルート CA を更新する必要がありますか?
 SSL/TLS を使用していない場合は、何も行う必要は必要ありません。 
 
 ### <a name="2-if-i-am-using-ssltls-do-i-need-to-restart-my-database-server-to-update-the-root-ca"></a>2.SSL/TLS を使用している場合、ルート CA を更新するには、データベース サーバーを再起動する必要がありますか?
@@ -104,7 +104,7 @@ SSL/TLS を使用していない場合は、何も行う必要は必要ありま
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-postgresql"></a>4.Azure Database for PostgreSQL で App Service を使用している場合、どのような影響がありますか?
 Azure App Services で Azure Database for PostgreSQL に接続している場合、アプリケーションでの SSL の使用方法により、2 つのシナリオが考えられます。
 *   この新しい証明書は、プラットフォーム レベルで App Service に追加されています。 App Service プラットフォームに含まれる SSL 証明書をアプリケーションで使用している場合は、何もする必要はありません。
-*   SSL 証明書ファイルへのパスをコードに明示的に含めている場合は、新しい証明書をダウンロードし、新しい証明書を使用するようにコードを更新する必要があります。このシナリオの好例は、[App Service ドキュメント](/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress.md)で共有されている、App Service でカスタム コンテナーを使用する場合です。
+*   SSL 証明書ファイルへのパスをコードに明示的に含めている場合は、新しい証明書をダウンロードし、新しい証明書を使用するようにコードを更新する必要があります。このシナリオの好例は、[App Service ドキュメント](../app-service/tutorial-multi-container-app.md#configure-database-variables-in-wordpress)で共有されている、App Service でカスタム コンテナーを使用する場合です。
 
 ### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-postgresql"></a>5.Azure Database for PostgreSQL で Azure Kubernetes Services (AKS) を使用している場合、どのような影響がありますか?
 Azure Kubernetes Services (AKS) を使用して Azure Database for PostgreSQL に接続しようとしている場合は、専用の顧客ホスト環境からのアクセスに似ています。 [こちら](../aks/ingress-own-tls.md)の手順を参照してください。
@@ -123,10 +123,10 @@ Azure Integration Runtime を使用しているコネクタでは、Azure でホ
 ### <a name="9-if-i-create-a-new-server-after-february-15-2021-02152021-will-i-be-impacted"></a>9.2021 年 2 月 15 日 (2021/02/15) より後に新しいサーバーを作成する場合、影響はありますか?
 2021 年 2 月 15 日 (2021/02/15) より後に作成されるサーバーに対しては、アプリケーションが SSL を使用して接続するために新しく発行された証明書を使用できます。
 
-### <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10.Microsoft はどのくらいの頻度で証明書を更新しますか、または有効期限ポリシーはどのようなものですか?
+###    <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10.Microsoft はどのくらいの頻度で証明書を更新しますか、または有効期限ポリシーはどのようなものですか?
 Azure Database for PostgreSQL によって使用されるこれらの証明書は、信頼された証明機関 (CA) によって提供されます。 そのため、Azure Database for PostgreSQL でのこれらの証明書のサポートは、CA によるこれらの証明書のサポートに関連付けられています。 ただし、今回のケースのように、事前に定義されたこれらの証明書に予期しないバグが存在する可能性があり、その場合はできるだけ早く修正する必要があります。
 
-### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-the-primary-server-or-the-read-replicas"></a>11.読み取りレプリカを使用している場合、この更新を行う必要があるのはプライマリ サーバーだけですか? または、読み取りレプリカでも必要ですか?
+###    <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-the-primary-server-or-the-read-replicas"></a>11.読み取りレプリカを使用している場合、この更新を行う必要があるのはプライマリ サーバーだけですか? または、読み取りレプリカでも必要ですか?
 この更新はクライアント側の変更であるため、レプリカ サーバーからデータを読み取るためにクライアントを使用している場合は、それらのクライアントにも変更を適用する必要があります。 
 
 ### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12.SSL が使用されているかどうかを確認するためのサーバー側クエリはありますか?
@@ -138,5 +138,5 @@ Azure Database for PostgreSQL によって使用されるこれらの証明書�
 ### <a name="14-what-is-you-are-using-docker-image-of-pgbouncer-sidecar-provided-by-microsoft"></a>14.Microsoft によって提供される PgBouncer サイドカーの docker イメージは、どのようなものを使用していますか?
 [**Baltimore**](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) と [**DigiCert**](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) の両方をサポートする新しい docker イメージは、 [こちら](https://hub.docker.com/_/microsoft-azure-oss-db-tools-pgbouncer-sidecar)に公開されます (最新のタグ)。 2021 年 2 月 15 日以降の接続の中断を回避するために、この新しいイメージをプルすることができます。 
 
-### <a name="15-what-if-i-have-further-questions"></a>15. さらに質問がある場合はどうすればよいですか?
+###    <a name="15-what-if-i-have-further-questions"></a>15. さらに質問がある場合はどうすればよいですか?
 質問がある場合は、[Microsoft Q&A](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com) でコミュニティの専門家から回答を得ることができます。 サポート プランをお持ちで技術的なヘルプが必要な場合は、[こちらまでお問い合わせください](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com)

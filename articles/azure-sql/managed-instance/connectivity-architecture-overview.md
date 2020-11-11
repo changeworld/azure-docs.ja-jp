@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 10/22/2020
-ms.openlocfilehash: 88849e6b915128394546c01698ecee34d6206043
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5ebe0bcf1e491166c5fc61597904056307f9679c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461721"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098010"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance の接続アーキテクチャ
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -104,7 +104,7 @@ SQL Managed Instance を、仮想ネットワーク内の専用サブネット�
 - **[サブネットの委任]:** SQL Managed Instance のサブネットは `Microsoft.Sql/managedInstances` リソース プロバイダーに委任する必要があります。
 - **ネットワーク セキュリティ グループ (NSG):** NSG は、SQL Managed Instance サブネットに関連付けられている必要があります。 SQL Managed Instance がリダイレクト接続用に構成されている場合は、NSG を使用してポート 1433 およびポート 11000 から 11999 上のトラフィックをフィルター処理することで、SQL Managed Instance のデータ エンドポイントへのアクセスを制御できます。 サービスによって、管理トラフィックのフローが中断されないようにするために必要な[規則](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration)が自動的にプロビジョニングされ、最新に維持されます。
 - **ユーザー定義ルート (UDR) テーブル:** UDR テーブルは、SQL Managed Instance サブネットに関連付けられている必要があります。 オンプレミスのプライベート IP 範囲が宛先として含まれるトラフィックを、仮想ネットワーク ゲートウェイまたは仮想ネットワーク アプライアンス (NVA) 経由でルーティングするルート テーブルにエントリを追加することもできます。 サービスは、管理トラフィックが中断されないようにするために必要な[エントリ](#user-defined-routes-with-service-aided-subnet-configuration)を自動的にプロビジョニングし、最新に維持します。
-- **十分な IP アドレス** : SQL Managed Instance サブネットには、少なくとも 16 個の IP アドレスが必要です。 推奨される最小値は、32 個の IP アドレスです。 詳細については、[SQL Managed Instance 用のサブネットのサイズの決定](vnet-subnet-determine-size.md)に関する記事を参照してください。 [SQL Managed Instance のネットワーク要件](#network-requirements)を満たすように[既存のネットワーク](vnet-existing-add-subnet.md)を構成した後、そのネットワークにマネージド インスタンスをデプロイできます。 それ以外の場合は、[新しいネットワークとサブネット](virtual-network-subnet-create-arm-template.md)を作成します。
+- **十分な IP アドレス** : SQL Managed Instance サブネットには、少なくとも 32 個の IP アドレスが必要です。 詳細については、[SQL Managed Instance 用のサブネットのサイズの決定](vnet-subnet-determine-size.md)に関する記事を参照してください。 [SQL Managed Instance のネットワーク要件](#network-requirements)を満たすように[既存のネットワーク](vnet-existing-add-subnet.md)を構成した後、そのネットワークにマネージド インスタンスをデプロイできます。 それ以外の場合は、[新しいネットワークとサブネット](virtual-network-subnet-create-arm-template.md)を作成します。
 
 > [!IMPORTANT]
 > マネージド インスタンスを作成すると、ネットワーク設定に対する非準拠の変更を防止するために、ネットワーク インテント ポリシーが適用されます。 最後のインスタンスがサブネットから削除されると、ネットワーク インテント ポリシーも削除されます。
@@ -301,6 +301,8 @@ SQL Managed Instance を、仮想ネットワーク内の専用サブネット�
 
 \* MI SUBNET は、x.x.x.x/y 形式のサブネットの IP アドレス範囲を参照します。 この情報は、Azure portal のサブネット プロパティで見つけることができます。
 
+\** 宛先アドレスが Azure のサービスのいずれかのアドレスの場合、トラフィックはインターネットにルーティングされるのではなく、Azure のバックボーン ネットワーク経由でそのサービスに直接ルーティングされます。 仮想ネットワークが存在する Azure リージョン、または Azure サービスのインタンスがデプロイされている Azure リージョンに関係なく、Azure サービス間のトラフィックはインターネットを経由しません。 詳細については、[UDR ドキュメントのページ](../../virtual-network/virtual-networks-udr-overview.md)を確認してください。
+
 また、オンプレミスのプライベート IP 範囲が宛先として含まれるトラフィックを、仮想ネットワーク ゲートウェイまたは仮想ネットワーク アプライアンス (NVA) 経由でルーティングするルート テーブルにエントリを追加することもできます。
 
 仮想ネットワークにカスタム DNS が含まれる場合、カスタム DNS サーバーはパブリック DNS レコードを解決できる必要があります。 Azure AD Authentication などの追加機能を使用するには、追加の FQDN 解決が必要になる可能性があります。 詳細については、[カスタム DNS の設定](custom-dns-configure.md)に関する記事を参照してください。
@@ -312,7 +314,7 @@ SQL Managed Instance を、仮想ネットワーク内の専用サブネット�
 現在、SQL Managed Instance では、次の仮想ネットワーク機能はサポートされていません。
 
 - **Microsoft ピアリング** :SQL Managed Instance が存在する仮想ネットワークと直接または推移的にピアリングされた ExpressRoute 回線で [Microsoft ピアリング](../../expressroute/expressroute-faqs.md#microsoft-peering)を有効にすると、仮想ネットワーク内の SQL Managed Instance コンポーネント間のトラフィック フローと、それに依存するサービスに影響が及び、可用性の問題が発生します。 Microsoft ピアリングが既に有効になっている仮想ネットワークへの SQL Managed Instance デプロイは、失敗することが予想されます。
-- **グローバル仮想ネットワーク ピアリング** :Azure リージョン間での[仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)接続は、2020 年 9 月 22 日より前に作成されてサブネットに配置された SQL マネージド インスタンスでは機能しません。
+- **グローバル仮想ネットワーク ピアリング** :Azure リージョン間での [仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)接続は、2020 年 9 月 22 日より前に作成されてサブネットに配置された SQL マネージド インスタンスでは機能しません。
 - **AzurePlatformDNS** :AzurePlatformDNS [サービス タグ](../../virtual-network/service-tags-overview.md)を使用してプラットフォーム DNS 解決をブロックすると、SQL Managed Instance をレンダリングできなくなります。 SQL Managed Instance では、エンジン内部の DNS 解決にお客様による定義の DNS がサポートされていますが、プラットフォームの操作については、プラットフォーム DNS への依存性があります。
 - **NAT Gateway** : [Azure Virtual Network NAT](../../virtual-network/nat-overview.md) を使用して、特定のパブリック IP アドレスでの送信接続を制御すると、SQL Managed Instance をレンダリングできなくなります。 現時点では、SQL Managed Instance サービスは基本的なロード バランサーの使用に制限されており、Virtual Network NAT を使用した受信フローと送信フローを同時に実行することができません。
 

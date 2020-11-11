@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: cd4f2198721e0d92abe22b1b6d95dceda2dc874d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 59cfe7b990523e5cb165d1037291b3c1b1301624
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789184"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289233"
 ---
 # <a name="continuously-export-security-center-data"></a>Security Center のデータを連続的にエクスポートする
 
@@ -41,7 +41,7 @@ Azure Security Center では、詳細なセキュリティ アラートと推奨
 |リリース状態:|一般提供 (GA)|
 |価格:|Free|
 |必要なロールとアクセス許可:|<ul><li>リソース グループに対する **セキュリティ管理者** または **所有者**</li><li>ターゲット リソースに対する書き込みアクセス許可</li><li>後述する Azure Policy の "DeployIfNotExist" ポリシーを使用する場合は、ポリシーを割り当てるためのアクセス許可も必要です。</li></ul>|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![はい](./media/icons/yes-icon.png) 中国政府 (Event Hub に)、その他の政府|
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov、その他の Gov<br>![はい](./media/icons/yes-icon.png) China Gov (Event Hub に)|
 |||
 
 

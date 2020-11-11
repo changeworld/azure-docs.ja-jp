@@ -7,12 +7,12 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b46c72730922a977dd754d8422d07db479a62b6c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a1357f263c450605025b6f1e9b7bdea47d0d4f58
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370544"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289221"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>コンテナー レジストリ用の Azure Defender を使用してイメージの脆弱性をスキャンする
 
@@ -31,7 +31,7 @@ ms.locfileid: "92370544"
 |サポートされているレジストリとイメージ:|シェル アクセスによってパブリック インターネットからアクセス可能な ACR レジストリ内の Linux イメージ|
 |サポートされていないレジストリとイメージ:|Windows イメージ<br>"プライベート" レジストリ<br>Azure Private Link などのファイアウォール、サービス エンドポイント、またはプライベート エンドポイントによってアクセスが制限されたレジストリ<br>[Docker スクラッチ](https://hub.docker.com/_/scratch/)のようなスーパー ミニマリスト イメージ、またはアプリケーションとそのランタイム依存関係のみが含まれ、パッケージ マネージャー、シェル、または OS は含まれない "ディストリビューションレス" イメージ。|
 |必要なロールとアクセス許可:|**セキュリティ閲覧者** と [Azure Container Registry 閲覧者ロール](../container-registry/container-registry-roles.md)|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
+|クラウド:|![はい](./media/icons/yes-icon.png) 商用クラウド<br>![はい](./media/icons/yes-icon.png) US Gov - 現在、プッシュ時のスキャン機能のみがサポートされています。 詳細については、「[イメージはどのような場合にスキャンされますか](defender-for-container-registries-introduction.md#when-are-images-scanned)」を参照<br>![いいえ](./media/icons/no-icon.png) China Gov、その他の Gov|
 |||
 
 

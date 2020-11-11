@@ -8,16 +8,16 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8e751d210ab472d82e4abd613d37069a8c591f52
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b1d5f8ec628245756c53e4dfeeecdeb3a4bebc2e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013935"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100730"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>サーバー管理者ロールへのサービス プリンシパルの追加 
 
- 無人の PowerShell タスクを自動化するには、管理対象の Analysis Services サーバー上で、サービス プリンシパルに**サーバー管理者**権限が付与されている必要があります。 この記事では、Azure AS サーバー上のサーバー管理者ロールにサービス プリンシパルを追加する方法について説明します。 これは、SQL Server Management Studio または Resource Manager テンプレートを使用して行うことができます。 
+ 無人の PowerShell タスクを自動化するには、管理対象の Analysis Services サーバー上で、サービス プリンシパルに **サーバー管理者** 権限が付与されている必要があります。 この記事では、Azure AS サーバー上のサーバー管理者ロールにサービス プリンシパルを追加する方法について説明します。 これは、SQL Server Management Studio または Resource Manager テンプレートを使用して行うことができます。 
 
 > [!NOTE]
 > サービス プリンシパルは、サーバー管理者ロールに直接追加する必要があります。 サービス プリンシパルをセキュリティ グループに追加してから、そのセキュリティ グループをサーバー管理者ロールに追加することはサポートされていません。 
@@ -40,11 +40,11 @@ ms.locfileid: "92013935"
 
 4. サービス プリンシパルのアカウント ID を確認し、 **[OK]** をクリックします。
     
-    ![サービス プリンシパル アカウントの検索](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
+    ![サービス プリンシパルのアカウント ID が表示され、[OK] ボタンが強調表示されているスクリーンショット。](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
 ## <a name="using-a-resource-manager-template"></a>Resource Manager テンプレートの使用
 
-Azure Resource Manager テンプレートを使用して Analysis Services サーバーを展開して、サーバー管理者を構成することも可能です。 この展開を実行する ID は、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) の**共同作成者**ロールに属している必要があります。
+Azure Resource Manager テンプレートを使用して Analysis Services サーバーを展開して、サーバー管理者を構成することも可能です。 この展開を実行する ID は、 [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) の **共同作成者** ロールに属している必要があります。
 
 > [!IMPORTANT]
 > サービス プリンシパルは `app:{service-principal-client-id}@{azure-ad-tenant-id}` の書式を使用して追加します。

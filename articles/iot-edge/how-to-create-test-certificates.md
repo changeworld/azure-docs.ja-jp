@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 66c8f72c82e04bafe9582c4a5dc6967e5470d3ea
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c5af77da0ed2c579a478c8ebaaa924882d9a15c6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147879"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927704"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>IoT Edge デバイスの機能をテストするためのデモ用の証明書を作成する
 
@@ -255,7 +255,7 @@ New-CACertsEdgeDeviceIdentity "<name>"
 2. 次のコマンドを使用して、IoT Edge デバイス CA 証明書と秘密キーを作成します。 CA 証明書の名前を入力します。
 
    ```bash
-   ./certGen.sh create_edge_device_certificate "<CA cert name>"
+   ./certGen.sh create_edge_device_ca_certificate "<CA cert name>"
    ```
 
    このスクリプト コマンドでは、証明書とキーのファイルがいくつか作成されます。 次の証明書とキーのペアを IoT Edge デバイスにコピーし、config.yaml ファイルでそれらを参照する必要があります。
@@ -263,7 +263,7 @@ New-CACertsEdgeDeviceIdentity "<name>"
    * `<WRKDIR>/certs/iot-edge-device-<CA cert name>-full-chain.cert.pem`
    * `<WRKDIR>/private/iot-edge-device-<CA cert name>.key.pem`
 
-**create_edge_device_certificate** コマンドに渡される名前は、config. yaml の hostname パラメーターや IoT Hub のデバイス ID と同じにしないでください。
+**create_edge_device_ca_certificate** コマンドに渡される名前は、config.yaml の hostname パラメーターや IoT Hub のデバイス ID と同じにしないでください。
 
 ## <a name="create-downstream-device-certificates"></a>ダウンストリーム デバイス証明書の作成
 

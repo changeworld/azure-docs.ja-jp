@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 42419247de537f9a166c3cdca2fd5a832ade6a5f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 61073ce7e8d3abc43d1db031608da72e6d3e0791
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461432"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926803"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する
 
@@ -112,6 +112,9 @@ Private Link の構成を計画するときには、考慮に入れる必要の�
 
     ![スコープの選択 UX のスクリーンショット](./media/private-link-security/ampls-select-2.png)
 
+> [!NOTE]
+> Azure Monitor リソースを削除するには、まず接続先の AMPLS オブジェクトから切断する必要があります。 AMPLS に接続されているリソースを削除することはできません。
+
 ### <a name="connect-to-a-private-endpoint"></a>プライベート エンドポイントへの接続
 
 これで、AMPLS にリソースを接続できたので、ネットワークを接続するためのプライベート エンドポイントを作成します。 このタスクは、この例のように、[Azure portal Private Link センター](https://portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/privateendpoints)、または Azure Monitor Private Link Scope 内で実行できます。
@@ -140,6 +143,8 @@ Private Link の構成を計画するときには、考慮に入れる必要の�
    a.    Azure Monitor リソースに接続する **[仮想ネットワーク]** と **[サブネット]** を選択します。 
  
    b.    **[プライベート DNS ゾーンとの統合]** で **[はい]** を選択して、新しいプライベート DNS ゾーンを自動で作成します。 実際の DNS ゾーンは、下のスクリーンショットに示されているものとは異なる場合があります。 
+   > [!NOTE]
+   > **[いいえ]** を選択して DNS レコードを手動で管理する場合は、最初に、このプライベート エンドポイントと AMPLS 構成を含め、プライベート リンクの設定を完了させます。 次に、「[Azure プライベート エンドポイントの DNS 構成](https://docs.microsoft.com/azure/private-link/private-endpoint-dns)」の手順に従って、DNS を構成します。 プライベート リンクの設定の準備で、空のレコードを作成しないようにしてください。 作成する DNS レコードによって、既存の設定がオーバーライドされ、Azure Monitor との接続が影響を受ける可能性があります。
  
    c.    **[Review + create]\(レビュー + 作成\)** をクリックします。
  

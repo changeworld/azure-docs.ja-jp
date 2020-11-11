@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: e89a7d9bc71d48be1b7d7ea40246b2394c95e84b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 000de084cf9375347704cc4d3905ca36bdd77ff8
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543782"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926191"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Azure で適切な MySQL サーバー オプションを選択する
 
@@ -55,7 +55,7 @@ Azure では、MySQL サーバーのワークロードをホスト型仮想マ�
 | 高可用性 | 単一可用性ゾーン内での組み込み HA| 可用性ゾーン内および可用性ゾーン間での組み込み HA | クラスタリングやレプリケーションなどを使用したカスタム管理|
 | ゾーン冗長性 | サポートされていません | サポートされています | サポートされています|
 | ハイブリッド シナリオ | [データイン レプリケーション](./concepts-data-in-replication.md)を使用してサポートされます| プレビュー段階では利用できません | エンド ユーザーによる管理 |
-| 読み取りレプリカ | サポートされています| サポートされています | エンド ユーザーによる管理 |
+| 読み取りレプリカ | サポートされています (レプリカは最大 5 個まで)| サポートされています (レプリカは最大 10 個まで)| エンド ユーザーによる管理 |
 | Backup | 7 ～ 35 日のデータ保持によって自動化されます | 1 ～ 35 日のデータ保持によって自動化されます | エンド ユーザーによる管理 |
 | データベース操作の監視 | サポートされています | サポートされています | エンド ユーザーによる管理 |
 | 障害復旧 | geo 冗長バックアップ ストレージとリージョン間の読み取りレプリカによってサポートされます | プレビューではサポートされていません| レプリケーション テクノロジを使用したカスタム管理 |

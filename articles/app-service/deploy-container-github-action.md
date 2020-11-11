@@ -7,12 +7,12 @@ ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: f3bc407791b25e4dc1dddd61b60b3cefe0195919
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 068fc9dcb9a4f4a62c2dd879bf8144097452f1e0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203196"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099030"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>GitHub Actions を使用した App Service へのカスタム コンテナーのデプロイ
 
@@ -48,6 +48,9 @@ GitHub Actions 用の Azure App Services での認証で推奨される方法は
 1. Azure portal で、お使いのアプリ サービスに移動します。 
 
 1. **[概要]** ページで、 **[発行プロファイルの取得]** オプションを選択します。
+
+    > [!NOTE]
+    > 2020 年 10 月の時点で、Linux Web アプリでは、 **ファイルをダウンロードする前に** 、アプリ設定 `WEBSITE_WEBDEPLOY_USE_SCM` を `true` に設定する必要があります。 この要件は、今後削除される予定です。
 
 1. ダウンロードしたファイルを保存します。 このファイルの内容を使用して、GitHub シークレットを作成します。
 

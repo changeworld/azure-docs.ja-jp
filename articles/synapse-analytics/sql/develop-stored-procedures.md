@@ -1,38 +1,39 @@
 ---
 title: ストアド プロシージャの使用
-description: ソリューション開発のための Synapse SQL でのストアド プロシージャの実装に関するヒント。
+description: ソリューション開発のための Azure Synapse Analytics での Synapse SQL を使用したストアド プロシージャの実装に関するヒント。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 09/23/2020
+ms.date: 11/03/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 1db3b224d23664c83f21e77dcb445b0fb043a4c3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 3940d762dbc249e0303ddf905acbeeed7f96aa4f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737855"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315565"
 ---
-# <a name="use-stored-procedures-in-synapse-sql"></a>Synapse SQL でストアド プロシージャを使用する
+# <a name="stored-procedures-using-synapse-sql-in-azure-synapse-analytics"></a>Azure Synapse Analytics での Synapse SQL を使用したストアド プロシージャ
 
-ソリューション開発のための Synapse SQL プールでのストアド プロシージャの実装に関するヒント。
+Synapse SQL のプロビジョニングされたおよびサーバーレスのプールを使用すると、複雑なデータ処理ロジックを SQL ストアド プロシージャに配置できます。 ストアド プロシージャは、SQL コードをカプセル化し、データ ウェアハウスのデータの近くに格納するための優れた方法です。 ストアド プロシージャは、開発者がコードを管理しやすい単位にカプセル化して、ソリューションをモジュール化することに役立ち、コードの再利用性が大幅に促進されます。 ストアド プロシージャの柔軟性をさらに高めるために、各ストアド プロシージャはパラメーターを受け入れることもできます。
+この記事では、ソリューション開発のための Synapse SQL プールでのストアド プロシージャの実装に関するヒントをいくつか紹介します。
 
 ## <a name="what-to-expect"></a>ウィザードの内容
 
-Synapse SQL では、SQL Server で使用される多数の T-SQL 機能がサポートされています。 さらに重要なのは、ソリューションのパフォーマンスを最大限にするために使用できる、スケールアウト専用の機能が用意されていることです。
+Synapse SQL では、SQL Server で使用される多数の T-SQL 機能がサポートされています。 さらに重要なのは、ソリューションのパフォーマンスを最大限にするために使用できる、スケールアウト専用の機能が用意されていることです。 この記事では、ストアド プロシージャに配置できる機能について説明します。
 
 > [!NOTE]
-> プロシージャ本体では、Synapse SQL のセキュリティでサポートされている機能のみを使用できます。 [この記事](overview-features.md)では、ストアド プロシージャで使用できるオブジェクトとステートメントを確認します。 これらの記事の例では、サーバーレスおよびプロビジョニングされた領域で使用できる汎用機能を使用しています。
+> プロシージャ本体では、Synapse SQL のセキュリティでサポートされている機能のみを使用できます。 [この記事](overview-features.md)では、ストアド プロシージャで使用できるオブジェクトとステートメントを確認します。 これらの記事の例では、サーバーレスおよび専用の両方の領域で使用できる汎用機能が使用されています。 この記事の最後にある[プロビジョニングおよびサーバーレスの Synapse SQL プールに関する追加の制限事項](#limitations)を参照してください。
 
 SQL プールのスケールとパフォーマンスを維持するために、動作が異なる機能もあれば、サポートされていない機能もあります。
 
 ## <a name="stored-procedures-in-synapse-sql"></a>Synapse SQL でのストアド プロシージャ
 
-ストアド プロシージャは、SQL コードをカプセル化し、データ ウェアハウスのデータの近くに格納するための優れた方法です。 ストアド プロシージャは、開発者がコードを管理しやすい単位にカプセル化して、ソリューションをモジュール化することに役立ち、コードの再利用性が大幅に促進されます。 ストアド プロシージャの柔軟性をさらに高めるために、各ストアド プロシージャはパラメーターを受け入れることもできます。 次の例では、外部オブジェクトがデータベースに存在する場合に削除するプロシージャを確認できます。
+次の例では、外部オブジェクトがデータベースに存在する場合に削除するプロシージャを確認できます。
 
 ```sql
 CREATE PROCEDURE drop_external_table_if_exists @name SYSNAME
@@ -184,23 +185,26 @@ EXEC clean_up 'mytest'  -- This call is nest level 1
 
 ## <a name="insertexecute"></a>INSERT..EXECUTE
 
-Synapse SQL では、INSERT ステートメントでストアド プロシージャの結果セットを使用することはできません。 使用できる別の方法があります。 例については、プロビジョニングされた Synapse SQL プールの[一時テーブル](develop-tables-temporary.md)に関する記事を参照してください。
+プロビジョニングされた Synapse SQL プールでは、INSERT ステートメントでストアド プロシージャの結果セットを使用することはできません。 使用できる別の方法があります。 例については、プロビジョニングされた Synapse SQL プールの[一時テーブル](develop-tables-temporary.md)に関する記事を参照してください。
 
 ## <a name="limitations"></a>制限事項
 
 Synapse SQL に実装されていない Transact-SQL ストアド プロシージャには、次のようないくつかの側面があります。
 
-* 一時ストアド プロシージャ
-* 番号付きストアド プロシージャ
-* 拡張ストアド プロシージャ
-* CLR ストアド プロシージャ
-* 暗号化オプション
-* レプリケーション オプション
-* テーブル値パラメーター
-* 読み取り専用パラメーター
-* 既定のパラメーター (プロビジョニングされたプール内)
-* 実行コンテキスト
-* return ステートメント
+| 機能/オプション | プロビジョニング済み | サーバーレス |
+| --- | --- |
+| 一時ストアド プロシージャ | いいえ | はい |
+| 番号付きストアド プロシージャ | いいえ | いいえ |
+| 拡張ストアド プロシージャ | いいえ | いいえ |
+| CLR ストアド プロシージャ | いいえ | いいえ |
+| 暗号化オプション | いいえ | はい |
+| レプリケーション オプション | いいえ | いいえ |
+| テーブル値パラメーター | いいえ | いいえ |
+| 読み取り専用パラメーター | いいえ | いいえ |
+| 既定のパラメーター | いいえ | はい |
+| 実行コンテキスト | いいえ | いいえ |
+| Return ステートメント | いいえ | はい |
+| INSERT INTO .. EXEC | いいえ | はい |
 
 ## <a name="next-steps"></a>次のステップ
 

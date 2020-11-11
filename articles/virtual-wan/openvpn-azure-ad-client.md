@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: e64de987bd82f6b93350cdd706fc1a243d2855b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ecebaf9384bcb0dbbb6fe36df4dd474738422149
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90977841"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043414"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>P2S OpenVPN プロトコル接続用に VPN クライアントを構成する:Azure AD 認証
 
@@ -56,65 +56,65 @@ ms.locfileid: "90977841"
 
 1. エクスポートする VPN クライアント プロファイルを強調表示し、 **[...]** を選択して、 **[エクスポート]** を選択します。
 
-    ![エクスポート](./media/openvpn-azure-ad-client/export/export1.jpg)
+    ![メニューで [エクスポート] が選択されていることを示すスクリーンショット。](./media/openvpn-azure-ad-client/export/export1.jpg)
 
 2. このプロファイルを保存する場所を選択し、ファイル名はそのままで、 **[保存]** を選択して xml ファイルを保存します。
 
-    ![エクスポート](./media/openvpn-azure-ad-client/export/export2.jpg)
+    ![[名前を付けて保存] ダイアログ ボックスを示すスクリーンショット。ここでは、ファイル名を入力できます。](./media/openvpn-azure-ad-client/export/export2.jpg)
 
 ### <a name="to-import-a-client-profile"></a><a name="import"></a>クライアント プロファイルをインポートするには
 
 1. ページ上で、 **[インポート]** を選択します。
 
-    ![import](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![プラスのメニューで [インポート] が選択されていることを示すスクリーンショット。](./media/openvpn-azure-ad-client/import/import1.jpg)
 
 2. プロファイル xml ファイルを参照し、選択します。 ファイルが選択された状態で、 **[開く]** を選択します。
 
-    ![import](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![[開く] ダイアログ ボックスを示すスクリーンショット。ここでは、ファイルを選択できます。](./media/openvpn-azure-ad-client/import/import2.jpg)
 
 3. プロファイルの名前を指定し、 **[保存]** を選択します。
 
-    ![import](./media/openvpn-azure-ad-client/import/import3.jpg)
+    ![[接続名] が追加され、[保存] ボタンが選択されていることを示すスクリーンショット。](./media/openvpn-azure-ad-client/import/import3.jpg)
 
 4. **[接続]** を選択して VPN に接続します。
 
-    ![import](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![作成したばかりの接続用の [接続] ボタンを示すスクリーンショット。](./media/openvpn-azure-ad-client/import/import4.jpg)
 
 5. 接続されると、アイコンが緑色に変わり、 **[接続済み]** と表示されます。
 
-    ![import](./media/openvpn-azure-ad-client/import/import5.jpg)
+    ![[接続済み] 状態の接続と [切断] オプションを示すスクリーンショット。](./media/openvpn-azure-ad-client/import/import5.jpg)
 
 ### <a name="to-delete-a-client-profile"></a><a name="delete"></a>クライアント プロファイルを削除するには
 
 1. 削除するクライアント プロファイルの横にある省略記号を選択します。 **[削除]** を選択します。
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete1.jpg)
+    ![メニューで [削除] が選択されていることを示すスクリーンショット。](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
 2. **[削除]** を選択して削除します。
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete2.jpg)
+    ![[確認] ダイアログ ボックスと [削除] オプションまたは [キャンセル] オプションを示すスクリーンショット。](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
 ## <a name="create-a-connection"></a><a name="connection"></a>接続を作成する
 
 1. ページ上で、 **[+]** を選択し、 **[追加 +]** を選択します。
 
-    ![connection](./media/openvpn-azure-ad-client/create/create1.jpg)
+    ![プラスのメニューで [追加] が選択されていることを示すスクリーンショット。](./media/openvpn-azure-ad-client/create/create1.jpg)
 
 2. 接続情報を入力します。 値が不明な場合は、管理者に問い合わせてください。 値を入力したら、 **[保存]** を選択します。
 
-    ![connection](./media/openvpn-azure-ad-client/create/create2.jpg)
+    ![必要な値を入力できるウィンドウを示すスクリーンショット。](./media/openvpn-azure-ad-client/create/create2.jpg)
 
 3. **[接続]** を選択して VPN に接続します。
 
-    ![connection](./media/openvpn-azure-ad-client/create/create3.jpg)
+    ![接続の [接続] ボタンを示すスクリーンショット。](./media/openvpn-azure-ad-client/create/create3.jpg)
 
 4. 適切な資格情報を選択し、 **[続行]** を選択します。
 
-    ![connection](./media/openvpn-azure-ad-client/create/create4.jpg)
+    ![[サインイン] ダイアログ ボックスを示すスクリーンショット。](./media/openvpn-azure-ad-client/create/create4.jpg)
 
 5. 正常に接続されると、アイコンが緑色に変わり、 **[接続済み]** と表示されます。
 
-    ![connection](./media/openvpn-azure-ad-client/create/create5.jpg)
+    ![[接続済み] 状態の接続を示すスクリーンショット。](./media/openvpn-azure-ad-client/create/create5.jpg)
 
 ### <a name="to-connect-automatically"></a><a name="autoconnect"></a>自動的に接続するには
 
@@ -122,37 +122,37 @@ Always-on を使用して自動的に接続するように構成するには、�
 
 1. VPN クライアントのホームページで、 **[VPN 設定]** を選択します。
 
-    ![自動](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    ![VPN 接続を示すスクリーンショット。ここでは、VPN 設定を選択できます。](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. アプリ切り替えのダイアログ ボックスで、 **[はい]** を選択します。
 
-    ![自動](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    ![アプリの切り替えに関する確認メッセージを示すスクリーンショット。](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. 設定する接続が既に接続済みでないことを確認してから、プロファイルを強調表示し、 **[自動的に接続する]** チェック ボックスを オンにします。
 
-    ![自動](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    ![[設定] ダイアログ ボックスを示すスクリーンショット。ここでは、[接続] を自動的に選択できます。](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. **[接続]** を選択して接続を開始します。
 
-    ![自動](./media/openvpn-azure-ad-client/auto/auto4.jpg)
+    ![[接続] ボタンを示すスクリーンショット。](./media/openvpn-azure-ad-client/auto/auto4.jpg)
 
 ## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>接続の問題を診断する
 
-1. 接続の問題を診断するには、**診断**ツールを使用します。 診断する VPN 接続の横にある **[...]** を選択して、メニューを表示します。 次に、 **[診断]** を選択します。
+1. 接続の問題を診断するには、 **診断** ツールを使用します。 診断する VPN 接続の横にある **[...]** を選択して、メニューを表示します。 次に、 **[診断]** を選択します。
 
-    ![診断](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
+    ![メニューで [診断] が選択されていることを示すスクリーンショット。](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
 2. **[接続プロパティ]** ページで、 **[Run Diagnosis]\(診断の実行\)** を選択します。
 
-    ![診断](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
+    ![接続の [Run Diagnosis]\(診断の実行\) ボタンを示すスクリーンショット。](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
 
 3. 自分の資格情報でサインインします。
 
-    ![診断](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
+    ![このアクションの [サインイン] ダイアログ ボックスを示すスクリーンショット。](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
 
 4. 診断結果を確認します。
 
-    ![診断](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
+    ![診断の結果を示すスクリーンショット。](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
 
 ## <a name="faq"></a>よく寄せられる質問
 

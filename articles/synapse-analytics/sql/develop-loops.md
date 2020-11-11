@@ -1,6 +1,6 @@
 ---
 title: T-SQL ループを使用する
-description: Synapse SQL の SQL プールによる T-SQL ループの使用、カーソルの置換、関連ソリューションの開発のヒント。
+description: Azure Synapse Analytics の Synapse SQL での T-SQL ループの使用、カーソルの置換、関連ソリューションの開発に関するヒントを紹介します。
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -10,23 +10,24 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 33e1ebc2269ef1db6bb0646f845b09be1a01c724
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99ee41de7ffd66191ff712a5ffbda65f3233196f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289057"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324449"
 ---
-# <a name="use-t-sql-loops-in-synapse-sql"></a>Synapse SQL で T-SQL ループを使用する
-この記事では、Synapse SQL の SQL プールによる T-SQL ループの使用、カーソルの置換、関連ソリューションの開発に関する重要なヒントを提供します。
+# <a name="use-t-sql-loops-with-synapse-sql-in-azure-synapse-analytics"></a>Azure Synapse Analytics の Synapse SQL で T-SQL ループを使用する
+
+この記事では、Synapse SQL での T-SQL ループの使用、カーソルの置換、関連ソリューションの開発に関する重要なヒントを提供します。
 
 ## <a name="purpose-of-while-loops"></a>WHILE ループの目的
 
 Synapse SQL では、ステートメント ブロックを繰り返し実行するための [WHILE](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15&preserve-view=true) ループがサポートされています。 この WHILE ループは、指定された条件が true の場合に限り、またはコードが BREAK キーワードを使用してループを終了するまで実行されます。 
 
-SQL プールのループは、SQL コードで定義されているカーソルを置き換えるために便利です。 また、SQL コードで記述されているほとんどすべてのカーソルは、高速順方向、読み取り専用など豊富です。 そのため、WHILE ループはカーソルの置換の優れた代替手段です。
+Synapse SQL のループは、SQL コードで定義されているカーソルを置き換える際に便利です。 また、SQL コードで記述されているほとんどすべてのカーソルは、高速順方向、読み取り専用など豊富です。 そのため、WHILE ループはカーソルの置換の優れた代替手段です。
 
-## <a name="replace-cursors-in-sql-pool"></a>SQL プール内のカーソルを置換する
+## <a name="replace-cursors-in-synapse-sql"></a>Synapse SQL でのカーソルの置換
 
 詳細に入る前に、次の質問について考慮する必要があります。"セット ベースの操作を使用するよう、このカーソルを書き換えることができますか?" 多くの場合、答えは "はい" であり、この方法が最適です。 セット ベースの操作は、1 行ずつの反復的なアプローチをとるよりも速く実行されます。
 

@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 266eebc8322b5fc648180c0524abc973a4b60373
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b66b8a9fb3b5eb7dc78c00ba084e8609877dec7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212379"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323871"
 ---
 # <a name="azure-synapse-analytics-workload-classification"></a>Azure Synapse Analytics ワークロードの分類
 
-この記事では、Azure Synapse の Synapse SQL プールを使用して、ワークロード グループと重要度を受信要求に割り当てるワークロードの分類プロセスについて説明します。
+この記事では、Azure Synapse の専用 SQL プールを使用してワークロード グループと重要度を受信要求に割り当てるための、ワークロード分類プロセスについて説明します。
 
 ## <a name="classification"></a>分類
 
@@ -36,7 +36,7 @@ ms.locfileid: "85212379"
 
 ## <a name="classification-process"></a>分類プロセス
 
-現在、Azure Synapse の Synapse SQL プールでの分類は、[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して、対応するリソース クラスが割り当てられたロールにユーザーを割り当てることで実現されます。 1 つのリソース クラスへのログインを超えて要求を特徴付けることは、この機能によって制限されます。 より高度な分類方法として、[CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 構文を利用できるようになりました。  Synapse SQL プール ユーザーは、この構文で `workload_group` パラメーターを使用して、要求に重要度を割り当て、割り当てるシステム リソース量を指定できます。
+現在、Azure Synapse の専用 SQL プールでの分類は、[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して、対応するリソース クラスが割り当てられたロールにユーザーを割り当てることで実現されます。 1 つのリソース クラスへのログインを超えて要求を特徴付けることは、この機能によって制限されます。 より高度な分類方法として、[CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 構文を利用できるようになりました。  専用 SQL プール ユーザーは、この構文で `workload_group` パラメーターを使用して、要求に重要度を割り当て、割り当てるシステム リソース量を指定できます。
 
 > [!NOTE]
 > 分類は要求単位で評価されます。 1 つのセッション内の複数の要求を別々に分類できます。

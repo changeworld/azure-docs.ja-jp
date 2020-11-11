@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: a79a030c4f57c3dabdd14c01aa2062cab7026cd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f915652110524aac06d641d636155bc6a5fcd256
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611522"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927925"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure VM のエフェメラル OS ディスク
 
@@ -34,7 +34,7 @@ ms.locfileid: "91611522"
 
 |                             | 永続 OS ディスク                          | エフェメラル OS ディスク                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
-| **OS ディスクのサイズ制限**      | 2 TiB                                                                                        | VM サイズのキャッシュ サイズまたは 2TiB のうち小さい方。 **GiB 単位のキャッシュ サイズ**については、[DS](sizes-general.md)、[ES](sizes-memory.md)、[M](sizes-memory.md)、[FS](sizes-compute.md)、および [GS](sizes-previous-gen.md#gs-series) に関するページを参照してください              |
+| **OS ディスクのサイズ制限**      | 2 TiB                                                                                        | VM サイズのキャッシュ サイズまたは 2TiB のうち小さい方。 **GiB 単位のキャッシュ サイズ** については、 [DS](sizes-general.md)、 [ES](sizes-memory.md)、 [M](sizes-memory.md)、 [FS](sizes-compute.md)、および [GS](sizes-previous-gen.md#gs-series) に関するページを参照してください              |
 | **サポート対象の VM サイズ**          | All                                                                                          | Premium ストレージをサポートしている DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、M などの VM サイズ                                               |
 | **サポート対象のディスクの種類**           | マネージド OS ディスクとアンマネージド OS ディスク                                                                | マネージド OS ディスクのみ                                                               |
 | **リージョンのサポート**              | すべてのリージョン                                                                                  | すべてのリージョン                              |
@@ -42,7 +42,8 @@ ms.locfileid: "91611522"
 | **停止と割り当て解除**      | VM とスケール セット インスタンスの停止と割り当て解除、またその状態からの再起動が可能 | VM とスケール セット インスタンスの停止と割り当て解除は不可                                  |
 | **特殊化された OS ディスクのサポート** | はい                                                                                          | いいえ                                                                                 |
 | **OS ディスクのサイズ変更**              | VM 作成中、VM の停止と割り当て解除後に変更可能                                | VM 作成時のみ変更可能                                                  |
-| **VM サイズ変更時の動作**   | OS ディスク データを維持                                                                    | OS ディスクのデータの削除後に OS を再プロビジョニング                                      |
+| **VM サイズ変更時の動作**   | OS ディスク データを維持                                                                    | OS ディスクのデータの削除後に OS を再プロビジョニング       
+| **ページ ファイルの配置**   | Windows の場合、ページ ファイルはリソース ディスクに格納されます                                              | Windows の場合、ページ ファイルは OS ディスクに格納されます   |
 
 ## <a name="size-requirements"></a>サイズの要件
 

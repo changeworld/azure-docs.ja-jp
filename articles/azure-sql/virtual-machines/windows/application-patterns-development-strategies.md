@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mathoma
-ms.openlocfilehash: 46adbfee24ab463acdc4687c0465bbf50527a329
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: f681c6c453c9c0955092c4f1574a54ea2c9973f5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790646"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126653"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server のアプリケーション パターンと開発計画
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -191,11 +191,11 @@ Cloud Services を使用すると、Azure がユーザーに代わってイン�
 
 この図に示すように、Azure Load Balancer が複数の仮想マシンにトラフィックを分散し、さらに、接続するアプリケーション サーバーを決定します。 ロード バランサーの背後に Web サーバーとアプリケーション サーバーのインスタンスを複数配置すると、プレゼンテーション層とビジネス層の高可用性が確保されます。 詳細については、「 [SQL HADR を必要とするアプリケーション パターンのベスト プラクティス](#best-practices-for-application-patterns-requiring-sql-hadr)」を参照してください。
 
-![アプリケーション パターン (Cloud Services)](./media/application-patterns-development-strategies/IC728013.png)
+![Azure 仮想ネットワーク内で Azure ロード バランサーを介して Web ロール インスタンスに接続されているオンプレミスの物理マシンまたは仮想マシンを示す図。](./media/application-patterns-development-strategies/IC728013.png)
 
 このアプリケーション パターンを実装する別の方法としては、次の図に示すように、プレゼンテーション層とビジネス層の両方のコンポーネントを含む統合 Web ロールを使用します。 このアプリケーション パターンは、ステートフルな設計を必要とするアプリケーションに有効です。 Azure では Web ロールと worker ロールでステートレスなコンピューティング ノードが提供されるため、次のいずれかのテクノロジを使用して、セッション状態を格納するロジックを実装することをお勧めします: [Azure Caching](https://azure.microsoft.com/documentation/services/azure-cache-for-redis/)、[Azure Table Storage](../../../cosmos-db/tutorial-develop-table-dotnet.md)、[Azure SQL Database](../../database/sql-database-paas-overview.md)。
 
-![アプリケーション パターン (Cloud Services)](./media/application-patterns-development-strategies/IC728014.png)
+![Azure 仮想ネットワーク内で統合 Web および worker ロール インスタンスに接続されているオンプレミスの物理マシンまたは仮想マシンを示す図。](./media/application-patterns-development-strategies/IC728014.png)
 
 ## <a name="pattern-with-azure-virtual-machines-azure-sql-database-and-azure-app-service-web-apps"></a>Azure Virtual Machines、Azure SQL Database、Azure App Service を使用したパターン (Web Apps)
 このアプリケーション パターンの主な目的は、ソリューション内で Azure のサービスとしてのインフラストラクチャ (IaaS) コンポーネントと Azure のサービスとしてのプラットフォーム (PaaS) コンポーネントを組み合わせる方法を示すことです。 このパターンは、リレーショナル データ ストレージ向けの Azure SQL Database に焦点を当てています。 Azure の仮想マシン内の SQL Server は含まれません。これは、Azure のサービスとしてのインフラストラクチャ プランで提供されます。

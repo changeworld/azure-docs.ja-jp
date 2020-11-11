@@ -3,12 +3,12 @@ title: Azure Lab Services ラボ アカウント迅速設定ガイド
 description: 管理者はこのガイドに従って、学校内で使用するラボ アカウントをすばやく作成できます。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c186560b27ebcb543a23785dc5fbc556614f64b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0855e59aced37e50c088cfe89ffeb3d0af9fcdca
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445425"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148291"
 ---
 # <a name="lab-account-setup-guide"></a>ラボ アカウント設定ガイド
 
@@ -29,6 +29,10 @@ ms.locfileid: "85445425"
 ### <a name="who-should-be-owners-and-contributors-of-the-lab-account"></a>ラボアカウントの所有者と共同作成者を誰にするべきか?
 
 通常は、管理者がラボ アカウントの所有者と共同作成者になります。 所有者と共同作成者は、ラボ アカウントに含まれるすべてのラボに適用されるポリシーを管理する責任があります。 ラボ アカウントの作成者が自動的に所有者になります。 所有者と共同作成者を追加できます。通常は、サブスクリプションに関連付けられている Azure Active Directory (Azure AD) テナントから行います。 これは、ラボ アカウントレベルで所有者ロールまたは共同作成者ロールを割り当てることによって、ラボ アカウントを管理するのに役立ちます。
+
+[!INCLUDE [Select a tenant](./includes/multi-tenant-support.md)]
+
+ラボ ユーザーには、Azure Lab Services 内のテナント全体にアクセスできる仮想マシンのリストが 1 つだけ表示されます。
 
 ### <a name="who-will-be-allowed-to-create-and-manage-labs"></a>誰にラボの作成と管理を許可するか?
 
@@ -60,7 +64,7 @@ Azure Marketplace には、有効にできる何百ものイメージが用意�
 
 - **ラボ VM は仮想ネットワーク内にある他の Azure リソースにアクセスする必要があるか?**
 
-   仮想ネットワーク内のセキュリティ保護 "*されていない*" Azure リソースにアクセスする必要がある場合、ピアリングを行わずにパブリック インターネット経由でこれらのリソースにアクセスできます。
+   仮想ネットワーク内のセキュリティ保護 " *されていない* " Azure リソースにアクセスする必要がある場合、ピアリングを行わずにパブリック インターネット経由でこれらのリソースにアクセスできます。
 
 1 つ以上の質問に "はい" と答えた場合、ラボ アカウントを仮想ネットワークにピアリングする必要があります。 "わからない" と答えた場合は、この決定を先送りすることができます。 ラボ アカウントを作成した後で、いつでも仮想ネットワークのピアリングを選択できます。
 

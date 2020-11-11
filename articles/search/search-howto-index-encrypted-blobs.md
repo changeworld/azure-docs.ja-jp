@@ -8,22 +8,21 @@ ms.author: chalton
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: 6a4dcec2b50a13a256c82e4a5ec54c9b22aa973f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 11/02/2020
+ms.openlocfilehash: f0295c27f1d193b0dcd7829a11b4aabe0edb659b
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791989"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286349"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Azure Cognitive Search で BLOB インデクサーとスキルセットを使用して暗号化された BLOB にインデックスを付ける方法
 
-この記事では、以前に [Azure Key Vault](../key-vault/general/overview.md) を使用して暗号化されている [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) 内のドキュメントに、[Azure Cognitive Search](search-what-is-azure-search.md) を使用してインデックスを付ける方法について説明します。 通常、インデクサーを使用すると、暗号化キーにアクセスできないため、暗号化されたファイルからはコンテンツを抽出できません。 しかし、[DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile) カスタム スキルを利用した後、[DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) を利用することにより、キーへの制御されたアクセスを提供してファイルを解読した後、そこからコンテンツを抽出することができます。 これにより、データが保存時に暗号化されずに格納されることを心配することなく、これらのドキュメントにインデックスを付けることができるようになります。
+この記事では、以前に [Azure Key Vault](../key-vault/general/overview.md) を使用して前に暗号化されている [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) 内のドキュメントに、[Azure Cognitive Search](search-what-is-azure-search.md) を使用してインデックスを付ける方法について示します。 通常、インデクサーを使用すると、暗号化キーにアクセスできないため、暗号化されたファイルからはコンテンツを抽出できません。 しかし、[DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile) カスタム スキルを利用した後、[DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) を利用することにより、キーへの制御されたアクセスを提供してファイルを解読した後、そこからコンテンツを抽出することができます。 これにより、格納されているドキュメントの暗号化状態を損なうことなく、これらのドキュメントにインデックスを作成する機能のロックが解除されます。
 
-このガイドでは、Postman と Search REST API を使用して次のタスクを実行します。
+Azure Blob Storage の PDF、HTML、DOCX、PPTX など、以前に暗号化されたドキュメント全体 (非構造化テキスト) から、このガイドでは Postman と Search REST API を使用して、次のタスクを実行します。
 
 > [!div class="checklist"]
-> * Azure Key Vault を使用して暗号化されている Azure Blob Storage 内の PDF、HTML、DOCX、PPTX などのドキュメント全体 (非構造化テキスト) から始める。
 > * ドキュメントを解読し、そこからテキストを抽出するパイプラインを定義する。
 > * 出力を格納するためのインデックスを定義する。
 > * パイプラインを実行して、インデックスを作成し、データを読み込む。
@@ -36,13 +35,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 この例では、既にファイルを Azure Blob Storage にアップロードし、その過程で暗号化されているものとします。 最初にファイルをアップロードして暗号化する方法についてのヘルプが必要な場合は、[このチュートリアル](../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md)で方法を確認してください。
 
 + [Azure ストレージ](https://azure.microsoft.com/services/storage/)
-+ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
++ Azure Cognitive Search と同じサブスクリプションにある [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。 キー コンテナーでは、 **論理的な削除** と **消去保護** が有効になっている必要があります。
++ [請求可能なレベル](search-sku-tier.md#tiers) (Basic 以上、任意のリージョン) の [Azure Cognitive Search](search-create-service-portal.md)
 + [Azure 関数](https://azure.microsoft.com/services/functions/)
 + [Postman デスクトップ アプリ](https://www.getpostman.com/)
-+ [作成](search-create-service-portal.md)または[既存の検索サービスの用意](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
-
-> [!Note]
-> このガイドには無料のサービスを使用できます。 無料の検索サービスには、3 つのインデックス、3 つのインデクサー、3 つのデータ ソース、3 つのスキルセットという制限があります。 このガイドでは、それぞれを 1 つ作成します。 開始する前に、ご利用のサービスに新しいリソースを受け入れる余地があることを確認してください。
 
 ## <a name="1---create-services-and-collect-credentials"></a>1 - サービスを作成し、資格情報を収集する
 

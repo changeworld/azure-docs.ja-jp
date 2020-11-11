@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc
-ms.openlocfilehash: 49ffc33310564299131e2831b74154719b7cf7c7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 264778d2d6d1ee0119ad8622043b7cd3a1088ec1
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078580"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280141"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>Azure Red Hat OpenShift 4 クラスター アプリケーションのバックアップを作成する
 
@@ -22,6 +22,9 @@ ms.locfileid: "92078580"
 > [!div class="checklist"]
 > * 前提条件を設定し、必要なツールをインストールする
 > * Azure Red Hat OpenShift 4 アプリケーションのバックアップを作成する
+
+> [!NOTE] 
+> Velero によって、Azure Red Hat OpenShift etcd のキーと値のストア データがバックアップされることはありません。 etcd をバックアップする必要がある場合は、「[Backing up etcd](https://docs.openshift.com/container-platform/4.5/backup_and_restore/backing-up-etcd.html)」(etcd のバックアップ) を参照してください。
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 
@@ -60,7 +63,7 @@ az storage container create -n $BLOB_CONTAINER --public-access off --account-nam
 Velero では、バックアップと復元を行うためのアクセス許可が必要です。 サービス プリンシパルを作成する場合、前の手順で定義したリソース グループにアクセスするためのアクセス許可を Velero に付与します。 この手順では、クラスターのリソース グループを取得します。
 
 ```bash
-export AZURE_RESOURCE_GROUP=aro-$(az aro show --name <name of cluster> --resource-group <name of resource group> | jq -r '.clusterProfile.domain')
+export AZURE_RESOURCE_GROUP=$(az aro show --name <name of cluster> --resource-group <name of resource group> | jq -r .clusterProfile.resourceGroupId | cut -d '/' -f 5,5)
 ```
 
 

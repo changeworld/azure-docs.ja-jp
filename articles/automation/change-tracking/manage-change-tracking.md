@@ -3,14 +3,14 @@ title: Azure Automation で Change Tracking と Inventory を管理する
 description: この記事では、Change Tracking と Inventory を使用して、お使いの環境内でソフトウェアと Microsoft サービスの変更を追跡する方法について説明します。
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 10/14/2020
+ms.date: 11/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: a599bb6f07683540f5b12c6a69d6565161f89a4f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 99cdc4191320efb37b37e4ec38e808f3961a1207
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209263"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288742"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Change Tracking と Inventory の管理
 
@@ -58,6 +58,13 @@ Change Tracking とインベントリを使用して、ファイルとフォル�
     |パスの種類     | パスの種類。 指定できる値は [ファイル] と [フォルダー] です。        |    
     |再帰     | 追跡する項目を検索するときに、再帰を使用する場合は True、そうでない場合は False。        |    
     |ファイル コンテンツのアップロード | 追跡された変更についてのファイル内容をアップロードする場合は True、それ以外の場合は False。|
+
+    ワイルドカードを使用してファイルとフォルダーの監視を構成する場合は、次の点を考慮してください。
+
+    - 複数のファイルを追跡するにはワイルドカードが必要です。
+    - ワイルドカードは、パスの最後のセグメントでのみ使用できます ( *C:\folder\file* または */etc/* .conf* など)。
+    - 環境変数に有効でないパスが含まれている場合、検証は成功しますが、インベントリの実行時にそのパスはエラーになります。
+    - パスを設定するときは、漠然としたパス ( *c:* .** など) は避けてください。走査の対象になるフォルダーが膨大な数になります。
 
 8. **[ファイル コンテンツのアップロード]** には、必ず True を指定してください。 この設定は、示されたファイル パスに対してファイル コンテンツの追跡を有効にします。
 
@@ -138,7 +145,7 @@ Change Tracking と Inventory により追跡対象ファイルの変更が検�
 
 3. **[+ 追加]** を選択して、追跡する新しいレジストリ キーを追加します。
 
-4. **[変更履歴用の Windows レジストリを追加する]** ページで、追跡するキーの情報を入力し、 **[保存]** を選択します。 次の表に、情報に使用できるプロパティを示します。
+4. **[変更履歴用の Windows レジストリを追加する]** ページで、追跡するキーの情報を入力し、 **[保存]** を選択します。 次の表に、情報に使用できるプロパティを示します。 レジストリ パスを指定する場合は、値ではなくキーである必要があります。
 
     |プロパティ  |説明  |
     |---------|---------|

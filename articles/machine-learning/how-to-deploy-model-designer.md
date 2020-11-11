@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: keli19
 author: likebupt
 ms.reviewer: peterlu
-ms.date: 10/12/2020
+ms.date: 10/29/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy, studio
-ms.openlocfilehash: e2f3e0b596847000af62aa6e23da5b137ee9de33
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 0d98d5103e26eb0b4ee0d31b95f1d07cdaa396ae
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999013"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927585"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>スタジオを使用して、デザイナーでトレーニングされたモデルをデプロイする
 
@@ -71,7 +71,7 @@ Azure Machine Learning スタジオにモデルをデプロイするには、次
 
 - **Conda 依存関係ファイル** - Web サービスが依存する PIP および Conda パッケージを指定します。 **モデルのトレーニング** モジュールが完了すると、デザイナーによって `conda_env.yaml` ファイルが自動的に作成されます。
 
-これら 2 つのファイルは、**モデルのトレーニング** モジュールの右側のウィンドウでダウンロードできます。
+これら 2 つのファイルは、 **モデルのトレーニング** モジュールの右側のウィンドウでダウンロードできます。
 
 1. **Train Model** (モデルのトレーニング) モジュールを選択します。
 1. **[出力 + ログ]** タブでフォルダー `trained_model_outputs` を選択します。
@@ -90,7 +90,7 @@ Azure Machine Learning スタジオにモデルをデプロイするには、次
     ![モデルの詳細ページにあるデプロイするダウンロード ファイルのスクリーンショット](./media/how-to-deploy-model-designer/download-artifacts-in-models-page.png)
 
 > [!NOTE]
-> `score.py` ファイルには、**モデルのスコアリング** モジュールとほぼ同じ機能が用意されています。 ただし、[SVD レコメンダーのスコアリング](./algorithm-module-reference/score-svd-recommender.md)、[ワイドかつディープなレコメンダーのスコアリング](./algorithm-module-reference/score-wide-and-deep-recommender.md)、[Vowpal Wabbit モデルのスコアリング](./algorithm-module-reference/score-vowpal-wabbit-model.md)のような一部のモジュールには、さまざまなスコアリング モード パラメーターがあります。 これらのパラメーターは、エントリ スクリプトで変更することもできます。
+> `score.py` ファイルには、 **モデルのスコアリング** モジュールとほぼ同じ機能が用意されています。 ただし、[SVD レコメンダーのスコアリング](./algorithm-module-reference/score-svd-recommender.md)、[ワイドかつディープなレコメンダーのスコアリング](./algorithm-module-reference/score-wide-and-deep-recommender.md)、[Vowpal Wabbit モデルのスコアリング](./algorithm-module-reference/score-vowpal-wabbit-model.md)のような一部のモジュールには、さまざまなスコアリング モード パラメーターがあります。 これらのパラメーターは、エントリ スクリプトで変更することもできます。
 >
 >`score.py` ファイルでのパラメーターの設定の詳細については、[エントリ スクリプトの構成](#configure-the-entry-script)に関するセクションを参照してください。
 
@@ -104,8 +104,8 @@ Azure Machine Learning スタジオにモデルをデプロイするには、次
 
     - エンドポイントの名前を入力します。
     - [Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md) または [Azure Container Instance](how-to-deploy-azure-container-instance.md) のどちらにモデルをデプロイするかを選択します。
-    - **エントリ スクリプト ファイル**の `score.py` をアップロードします。
-    - **Conda 依存関係ファイル**の `conda_env.yml` をアップロードします。 
+    - **エントリ スクリプト ファイル** の `score.py` をアップロードします。
+    - **Conda 依存関係ファイル** の `conda_env.yml` をアップロードします。 
 
     >[!TIP]
     > **[詳細]** 設定では、CPU/メモリ容量およびデプロイのためのその他のパラメーターを設定できます。 これらの設定は、大量のメモリ (約 4 GB) を消費する PyTorch モデルなどの特定のモデルにおいて重要です。
@@ -119,7 +119,7 @@ Azure Machine Learning スタジオにモデルをデプロイするには、次
 デプロイが成功した後は、 **[エンドポイント]** アセット ページでリアルタイム エンドポイントを見つけることができます。 そこには、クライアントがリアルタイム エンドポイントにリクエストを送信するために使用できる REST エンドポイントがあります。 
 
 > [!NOTE]
-> また、デザイナーによってテスト用のサンプル データ json ファイルも生成されます。`_samples.json` は、**trained_model_outputs** フォルダーからダウンロードできます。
+> また、デザイナーによってテスト用のサンプル データ json ファイルも生成されます。`_samples.json` は、 **trained_model_outputs** フォルダーからダウンロードできます。
 
 リアルタイム エンドポイントを使用するには、次のコード サンプルを使用します。
 
@@ -206,7 +206,7 @@ with open(data_file_path, 'w') as f:
 
 このセクションでは、エントリ スクリプト ファイルでもこれらのパラメーターを更新する方法について説明します。
 
-次の例では、トレーニングされた**ワイドかつディープなレコメンダー** モデルの既定の動作を更新します。 既定では、`score.py` ファイルは、ユーザーと項目間の評価を予測するように Web サービスに指示します。 
+次の例では、トレーニングされた **ワイドかつディープなレコメンダー** モデルの既定の動作を更新します。 既定では、`score.py` ファイルは、ユーザーと項目間の評価を予測するように Web サービスに指示します。 
 
 エントリ スクリプト ファイルを変更して項目の推奨を作成し、`recommender_prediction_kind` パラメーターを変更することによって推奨される項目を返すことができます。
 
@@ -261,12 +261,12 @@ def run(data):
     return json.dumps(result_df.to_dict("list"))
 ```
 
-**ワイドかつディープなレコメンダー**および **Vowpal Wabbit** モデルでは、次のメソッドを使用してスコアリング モード パラメーターを構成できます。
+**ワイドかつディープなレコメンダー** および **Vowpal Wabbit** モデルでは、次のメソッドを使用してスコアリング モード パラメーターを構成できます。
 
 - パラメーター名は、[Vowpal Wabbit モデルのスコアリング](./algorithm-module-reference/score-vowpal-wabbit-model.md)と[ワイドかつディープなレコメンダーのスコアリング](./algorithm-module-reference/score-wide-and-deep-recommender.md)のパラメーター名の小文字とアンダースコアの組み合わせです。
-- モードの型パラメーター値は、対応するオプション名の文字列です。 上記のコードの**レコメンダー予測の種類**を例にとると、値は `'Rating Prediction'` または `'Item Recommendation'` にすることができます。 他の値は許容されません。
+- モードの型パラメーター値は、対応するオプション名の文字列です。 上記のコードの **レコメンダー予測の種類** を例にとると、値は `'Rating Prediction'` または `'Item Recommendation'` にすることができます。 他の値は許容されません。
 
-**SVD レコメンダー**のトレーニングされたモデルでは、パラメーターの名前と値は明確ではありませんが、以下の表を参照してパラメータの設定方法を決定することができます。
+**SVD レコメンダー** のトレーニングされたモデルでは、パラメーターの名前と値は明確ではありませんが、以下の表を参照してパラメータの設定方法を決定することができます。
 
 | [SVD レコメンダーのスコアリング](./algorithm-module-reference/score-svd-recommender.md)のパラメーター名                           | エントリ スクリプト ファイル内のパラメーター名 |
 | ------------------------------------------------------------ | --------------------------------------- |
@@ -299,6 +299,7 @@ score_params = dict(
 ## <a name="next-steps"></a>次のステップ
 
 * [デザイナーでのモデルのトレーニング](tutorial-designer-automobile-price-train-score.md)
+* [Azure Machine Learning SDK を使用してモデルをデプロイする](how-to-deploy-and-where.md)
 * [失敗したデプロイのトラブルシューティング](how-to-troubleshoot-deployment.md)
 * [Azure Kubernetes Service にデプロイする](how-to-deploy-azure-kubernetes-service.md)
 * [Web サービスを使用するクライアント アプリケーションを作成する](how-to-consume-web-service.md)

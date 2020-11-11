@@ -7,14 +7,14 @@ author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: fdc0ae3fef2fb70b7372ab4fb28497ea6a6400a4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: dfea03270dfea3699f7c3508b9f5275a2dd26372
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635464"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287163"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Azure Cognitive Search のデータ暗号化のためにカスタマー マネージド キーを構成する
 
@@ -43,13 +43,11 @@ CMK 暗号化は、[Azure Key Vault](../key-vault/general/overview.md) に依存
 
 ## <a name="prerequisites"></a>前提条件
 
-この例では、以下のツールとサービスが使用されます。 
+このシナリオでは、以下のツールとサービスが使用されます。
 
-+ [Cognitive Search サービスを作成](search-create-service-portal.md)するか、[既存のものを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 
-
-+ [Azure Key Vault リソースを作成](../key-vault/secrets/quick-create-portal.md#create-a-vault)するか、既存のものを見つけます。 キー コンテナーと Cognitive Search の両方を、同じサブスクリプションに含める必要があります。 キー コンテナーでは、 **論理的な削除** と **消去保護** が有効になっている必要があります。
-
-+ アプリケーションを登録し、アプリケーションで認証に使用される秘密の文字列を作成するための [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)。 それがない場合は、[新しいテナントをセットアップ](../active-directory/develop/quickstart-create-new-tenant.md)してください。
++ [請求可能なレベル](search-sku-tier.md#tiers) (Basic 以上、任意のリージョン) の [Azure Cognitive Search](search-create-service-portal.md)。
++ Azure Cognitive Search と同じサブスクリプションにある [Azure Key Vault](../key-vault/secrets/quick-create-portal.md#create-a-vault)。 キー コンテナーでは、 **論理的な削除** と **消去保護** が有効になっている必要があります。
++ [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)。 それがない場合は、[新しいテナントをセットアップ](../active-directory/develop/quickstart-create-new-tenant.md)してください。
 
 暗号化されたオブジェクトを作成できる検索アプリケーションが必要です。 このコード内では、キー コンテナー キーと Active Directory 登録情報を参照します。 このコードは、動作しているアプリや、[C# コードサンプル DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK) などのプロトタイプ コードなどになります。
 

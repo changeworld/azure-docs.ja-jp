@@ -4,12 +4,12 @@ description: Recovery Services コンテナーを Azure サブスクリプショ
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: bd1870e803f5051e2a65a6cddbb72406421d4fc3
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 5a73963970b5fad7b3992d501d9aac5cc7229622
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171607"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926684"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動する
 
@@ -17,11 +17,7 @@ ms.locfileid: "92171607"
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-Recovery Services コンテナーのリソースの移動がサポートされるのは、オーストラリア東部、オーストラリア南東部、カナダ中部、カナダ東部、東南アジア、東アジア、米国中部、米国中北部、米国東部、米国東部 2、米国中南部、米国中西部、米国中西部 2、米国西部、米国西部 2、ブラジル南部、インド中部、インド南部、東日本、西日本、韓国中部、韓国南部、北ヨーロッパ、西ヨーロッパ、南アフリカ北部、南アフリカ西部、英国南部、および英国西部です。
-
-## <a name="unsupported-regions"></a>サポートされていないリージョン
-
-フランス中部、フランス南部、ドイツ北東部、ドイツ中部、US Gov アイオワ、中国北部、中国北部 2、中国東部、中国東部 2
+フランス中部、フランス南部、ドイツ北東部、ドイツ中部、中国北部、中国北部 2、中国東部、中国東部 2 が、パブリック リージョンと主権リージョンのすべてです。
 
 ## <a name="prerequisites-for-moving-recovery-services-vault"></a>Recovery Services コンテナーを移動するための前提条件
 
@@ -53,7 +49,7 @@ Recovery Services コンテナーのリソースの移動がサポートされ�
 Recovery Services コンテナーとその関連リソースを別のリソース グループに移動するには:
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. **Recovery Services コンテナー**の一覧を開き、移動するコンテナーの名前を選択します。 コンテナーのダッシュボードが開き、次の図のように表示されます。
+2. **Recovery Services コンテナー** の一覧を開き、移動するコンテナーの名前を選択します。 コンテナーのダッシュボードが開き、次の図のように表示されます。
 
    ![Recovery Services コンテナーを開く](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
@@ -126,7 +122,7 @@ Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $v
 Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
-上記のコマンドレットを実行した後、指定したリソースを移動することの確認を求められます。 「**Y**」と入力して確認します。 検証が成功した後、リソースが移動します。
+上記のコマンドレットを実行した後、指定したリソースを移動することの確認を求められます。 「 **Y** 」と入力して確認します。 検証が成功した後、リソースが移動します。
 
 ## <a name="use-cli-to-move-recovery-services-vault"></a>CLI を使用して Recovery Services コンテナーを移動する
 

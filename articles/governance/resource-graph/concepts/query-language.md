@@ -1,14 +1,14 @@
 ---
 title: クエリ言語を理解する
 description: Resource Graph テーブルと、Azure Resource Graph で使用可能な Kusto データ型、演算子、関数について説明します。
-ms.date: 09/30/2020
+ms.date: 10/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: ef588bd3fd8afcf1f1139f97d5df2d48a14b4dd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c3ad55a0f1af623211852c02aabd37560c00bc6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578531"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926089"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Resource Graph クエリ言語の概要
 
@@ -30,12 +30,13 @@ Resource Graph には、Azure Resource Manager のリソースの種類とその
 |---|---|
 |リソース |クエリ内で何も定義されていない場合の既定のテーブル。 Resource Manager のリソースの種類とプロパティのほとんどはここにあります。 |
 |ResourceContainers |サブスクリプション (プレビュー中 -- `Microsoft.Resources/subscriptions`) とリソース グループ (`Microsoft.Resources/subscriptions/resourcegroups`) のリソースの種類とデータが含まれています。 |
-|AdvisorResources |`Microsoft.Advisor` に "_関連する_" リソースが含まれています。 |
-|AlertsManagementResources |`Microsoft.AlertsManagement` に "_関連する_" リソースが含まれています。 |
-|GuestConfigurationResources |`Microsoft.GuestConfiguration` に "_関連する_" リソースが含まれています。 |
-|HealthResources |`Microsoft.ResourceHealth` に "_関連する_" リソースが含まれています。 |
-|MaintenanceResources |`Microsoft.Maintenance` に "_関連する_" リソースが含まれています。 |
-|SecurityResources |`Microsoft.Security` に "_関連する_" リソースが含まれています。 |
+|AdvisorResources |`Microsoft.Advisor` に " _関連する_ " リソースが含まれています。 |
+|AlertsManagementResources |`Microsoft.AlertsManagement` に " _関連する_ " リソースが含まれています。 |
+|GuestConfigurationResources |`Microsoft.GuestConfiguration` に " _関連する_ " リソースが含まれています。 |
+|MaintenanceResources |`Microsoft.Maintenance` に " _関連する_ " リソースが含まれています。 |
+|PolicyResources |`Microsoft.PolicyInsights` に " _関連する_ " リソースが含まれています。 ( **プレビュー** )|
+|SecurityResources |`Microsoft.Security` に " _関連する_ " リソースが含まれています。 |
+|ServiceHealthResources |`Microsoft.ResourceHealth` に " _関連する_ " リソースが含まれています。 |
 
 リソースの種類を含む、完全な一覧については、[リファレンス: サポートされているテーブルとリソースの種類](../reference/supported-tables-resources.md)に関するページを参照してください。
 
@@ -44,7 +45,7 @@ Resource Graph には、Azure Resource Manager のリソースの種類とその
 
 ポータル内の Resource Graph Explorer を使用して、各テーブルで使用できるリソースの種類を確認します。 別の方法として、`<tableName> | distinct type` などのクエリを使用して、指定した Resource Graph テーブルでサポートされている、環境内に存在するリソースの種類の一覧を取得することもできます。
 
-次のクエリは、単純な `join` を示しています。 クエリ結果では、列が結合され、結合されたテーブルの重複する列名 (この例では _ResourceContainers_) が **1** と共に追加されます。 _ResourceContainers_ テーブルには、サブスクリプションとリソース グループの両方の種類があります。どちらの種類も、_resources_  テーブルからリソースへの結合に使用できます。
+次のクエリは、単純な `join` を示しています。 クエリ結果では、列が結合され、結合されたテーブルの重複する列名 (この例では _ResourceContainers_ ) が **1** と共に追加されます。 _ResourceContainers_ テーブルには、サブスクリプションとリソース グループの両方の種類があります。どちらの種類も、 _resources_  テーブルからリソースへの結合に使用できます。
 
 ```kusto
 Resources
@@ -52,7 +53,7 @@ Resources
 | limit 1
 ```
 
-次のクエリは、`join` のより複雑な使用方法を示しています。 このクエリは、結合対象のテーブルをサブスクリプション リソースに制限し、さらに、`project` を使用して、元のフィールドである _subscriptionId_ と、_SubName_ という名前に変更された _name_ フィールドのみが含まれるように制限しています。 フィールドは _Resources_  に既に存在するため、フィールド名を変更すると、`join` によって _name1_  として追加されなくなります。 元のテーブルは `where` でフィルター処理され、次の `project` には両方のテーブルの列が含まれます。 クエリの結果として、キー コンテナーが 1 つ返されると共に、そのタイプと名前、そしてキー コンテナーが存在するサブスクリプションの名前が表示されます。
+次のクエリは、`join` のより複雑な使用方法を示しています。 このクエリは、結合対象のテーブルをサブスクリプション リソースに制限し、さらに、`project` を使用して、元のフィールドである _subscriptionId_ と、 _SubName_ という名前に変更された _name_ フィールドのみが含まれるように制限しています。 フィールドは _Resources_  に既に存在するため、フィールド名を変更すると、`join` によって _name1_  として追加されなくなります。 元のテーブルは `where` でフィルター処理され、次の `project` には両方のテーブルの列が含まれます。 クエリの結果として、キー コンテナーが 1 つ返されると共に、そのタイプと名前、そしてキー コンテナーが存在するサブスクリプションの名前が表示されます。
 
 ```kusto
 Resources
@@ -63,11 +64,11 @@ Resources
 ```
 
 > [!NOTE]
-> `project` を使用して `join` の結果を制限する場合は、2 つのテーブルを関連付けるために `join` によって使用されるプロパティ (上記の例の _subscriptionId_) が `project` に含まれている必要があります。
+> `project` を使用して `join` の結果を制限する場合は、2 つのテーブルを関連付けるために `join` によって使用されるプロパティ (上記の例の _subscriptionId_ ) が `project` に含まれている必要があります。
 
 ## <a name="extended-properties-preview"></a><a name="extended-properties"></a>拡張プロパティ (プレビュー)
 
-_プレビュー_機能として、Resource Graph の一部のリソースの種類には、Azure Resource Manager によって提供されるプロパティ以外に、クエリで使用できる追加の種類関連のプロパティがあります。 この一連の値は_拡張プロパティ_と呼ばれ、`properties.extended` でサポートされているリソースの種類に存在します。 _拡張プロパティ_があるリソースの種類を確認するには、次のクエリを使用します。
+_プレビュー_ 機能として、Resource Graph の一部のリソースの種類には、Azure Resource Manager によって提供されるプロパティ以外に、クエリで使用できる追加の種類関連のプロパティがあります。 この一連の値は _拡張プロパティ_ と呼ばれ、`properties.extended` でサポートされているリソースの種類に存在します。 _拡張プロパティ_ があるリソースの種類を確認するには、次のクエリを使用します。
 
 ```kusto
 Resources
@@ -135,7 +136,7 @@ Resource Graph では、KQL [データ型](/azure/kusto/query/scalar-data-types/
 |[summarize](/azure/kusto/query/summarizeoperator) |[Azure リソースの数](../samples/starter.md#count-resources) |簡略化された最初のページのみ |
 |[take](/azure/kusto/query/takeoperator) |[パブリック IP アドレスの一覧表示](../samples/starter.md#list-publicip) |`limit` のシノニム。 [Skip](./work-with-data.md#skipping-records) と一緒に機能しません。 |
 |[top](/azure/kusto/query/topoperator) |[名前とその OS の種類による最初の 5 つの仮想マシンの表示](../samples/starter.md#show-sorted) | |
-|[union](/azure/kusto/query/unionoperator) |[2 つのクエリの結果を結合して 1 つの結果にする](../samples/advanced.md#unionresults) |1 つのテーブルを使用できます:_T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _Table_. 1 つのクエリでは `union` 分岐が 3 つに制限されます。 `union` 分岐テーブルのあいまい解決は許可されていません。 1 つのテーブル内、または _Resources_ テーブルと _ResourceContainers_ テーブルの間で使用できます。 |
+|[union](/azure/kusto/query/unionoperator) |[2 つのクエリの結果を結合して 1 つの結果にする](../samples/advanced.md#unionresults) |1 つのテーブルを使用できます: _T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _Table_. 1 つのクエリでは `union` 分岐が 3 つに制限されます。 `union` 分岐テーブルのあいまい解決は許可されていません。 1 つのテーブル内、または _Resources_ テーブルと _ResourceContainers_ テーブルの間で使用できます。 |
 |[where](/azure/kusto/query/whereoperator) |[ストレージを含むリソースの表示](../samples/starter.md#show-storage) | |
 
 ## <a name="query-scope"></a>クエリ スコープ
@@ -143,7 +144,7 @@ Resource Graph では、KQL [データ型](/azure/kusto/query/scalar-data-types/
 クエリによってリソースが返されるサブスクリプションのスコープは、Resource Graph にアクセスする方法によって異なります。 Azure CLI および Azure PowerShell は、承認されたユーザーのコンテキストに基づいて、要求に含めるサブスクリプションの一覧を設定します。 サブスクリプションの一覧は、それぞれ **subscriptions** と **Subscription** パラメーターを使用して、それぞれに対して手動で定義できます。
 REST API およびその他のすべての SDK では、リソースを含めるサブスクリプションの一覧は、要求の一部として明示的に定義する必要があります。
 
-**プレビュー**として、REST API バージョン `2020-04-01-preview` では、クエリのスコープを[管理グループ](../../management-groups/overview.md)に設定するプロパティが追加されます。 また、このプレビュー API では、サブスクリプション プロパティは省略可能になります。 管理グループまたはサブスクリプションの一覧が定義されていない場合は、認証されたユーザーがアクセスできるすべてのリソース ([Azure Lighthouse](../../../lighthouse/concepts/azure-delegated-resource-management.md) の委任されたリソースを含む) がクエリ スコープになります。 新しい `managementGroupId` プロパティは管理グループ ID を取ります。これは、管理グループの名前とは異なります。 `managementGroupId` を指定すると、指定した管理グループ階層内、またはその下にある最初の5000 件のサブスクリプションのリソースが含まれます。 `managementGroupId` を `subscriptions` と同時に使用することはできません。
+**プレビュー** として、REST API バージョン `2020-04-01-preview` では、クエリのスコープを [管理グループ](../../management-groups/overview.md)に設定するプロパティが追加されます。 また、このプレビュー API では、サブスクリプション プロパティは省略可能になります。 管理グループまたはサブスクリプションの一覧が定義されていない場合は、認証されたユーザーがアクセスできるすべてのリソース ([Azure Lighthouse](../../../lighthouse/concepts/azure-delegated-resource-management.md) の委任されたリソースを含む) がクエリ スコープになります。 新しい `managementGroupId` プロパティは管理グループ ID を取ります。これは、管理グループの名前とは異なります。 `managementGroupId` を指定すると、指定した管理グループ階層内、またはその下にある最初の5000 件のサブスクリプションのリソースが含まれます。 `managementGroupId` を `subscriptions` と同時に使用することはできません。
 
 例:ID "myMG" を持つ "My Management Group" という名前の管理グループの階層内のすべてのリソースに対してクエリを実行します。
 

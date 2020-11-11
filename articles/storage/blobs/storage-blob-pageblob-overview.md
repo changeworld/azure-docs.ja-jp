@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: add94fe05eecd2fb77ba0d6d79fe6765afe3baaa
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 5558a57812414f6f1bb1be053a089af98533155a
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091017"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288341"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure ページ BLOB の概要
 
@@ -24,6 +24,10 @@ Azure Storage には、3 つの種類の BLOB ストレージが用意されて�
 ページ BLOB は 512 バイトのページの集まりであり、任意の範囲のバイトの読み取り/書き込みを行うことができます。 そのため、ページ BLOB は、仮想マシンとデータベースの OS やデータ ディスクのような、インデックスに基づくスパース データ構造の格納に最適です。 たとえば、Azure SQL DB は、そのデータベースの基になる永続的ストレージとしてページ BLOB を使用します。 さらに、ページ BLOB は、範囲を基にした更新を含むファイルにもよく使用されます。  
 
 Azure のページ BLOB の重要な機能は、その REST インターフェイス、基礎をなすストレージの耐久性、および Azure へのシームレスな移行機能です。 これらの機能については、次のセクションで詳しく説明します。 さらに、Azure のページ BLOB は、現時点では次の 2 種類のストレージでサポートされています。Premium Storage と Standard Storage。 Premium Storage は、特に一貫したハイ パフォーマンスと待機時間の短縮を必要とするワークロード向けに設計されているため、Premium ページ BLOB をハイ パフォーマンスのストレージ シナリオに最適なものにします。 Standard ストレージ アカウントは、待機時間の影響を受けないワークロードを実行する場合はコスト効率に優れています。
+
+## <a name="restrictions"></a>制限
+
+ページ BLOB で使用できるのは、 **ホット** アクセス層のみであり、 **クール** または **アーカイブ** 層を使用することはできません。 アクセス層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md)」を参照してください。
 
 ## <a name="sample-use-cases"></a>サンプル ユース ケース
 
@@ -59,7 +63,7 @@ Azure Site Recovery、Azure Backup のようなファースト パーティの M
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
-ページ BLOB を作成するには、まず、次の例で示すように、**StorageCredentialsAccountAndKey** オブジェクトと共に **CloudBlobClient** オブジェクトを作成します (ストレージ アカウント (図 1 の *pbaccount*) の BLOB ストレージにアクセスするためのベース URI を使用します)。 この例では、**CloudBlobContainer** オブジェクトへの参照の作成と、まだ存在していない場合のコンテナー (*testvhds*) の作成を示しています。 次に、**CloudBlobContainer** オブジェクトを使用して、アクセスするページ BLOB の名前 (os4.vhd) を指定することで、**CloudPageBlob** オブジェクトへの参照を作成します。 ページ BLOB を作成するには、[CloudPageBlob.Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create) を呼び出し、作成する BLOB の最大サイズを渡します。 *blobSize* は 512 バイトの倍数にする必要があります。
+ページ BLOB を作成するには、まず、次の例で示すように、 **StorageCredentialsAccountAndKey** オブジェクトと共に **CloudBlobClient** オブジェクトを作成します (ストレージ アカウント (図 1 の *pbaccount* ) の BLOB ストレージにアクセスするためのベース URI を使用します)。 この例では、 **CloudBlobContainer** オブジェクトへの参照の作成と、まだ存在していない場合のコンテナー ( *testvhds* ) の作成を示しています。 次に、 **CloudBlobContainer** オブジェクトを使用して、アクセスするページ BLOB の名前 (os4.vhd) を指定することで、 **CloudPageBlob** オブジェクトへの参照を作成します。 ページ BLOB を作成するには、[CloudPageBlob.Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create) を呼び出し、作成する BLOB の最大サイズを渡します。 *blobSize* は 512 バイトの倍数にする必要があります。
 
 ```csharp
 using Microsoft.Azure;

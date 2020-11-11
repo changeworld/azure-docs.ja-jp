@@ -1,24 +1,24 @@
 ---
-title: Azure Storage のライフサイクルの管理
-description: 古いデータをホット層からクール層およびアーカイブ層へ移行するためのライフサイクル ポリシー ルールの作成方法について説明します。
+title: Azure Blob Storage アクセス層の自動化によるコストの最適化
+description: ホット、クール、アーカイブの各階層間でデータを移動するための自動ルールを作成します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/15/2020
+ms.date: 10/29/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: ee04ad28d6b52e63becd2991d77b453cd411f683
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a4a338a4d13715ba1ff7cb30c011757d5050ba05
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309796"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100071"
 ---
-# <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob Storage のライフサイクルを管理する
+# <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Azure Blob Storage アクセス層の自動化によるコストの最適化
 
-データ セットには一意のライフサイクルがあります。 ライフサイクルの早い段階で、一部のデータに頻繁にアクセスされます。 しかし、データが古くなるとアクセスの必要性が急激に低下します。 また、クラウド内で使用されず、格納された後もほとんどアクセスされないデータもあります。 データには、作成後数日または数か月で失効するものがあります。また、ライフサイクルにわたってアクティブに読み取られ、変更されるデータ セットもあります。 Azure Blob Storage のライフサイクル管理には、GPv2 および BLOB ストレージ アカウントのための豊富な、ルール ベースのポリシーが用意されています。 このポリシーを使用して、適切なアクセス層にデータを移行します。または、データのライフサイクルの終了時に期限切れにします。
+データ セットには一意のライフサイクルがあります。 ライフサイクルの早い段階で、一部のデータに頻繁にアクセスされます。 しかし、データが古くなるとアクセスの必要性が急激に低下します。 また、クラウド内で使用されず、格納された後もほとんどアクセスされないデータもあります。 データには、作成後数日または数か月で失効するものがあります。また、ライフサイクルにわたってアクティブに読み取られ、変更されるデータ セットもあります。 Azure Blob Storage のライフサイクル管理には、GPv2 アカウントと BLOB ストレージ アカウントに関する、豊富な内容のルールベースのポリシーが用意されています。 このポリシーを使用して、適切なアクセス層にデータを移行します。または、データのライフサイクルの終了時に期限切れにします。
 
 ライフサイクル管理ポリシーによって、以下を行えます。
 
@@ -31,12 +31,13 @@ ms.locfileid: "92309796"
 次のようなシナリオについて考えてみましょう。データがライフサイクルの初期段階には頻繁にアクセスされるものの、2 週間後にはたまにしか必要とされなくなります。 1 か月を超えると、そのデータ セットにはほとんどアクセスされなくなります。 このシナリオの初期段階ではホット ストレージが最適です。 ときどきアクセスされるデータにはクール ストレージが適しています。 1 か月以上が経過したデータに最も適しているのは、アーカイブ ストレージです。 データの古さを考慮してストレージ層を調整することで、ニーズに合った最も低コストのストレージ オプションを設計できます。 この移行を実現するために、ライフサイクル管理ポリシー ルールを使用して、古いデータをよりクールな層に移動することができます。
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
 >[!NOTE]
 >StorSimple で使用する場合など、データを読み取れるままにする必要がある場合は、BLOB をアーカイブ層に移動するポリシーを設定しないでください。
 
 ## <a name="availability-and-pricing"></a>可用性と料金
 
-ライフサイクル管理機能は、General Purpose v2 (GPv2) アカウント、Blob Storage アカウント、Premium Block Blob Storage アカウント、および Azure Data Lake Storage Gen2 アカウントのすべての Azure リージョンで利用できます。 Azure portal では、既存の General Purpose (GPv1) アカウントを GPv2 アカウントにアップグレードすることができます。 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」をご覧ください。
+ライフサイクル管理機能は、General Purpose v2 (GPv2) アカウント、BLOB ストレージ アカウント、Premium ブロック BLOB ストレージ アカウント、Azure Data Lake Storage Gen2 アカウントのすべての Azure リージョンで利用できます。 Azure portal では、既存の General Purpose (GPv1) アカウントを GPv2 アカウントにアップグレードすることができます。 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」をご覧ください。
 
 ライフサイクル管理機能は無料です。 お客様には、[Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API 呼び出しの通常の運用コストが課金されます。 削除操作は無料です。 価格の詳細については、「[ブロック BLOBの料金](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
 
@@ -79,9 +80,22 @@ Azure portal を通じてポリシーを追加するには、2つの方法があ
 
 1. **[Base blobs]\(ベース BLOB\)** を選択して、ルールの条件を設定します。 次の例では、BLOB が 30 日間変更されない場合、BLOB はクール ストレージに移動されます。
 
-   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Azure portal の [ライフサイクル管理] の [ルールの追加] の [詳細] ページ" で始まる *mylifecyclecontainer* コンテナー内の BLOB に対してフィルター処理を行います。
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Azure portal の [ライフサイクル管理] の [Base blobs]\(ベース BLOB\) ページ":::
 
-   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="Azure portal の [ライフサイクル管理] の [ルールの追加] の [詳細] ページ":::
+   **[最終アクセス日時]** オプションは、次のリージョンにおいてプレビューで使用できます。
+
+    - フランス中部
+    - カナダ東部
+    - カナダ中部
+
+   > [!IMPORTANT]
+   > 最終アクセス時刻追跡プレビューは、非運用環境のみで使用されます。 運用環境のサービス レベル契約(SLA) は現在使用できません。
+   
+   **最終アクセス日時** オプションを使用するために、Azure portal の **ライフサイクル管理** ページで **アクセス追跡有効** を選択します。 **[最終アクセス日時]** オプションの詳細については、「 [最終アクセス日付に基づいてデータを移動させる (プレビュー)](#move-data-based-on-last-accessed-date-preview)」を参照してください。
+
+1. **[詳細]** ページで **[フィルターを使用して BLOB を制限する]** を選択した場合は、 **[フィルター セット]** を選択して省略可能なフィルターを追加します。 次の例では、"log" で始まる *mylifecyclecontainer* コンテナー内の BLOB に対してフィルター処理を行います。
+
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="Azure portal の [ライフサイクル管理] の [フィルター セット] ページ":::
 
 1. **[追加]** を選択して新しいポリシーを追加します。
 

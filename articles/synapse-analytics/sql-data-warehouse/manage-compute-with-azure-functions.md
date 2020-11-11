@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0e14bba7b2982dd12fcca0d7aedc864b2a65288f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1683977d5c8be965cb329611c5a7fd6602a1cd97
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91259953"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043371"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure Synapse Analytics SQL プールで Azure Functions を使用してコンピューティング リソースを管理します
 
@@ -64,7 +64,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
    {second} {minute} {hour} {day} {month} {day-of-week}
    ```
 
-   たとえば、「*0 30 9 * * 1-5*」と入力した場合、毎平日の午前 9 時 30 分に実行されます。 詳細については、Azure Functions の[スケジュールの例](../../azure-functions/functions-bindings-timer.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#example)を参照してください。
+   たとえば、「 *0 30 9 * * 1-5* 」と入力した場合、毎平日の午前 9 時 30 分に実行されます。 詳細については、Azure Functions の[スケジュールの例](../../azure-functions/functions-bindings-timer.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#example)を参照してください。
 
 ## <a name="change-the-time-of-the-scale-operation"></a>スケール操作の時間を変更する
 
@@ -78,7 +78,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
 ## <a name="use-pause-or-resume-instead-of-scale"></a>スケールではなく一時停止または再開を使用する
 
-現在、既定で有効になっている関数は *DWScaleDownTrigger* と *DWScaleUpTrigger* です。 それらの代わりに一時停止と再開の機能を使用する場合は、*DWPauseTrigger* または *DWResumeTrigger* を有効にしてください。
+現在、既定で有効になっている関数は *DWScaleDownTrigger* と *DWScaleUpTrigger* です。 それらの代わりに一時停止と再開の機能を使用する場合は、 *DWPauseTrigger* または *DWResumeTrigger* を有効にしてください。
 
 1. [関数] ウィンドウに移動します。
 
@@ -97,7 +97,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
 1. 新しく空の関数を作成します。 [関数] の横にある *+* ボタンを選択して、関数テンプレート ウィンドウを表示します。
 
-   ![新しい関数の作成](./media/manage-compute-with-azure-functions/create-new-function.png)
+   ![[関数アプリ] メニューを示すスクリーンショット。[関数] の横にあるプラス アイコンが選択されています。](./media/manage-compute-with-azure-functions/create-new-function.png)
 
 2. [言語] から *[JavaScript]* を選択し、 *[TimerTrigger]* を選択します。
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 602e3f58ac5f8f194ad4704a4e792d4f0aec3a3e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 19abb3f12dc1a0fd2a3dff548ecdc9e7fff47659
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978783"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927670"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure における SAP HANA インフラストラクチャの構成と運用
 このドキュメントは、Azure インフラストラクチャの構成と Azure のネイティブ仮想マシン (VM) にデプロイされている SAP HANA システムの運用に関するガイダンスを提供します。 また、ドキュメントには、M128 の VM SKU 向けの SAP HANA スケールアウトの構成情報が含まれます。 このドキュメントは、以下の内容を含む標準の SAP ドキュメントを代替するものではありません。
@@ -83,7 +83,7 @@ VPN または ExpressRoute を介して Azure に対するサイト対サイト�
 > 
 
 > [!IMPORTANT]
-> サポートされて**いない**もう 1 つの設計は、SAP アプリケーション レイヤーと DBMS レイヤーを、相互に[ピアリング](../../../virtual-network/virtual-network-peering-overview.md)されていない異なる Azure 仮想ネットワークに分離することです。 異なる Azure 仮想ネットワークを使用するのではなく、Azure 仮想ネットワーク内のサブネットを使用して、SAP アプリケーション レイヤーと DBMS レイヤーを分離することをお勧めします。 推奨事項に従わず、代わりに 2 つのレイヤーを異なる仮想ネットワークに分離する場合は、2 つの仮想ネットワークを[ピアリング](../../../virtual-network/virtual-network-peering-overview.md)する必要があります。 2 つの[ピアリング](../../../virtual-network/virtual-network-peering-overview.md)された Azure 仮想ネットワーク間のネットワーク トラフィックは転送コストの影響を受ける点に注意してください。 SAP アプリケーション レイヤーと DBMS レイヤー間で交換されるデータが膨大でテラバイト規模であり、SAP アプリケーション レイヤーと DBMS レイヤーが 2 つのピアリングされた Azure 仮想ネットワーク間で分離されている場合、相当のコストが蓄積される可能性があります。 
+> サポートされて **いない** もう 1 つの設計は、SAP アプリケーション レイヤーと DBMS レイヤーを、相互に [ピアリング](../../../virtual-network/virtual-network-peering-overview.md)されていない異なる Azure 仮想ネットワークに分離することです。 異なる Azure 仮想ネットワークを使用するのではなく、Azure 仮想ネットワーク内のサブネットを使用して、SAP アプリケーション レイヤーと DBMS レイヤーを分離することをお勧めします。 推奨事項に従わず、代わりに 2 つのレイヤーを異なる仮想ネットワークに分離する場合は、2 つの仮想ネットワークを[ピアリング](../../../virtual-network/virtual-network-peering-overview.md)する必要があります。 2 つの[ピアリング](../../../virtual-network/virtual-network-peering-overview.md)された Azure 仮想ネットワーク間のネットワーク トラフィックは転送コストの影響を受ける点に注意してください。 SAP アプリケーション レイヤーと DBMS レイヤー間で交換されるデータが膨大でテラバイト規模であり、SAP アプリケーション レイヤーと DBMS レイヤーが 2 つのピアリングされた Azure 仮想ネットワーク間で分離されている場合、相当のコストが蓄積される可能性があります。 
 
 SAP HANA を実行するために VM をインストールするとき、VM には以下が必要です。
 
@@ -135,7 +135,7 @@ Azure VM にスケールアウト構成をデプロイするための最小 OS �
 
 スケールアウト構成における単一ノードの一般的な基本設計は次のようになります。
 
-![単一ノードのスケールアウトの基本設計](media/hana-vm-operations/scale-out-basics-anf-shared.PNG)
+![スケールアウト構成における単一ノードの一般的な基本設計を示す図。](media/hana-vm-operations/scale-out-basics-anf-shared.PNG)
 
 SAP HANA スケールアウトの VM ノードの基本構成は、次のようになります。
 

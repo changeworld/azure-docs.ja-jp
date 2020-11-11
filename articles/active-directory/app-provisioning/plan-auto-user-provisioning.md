@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 7cc9e8a1cf51d57bf10523174179b5a9f2ef6e97
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 010e2a206ef08677651572c274cfc38fd516ecc9
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363693"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041122"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>自動ユーザー プロビジョニングのデプロイを計画する
 
@@ -99,7 +99,7 @@ Azure AD プロビジョニング サービスは、各アプリケーション 
 
 この例では、ユーザーの作成は Azure AD で行われ、Azure AD プロビジョニング サービスは、ターゲット (SaaS) アプリケーションへの自動ユーザー プロビジョニングを管理します。
 
-![画像 2](./media/plan-auto-user-provisioning/cloudprovisioning.png)
+![Azure AD プロビジョニング サービスを使用したオンプレミス HR アプリケーションからターゲット SaaS アプリケーションまでのユーザーおよびグループの作成プロセスを示す図。](./media/plan-auto-user-provisioning/cloudprovisioning.png)
 
 **ワークフローの説明:**
 

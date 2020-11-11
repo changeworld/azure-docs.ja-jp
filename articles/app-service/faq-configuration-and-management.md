@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 5545acbfd6bb239b9518fbe352b819f300dafaf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb193637525722bf227241a614cd977fbf70c9ac
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962351"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074184"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 
@@ -65,7 +65,9 @@ Web アプリのサーバーのタイム ゾーンを設定するには、次の
     * Value = *目的のタイム ゾーン*
 3. **[保存]** を選択します。
 
-Windows で実行される App Service の場合、指定可能な値については、[既定のタイム ゾーン](/windows-hardware/manufacture/desktop/default-time-zones)の記事の**タイムゾーン**の列を参照してください。 Linux で実行される App Service の場合、タイム ゾーン値として [TZ データベース名](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)を設定します。 TZ データベース名の例を挙げると、America/Adak のようになります。
+Windows で実行される App Service については、Windows `tzutil /L` コマンドからの出力を参照してください。 各エントリの 2 行目の値を使用します。 次に例を示します。"トンガ標準時"。 これらの値の一部は、「 [既定のタイムゾーン](/windows-hardware/manufacture/desktop/default-time-zones)」の **タイムゾーン** 列にも記載されています。
+
+Linux で実行される App Service については、[IANA TZ データベース](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)から値を設定します。 次に例を示します。"America/Adak"。
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>継続的な Web ジョブがときどき失敗する理由はなんですか?
 
@@ -76,7 +78,7 @@ Windows で実行される App Service の場合、指定可能な値につい�
 Web アプリの送信 IP アドレスの一覧を取得するには、次の手順を実行します。
 
 1. Azure ポータルの Web アプリのブレードで、 **[プロパティ]** メニューに移動します。
-2. **送信 IP アドレス**を検索します。
+2. **送信 IP アドレス** を検索します。
 
 送信 IP アドレスの一覧が表示されます。
 
@@ -128,7 +130,7 @@ Web ジョブのログを確認するには、次の手順を実行します。
 1. **Kudu の Web サイト** (`https://*yourwebsitename*.scm.azurewebsites.net`) にサインインします。
 2. [Web ジョブ] を選択します。
 3. **[出力の切り替え]** ボタンを選択します。
-4. 出力ファイルをダウンロードするには、**ダウンロード** リンクを選択します。
+4. 出力ファイルをダウンロードするには、 **ダウンロード** リンクを選択します。
 5. 個別実行では、 **[個別呼び出し]** を選択します。
 6. **[出力の切り替え]** ボタンを選択します。
 7. ダウンロード リンクを選択します。
@@ -147,7 +149,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>URL 書き換え規則を追加する方法を教えてください。
 
-URL 書き換え規則を追加するには、関連する構成エントリを含む web.config ファイルを **wwwroot**　フォルダーに作成します。 詳細については、「[Azure App Services: URL 書き換えについて](/archive/blogs/madhurabharadwaj/azure-app-services-understanding-url-re-write)」を参照してください。
+URL 書き換え規則を追加するには、関連する構成エントリを含む web.config ファイルを **wwwroot** 　フォルダーに作成します。 詳細については、「[Azure App Services: URL 書き換えについて](/archive/blogs/madhurabharadwaj/azure-app-services-understanding-url-re-write)」を参照してください。
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>App Service への受信トラフィックを制御するにはどうすればいいですか?
 
@@ -178,7 +180,7 @@ F12 トレースをキャプチャする方法は 2 つあります。
 3. **[ネットワーク]** タブが選択されていることを確認し、緑色の **[再生]** ボタンをクリックします。
 4. 問題を再現する手順を実行します。
 5. 赤の **[停止]** ボタンをクリックします。
-6. **[保存]** ボタン (ディスク アイコン) をクリックし、HAR ファイルを保存します (Internet Explorer およびで Microsoft Edge)。"*または*"、HAR ファイルを右クリックし、 **[HAR 形式ですべて保存]** を選択します (Chrome)。
+6. **[保存]** ボタン (ディスク アイコン) をクリックし、HAR ファイルを保存します (Internet Explorer およびで Microsoft Edge)。" *または* "、HAR ファイルを右クリックし、 **[HAR 形式ですべて保存]** を選択します (Chrome)。
 
 ### <a name="f12-console-output"></a>F12 コンソール出力
 
@@ -282,7 +284,7 @@ App Service の認証と承認の詳細なドキュメントについては、�
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>既定の *.azurewebsites.net ドメインを Azure Web アプリケーションのカスタム ドメインにリダイレクトするにはどうすればよいですか?
 
-Azure の Web アプリを使用して新しい Web サイトを作成するとき、既定の*サイト名*.azurewebsites.net ドメインがサイトに割り当てられます。 カスタム ホスト名をサイトに追加するが、ユーザーが既定の *. azurewebsites.net ドメインにアクセスできないようにする場合、既定の URL をリダイレクトできます。 Web サイトの既定のドメインからすべてのトラフィックをカスタム ドメインにリダイレクトする方法については、「[Redirect the default domain to your custom domain in Azure web apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/)」(Azure Web アプリで既定のドメインをカスタム ドメインにリダイレクトする) を参照してください。
+Azure の Web アプリを使用して新しい Web サイトを作成するとき、既定の *サイト名*.azurewebsites.net ドメインがサイトに割り当てられます。 カスタム ホスト名をサイトに追加するが、ユーザーが既定の *. azurewebsites.net ドメインにアクセスできないようにする場合、既定の URL をリダイレクトできます。 Web サイトの既定のドメインからすべてのトラフィックをカスタム ドメインにリダイレクトする方法については、「[Redirect the default domain to your custom domain in Azure web apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/)」(Azure Web アプリで既定のドメインをカスタム ドメインにリダイレクトする) を参照してください。
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>App Service にインストールされている .NET のバージョンはどうすればわかりますか?
 

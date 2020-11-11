@@ -1,6 +1,6 @@
 ---
-title: 容量制限 - Azure Synapse Analytics (旧称 SQL DW)
-description: Azure Synapse の Synapse SQL プールのさまざまなコンポーネントに許可される最大値。
+title: 専用 SQL プールの容量制限
+description: Azure Synapse Analytics の専用 SQL プールのさまざまなコンポーネントに許可される最大値。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,22 +11,22 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4e06dbee5b1edbb4fd1a3379ee2d9aa06f9949ab
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: dac2a60b6b9db082a10d2473eb22b86d8097eee0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742455"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313137"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure Synapse Analytics (旧称 SQL DW) の容量制限
+# <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールの容量制限
 
-Azure Synapse のさまざまなコンポーネントに許可される最大値。
+Azure Synapse Analytics の専用 SQL プールのさまざまなコンポーネントに許可される最大値。
 
 ## <a name="workload-management"></a>ワークロードの管理
 
 | カテゴリ | 説明 | 最大値 |
 |:--- |:--- |:--- |
-| [Data Warehouse ユニット (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |1 つの SQL プール (Data Warehouse) ユニットに対する最大 DWU | Gen1:DW6000<br></br>Gen2:DW30000c |
+| [Data Warehouse ユニット (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |1 つの専用 SQL プール (Data Warehouse) ユニットに対する最大 DWU | Gen1:DW6000<br></br>Gen2:DW30000c |
 | [Data Warehouse ユニット (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |サーバーあたりの既定の DTU |54,000<br></br>既定では、各 SQL Server (myserver.database.windows.net など) の DTU クォータは 54,000 に設定されており、最大 DW5000c が許可されます。 このクォータは単に安全上の制限です。 クォータを引き上げるには、 [サポート チケットを作成](sql-data-warehouse-get-started-create-support-ticket.md)し、要求の種類として *[クォータ]* を選択します。  実際に必要な DTU を計算するには、必要とされる DWU の合計に 7.5 を掛けるか、必要とされる cDWU の合計に 9.5 を掛けます。 次に例を示します。<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW5000c x 9.5 = 47,500 DTU<br></br>現在の DTU 消費量は、ポータルで SQL Server オプションから確認できます。 DTU クォータには、一時停止しているデータベースと一時停止していないデータベースの両方が考慮されます。 |
 | データベース接続 |同時に開かれる最大セッション数 |1024<br/><br/>同時に開かれるセッションの数は、選択した DWU によって異なります。 DWU600c 以降では、最大で 1,024 の開かれているセッションがサポートされます。 DWU500c 以前では、同時に開かれるセッションの上限が 512 です。 同時に実行できるクエリ数については、制限があるので注意してください。 コンカレンシーの制限を超えると、要求は内部キューに送られ、処理の順番が来るまで待機します。 |
 | データベース接続 |準備されたステートメントに対する最大メモリ容量 |20 MB |

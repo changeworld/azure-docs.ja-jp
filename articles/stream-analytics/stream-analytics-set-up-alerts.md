@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 06/21/2019
-ms.openlocfilehash: 271cae3504601ffa42c077029541cef8c7726053
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6353fe988b9b94c27ab777741bf63d3869579d9e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461038"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124443"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブのアラートを設定する
 
@@ -42,17 +42,17 @@ Azure Stream Analytics ジョブが問題を生じることなく常に実行し
 
    ![Stream Analytics アラートのシグナル ロジックの構成](./media/stream-analytics-set-up-alerts/stream-analytics-configure-signal-logic.png) 
 
-6. 既存のアクション グループを選択するか、新しいグループを作成します。 この例では、**TIDashboardGroupActions** というアクション グループを新たに作成し、Azure Resource Manager の**所有者**ロールを有するユーザーにメールを送信する **[電子メール]** アクションを設定しています。
+6. 既存のアクション グループを選択するか、新しいグループを作成します。 この例では、 **TIDashboardGroupActions** というアクション グループを新たに作成し、Azure Resource Manager の **所有者** ロールを有するユーザーにメールを送信する **[電子メール]** アクションを設定しています。
 
    ![Azure Streaming Analytics ジョブのアラートの設定](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
 
 7. **[リソース]** 、 **[条件]** 、 **[アクション グループ]** がすべて入力されている必要があります。 起動するアラートの順に、定義されている条件が満たされる必要がある点に注意してください。 たとえば、直近 15 分間のメトリックの平均値を 5 分ごとに測定できます。
 
-   ![Stream Analytics のアラート ルールを作成する](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
+   ![[ルールの作成] ダイアログ ボックスの [リソース]、[条件]、[アクション グループ] を示すスクリーンショット。](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
 
    **[アラートの詳細]** に **[アラート ルール名]** 、 **[説明]** 、 **[リソース グループ]** を追加し、 **[アラート ルールの作成]** をクリックして、Stream Analytics ジョブ用のルールを作成します。
 
-   ![Stream Analytics のアラート ルールを作成する](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
+   ![[ルールの作成] ダイアログ ボックスの [アラートの詳細] を示すスクリーンショット。](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
    
 ## <a name="scenarios-to-monitor"></a>監視するシナリオ
 
@@ -68,5 +68,4 @@ Stream Analytics ジョブのパフォーマンス監視には、以下のアラ
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](/stream-analytics-query/stream-analytics-query-language-reference)

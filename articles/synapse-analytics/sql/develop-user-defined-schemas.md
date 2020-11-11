@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: aebe1d995f3cb6da4663876b8d39d36a1a8b16c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a21d2f0debb2ade8e46b0cdb5b3fa5b51f0a180c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030169"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323852"
 ---
 # <a name="user-defined-schemas-within-synapse-sql"></a>Synapse SQL 内のユーザー定義のスキーマ
 
@@ -27,7 +27,7 @@ ms.locfileid: "90030169"
 その代わりに、Synapse SQL では、分析ワークロード全体を 1 つのデータベース内で実行します。 データベース間の結合は許可されていません。 Synapse SQL では、ウェアハウスで使用されるすべてのテーブルが 1 つのデータベースに格納されていることが求められます。
 
 > [!NOTE]
-> SQL プールでは、どのような種類の複数データベース間のクエリもサポートされていません。 したがって、このパターンを利用する分析の実装は変更する必要があります。 SQL オンデマンド (プレビュー) では、複数データベース間のクエリがサポートされています。
+> 専用 SQL プールは、どのような種類の複数データベース間のクエリもサポートしません。 したがって、このパターンを利用する分析の実装は変更する必要があります。 サーバーレス SQL プール (プレビュー) は、複数データベース間のクエリをサポートしています。
 
 ## <a name="user-defined-schema-recommendations"></a>ユーザー定義のスキーマに関する推奨事項
 

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: fae958542f1bc391f285104d80d1e19131470abe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 919b8fb89e9189df7cb1964cbe0149dc6945ad2d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87065470"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323158"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>データ ソースへのマネージド プライベート エンドポイントを作成する (プレビュー)
 
@@ -21,12 +21,11 @@ ms.locfileid: "87065470"
 
 ## <a name="step-1-open-your-azure-synapse-workspace-in-azure-portal"></a>手順 1:Azure portal で Azure Synapse ワークスペースを開く
 
-Azure Synapse Studio から、データ ソースへのマネージド プライベート エンドポイントを作成できます。 Azure portal で **[概要]** タブを選択し、 **[Synapse Studio の起動]** を選択します。
-![Azure Synapse Studio を起動する](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-1.png)
+Azure Synapse Studio から、データ ソースへのマネージド プライベート エンドポイントを作成できます。 Azure portal で **[概要]** タブを選択し、[はじめに] セクションの [Synapse Studio を開く] カードで、 **[開く]** を選択します。
 
 ## <a name="step-2-navigate-to-the-managed-virtual-networks-tab-in-synapse-studio"></a>手順 2:Synapse Studio で [Managed Virtual Networks] (マネージド仮想ネットワーク) タブに移動する
 
-Azure Synapse Studio で、左側のナビゲーションから **[管理]** タブを選択します。 **[Managed Virtual Networks]\(マネージド仮想ネットワーク\)** を選択し、 **[+ New]\(+ 新規作成\)** を選択します。
+Azure Synapse Studio で、左側のナビゲーションから **[管理]** タブを選択します。 **[マネージド プライベート エンドポイント]** 、 **[+ 新規]** の順に選択します。
 ![新しいマネージド プライベート エンドポイントを作成する](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-2.png)
 
 ## <a name="step-3-select-the-data-source-type"></a>手順 3:データ ソースの種類を選択する

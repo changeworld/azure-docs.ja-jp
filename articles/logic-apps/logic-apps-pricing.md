@@ -7,13 +7,13 @@ author: jonfancey
 ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.openlocfilehash: a5511d7cd4b5bb0f3fe901a735535f8db9036ee7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/29/2020
+ms.openlocfilehash: 486930776b4b4b6d852102be723ac1047ebd5e0a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87078154"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098486"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps の価格モデル
 
@@ -43,9 +43,9 @@ ms.locfileid: "87078154"
 
 ## <a name="fixed-pricing-model"></a>固定価格モデル
 
-"[*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) には、Azure 仮想ネットワーク内のリソースにアクセスできるロジック アプリを作成して実行するための、分離された方法が用意されています。 ISE で実行するロジック アプリでは、データ保持のコストはかかりません。 ISE を作成する場合、作成時にのみ、異なる[価格レート](https://azure.microsoft.com/pricing/details/logic-apps)の [ISE レベルまたは "SKU"](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) を選択できます。
+" [*統合サービス環境* " (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) には、Azure 仮想ネットワーク内のリソースにアクセスできるロジック アプリを作成して実行するための、分離された方法が用意されています。 ISE で実行するロジック アプリでは、データ保持のコストはかかりません。 ISE を作成する場合、作成時にのみ、異なる[価格レート](https://azure.microsoft.com/pricing/details/logic-apps)の [ISE レベルまたは "SKU"](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) を選択できます。
 
-* **Premium** ISE:この SKU の基本単位の容量は固定されていますが、さらにスループットが必要な場合は、ISE の作成中または作成後に[スケール ユニットを追加](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)できます。 ISE の制限の詳細については、[Azure Logic Apps の制限と構成](logic-apps-limits-and-config.md#integration-service-environment-ise)に関するページを参照してください。
+* **Premium** ISE:この SKU の基本単位の容量は固定されていますが、さらにスループットが必要な場合は、ISE の作成中または作成後に [スケール ユニットを追加](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)できます。 ISE の制限の詳細については、[Azure Logic Apps の制限と構成](logic-apps-limits-and-config.md#integration-service-environment-ise)に関するページを参照してください。
 
 * **Developer** ISE:この SKU にはスケールアップの機能、サービス レベル アグリーメント (SLA)、および公開されている制限はありません。 この SKU は、実験、開発、テストにのみ使用し、運用環境やパフォーマンス テストには使用しないでください。
 
@@ -63,7 +63,7 @@ ms.locfileid: "87078154"
 
   * **Premium** ISE SKU:単一の [Standard レベル](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)の統合アカウント
 
-  * **Developer** ISE SKU:単一の[Free レベル](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)の統合アカウント
+  * **Developer** ISE SKU:単一の [Free レベル](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)の統合アカウント
 
   各 ISE SKU の統合アカウントは、合計で 5 つに制限されています。 コストを追加することで、ISE SKU に基づいて、さらに多くの統合アカウントを作成できます。
 
@@ -85,19 +85,19 @@ Azure Logic Apps のコネクタを使用すると、ご自身のロジック �
 
 トリガーは、常にロジック アプリ ワークフローの最初の手順であり、特定の条件が満たされるか、特定のイベントが発生したときにロジック アプリ インスタンスを作成して実行する特殊なアクションです。 トリガーにはさまざまな動作があり、それによってロジック アプリの課金方法が変わります。 Azure Logic Apps 内に存在するさまざまな種類のトリガーを次に示します。
 
-* **繰り返しトリガー**:特定のサービスやシステムに固有のものではないこの汎用トリガーを使用すると、任意のロジック アプリ ワークフローを開始し、トリガーに設定した繰り返し間隔に基づいて実行されるロジック アプリ インスタンスを作成できます。 たとえば、3 日ごとに実行されるトリガーや、より複雑なスケジュールで実行されるトリガーを設定できます。
+* **繰り返しトリガー** :特定のサービスやシステムに固有のものではないこの汎用トリガーを使用すると、任意のロジック アプリ ワークフローを開始し、トリガーに設定した繰り返し間隔に基づいて実行されるロジック アプリ インスタンスを作成できます。 たとえば、3 日ごとに実行されるトリガーや、より複雑なスケジュールで実行されるトリガーを設定できます。
 
-* **ポーリング トリガー**:通常は特定のサービスやシステムのマネージド コネクタに関連付けられた、このより特殊な繰り返しトリガーを使用すると、トリガーに設定した繰り返し間隔に基づいてロジック アプリ インスタンスを作成および実行するための条件を満たすイベントまたはメッセージがチェックされます。 たとえばトリガーがスキップされたときなど、ロジック アプリ インスタンスが作成されない場合でも、各ポーリング要求は Logic Apps サービスによって実行として測定されます。 ポーリング間隔を指定するには、ロジック アプリ デザイナーを使用してトリガーを設定します。
+* **ポーリング トリガー** :通常は特定のサービスやシステムのマネージド コネクタに関連付けられた、このより特殊な繰り返しトリガーを使用すると、トリガーに設定した繰り返し間隔に基づいてロジック アプリ インスタンスを作成および実行するための条件を満たすイベントまたはメッセージがチェックされます。 たとえばトリガーがスキップされたときなど、ロジック アプリ インスタンスが作成されない場合でも、各ポーリング要求は Logic Apps サービスによって実行として測定されます。 ポーリング間隔を指定するには、ロジック アプリ デザイナーを使用してトリガーを設定します。
 
   [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
 
-* **Webhook トリガー**:ポーリング トリガーを使用する代わりに、Webhook トリガーを使用して、クライアントが特定のエンドポイント URL でロジック アプリに要求を送信するのを待機することができます。 Webhook のエンドポイントに送信された個々の要求が、アクションの実行としてカウントされます。 たとえば、要求 Webhook トリガーと HTTP Webhook トリガーはどちらも汎用の Webhook トリガーです。 サービスまたはシステムのコネクタの一部にも、Webhook トリガーが備わっています。
+* **Webhook トリガー** :ポーリング トリガーを使用する代わりに、Webhook トリガーを使用して、クライアントが特定のエンドポイント URL でロジック アプリに要求を送信するのを待機することができます。 Webhook のエンドポイントに送信された個々の要求が、アクションの実行としてカウントされます。 たとえば、要求 Webhook トリガーと HTTP Webhook トリガーはどちらも汎用の Webhook トリガーです。 サービスまたはシステムのコネクタの一部にも、Webhook トリガーが備わっています。
 
 <a name="actions"></a>
 
 ## <a name="actions"></a>Actions
 
-Logic Apps では、HTTP などの "組み込み" アクションはネイティブ アクションとして課金されます。 たとえば、組み込みアクションには、HTTP 呼び出し、Azure Functions または API Management からの呼び出し、Condition、Loop、Switch ステートメントなどの制御フローのステップが含まれます。 各アクションには、独自のアクションの種類があります。 たとえば、[コネクタ](/connectors)を呼び出すアクションの種類は "ApiConnection" です。 これらのコネクタは、標準コネクタまたはエンタープライズ コネクタのいずれかに分類され、該当する[価格](https://azure.microsoft.com/pricing/details/logic-apps)に基づいて課金されます。 "*プレビュー*" 段階のエンタープライズ コネクタは、標準コネクタとして課金されます。
+Logic Apps では、HTTP などの "組み込み" アクションはネイティブ アクションとして課金されます。 たとえば、組み込みアクションには、HTTP 呼び出し、Azure Functions または API Management からの呼び出し、Condition、Loop、Switch ステートメントなどの制御フローのステップが含まれます。 各アクションには、独自のアクションの種類があります。 たとえば、[コネクタ](/connectors)を呼び出すアクションの種類は "ApiConnection" です。 これらのコネクタは、標準コネクタまたはエンタープライズ コネクタのいずれかに分類され、該当する[価格](https://azure.microsoft.com/pricing/details/logic-apps)に基づいて課金されます。 " *プレビュー* " 段階のエンタープライズ コネクタは、標準コネクタとして課金されます。
 
 Azure Logic Apps では、すべての成功したアクションと失敗したアクションが実行として課金されます。 ただし、Logic Apps では、次のアクションは課金されません。
 
@@ -118,15 +118,15 @@ Azure Logic Apps の [B2B および EDI 機能](logic-apps-enterprise-integratio
 
 Azure Logic Apps には、Free、Basic、Standard の統合アカウントが用意されています。 Basic および Standard レベルは、Logic Apps サービス レベル アグリーメント (SLA) によってサポートされますが、Free レベルは SLA でサポートされず、リージョンの可用性、スループット、および使用に制限があります。 Free レベルの統合アカウントを除いて、各 Azure リージョンで複数の統合アカウントを持つことができます。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。
 
-[Premium または Developer](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) のいずれかの ["*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) がある場合は、お使いの ISE で合計 5 つの統合アカウントを持つことができます。 ISE での固定価格モデルのしくみについては、このトピックの「[固定価格モデル](#fixed-pricing)」セクションを参照してください。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)に関する記事を参照してください。
+[Premium または Developer](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) のいずれかの [" *統合サービス環境* " (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) がある場合は、お使いの ISE で合計 5 つの統合アカウントを持つことができます。 ISE での固定価格モデルのしくみについては、このトピックの「[固定価格モデル](#fixed-pricing)」セクションを参照してください。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)に関する記事を参照してください。
 
 Free、Basic、または Standard の統合アカウントから選択するには、次のユース ケースの説明を確認してください。
 
-* **Free**:運用シナリオではなく、調査シナリオを試す場合。 このレベルは、米国西部や東南アジアなどの Azure のパブリック リージョンのみで利用できますが、[Azure China 21Vianet](/azure/china/overview-operations) または [Azure Government](../azure-government/documentation-government-welcome.md) で利用することはできません。
+* **Free** :運用シナリオではなく、調査シナリオを試す場合。 このレベルは、米国西部や東南アジアなどの Azure のパブリック リージョンのみで利用できますが、[Azure China 21Vianet](/azure/china/overview-operations) または [Azure Government](../azure-government/documentation-government-welcome.md) で利用することはできません。
 
-* **Basic**:メッセージの処理のみを必要とする場合、または大規模なビジネス エンティティと取引パートナー関係がある小規模なビジネス パートナーとして機能する場合。
+* **Basic** :メッセージの処理のみを必要とする場合、または大規模なビジネス エンティティと取引パートナー関係がある小規模なビジネス パートナーとして機能する場合。
 
-* **Standard**:より複雑な B2B 関係があり、管理する必要があるエンティティの数が増えている場合。
+* **Standard** :より複雑な B2B 関係があり、管理する必要があるエンティティの数が増えている場合。
 
 <a name="data-retention"></a>
 
@@ -137,6 +137,7 @@ Free、Basic、または Standard の統合アカウントから選択するに�
 ご自身のロジック アプリのストレージ消費量を監視するために、以下を実行できます。
 
 * ロジック アプリで毎月使用されているストレージ ユニットの数 (GB 単位) を表示します。
+
 * ロジック アプリの実行履歴内の特定のアクションの入力と出力のサイズを表示します。
 
 <a name="storage-consumption"></a>
@@ -150,6 +151,9 @@ Free、Basic、または Standard の統合アカウントから選択するに�
 1. 右側のウィンドウで、 **[グラフのタイトル]** の下の **[メトリック]** の一覧から **[ストレージ使用実行の利用状況に応じた課金]** を選択します。
 
    このメトリックでは、請求対象となる 1 か月あたりのストレージ消費ユニットの数 (GB 単位) が示されます。
+
+   > [!NOTE]
+   > ストレージの使用量が 500 MB 未満の実行は、[監視] ビューに表示されない場合がありますが、課金の対象です。
 
 <a name="input-output-sizes"></a>
 
@@ -165,7 +169,10 @@ Free、Basic、または Standard の統合アカウントから選択するに�
 
 1. **[ロジック アプリの実行の詳細]** ウィンドウで、各アクションの状態と持続時間を一覧表示しているアクション テーブルから、表示するアクションを選択します。
 
-1. **[ロジック アプリのアクション]** ウィンドウで、それぞれ**入力リンク**と**出力リンク**の下に表示されるアクションの入力と出力のサイズを探します。
+1. **[ロジック アプリのアクション]** ウィンドウで、アクションの入力と出力のサイズを確認します。 **[入力リンク]** と **[出力リンク]** で、それらの入力と出力へのリンクを確認します。
+
+   > [!NOTE]
+   > ループについては、上位レベルのアクションによってのみ、入力と出力のサイズが表示されます。 入れ子になったループ内のアクションについては、入力と出力のサイズはゼロでリンクは表示されません。
 
 ## <a name="next-steps"></a>次のステップ
 

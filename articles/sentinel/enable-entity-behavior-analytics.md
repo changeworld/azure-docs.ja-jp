@@ -12,26 +12,43 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/15/2020
+ms.date: 10/28/2020
 ms.author: yelevin
-ms.openlocfilehash: c55ea0e7753faa6dc21b955d63a57d96e3849f70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b769703f7e7054571a3b65a021c0123d8ae07078
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993262"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148237"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel でのユーザーとエンティティの動作分析の有効化 (UEBA) 
 
-
+> [!IMPORTANT]
+>
+> - UEBA 機能は、次の Azure Sentinel の地域とリージョンで **一般提供** されるようになりました。
+>    - 米国地域
+>    - 西ヨーロッパ リージョン
+>    - オーストラリア地域
+>
+> - 他のすべての地域およびリージョンでは、この機能は **パブリック プレビュー** 段階のままであり、サービス レベル アグリーメントなしで提供されます。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
-- UEBA を有効化または無効化するには (ただし、実行しない)、Azure AD で**全体管理者**ロールまたは**セキュリティ管理者**ロールに割り当てられている必要があります。
+この機能を有効または無効にするには (この機能を使用するためにこれらの前提条件は必要ありません)
+
+- ユーザーは、ゲスト ユーザーではなく、組織の Azure Active Directory のメンバーである必要があります。
+
+- ユーザーには、Azure AD の **全体管理者** または **セキュリティ管理者** のロールを割り当てる必要があります。
+
+- ユーザーには、次の **Azure ロール** の少なくとも 1 つが割り当てられている必要があります ([Azure RBAC に関する詳細](roles.md))。
+    - ワークスペースまたはリソース グループ レベルの **Azure Sentinel 共同作成者**
+    - リソース グループまたはサブスクリプション レベルの **Log Analytics 共同作成者**
+
+- ワークスペースに Azure リソース ロックを適用することはできません。 [Azure リソースのロックに関する詳細](../azure-resource-manager/management/lock-resources.md)。
 
 ## <a name="how-to-enable-user-and-entity-behavior-analytics"></a>ユーザーとエンティティの動作分析を有効にする方法
 
-1. Azure Sentinel のナビゲーション メニューから、 **[Entity behavior (preview)]\(エンティティ動作 (プレビュー)\)** を選択します。
+1. Azure Sentinel のナビゲーション メニューから、 **[Entity behavior]\(エンティティ動作\)** を選択します。
 
 1. **[有効にする]** という見出しの下でトグルを **[オン]** に切り替えます。
 

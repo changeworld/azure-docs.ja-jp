@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: b7ea61a1f09a9340661f333e452f70c5ad8cf877
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 496c5de8f9ead0773dfef7e65051344645ffa9de
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266648"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041972"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Azure ポータルを使用したストリーミング エンドポイントの管理
 
@@ -40,7 +40,7 @@ ms.locfileid: "89266648"
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
 2. **[設定]** ブレードで **[ストリーミング エンドポイント]** を選択します。
    
-    ![ストリーミング エンドポイント](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints1.png)
+    ![[Media services] ページを示すスクリーンショット。[設定] ブレードで [ストリーミング エンドポイント] が選択されています。](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints1.png)
 
 > [!NOTE]
 > ストリーミング エンドポイントが実行状態の場合のみ課金されます。
@@ -59,7 +59,7 @@ Azure ポータルを使用してストリーミング エンドポイントを�
 2. ストリーミング エンドポイントを削除するには、 **[削除]** ボタンをクリックします。      
 3. **[開始]** をクリックしてストリーミング エンドポイントを開始します。
    
-    ![ストリーミング エンドポイント](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
+    ![[エンドポイント] アクションが選択され、[ストリーミング エンドポイントの詳細] ウィンドウが表示されていることを示すスクリーンショット。](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
 
 
 ## <a name="configuring-the-streaming-endpoint"></a><a id="configure_streaming_endpoints"></a>ストリーミング エンドポイントの構成
@@ -81,7 +81,7 @@ Azure ポータルを使用してストリーミング エンドポイントを�
 
 以下で、その各フィールドについて簡単に説明します。
 
-![ストリーミング エンドポイント](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints4.png)
+![ストリーミング エンドポイントに対して [設定] アクション選択されていることを示すスクリーンショット。](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints4.png)
 
 1. [Maximum cache policy (最大キャッシュ ポリシー)]\: このストリーミング エンドポイントから提供されるアセットのキャッシュの有効期間を構成するために使用します。 値を設定しない場合は、既定値が使用されます。 既定値は Azure ストレージで直接定義することもできます。 ストリーミング エンドポイントで Azure CDN を有効にする場合、キャッシュ ポリシーの値は 600 秒以上に設定してください。  
 2. [Allowed IP addresses \(使用できる IP アドレス)]: 公開されているストリーミング エンドポイントへの接続を許可する IP アドレスを指定するために使用します。 IP アドレスが指定されていない場合、どの IP アドレスでも接続できます。 IP アドレスは、1 つの IP アドレス (例: ‘10.0.0.1’)、IP アドレスと CIDR サブネット マスクを使用した IP 範囲 (例: ‘10.0.0.1/22’)、IP アドレスとピリオドで区切られた 10 進数のサブネット マスクを使用した IP 範囲 (例: ‘10.0.0.1(255.255.255.0)’) のいずれかの形で指定できます。
@@ -95,21 +95,21 @@ Azure ポータルを使用してストリーミング エンドポイントを�
 
 新しいアカウントを作成すると、既定のストリーミング エンドポイント Azure CDN 統合が既定で有効になります。
 
-後で CDN を有効/無効にする場合は、ストリーミング エンドポイントを**停止**状態にする必要があります。 Azure CDN 統合が有効になり、すべての CDN POP で変更がアクティブになるまでに、最大で 2 時間かかる場合があります。 ただし、ストリーミング エンドポイントの起動は可能で、ストリーミング エンドポイントから中断なくストリーミングを行うことができます。統合が完了すると、CDN からストリーミングが提供されます。 プロビジョニング期間中はストリーミング エンドポイントが**開始中**の状態になり、パフォーマンスが低下します。
+後で CDN を有効/無効にする場合は、ストリーミング エンドポイントを **停止** 状態にする必要があります。 Azure CDN 統合が有効になり、すべての CDN POP で変更がアクティブになるまでに、最大で 2 時間かかる場合があります。 ただし、ストリーミング エンドポイントの起動は可能で、ストリーミング エンドポイントから中断なくストリーミングを行うことができます。統合が完了すると、CDN からストリーミングが提供されます。 プロビジョニング期間中はストリーミング エンドポイントが **開始中** の状態になり、パフォーマンスが低下します。
 
 CDN 統合は、中国および連邦政府地域を除くすべての Azure データ センターで有効になります。
 
-これが有効になると、**Access Control**、**カスタム ホスト名、および **Akamai 署名認証**構成は無効になります。
+これが有効になると、 **Access Control** 、**カスタム ホスト名、および **Akamai 署名認証** 構成は無効になります。
  
 > [!IMPORTANT]
-> Azure CDN との Azure Media Services 統合は、Standard ストリーミング エンドポイント用の **Azure CDN from Verizon** で実装されます。 Premium ストリーミング エンドポイントは、すべての **Azure CDN 価格レベルとプロバイダー**を使用して構成できます。 Azure CDN 機能の詳細については、「 [CDN の概要](../../cdn/cdn-overview.md)」を参照してください。
+> Azure CDN との Azure Media Services 統合は、Standard ストリーミング エンドポイント用の **Azure CDN from Verizon** で実装されます。 Premium ストリーミング エンドポイントは、すべての **Azure CDN 価格レベルとプロバイダー** を使用して構成できます。 Azure CDN 機能の詳細については、「 [CDN の概要](../../cdn/cdn-overview.md)」を参照してください。
  
 ### <a name="additional-considerations"></a>その他の注意点
 
 * CDN がストリーミング エンドポイントで有効になっている場合、クライアントは配信元から直接コンテンツを要求することはできません。 CDN の有無にかかわらずコンテンツをテストする必要がある場合は、CDN が有効になっていない別のストリーミング エンドポイントを作成できます。
 * ストリーミング エンドポイントのホスト名は、CDN を有効にした後も変化しません。 CDN を有効にした後、Media Services のワークフローを変更する必要はありません。 たとえば、ストリーミング エンドポイントのホスト名が strasbourg.streaming.mediaservices.windows.net の場合、CDN を有効にした後も同じホスト名が使用されます。
 * 新しいストリーミング エンドポイントの場合は、新しいエンドポイントを作成するだけで CDN を有効にできます。既存のストリーミング エンドポイントの場合は、最初にエンドポイントを停止してから CDN を有効/無効にする必要があります。
-* Standard ストリーミング エンドポイントは、Azure クラシック ポータルを使用して、**Verizon Standard CDN プロバイダー**でのみ構成できます。 ただし、REST API を使用して、他の Azure CDN プロバイダーを有効にすることは可能です。
+* Standard ストリーミング エンドポイントは、Azure クラシック ポータルを使用して、 **Verizon Standard CDN プロバイダー** でのみ構成できます。 ただし、REST API を使用して、他の Azure CDN プロバイダーを有効にすることは可能です。
 
 ## <a name="configure-cdn-profile"></a>CDN プロファイルを構成する
 

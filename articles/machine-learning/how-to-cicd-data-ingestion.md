@@ -1,7 +1,7 @@
 ---
 title: データ インジェスト パイプラインの DevOps
 titleSuffix: Azure Machine Learning
-description: DevOps プラクティスを適用して、Azure Machine Learning で使用するデータの準備に使用するデータ インジェスト パイプラインを構築する方法について説明します。 インジェスト パイプラインでは、Azure Data Factory と Azure Databricks が使用されます。 Azure パイプラインは、インジェスト パイプラインの継続的インテグレーションとデリバリー プロセスを作成するために使用されます。
+description: DevOps プラクティスを適用し、Azure Data Factory と Azure Databricks を使用してデータを準備するためのデータ インジェスト パイプラインを構築する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,20 +12,20 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 47b41e807c4d7b9a9fce6591da6655db74f483f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f229c52b62c740c9d955f745a6922e59163b907
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90971258"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348561"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>データ インジェスト パイプラインの DevOps
 
 ほとんどのシナリオで、データ インジェスト ソリューションは、すべてのアクティビティを調整するスクリプト、サービス呼び出し、およびパイプラインを構成したものです。 この記事では、機械学習モデルのトレーニング用にデータを準備する一般的なデータ インジェスト パイプラインの開発ライフサイクルに DevOps プラクティスを適用する方法について説明します。 このパイプラインの構築には、次の Azure サービスを使用しています。
 
-* __Azure Data Factory__: 生データを読み取り、データ準備を調整します。
-* __Azure Databricks__:データを変換する Python ノートブックを実行します。
-* __Azure Pipelines__:継続的インテグレーションと開発プロセスを自動化します。
+* __Azure Data Factory__ : 生データを読み取り、データ準備を調整します。
+* __Azure Databricks__ :データを変換する Python ノートブックを実行します。
+* __Azure Pipelines__ :継続的インテグレーションと開発プロセスを自動化します。
 
 ## <a name="data-ingestion-pipeline-workflow"></a>データ インジェスト パイプライン ワークフロー
 
@@ -78,12 +78,11 @@ Azure Data Factory パイプラインのソース コードは、Azure Data Fact
 
 ### <a name="python-notebook-ci"></a>Python ノートブックの CI
 
-Python ノートブックの CI プロセスでは、コラボレーション ブランチ (たとえば、***マスター***、***開発***) からコードを取得し、次のアクティビティを実行します。
-* コードのリンティング
+Python ノートブックの CI プロセスにより、コラボレーション ブランチ (たとえば、* **master** _ や _*_develop_*_ ) からコードが取得されて、次のアクティビティが実行されます。 _ コードのリンティング
 * 単体テスト
 * コードを成果物として保存する
 
-次のコード スニペットは、Azure DevOps ***yaml*** パイプラインでこれらの手順を実装する方法を示しています。
+次のコード スニペットは、Azure DevOps * **yaml** _ パイプラインでこれらの手順を実装する方法を示しています。
 
 ```yaml
 steps:
@@ -99,7 +98,7 @@ steps:
 - task: PublishTestResults@2
   condition: succeededOrFailed()
   inputs:
-    testResultsFiles: '$(Build.BinariesDirectory)/*-testresults.xml'
+    testResultsFiles: '$(Build.BinariesDirectory)/_-testresults.xml'
     testRunTitle: 'Linting & Unit tests'
     failTaskOnFailedTests: true
   displayName: 'Publish linting and unit test results'
@@ -116,13 +115,13 @@ steps:
 
 ### <a name="azure-data-factory-ci"></a>Azure Data Factory の CI
 
-Azure Data Factory パイプラインの CI プロセスは、データ インジェスト パイプラインのボトルネックになります。 継続的インテグレーションはありません。 Azure Data Factory の配置可能な成果物は、Azure Resource Manager テンプレートのコレクションです。 このようなテンプレートを生成する唯一の方法は、Azure Data Factory ワークスペースの ***[発行]*** ボタンをクリックすることです。
+Azure Data Factory パイプラインの CI プロセスは、データ インジェスト パイプラインのボトルネックになります。 継続的インテグレーションはありません。 Azure Data Factory の配置可能な成果物は、Azure Resource Manager テンプレートのコレクションです。 そのようなテンプレートを生成する唯一の方法は、Azure Data Factory ワークスペースの * **[発行]** _ ボタンをクリックすることです。
 
-1. データ エンジニアは、機能ブランチのソース コードをコラボレーション ブランチ (たとえば、***マスター***、***開発***) にマージします。 
-1. アクセス許可を持つ担当者が ***[発行]*** ボタンをクリックし、コラボレーション ブランチのソース コードから Azure Resource Manager テンプレートを生成します。 
-1. ワークスペースによってパイプラインが検証され (リンティングと単体テストの時点と考えます)、Azure Resource Manager テンプレートが生成され (ビルドの時点と考えます)、生成されたテンプレートが同じコード リポジトリ内のテクニカル ブランチ ***adf_publish*** に保存されます (成果物の発行の時点と考えます)。 このブランチは、Azure Data Factory ワークスペースによって自動的に作成されます。 
+1. データ エンジニアは、機能ブランチのソース コードをコラボレーション ブランチ (たとえば、 _*_master_*_ または _*_develop_*_ ) にマージします。 
+1. アクセス許可を持つ担当者が _*_[発行]_*_ ボタンをクリックし、コラボレーション ブランチのソース コードから Azure Resource Manager テンプレートを生成します。 
+1. ワークスペースによってパイプラインが検証され (リンティングと単体テストの時点と考えます)、Azure Resource Manager テンプレートが生成され (ビルドの時点と考えます)、生成されたテンプレートが同じコード リポジトリ内のテクニカル ブランチ _*_adf_publish_*_ に保存されます (成果物の発行の時点と考えます)。 このブランチは、Azure Data Factory ワークスペースによって自動的に作成されます。 
 
-このプロセスの詳細については、「[Azure Data Factory における継続的インテグレーションとデリバリー](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment)」を参照してください。
+このプロセスの詳細については、「[Azure Data Factory における継続的インテグレーションとデリバリー](../data-factory/continuous-integration-deployment.md)」を参照してください。
 
 生成される Azure Resource Manager テンプレートが環境に依存しないようにすることが重要です。 つまり、環境によって異なる可能性があるすべての値をパラメーター化します。 Azure Data Factory は高機能なので、このような値の大部分をパラメーターとして公開することができます。 たとえば、次のテンプレートでは、Azure Machine Learning ワークスペースへの接続プロパティがパラメーターとして公開されています。
 
@@ -166,7 +165,7 @@ labels = np.array(data['target'])
 ...
 ```
 
-この名前は、***Dev***、***QA***、***UAT***、および ***PROD*** 環境で異なります。 複数のアクティビティがある複雑なパイプラインでは、いくつかのカスタム プロパティを使用できます。 1 つの場所でこれらのすべての値を収集し、パイプライン "***変数***" として定義することをお勧めします。
+この名前は、 _*_Dev_*_ 、 _*_QA_*_ 、 _*_UAT_*_ 、 _*_PROD_*_ の各環境で異なります。 複数のアクティビティがある複雑なパイプラインでは、いくつかのカスタム プロパティを使用できます。 1 つの場所でこれらのすべての値を収集し、パイプライン " _*_変数_*_ " として定義することをお勧めします。
 
 ![スクリーンショットには、PrepareData というノートブックと、ML Execute Pipeline という ML Execute Pipeline が上部に示され、その下には [変数] タブが選択され、新しい変数を名前、種類、および既定値とともに追加するオプションが示されています。](media/how-to-cicd-data-ingestion/adf-variables.png)
 
@@ -174,13 +173,13 @@ labels = np.array(data['target'])
 
 ![スクリーンショットには、PrepareData と呼ばれるノートブックと、ML Execute Pipeline と呼ばれる ML Execute Pipeline が上部に示され、その下には [設定] タブが選択されています。](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
 
-Azure Data Factory ワークスペースの既定では、Azure Resource Manager テンプレート パラメーターとしてパイプライン変数を公開 "***していません***"。 このワークスペースでは、[Default Parameterization](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) を使用して、Azure Resource Manager テンプレート パラメーターとして公開するパイプライン プロパティを指定します。 パイプライン変数を一覧に追加するには、[既定のパラメーター化テンプレート](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template)の `"Microsoft.DataFactory/factories/pipelines"` セクションを次のスニペットで更新し、結果の JSON ファイルをソース フォルダーのルートに配置します。
+既定では、Azure Data Factory ワークスペースによって Azure Resource Manager テンプレート パラメーターとしてパイプライン変数が公開されることは " _*_ありません_*_ "。 このワークスペースでは、[Default Parameterization](../data-factory/continuous-integration-deployment.md#default-parameterization-template) を使用して、Azure Resource Manager テンプレート パラメーターとして公開するパイプライン プロパティを指定します。 パイプライン変数を一覧に追加するには、[既定のパラメーター化テンプレート](../data-factory/continuous-integration-deployment.md#default-parameterization-template)の `"Microsoft.DataFactory/factories/pipelines"` セクションを次のスニペットで更新し、結果の JSON ファイルをソース フォルダーのルートに配置します。
 
 ```json
 "Microsoft.DataFactory/factories/pipelines": {
         "properties": {
             "variables": {
-                "*": {
+                "_": {
                     "defaultValue": "="
                 }
             }
@@ -188,7 +187,7 @@ Azure Data Factory ワークスペースの既定では、Azure Resource Manager
     }
 ```
 
-これを行うと、***[発行]*** ボタンがクリックされたときに、Azure Data Factory ワークスペースによってパラメーター一覧に変数が強制的に追加されます。
+これを行うと、* **[発行]** _ ボタンがクリックされたときに、Azure Data Factory ワークスペースによってパラメーター一覧に変数が強制的に追加されます。
 
 ```json
 {
@@ -212,18 +211,18 @@ JSON ファイルの値は、パイプライン定義に構成されている既
 
 継続的デリバリー プロセスでは、成果物を受け取り、それを最初のターゲット環境に配置します。 ソリューションが機能することを確認するために、テストを実行します。 成功した場合は、次の環境に進みます。 
 
-CD Azure パイプラインは、環境を表す複数のステージで構成されています。 各ステージには、次の手順を実行する[配置](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)と[ジョブ](https://docs.microsoft.com/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml)が含まれています。
+CD Azure パイプラインは、環境を表す複数のステージで構成されています。 各ステージには、次の手順を実行する[配置](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)と[ジョブ](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops)が含まれています。
 
-* Python ノートブックを Azure Databricks ワークスペースに配置する
+_ Python ノートブックを Azure Databricks ワークスペースに配置する
 * Azure Data Factory パイプラインを配置する 
 * パイプラインを実行する
 * データ インジェストの結果を確認する
 
-パイプライン ステージは、[承認](https://docs.microsoft.com/azure/devops/pipelines/process/approvals?view=azure-devops&tabs=check-pass)と[ゲート](https://docs.microsoft.com/azure/devops/pipelines/release/approvals/gates?view=azure-devops)を使用して構成できます。これにより、環境のチェーンの中で配置プロセスがどのように進化するかをさらに制御できます。
+パイプライン ステージは、[承認](/azure/devops/pipelines/process/approvals?tabs=check-pass&view=azure-devops)と[ゲート](/azure/devops/pipelines/release/approvals/gates?view=azure-devops)を使用して構成できます。これにより、環境のチェーンの中で配置プロセスがどのように進化するかをさらに制御できます。
 
 ### <a name="deploy-a-python-notebook"></a>Python ノートブックを配置する
 
-次のコード スニペットでは、Python ノートブックを Databricks クラスターにコピーする Azure パイプラインの[配置](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)を定義しています。
+次のコード スニペットでは、Python ノートブックを Databricks クラスターにコピーする Azure パイプラインの[配置](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)を定義しています。
 
 ```yaml
 - stage: 'Deploy_to_QA'
@@ -259,13 +258,13 @@ CD Azure パイプラインは、環境を表す複数のステージで構成�
               displayName: 'Deploy (copy) data processing notebook to the Databricks cluster'       
 ```            
 
-CI によって生成された成果物は自動的に配置エージェントにコピーされ、`$(Pipeline.Workspace)` フォルダーから利用できます。 この場合、配置タスクは、Python ノートブックを含む `di-notebooks` 成果物を参照します。 この[配置](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)では、[Databricks Azure DevOps 拡張機能](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks)を使用してノートブック ファイルを Databricks ワークスペースにコピーします。
+CI によって生成された成果物は自動的に配置エージェントにコピーされ、`$(Pipeline.Workspace)` フォルダーから利用できます。 この場合、配置タスクは、Python ノートブックを含む `di-notebooks` 成果物を参照します。 この[配置](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)では、[Databricks Azure DevOps 拡張機能](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks)を使用してノートブック ファイルを Databricks ワークスペースにコピーします。
 
 `Deploy_to_QA` ステージには、Azure DevOps プロジェクトで定義されている `devops-ds-qa-vg` 変数グループへの参照が含まれています。 このステージの手順では、この変数グループの変数を参照します (たとえば、`$(DATABRICKS_URL)` と `$(DATABRICKS_TOKEN)`)。 次のステージ (たとえば、`Deploy_to_UAT`) は、独自の UAT スコープの変数グループに定義されているものと同じ変数名で動作するという考え方です。
 
 ### <a name="deploy-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインを配置する
 
-Azure Data Factory の配置可能な成果物は、Azure Resource Manager テンプレートです。 次のスニペットに示すように、"***Azure リソース グループの配置***" タスクと共に配置されます。
+Azure Data Factory の配置可能な成果物は、Azure Resource Manager テンプレートです。 次のスニペットに示すように、"* **Azure リソース グループの配置** _" タスクと共に配置されます。
 
 ```yaml
   - deployment: "Deploy_to_ADF"
@@ -286,7 +285,7 @@ Azure Data Factory の配置可能な成果物は、Azure Resource Manager テ�
                 csmParametersFile: '$(Pipeline.Workspace)/adf-pipelines/ARMTemplateParametersForFactory.json'
                 overrideParameters: -data-ingestion-pipeline_properties_variables_data_file_name_defaultValue "$(DATA_FILE_NAME)"
 ```
-データ ファイル名パラメーターの値は、QA ステージ変数グループに定義されている `$(DATA_FILE_NAME)` 変数に由来します。 同様に、***ARMTemplateForFactory.json*** で定義されているすべてのパラメーターはオーバーライドできます。 指定されていない場合は、既定値が使用されます。
+データ ファイル名パラメーターの値は、QA ステージ変数グループに定義されている `$(DATA_FILE_NAME)` 変数に由来します。 同様に、 _*_ARMTemplateForFactory.json_*_ で定義されているすべてのパラメーターはオーバーライドできます。 指定されていない場合は、既定値が使用されます。
 
 ### <a name="run-the-pipeline-and-check-the-data-ingestion-result"></a>パイプラインを実行し、データ インジェストの結果を確認する
 
@@ -335,15 +334,14 @@ Azure Data Factory の配置可能な成果物は、Azure Resource Manager テ�
 
 ## <a name="putting-pieces-together"></a>まとめ
 
-CI/CD Azure パイプライン全体は、次のステージで構成されています。
-* CI
+CI/CD Azure パイプライン全体は、次のステージで構成されています。 _ CI
 * QA への配置
     * Databricks への配置 + ADF への配置
     * 統合テスト
 
-お持ちのターゲット環境数と同数の "***配置***" ステージ数があります。 各 "***配置***" ステージには、並列で実行される 2 つの[配置](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)と、配置後にその環境でソリューションをテストするために実行する[ジョブ](https://docs.microsoft.com/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml)が含まれいます。
+お持ちのターゲット環境数と同数の "* **配置** _" ステージ数があります。 各 " _*_配置_*_ " ステージには、並列で実行される 2 つの[配置](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)と、配置後にその環境でソリューションをテストするために実行される[ジョブ](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops)が含まれています。
 
-パイプラインのサンプル実装は、次の ***yaml*** スニペットにまとめられています。
+パイプラインのサンプル実装は、次の _*_yaml_*_ スニペットにまとめられています。
 
 ```yaml
 variables:
@@ -378,7 +376,7 @@ stages:
     - task: PublishTestResults@2
     condition: succeededOrFailed()
     inputs:
-        testResultsFiles: '$(Build.BinariesDirectory)/*-testresults.xml'
+        testResultsFiles: '$(Build.BinariesDirectory)/_-testresults.xml'
         testRunTitle: 'Linting & Unit tests'
         failTaskOnFailedTests: true
     displayName: 'Publish linting and unit test results'    
@@ -480,6 +478,6 @@ stages:
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Data Factory のソース管理](https://docs.microsoft.com/azure/data-factory/source-control)
-* [Azure Data Factory における継続的インテグレーションとデリバリー](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment)
+* [Azure Data Factory のソース管理](../data-factory/source-control.md)
+* [Azure Data Factory における継続的インテグレーションとデリバリー](../data-factory/continuous-integration-deployment.md)
 * [DevOps for Azure Databricks](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks)

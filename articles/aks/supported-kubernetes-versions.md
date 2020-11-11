@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: a10340d4c2bd2811204af41fba5b32cbe9c4e905
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 649f02097a18a141d186434a91539563c64e72ba
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735069"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042123"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン
 
@@ -131,16 +131,18 @@ az aks get-versions --location eastus --output table
 
 ## <a name="aks-kubernetes-release-calendar"></a>AKS Kubernetes リリース予定表
 
-過去のリリース履歴については、[こちら](https://en.wikipedia.org/wiki/Kubernetes#History)を参照してください。
+過去のリリース履歴については、[Kubernetes](https://en.wikipedia.org/wiki/Kubernetes#History) に関するページを参照してください。
 
-|  K8s バージョン | アップストリームのリリース  | AKS プレビュー  | AKS GA  | 有効期限切れ |
+|  K8s バージョン | アップストリームのリリース  | AKS プレビュー  | AKS GA  | サポート終了 |
 |--------------|-------------------|--------------|---------|-------------|
 | 1.16  | 2019 年 9 月 19 日  | 2019 年 1 月   | 2020 年 3 月  | 2021 年 1 月* | 
 | 1.17  | 2019 年 12 月 9 日  | 2019 年 1 月   | 2020 年 7 月  | 1.20 GA | 
 | 1.18  | 2020 年 3 月 23 日  | 2020 年 5 月   | 2020 年 8 月  | 1.21 GA | 
 | 1.19  | 2020 年 8 月 4 日  | 2020 年 9 月   | 2020 年 11 月  | 1.22 GA | 
-| 1.20  | 2020 年 12 月 8 日  | 2021 年 1 月   | 2021 年 3 月  | 1.23 GA | 
-\* 休日のため、AKS では、1.16 の有効期間を、2020 年 11 月から 2021 年 1 月に延長しています。 詳細については、[こちら](https://github.com/Azure/AKS/releases/tag/2020-10-12)をご覧ください。
+| 1.20  | 2020 年 12 月 8 日  | 2021 年 1 月   | 2021 年 3 月  | 1.23 GA |
+
+\* 休日のため、AKS では、1.16 の有効期間を、2020 年 11 月から 2021 年 1 月に延長しています。 詳細については、[こちら](https://github.com/Azure/AKS/releases/tag/2020-10-12)を参照してください。
+
 
 ## <a name="faq"></a>よく寄せられる質問
 

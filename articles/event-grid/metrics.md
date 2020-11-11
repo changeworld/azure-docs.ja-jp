@@ -3,12 +3,12 @@ title: Azure Event Grid でサポートされているメトリック
 description: この記事では、Azure Event Grid サービスによってサポートされている Azure Monitor メトリックについて説明します。
 ms.topic: conceptual
 ms.date: 08/13/2020
-ms.openlocfilehash: 06c43b1990efc977cae33ced3f66f02e2de0b9c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87c91077c8eeca2134da53774979c212a82e3b7d
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88225174"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042139"
 ---
 # <a name="metrics-supported-by-azure-event-grid"></a>Azure Event Grid でサポートされているメトリック
 この記事では、名前空間ごとに分類された Event Grid メトリックの一覧を示します。 
@@ -26,6 +26,8 @@ ms.locfileid: "88225174"
 |PublishFailCount|はい|発行失敗イベント|Count|合計|このトピックに発行できなかったイベントの合計|Topic、ErrorType、Error|
 |PublishSuccessCount|はい|発行されたイベント|Count|合計|このトピックに発行されたイベントの合計数|トピック|
 |PublishSuccessLatencyInMs|はい|成功した発行の待機時間|ミリ秒|合計|成功した発行の待機時間 (ミリ秒単位)|ディメンションなし|
+| AdvancedFilterEvaluationCount | はい | 高度なフィルターの評価 | Count | 合計 | イベント サブスクリプション全体で評価される高度なフィルターの合計数 | EventSubscriptionName |
+
 
 
 ## <a name="microsofteventgrideventsubscriptions"></a>Microsoft.EventGrid/eventSubscriptions
@@ -64,6 +66,8 @@ ms.locfileid: "88225174"
 |PublishSuccessCount|はい|発行されたイベント|Count|合計|このトピックに発行されたイベントの合計数|ディメンションなし|
 |PublishSuccessLatencyInMs|はい|成功した発行の待機時間|ミリ秒|合計|成功した発行の待機時間 (ミリ秒単位)|ディメンションなし|
 |UnmatchedEventCount|はい|不一致のイベント|Count|合計|このトピックのどのイベント サブスクリプションにも一致しないイベントの合計|ディメンションなし|
+| AdvancedFilterEvaluationCount | はい | 高度なフィルターの評価 | Count | 合計 | イベント サブスクリプション全体で評価される高度なフィルターの合計数 | EventSubscriptionName |
+
 
 
 ## <a name="microsofteventgridtopics"></a>Microsoft.EventGrid/topics
@@ -80,6 +84,7 @@ ms.locfileid: "88225174"
 |PublishSuccessCount|はい|発行されたイベント|Count|合計|このトピックに発行されたイベントの合計数|ディメンションなし|
 |PublishSuccessLatencyInMs|はい|成功した発行の待機時間|ミリ秒|合計|成功した発行の待機時間 (ミリ秒単位)|ディメンションなし|
 |UnmatchedEventCount|はい|不一致のイベント|Count|合計|このトピックのどのイベント サブスクリプションにも一致しないイベントの合計|ディメンションなし|
+| AdvancedFilterEvaluationCount | はい | 高度なフィルターの評価 | Count | 合計 | イベント サブスクリプション全体で評価される高度なフィルターの合計数 | Topic、EventSubscriptionName、DomainEventSubscriptionName |
 
 ## <a name="next-steps"></a>次のステップ
 次の記事を参照してください: [診断ログ](diagnostic-logs.md)

@@ -9,12 +9,12 @@ ms.date: 05/11/2020
 ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: dba321d055e64d62ca91f95461c3299bee5f90d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aac7357939ab2d14949c967630840ed6d267d251
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83714221"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145737"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>トラブルシューティングのためにブラウザー トレースをキャプチャする
 
@@ -24,23 +24,23 @@ Azure portal での問題のトラブルシューティングを行っていて�
 
 Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オープンソース プロジェクト](https://www.chromium.org/Home)が基になっています。 次の手順では、開発者ツールを使用する方法について説明します。これらのツールは、2 つのブラウザーで非常によく似ています。 詳細については、「[Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools)」および「[Microsoft Edge (Chromium) 開発者ツール](/microsoft-edge/devtools-guide-chromium)」を参照してください。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_" サインインすることが重要です。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_ " サインインすることが重要です。 
 
 1. [ステップ記録ツール](https://support.microsoft.com/help/22878/windows-10-record-steps)を使用して、ポータルで実行した手順の記録を始めます。
 
 1. ポータルで、問題が発生した直前のステップに移動します。
 
-1. F12 キーを押すか、![ブラウザー設定アイコンのスクリーンショット](media/capture-browser-trace/chromium-icon-settings.png) >  **[その他のツール]**  >  **[デベロッパー ツール]** を選択します。
+1. F12 キーを押すか、![ブラウザー設定アイコンを示すスクリーンショット](media/capture-browser-trace/chromium-icon-settings.png)を選択します。 > **その他のツール** > **開発者ツール** 。
 
 1. 既定では、ブラウザーで現在読み込まれているページのトレース情報のみが保持されます。 再現するには複数のページを移動する必要がある場合であっても、次のオプションを設定して、すべてのトレース情報が保持されるようにします。
 
     1. **[Network]\(ネットワーク\)** タブを選択し、 **[Preserve log]\(ログを保持\)** を選択します。
 
-          ![[Preserve log]\(ログを保持\) のスクリーンショット](media/capture-browser-trace/chromium-network-preserve-log.png)
+          ![[ネットワーク] タブで [Preserve log]\(ログの保存\) オプションが強調表示されているスクリーンショット。](media/capture-browser-trace/chromium-network-preserve-log.png)
 
     1. **[Console]\(コンソール\)** タブを選択し、 **[Console settings]\(コンソールの設定\)** を選択してから、 **[Preserve Log]\(ログを保持\)** を選択します。 **[Console settings]\(コンソールの設定\)** をもう一度選択して、設定ペインを閉じます。
 
-          ![[Preserve Log]\(ログを保持\) のスクリーンショット](media/capture-browser-trace/chromium-console-preserve-log.png)
+          ![[コンソール] タブで [Preserve log]\(ログの保存\) オプションが強調表示されているスクリーンショット。](media/capture-browser-trace/chromium-console-preserve-log.png)
 
 1. **[Network]\(ネットワーク\)** タブを選択し、 **[Stop recording network log]\(ネットワーク ログの記録を停止\)** と **[Clear]\(クリア\)** を選択します。
 
@@ -48,21 +48,21 @@ Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オー�
 
 1. **[Record network log]\(ネットワーク ログを記録\)** を選択して、ポータルで問題を再現します。
 
-    ![[プロファイル セッションの開始] のスクリーンショット](media/capture-browser-trace/chromium-start-session.png)
+    ![ネットワーク ログを記録する方法を示すスクリーンショット。](media/capture-browser-trace/chromium-start-session.png)
 
     次の図のようなセッション出力が表示されます。
 
-    ![ブラウザー トレース結果のスクリーンショット](media/capture-browser-trace/chromium-browser-trace-results.png)
+    ![セッション出力を示すスクリーンショット。](media/capture-browser-trace/chromium-browser-trace-results.png)
 
 1. 予期しないポータルの動作を再現した後、 **[Stop recording network log]\(ネットワーク ログの記録を停止\)** を選択し、 **[Export HAR]\(HAR のエクスポート\)** を選択してファイルを保存します。
 
-    ![[Export HAR]\(HAR のエクスポート\) のスクリーンショット](media/capture-browser-trace/chromium-network-export-har.png)
+    ![[ネットワーク] タブで HAR をエクスポートする方法を示すスクリーンショット。](media/capture-browser-trace/chromium-network-export-har.png)
 
 1. ステップ記録ツールを停止し、記録を保存します。
 
 1. ブラウザー開発者ツールのペインに戻り、 **[Console]\(コンソール\)** タブを選択します。いずれかのメッセージを右クリックし、 **[Save as...]\(名前を付けて保存...\)** を選択して、コンソールの出力をテキスト ファイルに保存します。
 
-    ![コンソール出力のスクリーンショット](media/capture-browser-trace/chromium-console-select.png)
+    ![[コンソール] タブと [名前を付けて保存...] メニューが強調表示されているスクリーンショット](media/capture-browser-trace/chromium-console-select.png)
 
 1. HAR ファイル、コンソール出力、および画面記録を .zip などの圧縮形式でパッケージ化し、Microsoft サポートと共有します。
 
@@ -70,13 +70,13 @@ Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オー�
 
 次の手順では、Microsoft Edge (EdgeHTML) の開発者ツールを使用する方法について説明します。 詳細については、「[Microsoft Edge (EdgeHTML) 開発者ツール](/microsoft-edge/devtools-guide)」を参照してください。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_" サインインすることが重要です。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_ " サインインすることが重要です。 
 
 1. [ステップ記録ツール](https://support.microsoft.com/help/22878/windows-10-record-steps)を使用して、ポータルで実行した手順の記録を始めます。
 
 1. ポータルで、問題が発生した直前のステップに移動します。
 
-1. F12 キーを押すか、![ブラウザー設定アイコンのスクリーンショット](media/capture-browser-trace/edge-icon-settings.png) >  **[その他のツール]**  >  **[デベロッパー ツール]** を選択します。
+1. F12 キーを押すか、![ブラウザー設定アイコンのスクリーンショット](media/capture-browser-trace/edge-icon-settings.png)を選択します。 > **その他のツール** > **開発者ツール** 。
 
 1. 既定では、ブラウザーで現在読み込まれているページのトレース情報のみが保持されます。 再現するには複数のページを移動する必要がある場合であっても、次のオプションを設定して、すべてのトレース情報が保持されるようにします。
 
@@ -98,7 +98,7 @@ Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オー�
 
     次の図のようなセッション出力が表示されます。
 
-    ![ブラウザー トレース結果のスクリーンショット](media/capture-browser-trace/edge-browser-trace-results.png)
+    ![プロファイリング セッションの出力を示すスクリーンショット。](media/capture-browser-trace/edge-browser-trace-results.png)
 
 1. 予期しないポータルの動作を再現した後、 **[プロファイリング セッションの終了]** を選択し、 **[HAR としてエクスポート]** を選択してファイルを保存します。
 
@@ -108,7 +108,7 @@ Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オー�
 
 1. ブラウザー開発者ツールのペインに戻り、 **[コンソール]** タブを選択して、ウィンドウを展開します。 コンソール出力の先頭にカーソルを置き、出力の内容全体をドラッグして選択します。 右クリックし、 **[コピー]** を選択して、コンソールの出力をテキスト ファイルに保存します。
 
-    ![コンソール出力のスクリーンショット](media/capture-browser-trace/edge-console-select.png)
+    ![[コピー] メニュー オプションが強調表示されているスクリーンショット。](media/capture-browser-trace/edge-console-select.png)
 
 1. HAR ファイル、コンソール出力、および画面記録を .zip などの圧縮形式でパッケージ化し、Microsoft サポートと共有します。
 
@@ -126,7 +126,7 @@ Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オー�
 
         ![Safari の詳細設定のスクリーンショット](media/capture-browser-trace/safari-show-develop-menu.png)
 
-1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_" サインインすることが重要です。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_ " サインインすることが重要です。 
 
 1. ポータルで実行した手順の記録を始めます。 詳細については、「[Mac の画面を記録する方法](https://support.apple.com/HT208721)」を参照してください。
 
@@ -140,11 +140,11 @@ Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オー�
 
     1. **[Network]\(ネットワーク\)** タブを選択し、 **[Preserve Log]\(ログを保持\)** を選択します。
 
-          ![[Preserve Log]\(ログを保持\) のスクリーンショット](media/capture-browser-trace/safari-network-preserve-log.png)
+          ![[Preserve Log]\(ログの保存\) オプションを示すスクリーンショット。](media/capture-browser-trace/safari-network-preserve-log.png)
 
     1. **[コンソール]** タブを選択し、 **[Preserve Log]\(ログを保持\)** を選択します。
 
-          ![[Preserve Log]\(ログを保持\) のスクリーンショット](media/capture-browser-trace/safari-console-preserve-log.png)
+          ![[コンソール] タブの [Preserve Log]\(ログの保存\) を示すスクリーンショット。](media/capture-browser-trace/safari-console-preserve-log.png)
 
 1. **[Network]\(ネットワーク\)** タブを選択し、 **[Clear Network Items]\(ネットワーク アイテムのクリア\)** を選択します。
 
@@ -152,7 +152,7 @@ Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オー�
 
 1. ポータルで問題を再現します。 次の図のようなセッション出力が表示されます。
 
-    ![ブラウザー トレース結果のスクリーンショット](media/capture-browser-trace/safari-browser-trace-results.png)
+    ![問題を再現した後の出力を示すスクリーンショット。](media/capture-browser-trace/safari-browser-trace-results.png)
 
 1. 予期しないポータルの動作を再現した後、 **[Export]\(エクスポート\)** を選択してファイルを保存します。
 
@@ -162,7 +162,7 @@ Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オー�
 
 1. ブラウザー開発者ツールのペインに戻り、 **[コンソール]** タブを選択して、ウィンドウを展開します。 コンソール出力の先頭にカーソルを置き、出力の内容全体をドラッグして選択します。 Command + C キーを使用して出力をコピーし、テキスト ファイルに保存します。
 
-    ![コンソール出力のスクリーンショット](media/capture-browser-trace/safari-console-select.png)
+    ![出力を表示してコピーできることが強調表示されているスクリーンショット。](media/capture-browser-trace/safari-console-select.png)
 
 1. HAR ファイル、コンソール出力、および画面記録を .zip などの圧縮形式でパッケージ化し、Microsoft サポートと共有します。
 
@@ -170,7 +170,7 @@ Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オー�
 
 次の手順では、Firefox の開発者ツールを使用する方法について説明します。 詳細については、[Firefox の開発者ツール](https://developer.mozilla.org/docs/Tools)に関するページを参照してください。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_" サインインすることが重要です。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに関連する機密情報がトレースに含まれないようにするため、トレースを始める " _前に_ " サインインすることが重要です。 
 
 1. ポータルで実行した手順の記録を始めます。 Windows で [ステップ記録ツール](https://support.microsoft.com/help/22878/windows-10-record-steps)を使用するか、「[Mac で画面を収録する方法](https://support.apple.com/HT208721)」を参照してください。
 
@@ -182,7 +182,7 @@ Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オー�
 
     1. **[ネットワーク]** タブを選択し、 **[永続ログ]** をオンにします。
 
-          ![[永続ログ] のスクリーンショット](media/capture-browser-trace/firefox-network-persist-logs.png)
+          ![[Persist Logs]\(ログの保持\) オプションが強調表示されているスクリーンショット。](media/capture-browser-trace/firefox-network-persist-logs.png)
 
     1. **[コンソール]** タブを選択し、 **[コンソール設定]** を選択してから、 **[永続ログ]** を選択します。
 

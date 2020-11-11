@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: f916fdcf632cc369d1fb7e2faefad6dddafd1e15
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 908c9f1d05c83eaa58f77b79a32d956898c35076
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677242"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348255"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>VNet とファイアウォールの背後にあるストレージ アカウントに対して監査を書き込む
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -77,7 +77,7 @@ Azure portal を使用する代わりに REST コマンドを使用して、VNet
 |:-----|:-----|
 |`<subscriptionId>`| Azure サブスクリプション ID|
 |`<resource group>`| Resource group|
-|`<logical SQL server>`| サーバー名|
+|`<logical SQL Server>`| サーバー名|
 |`<administrator login>`| [Administrator account] (管理者アカウント) |
 |`<complex password>`| 管理者アカウント用の複雑なパスワード|
 
@@ -114,6 +114,7 @@ VNet またはファイアウォールの背後にあるストレージ アカ�
      "administratorLoginPassword": "<complex password>",
      "version": "12.0",
      "state": "Ready"
+     }
    }
    ```
 

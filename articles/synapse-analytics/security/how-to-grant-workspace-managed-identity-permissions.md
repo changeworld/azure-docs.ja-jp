@@ -8,27 +8,27 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 08ead12c99ae4919a2daf523065cfe332c644df1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 54612bee5715cdb78141a8aacfa5d24c814269d1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487196"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312397"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>ワークスペースのマネージド ID にアクセス許可を付与する (プレビュー)
 
-この記事では、Azure Synapse ワークスペースのマネージド ID にアクセス許可を付与する方法について説明します。 そして、アクセス許可によって、Azure portal からワークスペース内の SQL プールや ADLS Gen2 ストレージ アカウントにアクセスできるようになります。
+この記事では、Azure Synapse ワークスペースのマネージド ID にアクセス許可を付与する方法について説明します。 そして、アクセス許可によって、Azure portal からワークスペース内の専用 SQL プールや ADLS Gen2 ストレージ アカウントにアクセスできるようになります。
 
 >[!NOTE]
 >このドキュメントの残りの部分では、このワークスペース マネージド ID をマネージド ID と呼びます。
 
-## <a name="grant-managed-identity-permissions-to-the-sql-pool"></a>マネージド ID に SQL プールへのアクセス許可を付与する
+## <a name="grant-managed-identity-permissions-to-the-dedicated-sql-pool"></a>マネージド ID に専用 SQL プールへのアクセス許可を付与する
 
-マネージド ID によって、ワークスペース内の SQL プールへのアクセス許可が付与されます。 アクセス許可が付与されていると、SQL プール関連のアクティビティを実行するパイプラインを調整できます。 Azure portal を使用して Azure Synapse ワークスペースを作成するときに、SQL プールに対する CONTROL アクセス許可をマネージド ID に付与できます。
+マネージド ID によって、ワークスペース内の専用 SQL プールへのアクセス許可が付与されます。 アクセス許可が付与されていると、専用 SQL プール関連のアクティビティを実行するパイプラインを調整できます。 Azure portal を使用して Azure Synapse ワークスペースを作成するときに、専用 SQL プールに対する CONTROL アクセス許可をマネージド ID に付与できます。
 
-Azure Synapse ワークスペースの作成時に、 **[セキュリティとネットワーク]** を選択します。 次に、 **[Grant CONTROL to the workspace's managed identity on SQL pools] (SQL プールに対する CONTROL をワークスペースのマネージド ID に付与する)** を選択します。
+Azure Synapse ワークスペースの作成時に、 **[セキュリティ]** を選択します。 次に、 **[Allow pipelines (running as workspace's system assigned identity) to access SQL pools]\((ワークスペースのシステム割り当て ID として実行されている) パイプラインに SQL プールへのアクセスを許可する\)** を選択します。
 
-![SQL プールに対する CONTROL アクセス許可](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
+![専用 SQL プールに対する CONTROL アクセス許可](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
 
 ## <a name="grant-the-managed-identity-permissions-to-adls-gen2-storage-account"></a>マネージド ID に ADLS Gen2 ストレージ アカウントへのアクセス許可を付与する
 

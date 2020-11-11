@@ -1,5 +1,5 @@
 ---
-title: Azure Analysis Services のコード、プロジェクト、データベースのサンプル | Microsoft Docs
+title: Azure Analysis Services のコード、プロジェクト、データベースのサンプル
 description: この記事では、Azure Analysis Services のコード、プロジェクト、データベースのサンプルについて学ぶためのリソースを説明します。
 author: minewiskan
 ms.service: azure-analysis-services
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b63581b5192c93a8377a642c21eacbd291579b22
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 920cc5142d14308fce412ad44543ddc46dc1663e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013680"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324375"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services のサンプル
 
@@ -28,7 +28,7 @@ GitHub の「[Adventure Works for Analysis Services](https://github.com/Microsof
 
 ## <a name="sample-database-on-azure"></a>Azure 上のサンプル データベース
 
-Azure Synapse Analytics (SQL Data Warehouse) には、プロビジョニングされたリソースに含めることができるサンプルの AdventureWorksDW データベースが用意されています。 詳しくは、「[クイック スタート: Azure Synapse Analytics の SQL プールを作成し、クエリを実行する](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)」を参照してください。
+Azure Synapse Analytics (旧称 SQL Data Warehouse) には、プロビジョニングされたリソースに含めることができる、サンプルの AdventureWorksDW データベースが用意されています。 詳しくは、「[クイック スタート: Azure Synapse Analytics で専用 SQL プールを作成し、クエリを実行する](/azure/sql-data-warehouse/create-data-warehouse-portal)」を参照してください。
 
 ## <a name="sample-databases-on-github"></a>GitHub 上のサンプル データベース
 

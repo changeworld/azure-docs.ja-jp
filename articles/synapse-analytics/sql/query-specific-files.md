@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: c03051e2c8fddc21e4399375faeff6a40fb4d0d4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3b4755d1d2e14b8ce3b05cfef6d30d7f6102905d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288105"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318820"
 ---
-# <a name="use-file-metadata-in-queries"></a>クエリでファイルのメタデータを使用する
+# <a name="use-file-metadata-in-serverless-sql-pool-queries"></a>サーバーレス SQL プール クエリでファイルのメタデータを使用する
 
-「[クエリ フォルダーと複数のファイル](query-folders-multiple-csv-files.md)」の記事で説明されているように、SQL オンデマンドは複数のファイルとフォルダーに対応できます。 この記事では、クエリ内でファイル名とフォルダー名に関するメタデータ情報を使用する方法について説明します。
+「[クエリ フォルダーと複数のファイル](query-folders-multiple-csv-files.md)」の記事で説明されているように、サーバーレス SQL プールは、複数のファイルとフォルダーに対応できます。 この記事では、クエリ内でファイル名とフォルダー名に関するメタデータ情報を使用する方法について説明します。
 
 場合によっては、結果セット内の特定の行に関連するファイル ソースまたはフォルダー ソースを把握しておく必要があります。
 
@@ -26,7 +26,7 @@ ms.locfileid: "91288105"
 
 ## <a name="prerequisites"></a>前提条件
 
-最初の手順は、参照するストレージ アカウントを使用して**データベースを作成**することです。 次に、そのデータベースに対して[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、これらのサンプルで使用されるデータ ソース、データベース スコープの資格情報、および外部ファイル形式が作成されます。
+最初の手順は、参照するストレージ アカウントを使用して **データベースを作成** することです。 次に、そのデータベースに対して[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、これらのサンプルで使用されるデータ ソース、データベース スコープの資格情報、および外部ファイル形式が作成されます。
 
 ## <a name="functions"></a>関数
 

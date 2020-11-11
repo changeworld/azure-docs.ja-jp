@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 59e8c836a796a46cbf5a45c6ad4440e4b80d476d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 2b0a56bac1652881e9d1733bcb52b02610e27e9e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425105"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314168"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning トレーニング環境をセキュリティで保護する
 
@@ -47,7 +47,7 @@ ms.locfileid: "92425105"
     - 仮想ネットワーク リソース上の "Microsoft.Network/virtualNetworks/join/action"。
     - サブネット リソース上の "Microsoft.Network/virtualNetworks/subnet/join/action"。
 
-    ネットワークでの Azure RBAC の詳細については、[ネットワークの組み込みロール](/azure/role-based-access-control/built-in-roles#networking)に関するページを参照してください
+    ネットワークでの Azure RBAC の詳細については、[ネットワークの組み込みロール](../role-based-access-control/built-in-roles.md#networking)に関するページを参照してください
 
 
 ## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>コンピューティング クラスターとインスタンス 
@@ -60,8 +60,9 @@ ms.locfileid: "92425105"
 > * 仮想ネットワークのサブスクリプションまたはリソース グループに対するセキュリティ ポリシーまたはロックで、仮想ネットワークを管理するためのアクセス許可が制限されているかどうかを確認します。 トラフィックを制限することで仮想ネットワークをセキュリティで保護する予定の場合は、コンピューティング サービス用にいくつかのポートを開いたままにしてください。 詳細については、「[必須ポート](#mlcports)」のセクションをご覧ください。
 > * 複数のコンピューティング インスタンスまたはクラスターを 1 つの仮想ネットワークに配置する場合は、1 つ以上のリソースのクォータの増加を要求することが必要になる場合があります。
 > * 仮想ネットワークでワークスペースの Azure Storage アカウントもセキュリティで保護される場合、それらは Azure Machine Learning コンピューティング インスタンスまたはクラスターと同じ仮想ネットワークに存在する必要があります。 
-> * コンピューティング インスタンスの Jupyter 機能を動作させるには、Web ソケット通信が無効になっていないことを確認してください。 お使いのネットワークで、*. instances.azureml.net と *. instances.azureml.ms への websocket 接続が許可されていることを確認してください。
-
+> * コンピューティング インスタンスの Jupyter 機能を動作させるには、Web ソケット通信が無効になっていないことを確認してください。 お使いのネットワークで、*. instances.azureml.net と *. instances.azureml.ms への websocket 接続が許可されていることを確認してください。 
+> * コンピューティング インスタンスがプライベート リンク ワークスペースにデプロイされている場合は、仮想ネットワーク内からのみアクセスできます。 カスタム DNS またはホスト ファイルを使用している場合は、ワークスペースのプライベート エンドポイントのプライベート IP アドレスを使用して `<instance-name>.<region>.instances.azureml.ms` のエントリを追加してください。 詳細については、[カスタム DNS](./how-to-custom-dns.md)に関する記事をご覧ください。
+    
 > [!TIP]
 > Machine Learning コンピューティング インスタンスまたはクラスターにより、 __仮想ネットワークが含まれているリソース グループ__ に追加のネットワーク リソースが自動的に割り当てられます。 サービスにより、各コンピューティング インスタンスまたはクラスターについて次のリソースが割り当てられます。
 > 
@@ -70,7 +71,7 @@ ms.locfileid: "92425105"
 > * 1 つのロード バランサー
 > 
 > クラスターの場合、クラスターが 0 ノードにスケールダウンするたびに、これらのリソースは削除 (および再作成) されます。しかし、インスタンスの場合は、インスタンスが完全に削除されるまで、リソースは保持されます (停止してもリソースは削除されません)。 
-> これらのリソースは、サブスクリプションの[リソース クォータ](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)によって制限されます。
+> これらのリソースは、サブスクリプションの[リソース クォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)によって制限されます。
 
 
 ### <a name="required-ports"></a><a id="mlcports"></a>必須ポート
@@ -153,17 +154,17 @@ Azure portal 内での NSG 規則の構成は、次の画像に示したとお�
 
 ### <a name="forced-tunneling"></a>強制トンネリング
 
-Azure Machine Learning コンピューティングで[強制トンネリング](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm)を使用している場合は、コンピューティング リソースを含むサブネットからのパブリック インターネットを使用した通信を許可する必要があります。 この通信は、タスクのスケジュール設定と Azure Storage へのアクセスに使用されます。
+Azure Machine Learning コンピューティングで[強制トンネリング](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)を使用している場合は、コンピューティング リソースを含むサブネットからのパブリック インターネットを使用した通信を許可する必要があります。 この通信は、タスクのスケジュール設定と Azure Storage へのアクセスに使用されます。
 
 これを行うには、次の 2 つの方法があります。
 
 * [Virtual Network NAT](../virtual-network/nat-overview.md) を使用する。 NAT ゲートウェイにより、お使いの仮想ネットワーク内の 1 つ以上のサブネットからの送信インターネット接続が提供されます。 詳細については、「[NAT ゲートウェイ リソースを使用した仮想ネットワークの設計](../virtual-network/nat-gateway-resource.md)」を参照してください。
 
-* コンピューティング リソースを含むサブネットに[ユーザー定義ルート (UDR)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) を追加します。 自分のリソースが存在するリージョンで Azure Batch サービスによって使用される IP アドレスごとに、UDR を確立します。 これらの UDR により、Batch サービスが、タスクをスケジュールする目的でプールのコンピューティング ノードと通信できるようになります。 コンピューティング インスタンスへのアクセスに必要なため、リソースが存在する Azure Machine Learning service の IP アドレスも追加します。 Batch サービスと Azure Machine Learning service の IP アドレスの一覧を取得するには、次のいずれかの方法を使用します。
+* コンピューティング リソースを含むサブネットに[ユーザー定義ルート (UDR)](../virtual-network/virtual-networks-udr-overview.md) を追加します。 自分のリソースが存在するリージョンで Azure Batch サービスによって使用される IP アドレスごとに、UDR を確立します。 これらの UDR により、Batch サービスが、タスクをスケジュールする目的でプールのコンピューティング ノードと通信できるようになります。 コンピューティング インスタンスへのアクセスに必要なため、リソースが存在する Azure Machine Learning service の IP アドレスも追加します。 Batch サービスと Azure Machine Learning service の IP アドレスの一覧を取得するには、次のいずれかの方法を使用します。
 
     * [Azure の IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)をダウンロードし、`BatchNodeManagement.<region>` と `AzureMachineLearning.<region>` のファイルを検索する。ここで、`<region>` は Azure リージョンです。
 
-    * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) を使用して情報をダウンロードする。 次の例では、IP アドレス情報をダウンロードし、米国東部 2 リージョンの情報を除外します。
+    * [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) を使用して情報をダウンロードする。 次の例では、IP アドレス情報をダウンロードし、米国東部 2 リージョンの情報を除外します。
 
         ```azurecli-interactive
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
@@ -277,9 +278,9 @@ Azure のコンピューティング インスタンスでノートブックを�
 ### <a name="create-the-vm-or-hdinsight-cluster"></a>VM または HDInsight クラスターを作成する
 
 Azure portal または Azure CLI を使用して VM または HDInsight クラスターを作成し、そのクラスターを Azure の仮想ネットワークに配置します。 詳細については、次の記事を参照してください。
-* [Linux VM 用の Azure 仮想ネットワークの作成と管理を行う](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
+* [Linux VM 用の Azure 仮想ネットワークの作成と管理を行う](../virtual-machines/linux/tutorial-virtual-network.md)
 
-* [Azure Virtual Network を使用した Azure HDInsight の拡張](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)
+* [Azure Virtual Network を使用した Azure HDInsight の拡張](../hdinsight/hdinsight-plan-virtual-network-deployment.md)
 
 ### <a name="configure-network-ports"></a>ネットワーク ポートを構成する 
 
@@ -301,7 +302,7 @@ Azure Machine Learning で VM またはクラスターの SSH ポートと通信
 
 1. __[アクション]__ で、 __[許可]__ を選択します。
 
-ネットワーク セキュリティ グループの既定のアウトバウンド規則を保持します。 詳細については、「[セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)」の既定のセキュリティ規則をご覧ください。
+ネットワーク セキュリティ グループの既定のアウトバウンド規則を保持します。 詳細については、「[セキュリティ グループ](../virtual-network/network-security-groups-overview.md#default-security-rules)」の既定のセキュリティ規則をご覧ください。
 
 既定のアウトバウンド規則を使用せずに仮想ネットワークのアウトバウンド アクセスを制限したい場合は、「[仮想ネットワークからのアウトバウンド接続を制限する](#limiting-outbound-from-vnet)」セクションを参照してください。
 

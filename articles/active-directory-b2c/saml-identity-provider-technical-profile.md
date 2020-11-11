@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/16/2020
+ms.date: 10/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 956773872babbd30dea1e17a9a3d7ede7a022850
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 9f6df1fb2c83cea5ddf3ad7f21c9a7d28342d373
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131736"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041731"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで SAML ID プロバイダー技術プロファイルを定義する
 
@@ -86,6 +86,16 @@ SAML 応答のアサーションを暗号化する場合:
 
 Protocol 要素の **Name** 属性は `SAML2` に設定する必要があります。
 
+## <a name="input-claims"></a>入力クレーム
+
+**InputClaims** 要素は、SAML AuthN 要求の **サブジェクト** 内で **NameId** を送信するために使用されます。 これを実行するには、次に示すように `subject` に設定された **PartnerClaimType** が含まれる入力要求を追加します。
+
+```xml
+<InputClaims>
+    <InputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="subject" />
+</InputClaims>
+```
+
 ## <a name="output-claims"></a>出力クレーム
 
 **OutputClaims** 要素には、`AttributeStatement` セクション下に SAML ID プロバイダーにより返される要求の一覧が存在します。 お使いのポリシーに定義されている要求の名前を、ID プロバイダーで定義されている名前にマップする必要があるかもしれません。 `DefaultValue` 属性を設定している限り、ID プロバイダーにより返されない要求を追加することもできます。
@@ -144,7 +154,7 @@ SAML アサーションに `SPNameQualifier` または `NameQualifier` の両方
 
 ## <a name="metadata"></a>Metadata
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | PartnerEntity | はい | SAML ID プロバイダーのメタデータの URL です。 ID プロバイダーのメタデータをコピーし、CDATA 要素 `<![CDATA[Your IDP metadata]]>` 内に追加します |
 | WantsSignedRequests | いいえ | 技術プロファイルでは、送信認証要求すべてを署名する必要があるかどうかを示します。 指定できる値: `true` または `false`。 既定値は `true` です。 値を `true` に設定すると、 **SamlMessageSigning** 暗号化キーを指定する必要があり、送信認証要求すべてが署名されます。 値が `false` に設定されている場合、 **SigAlg** と **Signature** パラメーター (クエリ文字列または post パラメーター) は要求から省略されます。 このメタデータは、メタデータ **AuthnRequestsSigned** 属性も制御し、これは ID プロバイダーと供給される Azure AD B2C の技術プロファイルのメタデータに出力されます。 技術プロファイル メタデータ内の **WantsSignedRequests** 値が `false` に設定され、ID プロバイダー メタデータ **WantAuthnRequestsSigned** 値が `false` に設定されている、または指定がない場合、Azure AD B2C では要求の署名は行われません。 |
@@ -157,7 +167,7 @@ SAML アサーションに `SPNameQualifier` または `NameQualifier` の両方
 | AuthenticationRequestExtensions | いいえ | Azure AD BC と ID プロバイダー間で同意される省略可能なプロトコル メッセージ拡張機能要素。 拡張機能は、XML 形式で表示されます。 CDATA 要素 `<![CDATA[Your IDP metadata]]>` 内部に XML データを追加します。 拡張機能要素がサポートされているかどうかは、ID プロバイダーのドキュメントを確認してください。 |
 | IncludeAuthnContextClassReferences | いいえ | 認証コンテキスト クラスを識別する URI 参照を 1 つ以上指定します。 たとえば、ユーザーがユーザー名とパスワードのみでサインインできるようにするには、値を `urn:oasis:names:tc:SAML:2.0:ac:classes:Password` に設定します。 保護されたセッション (SSL/TLS) でユーザー名とパスワードを使用してサインインできるようにするには、`PasswordProtectedTransport` を指定します。 サポートされている **AuthnContextClassRef** URI に関するガイダンスについては、ID プロバイダーのドキュメントを参照してください。 複数の URI をコンマ区切りのリストで指定します。 |
 | IncludeKeyInfo | いいえ | バインディングが `HTTP-POST` に設定されているときに、証明書の公開キーが SAML 認証要求に含まれるかどうかを示します。 指定できる値: `true` または `false`。 |
-| IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
+| IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 

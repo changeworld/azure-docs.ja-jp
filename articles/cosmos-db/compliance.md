@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 32266695770f627f7044bce92e4505f45776fd28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7a013e07ada0ba88b20598c23f706eb5ee71d49
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83747356"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073065"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Azure Cosmos DB のコンプライアンス 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB は、すべての Azure リージョンで利用できます。 Microsoft では、5 つの異なる Azure クラウド環境をお客様が利用できるようにしています。
 
@@ -47,12 +48,12 @@ Azure Cosmos DB は、その認証範囲を拡大し続けています。 現時
 | ISO 27701:2019| | | |
 | SOC 1、2、3 | | | |
 
-これらのコンプライアンス認証とそれらのメリットの詳細については、「[Overview of Microsoft Azure compliance](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)」(Microsoft Azure のコンプライアンスの概要) ページをご覧ください。
+これらのコンプライアンス認証とそれらのメリットの詳細については、[Microsoft Azure のコンプライアンス認証の概要](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/)に関するページを参照してください。
 
 次の表に、Azure Government 上で Azure Cosmos DB によってサポートされている認証を示します。
 
 | **グローバルに適用可能** | **米国政府** | **業界に固有** | 
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | CSA STAR 認証 | CJIS| HIPAA BAA | 
 | CSA STAR 証明| DoD SRG Level 2| HITRUST  | 
 | ISO 20000-1:2011 | DoD SRG Level 4 | PCI DSS | 
@@ -68,8 +69,14 @@ Azure Cosmos DB は、その認証範囲を拡大し続けています。 現時
 
 Azure のコンプライアンス認証の詳細については、以下の記事を参照してください。
 
-* Azure Cosmos DB の最新のコンプライアンス認証を確認するには、「[Overview of Microsoft Azure compliance](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)」(Microsoft Azure のコンプライアンスの概要) ページを参照してください。  
+* Azure Cosmos DB の最新のコンプライアンス認証を確認するには、[Microsoft Azure のコンプライアンス認証の概要](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/)に関するページの付録 A と B を参照してください。  
 
-* Azure Cosmos DB のセキュリティと最新の機能強化の概要については、「[Azure Cosmos DB のセキュリティ - 概要](database-security.md)」を参照してください。
+* Azure Cosmos DB のセキュリティと最新の機能強化の概要については、[Azure Cosmos データベースのセキュリティ](database-security.md)に関する記事を参照してください。
+
+* Azure Cosmos DB のデプロイのセキュリティ対策を向上させるための推奨事項については、[Azure Cosmos DB セキュリティ ベースライン](security-baseline.md)に関する記事を参照してください。 
 
 * マイクロソフトが取得している認証の詳細については、[Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)に関するページを参照してください。
+
+* FedRAMP コンプライアンスの情報については、「[FedRAMP および DoD CC SRG 監査スコープ別の Azure サービス](../azure-government/compliance/azure-services-in-fedramp-auditscope.md)」を参照してください。
+
+* DoD コンプライアンスの情報については、[DoD コンプライアンス認証](/microsoft-365/compliance/offering-dod-disa-l2-l4-l5?view=o365-worldwide)に関する記事を参照してください。

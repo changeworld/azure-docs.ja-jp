@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: kenwith
-ms.openlocfilehash: aaafd3833c63458f8403dfeb3620d76f631315b5
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: cac7b169232bb43ba1b1893b59dac81ce4c39c49
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899186"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233885"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ
 
@@ -111,7 +111,7 @@ ServiceNow、Box、G Suite などいくつかのアプリケーションでは�
 - SuccessFactors から Active Directory へ / SuccessFactors から Azure Active Directory へ
 - Azure Active Directory ([Azure AD Graph API の既定の属性](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)とカスタム ディレクトリ拡張機能がサポートされる)
 - [SCIM 2.0](https://tools.ietf.org/html/rfc7643) をサポートするアプリ ([コア スキーマ](https://tools.ietf.org/html/rfc7643)に定義された属性を追加する必要がある)
-- Workday または SuccessFactors への Azure Active Directory の書き戻しについては、サポートされている属性 (XPATH と JSONPath) の関連メタデータを更新することはサポートされていますが、既定のスキーマに含まれているもの以外の新しい Workday または SuccessFactors の属性を追加することはサポートされていません。
+- Workday または SuccessFactors への Azure Active Directory の書き戻しについては、サポートされている属性 (XPATH と JSONPath) の関連メタデータを更新することはサポートされていますが、既定のスキーマに含まれているもの以外の新しい Workday または SuccessFactors の属性を追加することはサポートされていません
 
 
 > [!NOTE]

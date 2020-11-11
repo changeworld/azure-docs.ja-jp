@@ -12,12 +12,12 @@ ms.date: 10/26/2020
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce96eb5e91ccc4cb9f69711f9e6fd8fd59ce65bc
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d69755c36bf37dd591e81bea7983e25905798d4d
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669933"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286201"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
 
@@ -33,7 +33,7 @@ ms.locfileid: "92669933"
 
 全体的なソリューションは、次のコンポーネントで構成されます。
 
-1. **Azure AD** :`Restrict-Access-To-Tenants: <permitted tenant list>` が存在する場合、Azure AD は、許可されているテナントのセキュリティ トークンのみを発行します。
+1. **Azure AD** :`Restrict-Access-To-Tenants: <permitted tenant list>` ヘッダーが存在する場合、Azure AD からは許可されているテナントのセキュリティ トークンのみが発行されます。
 
 2. **オンプレミスのプロキシ サーバー インフラストラクチャ** : このインフラストラクチャは、トランスポート層セキュリティ (TLS) 検査に対応したプロキシ デバイスです。 許可されているテナントのリストを含むヘッダーを Azure AD 宛てのトラフィックに挿入するようにプロキシを構成する必要があります。
 
@@ -63,7 +63,7 @@ ms.locfileid: "92669933"
 
 - クライアントは、TLS 通信でプロキシによって提示される証明書チェーンを信頼する必要があります。 たとえば、内部[公開キー インフラストラクチャ (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) からの証明書が使用されている場合は、内部発行のルート証明機関証明書を信頼する必要があります。
 
-- この機能は Microsoft 365 サブスクリプションに含まれていますが、テナント制限を使用して他の SaaS アプリへのアクセスを制御する場合は、Azure AD Premium 1 ライセンスが必要です。
+- テナント制限を使用するには、Azure AD Premium 1 のライセンスが必要です。 
 
 #### <a name="configuration"></a>構成
 

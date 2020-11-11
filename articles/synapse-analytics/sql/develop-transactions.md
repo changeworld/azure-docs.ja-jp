@@ -1,6 +1,6 @@
 ---
 title: トランザクションの使用
-description: ソリューションを開発するための SQL プール (データ ウェアハウス) でのトランザクションの実装に関するヒント。
+description: ソリューションの開発に向けて、Azure Synapse Analytics の専用 SQL プールでトランザクションを実装するためのヒントを紹介します。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,20 +10,20 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: de36d1eda21903480eee986df72c5274e1aa6dff
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a2597a4bc6c5ed44f0e0050be3f69d7e840665e5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288615"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323850"
 ---
-# <a name="use-transactions-in-sql-pool"></a>SQL プールでのトランザクションの使用
+# <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールでトランザクションを使用する
 
-ソリューションを開発するための SQL プール (データ ウェアハウス) でのトランザクションの実装に関するヒントです。
+ソリューションの開発に向けて、Azure Synapse Analytics の専用 SQL プールでトランザクションを実装するためのヒントを紹介します。
 
 ## <a name="what-to-expect"></a>ウィザードの内容
 
-予想される通り、SQL プールは、データ ウェアハウスのワークロードの一部としてトランザクションをサポートします。 ただし、SQL プールのパフォーマンスを大規模に維持できるように、SQL Server と比べて一部の機能が制限されています。 この記事では、相違点について説明し、その他の制限事項を示します。
+予想される通り、専用 SQL プールは、データ ウェアハウスのワークロードの一部としてトランザクションをサポートします。 ただし、専用 SQL プールのパフォーマンスを大規模に維持できるように、SQL Server と比べ、一部の機能は制限されています。 この記事では、相違点について説明し、その他の制限事項を示します。
 
 ## <a name="transaction-isolation-levels"></a>トランザクション分離レベル
 
@@ -92,7 +92,7 @@ SQL プールは、ACID トランザクションを実装します。 トラン�
 SQL プールでは、XACT_STATE() 関数を使い、値 -2 を使用して、失敗したトランザクションを報告します。 この値は、トランザクションが失敗し、ロールバックのためにのみマークされていることを意味します。
 
 > [!NOTE]
-> 失敗したトランザクションを示すために XACT_STATE 関数の -2 を使用するのは、SQL Server とは異なる動作です。 SQL Server では、コミットできないトランザクションを表すために値 -1 を使用します。 SQL Server では、コミット不可としてマークしなくても、トランザクション内で一部のエラーを許容できます。 たとえば、`SELECT 1/0` はエラーになりますが、トランザクションが強制的にコミット不可状態になることはありません。 また、SQL Server では、コミットできないトランザクションでの読み取りも許可されます。 ただし、SQL プールではこれを実行できません。 SQL プールのトランザクション内でエラーが発生した場合は、-2 状態が自動的に入力され、ステートメントがロールバックされるまで SELECT ステートメントをそれ以上実行できなくなります。 したがって、コードを変更する必要がある場合は、アプリケーション コードを調べて、XACT_STATE() を使用しているかどうかを確認することが重要です。
+> 失敗したトランザクションを示すために XACT_STATE 関数の -2 を使用するのは、SQL Server とは異なる動作です。 SQL Server では、コミットできないトランザクションを表すために値 -1 を使用します。 SQL Server では、コミット不可としてマークしなくても、トランザクション内で一部のエラーを許容できます。 たとえば、`SELECT 1/0` はエラーになりますが、トランザクションが強制的にコミット不可状態になることはありません。 また、SQL Server では、コミットできないトランザクションでの読み取りも許可されます。 ただし、専用 SQL プールではこれを実行できません。 専用 SQL プールのトランザクション内でエラーが発生した場合は、-2 の状態が自動的に入力され、ステートメントがロールバックされるまで、SELECT ステートメントをそれ以上実行できなくなります。 したがって、コードを変更する必要がある場合は、アプリケーション コードを調べて、XACT_STATE() を使用しているかどうかを確認することが重要です。
 
 たとえば、SQL Server では、次のようなトランザクションを目にすることがあります。
 
@@ -138,7 +138,7 @@ SELECT @xact_state AS TransactionState;
 
 ERROR_* 関数の出力は得られません。
 
-SQL プールでは、コードを少し変更する必要があります。
+専用 SQL プールでは、コードを少し変更する必要があります。
 
 ```sql
 SET NOCOUNT ON;
@@ -181,11 +181,11 @@ SELECT @xact_state AS TransactionState;
 
 ## <a name="error_line-function"></a>Error_Line() 関数
 
-SQL プールでは、ERROR_LINE() 関数を実装またはサポートしていないことにも注意してください。 この関数がコードに含まれている場合、SQL プールに準拠するためにはこれを削除する必要があります。 代わりに、コードでクエリ ラベルを使用して同等の機能を実装します。 詳しくは、[LABEL](develop-label.md) に関する記事を参照してください。
+専用 SQL プールが、ERROR_LINE() 関数を実装またはサポートしていないことにも注意してください。 この関数がコードに含まれている場合は、専用 SQL プールに準拠するために、これを削除する必要があります。 代わりに、コードでクエリ ラベルを使用して同等の機能を実装します。 詳しくは、[LABEL](develop-label.md) に関する記事を参照してください。
 
 ## <a name="use-of-throw-and-raiserror"></a>THROW および RAISERROR の使用
 
-THROW は、SQL プールで例外を発生させるための最新の実装ですが、RAISERROR もサポートされています。 ただし、注意が必要な相違点がいくつかあります。
+THROW は、専用 SQL プールで例外を発生させるための最新の実装ですが、RAISERROR もサポートされています。 ただし、注意が必要な相違点がいくつかあります。
 
 * THROW では、ユーザー定義のエラー メッセージの番号として、100,000～150,000 の範囲の番号を指定することはできません。
 * RAISERROR のエラー メッセージは 50,000 に固定されています。
@@ -204,4 +204,4 @@ SQL プールには、トランザクションに関する他の制限事項が�
 
 ## <a name="next-steps"></a>次のステップ
 
-トランザクションの最適化について詳しくは、[トランザクションのベスト プラクティス](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事をご覧ください。 [SQL プール](best-practices-sql-pool.md)および [SQL オンデマンド (プレビュー)](best-practices-sql-on-demand.md) 向けのベスト プラクティス ガイドも用意されています。
+トランザクションの最適化について詳しくは、[トランザクションのベスト プラクティス](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事をご覧ください。 [SQL プール](best-practices-sql-pool.md)と[サーバーレス SQL プール (プレビュー)](best-practices-sql-on-demand.md) のベスト プラクティス ガイドも用意されています。

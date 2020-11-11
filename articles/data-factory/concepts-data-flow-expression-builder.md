@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: ee82d3f35b6b2b50b001e065eb81447738526b1c
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 10/30/2020
+ms.openlocfilehash: 8257be28344ac7a03738c80a003c1229282ae305
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635373"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145712"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>マッピング データ フローで式を構築する
 
@@ -30,15 +30,15 @@ ms.locfileid: "92635373"
 
 [フィルター](data-flow-filter.md)のような一部の変換では、青い式テキスト ボックスをクリックすると、式ビルダーが開きます。 
 
-![青い式ボックス](media/data-flow/expressionbox.png "式ビルダー")
+![青い式ボックス](media/data-flow/expressionbox.png "青い式ボックス")
 
 一致条件またはグループ化の条件で列を参照するときは、式で列から値を抽出できます。 式を作成するには、 **[計算列]** を選択します。
 
-![[計算列] オプション](media/data-flow/computedcolumn.png "式ビルダー")
+![[計算列] オプション](media/data-flow/computedcolumn.png "[計算列] オプション")
 
 式またはリテラル値が有効な入力である場合は、 **[動的なコンテンツの追加]** を選択して、リテラル値に評価される式を構築します。
 
-![[動的なコンテンツの追加] オプション](media/data-flow/add-dynamic-content.png "式ビルダー")
+![[動的なコンテンツの追加] オプション](media/data-flow/add-dynamic-content.png "[動的なコンテンツの追加] オプション")
 
 ## <a name="expression-elements"></a>式の要素
 
@@ -72,6 +72,16 @@ ms.locfileid: "92635373"
 ### <a name="parameters"></a>パラメーター
 
 パラメーターは、実行時にパイプラインからデータ フローに渡される値です。 パラメーターを参照するには、 **[Expression elements]\(式の要素\)** ビューでパラメーターをクリックするか、名前の前にドル記号を付けて参照します。 たとえば、parameter1 という名前のパラメーターは `$parameter1` によって参照されます。 詳細については、「[マッピング データ フローをパラメーター化する](parameters-data-flow.md)」を参照してください。
+
+### <a name="cached-lookup"></a>キャッシュされた検索
+
+キャッシュされた検索を使用すると、キャッシュされたシンクの出力をインラインで参照できます。 `lookup()` と `outputs()` の各シンクで使用できる関数は 2 つあります。 これらの関数を参照する構文は `cacheSinkName#functionName()` です。 詳細については、[シンクのキャッシュ](data-flow-sink.md#cache-sink)に関する記事を参照してください。
+
+`lookup()` を使用すると、現在の変換で一致する列がパラメーターとして取り込まれ、キャッシュ シンクでキー列に一致する行に等しい複合列が返されます。 返される複合列には、キャッシュ シンクにマップされている各列のサブ列が含まれます。 たとえば、コードと `Message` という列に一致するキー列を持つエラー コード キャッシュ シンク `errorCodeCache` があるとします。 `errorCodeCache#lookup(errorCode).Message` を呼び出すと、渡されたコードに対応するメッセージが返されます。 
+
+`outputs()` を使用すると、パラメーターは取得されず、複合列の配列としてキャッシュ シンク全体が返されます。 これは、キー列がシンク内で指定されている場合は呼び出すことができず、キャッシュ シンクに行が少数ある場合にのみ使用する必要があります。 一般的なユース ケースでは、増分キーの最大値が追加されます。 キャッシュされた単一の集計行 `CacheMaxKey` に列 `MaxKey` が含まれている場合に最初の値を参照するには、`CacheMaxKey#outputs()[1].MaxKey` を呼び出します。
+
+![キャッシュされた検索](media/data-flow/cached-lookup-example.png "キャッシュされた検索")
 
 ### <a name="locals"></a>ローカル
 

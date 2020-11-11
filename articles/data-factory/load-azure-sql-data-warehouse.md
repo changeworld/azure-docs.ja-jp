@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: ffda2b1d096b3c84e3f1df10e37c44922bab16ef
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 10/30/2020
+ms.openlocfilehash: dcf3db33818448116da53d8a01d0c62aca7bc1af
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632415"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280159"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Synapse Analytics へのデータの読み込み
 
@@ -42,7 +42,7 @@ Azure Data Factory には、Azure Synapse Analytics にデータを読み込む�
 
 * Azure サブスクリプション:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 * Azure Synapse Analytics:SQL データベースからコピーされたデータは、データ ウェアハウスに格納されます。 Azure Synapse Analytics がない場合は、[Azure Synapse Analytics インスタンスの作成](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md)の手順を参照してください。
-* Azure SQL Database:このチュートリアルでは、Azure SQL Database 内に Adventure Works LT サンプル データセットからのデータを コピーします。 SQL Database 内にこのサンプル データベースを作成するには、[Azure SQL Database でのサンプル データベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事の手順に従います。
+* Azure SQL Database:このチュートリアルでは、Azure SQL Database 内に Adventure Works LT サンプル データセットからのデータをコピーします。 SQL Database 内にこのサンプル データベースを作成するには、[Azure SQL Database でのサンプル データベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事の手順に従います。
 * Azure ストレージ アカウント:Azure Storage は、一括コピー操作の _ステージング_ BLOB として使用されます。 Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」の手順をご覧ください。
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
@@ -113,9 +113,6 @@ Azure Data Factory には、Azure Synapse Analytics にデータを読み込む�
     d. 新しく作成したリンクされたサービスをシンクとして選択し、 **[次へ]** をクリックします。
 
 7. **[テーブル マッピング]** ページで、コンテンツを確認し、 **[次へ]** を選択します。 インテリジェント テーブル マッピングが表示されます。 ソース テーブルは、テーブル名に基づくコピー先テーブルにマップされます。 コピー先にソース テーブルが存在しない場合、Azure Data Factory によって同名のコピー先テーブルが既定で作成されます。 既存のコピー先テーブルにソース テーブルをマップすることもできます。
-
-   > [!NOTE]
-   > Azure Synapse Analytics シンクに対するテーブルの自動作成は、SQL Server または Azure SQL Database がソースの場合に適用されます。 別のソース データ ストアからデータをコピーする場合は、データのコピーを実行する前にシンク Azure Synapse Analytics 内にスキーマを事前に作成しておく必要があります。
 
    ![[テーブル マッピング] ページ](./media/load-azure-sql-data-warehouse/table-mapping.png)
 

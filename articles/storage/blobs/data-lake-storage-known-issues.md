@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/08/2020
+ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 1c887093972507904b007c696214708eb0e2b039
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f995750c1e009febcb9872c230e22921ff9c50c4
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282208"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186588"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -41,7 +41,7 @@ BLOB API と Data Lake Storage Gen2 API では、同じデータを処理でき�
 
 このセクションでは、BLOB API と Data Lake Storage Gen2 API を使用して同じデータを操作する場合の問題と制限事項について説明します。
 
-* API と Data Lake Storage API の両方を使用して、ファイルの同じインスタンスに書き込むことはできません。 Data Lake Storage Gen2 API を使用してファイルに書き込むと、そのファイルのブロックは、[Get Block List](https://docs.microsoft.com/rest/api/storageservices/get-block-list) BLOB API への呼び出しで認識されなくなります。 唯一の例外は、上書きする場合です。 いずれかの API を使用して、ファイルまたは BLOB を上書きできます。
+* BLOB API と Data Lake Storage API を使用して、ファイルの同じインスタンスに書き込むことはできません。 Data Lake Storage Gen2 API を使用してファイルに書き込むと、そのファイルのブロックは、[Get Block List](https://docs.microsoft.com/rest/api/storageservices/get-block-list) BLOB API への呼び出しで認識されなくなります。 唯一の例外は、上書きする場合です。 いずれかの API を使用して、ファイルまたは BLOB を上書きできます。
 
 * 区切り記号を指定せずに [List Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 操作を使用した場合、結果にはディレクトリと BLOB の両方が含まれます。 区切り記号を使用する場合は、スラッシュ (`/`) のみを使用してください。 サポートされている区切り記号はこれだけです。
 
@@ -68,13 +68,13 @@ BLOB API と Data Lake Storage Gen2 API では、同じデータを処理でき�
 
 ## <a name="azcopy"></a>AzCopy
 
-AzCopy の最新バージョン ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)) のみを使用してください。  AzCopy の以前のバージョン (AzCopy v8.1 など) はサポートされていません。
+AzCopy の最新バージョン ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)) のみを使用してください。 AzCopy の以前のバージョン (AzCopy v8.1 など) はサポートされていません。
 
 <a id="storage-explorer"></a>
 
 ## <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
 
-バージョン  `1.6.0` 以降のみを使用します。
+バージョン `1.6.0` 以降のみを使用します。
 
 <a id="explorer-in-portal"></a>
 
@@ -92,38 +92,15 @@ REST API を使用して動作するサード パーティ製アプリケーシ�
 
 コンテナーへの[匿名読み取りアクセス](storage-manage-access-to-resources.md)が許可されている場合、そのコンテナーやコンテナーに含まれているファイルには ACL は作用しません。
 
-### <a name="diagnostic-logs"></a>診断ログ
+## <a name="diagnostic-logs"></a>診断ログ
 
 リテンション期間の設定はまだサポートされていませんが、Azure Storage Explorer、REST、SDK などのサポートされているツールを使用して、ログを手動で削除することができます。
 
-## <a name="issues-specific-to-premium-performance-blockblobstorage-storage-accounts"></a>Premium パフォーマンス BlockBlobStorage ストレージ アカウントに固有の問題
+## <a name="lifecycle-management-policies-with-premium-tier-for-azure-data-lake-storage"></a>Azure Data Lake Storage の Premium レベルでのライフサイクル管理ポリシー
 
-### <a name="diagnostic-logs"></a>診断ログ
+Premium レベルで格納されているデータは、ホット、クール、アーカイブ層間で移動することはできません。 ただし、Premium レベルのデータを別のアカウントのホット アクセス層にコピーすることはできます。
 
-Azure portal を使用して診断ログを有効にすることはできません。 PowerShell を使用して有効にすることができます。 次に例を示します。
-
-```powershell
-#To login
-Connect-AzAccount
-
-#Set default block blob storage account.
-Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumGen2Group
-
-#Enable logging
-Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
-```
-
-### <a name="lifecycle-management-policies"></a>ライフサイクル管理ポリシー
-
-- ライフサイクル管理ポリシーは、汎用 v2 アカウントでのみサポートされます。 Premium BlockBlobStorage ストレージ アカウントではまだサポートされていません。
-- Premium レベルから下位レベルにデータを移動することはできません。
-
-
-### <a name="hdinsight-support"></a>HDInsight のサポート
-
-HDInsight クラスターを作成しても、階層型名前空間機能が有効になっている BlockBlobStorage アカウントはまだ選択できません。 ただし、アカウントを作成した後で、そのアカウントをクラスターにアタッチすることはできます。
-
-### <a name="dremio-support"></a>Dremio のサポート
+## <a name="dremio-support-with-premium-performance-blockblobstorage-storage-accounts"></a>Premium パフォーマンス BlockBlobStorage ストレージ アカウントでの Dremio のサポート
 
 Dremio は、階層型名前空間機能が有効になっている BlockBlobStorage アカウントにまだ接続していません。 
 

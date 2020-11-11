@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/09/2020
+ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 7248dff25af4693f7f264c8cbf42236612dddda0
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: a808a6bb0d4dc75f02147bbfdd74d17b34e96f6e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931072"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313971"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>コンテナーと BLOB の匿名パブリック読み取りアクセスを構成する
 
@@ -53,10 +53,7 @@ Azure Storage では、コンテナーと BLOB へのオプションの匿名パ
 
 ストレージ アカウントのパブリック アクセスを許可または禁止するには、アカウントの **AllowBlobPublicAccess** プロパティを構成します。 このプロパティは、Azure Resource Manager デプロイ モデルで作成されたすべてのストレージ アカウントで使用できます。 詳細については、「[ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
 
-> [!NOTE]
-> **AllowBlobPublicAccess** プロパティは既定では未設定で、明示的に設定されるまで値を返しません。 プロパティ値が **null** か **true** の場合、ストレージ アカウントではパブリック アクセスが許可されます。
->
-> **AllowBlobPublicAccess** プロパティは、Azure パブリック クラウドと Azure Government クラウドのすべてのストレージ アカウントで使用できます。
+**AllowBlobPublicAccess** プロパティは既定では未設定で、明示的に設定されるまで値を返しません。 プロパティ値が **null** か **true** の場合、ストレージ アカウントによってパブリック アクセスが許可されます。
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -132,12 +129,12 @@ az storage account show \
 
 # <a name="template"></a>[テンプレート](#tab/template)
 
-テンプレートを使用したストレージ アカウントのパブリック アクセスを許可または禁止するには、**AllowBlobPublicAccess** プロパティを **true** または **false** に設定してテンプレートを作成します。 次の手順は、Azure portal でテンプレートを作成する方法について説明しています。
+テンプレートを使用したストレージ アカウントのパブリック アクセスを許可または禁止するには、 **AllowBlobPublicAccess** プロパティを **true** または **false** に設定してテンプレートを作成します。 次の手順は、Azure portal でテンプレートを作成する方法について説明しています。
 
 1. Azure portal で、 **[リソースの作成]** を選択します。
-1. **[Marketplace を検索]** で「**template deployment**」と入力し、**Enter** キーを押します。
+1. **[Marketplace を検索]** で「 **template deployment** 」と入力し、 **Enter** キーを押します。
 1. **[テンプレートのデプロイ] (カスタム テンプレートを使用したデプロイ) (プレビュー)** 、 **[作成]** 、 **[エディターで独自のテンプレートを作成する]** の順に選択します。
-1. テンプレート エディターで、次の JSON を貼り付けて新しいアカウントを作成し、**AllowBlobPublicAccess** プロパティを **true** または **false** に設定します。 山かっこ内のプレースホルダーは、実際の値に置き換えてください。
+1. テンプレート エディターで、次の JSON を貼り付けて新しいアカウントを作成し、 **AllowBlobPublicAccess** プロパティを **true** または **false** に設定します。 山かっこ内のプレースホルダーは、実際の値に置き換えてください。
 
     ```json
     {
@@ -168,7 +165,7 @@ az storage account show \
     ```
 
 1. テンプレートを保存します。
-1. リソース グループ パラメーターを指定し、 **[レビューと作成]** ボタンを選択してテンプレートをデプロイし、**allowBlobPublicAccess** プロパティが構成されたストレージ アカウントを作成します。
+1. リソース グループ パラメーターを指定し、 **[レビューと作成]** ボタンを選択してテンプレートをデプロイし、 **allowBlobPublicAccess** プロパティが構成されたストレージ アカウントを作成します。
 
 ---
 
@@ -207,7 +204,7 @@ Azure portal で 1 つ以上の既存のコンテナーのパブリック アク
 
 ストレージ アカウントのパブリック アクセスが禁止されている場合、コンテナーのパブリック アクセス レベルは設定できません。 コンテナーのパブリック アクセス レベルを設定しようとすると、アカウントでパブリック アクセスが禁止されているため、設定が無効になります。
 
-:::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="アカウントの BLOB パブリック アクセスを許可または禁止する方法を示すスクリーンショット":::
+:::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="パブリック アクセスが禁止されているときはコンテナーのパブリック アクセス レベルの設定がブロックされることを示すスクリーンショット":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

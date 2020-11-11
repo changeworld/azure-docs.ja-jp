@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: e4b85c609c53c46cfab71f37b8427eb1cee29f1a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7ab9b5166aab07e0629cdd280f8cdccbd0702c99
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518009"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927721"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -227,6 +227,9 @@ Vnet は、他の VNet から、および Azure インフラストラクチャ�
 
 ### <a name="is-there-information-available-about-securing-vnets"></a>VNet のセキュリティ保護に関する情報はありますか。
 はい。 詳細については、「[Azure のネットワーク セキュリティの概要](../security/fundamentals/network-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
+
+### <a name="do-virtual-networks-store-customer-data"></a>顧客データは仮想ネットワークに格納されるのですか?
+いいえ。 仮想ネットワークに顧客データは格納されません。 
 
 ## <a name="apis-schemas-and-tools"></a>API、スキーマ、およびツール
 

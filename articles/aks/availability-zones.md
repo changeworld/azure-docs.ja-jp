@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 7d91491a2f521d974f15878791739a70a31c1bbe
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2f7132ffa1fa55d1dfd8043677bf9695a589b7af
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745819"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043029"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する
 
@@ -52,7 +52,7 @@ Azure CLI バージョン 2.0.76 以降がインストールされて構成さ�
 
 Azure マネージド ディスクを使用するボリュームは、現在、ゾーン冗長リソースではありません。 ボリュームをゾーン間で接続することはできず、ターゲット ポッドをホストする特定のノードと同じゾーンに併置する必要があります。
 
-ステートフル ワークロードを実行する必要がある場合は、ポッド仕様でノード プール テイントと容認を使用して、ポッド スケジューリングをディスクと同じゾーンにグループ化します。 または、ゾーン間でスケジュールされているときに、ポッドにアタッチできる Azure Files などのネットワークベースのストレージを使用します。
+Kubernetes では、バージョン 1.12 以降で、Azure 可用性ゾーンが認識されています。 ユーザーは、複数ゾーンの AKS クラスターで Azure マネージド ディスクを参照して PersistentVolumeClaim オブジェクトをデプロイすることができます。また、適切な可用性ゾーン内にこの PVC を要求するあらゆるポッドの[スケジュール設定が Kubernetes によって管理](https://kubernetes.io/docs/setup/best-practices/multiple-zones/#storage-access-for-zones)されます。
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>AKS クラスターの可用性ゾーンの概要
 
@@ -120,7 +120,20 @@ Name:       aks-nodepool1-28993262-vmss000002
 
 エージェント プールにさらにノードを追加すると、Azure Platform は、基になる VM を指定の複数の可用性ゾーンに自動的に分散させます。
 
-新しい Kubernetes バージョン (1.17.0 以降以降) では、AKS では非推奨の `failure-domain.beta.kubernetes.io/zone` に加えて新しいラベル `topology.kubernetes.io/zone` が使用されていることに注意してください。
+新しい Kubernetes バージョン (1.17.0 以降以降) では、AKS では非推奨の `failure-domain.beta.kubernetes.io/zone` に加えて新しいラベル `topology.kubernetes.io/zone` が使用されていることに注意してください。 次のスクリプトを実行すると、上記と同じ結果を得ることができます。
+
+```console
+kubectl get nodes -o custom-columns=NAME:'{.metadata.name}',REGION:'{.metadata.labels.topology\.kubernetes\.io/region}',ZONE:'{metadata.labels.topology\.kubernetes\.io/zone}'
+```
+
+これにより、さらに簡潔な出力が得られます。
+
+```console
+NAME                                REGION   ZONE
+aks-nodepool1-34917322-vmss000000   eastus   eastus-1
+aks-nodepool1-34917322-vmss000001   eastus   eastus-2
+aks-nodepool1-34917322-vmss000002   eastus   eastus-3
+```
 
 ## <a name="verify-pod-distribution-across-zones"></a>複数のゾーンへのポッドの分散を確認する
 

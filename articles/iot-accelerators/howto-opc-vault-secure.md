@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: e95edf21b7d6dce29b31220533269439fac120e4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a1b7564988c8a4d63a37b53d18ed3a7359e65d72
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281957"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926412"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>OPC Vault 証明書管理サービスの使用
 
@@ -64,14 +64,14 @@ ms.locfileid: "91281957"
 
 4. フォームにサブジェクト名とドメイン名を入力します。 秘密キーとして、PEM または PFX を選択し、パスワードを指定します。 **[Generate New KeyPair]\(新しいキー ペアの生成\)** を選択し、証明書の要求を作成します。
 
-   ![証明書要求の詳細の表示のスクリーンショット](media/howto-opc-vault-secure/approve-reject.png "証明書の承認")
+   ![[証明書要求の詳細の表示] 画面と [Generate New KeyPair]\(新しいキー ペアの生成\) ボタンを示すスクリーンショット。](media/howto-opc-vault-secure/approve-reject.png "証明書の承認")
 
 5. 承認では、ユーザーが承認者ロールと Azure Key Vault での署名アクセス許可を持っている必要があります。 一般的なワークフローでは、承認者ロールと要求者ロールを別々のユーザーに割り当てる必要があります。 実際のキー ペアの作成と署名操作を開始する場合は **[Approve]\(承認\)** を選択し、キャンセルする場合は **[Reject]\(拒否\)** を選択します。 新しいキー ペアが作成され、証明書の要求元からダウンロードされるまで Azure Key Vault に安全に格納されます。 公開キーを使用して生成された証明書は、CA によって署名されます。 これらの操作の完了には数秒かかることがあります。
 
    ![下部に承認メッセージが表示された証明書要求の詳細の表示のスクリーンショット](media/howto-opc-vault-secure/view-key-pair.png "キー ペアの表示")
 
 7. 生成された秘密キー (PFX または PEM) と証明書 (DER) は、選択した形式でバイナリ ファイルとしてここからダウンロードできます。 たとえば、証明書をコマンド ラインまたはテキスト エントリにコピーして貼り付けるには、base64 でエンコードされたバージョンを使用することもできます。 
-8. 秘密キーをダウンロードして安全に保存したら、**[Delete Private Key]\(秘密キーの削除\)** を選択できます。 公開キーを持つ証明書は、後で使用できるように残します。
+8. 秘密キーをダウンロードして安全に保存したら、 **[Delete Private Key]\(秘密キーの削除\)** を選択できます。 公開キーを持つ証明書は、後で使用できるように残します。
 9. CA の署名済み証明書が使用されているため、CA 証明書と証明書失効リスト (CRL) もここでダウンロードする必要があります。
 
 これで新しいキー ペアの適用方法について、OPC UA デバイスに依存するようになりました。 通常、CA 証明書と CRL は `trusted` フォルダーにコピーされますが、アプリケーション証明書の公開キーと秘密キーは証明書ストアの `own` フォルダーに適用されます。 一部のデバイスでは、証明書の更新にサーバー プッシュが既にサポートされている場合があります。 ご利用の OPC UA デバイスのドキュメントを参照してください。
@@ -83,7 +83,7 @@ ms.locfileid: "91281957"
 
    ![新しい証明書の要求のスクリーンショット](media/howto-opc-vault-secure/request-new-certificate.png "新しい証明書の要求")
 
-3. ご使用のアプリケーションの新しい署名済み証明書を要求するには、**[Request new Certificate with Signing Request]\(署名要求で新しい証明書を要求する\)** を選択します。
+3. ご使用のアプリケーションの新しい署名済み証明書を要求するには、 **[Request new Certificate with Signing Request]\(署名要求で新しい証明書を要求する\)** を選択します。
 
    ![新しい証明書の生成のスクリーンショット](media/howto-opc-vault-secure/generate-new-certificate.png "新しい証明書の生成")
 
@@ -93,10 +93,10 @@ ms.locfileid: "91281957"
 
 5. 承認では、ユーザーが承認者ロールと Azure Key Vault での署名アクセス許可を持っている必要があります。 実際の署名操作を開始する場合は **[Approve]\(承認\)** を選択し、キャンセルする場合は **[Reject]\(拒否\)** を選択します。 公開キーを使用して生成された証明書は、CA によって署名されます。 この操作の完了には数秒かかることがあります。
 
-   ![下部に承認メッセージが表示された証明書要求の詳細の表示のスクリーンショット](media/howto-opc-vault-secure/view-cert-csr.png "証明書の表示")
+   ![[証明書要求の詳細の表示] 画面を示すスクリーンショット。下部には承認メッセージが表示されています。](media/howto-opc-vault-secure/view-cert-csr.png "証明書の表示")
 
 6. 生成された証明書 (DER) は、ここからバイナリ ファイルとしてダウンロードできます。 たとえば、証明書をコマンド ラインまたはテキスト エントリにコピーして貼り付けるには、base64 でエンコードされたバージョンを使用することもできます。 
-10. 証明書をダウンロードして安全に保存したら、**[Delete Certificate]\(証明書の削除\)** を選択できます。
+10. 証明書をダウンロードして安全に保存したら、 **[Delete Certificate]\(証明書の削除\)** を選択できます。
 11. CA の署名済み証明書が使用されているため、CA 証明書と CRL もここでダウンロードする必要があります。
 
 これで新しい証明書の適用方法について、OPC UA デバイスに依存するようになりました。 通常、CA 証明書と CRL は `trusted` フォルダーにコピーされますが、アプリケーション証明書は証明書ストアの `own` フォルダーに適用されます。 一部のデバイスでは、証明書の更新にサーバー プッシュが既にサポートされている場合があります。 ご利用の OPC UA デバイスのドキュメントを参照してください。

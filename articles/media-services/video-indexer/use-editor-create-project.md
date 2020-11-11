@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
-ms.openlocfilehash: 5eaf17281fef32d682a2dac17b379faf7ec23a53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28186a7dcced47a42b3249f1f74b13e969b41978
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970084"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041351"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>Video Indexer エディターを使用してプロジェクトを作成する
 
@@ -35,7 +35,7 @@ Video Indexer Web サイトでは、ビデオの詳細な分析情報を使用�
 1. **[プロジェクト]** タブを選択します。以前にプロジェクトを作成したことがある場合、他のすべてのプロジェクトがここに表示されます。
 1. **[新しいプロジェクトの作成]** をクリックします。  
 
-    ![新しいプロジェクト](./media/video-indexer-view-edit/new-project.png)
+    ![[Video Indexer] ページのスクリーンショット。[プロジェクト] タブが選択されています。](./media/video-indexer-view-edit/new-project.png)
 1. 鉛筆アイコンをクリックして、プロジェクトに名前を付けます。 「Untitled project」というテキストをプロジェクト名に置き換えて、チェックマークをクリックします。
 
     ![新しいプロジェクト](./media/video-indexer-view-edit/new-project3.png)

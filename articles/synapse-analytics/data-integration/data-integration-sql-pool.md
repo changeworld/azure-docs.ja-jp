@@ -1,30 +1,30 @@
 ---
-title: SQL プールにデータを取り込む
-description: Azure Synapse Analytics の SQL プールにデータを取り込む方法について説明します
+title: 専用 SQL プールにデータを取り込む
+description: Azure Synapse Analytics の専用 SQL プールにデータを取り込む方法について説明します
 services: synapse-analytics
 author: djpmsft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
+ms.date: 11/03/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 02efaf3f0382a7af63717e777036637de2bbec25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44d17bafe534fea2d408c92a3a01efb699250a78
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033202"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317781"
 ---
-# <a name="ingest-data-into-a-sql-pool"></a>SQL プールにデータを取り込む
+# <a name="ingest-data-into-a-dedicated-sql-pool"></a>専用 SQL プールにデータを取り込む
 
-この記事では、Azure Synapse Analytics を使用して、Azure Data Lake Gen 2 ストレージ アカウントから SQL プールにデータを取り込む方法について説明します。
+この記事では、Azure Data Lake Gen 2 ストレージ アカウントから Azure Synapse Analytics の専用 SQL プールにデータを取り込む方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
-* **Azure ストレージ アカウント**: "*ソース*" データ ストアとして Azure Data Lake Storage Gen 2 を使用します。 ストレージ アカウントがない場合の作成手順については、「[Azure Storage アカウントの作成](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください。
-* **Azure Synapse Analytics**:SQL プールを "*シンク*" データ ストアとして使用します。 Azure Synapse Analytics インスタンスをお持ちでない場合、SQL プールを作成する手順については、[SQL プールの作成](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
+* **Azure サブスクリプション** :Azure サブスクリプションをお持ちでない場合は、開始する前に [無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
+* **Azure ストレージ アカウント** : " *ソース* " データ ストアとして Azure Data Lake Storage Gen 2 を使用します。 ストレージ アカウントがない場合の作成手順については、「[Azure Storage アカウントの作成](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください。
+* **Azure Synapse Analytics** :専用 SQL プールを " *シンク* " データ ストアとして使用します。 Azure Synapse Analytics インスタンスをお持ちでない場合、[専用 SQL プールの作成](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページでその作成手順を参照してください。
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 
@@ -39,9 +39,9 @@ Azure Synapse Analytics で、リンクされたサービスとは、他のサ�
 
 ## <a name="create-pipeline"></a>パイプラインの作成
 
-パイプラインには、一連のアクティビティを実行するための論理フローが含まれています。 このセクションでは、ADLS Gen2 から SQL プールにデータを取り込むコピー アクティビティを含んだパイプラインを作成します。
+パイプラインには、一連のアクティビティを実行するための論理フローが含まれています。 このセクションでは、ADLS Gen2 から専用 SQL プールにデータを取り込むコピー アクティビティを含んだパイプラインを作成します。
 
-1. **[調整]** タブに移動します。パイプライン ヘッダーの横にあるプラス符号のアイコンを選択し、 **[パイプライン]** を選択します。
+1. **[統合]** タブに移動します。パイプライン ヘッダーの横にあるプラス符号のアイコンを選択し、 **[パイプライン]** を選択します。
 1. アクティビティ ウィンドウの **[Move and Transform]\(移動と変換\)** で、 **[データ コピー]** をパイプライン キャンバス上にドラッグします。
 1. [コピー アクティビティ] を選択し、 **[ソース]** タブに移動します。 **[新規]** を選択して、新しいソース データセットを作成します。
 1. 使用するデータ ストアとして、[Azure Data Lake Storage Gen2] を選択し、[続行] を選択します。
@@ -68,7 +68,7 @@ Azure Synapse Analytics で、リンクされたサービスとは、他のサ�
 1. ツール バーの **[トリガーの追加]** を選択し、 **[Trigger Now]\(今すぐトリガー\)** を選択します。 **[Pipeline Run]\(パイプラインの実行\)** ページで **[完了]** を選択します。  
 1. 左側のサイドバーにある **[監視]** タブに移動します。 手動トリガーによってトリガーされたパイプラインの実行が表示されます。 **[アクション]** 列のリンクを使用して、アクティビティの詳細を表示したりパイプラインを再実行したりできます。
 1. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択します。 この例では、アクティビティが 1 つだけなので、一覧に表示されるエントリは 1 つのみです。 コピー操作の詳細を確認するために、 **[アクション]** 列にある **[詳細]** リンク (眼鏡アイコン) を選択します。 再度パイプラインの実行ビューに移動するには、一番上にある **[Pipeline Runs]\(パイプラインの実行\)** を選択します。 表示を更新するには、 **[最新の情報に更新]** を選択します。
-1. データが SQL プールに正しく書き込まれていることを確認します。
+1. データが専用 SQL プールに正しく書き込まれていることを確認します。
 
 
 ## <a name="next-steps"></a>次のステップ
