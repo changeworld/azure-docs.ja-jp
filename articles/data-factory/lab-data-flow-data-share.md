@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 1c8958062c7430f98db0925c2b3996887bfe5548
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 11f4e7c50acc8256722949a50760c574d3b9d9e9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637362"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318247"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Azure Data Factory と Azure Data Share を使用したデータ統合
 
@@ -346,8 +346,6 @@ Azure Data Lake Storage にデータを正しくコピーできたら、その�
 
     ![データセットの追加 SQL](media/lab-data-flow-data-share/add-dataset-sql.png)
 
-> [!NOTE]
-> SQL Data Warehouse は現在、Azure Synapse Analytics という名称になっています
 
 1. 次に進む前に実行すべきスクリプトが提供されます。 提供されたスクリプトによって、Azure Data Share MSI が自己を認証するためのユーザーが SQL データベースに作成されます。 
 

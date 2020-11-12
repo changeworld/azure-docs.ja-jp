@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 11/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 7690977f23b193bb3ba282df14d348b3fac0ad6b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: fe83a012cac68f705bc9fabc7748f5a7c7c61bbb
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457539"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330571"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>チュートリアル:Atlassian Cloud と Azure Active Directory の統合
 
@@ -158,7 +158,7 @@ Atlassian Cloud に対して Azure AD SSO を構成してテストするには�
    
 1. Atlassian Cloud アプリケーションでは、特定の形式の SAML アサーションを受け取るため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 属性マッピングは、 **[編集]** アイコンをクリックして編集できます。 
 
-   ![属性](./media/atlassian-cloud-tutorial/default-attributes.png)
+   ![属性](./media/atlassian-cloud-tutorial/edit-attribute.png)
    
    1. Azure AD テナントの属性マッピング (Microsoft 365 ライセンスあり)
       
@@ -172,7 +172,7 @@ Atlassian Cloud に対して Azure AD SSO を構成してテストするには�
       
       c. 最終的な属性マッピングは、次のようになります。
 
-      ![画像 2](common/default-attributes.png)
+      ![画像 2](./media/atlassian-cloud-tutorial/default-attributes-1.png)
       
    1. Azure AD テナントの属性マッピング (Microsoft 365 ライセンスなし) 
 
@@ -186,7 +186,7 @@ Atlassian Cloud に対して Azure AD SSO を構成してテストするには�
          
       c. 最終的な属性マッピングは、次のようになります。
 
-      ![画像 4](common/default-attributes.png)
+      ![画像 4](./media/atlassian-cloud-tutorial/default-attributes-2.png)
      
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -250,6 +250,6 @@ Azure AD ユーザーが Atlassian Cloud にサインインできるようにす
 また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで [Atlassian Cloud] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Atlassian Cloud に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Atlassian Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

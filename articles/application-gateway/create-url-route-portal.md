@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 02332e190def7770fa57977461d57766f3dee13a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 407bd5679c6afebf26c2e6b768e0f8513ac39123
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88205574"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397588"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用してパス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
 
-[アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成するときに、Azure Portal を使用して [URL パス ベースのルーティング規則](application-gateway-url-route-overview.md)を構成できます。 このチュートリアルでは、仮想マシンを使用してバックエンド プールを作成します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するようにルーティング規則を作成します。
+[アプリケーション ゲートウェイ](./overview.md)を作成するときに、Azure Portal を使用して [URL パス ベースのルーティング規則](./url-route-overview.md)を構成できます。 このチュートリアルでは、仮想マシンを使用してバックエンド プールを作成します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するようにルーティング規則を作成します。
 
 この記事では、次のことについて説明します。
 
@@ -45,11 +45,11 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 2. [人気順] の一覧で **[Windows Server 2016 Datacenter]** を選択します。
 3. 次の仮想マシンの値を入力します。
 
-    - **[リソース グループ]** : **[新規作成]** を選択し、「*myResourceGroupAG*」と入力します。
+    - **[リソース グループ]** : **[新規作成]** を選択し、「 *myResourceGroupAG* 」と入力します。
     - **[仮想マシン名]** : *myVM1*
     - **[リージョン]** : *(米国) 米国東部*
     - **[ユーザー名]** : *azureuser*
-    - **パスワード**:*Azure123456!*
+    - **パスワード** : *Azure123456!*
 
 
 4. **[Next:Disks]\(次へ: ディスク\)** を選択します。
@@ -71,7 +71,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 ### <a name="install-iis"></a>IIS のインストール
 
-1. 対話型シェルを開いて、**PowerShell** に設定されていることを確認します。
+1. 対話型シェルを開いて、 **PowerShell** に設定されていることを確認します。
 
     ![カスタム拡張機能のインストール](./media/application-gateway-create-url-route-portal/application-gateway-extension.png)
 
@@ -91,26 +91,26 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
          -Settings $publicSettings
     ```
 
-3. さらに 2 つの仮想マシンを作成し、終了したばかりの手順を使用して、IIS をインストールします。 名前および Set-AzVMExtension の VMName の値として、*myVM2* と *myVM3* という名前を入力します。
+3. さらに 2 つの仮想マシンを作成し、終了したばかりの手順を使用して、IIS をインストールします。 名前および Set-AzVMExtension の VMName の値として、 *myVM2* と *myVM3* という名前を入力します。
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
 1. Azure portal の左側のメニューにある **[リソースの作成]** を選択します。 **[新規作成]** ウィンドウが表示されます。
 
-2. **[ネットワーク]** を選択し、**おすすめ**のリストで **[Application Gateway]** を選択します。
+2. **[ネットワーク]** を選択し、 **おすすめ** のリストで **[Application Gateway]** を選択します。
 
 ### <a name="basics-tab"></a>[基本] タブ
 
 1. **[基本]** タブで、次のアプリケーション ゲートウェイの設定に以下の値を入力します。
 
-   - **[リソース グループ]** :リソース グループには、**myResourceGroupAG** を選択します。
-   - **[アプリケーション ゲートウェイ名]** :アプリケーション ゲートウェイの名前として「*myAppGateway*」と入力します。
+   - **[リソース グループ]** :リソース グループには、 **myResourceGroupAG** を選択します。
+   - **[アプリケーション ゲートウェイ名]** :アプリケーション ゲートウェイの名前として「 *myAppGateway* 」と入力します。
    - **[リージョン]** : **[(米国) 米国東部]** を選択します。
 
         ![新しいアプリケーション ゲートウェイの作成:基本](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
 2.  **[仮想ネットワークの構成]** で、仮想ネットワークの名前として **myVNet** を選択します。
-3. サブネットには、**myAGSubnet** を選択します。
+3. サブネットには、 **myAGSubnet** を選択します。
 3. 他の設定は既定値をそのまま使用し、 **[次へ:フロントエンド]** を選択します。
 
 ### <a name="frontends-tab"></a>[フロントエンド] タブ
@@ -120,7 +120,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
    > [!NOTE]
    > Application Gateway v2 SKU では、 **[パブリック]** フロントエンド IP 構成のみを選択できます。 プライベート フロントエンド IP 構成は、この v2 SKU では現在有効になっていません。
 
-2. **[パブリック IP アドレス]** として **[新規作成]** を選択し、パブリック IP アドレス名として「*myAGPublicIPAddress*」と入力し、 **[OK]** を選択します。 
+2. **[パブリック IP アドレス]** として **[新規作成]** を選択し、パブリック IP アドレス名として「 *myAGPublicIPAddress* 」と入力し、 **[OK]** を選択します。 
 3. **バックエンド** を選択します。
 
 ### <a name="backends-tab"></a>[バックエンド] タブ
@@ -131,12 +131,12 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 2. 開いた **[バックエンド プールの追加]** ウィンドウで、次の値を入力して空のバックエンド プールを作成します。
 
-    - **Name**:バックエンド プールの名前として「*myBackendPool*」と入力します。
+    - **Name** :バックエンド プールの名前として「 *myBackendPool* 」と入力します。
 3. **[バックエンド ターゲット]** 、 **[ターゲットの種類]** の下のドロップダウン リストで **[仮想マシン]** を選択します。
 
 5. **[ターゲット]** で、 **myVM1** のネットワーク インターフェイスを選択します。
 6. **[追加]** を選択します。
-7. 手順を繰り返し、*myVM2* をターゲットとして指定した *Images* バックエンド プールと、*myVM3* をターゲットとして指定した *Video* バックエンド プールを追加します。
+7. 手順を繰り返し、 *myVM2* をターゲットとして指定した *Images* バックエンド プールと、 *myVM3* をターゲットとして指定した *Video* バックエンド プールを追加します。
 8. **[追加]** を選択してバックエンド プールの構成を保存し、 **[バックエンド]** タブに戻ります。
 
 4. **[バックエンド]** タブで、 **[次へ:構成]** を選択します。
@@ -147,13 +147,13 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 1. **[ルーティング規則]** 列で **[規則を追加する]** を選択します。
 
-2. 開いた **[ルーティング規則の追加]** ウィンドウで、 **[規則名]** に「*myRoutingRule*」と入力します。
+2. 開いた **[ルーティング規則の追加]** ウィンドウで、 **[規則名]** に「 *myRoutingRule* 」と入力します。
 
 3. ルーティング規則にはリスナーが必要です。 **[ルーティング規則の追加]** ウィンドウ内の **[リスナー]** タブで、リスナーの次の値を入力します。
 
-    - **[リスナー名]** :リスナーの名前として「*myListener*」と入力します。
+    - **[リスナー名]** :リスナーの名前として「 *myListener* 」と入力します。
     - **[フロントエンド IP]** : **[パブリック]** を選択して、フロントエンド用に作成したパブリック IP を選択します。
-    - **ポート**:「*8080*」と入力します。
+    - **ポート** :「 *8080* 」と入力します。
   
         **[リスナー]** タブで他の設定の既定値をそのまま使用し、 **[バックエンド ターゲット]** タブを選択して、ルーティング規則の残りの部分を構成します。
 
@@ -161,16 +161,16 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 5. **[HTTP 設定]** には **[新規作成]** を選択して新しい HTTP 設定を作成します。 HTTP 設定によって、ルーティング規則の動作が決まります。 
 
-6. 開いた **[HTTP 設定の追加]** ウィンドウで、 **[HTTP 設定名]** として「*myHTTPSetting*」と入力します。 **[HTTP 設定の追加]** ウィンドウで他の設定の既定値をそのまま使用し、 **[追加]** を選択して **[ルーティング規則の追加]** ウィンドウに戻ります。
+6. 開いた **[HTTP 設定の追加]** ウィンドウで、 **[HTTP 設定名]** として「 *myHTTPSetting* 」と入力します。 **[HTTP 設定の追加]** ウィンドウで他の設定の既定値をそのまま使用し、 **[追加]** を選択して **[ルーティング規則の追加]** ウィンドウに戻ります。
 7. **[パスベースのルーティング]** で、 **[パスベースの規則を作成する複数のターゲットを追加します]** を選択します。
 8. **[パス]** に、「 */images/* \*」と入力します。
-9. **[パスの規則名]** に、「*Images*」と入力します。
+9. **[パスの規則名]** に、「 *Images* 」と入力します。
 10. **[HTTP 設定]** で、 **[myHTTPSetting]** を選択します。
 11. **[バックエンド ターゲット]** で、 **[Images]** を選択します。
 12. **[追加]** を選択して、パスの規則を保存し、 **[ルーティング規則の追加]** タブに戻ります。
 13. 手順を繰り返し、Video 用の別の規則を追加します。
 14. **[追加]** を選択して、ルーティング規則を追加し、 **[構成]** タブに戻ります。
-15. **タグ**、**次へ:確認と作成** をクリックします。
+15. **タグ** 、 **次へ:確認と作成** をクリックします。
 
 > [!NOTE]
 > 既定のケースを処理するために、カスタム */* * パス規則を追加する必要はありません。 これは、既定のバックエンド プールによって自動的に処理されます。
@@ -182,7 +182,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-1. **[すべてのリソース]** を選択し、**myAppGateway** を選択します。
+1. **[すべてのリソース]** を選択し、 **myAppGateway** を選択します。
 
     ![アプリケーション ゲートウェイのパブリック IP アドレスの記録](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
@@ -211,4 +211,4 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure Application Gateway でエンド ツー エンド TLS を有効にする](application-gateway-backend-ssl.md)
+> [Azure Application Gateway でエンド ツー エンド TLS を有効にする](./ssl-overview.md)

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 294a3dc9525ba0a0c533d68027b148ad402cd7ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f69b62f39b7e62eea26cc4d8511505056c6821bf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268844"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321271"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>チュートリアル:CLI からのモデルのトレーニングとデプロイ
 
@@ -39,7 +39,7 @@ ms.locfileid: "91268844"
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
-* ご使用の**ローカル環境**からこのドキュメントの CLI コマンドを使用するには、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) が必要です。
+* ご使用の **ローカル環境** からこのドキュメントの CLI コマンドを使用するには、 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) が必要です。
 
     [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/) を使用する場合は、ブラウザーを使用してクラウド内に存在する CLI にアクセスします。
 
@@ -57,7 +57,7 @@ git clone https://github.com/microsoft/MLOps.git
 
 このプロジェクトの `examples/cli-train-deploy` ディレクトリには、モデルのトレーニング時に使用される以下のファイルが含まれています。
 
-* `.azureml\mnist.runconfig`:__実行構成__ ファイル。 このファイルでは、モデルのトレーニングに必要なランタイム環境を定義します。 この例では、トレーニング環境へのモデルのトレーニングに使用されるデータもマウントします。
+* `.azureml\mnist.runconfig`: __実行構成__ ファイル。 このファイルでは、モデルのトレーニングに必要なランタイム環境を定義します。 この例では、トレーニング環境へのモデルのトレーニングに使用されるデータもマウントします。
 * `scripts\train.py`:トレーニング スクリプト。 このファイルでは、モデルをトレーニングします。
 * `scripts\utils.py`:トレーニング スクリプトによって使用されるヘルパー ファイル。
 * `.azureml\conda_dependencies.yml`:トレーニング スクリプトの実行に必要なソフトウェアの依存関係を定義します。
@@ -67,8 +67,8 @@ git clone https://github.com/microsoft/MLOps.git
 
 リポジトリには、トレーニング済みのモデルを Web サービスとしてデプロイするために使用される以下のファイルが含まれています。
 
-* `aciDeploymentConfig.yml`:__デプロイ構成__ ファイル。 このファイルでは、モデルに必要なホスティング環境を定義します。
-* `inferenceConfig.json`:__推論構成__ファイル。 このファイルでは、モデルを使用してデータをスコア付けするためにサービスによって使用されるソフトウェア環境を定義します。
+* `aciDeploymentConfig.yml`: __デプロイ構成__ ファイル。 このファイルでは、モデルに必要なホスティング環境を定義します。
+* `inferenceConfig.json`: __推論構成__ ファイル。 このファイルでは、モデルを使用してデータをスコア付けするためにサービスによって使用されるソフトウェア環境を定義します。
 * `score.py`:受信データを受け取り、モデルを使用してスコア付けした後、応答を返す python スクリプト。
 * `scoring-env.yml`:モデルと `score.py` スクリプトの実行に必要な conda の依存関係。
 * `testdata.json`:デプロイ済み Web サービスのテストに使用できるデータ ファイル。
@@ -128,7 +128,7 @@ az group create --name <resource-group-name> --location <location>
 }
 ```
 
-リソース グループの操作の詳細については、「[az group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest&preserve-view=true)」を参照してください。
+リソース グループの操作の詳細については、「[az group](//cli/azure/group?preserve-view=true&view=azure-cli-latest)」を参照してください。
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 

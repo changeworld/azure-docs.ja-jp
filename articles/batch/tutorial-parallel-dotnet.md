@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 8c8dcd01c7e97f77e994d021e39ce6a5e591ff9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ea68b8a6cf26db2e4ba440140cfa900cebbb4aa
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537584"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335657"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>チュートリアル:.NET API を使用して Azure Batch で並列ワークロードを実行する
 
@@ -35,7 +35,7 @@ Azure Batch を使用すると、大規模な並列コンピューティング�
 
 * Batch アカウントおよびリンクされた Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
 
-* [Windows 64 ビット版の ffmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-09-21-full_build.zip) (.zip)。 この ZIP ファイルをローカル コンピューターにダウンロードします。 このチュートリアルで必要なのは、この ZIP ファイルのみです。 ファイルを解凍したり、ローカルにインストールしたりする必要はありません。
+* [Windows 64 ビット版の ffmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-10-01-essentials_build.7z) (.zip)。 この ZIP ファイルをローカル コンピューターにダウンロードします。 このチュートリアルで必要なのは、この ZIP ファイルのみです。 ファイルを解凍したり、ローカルにインストールしたりする必要はありません。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -47,7 +47,7 @@ Azure Portal を使用して、ffmpeg を[アプリケーション パッケー�
 
 1. Azure Portal で、 **[その他のサービス]**  >  **[Batch アカウント]** の順にクリックし、Batch アカウントの名前をクリックします。
 3. **[アプリケーション]**  >  **[追加]** の順にクリックします。
-4. **[アプリケーション ID]** に「*ffmpeg*」と入力し、パッケージのバージョンは「*4.3.1*」と入力します。 前にダウンロードした ffmpeg の ZIP ファイルを選択し、 **[OK]** をクリックします。 ffmpeg アプリケーション パッケージが Batch アカウントに追加されます。
+4. **[アプリケーション ID]** に「 *ffmpeg* 」と入力し、パッケージのバージョンは「 *4.3.1* 」と入力します。 前にダウンロードした ffmpeg の ZIP ファイルを選択し、 **[OK]** をクリックします。 ffmpeg アプリケーション パッケージが Batch アカウントに追加されます。
 
 ![アプリケーション パッケージの追加](./media/tutorial-parallel-dotnet/add-application.png)
 
@@ -124,7 +124,7 @@ Elapsed time: 00:09:14.3418742
 
 ![プールのヒート マップ](./media/tutorial-parallel-dotnet/pool.png)
 
-既定の構成でアプリケーションを実行する場合、通常の実行時間は約 **10 分間**です。 プールの作成に最も時間がかかります。
+既定の構成でアプリケーションを実行する場合、通常の実行時間は約 **10 分間** です。 プールの作成に最も時間がかかります。
 
 [!INCLUDE [batch-common-tutorial-download](../../includes/batch-common-tutorial-download.md)]
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: 33d1be493cba9fd9f01ecdbad10afb5330256aa0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 076adbfd4cecf7dae9ffc490e911fcb7ffce48e6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045348"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394834"
 ---
 # <a name="move-vms-to-another-azure-region"></a>VM を別の Azure リージョンに移動する
 
@@ -68,7 +68,7 @@ ms.locfileid: "92045348"
 - Linux VM の場合は、Linux ディストリビューターから提供されるガイダンスに従って、VM で最新の信頼されたルート証明書と証明書失効リストを取得します。
 - 移動したい VM のネットワーク接続を制御するために認証プロキシを使用していないことを確認します。
 
-- 移動しようとしている VM にインターネットへのアクセスが存在しない場合や、ファイアウォール プロキシを使用してアウトバウンド アクセスを制御している場合は、[要件を確認](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms)してください。
+- 移動しようとしている VM にインターネットへのアクセスが存在しない場合や、ファイアウォール プロキシを使用してアウトバウンド アクセスを制御している場合は、[要件を確認](azure-to-azure-tutorial-enable-replication.md#set-up-vm-connectivity)してください。
 
 - ソース ネットワーク レイアウトと現在使用しているすべてのリソースを特定します。 これにはロード バランサー、ネットワーク セキュリティ グループ (NSG)、パブリック IP が含まれますが、それらに限定されません。
 
@@ -103,7 +103,7 @@ ms.locfileid: "92045348"
 1. **[Recovery Services コンテナー]** で、 **[ContosoVMVault]** 、 **[レプリケートされたアイテム]** 、 **[+ 複製]** の順に選択します。
 1. ドロップダウンで、 **[Azure Virtual Machines]** を選択します。
 1. **[ソースの場所]** で、現在 VM が実行されているソースの Azure リージョンを選択します。
-1. Resource Manager デプロイ モデルを選択します。 次に、**ソース サブスクリプション**と**ソース リソース グループ**を選択します。
+1. Resource Manager デプロイ モデルを選択します。 次に、 **ソース サブスクリプション** と **ソース リソース グループ** を選択します。
 1. **[OK]** を選択して設定を保存します。
 
 ### <a name="enable-replication-for-azure-vms-and-start-copying-the-data"></a>Azure VM のレプリケーションを有効にしてデータのコピーを開始する
@@ -116,7 +116,7 @@ Site Recovery は、サブスクリプションとリソース グループに�
 1. このチュートリアルでは、他の既定の設定をそのまま使用します。
 1. **[レプリケーションを有効にする]** を選択します。 この手順により VM レプリケーションを有効にするジョブが開始されます。
 
-    ![レプリケーションを有効にする](media/tutorial-migrate-azure-to-azure/settings.png)
+
 
 ## <a name="move"></a>[詳細ビュー]
 

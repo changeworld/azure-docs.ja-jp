@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc, devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: e9bbfd311d6a05d0dd328a63c7d11e14ab0d7e4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca9ce27583168dfee1a597fce559afad38a3a8c7
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069614"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422928"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>チュートリアル:Python および TensorFlow を使用して Azure Functions で機械学習モデルを適用する
 
@@ -122,18 +122,18 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
     func init --worker-runtime python
     ```
 
-    初期化後、*start* フォルダーにはプロジェクト用の各種ファイルが格納されます。たとえば、[local.settings.json](functions-run-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 *local.settings.json* には Azure からダウンロードしたシークレットを含めることができるため、このファイルは既定で *.gitignore* ファイルによってソース管理から除外されます。
+    初期化後、 *start* フォルダーにはプロジェクト用の各種ファイルが格納されます。たとえば、 [local.settings.json](functions-run-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 *local.settings.json* には Azure からダウンロードしたシークレットを含めることができるため、このファイルは既定で *.gitignore* ファイルによってソース管理から除外されます。
 
     > [!TIP]
     > 関数プロジェクトは特定のランタイムに関連付けられているので、プロジェクト内の関数はすべて同じ言語で記述する必要があります。
 
-1. 次のコマンドを使用して、関数を自分のプロジェクトに追加します。ここで、`--name` 引数は関数の一意の名前で、`--template` 引数は関数のトリガーを指定するものです。 `func new` によって、関数と同じ名前のサブフォルダーが作成されます。ここには、プロジェクト用に選択した言語に適したコード ファイルと、*function.json* という名前の構成ファイルが含まれます。
+1. 次のコマンドを使用して、関数を自分のプロジェクトに追加します。ここで、`--name` 引数は関数の一意の名前で、`--template` 引数は関数のトリガーを指定するものです。 `func new` によって、関数と同じ名前のサブフォルダーが作成されます。ここには、プロジェクト用に選択した言語に適したコード ファイルと、 *function.json* という名前の構成ファイルが含まれます。
 
     ```
     func new --name classify --template "HTTP trigger"
     ```
 
-    このコマンドによって、関数の名前 (*classify*) と同じ名前のフォルダーが作成されます。 このフォルダーには 2 つのファイルが格納されています。1 つは関数コードが含まれている *\_\_init\_\_.py* で、もう 1 つは関数のトリガーとその入出力バインドを記述した *function.json* です。 これらのファイルのコンテンツの詳細については、Python クイックスタートの「[ファイルの内容を確認する](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#optional-examine-the-file-contents)」を参照してください。
+    このコマンドによって、関数の名前 ( *classify* ) と同じ名前のフォルダーが作成されます。 このフォルダーには 2 つのファイルが格納されています。1 つは関数コードが含まれている *\_\_init\_\_.py* で、もう 1 つは関数のトリガーとその入出力バインドを記述した *function.json* です。 これらのファイルのコンテンツの詳細については、Python クイックスタートの「[ファイルの内容を確認する](./create-first-function-cli-python.md#optional-examine-the-file-contents)」を参照してください。
 
 
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する
@@ -180,7 +180,7 @@ Free レベルの Custom Vision Service を使用して独自のモデルを作�
     
     ---
     
-1. *classify* フォルダーに *model.pb* と *labels.txt* という名前のファイルが含まれていることを確認します。 含まれていない場合は、*start* フォルダーでコマンドを実行したことを確認してください。
+1. *classify* フォルダーに *model.pb* と *labels.txt* という名前のファイルが含まれていることを確認します。 含まれていない場合は、 *start* フォルダーでコマンドを実行したことを確認してください。
 
 1. *start* フォルダーで次のコマンドを実行して、ヘルパー コードが含まれるファイルを *classify* フォルダーにコピーします。
 
@@ -222,7 +222,7 @@ Free レベルの Custom Vision Service を使用して独自のモデルを作�
     pip install --no-cache-dir -r requirements.txt
     ```
     
-    Windows では、"Could not install packages due to an EnvironmentError: [Errno 2] No such file or directory: (EnvironmentError: [Errno 2] が原因でパッケージをインストールできませんでした。ファイルまたはディレクトリがありません:)" の後に、*sharded_mutable_dense_hashtable.cpython-37.pyc* のようなファイルへの長いパス名が続くエラーが表示されることがあります。 通常、このエラーはフォルダー パスが長くなりすぎることが原因で発生します。 この場合は、レジストリ キー `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem@LongPathsEnabled` を `1` に設定して、長いパスを有効にします。 または、Python インタープリターがインストールされている場所を確認します。 その場所へのパスが長い場合は、短いパスのフォルダーに再インストールしてみてください。
+    Windows では、"Could not install packages due to an EnvironmentError: [Errno 2] No such file or directory: (EnvironmentError: [Errno 2] が原因でパッケージをインストールできませんでした。ファイルまたはディレクトリがありません:)" の後に、 *sharded_mutable_dense_hashtable.cpython-37.pyc* のようなファイルへの長いパス名が続くエラーが表示されることがあります。 通常、このエラーはフォルダー パスが長くなりすぎることが原因で発生します。 この場合は、レジストリ キー `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem@LongPathsEnabled` を `1` に設定して、長いパスを有効にします。 または、Python インタープリターがインストールされている場所を確認します。 その場所へのパスが長い場合は、短いパスのフォルダーに再インストールしてみてください。
 
 > [!TIP]
 > 最初の予測を行うために *predict.py* を呼び出すと、`_initialize` という名前の関数によって TensorFlow モデルがディスクから読み込まれ、グローバル変数内にキャッシュされます。 このキャッシュにより、後続の予測が高速化されます。 グローバル変数の使用法の詳細については、[Azure Functions の Python 開発者向けガイド](functions-reference-python.md#global-variables)を参照してください。
@@ -297,7 +297,7 @@ Free レベルの Custom Vision Service を使用して独自のモデルを作�
 
     ![完成したプロジェクトのスクリーンショット](media/functions-machine-learning-tensorflow/functions-machine-learning-tensorflow-screenshot.png)
 
-    画像の URL を送信したときにブラウザーからエラーがレポートされる場合は、関数アプリを実行しているターミナルを確認します。 "No module found 'PIL' (モジュールが見つかりません 'PIL')" のようなエラーが表示される場合は、前に作成した仮想環境をアクティブにする前に、*start* フォルダーで関数アプリを起動した可能性があります。 引き続きエラーが発生する場合は、仮想環境をアクティブにして `pip install -r requirements.txt` を再度実行し、エラーを探します。
+    画像の URL を送信したときにブラウザーからエラーがレポートされる場合は、関数アプリを実行しているターミナルを確認します。 "No module found 'PIL' (モジュールが見つかりません 'PIL')" のようなエラーが表示される場合は、前に作成した仮想環境をアクティブにする前に、 *start* フォルダーで関数アプリを起動した可能性があります。 引き続きエラーが発生する場合は、仮想環境をアクティブにして `pip install -r requirements.txt` を再度実行し、エラーを探します。
 
 > [!NOTE]
 > このモデルでは、画像の内容が常に猫または犬に分類されます。画像に両方含まれている場合やどちらも含まれていない場合は、既定で犬に分類されます。 たとえば、虎や豹の画像であれば通常猫に分類されますが、象、人参、または飛行機の画像は犬に分類されます。

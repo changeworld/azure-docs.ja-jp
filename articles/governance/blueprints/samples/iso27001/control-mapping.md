@@ -1,23 +1,23 @@
 ---
 title: ISO 27001 ブループリント サンプルのコントロール
 description: ISO 27001 ブループリント サンプルのコントロール マッピングです。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 07/13/2020
+ms.date: 11/05/2020
 ms.topic: sample
-ms.openlocfilehash: 6e72f8ca25939b1cad8b2a5dc5bd3fc5fc286027
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 04e9863cd52c272cf74e2656df207f4ced7b4286
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931956"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420236"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>ISO 27001 ブループリント サンプルのコントロール マッピング
 
 以下の記事は、Azure Blueprints ISO 27001 ブループリント サンプルが ISO 27001 コントロールにどのようにマップされているかを説明したものです。 コントロールについて詳しくは、[ISO 27001](https://www.iso.org/isoiec-27001-information-security.html) をご覧ください。
 
-以下のマッピングは、**ISO 27001:2013** コントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 その後、 **\[プレビュー\] Audit ISO 27001:2013 コントロールを選択し、監査要件のビルトイン ポリシー イニシアチブをサポートするための VM 拡張機能をデプロイ**します。
+以下のマッピングは、 **ISO 27001:2013** コントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 その後、 **\[プレビュー\] Audit ISO 27001:2013 コントロールを選択し、監査要件のビルトイン ポリシー イニシアチブをサポートするための VM 拡張機能をデプロイ** します。
 
 > [!IMPORTANT]
-> 以下の各コントロールは、1 つ以上の [Azure Policy](../../../policy/overview.md) 定義に関連します。 これらのポリシーは、コントロールに対する[コンプライアンスの評価](../../../policy/how-to/get-compliance-data.md)に役立つ場合があります。ただし、多くの場合、コントロールと 1 つ以上のポリシーとの間には、一対一での一致、または完全な一致はありません。 そのため、Azure Policy での**準拠**は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001/control-mapping.md)に関するページを参照してください。
+> 以下の各コントロールは、1 つ以上の [Azure Policy](../../../policy/overview.md) 定義に関連します。 これらのポリシーは、コントロールに対する[コンプライアンスの評価](../../../policy/how-to/get-compliance-data.md)に役立つ場合があります。ただし、多くの場合、コントロールと 1 つ以上のポリシーとの間には、一対一での一致、または完全な一致はありません。 そのため、Azure Policy での **準拠** は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001/control-mapping.md)に関するページを参照してください。
 
 ## <a name="a612-segregation-of-duties"></a>A.6.1.2 職務の分離
 
@@ -65,7 +65,6 @@ Azure では、Azure リソースにアクセスするユーザーを管理す�
 - サブスクリプションに対する読み取りアクセス許可を持つアカウントに対して MFA を有効にする必要がある
 - サブスクリプションに対する書き込みアクセス許可を持つアカウントに対して MFA を有効にする必要がある
 - passwd ファイルのアクセス許可が 0644 に設定されていない Linux VM の監査結果を表示する
-- passwd ファイルへのアクセス許可が 0644 に設定されていない Linux VM を監査するための前提条件をデプロイする
 
 ## <a name="a925-review-of-user-access-rights"></a>A.9.2.5 ユーザー アクセス権のレビュー
 
@@ -100,11 +99,6 @@ Azure では、Azure リソースにアクセスするユーザーを管理す�
 - パスワードの最短有効期間が 1 日になっていない Windows VM の監査結果を表示する
 - パスワードの最小文字数が 14 文字に制限されていない Windows VM の監査結果を表示する
 - 以前の 24 個のパスワードの再利用が許可されている Windows VM の監査結果を表示する
-- パスワードの複雑さの設定が有効になっていない Windows VM を監査する前提条件をデプロイする
-- パスワードの有効期間が 70 日になっていない Windows VM を監査する前提条件をデプロイする
-- パスワードの最短有効期間が 1 日になっていない Windows VM を監査する前提条件をデプロイする
-- パスワードの最小文字数が 14 文字に制限されていない Windows VM を監査する前提条件をデプロイする
-- 以前の 24 個のパスワードの再利用が許可されている Windows VM を監査する前提条件をデプロイする
 
 ## <a name="a1011-policy-on-the-use-of-cryptographic-controls"></a>A.10.1.1 暗号化コントロールの使用に関するポリシー
 
@@ -113,7 +107,6 @@ Azure では、Azure リソースにアクセスするユーザーを管理す�
 - Function App には HTTPS 経由でのみアクセスできるようにする
 - Web アプリケーションには HTTPS を介してのみアクセスできるようにする
 - API アプリには HTTPS を介してのみアクセスできるようにする
-- 元に戻せる暗号化を使用してパスワードを格納しない Windows VM を監査する前提条件をデプロイする
 - 元に戻せる暗号化を使用してパスワードを格納しない Windows VM の監査結果を表示する
 - 仮想マシンでディスク暗号化を適用する必要がある
 - Automation アカウント変数は、暗号化する必要がある

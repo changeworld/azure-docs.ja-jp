@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 5eb392fdfc1ffdb6d7cfee64734cca32c9abcd33
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 0e94288b49cd57b59c126c95ca507477f1c56946
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913281"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321526"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>チュートリアル:R を使用して機械学習モデルを作成する (プレビュー)
 
@@ -289,7 +289,7 @@ as.numeric(predict(accident_model,newdata, type="response")*100)
 
 ## <a name="deploy-as-a-web-service"></a>Web サービスとしてデプロイする
 
-モデルを使用すると、衝突による死亡の危険性を予測できます。 Azure ML を使用して、予測サービスとしてモデルをデプロイします。 このチュートリアルでは、[Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI) に Web サービスをデプロイします。
+モデルを使用すると、衝突による死亡の危険性を予測できます。 Azure ML を使用して、予測サービスとしてモデルをデプロイします。 このチュートリアルでは、[Azure Container Instances](../container-instances/index.yml) (ACI) に Web サービスをデプロイします。
 
 ### <a name="register-the-model"></a>モデルを登録する
 

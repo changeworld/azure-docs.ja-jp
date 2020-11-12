@@ -4,18 +4,20 @@ description: データをインポートするために必要なプロビジョ�
 author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: tutorial
 ms.date: 09/21/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cfab8ba88c7da84efb3f6aed6f95bb100507f8da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e50fe1f5b1658458a2d561f8157f04d1cbceb41
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981942"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341244"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>.NET SDK を使用して Azure Cosmos DB SQL API アカウントにデータを一括インポートする
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 このチュートリアルでは、Azure Cosmos DB にデータをインポートするために必要なプロビジョニング スループット (RU/秒) を最適化する .NET コンソール アプリケーションを構築する方法について説明します。 この記事では、サンプル データ ソースからデータを読み取り、Azure Cosmos コンテナーにインポートします。
 このチュートリアルでは、.NET Framework または .NET Core をターゲットとすることができる、Azure Cosmos DB .NET SDK の[バージョン 3.0 以降](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)を使用します。
@@ -44,7 +46,7 @@ Azure portal から [Azure Cosmos DB SQL API アカウントを作成](create-co
 
 ## <a name="step-2-set-up-your-net-project"></a>手順 2:.NET プロジェクトを設定する
 
-ローカル コンピューターから Windows コマンド プロンプトまたはターミナル ウィンドウを開きます。 次のセクションではコマンド プロンプトまたはターミナルからすべてのコマンドを実行します。 次の dotnet new コマンドを実行して、*bulk-import-demo* という名前の新しいアプリを作成します。 `--langVersion` パラメーターによって、作成されたプロジェクト ファイル内に *LangVersion* プロパティが設定されます。
+ローカル コンピューターから Windows コマンド プロンプトまたはターミナル ウィンドウを開きます。 次のセクションではコマンド プロンプトまたはターミナルからすべてのコマンドを実行します。 次の dotnet new コマンドを実行して、 *bulk-import-demo* という名前の新しいアプリを作成します。 `--langVersion` パラメーターによって、作成されたプロジェクト ファイル内に *LangVersion* プロパティが設定されます。
 
    ```bash
    dotnet new console –langVersion:8 -n bulk-import-demo

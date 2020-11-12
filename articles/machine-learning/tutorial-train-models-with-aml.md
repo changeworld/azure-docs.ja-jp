@@ -10,17 +10,17 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 40ee7ad74d1a1daaf6df5e76b5e51db52feea304
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 003056ae9d3f236d37ddc10764812c15a3c6c695
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535071"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321293"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>チュートリアル:MNIST データと scikit-learn を使用して画像の分類モデルをトレーニングする 
 
 
-このチュートリアルでは、機械学習モデルのトレーニングをリモートのコンピューティング リソース上で行います。 Python Jupyter Notebook 内の Azure Machine Learning に関するトレーニングとデプロイのワークフローを使用します。  それからノートブックをテンプレートとして使用し、独自のデータで独自の機械学習モデルをトレーニングできます。 このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 1 です**。  
+このチュートリアルでは、機械学習モデルのトレーニングをリモートのコンピューティング リソース上で行います。 Python Jupyter Notebook 内の Azure Machine Learning に関するトレーニングとデプロイのワークフローを使用します。  それからノートブックをテンプレートとして使用し、独自のデータで独自の機械学習モデルをトレーニングできます。 このチュートリアルは、 **2 部構成のチュートリアル シリーズのパート 1 です** 。  
 
 このチュートリアルでは、Azure Machine Learning で [MNIST](http://yann.lecun.com/exdb/mnist/) データセットや [scikit-learn](https://scikit-learn.org) を使用して、単純なロジスティック回帰をトレーニングします。 MNIST は、70,000 ものグレースケールのイメージから成る、人気のあるデータセットです。 各イメージは、0 から 9 までの数値を表す 28 x 28 ピクセルの手書き数字です。 多クラス分類子を作成して、特定のイメージが表す数字を識別することが目標です。
 
@@ -37,7 +37,7 @@ ms.locfileid: "91535071"
 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
 >[!NOTE]
-> この記事のコードは、[Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) バージョン 1.13.0 を使用してテストされています。
+> この記事のコードは、[Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) バージョン 1.13.0 を使用してテストされています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,10 +46,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     * チュートリアル ノートブックをワークスペース内のフォルダーに複製します。
     * クラウドベースのコンピューティング インスタンスを作成します。
 
-* 複製した *tutorials/image-classification-mnist-data* フォルダーで、*img-classification-part1-training.ipynb* ノートブックを開きます。 
+* 複製した *tutorials/image-classification-mnist-data* フォルダーで、 *img-classification-part1-training.ipynb* ノートブックを開きます。 
 
 
-チュートリアルと付随する **utils.py** ファイルは、独自の[ローカル環境](how-to-configure-environment.md#local)で使用する場合、[GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) から入手することもできます。 `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` を実行して、このチュートリアルの依存関係をインストールします。
+チュートリアルと付随する **utils.py** ファイルは、独自の [ローカル環境](how-to-configure-environment.md#local)で使用する場合、 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) から入手することもできます。 `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` を実行して、このチュートリアルの依存関係をインストールします。
 
 > [!Important]
 > 以降この記事には、ノートブックと同じ内容が記載されています。  
@@ -84,7 +84,7 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 
 ### <a name="connect-to-a-workspace"></a>ワークスペースに接続する
 
-既存のワークスペースからワークスペース オブジェクトを作成します。 `Workspace.from_config()` により、**config.json** ファイルが読み取られ、詳細情報が `ws` という名前のオブジェクトに読み込まれます。
+既存のワークスペースからワークスペース オブジェクトを作成します。 `Workspace.from_config()` により、 **config.json** ファイルが読み取られ、詳細情報が `ws` という名前のオブジェクトに読み込まれます。
 
 ```python
 # load workspace configuration from the config.json file in the current folder.
@@ -159,7 +159,7 @@ else:
 
 ### <a name="download-the-mnist-dataset"></a>MNIST データセットのダウンロード
 
-Azure Open Datasets を使用して、未加工の MNIST データ ファイルを取得します。 [Azure オープン データセット](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets)は選別されたパブリック データセットであり、機械学習ソリューションにシナリオ固有の機能を追加してモデルの精度を上げるために使用できます。 各データセットには、異なる方法でデータを取得するための対応するクラスがあります (ここでは `MNIST`)。
+Azure Open Datasets を使用して、未加工の MNIST データ ファイルを取得します。 [Azure オープン データセット](../open-datasets/overview-what-are-open-datasets.md)は選別されたパブリック データセットであり、機械学習ソリューションにシナリオ固有の機能を追加してモデルの精度を上げるために使用できます。 各データセットには、異なる方法でデータを取得するための対応するクラスがあります (ここでは `MNIST`)。
 
 このコードを使用すると、データが `FileDataset` オブジェクトとして取得されます (これは `Dataset` のサブクラスです)。 `FileDataset` によって、データストアまたはパブリック URL 内の 1 つまたは複数の任意の形式のファイルが参照されます。 クラスには、データ ソースの場所への参照を作成することで、お使いのコンピューティングにファイルをダウンロードまたはマウントする機能が用意されています。 さらに、トレーニング中に簡単に取得できるように、データセットをワークスペースに登録します。
 
@@ -298,7 +298,7 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 
 + トレーニング スクリプトで引数が読み取られ、データが含まれるディレクトリが検出されます。 後でジョブを送信する際に、次のように、引数にデータストアを指定します。```parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')```
 
-+ トレーニング スクリプトでは、**outputs** という名前のディレクトリにモデルが保存されます。 このディレクトリ内に書き込まれたものはすべてワークスペース内に自動的にアップロードされます。 チュートリアルの後半で、このディレクトリからモデルにアクセスします。 `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
++ トレーニング スクリプトでは、 **outputs** という名前のディレクトリにモデルが保存されます。 このディレクトリ内に書き込まれたものはすべてワークスペース内に自動的にアップロードされます。 チュートリアルの後半で、このディレクトリからモデルにアクセスします。 `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
 
 + このトレーニング スクリプトでは、データセットを正しく読み込むためにファイル `utils.py` が必要です。 次のコードでは、`utils.py` を `script_folder` にコピーして、リモート リソース上でトレーニング スクリプトと共にファイルにアクセスできるようにします。
 
@@ -309,11 +309,11 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 
 ### <a name="configure-the-training-job"></a>トレーニング ジョブを構成する
 
-[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) オブジェクトを作成して、トレーニング スクリプト、使用する環境、実行するコンピューティング先など、トレーニング ジョブの構成の詳細を指定します。 次のように指定して、ScriptRunConfig を構成します。
+[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) オブジェクトを作成して、トレーニング スクリプト、使用する環境、実行するコンピューティング先など、トレーニング ジョブの構成の詳細を指定します。 次のように指定して、ScriptRunConfig を構成します。
 
 * スクリプトが含まれるディレクトリ。 このディレクトリ内のすべてのファイルは、実行のためにクラスター ノード内にアップロードされます。
 * コンピューティング ターゲット。 ここでは、作成した Azure Machine Learning コンピューティング クラスターを使用します。
-* トレーニング スクリプトの名前 **train.py**。
+* トレーニング スクリプトの名前 **train.py** 。
 * スクリプトの実行に必要なライブラリを含んだ環境。
 * トレーニング スクリプトに必要な引数。
 
@@ -360,29 +360,29 @@ run = exp.submit(config=src)
 run
 ```
 
-呼び出しは非同期なので、ジョブが開始されると即時に**準備中**または**実行**状態が返されます。
+呼び出しは非同期なので、ジョブが開始されると即時に **準備中** または **実行** 状態が返されます。
 
 ## <a name="monitor-a-remote-run"></a>リモート実行を監視する
 
-初回の実行は合計で**約 10 分**かかります。 しかし、その後の実行では、スクリプトの依存関係が変わらなければ、同じイメージが再利用されます。 したがって、コンテナーの起動時間が大幅に短縮されます。
+初回の実行は合計で **約 10 分** かかります。 しかし、その後の実行では、スクリプトの依存関係が変わらなければ、同じイメージが再利用されます。 したがって、コンテナーの起動時間が大幅に短縮されます。
 
 待っている間に次のことが行われます。
 
-- **イメージの作成**:Azure ML 環境で指定されている Python 環境と一致する Docker イメージが作成されます。 このイメージがワークスペースにアップロードされます。 イメージの作成とアップロードには**約 5 分**かかります。
+- **イメージの作成** :Azure ML 環境で指定されている Python 環境と一致する Docker イメージが作成されます。 このイメージがワークスペースにアップロードされます。 イメージの作成とアップロードには **約 5 分** かかります。
 
   その後の実行のためにコンテナーがキャッシュに入れられるので、この段階は Python 環境ごとに 1 回行われます。 イメージの作成中に、ログが実行履歴にストリーミングされます。 これらのログを使用して、イメージの作成の進行状況を監視できます。
 
-- **拡大縮小**:リモート クラスターで、現在使用可能なノードよりも多くのノードを実行する必要がある場合、自動的にノードが追加されます。 通常、拡大縮小には**約 5 分**かかります。
+- **拡大縮小** :リモート クラスターで、現在使用可能なノードよりも多くのノードを実行する必要がある場合、自動的にノードが追加されます。 通常、拡大縮小には **約 5 分** かかります。
 
-- **[実行中]** : この段階では、必要なスクリプトとファイルがコンピューティング先に送信されます。 その後、データストアがマウントまたはコピーされます。 そして、**entry_script** が実行されます。 ジョブの実行中に、**stdout** と **./logs** ディレクトリが実行履歴にストリーミングされます。 これらのログを使用して、実行の進行状況を監視できます。
+- **[実行中]** : この段階では、必要なスクリプトとファイルがコンピューティング先に送信されます。 その後、データストアがマウントまたはコピーされます。 そして、 **entry_script** が実行されます。 ジョブの実行中に、 **stdout** と **./logs** ディレクトリが実行履歴にストリーミングされます。 これらのログを使用して、実行の進行状況を監視できます。
 
-- **後処理**:この実行の **./outputs** ディレクトリがワークスペース内の実行履歴に上書きコピーされ、これらの結果にアクセスできるようになります。
+- **後処理** :この実行の **./outputs** ディレクトリがワークスペース内の実行履歴に上書きコピーされ、これらの結果にアクセスできるようになります。
 
 複数の方法で、実行中のジョブの進行状況を確認できます。 このチュートリアルでは、Jupyter ウィジェットと `wait_for_completion` メソッドを使用します。
 
 ### <a name="jupyter-widget"></a>Jupyter ウィジェット
 
-[Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)を使用して、実行の進行状況を監視します。 実行の送信と同様に、このウィジェットも非同期です。また、ジョブが完了するまで、10 秒から 15 秒ごとにライブ更新が提供されます。
+[Jupyter ウィジェット](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)を使用して、実行の進行状況を監視します。 実行の送信と同様に、このウィジェットも非同期です。また、ジョブが完了するまで、10 秒から 15 秒ごとにライブ更新が提供されます。
 
 ```python
 from azureml.widgets import RunDetails
@@ -393,7 +393,7 @@ RunDetails(run).show()
 
 ![Notebook のウィジェット](./media/tutorial-train-models-with-aml/widget.png)
 
-実行を取り消す必要がある場合は、[これらの手順](https://aka.ms/aml-docs-cancel-run)に従います。
+実行を取り消す必要がある場合は、[これらの手順](./how-to-manage-runs.md)に従います。
 
 ### <a name="get-log-results-upon-completion"></a>完了時にログの結果を取得する
 

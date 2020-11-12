@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 16ad757fc00439bb390a7e0dea902901c468dd1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31a454c93ad5192f387306a8ec557c4e4d3ae991
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90929437"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395293"
 ---
 # <a name="deploy-an-azure-sql-edge-container-in-kubernetes"></a>Kubernetes で Azure SQL Edge コンテナーをデプロイする
 
@@ -48,7 +48,7 @@ Kubernetes 1.6 以降では、[ストレージ クラス](https://kubernetes.io/
 * **Kubernetes クラスター**
    - このチュートリアルでは、Kubernetes クラスターが必要です。 この手順では、[kubectl](https://kubernetes.io/docs/user-guide/kubectl/) を使用してクラスターを管理します。 
 
-   - このチュートリアルでは、Azure Kubernetes Service を使用して Azure SQL Edge をデプロイします。 `kubectl` を使って AKS に単一ノード Kubernetes クラスターを作成して接続する方法については、[Azure Kubernetes Service (AKS) クラスターのデプロイ](https://docs.microsoft.com/azure/aks/tutorial-kubernetes-deploy-cluster)に関する記事をご覧ください。 
+   - このチュートリアルでは、Azure Kubernetes Service を使用して Azure SQL Edge をデプロイします。 `kubectl` を使って AKS に単一ノード Kubernetes クラスターを作成して接続する方法については、[Azure Kubernetes Service (AKS) クラスターのデプロイ](../aks/tutorial-kubernetes-deploy-cluster.md)に関する記事をご覧ください。 
 
    >[!NOTE]
    >ノード障害から保護するため、Kubernetes クラスターには複数のノードが必要です。
@@ -108,7 +108,7 @@ Kubernetes クラスターで、[永続ボリューム](https://kubernetes.io/do
          storage: 8Gi
    ```
 
-   ファイルを保存します (例: **pvc.yaml**)。
+   ファイルを保存します (例: **pvc.yaml** )。
 
 2. Kubernetes で永続ボリューム要求を作成します。
 
@@ -241,7 +241,7 @@ spec:
    >[!NOTE]
    >`LoadBalancer` サービスの種類を使うことにより、Azure SQL Edge インスタンスにポート 1433 で (インターネットを経由して) リモート アクセスできるようになります。
 
-   ファイルを保存します (例: **sqledgedeploy.yaml**)。
+   ファイルを保存します (例: **sqledgedeploy.yaml** )。
 
 2. 配置を作成します。
 
@@ -318,8 +318,7 @@ Kubernetes によって、Azure SQL Edge インスタンスを復旧するため
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Kubernetes の概要](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+- [Kubernetes の概要](../aks/intro-kubernetes.md)
 - [SQL Edge での ONNX を使用した機械学習と人工知能](onnx-overview.md)。
 - [IoT Edge を使用して SQL Edge でエンド ツー エンドの IoT ソリューションを構築する](tutorial-deploy-azure-resources.md)。
 - [Azure SQL Edge でのデータ ストリーミング](stream-data.md)
-
