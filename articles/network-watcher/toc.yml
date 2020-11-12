@@ -29,7 +29,7 @@
 - name: 概念
   items:
     - name: 接続モニター (プレビュー)
-      href: connection-monitor-preview.md
+      href: connection-monitor-overview.md
     - name: VM ネットワーク トラフィック フィルターに関する問題を診断する
       href: network-watcher-ip-flow-verify-overview.md
     - name: NSG ルールとトラフィックのフィルター処理を診断する
@@ -61,9 +61,9 @@
     - name: 接続モニターを作成する (プレビュー)
       items:
         - name: Azure Portal の使用
-          href: connection-monitor-preview-create-using-portal.md
+          href: connection-monitor-create-using-portal.md
         - name: ARMClient の使用
-          href: connection-monitor-preview-create-using-arm-client.md
+          href: connection-monitor-create-using-template.md
         - name: PowerShell の使用
           href: connection-monitor-create-using-powershell.md
     - name: 接続モニターへの移行 (プレビュー)

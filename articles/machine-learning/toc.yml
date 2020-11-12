@@ -160,6 +160,8 @@
         - name: エンタープライズ セキュリティの概要
           displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
+        - name: データの暗号化
+          href: concept-data-encryption.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
     - name: 信頼できる ML
@@ -182,14 +184,17 @@
       items:
         - name: ID およびアクセス管理
           items:
-            - name: 認証の設定
+            - name: ワークスペースの認証
               displayName: 'authentication, auth, oauth'
               href: how-to-setup-authentication.md
-            - name: ユーザーとロールを管理する
+            - name: Web サービス認証
+              displayName: 'authentication, model, web service'
+              href: how-to-authenticate-web-service.md
+            - name: アクセスの管理 (認可)
               href: how-to-assign-roles.md
-            - name: アクセスの制御にマネージド ID を使用する
+            - name: アクセス制御用のマネージド ID
               href: how-to-use-managed-identities.md
-            - name: AKS デプロイで Azure AD ID を使用する
+            - name: AKS デプロイでの Azure AD ID
               href: how-to-use-azure-ad-identity.md
         - name: ネットワークのセキュリティ
           items:

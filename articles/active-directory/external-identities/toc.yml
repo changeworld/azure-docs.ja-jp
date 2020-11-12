@@ -10,6 +10,8 @@
           href: what-is-b2b.md
         - name: Azure AD B2C とは
           href: ../../active-directory-b2c/overview.md
+        - name: ドキュメントの最新情報
+          href: whats-new-docs.md
     - name: クイックスタート
       items:
         - name: ポータルでゲスト ユーザーを追加する

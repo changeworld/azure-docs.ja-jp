@@ -4,7 +4,7 @@
   href: debug-rendering.md
 - name: 階層状態のオーバーライド
   href: override-hierarchical-state.md
-- name: カメラ
+- name: Camera
   href: camera.md
 - name: ステージ スペース
   href: stage-space.md
@@ -18,6 +18,8 @@
   href: color-materials.md
 - name: アウトライン レンダリング
   href: outlines.md
+- name: シェル レンダリング
+  href: shell-effect.md
 - name: 片面レンダリング
   href: single-sided-rendering.md
 - name: 空間クエリ

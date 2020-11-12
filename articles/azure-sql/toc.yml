@@ -1,7 +1,11 @@
 - name: Azure SQL のドキュメント
   href: index.yml
-- name: Azure SQL とは
-  href: azure-sql-iaas-vs-paas-what-is-overview.md
+- name: Azure SQL
+  items:
+    - name: Azure SQL とは
+      href: azure-sql-iaas-vs-paas-what-is-overview.md
+    - name: Azure SQL への移行
+      href: migration-guides/index.yml
 - name: 共有 SQL DB と SQL MI のドキュメント
   items:
     - name: モデルの購入
@@ -283,7 +287,7 @@
               href: database/geo-distributed-application-configure-tutorial.md
             - name: アクティブな地理的レプリケーション
               href: database/active-geo-replication-configure-portal.md
-        - name: Security
+        - name: セキュリティ
           items:
             - name: セキュリティを構成する
               href: database/secure-database-tutorial.md
@@ -301,6 +305,16 @@
               href: database/sql-data-sync-sql-server-configure.md
             - name: SQLite をサーバーレスに移行する
               href: database/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial.md
+    - name: 移行ガイド
+      items:
+        - name: DB2 から
+          href: migration-guides/database/db2-to-sql-database-guide.md
+        - name: SQL Server から
+          items:
+            - name: 概要
+              href: migration-guides/database/sql-server-to-sql-database-overview.md
+            - name: Migrate
+              href: migration-guides/database/sql-server-to-sql-database-guide.md
     - name: 概念
       items:
         - name: 接続のアーキテクチャ
@@ -351,7 +365,7 @@
               href: database/sql-data-sync-best-practices.md
             - name: データ同期のトラブルシューティング
               href: database/sql-data-sync-troubleshoot.md
-        - name: Security
+        - name: セキュリティ
           items:
             - name: Azure SQL 監査
               href: database/auditing-overview.md
@@ -696,6 +710,18 @@
               href: managed-instance/replication-between-two-instances-configure-tutorial.md
             - name: MI パブリッシャー、MI ディストリビューター、SQL サブスクライバー
               href: managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md
+    - name: 移行ガイド
+      items:
+        - name: DB2 から
+          href: migration-guides/managed-instance/db2-to-managed-instance-guide.md
+        - name: SQL Server から
+          items:
+            - name: 概要
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-overview.md
+            - name: Migrate
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-guide.md
+            - name: パフォーマンス ベースライン
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-performance-baseline.md
     - name: 概念
       items:
         - name: リソース制限
@@ -890,7 +916,7 @@
               href: /sql/database-engine/configure-windows/sql-server-service-broker?toc=%252fazure%252fazure-sql%252ftoc.json
             - name: データベース メール
               href: /sql/relational-databases/database-mail/database-mail?toc=%252fazure%252fazure-sql%252ftoc.json
-        - name: Security
+        - name: セキュリティ
           items:
             - name: パブリック エンドポイントのセキュリティ保護
               href: managed-instance/public-endpoint-overview.md
@@ -946,7 +972,7 @@
           href: database/arm-templates-content-guide.md?tabs=managed-instance
         - name: コード サンプル
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
-- name: Azure VM 上の SQL Server
+- name: Azure VM での SQL Server
   items:
     - name: ドキュメント
       href: virtual-machines/index.yml
@@ -1171,6 +1197,14 @@
               href: 'https://azure.microsoft.com/roadmap/?category=compute'
             - name: Stack Overflow
               href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'
+    - name: 移行ガイド
+      items:
+        - name: 概要
+          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
+        - name: SQL Server から
+          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
+        - name: DB2 から
+          href: migration-guides/virtual-machines/db2-to-sql-on-azure-vm-guide.md
 - name: リファレンス
   items:
     - name: T-SQL 言語のリファレンス

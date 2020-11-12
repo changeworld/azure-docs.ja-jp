@@ -171,7 +171,7 @@
           href: sql/overview-features.md
         - name: リソース使用量モデル
           href: sql/resource-consumption-models.md
-        - name: データ処理量
+        - name: サーバーレス SQL プールのコスト管理
           href: sql/data-processed.md
         - name: ベスト プラクティス サーバーレス SQL プール
           href: sql/best-practices-sql-on-demand.md
@@ -996,6 +996,8 @@
       href: /powershell/module/az.synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: REST API
       href: /rest/api/synapse/
+    - name: Microsoft Spark Utilities
+      href: ./spark/microsoft-spark-utilities.md
     - name: サンプル
       href: 'https://github.com/Azure-Samples/Synapse'
     - name: システム ビュー

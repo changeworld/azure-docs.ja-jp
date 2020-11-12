@@ -7,6 +7,8 @@
       href: overview.md
     - name: 技術と機能の概要
       href: technical-overview.md
+    - name: ドキュメントの最新情報
+      href: whats-new-docs.md
 - name: クイックスタート
   expanded: true
   items:

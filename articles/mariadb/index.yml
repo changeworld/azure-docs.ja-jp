@@ -3,17 +3,17 @@ title: Azure Database for MariaDB のドキュメント
 summary: Azure Database for MariaDB は、オープンソースの MariaDB サーバー エンジンに基づいたリレーショナル データベース サービスです。  フルフル マネージドのサービスとしてのデータベースであり、予測可能なパフォーマンスと動的なスケーラビリティを実現しながら、ミッションクリティカルなワークロードを処理できます。 Azure Database for MariaDB では、任意のオープンソース ツールとプラットフォームを利用してアプリケーションを開発できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Database for MariaDB の使用方法を確認してください。
 metadata:
   description: Azure Database for MariaDB は、オープンソースの MariaDB データベース エンジンに基づいて開発者向けに構築された、Microsoft クラウドのリレーショナル データベース サービスです。
-  author: ajlam
-  ms.author: andrela
+  author: savjani
+  ms.author: pariks
   ms.date: 09/05/2019
   ms.service: mariadb
   ms.topic: landing-page
-  ms.openlocfilehash: 3e49a860cca6cb59543f450cda4bda8c6b0c0a38
-  ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+  ms.openlocfilehash: 3c2ea25c4d928071da6f6d3047b58996289aaa13
+  ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/22/2020
-  ms.locfileid: "92428336"
+  ms.lasthandoff: 11/12/2020
+  ms.locfileid: "94539806"
 landingContent:
 - title: Azure Database for MariaDB について
   linkLists:
