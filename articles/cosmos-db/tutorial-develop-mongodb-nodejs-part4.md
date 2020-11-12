@@ -10,14 +10,15 @@ ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: 55370e7f279283e97f9baf736f22794e1d08e09d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 4ca7286676c441b2fa96883e0c187497f59d6222
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911802"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082629"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Azure Cosmos DB の MongoDB 用 API を使用して Angular アプリを作成する - Cosmos アカウントを作成する
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 複数のパートから成るこのチュートリアルでは、Express と Angular を使用して Node.js で新しいアプリを作成した後、[Cosmos DB の MongoDB 用 API を使用して構成された Cosmos アカウント](mongodb-introduction.md)にそれを接続する方法を紹介します。
 
@@ -68,7 +69,7 @@ Azure Cosmos DB アカウントの作成後、次の手順を実行します。
 
 4. 左側のナビゲーションで下へスクロールし、 **[データをグローバルにレプリケートする]** タブをクリックして表示されるマップで、レプリケート先として利用できるさまざまな地域を確認できます。 たとえば [オーストラリア南東部] または [オーストラリア東部] をクリックすれば、オーストラリアにデータをレプリケートすることができます。 グローバル レプリケーションの詳細については、「[Azure Cosmos DB を使用してデータをグローバルに分散させる方法](distribute-data-globally.md)」を参照してください。 差し当たり、以前のインスタンスを単に保持しておき、実際に必要が生じたときに、前述の方法でレプリケート先を選ぶことにしましょう。
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png" alt-text="Azure Cosmos D B アカウントの [概要] を示すスクリーンショット。":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png" alt-text="[データをグローバルにレプリケートする] が選択されている Azure Cosmos D B アカウントを示すスクリーンショット。":::
 
 ## <a name="next-steps"></a>次のステップ
 

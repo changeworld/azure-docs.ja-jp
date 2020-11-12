@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 10/02/2020
 ms.author: joflore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4b2ea0806f70d9f99982b9d9af9c462ff0099966
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 46fdaed4a3e1dbbe5575cd573061a480bf330389
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967955"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041950"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>PowerShell を使用した Azure Active Directory Domain Services の有効化
 
@@ -37,24 +37,24 @@ Azure Active Directory Domain Services (Azure AD DS) では、Windows Server Act
 * Azure AD PowerShell をインストールして構成します。
     * 必要であれば、手順に従って、[Azure AD PowerShell モジュールをインストールして Azure AD に接続](/powershell/azure/active-directory/install-adv2)します。
     * 必ず [Connect-AzureAD][Connect-AzureAD] コマンドレットを使用して Azure AD テナントにサインインしてください。
-* Azure AD DS を有効にするには、Azure AD テナントに "*全体管理者*" 特権が必要です。
-* 必要な Azure AD DS リソースを作成するためには、ご利用の Azure サブスクリプションに "*共同作成者*" 特権が必要です。
+* Azure AD DS を有効にするには、Azure AD テナントに " *全体管理者* " 特権が必要です。
+* 必要な Azure AD DS リソースを作成するためには、ご利用の Azure サブスクリプションに " *共同作成者* " 特権が必要です。
 
 ## <a name="create-required-azure-ad-resources"></a>必要な Azure AD リソースを作成する
 
 Azure AD DS には、サービス プリンシパルと Azure AD グループが必要です。 これらのリソースにより、Azure AD DS マネージド ドメインはデータを同期し、マネージド ドメインで管理アクセス許可を持つユーザーを定義できます。
 
-まず、Azure AD DS が通信と自身の認証を行うための Azure AD サービス プリンシパルを作成します。 ID *2565bd9d-da50-47d4-8b85-4c97f669dc36* を持つ *Domain Controller Services* という名前の特定のアプリケーション ID が使用されます。 このアプリケーション ID は変更しないでください。
+まず、Azure AD DS が通信と自身の認証を行うための Azure AD サービス プリンシパルを作成します。 ID *6ba9a5d4-8456-4118-b521-9c5ca10cdf84* を持つ *Domain Controller Services* という名前の特定のアプリケーション ID が使用されます。 このアプリケーション ID は変更しないでください。
 
 [New-AzureADServicePrincipal][New-AzureADServicePrincipal] コマンドレットを使用して Azure AD サービス プリンシパルを作成します。
 
 ```powershell
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 ```
 
-次に、*AAD DC Administrators* という名前の Azure AD グループを作成します。 このグループに追加されたユーザーには、マネージド ドメインで管理タスクを実行するためのアクセス許可が付与されます。
+次に、 *AAD DC Administrators* という名前の Azure AD グループを作成します。 このグループに追加されたユーザーには、マネージド ドメインで管理タスクを実行するためのアクセス許可が付与されます。
 
-まず、[Get-AzureADGroup][Get-AzureADGroup] コマンドレットを使用して *AAD DC Administrators* グループ オブジェクト ID を取得します。 *AAD DC Administrators* グループが存在しない場合は、[New-AzureADGroup][New-AzureADGroup] コマンドレットを使用して作成します。
+まず、 [Get-AzureADGroup][Get-AzureADGroup] コマンドレットを使用して *AAD DC Administrators* グループ オブジェクト ID を取得します。 *AAD DC Administrators* グループが存在しない場合は、 [New-AzureADGroup][New-AzureADGroup] コマンドレットを使用して作成します。
 
 ```powershell
 # First, retrieve the object ID of the 'AAD DC Administrators' group.
@@ -75,9 +75,9 @@ else {
 }
 ```
 
-*AAD DC Administrators* グループが作成されたら、[Get-AzureADUser][Get-AzureADUser] コマンドレットを使用して、目的のユーザーのオブジェクト ID を取得し、[Add-AzureADGroupMember][Add-AzureADGroupMember] コマンドレットを使用して、そのユーザーをグループに追加します。
+*AAD DC Administrators* グループが作成されたら、 [Get-AzureADUser][Get-AzureADUser] コマンドレットを使用して、目的のユーザーのオブジェクト ID を取得し、 [Add-AzureADGroupMember][Add-AzureADGroupMember] コマンドレットを使用して、そのユーザーをグループに追加します。
 
-次の例では、UPN が `admin@contoso.onmicrosoft.com` のアカウントのユーザー オブジェクト ID です。 このユーザー アカウントを、*AAD DC Administrators* グループに追加するユーザーの UPN に置き換えます。
+次の例では、UPN が `admin@contoso.onmicrosoft.com` のアカウントのユーザー オブジェクト ID です。 このユーザー アカウントを、 *AAD DC Administrators* グループに追加するユーザーの UPN に置き換えます。
 
 ```powershell
 # Retrieve the object ID of the user you'd like to add to the group.
@@ -97,7 +97,7 @@ Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjec
 Register-AzResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
-次に、[New-AzResourceGroup][New-AzResourceGroup] コマンドレットを使用してリソース グループを作成します。 次の例では、リソース グループは *myResourceGroup* という名前が付けられ、*westus* リージョンに作成されます。 独自の名前と希望するリージョンを使用します。
+次に、[New-AzResourceGroup][New-AzResourceGroup] コマンドレットを使用してリソース グループを作成します。 次の例では、リソース グループは *myResourceGroup* という名前が付けられ、 *westus* リージョンに作成されます。 独自の名前と希望するリージョンを使用します。
 
 ```powershell
 $ResourceGroupName = "myResourceGroup"
@@ -200,7 +200,7 @@ $vnet | Set-AzVirtualNetwork
 
 ## <a name="create-a-managed-domain"></a>マネージド ドメインの作成
 
-次に、マネージド ドメインを作成しましょう。 お使いの Azure サブスクリプション ID を設定し、マネージド ドメインの名前 (*aaddscontoso.com* など) を指定します。 お使いのサブスクリプション ID は、[Get-AzSubscription][Get-AzSubscription] コマンドレットを使用して取得できます。
+次に、マネージド ドメインを作成しましょう。 お使いの Azure サブスクリプション ID を設定し、マネージド ドメインの名前 ( *aaddscontoso.com* など) を指定します。 お使いのサブスクリプション ID は、[Get-AzSubscription][Get-AzSubscription] コマンドレットを使用して取得できます。
 
 Availability Zones がサポートされているリージョンを選択すると、Azure AD DS リソースが、冗長性強化のために複数のゾーンに分散されます。
 
@@ -234,7 +234,7 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 次の完全な PowerShell スクリプトは、この記事に示されているすべてのタスクを結合します。 スクリプトをコピーし、`.ps1` 拡張子付きのファイルに保存します。 ローカルの PowerShell コンソール、または [Azure Cloud Shell][cloud-shell] でスクリプトを実行します。
 
 > [!NOTE]
-> Azure AD DS を有効にするには、Azure AD テナントのグローバル管理者である必要があります。 また、Azure サブスクリプションで、少なくとも*共同作成者*権限が必要です。
+> Azure AD DS を有効にするには、Azure AD テナントのグローバル管理者である必要があります。 また、Azure サブスクリプションで、少なくとも *共同作成者* 権限が必要です。
 
 ```powershell
 # Change the following values to match your deployment.
@@ -252,7 +252,7 @@ Connect-AzureAD
 Connect-AzAccount
 
 # Create the service principal for Azure AD Domain Services.
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 
 # First, retrieve the object ID of the 'AAD DC Administrators' group.
 $GroupObjectId = Get-AzureADGroup `

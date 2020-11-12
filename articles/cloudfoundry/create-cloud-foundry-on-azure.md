@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 5d4ac5435281f521c71556123f77d737ee6916e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65d8ade438228d7af71de1fc66639e5b6de2edda
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73161781"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040791"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Azure で Pivotal Cloud Foundry クラスターを作成する
 
@@ -36,13 +36,13 @@ Windows、Mac、または Linux を使用して公開セキュア シェル (SSH
 ssh-keygen -t rsa -b 2048
 ```
 
-詳細については、[Azure 上の Windows での SSH キーの使用](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)に関するページを参照してください。
+詳細については、[Azure 上の Windows での SSH キーの使用](../virtual-machines/linux/ssh-from-windows.md)に関するページを参照してください。
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
 > [!NOTE]
 >
-> サービス プリンシパルを作成するには、所有者アカウントのアクセス許可が必要です。 サービス プリンシパルの作成を自動化するスクリプトを記述することもできます。 たとえば、Azure CLI で [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest) を使用できます。
+> サービス プリンシパルを作成するには、所有者アカウントのアクセス許可が必要です。 サービス プリンシパルの作成を自動化するスクリプトを記述することもできます。 たとえば、Azure CLI で [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest) を使用できます。
 
 1. Azure アカウントにサインインします。
 
@@ -50,7 +50,7 @@ ssh-keygen -t rsa -b 2048
 
     ![Azure CLI のログイン](media/deploy/az-login-output.png )
  
-    後で使用するために、**サブスクリプション ID** としての "id" 値と、"tenantId" 値をコピーします。
+    後で使用するために、 **サブスクリプション ID** としての "id" 値と、"tenantId" 値をコピーします。
 
 2. この構成の既定のサブスクリプションを設定します。
 
@@ -84,7 +84,7 @@ ssh-keygen -t rsa -b 2048
 
     `az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}`
 
-7. 次の形式の .json ファイルを作成します。 先ほどコピーした**サブスクリプション ID**、**tenantID**、**clientID**、**clientSecret** の各値を使用します。 ファイルを保存します。
+7. 次の形式の .json ファイルを作成します。 先ほどコピーした **サブスクリプション ID** 、 **tenantID** 、 **clientID** 、 **clientSecret** の各値を使用します。 ファイルを保存します。
 
     ```json
     {
@@ -99,7 +99,7 @@ ssh-keygen -t rsa -b 2048
 
 1. [Pivotal Network](https://network.pivotal.io) アカウントに登録またはサインインします。
 2. ページの右上隅にある自分のプロファイル名を選択します。 **[プロファイルの編集]** を選択します。
-3. ページの一番下までスクロールして、**LEGACY API TOKEN** の値をコピーします。 この値は、後で使用する **Pivotal Network トークン**の値です。
+3. ページの一番下までスクロールして、 **LEGACY API TOKEN** の値をコピーします。 この値は、後で使用する **Pivotal Network トークン** の値です。
 
 ## <a name="provision-your-cloud-foundry-cluster-on-azure"></a>Azure で Cloud Foundry クラスターをプロビジョニングする
 
@@ -128,4 +128,3 @@ ssh-keygen -t rsa -b 2048
 5. PCF Ops Manager には、デプロイされた Azure インスタンスが表示されます。 これで、アプリケーションをここでデプロイして管理できます。
                
     ![Pivotal でデプロイされた Azure インスタンス](media/deploy/ops-mgr.png )
- 

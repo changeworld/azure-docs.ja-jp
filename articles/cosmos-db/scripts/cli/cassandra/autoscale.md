@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 7/29/2020
-ms.openlocfilehash: 0f11d022567a5e221a306cd7c34f31cae0ef48aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b73fb35630953fcb62ac16e1f76aa76da2feb7c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87433424"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086790"
 ---
 # <a name="create-an-azure-cosmos-cassandra-api-account-keyspace-and-table-with-autoscale-using-azure-cli"></a>Azure CLI を使用して自動スケーリングを使用する Azure Cosmos Cassandra API のアカウント、キースペース、およびテーブルを作成する
+[!INCLUDE[appliesto-cassandra-api](../../../includes/appliesto-cassandra-api.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
@@ -36,7 +37,7 @@ az group delete --name $resourceGroupName
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| コマンド | メモ |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Azure Cosmos DB アカウントを作成します。 |

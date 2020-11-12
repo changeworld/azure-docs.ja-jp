@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: 54e990b27461bd47466e12e5f51f3ed2a8a585ec
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c6c7f285816f290c70c4a5008adcabec02988e7e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489100"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097381"
 ---
 # <a name="throughput-rus-operations-with-powershell-for-a-database-or-collection-for-azure-cosmos-db-api-for-mongodb"></a>MongoDB 用 Azure Cosmos DB API のデータベースまたはコレクションに対する PowerShell でのスループット (RU/秒) 操作
+[!INCLUDE[appliesto-mongodb-api](../../../includes/appliesto-mongodb-api.md)]
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 

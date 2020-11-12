@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 2dff68f98e2922d5fc7a4fca1e6de8740bc2ae68
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92459681"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>チュートリアル:Azure Active Directory と ITRP の統合

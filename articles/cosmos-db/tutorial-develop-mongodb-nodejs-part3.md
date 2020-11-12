@@ -10,14 +10,15 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: c16d7ccba24680604bc7f083f7242edd53abe102
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 181af5cf26d19a9f51e8d456e777badf7efa224d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282903"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097823"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Azure Cosmos DB の MongoDB 用 API を使用して Angular アプリを作成する - Angular を使用して UI を構築する
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 複数のパートから成るこのチュートリアルでは、Express と Angular を使用して Node.js で新しいアプリを作成した後、[Cosmos DB の MongoDB 用 API を使用して構成された Cosmos アカウント](mongodb-introduction.md)にそれを接続する方法を紹介します。
 
@@ -58,11 +59,11 @@ ms.locfileid: "91282903"
 3. Visual Studio Code の **[エクスプローラー]** ウィンドウで新しい **src\app** フォルダーに移動し、app フォルダー内に生成された新しい **heroes.component.ts** ファイルを開きます。 この TypeScript コンポーネント ファイルは、前のコマンドで作成されたものです。
 
     > [!TIP]
-    > Visual Studio Code に app フォルダーが表示されない場合は、CMD + SHIFT P キー (Mac) または Ctrl + Shift + P キー (Windows) を押してコマンド パレットを開き、「*Reload Window*」と入力してシステムの変更を読み込みます。
+    > Visual Studio Code に app フォルダーが表示されない場合は、CMD + SHIFT P キー (Mac) または Ctrl + Shift + P キー (Windows) を押してコマンド パレットを開き、「 *Reload Window* 」と入力してシステムの変更を読み込みます。
 
 4. 同じフォルダーの **app.module.ts** ファイルを開き、`HeroesComponent` が 5 行目の宣言に追加され、10 行目でもインポートされていることを確認します。
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="hero コンポーネントのインストール":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="app-module.ts ファイルを開く":::
 
 5. **heroes.component.html** ファイルに戻って、次のコードをコピーします。 `<div>` は、ページ全体のコンテナーです。 いずれかのヒーローをクリックして選択し、UI で編集したり削除したりできるよう、コンテナー内には作成するヒーローのリストが存在します。 またこの HTML には、どの項目が選択されたかを把握できるように、いくつかのスタイルが定義されています。 加えて、新しいヒーローを追加したり既存のヒーローを編集したりするための編集領域も存在します。 
 
@@ -103,7 +104,7 @@ ms.locfileid: "91282903"
     </div>
     ```
 
-7. HTML の準備が整ったら、それを **heroes.component.ts** ファイルに追加する必要があります。そうすることで、テンプレートを対話的に操作できるようになります。 次のコードは、コンポーネント ファイルにテンプレートを追加します。 いくつかのヒーローを取得し、ヒーロー サービス コンポーネントを初期化してすべてのデータを取得するためのコンストラクターが追加されています。 また、UI でのイベント処理に必要なメソッドもすべてこのコードによって追加されます。 次のコードは、**heroes.component.ts** の既存のコードに上書きする形でコピーしてください。 Hero および HeroService 領域では、まだ対応するコンポーネントがインポートされていないため、エラーが発生することが予想されます。これらのエラーは、次のセクションで修正します。 
+7. HTML の準備が整ったら、それを **heroes.component.ts** ファイルに追加する必要があります。そうすることで、テンプレートを対話的に操作できるようになります。 次のコードは、コンポーネント ファイルにテンプレートを追加します。 いくつかのヒーローを取得し、ヒーロー サービス コンポーネントを初期化してすべてのデータを取得するためのコンストラクターが追加されています。 また、UI でのイベント処理に必要なメソッドもすべてこのコードによって追加されます。 次のコードは、 **heroes.component.ts** の既存のコードに上書きする形でコピーしてください。 Hero および HeroService 領域では、まだ対応するコンポーネントがインポートされていないため、エラーが発生することが予想されます。これらのエラーは、次のセクションで修正します。 
 
     ```ts
     import { Component, OnInit } from '@angular/core';
@@ -171,7 +172,7 @@ ms.locfileid: "91282903"
     }
     ```
 
-8. **エクスプローラー**で **app/app.module.ts** ファイルを開き、インポート セクションを更新し、さらに 14 行目を更新して、`FormsModule` のインポートを追加します。 インポート セクションは次のようになります。
+8. **エクスプローラー** で **app/app.module.ts** ファイルを開き、インポート セクションを更新し、さらに 14 行目を更新して、`FormsModule` のインポートを追加します。 インポート セクションは次のようになります。
 
     ```
     imports: [
@@ -353,7 +354,7 @@ ms.locfileid: "91282903"
 
 必要なコンポーネントは揃いましたが、それを画面に表示する手段がまだありません。 **app.component.ts** で既定のコンポーネントを変更しましょう。
 
-1. [エクスプローラー] ウィンドウで **/app/app.component.ts** を開き、タイトルを Heroes に変更します。さらに、**heroes.components.ts** に作成したコンポーネントの名前 (app-heroes) を配置して、その新しいコンポーネントを参照します。 ファイルの内容は次のようになります。 
+1. [エクスプローラー] ウィンドウで **/app/app.component.ts** を開き、タイトルを Heroes に変更します。さらに、 **heroes.components.ts** に作成したコンポーネントの名前 (app-heroes) を配置して、その新しいコンポーネントを参照します。 ファイルの内容は次のようになります。 
 
     ```ts
     import { Component } from '@angular/core';
@@ -394,7 +395,9 @@ ms.locfileid: "91282903"
 
 5. `Hero` という単語をクリックすると、Visual Studio によってコード ブロックの左側に電球アイコンが表示されます。 
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="hero コンポーネントのインストール" からインポートします。\)** をクリックします (メッセージは実際の設定によって異なります)。
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="Visual Studio Code の電球アイコン":::
+
+6. 電球をクリックして **[Import Hero from "/app/hero".]\(Hero を "/app/hero" からインポートします。\)** または **[Import Hero from "./hero".]\(Hero を "./hero" からインポートします。\)** をクリックします (メッセージは実際の設定によって異なります)。
 
     新しいコード行が 2 行目に表示されます。 2 行目で /app/hero が参照されている場合は、ローカル フォルダーの hero ファイル (./hero) を参照するように変更してください。 変更後の 2 行目は、次のようになります。
 
@@ -406,7 +409,7 @@ ms.locfileid: "91282903"
 
 ## <a name="create-the-service"></a>サービスの作成
 
-1. Angular CLI のコマンド プロンプトに次のコマンドを入力して、**app.module.ts** に hero サービスを作成します。g は生成 (generate) を、s はサービス (service) を、hero はサービスの名前を表します。また、-m で、app.module を作成先に指定します。
+1. Angular CLI のコマンド プロンプトに次のコマンドを入力して、 **app.module.ts** に hero サービスを作成します。g は生成 (generate) を、s はサービス (service) を、hero はサービスの名前を表します。また、-m で、app.module を作成先に指定します。
 
     ```bash
     ng g s hero -m app.module
@@ -488,7 +491,7 @@ ms.locfileid: "91282903"
 
 3. インターネット ブラウザーを開いて **localhost:3000** に移動すると、アプリがローカルで実行されているようすを確認できます。
 
-     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="hero コンポーネントのインストール":::
+     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="ローカルで実行中のヒーロー アプリケーション":::
 
 ## <a name="next-steps"></a>次のステップ
 

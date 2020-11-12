@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 06/12/2020
-ms.openlocfilehash: b9b743e9f293455c09557348c53cc76b1f904b0a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 26210b183c48835eeaedc353bab0fd2cde4a2dbb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489134"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089630"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-mongodb-api-database-and-collection-using-azure-powershell"></a>Azure PowerShell を使用して Azure Cosmos MongoDB API のデータベースとコレクションのためのリソース ロックを作成する
+[!INCLUDE[appliesto-mongodb-api](../../../includes/appliesto-mongodb-api.md)]
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 

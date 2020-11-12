@@ -9,14 +9,15 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: fb8d1cd2e3b481969059883919b9dc888955307e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: f7b7b8c7b1106bd3c0a6732867946c42df8438c1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478118"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097279"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>チュートリアル:JavaScript SDK を使用して Node.js Web アプリを構築して Azure Cosmos DB の SQL API アカウントを管理する 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -439,7 +440,7 @@ ms.locfileid: "92478118"
 
 1. お客様のローカル コンピューター上でアプリケーションをテストするには、ターミナルで `npm start` を実行してお客様のアプリケーションを起動し、`http://localhost:3000` ブラウザー ページを更新します。 これで、ページは次のスクリーンショットのように表示されているはずです。
    
-    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="Node.js について学習する - ブラウザー ウィンドウでの Hello World アプリケーションのスクリーンショット":::
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="ブラウザー ウィンドウでの MyTodo List アプリケーションのスクリーンショット":::
 
     > [!TIP]
     > layout.jade ファイルまたは index.jade ファイルのインデントについてのエラーが表示される場合は、両ファイルの最初の 2 行がスペースなしで左揃えになっていることを確認してください。 最初の 2 行の前にスペースがある場合は、それらを削除し、両方のファイルを保存してから、ブラウザー ウィンドウを更新します。 
@@ -448,7 +449,7 @@ ms.locfileid: "92478118"
 
 3. ページが更新され、ToDo リストに新しく作成された項目が表示されます。
    
-    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="Node.js について学習する - ブラウザー ウィンドウでの Hello World アプリケーションのスクリーンショット":::
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="ToDo リストに新しい項目があるアプリケーションのスクリーンショット":::
 
 4. タスクを完了するには、[Complete] 列のチェック ボックスをオンにし、 **[Update tasks]** を選択します。 既に作成したドキュメントが更新され、ビューから削除されます。
 

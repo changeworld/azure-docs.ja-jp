@@ -10,14 +10,15 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: 4b855f8d967e2812884f5be79652fcd33cd080ce
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a3097fa539f460ef5e8ffe73598fa5d55516717e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476639"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097806"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - Mongoose を使用して Cosmos DB に接続する
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 複数のパートから成るこのチュートリアルでは、Express と Angular を使用して Node.js アプリを作成し、[Azure Cosmos DB の MongoDB 用 API で構成された Cosmos アカウント](mongodb-introduction.md)にそれを接続する方法を紹介します。 この記事はチュートリアルのパート 5 であり、[パート 4](tutorial-develop-mongodb-nodejs-part4.md) が基になっています。
 

@@ -4,15 +4,15 @@ description: WordPress アプリと MySQL コンテナーを含んだ複数コ�
 keywords: azure app service, Web アプリ, linux, docker, compose, マルチコンテナー, マルチ コンテナー, コンテナー用の Web アプリ, 複数のコンテナー, コンテナー, wordpress, azure db for mysql, コンテナーを使用した運用データベース
 author: msangapu-msft
 ms.topic: tutorial
-ms.date: 04/29/2019
+ms.date: 10/31/2020
 ms.author: msangapu
 ms.custom: cli-validate, devx-track-azurecli
-ms.openlocfilehash: 7945c6c6f834de068665e3400440d2be5dd713ff
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f2f1713866eb06b4b514ff988ef3e010491e1efc
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743449"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131345"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>チュートリアル:Web App for Containers でマルチコンテナー (プレビュー) アプリを作成する
 
@@ -151,7 +151,7 @@ Web アプリが作成されると、Cloud Shell に、次の例のような出�
 次のコマンドで、 _&lt;mysql-server-name>_ プレースホルダーを MySQL サーバー名に置き換えます (有効な文字は `a-z`、`0-9`、および `-` です)。 この名前は、MySQL サーバーのホスト名 (`<mysql-server-name>.database.windows.net`) の一部であるため、グローバルに一意である必要があります。
 
 ```azurecli-interactive
-az mysql server create --resource-group myResourceGroup --name <mysql-server-name>  --location "South Central US" --admin-user adminuser --admin-password My5up3rStr0ngPaSw0rd! --sku-name B_Gen4_1 --version 5.7
+az mysql server create --resource-group myResourceGroup --name <mysql-server-name>  --location "South Central US" --admin-user adminuser --admin-password My5up3rStr0ngPaSw0rd! --sku-name B_Gen5_1 --version 5.7
 ```
 
 サーバーの作成が完了するまでに数分かかる場合があります。 MySQL サーバーが作成されると、Cloud Shell に、次の例のような情報が表示されます。
@@ -262,14 +262,14 @@ Redis では、以下の変更が行われました (後のセクションで使
 * [Redis Object Cache 1.3.8 WordPress プラグインを追加する。](https://github.com/Azure-Samples/multicontainerwordpress/blob/5669a89e0ee8599285f0e2e6f7e935c16e539b92/docker-entrypoint.sh#L74)
 * [WordPress wp-config.php の Redis ホスト名のアプリ設定を使用する。](https://github.com/Azure-Samples/multicontainerwordpress/blob/5669a89e0ee8599285f0e2e6f7e935c16e539b92/docker-entrypoint.sh#L162)
 
-カスタム イメージを使用するには、docker-compose-wordpress.yml ファイルを更新します。 Cloud Shell で、「`nano docker-compose-wordpress.yml`」と入力して nano テキスト エディターを開きます。 `image: microsoft/multicontainerwordpress` を使用するように `image: wordpress` を変更します。 データベース コンテナーは不要になります。 構成ファイルから `db`、`environment`、`depends_on`、および `volumes` セクションを削除します。 ファイルは次のコードのようになります。
+カスタム イメージを使用するには、docker-compose-wordpress.yml ファイルを更新します。 Cloud Shell で、「`nano docker-compose-wordpress.yml`」と入力して nano テキスト エディターを開きます。 `image: mcr.microsoft.com/azuredocs/multicontainerwordpress` を使用するように `image: wordpress` を変更します。 データベース コンテナーは不要になります。 構成ファイルから `db`、`environment`、`depends_on`、および `volumes` セクションを削除します。 ファイルは次のコードのようになります。
 
 ```yaml
 version: '3.3'
 
 services:
    wordpress:
-     image: microsoft/multicontainerwordpress
+     image: mcr.microsoft.com/azuredocs/multicontainerwordpress
      ports:
        - "8000:80"
      restart: always
@@ -345,7 +345,7 @@ version: '3.3'
 
 services:
    wordpress:
-     image: microsoft/multicontainerwordpress
+     image: mcr.microsoft.com/azuredocs/multicontainerwordpress
      volumes:
       - ${WEBAPP_STORAGE_HOME}/site/wwwroot:/var/www/html
      ports:
@@ -401,13 +401,15 @@ version: '3.3'
 
 services:
    wordpress:
-     image: microsoft/multicontainerwordpress
+     image: mcr.microsoft.com/azuredocs/multicontainerwordpress
      ports:
        - "8000:80"
      restart: always
 
    redis:
-     image: redis:3-alpine
+     image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
+     environment: 
+      - ALLOW_EMPTY_PASSWORD=yes
      restart: always
 ```
 

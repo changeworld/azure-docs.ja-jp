@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 07/29/2020
-ms.openlocfilehash: dcfaf7d8a417575f3a94dae59e35056161ec8559
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea0f3b9c6e19129e04fea95f02b9244b909db6ea
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87432214"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098288"
 ---
 # <a name="create-an-azure-cosmos-gremlin-api-account-database-and-graph-using-azure-cli"></a>Azure CLI を使用して Azure Cosmos Gremlin API のアカウント、データベース、およびグラフを作成する
+[!INCLUDE[appliesto-gremlin-api](../../../includes/appliesto-gremlin-api.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
@@ -36,7 +37,7 @@ az group delete --name $resourceGroupName
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| コマンド | メモ |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Azure Cosmos DB アカウントを作成します。 |

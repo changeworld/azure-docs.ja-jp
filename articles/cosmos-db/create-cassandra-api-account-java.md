@@ -9,14 +9,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: 902980d7c145d5150214b7d4f4433e5da344e30b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb057637ff546356cde6e0ef107fe784fed2e610
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570056"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099880"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>チュートリアル:Java アプリケーションを使用して Azure Cosmos DB に Cassandra API アカウントを作成し、キーと値のデータを格納する
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 開発者は、キー/値ペアを使用するアプリケーションを持っていることがあります。 Azure Cosmos DB の Cassandra API アカウントを使用して、キーと値のデータを格納できます。 このチュートリアルでは、Java アプリケーションを使用して、Azure Cosmos DB に Cassandra API アカウントを作成し、データベース (キースペースとも呼ばれます) を追加してテーブルを追加する方法について説明します。 Java アプリケーションでは、[Java ドライバー](https://github.com/datastax/java-driver)を使用して、ユーザー ID、ユーザー名、ユーザーの住所などの詳細情報を格納するユーザー データベースを作成します。  
 
@@ -54,9 +55,9 @@ ms.locfileid: "91570056"
    |リソース グループ   | 名前を入力    |  **[新規作成]** を選択し、お客様のアカウントで使用する新しいリソース グループの名前を入力します。 簡略化のため、ID と同じ名前を使用することができます。    |
    |場所    |  ユーザーに最も近いリージョンを選択    |  お客様の Azure Cosmos アカウントをホストする地理的な場所を選択します。 データに最も高速にアクセスできるよう、お客様のユーザーに最も近い場所を使用します。    |
 
-   :::image type="content" source="./media/create-cassandra-api-account-java/create-account.png" alt-text="ポータルでアカウントを作成する&quot;:::
+   :::image type="content" source="./media/create-cassandra-api-account-java/create-account.png" alt-text="ポータルでアカウントを作成する":::
 
-4. **［作成］** を選択します <br/>アカウントの作成には数分かかります。 リソースが作成された後、ポータルの右側に &quot;**デプロイに成功しました**" という通知が表示されます。
+4. **［作成］** を選択します <br/>アカウントの作成には数分かかります。 リソースが作成された後、ポータルの右側に " **デプロイに成功しました** " という通知が表示されます。
 
 ## <a name="get-the-connection-details-of-your-account"></a>アカウントの接続の詳細を取得する  
 
@@ -219,7 +220,7 @@ cassandra_password=<FILLME_with_PRIMARY PASSWORD>
 
    ターミナル ウィンドウに、キースペースとテーブルが作成されたという通知が表示されます。 
    
-2. Azure portal で**データ エクスプローラー**を開き、キースペースとテーブルが作成されたことを確認します。
+2. Azure portal で **データ エクスプローラー** を開き、キースペースとテーブルが作成されたことを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 

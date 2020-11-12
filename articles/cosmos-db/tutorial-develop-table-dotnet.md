@@ -9,14 +9,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9001d9982a26875f814b635533bebd7579339fa5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 5a3eefdb742d847950819fccfd87b9b5501cbefd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476724"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079242"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>.NET SDK を使用した Azure Cosmos DB Table API と Azure Table Storage の概要
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 
@@ -158,7 +159,7 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 
 ここでソリューションをビルドし、F5 キーを押してプロジェクトを実行します。 プロジェクトを実行すると、コマンド プロンプトに次の出力内容が表示されます。
 
-:::image type="content" source="./media/tutorial-develop-table-standard/output-from-sample.png" alt-text="[接続文字列] ウィンドウでプライマリ接続文字列を確認してコピーする":::
+:::image type="content" source="./media/tutorial-develop-table-standard/output-from-sample.png" alt-text="コマンド プロンプトからの出力":::
 
 プロジェクトを実行するときに Settings.json ファイルが見つからないというエラーが発生した場合は、次の XML エントリをプロジェクトの設定に追加することで解決できます。 CosmosTableSamples を右クリックし、[CosmosTableSamples.csproj の編集] を選択して、次の itemGroup を追加します。 
 
@@ -171,7 +172,7 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 ```
 これで Azure portal にサインインして、テーブルにデータが存在することを確認できます。 
 
-:::image type="content" source="./media/tutorial-develop-table-standard/results-in-portal.png" alt-text="[接続文字列] ウィンドウでプライマリ接続文字列を確認してコピーする":::
+:::image type="content" source="./media/tutorial-develop-table-standard/results-in-portal.png" alt-text="ポータルでの結果":::
 
 ## <a name="next-steps"></a>次のステップ
 

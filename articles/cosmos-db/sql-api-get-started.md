@@ -9,14 +9,15 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 804330d44d63aa70076a7387aacfbbd3b4f742c9
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 49fa928285b29eaff806b009cf327e84e17491c6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480991"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098724"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>チュートリアル:.NET コンソール アプリをビルドして Azure Cosmos DB SQL API アカウントのデータを管理する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -70,7 +71,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 1. **ソリューション エクスプローラー** で、Visual Studio ソリューションの下にある新しいコンソール アプリケーションを右クリックし、 **[NuGet パッケージの管理]** を選択します。
 1. **[NuGet パッケージ マネージャー]** で **[参照]** を選択し、 *Microsoft.Azure.Cosmos* を検索します。 **[Microsoft.Azure.Cosmos]** を選択し、 **[インストール]** を選択します。
 
-   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-manage-nuget-2019.png" alt-text="プロジェクトを構成する":::
+   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-manage-nuget-2019.png" alt-text="Azure Cosmos DB クライアント SDK 用 NuGet のインストール":::
 
    Azure Cosmos DB SQL API クライアント ライブラリのパッケージ ID は [Microsoft Azure Cosmos DB クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) です。
 
@@ -121,7 +122,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 1. [Azure Portal](https://portal.azure.com)を開きます。 ご使用の Azure Cosmos DB アカウントを探して、 **[キー]** を選択します。
 
-   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-portal-keys.png" alt-text="プロジェクトを構成する":::
+   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-portal-keys.png" alt-text="Azure portal から Azure Cosmos DB キーを取得する":::
 
 1. *Program.cs* で、`<your endpoint URL>` を **URI** の値に置き換えます。 `<your primary key>` は **PRIMARY KEY** の値に置き換えます。
 
@@ -310,7 +311,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 1. Ctrl + Shift + A キーを押して **[新しい項目の追加]** を開きます。 新しいクラス `Family.cs` をプロジェクトに追加します。
 
-    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="プロジェクトを構成する":::
+    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="プロジェクトに新しい Family.cs クラスを追加する画面のスクリーンショット":::
 
 1. `Family`、`Parent`、`Child`、`Pet`、および `Address` クラスをコピーして `Family.cs` に貼り付けます。
 

@@ -10,14 +10,15 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.custom: devx-track-python
-ms.openlocfilehash: 0dd56b285401bd99a173700be6d6eb7c1fc97faa
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 341615bf8fe231eafa606411948ad014399b8261
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477251"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079548"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Python を使用して Azure Table Storage と Azure Cosmos DB Table API を使用する
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]

@@ -9,14 +9,15 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: dech
 ms.custom: devx-track-js
-ms.openlocfilehash: b1e0f8c301d40ff10dbf977731d457a31b096328
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1115d7bb0d6857aa39f246743df54a6cf3fd3676
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477999"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098661"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>チュートリアル:JavaScript SDK を使用して、Azure Cosmos DB SQL API データを管理するための Node.js コンソール アプリを構築する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -91,9 +92,9 @@ ms.locfileid: "92477999"
 
    エンドポイントとキーの詳細については、 [Azure portal](https://portal.azure.com) の **[キー]** ペインを参照してください。
 
-   :::image type="content" source="media/sql-api-nodejs-get-started/node-js-tutorial-keys.png" alt-text="Azure portal からキーを取得するスクリーンショット&quot;:::
+   :::image type="content" source="media/sql-api-nodejs-get-started/node-js-tutorial-keys.png" alt-text="Azure portal からキーを取得するスクリーンショット":::
 
-JavaScript SDK では、&quot; *コンテナー* &quot; と &quot; *項目* " という一般的な用語を使用しています。 コンテナーは、コレクション、グラフ、またはテーブルを表します。 項目は、ドキュメント、エッジ/頂点、行など、コンテナー内の内容を表します。 前のコード スニペットでは、`module.exports = config;` コードを使用して config オブジェクトをエクスポートし、 *app.js* ファイル内で参照できるようにしています。
+JavaScript SDK では、" *コンテナー* " と " *項目* " という一般的な用語を使用しています。 コンテナーは、コレクション、グラフ、またはテーブルを表します。 項目は、ドキュメント、エッジ/頂点、行など、コンテナー内の内容を表します。 前のコード スニペットでは、`module.exports = config;` コードを使用して config オブジェクトをエクスポートし、 *app.js* ファイル内で参照できるようにしています。
 
 ## <a name="create-a-database-and-a-container"></a>データベースとコンテナーを作成する
 

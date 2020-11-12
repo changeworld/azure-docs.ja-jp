@@ -8,14 +8,15 @@ ms.reviewer: sngun
 ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: e1e6f977d47d98e7c9f5300dc8165ee44a531499
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 693984ceaef1a71ebfbe4122c18a45a563c9c101
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91564869"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100439"
 ---
 # <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>チュートリアル:Azure Cosmos DB の Cassandra API アカウントに対するデータのクエリを実行する
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 開発者は、キー/値ペアを使用するアプリケーションを持っていることがあります。 Azure Cosmos DB の Cassandra API アカウントを使用して、キー/値データを格納してクエリを実行できます。 このチュートリアルでは、Java アプリケーションを使用して、Azure Cosmos DB の Cassandra API アカウントに対するユーザー データのクエリを実行する方法について説明します。 この Java アプリケーションでは、[Java ドライバー](https://github.com/datastax/java-driver)を使用して、ユーザー ID、ユーザー名、ユーザー所在地などのユーザー データのクエリを実行します。 
 
@@ -102,7 +103,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    java -cp target/cosmosdb-cassandra-examples.jar com.azure.cosmosdb.cassandra.examples.UserProfile
    ```
 
-2. 次に Azure portal で**データ エクスプローラー**を開き、ユーザー テーブルが削除されていることを確認します。
+2. 次に Azure portal で **データ エクスプローラー** を開き、ユーザー テーブルが削除されていることを確認します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

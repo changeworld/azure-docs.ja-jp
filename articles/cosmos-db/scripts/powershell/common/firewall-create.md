@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 726242b9a4a6585d440322540dc5353bcbe20d29
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a416b12b039c3e3886ff4f4d42506fd9bf95b4b8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488233"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099516"
 ---
 # <a name="create-an-azure-cosmos-db-account-with-ip-firewall"></a>IP ファイアウォールを使用する Azure Cosmos DB アカウントを作成する
+[!INCLUDE[appliesto-all-apis](../../../includes/appliesto-all-apis.md)]
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
