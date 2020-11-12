@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 3d999375d746bb359acdccf9bf48f8b77d509776
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e051a36b3c91fadc0c3b602cb4ba8e3dbcff1294
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90992474"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367133"
 ---
 # <a name="full-backup-and-restore"></a>完全なバックアップと復元
 
@@ -52,6 +52,10 @@ end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')
 
 skey=$(az storage account keys list --query '[0].value' -o tsv --account-name mhsmdemobackup --subscription a1ba9aaa-b7f6-4a33-b038-6e64553a6c7b)
 
+# Create a container
+
+az storage container create --account-name  mhsmdemobackup --name mhsmdemobackupcontainer  --account-key $skey
+
 # Generate a container sas token
 
 sas=$(az storage container generate-sas -n mhsmdemobackupcontainer --account-name mhsmdemobackup --permissions crdw --expiry $end --account-key $skey -o tsv --subscription a1ba9aaa-b7f6-4a33-b038-6e64553a6c7b)
@@ -68,7 +72,7 @@ az keyvault backup start --hsm-name mhsmdemo2 --storage-account-name mhsmdemobac
 > [!IMPORTANT]
 > 完全復元は、非常に破壊的であり、大規模な中断を伴う操作です。 したがって、`restore` 操作を実行するには、その前の 30 分以内に完全バックアップを完了しておく必要があります。
 
-復元はデータ プレーン操作です。 復元操作を開始する呼び出し元には、データ アクション **Microsoft.KeyVault/managedHsm/restore/start/action** を実行するためのアクセス許可が必要です。 バックアップが作成されたソース HSM と復元が実行される宛先 HSM のセキュリティ ドメインは同じである**必要**があります。 [Managed HSM セキュリティ ドメイン](security-domain.md)の詳細を確認してください。
+復元はデータ プレーン操作です。 復元操作を開始する呼び出し元には、データ アクション **Microsoft.KeyVault/managedHsm/restore/start/action** を実行するためのアクセス許可が必要です。 バックアップが作成されたソース HSM と復元が実行される宛先 HSM のセキュリティ ドメインは同じである **必要** があります。 [Managed HSM セキュリティ ドメイン](security-domain.md)の詳細を確認してください。
 
 完全復元を実行するには、次の情報を指定する必要があります。
 - HSM の名前または URL

@@ -1,19 +1,19 @@
 ---
 title: チュートリアル:サーバーを設計する - Azure CLI - Azure Database for MySQL
 description: このチュートリアルでは、コマンド ラインから Azure CLI を使用して、Azure Database for MySQL サーバーとデータベースを作成および管理する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3e851c47e67ac6e42d81b7688e457c2f9e17725b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 06d8b7cdd6edb6ae3dad27a8a5f50443e3fc8969
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543952"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533601"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure Database for MySQL を設計する
 
@@ -27,6 +27,8 @@ Azure Database for MySQL は、Microsoft クラウドにおける、MySQL Commun
 > * クエリ データ
 > * データの更新
 > * データの復元
+
+## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 
@@ -177,7 +179,7 @@ SELECT * FROM inventory;
 - 復元ポイント: サーバーが変更される前の日時を選択します。 ソース データベースの最も古いバックアップと同じか、それよりも前の値にする必要があります。
 - 対象サーバー: 復元先の新しいサーバー名を指定します。
 - ソース サーバー: 復元するサーバーの名前を指定します。
-- 場所:リージョンを選択することはできません。既定では、ソース サーバーと同じ場所になります。
+- 場所: リージョンを選択することはできません。既定では、ソース サーバーと同じ場所になります。
 
 ```azurecli-interactive
 az mysql server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver
@@ -196,12 +198,25 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 
 コマンドは同期的であり、サーバーが復元された後に戻ります。 復元が終了した後、作成された新しいサーバーを調べます。 データが期待どおりに復元されたことを確認します。
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+これらのリソースが別のクイック スタート/チュートリアルで不要である場合、次のコマンドで削除することができます。 
+
+```azurecli-interactive
+az group delete --name myresourcegroup
+```
+
+新しく作成した 1 つのサーバーを削除するだけの場合は、[az mysql server delete](/cli/azure/mysql/server#az-mysql-server-delete) コマンドを実行してください。
+
+```azurecli-interactive
+az mysql server delete --resource-group myresourcegroup --name mydemoserver
+```
+
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルで学習した内容は次のとおりです。
 > [!div class="checklist"]
 > * Azure Database for MySQL サーバーの作成
 > * サーバーのファイアウォールの構成
-> * [mysql コマンドライン ツール](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)を使用したデータベースの作成
+> * mysql コマンドライン ツールを使用したデータベースの作成
 > * サンプル データを読み込む
 > * クエリ データ
 > * データの更新

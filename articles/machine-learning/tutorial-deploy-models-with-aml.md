@@ -1,7 +1,7 @@
 ---
 title: イメージの分類チュートリアル:モデルをデプロイする
 titleSuffix: Azure Machine Learning
-description: このチュートリアルは、2 部構成のシリーズのパート 2 です。Azure Machine Learning を使用して、Python Jupyter ノートブックの scikit-learn で画像分類モデルをデプロイする方法について説明します。
+description: このチュートリアルでは、Azure Machine Learning を使用して、Python Jupyter ノートブックの scikit-learn で画像分類モデルをデプロイする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: f0d78fc55ca60fa883c742885acf2fa98ede61ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee6529f36c302cba1dc7b5a4b53aaf96ce58e4a5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896588"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532785"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>チュートリアル:Azure Container Instances に画像分類モデルをデプロイする
 
 
-このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 2 です**。 [前のチュートリアル](tutorial-train-models-with-aml.md)では、機械学習モデルをトレーニングしてから、クラウド上のワークスペースにモデルを登録しました。  これで、モデルを Web サービスとしてデプロイする準備が整いました。 Web サービスは、1 つのイメージ (この場合は Docker イメージ) です。 ここにスコアリング ロジックとモデル自体がカプセル化されています。 
+このチュートリアルは、 **2 部構成のチュートリアル シリーズのパート 2 です** 。 [前のチュートリアル](tutorial-train-models-with-aml.md)では、機械学習モデルをトレーニングしてから、クラウド上のワークスペースにモデルを登録しました。  これで、モデルを Web サービスとしてデプロイする準備が整いました。 Web サービスは、1 つのイメージ (この場合は Docker イメージ) です。 ここにスコアリング ロジックとモデル自体がカプセル化されています。 
 
 チュートリアルのこのパートでは、Azure Machine Learning を使って次の作業を行います。
 
@@ -358,6 +358,6 @@ service.delete()
 
 + [Azure Machine Learning のすべてのデプロイ オプション](how-to-deploy-and-where.md)について学習します。
 + [Web サービス用のクライアントを作成](how-to-consume-web-service.md)する方法について学習します。
-+  [大量のデータの予測](how-to-use-parallel-run-step.md)を非同期的に行います。
++  [大量のデータの予測](./tutorial-pipeline-batch-scoring-classification.md)を非同期的に行います。
 + [Application Insights を使用して Azure Machine Learning のモデルを監視](how-to-enable-app-insights.md)します。
-+ [アルゴリズムの自動選択](tutorial-auto-train-models.md)に関するチュートリアルを試します。 
++ [アルゴリズムの自動選択](tutorial-auto-train-models.md)に関するチュートリアルを試します。

@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/28/2020
-ms.openlocfilehash: adc3b4542b6eba0cc0df7d93ac2cabbf7c1c144a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 232f50c05182799c93a636baa2aec8ed93419be8
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216591"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489473"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>チュートリアル:Azure Data Share を使用したデータの共有  
 
@@ -34,14 +34,14 @@ ms.locfileid: "92216591"
 ### <a name="share-from-a-storage-account"></a>ストレージ アカウントからの共有:
 
 * Azure Storage アカウント: まだお持ちでない場合は、[Azure Storage アカウント](../storage/common/storage-account-create.md)を作成できます。
-* ストレージ アカウントに書き込む権限。これは、*Microsoft.Storage/storageAccounts/write* に含まれています。 この権限は、投稿者ロール内に存在します。
-* ストレージ アカウントにロールの割り当てを追加する権限。これは、*Microsoft.Authorization/role assignments/write* に含まれています。 この権限は、所有者ロール内に存在します。 
+* ストレージ アカウントに書き込む権限。これは、 *Microsoft.Storage/storageAccounts/write* に含まれています。 この権限は、投稿者ロール内に存在します。
+* ストレージ アカウントにロールの割り当てを追加する権限。これは、 *Microsoft.Authorization/role assignments/write* に含まれています。 この権限は、所有者ロール内に存在します。 
 
 
 ### <a name="share-from-a-sql-based-source"></a>SQL ベースのソースからの共有:
 
 * 共有するテーブルとビューを含む Azure SQL Database または Azure Synapse Analytics (旧称 SQL Data Warehouse)。
-* SQL サーバー上のデータベースに書き込む権限。これは、*Microsoft.Sql/servers/databases/write* に含まれています。 この権限は、投稿者ロール内に存在します。
+* SQL サーバー上のデータベースに書き込む権限。これは、 *Microsoft.Sql/servers/databases/write* に含まれています。 この権限は、投稿者ロール内に存在します。
 * データ共有からデータ ウェアハウスにアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
     1. 自分自身を SQL サーバーの Azure Active Directory 管理者として設定します。
     1. Azure Active Directory を使用して Azure SQL Database/Data Warehouse に接続します。
@@ -57,13 +57,13 @@ ms.locfileid: "92216591"
 
 * クライアント IP SQL Server のファイアウォール アクセス。 この操作を行うには、以下の手順を実行します。 
     1. Azure portal の SQL サーバーで、 *[ファイアウォールと仮想ネットワーク]* に移動します。
-    1. Azure サービスへのアクセスを許可するには、**オン** トグルをクリックします。
+    1. Azure サービスへのアクセスを許可するには、 **オン** トグルをクリックします。
     1. **[+ クライアント IP の追加]** をクリックし、 **[保存]** をクリックします。 クライアントの IP アドレスは変わることがあります。 次回 Azure portal から SQL データを共有するときにも、このプロセスを繰り返すことが必要になる場合もあります。 IP 範囲を追加することもできます。 
 
 ### <a name="share-from-azure-data-explorer"></a>Azure Data Explorer からの共有
 * 共有したいデータベースを含んだ Azure Data Explorer クラスター。
-* Azure Data Explorer クラスターに書き込む権限。これは、*Microsoft.Kusto/clusters/write* に含まれています。 この権限は、投稿者ロール内に存在します。
-* Azure Data Explorer クラスターにロールの割り当てを追加する権限。これは、*Microsoft.Authorization/role assignments/write* に含まれています。 この権限は、所有者ロール内に存在します。
+* Azure Data Explorer クラスターに書き込む権限。これは、 *Microsoft.Kusto/clusters/write* に含まれています。 この権限は、投稿者ロール内に存在します。
+* Azure Data Explorer クラスターにロールの割り当てを追加する権限。これは、 *Microsoft.Authorization/role assignments/write* に含まれています。 この権限は、所有者ロール内に存在します。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -137,8 +137,15 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
 1. [Review + Create]\(レビュー + 作成\) タブで、パッケージの内容、設定、受信者、および同期の設定を確認します。 **［作成］** を選択します
 
-ご自分の Azure データ共有が作成され、データ共有の受信者が招待を受け取れる状態になりました。 
+ご自分の Azure データ共有が作成され、データ共有の受信者が招待を受け取れる状態になりました。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+リソースが不要になったら、 **Data Share の [概要]** ページに移動し、 **[削除]** を選択して削除します。
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure データ共有を作成し、受信者を招待する方法について説明しました。 データ コンシューマーがデータ共有を受け入れて受信できるようにする方法については、続けて[データの受け入れと受信](subscribe-to-data-share.md)に関するチュートリアルを行ってください。
+このチュートリアルでは、Azure データ共有を作成し、受信者を招待する方法について説明しました。 データ コンシューマーがデータ共有を受け入れて受信できるようにする方法については、続けてデータの受け入れと受信に関するチュートリアルを行ってください。
+
+> [!div class="nextstepaction"]
+> [チュートリアル:Azure Data Share を使用したデータの受け入れと受信](subscribe-to-data-share.md)

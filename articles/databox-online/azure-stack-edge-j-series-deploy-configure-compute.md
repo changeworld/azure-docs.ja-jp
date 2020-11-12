@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 6bea4ee4452675a50ef9144da300c3e15652a81f
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 75428b28095b0e425a1670caffcf960aa6ae58f6
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952167"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504483"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro でデータを変換する
 
@@ -63,11 +63,11 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
 
     ![コンピューティングの開始 2](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
-4. **［作成］** を選択します IoT Hub リソースの作成には数分かかります。 IoT Hub リソースが作成された後、**[コンピューティングの構成]** タイルが更新され、コンピューティングの構成が表示されます。 
+4. **［作成］** を選択します IoT Hub リソースの作成には数分かかります。 IoT Hub リソースが作成された後、 **[コンピューティングの構成]** タイルが更新され、コンピューティングの構成が表示されます。 
 
     ![コンピューティングの開始 3](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
 
-5. Edge コンピューティング ロールが構成されたことを確認するには、**[コンピューティングの構成]** タイルの **[View Compute]\(コンピューティングの表示\)** を選択します。
+5. Edge コンピューティング ロールが構成されたことを確認するには、 **[コンピューティングの構成]** タイルの **[View Compute]\(コンピューティングの表示\)** を選択します。
     
     ![コンピューティングの開始 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
 
@@ -148,23 +148,23 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
 
 モジュールが実行中であることを確認するには、以下を実行します。
 
-1. **[モジュールの追加]** タイルを選択します。 これにより、**[モジュール]** ブレードが開きます。 モジュールの一覧で、自分がデプロイしたモジュールを特定します。 自分が追加したモジュールのランタイムの状態は、*[実行中]* になっているはずです。
+1. **[モジュールの追加]** タイルを選択します。 これにより、 **[モジュール]** ブレードが開きます。 モジュールの一覧で、自分がデプロイしたモジュールを特定します。 自分が追加したモジュールのランタイムの状態は、 *[実行中]* になっているはずです。
 
     ![デプロイされたモジュールを表示する](./media/azure-stack-edge-j-series-deploy-configure-compute/add-module-3.png)
  
-1.   エクスプローラーで、先ほど作成した Edge ローカル共有と Edge 共有の両方に接続します。
+1. エクスプローラーで、先ほど作成した Edge ローカル共有と Edge 共有の両方に接続します。
 
     ![データ変換を検証する](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-2.png) 
  
-1.   データをローカル共有に追加します。
+1. データをローカル共有に追加します。
 
     ![データ変換を検証する](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-3.png) 
  
-    そのデータはクラウド共有に移動されます。
+   そのデータはクラウド共有に移動されます。
 
     ![データ変換を検証する](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-4.png)  
 
-    データは次に、クラウド共有からストレージ アカウントにプッシュされます。 データを表示するには、Storage Explorer を使用できます。
+   データは次に、クラウド共有からストレージ アカウントにプッシュされます。 データを表示するには、Storage Explorer を使用できます。
 
     <!--![Verify data transform](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-5.png)-->
  
