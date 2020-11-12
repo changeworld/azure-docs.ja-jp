@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 4fbd410a7d2a7374303e637ca81c34dbea90fcb7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 36c12fa7dd37ce1ffebde16cf6ca856d9fcdca0a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791037"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93391995"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の新機能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -104,7 +104,7 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 |[サービス プリンシパルから Azure AD および AKV にアクセスできません](#service-principal-cannot-access-azure-ad-and-akv)|2020 年 8 月|回避策あり||
 |[CHECKSUM を使用せずに手動バックアップを復元すると失敗することがある](#restoring-manual-backup-without-checksum-might-fail)|2020 年 5 月|解決済み|2020 年 6 月|
 |[既存のジョブを変更、無効化、または有効化するとエージェントが応答しなくなる](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020 年 5 月|解決済み|2020 年 6 月|
-|[リソース グループに対するアクセス許可が SQL Managed Instance に適用されない](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|2020 年 2 月|回避策あり||
+|[リソース グループに対するアクセス許可が SQL Managed Instance に適用されない](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|2020 年 2 月|解決済み|2020 年 11 月|
 |[ポータルを使用したフェールオーバー グループに対する手動フェールオーバーの制限](#limitation-of-manual-failover-via-portal-for-failover-groups)|2020 年 1 月|回避策あり||
 |[SQL Agent ロールには、sysadmin 以外のログインに対する明示的な EXECUTE 権限が必要です](#in-memory-oltp-memory-limits-are-not-applied)|2019 年 12 月|回避策あり||
 |[エージェント プロセスを再起動すると、SQL Agent ジョブが中断されることがある](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|2019 年 12 月|解決済み|2020 年 3 月|

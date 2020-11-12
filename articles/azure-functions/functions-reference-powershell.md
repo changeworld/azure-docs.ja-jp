@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 796aca02e6f70da8f5b94f6bbdbd2fd1d535bd77
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: af9490433c344c712da55e9b29bf9df364380736
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108475"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422537"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions の PowerShell 開発者向けガイド
 
@@ -20,7 +20,7 @@ PowerShell Azure 関数 (関数) は、トリガーされた時点で実行さ�
 
 他の種類の関数と同様、PowerShell スクリプト関数も、`function.json` ファイルで定義されているすべての入力バインディングの名前に対応したパラメーターを受け入れます。 また、関数を開始したトリガーに関する追加情報を含む `TriggerMetadata` パラメーターも渡されます。
 
-この記事では、「[Azure Functions の開発者向けガイド](functions-reference.md)」を既に読んでいることを前提としています。 また、[Functions の PowerShell 向けクイックスタート](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)で、初めての PowerShell 関数を作成しておく必要があります。
+この記事では、「[Azure Functions の開発者向けガイド](functions-reference.md)」を既に読んでいることを前提としています。 また、[Functions の PowerShell 向けクイックスタート](./create-first-function-vs-code-powershell.md)で、初めての PowerShell 関数を作成しておく必要があります。
 
 ## <a name="folder-structure"></a>フォルダー構造
 
@@ -235,7 +235,7 @@ PowerShell 関数におけるログは、通常の PowerShell のログと同様
 | ------------- | -------------- |
 | エラー | **`Write-Error`** |
 | 警告 | **`Write-Warning`**  | 
-| Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Information | "_情報_" レベル ログへの書き込み |
+| Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Information | " _情報_ " レベル ログへの書き込み |
 | デバッグ | **`Write-Debug`** |
 | Trace | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
@@ -418,11 +418,11 @@ PowerShell Core 6 から PowerShell 7 にアップグレードできるように
 
 1. [Azure portal](https://portal.azure.com) で、関数アプリに移動します。
 
-1. **[設定]** で **[構成]** を選択します。 **[全般設定]** タブで、**PowerShell のバージョン**を探します。 
+1. **[設定]** で **[構成]** を選択します。 **[全般設定]** タブで、 **PowerShell のバージョン** を探します。 
 
     :::image type="content" source="media/functions-reference-powershell/change-powershell-version-portal.png" alt-text="関数アプリで使用される PowerShell のバージョンを選択する"::: 
 
-1. 目的の **PowerShell Core のバージョン**を選択し、 **[保存]** を選択します。 再起動の保留に関する警告が表示されたら、 **[続行]** を選択します。 関数アプリは、選択した PowerShell のバージョンで再起動します。 
+1. 目的の **PowerShell Core のバージョン** を選択し、 **[保存]** を選択します。 再起動の保留に関する警告が表示されたら、 **[続行]** を選択します。 関数アプリは、選択した PowerShell のバージョンで再起動します。 
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -525,7 +525,7 @@ PSFunctionApp
 現在のモジュールの一覧は次のとおりです。
 
 * [Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): アーカイブ (`.zip`、`.nupkg` など) に使用されるモジュール。
-* **ThreadJob**: PowerShell ジョブ API のスレッドベースの実装です。
+* **ThreadJob** : PowerShell ジョブ API のスレッドベースの実装です。
 
 既定では、Functions では、これらのモジュールの最新のバージョンが使用されます。 特定のバージョンを使用するには、関数アプリの `Modules` フォルダーにその特定のバージョンのモジュールを格納してください。
 
@@ -567,9 +567,9 @@ Write-Host $env:WEBSITE_SITE_NAME
 
 ### <a name="considerations-for-using-concurrency"></a>コンカレンシーの使用に関する注意点
 
-PowerShell は、既定では "_シングル スレッド_" のスクリプト言語です。 ただし、同じプロセス内で複数の PowerShell 実行空間を使用することで、コンカレンシーを追加できます。 作成される実行空間の量は、```PSWorkerInProcConcurrencyUpperBound``` のアプリケーション設定と一致します。 スループットは、選択したプランで使用可能な CPU とメモリの量によって影響を受けます。
+PowerShell は、既定では " _シングル スレッド_ " のスクリプト言語です。 ただし、同じプロセス内で複数の PowerShell 実行空間を使用することで、コンカレンシーを追加できます。 作成される実行空間の量は、```PSWorkerInProcConcurrencyUpperBound``` のアプリケーション設定と一致します。 スループットは、選択したプランで使用可能な CPU とメモリの量によって影響を受けます。
 
-開発者の入力の手間を軽減するために、Azure PowerShell では、"_プロセスレベル_" のコンテキストと状態が使用されています。 ただし、関数アプリでコンカレンシーを有効にし、状態の変更を伴うアクションを呼び出した場合は、最終的に競合状態に陥る可能性があります。 このような競合状態をデバッグするのは困難です。なぜなら、一方の呼び出しが特定の状態に依存しているのに、もう一方の呼び出しがその状態を変更したためです。
+開発者の入力の手間を軽減するために、Azure PowerShell では、" _プロセスレベル_ " のコンテキストと状態が使用されています。 ただし、関数アプリでコンカレンシーを有効にし、状態の変更を伴うアクションを呼び出した場合は、最終的に競合状態に陥る可能性があります。 このような競合状態をデバッグするのは困難です。なぜなら、一方の呼び出しが特定の状態に依存しているのに、もう一方の呼び出しがその状態を変更したためです。
 
 一部の操作にはかなりの時間がかかる可能性があるため、Azure PowerShell のコンカレンシーには非常に大きな価値があります。 しかし、実際に使用する場合には注意が必要です。 競合状態が発生していると思われる場合は、PSWorkerInProcConcurrencyUpperBound アプリ設定を `1` に設定し、代わりに、コンカレンシーに対して[言語ワーカー プロセス レベルの分離](functions-app-settings.md#functions_worker_process_count)を使用します。
 
@@ -649,11 +649,11 @@ PowerShell 関数を使用するときは、以下のセクションに記載さ
 
 ### <a name="cold-start"></a>コールド スタート
 
-[サーバーレス ホスティング モデル](functions-scale.md#consumption-plan)で Azure Functions を開発する際は、コールド スタートを避けて通ることはできません。 "*コールド スタート*" とは、関数アプリの実行が開始されて要求が処理されるまでにかかる時間のことを指します。 従量課金プランでは、非アクティブな期間中に関数アプリがシャットダウンされるため、コールド スタートの発生頻度が高くなります。
+[サーバーレス ホスティング モデル](functions-scale.md#consumption-plan)で Azure Functions を開発する際は、コールド スタートを避けて通ることはできません。 " *コールド スタート* " とは、関数アプリの実行が開始されて要求が処理されるまでにかかる時間のことを指します。 従量課金プランでは、非アクティブな期間中に関数アプリがシャットダウンされるため、コールド スタートの発生頻度が高くなります。
 
 ### <a name="bundle-modules-instead-of-using-install-module"></a>`Install-Module` を使用せずにモジュールをバンドルする
 
-スクリプトは、呼び出しのたびに実行されます。 スクリプト内で `Install-Module` を使用することは避けてください。 その代わり、発行前に `Save-Module` を使用します。そうすれば、関数がモジュールをダウンロードする際に生じる無駄な時間をなくすことができます。 コールド スタートが関数に影響を及ぼす場合は、"*常にオン*" に設定された [App Service プラン](functions-scale.md#app-service-plan)、または [Premium プラン](functions-scale.md#premium-plan)に関数アプリをデプロイすることを検討してください。
+スクリプトは、呼び出しのたびに実行されます。 スクリプト内で `Install-Module` を使用することは避けてください。 その代わり、発行前に `Save-Module` を使用します。そうすれば、関数がモジュールをダウンロードする際に生じる無駄な時間をなくすことができます。 コールド スタートが関数に影響を及ぼす場合は、" *常にオン* " に設定された [App Service プラン](functions-scale.md#app-service-plan)、または [Premium プラン](functions-scale.md#premium-plan)に関数アプリをデプロイすることを検討してください。
 
 ## <a name="next-steps"></a>次のステップ
 

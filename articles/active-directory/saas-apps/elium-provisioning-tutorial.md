@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: d9bb21ab4b5610c8318fe4ee869f1140faf55367
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8f027ccc577df79e561fca7194c20b6cc7ef2c6
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544232"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356775"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>チュートリアル:Elium を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -79,7 +79,7 @@ Azure AD を使用した自動ユーザー プロビジョニング用に Elium 
 
     ![[新しいアプリケーション] リンク](common/add-new-app.png)
 
-1. 検索ボックスに「**Elium**」と入力し、結果一覧で **[Elium]** を選択してから、 **[追加]** ボタンを選択してアプリケーションを追加します。
+1. 検索ボックスに「 **Elium** 」と入力し、結果一覧で **[Elium]** を選択してから、 **[追加]** ボタンを選択してアプリケーションを追加します。
 
     ![ギャラリーの検索ボックス](common/search-new-app.png)
 
@@ -108,7 +108,7 @@ Azure AD で Elium の自動ユーザー プロビジョニングを構成する
 
     ![[プロビジョニング モード] の [自動] 設定](common/provisioning-automatic.png)
 
-1. **[管理者資格情報]** セクションの **[テナントの URL]** フィールドに「 **\<tenantURL\>/scim/v2**」と入力します。 (**tenantURL** は、以前に Elium 管理コンソールから取得した値です。)また、 **[シークレット トークン]** フィールドに Elium の**シークレット トークン**を入力します。 最後に、 **[テスト接続]** を選択して、Azure AD から Elium に接続できることを確認します。 接続できない場合は、使用中の Elium アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+1. **[管理者資格情報]** セクションの **[テナントの URL]** フィールドに「 **\<tenantURL\>/scim/v2** 」と入力します。 ( **tenantURL** は、以前に Elium 管理コンソールから取得した値です。)また、 **[シークレット トークン]** フィールドに Elium の **シークレット トークン** を入力します。 最後に、 **[テスト接続]** を選択して、Azure AD から Elium に接続できることを確認します。 接続できない場合は、使用中の Elium アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![[管理者資格情報] の [テナントの URL] フィールドと [シークレット トークン] フィールド](common/provisioning-testconnection-tenanturltoken.png)
 

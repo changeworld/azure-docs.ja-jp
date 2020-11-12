@@ -9,16 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 03896f4f7aa4e6efc78b498406e79a299318ed7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb1b3534481c55723bd5d13760259b18e0b5cce2
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931027"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392046"
 ---
 # <a name="filling-time-gaps-and-imputing-missing-values"></a>時間のギャップを埋めて欠損値を補完する 
 
-時系列データを処理する場合、時系列データの属性に欠損値がある可能性があります。 また、データの性質によって、またはデータ収集が中断しているために、データセットに時間の*ギャップ*がある可能性もあります。
+時系列データを処理する場合、時系列データの属性に欠損値がある可能性があります。 また、データの性質によって、またはデータ収集が中断しているために、データセットに時間の *ギャップ* がある可能性もあります。
 
 たとえば、スマート デバイスのエネルギー使用状況の統計情報を収集する場合、デバイスが動作していないときは常に、使用状況の統計にギャップが生じます。 同様に、マシンの利用統計情報の収集シナリオでは、さまざまなセンサーがさまざまな周波数でデータを出力するように構成されていて、その結果、センサーの値が欠損する可能性があります。 たとえば、電圧と圧力という 2 つのセンサーがあり、それぞれ 100 Hz と 10 Hz の周波数で構成されている場合、電圧センサーは 100 分の 1 秒ごとにデータを出力しますが、圧力センサーは 10 分の 1 秒ごとにのみデータを出力します。
 
@@ -43,7 +43,7 @@ timestamp               VoltageReading  PressureReading
 
 上記のデータセットには、2 つの重要な特徴があります。 
 
-- このデータセットには、いくつかのタイムスタンプ (`2020-09-07 06:14:47.000`、`2020-09-07 06:14:48.000`、`2020-09-07 06:14:50.000`、`2020-09-07 06:14:53.000`、および `2020-09-07 06:14:55.000`) に関連するデータ ポイントが含まれていません。 これらのタイムスタンプがデータセット内の*ギャップ*です。  
+- このデータセットには、いくつかのタイムスタンプ (`2020-09-07 06:14:47.000`、`2020-09-07 06:14:48.000`、`2020-09-07 06:14:50.000`、`2020-09-07 06:14:53.000`、および `2020-09-07 06:14:55.000`) に関連するデータ ポイントが含まれていません。 これらのタイムスタンプがデータセット内の *ギャップ* です。  
 - 電圧と圧力の測定値に、`null` として表される欠損値があります。 
 
 ## <a name="gap-filling"></a>ギャップを埋める 
@@ -71,7 +71,7 @@ From
 #SeriesGenerate a LEFT OUTER JOIN MachineTelemetry b 
     on a.dt = b.[timestamp]
 ```
-上記のクエリでは、指定された範囲内のすべての *1 秒*のタイムスタンプを含む次の出力が生成されます。
+上記のクエリでは、指定された範囲内のすべての *1 秒* のタイムスタンプを含む次の出力が生成されます。
 
 結果セットは次のようになります
 
@@ -181,7 +181,7 @@ timestamp               OrigVoltageVals  ImputedVoltage  OrigPressureVals  Imput
 
 ## <a name="next-steps"></a>次のステップ 
 
-- [FIRST_VALUE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/first-value-transact-sql?toc=/azure/azure-sql-edge/toc.json)
-- [LAST_VALUE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/last-value-transact-sql?toc=/azure/azure-sql-edge/toc.json)
+- [FIRST_VALUE (Transact-SQL)](/sql/t-sql/functions/first-value-transact-sql?toc=%252fazure%252fazure-sql-edge%252ftoc.json)
+- [LAST_VALUE (Transact-SQL)](/sql/t-sql/functions/last-value-transact-sql?toc=%252fazure%252fazure-sql-edge%252ftoc.json)
 - [DATE_BUCKET (Transact-SQL)](date-bucket-tsql.md)
-- [集計関数 (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/aggregate-functions-transact-sql)
+- [集計関数 (Transact-SQL)](/sql/t-sql/functions/aggregate-functions-transact-sql)

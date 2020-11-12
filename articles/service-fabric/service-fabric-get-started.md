@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: f32bc444ba753f48955de4a4c16bde8dfb7a05fc
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 8593858580da1358dc84d9c25420fe2a95680251
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316641"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330225"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 
@@ -53,12 +53,6 @@ Service Fabric ツールは、Visual Studio 2017 および 2019 の Azure 開発
 さらに、Web Platform Installer を使用して Microsoft Azure Service Fabric SDK とランタイムをインストールする必要があります。
 
 * [Microsoft Azure Service Fabric SDK をインストールする][core-sdk]
-
-### <a name="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>Visual Studio 2015 を使用するには (Visual Studio 2015 Update 2 以降が必要)
-
-Visual Studio 2015 では、Service Fabric ツールは、Web Platform Installer を使用して SDK やランタイムと共にインストールされます。
-
-* [Microsoft Azure Service Fabric SDK とツールのインストール][full-bundle-vs2015]
 
 ### <a name="sdk-installation-only"></a>SDK のみのインストール
 

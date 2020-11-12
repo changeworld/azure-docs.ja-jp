@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory アプリケーションのプロビジョニングの新機能
 description: Azure Active Directory アプリケーションのプロビジョニングの新規および更新されたドキュメント。
-ms.date: 10/21/2020
+ms.date: 11/05/2020
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -10,16 +10,36 @@ ms.author: kenwith
 author: kenwith
 manager: CelesteDG
 services: active-directory
-ms.openlocfilehash: 885838e1a517ab4713f1753957f8b85f40297fd2
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 83375eebdbe46fc0132f1fcf0b6d11457aa0e897
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424555"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421007"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory アプリケーションのプロビジョニング新機能
 
 Azure Active Directory アプリケーションのプロビジョニングに関するドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 プロビジョニング サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [プロビジョニングを Azure Monitor ログと統合する方法の概要](application-provisioning-log-analytics.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [プロビジョニングのしくみ](how-provisioning-works.md)
+- [プロビジョニングを Azure Monitor ログと統合する方法の概要](application-provisioning-log-analytics.md)
+- [Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ](customize-application-attributes.md)
+- [Azure AD で属性マッピングの式を記述するためのリファレンス](functions-for-customizing-application-data.md)
+- [チュートリアル - SCIM エンドポイントの構築と Azure AD を使用したユーザー プロビジョニングの構成](use-scim-to-provision-users-and-groups.md)
+- [マルチテナント アプリケーションで自動ユーザー プロビジョニングを有効にする](isv-automatic-provisioning-multi-tenant-apps.md)
+- [既知の問題:アプリケーションのプロビジョニング](known-issues.md)
+- [自動ユーザー プロビジョニングのデプロイを計画する](plan-auto-user-provisioning.md)
+- [Azure Active Directory ユーザー プロビジョニングのためのクラウド人事アプリケーションの計画](plan-cloud-hr-provision.md)
+- [オンデマンド プロビジョニング](provision-on-demand.md)
+
 
 ## <a name="september-2020"></a>2020 年 9 月
 

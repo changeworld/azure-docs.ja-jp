@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 3f1e2e12b7ba0a47c20614065510ffd1ae8bf195
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6508db654cd27ca4b3844f6037f13fb504173e11
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325340"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361167"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning 推論環境をセキュリティで保護する
 
@@ -115,35 +115,10 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 作成プロセスが完了すると、仮想ネットワークの背後にある AKS クラスターで推論 (モデルのスコアリング) を実行できるようになります。 詳細については、[AKS へのデプロイ方法](how-to-deploy-and-where.md)に関するページをご覧ください。
 
-## <a name="secure-vnet-traffic"></a>VNet トラフィックをセキュリティ保護する
-
-AKS クラスターと仮想ネットワークの間のトラフィックを分離するには、次の 2 つの方法があります。
-
-* __プライベート AKS クラスター__ : この方法では、Azure Private Link を使用して、デプロイまたは管理操作用のクラスターとの通信をセキュリティで保護します。
-* __内部 AKS ロード バランサー__ : この方法では、AKS へのデプロイのエンドポイントが、仮想ネットワーク内でプライベート IP を使用するように構成します。
-
-> [!WARNING]
-> 内部ロード バランサーは、kubenet を使用する AKS クラスターでは機能しません。 内部ロード バランサーとプライベート AKS クラスターを同時に使用する場合は、Azure Container Networking Interface (CNI) を使用してプライベート AKS クラスターを構成します。 詳細については、「[Azure Kubernetes Service で Azure CNI ネットワークを構成する](../aks/configure-azure-cni.md)」を参照してください。
-
-### <a name="private-aks-cluster"></a>プライベート AKS クラスター
-
-既定では AKS クラスターには、パブリック IP アドレスを持つコントロール プレーンまたは API サーバーがあります。 プライベート AKS クラスターを作成することによって、プライベート コントロール プレーンを使用するように AKS を構成できます。 詳細については、「[プライベート Azure Kubernetes Service クラスターを作成する](../aks/private-clusters.md)」を参照してください。
-
-プライベート AKS クラスターを作成したら、Azure Machine Learning で使用する[仮想ネットワークにクラスターをアタッチします](how-to-create-attach-kubernetes.md)。
+## <a name="network-contributor-role"></a>ネットワーク共同作成者ロール
 
 > [!IMPORTANT]
-> プライベート リンクが有効な AKS クラスターを Azure Machine Learning と共に使用する前に、この機能を有効にするためにサポート インシデントを開始する必要があります。 詳細については、[クォータの管理と増加](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)に関するページを参照してください。
-
-### <a name="internal-aks-load-balancer"></a>内部 AKS ロード バランサー
-
-既定では、AKS のデプロイでは[パブリック ロード バランサー](../aks/load-balancer-standard.md)が使用されます。 このセクションでは、内部ロード バランサーを使用するように AKS を構成する方法について説明します。 内部 (プライベート) ロード バランサーは、プライベート IP のみがフロントエンドとして許可される場合に使用されます。 内部ロード バランサーは、仮想ネットワーク内でトラフィックを負荷分散させるために使用されます
-
-プライベート ロード バランサーを有効にするには、" _内部ロード バランサー_ " を使用するように AKS を構成します。 
-
-#### <a name="network-contributor-role"></a>ネットワーク共同作成者ロール
-
-> [!IMPORTANT]
-> 前に作成した仮想ネットワークを提供して AKS クラスターを作成またはアタッチする場合は、AKS クラスターのサービス プリンシパル (SP) またはマネージド ID に、仮想ネットワークを含むリソース グループに対する _ネットワーク共同作成者_ ロールを付与する必要があります。 これは、内部ロード バランサーをプライベート IP に変更する前に行う必要があります。
+> 前に作成した仮想ネットワークを提供して AKS クラスターを作成またはアタッチする場合は、AKS クラスターのサービス プリンシパル (SP) またはマネージド ID に、仮想ネットワークを含むリソース グループに対する _ネットワーク共同作成者_ ロールを付与する必要があります。
 >
 > ネットワーク共同作成者として ID を追加するには、次の手順に従います。
 
@@ -171,6 +146,31 @@ AKS クラスターと仮想ネットワークの間のトラフィックを分�
     az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
     ```
 AKS での内部ロードバランサーの使用の詳細については、「[Azure Kubernetes Service (AKS) で内部ロード バランサーを使用する](../aks/internal-lb.md)」を参照してください。
+
+## <a name="secure-vnet-traffic"></a>VNet トラフィックをセキュリティ保護する
+
+AKS クラスターと仮想ネットワークの間のトラフィックを分離するには、次の 2 つの方法があります。
+
+* __プライベート AKS クラスター__ : この方法では、Azure Private Link を使用して、デプロイまたは管理操作用のクラスターとの通信をセキュリティで保護します。
+* __内部 AKS ロード バランサー__ : この方法では、AKS へのデプロイのエンドポイントが、仮想ネットワーク内でプライベート IP を使用するように構成します。
+
+> [!WARNING]
+> 内部ロード バランサーは、kubenet を使用する AKS クラスターでは機能しません。 内部ロード バランサーとプライベート AKS クラスターを同時に使用する場合は、Azure Container Networking Interface (CNI) を使用してプライベート AKS クラスターを構成します。 詳細については、「[Azure Kubernetes Service で Azure CNI ネットワークを構成する](../aks/configure-azure-cni.md)」を参照してください。
+
+### <a name="private-aks-cluster"></a>プライベート AKS クラスター
+
+既定では AKS クラスターには、パブリック IP アドレスを持つコントロール プレーンまたは API サーバーがあります。 プライベート AKS クラスターを作成することによって、プライベート コントロール プレーンを使用するように AKS を構成できます。 詳細については、「[プライベート Azure Kubernetes Service クラスターを作成する](../aks/private-clusters.md)」を参照してください。
+
+プライベート AKS クラスターを作成したら、Azure Machine Learning で使用する[仮想ネットワークにクラスターをアタッチします](how-to-create-attach-kubernetes.md)。
+
+> [!IMPORTANT]
+> プライベート リンクが有効な AKS クラスターを Azure Machine Learning と共に使用する前に、この機能を有効にするためにサポート インシデントを開始する必要があります。 詳細については、[クォータの管理と増加](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)に関するページを参照してください。
+
+### <a name="internal-aks-load-balancer"></a>内部 AKS ロード バランサー
+
+既定では、AKS のデプロイでは[パブリック ロード バランサー](../aks/load-balancer-standard.md)が使用されます。 このセクションでは、内部ロード バランサーを使用するように AKS を構成する方法について説明します。 内部 (プライベート) ロード バランサーは、プライベート IP のみがフロントエンドとして許可される場合に使用されます。 内部ロード バランサーは、仮想ネットワーク内でトラフィックを負荷分散させるために使用されます
+
+プライベート ロード バランサーを有効にするには、" _内部ロード バランサー_ " を使用するように AKS を構成します。 
 
 #### <a name="enable-private-load-balancer"></a>プライベート ロード バランサーを有効にする
 

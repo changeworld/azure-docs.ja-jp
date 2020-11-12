@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 2f3657feb5a68600e4eb2d7bcaa4891a398c2682
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 889972f7d94ab960354982275d45bdc5d5726d6e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850695"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356826"
 ---
 # <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>チュートリアル:Looop を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -59,9 +59,9 @@ Azure AD での自動ユーザー プロビジョニング用に Looop を構成
 
 2. **[SCIM integration]\(SCIM 統合\)** の下にある **[Reset Token]\(トークンのリセット\)** をクリックして、新しいトークンを生成します。
 
-    :::image type="content" source="media/looop-provisioning-tutorial/resettoken.png" alt-text="Looop 管理コンソールのスクリーンショット。[アカウント] タブが強調表示され、開いています。[アカウント設定] の [認証] が強調表示されています。" border="false":::
+    :::image type="content" source="media/looop-provisioning-tutorial/resettoken.png" alt-text="Looop 管理コンソールのページの [SCIM 統合] セクションのスクリーンショット。[トークンのリセット] ボタンが強調表示されています。" border="false":::
 
-3. **SCIM エンドポイント**と**トークン**をコピーします。 これらの値は、Azure portal の Looop アプリケーションの [プロビジョニング] タブの **[テナント URL]** および **[シークレット トークン]** フィールドに入力されます。 
+3. **SCIM エンドポイント** と **トークン** をコピーします。 これらの値は、Azure portal の Looop アプリケーションの [プロビジョニング] タブの **[テナント URL]** および **[シークレット トークン]** フィールドに入力されます。 
 
     ![Looop でのトークンの作成](media/looop-provisioning-tutorial/token.png)
 
@@ -81,7 +81,7 @@ Azure AD で自動ユーザー プロビジョニング用に Looop を構成す
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Looop**」と入力し、結果パネルで **[Looop]** を選択します。 
+4. 検索ボックスに「 **Looop** 」と入力し、結果パネルで **[Looop]** を選択します。 
 
     ![結果一覧の Looop](common/search-new-app.png)
 

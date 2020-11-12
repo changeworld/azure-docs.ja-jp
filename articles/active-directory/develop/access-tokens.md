@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: hirsin
-ms.reviewer: hirsin
+ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: ee8ea874ba8133216bf5a28587f841d3b7cfa2ed
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b60be1b3d30ab462f89dd4d72ab67d43393740b8
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740158"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393372"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft ID プラットフォーム アクセス トークン
 
@@ -33,7 +33,7 @@ ms.locfileid: "92740158"
 > [!IMPORTANT]
 > アクセス トークンは、トークンの *対象ユーザー* 、つまりそのトークン内のスコープを所有するアプリケーションに基づいて作成されます。  これは、[アプリ マニフェスト](reference-app-manifest.md#manifest-reference)内の `accessTokenAcceptedVersion` を `2` に設定しているリソースにより、v1.0 エンドポイントを呼び出しているクライアントがどのように v2.0 アクセス トークンを受信できるかを示しています。  同様に、これはクライアントのアクセス トークンの[省略可能な要求](active-directory-optional-claims.md)を変更しても、リソースによって所有される `user.read` に対してトークンが要求されたときに受信されるアクセス トークンが変更されない理由でもあります。
 >
-> 同じ理由で、個人アカウント (hotmail.com や outlook.com など) をサポートする Microsoft API を使用してクライアント アプリケーションをテストしたときに、クライアントが受け取ったアクセス トークンが不透明型の文字列であることがわかります。 これは、アクセス対象のリソースが、暗号化されたトークンを使用しており、クライアントによって認識できないためです。  これは想定されているものであり、アプリの問題ではありません。クライアント アプリは、アクセス トークンの形式に依存しないようにしてください。 
+> 同じ理由で、個人アカウント (hotmail.com や outlook.com など) をサポートする Microsoft API を使用してクライアント アプリケーションをテストしたときに、クライアントが受け取ったアクセス トークンが不透明型の文字列であることがわかります。 これは、アクセス対象のリソースが、暗号化されたトークンを使用しており、クライアントによって認識できないためです。  これは想定されているものであり、アプリの問題ではありません。クライアント アプリは、アクセス トークンの形式に依存しないようにしてください。
 
 ## <a name="sample-tokens"></a>サンプル トークン
 
@@ -245,7 +245,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 ### <a name="token-timeouts"></a>トークンのタイムアウト
 
-[トークンの有効期間の構成](active-directory-configurable-token-lifetimes.md)を使用すると、更新トークンの有効期間を変更できます。  一部のトークンが使用されない場合 (たとえば、ユーザーがアプリを 3 か月間開いていない場合)、有効期限が切れますが、これは正常です。  アプリでは、ログイン サーバーが期限切れのために更新トークンを拒否するシナリオが発生します。 
+[トークンの有効期間の構成](active-directory-configurable-token-lifetimes.md)を使用すると、更新トークンの有効期間を変更できます。  一部のトークンが使用されない場合 (たとえば、ユーザーがアプリを 3 か月間開いていない場合)、有効期限が切れますが、これは正常です。  アプリでは、ログイン サーバーが期限切れのために更新トークンを拒否するシナリオが発生します。
 
 * MaxInactiveTime:更新トークンが MaxInactiveTime で指示された時間内に使用されなかった場合、更新トークンは無効になります。
 * MaxSessionAge:MaxAgeSessionMultiFactor または MaxAgeSessionSingleFactor が既定値 (Until-revoked) 以外に設定されている場合、MaxAgeSession* に設定された時間が経過すると、再認証が必要になります。
@@ -255,7 +255,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 ### <a name="revocation"></a>無効化
 
-更新トークンは、資格情報の変更、または管理者の操作により、サーバーによって取り消される場合があります。  更新トークンは、機密クライアント (右端の列) に対して発行されたクラスと、パブリック クライアント (その他すべての列) に対して発行されたクラスの 2 つのクラスに分類されます。   
+更新トークンは、資格情報の変更、または管理者の操作により、サーバーによって取り消される場合があります。  更新トークンは、機密クライアント (右端の列) に対して発行されたクラスと、パブリック クライアント (その他すべての列) に対して発行されたクラスの 2 つのクラスに分類されます。
 
 | Change | パスワードに基づくクッキー | パスワードに基づくトークン | パスワードに基づかないクッキー | パスワードに基づかないトークン | 機密のクライアントのトークン |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
@@ -275,12 +275,12 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 - FIDO2 キー
 - SMS
 - 音声
-- PIN 
+- PIN
 
 > [!NOTE]
 > Windows 10 のプライマリ更新トークン (PRT) は、資格情報に基づいて分離されます。 たとえば、Windows Hello とパスワードにはそれぞれ独立した PRT があります。 ユーザーが Hello の資格情報 (PIN または生体認証) を使用してサインインし、パスワードを変更すると、以前に取得したパスワードベースの PRT が取り消されます。 パスワードを使用して再度サインインすると、古い PRT が無効になり、新しい PRT が要求されます。
 >
-> 更新トークンは、新しいアクセス トークンや更新トークンのフェッチに使用されるときに無効になる、または取り消されることはありません。  ただし、新しいトークンには新しい有効期限があるため、アプリでは古いものを使用後すぐに破棄して、新しいトークンで置き換える必要があります。 
+> 更新トークンは、新しいアクセス トークンや更新トークンのフェッチに使用されるときに無効になる、または取り消されることはありません。  ただし、新しいトークンには新しい有効期限があるため、アプリでは古いものを使用後すぐに破棄して、新しいトークンで置き換える必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/25/2020
-ms.openlocfilehash: 4548d4956b4cd01886fb1be9a530cc1627f76b2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b56b65261950e9cf534a3755d214229ef7d5bb1e
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888232"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395208"
 ---
 # <a name="connect-and-query-azure-sql-edge"></a>Azure SQL Edge の接続とクエリ
 
@@ -29,15 +29,15 @@ Azure SQL Edge では、コンテナーをデプロイした後、次のいず�
 
 次のいずれかの一般的なツールから Azure SQL Edge インスタンスに接続できます。
 
-* [sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools): sqlcmd クライアント ツールは、Azure SQL Edge のコンテナー イメージに既に含まれています。 対話型の Bash シェルで実行中のコンテナーにアタッチする場合は、ツールをローカルで実行できます。 SQL クライアント ツールは、ARM64 プラットフォームでは使用できません。そのため、ARM64 バージョンの SQL Edge コンテナーには含まれていません。 
-* [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms)
-* [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)
-* [Visual Studio Code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode)
+* [sqlcmd](/sql/linux/sql-server-linux-setup-tools): sqlcmd クライアント ツールは、Azure SQL Edge のコンテナー イメージに既に含まれています。 対話型の Bash シェルで実行中のコンテナーにアタッチする場合は、ツールをローカルで実行できます。 SQL クライアント ツールは、ARM64 プラットフォームでは使用できません。そのため、ARM64 バージョンの SQL Edge コンテナーには含まれていません。 
+* [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms)
+* [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)
+* [Visual Studio Code](/sql/visual-studio-code/sql-server-develop-use-vscode)
 
 ネットワーク マシンから Azure SQL Edge データベース エンジンに接続するには、次のものが必要です。
 
-- **ホスト マシンの IP アドレスまたはネットワーク名**:これは、Azure SQL Edge コンテナーが実行されているホスト マシンです。
-- **Azure SQL Edge コンテナーのホスト ポートのマッピング**:これは、Docker コンテナー ポートからホスト上のポートへのマッピングです。 コンテナー内では、Azure SQL Edge は常にポート 1433 にマップされます。 これは、必要に応じて変更できます。 ポート番号を変更するには、Azure IoT Edge の Azure SQL Edge モジュールの **[コンテナーの作成オプション]** を更新します。 次の例では、コンテナーのポート 1433 がホストのポート 1600 にマッピングされています。
+- **ホスト マシンの IP アドレスまたはネットワーク名** :これは、Azure SQL Edge コンテナーが実行されているホスト マシンです。
+- **Azure SQL Edge コンテナーのホスト ポートのマッピング** :これは、Docker コンテナー ポートからホスト上のポートへのマッピングです。 コンテナー内では、Azure SQL Edge は常にポート 1433 にマップされます。 これは、必要に応じて変更できます。 ポート番号を変更するには、Azure IoT Edge の Azure SQL Edge モジュールの **[コンテナーの作成オプション]** を更新します。 次の例では、コンテナーのポート 1433 がホストのポート 1600 にマッピングされています。
 
     ```JSON
     {
@@ -51,11 +51,11 @@ Azure SQL Edge では、コンテナーをデプロイした後、次のいず�
     }
     ```
 
-- **Azure SQL Edge インスタンスの SA パスワード**:これは、Azure SQL Edge のデプロイ時に `SA_PASSWORD` 環境変数に指定された値です。
+- **Azure SQL Edge インスタンスの SA パスワード** :これは、Azure SQL Edge のデプロイ時に `SA_PASSWORD` 環境変数に指定された値です。
 
 ## <a name="connect-to-the-database-engine-from-within-the-container"></a>コンテナー内からデータベース エンジンに接続する
 
-[SQL Server コマンドライン ツール](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools)は、Azure SQL Edge のコンテナー イメージに含まれています。 対話型のコマンド プロンプトを使用してコンテナーにアタッチすると、ツールをローカルで実行できます。 SQL クライアント ツールは、ARM64 プラットフォームでは使用できません。そのため、ARM64 バージョンの SQL Edge コンテナーには含まれていません。 
+[SQL Server コマンドライン ツール](/sql/linux/sql-server-linux-setup-tools)は、Azure SQL Edge のコンテナー イメージに含まれています。 対話型のコマンド プロンプトを使用してコンテナーにアタッチすると、ツールをローカルで実行できます。 SQL クライアント ツールは、ARM64 プラットフォームでは使用できません。そのため、ARM64 バージョンの SQL Edge コンテナーには含まれていません。 
 
 1. 実行中のコンテナー内で対話型の Bash シェルを開始するには、`docker exec -it` コマンドを使用します。 次の例では、`e69e056c702d` はコンテナー ID です。
 
@@ -108,14 +108,14 @@ conn = pyodbc.connect(db_connection_string, autocommit=True)
 
 ```
 
-Windows マシン上で実行されている SQL Server Management Studio を使用して Azure SQL Edge のインスタンスに接続するには、[SQL Server Management Studio](https://docs.microsoft.com/sql/linux/sql-server-linux-manage-ssms) に関するページを参照してください。
+Windows マシン上で実行されている SQL Server Management Studio を使用して Azure SQL Edge のインスタンスに接続するには、[SQL Server Management Studio](/sql/linux/sql-server-linux-manage-ssms) に関するページを参照してください。
 
-Windows、Mac、または Linux マシン上で Visual Studio Code を使用して Azure SQL Edge のインスタンスに接続するには、[Visual Studio Code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode) に関するページを参照してください。
+Windows、Mac、または Linux マシン上で Visual Studio Code を使用して Azure SQL Edge のインスタンスに接続するには、[Visual Studio Code](/sql/visual-studio-code/sql-server-develop-use-vscode) に関するページを参照してください。
 
-Windows、Mac、または Linux マシン上で Azure Data Studio を使用して Azure SQL Edge のインスタンスに接続するには、[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-server) に関するページを参照してください。
+Windows、Mac、または Linux マシン上で Azure Data Studio を使用して Azure SQL Edge のインスタンスに接続するには、[Azure Data Studio](/sql/azure-data-studio/quickstart-sql-server) に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-[接続とクエリ](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-docker#connect-and-query)
+[接続とクエリ](/sql/linux/sql-server-linux-configure-docker#connect-and-query)
 
-[Linux に SQL Server ツールをインストールする](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools)
+[Linux に SQL Server ツールをインストールする](/sql/linux/sql-server-linux-setup-tools)

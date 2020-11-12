@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: zhchia
-ms.openlocfilehash: fbed4b888c48a518d9f10a91ff0494aa7bdc1843
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdd4fb96a42d154ccd8b508950283978ddf58ef4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88532366"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354905"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのための Velpic の構成
 
@@ -45,7 +45,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 * 単一の Azure AD ユーザーを Velpic に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
 
-* Velpic にユーザーを割り当てるときは、割り当てダイアログで**ユーザー** ロールまたは別の有効なアプリケーション固有ロール (使用可能な場合) を選択する必要があります。 **[既定のアクセス]** ロールはプロビジョニングに使用できないので、このロールのユーザーはスキップされます。
+* Velpic にユーザーを割り当てるときは、割り当てダイアログで **ユーザー** ロールまたは別の有効なアプリケーション固有ロール (使用可能な場合) を選択する必要があります。 **[既定のアクセス]** ロールはプロビジョニングに使用できないので、このロールのユーザーはスキップされます。
 
 ## <a name="configuring-user-provisioning-to-velpic"></a>Velpic へのユーザー プロビジョニングの構成
 
@@ -66,7 +66,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Velpic のプロビジョニング](./media/velpic-provisioning-tutorial/Velpic1.png)
 
-5. **[管理者資格情報]** セクションで、Velpic の**テナントの URL とシークレット トークン**を入力します (これらの値は Velpic アカウントで確認できます **([Manage]\(管理\)**  >  **[Integration]\(統合\)**  >  **[Plugin]\(プラグイン\)**  >  **[SCIM]** ))。
+5. **[管理者資格情報]** セクションで、Velpic の **テナントの URL とシークレット トークン** を入力します (これらの値は Velpic アカウントで確認できます **([Manage]\(管理\)**  >  **[Integration]\(統合\)**  >  **[Plugin]\(プラグイン\)**  >  **[SCIM]** ))。
 
     ![承認の値](./media/velpic-provisioning-tutorial/Velpic2.png)
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 09485d3279e4ca4fff5b6492bab432d8034d7e42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e426962310417fdca56ea2f7d45a6ea820d41981
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449421"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335878"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector 管理ソリューション (非推奨)
 
@@ -57,7 +57,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 ## <a name="configuration"></a>構成
 
-1. Azure Web Apps Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](../insights/solutions.md)に関するページで説明されているプロセスを使用して有効にしてください。
+1. Azure Web Apps Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](../insights/solutions.md)に関するページで説明されているプロセスを使用して有効にしてください。
 2. [Azure ポータル](https://portal.azure.com)にアクセスします。 **[すべてのサービス]** を選択して、Application Insights を開きます。 次に、"Application Insights" を検索します。 
 3. **[サブスクリプション]** で、Application Insights リソースを所有するサブスクリプションを選択し、 **[名前]** で、1 つまたは複数のアプリケーションを選択します。
 4. **[保存]** をクリックします。
@@ -81,7 +81,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 ### <a name="view-application-insights-connector-information"></a>Application Insights Connector 情報を表示する
 
-**[Application Insights]** タイルをクリックします。**Application Insights** ダッシュボードが開いて、次のブレードが表示されます。
+**[Application Insights]** タイルをクリックします。 **Application Insights** ダッシュボードが開いて、次のブレードが表示されます。
 
 ![アプリケーション、データ ボリューム、および可用性のブレードを表示する [Application Insights] ダッシュボードのスクリーンショット。](./media/app-insights-connector/app-insights-dash01.png)
 
@@ -103,7 +103,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 ダッシュボードのいずれかの項目をクリックすると、検索に Application Insights のパースペクティブが表示されます。 パースペクティブは、選択されたテレメトリの種類に基づく拡張グラフを提供します。 そのため、グラフ化されるコンテンツは、テレメトリの種類に応じて変化します。
 
-[アプリケーション] ブレード内の任意の場所をクリックすると、既定の**アプリケーション** パースペクティブが表示されます。
+[アプリケーション] ブレード内の任意の場所をクリックすると、既定の **アプリケーション** パースペクティブが表示されます。
 
 ![Application Insights のアプリケーション パースペクティブ](./media/app-insights-connector/applications-blade-drill-search.png)
 
@@ -133,7 +133,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 ### <a name="pivot-to-an-app-in-the-azure-portal"></a>Azure ポータルでアプリにピボットする
 
-[Application Insights Connector] ブレードは、"*Azure portal を使用しているときに*"、選択した Application Insights アプリにピボットできるように設計されています。 このソリューションを高度な監視プラットフォームとして使用して、アプリのトラブルシューティングを行うことができます。 接続されているアプリケーションのいずれかで潜在的な問題があることを確認したら、Log Analytics 検索で問題をドリルダウンするか、Application Insights アプリに直接ピボットすることができます。
+[Application Insights Connector] ブレードは、" *Azure portal を使用しているときに* "、選択した Application Insights アプリにピボットできるように設計されています。 このソリューションを高度な監視プラットフォームとして使用して、アプリのトラブルシューティングを行うことができます。 接続されているアプリケーションのいずれかで潜在的な問題があることを確認したら、Log Analytics 検索で問題をドリルダウンするか、Application Insights アプリに直接ピボットすることができます。
 
 ピボットするには、各行の最後に表示される省略記号 ( **…** ) をクリックし、 **[Application Insights で開く]** を選択します。
 
@@ -152,7 +152,7 @@ Application Insights では、" *[サンプリング補正](../app/sampling.md)*
 ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by TelemetryType
 ```
 
-**SampledCount** フィールドはすべてのエントリに存在し、エントリが表すデータ ポイントの数を示します。 Application Insights アプリのサンプリングを有効にした場合、**SampledCount** は 1 より大きくなります。 アプリケーションが生成するエントリの実際の数をカウントするには、**SampledCount** フィールドを合計します。
+**SampledCount** フィールドはすべてのエントリに存在し、エントリが表すデータ ポイントの数を示します。 Application Insights アプリのサンプリングを有効にした場合、 **SampledCount** は 1 より大きくなります。 アプリケーションが生成するエントリの実際の数をカウントするには、 **SampledCount** フィールドを合計します。
 
 サンプリングは、アプリケーションが生成するエントリの総数のみに影響します。 **RequestDuration** や **AvailabilityDuration** などのメトリック フィールドは、表わされているエントリの平均値を示すため、これらのフィールドのサンプリングは補正する必要がありません。
 
@@ -170,7 +170,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ## <a name="output-data"></a>出力データ
 
-入力データの種類ごとに、"*種類*" が "*ApplicationInsights*" であるレコードが作成されます。 ApplicationInsights レコードには、次のセクションに示すプロパティがあります。
+入力データの種類ごとに、" *種類* " が " *ApplicationInsights* " であるレコードが作成されます。 ApplicationInsights レコードには、次のセクションに示すプロパティがあります。
 
 ### <a name="generic-fields"></a>一般的なフィールド
 

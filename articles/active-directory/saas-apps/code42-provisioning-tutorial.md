@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/23/2020
 ms.author: Zhchia
-ms.openlocfilehash: 19e4a6b15f32ea9854801bcf6024577a1697c563
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e7f3817a6db288e93b5e0dc99c7b6c9b7bd2e44b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455665"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94355738"
 ---
 # <a name="tutorial-configure-code42-for-automatic-user-provisioning"></a>チュートリアル:Code42 を構成し、自動ユーザー プロビジョニングに対応させる
 

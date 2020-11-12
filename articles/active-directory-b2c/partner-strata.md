@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: e3f067647eb7bdb33b06a9ebdefd8fdd0485e4c6
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 6276bd0db9bfb93897f7350b87d208ac2951c859
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93294201"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330327"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>オンプレミスのアプリケーションを保護するために、Strata を使用して Azure AD B2C を拡張するためのチュートリアル
 
@@ -65,12 +65,10 @@ Strata の Maverics との統合には、次のコンポーネントが含まれ
 | 4. | IdP によってユーザーに資格情報の入力が求められます。 IdP によっては、ユーザーは多要素認証 (MFA) を行う必要がある場合があります。|
 | 5. | IdP によって、認証応答が Azure AD B2C に送信されます。 必要に応じて、この手順の実行中にユーザーが Azure AD B2C ディレクトリにローカル アカウントを作成することができます。|
 | 6. | Azure AD B2C によって、Azure AD B2C テナントでの Orchestrator アプリの登録時に指定されたエンドポイントにユーザー要求が送信されます。|
-| 7. | Orchestrator によって、アクセス ポリシーが評価され、アプリに転送される HTTP ヘッダーに含められる属性値が計算されます。 この手順では、Orchestrator によって、追加の属性プロバイダーが呼び出され、ヘッダー値を正しく設定するために必要な情報が取得されることがあります。|
-| 8. | Orchestrator によって、ヘッダー値が設定され、要求がアプリに送信されます。|
-| 9. | これで、ユーザーが認証され、アプリにアクセスできるようになりました。|
+| 7. | Orchestrator によって、アクセス ポリシーが評価され、アプリに転送される HTTP ヘッダーに含められる属性値が計算されます。 この手順では、Orchestrator によって、追加の属性プロバイダーが呼び出され、ヘッダー値を正しく設定するために必要な情報が取得されることがあります。 Orchestrator によって、ヘッダー値が設定され、要求がアプリに送信されます。|
+| 8. | これで、ユーザーが認証され、アプリにアクセスできるようになりました。|
 
 ## <a name="get-maverics-identity-orchestrator"></a>Maverics Identity Orchestrator を入手する
-
 従来のオンプレミスのアプリを Azure AD B2C と統合するために使用するソフトウェアを入手するには、[Strata](https://www.strata.io/contact/) にお問い合わせください。 ソフトウェアを入手したら、次の手順に従って、Orchestrator 固有の前提条件を確認し、必要なインストールと構成の手順を実行します。
 
 ## <a name="configure-your-azure-ad-b2c-tenant"></a>Azure AD B2C テナントを構成する
@@ -85,7 +83,7 @@ Strata の Maverics との統合には、次のコンポーネントが含まれ
 
    c. アプリケーションのリダイレクト URI を追加します。 この URI は、Orchestrator の Azure AD B2C コネクタ構成の `oauthRedirectURL` パラメーターと一致します (`https://example.com/oidc-endpoint` など)。
 
-2. **ユーザー フローの作成** :[サインアップとサインインのユーザー フロー](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)を作成します。
+2. **ユーザー フローの作成** : [サインアップとサインインのユーザー フロー](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)を作成します。
 
 3. **IdP の追加** :ローカル アカウント、あるいはソーシャルまたはエンタープライズ [IdP](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers) のいずれかから、ユーザーのサインインを選択します。
 

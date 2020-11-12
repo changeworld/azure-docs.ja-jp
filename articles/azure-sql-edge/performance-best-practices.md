@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 35985404d5ac97940c324c3ad7f7d46c959b4902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02f22883a0989714d8b74f778cacf1ba2c65d0b4
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90932566"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392012"
 ---
 # <a name="performance-best-practices-and-configuration-guidelines"></a>パフォーマンスのベスト プラクティスと構成ガイドライン
 
@@ -28,13 +28,13 @@ Azure SQL Edge には、SQL Edge デプロイのパフォーマンスを向上�
 
 ### <a name="use-clustered-columnstore-indexes-where-possible"></a>可能な場合は、クラスター化列ストア インデックスを使用する
 
-IoT および Edge デバイスにより、大量のデータが生成される傾向があり、これは通常、分析のために一定の時間枠で集計されます。 個々のデータ行が分析に使用されることはほとんどありません。 列ストア インデックスは、このような大規模なデータセットの格納とクエリに最適です。 このインデックスは列ベースのデータ ストレージとクエリ処理を使用して、従来の行指向ストレージと比較して最大 10 倍のクエリ パフォーマンスを実現します。 また、非圧縮データのサイズと比較して最大で 10 倍のデータ圧縮を実現できます。 詳細については、[列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)に関する記事をご覧ください
+IoT および Edge デバイスにより、大量のデータが生成される傾向があり、これは通常、分析のために一定の時間枠で集計されます。 個々のデータ行が分析に使用されることはほとんどありません。 列ストア インデックスは、このような大規模なデータセットの格納とクエリに最適です。 このインデックスは列ベースのデータ ストレージとクエリ処理を使用して、従来の行指向ストレージと比較して最大 10 倍のクエリ パフォーマンスを実現します。 また、非圧縮データのサイズと比較して最大で 10 倍のデータ圧縮を実現できます。 詳細については、[列ストア インデックス](/sql/relational-databases/indexes/columnstore-indexes-overview)に関する記事をご覧ください
 
 さらに、データの挿入とデータの削除に関する列ストアの最適化によって、データ ストリーミングやデータ保有など、Azure SQL Edge の他の機能が向上します。 
 
 ### <a name="simple-recovery-model"></a>単純復旧モデル
 
-ストレージはエッジ デバイスで制限される可能性があるため、既定では、Azure SQL Edge のすべてのユーザー データベースによって単純復旧モデルが使用されます。 単純復旧モデルによって、必要な領域が少なくなるように、ログ領域が自動的に再利用されるため、トランザクション ログ領域の管理は基本的に必要ありません。 使用可能なストレージが制限されるエッジ デバイスでは、これが役に立つ場合があります。 単純復旧モデルとその他の使用可能な復旧モデルの詳細については、[復旧モデル](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server)に関する記事をご覧ください
+ストレージはエッジ デバイスで制限される可能性があるため、既定では、Azure SQL Edge のすべてのユーザー データベースによって単純復旧モデルが使用されます。 単純復旧モデルによって、必要な領域が少なくなるように、ログ領域が自動的に再利用されるため、トランザクション ログ領域の管理は基本的に必要ありません。 使用可能なストレージが制限されるエッジ デバイスでは、これが役に立つ場合があります。 単純復旧モデルとその他の使用可能な復旧モデルの詳細については、[復旧モデル](/sql/relational-databases/backup-restore/recovery-models-sql-server)に関する記事をご覧ください
 
 ログ配布やポイントインタイム リストアなど、トランザクション ログ バックアップを必要とする操作は、単純復旧モデルでサポートされていません。  
 
@@ -56,16 +56,9 @@ Azure SQL Edge のトランザクションは、完全持続性、SQL Server の
 
 完全持続性トランザクションのコミットは同期的であり、トランザクションのログ レコードがディスクに書き込まれてからコミットが正常完了として報告され、制御がクライアントに返されます。 遅延持続性トランザクションのコミットは非同期的であり、トランザクションのログ レコードがディスクに書き込まれる前にコミットが正常完了として報告されます。 トランザクションを持続可能にするためには、トランザクション ログ エントリをディスクに書き込む必要があります。 遅延持続性トランザクションは、トランザクション ログ エントリがディスクにフラッシュされる時点で持続的になります。 
 
-**多少のデータ損失**が許容されるデプロイや、低速のストレージを使用するエッジ デバイスでは、遅延持続性を使用してデータ インジェストとデータ保有に基づくクリーンアップを最適化できます。 詳しくは、「[トランザクションの持続性の制御](https://docs.microsoft.com/sql/relational-databases/logs/control-transaction-durability)」をご覧ください。
+**多少のデータ損失** が許容されるデプロイや、低速のストレージを使用するエッジ デバイスでは、遅延持続性を使用してデータ インジェストとデータ保有に基づくクリーンアップを最適化できます。 詳しくは、「[トランザクションの持続性の制御](/sql/relational-databases/logs/control-transaction-durability)」をご覧ください。
 
 
 ### <a name="linux-os-configurations"></a>Linux OS の構成 
 
-SQL インストールで最適なパフォーマンスを得るには、次の [Linux オペレーティング システムの構成](https://docs.microsoft.com/sql/linux/sql-server-linux-performance-best-practices#linux-os-configuration)設定を使用することを検討してください。
-
-
-
-
-
-
-
+SQL インストールで最適なパフォーマンスを得るには、次の [Linux オペレーティング システムの構成](/sql/linux/sql-server-linux-performance-best-practices#linux-os-configuration)設定を使用することを検討してください。

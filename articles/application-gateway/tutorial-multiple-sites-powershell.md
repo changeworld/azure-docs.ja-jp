@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: dd73dc69fc2d40a0b4c24739dca6ad8174ad1047
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30c5c5be89f8a318de8690430d4d248817961fc2
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595859"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360311"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Azure PowerShell を使用して、複数の Web サイトをホストするアプリケーション ゲートウェイを作成する
 
-[アプリケーション ゲートウェイ](overview.md)を作成するときに、Azure PowerShell を使用して [複数の Web サイト](multiple-site-overview.md)のホスティングを構成できます。 この記事では、仮想マシン スケール セットを使用してバックエンド アドレス プールを定義します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 この記事では、複数のドメインを所有していることを前提として、*www.contoso.com* と *www.fabrikam.com* の例を使用します。
+[アプリケーション ゲートウェイ](overview.md)を作成するときに、Azure PowerShell を使用して [複数の Web サイト](multiple-site-overview.md)のホスティングを構成できます。 この記事では、仮想マシン スケール セットを使用してバックエンド アドレス プールを定義します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 この記事では、複数のドメインを所有していることを前提として、 *www.contoso.com* と *www.fabrikam.com* の例を使用します。
 
 この記事では、次のことについて説明します。
 
@@ -121,13 +121,13 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-listeners-and-rules"></a>リスナーと規則の作成
 
-アプリケーション ゲートウェイが適切にトラフィックをバックエンド アドレス プールにルーティングできるようにするには、リスナーが必要です。 この記事では、2 つのドメインに対して 2 つのリスナーを作成します。 リスナーは、*contoso.com* ドメインと *fabrikam.com* ドメインに対して作成されます。
+アプリケーション ゲートウェイが適切にトラフィックをバックエンド アドレス プールにルーティングできるようにするには、リスナーが必要です。 この記事では、2 つのドメインに対して 2 つのリスナーを作成します。 リスナーは、 *contoso.com* ドメインと *fabrikam.com* ドメインに対して作成されます。
 
-前に作成したフロントエンド構成とフロントエンド ポートを指定して [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) を使用し、最初のリスナーを作成します。 着信トラフィックに使用するバックエンド プールをリスナーが判断するには、ルールが必要です。 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) を使用して、*contosoRule* という名前の基本ルールを作成します。
+前に作成したフロントエンド構成とフロントエンド ポートを指定して [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) を使用し、最初のリスナーを作成します。 着信トラフィックに使用するバックエンド プールをリスナーが判断するには、ルールが必要です。 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) を使用して、 *contosoRule* という名前の基本ルールを作成します。
 
 >[!NOTE]
 > Application Gateway または WAF v2 SKU では、リスナーごとに最大 5 つのホスト名を構成することもできます。ホスト名にワイルドカード文字を使用できます。 詳細については、「[リスナーにおけるワイルドカードのホスト名](multiple-site-overview.md#wildcard-host-names-in-listener-preview)」を参照してください。
->Azure PowerShell を使用してリスナーで複数のホスト名とワイルドカード文字を使用するには、`-HostName`ではなく `-HostNames` を使用する必要があります。 HostNames を使用すると、最大 5 つのホスト名をコンマ区切り値として指定できます。 たとえば、`-HostNames "*.contoso.com,*.fabrikam.com"` のように指定します。
+>Azure PowerShell を使用してリスナーで複数のホスト名とワイルドカード文字を使用するには、`-HostName`ではなく `-HostNames` を使用する必要があります。 HostNames を使用すると、最大 5 つのホスト名をコンマ区切り値として指定できます。 たとえば、`-HostNames "*.contoso.com","*.fabrikam.com"` のように指定します。
 
 ```azurepowershell-interactive
 $contosolistener = New-AzApplicationGatewayHttpListener `
@@ -185,7 +185,7 @@ $appgw = New-AzApplicationGateway `
 
 ## <a name="create-virtual-machine-scale-sets"></a>仮想マシン スケール セットの作成
 
-この例では、作成した 2 つのバックエンド プールをサポートする 2 つの仮想マシン スケール セットを作成します。 作成するスケール セットの名前は、*myvmss1* と *myvmss2* です。 各スケール セットには、IIS をインストールする 2 つの仮想マシン インスタンスが含まれています。 スケール セットは、IP 設定を構成するときにバックエンド プールに割り当てます。
+この例では、作成した 2 つのバックエンド プールをサポートする 2 つの仮想マシン スケール セットを作成します。 作成するスケール セットの名前は、 *myvmss1* と *myvmss2* です。 各スケール セットには、IIS をインストールする 2 つの仮想マシン インスタンスが含まれています。 スケール セットは、IP 設定を構成するときにバックエンド プールに割り当てます。
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `

@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 758e11a9c043fbd1238d1e3533a2d83804ec0b73
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 5b9ffdec83fb613b7df0b5a3227ca66c55e54fe9
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043116"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422554"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -20,7 +20,7 @@ Express.js、Node.js、または JavaScript の開発者が、Azure Functions �
 
 | 作業の開始 | 概念| ガイド付き学習 |
 | -- | -- | -- | 
-| <ul><li>[Visual Studio Code を使用した Node.js 関数](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)</li><li>[ターミナル/コマンド プロンプトを使用した Node.js 関数](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)</li></ul> | <ul><li>[開発者ガイド](functions-reference.md)</li><li>[ホスティング オプション](functions-scale.md)</li><li>[TypeScript 関数](#typescript)</li><li>[パフォーマンス&nbsp;に関する考慮事項](functions-best-practices.md)</li></ul> | <ul><li>[サーバーレス アプリケーションの作成](/learn/paths/create-serverless-applications/)</li><li>[Node.js と Express API をサーバーレス API にリファクタリングする](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
+| <ul><li>[Visual Studio Code を使用した Node.js 関数](./create-first-function-vs-code-node.md)</li><li>[ターミナル/コマンド プロンプトを使用した Node.js 関数](./create-first-function-cli-java.md)</li></ul> | <ul><li>[開発者ガイド](functions-reference.md)</li><li>[ホスティング オプション](functions-scale.md)</li><li>[TypeScript 関数](#typescript)</li><li>[パフォーマンス&nbsp;に関する考慮事項](functions-best-practices.md)</li></ul> | <ul><li>[サーバーレス アプリケーションの作成](/learn/paths/create-serverless-applications/)</li><li>[Node.js と Express API をサーバーレス API にリファクタリングする](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
 ## <a name="javascript-function-basics"></a>JavaScript 関数の基本
 
@@ -651,7 +651,7 @@ VS Code を使用してデバッグするときは、プロジェクトの launc
 
 ## <a name="typescript"></a>TypeScript
 
-Functions ランタイムのバージョン 2.x を対象とする場合、[Visual Studio Code 用の Azure Functions](functions-create-first-function-vs-code.md) と [Azure Functions Core Tools](functions-run-local.md) の両方によって、TypeScript 関数アプリ プロジェクトをサポートするテンプレートを使用して関数アプリを作成することができます。 テンプレートは、`package.json` および `tsconfig.json` プロジェクト ファイルを生成します。これらのプロジェクト ファイルは、これらのツールによって TypeScript コードから JavaScript 関数のトランスパイル、実行、発行を容易にします。
+Functions ランタイムのバージョン 2.x を対象とする場合、[Visual Studio Code 用の Azure Functions](./create-first-function-cli-typescript.md) と [Azure Functions Core Tools](functions-run-local.md) の両方によって、TypeScript 関数アプリ プロジェクトをサポートするテンプレートを使用して関数アプリを作成することができます。 テンプレートは、`package.json` および `tsconfig.json` プロジェクト ファイルを生成します。これらのプロジェクト ファイルは、これらのツールによって TypeScript コードから JavaScript 関数のトランスパイル、実行、発行を容易にします。
 
 生成された `.funcignore` ファイルは、プロジェクトが Azure に発行されるときに除外するファイルを指定するために使用します。  
 

@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 08/05/2020
-ms.openlocfilehash: 3f051d9fc1599c0877e1e8a58935d09d224ce22b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 459cb1f7ea6c756b8cf6eba70af5ebabe76cc8b0
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88689679"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335760"
 ---
 # <a name="mitigate-fairness-in-machine-learning-models-preview"></a>機械学習モデルでの公平性を軽減する (プレビュー)
 
 機械学習での公平性と、[Fairlearn](https://fairlearn.github.io/) オープンソース Python パッケージを使用して、機械学習モデルでの公平性の問題を軽減する方法について説明します。 機械学習モデルを構築するとき、公平性の問題を理解し公平性を評価するよう努力しなかった場合、不公平な結果を生成するモデルが構築されることがあります。
 
-以下に示す Fairlearn オープンソース パッケージの[ユーザー ガイド](https://fairlearn.github.io/user_guide/index.html)の要約には、これを使用して、構築する AI システムの公平性を評価する方法が記載されています。  また、Fairlearn オープンソース パッケージには、観察される公平性の問題を軽減したり、削減したりするのに役立つオプションも用意されています。  Azure Machine Learning でのトレーニング中に AI システムの公平性の評価を有効にするには、[操作方法](how-to-machine-learning-fairness-aml.md)と[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)に関するページを参照してください。
+以下に示す Fairlearn オープンソース パッケージの[ユーザー ガイド](https://fairlearn.github.io/master/user_guide/index.html)の要約には、これを使用して、構築する AI システムの公平性を評価する方法が記載されています。  また、Fairlearn オープンソース パッケージには、観察される公平性の問題を軽減したり、削減したりするのに役立つオプションも用意されています。  Azure Machine Learning でのトレーニング中に AI システムの公平性の評価を有効にするには、[操作方法](how-to-machine-learning-fairness-aml.md)と[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)に関するページを参照してください。
 
 
 ## <a name="what-is-fairness-in-machine-learning-models"></a>機械学習システムでの公平性とは
@@ -51,14 +51,14 @@ Fairlearn オープンソース パッケージには、次の 2 つのコンポ
 
 ## <a name="assess-fairness-in-machine-learning-models"></a>機械学習モデルでの公平性を評価する
 
-Fairlearn オープンソース パッケージでは、公平性は、次のことを質問する**グループ公平性**と呼ばれるアプローチによって概念化されます。損害が発生するリスクがあるのはどのグループか。 関連グループ (部分母集団とも呼ばれます) は、**微妙な特徴**または微妙な属性によって定義されます。 微妙な特徴は、ベクトルまたは `sensitive_features` と呼ばれるマトリックスとして Fairlearn  オープンソース パッケージの推定器に渡されます。 この用語は、グループの公平性を評価するときに、システム デザイナーがこれらの特徴に敏感でなければならないことを示しています。 
+Fairlearn オープンソース パッケージでは、公平性は、次のことを質問する **グループ公平性** と呼ばれるアプローチによって概念化されます。損害が発生するリスクがあるのはどのグループか。 関連グループ (部分母集団とも呼ばれます) は、 **微妙な特徴** または微妙な属性によって定義されます。 微妙な特徴は、ベクトルまたは `sensitive_features` と呼ばれるマトリックスとして Fairlearn  オープンソース パッケージの推定器に渡されます。 この用語は、グループの公平性を評価するときに、システム デザイナーがこれらの特徴に敏感でなければならないことを示しています。 
 
 注意すべき点は、これらの特徴にプライベート データによるプライバシーへの影響があるかどうか、ということです。 ただし、"微妙な" という言葉は、予測を行うときにこれらの特徴を使用してはならないという意味ではありません。
 
 >[!NOTE]
 > 公平性の評価は純粋に技術的な行為ではありません。  Fairlearn オープンソース パッケージはモデルの公平性を評価するのに役立ちますが、ユーザーの代わりに評価を実行しません。  Fairlearn オープンソース パッケージは、公平性を評価するための定量的なメトリックを特定するのに役立ちますが、開発者は独自のモデルの公平性を評価するために、定性分析を実行する必要もあります。  上記の微妙な特徴は、このような定性分析の一例です。     
 
-評価段階では、公平性は不均衡メトリックによって定量化されます。 **不均衡メトリック**では、比率または相違として、異なるグループの間でのモデルの動作を評価および比較できます。 Fairlearn オープンソース パッケージでは、不均衡メトリックの 2 つのクラスがサポートされています。
+評価段階では、公平性は不均衡メトリックによって定量化されます。 **不均衡メトリック** では、比率または相違として、異なるグループの間でのモデルの動作を評価および比較できます。 Fairlearn オープンソース パッケージでは、不均衡メトリックの 2 つのクラスがサポートされています。
 
 
 - モデルのパフォーマンスにおける不均衡: これらのメトリックのセットでは、異なるサブグループ間での、選択されたパフォーマンス メトリックの値の不均衡 (差異) が計算されます。 次に例をいくつか示します。
@@ -76,7 +76,7 @@ Fairlearn オープンソース パッケージでは、公平性は、次のこ
 
 ### <a name="parity-constraints"></a>不均衡の制約
 
-Fairlearn オープンソース パッケージには、さまざまな不公平性軽減アルゴリズムが含まれています。 これらのアルゴリズムでは、**不均衡の制約**または条件と呼ばれる、予測の動作に対する一連の制約がサポートされています。 不均衡の制約では、予測動作の一部の側面が、微妙な特徴で定義されるグループ (異なる人種など) の間で同等であることが要求されます。 Fairlearn オープンソース パッケージの軽減アルゴリズムでは、このような不均衡の制約を使用して、監視対象の公平性の問題が軽減されます。
+Fairlearn オープンソース パッケージには、さまざまな不公平性軽減アルゴリズムが含まれています。 これらのアルゴリズムでは、 **不均衡の制約** または条件と呼ばれる、予測の動作に対する一連の制約がサポートされています。 不均衡の制約では、予測動作の一部の側面が、微妙な特徴で定義されるグループ (異なる人種など) の間で同等であることが要求されます。 Fairlearn オープンソース パッケージの軽減アルゴリズムでは、このような不均衡の制約を使用して、監視対象の公平性の問題が軽減されます。
 
 >[!NOTE]
 > モデルの公平性を軽減することは、不公平性を減らすことを意味しますが、この技術的な軽減策では、このような不公平性を完全に排除することはできません。  Fairlearn オープンソース パッケージの不公平性の軽減アルゴリズムでは、機械学習モデルの不公平性を削減するのに役立つ推奨される軽減戦略を提供できますが、これらは不公平性を完全に排除するソリューションではありません。  個々の特定の開発者機械学習モデルには、それぞれ考慮すべき不均衡の制約または条件が他にある場合もあります。 Azure Machine Learning を使用する開発者は、その軽減策によって、対象となる機械学習モデルの使用およびデプロイでの不公平性が十分に排除されるかどうかを自分で判断する必要があります。  
@@ -108,6 +108,6 @@ Fairlearn オープンソース パッケージでは、後処理と削減の不
 
 ## <a name="next-steps"></a>次のステップ
 
-- Fairlearn の [GitHub](https://github.com/fairlearn/fairlearn/)、[ユーザー ガイド](https://fairlearn.github.io/user_guide/index.html)、[例](https://fairlearn.github.io/auto_examples/)、および[サンプル ノートブック](https://github.com/fairlearn/fairlearn/tree/master/notebooks)を確認することによってさまざまなコンポーネントの使用方法を学習します。
+- Fairlearn の [GitHub](https://github.com/fairlearn/fairlearn/)、[ユーザー ガイド](https://fairlearn.github.io/master/user_guide/index.html)、[例](https://fairlearn.github.io/master/auto_examples/)、および[サンプル ノートブック](https://github.com/fairlearn/fairlearn/tree/master/notebooks)を確認することによってさまざまなコンポーネントの使用方法を学習します。
 - Azure Machine Learning の機械学習モデルの公平性評価を実現する[方法](how-to-machine-learning-fairness-aml.md)について学習します。
 - Azure Machine Learning でのその他の公平性の評価シナリオについては、[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)を参照してください。 

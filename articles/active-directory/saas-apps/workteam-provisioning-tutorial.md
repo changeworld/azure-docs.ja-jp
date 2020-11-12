@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/17/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3c2fba1cba2c06e07b262e37eac651afb5c102cf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f465438a6be80a1b487a4df7d3ee8bd38be9c102
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317524"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354210"
 ---
 # <a name="tutorial-configure-workteam--for-automatic-user-provisioning"></a>チュートリアル:Workteam を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "91317524"
 
 ## <a name="assigning-users-to-workteam"></a>Workteam へのユーザーの割り当て 
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Workteam へのアクセスが必要な Azure AD 内のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Workteam に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -60,7 +60,7 @@ Azure AD での自動ユーザー プロビジョニング用に Workteam を構
 
     ![[設定] セクションの下部にある [SCIM User Provisioning]\(SCIM ユーザー プロビジョニング\) 歯車アイコンが四角で囲まれたスクリーンショット。](media/workteam-provisioning-tutorial/icon.png)
 
-3. **ベース URL** と**ベアラー トークン**をコピーします。 これらの値を、Azure portal の Workteam アプリケーションの [プロビジョニング] タブにある **[テナント URL]** および **[シークレット トークン]** フィールドに入力します。
+3. **ベース URL** と **ベアラー トークン** をコピーします。 これらの値を、Azure portal の Workteam アプリケーションの [プロビジョニング] タブにある **[テナント URL]** および **[シークレット トークン]** フィールドに入力します。
 
     ![[BASE URL]\(ベース URL\) と [BEARER TOKEN]\(ベアラー トークン\) テキスト ボックスが四角で囲まれた [SCIM Settings]\(SCIM 設定\) ダイアログ ボックスのスクリーンショット。](media/workteam-provisioning-tutorial/scim.png)
 
@@ -83,7 +83,7 @@ Azure AD で自動ユーザー プロビジョニング用に Workteam を構成
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Workteam**」と入力し、結果ウィンドウで **[Workteam]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Workteam** 」と入力し、結果ウィンドウで **[Workteam]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Workteam](common/search-new-app.png)
 
@@ -112,7 +112,7 @@ Azure AD で自動ユーザー プロビジョニング用に Workteam を構成
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. [管理者資格情報] セクションの **[テナント URL]** および **[シークレット トークン]** に、先ほど取得した**ベース URL** および**ベアラー トークン**の値をそれぞれ入力します。 **[テスト接続]** をクリックして、Azure AD から Workteam に接続できることを確認します。 接続できない場合は、使用中の Workteam アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. [管理者資格情報] セクションの **[テナント URL]** および **[シークレット トークン]** に、先ほど取得した **ベース URL** および **ベアラー トークン** の値をそれぞれ入力します。 **[テスト接続]** をクリックして、Azure AD から Workteam に接続できることを確認します。 接続できない場合は、使用中の Workteam アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 

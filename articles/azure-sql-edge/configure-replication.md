@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a748bf977e76357c710518e608c12ad19a8cd0be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b424ece9207328d87068160f78ebc78a3bd1a8d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888420"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395225"
 ---
 # <a name="configure-replication-to-azure-sql-edge"></a>Azure SQL Edge へのレプリケーションを構成する 
 
@@ -24,8 +24,8 @@ ms.locfileid: "90888420"
   
 - Azure SQL Edge のインスタンスは、パブリッシャーのプッシュ サブスクライバーである必要があります。
 - パブリッシャーとディストリビューターは、次のいずれかが可能です。
-   - オンプレミスで実行されている SQL Server のインスタンス、または Azure 仮想マシンで実行されている SQL Server のインスタンス。 詳細については、[Azure Virtual Machines 上の SQL Server の概要](https://docs.microsoft.com/azure/azure-sql/virtual-machines/)に関するページをご覧ください。 SQL Server インスタンスでは、SQL Server 2016 よりも大きいバージョンが使用されている必要があります。
-   - Azure SQL Managed Instance のインスタンス。 SQL マネージド インスタンスでは、パブリッシャー、ディストリビューター、サブスクライバーの各データベースをホストできます。 詳細については、「[Replication with SQL Database Managed Instance (SQL Database Managed Instance でのレプリケーション)](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance/)」を参照してください。
+   - オンプレミスで実行されている SQL Server のインスタンス、または Azure 仮想マシンで実行されている SQL Server のインスタンス。 詳細については、[Azure Virtual Machines 上の SQL Server の概要](../azure-sql/virtual-machines/index.yml)に関するページをご覧ください。 SQL Server インスタンスでは、SQL Server 2016 よりも大きいバージョンが使用されている必要があります。
+   - Azure SQL Managed Instance のインスタンス。 SQL マネージド インスタンスでは、パブリッシャー、ディストリビューター、サブスクライバーの各データベースをホストできます。 詳細については、「[Replication with SQL Database Managed Instance (SQL Database Managed Instance でのレプリケーション)](/azure/sql-database/replication-with-sql-database-managed-instance/)」を参照してください。
 
 - ディストリビューション データベースとレプリケーション エージェントを Azure SQL Edge のインスタンスに配置することはできません。  
 
@@ -36,7 +36,7 @@ ms.locfileid: "90888420"
 
 レプリケーションを構成する際には、次の要件とベスト プラクティスを理解しておくことが重要です。
 
-- [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を使用してレプリケーションを構成できます。 また、SQL Server Management Studio または [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio) を使用して、パブリッシャーで Transact-SQL ステートメントを実行してこれを行うこともできます。
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) を使用してレプリケーションを構成できます。 また、SQL Server Management Studio または [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) を使用して、パブリッシャーで Transact-SQL ステートメントを実行してこれを行うこともできます。
 - Azure SQL Edge のインスタンスにレプリケートするには、SQL Server 認証を使用してサインインする必要があります。
 - レプリケーション テーブルには主キーが必要です。
 - SQL Server 上の単一パブリケーションで、Azure SQL Edge と、SQL Server (オンプレミスおよび Azure 仮想マシンの SQL Server) の両方のサブスクライバーをサポートできます。  
@@ -51,7 +51,7 @@ ms.locfileid: "90888420"
 時間の経過と共に変化する参照データを使用して、インスタンスを初期化できます。 たとえば、SQL Server インスタンスで機械学習モデルのトレーニングを行った後、ご自身の Azure SQL Edge のインスタンスでそれらを更新できます。 このようなシナリオでインスタンスを初期化する方法を次に示します。
 
 1. SQL Server データベースで、トランザクション レプリケーション パブリケーションを作成します。  
-2. SQL Server インスタンスで、**新しいサブスクリプション ウィザード**または Transact-SQL ステートメントを使用して、Azure SQL Edge のサブスクリプションに対するプッシュを作成します。  
+2. SQL Server インスタンスで、 **新しいサブスクリプション ウィザード** または Transact-SQL ステートメントを使用して、Azure SQL Edge のサブスクリプションに対するプッシュを作成します。  
 3. スナップショット エージェントによって生成され、ディストリビューション エージェントによって配布および配信されたスナップショットを使用して、Azure SQL Edge 上のレプリケートされたデータベースを初期化できます。 別の方法として、パブリッシャーからのデータベースのバックアップを使用して初期化できます。 データベースのバックアップに Azure SQL Edge でサポートされていないオブジェクトまたは機能が含まれていた場合、復元操作は失敗することを忘れないでください。
 
 ## <a name="limitations"></a>制限事項
@@ -82,15 +82,13 @@ Azure SQL Edge サブスクリプションでは、次のオプションはサ�
 
 パブリケーションおよびプッシュ サブスクリプションを作成します。 詳細については、次を参照してください。
   
-- [パブリケーションの作成](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- Azure SQL Edge サーバー名と IP (例: **myEdgeinstance、1433**) をサブスクライバーとして使用し、Azure SQL Edge インスタンスのデータベース名 (例: **AdventureWorks**) を宛先データベースとして使用することで、[プッシュ サブスクリプションを作成します](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)。  
+- [パブリケーションの作成](/sql/relational-databases/replication/publish/create-a-publication)
+- Azure SQL Edge サーバー名と IP (例: **myEdgeinstance、1433** ) をサブスクライバーとして使用し、Azure SQL Edge インスタンスのデータベース名 (例: **AdventureWorks** ) を宛先データベースとして使用することで、 [プッシュ サブスクリプションを作成します](/sql/relational-databases/replication/create-a-push-subscription/)。  
 
 ## <a name="next-steps"></a>次のステップ  
 
-- [パブリケーションの作成](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [ssSDSFull](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [レプリケーションの種類](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
-- [監視 (レプリケーション)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
-- [サブスクリプションを初期化する](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
-
-
+- [パブリケーションの作成](/sql/relational-databases/replication/publish/create-a-publication)
+- [ssSDSFull](/sql/relational-databases/replication/create-a-push-subscription/)
+- [レプリケーションの種類](/sql/relational-databases/replication/types-of-replication)
+- [監視 (レプリケーション)](/sql/relational-databases/replication/monitor/monitoring-replication)
+- [サブスクリプションを初期化する](/sql/relational-databases/replication/initialize-a-subscription)

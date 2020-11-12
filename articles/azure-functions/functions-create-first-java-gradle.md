@@ -6,19 +6,19 @@ ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: a9592d848398c71bc573c073f0b712898f666640
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 48a732e3935d78bdbf8b81fe989b59be1fbe2203
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104871"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422809"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Java と Gradle を使用して関数を作成し、Azure に発行する
 
 この記事では、Gradle コマンドライン ツールを使用して Java 関数プロジェクトを作成し、Azure Functions に発行する方法を示します。 完了すると、関数コードは Azure の[サーバーレス ホスティング プラン](functions-scale.md#consumption-plan)で実行され、HTTP 要求によってトリガーされます。 
 
 > [!NOTE]
-> Gradle が推奨される開発ツールでない場合は、[Maven](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)、[IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions)、および [VS Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java) を使用する Java 開発者向けの同様のチュートリアルを確認してください。
+> Gradle が推奨される開発ツールでない場合は、[Maven](./create-first-function-cli-java.md)、[IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions)、および [VS Code](./create-first-function-vs-code-java.md) を使用する Java 開発者向けの同様のチュートリアルを確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 

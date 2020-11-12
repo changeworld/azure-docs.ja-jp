@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 65d5a88f7b5d059deb633f062639e455c64ef2f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ed290e861a0fdebeb76b9e08e62c03eda52be82
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67181699"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375989"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>Azure Portal を使用して更新プログラムをインストールするには
 
@@ -29,23 +29,23 @@ ms.locfileid: "67181699"
  
 4. 更新プログラムのスキャンが完了したら、 **[更新プログラムのダウンロード]** をクリックします。 **[新しい更新プログラム]** で、リリース ノートを確認します。 更新プログラムをダウンロードしたら、インストールを確認する必要があることにもご注意ください。 **[OK]** をクリックします。
 
-    ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate6m.png)
+    ![デバイスの更新 2](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate6m.png)
 
     アップロードが開始され、正常に完了すると、その旨が通知されます。
 
 5. **[デバイスの更新プログラム]** で、 **[インストール]** をクリックします。
 
-     ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate11m1.png)
+     ![デバイスの更新 3](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate11m1.png)
 
 6. **[新しい更新プログラム]** で、更新には中断が伴うという警告が表示されます。 仮想アレイが単一ノード デバイスであるため、更新された後にデバイスが再起動されます。 これにより、進行中の IO が中断されます。 **[OK]** をクリックして、更新プログラムをインストールします。
 
-    ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate12m.png)
+    ![デバイスの更新 4](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate12m.png)
 
     インストール ジョブの開始されると、その旨が通知されます。
 
 7.  インストール ジョブが正常に完了したら、 **[ジョブの表示]** リンクをクリックします。 **[更新プログラムのインストール]** ブレードに移動します。 ここでは、ジョブの詳細情報を確認できます。 
 
-    ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate16m1.png)
+    ![デバイスの更新 5](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate16m1.png)
 
 8. Update 1 (10.0.10296.0) のソフトウェア バージョンを実行している仮想アレイで開始した場合は、この時点で Update 1.1 が実行されており、アップデートは完了となります。 残りの手順を省略できます。 
 

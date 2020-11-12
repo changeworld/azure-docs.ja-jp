@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: e34cd0907320f96f2846c1f424e678555381cccc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a74e12a5e9bdd2dfdbc6ac07b66798e517f6f426
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907127"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395072"
 ---
 # <a name="what-is-azure-sql-edge"></a>Azure SQL Edge とは
 
 Azure SQL Edge は、IoT および IoT Edge のデプロイ向けに最適化されたリレーショナル データベース エンジンです。 これは、IoT のアプリケーションおよびソリューションに向けて、パフォーマンスの高いデータ ストレージと処理レイヤーを作成する機能を提供します。 Azure SQL Edge は、JSON、グラフ、時系列データなどのリレーショナルおよび非リレーショナル データのストリーミング、処理、および分析を行う機能を提供します。これにより、さまざまな最新の IoT アプリケーションに適した選択肢となっています。
 
-Azure SQL Edge は、業界最高水準のパフォーマンス、セキュリティ、クエリ処理機能を提供する最新バージョンの [SQL Server データベース エンジン](/sql/sql-server/sql-server-technical-documentation)に基づいて構築されています。 Azure SQL Edge は [SQL Server](/sql/sql-server/sql-server-technical-documentation) や [Azure SQL](https://docs.microsoft.com/azure/azure-sql/) と同じエンジンに基づいて構築されているため、同じ Transact-SQL (T-SQL) プログラミング サーフェス領域が提供されます。これにより、アプリケーションまたはソリューションの開発がより簡単かつ迅速になると同時に、IoT Edge デバイス、データ センター、クラウドの間のアプリケーションの移植が簡単になります。
+Azure SQL Edge は、業界最高水準のパフォーマンス、セキュリティ、クエリ処理機能を提供する最新バージョンの [SQL Server データベース エンジン](/sql/sql-server/sql-server-technical-documentation)に基づいて構築されています。 Azure SQL Edge は [SQL Server](/sql/sql-server/sql-server-technical-documentation) や [Azure SQL](../azure-sql/index.yml) と同じエンジンに基づいて構築されているため、同じ Transact-SQL (T-SQL) プログラミング サーフェス領域が提供されます。これにより、アプリケーションまたはソリューションの開発がより簡単かつ迅速になると同時に、IoT Edge デバイス、データ センター、クラウドの間のアプリケーションの移植が簡単になります。
 
 チャネル 9 上の「Azure SQL Edge とは」のビデオ:
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/What-is-Azure-SQL-Edge/player]

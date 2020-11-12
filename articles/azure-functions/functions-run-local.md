@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 17daef18d87c4b5c906694ab1394694b32b6b130
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 78c6e4dffb35980b73fbc09bdc07d55215e659ae
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164867"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422588"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -166,7 +166,7 @@ func init MyFunctionProj
 ```
 
 >[!IMPORTANT]
-> Java では、HTTP でトリガーされる最初の関数と共に、Maven アーキタイプを使用してローカル関数プロジェクトを作成します。 次のコマンドを使用して、Java プロジェクト `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` を作成します。 Maven アーキタイプの使用例については、[コマンド ラインのクイックスタート](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)に関する記事を参照してください。  
+> Java では、HTTP でトリガーされる最初の関数と共に、Maven アーキタイプを使用してローカル関数プロジェクトを作成します。 次のコマンドを使用して、Java プロジェクト `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` を作成します。 Maven アーキタイプの使用例については、[コマンド ラインのクイックスタート](./create-first-function-cli-java.md)に関する記事を参照してください。  
 
 プロジェクト名を指定すると、その名前の新しいフォルダーの作成と初期化が実行されます。 それ以外の場合は、現在のフォルダーが初期化されます。  
 バージョン 3.x/2.x では、コマンドを実行するときにプロジェクトのランタイムを選択する必要があります。 
@@ -357,7 +357,7 @@ func start
 ```
 func start
 ```
-このコマンドは[仮想環境で実行する](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#create-venv)必要があります。
+このコマンドは[仮想環境で実行する](./create-first-function-cli-python.md)必要があります。
 
 # <a name="typescript"></a>[TypeScript](#tab/ts)
 

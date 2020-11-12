@@ -9,22 +9,22 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: ee1c0957761fc1c8b9ca80477defae8cef044827
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 1d380a41f5b20c52fefca9e68bb4ed858b3bf3a1
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824464"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422061"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Azure Cognitive Search で複合データ型をモデル化する方法
 
-Azure Cognitive Search インデックスの作成に使われる外部データセットは、さまざまな形状をしている可能性があります。 場合によっては、階層や入れ子の下部構造が含まれます。 たとえば、単一の顧客に複数の住所が含まれるケース、単一の SKU に複数の色とサイズが含まれるケース、1 冊の書籍に複数の著者が存在するケースなどが挙げられます。 モデリングの用語では、このような構造は *complex* (複合)、*compound* (複合)、*composite* (複合)、または *aggregate* (集約) データ型と呼ばれることがあります。 Azure Cognitive Search では、この概念に対して**複合型**という単語が使われます。 Azure Cognitive Search では、複合型は**複合フィールド**を使ってモデル化されます。 複合フィールドは、他の複合型も含めて任意のデータ型を使用できる子 (サブフィールド) が含まれるフィールドです。 これは、プログラミング言語の構造化されたデータ型と同様の方法で機能します。
+Azure Cognitive Search インデックスの作成に使われる外部データセットは、さまざまな形状をしている可能性があります。 場合によっては、階層や入れ子の下部構造が含まれます。 たとえば、単一の顧客に複数の住所が含まれるケース、単一の SKU に複数の色とサイズが含まれるケース、1 冊の書籍に複数の著者が存在するケースなどが挙げられます。 モデリングの用語では、このような構造は *complex* (複合)、 *compound* (複合)、 *composite* (複合)、または *aggregate* (集約) データ型と呼ばれることがあります。 Azure Cognitive Search では、この概念に対して **複合型** という単語が使われます。 Azure Cognitive Search では、複合型は **複合フィールド** を使ってモデル化されます。 複合フィールドは、他の複合型も含めて任意のデータ型を使用できる子 (サブフィールド) が含まれるフィールドです。 これは、プログラミング言語の構造化されたデータ型と同様の方法で機能します。
 
 複合フィールドでは、データ型に応じて、ドキュメント内の 1 つのオブジェクトまたはオブジェクトの配列が表されます。 `Edm.ComplexType` 型のフィールドでは単一のオブジェクトが表され、`Collection(Edm.ComplexType)` 型のフィールドではオブジェクトの配列が表されます。
 
 Azure Cognitive Search は、複合型とコレクションをネイティブでサポートしています。 これらの型を使うと、Azure Cognitive Search インデックス内のほとんどすべての JSON 構造をモデル化できます。 Azure Cognitive Search API の以前のバージョンでは、フラット化された行セットのみをインポートできました。 最新のバージョンでは、インデックスはソース データにより密接に調和できるようになりました。 つまり、ソース データに複合型がある場合、インデックスも複合型を持つことができます。
 
-Azure portal の**データのインポート** ウィザードで読み込むことができる [Hotels データ セット](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)から始めることをお勧めします。 ウィザードでは、ソース内の複合型が検出され、検出された構造に基づいてインデックス スキーマが提案されます。
+Azure portal の **データのインポート** ウィザードで読み込むことができる [Hotels データ セット](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)から始めることをお勧めします。 ウィザードでは、ソース内の複合型が検出され、検出された構造に基づいてインデックス スキーマが提案されます。
 
 > [!Note]
 > 複合型のサポートは、`api-version=2019-05-06` から一般提供されています。 
@@ -73,7 +73,7 @@ Azure portal の**データのインポート** ウィザードで読み込む�
 
 ## <a name="creating-complex-fields"></a>複合フィールドの作成
 
-他のインデックス定義と同様に、ポータル、[REST API](/rest/api/searchservice/create-index)、または [.NET SDK](/dotnet/api/microsoft.azure.search.models.index) を使用して、複合型を含むスキーマを作成できます。 
+他のインデックス定義と同様に、ポータル、[REST API](/rest/api/searchservice/create-index)、または [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindex) を使用して、複合型を含むスキーマを作成できます。 
 
 次の例は、単純フィールド、コレクション、および複合型を含む JSON インデックス スキーマを示しています。 最上位レベルのフィールドと同様に、複合型内の各サブフィールドには型があり、場合によっては属性がある点に注意してください。 スキーマは、上記のデータ例に対応しています。 `Address` はコレクションではない複合フィールドです (1 つのホテルには 1 つの住所があります)。 `Rooms` は複合コレクション フィールドです (1 つのホテルには多くの部屋があります)。
 
@@ -124,7 +124,7 @@ Azure portal の**データのインポート** ウィザードで読み込む�
 
 > `search=Address/City:Portland AND Address/State:OR`
 
-このようなクエリは、フィルターとは異なり、フルテキスト検索では "*非相関*" です。 フィルターでは、複合コレクションのサブフィールドに対するクエリを、[`any` または `all`](search-query-odata-collection-operators.md) の範囲変数を使って相関させることができます。 上の Lucene クエリでは、"Portland, Maine" および "Portland, Oregon" の両方と共に Oregon の他の都市を含むドキュメントが返されます。 このようになるのは、各句がドキュメント全体のそのフィールドのすべての値に適用され、"現在のサブ ドキュメント" という概念がないためです。 これについて詳しくは、[Azure Cognitive Search での OData コレクション フィルター](search-query-understand-collection-filters.md)に関する記事をご覧ください。
+このようなクエリは、フィルターとは異なり、フルテキスト検索では " *非相関* " です。 フィルターでは、複合コレクションのサブフィールドに対するクエリを、[`any` または `all`](search-query-odata-collection-operators.md) の範囲変数を使って相関させることができます。 上の Lucene クエリでは、"Portland, Maine" および "Portland, Oregon" の両方と共に Oregon の他の都市を含むドキュメントが返されます。 このようになるのは、各句がドキュメント全体のそのフィールドのすべての値に適用され、"現在のサブ ドキュメント" という概念がないためです。 これについて詳しくは、[Azure Cognitive Search での OData コレクション フィルター](search-query-understand-collection-filters.md)に関する記事をご覧ください。
 
 ## <a name="selecting-complex-fields"></a>複合フィールドの選択
 
@@ -156,7 +156,7 @@ Azure portal の**データのインポート** ウィザードで読み込む�
 
 > `$filter=Address/Country eq 'Canada'`
 
-複合コレクションのフィールドでフィルター処理するには、**ラムダ式**と [`any` および `all` 演算子](search-query-odata-collection-operators.md)を使うことができます。 その場合、ラムダ式の**範囲変数**はサブフィールドを持つオブジェクトです。 それらのサブフィールドを標準の OData パス構文で参照することができます。 たとえば、次のフィルターでは、デラックス ルームが少なくとも 1 つはあり、すべてが禁煙室であるすべてのホテルが返されます。
+複合コレクションのフィールドでフィルター処理するには、 **ラムダ式** と [`any` および `all` 演算子](search-query-odata-collection-operators.md)を使うことができます。 その場合、ラムダ式の **範囲変数** はサブフィールドを持つオブジェクトです。 それらのサブフィールドを標準の OData パス構文で参照することができます。 たとえば、次のフィルターでは、デラックス ルームが少なくとも 1 つはあり、すべてが禁煙室であるすべてのホテルが返されます。
 
 > `$filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)`
 

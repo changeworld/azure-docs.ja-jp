@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 98f92a6b0169c573b97788c7ffaf76255796cfa6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2792d5cc65e08a23a333deebdb24c0fd869446c3
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278942"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352900"
 ---
 # <a name="tutorial-configure-rfpio-for-automatic-user-provisioning"></a>チュートリアル:RFPIO を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "91278942"
 
 ## <a name="assigning-users-to-rfpio"></a>RFPIO へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成し、有効にする前に、RFPIO へのアクセスが必要な Azure AD のユーザー、グループ、またはその両方を特定する必要があります。 特定した後、次の手順に従い、これらのユーザー、グループ、またはその両方を RFPIO に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -68,7 +68,7 @@ Azure AD での自動ユーザー プロビジョニング用に RFPIO を構成
 
     ![[GENERATE SCIM API TOKEN]\(SCIM API トークンの生成\) オプションが呼び出されている [SCIM] セクションのスクリーンショット。](media/rfpio-provisioning-tutorial/generate.png)
 
-5.  **SCIM API トークン**を保存します。このトークンは、セキュリティ上の目的で再び表示されることはありません。 この値を、Azure portal で RFPIO アプリケーションの [プロビジョニング] タブ内の **[シークレット トークン]** フィールドに入力します。
+5.  **SCIM API トークン** を保存します。このトークンは、セキュリティ上の目的で再び表示されることはありません。 この値を、Azure portal で RFPIO アプリケーションの [プロビジョニング] タブ内の **[シークレット トークン]** フィールドに入力します。
 
     ![[送信] を選択した後に表示される警告ダイアログ ボックスが表示された [SCIM] セクションのスクリーンショット。](media/rfpio-provisioning-tutorial/auth.png)
 
@@ -90,7 +90,7 @@ Azure AD を使用した自動ユーザー プロビジョニング用に RFPIO 
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**RFPIO**」と入力し、結果パネルで **[RFPIO]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **RFPIO** 」と入力し、結果パネルで **[RFPIO]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の RFPIO](common/search-new-app.png)
 
@@ -119,7 +119,7 @@ Azure AD を使用した自動ユーザー プロビジョニング用に RFPIO 
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://<RFPIO tenant instance>.rfpio.com/rfpserver/scim/v2 `」と入力します。 値の例は `https://Azure-test1.rfpio.com/rfpserver/scim/v2` です。 **[シークレット トークン]** に先ほど取得した**SCIM API トークン**の値を入力します。 **[テスト接続]** をクリックして、Azure AD から RFPIO への接続を確保します。 接続できない場合は、使用中の RFPIO アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://<RFPIO tenant instance>.rfpio.com/rfpserver/scim/v2 `」と入力します。 値の例は `https://Azure-test1.rfpio.com/rfpserver/scim/v2` です。 **[シークレット トークン]** に先ほど取得した **SCIM API トークン** の値を入力します。 **[テスト接続]** をクリックして、Azure AD から RFPIO への接続を確保します。 接続できない場合は、使用中の RFPIO アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 

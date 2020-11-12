@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory アプリケーション管理の新機能
 description: Azure Active Directory アプリケーション管理の新規および更新されたドキュメント。
-ms.date: 10/21/2020
+ms.date: 11/05/2020
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -10,16 +10,34 @@ ms.author: kenwith
 author: kenwith
 manager: CelesteDG
 services: active-directory
-ms.openlocfilehash: 569c111c392e6bbaf9a54d17dc6e88bc8d851dc6
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 257057c4688fcf75651df4250c601eb1f1a2e8a3
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428015"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422605"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory アプリケーション管理: 新機能
 
 Azure Active Directory アプリケーション管理のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 アプリケーション管理サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [Azure Active Directory アプリケーション管理: 新機能](whats-new-docs.md)
+- [OIDC ベースのシングル サインオンについて理解する](configure-oidc-single-sign-on.md)
+- [アクセス許可の分類を構成する](configure-permission-classifications.md)
+- [グループ データにアクセスするアプリに対するグループ所有者の同意を構成する](configure-user-consent-groups.md)
+- [アプリの同意ポリシーを管理する](manage-app-consent-policies.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [SAML ベースのシングル サインオンで構成されたアプリへのサインインに関する問題](application-sign-in-problem-federated-sso-gallery.md)
+- [アプリケーション プロキシ エージェント コネクタのインストールに関する問題](application-proxy-connector-installation-problem.md)
+- [アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する](migrate-adfs-apps-to-azure.md)
+- [エンド ユーザーがアプリケーションに同意する方法の構成](configure-user-consent.md)
+
 
 ## <a name="september-2020"></a>2020 年 9 月
 

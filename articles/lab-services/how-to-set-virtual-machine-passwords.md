@@ -3,12 +3,12 @@ title: Azure Lab Services で VM のパスワードを設定する | Microsoft D
 description: Azure Lab Services のクラスルーム ラボで仮想マシン (VM) のパスワードを設定およびリセットする方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 49615b37875b8340f46ed900a1e7144256c7cb7d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e24fee26670a664012ec5f0216b0638d6149453f
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334074"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379691"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>仮想マシン プールを設定および管理する 
 この記事では、次のタスクの手順について説明します。
@@ -21,7 +21,7 @@ ms.locfileid: "91334074"
 ラボの容量 (ラボ内の仮想マシンの数) を増減するには、次の手順を実行します。
 
 1. **[Virtual machine pool]\(仮想マシン プール\)** ページで、 **[Lab capacity: &lt;number&gt; machines]\(ラボの容量: <数> 台のマシン\)** を選択します。
-2. ラボに必要な新しい **VM 数**を入力します。 この数値は、ラボに登録されているユーザーの数以上である必要があります。 
+2. ラボに必要な新しい **VM 数** を入力します。 この数値は、ラボに登録されているユーザーの数以上である必要があります。 
 3. 次に、 **[保存]** を選択します。 
 
     ![[ラボ内の最大マシン数] と [保存] ボタンが選択された [ラボの容量] ウィンドウを示すスクリーンショット。](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
@@ -53,6 +53,7 @@ ms.locfileid: "91334074"
 > 教師が学生用 VM をオンにしても、学生のクォータは影響を受けません。 ユーザーのクォータによって指定されるのは、スケジュールされたクラス時間外にユーザーが使用できるラボ時間数です。 クォータの詳細については、「[ユーザーのクォータを設定する](how-to-configure-student-usage.md?#set-quotas-for-users)」を参照してください。
 
 ## <a name="reset-vms"></a>VM をリセットする
+
 1 台以上の VM をリセットするには、一覧からそれらを選択し、次にツールバーの **[Reset]\(リセット\)** を選択します。 
 
 ![選択した VM をリセットする](./media/how-to-set-virtual-machine-passwords/reset-vm-button.png)
@@ -60,8 +61,6 @@ ms.locfileid: "91334074"
 **[Reset virtual machine(s)]\(仮想マシンのリセット\)** ダイアログ ボックスで、 **[Reset]\(リセット\)** を選択します。 
 
 ![[Reset VM]\(VM のリセット\) ダイアログ ボックス](./media/how-to-set-virtual-machine-passwords/reset-vms-dialog.png)
-
-
 
 ## <a name="set-password-for-vms"></a>VM のパスワードを設定する
 ラボ所有者 (教師) は、ラボの作成時 (ラボ作成ウィザード)、またはラボの作成後に **[テンプレート]** ページで、VM のパスワードを設定またはリセットすることができます。 

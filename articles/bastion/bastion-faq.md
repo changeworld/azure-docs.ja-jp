@@ -2,20 +2,22 @@
 title: Azure Bastion に関する FAQ | Microsoft Docs
 description: Azure Bastion の可用性、サポートされる同時セッション数、構成に関する問題や価格などのよくあるご質問に回答します。
 services: bastion
-author: charwen
+author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.author: charwen
-ms.openlocfilehash: e546888689ff290c750d594f1e737857049bf1ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/05/2020
+ms.author: cherylmc
+ms.openlocfilehash: 502e57e442c48ae6b216d6b8399cee2fef4efa8f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88270548"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356669"
 ---
 # <a name="azure-bastion-faq"></a>Azure Bastion に関する FAQ
 
 これは、Azure Bastion に関する FAQ です。
 
 [!INCLUDE [Bastion FAQ](../../includes/bastion-faq-include.md)]
+
+[!INCLUDE [FAQ for VNet peering](../../includes/bastion-faq-peering-include.md)]

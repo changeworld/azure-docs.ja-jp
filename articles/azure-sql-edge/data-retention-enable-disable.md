@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: ee2d65d66caef5cd9405d6e3d0e094de2e30ae87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9408aaa8fd5b677f012392ef4bd51c8826650eee
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90902491"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395157"
 ---
 # <a name="enable-and-disable-data-retention-policies"></a>データ保有期間ポリシーを有効または無効にする
 
@@ -22,7 +22,7 @@ ms.locfileid: "90902491"
 
 ## <a name="enable-data-retention-for-a-database"></a>データベースのデータ保有期間を有効にする
 
-次の例では、[Alter Database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options) を使用してデータ保有期間を有効にする方法を示します。
+次の例では、[Alter Database](/sql/t-sql/statements/alter-database-transact-sql-set-options) を使用してデータ保有期間を有効にする方法を示します。
 
 ```sql
 ALTER DATABASE [<DatabaseName>] SET DATA_RETENTION  ON;
@@ -38,9 +38,9 @@ FROM sys.databases;
 
 ## <a name="enable-data-retention-for-a-table"></a>テーブルのデータ保有期間を有効にする
 
-データ保有期間は、データを自動的に消去する各テーブルについて有効にする必要があります。 データベースとテーブルでデータ保持が有効になっている場合は、バックグラウンド システム タスクによりテーブルが定期的にスキャンされ、古くなった (期限切れの) 行が特定されて削除されます。 データ保有期間は、[Create Table](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) を使用したテーブル作成中に、または [Alter Table](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) を使用することで有効にすることができます。
+データ保有期間は、データを自動的に消去する各テーブルについて有効にする必要があります。 データベースとテーブルでデータ保持が有効になっている場合は、バックグラウンド システム タスクによりテーブルが定期的にスキャンされ、古くなった (期限切れの) 行が特定されて削除されます。 データ保有期間は、[Create Table](/sql/t-sql/statements/create-table-transact-sql) を使用したテーブル作成中に、または [Alter Table](/sql/t-sql/statements/alter-table-transact-sql) を使用することで有効にすることができます。
 
-次の例では、[Create Table](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) を使用して、テーブルのデータ保有期間を有効にする方法を示します。 
+次の例では、[Create Table](/sql/t-sql/statements/create-table-transact-sql) を使用して、テーブルのデータ保有期間を有効にする方法を示します。 
 
 ```sql
 CREATE TABLE [dbo].[data_retention_table] 
@@ -63,7 +63,7 @@ create table コマンドの `WITH (DATA_DELETION = ON ( FILTER_COLUMN = [dbdate
     - DateTimeOffset
 - RETENTION_PERIOD - 単位記述子が後に続く整数値。 使用できる単位は、DAY、DAYS、WEEK、WEEKS、MONTH、MONTHS、YEAR、YEARS です。
 
-次の例では、[Alter Table](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) を使用して、テーブルのデータ保有期間を有効にする方法を示します。  
+次の例では、[Alter Table](/sql/t-sql/statements/alter-table-transact-sql) を使用して、テーブルのデータ保有期間を有効にする方法を示します。  
 
 ```sql
 Alter Table [dbo].[data_retention_table]
@@ -101,7 +101,7 @@ and object_id = object_id(N'dbo.data_retention_table', N'U')
 
 ## <a name="disable-data-retention-on-a-table"></a>テーブルでデータ保有期間を無効にする 
 
-データ保有期間は、[Alter Table](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) を使用してテーブルで無効にすることができます。 次のコマンドを使用して、データ保有期間をテーブルで無効にすることができます。
+データ保有期間は、[Alter Table](/sql/t-sql/statements/alter-table-transact-sql) を使用してテーブルで無効にすることができます。 次のコマンドを使用して、データ保有期間をテーブルで無効にすることができます。
 
 ```sql
 Alter Table [dbo].[data_retention_table]
@@ -110,7 +110,7 @@ Set (DATA_DELETION = OFF)
 
 ## <a name="disable-data-retention-on-a-database"></a>データベースでデータ保有期間を無効にする
 
-データ保有期間は、[Alter Database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options) を使用してテーブルで無効にすることができます。 次のコマンドを使用して、データ保有期間をデータベースで無効にすることができます。
+データ保有期間は、[Alter Database](/sql/t-sql/statements/alter-database-transact-sql-set-options) を使用してテーブルで無効にすることができます。 次のコマンドを使用して、データ保有期間をデータベースで無効にすることができます。
 
 ```sql
 ALTER DATABASE <DatabaseName> SET DATA_RETENTION  OFF;

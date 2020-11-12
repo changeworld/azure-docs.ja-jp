@@ -6,12 +6,12 @@ ms.author: vlvinogr
 ms.date: 10/23/2020
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: 2bf9c4d233cfad454d63da4dce30a38af80d24ab
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 16788e3f547c5848893ba3867da4291c45b04408
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558399"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335487"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API Management の Dapr 統合ポリシー
 
@@ -25,7 +25,7 @@ ms.locfileid: "92558399"
 
 ## <a name="enable-dapr-support-in-the-self-hosted-gateway"></a>セルフホステッド ゲートウェイでの Dapr サポートの有効化
 
-セルフホステッド ゲートウェイで Dapr サポートを有効にするには、以下の [Dapr 注釈](https://github.com/dapr/docs/blob/master/howto/configure-k8s/README.md)を [Kubernetes 展開テンプレート](how-to-deploy-self-hosted-gateway-kubernetes.md)に追加し、"app-name" を目的の名前に置き換えます。 Dapr での API Management の設定と使用に関する完全なチュートリアルは、[こちら](https://aka.ms/apim/dapr/walkthru)で参照できます。
+セルフホステッド ゲートウェイで Dapr サポートを有効にするには、以下の [Dapr 注釈](https://github.com/dapr/docs/blob/master/README.md)を [Kubernetes 展開テンプレート](how-to-deploy-self-hosted-gateway-kubernetes.md)に追加し、"app-name" を目的の名前に置き換えます。 Dapr での API Management の設定と使用に関する完全なチュートリアルは、[こちら](https://aka.ms/apim/dapr/walkthru)で参照できます。
 ```yml
 template:
     metadata:
@@ -39,9 +39,9 @@ template:
 
 ## <a name="distributed-application-runtime-dapr-integration-policies"></a>分散型アプリケーション ランタイム (Dapr) 統合ポリシー
 
--  [サービスへの要求の送信](api-management-dapr-policies.md#invoke):Dapr ランタイムを使用して Dapr マイクロサービスを検索し、このマイクロサービスとの通信を確実に行います。 Dapr でのサービス呼び出しの詳細については、この [README](https://github.com/dapr/docs/blob/master/concepts/service-invocation/README.md#service-invocation) ファイルの説明を参照してください。
--  [Pub/Sub トピックへのメッセージの送信](api-management-dapr-policies.md#pubsub):Dapr ランタイムを使用して、Publish/Subscribe トピックにメッセージを発行します。 Dapr での Publish/Subscribe メッセージングの詳細については、この [README](https://github.com/dapr/docs/blob/master/concepts/publish-subscribe-messaging/README.md) ファイルの説明を参照してください。
--  [トリガー出力バインド](api-management-dapr-policies.md#bind):Dapr ランタイムを使用して、出力バインドを介して外部システムを呼び出します。 Dapr でのバインドの詳細については、この [README](https://github.com/dapr/docs/blob/master/concepts/bindings/README.md) ファイルの説明を参照してください。
+-  [サービスへの要求の送信](api-management-dapr-policies.md#invoke):Dapr ランタイムを使用して Dapr マイクロサービスを検索し、このマイクロサービスとの通信を確実に行います。 Dapr でのサービス呼び出しの詳細については、この [README](https://github.com/dapr/docs/blob/master/README.md#service-invocation) ファイルの説明を参照してください。
+-  [Pub/Sub トピックへのメッセージの送信](api-management-dapr-policies.md#pubsub):Dapr ランタイムを使用して、Publish/Subscribe トピックにメッセージを発行します。 Dapr での Publish/Subscribe メッセージングの詳細については、この [README](https://github.com/dapr/docs/blob/master/README.md) ファイルの説明を参照してください。
+-  [トリガー出力バインド](api-management-dapr-policies.md#bind):Dapr ランタイムを使用して、出力バインドを介して外部システムを呼び出します。 Dapr でのバインドの詳細については、この [README](https://github.com/dapr/docs/blob/master/README.md) ファイルの説明を参照してください。
 
 ## <a name="send-request-to-a-service"></a><a name="invoke"></a> サービスへの要求の送信
 
@@ -92,8 +92,8 @@ template:
 | 属性        | 説明                     | 必須 | Default |
 |------------------|---------------------------------|----------|---------|
 | backend-id       | "dapr" に設定する必要があります           | はい      | 該当なし     |
-| dapr-app-id      | ターゲット マイクロサービスの名前。 Dapr の [appId](https://github.com/dapr/docs/blob/master/reference/api/service_invocation_api.md) パラメーターにマップされます。| はい | 該当なし |
-| dapr-method      | ターゲット マイクロサービスで呼び出すメソッドまたは URL の名前。 Dapr の [method-name](https://github.com/dapr/docs/blob/master/reference/api/service_invocation_api.md) パラメーターにマップされます。| はい | 該当なし |
+| dapr-app-id      | ターゲット マイクロサービスの名前。 Dapr の [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) パラメーターにマップされます。| はい | 該当なし |
+| dapr-method      | ターゲット マイクロサービスで呼び出すメソッドまたは URL の名前。 Dapr の [method-name](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) パラメーターにマップされます。| はい | 該当なし |
 
 ### <a name="usage"></a>使用法
 
@@ -120,7 +120,7 @@ template:
 
 #### <a name="example"></a>例
 
-次の例では、現在の要求の本文を "orders" Pub/Sub [コンポーネント](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md#url-parameters)の "new" [トピック](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md#url-parameters)に送信する方法を示します。 Dapr ランタイムから受信された応答は、 [context](api-management-policy-expressions.md#ContextVariables) オブジェクトの Variables コレクションの "dapr-response" エントリに格納されます。
+次の例では、現在の要求の本文を "orders" Pub/Sub [コンポーネント](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md#url-parameters)の "new" [トピック](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md#url-parameters)に送信する方法を示します。 Dapr ランタイムから受信された応答は、 [context](api-management-policy-expressions.md#ContextVariables) オブジェクトの Variables コレクションの "dapr-response" エントリに格納されます。
 
 Dapr ランタイムがターゲット トピックを見つけられないなどでエラーを返した場合は、"on-error" セクションがトリガーされます。 Dapr ランタイムから受信された応答は、呼び出し元に逐語的に返されます。 それ以外の場合は、既定の `200 OK` 応答が返されます。
 
@@ -159,8 +159,8 @@ Dapr ランタイムがターゲット トピックを見つけられないな�
 
 | 属性        | 説明                     | 必須 | Default |
 |------------------|---------------------------------|----------|---------|
-| pubsub-name      | ターゲット PubSub コンポーネントの名前。 Dapr の [pubsubname](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md) パラメーターにマップされます。 存在しない場合、 __topic__ 属性値は `pubsub-name/topic-name` の形式である必要があります。    | いいえ       | なし    |
-| topic            | トピックの名前。 Dapr の [topic](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md) パラメーターにマップされます。               | はい      | 該当なし     |
+| pubsub-name      | ターゲット PubSub コンポーネントの名前。 Dapr の [pubsubname](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) パラメーターにマップされます。 存在しない場合、 __topic__ 属性値は `pubsub-name/topic-name` の形式である必要があります。    | いいえ       | なし    |
+| topic            | トピックの名前。 Dapr の [topic](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) パラメーターにマップされます。               | はい      | 該当なし     |
 | ignore-error     | `true` に設定すると、Dapr ランタイムからエラーを受信したときに ["on-error"](api-management-error-handling-policies.md) セクションをトリガーしないようにポリシーに指示します | いいえ | `false` |
 | response-variable-name | Dapr ランタイムからの応答を格納するために使用する [Variables](api-management-policy-expressions.md#ContextVariables) コレクションのエントリの名前 | いいえ | なし |
 | timeout | Dapr ランタイムが応答するのを待機する時間 (秒)。 範囲は 1 ～ 240 秒です。 | いいえ | 5 |
@@ -176,7 +176,7 @@ Dapr ランタイムがターゲット トピックを見つけられないな�
 
 ## <a name="trigger-output-binding"></a><a name="bind"></a> トリガー出力バインド
 
-このポリシーは、送信 Dapr [バインド](https://github.com/dapr/docs/blob/master/concepts/bindings/README.md)をトリガーするように API Management ゲートウェイに指示します。 このポリシーでは、`http://localhost:3500/v1.0/bindings/{{bind-name}}` への HTTP POST 要求を実行することによってこれを実現します。この際、テンプレート パラメーターが置き換えられ、ポリシー ステートメントで指定されたコンテンツが追加されます。
+このポリシーは、送信 Dapr [バインド](https://github.com/dapr/docs/blob/master/README.md)をトリガーするように API Management ゲートウェイに指示します。 このポリシーでは、`http://localhost:3500/v1.0/bindings/{{bind-name}}` への HTTP POST 要求を実行することによってこれを実現します。この際、テンプレート パラメーターが置き換えられ、ポリシー ステートメントで指定されたコンテンツが追加されます。
 
 このポリシーでは、Dapr ランタイムがゲートウェイと同じポッドのサイドカー コンテナーで実行されていることを前提としています。 Dapr ランタイムは、バインドによって表される外部リソースの呼び出しを担当します。
 
@@ -237,16 +237,16 @@ Dapr ランタイムがなんらかの理由で失敗してエラーを返した
 | 要素             | 説明  | 必須 |
 |---------------------|--------------|----------|
 | invoke-dapr-binding | ルート要素 | はい      |
-| metadata            | キーと値のペアの形式による、バインド固有のメタデータ。 Dapr の [metadata](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) プロパティにマップされます。 | いいえ |
-| [データ]            | メッセージの内容。 Dapr の [data](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) プロパティにマップされます。 | いいえ |
+| metadata            | キーと値のペアの形式による、バインド固有のメタデータ。 Dapr の [metadata](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) プロパティにマップされます。 | いいえ |
+| [データ]            | メッセージの内容。 Dapr の [data](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) プロパティにマップされます。 | いいえ |
 
 
 ### <a name="attributes"></a>属性
 
 | 属性        | 説明                     | 必須 | Default |
 |------------------|---------------------------------|----------|---------|
-| name            | ターゲット バインドの名前。 Dapr で[定義されている](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#bindings-structure)バインドの名前と一致している必要があります。           | はい      | 該当なし     |
-| 操作       | ターゲット操作の名前 (バインディング固有)。 Dapr の [operation](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) プロパティにマップされます。 | いいえ | なし |
+| name            | ターゲット バインドの名前。 Dapr で[定義されている](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#bindings-structure)バインドの名前と一致している必要があります。           | はい      | 該当なし     |
+| 操作       | ターゲット操作の名前 (バインディング固有)。 Dapr の [operation](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) プロパティにマップされます。 | いいえ | なし |
 | ignore-error     | `true` に設定すると、Dapr ランタイムからエラーを受信したときに ["on-error"](api-management-error-handling-policies.md) セクションをトリガーしないようにポリシーに指示します | いいえ | `false` |
 | response-variable-name | Dapr ランタイムからの応答を格納するために使用する [Variables](api-management-policy-expressions.md#ContextVariables) コレクションのエントリの名前 | いいえ | なし |
 | timeout | Dapr ランタイムが応答するのを待機する時間 (秒)。 範囲は 1 ～ 240 秒です。 | いいえ | 5 |

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: e92fab392dc73d8de0b7b2547e38b3f345562930
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e22eaacd73bb15ddf43f416831ff5ff42923b6e0
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975860"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393389"
 ---
 # <a name="register-a-resource-application-in-azure-active-directory"></a>Azure Active Directory にリソース アプリケーションを登録する
 
@@ -57,7 +57,7 @@ az ad sp create --id 4f6778d8-5aef-43dc-a1ff-b073724b9495
 
 ### <a name="set-identifier-uri-and-define-scopes"></a>識別子 URI を設定し、スコープを定義する
 
-リソース アプリケーションには、識別子 URI (アプリケーション ID URI) があり、クライアントは、リソースへのアクセスを要求するときにこれを使用できます。 この値は、アクセス トークンの `aud` 要求を設定します。 この値は、FHIR サーバーの URI に設定することをお勧めします。 FHIR アプリの SMART の場合、*audience* は FHIR サーバーの URI であると想定されます。
+リソース アプリケーションには、識別子 URI (アプリケーション ID URI) があり、クライアントは、リソースへのアクセスを要求するときにこれを使用できます。 この値は、アクセス トークンの `aud` 要求を設定します。 この値は、FHIR サーバーの URI に設定することをお勧めします。 FHIR アプリの SMART の場合、 *audience* は FHIR サーバーの URI であると想定されます。
 
 1. **[API の公開]** をクリックします
 
@@ -71,7 +71,7 @@ az ad sp create --id 4f6778d8-5aef-43dc-a1ff-b073724b9495
 
 ### <a name="define-application-roles"></a>アプリケーション ロールを定義する
 
-Azure API for FHIR と OSS FHIR Server for Azure は、ロールベースのアクセス制御に [Azure Active Directory アプリケーション ロール](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles)を使用します。 FHIR サーバー API で利用できるようにする必要のあるロールを定義するには、リソース アプリケーションの[マニフェスト](https://docs.microsoft.com/azure/active-directory/active-directory-application-manifest/)を開きます。
+Azure API for FHIR と OSS FHIR Server for Azure は、ロールベースのアクセス制御に [Azure Active Directory アプリケーション ロール](/azure/architecture/multitenant-identity/app-roles)を使用します。 FHIR サーバー API で利用できるようにする必要のあるロールを定義するには、リソース アプリケーションの[マニフェスト](/azure/active-directory/active-directory-application-manifest/)を開きます。
 
 1. **[マニフェスト]** をクリックします。
 

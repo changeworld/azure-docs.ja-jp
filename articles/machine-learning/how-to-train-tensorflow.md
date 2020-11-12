@@ -10,12 +10,12 @@ author: mx-iao
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: deedfacc4ff9caa7a8d8e4559cb29b8c34c2868a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5c1c6af5f8304fd9093aa0351078b84d3f4d0b5d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314466"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360753"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して大規模な TensorFlow モデルをトレーニングする
 
@@ -58,6 +58,7 @@ import azureml
 
 from azureml.core import Experiment
 from azureml.core import Workspace, Run
+from azureml.core import Environment
 
 from azureml.core.compute import ComputeTarget, AmlCompute
 from azureml.core.compute_target import ComputeTargetException
@@ -175,8 +176,6 @@ dependencies:
 ベース イメージが指定されていない場合、Azure ML では既定により CPU イメージ `azureml.core.environment.DEFAULT_CPU_IMAGE` がベース イメージとして使用されます。 この例では GPU クラスター上でトレーニングを実行するため、必要な GPU ドライバーと依存関係が含まれる GPU ベース イメージを指定する必要があります。 Azure ML では、Microsoft Container Registry (MCR) に公開された、お客様が使用できる 1 組のベース イメージを保持しています。詳細については、GitHub リポジトリ「[Azure/AzureML-Containers](https://github.com/Azure/AzureML-Containers)」を参照してください。
 
 ```python
-from azureml.core import Environment
-
 tf_env = Environment.from_conda_specification(name='tensorflow-2.2-gpu', file_path='./conda_dependencies.yml')
 
 # Specify a GPU base image

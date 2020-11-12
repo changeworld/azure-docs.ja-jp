@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 10/09/2019
 ms.author: abnarain
-ms.openlocfilehash: 0b2831321c9f4d855a19605c1ce5ace9fa11c88b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79a8bc73f416c8d10d83e7ad94a727094f072b00
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89596118"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331709"
 ---
 | ドメイン名                  | 送信ポート | 説明                              |
 | ----------------------------- | -------------- | ---------------------------------------- |
-| `*.servicebus.windows.net`    | 443            | セルフホステッド統合ランタイムが Azure Data Factory のデータ移動サービスに接続するために必要です。 |
+| `*.servicebus.windows.net`    | 443            | セルフホステッド統合ランタイムがインタラクティブな作成を行うために必要です。 |
 | `{datafactory}.{region}.datafactory.azure.net`<br> または `*.frontend.clouddatahub.net` | 443            | セルフホステッド統合ランタイムが Data Factory サービスに接続するために必要です。 <br>新しく作成されたデータ ファクトリの場合は、{datafactory}.{region}.datafactory.azure.net という形式のセルフホステッド統合ランタイム キーから FQDN を見つけてください。 古いデータ ファクトリの場合、セルフホステッド統合キーに FQDN が表示されないときは、代わりに *.frontend.clouddatahub.net を使用してください。 |
 | `download.microsoft.com`    | 443            | セルフホステッド統合ランタイムが更新プログラムをダウンロードするために必要です。 自動更新を無効にしている場合は、このドメインの構成をスキップできます。 |
 | `*.core.windows.net`          | 443            | [ステージング コピー](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#staged-copy)機能を使用する場合に、セルフホステッド統合ランタイムが Azure ストレージ アカウントに接続するために使用します。 |

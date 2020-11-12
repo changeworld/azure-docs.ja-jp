@@ -6,18 +6,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
+ms.custom: how-to, devx-track-python, data4ml
 ms.author: iefedore
 author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 8f229c52b62c740c9d955f745a6922e59163b907
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: fe2f35708f6a148f8db9ef6fd0a598e19e746fbd
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348561"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358628"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>データ インジェスト パイプラインの DevOps
 
@@ -211,18 +211,18 @@ JSON ファイルの値は、パイプライン定義に構成されている既
 
 継続的デリバリー プロセスでは、成果物を受け取り、それを最初のターゲット環境に配置します。 ソリューションが機能することを確認するために、テストを実行します。 成功した場合は、次の環境に進みます。 
 
-CD Azure パイプラインは、環境を表す複数のステージで構成されています。 各ステージには、次の手順を実行する[配置](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)と[ジョブ](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops)が含まれています。
+CD Azure パイプラインは、環境を表す複数のステージで構成されています。 各ステージには、次の手順を実行する[配置](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true)と[ジョブ](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true)が含まれています。
 
 _ Python ノートブックを Azure Databricks ワークスペースに配置する
 * Azure Data Factory パイプラインを配置する 
 * パイプラインを実行する
 * データ インジェストの結果を確認する
 
-パイプライン ステージは、[承認](/azure/devops/pipelines/process/approvals?tabs=check-pass&view=azure-devops)と[ゲート](/azure/devops/pipelines/release/approvals/gates?view=azure-devops)を使用して構成できます。これにより、環境のチェーンの中で配置プロセスがどのように進化するかをさらに制御できます。
+パイプライン ステージは、[承認](/azure/devops/pipelines/process/approvals?tabs=check-pass&view=azure-devops&preserve-view=true)と[ゲート](/azure/devops/pipelines/release/approvals/gates?view=azure-devops&preserve-view=true)を使用して構成できます。これにより、環境のチェーンの中で配置プロセスがどのように進化するかをさらに制御できます。
 
 ### <a name="deploy-a-python-notebook"></a>Python ノートブックを配置する
 
-次のコード スニペットでは、Python ノートブックを Databricks クラスターにコピーする Azure パイプラインの[配置](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)を定義しています。
+次のコード スニペットでは、Python ノートブックを Databricks クラスターにコピーする Azure パイプラインの[配置](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true)を定義しています。
 
 ```yaml
 - stage: 'Deploy_to_QA'
@@ -258,7 +258,7 @@ _ Python ノートブックを Azure Databricks ワークスペースに配置�
               displayName: 'Deploy (copy) data processing notebook to the Databricks cluster'       
 ```            
 
-CI によって生成された成果物は自動的に配置エージェントにコピーされ、`$(Pipeline.Workspace)` フォルダーから利用できます。 この場合、配置タスクは、Python ノートブックを含む `di-notebooks` 成果物を参照します。 この[配置](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)では、[Databricks Azure DevOps 拡張機能](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks)を使用してノートブック ファイルを Databricks ワークスペースにコピーします。
+CI によって生成された成果物は自動的に配置エージェントにコピーされ、`$(Pipeline.Workspace)` フォルダーから利用できます。 この場合、配置タスクは、Python ノートブックを含む `di-notebooks` 成果物を参照します。 この[配置](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true)では、[Databricks Azure DevOps 拡張機能](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks)を使用してノートブック ファイルを Databricks ワークスペースにコピーします。
 
 `Deploy_to_QA` ステージには、Azure DevOps プロジェクトで定義されている `devops-ds-qa-vg` 変数グループへの参照が含まれています。 このステージの手順では、この変数グループの変数を参照します (たとえば、`$(DATABRICKS_URL)` と `$(DATABRICKS_TOKEN)`)。 次のステージ (たとえば、`Deploy_to_UAT`) は、独自の UAT スコープの変数グループに定義されているものと同じ変数名で動作するという考え方です。
 
@@ -339,7 +339,7 @@ CI/CD Azure パイプライン全体は、次のステージで構成されて�
     * Databricks への配置 + ADF への配置
     * 統合テスト
 
-お持ちのターゲット環境数と同数の "* **配置** _" ステージ数があります。 各 " _*_配置_*_ " ステージには、並列で実行される 2 つの[配置](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)と、配置後にその環境でソリューションをテストするために実行される[ジョブ](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops)が含まれています。
+お持ちのターゲット環境数と同数の "* **配置** _" ステージ数があります。 各 " _*_配置_*_ " ステージには、並列で実行される 2 つの [配置](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true)と、配置後にその環境でソリューションをテストするために実行される [ジョブ](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true)が含まれています。
 
 パイプラインのサンプル実装は、次の _*_yaml_*_ スニペットにまとめられています。
 

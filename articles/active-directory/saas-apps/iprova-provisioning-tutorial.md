@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 1163f4b0992afe03f5bbdc38cad4e3cbca060dd2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3fe13d2fad2382e0e9fa8b93b79c5f27695ad898
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459779"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94355194"
 ---
 # <a name="tutorial-configure-iprova-for-automatic-user-provisioning"></a>チュートリアル:iProva を構成し、自動ユーザー プロビジョニングに対応させる
 

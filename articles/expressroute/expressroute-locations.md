@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/26/2020
 ms.author: duau
-ms.openlocfilehash: 5ac9c4cc28e3cb87307e032f4cd15afb7c687652
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 064c9e77876423d0c46f5f9890497a76331481ae
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079089"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336762"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 接続パートナーとピアリングの場所
 
@@ -266,7 +266,7 @@ Azure の各国のクラウドは互いに分離され、またグローバル�
 | **[Cox Business](https://www.cox.com/business/networking/cloud-connectivity.html)**| Equinix | ダラス、シリコン バレー、ワシントン DC |
 | **[Crown Castle](https://fiber.crowncastle.com/solutions/added/cloud-connect)**| Equinix | アトランタ、シカゴ、ダラス、ロサンゼルス、ニューヨーク、ワシントン DC |
 | **[Data Foundry](https://www.datafoundry.com/services/cloud-connect)** | Megaport | ダラス |
-| **[Epsilon Telecommunications Limited](https://www.epsilontel.com/data-connectivity/cloud-access/)** | Equinix | ロンドン、シンガポール、ワシントン DC |
+| **[Epsilon Telecommunications Limited](https://www.epsilontel.com/solutions/cloud-connect/)** | Equinix | ロンドン、シンガポール、ワシントン DC |
 | **[Eurofiber](https://eurofiber.nl/microsoft-azure/)** | Equinix | アムステルダム |
 | **[Exponential E](https://www.exponential-e.com/services/connectivity-services/cloud-connect-exchange)** | Equinix | London |
 | **[Fastweb S.p.A](https://www.fastweb.it/grandi-aziende/connessione-voce-e-wifi/scheda-prodotto/rete-privata-virtuale/)** | Equinix | アムステルダム |
