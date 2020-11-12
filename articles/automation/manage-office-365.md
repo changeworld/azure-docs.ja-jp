@@ -2,14 +2,14 @@
 title: Azure Automation を使用して Office 365 サービスを管理する
 description: この記事では、Azure Automation を使用して Office 365 サブスクリプション サービスを管理する方法について説明します。
 services: automation
-ms.date: 04/01/2020
+ms.date: 11/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 91f5ac0c3adabf9880078d7a4d3703e2757cb97f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70c8892969a3b13175c60a4e20e0cf9086112abe
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185315"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398047"
 ---
 # <a name="manage-office-365-services"></a>Office 365 サービスを管理する
 
@@ -44,7 +44,7 @@ Azure Automation で Office 365 を使用するには、Windows PowerShell 用 M
 3. **[共有リソース]** で **[モジュール ギャラリー]** を選択します。
 4. MSOnline を検索します。
 5. `MSOnline` PowerShell モジュールを選択し、 **[インポート]** をクリックして、モジュールを資産としてインポートします。
-6. 手順 4 と 5 を繰り返して、`MSOnlineExt` モジュールを見つけてインポートします。 
+6. 手順 4 と 5 を繰り返して、`MSOnlineExt` モジュールを見つけてインポートします。
 
 ## <a name="create-a-credential-asset-optional"></a>資格情報資産の作成 (省略可能)
 
@@ -52,7 +52,7 @@ Azure Automation で Office 365 を使用するには、Windows PowerShell 用 M
 
 ## <a name="create-an-office-365-service-account"></a>Office 365 サービス アカウントの作成
 
-Office 365 サブスクリプション サービスを実行するには、必要な操作を実行するためのアクセス許可を持つ Office 365 サービス アカウントが必要です。 1 つの全体管理者アカウントを使用するか、サービスごとに 1 つのアカウントを使用するか、1 つの関数またはスクリプトを実行できます。 いずれの場合も、サービス アカウントには複雑でセキュリティで保護されたパスワードが必要です。 「[一般法人向け Office 365 のセットアップ](/microsoft-365/admin/setup/setup?view=o365-worldwide)」を参照してください。 
+Office 365 サブスクリプション サービスを実行するには、必要な操作を実行するためのアクセス許可を持つ Office 365 サービス アカウントが必要です。 1 つの全体管理者アカウントを使用するか、サービスごとに 1 つのアカウントを使用するか、1 つの関数またはスクリプトを実行できます。 いずれの場合も、サービス アカウントには複雑でセキュリティで保護されたパスワードが必要です。 「[一般法人向け Office 365 のセットアップ](/microsoft-365/admin/setup/setup)」を参照してください。
 
 ## <a name="connect-to-the-azure-ad-online-service"></a>Azure AD オンライン サービスへの接続
 
@@ -61,7 +61,7 @@ Office 365 サブスクリプション サービスを実行するには、必�
 
 MSOnline モジュールを使用して、Office 365 サブスクリプションから Azure AD に接続することができます。 この接続では、Office 365 のユーザー名とパスワードを使用するか、多要素認証 (MFA) を使用します。 Azure portal または Windows PowerShell コマンド プロンプトを使用して接続できます (管理者特権は必要ありません)。
 
-PowerShell の例を以下に示します。 [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) コマンドレットは、資格情報の入力を求め、それらを `Msolcred` 変数に格納します。 その後、[Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) コマンドレットは、その資格情報を使用してAzure ディレクトリ オンライン サービスに接続します。 特定の Azure 環境に接続したい場合は、`AzureEnvironment` パラメーターを使用します。
+PowerShell の例を以下に示します。 [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) コマンドレットは、資格情報の入力を求め、それらを `Msolcred` 変数に格納します。 その後、[Connect-MsolService](/powershell/module/msonline/connect-msolservice) コマンドレットは、その資格情報を使用してAzure ディレクトリ オンライン サービスに接続します。 特定の Azure 環境に接続したい場合は、`AzureEnvironment` パラメーターを使用します。
 
 ```powershell
 $Msolcred = Get-Credential
@@ -71,25 +71,23 @@ Connect-MsolService -Credential $MsolCred -AzureEnvironment "AzureCloud"
 エラーが表示されない場合は、正常に接続されています。 簡単なテストとして、Office 365 コマンドレット (`Get-MsolUser` など) を実行して結果を確認します。 エラーが表示された場合、一般的な問題はパスワードが正しくないことです。
 
 >[!NOTE]
->AzureRM モジュールまたは Az モジュールを使用して、Office 365 サブスクリプションから Azure AD に接続することもできます。 メインの接続コマンドレットは [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) です。 このコマンドレットは、特定の Office 365 環境の `AzureEnvironmentName` パラメーターをサポートしています。
+>AzureRM モジュールまたは Az モジュールを使用して、Office 365 サブスクリプションから Azure AD に接続することもできます。 メインの接続コマンドレットは [Connect-AzureAD](/powershell/module/azuread/connect-azuread) です。 このコマンドレットは、特定の Office 365 環境の `AzureEnvironmentName` パラメーターをサポートしています。
 
 ## <a name="create-a-powershell-runbook-from-an-existing-script"></a>既存のスクリプトから PowerShell Runbook を作成する
 
 PowerShell スクリプトから Office 365 の機能にアクセスします。 ユーザー名 `admin@TenantOne.com` を持つ `Office-Credentials` という名前の資格情報に対するスクリプトの例を次に示します。 これは、`Get-AutomationPSCredential` を使用して Office 365 資格情報をインポートします。
 
 ```powershell
-$emailFromAddress = "admin@TenantOne.com" 
-$emailToAddress = "servicedesk@TenantOne.com" 
-$emailSMTPServer = "outlook.office365.com" 
-$emailSubject = "Office 365 License Report" 
+$emailFromAddress = "admin@TenantOne.com"
+$emailToAddress = "servicedesk@TenantOne.com"
+$emailSMTPServer = "outlook.office365.com"
+$emailSubject = "Office 365 License Report"
 
-$credObject = Get-AutomationPSCredential -Name "Office-Credentials" 
+$credObject = Get-AutomationPSCredential -Name "Office-Credentials"
 Connect-MsolService -Credential $credObject
 
-$O365Licenses = Get-MsolAccountSku | Out-String 
-Send-MailMessage -Credential $credObject -From $emailFromAddress -To $emailToAddress -Subject $emailSubject -Body 
-
-$O365Licenses -SmtpServer $emailSMTPServer -UseSSL
+$O365Licenses = Get-MsolAccountSku | Out-String
+Send-MailMessage -Credential $credObject -From $emailFromAddress -To $emailToAddress -Subject $emailSubject -Body $O365Licenses -SmtpServer $emailSMTPServer -UseSSL
 ```
 
 ## <a name="run-the-script-in-a-runbook"></a>Runbook 内でスクリプトを実行する
@@ -102,7 +100,7 @@ $O365Licenses -SmtpServer $emailSMTPServer -UseSSL
 4. お使いのスクリプトをコピーし、Runbook のテキストエディターに貼り付けます。
 5. **[資産]** を選択し、 **[資格情報]** を展開して、Office 365 資格情報があることを確認します。
 6. **[保存]** をクリックします。
-7. **[テスト] ペイン**を選択し、 **[開始]** をクリックして Runbook のテストを開始します。 「[Azure Automation で Runbook を管理する](./manage-runbooks.md)」を参照してください。
+7. **[テスト] ペイン** を選択し、 **[開始]** をクリックして Runbook のテストを開始します。 「[Azure Automation で Runbook を管理する](./manage-runbooks.md)」を参照してください。
 8. テストが完了したら、[テスト] ペインから終了します。
 
 ## <a name="publish-and-schedule-the-runbook"></a>Runbookを発行およびスケジュール設定する

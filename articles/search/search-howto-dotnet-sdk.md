@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 47cface4efbf38f2cec630745d498db674c936d3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4b3256591c0aa2536fd42bcdbb2ef339fc1d5c48
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791955"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356809"
 ---
 # <a name="how-to-use-azuresearchdocuments-in-a-c-net-application"></a>C# .NET アプリケーションで Azure.Search.Documents を使用する方法
 
@@ -54,13 +54,13 @@ Azure.Search.Documents (バージョン 11) は、[Azure Cognitive Search REST A
 
 + 自分が所有する Azure Cognitive Search サービス。 SDK を使用するには、サービスの名前および 1 つまたは複数の API キーが必要です。 [ポータルでサービスを作成していない場合は、作成](search-create-service-portal.md)します。
 
-+ Visual Studio の **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[ソリューションの NuGet パッケージの管理]** を使用して、[Azure.Search.Documents package](https://www.nuget.org/packages/Azure.Search.Documents) をダウンロードします。 パッケージ名 `Azure.Search.Documents` を検索します。
++ Visual Studio の **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[ソリューションの NuGet パッケージの管理]** を使用して、 [Azure.Search.Documents package](https://www.nuget.org/packages/Azure.Search.Documents) をダウンロードします。 パッケージ名 `Azure.Search.Documents` を検索します。
 
 Azure SDK for .NET は [.NET Standard 2.0](/dotnet/standard/net-standard#net-implementation-support) に準拠しています。これは、.NET Framework 4.6.1 と .NET Core 2.0 を最小要件としていることを意味します。
 
 ## <a name="example-application"></a>サンプル アプリケーション
 
-"例を使って説明する" この記事では、GitHub の [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo/v11) コード例を使用して、Azure Cognitive Search の基本的な概念を説明します。具体的には、検索インデックスの作成、読み込み、クエリを実行する方法です。
+"例を使って説明する" この記事では、GitHub の [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) コード例を使用して、Azure Cognitive Search の基本的な概念を説明します。具体的には、検索インデックスの作成、読み込み、クエリを実行する方法です。
 
 この記事の残りの部分では、"hotels" という名前の新しいインデックスがあり、いくつかのドキュメントが表示され、結果に一致するいくつかのクエリが作成されているものとします。
 

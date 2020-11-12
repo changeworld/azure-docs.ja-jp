@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/12/2020
 ms.author: matjazl
-ms.openlocfilehash: 121ddcc013fbeef29c6d22cfbd273cfd3b8d3d98
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: bfbdb98e691312db5665261743f8ce698541d4cc
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558830"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398217"
 ---
 # <a name="configure-private-link"></a>プライベート リンクを構成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "92558830"
 - Azure API for FHIR – プライベート エンドポイントの背後に配置する FHIR リソース。
 - 仮想ネットワーク – クライアント サービスとプライベート エンドポイントが接続される VNet。
 
-詳細については、「[Private Link のドキュメント](https://docs.microsoft.com/azure/private-link/)」を参照してください。
+詳細については、「[Private Link のドキュメント](../private-link/index.yml)」を参照してください。
 
 ## <a name="disable-public-network-access"></a>パブリック ネットワーク アクセスの無効化
 
@@ -40,7 +40,7 @@ FHIR リソースのプライベート エンドポイントを作成しても�
 
 ## <a name="create-private-endpoint"></a>プライベート エンドポイントの作成
 
-プライベート エンドポイントを作成するために、FHIR リソースに対する RBAC アクセス許可を持つ開発者は、Azure portal、[Azure PowerShell](https://docs.microsoft.com/azure/private-link/create-private-endpoint-powershell)、または [Azure CLI](https://docs.microsoft.com/azure/private-link/create-private-endpoint-cli) を使用できます。 この記事では、Azure portal を使用する手順について説明します。 プライベート DNS ゾーンの作成と構成を自動化するため、Azure portal を使用することをお勧めします。 詳細については、「[Private Link クイック スタート ガイド](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)」を参照してください。
+プライベート エンドポイントを作成するために、FHIR リソースに対する RBAC アクセス許可を持つ開発者は、Azure portal、[Azure PowerShell](../private-link/create-private-endpoint-powershell.md)、または [Azure CLI](../private-link/create-private-endpoint-cli.md) を使用できます。 この記事では、Azure portal を使用する手順について説明します。 プライベート DNS ゾーンの作成と構成を自動化するため、Azure portal を使用することをお勧めします。 詳細については、「[Private Link クイック スタート ガイド](../private-link/create-private-endpoint-portal.md)」を参照してください。
 
 プライベート エンドポイントを作成するには、2 つの方法があります。 自動承認フローを使用すると、FHIR リソースに対する RBAC アクセス許可を持つユーザーは、承認を受ける必要なく、プライベート エンドポイントを作成できます。 手動承認フローを使用すると、FHIR リソースに対するアクセス許可を持たないユーザーは、プライベート エンドポイントを FHIR リソースの所有者に承認してもらうよう要求できます。
 

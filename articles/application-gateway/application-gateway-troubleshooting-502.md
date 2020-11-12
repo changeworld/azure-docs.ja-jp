@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 1b0abe998540c4fcc0a9b83f6d1175e18a560871
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd1ca218d9c079e26f8424a36b90b9b657690b41
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84808154"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397707"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Application Gateway での無効なゲートウェイによるエラーのトラブルシューティング
 
@@ -95,8 +95,8 @@ DhcpOptions            : {
 * BackendHttpSetting で 80 以外のポートが指定されている場合、既定のサイトはポート 80 でリッスンするように構成する必要があります。
 * `http://127.0.0.1:port` の呼び出しで、HTTP 結果コード 200 が返されるようにする必要があります。 30 秒のタイムアウト期間内に返されるようにする必要があります。
 * 構成済みのポートを開き、構成済みのポートでの送受信トラフィックをブロックするファイアウォール規則または Azure ネットワーク セキュリティ グループが存在しないようにします。
-* FQDN またはパブリック IP と共に Azure クラシック VM またはクラウド サービスを使用する場合、対応する[エンドポイント](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)を必ず開いてください。
-* Azure Resource Manager を介して VM を構成しており、アプリケーション ゲートウェイがデプロイされた VNet の外側に VM がある場合、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)は、目的のポートにアクセスできるように構成する必要があります。
+* FQDN またはパブリック IP と共に Azure クラシック VM またはクラウド サービスを使用する場合、対応する[エンドポイント](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints?toc=%252fazure%252fapplication-gateway%252ftoc.json)を必ず開いてください。
+* Azure Resource Manager を介して VM を構成しており、アプリケーション ゲートウェイがデプロイされた VNet の外側に VM がある場合、[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)は、目的のポートにアクセスできるように構成する必要があります。
 
 ## <a name="problems-with-custom-health-probe"></a>カスタムの正常性プローブに関する問題
 
@@ -130,7 +130,7 @@ DhcpOptions            : {
 
 ### <a name="cause"></a>原因
 
-ユーザー要求の受信時に、アプリケーション ゲートウェイは構成済みの規則をその要求に適用し、要求をバックエンド プール インスタンスにルーティングします。 Application Gateway は一定時間バックエンド インスタンスからの応答を待ちます。この時間間隔は構成できます。 既定では、この間隔は **20 秒**です。 この間隔の間に アプリケーション ゲートウェイがバックエンド アプリケーションから応答を受信しない場合、ユーザー要求の結果として 502 エラーが表示されます。
+ユーザー要求の受信時に、アプリケーション ゲートウェイは構成済みの規則をその要求に適用し、要求をバックエンド プール インスタンスにルーティングします。 Application Gateway は一定時間バックエンド インスタンスからの応答を待ちます。この時間間隔は構成できます。 既定では、この間隔は **20 秒** です。 この間隔の間に アプリケーション ゲートウェイがバックエンド アプリケーションから応答を受信しない場合、ユーザー要求の結果として 502 エラーが表示されます。
 
 ### <a name="solution"></a>解決策
 
@@ -195,4 +195,3 @@ BackendAddressPool のインスタンスがすべて異常である場合、ア�
 ## <a name="next-steps"></a>次のステップ
 
 前の手順で問題を解決できない場合は、[サポート チケット](https://azure.microsoft.com/support/options/)を開きます。
-

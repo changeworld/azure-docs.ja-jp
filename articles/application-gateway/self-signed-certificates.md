@@ -8,16 +8,16 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: de580d8f94292ae65769c696aa232f5b660bf414
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e60aa9f072a447af97aa7cc66534e6e893fdbcf6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84806758"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396942"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>カスタム ルート CA を使用して Azure Application Gateway の自己署名証明書を生成する
 
-Application Gateway v2 SKU では、バックエンド サーバーを許可するために、信頼されたルート証明書の使用を導入しています。 これにより、v1 SKU で必要だった認証証明書が不要になります。 この "*ルート証明書*" は、バックエンド証明書サーバーからの Base-64 エンコード X.509(.CER) 形式のルート証明書です。 サーバー証明書を発行したルート証明機関 (CA) が識別され、サーバー証明書が TLS/SSL 通信に使用されます。
+Application Gateway v2 SKU では、バックエンド サーバーを許可するために、信頼されたルート証明書の使用を導入しています。 これにより、v1 SKU で必要だった認証証明書が不要になります。 この " *ルート証明書* " は、バックエンド証明書サーバーからの Base-64 エンコード X.509(.CER) 形式のルート証明書です。 サーバー証明書を発行したルート証明機関 (CA) が識別され、サーバー証明書が TLS/SSL 通信に使用されます。
 
 Application Gateway は、よく知られている CA (GoDaddy や DigiCert など) によって署名されている Web サイトの証明書を既定で信頼します。 その場合は、ルート証明書を明示的にアップロードする必要はありません。 詳細については、「[Application Gateway での TLS 終了とエンド ツー エンド TLS の概要](ssl-overview.md)」を参照してください。 ただし、開発/テスト環境を所有していて、検証済みの CA 署名証明書を購入したくない場合は、独自のカスタム CA を作成し、それを使用して自己署名証明書を作成することができます。 
 
@@ -133,7 +133,7 @@ Web サーバーで fabrikam.crt ファイルと fabrikam.key ファイルを使
 
 証明書をインポートして IIS でサーバー証明書としてアップロードする方法については、「[[HOW TO] インポートした証明書を Windows Server 2003 の Web サーバーにインストールする方法](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server)」をご覧ください。
 
-TLS バインドの手順については、「[IIS 7 で SSL を設定する方法](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)」を参照してください。
+TLS バインドの手順については、「[IIS 7 で SSL を設定する方法](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)」を参照してください。
 
 ### <a name="apache"></a>Apache
 
@@ -266,11 +266,10 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 ### <a name="verify-the-application-gateway-backend-health"></a>アプリケーション ゲートウェイのバックエンドの正常性を確認する
 
 1. アプリケーションゲートウェイの **[バックエンド正常性]** ビューをクリックして、プローブが正常であるかどうかを確認します。
-1. HTTPS プローブの状態が**正常**であることがわかるはずです。
+1. HTTPS プローブの状態が **正常** であることがわかるはずです。
 
 ![HTTPS プローブ](media/self-signed-certificates/https-probe.png)
 
 ## <a name="next-steps"></a>次のステップ
 
 Application Gateway の SSL/TLS の詳細については、「[Application Gateway での TLS 終了とエンド ツー エンド TLS の概要](ssl-overview.md)」を参照してください。
-

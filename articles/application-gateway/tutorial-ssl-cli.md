@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d2a49c1ba90c35575116ed6cf1482683c45e0b5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76fea0c8b6f3c13c9f462ecbb72611c6659c65d0
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595820"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397078"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Azure CLI で TLS 終端を使用してアプリケーション ゲートウェイを作成する
 
-Azure CLI で [TLS 終端](ssl-overview.md)の証明書を使用して[アプリケーション ゲートウェイ](overview.md)を作成できます。 バックエンド サーバーの場合は、[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用できます。 この例では、アプリケーション ゲートウェイの既定のバックエンド プールに追加された 2 つの仮想マシン インスタンスがスケール セットに含まれています。
+Azure CLI で [TLS 終端](ssl-overview.md)の証明書を使用して[アプリケーション ゲートウェイ](overview.md)を作成できます。 バックエンド サーバーの場合は、[仮想マシン スケール セット](../virtual-machine-scale-sets/overview.md)を使用できます。 この例では、アプリケーション ゲートウェイの既定のバックエンド プールに追加された 2 つの仮想マシン インスタンスがスケール セットに含まれています。
 
 この記事では、次のことについて説明します。
 
@@ -48,13 +48,13 @@ openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.k
 openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.crt
 ```
 
-証明書のパスワードを入力します。 この例では、*Azure123456!* が 使用されています。
+証明書のパスワードを入力します。 この例では、 *Azure123456!* が 使用されています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [az group create](/cli/azure/group) を使用してリソース グループを作成します。
 
-次の例では、*myResourceGroupAG* という名前のリソース グループを *eastus* に作成します。
+次の例では、 *myResourceGroupAG* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -62,7 +62,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する
 
-[az network vnet create](/cli/azure/network/vnet) を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、[az network vnet subnet create](/cli/azure/network/vnet/subnet) を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/network/public-ip) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
+[az network vnet create](/cli/azure/network/vnet) を使用して、 *myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、 [az network vnet subnet create](/cli/azure/network/vnet/subnet) を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/network/public-ip) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -116,12 +116,12 @@ az network application-gateway create \
 - *appGatewayBackendPool* - アプリケーション ゲートウェイには、少なくとも 1 つのバックエンド アドレス プールが必要です。
 - *appGatewayBackendHttpSettings* - 通信に使用するポート 80 と HTTP プロトコルを指定します。
 - *appGatewayHttpListener* - *appGatewayBackendPool* に関連付けられている既定のリスナー。
-- *appGatewayFrontendIP* -*myAGPublicIPAddress* を *appGatewayHttpListener* に割り当てます。
+- *appGatewayFrontendIP* - *myAGPublicIPAddress* を *appGatewayHttpListener* に割り当てます。
 - *rule1* - *appGatewayHttpListener* に関連付けられている既定のルーティング規則。
 
 ## <a name="create-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを作成する
 
-この例では、アプリケーション ゲートウェイの既定のバックエンド プールにサーバーを提供する仮想マシン スケール セットを作成します。 スケール セット内の仮想マシンは、*myBackendSubnet* と *appGatewayBackendPool* に関連付けられています。 スケール セットを作成するには、[az vmss create](/cli/azure/vmss#az-vmss-create) を使用できます。
+この例では、アプリケーション ゲートウェイの既定のバックエンド プールにサーバーを提供する仮想マシン スケール セットを作成します。 スケール セット内の仮想マシンは、 *myBackendSubnet* と *appGatewayBackendPool* に関連付けられています。 スケール セットを作成するには、[az vmss create](/cli/azure/vmss#az-vmss-create) を使用できます。
 
 ```azurecli-interactive
 az vmss create \

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/15/2018
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: caabaa6fbf65787f90c0033a06af26996c2388f2
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b076045f6a106f77717159d3095ffd5973ab27aa
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994094"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359886"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SAP Business One
 このドキュメントでは、Azure Virtual Machines に SAP Business One をデプロイするためのガイダンスを提供します。 このドキュメントは、SAP の Business One のインストール ドキュメントに代わるものではありません。 このドキュメントでは、Business One アプリケーションを実行する Azure インフラストラクチャの計画とデプロイに関する基本的なガイドラインについて説明します。
@@ -139,7 +139,7 @@ SAP HANA のバックアップと復元の戦略については、「[Azure Virt
 
  
 ### <a name="business-one-client-server"></a>Business One クライアント サーバー
-これらのコンポーネントについては、ストレージに関する考慮事項は大きな問題ではありません。 しかし、信頼性の高いプラットフォームは必要です。 したがって、ベース VHD の場合でも、この VM に Azure Premium Storage を使用する必要があります。 「[SAP Business One Hardware Requirements Guide](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)」 (SAP Business One のハードウェア要件ガイド) で指定されているデータを使用して、VM をサイズ設定します。 Azure については、このドキュメントのチャプター 2.4 に記載されている要件を使用して、計算する必要があります。 最適な VM を見つけるため、要件を計算するときに、それらを次のドキュメントと比較する必要があります。
+これらのコンポーネントについては、ストレージに関する考慮事項は大きな問題ではありません。 しかし、信頼性の高いプラットフォームは必要です。 したがって、ベース VHD の場合でも、この VM に Azure Premium Storage を使用する必要があります。 「[SAP Business One Hardware Requirements Guide](https://help.sap.com/doc/bfa9770d12284cce8509956dcd4c5fcb/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)」 (SAP Business One のハードウェア要件ガイド) で指定されているデータを使用して、VM をサイズ設定します。 Azure については、このドキュメントのチャプター 2.4 に記載されている要件を使用して、計算する必要があります。 最適な VM を見つけるため、要件を計算するときに、それらを次のドキュメントと比較する必要があります。
 
 - [Azure の Windows 仮想マシンのサイズ](../../sizes.md)
 - [SAP Note #1928533](https://launchpad.support.sap.com/#/notes/1928533)

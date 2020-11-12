@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: e9c8c58c6be8d2c2a85e56690903e6b54f0e4a0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40bd0eda16f9f96dd356eef900369ab25854e9f9
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293902"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392250"
 ---
 # <a name="sql-database-dacpac-and-bacpac-packages-in-sql-edge"></a>SQL Edge での SQL Database DACPAC および BACPAC パッケージ
 
 Azure SQL Edge は、IoT およびエッジのデプロイ向けに最適化されたリレーショナル データベース エンジンです。 これは業界最高レベルのパフォーマンス、セキュリティ、およびクエリ処理機能を提供する、Microsoft SQL データベース エンジンの最新バージョンに基づいて構築されています。 SQL Server の業界をリードするリレーショナル データベース管理機能と共に、Azure SQL Edge では、リアルタイム分析や複雑なイベント処理のための組み込みのストリーミング機能が提供されます。
 
-Azure SQL Edge には、[SQL Database DACPAC および BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) パッケージを SQL Edge のデプロイ中またはデプロイ後に配置できるネイティブのメカニズムが用意されています。
+Azure SQL Edge には、[SQL Database DACPAC および BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications) パッケージを SQL Edge のデプロイ中またはデプロイ後に配置できるネイティブのメカニズムが用意されています。
 
 SQL Database dacpac および bacpac パッケージは、`MSSQL_PACKAGE` 環境変数を使用して SQL Edge にデプロイできます。 環境変数は、次のいずれかを使用して構成できます。  
 - dacpac および bacpac ファイルが格納されている、SQL コンテナー内のローカル フォルダーの場所。 このフォルダーは、マウント ポイントまたはデータ ボリューム コンテナーのいずれかを使用してホスト ボリュームにマップできます。 
@@ -35,7 +35,7 @@ Azure Blob Storage と zip ファイル使用して SQL Database DAC パッケ�
 
 1. 以下に説明するメカニズムを使用して、DAC パッケージを作成または抽出するか、Bacpac ファイルをエクスポートします。 
     - SQL Database DAC パッケージを作成または抽出します。 既存の SQL Server データベースに対して DAC パッケージを生成する方法については、「[データベースからの DAC の抽出](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/)」を参照してください。
-    - デプロイされた DAC パッケージまたはデータベースのエクスポート。 既存の SQL Server データベースに対して bacpac ファイルを生成する方法については、「[データ層アプリケーションのエクスポート](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application/)」を参照してください。
+    - デプロイされた DAC パッケージまたはデータベースのエクスポート。 既存の SQL Server データベースに対して bacpac ファイルを生成する方法については、「[データ層アプリケーションのエクスポート](/sql/relational-databases/data-tier-applications/export-a-data-tier-application/)」を参照してください。
 
 2. `*.dacpac` または `*.bacpac` ファイルを zip 圧縮し、Azure BLOB ストレージ アカウントにアップロードします。 Azure Blob ストレージへのファイルのアップロードの詳細については、「[Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する](../storage/blobs/storage-quickstart-blobs-portal.md)」を参照してください。
 

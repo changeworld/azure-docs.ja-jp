@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: victorh
-ms.openlocfilehash: df92e08e91761d77c606ccb5389eee7dc219c101
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a72f0106088d26eb2ff53456840c598c3d9619a7
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323382"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397554"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Application Gateway を使用した App Service の構成
 
@@ -30,7 +30,7 @@ Application Gateway には、Application Gateway からバックエンドに要�
 
 - Application Gateway:バックエンド プール ターゲットなしでアプリケーション ゲートウェイを作成します。 詳細については、「[クイック スタート: Azure Application Gateway による Web トラフィックのルーティング - Azure portal](quick-create-portal.md)
 
-- App Service:既存の App Service がない場合は、[App Service のドキュメント](https://docs.microsoft.com/azure/app-service/)を参照してください。
+- App Service:既存の App Service がない場合は、[App Service のドキュメント](../app-service/index.yml)を参照してください。
 
 ## <a name="add-app-service-as-backend-pool"></a>バックエンド プールとして App Service を追加する
 
@@ -56,13 +56,13 @@ Application Gateway には、Application Gateway からバックエンドに要�
 3. **[ホスト名をオーバーライドする]** で、 **[バックエンド ターゲットからホスト名を選択する]** を選択します。
 4. **[保存]** を選択します。
 
-   :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="App Service バックエンド":::
+   :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="ホスト名をバックエンド HTTP 設定から選択します":::
 
 ## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>App Service の相対パスにリダイレクトする場合の追加構成
 
 App Service では、その相対パスにリダイレクトするためのリダイレクト応答をクライアントに送信するとき (`contoso.azurewebsites.net/path1` から `contoso.azurewebsites.net/path2` へのリダイレクトなど)、その応答の場所ヘッダーで、アプリケーション ゲートウェイから受信した要求のものと同じホスト名が使用されます。 そのため、クライアントでは、アプリケーション ゲートウェイ (`contoso.com/path2`) を経由するのではなく、`contoso.azurewebsites.net/path2` に直接要求を行います。 アプリケーション ゲートウェイをバイパスすることは望ましくありません。
 
-実際のユース ケースで、App Service からリダイレクト応答をクライアントに送信すべきシナリオがあれば、[場所ヘッダーを書き換えるための追加手順](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url#sample-configuration)を実施してください。
+実際のユース ケースで、App Service からリダイレクト応答をクライアントに送信すべきシナリオがあれば、[場所ヘッダーを書き換えるための追加手順](./troubleshoot-app-service-redirection-app-service-url.md#sample-configuration)を実施してください。
 
 ## <a name="restrict-access"></a>アクセスを制限する
 
@@ -72,4 +72,4 @@ Web アプリへのアクセスを制限できる 1 つの方法は、[Azure App
 
 ## <a name="next-steps"></a>次のステップ
 
-アプリケーション ゲートウェイを使用した App Service とその他のマルチテナント サポートの詳細については、[アプリケーション ゲートウェイを使用したマルチテナント サービスのサポート](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview)に関するページを参照してください。
+アプリケーション ゲートウェイを使用した App Service とその他のマルチテナント サポートの詳細については、[アプリケーション ゲートウェイを使用したマルチテナント サービスのサポート](./application-gateway-web-app-overview.md)に関するページを参照してください。

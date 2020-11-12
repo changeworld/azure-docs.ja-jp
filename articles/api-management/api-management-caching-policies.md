@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: cc258a0e790559cb343bfbf2eda0787962e2063e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: e939e3e6eb686894094c77f62ed815d0ebb5a24f
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071270"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358441"
 ---
 # <a name="api-management-caching-policies"></a>API Management のキャッシュ ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](./api-management-policies.md)」をご覧ください。
@@ -283,7 +283,7 @@ ms.locfileid: "92071270"
 - **ポリシー セクション:** inbound、outbound、backend、on-error
 - **ポリシー スコープ:** すべてのスコープ
 
-### <a name="remove-value-from-cache"></a><a name="RemoveCacheByKey"></a> キャッシュから値を削除
+## <a name="remove-value-from-cache"></a><a name="RemoveCacheByKey"></a> キャッシュから値を削除
 `cache-remove-value` は、キーで指定された、キャッシュされている項目を削除します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。
 
 #### <a name="policy-statement"></a>ポリシー ステートメント

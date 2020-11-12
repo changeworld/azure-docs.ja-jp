@@ -4,14 +4,17 @@ description: 監視する必要のないイベントをフィルターで除外�
 ms.topic: conceptual
 ms.date: 3/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: e450cf0de7dce4f626fd41252bfeed5fba294c70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 329f07a530a584a14d5312631ec977773e70af29
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761007"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378195"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Java Web アプリでのテレメトリのフィルター処理
+
+> [!IMPORTANT]
+> Java アプリケーションを監視する際に推奨される方法は、コードを変更せずに自動インストルメンテーションを使用することです。 [Application Insights Java 3.0 エージェント](./java-in-process-agent.md)のガイドラインに従ってください。
 
 フィルターは、お使いの [Java Web アプリが Application Insights に送信](java-get-started.md)するテレメトリを選択する方法を提供します。 すぐに使用できるフィルターが用意されており、また、独自のカスタム フィルターを作成することもできます。
 
@@ -260,7 +263,7 @@ public TelemetryProcessor successFilter() {
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-"*フィルターが機能しません。* "
+" *フィルターが機能しません。* "
 
 * 有効なパラメーター値を指定していることを確認してください。 たとえば、期間は整数である必要があります。 無効な値を指定すると、フィルターは無視されます。 カスタム フィルターがコンストラクターまたは set メソッドから例外をスローした場合、これも無視されます。
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 492041e39cf3e7be256bc783afc82fc756e17bf4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8df24b44d648343c46532eed443717f444bd0058
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791547"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397792"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -29,7 +29,7 @@ Azure Application Gateway は、アプリケーション デリバリー コン�
 
 ### <a name="what-features-does-application-gateway-support"></a>Application Gateway はどのような機能をサポートしますか?
 
-Application Gateway は、自動スケーリング、TLS オフロードとエンド ツー エンド TLS、Web アプリケーション ファイアウォール (WAF)、Cookie ベースのセッション アフィニティ、URL パスベースのルーティング、マルチサイト ホスティングなどの機能をサポートしています。 サポートされている機能の完全な一覧については、「[Application Gateway の概要](application-gateway-introduction.md)」をご覧ください。
+Application Gateway は、自動スケーリング、TLS オフロードとエンド ツー エンド TLS、Web アプリケーション ファイアウォール (WAF)、Cookie ベースのセッション アフィニティ、URL パスベースのルーティング、マルチサイト ホスティングなどの機能をサポートしています。 サポートされている機能の完全な一覧については、「[Application Gateway の概要](./overview.md)」をご覧ください。
 
 ### <a name="how-do-application-gateway-and-azure-load-balancer-differ"></a>Application Gateway と Azure Load Balancer の違いは何ですか?
 
@@ -41,17 +41,17 @@ Application Gateway は、HTTP、HTTPS、HTTP/2、WebSocket をサポートし�
 
 ### <a name="how-does-application-gateway-support-http2"></a>Application Gateway は HTTP/2 をどのようにサポートしますか?
 
-「[HTTP/2 のサポート](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support)」を参照してください。
+「[HTTP/2 のサポート](./configuration-listeners.md#http2-support)」を参照してください。
 
 ### <a name="what-resources-are-supported-as-part-of-a-backend-pool"></a>バックエンド プールの一部としてはどのようなリソースがサポートされていますか?
 
-[サポート対象のバックエンド リソース](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#backend-pools)に関するセクションを参照してください。
+[サポート対象のバックエンド リソース](./application-gateway-components.md#backend-pools)に関するセクションを参照してください。
 
 ### <a name="in-what-regions-is-application-gateway-available"></a>Application Gateway はどのリージョンで利用できますか?
 
 Application Gateway v1 (Standard および WAF) は、グローバル Azure のすべてのリージョンで利用できます。 また、[Azure China 21Vianet](https://www.azure.cn/) と [Azure Government](https://azure.microsoft.com/overview/clouds/government/) でもご利用いただけます。
 
-Application Gateway v2 (Standard_v2 と WAF_v2) の可用性については、[Application Gateway v2 でサポートされているリージョン](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#supported-regions)に関するページを参照してください。
+Application Gateway v2 (Standard_v2 と WAF_v2) の可用性については、[Application Gateway v2 でサポートされているリージョン](./application-gateway-autoscaling-zone-redundant.md#supported-regions)に関するページを参照してください。
 
 ### <a name="is-this-deployment-dedicated-for-my-subscription-or-is-it-shared-across-customers"></a>このデプロイは私のサブスクリプション専用ですか? それとも、複数の顧客と共有されますか?
 
@@ -59,11 +59,11 @@ Application Gateway は、お客様の仮想ネットワーク専用のデプロ
 
 ### <a name="does-application-gateway-support-http-to-https-redirection"></a>Application Gateway は HTTP から HTTPS へのリダイレクトをサポートしていますか?
 
-リダイレクトはサポートされます。 「[Application Gateway のリダイレクトの概要](application-gateway-redirect-overview.md)」を参照してください。
+リダイレクトはサポートされます。 「[Application Gateway のリダイレクトの概要](./redirect-overview.md)」を参照してください。
 
 ### <a name="in-what-order-are-listeners-processed"></a>リスナーはどのような順序で処理されますか?
 
-「[リスナーを処理する順序](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-listeners)」を参照してください。
+「[リスナーを処理する順序](./configuration-listeners.md#order-of-processing-listeners)」を参照してください。
 
 ### <a name="where-do-i-find-the-application-gateway-ip-and-dns"></a>Application Gateway の IP と DNS はどこで確認できますか?
 
@@ -97,7 +97,7 @@ Application Gateway V1 SKU では、アプリケーション ゲートウェイ�
 
 ### <a name="how-large-should-i-make-my-subnet-for-application-gateway"></a>Application Gateway のサブネットはどのくらい大きくする必要がありますか?
 
-[Application Gateway のサブネットのサイズに関する考慮事項](https://docs.microsoft.com/azure/application-gateway/configuration-overview#size-of-the-subnet)のセクションを参照してください。
+[Application Gateway のサブネットのサイズに関する考慮事項](./configuration-infrastructure.md#size-of-the-subnet)のセクションを参照してください。
 
 ### <a name="can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>1 つのサブネットに複数の Application Gateway リソースをデプロイできますか?
 
@@ -111,7 +111,7 @@ Application Gateway V1 SKU では、アプリケーション ゲートウェイ�
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Application Gateway は x-forwarded-for ヘッダーをサポートしますか?
 
-はい。 「[要求への変更](https://docs.microsoft.com/azure/application-gateway/how-application-gateway-works#modifications-to-the-request)」を参照してください。
+はい。 「[要求への変更](./how-application-gateway-works.md#modifications-to-the-request)」を参照してください。
 
 ### <a name="how-long-does-it-take-to-deploy-an-application-gateway-will-my-application-gateway-work-while-its-being-updated"></a>アプリケーション ゲートウェイのデプロイにはどのくらい時間がかかりますか? アプリケーション ゲートウェイは更新中にも動作しますか?
 
@@ -172,7 +172,7 @@ Traffic Manager を使用すると、異なるデータ センターにある複
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>Application Gateway は常に仮想ネットワークにデプロイされますか?
 
-はい。 Application Gateway は、必ず仮想ネットワーク サブネットにデプロイされます。 このサブネットにはアプリケーション ゲートウェイのみを含めることができます。 詳細については、[仮想ネットワークとサブネットの要件](https://docs.microsoft.com/azure/application-gateway/configuration-overview#azure-virtual-network-and-dedicated-subnet)に関するセクションを参照してください。
+はい。 Application Gateway は、必ず仮想ネットワーク サブネットにデプロイされます。 このサブネットにはアプリケーション ゲートウェイのみを含めることができます。 詳細については、[仮想ネットワークとサブネットの要件](./configuration-infrastructure.md#virtual-network-and-dedicated-subnet)に関するセクションを参照してください。
 
 ### <a name="can-application-gateway-communicate-with-instances-outside-of-its-virtual-network-or-outside-of-its-subscription"></a>Application Gateway は、所属している仮想ネットワークやサブスクリプションの外部にあるインスタンスと通信できますか?
 
@@ -184,15 +184,15 @@ Application Gateway は、IP 接続がある限り、所属している仮想ネ
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>アプリケーション ゲートウェイ サブネットでネットワーク セキュリティ グループはサポートされていますか?
 
-[アプリケーション ゲートウェイ サブネット内のネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#network-security-groups)に関するセクションを参照してください。
+[アプリケーション ゲートウェイ サブネット内のネットワーク セキュリティ グループ](./configuration-infrastructure.md#network-security-groups)に関するセクションを参照してください。
 
 ### <a name="does-the-application-gateway-subnet-support-user-defined-routes"></a>アプリケーション ゲートウェイ サブネットはユーザー定義ルートをサポートしていますか?
 
-「[アプリケーション ゲートウェイ サブネットでサポートされるユーザー定義ルート](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#supported-user-defined-routes)」を参照してください。
+「[アプリケーション ゲートウェイ サブネットでサポートされるユーザー定義ルート](./configuration-infrastructure.md#supported-user-defined-routes)」を参照してください。
 
 ### <a name="are-service-endpoint-policies-supported-in-the-application-gateway-subnet"></a>サービス エンドポイント ポリシーは Application Gateway サブネットでサポートされていますか。
 
-いいえ。 ストレージ アカウントの[サービス エンドポイント ポリシー](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)は Application Gateway サブネットではサポートされていません。構成すると、Azure インフラストラクチャのトラフィックがブロックされます。
+いいえ。 ストレージ アカウントの[サービス エンドポイント ポリシー](../virtual-network/virtual-network-service-endpoint-policies-overview.md)は Application Gateway サブネットではサポートされていません。構成すると、Azure インフラストラクチャのトラフィックがブロックされます。
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Application Gateway にはどのような制限がありますか? これらの制限値を引き上げることはできますか?
 
@@ -220,7 +220,7 @@ Application Gateway は、IP 接続がある限り、所属している仮想ネ
 
 ### <a name="how-are-routing-rules-processed-in-application-gateway"></a>Application Gateway ではルーティング規則がどのように処理されるのでしょうか?
 
-「[規則を処理する順序](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-rules)」を参照してください。
+「[規則を処理する順序](./configuration-request-routing-rules.md#order-of-processing-rules)」を参照してください。
 
 ### <a name="for-custom-probes-what-does-the-host-field-signify"></a>カスタム プローブの [ホスト] フィールドは何を表しているのでしょうか?
 
@@ -228,7 +228,7 @@ Application Gateway 上でマルチサイトを構成した場合には、[ホ�
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Application Gateway に対するアクセスを少数のソース IP アドレスだけに限定することはできますか?
 
-はい。 [アクセスを特定のソース IP だけに限定する方法](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#allow-access-to-a-few-source-ips)に関するセクションを参照してください。
+はい。 [アクセスを特定のソース IP だけに限定する方法](./configuration-infrastructure.md#allow-access-to-a-few-source-ips)に関するセクションを参照してください。
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>パブリック側のリスナーとプライベート側のリスナーの両方に同じポートを使用することはできますか?
 
@@ -247,7 +247,7 @@ Application Gateway 上でマルチサイトを構成した場合には、[ホ�
 ただし、プライベート IP のみで Application Gateway V2 を使用する場合は、次の手順に従うことができます。
 1. パブリックとプライベートの両方のフロントエンド IP アドレスを使用して Application Gateway を作成する
 2. パブリック フロントエンド IP アドレスのリスナーは作成しないでください。 リスナーが作成されていない場合、Application Gateway ではパブリック IP アドレスのトラフィックがリッスンされません。
-3. Application Gateway サブネットの[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)を作成し、次の構成を使用して優先度順にアタッチします。
+3. Application Gateway サブネットの[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)を作成し、次の構成を使用して優先度順にアタッチします。
     
     a. [ソース] には **GatewayManager** サービス タグ、[宛先] には **[すべて]** 、[宛先のポート] には **65200-65535** を指定してトラフィックを許可します。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、証明書の認証によって保護 (ロック ダウン) されます。 ゲートウェイ ユーザー管理者を含む外部エンティティは、適切な証明書が配置されていないと、このようなエンドポイントに対する変更を開始できません。
     
@@ -337,7 +337,7 @@ Application Gateway は、認証証明書を 100 件までサポートしてい�
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>.com と .net のサイトの HTTPS リスナーはどのように構成するのでしょうか? 
 
-複数ドメインベース (ホストベース) のルーティングでは、マルチサイト リスナーを作成し、プロトコルとして HTTPS を使用するリスナーを設定してから、リスナーとルーティング規則を関連付けます。 詳細については、[Application Gateway を使用した複数サイトのホスティング](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview)に関するページを参照してください。
+複数ドメインベース (ホストベース) のルーティングでは、マルチサイト リスナーを作成し、プロトコルとして HTTPS を使用するリスナーを設定してから、リスナーとルーティング規則を関連付けます。 詳細については、[Application Gateway を使用した複数サイトのホスティング](./multiple-site-overview.md)に関するページを参照してください。
 
 ### <a name="can-i-use-special-characters-in-my-pfx-file-password"></a>.pfx ファイルのパスワードに特殊文字を使用できますか?
 
@@ -365,7 +365,7 @@ Application Gateway 固有の情報については、以下を参照してくだ
 この問題によってアプリケーションが中断されないようにする、または失効した CA を再発行するには、次の操作を行う必要があります。 
 
 1.  証明書を再発行する方法については、証明書プロバイダーに問い合わせてください
-2.  再発行後、完全な[信頼チェーン](https://docs.microsoft.com/windows/win32/seccrypto/certificate-chains) (リーフ、中間、ルート証明書) を使用して、Azure Application Gateway/WAF で証明書を更新します。 証明書を使用している場所に基づいて、Application Gateway のリスナーまたは HTTP 設定で、次の手順に従って証明書を更新します。詳細については、記載されているドキュメントのリンクを確認してください。
+2.  再発行後、完全な[信頼チェーン](/windows/win32/seccrypto/certificate-chains) (リーフ、中間、ルート証明書) を使用して、Azure Application Gateway/WAF で証明書を更新します。 証明書を使用している場所に基づいて、Application Gateway のリスナーまたは HTTP 設定で、次の手順に従って証明書を更新します。詳細については、記載されているドキュメントのリンクを確認してください。
 3.  再発行された証明書を使用するようにバックエンド アプリケーション サーバーを更新します。 使用しているバックエンド サーバーによっては、証明書の更新手順が異なる場合があります。 ベンダーからのドキュメントを確認してください。
 
 リスナーで証明書を更新するには、次の操作を行います。
@@ -374,14 +374,14 @@ Application Gateway 固有の情報については、以下を参照してくだ
 2.  証明書に関連付けられているリスナー設定を開きます。
 3.  [選択した証明書の更新または編集] をクリックします。
 4.  新しい PFX 証明書をパスワード付きでアップロードし、[保存] をクリックします。
-5.  Web サイトにアクセスして、サイトが想定どおりに動作しているかどうかを確認します。詳細については、[こちらのドキュメント](https://docs.microsoft.com/azure/application-gateway/renew-certificates)を参照してください。
+5.  Web サイトにアクセスして、サイトが想定どおりに動作しているかどうかを確認します。詳細については、[こちらのドキュメント](./renew-certificates.md)を参照してください。
 
 Application Gateway リスナーで Azure KeyVault からの証明書を参照している場合は、次の手順に従って簡単な変更を行うことをお勧めします。
 
 1.  [Azure portal](https://portal.azure.com/) で、Application Gateway に関連付けられている Azure KeyVault の設定に移動します。
-2.  再発行された証明書をストアに追加またはインポートします。 詳しくは、[こちらのドキュメントをご覧ください](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal)。
+2.  再発行された証明書をストアに追加またはインポートします。 詳しくは、[こちらのドキュメントをご覧ください](../key-vault/certificates/quick-create-portal.md)。
 3.  証明書がインポートされたら、Application Gateway リスナー設定に移動し、[キー コンテナーから証明書を選択する] で [証明書] ドロップダウンをクリックし、最近追加した証明書を選択します。
-4.  [保存] をクリックします。キー コンテナー証明書による Application Gateway での TLS 終端の詳細については、[こちらのドキュメント](https://docs.microsoft.com/azure/application-gateway/key-vault-certs)を参照してください。
+4.  [保存] をクリックします。キー コンテナー証明書による Application Gateway での TLS 終端の詳細については、[こちらのドキュメント](./key-vault-certs.md)を参照してください。
 
 
 HTTP 設定で証明書を更新するには、次の操作を行います。
@@ -391,7 +391,7 @@ Application Gateway/WAF サービスの V1 SKU を使用している場合は、
 2.  証明書に関連付けられている HTTP 設定を開きます。
 3.  [証明書の追加] をクリックして、再発行された証明書をアップロードし、[保存] をクリックします。
 4.  後で古い証明書を削除できます。[...] [オプション] ボタン (古い証明書の横にある) をクリックし、[削除] を選択して [保存] をクリックします。
-詳細については、[こちらのドキュメント](https://docs.microsoft.com/azure/application-gateway/end-to-end-ssl-portal#add-authenticationtrusted-root-certificates-of-back-end-servers)を参照してください。
+詳細については、[こちらのドキュメント](./end-to-end-ssl-portal.md#add-authenticationtrusted-root-certificates-of-back-end-servers)を参照してください。
 
 Application Gateway/WAF サービスの V2 SKU を使用している場合、HTTP 設定で新しい証明書をアップロードする必要はありません。V2 SKU では "信頼されたルート証明書" が使用され、ここでアクションを実行する必要がないためです。
 
@@ -454,7 +454,7 @@ PowerShell コマンドレット `Get-AzApplicationGatewayBackendHealth` とポ�
 
 ### <a name="can-i-set-alerts-with-application-gateway"></a>Application Gateway でアラートを設定できますか?
 
-はい。 Application Gateway では、メトリックに基づいてアラートを構成します。 詳細については、[Application Gateway のメトリック](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics)に関するセクションと、[アラート通知の受信](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)に関するページを参照してください。
+はい。 Application Gateway では、メトリックに基づいてアラートを構成します。 詳細については、[Application Gateway のメトリック](./application-gateway-metrics.md)に関するセクションと、[アラート通知の受信](../azure-monitor/platform/alerts-overview.md)に関するページを参照してください。
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>Application Gateway のトラフィック統計情報を分析するにはどうすればよいですか?
 

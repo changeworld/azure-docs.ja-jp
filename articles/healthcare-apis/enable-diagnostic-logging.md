@@ -9,16 +9,16 @@ ms.reviewer: dseven
 ms.author: cavoeg
 author: CaitlinV39
 ms.date: 11/01/2019
-ms.openlocfilehash: 948ca03b5bf503c884df5df56c61951b381874a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 262509df98b93c7902d83f90756872a16d84198f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84870872"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398132"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Azure API for FHIR® で診断ログを有効にする
 
-この記事では、Azure API for FHIR® で診断ログを有効にし、それらのログのサンプル クエリを確認できるようにする方法について説明します。 診断ログへのアクセスは、規制要件 (HIPAA など) への準拠が必須であるすべての医療サービスにとって不可欠です。 診断ログを有効にする Azure API for FHIR® の機能は、Azure portal の[**診断設定**](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)です。 
+この記事では、Azure API for FHIR® で診断ログを有効にし、それらのログのサンプル クエリを確認できるようにする方法について説明します。 診断ログへのアクセスは、規制要件 (HIPAA など) への準拠が必須であるすべての医療サービスにとって不可欠です。 診断ログを有効にする Azure API for FHIR® の機能は、Azure portal の [**診断設定**](../azure-monitor/platform/diagnostic-settings.md)です。 
 
 ## <a name="enable-audit-logs"></a>監査ログを有効にする
 1. Azure API for FHIR® で診断ログを有効にするには、Azure portal でお使いの Azure API for FHIR® サービスを選択します。 
@@ -31,9 +31,9 @@ ms.locfileid: "84870872"
 
 5. 診断ログへのアクセスに使用する方法を選択します。
 
-    1. 監査や手動での検査のために、**ストレージ アカウントにアーカイブ**します。 使用するストレージ アカウントは既に作成済みである必要があります。
-    2. サード パーティのサービスやカスタム分析ソリューションで取り込むために、**イベント ハブにストリーム配信**します。 この手順を構成する前に、イベント ハブの名前空間とイベント ハブのポリシーを作成する必要があります。
-    3. Azure Monitor の **Log Analytics ワークスペースにストリーム配信**します。 このオプションを選択する前に、Log Analytics ワークスペースを作成する必要があります。
+    1. 監査や手動での検査のために、 **ストレージ アカウントにアーカイブ** します。 使用するストレージ アカウントは既に作成済みである必要があります。
+    2. サード パーティのサービスやカスタム分析ソリューションで取り込むために、 **イベント ハブにストリーム配信** します。 この手順を構成する前に、イベント ハブの名前空間とイベント ハブのポリシーを作成する必要があります。
+    3. Azure Monitor の **Log Analytics ワークスペースにストリーム配信** します。 このオプションを選択する前に、Log Analytics ワークスペースを作成する必要があります。
 
 6. **AuditLogs** と、キャプチャするすべてのメトリックを選択します。
 
@@ -42,7 +42,7 @@ ms.locfileid: "84870872"
 > [!Note] 
 > 最初のログが Log Analytics に表示されるまでには、最大で 15 分かかることがあります。  
  
-診断ログの使用方法の詳細については、[Azure リソース ログのドキュメント](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview)を参照してください。
+診断ログの使用方法の詳細については、[Azure リソース ログのドキュメント](../azure-monitor/platform/platform-logs-overview.md)を参照してください。
 
 ## <a name="audit-log-details"></a>監査ログの詳細
 現時点では、Azure API for FHIR® サービスは、監査ログで次のフィールドを返します。 
@@ -60,7 +60,7 @@ ms.locfileid: "84870872"
 |OperationDuration|int|この要求の完了にかかった時間 (秒)
 |OperationName|String| 操作の種類 (update、search-type など) を記述します
 |RequestUri|String|要求 URI 
-|ResultType|String|現在使用可能な値は、**Started**、**Succeeded**、または **Failed**
+|ResultType|String|現在使用可能な値は、 **Started** 、 **Succeeded** 、または **Failed**
 |StatusCode|int|HTTP 状態コード。 (例: 200) 
 |TimeGenerated|DateTime|イベントの日付と時刻|
 |Properties|String| fhirResourceType のプロパティを記述します
@@ -73,21 +73,21 @@ ms.locfileid: "84870872"
 
 ログ データを調査するために使用できるいくつかの基本的な Application Insights クエリを次に示します。
 
-**最新の 100 件**のログを表示するには、次のクエリを実行します。
+**最新の 100 件** のログを表示するには、次のクエリを実行します。
 
 ```Application Insights
 MicrosoftHealthcareApisAuditLogs
 | limit 100
 ```
 
-**FHIR のリソースの種類**で操作をグループ化するには、次のクエリを実行します。
+**FHIR のリソースの種類** で操作をグループ化するには、次のクエリを実行します。
 
 ```Application Insights
 MicrosoftHealthcareApisAuditLogs 
 | summarize count() by FhirResourceType
 ```
 
-すべての**失敗した結果**を取得するには、次のクエリを実行します。
+すべての **失敗した結果** を取得するには、次のクエリを実行します。
 
 ```Application Insights
 MicrosoftHealthcareApisAuditLogs 

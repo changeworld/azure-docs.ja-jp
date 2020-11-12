@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: a93ef47d4a7ecc136f66cf54a08f7ed23bec2cc0
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 18c8aa0ff05dababc5a79c5c05b43ce9ebcbf9b4
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427964"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397095"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>チュートリアル:新しい Application Gateway インスタンスを使用して新しい AKS クラスターのイングレス コントローラー アドオン (プレビュー) を有効にする
 
@@ -39,17 +39,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
-次の例に示すように、 [az feature register](https://docs.microsoft.com/cli/azure/feature#az-feature-register) コマンドを使用して、 *AKS-IngressApplicationGatewayAddon* 機能フラグを登録します。 アドオンはまだプレビュー段階ですが、サブスクリプションごとに 1 回だけ、これを行う必要があります。
+次の例に示すように、 [az feature register](/cli/azure/feature#az-feature-register) コマンドを使用して、 *AKS-IngressApplicationGatewayAddon* 機能フラグを登録します。 アドオンはまだプレビュー段階ですが、サブスクリプションごとに 1 回だけ、これを行う必要があります。
 ```azurecli-interactive
 az feature register --name AKS-IngressApplicationGatewayAddon --namespace Microsoft.ContainerService
 ```
 
-状態が `Registered` と表示されるまでに数分かかる場合があります。 [az feature list](https://docs.microsoft.com/cli/azure/feature#az-feature-register) コマンドを使用して登録状態を確認できます。
+状態が `Registered` と表示されるまでに数分かかる場合があります。 [az feature list](/cli/azure/feature#az-feature-register) コマンドを使用して登録状態を確認できます。
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
 ```
 
-準備ができたら、[az provider register](https://docs.microsoft.com/cli/azure/provider#az-provider-register) コマンドを使用して、Microsoft.ContainerService リソース プロバイダーの登録を更新します。
+準備ができたら、[az provider register](/cli/azure/provider#az-provider-register) コマンドを使用して、Microsoft.ContainerService リソース プロバイダーの登録を更新します。
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
@@ -82,7 +82,7 @@ az group create --name myResourceGroup --location canadacentral
 > - ポータルを使用して Application Gateway で WAF を有効にします。 
 > - まず、WAF_v2 Application Gateway インスタンスを作成してから、[既存の AKS クラスターと既存の Application Gateway インスタンスを使用して AGIC アドオンを有効にする](tutorial-ingress-controller-add-on-existing.md)方法に関する指示に従います。 
 
-次の例では、 [Azure CNI](https://docs.microsoft.com/azure/aks/concepts-network#azure-cni-advanced-networking) と [マネージド ID](https://docs.microsoft.com/azure/aks/use-managed-identity) を使用して、 *myCluster* という名前の新しい AKS クラスターをデプロイします。 作成したリソース グループ ( *myResourceGroup* ) で AGIC アドオンが有効になります。 
+次の例では、 [Azure CNI](../aks/concepts-network.md#azure-cni-advanced-networking) と [マネージド ID](../aks/use-managed-identity.md) を使用して、 *myCluster* という名前の新しい AKS クラスターをデプロイします。 作成したリソース グループ ( *myResourceGroup* ) で AGIC アドオンが有効になります。 
 
 既存の Application Gateway インスタンスを指定せずに AGIC アドオンを有効にした新しい AKS クラスターをデプロイすると、Standard_v2 SKU Application Gateway インスタンスが自動的に作成されます。 そのため、Application Gateway インスタンスの名前とサブネットのアドレス空間も指定します。 Application Gateway インスタンスの名前は *myApplicationGateway* となり、使用するサブネットのアドレス空間は 10.2.0.0/16 です。 このチュートリアルの最初に、aks-preview 拡張機能を追加または更新したことを確認します。 
 
@@ -90,7 +90,7 @@ az group create --name myResourceGroup --location canadacentral
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-prefix "10.2.0.0/16" --generate-ssh-keys
 ```
 
-`az aks create` コマンドの追加パラメーターを構成する場合は、[これらのリファレンス](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create)を参照してください。 
+`az aks create` コマンドの追加パラメーターを構成する場合は、[これらのリファレンス](/cli/azure/aks?view=azure-cli-latest#az-aks-create)を参照してください。 
 
 > [!NOTE]
 > 作成した AKS クラスターは、作成したリソース グループ ( *myResourceGroup* ) に表示されます。 しかし、自動的に作成された Application Gateway インスタンスは、エージェント プールがある、ノード リソース グループに配置されます。 ノード リソース グループの名前は、既定では *MC_resource-group-name_cluster-name_location* になりますが、変更することはできます。 
@@ -138,4 +138,3 @@ az group delete --name myResourceGroup
 
 > [!div class="nextstepaction"]
 > [AGIC アドオンの無効化の詳細を確認する](./ingress-controller-disable-addon.md)
-

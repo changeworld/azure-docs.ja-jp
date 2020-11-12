@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: e28ce4cd46cb802241e02e4060441747389d3989
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92658584030fa83da067eceab391d9bba2f034c0
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888159"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392301"
 ---
 # <a name="create-external-stream-transact-sql"></a>CREATE EXTERNAL STREAM (Transact-SQL)
 
@@ -26,7 +26,7 @@ EXTERNAL STREAM は、Event Hubs や Blob Storage などのサービスの出力
 
 | [データ ソースの種類] | 入力 | 出力 | 説明 |
 |------------------|-------|--------|------------------|
-| Azure IoT Edge ハブ | Y | Y | Azure IoT Edge ハブに対するストリーミング データの読み書きを行うためのデータ ソース。 詳細については、[IoT Edge ハブ](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)に関するページを参照してください。|
+| Azure IoT Edge ハブ | Y | Y | Azure IoT Edge ハブに対するストリーミング データの読み書きを行うためのデータ ソース。 詳細については、[IoT Edge ハブ](../iot-edge/iot-edge-runtime.md#iot-edge-hub)に関するページを参照してください。|
 | SQL Database | N | Y | SQL Database にストリーミング データを書き込むためのデータ ソース接続。 データベースは、Azure SQL Edge のローカル データベースでも、SQL Server または Azure SQL Database のリモート データベースでもかまいません。|
 | Kafka | Y | N | Kafka トピックからストリーミング データを読み取るためのデータ ソース。 Kafka サポートは、ARM64 バージョンの Azure SQL Edge では使用できません。|
 
@@ -94,12 +94,12 @@ WITH  ( <with_options> )
 
 - [DATA_SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql/)
 - [FILE_FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql/)
-- **LOCATION**: データ ソース内の実際のデータまたは場所の名前を指定します。 
+- **LOCATION** : データ ソース内の実際のデータまたは場所の名前を指定します。 
    - Edge ハブまたは Kafka ストリーム オブジェクトの場合、場所は読み取り元または書き込み先の Edge ハブまたは Kafka トピックの名前を指定します。
    - SQL ストリーム オブジェクト (SQL Server、Azure SQL Database または Azure SQL Edge) の場合、場所はテーブルの名前を指定します。 ターゲット テーブルと同じデータベースおよびスキーマにストリームが作成されている場合は、テーブル名だけで十分です。 それ以外の場合は、テーブル名を完全に修飾する必要があります (<database_name.schema_name.table_name)。
    - Azure Blob Storage の場合、ストリーム オブジェクトの場所とは、BLOB コンテナー内で使用するパス パターンを表します。 この機能の詳細については、(/articles/stream-analytics/stream-analytics-define-outputs.md#blob-storage-and-azure-data-lake-gen2) を参照してください。
 
-- **INPUT_OPTIONS**: ストリーミング クエリに対する入力である Kafka や IoT Edge ハブなどのサービスへのオプションを、キーと値のペアとして指定します
+- **INPUT_OPTIONS** : ストリーミング クエリに対する入力である Kafka や IoT Edge ハブなどのサービスへのオプションを、キーと値のペアとして指定します
     - PARTITIONS:トピックに対して定義されているパーティションの数。 使用できるパーティションの最大数は、32 に制限されています。
       - Kafka 入力ストリームに適用されます
     - CONSUMER_GROUP: Event Hubs や IOT Hub では、1 つのコンシューマー グループ内のリーダーの数が (5 個に) 制限されています。 このフィールドを空白のままにすると、"$Default" コンシューマー グループが使用されます。
@@ -111,7 +111,7 @@ WITH  ( <with_options> )
     - OUT_OF_ORDER_EVENT_TOLERANCE: イベントは、入力からストリーミング クエリに移動した後、順不同に到着してもかまいません。 このようなイベントは、そのまま受け入れることも、または設定した期間だけ一時停止して並べ替えることもできます。
       - 将来利用するために予約されています。 Azure SQL Edge には適用されません。
         
-- **OUTPUT_OPTIONS**: ストリーミング クエリに対する出力であるサポートされるサービスへのオプションを、キーと値のペアとして指定します 
+- **OUTPUT_OPTIONS** : ストリーミング クエリに対する出力であるサポートされるサービスへのオプションを、キーと値のペアとして指定します 
   - REJECT_POLICY: DROP | RETRY データ変換エラーが発生したときのデータ エラー処理ポリシーを指定します。 
     - サポートされるすべての出力に適用されます 
   - MINIMUM_ROWS:  
@@ -247,5 +247,4 @@ WITH
 
 ## <a name="see-also"></a>関連項目
 
-- [DROP EXTERNAL STREAM (Transact-SQL)](drop-external-stream-transact-sql.md) 
-
+- [DROP EXTERNAL STREAM (Transact-SQL)](drop-external-stream-transact-sql.md)

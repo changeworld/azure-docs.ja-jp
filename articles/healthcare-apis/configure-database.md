@@ -7,18 +7,18 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 11/15/2019
 ms.author: matjazl
-ms.openlocfilehash: 2850f831100533908d55c4aab372338e07b3807f
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 3fe4118a8ecf4479732ba4073b342d3ec9f941b8
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042492"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398200"
 ---
 # <a name="configure-database-settings"></a>データベース設定を構成する 
 
 Azure API for FHIR では、データベースを使用してデータを格納します。 基になるデータベースのパフォーマンスは、サービスのプロビジョニング中に選択された要求ユニット (RU) の数、またはサービスがプロビジョニングされた後のデータベース設定によって異なります。
 
-Azure API for FHIR では、基になるデータベースのパフォーマンスを設定する際、Cosmos DB の RU の概念が採用されています (「[Azure Cosmos DB の要求ユニット](https://docs.microsoft.com/azure/cosmos-db/request-units)」を参照)。 
+Azure API for FHIR では、基になるデータベースのパフォーマンスを設定する際、Cosmos DB の RU の概念が採用されています (「[Azure Cosmos DB の要求ユニット](../cosmos-db/request-units.md)」を参照)。 
 
 データベースで常に十分なシステム リソースを確実に使用できるようにするには、スループットをプロビジョニングする必要があります。 アプリケーションに必要な RU の数は、実行する操作によって異なります。 操作の範囲は、単純な読み取りと書き込みから、より複雑なクエリにまで及びます。 
 

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: f39fb5766965e3881068bd6d2fd3a8142f9eb2ac
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ff7bb6084839af56b5f6e874b39929021f23f8a1
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975911"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398081"
 ---
 # <a name="register-a-public-client-application-in-azure-active-directory"></a>Azure Active Directory にパブリック クライアント アプリケーションを登録する
 
@@ -21,7 +21,7 @@ ms.locfileid: "91975911"
 
 クライアント アプリケーションの登録とは、ユーザーに代わって認証を行い、API のアクセス許可を要求することができるアプリケーションの Azure Active Directory の表現です。 パブリック クライアントとは、シークレットの機密性を保持できないモバイル アプリケーションや単一ページの JavaScript アプリケーションなどのアプリケーションです。 この手順は [Confidential クライアントの登録](register-confidential-azure-ad-client-app.md)と似ていますが、パブリック クライアントがアプリケーションのシークレットを保持することは信頼できないため、追加する必要はありません。
 
-このクイックスタートからは、[Microsoft ID プラットフォームにアプリケーションを登録する](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)方法に関する全般情報が提供されます。
+このクイックスタートからは、[Microsoft ID プラットフォームにアプリケーションを登録する](../active-directory/develop/quickstart-register-app.md)方法に関する全般情報が提供されます。
 
 ## <a name="app-registrations-in-azure-portal"></a>Azure portal でのアプリの登録
 
@@ -42,7 +42,7 @@ ms.locfileid: "91975911"
     ![Azure portal。 新しいパブリック アプリの登録。](media/how-to-aad/portal-aad-register-new-app-registration-PUB-CLIENT-NAME.png)
 
 
-[デスクトップ](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)、[モバイル](https://docs.microsoft.com/azure/active-directory/develop/scenario-mobile-app-registration)、[シングルページ](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) アプリケーションをパブリック アプリケーションとして構成するには:
+[デスクトップ](../active-directory/develop/scenario-desktop-app-registration.md)、[モバイル](../active-directory/develop/scenario-mobile-app-registration.md)、[シングルページ](../active-directory/develop/scenario-spa-app-registration.md) アプリケーションをパブリック アプリケーションとして構成するには:
 
 1. [Azure portal](https://portal.azure.com) の **[アプリの登録]** でアプリを選択し、 **[認証]** を選択します。
 
@@ -62,7 +62,7 @@ ms.locfileid: "91975911"
     Azure API for FHIR を使用する場合は、 **[所属する組織で使用している API]** の下で Azure Healthcare API を検索して、Azure Healthcare API へのアクセス許可を追加します。 これは、既に [Azure API for FHIR](fhir-paas-powershell-quickstart.md) がデプロイされている場合にのみ、見つけることができます。
 
     
-    他のリソース アプリケーションを参照している場合は、 **[自分の API][ で作成済みの ](register-resource-azure-ad-client-app.md)FHIR API リソース アプリケーションの登録**を選択します。
+    他のリソース アプリケーションを参照している場合は、 **[自分の API] [ で作成済みの](register-resource-azure-ad-client-app.md)FHIR API リソース アプリケーションの登録** を選択します。
 
     ![Azure portal。 新しいパブリック API のアクセス許可 - Azure API for FHIR の既定値](media/public-client-app/api-permissions.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "91975911"
 ## <a name="validate-fhir-server-authority"></a>FHIR サーバーのオーソリティを検証する
 この記事で登録したアプリケーションと FHIR サーバーが同じ Azure AD テナントにある場合、次の手順に進むことができます。
 
-クライアント アプリケーションを、FHIR サーバーとは別の Azure AD テナントで構成する場合は、**オーソリティ**を更新する必要があります。 Azure API for FHIR の [設定] --> [認証] でオーソリティを設定してください。 オーソリティを、 **https://login.microsoftonline.com/\<TENANT-ID>** に設定します。
+クライアント アプリケーションを、FHIR サーバーとは別の Azure AD テナントで構成する場合は、 **オーソリティ** を更新する必要があります。 Azure API for FHIR の [設定] --> [認証] でオーソリティを設定してください。 オーソリティを、 **https://login.microsoftonline.com/\<TENANT-ID>** に設定します。
 
 ## <a name="next-steps"></a>次のステップ
 

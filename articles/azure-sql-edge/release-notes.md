@@ -10,12 +10,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: afd78acadf133a9f128eec402eba9d0eed51b8e3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 543a71bc2a77f0a31f8ddaa0de13135b93db48ec
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284484"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395038"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge のリリース ノート 
 
@@ -37,9 +37,9 @@ ms.locfileid: "91284484"
    - 並列実行を有効にするシナリオ
 6. 省電力モードの電力節約機能強化
 7. ストリーミングの新機能のサポート 
-   - [スナップショット ウィンドウ](https://docs.microsoft.com/stream-analytics-query/snapshot-window-azure-stream-analytics) : 新しい種類のウィンドウでは、イベント別のグループがまったく同時に到着するようにできます。 
-   - [TopOne](https://docs.microsoft.com/stream-analytics-query/topone-azure-stream-analytics) と [CollectTop](https://docs.microsoft.com/stream-analytics-query/collecttop-azure-stream-analytics) を分析機能として有効にします。それにより、自分で選んだ列を基準にレコードを並べて返すことができます。ウィンドウの一部にする必要がありません。 
-   - [MATCH_RECOGNIZE](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics) の機能強化。 
+   - [スナップショット ウィンドウ](/stream-analytics-query/snapshot-window-azure-stream-analytics) : 新しい種類のウィンドウでは、イベント別のグループがまったく同時に到着するようにできます。 
+   - [TopOne](/stream-analytics-query/topone-azure-stream-analytics) と [CollectTop](/stream-analytics-query/collecttop-azure-stream-analytics) を分析機能として有効にします。それにより、自分で選んだ列を基準にレコードを並べて返すことができます。ウィンドウの一部にする必要がありません。 
+   - [MATCH_RECOGNIZE](/stream-analytics-query/match-recognize-stream-analytics) の機能強化。 
 
 ### <a name="fixes"></a>修正
 1. TSQL ストリーミング操作のトラブルシューティングに関する追加のエラー メッセージと詳細。 

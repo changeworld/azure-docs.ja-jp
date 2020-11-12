@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 23b59c80c8e44cf6473a2de9be9807eaf8a756c6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4b4a1e601a5a0dbf5e56fc1d930e14150f27fee3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310537"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398234"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>カスタム Docker イメージを使用してモデルをトレーニングする
 
@@ -138,7 +138,7 @@ print(compute_target.get_status().serialize())
 
 ## <a name="configure-your-training-job"></a>トレーニング ジョブを構成する
 
-このチュートリアルでは、 [GitHub](https://github.com/Azure/azureml-examples/blob/main/code/models/fastai/pets-resnet34/train.py) 上のトレーニング スクリプト *train.py* を使用します。 実際には、任意のカスタム トレーニング スクリプトを使用し、そのまま Azure Machine Learning で実行できます。
+このチュートリアルでは、 [GitHub](https://github.com/Azure/azureml-examples/blob/main/code/train/fastai/pets-resnet34/train.py) 上のトレーニング スクリプト *train.py* を使用します。 実際には、任意のカスタム トレーニング スクリプトを使用し、そのまま Azure Machine Learning で実行できます。
 
 `ScriptRunConfig` リソースを作成し、目的の[コンピューティング先](how-to-set-up-training-targets.md)で実行されるようにジョブを構成します。
 

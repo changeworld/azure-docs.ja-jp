@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 5e0533a44db269229b2f26fa8d2f2b4f84f4d0b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8f015085baa8fffa6f208e9d8dd749e397c76c3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85125465"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397435"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Application Gateway のメトリックを使用した AKS ポッドの自動スケーリング (ベータ版)
 
@@ -23,7 +23,7 @@ ms.locfileid: "85125465"
 ここでは、次の 2 つのコンポーネントを使用します。
 
 * [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) - メトリックサーバーを介して Application Gateway メトリックを公開するために、メトリック アダプターを使用します。 Azure Kubernetes Metric Adapter は、Application Gateway イングレス コントローラーと同じく、Azure のオープンソース プロジェクトです。 
-* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) - Application Gateway メトリックを使用してスケーリング対象のデプロイを指定するために、HPA を使用します。
+* [`Horizontal Pod Autoscaler`](../aks/concepts-scale.md#horizontal-pod-autoscaler) - Application Gateway メトリックを使用してスケーリング対象のデプロイを指定するために、HPA を使用します。
 
 ## <a name="setting-up-azure-kubernetes-metric-adapter"></a>Azure Kubernetes Metric Adapter の設定
 
@@ -92,7 +92,7 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 
 ## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>新しいメトリックを使用してデプロイをスケールアップする
 
-メトリック サーバーを介して `appgw-request-count-metric` を公開できるようになったら、[`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) を使用して対象のデプロイをスケールアップすることができます。
+メトリック サーバーを介して `appgw-request-count-metric` を公開できるようになったら、[`Horizontal Pod Autoscaler`](../aks/concepts-scale.md#horizontal-pod-autoscaler) を使用して対象のデプロイをスケールアップすることができます。
 
 次の例では、サンプル デプロイ `aspnet` を対象としています。 ポッドごとに `appgw-request-count-metric` > 200 の場合、最大 `10` ポッドまでスケールアップします。
 

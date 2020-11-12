@@ -8,20 +8,16 @@ ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6cb0bf9ae12169f9431cf221431f442b5870d932
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c231aab47f154b6150368b504872d87317c790cc
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816509"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359954"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-double-encryption-at-rest-for-managed-disks"></a>Azure PowerShell モジュールを使用して、マネージド ディスクの保存時の二重暗号化を有効にします。
 
-Azure Disk Storage は、マネージド ディスクに対する保存時の二重暗号化をサポートしています。 保存時の二重暗号化とその他のマネージド ディスクの暗号化の概念については、ディスクの暗号化の記事の[保存時の暗号化](disk-encryption.md#double-encryption-at-rest)に関するセクションを参照してください。
-
-## <a name="supported-regions"></a>サポートされているリージョン
-
-[!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
+Azure Disk Storage は、マネージド ディスクに対する保存時の二重暗号化をサポートしています。 保存時の二重暗号化とその他のマネージド ディスクの暗号化の概念については、ディスクの暗号化の記事の[保存時の暗号化](../disk-encryption.md#double-encryption-at-rest)に関するセクションを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

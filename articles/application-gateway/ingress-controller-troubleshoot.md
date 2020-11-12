@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: cbb62509472d6f86ba30e13c95ce2c2bfd343765
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: d6bcb9125cdfc07eb249353cb85b40a22d3e468c
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168190"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397367"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>イングレス コントローラーに関する一般的な質問または問題のトラブルシューティング
 
@@ -243,7 +243,7 @@ Kubernetes コミュニティでは、[kubectl](https://kubernetes.io/docs/refer
 |  5        | マーシャリングされたオブジェクトをログに記録します。ARM に適用されたサニタイズ済み JSON 構成が表示されます |
 
 
-詳細レベルは、[helm-config.yaml](#sample-helm-config-file) ファイルの `verbosityLevel` 変数を使用して調整できます。 詳細レベルを `5` に上げると、[ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) にディスパッチされた JSON 構成が取得されます。
+詳細レベルは、[helm-config.yaml](#sample-helm-config-file) ファイルの `verbosityLevel` 変数を使用して調整できます。 詳細レベルを `5` に上げると、[ARM](../azure-resource-manager/management/overview.md) にディスパッチされた JSON 構成が取得されます。
   - [helm-config.yaml](#sample-helm-config-file) 内の 1 行に `verbosityLevel: 5` を追加し、再インストールします
   - `kubectl logs <pod-name>` でログを取得します
 
@@ -300,4 +300,3 @@ rbac:
 aksClusterConfiguration:
     apiServerAddress: <aks-api-server-address>
 ```
-

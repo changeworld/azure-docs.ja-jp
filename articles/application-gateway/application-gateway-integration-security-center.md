@@ -9,16 +9,16 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
-ms.openlocfilehash: 2c6797a0f0f2d4d655bcdabe732f6b14c8f0f562
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 1464c0c0b0d573711ed07332a76bb67e73dc0484
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131209"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397775"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Application Gateway と Azure Security Center の統合の概要
 
-Application Gateway と Security Center を使用して Web アプリケーション リソースを保護する方法について説明します。 Application Gateway Web アプリケーション ファイアウォール (WAF) を [Security Center](../security-center/security-center-intro.md) と統合すると、環境内で保護されていない Web アプリケーションに対する脅威の防止、検出、およびそれらへの対応を行うためのシームレスなビューが提供されます。
+Application Gateway と Security Center を使用して Web アプリケーション リソースを保護する方法について説明します。 Application Gateway Web アプリケーション ファイアウォール (WAF) を [Security Center](../security-center/security-center-introduction.md) と統合すると、環境内で保護されていない Web アプリケーションに対する脅威の防止、検出、およびそれらへの対応を行うためのシームレスなビューが提供されます。
 
 ## <a name="overview"></a>概要
 
@@ -76,7 +76,7 @@ Security Center の **[検出]**  >  **[セキュリティ アラート]** に�
 
 ## <a name="next-steps"></a>次の手順
 
-既存の Application Gateway で Web アプリケーション ファイアウォールを有効にする方法については、[Web アプリケーション ファイアウォールがある Azure アプリケーション ゲートウェイの作成または更新](application-gateway-web-application-firewall-portal.md)に関する記事をご覧ください。
+既存の Application Gateway で Web アプリケーション ファイアウォールを有効にする方法については、[Web アプリケーション ファイアウォールがある Azure アプリケーション ゲートウェイの作成または更新](../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md)に関する記事をご覧ください。
 
 [1]: ./media/application-gateway-integration-security-center/figure1.png
 [2]: ./media/application-gateway-integration-security-center/figure2.png

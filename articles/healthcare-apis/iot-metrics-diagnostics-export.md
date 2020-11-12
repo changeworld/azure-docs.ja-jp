@@ -8,16 +8,16 @@ ms.subservice: iomt
 ms.topic: how-to
 ms.date: 10/30/2020
 ms.author: jasteppe
-ms.openlocfilehash: 2c10dc05775739a55267dd3766e533b73e12b3a1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5a57b13cdb8c7c1144815543e03b970de32b4369
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322358"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394256"
 ---
 # <a name="export-azure-iot-connector-for-fhir-preview-metrics-through-diagnostic-settings"></a>診断設定を使用して Azure IoT Connector for FHIR (プレビュー) のメトリックをエクスポートする
 
-この記事では、Azure IoT Connector for FHIR* のメトリック ログをエクスポートする方法について説明します。 メトリック ログ記録を有効にする機能は、Azure portal の [ **[診断設定]** ](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) に相当します。 
+この記事では、Azure IoT Connector for FHIR* のメトリック ログをエクスポートする方法について説明します。 メトリック ログ記録を有効にする機能は、Azure portal の [ **[診断設定]**](../azure-monitor/platform/diagnostic-settings.md) に相当します。 
 
 > [!TIP]
 > [Azure API for FHIR と Azure IoT Connector for FHIR の診断ログを有効にする](enable-diagnostic-logging.md#enable-diagnostic-logging-in-azure-api-for-fhir)ことに関するページのガイダンスに従って、監査ログを設定します。
@@ -48,7 +48,7 @@ ms.locfileid: "93322358"
 > [!Note] 
 > 選択したリポジトリに最初のメトリック ログが表示されるまでに最大 15 分かかることがあります。  
  
-診断ログの使用方法の詳細については、[Azure リソース ログのドキュメント](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview)を参照してください
+診断ログの使用方法の詳細については、[Azure リソース ログのドキュメント](../azure-monitor/platform/platform-logs-overview.md)を参照してください
 
 ## <a name="conclusion"></a>まとめ 
 メトリック ログにアクセス可能であることは、監視とトラブルシューティングに欠かせません。  Azure IoT Connector for FHIR を使用すると、メトリック ログを通してこれらのアクションを行うことができます。 

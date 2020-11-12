@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: victorh
-ms.openlocfilehash: 3d714b579bebb096745a47410da3f8f458e27161
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c39401289ffc6f27c292168adaa15c5163a3967b
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723301"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396925"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Application Gateway での TLS 終了とエンド ツー エンド TLS の概要
 
@@ -51,10 +51,10 @@ Application Gateway では、次の種類の証明書がサポートされてい
 - ワイルドカード証明書:この証明書は、*site.com に基づく任意の数のサブドメインをサポートしています。* は指定したサブドメインに置き換えられます。 ただし、ユーザーが先頭の "www" を入力せずに Web サイトにアクセスしている場合、ワイルドカード証明書はそれに対応していないため、site.com はサポートされません。
 - 自己署名証明書:クライアントのブラウザーではこれらの証明書は信頼されず、仮想サービスの証明書が信頼チェーンに含まれていないことがユーザーに警告されます。 自己署名証明書は、テストや、管理者がクライアントを制御していて、ブラウザーのセキュリティの警告を安全にバイパスできる環境に適しています。 運用環境のワークロードでは、自己署名証明書を使用しないでください。
 
-詳細については、[アプリケーション ゲートウェイでの TLS 終了の構成](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)に関するページを参照してください。
+詳細については、[アプリケーション ゲートウェイでの TLS 終了の構成](./create-ssl-portal.md)に関するページを参照してください。
 
 ### <a name="size-of-the-certificate"></a>証明書のサイズ
-サポートされる TLS/SSL 証明書の最大サイズを把握するには、「[Application Gateway の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#application-gateway-limits)」セクションを確認してください。
+サポートされる TLS/SSL 証明書の最大サイズを把握するには、「[Application Gateway の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits)」セクションを確認してください。
 
 ## <a name="end-to-end-tls-encryption"></a>エンド ツー エンド TLS 暗号化
 
@@ -62,7 +62,7 @@ Application Gateway では、次の種類の証明書がサポートされてい
 
 エンド ツー エンド TLS を使用すると、機密データを暗号化してバックエンドに安全に送信することができます。その間にも、Application Gateway のレイヤー 7 負荷分散機能を使用できます。 これらの機能には、cookie ベースのセッション アフィニティ、URL ベースのルーティング、サイトに基づくルーティングのサポート、X-Forwarded-* ヘッダーの書き換えまたは挿入機能などが含まれます。
 
-エンド ツー エンド TLS 通信モードが構成されている場合、Application Gateway によって TLS セッションがゲートウェイで終了され、ユーザー トラフィックの暗号化が解除されます。 次に、構成済みのルールが適用され、トラフィックのルーティング先になる適切なバックエンド プール インスタンスが選択されます。 バックエンドに要求を送信する前に、Application Gateway によってバックエンド サーバーへの新しい TLS 接続が開始され、バックエンド サーバーの公開キー証明書を使用してデータが再暗号化されます。 Web サーバーからの応答は、同じ手順でエンドユーザーに移動します。 エンド ツー エンド TLS は、[バックエンドの HTTP 設定](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings)でのプロトコル設定を HTTPS に設定することによって有効になり、その後、バックエンド プールに適用されます。
+エンド ツー エンド TLS 通信モードが構成されている場合、Application Gateway によって TLS セッションがゲートウェイで終了され、ユーザー トラフィックの暗号化が解除されます。 次に、構成済みのルールが適用され、トラフィックのルーティング先になる適切なバックエンド プール インスタンスが選択されます。 バックエンドに要求を送信する前に、Application Gateway によってバックエンド サーバーへの新しい TLS 接続が開始され、バックエンド サーバーの公開キー証明書を使用してデータが再暗号化されます。 Web サーバーからの応答は、同じ手順でエンドユーザーに移動します。 エンド ツー エンド TLS は、[バックエンドの HTTP 設定](./configuration-overview.md#http-settings)でのプロトコル設定を HTTPS に設定することによって有効になり、その後、バックエンド プールに適用されます。
 
 アプリケーション ゲートウェイと WAF v1 SKU の場合、TLS ポリシーがフロントエンドおよびバックエンドの両方のトラフィックに適用されます。 フロント エンドでは、Application Gateway はサーバーとして機能し、ポリシーを適用します。 バックエンドでは、Application Gateway はクライアントとして機能し、TLS ハンドシェイク中の優先設定としてプロトコルまたは暗号情報を送信します。
 
@@ -74,7 +74,7 @@ Application Gateway は、その証明書がアプリケーション ゲート�
 
 > [!NOTE] 
 >
-> バックエンド サーバーを認証するために**バックエンドの HTTP 設定**に追加する証明書は、アプリケーション ゲートウェイで TLS 終了の**リスナー**に追加する証明書と同じものにすることも、セキュリティの強化のために別のものにすることもできます。
+> バックエンド サーバーを認証するために **バックエンドの HTTP 設定** に追加する証明書は、アプリケーション ゲートウェイで TLS 終了の **リスナー** に追加する証明書と同じものにすることも、セキュリティの強化のために別のものにすることもできます。
 
 ![エンド ツー エンド TLS のシナリオ][1]
 
@@ -148,7 +148,7 @@ HTTPS の正常性プローブに対しては、Application Gateway v1 SKU で�
 ---
 シナリオ | v1 | v2 |
 | --- | --- | --- |
-| TLS ハンドシェイク中の FQDN としての SNI (server_name) ヘッダー | バックエンド プールから FQDN として設定されます。 [RFC 6066](https://tools.ietf.org/html/rfc6066) に従い、リテラルな IPv4 および IPv6 アドレスは、SNI ホスト名では許可されていません。 <br> **注:** バックエンド プールでの FQDN は、バックエンド サーバーの IP アドレス (パブリックまたはプライベート) に DNS 解決される必要があります | SNI ヘッダー (server_name) は、HTTP 設定からホスト名として設定されます。そうでない場合は、*PickHostnameFromBackendAddress* オプションが選択されているか、ホスト名が指定されていないと、バックエンド プールの構成に FQDN として設定されます
+| TLS ハンドシェイク中の FQDN としての SNI (server_name) ヘッダー | バックエンド プールから FQDN として設定されます。 [RFC 6066](https://tools.ietf.org/html/rfc6066) に従い、リテラルな IPv4 および IPv6 アドレスは、SNI ホスト名では許可されていません。 <br> **注:** バックエンド プールでの FQDN は、バックエンド サーバーの IP アドレス (パブリックまたはプライベート) に DNS 解決される必要があります | SNI ヘッダー (server_name) は、HTTP 設定からホスト名として設定されます。そうでない場合は、 *PickHostnameFromBackendAddress* オプションが選択されているか、ホスト名が指定されていないと、バックエンド プールの構成に FQDN として設定されます
 | バックエンド プール アドレスが IP アドレスであるか、またはホスト名が HTTP 設定に設定されていない場合 | バックエンド プール エントリが FQDN でない場合、[RFC 6066](https://tools.ietf.org/html/rfc6066) に従って SNI は設定されません | SNI はクライアントによって入力された FQDN からホスト名として設定されます。また、バックエンド証明書の CN が、このホスト名と一致している必要があります。
 
 ## <a name="next-steps"></a>次のステップ

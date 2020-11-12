@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 0652c49acf58a52244cc27ae3e59120ac7f03858
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c11de2f1bc4143281d2859de7a38268932b13fba
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84807100"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397401"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>既存の Application Gateway を使用して Application Gateway イングレス コントローラー (AGIC) をインストールする
 
@@ -29,24 +29,24 @@ AGIC では、Kubernetes [イングレス](https://kubernetes.io/docs/concepts/s
 
 ## <a name="prerequisites"></a>前提条件
 このドキュメントは、次のツールとインフラストラクチャが既にインストールされていることを前提としています。
-- [高度なネットワーク](https://docs.microsoft.com/azure/aks/configure-azure-cni)が構成されている [AKS](https://azure.microsoft.com/services/kubernetes-service/)
-- AKS と同じ仮想ネットワーク内の [Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/create-zone-redundant)
+- [高度なネットワーク](../aks/configure-azure-cni.md)が構成されている [AKS](https://azure.microsoft.com/services/kubernetes-service/)
+- AKS と同じ仮想ネットワーク内の [Application Gateway v2](./tutorial-autoscale-ps.md)
 - ご利用の AKS クラスターにインストールされている [AAD ポッド ID](https://github.com/Azure/aad-pod-identity)
 - [Cloud Shell](https://shell.azure.com/) は、`az`CLI、`kubectl`、`helm` がインストールされている Azure シェル環境です。 これらのツールは、以下のコマンドに必要です。
 
-AGIC をインストールする前に、__Application Gateway の構成をバックアップ__ してください。
+AGIC をインストールする前に、 __Application Gateway の構成をバックアップ__ してください。
   1. [Azure portal](https://portal.azure.com/) を使用してご利用の `Application Gateway` インスタンスに移動する
   2. `Export template` から `Download` をクリックする
 
 ダウンロードした zip ファイルには、必要になったときに Application Gateway を復元するために使用できる JSON テンプレート、bash、PowerShell スクリプトが含まれます
 
 ## <a name="install-helm"></a>Helm のインストール
-[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) は、Kubernetes 用のパッケージ マネージャーです。 これを利用して `application-gateway-kubernetes-ingress` パッケージをインストールします。
+[Helm](../aks/kubernetes-helm.md) は、Kubernetes 用のパッケージ マネージャーです。 これを利用して `application-gateway-kubernetes-ingress` パッケージをインストールします。
 [Cloud Shell](https://shell.azure.com/) を使用して、Helm をインストールします。
 
-1. [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) をインストールし、以下を実行して `application-gateway-kubernetes-ingress` Helm パッケージを追加します。
+1. [Helm](../aks/kubernetes-helm.md) をインストールし、以下を実行して `application-gateway-kubernetes-ingress` Helm パッケージを追加します。
 
-    - "*RBAC が有効*" の AKS クラスター
+    - " *RBAC が有効* " の AKS クラスター
 
     ```bash
     kubectl create serviceaccount --namespace kube-system tiller-sa
@@ -54,7 +54,7 @@ AGIC をインストールする前に、__Application Gateway の構成をバ�
     helm init --tiller-namespace kube-system --service-account tiller-sa
     ```
 
-    - "*RBAC が無効*" の AKS クラスター
+    - " *RBAC が無効* " の AKS クラスター
 
     ```bash
     helm init
@@ -72,14 +72,14 @@ AGIC では、Kubernetes API サーバーと Azure Resource Manager と通信し
 
 ## <a name="set-up-aad-pod-identity"></a>AAD ポッド ID の設定
 
-[AAD ポッド ID](https://github.com/Azure/aad-pod-identity) は、AGIC に似たコントローラーであり、使用する AKS でも実行されます。 Azure Active Directory ID は、ご利用の Kubernetes ポッドにバインドされます。 ID は、Kubernetes ポッド内のアプリケーションが他の Azure コンポーネントと通信できるようにするために必要です。 特定のケースではここで、AGIC ポッドで [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) への HTTP 要求を行うための承認が必要です。
+[AAD ポッド ID](https://github.com/Azure/aad-pod-identity) は、AGIC に似たコントローラーであり、使用する AKS でも実行されます。 Azure Active Directory ID は、ご利用の Kubernetes ポッドにバインドされます。 ID は、Kubernetes ポッド内のアプリケーションが他の Azure コンポーネントと通信できるようにするために必要です。 特定のケースではここで、AGIC ポッドで [ARM](../azure-resource-manager/management/overview.md) への HTTP 要求を行うための承認が必要です。
 
 [AAD ポッド ID のインストール手順](https://github.com/Azure/aad-pod-identity#deploy-the-azure-aad-identity-infra)に従って、使用する AKS にこのコンポーネントを追加します。
 
 次に、Azure ID を作成して、そのアクセス許可を ARM に付与する必要があります。
 [Cloud Shell](https://shell.azure.com/) を使用して、次のコマンドをすべて実行し、ID を作成します。
 
-1. **AKS ノードと同じリソース グループ内に** Azure ID を作成します。 正しいリソース グループを選択することが重要です。 次のコマンドで必要なリソース グループは、AKS ポータル ウィンドウで参照できるリソース グループでは "*ありません*"。 これは `aks-agentpool` 仮想マシンのリソース グループです。 通常、リソース グループは `MC_` で始まり、使用する AKS の名前が含まれています。 例: `MC_resourceGroup_aksABCD_westus`
+1. **AKS ノードと同じリソース グループ内に** Azure ID を作成します。 正しいリソース グループを選択することが重要です。 次のコマンドで必要なリソース グループは、AKS ポータル ウィンドウで参照できるリソース グループでは " *ありません* "。 これは `aks-agentpool` 仮想マシンのリソース グループです。 通常、リソース グループは `MC_` で始まり、使用する AKS の名前が含まれています。 例: `MC_resourceGroup_aksABCD_westus`
 
     ```azurecli
     az identity create -g <agent-pool-resource-group> -n <identity-name>
@@ -237,7 +237,7 @@ Azure Application Gateway を使用して、AKS サービスを HTTP または H
 ## <a name="multi-cluster--shared-application-gateway"></a>マルチクラスター/共有 Application Gateway
 既定では、AGIC はリンク先の Application Gateway の完全な所有権を前提としています。 AGIC バージョン 0.8.0 以降では、1 つの Application Gateway を他の Azure コンポーネントと共有できます。 たとえば、AKS クラスターだけでなく、仮想マシン スケール セットでホストされているアプリケーションに対しても同じ Application Gateway を使用できます。
 
-この設定を有効にする前に、__Application Gateway の構成をバックアップ__ してください。
+この設定を有効にする前に、 __Application Gateway の構成をバックアップ__ してください。
   1. [Azure portal](https://portal.azure.com/) を使用してご利用の `Application Gateway` インスタンスに移動する
   2. `Export template` から `Download` をクリックする
 
@@ -296,7 +296,7 @@ Helm の変更を適用します:
 kubectl get AzureIngressProhibitedTargets prohibit-all-targets -o yaml
 ```
 
-オブジェクト `prohibit-all-targets` では、名前が示すように、AGIC が "*いかなる*" ホストおよびパスの構成も変更することが禁止されます。
+オブジェクト `prohibit-all-targets` では、名前が示すように、AGIC が " *いかなる* " ホストおよびパスの構成も変更することが禁止されます。
 `appgw.shared=true` を指定して Helm をインストールすると、AGIC がデプロイされますが、Application Gateway は変更されません。
 
 
@@ -323,7 +323,7 @@ AGIC のアクセス許可を拡大します:
     ```
 
 ### <a name="enable-for-an-existing-agic-installation"></a>既存の AGIC インストールに対して有効にする
-AKS、Application Gateway、構成済みの AGIC が既にクラスター内で動作しているとしましょう。 `prod.contosor.com` のイングレスがあり、AKS からそれのトラフィックを正常にサービスしています。 既存の Application Gateway に `staging.contoso.com` を追加しますが、[VM](https://azure.microsoft.com/services/virtual-machines/) でホストする必要があります。 既存の Application Gateway を再利用し、`staging.contoso.com` のリスナーとバックエンド プールを手動で構成します。 しかし、Application Gateway 構成を ([ポータル](https://portal.azure.com)、[ARM API](https://docs.microsoft.com/rest/api/resources/) または [Terraform](https://www.terraform.io/) から) 手動で調整すると、AGIC が完全な所有権を仮定した場合と競合します。 変更を適用するとすぐに、AGIC によって上書きまたは削除されます。
+AKS、Application Gateway、構成済みの AGIC が既にクラスター内で動作しているとしましょう。 `prod.contosor.com` のイングレスがあり、AKS からそれのトラフィックを正常にサービスしています。 既存の Application Gateway に `staging.contoso.com` を追加しますが、[VM](https://azure.microsoft.com/services/virtual-machines/) でホストする必要があります。 既存の Application Gateway を再利用し、`staging.contoso.com` のリスナーとバックエンド プールを手動で構成します。 しかし、Application Gateway 構成を ([ポータル](https://portal.azure.com)、[ARM API](/rest/api/resources/) または [Terraform](https://www.terraform.io/) から) 手動で調整すると、AGIC が完全な所有権を仮定した場合と競合します。 変更を適用するとすぐに、AGIC によって上書きまたは削除されます。
 
 AGIC が構成のサブセットに変更を加えることを禁止できます。
 

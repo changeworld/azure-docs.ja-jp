@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: 308098bd1ac49510afccf0a7964face726906332
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe6ea6f348d796962141bd39ff858d891a29a2f6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84628688"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397690"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>App Service などのマルチテナント バックエンドに対する Application Gateway のサポート
 
@@ -28,11 +28,11 @@ Web サーバー内がマルチテナント アーキテクチャ設計の場合
 
 ## <a name="override-host-header-in-the-request"></a>要求内のホスト ヘッダーのオーバーライド
 
-ホスト オーバーライドを指定する機能は、[HTTP 設定](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings)内で定義されます。また、この機能はルールの作成中にバックエンド プールに適用できます。 マルチテナント バックエンドのホスト ヘッダーと SNI 拡張機能をオーバーライドする方法として、以下の 2 つがサポートされています。
+ホスト オーバーライドを指定する機能は、[HTTP 設定](./configuration-overview.md#http-settings)内で定義されます。また、この機能はルールの作成中にバックエンド プールに適用できます。 マルチテナント バックエンドのホスト ヘッダーと SNI 拡張機能をオーバーライドする方法として、以下の 2 つがサポートされています。
 
 - HTTP 設定内で明示的に入力された固定値をホスト名として設定する機能。 この機能では、特定の HTTP 設定が適用されたバックエンド プールへのすべてのトラフィックについて、ホスト ヘッダーがこの値にオーバーライドされます。 エンド ツー エンド TLS を使用している場合、オーバーライドされたこのホスト名は SNI 拡張機能で使用されます。 この機能を使用すれば、顧客の受信ホスト ヘッダーと異なるホスト ヘッダーがバックエンド プール ファームによって想定されるシナリオに対応できます。
 
-- バックエンド プール メンバーの IP または FQDN からホスト名を取得する機能。 HTTP 設定では、個々のバックエンド プール メンバーからホスト名を取得するオプションが構成されている場合、バックエンド プール メンバーの FQDN からホスト名を動的に選択するオプションも設定できます。 エンド ツー エンド TLS を使用している場合、このホスト名は FQDN から取得され、SNI 拡張機能で使用されます。 この機能を使用すれば、バックエンド プールに 2 つ以上のマルチテナント PaaS サービス (Azure Web Apps など) を使用でき、各メンバーへの要求のホスト ヘッダーに FQDN から取得されたホスト名を含めるシナリオに対応できます。 このシナリオを実装する場合は、HTTP 設定内で [[バックエンド アドレスからホスト名を選択します]](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address) というスイッチを使用します。これにより、元の要求内のホスト ヘッダーが動的にオーバーライドされ、バックエンド プール内に示されているホスト ヘッダーになります。  たとえば、要求が当該バックエンド サーバーに送信される場合、バックエンド プールの FQDN に "contoso11.azurewebsites.net" と "contoso22.azurewebsites.net" が含まれていれば、元の要求のホスト ヘッダー (contoso.com) は、contoso11.azurewebsites.net または contoso22.azurewebsites.net にオーバーライドされます。 
+- バックエンド プール メンバーの IP または FQDN からホスト名を取得する機能。 HTTP 設定では、個々のバックエンド プール メンバーからホスト名を取得するオプションが構成されている場合、バックエンド プール メンバーの FQDN からホスト名を動的に選択するオプションも設定できます。 エンド ツー エンド TLS を使用している場合、このホスト名は FQDN から取得され、SNI 拡張機能で使用されます。 この機能を使用すれば、バックエンド プールに 2 つ以上のマルチテナント PaaS サービス (Azure Web Apps など) を使用でき、各メンバーへの要求のホスト ヘッダーに FQDN から取得されたホスト名を含めるシナリオに対応できます。 このシナリオを実装する場合は、HTTP 設定内で [[バックエンド アドレスからホスト名を選択します]](./configuration-http-settings.md#pick-host-name-from-back-end-address) というスイッチを使用します。これにより、元の要求内のホスト ヘッダーが動的にオーバーライドされ、バックエンド プール内に示されているホスト ヘッダーになります。  たとえば、要求が当該バックエンド サーバーに送信される場合、バックエンド プールの FQDN に "contoso11.azurewebsites.net" と "contoso22.azurewebsites.net" が含まれていれば、元の要求のホスト ヘッダー (contoso.com) は、contoso11.azurewebsites.net または contoso22.azurewebsites.net にオーバーライドされます。 
 
   ![Web アプリのシナリオ](./media/application-gateway-web-app-overview/scenario.png)
 
@@ -50,7 +50,7 @@ Web サーバー内がマルチテナント アーキテクチャ設計の場合
 
 ### <a name="health-probe"></a>正常性プローブ
 
-**HTTP 設定**内でホスト ヘッダーをオーバーライドすると、要求とそのルーティングにのみ影響が及びます。 正常性プローブの動作には影響が及びません。 エンド ツー エンドの機能が動作するには、正しい構成を反映するようプローブと HTTP 設定の両方を変更する必要があります。 プローブ構成内でホスト ヘッダーを指定できるほか、カスタム プローブでは、現在構成されている HTTP 設定からホスト ヘッダーを取得する機能もサポートされています。 この構成は、プローブ構成の `PickHostNameFromBackendHttpSettings` パラメーターを使用して指定できます。
+**HTTP 設定** 内でホスト ヘッダーをオーバーライドすると、要求とそのルーティングにのみ影響が及びます。 正常性プローブの動作には影響が及びません。 エンド ツー エンドの機能が動作するには、正しい構成を反映するようプローブと HTTP 設定の両方を変更する必要があります。 プローブ構成内でホスト ヘッダーを指定できるほか、カスタム プローブでは、現在構成されている HTTP 設定からホスト ヘッダーを取得する機能もサポートされています。 この構成は、プローブ構成の `PickHostNameFromBackendHttpSettings` パラメーターを使用して指定できます。
 
 ### <a name="redirection-to-app-services-url-scenario"></a>App Service の URL にリダイレクトされるシナリオ
 
@@ -59,8 +59,8 @@ App Service からの応答内のホスト名によって、エンドユーザ�
 - App Service 上でリダイレクトが構成されています。 要求の末尾にスラッシュを追加するだけでリダイレクトが実行される場合があります。
 - Azure AD 認証が構成されており、これが原因でリダイレクトが実行されています。
 
-このような問題を解決するには、[App Service の URL にリダイレクトされる問題のトラブルシューティング](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url)に関するページを参照してください。
+このような問題を解決するには、[App Service の URL にリダイレクトされる問題のトラブルシューティング](./troubleshoot-app-service-redirection-app-service-url.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-マルチテナント アプリケーション (Azure App Service の Web アプリなど) と共にアプリケーション ゲートウェイをバックエンド プール メンバーとして設定する方法については、[Application Gateway を使用する App Service の Web アプリ の構成](https://docs.microsoft.com/azure/application-gateway/configure-web-app-portal)に関するページを参照してください。
+マルチテナント アプリケーション (Azure App Service の Web アプリなど) と共にアプリケーション ゲートウェイをバックエンド プール メンバーとして設定する方法については、[Application Gateway を使用する App Service の Web アプリ の構成](./configure-web-app-portal.md)に関するページを参照してください。

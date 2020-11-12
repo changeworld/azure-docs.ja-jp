@@ -8,16 +8,16 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 7dbfa877f634256c86166892a38d048a95e56baa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 49fd6a939fc30671cf78984fdcba009666f6121e
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331031"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397299"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Azure CLI を使用して HTTP から HTTPS へのリダイレクトと共にアプリケーション ゲートウェイを作成する
 
-Azure CLI で TLS または SSL 終端の証明書を使用して[アプリケーション ゲートウェイ](overview.md)を作成できます。 アプリケーション ゲートウェイで HTTP トラフィックを HTTPS ポートにリダイレクトするために、ルーティング規則が使用されます。 また、この例では、2 つの仮想マシン インスタンスが含まれるアプリケーション ゲートウェイのバックエンド プールのために[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を作成します。
+Azure CLI で TLS または SSL 終端の証明書を使用して[アプリケーション ゲートウェイ](overview.md)を作成できます。 アプリケーション ゲートウェイで HTTP トラフィックを HTTPS ポートにリダイレクトするために、ルーティング規則が使用されます。 また、この例では、2 つの仮想マシン インスタンスが含まれるアプリケーション ゲートウェイのバックエンド プールのために[仮想マシン スケール セット](../virtual-machine-scale-sets/overview.md)を作成します。
 
 この記事では、次のことについて説明します。
 
@@ -47,13 +47,13 @@ openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.k
 openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.crt
 ```
 
-証明書のパスワードを入力します。 この例では、*Azure123456!* が 使用されています。
+証明書のパスワードを入力します。 この例では、 *Azure123456!* が 使用されています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [az group create](/cli/azure/group) を使用してリソース グループを作成します。
 
-次の例では、*myResourceGroupAG* という名前のリソース グループを *eastus* に作成します。
+次の例では、 *myResourceGroupAG* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -61,7 +61,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する
 
-[az network vnet create](/cli/azure/network/vnet) を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、[az network vnet subnet create](/cli/azure/network/vnet/subnet) を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/network/public-ip) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
+[az network vnet create](/cli/azure/network/vnet) を使用して、 *myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、 [az network vnet subnet create](/cli/azure/network/vnet/subnet) を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/network/public-ip) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -83,7 +83,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-[az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create) を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成することができます。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 
+[az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create) を使用して、 *myAppGateway* という名前のアプリケーション ゲートウェイを作成することができます。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 
 
 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myAGPublicIPAddress* に割り当てます。 この例では、アプリケーション ゲートウェイを作成するときに、作成した証明書とそのパスワードを関連付けます。 
 
@@ -111,7 +111,7 @@ az network application-gateway create \
 - *appGatewayBackendPool* - アプリケーション ゲートウェイには、少なくとも 1 つのバックエンド アドレス プールが必要です。
 - *appGatewayBackendHttpSettings* - 通信に使用するポート 80 と HTTP プロトコルを指定します。
 - *appGatewayHttpListener* - *appGatewayBackendPool* に関連付けられている既定のリスナー。
-- *appGatewayFrontendIP* -*myAGPublicIPAddress* を *appGatewayHttpListener* に割り当てます。
+- *appGatewayFrontendIP* - *myAGPublicIPAddress* を *appGatewayHttpListener* に割り当てます。
 - *rule1* - *appGatewayHttpListener* に関連付けられている既定のルーティング規則。
 
 ## <a name="add-a-listener-and-redirection-rule"></a>リスナーとリダイレクト規則の追加
@@ -130,7 +130,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-the-http-listener"></a>HTTP リスナーの追加
 
-[az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) を使用して、*myListener* という名前のリスナーをアプリケーション ゲートウェイに追加できます。
+[az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) を使用して、 *myListener* という名前のリスナーをアプリケーション ゲートウェイに追加できます。
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -158,7 +158,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-the-routing-rule"></a>ルーティング規則の追加
 
-[az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) を使用して、*rule2* という名前のルーティング規則をリダイレクト構成と共にアプリケーション ゲートウェイに追加します。
+[az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) を使用して、 *rule2* という名前のルーティング規則をリダイレクト構成と共にアプリケーション ゲートウェイに追加します。
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -172,7 +172,7 @@ az network application-gateway rule create \
 
 ## <a name="create-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを作成する
 
-この例では、アプリケーション ゲートウェイのバックエンド プールにサーバーを提供する、*myvmss* という名前の仮想マシン スケール セットを作成します。 スケール セット内の仮想マシンは、*myBackendSubnet* と *appGatewayBackendPool* に関連付けられています。 スケール セットを作成するには、[az vmss create](/cli/azure/vmss#az-vmss-create) を使用できます。
+この例では、アプリケーション ゲートウェイのバックエンド プールにサーバーを提供する、 *myvmss* という名前の仮想マシン スケール セットを作成します。 スケール セット内の仮想マシンは、 *myBackendSubnet* と *appGatewayBackendPool* に関連付けられています。 スケール セットを作成するには、[az vmss create](/cli/azure/vmss#az-vmss-create) を使用できます。
 
 ```azurecli-interactive
 az vmss create \
@@ -224,5 +224,3 @@ az network public-ip show \
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure CLI を使用して内部リダイレクトと共にアプリケーション ゲートウェイを作成する](redirect-internal-site-cli.md)
-
-

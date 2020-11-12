@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 953430421bd30aaa1df352451b549994aeaa1a70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cffc15974bf5a016a4584f5c5f3dcc8a185c9824
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85556162"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397333"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Application Gateway イングレス コントローラーを使用して AKS クラスターでの複数の名前空間のサポートを有効にする
 
@@ -35,12 +35,12 @@ AGIC のバージョン 0.7 では、`default` 名前空間が Helm 構成内の
   - アクセス可能なすべての名前空間からのイングレス リソースを一覧表示する
   - `kubernetes.io/ingress.class: azure/application-gateway` によって注釈が付けられたイングレス リソースにフィルター処理する
   - 組み合わせた [Application Gateway の構成](https://github.com/Azure/azure-sdk-for-go/blob/37f3f4162dfce955ef5225ead57216cf8c1b2c70/services/network/mgmt/2016-06-01/network/models.go#L1710-L1744)を作成する
-  - [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 経由で、関連付けられている Application Gateway に構成を適用する
+  - [ARM](../azure-resource-manager/management/overview.md) 経由で、関連付けられている Application Gateway に構成を適用する
 
 ## <a name="conflicting-configurations"></a>競合する構成
 複数の名前空間が設定された[イングレス リソース](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)では、単一の Application Gateway に対して競合する構成を作成するように、AGIC に指示することができます (たとえば、同じドメインを要求する 2 つのイングレス)。
 
-階層の最上位では、**リスナー** (IP アドレス、ポート、およびホスト) と **ルーティング規則** (バインディング リスナー、バックエンド プール、および HTTP 設定) は、複数の名前空間/イングレスによって作成および共有することができます。
+階層の最上位では、 **リスナー** (IP アドレス、ポート、およびホスト) と **ルーティング規則** (バインディング リスナー、バックエンド プール、および HTTP 設定) は、複数の名前空間/イングレスによって作成および共有することができます。
 
 一方、パス、バックエンド プール、HTTP 設定、および TLS 証明書は、1 つの名前空間のみによって作成され、重複は削除されます。
 
@@ -90,7 +90,7 @@ spec:
   - HTTP 設定: `bp-production-contoso-web-service-80-80-websocket-ingress`
   - 正常性プローブ: `pb-production-contoso-web-service-80-websocket-ingress`
 
-*リスナー*と*ルーティング規則*を除き、作成される Application Gateway リソースには、それらが作成された名前空間 (`production`) の名前が含まれていることに注意してください。
+*リスナー* と *ルーティング規則* を除き、作成される Application Gateway リソースには、それらが作成された名前空間 (`production`) の名前が含まれていることに注意してください。
 
 2 つのイングレス リソースが異なる時点で AKS クラスターに導入されている場合、AGIC では、Application Gateway が再構成され `namespace-B`から `namespace-A` にトラフィックが再ルーティングされるシナリオに終始する傾向にあります。
 
@@ -99,7 +99,7 @@ spec:
 ## <a name="restrict-access-to-namespaces"></a>名前空間へのアクセスを制限する
 AGIC では既定で、いずれかの名前空間内の注釈付きのイングレスに基づいて、Application Gateway が構成されます。 この動作を制限する場合、次のオプションを使用できます。
   - AGIC において [helm-config.yaml](#sample-helm-config-file) 内の `watchNamespace` YAML キー経由で監視する必要がある名前空間を明示的に定義することで、名前空間を制限する
-  - [Role/RoleBinding](https://docs.microsoft.com/azure/aks/azure-ad-rbac) を使用して、AGIC を特定の名前空間に制限する
+  - [Role/RoleBinding](../aks/azure-ad-rbac.md) を使用して、AGIC を特定の名前空間に制限する
 
 ## <a name="sample-helm-config-file"></a>サンプルの Helm 構成ファイル
 
@@ -155,4 +155,3 @@ AGIC では既定で、いずれかの名前空間内の注釈付きのイング
     aksClusterConfiguration:
         apiServerAddress: <aks-api-server-address>
 ```
-

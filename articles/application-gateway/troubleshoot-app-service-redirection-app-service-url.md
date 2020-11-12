@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: f3a3ba3ee908204668ad9d7201ddfddec0a26f28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 676d7c2ad18327471c6e95f3cef26185fa49b78b
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595946"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396891"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Application Gateway での App Service に関する問題のトラブルシューティング
 
@@ -80,10 +80,10 @@ X-Powered-By: ASP.NET
 
 ## <a name="solution-rewrite-the-location-header"></a>解決方法:location ヘッダーを書き換える
 
-location ヘッダーのホスト名をアプリケーション ゲートウェイのドメイン名に設定します。 これを行うには、応答の location ヘッダーに azurewebsites.net が含まれているかどうかを評価する条件で書き換え[規則](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)を作成します。 また、location ヘッダーを書き換えてアプリケーション ゲートウェイのホスト名を含めるようにするアクションも、これによって実行する必要があります。 詳細は、[location ヘッダーの書き換え方法](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url)に関する記事の手順を参照してください。
+location ヘッダーのホスト名をアプリケーション ゲートウェイのドメイン名に設定します。 これを行うには、応答の location ヘッダーに azurewebsites.net が含まれているかどうかを評価する条件で書き換え[規則](./rewrite-http-headers.md)を作成します。 また、location ヘッダーを書き換えてアプリケーション ゲートウェイのホスト名を含めるようにするアクションも、これによって実行する必要があります。 詳細は、[location ヘッダーの書き換え方法](./rewrite-http-headers.md#modify-a-redirection-url)に関する記事の手順を参照してください。
 
 > [!NOTE]
-> HTTP ヘッダーの書き換えのサポートは、Application Gateway の [Standard_v2 と WAF_v2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) でのみ利用できます。 v1 SKU を使用する場合、[v1 から v2 に移行する](https://docs.microsoft.com/azure/application-gateway/migrate-v1-v2)ことをお勧めします。 v2 SKU で利用できる書き換えやその他の[高度な機能](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#feature-comparison-between-v1-sku-and-v2-sku)を使用することがあります。
+> HTTP ヘッダーの書き換えのサポートは、Application Gateway の [Standard_v2 と WAF_v2 SKU](./application-gateway-autoscaling-zone-redundant.md) でのみ利用できます。 v1 SKU を使用する場合、[v1 から v2 に移行する](./migrate-v1-v2.md)ことをお勧めします。 v2 SKU で利用できる書き換えやその他の[高度な機能](./application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku)を使用することがあります。
 
 ## <a name="alternate-solution-use-a-custom-domain-name"></a>代替ソリューション:カスタム ドメイン名の使用
 
@@ -93,7 +93,7 @@ v1 SKU を使用する場合、location ヘッダーを書き換えることは�
 
 カスタム ドメインを所有していることと、このプロセスに従うことが必要になります。
 
-- App Service のカスタム ドメイン一覧にドメインを登録します。 App Service の FQDN を指す CNAME がカスタム ドメインに必要です。 詳細については、「[既存のカスタム DNS 名を Azure App Service にマップする](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain)」を参照してください。
+- App Service のカスタム ドメイン一覧にドメインを登録します。 App Service の FQDN を指す CNAME がカスタム ドメインに必要です。 詳細については、「[既存のカスタム DNS 名を Azure App Service にマップする](//azure/app-service/app-service-web-tutorial-custom-domain)」を参照してください。
 
     ![App Service のカスタムドメインの一覧](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
@@ -101,12 +101,12 @@ v1 SKU を使用する場合、location ヘッダーを書き換えることは�
 
 - DNS クエリの実行時、ドメイン `www.contoso.com` が Application Gateway の FQDN に解決されることを確認します。
 
-- **[Pick Hostname from Backend HTTP Settings]\(バックエンド HTTP 設定からホスト名を選択する\)** を無効にするようにカスタム プローブを設定します。 Azure portal で、プローブ設定でこのチェック ボックスをオフにします。 PowerShell では、**Set-AzApplicationGatewayProbeConfig** コマンドで **-PickHostNameFromBackendHttpSettings** スイッチを使用しないでください。 プローブのホスト名フィールドに、App Service の FQDN、example.azurewebsites.net を入力します。 Application Gateway から送信されたプローブ要求のホスト ヘッダーにこの FQDN が含まれます。
+- **[Pick Hostname from Backend HTTP Settings]\(バックエンド HTTP 設定からホスト名を選択する\)** を無効にするようにカスタム プローブを設定します。 Azure portal で、プローブ設定でこのチェック ボックスをオフにします。 PowerShell では、 **Set-AzApplicationGatewayProbeConfig** コマンドで **-PickHostNameFromBackendHttpSettings** スイッチを使用しないでください。 プローブのホスト名フィールドに、App Service の FQDN、example.azurewebsites.net を入力します。 Application Gateway から送信されたプローブ要求のホスト ヘッダーにこの FQDN が含まれます。
 
   > [!NOTE]
   > 次の手順のために、カスタム プローブがバックエンド HTTP 設定に関連付けられていないことを確認します。 HTTP 設定では、この時点で **[Pick Hostname from Backend Address]\(バックエンド アドレスからホスト名を選択する\)** スイッチはまだ有効です。
 
-- **[Pick Hostname from Backend Address] (バックエンド アドレスからホスト名を選択する)** を無効にするように Application Gateway の HTTP 設定を指定します。 Azure portal でこのチェック ボックスをオフにします。 PowerShell では、**Set-AzApplicationGatewayBackendHttpSettings** コマンドで **-PickHostNameFromBackendAddress** スイッチを使用しないでください。
+- **[Pick Hostname from Backend Address] (バックエンド アドレスからホスト名を選択する)** を無効にするように Application Gateway の HTTP 設定を指定します。 Azure portal でこのチェック ボックスをオフにします。 PowerShell では、 **Set-AzApplicationGatewayBackendHttpSettings** コマンドで **-PickHostNameFromBackendAddress** スイッチを使用しないでください。
 
 - カスタム プローブを元どおりバックエンドの HTTP 設定に関連付け、バックエンドが正常であることを確認します。
 

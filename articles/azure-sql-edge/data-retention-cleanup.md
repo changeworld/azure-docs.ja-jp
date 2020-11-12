@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 45ce874ffb626f63b2239c66afdefd091114cbd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f547f0b3219889b54364c4805c2dd5b183a9861a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888132"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392369"
 ---
 # <a name="manage-historical-data-with-retention-policy"></a>アイテム保持ポリシーを使用して履歴データを管理する
 
@@ -66,7 +66,7 @@ select @rowcnt
 
 ## <a name="monitoring-data-retention-cleanup"></a>データ保有のクリーンアップの監視
 
-データ保持ポリシーのクリーンアップ操作は、Azure SQL Edge の拡張イベント (Xevent) を使用して監視できます。 拡張イベントの詳細については、[Xevent の概要](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)に関するページを参照してください。 
+データ保持ポリシーのクリーンアップ操作は、Azure SQL Edge の拡張イベント (Xevent) を使用して監視できます。 拡張イベントの詳細については、[Xevent の概要](/sql/relational-databases/extended-events/extended-events)に関するページを参照してください。 
 
 次の 6 つの拡張イベントは、クリーンアップ操作の状態を追跡するのに役立ちます。 
 

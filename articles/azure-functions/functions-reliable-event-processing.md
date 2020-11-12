@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: cshoe
-ms.openlocfilehash: aaafe6d4080d85822ec5af9639c27fc8c55c2ce6
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: fd784bb184ff9432efc569ac9fd40de93eec0b53
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287230"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379589"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions の信頼性の高いイベント処理
 
@@ -50,7 +50,7 @@ Azure Functions は、次の手順を実行しながら Event Hubs イベント�
 
 この動作により、いくつかの重要な点がわかります。
 
-- *ハンドルされない例外が発生すると、メッセージが失われることがあります。* 実行で例外が発生した場合も、ポインターは進行します。  [再試行ポリシー](./functions-bindings-error-pages.md#retry-policies)を設定すると、再試行ポリシー全体が評価されるまで、ポインターの進行が遅れます。
+- *ハンドルされない例外が発生すると、メッセージが失われることがあります。* 実行で例外が発生した場合も、ポインターは進行します。  [再試行ポリシー](./functions-bindings-error-pages.md#retry-policies-preview)を設定すると、再試行ポリシー全体が評価されるまで、ポインターの進行が遅れます。
 - *関数は、最低 1 回の配信を保証します。* コードおよび依存システムでは、[同じメッセージが 2 回受信される可能性があることに留意する必要があります。](./functions-idempotent.md)
 
 ## <a name="handling-exceptions"></a>例外の処理
@@ -59,7 +59,7 @@ Azure Functions は、次の手順を実行しながら Event Hubs イベント�
 
 ### <a name="retry-mechanisms-and-policies"></a>再試行メカニズムとポリシー
 
-一時的な例外もあり、これらは後でもう一度操作を実行しようとしても再表示されません。 このため、最初の手順では常に操作を再試行します。  関数アプリの[再試行ポリシー](./functions-bindings-error-pages.md#retry-policies)を利用するか、関数の実行内で再試行ロジックを作成することができます。
+一時的な例外もあり、これらは後でもう一度操作を実行しようとしても再表示されません。 このため、最初の手順では常に操作を再試行します。  関数アプリの[再試行ポリシー](./functions-bindings-error-pages.md#retry-policies-preview)を利用するか、関数の実行内で再試行ロジックを作成することができます。
 
 関数にエラー処理動作を組み込むと、基本的な再試行ポリシーと高度な再試行ポリシーの両方を定義できます。 たとえば、次の規則で示すワークフローに従うポリシーを実装できます。
 

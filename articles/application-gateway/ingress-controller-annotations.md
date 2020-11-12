@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: f54381ddcd11a2e4a24d30d812468da85b5403de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f570f9f18f9c9d484a9bc9c1a5c64d42dbdc714
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80335823"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397452"
 ---
 # <a name="annotations-for-application-gateway-ingress-controller"></a>Application Gateway イングレス コントローラーの注釈 
 
@@ -22,7 +22,7 @@ Kubernetes イングレス リソースには、任意のキー/値のペアを�
 
 ## <a name="list-of-supported-annotations"></a>サポートされている注釈の一覧
 
-イングレス リソースを AGIC によって監視するためには、`kubernetes.io/ingress.class: azure/application-gateway` を使用してリソースに**注釈を付ける必要があります**。 そうしないと、AGIC は問題のイングレス リソースに対して機能しません。
+イングレス リソースを AGIC によって監視するためには、`kubernetes.io/ingress.class: azure/application-gateway` を使用してリソースに **注釈を付ける必要があります** 。 そうしないと、AGIC は問題のイングレス リソースに対して機能しません。
 
 | 注釈キー | 値の型 | Default value | 使用できる値
 | -- | -- | -- | -- |
@@ -72,7 +72,7 @@ spec:
 
 ## <a name="tls-redirect"></a>TLS リダイレクト
 
-対応する HTTPS に HTTP URL を自動的にリダイレクトするように Application Gateway を[構成できます](https://docs.microsoft.com/azure/application-gateway/application-gateway-redirect-overview)。 この注釈が存在し、TLS が正しく構成されている場合、Kubernetes イングレス コントローラーは、[リダイレクト構成を持つルーティング規則](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal#add-a-routing-rule-with-a-redirection-configuration)を作成し、変更を Application Gateway に適用します。 作成されるリダイレクトは HTTP `301 Moved Permanently` になります。
+対応する HTTPS に HTTP URL を自動的にリダイレクトするように Application Gateway を[構成できます](./redirect-overview.md)。 この注釈が存在し、TLS が正しく構成されている場合、Kubernetes イングレス コントローラーは、[リダイレクト構成を持つルーティング規則](./redirect-http-to-https-portal.md#add-a-routing-rule-with-a-redirection-configuration)を作成し、変更を Application Gateway に適用します。 作成されるリダイレクトは HTTP `301 Moved Permanently` になります。
 
 ### <a name="usage"></a>使用法
 

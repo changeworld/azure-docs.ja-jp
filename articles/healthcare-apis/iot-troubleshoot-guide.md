@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: troubleshooting
 ms.date: 09/16/2020
 ms.author: jasteppe
-ms.openlocfilehash: 4a1a23ca2d0b30a192c30b331c588d13a2a261a7
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: a843ee15d4e7c67bcf69609067d70f592b9b50d6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558518"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394222"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>Azure IoT Connector for FHIR (プレビュー) のトラブルシューティング ガイド
 
@@ -91,7 +91,7 @@ Azure IoT Connector for FHIR マッピング ファイルのコピーは、Azure
 > 現時点でデバイスおよび FHIR マッピング ファイルでサポートされている形式は、JSON のみです。
 
 > [!TIP]
-> Azure IoT Connector for FHIR の[デバイスおよび FHIR 変換マッピング JSON](https://docs.microsoft.com/azure/healthcare-apis/iot-mapping-templates) の詳細を確認してください
+> Azure IoT Connector for FHIR の[デバイスおよび FHIR 変換マッピング JSON](./iot-mapping-templates.md) の詳細を確認してください
 
 1. Azure API for FHIR リソース ダッシュボードの左下にある、 **[アドイン]** セクションの **[IoT コネクタ (プレビュー)]** を選択します。
 
@@ -99,18 +99,18 @@ Azure IoT Connector for FHIR マッピング ファイルのコピーは、Azure
 
 2. 変換マッピング JSON のコピー元となる **コネクタ** を選択します。
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="IoT Connector1" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="IoT Connector2" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
 
 > [!NOTE]
 > このプロセスは、 **[Configure FHIR mapping]\(FHIR マッピングの構成\)** JSON の内容をコピーして保存する場合にも使用できます。
 
 3. **[Configure device mapping]\(デバイス マッピングの構成\)** を選択します。
 
-    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-with-box.png" alt-text="IoT Connector1" lightbox="media/iot-troubleshoot/map-files-select-device-with-box.png":::
+    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-with-box.png" alt-text="IoT Connector3" lightbox="media/iot-troubleshoot/map-files-select-device-with-box.png":::
 
 4. JSON の内容を選択し、コピー操作を行います (例: Ctrl + c キーを選択する)。 
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="IoT Connector1" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="IoT Connector4" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
 
 5. 貼り付け操作 (例: Ctrl + v キーを選択する) をエディター (例: Visual Studio Code、メモ帳) 内の新しいファイルに対して行い、*.json 拡張子を付けてファイルを保存します。
 

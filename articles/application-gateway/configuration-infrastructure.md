@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: cd1dc953c35233010250bf7f959c94d1de50fe4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f214b0b0751f44ea1357f569fd814a7621af61ab
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319794"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397622"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>Application Gateway インフラストラクチャの構成
 
@@ -55,15 +55,15 @@ Application Gateway (Standard_v2 または WAF_v2) SKU では、最大 125 の�
 このシナリオでは、Application Gateway サブネット上の NSG を使用します。 次の制約は、この優先順位でサブネットに適用します。
 
 1. ソース IP または IP 範囲からの着信トラフィックで、宛先が Application Gateway のサブネット アドレス範囲全体であり、宛先ポートがご使用の着信アクセス ポート (たとえば、HTTP アクセス用のポート 80) であるものを許可します。
-2. [バックエンド正常性状態通信](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)のために、ソースが **GatewayManager** サービス タグ、宛先が **[すべて]** 、宛先ポートが Application Gateway v1 SKU の 65503 ～ 65534、および v2 SKU のポート 65200 ～ 65535 である着信要求を許可します。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 適切な証明書が配置されていない外部エンティティは、そのようなエンドポイントに対する変更を開始できません。
-3. [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)で Azure Load Balancer プローブ (*AzureLoadBalancer* タグ) と仮想ネットワーク通信 (*VirtualNetwork* タグ) を受信方向で許可します。
+2. [バックエンド正常性状態通信](./application-gateway-diagnostics.md)のために、ソースが **GatewayManager** サービス タグ、宛先が **[すべて]** 、宛先ポートが Application Gateway v1 SKU の 65503 ～ 65534、および v2 SKU のポート 65200 ～ 65535 である着信要求を許可します。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 適切な証明書が配置されていない外部エンティティは、そのようなエンドポイントに対する変更を開始できません。
+3. [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)で Azure Load Balancer プローブ ( *AzureLoadBalancer* タグ) と仮想ネットワーク通信 ( *VirtualNetwork* タグ) を受信方向で許可します。
 4. 「すべて拒否」の規則を使用して、その他すべての着信トラフィックをブロックします。
 5. すべての宛先に対してインターネットへの送信トラフィックを許可します。
 
 ## <a name="supported-user-defined-routes"></a>サポートされているユーザー定義ルート 
 
 > [!IMPORTANT]
-> Application Gateway サブネット上で UDR を使用すると、[バックエンドの正常性ビュー](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health)に正常性状態が**不明**と表示される場合があります。 また、Application Gateway ログとメトリックの生成が失敗する場合があります。 バックエンドの正常性、ログ、およびメトリックを表示できるように、Application Gateway サブネット上で UDR を使用しないことをお勧めします。
+> Application Gateway サブネット上で UDR を使用すると、 [バックエンドの正常性ビュー](./application-gateway-diagnostics.md#back-end-health)に正常性状態が **不明** と表示される場合があります。 また、Application Gateway ログとメトリックの生成が失敗する場合があります。 バックエンドの正常性、ログ、およびメトリックを表示できるように、Application Gateway サブネット上で UDR を使用しないことをお勧めします。
 
 - **v1**
 
@@ -78,23 +78,23 @@ Application Gateway (Standard_v2 または WAF_v2) SKU では、最大 125 の�
    > ルート テーブルの構成が正しくないと Application Gateway v2 で非対称ルーティングが発生する可能性があります。 すべての管理/コントロール プレーン トラフィックが、仮想アプライアンス経由ではなく、インターネットに直接送信されることを確認します。 ログ記録とメトリックも影響を受ける可能性があります。
 
 
-  **シナリオ 1**: Application Gateway サブネットへの Border Gateway Protocol (BGP) ルート伝達を無効にする UDR
+  **シナリオ 1** : Application Gateway サブネットへの Border Gateway Protocol (BGP) ルート伝達を無効にする UDR
 
    既定のゲートウェイ ルート (0.0.0.0/0) は、Application Gateway 仮想ネットワークに関連付けられている ExpressRoute または VPN ゲートウェイ経由でアドバタイズされる場合があります。 これにより、管理プレーン トラフィックが中断され、インターネットへの直接パスが必要になります。 このようなシナリオでは、UDR を使用して、BGP ルート伝達を無効にすることができます。 
 
    BGP ルート伝達を無効にするには、次の手順に従います。
 
    1. Azure でルート テーブル リソースを作成します。
-   2. **仮想ネットワーク ゲートウェイのルート伝達**パラメーターを無効にします。 
+   2. **仮想ネットワーク ゲートウェイのルート伝達** パラメーターを無効にします。 
    3. ルート テーブルを適切なサブネットに関連付けます。 
 
    このシナリオで UDR を有効にすると、既存のセットアップが中断されないはずです。
 
-  **シナリオ 2**: 0.0.0.0/0 をインターネットに送信する UDR
+  **シナリオ 2** : 0.0.0.0/0 をインターネットに送信する UDR
 
    0\.0.0.0/0 トラフィックをインターネットに直接送信する UDR を作成できます。 
 
-  **シナリオ 3**:Azure Kubernetes Service と kubenet の UDR
+  **シナリオ 3** :Azure Kubernetes Service と kubenet の UDR
 
   Azure Kubernetes Service (AKS) と Application Gateway Ingress Controller (AGIC) で kubenet を使用している場合は、アプリケーション ゲートウェイからポッドに送信されたトラフィックが正しいノードにルーティングされるように、ルート テーブルが必要になります。 これは、Azure CNI を使用する場合は必要ありません。 
 
@@ -109,7 +109,7 @@ Application Gateway (Standard_v2 または WAF_v2) SKU では、最大 125 の�
     
   **v2 でサポートされないシナリオ**
 
-  **シナリオ 1**: 仮想アプライアンスの UDR
+  **シナリオ 1** : 仮想アプライアンスの UDR
 
   v2 では、仮想アプライアンス、ハブ/スポーク仮想ネットワーク、またはオンプレミス (強制トンネリング) を介して 0.0.0.0/0 をリダイレクトする必要があるシナリオはサポートされません。
 
