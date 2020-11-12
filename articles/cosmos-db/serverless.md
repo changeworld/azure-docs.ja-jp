@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 75d22a5021c7c8ae3a12f25644f2875e0ccf8cdd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: c811a2ea5c06250068e7c0276e4b79e9108d920d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098758"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490357"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB サーバーレス (プレビュー)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -50,9 +50,6 @@ Azure Cosmos DB サーバーレスで最適なシナリオは次のとおりで�
 ## <a name="using-serverless-resources"></a>サーバーレス リソースの使用
 
 サーバーレスは、Azure Cosmos アカウントの新しい種類です。つまり、新しいアカウントを作成するときに、 **プロビジョニングされたスループット** と **サーバーレス** のどちらかを選択する必要があります。 サーバーレスの使用を開始するには、新しいサーバーレス アカウントを作成する必要があります。 プレビュー リリース中は、新しいサーバーレス アカウントを作成する唯一の方法として、[Azure portal を使用](create-cosmosdb-resources-portal.md)します。 既存アカウントとサーバーレス モードとの間の移行は、現在サポートされていません。
-
-> [!NOTE]
-> 現在、サーバーレスは Azure Cosmos DB Core (SQL) API でのみサポートされています。
 
 サーバーレス アカウントで作成されたコンテナーはすべて、サーバーレス コンテナーです。 サーバーレス コンテナーでは、プロビジョニングされたスループット モードで作成されたコンテナーと同じ機能が公開されているため、まったく同じ方法でデータの読み取り、書き込み、クエリを実行できます。 ただし、サーバーレス アカウントとコンテナーには固有の特性もあります。
 

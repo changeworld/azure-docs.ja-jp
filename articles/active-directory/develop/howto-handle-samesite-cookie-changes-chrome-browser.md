@@ -13,12 +13,12 @@ ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 5742ddf9553c3ac9187dbef93fc7927564cbc095
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30c4f054259aa7c3f2a9fdfaeeadd64f26dd9bea
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116973"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444913"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>Chrome ブラウザーにおける SameSite Cookie の変更の処理
 
@@ -81,11 +81,8 @@ ASP.NET と ASP.NET Core で SameSite cookie を処理する方法の詳細に�
 
 SameSite と Web アプリのシナリオの詳細について学習します。
 
-> [!div class="nextstepaction"]
-> [Google Chrome の SameSite に関する FAQ](https://www.chromium.org/updates/same-site/faq)
+- [Google Chrome の SameSite に関する FAQ](https://www.chromium.org/updates/same-site/faq)
 
-> [!div class="nextstepaction"]
-> [Chromium の SameSite ページ](https://www.chromium.org/updates/same-site)
+- [Chromium の SameSite ページ](https://www.chromium.org/updates/same-site)
 
-> [!div class="nextstepaction"]
-> [シナリオ: ユーザーをサインインさせる Web アプリ](scenario-web-app-sign-user-overview.md)
+- [シナリオ: ユーザーをサインインさせる Web アプリ](scenario-web-app-sign-user-overview.md)

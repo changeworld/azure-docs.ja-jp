@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: ab3f3765a0e988c7e93cca5782b47b3f2d32aef4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2c9d00f1d78d2dea46d4ff4a08433360e00c7b9d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312550"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445627"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning ワークスペースを作成して管理する 
 
@@ -193,7 +193,7 @@ Azure Security Center は、ハイブリッド クラウド ワークロード�
 
 既定では、ワークスペースのメトリックとメタデータは、Microsoft が管理する Azure Cosmos DB インスタンスに格納されます。 このデータは Microsoft のマネージド キーで暗号化されます。
 
-Microsoft がお使いのワークスペースで収集するデータを制限するには、ポータルで __[High business impact workspace]\(業務への影響が大きいワークスペース\)__ を選択するか、Python で `hbi_workspace=true ` を設定します。 この設定の詳細については、「[保存時の暗号化](concept-enterprise-security.md#encryption-at-rest)」を参照してください。
+Microsoft がお使いのワークスペースで収集するデータを制限するには、ポータルで __[High business impact workspace]\(業務への影響が大きいワークスペース\)__ を選択するか、Python で `hbi_workspace=true ` を設定します。 この設定の詳細については、「[保存時の暗号化](concept-data-encryption.md#encryption-at-rest)」を参照してください。
 
 > [!IMPORTANT]  
 > High Business Impact の選択は、ワークスペースの作成時にのみ実行できます。 ワークスペースの作成後にこの設定を変更することはできません。   

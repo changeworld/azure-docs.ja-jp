@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b05084a7d01f4c5d5d5a79b60ac0b8ba47843622
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 4016e1dd055b45f9cd59a172d0e71ef95fec1c40
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91816778"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517208"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>ビルド タスクを構成およびカスタマイズする
 
@@ -39,7 +39,7 @@ ms.locfileid: "91816778"
 
 Windows Defender は、Windows Update クライアントを使用してシグネチャをダウンロードし、インストールします。 ビルド エージェントでシグネチャの更新に失敗した場合、Windows Update から **HRESULT** エラー コードが返される可能性があります。
 
-Windows Update のエラーとその軽減策について詳しくは、「[コンポーネント別の Windows Update エラーコード](https://docs.microsoft.com/windows/deployment/update/windows-update-error-reference)」および TechNet の記事「[Windows Update エージェント - エラーコード](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx)」をご覧ください。
+Windows Update のエラーとその軽減策について詳しくは、「[コンポーネント別の Windows Update エラーコード](/windows/deployment/update/windows-update-error-reference)」および TechNet の記事「[Windows Update エージェント - エラーコード](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx)」をご覧ください。
 
 このタスクの YAML 構成については、[Anti-Malware YAML オプション](yaml-configuration.md#anti-malware-scanner-task)に関するセクションを参照してください
 
@@ -95,20 +95,20 @@ BinSkim のコマンドライン引数、ID ごとのルール、終了コード
 ![Credential Scanner ビルド タスクの構成](./media/security-tools/3-taskdetails.png)
 
 利用可能なオプションは、次のとおりです。
-  - **表示名**: Azure DevOps タスクの名前です。 既定値は、Run Credential Scanner です
-  - **[Tool Major Version]\(ツール メジャー バージョン\)** : 使用可能な値は、**CredScan V2** と **CredScan V1** です。 **CredScan V2** バージョンを使用することをお勧めします。
+  - **表示名** : Azure DevOps タスクの名前です。 既定値は、Run Credential Scanner です
+  - **[Tool Major Version]\(ツール メジャー バージョン\)** : 使用可能な値は、 **CredScan V2** と **CredScan V1** です。 **CredScan V2** バージョンを使用することをお勧めします。
   - **[Output Format]\(出力形式\)** : 使用可能な値は、 **[TSV]** 、 **[CSV]** 、 **[SARIF]** 、 **[PREfast]** などです。
   - **[Tool Version]\(ツールのバージョン\)** : **[Latest]\(最新\)** を選択することをお勧めします。
   - **[Scan Folder]\(スキャン フォルダー\)** : スキャン対象のリポジトリ フォルダーです。
   - **[Searchers File Type]\(サーチャー ファイルの種類\)** : スキャンに使用されるサーチャー ファイルを探すためのオプションです。
   - **[Suppressions File]\(抑制ファイル\)** : [JSON](https://json.org/) ファイルでは、出力ログの問題を抑制できます。 抑制のシナリオについて詳しくは、この記事の FAQ セクションをご覧ください。
   - **[Verbose Output]\(詳細出力\)** : 名前のとおりです。
-  - **バッチ サイズ**:Credential Scanner の実行に使用する同時実行スレッドの数です。 既定値は 20 です。 指定できる値は 1 から 2,147,483,647 までです。
+  - **バッチ サイズ** :Credential Scanner の実行に使用する同時実行スレッドの数です。 既定値は 20 です。 指定できる値は 1 から 2,147,483,647 までです。
   - **[Match Timeout]\(照合タイムアウト\)** : サーチャーがチェックを中止する前に照合に費やす時間です (秒単位)。
   - **[File Scan Read Buffer Size]\(ファイル スキャン読み取りバッファー サイズ\)** サイズ: コンテンツの読み取り中に使用されるバッファーのバイト サイズです。 既定値は 524,288 です。  
   - **[Maximum File Scan Read Bytes]\(ファイル スキャン最大読み取りバイト数\)** : コンテンツの分析中にファイルから読み取る最大バイト数です。 既定値は 104,857,600 です。
   - **[Control Options]\(制御オプション\)**  >  **[Run this task]\(このタスクを実行する\)** : タスクをいつ実行するかを指定します。 さらに複雑な条件を指定するには、 **[Custom conditions]\(カスタム条件\)** を選択します。
-  - **バージョン**:Azure DevOps 内でのビルド タスクのバージョンです。 このオプションを使用することはあまりありません。
+  - **バージョン** :Azure DevOps 内でのビルド タスクのバージョンです。 このオプションを使用することはあまりありません。
 
 このタスクの YAML 構成については、[Credential Scanner の YAML オプション](yaml-configuration.md#credential-scanner-task)に関するセクションを参照してください
 
@@ -141,9 +141,9 @@ BinSkim のコマンドライン引数、ID ごとのルール、終了コード
 >
 >   この新しいビルド タスクは、既にビルドされている C# プロジェクトを再コンパイルすることによって実装されます。 新しいタスクでは、元のタスクと同じビルドまたはビルド定義に含まれる MSBuild および VSBuild のビルド タスクのみが使用されます。 しかし、この場合、新しいタスクでは Roslyn アナライザーが有効になっています。
 >
->   新しいタスクが元のタスクと同じエージェント上で実行される場合、新しいタスクの出力によって、*s* ソース フォルダー内の元のタスクの出力が上書きされます。 ビルド出力は同じものですが、MSBuild を実行し、出力を成果物のステージング ディレクトリにコピーしてから、Roslyn アナライザーを実行することをお勧めします。
+>   新しいタスクが元のタスクと同じエージェント上で実行される場合、新しいタスクの出力によって、 *s* ソース フォルダー内の元のタスクの出力が上書きされます。 ビルド出力は同じものですが、MSBuild を実行し、出力を成果物のステージング ディレクトリにコピーしてから、Roslyn アナライザーを実行することをお勧めします。
 
-Roslyn Analyzers タスクに関するその他のリソースについては、Microsoft Docs の「[Roslyn ベースのアナライザー](https://docs.microsoft.com/dotnet/standard/analyzers/api-analyzer)」を参照してください。
+Roslyn Analyzers タスクに関するその他のリソースについては、Microsoft Docs の「[Roslyn ベースのアナライザー](/dotnet/standard/analyzers/api-analyzer)」を参照してください。
 
 このビルド タスクによってインストールされて使用されるアナライザー パッケージは、NuGet の [Microsoft.CodeAnalysis.FxCopAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers) ページで確認できます。
 

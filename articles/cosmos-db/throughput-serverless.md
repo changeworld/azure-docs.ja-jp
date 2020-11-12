@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: d16343864d9602d644b31d34a2b66e39211b6ece
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: f6fbd963966dd1a5c433a97cb8d37ae22998be4c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079341"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491190"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>プロビジョニングされたスループットとサーバーレスのどちらかを選択する方法
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -19,9 +19,6 @@ ms.locfileid: "93079341"
 Azure Cosmos DB は、[プロビジョニングされたスループット](set-throughput.md)と[サーバーレス](serverless.md)の 2 つの異なる容量モードで利用できます。 どちらのモードでもまったく同じデータベース操作を実行できますが、これらの操作に対して課金される方法は大きく異なります。 次の動画では、これらのモードの主な違いと、さまざまな種類のワークロードにどのように適合するかについて説明します。
 
 > [!VIDEO https://www.youtube.com/embed/CgYQo6uHyt0]
-
-> [!NOTE]
-> 現在、サーバーレスは Azure Cosmos DB Core (SQL) API でのみサポートされています。
 
 ## <a name="detailed-comparison"></a>詳細な比較
 

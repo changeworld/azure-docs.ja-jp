@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3bb944badfbdffd703672f9e78619c70a148aae2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b0be672c0768b4facb6518c777d4fe56eb28aa9
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89293355"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515678"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>セキュリティ フレーム:入力の検証 | 軽減策 
 | 製品/サービス | [アーティクル] |
@@ -40,7 +40,7 @@ ms.locfileid: "89293355"
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [XSLT のセキュリティ](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx)[XsltSettings.EnableScript プロパティ](https://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
+| **参照**              | [XSLT のセキュリティ](/previous-versions/windows/desktop/ms763800(v=vs.85))[XsltSettings.EnableScript プロパティ](/dotnet/api/system.xml.xsl.xsltsettings.enablescript) |
 | **手順** | XSLT では、`<msxml:script>` 要素を使用したスタイル シート内でのスクリプト作成をサポートしています。 これにより、XSLT 変換でカスタム関数を使用できます。 スクリプトは、変換を実行するプロセスのコンテキストで実行されます。 信頼できないコードの実行を防ぐために、信頼できない環境では XSLT スクリプトを無効にする必要があります。 " *.NET を使用している場合:* " XSLT スクリプトは既定で無効になっています。ただし、`XsltSettings.EnableScript` プロパティによって明示的に有効にされていないことを確認する必要があります。|
 
 ### <a name="example"></a>例 
@@ -72,8 +72,8 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [IE8 のセキュリティ パート V: 包括的な保護](https://docs.microsoft.com/archive/blogs/ie/ie8-security-part-v-comprehensive-protection)  |
-| **手順** | <p>ユーザーが制御可能なコンテンツが含まれている可能性のある各ページで、`X-Content-Type-Options:nosniff` HTTP ヘッダーを使用する必要があります。 この要件に従うときは、ユーザーが制御可能なコンテンツが含まれている可能性のあるページだけを対象に、この必須のヘッダーをページごとに設定することも、アプリケーションのすべてのページにグローバルに設定することもできます。</p><p>Web サーバーから提供されるファイルの各種類には、コンテンツの性質 (画像、テキスト、アプリケーションなど) を示す [MIME の種類](https://en.wikipedia.org/wiki/Mime_type) ("*コンテンツ タイプ*" とも呼ばれます) が関連付けられています。</p><p>X-Content-Type-Options ヘッダーは、コンテンツを MIME スニッフィングしないことを開発者が指定できる HTTP ヘッダーです。 このヘッダーは、MIME スニッフィング攻撃を軽減することを目的としています。 このヘッダーのサポートは、Internet Explorer 8 (IE8) で追加されました。</p><p>Internet Explorer 8 (IE8) のユーザーだけが、X-Content-Type-Options のメリットを享受できます。 現在、以前のバージョンの Internet Explorer では、X-Content-Type-Options ヘッダーは考慮されません。</p><p>Internet Explorer 8 (以降) は、MIME スニッフィングのオプトアウト機能を実装する唯一の主要ブラウザーです。 他の主要ブラウザー (Firefox、Safari、Chrome) が同様の機能を実装したら、この推奨事項を更新して、それらのブラウザー用の構文も含める予定です。</p>|
+| **参照**              | [IE8 のセキュリティ パート V: 包括的な保護](/archive/blogs/ie/ie8-security-part-v-comprehensive-protection)  |
+| **手順** | <p>ユーザーが制御可能なコンテンツが含まれている可能性のある各ページで、`X-Content-Type-Options:nosniff` HTTP ヘッダーを使用する必要があります。 この要件に従うときは、ユーザーが制御可能なコンテンツが含まれている可能性のあるページだけを対象に、この必須のヘッダーをページごとに設定することも、アプリケーションのすべてのページにグローバルに設定することもできます。</p><p>Web サーバーから提供されるファイルの各種類には、コンテンツの性質 (画像、テキスト、アプリケーションなど) を示す [MIME の種類](https://en.wikipedia.org/wiki/Mime_type) (" *コンテンツ タイプ* " とも呼ばれます) が関連付けられています。</p><p>X-Content-Type-Options ヘッダーは、コンテンツを MIME スニッフィングしないことを開発者が指定できる HTTP ヘッダーです。 このヘッダーは、MIME スニッフィング攻撃を軽減することを目的としています。 このヘッダーのサポートは、Internet Explorer 8 (IE8) で追加されました。</p><p>Internet Explorer 8 (IE8) のユーザーだけが、X-Content-Type-Options のメリットを享受できます。 現在、以前のバージョンの Internet Explorer では、X-Content-Type-Options ヘッダーは考慮されません。</p><p>Internet Explorer 8 (以降) は、MIME スニッフィングのオプトアウト機能を実装する唯一の主要ブラウザーです。 他の主要ブラウザー (Firefox、Safari、Chrome) が同様の機能を実装したら、この推奨事項を更新して、それらのブラウザー用の構文も含める予定です。</p>|
 
 ### <a name="example"></a>例
 この必須のヘッダーをアプリケーションのすべてのページでグローバルに有効にするには、次のいずれかを実行します。 
@@ -141,7 +141,7 @@ this.Response.Headers[""X-Content-Type-Options""] = ""nosniff"";
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [XML エンティティの展開](https://capec.mitre.org/data/definitions/197.html)、[XML サービス拒否攻撃と防御策](https://msdn.microsoft.com/magazine/ee335713.aspx)、[MSXML のセキュリティの概要](https://msdn.microsoft.com/library/ms754611(v=VS.85).aspx)、[MSXML コードをセキュリティで保護するためのベスト プラクティス](https://msdn.microsoft.com/library/ms759188(VS.85).aspx)、[NSXMLParserDelegate プロトコル リファレンス](https://developer.apple.com/library/ios/#documentation/cocoa/reference/NSXMLParserDelegate_Protocol/Reference/Reference.html)、[外部参照の解決](https://msdn.microsoft.com/library/5fcwybb2.aspx) |
+| **参照**              | [XML エンティティの展開](https://capec.mitre.org/data/definitions/197.html)、[XML サービス拒否攻撃と防御策](/archive/msdn-magazine/2009/november/xml-denial-of-service-attacks-and-defenses)、[MSXML のセキュリティの概要](/previous-versions/windows/desktop/ms754611(v=vs.85))、[MSXML コードをセキュリティで保護するためのベスト プラクティス](/previous-versions/windows/desktop/ms759188(v=vs.85))、[NSXMLParserDelegate プロトコル リファレンス](https://developer.apple.com/library/ios/#documentation/cocoa/reference/NSXMLParserDelegate_Protocol/Reference/Reference.html)、[外部参照の解決](/dotnet/standard/data/xml/resolving-external-resources) |
 | **手順**| <p>広く使用されているわけではありませんが、XML パーサーが、ドキュメント内で定義された値または外部ソースの値でマクロ エンティティを展開できる XML の機能があります。 たとえば、ドキュメントで "Microsoft" という値を使用して "companyname" というエンティティが定義されている場合、ドキュメントに "&companyname;" というテキストが出現するたびに、"Microsoft" というテキストに自動的に置き換えられます。 または、Microsoft の現在の株価を取得する外部 Web サービスを参照する "MSFTStock" というエンティティがドキュメントで定義されているとします。</p><p>この場合、ドキュメントに "&MSFTStock;" が出現するたびに、現在の株価に自動的に置き換えられます。 ただし、この機能が悪用され、サービス拒否 (DoS) の状況が発生する可能性があります。 攻撃者は、複数のエンティティを入れ子にして、システムの使用可能なすべてのメモリを消費する、指数関数的展開 XML 爆弾を作成する可能性があります。 </p><p>また、膨大な量のデータをストリーミングする外部参照やスレッドを単にハングさせる外部参照を作成する可能性もあります。 そのため、アプリケーションで内部および外部 XML エンティティの解決を使用しない場合は、すべてのチームがこの機能を完全に無効にする必要があります。この機能がどうしても必要な場合は、アプリケーションがエンティティの解決に使用できるメモリの量と時間を手動で制限します。 アプリケーションでエンティティの解決が不要な場合は無効にします。 </p>|
 
 ### <a name="example"></a>例
@@ -204,7 +204,7 @@ MSXML6 では、ProhibitDTD は既定で true (DTD 処理の無効化) に設定
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
-| **手順** | <p>http.sys を使用するアプリケーションは、次のガイドラインに従う必要があります。</p><ul><li>URL の長さを 16,384 文字以下 (ASCII または Unicode) に制限します。 これは、インターネット インフォメーション サービス (IIS) 6 の既定の設定に基づく URL の絶対最大長です。 可能であれば、Web サイトでこれよりも短い長さにすることを目指します。</li><li>.NET Framework の標準のファイル I/O クラス (FileStream など) では、.NET FX の正規化規則を利用するので、これらのクラスを使用します。</li><li>既知のファイル名の許可リストを明示的に作成します。</li><li>UrlScan の拒否を適用しない既知のファイルの種類 (exe、bat、cmd、com、htw、ida、idq、htr、idc、shtm[l]、stm、printer、ini、pol、dat の各ファイル) を明示的に拒否します。</li><li>次の例外をキャッチします。<ul><li>System.ArgumentException (デバイス名)</li><li>System.NotSupportedException (データ ストリーム)</li><li>System.IO.FileNotFoundException (エスケープされた無効なファイル名)</li><li>System.IO.DirectoryNotFoundException (エスケープされた無効なディレクトリ)</li></ul></li><li>Win32 ファイル I/O API は*呼び出さない*でください。 無効な URL では、ユーザーに 400 エラーを適切に返し、実際のエラーをログに記録します。</li></ul>|
+| **手順** | <p>http.sys を使用するアプリケーションは、次のガイドラインに従う必要があります。</p><ul><li>URL の長さを 16,384 文字以下 (ASCII または Unicode) に制限します。 これは、インターネット インフォメーション サービス (IIS) 6 の既定の設定に基づく URL の絶対最大長です。 可能であれば、Web サイトでこれよりも短い長さにすることを目指します。</li><li>.NET Framework の標準のファイル I/O クラス (FileStream など) では、.NET FX の正規化規則を利用するので、これらのクラスを使用します。</li><li>既知のファイル名の許可リストを明示的に作成します。</li><li>UrlScan の拒否を適用しない既知のファイルの種類 (exe、bat、cmd、com、htw、ida、idq、htr、idc、shtm[l]、stm、printer、ini、pol、dat の各ファイル) を明示的に拒否します。</li><li>次の例外をキャッチします。<ul><li>System.ArgumentException (デバイス名)</li><li>System.NotSupportedException (データ ストリーム)</li><li>System.IO.FileNotFoundException (エスケープされた無効なファイル名)</li><li>System.IO.DirectoryNotFoundException (エスケープされた無効なディレクトリ)</li></ul></li><li>Win32 ファイル I/O API は *呼び出さない* でください。 無効な URL では、ユーザーに 400 エラーを適切に返し、実際のエラーをログに記録します。</li></ul>|
 
 ## <a name="ensure-appropriate-controls-are-in-place-when-accepting-files-from-users"></a><a id="controls-users"></a>ユーザーからのファイルを受け入れるときは必ず適切な制御を行う
 
@@ -360,7 +360,7 @@ myCommand.Fill(userDataset);
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | MVC5、MVC6 |
 | **属性**              | 該当なし  |
-| **参照**              | [メタデータ属性](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.metadatatypeattribute)、[公開キーのセキュリティの脆弱性と軽減策](https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation)、[ASP.NET MVC の一括割り当ての完全ガイド](https://odetocode.com/Blogs/scott/archive/2012/03/11/complete-guide-to-mass-assignment-in-asp-net-mvc.aspx)、[ MVC を使用した EF の概要](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) |
+| **参照**              | [メタデータ属性](/dotnet/api/system.componentmodel.dataannotations.metadatatypeattribute)、[公開キーのセキュリティの脆弱性と軽減策](https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation)、[ASP.NET MVC の一括割り当ての完全ガイド](https://odetocode.com/Blogs/scott/archive/2012/03/11/complete-guide-to-mass-assignment-in-asp-net-mvc.aspx)、[ MVC を使用した EF の概要](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) |
 | **手順** | <ul><li>**オーバーポスティングの脆弱性を調べる必要があるのはどのような場合ですか? -** オーバーポスティングの脆弱性はユーザー入力からモデル クラスをバインドするあらゆる場所で発生する可能性があります。 MVC のようなフレームワークでは、Plain Old CLR Object (POCO) などのカスタム .NET クラスでユーザー データを表すことができます。 MVC では、要求から取得したデータが自動的にモデル クラスに設定されるので、ユーザー入力を処理する際の便利な表現が提供されます。 これらのクラスにユーザーが設定できないプロパティが含まれていると、アプリケーションはオーバーポスティング攻撃に対して脆弱になる可能性があります。オーバーポスティング攻撃では、アプリケーションが意図していなかったデータをユーザーが制御できるようになります。 MVC のモデル バインドと同様に、Entity Framework のようなオブジェクト/リレーショナル マッパーなどのデータ アクセス テクノロジも、多くの場合、POCO オブジェクトを使用したデータベース データの表現をサポートしています。 これらのデータ モデル クラスでは、データベース データを処理するときに、MVC がユーザー入力を処理するときと同様の利便性を提供します。 MVC とデータベースはどちらも POCO オブジェクトなどの類似するモデルをサポートしているため、両方の目的に同じクラスを再利用しやすいように思われます。 この方法では関心の分離を維持できません。これは、意図しないプロパティがモデル バインドに公開され、オーバーポスティング攻撃が可能になる一般的な領域の 1 つです。</li><li>**フィルター処理されていないデータベース モデル クラスを MVC アクションのパラメーターとして使用しないようにする必要があるのはなぜですか? -** MVC のモデル バインドはそのクラスのあらゆるものをバインドするからです。 データがビューに表示されなくても、悪意のあるユーザーはそのデータが含まれた HTTP 要求を送信できます。アクションによって、データベース クラスがユーザー入力を受け入れる必要があるデータ構造であることが伝えられるため、MVC はデータをバインドします。</li><li>**モデル バインドに使用する構造に注意する必要があるのはなぜですか? -** ASP.NET MVC のモデル バインドを非常に多くのモデルで使用すると、アプリケーションがオーバーポスティング攻撃にさらされます。 オーバーポスティングにより、攻撃者は開発者が意図していた範囲を超えてアプリケーション データを変更できるようになる可能性があります (商品の価格やアカウントのセキュリティ特権のオーバーライドなど)。 アプリケーションでは、アクション固有のバインド モデル (または明確な許容プロパティ フィルター リスト) を使用して、モデル バインドによって許可する信頼できない入力に関する明示的なコントラクトを提供する必要があります。</li><li>**個々のバインド モデルは複製コードを使用するのですか? -** いいえ。関心の分離の問題です。 アクション メソッドでデータベース モデルを再利用した場合、HTTP 要求でそのクラスのあらゆるプロパティ (またはサブプロパティ) をユーザーが設定できることになります。 これが望ましくない場合は、ユーザー入力から取得できるデータを MVC に示すフィルター リストまたは別のクラス構造が必要です。</li><li>**ユーザー入力用の個別のバインド モデルがある場合、すべてのデータ注釈属性を複製する必要がありますか? -** その必要はありません。 データベース モデル クラスの MetadataTypeAttribute を使用して、モデル バインド クラスのメタデータにリンクできます。 MetadataTypeAttribute が参照する型は、参照元の型のサブセットである必要があります (プロパティが減る可能性はありますが、増えることはありません)。</li><li>**ユーザー入力モデルとデータベース モデル間でデータを移動するのが面倒です。リフレクションを使用してすべてのプロパティをコピーすることはできますか? -** はい。 バインド モデルで表示されるのは、ユーザー入力でも安全であると開発者が判断したプロパティだけです。 リフレクションを使用して、この 2 つのモデル間で共通して存在するすべてのプロパティをコピーすることを妨げるセキュリティ上の理由はありません。</li><li>**[Bind(Exclude ="â&euro;¦")] はどうでしょうか。個別のバインド モデルを用意する代わりに、これを使用することはできますか? -** この方法はお勧めしません。 [Bind(Exclude ="â&euro;¦")] を使用すると、すべての新しいプロパティが既定でバインド可能になります。 新しいプロパティが追加されたときに、設計が既定でセキュリティ保護されるのではなく、セキュリティを維持するために忘れずに実行する必要がある余分な手順が発生します。 開発者によっては、プロパティが追加されるたびにこのリストを確認するのはリスクが伴います。</li><li>**Is [Bind(Include ="â&euro;¦")] は編集操作に役立ちますか? -** いいえ。 [Bind(Include ="â&euro;¦")] は挿入スタイルの操作 (新しいデータの追加) にのみ適しています。 更新スタイルの操作 (既存のデータの変更) の場合、別の方法を使用します。たとえば、個別のバインド モデルを使用するか、許容されるプロパティの明示的なリストを UpdateModel または TryUpdateModel に渡します。 編集操作に [Bind(Include ="â&euro;¦")] 属性を追加すると、MVC はオブジェクト インスタンスを作成し、リストされたプロパティのみを設定して、他のすべてのプロパティはデフォルト値のままにします。 データが永続化されている場合は、既存のエンティティが完全に置き換えられ、省略されたプロパティの値が既定値にリセットされます。 たとえば、編集操作で [Bind(Include ="â&euro;¦")] 属性から IsAdmin が省略された場合、このアクションによって名前が編集されたすべてのユーザーが IsAdmin = false にリセットされます (編集されたすべてのユーザーが管理者のステータスを失います)。 特定のプロパティが更新されないようにする場合は、前述の方法のいずれかを使用します。 MVC ツールの一部のバージョンは、編集アクションで [Bind(Include ="â&euro;¦")] を指定してコントローラー クラスを生成し、そのリストからプロパティを削除することでオーバーポスティング攻撃を防止することに注意してください。 ただし、前述のように、この方法は意図したとおりに機能するわけではなく、省略されたプロパティのデータが既定値にリセットされます。</li><li>**作成操作において、別々のバインド モデルではなく、[Bind(Include ="â&euro;¦")] を使用することに関して注意事項はありますか? -** はい。 第 1 に、この方法は、オーバーポスティングのすべての脆弱性を軽減するために 2 つの方法を維持する必要がある編集シナリオには適していません。 第 2 に、別々のバインド モデルでは、ユーザー入力に使用される構造と永続化に使用される構造の間で関心の分離が適用されます。これは [Bind(Include ="â&euro;¦")] では行われません。 第 3 に、[Bind(Include ="â&euro;¦")] が処理できるのは最上位レベルのプロパティのみであることに注意してください。属性のサブプロパティの部分 ("Details.Name" など) のみを許可することはできません。 最後に、おそらく最も重要な点として、[Bind(Include ="â&euro;¦")] を使用すると、モデル バインドにそのクラスが使用されるたびに、覚えておく必要のある手順が追加されます。 新しいアクション メソッドが直接データ クラスにバインドされ、[Bind(Include ="â&euro;¦")] 属性が含まれていない場合は、オーバーポスティング攻撃に対して脆弱になる可能性があるため、[Bind(Include ="â&euro;¦")] の方法は既定で安全性が若干低くなります。 [Bind(Include ="â&euro;¦")] を使用する場合、データ クラスがアクション メソッドのパラメーターとして使用されるときは必ず毎回指定するようにしてください。</li><li>**作成操作において、モデル クラス自体に [Bind(Include ="â&euro;¦")] 属性を配置するとどうなりますか? この方法なら、各アクション メソッドにこの属性を忘れずに配置する必要はなくなるのではありませんか? -** この方法は場合によっては有効です。 (このクラスを使用するアクション パラメーターではなく) そのモデルの型自体に [Bind(Include ="â&euro;¦")] を使用すると、すべてのアクション メソッドに [Bind(Include ="â&euro;¦")] 属性を忘れずに含める必要がなくなります。 モデル バインドのために、この属性をクラスで直接使用すると、そのクラスのセキュリティが実質的に強化されます。 ただし、この方法では、モデル クラスごとに使用できるモデル バインド構造は 1 つだけになります。 あるアクション メソッドでフィールドのモデル バインドを許可する必要があり (ユーザー ロールを更新する管理者専用のアクションなど)、その他のアクションではそのフィールドのモデル バインドを防ぐ必要がある場合、この方法は機能しません。 各クラスに指定できるモデル バインド構造は 1 つだけです。別のアクションで別のモデル バインド構造が必要な場合は、アクション メソッドで別個のモデル バインド クラスまたは別個の [Bind(Include ="â&euro;¦")] 属性を使用して、それらの別個の構造を表現する必要があります。</li><li>**バインド モデルとはなんですか?ビュー モデルと同じものですか? -** これらは 2 つの関連する概念です。 バインド モデルという用語は、アクションのパラメーター リストで使用されるモデル クラスを指します (MVC のモデル バインドからアクション メソッドに渡される構造)。 ビュー モデルという用語は、アクション メソッドからビューに渡されるモデル クラスを指します。 アクション メソッドからビューにデータを渡す一般的な方法は、ビュー固有のモデルを使用することです。 多くの場合は、この構造はモデル バインドにも適しており、ビュー モデルという用語を使用して、両方の場所で使用される同じモデルを指すことができます。 正確に言うと、この手順では、一括割り当てのために重要となる、アクションに渡される構造に重点を置いて、バインド モデルについて具体的に伝えます。</li></ul>| 
 
 ## <a name="encode-untrusted-web-output-prior-to-rendering"></a><a id="rendering"></a>レンダリングの前に信頼できない Web 出力をエンコードする
@@ -371,7 +371,7 @@ myCommand.Fill(userDataset);
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック、Web フォーム、MVC5、MVC6 |
 | **属性**              | 該当なし  |
-| **参照**              | [ASP.NET でクロスサイト スクリプトを防止する方法](https://msdn.microsoft.com/library/ms998274.aspx)、[クロスサイト スクリプト](https://cwe.mitre.org/data/definitions/79.html)、[XSS (クロスサイト スクリプト) 防止チート シート](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) |
+| **参照**              | [ASP.NET でクロスサイト スクリプトを防止する方法](/previous-versions/msp-n-p/ff649310(v=pandp.10))、[クロスサイト スクリプト](https://cwe.mitre.org/data/definitions/79.html)、[XSS (クロスサイト スクリプト) 防止チート シート](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) |
 | **手順** | クロスサイト スクリプト (一般的な略称は XSS) は、Web からの入力を使用するオンライン サービスやアプリケーション/コンポーネントに対する攻撃ベクトルです。 XSS 脆弱性により、攻撃者が脆弱な Web アプリケーションを使用して別のユーザーのコンピューターでスクリプトを実行できるようになる場合があります。 悪意のあるスクリプトを使用して Cookie を窃取したり、JavaScript を使用して攻撃対象のコンピューターを改ざんしたりする可能性があります。 XSS を防ぐには、ユーザー入力を検証し、形式が適切であることを確認して、Web ページにレンダリングされる前にエンコードします。 入力の検証と出力エンコードは、Web Protection Library を使用して実行できます。 マネージド コード(C\#、VB.NET など) の場合、ユーザー入力が使用されるコンテキストに応じて、Web Protection (XSS 対策) Library の適切なエンコード メソッドを 1 つ以上使用します。| 
 
 ### <a name="example"></a>例
@@ -396,7 +396,7 @@ myCommand.Fill(userDataset);
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック、MVC5、MVC6 |
 | **属性**              | 該当なし  |
-| **参照**              | [検証の追加](https://www.asp.net/mvc/overview/getting-started/introduction/adding-validation)、[MVC アプリケーションでのモデル データの検証](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx)、[ASP.NET MVC アプリケーションの基本原則](https://msdn.microsoft.com/magazine/dd942822.aspx) |
+| **参照**              | [検証の追加](https://www.asp.net/mvc/overview/getting-started/introduction/adding-validation)、[MVC アプリケーションでのモデル データの検証](/previous-versions/dd410404(v=vs.90))、[ASP.NET MVC アプリケーションの基本原則](/archive/msdn-magazine/2009/brownfield/extreme-asp-net-guiding-principles-for-your-asp-net-mvc-applications) |
 | **手順** | <p>悪意のあるユーザー入力からアプリケーションを確実に保護するには、アプリケーションで入力パラメーターが使用される前に、すべての入力パラメーターを検証する必要があります。 サーバー側で許可リスト方式の正規表現の検証を使用して入力値を検証します。 サニタイズされていないユーザー入力やパラメーターがメソッドに渡されると、コード インジェクションの脆弱性が発生する可能性があります。</p><p>Web アプリケーションの場合、エントリ ポイントにフォーム フィールド、クエリ文字列、Cookie、HTTP ヘッダー、Web サービス パラメーターが含まれている可能性もあります。</p><p>モデル バインド時に、次の入力検証チェックを実行する必要があります。</p><ul><li>許容される文字と最大許容長を受け入れるために、モデルのプロパティに注釈として RegularExpression を設定する必要があります。</li><li>コントローラーのメソッドで ModelState の有効性チェックを実行します。</li></ul>|
 
 ## <a name="sanitization-should-be-applied-on-form-fields-that-accept-all-characters-eg-rich-text-editor"></a><a id="richtext"></a>すべての文字を受け入れるフォーム フィールド (リッチ テキスト エディターなど) にはサニタイズを適用する必要がある
@@ -407,7 +407,7 @@ myCommand.Fill(userDataset);
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [安全でない入力のエンコード](https://msdn.microsoft.com/library/ff647397.aspx#paght000003_step3)、[HTML サニタイザー](https://github.com/mganss/HtmlSanitizer) |
+| **参照**              | [安全でない入力のエンコード](/previous-versions/msp-n-p/ff647397(v=pandp.10)#paght000003_step3)、[HTML サニタイザー](https://github.com/mganss/HtmlSanitizer) |
 | **手順** | <p>使用するすべての静的マークアップ タグを特定します。 一般的な方法は、書式設定を安全な HTML 要素 (`<b>` (太字) や `<i>` (斜体) など) に制限することです。</p><p>データを書き込む前に HTML エンコードします。 これにより、スクリプトは実行可能コードとしてではなく、テキストとして処理されるので、悪意のあるスクリプトが安全になります。</p><ol><li>ValidateRequest="false" 属性を \@ Page ディレクティブに追加して、ASP.NET 要求の検証を無効にします。</li><li>HtmlEncode メソッドを使用して文字列入力をエンコードします。</li><li>StringBuilder を使用し、Replace メソッドを呼び出して、許可する HTML 要素のエンコードを選択的に削除します。</li></ol><p>参照のページインにより、`ValidateRequest="false"` が設定され、ASP.NET 要求の検証が無効になります。 入力が HTML エンコードされ、`<b>` と `<i>` が選択的に許可されます。別の方法として、HTML サニタイズ用 .NET ライブラリを使用することもできます。</p><p>HtmlSanitizer は、XSS 攻撃につながる可能性のある構造から HTML フラグメントや HTML ドキュメントを取り除くための .NET ライブラリです。 HtmlSanitizer では、AngleSharp を使用して HTML と CSS の解析、操作、レンダリングを実行します。 HtmlSanitizer は NuGet パッケージとしてインストールできます。ユーザー入力は、サーバー側で適切な HTML または CSS サニタイズ メソッドを使用して渡すことができます (該当する場合)。 セキュリティ制御としてのサニタイズは、あくまで最後の手段と考える必要があることに注意してください。</p><p>入力の検証と出力エンコードの方が優れたセキュリティ制御と見なされます。</p> |
 
 ## <a name="do-not-assign-dom-elements-to-sinks-that-do-not-have-inbuilt-encoding"></a><a id="inbuilt-encode"></a>エンコードが組み込まれていないシンクに DOM 要素を割り当てない
@@ -451,7 +451,7 @@ $('body').append(resHTML);
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック、MVC5、MVC6 |
 | **属性**              | 該当なし  |
-| **参照**              | [MVC アプリケーションでのモデル データの検証](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx)、[ASP.NET MVC アプリケーションの基本原則](https://msdn.microsoft.com/magazine/dd942822.aspx) |
+| **参照**              | [MVC アプリケーションでのモデル データの検証](/previous-versions/dd410404(v=vs.90))、[ASP.NET MVC アプリケーションの基本原則](/archive/msdn-magazine/2009/brownfield/extreme-asp-net-guiding-principles-for-your-asp-net-mvc-applications) |
 | **手順** | 引数としてプリミティブ データ型だけを受け入れ、モデルは受け入れないメソッドでは、正規表現を使用した入力の検証を実行する必要があります。 この場合、有効な regex パターンで Regex.IsMatch を使用します。 入力が指定した正規表現と一致しない場合は、制御を進めないようにし、検証エラーに関する適切な警告を表示する必要があります。| 
 
 ## <a name="set-upper-limit-timeout-for-regular-expression-processing-to-prevent-dos-due-to-bad-regular-expressions"></a><a id="dos-expression"></a>正しくない正規表現に起因する DoS を防ぐために正規表現の処理の上限タイムアウトを設定する
@@ -462,7 +462,7 @@ $('body').append(resHTML);
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック、Web フォーム、MVC5、MVC6  |
 | **属性**              | 該当なし  |
-| **参照**              | [DefaultRegexMatchTimeout プロパティ](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.defaultregexmatchtimeout.aspx) |
+| **参照**              | [DefaultRegexMatchTimeout プロパティ](/dotnet/api/system.web.configuration.httpruntimesection.defaultregexmatchtimeout) |
 | **手順** | 適切に作成されていない正規表現に対するサービス拒否攻撃により、大量のバックトラッキングが発生します。このようなサービス拒否攻撃を防ぐには、グローバルな既定のタイムアウトを設定します。 処理時間が定義されている上限を超えた場合、タイムアウト例外をスローします。 何も構成されていない場合、タイムアウトが無限になります。| 
 
 ### <a name="example"></a>例
@@ -622,7 +622,7 @@ namespace MyApi.Controllers
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック、MVC 5、MVC 6 |
 | **属性**              | 該当なし  |
-| **参照**              | [MVC アプリケーションでのモデル データの検証](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx)、[ASP.NET MVC アプリケーションの基本原則](https://msdn.microsoft.com/magazine/dd942822.aspx) |
+| **参照**              | [MVC アプリケーションでのモデル データの検証](/previous-versions/dd410404(v=vs.90))、[ASP.NET MVC アプリケーションの基本原則](/archive/msdn-magazine/2009/brownfield/extreme-asp-net-guiding-principles-for-your-asp-net-mvc-applications) |
 | **手順** | 引数としてプリミティブ データ型だけを受け入れ、モデルは受け入れないメソッドでは、正規表現を使用した入力の検証を実行する必要があります。 この場合、有効な regex パターンで Regex.IsMatch を使用します。 入力が指定した正規表現と一致しない場合は、制御を進めないようにし、検証エラーに関する適切な警告を表示する必要があります。|
 
 ## <a name="ensure-that-type-safe-parameters-are-used-in-web-api-for-data-access"></a><a id="typesafe-api"></a>Web API でデータ アクセスにタイプ セーフなパラメーターが使用されていることを確認する
@@ -674,7 +674,7 @@ myCommand.Fill(userDataset);
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff647820.aspx) |
+| **参照**              | [MSDN](/previous-versions/msp-n-p/ff647820(v=pandp.10)) |
 | **手順** | <p>検証が行われていない場合、さまざまな種類のインジェクション攻撃が発生します。</p><p>メッセージの検証は、WCF アプリケーションの保護における防御手段の 1 つとなります。 このアプローチでは、悪意のあるクライアントによる攻撃から WCF サービス操作を保護するために、スキーマを使用してメッセージを検証します。 また、悪意のあるサービスによる攻撃からクライアントを保護するために、クライアントが受信したすべてのメッセージを検証します。 メッセージの検証により、操作でメッセージ コントラクトまたはデータ コントラクトが使用されているときに、メッセージを検証することが可能になります。これは、パラメーターの検証では実現できません。 メッセージの検証では、スキーマ内で検証ロジックを作成できるので、柔軟性が向上し、開発時間が短縮されます。 データ表現の標準を作成することで、組織内のさまざまなアプリケーションでスキーマを再利用できます。 さらに、メッセージの検証により、ビジネス ロジックを表すコントラクトを含む複雑なデータ型を使用する操作を保護することもできます。</p><p>メッセージの検証を実行するには、まず、サービスの操作とそれらの操作で使用されるデータ型を表すスキーマを作成します。 その後、サービスとの間で送受信されるメッセージを検証するために、カスタム クライアント メッセージ インスペクターとカスタム ディスパッチャー メッセージ インスペクターを実装した .NET クラスを作成します。 次に、クライアントとサービスの両方でメッセージの検証を有効にするカスタム エンドポイント動作を実装します。 最後に、サービスまたはクライアントの構成ファイル内で拡張されたカスタム エンドポイント動作を公開できるようにするためのカスタム構成要素をクラスに実装します。</p>|
 
 ## <a name="wcf--input-validation-through-parameter-inspectors"></a><a id="parameters"></a>WCF - パラメーター インスペクターを使用した入力の検証
@@ -685,5 +685,5 @@ myCommand.Fill(userDataset);
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff647875.aspx) |
+| **参照**              | [MSDN](/previous-versions/msp-n-p/ff647875(v=pandp.10)) |
 | **手順** | <p>入力とデータの検証は、WCF アプリケーションの保護における重要な防御手段の 1 つとなります。 悪意のあるクライアントによる攻撃からサービスを保護するために、WCF サービス操作で公開されているすべてのパラメーターを検証する必要があります。 逆に、悪意のあるサービスによる攻撃からクライアントを保護するために、クライアントから受信したすべての戻り値も検証する必要があります。</p><p>WCF には、カスタムの拡張機能を作成して WCF ランタイムの動作をカスタマイズできる、さまざまな機能拡張ポイントが用意されています。 メッセージ インスペクターとパラメーター インスペクターは、クライアントとサービスの間で受け渡されるデータの制御を強化するために使用する 2 つの拡張メカニズムです。 入力の検証にパラメーター インスペクターを使用し、サービスで送受信されるメッセージ全体を検査する必要がある場合にのみ、メッセージ インスペクターを使用します。</p><p>入力の検証を実行するには、サービスにおける操作でパラメーターを検証するために、.NET クラスを作成し、カスタム パラメーター インスペクターを実装します。 次に、クライアントとサービスの両方で検証を有効にするカスタム エンドポイント動作を実装します。 最後に、サービスまたはクライアントの構成ファイル内で拡張されたカスタム エンドポイント動作を公開できるようにするためのカスタム構成要素をクラスに実装します。</p>|

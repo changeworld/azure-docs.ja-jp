@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-js, devx-track-csharp
-ms.openlocfilehash: c26acb1460516781b34a5dcc861164e9ef87a37a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1f4d4a3bb78da82753d651e1a73cf244096d5df
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331626"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518103"
 ---
 # <a name="security-frame-session-management"></a>セキュリティ フレーム:セッションの管理
 | 製品/サービス | [アーティクル] |
@@ -159,8 +159,8 @@ Session.Abandon() メソッドを呼び出して、ユーザーのセッショ�
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | EnvironmentType - OnPrem |
-| **参照**              | [httpCookies 要素 (ASP.NET 設定スキーマ)](https://msdn.microsoft.com/library/ms228262(v=vs.100).aspx)、 [HttpCookie.Secure プロパティ](https://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
-| **手順** | 通常、cookie はそれがスコープ指定されたドメインからのみアクセスできます。 残念ながら、"domain" の定義にはプロトコルが含まれないため、HTTPS 経由で作成された cookie に HTTP 経由でアクセスできます。 "secure" 属性は、cookie を HTTPS 経由でのみ使用できるようにする必要があることをブラウザーに示します。 HTTPS で設定されるすべての cookie が、**secure** 属性を使うようにする必要があります。 この要件は、web.config ファイルで requireSSL 属性を true に設定することによって適用できます。 これは、コードを変更することなく、現在および将来のすべての cookie に **secure** 属性を強制できるので、推奨される方法です。|
+| **参照**              | [httpCookies 要素 (ASP.NET 設定スキーマ)](/previous-versions/dotnet/netframework-4.0/ms228262(v=vs.100))、 [HttpCookie.Secure プロパティ](/dotnet/api/system.web.httpcookie.secure) |
+| **手順** | 通常、cookie はそれがスコープ指定されたドメインからのみアクセスできます。 残念ながら、"domain" の定義にはプロトコルが含まれないため、HTTPS 経由で作成された cookie に HTTP 経由でアクセスできます。 "secure" 属性は、cookie を HTTPS 経由でのみ使用できるようにする必要があることをブラウザーに示します。 HTTPS で設定されるすべての cookie が、 **secure** 属性を使うようにする必要があります。 この要件は、web.config ファイルで requireSSL 属性を true に設定することによって適用できます。 これは、コードを変更することなく、現在および将来のすべての cookie に **secure** 属性を強制できるので、推奨される方法です。|
 
 ### <a name="example"></a>例
 ```csharp
@@ -221,7 +221,7 @@ cookie を使うすべての HTTP ベースのアプリケーションでは、w
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | Web フォーム |
 | **属性**              | 該当なし  |
-| **参照**              | [FormsAuthentication.RequireSSL プロパティ](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
+| **参照**              | [FormsAuthentication.RequireSSL プロパティ](/dotnet/api/system.web.security.formsauthentication.requiressl) |
 | **手順** | RequireSSL プロパティの値は、ASP.NET アプリケーション用の構成ファイルで、構成要素の requireSSL 属性を使うことにより設定します。 ASP.NET アプリケーション用の Web.config ファイルで、requireSSL 属性を設定することにより、トランスポート層セキュリティ (TLS) (以前の SSL (Secure Sockets Layer)) が forms-authentication cookie をサーバーに返す必要があるかどうかを指定できます。|
 
 ### <a name="example"></a>例 
@@ -238,7 +238,7 @@ cookie を使うすべての HTTP ベースのアプリケーションでは、w
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | MVC5 |
 | **属性**              | EnvironmentType - OnPrem |
-| **参照**              | [Windows Identity Foundation (WIF) の構成 – 第 II 部](https://blogs.msdn.microsoft.com/alikl/2011/02/01/windows-identity-foundation-wif-configuration-part-ii-cookiehandler-chunkedcookiehandler-customcookiehandler/) |
+| **参照**              | [Windows Identity Foundation (WIF) の構成 – 第 II 部](/archive/blogs/alikl/windows-identity-foundation-wif-configuration-part-ii-cookiehandler-chunkedcookiehandler-customcookiehandler) |
 | **手順** | FedAuth cookie の httpOnly 属性を設定するには、hideFromCsript 属性の値を True に設定する必要があります。 |
 
 ### <a name="example"></a>例
@@ -358,7 +358,7 @@ void ValidateRequestHeader(HttpRequestMessage request)
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | Web フォーム |
 | **属性**              | 該当なし  |
-| **参照**              | [ASP.NET の組み込み機能を活用し、Web 攻撃を回避する](https://msdn.microsoft.com/library/ms972969.aspx#securitybarriers_topic2) |
+| **参照**              | [ASP.NET の組み込み機能を活用し、Web 攻撃を回避する](/previous-versions/dotnet/articles/ms972969(v=msdn.10)#securitybarriers_topic2) |
 | **手順** | WebForm ベースのアプリケーションでの CSRF 攻撃は、ユーザーごとに異なるランダムな文字列 (ユーザー ID、またはもっとよいのはセッション ID) を ViewStateUserKey に設定することによって軽減できます。 さまざまな技術的および社会的な理由により、セッション ID の方がはるかに適しています。セッション ID は予測できず、タイムアウトし、ユーザーごとに異なるためです。|
 
 ### <a name="example"></a>例
@@ -378,7 +378,7 @@ void Page_Init (object sender, EventArgs e) {
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [HttpSessionState.Timeout プロパティ](https://msdn.microsoft.com/library/system.web.sessionstate.httpsessionstate.timeout(v=vs.110).aspx) |
+| **参照**              | [HttpSessionState.Timeout プロパティ](/dotnet/api/system.web.sessionstate.httpsessionstate.timeout) |
 | **手順** | セッションのタイムアウトは、Web サーバーで定義されている期間中にユーザーが Web サイト上でアクションを何も実行しないと発生するイベントを表します。 サーバー側では、イベントはユーザー セッションの状態を "無効" (たとえば、"もう使われない") に変更し、Web サーバーにそれを破棄する (そこに含まれるすべてのデータを削除する) ように指定します。 次のコード例では、Web.config ファイルでタイムアウト セッション属性を 15 分に設定しています。|
 
 ### <a name="example"></a>例
@@ -398,7 +398,7 @@ void Page_Init (object sender, EventArgs e) {
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | Web フォーム |
 | **属性**              | 該当なし  |
-| **参照**              | [認証の forms 要素 (ASP.NET 設定スキーマ)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
+| **参照**              | [認証の forms 要素 (ASP.NET 設定スキーマ)](/previous-versions/dotnet/netframework-4.0/1d3t3c61(v=vs.100)) |
 | **手順** | フォーム認証チケット cookie のタイムアウトを 15 分に設定します。|
 
 ### <a name="example"></a>例

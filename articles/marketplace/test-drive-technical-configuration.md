@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/13/2019
-author: keferna
-ms.author: keferna
-ms.openlocfilehash: bf253c4e3b273bc1500e5abbd4dfc045a7909ffd
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+author: trkeya
+ms.author: trkeya
+ms.openlocfilehash: 6faecdd561d7c434d2948e70886d6f1b19115d9f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125684"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504834"
 ---
 # <a name="test-drive-technical-configuration"></a>体験版の技術的な構成
 
@@ -93,14 +93,10 @@ Microsoft が体験版のデプロイを代行できるようにするには、�
 
 現在、パートナー センターで体験版を作成している場合は、続行する前に、 **[下書きの保存]** を選択します。
 
+## <a name="additional-resources"></a>その他のリソース
+
 ## <a name="next-steps"></a>次のステップ
 
 - [体験版のベスト プラクティス](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [概要](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF、ポップアップ ブロックがオフになっていることを確認してください)
 - [商業マーケットプレースで既存のオファーを更新する](partner-center-portal/update-existing-offer.md)
-
-## <a name="additional-resources"></a>その他のリソース
-
-## <a name="feedback"></a>フィードバック
-
-[この製品](https://feedback.azure.com/forums/216369-azure-marketplace)に関するフィードバックを送信して表示する

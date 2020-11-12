@@ -6,16 +6,20 @@ ms.author: ambhatna
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 11/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 87ec99a68c538e8133d64351cdecbbf8b10459e6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 58e7c024d6494aee745884997e42b527c51ab237
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92525001"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489541"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL Flexible Server のサーバー パラメータを構成する
+
+> [!IMPORTANT] 
+> Azure Database for MySQL フレキシブル サーバーは、現在パブリック プレビュー段階にあります。
+
 Azure コマンド ライン ユーティリティ である Azure CLI を使用して、Azure Database for MySQL フレキシブル サーバーのパラメーターを一覧表示、表示、および更新できます。 このサーバー パラメーターは、サーバーの作成時に既定値と推奨値を使用して構成されます。  
 
 この記事では、Azure CLI を使用して、サーバー パラメーターの一覧表示、表示、および更新を行う方法について説明します。

@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 9a68ec82ea5e924916cbe8b07c11a4f8f62199a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cbe6b39bda0815c4981c497c07750136bcc9dba
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317958"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517486"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>セキュリティ フレーム:構成管理 | 対応策 
 | 製品/サービス | [アーティクル] |
@@ -88,7 +88,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [ASP.NET デバッグの概要](https://msdn.microsoft.com/library/ms227556.aspx)、[ASP.NET トレースの概要](https://msdn.microsoft.com/library/bb386420.aspx)、[方法:ASP.NET アプリケーションのトレースを有効にする](https://msdn.microsoft.com/library/0x5wc973.aspx)、[方法:ASP.NET アプリケーションのデバッグを有効にする](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
+| **参照**              | [ASP.NET デバッグの概要](/previous-versions/ms227556(v=vs.140))、[ASP.NET トレースの概要](/previous-versions/bb386420(v=vs.140))、[方法:ASP.NET アプリケーションのトレースを有効にする](/previous-versions/0x5wc973(v=vs.140))、[方法:ASP.NET アプリケーションのデバッグを有効にする](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
 | **手順** | ページのトレースが有効になっていると、それを要求しているブラウザーも、内部サーバーの状態とワークフローのデータを含むトレース情報をそれぞれ取得します。 それが機密情報であることがあります。 ページでデバッグが有効になっている場合、サーバーでエラーが発生すると、ブラウザーに完全なスタック トレース データのサーバーが提供されます。 そのデータによって、サーバーのワークフローに関する機密情報が公開される場合があります。 |
 
 ## <a name="access-third-party-javascripts-from-trusted-sources-only"></a><a id="js-trusted"></a>信頼できるソースのサード パーティ製 javascript にのみアクセスする
@@ -110,7 +110,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [OWASP: クリックジャッキング対策に関するチートシート](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html)、[IE Internals - X-Frame-Options によるクリックジャッキングへの対応](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
+| **参照**              | [OWASP: クリックジャッキング対策に関するチートシート](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html)、[IE Internals - X-Frame-Options によるクリックジャッキングへの対応](/archive/blogs/ieinternals/combating-clickjacking-with-x-frame-options) |
 | **手順** | <p>クリックジャッキング (UI Redressing 攻撃) では、攻撃者は透明または不透明な複数のレイヤーを使用して、実際のページではなく、その上にある別のページのボタンやリンクをユーザーにクリックさせようとします。</p><p>このレイヤーは iframe で悪意のあるページを作成することで実現し、これにより攻撃対象のページが読み込まれます。 つまり、攻撃者は、攻撃対象ユーザーのページ クリックを "ハイジャック" して、そのユーザーを別のページ (ほとんどの場合、他のアプリケーションまたはドメイン、あるいはその両方が所有するページ) に誘導します。 クリックジャッキング攻撃を防ぐには、他のドメインからのフレーミングを許可しないようブラウザーに指示する、適切な X-Frame-Options HTTP 応答ヘッダーを設定します。</p>|
 
 ### <a name="example"></a>例
@@ -213,7 +213,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [IE8 のセキュリティ パート V:包括的な保護](https://docs.microsoft.com/archive/blogs/ie/ie8-security-part-v-comprehensive-protection)、[MIME タイプ](https://en.wikipedia.org/wiki/Mime_type) |
+| **参照**              | [IE8 のセキュリティ パート V:包括的な保護](/archive/blogs/ie/ie8-security-part-v-comprehensive-protection)、[MIME タイプ](https://en.wikipedia.org/wiki/Mime_type) |
 | **手順** | X-Content-Type-Options ヘッダーは、コンテンツを MIME スニッフィングしないことを開発者が指定できる HTTP ヘッダーです。 このヘッダーは、MIME スニッフィング攻撃を軽減することを目的としています。 ユーザーが制御可能なコンテンツが含まれている可能性のある各ページで、X-Content-Type-Options:nosniff HTTP ヘッダーを使用する必要があります。 この必須のヘッダーをアプリケーションのすべてのページでグローバルに有効にするには、次のいずれかを実行します|
 
 ### <a name="example"></a>例
@@ -289,7 +289,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | SQL Azure、OnPrem |
 | **属性**              | 該当なし、SQL バージョン - V12 |
-| **参照**              | [Azure SQL Database ファイアウォールを構成する方法](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/)、[データベース エンジンにアクセスできるように Windows ファイアウォールを構成する](https://msdn.microsoft.com/library/ms175043) |
+| **参照**              | [Azure SQL Database ファイアウォールを構成する方法](../../azure-sql/database/firewall-configure.md)、[データベース エンジンにアクセスできるように Windows ファイアウォールを構成する](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) |
 | **手順** | ファイアウォール システムは、コンピューター リソースへの不正アクセスを防ぐのに役立ちます。 ファイアウォールを経由して SQL Server データベース エンジンのインスタンスにアクセスするには、SQL Server を実行しているコンピューターで、アクセスを許可するようにファイアウォールを構成する必要があります |
 
 ## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-aspnet-web-api"></a><a id="cors-api"></a>ASP.NET Web API で CORS が有効になっている場合、信頼されたオリジンのみが許可されていることを確認する
@@ -300,7 +300,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | MVC 5 |
 | **属性**              | 該当なし  |
-| **参照**              | [ASP.NET Web API 2 でのクロス オリジン要求を有効にする](https://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api)、[ASP.NET Web API - ASP.NET Web API 2 における CORS サポート](https://msdn.microsoft.com/magazine/dn532203.aspx) |
+| **参照**              | [ASP.NET Web API 2 でのクロス オリジン要求を有効にする](https://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api)、[ASP.NET Web API - ASP.NET Web API 2 における CORS サポート](/archive/msdn-magazine/2013/december/asp-net-web-api-cors-support-in-asp-net-web-api-2) |
 | **手順** | <p>ブラウザーのセキュリティ機能により、Web ページでは AJAX 要求を別のドメインに送信することはできません。 この制限は、同一オリジン ポリシーと呼ばれ、悪意のあるサイトが、別のサイトから機密データを読み取れないようにします。 ただし、場合によっては、他のサイトが使用できるように、API を安全に公開しなければならないこともあります。 クロス オリジン リソース共有 (CORS) はW3C 標準で、サーバーによる同一オリジン ポリシーの緩和を許可します。</p><p>CORS を使用することで、サーバーが一部のクロス オリジン要求を、その他の要求を拒否しながら、明示的に許可することができます。 CORS は、JSONP など、以前の手法に比べて安全性と柔軟性が向上しています。</p>|
 
 ### <a name="example"></a>例
@@ -488,7 +488,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [方法: DPAPI を使用して ASP.NET 2.0 内の構成セクションを暗号化する方法](https://msdn.microsoft.com/library/ff647398.aspx)、[保護された構成プロバイダーの指定](https://msdn.microsoft.com/library/68ze1hb2.aspx)、[Azure Key Vault を使用してアプリケーション シークレットを保護する](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
+| **参照**              | [方法: DPAPI を使用して ASP.NET 2.0 内の構成セクションを暗号化する方法](/previous-versions/msp-n-p/ff647398(v=pandp.10))、[保護された構成プロバイダーの指定](/previous-versions/68ze1hb2(v=vs.140))、[Azure Key Vault を使用してアプリケーション シークレットを保護する](/azure/architecture/multitenant-identity/web-api) |
 | **手順** | Web.config、appsettings.json などの構成ファイルは、一般的に、ユーザー名、パスワード、データベース接続文字列、暗号化キーなどの機密情報の保持に使用されます。 この情報を保護しないと、アプリケーションは、アカウントのユーザー名とパスワード、データベース名、サーバー名などの機密情報を取得する、攻撃者や悪意のあるユーザーに対して脆弱になります。 構成ファイルの重要なセクションは、デプロイメント タイプ (azure/on-prem) に基づいて、DPAPI または Azure Key Vault などのサービスを使用して暗号化してください。 |
 
 ## <a name="ensure-that-all-admin-interfaces-are-secured-with-strong-credentials"></a><a id="admin-strong"></a>強力な資格情報ですべての管理インターフェイスが保護されていることを確認する
@@ -510,7 +510,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [Windows 10 IoT Core でのセキュア ブートと BitLocker デバイス暗号化の有効化](https://docs.microsoft.com/windows/iot-core/secure-your-device/securebootandbitlocker) |
+| **参照**              | [Windows 10 IoT Core でのセキュア ブートと BitLocker デバイス暗号化の有効化](/windows/iot-core/secure-your-device/securebootandbitlocker) |
 | **手順** | UEFI セキュア ブートでは、指定された機関によって署名されたバイナリの実行のみを許可するようにシステムを制限します。 この機能により、不明なコードがプラットフォームで実行できなくなり、コードによって、プラットフォームのセキュリティが低下する可能性を排除できます。 UEFI セキュア ブートを有効にして、コードに署名する信頼済み証明機関の一覧を制限し、 信頼された機関のいずれかを使用して、デバイスにデプロイされているすべてのコードに署名します。 |
 
 ## <a name="encrypt-os-and-additional-partitions-of-iot-device-with-bit-locker"></a><a id="partition-iot"></a>BitLocker で OS と IoT デバイスの追加のパーティションを暗号化する
@@ -565,7 +565,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | ゲートウェイの選択 - Azure IoT Hub |
-| **参照**              | [IoT Hub を使用したデバイス管理の概要](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/)、[デバイス ファームウェアの更新方法](../../iot-hub/tutorial-firmware-update.md) |
+| **参照**              | [IoT Hub を使用したデバイス管理の概要](../../iot-hub/iot-hub-device-management-overview.md)、[デバイス ファームウェアの更新方法](../../iot-hub/tutorial-firmware-update.md) |
 | **手順** | LWM2M は、IoT デバイス管理の Open Mobile Alliance のプロトコルです。 Azure の IoT デバイス管理では、デバイスのジョブを使用して物理デバイスと対話することができます。 Azure IoT Hub デバイス管理を使用して、デバイスおよびその他の構成データを定期的に最新の状態に保つためのプロセスが、クラウド ゲートウェイで実装されていることを確認します。 |
 
 ## <a name="ensure-that-devices-have-end-point-security-controls-configured-as-per-organizational-policies"></a><a id="controls-policies"></a>デバイスのエンドポイント セキュリティ制御が組織ポリシーに従って構成されていることを確認する
@@ -587,7 +587,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [Azure Storage セキュリティ ガイド - ストレージ アカウント キーの管理](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_managing-your-storage-account-keys) |
+| **参照**              | [Azure Storage セキュリティ ガイド - ストレージ アカウント キーの管理](../../storage/blobs/security-recommendations.md#identity-and-access-management) |
 | **手順** | <p>キー記憶域:Azure Storage アクセス キーはシークレットとして Azure Key Vault に格納し、アプリケーションで Key Vault からキーを取得することをお勧めします。 その理由は次のとおりです。</p><ul><li>アプリケーションではストレージ キーが構成ファイルでハードコーディングされないため、特定のアクセス許可を持たない誰かがキーへのアクセス権を取得する抜け道がなくなります</li><li>Azure Active Directory を使用して、キーへのアクセスを制御できます。 つまり、アカウント所有者が、Azure Key Vault からキーを取得する必要があるいくつかのアプリケーションに、アクセス権を付与できます。 アクセス許可が付与されていないアプリケーションが、キーにアクセスすることはできません</li><li>キーの再生成:セキュリティ上の理由から、Azure ストレージ アクセス キーを再生成するプロセスを設定することをお勧めします。 キーの再生成を計画する理由と方法の詳細については、Azure Storage セキュリティ ガイドのリファレンス記事を参照してください</li></ul>|
 
 ## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-azure-storage"></a><a id="cors-storage"></a>Azure Storage で CORS が有効になっている場合、信頼されたオリジンのみが許可されていることを確認する
@@ -598,7 +598,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [Azure Storage サービスの CORS のサポート](https://msdn.microsoft.com/library/azure/dn535601.aspx) |
+| **参照**              | [Azure Storage サービスの CORS のサポート](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services) |
 | **手順** | Azure Storage では、CORS (クロス オリジン リソース共有) を有効にできます。 ストレージ アカウントごとに、そのストレージ アカウントのリソースにアクセスできるドメインを指定できます。 既定では、すべてのサービスで CORS が無効です。 CORS を有効にするには、REST API またはストレージ クライアント ライブラリを使用して、サービス ポリシーを設定するいずれかのメソッドを呼び出します。 |
 
 ## <a name="enable-wcfs-service-throttling-feature"></a><a id="throttling"></a>WCF のサービス調整機能を有効にする
@@ -609,7 +609,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | .NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com) |
+| **参照**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[Fortify Kingdom](https://vulncat.fortify.com) |
 | **手順** | <p>システム リソースの使用に制限を設定しないと、リソースが使い果たされ、最終的にはサービス拒否攻撃につながる可能性があります。</p><ul><li>**説明:** Windows Communication Foundation (WCF) は、サービス要求をスロットルする機能を提供します。 許可するクライアント要求が多すぎると、システムに要求が殺到し、リソースが使い果たされる可能性があります。 一方、サービスへの要求を許可する数が少なすぎると、正当なユーザーがサービスを使用できなくなる場合があります。 各サービスを個別に調整および構成して、適切な量のリソースを許可する必要があります。</li><li>**推奨** WCF のサービス調整機能を有効にして、アプリケーションに適した制限を設定してください。</li></ul>|
 
 ### <a name="example"></a>例
@@ -632,7 +632,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | .NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com) |
+| **参照**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[Fortify Kingdom](https://vulncat.fortify.com) |
 | **手順** | 攻撃者がメタデータからシステム情報を入手し、その情報を攻撃方法を計画する際に悪用することがありますが、 WCF サービスが、メタデータを公開するように構成されている場合があります。 メタデータには詳細なサービス情報が含まれているため、運用環境ではブロードキャストしないでください。 ServiceMetaData クラスの `HttpGetEnabled` / `HttpsGetEnabled` プロパティは、サービスでメタデータを公開するかどうかを定義します | 
 
 ### <a name="example"></a>例

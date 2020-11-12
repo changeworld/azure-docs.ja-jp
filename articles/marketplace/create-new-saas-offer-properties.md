@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 4dd592cb1b0037e2e1054bb24d987d4456f15e2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d90c9b9b2c9aa97083e17d5ab7d20fc6b471658
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89380531"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94492125"
 ---
 # <a name="how-to-configure-your-saas-offer-properties"></a>SaaS オファーのプロパティを構成する方法
 
@@ -65,7 +65,7 @@ ms.locfileid: "89380531"
 
 ### <a name="add-amendments-to-the-standard-contract-optional"></a>標準契約に変更を追加する (省略可能)
 
-可能な変更には、*ユニバーサル*と*カスタム*の 2 種類があります。
+可能な変更には、 *ユニバーサル* と *カスタム* の 2 種類があります。
 
 #### <a name="add-universal-amendment-terms"></a>ユニバーサル変更条件を追加する
 
@@ -77,7 +77,7 @@ ms.locfileid: "89380531"
 1. **[カスタム変更条件]** ボックスに変更条件を入力します。
 1. **[テナント ID]** ボックスにテナント ID を入力します。 これらのカスタム条件に関連付けられたテナント ID の顧客にのみ、Azure portal でのオファーの購入フローでそれらの条件が表示されます。
    > [!TIP]
-   > テナント ID で Azure の顧客が識別されます。 この ID は顧客に問い合わせることができ、顧客は [ **https://portal.azure.com** ](https://portal.azure.com) >  **[Azure Active Directory]**  >  **[プロパティ]** にアクセスして ID を確認できます。 ディレクトリ ID の値はテナント ID (`50c464d3-4930-494c-963c-1e951d15360e` など) です。 [[What is my Microsoft Azure and Office 365 tenant ID?]\(Microsoft Azure および Office 365 テナント ID の確認\)](https://www.whatismytenantid.com/) で、顧客のドメイン名 URL を使用して顧客の組織のテナント ID を検索することもできます。
+   > テナント ID で Azure の顧客が識別されます。 この ID は顧客に問い合わせることができ、顧客は [ **https://portal.azure.com**](https://portal.azure.com) >  **[Azure Active Directory]**  >  **[プロパティ]** にアクセスして ID を確認できます。 ディレクトリ ID の値はテナント ID (`50c464d3-4930-494c-963c-1e951d15360e` など) です。 [[What is my Microsoft Azure and Office 365 tenant ID?]\(Microsoft Azure および Office 365 テナント ID の確認\)](https://www.whatismytenantid.com/) で、顧客のドメイン名 URL を使用して顧客の組織のテナント ID を検索することもできます。
 1. 必要に応じて、 **[説明]** ボックスにテナント ID のわかりやすい説明を入力します。 この説明は、変更の対象となる顧客を識別する際に役立ちます。
 1. 別のテナント ID を追加するには、 **[Add a customer's tenant ID]\(顧客のテナント ID の追加\)** リンクを選択し、手順 3 と 4 を繰り返します。 最大 20 個のテナント ID を追加できます。
 1. 別の変更条件を追加するには、手順 1 ～ 5 を繰り返します。 オファーごとに 10 件までのカスタム修正条項を提供できます。 
@@ -89,10 +89,6 @@ ms.locfileid: "89380531"
 
 1. **[法的情報]** で、 **[Microsoft コマーシャル マーケットプレース向けの標準契約を使用する]** チェックボックスがクリアされていることを確認します。
 1. **[使用条件]** ボックスに、最大 10,000 万文字のテキストを入力します。
-
-   > [!NOTE]
-   > さらに長い説明が必要な場合は、使用条件を確認できる場所を指し示す 1 つの Web アドレスを入力します。 これはアクティブなリンクとして顧客に表示されます。
-
 1. **[下書きの保存]** を選択してから、次の **[Offer listing]\(オファー登録情報\)** に進みます。
 
 ## <a name="next-steps"></a>次のステップ

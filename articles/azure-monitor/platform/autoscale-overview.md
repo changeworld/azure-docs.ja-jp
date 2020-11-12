@@ -4,12 +4,12 @@ description: Microsoft Azure の自動スケール
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: e89cf36e59ab26ec220d1125162a841fc10f0e47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd7c1582cdb4b2b1b72d3f969ad08879d208785f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567266"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505839"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Microsoft Azure の自動スケールの概要
 この記事では、Microsoft Azure 自動スケールの概要、利点、および使用方法について説明します。  
@@ -61,11 +61,11 @@ Azure Monitor 自動スケールは、[Virtual Machine Scale Sets](https://azure
 
 - **自動スケール設定** は自動スケールエンジンによって読み取られ、スケールアップまたはダウンするかどうかが判断されます。 1 つ以上のプロファイル、ターゲット リソースに関する情報、および通知の設定が含まれています。
 
-  - **自動スケール プロファイル**は、次の要素を組み合わせたものです。
+  - **自動スケール プロファイル** は、次の要素を組み合わせたものです。
 
-    - **容量設定**。インスタンスの数の最小値、最大値、既定値を示します。
-    - **一連のルール**。各ルールに、トリガー (時間またはメトリック) とスケール アクション (スケールアップまたはスケールダウン) が含まれています。
-    - **繰り返し**。自動スケールによってこのプロファイルがいつ有効になるかを示します。
+    - **容量設定** 。インスタンスの数の最小値、最大値、既定値を示します。
+    - **一連のルール** 。各ルールに、トリガー (時間またはメトリック) とスケール アクション (スケールアップまたはスケールダウン) が含まれています。
+    - **繰り返し** 。自動スケールによってこのプロファイルがいつ有効になるかを示します。
 
       さまざまな重複する要件に対処できるように、複数のプロファイルを設定できます。 たとえば、一日 の異なる時間、または曜日に異なる自動スケール プロファイルを設定することができます。
 
@@ -102,7 +102,7 @@ Azure Monitor 自動スケールは、[Virtual Machine Scale Sets](https://azure
 | Virtual Machines: クラシック |[従来の仮想マシン可用性セットのスケーリング](/archive/blogs/kaevans/autoscaling-azurevirtual-machines) |
 | Virtual Machines: Windows スケール セット |[Windows での仮想マシン スケール セットのスケーリング](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
 | Virtual Machines: Linux スケール セット |[Linux での仮想マシン スケール セットのスケーリング](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
-| Virtual Machines: Windows の例 |[VM スケール セットに対する Resource Manager テンプレートを使用した高度な自動スケール構成](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md) |
+| Virtual Machines: Windows の例 |[VM スケール セットに対する Resource Manager テンプレートを使用した高度な自動スケール構成](autoscale-virtual-machine-scale-sets.md) |
 | Azure App Service |[Azure App Service でアプリをスケールアップする](../../app-service/manage-scale-up.md)|
 | API Management サービス|[Azure API Management インスタンスを自動的にスケーリングする](../../api-management/api-management-howto-autoscale.md)
 | Azure Data Explorer クラスター|[需要の変化に対応するために Azure Data Explorer のクラスターのスケーリングを管理する](/azure/data-explorer/manage-cluster-horizontal-scaling)|

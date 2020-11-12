@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: cc5702d973150b80188354719333fb7cf22d58b3
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 30e5ea4df3de0b8a10c9c1f3b4b27a9e0a19359e
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283411"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491207"
 ---
 # <a name="how-to-configure-virtual-machine-offer-properties"></a>仮想マシン オファーのプロパティを構成する方法
 
@@ -75,10 +75,6 @@ ms.locfileid: "92283411"
 
 1. **[法的情報]** で、 **[Microsoft コマーシャル マーケットプレース向けの標準契約を使用する]** チェックボックスがクリアされていることを確認します。
 1. **[使用条件]** ボックスに、最大 10,000 万文字のテキストを入力します。
-
-   > [!NOTE]
-   > さらに長い説明が必要な場合は、使用条件を確認できる場所を指し示す 1 つの Web アドレスを入力します。 これはアクティブなリンクとして顧客に表示されます。
-
 1. **[下書きの保存]** を選択してから、次の **[Offer listing]\(オファー登録情報\)** に進みます。
 
 ## <a name="next-steps"></a>次のステップ

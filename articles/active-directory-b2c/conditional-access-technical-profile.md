@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f88548b57cee9b5f637247fda1536488382ae2f6
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: bc811ab3cab4b79b81b16dd94a2c72225046e35a
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042628"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488280"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで条件付きアクセス技術プロファイルを定義する
 
@@ -67,7 +67,7 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 | IsMfaRegistered | はい |boolean | ユーザーが多要素認証用に電話番号を既に登録しているかどうかを示します。 |
 
 
-**InputClaimsTransformations** 要素には、入力要求を条件付きアクセス サービスに送信する前に、その入力要求を変更するか新しい入力要求を生成するために使用される、**InputClaimsTransformation** 要素のコレクションが含まれる場合があります。
+**InputClaimsTransformations** 要素には、入力要求を条件付きアクセス サービスに送信する前に、その入力要求を変更するか新しい入力要求を生成するために使用される、 **InputClaimsTransformation** 要素のコレクションが含まれる場合があります。
 
 ### <a name="output-claims"></a>出力クレーム
 
@@ -78,7 +78,7 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 | 課題 | はい |stringCollection | 特定された脅威を修復するためのアクションの一覧。 使用可能な値: `block` |
 | MultiConditionalAccessStatus | はい | stringCollection |  |
 
-**OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
+**OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、 **OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
 
 ### <a name="example-evaluation"></a>例:評価
 
@@ -109,7 +109,7 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 
 ## <a name="remediation"></a>修復
 
-条件付きアクセス技術プロファイルの**修復**モードは、サインイン時に特定された脅威が修復されたことを Azure AD B2C に通知します。 修復モードに対しては、次のオプションを構成できます。
+条件付きアクセス技術プロファイルの **修復** モードは、サインイン時に特定された脅威が修復されたことを Azure AD B2C に通知します。 修復モードに対しては、次のオプションを構成できます。
 
 ### <a name="metadata"></a>Metadata
 
@@ -126,13 +126,13 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 | ChallengesSatisfied | はい | stringCollection| 評価モードからの戻り値として特定された脅威を修復するための満たされたチャレンジの一覧。チャレンジ要求。|
 
 
-**InputClaimsTransformations** 要素には、条件付きアクセス サービスを呼び出す前に、その入力要求を変更するか新しい入力要求を生成するために使用される、**InputClaimsTransformation** 要素のコレクションが含まれる場合があります。
+**InputClaimsTransformations** 要素には、条件付きアクセス サービスを呼び出す前に、その入力要求を変更するか新しい入力要求を生成するために使用される、 **InputClaimsTransformation** 要素のコレクションが含まれる場合があります。
 
 ### <a name="output-claims"></a>出力クレーム
 
 条件付きアクセス プロトコル プロバイダーでは **OutputClaims** は返されないため、出力要求を指定する必要はありません。 ただし、`DefaultValue` 属性を設定している限り、条件付きアクセス プロトコル プロバイダーによって返されない要求を含めることができます。
 
-**OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
+**OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、 **OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
 
 
 ### <a name="example-remediation"></a>例:Remediation
@@ -428,7 +428,7 @@ TrustFrameworkPolicy 要素に、次の例に示すようにこれらの SubJour
             </Precondition>
             <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
               <Value>CAChallengeIsMfa</Value>
-              <Value>false</Value>
+              <Value>False</Value>
               <Action>SkipThisOrchestrationStep</Action>
             </Precondition>
           </Preconditions>
@@ -458,7 +458,7 @@ TrustFrameworkPolicy 要素に、次の例に示すようにこれらの SubJour
             </Precondition>
             <Precondition Type="ClaimEquals" ExecuteActionsIf="false">
               <Value>CAChallengeIsBlock</Value>
-              <Value>true</Value>
+              <Value>True</Value>
               <Action>SkipThisOrchestrationStep</Action>
             </Precondition>
           </Preconditions>

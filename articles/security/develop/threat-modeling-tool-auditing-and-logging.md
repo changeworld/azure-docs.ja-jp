@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: bac17073650736df9ec48e951290852e082e9417
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d3f3ca7b5d4516c2ad5dc9cb19a2eaed0a8a4a8
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87542995"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518279"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>セキュリティ フレーム:監査とログ記録 | 対応策 
 
@@ -131,7 +131,7 @@ ms.locfileid: "87542995"
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [ログインの監査の構成](https://msdn.microsoft.com/library/ms175850.aspx) |
+| **参照**              | [ログインの監査の構成](/sql/ssms/configure-login-auditing-sql-server-management-studio) |
 | **手順** | <p>パスワード推測攻撃の検出と確認のために、データベース サーバーのログインの監査を有効にする必要があります。 失敗したログイン試行をキャプチャすることが重要です。 成功したログイン試行と失敗したログイン試行の両方をキャプチャすると、フォレンジック調査でのさらなるメリットになります。</p>|
 
 ## <a name="enable-threat-detection-on-azure-sql"></a><a id="threat-detection"></a>Azure SQL での脅威の検出を有効にする
@@ -142,7 +142,7 @@ ms.locfileid: "87542995"
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | SQL Azure |
 | **属性**              | SQL バージョン - V12 |
-| **参照**              | [SQL Database 脅威の検出の概要](https://azure.microsoft.com/documentation/articles/sql-database-threat-detection-get-started/)|
+| **参照**              | [SQL Database 脅威の検出の概要](../../azure-sql/database/threat-detection-configure.md)|
 | **手順** |<p>脅威の検出は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。 これによって提供される新しいセキュリティ階層により、異常なアクティビティに対するセキュリティ アラートが提供され、発生した潜在的な脅威にユーザーが検出して対応できるようになります。</p><p>ユーザーは、Azure SQL Database の監査を使用して疑わしいイベントを調査し、データベース内のデータに対するアクセス、侵害、または悪用の試行による結果かどうかを判断できます。</p><p>脅威の検出を使用すると、データベースに対する潜在的な脅威に簡単に対処できます。セキュリティの専門家である必要や、高度なセキュリティ監視システムを管理する必要はありません。</p>|
 
 ## <a name="use-azure-storage-analytics-to-audit-access-of-azure-storage"></a><a id="analytics"></a>Azure Storage Analytics を使用して Azure Storage のアクセスを監査する
@@ -153,7 +153,7 @@ ms.locfileid: "87542995"
 | **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし |
-| **参照**              | [Storage Analytics を使用して承認の種類を監視する](https://azure.microsoft.com/documentation/articles/storage-security-guide/#storage-analytics) |
+| **参照**              | [Storage Analytics を使用して承認の種類を監視する](../../storage/blobs/security-recommendations.md#loggingmonitoring) |
 | **手順** | <p>各ストレージ アカウントで、Azure Storage Analytics を有効にして、ログ記録を実行し、メトリック データを保存することができます。 Storage Analytics ログでは、だれかがストレージにアクセスするときに使用される認証方法などの重要な情報を確認できます。</p><p>ストレージへのアクセスを厳密に保護する場合、この方法が推奨されます。 たとえば、Blob Storage では、すべてのコンテナーを非公開に設定し、アプリケーション全体で SAS サービスの使用を実装できます。 次に、ログを定期的にチェックし、BLOB がストレージ アカウント キーを使用してアクセスされたか (セキュリティ違反が発生している可能性があります)、パブリックにすべきではない BLOB がパブリックであるかどうかを確認します。</p>|
 
 ## <a name="implement-sufficient-logging"></a><a id="sufficient-logging"></a>ログ記録を十分に実装する
@@ -164,7 +164,7 @@ ms.locfileid: "87542995"
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | .NET Framework |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_logging) |
+| **参照**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_logging) |
 | **手順** | <p>セキュリティ インシデントが発生した後の正確な監査証跡が欠如していると、フォレンジック調査の妨げとなる場合があります。 Windows Communication Foundation (WCF) には、成功または失敗した認証の試行回数をログ記録する機能が用意されています。</p><p>失敗した認証の試行をログ記録することで、管理者は潜在的なブルート フォース攻撃を警戒することができます。 同様に、成功した認証の試行をログ記録することで、正当なアカウントが侵害された場合に有用な監査証跡となる可能性があります。 WCF のサービス セキュリティ監査機能を有効にします。 |
 
 ### <a name="example"></a>例
@@ -193,7 +193,7 @@ ms.locfileid: "87542995"
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | .NET Framework |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_audit_failure_handling) |
+| **参照**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10))、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_audit_failure_handling) |
 | **手順** | <p>開発されたソリューションは、監査ログへの書き込みに失敗した場合でも例外を生成しないように構成されているものです。 WCF が監査ログに書き込むことができない場合に例外をスローしないように構成されている場合、プログラムに失敗が通知されません。また、重要なセキュリティ イベントの監査も発生しない可能性があります。</p>|
 
 ### <a name="example"></a>例
@@ -242,5 +242,5 @@ ms.locfileid: "87542995"
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [IoT Hub 操作の監視の概要](https://azure.microsoft.com/documentation/articles/iot-hub-operations-monitoring/) |
+| **参照**              | [IoT Hub 操作の監視の概要](../../iot-hub/iot-hub-operations-monitoring.md) |
 | **手順** | <p>IoT Hub 操作の監視を通じて収集された監査データを収集および格納できるように設計します。 次の監視のカテゴリを有効にします。</p><ul><li>デバイス ID の操作</li><li>デバイスからクラウドへの通信</li><li>クラウドからデバイスへの通信</li><li>接続</li><li>ファイルのアップロード</li></ul>|

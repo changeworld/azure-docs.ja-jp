@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9456d663eb1600bf73b1fe253560c2d9f29205ae
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 45dac4425f4d2f563cbc942f23d81583728139f6
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373664"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489456"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory での Microsoft 365 グループに対する名前付けポリシーの適用
 
@@ -249,7 +249,6 @@ Groups モバイル アプリ | Groups モバイル アプリで作成された�
 Planner | Planner は名前付けポリシーに準拠しています。 プラン名を入力すると、Planner に名前付けポリシーのプレビューが表示されます。 ユーザーがカスタム禁止単語を入力すると、プランの作成時にエラー メッセージが表示されます。
 Dynamics 365 for Customer Engagement | Dynamics 365 for Customer Engagemen は名前付けポリシーに準拠しています。 ユーザーがグループ名またはグループの電子メール エイリアスを入力すると、Dynamics 365 に、名前付けポリシーが強制された名前が表示されます。 ユーザーがカスタム禁止単語を入力すると、その禁止単語と共にエラー メッセージが表示されるので、ユーザーはその単語を削除できます。
 School Data Sync (SDS) | SDS を使用して作成されたグループは名前付けポリシーに準拠していますが、名前付けポリシーが自動的に適用されるわけではありません。 SDS 管理者は、グループを作成して SDS にアップロードする必要があるクラス名にプレフィックスとサフィックスを追加する必要があります。 そうしないと、グループの作成または編集は失敗します。
-Outlook Customer Manager (OCM) | Outlook Customer Manager は名前付けポリシーに準拠しています。Outlook Customer Manager で作成されたグループには名前付けポリシーが自動的に適用されます。 カスタム禁止単語が検出された場合、OCM でのグループの作成がブロックされ、ユーザーは OCM アプリを使用できなくなります。
 Classroom アプリ | Classroom アプリで作成されたグループは名前付けポリシーに準拠していますが、名前付けポリシーが自動的に適用されるわけではありません。教室グループ名を入力したときに、名前付けポリシーのプレビューはユーザーに表示されません。 ユーザーは、プレフィックスとサフィックスを付けたポリシー強制後の教室グループ名を入力する必要があります。 そうしないと、教室グループの作成または編集操作はエラーで失敗します。
 Power BI | Power BI ワークスペースは、名前付けポリシーに準拠しています。    
 Yammer | Azure Active Directory アカウントで Yammer にサインインしたユーザーが グループを作成する、またはグループ名を編集する場合、グループ名は名前付けポリシーに準拠します。 これは、Microsoft 365 接続グループおよび他のすべての Yammer グループのどちらにも適用されます。<br>名前付けポリシーが実施される前に Microsoft 365 接続グループが作成された場合、グループ名は名前付けポリシーに自動的には従いません。 ユーザーは、グループ名を編集するときに、プレフィックスとサフィックスを追加するよう求められます。

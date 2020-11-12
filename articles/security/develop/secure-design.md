@@ -13,15 +13,15 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 22f74d3135597e8627cf7af933f8c6f4fbebc990
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e8eab3a1054541b1ef7fc6d2e65089f01f0df3c0
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364050"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517157"
 ---
 # <a name="design-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で設計する
-この記事では、クラウド向けのアプリケーションを設計するときに考慮すべきセキュリティ アクティビティと制御について説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) の要件と設計のフェーズ中に考慮すべきセキュリティの質問と概念に加えて、トレーニング用のリソースについて説明します。 目標は、より安全なアプリケーションの設計に使用できるアクティビティと Azure サービスの定義を手助けすることです。
+この記事では、クラウド向けのアプリケーションを設計するときに考慮すべきセキュリティ アクティビティと制御について説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) の要件と設計のフェーズ中に考慮すべきセキュリティの質問と概念に加えて、トレーニング用のリソースについて説明します。 目標は、より安全なアプリケーションの設計に使用できるアクティビティと Azure サービスの定義を手助けすることです。
 
 この記事では、次の SDL フェーズについて説明します。
 
@@ -38,12 +38,12 @@ ms.locfileid: "92364050"
 
   - [Azure 開発者向けファースト ステップ ガイド](../../guides/developer/azure-developer-guide.md)では、開発のニーズに対応するために Azure プラットフォームの使用を検討している開発者に必要不可欠な情報を提供しています。
 
-  - [SDK/ツール](https://docs.microsoft.com/azure/index?pivot=sdkstools)では、Azure で使用できるツールについて説明しています。
+  - [SDK/ツール](../../index.yml?pivot=sdkstools)では、Azure で使用できるツールについて説明しています。
 
-  - [Azure DevOps Services](https://docs.microsoft.com/azure/devops/) では、開発用の共同作業ツールを提供しています。 これらのツールには、高性能パイプライン、無料の Git リポジトリ、構成可能なかんばんボード、広範囲で自動化されたクラウドベースのロード テスト機能などがあります。
-    [DevOps リソース センター](https://docs.microsoft.com/azure/devops/learn/)では、DevOps 手法、Git バージョン管理、アジャイル方式、Microsoft での DevOps の取り組み、独自の DevOps の進行状況を評価するための方法を学習するためのリソースがまとめられています。
+  - [Azure DevOps Services](/azure/devops/) では、開発用の共同作業ツールを提供しています。 これらのツールには、高性能パイプライン、無料の Git リポジトリ、構成可能なかんばんボード、広範囲で自動化されたクラウドベースのロード テスト機能などがあります。
+    [DevOps リソース センター](/azure/devops/learn/)では、DevOps 手法、Git バージョン管理、アジャイル方式、Microsoft での DevOps の取り組み、独自の DevOps の進行状況を評価するための方法を学習するためのリソースがまとめられています。
 
-  - [運用環境に移行する前にセキュリティ面で考慮すべき項目上位 5](https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider/index?WT.mc_id=Learn-Blog-tajanca) では、Azure 上の Web アプリケーションをセキュリティで保護して、最も一般的で危険な Web アプリケーションへの攻撃からアプリを保護する方法を示しています。
+  - [運用環境に移行する前にセキュリティ面で考慮すべき項目上位 5](/learn/modules/top-5-security-items-to-consider/index?WT.mc_id=Learn-Blog-tajanca) では、Azure 上の Web アプリケーションをセキュリティで保護して、最も一般的で危険な Web アプリケーションへの攻撃からアプリを保護する方法を示しています。
 
   - [Secure DevOps Kit for Azure](https://azsk.azurewebsites.net/index.html) は、オートメーションを広範に使用する DevOps チームの包括的な Azure サブスクリプションとリソースのセキュリティのニーズに対応した、スクリプト、ツール、拡張機能、およびオートメーションのコレクションです。 Secure DevOps Kit for Azure では、ネイティブの DevOps ワークフローにセキュリティをスムーズに統合する方法を示すことができます。 このキットはセキュリティ検証テスト (SVT) などのツールに対応し、これにより開発者は、コーディングと初期の開発の段階で安全なコードを記述し、クラウド アプリケーションの安全な構成をテストすることができます。
 
@@ -66,7 +66,7 @@ ms.locfileid: "92364050"
 
   - アプリケーションには機密データが含まれているか?
 
-  - アプリケーションで収集または格納するデータは、[米国連邦金融機関検査協議会 (FFIEC)](../blueprints/ffiec-analytics-overview.md) や [Payment Card IndustryData Security Standards (PCI DSS)](../blueprints/pcidss-analytics-overview.md) などの業界標準およびコンプライアンス プログラムに準拠する必要があるデータか?
+  - アプリケーションで収集または格納するデータは、[米国連邦金融機関検査協議会 (FFIEC)](/previous-versions/azure/security/blueprints/ffiec-analytics-overview) や [Payment Card IndustryData Security Standards (PCI DSS)](/previous-versions/azure/security/blueprints/pcidss-analytics-overview) などの業界標準およびコンプライアンス プログラムに準拠する必要があるデータか?
 
   - アプリケーションで収集または含まれている個人や顧客の機密データは、そのままで、または他の情報と共に使用することで、個人を特定したり、接触したり、探し当てたりできる機密データか?
 
@@ -89,7 +89,7 @@ OWASP の上位 10 件は、Web アプリケーションに対する重大なセ
 これらのセキュリティ リスクを認識することが、アプリケーションでこれらのリスクを最小限に抑える要件と設計についての決定を下す際に役立ちます。
 
 侵害防止のためのセキュリティ制御について検討することは重要です。
-ただし、[侵害を当然](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/security-in-devops)発生するものと考えることもできます。 侵害を想定することで、セキュリティに関する重要な質問に事前に答えを出すことができるため、次のような質問の答えを緊急時に出さなくても済みます。
+ただし、[侵害を当然](/azure/devops/learn/devops-at-microsoft/security-in-devops)発生するものと考えることもできます。 侵害を想定することで、セキュリティに関する重要な質問に事前に答えを出すことができるため、次のような質問の答えを緊急時に出さなくても済みます。
 
   - どのように攻撃を検出するのか?
 
@@ -126,7 +126,7 @@ OWASP の上位 10 件は、Web アプリケーションに対する重大なセ
 必ず、最新のバージョンのフレームワークと、そのフレームワークで使用できるすべてのセキュリティ機能を使用してください。 Microsoft は、すべての開発者がクラウド アプリケーションを提供するための、あらゆるプラットフォームまたは言語で動作する包括的な[開発ツールのセット](https://azure.microsoft.com/product-categories/developer-tools/)を提供しています。 さまざまな [SDK](https://azure.microsoft.com/downloads/) から選択することで、任意の言語でコーディングすることができます。
 フル機能の統合開発環境 (IDE) と、高度なデバッグ機能と組み込みの Azure サポートを備えたエディターを利用できます。
 
-Microsoft は、Azure でのアプリケーションの開発に使用できるさまざまな[言語、フレームワーク、およびツール](https://docs.microsoft.com/azure/index?pivot=sdkstools&panel=sdkstools-all)を提供しています。 たとえば、[.NET および .NET Core 開発者向けの Azure](https://docs.microsoft.com/dotnet/azure/) です。 提供されている言語とフレームワークごとに、すぐに使用を開始するのに役立つクイック スタート、チュートリアル、および API リファレンスがあります。
+Microsoft は、Azure でのアプリケーションの開発に使用できるさまざまな[言語、フレームワーク、およびツール](../../index.yml?panel=sdkstools-all&pivot=sdkstools)を提供しています。 たとえば、[.NET および .NET Core 開発者向けの Azure](/dotnet/azure/) です。 提供されている言語とフレームワークごとに、すぐに使用を開始するのに役立つクイック スタート、チュートリアル、および API リファレンスがあります。
 
 Azure は、Web サイトと Web アプリケーションのホストに使用できるさまざまなサービスを提供しています。 これらのサービスにより、.NET、.NET Core、Java、Ruby、Node.js、PHP、Python のうち、使い慣れた言語で開発を行うことができます。
 [Azure App Service Web Apps](../../app-service/overview.md) (Web Apps) はこれらのサービスの 1 つです。
@@ -153,9 +153,9 @@ Azure は、Web サイトと Web アプリケーションのホストに使用�
 
 | Threat | セキュリティ プロパティ | 潜在的な Azure プラットフォームの軽減策 |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| なりすまし               | 認証        | [HTTPS 接続を要求する](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio)。 |
-| 改ざん              | 整合性             | SSL/TLS 証明書を検証する。 SSL/TLS を使用するアプリケーションは、接続先エンティティの X.509 証明書を完全に検証する必要があります。 [x509 証明書を管理](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates)するには、Azure Key Vault 証明書を使用します。 |
-| 否認            | 否認防止       | Azure の[監視と診断](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)を有効にする。|
+| なりすまし               | 認証        | [HTTPS 接続を要求する](/aspnet/core/security/enforcing-ssl?tabs=visual-studio&view=aspnetcore-2.1)。 |
+| 改ざん              | 整合性             | SSL/TLS 証明書を検証する。 SSL/TLS を使用するアプリケーションは、接続先エンティティの X.509 証明書を完全に検証する必要があります。 [x509 証明書を管理](../../key-vault/general/about-keys-secrets-certificates.md)するには、Azure Key Vault 証明書を使用します。 |
+| 否認            | 否認防止       | Azure の[監視と診断](/azure/architecture/best-practices/monitoring)を有効にする。|
 | 情報漏えい | 機密情報       | [保存中](../fundamentals/encryption-atrest.md)と[転送中](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)の機密データを暗号化する。 |
 | サービス拒否      | 可用性          | 潜在的なサービス拒否状態のパフォーマンス メトリックを監視する。 接続のフィルターを実装する。 [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md#next-steps) をアプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する防御が提供されます。|
 | 特権の昇格 | 承認         | Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) を使用します。|
@@ -209,7 +209,7 @@ Web アプリケーションの開発のための ID 中心のアプローチを
 
 カスタム コードではなく、プラットフォームが提供する認証と承認のメカニズムを使用するようにします。 これは、カスタム認証コードの開発ではエラーが生じやすいためです。 商用コード (たとえば Microsoft のコード) は、通常はセキュリティが徹底的にレビューされています。 [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) は ID とアクセスを管理するための Azure ソリューションです。 安全な開発には、Azure AD の以下のツールとサービスが役立ちます。
 
-- [Microsoft ID プラットフォーム](/azure/active-directory/develop/)は、ユーザーが安全にサインインするアプリを構築するために、開発者が使用する一連のコンポーネントです。 このプラットフォームでは、シングル テナントの基幹業務 (LOB) アプリを構築する開発者、およびマルチテナント アプリの開発を目指す開発者を支援します。 基本的なサインインに加えて、Microsoft ID プラットフォームを使用して構築されたアプリによって、Microsoft API とカスタム API を呼び出すことができます。 Microsoft ID プラットフォームでは、OAuth 2.0 や OpenID Connect など業界標準のプロトコルがサポートされています。
+- [Microsoft ID プラットフォーム](../../active-directory/develop/index.yml)は、ユーザーが安全にサインインするアプリを構築するために、開発者が使用する一連のコンポーネントです。 このプラットフォームでは、シングル テナントの基幹業務 (LOB) アプリを構築する開発者、およびマルチテナント アプリの開発を目指す開発者を支援します。 基本的なサインインに加えて、Microsoft ID プラットフォームを使用して構築されたアプリによって、Microsoft API とカスタム API を呼び出すことができます。 Microsoft ID プラットフォームでは、OAuth 2.0 や OpenID Connect など業界標準のプロトコルがサポートされています。
 
 - [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml) は、アプリケーション使用時に顧客がサインアップ、サインイン、プロファイル管理の方法をカスタマイズして制御するために使用できる ID 管理サービスです。 ここでは、特に iOS、Android、.NET 用に開発されたアプリケーションが対象です。 Azure AD B2C は、これらのアクションを可能にする一方で、顧客 ID を保護します。
 
@@ -219,7 +219,7 @@ Web アプリケーションの開発のための ID 中心のアプローチを
 
 ソフトウェア開発者にドメイン管理者権限は必要でしょうか。 管理アシスタントに、自分のパーソナル コンピューターに対する管理制御へのアクセス権は必要でしょうか。 ソフトウェアへのアクセス権を評価することもまったく同様です。 [ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) を使用してユーザーにアプリケーションのさまざまな機能と権限を付与する場合、すべてのユーザーがすべてにアクセスできるようにするわけではありません。 アクセスをロールごとに必要なものに制限することで、セキュリティの問題が発生するリスクを制限します。
 
-アプリケーションがそのアクセス パターン全体を通して[最小特権](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications)を適用するようにしてください。
+アプリケーションがそのアクセス パターン全体を通して[最小特権](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications)を適用するようにしてください。
 
 > [!NOTE]
 > 最小特権のルールは、ソフトウェアとソフトウェアを作成するユーザーに適用する必要があります。 アクセス権を過剰に付与されたソフトウェア開発者は、IT セキュリティに対するリスクが莫大になる可能性があります。 開発者に悪意のある意図がある場合や、過剰なアクセス権が付与されている場合、結果は深刻になる可能性があります。 開発ライフサイクル全体を通して、開発者に最小特権のルールを適用することをお勧めします。
@@ -233,7 +233,7 @@ Web アプリケーションの開発のための ID 中心のアプローチを
 
 ### <a name="require-re-authentication-for-important-transactions"></a>重要なトランザクションには再認証を要求する
 
-[クロスサイト リクエスト フォージェリ](https://docs.microsoft.com/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) ( *XSRF* または *CSRF* ) は、Web でホストされるアプリに対する攻撃であり、悪意のある Web アプリが、クライアント ブラウザーとそのブラウザーが信頼する Web アプリの間のやり取りに影響を及ぼします。 クロスサイト リクエスト フォージェリ攻撃が起こり得るのは、Web ブラウザーが要求ごとにある種の認証トークンを自動的に Web サイトに送信するからです。
+[クロスサイト リクエスト フォージェリ](/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) ( *XSRF* または *CSRF* ) は、Web でホストされるアプリに対する攻撃であり、悪意のある Web アプリが、クライアント ブラウザーとそのブラウザーが信頼する Web アプリの間のやり取りに影響を及ぼします。 クロスサイト リクエスト フォージェリ攻撃が起こり得るのは、Web ブラウザーが要求ごとにある種の認証トークンを自動的に Web サイトに送信するからです。
 この種の悪用は、攻撃がユーザーの以前に認証されたセッションを利用するため、 *ワンクリック攻撃* または *セッション ライディング* とも呼ばれています。
 
 このような攻撃を防御する最善の方法は、購入、アカウントの非アクティブ化、パスワードの変更などのすべての重要なトランザクションの前に、ユーザーしか提供できないものを提供するようユーザーに求めることです。 ユーザーに、パスワードの再入力、キャプチャの入力、またはユーザーだけが持っているシークレット トークンの送信を求めることもできます。 最も一般的なアプローチは、シークレット トークンです。
@@ -277,21 +277,21 @@ Azure Key Vault は *シークレット ストア* であり、アプリケー�
 
 基本的には、開発プロジェクトに含まれるものはすべて、デプロイ時に公開されると考えてください。 プロジェクトにはいかなる機密データも含めないでください。
 
-[Azure Key Vault](../../key-vault/general/overview.md) については既に説明しました。 Key Vault を使用すれば、キーやパスワードなどのシークレットをハードコーディングするのではなく、格納することができます。 Key Vault を Azure リソースのマネージド ID と組み合わせて使用すると、Azure の Web アプリで、ソース管理や構成にシークレットを格納することなく、シークレットの構成値に簡単かつ安全にアクセスすることができます。 詳細については、「[Azure Key Vault を使用してサーバー アプリでシークレットを管理する](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/)」を参照してください。
+[Azure Key Vault](../../key-vault/general/overview.md) については既に説明しました。 Key Vault を使用すれば、キーやパスワードなどのシークレットをハードコーディングするのではなく、格納することができます。 Key Vault を Azure リソースのマネージド ID と組み合わせて使用すると、Azure の Web アプリで、ソース管理や構成にシークレットを格納することなく、シークレットの構成値に簡単かつ安全にアクセスすることができます。 詳細については、「[Azure Key Vault を使用してサーバー アプリでシークレットを管理する](/learn/modules/manage-secrets-with-azure-key-vault/)」を参照してください。
 
 ### <a name="implement-fail-safe-measures"></a>フェールセーフ対策を実装する
 
-アプリケーションは、実行中に発生する[エラー](https://docs.microsoft.com/dotnet/standard/exceptions/)を一貫した方法で処理可能である必要があります。 アプリケーションは、すべてのエラーをキャッチして、フェールセーフまたは解決済みにする必要があります。
+アプリケーションは、実行中に発生する[エラー](/dotnet/standard/exceptions/)を一貫した方法で処理可能である必要があります。 アプリケーションは、すべてのエラーをキャッチして、フェールセーフまたは解決済みにする必要があります。
 
 また、疑わしいアクティビティや悪意のあるアクティビティを識別するために、必ず十分なユーザー コンテキストでエラーをログに記録する必要もあります。 ログは、フォレンジック分析の遅延を許容するのに十分な時間、保持される必要があります。 ログは、ログ管理ソリューションで簡単に使用できる形式である必要があります。 セキュリティに関連するエラーのアラートは、必ずトリガーしてください。 ログ記録と監視が不十分では、攻撃者がさらにシステムを攻撃して、攻撃を持続できるようにしてしまいます。
 
 ### <a name="take-advantage-of-error-and-exception-handling"></a>エラーと例外の処理を活用する
 
-適切なエラーと[例外処理](https://docs.microsoft.com/dotnet/standard/exceptions/best-practices-for-exceptions)の実装は、防御的なコーディングの重要な部分です。 システムを信頼性が高く安全なものにするには、エラーと例外の処理が不可欠です。 エラー処理の誤りは、攻撃者に情報を漏らしたり、攻撃者がプラットフォームや設計についてさらに理解するのを手助けしたりといった、さまざまな種類のセキュリティの脆弱性を引き起こす可能性があります。
+適切なエラーと[例外処理](/dotnet/standard/exceptions/best-practices-for-exceptions)の実装は、防御的なコーディングの重要な部分です。 システムを信頼性が高く安全なものにするには、エラーと例外の処理が不可欠です。 エラー処理の誤りは、攻撃者に情報を漏らしたり、攻撃者がプラットフォームや設計についてさらに理解するのを手助けしたりといった、さまざまな種類のセキュリティの脆弱性を引き起こす可能性があります。
 
 次のことを確認します。
 
-- コード内で [try/catch ブロック](https://docs.microsoft.com/dotnet/standard/exceptions/how-to-use-the-try-catch-block-to-catch-exceptions)が重複しないように、一元的な方法で例外を処理します。
+- コード内で [try/catch ブロック](/dotnet/standard/exceptions/how-to-use-the-try-catch-block-to-catch-exceptions)が重複しないように、一元的な方法で例外を処理します。
 
 - 予期しないすべての動作は、アプリケーション内で処理されるようにします。
 
@@ -303,7 +303,7 @@ Azure Key Vault は *シークレット ストア* であり、アプリケー�
 
 ### <a name="use-logging-and-alerting"></a>ログ記録と警告機能を使用する
 
-問題について適切なタイミングで把握するためには、セキュリティ調査のためにセキュリティの問題の[ログを記録](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1)し、問題に関する警告をトリガーします。 すべてのコンポーネントで監査とログ記録を有効にします。 監査ログでは、ユーザー コンテキストをキャプチャし、すべての重要なデータを識別する必要があります。
+問題について適切なタイミングで把握するためには、セキュリティ調査のためにセキュリティの問題の[ログを記録](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1)し、問題に関する警告をトリガーします。 すべてのコンポーネントで監査とログ記録を有効にします。 監査ログでは、ユーザー コンテキストをキャプチャし、すべての重要なデータを識別する必要があります。
 
 ユーザーからサイトに送信される機密データをログに記録していないことを確認してください。 機密データの例は次のとおりです。
 

@@ -13,15 +13,15 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 7818ae36c785311466d2fb26ce45dcf50983145d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ca0513f95bc490087f3c84eeecc4ea623f64604
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87283488"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517089"
 ---
 # <a name="develop-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で開発する
-この記事では、クラウド向けのアプリケーションを開発するときに考慮するセキュリティ アクティビティとコントロールについて説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) の実装と検証のフェーズ中に考慮するセキュリティの質問と概念について説明します。 目標は、より安全なアプリケーションの開発に使用できるアクティビティと Azure サービスの定義を手助けすることです。
+この記事では、クラウド向けのアプリケーションを開発するときに考慮するセキュリティ アクティビティとコントロールについて説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) の実装と検証のフェーズ中に考慮するセキュリティの質問と概念について説明します。 目標は、より安全なアプリケーションの開発に使用できるアクティビティと Azure サービスの定義を手助けすることです。
 
 この記事では、次の SDL フェーズについて説明します。
 
@@ -34,11 +34,11 @@ ms.locfileid: "87283488"
 
 ### <a name="perform-code-reviews"></a>コード レビューを実行する
 
-コードをチェックインする前に、[コード レビュー](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs)を実施して、コードの全体的な品質を高め、バグが発生するリスクを小さくします。 [Visual Studio](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) を使用して、コード レビュー プロセスを管理できます。
+コードをチェックインする前に、[コード レビュー](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs)を実施して、コードの全体的な品質を高め、バグが発生するリスクを小さくします。 [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) を使用して、コード レビュー プロセスを管理できます。
 
 ### <a name="perform-static-code-analysis"></a>静的コード分析を実行する
 
-[静的コード分析](https://owasp.org/www-community/controls/Static_Code_Analysis) ("*ソース コード分析*" とも呼ばれます) は、通常、コード レビューの一部として実行されます。 一般に、静的コード分析は、静的コード分析ツールを実行し、[テイント チェック](https://en.wikipedia.org/wiki/Taint_checking)や[データ フロー分析](https://en.wikipedia.org/wiki/Data-flow_analysis)などの手法を使用して、実行されていないコードの潜在的な脆弱性を見つけることを指します。
+[静的コード分析](https://owasp.org/www-community/controls/Static_Code_Analysis) (" *ソース コード分析* " とも呼ばれます) は、通常、コード レビューの一部として実行されます。 一般に、静的コード分析は、静的コード分析ツールを実行し、[テイント チェック](https://en.wikipedia.org/wiki/Taint_checking)や[データ フロー分析](https://en.wikipedia.org/wiki/Data-flow_analysis)などの手法を使用して、実行されていないコードの潜在的な脆弱性を見つけることを指します。
 
 Azure Marketplace では、静的コード分析を実行してコード レビューを支援する[開発者ツール](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review)が提供されています。
 
@@ -62,9 +62,9 @@ Azure Marketplace では、静的コード分析を実行してコード レビ�
 
 ### <a name="verify-your-applications-outputs"></a>アプリケーションの出力を確認する
 
-視覚的に、またはドキュメント内で提示するすべての出力を、常にエンコードおよびエスケープする必要があります。 [エスケープ](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29) ("*出力エンコード*" とも呼ばれます) は、信頼されていないデータがインジェクション攻撃の手段にならないようにするために使用されます。 エスケープとデータの入力規則を組み合わせると、システム全体のセキュリティを強化する多重防御手段が提供されます。
+視覚的に、またはドキュメント内で提示するすべての出力を、常にエンコードおよびエスケープする必要があります。 [エスケープ](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29) (" *出力エンコード* " とも呼ばれます) は、信頼されていないデータがインジェクション攻撃の手段にならないようにするために使用されます。 エスケープとデータの入力規則を組み合わせると、システム全体のセキュリティを強化する多重防御手段が提供されます。
 
-エスケープでは、すべてのものが "*出力*" として表示されることが確認されます。 また、エスケープにより、データが実行を目的としたものではないことがインタープリターで認識され、攻撃の実行が防止されます。 これは、"*クロスサイト スクリプティング*" (XSS) と呼ばれる別の一般的な攻撃手法です。
+エスケープでは、すべてのものが " *出力* " として表示されることが確認されます。 また、エスケープにより、データが実行を目的としたものではないことがインタープリターで認識され、攻撃の実行が防止されます。 これは、" *クロスサイト スクリプティング* " (XSS) と呼ばれる別の一般的な攻撃手法です。
 
 サードパーティの Web フレームワークを使用している場合は、[OWASP XSS 防止チート シート](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.md)を使用して、Web サイトでの出力エンコードのオプションを確認できます。
 
@@ -99,7 +99,7 @@ ID フレームワークを使用して、パスワード ポリシーを作成�
 
 アプリケーションで[ファイルのアップロード](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload)を許可する場合は、この危険なアクティビティのために実行できる予防策を検討してください。 多くの攻撃において最初のステップになるのは、攻撃対象のシステムに悪意のあるコードを取り込むことです。 ファイル アップロードを使用すると、攻撃者がこれを達成しやすくなります。 OWASP では、ファイルを検証し、アップロードされているファイルが安全であることを確認するするためのソリューションが提供されます。
 
-マルウェア対策保護は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するのに役立ちます。 [Microsoft Antimalware](../fundamentals/antimalware.md) または Microsoft パートナーのエンドポイント保護ソリューション ([Trend Micro](https://www.trendmicro.com/azure/)、[Broadcom](https://www.broadcom.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)、および [Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)) をインストールできます。
+マルウェア対策保護は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するのに役立ちます。 [Microsoft Antimalware](../fundamentals/antimalware.md) または Microsoft パートナーのエンドポイント保護ソリューション ([Trend Micro](https://www.trendmicro.com/azure/)、[Broadcom](https://www.broadcom.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)、および [Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)) をインストールできます。
 
 [Microsoft Antimalware](../fundamentals/antimalware.md) には、リアルタイム保護、スケジュールされたスキャン、マルウェアの駆除、シグネチャの更新、エンジンの更新、サンプルのレポート、および除外イベントの収集などの機能が含まれます。 デプロイと検出の組み込み (アラートとインシデント) を容易にするために、Microsoft Antimalware とパートナー ソリューションを [Azure Security Center](../../security-center/security-center-partner-integration.md) と統合できます。
 

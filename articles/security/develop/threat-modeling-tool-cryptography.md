@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7de0cad91e01187a1ed84257c9e3a7cd8106951a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7af115d8f1244253e461f796c5665609d3b84b21
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87539953"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517446"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>セキュリティ フレーム:暗号化 | 軽減策 
 
@@ -119,7 +119,7 @@ ms.locfileid: "87539953"
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [暗号化アルゴリズムの選択](https://technet.microsoft.com/library/ms345262(v=sql.130).aspx) |
+| **参照**              | [暗号化アルゴリズムの選択](/sql/relational-databases/security/encryption/choose-an-encryption-algorithm) |
 | **手順** | 暗号化アルゴリズムによって定義されるデータ変換は、未承認ユーザーが容易に復元できないものです。 SQL Server では、管理者と開発者は、DES、Triple DES、TRIPLE_DES_3KEY、RC2、RC4、128 ビット RC4、DESX、128 ビット AES、192 ビット AES、256 ビット AES など、多数のアルゴリズムの中から選択できます。 |
 
 ## <a name="ssis-packages-should-be-encrypted-and-digitally-signed"></a><a id="ssis-signed"></a>SSIS パッケージを暗号化し、デジタル署名する必要がある
@@ -130,7 +130,7 @@ ms.locfileid: "87539953"
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [デジタル署名を使用してパッケージのソースを特定する](https://msdn.microsoft.com/library/ms141174.aspx)、[脅威と脆弱性の対策 (Integration Services)](https://msdn.microsoft.com/library/bb522559.aspx) |
+| **参照**              | [デジタル署名を使用してパッケージのソースを特定する](/sql/integration-services/security/identify-the-source-of-packages-with-digital-signatures)、[脅威と脆弱性の対策 (Integration Services)](/sql/integration-services/security/security-overview-integration-services) |
 | **手順** | パッケージのソースは、パッケージを作成した個人または組織です。 不明なソースや信頼されていないソースのパッケージを実行することは危険な場合があります。 SSIS パッケージの不正な改ざんを防ぐには、デジタル署名を使用する必要があります。 また、保存中や転送中にパッケージの機密性を確保するために、SSIS パッケージを暗号化する必要があります。 |
 
 ## <a name="add-digital-signature-to-critical-database-securables"></a><a id="securables-db"></a>重要なセキュリティ保護可能なデータベース リソースにデジタル署名を追加する
@@ -141,7 +141,7 @@ ms.locfileid: "87539953"
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [ADD SIGNATURE (Transact-SQL)](https://msdn.microsoft.com/library/ms181700) |
+| **参照**              | [ADD SIGNATURE (Transact-SQL)](/sql/t-sql/statements/add-signature-transact-sql) |
 | **手順** | 重要なセキュリティ保護可能なデータベース リソースの整合性を検証する必要がある場合、デジタル署名を使用する必要があります。 ストアド プロシージャ、関数、アセンブリ、トリガーなど、セキュリティ保護可能なデータベース リソースにデジタル署名することができます。 これが役立つ状況の例を紹介します。ISV (独立系ソフトウェア ベンダー) が、顧客に提供されたソフトウェアのサポートを提供するとします。 ISV はサポートを提供する前に、そのソフトウェアのセキュリティ保護可能なデータベース リソースが誤って改ざんされたり、悪意のある試みによって改ざんされたりしていないことを確認する必要があります。 セキュリティ保護可能なリソースがデジタル署名されていれば、ISV はデジタル署名を確認し、そのリソースの整合性を検証できます。| 
 
 ## <a name="use-sql-server-ekm-to-protect-encryption-keys"></a><a id="ekm-keys"></a>SQL Server EKM を使用して暗号化キーを保護する
@@ -152,7 +152,7 @@ ms.locfileid: "87539953"
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [SQL Server 拡張キー管理 (EKM)](https://msdn.microsoft.com/library/bb895340)、[Azure Key Vault を使用する拡張キー管理 (SQL Server)](https://msdn.microsoft.com/library/dn198405) |
+| **参照**              | [SQL Server 拡張キー管理 (EKM)](/sql/relational-databases/security/encryption/extensible-key-management-ekm)、[Azure Key Vault を使用する拡張キー管理 (SQL Server)](/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server) |
 | **手順** | SQL Server 拡張キー管理を使用すると、データベース ファイルを保護する暗号化キーを、スマート カード、USB デバイス、EKM/HSM モジュールなどの外部デバイスに保存できます。 これにより、データベース管理者 (sysadmin グループのメンバーを除く) からのデータの保護も実現され、 そのデータベース ユーザー以外はアクセスできない外部 EKM/HSM モジュール上の暗号化キーを使用してデータを暗号化できます。 |
 
 ## <a name="use-alwaysencrypted-feature-if-encryption-keys-should-not-be-revealed-to-database-engine"></a><a id="keys-engine"></a>暗号化キーがデータベース エンジンに公開されないようにする必要がある場合は AlwaysEncrypted 機能を使用する
@@ -163,7 +163,7 @@ ms.locfileid: "87539953"
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | SQL Azure、OnPrem |
 | **属性**              | SQL バージョン - V12、MsSQL2016 |
-| **参照**              | [Always Encrypted (データベース エンジン)](https://msdn.microsoft.com/library/mt163865) |
+| **参照**              | [Always Encrypted (データベース エンジン)](/sql/relational-databases/security/encryption/always-encrypted-database-engine) |
 | **手順** | Always Encrypted は、Azure SQL Database や SQL Server データベースに格納された、クレジット カード番号や国民識別番号 (米国の社会保障番号など) などの機密データを保護することを目的とした機能です。 Always Encrypted を使用すると、クライアントはクライアント アプリケーション内の機密データを暗号化することができます。暗号化キーがデータベース エンジン (SQL Database や SQL Server) に公開されることはありません。 これにより、Always Encrypted では、データの所有者 (データを表示できるユーザー) とデータの管理者 (アクセス権は付与しないユーザー) を分離できます。 |
 
 ## <a name="store-cryptographic-keys-securely-on-iot-device"></a><a id="keys-iot"></a>IoT デバイスで暗号化キーを安全に保存する
@@ -174,7 +174,7 @@ ms.locfileid: "87539953"
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | デバイスの OS - Windows IoT Core、デバイスの接続 - Azure IoT device SDK |
-| **参照**              | [Windows IoT Core 上の TPM](https://developer.microsoft.com/windows/iot/docs/tpm)、[Windows IoT Core 上での TPM のセットアップ](https://docs.microsoft.com/windows/iot-core/secure-your-device/setuptpm)、[Azure IoT device SDK の TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
+| **参照**              | [Windows IoT Core 上の TPM](/windows/iot-core/secure-your-device/TPM)、[Windows IoT Core 上での TPM のセットアップ](/windows/iot-core/secure-your-device/setuptpm)、[Azure IoT device SDK の TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
 | **手順** | 対称秘密キーまたは証明書の秘密キーは、TPM やスマート カード チップのようなハードウェアで保護された記憶域に安全に保存します。 Windows 10 IoT Core では TPM の使用をサポートしています。いくつかの互換性のある TPM を使用できます (https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm )。 ファームウェア TPM またはディスクリート TPM を使用することをお勧めします。 ソフトウェア TPM は、開発およびテストにのみ使用します。 TPM が使用可能であり、キーがプロビジョニングされたら、機密情報をハードコーディングせずに、トークンを生成するコードを作成する必要があります。 | 
 
 ### <a name="example"></a>例

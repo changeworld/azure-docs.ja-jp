@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 70e3185257c7c70d74fdc8492cf0a2b4970c03b1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2c415fc92d2d338c568c422b1db2579563527839
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305478"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442057"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Resource Manager テンプレートを使用して Azure Machine Learning のワークスペースを作成します。
 
@@ -34,7 +34,7 @@ ms.locfileid: "93305478"
 
 * 一部のシナリオでは、サポート チケットを開く必要があります。 そのシナリオを次に示します。
 
-    * __カスタマーマネージド キー (CMK) を使用する Private Link 対応ワークスペース__
+    * __カスタマーマネージド キーを使用する Private Link 対応ワークスペース__
     * __仮想ネットワークの背後にあるワークスペースの Azure Container Registry__
 
     詳細については、[クォータの管理と増加](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)に関するページを参照してください。
@@ -170,7 +170,7 @@ New-AzResourceGroupDeployment `
 > [!IMPORTANT]
 > ワークスペースが作成されたら、機密データ、暗号化、Key Vault ID、またはキー識別子の設定を変更することはできません。 これらの値を変更するには、新しい値を使用して新しいワークスペースを作成する必要があります。
 
-詳細については、「[保存時の暗号化](concept-enterprise-security.md#encryption-at-rest)」を参照してください。
+詳細については、「[保存時の暗号化](concept-data-encryption.md#encryption-at-rest)」を参照してください。
 
 > [!IMPORTANT]
 > このテンプレートを使用する前に、サブスクリプションで満たしている必要がある特定の要件がいくつかあります。
@@ -252,7 +252,7 @@ New-AzResourceGroupDeployment `
 ```
 ---
 
-カスタマー マネージド キーを使用する場合、Azure Machine Learning により、Cosmos DB インスタンスを含むセカンダリ リソース グループが作成されます。 詳細については、「[保存時の暗号化 - Cosmos DB](concept-enterprise-security.md#encryption-at-rest)」を参照してください。
+カスタマー マネージド キーを使用する場合、Azure Machine Learning により、Cosmos DB インスタンスを含むセカンダリ リソース グループが作成されます。 詳細については、「[保存時の暗号化 - Cosmos DB](concept-data-encryption.md#encryption-at-rest)」を参照してください。
 
 データに対して提供できる追加の構成は、 **confidential_data** パラメーターを **true** に設定することです。 これにより、次の処理が行われます。
 
@@ -264,7 +264,7 @@ New-AzResourceGroupDeployment `
     > [!IMPORTANT]
     > ワークスペースが作成されたら、機密データ、暗号化、Key Vault ID、またはキー識別子の設定を変更することはできません。 これらの値を変更するには、新しい値を使用して新しいワークスペースを作成する必要があります。
 
-  詳細については、「[保存時の暗号化](concept-enterprise-security.md#encryption-at-rest)」を参照してください。
+  詳細については、「[保存時の暗号化](concept-data-encryption.md#encryption-at-rest)」を参照してください。
 
 ## <a name="deploy-workspace-behind-a-virtual-network"></a>仮想ネットワークの背後にワークスペースをデプロイする
 

@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: eb0aff6692a12ca7fb00090c0585e46f37c84ace
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 322f5f6a79bdce23706b2211ccc04ef2451675d0
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913026"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515729"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Threat Modeling Tool の概要
 
 Microsoft Threat Modeling Tool 2018 は、無料で **[クリックしてダウンロードできる](https://aka.ms/threatmodelingtool)** ツールとして 2018 年 9 月に GA としてリリースされました。 配布のしくみが変わり、ユーザーがツールを開くたびに、最新の改善とバグの修正をプッシュできるようになりました。そのため、保守と使用が簡単になりました。
 この記事では、Microsoft SDL 脅威モデリング アプローチの基本的なプロセスについて説明します。また、ツールを使用して、セキュリティ プロセスのバックボーンとして優れた脅威モデルを作成する方法について説明します。
 
-この記事は、SDL の脅威モデリング アプローチの既存の知識に基づいています。 短時間で復習するには、「 **[Web アプリケーションの脅威モデル](https://msdn.microsoft.com/library/ms978516.aspx)** 」と、2006 年に公開されたアーカイブ版の MSDN 記事「 **[Uncover Security Flaws Using the STRIDE Approach](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** 」(STRIDE アプローチを使用してセキュリティ上の欠陥を見つける) を参照してください。
+この記事は、SDL の脅威モデリング アプローチの既存の知識に基づいています。 短時間で復習するには、「 **[Web アプリケーションの脅威モデル](/previous-versions/msp-n-p/ff648006(v=pandp.10))** 」と、2006 年に公開されたアーカイブ版の MSDN 記事「 **[Uncover Security Flaws Using the STRIDE Approach](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** 」(STRIDE アプローチを使用してセキュリティ上の欠陥を見つける) を参照してください。
 
 簡単にまとめると、このアプローチにはダイアグラムの作成、脅威の特定、脅威の軽減、各軽減策の検証が含まれます。 このプロセスをまとめた図を次に示します。
 

@@ -4,15 +4,15 @@ description: Microsoft AppSource と Azure Marketplace のオファーを市場�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 07/06/2020
-ms.openlocfilehash: 33198f95ef0309cada6f5f11c809811f23d7f826
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 3ea6a0035a9f9354be5c14699936c6a07dea1150
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708647"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94492091"
 ---
 # <a name="offer-listing-best-practices"></a>オファーの掲載のベスト プラクティス
 
@@ -130,8 +130,8 @@ AppSource で選択した製品に表示されるオファーについて、ア�
 ## <a name="link-to-your-offer-page-from-your-website"></a>自社の Web サイトからオファーのページにリンクする
 
 自社サイトの AppSource または Marketplace バッジからコマーシャル マーケットプレースのリストにリンクする場合は、URL の末尾に次のクエリ パラメーターを含めることで、強力な分析やレポートに対応できます。
-* **src**:トラフィックが AppSource にルーティングされる元のソースを含めます (Web サイト、LinkedIn、Facebook など)。
-* **mktcmpid**:マーケティング キャンペーン ID。文字、数字、アンダースコア、およびハイフンを組み合わせて 16 文字までを入力できます (たとえば、*blogpost_12*)。
+* **src** :トラフィックが AppSource にルーティングされる元のソースを含めます (Web サイト、LinkedIn、Facebook など)。
+* **mktcmpid** :マーケティング キャンペーン ID。文字、数字、アンダースコア、およびハイフンを組み合わせて 16 文字までを入力できます (たとえば、 *blogpost_12* )。
 
 次の URL の例には、前述のクエリ パラメーターの両方が含まれています。`https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 

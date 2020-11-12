@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: eeefbcdc080620c60f7cd49b8f749375e23ddd02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0d02532f39d676772e5ee5d6414b802faffba7c
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899718"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505939"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>テンプレートを使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
@@ -101,7 +101,7 @@ PS C:\windows\system32>
 
 ### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-前の手順で作成したリソース グループを使用して、新しいストレージ アカウントを作成します。 これは、VM の仮想ディスク イメージのアップロードに使用される**ローカル ストレージ アカウント**です。
+前の手順で作成したリソース グループを使用して、新しいストレージ アカウントを作成します。 これは、VM の仮想ディスク イメージのアップロードに使用される **ローカル ストレージ アカウント** です。
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
@@ -141,7 +141,7 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
 ### <a name="add-blob-uri-to-hosts-file"></a>hosts ファイルに BLOB の URI を追加する
 
-BLOB ストレージへの接続に使用するクライアント用に、hosts ファイルに BLOB URI を既に追加していることを確認します。 **管理者としてメモ帳を実行**し、`C:\windows\system32\drivers\etc\hosts` で BLOB URI の次のエントリを追加します。
+BLOB ストレージへの接続に使用するクライアント用に、hosts ファイルに BLOB URI を既に追加していることを確認します。 **管理者としてメモ帳を実行** し、`C:\windows\system32\drivers\etc\hosts` で BLOB URI の次のエントリを追加します。
 
 `<Device IP> <storage account name>.blob.<Device name>.<DNS domain>`
 
@@ -189,7 +189,7 @@ BLOB ストレージへの接続に使用するクライアント用に、hosts 
 
     ![Azure Storage に接続する 2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-2.png)
 
-6. **[名前とキーを使用して接続する]** で、**表示名**、**ストレージ アカウント名**、Azure Storage の**アカウント キー**を指定します。 **その他**のストレージ ドメインを選択してから、`<device name>.<DNS domain>` 接続文字列を指定します。 Storage Explorer に証明書をインストールしなかった場合は、 **[HTTP を使用する]** オプションをオンにします。 **[次へ]** を選択します。
+6. **[名前とキーを使用して接続する]** で、 **表示名** 、 **ストレージ アカウント名** 、Azure Storage の **アカウント キー** を指定します。 **その他** のストレージ ドメインを選択してから、`<device name>.<DNS domain>` 接続文字列を指定します。 Storage Explorer に証明書をインストールしなかった場合は、 **[HTTP を使用する]** オプションをオンにします。 **[次へ]** を選択します。
 
     ![名前とキーを使用して接続する](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-name-key-1.png)
 
@@ -441,7 +441,7 @@ VM を作成するには、`CreateVM.parameters.json` パラメーター ファ�
 
 1. 一意の名前、ネットワーク インターフェイス名、および ipconfig 名を指定します。 
 1. ユーザー名、パスワード、およびサポートされている VM のサイズを入力します。
-1. `CreateImageAndVnet.parameters.json` のパラメーターに指定されているのと同じ名前を、**VnetName**、**subnetName**、および **ImageName** に付けます。 たとえば、VnetName、subnetName、ImageName を **vnet1**、**subnet1**、**image1** と指定した場合は、このテンプレートのパラメーターも同じ値のままにします。
+1. `CreateImageAndVnet.parameters.json` のパラメーターに指定されているのと同じ名前を、 **VnetName** 、 **subnetName** 、および **ImageName** に付けます。 たとえば、VnetName、subnetName、ImageName を **vnet1** 、 **subnet1** 、 **image1** と指定した場合は、このテンプレートのパラメーターも同じ値のままにします。
 1. ここで、前に定義したサブネット ネットワーク内の VM に割り当てる静的 IP アドレスが必要になります。 **PrivateIPAddress** を、パラメーター ファイルのこのアドレスに置き換えます。 VM により、ローカルの DCHP サーバーから IP アドレスが取得されるようにするには、`privateIPAddress` の値を空白のままにします。  
     
     ```json
@@ -550,7 +550,8 @@ VM 作成テンプレートの `CreateVM.json` をデプロイします。 こ�
         
         PS C:\07-30-2020>
     ```   
-また、`–AsJob` パラメーターを使用して `New-AzureRmResourceGroupDeployment` コマンドを非同期に実行することもできます。 コマンドレットがバックグラウンドで実行される場合の出力例を次に示します。 その後、 `Get-Job` コマンドレットを使用して、作成されたジョブの状態をクエリできます。
+
+    また、`–AsJob` パラメーターを使用して `New-AzureRmResourceGroupDeployment` コマンドを非同期に実行することもできます。 コマンドレットがバックグラウンドで実行される場合の出力例を次に示します。 その後、 `Get-Job` コマンドレットを使用して、作成されたジョブの状態をクエリできます。
 
     ```powershell   
     PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment `
@@ -568,7 +569,6 @@ VM 作成テンプレートの `CreateVM.json` をデプロイします。 こ�
      
     Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
     --     ----            -------------   -----         -----------     --------             -------
-    2      Long Running... AzureLongRun... Completed     True            localhost            New-AzureRmResourceGro...
     ```
 
 7. VM が正常にプロビジョニングされているかどうかを確認します。 次のコマンドを実行します。
@@ -615,7 +615,7 @@ On the client used to access your Azure Stack Edge Pro device, set up a global v
 
 ### On Windows client 
 
-`$Env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"`
+`$Env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"`
 
 ### On Linux client
 
