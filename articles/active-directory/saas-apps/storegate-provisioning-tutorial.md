@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/15/2019
 ms.author: Zhchia
-ms.openlocfilehash: cf71246caef377fb607a9ca7a765ec9ca5999744
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c984beff630ef90ea33a13e2fef1bca0189c2314
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285957"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357943"
 ---
 # <a name="tutorial-configure-storegate-for-automatic-user-provisioning"></a>チュートリアル:Storegate を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -83,7 +83,7 @@ Azure AD で自動ユーザー プロビジョニング用に Storegate を構�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Storegate**」と入力し、結果パネルで **Storegate** を選択します。 
+4. 検索ボックスに「 **Storegate** 」と入力し、結果パネルで **Storegate** を選択します。 
 
     ![結果一覧の Storegate](common/search-new-app.png)
 

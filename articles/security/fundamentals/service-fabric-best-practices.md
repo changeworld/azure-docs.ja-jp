@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93b25e65914ce603b4a969eda7fd7c048704e466
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81461652"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410013"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric セキュリティに関するベスト プラクティス
 Azure では、アプリケーションをすばやく簡単に、高いコスト効率でデプロイできます。 運用環境にクラウド アプリケーションをデプロイする前に、アプリケーションに実装するクラスターのセキュリティ確保に関して推奨される重要なベスト プラクティスを確認しましょう。
@@ -83,7 +83,7 @@ Azure Resource Manager テンプレートを使用する:
 ## <a name="use-x509-certificates"></a>X.509 証明書を使用する
 クラスターは必ず、X.509 証明書または Windows セキュリティを使ってセキュリティを確保する必要があります。 セキュリティを構成できるのはクラスターの作成時に限られます。 クラスターの作成後にセキュリティをオンにすることはできません。
 
-[クラスター証明書](../../service-fabric/service-fabric-windows-cluster-x509-security.md)を指定するには、**ClusterCredentialType** プロパティの値を X509 に設定します。 外部接続用にサーバー証明書を指定する場合は、**ServerCredentialType** プロパティを X509 に設定します。
+[クラスター証明書](../../service-fabric/service-fabric-windows-cluster-x509-security.md)を指定するには、 **ClusterCredentialType** プロパティの値を X509 に設定します。 外部接続用にサーバー証明書を指定する場合は、 **ServerCredentialType** プロパティを X509 に設定します。
 
 さらに、以下のプラクティスに従う必要があります:
 -   運用クラスターの証明書は、正しく構成された Windows Server 証明書サービスを使って作成する。 このほか、承認された証明機関 (CA) から証明書を取得してもかまいません。
@@ -99,7 +99,7 @@ Service Fabric では、アプリケーションが使用するリソースに�
 
 -   Active Directory ドメインのグループまたはユーザーを使用する: サービスの実行には、Active Directory のユーザー アカウントまたはグループ アカウントの資格情報を使用します。 Azure Active Directory ではなく、ドメイン内のオンプレミスの Active Directory を使用してください。 ドメインにあって既にアクセス許可が付与されている他のリソースにアクセスする場合には、ドメイン ユーザーまたはドメイン グループを使用します。 たとえば、ファイル共有などのリソースです。
 
--   HTTP エンドポイントと HTTPS エンドポイントにセキュリティ アクセス ポリシーを割り当てる: サービス マニフェストで HTTP を使用するエンドポイント リソースを宣言するときは、**SecurityAccessPolicy** プロパティを指定してサービスに **RunAs** ポリシーを適用します。 HTTP エンドポイントに割り当てられているポートが、サービスを実行する RunAs ユーザー アカウントに対するアクセス制御の正確な一覧になります。 ポリシーが設定されていないと、http.sys がサービスにアクセスできず、クライアントからの呼び出しに失敗します。
+-   HTTP エンドポイントと HTTPS エンドポイントにセキュリティ アクセス ポリシーを割り当てる: サービス マニフェストで HTTP を使用するエンドポイント リソースを宣言するときは、 **SecurityAccessPolicy** プロパティを指定してサービスに **RunAs** ポリシーを適用します。 HTTP エンドポイントに割り当てられているポートが、サービスを実行する RunAs ユーザー アカウントに対するアクセス制御の正確な一覧になります。 ポリシーが設定されていないと、http.sys がサービスにアクセスできず、クライアントからの呼び出しに失敗します。
 
 Service Fabric クラスターでセキュリティ ポリシーを使用する方法の詳細については、「[アプリケーションのセキュリティ ポリシーの構成](../../service-fabric/service-fabric-application-runas-security.md)」を参照してください。
 
@@ -113,7 +113,7 @@ Service Fabric Reliable Actors は、アクター設計パターンの実装で�
 
 Service Fabric では、Reliable Actors アプリケーション フレームワークでアクターを実装します。 このフレームワークはアクター パターンに基づくものであり、[Service Fabric Reliable Services](../../service-fabric/service-fabric-reliable-services-introduction.md) の上に構築されています。 作成する各リライアブル アクター サービスは、パーティション分割されたステートフル リライアブル サービスとなります。
 
-各アクターは、アクター型のインスタンスとして定義されます。これは、.NET オブジェクトが .NET 型のインスタンスであるのと同様です。 たとえば、電卓の機能を実装する**アクター型**があるとしましょう。クラスターには、この型のアクターをさまざまなノードに分散させて多数配置することができます。 そして、その分散して配置されたアクターのそれぞれが、アクター ID によって一意に特定できるようになっています。
+各アクターは、アクター型のインスタンスとして定義されます。これは、.NET オブジェクトが .NET 型のインスタンスであるのと同様です。 たとえば、電卓の機能を実装する **アクター型** があるとしましょう。クラスターには、この型のアクターをさまざまなノードに分散させて多数配置することができます。 そして、その分散して配置されたアクターのそれぞれが、アクター ID によって一意に特定できるようになっています。
 
 レプリケーション時に使用される通信チャネルをセキュリティ保護する場合は、[レプリケーターのセキュリティ構成](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)を使用します。 この構成は、サービスがお互いのレプリケーション トラフィックを見ることができないようにするものであり、高可用性データのセキュリティの確保に役立ちます。 既定では、セキュリティ構成セクションが空の場合、レプリケーション セキュリティは有効になりません。
 レプリケーター構成では、アクター状態プロバイダーの状態の信頼性を高める役割を担うレプリケーターを構成します。
@@ -178,6 +178,6 @@ Azure Service Fabric では、[Service Fabric クラスター](../../service-fab
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Service Fabric セキュリティのチェックリスト](service-fabric-checklist.md)
+- [Service Fabric セキュリティのチェックリスト](../../service-fabric/service-fabric-best-practices-security.md)
 - Service Fabric [開発環境](../../service-fabric/service-fabric-get-started.md)を設定します。
 - [Service Fabric のサポート オプション](../../service-fabric/service-fabric-support.md)について学びます。

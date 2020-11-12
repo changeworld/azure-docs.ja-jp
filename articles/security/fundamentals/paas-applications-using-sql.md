@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: a02b2157209b5f47ac7ffbde4e15f3e7df1c258b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 278812754c636d434bf579c0408832f1e99d3445
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462532"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408075"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Azure で PaaS データベースを保護するベスト プラクティス
 
@@ -36,11 +36,11 @@ Azure SQL Database と Azure Synapse Analytics は、インターネット ベ�
 
 Azure SQL Database は、次の 2 種類の認証のいずれかを使用するように構成できます。
 
-- **SQL 認証**では、ユーザー名とパスワードを使用します。 データベースのサーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定しています。 これらの資格情報を使用すると、データベース所有者として、そのサーバーにある任意のデータベースを認証できます。
+- **SQL 認証** では、ユーザー名とパスワードを使用します。 データベースのサーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定しています。 これらの資格情報を使用すると、データベース所有者として、そのサーバーにある任意のデータベースを認証できます。
 
-- **Azure Active Directory 認証**では、Azure Active Directory で管理されている ID を使用し、管理、統合されたドメインをサポートしています。 Azure Active Directory 認証を使用するには、"Azure AD 管理者" という、Azure AD ユーザーとグループを管理できるサーバー管理者を別に作成する必要があります。 この管理者は、通常のサーバー管理者が実行できるすべての操作も実行できます。
+- **Azure Active Directory 認証** では、Azure Active Directory で管理されている ID を使用し、管理、統合されたドメインをサポートしています。 Azure Active Directory 認証を使用するには、"Azure AD 管理者" という、Azure AD ユーザーとグループを管理できるサーバー管理者を別に作成する必要があります。 この管理者は、通常のサーバー管理者が実行できるすべての操作も実行できます。
 
-[Azure Active Directory 認証](../../active-directory/develop/authentication-scenarios.md)は、Azure Active Directory (AD) の ID を使用して Azure SQL Database と Azure Synapse Analytics に接続するメカニズムです。 Azure AD では、SQL Server 認証とは別の認証が提供されるため、データベース サーバー間でユーザー ID が拡散されるのを防ぐことができます。 Azure AD 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。 ID の一元管理では、1 か所でデータベース ユーザーを管理できるようになるため、アクセス許可の管理が容易になります。  
+[Azure Active Directory 認証](../../active-directory/develop/authentication-vs-authorization.md)は、Azure Active Directory (AD) の ID を使用して Azure SQL Database と Azure Synapse Analytics に接続するメカニズムです。 Azure AD では、SQL Server 認証とは別の認証が提供されるため、データベース サーバー間でユーザー ID が拡散されるのを防ぐことができます。 Azure AD 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。 ID の一元管理では、1 か所でデータベース ユーザーを管理できるようになるため、アクセス許可の管理が容易になります。  
 
 ### <a name="benefits-of-using-azure-ad-instead-of-sql-authentication"></a>SQL 認証ではなく Azure AD を使用する利点
 
@@ -50,7 +50,7 @@ Azure SQL Database は、次の 2 種類の認証のいずれかを使用する�
 - 包含データベース ユーザーを使用して、データベース レベルで ID を認証します。
 - SQL Database に接続するアプリケーション向けにトークンベース認証をサポートしています。
 - Azure AD 認証は、ADFS (Active Directory フェデレーション サービス) またはドメインを同期しないローカル Azure AD のためのネイティブ ユーザー/パスワード認証でドメインフェデレーションをサポートします。
-- [Multi-Factor Authentication (MFA)](/azure/active-directory/authentication/multi-factor-authentication) を含む Active Directory ユニバーサル認証を使用する SQL Server Management Studio からの接続をサポートします。 MFA には、電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、モバイル アプリ通知など、簡単な各種確認オプションによる強力な認証が含まれます。 詳細については、[SQL Database と Azure Synapse Analytics でのユニバーサル認証](../../azure-sql/database/authentication-mfa-ssms-overview.md)に関するページを参照してください。
+- [Multi-Factor Authentication (MFA)](../../active-directory/authentication/concept-mfa-howitworks.md) を含む Active Directory ユニバーサル認証を使用する SQL Server Management Studio からの接続をサポートします。 MFA には、電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、モバイル アプリ通知など、簡単な各種確認オプションによる強力な認証が含まれます。 詳細については、[SQL Database と Azure Synapse Analytics でのユニバーサル認証](../../azure-sql/database/authentication-mfa-ssms-overview.md)に関するページを参照してください。
 
 Azure AD 認証の詳細については、次を参照してください。
 

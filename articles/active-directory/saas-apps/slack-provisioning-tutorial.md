@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: arvinh
-ms.openlocfilehash: 41ed942ea8962e845b7392656639e0d6bcdccbf5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 58fe99164c390d8a9435e5aa65e55fe7fca5d6db
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515923"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359478"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>チュートリアル:Slack を構成し、自動ユーザー プロビジョニングに対応させる
 

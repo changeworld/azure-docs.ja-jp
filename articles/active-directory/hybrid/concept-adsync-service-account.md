@@ -15,12 +15,12 @@ ms.date: 06/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 875c503a9959565d76d46902b5ecb386995ef1e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dddfb8426b769c06cb5b7494431b7eee34dbf9e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86144721"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410897"
 ---
 # <a name="adsync-service-account"></a>ADSync サービス アカウント
 Azure AD Connect は、Active Directory と Azure Active Directory の間の同期を調整するオンプレミス サービスをインストールします。  Microsoft Azure AD Sync 同期サービス (ADSync) は、オンプレミス環境内のサーバー上で実行されます。  サービスの資格情報は、高速インストールでは既定で設定されますが、組織のセキュリティ要件を満たすようにカスタマイズできます。  これらの資格情報は、オンプレミス フォレストまたは Azure Active Directory への接続には使用されません。
@@ -61,7 +61,7 @@ AdSync サービスの暗号化キーが見つからないため、再作成さ�
 
 この問題のトラブルシューティング: AdSync サービスの [ログオン] 資格情報が変更されると、Microsoft Azure AD Sync の暗号化キーにアクセスできなくなります。  資格情報が変更されている場合は、[サービス] アプリケーションを使用して [ログオン] アカウントを元々構成されていた値 (例: NT SERVICE\AdSync) に再変更してサービスを再起動します。  これで、AdSync サービスの正常動作がすぐに復元されます。
 
-詳細については、次の[記事](https://go.microsoft.com/fwlink/?linkid=2086764)を参照してください。
+詳細については、次の[記事](./whatis-hybrid-identity.md)を参照してください。
 
 ### <a name="example-2"></a>例 2
 
@@ -69,7 +69,7 @@ AdSync サービスの暗号化キーが見つからないため、再作成さ�
 
 この問題のトラブルシューティング: AdSync サービスの [ログオン] 資格情報が変更されると、Microsoft Azure AD Sync サービスは、ローカル データベース プロバイダーへのアクセス許可を失います。  資格情報が変更されている場合は、[サービス] アプリケーションを使用して [ログオン] アカウントを元々構成されていた値 (例: NT SERVICE\AdSync) に再変更してサービスを再起動します。  これで、AdSync サービスの正常動作がすぐに復元されます。
 
-詳細については、次の[記事](https://go.microsoft.com/fwlink/?linkid=2086764)を参照してください。
+詳細については、次の[記事](./whatis-hybrid-identity.md)を参照してください。
 
 追加の詳細: プロバイダーから次のエラー情報が返されました。
  

@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 3a0a69784be3b03b030ef599037b57c2c20ea2c6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 185b61f77b275ed78050f5d8efb820c5333f6e1f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454679"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358577"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>チュートリアル:DocuSign を構成し、自動ユーザー プロビジョニングに対応させる
 

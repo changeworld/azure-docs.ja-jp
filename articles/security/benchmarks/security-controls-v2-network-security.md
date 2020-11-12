@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9833f63d999ab7c24174853bd37f4e7a76f6dfbf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6ddce9bd8eaa57571cd3c3eac660806340db4b74
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329433"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408670"
 ---
 # <a name="security-control-v2-network-security"></a>セキュリティ コントロール V2:ネットワークのセキュリティ
 
@@ -40,9 +40,9 @@ Azure Sentinel を使用して、不安がある従来のプロトコルであ�
 
 - [Azure Sentinel の安全でないプロトコルのブック](../../sentinel/quickstart-get-visibility.md#use-built-in-workbooks)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -68,9 +68,9 @@ Azure で 2 つ以上の仮想ネットワークを接続するには、仮想�
 
 - [Azure Private Link](../../private-link/private-link-service-overview.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -92,9 +92,9 @@ Azure Private Link を使用して、インターネットを経由せずに、�
 
 - [仮想ネットワーク サービス エンドポイントについて](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -116,15 +116,15 @@ Azure Private Link を使用して、インターネットを経由せずに、�
 -   Azure 仮想ネットワークで DDoS 標準保護を有効にすることで、DDoS 攻撃から資産を保護します。 
 -   Azure Security Center を使用して、上記に関連する構成ミスのリスクを検出します。 
 
-- [Azure Firewall のドキュメント](/azure/firewall/)
+- [Azure Firewall のドキュメント](../../firewall/index.yml)
 
 - [Azure WAF をデプロイする方法](../../web-application-firewall/overview.md)
 
 - [Azure portal を使用した Azure DDoS Protection Standard の管理](../../virtual-network/manage-ddos-protection.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 なし
 
@@ -144,9 +144,9 @@ Azure Firewall の脅威インテリジェンス ベースのフィルター処�
 
 - [Microsoft Defender の ATP EDR 機能](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -168,11 +168,11 @@ Azure Firewall の脅威インテリジェンス ベースのフィルター処�
 
 - [サービス タグの概要と使用](../../virtual-network/service-tags-overview.md)
 
-- [アプリケーション セキュリティ グループの概要と使用](/azure/virtual-network/security-overview#application-security-groups)
+- [アプリケーション セキュリティ グループの概要と使用](../../virtual-network/network-security-groups-overview.md#application-security-groups)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -196,13 +196,12 @@ DNS セキュリティのベスト プラクティスに従って、未解決の
 
 - [未解決の DNS エントリを防ぎ、サブドメインの乗っ取りを回避する](../fundamentals/subdomain-takeover.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
 - [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
-- [アプリケーションのセキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
-
+- [アプリケーションのセキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)

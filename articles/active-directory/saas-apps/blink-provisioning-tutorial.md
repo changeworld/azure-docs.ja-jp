@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: eb04b17db94a2abf0ab11d9b9baff65e764e472a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 717500050aff89964ff959a4741aed01533ada70
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457046"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357132"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>チュートリアル:Blink を構成し、自動ユーザー プロビジョニングに対応させる
 

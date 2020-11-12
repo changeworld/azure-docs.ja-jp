@@ -8,15 +8,15 @@ ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: df993aae4e6c572c8f99688fd0053bdd07aefd56
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c06595b683092abf52300481068daab26394c4cb
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92453930"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358747"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory と E Sales Manager Remix の統合
 

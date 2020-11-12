@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 7253e257f9d721c09f2e041c1473a9d81d09a321
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 1f15a3b4d8f51ec79fffce09bc006942d08096a6
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094183"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427464"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure の Linux 向け SAP BusinessObjects BI プラットフォーム デプロイ ガイド
 
@@ -274,7 +274,7 @@ SAP BOBI プラットフォーム ファイル リポジトリ サーバー用�
 
 ### <a name="create-an-azure-database-for-mysql"></a>MySQL 用 Azure データベースの作成
 
-Azure portal にサインインし、こちらの [Azure Database for MySQL のクイックスタート ガイド](../../../mysql/quickstart-create-mysql-server-database-using-azure-portal.md#create-an-azure-database-for-mysql-server)に記載されている手順に従ってください。 Azure Database for MySQL のプロビジョニング時に注意する点がいくつかあります。
+Azure portal にサインインし、こちらの [Azure Database for MySQL のクイックスタート ガイド](../../../mysql/quickstart-create-mysql-server-database-using-azure-portal.md)に記載されている手順に従ってください。 Azure Database for MySQL のプロビジョニング時に注意する点がいくつかあります。
 
 1. Azure Database for MySQL には、SAP BI プラットフォーム アプリケーション サーバーが実行されているのと同じリージョンを選択します。
 
@@ -284,7 +284,7 @@ Azure portal にサインインし、こちらの [Azure Database for MySQL の�
 
 4. **[ストレージの自動拡張]** が既定で有効になります。 [ストレージ](../../../mysql/concepts-pricing-tiers.md#storage)はスケールアップのみ可能で、スケールダウンはできないことにご注意ください。
 
-5. **[バックアップの保有期間]** は既定で 7 日間ですが、最大 35 日間まで[必要に応じて構成](../../../mysql/howto-restore-server-portal.md#set-backup-configuration)できます。
+5. **[バックアップの保有期間]** は既定で 7 日間ですが、最大 35 日間まで [必要に応じて構成](../../../mysql/howto-restore-server-portal.md#set-backup-configuration)できます。
 
 6. Azure Database for MySQL のバックアップは、既定ではローカル冗長です。そのため、geo 冗長ストレージにサーバーのバックアップが必要な場合は、 **[バックアップ冗長オプション]** から **[地理冗長]** を選択します。
 

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 3f480cb0d478ca60555fa15849d5fcbed6cda684
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fca18a58ccb8d4e2f10b5db606ad01a97c2d5bac
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91286116"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359932"
 ---
 # <a name="tutorial-configure-smartfile-for-automatic-user-provisioning"></a>チュートリアル:SmartFile を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "91286116"
 
 ## <a name="assigning-users-to-smartfile"></a>SmartFile へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、SmartFile へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定したら、次の手順に従って、これらのユーザーやグループを SmartFile に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -56,7 +56,7 @@ Azure AD での自動ユーザー プロビジョニング用に SmartFile を�
 
     ![SmartFile 管理コンソール](media/smartfile-provisioning-tutorial/login.png)
 
-2. ベアラー トークンを生成するには、**プロダクト キー**と**プロダクト パスワード**をコピーします。 それらをメモ帳に貼り付け、間にコロンを入れます。
+2. ベアラー トークンを生成するには、 **プロダクト キー** と **プロダクト パスワード** をコピーします。 それらをメモ帳に貼り付け、間にコロンを入れます。
     
      ![[プロダクト キー] セクションのスクリーンショット。[プロダクト キー] と [プロダクト パスワード] のテキスト ボックスが選択されています。](media/smartfile-provisioning-tutorial/auth.png)
 
@@ -80,7 +80,7 @@ Azure AD で自動ユーザー プロビジョニング用に SmartFile を構�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**SmartFile**」と入力し、結果ウィンドウで **[SmartFile]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **SmartFile** 」と入力し、結果ウィンドウで **[SmartFile]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果一覧の SmartFile](common/search-new-app.png)
 
@@ -109,7 +109,7 @@ Azure AD で自動ユーザー プロビジョニング用に SmartFile を構�
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5.  **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://<SmartFile sitename>.smartfile.com/ftp/scim`」と入力します。 たとえば、`https://demo1test.smartfile.com/ftp/scim` のようになります。 先ほど取得した**ベアラー トークン**の値 (ProductKey:ProductPassword) を **[シークレット トークン]** に入力します。 **[テスト接続]** をクリックして、Azure AD から SmartFile に接続できることを確認します。 接続できない場合は、使用している SmartFile アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5.  **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://<SmartFile sitename>.smartfile.com/ftp/scim`」と入力します。 たとえば、`https://demo1test.smartfile.com/ftp/scim` のようになります。 先ほど取得した **ベアラー トークン** の値 (ProductKey:ProductPassword) を **[シークレット トークン]** に入力します。 **[テスト接続]** をクリックして、Azure AD から SmartFile に接続できることを確認します。 接続できない場合は、使用している SmartFile アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 

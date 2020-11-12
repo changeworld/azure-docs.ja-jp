@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 98cca99ab0e088bbae047fa64ec52429e531dfed
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 086f79239fd4f6b01f4b76d1385598bac52bb471
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096084"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358972"
 ---
 # <a name="tutorial-configure-alertmedia-for-automatic-user-provisioning"></a>チュートリアル:AlertMedia を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -95,9 +95,9 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
     ![[プロビジョニング] タブの [自動]](common/provisioning-automatic.png)
 
 5. **[管理者の資格情報]** セクションで、次のいずれかの方法で、AlertMedia の **テナント URL** を入力します。
-      * (カスタム ドメインなし) https://docs.gitlab.com/ee/api/scim.html
+      * (カスタム ドメインなし) https://dashboard.alertmedia.com/api/scim/v3
 
-      * (カスタム ドメイン) https://developer.github.com/v3/scim/
+      * (カスタム ドメイン) https://subdomain.alertmedia.com/api/scim/v3
 
       **[シークレット トークン]** に、手順 2 で取得したものを入力します。 **[テスト接続]** をクリックして、Azure AD から AlertMedia に接続できることを確保します。 接続できない場合は、使用中の AlertMedia アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

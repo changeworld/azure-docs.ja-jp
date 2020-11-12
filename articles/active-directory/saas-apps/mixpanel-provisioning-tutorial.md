@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/24/2020
 ms.author: Zhchia
-ms.openlocfilehash: c51fd947167834e79882e4efcee150f030e6f5e9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: e70ee06d696539f0b41c0a070f6f5b43391fda52
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521188"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357157"
 ---
 # <a name="tutorial-configure-mixpanel-for-automatic-user-provisioning"></a>チュートリアル:Mixpanel を構成し、自動ユーザー プロビジョニングに対応させる
 

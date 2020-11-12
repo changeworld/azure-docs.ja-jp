@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f2162ee6df551e1bc64741229aec99d5e697fd29
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 8e2144a61d83f6c7dece8f34232031192b51cde8
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91395993"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412699"
 ---
 # <a name="security-control-data-protection"></a>セキュリティ コントロールデータ保護
 
@@ -26,7 +26,7 @@ ms.locfileid: "91395993"
 
 タグを使用して、機密情報を格納または処理する Azure リソースの追跡に役立てます。
 
-- [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../../azure-resource-manager/management/tag-resources.md)
 
 ## <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2:機密情報を格納または処理するシステムを分離する
 
@@ -36,11 +36,11 @@ ms.locfileid: "91395993"
 
 環境の種類やデータの機密度レベルなど、個々のセキュリティ ドメイン用の個別のサブスクリプションと管理グループを使用して分離を実装します。 アプリケーションやエンタープライズ環境で必要とされる Azure リソースへのアクセス レベルを制限できます。 Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、Azure リソースへのアクセスを制御できます。 
 
-- [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [管理グループを作成する方法](../../governance/management-groups/create-management-group-portal.md)
 
-- [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../../azure-resource-manager/management/tag-resources.md)
 
 ## <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3:機密情報の承認されていない転送を監視してブロックする
 
@@ -52,7 +52,7 @@ ms.locfileid: "91395993"
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護します。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
-- [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Azure での顧客データの保護について](../fundamentals/protection-customer-data.md)
 
 ## <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4:転送中のすべての機密情報を暗号化する
 
@@ -64,7 +64,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 該当する場合、保存時の暗号化と転送中の暗号化に関する Azure Security Center の推奨事項に従います。
 
-- [Azure での転送中の暗号化の概要](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+- [Azure での転送中の暗号化の概要](../fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
 ## <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5:アクティブ検出ツールを使用して機密データを特定する
 
@@ -78,11 +78,11 @@ Microsoft 365 ドキュメント内の機密情報を特定するには、Azure 
 
 Azure SQL Information Protection は、Azure SQL Database に格納されている情報の分類とラベル付けを支援するために使用します。
 
-- [Azure SQL Data Discovery を実装する方法](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
+- [Azure SQL Data Discovery を実装する方法](../../azure-sql/database/data-discovery-and-classification-overview.md)
 
-- [Azure Information Protection を実装する方法](https://docs.microsoft.com/azure/information-protection/deployment-roadmap)
+- [Azure Information Protection を実装する方法](/azure/information-protection/deployment-roadmap)
 
-- [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Azure での顧客データの保護について](../fundamentals/protection-customer-data.md)
 
 ## <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
@@ -92,7 +92,7 @@ Azure SQL Information Protection は、Azure SQL Database に格納されてい�
 
 Azure ロールベースのアクセス制御 (Azure RBAC) を使用してデータとリソースへのアクセスを制御します。それ以外の場合は、サービス固有のアクセス制御方法を使用します。
 
-- [Azure RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Azure RBAC を構成する方法](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7:ホストベースのデータ損失防止を使用してアクセス制御を実施する
 
@@ -104,7 +104,7 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用してデー
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
-- [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Azure での顧客データの保護について](../fundamentals/protection-customer-data.md)
 
 ## <a name="48-encrypt-sensitive-information-at-rest"></a>4.8:機密情報を保存時に暗号化する
 
@@ -114,9 +114,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 すべての Azure リソースで保存時の暗号化を使用します。 Microsoft では、Azure に暗号化キーの管理を許可することをお勧めしていますが、一部のインスタンスでユーザーが自身のキーを管理するという選択肢もあります。 
 
-- [Azure での保存時の暗号化の概要](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+- [Azure での保存時の暗号化の概要](../fundamentals/encryption-atrest.md)
 
-- [ユーザーが管理する暗号化キーを構成する方法](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal)
+- [ユーザーが管理する暗号化キーを構成する方法](../../storage/common/customer-managed-keys-configure-key-vault.md)
 
 ## <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9:重要な Azure リソースへの変更に関するログとアラート
 
@@ -126,7 +126,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 Azure アクティビティ ログで Azure Monitor を使用して、重要な Azure リソースに変更が加えられたときのアラートを作成します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../../azure-monitor/platform/alerts-activity-log.md)
 
 
 ## <a name="next-steps"></a>次のステップ

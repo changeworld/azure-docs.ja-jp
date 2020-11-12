@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: f87a2347890f8d17e3901c6d8fc168c1d96c7661
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d17d4dd88e29440304989b8c37eaa81125d1812
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849344"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357557"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>チュートリアル:BitaBIZ を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "91849344"
 
 ## <a name="assigning-users-to-bitabiz"></a>BitaBIZ へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、BitaBIZ へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを BitaBIZ に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -58,7 +58,7 @@ Azure AD での自動ユーザー プロビジョニング用に BitaBIZ を構�
 
 2.  **[INTEGRATION]\(統合\)** に移動します。
 
-    :::image type="content" source="media/bitabiz-provisioning-tutorial/integration.png" alt-text="BitaBIZ 管理コンソールのスクリーンショット。[Setup admin]\(管理設定\) が強調表示されています。" border="false":::
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/integration.png" alt-text="BitaBIZ 管理コンソールのスクリーンショット。[Integration]\(統合\) が強調表示されています。" border="false":::
 
 2.  **[Microsoft Azure AD Provisioning]\(Microsoft Azure AD のプロビジョニング\)** に移動します。  自動ユーザー プロビジョニングで **[Enabled]\(有効\)** を選択します。 **[SCIM Provisioning endpoint URL]\(SCIM プロビジョニング エンドポイント URL\)** および **[Bearer Token]\(ベアラー トークン\)** の値をコピーします。 これらの値を、Azure portal の BitaBIZ アプリケーションの [プロビジョニング] タブの [テナント URL] および [シークレット トークン] フィールドに入力します。
 
@@ -83,7 +83,7 @@ Azure AD で自動ユーザー プロビジョニング用に BitaBIZ を構成�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**BitaBIZ**」と入力し、結果パネルで **[BitaBIZ]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **BitaBIZ** 」と入力し、結果パネルで **[BitaBIZ]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果リストの BitaBIZ](common/search-new-app.png)
 
@@ -151,7 +151,7 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 ## <a name="connector-limitations"></a>コネクタの制限事項
 
-* BitaBIZ には、必須属性として **userName**、**email**、**firstName**、**lastName** が必要です。 
+* BitaBIZ には、必須属性として **userName** 、 **email** 、 **firstName** 、 **lastName** が必要です。 
 * BitaBIZ では、物理的な削除は現在サポートされていません。
 
 ## <a name="additional-resources"></a>その他のリソース

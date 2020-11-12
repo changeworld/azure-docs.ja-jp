@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: 2fe0d8e6ad2056a244ec0d811f1b2dcb67e7bd84
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: ac41fb5ed6fd1e46719fcc39ccaf5b29375e7410
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516807"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359903"
 ---
 # <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>チュートリアル:Meta Networks Connector を構成して自動ユーザー プロビジョニングに対応させる
 
@@ -68,7 +68,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5.  **[追加]** をクリックします。 **[シークレット]** をコピーして保存します (それを表示できるのはこれが唯一のタイミングであるため)。 この値を、Azure portal で Meta Networks Connector アプリケーションの [プロビジョニング] タブにある [シークレット トークン] フィールドに入力します。
 
-    :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/token.png" alt-text="Meta Networks Connector 管理コンソールのスクリーンショット。Azure AD と API キーの [API キー名] 値と [API キーの説明] 値が強調表示されています。" border="false":::
+    :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/token.png" alt-text="API キーが追加されたことをユーザーに伝えるウィンドウのスクリーンショット。[シークレット] ボックスには解読できない値が含まれており、強調表示されています。" border="false":::
 
 6.  **[管理] > [設定] > [IdP] > [新規作成]** に移動して IdP を追加します。
 

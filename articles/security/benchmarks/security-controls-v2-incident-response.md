@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 172607a7f8f036bbfb68e8d15e77b2a3e3fb5377
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1ba7391b3b524f7532101083a444aab6059e8a10
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326390"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408757"
 ---
 # <a name="security-control-v2-incident-response"></a>セキュリティ コントロール V2: インシデント対応
 
@@ -26,13 +26,13 @@ ms.locfileid: "91326390"
 
 組織において、セキュリティ インシデントに対応するためのプロセスが用意されていること、Azure のこれらのプロセスが更新されていること、それらのプロセスを定期的に使用して準備されていることを確認します。
 
-- [企業環境全体にセキュリティを実装する](https://aka.ms/AzSec4)
+- [企業環境全体にセキュリティを実装する](/azure/cloud-adoption-framework/security/security-top-10#3-process-assign-accountability-for-cloud-security-decisions)
 
 - [インシデント対応のリファレンス ガイド](/microsoft-365/downloads/IR-Reference-Guide.pdf)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -50,9 +50,9 @@ Azure Security Center でセキュリティ インシデントの連絡先情報
 
 - [Azure Security Center のセキュリティ連絡先を設定する方法](../../security-center/security-center-provide-security-contact-details.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -76,9 +76,9 @@ Azure Security Center では、多数の Azure 資産について高品質のア
 
 - [Azure Sentinel にアラートをストリーミングする方法](../../sentinel/connect-azure-security-center.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -116,9 +116,9 @@ Azure Sentinel により、事実上すべてのログソースに対して広�
 
 - [Azure Sentinel でインシデントを調査します](../../sentinel/tutorial-investigate-cases.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -140,11 +140,11 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 - [Security alerts in Azure Security Center](../../security-center/security-center-alerts-overview.md)
 
-- [タグを使用した Azure リソースの整理](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを使用した Azure リソースの整理](../../azure-resource-manager/management/tag-resources.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -166,13 +166,12 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 - [Azure Sentinel で脅威への自動対応を設定します](../../sentinel/tutorial-respond-threats-playbook.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [インシデントの準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
 - [脅威インテリジェンス](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
-

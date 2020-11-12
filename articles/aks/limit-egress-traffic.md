@@ -4,15 +4,14 @@ description: Azure Kubernetes Service (AKS) でエグレス トラフィック�
 services: container-service
 ms.topic: article
 ms.author: jpalma
-ms.date: 06/29/2020
-ms.custom: fasttrack-edit, devx-track-azurecli
+ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: dcc015b9ff4cb9b980c7163f526eafbe5cd36119
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e3b755ca3ca5338acfc1918bd2085d9fba18b8ac
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900473"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380213"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する
 
@@ -63,7 +62,6 @@ _ IP アドレスの依存関係が HTTP/S 以外のトラフィック (TCP ト�
 |----------------------------------|-----------------|----------|
 | **`*.hcp.<location>.azmk8s.io`** | **`HTTPS:443`** | ノードと API サーバーの間の通信に必要です。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
 | **`mcr.microsoft.com`**          | **`HTTPS:443`** | Microsoft Container Registry (MCR) のイメージにアクセスするために必要です。 このレジストリには、ファーストパーティのイメージとグラフ (coreDNS など) が含まれます。 これらのイメージは、スケーリング操作やアップグレード操作など、クラスターの適切な作成と機能のために必要です。  |
-| **`*.cdn.mscr.io`**              | **`HTTPS:443`** | Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
 | **`*.data.mcr.microsoft.com`**   | **`HTTPS:443`** | Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
 | **`management.azure.com`**       | **`HTTPS:443`** | Azure API に対する Kubernetes の操作に必要です。 |
 | **`login.microsoftonline.com`**  | **`HTTPS:443`** | Azure Active Directory の認証に必要です。 |
@@ -92,7 +90,6 @@ _ IP アドレスの依存関係が HTTP/S 以外のトラフィック (TCP ト�
 | **`*.hcp.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | ノードと API サーバーの間の通信に必要です。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
 | **`*.tun.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | ノードと API サーバーの間の通信に必要です。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。 |
 | **`mcr.microsoft.com`**                        | **`HTTPS:443`** | Microsoft Container Registry (MCR) のイメージにアクセスするために必要です。 このレジストリには、ファーストパーティのイメージとグラフ (coreDNS など) が含まれます。 これらのイメージは、スケーリング操作やアップグレード操作など、クラスターの適切な作成と機能のために必要です。 |
-| **`*.cdn.mscr.io`**                            | **`HTTPS:443`** | Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
 | **`.data.mcr.microsoft.com`**                  | **`HTTPS:443`** | Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
 | **`management.chinacloudapi.cn`**              | **`HTTPS:443`** | Azure API に対する Kubernetes の操作に必要です。 |
 | **`login.chinacloudapi.cn`**                   | **`HTTPS:443`** | Azure Active Directory の認証に必要です。 |
@@ -119,7 +116,6 @@ _ IP アドレスの依存関係が HTTP/S 以外のトラフィック (TCP ト�
 |---------------------------------------------------------|-----------------|----------|
 | **`*.hcp.<location>.cx.aks.containerservice.azure.us`** | **`HTTPS:443`** | ノードと API サーバーの間の通信に必要です。 *\<location\>* は、AKS クラスターがデプロイされているリージョンに置き換えてください。|
 | **`mcr.microsoft.com`**                                 | **`HTTPS:443`** | Microsoft Container Registry (MCR) のイメージにアクセスするために必要です。 このレジストリには、ファーストパーティのイメージとグラフ (coreDNS など) が含まれます。 これらのイメージは、スケーリング操作やアップグレード操作など、クラスターの適切な作成と機能のために必要です。 |
-| **`*.cdn.mscr.io`**                                     | **`HTTPS:443`** | Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
 | **`*.data.mcr.microsoft.com`**                          | **`HTTPS:443`** | Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
 | **`management.usgovcloudapi.net`**                      | **`HTTPS:443`** | Azure API に対する Kubernetes の操作に必要です。 |
 | **`login.microsoftonline.us`**                          | **`HTTPS:443`** | Azure Active Directory の認証に必要です。 |

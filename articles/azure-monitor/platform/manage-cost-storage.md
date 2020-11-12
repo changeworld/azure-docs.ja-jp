@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 6a14ef6f75d5939501c6bd8ca84620a7a5619a54
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 04c532ceb5f40e9a5b7fa5fd5b75f60182f54580
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369065"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427787"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
 
@@ -50,7 +50,7 @@ Log Analytics 専用クラスターは、ワークスペースのコレクショ
 
 クラスター容量予約レベルは、`Sku` の下にある `Capacity` パラメーターを使用して、Azure Resource Manager でプログラムによって構成します。 `Capacity` は GB 単位で指定し、1000 GB/日以上の値を 100 GB/日の単位で設定できます。 詳細は「[Azure Monitor のカスタマー マネージド キー](customer-managed-keys.md#create-cluster)」にあります。 クラスターで 2000 GB/日を超える予約が必要な場合は、[LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) にお問い合わせください。
 
-クラスターでの使用については、2 つの課金モードがあります。 これらは、[ご自分のクラスターを構成する](customer-managed-keys.md#cmk-management)ときに、`billingType` パラメーターで指定できます。 次の 2 つのモードがあります。 
+クラスターでの使用については、2 つの課金モードがあります。 これらは、[ご自分のクラスターを構成する](customer-managed-keys.md#customer-managed-key-operations)ときに、`billingType` パラメーターで指定できます。 次の 2 つのモードがあります。 
 
 1. **クラスター** : この場合 (既定)、取り込まれたデータに対してクラスター レベルで課金されます。 クラスターに関連付けられている各ワークスペースが取り込んだデータ量が集計され、クラスターの日次請求が計算されます。 [Azure Security Center](../../security-center/index.yml) からのノードごとの割り当ては、クラスター内のすべてのワークスペースで集計されるデータのこの集計の前にワークスペース レベルで適用されることに注意してください。 
 

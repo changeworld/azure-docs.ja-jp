@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: de4962326a06080ff2bf81954cf85d3b6bbfefd5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: dfde9bbbeb7f6b349ecbdc4c2da605d39a0708da
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104786"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357880"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>チュートリアル: Azure Active Directory と Printix の統合
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: 73d82efed438d447c7af3bfc54d5c3fc22cdd819
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 779330d7881040026f45a031f95f44d770f39a56
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87921930"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412767"
 ---
 # <a name="security-management-in-azure"></a>Azure のセキュリティ管理
 Azure の利用者は、そのクラウド環境をさまざまなデバイスから管理できます。その中には管理ワークステーションや開発用 PC もあれば、タスク固有の権限を持った特権付きのエンド ユーザー デバイスもあります。 管理作業は、[Azure Portal](https://azure.microsoft.com/features/azure-portal/) など、Web ベースのコンソールを介して実行する場合もあれば、 オンプレミス システムと Azure との間に直接接続が存在し、仮想プライベート ネットワーク (VPN) やターミナル サービス、クライアント アプリケーション プロトコルを介して実行したり、プログラムから Azure Service Management API (SMAPI) を介して実行したりする場合もあります。 また、クライアントのエンドポイントはドメインに参加している場合と、タブレット、スマートフォンなど、管理下にない孤立したデバイスである場合とがあります。
@@ -84,7 +84,7 @@ Azure には、そのクラウド サービスと仮想マシンの管理者を�
 
 オンプレミスのエンタープライズ環境では、専用の管理ネットワークや、ID カードで入退出を制限するサーバー ルーム、保護されたネットワーク領域で動作するワークステーションによって、物理インフラストラクチャの攻撃対象領域を制限します。 クラウド型やハイブリッド型の IT モデルでは、IT リソースへの物理的なアクセス手段の欠落から、管理サービスの安全性を徹底することが他のモデルと比べて複雑である場合があります。 保護ソリューションを導入するためには、入念なソフトウェア構成、セキュリティにフォーカスしたプロセス、包括的なポリシーが必要です。
 
-クラウド管理とアプリケーション開発用にロックダウンされたワークステーションでは、使用ソフトウェアに付与する特権を最小限にし、リモート管理と開発環境を標準化することによって、セキュリティ インシデントのリスクを小さくすることができます。 ワークステーションの構成にしっかりとしたセキュリティを適用することによって、脆弱性の悪用やマルウェアに多く使用される経路を遮断し、重要なクラウド リソースの管理に使用するアカウントの侵害を防ぐことができます。 具体的には、[Windows AppLocker](https://technet.microsoft.com/library/dd759117.aspx) と Hyper-V テクノロジを使用して、クライアント システムの動作を制御、隔離し、メールやインターネット閲覧などの脅威を緩和することができます。
+クラウド管理とアプリケーション開発用にロックダウンされたワークステーションでは、使用ソフトウェアに付与する特権を最小限にし、リモート管理と開発環境を標準化することによって、セキュリティ インシデントのリスクを小さくすることができます。 ワークステーションの構成にしっかりとしたセキュリティを適用することによって、脆弱性の悪用やマルウェアに多く使用される経路を遮断し、重要なクラウド リソースの管理に使用するアカウントの侵害を防ぐことができます。 具体的には、[Windows AppLocker](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd759117(v=ws.11)) と Hyper-V テクノロジを使用して、クライアント システムの動作を制御、隔離し、メールやインターネット閲覧などの脅威を緩和することができます。
 
 堅牢化したワークステーションで管理者が使用するのは標準ユーザー アカウントです。これで管理レベルの実行がブロックされます。また、関連するアプリケーションは許可リストによって制御されます。 ワークステーションの堅牢化は、基本的に次の要素で構成されます。
 
@@ -101,19 +101,19 @@ Azure クラウド サービスの構成は、Azure ポータルを使用して�
 
 Virtual Machines にデプロイされるアプリケーションには、必要に応じて独自のクライアント ツールとインターフェイスが用意されています。Microsoft 管理コンソール (MMC) やエンタープライズ管理コンソール (Microsoft System Center、Windows Intune など)、各種管理アプリケーション (Microsoft SQL Server Management Studio など) がその例です。 こうしたツールは通常、企業環境内やクライアント ネットワーク内で動作するものであり、 リモート デスクトップ プロトコル (RDP) など、ステートフルな直接接続を必要とする特定のネットワーク プロトコルに依存している場合があります。 そうしたツールの中には、Web 対応インターフェイスを備えているものもあり、そのままインターネットに公開したりインターネット経由でのアクセスを許可したりすることが望ましくないケースもあるでしょう。
 
-Azure では、[多要素認証](/azure/active-directory/authentication/multi-factor-authentication)、[X.509 管理証明書](https://blogs.msdn.microsoft.com/azuresecurity/2015/07/13/certificate-management-in-azure-dos-and-donts/)、およびファイアウォール規則を使ってインフラストラクチャやプラットフォームのサービス管理へのアクセスを制限できます。 Azure ポータルと SMAPI には、トランスポート層セキュリティ (TLS) が必要となります。 一方、Azure にデプロイするサービスやアプリケーションには、アプリケーションに応じた適切な防御手段が求められます。 堅牢化したワークステーションの構成が標準化されていれば、こうしたメカニズムに何度でも簡単に対応することができます。
+Azure では、[多要素認証](../../active-directory/authentication/concept-mfa-howitworks.md)、[X.509 管理証明書](/archive/blogs/azuresecurity/certificate-management-in-azure-dos-and-donts)、およびファイアウォール規則を使ってインフラストラクチャやプラットフォームのサービス管理へのアクセスを制限できます。 Azure ポータルと SMAPI には、トランスポート層セキュリティ (TLS) が必要となります。 一方、Azure にデプロイするサービスやアプリケーションには、アプリケーションに応じた適切な防御手段が求められます。 堅牢化したワークステーションの構成が標準化されていれば、こうしたメカニズムに何度でも簡単に対応することができます。
 
 ### <a name="management-gateway"></a>管理ゲートウェイ
-すべての管理アクセス権を一元管理し、監視とログを省力化するためには、専用の[リモート デスクトップ ゲートウェイ](https://technet.microsoft.com/library/dd560672) (RD ゲートウェイ) サーバーをオンプレミス ネットワークにデプロイし、Azure 環境に接続します。
+すべての管理アクセス権を一元管理し、監視とログを省力化するためには、専用の[リモート デスクトップ ゲートウェイ](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560672(v=ws.10)) (RD ゲートウェイ) サーバーをオンプレミス ネットワークにデプロイし、Azure 環境に接続します。
 
 リモート デスクトップ ゲートウェイは、セキュリティ要件を強制的に適用するポリシー ベースの RDP プロキシ サービスです。 RD ゲートウェイを Windows Server ネットワーク アクセス保護 (NAP) と共に導入することで、Active Directory Domain Services (AD DS) のグループ ポリシー オブジェクト (GPO) によって設定された特定の基準をセキュリティの状態に関して満たしたクライアントにのみ接続を許可することができます。 さらに:
 
-* RD ゲートウェイに [Azure の管理証明書](https://msdn.microsoft.com/library/azure/gg551722.aspx)をプロビジョニングし、それ以外のホストは Azure Portal にアクセスできないようにします。
-* 管理者のワークステーションと同じ[管理ドメイン](https://technet.microsoft.com/library/bb727085.aspx)に RD ゲートウェイを参加させます。 これは、Azure AD に対する一方向の信頼関係を持ったドメイン内でサイト間 IPsec VPN または ExpressRoute を使用する場合や、オンプレミスの AD DS インスタンスと Azure AD との間で資格情報をフェデレーションしている場合に必要となります。
-* クライアント コンピューターの名前が有効であること (ドメインに参加していること)、また Azure Portal へのアクセスが許可されていることを RD ゲートウェイが確認できるように[クライアント接続承認ポリシー](https://technet.microsoft.com/library/cc753324.aspx)を構成します。
+* RD ゲートウェイに [Azure の管理証明書](/previous-versions/azure/gg551722(v=azure.100))をプロビジョニングし、それ以外のホストは Azure Portal にアクセスできないようにします。
+* 管理者のワークステーションと同じ[管理ドメイン](/previous-versions/windows/it-pro/windows-2000-server/bb727085(v=technet.10))に RD ゲートウェイを参加させます。 これは、Azure AD に対する一方向の信頼関係を持ったドメイン内でサイト間 IPsec VPN または ExpressRoute を使用する場合や、オンプレミスの AD DS インスタンスと Azure AD との間で資格情報をフェデレーションしている場合に必要となります。
+* クライアント コンピューターの名前が有効であること (ドメインに参加していること)、また Azure Portal へのアクセスが許可されていることを RD ゲートウェイが確認できるように[クライアント接続承認ポリシー](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753324(v=ws.11))を構成します。
 * [Azure VPN](https://azure.microsoft.com/documentation/services/vpn-gateway/) に IPsec を使用し、盗聴やトークンの盗難から管理トラフィックをさらに保護します。または、[Azure ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) を介してインターネット リンクを隔離することを検討します。
-* RD ゲートウェイ経由でログオンする管理者には、多要素認証 ([Azure Multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication) 経由) またはスマート カード認証を使用します。
-* 発信元 [IP アドレスの制限](https://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/)または[ネットワーク セキュリティ グループ](/azure/virtual-network/security-overview)を Azure で構成し、許可する管理エンドポイントの数を最小限にします。
+* RD ゲートウェイ経由でログオンする管理者には、多要素認証 ([Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) 経由) またはスマート カード認証を使用します。
+* 発信元 [IP アドレスの制限](https://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/)または[ネットワーク セキュリティ グループ](../../virtual-network/network-security-groups-overview.md)を Azure で構成し、許可する管理エンドポイントの数を最小限にします。
 
 ## <a name="security-guidelines"></a>セキュリティ ガイドライン
 一般に、クラウドでの用途に合わせて管理者が使うワークステーションのセキュリティを高めることは、オンプレミスのワークステーションに適用される慣例 (必要最小限の機能構成とアクセス許可など) と似ています。 またクラウドの管理に伴ういくつかの作業は、企業向けのリモート管理やアウトオブバンド管理に酷似しています。 その例として、資格情報の使用や監査、リモート アクセスのセキュリティ強化、脅威の検出と対応が挙げられます。
@@ -121,10 +121,10 @@ Azure では、[多要素認証](/azure/active-directory/authentication/multi-fa
 ### <a name="authentication"></a>認証
 監査アクセス要求や管理ツールへのアクセスに使用される発信元 IP アドレスは、Azure のログオン制限を使用して規制できます。 管理クライアント (ワークステーションやアプリケーション) を Azure が識別できるように、SMAPI (Windows PowerShell のコマンドレットなど、ユーザーが開発したツールを使用) と Azure portal の両方を、TLS/SSL 証明書に加え、クライアント側の管理証明書のインストールを必須にするように構成できます。 加えて管理者アクセスに、多要素認証を義務付けることをお勧めします。
 
-Azure にデプロイされるアプリケーションやサービスには、エンド ユーザーと管理者アクセスの両方に独自の認証メカニズムが採用されている場合もあれば、認証をすべて Azure AD で行う場合もあります。 Active Directory フェデレーション サービス (AD FS) を使って資格情報を連携させるか、ディレクトリ同期を使用するか、ユーザー アカウントをクラウドにのみ保持するかに応じて、リソース間の ID ライフサイクルは、[Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) (Azure AD Premium に付属) を使って管理できます。
+Azure にデプロイされるアプリケーションやサービスには、エンド ユーザーと管理者アクセスの両方に独自の認証メカニズムが採用されている場合もあれば、認証をすべて Azure AD で行う場合もあります。 Active Directory フェデレーション サービス (AD FS) を使って資格情報を連携させるか、ディレクトリ同期を使用するか、ユーザー アカウントをクラウドにのみ保持するかに応じて、リソース間の ID ライフサイクルは、[Microsoft Identity Manager](/microsoft-identity-manager/) (Azure AD Premium に付属) を使って管理できます。
 
 ### <a name="connectivity"></a>接続
-クライアントと Azure 仮想ネットワークとの間には、いくつかの機構によって接続のセキュリティを確保できます。 たとえば、[サイト間 VPN](https://channel9.msdn.com/series/Azure-Site-to-Site-VPN) (S2S) と[ポイント対サイト](/azure/vpn-gateway/vpn-gateway-point-to-site-create) VPN (P2S) の 2 つが挙げられます。これによって業界標準の IPsec (S2S) または [Secure Socket トンネリング プロトコル](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) (SSTP) (P2S) を使用した暗号化とトンネリングが可能となります。 Azure Portal などの公開されている Azure サービス管理機能に Azure から接続するときは、HTTPS (ハイパーテキスト転送プロトコル セキュア) が必須となります。
+クライアントと Azure 仮想ネットワークとの間には、いくつかの機構によって接続のセキュリティを確保できます。 たとえば、[サイト間 VPN](https://channel9.msdn.com/series/Azure-Site-to-Site-VPN) (S2S) と[ポイント対サイト](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md) VPN (P2S) の 2 つが挙げられます。これによって業界標準の IPsec (S2S) または [Secure Socket トンネリング プロトコル](/previous-versions/technet-magazine/cc162322(v=msdn.10)) (SSTP) (P2S) を使用した暗号化とトンネリングが可能となります。 Azure Portal などの公開されている Azure サービス管理機能に Azure から接続するときは、HTTPS (ハイパーテキスト転送プロトコル セキュア) が必須となります。
 
 堅牢化したスタンドアロン ワークステーションは、Azure への接続に RD ゲートウェイを介さない場合、SSTP ベースのポイント対サイト VPN を使用し、Azure Virtual Network に対する最初の接続を作成したうえで、VPN トンネルで個々の仮想マシンに対して RDP 接続を確立するようにしてください。
 
@@ -150,10 +150,10 @@ Azure にデプロイされるアプリケーションやサービスには、�
 
 堅牢化する各ワークステーションに対して専用のシステム イメージを用意して、特定の Azure アプリケーションとクラウド アプリケーションの管理に必要な最小限のツールと権限を与え、必要なタスクには特定のローカル AD DS GPO を適用することで、管理機能の独立性をさらに高めることができます。
 
-オンプレミス インフラストラクチャを持たない IT 環境 (サーバーがすべてクラウドに存在するために、ローカル AD DS インスタンスへのアクセス権が GPO にないなど) では、[Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx) などのサービスによって、ワークステーション構成のデプロイと管理を省力化することができます。
+オンプレミス インフラストラクチャを持たない IT 環境 (サーバーがすべてクラウドに存在するために、ローカル AD DS インスタンスへのアクセス権が GPO にないなど) では、[Microsoft Intune](/mem/intune/) などのサービスによって、ワークステーション構成のデプロイと管理を省力化することができます。
 
 ### <a name="stand-alone-hardened-workstation-for-management"></a>管理用スタンドアロン ワークステーションの堅牢化
-スタンドアロン ワークステーションの堅牢化では、管理タスク用の PC (またはノート PC) と、非管理タスク用の別個の PC (またはノート PC) が管理者に割り当てられます。 Azure サービスの管理専用ワークステーションには、他のアプリケーションがインストールされている必要はありません。 また、[トラステッド プラットフォーム モジュール](https://technet.microsoft.com/library/cc766159) (TPM) または同様のハードウェア レベルの暗号テクノロジをサポートするワークステーションを使用すると、デバイスの認証と特定の攻撃の防御に効果的です。 TPM は、[BitLocker ドライブ暗号化](https://technet.microsoft.com/library/cc732774.aspx)を使用することで、システム ドライブのボリューム全体の保護にも対応しています。
+スタンドアロン ワークステーションの堅牢化では、管理タスク用の PC (またはノート PC) と、非管理タスク用の別個の PC (またはノート PC) が管理者に割り当てられます。 Azure サービスの管理専用ワークステーションには、他のアプリケーションがインストールされている必要はありません。 また、[トラステッド プラットフォーム モジュール](/previous-versions/windows/it-pro/windows-vista/cc766159(v=ws.10)) (TPM) または同様のハードウェア レベルの暗号テクノロジをサポートするワークステーションを使用すると、デバイスの認証と特定の攻撃の防御に効果的です。 TPM は、[BitLocker ドライブ暗号化](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11))を使用することで、システム ドライブのボリューム全体の保護にも対応しています。
 
 スタンドアロン ワークステーションの堅牢化のシナリオ (下図) では、Windows ファイアウォール (またはサードパーティのクライアント ファイアウォール) のローカル インスタンスが、RDP などの受信接続をブロックするように構成されています。 管理者は、堅牢化されたワークステーションにログオンし、Azure Virtual Network との VPN 接続を確立した後で、Azure に接続する RDP セッションを開始できます。一方、企業 PC にログオンし、RDP を使用して、堅牢化されたワークステーションに接続することはできません。
 
@@ -196,14 +196,14 @@ Azure にデプロイされるアプリケーションやサービスには、�
 ## <a name="azure-security-checklist"></a>Azure のセキュリティ チェックリスト
 堅牢化したワークステーションに対して管理者が実行できるタスクの数をできるだけ少なくすることで、開発環境と管理環境の攻撃対象領域を最小化できます。 堅牢化したワークステーションの保護には、次のテクノロジを活用できます。
 
-* IE の堅牢化。 Internet Explorer ブラウザー (サードパーティの Web ブラウザーを含む) は、外部サーバーとの通信に広く使われているため、悪質なコードの主な侵入ポイントとなっています。 クライアント ポリシーを確認し、保護モードでの実行、アドオンの無効化、ファイルのダウンロードの無効化、[Microsoft SmartScreen](https://technet.microsoft.com/library/jj618329.aspx) フィルタリングの使用を徹底してください。 セキュリティ警告が確実に表示されるようにします。 インターネット ゾーンを有効活用し、必要な堅牢化が済んでいる信頼済みサイトのリストを作成します。 その他のサイトとブラウザー内コード (ActiveX、Java など) はすべてブロックしてください。
+* IE の堅牢化。 Internet Explorer ブラウザー (サードパーティの Web ブラウザーを含む) は、外部サーバーとの通信に広く使われているため、悪質なコードの主な侵入ポイントとなっています。 クライアント ポリシーを確認し、保護モードでの実行、アドオンの無効化、ファイルのダウンロードの無効化、[Microsoft SmartScreen](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj618329(v=ws.11)) フィルタリングの使用を徹底してください。 セキュリティ警告が確実に表示されるようにします。 インターネット ゾーンを有効活用し、必要な堅牢化が済んでいる信頼済みサイトのリストを作成します。 その他のサイトとブラウザー内コード (ActiveX、Java など) はすべてブロックしてください。
 * 標準ユーザー。 標準ユーザーとして実行することには、さまざまな利点があります。最大の利点は、マルウェアを介して管理者の資格情報を盗むことが、より難しくなる点です。 また標準ユーザー アカウントには、ルート オペレーティング システムに対する昇格された特権がなく、構成オプションや API の多くが既定でロックアウトされています。
-* AppLocker。 ユーザーが実行できるプログラムやスクリプトは、[AppLocker](https://technet.microsoft.com/library/ee619725.aspx) を使用して制限できます。 AppLocker は、監査モードまたは強制モードで実行できます。 既定では、管理者トークンを持ったユーザーが、クライアント上ですべてのコードを実行できる許可ルールが存在します。 これは、管理者が自分自身をロックアウトしてしまうことを防止するためのルールであり、昇格されたトークンにのみ適用されます。 Windows Server の「[Core Security (コア セキュリティ)](https://technet.microsoft.com/library/dd348705.aspx)」に記載されているコードの整合性の説明もご覧ください。
-* コード署名。 管理者によって使用されるすべてのツールとスクリプトにコード署名を行うことによって、アプリケーションのロックダウン ポリシーをデプロイするための扱いやすいしくみを実現できます。 ハッシュでは、めまぐるしいコード変更に対応できず、また、ファイル パスでは高度なセキュリティが確保できません。 AppLocker のルールには、特定の署名済みコードとスクリプトにのみ[実行](https://technet.microsoft.com/library/hh849812.aspx)を許可する PowerShell [実行ポリシー](https://technet.microsoft.com/library/ee176961.aspx)を組み合わせるようにしてください。
+* AppLocker。 ユーザーが実行できるプログラムやスクリプトは、[AppLocker](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee619725(v=ws.10)) を使用して制限できます。 AppLocker は、監査モードまたは強制モードで実行できます。 既定では、管理者トークンを持ったユーザーが、クライアント上ですべてのコードを実行できる許可ルールが存在します。 これは、管理者が自分自身をロックアウトしてしまうことを防止するためのルールであり、昇格されたトークンにのみ適用されます。 Windows Server の「[Core Security (コア セキュリティ)](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd348705(v=ws.10))」に記載されているコードの整合性の説明もご覧ください。
+* コード署名。 管理者によって使用されるすべてのツールとスクリプトにコード署名を行うことによって、アプリケーションのロックダウン ポリシーをデプロイするための扱いやすいしくみを実現できます。 ハッシュでは、めまぐるしいコード変更に対応できず、また、ファイル パスでは高度なセキュリティが確保できません。 AppLocker のルールには、特定の署名済みコードとスクリプトにのみ[実行](/powershell/module/microsoft.powershell.security/set-executionpolicy)を許可する PowerShell [実行ポリシー](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176961(v=technet.10))を組み合わせるようにしてください。
 * グループ ポリシー。 管理用のドメイン ワークステーションとそれらのワークステーションで認証されるユーザー アカウントとに適用されるグローバル管理ポリシーを作成し、それ以外からのアクセスをブロックします。
 * プロビジョニングのセキュリティ強化。 ベースラインとなる堅牢化したワークステーション イメージを、改ざんされないよう保護します。 暗号化や分離といったセキュリティ対策を使用してイメージや仮想マシン、スクリプトを保管し、利用を制限します (監査可能なチェックイン/チェックアウト プロセスを使用するなど)。
 * 修正プログラムの適用。 機能構成の一貫性を維持 (または開発や運用などの管理タスク用に別途イメージを作成) します。変更やマルウェアがないか定期的にスキャンすると共に、機能構成を最新の状態に保ちます。また、コンピューターは必要なときにだけアクティブ化するようにしてください。
-* 暗号化。 [暗号化ファイル システム](https://technet.microsoft.com/library/cc700811.aspx) (EFS) や BitLocker の効果を高めるために、管理ワークステーションに TPM が搭載されていることを確認します。
+* 暗号化。 [暗号化ファイル システム](/previous-versions/tn-archive/cc700811(v=technet.10)) (EFS) や BitLocker の効果を高めるために、管理ワークステーションに TPM が搭載されていることを確認します。
 * ガバナンス。 ファイル共有など、管理者のすべての Windows インターフェイスは、AD DS GPO を使用して制御してください。 監査、監視、ログのプロセスに管理ワークステーションを追加します。 管理者と開発者のすべてのアクセスと使用状況を追跡するようにします。
 
 ## <a name="summary"></a>まとめ
@@ -212,6 +212,6 @@ Azure のクラウド サービス、仮想マシン、アプリケーション�
 ## <a name="next-steps"></a>次のステップ
 このホワイト ペーパーで触れた具体的な情報のほか、Azure とそれに関連する Microsoft サービスの一般情報については、以下のリソースを参照してください。
 
-* [特権アクセスのセキュリティ保護](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access) – Azure の管理を目的とした安全な管理ワークステーションの設計と構築について、技術的な側面から説明します
+* [特権アクセスのセキュリティ保護](/windows-server/identity/securing-privileged-access/securing-privileged-access) – Azure の管理を目的とした安全な管理ワークステーションの設計と構築について、技術的な側面から説明します
 * [Microsoft セキュリティ センター](https://microsoft.com/en-us/trustcenter/cloudservices/azure) – Azure のファブリックと Azure 上で動作するワークロードを保護する Azure プラットフォームの機能について説明します
 * [Microsoft セキュリティ レスポンス センター](https://www.microsoft.com/msrc) - このサイトでは、Azure に関する問題を含め、マイクロソフトのセキュリティの脆弱性を報告できます。メールの場合は、[secure@microsoft.com](mailto:secure@microsoft.com) 宛に報告してください

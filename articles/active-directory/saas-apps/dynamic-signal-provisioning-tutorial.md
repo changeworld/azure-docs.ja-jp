@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 9ebb0927f9721c5c35ee0d83a108efd72732958b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 263a67fd8fba2c336d1ed4d91475386a8ae175dd
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851222"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359019"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Dynamic Signal を構成する
 
@@ -53,13 +53,13 @@ Azure AD で自動ユーザー プロビジョニング用に Dynamic Signal を
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Dynamic Signal**」と入力し、結果ウィンドウで **[Dynamic Signal]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Dynamic Signal** 」と入力し、結果ウィンドウで **[Dynamic Signal]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果リストの Dynamic Signal](common/search-new-app.png)
 
 ## <a name="assigning-users-to-dynamic-signal"></a>Dynamic Signal へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Dynamic Signal へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定したら、次の手順に従って、これらのユーザーやグループを Dynamic Signal に割り当てることができます。
 
@@ -104,7 +104,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     **[SCIM API URL]** を **[Tenant URL]\(テナント URL\)** にコピーします。 **[Generate New Token]\(新しいトークンの生成\)** をクリックして、 **[Bearer Token]\(ベアラー トークン\)** を生成し、その値を **[Secret Token]\(シークレット トークン\)** にコピーします。
 
-    :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-2.png" alt-text="Dynamic Signal 管理コンソールのスクリーンショット。[Admin]\(管理\) メニューの [Advanced]\(詳細設定\) が強調表示されています。[詳細設定] メニューも表示されており、A P I が強調表示されています。" border="false":::
+    :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-2.png" alt-text="S C I M A P I U R L、[Generate New Token]\(新しいトークンの生成\)、および [Bearer Token]\(ベアラー トークン\) が強調表示され、[Bearer Token]\(ベアラー トークン\) ボックスにプレース ホルダーが表示されているスクリーンショット。" border="false":::
 
 7. 手順 5 の各フィールドに値を入力したら、 **[テスト接続]** をクリックして、Azure AD が Dynamic Signal に接続できることを確認します。 接続できない場合は、使用中の Dynamic Signal アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

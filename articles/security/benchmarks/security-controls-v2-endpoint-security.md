@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 452b1a33520309ae696ab318c034f0186c993fdc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e74994847608b7fb59a1bf507691f02cf02b714a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91402924"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408891"
 ---
 # <a name="security-control-v2-endpoint-security"></a>セキュリティ コントロール V2:エンドポイント セキュリティ
 
@@ -34,9 +34,9 @@ Microsoft Defender Advanced Threat Protection では、高度な脅威を防御�
 
 - [Windows 以外のサーバー向けの Microsoft Defender ATP サービス](/windows/security/threat-protection/microsoft-defender-atp/configure-endpoints-non-windows)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -60,11 +60,11 @@ Azure Cloud Services 向けの Microsoft Antimalware は、Windows 仮想マシ�
 
 - [Cloud Services と Virtual Machines に対して Microsoft Antimalware を構成する方法](../fundamentals/antimalware.md)
 
-- [サポートされているエンドポイント保護ソリューション](https://docs.microsoft.com/azure/security-center/security-center-services?tabs=features-windows#supported-endpoint-protection-solutions-)
+- [サポートされているエンドポイント保護ソリューション](../../security-center/security-center-services.md?tabs=features-windows#supported-endpoint-protection-solutions-)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -86,9 +86,9 @@ Azure Security Center の"計算とアプリ" の推奨事項に従って、す�
 
 - [Azure Cloud Services および Virtual Machines 向けの Microsoft Antimalware をデプロイする方法](../fundamentals/antimalware.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security)
 

@@ -10,25 +10,25 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a20b6509973c7dc7e54d2e4f702175ad61e88da8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 579d0e334b4e60815b3a5efc877833ab75a3375d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532502"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358934"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Azure Cognitive Search インデクサーを使用したフィールドのマッピングと変換
 
 ![インデクサーのステージ](./media/search-indexer-field-mappings/indexer-stages-field-mappings.png "インデクサーのステージ")
 
-Azure Cognitive Search インデクサーを使用すると、入力データがターゲット インデックスのスキーマと完全に一致しないことがあります。 そのような場合は、インデックス作成処理中に**フィールド マッピング**を使用してデータを変形できます。
+Azure Cognitive Search インデクサーを使用すると、入力データがターゲット インデックスのスキーマと完全に一致しないことがあります。 そのような場合は、インデックス作成処理中に **フィールド マッピング** を使用してデータを変形できます。
 
 フィールド マッピングが役立つシナリオは次のとおりです。
 
 * データ ソースに `_id` というフィールドがあるが、Azure Cognitive Search でアンダースコアで始まるフィールド名が許可されていない場合。 フィールド マッピングを使用すると、フィールドの名前を効果的に変更できます。
 * 同じデータ ソース データからインデックス内のいくつかのフィールドにデータを入力します。 たとえば、このようなフィールドにさまざまなアナライザーを適用することができます。
 * インデックス フィールドに複数のデータ ソースのデータを入力し、データ ソースはそれぞれ異なるフィールド名が使用されています。
-* Base64 エンコードまたはデータのデコードが必要な場合。 フィールド マッピングは、Base64 エンコードおよびデコードの関数など、**マッピング関数**をいくつかサポートしています。
+* Base64 エンコードまたはデータのデコードが必要な場合。 フィールド マッピングは、Base64 エンコードおよびデコードの関数など、 **マッピング関数** をいくつかサポートしています。
 
 > [!NOTE]
 > インデクサーのフィールド マッピングは、データ フィールドをインデックス フィールドにマップする簡単な方法であり、軽量のデータ変換の機能も備えています。 より複雑なデータでは、インデックス作成に適した形式に変換するための前処理が必要になる場合があります。 1 つのオプションとして [Azure Data Factory](../data-factory/index.yml) を検討することができます。
@@ -81,7 +81,7 @@ api-key: [admin key]
 
 ## <a name="map-fields-using-the-net-sdk"></a>.NET SDK を使用してフィールドをマップする
 
-プロパティ `SourceFieldName` と `TargetFieldName` を持つ [FieldMapping](/dotnet/api/microsoft.azure.search.models.fieldmapping) クラスと、オプションの `MappingFunction` 参照を使用して、.NET SDK でフィールド マッピングを定義します。
+プロパティ `SourceFieldName` と `TargetFieldName` を持つ [FieldMapping](/dotnet/api/azure.search.documents.indexes.models.fieldmapping) クラスと、オプションの `MappingFunction` 参照を使用して、.NET SDK でフィールド マッピングを定義します。
 
 インデクサーを作成するとき、または後で `Indexer.FieldMappings` プロパティを直接設定することによって、フィールド マッピングを指定できます。
 
@@ -145,7 +145,7 @@ Azure Cognitive Search ドキュメント キーには、URL で使用できる�
 
 #### <a name="example---preserve-original-values"></a>例 - 元の値を保持する
 
-フィールド マッピングが指定されていない場合、[Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)によって自動的に `metadata_storage_path`(BLOB の URI) からインデックス キー フィールドにフィールド マッピングが追加されます。 この値は Base64 によってエンコードされているため、Azure Cognitive Search ドキュメント キーとして安全に使用できます。 次の例では、*URL が安全な* Base64 によってエンコードされたバージョンの `metadata_storage_path` を `index_key` フィールドにマップして、同時に、`metadata_storage_path` フィールドで元の値を保持する方法を示します。
+フィールド マッピングが指定されていない場合、[Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)によって自動的に `metadata_storage_path`(BLOB の URI) からインデックス キー フィールドにフィールド マッピングが追加されます。 この値は Base64 によってエンコードされているため、Azure Cognitive Search ドキュメント キーとして安全に使用できます。 次の例では、 *URL が安全な* Base64 によってエンコードされたバージョンの `metadata_storage_path` を `index_key` フィールドにマップして、同時に、`metadata_storage_path` フィールドで元の値を保持する方法を示します。
 
 ```JSON
 
@@ -172,7 +172,7 @@ Azure Cognitive Search では、2 つの異なる Base64 エンコードがサ�
 
 ### <a name="base64decode-function"></a>base64Decode 関数
 
-入力文字列の Base64 デコードを実行します。 入力値は *URL 対応*の Base64 でエンコードされた文字列と想定されます。
+入力文字列の Base64 デコードを実行します。 入力値は *URL 対応* の Base64 でエンコードされた文字列と想定されます。
 
 #### <a name="example---decode-blob-metadata-or-urls"></a>例 - BLOB メタデータまたは URL をデコードする
 

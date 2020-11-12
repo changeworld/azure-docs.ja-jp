@@ -3,12 +3,12 @@ title: コードとしての Azure Policy ワークフローを設計する
 description: Azure Policy 定義をコードとしてデプロイし、リソースを自動的に検証するようにワークフローを設計する方法について説明します。
 ms.date: 10/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2be6c0770098d50abbb9695e04b3f53c073de9ae
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 74d2097e4db4442e6e65f30541864fb554f7379d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320607"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359682"
 ---
 # <a name="design-azure-policy-as-code-workflows"></a>コードとしての Azure Policy ワークフローを設計する
 
@@ -38,8 +38,6 @@ ms.locfileid: "92320607"
 
 - ポリシー定義:[リソースにタグを追加する](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
 - イニシアチブ定義:[課金タグ](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
-
-また、既存の定義と割り当てを [GitHub](https://www.github.com) のソース コード管理環境に取り込むには、「[Azure Policy リソースをエクスポートする](../how-to/export-resources.md)」を確認してください。
 
 ## <a name="workflow-overview"></a>ワークフローの概要
 
@@ -73,6 +71,8 @@ ms.locfileid: "92320607"
 ```
 
 新しいポリシーを追加した場合、または既存のポリシーを更新した場合は、ワークフローによって Azure のポリシー定義が自動的に更新されます。 新しいポリシー定義または更新されたポリシー定義のテストについては、後の手順で説明します。
+
+また、既存の定義と割り当てを [GitHub](https://www.github.com) のソース コード管理環境に取り込むには、「[Azure Policy リソースをエクスポートする](../how-to/export-resources.md)」を確認してください。
 
 ### <a name="create-and-update-initiative-definitions"></a>イニシアチブ定義を作成および更新する
 

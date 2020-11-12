@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: bf779918dbfb9f7b95096f3a5efcc8e64f09c403
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 397aab743da25da3882c66d0fdf32c4c4d202586
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850509"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356996"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>チュートリアル:iPass SmartConnect を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "91850509"
 
 ## <a name="assigning-users-to-ipass-smartconnect"></a>ユーザーを iPass SmartConnect に割り当てる
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、iPass SmartConnect へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを iPass SmartConnect に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -73,7 +73,7 @@ Azure AD で自動ユーザー プロビジョニング用に iPass SmartConnect
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**iPass SmartConnect**」と入力し、結果パネルで **[iPass SmartConnect]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **iPass SmartConnect** 」と入力し、結果パネルで **[iPass SmartConnect]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![結果一覧の iPass SmartConnect](common/search-new-app.png)
 
@@ -118,7 +118,7 @@ Azure AD で自動ユーザー プロビジョニング用に iPass SmartConnect
 
 9. **[属性マッピング]** セクションで、Azure AD から iPass SmartConnect に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で iPass SmartConnect のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    :::image type="content" source="media/ipass-smartconnect-provisioning-tutorial/userattribute.png" alt-text="[マッピング] セクションのスクリーンショット。[名前] の下に、[Synchronize Azure Active Directory Users to iPass SmartConnect]\(Azure Active Directory ユーザーを iPass SmartConnect に同期する\) が表示されています。" border="false":::
+    :::image type="content" source="media/ipass-smartconnect-provisioning-tutorial/userattribute.png" alt-text="[属性マッピング] ページのスクリーンショット。テーブルに、Azure Active Directory と iPass SmartConnect の属性、および照合の優先順位が一覧表示されています。" border="false":::
 
 
 10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。

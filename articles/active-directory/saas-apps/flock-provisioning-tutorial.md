@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 636bb4c3340f13046706bf887119108b86b6a660
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01c3f6429d2a5c8443ac128d763033dc8c53cbc7
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850882"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359410"
 ---
 # <a name="tutorial-configure-flock-for-automatic-user-provisioning"></a>チュートリアル:Flock を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "91850882"
 
 ## <a name="assigning-users-to-flock"></a>Flock へのユーザーの割り当て 
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Flock へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Flock に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -58,11 +58,11 @@ Azure AD での自動ユーザー プロビジョニング用に Flock を構成
 
 2. **[Auth and Provisioning]\(認証とプロビジョニング\)** を選択します。
 
-    :::image type="content" source="media/Flock-provisioning-tutorial/auth.png" alt-text="Flock Web サイトのスクリーンショット。設定アイコンが強調表示されていて、そのショートカット メニューが表示されています。そのメニューで、[チームを管理する] が強調表示されています。" border="false":::
+    :::image type="content" source="media/Flock-provisioning-tutorial/auth.png" alt-text="Flock Web サイトのメニューのスクリーンショット。[認証とプロビジョニング] 項目が強調表示されています。" border="false":::
 
 3. **[API Token]\(API トークン\)** をコピーします。 これらの値は、Azure portal で Flock アプリケーションの [プロビジョニング] タブにある **[シークレット トークン]** フィールドに入力します。
 
-    :::image type="content" source="media/Flock-provisioning-tutorial/provisioning.png" alt-text="Flock Web サイトのスクリーンショット。設定アイコンが強調表示されていて、そのショートカット メニューが表示されています。そのメニューで、[チームを管理する] が強調表示されています。" border="false":::
+    :::image type="content" source="media/Flock-provisioning-tutorial/provisioning.png" alt-text="Flock Web サイトの [プロビジョニング] タブのスクリーンショット。[API トークン] の下に、値が強調表示されています。トークンの横に [トークンのコピー] ボタンがあります。" border="false":::
 
 
 ## <a name="add-flock--from-the-gallery"></a>ギャラリーから Flock を追加する
@@ -83,7 +83,7 @@ Azure AD で自動ユーザー プロビジョニング用に Flock を構成す
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Flock**」と入力し、結果ウィンドウで **Flock** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Flock** 」と入力し、結果ウィンドウで **Flock** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Flock](common/search-new-app.png)
 
@@ -112,7 +112,7 @@ Azure AD で自動ユーザー プロビジョニング用に Flock を構成す
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. [管理者資格情報] セクションの **[テナント URL]** および **[シークレット トークン]** に、先ほど取得した `https://api.flock-staging.com/v2/scim` と **API トークン**の値をそれぞれ入力します。 **[テスト接続]** をクリックして、Azure AD から Flock への接続を確保します。 接続できない場合は、使用中の Flock アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. [管理者資格情報] セクションの **[テナント URL]** および **[シークレット トークン]** に、先ほど取得した `https://api.flock-staging.com/v2/scim` と **API トークン** の値をそれぞれ入力します。 **[テスト接続]** をクリックして、Azure AD から Flock への接続を確保します。 接続できない場合は、使用中の Flock アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 

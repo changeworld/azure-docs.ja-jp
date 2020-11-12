@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b2e54545fb79120a3f9d66067da267df3b151b3f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c3812cef9b90a15870733441c9e830daf32e0b18
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322123"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408942"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>セキュリティ コントロール V2:バックアップと回復
 
@@ -32,13 +32,13 @@ geo 冗長ストレージ オプションを有効にして、セカンダリ �
 
 - [エンタープライズ規模の事業継続とディザスター リカバリー](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
 
-- [Azure Backup を有効にする方法](/azure/backup/)
+- [Azure Backup を有効にする方法](../../backup/index.yml)
 
-- [リージョンをまたがる復元を有効にする方法](/azure/backup/backup-azure-arm-restore-vms#cross-region-restore)
+- [リージョンをまたがる復元を有効にする方法](../../backup/backup-azure-arm-restore-vms.md#cross-region-restore)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [ポリシーと標準](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 
@@ -60,17 +60,17 @@ Azure Backup を使用するオンプレミスのバックアップによって�
 
 バックアップおよびカスタマー マネージド キーを保護するには、Azure Backup、Azure Key Vault、またはその他のリソースでロールベースのアクセス制御を使用します。 さらに、バックアップが変更または削除される前に MFA を求める、高度なセキュリティ機能を有効にすることもできます。
 
-- [Azure Backup のセキュリティ機能の概要](/azure/backup/security-overview)
+- [Azure Backup のセキュリティ機能の概要](../../backup/security-overview.md)
 
-- [カスタマー マネージド キーを使用したバックアップ データの暗号化](/azure/backup/encryption-at-rest-with-cmk) 
+- [カスタマー マネージド キーを使用したバックアップ データの暗号化](../../backup/encryption-at-rest-with-cmk.md) 
 
-- [Azure 上でキー コンテナーのキーをバックアップする方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
-- [ハイブリッド バックアップを攻撃から保護するためのセキュリティ機能](/azure/backup/backup-azure-security-feature#prevent-attacks)
+- [ハイブリッド バックアップを攻撃から保護するためのセキュリティ機能](../../backup/backup-azure-security-feature.md#prevent-attacks)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -86,13 +86,13 @@ Azure Backup を使用するオンプレミスのバックアップによって�
 
 自分のバックアップ データを定期的に復旧します。 バックアップされたカスタマー マネージド キーを復元できることを確認します。
 
-- [Azure 仮想マシンのバックアップからファイルを復旧する方法](/azure/backup/backup-azure-restore-files-from-vm)
+- [Azure 仮想マシンのバックアップからファイルを復旧する方法](../../backup/backup-azure-restore-files-from-vm.md)
 
-- [Azure でキー コンテナーのキーを復元する方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インシデントの準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -106,15 +106,14 @@ Azure Backup を使用するオンプレミスのバックアップによって�
 
 キーの紛失を回避および回復する手段を確保します。 Azure Key Vault で論理的な削除と消去保護を有効にして、キーが偶発的または悪意から削除されないようにします。  
 
-- [Key Vault で論理的な削除と消去保護を有効にする方法](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Key Vault で論理的な削除と消去保護を有効にする方法](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
 - [インシデントの準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
 - [データ セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-data-security)
-

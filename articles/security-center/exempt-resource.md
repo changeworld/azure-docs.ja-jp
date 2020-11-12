@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 87c16207f312479dcfe083ad9494d75b3538e18c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 347d5ac9de164f2e96340df71fd3b1b908e607c1
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532552"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372746"
 ---
 # <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>推奨事項とセキュリティ スコアからリソースを除外する
 
@@ -30,9 +30,9 @@ Azure Security Center でセキュリティに関する推奨事項を調査す�
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|プレビュー|
+|リリース状態:|プレビュー<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |価格:|これは、Azure Defender のお客様が追加コストなしで利用できる Azure Policy の Premium 機能です。 他のユーザーについては、将来、料金が適用されることがあります。|
-|必要なロールとアクセス許可:|**サブスクリプションの所有者**または**ポリシーの共同作成者** (除外対象を作成する場合)<br>規則を作成するには、Azure Policy でポリシーを編集するためのアクセス許可が必要です。<br>詳細については、「[Azure Policy における RBAC アクセス許可](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)」を参照してください。|
+|必要なロールとアクセス許可:|**サブスクリプションの所有者** または **ポリシーの共同作成者** (除外対象を作成する場合)<br>規則を作成するには、Azure Policy でポリシーを編集するためのアクセス許可が必要です。<br>詳細については、「[Azure Policy における RBAC アクセス許可](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)」を参照してください。|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
 |||
 
@@ -45,7 +45,7 @@ Azure Security Center でセキュリティに関する推奨事項を調査す�
 
     除外対象の作成ウィンドウが開きます。
 
-    :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="コンテキスト メニューからの除外オプションの作成":::
+    :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="除外対象の作成":::
 
 1. ご自身の条件を入力し、このリソースを除外する必要がある理由を選択します。
     - **軽減済み** - この問題は、推奨ツールまたはプロセス以外で処理されているため、リソースには関連していません
@@ -56,11 +56,11 @@ Azure Security Center でセキュリティに関する推奨事項を調査す�
     - リソースは、推奨事項の詳細ページの **[Not applicable]\(適用外\)** タブに表示されます
     - 推奨事項の詳細ページの上部にある情報ストリップには、除外されたリソースの数が表示されます。
         
-        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="コンテキスト メニューからの除外オプションの作成":::
+        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="除外されたリソースの数":::
 
 1. 除外されたリソースを確認するには、 **[Not applicable]\(適用外\)** タブを開きます。
 
-    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="コンテキスト メニューからの除外オプションの作成":::
+    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="除外対象の変更":::
 
     各除外の理由が表 (1) に示されています。
 
@@ -73,7 +73,7 @@ Azure Security Center でセキュリティに関する推奨事項を調査す�
 
 Azure Policy を使用すると、 **[Exemption]\(除外対象\)** ページですべての除外対象を追跡できます。
 
-:::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="コンテキスト メニューからの除外オプションの作成":::
+:::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Azure Policy の除外対象ページ":::
 
 
 

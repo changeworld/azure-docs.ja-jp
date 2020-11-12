@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: 06fca39b1170d36f22040ccf48eb02f948e47e41
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5fc5045643c9baf67b61d45188c8a2b6ccbc5c23
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91304677"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359818"
 ---
 # <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>チュートリアル:Peakon を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -36,7 +36,7 @@ ms.locfileid: "91304677"
 
 ## <a name="assigning-users-to-peakon"></a>Peakon にユーザーを割り当てる
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成し、有効にする前に、Peakon へのアクセスが必要な Azure AD のユーザー、グループ、またはその両方を特定する必要があります。 特定した後、次の手順に従い、これらのユーザー、グループ、またはその両方を Peakon に割り当てることができます。
 
@@ -82,7 +82,7 @@ Azure AD を使用した自動ユーザー プロビジョニング用に Peakon
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Peakon**」と入力し、結果パネルで **[Peakon]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Peakon** 」と入力し、結果パネルで **[Peakon]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Peakon](common/search-new-app.png)
 

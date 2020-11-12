@@ -16,19 +16,19 @@ ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9411c22183620f883b4d2819eb3078e49837e578
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ec05c4160c6502904644bf7035bda0bed66cc33
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016080"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413192"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同期: Azure Active Directory に同期される属性
 このトピックでは、Azure AD Connect Sync によって同期される属性の一覧を示します。  
 属性は、関連する Azure AD アプリによってグループ化されます。
 
 ## <a name="attributes-to-synchronize"></a>同期する属性
-よく寄せられる質問に、"*同期させる最低限の属性のリストは何か*" というものがあります。 既定の推奨されるアプローチは、クラウドに完全な GAL (グローバル アドレス一覧) を構築できるように既定の属性を保持し、さらに、Microsoft 365 ワークロードにすべての機能を取得することです。 場合によっては、次の例のように、属性に機密性の高い個人データが含まれるために、組織がクラウドとの属性の同期を望まないことがあります。  
+よく寄せられる質問に、" *同期させる最低限の属性のリストは何か* " というものがあります。 既定の推奨されるアプローチは、クラウドに完全な GAL (グローバル アドレス一覧) を構築できるように既定の属性を保持し、さらに、Microsoft 365 ワークロードにすべての機能を取得することです。 場合によっては、次の例のように、属性に機密性の高い個人データが含まれるために、組織がクラウドとの属性の同期を望まないことがあります。  
 ![使用しない方がよい属性](./media/reference-connect-sync-attributes-synchronized/badextensionattribute.png)
 
 この場合、このトピックの属性の一覧をまず確認し、個人データが含まれる同期できない属性を特定します。 次に、インストール時に、[Azure AD アプリと属性フィルター](how-to-connect-install-custom.md#azure-ad-app-and-attribute-filtering)を使用して、それらの属性の選択を解除します。
@@ -373,7 +373,7 @@ ms.locfileid: "90016080"
 このグループは、一般的なワークロードまたはアプリケーションで最低限必要な属性として使用される属性セットです。 別のセクションに示されていないワークロードまたは Microsoft 以外のアプリで使用できます。 これは、次の場合に明示的に使用されます。
 
 * Yammer (User のみを使用)
-* [SharePoint のようなリソースによって提供されるハイブリッド企業間取引 (B2B) の組織間コラボレーションのシナリオ](https://go.microsoft.com/fwlink/?LinkId=747036)
+* [SharePoint のようなリソースによって提供されるハイブリッド企業間取引 (B2B) の組織間コラボレーションのシナリオ](/sharepoint/create-b2b-extranet)
 
 このグループは、Microsoft 365、Dynamics、または Intune のサポートに Azure AD ディレクトリを利用しない場合に使用できる属性のセットです。 この中には、少数のコア属性が含まれます。 一部のサードパーティ アプリケーションへのシングル サインオンまたはプロビジョニングでは、ここで説明する属性に加えて、属性の同期を構成する必要があることに注意してください。 [SaaS アプリのチュートリアル](../saas-apps/tutorial-list.md)に、各アプリケーションの要件が説明されています。
 
@@ -420,7 +420,7 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 | msDS-KeyCredentialLink |X |ユーザーが Windows Hello for Business に登録された後。 | 
 
 ## <a name="exchange-hybrid-writeback"></a>Exchange ハイブリッドの書き戻し
-次の属性は、 **Exchange ハイブリッド**を有効にした場合に Azure AD からオンプレミスの Active Directory に書き戻されます。 Exchange のバージョンに応じて、同期される属性が少なくなる場合があります。
+次の属性は、 **Exchange ハイブリッド** を有効にした場合に Azure AD からオンプレミスの Active Directory に書き戻されます。 Exchange のバージョンに応じて、同期される属性が少なくなる場合があります。
 
 | 属性名 (オンプレミスの AD) | 属性名 (Connect の UI) | User | Contact | グループ | 解説 |
 | --- |:---:|:---:|:---:| --- |---|
@@ -435,7 +435,7 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 | publicDelegates| ms-Exch-Public-Delegates  |X | | |オンプレミスの Exchange メールボックスを持つユーザーに送信するための SendOnBehalfTo 権限を、Exchange Online メールボックスに付与できます。 Azure AD Connect ビルド 1.1.552.0 以降が必要です。 |
 
 ## <a name="exchange-mail-public-folder"></a>Exchange メールのパブリック フォルダー
-次の属性は、**Exchange メールのパブリック フォルダー**を有効にすると、オンプレミス Active Directory から Azure AD に同期されます。
+次の属性は、 **Exchange メールのパブリック フォルダー** を有効にすると、オンプレミス Active Directory から Azure AD に同期されます。
 
 | 属性名 | PublicFolder | 解説 |
 | --- | :---:| --- |

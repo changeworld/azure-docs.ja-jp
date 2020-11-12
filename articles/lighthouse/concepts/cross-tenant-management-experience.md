@@ -1,14 +1,14 @@
 ---
 title: テナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
-ms.date: 10/22/2020
+ms.date: 11/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5443c3b5a34cd493e0956f2a0d6ed7d6fecd603d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: dfb92e3f4f02e693ae5e4bba57e5344288c4615a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460667"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413124"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -104,7 +104,6 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 
 [Azure Policy](../../governance/policy/index.yml):
 
-- コンプライアンスのスナップショットで、委任されたサブスクリプション内で割り当てられたポリシーの詳細を表示する
 - 委任されたサブスクリプション内でポリシー定義を作成および編集する
 - 委任されたサブスクリプション内で顧客が定義したポリシー定義を割り当てる
 - 顧客には、サービス プロバイダーが作成したポリシーと顧客自身が作成したポリシーが並べて表示される

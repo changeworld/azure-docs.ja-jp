@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5ea7211ea895c5f6db3e84e382632737468898fb
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 25767a7ddb83acf3ad10698f9f2ff8949a0ad55f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319091"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357200"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>チュートリアル:8x8 を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -58,7 +58,7 @@ ms.locfileid: "92319091"
 
    ![ユーザープロビジョニングを表示する](./media/8x8-provisioning-tutorial/8x8-show-user-provisioning.png)
 
-3. **8x8 URL** 値と **8x8 API トークン**値をコピーします。 これらの値は、Azure portal の 8x8 アプリケーションの [プロビジョニング] タブにある **[テナントの URL]** フィールドと **[シークレット トークン]** フィールドにそれぞれ入力します。
+3. **8x8 URL** 値と **8x8 API トークン** 値をコピーします。 これらの値は、Azure portal の 8x8 アプリケーションの [プロビジョニング] タブにある **[テナントの URL]** フィールドと **[シークレット トークン]** フィールドにそれぞれ入力します。
 
    ![URL およびトークンをコピーする](./media/8x8-provisioning-tutorial/8x8-copy-url-token.png)
 
@@ -72,7 +72,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 ユーザーまたはグループの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、[こちら](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)で説明されているスコープ フィルターを使用できます。 
 
-* 8x8 にユーザーとグループを割り当てるときは、**既定のアクセス**以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](../develop/howto-add-app-roles-in-azure-ad-apps.md)してロールを追加することができます。 
+* 8x8 にユーザーとグループを割り当てるときは、 **既定のアクセス** 以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](../develop/howto-add-app-roles-in-azure-ad-apps.md)してロールを追加することができます。 
 
 * 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループでテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループに設定される場合、これを制御するには、1 つまたは 2 つのユーザーまたはグループをアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)を指定できます。 
 
@@ -102,7 +102,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[Admin Credentials]\(管理者の資格情報\)** セクションで、**8x8 URL** を Configuration Manager から **[テナントの URL]** にコピーします。 **8x8 API トークン**を Configuration Manager から **[シークレット トークン]** にコピーします。 **[テスト接続]** をクリックして、Azure AD から 8x8 への接続を確認します。 接続できない場合は、使用中の 8x8 アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[Admin Credentials]\(管理者の資格情報\)** セクションで、 **8x8 URL** を Configuration Manager から **[テナントの URL]** にコピーします。 **8x8 API トークン** を Configuration Manager から **[シークレット トークン]** にコピーします。 **[テスト接続]** をクリックして、Azure AD から 8x8 への接続を確認します。 接続できない場合は、使用中の 8x8 アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL とシークレット トークンを入力できる場所である [管理者資格情報] ダイアログ ボックスを示すスクリーンショット。](./media/8x8-provisioning-tutorial/provisioning.png)
 

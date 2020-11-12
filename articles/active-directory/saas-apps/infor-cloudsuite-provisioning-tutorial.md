@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 171a96f37d4c1e740e23cc766566d3c1756b6d08
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a62afa9469caa886d86814036017427c0cc0d193
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460188"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357438"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>チュートリアル:Infor CloudSuite を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -72,7 +72,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. ベアラー トークンを生成するには、 **[User Identifier]\(ユーザー ID\)** と **[SCIM Password]\(SCIM パスワード\)** をコピーします。 コロンで区切って notepad++ に貼り付けます。 **[Plugins] (プラグイン) > MIME Tools (MIME ツール) > Basic64 Encode (Basic64 エンコード)** の順に選択して文字列値をエンコードします。 
 
-    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/token.png" alt-text="強調表示されたテーブルの行が表示されている Infor CloudSuite 管理コンソールのスクリーンショット。この行には、ユーザー ID、パスワード、およびタイムスタンプが含まれています。" border="false":::
+    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/token.png" alt-text="Notepad++ ドキュメントのスクリーンショット。[Plugins]\(プラグイン\) メニューの [MIME tools]\(MIME ツール\) が強調表示されています。[MIME tools]\(MIME ツール\) メニューの [Base64 encode]\(Base64 エンコード\) が強調表示されています。" border="false":::
 
 3.  ベアラー トークンをコピーします。 この値を、Azure portal で Infor CloudSuite アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力します。
 

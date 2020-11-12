@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed23ffa9971bf4c97b784f230053aed4b1acf0a4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1f717e14e5abe62aafffdeef841889ea2458fa8b
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369796"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413447"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Azure AD がオンプレミスのワークロードに対してクラウド ガバナンス管理を提供する方法
 
@@ -77,7 +77,7 @@ Azure AD Premium には Microsoft Identity Manager も含まれていて、SAP�
 
 Azure AD では、必要に応じて[ゲスト ユーザー用のアカウントを自動的に AD に作成](../external-identities/hybrid-cloud-to-on-premises.md)し、ビジネス ゲストが別のパスワードを必要とせずにオンプレミスの AD 統合アプリケーションにアクセスできるようにすることができます。 組織は[ゲスト ユーザーの多要素認証 (MFA) ポリシー](../external-identities/conditional-access.md)を設定できるので、MFA チェックはアプリケーション プロキシ認証中に行われます。 また、クラウド B2B ユーザーに対して行われた[アクセスのレビュー](../governance/manage-guest-access-with-access-reviews.md)は、オンプレミス ユーザーにも適用されます。 たとえば、ライフサイクル管理ポリシーを使用してクラウド ユーザーが削除された場合、オンプレミス ユーザーも削除されます。
 
-**Active Directory アカウントの資格情報管理** Azure AD のセルフサービス パスワード リセットにより、パスワードを忘れたユーザーは再認証され、変更されたパスワードが [オンプレミスの Active Directory に書き込まれます](../authentication/concept-sspr-writeback.md)。 パスワードのリセット プロセスは、オンプレミス Active Directory のパスワード ポリシーも使用できます。ユーザーが自分のパスワードをリセットするとき、パスワードがオンプレミスの Active Directory ポリシーに準拠していることを確認してから、そのディレクトリにコミットします。 セルフサービス パスワード リセットの[デプロイ計画](https://aka.ms/deploymentplans/sspr)では、Web および Windows 統合エクスペリエンスを介してセルフサービス パスワード リセットをユーザーにロールアウトするためのベスト プラクティスの概要を示します。
+**Active Directory アカウントの資格情報管理** Azure AD のセルフサービス パスワード リセットにより、パスワードを忘れたユーザーは再認証され、変更されたパスワードが [オンプレミスの Active Directory に書き込まれます](../authentication/concept-sspr-writeback.md)。 パスワードのリセット プロセスは、オンプレミス Active Directory のパスワード ポリシーも使用できます。ユーザーが自分のパスワードをリセットするとき、パスワードがオンプレミスの Active Directory ポリシーに準拠していることを確認してから、そのディレクトリにコミットします。 セルフサービス パスワード リセットの[デプロイ計画](../authentication/howto-sspr-deployment.md)では、Web および Windows 統合エクスペリエンスを介してセルフサービス パスワード リセットをユーザーにロールアウトするためのベスト プラクティスの概要を示します。
 
 ![Azure AD SSPR のアーキテクチャ](media/cloud-governed-management-for-on-premises/image3.png)
 
@@ -97,7 +97,7 @@ Azure AD では、必要に応じて[ゲスト ユーザー用のアカウント
 
 * ホワイト ペーパー「[Migrating Your Applications to Azure Active Directory (Azure Active Directory へのアプリケーションの移行)](https://aka.ms/migrateapps/whitepaper)」は、移行のメリットを示し、4 つのおおまかなフェーズ (検出、分類、移行、および継続的な管理) を経て移行するための計画を立案する方法について説明します。 プロセスの考え方とプロジェクトを実行しやすいピースに分割する方法について案内します。 ドキュメント全体に、作業中に役立つ重要なリソースへのリンクがあります。
 
-* ソリューション ガイド「[Migrating Application Authentication from Active Directory Federation Services to Azure Active Directory (Active Directory フェデレーション サービスから Azure Active Directory へのアプリケーション認証の移行)](https://aka.ms/migrateapps/adfssolutionguide)」では、アプリケーション移行プロジェクトの計画と実行の同じ 4 つのフェーズについて詳しく説明しています。 このガイドでは、アプリケーションを Active Directory フェデレーション サービス (AD FS) から Azure AD に移行するための具体的な目標に対してこれらのフェーズを適用する方法について説明します。
+* ソリューション ガイド「[Migrating Application Authentication from Active Directory Federation Services to Azure Active Directory (Active Directory フェデレーション サービスから Azure Active Directory へのアプリケーション認証の移行)](../manage-apps/migrate-adfs-apps-to-azure.md)」では、アプリケーション移行プロジェクトの計画と実行の同じ 4 つのフェーズについて詳しく説明しています。 このガイドでは、アプリケーションを Active Directory フェデレーション サービス (AD FS) から Azure AD に移行するための具体的な目標に対してこれらのフェーズを適用する方法について説明します。
 
 * [Active Directory フェデレーション サービスの移行準備スクリプト](https://aka.ms/migrateapps/adfstools)を既存のオンプレミスの Active Directory フェデレーション サービス (AD FS) サーバー上で実行し、Azure AD への移行のためのアプリケーションの準備状況を判断できます。
 

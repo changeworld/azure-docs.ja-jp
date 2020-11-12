@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 9880834cf722b1898316ef1dfcfe89ad945ffadf
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f060a6ee2b5968c1d1daf3c668b6e7009b6ccd69
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459257"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358135"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>チュートリアル:Juno Journey を構成し、自動ユーザー プロビジョニングに対応させる
 

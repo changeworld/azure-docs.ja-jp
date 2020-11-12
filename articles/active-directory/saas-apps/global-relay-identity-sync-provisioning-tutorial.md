@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/22/2020
 ms.author: Zhchia
-ms.openlocfilehash: 9445004170fb06a3d563982da51f89535464e328
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: bdbda77c45e3b1f1533326483ee19aa8ff4af515
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927993"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358339"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために Global Relay Identity Sync を構成する
 

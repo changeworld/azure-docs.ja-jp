@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/24/2020
 ms.author: Zhchia
-ms.openlocfilehash: 86cb23a25bb55bfebd126f02236d60166a289219
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: d567985cba35647654d3ec47340979fcf9411132
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519057"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359461"
 ---
 # <a name="tutorial-configure-zapier-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Zapier を構成する
 

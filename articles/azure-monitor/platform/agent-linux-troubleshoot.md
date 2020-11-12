@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: eaf12fe1d757c3a5a76307d87151bf71aa720b2b
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 13959c4a3c798656efdc72b5c8e5f96e4fb2392a
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042388"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375348"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -60,7 +60,7 @@ Log Analytics エージェントの Linux トラブルシューティング ツ�
 エージェントのクリーン再インストールによってほとんどの問題が解決されることがわかりました。 実際にこれは、サポートチームがエージェントを未破損状態にするための、サポートからの最初の提案となることがあります。 トラブルシューティング ツールを実行し、ログを収集し、クリーン再インストールを試行することで、問題をより迅速に解決できます。
 
 1. 消去スクリプトをダウンロードします。
-- `$ wget https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/tools/purge_omsagent.sh`
+- `$ wget https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/tools/purge_omsagent.sh`
 2. (sudo アクセス許可で) 消去スクリプトを実行します。
 - `$ sudo sh purge_omsagent.sh`
 

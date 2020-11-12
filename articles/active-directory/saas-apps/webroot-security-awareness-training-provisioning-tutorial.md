@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: e229fdd44bb6d634d83ddfaf1173c02b65336537
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: feb661a5f0a22350d9660669c18209e7b1fd878d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519250"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358526"
 ---
 # <a name="tutorial-configure-webroot-security-awareness-training-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Webroot Security Awareness Training を構成する
 

@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: b0cd8245b6d8298ae1d99e2dbe1e8457a40dc7d6
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 3dbfcacb6ea5922a01d52dfe39189f09f48d4b4a
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330412"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368748"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps でのトリガーとアクションの種類のスキーマ リファレンス ガイド
 
@@ -2401,7 +2401,6 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 |------------------|------|-------------|-------------------| 
 | `DisableAsyncPattern` | String | HTTP ベースのアクションを非同期に実行するのではなく、同期的に実行します。 <p><p>このオプションを設定するには、「[アクションを同期的に実行する](#disable-asynchronous-pattern)」を参照してください。 | アクション: <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action)、 <br>[Response](#response-action) | 
 | `IncludeAuthorizationHeadersInOutputs` | String | 要求ベースのトリガー エンドポイントへの受信呼び出しへのアクセスを承認するために [Azure Active Directory Open Authentication (Azure AD OAuth) を有効にする](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)ロジック アプリの場合、OAuth アクセス トークンの `Authorization` ヘッダーをトリガー出力に含めます。 詳細については、「[要求トリガーの出力に "Authorization" ヘッダーを含める](../logic-apps/logic-apps-securing-a-logic-app.md#include-auth-header)」を参照してください。 | トリガー: <p>[Request](#request-trigger)、 <br>[HTTP Webhook](#http-webhook-trigger) | 
-| `OptimizedForHighThroughput` | String | 5 分あたりのアクション実行回数に対する[既定の制限](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)を[上限](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)に変更します。 <p><p>このオプションを設定するには、「[高スループット モードで実行する](#run-high-throughput-mode)」を参照してください。 | すべてのアクション | 
 | `Sequential` | String | "for each" ループの反復処理を、すべて同時に並行して実行するのではなく、一度に 1 つずつ実行します。 <p>このオプションは、`runtimeConfiguration.concurrency.repetitions` プロパティを `1` に設定したのと同じように機能します。 いずれか一方のプロパティを設定できます。両方を設定することはできません。 <p><p>このオプションを設定するには、「["for each" ループを順次実行する](#sequential-for-each)」を参照してください。| アクション: <p>[Foreach](#foreach-action) | 
 | `SingleInstance` | String | 各ロジック アプリ インスタンスのトリガーを順次実行し、直前のアクティブな実行が終了するまで待機してから、次のロジック アプリ インスタンスをトリガーします。 <p><p>このオプションは、`runtimeConfiguration.concurrency.runs` プロパティを `1` に設定したのと同じように機能します。 いずれか一方のプロパティを設定できます。両方を設定することはできません。 <p>このオプションを設定するには、「[インスタンスを順次トリガーする](#sequential-trigger)」を参照してください。 | すべてのトリガー | 
 ||||
@@ -2708,24 +2707,6 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
    "type": "Http",
    "inputs": { "<action-inputs>" },
    "operationOptions": "DisableAsyncPattern",
-   "runAfter": {}
-}
-```
-
-<a name="run-high-throughput-mode"></a>
-
-### <a name="run-in-high-throughput-mode"></a>高スループット モードで実行する
-
-1 回のロジック アプリの定義において、5 分ごとに実行されるアクションの数には、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)が設定されています。 この上限を可能な[最大数](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)まで引き上げるには、`operationOptions` プロパティを `OptimizedForHighThroughput` に設定します。 この設定により、ロジック アプリが "高スループット" モードになります。
-
-> [!NOTE]
-> 高スループット モードはプレビュー段階です。 必要に応じて複数のロジック アプリにワークロードを分散することもできます。
-
-```json
-"<action-name>": {
-   "type": "<action-type>",
-   "inputs": { "<action-inputs>" },
-   "operationOptions": "OptimizedForHighThroughput",
    "runAfter": {}
 }
 ```

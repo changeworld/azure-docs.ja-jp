@@ -3,12 +3,12 @@ title: Azure Service Bus - メッセージングの例外 | Microsoft Docs
 description: この記事では、Azure Service Bus メッセージングの例外と、例外が発生したときに実行する推奨アクションの一覧を示します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 45f18d16aaeee0017bd4d219b6dc9e6beab515af
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: e4aa6d82c20e21caabf0205d7446cf88ed8b7f34
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027518"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409316"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Service Bus メッセージングの例外
 この記事では、.NET Framework API によって生成される .NET 例外を一覧表示します。 
@@ -33,8 +33,7 @@ ms.locfileid: "93027518"
 | [ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1&preserve-view=true)<br /> [ArgumentNullException](/dotnet/api/system.argumentnullexception?view=netcore-3.1&preserve-view=true)<br />[ArgumentOutOfRangeException](/dotnet/api/system.argumentoutofrangeexception?view=netcore-3.1&preserve-view=true) |メソッドに指定された 1 つまたは複数の引数が無効です。<br /> [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) または [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) に指定された URI にパス セグメントが含まれています。<br /> [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) または [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) に指定された URI スキームが無効です。 <br />プロパティ値が 32 KB を超えています。 |呼び出し元のコードを確認し、引数が正しいことを確かめます。 |再試行は役に立ちません。 |
 | [MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception) |操作に関連付けられているエンティティが存在しないか、削除されました。 |エンティティが存在することを確認します。 |再試行は役に立ちません。 |
 | [MessageNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagenotfoundexception) |特定のシーケンス番号を持つメッセージを受信しようとしました。 このメッセージが見つかりません。 |メッセージがまだ受信されていないことを確認します。 配信不能キューを確認し、メッセージが配信不能になっているかどうかを確かめます。 |再試行は役に立ちません。 |
-| [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |クライアントは Service Bus への接続を確立できません。 |指定されたホスト名が正しく、ホストが到達可能なことを確認してください。 <p>ファイアウォール/プロキシを使用している環境でコードを実行する場合は、Service Bus のドメイン/IP アドレスとポートへのトラフィックがブロックされていないことを確認します。
-</p>|断続的な接続の問題がある場合は、再試行によって解決することがあります。 |
+| [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |クライアントは Service Bus への接続を確立できません。 |指定されたホスト名が正しく、ホストが到達可能なことを確認してください。 <p>ファイアウォール/プロキシを使用している環境でコードを実行する場合は、Service Bus のドメイン/IP アドレスとポートへのトラフィックがブロックされていないことを確認します。</p>|断続的な接続の問題がある場合は、再試行によって解決することがあります。 |
 | [ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception) |この時点では、このサービスで要求を処理できません。 |クライアントは、しばらく待機してから操作をやり直すことができます。 |クライアントは、一定の間隔をおいてから再試行することができます。 再試行の結果として別の例外が発生した場合は、その例外の再試行動作を確認します。 |
 | [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |次の場合にスローされる可能性がある一般なメッセージング例外です。<p>異なるエンティティの種類 (たとえば、トピック) に属する名前またはパスを使用して、[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) を作成しようとした場合。</p><p>256 KB を超えるメッセージを送信しようとした場合。 </p>サーバーまたはサービスで要求の処理中にエラーが発生しました。 詳細については、例外メッセージを参照してください。 これは通常、一時的な例外です。</p><p>エンティティが調整されているため、要求は終了されました。 エラー コード:50001、50002、50008。 </p> | コードを確認し、メッセージ本文にシリアル化可能なオブジェクトのみを使用していることを確かめます (または、カスタム シリアライザーを使用します)。 <p>サポートされているプロパティ値の型をドキュメントで確認し、サポートされている型だけを使用します。</p><p> [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) プロパティを確認します。 それが **true** である場合は、操作を再試行できます。 </p>| 制限のために例外が発生した場合は、数秒待ってから、操作を再試行してください。 再試行動作は未定義であり、他のシナリオには役に立たない可能性があります。|
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) |そのサービスの名前空間で別のエンティティによって既に使用されている名前を持つエンティティを作成しようとしました。 |既存のエンティティを削除するか、作成するエンティティに別の名前を選択します。 |再試行は役に立ちません。 |

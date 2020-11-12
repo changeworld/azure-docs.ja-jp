@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 8406ee5647d02cc917a0fdb1daf2355611bb781d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a5b995fd273fcfa231e101bc77b11d268be728fb
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792210"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359137"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>チュートリアル:NetSuite を構成し、ユーザーが自動的にプロビジョニングされるようにする
 

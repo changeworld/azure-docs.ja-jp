@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: Zhchia
-ms.openlocfilehash: 00adf8f1559d01d6ba17692e1166c93c93fcbf8f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5ba9adbc8553e92eb76a4d3327681f798db19218
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516649"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359104"
 ---
 # <a name="tutorial-configure-promapp-for-automatic-user-provisioning"></a>チュートリアル:Promapp を構成し、自動ユーザー プロビジョニングに対応させる
 

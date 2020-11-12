@@ -6,16 +6,16 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: 52c71e06b33ef29c2ef0628d651c7f72e41b87ff
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d39e00a80ab167936a749c73867b4343e6ed9d76
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671894"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358815"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>チュートリアル:Azure AD から SAP SuccessFactors への属性の書き戻しを構成する
 このチュートリアルの目的は、Azure AD から SAP SuccessFactors Employee Central に属性を書き戻すための手順を説明することです。 

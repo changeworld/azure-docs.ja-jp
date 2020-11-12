@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: eaf54b7f7336619d03ce0fb6ea7fa032d0fcdff7
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 528ab93d1cf47d64338ef186a120695681f48e55
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319166"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357217"
 ---
 # <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>チュートリアル:15Five を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -58,15 +58,15 @@ Azure AD での自動ユーザー プロビジョニング用に 15Five を構�
 
 2.  **[SCIM 2.0]** をクリックします。
 
-    :::image type="content" source="media/15five-provisioning-tutorial/image00.png" alt-text="15Five 管理コンソールのスクリーンショット。メニューの [機能] に [統合] が表示されており、[機能] と [統合] の両方が強調表示されています。" border="false":::
+    :::image type="content" source="media/15five-provisioning-tutorial/image00.png" alt-text="15Five 管理コンソールの [統合] ページのスクリーンショット。[ツール] の [S C I M 2.0] が強調表示されています。" border="false":::
 
 3.  **[SCIM integration]\(SCIM 統合\) > [Generate OAuth token]\(OAuth トークンの生成\)** の順に移動します。
 
-    :::image type="content" source="media/15five-provisioning-tutorial/image02.png" alt-text="15Five 管理コンソールのスクリーンショット。メニューの [機能] に [統合] が表示されており、[機能] と [統合] の両方が強調表示されています。" border="false":::
+    :::image type="content" source="media/15five-provisioning-tutorial/image02.png" alt-text="15Five 管理コンソールの [S C I M integration]\(S C I M 統合\) ページのスクリーンショット。[Generate OAuth token]\(OAuth トークンの生成\) が強調表示されています。" border="false":::
 
 4.  **[SCIM 2.0 base URL]\(SCIM 2.0 ベース URL\)** と **[アクセス トークン]** の値をコピーします。 この値を、Azure portal の 15Five アプリケーションの [プロビジョニング] タブにある **[テナント URL]** および **[シークレット トークン]** フィールドに入力します。
     
-    :::image type="content" source="media/15five-provisioning-tutorial/image03.png" alt-text="15Five 管理コンソールのスクリーンショット。メニューの [機能] に [統合] が表示されており、[機能] と [統合] の両方が強調表示されています。" border="false":::
+    :::image type="content" source="media/15five-provisioning-tutorial/image03.png" alt-text="[S C I M integration]\(S C I M 統合\) ページのスクリーンショット。[Token]\(トークン\) テーブルの [S C I M 2.0 base U R L]\(S C I M 2.0 ベース U R L\) と [アクセス トークン] の横にある値が強調表示されています。" border="false":::
 
 ## <a name="step-3-add-15five-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから 15Five を追加する
 
@@ -76,7 +76,7 @@ Azure AD アプリケーション ギャラリーから 15Five を追加して�
 
 Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当て、ユーザーまたはグループの属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、以下の[手順](../manage-apps/assign-user-or-group-access-portal.md)を使用して、ユーザーとグループをアプリケーションに割り当てることができます。 ユーザーまたはグループの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、[こちら](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)で説明されているスコープ フィルターを使用できます。 
 
-* 15Five にユーザーとグループを割り当てるときは、**既定のアクセス**以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](../develop/howto-add-app-roles-in-azure-ad-apps.md)してロールを追加することができます。 
+* 15Five にユーザーとグループを割り当てるときは、 **既定のアクセス** 以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](../develop/howto-add-app-roles-in-azure-ad-apps.md)してロールを追加することができます。 
 
 * 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループでテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループに設定される場合、これを制御するには、1 つまたは 2 つのユーザーまたはグループをアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)を指定できます。
 

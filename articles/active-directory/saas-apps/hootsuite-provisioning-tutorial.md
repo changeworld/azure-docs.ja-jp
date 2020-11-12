@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: b81dfec5e8ee828fba202f14967a4583bde32ed3
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 011071c9aa1722b8f1cf81ec8d9ef88e8d91ea03
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503761"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359053"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>チュートリアル:Hootsuite を構成し、自動ユーザー プロビジョニングに対応させる
 

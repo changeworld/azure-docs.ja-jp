@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 145793d7e451e7db9598118fb3adbd49d1d9c650
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68d084b7fde7d4c28b1c9b1da1e1c66cb6a63dd8
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850678"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359444"
 ---
 # <a name="tutorial-configure-mindtickle-for-automatic-user-provisioning"></a>チュートリアル:MindTickle を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "91850678"
 
 ## <a name="assigning-users-to-mindtickle"></a>MindTickle へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、MindTickle へのアクセスが必要な Azure AD 内のユーザーやグループを決定しておく必要があります。 決定したら、次の手順に従って、これらのユーザーやグループを MindTickle に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -74,7 +74,7 @@ Azure AD で自動ユーザー プロビジョニング用に MindTickle を構�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**MindTickle**」と入力し、結果ウィンドウで **[MindTickle]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **MindTickle** 」と入力し、結果ウィンドウで **[MindTickle]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果一覧の MindTickle](common/search-new-app.png)
 
@@ -103,7 +103,7 @@ Azure AD で自動ユーザー プロビジョニング用に MindTickle を構�
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://admin.mindtickle.com/scim`」と入力します。 以前に [シークレット トークン] テキスト ボックスで取得した **JWT トークン**の値を入力し、MindTickle サポート チームから教えられた **JWT トークン**の値を入力します。 **[Test Connection]\(テスト接続\)** をクリックして、Azure AD から myPolicies に接続できることを確認します。 接続できない場合は、使用中の MindTickle アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://admin.mindtickle.com/scim`」と入力します。 以前に [シークレット トークン] テキスト ボックスで取得した **JWT トークン** の値を入力し、MindTickle サポート チームから教えられた **JWT トークン** の値を入力します。 **[Test Connection]\(テスト接続\)** をクリックして、Azure AD から myPolicies に接続できることを確認します。 接続できない場合は、使用中の MindTickle アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -119,7 +119,7 @@ Azure AD で自動ユーザー プロビジョニング用に MindTickle を構�
 
 9. **[属性マッピング]** セクションで、Azure AD から MindTickle に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で MindTickle のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    :::image type="content" source="media/mindtickle-provisioning-tutorial/userattribute.png" alt-text="[マッピング] セクションのスクリーンショット。[名前] の下に、[Azure Active Directory ユーザーを MindTickle に同期する] が表示されています。" border="false":::
+    :::image type="content" source="media/mindtickle-provisioning-tutorial/userattribute.png" alt-text="[属性マッピング] ページのスクリーンショット。テーブルに、Azure Active Directory 属性と MindTickle 属性、および照合の優先順位が一覧表示されています。" border="false":::
 
 12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 

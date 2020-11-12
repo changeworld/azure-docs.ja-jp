@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/17/2019
 ms.author: Zhchia
-ms.openlocfilehash: f5f7ed8a905aad873ecfc878979ac32af1e21730
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ee656f147bd27ff782121f088a239a7337d81075
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91312245"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359767"
 ---
 # <a name="tutorial-configure-workgrid--for-automatic-user-provisioning"></a>チュートリアル:Workgrid を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "91312245"
 
 ## <a name="assigning-users-to-workgrid"></a>Workgrid へのユーザーの割り当て 
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Workgrid へのアクセスが必要な Azure AD 内のユーザーやグループを決定しておく必要があります。 特定した後、次の手順に従い、これらのユーザー、グループ、またはその両方を Workgrid に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -83,7 +83,7 @@ Azure AD で自動ユーザー プロビジョニング用に Workgrid を構成
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Workgrid**」と入力し、結果ウィンドウで **[Workgrid]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Workgrid** 」と入力し、結果ウィンドウで **[Workgrid]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Workgrid](common/search-new-app.png)
 
@@ -112,7 +112,7 @@ Azure AD で自動ユーザー プロビジョニング用に Workgrid を構成
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. [管理者資格情報] セクションの **[テナント URL]** および **[シークレット トークン]** に、先ほど取得した **SCIM エンドポイント**と**アクセス トークン**の値をそれぞれ入力します。 **[テスト接続]** をクリックして、Azure AD から Workgrid に接続できることを確認します。 接続できない場合は、使用中の Workgrid アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. [管理者資格情報] セクションの **[テナント URL]** および **[シークレット トークン]** に、先ほど取得した **SCIM エンドポイント** と **アクセス トークン** の値をそれぞれ入力します。 **[テスト接続]** をクリックして、Azure AD から Workgrid に接続できることを確認します。 接続できない場合は、使用中の Workgrid アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 

@@ -8,12 +8,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 9e52acd2f7f594523059b22fefd121314bd77921
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 5b188021de30561222f098e2b5782bada25d7ce0
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340068"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411254"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-timeout-exceptions"></a>Azure Cosmos DB の要求タイムアウト例外の問題を診断してトラブルシューティングする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -41,3 +41,5 @@ Azure Cosmos DB は、プロビジョニングされたスループット全体�
 ## <a name="next-steps"></a>次のステップ
 * Azure Cosmos DB .NET SDK 使用時の問題を[診断してトラブルシューティングする](troubleshoot-dot-net-sdk.md)。
 * [.NET v3](performance-tips-dotnet-sdk-v3-sql.md) と [.NET v2](performance-tips.md) のパフォーマンス ガイドラインを確認する。
+* Azure Cosmos DB Java v4 SDK 使用時の問題を[診断してトラブルシューティングする](troubleshoot-java-sdk-v4-sql.md)。
+* [Java v4 SDK](performance-tips-java-sdk-v4-sql.md) のパフォーマンス ガイドラインを確認する。

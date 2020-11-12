@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 0a72ea413e7298c8e6cb622cb985e6516435b451
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8238b9902aafcabc079c551a0eabc7170042209a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255840"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357625"
 ---
 # <a name="tutorial-configure-theorgwiki-for-automatic-user-provisioning"></a>チュートリアル:TheOrgWiki を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -57,7 +57,7 @@ Azure AD での自動ユーザー プロビジョニング用に TheOrgWiki を�
 
     ![The Org Wiki のスクリーンショット。ユーザーのアバターと [管理コンソール] が選択されています。](media/theorgwiki-provisioning-tutorial/login.png)
 
-2. 管理コンソールで、 **[設定] タブ**をクリックします。 
+2. 管理コンソールで、 **[設定] タブ** をクリックします。 
 
     ![The Org Wiki の [管理コンソール] のスクリーンショット。[設定] タブが選択されています。](media/theorgwiki-provisioning-tutorial/settings.png)
     
@@ -89,7 +89,7 @@ Azure AD で自動ユーザー プロビジョニング用に TheOrgWiki を構�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**TheOrgWiki**」と入力し、結果パネルで **[TheOrgWiki]** を選択します。 
+4. 検索ボックスに「 **TheOrgWiki** 」と入力し、結果パネルで **[TheOrgWiki]** を選択します。 
 
     ![結果一覧の TheOrgWiki](common/search-new-app.png)
 

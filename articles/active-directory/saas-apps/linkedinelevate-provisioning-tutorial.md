@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: 429ccacea8eb4fd66336543615b11179af3e9276
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e972475530ad36a188f73990bb9eca35748c36c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361584"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358951"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>チュートリアル:LinkedIn Elevate を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -44,13 +44,13 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 * 単一の Azure AD ユーザーを LinkedIn Elevate に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
 
-* ユーザーを LinkedIn Elevate に割り当てるときに、割り当てのダイアログで**ユーザー** ロールを選択する必要があります。 "既定のアクセス" ロールはプロビジョニングでは使えません。
+* ユーザーを LinkedIn Elevate に割り当てるときに、割り当てのダイアログで **ユーザー** ロールを選択する必要があります。 "既定のアクセス" ロールはプロビジョニングでは使えません。
 
 ## <a name="configuring-user-provisioning-to-linkedin-elevate"></a>LinkedIn Elevate へのユーザー プロビジョニングの構成
 
 このセクションでは、Azure AD を LinkedIn Elevate の SCIM のユーザー アカウント プロビジョニング API に接続する手順のほか、プロビジョニング サービスを構成して、Azure AD のユーザーとグループの割り当てに基づいて割り当て済みのユーザー アカウントを LinkedIn Elevate で作成、更新、無効化する手順を説明します。
 
-**ヒント:** LinkedIn Elevate では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Azure portal](https://portal.azure.com) で説明されている手順に従ってください。 シングル サインオンは自動プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+**ヒント:** LinkedIn Elevate では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、 [Azure portal](https://portal.azure.com) で説明されている手順に従ってください。 シングル サインオンは自動プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-elevate-in-azure-ad"></a>Azure AD で LinkedIn Elevate への自動ユーザー アカウント プロビジョニングを構成するには
 
@@ -81,7 +81,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 6. ページを離れる前に、クリップボードまたはコンピューターにアクセス トークンを保存します。
 
-7. 次に、[Azure Portal](https://portal.azure.com) にサインインし、 **[Azure Active Directory] > [エンタープライズ アプリ] > [すべてのアプリケーション]** セクションに移動します。
+7. 次に、 [Azure Portal](https://portal.azure.com) にサインインし、 **[Azure Active Directory] > [エンタープライズ アプリ] > [すべてのアプリケーション]** セクションに移動します。
 
 8. シングル サインオンのために LinkedIn Elevate を既に構成している場合は、検索フィールドで LinkedIn Elevate のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択してアプリケーション ギャラリーで **LinkedIn Elevate** を検索します。 検索結果から LinkedIn Elevate を選択してアプリケーションの一覧に追加します。
 

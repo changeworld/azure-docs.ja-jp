@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 53a41c3921ee92b1ec79edf95999c97f80cbce45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5ae1f7f84293fdf23b680a407a5a168316f3163
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462362"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94407990"
 ---
 # <a name="securing-paas-deployments"></a>PaaS デプロイをセキュリティで保護する
 
@@ -31,7 +31,7 @@ ms.locfileid: "89462362"
 - セキュリティの取り組みを、ネットワークを中心としたアプローチから ID を中心とした境界セキュリティのアプローチに切り替える
 - 一般的な PaaS セキュリティのベスト プラクティスの推奨事項を実装する
 
-「[セキュリティで保護されたアプリケーションを Azure 上で開発する](abstract-develop-secure-apps.md)」は、クラウド用のアプリケーションを開発する際に、ソフトウェア開発ライフサイクルの各段階で考慮する必要があるセキュリティの問題と制御に関する一般的なガイドです。
+「[セキュリティで保護されたアプリケーションを Azure 上で開発する](https://azure.microsoft.com/resources/develop-secure-applications-on-azure/)」は、クラウド用のアプリケーションを開発する際に、ソフトウェア開発ライフサイクルの各段階で考慮する必要があるセキュリティの問題と制御に関する一般的なガイドです。
 
 ## <a name="cloud-security-advantages"></a>クラウド セキュリティの利点
 お客様と Microsoft との[責任の分担](shared-responsibility.md)を理解することが重要です。 オンプレミスでは、お客様はスタック全体を所有しますが、クラウドに移行すると、責任の一部は Microsoft に移譲されます。
@@ -73,28 +73,28 @@ PaaS と従来のオンプレミス デプロイにおけるもう 1 つの重�
 
 ID 境界を管理するためのベスト プラクティスを次に示します。
 
-**ベスト プラクティス**: キーと資格情報をセキュリティ保護して PaaS デプロイをセキュリティ保護する   
-**詳細**: キーや資格情報の紛失は、よくある問題です。 キーやシークレットをハードウェア セキュリティ モジュール (HSM) に格納する一元化されたソリューションを使用できます。 [Azure Key Vault](../../key-vault/general/overview.md) は、HSM によって保護されているキーを使用して、認証キー、ストレージ アカウント キー、データ暗号化キー、.pfx ファイル、およびパスワードを暗号化することによって、キーとシークレットを保護します。
+**ベスト プラクティス** : キーと資格情報をセキュリティ保護して PaaS デプロイをセキュリティ保護する   
+**詳細** : キーや資格情報の紛失は、よくある問題です。 キーやシークレットをハードウェア セキュリティ モジュール (HSM) に格納する一元化されたソリューションを使用できます。 [Azure Key Vault](../../key-vault/general/overview.md) は、HSM によって保護されているキーを使用して、認証キー、ストレージ アカウント キー、データ暗号化キー、.pfx ファイル、およびパスワードを暗号化することによって、キーとシークレットを保護します。
 
-**ベスト プラクティス**: 資格情報やその他のシークレットをソース コードや GitHub に格納しない。   
-**詳細**: 資格情報やその他のシークレットを紛失するよりも悪い唯一のことは、権限のない第三者がキーや資格情報にアクセスすることです。 攻撃者はボット テクノロジを利用して、GitHub などのコード レポジトリに格納されているキーやシークレットを検索することができます。 これらのパブリックなコード レポジトリには、キーやシークレットを格納しないようにします。
+**ベスト プラクティス** : 資格情報やその他のシークレットをソース コードや GitHub に格納しない。   
+**詳細** : 資格情報やその他のシークレットを紛失するよりも悪い唯一のことは、権限のない第三者がキーや資格情報にアクセスすることです。 攻撃者はボット テクノロジを利用して、GitHub などのコード レポジトリに格納されているキーやシークレットを検索することができます。 これらのパブリックなコード レポジトリには、キーやシークレットを格納しないようにします。
 
-**ベスト プラクティス**: VM を直接リモート管理できる管理インターフェイスを使用して、PaaS サービスと IaaS サービスのハイブリッドで VM 管理インターフェイスを保護する。   
-**詳細**: [SSH](https://en.wikipedia.org/wiki/Secure_Shell)、[RDP](https://support.microsoft.com/kb/186607)、[PowerShell リモート処理](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting)などのリモート管理プロトコルを使用できます。 通常は、インターネットから VM に直接リモート アクセスできないように設定することをお勧めします。
+**ベスト プラクティス** : VM を直接リモート管理できる管理インターフェイスを使用して、PaaS サービスと IaaS サービスのハイブリッドで VM 管理インターフェイスを保護する。   
+**詳細** : [SSH](https://en.wikipedia.org/wiki/Secure_Shell)、 [RDP](https://support.microsoft.com/kb/186607)、 [PowerShell リモート処理](/powershell/module/microsoft.powershell.core/enable-psremoting)などのリモート管理プロトコルを使用できます。 通常は、インターネットから VM に直接リモート アクセスできないように設定することをお勧めします。
 
-可能であれば、Azure 仮想ネットワークの仮想プライベート ネットワークを使用するなどの代替アプローチを使用します。 別の方法が利用できない場合は、複雑なパスフレーズおよび 2 要素認証 ([Azure Multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication) など) を使用するようにします。
+可能であれば、Azure 仮想ネットワークの仮想プライベート ネットワークを使用するなどの代替アプローチを使用します。 別の方法が利用できない場合は、複雑なパスフレーズおよび 2 要素認証 ([Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) など) を使用するようにします。
 
-**ベスト プラクティス**: 強力な認証と承認のプラットフォームを使用する。   
-**詳細**: Azure AD で、カスタム ユーザー ストアではなくフェデレーション ID を使用するようにします。 フェデレーション ID を使用すると、プラットフォームベースのアプローチを活用して、承認された ID の管理をパートナーに委任することができます。 従業員を解雇し、その情報を複数の ID と承認システムに反映する必要がある場合は、フェデレーション ID によるアプローチが特に重要になってきます。
+**ベスト プラクティス** : 強力な認証と承認のプラットフォームを使用する。   
+**詳細** : Azure AD で、カスタム ユーザー ストアではなくフェデレーション ID を使用するようにします。 フェデレーション ID を使用すると、プラットフォームベースのアプローチを活用して、承認された ID の管理をパートナーに委任することができます。 従業員を解雇し、その情報を複数の ID と承認システムに反映する必要がある場合は、フェデレーション ID によるアプローチが特に重要になってきます。
 
 カスタム コードではなく、プラットフォームが提供する認証と承認のメカニズムを使用するようにします。 その理由は、カスタム認証コードの開発ではエラーが生じやすいためです。 開発者のほとんどはセキュリティ専門家ではなく、細部に留意したり、認証や承認の最新動向を把握している可能性は低くなります。 商用コード (たとえば Microsoft のコード) は、通常徹底的にセキュリティ レビューされています。
 
-2 要素認証を使用します。 2 要素認証はユーザー名や認証パスワードの種類に固有のセキュリティ脆弱性が回避されるため、認証と承認において現在標準になっています。 Azure 管理 (ポータル/リモート PowerShell) インターフェイスと、顧客に提供されるサービスへのアクセスは、[Azure Multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication) を使用するように設計、構成する必要があります。
+2 要素認証を使用します。 2 要素認証はユーザー名や認証パスワードの種類に固有のセキュリティ脆弱性が回避されるため、認証と承認において現在標準になっています。 Azure 管理 (ポータル/リモート PowerShell) インターフェイスと、顧客に提供されるサービスへのアクセスは、[Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) を使用するように設計、構成する必要があります。
 
 OAuth2 や Kerberos などの標準的な認証プロトコルを使用します。 これらのプロトコルは幅広くピア レビューされており、認証と承認用にプラットフォーム ライブラリの一部として実装される可能性があります。
 
 ## <a name="use-threat-modeling-during-application-design"></a>アプリケーション設計時に脅威モデリングを使用する
-Microsoft [セキュリティ開発ライフ サイクル (Security Development Lifecycle)](https://www.microsoft.com/en-us/sdl) は、設計段階にチームが脅威モデリングと呼ばれるプロセスを行う必要があることを指定しています。 このプロセスを支援するために Microsoft は [SDL Threat Modeling Tool](/azure/security/azure-security-threat-modeling-tool) を作成しました。 アプリケーションの設計をモデリングし、すべての信頼境界を超える [STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) 脅威を列挙することによって、早い段階で設計エラーを検出できます。
+Microsoft [セキュリティ開発ライフ サイクル (Security Development Lifecycle)](https://www.microsoft.com/en-us/sdl) は、設計段階にチームが脅威モデリングと呼ばれるプロセスを行う必要があることを指定しています。 このプロセスを支援するために Microsoft は [SDL Threat Modeling Tool](../develop/threat-modeling-tool.md) を作成しました。 アプリケーションの設計をモデリングし、すべての信頼境界を超える [STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) 脅威を列挙することによって、早い段階で設計エラーを検出できます。
 
 次の表は STRIDE 脅威の一覧と Azure の機能が使用する軽減策の例です。 これらの軽減策はあらゆる状況で機能するわけではありません。
 
@@ -105,37 +105,37 @@ Microsoft [セキュリティ開発ライフ サイクル (Security Development 
 | 否認 | 否認防止 | Azure の[監視と診断](/azure/architecture/best-practices/monitoring)を有効にする。 |
 | 情報漏えい | 機密情報 | [サービス証明書](/rest/api/appservice/certificates)を使用して保存データを暗号化する。 |
 | Denial of service (サービス拒否) | 可用性 | 潜在的なサービス拒否状態のパフォーマンス メトリックを監視する。 接続のフィルターを実装する。 |
-| 権限の昇格 | 承認 | [Privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements) を使用する。 |
+| 権限の昇格 | 承認 | [Privileged Identity Management](../../active-directory/privileged-identity-management/subscription-requirements.md) を使用する。 |
 
 ## <a name="develop-on-azure-app-service"></a>Azure App Service での開発
-PaaS である [Azure App Service](/azure/app-service/overview) を使用すると、任意のプラットフォームまたはデバイスを対象とした Web アプリとモバイル アプリを作成し、クラウドやオンプレミスにあるあらゆる場所のデータにアクセスできます。 App Service には、以前は Azure Websites および Azure Mobile Services として個別に提供されていた Web 機能とモバイル機能が含まれています。 さらに、ビジネス プロセスの自動化やクラウド API のホストに利用できる新しい機能も備えています。 単一の統合サービスである App Service により、Web、モバイル、および統合シナリオで豊富な機能セットを利用できます。
+PaaS である [Azure App Service](../../app-service/overview.md) を使用すると、任意のプラットフォームまたはデバイスを対象とした Web アプリとモバイル アプリを作成し、クラウドやオンプレミスにあるあらゆる場所のデータにアクセスできます。 App Service には、以前は Azure Websites および Azure Mobile Services として個別に提供されていた Web 機能とモバイル機能が含まれています。 さらに、ビジネス プロセスの自動化やクラウド API のホストに利用できる新しい機能も備えています。 単一の統合サービスである App Service により、Web、モバイル、および統合シナリオで豊富な機能セットを利用できます。
 
 App Service 使用時のベスト プラクティスを次に示します。
 
-**ベスト プラクティス**: [Azure Active Directory を使用して認証する](/azure/app-service/overview-authentication-authorization)。   
-**詳細**: App Service は、ID プロバイダーに対して OAuth 2.0 サービスを提供します。 OAuth 2.0 は、Web アプリケーション、デスクトップ アプリケーション、および携帯電話に特定の認証フローを提供しながら、クライアント開発者のシンプル性を実現することに焦点を当てています。 Azure AD が OAuth 2.0 を使用することにより、ユーザーはモバイル アプリケーションと Web アプリケーションへのアクセスを承認することができます。
+**ベスト プラクティス** : [Azure Active Directory を使用して認証する](../../app-service/overview-authentication-authorization.md)。   
+**詳細** : App Service は、ID プロバイダーに対して OAuth 2.0 サービスを提供します。 OAuth 2.0 は、Web アプリケーション、デスクトップ アプリケーション、および携帯電話に特定の認証フローを提供しながら、クライアント開発者のシンプル性を実現することに焦点を当てています。 Azure AD が OAuth 2.0 を使用することにより、ユーザーはモバイル アプリケーションと Web アプリケーションへのアクセスを承認することができます。
 
-**ベスト プラクティス**: 知る必要性と最小権限という 2 つのセキュリティ原則に基づいて、アクセスを制限します。   
-**詳細**: アクセスの制限は、データ アクセスにセキュリティ ポリシーを適用する必要がある組織にとって、絶対に欠かせないものです。 RBAC を使用して、特定のスコープ内のユーザー、グループ、アプリケーションにアクセス許可を割り当てることができます。 ユーザーへのアプリケーション アクセス付与の詳細については、[アクセス管理の概要](/azure/role-based-access-control/overview)に関するページを参照してください。
+**ベスト プラクティス** : 知る必要性と最小権限という 2 つのセキュリティ原則に基づいて、アクセスを制限します。   
+**詳細** : アクセスの制限は、データ アクセスにセキュリティ ポリシーを適用する必要がある組織にとって、絶対に欠かせないものです。 RBAC を使用して、特定のスコープ内のユーザー、グループ、アプリケーションにアクセス許可を割り当てることができます。 ユーザーへのアプリケーション アクセス付与の詳細については、[アクセス管理の概要](../../role-based-access-control/overview.md)に関するページを参照してください。
 
-**ベスト プラクティス**: キーを保護します。   
-**詳細**: Azure Key Vault は、クラウド アプリケーションやサービスで使われる暗号化キーとシークレットをセキュリティで保護するために役立ちます。 Key Vault を使用すると、キーとシークレット (認証キー、ストレージ アカウント キー、データ暗号化キー、PFX ファイル、パスワードなど) をハードウェア セキュリティ モジュール (HSM) で保護されたキーを使用して暗号化できます。 さらに安心感を高めたい場合には、HSM でキーのインポートや生成を行うことができます。 詳細については、「[Azure Key Vault とは](/azure/key-vault/key-vault-overview)」を参照してください。 Key Vault を使用して、自動更新で TLS 証明書の管理することもできます。
+**ベスト プラクティス** : キーを保護します。   
+**詳細** : Azure Key Vault は、クラウド アプリケーションやサービスで使われる暗号化キーとシークレットをセキュリティで保護するために役立ちます。 Key Vault を使用すると、キーとシークレット (認証キー、ストレージ アカウント キー、データ暗号化キー、PFX ファイル、パスワードなど) をハードウェア セキュリティ モジュール (HSM) で保護されたキーを使用して暗号化できます。 さらに安心感を高めたい場合には、HSM でキーのインポートや生成を行うことができます。 詳細については、「[Azure Key Vault とは](../../key-vault/general/overview.md)」を参照してください。 Key Vault を使用して、自動更新で TLS 証明書の管理することもできます。
 
-**ベスト プラクティス**: 受信ソース IP アドレスを制限します。   
-**詳細**: [App Service Environment](/azure/app-service/environment/intro) には、ネットワーク セキュリティ グループによる受信ソース IP アドレスの制限に役立つ、仮想ネットワーク統合機能が用意されています。 仮想ネットワークを使用すると、Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 詳細については、「[アプリを Azure 仮想ネットワークに統合する](/azure/app-service/web-sites-integrate-with-vnet)」を参照してください。
+**ベスト プラクティス** : 受信ソース IP アドレスを制限します。   
+**詳細** : [App Service Environment](../../app-service/environment/intro.md) には、ネットワーク セキュリティ グループによる受信ソース IP アドレスの制限に役立つ、仮想ネットワーク統合機能が用意されています。 仮想ネットワークを使用すると、Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 詳細については、「[アプリを Azure 仮想ネットワークに統合する](../../app-service/web-sites-integrate-with-vnet.md)」を参照してください。
 
-**ベスト プラクティス**: App Service 環境のセキュリティ状態を監視する。   
-**詳細**: Azure Security Center を使用して App Service 環境を監視します。 Security Center は、潜在的なセキュリティの脆弱性を識別すると、必要な管理を構成するプロセスを説明する[推奨事項](../../security-center/security-center-virtual-machine-protection.md)を作成します。
+**ベスト プラクティス** : App Service 環境のセキュリティ状態を監視する。   
+**詳細** : Azure Security Center を使用して App Service 環境を監視します。 Security Center は、潜在的なセキュリティの脆弱性を識別すると、必要な管理を構成するプロセスを説明する[推奨事項](../../security-center/asset-inventory.md)を作成します。
 
 > [!NOTE]
-> App Service の監視はプレビュー段階であり、Security Center の [Standard レベル](/azure/security-center/security-center-pricing)でのみ利用できます。
+> App Service の監視はプレビュー段階であり、Security Center の [Standard レベル](../../security-center/security-center-pricing.md)でのみ利用できます。
 >
 >
 
 ## <a name="install-a-web-application-firewall"></a>Web アプリケーション ファイアウォールをインストールする
 Web アプリケーションが、一般的な既知の脆弱性を悪用した悪意のある攻撃の的になるケースが増えています。 よくある攻撃の例として、SQL インジェクション攻撃やクロス サイト スクリプティング攻撃が挙げられます。 アプリケーション コードでこのような攻撃を防ぐことは困難な場合があり、厳格な保守、パッチの適用、アプリケーション トポロジの多数のレイヤーの監視が必要になることもあります。 Web アプリケーション ファイアウォールを一元化することで、セキュリティの管理がはるかに簡単になり、アプリケーション管理者にとっては侵入の脅威からより確実に保護されるようになります。 また、WAF のソリューションは、1 か所に既知の脆弱性の修正プログラムを適用することで、個々の Web アプリケーションをセキュリティで保護する場合と比較して、さらに迅速にセキュリティの脅威に対応できます。 既存のアプリケーション ゲートウェイは、Web アプリケーション ファイアウォールに対応したアプリケーション ゲートウェイに簡単に変換できます。
 
-[Web アプリケーション ファイアウォール (WAF)](/azure/frontdoor/waf-overview) は、一般的な脆弱性やその悪用から Web アプリケーションを一元的に保護する Application Gateway の機能です。 WAF は、[OWASP (Open Web Application Security Project) コア ルール セット](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 または 2.2.9 の規則に基づいています。
+[Web アプリケーション ファイアウォール (WAF)](../../web-application-firewall/afds/afds-overview.md) は、一般的な脆弱性やその悪用から Web アプリケーションを一元的に保護する Application Gateway の機能です。 WAF は、[OWASP (Open Web Application Security Project) コア ルール セット](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 または 2.2.9 の規則に基づいています。
 
 ## <a name="monitor-the-performance-of-your-applications"></a>アプリケーションのパフォーマンスを監視する
 監視とは、アプリケーションのパフォーマンス、正常性、可用性を見極めるために、データを収集し、分析することを指します。 効果的な監視戦略を策定することで、アプリケーションのコンポーネントの動作状況を詳細に把握できます。 問題が顕在化する前に解決できるように重大な問題を通知して、アップタイムを向上させることができます。 セキュリティに関連する可能性がある異常を検出することもできます。
@@ -160,10 +160,10 @@ Application Insights には、収集されたデータを操作するための�
 - Azure Service Bus
 - Web アプリケーション ファイアウォール
 
-クラウド用のアプリケーションを開発する際に、ソフトウェア開発ライフサイクルの各段階で考慮する必要があるセキュリティの問題と制御については、「[セキュリティで保護されたアプリケーションを Azure 上で開発する](abstract-develop-secure-apps.md)」を参照してください。
+クラウド用のアプリケーションを開発する際に、ソフトウェア開発ライフサイクルの各段階で考慮する必要があるセキュリティの問題と制御については、「[セキュリティで保護されたアプリケーションを Azure 上で開発する](https://azure.microsoft.com/resources/develop-secure-applications-on-azure/)」を参照してください。
 
 Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure セキュリティのベスト プラクティスとパターン](best-practices-and-patterns.md)」を参照してください。
 
 Azure のセキュリティとそれに関連する Microsoft サービスの一般情報については、以下のリソースを参照してください。
-* [Azure セキュリティ チーム ブログ](https://blogs.msdn.microsoft.com/azuresecurity/) – Azure のセキュリティに関する最新情報を提供しています。
+* [Azure セキュリティ チーム ブログ](/archive/blogs/azuresecurity/) – Azure のセキュリティに関する最新情報を提供しています。
 * [Microsoft セキュリティ レスポンス センター](https://technet.microsoft.com/library/dn440717.aspx) - このサイトでは、Azure に関する問題を含め、マイクロソフトのセキュリティの脆弱性を報告できます。メールの場合は、secure@microsoft.com 宛に報告してください。

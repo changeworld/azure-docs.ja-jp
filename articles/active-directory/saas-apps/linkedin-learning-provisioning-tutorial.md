@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: f9f8694395be493aa0a58f482eb93ef82c5febc3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1a0ec8393e3c5ea40cb53fc101040441a5ca15bb
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458525"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359036"
 ---
 # <a name="tutorial-configure-linkedin-learning-for-automatic-user-provisioning"></a>チュートリアル: LinkedIn Learning を構成し、自動ユーザー プロビジョニングに対応させる
 

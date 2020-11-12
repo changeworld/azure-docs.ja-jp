@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 7b92c84234432320aa08017a15fbf8a5a4630eb3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: a00dc5beb2bde02f71b40f6eb374502136c37c67
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019734"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410489"
 ---
 # <a name="data-encryption-models"></a>データ暗号化モデル
 
@@ -91,7 +91,7 @@ Microsoft がキーを管理するサーバー側暗号化では、サービス�
 
 保存データを暗号化し、暗号化キーを管理することが要件であるシナリオの場合、Key Vault のユーザー管理キーを使用したサーバー側暗号化を利用できます。 一部のサービスでは Azure Key Vault のルート キー暗号化キーのみを保存し、暗号化されたデータ暗号化キーは、データに近い内部の場所に保存されます。 このシナリオでは、お客様は Key Vault に自分のキーを使用 (BYOK – Bring Your Own Key) するか、新しいものを生成して、必要なリソースを暗号化します。 リソース プロバイダーは、すべての暗号化操作のルート キーとして、構成されたキーの暗号化キーを使用して、暗号化と暗号化解除の操作を実行します。
 
-キーの暗号化キーを失うことは、データを失うことを意味します。 そのため、キーは削除しないでください。 キーは作成またはローテーションのたびにバックアップしてください。 [論理削除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)は、キーの暗号化キーを格納するあらゆる Vault で有効にしてください。 キーを削除する代わりに、[有効化] を False に設定するか、有効期限を設定してください。
+キーの暗号化キーを失うことは、データを失うことを意味します。 そのため、キーは削除しないでください。 キーは作成またはローテーションのたびにバックアップしてください。 [論理削除](../../key-vault/general/soft-delete-overview.md)は、キーの暗号化キーを格納するあらゆる Vault で有効にしてください。 キーを削除する代わりに、[有効化] を False に設定するか、有効期限を設定してください。
 
 ### <a name="key-access"></a>キーへのアクセス
 

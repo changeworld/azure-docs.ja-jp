@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dc931c461988daf9ff6fb2f954b52fa58ce94af
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 795f5ede382e561ee810e54e1f8897c5d806e8b8
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369779"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412376"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory を使って強固な ID 基盤を構築するための 4 つのステップ
 
@@ -147,7 +147,7 @@ MFA の[サインイン レポート](../authentication/howto-mfa-reporting.md)�
 
 ### <a name="self-service-app-management"></a>セルフサービス アプリの管理
 
-ユーザーがアクセス パネルからアプリケーションを自己検出できるようにする前に、ユーザーによる自己検出およびアクセス権の要求を許可するアプリケーションに対して、[アプリケーションのセルフ サービス アクセス](../manage-apps/access-panel-manage-self-service-access.md)を有効にする必要があります。 アプリケーションのセルフ サービス アクセスは、ユーザーにアプリケーションの自己検出を許可したり、必要に応じてビジネス グループによるこれらのアプリケーションへのアクセス承認を許可したりする場合に優れた方法です。 ユーザーに割り当てられた[パスワード シングル サインオン アプリケーション](../manage-apps/application-sign-in-problem-password-sso-gallery.md#configure-password-sso-for-an-azure-ad-gallery-app)の資格情報をビジネス グループがアクセス パネルから直接管理できるように許可できます。
+ユーザーがアクセス パネルからアプリケーションを自己検出できるようにする前に、ユーザーによる自己検出およびアクセス権の要求を許可するアプリケーションに対して、[アプリケーションのセルフ サービス アクセス](../manage-apps/access-panel-manage-self-service-access.md)を有効にする必要があります。 アプリケーションのセルフ サービス アクセスは、ユーザーにアプリケーションの自己検出を許可したり、必要に応じてビジネス グループによるこれらのアプリケーションへのアクセス承認を許可したりする場合に優れた方法です。 ユーザーに割り当てられた[パスワード シングル サインオン アプリケーション](../manage-apps/troubleshoot-password-based-sso.md#automatically-capture-sign-in-fields-for-an-app)の資格情報をビジネス グループがアクセス パネルから直接管理できるように許可できます。
 
 ### <a name="self-service-group-management"></a>セルフサービスのグループ管理
 
@@ -267,6 +267,6 @@ SIEM ソリューションを持たない組織は、Azure AD 用の [Power BI �
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Active Directory の機能とこの 5 ステップのチェックリストを使ってセキュリティ体制を向上させる方法について学習します - 「[ID インフラストラクチャをセキュリティ保護する 5 つのステップ](https://aka.ms/securitysteps)」。
+Azure Active Directory の機能とこの 5 ステップのチェックリストを使ってセキュリティ体制を向上させる方法について学習します - 「[ID インフラストラクチャをセキュリティ保護する 5 つのステップ](../../security/fundamentals/steps-secure-identity.md)」。
 
-組織が従来のオンプレミス システムから Azure AD へとより多くの ID 管理を迅速に採用して移行できるようにするソリューションと機能を提供することで、Azure AD の ID 機能を使用してクラウド ガバナンス管理への移行を加速させる方法について学習します - 「[Azure AD がオンプレミスのワークロードに対してクラウド ガバナンス管理を提供する方法](https://aka.ms/cloudgoverned)」。
+組織が従来のオンプレミス システムから Azure AD へとより多くの ID 管理を迅速に採用して移行できるようにするソリューションと機能を提供することで、Azure AD の ID 機能を使用してクラウド ガバナンス管理への移行を加速させる方法について学習します - 「[Azure AD がオンプレミスのワークロードに対してクラウド ガバナンス管理を提供する方法](./cloud-governed-management-for-on-premises.md)」。

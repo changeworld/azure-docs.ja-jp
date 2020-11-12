@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/18/2019
 ms.author: Zhchia
-ms.openlocfilehash: fcb971cd0bd0addd3190e2a3a5f9c6740494b7fd
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 3bfcd652572b989e98bf4c7cb717cb314dfbaaeb
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318955"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359886"
 ---
 # <a name="tutorial-configure-airstack-for-automatic-user-provisioning"></a>チュートリアル:Airstack を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "92318955"
 
 ## <a name="assigning-users-to-airstack"></a>Airstack へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Airstack へのアクセスが必要な Azure AD 内のユーザーやグループを決定しておく必要があります。 決定した後、次の手順に従い、これらのユーザー、グループ、またはその両方を Airstack に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -58,7 +58,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Airstack の SCIM の追加](media/airstack-provisioning-tutorial/azureconfig.png)
 
-3.  **[生成]** ボタンをクリックします。 **Azure 用のシークレット トークン**をコピーします。 この値を、Azure portal で Airstack アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力します。
+3.  **[生成]** ボタンをクリックします。 **Azure 用のシークレット トークン** をコピーします。 この値を、Azure portal で Airstack アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力します。
 
     ![Airstack の作成トークン](media/airstack-provisioning-tutorial/generatetoken.png)
 
@@ -80,7 +80,7 @@ Azure AD での自動ユーザー プロビジョニング用に Airstack を構
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Airstack**」と入力し、結果ウィンドウで **[Airstack]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Airstack** 」と入力し、結果ウィンドウで **[Airstack]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果リストの Airstack](common/search-new-app.png)
 
@@ -109,7 +109,7 @@ Azure AD での自動ユーザー プロビジョニング用に Airstack を構
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://api-as.lenovosoftware.com/0/as/common/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した**SCIM 認証トークン**の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Airstack への接続を確保します。 接続できない場合は、使用中の Airstack アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://api-as.lenovosoftware.com/0/as/common/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した **SCIM 認証トークン** の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Airstack への接続を確保します。 接続できない場合は、使用中の Airstack アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 

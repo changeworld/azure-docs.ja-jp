@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 8350ebc92575911991ca772229912941f2af10e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0c428997cfba8871a29d9bfe0df0a6920a1d22f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851290"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357591"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>チュートリアル:4me を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -53,13 +53,13 @@ Azure AD での自動ユーザー プロビジョニング用に 4me を構成�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**4me**」と入力し、結果ウィンドウで **[4me]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **4me** 」と入力し、結果ウィンドウで **[4me]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の 4me](common/search-new-app.png)
 
 ## <a name="assigning-users-to-4me"></a>4me へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、4me へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを 4me に割り当てることができます。
 
@@ -96,13 +96,13 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. お使いの 4me アカウントの**テナント URL** と**シークレット トークン**を取得するために、手順 6 で説明されている操作を行います。
+5. お使いの 4me アカウントの **テナント URL** と **シークレット トークン** を取得するために、手順 6 で説明されている操作を行います。
 
 6. 4me 管理コンソールにサインインします。 **[設定]** に移動します。
 
     ![4me の設定](media/4me-provisioning-tutorial/4me01.png)
 
-    検索バーに「**アプリ**」と入力します。
+    検索バーに「 **アプリ** 」と入力します。
 
     ![4me アプリ](media/4me-provisioning-tutorial/4me02.png)
 
@@ -126,11 +126,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
     
 11. **[属性マッピング]** セクションで、Azure AD から 4me に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で 4me のユーザー アカウントとの照合に使用されます。 選択した一致する属性に対する[フィルター処理を 4me がサポートしている](https://developer.4me.com/v1/scim/users/)ことを確認してください。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-attributes.png" alt-text="[マッピング] ページのスクリーンショット。[名前] の下で、[Synchronize Azure Active Directory Users to FourMe]\(Azure Active Directory ユーザーを FourMe に同期する\) が強調表示されています。" border="false":::
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-attributes.png" alt-text="[属性マッピング] ページのスクリーンショット。テーブルに、Azure Active Directory 属性とそれに対応する FourMe の属性、および該当する状態が表示されています。" border="false":::
     
 12. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to 4me]\(Azure Active Directory グループを 4me に同期する\)** を選択します。
 
-    :::image type="content" source="media/4me-provisioning-tutorial/4me-group-mapping.png" alt-text="[マッピング] ページのスクリーンショット。[名前] の下で、[Synchronize Azure Active Directory Users to FourMe]\(Azure Active Directory ユーザーを FourMe に同期する\) が強調表示されています。" border="false":::
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-group-mapping.png" alt-text="[マッピング] ページのスクリーンショット。[名前] の下で、[Synchronize Azure Active Directory Groups to FourMe]\(Azure Active Directory グループを FourMe に同期する\) が強調表示されています。" border="false":::
     
 13. **[属性マッピング]** セクションで、Azure AD から 4me に同期されるグループ属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で 4me のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 

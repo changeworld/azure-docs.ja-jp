@@ -3,12 +3,12 @@ title: リソースでのタグのサポート
 description: タグをサポートしている Azure リソースの種類を示します。 すべての Azure サービスの詳細を提供します。
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: c3a94ece52e5c5b17a50fed9810303480a9c974a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: fb81ed303cf27add3a033021f017c03f4b9e9750
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370289"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427770"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure リソースでのタグのサポート
 この記事では、リソースの種類が[タグ](tag-resources.md)をサポートしているかどうかについて説明します。 「 **タグのサポート** 」というラベルが付けられた列は、リソースの種類にタグのプロパティがあるかどうかを示します。 「 **コスト レポートのタグ** 」というラベルが付けられた列は、リソースの種類がタグをコスト レポートに渡すかどうかを示します。 [Cost Management のコスト分析](../../cost-management-billing/costs/group-filter.md)および [Azure の請求書と毎日の使用データ](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)で、タグ別にコストを表示できます。
@@ -284,7 +284,7 @@ ms.locfileid: "92370289"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | configurationStores | はい | はい |
+> | configurationStores | はい | いいえ |
 > | configurationStores / eventGridFilters | いいえ | いいえ |
 > | configurationStores / keyValues | いいえ | いいえ |
 

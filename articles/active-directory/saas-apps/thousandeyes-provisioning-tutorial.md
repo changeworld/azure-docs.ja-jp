@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: 7958ef9195c9dcef65fab70fbf48edf2021ff94b
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: ff55528013ac89be48454c25e1fc86deac2bca6f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355824"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357234"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>チュートリアル:ThousandEyes を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -44,7 +44,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 * 単一の Azure AD ユーザーを ThousandEyes に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
 
-* ThousandEyes にユーザーを割り当てるときは、**ユーザー** ロールまたは別の有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選ぶ必要があります。 **[既定のアクセス]** ロールはプロビジョニングでは使うことができず、このロールのユーザーはスキップされます。
+* ThousandEyes にユーザーを割り当てるときは、 **ユーザー** ロールまたは別の有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選ぶ必要があります。 **[既定のアクセス]** ロールはプロビジョニングでは使うことができず、このロールのユーザーはスキップされます。
 
 ## <a name="configuring-user-provisioning-to-thousandeyes"></a>ThousandEyes へのユーザー プロビジョニングの構成 
 

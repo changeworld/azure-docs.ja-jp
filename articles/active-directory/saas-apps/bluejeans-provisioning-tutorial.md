@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 7d3aafe93c92a1c756358dfb60a2ca976036d8b8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 204cdc689d5a117df428bb314a81a35081f7b13c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273690"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357658"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>チュートリアル: BlueJeans を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -54,7 +54,7 @@ Azure AD で自動ユーザー プロビジョニング用に BlueJeans を構�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**BlueJeans**」と入力し、結果パネルで **[BlueJeans]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **BlueJeans** 」と入力し、結果パネルで **[BlueJeans]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![結果一覧の BlueJeans](common/search-new-app.png)
 

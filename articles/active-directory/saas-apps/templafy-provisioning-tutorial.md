@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 98eae8b63b9eaaa8cff800bade091f4b5d36d005
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 754e23a7d3f4bdf27f273927a5bc3b3658940d90
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255691"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359237"
 ---
 # <a name="tutorial-configure-templafy-for-automatic-user-provisioning"></a>チュートリアル:Templafy を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "91255691"
 
 ## <a name="assigning-users-to-templafy"></a>Templafy へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Templafy へのアクセスが必要な Azure AD 内のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Templafy に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -60,7 +60,7 @@ Azure AD での自動ユーザー プロビジョニング用に Templafy を構
 
     ![Templafy 管理セクションのスクリーンショット。[認証方法] オプションが選択されています。](media/templafy-provisioning-tutorial/image01.png)
 
-3. **SCIM Api キー**の値をコピーします。 この値を、Azure portal 上で Templafy アプリケーションの [プロビジョニング] タブ内の **[シークレット トークン]** フィールドに入力します。
+3. **SCIM Api キー** の値をコピーします。 この値を、Azure portal 上で Templafy アプリケーションの [プロビジョニング] タブ内の **[シークレット トークン]** フィールドに入力します。
 
     ![SCIM API キーのスクリーンショット。](media/templafy-provisioning-tutorial/image02.png)
 
@@ -82,7 +82,7 @@ Azure AD で自動ユーザー プロビジョニング用に Templafy を構成
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Templafy**」と入力し、結果ウィンドウで **[Templafy]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Templafy** 」と入力し、結果ウィンドウで **[Templafy]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果リストの Templafy](common/search-new-app.png)
 
@@ -111,7 +111,7 @@ Azure AD で自動ユーザー プロビジョニング用に Templafy を構成
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://scim.templafy.com/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した **SCIM API キー**の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Templafy への接続を確保します。 接続できない場合は、使用中の Templafy アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://scim.templafy.com/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した **SCIM API キー** の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Templafy への接続を確保します。 接続できない場合は、使用中の Templafy アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 

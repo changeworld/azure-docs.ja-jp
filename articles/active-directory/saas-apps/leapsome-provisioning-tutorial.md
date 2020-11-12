@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: jeedes
-ms.openlocfilehash: e08c748dec6d21e1ff5d848257c65aa3f8f5aa63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0165e5191a8cd499b42c14704fdf4f0d79b3f6b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91300005"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358543"
 ---
 # <a name="tutorial-configure-leapsome-for-automatic-user-provisioning"></a>チュートリアル:Leapsome を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "91300005"
 
 ## <a name="assigning-users-to-leapsome"></a>Leapsome へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Leapsome へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Leapsome に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -60,7 +60,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Leapsome で SCIM を追加する](media/Leapsome-provisioning-tutorial/leapsome-add-scim.png)
 
-3.  **SCIM 認証トークン**をコピーします。 この値を、Azure portal の Leapsome アプリケーションの [プロビジョニング] タブの [シークレット トークン] フィールドに入力します。
+3.  **SCIM 認証トークン** をコピーします。 この値を、Azure portal の Leapsome アプリケーションの [プロビジョニング] タブの [シークレット トークン] フィールドに入力します。
 
     ![Leapsome でトークンを作成する](media/Leapsome-provisioning-tutorial/leapsome-create-token.png)
 
@@ -82,7 +82,7 @@ Azure AD で自動ユーザー プロビジョニング用に Leapsome を構成
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Leapsome**」と入力し、結果ウィンドウで **[Leapsome]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Leapsome** 」と入力し、結果ウィンドウで **[Leapsome]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Leapsome](common/search-new-app.png)
 
@@ -111,7 +111,7 @@ Azure AD で自動ユーザー プロビジョニング用に Leapsome を構成
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://www.leapsome.com/api/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した**SCIM 認証トークン**の値を入力します。 **[接続テスト]** をクリックして、Azure AD から Leapsome に接続できることを確認します。 接続できない場合は、使用中の Leapsome アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://www.leapsome.com/api/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した **SCIM 認証トークン** の値を入力します。 **[接続テスト]** をクリックして、Azure AD から Leapsome に接続できることを確認します。 接続できない場合は、使用中の Leapsome アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 

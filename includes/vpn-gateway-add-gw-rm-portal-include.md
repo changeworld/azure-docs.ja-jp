@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fe95481e977d2e35c2f652b6c99b9e69ae89e2f8
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 6bc8b6cc18f4a4bc41cabf7f8fefe78a5aaf7827
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479577"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427849"
 ---
 1. [Azure portal](https://portal.azure.com) で、 **[Search resources, services, and docs]\(ソース、サービス、ドキュメントの検索\) (G+/)** に、「 **仮想ネットワーク ゲートウェイ** 」と入力します。 検索結果で **仮想ネットワーク ゲートウェイ** を見つけて、それを選択します。
 
@@ -21,12 +21,12 @@ ms.locfileid: "92479577"
 
 1. **[仮想ネットワーク ゲートウェイ]** ページで、 **[+ 追加]** を選択します。 **[仮想ネットワーク ゲートウェイの作成]** ページが開きます。
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/add.png" alt-text="検索フィールド":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/add.png" alt-text="[仮想ネットワーク ゲートウェイ] ページ":::
 1. **[基本]** タブで、仮想ネットワーク ゲートウェイの値を入力します。
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway.png" alt-text="検索フィールド":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway.png" alt-text="ゲートウェイ フィールド":::
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway-vnet.png" alt-text="検索フィールド":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway-vnet.png" alt-text="追加のゲートウェイ フィールド":::
 
    * **サブスクリプション** :使用するサブスクリプションをドロップダウンから選択します。
    * **リソース グループ** :この設定は、このページで仮想ネットワークを選択すると自動入力されます。
@@ -52,6 +52,6 @@ ms.locfileid: "92479577"
      * **[アクティブ/アクティブ モードの有効化]** : **[アクティブ/アクティブ モードの有効化]** を選択するのは、アクティブ/アクティブ ゲートウェイ構成を作成する場合だけです。 それ以外の場合は、この設定を **[Disabled]\(無効\)** のままにします。
      * **[Configure BGP]\(BGP の構成\)** の設定は、実際の構成で特に必要でない限り、 **[無効]** のままにしておいてください。 この設定が必要である場合、既定の ASN は 65515 です。ただし、これは変わる場合があります。
 1. **[確認と作成]** を選択して検証を実行します。
-1. 検証に合格したら、 **[作成]** を選択して VPN ゲートウェイをデプロイします。 ゲートウェイを完全に作成してデプロイするには最大で 45 分かかることがあります。 デプロイの状態は、ゲートウェイの [概要] ページで確認できます。
+1. 検証に合格したら、 **[作成]** を選択して VPN ゲートウェイをデプロイします。
 
-ゲートウェイの作成後は、ポータルの仮想ネットワークを調べることで、ゲートウェイに割り当てられている IP アドレスを確認できます。 ゲートウェイは、接続されたデバイスとして表示されます。
+ゲートウェイを完全に作成してデプロイするには最大で 45 分かかることがあります。 デプロイの状態は、ゲートウェイの [概要] ページで確認できます。 ゲートウェイの作成後は、ポータルの仮想ネットワークを調べることで、ゲートウェイに割り当てられている IP アドレスを確認できます。 ゲートウェイは、接続されたデバイスとして表示されます。

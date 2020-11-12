@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: c5525fc43f23ecd1760c5a869d8171aee0e9415d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e74b540610d3b6520f4c8e25ca2df7bf628706f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91395772"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410336"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure セキュリティの管理と監視の概要
 この記事では、Azure クラウド サービスと仮想マシンの管理と監視を支援するために Azure が提供するセキュリティ機能とサービスの概要を説明します。
@@ -48,8 +48,8 @@ Symantec Endpoint Protection (SEP) も、Azure でサポートされています
 
 * [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [Azure Cloud Services および Virtual Machines 向け Microsoft マルウェア対策](antimalware.md)
-* [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](/azure/virtual-machines/windows/classic/install-trend)
-* [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](/azure/virtual-machines/windows/classic/install-symantec)
+* [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](../../virtual-machines/extensions/trend.md)
+* [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](../../virtual-machines/extensions/symantec.md)
 * [Azure Virtual Machines を保護するための新しいマルウェア対策オプション](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
@@ -61,7 +61,7 @@ Multi-Factor Authentication を使えば、シンプルなサインイン プロ
 詳細情報:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Azure Multi-Factor Authentication とは](/azure/active-directory/authentication/multi-factor-authentication)
+* [Azure Multi-Factor Authentication とは](../../active-directory/authentication/concept-mfa-howitworks.md)
 * [Azure Multi-Factor Authentication のしくみ](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
@@ -112,7 +112,7 @@ Identity Protection は、通知と推奨される修復を提供することで
 
 詳細情報:
 
-* [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection)
+* [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md)
 * [Channel 9: Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>Security Center
@@ -129,8 +129,8 @@ Security Center は、Azure リソースのセキュリティの最適化と監�
 
 詳細情報:
 
-* [Azure Security Center 入門](../../security-center/security-center-intro.md)
-* [Azure Security Center 上のセキュリティ スコアの向上](../../security-center/security-center-secure-score.md)
+* [Azure Security Center 入門](../../security-center/security-center-introduction.md)
+* [Azure Security Center 上のセキュリティ スコアの向上](../../security-center/secure-score-security-controls.md)
 
 ## <a name="intelligent-security-graph"></a>インテリジェント セキュリティ グラフ
 

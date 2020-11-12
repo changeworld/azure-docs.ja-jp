@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 5c038cc309d8f1f13a04de01ed83e04afa70ba6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 620dd8fd586352ebeaf097a8f870a606f8e06c01
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546170"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359716"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>チュートリアル: Zendesk を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -51,13 +51,13 @@ Marketplace から Zendesk を追加するには、次の手順に従います�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Zendesk**」と入力し、結果パネルで **[Zendesk]** を選択します。 アプリケーションを追加するには、 **[追加]** を選択します。
+4. 検索ボックスに「 **Zendesk** 」と入力し、結果パネルで **[Zendesk]** を選択します。 アプリケーションを追加するには、 **[追加]** を選択します。
 
     ![結果一覧の Zendesk](common/search-new-app.png)
 
 ## <a name="assign-users-to-zendesk"></a>ユーザーを Zendesk に割り当てる
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD でアプリケーションに割り当てられているユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD でアプリケーションに割り当てられているユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Zendesk にアクセスする必要がある Azure AD のユーザーまたはグループを決定しておく必要があります。 これらのユーザーまたはグループを Zendesk に割り当てるには、「[エンタープライズ アプリにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)」の指示に従います。
 
@@ -156,9 +156,9 @@ Azure AD プロビジョニング ログの見方について詳しくは、「[
 
 ## <a name="connector-limitations"></a>コネクタの制限事項
 
-* Zendesk は、**エージェント**の役割のみを持つユーザーのグループの使用をサポートしています。 詳細については、[Zendesk のドキュメント](https://support.zendesk.com/hc/en-us/articles/203661966-Creating-managing-and-using-groups)を参照してください。
+* Zendesk は、 **エージェント** の役割のみを持つユーザーのグループの使用をサポートしています。 詳細については、[Zendesk のドキュメント](https://support.zendesk.com/hc/en-us/articles/203661966-Creating-managing-and-using-groups)を参照してください。
 
-* カスタム ロールがユーザーやグループに割り当てられると、Azure AD の自動ユーザー プロビジョニング サービスも既定のロールを**エージェント**に割り当てます。 エージェントのみにカスタム ロールを割り当てることができます。 詳細については、[Zendesk API のドキュメント](https://developer.zendesk.com/rest_api/docs/support/users#json-format-for-agent-or-admin-requests)を参照してください。 
+* カスタム ロールがユーザーやグループに割り当てられると、Azure AD の自動ユーザー プロビジョニング サービスも既定のロールを **エージェント** に割り当てます。 エージェントのみにカスタム ロールを割り当てることができます。 詳細については、[Zendesk API のドキュメント](https://developer.zendesk.com/rest_api/docs/support/users#json-format-for-agent-or-admin-requests)を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f4c6bf8b203f9721436ab3dde1f80837df92234d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b1fbedf45514455f0e19461e5ee0558bb2914c58
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518264"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427719"
 ---
 # <a name="azure-security-baseline-for-azure-sentinel"></a>Azure Sentinel の Azure セキュリティ ベースライン
 
@@ -341,7 +341,7 @@ Log Analytics ロールには、Log Analytics 共同作成者、Log Analytics �
 
 **ガイダンス** : Azure Sentinel および Azure Monitor Log Analytics ワークスペースでは、現在、保存データを暗号化するために Microsoft マネージド キーが使用されます。 独自のキーを取り込む機能は、Sentinel ではまだ完全にはサポートされていませんが、近い将来に導入される予定です。
 
-- [Azure Monitor カスタマー マネージド キーの概要](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-cmk-overview)
+- [Azure Monitor カスタマー マネージド キーの概要](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-overview)
 
 - [Azure Sentinel でのカスタマー マネージド キー (プレビュー) について](customer-managed-keys.md)
 

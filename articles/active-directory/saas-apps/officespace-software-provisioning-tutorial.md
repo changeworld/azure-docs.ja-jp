@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/02/2019
 ms.author: Zhchia
-ms.openlocfilehash: fe48cef0fb235d217f95012e81d7daf501928300
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: fc67d649e3a7cd094eb2c3d633244077abcab308
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518570"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359927"
 ---
 # <a name="tutorial-configure-officespace-software-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に OfficeSpace Software を構成する
 

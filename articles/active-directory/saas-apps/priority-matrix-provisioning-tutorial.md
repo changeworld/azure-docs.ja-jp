@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/08/2019
 ms.author: Zhchia
-ms.openlocfilehash: 43f5b96c7029da6b49bc9df40d92fbd250145715
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e79f21300325c6b451dd564bf2c69830f003f55c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326016"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357863"
 ---
 # <a name="tutorial-configure-priority-matrix-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Priority Matrix を構成する
 
@@ -79,7 +79,7 @@ Azure AD で自動ユーザー プロビジョニング用に Priority Matrix �
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Priority Matrix**」と入力し、結果パネルで **Priority Matrix** を選択します。 
+4. 検索ボックスに「 **Priority Matrix** 」と入力し、結果パネルで **Priority Matrix** を選択します。 
 
     ![結果一覧の Priority Matrix](common/search-new-app.png)
 

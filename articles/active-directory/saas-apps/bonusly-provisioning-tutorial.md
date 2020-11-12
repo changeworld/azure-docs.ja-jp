@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 33329fc30d1c20b4e20901d06a061accb2aeceb0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d8c3f64e5cb5269bfe7e555615f874ac3443c6eb
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456902"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357829"
 ---
 # <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニングに対応するように Bonusly を構成する
 
@@ -95,57 +95,57 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/ProvisioningCredentials.png" alt-text="[Bonusly - Provisioning]\(Bonusly - プロビジョニング\) タブのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/ProvisioningCredentials.png" alt-text="[プロビジョニング モード] リスト ボックスを示すスクリーンショット。[自動] が選択されて強調表示されています。" border="false":::
 
 5. **[管理者資格情報]** セクションで、手順 6 で説明する Bonusly アカウントの **[シークレット トークン]** を入力します。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/secrettoken.png" alt-text="[Bonusly - Provisioning]\(Bonusly - プロビジョニング\) タブのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/secrettoken.png" alt-text="[管理者資格情報] セクションのスクリーンショット。[シークレット トークン] ボックスは空ですが、強調表示されています。" border="false":::
 
 6. Bonusly アカウントの **シークレット トークン** は、 **[Admin]\(管理者\) > [Company]\(会社\) > [Integrations]\(統合\)** に配置されています。 **[If you want to code]\(コーディングするもの\)** セクションで、 **[API] > [Create New API Access Token]\(新しい API アクセストークンの作成\)** をクリックして、新しいシークレット トークンを作成します。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/BonuslyIntegrations.png" alt-text="[Bonusly - Provisioning]\(Bonusly - プロビジョニング\) タブのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/BonuslyIntegrations.png" alt-text="Bonusly メニューのスクリーンショット。[Admin]\(管理者\) の下の [Company]\(会社\) が強調表示されています。[Company]\(会社\) の下の [Integrations]\(統合\) が強調表示されています。" border="false":::
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/BonsulyRestApi.png" alt-text="[Bonusly - Provisioning]\(Bonusly - プロビジョニング\) タブのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/BonsulyRestApi.png" alt-text="Bonusly サイトの [If you want to code]\(コーディングするもの\) セクションのスクリーンショット。[A P I] が強調表示されています。" border="false":::
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/CreateToken.png" alt-text="[Bonusly - Provisioning]\(Bonusly - プロビジョニング\) タブのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/CreateToken.png" alt-text="Bonusly サイトのスクリーンショット。[Services]\(サービス\) タブが開いています。[Your A P I access tokens]\(A P I アクセス トークン\) の [Create new A P I access token]\(新しい A P I アクセス トークンの作成\) が強調表示されています。" border="false":::
 
 7. 次の画面で、用意されたテキスト ボックスに、アクセス トークンの名前を入力し、 **[Create Api Key]\(API キーの作成\)**  をクリックします。 数秒後にポップアップ内に新しいアクセス トークンが表示されます。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/Token01.png" alt-text="[Bonusly - Provisioning]\(Bonusly - プロビジョニング\) タブのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/Token01.png" alt-text="Bonusly サイトの [New access token]\(新しいアクセス トークン\) ページのスクリーンショット。ラベル付けされていないボックスには &quot;My Token&quot; と表示され、[Create A P I key]\(A P I キーの作成\) ボタンが強調表示されています。" border="false":::
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/Token02.png" alt-text="[Bonusly - Provisioning]\(Bonusly - プロビジョニング\) タブのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/Token02.png" alt-text="Bonusly サイトのスクリーンショット。新しいアクセス トークンが作成されたことを示す通知に続けて、判読できないトークンが表示されています。" border="false":::
 
 8. 手順 5 に示されたフィールドに値を入力したら、 **[テスト接続]** をクリックして、Azure AD が Bonusly に接続できることを確認します。 接続できない場合は、使用中の Bonusly アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/TestConnection.png" alt-text="[Bonusly - Provisioning]\(Bonusly - プロビジョニング\) タブのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/TestConnection.png" alt-text="Azure portal の [管理者資格情報] セクションのスクリーンショット。[Text connection]\(テキスト接続\) ボタンが強調表示されています。" border="false":::
 
 9. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/EmailNotification.png" alt-text="[Bonusly - Provisioning]\(Bonusly - プロビジョニング\) タブのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/EmailNotification.png" alt-text="空の [通知用メール] ボックスを示すスクリーンショット。[エラーが発生したときにメール通知を送信します] というオプションが表示されています。" border="false":::
 
 10. **[保存]** をクリックします。
 
 11. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Slack]\(Azure Active Directory ユーザーを Bonusly に同期する\)** を選択します。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/UserMappings.png" alt-text="[Bonusly - Provisioning]\(Bonusly - プロビジョニング\) タブのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/UserMappings.png" alt-text="[マッピング] セクションのスクリーンショット。[名前] の下の [Synchronize Azure Active Directory Users to Bonusly]\(Azure Active Directory ユーザーを Bonusly に同期する\) が強調表示されています。" border="false":::
 
 12. **[属性マッピング]** セクションで、Azure AD から Bonusly に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Bonusly のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/UserAttributeMapping.png" alt-text="[Bonusly - Provisioning]\(Bonusly - プロビジョニング\) タブのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/UserAttributeMapping.png" alt-text="[属性マッピング] ページのスクリーンショット。テーブルに、Azure Active Directory 属性とそれに対応する Bonusly の属性、および該当する状態が表示されています。" border="false":::
 
 13. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
 14. Bonusly に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/ProvisioningStatus.png" alt-text="[Bonusly - Provisioning]\(Bonusly - プロビジョニング\) タブのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/ProvisioningStatus.png" alt-text="[設定] セクションのスクリーンショット。[プロビジョニング状態] トグルが [オフ] に設定されています。" border="false":::
 
 15. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Bonusly にプロビジョニングするユーザーやグループを定義します。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/ScopeSync.png" alt-text="[Bonusly - Provisioning]\(Bonusly - プロビジョニング\) タブのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/ScopeSync.png" alt-text="[スコープ] リスト ボックスを示すスクリーンショット。ボックス内の [割り当てられたユーザーとグループのみを同期する] が選択されています。" border="false":::
 
 16. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
 
-    :::image type="content" source="./media/bonusly-provisioning-tutorial/SaveProvisioning.png" alt-text="[Bonusly - Provisioning]\(Bonusly - プロビジョニング\) タブのスクリーンショット。[管理] の下の [プロビジョニング] が強調表示されています。" border="false":::
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/SaveProvisioning.png" alt-text="[Bonusly - Provisioning]\(Bonusly - プロビジョニング\) ページのスクリーンショット。[保存] ボタンが強調表示されています。" border="false":::
 
 これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Bonusly に対して実行されたすべてのアクションが記載されています。
 

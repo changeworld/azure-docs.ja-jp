@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ab42acbc07072f48d28b3adb5bc4c65672f257bc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bde95006865a2aab2da4a5d6d27ccccc14d74d12
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314319"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408924"
 ---
 # <a name="security-control-v2-data-protection"></a>セキュリティ コントロール V2:データ保護
 
@@ -32,11 +32,11 @@ Azure SQL Database に格納されている情報の分類とラベル付けに�
 
 - [Azure Information Protection を使用して機密情報をタグ付けする](/azure/information-protection/what-is-information-protection) 
 
-- [Azure SQL Data Discovery を実装する方法](/azure/sql-database/sql-database-data-discovery-and-classification)
+- [Azure SQL Data Discovery を実装する方法](../../azure-sql/database/data-discovery-and-classification-overview.md)
 
-**責任**: 共有
+**責任** : 共有
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [アプリケーション セキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
 
@@ -60,9 +60,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure での顧客データの保護について](../fundamentals/protection-customer-data.md)
 
-**責任**: 共有
+**責任** : 共有
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [アプリケーション セキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -86,11 +86,11 @@ Azure Information Protection (AIP) には、分類およびラベル付けされ
 
 - [Azure SQL ATP を有効にする](../../azure-sql/database/threat-detection-overview.md)
 
-- [Azure Storage ATP を有効にする](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-security-center)
+- [Azure Storage ATP を有効にする](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
 
-**責任**: 共有
+**責任** : 共有
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security) 
 
@@ -116,9 +116,9 @@ Azure Information Protection (AIP) には、分類およびラベル付けされ
 
 - [転送中の Azure データの二重暗号化](../fundamentals/double-encryption.md#data-in-transit)
 
-**責任**: 共有
+**責任** : 共有
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -140,15 +140,15 @@ Azure Information Protection (AIP) には、分類およびラベル付けされ
 
 - [Azure での保存時の暗号化の概要](../fundamentals/encryption-atrest.md#encryption-at-rest-in-microsoft-cloud-services)
 
-- [ユーザーが管理する暗号化キーを構成する方法](../../storage/common/storage-encryption-keys-portal.md)
+- [ユーザーが管理する暗号化キーを構成する方法](../../storage/common/customer-managed-keys-configure-key-vault.md)
 
 - [暗号化モデルとキー管理テーブル](../fundamentals/encryption-models.md)
 
 - [Azure における保存データの二重暗号化](../fundamentals/double-encryption.md#data-at-rest)
 
-**責任**: 共有
+**責任** : 共有
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -157,4 +157,3 @@ Azure Information Protection (AIP) には、分類およびラベル付けされ
 - [アプリケーション セキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [データ セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-data-security)
-

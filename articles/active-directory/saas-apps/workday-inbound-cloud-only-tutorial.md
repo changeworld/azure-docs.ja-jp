@@ -6,16 +6,16 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 7d47c21da1279271b12933a2e4642abcce622600
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 197b7ff0a6c613a019007ba507d678b619c9afd4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015485"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358594"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>チュートリアル:Azure AD ユーザー プロビジョニングに対して Workday を構成する
 このチュートリアルの目的は、Workday のワーカー データを Azure Active Directory にプロビジョニングするために実行する必要がある手順を示すことです。 
@@ -122,7 +122,7 @@ Workday 統合システム ユーザー アカウントと雇用者データを�
       > [!NOTE]
      > URL にバージョン情報が指定されていない場合、アプリでは Workday Web Services (WWS) v21.1 が使用され、アプリに付属している既定の XPATH API 式の変更は必要ありません。 特定の WWS API バージョンを使用するには、URL の中にバージョン番号を指定します。 <br>
      > 例: `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v34.0` <br>
-     > <br> WWS API v30.0 以降を使用する場合は、プロビジョニング ジョブを有効にする前に、「[構成の管理](workday-inbound-tutorial.md#managing-your-configuration)」セクションおよび [Workday 属性のリファレンス](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)を参照して、 **[属性マッピング] -> [詳細オプション] -> [Edit attribute list for Workday]\(Workday の属性リストの編集\)** の下にある **XPATH API 式**を更新します。  
+     > <br> WWS API v30.0 以降を使用する場合は、プロビジョニング ジョブを有効にする前に、「 [構成の管理](workday-inbound-tutorial.md#managing-your-configuration)」セクションおよび [Workday 属性のリファレンス](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)を参照して、 **[属性マッピング] -> [詳細オプション] -> [Edit attribute list for Workday]\(Workday の属性リストの編集\)** の下にある **XPATH API 式** を更新します。  
 
    * **メール通知** - メール アドレスを入力し、[send email if failure occurs]\(失敗した場合にメールを送信する\) チェックボックスをオンにします。
 

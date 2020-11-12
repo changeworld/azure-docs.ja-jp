@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: b877ff912470cc19082410fddab64c84824eb269
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f26ca04955dfa854a8ee17b7aa255a6ed991b8df
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519556"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358373"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>マネージド ID を使用して、Azure Storage アカウントへの接続を設定する
 
@@ -65,7 +65,7 @@ ms.locfileid: "92519556"
 
 ### <a name="3---create-the-data-source"></a>3 - データ ソースを作成する
 
-マネージド ID 接続文字列は、[REST API](/rest/api/searchservice/create-data-source)、Azure portal、および [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource) でサポートされています。 次に、[REST API](/rest/api/searchservice/create-data-source) とマネージド ID 接続文字列を使用し、ストレージ アカウントのデータにインデックスを付けてデータ ソースを作成する方法例を示します。 マネージド ID 接続文字列の形式は、REST API、.NET SDK、および Azure portal において同じです。
+マネージド ID 接続文字列は、[REST API](/rest/api/searchservice/create-data-source)、Azure portal、および [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) でサポートされています。 次に、[REST API](/rest/api/searchservice/create-data-source) とマネージド ID 接続文字列を使用し、ストレージ アカウントのデータにインデックスを付けてデータ ソースを作成する方法例を示します。 マネージド ID 接続文字列の形式は、REST API、.NET SDK、および Azure portal において同じです。
 
 ストレージ アカウントからインデックスを作成する場合は、データ ソースに次の必須プロパティが必要です。
 

@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 001b1e0b9c738e263e8425f43076ef6e451a297f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50d592d0020ae1b5a704296ef68f5153f0207714
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018826"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427577"
 ---
 # <a name="specify-a-customer-provided-key-on-a-request-to-blob-storage-with-net"></a>.NET での BLOB ストレージの要求時にカスタマー指定のキーを指定する
 
@@ -25,7 +25,7 @@ Azure BLOB ストレージに対して要求を行うクライアントには、
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
-Azure Storage から Azure ID クライアント ライブラリを使用して認証する方法の詳細については、[Azure Active Directory と Azure リソースのマネージ ID を使用した BLOB およびキューへのアクセスの認証](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library)に関するページの「**Azure ID ライブラリを使用した認証**」を参照してください。
+Azure Storage から Azure ID クライアント ライブラリを使用して認証する方法の詳細については、 [Azure Active Directory と Azure リソースのマネージ ID を使用した BLOB およびキューへのアクセスの認証](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library)に関するページの「 **Azure ID ライブラリを使用した認証** 」を参照してください。
 
 ## <a name="example-use-a-customer-provided-key-to-upload-a-blob"></a>例:カスタマー指定のキーを使用して BLOB をアップロードする
 
@@ -75,5 +75,5 @@ async static Task UploadBlobWithClientKey(string accountName, string containerNa
 
 ## <a name="next-steps"></a>次のステップ
 
+- [BLOB ストレージに対する要求で暗号化キーを指定する](encryption-customer-provided-keys.md)
 - [保存データに対する Azure Storage 暗号化](../common/storage-service-encryption.md)
-- [Azure Active Directory と Azure リソースのマネージド ID を使用して BLOB およびキューへのアクセスを承認する](../common/storage-auth-aad-msi.md)

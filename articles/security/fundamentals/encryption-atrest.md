@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ec81a8f7f9d9f45f1d068a415a599ce30a0d4581
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: dafc55656be2d8ef2c0f52d633c7db7eeee83534
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397251"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412784"
 ---
 # <a name="azure-data-encryption-at-rest"></a>保存時の Azure データの暗号化
 
@@ -48,7 +48,7 @@ Microsoft Azure には、会社のセキュリティとコンプライアンス�
 
 Encryption at Rest は、データをディスク上で確実に暗号化することで、暗号化されていないデータに攻撃者がアクセスできないよう設計されています。 攻撃者は、暗号化されたデータを含むハード ドライブを入手しても、暗号化キーがないと、データを読み取るためには暗号化を破る必要があります。 この攻撃は、ハード ドライブの暗号化されていないデータにアクセスするよりも大幅に複雑で、多くのリソースを消費します。 このため、保存時に暗号化することは、多くの組織の高優先度要件として強く推奨されます。
 
-保存時の暗号化は、組織のデータ ガバナンスとコンプライアンス活動の要件にもなります。 HIPAA、PCI、FedRAMP などの業界および政府規制には、データ保護と暗号化要件について、具体的な保護対策が規定されています。 保存時の暗号化は、いくつかの規制では、規制に準拠するための必須対策と規定されています。 FIPS 140-2 の検証に対する Microsoft のアプローチについて詳しくは、「[連邦情報処理規格 (FIPS) 文書 140-2](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2)」を参照してください。
+保存時の暗号化は、組織のデータ ガバナンスとコンプライアンス活動の要件にもなります。 HIPAA、PCI、FedRAMP などの業界および政府規制には、データ保護と暗号化要件について、具体的な保護対策が規定されています。 保存時の暗号化は、いくつかの規制では、規制に準拠するための必須対策と規定されています。 FIPS 140-2 の検証に対する Microsoft のアプローチについて詳しくは、「[連邦情報処理規格 (FIPS) 文書 140-2](/microsoft-365/compliance/offering-fips-140-2)」を参照してください。
 
 コンプライアンスと規制の要件に対応することに加えて、保存時の暗号化によって、多層防御の保護が提供されます。 Microsoft Azure では、サービス、アプリケーション、およびデータのために、準拠しているプラットフォームを提供します。 また、包括的な設備と物理的セキュリティ、データ アクセスの制御、および監査を提供します。 ただし、他のセキュリティ対策の 1 つが失敗した場合に「一部が重複する」セキュリティ対策を提供することが重要であり、保存時の暗号化は、そのようなセキュリティ対策となります。
 
@@ -115,22 +115,22 @@ IaaS アプリケーションでは、可能な限り、Azure Disk Encryption �
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-サービスとしての Azure インフラストラクチャ (IaaS) 機能を使用しているお客様は、Azure Disk Encryption を通して IaaS 仮想マシンの保存時の暗号化を実行できます。 Azure Disk Encryption の詳細については、[Azure Disk Encryption のドキュメント](../azure-security-disk-encryption-overview.md)を参照してください。
+サービスとしての Azure インフラストラクチャ (IaaS) 機能を使用しているお客様は、Azure Disk Encryption を通して IaaS 仮想マシンの保存時の暗号化を実行できます。 Azure Disk Encryption の詳細については、[Azure Disk Encryption のドキュメント](./azure-disk-encryption-vms-vmss.md)を参照してください。
 
 #### <a name="azure-storage"></a>Azure Storage
 
 すべての Azure Storage サービス (Blob Storage、Queue Storage、Table Storage、Azure Files) では、サーバー側の保存データの暗号化がサポートされます。一部のサービスではさらにユーザー管理キーとクライアント側の暗号化がサポートされます。
 
-- サーバー側:すべての Azure Storage Services は、既定でサービス管理キーを使用してサーバー側の暗号化を有効にしています。この処理はアプリケーションに対して透過的です。 詳細については、「[保存データ向け Azure Storage Service Encryption](../../storage/common/storage-service-encryption.md)」をご覧ください。 Azure Blob Storage と Azure Files は、Azure Key Vault での RSA 2048 ビット ユーザー管理キーもサポートしています。 詳細については、「[ユーザーが管理する Azure Key Vault キーを Storage Service Encryption に使用する](../../storage/common/storage-encryption-keys-portal.md)」を参照してください。
+- サーバー側:すべての Azure Storage Services は、既定でサービス管理キーを使用してサーバー側の暗号化を有効にしています。この処理はアプリケーションに対して透過的です。 詳細については、「[保存データ向け Azure Storage Service Encryption](../../storage/common/storage-service-encryption.md)」をご覧ください。 Azure Blob Storage と Azure Files は、Azure Key Vault での RSA 2048 ビット ユーザー管理キーもサポートしています。 詳細については、「[ユーザーが管理する Azure Key Vault キーを Storage Service Encryption に使用する](../../storage/common/customer-managed-keys-configure-key-vault.md)」を参照してください。
 - クライアント側:Azure BLOB、Azure テーブル、および Azure キューは、クライアント側の暗号化をサポートしています。 クライアント側の暗号化を使用した場合、お客様は暗号化された BLOB としてデータをアップロードします。 キー管理は、ユーザーによって行われます。 詳しくは、「[Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](../../storage/common/storage-client-side-encryption.md)」をご覧ください。
 
 #### <a name="azure-sql-database"></a>Azure SQL データベース
 
 Azure SQL Database は現在、Microsoft が管理するサービス側とクライアント側の暗号化のシナリオで、保存時の暗号化をサポートしています。
 
-サーバー側の暗号化は Transparent Data Encryption と呼ばれる SQL 機能を通して提供されています。 Azure SQL Database ユーザーが有効化すると、TDE キーは自動的に作成および管理されます。 保存時の暗号化は、データベース レベルおよびサーバー レベルで有効にすることができます。 2017 年 6 月の時点で [Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/bb934049.aspx) は、新しく作成されたデータベースで既定で有効に設定されています。 Azure SQL Database は、Azure Key Vault での RSA 2048 ビット ユーザー管理キーをサポートしています。 詳細については、[Azure SQL Database と Azure SQL Data Warehouse での Bring Your Own Key (BYOK) のサポートによる Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current) に関するページを参照してください。
+サーバー側の暗号化は Transparent Data Encryption と呼ばれる SQL 機能を通して提供されています。 Azure SQL Database ユーザーが有効化すると、TDE キーは自動的に作成および管理されます。 保存時の暗号化は、データベース レベルおよびサーバー レベルで有効にすることができます。 2017 年 6 月の時点で [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) は、新しく作成されたデータベースで既定で有効に設定されています。 Azure SQL Database は、Azure Key Vault での RSA 2048 ビット ユーザー管理キーをサポートしています。 詳細については、[Azure SQL Database と Azure SQL Data Warehouse での Bring Your Own Key (BYOK) のサポートによる Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current) に関するページを参照してください。
 
-Azure SQL Database データのクライアント側の暗号化は、[Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) 機能を通してサポートされています。 Always Encrypted では、クライアントによって作成、保存されたキーが使用されます。 ユーザーは、Windows 証明書ストア、Azure Key Vault、またはローカルのハードウェア セキュリティ モジュール (HSM) にマスター キーを格納できます。 SQL ユーザーは、SQL Server Management Studio を使用して、どの列で何を使用して暗号化するかを選択できます。
+Azure SQL Database データのクライアント側の暗号化は、[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 機能を通してサポートされています。 Always Encrypted では、クライアントによって作成、保存されたキーが使用されます。 ユーザーは、Windows 証明書ストア、Azure Key Vault、またはローカルのハードウェア セキュリティ モジュール (HSM) にマスター キーを格納できます。 SQL ユーザーは、SQL Server Management Studio を使用して、どの列で何を使用して暗号化するかを選択できます。
 
 ## <a name="conclusion"></a>まとめ
 

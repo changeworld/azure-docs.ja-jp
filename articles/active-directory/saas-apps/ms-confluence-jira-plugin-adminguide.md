@@ -8,15 +8,15 @@ ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 4b0d2c6c3d70e73be25038c763f05ef572b56ebe
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8e73ea3650e631bed277ab95092b714eef7596d4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515681"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359159"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Azure Active Directory 向け Atlassian Jira および Confluence 管理ガイド
 

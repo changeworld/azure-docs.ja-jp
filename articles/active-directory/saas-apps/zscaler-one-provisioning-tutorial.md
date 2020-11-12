@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: e306c65735d8a5682cd90a1ce28fceec7d045c4d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b8b6383c7808fd6c298d7776fc10572631bc6ddc
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519760"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359563"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>チュートリアル:Zscaler One を構成し、自動ユーザー プロビジョニングに対応させる
 

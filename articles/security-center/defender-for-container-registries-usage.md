@@ -7,12 +7,12 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a1357f263c450605025b6f1e9b7bdea47d0d4f58
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 2471a19cf795d969644cb92e23b7a2926f2ee1a9
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289221"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372610"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>コンテナー レジストリ用の Azure Defender を使用してイメージの脆弱性をスキャンする
 
@@ -113,6 +113,9 @@ Azure Resource Manager ベースの Azure Container Registry に格納されて�
 
 
 ## <a name="disable-specific-findings-preview"></a>特定の検出結果を無効にする (プレビュー)
+
+> [!NOTE]
+> [!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]
 
 組織のニーズとして、検出結果を修復するのではなく無視する場合は、必要に応じて検出結果を無効にすることができます。 無効化された検出結果は、セキュリティ スコアに影響を与えたり、不要なノイズを生成したりすることはありません。
 

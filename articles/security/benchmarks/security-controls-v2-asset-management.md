@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 087147038286bd7363fcc0eb3812abccc6ef9206
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: c553652d4d8abd16b4e5fd4ff896e42bdba103ad
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201836"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408976"
 ---
 # <a name="security-control-v2-asset-management"></a>セキュリティ コントロール V2: アセット管理
 
@@ -36,9 +36,9 @@ ms.locfileid: "92201836"
 
 - [Azure 管理グループの概要](../../governance/management-groups/overview.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -60,11 +60,11 @@ Azure Security Center インベントリ機能と Azure Resource Graph を使用
 
 - [Azure Security Center の資産インベントリ管理](../../security-center/asset-inventory.md)
 
-- 資産のタグ付けの詳細については、「[リソースの名前付けとタグ付けの意思決定ガイド](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)」を参照
+- 資産のタグ付けの詳細については、「[リソースの名前付けとタグ付けの意思決定ガイド](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%252fazure%252fazure-resource-manager%252fmanagement%252ftoc.json)」を参照
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -80,13 +80,13 @@ Azure Policy を使用して、環境内でユーザーがプロビジョニン�
 
 - [Azure Policy を構成して管理する](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](/azure/governance/policy/samples/not-allowed-resource-types)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../../governance/policy/samples/index.md)
 
 - [Azure Resource Graph Explorer を使用してクエリを作成する方法](../../governance/resource-graph/first-query-portal.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティ コンプライアンス管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -104,9 +104,9 @@ Azure Policy を使用して、環境内でユーザーがプロビジョニン�
 
 - [Azure リソース グループとリソースを削除する](../../azure-resource-manager/management/delete-resource-group.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -124,9 +124,9 @@ Azure Policy を使用して、環境内でユーザーがプロビジョニン�
 
 - [条件付きアクセスを構成して Azure Resource Manager へのアクセスをブロックする方法](../../role-based-access-control/conditional-access-azure-management.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
@@ -152,15 +152,14 @@ Windows および Linux VM からのインベントリ情報の収集を自動�
 
 - [Azure Automation Change Tracking と Inventory の概要](../../automation/change-tracking/overview.md)
 
-- [Windows 環境で PowerShell スクリプトの実行を制御する方法](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [Windows 環境で PowerShell スクリプトの実行を制御する方法](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
 - [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
 - [セキュリティ コンプライアンス管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
-

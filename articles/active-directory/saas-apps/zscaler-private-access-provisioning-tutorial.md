@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: 5ecb4d249c8c2167ec61740eb9515fd1937230b0
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a93e2a88201f32ed99698f2bfbab631c81ed8b35
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519743"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357710"
 ---
 # <a name="tutorial-configure-zscaler-private-access-zpa-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Zscaler Private Access (ZPA) を構成する
 

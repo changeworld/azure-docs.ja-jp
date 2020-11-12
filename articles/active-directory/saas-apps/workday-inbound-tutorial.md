@@ -6,16 +6,16 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: e22252ea3e132aee39075d986d7f5a979e14c0a3
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b8560c4890855683e6ebb1c05383db8aa89988c0
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520236"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359871"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -946,7 +946,7 @@ Workday の新規採用者 (たとえば、従業員 ID が *21023* ) が検出�
 
   上記のイベントの直後に、AD アカウント作成操作の応答をキャプチャする別のイベントがあるはずです。 このイベントから、AD で作成された新しい objectGuid が返され、プロビジョニング サービスの TargetAnchor 属性として設定されます。
 
-  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_06.png" alt-text="'Provisioning Agent' ログで 'HTTP POST' レコードを示すスクリーンショット。" lightbox="media/workday-inbound-tutorial/wd_event_viewer_06.png":::
+  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_06.png" alt-text="AD で作成された objectGuid が強調表示されている 'Provisioning Agent' ログを示すスクリーンショット。" lightbox="media/workday-inbound-tutorial/wd_event_viewer_06.png":::
 
 ### <a name="understanding-logs-for-manager-update-operations"></a>マネージャーの更新操作のログの概要
 

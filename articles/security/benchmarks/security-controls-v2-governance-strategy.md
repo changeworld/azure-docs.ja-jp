@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 420ab87591e230592ec8f728c6acb155266b5912
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae0930e0845e8e8bd6dc4571dc3e8e27491a7be6
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403528"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408794"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>セキュリティ コントロール V2:ガバナンスと戦略
 
@@ -45,19 +45,19 @@ ms.locfileid: "91403528"
 - 適切な暗号化標準
 
 詳細については、次のリファレンスを参照してください。
-- [Azure セキュリティ アーキテクチャに関する推奨事項 - ストレージ、データ、暗号化](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
+- [Azure セキュリティ アーキテクチャに関する推奨事項 - ストレージ、データ、暗号化](/azure/architecture/framework/security/storage-data-encryption?amp;bc=%252fsecurity%252fcompass%252fbreadcrumb%252ftoc.json&toc=%252fsecurity%252fcompass%252ftoc.json)
 
 - [Azure のセキュリティの基礎 - Azure のデータ セキュリティ、暗号化、ストレージ](../fundamentals/encryption-overview.md)
 
-- [クラウド導入フレームワーク - Azure のデータ セキュリティと暗号化のベスト プラクティス](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
+- [クラウド導入フレームワーク - Azure のデータ セキュリティと暗号化のベスト プラクティス](../fundamentals/data-encryption-best-practices.md?amp;bc=%252fazure%252fcloud-adoption-framework%252f_bread%252ftoc.json&toc=%252fazure%252fcloud-adoption-framework%252ftoc.json)
 
 - [Azure セキュリティ ベンチマーク - アセット管理](security-controls-v2-asset-management.md)
 
 - [Azure セキュリティ ベンチマーク - データ保護](security-controls-v2-data-protection.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [すべての利害関係者](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -79,9 +79,9 @@ ID、ネットワーク、アプリケーション、サブスクリプション
 
 - [ネットワークのセグメント化を企業のセグメント化戦略に合わせる](/security/compass/network-security-containment#align-network-segmentation-with-enterprise-segmentation-strategy)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [すべての利害関係者](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -95,9 +95,9 @@ ID、ネットワーク、アプリケーション、サブスクリプション
 
 - [Azure セキュリティ ベンチマーク - 体制と脆弱性の管理](security-controls-v2-posture-vulnerability-management.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [すべての利害関係者](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -109,15 +109,15 @@ ID、ネットワーク、アプリケーション、サブスクリプション
 
 セキュリティ組織における役割と責任に関する明確な戦略が文書化されて伝えられるようにします。 セキュリティに関する決定についてわかりやすく説明すること、共有される責任モデルについて全員に教育すること、クラウドをセキュリティで保護するテクノロジについて技術チームに教育することを優先とします。
 
-- [Azure のセキュリティのベスト プラクティス 1 – 人: クラウド セキュリティに関する取り組みについてチームを教育する](https://aka.ms/AzSec1)
+- [Azure のセキュリティのベスト プラクティス 1 – 人: クラウド セキュリティに関する取り組みについてチームを教育する](/azure/cloud-adoption-framework/security/security-top-10#1-people-educate-teams-about-the-cloud-security-journey)
 
-- [Azure のセキュリティのベスト プラクティス 2 - 人: クラウド セキュリティ テクノロジについてチームを教育する](https://aka.ms/AzSec2)
+- [Azure のセキュリティのベスト プラクティス 2 - 人: クラウド セキュリティ テクノロジについてチームを教育する](/azure/cloud-adoption-framework/security/security-top-10#2-people-educate-teams-on-cloud-security-technology)
 
-- [Azure のセキュリティのベスト プラクティス 3 - プロセス: クラウドのセキュリティに関する意思決定のアカウンタビリティを割り当てる](https://aka.ms/AzSec3)
+- [Azure のセキュリティのベスト プラクティス 3 - プロセス: クラウドのセキュリティに関する意思決定のアカウンタビリティを割り当てる](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [すべての利害関係者](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -145,7 +145,7 @@ ID、ネットワーク、アプリケーション、サブスクリプション
 
 詳細については、次のリファレンスを参照してください。
 
-- [Azure のセキュリティのベスト プラクティス 11 - アーキテクチャ。単一の統合セキュリティ戦略](https://aka.ms/AzSec11)
+- [Azure のセキュリティのベスト プラクティス 11 - アーキテクチャ。単一の統合セキュリティ戦略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
 - [Azure セキュリティ ベンチマーク - ネットワーク セキュリティ](security-controls-v2-network-security.md)
 
@@ -153,9 +153,9 @@ ID、ネットワーク、アプリケーション、サブスクリプション
 
 - [エンタープライズ ネットワーク アーキテクチャ戦略](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [すべての利害関係者](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -185,13 +185,13 @@ ID、ネットワーク、アプリケーション、サブスクリプション
 
 - [Azure セキュリティ ベンチマーク - 特権アクセス](security-controls-v2-privileged-access.md)
 
-- [Azure のセキュリティのベスト プラクティス 11 - アーキテクチャ。単一の統合セキュリティ戦略](https://aka.ms/AzSec11)
+- [Azure のセキュリティのベスト プラクティス 11 - アーキテクチャ。単一の統合セキュリティ戦略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
 - [Azure ID 管理のセキュリティの概要](../fundamentals/identity-management-overview.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [すべての利害関係者](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -224,15 +224,15 @@ ID、ネットワーク、アプリケーション、サブスクリプション
 
 - [Azure セキュリティ ベンチマーク - インシデント対応](security-controls-v2-incident-response.md)
 
-- [Azure のセキュリティのベスト プラクティス 4 - プロセス: クラウドのインシデント対応プロセスを更新する](https://aka.ms/AzSec4)
+- [Azure のセキュリティのベスト プラクティス 4 - プロセス: クラウドのインシデント対応プロセスを更新する](/azure/cloud-adoption-framework/security/security-top-10#3-process-assign-accountability-for-cloud-security-decisions)
 
 - [Azure 導入フレームワーク、ログ、およびレポートの決定ガイド](/azure/cloud-adoption-framework/decision-guides/logging-and-reporting/)
 
 - [Azure のエンタープライズ スケーリング、管理、監視](/azure/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [すべての利害関係者](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -259,9 +259,8 @@ ID、ネットワーク、アプリケーション、サブスクリプション
 
 - [Azure 導入フレームワーク - ビジネス継続性とディザスター リカバリー](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [すべての利害関係者](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
-

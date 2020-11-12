@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2020
 ms.author: memildin
-ms.openlocfilehash: d1837d84c97227ba3d8743c3717e2f68dafd6b95
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 7c09a7f6c6a313852fc6212c6190a584ba5f67bd
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911394"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409894"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>未解決の DNS エントリを防ぎ、サブドメインの乗っ取りを回避する
 
@@ -27,7 +27,7 @@ ms.locfileid: "92911394"
 
 ## <a name="what-is-subdomain-takeover"></a>サブドメインの乗っ取りとは
 
-サブドメインの乗っ取りは、多くのリソースを定期的に作成したり削除したりする組織にとって、重大度の高い一般的な脅威です。 サブドメインの乗っ取りは、プロビジョニング解除された Azure リソースを参照する [DNS レコード](https://docs.microsoft.com/azure/dns/dns-zones-records#dns-records)がある場合に発生する可能性があります。 このような DNS レコードは、"未解決の DNS" エントリとも呼ばれます。 CNAME レコードは、この脅威に対して特に脆弱です。 サブドメインの乗っ取りが発生すると、悪意のあるアクターが悪意のあるアクティビティを実行しているサイトに、組織のドメイン向けのトラフィックをリダイレクトできるようになります。
+サブドメインの乗っ取りは、多くのリソースを定期的に作成したり削除したりする組織にとって、重大度の高い一般的な脅威です。 サブドメインの乗っ取りは、プロビジョニング解除された Azure リソースを参照する [DNS レコード](../../dns/dns-zones-records.md#dns-records)がある場合に発生する可能性があります。 このような DNS レコードは、"未解決の DNS" エントリとも呼ばれます。 CNAME レコードは、この脅威に対して特に脆弱です。 サブドメインの乗っ取りが発生すると、悪意のあるアクターが悪意のあるアクティビティを実行しているサイトに、組織のドメイン向けのトラフィックをリダイレクトできるようになります。
 
 サブドメインの乗っ取りの一般的なシナリオは次のとおりです。
 

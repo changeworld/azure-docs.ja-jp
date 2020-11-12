@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a26228b33a7d90df558de2ecdf4686910e606a54
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80811085"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413294"
 ---
 # <a name="azure-network-security-overview"></a>Azure のネットワーク セキュリティの概要
 
@@ -63,25 +63,25 @@ Azure では、次のように、いくつかの種類のネットワーク ア�
 セキュリティで保護されたデプロイにはいずれも、ある程度のネットワーク アクセス制御が必要です。 ネットワーク アクセス制御の目的は、必要なシステムのみが仮想マシンと通信できるようにすることです。 その他の通信試行はブロックされます。
 
 > [!NOTE]
-> Storage のファイアウォールについては、「[Azure Storage のセキュリティの概要](storage-overview.md)」の記事に説明されています
+> Storage のファイアウォールについては、「[Azure Storage のセキュリティの概要](../../storage/blobs/security-recommendations.md)」の記事に説明されています
 
 #### <a name="network-security-rules-nsgs"></a>ネットワーク セキュリティ規則 (NSG)
 
 基本レベルのネットワーク アクセス制御 (IP アドレス、TCP または UDP プロトコルに基づくもの) を必要とする場合には、ネットワーク セキュリティ グループ (NSG) を使用できます。 NSG とは基本的かつステートフルなパケット フィルタリング ファイアウォールであり、[5 タプル](https://www.techopedia.com/definition/28190/5-tuple)に基づいてアクセスを制御します。 NSG には、管理を簡素化し、構成ミスの可能性を低減する機能が含まれます。
 
-* **拡張セキュリティ規則**は、NSG ルールの定義を簡素化し、複数の単純なルールを作成するのではなく、複雑なルールを作成して、同じ結果を達成できます。
-* **サービス タグ**は、Microsoft が作成した IP アドレスのグループを表すラベルです。 それらは、ラベルへの包含を定義する条件を満たす IP 範囲を含むように動的に更新されます。 たとえば、東部リージョンのすべての Azure ストレージに適用されるルールを作成する場合は、Storage.EastUS を使用できます。
-* **アプリケーション セキュリティ グループ**を使用して、アプリケーション グループにリソースをデプロイし、アプリケーション グループを使用するルールを作成してリソースへのアクセスを制御できます。 たとえば、'Webservers' アプリケーション グループにデプロイした Web サーバーがある場合は、インターネットから 'Webservers' アプリケーション グループ内のすべてのシステムへの 443 トラフィックを許可する規則を作成して NSG に適用できます。
+* **拡張セキュリティ規則** は、NSG ルールの定義を簡素化し、複数の単純なルールを作成するのではなく、複雑なルールを作成して、同じ結果を達成できます。
+* **サービス タグ** は、Microsoft が作成した IP アドレスのグループを表すラベルです。 それらは、ラベルへの包含を定義する条件を満たす IP 範囲を含むように動的に更新されます。 たとえば、東部リージョンのすべての Azure ストレージに適用されるルールを作成する場合は、Storage.EastUS を使用できます。
+* **アプリケーション セキュリティ グループ** を使用して、アプリケーション グループにリソースをデプロイし、アプリケーション グループを使用するルールを作成してリソースへのアクセスを制御できます。 たとえば、'Webservers' アプリケーション グループにデプロイした Web サーバーがある場合は、インターネットから 'Webservers' アプリケーション グループ内のすべてのシステムへの 443 トラフィックを許可する規則を作成して NSG に適用できます。
 
 NSG はアプリケーション層検査も、認証済みのアクセス制御も提供しません。
 
 詳細情報:
 
-* [ネットワーク セキュリティ グループ](../../virtual-network/security-overview.md)
+* [ネットワーク セキュリティ グループ](../../virtual-network/network-security-groups-overview.md)
 
 #### <a name="asc-just-in-time-vm-access"></a>ASC Just In Time VM アクセス
 
-[Azure セキュリティ センター (ASC)](../../security-center/security-center-intro.md) は、VM の NSG を管理し、適切なロール ベースのアクセス制御 ([RBAC](/azure/role-based-access-control/overview)) のアクセス許可を持つユーザーがアクセスを要求するまで、VM へのアクセスをロックします。 ユーザーが正常に承認されると、ASC は、選択されたポートに対して指定された時間にわたってアクセスできるように NSG を変更します。 時間切れになると、NSG は、前のセキュリティで保護された状態に戻ります。
+[Azure セキュリティ センター (ASC)](../../security-center/security-center-introduction.md) は、VM の NSG を管理し、適切なロール ベースのアクセス制御 ([RBAC](../../role-based-access-control/overview.md)) のアクセス許可を持つユーザーがアクセスを要求するまで、VM へのアクセスをロックします。 ユーザーが正常に承認されると、ASC は、選択されたポートに対して指定された時間にわたってアクセスできるように NSG を変更します。 時間切れになると、NSG は、前のセキュリティで保護された状態に戻ります。
 
 詳細情報:
 
@@ -141,7 +141,7 @@ Azure Firewall は、Azure Virtual Network リソースを保護するクラウ�
 
 詳細情報:
 
-* [Azure Firewall の概要](/azure/firewall/overview)
+* [Azure Firewall の概要](../../firewall/overview.md)
 
 ## <a name="secure-remote-access-and-cross-premises-connectivity"></a>セキュリティで保護されたリモート アクセスとクロスプレミス接続
 
@@ -202,7 +202,7 @@ Azure の仮想マシンとサービスの管理を個々の開発者や運用�
 
 ある仮想ネットワーク上のサービスを別の仮想ネットワーク上のサービスに接続する 1 つの方法として、インターネットを介した "ループバック" という方法があります。 これは、1 つの仮想ネットワークで接続を開始し、インターネットを経由して、宛先の仮想ネットワークに戻すというものです。 ただし、この接続方法では、インターネット ベースの通信につきもののセキュリティ問題が発生します。
 
-より望ましいのは、2 つの仮想ネットワーク間を接続する、サイト間 VPN を作成する方法でしょう。 この方法では、前述したプレミス横断型のサイト間 VPN 接続と同じ、[IPSec トンネル モード](https://technet.microsoft.com/library/cc786385.aspx)のプロトコルが使用されます。
+より望ましいのは、2 つの仮想ネットワーク間を接続する、サイト間 VPN を作成する方法でしょう。 この方法では、前述したプレミス横断型のサイト間 VPN 接続と同じ、[IPSec トンネル モード](/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10))のプロトコルが使用されます。
 
 このアプローチの利点は、インターネット経由で接続するのではなく、Azure ネットワーク ファブリックを介して VPN 接続を確立できるという点です。 これによって、インターネット経由で接続するサイト間 VPN よりも高度なセキュリティが確保されます。
 
@@ -237,7 +237,7 @@ Azure では、Azure Application Gateway を使用することで、Web ベー�
 
 詳細情報:
 
-* [Application Gateway の概要](/azure/application-gateway/application-gateway-introduction)
+* [Application Gateway の概要](../../application-gateway/overview.md)
 
 ### <a name="network-level-load-balancing"></a>ネットワーク レベルの負荷分散
 
@@ -252,8 +252,8 @@ Azure におけるネットワーク レベルの負荷分散の利点を活用�
 
 詳細情報:
 
-* [複数の仮想マシンまたはサービス間でインターネットに接続するロード バランサー](/azure/load-balancer/load-balancer-internet-overview)
-* [内部ロード バランサーの概要](/azure/load-balancer/load-balancer-internal-overview)
+* [複数の仮想マシンまたはサービス間でインターネットに接続するロード バランサー](../../load-balancer/load-balancer-overview.md)
+* [内部ロード バランサーの概要](../../load-balancer/load-balancer-overview.md)
 
 ### <a name="global-load-balancing"></a>グローバル負荷分散
 
@@ -315,7 +315,7 @@ Azure は、Azure DNS という形で可用性とパフォーマンスの高い�
 ## <a name="azure-ddos-protection"></a>Azure の DDoS 保護
 
 分散型サービス拒否 (DDoS) 攻撃は、アプリケーションをクラウドに移行している顧客が直面する可用性とセキュリティに関する最大の関心事の一部です。 DDoS 攻撃では、アプリケーションのリソースを使い果たし、正当なユーザーがアプリケーションを使用できなくなるようにすることが試みられます。 DDoS 攻撃は、インターネット経由で一般に到達可能なすべてのエンドポイントで実行できます。
-Microsoft では、Azure Platform の一部として、**Basic** と呼ばれる DDoS Protection を提供しています。 これは無料で提供され、一般的なネットワーク レベル攻撃の監視とリアルタイムの対応策に常に含まれています。 DDoS Protection **Basic** に含まれている保護に加え、**Standard** オプションを有効にできます。 DDoS Protection Standard の機能には、次のものが含まれます。
+Microsoft では、Azure Platform の一部として、 **Basic** と呼ばれる DDoS Protection を提供しています。 これは無料で提供され、一般的なネットワーク レベル攻撃の監視とリアルタイムの対応策に常に含まれています。 DDoS Protection **Basic** に含まれている保護に加え、 **Standard** オプションを有効にできます。 DDoS Protection Standard の機能には、次のものが含まれます。
 
 * **ネイティブのプラットフォーム統合:** Azure にネイティブに統合します。 Azure Portal による構成が含まれます。 DDoS Protection Standard は、ユーザーのリソースおよびリソース構成を理解しています。
 * **ターンキー保護:** DDoS Protection Standard が有効になるとすぐに、簡略化された構成によって、仮想ネットワーク上のすべてのリソースが直ちに保護されます。 ユーザーが介入したり、ユーザーが定義したりする必要はありません。 DDoS Protection Standard では、攻撃が検出されるとすぐに自動で軽減されます。
@@ -381,7 +381,7 @@ Security Center は、ネットワーク セキュリティの最適化と監視
 
 詳細情報:
 
-* [Azure Security Center 入門](../../security-center/security-center-intro.md)
+* [Azure Security Center 入門](../../security-center/security-center-introduction.md)
 
 ### <a name="virtual-network-tap"></a>仮想ネットワーク TAP
 

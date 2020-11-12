@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
-ms.date: 10/16/2020
-ms.openlocfilehash: 51fd8b8427dd8214e22fa59e50b26bb9db237946
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/09/2020
+ms.openlocfilehash: 749807349fd83f9639461fd4ddd9ab771d108119
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322056"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410557"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (プレビュー) 拡張機能を使用して Visual Studio Code でステートフルまたはステートレスのワークフローを作成する
 
@@ -106,11 +106,9 @@ Azure Logic Apps (プレビュー) 拡張機能を使用すると、次のよう
 
 * ワークフローを開始するには、Logic Apps ランタイムでネイティブに実行できる[組み込みの Request トリガー、HTTP トリガー、Event Hubs トリガー、または Service Bus トリガー](../connectors/apis-list.md)を使用します。 現時点では、[エンタープライズ コネクタ](../connectors/apis-list.md#enterprise-connectors)、[オンプレミス データ ゲートウェイ トリガー](../connectors/apis-list.md#on-premises-connectors)、Webhook ベースのトリガー、スライディング ウィンドウ トリガー、[カスタム コネクタ](../connectors/apis-list.md#custom-apis-and-connectors)、統合アカウント、それらの成果物、[それらのコネクタ](../connectors/apis-list.md#integration-account-connectors)は、このプレビューではサポートされていません。 "Azure 関数呼び出し" 機能は使用できないため、ここでは HTTP " *アクション* " を使用して、Azure 関数に対する要求 URL を呼び出します。
 
-  以前に指定されたトリガーを除き、" *ステートフル* " ワークフローには、Azure にデプロイされている[マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)用のトリガーとアクションと、Logic Apps ランタイムでネイティブに実行される組み込みのトリガーとアクションの両方を使用できます。 ただし、 *ステートレス* なワークフローでは、現在、トリガーではなくマネージド コネクタに対する *アクション* のみがサポートされています。 ステートレスなワークフローにおいて Azure のコネクタを有効にすることができますが、デザイナーには選択できるマネージド コネクタ トリガーは表示されません。
+  以前に指定されたトリガーを除き、" *ステートフル* " ワークフローには、Azure にデプロイされている [マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)用のトリガーとアクションと、Logic Apps ランタイムでネイティブに実行される組み込みのトリガーとアクションの両方を使用できます。 ただし、 *ステートレス* なワークフローでは、現在、トリガーではなくマネージド コネクタに対する *アクション* のみがサポートされています。 ステートレスなワークフローにおいて Azure のコネクタを有効にすることができますが、デザイナーには選択できるマネージド コネクタ トリガーは表示されません。
 
 * 新しい **ロジック アプリ (プレビュー)** リソースの種類をデプロイできるのは、 [Azure の Premium または App Service ホスティング プラン](#publish-azure)または [Docker コンテナー](#deploy-docker)に対してだけであり、 [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) にはできません。 このリソースの種類のデプロイについては、 **従量課金** ホスティング プランはサポートされておらず、使用できません。
-
-* Azure portal で、新しい **ロジック アプリ (プレビュー)** リソースの種類を使用して新しいロジック アプリを作成することはできません。 これらのロジック アプリは Visual Studio Code でのみ作成できます。 ただし、このリソースの種類のロジック アプリを Visual Studio Code から Azure にデプロイした後、[これらのロジック アプリに新しいワークフローを追加することができます](#add-workflows)。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -774,12 +772,7 @@ Visual Studio Code では、リソースの種類が元の **[ロジック ア�
 
 ## <a name="find-and-manage-deployed-logic-apps-in-the-portal"></a>ポータルでデプロイされたロジック アプリを検索して管理する
 
-Azure portal では、リソースの種類が元の **[ロジック アプリ]** であるか **[ロジック アプリ (プレビュー)]** であるかに関係なく、Azure サブスクリプションでデプロイされたすべてのロジック アプリを表示できます。 現時点では、各リソースの種類は Azure で個別のカテゴリとして編成および管理されています。
-
-> [!NOTE]
-> パブリック プレビューでは、デプロイされた **[ロジック アプリ (プレビュー)]** リソースを Azure portal で表示することのみ可能です。新しい **[ロジック アプリ (プレビュー)]** リソースを作成することはできません。 これらのロジック アプリは Visual Studio Code でのみ作成できます。 ただし、このリソースの種類を使用して、デプロイされたロジック アプリに[ワークフローを追加する](#add-workflows)ことができます。
-
-**[ロジック アプリ (プレビュー)]** リソースの種類を持つロジック アプリを検索するには、次の手順を実行します。
+Azure portal では、リソースの種類が元の **[ロジック アプリ]** であるか **[ロジック アプリ (プレビュー)]** であるかに関係なく、Azure サブスクリプションでデプロイされたすべてのロジック アプリを表示できます。 現時点では、各リソースの種類は Azure で個別のカテゴリとして編成および管理されています。 **[ロジック アプリ (プレビュー)]** リソースの種類を持つロジック アプリを検索するには、次の手順を実行します。
 
 1. Azure portal の検索ボックスに、「`logic app preview`」と入力します。 結果の一覧が表示されたら、 **[サービス]** で、 **[ロジック アプリ (プレビュー)]** を選択します。
 

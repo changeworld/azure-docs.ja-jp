@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: f6bb119e5e82ce642722d0f739177fc1e4c06c25
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 10ad06041e8136b5661b1b1ff487cd4d3b0f5153
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255732"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358407"
 ---
 # <a name="tutorial-configure-signagelive--for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングに対応するように Signagelive を構成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "91255732"
 
 ## <a name="assigning-users-to-signagelive"></a>Signagelive へのユーザーの割り当て   
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Signagelive へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Signagelive に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -72,7 +72,7 @@ Azure AD での自動ユーザー プロビジョニングのために Signageli
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Signagelive**」と入力し、結果パネルで **[Signagelive]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Signagelive** 」と入力し、結果パネルで **[Signagelive]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果リストの Signagelive](common/search-new-app.png)
 
@@ -101,7 +101,7 @@ Azure AD での自動ユーザー プロビジョニングのために Signageli
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. [管理者資格情報] セクションの **[テナント URL]** に「` https://samlapi.signagelive.com/scim/v2`」と入力します。 **[シークレット トークン]** フィールドに、エンジニアリング開発チームから提供された**ベアラー トークン**値を入力します。 **[接続テスト]** をクリックして、Azure AD から Signagelive に接続できることを確認します。 接続できない場合は、使用中の Signagelive アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. [管理者資格情報] セクションの **[テナント URL]** に「` https://samlapi.signagelive.com/scim/v2`」と入力します。 **[シークレット トークン]** フィールドに、エンジニアリング開発チームから提供された **ベアラー トークン** 値を入力します。 **[接続テスト]** をクリックして、Azure AD から Signagelive に接続できることを確認します。 接続できない場合は、使用中の Signagelive アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
 6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。

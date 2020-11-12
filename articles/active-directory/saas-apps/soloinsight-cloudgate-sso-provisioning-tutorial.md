@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 6ab23183fa42b87dad68da1d7ef9b1a2f6145750
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 1b992150f6013fd597a3e56b243bd6236289b710
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514794"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357999"
 ---
 # <a name="tutorial-configure-soloinsight-cloudgate-sso-for-automatic-user-provisioning"></a>チュートリアル:Soloinsight-CloudGate SSO を構成し、自動ユーザー プロビジョニングに対応させる
 

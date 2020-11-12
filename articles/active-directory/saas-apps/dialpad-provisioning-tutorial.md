@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: 7475ebc6dd51bbc1c30ee22623c7cbda1a5237ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b88e618da3f8a23c0517aaeb251e54bf559fc468
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848961"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358475"
 ---
 # <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>チュートリアル:Dialpad を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -58,9 +58,9 @@ Azure AD での自動ユーザー プロビジョニング用に Dialpad を構�
 
 2. **[Add a key]\(キーの追加\)** をクリックし、シークレット トークンのプロパティを構成することで、新しいキーを生成します。
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad02.png" alt-text="Dialpad 管理コンソールのスクリーンショット。設定アイコン、[My Company]\(自分の会社\)、[Authentication]\(認証\)、[A P I keys]\(A P I キー\) が強調表示され、[My Company]\(自分の会社\) が選択されています。" border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad02.png" alt-text="Dialpad 管理コンソールの [A P I keys]\(A P I キー\) ページのスクリーンショット。[Add a key]\(キーの追加\) が強調表示されています。" border="false":::
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad03.png" alt-text="Dialpad 管理コンソールのスクリーンショット。設定アイコン、[My Company]\(自分の会社\)、[Authentication]\(認証\)、[A P I keys]\(A P I キー\) が強調表示され、[My Company]\(自分の会社\) が選択されています。" border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad03.png" alt-text="Dialpad 管理コンソールの [Edit A P I key]\(A P I キーの編集\) ページのスクリーンショット。[保存] ボタンが強調表示されています。" border="false":::
 
 3. 直近で作成した API キーの **[Click to show value]\(クリックして値を表示\)** ボタンをクリックし、表示された値をコピーします。 この値を、Azure portal の Dialpad アプリケーションの [プロビジョニング] タブにある **[シークレット トークン]** フィールドに入力します。 
 
@@ -84,24 +84,24 @@ Azure AD を使用した自動ユーザー プロビジョニング用に Dialpa
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Dialpad**」と入力し、結果パネルで **[Dialpad]** を選択します。
+4. 検索ボックスに「 **Dialpad** 」と入力し、結果パネルで **[Dialpad]** を選択します。
     ![結果一覧の Dialpad](common/search-new-app.png)
 
 5. 個別のブラウザーで、以下で強調表示されている **URL** に移動します。 
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad05.png" alt-text="Dialpad 管理コンソールのスクリーンショット。設定アイコン、[My Company]\(自分の会社\)、[Authentication]\(認証\)、[A P I keys]\(A P I キー\) が強調表示され、[My Company]\(自分の会社\) が選択されています。" border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad05.png" alt-text="Dialpad アプリについての情報を表示するページのスクリーンショット。[U R L] にアドレスがリストされて強調表示されています。" border="false":::
 
 6. 右上隅で、 **[Log In]\(ログイン)\ > [Use Dialpad online]\(Dialpad オンラインを使用する\)** を選択します。
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad06.png" alt-text="Dialpad 管理コンソールのスクリーンショット。設定アイコン、[My Company]\(自分の会社\)、[Authentication]\(認証\)、[A P I keys]\(A P I キー\) が強調表示され、[My Company]\(自分の会社\) が選択されています。" border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad06.png" alt-text="Dialpad Web サイトのスクリーンショット。[Log in]\(ログイン\) が強調表示され、[Log in]\(ログイン\) タブが開いています。[Use Dialpad online]\(Dialpad オンラインを使用する\) も強調表示されています。" border="false":::
 
 7. Dialpad は OpenIDConnect アプリであるため、Microsoft の職場アカウントを使用して Dialpad にログインすることを選択します。
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/loginpage.png" alt-text="Dialpad 管理コンソールのスクリーンショット。設定アイコン、[My Company]\(自分の会社\)、[Authentication]\(認証\)、[A P I keys]\(A P I キー\) が強調表示され、[My Company]\(自分の会社\) が選択されています。" border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/loginpage.png" alt-text="Dialpad Web サイトの [Start making calls]\(通話の開始\) ページのスクリーンショット。[Log in with Office 365]\(Office 365 でログイン\) ボタンが強調表示されています。" border="false":::
 
 8. 認証に成功した後、同意ページの同意プロンプトを受け入れます。 その後、ご使用のテナントにアプリケーションが自動的に追加され、Dialpad アカウントにリダイレクトされます。
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/redirect.png" alt-text="Dialpad 管理コンソールのスクリーンショット。設定アイコン、[My Company]\(自分の会社\)、[Authentication]\(認証\)、[A P I keys]\(A P I キー\) が強調表示され、[My Company]\(自分の会社\) が選択されています。" border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/redirect.png" alt-text="Microsoft の認証ページを示すスクリーンショット。いくつかのデータへのアクセスを Dialpad アプリが要求しています。[承諾] ボタンが強調表示されています。" border="false":::
 
  ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Dialpad への自動ユーザー プロビジョニングを構成する
 

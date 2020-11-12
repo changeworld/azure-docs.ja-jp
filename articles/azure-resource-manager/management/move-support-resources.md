@@ -2,13 +2,13 @@
 title: リソースの種類別の移動操作のサポート
 description: 新しいリソース グループまたはサブスクリプションに移動できる Azure リソースの種類を一覧表示します。
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: 675f7bb11ed98dd17e8f4ee4a0197d05128af851
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.date: 11/06/2020
+ms.openlocfilehash: 5b71c991136533096604c8a35af7989a227b6d2a
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91627110"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364231"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 
@@ -792,7 +792,6 @@ ms.locfileid: "91627110"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | datafactories | はい | はい |
-> | datafactoryschema | いいえ | いいえ |
 > | factories | はい | はい |
 
 ## <a name="microsoftdatalake"></a>Microsoft.DataLake
@@ -915,11 +914,11 @@ ms.locfileid: "91627110"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | labcenters | いいえ | × |
-> | labs | はい | いいえ |
+> | labcenters | いいえ | いいえ |
+> | labs | はい | × |
 > | labs/environments | はい | はい |
 > | labs/servicerunners | はい | はい |
-> | labs/virtualmachines | はい | × |
+> | labs/virtualmachines | はい | いいえ |
 > | schedules | はい | はい |
 
 ## <a name="microsoftdigitaltwins"></a>Microsoft.DigitalTwins
@@ -927,7 +926,7 @@ ms.locfileid: "91627110"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | digitaltwinsinstances | × | いいえ |
+> | digitaltwinsinstances | いいえ | いいえ |
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
@@ -943,7 +942,7 @@ ms.locfileid: "91627110"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | domains | はい | はい |
-> | generatessorequest | いいえ | × |
+> | generatessorequest | いいえ | いいえ |
 > | topleveldomains | いいえ | × |
 > | validatedomainregistrationinformation | いいえ | × |
 
@@ -976,14 +975,14 @@ ms.locfileid: "91627110"
 > | ------------- | ----------- | ---------- |
 > | clusters | はい | はい |
 > | namespaces | はい | はい |
-> | sku | いいえ | × |
+> | sku | いいえ | いいえ |
 
 ## <a name="microsoftexperimentation"></a>Microsoft.Experimentation
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | experimentworkspaces | × | いいえ |
+> | experimentworkspaces | いいえ | いいえ |
 
 ## <a name="microsoftfalcon"></a>Microsoft.Falcon
 
@@ -997,7 +996,7 @@ ms.locfileid: "91627110"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | featureproviders | いいえ | × |
+> | featureproviders | いいえ | いいえ |
 > | features | いいえ | × |
 > | providers | いいえ | × |
 > | subscriptionfeatureregistrations | いいえ | × |
@@ -1007,15 +1006,15 @@ ms.locfileid: "91627110"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | accounts | × | いいえ |
+> | accounts | いいえ | いいえ |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | automanagedaccounts | × | いいえ |
-> | automanagedvmconfigurationprofiles | いいえ | いいえ |
+> | automanagedaccounts | いいえ | いいえ |
+> | automanagedvmconfigurationprofiles | × | いいえ |
 > | guestconfigurationassignments | いいえ | いいえ |
 > | software | いいえ | いいえ |
 > | softwareupdateprofile | いいえ | いいえ |
@@ -1026,7 +1025,7 @@ ms.locfileid: "91627110"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | hanainstances | いいえ | × |
+> | hanainstances | いいえ | いいえ |
 > | sapmonitors | はい | はい |
 
 ## <a name="microsofthardwaresecuritymodules"></a>Microsoft.HardwareSecurityModules
@@ -1034,7 +1033,7 @@ ms.locfileid: "91627110"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | dedicatedhsms | × | いいえ |
+> | dedicatedhsms | いいえ | いいえ |
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
@@ -1101,14 +1100,14 @@ ms.locfileid: "91627110"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | actiongroups | ○ | はい |
-> | activitylogalerts | × | いいえ |
+> | actiongroups | はい | はい |
+> | activitylogalerts | いいえ | いいえ |
 > | alertrules | はい | はい |
 > | autoscalesettings | はい | はい |
-> | baseline | × | いいえ |
+> | baseline | いいえ | いいえ |
 > | components | はい | はい |
 > | datacollectionrules | いいえ | いいえ |
-> | diagnosticsettings | × | いいえ |
+> | diagnosticsettings | いいえ | いいえ |
 > | diagnosticsettingscategories | × | いいえ |
 > | eventcategories | × | いいえ |
 > | eventtypes | × | いいえ |
@@ -1120,22 +1119,22 @@ ms.locfileid: "91627110"
 > | logs | × | いいえ |
 > | metricalerts | × | いいえ |
 > | metricbaselines | × | いいえ |
-> | metricbatch | いいえ | いいえ |
+> | metricbatch | × | いいえ |
 > | metricdefinitions | いいえ | いいえ |
 > | metricnamespaces | いいえ | いいえ |
-> | metrics | × | いいえ |
+> | metrics | いいえ | いいえ |
 > | migratealertrules | × | いいえ |
 > | migratetonewpricingmodel | × | いいえ |
 > | myworkbooks | × | いいえ |
-> | notificationgroups | いいえ | いいえ |
-> | privatelinkscopes | × | いいえ |
-> | rollbacktolegacypricingmodel | いいえ | いいえ |
-> | scheduledqueryrules | ○ | はい |
-> | トポロジ | × | いいえ |
+> | notificationgroups | × | いいえ |
+> | privatelinkscopes | いいえ | いいえ |
+> | rollbacktolegacypricingmodel | × | いいえ |
+> | scheduledqueryrules | はい | はい |
+> | トポロジ | いいえ | いいえ |
 > | トランザクション | × | いいえ |
-> | vminsightsonboardingstatuses | いいえ | いいえ |
+> | vminsightsonboardingstatuses | × | いいえ |
 > | webtests | はい | はい |
-> | webtests / gettestresultfile | × | いいえ |
+> | webtests / gettestresultfile | いいえ | いいえ |
 > | Workbooks | はい | はい |
 > | workbooktemplates | はい | はい |
 
@@ -1433,7 +1432,7 @@ ms.locfileid: "91627110"
 > | privatednszones/virtualnetworklinks | はい | はい |
 > | privatednszonesinternal | いいえ | いいえ |
 > | privateendpointredirectmaps | いいえ | いいえ |
-> | privateendpoints | はい | はい |
+> | privateendpoints | いいえ | いいえ |
 > | privatelinkservices | いいえ | いいえ |
 > | publicipaddresses | はい - Basic SKU<br>はい - Standard SKU | はい - Basic SKU<br>いいえ - Standard SKU |
 > | publicipprefixes | はい | はい |

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4b77208ca7869288ac13e28c6535b1b3972aa22c
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: f50c8d612ca088c97754b1eb90ed049113e33c6e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928714"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358266"
 ---
 # <a name="tutorial-configure-blogin-for-automatic-user-provisioning"></a>チュートリアル:BlogIn を構成し、自動ユーザー プロビジョニングに対応させる
 

@@ -5,14 +5,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 06/05/2020
-author: jasonwhowell
-ms.author: jasonh
-ms.openlocfilehash: c005c4fc15f7c7955a7254f386597eee01800da5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+author: christopheranderson
+ms.author: chrande
+ms.openlocfilehash: 43bcd54955cb1a8aaf08785368faf13c14f8322c
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126602"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413056"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB Compass を使用して Azure Cosmos DB の MongoDB 用 API に接続する
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -27,9 +27,6 @@ MongoDB Compass を使用して Cosmos DB アカウントに接続するには�
 
 * [Compass](https://www.mongodb.com/download-center/compass?jmp=hero) をダウンロードしてインストールする
 * Cosmos DB [接続文字列](connect-mongodb-account.md)情報を取得する
-
-> [!NOTE]
-> 現在、Azure Cosmos DB の MongoDB 用 API バージョン 3.2 は、最新バージョンの MongoDB Compass でサポートされています。 MongoDB Compass は、3.6 サーバー バージョンではまだサポートされていません。 
 
 ## <a name="connect-to-cosmos-dbs-api-for-mongodb"></a>Cosmos DB の MongoDB 用 API に接続する
 

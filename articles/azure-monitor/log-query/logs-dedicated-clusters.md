@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 845336385fe7490d4c62df41af873c237ae34871
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 293a3fc10920a29cd41e4bdb946e5bb06762eb52
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996336"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427498"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor ログ専用クラスター
 
@@ -19,11 +19,11 @@ Azure Monitor ログ専用クラスターは、ボリュームの大きいお客
 
 大量のボリュームをサポートする以外にも、専用クラスターを使用する利点があります。
 
-- **レート制限** - お客様が[インジェスト レート制限](../service-limits.md#data-ingestion-volume-rate)を引き上げることができるのは、専用クラスターだけです。
+- **レート制限** - お客様が [インジェスト レート制限](../service-limits.md#data-ingestion-volume-rate)を引き上げることができるのは、専用クラスターだけです。
 - **機能** - 特定のエンタープライズ機能 (具体的には、カスタマー マネージド キー (CMK) とロックボックスのサポート) は専用クラスターでのみ使用できます。 
 - **整合性** - お客様は独自の専用リソースを所有するため、同じ共有インフラストラクチャで実行されている他のお客様の影響を受けません。
 - **コスト効率** - 割り当てられた容量予約レベルですべてのクラスターのインジェストが考慮されるため、専用クラスターを使用する方がコスト効率が高くなる可能性があります。その一部が小さく、容量予約の割引の対象になっていない場合でも、すべてのワークスペースに適用されます。
-- すべてのワークスペースが同じクラスター上にある場合は、**クロスワークスペース** クエリの実行速度が速くなります。
+- すべてのワークスペースが同じクラスター上にある場合は、 **クロスワークスペース** クエリの実行速度が速くなります。
 
 専用クラスターでは、1 日あたり少なくとも 1 TB のデータ インジェストの容量を使用してコミットを行う必要があります。 専用クラスターへの移行は簡単です。 データの損失やサービスの中断はありません。 
 
@@ -47,9 +47,9 @@ Log Analytics 専用クラスターには、1000 GB/日以上の容量予約価�
 
 クラスターでの使用については、2 つの課金モードがあります。 これらは、ご自分のクラスターを構成するときに、`billingType` パラメーターで指定できます。 
 
-1. **クラスター**: この場合 (既定)、取り込まれたデータに対してクラスター レベルで課金されます。 クラスターに関連付けられている各ワークスペースが取り込んだデータ量が集計され、クラスターの日次請求が計算されます。 
+1. **クラスター** : この場合 (既定)、取り込まれたデータに対してクラスター レベルで課金されます。 クラスターに関連付けられている各ワークスペースが取り込んだデータ量が集計され、クラスターの日次請求が計算されます。 
 
-2. **ワークスペース**: ご使用のクラスターの容量予約コストは、クラスター内のワークスペースに比例します (各ワークスペースに対する [Azure Security Center](../../security-center/index.yml) からのノードごとの割り当てを考慮した後)。
+2. **ワークスペース** : ご使用のクラスターの容量予約コストは、クラスター内のワークスペースに比例します (各ワークスペースに対する [Azure Security Center](../../security-center/index.yml) からのノードごとの割り当てを考慮した後)。
 
 ワークスペースで従来のノードごとの価格レベルが使用されている場合、クラスターにリンクされると、クラスターの容量予約に対するデータ インジェストに基づいて課金され、ノードごとには課金されなくなることに注意してください。 Azure Security Center からのノードごとのデータ割り当ては引き続き適用されます。
 
@@ -62,12 +62,12 @@ Log Analytics 専用クラスターの課金の詳細については、[こち�
 
 次のプロパティを指定する必要があります。
 
-- **ClusterName**:管理目的で使用されます。 この名前はユーザーには公開されません。
-- **ResourceGroupName**:すべての Azure リソースと同様に、クラスターはリソース グループに属します。 クラスターは通常、組織内の多くのチームによって共有されるため、中央の IT リソース グループを使用することをお勧めします。 設計に関するその他の考慮事項については、「[Azure Monitor ログのデプロイの設計](../platform/design-logs-deployment.md)」を参照してください。
+- **ClusterName** :管理目的で使用されます。 この名前はユーザーには公開されません。
+- **ResourceGroupName** :すべての Azure リソースと同様に、クラスターはリソース グループに属します。 クラスターは通常、組織内の多くのチームによって共有されるため、中央の IT リソース グループを使用することをお勧めします。 設計に関するその他の考慮事項については、「[Azure Monitor ログのデプロイの設計](../platform/design-logs-deployment.md)」を参照してください。
 - **[場所]** :クラスターは特定の Azure リージョンにあります。 このクラスターにリンクできるのは、このリージョンにあるワークスペースだけです。
-- **SkuCapacity**:"*クラスター*" リソースを作成するときに、"*容量予約*" レベル (sku) を指定する必要があります。 "*容量予約*" レベルは、1 日あたり 1,000 GB から 3,000 GB の範囲で指定できます。 必要に応じて、後から 100 刻みで更新できます。 1 日あたり 3,000 GB を超える容量予約レベルが必要な場合は、LAIngestionRate@microsoft.com までお問い合わせください。 クラスターのコストの詳細については、[Log Analytics クラスターのコストの管理](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)に関するページを参照してください。
+- **SkuCapacity** :" *クラスター* " リソースを作成するときに、" *容量予約* " レベル (sku) を指定する必要があります。 " *容量予約* " レベルは、1 日あたり 1,000 GB から 3,000 GB の範囲で指定できます。 必要に応じて、後から 100 刻みで更新できます。 1 日あたり 3,000 GB を超える容量予約レベルが必要な場合は、LAIngestionRate@microsoft.com までお問い合わせください。 クラスターのコストの詳細については、[Log Analytics クラスターのコストの管理](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)に関するページを参照してください。
 
-"*クラスター*" リソースを作成した後、*sku*、*keyVaultProperties、*billingType* などの追加のプロパティを編集できます。 詳細については、以下を参照してください。
+" *クラスター* " リソースを作成した後、 *sku* 、*keyVaultProperties、 *billingType* などの追加のプロパティを編集できます。 詳細については、以下を参照してください。
 
 > [!WARNING]
 > クラスターの作成によって、リソース割り当てとプロビジョニングがトリガーされます。 この操作が完了するまでに最大 1 時間かかります。 非同期的に実行することをお勧めします。
@@ -116,14 +116,14 @@ Content-type: application/json
 
 Log Analytics クラスターのプロビジョニングは、完了するまでに時間がかかります。 プロビジョニングの状態を確認するには、いくつかの方法があります。
 
-- リソース グループ名を指定して Get-AzOperationalInsightsCluster PowerShell コマンドを実行し、ProvisioningState プロパティを確認します。 この値は、プロビジョニング中は *ProvisioningAccount*、完了時は *Succeeded* になります。
+- リソース グループ名を指定して Get-AzOperationalInsightsCluster PowerShell コマンドを実行し、ProvisioningState プロパティを確認します。 この値は、プロビジョニング中は *ProvisioningAccount* 、完了時は *Succeeded* になります。
   ```powershell
   New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} 
   ```
 
 - 応答から Azure-AsyncOperation URL 値をコピーし、非同期操作と状態のチェックに従います。
 
-- *クラスター* リソースに GET 要求を送信し、*provisioningState* 値を確認します。 この値は、プロビジョニング中は *ProvisioningAccount*、完了時は *Succeeded* になります。
+- *クラスター* リソースに GET 要求を送信し、 *provisioningState* 値を確認します。 この値は、プロビジョニング中は *ProvisioningAccount* 、完了時は *Succeeded* になります。
 
    ```rst
    GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -156,16 +156,16 @@ Log Analytics クラスターのプロビジョニングは、完了するまで
    }
    ```
 
-*principalId* GUID は、"*クラスター*" リソースのマネージド ID サービスによって生成されます。
+*principalId* GUID は、" *クラスター* " リソースのマネージド ID サービスによって生成されます。
 
 ## <a name="change-cluster-properties"></a>クラスターのプロパティを変更する
 
-"*クラスター*" リソースを作成し、完全にプロビジョニングされたら、PowerShell または REST API を使用して、クラスター レベルで追加のプロパティを編集できます。 クラスターの作成時に使用できるプロパティ以外の追加のプロパティは、クラスターがプロビジョニングされた後でのみ設定できます。
+" *クラスター* " リソースを作成し、完全にプロビジョニングされたら、PowerShell または REST API を使用して、クラスター レベルで追加のプロパティを編集できます。 クラスターの作成時に使用できるプロパティ以外の追加のプロパティは、クラスターがプロビジョニングされた後でのみ設定できます。
 
-- **keyVaultProperties**:[Azure Monitor のカスタマー マネージド キー](../platform/customer-managed-keys.md#cmk-provisioning-procedure)をプロビジョニングするために使用する Azure Key Vault を構成するために使用します。 これには次のパラメーターが含まれています。*KeyVaultUri*、*KeyName*、*KeyVersion*。 
-- **billingType** - *billingType* プロパティによって、"*クラスター*" リソースとそのデータの課金の帰属が決まります。
-  - **クラスター** (既定) - クラスターの容量予約コストは、"*クラスター*" リソースに帰属します。
-  - **ワークスペース** - クラスターの容量予約コストは、クラスター内のワークスペースに比例的に帰属します。その日に取り込まれた合計データが容量予約を下回る場合に使用量の一部が "*クラスター*" リソースに課金されます。 クラスターの価格モデルの詳細については、[Log Analytics 専用クラスター](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)に関するページを参照してください。 
+- **keyVaultProperties** : [Azure Monitor のカスタマー マネージド キー](../platform/customer-managed-keys.md#customer-managed-key-provisioning-procedure)をプロビジョニングするために使用する Azure Key Vault を構成するために使用します。 これには次のパラメーターが含まれています。 *KeyVaultUri* 、 *KeyName* 、 *KeyVersion* 。 
+- **billingType** - *billingType* プロパティによって、" *クラスター* " リソースとそのデータの課金の帰属が決まります。
+  - **クラスター** (既定) - クラスターの容量予約コストは、" *クラスター* " リソースに帰属します。
+  - **ワークスペース** - クラスターの容量予約コストは、クラスター内のワークスペースに比例的に帰属します。その日に取り込まれた合計データが容量予約を下回る場合に使用量の一部が " *クラスター* " リソースに課金されます。 クラスターの価格モデルの詳細については、[Log Analytics 専用クラスター](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)に関するページを参照してください。 
 
 > [!NOTE]
 > *billingType* プロパティは、PowerShell ではサポートされていません。
@@ -180,7 +180,7 @@ Update-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -Cl
 **REST**
 
 > [!NOTE]
-> PATCH を使用して、*クラスター* リソース *sku*、*keyVaultProperties* または *billingType* を更新できます。
+> PATCH を使用して、 *クラスター* リソース *sku* 、 *keyVaultProperties* または *billingType* を更新できます。
 
 次に例を示します。 
 
@@ -222,9 +222,9 @@ Content-type: application/json
 
    OR
 
-- *クラスター* リソースに GET 要求を送信し、*KeyVaultProperties* 値を確認します。 最近更新されたキー識別子の詳細が、応答で返されます。
+- *クラスター* リソースに GET 要求を送信し、 *KeyVaultProperties* 値を確認します。 最近更新されたキー識別子の詳細が、応答で返されます。
 
-   キー識別子の更新が完了すると、*クラスター* リソースの GET 要求に対する応答は次のようになります。
+   キー識別子の更新が完了すると、 *クラスター* リソースの GET 要求に対する応答は次のようになります。
 
    ```json
    {
@@ -261,10 +261,10 @@ Content-type: application/json
 
 クラスターは最大 100 のワークスペースにリンクできます。 リンクされたワークスペースは、クラスターと同じリージョンにあります。 システムのバックエンドを保護し、データの断片化を避けるために、ワークスペースを 1 か月に 3 回以上クラスターにリンクすることはできません。
 
-リンク操作を実行するには、ワークスペースと "*クラスター*" リソースの両方に対する次の "書き込み" アクセス許可を持っている必要があります。
+リンク操作を実行するには、ワークスペースと " *クラスター* " リソースの両方に対する次の "書き込み" アクセス許可を持っている必要があります。
 
-- ワークスペース:*Microsoft.OperationalInsights/workspaces/write*
-- "*クラスター*" リソース:*Microsoft.OperationalInsights/clusters/write*
+- ワークスペース: *Microsoft.OperationalInsights/workspaces/write*
+- " *クラスター* " リソース: *Microsoft.OperationalInsights/clusters/write*
 
 請求の側面を除き、リンクされたワークスペースは、データ保有期間などの独自の設定を保持します。
 ワークスペースとクラスターは、異なるサブスクリプションに配置できます。 Azure Lighthouse を使用して両方のテナントを 1 つのテナントにマップすると、ワークスペースとクラスターが異なるテナントに配置される可能性があります。
@@ -373,11 +373,11 @@ Authorization: Bearer <token>
 
 ## <a name="delete-a-dedicated-cluster"></a>専用クラスターを削除する
 
-専用クラスター リソースは削除できます。 クラスターを削除する前に、すべてのワークスペースのリンクを解除する必要があります。 この操作を実行するには、"*クラスター*" リソースに対する "書き込み" アクセス許可が必要です。 
+専用クラスター リソースは削除できます。 クラスターを削除する前に、すべてのワークスペースのリンクを解除する必要があります。 この操作を実行するには、" *クラスター* " リソースに対する "書き込み" アクセス許可が必要です。 
 
 クラスター リソースが削除されると、物理クラスターは消去と削除のプロセスに入ります。 クラスターを削除すると、クラスターに格納されていたすべてのデータが削除されます。 このデータは、過去にクラスターにリンクされたワークスペースのものである可能性があります。
 
-過去 14 日以内に削除された "*クラスター*" リソースは、論理的な削除状態であり、そのデータで復旧できます。 "*クラスター*" リソースの削除によって、すべてのワークスペースが "*クラスター*" リソースから関連付け解除されているため、回復後にワークスペースを再関連付けする必要があります。 ユーザーが復旧操作を実行することはできません。Microsoft チャネルまたはサポートに問い合わせて、復旧要求を行ってください。
+過去 14 日以内に削除された " *クラスター* " リソースは、論理的な削除状態であり、そのデータで復旧できます。 " *クラスター* " リソースの削除によって、すべてのワークスペースが " *クラスター* " リソースから関連付け解除されているため、回復後にワークスペースを再関連付けする必要があります。 ユーザーが復旧操作を実行することはできません。Microsoft チャネルまたはサポートに問い合わせて、復旧要求を行ってください。
 
 削除後 14 日間クラスター リソース名は予約され、他のリソースでは使用できません。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: fa7d252246ed37160ba2a5cfcd90557df1375bc3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4f83500e539ff5254db290d156dfcf50ea60de14
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461534"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372559"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender for SQL servers on machines 
 
@@ -30,7 +30,7 @@ ms.locfileid: "92461534"
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|プレビュー|
+|リリース状態:|プレビュー<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |価格:|**Azure Defender for SQL servers on machines** は、 [価格ページ](security-center-pricing.md)に記載されているように課金されます|
 |保護される SQL のバージョン:|Azure SQL Server (Microsoft サポートの対象となるすべてのバージョン)|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov|

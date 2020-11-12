@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: fa28b299a33f5386edc6ce14c523d2c332b0767b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a42790e079985b003776b381c74f837b0ba619b1
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520506"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359206"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>チュートリアル: Tableau Online を構成し、自動ユーザー プロビジョニングに対応させる
 

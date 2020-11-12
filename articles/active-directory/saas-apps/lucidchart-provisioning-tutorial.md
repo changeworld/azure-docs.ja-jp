@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: d92db526e0fa3f3f8898ac2ea264d0b8f37be071
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e0b98f15e03552f27cdd1c9683bdd7e74a1c02df
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458321"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358692"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>チュートリアル:Lucidchart を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -53,7 +53,7 @@ ms.locfileid: "92458321"
 
 2. **[SCIM]** に移動します。
 
-      :::image type="content" source="./media/lucidchart-provisioning-tutorial/scim.png" alt-text="Lucidchart 管理コンソールのスクリーンショット。[Team]\(チーム\) メニューが強調表示され、開かれています。[Admin]\(管理\) の下の [App Integration]\(アプリの統合\) が強調表示されています。" border="false":::
+      :::image type="content" source="./media/lucidchart-provisioning-tutorial/scim.png" alt-text="Lucidchart 管理コンソールのスクリーンショット。大きな [SCIM] ボタンの中でテキスト [SCIM] が強調表示されており、[enabled]\(有効\) バナーが表示されています。" border="false":::
 
 3. 下にスクロールして **[Bearer token] (ベアラー トークン)** と **[Lucidchart Base URL] (Lucidchart ベース URL)** を表示します。 **[Bearer token] (ベアラー トークン)** をコピーして保存します。 この値を、Azure portal の LucidChart アプリケーションの [プロビジョニング] タブの **[シークレット トークン]** * フィールドに入力します。 
 

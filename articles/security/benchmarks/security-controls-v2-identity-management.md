@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e7447d03fc231d8d96b71c7d944a380c10add0d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b21bea924ee8eaed37246ce55feaf8243e3e7d4
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757938"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408739"
 ---
 # <a name="security-control-v2-identity-management"></a>セキュリティ コントロール V2:ID 管理
 
@@ -39,13 +39,13 @@ Azure AD を保護することは、組織のクラウド セキュリティ プ
 
 - [Azure AD テナントを定義する](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)  
 
-- [アプリケーションに外部 ID プロバイダーを使用する](/azure/active-directory/b2b/identity-providers)
+- [アプリケーションに外部 ID プロバイダーを使用する](../../active-directory/external-identities/identity-providers.md)
 
 - [Azure AD の ID セキュリティ スコアとは](../../active-directory/fundamentals/identity-secure-score.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [ID およびキー管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys) 
 
@@ -75,9 +75,9 @@ Azure AD を保護することは、組織のクラウド セキュリティ プ
 
 セキュリティ プリンシパルの登録に Azure Key Vault を使用する: authentication#authorize-a-security-principal-to-access-key-vault
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [ID およびキー管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -95,9 +95,9 @@ Azure AD シングル サインオン (SSO) を使用して、オンプレミス
 
 - [Azure AD でのアプリケーションの SSO を理解する](../../active-directory/manage-apps/what-is-single-sign-on.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -130,9 +130,9 @@ Azure AD 認証に従来のパスワード ベースの認証がまだ使用さ�
 
 - [Azure AD のパスワード保護を使用して不適切なパスワードを排除する](../../active-directory/authentication/concept-password-ban-bad.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -163,13 +163,13 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 - [Azure AD でアクティビティ レポートを監査する](../../active-directory/reports-monitoring/concept-audit-logs.md)
 
-- [Azure AD の危険なサインインを表示する方法](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD の危険なサインインを表示する方法](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](../../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](../../security-center/security-center-identity-access.md)
 
-- [Azure Security Center の脅威インテリジェンス保護モジュールでのアラート](/azure/security-center/alerts-reference)
+- [Azure Security Center の脅威インテリジェンス保護モジュールでのアラート](../../security-center/alerts-reference.md)
 
 - [Azure アクティビティ ログを Azure Monitor に統合する方法](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -177,9 +177,9 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 - [Azure Advanced Threat Protection](/azure-advanced-threat-protection/what-is-atp)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [アプリケーションのセキュリティと DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -199,9 +199,9 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 - [条件付きアクセスを使用して認証セッション管理を構成する](../../active-directory/conditional-access/howto-conditional-access-session-lifetime.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [ID およびキー管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -225,9 +225,9 @@ GitHub の場合、ネイティブ シークレット スキャン機能を使�
 
 - [GitHub シークレット スキャン](https://docs.github.com/github/administering-a-repository/about-secret-scanning)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [アプリケーションのセキュリティと DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -249,9 +249,9 @@ Azure AD アプリケーション プロキシを使用すると、Azure AD 条�
 
 - [Microsoft Cloud App Security のベスト プラクティス](/cloud-app-security/best-practices)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

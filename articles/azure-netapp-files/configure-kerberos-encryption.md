@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: edb084a3539f4ab25f328d4cc59ee4ef3279bf07
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 1ffbcc24a2ee386be1a8ce50b55375d5bd458df1
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217050"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410098"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Azure NetApp Files の NFSv4.1 の Kerberos 暗号化を構成する
 

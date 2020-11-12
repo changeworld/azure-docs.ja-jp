@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7b41105bafedb8eeaffe5f266f5dd824957c57e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eeda43b972e30c573743c8c59f75cfae61d7ee85
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441191"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413146"
 ---
 現時点では、Ultra Disk には次のような追加の制限があります。
 
@@ -34,6 +34,7 @@ Ultra ディスクが利用できるリージョンとそれに該当する可�
 |米国中南部    |単一 VM のみ (可用性セットと仮想マシン スケール セットはサポートされません)|
 |US Gov アリゾナ     |単一 VM のみ (可用性セットと仮想マシン スケール セットはサポートされません)|
 |US Gov バージニア州     |単一 VM のみ (可用性セットと仮想マシン スケール セットはサポートされません)|
+|US Gov テキサス     |単一 VM のみ (可用性セットと仮想マシン スケール セットはサポートされません)|
 |米国西部     |単一 VM のみ (可用性セットと仮想マシン スケール セットはサポートされません)        |
 |オーストラリア中部    |単一 VM のみ (可用性セットと仮想マシン スケール セットはサポートされません)|
 |オーストラリア東部     |3 つの可用性ゾーン         |

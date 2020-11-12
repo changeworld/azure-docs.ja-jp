@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9ada1956af2dabdb8e5deff33722af7a8691dd19
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 99e7a8fcb34c963cfab366f1913508a7ff3f4a51
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91295466"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408704"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>セキュリティ コントロール V2:ログと脅威検出
 
@@ -30,7 +30,7 @@ Azure Security Center の組み込みの脅威検出機能を使用します。�
 
 さらに、Azure Sentinel を使用して分析ルールを構築し、環境全体で特定の条件に一致する脅威を探します。 ルールにより、条件が一致したときにインシデントが生成されます。これにより、各インシデントを調査できます。 Azure Sentinel にサード パーティの脅威インテリジェンスをインポートして、脅威の検出機能を強化することもできます。 
 
-- [Azure Security Center での脅威の防止](../../security-center/threat-protection.md)
+- [Azure Security Center での脅威の防止](../../security-center/azure-defender.md)
 
 - [Azure Security Center セキュリティ アラート リファレンス ガイド](../../security-center/alerts-reference.md)
 
@@ -38,9 +38,9 @@ Azure Security Center の組み込みの脅威検出機能を使用します。�
 
 - [Azure Sentinel を使用したサイバー脅威インテリジェンス](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -73,11 +73,11 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 - [Azure Identity Protection を有効にする](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Azure Security Center での脅威の防止](../../security-center/threat-protection.md)
+- [Azure Security Center での脅威の防止](../../security-center/azure-defender.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -109,9 +109,9 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 - [DNS Analytics ソリューションを使用して DNS インフラストラクチャに関する分析情報を収集する](../../azure-monitor/insights/dns-analytics.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -137,11 +137,9 @@ Azure Security Center と Azure Policy を使用すると、監査ログ、セ�
 
 - [Azure Security Center のデータ収集について](../../security-center/security-center-enable-data-collection.md)
 
-- [マルウェア対策の監視の有効化と構成](../fundamentals/antimalware.md#enable-and-configure-antimalware-monitoring-using-powershell-cmdlets)
+**責任** : 共有
 
-**責任**: 共有
-
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -169,9 +167,9 @@ Azure アクティビティ ログを一元的なログ記録に統合してい�
 
 - [Azure Sentinel をオンボードする方法](../../sentinel/quickstart-onboard.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -195,9 +193,9 @@ Azure Monitor で、組織のコンプライアンス規則に従って Log Anal
 
 - [Azure Security Center のアラートと推奨事項のエクスポート](../../security-center/continuous-export.md)
 
-**責任**: Customer
+**責任** : Customer
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -223,13 +221,12 @@ Azure 内のリソースによって生成されるすべてのログでは、�
 
 - [Azure サービスの受信 UDP を無効にする方法](https://support.microsoft.com/help/4558520/how-to-disable-inbound-udp-for-azure-services)
 
-**責任**: 共有
+**責任** : 共有
 
-**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [ポリシーと標準](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 
 - [アプリケーションのセキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
-

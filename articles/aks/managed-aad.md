@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/26/2020
 ms.author: thomasge
-ms.openlocfilehash: d34505b1f36d6de77e2bb1df9aa98b7a14b5f44d
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: fdbef15bb7831fedd7c375d565e0cde10f9b9a9e
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171937"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380434"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS マネージド Azure Active Directory 統合
 
@@ -21,13 +21,6 @@ AKS マネージド Azure AD 統合は、Azure AD の統合エクスペリエン
 クラスター管理者は、ユーザーの ID またはディレクトリ グループのメンバーシップに基づいて、Kubernetes のロールベースのアクセス制御 (RBAC) を構成できます。 Azure AD 認証は、OpenID Connect によって AKS クラスターに提供されます。 OpenID Connect は、OAuth 2.0 プロトコル上に構築された ID レイヤーです。 OpenID Connect の詳細については、[OpenID Connect のドキュメント][open-id-connect]を参照してください。
 
 [Azure Active Directory 統合の概念に関するドキュメント](concepts-identity.md#azure-active-directory-integration)で、Azure AD 統合フローの詳細を確認してください。
-
-## <a name="region-availability"></a>利用可能なリージョン
-
-AKS マネージド Azure Active Directory 統合は、[AKS がサポートされている](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)パブリック リージョンで利用できます。
-
-* Azure Government は現在サポートされていません。
-* Azure China 21Vianet は現在サポートされていません。
 
 ## <a name="limitations"></a>制限事項 
 

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: a2113130cdfb41152b03e87606b757a3fa61793f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5f26746cbe88a01503c1d6c481a9a938a660c05a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521120"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359325"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>チュートリアル:TeamViewer を構成し、自動ユーザー プロビジョニングに対応させる
 

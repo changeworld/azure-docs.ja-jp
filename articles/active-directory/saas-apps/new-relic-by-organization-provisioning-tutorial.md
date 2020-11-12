@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: Zhchia
-ms.openlocfilehash: 63c2121f7a49e36960d2b67c17ef35eacee704dd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: ede5de4bb70e098372fc6ccdcdc6d06bc26f995d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522512"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359189"
 ---
 # <a name="tutorial-configure-new-relic-by-organization-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に New Relic by Organization を構成する
 
