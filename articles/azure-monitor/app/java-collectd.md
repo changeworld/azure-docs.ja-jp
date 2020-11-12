@@ -3,15 +3,17 @@ title: Linux での Java Web アプリ パフォーマンスの監視 | Microsof
 description: Application Insights の CollectD プラグインを使用した Java Web サイトのアプリケーション パフォーマンスの拡張
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: fd061d6dd1f87456b92a61c9a62caaf3ef3189b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63b64226c9e788e060298050a74d9009c8035b89
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761024"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379011"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd:Application Insights での Linux パフォーマンス メトリック
 
+> [!IMPORTANT]
+> Java アプリケーションを監視する際に推奨される方法は、コードを変更せずに自動インストルメンテーションを使用することです。 [Application Insights Java 3.0 エージェント](./java-in-process-agent.md)のガイドラインに従ってください。
 
 [Application Insights](./app-insights-overview.md) で Linux システムのパフォーマンス メトリックを探索するには、[collectd](https://collectd.org/) を Application Insights のプラグインと共にインストールします。 このオープンソース ソリューションでは、さまざまなシステムおよびネットワーク統計情報を収集します。
 
@@ -117,7 +119,7 @@ Application Insights の Write プラグインは特定の Read プラグイン�
 
 症状:収集されたログに、"AI: ...SyntaxError:Unexpected token N" を含むエラーが示されています。
 
-対処法:問題のある Write プラグインによって収集されるデータを除外します。 
+対処法: 問題のある Write プラグインによって収集されるデータを除外します。 
 
 <!--Link references-->
 
