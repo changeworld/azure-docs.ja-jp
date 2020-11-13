@@ -8,7 +8,6 @@
     - name: サポートされているデータ ストア
       href: supported-data-stores.md
 - name: クイックスタート
-  expanded: true
   items:
     - name: データの共有 - Azure portal
       href: share-your-data-portal.md
@@ -16,6 +15,7 @@
       displayName: Resource Manager
       href: share-your-data-arm.md
 - name: チュートリアル
+  expanded: true
   items:
     - name: データの共有
       href: share-your-data.md
