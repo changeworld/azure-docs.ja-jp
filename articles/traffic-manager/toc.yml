@@ -45,7 +45,7 @@
       items:
         - name: Traffic Manager で使用される国/地域の階層
           href: traffic-manager-geographic-regions.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -122,7 +122,7 @@
     - name: Ruby
       href: 'https://www.rubydoc.info/gems/azure_mgmt_traffic_manager'
     - name: Python
-      href: 'https://azure.github.io/azure-sdk-for-python/ref/Traffic-Manager.html'
+      href: 'https://azure.github.io/azure-sdk-for-python/trafficmanager.html'
     - name: REST
       href: 'https://msdn.microsoft.com/library/mt163667.aspx'
     - name: Resource Manager テンプレート
