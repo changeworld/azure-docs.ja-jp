@@ -12,12 +12,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: sstein
   ms.date: 05/27/2020
-  ms.openlocfilehash: c951ab3d68b7ad6920941b54b1eb939f88f61e79
-  ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+  ms.openlocfilehash: f8be335fed98d404687002f8c826e881d93e3a10
+  ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/28/2020
-  ms.locfileid: "92792499"
+  ms.lasthandoff: 11/12/2020
+  ms.locfileid: "94556490"
 landingContent:
 - title: Azure VM 上の SQL Server
   linkLists:
@@ -58,7 +58,7 @@ landingContent:
     - text: Azure portal を使用した管理
       url: windows/manage-sql-vm-portal.md
     - text: SQL VM リソースプロバイダーに登録する
-      url: windows/sql-vm-resource-provider-register.md
+      url: windows/sql-agent-extension-manually-register-single-vm.md
     - text: 自動修正
       url: windows/automated-patching.md
     - text: ライセンスの種類を変更する

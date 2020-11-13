@@ -287,7 +287,7 @@
               href: database/geo-distributed-application-configure-tutorial.md
             - name: アクティブな地理的レプリケーション
               href: database/active-geo-replication-configure-portal.md
-        - name: セキュリティ
+        - name: Security
           items:
             - name: セキュリティを構成する
               href: database/secure-database-tutorial.md
@@ -365,7 +365,7 @@
               href: database/sql-data-sync-best-practices.md
             - name: データ同期のトラブルシューティング
               href: database/sql-data-sync-troubleshoot.md
-        - name: セキュリティ
+        - name: Security
           items:
             - name: Azure SQL 監査
               href: database/auditing-overview.md
@@ -916,7 +916,7 @@
               href: /sql/database-engine/configure-windows/sql-server-service-broker?toc=%252fazure%252fazure-sql%252ftoc.json
             - name: データベース メール
               href: /sql/relational-databases/database-mail/database-mail?toc=%252fazure%252fazure-sql%252ftoc.json
-        - name: セキュリティ
+        - name: Security
           items:
             - name: パブリック エンドポイントのセキュリティ保護
               href: managed-instance/public-endpoint-overview.md
@@ -1059,11 +1059,11 @@
                   displayName: 'resource provider, registration, sql vm rp'
                   items:
                     - name: 自動登録
-                      href: virtual-machines/windows/sql-vm-resource-provider-automatic-registration.md
+                      href: virtual-machines/windows/sql-agent-extension-automatic-registration-all-vms.md
                     - name: 単一の VM
-                      href: virtual-machines/windows/sql-vm-resource-provider-register.md
+                      href: virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md
                     - name: 複数の VM の一括登録
-                      href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
+                      href: virtual-machines/windows/sql-agent-extension-manually-register-vms-bulk.md
             - name: 移行
               items:
                 - name: SQL Server データベースを VM へ
