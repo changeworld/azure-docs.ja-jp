@@ -11,8 +11,7 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: Azure NetApp Files を設定し、NFS ボリュームを作成する - Resource Manager テンプレート
-      displayName: Resource Manager
+    - name: Azure NetApp Files を設定し、NFS ボリュームを作成する
       href: azure-netapp-files-quickstart-set-up-account-create-volumes.md
 - name: 概念
   items:
@@ -114,8 +113,6 @@
           href: develop-rest-api-powershell.md
         - name: SDK、CLI ツール、ARM テンプレート
           href: azure-netapp-files-sdk-cli.md
-        - name: Azure NetApp Files のリソース プロバイダー エラーのトラブルシューティング
-          href: azure-netapp-files-troubleshoot-resource-provider-errors.md
     - name: トラブルシューティング
       items:
         - name: 容量プールのトラブルシューティング
@@ -126,6 +123,8 @@
           href: troubleshoot-dual-protocol-volumes.md
         - name: スナップショット ポリシーのトラブルシューティング
           href: troubleshoot-snapshot-policies.md
+        - name: リソース プロバイダーのエラーのトラブルシューティング
+          href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: リファレンス
   items:
     - name: REST

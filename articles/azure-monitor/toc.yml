@@ -180,6 +180,21 @@
               href: app/pricing.md
             - name: ログ データの使用量とコスト
               href: platform/manage-cost-storage.md
+    - name: Azure Monitor メトリック
+      items:
+        - name: 概要
+          displayname: Metrics
+          href: platform/data-platform-metrics.md
+        - name: メトリックス エクスプローラー
+          items:
+            - name: メトリックス エクスプローラーの概要
+              href: platform/metrics-getting-started.md
+            - name: メトリックス エクスプローラーの高度な機能
+              href: platform/metrics-charts.md
+            - name: メトリック グラフの例
+              href: platform/metric-chart-samples.md
+            - name: メトリック グラフのトラブルシューティング
+              href: platform/metrics-troubleshoot.md
     - name: Azure Monitor ログ
       items:
         - name: 概要
@@ -262,21 +277,10 @@
               href: platform/logs-export-logic-app.md
             - name: データ エクスプローラーを使用してエクスポートされたデータにクエリを実行する
               href: platform/azure-data-explorer-query-storage.md
-    - name: Azure Monitor メトリック
-      items:
-        - name: 概要
-          displayname: Metrics
-          href: platform/data-platform-metrics.md
-        - name: メトリックス エクスプローラー
-          items:
-            - name: メトリックス エクスプローラーの概要
-              href: platform/metrics-getting-started.md
-            - name: メトリックス エクスプローラーの高度な機能
-              href: platform/metrics-charts.md
-            - name: メトリック グラフの例
-              href: platform/metric-chart-samples.md
-            - name: メトリック グラフのトラブルシューティング
-              href: platform/metrics-troubleshoot.md
+            - name: Excel に送信
+              href: log-query/log-excel.md
+            - name: Power BI に送信
+              href: log-query/log-powerbi.md
     - name: プラットフォーム ログ
       items:
         - name: 概要
@@ -575,12 +579,16 @@
                   displayname: 'ilogger, logging, log'
                   href: app/ilogger.md
             - name: ASP.NET
-              displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
-              href: app/asp-net.md
-            - name: 非 HTTP アプリ/バックグラウンド アプリ
+              items:
+                - name: ASP.NET アプリの監視
+                  displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
+                  href: app/asp-net.md
+                - name: ASP.NET に関するトラブルシューティング
+                  href: app/asp-net-troubleshoot-no-data.md
+            - name: 非 HTTP/バックグラウンド アプリ
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
-            - name: .NET コンソール
+            - name: ASP.NET コンソール
               displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
               href: app/console.md
             - name: Java
@@ -590,18 +598,10 @@
                   href: app/java-get-started.md
                 - name: ログ トレース
                   href: app/java-trace-logs.md
-                - name: Unix メトリック
-                  href: app/java-collectd.md
                 - name: 依存関係
                   href: app/java-agent.md
                 - name: テレメトリのフィルター処理
                   href: app/java-filter-telemetry.md
-                - name: Micrometer メトリック
-                  displayname: java
-                  href: app/micrometer-java.md
-                - name: Spring Boot アプリ
-                  displayname: java
-                  href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
                 - name: トラブルシューティング
                   href: app/java-troubleshoot.md
             - name: Node.js
@@ -637,8 +637,6 @@
             - name: Application Insights API の概要
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
-            - name: ASP.NET に関するトラブルシューティング
-              href: app/asp-net-troubleshoot-no-data.md
             - name: Application Insights の削除
               href: app/remove-application-insights.md
         - name: コード不要の監視
@@ -1241,6 +1239,8 @@
               href: app/release-notes.md
             - name: Web アプリ拡張機能
               href: app/web-app-extension-release-notes.md
+            - name: スナップショット デバッガー
+              href: app/snapshot-collector-release-notes.md
         - name: データ モデル
           items:
             - name: 概要
@@ -1323,6 +1323,11 @@
           href: platform/resource-logs-blob-format.md
         - name: Key Vault Analytics (非推奨)
           href: insights/azure-key-vault-deprecated.md
+        - name: Unix メトリック
+          href: app/java-collectd.md
+        - name: Micrometer メトリック
+          displayname: java
+          href: app/micrometer-java.md
         - name: ビュー
           items:
             - name: ビュー デザイナー

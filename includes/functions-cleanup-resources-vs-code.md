@@ -2,25 +2,21 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 09/28/2020
+ms.date: 10/20/2020
 ms.author: glenga
-ms.openlocfilehash: 0d83f3a92efe7bddcefdeebb5b6d580caf749206
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: af009a3f04f17d9d7e518d2dd02343a8ed54e342
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91408565"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93424821"
 ---
-1. Visual Studio Code で、<kbd>F1</kbd> キーを押してコマンド パレットを開きます。 コマンド パレットで、`Azure Functions: Open in portal` を検索して選択します。
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-1. 関数アプリを選択し、<kbd>Enter</kbd> キーを押します。 その関数アプリのページが Azure portal で開きます。
+この後、[次の手順](#next-steps)に進んで Azure Storage キュー バインドを関数に追加する場合、既存の作業をベースにするので、リソースはすべてそのままにしておく必要があります。
 
-1. **[概要]** タブで、 **[リソース グループ]** の横にある名前付きリンクを選択します。
+それ以外の場合は、追加コストの発生を避けるために、次の手順に従って関数アプリとその関連リソースを削除してください。
 
-   :::image type="content" source="./media/functions-cleanup-resources-vs-code/functions-app-delete-resource-group.png" alt-text="関数アプリのページから削除するリソース グループを選択する。":::
+[!INCLUDE [functions-cleanup-resources-vs-code-inner.md](functions-cleanup-resources-vs-code-inner.md)]
 
-1. **[リソース グループ]** ページで、含まれているリソースの一覧を確認し、削除するものであることを確認します。
- 
-1. **[リソース グループの削除]** を選択し、指示に従います。
-
-   削除には数分かかることがあります。 実行されると、通知が数秒間表示されます。 ページの上部にあるベルのアイコンを選択して、通知を表示することもできます。
+Functions のコストについて詳しくは、「[従量課金プランのコストの見積もり](../articles/azure-functions/functions-consumption-costs.md)」を参照してください。

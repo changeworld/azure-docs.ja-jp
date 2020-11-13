@@ -76,6 +76,8 @@
       href: concepts/pricing.md
     - name: プライバシー
       href: concepts/privacy.md
+    - name: ID モデル
+      href: concepts/identity-model.md
     - name: 認証
       href: concepts/authentication.md
     - name: イベント処理

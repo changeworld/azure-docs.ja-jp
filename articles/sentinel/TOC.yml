@@ -178,6 +178,8 @@
           href: connect-threat-intelligence.md
         - name: Azure Stack VM の接続
           href: connect-azure-stack.md
+        - name: データ コネクタの正常性を監視する
+          href: monitor-data-connector-health.md
     - name: ユーザーとエンティティの動作分析の有効化
       href: enable-entity-behavior-analytics.md
     - name: 複数のテナントの管理 (MSSP)

@@ -68,7 +68,7 @@
           href: tutorial-migrate-gcp-virtual-machines.md
 - name: 概念
   items:
-    - name: Azure Migrate を使用した移行計画の作成
+    - name: 移行計画を作成する
       href: concepts-migration-planning.md
     - name: サポート マトリックス
       items:

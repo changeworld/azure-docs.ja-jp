@@ -7,17 +7,17 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/05/2020
-ms.openlocfilehash: bda186f6bb45250763e439b77b4d3af988574401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/05/2020
+ms.openlocfilehash: e763dbd15ea443ad3c8f6295b37999c748db7e6c
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935884"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422333"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Cognitive Search インデックスの文字列フィールドに言語アナライザーを追加する
 
-"*言語アナライザー*" は、[テキスト アナライザー](search-analyzers.md)の固有の種類であり、対象言語の言語規則を使用して字句解析を実行します。 すべての検索可能フィールドには、**analyzer** プロパティがあります。 翻訳された文字列でコンテンツが構成されている場合 (英語と中国語のテキストが別のフィールドの場合など)、各フィールドで言語アナライザーを指定して、これらのアナライザーの豊富な言語機能にアクセスできます。
+" *言語アナライザー* " は、 [テキスト アナライザー](search-analyzers.md)の固有の種類であり、対象言語の言語規則を使用して字句解析を実行します。 すべての検索可能フィールドには、 **analyzer** プロパティがあります。 翻訳された文字列でコンテンツが構成されている場合 (英語と中国語のテキストが別のフィールドの場合など)、各フィールドで言語アナライザーを指定して、これらのアナライザーの豊富な言語機能にアクセスできます。
 
 ## <a name="when-to-use-a-language-analyzer"></a>言語アナライザーを使用する場合
 
@@ -57,7 +57,7 @@ Azure Cognitive Search では、Lucene によって提供される 35 個の言�
 言語アナライザーはそのままで使用されます。 インデックス定義の各フィールドについて、言語と言語スタック (Microsoft または Lucene) を指定するアナライザー名を **analyzer** プロパティに設定できます。 そのフィールドに対してインデックスの作成および検索を行う場合は、同じアナライザーが適用されます。 たとえば、英語、フランス語、スペイン語によるホテルの説明を含む個別のフィールドを同じインデックスに同時に作成できます。
 
 > [!NOTE]
-> インデックス作成時とフィールドのクエリ時とで異なる言語アナライザーを使用することはできません。 この機能は、[カスタムアナライザー](index-add-custom-analyzers.md) 用に予約されています。 このため、**searchAnalyzer** プロパティまたは **indexAnalyzer** プロパティを言語アナライザーの名前に設定しようとすると、REST API によってエラー応答が返されます。 代わりに、**アナライザー** プロパティを使用する必要があります。
+> インデックス作成時とフィールドのクエリ時とで異なる言語アナライザーを使用することはできません。 この機能は、[カスタムアナライザー](index-add-custom-analyzers.md) 用に予約されています。 このため、 **searchAnalyzer** プロパティまたは **indexAnalyzer** プロパティを言語アナライザーの名前に設定しようとすると、REST API によってエラー応答が返されます。 代わりに、 **アナライザー** プロパティを使用する必要があります。
 
 **searchFields** クエリ パラメーターを使用して、クエリ内で検索対象とする言語固有のフィールドを指定します。 アナライザー プロパティを含むクエリの例は、「[ドキュメントの検索](/rest/api/searchservice/search-documents)」で確認できます。 
 
@@ -127,10 +127,10 @@ Azure Cognitive Search では、Lucene によって提供される 35 個の言�
 |ウルドゥ語|ur.microsoft||  
 |ベトナム語|vi.microsoft||  
 
- 名前に **Lucene** が含まれるすべてのアナライザーでは、[Apache Lucene の言語アナライザー](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )が利用されています。
+ 名前に **Lucene** が含まれるすべてのアナライザーでは、 [Apache Lucene の言語アナライザー](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )が利用されています。
 
 ## <a name="see-also"></a>関連項目  
 
 + [インデックスの作成 &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/create-index)  
 
-+ [AnalyzerName クラス](/dotnet/api/microsoft.azure.search.models.analyzername)
++ [LexicalAnalyzerName Class](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername)

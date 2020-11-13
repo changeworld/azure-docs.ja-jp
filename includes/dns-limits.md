@@ -2,14 +2,14 @@
 author: rothja
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 2/14/2020
+ms.date: 11/05/2020
 ms.author: rohink
-ms.openlocfilehash: 0f7187300ec96ce417866c4fb8fa02783c1da63a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7011b92485c56187021c9043ba84bc85e448a98f
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86515882"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94329589"
 ---
 **パブリック DNS ゾーン**
 
@@ -33,7 +33,7 @@ ms.locfileid: "86515882"
 | 自動登録が有効なプライベート DNS ゾーンあたりの仮想ネットワーク リンク数 |100|
 | 自動登録が有効な状態で仮想ネットワークがリンクできるプライベート DNS ゾーンの数 |1|
 | 仮想ネットワークがリンクできるプライベート DNS ゾーンの数 |1000|
-| 1 秒あたりに仮想マシンから Azure DNS リゾルバーに送信される DNS クエリの数 |500 <sup>1</sup> |
+| 1 秒あたりに仮想マシンから Azure DNS リゾルバーに送信される DNS クエリの数 |1000 <sup>1</sup> |
 | 仮想マシンごとのキューに登録された (保留中の応答) DNS クエリの最大数 |200 <sup>1</sup> |
 
 <sup>1</sup>これらの制限は、仮想ネットワーク レベルではなく、個々の仮想マシンごとに適用されます。 これらの制限を超える DNS クエリは削除されます。

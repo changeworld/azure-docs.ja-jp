@@ -36,6 +36,20 @@
       href: quickstart-multi-container.md
 - name: チュートリアル
   items:
+    - name: アプリ アクセス ストレージと Microsoft Graph をセキュリティで保護する
+      items:
+        - name: 概要
+          href: scenario-secure-app-overview.md
+        - name: App Service 認証を設定する
+          href: scenario-secure-app-authentication-app-service.md
+        - name: アプリ アクセス ストレージをセキュリティで保護する
+          href: scenario-secure-app-access-storage.md
+        - name: アプリ アクセス Microsoft Graph をユーザーとしてセキュリティで保護する
+          href: scenario-secure-app-access-microsoft-graph-as-user.md
+        - name: アプリ アクセス Microsoft Graph をアプリとしてセキュリティで保護する
+          href: scenario-secure-app-access-microsoft-graph-as-app.md
+        - name: リソースをクリーンアップする
+          href: scenario-secure-app-clean-up-resources.md
     - name: アプリと DB
       items:
         - name: .NET Core と SQL DB
@@ -94,7 +108,7 @@
       href: deploy-best-practices.md
     - name: Security
       items:
-        - name: 推奨事項
+        - name: Recommendations
           href: security-recommendations.md
         - name: 認証と権限承認
           href: overview-authentication-authorization.md

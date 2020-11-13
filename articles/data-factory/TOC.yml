@@ -167,7 +167,7 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 統合ランタイム
       href: concepts-integration-runtime.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -451,6 +451,8 @@
           href: copy-activity-fault-tolerance.md
         - name: データ整合性の検証
           href: copy-activity-data-consistency.md
+        - name: コピー アクティビティ ログ
+          href: copy-activity-log.md
         - name: フォーマットと圧縮のサポート (レガシ)
           href: supported-file-formats-and-compression-codecs-legacy.md
     - name: データを変換する
@@ -578,7 +580,7 @@
           href: control-flow-system-variables.md
         - name: マッピング データ フローをパラメーター化する
           href: parameters-data-flow.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: データ移動のセキュリティに関する考慮事項
           href: data-movement-security-considerations.md
