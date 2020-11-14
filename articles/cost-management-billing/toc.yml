@@ -122,6 +122,10 @@
           href: manage/azure-plan-subscription-transfer-partners.md
         - name: Azure EA ポータルの概要
           href: manage/ea-portal-get-started.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
 - name: 操作方法ガイド
   items:
     - name: Cost Management と Billing を構成する

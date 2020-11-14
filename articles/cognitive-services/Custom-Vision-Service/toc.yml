@@ -66,15 +66,15 @@
     - name: SDK
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet'
+          href: /dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable'
+          href: /java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable
         - name: Node.js - トレーニング
-          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest'
+          href: /javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest
         - name: Node.js - 予測
-          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest'
+          href: /javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest
         - name: Python
-          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python'
+          href: /python/api/overview/azure/cognitiveservices/customvision?view=azure-python
         - name: Go - トレーニング
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training'
         - name: Go - 予測
@@ -84,7 +84,7 @@
     - name: サポートとヘルプのオプション
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/custom-vision-service/context/context
     - name: サンプル
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=vision'
+      href: /samples/browse/?products=azure&term=vision
     - name: 制限とクォータ
       href: limits-and-quotas.md
     - name: UserVoice

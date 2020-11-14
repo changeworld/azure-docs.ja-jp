@@ -36,6 +36,10 @@
       href: front-door-quickstart-template-samples.md
 - name: 概念
   items:
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: バック エンドとバックエンド プール
       href: front-door-backend-pool.md
     - name: Front Door でのキャッシュ

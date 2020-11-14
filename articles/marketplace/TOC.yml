@@ -143,10 +143,12 @@
               href: azure-vm-create-properties.md
             - name: VM オファーのリストを構成する
               href: azure-vm-create-listing.md
-            - name: VM プランを作成する
-              href: azure-vm-create-plans.md
             - name: プレビュー対象ユーザーの追加
               href: azure-vm-create-preview.md
+            - name: VM プランを作成する
+              href: azure-vm-create-plans.md
+            - name: CSP を通して再販する
+              href: azure-vm-create-resell-csp.md
             - name: VM の技術資産の作成
               items:
                 - name: 承認済みのベースから VM を作成する

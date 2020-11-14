@@ -85,12 +85,14 @@
       href: Tutorials/storage-lab-tutorial.md
 - name: 概念
   items:
-    - name: コンテンツ タグ
-      href: concept-tagging-images.md
+    - name: 光学式文字認識 (OCR)
+      href: concept-recognizing-text.md
     - name: オブジェクトの検出
       href: concept-object-detection.md
     - name: ブランド検出
       href: concept-brand-detection.md
+    - name: コンテンツ タグ
+      href: concept-tagging-images.md
     - name: 画像の分類
       href: concept-categorizing-images.md
     - name: 画像の説明
@@ -105,8 +107,6 @@
       href: concept-detecting-color-schemes.md
     - name: スマート トリミングされたサムネイル
       href: concept-generating-thumbnails.md
-    - name: 光学式文字認識 (OCR)
-      href: concept-recognizing-text.md
     - name: 成人向けコンテンツの検出
       href: concept-detecting-adult-content.md
 - name: 責任ある AI

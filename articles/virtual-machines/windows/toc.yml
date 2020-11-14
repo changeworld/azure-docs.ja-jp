@@ -46,7 +46,7 @@
     - name: 13 - VM の監視
       href: tutorial-monitor.md
     - name: 14 - VM のセキュリティの管理
-      href: tutorial-azure-security.md
+      href: ../tutorial-azure-security.md
     - name: 15 - SQL\IIS\.NET スタックのインストール
       href: tutorial-iis-sql.md
     - name: 16 - SSL による Web サーバーのセキュリティ保護
@@ -648,8 +648,16 @@
         - name: OS ディスクの交換
           href: os-disk-swap.md
         - name: VM にタグを付ける
-          href: tag.md
-        - name: 時間同期
+          items:
+            - name: ポータル
+              href: ../tag-portal.md
+            - name: PowerShell
+              href: ../tag-powershell.md
+            - name: CLI
+              href: ../tag-cli.md
+            - name: Template
+              href: ../tag-template.md
+            - name: 時間同期
           href: time-sync.md
         - name: VM でのスクリプトの実行
           href: run-scripts-in-vm.md

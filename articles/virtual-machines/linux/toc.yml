@@ -45,7 +45,7 @@
     - name: 13 - VM の監視
       href: tutorial-monitor.md
     - name: 14 - VM のセキュリティの管理
-      href: tutorial-azure-security.md
+      href: ../tutorial-azure-security.md
     - name: 15a - Jenkins でビルドする
       href: /azure/developer/jenkins/pipeline-with-github-and-docker
     - name: 15b - Jenkins を Azure DevOps と統合する
@@ -687,7 +687,15 @@
         - name: 時間同期
           href: time-sync.md
         - name: VM にタグを付ける
-          href: tag.md
+          items:
+            - name: CLI
+              href: ../tag-cli.md
+            - name: ポータル
+              href: ../tag-portal.md
+            - name: PowerShell
+              href: ../tag-powershell.md
+            - name: テンプレート
+              href: ../tag-template.md
         - name: VM でのスクリプトの実行
           href: run-scripts-in-vm.md
           items:
