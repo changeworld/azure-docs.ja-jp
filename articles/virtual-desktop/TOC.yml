@@ -112,12 +112,22 @@
   items:
     - name: 認証
       href: authentication.md
-    - name: 安全な URL リスト
-      href: safe-url-list.md
     - name: Windows Virtual Desktop の環境
       href: environment-setup.md
-    - name: ユーザー接続の待ち時間の特定
-      href: connection-latency.md
+    - name: ネットワーク接続
+      items:
+        - name: ネットワーク接続について
+          href: network-connectivity.md
+        - name: RDP Shortpath
+          href: shortpath.md
+        - name: サービスの品質 (QoS) を実装する
+          href: rdp-quality-of-service-qos.md
+        - name: 安全な URL リスト
+          href: safe-url-list.md
+        - name: 帯域幅に関する考慮事項
+          href: rdp-bandwidth.md
+        - name: ユーザー接続の待ち時間の特定
+          href: connection-latency.md
     - name: Windows Virtual Desktop における委任されたアクセス
       href: delegated-access-virtual-desktop.md
     - name: ホスト プールの負荷分散方法
@@ -168,8 +178,6 @@
       href: linux-overview.md
     - name: サポートされる RDP ファイルの設定
       href: /windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context
-    - name: ネットワーク ガイダンス
-      href: /windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context
     - name: 仮想マシンのサイズ指定ガイダンス
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Azure コマンド ライン インターフェイス (CLI)

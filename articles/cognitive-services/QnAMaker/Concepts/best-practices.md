@@ -4,13 +4,13 @@ description: 以下のベスト プラクティスを利用してナレッジ �
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 02/15/2020
-ms.openlocfilehash: 15cb1391cb6482401c2a091a4d5c0e9d819ba52d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 2f87f5c7e43757db476153db93d6ecc5082dde89
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777022"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376759"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースのベスト プラクティス
 
@@ -116,11 +116,17 @@ QnA Maker でサポートされている優先度付け機能を効果的に活�
 [メタデータ](../How-To/edit-knowledge-base.md)は、クライアント アプリケーションがすべての回答を取得する代わりにメタデータ タグに基づいてユーザー クエリの結果を絞り込む必要があることを認識する機能を追加します。 ナレッジ ベースの回答は、問い合わせが同じであっても、メタデータ タグに基づいて異なる場合があります。 たとえば、*"where is parking located"* (駐車場はどこですか) という問いに対し、レストランの支店の場所が違えば、つまり、*Location: Seattle* (所在地: シアトル) のときと、*Location: Redmond* (所在地: レドモンド) のときで答えが変わります。
 
 ### <a name="use-synonyms"></a>同義語を使用する
-英語では同義語をある程度サポートしていますが、さまざま言い方があるキーワードに同義語を追加するには、[Alterations API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) を介して、大文字と小文字が区別されない言葉の変更機能を使用します。 同義語は QnA Maker サービスレベルで追加され、サービス内の全ナレッジ ベースで共有されます。
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
+英語では同意語をある程度サポートしていますが、さまざま言い方があるキーワードに同意語を追加するには、[Alterations API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) を介して、大文字と小文字が区別されない言葉の変更機能を使用します。 同義語は QnA Maker サービスレベルで追加され、**サービス内の全ナレッジ ベースで共有されます**。
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+英語では同意語をある程度サポートしていますが、さまざま言い方があるキーワードに同意語を追加するには、[Alterations API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) を介して、大文字と小文字が区別されない言葉の変更機能を使用します。 QnA Maker マネージド (プレビュー) の同意語は **ナレッジ ベースごとに追加** されます。
 
 |元の語|シノニム|
 |--|--|
 |買う|購入する<br>net 銀行<br>ネット バンキング|
+
+---
 
 ### <a name="use-distinct-words-to-differentiate-questions"></a>質問を区別する目的で明確な言葉を使う
 QnA Maker のランク付けアルゴリズムはユーザーからの問い合わせとナレッジ ベースに登録されている質問を一致させるアルゴリズムですが、このアルゴリズムはそれぞれの質問が異なるニーズに対処する場合に最も効果を発揮します。 複数の質問で同じ言葉が繰り返し使われていると、その言葉が含まれる問い合わせが届いたとき、正しい回答が選ばれる可能性が下がります。
@@ -129,7 +135,7 @@ QnA Maker のランク付けアルゴリズムはユーザーからの問い合�
 
 |QnA|
 |--|
-|駐車*場所*はどこですか|
+|駐車 *場所* はどこですか|
 |ATM の "*場所*" はどこですか|
 
 これら 2 つの QnA は非常によく似た語で表現されていますが、この類似性のために、「*`<x>` の場所はどこですか*」のように表現されるユーザーの問い合わせの多くが非常に近いスコアになる可能性があります。 代わりに、ナレッジ ベース内の多くの質問に存在するかもしれない「場所」のような語を避け、"*駐車場はどこですか*" や "*ATM はどこですか*" のような質問で違いを明確にしてください。

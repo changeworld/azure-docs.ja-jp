@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: cad20f589bb5a6d3e73481081d9fe532381ab647
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 3fd1d9e708a5f1a500440f20c2947ddfe4bc7460
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827401"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368918"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>クイックスタート: Azure portal を使用して Cognitive Services リソースを作成する
 
@@ -64,9 +64,9 @@ Azure Cognitive Services は、開発者が直接的な人工知能 (AI) また�
     | [Ink Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [Text Analytics](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Metrics Advisor](https://go.microsoft.com/fwlink/?linkid=2142156)                    | [Bing Spell Check](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
     |           |                         | [Translator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [Bing Autosuggest](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
 
-    ***
+    **_
 
-3. **[作成]** ページで、次の情報を指定します。
+3. *[作成]* ページで、次の情報を指定します。
 
     #### <a name="multi-service-resource"></a>[マルチサービス リソース](#tab/multiservice)
 
@@ -96,13 +96,13 @@ Azure Cognitive Services は、開発者が直接的な人工知能 (AI) また�
 
     **Create** をクリックしてください。
 
-    ***
+    **_
 
 [!INCLUDE [Register Azure resource for subscription](./includes/register-resource-subscription.md)]
 
 ## <a name="get-the-keys-for-your-resource"></a>リソースのキーを取得する
 
-1. リソースが正常にデプロイされたら、 **[次の手順]** の下にある **[リソースに移動]** をクリックします。
+1. リソースが正常にデプロイされたら、 **[次の手順]** で *[リソースに移動]* をクリックします。
 
     ![Cognitive Services を検索する](media/cognitive-services-apis-create-account/resource-next-steps.png)
 
@@ -123,7 +123,7 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 ## <a name="see-also"></a>関連項目
 
 * [Azure Cognitive Services に対する要求の認証](authentication.md)
-* [Azure Cognitive Services とは](Welcome.md)
+* [Azure Cognitive Services とは](./what-are-cognitive-services.md)
 * [Azure Management クライアント ライブラリを使用して新しいリソースを作成する](.\cognitive-services-apis-create-account-client-library.md)
 * [自然言語のサポート](language-support.md)
 * [Docker コンテナーのサポート](cognitive-services-container-support.md)

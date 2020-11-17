@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: オンプレミス, Docker, コンテナー, 感情分析, 自然言語処理
-ms.openlocfilehash: 42b22c94f8f2eed0514906422fe9f1d5e7cd12e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43684e814dd0049a08eacdce50ca6eef17fb7f97
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461497"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363937"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics コンテナーをインストールして実行する
 
@@ -32,7 +32,7 @@ ms.locfileid: "91461497"
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 > [!IMPORTANT]
-> 無料アカウントは 1 か月あたり 5,000 トランザクションまでに制限されており、**Free** と **Standard** <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">価格レベル <span class="docon docon-navigate-external x-hidden-focus"></span></a> のみがコンテナーに対して有効です。 トランザクションの要求レートの詳細については、「[データ制限](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)」を参照してください。
+> 無料アカウントは 1 か月あたり 5,000 トランザクションまでに制限されており、**Free** と **Standard** <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">価格レベル <span class="docon docon-navigate-external x-hidden-focus"></span></a> のみがコンテナーに対して有効です。 トランザクションの要求レートの詳細については、「[データ制限](../overview.md#data-limits)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -89,7 +89,7 @@ Text Analytics のコンテナー イメージは Microsoft コンテナー レ�
 
 [!INCLUDE [docker-pull-health-container](../includes/docker-pull-health-container.md)]
 
-***
+**_
 
 ## <a name="how-to-use-the-container"></a>コンテナーを使用する方法
 
@@ -103,7 +103,7 @@ Text Analytics のコンテナー イメージは Microsoft コンテナー レ�
 コンテナーを実行するには、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを使用します。 コンテナーは一度実行すると、お客様が停止するまで動作し続けます。
 
 > [!IMPORTANT]
-> * 以降のセクションの Docker コマンドには、行連結文字としてバック スラッシュ (`\`) が使用されています。 お客様のホスト オペレーティング システムの要件に応じて、置換または削除してください。 
+> 以降のセクションの Docker コマンドには、行連結文字としてバック スラッシュ (`\`) が使用されています。 お客様のホスト オペレーティング システムの要件に応じて、置換または削除してください。 
 > * コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing)」を参照してください。
 > * 感情分析 v3 コンテナーが一般公開されました。これにより、応答で[センチメント ラベル](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)が返されます。 キー フレーズ抽出コンテナーと言語検出コンテナーでは API の v2 が使用されます。それらはプレビュー段階にあります。
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 341d24e73c9e07bb3155535d98a88145643c1692
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 889a70005f1cbabaad525147b4661ea04886138a
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201785"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445610"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>モデル変換 REST API を使用する
 
@@ -130,6 +130,21 @@ JSON ドキュメントにラップされている実行中の変換の ID を�
 - "Failure"
 
 状態が "Failure" の場合は、エラー情報を含む "message" サブフィールドを含む "error" フィールドが追加されます。 追加のログは、出力コンテナーにアップロードされます。
+
+## <a name="list-conversions"></a>一覧の変換
+
+アカウントに対するすべての変換の一覧を取得するには、次のインターフェイスを使用します。
+
+| エンドポイント | Method |
+|-----------|:-----------|
+| /v1/accounts/**accountID**/conversions?skiptoken=**skipToken** | GET |
+
+| パラメーター | 必須 |
+|-----------|:-----------|
+| accountID | はい |
+| skiptoken | いいえ |
+
+変換の配列とその詳細を含む json ドキュメントを返します。 このクエリから、一度に最大 50 個の変換が返されます。 取得する変換がさらにある場合、応答には、次の結果セットを取得するクエリを実行できる skipToken を含む **nextLink** プロパティが含まれます。
 
 ## <a name="next-steps"></a>次のステップ
 

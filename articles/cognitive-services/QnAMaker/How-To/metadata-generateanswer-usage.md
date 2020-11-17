@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3a67f16b53c2754e2ac5ae1df467aac7726f358e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85abefc8437936ffaedc4811bdd9bed0be32786f
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321001"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375506"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API およびメタデータを使って回答を取得する
 
@@ -50,7 +50,15 @@ QnA エンティティにはそれぞれ一意の永続 ID があります。 ID
     ![ナレッジ ベースのスクリーンショット](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
 1. GenerateAnswer エンドポイントの詳細を取得します。
 
+    # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
+
     ![エンドポイントの詳細のスクリーンショット](../media/qnamaker-how-to-metadata-usage/view-code.png)
+
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+
+    ![管理対象のエンドポイントの詳細のスクリーンショット](../media/qnamaker-how-to-metadata-usage/view-code-managed.png)
+
+    ---
 
 エンドポイントの詳細は、ナレッジ ベースの **[設定]** タブから取得することもできます。
 
@@ -128,7 +136,7 @@ JSON 本文の例は、次のようになります。
 
 ## <a name="use-qna-maker-with-a-bot-in-c"></a>C# のボットで QnA Maker を使用する
 
-Bot Framework では、[getAnswer API](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync?view=botbuilder-dotnet-stable#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__) を使用して QnA Maker のプロパティへのアクセスを提供します。
+Bot Framework では、[getAnswer API](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync?view=botbuilder-dotnet-stable#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__&preserve-view=true) を使用して QnA Maker のプロパティへのアクセスを提供します。
 
 ```csharp
 using Microsoft.Bot.Builder.AI.QnA;
@@ -147,7 +155,7 @@ var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnCont
 
 ## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>Node.js のボットで QnA Maker を使用する
 
-Bot Framework では、[getAnswer API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-) を使用して QnA Maker のプロパティへのアクセスを提供します。
+Bot Framework では、[getAnswer API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-&preserve-view=true) を使用して QnA Maker のプロパティへのアクセスを提供します。
 
 ```javascript
 const { QnAMaker } = require('botbuilder-ai');
@@ -279,7 +287,7 @@ GenerateAnswer への応答には、一致した質問と回答のペアの対�
 
 ## <a name="next-steps"></a>次のステップ
 
-**[発行]** ページでは、Postman または cURL を使用して[回答を生成する](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md)ための情報も提供されます。
+**[発行]** ページでは、Postman または cURL を使用して [回答を生成する](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md)ための情報も提供されます。
 
 > [!div class="nextstepaction"]
 > [ナレッジ ベースに関する分析結果の取得](../how-to/get-analytics-knowledge-base.md)

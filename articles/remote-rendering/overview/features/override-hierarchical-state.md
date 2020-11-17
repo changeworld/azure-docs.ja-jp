@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bb120a533e4d11b34bb9712bf0164cec5a7728ce
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 851a87885ac765c829e8c2be9fd1205e22906ca9
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207735"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445156"
 ---
 # <a name="hierarchical-state-override"></a>階層状態のオーバーライド
 
@@ -40,14 +40,21 @@ ms.locfileid: "92207735"
   > [!IMPORTANT]
   > *TileBasedComposition* [レンダリング モード](../../concepts/rendering-modes.md)が使用されている場合にのみ、透過効果が働きます。
 
+* **`Shell`** :ジオメトリは、透明で彩度の低いシェルとしてレンダリングされます。 このモードを使用すると、シェイプの意味と相対的な位置を維持しながら、シーンの重要でない部分をフェードアウトすることができます。 シェル レンダリングの外観を変更するには、[ShellRenderingSettings](shell-effect.md) の状態を使用します。 青いスプリングを除き、完全にシェルレンダリングされている車のモデルについては、次の画像を参照してください。
+
+  ![特定のオブジェクトをフェードアウトするために使用されるシェル モード](./media/shell.png)
+
+  > [!IMPORTANT]
+  > *TileBasedComposition* [レンダリング モード](../../concepts/rendering-modes.md)が使用されている場合にのみ、シェルの効果が働きます。
+
 * **`Selected`** :ジオメトリが、[選択アウトライン](outlines.md)でレンダリングされます。
 
   ![選択したパーツを強調表示するために使用されるアウトライン オプション](./media/selection-outline.png)
 
 * **`DisableCollision`** :ジオメトリには、[空間クエリ](spatial-queries.md)が適用されません。 **`Hidden`** フラグによる競合状態フラグへの影響はないため、これらの 2 つのフラグを同時に設定することがよくあります。
 
-* **`UseCutPlaneFilterMask`** :個々のフィルター ビット マスクを使用して、切断面の選択を制御します。 このフラグによって、個々のフィルター マスクを使用する必要があるか、その親から継承する必要があるかが決まります。 フィルター ビット マスク自体は、`CutPlaneFilterMask` プロパティを使用して設定されます。 フィルター処理のしくみの詳細については、[選択的切断面の段落](cut-planes.md#selective-cut-planes)を参照してください。
-![選択的切断面](./media/selective-cut-planes.png)
+* **`UseCutPlaneFilterMask`** :個々のフィルター ビット マスクを使用して、切断面の選択を制御します。 このフラグによって、個々のフィルター マスクを使用する必要があるか、その親から継承する必要があるかが決まります。 フィルター ビット マスク自体は、`CutPlaneFilterMask` プロパティを使用して設定されます。 フィルター処理のしくみの詳細については、[選択的切断面の段落](cut-planes.md#selective-cut-planes)を参照してください。 次の例を参照してください。タイヤとリムのみが切り取られ、シーンの残りの部分は影響を受けません。
+![選択的切断面](./media/selective-cut-planes-hierarchical-override.png)
 
 
 > [!TIP]
@@ -101,7 +108,7 @@ component->SetState(
 
 `HierarchicalStateOverrideComponent` 自体のインスタンスで、ランタイム オーバーヘッドが大幅に増えることはありません。 ただし、アクティブなコンポーネントの数は常に少なくしておくことをお勧めします。 たとえば、選択したオブジェクトが強調表示される選択システムを実装している場合、強調表示が取り除かれたときにコンポーネントを削除することをお勧めします。 コンポーネントをニュートラルな機能で持ち続けると、たちまち膨れ上がる可能性があります。
 
-透明なレンダリングでは、標準のレンダリングよりも大きいワークロードがサーバーの GPU にかかります。 ジオメトリの多数のレイヤーが表示されている状態でシーン グラフの大きなパーツを*透過*に切り替えると、パフォーマンスのボトルネックになる可能性があります。 [選択アウトライン](../../overview/features/outlines.md#performance)を含むオブジェクトについても同じことが当てはまります。
+透明なレンダリングでは、標準のレンダリングよりも大きいワークロードがサーバーの GPU にかかります。 ジオメトリの多数のレイヤーが表示されている状態でシーン グラフの大きなパーツを *透過* に切り替えると、パフォーマンスのボトルネックになる可能性があります。 同じことが、[選択アウトライン](../../overview/features/outlines.md#performance)のオブジェクトと[シェル レンダリング](../../overview/features/shell-effect.md#performance)にも当てはまります。 
 
 ## <a name="api-documentation"></a>API のドキュメント
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 34a7cd8669c1545361bc7cd9579cfb6140c0c946
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ac3edc466d640fdb98fd38ba59938aa13fe00f73
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331704"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489150"
 ---
 # <a name="optical-character-recognition-ocr"></a>光学式文字認識 (OCR)
 
@@ -73,6 +73,9 @@ Read API の [Read 呼び出し](https://westcentralus.dev.cognitive.microsoft.c
 
 **status** フィールドに **succeeded** 値が指定されている場合、JSON 応答には、画像またはドキュメントから抽出されたテキスト コンテンツが含まれます。 JSON の応答では、認識された単語の元の行グループが維持されます。 抽出されたテキスト行とその境界ボックスの座標が含まれます。 各テキスト行には、抽出されたすべての単語と、その座標および信頼度スコアが含まれています。
 
+> [!NOTE]
+> `Read` 操作に送信されたデータは一時的に暗号化されて保存され、48 時間以内に削除されます。 これにより、アプリケーションからは、サービス応答の一部として抽出されたテキストを取得できます。
+
 ## <a name="sample-json-output"></a>サンプル JSON 出力
 
 成功した JSON 応答の例を次に示します。
@@ -87,7 +90,6 @@ Read API の [Read 呼び出し](https://westcentralus.dev.cognitive.microsoft.c
     "readResults": [
       {
         "page": 1,
-        "language": "en",
         "angle": 0.8551,
         "width": 2661,
         "height": 1901,

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: 94f863bd4f016ed1117fa236323b43515fd53797
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 0ca0c4eacce88bfb53582f7969ed7acbfd75bb8a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165606"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358713"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Text Analytics で名前付きエンティティの認識を使用する方法
 
@@ -60,17 +60,17 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 
 ### <a name="structure-the-request"></a>要求を構造化する
 
-POST 要求を作成します。 次のリンクにある [Postman](text-analytics-how-to-call-api.md) または **API テスト コンソール**を使用して、簡単に要求を構造化し、送信することができます。 
+POST 要求を作成します。 次のリンクにある [Postman](text-analytics-how-to-call-api.md) または **API テスト コンソール** を使用して、簡単に要求を構造化し、送信することができます。 
 
 > [!NOTE]
-> Azure portal で Text Analytics リソースのキーとエンドポイントを確認できます。 それらは、リソースの**クイック スタート** ページの**リソース管理**の下にあります。 
+> Azure portal で Text Analytics リソースのキーとエンドポイントを確認できます。 それらは、リソースの **クイック スタート** ページの **リソース管理** の下にあります。 
 
 
 ### <a name="request-endpoints"></a>要求エンドポイント
 
 #### <a name="version-31-preview2"></a>[バージョン 3.1-preview.2](#tab/version-3-preview)
 
-固有表現認識 `v3.1-preview.2` では、NER とエンティティ リンク設定の要求に個別のエンドポイントを使用します。 要求に応じて、次の URL 形式を使用します。
+固有表現認識 `v3.1-preview.2` では、NER、PII およびエンティティ リンク設定の要求に個別のエンドポイントを使用します。 要求に応じて、次の URL 形式を使用します。
 
 エンティティ リンク設定
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/linking`
@@ -82,6 +82,7 @@ NER
 
 [`General` に関する固有表現認識バージョン 3.1-preview のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral)
 
+個人を特定できる情報 (PII)
 * 個人 (`PII`) 情報 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii`
 
 また、オプションの `domain=phi` パラメーターを使用すると、テキスト内の医療 (`PHI`) 情報を検出することもできます。 

@@ -4,13 +4,13 @@ description: QnA Maker には、ナレッジ ベースとサービスの一部�
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
-ms.date: 02/14/2020
-ms.openlocfilehash: 773c9caa2fb25b3abe4fb451bc59598c485a6110
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 1a384eed542d0c09a973e0e68288f9fc1660cc96
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776257"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380905"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
 
@@ -50,6 +50,9 @@ ms.locfileid: "91776257"
 ### <a name="maximum-number-of-files"></a>ファイルの最大数
 
 抽出できるファイルの最大数と最大ファイル サイズは、 **[QnA Maker の価格レベルの制限](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)** に基づきます。
+
+> [!NOTE]
+> QnA Maker マネージド (プレビュー) は、追加できるソースの数に制限がない無料のサービスです。 管理 API と予測 API の両方に対して、スループットは現在、毎秒 10 トランザクションに制限されています。
 
 ### <a name="maximum-number-of-deep-links-from-url"></a>URL からのディープリンクの最大数
 
@@ -93,14 +96,14 @@ URL ページから QnA を抽出するためにクロールできるディー�
 
 ## <a name="create-knowledge-base-call-limits"></a>ナレッジ ベースの作成の呼び出しの制限
 これらは、ナレッジ ベース作成操作 (つまり、 *[KB を作成する]* のクリック、または CreateKnowledgeBase API の呼び出し) ごとの制限を表します。
-* 回答ごとの代替の質問の最大数: 該当なし
+* 回答ごとの代替質問の推奨最大数:該当なし
 * URL の最大数: 10
 * ファイルの最大数: 10
 
 ## <a name="update-knowledge-base-call-limits"></a>ナレッジ ベースの更新の呼び出しの制限
 これらは、更新操作 (つまり、 *[Save and train]\(保存してトレーニング\)* のクリック、または UpdateKnowledgeBase API の呼び出し) ごとの制限を表します。
 * 各ソース名の長さ: 該当なし
-* 追加または削除される代替の質問の最大数: 該当なし
+* 追加または削除される代替質問の推奨最大数:該当なし
 * 追加または削除されるメタデータ フィールドの最大数: 10
 * 更新可能な URL の最大数: 5
 

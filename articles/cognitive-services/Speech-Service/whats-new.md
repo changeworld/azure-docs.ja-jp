@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 11/06/2020
 ms.author: erhopf
-ms.openlocfilehash: c2b96193204c6938338594054bc3cd4715008313
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87832057e955f8408b369e2f55096a713780e965
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89055313"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410778"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>音声サービス: ドキュメントの最新情報
 
@@ -23,9 +23,10 @@ ms.locfileid: "89055313"
 
 ### <a name="service-updates"></a>サービスの更新情報
 
-音声サービス、Speech SDK、Speech Devices SDK、または Speech CLI に対する更新情報については、次を参照してください。
+音声サービス、Speech SDK、Speech Devices SDK、Speech CLI、Speech コンテナーに対する更新情報については、次を参照してください。
 * [Speech SDK のリリース ノート](releasenotes.md)。
 * [Speech Devices SDK のリリース ノート](devices-sdk-release-notes.md)
+* [Cognitive Services コンテナーのリリース ノート](../containers/container-image-tags.md)
 
 ## <a name="may-2020"></a>2020 年 5 月
 

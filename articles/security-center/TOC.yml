@@ -87,7 +87,7 @@
       href: security-center-powershell-onboarding.md
     - name: 管理グループに対して Security Center を有効にする
       href: onboard-management-group.md
-    - name: データ収集を構成する
+    - name: 自動プロビジョニングを構成する
       href: security-center-enable-data-collection.md
     - name: メール通知の設定
       href: security-center-provide-security-contact-details.md

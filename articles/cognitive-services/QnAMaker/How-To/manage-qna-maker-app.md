@@ -4,13 +4,13 @@ description: QnA Maker では、複数のユーザーがナレッジ ベース�
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 10/11/2020
-ms.openlocfilehash: 77290d271709db36f9c62e165b0b4070783b3ec6
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.date: 11/09/2020
+ms.openlocfilehash: 93d9cc871d1cb114f7f08b68eb8ae9d597e228b9
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92128428"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376487"
 ---
 # <a name="manage-qna-maker-app"></a>QnA Maker アプリの管理
 
@@ -69,19 +69,29 @@ QnA Maker サービスを共有する相手が [QnA Maker ポータル](https://
 
 ナレッジ ベースを選択すると、その QnA Maker リソースでの現在のロールがナレッジベース名の横に表示されます。
 
-:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="QnA Maker IAM のロールの追加。":::
+:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="編集モードのナレッジ ベースのスクリーンショット。Web ページの左上隅にあるナレッジ ベース名の横に、かっこで囲まれたロール名が表示されています。":::
 
 ## <a name="upgrade-runtime-version-to-use-active-learning"></a>アクティブ ラーニングを使用するためにランタイム バージョンをアップグレードする
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
+
 アクティブ ラーニングは、ランタイム バージョン 4.4.0 以上でサポートされています。 ナレッジ ベースが以前のバージョンで作成された場合は、この機能を使用するために[ランタイムをアップグレード](set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)します。
 
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+
+QnA Maker マネージド (プレビュー) では、ランタイムが QnA Maker サービス自体によってホストされるため、ランタイムを手動でアップグレードする必要がありません。
+
+---
+
 ## <a name="turn-on-active-learning-for-alternate-questions"></a>代わりの質問のためにアクティブ ラーニングを有効にする
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 アクティブ ラーニングは、既定では無効になっています。 これを有効にして、提案された質問を表示します。 アクティブ ラーニングを有効にした後は、クライアント アプリから QnA Maker に情報を送信する必要があります。 詳細については、「[ボットから GenerateAnswer および Train API を使用するためのアーキテクチャの流れ](improve-knowledge-base.md#architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot)」を参照してください。
 
 1. **[発行]** を選択してナレッジ ベースを発行します。 アクティブ ラーニング クエリは、GenerateAnswer API 予測エンドポイントからのみ収集されます。 QnA Maker ポータルの [テスト] ウィンドウへのクエリは、アクティブ ラーニングには影響しません。
 
-1. QnA Maker ポータルでアクティブ ラーニングを有効にするには、右上隅に移動して自分の **名前** を選択し、 [**Service settings\(サービス設定\)**](https://www.qnamaker.ai/UserSettings) に移動します。
+1. QnA Maker ポータルでアクティブ ラーニングを有効にするには、右上隅に移動して自分の **名前** を選択し、[**Service settings\(サービス設定\)**](https://www.qnamaker.ai/UserSettings) に移動します。
 
     ![[Service settings]\(サービス設定\) ページで、アクティブ ラーニングの提案された代わりの質問を有効にします。 右上のメニューで自分のユーザー名を選択し、[Service Settings]\(サービス設定\) を選択します。](../media/improve-knowledge-base/Endpoint-Keys.png)
 
@@ -94,9 +104,15 @@ QnA Maker サービスを共有する相手が [QnA Maker ポータル](https://
     > 上の画像の具体的なバージョンは、単なる例として表示されています。 実際のバージョンは、異なる場合があります。
     **[Active Learning]\(アクティブ ラーニング\)** が有効になると、ユーザーが送信した質問に基づいて、ナレッジ ベースから定期的に新しい質問が提案されます。 設定を再度切り替えると、 **[Active Learning] (アクティブ ラーニング)** を無効にできます。
 
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+
+QnA Maker マネージド (プレビュー) のアクティブ ラーニングは、既定では **有効** になっています。 提案された代わりの質問を表示するには、[編集] ページの [[表示] オプションを使用](../How-To/improve-knowledge-base.md#view-suggested-questions)します。
+
+---
+
 ## <a name="review-suggested-alternate-questions"></a>推奨される代わりの質問を確認する
 
-各ナレッジ ベースの **[編集]** ページで、 [代わりに推奨された質問を確認](improve-knowledge-base.md)します。
+各ナレッジ ベースの **[編集]** ページで、[代わりに推奨された質問を確認](improve-knowledge-base.md)します。
 
 ## <a name="next-steps"></a>次のステップ
 

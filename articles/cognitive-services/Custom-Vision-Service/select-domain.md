@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 1fb30cc0634224213dc9a188a16902e07d379904
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87b9e4a3ca7151b3666928b00add175eddeea050
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82127767"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409384"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Custom Vision プロジェクトのドメインを選択する
 
@@ -42,30 +42,18 @@ Custom Vision プロジェクトの [設定] ブレードで、プロジェク�
 
 ## <a name="compact-domains"></a>コンパクト ドメイン
 
-コンパクト ドメインで生成されたモデルは、ローカルで実行するためにエクスポートできます。 モデルのパフォーマンスは、選択したドメインによって異なります。 次の表では、Intel Desktop CPU および NVidia GPU \[1\] でモデルのサイズと推論時間をレポートします。 
+コンパクト ドメインで生成されたモデルは、ローカルで実行するためにエクスポートできます。 Custom Vision 3.4 パブリック プレビュー API では、GetDomains API を呼び出すことにより、コンパクト ドメインのエクスポート可能なプラットフォームの一覧を取得できます。
 
-> [!NOTE]
-> これらの数値には、前処理時間と後処理時間は含まれません。
+モデルのパフォーマンスは、選択したドメインによって異なります。 次の表では、Intel Desktop CPU および NVidia GPU \[1\] でモデルのサイズと推論時間をレポートします。 これらの数値には、前処理時間と後処理時間は含まれません。
 
 |タスク|Domain|モデルのサイズ|CPU 推論時間|GPU 推論時間|
 |---|---|---|---|---|
-|分類|General (compact)|5 MB|13 ミリ秒|5 ミリ秒|
-|オブジェクトの検出|General (compact)|45 MB|35 ミリ秒|5 ミリ秒|
+|分類|[General (compact)]\(汎用 (コンパクト)\)|5 MB|13 ミリ秒|5 ミリ秒|
+|オブジェクトの検出|[General (compact)]\(汎用 (コンパクト)\)|45 MB|35 ミリ秒|5 ミリ秒|
 |オブジェクトの検出|汎用（コンパクト） [S1]|14 MB|27 ミリ秒|7 ミリ秒|
 
-## <a name="vaidk-vision-ai-dev-kit"></a>VAIDK （Vision AI Dev Kit）
-
-コンパクト ドメインを選択すると、"Basic Platforms" と "Vision AI Dev Kit" を区別できるように、追加のオプション "エクスポート機能" が提供されます。
-
-[_エクスポート機能_] で、次の2つのオプションがあります。
-
-- 基本プラットフォーム （Tensorflow、CoreML、ONNX など）
-- Vision AI Dev Kit。
-
-_Vision AI Dev Kit_ が選択されている場合、_汎用_、_ランドマーク_、および _Retail_ であり、_Food_ ではないコンパクト ドメインは、Image Classification に使用できますが、_汎用 (コンパクト)_ および _汎用（コンパクト） [S1]_ の両方はオブジェクト検出に使用できます。
-
 >[!NOTE]
->オブジェクト検出のための__汎用（コンパクト）__ ドメインには、特別な後処理ロジックが必要です。 詳細については、エクスポートされた zip パッケージのサンプル スクリプトを参照してください。 後処理ロジックのないモデルが必要な場合は、__汎用（コンパクト） [S1]__ を使用します。
+>オブジェクト検出のための __汎用（コンパクト）__ ドメインには、特別な後処理ロジックが必要です。 詳細については、エクスポートされた zip パッケージのサンプル スクリプトを参照してください。 後処理ロジックのないモデルが必要な場合は、__汎用（コンパクト） [S1]__ を使用します。
 
 >[!IMPORTANT]
 >エクスポートされたモデルでは、クラウド上の予測 API とまったく同じ結果が得られるという保証はありません。 実行中のプラットフォームまたは前処理実装のわずかな違いにより、モデル出力の差が大きくなることがあります。 前処理ロジックの詳細については、[このドキュメント](quickstarts/image-classification.md) を参照してください。

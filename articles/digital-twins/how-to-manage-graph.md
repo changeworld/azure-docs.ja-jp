@@ -4,23 +4,23 @@ titleSuffix: Azure Digital Twins
 description: リレーションシップを使って接続することでデジタル ツインのグラフを管理する方法について説明します。
 author: baanders
 ms.author: baanders
-ms.date: 10/21/2020
+ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 947a0c9a0af3c38d6c4d6f66da691d62530a69e7
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 78e0bfb0af494ecae2865fcc42679b8fcce44916
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279499"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359580"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>リレーションシップを使ってデジタル ツインのグラフを管理する
 
-Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](concepts-twins-graph.md)です。 ツイン グラフは、 **リレーションシップ** を介して接続された個々のデジタル ツインで構成されています。 
+Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](concepts-twins-graph.md)です。 ツイン グラフは、**リレーションシップ** を介して接続された個々のデジタル ツインで構成されています。 
 
-機能する [Azure Digital Twins インスタンス](how-to-set-up-instance-portal.md)があり、クライアント アプリで [認証](how-to-authenticate-client.md)コードを設定すると、 [**DigitalTwins API**](/rest/api/digital-twins/dataplane/twins) を使用して Azure Digital Twins インスタンス内のデジタル ツインとそのリレーションシップを作成、変更、削除することができます。 [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用することもできます。
+機能する [Azure Digital Twins インスタンス](how-to-set-up-instance-portal.md)があり、クライアント アプリで [認証](how-to-authenticate-client.md)コードを設定すると、[**DigitalTwins API**](/rest/api/digital-twins/dataplane/twins) を使用して Azure Digital Twins インスタンス内のデジタル ツインとそのリレーションシップを作成、変更、削除することができます。 [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用することもできます。
 
-この記事では、リレーションシップとグラフ全体の管理に焦点を当てます。個々のデジタル ツインの操作については、 [ *「デジタル ツインを管理する」方法*](how-to-manage-twin.md)を参照してください。
+この記事では、リレーションシップとグラフ全体の管理に焦点を当てます。個々のデジタル ツインの操作については、[ *「デジタル ツインを管理する」方法*](how-to-manage-twin.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,16 +32,16 @@ Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](co
 
 リレーションシップには、さまざまなデジタル ツインが相互にどのように接続されるかが記述され、それによってツイン グラフの基礎が形成されます。
 
-リレーションシップは、`CreateRelationship()` 呼び出しを使用して作成されます。 
+リレーションシップは、`CreateOrReplaceRelationshipAsync()` 呼び出しを使用して作成されます。 
 
 リレーションシップを作成するには、以下を指定する必要があります。
 * ソース ツイン ID (以下のコード サンプルの `srcId`):リレーションシップが発生したツインの ID。
 * ターゲット ツイン ID (以下のコード サンプルの `targetId`):リレーションシップの対象のツインの ID。
-* リレーションシップ名 (以下のコード サンプルの `relName`): _contains_ のような一般的な種類のリレーションシップ。
-* リレーションシップ ID (以下のコード サンプルの `relId`):このリレーションシップの具体的な名前 ( _Relationship1_ など)。
+* リレーションシップ名 (以下のコード サンプルの `relName`):_contains_ のような一般的な種類のリレーションシップ。
+* リレーションシップ ID (以下のコード サンプルの `relId`):このリレーションシップの具体的な名前 (_Relationship1_ など)。
 
 リレーションシップ ID は、指定されたソース ツイン内で一意である必要があります。 グローバルに一意である必要はありません。
-たとえば、ツイン *foo* の場合、それぞれのリレーションシップ ID は一意である必要があります。 ただし、別のツインである *bar* は、 *foo* リレーションシップの同じ ID と一致する発信リレーションシップを持つことができます。
+たとえば、ツイン *foo* の場合、それぞれのリレーションシップ ID は一意である必要があります。 ただし、別のツインである *bar* は、*foo* リレーションシップの同じ ID と一致する発信リレーションシップを持つことができます。
 
 次のコード サンプルは、Azure Digital Twins インスタンスにリレーションシップを作成する方法を示しています。
 
@@ -57,7 +57,7 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
             try
             {
                 string relId = $"{srcId}-{relName}->{targetId}";
-                await client.CreateOrReplaceRelationshipAsync(srcId, relId, relationship);
+                await client.CreateOrReplaceRelationshipAsync<BasicRelationship>(srcId, relId, relationship);
                 Console.WriteLine($"Created {relName} relationship successfully");
             }
             catch (RequestFailedException rex)
@@ -74,7 +74,7 @@ await CreateRelationship(client, srcId, targetId, "contains");
 ```
 複数のリレーションシップを作成する場合は、同じメソッドの呼び出しを繰り返して、異なるリレーションシップの種類を引数に渡すことができます。 
 
-ヘルパー クラス `BasicRelationship` の詳細については、 [ *「Azure Digital Twins の API および SDK を使用する」方法*](how-to-use-apis-sdks.md#serialization-helpers)を参照してください。
+ヘルパー クラス `BasicRelationship` の詳細については、[ *「Azure Digital Twins の API および SDK を使用する」方法*](how-to-use-apis-sdks.md#serialization-helpers)を参照してください。
 
 ### <a name="create-multiple-relationships-between-twins"></a>ツイン間でリレーションシップの作成
 
@@ -85,13 +85,13 @@ await CreateRelationship(client, srcId, targetId, "contains");
 
 2 つのツイン間のリレーションシップの数には制限がありません。ツイン間には、必要な数のリレーションシップを含めることができます。 
 
-これは、2 つのツイン間に、さまざまな種類のリレーションシップを同時に複数表すことができることを意味します。 たとえば、" *ツイン A* " と " *ツイン B* " の間に、" *格納された* " リレーションシップと " *製造された* " リレーションシップを含めることができます。
+これは、2 つのツイン間に、さまざまな種類のリレーションシップを同時に複数表すことができることを意味します。 たとえば、"*ツイン A*" と "*ツイン B*" の間に、"*格納された*" リレーションシップと "*製造された*" リレーションシップを含めることができます。
 
-必要に応じて、同じ 2 つのツイン間に、同じ種類のリレーションシップのインスタンスを複数作成することもできます。 この例では、リレーションシップのリレーションシップ ID が異なる限り、" *ツイン A* " は " *ツイン B* " と 2 つの異なる " *格納された* " リレーションシップを持つことができます。
+必要に応じて、同じ 2 つのツイン間に、同じ種類のリレーションシップのインスタンスを複数作成することもできます。 この例では、リレーションシップのリレーションシップ ID が異なる限り、"*ツイン A*" は "*ツイン B*" と 2 つの異なる "*格納された*" リレーションシップを持つことができます。
 
 ## <a name="list-relationships"></a>リレーションシップの一覧表示
 
-グラフ内の特定のツインの " **発信** " リレーションシップの一覧にアクセスするには、次のように `GetRelationships()` メソッドを使用できます。
+グラフ内の特定のツインの "**発信**" リレーションシップの一覧にアクセスするには、次のように `GetRelationships()` メソッドを使用できます。
 
 ```csharp
 await client.GetRelationships()
@@ -135,9 +135,9 @@ await FindOutgoingRelationshipsAsync(client, twin_Id);
 
 ### <a name="find-incoming-relationships-to-a-digital-twin"></a>デジタル ツインとの受信リレーションシップを見つける
 
-Azure Digital Twins には、特定のツインとのすべての "_ *受信* *" リレーションシップを検索するための API もあります。 これは、逆方向のナビゲーションの場合やツインを削除するときに便利です。
+Azure Digital Twins には、特定のツインとのすべての "_ *受信**" リレーションシップを検索するための API もあります。 これは、逆方向のナビゲーションの場合やツインを削除するときに便利です。
 
-前のコード サンプルは、ツインからの発信リレーションシップの検索に焦点を合わせていました。 次の例は同じような構造になってますが、代わりにツインへの " *受信* " リレーションシップを検索します。
+前のコード サンプルは、ツインからの発信リレーションシップの検索に焦点を合わせていました。 次の例は同じような構造になってますが、代わりにツインへの "*受信*" リレーションシップを検索します。
 
 `IncomingRelationship` の呼び出しからは、リレーションシップ全体が返されないことに注意してください。
 
@@ -225,7 +225,7 @@ await DeleteRelationship(client, srcId, relId);
 
 ### <a name="set-up-the-runnable-sample"></a>実行可能なサンプルを設定する
 
-このスニペットでは、 [*Room.json*](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) と [*Floor.json*](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) モデル定義を使用しています。「 [*チュートリアル:サンプル クライアント アプリを使用して Azure Digital Twins を試す*](tutorial-command-line-app.md)」のものです。 これらのリンクを使用してファイルに直接移動するか、[こちら](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)の完全なエンドツーエンドのサンプル プロジェクトの一部としてダウンロードすることができます。 
+このスニペットでは、[*Room.json*](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) と [*Floor.json*](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) モデル定義を使用しています。「[*チュートリアル:サンプル クライアント アプリを使用して Azure Digital Twins を試す*](tutorial-command-line-app.md)」のものです。 これらのリンクを使用してファイルに直接移動するか、[こちら](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)の完全なエンドツーエンドのサンプル プロジェクトの一部としてダウンロードすることができます。 
 
 このサンプルを実行する前に、以下を実行します。
 1. モデル ファイルをダウンロードしてプロジェクトに配置し、以下のコードの `<path-to>` プレースホルダーを置き換えて、プログラムに検索場所を指示します。
@@ -351,7 +351,7 @@ namespace minimal
             try
             {
                 string relId = $"{srcId}-{relName}->{targetId}";
-                await client.CreateOrReplaceRelationshipAsync(srcId, relId, relationship);
+                await client.CreateOrReplaceRelationshipAsync<BasicRelationship>(srcId, relId, relationship);
                 Console.WriteLine($"Created {relName} relationship successfully");
             }
             catch (RequestFailedException rex)
@@ -443,79 +443,144 @@ namespace minimal
 > [!TIP]
 > ツイン グラフは、ツイン間にリレーションシップを作成する概念です。 ツイン グラフの視覚的表現を表示する場合は、この記事の [_視覚化*](how-to-manage-graph.md#visualization)に関するセクションを参照してください。 
 
-### <a name="create-a-twin-graph-from-a-spreadsheet"></a>スプレッドシートからツイン グラフを作成する
+### <a name="create-a-twin-graph-from-a-csv-file"></a>CSV ファイルからツイン グラフを作成する
 
-実際の使用例では、多くの場合、別のデータベース、または場合によってはスプレッドシートに格納されたデータからツイン階層が作成されます。 このセクションでは、スプレッドシートを解析する方法について説明します。
+実際の使用例では、多くの場合、別のデータベース、または場合によってはスプレッドシートまたは CSV ファイルに格納されたデータからツイン階層が作成されます。 このセクションでは、CSV ファイルからデータを読み取り、そこからツイン グラフを作成する方法について説明します。
 
-デジタル ツインのセットと作成されるリレーションシップを説明する次のデータ テーブルがあるとします。
+デジタル ツインのセットとリレーションシップが説明されている次のデータ テーブルがあるとします。
 
-| モデル ID| ツイン ID (一意である必要があります) | [リレーションシップ名] | ターゲット ツイン ID | ツインの init データ |
+|  モデル ID    | ツイン ID (一意である必要があります) | [リレーションシップ名]  | ターゲット ツイン ID  | ツインの init データ |
 | --- | --- | --- | --- | --- |
-| dtmi:example:Floor;1 | Floor1 |  contains | Room1 |{"Temperature":80, "Humidity":60}
-| dtmi:example:Floor;1 | Floor0 |  has      | Room0 |{"Temperature":70, "Humidity":30}
-| dtmi:example:Room;1  | Room1 | 
-| dtmi:example:Room;1  | Room0 |
+| dtmi:example:Floor;1    | Floor1 | contains | Room1 | |
+| dtmi:example:Floor;1    | Floor0 | contains | Room0 | |
+| dtmi:example:Room;1    | Room1 | | | {"Temperature":80} |
+| dtmi:example:Room;1    | Room0 | | | {"Temperature":70} |
 
-次のコードでは、[Microsoft Graph API](/graph/overview) を使用してスプレッドシートを読み取り、結果から Azure Digital Twins ツイン グラフを作成しています。
+このデータを Azure Digital Twins に取り込む方法の 1 つとして、テーブルを CSV ファイルに変換してコードを記述し、ファイルをコマンドに解釈して、ツインやリレーションシップを作成するという方法があります。 次のコード サンプルは、CSV ファイルからのデータの読み取り、および Azure Digital Twins でのツイン グラフの作成を示しています。
+
+次のコードでは、CSV ファイルは *data.csv* と呼ばれ、Azure Digital Twins インスタンスの **hostname** を表すプレースホルダーがあります。 また、このサンプルでは、プロジェクトに追加できるパッケージをいくつか使用すると、このプロセスを実行しやすくなります。
 
 ```csharp
-var range = msftGraphClient.Me.Drive.Items["BuildingsWorkbook"].Workbook.Worksheets["Building"].usedRange;
-JsonDocument data = JsonDocument.Parse(range.values);
-List<BasicRelationship> RelationshipRecordList = new List<BasicRelationship>();
-foreach (JsonElement row in data.RootElement.EnumerateArray())
+using System;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.Threading.Tasks;
+using Azure;
+using Azure.DigitalTwins.Core;
+using Azure.Identity;
+
+namespace creating_twin_graph_from_csv
 {
-    string modelId = row[0].GetString();
-    string sourceId = row[1].GetString();
-    string relName = row[2].GetString();
-    string targetId = row[3].GetString();
-    string initData = row[4].GetString();
-    
-    // Parse spreadsheet extra data into a JSON string to initialize the digital twin
-    // Left out for compactness
-    Dictionary<string, object> initData = new Dictionary<string, object>() { ... };
-
-    if (sourceId != null)
+    class Program
     {
-        BasicRelationship br = new BasicRelationship()
+        static async Task Main(string[] args)
         {
-            SourceId = sourceId,
-            TargetId = targetId,
-            Name = relName
-        };
-        RelationshipRecordList.Add(br);
-    }
+            List<BasicRelationship> RelationshipRecordList = new List<BasicRelationship>();
+            List<BasicDigitalTwin> TwinList = new List<BasicDigitalTwin>();
+            List<List<string>> data = ReadData();
+            DigitalTwinsClient client = createDTClient();
 
-    BasicDigitalTwin twin = new BasicDigitalTwin();
-    twin.Contents = initData;
-    // Set the type of twin to be created
-    twin.Metadata = new DigitalTwinMetadata() { ModelId = modelId };
-    
-    try
-    {
-        await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(sourceId, twin);
-    }
-    catch (RequestFailedException e)
-    {
-       Console.WriteLine($"Error {e.Status}: {e.Message}");
-    }
-    foreach (BasicRelationship rec in RelationshipRecordList)
-    { 
-        try { 
-            await client.CreateOrReplaceRelationshipAsync(rec.sourceId, Guid.NewGuid().ToString(), rec);
+            // Interpret the CSV file data, by each row
+            foreach (List<string> row in data)
+            {
+                string modelID = row.Count > 0 ? row[0].Trim() : null;
+                string srcID = row.Count > 1 ? row[1].Trim() : null;
+                string relName = row.Count > 2 ? row[2].Trim() : null;
+                string targetID = row.Count > 3 ? row[3].Trim() : null;
+                string initProperties = row.Count > 4 ? row[4].Trim() : null;
+                Console.WriteLine($"ModelID: {modelID}, TwinID: {srcID}, RelName: {relName}, TargetID: {targetID}, InitData: {initProperties}");
+                Dictionary<string, object> props = new Dictionary<string, object>();
+                // Parse properties into dictionary (left out for compactness)
+                // ...
+
+                // Null check for source and target ID's
+                if (srcID != null && srcID.Length > 0 && targetID != null && targetID.Length > 0)
+                {
+                    BasicRelationship br = new BasicRelationship()
+                    {
+                        SourceId = srcID,
+                        TargetId = targetID,
+                        Name = relName
+                    };
+                    RelationshipRecordList.Add(br);
+                }
+                BasicDigitalTwin srcTwin = new BasicDigitalTwin();
+                srcTwin.Id = srcID;
+                srcTwin.Metadata = new DigitalTwinMetadata();
+                srcTwin.Metadata.ModelId = modelID;
+                srcTwin.Contents = props;
+                TwinList.Add(srcTwin);
+            }
+
+            // Create digital twins 
+            foreach (BasicDigitalTwin twin in TwinList)
+            {
+                try
+                {
+                    await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(twin.Id, twin);
+                    Console.WriteLine("Twin is created");
+                }
+                catch (RequestFailedException e)
+                {
+                    Console.WriteLine($"Error {e.Status}: {e.Message}");
+                }
+            }
+            // Create relationships between the twins
+            foreach (BasicRelationship rec in RelationshipRecordList)
+            {
+                try
+                {
+                    string relId = $"{rec.SourceId}-{rec.Name}->{rec.TargetId}";
+                    await client.CreateOrReplaceRelationshipAsync<BasicRelationship>(rec.SourceId, relId, rec);
+                    Console.WriteLine("Relationship is created");
+                }
+                catch (RequestFailedException e)
+                {
+                    Console.WriteLine($"Error {e.Status}: {e.Message}");
+                }
+            }
         }
-        catch (RequestFailedException e)
+
+        // Method to ingest data from the CSV file
+        public static List<List<string>> ReadData()
         {
-            Console.WriteLine($"Error {e.Status}: {e.Message}");
+            string path = "<path-to>/data.csv";
+            string[] lines = System.IO.File.ReadAllLines(path);
+            List<List<string>> data = new List<List<string>>();
+            int count = 0;
+            foreach (string line in lines)
+            {
+                if (count++ == 0)
+                    continue;
+                List<string> cols = new List<string>();
+                data.Add(cols);
+                string[] columns = line.Split(',');
+                foreach (string column in columns)
+                {
+                    cols.Add(column);
+                }
+            }
+            return data;
+        }
+        // Method to create the digital twins client
+        private static DigitalTwinsClient createDTClient()
+        {
+
+            string adtInstanceUrl = "https://<your-instance-hostname>";
+            var credentials = new DefaultAzureCredential();
+            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+            return client;
         }
     }
 }
+
 ```
 ## <a name="manage-relationships-with-cli"></a>CLI を使用してリレーションシップを管理する
 
-ツインとそのリレーションシップは、Azure Digital Twins CLI を使用して管理することもできます。 コマンドについては、 [ *「Azure Digital Twins CLI を使用する」方法*](how-to-use-cli.md)を参照してください。
+ツインとそのリレーションシップは、Azure Digital Twins CLI を使用して管理することもできます。 コマンドについては、[ *「Azure Digital Twins CLI を使用する」方法*](how-to-use-cli.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure Digital Twins ツイン グラフのクエリについて確認します。
-* " [*概念: クエリ言語*](concepts-query-language.md)
+* "[*概念: クエリ言語*](concepts-query-language.md)
 * [*方法: ツイン グラフにクエリを実行する*](how-to-query-graph.md)

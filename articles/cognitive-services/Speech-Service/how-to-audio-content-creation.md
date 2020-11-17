@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: a04088fc1074949a1228794c22c1fa65a0b736a7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5685a2553b95308a1c18c3e490737338f609b594
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370055"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330939"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Audio Content Creation ツールを使用して合成を向上させる
 
@@ -110,7 +110,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 音声出力を確認し、チューニングと調整に問題がなければ、音声をエクスポートできます。
 
-1. 音声作成タスクを作成するには、 **[エクスポート]** をクリックします。 長時間のオーディオ出力と完全なオーディオ出力エクスペリエンスがサポートされているため、 **オーディオ ライブラリにエクスポートする** ことをお勧めします。 ローカル ディスクに音声を直接ダウンロードすることもできますが、使用できるのは最初の 10 分のみです。
+1. 音声作成タスクを作成するには、 **[エクスポート]** をクリックします。 長時間のオーディオ出力と完全なオーディオ出力エクスペリエンスがサポートされているため、**オーディオ ライブラリにエクスポートする** ことをお勧めします。 ローカル ディスクに音声を直接ダウンロードすることもできますが、使用できるのは最初の 10 分のみです。
 2. チューニングした音声の出力形式を選択します。 サポートされている形式とサンプル レートの一覧については、以下を参照してください。
 3. タスクの状態は **[Export task]\(エクスポート タスク\)** タブで確認できます。タスクが失敗した場合は、詳細情報のページで詳細なレポートを確認してください。
 4. タスクが完了すると、 **[Audio Library]\(音声ライブラリ\)** タブから音声をダウンロードできるようになります。
@@ -131,14 +131,14 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 ユーザーを音声リソースに追加して Audio Content Creation を使用できるようにするには、これらの手順に従います。
 
-1. Azure portal で **[Cognitive Services]** を検索し、ユーザーを追加する音声リソースを選択します。
+1. [Azure portal](https://portal.azure.com/) で **[Cognitive Services]** を検索し、ユーザーを追加する音声リソースを選択します。
 2. **[アクセス制御 (IAM)]** をクリックします。 **[ロールの割り当て]** タブをクリックして、このサブスクリプションのすべてのロールの割り当てを表示します。
-    :::image source="media/audio-content-creation/access-control-roles.png" alt-text="テキスト読み上げの出力を微調整するための手順を示す図":::
+    :::image source="media/audio-content-creation/access-control-roles.png" alt-text="[ロールの割り当て] タブ":::
 1. **[追加]**  >  **[ロールの割り当ての追加]** をクリックして、[ロールの割り当ての追加] ウィンドウを開きます。 [ロール] ドロップダウン リストで、 **[Cognitive Service User]\(Cognitive Service ユーザー\)** ロールを選択します。 この音声リソースの所有権をユーザーに付与する場合は、 **[所有者]** ロールを選択します。
 1. リストからユーザーを選択します。 一覧にユーザーが表示されない場合には、[選択] ボックスに表示名とメール アドレスを入力して、ディレクトリを検索します。 ユーザーがこのディレクトリに存在しない場合は、そのユーザーの [Microsoft アカウント](https://account.microsoft.com/account) (Azure Active Directory によって信頼されている) を入力できます。
 1. **[保存]** をクリックしてロールを割り当てます。 しばらくすると、そのユーザーには、音声リソース スコープで Cognitive Service ユーザー ロールが割り当てられます。
 
-    :::image source="media/audio-content-creation/add-role-first.png" alt-text="テキスト読み上げの出力を微調整するための手順を示す図":::
+    :::image source="media/audio-content-creation/add-role-first.png" alt-text="ロールの追加ダイアログ":::
 
 1. 追加したユーザーには、招待メールが送信されます。 ユーザーが **[Accept invitation]\(招待を受け入れる\)**  >  **[Accept to join Azure]\(Azure への参加を承諾する\)** をクリックすると、[Audio Content Creation](https://aka.ms/audiocontentcreation) を使用できるようになります。
 
@@ -148,12 +148,12 @@ Welcome to use Audio Content Creation to customize audio output for your product
 1. Azure portal で **[Cognitive Services]** を検索し、ユーザーを削除する音声リソースを選択します。
 2. **[アクセス制御 (IAM)]** をクリックします。 **[ロールの割り当て]** タブをクリックして、この音声リソースのすべてのロールの割り当てを表示します。
 3. 削除するユーザーを選択し、 **[削除]**  >  **[Ok]** をクリックします。
-    :::image source="media/audio-content-creation/remove-user.png" alt-text="テキスト読み上げの出力を微調整するための手順を示す図":::
+    :::image source="media/audio-content-creation/remove-user.png" alt-text="[削除] ボタン":::
 
 ### <a name="enable-users-to-grant-access"></a>ユーザーがアクセス権を付与できるようにする
 いずれかのユーザーが他のユーザーにアクセス権を付与できるようにする場合は、そのユーザーに音声リソースの所有者ロールを付与し、そのユーザーを Azure ディレクトリ閲覧者として設定する必要があります。 
 1. ユーザーを音声リソースの所有者として追加します。 [ユーザーを音声リソースに追加する方法](#add-users-to-a-speech-resource)を参照してください。
-    :::image source="media/audio-content-creation/add-role.png" alt-text="テキスト読み上げの出力を微調整するための手順を示す図":::
+    :::image source="media/audio-content-creation/add-role.png" alt-text="ロールの所有者フィールド":::
 1. 左上にある折りたたまれたメニューを選択します。 **[Azure Active Directory]** をクリックして、 **[ユーザー]** をクリックします。
 1. ユーザーの Microsoft アカウントを検索し、ユーザーの詳細ページに移動します。 **[割り当てられたロール]** をクリックします。
 1. **[割り当ての追加]**  ->  **[ディレクトリ閲覧者]** をクリックします。

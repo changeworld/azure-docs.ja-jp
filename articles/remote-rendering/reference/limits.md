@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: b500a3777ee24d6615022dae2571d021bd0d675a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 33f5314c80dc33dbec50dc21a71f4cb507979e12
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201173"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427430"
 ---
 # <a name="limitations"></a>制限事項
 
@@ -18,19 +18,20 @@ ms.locfileid: "92201173"
 
 ## <a name="azure-frontend"></a>Azure フロントエンド
 
-* プロセスあたりの AzureFrontend インスタンスの合計数: 16.
-* AzureFrontend あたりの AzureSession インスタンスの合計数: 16.
+フロントエンド API (C++ および C#) には次の制限事項が適用されます。
+* プロセスあたりの [AzureFrontend](/dotnet/api/microsoft.azure.remoterendering.azurefrontend) インスタンスの合計数: 16。
+* [AzureFrontend](/dotnet/api/microsoft.azure.remoterendering.azurefrontend) あたりの [AzureSession](/dotnet/api/microsoft.azure.remoterendering.azuresession) インスタンスの合計数: 16。
 
-## <a name="objects"></a>Objects
+## <a name="objects"></a>オブジェクト
 
-* オブジェクトの 1 つの型 (Entity、CutPlaneComponent など) の許容される合計数: 16,777,215。
+* オブジェクトの 1 つの型 ([Entity](../concepts/entities.md)、[CutPlaneComponent](../overview/features/cut-planes.md) など) の許容される合計数: 16,777,215。
 * 許容されるアクティブな切断面の合計数: 8.
 
 ## <a name="geometry"></a>ジオメトリ
 
-* **アニメーション:** アニメーションは、ゲーム オブジェクトの個々の変換をアニメーション化することに限定されます。 スキニングや頂点のアニメーションを使用したスケルトン アニメーションはサポートされていません。 ソース資産ファイルからのアニメーション トラックは保持されません。 代わりに、クライアント コードからオブジェクト変換アニメーションを駆動する必要があります。
+* **アニメーション:** アニメーションは、[ゲーム オブジェクト](../concepts/entities.md)の個々の変換をアニメーション化することに限定されます。 スキニングや頂点のアニメーションを使用したスケルトン アニメーションはサポートされていません。 ソース資産ファイルからのアニメーション トラックは保持されません。 代わりに、クライアント コードからオブジェクト変換アニメーションを駆動する必要があります。
 * **カスタム シェーダー:** カスタム シェーダーの作成はサポートされていません。 使用できるのは、組み込みの[色素材](../overview/features/color-materials.md)または [PBR 素材](../overview/features/pbr-materials.md)だけです。
-* 1 つの資産内の**個別の素材の最大数**:65,535。 素材数の自動的な削減の詳細については、「[素材の重複除去](../how-tos/conversion/configure-model-conversion.md#material-de-duplication)」の章をご覧ください。
+* 1 つの資産内の **個別の素材の最大数**:65,535。 素材数の自動的な削減の詳細については、「[素材の重複除去](../how-tos/conversion/configure-model-conversion.md#material-de-duplication)」の章をご覧ください。
 * **1 つのテクスチャの最大寸法**:16,384 x 16,384。 これより大きなソース テクスチャは、変換プロセスでサイズが縮小されます。
 
 ### <a name="overall-number-of-polygons"></a>多角形の全体数
