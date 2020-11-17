@@ -2,6 +2,8 @@
   href: cut-planes.md
 - name: デバッグ レンダリング
   href: debug-rendering.md
+- name: フレネル効果
+  href: fresnel-effect.md
 - name: 階層状態のオーバーライド
   href: override-hierarchical-state.md
 - name: Camera

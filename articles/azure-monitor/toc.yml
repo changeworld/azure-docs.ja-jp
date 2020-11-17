@@ -129,7 +129,7 @@
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: 警告
+    - name: アラート
       items:
         - name: 概要
           href: platform/alerts-overview.md
@@ -275,7 +275,7 @@
               href: platform/logs-data-export.md
             - name: Logic Apps を使用したエクスポート
               href: platform/logs-export-logic-app.md
-            - name: データ エクスプローラーを使用してエクスポートされたデータにクエリを実行する
+            - name: Azure Data Explorer を使用してデータのクエリを実行する
               href: platform/azure-data-explorer-query-storage.md
             - name: Excel に送信
               href: log-query/log-excel.md

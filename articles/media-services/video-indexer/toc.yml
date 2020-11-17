@@ -47,8 +47,6 @@
           href: customize-person-model-overview.md
 - name: ハウツー ガイド
   items:
-    - name: Azure に接続する
-      href: connect-to-azure.md
     - name: Azure に接続されたアカウントの管理
       href: manage-account-connected-to-azure.md
     - name: ビデオのアップロードとインデックス作成

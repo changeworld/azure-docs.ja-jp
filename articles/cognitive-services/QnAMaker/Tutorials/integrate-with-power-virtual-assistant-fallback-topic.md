@@ -4,13 +4,13 @@ description: このチュートリアルでは、アクティブ ラーニング
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 06/08/2020
-ms.openlocfilehash: 42b50fcf0df27ddbc3e587a7d8e038e4979935ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 322db4e1535e763f4c3e7c87afaa370471ba0b66
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777414"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376300"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>チュートリアル:Power Virtual Agents にナレッジ ベースを追加する
 ナレッジ ベースから回答を提供するように [Power Virtual Agents](https://powervirtualagents.microsoft.com/) ボットを作成して拡張します。
@@ -125,7 +125,7 @@ Power Virtual Agents の作成キャンバスを使用して、フォールバ�
 
 1. **[メッセージ]** ボックスにつながる **+** コネクタを選択し、 **[Call an action]\(アクションの呼び出し\)** を選択します。
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/create-new-item-call-an-action.png" alt-text="[削除] オプションが強調表示されている会話フローの部分的なスクリーンショット。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/create-new-item-call-an-action.png" alt-text="[Call an action]\(アクションの呼び出し\) の部分的なスクリーンショット":::
 
 1. **[Create a flow]\(フローの作成\)** を選択します。 このプロセスにより、Power Automate ポータルに移動します。
 
@@ -135,9 +135,12 @@ Power Virtual Agents の作成キャンバスを使用して、フォールバ�
 
     Power Automate が開き、新しいテンプレートが表示されます。 この新しいテンプレートは使用しません。
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-flow-initial-template.png" alt-text="[削除] オプションが強調表示されている会話フローの部分的なスクリーンショット。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-flow-initial-template.png" alt-text="新しいフロー テンプレートを備えた Power Automate の部分的なスクリーンショット。":::
 
 ## <a name="create-a-power-automate-flow-to-connect-to-your-knowledge-base"></a>ナレッジ ベースに接続するための Power Automate フローを作成する
+
+> [!NOTE]
+> 現在、Power Automate テンプレートでは、QnA Maker マネージド (プレビュー) エンドポイントはサポートされていません。 QnA Maker マネージド (プレビュー) ナレッジ ベースを Power Automate に追加するには、この手順をスキップし、手動でエンドポイントを追加します。 
 
 次の手順では、以下を行う Power Automate フローを作成します。
 * 入力されたユーザー テキストを受け取り、QnA Maker に送信します。
@@ -149,12 +152,12 @@ Power Virtual Agents の作成キャンバスを使用して、フォールバ�
 
 1. QnA Maker フローの新しい画面で、 **[続行]** を選択します。
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-qna-flow-template-continue.png" alt-text="[削除] オプションが強調表示されている会話フローの部分的なスクリーンショット。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-qna-flow-template-continue.png" alt-text="[続行] ボタンが強調表示されている QnA Maker テンプレート フローの部分的なスクリーンショット。":::
 
 1. **[Generate Answer]\(回答の生成\)** アクション ボックスを選択し、「[ナレッジ ベースの作成と公開](#create-and-publish-a-knowledge-base)」というタイトルの付いた前のセクションからの QnA Maker 設定を入力します。 次の図の **[サービス ホスト]** は、ナレッジ ベースのホスト **Host** を参照し、`https://YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker` の形式になっています。
 
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="[削除] オプションが強調表示されている会話フローの部分的なスクリーンショット。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="QnA Maker テンプレート フローの部分的なスクリーンショット。[Generate Answer]\(回答の生成\) (プレビュー) が強調表示されています。":::
 
 1. **[保存]** を選択してフローを保存します。
 
@@ -190,11 +193,11 @@ Power Virtual Agents の作成キャンバスを使用して、フォールバ�
 
 1. **[フロー]** ポップアップ ウィンドウで、 **[Generate answers using QnA Maker knowledge base...]\(QnA Maker ナレッジ ベースを使用して回答を生成する\)** という名前の新しいフローを選択します。新しいアクションがフローに表示されます。
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-flow-after-adding-action.png" alt-text="[削除] オプションが強調表示されている会話フローの部分的なスクリーンショット。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-flow-after-adding-action.png" alt-text="QnA Maker フローを追加した後の、Power Virtual Agent のトピック会話キャンバスの部分的なスクリーンショット。":::
 
 1. 入力変数を QnA Maker アクションに正しく設定するには、 **[変数を選択]** を選択してから、 **[bot.UnrecognizedTriggerPhrase]** を選択します。
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-selection-action-input.png" alt-text="[削除] オプションが強調表示されている会話フローの部分的なスクリーンショット。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-selection-action-input.png" alt-text="Power Virtual Agent のトピック会話キャンバスの部分的なスクリーンショットで、入力変数が選択されている。":::
 
 
 1. 出力変数を QnA Maker アクションに正しく設定するには、 **[メッセージ]** アクションで、 **[UnrecognizedTriggerPhrase]** を選択し、次に変数を挿入するアイコン `{x}` を選択してから、 **[FinalAnswer]** を選択します。
@@ -221,7 +224,7 @@ Power Virtual Agents の作成キャンバスを使用して、フォールバ�
     |5|はい|`Can I help with anything else?` への応答。|
     |6|クエリ予測のスループットのパフォーマンスを向上させるにはどうすればよいですか。|この質問により、フォールバック アクションがトリガーされます。それにより、回答するためのテキストがナレッジ ベースに送信されます。 次に、回答が表示されます。 個々のアクションの緑色のチェックマークは、各アクションが成功したことを示します。|
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png" alt-text="[削除] オプションが強調表示されている会話フローの部分的なスクリーンショット。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png" alt-text="アクションが成功したことを示す緑色のチェックマークがキャンバスに表示されているチャット ボットのスクリーンショット。":::
 
 ## <a name="publish-your-bot"></a>ボットを公開する
 

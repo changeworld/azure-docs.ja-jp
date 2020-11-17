@@ -10,16 +10,31 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 10/23/2020
 ms.author: pafarley
-ms.openlocfilehash: a87e76d4a726f7a01b96d602e7f41d60409dae56
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 030b09dae9db11fb14defecde3d14e949b9e6748
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521494"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412733"
 ---
 # <a name="whats-new-in-custom-vision"></a>Custom Vision の新機能
 
 サービス内の新機能について説明します。 以下の項目には、リリース ノート、ビデオ、ブログの投稿、およびその他の種類の情報が含まれる可能性があります。 このページをブックマークして、常にサービスの最新情報を確認してください。
+
+
+## <a name="october-2020"></a>2020 年 10 月 
+
+### <a name="custom-base-model"></a>カスタムの基本モデル
+
+- 一部のアプリケーションには、大量の共同トレーニング データがありますが、それらのモデルは個別に微調整する必要があります。これにより、異なるソースからの若干の差異があるイメージのパフォーマンスを向上させることができます。 この場合、大量のトレーニング データを使用して、最初のモデルを通常どおりトレーニングできます。 その後、要求本文で _CustomBaseModelInfo_ を使用して 3.4 パブリック プレビュー API の **TrainProject** を呼び出して、ダウンストリーム プロジェクトの基本モデルとして、この最初の段階のトレーニング済みモデルを使用します。 ソース プロジェクトとダウンストリーム ターゲット プロジェクトでイメージ特性が類似している場合は、パフォーマンスの向上を期待できます。 
+
+### <a name="new-domain-information"></a>新しいドメインの情報
+
+- Custom Vision 3.4 パブリック プレビュー API の **GetDomains** から返されるドメイン情報に、サポートされるエクスポート可能なプラットフォーム、モデル アーキテクチャの簡単な説明、およびコンパクト ドメイン用のモデルのサイズが含まるようになりました。
+
+### <a name="training-divergence-feedback"></a>トレーニングの相違に関するフィードバック
+
+- Custom Vision 3.4 パブリック プレビュー API で、**GetIteration** の呼び出しから **TrainingErrorDetails** が返されるようになりました。 反復が失敗した場合、これにより、トレーニングの相違が原因で失敗したかどうかが分かります。これは、より多くの高品質なトレーニング データを使用して修正できます。
 
 ## <a name="july-2020"></a>2020 年 7 月
 

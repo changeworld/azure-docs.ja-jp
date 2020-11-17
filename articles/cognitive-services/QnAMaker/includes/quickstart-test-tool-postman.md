@@ -4,16 +4,16 @@ description: インクルード ファイル
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: qna-maker
 ms.topic: include
 ms.custom: include file
-ms.date: 04/27/2020
-ms.openlocfilehash: fabd79829425147667c46f686a1ec1ceb6a29b00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/09/2020
+ms.openlocfilehash: fa497b69b067d5556f11effdb52505895ecc3bdd
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87132895"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386666"
 ---
 この Postman ベースのクイック スタートでは、ナレッジ ベースから回答を取得する手順を紹介しています。
 
@@ -28,6 +28,8 @@ ms.locfileid: "87132895"
 > ナレッジ ベースからの質問への回答を生成する準備ができたら、ナレッジ ベースを[トレーニング](../Quickstarts/create-publish-knowledge-base.md#save-and-train)して[発行](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)する必要があります。 ナレッジ ベースが発行されると、 **[発行]** ページに、回答を生成するための HTTP 要求の設定が表示されます。 **[Postman]** タブには、回答の生成に必要な設定が表示されます。
 
 ## <a name="set-up-postman-for-requests"></a>要求に対して Postman を設定する
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 このクイックスタートでは、Postman の **POST** 要求と同じ設定を使用し、照会する内容に基づいて、サービスに送信される本文の JSON を POST するように構成します。
 
@@ -44,6 +46,25 @@ ms.locfileid: "87132895"
     ||`{"question":"<Your question>"}`|JSON オブジェクトとしての POST 要求の本文。 この値は、クエリ実行の目的に応じて、次の各セクションで異なります。|
 
 1. Postman を開き、発行済みのナレッジ ベース設定を使用して、新しい基本的な **POST** 要求を作成します。 以降のセクションでは、POST 本文の JSON を変更して、ナレッジ ベースに対するクエリを変更します。
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+
+このクイックスタートでは、Postman の **POST** 要求と同じ設定を使用し、照会する内容に基づいて、サービスに送信される本文の JSON を POST するように構成します。
+
+この手順を使用して Postman を構成し、次に、後続の各セクションを読んで POST 本文の JSON を構成します。
+
+1. ナレッジ ベースの **[Settings]\(設定\)** ページで **[Postman]** タブを選択し、ナレッジ ベースからの回答を生成するために使用される構成を表示します。 Postman で使用する次の情報をコピーします。
+
+    |名前|設定|目的と値|
+    |--|--|--|
+    |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|これは、URL の HTTP メソッドとルートです。|
+    |`Host`|`https://YOUR-RESOURCE_NAME.cognitiveservices.azure.com/qnamaker`|これは URL のホストです。 Host と Post の値を連結して、完全な generateAnswer URL を取得します。|
+    |`Ocp-Apim-Subscription-Key`|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|要求を承認するためのヘッダー値。 |
+    |`Content-type`|`application/json`|コンテンツのヘッダー値。|
+    ||`{"question":"<Your question>"}`|JSON オブジェクトとしての POST 要求の本文。 この値は、クエリ実行の目的に応じて、次の各セクションで異なります。|
+
+1. Postman を開き、発行済みのナレッジ ベース設定を使用して、新しい基本的な **POST** 要求を作成します。 以降のセクションでは、POST 本文の JSON を変更して、ナレッジ ベースに対するクエリを変更します。
+---
 
 ## <a name="use-metadata-to-filter-answer"></a>メタデータを使用して回答をフィルター処理する
 

@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Stream Analytics とは
+    - name: Stream Analytics へようこそ
       href: stream-analytics-introduction.md
     - name: Stream Analytics クラスター
       href: cluster-overview.md
@@ -92,7 +92,7 @@
           href: event-hubs-output.md
         - name: Power BI
           href: power-bi-output.md
-        - name: テーブル ストレージ
+        - name: Table ストレージ
           href: table-storage-output.md
         - name: Service Bus キュー
           href: service-bus-queues-output.md

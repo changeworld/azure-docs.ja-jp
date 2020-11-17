@@ -4,16 +4,16 @@ description: インクルード ファイル
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: qna-maker
 ms.topic: include
 ms.custom: include file
-ms.date: 04/27/2020
-ms.openlocfilehash: a078455b7630046a83a9ae1c896d0fc44bf8efad
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/09/2020
+ms.openlocfilehash: cbabfc1ae0c54c4ef20d3c689506e486bf4b6a66
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87132896"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386528"
 ---
 この cURL ベースのクイック スタートでは、ナレッジ ベースから回答を取得する手順を紹介しています。
 
@@ -34,9 +34,17 @@ ms.locfileid: "87132896"
 1. ナレッジ ベースの **[Settings]\(設定\)** ページで **[CURL]** タブを選択し、ナレッジ ベースからの回答を生成するために使用される cURL の例を表示します。
 1. このコマンドを編集できるように、編集可能な環境 (テキスト ファイルなど) にコピーします。 次のように質問の値を編集して、`service:qna_maker` のメタデータが QnA ペアのフィルターとして使用されるようにします。
 
+   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
+
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+    
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H   "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
+    ```
+    ---
 
     質問はたったの 1 単語 (`size`) です。これにより、2 つの QnA ペアのいずれかを返すことができます。 `strictFilters` 配列の指定により、`qna_maker` の回答のみに応答が限定されます。
 
@@ -89,9 +97,15 @@ Debug: {Enable:true}
 
 1. cURL コマンドを編集して debug プロパティを含め、詳細を表示します。
 
+   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'Debug':{'Enable':true}}"
     ```
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'size', 'Debug':{'Enable':true}}"
+    ```
+    ---
 
 1. 応答には、回答に関する関連情報が含まれます。 簡潔にするために、次の JSON 出力では、一部のデバッグの詳細が省略記号に置き換えられています。
 
@@ -194,11 +208,16 @@ isTest:true
 ```
 
 cURL コマンドは次のようになります。
-
+# <a name="qna-maker-ga"></a>[QnA Maker GA](#tab/v1)
 ```bash
 curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'IsTest':true}"
 ```
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+```bash
+curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'size', 'IsTest':true}"
+```
 
+---
 JSON 応答では、発行されたナレッジ ベース クエリと同じスキーマが使用されます。
 
 > [!NOTE]
@@ -207,10 +226,17 @@ JSON 応答では、発行されたナレッジ ベース クエリと同じス�
 ## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>cURL を使用しておしゃべりの回答を照会する
 
 1. cURL 対応のターミナルで、ユーザーからのボットの会話を終了する文言 (`Thank you` など) を質問として使用します。 他に設定するプロパティはありません。
+    
+   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'thank you'}"
     ```
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'thank you'}"
+    ```
+    ---
 
 1. cURL コマンドを実行し、スコアと回答を含む JSON 応答を受け取ります。
 
@@ -302,9 +328,15 @@ JSON 応答では、発行されたナレッジ ベース クエリと同じス�
 
 1. `threshold` プロパティを追加し、しきい値 80% 以上を指定して `size` に対する回答を要求します。 ナレッジ ベースでは、質問のスコアが 71% であるためその回答が見つかりません。 結果では、ナレッジ ベースの作成時に指定した既定の回答が返されます。
 
+   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
     ```
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
+    ```
+    ---
 
 1. cURL コマンドを実行し、JSON 応答を受け取ります。
 
@@ -328,10 +360,16 @@ JSON 応答では、発行されたナレッジ ベース クエリと同じス�
     QnA Maker からは、信頼できないことを意味するスコア `0` が返されました。 既定の回答も返されました。
 
 1. しきい値を60% に変更し、クエリを再度要求します。
-
+    
+   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':60.00}"
     ```
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':60.00}"
+    ```
+    ---
 
     返された JSON で回答が見つかりました。
 

@@ -90,7 +90,7 @@
       href: concept-feature-management.md
     - name: イベント処理
       href: concept-app-configuration-event.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: カスタマー マネージド キーの暗号化
           href: concept-customer-managed-keys.md
@@ -106,8 +106,10 @@
           href: concept-disaster-recovery.md
 - name: 操作方法ガイド
   items:
-    - name: ユーザーのサブセットに対して機能を有効にする
+    - name: ユーザーのパーセンテージの機能を有効にする
       href: howto-feature-filters-aspnet-core.md
+    - name: 指定したユーザー/グループの機能を有効にする
+      href: howto-targetingfilter-aspnet-core.md
     - name: 環境ごとの構成にラベルを使用する
       href: howto-labels-aspnet-core.md
     - name: 構成データのインポートまたはエクスポート

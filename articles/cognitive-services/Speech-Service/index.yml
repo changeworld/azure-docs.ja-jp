@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: b0dcb2e33777451a8adba5973dc2511633f4e876
-  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.openlocfilehash: 20be1ac6c4701a84788f2e43903ab6b366dfe594
+  ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/22/2020
-  ms.locfileid: "92371158"
+  ms.lasthandoff: 11/12/2020
+  ms.locfileid: "94556560"
 highlightedContent:
   items:
   - title: 音声サービスとは
@@ -43,9 +43,9 @@ conceptualContent:
     - itemType: quickstart
       text: 音声変換の概要
       url: get-started-speech-to-text.md
-    - itemType: how-to-guide
-      text: Custom Speech を使用して精度を向上させる
-      url: how-to-custom-speech.md
+    - itemType: overview
+      text: Custom Speech について
+      url: custom-speech-overview.md
     footerLink:
       text: 詳細
       url: index-speech-to-text.yml

@@ -19,6 +19,8 @@
       href: virtual-machines-custom-preferences.md
     - name: Azure Policy を介した VM 上での有効化
       href: virtual-machines-policy-enable.md
+    - name: 切断された Automanage アカウントの修復
+      href: repair-automanage-account.md
 - name: リソース
   expanded: true
   items:

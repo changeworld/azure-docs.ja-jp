@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 26b5a4c920833669ae0ea44ae5f69c3a72b5a522
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0619dc11ed16f100332c775a8683ca77cbea92b9
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135922"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94482693"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して文字起こしをする機能です (多くの場合、音声テキスト変換と呼ばれます)。 このクイックスタートでは、アプリや製品で Speech SDK を使用し、高品質の音声テキスト変換を実行する方法について説明します。
 
@@ -36,7 +36,7 @@ Speech Service の中核となる機能の 1 つは、人間の音声を認識�
 
 ## <a name="create-a-speech-configuration"></a>音声構成を作成する
 
-Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) を作成する必要があります。 このクラスには、キー、関連付けられたリージョン、エンドポイント、ホスト、または認証トークンなど、ご利用のサブスクリプションに関する情報が含まれています。 キーとリージョンを使用して [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) を作成します。 リージョン識別子を確認するには、[リージョンのサポート](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)に関するページを参照してください。
+Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) を作成する必要があります。 このクラスには、キー、関連付けられたリージョン、エンドポイント、ホスト、または認証トークンなど、ご利用のサブスクリプションに関する情報が含まれています。 キーとリージョンを使用して [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) を作成します。 キーとリージョンのペアを見つけるには、「[キーとリージョンを見つける](../../../overview.md#find-keys-and-region)」ページを参照してください。
 
 ```csharp
 using System;
@@ -54,7 +54,7 @@ class Program
 }
 ```
 
-[`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) を初期化するには、他にも次に示すようないくつかの方法があります。
+[`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) を初期化するには、他にも次に示すようないくつかの方法があります。
 
 * エンドポイントの場合: Speech Service エンドポイントを渡します。 キーまたは認証トークンは省略可能です。
 * ホストの場合: ホスト アドレスを渡します。 キーまたは認証トークンは省略可能です。
@@ -65,7 +65,7 @@ class Program
 
 ## <a name="recognize-from-microphone"></a>マイクから認識する
 
-デバイス マイクを使用して音声を認識するには、`FromDefaultMicrophoneInput()` を使用して `AudioConfig` を作成します。 次に、`audioConfig` と `speechConfig` を渡して [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) を初期化します。
+デバイス マイクを使用して音声を認識するには、`FromDefaultMicrophoneInput()` を使用して `AudioConfig` を作成します。 次に、`audioConfig` と `speechConfig` を渡して [`SpeechRecognizer`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) を初期化します。
 
 ```csharp
 using System;
@@ -94,11 +94,11 @@ class Program
 }
 ```
 
-" *特定の* " オーディオ入力デバイスを使用したい場合、`AudioConfig` でデバイス ID を指定する必要があります。 自分のオーディオ入力デバイスの[デバイス ID を取得する方法](../../../how-to-select-audio-input-devices.md)をご覧ください。
+"*特定の*" オーディオ入力デバイスを使用したい場合、`AudioConfig` でデバイス ID を指定する必要があります。 自分のオーディオ入力デバイスの[デバイス ID を取得する方法](../../../how-to-select-audio-input-devices.md)をご覧ください。
 
 ## <a name="recognize-from-file"></a>ファイルから認識する
 
-マイクではなくオーディオ ファイルから音声を認識する場合でも、`AudioConfig` を作成する必要があります。 ただし、`FromDefaultMicrophoneInput()` を呼び出さずに、[`AudioConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet) を作成する場合は、`FromWavFileInput()` を呼び出してファイル パスを渡します。
+マイクではなくオーディオ ファイルから音声を認識する場合でも、`AudioConfig` を作成する必要があります。 ただし、`FromDefaultMicrophoneInput()` を呼び出さずに、[`AudioConfig`](/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet) を作成する場合は、`FromWavFileInput()` を呼び出してファイル パスを渡します。
 
 ```csharp
 using System;
@@ -128,11 +128,11 @@ class Program
 
 ## <a name="recognize-from-in-memory-stream"></a>インメモリ ストリームから認識する
 
-対象となる音声データが Blob Storage に格納されていたり、既存のメモリ内に `byte[]` や同様の生データ構造として存在していたりすることは、多くのユースケースで予想されます。 以下の例では、[`PushAudioInputStream`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.pushaudioinputstream?view=azure-dotnet) という、実質的に抽象化されたメモリ ストリームを使用して音声を認識します。 サンプル コードは、次の処理を実行します。
+対象となる音声データが Blob Storage に格納されていたり、既存のメモリ内に `byte[]` や同様の生データ構造として存在していたりすることは、多くのユースケースで予想されます。 以下の例では、[`PushAudioInputStream`](/dotnet/api/microsoft.cognitiveservices.speech.audio.pushaudioinputstream?view=azure-dotnet) という、実質的に抽象化されたメモリ ストリームを使用して音声を認識します。 サンプル コードは、次の処理を実行します。
 
 * `byte[]` を引数として受け取る `Write()` 関数を使用して、生の音声データ (PCM) を `PushAudioInputStream` に書き込みます。
 * デモンストレーションとして、`FileReader` を使用して `.wav` ファイルを読み取ります。ただし、`byte[]` 形式の音声データが既にある場合は、これをスキップして直接そのコンテンツを入力ストリームに書き込むことができます。
-* 既定の形式は、16 ビット、16 kHz のモノラル PCM です。 この形式をカスタマイズしたい場合は、静的関数 `AudioStreamFormat.GetWaveFormatPCM(sampleRate, (byte)bitRate, (byte)channels)` を使用して、`CreatePushStream()` に [`AudioStreamFormat`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audiostreamformat?view=azure-dotnet) オブジェクトを渡してください。
+* 既定の形式は、16 ビット、16 kHz のモノラル PCM です。 この形式をカスタマイズしたい場合は、静的関数 `AudioStreamFormat.GetWaveFormatPCM(sampleRate, (byte)bitRate, (byte)channels)` を使用して、`CreatePushStream()` に [`AudioStreamFormat`](/dotnet/api/microsoft.cognitiveservices.speech.audio.audiostreamformat?view=azure-dotnet) オブジェクトを渡してください。
 
 ```csharp
 using System;
@@ -170,11 +170,11 @@ class Program
 ```
 
 プッシュ ストリームを入力として使用する場合、音声データは生の PCM であることが前提となります (ヘッダーをスキップするなど)。
-場合によっては、ヘッダーがスキップされていなくても、API は正しく機能します。しかし、最良の結果を得るためには、`byte[]` が " *音声データの開始* " 位置から始まるよう、ヘッダーを読み取るロジックの実装を検討してください。
+場合によっては、ヘッダーがスキップされていなくても、API は正しく機能します。しかし、最良の結果を得るためには、`byte[]` が "*音声データの開始*" 位置から始まるよう、ヘッダーを読み取るロジックの実装を検討してください。
 
 ## <a name="error-handling"></a>エラー処理
 
-これまでの例では単に、認識されたテキストを `result.text` から取得していましたが、エラーやその他の応答を処理するためには、結果を処理するなんらかのコードを記述する必要があります。 以下のコードでは、[`result.Reason`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.recognitionresult.reason?view=azure-dotnet&preserve-view=true) プロパティを評価したうえで、次の処理を行っています。
+これまでの例では単に、認識されたテキストを `result.text` から取得していましたが、エラーやその他の応答を処理するためには、結果を処理するなんらかのコードを記述する必要があります。 以下のコードでは、[`result.Reason`](/dotnet/api/microsoft.cognitiveservices.speech.recognitionresult.reason?preserve-view=true&view=azure-dotnet) プロパティを評価したうえで、次の処理を行っています。
 
 * 認識結果を出力します: `ResultReason.RecognizedSpeech`
 * 認識が一致しない場合は、ユーザーに通知します: `ResultReason.NoMatch`
@@ -207,9 +207,9 @@ switch (result.Reason)
 
 これまでの例では、1 つの発話を認識する単発の認識を使用してきました。 1 つの発話の終わりは、終了時の無音状態をリッスンするか、最大 15 秒のオーディオが処理されるまで待機することによって決定されます。
 
-一方、認識を停止するタイミングを **制御** したい場合は、継続的認識を使用します。 この場合は、認識結果を取得するために、`Recognizing`、`Recognized`、`Canceled` の各イベントをサブスクライブする必要があります。 認識を停止するには、[`StopContinuousRecognitionAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync?view=azure-dotnet&preserve-view=true) を呼び出す必要があります。 オーディオ入力ファイルに対して継続的認識を実行する方法の例を次に示します。
+一方、認識を停止するタイミングを **制御** したい場合は、継続的認識を使用します。 この場合は、認識結果を取得するために、`Recognizing`、`Recognized`、`Canceled` の各イベントをサブスクライブする必要があります。 認識を停止するには、[`StopContinuousRecognitionAsync`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync?preserve-view=true&view=azure-dotnet) を呼び出す必要があります。 オーディオ入力ファイルに対して継続的認識を実行する方法の例を次に示します。
 
-まず、入力を定義し、[`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet&preserve-view=true) を初期化します。
+まず、入力を定義し、[`SpeechRecognizer`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?preserve-view=true&view=azure-dotnet) を初期化します。
 
 ```csharp
 using var audioConfig = AudioConfig.FromWavFileInput("YourAudioFile.wav");
@@ -222,12 +222,12 @@ using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 var stopRecognition = new TaskCompletionSource<int>();
 ```
 
-次に、[`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) から送信されたイベントをサブスクライブします。
+次に、[`SpeechRecognizer`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) から送信されたイベントをサブスクライブします。
 
-* [`Recognizing`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizing?view=azure-dotnet&preserve-view=true): 中間的な認識結果を含むイベントのシグナル。
-* [`Recognized`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognized?view=azure-dotnet&preserve-view=true): 最終的な認識結果を含むイベント (認識の試行が成功したことを示す) のシグナル。
-* [`SessionStopped`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.recognizer.sessionstopped?view=azure-dotnet&preserve-view=true): 認識セッション (操作) の終了を示すイベントのシグナル。
-* [`Canceled`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.canceled?view=azure-dotnet&preserve-view=true): キャンセルされた認識結果を含むイベント (結果としてキャンセルされた認識の試みまたは直接的なキャンセル要求、あるいは転送またはプロトコルの失敗を示す) のシグナル。
+* [`Recognizing`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizing?preserve-view=true&view=azure-dotnet): 中間的な認識結果を含むイベントのシグナル。
+* [`Recognized`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognized?preserve-view=true&view=azure-dotnet): 最終的な認識結果を含むイベント (認識の試行が成功したことを示す) のシグナル。
+* [`SessionStopped`](/dotnet/api/microsoft.cognitiveservices.speech.recognizer.sessionstopped?preserve-view=true&view=azure-dotnet): 認識セッション (操作) の終了を示すイベントのシグナル。
+* [`Canceled`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.canceled?preserve-view=true&view=azure-dotnet): キャンセルされた認識結果を含むイベント (結果としてキャンセルされた認識の試みまたは直接的なキャンセル要求、あるいは転送またはプロトコルの失敗を示す) のシグナル。
 
 ```csharp
 recognizer.Recognizing += (s, e) =>
@@ -284,7 +284,7 @@ Task.WaitAny(new[] { stopRecognition.Task });
 
 継続的認識を使用する際、対応する "ディクテーションの有効化" 関数を使用することで、ディクテーション処理を有効にすることができます。 このモードでは、音声構成インスタンスが、句読点など文構造の単語の表現を解釈します。 たとえば、"Do you live in town question mark" という発話なら、"Do you live in town?" というテキストとして解釈されます。
 
-ディクテーション モードを有効にするには、[`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true) 上で [`EnableDictation`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-dotnet&preserve-view=true) メソッドを使用します。
+ディクテーション モードを有効にするには、[`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet) 上で [`EnableDictation`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation?preserve-view=true&view=azure-dotnet) メソッドを使用します。
 
 ```csharp
 speechConfig.EnableDictation();
@@ -292,13 +292,13 @@ speechConfig.EnableDictation();
 
 ## <a name="change-source-language"></a>ソース言語を変更する
 
-音声認識の一般的なタスクは、入力 (またはソース) 言語を指定することです。 入力言語をイタリア語に変更する場合の方法を見てみましょう。 自分のコード内で、ご利用の [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true) を見つけて、そのすぐ下に次の行を追加します。
+音声認識の一般的なタスクは、入力 (またはソース) 言語を指定することです。 入力言語をイタリア語に変更する場合の方法を見てみましょう。 自分のコード内で、ご利用の [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet) を見つけて、そのすぐ下に次の行を追加します。
 
 ```csharp
 speechConfig.SpeechRecognitionLanguage = "it-IT";
 ```
 
-[`SpeechRecognitionLanguage`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.speechrecognitionlanguage?view=azure-dotnet&preserve-view=true) プロパティには、言語ロケールの書式指定文字列が必要です。 サポートされている [ロケールまたは言語](../../../language-support.md)のリストの **ロケール** 列に任意の値を指定できます。
+[`SpeechRecognitionLanguage`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.speechrecognitionlanguage?preserve-view=true&view=azure-dotnet) プロパティには、言語ロケールの書式指定文字列が必要です。 サポートされている [ロケールまたは言語](../../../language-support.md)のリストの **ロケール** 列に任意の値を指定できます。
 
 ## <a name="improve-recognition-accuracy"></a>認識の精度を向上させる
 
@@ -307,9 +307,9 @@ Speech SDK を使用して認識の精度を向上させるには、いくつか
 > [!IMPORTANT]
 > フレーズ リスト機能は英語でのみ使用できます。
 
-フレーズ リストを使用するには、まず [`PhraseListGrammar`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar?view=azure-dotnet&preserve-view=true) オブジェクトを作成します。次に、[`AddPhrase`](https://docs.microsoft.com//dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar.addphrase?view=azure-dotnet&preserve-view=true) を使用して特定の単語と語句を追加します。
+フレーズ リストを使用するには、まず [`PhraseListGrammar`](/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar?preserve-view=true&view=azure-dotnet) オブジェクトを作成します。次に、[`AddPhrase`](//dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar.addphrase?preserve-view=true&view=azure-dotnet) を使用して特定の単語と語句を追加します。
 
-[`PhraseListGrammar`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar?view=azure-dotnet&preserve-view=true) への変更は、次の認識時、または Speech Service への再接続後に有効になります。
+[`PhraseListGrammar`](/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar?preserve-view=true&view=azure-dotnet) への変更は、次の認識時、または Speech Service への再接続後に有効になります。
 
 ```csharp
 var phraseList = PhraseListGrammar.FromRecognizer(recognizer);

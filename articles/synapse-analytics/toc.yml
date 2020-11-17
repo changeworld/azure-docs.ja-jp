@@ -130,6 +130,8 @@
             - name: Synapse Studio の接続に関する問題のトラブルシューティング
               href: troubleshoot/troubleshoot-synapse-studio-powershell.md
               displayname: powershell
+            - name: Synapse Studio とストレージ間の接続のトラブルシューティング
+              href: troubleshoot/troubleshoot-synapse-studio-and-storage-connectivity.md
     - name: 操作方法ガイド
       items:
         - name: セキュリティで保護

@@ -9,7 +9,7 @@
           href: azure-stack-edge-gpu-overview.md
     - name: クイックスタート
       items:
-        - name: はじめに
+        - name: 作業開始
           href: azure-stack-edge-gpu-quickstart.md
     - name: チュートリアル
       items:

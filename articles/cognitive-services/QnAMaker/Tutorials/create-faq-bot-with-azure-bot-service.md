@@ -5,15 +5,15 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 08/31/2020
-ms.openlocfilehash: ab78ac41be2f900d84e82c21e566f5250b2afd18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa2530f817bf20af40ab2913df9f16e7d1974ef3
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777396"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375456"
 ---
 # <a name="tutorial-create-an-faq-bot-with-azure-bot-service"></a>チュートリアル:Azure Bot Service を使用した FAQ ボットの作成
-QnA Maker と Azure [Bot Service](https://azure.microsoft.com/en-us/services/bot-service/) を使用して FAQ ボットをコードなしで作成します。
+QnA Maker と Azure [Bot Service](https://azure.microsoft.com/services/bot-service/) を使用して FAQ ボットをコードなしで作成します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -28,7 +28,15 @@ QnA Maker と Azure [Bot Service](https://azure.microsoft.com/en-us/services/bot
 
 [クイックスタート](../Quickstarts/create-publish-knowledge-base.md)に従ってナレッジ ベースを作成します。 ナレッジ ベースが正常に発行されると、下のページが表示されます。
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
+
 ![正常な発行のスクリーンショット](../media/qnamaker-create-publish-knowledge-base/publish-knowledge-base-to-endpoint.png)
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+
+![正常な発行のスクリーンショット (マネージド)](../media/qnamaker-create-publish-knowledge-base/publish-knowledge-base-to-endpoint-managed.png)
+
+---
 
 ## <a name="create-a-bot"></a>ボットの作成
 
@@ -41,9 +49,18 @@ QnA Maker と Azure [Bot Service](https://azure.microsoft.com/en-us/services/bot
 
 1. QnA Maker ポータルの **[発行]** ページで、 **[Create bot]\(ボットの作成\)** を選択します。 このボタンは、ナレッジ ベースの発行後にのみ表示されます。
 
+     # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
+
     ![ボットの作成のスクリーンショット](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page.png)
 
-1. Azure portal の新しいブラウザー タブが開き、Azure Bot Service の作成ページが表示されます。 Azure Bot Service を構成します。 ボットと QnA Maker は、Web App Service プランを共有できますが、Web アプリを共有することはできません。 そのため、ボットの**アプリ名**は、QnA Maker サービスのアプリ名とは異なる必要があります。
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+
+    ![ボットの作成のスクリーンショット (マネージド、プレビュー)](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page-managed.png)
+
+    ---
+    
+
+1. Azure portal の新しいブラウザー タブが開き、Azure Bot Service の作成ページが表示されます。 Azure Bot Service を構成します。 ボットと QnA Maker は、Web App Service プランを共有できますが、Web アプリを共有することはできません。 そのため、ボットの **アプリ名** は、QnA Maker サービスのアプリ名とは異なる必要があります。
 
     * **すべきこと**
         * ボット ハンドルが一意でない場合に、ボット ハンドルを変更する。

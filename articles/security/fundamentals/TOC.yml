@@ -38,6 +38,21 @@
           href: infrastructure-integrity.md
         - name: データ保護
           href: protection-customer-data.md
+    - name: プラットフォームの整合性とセキュリティ
+      href: platform.md
+      items:
+        - name: ファームウェアのセキュリティ
+          href: firmware.md
+        - name: セキュア ブート
+          href: secure-boot.md
+        - name: メジャー ブートとホストの構成証明
+          href: measured-boot-host-attestation.md
+        - name: プロジェクト Cerberus
+          href: project-cerberus.md
+        - name: 保存時の暗号化
+          href: encryption-atrest.md
+        - name: ハイパーバイザー セキュリティ
+          href: hypervisor.md
     - name: Azure クラウドでの分離
       href: isolation-choices.md
 - name: ID 管理

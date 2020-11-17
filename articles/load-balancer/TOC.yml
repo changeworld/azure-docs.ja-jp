@@ -67,9 +67,9 @@
       href: load-balancer-ha-ports-overview.md
     - name: 複数のフロントエンド
       href: load-balancer-multivip-overview.md
-    - name: 送信プロキシ
+    - name: インターネットへの送信接続での SNAT
       href: load-balancer-outbound-connections.md
-    - name: アウトバウンド規則
+    - name: 送信ルールを構成する
       href: outbound-rules.md
     - name: アイドル タイムアウトの TCP リセット
       href: load-balancer-tcp-reset.md

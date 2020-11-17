@@ -28,8 +28,6 @@
       items:
         - name: 音声認識のソース言語を変更する
           href: how-to-specify-source-language.md
-        - name: Custom Speech を使用して精度を向上させる
-          href: how-to-custom-speech.md
         - name: 圧縮音声入力形式を使用する
           href: how-to-use-codec-compressed-audio-input-streams.md
           displayName: 'codec,codecs,compression,compressed,mp3,flac,mulaw,alaw,mp4,mp4a,wav,opus,ogg,pcm,silk'
@@ -45,20 +43,18 @@
           href: tutorial-tenant-model.md
     - name: カスタマイズ
       items:
+        - name: Custom Speech とは
+          href: custom-speech-overview.md
         - name: Speech Studio でのオーディオ ファイルを使用したモデルのテスト
           href: quickstarts/speech-studio-test-model.md
         - name: Custom Speech 用のテスト データを準備する
           href: how-to-custom-speech-test-and-train.md
         - name: Custom Speech データを検査する
           href: how-to-custom-speech-inspect-data.md
-        - name: カスタム音声の正確性を評価する
+        - name: Custom Speech の精度の評価と向上
           href: how-to-custom-speech-evaluate-data.md
-        - name: カスタム音声の正確性を向上させる
-          href: how-to-custom-speech-improve-accuracy.md
-        - name: Custom Speech 用のモデルをトレーニングする
+        - name: Custom Speech モデルのトレーニングとデプロイ
           href: how-to-custom-speech-train-model.md
-        - name: カスタム モデルをデプロイする
-          href: how-to-custom-speech-deploy-model.md
         - name: Custom Speech の CI/CD
           href: how-to-custom-speech-continuous-integration-continuous-deployment.md
         - name: ヒューマン ラベル付け文字起こしを作成する
@@ -391,6 +387,10 @@
                       href: how-to-custom-commands-setup-web-endpoints.md
                     - name: Custom Commands アプリをスキルとしてエクスポートする
                       href: how-to-custom-commands-integrate-remote-skills.md
+                    - name: クライアント アプリからコマンドを更新する
+                      href: how-to-custom-commands-update-command-from-client.md
+                    - name: Web エンドポイントからコマンドを更新する
+                      href: how-to-custom-commands-update-command-from-web-endpoint.md
                 - name: 配置
                   items:
                     - name: Azure DevOps による継続的配置

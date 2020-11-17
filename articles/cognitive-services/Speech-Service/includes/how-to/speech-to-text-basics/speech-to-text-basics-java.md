@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 873c2048773a8e5a1df79153c9147ea0ed6b3509
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 70b983d0fc2b13957a3701c778dec074b328a770
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93136268"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94482625"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して文字起こしをする機能です (多くの場合、音声テキスト変換と呼ばれます)。 このクイックスタートでは、アプリや製品で Speech SDK を使用し、高品質の音声テキスト変換を実行する方法について説明します。
 
@@ -31,16 +31,22 @@ Speech Service の中核となる機能の 1 つは、人間の音声を認識�
 
 ## <a name="create-a-speech-configuration"></a>音声構成を作成する
 
-Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) を作成する必要があります。 このクラスには、キー、関連付けられたリージョン、エンドポイント、ホスト、または認証トークンなど、ご利用のサブスクリプションに関する情報が含まれています。 キーとリージョンを使用して [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) を作成します。 リージョン識別子を確認するには、[リージョンのサポート](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)に関するページを参照してください。
+Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) を作成する必要があります。 このクラスには、キー、関連付けられたリージョン、エンドポイント、ホスト、または認証トークンなど、ご利用のサブスクリプションに関する情報が含まれています。 キーとリージョンを使用して [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) を作成します。 キーとリージョンのペアを見つけるには、「[キーとリージョンを見つける](../../../overview.md#find-keys-and-region)」ページを参照してください。
 
 ```java
-import java.util.concurrent.Future;
 import com.microsoft.cognitiveservices.speech.*;
+import com.microsoft.cognitiveservices.speech.audio.AudioConfig;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
-SpeechConfig config = SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
+public class Program {
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
+        SpeechConfig speechConfig = SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
+    }
+}
 ```
 
-[`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) を初期化するには、他にも次に示すようないくつかの方法があります。
+[`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) を初期化するには、他にも次に示すようないくつかの方法があります。
 
 * エンドポイントの場合: Speech Service エンドポイントを渡します。 キーまたは認証トークンは省略可能です。
 * ホストの場合: ホスト アドレスを渡します。 キーまたは認証トークンは省略可能です。
@@ -51,47 +57,64 @@ SpeechConfig config = SpeechConfig.fromSubscription("<paste-your-subscription-ke
 
 ## <a name="recognize-from-microphone"></a>マイクから認識する
 
-デバイス マイクを使用して音声を認識するには、`fromDefaultMicrophoneInput()` を使用して `AudioConfig` を作成します。 次に、`audioConfig` と `config` を渡して [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) を初期化します。
+デバイス マイクを使用して音声を認識するには、`fromDefaultMicrophoneInput()` を使用して `AudioConfig` を作成します。 次に、`audioConfig` と `config` を渡して [`SpeechRecognizer`](/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) を初期化します。
 
 ```java
-AudioConfig audioConfig = AudioConfig.fromDefaultMicrophoneInput();
-SpeechRecognizer recognizer = new SpeechRecognizer(config, audioConfig);
+import com.microsoft.cognitiveservices.speech.*;
+import com.microsoft.cognitiveservices.speech.audio.AudioConfig;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
-System.out.println("Speak into your microphone.");
-Future<SpeechRecognitionResult> task = recognizer.recognizeOnceAsync();
-SpeechRecognitionResult result = task.get();
-System.out.println("RECOGNIZED: Text=" + result.getText());
+public class Program {
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
+        SpeechConfig speechConfig = SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
+        fromMic(speechConfig);
+    }
+
+    public static void fromMic(SpeechConfig speechConfig) throws InterruptedException, ExecutionException {
+        AudioConfig audioConfig = AudioConfig.fromDefaultMicrophoneInput();
+        SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, audioConfig);
+
+        System.out.println("Speak into your microphone.");
+        Future<SpeechRecognitionResult> task = recognizer.recognizeOnceAsync();
+        SpeechRecognitionResult result = task.get();
+        System.out.println("RECOGNIZED: Text=" + result.getText());
+    }
+}
 ```
 
-" *特定の* " オーディオ入力デバイスを使用したい場合、`AudioConfig` でデバイス ID を指定する必要があります。 自分のオーディオ入力デバイスの[デバイス ID を取得する方法](../../../how-to-select-audio-input-devices.md)をご覧ください。
+"*特定の*" オーディオ入力デバイスを使用したい場合、`AudioConfig` でデバイス ID を指定する必要があります。 自分のオーディオ入力デバイスの[デバイス ID を取得する方法](../../../how-to-select-audio-input-devices.md)をご覧ください。
 
 ## <a name="recognize-from-file"></a>ファイルから認識する
 
-マイクを使用するのでなくオーディオ ファイルから音声を認識する場合でも、`AudioConfig` を作成する必要があります。 ただし、`fromDefaultMicrophoneInput()` を呼び出さずに、[`AudioConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-java-stable) を作成する場合は、`fromWavFileInput()` を呼び出してファイル パスを渡します。
+マイクを使用するのでなくオーディオ ファイルから音声を認識する場合でも、`AudioConfig` を作成する必要があります。 ただし、`fromDefaultMicrophoneInput()` を呼び出さずに、[`AudioConfig`](/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-java-stable) を作成する場合は、`fromWavFileInput()` を呼び出してファイル パスを渡します。
 
 ```java
-AudioConfig audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
-SpeechRecognizer recognizer = new SpeechRecognizer(config, audioConfig);
+import com.microsoft.cognitiveservices.speech.*;
+import com.microsoft.cognitiveservices.speech.audio.AudioConfig;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
-Future<SpeechRecognitionResult> task = recognizer.recognizeOnceAsync();
-SpeechRecognitionResult result = task.get();
-System.out.println("RECOGNIZED: Text=" + result.getText());
+public class Program {
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
+        SpeechConfig speechConfig = SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
+        fromFile(speechConfig);
+    }
+
+    public static void fromFile(SpeechConfig speechConfig) throws InterruptedException, ExecutionException {
+        AudioConfig audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
+        SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, audioConfig);
+        
+        Future<SpeechRecognitionResult> task = recognizer.recognizeOnceAsync();
+        SpeechRecognitionResult result = task.get();
+        System.out.println("RECOGNIZED: Text=" + result.getText());
+    }
+}
 ```
 
-## <a name="recognize-speech"></a>音声を認識する
+## <a name="error-handling"></a>エラー処理
 
-Speech SDK for Java 用の [認識エンジン](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable&preserve-view=true) では、音声認識に使用できるいくつかの手法が公開されています。
-
-### <a name="single-shot-recognition"></a>単発の認識
-
-単発の認識では、1 つの発話が非同期的に認識されます。 1 つの発話の終わりは、終了時の無音状態をリッスンするか、最大 15 秒のオーディオが処理されるまで待機することによって決定されます。 [`recognizeOnceAsync`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-java-stable) を使用した非同期の単発認識の例を次に示します。
-
-```java
-Future<SpeechRecognitionResult> task = recognizer.recognizeOnceAsync();
-SpeechRecognitionResult result = task.get();
-```
-
-結果を処理するコードを記述する必要があります。 このサンプルでは、[`result.getReason()`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.resultreason?view=azure-java-stable&preserve-view=true) を評価します。
+これまでの例では単に、認識されたテキストを `result.getText()` を使用して取得していましたが、エラーやその他の応答を処理するためには、結果を処理するなんらかのコードを記述する必要があります。 次の例では、[`result.getReason()`](/java/api/com.microsoft.cognitiveservices.speech.resultreason?view=azure-java-stable&preserve-view=true) を評価し、
 
 * 認識結果を出力します: `ResultReason.RecognizedSpeech`
 * 認識が一致しない場合は、ユーザーに通知します: `ResultReason.NoMatch`
@@ -120,11 +143,13 @@ switch (result.getReason()) {
 }
 ```
 
-### <a name="continuous-recognition"></a>継続的認識
+## <a name="continuous-recognition"></a>継続的認識
 
-継続的認識は、単発の認識よりも少し複雑です。 この場合は、認識結果を取得するために、`recognizing`、`recognized`、`canceled` の各イベントをサブスクライブする必要があります。 認識を停止するには、[`stopContinuousRecognitionAsync`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync) を呼び出す必要があります。 オーディオ入力ファイルに対して継続的認識を実行する方法の例を次に示します。
+これまでの例では、1 つの発話を認識する単発の認識を使用してきました。 1 つの発話の終わりは、終了時の無音状態をリッスンするか、最大 15 秒のオーディオが処理されるまで待機することによって決定されます。
 
-入力を定義し、[`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable&preserve-view=true) を初期化することから始めましょう。
+一方、認識を停止するタイミングを **制御** したい場合は、継続的認識を使用します。 この場合は、認識結果を取得するために、`recognizing`、`recognized`、`canceled` の各イベントをサブスクライブする必要があります。 認識を停止するには、[`stopContinuousRecognitionAsync`](/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync) を呼び出す必要があります。 オーディオ入力ファイルに対して継続的認識を実行する方法の例を次に示します。
+
+入力を定義し、[`SpeechRecognizer`](/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?preserve-view=true&view=azure-java-stable) を初期化することから始めましょう。
 
 ```java
 AudioConfig audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
@@ -137,12 +162,12 @@ SpeechRecognizer recognizer = new SpeechRecognizer(config, audioConfig);
 private static Semaphore stopTranslationWithFileSemaphore;
 ```
 
-[`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable&preserve-view=true) から送信されたイベントをサブスクライブします。
+[`SpeechRecognizer`](/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?preserve-view=true&view=azure-java-stable) から送信されたイベントをサブスクライブします。
 
-* [`recognizing`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.recognizing?view=azure-java-stable&preserve-view=true): 中間的な認識結果を含むイベントのシグナル。
-* [`recognized`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.recognized?view=azure-java-stable&preserve-view=true): 最終的な認識結果を含むイベント (認識の試行が成功したことを示す) のシグナル。
-* [`sessionStopped`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.recognizer.sessionstopped?view=azure-java-stable&preserve-view=true): 認識セッション (操作) の終了を示すイベントのシグナル。
-* [`canceled`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.canceled?view=azure-java-stable&preserve-view=true): キャンセルされた認識結果を含むイベント (結果としてキャンセルされた認識の試みまたは直接的なキャンセル要求、あるいは転送またはプロトコルの失敗を示す) のシグナル。
+* [`recognizing`](/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.recognizing?preserve-view=true&view=azure-java-stable): 中間的な認識結果を含むイベントのシグナル。
+* [`recognized`](/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.recognized?preserve-view=true&view=azure-java-stable): 最終的な認識結果を含むイベント (認識の試行が成功したことを示す) のシグナル。
+* [`sessionStopped`](/java/api/com.microsoft.cognitiveservices.speech.recognizer.sessionstopped?preserve-view=true&view=azure-java-stable): 認識セッション (操作) の終了を示すイベントのシグナル。
+* [`canceled`](/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.canceled?preserve-view=true&view=azure-java-stable): キャンセルされた認識結果を含むイベント (結果としてキャンセルされた認識の試みまたは直接的なキャンセル要求、あるいは転送またはプロトコルの失敗を示す) のシグナル。
 
 ```java
 // First initialize the semaphore.
@@ -179,7 +204,7 @@ recognizer.sessionStopped.addEventListener((s, e) -> {
 });
 ```
 
-すべてが設定されると、[`startContinuousRecognitionAsync`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.startcontinuousrecognitionasync) を呼び出すことができます。
+すべてが設定されると、[`startContinuousRecognitionAsync`](/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.startcontinuousrecognitionasync) を呼び出すことができます。
 
 ```java
 // Starts continuous recognition. Uses StopContinuousRecognitionAsync() to stop recognition.
@@ -196,7 +221,7 @@ recognizer.stopContinuousRecognitionAsync().get();
 
 継続的認識を使用する際、対応する "ディクテーションの有効化" 関数を使用することで、ディクテーション処理を有効にすることができます。 このモードでは、音声構成インスタンスが、句読点など文構造の単語の表現を解釈します。 たとえば、"Do you live in town question mark" という発話なら、"Do you live in town?" というテキストとして解釈されます。
 
-ディクテーション モードを有効にするには、[`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable&preserve-view=true) 上で [`enableDictation`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-java-stable&preserve-view=true) メソッドを使用します。
+ディクテーション モードを有効にするには、[`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-java-stable) 上で [`enableDictation`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig.enabledictation?preserve-view=true&view=azure-java-stable) メソッドを使用します。
 
 ```java
 config.enableDictation();
@@ -204,13 +229,13 @@ config.enableDictation();
 
 ## <a name="change-source-language"></a>ソース言語を変更する
 
-音声認識の一般的なタスクは、入力 (またはソース) 言語を指定することです。 入力言語をフランス語に変更する場合の方法を見てみましょう。 自分のコード内で、ご利用の [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable&preserve-view=true) を見つけて、そのすぐ下に次の行を追加します。
+音声認識の一般的なタスクは、入力 (またはソース) 言語を指定することです。 入力言語をフランス語に変更する場合の方法を見てみましょう。 自分のコード内で、ご利用の [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-java-stable) を見つけて、そのすぐ下に次の行を追加します。
 
 ```java
 config.setSpeechRecognitionLanguage("fr-FR");
 ```
 
-[`setSpeechRecognitionLanguage`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechrecognitionlanguage?view=azure-java-stable&preserve-view=true) は、引数として文字列を取るパラメーターです。 サポートされている[ロケールまたは言語](../../../language-support.md)のリストに任意の値を指定できます。
+[`setSpeechRecognitionLanguage`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechrecognitionlanguage?preserve-view=true&view=azure-java-stable) は、引数として文字列を取るパラメーターです。 サポートされている[ロケールまたは言語](../../../language-support.md)のリストに任意の値を指定できます。
 
 ## <a name="improve-recognition-accuracy"></a>認識の精度を向上させる
 
@@ -219,9 +244,9 @@ Speech SDK を使用して認識の精度を向上させるには、いくつか
 > [!IMPORTANT]
 > フレーズ リスト機能は英語でのみ使用できます。
 
-フレーズ リストを使用するには、まず [`PhraseListGrammar`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar?view=azure-java-stable&preserve-view=true) オブジェクトを作成します。次に、[`AddPhrase`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar.addphrase?view=azure-java-stable#com_microsoft_cognitiveservices_speech_PhraseListGrammar_addPhrase_String_) を使用して特定の単語と語句を追加します。
+フレーズ リストを使用するには、まず [`PhraseListGrammar`](/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar?preserve-view=true&view=azure-java-stable) オブジェクトを作成します。次に、[`AddPhrase`](/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar.addphrase?view=azure-java-stable#com_microsoft_cognitiveservices_speech_PhraseListGrammar_addPhrase_String_) を使用して特定の単語と語句を追加します。
 
-[`PhraseListGrammar`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar?view=azure-java-stable&preserve-view=true) への変更は、次の認識時、または Speech Service への再接続後に有効になります。
+[`PhraseListGrammar`](/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar?preserve-view=true&view=azure-java-stable) への変更は、次の認識時、または Speech Service への再接続後に有効になります。
 
 ```java
 PhraseListGrammar phraseList = PhraseListGrammar.fromRecognizer(recognizer);
