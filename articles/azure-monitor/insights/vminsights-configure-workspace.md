@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: ecfeebb9ce86d717531310c2ad1a33a3d27f4c0a
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 9827f79f8407bd04468f1b4456aec9d6a8793a6f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995735"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506296"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>Azure Monitor for VMs 用に Log Analytics ワークスペースを構成する
 Azure Monitor for VMs は、Azure Monitor 内の 1 つ以上の Log Analytics ワークスペースからデータを収集します。 エージェントをオンボードする前に、ワークスペースを作成して構成する必要があります。 この記事では、ワークスペースの要件と、それを Azure Monitor for VMs 用に構成するための要件について説明します。
@@ -20,10 +20,10 @@ Azure Monitor for VMs は、Azure Monitor 内の 1 つ以上の Log Analytics �
 ## <a name="overview"></a>概要
 1 つのサブスクリプションでは、要件に応じて、任意の数のワークスペースを使用できます。ワークスペースの唯一の要件は、サポートされている場所に配置され、*VMInsights* ソリューションで構成されることです。
 
-ワークスペースが構成されたら、使用可能なオプションのいずれかを使用して VM や VMMS に必要なエージェントをインストールしたり、それらがデータを送信するためのワークスペースを指定したりできます。 Azure Monitor for VMs は、そのサブスクリプション内に構成された任意のワークスペースからデータを収集します。
+ワークスペースが構成されたら、使用可能なオプションのいずれかを使用して、必要な各エージェントを VM や VMSS にインストールしたり、それらがデータを送信するワークスペースを指定したりできます。 Azure Monitor for VMs は、そのサブスクリプション内に構成された任意のワークスペースからデータを収集します。
 
 > [!NOTE]
-> Azure portal を使用して 1 つの VM または VMMS で Azure Monitor for VMs を有効にする場合は、既存のワークスペースを選択するか、または新しいワークスペースを作成するオプションが与えられます。 このワークスペースには *VMInsights* ソリューションがインストールされます (まだインストールされていない場合)。 その後、このワークスペースを他のエージェントに使用できます。
+> Azure portal を使用して 1 つの VM または VMSS で Azure Monitor for VMs を有効にする場合は、既存のワークスペースを選択するか、または新しいワークスペースを作成するオプションが与えられます。 このワークスペースには *VMInsights* ソリューションがインストールされます (まだインストールされていない場合)。 その後、このワークスペースを他のエージェントに使用できます。
 
 
 ## <a name="create-log-analytics-workspace"></a>Log Analytics ワークスペースの作成
@@ -89,7 +89,7 @@ Azure portal から既存のワークスペースを構成するためのオプ�
 [![[ワークスペースの構成]](media/vminsights-enable-at-scale-policy/workspace-configuration.png)](media/vminsights-enable-at-scale-policy/workspace-configuration.png#lightbox)
 
 
-Azure portal を使用して 1 つの VM または VMMS で Azure Monitor for VMs を有効にする場合は、既存のワークスペースを選択するか、または新しいワークスペースを作成するオプションが与えられます。 このワークスペースには *VMInsights* ソリューションがインストールされます (まだインストールされていない場合)。 その後、このワークスペースを他のエージェントに使用できます。
+Azure portal を使用して 1 つの VM または VMSS で Azure Monitor for VMs を有効にする場合は、既存のワークスペースを選択するか、または新しいワークスペースを作成するオプションが与えられます。 このワークスペースには *VMInsights* ソリューションがインストールされます (まだインストールされていない場合)。 その後、このワークスペースを他のエージェントに使用できます。
 
 [![ポータルで 1 つの VM を有効にする](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png#lightbox)
 

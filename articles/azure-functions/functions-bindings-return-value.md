@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: 1dd9fabbe235e45290e607f861b67466d33319ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58ee9b682bc97dc4044d811392cf4ff5b51a69fd
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212180"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491360"
 ---
 # <a name="using-the-azure-function-return-value"></a>Azure 関数の戻り値の使用
 
@@ -129,6 +129,27 @@ module.exports = function (context, input) {
     context.log('Node.js script processed queue message', json);
     context.done(null, json);
 }
+```
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+*function.json* ファイル内の出力バインディングを次に示します。
+
+```json
+{
+    "name": "Response",
+    "type": "blob",
+    "direction": "out",
+    "path": "output-container/{blobname}"
+}
+```
+
+http 出力バインディングに戻り値を使用する PowerShell コードを次に示します。
+
+```powershell
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = [HttpStatusCode]::OK
+    Body = $blobname
+    })
 ```
 
 # <a name="python"></a>[Python](#tab/python)

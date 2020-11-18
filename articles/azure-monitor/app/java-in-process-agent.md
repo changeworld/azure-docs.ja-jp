@@ -1,24 +1,24 @@
 ---
-title: Java アプリケーションを任意の環境で監視する - Azure Monitor Application Insights
-description: アプリをインストルメント化することなく、任意の環境で実行されている Java アプリケーションのアプリケーション パフォーマンスを監視します。 分散トレースとアプリケーション マップです。
+title: Azure Monitor Application Insights Java
+description: コードを変更することなく、任意の環境で実行されている Java アプリケーションのアプリケーション パフォーマンスを監視します。 分散トレースとアプリケーション マップです。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 1182813c0b79d43c2c264482629ad97f23683a49
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 8423443abac90b87349a4a80fce0ec33a8b686da
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215282"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444743"
 ---
-# <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Azure Monitor Application Insights を監視する Java のコード不要のアプリケーション - パブリックプレビュー
+# <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor Application Insights を監視する Java のコード不要のアプリケーション
 
 Java のコード不要のアプリケーション監視は、シンプルさがすべてです。コードの変更がなく、いくつかの構成変更を行うだけで、Java エージェントを有効にすることができます。
 
  Java エージェントは、任意の環境で動作し、すべての Java アプリケーションを監視できます。 つまり、Java アプリを実行しているのが、VM、オンプレミス、AKS、Windows、Linux などのいずれであっても、Java 3.0 エージェントがアプリを監視します。
 
-3\.0 エージェントが要求、依存関係、ログをすべて独自に収集するため、アプリケーションに Application Insights Java SDK を追加する必要がなくなりました。
+3\.0 エージェントによって要求、依存関係、ログがすべて独自に自動収集されるため、アプリケーションに Application Insights Java SDK を追加する必要がなくなりました。
 
-アプリケーションからカスタム テレメトリを送信することはできます。 3\.0 エージェントは、自動収集されたすべてのテレメトリと連動して、追跡と関連付けを行います。
+アプリケーションからカスタム テレメトリを送信することはできます。 3\.0 エージェントによって、自動収集されたすべてのテレメトリと連動して、追跡と関連付けが行われます。
 
 3\.0 エージェントは、Java 8 以降をサポートしています。
 
@@ -26,15 +26,20 @@ Java のコード不要のアプリケーション監視は、シンプルさが
 
 **1.エージェントのダウンロード**
 
-[applicationinsights-agent-3.0.0-PREVIEW.7.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.7/applicationinsights-agent-3.0.0-PREVIEW.7.jar) をダウンロードします
+> [!WARNING]
+> **3.0 Preview からアップグレードする場合**
+>
+> ファイル名自体がすべて小文字になったのに加えて、JSON 構造体が完全に変更されたため、すべての[構成オプション](./java-standalone-config.md)を注意深く確認してください。
+
+[applicationinsights-agent-3.0.0.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0/applicationinsights-agent-3.0.0.jar) をダウンロードします
 
 **2.JVM をエージェントにポイントする**
 
-アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.7.jar` を追加します
+アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.0.0.jar` を追加します
 
 一般的な JVM 引数には、`-Xmx512m` と `-XX:+UseG1GC` があります。 これらの引数の追加先がわかれば、これの追加先もわかります。
 
-アプリケーションの JVM 引数の構成に関する追加のヘルプについては、「[3.0 Preview: Tips for updating your JVM args](./java-standalone-arguments.md)」 (3.0 プレビュー: JVM の引数の更新に関するヒント) を参照してください。
+アプリケーションの JVM 引数の構成に関する追加のヘルプについては、[JVM の引数の更新に関するヒント](./java-standalone-arguments.md)のページを参照してください。
 
 **3.エージェントを Application Insights リソースにポイントする**
 
@@ -43,16 +48,14 @@ Application Insights リソースをまだ持っていない場合は、[リソ�
 環境変数を設定して、エージェントを Application Insights リソースにポイントします。
 
 ```
-APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
+APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ```
 
-または、次の内容で、`ApplicationInsights.json` という名前の構成ファイルを作成し、`applicationinsights-agent-3.0.0-PREVIEW.7.jar` と同じディレクトリに配置します。
+または、次の内容で、`applicationinsights.json` という名前の構成ファイルを作成し、`applicationinsights-agent-3.0.0.jar` と同じディレクトリに配置します。
 
 ```json
 {
-  "instrumentationSettings": {
-    "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000"
-  }
+  "connectionString": "InstrumentationKey=..."
 }
 ```
 
@@ -70,21 +73,23 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 
 ## <a name="configuration-options"></a>構成オプション
 
-`ApplicationInsights.json` ファイルでは、次の構成を追加できます。
+`applicationinsights.json` ファイルでは、次の構成を追加できます。
 
 * クラウド ロール名
 * クラウド ロール インスタンス
-* アプリケーション ログ キャプチャ
-* JMX メトリック
-* Micrometer
-* Heartbeat
 * サンプリング
+* JMX メトリック
+* カスタム ディメンション
+* テレメトリ プロセッサ (プレビュー)
+* 自動収集されるログ
+* 自動収集される Micrometer メトリック (Spring Boot アクチュエータ メトリックを含む)
+* Heartbeat
 * HTTP Proxy
 * 自己診断
 
-詳細については、「[3.0 Public Preview: Configuration Options](./java-standalone-config.md)」 (3.0 パブリック プレビュー: 自動収集された要求、依存関係、ログ、およびメトリック) を参照してください。
+詳細については、[構成オプション](./java-standalone-config.md)に関するページを参照してください。
 
-## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>自動収集された要求、依存関係、ログ、およびメトリック
+## <a name="auto-collected-requests-dependencies-logs-and-metrics"></a>自動収集された要求、依存関係、ログ、およびメトリック
 
 ### <a name="requests"></a>Requests
 
@@ -126,7 +131,7 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 
 3\.0 以降での目標は、標準 API を使用してカスタム テレメトリを送信できるようにすることです。
 
-Micrometer、OpenTelemetry API、および一般的なログ記録フレームワークがサポートされています。 Application Insights Java 3.0 では、テレメトリが自動的にキャプチャされ、自動収集されたすべてのテレメトリと連動して、関連付けが行われます。
+Micrometer、OpenTelemetry API、および一般的なログ記録フレームワークがサポートされています。 Application Insights Java 3.0 を使用すると、テレメトリが自動的にキャプチャされ、自動収集されたすべてのテレメトリと連動して、関連付けが行われます。
 
 ### <a name="supported-custom-telemetry"></a>サポートされているカスタム テレメトリ
 
@@ -137,8 +142,8 @@ Micrometer、OpenTelemetry API、および一般的なログ記録フレーム�
 | **[カスタム イベント]**   |            |                     |  Yes    |
 | **カスタム メトリック**  |  はい       |                     |  はい    |
 | **依存関係**    |            |                     |  Yes    |
-| **例外**      |            |  はい                |  はい    |
-| **ページ ビュー**      |            |                     |  Yes    |
+| **例外**      |            |  はい                |  Yes    |
+| **ページ ビュー**      |            |                     |  はい    |
 | **要求**        |            |                     |  Yes    |
 | **トレース**          |            |  はい                |  はい    |
 
@@ -226,9 +231,14 @@ telemetryClient.trackEvent("WinGame");
 
 ## <a name="upgrading-from-application-insights-java-sdk-2x"></a>Application Insights Java SDK 2.x からのアップグレード
 
-アプリケーションで Application Insights Java SDK 2.x を既に使用している場合は、削除する必要はありません。 Java 3.0 エージェントでは、Java SDK 2.x を介して送信しているカスタム テレメトリの検出、キャプチャ、関連付けを行います。一方で、Java SDK 2.x によって実行される自動収集を抑制し、キャプチャの重複を防止します。
+アプリケーションで Application Insights Java SDK 2.x を既に使用している場合は、削除する必要はありません。
+Java 3.0 エージェントによって、Java SDK 2.x を介して送信しているカスタム テレメトリの検出、キャプチャ、関連付けが行われます。一方で、テレメトリの重複を防止するために、Java SDK 2.x によって実行される自動収集が抑制されます。
 
 Application Insights 2.x エージェントを使用していた場合は、2.x エージェントを指す `-javaagent:` JVM 引数を削除する必要があります。
 
 > [!NOTE]
-> 注:3.0 エージェントを使用している場合、Java SDK 2.x TelemetryInitializers と TelemetryProcessors は実行されません。
+> 3\.0 エージェントを使用している場合、Java SDK 2.x TelemetryInitializers と TelemetryProcessors は実行されません。
+> 以前にこれらを必要としていたユース ケースの多くは、3.0 で[カスタム ディメンション](./java-standalone-config.md#custom-dimensions)を構成するか、[テレメトリ プロセッサ](./java-standalone-telemetry-processors.md)を構成することによって解決できます。
+
+> [!NOTE]
+> 3.0 では、1 つの JVM で複数のインストルメンテーション キーがまだサポートされていません。

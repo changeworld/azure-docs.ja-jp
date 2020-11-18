@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: cdddbce3e9eb0a5c933ace186607186265197dc4
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f8e0d49c2a35a1e97c79e6d4b8c867a4a8ab88b3
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123508"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491524"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Stream Analytics ジョブ監視とクエリの監視方法の概要
 
@@ -43,7 +43,7 @@ Azure portal は、クエリとジョブ パフォーマンスの監視とトラ
 | 異常イベント    | イベント順序ポリシーに基づいて、削除された、または調整されたタイムスタンプが付与された、順不同で受信したイベントの数。 誤順序の許容期間の設定の構成により、影響を受けることがあります。 |
 | 出力イベント          | Stream Analytics のジョブから出力ターゲットに送信されたデータのイベントの量。 |
 | 実行時エラー         | クエリ処理に関連するエラーの総数 (イベントの取り込み時または結果の出力時に見つかったエラーを除く) |
-| SU % 使用率       | ジョブの [スケール] タブからジョブに割り当てられたストリーミング ユニットの使用率。 このインジケーターが 80% 以上に達した場合、イベントの処理が遅れたり、進行が遅延または停止する可能性があります。 |
+| SU % 使用率       | リソース使用率が常に 80% を超え、透かしの遅延が増加し、バックログされたイベントの数が増加している場合は、ストリーミング ユニットを増やすことを検討してください。 使用率が高い場合は、最大数に近い割り当てリソースがジョブによって使用されていることを示します。 |
 | 透かしの遅延       | ジョブ内のすべての出力のすべてのパーティションにわたる透かしの最大遅延。 |
 
 これらのメトリックを使用して、[Stream Analytics ジョブのパフォーマンスを監視](./stream-analytics-set-up-alerts.md#scenarios-to-monitor)することができます。 

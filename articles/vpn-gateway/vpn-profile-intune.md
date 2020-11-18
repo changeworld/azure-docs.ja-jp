@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7105597ec34e804c2f2b85b01feb4824d63005c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63b1d7f95711017feba52cad97f05128d83734da
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578123"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655172"
 ---
 # <a name="create-an-intune-profile-to-deploy-vpn-client-profiles"></a>Intune プロファイルを作成して VPN クライアント プロファイルを展開する
 
@@ -35,7 +35,7 @@ Microsoft Intune を使用して、Azure VPN クライアント (Windows 10) の
 * 自動接続オン
 * 信頼されたネットワークの検出が有効。
 
-サポートされているその他のオプションについては、[VPNv2 CSP](https://docs.microsoft.com/windows/client-management/mdm/vpnv2-csp) の記事を参照してください。
+サポートされているその他のオプションについては、[VPNv2 CSP](/windows/client-management/mdm/vpnv2-csp) の記事を参照してください。
 
 1. Azure portal から VPN プロファイルをダウンロードし、パッケージから *azurevpnconfig.xml* ファイルを抽出します。
 1. 次のテキストをコピーし、新しいテキスト エディター ファイルに貼り付けます。
@@ -75,19 +75,19 @@ Microsoft Intune を使用して、Azure VPN クライアント (Windows 10) の
 
     * **[名前]:** 構成の名前を入力します。
     * **説明:** 省略可能な説明です。
-    * **OMA-URI:** ```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML``` (この情報は、azurevpnconfig.xml の <name> </name> タグ内にあります)。
+    * **OMA-URI:** ```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML``` (この情報は、azurevpnconfig.xml の <name></name> タグ内にあります)。
     * **データ型**: 文字列 (XML ファイル)。
 
    フォルダー アイコンを選択し、[XML](#xml) 手順の手順 6 で保存したファイルを選択します。 **[追加]** を選択します。
 
-   :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="構成プロファイル" lightbox="./media/create-profile-intune/configuration-settings.png":::
+   :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="構成設定" lightbox="./media/create-profile-intune/configuration-settings.png":::
 1. **[次へ]** を選択します。
 1. **[割り当て]** で、構成をプッシュするグループを選択します。 次に、 **[次へ]** を選択します。
 1. [適用性ルール] は省略可能です。 必要に応じてルールを定義し、 **[次へ]** を選択します。
 1. **[確認および作成]** ページで、 **[作成]** を選択します。
 
-    :::image type="content" source="./media/create-profile-intune/create-profile.png" alt-text="構成プロファイル":::
-1. これでカスタム プロファイルが作成されました。 このプロファイルを展開する Microsoft Intune 手順については、[ユーザーとデバイスのプロファイルの割り当て](https://docs.microsoft.com/mem/intune/configuration/device-profile-assign)に関するページを参照してください。
+    :::image type="content" source="./media/create-profile-intune/create-profile.png" alt-text="Create profile":::
+1. これでカスタム プロファイルが作成されました。 このプロファイルを展開する Microsoft Intune 手順については、[ユーザーとデバイスのプロファイルの割り当て](/mem/intune/configuration/device-profile-assign)に関するページを参照してください。
  
 ## <a name="next-steps"></a>次のステップ
 

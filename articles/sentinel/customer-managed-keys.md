@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: ecb4203c822f5b72068e11d0ad4b988d294aab0d
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: bd85936c86656a8ae59a04ccdf53a62bd852368f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427056"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655274"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Azure Sentinel のカスタマー マネージド キーの設定
 
 この記事では、Azure Sentinel 用のカスタマー マネージド キー (CMK) を構成するための背景情報と手順について説明します。 CMK を使用すると、Azure Sentinel に保存または送信されたすべてのデータを、自分が作成または所有している Azure Key Vault キーを使用して、関連するすべてのストレージ リソースで暗号化することができます。
 
 > [!NOTE]
-> - Azure Sentinel CMK 機能は、 **新規のお客様** にのみ提供されます。
+> - Azure Sentinel CMK 機能は、**新規のお客様** にのみ提供されます。
 >
 > - この機能へのアクセスは、Azure 機能の登録によって制御されます。  アクセスを要求するには、azuresentinelCMK@microsoft.com に問い合わせてください。 保留中の要求は、使用可能な容量に応じて承認されます。
 >
@@ -59,7 +59,7 @@ CMK をプロビジョニングするには、次の手順を実行します。
 
 ### <a name="step-1-create-an-azure-key-vault-and-storing-key"></a>手順 1: Azure Key Vault を作成し、キーを格納する
 
-1.  [Azure Key Vault リソースを作成](https://docs.microsoft.com/azure-stack/user/azure-stack-key-vault-manage-portal)してから、データの暗号化に使用するキーを生成またはインポートします。
+1.  [Azure Key Vault リソースを作成](/azure-stack/user/azure-stack-key-vault-manage-portal)してから、データの暗号化に使用するキーを生成またはインポートします。
     > [!NOTE]
     >  キーとアクセスを保護するため、Azure Key Vault を回復可能として構成する必要があります。
 
@@ -132,6 +132,5 @@ Azure Sentinel と Log Analytics で同じキーを使用している場合は�
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Azure Sentinel でカスタマー マネージド キーを設定する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
+- [Azure Sentinel を使用した脅威の検出](./tutorial-detect-threats-built-in.md)の概要。
 - [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
-

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 75435155ba1dad798d301006a30a5d5b6e96226a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b94b71993285a61042be3c6cd9e4708315fab9f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88611179"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413005"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall に関する FAQ
 
@@ -119,7 +119,7 @@ Azure Firewall サービスの制限については、「[Azure サブスクリ�
 
 ## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>Azure Firewall で、プライベート ネットワーク間のアウトバウンド SNAT は実行されますか?
 
-宛先 IP アドレスが [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) のプライベート IP 範囲である場合、Azure Firewall は SNAT を行いません。 組織でプライベート ネットワークに対してパブリック IP アドレス範囲を使用している場合、Azure Firewall は、SNAT を使用して、トラフィックのアドレスを AzureFirewallSubnet のいずれかのファイアウォール プライベート IP アドレスに変換します。 パブリック IP アドレス範囲の SNAT が**行われない**ように、Azure Firewall を構成することができます。 詳細については、「[Azure Firewall の SNAT プライベート IP アドレス範囲](snat-private-range.md)」を参照してください。
+宛先 IP アドレスが [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) のプライベート IP 範囲である場合、Azure Firewall は SNAT を行いません。 組織でプライベート ネットワークに対してパブリック IP アドレス範囲を使用している場合、Azure Firewall は、SNAT を使用して、トラフィックのアドレスを AzureFirewallSubnet のいずれかのファイアウォール プライベート IP アドレスに変換します。 パブリック IP アドレス範囲の SNAT が **行われない** ように、Azure Firewall を構成することができます。 詳細については、「[Azure Firewall の SNAT プライベート IP アドレス範囲](snat-private-range.md)」を参照してください。
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>サポートされているネットワーク仮想アプライアンスに、トンネリング/チェーンが強制されますか。
 
@@ -139,9 +139,9 @@ Azure Firewall には、インターネットへの直接接続が必要です�
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>アプリケーション ルールのターゲット FQDN でワイルドカードはどのように機能しますか。
 
-現在、ワイルドカードは FQDN の左側でのみ使用できます。 たとえば、* **.contoso.com** や ***contoso.com** などです。
+現在、ワイルドカードは FQDN の左側でのみ使用できます。 **_.contoso.com_* や **_contoso.com_* など。
 
-\* **.contoso.com** を構成した場合、これにより、*何らかの値*.contoso.com は許可されますが、contoso.com (ドメインの頂点) は許可されません。 ドメインの頂点を許可する場合は、それをターゲット FQDN として明示的に構成する必要があります。
+**_.contoso.com_* を構成した場合、これにより、*任意の値*.contoso.com は許可されますが、contoso.com (ドメインの頂点) は許可されません。 ドメインの頂点を許可する場合は、それをターゲット FQDN として明示的に構成する必要があります。
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>"*プロビジョニング状態: 失敗*" はどのような意味ですか。
 
@@ -205,7 +205,7 @@ Set-AzFirewall -AzureFirewall $fw
 
 ## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>TCP ping や類似のツールが、そのトラフィックを許可するルールが Azure Firewall にない場合でも、ターゲット FQDN に正常に接続できるのはなぜですか。
 
-TCP ping は実際にはターゲット FQDN に接続していません。 Azure Firewall の透過プロキシでは、ポート 80/443 で送信トラフィックがリッスンされるためにこのようなことが起こります。 TCP ping を実行すると、ファイアウォールとの接続が確立されます。これにより、パケットが破棄され、接続がログに記録されます。 この動作はセキュリティに影響しません。 ただし、混乱を避けるために、この動作に対する変更の可能性を調査しています。
+TCP ping は実際にはターゲット FQDN に接続していません。 Azure Firewall の透過プロキシでは、ポート 80/443 で送信トラフィックがリッスンされるためにこのようなことが起こります。 TCP ping を実行すると、ファイアウォールとの接続が確立されます。これにより、パケットが破棄されます。 この動作はセキュリティに影響しません。 ただし、混乱を避けるために、この動作に対する変更の可能性を調査しています。
 
 ## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>IP グループでサポートされる IP アドレスの数に制限はありますか。
 

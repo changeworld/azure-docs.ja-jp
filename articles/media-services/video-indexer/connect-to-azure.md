@@ -10,20 +10,20 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 8cd5969e4362b1581a7b9aebf39f8c6871839918
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 0d954123b0d48a4b78c0dcda98898b7ab539d502
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558751"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504511"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure に接続された Video Indexer アカウントを作成する
 
-Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer を使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、Azure サブスクリプションと Azure Media Services アカウントに接続する Video Indexer アカウントを作成します。 Media アカウント関連の料金と同様に、インデックス作成時間 (分単位) の料金がかかります。
+Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer を使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、Azure サブスクリプションに接続する Video Indexer アカウントを作成します。 インデックス作成にかかった時間 (分) に対して支払います。詳細については、「[Media Services の価格](https://azure.microsoft.com/pricing/details/media-services/)」を参照してください。
 
 この記事では、Azure サブスクリプションと Azure Media Services アカウントにリンクされた Video Indexer アカウントを作成する方法について説明します。 このトピックでは、自動 (既定) フローを使用して Azure に接続する手順について説明します。 また、手動で Azure に接続する方法 (上級) についても説明します。
 
-*試用版* から *有料版* の Video Indexer アカウントに移行する場合、ビデオとモデルのカスタマイズをすべて新しいアカウントにコピーすることを選択できます。詳細は「 [試用版アカウントからコンテンツをインポートする](#import-your-content-from-the-trial-account)」セクションにあります。
+*試用版* から *有料版* の Video Indexer アカウントに移行する場合、ビデオとモデルのカスタマイズをすべて新しいアカウントにコピーすることを選択できます。詳細は「[試用版アカウントからコンテンツをインポートする](#import-your-content-from-the-trial-account)」セクションにあります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,7 +45,7 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
 
     このメンバーは、Video Indexer アカウントを Azure に接続するときに使用します。
 
-    このユーザーは、 **所有者** ロール、または **共同作成者** ロールと **ユーザー アクセス管理者** ロールの両方が割り当てられた Azure サブスクリプションのメンバーである必要があります。 1 人のユーザーが 2 つのロールを持つ場合は 2 回追加できます。 共同作成者ロールで 1 回、ユーザー アクセス管理者ロールで 1 回です。 詳細については、「[Azure リソースに対するユーザーのアクセス権を表示する](https://docs.microsoft.com/azure/role-based-access-control/check-access)」を参照してください。
+    このユーザーは、**所有者** ロール、または **共同作成者** ロールと **ユーザー アクセス管理者** ロールの両方が割り当てられた Azure サブスクリプションのメンバーである必要があります。 1 人のユーザーが 2 つのロールを持つ場合は 2 回追加できます。 共同作成者ロールで 1 回、ユーザー アクセス管理者ロールで 1 回です。 詳細については、「[Azure リソースに対するユーザーのアクセス権を表示する](https://docs.microsoft.com/azure/role-based-access-control/check-access)」を参照してください。
 
     ![アクセスの制御](./media/create-account/access-control-iam.png)
 
@@ -107,7 +107,7 @@ Azure への接続に失敗する場合は、手動で接続して問題の解�
 
 1. [アカウントの作成](../previous/media-services-portal-create-account.md)に関するページに従って、[Azure](https://portal.azure.com/) portal を使用して Azure Media Services アカウントを作成します。
 
-    Media Services アカウント用にストレージ アカウントを作成する場合は、アカウントの種類に **StorageV2** 、レプリケーション フィールドに **geo 冗長** (GRS) を選択します。
+    Media Services アカウント用にストレージ アカウントを作成する場合は、アカウントの種類に **StorageV2**、レプリケーション フィールドに **geo 冗長** (GRS) を選択します。
 
     ![新しい AMS アカウント](./media/create-account/create-ams-account1.png)
 
@@ -150,9 +150,9 @@ Azure への接続に失敗する場合は、手動で接続して問題の解�
 |アプリケーション ID|前のセクションで作成した (指定した Media Services アカウントのアクセス許可を持つ) Azure AD アプリケーション ID。|
 |アプリケーション キー|前のセクションで作成した Azure AD アプリケーション キー。 |
 
-## <a name="import-your-content-from-the-trial-account"></a>" *試用版* " アカウントからコンテンツをインポートする
+## <a name="import-your-content-from-the-trial-account"></a>"*試用版*" アカウントからコンテンツをインポートする
 
-新しいアカウントを作成する場合は、 *"試用版"* アカウントから新しいアカウントにコンテンツをインポートするオプションがあります。 **[Azure サブスクリプションで新しいアカウントを作成する]** ダイアログで " *[インポート]* " オプションをオンにする場合、メディアおよびコンテンツ モデルのカスタマイズはすべて、" *試用版* " アカウントから新しいアカウントにコピーされます。
+新しいアカウントを作成する場合は、 *"試用版"* アカウントから新しいアカウントにコンテンツをインポートするオプションがあります。 **[Azure サブスクリプションで新しいアカウントを作成する]** ダイアログで " *[インポート]* " オプションをオンにする場合、メディアおよびコンテンツ モデルのカスタマイズはすべて、"*試用版*" アカウントから新しいアカウントにコピーされます。
 
 コンテンツをインポートする機能は、前述の自動と手動の両方の方法で有効です。
 
@@ -184,6 +184,15 @@ Azure Media Services に関する次の考慮事項が適用されます。
 * 自動的に接続されると、Video Indexer によってメディアの **[予約ユニット]** は 10 S3 ユニットに設定されます。
 
     ![Media Services の予約ユニット](./media/create-account/ams-reserved-units.png)
+    
+## <a name="automate-creation-of-the-video-indexer-account"></a>Video Indexer アカウントの自動作成
+
+アカウント作成の自動化は、2 つの手順から成るプロセスです。
+ 
+1. Azure Resource Manager を使用して、Azure Media Services アカウントと Azure AD アプリケーションを作成します。
+
+    [Media Services アカウント作成テンプレート](https://github.com/Azure-Samples/media-services-v3-arm-templates)の例を参照してください。
+1. [Media Services と Azure AD アプリケーションで Create-Account](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account) を呼び出します。
 
 ## <a name="next-steps"></a>次のステップ
 

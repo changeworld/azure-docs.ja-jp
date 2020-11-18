@@ -7,18 +7,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: f3f6e33c7c37089f7a9e87ab61bb00c966d8ccc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ffaf66cbb5d9fa0b294f5749a1923684f16c2979
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90881916"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488091"
 ---
 # <a name="azure-functions-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Azure Functions 出力
 
 Azure Functions は、インフラストラクチャを明示的にプロビジョニングまたは管理することなく、オンデマンドでコードを実行するために使用できるサーバーレス コンピューティング サービスです。 これにより、Azure またはパートナーのサービス内で発生するイベントによってトリガーされるコードを実装できます。 トリガーに応答する Azure Functions のこの機能によって、Azure Stream Analytics の自然な出力になります。 この出力アダプターを使用すると、ユーザーは Stream Analytics を Azure Functions に接続し、さまざまなイベントに応じてスクリプトまたはコードの一部を実行することができます。
 
-Stream Analytics からの Azure Functions 出力は、現在、Azure China 21Vianet および Azure Germany (T-Systems International) リージョンでは利用できません。
+Stream Analytics からの Azure Functions 出力は、Azure China 21Vianet および Azure Germany (T-Systems International) リージョンでは利用できません。 マルチテナント クラスターで実行されている Stream Analytics ジョブから仮想ネットワーク (VNet) 内の Azure Functions への接続もサポートされていません。
 
 Azure Stream Analytics では、HTTP トリガーを使用して Azure Functions を呼び出します。 Azure Functions 出力アダプターは、次の構成可能なプロパティで使用できます。
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: fac22305e64e2f6bc2ec61bc65f7e92f1b1af1bf
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 8608da33c747f76452a0106e4e2737849e06a75c
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287535"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443230"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API を呼び出すデスクトップ アプリ:トークンを取得する
 
@@ -417,7 +417,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 ### <a name="constraints"></a>制約
 
-- 統合 Windows 認証は、" *フェデレーション+* " ユーザー (Active Directory で作成され、Azure AD によってサポートされているユーザー) に対してのみ使用できます。 Azure AD で直接作成され、Active Directory のサポートのないユーザー (" *マネージド* " ユーザーと呼ばれます) はこの認証フローを使用できません。 この制限は、ユーザー名とパスワードのフローには影響しません。
+- 統合 Windows 認証は、"*フェデレーション+* " ユーザー (Active Directory で作成され、Azure AD によってサポートされているユーザー) に対してのみ使用できます。 Azure AD で直接作成され、Active Directory のサポートのないユーザー ("*マネージド*" ユーザーと呼ばれます) はこの認証フローを使用できません。 この制限は、ユーザー名とパスワードのフローには影響しません。
 - IWA は、.NET Framework、.NET Core、およびユニバーサル Windows プラットフォーム (UWP) の各プラットフォーム用に作成されたアプリを対象としています。
 - IWA では[多要素認証 (MFA)](../authentication/concept-mfa-howitworks.md) はバイパスされません。 MFA が構成されている状況では、MFA チャレンジが必要な場合に IWA が失敗する可能性があります。これは、MFA でユーザーの操作が必要になるためです。
   > [!NOTE]
@@ -602,7 +602,7 @@ private static IAuthenticationResult acquireTokenIwa() throws Exception {
 
 ### <a name="this-flow-isnt-recommended"></a>推奨されないフロー
 
-アプリケーションでユーザーにパスワードを求めることは安全でないため、このフローは " *推奨されません* "。 詳細については、[深刻化するパスワードの問題の解決策](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)に関する記事を参照してください。 Windows ドメイン参加済みマシン上でトークンを自動的に取得するために推奨されるフローは、[統合 Windows 認証](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication)です。 [デバイス コード フロー](https://aka.ms/msal-net-device-code-flow)を使用することもできます。
+アプリケーションでユーザーにパスワードを求めることは安全でないため、このフローは "*推奨されません*"。 詳細については、[深刻化するパスワードの問題の解決策](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)に関する記事を参照してください。 Windows ドメイン参加済みマシン上でトークンを自動的に取得するために推奨されるフローは、[統合 Windows 認証](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication)です。 [デバイス コード フロー](https://aka.ms/msal-net-device-code-flow)を使用することもできます。
 
 > [!NOTE]
 > DevOps シナリオなど、場合によっては、ユーザー名とパスワードを使用すると便利です。 ただし、独自の UI を提供する対話型のシナリオでユーザー名とパスワードを使用したい場合は、別の方法について検討してください。 ユーザー名とパスワードを使用すると、いくつかのことを放棄することになります。
@@ -1156,7 +1156,7 @@ MSAL.NET では、既定でメモリ内のトークン キャッシュが提供�
 
 ### <a name="serialization-is-customizable-in-windows-desktop-apps-and-web-apps-or-web-apis"></a>Windows デスクトップ アプリと Web アプリまたは Web API でカスタマイズ可能なシリアル化
 
-.NET Framework と .NET Core では、追加の処理を行わなければ、メモリ内のトークン キャッシュがアプリケーションの実行時間の間持続します。 シリアル化がすぐに使用できる状態で提供されない理由については、MSAL .NET デスクトップまたは .NET Core アプリケーションが、コンソールまたは Windows アプリケーション (ファイル システムへのアクセスが可能) の場合もあれば、Web アプリケーションまたはWeb API の " *場合もある* " ことを思い出してください。 このような Web アプリと Web API では、ある特定のキャッシュ メカニズム (データベース、分散キャッシュ、Redis Cache など) を使用する可能性があります。 .NET デスクトップまたは .NET Core に永続的なトークン キャッシュ アプリケーションを用意するには、シリアル化をカスタマイズする必要があります。
+.NET Framework と .NET Core では、追加の処理を行わなければ、メモリ内のトークン キャッシュがアプリケーションの実行時間の間持続します。 シリアル化がすぐに使用できる状態で提供されない理由については、MSAL .NET デスクトップまたは .NET Core アプリケーションが、コンソールまたは Windows アプリケーション (ファイル システムへのアクセスが可能) の場合もあれば、Web アプリケーションまたはWeb API の "*場合もある*" ことを思い出してください。 このような Web アプリと Web API では、ある特定のキャッシュ メカニズム (データベース、分散キャッシュ、Redis Cache など) を使用する可能性があります。 .NET デスクトップまたは .NET Core に永続的なトークン キャッシュ アプリケーションを用意するには、シリアル化をカスタマイズする必要があります。
 
 トークン キャッシュのシリアル化に関与するクラスとインターフェイスの型は次のとおりです。
 
@@ -1169,7 +1169,7 @@ MSAL.NET では、既定でメモリ内のトークン キャッシュが提供�
 > [!IMPORTANT]
 > アプリケーションの `UserTokenCache` プロパティと `AppTokenCache` プロパティを呼び出すと、MSAL.NET によりトークン キャッシュが自動的に作成され、`IToken` キャッシュが提供されます。 インターフェイスを自分で実装することはできません。 カスタムのトークン キャッシュのシリアル化を実装する際には、お客様の責任で次の処理を行います。
 >
-> - `BeforeAccess` および `AfterAccess` イベント (または同等の " *非同期* " イベント) に対応する。 `BeforeAccess` デリゲートは、キャッシュの逆シリアル化を担当します。 `AfterAccess` デリゲートは、キャッシュのシリアル化を担当します。
+> - `BeforeAccess` および `AfterAccess` イベント (または同等の "*非同期*" イベント) に対応する。 `BeforeAccess` デリゲートは、キャッシュの逆シリアル化を担当します。 `AfterAccess` デリゲートは、キャッシュのシリアル化を担当します。
 > - これらのイベントの一部では、BLOB が格納されるか、または読み込まれ、イベント引数を介して任意のストレージに渡されることを理解する。
 
 パブリック クライアント アプリケーション (デスクトップなど) と機密クライアント アプリケーション (Web アプリまたは Web API や、デーモン アプリなど) のどちらに対してトークン キャッシュのシリアル化を作成しているかに応じて、戦略は異なります。
@@ -1390,5 +1390,4 @@ namespace CommonCacheMsalV3
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [デスクトップ アプリから Web API を呼び出す](scenario-desktop-call-api.md)
+このシナリオの次の記事である「[デスクトップ アプリから Web API を呼び出す](scenario-desktop-call-api.md)」に進みます。

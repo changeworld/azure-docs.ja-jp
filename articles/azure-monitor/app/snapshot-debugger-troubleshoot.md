@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: bb2ac221169cea84205d087cbe0aadfd035d22db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49a4ab0315dad539a594a20e53eae9fd2890e551
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760514"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504970"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Application Insights Snapshot Debugger の有効化やスナップショットの表示に関する問題のトラブルシューティング
 アプリケーションに対して Application Insights Snapshot Debugger を有効にしたにもかかわらず、例外のスナップショットが表示されない場合は、次の手順を使用してトラブルシューティングを行うことができます。 スナップショットが生成されない理由としては、さまざまなことが考えられます。 スナップショットの正常性チェックを実行すると、いくつかの一般的な原因を特定できます。
@@ -57,19 +57,21 @@ ASP.NET アプリケーションが、Azure App Service または仮想マシン
 > targetFramework が 4.7 以上の場合、使用可能なプロトコルは Windows によって決定されます。 Azure App Service では、TLS 1.2 を使用できます。 ただし、独自の仮想マシンを使用している場合は、OS で TLS 1.2 を有効にすることが必要になる場合があります。
 
 ## <a name="preview-versions-of-net-core"></a>.NET Core のプレビュー バージョン
-アプリケーションにプレビュー バージョンの .NET Core が使用され、ポータルの [Application Insights ウィンドウ](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)でスナップショット デバッガーが有効な場合、スナップショット デバッガーが起動しない場合があります。 まず「[その他の環境用にスナップショット デバッガーを有効にする](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)」の手順を実行して [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージをアプリケーションに含め、"***さらに***" [Application Insights ウィンドウで有効にします](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)。
+アプリケーションにプレビュー バージョンの .NET Core が使用され、ポータルの [Application Insights ウィンドウ](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)でスナップショット デバッガーが有効な場合、スナップショット デバッガーが起動しない場合があります。 まず、[その他の環境でのスナップショット デバッガーの有効化](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)に関する記事に記載されている手順を実行して、[Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージをアプリケーションに含め、"**さらに**" [Application Insights ウィンドウ](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)で有効にします。
 
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>最新バージョンの NuGet にアップグレードする
 
 [ポータルの [Application Insights] ウィンドウ](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)を通じて Snapshot Debugger を有効にした場合、アプリケーションでは既に最新の NuGet パッケージが実行されています。 [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージを含めることで Snapshot Debugger を有効にした場合は、Visual Studio の NuGet パッケージ マネージャーを使用して、Microsoft.ApplicationInsights.SnapshotCollector の最新バージョンが使用されているかどうかを確認してください。
 
+最新の更新プログラムとバグ修正については、[リリース ノートを参照してください](./snapshot-collector-release-notes.md)。
+
 ## <a name="check-the-uploader-logs"></a>アップローダー ログの確認
 
 スナップショットの作成後、ミニダンプ ファイル (.dmp) がディスク上に作成されます。 個別アップローダー プロセスでは、そのミニダンプ ファイルを作成し、これを関連する PDB と共に Application Insights のスナップショット デバッガーのストレージにアップロードします。 ミニダンプは、正常にアップロードされた後、ディスクから削除されます。 アップローダー プロセスのログ ファイルは、ディスク上に保持されます。 App Service 環境では、これらのログは `D:\Home\LogFiles` にあります。 App Service の Kudu 管理サイトを使用すると、これらのログ ファイルを検索できます。
 
 1. Azure Portal で App Service アプリケーションを開きます。
-2. **[高度なツール]** をクリックするか、**Kudu** を検索します。
+2. [高度なツール] をクリックするか、**Kudu** を検索します。
 3. **[Go]** をクリックします。
 4. **[Debug console]** (デバッグ コンソール) ドロップダウン リスト ボックスで、 **[CMD]** を選択します。
 5. **[LogFiles]** をクリックします。

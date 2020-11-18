@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
-ms.openlocfilehash: e9e892ae08c65ee5c5008bbdc1b419d8dec30183
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 756c245fe06ae81545a125dd98f30fb27fdff2dd
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931077"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655581"
 ---
 # <a name="connect-data-from-microsoft-365-defender-to-azure-sentinel"></a>Microsoft 365 Defender から Azure Sentinel にデータを接続する
 
@@ -33,9 +33,9 @@ ms.locfileid: "90931077"
 
 ## <a name="background"></a>背景
 
-新しい [Microsoft 365 Defender](https://docs.microsoft.com/microsoft-365/security/mtp/microsoft-threat-protection) コネクタを使用すると、Microsoft 365 Defender から Azure Sentinel に**高度なハンティング** ログ (未加工のイベント データの種類) をストリーミングできます。 
+新しい [Microsoft 365 Defender](/microsoft-365/security/mtp/microsoft-threat-protection) コネクタを使用すると、Microsoft 365 Defender から Azure Sentinel に **高度なハンティング** ログ (未加工のイベント データの種類) をストリーミングできます。 
 
-[Microsoft Defender for Endpoint (MDATP)](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) と Microsoft 365 Defender セキュリティ保護の統合により、Microsoft 365 Defender コネクタを使用して、Microsoft Defender for Endpoint の[高度なハンティング](https://aka.ms/mdatpAH) イベントを収集し、Azure Sentinel ワークスペースの新しい用途別のテーブルに直接ストリーミングできるようになりました。 これらのテーブルは Microsoft 365 Defender ポータルで使用されているのと同じスキーマに基づいて構築されており、高度なハンティング ログの完全なセットにフル アクセスして、次の操作を行うことができます。
+[Microsoft Defender for Endpoint (MDATP)](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) と Microsoft 365 Defender セキュリティ保護の統合により、Microsoft 365 Defender コネクタを使用して、Microsoft Defender for Endpoint の[高度なハンティング](/windows/security/threat-protection/microsoft-defender-atp/advanced-hunting-overview) イベントを収集し、Azure Sentinel ワークスペースの新しい用途別のテーブルに直接ストリーミングできるようになりました。 これらのテーブルは Microsoft 365 Defender ポータルで使用されているのと同じスキーマに基づいて構築されており、高度なハンティング ログの完全なセットにフル アクセスして、次の操作を行うことができます。
 
 - 既存の Microsoft Defender ATP の高度なハンティング クエリを Azure Sentinel に簡単にコピーする。
 
@@ -49,7 +49,7 @@ ms.locfileid: "90931077"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Microsoft Defender for Endpoint 展開の設定](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing)に関する説明に従い、Microsoft Defender for Endpoint の有効なライセンスを持っている必要があります。 
+- [Microsoft Defender for Endpoint 展開の設定](/windows/security/threat-protection/microsoft-defender-atp/licensing)に関する説明に従い、Microsoft Defender for Endpoint の有効なライセンスを持っている必要があります。 
 
 - ユーザーには、(Azure Active Directory で) テナントのグローバル管理者ロールが割り当てられている必要があります。
 
@@ -101,4 +101,4 @@ let Now = now();
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Microsoft 365 Defender コネクタを使用して、Microsoft Defender for Endpoint から Azure Sentinel に未加工のイベント データを取得する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
+- [Azure Sentinel を使用した脅威の検出](./tutorial-detect-threats-built-in.md)の概要。

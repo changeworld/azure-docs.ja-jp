@@ -9,18 +9,72 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: a60ca64113bb3f2700e9f521f65780dc8ffbcc54
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0afd1f2f8dd06c3c224d64304eec2e18489a7e81
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307737"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489133"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
 この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の [**メインの SDK for Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) のリファレンス ページを参照してください。
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
+
+
+## <a name="2020-11-09"></a>2020-11-09
+
+### <a name="azure-machine-learning-sdk-for-python-v1180"></a>Azure Machine Learning SDK for Python v1.18.0
++ **バグの修正と機能強化**
+  + **azureml-automl-core**
+    +  ガウス ノイズによる埋め込みを可能にすることで、短い時系列の処理が改善されました。
+  + **azureml-automl-runtime**
+    + DateTime 列に OutOfBoundsDatetime 値が含まれている場合に、ConfigException がスローされる
+    + ガウス ノイズによる埋め込みを可能にすることで、短い時系列の処理が改善されました。
+    + 各テキスト列で、そのテキスト列の文字列の長さに基づいた n-gram 範囲の char-gram 変換を利用できることを確認します
+    + ユーザーのローカル コンピューティングで実行されている AutoML 実験の最適モードに対して未加工の特徴の説明を提供する
+  + **azureml-core**
+    + pyjwt パッケージをピン留めして、今後のリリースで最新のバージョンがプルされないようにします。
+    + 実験を作成すると、その実験が存在する場合や新しい実験があった場合に、同じ名前を持つアクティブまたは最後にアーカイブされた実験が返されます。
+    + 名前で get_experiment を呼び出すと、その指定された名前を持つアクティブまたは最後にアーカイブされた実験が返されます。
+    + 実験の再アクティブ化中にユーザーが名前を変更することはできません。
+    + データセットが誤って実験に渡された場合の修正候補を含めるように、エラー メッセージが改善されました (例: ScriptRunConfig)。 
+    + 名前が既に存在する場合の動作についての説明を含めるように、`OutputDatasetConfig.register_on_complete` のドキュメントが改善されました。
+    + 共通の環境変数と競合する可能性があるデータセットの入力と出力の名前を指定すると、警告が表示されるようになりました。
+    + データストアの登録時に、`grant_workspace_access` パラメーターが再利用されるようにしました。 Machine Learning Studio から仮想ネットワークの背後にあるデータにアクセスするには、これを `True` に設定します。
+      [詳細情報](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
+    + リンクされたサービス API は改善されています。 リソース ID を指定する代わりに、構成で定義されている sub_id、rg、name の 3 つの個別のパラメーターがあります。
+    + 顧客がトークンの破損の問題を自己解決できるようにするために、ワークスペース トークンの同期をパブリック メソッドにできるようにします。
+    + この変更により、空の文字列を script_param の値として使用できるようになります。
+  + **azureml-pipeline-core**
+    + SynapseCompute 型と SynapseSparkStep をサポートする SDK。 顧客は synapse spark プールで実験とパイプラインを実行できます。
+  + **azureml-pipeline-steps**
+    + SynapseCompute 型と SynapseSparkStep をサポートする SDK。 顧客は synapse spark プールで実験とパイプラインを実行できます。
+  + **azureml-synapse**
+    + Synapse マジックと SparkMonitor を追加して、ユーザーが Synapse ジョブを送信し、ノートブックでジョブの進行状況を確認できるようにします。
+  + **azureml-train-automl-client**
+    +  ガウス ノイズによる埋め込みを可能にすることで、短い時系列の処理が改善されました。
+  + **azureml-train-automl-runtime**
+    + DateTime 列に OutOfBoundsDatetime 値が含まれている場合に、ConfigException がスローされる
+    + ユーザーのローカル コンピューティングで実行されている AutoML 実験の最適モードに対して未加工の特徴の説明を提供するためのサポートの追加
+    + ガウス ノイズによる埋め込みを可能にすることで、短い時系列の処理が改善されました。
+  + **azureml-train-core**
+    + この変更により、空の文字列を script_param の値として使用できるようになります。
+  + **azureml-train-restclients-hyperdrive**
+    + より多くのコンテキストを提供するために README が変更されています
+  + **azureml-widgets**
+    + ウィジェットのグラフまたは並列座標ライブラリに文字列サポートを追加します。
+
+## <a name="2020-11-05"></a>2020-11-05
+
+### <a name="data-labeling-for-image-instance-segmentation-polygon-annotation-preview"></a>画像インスタンスのセグメント化 (ポリゴン アノテーション) のためのデータのラベル付け (プレビュー)
+
+データのラベル付けで画像インスタンスのセグメント化 (ポリゴン アノテーション) プロジェクトの種類を使用できるようになりました。これにより、ユーザーは画像内のオブジェクトの輪郭の周囲にポリゴンを使って描画したり注釈を付けたりすることができます。 ユーザーは、画像内で対象とする各オブジェクトに対して、クラスとポリゴンを割り当てることができます。
+
+画像インスタンスのセグメント化のラベル付けに関する詳細については、[こちら](how-to-label-images.md)を参照してください。
+
+
 
 ## <a name="2020-10-26"></a>2020-10-26
 
@@ -529,7 +583,7 @@ ms.locfileid: "93307737"
     + AutoML の予測で、モデルを再トレーニングしなくても、事前に指定した期間の最大値を超える顧客の予測がサポートされるようになりました。 予測の対象が指定した期間の最大値よりも未来になる場合でも、forecast() 関数によって、再帰的操作モードを使用してそれ以降の日付に対してポイント予測が作成されます。 この新機能の説明については、[フォルダー](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)内の "forecasting-forecast-function" ノートブックの「期間の最大値を超える予測」セクションを参照してください。"
   
   + **azureml-pipeline-steps**
-    + ParallelRunStep がリリースされ、 **azureml-pipeline-steps** パッケージに含まれるようになりました。 **azureml-contrib-pipeline-steps** パッケージに含まれる既存の ParallelRunStep は非推奨になります。 パブリック プレビュー バージョンからの変更点は次のとおりです。
+    + ParallelRunStep がリリースされ、**azureml-pipeline-steps** パッケージに含まれるようになりました。 **azureml-contrib-pipeline-steps** パッケージに含まれる既存の ParallelRunStep は非推奨になります。 パブリック プレビュー バージョンからの変更点は次のとおりです。
       + 指定した任意のバッチに対してメソッドを実行する最大呼び出しを制御するための、省略可能な構成可能パラメーター `run_max_try` が追加されました (既定値は 3)。
       + PipelineParameter が自動生成されなくなりました。 次の構成可能な値は、PipelineParameter として明示的に設定できます。
         + mini_batch_size
@@ -1075,7 +1129,7 @@ Studio から、次の Web ベースの作成ツールにアクセスします�
 
 + **新機能**
   + データセット: `to_pandas_dataframe` に対して `on_error` および `out_of_range_datetime` の2 つのオプションを追加します。データにエラーがある場合は、`None` を使用して入力するのではなく、エラーが発生します。
-  + ワークスペース:機密データを含むワークスペースの `hbi_workspace` フラグが追加されました。これにより、さらに暗号化したり、ワークスペースの高度な診断を無効にしたりできます。 また、ワークスペースの作成時に `cmk_keyvault` パラメーターと `resource_cmk_uri` パラメーターを指定することによって、関連付けられている Cosmos DB インスタンスに対して独自のキーを取り込むためのサポートを追加しました。これにより、ワークスペースのプロビジョニングの再にサブスクリプションに Cosmos DB インスタンスが作成されます。 [詳細については、こちらを参照してください。](./concept-enterprise-security.md#azure-cosmos-db)
+  + ワークスペース:機密データを含むワークスペースの `hbi_workspace` フラグが追加されました。これにより、さらに暗号化したり、ワークスペースの高度な診断を無効にしたりできます。 また、ワークスペースの作成時に `cmk_keyvault` パラメーターと `resource_cmk_uri` パラメーターを指定することによって、関連付けられている Cosmos DB インスタンスに対して独自のキーを取り込むためのサポートを追加しました。これにより、ワークスペースのプロビジョニングの再にサブスクリプションに Cosmos DB インスタンスが作成されます。 [詳細については、こちらを参照してください。](./concept-data-encryption.md#azure-cosmos-db)
 
 + **バグの修正と機能強化**
   + **azureml-automl-runtime**
@@ -1912,7 +1966,7 @@ Azure Machine Learning が Event Grid 用のリソース プロバイダーに�
   + **azureml-pipeline-steps**
     + DatabricksStep の入力と出力に対して DBFS Datastore がサポートされるようになりました。
     + Azure Batch Step の入力/出力に関するドキュメントが更新されました。
-    + AzureBatchStep で、 *delete_batch_job_after_finish* の既定値を *true* に変更しました。
+    + AzureBatchStep で、*delete_batch_job_after_finish* の既定値を *true* に変更しました。
   + **azureml-telemetry**
     +  azureml-contrib-opendatasets を azureml-opendatasets に移動します。
     + オープン データセット クラスを Azure Machine Learning ワークスペースに登録し、AML データセットの機能をシームレスに利用できるようにします。
@@ -1944,7 +1998,7 @@ Azure Machine Learning が Event Grid 用のリソース プロバイダーに�
 
 + **新機能**
   + **azureml-opendatasets**
-    + **azureml-contrib-opendatasets** は、 **azureml-opendatasets** として使用できるようになりました。 古いパッケージも引き続き機能しますが、より高度な機能と機能強化を実現するために、今後は **azureml-opendatasets** を使用することをお勧めします。
+    + **azureml-contrib-opendatasets** は、**azureml-opendatasets** として使用できるようになりました。 古いパッケージも引き続き機能しますが、より高度な機能と機能強化を実現するために、今後は **azureml-opendatasets** を使用することをお勧めします。
     + この新しいパッケージを使用すると、オープン データセットを Azure Machine Learning ワークスペースのデータセットとして登録し、そのデータセットで提供される任意の機能を活用できます。
     + これには、オープン データセットを Pandas/SPARK データフレームとして使用したり、天気などの一部のデータセット用に場所を結合するなど、既存の機能も含まれます。
 

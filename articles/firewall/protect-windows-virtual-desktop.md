@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: ae33d763bda49756e9f90a05feda5089b63ef28b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad4f42d0e33f6d70c75abfcd1daab4f5aa9a515f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400164"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654985"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Azure Firewall を使用して Window Virtual Desktop のデプロイを保護する
 
@@ -63,7 +63,7 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンが正常に機�
 
 組織のニーズに応じて、エンド ユーザーに対してセキュリティで保護された発信インターネット アクセスを有効にすることをお勧めします。 許可される送信先の一覧が適切に定義されている場合 ([Microsoft 365 へのアクセス](/microsoft-365/enterprise/microsoft-365-ip-web-service)など)、Azure Firewall アプリケーションとネットワーク ルールを使用して必要なアクセスを構成できます。 これにより、最適なパフォーマンスを得るため、エンド ユーザーのトラフィックがインターネットに直接ルーティングされます。
 
-既存のオンプレミス セキュリティで保護された Web ゲートウェイを使用して送信ユーザーのインターネット トラフィックをフィルター処理する場合は、明示的なプロキシ構成を使用して、Windows Virtual Desktop ホスト プールで実行されている Web ブラウザーやその他のアプリケーションを構成できます。 例については、「[Microsoft Edge コマンド ライン オプションを使用してプロキシ設定を構成する方法](https://docs.microsoft.com/deployedge/edge-learnmore-cmdline-options-proxy-settings)」を参照してください。 これらのプロキシ設定は、エンド ユーザーのインターネットアクセスにのみ影響し、Azure Firewall 経由で直接 Windows Virtual Desktop プラットフォームの送信トラフィックを許可します。
+既存のオンプレミス セキュリティで保護された Web ゲートウェイを使用して送信ユーザーのインターネット トラフィックをフィルター処理する場合は、明示的なプロキシ構成を使用して、Windows Virtual Desktop ホスト プールで実行されている Web ブラウザーやその他のアプリケーションを構成できます。 例については、「[Microsoft Edge コマンド ライン オプションを使用してプロキシ設定を構成する方法](/deployedge/edge-learnmore-cmdline-options-proxy-settings)」を参照してください。 これらのプロキシ設定は、エンド ユーザーのインターネットアクセスにのみ影響し、Azure Firewall 経由で直接 Windows Virtual Desktop プラットフォームの送信トラフィックを許可します。
 
 ## <a name="additional-considerations"></a>その他の注意点
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: c43b85f3c4b8d1b750e9f97e0be812bee683c702
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 984cdfb3e60717f7632ea1fdcd05a4681dd6a1fd
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90600808"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517939"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>Azure CLI を使用した Traffic Manager のサブネットのオーバーライド
 
@@ -34,11 +34,9 @@ IP アドレス範囲は、CIDR 範囲 (1.2.3.0/24 など) またはアドレス
 
 Traffic Manager サブネットのオーバーライドを作成するには、Azure CLI を使用して、Traffic Manager エンドポイントへのオーバーライド用のサブネットを追加します。
 
-## <a name="azure-cli"></a>Azure CLI
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.28 以降のバージョンを実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+- この記事では、Azure CLI のバージョン 2.0.28 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>サブネットのオーバーライドを使用して Traffic Manager エンドポイントを更新します。
 Azure CLI を使用して、[az network traffic-manager endpoint update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) でエンドポイントを更新します。
@@ -61,7 +59,7 @@ az network traffic-manager endpoint update \
     --type AzureEndpoints
 ```
 
-IP アドレス範囲を削除するには、 **--remove** オプションを指定して [az network traffic-manager endpoint update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) を実行します。
+IP アドレス範囲を削除するには、**--remove** オプションを指定して [az network traffic-manager endpoint update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) を実行します。
 
 ```azurecli-interactive
 az network traffic-manager endpoint update \

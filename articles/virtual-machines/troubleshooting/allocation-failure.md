@@ -10,14 +10,14 @@ tags: top-support-issue,azure-resource-manager,azure-service-management
 ms.assetid: 1ef41144-6dd6-4a56-b180-9d8b3d05eae7
 ms.service: virtual-machines
 ms.topic: troubleshooting
-ms.date: 04/13/2018
+ms.date: 11/06/2020
 ms.author: daberry
-ms.openlocfilehash: 3766c31add02799c62bca7e9063e723e0a5b498e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79bc043a991404a3ee9da954b9639bf1a41f2c51
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509360"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365875"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Azure で VM を作成、再起動、またはサイズ変更するときの割り当てエラーのトラブルシューティング
 
@@ -26,6 +26,11 @@ ms.locfileid: "86509360"
 **エラー コード**: AllocationFailed または ZonalAllocationFailed
 
 **エラー メッセージ**:「割り当てに失敗しました。 このリージョンには、要求された VM サイズに対して十分な容量がありません。 割り当てが成功する可能性を向上させる方法については、https:\//aka.ms/allocation-guidance をご覧ください」
+
+> [!NOTE]
+> 仮想マシン スケール セット (VMSS) のトラブルシューティングを行う場合、このプロセスは標準 VM と同じです。 この問題を解決するには、この記事の指示に従ってください。
+> 
+>**エラー メッセージ**:「割り当てに失敗しました。 1 つの配置グループを含む仮想マシン スケール セットに新しい VM を追加する場合、または 1 つの配置グループを含む仮想マシン スケール セット内にある既存の VM の更新やサイズ変更を行う場合は、このような割り当てが単一クラスターにスコープされていること、およびクラスターの容量が不足している可能性があることにご注意ください。 割り当てが成功する可能性を向上させる方法については、http:\//aka.ms/allocation-guidance を参照してください。
 
 この記事では、いくつかの一般的な割り当てエラーの原因を説明し、可能な対処方法を提案します。
 
@@ -73,7 +78,7 @@ VM を別の可用性セットに含めることができる場合は、VM を (
 ### <a name="workaround"></a>回避策
 
 Dv1、DSv1、Av1、D15v2、DS15v2 などの以前の VM シリーズまたはサイズを使用している場合は、新しいバージョンへの移行を検討してください。 特定の VM サイズに関する以下の推奨事項をご覧ください。
-別の VM サイズを使用する選択肢がない場合は、同じ地域内の別のリージョンにデプロイしてみてください。 各リージョンで利用できる VM サイズについて詳しくは、 https://aka.ms/azure-regions をご覧ください
+別の VM サイズを使用する選択肢がない場合は、同じ地域内の別のリージョンにデプロイしてみてください。 各リージョンで利用できる VM サイズについて詳しくは、https://aka.ms/azure-regions をご覧ください
 
 可用性ゾーンを使用している場合は、リージョン内で、要求した VM サイズに使用可能な容量がある可能性のある別のゾーンを試してください。
 

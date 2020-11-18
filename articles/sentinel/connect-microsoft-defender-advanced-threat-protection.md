@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: d1de9270534a3550d8db043fdd6bcfe56ec31bda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72b2ba0ea444fb14ef9fc1bc3ea6aea3654677df
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90895588"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655529"
 ---
 # <a name="connect-alerts-from-microsoft-defender-for-endpoint-formerly-microsoft-defender-atp"></a>Microsoft Defender for Endpoint (以前の Microsoft Defender ATP) からアラートを接続する
 
@@ -33,15 +33,15 @@ ms.locfileid: "90895588"
 > この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-[Microsoft Defender for Endpoint](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) コネクタを使用すると、Microsoft Defender for Endpoint から Azure Sentinel にアラートをストリーム配信できます。 これにより、組織全体のセキュリティ イベントをより包括的に分析し、効果的かつ迅速に対応するためのプレイブックを構築することができます。
+[Microsoft Defender for Endpoint](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) コネクタを使用すると、Microsoft Defender for Endpoint から Azure Sentinel にアラートをストリーム配信できます。 これにより、組織全体のセキュリティ イベントをより包括的に分析し、効果的かつ迅速に対応するためのプレイブックを構築することができます。
 
 > [!NOTE]
 >
-> Microsoft Defender for Endpoint の[高度な追及](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/advanced-hunting-overview)から新しい生データ ログを取り込むには、Microsoft 365 Defender (以前の Microsoft Threat Protection、[ドキュメントを参照](./connect-microsoft-365-defender.md)) 用の新しいコネクタを使用します。
+> Microsoft Defender for Endpoint の[高度な追及](/windows/security/threat-protection/microsoft-defender-atp/advanced-hunting-overview)から新しい生データ ログを取り込むには、Microsoft 365 Defender (以前の Microsoft Threat Protection、[ドキュメントを参照](./connect-microsoft-365-defender.md)) 用の新しいコネクタを使用します。
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Microsoft Defender for Endpoint 展開の設定](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing)に関する説明に従い、Microsoft Defender for Endpoint の有効なライセンスを持っている必要があります。 
+- [Microsoft Defender for Endpoint 展開の設定](/windows/security/threat-protection/microsoft-defender-atp/licensing)に関する説明に従い、Microsoft Defender for Endpoint の有効なライセンスを持っている必要があります。 
 
 - Azure Sentinel テナントのグローバル管理者またはセキュリティ管理者である必要があります。
 
@@ -58,4 +58,4 @@ Microsoft Defender for Endpoint がデプロイされ、データの取り込み
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Microsoft Defender for Endpoint を Azure Sentinel に接続する方法を学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
+- [Azure Sentinel を使用した脅威の検出](./tutorial-detect-threats-built-in.md)の概要。

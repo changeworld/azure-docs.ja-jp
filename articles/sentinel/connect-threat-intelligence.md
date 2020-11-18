@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: d794b0a33eabedd3e6e309f291543ba23bc40f79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 223f3e45f25e3aed3ed6fa15e5b9ea04b17f6c59
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362748"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655325"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>脅威インテリジェンス プロバイダーからデータを接続する
 
@@ -28,15 +28,15 @@ ms.locfileid: "91362748"
 
 Azure Sentinel を使用すると、組織で使用されている脅威インジケーターをインポートでき、これにより、既知の脅威を検出して優先順位を付けるというセキュリティ アナリストの能力が高まります。 Azure Sentinel の複数の機能が利用可能になるか、強化されます。
 
-- **分析**には、一連のスケジュールされた規則テンプレートが含まれており、これを有効にすると、脅威インジケーターからのログ イベントの一致に基づいてアラートとインシデントを生成できます。
+- **分析** には、一連のスケジュールされた規則テンプレートが含まれており、これを有効にすると、脅威インジケーターからのログ イベントの一致に基づいてアラートとインシデントを生成できます。
 
-- **ブック**では、Azure Sentinel にインポートされた脅威インジケーターと脅威インジケーターと一致する分析ルールから生成されたアラートに関する概要情報が提供されます。
+- **ブック** では、Azure Sentinel にインポートされた脅威インジケーターと脅威インジケーターと一致する分析ルールから生成されたアラートに関する概要情報が提供されます。
 
 - **ハンティング**  クエリを使用すると、セキュリティの調査担当は、一般的な捜索シナリオのコンテキスト内で脅威インジケーターを使用できるようになります。
 
-- **ノートブック**では、異常を調査し、悪意のある動作を捜索するときに、脅威インジケーターを使用できます。
+- **ノートブック** では、異常を調査し、悪意のある動作を捜索するときに、脅威インジケーターを使用できます。
 
-次のセクションの一覧に示されている統合された脅威インテリジェンス プラットフォーム (TIP) 製品を使用するか、TAXII サーバーに接続するか、[Microsoft Graph Security Indicators API](https://aka.ms/graphsecuritytiindicators) との直接統合を使用することで、脅威インジケーターを Azure Sentinel にストリーミングできます。
+次のセクションの一覧に示されている統合された脅威インテリジェンス プラットフォーム (TIP) 製品を使用するか、TAXII サーバーに接続するか、[Microsoft Graph Security Indicators API](/graph/api/resources/tiindicator) との直接統合を使用することで、脅威インジケーターを Azure Sentinel にストリーミングできます。
 
 ## <a name="integrated-threat-intelligence-platform-products"></a>統合された脅威インテリジェンス プラットフォーム製品
 
@@ -114,4 +114,4 @@ Azure Sentinel を使用すると、組織で使用されている脅威イン�
 このドキュメントでは、Azure Sentinel に脅威インテリジェンス プロバイダーを接続する方法を説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
+- [Azure Sentinel を使用した脅威の検出](./tutorial-detect-threats-built-in.md)の概要。

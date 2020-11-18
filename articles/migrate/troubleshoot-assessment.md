@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: d5e8305fb80e6869bf604108aaa0e4d8e36cab8e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4da0f40c25d322953fea968396ef33924877c2e1
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314740"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505225"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評価と依存関係の視覚化のトラブルシューティング
 
@@ -26,7 +26,7 @@ ms.locfileid: "92314740"
 **問題点** | **解決策**
 --- | ---
 サポートされていないブートの種類 | Azure では、ブートの種類が EFI の VM はサポートされません。 移行を実行する前に、ブートの種類を BIOS に変換することをお勧めします。 <br/><br/>Azure Migrate Server Migration を使用して、そのような VM の移行を処理することができます。 それにより、移行中に VM のブートの種類が BIOS に変換されます。
-条件付きでサポートされる Windows オペレーティング システム | オペレーティング システムはサポート期間が終了しており、[Azure でのサポート](/troubleshoot/azure/virtual-machines/server-software-support)のためにはカスタム サポート契約 (CSA) が必要です。 Azure に移行する前にアップグレードを検討してください。
+条件付きでサポートされる Windows オペレーティング システム | オペレーティング システムはサポート期間が終了しており、[Azure でのサポート](/troubleshoot/azure/virtual-machines/server-software-support)のためにはカスタム サポート契約 (CSA) が必要です。 Azure に移行する前にアップグレードを検討してください。 Azure への移行に向けた [Windows Server 2003 が実行されるマシンの準備](prepare-windows-server-2003-migration.md)に関する情報について[確認]()します。
 サポートされていない Windows オペレーティング システム | Azure では、[特定の Windows OS バージョン](/troubleshoot/azure/virtual-machines/server-software-support)のみがサポートされています。 Azure に移行する前に、コンピューターのアップグレードを検討してください。
 条件付きで動作が保証されている Linux OS | Azure では、[特定の Linux OS バージョン](../virtual-machines/linux/endorsed-distros.md)のみがサポートされます。 Azure に移行する前に、コンピューターのアップグレードを検討してください。 詳細については、[こちらも](#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment)参照してください。
 動作が保証されていない Linux OS | マシンは Azure で起動する可能性がありますが、オペレーティング システムは Azure ではサポートされていません。 Azure に移行する前に、[サポートされている Linux バージョン](../virtual-machines/linux/endorsed-distros.md)へのアップグレードを検討してください。
@@ -83,7 +83,7 @@ Azure Migrate Server Assessment では、評価の種類に基づいて、現在
 
 オンプレミスの VM は、4 つのコアと 8 GB のメモリを備え、CPU 使用率は 50%、メモリ使用率は 50%、指定された快適性係数は 1.3 です。
 
--  評価が**オンプレミス**の場合は、4 コアと 8 GB のメモリを備えた Azure VM SKU が推奨されます。
+-  評価が **オンプレミス** の場合は、4 コアと 8 GB のメモリを備えた Azure VM SKU が推奨されます。
 - 評価がパフォーマンスベースの場合は、CPU およびメモリの有効な使用率 (4 コアの 50% * 1.3 = 2.6 コア、8 GB メモリの 50% * 1.3 = 5.3 GB メモリ) に基づき、4 コア (最も近いサポートされるコア数) と 8 GB メモリ (最も近いサポートされるメモリ サイズ) の最も安価な VM SKU が推奨されます。
 - 評価のサイズ決定に関する[詳細を参照](concepts-assessment-calculation.md#types-of-assessments)してください。
 
@@ -91,8 +91,8 @@ Azure Migrate Server Assessment では、評価の種類に基づいて、現在
 
 Azure Migrate Server Assessment では、評価の種類に基づいて、より大きいディスクが推奨される場合があります。
 - Server Assessment でのディスクのサイズ設定は、サイズ設定基準とストレージの種類という 2 つの評価プロパティに依存します。
-- サイズ設定基準が**パフォーマンスベース**で、ストレージの種類が**自動**である場合、ディスクの IOPS とスループットの値を考慮して、ターゲット ディスクの種類 (Standard HDD、Standard SSD、または Premium) が特定されます。 その後、そのディスクの種類からディスク SKU が推奨され、この推奨ではオンプレミスのディスクのサイズ要件が考慮されます。
-- サイズ設定基準が**パフォーマンスベース**で、ストレージの種類が **Premium** である場合、オンプレミスのディスクの IOPS、スループット、サイズの要件に基づいて、Azure の Premium ディスク SKU が推奨されます。 サイズ設定基準が**オンプレミス**で、ストレージの種類が **Standard HDD**、**Standard SSD**、または **Premium** である場合は、同じロジックを使ってディスクのサイズ設定が行われます。
+- サイズ設定基準が **パフォーマンスベース** で、ストレージの種類が **自動** である場合、ディスクの IOPS とスループットの値を考慮して、ターゲット ディスクの種類 (Standard HDD、Standard SSD、または Premium) が特定されます。 その後、そのディスクの種類からディスク SKU が推奨され、この推奨ではオンプレミスのディスクのサイズ要件が考慮されます。
+- サイズ設定基準が **パフォーマンスベース** で、ストレージの種類が **Premium** である場合、オンプレミスのディスクの IOPS、スループット、サイズの要件に基づいて、Azure の Premium ディスク SKU が推奨されます。 サイズ設定基準が **オンプレミス** で、ストレージの種類が **Standard HDD**、**Standard SSD**、または **Premium** である場合は、同じロジックを使ってディスクのサイズ設定が行われます。
 
 たとえば、オンプレミスのディスクと 32 GB のメモリを使っていても、ディスクの読み取りと書き込みの集計 IOPS が 800 IOPS である場合、Server Assessment では Premium ディスク (高い IOPS 要件であるため) が推奨された後、必要な IOPS とサイズに対応できるディスク SKU が推奨されます。 この例では、適合する最も近いものは P15 (256 GB、1100 IOPS) になります。 オンプレミスのディスクで必要なサイズは 32 GB でしたが、オンプレミスのディスクの高い IOPS 要件により、Server Assessment ではさらに大きいディスクが推奨されます。
 

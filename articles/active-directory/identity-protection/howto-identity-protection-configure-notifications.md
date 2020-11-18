@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 10/07/2020
+ms.date: 11/09/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71c786aaecd3ab2f18f242cea2f5c45838f9ecf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9536cf41add73f494bfff451c201d36e951864e3
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839349"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489490"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection の通知
 
@@ -35,7 +35,9 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク検出
 
 ただし、追加のメール通知が送信されるのは、(ユーザー リスク レベルの変更の原因となった) リスク検出の発生時刻が、最後のメールが送信されたときよりも最近である場合だけです。 たとえば、1 月 1 日の午前 5 時にユーザーがサインインし、リアルタイム リスクはありません (つまり、そのサインインが原因でメールが生成されることはありません)。 10 分後の午前 5:10 に、同じユーザーがもう一度サインインし、リアルタイム リスクが高くなり、それによってユーザー リスク レベルが高に移行し、メールが送信されます。 その後、午前 5:15 に、午前 5 時に行われた元のサインインのオフライン リスク スコアが、オフライン リスク処理により高リスクに変わります。 最初のサインインの時刻は、既にメール通知をトリガーした 2 回目のサインインより前だったので、ユーザーにリスクのフラグが立てられたという追加メールは送信されません。
 
-メールのオーバーロードを防ぐために、危険な状態のユーザーが検出されたというメールを受信するのは、5 秒間の期間内に 1 通のみとなります。 つまり、同じ 5 秒間の期間中に複数のユーザーが、指定されたリスク レベルに移行した場合は、その全員に対するリスク レベルの変化を示す 1 通のメールを集計して送信します。
+メールのオーバーロードを防ぐために、メールを受信するのは、5 秒間に 1 通のみとなります。 この延期期間は、同じ 5 秒間に複数のユーザーが、指定されたリスク レベルに移行した場合は、そのすべてのユーザーのリスク レベルの変化を示すために、Microsoft が 1 通のメールに集約して送信することを意味します。
+
+「[Azure AD Identity Protection を使用したユーザー エクスペリエンス](concept-identity-protection-user-experience.md)」の記事で説明されているように、組織で自己修復を有効にしている場合は、調査を行う前に、ユーザーがリスクを修復できる可能性があります。 修復されている危険なユーザーおよび危険なサインインを確認するには、**危険なユーザー** または **危険なサインイン** のいずれかのレポートの **[リスクの状態]** フィルターに "修復済み" を追加します。
 
 ![危険な状態のユーザーが検出された電子メール](./media/howto-identity-protection-configure-notifications/01.png)
 
@@ -45,7 +47,7 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク検出
 
 - **このメールの生成をトリガーするユーザー リスク レベル** - 既定では、リスク レベルは "高" リスクに設定されます。
 - **この電子メールの受信者** - グローバル管理者、セキュリティ管理者、またはセキュリティ閲覧者のロールのユーザーは、この一覧に自動的に追加されます。 各ロールの最初の 20 人のメンバーに、メールの送信が試みられます。 ユーザーがこれらのロールのいずれかにオンデマンドで昇格するように PIM に登録されている場合は、**メールが送信される時点で昇格されている場合にのみメールを受け取ります**。
-   - 必要に応じて、**ここでカスタム メールを追加する**ことができます。定義されているユーザーは、Azure portal でリンク レポートを表示するには適切なアクセス許可が必要です。
+   - 必要に応じて、**ここでカスタム メールを追加する** ことができます。定義されているユーザーは、Azure portal でリンク レポートを表示するには適切なアクセス許可が必要です。
 
 "危険な状態のユーザー" メールは、**Azure portal** の **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[Identity Protection]**  >  **[リスクのあるユーザーが検出された警告]** で構成します。
 

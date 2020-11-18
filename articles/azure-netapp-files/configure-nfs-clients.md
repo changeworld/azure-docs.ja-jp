@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: f4b8b4b56693023ede2ccf8ae7eeac7ed5e16824
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: c1cdeaa41dda11f2ab520cf8d31ddb2116587082
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216863"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409571"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>Azure NetApp Files 用に NFS クライアントを構成する
 
@@ -75,7 +75,10 @@ ms.locfileid: "92216863"
     次に例を示します。 
 
     `sudo realm join CONTOSO.COM -U ad_admin --computer-ou="CN=Computers"`
-
+    
+    `/etc/krb5.conf` 内の指定された領域に `default_realm` が確実に設定されていようにします。  そうでない場合は、次の例に示すように、ファイル内の `[libdefaults]` セクションの下に追加します。
+    
+    `default_realm = CONTOSO.COM`
 
 7. すべての NFS サービスを再起動します。  
  

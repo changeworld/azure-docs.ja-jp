@@ -3,12 +3,12 @@ title: イベント配信、マネージド サービス ID、およびプライ
 description: この記事では、Azure イベント グリッド トピックに対してマネージド サービス ID を有効にする方法を説明します。 これを使用して、サポートされている配信先にイベントを転送します。
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 434a2e36ead0d210b7edf64d104243f6643ac019
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d16310ac61121af0cc9d76664bfeeeb14e1bc243
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460922"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491717"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>マネージド ID を使用したイベント配信
 この記事では、Azure イベント グリッド トピックまたはドメインに対して、[マネージド サービス ID](../active-directory/managed-identities-azure-resources/overview.md) を有効にする方法を説明します。 これを使用して、Service Bus のキューとトピック、イベント ハブ、ストレージ アカウントなどの、サポートされている配信先にイベントを転送します。
@@ -46,7 +46,7 @@ az eventgrid topic create -g <RESOURCE GROUP NAME> --name <TOPIC NAME> -l <LOCAT
 次の手順では、トピックに対してシステム マネージド ID を有効にする方法を示します。 ドメインに対して ID を有効にする手順と似ています。 
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
-2. 上部の検索バーで「 **event grid topics (イベント グリッド トピック)** 」を検索します。
+2. 上部の検索バーで「**event grid topics (イベント グリッド トピック)** 」を検索します。
 3. マネージド ID を有効にする **トピック** を選択します。 
 4. **[ID]** タブに移動します。 
 5. スイッチを **オン** にして、ID を有効にします。 
@@ -84,13 +84,13 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 ### <a name="use-the-azure-portal"></a>Azure ポータルの使用
 トピックやドメインによってイベントを配信先に転送できるようにするために、Azure portal を使用して、トピックやドメインの ID を適切なロールに割り当てることができます。 
 
-次の例では、 **msitesttopic** という名称のイベント グリッド トピックのマネージド ID を、キューまたはトピックのリソースが含まれている Service Bus の名前空間の **Azure Service Bus データ送信者** ロールに追加します。 名前空間レベルでロールに追加すると、トピックによりイベントをその名前空間内のすべてのエンティティに転送できるようになります。 
+次の例では、**msitesttopic** という名称のイベント グリッド トピックのマネージド ID を、キューまたはトピックのリソースが含まれている Service Bus の名前空間の **Azure Service Bus データ送信者** ロールに追加します。 名前空間レベルでロールに追加すると、トピックによりイベントをその名前空間内のすべてのエンティティに転送できるようになります。 
 
 1. [Azure portal](https://portal.azure.com) で、ご利用の **Service Bus 名前空間** に移動します。 
 1. 左ペインの **[アクセス制御]** を選択します。 
 1. **[ロールの割り当てを追加する]** セクションで **[追加]** を選択します。 
 1. **[ロールの割り当ての追加]** ページで、次の手順のようにします。
-    1. ロールを選択します。 この例では、 **Azure Service Bus データ送信者** です。 
+    1. ロールを選択します。 この例では、**Azure Service Bus データ送信者** です。 
     1. トピックまたはドメインの **ID** を選択します。 
     1. **[保存]** を選んで構成を保存します。
 
@@ -195,7 +195,7 @@ az eventgrid event-subscription create
 ```
 
 ### <a name="use-the-azure-cli---event-hubs"></a>Azure CLI の使用 - Event Hubs 
-このセクションでは、Azure CLI を使用し、システム割り当て ID の使用を有効にして、イベントをイベント ハブに配信する方法を学びます。 ID は、 **Azure Event Hubs データ送信者** ロールのメンバーである必要があります。 また、配信不能処理に使用されるストレージ アカウントの **ストレージ BLOB データ共同作成者** ロールのメンバーである必要もあります。 
+このセクションでは、Azure CLI を使用し、システム割り当て ID の使用を有効にして、イベントをイベント ハブに配信する方法を学びます。 ID は、**Azure Event Hubs データ送信者** ロールのメンバーである必要があります。 また、配信不能処理に使用されるストレージ アカウントの **ストレージ BLOB データ共同作成者** ロールのメンバーである必要もあります。 
 
 #### <a name="define-variables"></a>変数の定義
 ```azurecli-interactive

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database への Azure Stream Analytics の出力
+title: Azure Stream Analytics から Azure SQL Database へのスループットのパフォーマンスを向上させる
 description: Azure Stream Analytics から Azure SQL Database にデータを出力し、より高い書き込みスループット レートを実現する方法について説明します。
 author: chetanmsft
 ms.author: chetang
@@ -7,14 +7,14 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: 362c16a87e5a24c35b3aa637171b6a3f77aa62a6
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: a902cbc8256e249a608a5da8436a1145ddb0d565
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346334"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490935"
 ---
-# <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure SQL Database への Azure Stream Analytics の出力
+# <a name="increase-throughput-performance-to-azure-sql-database-from-azure-stream-analytics"></a>Azure Stream Analytics から Azure SQL Database へのスループットのパフォーマンスを向上させる
 
 この記事では、Azure Stream Analytics を使用して Azure SQL Database にデータを読み込むときに、よりよい書き込みスループット パフォーマンスを実現するためのヒントについて説明します。
 

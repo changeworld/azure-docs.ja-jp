@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3fda153d4c48ced17d1a9ba5f060b435b161542e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 8e08c4c34495b58c105560dba9d818be9ebf5e34
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127639"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490969"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>ポータルで Azure Stream Analytics ジョブをテストする
 
@@ -37,11 +37,11 @@ Azure Stream Analytics では、ストリーミング入力からイベントを
     
    c. 表示されたデータが最新でない場合、 **[更新]** を選択して最新のイベントを表示します。
 
-   次の表は、 **表形式** でのデータの例です。
+   次の表は、**表形式** でのデータの例です。
 
    ![表形式の Azure Stream Analytics のサンプル入力](./media/stream-analytics-test-query/asa-sample-table.png)
 
-   次の表は、 **未加工の形式** でのデータの例です。
+   次の表は、**未加工の形式** でのデータの例です。
 
    ![未加工の形式の Azure Stream Analytics のサンプル入力](./media/stream-analytics-test-query/asa-sample-raw.png)
 
@@ -101,8 +101,8 @@ Azure Stream Analytics では、ストリーミング入力からイベントを
 
 1.  タイム ポリシーは、以下でテストするポータルではサポートされていません。
 
-   * 順不同: すべての受信イベントは順序付けられます。
-   * 到着遅延:Stream Analytics は既存のデータのみをテストに使用できるため、到着遅延イベントは発生しません。
+    * 順不同: すべての受信イベントは順序付けられます。
+    * 到着遅延:Stream Analytics は既存のデータのみをテストに使用できるため、到着遅延イベントは発生しません。
    
 2.  C# UDF はサポートされていません。
 
@@ -111,6 +111,20 @@ Azure Stream Analytics では、ストリーミング入力からイベントを
 4.  タイムアウト サイズは 1 分です。 したがって、ウィンドウ サイズが 1 分を超えるクエリではデータを取得できません。
 
 5.  機械学習はサポートされていません。
+
+6. サンプル データ API は、15 分のウィンドウで 5 つの要求が行われた後にスロットルされます。 15 分のウィンドウが終了すると、さらに多くのサンプル データ要求を行うことができます。 この制限は、サブスクリプション レベルで適用されます。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+1.  エラー “結果を取り込むときにネットワーク接続の問題が発生しました。 ネットワークとファイアウォールの設定を確認してください。” が発生した場合は、次の手順に従ってください。
+
+  * サービスへの接続を確認するには、ブラウザーで [https://queryruntime.azurestreamanalytics.com/api/home/index](https://queryruntime.azurestreamanalytics.com/api/home/index) を開きます。 このリンクを開くことができない場合は、ファイアウォールの設定を更新してください。
+  
+2. エラー "要求サイズが大きすぎます。 入力データ サイズを減らして、再試行してください。" が発生した場合は、次の手順に従ってください。
+
+  * 入力サイズを減らす – 小さいサイズのサンプル ファイル、または短い時間範囲でクエリをテストします。
+  * クエリ サイズを減らす – クエリの選択をテストするには、クエリの一部を選択し、 **[Test selected query]\(選択したクエリをテストする\)** をクリックします。
+
 
 ## <a name="next-steps"></a>次のステップ
 * [Stream Analytics を使って IoT ソリューションを構築する](./stream-analytics-build-an-iot-solution-using-stream-analytics.md): このチュートリアルでは、料金所での交通情報をシミュレートするデータ ジェネレーターを使用してエンドツーエンドのソリューションを構築する方法について説明します。

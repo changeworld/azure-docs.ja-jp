@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: c96263b5d40d4f6a4904a6da3d40ad98ac81f030
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f17cdd42c892f6c0d218875cf304846937ba58d7
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322316"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444832"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
@@ -47,15 +47,28 @@ ms.locfileid: "93322316"
 
 他のユーザーとワークスペースを共有できます。
 
+### <a name="create-workspace"></a>ワークスペースの作成
+
+次の図は、ワークスペース作成のワークフローを示したものです。
+
+* サポートされている Azure Machine Learning クライアント (Azure CLI、Python SDK、Azure portal) のいずれかから Azure AD にサインインし、適切な Azure Resource Manager トークンを要求します。
+* ワークスペースを作成するために Azure Resource Manager を呼び出します。 
+* Azure Resource Manager では、Azure Machine Learning のリソース プロバイダーに連絡し、ワークスペースをプロビジョニングします。
+* 既存のリソースを指定しない場合、追加の必須リソースがサブスクリプションで作成されます。
+
+必要に応じて、(Azure Kubernetes Service や VM などの) ワークスペースにアタッチされている他のコンピューティング先をプロビジョニングすることもできます。
+
+[![ワークスペースの作成ワークフロー](media/concept-azure-machine-learning-architecture/create-workspace.png)](media/concept-azure-machine-learning-architecture/create-workspace.png#lightbox)
+
 ## <a name="computes"></a>コンピューティング
 
 <a name="compute-targets"></a>[コンピューティング先](concept-compute-target.md)は、トレーニング スクリプトを実行したり、サービスのデプロイをホストしたりするために使用する、マシンまたはマシンのセットです。 コンピューティング先として、ローカル コンピューターまたはリモート コンピューティング リソースを使用できます。  コンピューティング先を使用することにより、ローカル コンピューターでトレーニングを開始し、その後トレーニング スクリプトを変更することなくクラウドにスケールアウトできます。
 
 Azure Machine Learning には、機械学習タスク用に構成された以下の 2 つのフル マネージド クラウドベース仮想マシン (VM) が導入されています。
 
-* <a name="compute-instance"></a> **コンピューティング インスタンス** :コンピューティング インスタンスは、機械学習用にインストールされた複数のツールと環境を含む VM です。 コンピューティング インスタンスの主な用途は、開発ワークステーションです。  セットアップを行うことなく、サンプル ノートブックの実行を開始できます。 コンピューティング インスタンスは、トレーニング ジョブと推論ジョブのコンピューティング先として使用できます。
+* <a name="compute-instance"></a> **コンピューティング インスタンス**:コンピューティング インスタンスは、機械学習用にインストールされた複数のツールと環境を含む VM です。 コンピューティング インスタンスの主な用途は、開発ワークステーションです。  セットアップを行うことなく、サンプル ノートブックの実行を開始できます。 コンピューティング インスタンスは、トレーニング ジョブと推論ジョブのコンピューティング先として使用できます。
 
-* **コンピューティング クラスター** :コンピューティング クラスターは、マルチノード スケーリング機能を備えた VM のクラスターです。 コンピューティング クラスターは、大規模なジョブと運用環境のコンピューティング先に適しています。  クラスターは、ジョブが送信されるときに自動的にスケールアップされます。  トレーニング コンピューティング ターゲットとして、または開発/テスト デプロイのために使用します。
+* **コンピューティング クラスター**:コンピューティング クラスターは、マルチノード スケーリング機能を備えた VM のクラスターです。 コンピューティング クラスターは、大規模なジョブと運用環境のコンピューティング先に適しています。  クラスターは、ジョブが送信されるときに自動的にスケールアップされます。  トレーニング コンピューティング ターゲットとして、または開発/テスト デプロイのために使用します。
 
 トレーニング コンピューティング ターゲットの詳細については、「[トレーニング コンピューティング ターゲット](concept-compute-target.md#train)」を参照してください。  デプロイメント コンピューティング ターゲットの詳細については、「[デプロイメント ターゲット](concept-compute-target.md#deploy)」を参照してください。
 
@@ -114,6 +127,10 @@ Azure Machine Learning では、すべての実行を記録して、実験に次
 
 実行を送信するときに、Azure Machine Learning によって、スクリプトが含まれているディレクトリが zip ファイルとして圧縮され、コンピューティング先に送られます。 その後、zip ファイルが抽出され、そこでスクリプトが実行されます。 Azure Machine Learning では、zip ファイルもスナップショットとして実行レコード内に格納されます。 ワークスペースにアクセスできるすべてのユーザーは、実行レコードを参照し、スナップショットをダウンできます。
 
+次の図は、コード スナップショットのワークフローを示したものです。
+
+[![コード スナップショット ワークフロー](media/concept-azure-machine-learning-architecture/code-snapshot.png)](media/concept-azure-machine-learning-architecture/code-snapshot.png#lightbox)
+
 ### <a name="logging"></a>ログ記録
 
 Azure Machine Learning では、標準的な実行メトリックが自動的にログに記録されます。 ただし、[Python SDK を使用して任意のメトリックをログに記録する](how-to-track-experiments.md)こともできます。
@@ -129,6 +146,31 @@ Azure Machine Learning では、標準的な実行メトリックが自動的に
 ソース ディレクトリがローカル Git リポジトリであるトレーニング実行を開始すると、リポジトリに関する情報が実行履歴に格納されます。 これは、スクリプト実行構成または ML パイプラインを使用して送信した実行で機能します。 SDK または Machine Learning CLI から送信された実行でも機能します。
 
 詳細については、「[Azure Machine Learning との Git 統合](concept-train-model-git-integration.md)」を参照してください。
+
+### <a name="training-workflow"></a>トレーニング ワークフロー
+
+モデルをトレーニングするための実験を実行すると、次の手順が行われます。 それを図解したものが下のトレーニング ワークフロー図です。
+
+* 前のセクションで保存されたコード スナップショットのスナップショット ID を指定して、Azure Machine Learning が呼び出されます。
+* Azure Machine Learning では実行 ID (省略可能) と Machine Learning service トークンが作成され、これは後で Machine Learning コンピューティング/VM などのコンピューティング先によって、Machine Learning service と通信するために使用されます。
+* トレーニング ジョブを実行するために、マネージド コンピューティング先 (Machine Learning コンピューティングなど) またはアンマネージド コンピューティング先 (VM など) のいずれかを選択できます。 両方のシナリオのデータ フローを次に示します。
+   * VM/HDInsight。Microsoft サブスクリプションのキー コンテナー内の SSH 資格情報でアクセスされます。 Azure Machine Learning では、以下を行うコンピューティング先で管理コードを実行します。
+
+   1. 環境を準備します (Docker は VM とローカル コンピューターのオプションです。 Docker コンテナーで実験を行う方法については、Machine Learning コンピューティングに関する以下の手順を参照してください)。
+   1. コードをダウンロードします。
+   1. 環境変数と構成を設定します。
+   1. ユーザー スクリプト (前のセクションで説明したコード スナップショット) を実行します。
+
+   * Machine Learning コンピューティング。ワークスペース マネージド ID を使用してアクセスされます。
+Machine Learning コンピューティングはマネージド コンピューティング先である (つまり、Microsoft によって管理される) ため、Microsoft サブスクリプションで実行されます。
+
+   1. 必要な場合は、リモートの Docker の構築が開始されます。
+   1. 管理コードは、ユーザーの Azure Files 共有に書き込まれます。
+   1. コンテナーは、初期コマンドを使用して開始されます。 つまり、前の手順で説明した管理コードです。
+
+* 実行が完了すると、実行とメトリクスを照会できます。 以下のフロー図では、トレーニング コンピューティング先で、Cosmos DB データベースのストレージから Azure Machine Learning に実行メトリックが書き戻された場合に、この手順が行われます。 クライアントで、Azure Machine Learning を呼び出すことができます。 その後、Machine Learning によって Cosmos DB データベースからメトリックがプルされ、クライアントに戻されます。
+
+[![トレーニング ワークフロー](media/concept-azure-machine-learning-architecture/training-and-metrics.png)](media/concept-azure-machine-learning-architecture/training-and-metrics.png#lightbox)
 
 ## <a name="models"></a>モデル
 
@@ -162,9 +204,9 @@ Scikit-learn を使用したモデルのトレーニングの例については�
 
 [登録済みのモデル](#register-model)をサービス エンドポイントとしてデプロイします。 次のコンポーネントが必要です。
 
-* **環境** 。 この環境は、推論用モデルを実行するために必要な依存関係をカプセル化します。
-* **スコアリング コード** 。 このスクリプトは、要求を受け入れ、モデルを使用してその要求にスコアを付け、その結果を返します。
-* **推論構成** 。 推論構成では、サービスとしてのモデルを実行するために必要な環境、エントリ スクリプト、およびその他のコンポーネントを指定します。
+* **環境**。 この環境は、推論用モデルを実行するために必要な依存関係をカプセル化します。
+* **スコアリング コード**。 このスクリプトは、要求を受け入れ、モデルを使用してその要求にスコアを付け、その結果を返します。
+* **推論構成**。 推論構成では、サービスとしてのモデルを実行するために必要な環境、エントリ スクリプト、およびその他のコンポーネントを指定します。
 
 これらのコンポーネントの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
@@ -178,9 +220,21 @@ Scikit-learn を使用したモデルのトレーニングの例については�
 
 Web サービスとしてモデルをデプロイする場合、エンドポイントを Azure Container Instances、Azure Kubernetes Service、または FPGA にデプロイできます。 モデル、スクリプト、および関連ファイルからサービスを作成します。 これらは、モデルの実行環境を含むベース コンテナー イメージに配置されます。 イメージには、Web サービスに送信されるスコアリング要求を受け取る、負荷分散された HTTP エンドポイントがあります。
 
-Web サービスを監視するために Application Insights テレメトリまたはモデルのテレメトリを有効にできます。 テレメトリ データにアクセスできるのは自分だけです。  これは Application Insights とストレージ アカウント インスタンスに格納されます。
+Web サービスを監視するために Application Insights テレメトリまたはモデルのテレメトリを有効にできます。 テレメトリ データにアクセスできるのは自分だけです。  これは Application Insights とストレージ アカウント インスタンスに格納されます。 自動スケールを有効にしてある場合は、Azure でデプロイが自動的にスケーリングされます。
 
-自動スケールを有効にしてある場合は、Azure でデプロイが自動的にスケーリングされます。
+次の図は、Web サービス エンドポイントとしてデプロイされているモデルの推論ワークフローを示しています。
+
+これらについて詳しく説明します。
+
+* ユーザーは、Azure Machine Learning SDK などのクライアントを使用して、モデルを登録します。
+* ユーザーは、モデル、スコア ファイル、およびその他のモデルの依存関係を使用して、イメージを作成します。
+* Docker イメージが作成されて、Azure Container Registry で格納されます。
+* Web サービスは、前の手順で作成されたイメージを使用して、コンピューティング先 (Container Instances/AKS) にデプロイされます。
+* スコアリング要求の詳細は、ユーザーのサブスクリプション内の Application Insights に格納されます。
+* テレメトリも Microsoft/Azure サブスクリプションにプッシュされます。
+
+[![推論のワークフロー](media/concept-azure-machine-learning-architecture/inferencing.png)](media/concept-azure-machine-learning-architecture/inferencing.png#lightbox)
+
 
 Web サービスとしてのモデルのデプロイ例については、[Azure Container Instances での画像分類モデルのデプロイ](tutorial-deploy-models-with-aml.md)に関するページを参照してください。
 

@@ -11,24 +11,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: d868a2d9bc88be7faea161779c35110f13e2b2ac
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 3e6e060f4af2addba66ed02e82d76dd520375f25
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939071"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516409"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-cli"></a>クイック スタート:Azure CLI を使用してパブリック IP アドレスを作成する
 
 この記事では、Azure CLI を使用してパブリック IP アドレス リソースを作成する方法について説明します。 これを関連付けることができるリソース、Basic SKU と Standard SKU の違い、およびその他の関連情報については、「[パブリック IP アドレス](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses)」を参照してください。  この例では、IPv4 アドレスのみに焦点を当てます。IPv6 アドレスの詳細については、[Azure VNet の IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview) に関するページを参照してください。
 
-## <a name="prerequisites"></a>前提条件
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- ローカルにインストールされた Azure CLI または Azure Cloud Shell
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
-
-CLI をローカルにインストールして使用する場合、このクイックスタートでは Azure CLI バージョン 2.0.28 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+- この記事では、Azure CLI のバージョン 2.0.28 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -98,7 +94,7 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
     --sku Basic \
     --allocation-method Static
 ```
-時間の経過と共に IP アドレスが変更されても問題ない場合は、allocation-method を "Dynamic" に変更することで**動的** IP の割り当てを選択できます。
+時間の経過と共に IP アドレスが変更されても問題ない場合は、allocation-method を "Dynamic" に変更することで **動的** IP の割り当てを選択できます。
 
 ---
 

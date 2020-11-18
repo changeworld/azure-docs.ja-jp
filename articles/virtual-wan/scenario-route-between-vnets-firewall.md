@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 301bc64bee291fa25506e7f435e923be7e244cd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d083607782f96744ecbd7d23976f77ee53fec49d
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267518"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515571"
 ---
 # <a name="scenario-azure-firewall---custom"></a>シナリオ:Azure Firewall - カスタム
 
@@ -28,10 +28,10 @@ Virtual WAN の仮想ハブ ルーティングを使用する場合、多くの�
 
 | ソース           | 移動先:      | *VNet*      | *ブランチ*    | *Internet*   |
 |---             |---       |---           |---            |---           |
-| **VNet**      |   &#8594;|     X        |     AzFW      |     AzFW     |
-| **ブランチ**   |   &#8594;|    AzFW      |       X       |       X      |
+| **VNet**      |   &#8594;|    直接    |     AzFW      |     AzFW     |
+| **ブランチ**   |   &#8594;|    AzFW      |    直接     |    直接    |
 
-前の表では、"X" は Virtual WAN でトラフィックがAzure Firewall を経由しない 2 つの接続間の直接接続を表し、"AzFW" はフローが Azure Firewall を経由することを示しています。 マトリックスには 2 つの異なる接続パターンがあるため、次のように構成される 2 つのルート テーブルが必要になります。
+前の表では、"Direct" は Virtual WAN でトラフィックが Azure Firewall を経由しない 2 つの接続間の直接接続を表し、"AzFW" はフローが Azure Firewall を経由することを示しています。 マトリックスには 2 つの異なる接続パターンがあるため、次のように構成される 2 つのルート テーブルが必要になります。
 
 * 仮想ネットワーク:
   * 関連付けられたルート テーブル:**RT_VNet**
@@ -47,7 +47,7 @@ Virtual WAN の仮想ハブ ルーティングを使用する場合、多くの�
 
 ## <a name="workflow"></a><a name="workflow"></a>ワークフロー
 
-このシナリオでは、VNet 対インターネット、VNet 対ブランチ、またはブランチ対 VNet のトラフィックを Azure Firewall 経由でルーティングする一方、VNet 対 VNet のトラフィックについては直接ルーティングします。 Azure Firewall Manager を使用している場合、ルート設定は自動的に**既定のルート テーブル**に入力されます。 プライベート トラフィックは VNet とブランチに適用され、インターネット トラフィックは 0.0.0.0/0 に適用されます。
+このシナリオでは、VNet 対インターネット、VNet 対ブランチ、またはブランチ対 VNet のトラフィックを Azure Firewall 経由でルーティングする一方、VNet 対 VNet のトラフィックについては直接ルーティングします。 Azure Firewall Manager を使用している場合、ルート設定は自動的に **既定のルート テーブル** に入力されます。 プライベート トラフィックは VNet とブランチに適用され、インターネット トラフィックは 0.0.0.0/0 に適用されます。
 
 VPN、ExpressRoute、およびユーザー VPN 接続は、総称して "ブランチ" と呼ばれ、同じ (既定の) ルート テーブルに関連付けられます。 すべての VPN 接続、ExpressRoute 接続、ユーザー VPN 接続は、同じルート テーブルのセットにルートを伝達します。 このシナリオを構成するには、次の手順を考慮してください。
 
@@ -57,7 +57,7 @@ VPN、ExpressRoute、およびユーザー VPN 接続は、総称して "ブラ�
    * **[Association]\(関連付け\):** [VNet] を選択します。これは、このルート テーブルのルートに従って VNet が宛先に到達することを意味します。
    * **[Propagation]\(伝達\):** [VNet] を選択します。これは、VNet がこのルート テーブルに伝達されることを意味します。言い換えると、より具体的なルートがこのルート テーブルに伝達されるため、VNet 間の直接のトラフィック フローが確保されます。
 
-1. VNet の集約された静的ルートを**既定のルート テーブル**に追加して、Azure Firewall を経由するブランチ対 VNet フローをアクティブ化します。
+1. VNet の集約された静的ルートを **既定のルート テーブル** に追加して、Azure Firewall を経由するブランチ対 VNet フローをアクティブ化します。
 
    * ブランチが関連付けられ、既定のルート テーブルに伝達されることに注意してください。
    * ブランチは RT_VNet ルート テーブルに伝達されません。 これにより、Azure Firewall を経由する VNet 対ブランチのトラフィック フローが確保されます。

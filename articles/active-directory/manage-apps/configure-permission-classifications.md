@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: phsignor
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: d23ef7b78f5e97ee8a82f46794f37f3baf05ca49
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b72530868b2b12e5f95e79be6ad5a2d7ce170b62
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427664"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654679"
 ---
 # <a name="configure-permission-classifications"></a>アクセス許可の分類を構成する
 
@@ -45,7 +45,7 @@ ms.locfileid: "92427664"
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-最新の Azure AD PowerShell プレビュー モジュールである [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) を使用して、アクセス許可を分類できます。 アクセス許可の分類は、アクセス許可を発行する API の **ServicePrincipal** オブジェクトに構成されます。
+最新の Azure AD PowerShell プレビュー モジュールである [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) を使用して、アクセス許可を分類できます。 アクセス許可の分類は、アクセス許可を発行する API の **ServicePrincipal** オブジェクトに構成されます。
 
 #### <a name="list-the-current-permission-classifications-for-an-api"></a>API の現在のアクセス許可の分類をリストアップします。
 
@@ -123,7 +123,7 @@ ms.locfileid: "92427664"
 * [管理者の同意ワークフローの構成](configure-admin-consent-workflow.md)
 * [アプリケーションへの同意を管理する方法と同意要求を評価する方法](manage-consent-requests.md)
 * [アプリケーションへのテナント全体の管理者の同意の付与](grant-admin-consent.md)
-* [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/active-directory-v2-scopes.md)
+* [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/v2-permissions-and-consent.md)
 
 ヘルプを表示したり、質問に対する回答を検索したりするには、以下を参照してください。
 * [StackOverflow での Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

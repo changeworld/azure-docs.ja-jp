@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 1e0a11ef72698d749349cce8dd7eff73e5284a86
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ad8a5a23361e721fd5d8d55d3555f51def94e768
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122468"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442023"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>チュートリアル:Azure Data Box のエクスポート注文を作成する (プレビュー)
 
@@ -56,13 +56,13 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
 
 1. Microsoft Azure 資格情報を使用して、次の URL にサインインします。[https://portal.azure.com](https://portal.azure.com)
 
-2. **[+ リソースの作成]** を選択し、 *Azure Data Box* を検索します。 **[Azure Data Box]** を選択します。
+2. **[+ リソースの作成]** を選択し、*Azure Data Box* を検索します。 **[Azure Data Box]** を選択します。
 
-   ![リソースを作成する](media/data-box-deploy-export-ordered/azure-data-box-export-00b.png)
+   ![リソースの作成](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-resource.png)
 
 3. **［作成］** を選択します
 
-   ![Azure Data Box の作成](media/data-box-deploy-export-ordered/azure-data-box-export-00c.png)
+   ![Azure Data Box リソースを作成する](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-data-box-resource.png)
 
 4. ご利用のリージョンで Azure Data Box サービスが利用可能かどうかを確認します。 次の情報を入力または選択し、 **[適用]** を選択します。
 
@@ -74,11 +74,11 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
     |Source Azure region (ソース Azure リージョン)    |    データが現在存在する Azure リージョンを選択します。         |
     |Destination country (宛先の国)     |     デバイスを発送する国を選択します。        |
 
-   ![Data Box の設定の選択](media/data-box-deploy-export-ordered/azure-data-box-export-01.png)
+   ![Data Box の設定の選択](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-box-settings.png)
 
 5. **[Data Box]** を選択します。 1 つの注文での使用可能な最大容量は 80 TB です。 データ サイズがこれより大きい場合は、複数の注文を作成できます。
 
-   ![Data Box の容量の選択](media/data-box-deploy-export-ordered/azure-data-box-export-02b.png)
+   ![Data Box の容量の選択](media/data-box-deploy-export-ordered/azure-data-box-export-order-capacity.png)
 
 6. **[Order]\(注文\)** で **[Basic]\(基本\)** の注文情報を指定します。 次の情報を入力または選択し、 **[次へ]** を選択します。
 
@@ -88,13 +88,13 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
     |Resource group | 前に選択したリソース グループ。 |
     |Export order name (エクスポート注文名)     |  注文を追跡するためのフレンドリ名を指定します。 <br> 名前の長さは 3 ～ 24 文字で、文字、数字、ハイフンを使うことができます。 <br> 名前の最初と最後は、文字か数字とする必要があります。      |
 
-    ![Export order basics (エクスポート注文の基本)](media/data-box-deploy-export-ordered/azure-data-box-export-03.png)
+    ![Export order basics (エクスポート注文の基本)](media/data-box-deploy-export-ordered/azure-data-box-export-order-storage-account-export-type.png)
 
     **[Next:Data Selection]\(次へ: データの選択\)** を選択して続行します。
 
 7. **[Data Selection]\(データの選択\)** で、 **[Add storage account and export type]\(ストレージ アカウントとエクスポートの種類を追加\)** を選択します。
 
-    ![ストレージ アカウントとエクスポートの種類を追加](media/data-box-deploy-export-ordered/azure-data-box-export-03b.png)
+    ![ストレージ アカウントとエクスポートの種類を追加](media/data-box-deploy-export-ordered/azure-data-box-export-order-basics.png)
 
 8. **[Select export option]\(エクスポート オプションの選択\)** で、エクスポート オプションの詳細を指定します。 次の情報を入力または選択し、 **[追加]** を選択します。
 
@@ -102,7 +102,7 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
     |---------|---------|
     |ストレージ アカウント     | エクスポートするデータがある Azure Storage アカウント。 |
     |Export type (エクスポートの種類)     | エクスポートするデータの種類を **[All objects]\(すべてのオブジェクト\)** および **[Use XML file]\(XML ファイルを使用\)** から指定します。<ul><li> **[All objects]\(すべてのオブジェクト\)** - **[Transfer options]\(転送オプション\)** の選択に応じて、ジョブですべてのデータをエクスポートするように指定します。</li><li> **[Use XML file]\(XML ファイルを使用\)** - ストレージ アカウントからエクスポートする BLOB またはファイルのパスとプレフィックスのセットを含む XML ファイルを指定します。 選択したストレージ アカウントのコンテナーには XML ファイルが含まれている必要があります。ファイル共有から選択することは現在サポートされていません。 ファイルは、空でない .xml ファイルである必要があります。</li></ul>        |
-    |Transfer options (転送オプション)     |  **[Select all]\(すべて選択\)** 、 **[All BLOB]\(すべての BLOB\)** 、および **[All files]\(すべてのファイル\)** からデータ転送オプションを指定します。 <ul><li> **[Select All]\(すべて選択\)** - すべての BLOB と Azure ファイルをエクスポートすることを指定します。 BLOB のみがサポートされているストレージ アカウント (Blob ストレージ アカウント) を使用している場合は、 **[All Files]\(すべてのファイル\)** オプションは選択できません。</li><li> **[All BLOB]\(すべての BLOB\)** - ブロック BLOB とページ BLOB のみエクスポートすることを指定します。</li><li> **[All Files]\(すべてのファイル\)** - BLOB を除くすべてのファイルをエクスポートすることを指定します。 使用しているストレージ アカウントの種類 (GPv1 と GPv2、Premium Storage、または BLOB ストレージ) によって、エクスポートできるデータの種類が決まります。 詳細については、[エクスポートでサポートされるストレージ アカウント](../storage/common/storage-import-export-requirements.md#supported-storage-types)に関する記事を参照してください。</li></ul>         |
+    |Transfer options (転送オプション)     |  **[Select all]\(すべて選択\)** 、 **[All BLOB]\(すべての BLOB\)** 、および **[All files]\(すべてのファイル\)** からデータ転送オプションを指定します。 <ul><li> **[Select All]\(すべて選択\)** - すべての BLOB と Azure Files をエクスポートすることを指定します。 BLOB のみがサポートされているストレージ アカウント (Blob ストレージ アカウント) を使用している場合は、 **[All Files]\(すべてのファイル\)** オプションは選択できません。</li><li> **[All BLOB]\(すべての BLOB\)** - ブロック BLOB とページ BLOB のみエクスポートすることを指定します。</li><li> **[All Files]\(すべてのファイル\)** - BLOB を除くすべてのファイルをエクスポートすることを指定します。 使用しているストレージ アカウントの種類 (GPv1 と GPv2、Premium Storage、または BLOB ストレージ) によって、エクスポートできるデータの種類が決まります。 詳細については、[エクスポートでサポートされるストレージ アカウント](../storage/common/storage-import-export-requirements.md#supported-storage-types)に関する記事を参照してください。</li></ul>         |
     |Include verbose log (詳細ログを含める)     | 正常にエクスポートされたすべてのファイルの一覧を含む詳細ログ ファイルが必要かどうかを示します。        |
 
     > [!NOTE]
@@ -111,82 +111,85 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
 
     XML ファイルをコンテナーに追加する方法については、「[XML ファイルを使用した注文のエクスポート](data-box-deploy-export-ordered.md#export-order-using-xml-file)」を参照してください。
 
-   ![Select export option (エクスポート オプションの選択)](media/data-box-deploy-export-ordered/azure-data-box-export-04b.png)
+   ![Select export option (エクスポート オプションの選択)](media/data-box-deploy-export-ordered/azure-data-box-export-order-export-option.png)
 
    XML 入力の例については、[XML 入力のサンプル](data-box-deploy-export-ordered.md#sample-xml-file)を参照してください
 
 9. **[Data Selection]\(データの選択\)** で、設定を確認し、 **[Next:Security>]\(次へ: セキュリティ\)** を選択します。
 
-   ![Contact Details (連絡先の詳細)](media/data-box-deploy-export-ordered/azure-data-box-export-05.png)
+   ![エクスポート注文、データ選択](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-selection.png)
 
-1. **[セキュリティ]** で、ソフトウェアベースの二重暗号化を有効にしたい場合は、 **[Enable double encryption for the order]\(この注文に関して二重暗号化を有効にする\)** を選択します。 
+10. **[セキュリティ]** で、ソフトウェアベースの二重暗号化を有効にしたい場合は、 **[Enable double encryption for the order]\(この注文に関して二重暗号化を有効にする\)** を選択します。 
 
-   Data Box 上のデータに対し、AES-256 ビットの暗号化に加えて、ソフトウェアベースの暗号化が実行されます。
+    Data Box 上のデータに対し、AES-256 ビットの暗号化に加えて、ソフトウェアベースの暗号化が実行されます。
 
-   > [!NOTE]
-   > このオプションを有効にすると、注文の処理とデータのコピーにかかる時間が長くなることがあります。 注文後に、このオプションを変更することはできません。
+   
+    > [!NOTE]
+    > このオプションを有効にすると、注文の処理とデータのコピーにかかる時間が長くなることがあります。 注文後に、このオプションを変更することはできません。
 
-   ![Data Box インポートの [セキュリティ] 画面 (二重暗号化)](media/data-box-deploy-export-ordered/azure-data-box-export-05b.png)
+    ![Data Box インポートの [セキュリティ] 画面 (二重暗号化)](media/data-box-deploy-export-ordered/azure-data-box-export-order-security-double-encryption.png)
 
-   **[Next:連絡先の詳細]** を選択して続行します。
+    **[Next:連絡先の詳細]** を選択して続行します。
 
-10. **[Contact Details]\(連絡先の詳細\)** で、 **[+ Add Shipping Address]\(+ 配送先住所の追加\)** を選択して発送情報を入力します。
+11. **[Contact Details]\(連絡先の詳細\)** で、 **[+ Add Shipping Address]\(+ 配送先住所の追加\)** を選択して発送情報を入力します。
 
-    ![Add shipping address (配送先住所の追加)](media/data-box-deploy-export-ordered/azure-data-box-export-06.png)
+    ![Add shipping address (配送先住所の追加)](media/data-box-deploy-export-ordered/azure-data-box-export-order-add-shipping-address.png)
 
-11. **[Add Shipping Address]\(配送先住所の追加\)** に、お客様の氏名、会社の名前と郵送先住所、および有効な電話番号を入力します。 **[検証]** を選択します。 配送先住所でサービスが利用可能かどうかが確認されます。 指定した配送先住所でサービスを利用できる場合は、その旨が通知されます。
+12. **[Add Shipping Address]\(配送先住所の追加\)** に、お客様の氏名、会社の名前と郵送先住所、および有効な電話番号を入力します。 **[検証]** を選択します。 配送先住所でサービスが利用可能かどうかが確認されます。 指定した配送先住所でサービスを利用できる場合は、その旨が通知されます。
 
-    ![配送先住所の検証 (Validate shipping address)](media/data-box-deploy-export-ordered/azure-data-box-export-07.png)
+    ![配送先住所の検証 (Validate shipping address)](media/data-box-deploy-export-ordered/azure-data-box-export-order-validate-shipping-address.png)
 
     自己管理型の発送が利用可能なリージョンで注文する場合は、このオプションを選択できます。 自己管理の出荷の詳細については、[自己管理の出荷の使用](data-box-portal-customer-managed-shipping.md)に関するページをご覧ください。
 
-12. 配送の詳細が正常に検証されたら、 **[Add shipping address]\(配送先住所の追加\)** を選択します。
+13. 配送の詳細が正常に検証されたら、 **[Add shipping address]\(配送先住所の追加\)** を選択します。
 
-13. **[Contact Details]\(連絡先の詳細\)** で、配送先住所とメール アドレスを確認します。 指定した電子メール アドレスに、注文の状態の更新に関する電子メール通知が送信されます。
+14. **[Contact Details]\(連絡先の詳細\)** で、配送先住所とメール アドレスを確認します。 指定した電子メール アドレスに、注文の状態の更新に関する電子メール通知が送信されます。
 
     グループの管理者が辞めた場合も引き続き通知を受け取ることができるように、グループ メールを使用することをお勧めします。
 
-    ![Order details](media/data-box-deploy-export-ordered/azure-data-box-export-09.png)
+    ![連絡先の詳細](media/data-box-deploy-export-ordered/azure-data-box-export-order-contact-details.png)
 
-14. **[Next:Review + Order>]\(次へ: 確認と注文\)** を選択します。 注文の作成を続行するには、使用条件に同意する必要があります。
+15. **[Next:Review + Order>]\(次へ: 確認と注文\)** を選択します。 注文の作成を続行するには、使用条件に同意する必要があります。
 
-15. **[注文]** を選択します。 注文が作成されるまで数分かかります。
+16. **[注文]** を選択します。 注文が作成されるまで数分かかります。
 
-    ![注文の確定](media/data-box-deploy-export-ordered/azure-data-box-export-10.png)
+    ![注文の確定](media/data-box-deploy-export-ordered/azure-data-box-select-export-order-commit-order.png)
 
 ## <a name="export-order-using-xml-file"></a>XML ファイルを使用した注文のエクスポート
 
 **[Use XML file]\(XML ファイルを使用\)** を選択した場合は、エクスポートする特定のコンテナーと BLOB (ページおよびブロック) を指定できます。 XML の書式設定については、[サンプル XML ファイル テーブル](#sample-xml-file)を参照してください。 次の手順は、データのエクスポートに XML ファイルを使用する方法を示しています。
 
 1. **[Export type]\(エクスポートの種類\)** には、 **[Use XML file]\(XML ファイルを使用\)** を選択します。 これは、エクスポートする特定の BLOB と Azure ファイルを指定する XML ファイルです。 XML ファイルを追加するには、 **[Click here to select an XML file]\(ここをクリックして XML ファイルを選択\)** を選択します。
-     ![[Click here to select an XML file]\(ここをクリックして XML ファイルを選択\) が強調表示された [Select export option]\(エクスポート オプションの選択\) のスクリーンショット。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-01.png)
+
+     ![エクスポート オプションの選択、XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-select-xml-option.png)
 
 2. **[+ Container]\(+ コンテナー\)** を選択して、コンテナーを作成します。
-    ![[コンテナー] セクションのスクリーンショット。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
+
+    ![エクスポート オプションの選択、コンテナー](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-containers-option.png)
 
 3. Azure portal の右側から表示される **[New Container]\(新しいコンテナー\)** タブで、コンテナーの名前を追加します。 名前は小文字にする必要があり、数字とダッシュ '-' を含めることができます。 次に、ドロップダウン リスト ボックスから **[Public access level]\(パブリック アクセス レベル\)** を選択します。 他のユーザーがデータにアクセスできないようにするため、 **[Private (non anonymous access)]\(プライベート (非匿名アクセス))\** を選択することをお勧めします。 コンテナーのアクセス レベルの詳細については、[コンテナーのアクセス許可](../storage/blobs/anonymous-read-access-configure.md#set-the-public-access-level-for-a-container)に関する記事を参照してください。
 
-   ![[プライベート (匿名アクセスなし)] オプションが選択されていることを示す [新しいコンテナー] タブのスクリーンショット。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
+   ![エクスポート オプションの選択、新しいコンテナー設定](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-container-settings.png)
 
 4. **［作成］** を選択します
 
-   ![[作成] オプションが強調表示された [新しいコンテナー] タブのスクリーンショット。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-07.png)
+   ![エクスポート オプションの選択、新しいコンテナーの作成。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-create-container.png)
 
    コンテナーが正常に作成されると、次のメッセージが表示されます。
 
-   !["ストレージ コンテナーが正常に作成されました" というメッセージのスクリーンショット。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-09.png)
+   ![コンテナーは正常に作成されました](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-container-success.png)
 
 5. 作成したコンテナーを選択し、ダブルクリックします。
 
-   ![myprivatetestcontainer コンテナーが強調表示された [コンテナー] セクションのスクリーンショット。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-08.png)
+   ![コンテナーの詳細を表示する](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-view-container-details.png)
 
-6. コンテナーをダブルクリックすると、コンテナーのプロパティ ビューが表示されます。 ここで、エクスポートする BLOB や Azure ファイルの一覧が含まれる XML ファイルを添付 (または参照) します。 **[アップロード]** を選択します。
+6. コンテナーをダブルクリックすると、コンテナーのプロパティ ビューが表示されます。 ここで、エクスポートする BLOB および、または Azure Files の一覧が含まれる XML ファイルを添付 (あるいは参照) します。 **[アップロード]** を選択します。
 
-   ![[アップロード] オプションが強調表示された [BLOB のアップロード] ダイアログ ボックスのスクリーンショット。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-10c.png)
+   ![コンテナーに BLOB をアップロードする](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-blob-to-container.png)
 
-7. これで、XML ファイルがコンテナーに追加されました。 この XML で指定した BLOB と Azure ファイルのみがエクスポートされます。
+7. これで、XML ファイルがコンテナーに追加されました。 この XML で指定した BLOB と Azure Files のみがエクスポートされます。
 
-   ![[注文] ウィザードのスクリーンショット。[次へ:セキュリティ] オプションが強調表示されています。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-12.png)
+   ![コンテナーに追加された XML ファイル](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-added-to-container.png)
 
 ## <a name="track-the-order"></a>注文を追跡する
 
@@ -194,11 +197,11 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
 
 デバイスの準備が完了すると、選択したストレージ アカウントからデータのコピーが開始されます。 ポータルには、 **[Data copy in progress]\(データのコピーが進行中\)** 状態の注文が表示されます。
 
-![処理済みの Data Box のエクスポート注文](media/data-box-deploy-export-ordered/azure-data-box-export-15b.png)
+![Data Box エクスポート注文、データ コピーが進行中](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-copy-in-progress.png)
 
 Data Box によってソース ストレージ アカウントからデータがコピーされます。 データのコピーが完了すると Data Box がロックされ、ポータルに **[Copy Completed]\(コピー完了\)** 状態の注文が表示されます。
 
-![Data Box のデータのコピーのエクスポート完了](media/data-box-deploy-export-ordered/azure-data-box-export-15c.png)
+![Data Box エクスポート注文、データ コピー完了](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-copy-complete.png)
 
 デバイスが使用できない場合は、通知されます。 デバイスが使用可能な場合は、Microsoft が配送用のデバイスを特定し、配送の準備をします。 デバイスの準備中に、次のアクションが実行されます。
 
@@ -206,13 +209,13 @@ Data Box によってソース ストレージ アカウントからデータが
 * 各共有で、ユーザー名やパスワードなどのアクセス資格情報が生成されます。
 * デバイスはロックされ、デバイスのロック解除パスワードを使用してのみアクセスできます。 パスワードを取得するには、Azure portal アカウントにログインし、 **[デバイスの詳細]** を選択する必要があります。
 
-次に、Microsoft は、デバイスを準備して地域の運送業者を通じて発送します。 デバイスが出荷されると、お客様に追跡番号が送信されます。 ポータルには、 **出荷済み** 状態の注文が表示されます。
+次に、Microsoft は、デバイスを準備して地域の運送業者を通じて発送します。 デバイスが出荷されると、お客様に追跡番号が送信されます。 ポータルには、**出荷済み** 状態の注文が表示されます。
 
-![出荷済みの Data Box のエクスポート注文](media/data-box-deploy-export-ordered/azure-data-box-export-16.png)
+![出荷済みの Data Box のエクスポート注文](media/data-box-deploy-export-ordered/azure-data-box-export-order-dispatched.png)
 
 自己管理型の発送を選択した場合、データセンターからデバイスを受け取る準備が整うと、次の手順が記載されたメール通知が送信されます。 自己管理型の発送の詳細については、[自己管理型の発送](data-box-portal-customer-managed-shipping.md)に関するページを参照してください。
 
-![引き取り準備が完了した自己管理型の発送](media/data-box-deploy-export-ordered/azure-data-box-export-17.png)
+![引き取り準備が完了した自己管理型の発送](media/data-box-deploy-export-ordered/azure-data-box-export-order-ready-for-pickup.png)
 
 ## <a name="cancel-the-order"></a>注文をキャンセルする
 
@@ -224,7 +227,7 @@ Data Box によってソース ストレージ アカウントからデータが
 
 ## <a name="sample-xml-file"></a>サンプル XML ファイル
 
-次の XML は、 **[Use XML file]\(XML ファイルを使用\)** オプションを選択したときにエクスポート注文で使用される BLOB 名、BLOB プレフィックス、および XML 形式の Azure ファイルの例を示しています。
+次の XML は、 **[Use XML file]\(XML ファイルを使用\)** オプションを選択したときにエクスポート注文で使用される BLOB 名、BLOB プレフィックス、XML 形式の Azure Files の例を示しています。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

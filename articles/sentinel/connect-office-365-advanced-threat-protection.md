@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: yelevin
-ms.openlocfilehash: 5ac72c9861e06773ffab87dcbf4e730562b798fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d5140bcd85606213f00185d4ba1f50dbe70dba63
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91340277"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655496"
 ---
 # <a name="connect-alerts-from-microsoft-defender-for-office-365"></a>Microsoft Defender for Office 365 からアラートに接続する 
 
@@ -31,7 +31,7 @@ ms.locfileid: "91340277"
 >
 > - Microsoft Defender for Office 365 アラートのインジェストは、現在パブリック プレビュー段階です。 この機能は、サービス レベル アグリーメントなしで提供されており、運用環境のワークロード用には推奨されていません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
  
-[Microsoft Defender for Office 365](https://docs.microsoft.com/office365/servicedescriptions/office-365-advanced-threat-protection-service-description) は、電子メール メッセージ、悪意のある URL リンク、コラボレーション ツール内の不明なマルウェアによってもたらされるゼロデイその他の高度な脅威から組織を保護します。 Microsoft Defender for Office 365 アラートを Azure Sentinel に取り込むことにより、電子メール、ファイル共有、URL ベースの脅威に関する情報をセキュリティ操作で利用できるようになります。 これにより、組織全体のセキュリティ イベントをより包括的に分析し、効果的かつ迅速に対応するためのプレイブックを構築できます。
+[Microsoft Defender for Office 365](/office365/servicedescriptions/office-365-advanced-threat-protection-service-description) は、電子メール メッセージ、悪意のある URL リンク、コラボレーション ツール内の不明なマルウェアによってもたらされるゼロデイその他の高度な脅威から組織を保護します。 Microsoft Defender for Office 365 アラートを Azure Sentinel に取り込むことにより、電子メール、ファイル共有、URL ベースの脅威に関する情報をセキュリティ操作で利用できるようになります。 これにより、組織全体のセキュリティ イベントをより包括的に分析し、効果的かつ迅速に対応するためのプレイブックを構築できます。
 
 コネクタによって、次のアラートがインポートされます。
 
@@ -47,7 +47,7 @@ ms.locfileid: "91340277"
 
 - ユーザーの電子メールの送信が制限された 
 
-これらのアラートは、**Office セキュリティ/コンプライアンス センター**で Office ユーザーに表示されます。
+これらのアラートは、**Office セキュリティ/コンプライアンス センター** で Office ユーザーに表示されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -55,7 +55,7 @@ ms.locfileid: "91340277"
 
 - Azure Sentinel ワークスペースのテナントのグローバル管理者またはセキュリティ管理者である必要があります。
 
-- [Office 365 ATP プラン 2](https://docs.microsoft.com/microsoft-365/security/office-365-security/office-365-atp#office-365-atp-plan-1-and-plan-2) の有効なライセンスが必要です (Office 365 E5、Office 365 A5、Microsoft 365 E5 のライセンスに含まれており、別途購入できます)。 
+- [Office 365 ATP プラン 2](/microsoft-365/security/office-365-security/office-365-atp#office-365-atp-plan-1-and-plan-2) の有効なライセンスが必要です (Office 365 E5、Office 365 A5、Microsoft 365 E5 のライセンスに含まれており、別途購入できます)。 
 
 ## <a name="connect-to-microsoft-defender-for-office-365"></a>Microsoft Defender for Office 365 に接続する
 
@@ -77,4 +77,4 @@ Microsoft Defender for Office 365 がデプロイされていて、ポリシー�
 
 このドキュメントでは、Microsoft Defender for Office 365 を Azure Sentinel に接続する方法を学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
+- [Azure Sentinel を使用した脅威の検出](./tutorial-detect-threats-built-in.md)の概要。

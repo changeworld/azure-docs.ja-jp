@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 180490dc79554efa072311e9a2b7f5df348b432b
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0812716ab9d952969ccfc14fc0a1e833fae1c9e1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014241"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653795"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
@@ -242,7 +242,7 @@ Enterprise プランでは、テレメトリを送信した Web サーバー ノ
 
 ### <a name="how-much-does-it-cost"></a>コストはどれくらいですか。
 
-* Application Insights リソースで **[使用量と推定コスト] ページ**を開きます。 最近の利用状況のグラフが表示されます。 必要に応じて、データ量の上限を設定できます。
+* Application Insights リソースで **[使用量と推定コスト] ページ** を開きます。 最近の利用状況のグラフが表示されます。 必要に応じて、データ量の上限を設定できます。
 * [Azure の [課金] ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview)を開き、リソース全体での請求額を確認します。
 
 ### <a name="what-does-application-insights-modify-in-my-project"></a><a name="q14"></a>Application Insights によってどのような変更がプロジェクトに加えられますか?
@@ -339,7 +339,7 @@ Web SDK を含むすべての SDK には、"信頼できるトランスポート
 
 コードでそのようなデータを送信する場合は可能性があります。 また、スタック トレース内の変数に個人データが含まれている場合にも、送信される可能性があります。 その個人データの処理が適切に行われるように、開発チームでリスク評価を実施する必要があります。 [こちら](app/data-retention-privacy.md)から、データ リテンション期間とプライバシーについての詳細を確認してください。
 
-geo ロケーション属性の検索後、クライアント Web アドレスの**すべて**のオクテットは常に 0 に設定されます。
+geo ロケーション属性の検索後、クライアント Web アドレスの **すべて** のオクテットは常に 0 に設定されます。
 
 ### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>Web ページのソースに自分のインストルメンテーション キーが表示されます。 
 
@@ -399,7 +399,7 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 
 ### <a name="how-do-i-move-an-application-insights-resource-to-a-new-region"></a>Application Insights リソースを新しいリージョンに移動するにはどうすればよいですか?
 
-既存の Application Insights リソースをあるリージョンから別のリージョンに移動することは、**現在サポートされていません**。 収集した履歴データを新しいリージョンに**移行することはできません**。 唯一の部分的な回避策は次のとおりです。
+既存の Application Insights リソースをあるリージョンから別のリージョンに移動することは、**現在サポートされていません**。 収集した履歴データを新しいリージョンに **移行することはできません**。 唯一の部分的な回避策は次のとおりです。
 
 1. 新しいリージョンに新しい Application Insights リソース ([クラシック](app/create-new-resource.md)または[ワークスペースベース](/azure/azure-monitor/app/create-workspace-resource)) を作成します。
 2. 元のリソースに固有のすべての独自のカスタマイズを新しいリソースに再作成します。
@@ -690,7 +690,7 @@ ContainerInventory テーブルには、停止中と実行中両方のコンテ�
 
 ### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Helm を使用して kube システム名前空間内のコンテナーのログ収集を有効にするにはどうすればよいですか
 
-Kube システム名前空間内のコンテナーからのログ収集は、既定では無効になっています。 omsagent で環境変数を設定することにより、ログ収集を有効にすることができます。 詳しくは、[コンテナーの Azure Monitor](https://github.com/helm/charts/tree/master/incubator/azuremonitor-containers)に関する GitHub のページをご覧ください。 
+Kube システム名前空間内のコンテナーからのログ収集は、既定では無効になっています。 omsagent で環境変数を設定することにより、ログ収集を有効にすることができます。 詳しくは、[コンテナーの Azure Monitor](https://aka.ms/azuremonitor-containers-helm-chart)に関する GitHub のページをご覧ください。 
 
 ### <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>omsagent を最新リリースのバージョンに更新するにはどうすればよいですか
 
@@ -808,7 +808,7 @@ Azure VM の概要ページには、ゲスト VM でのアクティビティの�
 要求/応答ベースのプロトコル、つまり接続上で単一の要求を送信して単一の応答を受信するプロトコルでは、この概算がうまく機能します。 HTTP(S) (パイプライン処理を伴わないもの) はそれに該当しますが、他のプロトコルでは十分に機能しません。
 
 ### <a name="are-there-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Log Analytics の無料プランを利用している場合、機能の制限はありますか?
-*無料*の価格レベルを使った Log Analytics ワークスペースで Azure Monitor を構成した場合、Azure Monitor for VMs Map 機能では、ワークスペースに接続できるマシンが 5 つに制限されます。 無料のワークスペースに VM が 5 つ接続されている場合、いずれかの VM を切断した後に新しい VM を接続すると、新しい VM は監視されず、マップ ページにも反映されません。  
+*無料* の価格レベルを使った Log Analytics ワークスペースで Azure Monitor を構成した場合、Azure Monitor for VMs Map 機能では、ワークスペースに接続できるマシンが 5 つに制限されます。 無料のワークスペースに VM が 5 つ接続されている場合、いずれかの VM を切断した後に新しい VM を接続すると、新しい VM は監視されず、マップ ページにも反映されません。  
 
 この条件下では、VM を開いて左側のウィンドウから **[Insights]\(インサイト\)** を選択すると、機能が既に VM にインストール済みであっても、 **[今すぐ試す]** オプションが表示されます。  ただし、その VM が Azure Monitor for VMs にオンボードされていない場合には、オプションは表示されません。 
 

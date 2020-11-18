@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: 9b48bc62fc0548c0c4f431e71598fdfa6850de13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b647e15d3fc99a7f15fbc24e2b6050fdfdc6e93
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598327"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654713"
 ---
 # <a name="understand-password-based-single-sign-on"></a>パスワードベースのシングル サインオンについて理解する
 
@@ -29,11 +29,11 @@ ms.locfileid: "91598327"
 
 - サインインするためにユーザー名とパスワード以外のフィールドも必要とするアプリケーションのために、複数のサインイン フィールドを必要とするアプリケーションをサポートする
 
-- ユーザーが資格情報を入力するときに[マイ アプリ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に表示されるユーザー名とパスワードのフィールドのラベルをカスタマイズする
+- ユーザーが資格情報を入力するときに[マイ アプリ](../user-help/my-apps-portal-end-user-access.md)に表示されるユーザー名とパスワードのフィールドのラベルをカスタマイズする
 
 - ユーザーが既存のアプリケーション アカウントに対する自分のユーザー名とパスワードを手動で入力して指定できるようにする
 
-- ビジネス グループのメンバーが、[[アプリケーションのセルフサービス アクセス]](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) 機能を使用して、ユーザーに割り当てられているユーザー名とパスワードを指定できるようにする
+- ビジネス グループのメンバーが、[[アプリケーションのセルフサービス アクセス]](./manage-self-service-access.md) 機能を使用して、ユーザーに割り当てられているユーザー名とパスワードを指定できるようにする
 
 -   個人またはグループがアプリケーションにサインインする際に使用するユーザー名とパスワードを、管理者が資格情報の更新機能を使用して指定できるようにする 
 
@@ -42,9 +42,9 @@ ms.locfileid: "91598327"
 Azure AD を ID プロバイダー (IdP) として使用し、シングル サインオン (SSO) を構成することは、使用するアプリケーションに応じて単純な場合もあれば複雑な場合もあります。 一部のアプリケーションは、わずかのアクションで構成できます。 詳細な構成が必要なものもあります。 短時間で理解するには、アプリケーション管理に関する[クイックスタート シリーズ](view-applications-portal.md)を参照してください。 追加しようとしているアプリケーションが単純なものであれば、おそらくこの記事を読む必要はありません。 追加しようとしているアプリケーションでカスタム構成が必要であり、パスワードベースの SSO を使用する必要がある場合は、この記事をお読みください。
 
 > [!IMPORTANT] 
-> 一部のシナリオでは、**エンタープライズ アプリケーション**内のアプリケーションのナビゲーションに**シングル サインオン** オプションが表示されません。 
+> 一部のシナリオでは、**エンタープライズ アプリケーション** 内のアプリケーションのナビゲーションに **シングル サインオン** オプションが表示されません。 
 >
-> **アプリの登録**を使用してアプリケーションが登録された場合、既定では、OIDC OAuth を使用するようにシングル サインオン機能が構成されます。 この場合、 **[シングル サインオン]** オプションは、 **[エンタープライズ アプリケーション]** の下のナビゲーションに表示されません。 **アプリの登録**を使用してカスタム アプリを追加する場合は、マニフェスト ファイルでオプションを構成します。 マニフェスト ファイルの詳細については、「[Azure Active Directory のアプリ マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)」を参照してください。 SSO 標準の詳細については、「[Microsoft ID プラットフォームを使用した認証と承認](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)」を参照してください。 
+> **アプリの登録** を使用してアプリケーションが登録された場合、既定では、OIDC OAuth を使用するようにシングル サインオン機能が構成されます。 この場合、 **[シングル サインオン]** オプションは、 **[エンタープライズ アプリケーション]** の下のナビゲーションに表示されません。 **アプリの登録** を使用してカスタム アプリを追加する場合は、マニフェスト ファイルでオプションを構成します。 マニフェスト ファイルの詳細については、「[Azure Active Directory のアプリ マニフェスト](../develop/reference-app-manifest.md)」を参照してください。 SSO 標準の詳細については、「[Microsoft ID プラットフォームを使用した認証と承認](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-microsoft-identity-platform)」を参照してください。 
 >
 > ナビゲーションに **[シングル サインオン]** が表示されないその他のシナリオには、アプリケーションが別のテナントでホストされている場合や、アカウントに必要なアクセス許可 (グローバル管理者、クラウド アプリケーション管理者、アプリケーション管理者、またはサービス プリンシパルの所有者) がない場合などがあります。 アクセス許可によっては、 **[シングル サインオン]** を開くことができるが、保存できないシナリオが発生する場合もあります。 Azure AD の管理者ロールの詳細については、(https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) を参照してください。
 
@@ -60,7 +60,7 @@ Azure AD を ID プロバイダー (IdP) として使用し、シングル サ�
 
 URL を入力したら、 **[保存]** を選択します。 Azure AD は、サインイン ページのユーザー名とパスワードの入力フィールドの HTML を解析します。 試行に成功すれば完了です。
  
-次の手順は、[アプリケーションへのユーザーまたはグループの割り当て](methods-for-assigning-users-and-groups.md)です。 ユーザーとグループを割り当てたら、アプリケーションにサインインするユーザーのために使用する資格情報を指定できます。 **[ユーザーとグループ]** を選択し、目的のユーザーまたはグループの行のチェック ボックスをオンにして、 **[資格情報の更新]** を選択します。 最後に、そのユーザーまたはグループのために使用するユーザー名とパスワードを入力します。 そうしない場合、ユーザーは起動時に自分で資格情報を入力するように求められます。
+次の手順は、[アプリケーションへのユーザーまたはグループの割り当て](./assign-user-or-group-access-portal.md)です。 ユーザーとグループを割り当てたら、アプリケーションにサインインするユーザーのために使用する資格情報を指定できます。 **[ユーザーとグループ]** を選択し、目的のユーザーまたはグループの行のチェック ボックスをオンにして、 **[資格情報の更新]** を選択します。 最後に、そのユーザーまたはグループのために使用するユーザー名とパスワードを入力します。 そうしない場合、ユーザーは起動時に自分で資格情報を入力するように求められます。
  
 
 ## <a name="manual-configuration"></a>手動構成
@@ -88,5 +88,5 @@ Azure AD による解析の試行が失敗した場合、サインオンを手�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [アプリケーションにユーザーまたはグループを割り当てる](methods-for-assigning-users-and-groups.md)
+- [アプリケーションにユーザーまたはグループを割り当てる](./assign-user-or-group-access-portal.md)
 - [自動ユーザー アカウント プロビジョニングを構成する](../app-provisioning/configure-automatic-user-provisioning-portal.md)

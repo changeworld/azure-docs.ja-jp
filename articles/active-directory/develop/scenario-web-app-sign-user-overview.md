@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7cadb4784cbf90d283f64e12edc155d4430fab06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38ed7fb2930463e6657422e851a73f2b3b011f35
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257072"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443587"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>シナリオ:ユーザーをサインインさせる Web アプリ
 
@@ -28,29 +28,25 @@ Microsoft ID プラットフォームを使用してユーザーをサインイ�
 
 ユーザーをサインインさせる最初のポータブル (ASP.NET Core) Web アプリを作成する場合は、このクイックスタートに従います。
 
-> [!div class="nextstepaction"]
-> [クイック スタート: ユーザーをサインインさせる ASP.NET Core Web アプリ](quickstart-v2-aspnet-core-webapp.md)
+[クイック スタート: ユーザーをサインインさせる ASP.NET Core Web アプリ](quickstart-v2-aspnet-core-webapp.md)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 既存の ASP.NET Web アプリケーションにサインインを追加する方法を理解したい場合は、次のクイックスタートをお試しください。
 
-> [!div class="nextstepaction"]
-> [クイック スタート: ユーザーをサインインさせる ASP.NET Web アプリ](quickstart-v2-aspnet-webapp.md)
+[クイック スタート: ユーザーをサインインさせる ASP.NET Web アプリ](quickstart-v2-aspnet-webapp.md)
 
 # <a name="java"></a>[Java](#tab/java)
 
 Java 開発者の方は、次のクイックスタートをお試しください。
 
-> [!div class="nextstepaction"]
-> [クイック スタート:Java Web アプリに "Microsoft でサインイン" を追加する](quickstart-v2-java-webapp.md)
+[クイック スタート:Java Web アプリに "Microsoft でサインイン" を追加する](quickstart-v2-java-webapp.md)
 
 # <a name="python"></a>[Python](#tab/python)
 
 Python を使用して開発する場合は、次のクイックスタートをお試しください。
 
-> [!div class="nextstepaction"]
-> [クイック スタート: Python Web アプリに Microsoft でサインインを追加する](quickstart-v2-python-webapp.md)
+[クイック スタート: Python Web アプリに Microsoft でサインインを追加する](quickstart-v2-python-webapp.md)
 
 ---
 
@@ -65,7 +61,7 @@ Web アプリでは、Web ブラウザーでユーザーを認証します。 �
 第 2 フェーズとして、アプリケーションで、サインインしたユーザーの代わりに Web API を呼び出すことができます。 この第 2 フェーズは別のシナリオであり、[Web API を呼び出す Web アプリ](scenario-web-app-call-api-overview.md)に関するページでご確認いただけます。
 
 > [!NOTE]
-> Web アプリにサインインを追加することは、Web アプリの保護と、**ミドルウェア**のライブラリが行うユーザー トークンの検証に関連します。 .NET の場合、このシナリオでは、保護された API を呼び出すためのトークンを取得することに関連する Microsoft 認証ライブラリ (MSAL) はまだ必要ありません。 認証ライブラリは、Web アプリで Web API を呼び出す必要がある場合に、フォローアップ シナリオで導入されます。
+> Web アプリにサインインを追加することは、Web アプリの保護と、**ミドルウェア** のライブラリが行うユーザー トークンの検証に関連します。 .NET の場合、このシナリオでは、保護された API を呼び出すためのトークンを取得することに関連する Microsoft 認証ライブラリ (MSAL) はまだ必要ありません。 認証ライブラリは、Web アプリで Web API を呼び出す必要がある場合に、フォローアップ シナリオで導入されます。
 
 ## <a name="specifics"></a>詳細
 
@@ -81,22 +77,18 @@ Web アプリでは、Web ブラウザーでユーザーを認証します。 �
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-> [!div class="nextstepaction"]
-> [アプリの登録](./scenario-web-app-sign-user-app-registration.md?tabs=aspnetcore)
+このシナリオの次の記事「[アプリの登録](./scenario-web-app-sign-user-app-registration.md?tabs=aspnetcore)」に進みます。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-> [!div class="nextstepaction"]
-> [アプリの登録](./scenario-web-app-sign-user-app-registration.md?tabs=aspnet)
+このシナリオの次の記事「[アプリの登録](./scenario-web-app-sign-user-app-registration.md?tabs=aspnet)」に進みます。
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [アプリの登録](./scenario-web-app-sign-user-app-registration.md?tabs=java)
+このシナリオの次の記事「[アプリの登録](./scenario-web-app-sign-user-app-registration.md?tabs=java)」に進みます。
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [アプリの登録](./scenario-web-app-sign-user-app-registration.md?tabs=python)
+このシナリオの次の記事「[アプリの登録](./scenario-web-app-sign-user-app-registration.md?tabs=python)」に進みます。
 
 ---

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: dbfe18c84217c741f8dd64481901747d068fcdd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc3352dd57a76cbb0b38455adfa11987ec93781a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604140"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654135"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Azure AD アプリケーション プロキシを使用してリモート ユーザー向けにオンプレミス アプリを発行する
 
@@ -57,7 +57,7 @@ Azure Active Directory (Azure AD) には、クラウドとオンプレミスの�
 
 ## <a name="the-future-of-remote-access"></a>リモート アクセスの未来
 
-今日のデジタル ワークプレースでは、ユーザーはさまざまな場所で複数のデバイスやアプリケーションを使用します。 唯一変わらないのは、ユーザー ID です。 それが、今日のネットワーク保護の最初の手順として、[Azure AD の ID 管理](https://docs.microsoft.com/azure/security/security-identity-management-overview)機能をセキュリティ コントロール プレーンとして使う理由です。 ID をコントロール プレーンとして使用するモデルは、通常は次のコンポーネントで構成されます。
+今日のデジタル ワークプレースでは、ユーザーはさまざまな場所で複数のデバイスやアプリケーションを使用します。 唯一変わらないのは、ユーザー ID です。 それが、今日のネットワーク保護の最初の手順として、[Azure AD の ID 管理](../../security/fundamentals/identity-management-overview.md)機能をセキュリティ コントロール プレーンとして使う理由です。 ID をコントロール プレーンとして使用するモデルは、通常は次のコンポーネントで構成されます。
 
 * ユーザーおよびユーザーに関連する情報を追跡する ID プロバイダー。
 * 企業リソースへのアクセス権を持つデバイスの一覧を保持するデバイス ディレクトリ。 このディレクトリには、対応するデバイス情報 (デバイスの種類、整合性など) が含まれています。
@@ -76,7 +76,7 @@ Azure AD はアプリケーション プロキシを使用して、オンプレ�
 
 この機能のコンポーネントには、クラウドで実行するアプリケーション プロキシ サービス、オンプレミスのサーバーで実行する軽量エージェントのアプリケーション プロキシ コネクタ、および ID プロバイダーの Azure AD が含まれます。 これら 3 つのコンポーネントがすべて連携し、オンプレミス Web アプリケーションにアクセスするためのシングル サインオン エクスペリエンスがユーザーに提供されます。
 
-外部ユーザーは、サインイン後、使い慣れた URL を使用するか、自分のデスクトップまたは iOS/MAC デバイスの[マイ アプリ](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)から、オンプレミス Web アプリケーションにアクセスできます。 たとえば、アプリケーション プロキシでは、リモート デスクトップ、SharePoint サイト、Tableau、Qlik、Outlook on the web、および基幹業務 (LOB) アプリケーションへのリモート アクセスとシングル サインオンを提供できます。
+外部ユーザーは、サインイン後、使い慣れた URL を使用するか、自分のデスクトップまたは iOS/MAC デバイスの[マイ アプリ](../user-help/my-apps-portal-end-user-access.md)から、オンプレミス Web アプリケーションにアクセスできます。 たとえば、アプリケーション プロキシでは、リモート デスクトップ、SharePoint サイト、Tableau、Qlik、Outlook on the web、および基幹業務 (LOB) アプリケーションへのリモート アクセスとシングル サインオンを提供できます。
 
 ![Azure AD アプリケーション プロキシのアーキテクチャ](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 
@@ -87,7 +87,7 @@ Azure AD はアプリケーション プロキシを使用して、オンプレ�
 * Web アプリケーション
 * さまざまなデバイスの豊富なアプリケーションに公開する Web API
 * リモート デスクトップ ゲートウェイの背後でホストされているアプリケーション
-* [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview) と統合されるリッチ クライアント アプリ
+* [Microsoft Authentication Library (MSAL)](../develop/v2-overview.md) と統合されるリッチ クライアント アプリ
 
 アプリケーション プロキシは、次のネイティブ認証プロトコルを使用するアプリで動作します。
 
@@ -95,7 +95,7 @@ Azure AD はアプリケーション プロキシを使用して、オンプレ�
 
 サード パーティ統合または特定の構成のシナリオでは、アプリケーション プロキシは次の認証プロトコルもサポートしています。
 
-* [**ヘッダーベースの認証**](application-proxy-configure-single-sign-on-with-ping-access.md)。 このサインオン方法は、PingAccess というサード パーティの認証サービスを使用し、アプリケーションがヘッダーを使って認証する場合に使用されます。 このシナリオでは、認証は PingAccess によって処理されます。
+* [**ヘッダーベースの認証**](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers)。 このサインオン方法は、PingAccess というサード パーティの認証サービスを使用し、アプリケーションがヘッダーを使って認証する場合に使用されます。 このシナリオでは、認証は PingAccess によって処理されます。
 * [**フォームまたはパスワード ベースの認証**](application-proxy-configure-single-sign-on-password-vaulting.md)。 この認証方法では、ユーザーは初回アクセス時にユーザー名とパスワードを使用してアプリケーションにサインオンします。 最初のサインイン後は、Azure AD がユーザー名とパスワードをアプリケーションに提供します。 このシナリオでは、認証は Azure AD によって処理されます。
 * [**SAML 認証**](application-proxy-configure-single-sign-on-on-premises-apps.md)。 SAML ベースのシングル サインオンは、SAML 2.0 または WS-Federation のいずれかのプロトコルを使用するアプリケーションでサポートされます。 SAML によるシングル サインオンでは、ユーザーの Azure AD アカウントを使用して、Azure AD がアプリケーションに対して認証を行います。
 
@@ -109,11 +109,11 @@ Azure AD はアプリケーション プロキシを使用して、オンプレ�
 * **条件付きアクセス**。 ネットワークへの接続が確立される前に、多数のポリシー制御を適用できます。 条件付きアクセスを使用すると、自分のバックエンド アプリケーションにアクセスできるトラフィックの制限を定義できます。 場所、認証の強度、およびユーザーのリスク プロファイルに基づいてサインインを制限するポリシーを作成します。 条件付きアクセスの進化に伴い、Microsoft Cloud App Security (MCAS) との統合など、追加のセキュリティを提供するさまざまなコントロールが追加されています。 MCAS の統合により、条件付きアクセス ポリシーに基づいてセッションをリアルタイムで監視および制御する条件付きアクセスを活用して、[リアルタイム監視](application-proxy-integrate-with-microsoft-cloud-application-security.md)用にオンプレミス アプリケーションを構成することができます。
 * **トラフィックの終了**。 バックエンド アプリケーションへのトラフィックはすべて、クラウド上のアプリケーション プロキシ サービスで終了し、セッションはバックエンド サーバーで再確立されます。 この接続戦略では、HTTP トラフィックを送信するためにバックエンド サーバーが公開されることはありません。 ファイアウォールが攻撃を受けないため、標的型 DoS (サービス拒否) 攻撃に対して優れた保護を実現します。
 * **すべてのアクセスが外向き**。 アプリケーション プロキシ コネクタは、ポート 80 と 443 を経由する、クラウド上のアプリケーション プロキシ サービスへのアウトバウンド接続のみを使用します。 インバウンド接続がないので、DMZ で着信接続またはコンポーネント用にファイアウォール ポートを開く必要はありません。 すべての接続は外向きであり、セキュリティで保護されたチャネル経由で行われます。
-* **セキュリティ分析と機械学習 (ML) ベースのインテリジェンス**。 アプリケーション プロキシは、Azure Active Directory の一部であるため、[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview) ([Premium P2 ライセンス](https://azure.microsoft.com/pricing/details/active-directory/)が必要です) を利用できます。 Azure AD Identity Protection は、Microsoft の [Digital Crimes Unit](https://news.microsoft.com/stories/cybercrime/index.html) および [Microsoft Security Response Center](https://www.microsoft.com/msrc) からのデータ フィードと機械学習セキュリティ インテリジェンスを組み合わせて、侵害されたアカウントをプロアクティブに特定します。 Identity Protection は、危険度の高いサインインからリアルタイムで保護します。感染したデバイスからのアクセス、匿名ネットワークを通じたアクセス、通常とは異なる場所からのアクセスなどの要因も考慮して、セッションのリスク プロファイルを拡大します。 このリスク プロファイルが、リアルタイムの保護に使用されます。 これらのレポートとイベントの多くは、お客様の SIEM システムとの統合を可能にする API を通じて既に使用可能です。
+* **セキュリティ分析と機械学習 (ML) ベースのインテリジェンス**。 アプリケーション プロキシは、Azure Active Directory の一部であるため、[Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) ([Premium P2 ライセンス](https://azure.microsoft.com/pricing/details/active-directory/)が必要です) を利用できます。 Azure AD Identity Protection は、Microsoft の [Digital Crimes Unit](https://news.microsoft.com/stories/cybercrime/index.html) および [Microsoft Security Response Center](https://www.microsoft.com/msrc) からのデータ フィードと機械学習セキュリティ インテリジェンスを組み合わせて、侵害されたアカウントをプロアクティブに特定します。 Identity Protection は、危険度の高いサインインからリアルタイムで保護します。感染したデバイスからのアクセス、匿名ネットワークを通じたアクセス、通常とは異なる場所からのアクセスなどの要因も考慮して、セッションのリスク プロファイルを拡大します。 このリスク プロファイルが、リアルタイムの保護に使用されます。 これらのレポートとイベントの多くは、お客様の SIEM システムとの統合を可能にする API を通じて既に使用可能です。
 
 * **サービスとしてのリモート アクセス**。 リモート アクセスを可能にするために、オンプレミス サーバーの保守やパッチの適用について心配する必要がありません。 アプリケーション プロキシは Microsoft によるインターネット規模のサービスであるため、常に最新のセキュリティ パッチとアップグレードを取得できます。 パッチの適用されていないソフトウェアは、依然として多数の攻撃の的となっています。 国土安全保障省によれば、[標的型攻撃の 85% は可避することができます](https://www.us-cert.gov/ncas/alerts/TA15-119A)。 このサービス モデルを使用すれば、エッジ サーバーの管理という重荷から解放され、必要に迫られてパッチを適用する必要もなくなります。
 
-* **Intune の統合**。 Intune では、企業のトラフィックは個人のトラフィックとは別にルーティングされます。 アプリケーション プロキシにより、企業のトラフィックが確実に認証されるようになります。 [アプリケーション プロキシと Intune Managed Browser](https://docs.microsoft.com/intune/app-configuration-managed-browser#how-to-configure-application-proxy-settings-for-protected-browsers) の機能を併用し、リモート ユーザーが iOS および Android デバイスから内部 Web サイトに安全にアクセスできるようにすることも可能です。
+* **Intune の統合**。 Intune では、企業のトラフィックは個人のトラフィックとは別にルーティングされます。 アプリケーション プロキシにより、企業のトラフィックが確実に認証されるようになります。 [アプリケーション プロキシと Intune Managed Browser](/intune/app-configuration-managed-browser#how-to-configure-application-proxy-settings-for-protected-browsers) の機能を併用し、リモート ユーザーが iOS および Android デバイスから内部 Web サイトに安全にアクセスできるようにすることも可能です。
 
 ### <a name="roadmap-to-the-cloud"></a>クラウドへのロードマップ
 
@@ -137,10 +137,10 @@ Azure AD へのアプリの移行について詳しくは、ホワイト ペー�
 
 |**コンポーネント**|**説明**|
 |:-|:-|
-|エンドポイント|エンドポイントは、URL または [エンド ユーザー ポータル](end-user-experiences.md)です。 ユーザーは、外部 URL にアクセスすることによって、ネットワークの外部にいてもアプリケーションに到達できます。 ネットワーク内のユーザーは、URL またはエンド ユーザー ポータルからアプリケーションにアクセスできます。 ユーザーは、これらのエンドポイントの 1 つに移動すると、Azure AD で認証され、コネクタを介してオンプレミスのアプリケーションにルーティングされます。|
+|エンドポイント|エンドポイントは、URL または[エンド ユーザー ポータル](end-user-experiences.md)です。 ユーザーは、外部 URL にアクセスすることによって、ネットワークの外部にいてもアプリケーションに到達できます。 ネットワーク内のユーザーは、URL またはエンド ユーザー ポータルからアプリケーションにアクセスできます。 ユーザーは、これらのエンドポイントの 1 つに移動すると、Azure AD で認証され、コネクタを介してオンプレミスのアプリケーションにルーティングされます。|
 |Azure AD|Azure AD は、クラウドに格納されているテナント ディレクトリを使用して認証を実行します。|
 |アプリケーション プロキシ サービス|このアプリケーション プロキシ サービスは、Azure AD の一部としてクラウドで実行されます。 これは、ユーザーからアプリケーション プロキシ コネクタにシングル サインオン トークンを渡します。 アプリケーション プロキシは、要求のすべてのアクセス可能なヘッダーを、そのプロトコルに従って設定し、クライアント IP アドレスに転送します。 プロキシへの着信要求に既にそのヘッダーがある場合、ヘッダーの値であるコンマ区切りリストの末尾にクライアント IP アドレスが追加されます。|
-|アプリケーション プロキシ コネクタ|コネクタは、ネットワーク内の Windows Server 上で実行する軽量エージェントです。 コネクタは、クラウド内のアプリケーション プロキシ サービスとオンプレミス アプリケーション間の通信を管理します。 コネクタは発信接続のみ使用するため、受信ポートを開いたり、DMZ に配置したりする必要はありません。 コネクタはステートレスで、必要に応じて情報がクラウドから取得されます。 負荷分散や認証の方法など、コネクタについて詳しくは、「 [Azure AD アプリケーション プロキシ コネクタを理解する](application-proxy-connectors.md)」をご覧ください。|
+|アプリケーション プロキシ コネクタ|コネクタは、ネットワーク内の Windows Server 上で実行する軽量エージェントです。 コネクタは、クラウド内のアプリケーション プロキシ サービスとオンプレミス アプリケーション間の通信を管理します。 コネクタは発信接続のみ使用するため、受信ポートを開いたり、DMZ に配置したりする必要はありません。 コネクタはステートレスで、必要に応じて情報がクラウドから取得されます。 負荷分散や認証の方法など、コネクタについて詳しくは、「[Azure AD アプリケーション プロキシ コネクタを理解する](application-proxy-connectors.md)」をご覧ください。|
 |Active Directory (AD)|Active Directory はオンプレミスで実行され、ドメイン アカウントの認証を行います。 シングル サインオンが構成されている場合、コネクタは必要な追加認証を実行するために AD と通信します。|
 |オンプレミスのアプリケーション|最終的にユーザーは、オンプレミス アプリケーションにアクセスできます。|
 
@@ -165,7 +165,7 @@ Azure AD アプリケーション プロキシは、クラウドベースのア�
 
 また、コネクタはサーバーをポーリングして、新しいバージョンのコネクタがあるかどうかを調べます。 コネクタは手動更新できますが、Application Proxy Connector Updater サービスを実行している限りは自動更新されます。 複数のコネクタを持つテナントの場合、環境でのダウンタイムを避けるために、自動更新では各グループで一度に 1 つのコネクタが対象となります。
 
-**注**:アプリケーション プロキシの[バージョン履歴ページ](application-proxy-release-version-history.md)を監視して RSS フィードに登録することで、更新がリリースされたときに通知を受け取ることができます。
+**注**:アプリケーション プロキシの [バージョン履歴ページ](application-proxy-release-version-history.md)を監視して RSS フィードに登録することで、更新がリリースされたときに通知を受け取ることができます。
 
 各アプリケーション プロキシ コネクタは、[コネクタ グループ](application-proxy-connector-groups.md)に割り当てられます。 同じコネクタ グループに属するコネクタは、高可用性と負荷分散のために単一のユニットとして動作します。 Azure portal で新しいグループを作成し、コネクタをそれらに割り当てたら、特定のアプリケーションに対応する特定のコネクタを割り当てることができます。 高可用性のためには、各コネクタ グループに少なくとも 2 つのコネクタを割り当てることをお勧めします。
 
@@ -181,7 +181,7 @@ Azure AD アプリケーション プロキシは、クラウドベースのア�
 
 ここまでは、主にクラウドとオンプレミスのすべてのアプリケーションへのシングル サインオンを有効にしながら、アプリケーション プロキシを使用してオンプレミス アプリケーションを外部に発行する方法について説明してきました。 ただし、アプリケーション プロキシには他にも重要なユース ケースがあります。 具体的な内容を次に示します。
 
-* **REST API の安全な発行**。 ビジネス ロジックや API をオンプレミスで実行しているか、クラウド上の仮想マシンでホストしている場合、アプリケーション プロキシによって API アクセス用のパブリック エンドポイントが提供されます。 API エンドポイント アクセスでは、着信ポートを必要とせず、認証と認可を制御できます。 Azure AD Premium の機能を通じて追加のセキュリティが提供されます (多要素認証や、Intune を使用したデスクトップ、iOS、MAC、および Android デバイス向けのデバイス ベースの条件付きアクセスなど)。 詳しくは、「[ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法](application-proxy-configure-native-client-application.md)」および「[Azure Active Directory と API Management で OAuth 2.0 を使用して API を保護する](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad)」をご覧ください。
+* **REST API の安全な発行**。 ビジネス ロジックや API をオンプレミスで実行しているか、クラウド上の仮想マシンでホストしている場合、アプリケーション プロキシによって API アクセス用のパブリック エンドポイントが提供されます。 API エンドポイント アクセスでは、着信ポートを必要とせず、認証と認可を制御できます。 Azure AD Premium の機能を通じて追加のセキュリティが提供されます (多要素認証や、Intune を使用したデスクトップ、iOS、MAC、および Android デバイス向けのデバイス ベースの条件付きアクセスなど)。 詳しくは、「[ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法](application-proxy-configure-native-client-application.md)」および「[Azure Active Directory と API Management で OAuth 2.0 を使用して API を保護する](../../api-management/api-management-howto-protect-backend-with-aad.md)」をご覧ください。
 * **リモート デスクトップ サービス** **(RDS)** . RDS の標準的なデプロイでは、インバウンド接続を開く必要があります。 ただし、[アプリケーション プロキシを使用した RDS デプロイ](application-proxy-integrate-with-remote-desktop-services.md)には、コネクタ サービスを実行しているサーバーからの永続的なアウトバウンド接続があります。 これにより、リモート デスクトップ サービスを通じてオンプレミスのアプリケーションを発行し、エンド ユーザーにより多くのアプリケーションを提供することができます。 RDS に対する 2 段階認証と条件付きアクセス制御の限定的なセットを使用して、デプロイの攻撃対象領域を減らすこともできます。
 * **Websocket を使用して接続するアプリケーションの発行**。 [Qlik Sense](application-proxy-qlik.md) のサポートはパブリック プレビュー段階にあり、今後他のアプリに展開されます。
 * **ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする**。 Azure AD アプリケーション プロキシは、Web アプリを発行するために使用できますが、Azure AD Authentication Library (ADAL) で構成された[ネイティブ クライアント アプリケーション](application-proxy-configure-native-client-application.md)の発行にも使うことができます。 ネイティブ クライアント アプリケーションはデバイスにインストールされる点が Web アプリとは異なり、Web アプリはブラウザーからアクセスされます。

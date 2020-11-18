@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: 29f02f80aa5bff1304dc593d68954e15fe6e66bb
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 469610d7195835a4b68e4d887c5be57a8926ba37
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346436"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489507"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する
 
@@ -35,7 +35,7 @@ Power BI への出力の[マネージド ID 認証](../active-directory/managed-
 
 2. 出力を構成する前に、この記事の「[Stream Analytics ジョブに Power BI ワークスペースへのアクセス権を付与する](#give-the-stream-analytics-job-access-to-your-power-bi-workspace)」の手順に従って、Power BI ワークスペースへの Stream Analytics ジョブのアクセス権を付与します。
 
-3. Stream Analytic のジョブの **[出力]** セクションに移動し、 **[+ 追加** ] を選択し、 **[Power BI]** を選択します。 次に、 **[承認]** ボタンを選択し、Power BI アカウントでログインします。
+3. Stream Analytic のジョブの **[出力]** セクションに移動し、 **[+ 追加**] を選択し、 **[Power BI]** を選択します。 次に、 **[承認]** ボタンを選択し、Power BI アカウントでログインします。
 
    ![Power BI アカウントを承認する](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-authorize-powerbi.png)
 
@@ -209,6 +209,10 @@ POST https://api.powerbi.com/v1.0/myorg/groups/{groupId}/users
     "principalType": "App"
 }
 ```
+
+## <a name="remove-managed-identity"></a>マネージド ID の削除
+
+Stream Analytics ジョブに対して作成されたマネージド ID は、ジョブが削除されたときにのみ削除されます。 ジョブを削除せずにマネージド ID を削除することはできません。 マネージド ID を使用する必要がなくなった場合は、出力の認証方法を変更できます。 マネージド ID は、ジョブが削除されるまで存在し続け、マネージド ID の認証を再度使用する場合に使用されます。
 
 ## <a name="limitations"></a>制限事項
 この機能の制限は次のとおりです。

@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 11/10/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ea1df2937c6ae771407e4adf839c9ff0fa9f7f5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: a5106e1089e2353d2db884977eb51a4fd2717b99
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218958"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506177"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 
@@ -26,7 +26,7 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 * 要求本文のバイト配列としてビデオ ファイルを送信する方法です。
 * [アセット ID](../latest/assets-concept.md) (有料アカウントでのみサポート) を指定して、既存の Azure Media Services アセットを使用します。
 
-ビデオがアップロードされると、Video Indexer は (必要に応じて) ビデオをエンコードします (後述)。 Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer 使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、[ご使用の Azure サブスクリプションと Azure Media Services アカウントに接続される](connect-to-azure.md) Video Indexer アカウントを作成します。 Media アカウント関連の料金と同様に、インデックス作成時間 (分単位) の料金がかかります。 
+ビデオがアップロードされると、Video Indexer は (必要に応じて) ビデオをエンコードします (後述)。 Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer 使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、[ご使用の Azure サブスクリプションと Azure Media Services アカウントに接続される](connect-to-azure.md) Video Indexer アカウントを作成します。 インデックス作成にかかった時間 (分) に対して支払います。詳細については、「[Media Services の価格](https://azure.microsoft.com/pricing/details/media-services/)」を参照してください。
 
 この記事では、次のオプションを使用してビデオをアップロードし、インデックスを作成する方法について説明します。
 
@@ -79,7 +79,7 @@ Video Indexer で使用できるファイル形式の一覧については、「
 1. ビデオがアップロードされると、Video Indexer がビデオのインデックス作成と分析を開始します。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="アップロード":::
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="アップロードの進行状況":::
 1. Video Indexer で分析が完了すると、ビデオへのリンクとビデオの内容の簡単な説明が記載されたメールが届きます。 たとえば、人物、トピックス、OCR などが表示されます。
 
 ## <a name="upload-and-index-with-api"></a><a name="apis"></a>API を使用したアップロードとインデックス作成
@@ -118,7 +118,7 @@ Video Indexer で使用できるファイル形式の一覧については、「
         
     - 例: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
-##### <a name="notes"></a>Notes
+##### <a name="other-considerations"></a>その他の考慮事項
 
 - Video Indexer では、元の URL で指定された既存のすべてのパラメーターが返されます。
 - 指定される URL は、エンコードする必要があります。
@@ -140,7 +140,7 @@ Video Indexer で使用できるファイル形式の一覧については、「
 
 #### <a name="priority"></a>priority
 
-ビデオには、優先度に従って、Video Indexer によってインデックスが付けられます。 インデックスの優先度を指定するには、 **priority** パラメーターを使用します。 有効な値は、 **Low** 、 **Normal** (既定)、 **High** です。
+ビデオには、優先度に従って、Video Indexer によってインデックスが付けられます。 インデックスの優先度を指定するには、**priority** パラメーターを使用します。 有効な値は、**Low**、**Normal** (既定)、**High** です。
 
 **Priority** パラメーターは、有料アカウントだけでサポートされています。
 
@@ -148,7 +148,7 @@ Video Indexer で使用できるファイル形式の一覧については、「
 
 ビデオがアップロードされると、Video Indexer は必要に応じてビデオをエンコードします。 その後、インデックス作成とビデオの分析を行います。 Video Indexer が分析を完了すると、ビデオ ID を含んだ通知が送信されます。  
 
-[Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API または [Re-Index Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API を使用するときの省略可能なパラメーターの 1 つに、`streamingPreset` があります。 `streamingPreset` を `Default`、`SingleBitrate`、または `AdaptiveBitrate` に設定すると、エンコード プロセスがトリガーされます。 インデックス作成ジョブとエンコード ジョブが完了すると、ビデオが公開され、ビデオをストリームできるようになります。 ビデオのストリーム元のストリーミング エンドポイントは、 **実行中** 状態である必要があります。
+[Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API または [Re-Index Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API を使用するときの省略可能なパラメーターの 1 つに、`streamingPreset` があります。 `streamingPreset` を `Default`、`SingleBitrate`、または `AdaptiveBitrate` に設定すると、エンコード プロセスがトリガーされます。 インデックス作成ジョブとエンコード ジョブが完了すると、ビデオが公開され、ビデオをストリームできるようになります。 ビデオのストリーム元のストリーミング エンドポイントは、**実行中** 状態である必要があります。
 
 SingleBitrate の場合、出力ごとに Standard Encoder コストが適用されます。 ビデオの高さが 720 以上の場合、Video Indexer によって 1280 x 720 としてエンコードされます。 それ以外の場合は、640 x 468 と指定されます。
 既定の設定は、[コンテンツに対応したエンコード](../latest/content-aware-encoding.md)です。

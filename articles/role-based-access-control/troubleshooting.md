@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/18/2020
+ms.date: 11/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: 325931ea024221bc89df3b2e25f3e7844130f4dc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 53628f5aa0bc5ab5dedde5deb9950c7b13fb4bf6
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741068"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490748"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Azure RBAC のトラブルシューティング
 
@@ -68,6 +68,7 @@ $ras.Count
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
     ```
+- サブスクリプションの最後の所有者ロール割り当てを削除しようとすると、"最後の RBAC 管理者割り当てを削除できません" エラーが表示されることがあります。 サブスクリプションの最後の所有者ロールの割り当ては、サブスクリプションの孤立化を回避するため、削除できません。 サブスクリプションを取り消す場合、「[Azure サブスクリプションの取り消し](../cost-management-billing/manage/cancel-azure-subscription.md)」を参照してください。
 
 ## <a name="problems-with-custom-roles"></a>カスタム ロールに関する問題
 
@@ -107,7 +108,7 @@ Azure ロールがリソース (または子リソース) に直接割り当て�
 
 ## <a name="role-assignments-with-identity-not-found"></a>ID が見つからないロールの割り当て
 
-Azure portal のロールの割り当ての一覧で、セキュリティ プリンシパル (ユーザー、グループ、サービス プリンシパル、またはマネージド ID) が、 **不明** な種類の **見つからない ID** として表示されている場合があります。
+Azure portal のロールの割り当ての一覧で、セキュリティ プリンシパル (ユーザー、グループ、サービス プリンシパル、またはマネージド ID) が、**不明** な種類の **見つからない ID** として表示されている場合があります。
 
 ![Azure のロールの割り当ての一覧に ID が見つからない](./media/troubleshooting/unknown-security-principal.png)
 
@@ -222,14 +223,14 @@ Web アプリと同様、仮想マシン ブレード上の機能にも、仮想
 
 仮想マシンは、ドメイン名、仮想ネットワーク、ストレージ アカウント、アラート ルールなどのリソースと関連しています。
 
-以下の項目には、 **仮想マシン** に対する **書き込み** アクセス権が必要です。
+以下の項目には、**仮想マシン** に対する **書き込み** アクセス権が必要です。
 
 * エンドポイント  
 * IP アドレス  
 * ディスク  
 * 拡張機能  
 
-以下には、 **仮想マシン** と、その仮想マシンが含まれる **リソース グループ** (とドメイン名) の両方に対する **書き込み** アクセス権が必要です。  
+以下には、**仮想マシン** と、その仮想マシンが含まれる **リソース グループ** (とドメイン名) の両方に対する **書き込み** アクセス権が必要です。  
 
 * 可用性セット  
 * 負荷分散セット  

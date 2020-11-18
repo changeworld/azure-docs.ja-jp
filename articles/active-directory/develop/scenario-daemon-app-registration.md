@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 508101ad615dd96559b1c68a61be7c08772545db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b77cc93385efb0bbb8a9b87d29de9bad5cd4ceb
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80885482"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443332"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>Web API を呼び出すデーモン アプリ - アプリの登録
 
@@ -50,5 +50,4 @@ ms.locfileid: "80885482"
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [デーモン アプリ - アプリのコード構成](./scenario-daemon-app-configuration.md)
+このシナリオの次の記事である[アプリ コードの構成](./scenario-daemon-app-configuration.md)に関する記事に進みます。

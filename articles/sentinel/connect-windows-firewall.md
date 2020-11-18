@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2020
 ms.author: yelevin
-ms.openlocfilehash: 5518da7d22d14de105c07e88b14e94d4b184269b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf7e389fc4a8a8dfa88691dc034611cae3471731
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883816"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655342"
 ---
 # <a name="connect-windows-defender-firewall-with-advanced-security-to-azure-sentinel"></a>セキュリティが強化された Windows Defender ファイアウォールを Azure Sentinel に接続する
 
-[セキュリティが強化された Windows Defender ファイアウォール](https://docs.microsoft.com/windows/security/threat-protection/windows-firewall/windows-firewall-with-advanced-security) コネクタを使用すると、Azure Sentinel でワークスペース内の任意の Windows コンピューターから、セキュリティが強化された Windows Defender ファイアウォールのログを簡単に取り込むことができます。 この接続により、ブック内の Windows ファイアウォール イベントを表示して分析したり、これをカスタム アラートの作成に使用したり、セキュリティ調査に役立てたりしながら、組織のネットワークについての分析情報を手に入れ、セキュリティ運用機能を向上させることができます。 
+[セキュリティが強化された Windows Defender ファイアウォール](/windows/security/threat-protection/windows-firewall/windows-firewall-with-advanced-security) コネクタを使用すると、Azure Sentinel でワークスペース内の任意の Windows コンピューターから、セキュリティが強化された Windows Defender ファイアウォールのログを簡単に取り込むことができます。 この接続により、ブック内の Windows ファイアウォール イベントを表示して分析したり、これをカスタム アラートの作成に使用したり、セキュリティ調査に役立てたりしながら、組織のネットワークについての分析情報を手に入れ、セキュリティ運用機能を向上させることができます。 
 
 ソリューションは、Log Analytics エージェントがインストールされている Windows マシンから Windows ファイアウォール イベントを収集します。 
 
@@ -37,7 +37,7 @@ ms.locfileid: "90883816"
 
 - 監視するマシンが接続されているワークスペースの読み取りと書き込み権限を持っている必要があります。
 
-- **Azure Sentinel** ロールに加えて、そのワークスペースの SecurityInsights ソリューションで **Log Analytics 共同作成者**ロールに割り当てられている必要があります。 [詳細情報](../role-based-access-control/built-in-roles.md#log-analytics-contributor)
+- **Azure Sentinel** ロールに加えて、そのワークスペースの SecurityInsights ソリューションで **Log Analytics 共同作成者** ロールに割り当てられている必要があります。 [詳細情報](../role-based-access-control/built-in-roles.md#log-analytics-contributor)
 
 ## <a name="enable-the-connector"></a>コネクタを有効にする 
 
@@ -81,10 +81,9 @@ ms.locfileid: "90883816"
 
 ## <a name="validate-connectivity"></a>接続の検証
  
-Windows ファイアウォールのログはローカル ログ ファイルが容量に達した場合にのみ Azure Sentinel に送信されるため、ログを既定のサイズである 4096 KB のままにすると、多くの場合、コレクションの待機時間が長くなります。 ログ ファイルのサイズを小さくすることで、待機時間を短縮できます。 [Windows ファイアウォール ログを構成する](https://docs.microsoft.com/windows/security/threat-protection/windows-firewall/configure-the-windows-firewall-log)手順を参照してください。 ログ サイズに最小値 (1 KB) を定義することで収集の待機時間を実質的に解消することができますが、これはローカル コンピューターのパフォーマンスに悪影響を及ぼす可能性があることに注意してください。 
+Windows ファイアウォールのログはローカル ログ ファイルが容量に達した場合にのみ Azure Sentinel に送信されるため、ログを既定のサイズである 4096 KB のままにすると、多くの場合、コレクションの待機時間が長くなります。 ログ ファイルのサイズを小さくすることで、待機時間を短縮できます。 [Windows ファイアウォール ログを構成する](/windows/security/threat-protection/windows-firewall/configure-the-windows-firewall-log)手順を参照してください。 ログ サイズに最小値 (1 KB) を定義することで収集の待機時間を実質的に解消することができますが、これはローカル コンピューターのパフォーマンスに悪影響を及ぼす可能性があることに注意してください。 
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Windows ファイアウォールを Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-

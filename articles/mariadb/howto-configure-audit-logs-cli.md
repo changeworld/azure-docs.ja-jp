@@ -7,27 +7,28 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/24/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0aba88c10304cf7d87277ad851ae38eae8eb5bf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e532902e1e6da90d4c81320b34a0b2b5dd1133f
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87497122"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518092"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-audit-logs-in-the-azure-cli"></a>Azure CLI で Azure Database for Maria DB の監査ログを構成しアクセスする
 
 [Azure Database for MariaDB の監査ログ](concepts-audit-logs.md)を Azure CLI から構成することができます。
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
-このハウツー ガイドの手順を実行するには、以下が必要です。
+このガイドを完了するには、以下が必要です。
 
-- [Azure Database for MariaDB サーバー](quickstart-create-mariadb-server-database-using-azure-portal.md)
+- [Azure Database for MariaDB サーバー](quickstart-create-mariadb-server-database-using-azure-portal.md)が必要です。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-> [!IMPORTANT]
-> このガイドで説明する方法では、Azure CLI バージョン 2.0 以降を使う必要があります。 バージョンを確認するには、Azure CLI コマンド プロンプトで「`az --version`」と入力します。 インストールまたはアップグレードする必要には、「[Azure CLI のインストール]( /cli/azure/install-azure-cli)」をご覧ください。
+- この記事では、Azure CLI のバージョン 2.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="configure-audit-logging"></a>監査ログを構成する
 
@@ -41,7 +42,7 @@ ms.locfileid: "87497122"
     az mariadb server configuration set --name audit_log_enabled --resource-group myresourcegroup --server mydemoserver --value ON
     ```
 
-1. **audit_log_events** パラメーターを更新して、ログに記録する[イベントの種類](concepts-audit-logs.md#configure-audit-logging)を選択します。
+1. **audit_log_events** パラメーターを更新して、ログに記録する [イベントの種類](concepts-audit-logs.md#configure-audit-logging)を選択します。
     ```azurecli-interactive
     az mariadb server configuration set --name audit_log_events --resource-group myresourcegroup --server mydemoserver --value "ADMIN,CONNECTION"
     ```

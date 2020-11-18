@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: b-juche
-ms.openlocfilehash: d0a16dc639fb3206b480c1091a66686955cbb11d
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 9740506da2c03996db756175551867ed43575a7c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932347"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488181"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
@@ -119,14 +119,14 @@ Azure NetApp Files では、以下の追加の考慮事項が適用されます�
 
 Active Directory 接続を作成する場合は、次のような AADDS の詳細を確認してください。
 
-* AADDS メニューで **プライマリ DNS**、**セカンダリ DNS**、**AD DNS ドメイン名**の情報を確認できます。  
+* AADDS メニューで **プライマリ DNS**、**セカンダリ DNS**、**AD DNS ドメイン名** の情報を確認できます。  
 DNS サーバーでは、Active Directory 接続を構成する際に 2 つの IP アドレスが使用されます。 
-* **組織単位パス**は `OU=AADDC Computers` です。  
+* **組織単位パス** は `OU=AADDC Computers` です。  
 この設定は、 **[NetApp アカウント]** の下の **[Active Directory 接続]** で構成されます。
 
   ![組織単位パス](../media/azure-netapp-files/azure-netapp-files-org-unit-path.png)
 
-* **[ユーザー名]** 資格情報には、Azure AD グループの **Azure AD DC 管理者**のメンバーである任意のユーザーを設定できます。
+* **[ユーザー名]** 資格情報には、Azure AD グループの **Azure AD DC 管理者** のメンバーである任意のユーザーを設定できます。
 
 
 ## <a name="create-an-active-directory-connection"></a>Active Directory 接続を作成する
@@ -146,7 +146,7 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
     * **AD DNS ドメイン名**  
         これは、参加させる Active Directory Domain Services のドメイン名です。
     * **AD サイト名**  
-        これは、ドメイン コントローラーの検出が制限されるサイト名です。
+        これは、ドメイン コントローラーの検出が制限されるサイト名です。 これは Active Directory のサイトとサービスのサイト名に一致している必要があります。
     * **SMB サーバー (コンピューター アカウント) プレフィックス**  
         これは、Azure NetApp Files で新しいアカウントの作成に使用される Active Directory のコンピューター アカウントの命名規則プレフィックスです。
 
@@ -169,7 +169,7 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
 
         ![Active Directory の AES の暗号化](../media/azure-netapp-files/active-directory-aes-encryption.png)
 
-        **AES の暗号化**機能は、現在プレビューの段階です。 この機能を初めて使用する場合は、使用する前に機能を登録してください。 
+        **AES の暗号化** 機能は、現在プレビューの段階です。 この機能を初めて使用する場合は、使用する前に機能を登録してください。 
 
         ```azurepowershell-interactive
         Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAesEncryption
@@ -191,7 +191,7 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
 
         ![Active Directory の LDAP 署名](../media/azure-netapp-files/active-directory-ldap-signing.png) 
 
-        **LDAP 署名**機能は、現在プレビューの段階です。 この機能を初めて使用する場合は、使用する前に機能を登録してください。 
+        **LDAP 署名** 機能は、現在プレビューの段階です。 この機能を初めて使用する場合は、使用する前に機能を登録してください。 
 
         ```azurepowershell-interactive
         Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFLdapSigning
@@ -213,7 +213,7 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
 
         ![Active Directory バックアップ ポリシーユーザー](../media/azure-netapp-files/active-directory-backup-policy-users.png)
 
-        **バックアップ ポリシー ユーザー**機能は、現在プレビューの段階です。 この機能を初めて使用する場合は、使用する前に機能を登録してください。 
+        **バックアップ ポリシー ユーザー** 機能は、現在プレビューの段階です。 この機能を初めて使用する場合は、使用する前に機能を登録してください。 
 
         ```azurepowershell-interactive
         Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
@@ -230,7 +230,7 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
         
         また、[Azure CLI のコマンド](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
 
-    * **ユーザー名**や**パスワード**などの資格情報
+    * **ユーザー名** や **パスワード** などの資格情報
 
         ![Active Directory の資格情報](../media/azure-netapp-files/active-directory-credentials.png)
 
@@ -310,7 +310,7 @@ SMB ボリュームへのアクセスはアクセス許可によって管理さ�
 
 ### <a name="share-permissions"></a>共有アクセス許可  
 
-既定では、新しいボリュームには **Everyone でフル コントロール**の共有アクセス許可が与えられます。 ドメイン管理者グループのメンバーは、Azure NetApp Files ボリュームに使用されているコンピューター アカウントで Computer Management を利用し、共有アクセス許可を変更できます。
+既定では、新しいボリュームには **Everyone でフル コントロール** の共有アクセス許可が与えられます。 ドメイン管理者グループのメンバーは、Azure NetApp Files ボリュームに使用されているコンピューター アカウントで Computer Management を利用し、共有アクセス許可を変更できます。
 
 ![SMB マウント パス](../media/azure-netapp-files/smb-mount-path.png) 
 ![共有アクセス許可を設定する](../media/azure-netapp-files/set-share-permissions.png) 

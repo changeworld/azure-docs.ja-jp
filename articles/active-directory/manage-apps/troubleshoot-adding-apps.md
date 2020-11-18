@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2018
 ms.author: kenwith
-ms.openlocfilehash: e9e97aec66d99d149320938540c48b9ad68eaf0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 714cbb06506cc3e0dffe74007712d9cbad072284
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90068032"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655070"
 ---
 # <a name="troubleshoot-common-problem-adding-or-removing-an-application-to-azure-active-directory"></a>Azure Active Directory へのアプリケーションの追加または削除に関する一般的な問題のトラブルシューティング
 この記事は、Azure Active Directory にアプリを追加または削除するときに直面する一般的な問題について理解するのに役立ちます。
@@ -31,9 +31,9 @@ ms.locfileid: "90068032"
 エラーが発生すると、**[追加]** ボタンをクリックしたときに **[エラー]** 状態に **[通知]** と表示されます。 エラーに関する詳細を確認したり、サポート エンジニアと共有したりする場合は、「[ポータルの通知の詳細を確認する方法](#how-to-see-the-details-of-a-portal-notification)」セクションの手順に従って、エラーに関する詳細を確認できます。
 
 ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>アプリケーションを追加した後に設定する方法がわからない
-アプリケーションの学習について支援が必要な場合は、[SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)に関する記事から始めることをお勧めします。
+アプリケーションの学習について支援が必要な場合は、[SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)に関する記事から始めることをお勧めします。
 
-さらに、[Azure AD アプリケーションのドキュメント ライブラリ](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index)では、Azure AD を使用したシングル サインオンおよびそのしくみの詳細について確認できます。
+さらに、[Azure AD アプリケーションのドキュメント ライブラリ](./what-is-application-management.md)では、Azure AD を使用したシングル サインオンおよびそのしくみの詳細について確認できます。
 
 ## <a name="i-want-to-delete-an-application-but-the-delete-button-is-disabled"></a>アプリケーションを削除しようとしたら、削除ボタンが無効になっていた
 
@@ -43,20 +43,20 @@ ms.locfileid: "90068032"
 
 - Microsoft のアプリケーションの場合は、ロールに関係なく UI から削除することはできません。
 
-- マネージ ID に対応する ServicePrincipal の場合。 マネージド ID のサービス プリンシパルは、エンタープライズ アプリ ブレードでは削除できません。 それを管理するには、Azure リソースにアクセスする必要があります。 [マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) の詳細を確認してください
+- マネージ ID に対応する ServicePrincipal の場合。 マネージド ID のサービス プリンシパルは、エンタープライズ アプリ ブレードでは削除できません。 それを管理するには、Azure リソースにアクセスする必要があります。 [マネージド ID](../managed-identities-azure-resources/overview.md) の詳細を確認してください
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>ポータルの通知の詳細を確認する方法
 ポータルの通知の詳細を確認するには、次の手順に従います。
 1.  Azure portal の右上隅にある **[通知]** アイコン (ベル) を選択します
-2.  **エラー**状態のいずれかの通知 (横に赤い (!) が表示されているもの) を選択します。
+2.  **エラー** 状態のいずれかの通知 (横に赤い (!) が表示されているもの) を選択します。
     >[!NOTE]
     >**[成功]** または **[進行中]** 状態の通知をクリックすることはできません。
 4.  **[通知の詳細]** の情報を使用して、問題に関する詳細を把握します。
 5.  サポートが必要な場合は、この情報をサポート エンジニアや製品グループと共有して支援を受けることもできます。
-6.  すべての通知の詳細をコピーしてサポートまたは製品グループのエンジニアと共有するには、 **[エラーのコピー]** テキスト ボックスの右にある**コピー アイコン**をクリックします。
+6.  すべての通知の詳細をコピーしてサポートまたは製品グループのエンジニアと共有するには、 **[エラーのコピー]** テキスト ボックスの右にある **コピー アイコン** をクリックします。
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>通知の詳細をサポート エンジニアに送信して支援を受ける方法
-支援が必要な場合は、**以下に記載された詳細をすべて**サポート エンジニアと共有することが重要です。これにより、すばやい解決が実現します。 **スクリーンショットを取る**か、または **[エラーのコピー]** テキスト ボックスの右にある **[エラーのコピー] アイコン**を選択します。
+支援が必要な場合は、**以下に記載された詳細をすべて** サポート エンジニアと共有することが重要です。これにより、すばやい解決が実現します。 **スクリーンショットを取る** か、または **[エラーのコピー]** テキスト ボックスの右にある **[エラーのコピー] アイコン** を選択します。
 
 ## <a name="notification-details-explained"></a>通知の詳細についての説明
 通知の詳細については、次の説明を参照してください。
@@ -90,6 +90,6 @@ ms.locfileid: "90068032"
     -   例 – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 -   **詳細** – 操作の結果として発生した内容についての詳細な説明
     -   例 - **内部 URL `https://bing.com/` は既に使用中のため無効です**
--   **エラーのコピー** – **[エラーのコピー]** テキスト ボックスの右にある**コピー アイコン**を選択してすべての通知の詳細をコピーし、サポートまたは製品グループと共有します 
+-   **エラーのコピー** – **[エラーのコピー]** テキスト ボックスの右にある **コピー アイコン** を選択してすべての通知の詳細をコピーし、サポートまたは製品グループと共有します 
 -   エンジニア
     -   例 ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```

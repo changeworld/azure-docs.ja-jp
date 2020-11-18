@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: ba14e2c475611ed77661060d6e17ae0bcbf0a6ca
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f0c38e72231fb343cb9b27def520f73d923a70f6
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744212"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515712"
 ---
 # <a name="step-3-validate-connectivity"></a>手順 3:接続の検証
 
@@ -29,7 +29,7 @@ ms.locfileid: "92744212"
 
 - ログ フォワーダー マシンに対する昇格されたアクセス許可 (sudo) が必要です。
 
-- ログ フォワーダー マシンに **Python 2.7** がインストールされている必要があります。<br>
+- ログ フォワーダー マシンに **python 2.7** または **3** がインストールされている必要があります。<br>
 `python –version` コマンドを使用して確認してください。
 
 - 場合によっては、プロセスの間にワークスペース ID とワークスペースの主キーが必要になることがあります。 これらは、ワークスペース リソースの **[エージェント管理]** で確認できます。
@@ -47,7 +47,7 @@ ms.locfileid: "92744212"
     sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]` 
     ```
 
-   - **" *コンピューター* " フィールドのマッピング** に関する問題を修正するためのコマンドを実行するよう指示するメッセージが表示される場合があります。 詳細については、[検証スクリプトの説明](#mapping-command)を参照してください。
+   - **"*コンピューター*" フィールドのマッピング** に関する問題を修正するためのコマンドを実行するよう指示するメッセージが表示される場合があります。 詳細については、[検証スクリプトの説明](#mapping-command)を参照してください。
 
     - **Cisco ASA ファイアウォール ログの解析** に関する問題を修正するためのコマンドを実行するよう指示するメッセージが表示される場合があります。 詳細については、[検証スクリプトの説明](#parsing-command)を参照してください。
 
@@ -87,20 +87,20 @@ ms.locfileid: "92744212"
     grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/security_lib.rb
     ```
 
-    - <a name="parsing-command"></a>解析に問題がある場合は、 **次のコマンドを手動で実行** するよう指示するエラー メッセージが表示されます (プレースホルダーをワークスペース ID に置き換えます)。 このコマンドによって、正しい解析が確認され、エージェントが再起動されます。
+    - <a name="parsing-command"></a>解析に問題がある場合は、**次のコマンドを手動で実行** するよう指示するエラー メッセージが表示されます (プレースホルダーをワークスペース ID に置き換えます)。 このコマンドによって、正しい解析が確認され、エージェントが再起動されます。
     
         ```bash
         # Cisco ASA parsing fix
         sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" /opt/microsoft/omsagent/plugin/security_lib.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
         ```
 
-1. 次のコマンドを使用して、Syslog ソースの " *コンピューター* " フィールドが、Log Analytics エージェントで正しくマップされていることを確認します。 
+1. 次のコマンドを使用して、Syslog ソースの "*コンピューター*" フィールドが、Log Analytics エージェントで正しくマップされていることを確認します。 
 
     ```bash
     grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
     ```
 
-    - <a name="mapping-command"></a>マッピングに問題がある場合は、 **次のコマンドを手動で実行** するよう指示するエラー メッセージが表示されます (プレースホルダーをワークスペース ID に置き換えます)。 このコマンドによって、正しいマッピングが確認され、エージェントが再起動されます。
+    - <a name="mapping-command"></a>マッピングに問題がある場合は、**次のコマンドを手動で実行** するよう指示するエラー メッセージが表示されます (プレースホルダーをワークスペース ID に置き換えます)。 このコマンドによって、正しいマッピングが確認され、エージェントが再起動されます。
 
         ```bash
         # Computer field mapping fix
@@ -180,20 +180,20 @@ ms.locfileid: "92744212"
     grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/security_lib.rb
     ```
 
-    - <a name="parsing-command"></a>解析に問題がある場合は、 **次のコマンドを手動で実行** するよう指示するエラー メッセージが表示されます (プレースホルダーをワークスペース ID に置き換えます)。 このコマンドによって、正しい解析が確認され、エージェントが再起動されます。
+    - <a name="parsing-command"></a>解析に問題がある場合は、**次のコマンドを手動で実行** するよう指示するエラー メッセージが表示されます (プレースホルダーをワークスペース ID に置き換えます)。 このコマンドによって、正しい解析が確認され、エージェントが再起動されます。
     
         ```bash
         # Cisco ASA parsing fix
         sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" /opt/microsoft/omsagent/plugin/security_lib.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
         ```
 
-1. 次のコマンドを使用して、Syslog ソースの " *コンピューター* " フィールドが、Log Analytics エージェントで正しくマップされていることを確認します。 
+1. 次のコマンドを使用して、Syslog ソースの "*コンピューター*" フィールドが、Log Analytics エージェントで正しくマップされていることを確認します。 
 
     ```bash
     grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
     ```
 
-    - <a name="mapping-command"></a>マッピングに問題がある場合は、 **次のコマンドを手動で実行** するよう指示するエラー メッセージが表示されます (プレースホルダーをワークスペース ID に置き換えます)。 このコマンドによって、正しいマッピングが確認され、エージェントが再起動されます。
+    - <a name="mapping-command"></a>マッピングに問題がある場合は、**次のコマンドを手動で実行** するよう指示するエラー メッセージが表示されます (プレースホルダーをワークスペース ID に置き換えます)。 このコマンドによって、正しいマッピングが確認され、エージェントが再起動されます。
 
         ```bash
         # Computer field mapping fix

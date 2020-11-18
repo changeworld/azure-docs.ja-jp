@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: kenwith
-ms.openlocfilehash: 8544c35d77dfc32ece9b21a602f301ab15c22439
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 28b31d98f283dc957927ab2a35f0ab95bf066473
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288314"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654118"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>アプリケーションへのユーザー アクセスの削除方法
 
@@ -23,11 +23,11 @@ ms.locfileid: "93288314"
 
 ## <a name="i-want-to-remove-a-specific-users-or-groups-assignment-to-an-application"></a>アプリケーションへの特定のユーザーまたはグループの割り当てを削除する必要がある
 
-アプリケーションへのユーザーまたはグループの割り当てを削除するには、「[Azure Active Directory プレビューでエンタープライズ アプリケーションからユーザーまたはグループの割り当てを削除する](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal)」の記事に示されている手順に従います。
+アプリケーションへのユーザーまたはグループの割り当てを削除するには、「[Azure Active Directory プレビューでエンタープライズ アプリケーションからユーザーまたはグループの割り当てを削除する](./assign-user-or-group-access-portal.md)」の記事に示されている手順に従います。
 
 ## <a name="i-want-to-disable-all-access-to-an-application-for-every-user"></a>すべてのユーザーに対してアプリケーションへのアクセスをすべて無効にする必要がある
 
-アプリケーションへのすべてのユーザーのサインインを無効にするには、「[Azure Active Directory プレビューでエンタープライズ アプリケーションのユーザー サインインを無効にする](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal)」の記事に示されている手順に従います。
+アプリケーションへのすべてのユーザーのサインインを無効にするには、「[Azure Active Directory プレビューでエンタープライズ アプリケーションのユーザー サインインを無効にする](./disable-user-sign-in-portal.md)」の記事に示されている手順に従います。
 
 ## <a name="i-want-to-delete-an-application-entirely"></a>アプリケーションを完全に削除する必要がある
 
@@ -39,7 +39,7 @@ ms.locfileid: "93288314"
 
 **ディレクトリ全体で今後のユーザーの同意動作をすべて無効にする** には、次の手順に従います。
 
-1.  [**Azure Portal**](https://portal.azure.com/) を開き、 **グローバル管理者** としてサインインします。
+1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者** としてサインインします。
 
 2.  **[Azure Active Directory 拡張機能]** を開きます 
 
@@ -47,7 +47,7 @@ ms.locfileid: "93288314"
 
 5.  **[ユーザー設定]** をクリックします。
 
-6.  **[Users can allow apps to access company data on their behalf]** (ユーザーはアプリが代わりに企業データにアクセスすることを許可できる) トグルを **[いいえ]** に設定して、[保存] ボタンをクリックします。
+6.  **[Users can allow apps to access company data on their behalf]**(ユーザーはアプリが代わりに企業データにアクセスすることを許可できる) トグルを **[いいえ]** に設定して、[保存] ボタンをクリックします。
 
 
 ## <a name="next-steps"></a>次のステップ

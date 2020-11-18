@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: e8d1704b7f6048c14528b784f22d60b01592b54f
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: fd08e6cc953f9d8526174fc96dd4e4d1dc9063f5
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347609"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517973"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>共通イベント形式を使用して外部ソリューションを接続する
 
@@ -27,14 +27,14 @@ CEF メッセージを送信する外部ソリューションを接続すると�
 
 手順 1: [Syslog/CEF フォワーダーをデプロイして CEF に接続する](connect-cef-agent.md) 手順 2:[ソリューション固有の手順を実行する](connect-cef-solution-config.md) 手順 3:[接続を検証する](connect-cef-verify.md)
 
-この記事では、接続のしくみを説明し、前提条件を示します。また、Syslog に加えて共通イベント形式 (CEF) メッセージを送信するエージェントをセキュリティ ソリューションにデプロイする手順を示します。 
+この記事では、接続のしくみを説明し、前提条件を一覧表示します。また、Syslog に加えて共通イベント形式 (CEF) メッセージを送信するセキュリティ ソリューションのメカニズムをデプロイする手順を示します。 
 
 > [!NOTE] 
 > データは、Azure Sentinel を実行しているワークスペースの地域に保存されます。
 
 この接続を確立するには、アプライアンスと Azure Sentinel 間の通信をサポートするために、Syslog フォワーダー サーバーをデプロイする必要があります。  サーバーは、Linux 用の Log Analytics エージェントがインストールされた専用の Linux マシン (VM またはオンプレミス) で構成されます。 
 
-次の図は、Azure の Linux VM を使用した場合の設定を示しています。
+次の図は、Azure で Linux VM を使用した場合の設定を示しています。
 
  ![Azure での CEF](./media/connect-cef/cef-syslog-azure.png)
 
@@ -53,18 +53,18 @@ Syslog ソースと Syslog フォワーダーの間で TLS 通信を使用する
 ログ フォワーダーとして使用する Linux マシンで、次のいずれかのオペレーティング システムが実行されていることを確認します。
 
 - 64 ビット
-  - サブバージョンを含む CentOS 7 と 8 (6 は不可)
+  - マイナー バージョンを含む CentOS 7 と 8 (6 は不可)
   - Amazon Linux 2017.09
   - Oracle Linux 7
-  - サブバージョンを含む Red Hat Enterprise Linux (RHEL) Server 7 と 8 (6 は不可)
+  - マイナー バージョンを含む Red Hat Enterprise Linux (RHEL) Server 7 と 8 (6 は不可)
   - Debian GNU/Linux 8 および 9
   - Ubuntu Linux 14.04 LTS、16.04 LTS、および 18.04 LTS
   - SUSE Linux Enterprise Server 12、15
 
 - 32 ビット
-  - サブバージョンを含む CentOS 7 と 8 (6 は不可)
+  - マイナー バージョンを含む CentOS 7 と 8 (6 は不可)
   - Oracle Linux 7
-  - サブバージョンを含む Red Hat Enterprise Linux (RHEL) Server 7 と 8 (6 は不可)
+  - マイナー バージョンを含む Red Hat Enterprise Linux (RHEL) Server 7 と 8 (6 は不可)
   - Debian GNU/Linux 8 および 9
   - Ubuntu Linux 14.04 LTS および 16.04 LTS
  
@@ -82,7 +82,7 @@ Syslog ソースと Syslog フォワーダーの間で TLS 通信を使用する
   - マシンに対する管理者特権のアクセス許可 (sudo) が必要です。 
 
 - ソフトウェア要件
-  - マシンで Python 2.7 が実行されていることを確認します。
+  - マシンで python 2.7 または 3 が実行されていることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 

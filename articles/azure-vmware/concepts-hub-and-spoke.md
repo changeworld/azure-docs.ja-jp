@@ -3,12 +3,12 @@ title: 概念 - ハブ アンド スポークのアーキテクチャで Azure V
 description: Azure のハブ アンド スポーク アーキテクチャで Azure VMware Solution のデプロイを統合する方法について説明します。
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 93c11ad9253fe78e1935da7b40e7251788f1f037
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 0895e9c97f79e433b0383f0a99fbeeb124fd9064
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674717"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490816"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>ハブ アンド スポークのアーキテクチャで Azure VMware Solution を統合する
 
@@ -23,7 +23,7 @@ ms.locfileid: "92674717"
 
 ## <a name="architecture"></a>アーキテクチャ
 
-" *ハブ* " は、オンプレミスおよび Azure VMware Solution のプライベート クラウドへの接続の中心点として機能する Azure Virtual Network です。 " *スポーク* " は、仮想ネットワーク間通信を有効にするためにハブとピアリングされた仮想ネットワークです。
+"*ハブ*" は、オンプレミスおよび Azure VMware Solution のプライベート クラウドへの接続の中心点として機能する Azure Virtual Network です。 "*スポーク*" は、仮想ネットワーク間通信を有効にするためにハブとピアリングされた仮想ネットワークです。
 
 オンプレミスのデータセンター、Azure VMware Solution プライベート クラウド、およびハブの間のトラフィックは、Azure ExpressRoute 接続を経由します。 スポーク仮想ネットワークには、通常、IaaS ベースのワークロードが含まれていますが、Virtual Network に直接統合されている PaaS サービス ([App Service Environment](../app-service/environment/intro.md) など) や、[Azure Private Link](../private-link/index.yml) が有効になっているその他の PaaS サービスを含めることができます。
 
@@ -36,30 +36,29 @@ ms.locfileid: "92674717"
 
 このアーキテクチャには、次の主要なコンポーネントがあります。
 
--   **オンプレミス サイト:** ExpressRoute 接続を介して Azure に接続されている顧客のオンプレミスのデータセンター。
+- **オンプレミス サイト:** ExpressRoute 接続を介して Azure に接続されている顧客のオンプレミスのデータセンター。
 
--   **Azure VMware Solution のプライベート クラウド:** 1 つ以上の vSphere クラスターによって形成された Azure VMware Solution SDDC。それぞれに最大 16 個のノードがあります。
+- **Azure VMware Solution のプライベート クラウド:** 1 つ以上の vSphere クラスターによって形成された Azure VMware Solution SDDC。それぞれに最大 16 個のノードがあります。
 
--   **ExpressRoute ゲートウェイ:** Azure VMware Solution プライベート クラウド、ハブ仮想ネットワーク上の共有サービス、およびスポーク仮想ネットワークで実行されているワークロードの間の通信を有効にします。
+- **ExpressRoute ゲートウェイ:** Azure VMware Solution プライベート クラウド、ハブ仮想ネットワーク上の共有サービス、およびスポーク仮想ネットワークで実行されているワークロードの間の通信を有効にします。
 
--   **ExpressRoute Global Reach:** オンプレミスと Azure VMware ソリューションのプライベート クラウドの間の接続を有効にします。
-
-
-  > [!NOTE]
-  > **S2S VPN に関する考慮事項:** Azure VMware Solution の運用環境のデプロイでは、VMware HCX のネットワーク要件により、Azure S2S VPN がサポートされていません。 ただし、PoC のデプロイに使用することはできます。
+- **ExpressRoute Global Reach:** オンプレミスと Azure VMware ソリューションのプライベート クラウドの間の接続を有効にします。 Azure VMware Solution と Azure ファブリックを接続するものは ExpressRoute Global Reach だけです。 ExpressRoute Fast Path 以外のオプションは選択できません。  ExpressRoute Direct はサポートされていません。
 
 
--   **ハブ仮想ネットワーク:** オンプレミスのネットワークおよび Azure VMware Solution プライベート クラウドへの中心となる接続ポイントとして機能します。
+- **S2S VPN に関する考慮事項:** Azure VMware Solution の運用環境のデプロイでは、VMware HCX のネットワーク要件により、Azure S2S VPN がサポートされていません。 ただし、PoC のデプロイに使用することはできます。
 
--   **スポーク仮想ネットワーク**
 
-    -   **IaaS スポーク:** IaaS スポークによって、VM 可用性セットや仮想マシン スケール セットなどの Azure IaaS ベースのワークロードと、それに対応するネットワーク コンポーネントがホストされます。
+- **ハブ仮想ネットワーク:** オンプレミスのネットワークおよび Azure VMware Solution プライベート クラウドへの中心となる接続ポイントとして機能します。
 
-    -   **PaaS スポーク:** PaaS スポークでは、 [プライベート エンドポイント](../private-link/private-endpoint-overview.md)と [プライベート リンク](../private-link/private-link-overview.md)により、プライベート アドレス指定を使用して Azure PaaS サービスがホストされます。
+- **スポーク仮想ネットワーク**
 
--   **Azure Firewall:** スポークと Azure VMware Solution の間でトラフィックをセグメント化するための中心的な要素として機能します。
+    - **IaaS スポーク:** IaaS スポークによって、VM 可用性セットや仮想マシン スケール セットなどの Azure IaaS ベースのワークロードと、それに対応するネットワーク コンポーネントがホストされます。
 
--   **Application Gateway** Azure IaaS/PaaS または Azure VMware Solution 仮想マシン (VM) 上で実行される Web アプリを公開し、保護します。 これは、API Management などの他のサービスと統合されています。
+    - **PaaS スポーク:** PaaS スポークでは、[プライベート エンドポイント](../private-link/private-endpoint-overview.md)と [プライベート リンク](../private-link/private-link-overview.md)により、プライベート アドレス指定を使用して Azure PaaS サービスがホストされます。
+
+- **Azure Firewall:** スポークと Azure VMware Solution の間でトラフィックをセグメント化するための中心的な要素として機能します。
+
+- **Application Gateway** Azure IaaS/PaaS または Azure VMware Solution 仮想マシン (VM) 上で実行される Web アプリを公開し、保護します。 これは、API Management などの他のサービスと統合されています。
 
 ## <a name="network-and-security-considerations"></a>ネットワークとセキュリティに関する考慮事項
 
@@ -139,11 +138,7 @@ Azure DNS の解決には、次の 2 つのオプションを使用できます�
 
 Azure プライベート DNS ゾーンが仮想ネットワークにリンクされる Azure プライベート DNS を使用できます。  DNS サーバーは顧客の Azure プライベート DNS インフラストラクチャを利用して DNS を実行しているオンプレミスまたは Azure VMware Solution への条件付き転送にハイブリッド リゾルバーとして使用されます。 
 
-Azure DNS プライベート ゾーンについていくつかの考慮事項があります。
-
-* スポーク仮想ネットワーク内にデプロイされている VM の DNS レコードのライフサイクルを自動的に管理するには、Azure DNS に対する自動登録を有効にする必要があります。
-* 自動登録が有効な状態で仮想ネットワークをリンクできるプライベート DNS ゾーンの最大数は、1 つだけです。
-* 自動登録が有効になっていない状態で仮想ネットワークをリンクできるプライベート DNS ゾーンの最大数は、1,000 です。
+スポーク仮想ネットワーク内にデプロイされている VM に対して DNS レコードのライフサイクルを自動管理するには、自動登録を有効にします。 有効にすると、プライベート DNS ゾーンの最大数が 1 つのみになります。 無効にすると、最大数は 1000 です。
 
 オンプレミスおよび Azure VMware Solution のサーバーでは、Azure プライベート DNS ゾーンに対する Azure 内のリゾルバー VM への条件付きフォワーダーを構成できます。
 

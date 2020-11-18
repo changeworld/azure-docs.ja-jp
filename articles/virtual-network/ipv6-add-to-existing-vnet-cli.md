@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 654924d25a567ed6c63405d27444eb6ff96d480d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c46bb2233fe38380dd5ba19804791c7c9f3da91
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90603647"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517344"
 ---
 # <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>Azure 仮想ネットワーク内の IPv4 アプリケーションに IPv6 を追加する - Azure CLI
 
 この記事では、Standard Load Balancer に対して Azure 仮想ネットワーク内の IPv4 パブリック IP アドレスを使用しているアプリケーションに、Azure CLI を使用して IPv6 アドレスを追加する方法を示します。 インプレース アップグレードには、仮想ネットワークとサブネット、IPv4 + IPV6 フロントエンド構成の Standard Load Balancer、IPv4 + IPv6 構成の NIC を含む VM、ネットワーク セキュリティ グループ、パブリック IP が含まれます。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-代わりに Azure CLI をローカルにインストールして使用する場合は、このクイック スタートには Azure CLI バージョン 2.0.28 以降を使用する必要があります。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードについては、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」をご覧ください。
-
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、[クイック スタート: Standard Load Balancer を作成する - Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md)」の説明に従って Standard Load Balancer をデプロイ済みであることを前提としています。
+- この記事では、[クイック スタート: Standard Load Balancer を作成する - Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md)」の説明に従って Standard Load Balancer をデプロイ済みであることを前提としています。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- この記事では、Azure CLI のバージョン 2.0.28 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-ipv6-addresses"></a>IPv6 アドレスを作成する
 

@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 551f0065f1547e94d93993a38795234f455b9eef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b20391c4d856a5c52b6017ae892ec0b86873dbca
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044398"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491887"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>マネージド ID を使用して Azure Data Lake Storage Gen1 に対して Stream Analytics を認証する
 
@@ -82,7 +82,7 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
 
    * Azure Active Directory 内に Stream Analytics ジョブの ID に対応するサービス プリンシパルを自動的に作成します。 新しく作成された ID のライフ サイクルは、Azure によって管理されます。 Stream Analytics ジョブが削除されると、関連付けられた ID (つまりサービス プリンシパル) も Azure によって自動的に削除されます。
 
-   * ジョブ内で使用される ADLS Gen1 プレフィックス パスへの**書き込み**と**実行**のアクセス許可を自動的に設定し、このフォルダーおよびすべての子に割り当てます。
+   * ジョブ内で使用される ADLS Gen1 プレフィックス パスへの **書き込み** と **実行** のアクセス許可を自動的に設定し、このフォルダーおよびすべての子に割り当てます。
 
 5. [Stream Analytics CI.CD Nuget パッケージ](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) バージョン 1.5.0 以上をビルド コンピューター上 (Visual Studio 外部) で使用して、次のプロパティによって Resource Manager テンプレートを生成できます。 次のセクションの Resource Manager テンプレートのデプロイに関する手順に従って、サービス プリンシパルを取得し、PowerShell によってサービス プリンシパルへのアクセスを付与します。
 
@@ -174,6 +174,10 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
    ```
 
    上記の PowerShell コマンドの詳細については、[Set-AzDataLakeStoreItemAclEntry](/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry) のドキュメントを参照してください。
+
+## <a name="remove-managed-identity"></a>マネージド ID の削除
+
+Stream Analytics ジョブに対して作成されたマネージド ID は、ジョブが削除されたときにのみ削除されます。 ジョブを削除せずにマネージド ID を削除することはできません。 マネージド ID を使用する必要がなくなった場合は、出力の認証方法を変更できます。 マネージド ID は、ジョブが削除されるまで存在し続け、マネージド ID の認証を再度使用する場合に使用されます。
 
 ## <a name="limitations"></a>制限事項
 この機能は次をサポートしません。

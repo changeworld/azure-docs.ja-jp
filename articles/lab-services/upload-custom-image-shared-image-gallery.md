@@ -3,12 +3,12 @@ title: Azure Lab Services - カスタム イメージを Shared Image Gallery �
 description: カスタム イメージを Shared Image Gallery にアップロードする方法について説明します。 大学の IT 部門は、イメージのインポートが特に有益であることがわかります。
 ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: cd701215eb375b7f9b867ba05082afc7ed348ff7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93b4141636b629168e9bb7a73e71a9fe4bfc39f5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91712373"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654645"
 ---
 # <a name="upload-a-custom-image-to-shared-image-gallery"></a>カスタム イメージを Shared Image Gallery にアップロードする
 
@@ -35,36 +35,36 @@ Azure Lab Services でラボを作成するための独自のカスタム イメ
        
         :::image type="content" source="./media/upload-custom-image-shared-image-gallery/connect-virtual-hard-disk.png" alt-text="仮想ハード ディスクを接続する":::   
     1. 通常どおりに VM のイメージを作成します。
-1. [VM に接続して Azure 用に準備します](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image)。
-    1. [Azure 用の Windows 構成を設定する](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#set-windows-configurations-for-azure)
-    1. [VM の接続を確保するために最低限必要な Windows サービスを確認します](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#check-the-windows-services)
-    1. [リモート デスクトップのレジストリ設定を更新する](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#update-remote-desktop-registry-settings)
-    1. [Windows ファイアウォール規則の構成](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#configure-windows-firewall-rules)
+1. [VM に接続して Azure 用に準備します](../virtual-machines/windows/prepare-for-upload-vhd-image.md)。
+    1. [Azure 用の Windows 構成を設定する](../virtual-machines/windows/prepare-for-upload-vhd-image.md#set-windows-configurations-for-azure)
+    1. [VM の接続を確保するために最低限必要な Windows サービスを確認します](../virtual-machines/windows/prepare-for-upload-vhd-image.md#check-the-windows-services)
+    1. [リモート デスクトップのレジストリ設定を更新する](../virtual-machines/windows/prepare-for-upload-vhd-image.md#update-remote-desktop-registry-settings)
+    1. [Windows ファイアウォール規則の構成](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules)
     1. Windows 更新プログラムのインストール
-    1. [ここで示されているように、Azure VM エージェントと追加の構成をインストールします](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#complete-the-recommended-configurations) 
+    1. [ここで示されているように、Azure VM エージェントと追加の構成をインストールします](../virtual-machines/windows/prepare-for-upload-vhd-image.md#complete-the-recommended-configurations) 
     
-    上記の手順を実行すると、特殊化されたイメージが作成されます。 一般化されたイメージを作成する場合は、[SysPrep](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#determine-when-to-use-sysprep) を実行する必要もあります。 <br/>
+    上記の手順を実行すると、特殊化されたイメージが作成されます。 一般化されたイメージを作成する場合は、[SysPrep](../virtual-machines/windows/prepare-for-upload-vhd-image.md#determine-when-to-use-sysprep) を実行する必要もあります。 <br/>
         イメージに含まれるソフトウェアで必要なユーザー ディレクトリ (ファイル、ユーザー アカウント情報などが含まれる場合があります) を維持する必要がある場合は、特殊化されたイメージを作成する必要があります。
 1. **Hyper-V** の場合は既定で **VHDX** ファイルが作成されるため、これを VHD ファイルに変換する必要があります。
     1. **[Hyper-V マネージャー]**  ->  **[操作]**  ->  **[ディスクの編集]** に移動します。
     1. ここには、VHDX から VHD へのディスクの **[変換]** オプションがあります。
     1. ディスク サイズを拡張する場合は、128 GB を超えないようにしてください。        
-        :::image type="content" source="./media/upload-custom-image-shared-image-gallery/choose-action.png" alt-text="仮想ハード ディスクを接続する":::   
+        :::image type="content" source="./media/upload-custom-image-shared-image-gallery/choose-action.png" alt-text="アクションの選択":::   
 1. VHD を Azure にアップロードして、マネージド ディスクを作成します。
-    1. Storage Explorer またはコマンド ラインから AzCopy を使用することができます。「[VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする](https://docs.microsoft.com/azure/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell)」の説明を参照してください。        
+    1. Storage Explorer またはコマンド ラインから AzCopy を使用することができます。「[VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする](../virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md)」の説明を参照してください。        
     コンピューターがスリープ状態またはロック状態になった場合、アップロード プロセスが中断され、失敗する可能性があります。
     1. このステップを終えると、Azure portal で確認できるマネージド ディスクが作成されます。 
         Azure portal の [Size\Performance]\(サイズ\パフォーマンス\) タブを使用して、ディスク サイズを選択できます。 前述のように、サイズが 128 GB を超えないようにする必要があります。
 1. マネージド ディスクのスナップショットを作成します。
-    これは、PowerShell、Azure portal、または Storage Explorer を使用して行うことができます。「[ポータルまたは PowerShell を使用してスナップショットを作成する](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)」を参照してください。
+    これは、PowerShell、Azure portal、または Storage Explorer を使用して行うことができます。「[ポータルまたは PowerShell を使用してスナップショットを作成する](../virtual-machines/windows/snapshot-copy-managed-disk.md)」を参照してください。
 1. Shared Image Gallery で、イメージの定義とバージョンを作成します。
-    1. [イメージの定義を作成します](https://docs.microsoft.com/azure/virtual-machines/windows/shared-images-portal#create-an-image-definition)。
+    1. [イメージの定義を作成します](../virtual-machines/windows/shared-images-portal.md#create-an-image-definition)。
     1. 特殊化されたイメージまたは一般化されたイメージのどちらを作成するかも指定する必要があります。
 1. Azure Lab Services でラボを作成し、Shared Image Gallery からカスタム イメージを選択します。
 
-    元の Hyper-V VM に OS をインストールした後でディスクを拡張した場合は、未割り当てのディスク領域を使用するように Windows の C ドライブを拡張する必要もあります。 これを行うには、ラボの作成後にテンプレート VM にログインし、「[ベーシック ボリュームを拡張する](https://docs.microsoft.com/windows-server/storage/disk-management/extend-a-basic-volume)」で示されているような手順に従います。 UI または PowerShell を使用して行うことができます。
+    元の Hyper-V VM に OS をインストールした後でディスクを拡張した場合は、未割り当てのディスク領域を使用するように Windows の C ドライブを拡張する必要もあります。 これを行うには、ラボの作成後にテンプレート VM にログインし、「[ベーシック ボリュームを拡張する](/windows-server/storage/disk-management/extend-a-basic-volume)」で示されているような手順に従います。 UI または PowerShell を使用して行うことができます。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [共有イメージ ギャラリーの概要](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)
+* [共有イメージ ギャラリーの概要](../virtual-machines/windows/shared-image-galleries.md)
 * [Shared Image Gallery を使用する方法](how-to-use-shared-image-gallery.md)

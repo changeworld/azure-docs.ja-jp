@@ -1,101 +1,82 @@
 ---
-title: Azure Monitor のログ クエリの概要 | Microsoft Docs
-description: ログ クエリに関してよく寄せられる質問に回答し、その使用の概要を示します。
+title: Azure Monitor でのログ クエリ
+description: Azure Monitor で使用される Kusto クエリ言語のリファレンス情報。 Azure Monitor に固有の追加要素と、Azure Monitor ログ クエリでサポートされていない要素が含まれています。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/19/2019
-ms.openlocfilehash: 55463f6af47ef8eda712b1787a89a710c08c1fe6
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.date: 10/09/2020
+ms.openlocfilehash: 6174bcbe5a014cff8dbd8dff242880d7f0ef7aa0
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995200"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491394"
 ---
-# <a name="overview-of-log-queries-in-azure-monitor"></a>Azure Monitor のログ クエリの概要
-ログ クエリは、[Azure Monitor ログ](../platform/data-platform-logs.md)内に収集されたデータの価値を最大限に活用するのに役立ちます。 強力なクエリ言語により、複数のテーブルのデータを結合したり、大量のデータ セットを集約したり、最小限のコードによって複雑な操作を実行したりできます。 有用なデータが収集されていて、適切なクエリを作成する方法を理解していれば、ほぼすべての疑問に答えたり、分析を実行したりすることができます。
+# <a name="log-queries-in-azure-monitor"></a>Azure Monitor でのログ クエリ
+Azure Monitor ログは Azure Data Explorer を基盤としており、ログ クエリは同じ Kusto クエリ言語 (KQL) を使用して作成します。 これは、読みやすく、簡単に作成できるよう設計されたリッチ言語であるため、いくつかの基本的なガイダンスを使用してクエリの作成を開始できます。
 
-[分析情報](../insights/insights-overview.md)や[ソリューション](../monitor-reference.md)など、Azure Monitor の一部の機能では、基になるクエリをユーザーに公開せずに、ログ データを処理します。 Azure Monitor の他の機能を十分に活用するには、クエリを作成する方法と、それを使用して Azure Monitor ログ内のデータを対話形式で分析する方法を理解する必要があります。
+クエリを使用する Azure Monitor の領域には、次が含まれます。
 
-この記事は、Azure Monitor のログ クエリについて学習する際の開始点として使用してください。 よく寄せられる質問に回答し、詳細情報やレッスンを提供するその他のドキュメントへのリンクを示します。
+- [Log Analytics](../log-query/log-analytics-overview.md)。 Azure portal 内で、ログ クエリを編集したり、その結果を対話形式で分析したりするための主要なツールです。 Azure Monitor の他の場所でログ クエリを使用する場合でも、通常は Log Analytics で作成してテストしてから最終的な場所にコピーします。
+- [ログの警告ルール](../platform/alerts-overview.md)。 ワークスペースのデータの問題を事前に特定します。  各警告ルールは、定期的に自動実行されるログ クエリに基づいてます。  結果を検査することで、警告を作成するかどうかが決まります。
+- [Workbooks](../platform/workbooks-overview.md)。 さまざまな視覚化を使用したログ クエリの結果を、Azure portal の対話形式のビジュアル レポートに含めます。
+- [Azure ダッシュボード](../learn/tutorial-logs-dashboards.md)。 クエリの結果を Azure ダッシュボードにピン留めすることで、ログとメトリックのデータをまとめて視覚化し、必要に応じて、他の Azure ユーザーと共有することができます。
+- [Logic Apps](../platform/logicapp-flow-connector.md)。  Logic Apps を使用して、自動ワークフローでログ クエリの結果を使用します。
+- [PowerShell](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult)。 コマンド ラインまたは Get-AzOperationalInsightsSearchResults を使用する Azure Automation Runbook からのログ クエリの結果を、PowerShell スクリプトで使用します。
+- [Azure Monitor Logs API](https://dev.loganalytics.io)。 任意の REST API クライアントのワークスペースからログ データを取得します。  API 要求には Azure Monitor に対して実行するクエリが含まれており、これにより取得するデータを決定します。
 
-## <a name="how-can-i-learn-how-to-write-queries"></a>クエリを作成する方法はどこで学習できますか?
-すぐに始めたい場合、次のチュートリアルを利用して開始できます。
+## <a name="getting-started"></a>作業の開始
+KQL を使用してログ クエリを作成するための学習を開始するのに最適な方法は、使用可能なチュートリアルとサンプルを活用することです。
 
-- [Azure Monitor で Log Analytics の使用を開始する](get-started-portal.md)。
-- [Azure Monitor でログ クエリの使用を開始する](get-started-queries.md)。
-
-基本をマスターしたら、お持ちのデータまたは Microsoft のデモ環境のデータを使用して、以下をはじめとする複数のレッスンを完了します。 
-
-- [Azure Monitor ログ クエリ内の文字列を操作する](string-operations.md)
- 
-## <a name="what-language-do-log-queries-use"></a>ログ クエリではどの言語を使用しますか?
-Azure Monitor ログは [Azure Data Explorer](/azure/data-explorer) を基盤としており、ログ クエリは同じ Kusto クエリ言語 (KQL) を使用して作成します。 これは、読みやすく、簡単に作成できるよう設計されたリッチな言語で、最小限のガイダンスで使用を開始できます。
-
-KQL に関する完全なドキュメントと使用可能なさまざまな関数のリファレンスについては、[Azure Data Explorer の KQL のドキュメント](/azure/kusto/query)を参照してください。<br>
-Azure Monitor ログ内のデータを使用した言語の簡単なチュートリアルについては、「[Azure Monitor でログ クエリの使用を開始する](get-started-queries.md)」を参照してください。
-Azure Monitor によって使用される KQL のバージョンの小さな違いについては、「[Azure Monitor ログ クエリ言語の違い](data-explorer-difference.md)」を参照してください。
-
-## <a name="what-data-is-available-to-log-queries"></a>ログ クエリでは、どのようなデータを使用できますか?
-ログ クエリでの取得と分析には、Azure Monitor ログ内に収集されたすべてのデータを使用できます。 さまざまなデータ ソースからさまざまなテーブルにそれぞれのデータが書き込まれますが、1 つのクエリに複数のテーブルを含めて、複数のソースをまたいでデータを分析することができます。 クエリを作成する場合は、最初に、どのテーブルに目的のデータが含まれるかを確認します。 データがどのような構造になっているかの説明については、「[Azure Monitor ログの構造](../platform/data-platform-logs.md)」を参照してください。
-
-## <a name="what-does-a-log-query-look-like"></a>ログ クエリはどのようなものですか?
-クエリは、1 つのテーブル名という簡単なものでは、そのテーブルからすべてのレコードを取得できます。
-
-```Kusto
-Syslog
-```
-
-また、フィルターして特定のレコードを抽出し、集計して、結果をグラフで視覚化することもできます。
-
-```
-SecurityEvent
-| where TimeGenerated > ago(7d)
-| where EventID == 4625
-| summarize count() by Computer, bin(TimeGenerated, 1h)
-| render timechart 
-```
-
-さらに複雑な分析を行う場合は、結合を使用して複数のテーブルからデータを取得し、まとめて結果を分析できます。
-
-```Kusto
-app("ContosoRetailWeb").requests
-| summarize count() by bin(timestamp,1hr)
-| join kind= inner (Perf
-    | summarize avg(CounterValue) 
-      by bin(TimeGenerated,1hr))
-on $left.timestamp == $right.TimeGenerated
-```
-KQL をよく知らなくても、これらのクエリによって使用されている基本的なロジックは少なくとも理解できると思います。 先頭にテーブルの名前があり、その後にそのデータをフィルターして処理するコマンドが複数追加されています。 クエリでは任意の数のコマンドを使用できます。使用可能なさまざまな KQL コマンドについて理解すると、より複雑なクエリを作成することができます。
-
-言語および一般的な関数について説明しているログ クエリのチュートリアルについては、「[Azure Monitor でログ クエリの使用を開始する](get-started-queries.md)」を参照してください。<br>
+- [Log Analytics チュートリアル](log-analytics-tutorial.md) - Log Analytics (Azure portal でクエリを編集および実行するために使用するツール) の機能の使用に関するチュートリアルです。 これを使用すると、クエリ言語を直接操作することなく、単純なクエリを記述することもできます。 以前に Log Analytics を使用したことがない場合は、ここから開始して、他のチュートリアルやサンプルで使用するツールについて理解してください。
+- [KQL チュートリアル](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor) - 基本的な KQL の概念と一般的な演算子に関するガイド付きチュートリアルです。 これは、言語自体とログ クエリの構造をすばやく理解するのに最適な場所です。 
+- [クエリの例](example-queries.md) - Log Analytics で使用できるクエリの例について説明します。 クエリは、変更せずに使用することも、KQL を学習するためのサンプルとして使用することもできます。
+- [クエリ サンプル](/azure/data-explorer/kusto/query/samples?pivots=azuremonitor) - さまざまな概念を示すサンプル クエリです。
 
 
-## <a name="what-is-log-analytics"></a>Log Analytics とは
-Log Analytics は、Azure portal 内で、ログ クエリを作成したり、その結果を対話形式で分析したりするための主要なツールです。 Azure Monitor の他の場所でログ クエリを使用する場合でも、通常、まず Log Analytics を使用してクエリを作成およびテストします。
 
-Log Analytics は、Azure portal 内の複数の場所から起動できます。 Log Analytics で使用できるデータのスコープは、起動方法によって決まります。 詳しくは、「[クエリ スコープ](scope.md)」を参照してください。
+## <a name="reference-documentation"></a>リファレンス ドキュメント
+すべてのコマンドと演算子のリファレンスを含む [KQL のドキュメント](/azure/data-explorer/kusto/query/)は、Azure Data Explorer のドキュメントで入手できます。 KQL の使用に習熟している場合でも、これまでに使用したことのない新しいコマンドやシナリオを調べるために、定期的にリファレンスを使用することがあります。
 
-- **[Azure Monitor]** メニューまたは **[Log Analytics ワークスペース]** メニューの **[ログ]** を選択します。
-- Application Insights アプリケーションの **[概要]** ページから **[ログ]** を選択します。
-- Azure リソースのメニューから **[ログ]** を選択します。
 
-![Log Analytics](media/log-query-overview/log-analytics.png)
+## <a name="language-differences"></a>言語の相違点
+Azure Monitor では Azure Data Explorer と同じ KQL が使用されていますが、いくつかの違いがあります。 KQL のドキュメントには、Azure Monitor でサポートされていない、または機能が異なる演算子が明記されます。 Azure Monitor 固有の演算子は、Azure Monitor のコンテンツに記載されています。 以降のセクションでは、クイック リファレンスの言語のバージョン間の違いの一覧を示します。
 
-Log Analytics のいくつかの機能を紹介するチュートリアルについては、「[Azure Monitor で Log Analytics の使用を開始する](get-started-portal.md)」を参照してください。
+### <a name="statements-not-supported-in-azure-monitor"></a>Azure Monitor でサポートされていないステートメント
 
-## <a name="where-else-are-log-queries-used"></a>ログ クエリは他にどのような場合に使用しますか?
-Log Analytics でログ クエリとその結果を対話形式で操作するほかに、クエリを使用する Azure Monitor 内の領域には以下があります。
+* [エイリアス](/azure/kusto/query/aliasstatement)
+* [クエリ パラメーター](/azure/kusto/query/queryparametersstatement)
 
-- **警告ルール。** [警告ルール](../platform/alerts-overview.md)は、ワークスペースのデータの問題を事前に特定します。  各警告ルールは、定期的に自動実行されるログ検索に基づいてます。  結果を検査することで、警告を作成するかどうかが決まります。
-- **ダッシュボード。** クエリの結果は [Azure ダッシュボード](../learn/tutorial-logs-dashboards.md)にピン留めすることができます。これにより、ログ データとメトリック データをまとめて視覚化し、必要に応じて、他の Azure ユーザーと共有することができます。
-- **ビュー。**  ユーザー ダッシュボードに含めるデータの視覚化を作成するには、[ビュー デザイナー](../platform/view-designer.md)を使用します。  ログ クエリによって提供されるのは、各ビューの[タイル](../platform/view-designer-tiles.md)および[視覚化パーツ](../platform/view-designer-parts.md)で使用するデータです。  
-- **エクスポート。**  Azure Monitor から Excel または [Power BI](../platform/powerbi.md) にログ データをインポートする場合は、ログ クエリを作成して、エクスポートするデータを定義します。
-- **PowerShell。** [Get-AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult) を使用する Azure Automation Runbook またはコマンド ラインから PowerShell スクリプトを実行して、Azure Monitor からログ データを取得できます。  このコマンドレットでは、クエリによって、取得するデータを決定する必要があります。
-- **Azure Monitor Logs API。**  [Azure Monitor Logs API](https://dev.loganalytics.io) を使用すると、任意の REST API クライアントによってワークスペースからログ データを取得することができます。  API 要求には Azure Monitor に対して実行するクエリが含まれており、これにより取得するデータを決定します。
+### <a name="functions-not-supported-in-azure-monitor"></a>Azure Monitor でサポートされていない関数
 
+* [cluster()](/azure/kusto/query/clusterfunction)
+* [cursor_after()](/azure/kusto/query/cursorafterfunction)
+* [cursor_before_or_at()](/azure/kusto/query/cursorbeforeoratfunction)
+* [cursor_current(), current_cursor()](/azure/kusto/query/cursorcurrent)
+* [database()](/azure/kusto/query/databasefunction)
+* [current_principal()](/azure/kusto/query/current-principalfunction)
+* [extent_id()](/azure/kusto/query/extentidfunction)
+* [extent_tags()](/azure/kusto/query/extenttagsfunction)
+
+### <a name="operators-not-supported-in-azure-monitor"></a>Azure Monitor でサポートされていない演算子
+
+* [クラスター間の結合](/azure/kusto/query/joincrosscluster)
+
+### <a name="plugins-not-supported-in-azure-monitor"></a>Azure Monitor でサポートされていないプラグイン
+
+* [Python プラグイン](/azure/kusto/query/pythonplugin)
+* [sql_request プラグイン](/azure/kusto/query/sqlrequestplugin)
+
+
+### <a name="additional-operators-in-azure-monitor"></a>Azure Monitor で追加されている演算子
+以下の演算子は、Azure Monitor の特定の機能をサポートしており、Azure Monitor の外部では使用できません。
+
+* [app()](app-expression.md)
+* [resource()](resource-expression.md)
+* [workspace()](workspace-expression.md)
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure portal 内での Log Analytics の使用に関するチュートリアル](get-started-portal.md)を進めます。
-- [クエリの作成に関するチュートリアル](get-started-queries.md)を進めます。
+- [クエリの作成に関するチュートリアル](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor)を進めます。
+- 完全な [Kusto クエリ言語のリファレンス ドキュメント](/azure/kusto/query/)にアクセスします。
+

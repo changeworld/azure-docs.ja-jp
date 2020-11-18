@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: e322135cfdb7aaff331367e84c603e8344436528
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a086d9fe150766c6b31210f29bf802a75e0ee4ec
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906248"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491734"
 ---
 # <a name="azure-cosmos-db-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Azure Cosmos DB 出力
 
@@ -39,7 +39,7 @@ Stream Analytics からの Azure Cosmos DB 出力は、現在、Azure China 21Vi
 
 ## <a name="partitioning"></a>パーティション分割
 
-パーティション キーは、クエリの PARTITION BY 句に基づきます。 出力ライターの数は、[完全並列化されたクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 Stream Analytics によって、Cosmos DB 出力パーティション キーが文字列に変換されます。 たとえば、bigint 型の値が 1 のパーティション キーがある場合、string 型の "1" に変換されます。
+パーティション キーは、クエリの PARTITION BY 句に基づきます。 出力ライターの数は、[完全並列化されたクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 Stream Analytics によって、Cosmos DB 出力パーティション キーが文字列に変換されます。 たとえば、bigint 型の値が 1 のパーティション キーがある場合、string 型の "1" に変換されます。 この変換は、パーティションのプロパティが Cosmos DB に書き込まれるかどうかにかかわらず、常に発生します。
 
 ## <a name="output-batch-size"></a>出力バッチ サイズ
 

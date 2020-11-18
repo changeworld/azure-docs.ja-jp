@@ -11,12 +11,12 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2, devx-track-python, deploy
-ms.openlocfilehash: 6ac28e430681f35d9935cf0f484529074403bf54
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9ec82dcd7578744dc7443d48dc28820413f14005
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324971"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491700"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>Azure Machine Learning を使用して ML モデルをフィールド プログラマブル ゲート アレイ (FPGA) にデプロイする 
 
@@ -143,7 +143,7 @@ Azure FPGA は Azure Machine Learning と統合されています。 Azure で�
                                   outputs={'output_alias': classifier_output})
    ```
 
-1. **モデル変換と推論の要求に使用するため** 、入出力のテンソルを保存します。 
+1. **モデル変換と推論の要求に使用するため**、入出力のテンソルを保存します。 
 
    ```python
    input_tensors = in_images.name
@@ -362,6 +362,8 @@ converted_model.delete()
 ## <a name="next-steps"></a>次の手順
 
 + [Web サービスをセキュリティで保護する](how-to-secure-web-service.md)方法のドキュメントを確認します。
+
++ FPGA と [Azure Machine Learning の価格とコスト](https://azure.microsoft.com/pricing/details/machine-learning/)の詳細について説明します。
 
 + [Hyperscale hardware:ML at scale on top of Azure + FPGA (ハイパースケール ハードウェア: Azure + FPGA 基盤の大規模 ML):Build 2018 (ビデオ)](https://channel9.msdn.com/events/Build/2018/BRK3202)
 

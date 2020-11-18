@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: eaa7efe761490a639acabd9fd6d91378e1259a67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff9eca855269597477bc42a319c99c886576d92c
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779210"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94482801"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -147,7 +147,8 @@ const callState = call.state;
 * "Connected" - 通話は接続されています
 * "Hold" - 通話は保留になっており、ローカル エンドポイントとリモート参加者の間でメディアは送信されていません
 * "Disconnecting" - 通話は、"Disconnected" 状態になる前の移行状態です
-* "Disconnected" - 通話の最終状態です
+* "Disconnected" - 通話の最終状態です。
+   * ネットワーク接続が失われると、状態は約 2 分後に "Disconnected" になります。
 
 
 * 特定の通話が終了した理由を確認するには、`callEndReason` プロパティを調べます。
@@ -233,6 +234,9 @@ const source callClient.getDeviceManager().getCameraList()[1];
 localVideoStream.switchSource(source);
 
 ```
+### <a name="faq"></a>よく寄せられる質問
+ * ネットワーク接続が失われると、通話の状態は "Disconnected" に変化しますか。
+    * はい。ネットワーク接続が 2 分以上失われると、通話は "Disconnected" 状態に変わり、終了します。
 
 ## <a name="remote-participants-management"></a>リモート参加者の管理
 
@@ -270,7 +274,8 @@ const state = remoteParticipant.state;
 * "Connected" - 参加者は通話に接続されています
 * "Hold" - 参加者は保留中です
 * "EarlyMedia" - 参加者が通話に接続される前に、アナウンスが再生されています
-* "Disconnected" - 最終状態 - 参加者は通話から切断されました
+* "Disconnected" - 最終状態 - 参加者は通話から切断されました。
+   * リモート参加者がネットワーク接続を失った場合、リモート参加者の状態は約 2 分後に "Disconnected" になります。
 
 参加者が通話を終了した理由を確認するには、`callEndReason` プロパティを調べます。
 ```js
@@ -410,7 +415,9 @@ document.body.appendChild(rendererView.target);
 ```js
 view.updateScalingMode('Crop')
 ```
-
+### <a name="faq"></a>よく寄せられる質問
+* リモート参加者がネットワーク接続を失った場合、その状態は "Disconnected" になりますか。
+    * はい。リモート参加者が 2 分以上ネットワーク接続を失った場合、その状態は "Disconnected" に変わり、通話が削除されます。
 ## <a name="device-management"></a>デバイス管理
 
 `DeviceManager` を使用すると、オーディオと動画のストリームを送信する呼び出しで使用できるローカル デバイスを列挙できます。 また、ネイティブ ブラウザー API を使用してマイクやカメラにアクセスするために、ユーザーにアクセス許可を要求することもできます。

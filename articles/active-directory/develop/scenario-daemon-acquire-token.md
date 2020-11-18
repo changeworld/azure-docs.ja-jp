@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 13000c5a61dc2c4d49aa395271beddef64d32245
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c13b6ed991403e65c4c4d71c964f1f7f4d1ffe7b
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119217"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443315"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Web API を呼び出すデーモン アプリ - トークンを取得する
 
@@ -202,7 +202,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 ## <a name="application-token-cache"></a>アプリケーション トークン キャッシュ
 
-MSAL.NET では、`AcquireTokenForClient` によってアプリケーション トークン キャッシュが使用されます (他のすべての AcquireToken*XX* メソッドでは、ユーザー トークン キャッシュが使用されます)。`AcquireTokenSilent` は "*ユーザー*" トークン キャッシュを使用するため、`AcquireTokenForClient` を呼び出す前に `AcquireTokenSilent` を呼び出さないでください。 `AcquireTokenForClient` は*アプリケーション* トークン キャッシュそのものをチェックして、更新します。
+MSAL.NET では、`AcquireTokenForClient` によってアプリケーション トークン キャッシュが使用されます (他のすべての AcquireToken *XX* メソッドでは、ユーザー トークン キャッシュが使用されます)。`AcquireTokenSilent` は "*ユーザー*" トークン キャッシュを使用するため、`AcquireTokenForClient` を呼び出す前に `AcquireTokenSilent` を呼び出さないでください。 `AcquireTokenForClient` は *アプリケーション* トークン キャッシュそのものをチェックして、更新します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -212,7 +212,7 @@ MSAL.NET では、`AcquireTokenForClient` によってアプリケーション �
 
 ### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>管理者の同意を提供するのを忘れましたか? デーモン アプリにはそれが必要です。
 
-API を呼び出すときに、**この操作を完了するのに十分な特権がありません**というエラーが表示された場合は、テナント管理者がアプリケーションにアクセス許可を付与する必要があります。 上記のクライアント アプリの登録の手順 6 を参照してください。
+API を呼び出すときに、**この操作を完了するのに十分な特権がありません** というエラーが表示された場合は、テナント管理者がアプリケーションにアクセス許可を付与する必要があります。 上記のクライアント アプリの登録の手順 6 を参照してください。
 通常、次のようなエラーが表示されます。
 
 ```json
@@ -233,17 +233,14 @@ Content: {
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-> [!div class="nextstepaction"]
-> [デーモン アプリ - Web API の呼び出し](./scenario-daemon-call-api.md?tabs=dotnet)
+このシナリオの次の記事である [Web API の呼び出し](./scenario-daemon-call-api.md?tabs=dotnet)に関する記事に進みます。
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [デーモン アプリ - Web API の呼び出し](./scenario-daemon-call-api.md?tabs=python)
+このシナリオの次の記事である [Web API の呼び出し](./scenario-daemon-call-api.md?tabs=python)に関する記事に進みます。
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [デーモン アプリ - Web API の呼び出し](./scenario-daemon-call-api.md?tabs=java)
+このシナリオの次の記事である [Web API の呼び出し](./scenario-daemon-call-api.md?tabs=java)に関する記事に進みます。
 
 ---

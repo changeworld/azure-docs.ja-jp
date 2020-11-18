@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 51c611b2565ae0a5a054a45f0aedcb039351b46b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 582dafba40012e9ff9c59bc09adb1a0831e999f5
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208357"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491224"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Monitor ログを使用した Azure Functions の監視
 
@@ -22,7 +22,7 @@ Azure Monitor Logs を使うと、同じワークスペース内の異なるリ�
 Azure Monitor では、Azure Data Explorer で使用される [Kusto クエリ言語](/azure/kusto/query/)のバージョンを使用します。それは、単純なログ検索に適していますが、集計、結合、スマート分析などの高度な機能も備えています。 [さまざまなレッスン](../azure-monitor/log-query/get-started-queries.md)を利用すれば、クエリ言語はすぐに覚えることができます。
 
 > [!NOTE]
-> 現在、Azure Monitor Logs との統合は、Windows Consumption、Premium、Dedicated ホスティング プランで実行されている関数アプリに関してパブリック プレビュー段階にあります。
+> 現在、Azure Monitor Logs との統合は、Windows Consumption、Premium、Dedicated ホスティング プランで実行されている v2 および v3 の関数アプリについてはパブリック プレビュー段階にあります。
 
 ## <a name="setting-up"></a>設定
 
@@ -34,11 +34,11 @@ Azure Monitor では、Azure Data Explorer で使用される [Kusto クエリ�
 
    **[FunctionAppLogs]** テーブルには、目的のログが含まれています。
 
-1. **[宛先の詳細]** で、 **[Log Analytics への送信]** を選択して、**Log Analytics ワークスペース**を選択します。 
+1. **[宛先の詳細]** で、 **[Log Analytics への送信]** を選択して、**Log Analytics ワークスペース** を選択します。 
 
-1. **診断設定名**を入力して、 **[保存]** を選択します。
+1. **診断設定名** を入力して、 **[保存]** を選択します。
 
-   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="[診断設定] を選択します":::
+   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="診断設定を追加します":::
 
 ## <a name="user-generated-logs"></a>ユーザー生成ログ
 
@@ -89,7 +89,7 @@ logging.info('My app logs here.')
 
    Azure Functions によって、すべてのログは、 **[LogManagement]** の **FunctionAppLogs** テーブルに書き込まれます。 
 
-   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="[診断設定] を選択します":::
+   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Log Analytics ワークスペース内のクエリ ウィンドウ":::
 
 いくつかのサンプル クエリを次に示します。
 

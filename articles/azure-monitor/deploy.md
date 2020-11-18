@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 0a5c788b4429b5048a1b94fa8adfb2d9367982da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0591825bf187648293d5aabc88597b19ab2436e
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033474"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491054"
 ---
 # <a name="deploy-azure-monitor"></a>Azure Monitor をデプロイする
 Azure Monitor ですべての Azure リソースを監視できるようにするには、Azure Monitor コンポーネントの構成と、Azure Monitor で収集される監視データを生成するための Azure リソースの構成を、組み合わせて行います。 この記事では、一般的な構成を使用して Azure Monitor を完全に実装して Azure サブスクリプション内のすべてのリソースを監視するために必要なさまざまなステップについて説明します。 各ステップの基本的な説明は、詳細な構成要件に関する他のドキュメントへのリンクで提供されます。
@@ -118,14 +118,14 @@ Azure Monitor for VMs によって使用される Log Analytics エージェン�
 カスタムア プリケーションを監視するために Azure Monitor によって使用される [Application Insights](app/app-insights-overview.md) を、監視するアプリケーションごとに構成する必要があります。 構成プロセスは、監視対象のアプリケーションの種類と、実行する監視の種類によって異なります。 Application Insights によって収集されたデータは、機能に応じて、Azure Monitor Metrics、Azure Monitor Logs、Azure Blob Storage に格納されます。 パフォーマンス データは Azure Monitor Metrics と Azure Monitor Logs の両方に格納され、追加の構成は必要ありません。
 
 ### <a name="create-an-application-resource"></a>アプリケーション リソースを作成する
-監視するアプリケーションごとに、Application Insights でリソースを作成する必要があります。 Application Insights によって収集されたログ データは、ワークスペースベースのアプリケーションの Azure Monitor ログに格納されます。 クラシック アプリケーションのログ データは、[データの構造](platform/data-platform-logs.md#structure-of-data)に関するページで説明されているように、Log Analytics ワークスペースとは別に保存されます。
+監視するアプリケーションごとに、Application Insights でリソースを作成する必要があります。 Application Insights によって収集されたログ データは、ワークスペースベースのアプリケーションの Azure Monitor ログに格納されます。 クラシック アプリケーションのログ データは、[データの構造](platform/data-platform-logs.md#data-structure)に関するページで説明されているように、Log Analytics ワークスペースとは別に保存されます。
 
  アプリケーションを作成するときに、クラシックまたはワークスペース ベースのどちらを使用するかを選択する必要があります。 クラシック アプリケーションを作成するには、「[Application Insights リソースの作成](app/create-new-resource.md)」を参照してください。 ワークスペース ベースのアプリケーションを作成するには、「[ワークスペース ベースの Application Insights リソース (プレビュー)](app/create-workspace-resource.md)」を参照してください。
 
 ### <a name="configure-codeless-or-code-based-monitoring"></a>コード不要の監視またはコード ベースの監視を構成する
 アプリケーションの監視を有効にするには、コード不要の監視またはコード ベースの監視を使用するかどうかを決定する必要があります。 構成プロセスは、この決定と監視対象のアプリケーションの種類によって異なります。
 
-**コード不要の監視**は、実装するのが最も簡単で、コードを開発した後で構成できます。 コードを更新する必要はありません。 アプリケーションに応じて監視を有効にする方法の詳細については、次のリソースを参照してください。
+**コード不要の監視** は、実装するのが最も簡単で、コードを開発した後で構成できます。 コードを更新する必要はありません。 アプリケーションに応じて監視を有効にする方法の詳細については、次のリソースを参照してください。
 
 - [Azure Web Apps でホストされているアプリケーション](app/azure-web-apps.md)
 - [Java アプリケーション](app/java-in-process-agent.md)
@@ -133,7 +133,7 @@ Azure Monitor for VMs によって使用される Log Analytics エージェン�
 - [IIS のオンプレミス VM でホストされる ASP.NET アプリケーション](app/monitor-performance-live-website-now.md)
 
 
-**コード ベースの監視**では、さらにカスタマイズが可能で、追加のテレメトリが収集されますが、Application Insights SDK NuGet パッケージでコードに依存関係を追加する必要があります。 アプリケーションに応じて監視を有効にする方法の詳細については、次のリソースを参照してください。
+**コード ベースの監視** では、さらにカスタマイズが可能で、追加のテレメトリが収集されますが、Application Insights SDK NuGet パッケージでコードに依存関係を追加する必要があります。 アプリケーションに応じて監視を有効にする方法の詳細については、次のリソースを参照してください。
 
 - [ASP.NET アプリケーション](app/asp-net.md)
 - [ASP.NET Core アプリケーション](app/asp-net-core.md)

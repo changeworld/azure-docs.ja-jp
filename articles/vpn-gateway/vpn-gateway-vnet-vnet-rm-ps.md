@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: edd9f9f3127178f168f6c768b092a7ec6311e7bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7de83302dd91d7d679b9c35718d184a9767ba436
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440938"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655359"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>PowerShell を使用した VNet 間 VPN Gateway 接続を構成する
 
@@ -483,5 +483,5 @@ TestVNet1 と TestVNet1 の VPN ゲートウェイを作成して構成するに
 
 ## <a name="next-steps"></a>次のステップ
 
-* 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、 [Virtual Machines のドキュメント](https://docs.microsoft.com/azure/) を参照してください。
+* 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、 [Virtual Machines のドキュメント](../index.yml) を参照してください。
 * BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。

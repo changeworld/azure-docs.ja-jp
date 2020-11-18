@@ -3,12 +3,12 @@ title: Azure Lab Services における容量制限
 description: Azure Lab Services における容量制限 (仮想マシンの制限) について説明します。
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 92bdc714d70b3d73ca2cbc76b1f5dc5366582cbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9866628cd11ec8df67e6fe16ae8806f0f30ae9a1
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85444099"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491020"
 ---
 # <a name="capacity-limits-in-azure-lab-services"></a>Azure Lab Services における容量制限
 Azure コンピューティングのクォータ制限に準拠し、不正アクセスを軽減するために、Azure Lab Services には Azure サブスクリプションでの既定の容量制限が設けられています。 すべての Azure サブスクリプションに初期の容量制限が設けられ、その制限はサブスクリプションの種類、標準のコンピューティング コア数、Azure Lab Services 内部で使用できる GPU コア数に基づいて異なります。 ラボ内に作成できる仮想マシンの数が制限されていると、制限の引き上げを要求する必要が生じます。  
@@ -50,4 +50,5 @@ Azure Lab Services ポータル上の仮想マシンのコア数の制限に関�
 
 ## <a name="next-steps"></a>次のステップ
 次の記事を参照してください:
+- [管理者ガイド - VM サイジング](administrator-guide.md#vm-sizing)。
 - [よく寄せられる質問](classroom-labs-faq.md)

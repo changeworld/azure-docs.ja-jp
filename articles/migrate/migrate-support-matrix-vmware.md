@@ -2,13 +2,13 @@
 title: Azure Migrate での VMware 評価サポート
 description: Azure Migrate Server Assessment を使用した VMware VM の評価のサポートについて説明します。
 ms.topic: conceptual
-ms.date: 06/08/2020
-ms.openlocfilehash: 8b119b56e7e4c7fac74c57cc5c48fb44f91a7ee6
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 11/10/2020
+ms.openlocfilehash: 6e033bdf0f1492d6cbb4c41192cca8206816917d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345433"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444947"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評価のサポートマトリックス 
 
@@ -66,14 +66,14 @@ Azure Migrate では、[Azure Migrate アプライアンス](migrate-appliance.m
 
 **サポート** | **詳細**
 --- | ---
-**サポートされているマシン** | 現在、アプリ検出は VMware VM でのみサポートされています。 各 Azure Migrate アプライアンスから最大 10,000 台の VMware VM にインストールされているアプリを検出できます。
-**オペレーティング システム** | アプリ検出は、すべてのバージョンの Windows および Linux が実行されている VM でサポートされています。
+**サポートされているマシン** | 現在、VMware VM のみでサポートされています。 各 Azure Migrate アプライアンスから最大 10,000 の VMware VM にインストールされているアプリを検出できます。
+**オペレーティング システム** | Windows および Linux のすべてのバージョンを実行する VM のサポート。
 **VM 要件** | アプリを検出する VM に VMware ツールがインストールされ、実行されている必要があります。 <br/><br/> VMware ツールのバージョンは、10.2.0 以降である必要があります。<br/><br/> VM には、PowerShell バージョン 2.0 以降がインストールされている必要があります。
-**検出** | アプリ検出はエージェントレスです。 マシンのゲスト資格情報を使用し、WMI と SSH 呼び出しを使用してマシンにリモートでアクセスします。
+**検出** | VM にインストールされているアプリに関する情報は、VM にインストールされている VMware Tools を使用して、vCenter Server から収集されます。 vSphere API を使用して、アプライアンスによって vCenter Server からアプリ情報が収集されます。 アプリ検出はエージェントレスです。 VM には何もインストールされず、アプライアンスは VM に直接接続されません。 WMI/SSH を有効にして VM で使用できるようにする必要があります。
 **vCenter** | 評価に使用される vCenter Server の読み取り専用アカウントは、アプリケーション検出用の VM と対話するために、 **[Virtual Machines]**  >  **[Guest Operations]\(ゲスト操作\)** に対して有効になっている特権が必要です。
 **VM アクセス** | アプリの検出では、VM 上にアプリケーション検出用のローカル ユーザー アカウントが必要です。<br/><br/> 現在、Azure Migrate ではすべての Windows サーバーに対して 1 つの資格情報と、すべての Linux サーバーに対して 1 つの資格情報を使用することがサポートされています。<br/><br/> Windows VM 用にゲスト ユーザー アカウントを作成し、すべての Linux VM 用に通常/標準ユーザー アカウント (非 sudo アクセス) を作成します。
 **ポート アクセス** | アプリを検出する VM が実行されている ESXi ホストでは、Azure Migrate アプライアンスが TCP ポート 443 に接続できる必要があります。 アプリ情報を含むファイルをダウンロードするため、vCenter Server から ESXI ホスト接続が返されます。
-**制限** | アプリ検出では、各 Azure Migrate アプライアンスで最大 1 万の VM を検出できます。
+
 
 
 ## <a name="dependency-analysis-requirements-agentless"></a>依存関係の分析の要件 (エージェントレス)
@@ -82,17 +82,15 @@ Azure Migrate では、[Azure Migrate アプライアンス](migrate-appliance.m
 
 **要件** | **詳細**
 --- | --- 
-**デプロイ前** | Server Assessment ツールがプロジェクトに追加された状態で、Azure Migrate プロジェクトを準備する必要があります。<br/><br/>  オンプレミスの VMware マシンを検出するには、Azure Migrate アプライアンスをセットアップした後、依存関係の視覚化をデプロイします。<br/><br/> 初めてプロジェクトを作成する方法については[こちら](create-manage-projects.md)を参照してください。<br/> 既存のプロジェクトに評価ツールを追加方法については[こちら](how-to-assess.md)を参照してください。<br/> VMware VM の評価用に Azure Migrate アプライアンスを設定する方法を[参照](how-to-set-up-appliance-vmware.md)してください。
 **サポートされているマシン** | 現在、VMware VM のみでサポートされています。
-**Windows VM** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-bit)。<br/>Microsoft Windows Server 2008 (32 ビット)。 PowerShell がインストールされている。
-**vCenter サーバーの資格情報** | 依存関係の可視化には、読み取り専用アクセス権を持ち、[仮想マシン] > [ゲスト操作] の権限が有効な vCenter Server アカウントが必要です。
-**Windows VM のアクセス許可** |  依存関係の分析の場合、Windows VM にアクセスするには、Azure Migrate アプライアンスで使用できるドメイン管理者アカウントまたはローカル管理者アカウントが必要です。
-**Linux VM** | Red Hat Enterprise Linux 7、6、5<br/> Ubuntu Linux 14.04、16.04<br/> Debian 7、8<br/> Oracle Linux 6、7<br/> CentOS 5、6、7。<br/> SUSE Linux Enterprise Server 11 以降
-**Linux アカウント** | 依存関係を分析するため、Linux コンピューターでは、Azure Migrate アプライアンスにルート ユーザー アカウントが必要になります<br/><br/> また、ユーザー アカウントには /bin/netstat および /bin/ls ファイルに対する次の権限が必要です。CAP_DAC_READ_SEARCH と CAP_SYS_PTRACE。 これらの機能は次のコマンドで設定します。 <br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/ls <br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/netstat
-**必要なエージェント** | 分析するマシンにエージェントは必要ありません。
-**VMware ツール** | 分析する各 VM に VMware ツール (10.2 以降) がインストールされ、実行されている必要があります。
-**PowerShell** | Windows VM には、PowerShell バージョン 2.0 以降がインストールされている必要があります。
-**ポート アクセス** | 分析する VM を実行している ESXi ホストでは、Azure Migrate アプライアンスが TCP ポート 443 に接続できる必要があります。
+**Windows VM** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-bit)。<br/>Microsoft Windows Server 2008 (32 ビット)。 
+**Linux VM** | Red Hat Enterprise Linux 7、6、5<br/> Ubuntu Linux 14.04、16.04<br/> Debian 7、8<br/> Oracle Linux 6、7<br/> CentOS 5、6、7。<br/> SUSE Linux Enterprise Server 11 以降。
+**VM 要件** | 分析する VM に VMware Tools (10.2.0 以降) がインストールされ、実行されている必要があります。<br/><br/> VM には、PowerShell バージョン 2.0 以降がインストールされている必要があります。
+**検出方法** |  VM 間の依存関係情報は、VM にインストールされている VMware Tools を使用して、vCenter Server から収集されます。 vSphere API を使用して、アプライアンスによって vCenter Server から情報が収集されます。 検出はエージェントレスです。 VM には何もインストールされず、アプライアンスは VM に直接接続されません。 WMI/SSH を有効にして VM で使用できるようにする必要があります。
+**vCenter アカウント** | 評価のために Azure Migrate によって使用される読み取り専用アカウントには、 **[仮想マシン] > [ゲスト操作]** に対して有効になっている特権が必要です。
+**Windows VM のアクセス許可** |  VM のローカル管理者アクセス許可を持つアカウント (ローカル管理者またはドメイン)。
+**Linux アカウント** | ルート ユーザー アカウント、または /bin/netstat および /bin/ls のファイルに対して次のアクセス許可を持つアカウント。CAP_DAC_READ_SEARCH と CAP_SYS_PTRACE。<br/><br/> これらの機能は次のコマンドで設定します。 <br/><br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/ls<br/><br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/netstat
+**ポート アクセス** | 依存関係を検出する VM を実行している ESXI ホスト上で、Azure Migrate アプライアンスが TCP ポート 443 に接続できる必要があります。 依存関係情報を含むファイルをダウンロードするため、vCenter Server から ESXI ホスト接続が返されます。
 
 
 ## <a name="dependency-analysis-requirements-agent-based"></a>依存関係の分析の要件 (エージェント ベース)

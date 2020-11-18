@@ -9,15 +9,15 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
-ms.author: alsin
-ms.openlocfilehash: da17122de8db41b6ba9ae9597d52bc3e1d8d0062
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: mathapli
+ms.openlocfilehash: 8437c83faf8dfcec0a21add2006b6cf627447dd1
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962396"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516443"
 ---
-# <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>プレビュー:Azure ハイブリッド特典 - Linux Virtual Machines に適用する方法
+# <a name="public-preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>パブリック プレビュー:Azure ハイブリッド特典 - Linux Virtual Machines に適用する方法
 
 ## <a name="overview"></a>概要
 
@@ -45,30 +45,28 @@ Linux VM で予約インスタンス、専用ホスト、および SQL ハイブ
 
 ## <a name="how-to-get-started"></a>ファースト ステップ
 
-Azure ハイブリッド特典は現在、Linux VM 向けのプレビュー段階にあります。 プレビューにアクセスできるようになったら、Azure portal または Azure CLI を使用して特典を有効にすることができます。
+Azure ハイブリッド特典は現在、Linux VM 向けのプレビュー段階にあります。 プレビューにアクセスできるようになったら、Azure CLI を使用して特典を有効にすることができます。
 
-### <a name="preview"></a>[プレビュー]
+### <a name="public-preview"></a>パブリック プレビュー
 
-このフェーズでは、[こちら](https://aka.ms/ahb-linux-form)からフォームに入力することによって、特典へのアクセスが得られます。 フォームに入力すると、3 営業日以内に Azure サブスクリプションが特典に対して有効になり、Microsoft から確認メッセージを受け取ります。
+Azure ハイブリッド特典 (Linux 向け) は、現在パブリック プレビュー段階にあります。 次の手順を使用して、Red Hat および SUSE のディストリビューションの特典を有効にすることができます。 
 
 ### <a name="red-hat-customers"></a>Red Hat のお客様
 
-1.    上のプレビュー要求フォームに入力します
-1.    [Red Hat Cloud Access プログラム](https://aka.ms/rhel-cloud-access)に登録します
-1.    Cloud Access に対して Azure サブスクリプションを有効にし、特典を使用する VM が含まれているサブスクリプションを有効にします
-1.    Azure portal または Azure CLI を使用して、既存の VM に特典を適用します
-1.    特典を受けた VM を別の更新ソースに登録します
+RHEL 向けの Azure ハイブリッド特典は、Azure で使用できるアクティブまたは未使用の RHEL サブスクリプションをお持ちで、[Red Hat Cloud Access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) プログラムでそれらのサブスクリプションの 1 つ以上を Azure で使用できるようにしているお客様が利用できます。 
+
+1.  [Red Hat Cloud Access のカスタマー インターフェイス](https://access.redhat.com/management/cloud)を使用して、対象となる 1 つ以上の RHEL サブスクリプションを Azure で使用できるようにします。
+1.  Red Hat Cloud Access 有効化プロセス中に指定した Azure サブスクリプションが、Azure ハイブリッド特典機能を使用できるようになります。
+1.  Azure ハイブリッド特典を、既存の RHEL PAYG VM のいずれか、および Azure Marketplace PAYG イメージからデプロイする任意の新しい RHEL VM に適用します。
+1.  RHEL VM の更新ソースの構成、および RHEL サブスクリプションのコンプライアンス ガイドラインについては、[次の推奨される手順](https://access.redhat.com/articles/5419341)に従ってください。
+
 
 ### <a name="suse-customers"></a>SUSE のお客様
 
-1.    上のプレビュー要求フォームに入力します
 1.    SUSE Public Cloud プログラムに登録します
-1.    Azure portal または Azure CLI を使用して、既存の VM に特典を適用します
+1.    Azure CLI を使用して、既存の VM に特典を適用します
 1.    特典を受けた VM を別の更新ソースに登録します
 
-### <a name="enable-and-disable-the-benefit-in-the-azure-portal"></a>Azure portal で特典を有効または無効にする
-
-既存の VM に対する特典を有効にするには、 **[構成]** ブレードにアクセスし、そこに記載されている手順に従ってください。 VM の作成エクスペリエンス中に、新しい VM の特典を有効にすることもできます。
 
 ### <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>Azure CLI で特典を有効または無効にする
 
@@ -109,12 +107,8 @@ az vm list -o json | jq '.[] | {VMName: .name, ResourceID: .id}'
 ```
 
 ## <a name="check-ahb-status-of-a-vm"></a>VM の AHB の状態を確認する
-VM の AHB の状態は、ポータルでの確認、Azure CLI の使用、Azure Instance Metadata Service (Azure IMDS) の使用の 3 つの方法で表示できます。
+VM の AHB の状態を表示するには、Azure CLI を使用する方法、または Azure Instance Metadata Service (Azure IMDS) を使用する方法の 2 つがあります。
 
-
-### <a name="portal"></a>ポータル
-
-[構成] ブレードを表示し、[ライセンスの状態] をチェックして AHB が VM で有効になっているかどうかを確認します。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -132,7 +126,19 @@ VM 自体から、IMDS 構成証明済みメタデータに対してクエリを
 
 ### <a name="red-hat"></a>Red Hat
 
-RHEL VM で Azure ハイブリッド特典を使用するには、まず Red Hat Cloud Access プログラムに登録する必要があります。 この操作は、こちらの Red Hat Cloud Access のサイトで行うことができます。 VM で特典を有効にしたら、Red Hat Subscription Manager または Red Hat Satellite を使用して、VM を自身の更新プログラムのソースに登録する必要があります。 更新のための登録を行うことで、サポートされている状態を維持できます。
+RHEL 向けの Azure ハイブリッド特典を使用しているお客様は、Azure Marketplace RHEL オファリングに関連付けられている標準の[法律条項](http://www.redhat.com/licenses/cloud_CSSA/Red_Hat_Cloud_Software_Subscription_Agreement_for_Microsoft_Azure.pdf)および[プライバシーに関する声明](http://www.redhat.com/licenses/cloud_CSSA/Red_Hat_Privacy_Statement_for_Microsoft_Azure.pdf)に同意します。
+
+RHEL 向けの Azure ハイブリッド特典を使用しているお客様には、これらの VM にソフトウェア更新プログラムとパッチを提供するための 3 つのオプションがあります。
+
+1.  [Red Hat Update Infrastructure (RHUI)](../workloads/redhat/redhat-rhui.md) (既定のオプション)
+1.  Red Hat Satellite Server
+1.  Red Hat Subscription Manager
+
+RHUI オプションを選択したお客様は、RHEL サブスクリプションを VM にアタッチしなくても、AHB RHEL VM の主要な更新ソースとして引き続き RHUI を使用できます。  RHUI オプションを選択したお客様は、RHEL サブスクリプションのコンプライアンスを保証する責任があります。
+
+Red Hat Satellite Server または Red Hat Subscription Manager のいずれかを選択したお客様は、RHUI 構成を削除してから、Cloud Access が有効になっている RHEL サブスクリプションを自身の AHB RHEL VM にアタッチする必要があります。  
+
+Red Hat サブスクリプションのコンプライアンス、ソフトウェア更新プログラム、AHB RHEL VM 用のソースの詳細については、[こちら](https://access.redhat.com/articles/5419341)を参照してください。
 
 ### <a name="suse"></a>SUSE
 
@@ -147,13 +153,12 @@ A:いいえ、できません。 VM で実行しているディストリビュ�
 
 A:Red Hat Cloud Access サブスクリプションの登録が、Red Hat から Azure に反映されるまでに時間がかかる場合があります。 1 営業日後も引き続きエラーが表示される場合は、Microsoft サポートにお問い合わせください。
 
-## <a name="common-errors"></a>一般的なエラー
-このセクションには、一般的なエラーの一覧と対応策が含まれています。
+## <a name="common-issues"></a>一般的な問題
+このセクションには、発生する可能性のある一般的な問題の一覧と、軽減策の手順が含まれています。
 
 | エラー | 対応策 |
 | ----- | ---------- |
-| "The subscription is not registered for the Linux preview of Azure Hybrid Benefit. For step-by-step instructions, refer to https://aka.ms/ahb-linux"\(サブスクリプションは、Azure ハイブリッド特典の Linux プレビュー用に登録されていません。詳細の手順については、リンク先を参照してください\) | https://aka.ms/ahb-linux-form でフォームに入力し、Azure ハイブリッド特典の Linux プレビューに登録します。
 | "The action could not be completed because our records show that you have not successfully enabled Red Hat Cloud Access on your Azure subscription…."\(お使いの Azure サブスクリプションで Red Hat Cloud Access が正常に有効化されていないと記録されているため、この操作を完了できませんでした……\) | RHEL VM で特典を使用するには、まず Azure サブスクリプションを Red Hat Cloud Access に登録する必要があります。 Azure サブスクリプションを Red Hat Cloud Access に登録する方法の詳細については、こちらのリンクをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-* プレビューの使用を開始するには、[こちら](https://aka.ms/ahb-linux-form)のフォームに入力してください。
+* Azure CLI を使用して、VM を作成および更新し、Azure ハイブリッド特典のライセンスの種類 (RHEL_BYOS、SLES_BYOS) を追加する方法については、[こちら](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest&preserve-view=true)をご覧ください。

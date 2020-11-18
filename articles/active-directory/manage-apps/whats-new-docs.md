@@ -9,13 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-services: active-directory
-ms.openlocfilehash: 257057c4688fcf75651df4250c601eb1f1a2e8a3
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 10861438334bc804d1b1e4b9a669280f7e09ffde
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422605"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654011"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory アプリケーション管理: 新機能
 
@@ -71,7 +70,7 @@ Azure Active Directory アプリケーション管理のドキュメントの最
 - [シングル サインオン (SSO) とは](what-is-single-sign-on.md)
 - [Azure Active Directory で、過剰な特権が与えられているか、または疑わしいアプリケーションに対してアクションを実行する](manage-application-permissions.md)
 - [クイック スタート:Azure Active Directory (Azure AD) テナントのアプリケーションのプロパティを構成する](add-application-portal-configure.md)
-- [Microsoft Graph API で SAML ベースの SSO アプリ構成を自動化する](application-saml-sso-configure-api.md)
+- [Microsoft Graph API で SAML ベースの SSO アプリ構成を自動化する](/graph/application-saml-sso-configure-api)
 
 
 ## <a name="july-2020"></a>2020 年 7 月

@@ -2,13 +2,13 @@
 title: '[Azure にデプロイ] ボタン'
 description: Azure Resource Manager テンプレートを GitHub リポジトリからデプロイするためのボタンを使用する。
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 62a0a8b0336d9a7fcf00efb172775b9606bcef98
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/10/2020
+ms.openlocfilehash: 7d002508f6b2402f8cff40fb0369896080ecbbad
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675388"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490901"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>デプロイ ボタンを使用して GitHub リポジトリからテンプレートをデプロイする
 
@@ -71,6 +71,14 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 
 リンクの完全な URL が表示されます。
 
+GitHub リポジトリの代わりに [Azure Repos と共に Git](/azure/devops/repos/git/) を使用する場合でも、[Azure にデプロイ] ボタンを使用できます。 リポジトリがパブリックであることを確認します。 テンプレートを取得するには [Items 操作](/rest/api/azure/devops/git/items/get)を使用します。 要求は次の形式にする必要があります。
+
+```http
+https://dev.azure.com/{organization-name}/{project-name}/_apis/git/repositories/{repository-name}/items?scopePath={url-encoded-path}&api-version=6.0
+```
+
+この要求 URL をエンコードします。
+
 ## <a name="create-deploy-to-azure-button"></a>[Deploy to Azure] (Azure にデプロイ) ボタンを作成する
 
 最後に、リンクと画像を一緒に配置します。
@@ -87,6 +95,12 @@ HTML の場合は、次を使用します。
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json" target="_blank">
   <img src="https://aka.ms/deploytoazurebutton"/>
 </a>
+```
+
+Git で Azure リポジトリを使用する場合、ボタンは次の形式になります。
+
+```markdown
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fdev.azure.com%2Forgname%2Fprojectname%2F_apis%2Fgit%2Frepositories%2Freponame%2Fitems%3FscopePath%3D%252Freponame%252Fazuredeploy.json%26api-version%3D6.0)
 ```
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: d3e856256e02e2c1914aeec493a87ffe992bbf13
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e8f71b277a4f4b538d501b1fa825bc6ec43428c8
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740312"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359393"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM での Azure Disk Encryption シナリオ
 
@@ -124,13 +124,13 @@ Get-command *diskencryption*
     > disk-encryption-keyvault パラメーターの値の構文は、/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name] という完全な識別子の文字列です。</br>
 key-encryption-key パラメーターの値の構文は、 https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] という KEK への完全な URI です。 
 
-- **ディスクが暗号化されていることを確認する:** VM の暗号化の状態を確認するには、 [az vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) コマンドを使用します。 
+- **ディスクが暗号化されていることを確認する:** VM の暗号化の状態を確認するには、[az vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) コマンドを使用します。 
 
      ```azurecli-interactive
      az vm encryption show --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup"
      ```
 
-- **暗号化を無効にする:** 暗号化を無効にするには、 [az vm encryption disable](/cli/azure/vm/encryption#az-vm-encryption-disable) コマンドを使用します。 Linux VM 用のデータ ボリュームでのみ、暗号化を無効にすることができます。
+- **暗号化を無効にする:** 暗号化を無効にするには、[az vm encryption disable](/cli/azure/vm/encryption#az-vm-encryption-disable) コマンドを使用します。 Linux VM 用のデータ ボリュームでのみ、暗号化を無効にすることができます。
 
      ```azurecli-interactive
      az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type "data"
@@ -173,13 +173,13 @@ key-encryption-key パラメーターの値の構文は、 https://[keyvault-nam
     >[!NOTE]
     > disk-encryption-keyvault パラメーターの値の構文は、/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name] という完全な識別子の文字列です。</br> key-encryption-key パラメーターの値の構文は、 https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] という KEK への完全な URI です。 
     
-- **ディスクが暗号化されていることを確認する:** VM の暗号化の状態を確認するには、 [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) コマンドレットを使用します。 
+- **ディスクが暗号化されていることを確認する:** VM の暗号化の状態を確認するには、[Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) コマンドレットを使用します。 
     
      ```azurepowershell-interactive 
      Get-AzVmDiskEncryptionStatus -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
      ```
     
-- **ディスク暗号化を無効にする:** 暗号化を無効にするには、 [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) コマンドレットを使用します。 Linux VM 用のデータ ボリュームでのみ、暗号化を無効にすることができます。
+- **ディスク暗号化を無効にする:** 暗号化を無効にするには、[Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) コマンドレットを使用します。 Linux VM 用のデータ ボリュームでのみ、暗号化を無効にすることができます。
      
      ```azurepowershell-interactive 
      Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
@@ -200,8 +200,8 @@ Azure 内にある既存または実行中の Linux VM でのディスク暗号�
 | vmName | 暗号化操作を実行する VM の名前。 |
 | KeyVaultName | 暗号化キーのアップロード先となるキー コンテナーの名前。 コマンドレット `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` または次の Azure CLI コマンド `az keyvault list --resource-group "MyKeyVaultResourceGroupName"` を使用して取得できます。|
 | keyVaultResourceGroup | キー コンテナーが含まれているリソース グループの名前。 |
-|  keyEncryptionKeyURL | 暗号化キーの暗号化に使用されるキー暗号化キーの URL。 このパラメーターは、UseExistingKek ドロップダウン リストで **nokek** を選択した場合には省略可能です。 UseExistingKek ドロップダウン リストで **kek** を選択した場合は、 _keyEncryptionKeyURL_ 値を入力する必要があります。 |
-| volumeType | 暗号化操作が実行されるボリュームの種類。 有効な値は _OS_ 、 _Data_ 、および _All_ です。 
+|  keyEncryptionKeyURL | 暗号化キーの暗号化に使用されるキー暗号化キーの URL。 このパラメーターは、UseExistingKek ドロップダウン リストで **nokek** を選択した場合には省略可能です。 UseExistingKek ドロップダウン リストで **kek** を選択した場合は、_keyEncryptionKeyURL_ 値を入力する必要があります。 |
+| volumeType | 暗号化操作が実行されるボリュームの種類。 有効な値は _OS_、_Data_、および _All_ です。 
 | forceUpdateTag | 操作が強制実行である必要があるたびに、GUID のような一意の値を渡します。 |
 | location | すべてのリソースの場所。 |
 
@@ -414,7 +414,8 @@ Azure Disk Encryption は、次の Linux のシナリオ、機能、およびテ
 - OS フォルダーの上にデータ ドライブがマウントされている VM。
 - 書き込みアクセラレータ ディスクを備えた M シリーズの VM。
 - [カスタマー マネージド キーによるサーバー側での暗号化](disk-encryption.md) (SSE + CMK) で暗号化されているディスクを持つ VM に ADE を適用する。 ADE で暗号化された VM 上のデータ ディスクに SSE + CMK を適用することも、サポートされていないシナリオです。
-- ADE で暗号化されている、または ADE で暗号化 **されたことがある** VM を、 [カスタマー マネージド キーを使用したサーバー側暗号化に移行する](disk-encryption.md)。
+- ADE で暗号化されている、または ADE で暗号化 **されたことがある** VM を、[カスタマー マネージド キーを使用したサーバー側暗号化に移行する](disk-encryption.md)。
+- [ローカルの一時ディスクを使用しない Azure VM のサイズ](../azure-vms-no-temp-disk.md)。具体的には、Dv4、Dsv4、Ev4、および Esv4 です。
 
 ## <a name="next-steps"></a>次のステップ
 

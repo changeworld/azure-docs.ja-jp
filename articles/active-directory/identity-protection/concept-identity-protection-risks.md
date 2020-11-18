@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 11/09/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87239e361b518a85cf30352374e7a9b5e530928e
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 32d9683012a5900569740080d61ac21b464a5cd4
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042610"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490612"
 ---
 # <a name="what-is-risk"></a>リスクとは
 
@@ -24,14 +24,14 @@ Azure AD Identity Protection のリスク検出には、ディレクトリ内の
 
 Identity Protection を使用すると、組織は、強力なリソースにアクセスして、これらの疑わしいアクションをすばやく確認して対応できます。 
 
->**注:** Identity Protection では、正しい資格情報が使用されている場合にのみ、リスク検出を生成します。 サインイン時に間違った資格情報が使用されている場合に、資格情報の侵害のリスクを示すものではありません。
-
 ![危険なユーザーとサインインを示しているセキュリティの概要](./media/concept-identity-protection-risks/identity-protection-security-overview.png)
 
+> [!NOTE]
+> Identity Protection では、正しい資格情報が使用されている場合にのみ、リスク検出を生成します。 サインイン時に間違った資格情報が使用されている場合に、資格情報の侵害のリスクを示すものではありません。
 
 ## <a name="risk-types-and-detection"></a>リスクの種類と検出
 
-2 種類のリスク ( **ユーザー** と **サインイン** ) と、2 種類の検出または計算 ( **リアルタイム** と **オフライン** ) があります。
+2 種類のリスク (**ユーザー** と **サインイン**) と、2 種類の検出または計算 (**リアルタイム** と **オフライン**) があります。
 
 リアルタイム検出は、5 から 10 分間レポートに表示されない場合があります。 オフライン検出は、2 から 24 時間レポートに表示されない場合があります。
 
@@ -77,6 +77,10 @@ Identity Protection を使用すると、組織は、強力なリソースにア
 Identity Protection では、リスクを低、中、高の 3 つのレベルに分類します。 
 
 Microsoft ではリスクの計算方法に関する具体的な詳細を公開していませんが、各レベルごとに、ユーザーまたはサインインが侵害されたという信頼度は高くなります。 たとえば、見慣れないサインイン プロパティのインスタンスが 1 つあるといったことは、資格情報の漏洩ほど脅威的ではない可能性があります。
+
+### <a name="password-hash-synchronization"></a>パスワード ハッシュの同期
+
+資格情報漏洩やパスワード スプレーなどのリスク検出では、検出を行うため、パスワード ハッシュが存在する必要があります。 パスワード ハッシュ同期について詳しくは、「[Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装](../hybrid/how-to-connect-password-hash-synchronization.md)」の記事をご覧ください。
 
 ### <a name="leaked-credentials"></a>漏洩した資格情報
 

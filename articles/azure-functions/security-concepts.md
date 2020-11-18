@@ -3,12 +3,12 @@ title: Azure Functions のセキュリティ保護
 description: 一般的な攻撃に対して、Azure で実行される関数コードのセキュリティを強化する方法について説明します。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: cd97193fdf6549e667578e36f0be9104e4381d30
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: ee54ff8c1efaee00999888891e6de255060aa416
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102308"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491326"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions のセキュリティ保護
 

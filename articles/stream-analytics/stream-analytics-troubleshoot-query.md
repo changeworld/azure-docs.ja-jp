@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: c2c199b2366f2708af19c1868cce09e0ba38fc96
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ef03560cff704255d2779a747d124e0b39a1c657
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130257"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491309"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics のクエリのトラブルシューティング
 
@@ -41,7 +41,7 @@ ms.locfileid: "93130257"
     - イベントのタイムスタンプがジョブの開始時刻よりも前になっている。イベントがドロップされてしまいます。
     - [**JOIN**](/stream-analytics-query/join-azure-stream-analytics) 条件が一致しない。 どれとも一致しない場合は、出力は 0 個になります。
 
-5.  イベント順序ポリシーが期待どおりに構成されていることを確認します。 **[設定]** に移動し、 [ **[イベント順序]**](./stream-analytics-time-handling.md) を選択します。 このポリシーは、 **[テスト]** ボタンを使用してクエリをテストする場合には適用 " *されません* "。 この結果が、ブラウザーでテストする場合と、運用環境でジョブを実行する場合の相違点の 1 つです。 
+5.  イベント順序ポリシーが期待どおりに構成されていることを確認します。 **[設定]** に移動し、[ **[イベント順序]**](./stream-analytics-time-handling.md) を選択します。 このポリシーは、 **[テスト]** ボタンを使用してクエリをテストする場合には適用 "*されません*"。 この結果が、ブラウザーでテストする場合と、運用環境でジョブを実行する場合の相違点の 1 つです。 
 
 6. アクティビティとリソース ログを使用したデバッグ:
     - [アクティビティ ログ](../azure-resource-manager/management/view-activity-logs.md)を使用してフィルター処理を行い、エラーを特定してデバッグします。
@@ -51,17 +51,19 @@ ms.locfileid: "93130257"
 
 Azure Stream Analytics で並列処理を活用していることを確認します。 入力パーティションの構成と分析クエリ定義のチューニングによって、Stream Analytics ジョブの[クエリ並列処理を使用してスケーリングする](stream-analytics-parallelization.md)ことをお勧めします。
 
+リソース使用率が常に 80% を超え、透かしの遅延が増加し、バックログされたイベントの数が増加している場合は、ストリーミング ユニットを増やすことを検討してください。 使用率が高い場合は、最大数に近い割り当てリソースがジョブによって使用されていることを示します。
+
 ## <a name="debug-queries-progressively"></a>クエリを段階的にデバッグする
 
 リアルタイムのデータ処理では、クエリの実行中にデータの状況を把握することが役に立つ場合があります。 これは、Visual Studio のジョブ ダイアグラムを使用して確認できます。 Visual Studio がない場合は、中間データを出力するための追加の手順を実行できます。
 
-Azure Stream Analytics ジョブの入力またはステップは複数回読み取ることができるため、追加の SELECT INTO ステートメントを記述することができます。 これを実行すると、中間データがストレージに出力され、データの正確性を確認できるようになります。これは、プログラムをデバッグする際に " *watch 変数* " によって行われる確認とまったく同じです。
+Azure Stream Analytics ジョブの入力またはステップは複数回読み取ることができるため、追加の SELECT INTO ステートメントを記述することができます。 これを実行すると、中間データがストレージに出力され、データの正確性を確認できるようになります。これは、プログラムをデバッグする際に "*watch 変数*" によって行われる確認とまったく同じです。
 
 Azure Stream Analytics ジョブの次のサンプル クエリには、1 つのストリーム入力と 2 つの参照データ入力があり、Azure Table Storage に出力が行われます。 このクエリはイベント ハブと 2 つの参照 BLOB からのデータを結合し、名前とカテゴリの情報を取得します。
 
 ![Stream Analytics の SELECT INTO クエリの例](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
 
-ジョブが実行中なのに出力でイベントが生成されていないことに注意してください。 次に示す **[監視]** タイルでは、入力からデータが生成中であることがわかります。しかし、 **JOIN** のどのステップが原因ですべてのイベントが欠落したのかはわかりません。
+ジョブが実行中なのに出力でイベントが生成されていないことに注意してください。 次に示す **[監視]** タイルでは、入力からデータが生成中であることがわかります。しかし、**JOIN** のどのステップが原因ですべてのイベントが欠落したのかはわかりません。
 
 ![Stream Analytics の [監視] タイル](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
 

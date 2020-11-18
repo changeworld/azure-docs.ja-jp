@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: c703dd4053cc27d469d83d344da910e8e5b23ddb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ec260c2e71d1716eb4de9ad25942f61169356dfb
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129900"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491343"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Azure Stream Analytics ジョブからマネージド ID を使用して Azure SQL Database にアクセスする (プレビュー)
 
@@ -70,7 +70,7 @@ Azure Stream Analytics では、Azure SQL Database 出力シンクに対する[�
 
 次に、Azure Active Directory ID にマップされる SQL Database の包含データベース ユーザーを作成します。 包含データベース ユーザーは、プライマリ データベースに対するログインは持っていませんが、データベースに関連付けられているディレクトリ内の ID にマップされます。 Azure Active Directory の ID は、個々のユーザー アカウントでもグループ アカウントでもかまいません。 この場合は、Stream Analytics ジョブに対する包含データベース ユーザーを作成する必要があります。 
 
-1. SQL Server Management Studio を使用して SQL Database に接続します。 **[ユーザー名]** は、 **ALTER ANY USER** アクセス許可を持っている Azure Active Directory ユーザーです。 たとえば、SQL Server で設定した管理者です。 **[Azure Active Directory - MFA で汎用]** 認証を使用します。 
+1. SQL Server Management Studio を使用して SQL Database に接続します。 **[ユーザー名]** は、**ALTER ANY USER** アクセス許可を持っている Azure Active Directory ユーザーです。 たとえば、SQL Server で設定した管理者です。 **[Azure Active Directory - MFA で汎用]** 認証を使用します。 
 
    ![SQL Server への接続](./media/sql-db-output-managed-identity/connect-sql-server.png)
 
@@ -86,8 +86,8 @@ Azure Stream Analytics では、Azure SQL Database 出力シンクに対する[�
 
    1. その場合は、Azure portal で SQL Server リソースに移動します。 **[セキュリティ]** セクションで、 **[ファイアウォールと仮想ネットワーク]** ページを開きます。 
    1. 任意の規則名で新しい規則を追加します。
-   1. " *開始 IP* " には **[新しいファイアウォール規則]** ウィンドウの " *開始* " IP アドレスを使用します。
-   1. " *終了 IP* " には **[新しいファイアウォール規則]** ウィンドウの " *終了* " IP アドレスを使用します。 
+   1. "*開始 IP*" には **[新しいファイアウォール規則]** ウィンドウの "*開始*" IP アドレスを使用します。
+   1. "*終了 IP*" には **[新しいファイアウォール規則]** ウィンドウの "*終了*" IP アドレスを使用します。 
    1. **[保存]** を選択し、SQL Server Management Studio から再び接続を試みます。 
 
 1. 接続したら、包含データベース ユーザーを作成します。 次の SQL コマンドを使用して、Stream Analytics ジョブと同じ名前の包含データベース ユーザーを作成します。 *ASA_JOB_NAME* の前後を角かっこで必ず囲みます。 次の T-SQL 構文を使用して、クエリを実行します。 
@@ -123,6 +123,10 @@ GRANT SELECT, INSERT ON OBJECT::TABLE_NAME TO ASA_JOB_NAME;
 1. **[追加] > [SQL Database]** を選択します。 SQL Database 出力シンクの出力プロパティ ウィンドウで、[認証モード] ドロップダウンから **[マネージド ID]** を選択します。
 
 1. 残りのプロパティを入力します。 SQL Database 出力の作成の詳細については、[Stream Analytics での SQL Database 出力の作成](sql-database-output.md)に関する記事を参照してください。 終わったら、 **[保存]** を選択します。 
+
+## <a name="remove-managed-identity"></a>マネージド ID の削除
+
+Stream Analytics ジョブに対して作成されたマネージド ID は、ジョブが削除されたときにのみ削除されます。 ジョブを削除せずにマネージド ID を削除することはできません。 マネージド ID を使用する必要がなくなった場合は、出力の認証方法を変更できます。 マネージド ID は、ジョブが削除されるまで存在し続け、マネージド ID の認証を再度使用する場合に使用されます。
 
 ## <a name="next-steps"></a>次のステップ
 
