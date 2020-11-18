@@ -5,15 +5,15 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.author: cavoeg
 ms.date: 10/06/2020
-ms.openlocfilehash: c04bb82810bf55d6ac55b2697f5010896e0eb9b4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 0cc31c26a71775dfdf3e9ee94852fda8af2c0cfc
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289280"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844541"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>クイックスタート: ARM テンプレートを使用して Azure API for FHIR をデプロイする
 
@@ -150,11 +150,11 @@ read -p "Press [ENTER] to continue: "
 
 新しい Azure API for FHIR サービスの概要を確認するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) で、 **Azure API for FHIR** を検索して選択します。
+1. [Azure portal](https://portal.azure.com) で、**Azure API for FHIR** を検索して選択します。
 
 2. FHIR の一覧から新しいサービスを選択します。 新しい Azure API for FHIR サービスの **[概要]** ページが表示されます。
 
-3. 新しい FHIR API アカウントがプロビジョニングされていることを確認するために、 **FHIR メタデータ エンドポイント** の横にあるリンクを選択して、FHIR API 機能ステートメントをフェッチします。 このリンクは `https://<service-name>.azurehealthcareapis.com/metadata` という形式になっています。 アカウントがプロビジョニングされると、大きな JSON ファイルが表示されます。
+3. 新しい FHIR API アカウントがプロビジョニングされていることを確認するために、**FHIR メタデータ エンドポイント** の横にあるリンクを選択して、FHIR API 機能ステートメントをフェッチします。 このリンクは `https://<service-name>.azurehealthcareapis.com/metadata` という形式になっています。 アカウントがプロビジョニングされると、大きな JSON ファイルが表示されます。
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 

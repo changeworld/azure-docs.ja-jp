@@ -3,13 +3,13 @@ title: クイックスタート - Azure でコンテナー イメージをオン
 description: Azure Container Registry コマンドを使用して、Azure クラウド内で Docker コンテナー イメージをオンデマンドでビルド、プッシュ、実行します。
 ms.topic: quickstart
 ms.date: 09/25/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 1b4dcc05747ceae52c649c366c3faf437e77b560
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: contperfq1, devx-track-azurecli
+ms.openlocfilehash: adb63b716172c979ca31f1ef70bf1523ff1ad5cc
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098911"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845069"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>クイック スタート:Azure Container Registry タスクを使用したコンテナー イメージのビルドと実行
 
@@ -27,7 +27,7 @@ ms.locfileid: "93098911"
 
 コンテナー レジストリがまだない場合は、最初に [az group create][az-group-create] コマンドを使用してリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-次の例では、 *myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -35,7 +35,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
-[az acr create][az-acr-create] コマンドを使用してコンテナー レジストリを作成します。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 次の例では、 *myContainerRegistry008* を使用しています。 これを一意の値に更新します。
+[az acr create][az-acr-create] コマンドを使用してコンテナー レジストリを作成します。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 次の例では、*myContainerRegistry008* を使用しています。 これを一意の値に更新します。
 
 ```azurecli-interactive
 az acr create --resource-group myResourceGroup \

@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/22/2020
-ms.custom: mvc
-ms.openlocfilehash: 75d76c64c10bf3ecc28c32452618048119bb9a59
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: d43fab43b05ccfd88308390f58ba48ff9111b295
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547624"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842823"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-flexible-server-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Database for PostgreSQL フレキシブル サーバーを作成する
 
@@ -38,7 +38,7 @@ CLI をローカルにインストールして使用する場合、このクイ�
 az login
 ```
 
-[az account set](/cli/azure/account#az-account-set) コマンドを使用して、アカウントの特定のサブスクリプションを選択します。 コマンドの **subscription** 引数の値として使用する、 **az login** 出力の **id** 値をメモしておきます。 複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 すべてのサブスクリプションを取得するには、[az account list](/cli/azure/account#az-account-list) を使用します。
+[az account set](/cli/azure/account#az-account-set) コマンドを使用して、アカウントの特定のサブスクリプションを選択します。 コマンドの **subscription** 引数の値として使用する、**az login** 出力の **id** 値をメモしておきます。 複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 すべてのサブスクリプションを取得するには、[az account list](/cli/azure/account#az-account-list) を使用します。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -64,7 +64,7 @@ az postgres flexible-server create
 - 既定の接続方法は、自動生成された仮想ネットワークとサブネットを使用するプライベート アクセス (VNet 統合) です。
 
 > [!NOTE] 
-> サーバーの作成後に接続方法を変更することはできません。 たとえば、作成時に " *プライベート アクセス (VNet 統合)* " を選択した場合、作成後に *パブリック アクセス (使用できる IP アドレス)* に変更することはできません。 VNet 統合を使用してサーバーに安全にアクセスするには、プライベート アクセスを指定してサーバーを作成することを強くお勧めします。 プライベート アクセスの詳細については、[概念に関する記事](./concepts-networking.md)を参照してください。
+> サーバーの作成後に接続方法を変更することはできません。 たとえば、作成時に "*プライベート アクセス (VNet 統合)* " を選択した場合、作成後に *パブリック アクセス (使用できる IP アドレス)* に変更することはできません。 VNet 統合を使用してサーバーに安全にアクセスするには、プライベート アクセスを指定してサーバーを作成することを強くお勧めします。 プライベート アクセスの詳細については、[概念に関する記事](./concepts-networking.md)を参照してください。
 
 既定値を変更したい場合は、Azure CLI リファレンス ドキュメントで、 <!--FIXME --> 構成可能な CLI パラメーターの完全な一覧を参照してください。 
 
@@ -112,7 +112,7 @@ az postgres flexible-server show --resource-group myresourcegroup --name mydemos
 
 ## <a name="connect-using-postgresql-command-line-client"></a>PostgreSQL コマンドライン クライアントを使用して接続する
 
-" *プライベート アクセス (VNet 統合)* " を指定してフレキシブル サーバーを作成したので、サーバーと同じ VNet 内のリソースからサーバーに接続する必要があります。 仮想マシンを作成して、作成された仮想ネットワークに追加できます。 
+"*プライベート アクセス (VNet 統合)* " を指定してフレキシブル サーバーを作成したので、サーバーと同じ VNet 内のリソースからサーバーに接続する必要があります。 仮想マシンを作成して、作成された仮想ネットワークに追加できます。 
 
 VM が作成されたら、コンピューターに SSH 接続して、 **[psql](https://www.postgresql.org/download/)** コマンドライン ツールをインストールできます。
 

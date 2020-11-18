@@ -3,12 +3,12 @@ title: Azure Notebooks プレビューの概要
 description: 無料の Azure Notebooks プレビューサービスを使用して、クラウド上で Jupyter Notebook を実行します。セットアップも構成も不要です。
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: d229e48e5c49a9a672c533fb24231e9329e524c0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d59faaf85a1fdbad776e954e974bafa300f93d85
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85831405"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845137"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Azure Notebooks プレビューの概要
 
@@ -111,4 +111,4 @@ Azure Notebooks に関する質疑応答を行うには、[GitHub リポジト�
   - [スライド ショーの表示](present-jupyter-notebooks-slideshow.md)
   - [データ ファイルの操作](work-with-project-data-files.md)
   - [データ リソースへのアクセス](access-data-resources-jupyter-notebooks.md)
-  - [Azure Machine Learning の使用](use-machine-learning-services-jupyter-notebooks.md)
+  - [Azure Machine Learning の使用](../machine-learning/samples-notebooks.md)

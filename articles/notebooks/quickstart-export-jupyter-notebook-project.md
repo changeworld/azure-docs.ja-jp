@@ -3,12 +3,12 @@ title: Azure Notebooks プレビューから Jupyter Notebook プロジェクト
 description: Jupyter Notebook プロジェクトをすばやくエクスポートします。
 ms.topic: quickstart
 ms.date: 06/29/2020
-ms.openlocfilehash: 3153247b9d15167ab437d6c46142bbd41f8e4b23
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: ea16bd61b542217fb6f2d5ba1d926a0bc19d4cce
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030448"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844422"
 ---
 # <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Azure Notebooks プレビューで Jupyter Notebook プロジェクトをエクスポートする
 
@@ -79,7 +79,7 @@ Azure Machine Learning によってエンドツーエンドの機械学習プラ
 1. 左側のナビゲーション バーを使用して、**[Notebooks]** を選択します。
 1. **[ファイルのアップロード]** ボタンをクリックし、Azure Notebooks からダウンロードしたプロジェクト ファイルをアップロードします。
 
-Azure ML および Jupyter Notebook の実行に関する追加情報については、[ドキュメント](../machine-learning/how-to-run-jupyter-notebooks.md)を参照するか、Microsoft Learn で [Machine Learning の概要](https://docs.microsoft.com/learn/modules/intro-to-azure-machine-learning-service/)に関するモジュールをお試しください。
+Azure ML および Jupyter Notebook の実行に関する追加情報については、[ドキュメント](../machine-learning/how-to-run-jupyter-notebooks.md)を参照するか、Microsoft Learn で [Machine Learning の概要](/learn/modules/intro-to-azure-machine-learning-service/)に関するモジュールをお試しください。
 
 
 ## <a name="use-azure-lab-services"></a>Azure Lab Services を使用する
