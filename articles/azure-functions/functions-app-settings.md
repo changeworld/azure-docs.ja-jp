@@ -3,12 +3,12 @@ title: Azure Functions のアプリケーション設定のリファレンス
 description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 3d3def7057eeb022b3e207cbecf06ee3074a91af
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 2b71bee620ab7d5b1ef98b60013d1978f49d127f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043222"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505888"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -135,7 +135,7 @@ Functions ランタイムのバージョン 2.x 以降では、現在の環境�
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
-Azure Functions ランタイムは、HTTP によってトリガーされる関数を除くすべての関数で、このストレージ アカウントの接続文字列を使用します。 このストレージ アカウントは、blob、キュー、およびテーブルをサポートする汎用的なものである必要があります。 「[ストレージ アカウント](functions-infrastructure-as-code.md#storage-account)」および「[ストレージ アカウントの要件](storage-considerations.md#storage-account-requirements)」を参照してください。
+Azure Functions ランタイムでは、このストレージ アカウント接続文字列は通常の操作に使用されます。 このストレージ アカウントの使用方法としては、キー管理、タイマー トリガー管理、Event Hubs チェックポイントなどがあります。 このストレージ アカウントは、blob、キュー、およびテーブルをサポートする汎用的なものである必要があります。 「[ストレージ アカウント](functions-infrastructure-as-code.md#storage-account)」および「[ストレージ アカウントの要件](storage-considerations.md#storage-account-requirements)」を参照してください。
 
 |Key|値の例|
 |---|------------|
@@ -207,7 +207,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 ## <a name="scale_controller_logging_enable"></a>SCALE\_CONTROLLER\_LOGGING\_ENABLE
 
-" _この設定は現在プレビューの段階です。_ "  
+"_この設定は現在プレビューの段階です。_ "  
 
 この設定は、Azure Functions スケール コントローラーからのログ記録を制御します。 詳細については、[スケール コントローラーのログ](functions-monitoring.md#scale-controller-logs)に関するセクションを参照してください。
 
@@ -256,7 +256,7 @@ Premium プランのみ。 `1` の値を指定すると、ストレージ アカ
 
 ## <a name="website_node_default_version"></a>WEBSITE\_NODE\_DEFAULT_VERSION
 
-" _Windows のみ_ "。  
+"_Windows のみ_"。  
 Windows で関数アプリを実行するときに使用する Node.js のバージョンを設定します。 チルダ (~) を使用して、ランタイムがターゲット メジャー バージョンの利用可能な最新バージョンを使用するようにする必要があります。 たとえば、`~10` に設定すると、最新バージョンの Node.js 10 が使用されます。 メジャー バージョンがチルダ付きで対象になっている場合は、マイナー バージョンを手動で更新する必要はありません。 
 
 |Key|値の例|

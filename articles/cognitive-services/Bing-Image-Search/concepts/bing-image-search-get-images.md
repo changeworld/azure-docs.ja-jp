@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: b414711f5589a141d59fbe2f14d0a8ae992f5acf
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3e5041855cc036c278979ba1c87634a61ec68ec7
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084444"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593486"
 ---
 # <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Bing Image Search API で Web から画像を取得する
 
@@ -36,7 +36,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-URL エンコードされた検索語句には、[q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) クエリ パラメーターを使用します。 たとえば、「 *sailing dinghies* 」と入力した場合、`q` を `sailing+dinghies` または `sailing%20dinghies` に設定します。
+URL エンコードされた検索語句には、[q](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) クエリ パラメーターを使用します。 たとえば、「*sailing dinghies*」と入力した場合、`q` を `sailing+dinghies` または `sailing%20dinghies` に設定します。
 
 > [!IMPORTANT]
 > * すべての要求は、クライアントからではなく、サーバーから実行する必要があります。
@@ -44,29 +44,29 @@ URL エンコードされた検索語句には、[q](https://docs.microsoft.com/
 
 ## <a name="get-images-from-a-specific-web-domain"></a>特定の Web ドメインから画像を取得する
 
-特定のドメインから画像を取得するには、[site:](https://msdn.microsoft.com/library/ff795613.aspx) というクエリ演算子を使用します。
+特定のドメインから画像を取得するには、[site:](/previous-versions/bing/search/ff795613(v=msdn.10)) というクエリ演算子を使用します。
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
 > [!NOTE]
-> `site:` 演算子を使用したクエリへの応答には、[safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) の設定に関係なく成人向けのコンテンツが含まれることがあります。 `site:` の使用は、対象となるドメイン上のコンテンツを把握している場合に限定してください。
+> `site:` 演算子を使用したクエリへの応答には、[safeSearch](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) の設定に関係なく成人向けのコンテンツが含まれることがあります。 `site:` の使用は、対象となるドメイン上のコンテンツを把握している場合に限定してください。
 
 ## <a name="filter-images"></a>イメージのフィルター
 
  Images Search API の既定の動作では、クエリとの関連性が高い画像がすべて返されます。 背景が透明な画像や特定のサイズの画像のみを検索対象とするなど、Bing から返された画像をフィルタリングする必要がある場合は、次のクエリ パラメーターを使用してください。
 
-* [aspect](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#aspect) - 画像を縦横比でフィルタリング (例: 標準またはワイド スクリーン画像など)。
-* [color](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#color) - ドミナント カラーや白黒で画像をフィルタリング。
-* [freshness](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#freshness) - 新しさで画像をフィルタリング (例: この 1 週間に Bing によって検出された画像など)。
-* [height](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#height)、[width](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#width) - 幅と高さで画像をフィルタリング。
-* [imageContent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagecontent) - 画像をコンテンツでフィルタリング (例: 人の顔が映った画像など)。
-* [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) - 画像を種類でフィルタリング (例: クリップ アート、アニメーション GIF、透明な背景)。
-* [license](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#license) - サイトに関連付けられているライセンスの種類で画像をフィルタリング。
-* [size](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#size) - 画像をサイズでフィルタリング (最大 200 x 200 ピクセルの小さな画像など)。
+* [aspect](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#aspect) - 画像を縦横比でフィルタリング (例: 標準またはワイド スクリーン画像など)。
+* [color](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#color) - ドミナント カラーや白黒で画像をフィルタリング。
+* [freshness](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#freshness) - 新しさで画像をフィルタリング (例: この 1 週間に Bing によって検出された画像など)。
+* [height](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#height)、[width](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#width) - 幅と高さで画像をフィルタリング。
+* [imageContent](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagecontent) - 画像をコンテンツでフィルタリング (例: 人の顔が映った画像など)。
+* [imageType](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) - 画像を種類でフィルタリング (例: クリップ アート、アニメーション GIF、透明な背景)。
+* [license](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#license) - サイトに関連付けられているライセンスの種類で画像をフィルタリング。
+* [size](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#size) - 画像をサイズでフィルタリング (最大 200 x 200 ピクセルの小さな画像など)。
 
-特定のドメインから画像を取得するには、[site:](https://msdn.microsoft.com/library/ff795613.aspx) というクエリ演算子を使用します。
+特定のドメインから画像を取得するには、[site:](/previous-versions/bing/search/ff795613(v=msdn.10)) というクエリ演算子を使用します。
 
 次の例は、Bing が過去 1 週間以内に検出した小さな画像を ContosoSailing.com から取得する方法を示しています。  
 
@@ -81,7 +81,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="bing-image-search-response-format"></a>Bing Image Search の応答の形式
 
-Bing からの応答メッセージには、クエリとの関連性が高いと Cognitive Services が判断した画像のリストを格納する [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 応答が含まれています。 このリスト内の各 [Image](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) オブジェクトには、画像の URL、サイズ、大きさ、エンコード形式、画像のサムネイルの URL、サムネイルの大きさなどなど、画像に関するさまざまな情報が含まれています。
+Bing からの応答メッセージには、クエリとの関連性が高いと Cognitive Services が判断した画像のリストを格納する [Images](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 応答が含まれています。 このリスト内の各 [Image](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) オブジェクトには、画像の URL、サイズ、大きさ、エンコード形式、画像のサムネイルの URL、サムネイルの大きさなどなど、画像に関するさまざまな情報が含まれています。
 
 > [!NOTE]
 > * 画像は、応答に含まれている順序で表示する必要があります。
@@ -114,7 +114,7 @@ Bing からの応答メッセージには、クエリとの関連性が高いと
 },
 ```
 
-Bing Image Search API を呼び出すと、結果のリストが Bing から返されます。 このリストは、クエリとの関連性が高い結果の総数のサブセットです。 表示できる画像の数の見積もりは、応答の `totalEstimatedMatches` フィールドに格納されます。 ページをめくるように残りの画像を表示する方法について詳しくは、[画像のページ移動](../paging-images.md)に関するページを参照してください。
+Bing Image Search API を呼び出すと、結果のリストが Bing から返されます。 このリストは、クエリとの関連性が高い結果の総数のサブセットです。 表示できる画像の数の見積もりは、応答の `totalEstimatedMatches` フィールドに格納されます。 ページをめくるように残りの画像を表示する方法について詳しくは、[画像のページ移動](../../bing-web-search/paging-search-results.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

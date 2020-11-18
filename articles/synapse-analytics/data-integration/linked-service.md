@@ -2,28 +2,28 @@
 title: リンクされたサービスをセキュリティで保護する
 description: マネージド VNet を使用して、リンクされたサービスをプロビジョニングしてセキュリティで保護する方法について説明します
 services: synapse-analytics
-author: acomet
+author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: f5a3c73d60f038820de100f99c554eec27fd6f55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: feabfe505601276269c2774e3b39dd5cbaa32087
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033185"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359971"
 ---
-# <a name="secure-a-linked-service-with-private-links"></a>Private Link を使用してリンクされたサービスをセキュリティで保護する 
+# <a name="secure-a-linked-service-with-private-links"></a>Private Link を使用してリンクされたサービスをセキュリティで保護する
 
 この記事では、プライベート エンドポイントを使用して Synapse 内のリンクされたサービスをセキュリティで保護する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
-* **Microsoft Azure Storage アカウント**:"*ソース*" データ ストアとして Azure Data Lake Gen 2 を使用します。 ストレージ アカウントがない場合の作成手順については、「[Azure Storage アカウントの作成](../../storage/blobs/data-lake-storage-quickstart-create-account.md)」を参照してください。 ストレージ アカウントにそれにアクセスするための Synapse Studio IP フィルタリングが用意されていること、**選択されたネットワーク**のみにストレージ アカウントへのアクセスを許可していることを確認します。 **[ファイアウォールと仮想ネットワーク]** ブレードでの設定は次の図のようになります。
+* **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
+* **Microsoft Azure Storage アカウント**:"*ソース*" データ ストアとして Azure Data Lake Gen 2 を使用します。 ストレージ アカウントがない場合の作成手順については、「[Azure Storage アカウントの作成](../../storage/blobs/data-lake-storage-quickstart-create-account.md)」を参照してください。 ストレージ アカウントにそれにアクセスするための Synapse Studio IP フィルタリングが用意されていること、**選択されたネットワーク** のみにストレージ アカウントへのアクセスを許可していることを確認します。 **[ファイアウォールと仮想ネットワーク]** ブレードでの設定は次の図のようになります。
 
 ![セキュリティで保護されたストレージ アカウント](./media/secure-storage-account.png)
 
@@ -37,7 +37,7 @@ Azure Synapse Analytics で、リンクされたサービスとは、他のサ�
 1. リストから [Azure Data Lake Storage Gen2] タイルを選択し、 **[続行]** を選択します。
 1. **[Interactive Authoring]\(インタラクティブな作成\)** を必ず有効にしてください。 これは有効になるまでに 1 分程かかる場合があります。 
 1. ご利用の認証資格情報を入力します。 アカウント キー、サービス プリンシパル、およびマネージド ID が現在サポートされている認証の種類です。 [テスト接続] を選択して、ご利用の資格情報が正しいことを確認します。
-1. **[テスト接続]** を選択します。プライベート エンドポイントを作成および承認しなければストレージ アカウントにアクセスできないようになっているため、これは失敗するはずです。 エラー メッセージ内に、**プライベート エンド ポイント**を作成するためのリンクが表示されます。それをたどることで、次の部分に進むことができます。 そのリンクをたどる場合は、次の部分をスキップします。
+1. **[テスト接続]** を選択します。プライベート エンドポイントを作成および承認しなければストレージ アカウントにアクセスできないようになっているため、これは失敗するはずです。 エラー メッセージ内に、**プライベート エンド ポイント** を作成するためのリンクが表示されます。それをたどることで、次の部分に進むことができます。 そのリンクをたどる場合は、次の部分をスキップします。
 1. 入力し終えたら **[作成]** を選択します。
 
 ## <a name="create-a-managed-private-endpoint"></a>マネージド プライベート エンドポイントを作成する
@@ -68,6 +68,8 @@ Azure Synapse Analytics で、リンクされたサービスとは、他のサ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Synapse Analytics でのマネージド プライベート エンドポイントについてさらに理解を深めるには、[Synapse マネージド プライベート エンドポイントの概念](data-integration-data-lake.md)に関する記事を参照してください。
+
+Synapse Analytics でのマネージド プライベート エンドポイントについてさらに理解を深めるには、[マネージド プライベート エンドポイント](../security/synapse-workspace-managed-private-endpoints.md)に関する記事を参照してください。
+
 
 Synapse Analytics のデータ統合の詳細については、[Data Lake へのデータの取り込み](data-integration-data-lake.md)に関する記事を参照してください。

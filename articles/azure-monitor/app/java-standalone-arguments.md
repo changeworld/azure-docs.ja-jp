@@ -1,17 +1,17 @@
 ---
-title: 任意の環境で実行されている Java アプリケーションを監視する - Azure Monitor Application Insights
-description: アプリをインストルメント化することなく、Java スタンドアロン エージェントを使用して、任意の環境で実行されている Java アプリケーションのアプリケーション パフォーマンスを監視します。 分散トレースとアプリケーション マップです。
+title: JVM 引数の追加 - Azure Monitor Application Insights Java
+description: Azure Monitor Application Insights Java に対する JVM 引数の追加
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: b1a23c01fdf8a0145c26b709f36709a7b710103f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c9c38d4173413310b715e05c9dcfb9c15be9d4f
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374305"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377635"
 ---
-# <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>Azure Monitor Application Insights の JVM 引数の Java スタンドアロン エージェントを構成する
+# <a name="adding-the-jvm-arg-for-azure-monitor-application-insights-java"></a>Azure Monitor Application Insights Java に対する JVM 引数の追加
 
 
 

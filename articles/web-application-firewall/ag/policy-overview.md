@@ -7,12 +7,12 @@ author: winthrop28
 ms.service: web-application-firewall
 ms.date: 10/14/2020
 ms.author: victorh
-ms.openlocfilehash: 789a60c80d14301c107824d178a3566d358d287f
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0f7fec997ec6d0c73fe6d1039ab1033752e0cedf
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056397"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566573"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web アプリケーション ファイアウォール (WAF) ポリシーの概要
 
@@ -57,7 +57,7 @@ adatum.com/payments URI は、注意が必要な場所です。 そのため、�
 
 ## <a name="existing-waf-configurations"></a>既存の WAF 構成
 
-新しい Web アプリケーション ファイアウォールの WAF 設定 (カスタム ルール、マネージド ルールセットの構成、除外など) はすべて WAF ポリシーに存在します。 既存の WAF がある場合、これらの設定がまだ WAF 構成にある可能性があります。 新しい WAF ポリシーへの移行の詳細については、「[Azure PowerShell を使用して Web アプリケーションのファイアウォール ポリシーを移行する](https://docs.microsoft.com/azure/web-application-firewall/ag/migrate-policy)」を参照してください。 
+新しい Web アプリケーション ファイアウォールの WAF 設定 (カスタム ルール、マネージド ルールセットの構成、除外など) はすべて WAF ポリシーに存在します。 既存の WAF がある場合、これらの設定がまだ WAF 構成にある可能性があります。 新しい WAF ポリシーへの移行の詳細については、「[Azure PowerShell を使用して Web アプリケーションのファイアウォール ポリシーを移行する](./migrate-policy.md)」を参照してください。 
 
 
 ## <a name="next-steps"></a>次のステップ

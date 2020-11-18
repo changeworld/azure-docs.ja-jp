@@ -1,7 +1,7 @@
 ---
 title: azureml-datasets を使用したトレーニング
 titleSuffix: Azure Machine Learning
-description: トレーニングでデータセットを使用する方法について説明します。
+description: Azure Machine Learning データセットを使用した ML モデル トレーニングのために、ローカルまたはリモートのコンピューティングで自分のデータを使用できるようにする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,13 +11,13 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 70fd8796eb4d17662697410bf97caee835e998ab
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, data4ml
+ms.openlocfilehash: 263509ce7d348e51bf4a2a1d7ad83fb5dfdb5e29
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311327"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489439"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Azure Machine Learning でデータセットを使用してトレーニングする
 
@@ -93,7 +93,7 @@ df = dataset.to_pandas_dataframe()
 このコードでは、以下を指定する ScriptRunConfig オブジェクト `src` を作成します
 
 * 使用するスクリプトのスクリプト ディレクトリ。 このディレクトリ内のすべてのファイルは、実行のためにクラスター ノード内にアップロードされます。
-* トレーニング スクリプト *train_titanic.py* 。
+* トレーニング スクリプト *train_titanic.py*。
 * スクリプト引数としてのトレーニング用の入力データセット `titanic_ds`。 これがスクリプトに渡されると、Azure ML によってデータセットの対応する ID に解決されます。
 * 実行のコンピューティング先。
 * 実行の環境。
@@ -254,7 +254,8 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 
 ## <a name="notebook-examples"></a>ノートブックの例
 
-[データセット ノートブック](https://aka.ms/dataset-tutorial)では、この記事の概念を示し、さらに詳しく説明します。
++ [データセット ノートブック](https://aka.ms/dataset-tutorial)では、この記事の概念を示し、さらに詳しく説明します。
++ [ML パイプラインでデータセットをパラメーター化する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb)方法を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

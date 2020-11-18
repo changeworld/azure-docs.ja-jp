@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: 54a1135931c2be9c6b7941c9ff740fd29f855eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26dd255e6edff7c339ab9766bb71889cf4e2deaa
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601250"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577645"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>すべてのアプリを Azure AD と統合するための 5 つの手順
 
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) には、簡単に開始できるようにす�
 
 次に、従業員が頻繁に使用しているアプリケーションを検出し、それらを Azure AD に統合するための作業に優先順位を付けます。
 
-まず、Microsoft Cloud App Security の [Cloud Discovery ツール](/cloud-app-security/tutorial-shadow-it)を使用して、ネットワークの&quot;シャドウ&quot; IT (つまり、IT 部門で管理されていないアプリ) を検出して管理できます。 [Microsoft Defender Advanced Threat Protection (ATP) を使用](/cloud-app-security/wdatp-integration)して、検出プロセスを簡素化および拡張できます。
+まず、Microsoft Cloud App Security の [Cloud Discovery ツール](/cloud-app-security/tutorial-shadow-it)を使用して、ネットワークの&quot;シャドウ&quot; IT (つまり、IT 部門で管理されていないアプリ) を検出して管理できます。 [Microsoft Defender Advanced Threat Protection (ATP) を使用](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)して、検出プロセスを簡素化および拡張できます。
 
 さらに、Azure portal の [AD FS アプリケーション アクティビティ レポート](../manage-apps/migrate-adfs-application-activity.md)を使用して、組織内のすべての AD FS アプリ、それらにサインインした一意のユーザー数、およびそれらを Azure AD と統合するための互換性を検出できます。
 

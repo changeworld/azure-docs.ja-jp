@@ -6,18 +6,18 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/30/2020
 ms.author: rahugup
-ms.openlocfilehash: 5541d5c3b9beea86f5c76747dd13ffeff1b12d97
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e1b34db7f2473e16d3ebde11376652f654f2f778
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133412"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377957"
 ---
 # <a name="scale-migration-of-vmware-vms"></a>VMware VM のスケール移行 
 
 この記事は、スクリプトを使用し、エージェントレス方式を使用して多数の VMware 仮想マシン (VM) を移行する方法を理解するために役立ちます。 移行をスケーリングするには、[Azure Migrate PowerShell モジュール](https://aka.ms/azuremigratepowershellvmware)を使用します。 
 
-Azure Migrate VMware の移行自動化スクリプトは、GitHub 上の [Azure PowerShell サンプル]https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) リポジトリからダウンロードできます。 このスクリプトを使用すると、エージェントレス移行方法を使用して VMware VM を Azure に移行できます。 これらのスクリプトで使用される Azure Migrate PowerShell コマンドについては、[こちら](https://aka.ms/azuremigratepowershellvmware)を参照してください。
+Azure Migrate VMware の移行自動化スクリプトは、GitHub の [Azure PowerShell サンプル](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) リポジトリからダウンロードできます。 このスクリプトを使用すると、エージェントレス移行方法を使用して VMware VM を Azure に移行できます。 これらのスクリプトで使用される Azure Migrate PowerShell コマンドについては、[こちら](https://aka.ms/azuremigratepowershellvmware)を参照してください。
 
 ## <a name="current-limitations"></a>現在の制限
 - これらのスクリプトは、VMware VM とすべてのディスクの移行をサポートしています。 VMware VM にアタッチされているディスクを選択的にレプリケートする場合は、スクリプトを更新できます。 

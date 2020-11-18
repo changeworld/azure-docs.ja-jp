@@ -10,13 +10,13 @@ ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
-ms.custom: how-to
-ms.openlocfilehash: a8868b930abe28ed205446df0c6c9b0f111213eb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, data4ml
+ms.openlocfilehash: e97546e678b3b7bf7932600ea53d09557493685c
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312781"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359869"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Azure Machine Learning スタジオを使用してデータに接続する
 
@@ -48,9 +48,7 @@ Azure Machine Learning のデータ アクセス ワークフロー全体にお�
 
 ## <a name="create-datastores"></a>データストアの作成
 
-データストアは、[これらの Azure Storage ソリューション](how-to-access-data.md#matrix)から作成できます。 **サポートされていないストレージ ソリューションの場合** 、および ML 実験中のデータ エグレス コストを節約するためには、サポートされている Azure Storage ソリューションに [データを移行](how-to-access-data.md#move)する必要があります。 [データストアに関する詳細を参照してください](how-to-access-data.md)。 
-
-
+データストアは、[これらの Azure Storage ソリューション](how-to-access-data.md#matrix)から作成できます。 **サポートされていないストレージ ソリューションの場合**、および ML 実験中のデータ エグレス コストを節約するためには、サポートされている Azure Storage ソリューションに [データを移行](how-to-access-data.md#move)する必要があります。 [データストアに関する詳細を参照してください](how-to-access-data.md)。 
 
 Azure Machine Learning Studio を使用して、少ない手順で新しいデータストアを作成します。
 
@@ -60,9 +58,9 @@ Azure Machine Learning Studio を使用して、少ない手順で新しいデ�
 1. [Azure Machine Learning Studio](https://ml.azure.com/) にサインインします。
 1. 左側のウィンドウの **[管理]** で、 **[データストア]** を選択します。
 1. **[+ 新しいデータストア]** を選択します。
-1. 新しいデータストアのフォームに入力します。 このフォームは、選択した Azure Storage の種類と認証の種類に基づいて、インテリジェントに自動更新されます。 このフォームを設定するために必要な認証資格情報の場所については、[ストレージ アクセスとアクセス許可](#access-validation)に関するセクションを参照してください。
+1. フォームに入力し、新しいデータストアを作成して登録します。 このフォームは、選択した Azure Storage の種類と認証の種類に基づいて、インテリジェントに自動更新されます。 このフォームを設定するために必要な認証資格情報の場所については、[ストレージ アクセスとアクセス許可](#access-validation)に関するセクションを参照してください。
 
-次の例は、 **Azure BLOB データストア** を作成するときにフォームがどのように表示されるかを示しています。
+次の例は、**Azure BLOB データストア** を作成するときにフォームがどのように表示されるかを示しています。
 
 ![新しいデータストアのフォームに入力する](media/how-to-connect-data-ui/new-datastore-form.png)
 
@@ -140,9 +138,9 @@ Azure ストレージ サービスに安全に接続できるように、Azure M
 
 ### <a name="access-validation"></a>アクセス検証
 
-**最初のデータストアの作成と登録のプロセスの一部として** 、Azure Machine Learning により、基になるストレージ サービスが存在すること、およびユーザーが指定したプリンシパル (ユーザー名、サービス プリンシパル、または SAS トークン) で指定したストレージにアクセスできることが自動的に検証されます。
+**最初のデータストアの作成と登録のプロセスの一部として**、Azure Machine Learning により、基になるストレージ サービスが存在すること、およびユーザーが指定したプリンシパル (ユーザー名、サービス プリンシパル、または SAS トークン) で指定したストレージにアクセスできることが自動的に検証されます。
 
-**データストアの作成後** 、この検証は、データストア オブジェクトが取得されるたび **ではなく** 、基になるストレージ コンテナーにアクセスする必要があるメソッドに対してのみ実行されます。 たとえば、データストアからファイルをダウンロードする場合は検証が行われますが、既定のデータストアを変更するだけの場合は、検証は行われません。
+**データストアの作成後**、この検証は、データストア オブジェクトが取得されるたび **ではなく**、基になるストレージ コンテナーにアクセスする必要があるメソッドに対してのみ実行されます。 たとえば、データストアからファイルをダウンロードする場合は検証が行われますが、既定のデータストアを変更するだけの場合は、検証は行われません。
 
 基になるストレージ サービスへのアクセスを認証するには、作成するデータストアの種類に従って、アカウント キー、Shared Access Signature (SAS) トークン、またはサービス プリンシパルを指定します。 [ストレージの種類のマトリックス](how-to-access-data.md#matrix)には、各データストアの種類に対応する、サポートされている認証の種類が一覧表示されています。
 
@@ -157,11 +155,15 @@ Azure ストレージ サービスに安全に接続できるように、Azure M
     * 対応する **[概要]** ページに、テナント ID やクライアント ID などの必要な情報が記載されています。
 
 > [!IMPORTANT]
-> セキュリティ上の理由から、Azure ストレージ アカウントのアクセス キー (アカウント キーまたは SAS トークン) の変更が必要になる場合があります。 その場合は、必ず新しい資格情報をワークスペースおよびそれに接続されているデータストアに同期します。 [更新された資格情報を同期する](how-to-change-storage-access-key.md)方法を参照してください。
+> * Azure Storage アカウントのアクセス キー (アカウント キーまたは SAS トークン) を変更する必要がある場合は、必ず新しい資格情報をワークスペースおよびそれに接続されているデータストアと同期してください。 [更新された資格情報を同期する](how-to-change-storage-access-key.md)方法を参照してください。 <br> <br>
+> * データストアの登録を解除し、同じ名前を使用して再登録しようとして失敗した場合は、ワークスペースの Azure キー コンテナーで、論理的な削除が有効になっていない可能性があります。 既定では、論理的な削除は、ワークスペースによって作成されたキー コンテナー インスタンスでは有効になっていますが、既存のキー コンテナーを使用した場合、または 2020 年 10 月より前にワークスペースを作成した場合は、有効になっていないことがあります。 論理的な削除を有効にする方法の詳細については、「[既存のキー コンテナーの論理的な削除を有効にする]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault)」を参照してください。
 
 ### <a name="permissions"></a>アクセス許可
 
-Azure BLOB コンテナーと Azure Data Lake Gen 2 ストレージの場合は、認証資格情報に **ストレージ BLOB データ閲覧者** アクセスがあることを確認します。 [ストレージ BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)の詳細については、こちらを参照してください。 
+Azure BLOB コンテナーと Azure Data Lake Gen 2 ストレージの場合は、認証資格情報に **ストレージ BLOB データ閲覧者** アクセスがあることを確認します。 [ストレージ BLOB データ閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)の詳細については、こちらを参照してください。 アカウントの SAS トークンは、既定ではアクセス許可なしに設定されます。 
+* データ **読み取りアクセス** の場合、認証資格情報には、コンテナーとオブジェクトに対するリストと読み取りのアクセス許可が少なくとも必要となります。 
+
+* データ **書き込みアクセス** の場合は、書き込みと追加のアクセス許可も必要です。
 
 ## <a name="train-with-datasets"></a>データセットを使用したトレーニング
 

@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 467af776af95cf035121250fdcadd2fee65d9805
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ca02b3d6f4dec805c6ce58d4470c4c8e5f3454f
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67181220"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375944"
 ---
 #### <a name="to-create-a-volume-container"></a>ボリューム コンテナーを作成するには
 1. StorSimple デバイス マネージャー サービスに移動し、 **[デバイス]** をクリックします。 表形式のデバイス一覧で、デバイスを選択してクリックます。 
@@ -18,7 +18,7 @@ ms.locfileid: "67181220"
 
 2. デバイス ダッシュボードで、 **[+ ボリューム コンテナーの追加]** をクリックします。
 
-    ![[ボリューム コンテナー] ブレード](./media/storsimple-8000-create-volume-container/createvolumecontainer2.png)
+    ![[ボリューム コンテナー] ブレード 2](./media/storsimple-8000-create-volume-container/createvolumecontainer2.png)
 
 3. **[ボリューム コンテナーの追加]** ブレードで、次の操作を行います。
    
@@ -30,10 +30,10 @@ ms.locfileid: "67181220"
    6. 利用可能な帯域幅をすべて使用する場合は、 **[帯域幅の指定]** ボックスの一覧で **[無制限]** を選択します。 このオプションを **[カスタム]** に設定して帯域幅の制御を利用し、1 ～ 1,000 Mbps の範囲の値を指定することもできます。
       帯域幅の使用状況に関する情報がある場合は、 **[帯域幅テンプレートの選択]** を指定して、スケジュールに基づいて帯域幅を割り当てることもできます。 詳細な手順については、[帯域幅テンプレートの追加](../articles/storsimple/storsimple-8000-manage-bandwidth-templates.md#add-a-bandwidth-template)に関する記事をご覧ください。
 
-      ![[ボリューム コンテナー] ブレード](./media/storsimple-8000-create-volume-container/createvolumecontainer6b.png)
+      ![[ボリューム コンテナー] ブレード 3](./media/storsimple-8000-create-volume-container/createvolumecontainer6b.png)
    7. **Create** をクリックしてください。
 
-        ![[ボリューム コンテナー] ブレード](./media/storsimple-8000-create-volume-container/createvolumecontainer6.png)
+        ![[ボリューム コンテナー] ブレード 4](./media/storsimple-8000-create-volume-container/createvolumecontainer6.png)
    
        ボリューム コンテナーが正常に作成されると、通知が表示されます。
 

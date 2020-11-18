@@ -1,7 +1,7 @@
 ---
 title: Python でのトレーニングの実行の開始、監視、およびキャンセル
 titleSuffix: Azure Machine Learning
-description: 自分の機械学習の実験を、開始、状態設定、タグ付けおよび整理する方法を説明します。
+description: Azure Machine Learning Python SDK を使用して、機械学習実験の実行を開始し、状態を監視し、管理する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 0baee1646d2346a411b3b7bdb8efc90e9aeb7a4a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2f7d102ad6bf2aba2056456acfe6207a0b0643ba
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316877"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357982"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python でのトレーニングの実行の開始、監視、およびキャンセル
 

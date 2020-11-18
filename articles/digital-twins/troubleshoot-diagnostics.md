@@ -5,14 +5,14 @@ description: 診断設定を使用したログ記録を有効にし、ログに�
 author: baanders
 ms.author: baanders
 ms.date: 11/9/2020
-ms.topic: troubleshooting
+ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0d775ffa1ce063c01fc6762d77201e5a4caaad87
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: d988617fcaf7479c7bb3356e6ef6f87824ed23a7
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411753"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616656"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure Digital Twins のトラブルシューティング: 診断ログ
 
@@ -251,7 +251,7 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
     :::image type="content" source="media/troubleshoot-diagnostics/logs-query.png" alt-text="Azure Digital Twins インスタンスの [ログ] ページが示されているスクリーンショット。[クエリ] ウィンドウが表示されなくなり、代わりに別のログの一覧、編集可能なクエリ コードを示す編集ペイン、および [クエリの履歴] を示すペインが表示されている。" lightbox="media/troubleshoot-diagnostics/logs-query.png":::
 
     左側のペインでは、 
-    - *[テーブル]* タブに、クエリで使用できるさまざまな Azure Digital Twins の[ログ カテゴリ](#log-categories)が表示されています。 
+    - *[テーブル]* タブに、クエリで使用できるさまざまな Azure Digital Twins の [ログ カテゴリ](#log-categories)が表示されています。 
     - *[クエリ]* タブには、エディターに読み込むことができるクエリの例が含まれています。
     - *[フィルター]* タブでは、クエリによって返されるデータのフィルター処理されたビューをカスタマイズできます。
 

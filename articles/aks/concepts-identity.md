@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: edb6a8e04537a74b7ea7d4c9bd9bd27fdc39e402
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5013f8b7dd88340e397fd3d4d4cd93d4b911fbbb
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88007082"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378229"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアクセスと ID オプション
 
@@ -101,7 +101,7 @@ Azure RBAC は [Azure Resource Manager](../azure-resource-manager/management/ove
 
  Azure の RBAC が Azure サブスクリプション内のリソースに対して機能するように設計されているのに対し、Kubernetes の RBAC は AKS クラスター内の Kubernetes リソースに対して機能するように設計されています。 
 
-Azure の RBAC では、適用されるアクセス許可の概要を説明する*ロール定義*を作成します。 その後、ユーザーまたはグループに、特定の "*スコープ*" (個々のリソース、リソース グループ、またはサブスクリプション全体) に対する "*ロールの割り当て*" によって、このロール定義が割り当てられます。
+Azure の RBAC では、適用されるアクセス許可の概要を説明する *ロール定義* を作成します。 その後、ユーザーまたはグループに、特定の "*スコープ*" (個々のリソース、リソース グループ、またはサブスクリプション全体) に対する "*ロールの割り当て*" によって、このロール定義が割り当てられます。
 
 詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは][azure-rbac]」
 
@@ -143,7 +143,7 @@ AKS には、次の 4 つの組み込みロールがあります。 これらは
 | Azure Kubernetes Service RBAC 管理者  | 名前空間内で付与されることが意図された、管理者アクセスが許可されます。 名前空間内でロールおよびロール バインドを作成する能力など、名前空間 (またはクラスター スコープ) 内のほとんどのリソースへの読み取りおよび書き込みアクセスが許可されます。 このロールでは、リソース クォータまたは名前空間自体への書き込みアクセスは許可されません。 |
 | Azure Kubernetes Service RBAC クラスター管理者  | 任意のリソースに対して任意のアクションを実行できるスーパー ユーザー アクセスが許可されます。 これにより、クラスター内およびすべての名前空間内のすべてのリソースを完全に制御できます。 |
 
-**Kubernetes 認可に Azure RBAC を利用する方法については、[こちら](manage-azure-rbac.md)を参照してください。**
+**Kubernetes 認可に Azure RBAC を有効にする方法については、[こちらを参照してください](manage-azure-rbac.md)。**
 
 ## <a name="next-steps"></a>次のステップ
 

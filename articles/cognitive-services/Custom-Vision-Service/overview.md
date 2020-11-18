@@ -12,18 +12,18 @@ ms.date: 09/14/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 画像認識、画像識別子、画像認識アプリ、Custom Vision
-ms.openlocfilehash: 47227a60b1ed45499afdb42fbc062abc5ae51ff9
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: aa338bf708abaa49d65b6a817009224973f3fb29
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605462"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616911"
 ---
 # <a name="what-is-custom-vision"></a>Custom Vision とは
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure Custom Vision は、独自の画像識別子を構築、デプロイ、改良できるようにする画像認識サービスです。 画像識別子は、視覚特性に従って画像に (クラスまたはオブジェクトを表す) ラベルを適用します。 [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) サービスとは異なり、Custom Vision ではユーザーがラベルを指定し、それらを検出するためのカスタム モデルをトレーニングできます。
+Azure Custom Vision は、独自の画像識別子を構築、デプロイ、改良できるようにする画像認識サービスです。 画像識別子は、視覚特性に従って画像に (クラスまたはオブジェクトを表す) ラベルを適用します。 [Computer Vision](../computer-vision/overview.md) サービスとは異なり、Custom Vision ではユーザーがラベルを指定し、それらを検出するためのカスタム モデルをトレーニングできます。
 
 ## <a name="what-it-does"></a>実行内容
 
@@ -31,7 +31,7 @@ Custom Vision サービスでは、画像の分析に機械学習アルゴリズ
 
 ### <a name="classification-and-object-detection"></a>分類とオブジェクトの検出
 
-Custom Vision の機能は、2 つに分割できます。 **画像の分類**では、画像に 1 つまたは複数のラベルを適用します。 **オブジェクトの検出**では、同様のことを行いますが、適用されたラベルを見つけることができる画像内の座標も返されます。
+Custom Vision の機能は、2 つに分割できます。 **画像の分類** では、画像に 1 つまたは複数のラベルを適用します。 **オブジェクトの検出** では、同様のことを行いますが、適用されたラベルを見つけることができる画像内の座標も返されます。
 
 ### <a name="optimization"></a>Optimization
 

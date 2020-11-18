@@ -6,21 +6,21 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f92ae370358ef09574d0839234ddc8ad11aa47ad
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ccb158548f52059b780fd71bf19788ba200aa7c4
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373911"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505582"
 ---
-# <a name="view-custom-role-assignments-in-azure-active-directory"></a>Azure Active Directory でカスタム ロールの割り当てを表示する
+# <a name="view-custom-role-assignments-using-azure-active-directory"></a>Azure Active Directory でカスタム ロールの割り当てを表示する
 
 この記事では、Azure Active Directory (Azure AD) で割り当てたカスタム ロールを表示する方法について説明します。 Azure Active Directory (Azure AD) では、ロールを組織全体のスコープまたは単一アプリケーションのスコープで割り当てることができます。
 
@@ -32,7 +32,7 @@ ms.locfileid: "92373911"
 この手順では、組織全体のスコープを使用してロールの割り当てを表示する方法について説明します。
 
 1. Azure AD 組織の特権ロール管理者またはグローバル管理者のアクセス許可を使用して [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
-1. **[Azure Active Directory]** を選択し、 **[ロールと管理者]** を選択します。次に、ロールを選択して開き、そのプロパティを表示します。
+1. **[Azure Active Directory]** を選択し、**[ロールと管理者]** を選択します。次に、ロールを選択して開き、そのプロパティを表示します。
 1. **[割り当て]** を選択して、そのロールの割り当てを表示します。
 
     ![一覧からロールを開いたときに、ロールの割り当てとアクセス許可を表示する](./media/view-assignments/role-assignments.png)
@@ -109,7 +109,7 @@ HTTP/1.1 200 OK
 
     ![[アプリの登録] ページからアプリの登録を作成または編集する](./media/view-assignments/app-reg-all-apps.png)
 
-1. アプリの登録で、 **[ロールと管理者]** を選択し、次にロールを選択してそのプロパティを表示します。
+1. アプリの登録で、**[ロールと管理者]** を選択し、次にロールを選択してそのプロパティを表示します。
 
     ![[アプリの登録] ページから、アプリの登録のロールの割り当てを表示する](./media/view-assignments/app-reg-assignments.png)
 

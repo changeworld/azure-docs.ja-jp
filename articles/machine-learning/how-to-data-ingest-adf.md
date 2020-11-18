@@ -1,7 +1,7 @@
 ---
 title: Azure Data Factory を使用したデータ インジェスト
 titleSuffix: Azure Machine Learning
-description: Azure Data Factory を使用してデータ インジェスト パイプラインを作成する方法について説明します。
+description: Azure Data Factory を使用したデータ インジェスト パイプラインの作成に使用できるオプションと、それぞれの利点について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,17 +11,17 @@ manager: davete
 ms.reviewer: larryfr
 ms.date: 03/01/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8cf0abdeaf3a7fe71213b6fa4f78f057bf2f92eb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, data4ml
+ms.openlocfilehash: 73850d8022618dd6544d19564e425288aff09771
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307364"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360634"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Azure Data Factory を使用したデータ インジェスト
 
-この記事では、Azure Data Factory (ADF) を使用して、データ インジェスト パイプラインを作成する方法について説明します。 このパイプラインは、Azure Machine Learning で使用するデータを取り込むために使用されます。 Azure Data Factory を使用すると、データの抽出、変換、読み込み (ETL) を簡単に実行できます。 変換されてストレージに読み込まれたデータは、機械学習モデルのトレーニングに使用できます。
+この記事では、Azure Data Factory (ADF) を使用したデータ インジェスト パイプラインの作成に使用できるオプションについて説明します。 このパイプラインは、Azure Machine Learning で使用するデータを取り込むために使用されます。 Azure Data Factory を使用すると、データの抽出、変換、読み込み (ETL) を簡単に実行できます。 変換されてストレージに読み込まれたデータは、機械学習モデルのトレーニングに使用できます。
 
 単純なデータ変換は、[データ フロー](../data-factory/control-flow-execute-data-flow-activity.md)などのネイティブ ADF アクティビティとインストルメントを使用して処理できます。 より複雑なシナリオについては、何らかのカスタム コードを使用してデータを処理できます。 たとえば、Python や R コードです。
 

@@ -7,18 +7,21 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 29f50b2cf9523b9266de2f73607b0099f32852e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b8aa72c7b77da8fdde9925325587b67411de8d8
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005414"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506415"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォールのレート制限ルールを構成する
 Azure Front Door 用の Azure Web アプリケーション ファイアウォール (WAF) のレート制限ルールでは、1 分間にクライアントから送信できる要求数を制御します。
 この記事では、Azure PowerShell を使用して WAF レート制限ルールを構成し、クライアントから Web アプリケーション (URL に */promo* が含まれる) に送信できる要求数を制御する方法を示します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+> [!NOTE]
+> レート制限はクライアント IP アドレスごとに適用されます。 複数のクライアントが別の IP アドレスから Front Door にアクセスしている場合は、それら独自のレート制限が適用されます。
 
 ## <a name="prerequisites"></a>前提条件
 レート制限ポリシーの設定を開始する前に、PowerShell 環境を設定して Front Door プロファイルを作成します。
@@ -48,7 +51,7 @@ Front Door プロファイルを作成するには、[Front Door プロファイ
 
 ## <a name="define-url-match-conditions"></a>URL 一致条件を定義する
 URL 一致条件 (URL に /promo が含まれる) を定義するには、[New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) を使用します。
-次の例では、 */promo* が *RequestUri* 変数の値として照合されます。
+次の例では、*/promo* が *RequestUri* 変数の値として照合されます。
 
 ```powershell-interactive
    $promoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
@@ -73,9 +76,7 @@ URL 一致条件 (URL に /promo が含まれる) を定義するには、[New-A
 
 `Get-AzureRmResourceGroup` を使用して、Front Door プロファイルが含まれているリソース グループの名前を見つけます。 次に、Front Door プロファイルを含む指定されたリソース グループ内で、[New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) を使用して、カスタム レート制限ルールによるセキュリティ ポリシーを構成します。
 
-次の例では、*myResourceGroupFD1* という名前のリソース グループを使用します。また、Front Door プロファイルを作成したときに、[Front Door の作成に関するクイック スタート](../../frontdoor/quickstart-create-front-door.md)で説明されている手順に従ったと想定しています。
-
- [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) を使用します。
+次の例では、*myResourceGroupFD1* という名前のリソース グループを使用します。また、Front Door プロファイルを作成したときに、[Front Door の作成に関するクイック スタート](../../frontdoor/quickstart-create-front-door.md)で説明されている手順 ([New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) を使用) に従ったと想定しています。
 
 ```powershell-interactive
    $ratePolicy = New-AzFrontDoorWafPolicy `

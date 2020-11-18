@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: a3b2a9db688104c168017863910745427a3a68f9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 80e0de73bbeae2ee1a79199fde34a3c430959ac8
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425791"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356707"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>音声コンテナー用のバッチ処理キット
 
@@ -158,7 +158,7 @@ docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batc
 
 クライアントでは、Docker の `run` コマンドの `-log_folder` 引数で指定されたディレクトリに *run.log* ファイルが作成されます。 ログは既定でデバッグ レベルでキャプチャされます。 同じログが `stdout/stderr` に送信され、`-log_level` 引数に応じてフィルター処理されます。 このログは、デバッグ目的、またはサポートのためにトレースを送信する必要がある場合にのみ必要です。 ログ フォルダーには、各オーディオ ファイルの Speech SDK ログも含まれています。
 
-`-output_folder` で指定された出力ディレクトリには、 *run_summary.json*  ファイルが格納されています。このファイルは、30 秒ごとに定期的に、または新しい文字起こしが完了するたびに書き換えられます。 このファイルを使用すると、バッチの進行状況を確認できます。 また、バッチが完了したときのすべてのファイルの最終的な実行の統計情報と最終的な状態も含まれます。 プロセスに clean exit があると、バッチは完了します。 
+`-output_folder` で指定された出力ディレクトリには、*run_summary.json*  ファイルが格納されています。このファイルは、30 秒ごとに定期的に、または新しい文字起こしが完了するたびに書き換えられます。 このファイルを使用すると、バッチの進行状況を確認できます。 また、バッチが完了したときのすべてのファイルの最終的な実行の統計情報と最終的な状態も含まれます。 プロセスに clean exit があると、バッチは完了します。 
 
 ## <a name="next-steps"></a>次のステップ
 

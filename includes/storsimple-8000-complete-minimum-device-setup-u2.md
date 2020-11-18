@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: c44effe0bde3c7e880e53706fcb59d91a8605e7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05719d9633429c4b8ee6fee79833f594c94ab23d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67181226"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376232"
 ---
 #### <a name="to-complete-the-minimum-storsimple-device-setup"></a>StorSimple の最小デバイス セットアップを完了するには
 
@@ -30,7 +30,7 @@ ms.locfileid: "67181226"
 
        2. コントローラー 0 とコントローラー 1 の固定 IP アドレスを指定します。 **コントローラーの固定 IP アドレスは、デバイス の IP アドレスによってアクセス可能なサブネット内で空き IP となっている必要があります。** DATA 0 インターフェイスが IPv4 に対して構成されている場合、固定 IP アドレスは IPv4 形式で指定する必要があります。 IPv6 構成でプレフィックスを指定した場合、これらのフィールドには固定 IP アドレスが自動的に入力されます。
 
-            ![StorSimple の最小限のデバイス セットアップのネットワーク インターフェイス](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig2.png)
+            ![StorSimple の最小限のデバイス セットアップのネットワーク インターフェイス 2](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig2.png)
 
             コントローラー用の固定 IP アドレスは、デバイスに更新を提供したりガベージ コレクションを実行したりするために使用されます。 このため、固定 IP はルーティング可能でありインターネットに接続できる必要があります。 [Test-HcsmConnection][Test] コマンドレットを使用して、コントローラーの固定 IP がルーティング可能であることを確認できます。 次の例に、コントローラーの固定 IP がインターネットにルーティングされ、Microsoft Update サーバーにアクセスできることを示します。
 
@@ -38,7 +38,7 @@ ms.locfileid: "67181226"
 
 1. **[OK]** をクリックします。 デバイス構成が開始されます。 デバイス構成が完了すると、通知が表示されます。 **[デバイス]** ブレードで、デバイスの状態が **[オンライン]** に変わります。
 
-    ![StorSimple の最小限のデバイス セットアップのネットワーク インターフェイス](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
+    ![StorSimple の最小限のデバイス セットアップのネットワーク インターフェイス 3](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
 
 <!--Link reference-->
 [Test]: https://technet.microsoft.com/library/dn715782(v=wps.630).aspx

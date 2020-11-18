@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 39257419f179bdce8c94f2ddb3a7cd8f5ac2d34f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c65f28c040b15aaa2ec8f3425209351e4b60486
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077757"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616214"
 ---
 # <a name="custom-vision-encryption-of-data-at-rest"></a>Custom Vision による保存データの暗号化
 
@@ -39,5 +39,5 @@ Azure Custom Vision では、クラウドに永続化されるときにデータ
 ## <a name="next-steps"></a>次のステップ
 
 * CMK がサポートされているサービスの完全な一覧については、[Cognitive Services 用のカスタマー マネージド キー](../encryption/cognitive-services-encryption-keys-portal.md)に関するページを参照してください
-* [Azure Key Vault とは](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Azure Key Vault とは](../../key-vault/general/overview.md)
 * [Cognitive Services カスタマー マネージド キー要求フォーム](https://aka.ms/cogsvc-cmk)

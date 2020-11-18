@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 08/14/2019
-ms.openlocfilehash: 98f2a8fb0ce48dab0e1e5f7610d73d55526969eb
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 09bb7cb2344e3e708a64842916e6e483136da3bb
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675111"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594285"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL Database のフェールオーバー グループを構成する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -52,7 +52,7 @@ Azure portal または PowerShell を使用して、フェールオーバー グ
 
 1. **[フェールオーバー グループ]** ページで、必要な値を入力するか選択してから、 **[作成]** を選択します。
 
-   - **グループ内のデータベース** :フェールオーバー グループに追加するデータベースを選択します。 フェールオーバー グループにデータベースを追加すると、geo レプリケーション プロセスが自動的に開始されます。
+   - **グループ内のデータベース**:フェールオーバー グループに追加するデータベースを選択します。 フェールオーバー グループにデータベースを追加すると、geo レプリケーション プロセスが自動的に開始されます。
 
    ![フェールオーバー グループに SQL Database を追加する](./media/auto-failover-group-configure/add-sqldb-to-failover-group.png)
 
@@ -617,7 +617,7 @@ Azure portal を使用して、フェールオーバー グループのフェー
 
    ![フェールオーバー後にマネージド インスタンスのロールが切り替わっている](./media/auto-failover-group-configure/mi-switched-after-failover.png)
 
-1. 新しい " _セカンダリ_ " マネージド インスタンスに移動し、もう一度 **[フェールオーバー]** を選択して、プライマリ インスタンスをプライマリの役割にフェールバックします。
+1. 新しい "_セカンダリ_" マネージド インスタンスに移動し、もう一度 **[フェールオーバー]** を選択して、プライマリ インスタンスをプライマリの役割にフェールバックします。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

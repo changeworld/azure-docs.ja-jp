@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 2b653a0abbe89686c764a6a0885720cc746975c8
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: da1f7ce1474513fd9de286495f59aca63d8628b6
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314729"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377226"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>エージェントレスの VMware VM 移行におけるレプリケーションの問題のトラブルシューティング
 
@@ -29,11 +29,16 @@ ms.locfileid: "92314729"
 仮想マシンのレプリケーションの状態を監視するには、次の手順に従います。
 
   1. Azure portal で Azure Migrate の [サーバー] ページにアクセスします。
-  2. [サーバー移行] タイルの [サーバーをレプリケートしています] をクリックして、[マシンのレプリケート] ページに移動します。
-  3. レプリケートしているサーバーの一覧と、状態、正常性、最終同期時刻などの追加情報が表示されます。[正常性] 列には、VM の現在のレプリケーションの正常性が示されます。 [正常性] 列の 'クリティカル' または '警告' 値は、通常、その VM で以前のレプリケーション サイクルが失敗したことを示します。 詳細を表示するには、VM を右クリックし、[エラーの詳細] を選択します。 [エラーの詳細] ページには、エラーの情報と、トラブルシューティングの方法に関する追加情報が表示されます。 また、VM のイベント ページに移動するために使用できる [最近のイベント] リンクも表示されます。
-  4. [最近のイベント] をクリックして、VM の以前のレプリケーション サイクル エラーを確認します。 イベントページで、その VM の "レプリケーション サイクルが失敗しました" または "ディスクのレプリケーション サイクルが失敗しました" という種類の最新のイベントを探します。
-  5. イベントをクリックすると、エラーの考えられる原因と推奨される修復手順がわかります。 表示された情報を使用して、エラーのトラブルシューティングと修復を行います。
-    
+  ![画像 1](./media/troubleshoot-changed-block-tracking-replication/image0.png)
+  1. [サーバー移行] タイルの [サーバーをレプリケートしています] をクリックして、[マシンのレプリケート] ページに移動します。
+  ![画像 2](./media/troubleshoot-changed-block-tracking-replication/image1.png)
+  1. レプリケートしているサーバーの一覧と、状態、正常性、最終同期時刻などの追加情報が表示されます。[正常性] 列には、VM の現在のレプリケーションの正常性が示されます。 [正常性] 列の 'クリティカル' または '警告' 値は、通常、その VM で以前のレプリケーション サイクルが失敗したことを示します。 詳細を表示するには、VM を右クリックし、[エラーの詳細] を選択します。 [エラーの詳細] ページには、エラーの情報と、トラブルシューティングの方法に関する追加情報が表示されます。 また、VM のイベント ページに移動するために使用できる [最近のイベント] リンクも表示されます。
+  ![画像 3](./media/troubleshoot-changed-block-tracking-replication/image2.png)
+  1. [最近のイベント] をクリックして、VM の以前のレプリケーション サイクル エラーを確認します。 イベントページで、その VM の "レプリケーション サイクルが失敗しました" または "ディスクのレプリケーション サイクルが失敗しました" という種類の最新のイベントを探します。
+  ![画像 4](./media/troubleshoot-changed-block-tracking-replication/image3.png)
+  1. イベントをクリックすると、エラーの考えられる原因と推奨される修復手順がわかります。 表示された情報を使用して、エラーのトラブルシューティングと修復を行います。
+ ![画像 5](./media/troubleshoot-changed-block-tracking-replication/image4.png)
+
 ## <a name="common-replication-errors"></a>一般的なレプリケーション エラー
 
 ここでは、いくつかの一般的なエラーとそのトラブルシューティング方法について説明します。

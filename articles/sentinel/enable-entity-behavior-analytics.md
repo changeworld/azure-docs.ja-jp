@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2020
 ms.author: yelevin
-ms.openlocfilehash: b769703f7e7054571a3b65a021c0123d8ae07078
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 140228a65be166bc172e81267c4449b49621e02c
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148237"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425781"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel でのユーザーとエンティティの動作分析の有効化 (UEBA) 
 
 > [!IMPORTANT]
 >
-> - UEBA 機能は、次の Azure Sentinel の地域とリージョンで **一般提供** されるようになりました。
+> - UEBA およびエンティティ ページ機能は、次の Azure Sentinel の地域とリージョンで **一般提供** になりました。
 >    - 米国地域
 >    - 西ヨーロッパ リージョン
 >    - オーストラリア地域
 >
-> - 他のすべての地域およびリージョンでは、この機能は **パブリック プレビュー** 段階のままであり、サービス レベル アグリーメントなしで提供されます。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> - 他のすべての地域およびリージョンでは、これらの機能は当面は **プレビュー** 段階のままです。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

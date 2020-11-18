@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: 5873f28fed492f9ef906a9d7c1364d8ae07033a7
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1fbdae2480caef5bf1d190124ca3be6c5b97a2f9
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336063"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576361"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>イメージ バージョンからマネージド ディスクを作成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "93336063"
 
 ## <a name="cli"></a>CLI
 
-[az sig image-version list](/cli/azure/sig/image-version.md#az_sig_image_version_list) を使用して、ギャラリーにあるイメージ バージョンを一覧表示します。 この例では、 *myImageDefinition* イメージ定義の一部であるイメージ バージョンを、 *myGallery* イメージ ギャラリーですべて検索しています。
+[az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) を使用して、ギャラリーにあるイメージ バージョンを一覧表示します。 この例では、*myImageDefinition* イメージ定義の一部であるイメージ バージョンを、*myGallery* イメージ ギャラリーですべて検索しています。
 
 ```azurecli-interactive
 az sig image-version list \
@@ -33,9 +33,9 @@ az sig image-version list \
    -o table
 ```
 
-`source` 変数をイメージ バージョンの ID に設定してから、[az disk create](/cli/azure/disk.md#az_disk_create) を使用してマネージド ディスクを作成します。 
+`source` 変数をイメージ バージョンの ID に設定してから、[az disk create](//cli/azure/disk#az_disk_create) を使用してマネージド ディスクを作成します。 
 
-この例では、イメージ バージョンの OS ディスクをエクスポートすることで、 *myManagedOSDisk* という名前のマネージド ディスクを、 *EastUS* リージョンの *myResourceGroup* という名前のリソース グループ内に作成します。 
+この例では、イメージ バージョンの OS ディスクをエクスポートすることで、*myManagedOSDisk* という名前のマネージド ディスクを、*EastUS* リージョンの *myResourceGroup* という名前のリソース グループ内に作成します。 
 
 ```azurecli-interactive
 source="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<galleryName>/images/<galleryImageDefinition>/versions/<imageVersion>"
@@ -47,7 +47,7 @@ az disk create --resource-group myResourceGroup --location EastUS --name myManag
 
 イメージ バージョンからデータ ディスクをエクスポートする場合は、`--gallery-image-reference-lun` を追加して、エクスポートするデータ ディスクの LUN の場所を指定します。 
 
-この例では、イメージ バージョンの LUN 0 にあるデータ ディスクをエクスポートすることで、 *myManagedDataDisk* という名前のマネージド ディスクを、 *EastUS* リージョンの *myResourceGroup* という名前のリソース グループ内に作成します。 
+この例では、イメージ バージョンの LUN 0 にあるデータ ディスクをエクスポートすることで、*myManagedDataDisk* という名前のマネージド ディスクを、*EastUS* リージョンの *myResourceGroup* という名前のリソース グループ内に作成します。 
 
 ```azurecli-interactive
 source="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<galleryName>/images/<galleryImageDefinition>/versions/<imageVersion>"
@@ -77,7 +77,7 @@ $sourceImgVer = Get-AzGalleryImageVersion `
 
 `source` 変数をイメージ バージョンの ID に設定したら、[New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) を使用してディスク構成を作成し、[New-AzDisk](/powershell/module/az.compute/new-azdisk) を使用してディスクを作成します。 
 
-この例では、イメージ バージョンの OS ディスクをエクスポートすることで、 *myManagedOSDisk* という名前のマネージド ディスクを、 *EastUS* リージョンの *myResourceGroup* という名前のリソース グループ内に作成します。 
+この例では、イメージ バージョンの OS ディスクをエクスポートすることで、*myManagedOSDisk* という名前のマネージド ディスクを、*EastUS* リージョンの *myResourceGroup* という名前のリソース グループ内に作成します。 
 
 ディスク構成を作成します。
 ```azurepowershell-interactive
@@ -97,7 +97,7 @@ New-AzDisk -Disk $diskConfig `
 
 イメージ バージョンのデータ ディスクをエクスポートする場合は、ディスク構成に LUN ID を追加して、エクスポートするデータ ディスクの LUN の場所を指定します。 
 
-この例では、イメージ バージョンの LUN 0 にあるデータ ディスクをエクスポートすることで、 *myManagedDataDisk* という名前のマネージド ディスクを、 *EastUS* リージョンの *myResourceGroup* という名前のリソース グループ内に作成します。 
+この例では、イメージ バージョンの LUN 0 にあるデータ ディスクをエクスポートすることで、*myManagedDataDisk* という名前のマネージド ディスクを、*EastUS* リージョンの *myResourceGroup* という名前のリソース グループ内に作成します。 
 
 ディスク構成を作成します。
 ```azurepowershell-interactive

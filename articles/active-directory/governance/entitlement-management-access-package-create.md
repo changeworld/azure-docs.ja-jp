@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c1734af799ee473d6ba75fe2e8ab8429afa51d0
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f6c30dffbc8f97273ee59ce33ae3fe75ed730763
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318191"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356639"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理で新しいアクセス パッケージを作成する
 
@@ -125,7 +125,7 @@ ms.locfileid: "92318191"
 
 1. アクセス パッケージの設定を確認します
 
-    ![[アクセス パッケージ] - [ポリシー] - [ポリシーを有効にする] 設定](./media/entitlement-management-access-package-create/review-create.png)
+    ![[アクセス パッケージ] - [ポリシーを有効にする] 設定](./media/entitlement-management-access-package-create/review-create.png)
 
 1. **[作成]** をクリックしてアクセス パッケージを作成します。
 

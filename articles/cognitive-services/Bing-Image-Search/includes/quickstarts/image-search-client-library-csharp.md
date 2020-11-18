@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: aahi
-ms.openlocfilehash: 122e44da7bbf4229f932eefdae4c70dc49f43bfe
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 247aea49d60c2d953d8b6dff37d22188a5442a1f
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371284"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94625472"
 ---
 このクイックスタートでは、Bing Image Search クライアント ライブラリを使用して最初の画像検索を行います。 
 
@@ -41,7 +41,7 @@ ms.locfileid: "92371284"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visualstudio)
 
-1. Visual Studio で、 *BingImageSearch* という新しいコンソール ソリューションを作成します。
+1. Visual Studio で、*BingImageSearch* という新しいコンソール ソリューションを作成します。
     
 1. [Cognitive Image Search NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch)を追加します。
     1. **ソリューション エクスプローラー** でプロジェクトを右クリックします。
@@ -51,7 +51,7 @@ ms.locfileid: "92371284"
 # <a name="vs-code"></a>[VS Code](#tab/vscode)
 
 1. VS Code でターミナル ウィンドウを開きます。
-1. ターミナル ウィンドウに次のコードを入力して、 *BingImageSearch* という名前の新しいコンソール プロジェクトを作成します。
+1. ターミナル ウィンドウに次のコードを入力して、*BingImageSearch* という名前の新しいコンソール プロジェクトを作成します。
     
     ```bash
     dotnet new console -n BingImageSearch
@@ -129,12 +129,12 @@ if (imageResults != null)
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Bing Image Search の単一ページ アプリのチュートリアル](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)
+> [Bing Image Search の単一ページ アプリのチュートリアル](../../tutorial-bing-image-search-single-page-app.md)
 
 ## <a name="see-also"></a>関連項目
 
-* [Bing Image Search とは](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Bing Image Search とは](../../overview.md)  
 * [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
 * [Azure Cognitive Services SDK の .NET サンプル](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
-* [Azure Cognitive Services のドキュメント](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Azure Cognitive Services のドキュメント](../../../index.yml)
+* [Bing Image Search API リファレンス](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

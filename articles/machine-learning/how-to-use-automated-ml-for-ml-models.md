@@ -1,7 +1,7 @@
 ---
 title: AutoML を使用して、モデルとデプロイを作成する
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning を使用して自動機械学習モデルを作成、確認、デプロイします。
+description: Azure Machine Learning スタジオを使用して自動機械学習モデルを作成、確認、デプロイする。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: aniththa
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: ad84d3d3fd58edc6f7967c6f50440dcc90625617
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, automl
+ms.openlocfilehash: 0c697e6332b757e1d135a77b70f33a6e32528309
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311275"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358900"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning を使用して自動機械学習モデルを作成、確認、デプロイする
 
@@ -66,7 +66,7 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
 
     1. **[次へ]** を選択して、 **[データストアとファイルの選択] フォーム** を開きます。 このフォームで、データセットのアップロード先を選択します。ワークスペースで自動的に作成される既定のストレージ コンテナーか、実験に使用するストレージ コンテナーを選択します。 
     
-        1. データが仮想ネットワークの背後にある場合は、 **検証をスキップする** 機能を有効にして、ワークスペースがデータにアクセスできることを確認する必要があります。 詳細については、「[Azure 仮想ネットワークで Azure Machine Learning Studio を使用する](how-to-enable-studio-virtual-network.md)」を参照してください。 
+        1. データが仮想ネットワークの背後にある場合は、**検証をスキップする** 機能を有効にして、ワークスペースがデータにアクセスできることを確認する必要があります。 詳細については、「[Azure 仮想ネットワークで Azure Machine Learning Studio を使用する](how-to-enable-studio-virtual-network.md)」を参照してください。 
     
     1. **[参照]** を選択してデータセットのデータ ファイルをアップロードします。 
 
@@ -139,7 +139,7 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
     Blocked algorithm (ブロックするアルゴリズム)| トレーニング ジョブから除外するアルゴリズムを選択します。 <br><br> 許可するアルゴリズムは、[SDK 実験](how-to-configure-auto-train.md#supported-models)でのみ使用できます。 <br> [各タスクの種類でサポートされているモデル](/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels?preserve-view=true&view=azure-ml-py)を参照してください。
     終了条件| これらの基準のどれかが満たされると、トレーニング ジョブが終了します。 <br> *トレーニング ジョブ時間 (時間単位)* :トレーニング ジョブを実行できる時間の長さ。 <br> *Metric score threshold* (メトリック スコアのしきい値): すべてのパイプラインの最小メトリック スコアです。 これにより、達成目標のターゲット メトリックを定義した場合には、必要以上にトレーニング ジョブに時間を費やすことはなくなります。
     検証| トレーニング ジョブで使用するクロス検証オプションをどれか選択します。 <br> [クロス検証の詳細については、こちらを参照してください](how-to-configure-cross-validation-data-splits.md#prerequisites)。<br> <br>予測では、k 分割交差検証のみがサポートされます。
-    コンカレンシー| *コンカレント イテレーションの最大数* :トレーニング ジョブでテストするパイプライン (イテレーション) の最大数。 ジョブは、指定したイテレーションの数より多く実行されることはありません。
+    コンカレンシー| *コンカレント イテレーションの最大数*:トレーニング ジョブでテストするパイプライン (イテレーション) の最大数。 ジョブは、指定したイテレーションの数より多く実行されることはありません。
 
 1. (任意) 特徴量化の設定を表示する: **追加の構成設定** フォームで **自動を特徴量化** を有効にすることを選択した場合、既定の特徴量化手法が適用されます。 **特徴量化の表示設定** でこれらの既定値を変更し、それに応じてカスタマイズすることができます。 [特徴量化をカスタマイズする](#customize-featurization)方法をご覧ください。 
 
@@ -173,7 +173,7 @@ Included | トレーニングに含める列を指定します。
 
 ### <a name="view-training-run-details"></a>トレーニング実行の詳細の表示
 
-完成したモデルのいずれかをドリルダウンして、 **[モデル]** タブのモデルの概要や、 **[視覚化]** タブのパフォーマンス メトリック グラフなど、トレーニングの実行の詳細を表示します。 [グラフの詳細については、こちらを参照してください](how-to-understand-automated-ml.md)。
+完成したモデルのいずれかをドリルダウンして、 **[モデル]** タブのモデルの概要や、 **[視覚化]** タブのパフォーマンス メトリック グラフなど、トレーニングの実行の詳細を表示します。[グラフの詳細については、こちらを参照してください](how-to-understand-automated-ml.md)。
 
 [![イテレーションの詳細](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
@@ -200,7 +200,7 @@ Included | トレーニングに含める列を指定します。
     ----|----
     名前| デプロイの一意の名前を入力します。
     説明| このデプロイの目的を識別しやすくするための説明を入力します。
-    コンピューティングの種類| デプロイするエンドポイントの種類を選択します。 *Azure Kubernetes Service (AKS)* または *Azure Container Instance (ACI)* です。
+    コンピューティングの種類| デプロイするエンドポイントの種類を選択します。*Azure Kubernetes Service (AKS)* または *Azure Container Instance (ACI)* です。
     コンピューティング名| *AKS にのみ適用されます。* デプロイする AKS クラスターの名前を選択します。
     認証を有効にする | トークンベースまたはキーベースの認証を許可する場合に選択します。
     カスタム デプロイ アセットを使用する| 独自のスコアリング スクリプトと環境ファイルをアップロードする場合は、この特徴量を有効にします。 [スコアリング スクリプトの詳細を確認](how-to-deploy-and-where.md)してください。
@@ -208,7 +208,7 @@ Included | トレーニングに含める列を指定します。
     >[!Important]
     > ファイル名の文字数は 32 文字未満にする必要があります。先頭と末尾には英数字を使用してください。 先頭と末尾以外では、ダッシュ、アンダースコア、ピリオド、および英数字を使用できます。 スペースは使用できません。
 
-    " *詳細設定* " メニューには、 [データ収集](how-to-enable-app-insights.md)やリソース使用率の設定などの既定のデプロイ特徴量が用意されています。 これらの既定値をオーバーライドする場合は、このメニューでオーバーライドします。
+    "*詳細設定*" メニューには、[データ収集](how-to-enable-app-insights.md)やリソース使用率の設定などの既定のデプロイ特徴量が用意されています。 これらの既定値をオーバーライドする場合は、このメニューでオーバーライドします。
 
 1. **[デプロイ]** を選択します。 デプロイの完了には 20 分程度かかる場合があります。
     デプロイが開始されると、 **[モデルの概要]** タブが表示されます。 **[Deploy status]\(デプロイの状態\)** セクションで、デプロイの進行状況を確認します。 

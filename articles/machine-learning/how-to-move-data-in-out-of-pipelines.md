@@ -1,7 +1,7 @@
 ---
 title: ML パイプラインでのデータの移動
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning パイプラインでのデータの入出力について説明します。
+description: Azure Machine Learning パイプラインでのデータの取り込み方法と、データの管理とパイプラインのステップ間移動の方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,13 +9,13 @@ ms.author: laobri
 author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: d96f5c0b6b1bb4a38724f53de68c9aad6608b258
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, contperfq4, devx-track-python, data4ml
+ms.openlocfilehash: bf5bfd8c2047764f9a03889c8fdd5012dc38ab65
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316593"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359767"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML パイプラインのステップ間でのデータの移動 (Python)
 
@@ -158,7 +158,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-pipelinedata-for-intermediate-data"></a>中間データに `PipelineData` を使用する
 
-`Dataset` オブジェクトは永続データを表しますが、パイプラインのステップから出力される一時的なデータには [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) オブジェクトが使用されます。 `PipelineData` オブジェクトの有効期間は 1 つのパイプライン ステップより長くなるため、それらをパイプライン定義スクリプトで定義します。 `PipelineData` オブジェクトを作成するときは、名前と、データを格納するデータストアを指定する必要があります。 `arguments` と `outputs` の " _両方_ " の引数を使用して、`PipelineData` オブジェクトを `PythonScriptStep` に渡します。
+`Dataset` オブジェクトは永続データを表しますが、パイプラインのステップから出力される一時的なデータには [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) オブジェクトが使用されます。 `PipelineData` オブジェクトの有効期間は 1 つのパイプライン ステップより長くなるため、それらをパイプライン定義スクリプトで定義します。 `PipelineData` オブジェクトを作成するときは、名前と、データを格納するデータストアを指定する必要があります。 `arguments` と `outputs` の "_両方_" の引数を使用して、`PipelineData` オブジェクトを `PythonScriptStep` に渡します。
 
 ```python
 

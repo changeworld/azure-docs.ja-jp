@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: fbb78148418206a9a6e17b29ce17de0a23491839
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 2f32fc9ffb8be5b71bfe84a4f0e946e68e8fcd03
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369795"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577823"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>Azure アプリケーション オファーの Azure マネージド アプリケーションを計画する
 
@@ -32,7 +32,7 @@ Azure アプリケーションのマネージド アプリケーション プラ
 | ------------ | ------------- |
 | Azure サブスクリプション | マネージド アプリケーションを顧客のサブスクリプションにデプロイする必要があるが、アプリケーションはサード パーティが管理できます。 |
 | 請求/メータリング | リソースは、顧客の Azure サブスクリプションで提供されます。 従量課金制の支払モデルを使用する VM は Microsoft 経由で顧客が処理し、顧客の Azure サブスクリプション経由で請求されます。 <br><br> ライセンス持ち込み VM の場合、顧客サブスクリプションで発生するインフラストラクチャ コストを Microsoft が請求しますが、ユーザーが顧客に対して直接ソフトウェア ライセンス料金を処理します。 |
-| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。 詳細については、次を参照してください。<br> • [Azure VM の技術資産を作成する](/azure/marketplace/partner-center-portal/vm-certification-issues-solutions#how-to-address-a-vulnerability-or-exploit-in-a-vm-offer.md) (Windows VHD 用)。<br> • [Azure で動作保証済みの Linux ディストリビューション](/azure/virtual-machines/linux/endorsed-distros.md) (Linux VHD 用)。 |
+| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。 詳細については、次を参照してください。<br> • [Azure VM の技術資産を作成する](/azure/marketplace/partner-center-portal/vm-certification-issues-solutions#how-to-address-a-vulnerability-or-exploit-in-a-vm-offer.md) (Windows VHD 用)。<br> • [Azure で動作保証済みの Linux ディストリビューション](/azure/virtual-machines/linux/endorsed-distros) (Linux VHD 用)。 |
 | 顧客の利用状況属性 | すべての新しい Azure アプリケーション オファーには、[Azure パートナーの顧客の使用状況の属性 GUID](azure-partner-customer-usage-attribution.md) も含まれている必要があります。 顧客の利用状況属性とそれを有効にする方法の詳細については、「[Azure パートナーの顧客の使用状況の属性](azure-partner-customer-usage-attribution.md)」をご覧ください。 |
 | 展開パッケージ | お客様がプランをデプロイできるようにするデプロイ パッケージが必要になります。 同じ技術的構成が必要なプランを複数作成する場合は、同じパッケージを使用できます。 詳細については、次のセクションの「デプロイ パッケージ」を参照してください。 |
 |||
@@ -47,7 +47,7 @@ Azure アプリケーションのマネージド アプリケーション プラ
 すべての Azure アプリケーションで、.zip アーカイブのルート フォルダーに次の 2 つのファイルが含まれている必要があります。
 
 - [mainTemplate.json](/azure/azure-resource-manager/managed-applications/publish-service-catalog-app?tabs=azure-powershell#create-the-arm-template.md) という名前の Resource Manager テンプレート ファイル。 このテンプレートでは、顧客の Azure サブスクリプションにデプロイするリソースが定義されます。 Resource Manager テンプレートの例については、[Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/documentation/templates/)または対応する [GitHub:Azure Resource Manager クイックスタート テンプレート](https://github.com/azure/azure-quickstart-templates) リポジトリをご覧ください。
-- [createUiDefinition.json](/azure/azure-resource-manager/managed-application-createuidefinition-overview.md) という名前の、Azure アプリケーション作成エクスペリエンス用のユーザー インターフェイス定義。 ユーザー インターフェイスでは、コンシューマーがパラメーター値を入力できるようにする要素を指定します。
+- [createUiDefinition.json](/azure/azure-resource-manager/managed-application-createuidefinition-overview) という名前の、Azure アプリケーション作成エクスペリエンス用のユーザー インターフェイス定義。 ユーザー インターフェイスでは、コンシューマーがパラメーター値を入力できるようにする要素を指定します。
 
 サポートされる最大ファイル サイズは次のとおりです。
 
@@ -58,7 +58,7 @@ Azure アプリケーションのマネージド アプリケーション プラ
 
 ## <a name="azure-regions"></a>Azure Azure リージョン
 
-プランは、Azure パブリック リージョン、Azure Government リージョン、または両方に発行できます。 特定のエンドポイントが異なる可能性があるため、[Azure Government](/azure/azure-government/documentation-government-manage-marketplace-partners.md) に発行する前に、環境でプランをテストおよび検証します。 プランを設定してテストするには、[Microsoft Azure Government 試用版](https://azure.microsoft.com/global-infrastructure/government/request/)に試用版アカウントを申請します。
+プランは、Azure パブリック リージョン、Azure Government リージョン、または両方に発行できます。 特定のエンドポイントが異なる可能性があるため、[Azure Government](/azure/azure-government/documentation-government-manage-marketplace-partners) に発行する前に、環境でプランをテストおよび検証します。 プランを設定してテストするには、[Microsoft Azure Government 試用版](https://azure.microsoft.com/global-infrastructure/government/request/)に試用版アカウントを申請します。
 
 発行元は、コンプライアンス管理、セキュリティ対策、ベスト プラクティスについて責任を持ちます。 Azure Government では、物理的に離れた場所にあるデータ センターとネットワークが使用されます (場所は米国のみ)。
 
@@ -87,14 +87,14 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 ## <a name="just-in-time-jit-access"></a>Just-In-Time (JIT) アクセス
 
-JIT アクセスによって、発行元は、トラブルシューティングやメンテナンスを行うために、マネージド アプリケーションのリソースに対して昇格されたアクセス権を要求することができます。 発行元は、リソースへの読み取り専用アクセス権を常に所有していますが、特定の期間にさらに大きなアクセス権を持つことができます。 詳しくは、「[Azure Managed Applications でジャストインタイム アクセスを有効にして要求する](/azure/managed-applications/request-just-in-time-access.md)」をご覧ください。
+JIT アクセスによって、発行元は、トラブルシューティングやメンテナンスを行うために、マネージド アプリケーションのリソースに対して昇格されたアクセス権を要求することができます。 発行元は、リソースへの読み取り専用アクセス権を常に所有していますが、特定の期間にさらに大きなアクセス権を持つことができます。 詳しくは、「[Azure Managed Applications でジャストインタイム アクセスを有効にして要求する](/azure/managed-applications/request-just-in-time-access)」をご覧ください。
 
 > [!NOTE]
 > この機能をサポートするために、SkimmingBe が `createUiDefinition.json` ファイルを確実に更新する場合でも、ユーザーが知っておく必要がある情報です。
 
 ## <a name="deployment-mode"></a>展開モード
 
-マネージド アプリケーション プランは、**完全** または **増分** のいずれかのデプロイ モードを使用するように構成できます。 完全モードでは、顧客がアプリケーションを再デプロイすると、[mainTemplate.json](/azure/azure-resource-manager/managed-applications/publish-service-catalog-app?tabs=azure-powershell#create-the-arm-template.md) で定義されていない管理対象リソース グループ内のリソースは削除されます。 増分モードでは、アプリケーションを再デプロイしても、既存のリソースは変更されずに残ります。 詳細については、「[Azure Resource Manager のデプロイ モード](/azure/azure-resource-manager/templates/deployment-modes.md?WT.mc_id=pc_52)」を参照してください。
+マネージド アプリケーション プランは、**完全** または **増分** のいずれかのデプロイ モードを使用するように構成できます。 完全モードでは、顧客がアプリケーションを再デプロイすると、[mainTemplate.json](/azure/azure-resource-manager/managed-applications/publish-service-catalog-app?tabs=azure-powershell#create-the-arm-template.md) で定義されていない管理対象リソース グループ内のリソースは削除されます。 増分モードでは、アプリケーションを再デプロイしても、既存のリソースは変更されずに残ります。 詳細については、「[Azure Resource Manager のデプロイ モード](/azure/azure-resource-manager/templates/deployment-modes)」を参照してください。
 
 ## <a name="notification-endpoint-url"></a>通知エンドポイント URL
 
@@ -104,7 +104,7 @@ JIT アクセスによって、発行元は、トラブルシューティング�
 
 必要に応じて、既定で使用できる "`*/read`" アクションに加えて、顧客が管理対象リソースに対してどのアクションを実行できるかを指定できます。
 
-このオプションを選択する場合は、制御のアクションまたは許可されるデータ アクションのいずれか、または両方を指定する必要があります。 詳しくは、「[Azure リソースの拒否割り当ての概要](/azure/role-based-access-control/deny-assignments.md)」をご覧ください。 使用できるアクションについては、「[Azure Resource Manager のリソース プロバイダー操作](/azure/role-based-access-control/resource-provider-operations.md)」を参照してください。 たとえば、仮想マシンの再起動をコンシューマーに許可するには、許可されているアクションに `Microsoft.Compute/virtualMachines/restart/action` を追加します。
+このオプションを選択する場合は、制御のアクションまたは許可されるデータ アクションのいずれか、または両方を指定する必要があります。 詳しくは、「[Azure リソースの拒否割り当ての概要](/azure/role-based-access-control/deny-assignments)」をご覧ください。 使用できるアクションについては、「[Azure Resource Manager のリソース プロバイダー操作](/azure/role-based-access-control/resource-provider-operations)」を参照してください。 たとえば、仮想マシンの再起動をコンシューマーに許可するには、許可されているアクションに `Microsoft.Compute/virtualMachines/restart/action` を追加します。
 
 ## <a name="choose-who-can-manage-the-application"></a>だれがアプリケーションを管理できるかを選択する
 
@@ -113,14 +113,14 @@ JIT アクセスによって、発行元は、トラブルシューティング�
 - **Azure Active Directory テナント ID** – アクセス許可を付与するユーザー、グループ、またはアプリケーションの ID が含まれる Azure AD テナント ID (ディレクトリ ID とも呼ばれる)。 Azure AD テナント ID は、Azure portal の [Azure Active Directory のプロパティ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)で確認できます。
 - **認可** – 管理対象リソース グループへのアクセス許可を付与するそれぞれのユーザー、グループ、アプリケーションの Azure Active Directory オブジェクト ID を追加します。 プリンシパル ID でユーザーを識別します。プリンシパル ID は、[Azure portal の Azure Active Directory ユーザー ブレード](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)にあります。
 
-プリンシパル ID ごとに、Azure AD 組み込みロール (所有者または共同作成者) のいずれかを関連付けます。 選択するロールによって、顧客のサブスクリプション内のリソースに対してプリンシパルが持つアクセス許可が記述されます。 詳細については、[Azure の組み込みロール](/azure/role-based-access-control/built-in-roles.md)に関するページを参照してください。 ロールベースのアクセス制御 (RBAC) について詳しくは、[Azure portal での RBAC の概要](/azure/role-based-access-control/overview.md)に関する記事をご覧ください。
+プリンシパル ID ごとに、Azure AD 組み込みロール (所有者または共同作成者) のいずれかを関連付けます。 選択するロールによって、顧客のサブスクリプション内のリソースに対してプリンシパルが持つアクセス許可が記述されます。 詳細については、[Azure の組み込みロール](/azure/role-based-access-control/built-in-roles)に関するページを参照してください。 ロールベースのアクセス制御 (RBAC) について詳しくは、[Azure portal での RBAC の概要](/azure/role-based-access-control/overview)に関する記事をご覧ください。
 
 > [!NOTE]
 > Azure リージョンあたり最大 100 件の認可を追加できますが、一般には、Active Directory ユーザー グループを作成し、その ID を "プリンシパル ID" に指定する方が簡単です。 こうすると、プランをデプロイした後で管理グループにより多くのユーザーを追加できるため、より多くの認可を追加するためだけにプランを更新する必要性が低下します。
 
 ## <a name="policy-settings"></a>ポリシー設定
 
-マネージド アプリケーションに [Azure Policy](/azure/governance/policy.md) を適用して、デプロイしたソリューションのコンプライアンス要件を指定できます。 ポリシーの定義とパラメーター値の形式については、「[Azure Policy のサンプル](/azure/governance/policy/samples.md)」を参照してください。
+マネージド アプリケーションに [Azure Policy](/azure/governance/policy) を適用して、デプロイしたソリューションのコンプライアンス要件を指定できます。 ポリシーの定義とパラメーター値の形式については、「[Azure Policy のサンプル](/azure/governance/policy/samples)」を参照してください。
 
 最大 5 つのポリシーと、各種類のポリシーの 1 つのインスタンスだけを構成できます。 一部の種類のポリシーには、追加のパラメーターが必要です。
 

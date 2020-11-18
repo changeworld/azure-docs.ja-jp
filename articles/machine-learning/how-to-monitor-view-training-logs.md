@@ -1,7 +1,7 @@
 ---
 title: ML 実行のログとメトリックを監視および表示する
 titleSuffix: Azure Machine Learning
-description: Azure ML の実験を監視し、実行のメトリックを表示することでモデルの作成プロセスを強化します。 ウィジェットと Studio ポータルを使用して、実行の状態を調べ、実行レコードを表示します。
+description: ML の実験を監視し、Jupyter ウィジェットと Azure Machine Learning スタジオを使用して実行のメトリックを表示します。
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -11,16 +11,14 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7929c80f4f90de82c516b746310b5e58819a16bc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 845160d92100a27c32f16eddcd1f36e9e8624e80
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316674"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360600"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML 実行のログとメトリックを監視および表示する
-
-
 
 この記事では、Azure Machine Learning の実行を監視し、そのログを表示する方法について説明します。 ログを表示するには、まずそれを有効にする必要があります。 詳細については、「[Azure ML のトレーニングの実行でログ記録を有効にする](how-to-track-experiments.md)」を参照してください。
 
@@ -58,7 +56,7 @@ ms.locfileid: "93316674"
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>Jupyter Notebook ウィジェットを使用して実行を監視する
 
-**ScriptRunConfig** メソッドを使用して実行を送信するときに、 [Jupyter ウィジェット](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)を使用して実行の進行状況を確認できます。 実行の送信と同様に、このウィジェットも非同期です。また、ジョブが完了するまで 10 秒から 15 秒ごとにライブ更新を提供します。
+**ScriptRunConfig** メソッドを使用して実行を送信するときに、[Jupyter ウィジェット](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)を使用して実行の進行状況を確認できます。 実行の送信と同様に、このウィジェットも非同期です。また、ジョブが完了するまで 10 秒から 15 秒ごとにライブ更新を提供します。
 
 実行が完了するのを待っている間、Jupyter ウィジェットを表示します。
     

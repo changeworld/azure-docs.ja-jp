@@ -1,7 +1,7 @@
 ---
 title: 自動 ML とは AutoML
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で、モデルにとって最適なアルゴリズムを選択するために指定するパラメーターと条件を使用することで、どのようにして自動的にアルゴリズムを選択し、それからモデルを生成して時間を節約できるかを説明します。
+description: 指定したパラメーターと条件を使用して、Azure Machine Learning がモデルを自動的に生成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,13 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
-ms.openlocfilehash: 31cb2b2b5411968f1eba71fa9afc7bdc8296407c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: automl
+ms.openlocfilehash: ca0cfd7c38dde5e7307c31989791aa3906b9cbe5
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307405"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357285"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>自動機械学習 (AutoML) とは
 
@@ -72,18 +73,18 @@ ms.locfileid: "93307405"
 
 **Azure Machine Learning** を利用するとき、次の手順で自動 ML トレーニング実験を設計し、実験できます。
 
-1. 解決すべき **ML 問題を特定します** 。分類、予測、または回帰になります。
+1. 解決すべき **ML 問題を特定します**。分類、予測、または回帰になります。
 
-1. **Python SDK と Studio Web エクスペリエンスのどちらを使用するかを選択します** 。 [Python SDK と Studio Web エクスペリエンス](#parity)の同等性を確認してください。
+1. **Python SDK と Studio Web エクスペリエンスのどちらを使用するかを選択します**。[Python SDK と Studio Web エクスペリエンス](#parity)の同等性を確認してください。
 
    * コードの経験があまりない、またはない場合は、Azure Machine Learning Studio Web エクスペリエンスを [https://ml.azure.com](https://ml.azure.com/) で試してください  
    * Python 開発者は、[Azure Machine Learning Python SDK](how-to-configure-auto-train.md) に関するページを参照してください 
     
-1. **ラベルの付いたトレーニング データのソースとフォーマットを指定します** 。Numpy 配列または Pandas データフレーム
+1. **ラベルの付いたトレーニング データのソースとフォーマットを指定します**。Numpy 配列または Pandas データフレーム
 
-1. [ローカル コンピューター、Azure Machine Learning コンピューティング、リモート VM、Azure Databricks](how-to-set-up-training-targets.md) など、 **モデル トレーニングのためのコンピューティング先を構成します** 。  リモート リソースでの自動トレーニングに関する詳細は[こちら](how-to-auto-train-remote.md)にあります。
+1. [ローカル コンピューター、Azure Machine Learning コンピューティング、リモート VM、Azure Databricks](how-to-set-up-training-targets.md) など、**モデル トレーニングのためのコンピューティング先を構成します**。  リモート リソースでの自動トレーニングに関する詳細は[こちら](how-to-auto-train-remote.md)にあります。
 
-1. さまざまなモデルでの繰り返しの回数、ハイパーパラメーター設定、前処理/特徴付けの詳細、最良のモデルを決定するときに考慮されるメトリックを決定する **自動化された機械学習のパラメーターを構成します** 。  
+1. さまざまなモデルでの繰り返しの回数、ハイパーパラメーター設定、前処理/特徴付けの詳細、最良のモデルを決定するときに考慮されるメトリックを決定する **自動化された機械学習のパラメーターを構成します**。  
 1. **トレーニング実行を送信します。**
 
 1. **結果を確認します** 
@@ -132,7 +133,7 @@ ms.locfileid: "93307405"
 
 この設定は次の方法で有効にできます。
 
-+ Azure Machine Learning Studio: [これらの手順に従って](how-to-use-automated-ml-for-ml-models.md#customize-featurization)、 **[View additional configuration]\(追加構成の表示\)** セクションで **[Automatic featurization]\(自動特性付け\)** を有効にします。
++ Azure Machine Learning Studio:[これらの手順に従って](how-to-use-automated-ml-for-ml-models.md#customize-featurization)、 **[View additional configuration]\(追加構成の表示\)** セクションで **[Automatic featurization]\(自動特性付け\)** を有効にします。
 
 + Python SDK:[AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) オブジェクトで `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` を指定します。 [特性付けを有効にする](how-to-configure-auto-features.md)方法に関する詳細を参照してください。 
 
@@ -140,8 +141,8 @@ ms.locfileid: "93307405"
 
 自動化された機械学習では、既定で有効になっているアンサンブル モデルがサポートされています。 アンサンブル学習では、1 つのモデルを使用するのではなく、複数のモデルを組み合わせることによって、機械学習の結果と予測パフォーマンスが改善されます。 アンサンブル イテレーションは、実行の最終イテレーションとして表示されます。 自動化された機械学習では、モデルの結合に投票とスタッキングの両方のアンサンブル方法を使用します。
 
-* **投票** : 予測されたクラス確率 (分類タスクの場合) または予測された回帰ターゲット (回帰タスクの場合) の加重平均に基づいて予測します。
-* **スタッキング** : スタッキングは異種のモデルを結合し、個々のモデルの出力に基づいてメタモデルをトレーニングします。 現在の既定のメタモデルは、分類タスクの場合は LogisticRegression、回帰/予測タスクの場合は ElasticNet です。
+* **投票**: 予測されたクラス確率 (分類タスクの場合) または予測された回帰ターゲット (回帰タスクの場合) の加重平均に基づいて予測します。
+* **スタッキング**: スタッキングは異種のモデルを結合し、個々のモデルの出力に基づいてメタモデルをトレーニングします。 現在の既定のメタモデルは、分類タスクの場合は LogisticRegression、回帰/予測タスクの場合は ElasticNet です。
 
 初期アンサンブルが並べ替えられた [Caruana のアンサンブル選択アルゴリズム](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)を使用して、アンサンブル内で使用するモデルを決定します。 大まかに言えば、このアルゴリズムでは、最適な個別スコアを持つ最大 5 つのモデルを使用してアンサンブルを初期化し、これらのモデルが最適なスコアの 5% のしきい値内にあることを確認して、不適切な初期アンサンブルを回避します。 その後、各アンサンブルの繰り返しに対して、新しいモデルが既存のエンティティに追加され、結果のスコアが計算されます。 新しいモデルによって既存のアンサンブル スコアが向上した場合、アンサンブルはその新しいモデルを含むように変更されます。
 
@@ -151,14 +152,14 @@ ms.locfileid: "93307405"
 
 自動 ML 用の Web インターフェイスでは、常にリモートの[コンピューティング先](concept-compute-target.md)が使用されます。  ただし、Python SDK を使用する場合は、自動 ML のトレーニング用にローカルのコンピューティング先またはリモートのコンピューティング先のどちらかを選択します。
 
-* **ローカル コンピューティング** :ローカルのノート PC または VM のコンピューティング上でトレーニングが行われます。 
-* **リモート コンピューティング** :Machine Learning コンピューティング クラスター上でトレーニングが行われます。  
+* **ローカル コンピューティング**:ローカルのノート PC または VM のコンピューティング上でトレーニングが行われます。 
+* **リモート コンピューティング**:Machine Learning コンピューティング クラスター上でトレーニングが行われます。  
 
 ### <a name="choose-compute-target"></a>コンピューティング先の選択
 使用するコンピューティング先を選択するときに、次の要素を考慮してください。
 
- * **ローカル コンピューティングを選択する** :小規模のデータと短いトレーニング (つまり、子実行あたり数秒または数分) を使用する、初期探索またはデモのためのシナリオの場合は、ローカル コンピューター上でのトレーニングが適している場合があります。  セットアップ時間はかからず、インフラストラクチャ リソース (お使いの PC または VM) を直接使用できます。
- * **リモート ML コンピューティング クラスターを選択する** :より長いトレーニングが必要なモデルを作成する運用環境でのトレーニングのように、より大きなデータセットを使用してトレーニングを行う場合、リモート コンピューティングを選択するとエンド ツー エンドの時間のパフォーマンスが大幅に向上します。`AutoML` によってクラスターのノード間でトレーニングが並列化されるためです。 リモート コンピューティングでは、内部インフラストラクチャの起動時間によって子実行あたり約 1.5 分が加算され、VM がまだ稼働していない場合はクラスター インフラストラクチャ用にさらに数分がかかります。
+ * **ローカル コンピューティングを選択する**:小規模のデータと短いトレーニング (つまり、子実行あたり数秒または数分) を使用する、初期探索またはデモのためのシナリオの場合は、ローカル コンピューター上でのトレーニングが適している場合があります。  セットアップ時間はかからず、インフラストラクチャ リソース (お使いの PC または VM) を直接使用できます。
+ * **リモート ML コンピューティング クラスターを選択する**:より長いトレーニングが必要なモデルを作成する運用環境でのトレーニングのように、より大きなデータセットを使用してトレーニングを行う場合、リモート コンピューティングを選択するとエンド ツー エンドの時間のパフォーマンスが大幅に向上します。`AutoML` によってクラスターのノード間でトレーニングが並列化されるためです。 リモート コンピューティングでは、内部インフラストラクチャの起動時間によって子実行あたり約 1.5 分が加算され、VM がまだ稼働していない場合はクラスター インフラストラクチャ用にさらに数分がかかります。
 
 ### <a name="pros-and-cons"></a>長所と短所
 ローカルとリモートのどちらを使用するかを選択する場合は、以下の長所と短所を考慮してください。
@@ -194,7 +195,7 @@ ms.locfileid: "93307405"
 
 [多数モデル ソリューション アクセラレータ](https://aka.ms/many-models) (プレビュー) は Azure Machine Learning 上に構築されており、自動 ML を使用して、数百または数千もの機械学習モデルをトレーニング、操作、管理できます。
 
-たとえば次のシナリオで、 __それぞれの事例または個々の対象の__ モデルを構築すると、結果が改善される可能性があります。
+たとえば次のシナリオで、__それぞれの事例または個々の対象の__ モデルを構築すると、結果が改善される可能性があります。
 
 * 個々の店舗の売上予測
 * 数百基の油井の予測メンテナンス
@@ -271,9 +272,9 @@ AutoML の使用を開始する方法がわかるリソースが複数ありま�
 
 ### <a name="tutorials-how-tos"></a>チュートリアルと方法
 チュートリアルでは、AutoML シナリオのサンプルを端から端まで紹介します。
-+ **コード ファーストの場合** 、 [Azure Machine Learning Python SDK で回帰モデルを自動的にトレーニングする](tutorial-auto-train-models.md)方法のチュートリアルを参照してください。
++ **コード ファーストの場合**、[Azure Machine Learning Python SDK で回帰モデルを自動的にトレーニングする](tutorial-auto-train-models.md)方法のチュートリアルを参照してください。
 
- + **コードの作成経験が少ないか、まったくない場合** 、 [Azure Machine Learning スタジオで自動 ML 分類モデルを作成する](tutorial-first-experiment-automated-ml.md)方法のチュートリアルを参照してください。
+ + **コードの作成経験が少ないか、まったくない場合**、[Azure Machine Learning スタジオで自動 ML 分類モデルを作成する](tutorial-first-experiment-automated-ml.md)方法のチュートリアルを参照してください。
 
 ハウツー記事には、AutoML が備えている機能に関する詳細があります。 たとえば、次のように入力します。 
 

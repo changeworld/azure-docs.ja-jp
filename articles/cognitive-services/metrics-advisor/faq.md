@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 10/15/2020
+ms.date: 11/05/2020
 ms.author: mbullwin
-ms.openlocfilehash: da4dc3579630d641fcbc1d4321b56de0cc09d555
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0c4c296cb1454ed89eef102732533589b1c8ca0d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893579"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420961"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Metrics Advisor に関してよく寄せられる質問
 
@@ -104,6 +104,19 @@ Metrics Advisor でデータを取り込むには、1 つのタイムスタン�
 
 データが通常は非常に不安定で変動が大きく、非常に安定したり直線になってしまったりするときには警告を表示したい場合、変化が非常にわずかであれば、そのようなデータ ポイントが検出されるように "しきい値の変更" を構成することができます。
 詳細については、[異常検出の構成](how-tos/configure-metrics.md#anomaly-detection-methods)に関する記事を参照してください。
+
+### <a name="how-to-set-up-email-settings-and-enable-alerting-by-email"></a>電子メールの設定を行って、電子メールによるアラートを有効にする方法
+
+1.  サブスクリプション管理者またはリソース グループ管理者の権限を持つユーザーが、Azure portal に作成された Metrics Advisor リソースに移動し、 **[アクセス制御 (IAM)]** タブを選択する必要があります。 
+2.  **[ロールの割り当ての追加]** を選択します
+3.  **Cognitive Services Metrics Advisor 管理者** のロールを選択し、下の画像のように自分のアカウントを選択します。
+4.  **[保存]** ボタンをクリックすると、Metrics Advisor リソースの管理者として正常に追加されます。 上記のアクションはすべて、サブスクリプション管理者またはリソース グループ管理者によって実行される必要があるので注意してください。 
+
+:::image type="content" source="media/access-control.png" alt-text="アクセス制御 (IAM) のメニュー ページ。[ロールの割り当ての追加] が選択されており、[アクセスの割り当て先] がユーザーに選択され Cognitive Services Metrics Advisor 管理者のアクセス ロールが表示されているボックスがあり、UI の [保存] ボタンが選択されていて、ユーザーを検索して特定のレベルのアクセス許可を追加する手順を示している。" lightbox="media/access-control.png":::
+
+
+5.  アクセス許可が反映されるまでに最大で 1 分かかる場合があります。 次に、自分の Metrics Advisor ワークスペースを選択し、左側のナビゲーション パネルで **[電子メール設定]** オプションを選択します。 必須の項目 (特に SMTP 関連の情報) を入力します。 
+6.  **[保存]** を選択すると、電子メールの構成がすべて設定されます。 新しいフックを作成してメトリックの異常をサブスクライブし、準リアルタイムのアラートを受け取れます。 
 
 ## <a name="advanced-concepts"></a>高度な概念
 

@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 8d067d30220c76de5617aab2c42365351888d744
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 31a1169ca6c2194b8d5564e5d0df50116dd25084
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780021"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505667"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Azure SQL Database Managed Instance の監査の概要
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -59,7 +59,7 @@ ms.locfileid: "92780021"
   
 3. 監査ログ用のコンテナーを作成した後、それを監査ログ用のターゲットとして構成するには、[T-SQL を使用する](#blobtsql)方法と [SQL Server Management Studio (SSMS) UI を使用する](#blobssms)方法の 2 つがあります。
 
-   - <a id="blobtsql"></a>T-SQL を使用して監査ログ用の BLOB ストレージを構成する:
+   - <a id="blobtsql"></a>**T-SQL を使用して監査ログ用の BLOB ストレージを構成する:**
 
      1. コンテナーの一覧で新しく作成されたコンテナーをクリックし、 **[コンテナーのプロパティ]** をクリックします。
 
@@ -79,11 +79,11 @@ ms.locfileid: "92780021"
 
         - 次に示すように SAS を構成します。
 
-          - **使用できるサービス** :BLOB
+          - **使用できるサービス**:BLOB
 
-          - **開始日** : タイム ゾーンに関連する問題を回避するため、前日の日付を使用します
+          - **開始日**: タイム ゾーンに関連する問題を回避するため、前日の日付を使用します
 
-          - **終了日** : この SAS トークンの有効期限が切れる日付を選びます
+          - **終了日**: この SAS トークンの有効期限が切れる日付を選びます
 
             > [!NOTE]
             > 監査の失敗を避けるため、トークンの期限が切れたら更新します。
@@ -101,7 +101,7 @@ ms.locfileid: "92780021"
 
      1. SQL Server Management Studio またはサポートされるその他のツールを介してマネージド インスタンスに接続します。
 
-     1. 次の T-SQL ステートメントを実行し、前の手順で作成したコンテナー URL と SAS トークンを使って、 **新しい資格情報を作成** します。
+     1. 次の T-SQL ステートメントを実行し、前の手順で作成したコンテナー URL と SAS トークンを使って、**新しい資格情報を作成** します。
 
         ```SQL
         CREATE CREDENTIAL [<container_url>]
@@ -118,9 +118,9 @@ ms.locfileid: "92780021"
         GO
         ```
 
-        [サーバー監査仕様またはデータベース監査仕様を作成](#createspec)して続行します。
+     1. [サーバー監査仕様またはデータベース監査仕様を作成](#createspec)して続行します。
 
-   - <a id="blobssms"></a>SQL Server Management Studio 18 (プレビュー) を使って監査ログの BLOB ストレージを構成します。
+   - <a id="blobssms"></a>**SQL Server Management Studio 18 を使用して監査ログの BLOB ストレージを構成する:**
 
      1. SQL Server Management Studio UI を使ってマネージド インスタンスに接続します。
 
@@ -143,8 +143,8 @@ ms.locfileid: "92780021"
         ![Azure サブスクリプション、ストレージ アカウント、および BLOB コンテナーを選択する](./media/auditing-configure/13_mi_SSMS_select_subscription_account_container.png)
 
      1. **[監査の作成]** ダイアログで **[OK]** をクリックします。
-
-4. <a id="createspec"></a>BLOB コンテナーを監査ログのターゲットとして構成した後、SQL Server の場合と同様に、サーバー監査仕様またはデータベース監査仕様を作成して有効にします。
+     
+     1. <a id="createspec"></a>BLOB コンテナーを監査ログのターゲットとして構成した後、SQL Server の場合と同様に、サーバー監査仕様またはデータベース監査仕様を作成して有効にします。
 
    - [サーバー監査仕様の作成 T-SQL ガイド](/sql/t-sql/statements/create-server-audit-specification-transact-sql)
    - [データベース監査仕様の作成 T-SQL ガイド](/sql/t-sql/statements/create-database-audit-specification-transact-sql)
@@ -234,15 +234,15 @@ Azure SQL Managed Instance のデータベースと SQL Server のデータベ�
 - Azure SQL Managed Instance では、監査はサーバー レベルで機能し、Azure BLOB Storage に `.xel` ログ ファイルが保存されます。
 - SQL Server では、監査はサーバー レベルで機能しますが、イベントはファイル システム/Windows イベント ログに保存されます。
 
-マネージド インスタンスの XEvent 監査では、Azure Blob Storage のターゲットがサポートされます。 ファイル ログと Windows ログは **サポートされていません** 。
+マネージド インスタンスの XEvent 監査では、Azure Blob Storage のターゲットがサポートされます。 ファイル ログと Windows ログは **サポートされていません**。
 
 Azure Blob Storage を監査するための `CREATE AUDIT` 構文の主な相違点は次のとおりです。
 
 - 新しい `TO URL` 構文が用意されています。この構文を使って、`.xel` ファイルを配置する Azure Blob Storage コンテナーの URL を指定できます。
 - Event Hubs および Azure Monitor ログ ターゲットを有効にするための新しい構文 `TO EXTERNAL MONITOR` が用意されています。
-- Azure SQL Managed Instance は Windows ファイル共有にアクセスできないため、`TO FILE` 構文は **サポートされていません** 。
-- Shutdown オプションは **サポートされていません** 。
-- `queue_delay` の値として 0 は **サポートされていません** 。
+- Azure SQL Managed Instance は Windows ファイル共有にアクセスできないため、`TO FILE` 構文は **サポートされていません**。
+- Shutdown オプションは **サポートされていません**。
+- `queue_delay` の値として 0 は **サポートされていません**。
 
 ## <a name="next-steps"></a>次のステップ
 

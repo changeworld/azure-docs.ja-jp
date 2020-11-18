@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 10/12/2020
 ms.author: b-juche
-ms.openlocfilehash: 54be34b2151aa88705559ac2913db4f528ea4492
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4fa2c724906c8a6bfb294541b6616ddc7ae22df6
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963518"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591650"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files のデュアルプロトコル (NFSv3 と SMB) ボリュームを作成する
 
@@ -106,10 +106,10 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMBv3、またはデュア
     * ドロップダウン リストから **Active Directory** の接続を選択します。  
     使用する Active Directory には、サーバー ルート CA 証明書が存在する必要があります。 
 
-    * ボリュームの**ボリューム パス**を指定します。   
+    * ボリュームの **ボリューム パス** を指定します。   
     このボリューム パスは、共有ボリュームの名前です。 名前は英字で始める必要があり、各サブスクリプションと各リージョン内で一意である必要があります。  
 
-    * 使用する**セキュリティ スタイル**を指定します。NTFS (既定値) または UNIX です。
+    * 使用する **セキュリティ スタイル** を指定します。NTFS (既定値) または UNIX です。
 
     * 必要に応じて、[ボリュームのエクスポート ポリシーを構成します](azure-netapp-files-configure-export-policy.md)。
 
@@ -161,5 +161,5 @@ NFS クライアントを構成するには、「[Azure NetApp Files 用に NFS 
 
 ## <a name="next-steps"></a>次の手順  
 
-* [デュアルプロトコルに関する FAQ](azure-netapp-files-faqs.md#dual-protocol-faqs)
 * [Azure NetApp Files 用に NFS クライアントを構成する](configure-nfs-clients.md)
+* [デュアルプロトコル ボリュームのトラブルシューティング](troubleshoot-dual-protocol-volumes.md)

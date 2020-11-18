@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: reference
-ms.date: 05/04/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fc33b0bafc0d56ebf1a14769aeaa5a55508fc4a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7e83ff37140369cb073f4bdc2bd24ac08ee9b1ab
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373798"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379096"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory における管理タスク別の管理者ロール
 
@@ -351,6 +351,7 @@ VPN 接続の証明書を削除する | 条件付きアクセス管理者 | セ�
 制限付き管理者のユーザー プリンシパル名を更新する (ドキュメントを参照) | ユーザー管理者 | 
 特権管理者のユーザー プリンシパル名プロパティを更新する (ドキュメントを参照) | グローバル管理者 | 
 ユーザー設定を更新する | グローバル管理者 | 
+認証方法を更新する | 認証管理者 | 特権認証管理者、グローバル管理者
 
 
 ## <a name="support"></a>サポート

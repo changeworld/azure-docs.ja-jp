@@ -2,16 +2,16 @@
 title: Azure Event Grid - パートナー イベント
 description: Azure Event Grid を使用して、サードパーティの Event Grid SaaS および PaaS パートナーから直接 Azure サービスにイベントを送信します。
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: 87d1d40b3696229344b0b5c20d06d9d993a514a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: 31a5fe611871eb4734b6a68e3818592028ebc75c
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102753"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506148"
 ---
 # <a name="partner-events-in-azure-event-grid-preview"></a>Azure Event Grid でのパートナー イベント (プレビュー)
-**パートナー イベント** 機能を使用すると、サードパーティの SaaS プロバイダーは、サービスからイベントを発行して、それらのイベントをサブスクライブできるコンシューマーに対し、イベントを使用できるようにすることができます。 サブスクライバーがイベントを消費するために使用する [トピック](concepts.md#topics)の種類 ( **パートナー トピック** ) を公開することにより、ファーストパーティのエクスペリエンスがサードパーティのイベント ソースに提供されます。 また、イベントの発行元とサブスクライバーによって使用されるリソースの懸念事項と所有権を分離することによって、クリーンな Pub-Sub モデルも提供されます。
+**パートナー イベント** 機能を使用すると、サードパーティの SaaS プロバイダーはそのサービスからイベントを発行でき、コンシューマーがそれらのイベントをサブスクライブできるようになります。 この機能は、[トピック](concepts.md#topics)の種類 (**パートナー トピック**) を公開することにより、ファーストパーティのエクスペリエンスをサードパーティのイベント ソースに提供します。 サブスクライバーは、このトピックに対するサブスクリプションを作成し、イベントを使用します。 また、イベントの発行元とサブスクライバーによって使用されるリソースの懸念事項と所有権を分離することによって、クリーンな Pub/Sub モデルも提供します。
 
 > [!NOTE]
 > Event Grid を初めて使用する場合は、[概要](overview.md)、[概念](concepts.md)、[イベント ハンドラー](event-handlers.md)に関する記事を参照してください。
@@ -65,7 +65,7 @@ ms.locfileid: "93102753"
 
 - Azure によって承認されたパートナー登録のみが表示されます。 
 - 登録はグローバルです。 つまり、特定の Azure リージョンには関連付けられていません。
-- 登録は、オプションのリソースです。 ただし、発行元には登録を作成することをお勧めします。 これにより、ユーザーは、 [Azure portal](https://portal.azure.com/#create/Microsoft.EventGridPartnerTopic)の **[Create Partner Topic]\(パートナー トピックの作成\)** ページでトピックを見つけることができます。 その後、ユーザーは、イベント サブスクリプションを作成するときに、イベントの種類 (たとえば、従業員の入社、従業員の退職など) を選択できます。
+- 登録は、オプションのリソースです。 ただし、発行元には登録を作成することをお勧めします。 これにより、ユーザーは、[Azure portal](https://portal.azure.com/#create/Microsoft.EventGridPartnerTopic)の **[Create Partner Topic]\(パートナー トピックの作成\)** ページでトピックを見つけることができます。 その後、ユーザーは、イベント サブスクリプションを作成するときに、イベントの種類 (たとえば、従業員の入社、従業員の退職など) を選択できます。
 
 ### <a name="namespace"></a>名前空間
 [カスタム トピック](custom-topics.md)や[ドメイン](event-domains.md)と同様に、パートナーの名前空間はイベントを発行するためのリージョンのエンドポイントです。 発行元は、名前空間を通して、イベント チャネルの作成と管理を行います。 また、名前空間は、イベント チャネルのコンテナー リソースとしても機能します。
@@ -75,6 +75,20 @@ ms.locfileid: "93102753"
 
 ## <a name="resources-managed-by-subscribers"></a>サブスクライバーによって管理されるリソース 
 サブスクライバーは、発行元によって定義されたパートナー トピックを使用でき、サブスクライバーが表示および管理できるリソースの種類はそれだけです。 パートナー トピックが作成されると、サブスクライバー ユーザーは、[宛先およびイベント ハンドラー](overview.md#event-handlers)に対するフィルター規則を定義するイベント サブスクリプションを作成できます。 サブスクライバーには、パートナー トピックとそれに関連付けられているイベント サブスクリプションにより、[カスタム トピック](custom-topics.md)と同じ豊富な機能が提供されます。それに関連するサブスクリプションには重要な違いが 1 つあり、他のサポートされているスキーマより豊富な機能が提供される [Cloud Events 1.0 スキーマ](cloudevents-schema.md)のみが、パートナー トピックによりサポートされます。
+
+次の図は、コントロール プレーン操作のフローを示しています。
+
+:::image type="content" source="./media/partner-events-overview/partner-control-plane-flow.png" alt-text="パートナー イベント - コントロール プレーンのフロー":::
+
+1. 発行元が **パートナー登録** を作成します。 パートナー登録はグローバルです。 つまり、特定の Azure リージョンには関連付けられていません。 この手順は省略可能です。
+1. 発行元が、特定のリージョンに **パートナー名前空間** を作成します。
+1. Subscriber 1 がパートナー トピックを作成しようとすると、**イベント チャネル** である Event Channel 1 が発行元の Azure サブスクリプションに最初に作成されます。
+1. 次に、**パートナー トピック** である Partner Topic 1 が、サブスクライバーの Azure サブスクリプションに作成されます。 サブスクライバーは、このパートナー トピックをアクティブにする必要があります。 
+1. Subscriber 1 が、Partner Topic 1 の **Azure Logic Apps サブスクリプション** を作成します。
+1. Subscriber 1 が、Partner Topic 1 の **Azure Blob Storage サブスクリプション** を作成します。 
+1. Subscriber 2 がパートナー トピックを作成しようとすると、別の **イベント チャネル** である Event Channel 2 が発行元の Azure サブスクリプションに最初に作成されます。 
+1. 次に、その **パートナー トピック** である Partner Topic 2 が、2 つ目のサブスクライバーの Azure サブスクリプションに作成されます。 サブスクライバーは、このパートナー トピックをアクティブにする必要があります。 
+1. Subscriber 2 が、Partner Topic 2 の **Azure Functions サブスクリプション** を作成します。 
 
 ## <a name="pricing"></a>価格
 パートナー トピックは、Event Grid を使用しているときに行われた操作の数によって課金されます。 課金の基礎として使用されるすべての操作の種類の詳細と、詳細な価格情報については、「[Event Grid の価格](https://azure.microsoft.com/pricing/details/event-grid/)」を参照してください。

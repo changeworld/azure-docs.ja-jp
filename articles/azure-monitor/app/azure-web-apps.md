@@ -4,12 +4,12 @@ description: Azure App Services のアプリケーション パフォーマン�
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: e326f9764147b882a5009c53b9f13a3c3bd0bfc1
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: c78a43f9efb263c08dad21218636f21121b9732c
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875607"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377804"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 
@@ -25,7 +25,7 @@ Azure App Services がホストするアプリケーションについてアプ�
 * **エージェントベースのアプリケーション監視** (ApplicationInsightsAgent)。  
     * 有効にするにはこの方法が最も簡単であり、高度な構成は不要です。 多くの場合、これは "ランタイム" 監視と呼ばれます。 Azure App Services では、少なくともこのレベルの監視を有効にすることをお勧めします。それから、お客様固有のシナリオに基づいて、手動のインストルメンテーションによる高度な監視が必要かどうかを評価できます。
 
-* Application Insights SDK をインストールし、コードを介して**手動でアプリケーションをインストルメント化する方法**。
+* Application Insights SDK をインストールし、コードを介して **手動でアプリケーションをインストルメント化する方法**。
 
     * このアプローチはカスタマイズできる部分がはるかに多いのですが、[Application Insights SDK NuGet パッケージへの依存関係を追加](./asp-net.md)する必要があります。 また、この方法では、最新バージョンのパッケージへの更新を自分で管理する必要があります。
 
@@ -49,7 +49,7 @@ Azure App Services がホストするアプリケーションについてアプ�
    * このアプリケーションの Application Insights リソースを既に設定している場合を除き、新しいリソースの作成を選択します。 
 
      > [!NOTE]
-     > **[OK]** をクリックして新しいリソースを作成すると、**監視の設定を適用する**ように求めるメッセージが表示されます。 **[続行]** を選択すると、新しい Application Insights リソースがアプリ サービスにリンクされ、**アプリ サービスの再起動がトリガー**されます。 
+     > **[OK]** をクリックして新しいリソースを作成すると、**監視の設定を適用する** ように求めるメッセージが表示されます。 **[続行]** を選択すると、新しい Application Insights リソースがアプリ サービスにリンクされ、**アプリ サービスの再起動がトリガー** されます。 
 
      ![Web アプリをインストルメント化する](./media/azure-web-apps/create-resource-01.png)
 
@@ -77,7 +77,7 @@ Azure App Services がホストするアプリケーションについてアプ�
 
 次のバージョンの .NET Core がサポートされます。ASP.NET Core 2.1、ASP.NET Core 2.2、ASP.NET Core 3.0、ASP.NET Core 3.1
 
-現時点では、.NET Core の完全なフレームワーク、自己完結型のデプロイ、および Linux ベースのアプリケーションをターゲットにすることは、エージェント/拡張機能ベースの監視では**サポートされていません**。 (コードによる[手動インストルメンテーション](./asp-net-core.md)は、上記のすべてのシナリオで機能します)。
+現時点では、.NET Core の完全なフレームワーク、自己完結型のデプロイ、および Linux ベースのアプリケーションをターゲットにすることは、エージェント/拡張機能ベースの監視では **サポートされていません**。 (コードによる[手動インストルメンテーション](./asp-net-core.md)は、上記のすべてのシナリオで機能します)。
 
 1. アプリ サービスの Azure コントロール パネルで **[Application Insights]** を選択します。
 
@@ -86,7 +86,7 @@ Azure App Services がホストするアプリケーションについてアプ�
    * このアプリケーションの Application Insights リソースを既に設定している場合を除き、新しいリソースの作成を選択します。 
 
      > [!NOTE]
-     > **[OK]** をクリックして新しいリソースを作成すると、**監視の設定を適用する**ように求めるメッセージが表示されます。 **[続行]** を選択すると、新しい Application Insights リソースがアプリ サービスにリンクされ、**アプリ サービスの再起動がトリガー**されます。 
+     > **[OK]** をクリックして新しいリソースを作成すると、**監視の設定を適用する** ように求めるメッセージが表示されます。 **[続行]** を選択すると、新しい Application Insights リソースがアプリ サービスにリンクされ、**アプリ サービスの再起動がトリガー** されます。 
 
      ![Web アプリをインストルメント化する](./media/azure-web-apps/create-resource-01.png)
 
@@ -100,7 +100,8 @@ Azure App Services がホストするアプリケーションについてアプ�
 
 # <a name="java"></a>[Java](#tab/java)
 
-Java App Service ベースの Web アプリケーションでは、エージェント/拡張機能ベースの自動監視は現在サポートされていません。 Java アプリケーションの監視を有効にするには、[アプリケーションを手動でインストルメント化する](./java-get-started.md)必要があります。
+[Application Insights Java 3.0 エージェント](./java-in-process-agent.md)のガイドラインに従って、コードを変更せずに Java アプリの自動インストルメンテーションを有効にします。
+自動統合は、App Service ではまだ使用できません。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -115,7 +116,7 @@ Python App Service ベースの Web アプリケーションでは、エージ�
 ASP.NET の場合、クライアント側の監視はオプトインです。 クライアント側の監視を有効にするには:
 
 * **[設定]** **>** **[構成]**
-   * [アプリケーション設定] で、**新しいアプリケーション設定**を作成します。
+   * [アプリケーション設定] で、**新しいアプリケーション設定** を作成します。
 
      名前: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
@@ -127,12 +128,12 @@ ASP.NET の場合、クライアント側の監視はオプトインです。 �
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-アプリ設定 'APPINSIGHTS_JAVASCRIPT_ENABLED' の有無に関係なく、.NET Core アプリと**推奨収集**の組み合わせの場合、クライアント側の監視は**既定で有効**です。
+アプリ設定 'APPINSIGHTS_JAVASCRIPT_ENABLED' の有無に関係なく、.NET Core アプリと **推奨収集** の組み合わせの場合、クライアント側の監視は **既定で有効** です。
 
 何らかの理由でクライアント側の監視を無効にするには、次の手順を実行します。
 
 * **[設定]** **>** **[構成]**
-   * [アプリケーション設定] で、**新しいアプリケーション設定**を作成します。
+   * [アプリケーション設定] で、**新しいアプリケーション設定** を作成します。
 
      名前: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
@@ -201,7 +202,7 @@ App Services のアプリケーション設定は、[Azure Resource Manager テ�
 
 Application Insights の設定をすべて既定の設定にして Azure Resource Manager テンプレートを作成するには、Application Insights を有効にして新しい Web アプリを作成する場合のようにプロセスを開始します。
 
-**Automation オプション**の選択
+**Automation オプション** の選択
 
    ![App Service の Web アプリ作成メニュー](./media/azure-web-apps/create-web-app.png)
 
@@ -350,7 +351,8 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 以下は、Azure App Services 上で実行されている .NET および .NET Core ベースのアプリケーションの拡張機能/エージェント ベースの監視について、手順を追って説明するトラブルシューティング ガイドです。
 
 > [!NOTE]
-> Java アプリケーションは、手動の SDK ベースのインストルメンテーションを介してのみ Azure App Services でサポートされるため、以下の手順はこのようなシナリオには適用されません。
+> Java アプリケーションを監視する際に推奨される方法は、コードを変更せずに自動インストルメンテーションを使用することです。 [Application Insights Java 3.0 エージェント](./java-in-process-agent.md)のガイドラインに従ってください。
+
 
 1. `ApplicationInsightsAgent` を介してアプリケーションが監視されていることを確認します。
     * `ApplicationInsightsAgent_EXTENSION_VERSION` アプリ設定が "2 以下" の値に設定されていることを確認します。

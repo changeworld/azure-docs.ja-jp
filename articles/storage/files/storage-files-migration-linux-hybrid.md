@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 202f7fd065641f9921df5237fb83e7900819c8f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46bcfd48d8fdfb228670b87df166c1ad8de61e52
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563507"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626352"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Azure File Sync を使用して Linux からハイブリッド クラウド デプロイに移行する
 
@@ -207,7 +207,7 @@ Windows Server フォルダーに共有を作成し、必要に応じて、そ�
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-最も一般的な問題は、Windows Server 側で**ボリュームがいっぱい**になったために Robocopy コマンドが失敗することです。 クラウドを使った階層化は 1 時間ごとに動作し、同期されたローカルの Windows Server ディスクからコンテンツが退避されます。 目標は、ボリューム上の空き領域を 99% にすることです。
+最も一般的な問題は、Windows Server 側で **ボリュームがいっぱい** になったために Robocopy コマンドが失敗することです。 クラウドを使った階層化は 1 時間ごとに動作し、同期されたローカルの Windows Server ディスクからコンテンツが退避されます。 目標は、ボリューム上の空き領域を 99% にすることです。
 
 同期を進行させ、クラウドを使った階層化にディスク領域を解放させます。 これは、Windows Server 上のエクスプローラーで確認できます。
 
@@ -219,6 +219,6 @@ Azure File Sync の問題のトラブルシューティングについては、�
 
 Azure ファイル共有と Azure File Sync については、さらに知るべきことがあります。以下の記事には、詳細なオプション、ベスト プラクティス、およびトラブルシューティングのヘルプが含まれています。 これらの記事は、それぞれに対応する [Azure ファイル共有のドキュメント](storage-files-introduction.md)にリンクしています。
 
-* [Azure File Sync の概要](https://aka.ms/AFS)
+* [Azure File Sync の概要](./storage-sync-files-planning.md)
 * [Azure File Sync デプロイ ガイド](storage-files-deployment-guide.md)
 * [Azure File Sync に関するトラブルシューティング](storage-sync-files-troubleshoot.md)

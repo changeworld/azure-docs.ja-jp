@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: pafarley
-ms.openlocfilehash: d6bcb5485833fbfaa3eb72191ee54b1ee69bab04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58ced0c45d66223ac3e40112126e92a4539db32d
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82594297"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616078"
 ---
 # <a name="use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Custom Vision からエクスポートされた ONNX モデルを Windows ML (プレビュー) で使用する
 
@@ -28,7 +28,7 @@ Custom Vision Service からエクスポートされた ONNX モデルを Window
 * Windows 10 バージョン 1809 以降
 * ビルド 17763 以降の Windows SDK
 * Visual Studio 2017 バージョン 15.7 以降がインストールされ、 __ユニバーサル Windows プラットフォーム開発__ ワークロードが有効にされている。
-* PC の開発者モードが有効にされている。 詳細については、「[デバイスを開発用に有効にする](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)」を参照してください。
+* PC の開発者モードが有効にされている。 詳細については、「[デバイスを開発用に有効にする](/windows/uwp/get-started/enable-your-device-for-development)」を参照してください。
 
 ## <a name="about-the-example-app"></a>サンプル アプリについて
 
@@ -47,9 +47,9 @@ Custom Vision Service からエクスポートされた ONNX モデルを Window
 
 独自の画像分類モデルを使用するには、次の手順を実行します。
 
-1. Custom Vision Service を使用して分類器を作成してトレーニングします。 この方法の手順については、[分類器を作成してトレーニングする](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)方法に関する記事を参照してください。 **[全般 (コンパクト)]** などの**コンパクト** ドメインのいずれかを使用します。 
-   * 別のドメインを使用する分類器が既に存在する場合は、プロジェクト設定で**コンパクト**に変換できます。 次に、プロジェクトを再トレーニングしてから続行します。
-1. モデルをエクスポートします。 [パフォーマンス] タブに切り替えて、**コンパクト** ドメインでトレーニングされたイテレーションを選択します。 表示される **[エクスポート]** ボタンを選択します。 次に、 **[ONNX]** を選択してから **[エクスポート]** を選択します。 ファイルの準備ができたら、 **[ダウンロード]** ボタンを選択します。 エクスポート オプションの詳細については、[モデルのエクスポート](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)に関する記事を参照してください。
+1. Custom Vision Service を使用して分類器を作成してトレーニングします。 この方法の手順については、[分類器を作成してトレーニングする](./getting-started-build-a-classifier.md)方法に関する記事を参照してください。 **[全般 (コンパクト)]** などの **コンパクト** ドメインのいずれかを使用します。 
+   * 別のドメインを使用する分類器が既に存在する場合は、プロジェクト設定で **コンパクト** に変換できます。 次に、プロジェクトを再トレーニングしてから続行します。
+1. モデルをエクスポートします。 [パフォーマンス] タブに切り替えて、**コンパクト** ドメインでトレーニングされたイテレーションを選択します。 表示される **[エクスポート]** ボタンを選択します。 次に、 **[ONNX]** を選択してから **[エクスポート]** を選択します。 ファイルの準備ができたら、 **[ダウンロード]** ボタンを選択します。 エクスポート オプションの詳細については、[モデルのエクスポート](./export-your-model.md)に関する記事を参照してください。
 1. ダウンロードした *.zip* ファイルを開き、そこから *model.onnx* ファイルを抽出します。 このファイルには、独自の分類モデルが含まれています。
 1. Visual Studio のソリューション エクスプローラーで、 **[Assets]** フォルダーを右クリックし、 __[既存項目の追加]__ を選択します。 ONNX ファイルを選択します。
 1. ソリューション エクスプローラーで、ONNX ファイルを右クリックし、 **[プロパティ]** を選択します。 ファイルの以下のプロパティを変更します。
@@ -63,7 +63,7 @@ Custom Vision Service からエクスポートされた ONNX モデルを Window
 
 Custom Vision モデルをエクスポートして使用する別の方法については、次のドキュメントを参照してください。
 
-* [モデルをエクスポートする](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)
+* [モデルをエクスポートする](./export-your-model.md)
 * [エクスポートされた Tensorflow モデルを Android アプリケーションで使用する](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
 * [エクスポートされた CoreML モデルを Swift iOS アプリケーションで使用する](https://go.microsoft.com/fwlink/?linkid=857726)
 * [エクスポートされた CoreML モデルを Xamarin を使って iOS アプリケーションで使用する](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)

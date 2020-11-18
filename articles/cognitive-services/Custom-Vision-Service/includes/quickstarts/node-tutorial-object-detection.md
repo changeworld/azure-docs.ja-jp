@@ -4,17 +4,17 @@ ms.author: areddish
 ms.service: cognitive-services
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 7bbbb823cd62b8004a6681005add60037b023031
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 0c6c80849f48cb4f859bcbaaeb4f072eb575ba74
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92756012"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94625201"
 ---
 このガイドでは、Node.js 用の Custom Vision クライアント ライブラリを使用して物体検出モデルを構築する際の足がかりとして役立つ手順とサンプル コードを紹介します。 プロジェクトを作成し、タグを追加し、プロジェクトをトレーニングして、プロジェクトの予測エンドポイント URL を使用してプログラムでテストします。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
 
 > [!NOTE]
-> コードを記述 " _せずに_ " 物体検出モデルの構築とトレーニングを行う場合は、代わりに [ブラウザーベースのガイダンス](../../get-started-build-detector.md)を参照してください。
+> コードを記述 "_せずに_" 物体検出モデルの構築とトレーニングを行う場合は、代わりに [ブラウザーベースのガイダンス](../../get-started-build-detector.md)を参照してください。
 
 .NET 用 Custom Vision クライアント ライブラリを使用すると、次のことができます。
 
@@ -25,7 +25,7 @@ ms.locfileid: "92756012"
 * 現在のイテレーションを公開する
 * 予測エンドポイントをテストする
 
-リファレンス ドキュメント [(トレーニング)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest) [(予測)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest) | ライブラリのソース コード [(トレーニング)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-training) [(予測)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-prediction) | パッケージ (npm) [(トレーニング)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-training) [(予測)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction) | [サンプル](https://docs.microsoft.com/samples/browse/?products=azure&terms=custom%20vision&languages=javascript)
+リファレンス ドキュメント [(トレーニング)](/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest) [(予測)](/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest) | ライブラリのソース コード [(トレーニング)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-training) [(予測)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-prediction) | パッケージ (npm) [(トレーニング)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-training) [(予測)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction) | [サンプル](/samples/browse/?products=azure&terms=custom%20vision&languages=javascript)
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -75,9 +75,9 @@ npm install @azure/cognitiveservices-customvision-prediction
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_creds)]
 
 > [!IMPORTANT]
-> Azure Portal にアクセスします。 「 **前提条件** 」セクションで作成した [製品名] リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
+> Azure Portal にアクセスします。 「**前提条件**」セクションで作成した [製品名] リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
 >
-> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)に関するページを参照してください。
+> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](../../../../cognitive-services/cognitive-services-security.md)に関するページを参照してください。
 
 また、プロジェクト名と、非同期呼び出しのタイムアウト パラメーターのフィールドも追加します。
 
@@ -87,9 +87,9 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 |名前|説明|
 |---|---|
-|[TrainingAPIClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) | このクラスでは、モデルの作成、トレーニング、および公開を処理します。 |
-|[PredictionAPIClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest)| このクラスでは、物体検出予測のために、モデルに対するクエリ実行を処理します。|
-|[予測](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/prediction?view=azure-node-latest)| このインターフェイスでは、単一の画像に対して単一の予測を定義します。 これには、オブジェクト ID と名前、および信頼度スコアのプロパティが含まれます。|
+|[TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) | このクラスでは、モデルの作成、トレーニング、および公開を処理します。 |
+|[PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest)| このクラスでは、物体検出予測のために、モデルに対するクエリ実行を処理します。|
+|[予測](/javascript/api/@azure/cognitiveservices-customvision-prediction/prediction?view=azure-node-latest)| このインターフェイスでは、単一の画像に対して単一の予測を定義します。 これには、オブジェクト ID と名前、および信頼度スコアのプロパティが含まれます。|
 
 ## <a name="code-examples"></a>コード例
 
@@ -105,7 +105,7 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-実際のエンドポイントとキーを使用して、クライアント オブジェクトをインスタンス化します。 自分のキーを使用して **ApiKeyCredentials** オブジェクトを作成し、それを自分のエンドポイントと共に使用して、[TrainingAPIClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) および [PredictionAPIClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest) オブジェクトを作成します。
+実際のエンドポイントとキーを使用して、クライアント オブジェクトをインスタンス化します。 自分のキーを使用して **ApiKeyCredentials** オブジェクトを作成し、それを自分のエンドポイントと共に使用して、[TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) および [PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest) オブジェクトを作成します。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_auth)]
 
@@ -191,5 +191,5 @@ node index.js
 
 * Custom Vision とは
 * このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js) にあります。
-* [SDK のリファレンス ドキュメント (トレーニング)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest)
-* [SDK のリファレンス ドキュメント (予測)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest)
+* [SDK のリファレンス ドキュメント (トレーニング)](/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest)
+* [SDK のリファレンス ドキュメント (予測)](/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest)

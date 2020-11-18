@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 44c9dbb0eed5e8f7a868832af93a3b841f67f784
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d0ae4ef48bfb79130180cc477eb2a6fbeb470eb6
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310698"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506432"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>Azure Synapse Analytics で .NET for Apache Spark を使用する
 
@@ -48,15 +48,15 @@ Azure Synapse Analytics を使用して [Synapse Spark プールの Apache Spark
 
     **Windows の場合:**
 
-[7-Zip](https://www.7-zip.org/) や [WinZip](https://www.winzip.com/) のような抽出プログラムを使用して、発行されたすべてのバイナリを含むファイルを bin ディレクトリに抽出します。
+    [7-Zip](https://www.7-zip.org/) や [WinZip](https://www.winzip.com/) のような抽出プログラムを使用して、発行されたすべてのバイナリを含むファイルを bin ディレクトリに抽出します。
 
-     **On Linux:**
+    **Linux の場合:**
 
-     1. Open a bash shell and cd into the bin directory with all the published binaries and run the following command.
+    Bash シェルを開き、発行されたすべてのバイナリを含む bin ディレクトリに移動し、次のコマンドを実行します。
 
-       ```bash
-       zip -r publish.zip
-       ```
+    ```bash
+    zip -r publish.zip
+    ```
 
 ## <a name="net-for-apache-spark-in-azure-synapse-analytics-notebooks"></a>Azure Synapse Analytics ノートブックでの .NET for Apache Spark 
 

@@ -1,7 +1,7 @@
 ---
 title: ML の実験とメトリックをログに記録する
 titleSuffix: Azure Machine Learning
-description: Azure ML の実験を監視し、実行のメトリックを監視することでモデルの作成プロセスを強化します。 run.log、Run.start_logging、または ScriptRunConfig を使用して、トレーニング スクリプトにログ記録を追加します。
+description: ML のトレーニング実行のログ記録を有効にすると、リアルタイムの実行メトリックを監視し、エラーと警告を診断するのに役立ちます。
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -11,14 +11,14 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 6680bdc525c6f07b8330277056413f886412551b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: deeee689c27008ab71df0a050be3d7a6b5109307
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318428"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361065"
 ---
-# <a name="enable-logging-in-azure-ml-training-runs"></a>Azure ML のトレーニングの実行でログ記録を有効にする
+# <a name="enable-logging-in-ml-training-runs"></a>ML のトレーニングの実行でログ記録を有効にする
 
 
 Azure Machine Learning Python SDK を使用すると、既定の Python ログ パッケージと SDK 固有の機能の両方を使用してリアルタイムの情報をログに記録できます。 ユーザーは、ポータルでローカルにログを記録し、ワークスペースにログを送信することができます。

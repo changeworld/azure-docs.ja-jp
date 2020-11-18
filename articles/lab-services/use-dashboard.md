@@ -3,17 +3,17 @@ title: Azure Lab Services でクラスルーム ラボ用のダッシュボー�
 description: Azure Lab Services でクラスルーム ラボ用のダッシュボードを使用する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 607a3e7faaae65adb67afc0ab0ffd5698adf4655
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3834e6910faea38e87489d1ad0075d4bd9b8c6c6
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90528263"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376954"
 ---
 # <a name="dashboard-for-classroom-labs"></a>クラスルーム ラボ用のダッシュボード
 この記事では、Azure Lab Services でのクラスルーム ラボのダッシュボード ビューについて説明します。 
 
-![画面キャプチャは、Azure Lab Services でのクラスルーム ラボのダッシュボード ビューを示しています。](./media/use-dashboard/dashboard.png)
+![画面キャプチャは、Azure Lab Services でのクラスルーム ラボのダッシュボード ビューを示しています](./media/use-dashboard/dashboard.png)
 
 ## <a name="costs-and-billing-tile"></a>コストと課金のタイル
 このタイルには、次のコスト見積もりの詳細が表示されます。
@@ -35,7 +35,7 @@ ms.locfileid: "90528263"
 - テンプレートが作成された日付。 
 - テンプレートが最後に公開された日付。 
 
-また、 **[テンプレート]** ページに移動するためのリンクもあります。このページでは、クラスの[テンプレート VM を管理](how-to-create-manage-template.md)できます。 
+また、 **[テンプレート]** ページに移動するためのリンクもあります。このページでは、クラスの [テンプレート VM を管理](how-to-create-manage-template.md)できます。 
 
 ## <a name="virtual-machine-pool-tile"></a>仮想マシン プールのタイル
 
@@ -44,7 +44,7 @@ ms.locfileid: "90528263"
 - 学生 (ユーザー) に割り当てられている仮想マシンの数
 - 学生に未割り当ての仮想マシンの数
 
-また、 **[Virtual machine pool]\(仮想マシン プール\)** ページに移動するためのリンクもあります。このページでは、ラボで[仮想マシンのプールを管理](how-to-set-virtual-machine-passwords.md)できます。 
+また、 **[Virtual machine pool]\(仮想マシン プール\)** ページに移動するためのリンクもあります。このページでは、ラボで [仮想マシンのプールを管理](how-to-set-virtual-machine-passwords.md)できます。 
 
 ## <a name="users-tile"></a>ユーザー タイル
 
@@ -53,7 +53,7 @@ ms.locfileid: "90528263"
 - クラスに登録されているユーザーの数
 - ラボに追加されていてもクラスに登録されていないユーザーの数 
 
-また、 **[ユーザー]** ページに移動するためのリンクもあります。このページでは、ラボの[ユーザーを管理](how-to-configure-student-usage.md)できます。 
+また、 **[ユーザー]** ページに移動するためのリンクもあります。このページでは、ラボの [ユーザーを管理](how-to-configure-student-usage.md)できます。 
 
 ## <a name="schedules-tile"></a>スケジュール タイル
 ラボの現在スケジュール済みのイベントがタイルに表示されます。 また、 **[Schedule]\(スケジュール\)** ページに移動するためのリンクもあります。このページでは、[スケジュールを作成および管理](how-to-create-schedules.md)できます。 タイルには、スケジュールされた 2 つのイベントの詳細と、そのラボの残りのスケジュールされたイベントの数が表示されます。 

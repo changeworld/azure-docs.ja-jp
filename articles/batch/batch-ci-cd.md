@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: 4d758d4613f68450be9c444063d3a6188d1aa689
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: e87be0db65cf12a265566e0c05815722ce3cc609
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337578"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578877"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Azure Pipelines を使用する HPC ソリューションの構築とデプロイ
 
@@ -42,8 +42,8 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 このサンプルで使用されるコードベース構造は次のとおりです。
 
 * **arm-templates** フォルダー。多数の Azure Resource Manager テンプレートが含まれます。 この記事でテンプレートについて説明します。
-* **client-application** フォルダー。 [ffmpeg による Azure Batch .NET ファイル処理](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial)サンプルのコピーです。 これはこの記事では必要ありません。
-* **hpc-application** フォルダー。Windows 64 ビット バージョンの [ffmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-10-01-essentials_build.7z) です。
+* **client-application** フォルダー。[ffmpeg による Azure Batch .NET ファイル処理](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial)サンプルのコピーです。 これはこの記事では必要ありません。
+* **hpc-application** フォルダー。Windows 64 ビット バージョンの [ffmpeg 4.3.1](https://github.com/GyanD/codexffmpeg/releases/tag/4.3.1-2020-11-08) です。
 * **pipelines** フォルダー。 これには、構築プロセスを示す YAML ファイルが含まれています。 これはこの記事で説明します。
 
 このセクションでは、バージョン管理と Resource Manager テンプレートの設計に習熟していることを前提としています。 これらの概念になじみがない場合は、以下のページで詳細を確認してください。
@@ -300,7 +300,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 * Infrastructure as Code を格納する **arm-templates** フォルダー
 * ffmpeg のバイナリを含む **hpc-application** フォルダー
 * ビルド パイプラインの定義を含む **pipelines** フォルダー
-* **省略可能** :.NET アプリケーションのコードを格納する **client-application** フォルダー。 これはサンプルでは使用しませんが、ユーザー自身のプロジェクトで、クライアント アプリケーションを介して HPC バッチ アプリケーションを実行したい場合があります。
+* **省略可能**:.NET アプリケーションのコードを格納する **client-application** フォルダー。 これはサンプルでは使用しませんが、ユーザー自身のプロジェクトで、クライアント アプリケーションを介して HPC バッチ アプリケーションを実行したい場合があります。
 
 > [!NOTE]
 > これはコードベースの構造の一例です。 このアプローチを使用しているのは、アプリケーション、インフラストラクチャ、およびパイプライン コードが同じリポジトリに格納されることを示すためです。
@@ -387,15 +387,15 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 
 1. **[変数]** セクションに移動します。 複数のタスクに同じ情報を入力せずにすむように、パイプラインに多くの変数を作成することをお勧めします。 この例で使用される変数とそれらのデプロイへの影響を次に示します。
 
-    * **applicationStorageAccountName** :HPC アプリケーション バイナリを保持するストレージ アカウントの名前
-    * **batchAccountApplicationName** :Azure Batch アカウント内のアプリケーションの名前
-    * **batchAccountName** :Azure Batch アカウントの名前
-    * **batchAccountPoolName** :処理を実行する VM のプールの名前
-    * **batchApplicationId** :Azure Batch アプリケーションの一意の ID
-    * **batchApplicationVersion** :バッチ アプリケーション (つまり ffmpeg バイナリ) のセマンティック バージョン
-    * **location** :Azure リソースをデプロイする場所
-    * **resourceGroupName** :作成するリソース グループ (リソースがデプロイされる) の名前
-    * **storageAccountName** :リンクされた Resource Manager テンプレートを保持するストレージ アカウントの名前
+    * **applicationStorageAccountName**:HPC アプリケーション バイナリを保持するストレージ アカウントの名前
+    * **batchAccountApplicationName**:Azure Batch アカウント内のアプリケーションの名前
+    * **batchAccountName**:Azure Batch アカウントの名前
+    * **batchAccountPoolName**:処理を実行する VM のプールの名前
+    * **batchApplicationId**:Azure Batch アプリケーションの一意の ID
+    * **batchApplicationVersion**:バッチ アプリケーション (つまり ffmpeg バイナリ) のセマンティック バージョン
+    * **location**:Azure リソースをデプロイする場所
+    * **resourceGroupName**:作成するリソース グループ (リソースがデプロイされる) の名前
+    * **storageAccountName**:リンクされた Resource Manager テンプレートを保持するストレージ アカウントの名前
 
     ![Azure Pipelines リリースの変数設定の例](media/batch-ci-cd/Release-4.jpg)
 
@@ -413,7 +413,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
     **[Azure リソース グループの配置]** タスクを追加して、次のプロパティを設定します。
     * **[表示名]:** Resource Manager テンプレートのストレージ アカウントのデプロイ
     * **[Azure サブスクリプション]:** 適切な Azure サブスクリプションを選択します。
-    * **アクション** :リソース グループを作成または更新します。
+    * **アクション**:リソース グループを作成または更新します。
     * **[リソース グループ]** : $(resourceGroupName)
     * **[場所]** : $(location)
     * **[テンプレート]** : $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/storageAccount.json
@@ -436,7 +436,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
     **[Azure リソース グループの配置]** タスクを追加して、次のプロパティを設定します。
     * **[表示名]:** Azure Batch のデプロイ
     * **[Azure サブスクリプション]:** 適切な Azure サブスクリプションを選択します。
-    * **アクション** :リソース グループを作成または更新します。
+    * **アクション**:リソース グループを作成または更新します。
     * **[リソース グループ]** : $(resourceGroupName)
     * **[場所]** : $(location)
     * **[テンプレート]** : $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/deployment.json

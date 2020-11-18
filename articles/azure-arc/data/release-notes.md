@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 10/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 82dd2f16fa43b52ba4c6dfacd26da5da622523b2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 94074c2c5e11187252084832e5a20a197f6723fd
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321706"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359818"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>リリースノート - Azure Arc 対応データ サービス (プレビュー)
 
@@ -90,7 +90,7 @@ Azure Arc 対応データ サービスは、パブリック プレビュー用�
 
 - プレビューでは、PostgreSQL バージョン 11 エンジンのバックアップ/復元はサポートされていません。 PostgreSQL バージョン 12 のバックアップ/復元のみがサポートされています。
 - `azdata arc dc debug copy-logs` では Windows 上で PostgreSQL エンジンのログは収集されません。
-- 削除したばかりのサーバー グループの名前を使用してサーバー グループを再作成すると、失敗するかハングする可能性があります。 
+- 削除したばかりのサーバー グループの名前を使用してサーバー グループを再作成すると、失敗するか応答しなくなる可能性があります。 
    - **回避策** サーバー グループを再作成するときは同じ名前を再利用しないようにするか、前に削除したサーバー グループのロード バランサーまたは外部サービスを待機します。 削除したサーバー グループの名前が `postgres01` であり、それが名前空間 `arc` でホストされているとします。この場合、同じ名前のサーバー グループを再作成する前に、kubectl コマンド `kubectl get svc -n arc` の出力に `postgres01-external-svc` が表示されないようになるまで待機してください。
  - Azure Data Studio の [概要] ページと [コンピューティングとストレージ] 構成ページの読み込みに時間がかかります。 
 

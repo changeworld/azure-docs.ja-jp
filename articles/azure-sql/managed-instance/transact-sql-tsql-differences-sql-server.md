@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 06/02/2020
+ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1b42e9ea06d13271c277ff254b41f10a1ff07e14
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 873bebc462ce4756d38f966a87edda167bd49501
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790612"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506381"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server と Azure SQL Managed Instance での T-SQL の相違点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -114,7 +114,7 @@ SQL Managed Instance はファイル共有と Windows フォルダーにはア�
 
 [CREATE CERTIFICATE](/sql/t-sql/statements/create-certificate-transact-sql) に関する記事、および [BACKUP CERTIFICATE](/sql/t-sql/statements/backup-certificate-transact-sql) に関する記事をご覧ください。 
  
-**回避策** :証明書のバックアップを作成してバックアップを復元するのでなく、 [証明書のバイナリ コンテンツと秘密キーを取得し、それを .sql ファイルとして保存し、バイナリから作成します](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database)。
+**回避策**:証明書のバックアップを作成してバックアップを復元するのでなく、[証明書のバイナリ コンテンツと秘密キーを取得し、それを .sql ファイルとして保存し、バイナリから作成します](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database)。
 
 ```sql
 CREATE CERTIFICATE  
@@ -158,6 +158,8 @@ SQL Managed Instance はファイルにアクセスできないため、暗号�
 
     - EXECUTE AS USER
     - EXECUTE AS LOGIN
+
+  - EXECUTE AS ステートメントを使用してユーザーを偽装するには、そのユーザーが Azure AD サーバー プリンシパル (ログイン) に直接マップされる必要があります。 Azure AD サーバー プリンシパルにマップされた Azure AD グループのメンバーであるユーザーは、指定されたユーザー名に対する偽装権限を呼び出し元が持っている場合でも、EXECUTE AS ステートメントを使用して有効に偽装できません。
 
 - bacpac ファイルを使用したデータベースのエクスポート/インポートは、[SSMS V 18.4 以降](/sql/ssms/download-sql-server-management-studio-ssms)または [SQLPackage.exe](/sql/tools/sqlpackage-download) のいずれかを使用している SQL Managed Instance 内の Azure AD ユーザーに対してサポートされます。
   - データベース bacpac ファイルを使用すると、次の構成がサポートされます。 
@@ -300,6 +302,7 @@ SQL Managed Instance はファイルにアクセスできないため、暗号�
   - アラートはまだサポートされていません。
   - プロキシはサポートされていません。
 - EventLog はサポートされていません。
+- SQL Agent ジョブを作成、変更、実行するために、ユーザーは Azure AD サーバー プリンシパル (ログイン) に直接マップされる必要があります。 直接マップされていないユーザー (SQL Agent ジョブを作成、変更、実行する権利を持つ Azure AD グループに属しているユーザーなど) は、これらの操作を有効に実行できません。 これは、Managed Instance の借用と [EXECUTE AS の制限事項](#logins-and-users)のためです。
 
 現在、次の SQL エージェント機能はサポートされていません。
 
@@ -407,7 +410,7 @@ SQL Managed Instance のリンク サーバーがサポートするターゲッ�
 
 ### <a name="polybase"></a>PolyBase
 
-HDFS または Azure BLOB ストレージ内のファイルを参照する外部テーブルはサポートされていません。 PolyBase については、[PolyBase](/sql/relational-databases/polybase/polybase-guide) に関する記事をご覧ください。
+サポートされている外部ソースの種類は、RDBMS のみで、Azure SQL Database とその他の Azure SQL Managed Instance です。 PolyBase については、[PolyBase](/sql/relational-databases/polybase/polybase-guide) に関する記事をご覧ください。
 
 ### <a name="replication"></a>レプリケーション
 

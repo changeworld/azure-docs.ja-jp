@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/28/2020
+ms.date: 11/12/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 8ab001636cc6fac921f552070b9b064d9c53a8d7
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: b670ec3cee2ebd1cc98ea2e04fb2b0dfd90e4e1a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042075"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594217"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能
 
@@ -45,15 +45,15 @@ Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能を次
 |不変ストレージ|プレビュー|プレビュー|[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](storage-blob-immutable-storage.md)|
 |コンテナーの論理的な削除|プレビュー|プレビュー|[コンテナーの論理的な削除 (プレビュー)](soft-delete-container-overview.md)|
 |BLOB の論理的な削除|まだサポートされていません|まだサポートされていません|[BLOB の論理的な削除](storage-blob-soft-delete.md)|
-|blobfuse|プレビュー|プレビュー|[blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法](storage-how-to-mount-container-linux.md)|
+|blobfuse|一般公開|一般公開|[blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法](storage-how-to-mount-container-linux.md)|
 |アカウントのフェールオーバー|まだサポートされていません|まだサポートされていません|[ディザスター リカバリーとアカウントのフェールオーバー](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |BLOB コンテナーの ACL|サポートされていません<div role="complementary" aria-labelledby="blob-container-ACL"><sup>1</sup></div>|サポートされていません<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|この表の下に記載されている、関連する注意事項を参照してください。|
 |カスタマー指定のキー|まだサポートされていません|まだサポートされていません|[BLOB ストレージに対する要求で暗号化キーを指定する](encryption-customer-provided-keys.md)|
 |カスタム ドメイン|まだサポートされていません|まだサポートされていません|[カスタム ドメインを Azure Blob ストレージ エンドポイントにマップする](storage-custom-domain-name.md)|
 |暗号化スコープ|まだサポートされていません|まだサポートされていません|[暗号化スコープの作成と管理 (プレビュー)](encryption-scope-manage.md)|
 |Change Feed|まだサポートされていません|まだサポートされていません|[Azure Blob Storage の変更フィードのサポート](storage-blob-change-feed.md)|
-|オブジェクト レプリケーション|まだサポートされていません|まだサポートされていません|[ブロック BLOB のオブジェクト レプリケーションを構成する (プレビュー)](object-replication-configure.md)|
-|BLOB バージョン管理|まだサポートされていません|まだサポートされていません|[BLOB のバージョン管理を有効にして管理する (プレビュー)](versioning-enable.md)|
+|オブジェクト レプリケーション|まだサポートされていません|まだサポートされていません|[ブロック BLOB のオブジェクト レプリケーションを構成する](object-replication-configure.md)|
+|BLOB バージョン管理|まだサポートされていません|まだサポートされていません|[BLOB のバージョン管理を有効にして管理する](versioning-enable.md)|
 
 <div id="blob-container-ACL"><sup>1</sup> コンテナーのルート フォルダーに ACL を設定することはできますが、コンテナー自体は設定できません。</div><br>
 

@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 11/13/2020
 ms.author: jlian
-ms.openlocfilehash: 08ecb766a1a9bd7ff75bf97647be811577212eb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9dd66fe9d71f0a857e4b0821190bceb5d6d4680
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90006042"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628800"
 ---
 # <a name="tls-support-in-iot-hub"></a>IoT Hub の TLS サポート
 
@@ -58,7 +58,7 @@ TLS 1.0 と 1.1 はレガシと見なされており、非推奨となる予定�
 この構成を使用して作成された IoT Hub リソースは、TLS バージョン 1.0 および 1.1 を使用して接続を試みるデバイスとサービス クライアントを拒否します。 同様に、`ClientHello` メッセージに[推奨される暗号](#cipher-suites)が示されていない場合、TLS ハンドシェイクは拒否されます。
 
 > [!NOTE]
-> `minTlsVersion` プロパティは読み取り専用であり、IoT Hub リソースの作成後は変更できません。 したがって、*すべての* IoT デバイスとサービスが TLS 1.2 および[推奨される暗号](#cipher-suites)と互換性があることを、事前に適切にテストし、検証する必要があります。
+> `minTlsVersion` プロパティは読み取り専用であり、IoT Hub リソースの作成後は変更できません。 したがって、*すべての* IoT デバイスとサービスが TLS 1.2 および [推奨される暗号](#cipher-suites)と互換性があることを、事前に適切にテストし、検証する必要があります。
 > 
 > フェールオーバー時、IoT Hub の `minTlsVersion` プロパティは、フェールオーバー後に geo ペア リージョンで有効なままになります。
 
@@ -107,4 +107,4 @@ IoT Edge デバイスは、IoT Hub との通信時に TLS 1.2 を使用するよ
 
 ## <a name="device-authentication"></a>デバイスの認証
 
-TLS ハンドシェイクに成功すると、IoT Hub では、対称キーか X.509 証明書を利用してデバイスを認証できます。 証明書ベースの認証の場合、ECC など、あらゆる X.509 証明書を利用できます。 IoT Hub では、指定した拇印または認証機関 (CA) を利用し、証明書の有効性を検証します。 IoT Hub では X.509 ベースの相互認証 (mTLS) がまだサポートされていません。 詳細については、「[サポートされている X.509 証明書](iot-hub-devguide-security.md#supported-x509-certificates)」をご覧ください。
+TLS ハンドシェイクに成功すると、IoT Hub では、対称キーか X.509 証明書を利用してデバイスを認証できます。 証明書ベースの認証の場合、ECC など、あらゆる X.509 証明書を利用できます。 IoT Hub では、指定した拇印または認証機関 (CA) を利用し、証明書の有効性を検証します。 詳細については、「[サポートされている X.509 証明書](iot-hub-devguide-security.md#supported-x509-certificates)」をご覧ください。

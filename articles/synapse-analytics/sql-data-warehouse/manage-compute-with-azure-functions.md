@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Azure Functions を使用してコンピューティングを管理する
-description: Azure 関数を使用し、Azure Synapse Analytics で SQL プールのコンピューティングを管理する方法。
+description: Azure Functions を使用して Azure Synapse Analytics で SQL プールのコンピューティングを管理する方法。
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 1683977d5c8be965cb329611c5a7fd6602a1cd97
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: bc615322c11a456699d2364cf44cad40e086e851
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043371"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517888"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure Synapse Analytics SQL プールで Azure Functions を使用してコンピューティング リソースを管理します
 
@@ -64,7 +64,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
    {second} {minute} {hour} {day} {month} {day-of-week}
    ```
 
-   たとえば、「 *0 30 9 * * 1-5* 」と入力した場合、毎平日の午前 9 時 30 分に実行されます。 詳細については、Azure Functions の[スケジュールの例](../../azure-functions/functions-bindings-timer.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#example)を参照してください。
+   たとえば、「*0 30 9 * * 1-5*」と入力した場合、毎平日の午前 9 時 30 分に実行されます。 詳細については、Azure Functions の[スケジュールの例](../../azure-functions/functions-bindings-timer.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#example)を参照してください。
 
 ## <a name="change-the-time-of-the-scale-operation"></a>スケール操作の時間を変更する
 
@@ -78,7 +78,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
 ## <a name="use-pause-or-resume-instead-of-scale"></a>スケールではなく一時停止または再開を使用する
 
-現在、既定で有効になっている関数は *DWScaleDownTrigger* と *DWScaleUpTrigger* です。 それらの代わりに一時停止と再開の機能を使用する場合は、 *DWPauseTrigger* または *DWResumeTrigger* を有効にしてください。
+現在、既定で有効になっている関数は *DWScaleDownTrigger* と *DWScaleUpTrigger* です。 それらの代わりに一時停止と再開の機能を使用する場合は、*DWPauseTrigger* または *DWResumeTrigger* を有効にしてください。
 
 1. [関数] ウィンドウに移動します。
 
@@ -167,6 +167,6 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Functions を[タイマーでトリガーする方法](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)について確認します。
+[タイマー トリガー](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Azure Functions について確認します。
 
 SQL プールの[サンプル リポジトリ](https://github.com/Microsoft/sql-data-warehouse-samples)を確認します。

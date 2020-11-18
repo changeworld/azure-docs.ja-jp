@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: a62133737d48a8ebf454b5fab83ef52ef2daad09
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a9dba9222816ef2cc7891ff7f803e6a7409802a4
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098435"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593452"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>チュートリアル:Bing Image Search API を使用して単一ページのアプリを作成する
 
@@ -122,7 +122,7 @@ bingSearchOptions(this), getSubscriptionKey())">
 
 ![[Bing Image Search のフォーム]](media/cognitive-services-bing-images-api/image-search-spa-form.png)
 
-Bing Image Search API には、検索結果を絞り込み、フィルター処理するための[フィルター クエリ パラメーター](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters)がいくつか用意されています。 このアプリケーションの HTML フォームは、次のパラメーター オプションを使用して表示します。
+Bing Image Search API には、検索結果を絞り込み、フィルター処理するための[フィルター クエリ パラメーター](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters)がいくつか用意されています。 このアプリケーションの HTML フォームは、次のパラメーター オプションを使用して表示します。
 
 | オプション | 説明 |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0029f3fbcf96036a247356042e4c39d59f86a224
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29fff3a6a430e3bc1a0b3a13876b55d22f7cb545
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208352"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566471"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>Virtual WAN パートナー向けの自動化のガイドライン
 
@@ -33,9 +33,9 @@ ms.locfileid: "88208352"
 
 ### <a name="additional-information"></a><a name ="additional"></a>追加情報
 
-* 仮想ハブの作成を自動化する [REST API](https://docs.microsoft.com/rest/api/virtualwan/virtualhubs)
-* 仮想 WAN 用の Azure VPN ゲートウェイを自動化する [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpngateways)
-* VPNSite を Azure VPN Hub に接続する [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnconnections)
+* 仮想ハブの作成を自動化する [REST API](/rest/api/virtualwan/virtualhubs)
+* 仮想 WAN 用の Azure VPN ゲートウェイを自動化する [REST API](/rest/api/virtualwan/vpngateways)
+* VPNSite を Azure VPN Hub に接続する [REST API](/rest/api/virtualwan/vpnconnections)
 * [既定の IPsec ポリシー](#default)
 
 ## <a name="customer-experience"></a><a name ="ae"></a>カスタマー エクスペリエンス
@@ -63,11 +63,11 @@ Azure Virtual WAN と共に予想される顧客エクスペリエンスを理�
 
 ###  <a name="upload-branch-device-information"></a><a name="branch"></a>ブランチ デバイスの情報をアップロードする
 
-ブランチ (オンプレミス サイト) の情報を Azure にアップロードするユーザー エクスペリエンスをデザインする必要があります。 VPNSite 用の [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) を使用して、Virtual WAN でサイト情報を作成できます。 すべてのブランチ SDWAN/VPN デバイスを提供したり、適切なデバイスのカスタマイズを選択したりすることができます。
+ブランチ (オンプレミス サイト) の情報を Azure にアップロードするユーザー エクスペリエンスをデザインする必要があります。 VPNSite 用の [REST API](/rest/api/virtualwan/vpnsites) を使用して、Virtual WAN でサイト情報を作成できます。 すべてのブランチ SDWAN/VPN デバイスを提供したり、適切なデバイスのカスタマイズを選択したりすることができます。
 
 ### <a name="device-configuration-download-and-connectivity"></a><a name="device"></a>デバイス構成のダウンロードと接続
 
-このステップでは、Azure の構成をダウンロードし、ブランチ デバイスから Azure Virtual WAN への接続を設定します。 この手順で、プロバイダーを使用していないお客様が、手動で Azure の構成をダウンロードしてオンプレミス SDWAN/VPN デバイスに適用します。 プロバイダーは、この手順を自動化する必要があります。 詳細については、ダウンロード [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnsitesconfiguration/download) を参照してください。 デバイス コントローラーでは、"GetVpnConfiguration" REST API を呼び出して、Azure の構成をダウンロードできます。
+このステップでは、Azure の構成をダウンロードし、ブランチ デバイスから Azure Virtual WAN への接続を設定します。 この手順で、プロバイダーを使用していないお客様が、手動で Azure の構成をダウンロードしてオンプレミス SDWAN/VPN デバイスに適用します。 プロバイダーは、この手順を自動化する必要があります。 詳細については、ダウンロード [REST API](/rest/api/virtualwan/vpnsitesconfiguration/download) を参照してください。 デバイス コントローラーでは、"GetVpnConfiguration" REST API を呼び出して、Azure の構成をダウンロードできます。
 
 **構成メモ**
 
@@ -81,12 +81,12 @@ Azure Virtual WAN と共に予想される顧客エクスペリエンスを理�
 * **vpnSiteConfiguration -** このセクションは、仮想 WAN に接続するサイトとして設定されたデバイスの詳細を示します。 ブランチ デバイスの名前とパブリック IP アドレスが含まれています。
 * **vpnSiteConnections -** このセクションには、次の情報が含まれています。
 
-    * 仮想ハブ VNet の**アドレス空間**<br>例:
+    * 仮想ハブ VNet の **アドレス空間**<br>例:
  
         ```
         "AddressSpace":"10.1.0.0/24"
         ```
-    * ハブに接続されている VNet の**アドレス空間**<br>例:
+    * ハブに接続されている VNet の **アドレス空間**<br>例:
 
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.3.0.0/16"]

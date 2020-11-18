@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=4
 ms.devlang: ''
 ms.topic: conceptual
-author: mashamsft
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 05/19/2020
-ms.openlocfilehash: 4c679b6bb0f5645ea7a972be03ba3621b824a501
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c9f29a891061dc0e6dcfe8c8f6a65f0f190c6afc
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327631"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593588"
 ---
 # <a name="accelerated-database-recovery-in-azure-sql"></a>Azure SQL の高速データベース復旧パターン 
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -85,7 +85,7 @@ ADR 復旧プロセスには、現行の復旧プロセスと同じく 3 つの�
 
   プロセスは以前と同じままで、sLog を再構築し、バージョン管理されない操作のログ レコードがコピーされるという処理が追加されています。
   
-- **再実行**フェーズ
+- **再実行** フェーズ
 
   2 つのフェーズ (P) に分けられます
   - フェーズ 1

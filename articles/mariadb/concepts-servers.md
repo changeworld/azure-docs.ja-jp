@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 444d7f1574cf1517b01250bcb9d810731030182d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f519ac30468d197c14fcf53d386168ebde5cf8ac
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79527794"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504358"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Azure Database for MariaDB のサーバーの概念
 この記事では、Azure Database for MariaDB サーバーを操作するための考慮事項とガイドラインを示します。
@@ -45,11 +45,24 @@ Azure Database for MariaDB サーバー内には 1 つまたは複数のデー�
 | **ファイアウォール** | データを保護するため、ファイアウォール規則は、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 「[Azure Database for MariaDB サーバーのファイアウォール規則](./concepts-firewall-rules.md)」をご覧ください。 |
 | **SSL** | アプリケーションとデータベース サーバーの間に SSL 接続を適用できます。 「[Azure Database for MariaDB に安全に接続するためにご利用のアプリケーション内で SSL 接続を構成する](./howto-configure-ssl.md)」をご覧ください。 |
 
+## <a name="stopstart-an-azure-database-for-mariadb-preview"></a>Azure Database for MariaDB を停止または開始する (プレビュー)
+Azure Database for MariaDB を使用すると、使用されていないときにサーバーを **停止** し、アクティビティを再開したらサーバーを **開始** することができます。 これは基本的に、データベース サーバーのコストを節約し、使用したリソースに対してのみ課金されるようにするために行われます。 これは、開発テスト ワークロードの場合、および 1 日の一部でしかサーバーを使用しない場合に、いっそう重要になります。 サーバーを停止すると、すべてのアクティブな接続が切断されます。 後で、サーバーをオンラインに戻すときは、[Azure portal](../mysql/how-to-stop-start-server.md) または [CLI](../mysql/how-to-stop-start-server.md) のいずれかを使用できます。
+
+サーバーが **停止** 状態にある場合、サーバーのコンピューティングは課金されません。 ただし、サーバーが再び起動されたときにデータ ファイルを使用できるようにするため、サーバーのストレージは維持されているため、ストレージは引き続き課金されます。
+
+> [!IMPORTANT]
+> サーバーを **停止** すると、それ以降連続して 7 日間は、その状態のままになります。 この期間内に手動で **開始** しないと、サーバーは 7 日の終わりに自動的に開始されます。 サーバーを使用していない場合は、再び **停止** することができます。
+
+サーバーが停止されている間、サーバーで管理操作を実行することはできません。 サーバーの構成設定を変更するには、[サーバーを起動する](../mysql/how-to-stop-start-server.md)必要があります。
+
+### <a name="limitations-of-stopstart-operation"></a>停止/開始操作の制限事項
+- 読み取りレプリカ構成 (ソースとレプリカの両方) ではサポートされていません。
+
 ## <a name="how-do-i-manage-a-server"></a>サーバーの管理方法
 Azure Database for MariaDB サーバーを管理するには、Azure portal または Azure CLI を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 - サービスの概要については、[Azure Database for MariaDB の概要](./overview.md)に関するページをご覧ください。
-- **サービス レベル**に基づく特定のリソース クォータと制限については、[サービス レベル](./concepts-pricing-tiers.md)に関するページをご覧ください
+- **サービス レベル** に基づく特定のリソース クォータと制限については、[サービス レベル](./concepts-pricing-tiers.md)に関するページをご覧ください
 
 <!-- - For information about connecting to the service, see [Connection libraries for Azure Database for MariaDB](./concepts-connection-libraries.md). -->

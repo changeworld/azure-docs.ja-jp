@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 78871441fe7f9b0f6d02cdf6f05b97933abfca54
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: da3ae5e86833eb3e7eb71d7e47cb6f963d37b9cf
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275634"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410727"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health エージェントのインストール
 
@@ -35,7 +35,7 @@ ms.locfileid: "92275634"
 | 要件 | 説明 |
 | --- | --- |
 | Azure AD Premium |Azure AD Connect Health は Azure AD Premium の機能です。使用するためには Azure AD Premium が必要となります。 <br /><br />詳細については、「[Azure AD Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。 <br />30 日間無料試用版をすぐにご利用の場合は、[こちら](https://azure.microsoft.com/trial/get-started-active-directory/)のページにアクセスしてください。 |
-| Azure AD Connect Health の使用を開始するには、Azure AD のグローバル管理者であること |既定では、Azure AD Connect Health の使用を開始してポータルにアクセスし、操作を実行するために Health エージェントのインストールと構成を行うことができるのは、グローバル管理者のみです。 詳細については、[Azure AD ディレクトリの管理](../fundamentals/active-directory-administer.md)に関するページを参照してください。 <br /><br /> Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure AD Connect Health へのアクセスを組織の他のユーザーに許可できます。 詳細については、[Azure AD Connect Health の Azure ロールベースのアクセス制御 (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-azure-rbac) に関するセクションを参照してください。 <br /><br />**重要:** エージェントのインストール時に使用するアカウントは、職場または学校アカウントである必要があります。 Microsoft アカウントを使用することはできません。 詳細については、「[Azure への組織としてのサインアップ](../fundamentals/sign-up-organization.md)」を参照してください。 |
+| Azure AD Connect Health の使用を開始するには、Azure AD のグローバル管理者であること |既定では、Azure AD Connect Health の使用を開始してポータルにアクセスし、操作を実行するために Health エージェントのインストールと構成を行うことができるのは、グローバル管理者のみです。 詳細については、[Azure AD ディレクトリの管理](../fundamentals/active-directory-whatis.md)に関するページを参照してください。 <br /><br /> Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure AD Connect Health へのアクセスを組織の他のユーザーに許可できます。 詳細については、[Azure AD Connect Health の Azure ロールベースのアクセス制御 (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-azure-rbac) に関するセクションを参照してください。 <br /><br />**重要:** エージェントのインストール時に使用するアカウントは、職場または学校アカウントである必要があります。 Microsoft アカウントを使用することはできません。 詳細については、「[Azure への組織としてのサインアップ](../fundamentals/sign-up-organization.md)」を参照してください。 |
 | Azure AD Connect Health エージェントが対象となる個々のサーバーにインストールされていること | Azure AD Connect Health がデータを受信し、監視機能および分析機能を提供するためには、対象となるサーバーに Health エージェントがインストールおよび構成されている必要があります。 <br /><br />たとえば、AD FS インフラストラクチャからデータを入手するためには、AD FS サーバーと Web アプリケーション プロキシ サーバーにエージェントがインストールされている必要があります。 同様に、オンプレミス AD DS インフラストラクチャに関するデータを入手するためには、ドメイン コントローラーにエージェントがインストールされている必要があります。 <br /><br /> |
 | Azure サービスのエンドポイントに対する送信接続 | エージェントをインストールしたり実行したりするためには、Azure AD Connect Health サービスのエンド ポイントへの接続が必要となります。 ファイアウォールを使用して送信接続がブロックされている場合は、確実に以下のエンドポイントを許可リストに追加してください。 [送信接続エンドポイント](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints)に関するセクションをご覧ください。 |
 |IP アドレスに基づく送信接続 | ファイアウォールでの IP アドレスに基づくフィルタリングについては、[Azure の IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページをご覧ください。|
@@ -59,7 +59,7 @@ ms.locfileid: "92275634"
 
 | ドメイン環境 | 必要な Azure サービス エンドポイント |
 | --- | --- |
-| 一般 | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;.servicebus.windows.net - ポート:5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *このエンドポイントは、登録時の検出目的でのみ使用されます。</li> |
+| 一般 | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;.servicebus.windows.net - ポート:5671 (最新バージョンのエージェントでは不要)</li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *このエンドポイントは、登録時の検出目的でのみ使用されます。</li> |
 | Azure Germany | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *このエンドポイントは、登録時の検出目的でのみ使用されます。</li> |
 | Azure Government | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *このエンドポイントは、登録時の検出目的でのみ使用されます。</li> |
 
@@ -128,10 +128,10 @@ ms.locfileid: "92275634"
 4. 昇格された特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。```auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable```
 5. **[ローカル セキュリティ ポリシー]** を閉じます。
 <br />   -- **次の手順は、プライマリ AD FS サーバーにのみ必要です。** -- <br />
-6. **AD FS 管理**スナップインを開きます (サーバー マネージャーの [ツール] をクリックし、[AD FS の管理] を選択します)。
-7. **操作**ウィンドウで、 **[フェデレーション サービス プロパティの編集]** をクリックします。
+6. **AD FS 管理** スナップインを開きます (サーバー マネージャーの [ツール] をクリックし、[AD FS の管理] を選択します)。
+7. **操作** ウィンドウで、 **[フェデレーション サービス プロパティの編集]** をクリックします。
 8. **[フェデレーション サービス プロパティ]** ダイアログ ボックスの **[イベント]** タブをクリックします。
-9. **[成功の監査] チェック ボックスと [失敗の監査] チェック ボックス**をオンにし、 **[OK]** をクリックします。
+9. **[成功の監査] チェック ボックスと [失敗の監査] チェック ボックス** をオンにし、 **[OK]** をクリックします。
 10. 詳細ログは、コマンド ```Set-AdfsProperties -LOGLevel Verbose``` を使用して powershell で有効にすることができます。
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2016"></a>Windows Server 2016 で AD FS の監査を有効にするには
@@ -142,10 +142,10 @@ ms.locfileid: "92275634"
 4. 昇格された特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。<code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable</code>
 5. **[ローカル セキュリティ ポリシー]** を閉じます。
 <br />   -- **次の手順は、プライマリ AD FS サーバーにのみ必要です。** -- <br />
-6. **AD FS 管理**スナップインを開きます (サーバー マネージャーの [ツール] をクリックし、[AD FS の管理] を選択します)。
-7. **操作**ウィンドウで、 **[フェデレーション サービス プロパティの編集]** をクリックします。
+6. **AD FS 管理** スナップインを開きます (サーバー マネージャーの [ツール] をクリックし、[AD FS の管理] を選択します)。
+7. **操作** ウィンドウで、 **[フェデレーション サービス プロパティの編集]** をクリックします。
 8. **[フェデレーション サービス プロパティ]** ダイアログ ボックスの **[イベント]** タブをクリックします。
-9. **[成功の監査] チェック ボックスと [失敗の監査] チェック ボックス**をオンにし、 **[OK]** をクリックします。 これは既定で有効になっています。
+9. **[成功の監査] チェック ボックスと [失敗の監査] チェック ボックス** をオンにし、 **[OK]** をクリックします。 これは既定で有効になっています。
 10. PowerShell ウィンドウを開き、次のコマンドを実行します。```Set-AdfsProperties -AuditLevel Verbose```
 
 既定では "basic" 監査レベルが有効になっていることに注意してください。 詳細については、[Windows Server 2016 での AD FS 監査の強化](/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server)に関する記事をご覧ください。
@@ -153,7 +153,7 @@ ms.locfileid: "92275634"
 
 #### <a name="to-locate-the-ad-fs-audit-logs"></a>AD FS の監査ログを特定するには
 
-1. **イベント ビューアー**を開きます。
+1. **イベント ビューアー** を開きます。
 2. [Windows ログ] に移動し、 **[セキュリティ]** を選択します。
 3. 右側の **[現在のログをフィルター]** をクリックします。
 4. [イベント ソース] の **[AD FS の監査]** を選択します。

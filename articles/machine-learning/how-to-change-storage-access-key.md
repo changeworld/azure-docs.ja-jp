@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: f1da7149a41ec8dd08e307394cba3e7feabec42a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 02772ff6279ee813b86f92984742ba8301bdf74e
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320711"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357948"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>ストレージ アカウント キーの再生成
 
@@ -26,7 +26,8 @@ Azure Machine Learning で使用される Azure ストレージ アカウント�
 セキュリティ上の理由から、Azure ストレージ アカウントのアクセス キーを変更することが必要になる場合があります。 アクセス キーを再生成した場合は、その新しいキーを使用するように Azure Machine Learning を更新する必要があります。 Azure Machine Learning では、ストレージ アカウントはモデル ストレージ用に使用される場合とデータストアとして使用される場合の両方があります。
 
 > [!IMPORTANT]
-> データストアに登録された資格情報は、ワークスペースに関連付けられている Azure キー コンテナーに保存されます。 キー コンテナーで[論理的な削除](../key-vault/general/soft-delete-overview.md)を有効にしている場合は、必ずこの記事に従って資格情報を更新してください。 データストアの登録を解除し、同じ名前で再登録すると失敗します。
+
+> データストアに登録された資格情報は、ワークスペースに関連付けられている Azure キー コンテナーに保存されます。 キー コンテナーで[論理的な削除](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)を有効にしている場合は、この記事に資格情報を更新する手順が記載されています。 データストアの登録を解除し、同じ名前で再登録しようとすると、この操作は失敗します。 このシナリオでの論理的な削除を有効にする方法については、「[既存のキー コンテナーの論理的な削除を有効にする]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -110,7 +111,7 @@ for name, ds in datastores.items():
         このコマンドにより、ワークスペースで使用する Azure ストレージ アカウントの新しいキーが自動的に同期されます。
 
 1. SDK または [Azure Machine Learning Studio](https://ml.azure.com) を使用して、ストレージ アカウントを使用するデータストアを再登録することができます。
-    1. **Python SDK を介してデータストアを再登録する** には、「 [更新する必要があるもの](#whattoupdate)」セクションの値とステップ 1 でのキーを次のコードで使用します。 
+    1. **Python SDK を介してデータストアを再登録する** には、「[更新する必要があるもの](#whattoupdate)」セクションの値とステップ 1 でのキーを次のコードで使用します。 
     
         このコードでは `overwrite=True` が指定されているため、既存の登録が上書きされて、新しいキーを使用するように更新されます。
     

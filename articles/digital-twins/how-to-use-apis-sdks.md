@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ed4bc60fbffbfbc553d41d7f7d44709551b620dc
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: a09563e787573f3cb3dd510229822a0b0fbcb6c9
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280338"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395888"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins の API および SDK を使用する
 
@@ -26,50 +26,51 @@ Azure Digital Twins には、インスタンスとその要素を管理するた
 
 コントロール プレーン API は、[ARM](../azure-resource-manager/management/overview.md) API であり、Azure Digital Twins インスタンス全体を管理するために使用されます。そのため、インスタンス全体の作成や削除などの操作に対応しています。 また、エンドポイントの作成と削除にも使用します。
 
-最新のコントロール プレーン API のバージョンは、 _**2020-10-31**_ です。
+最新のコントロール プレーン API のバージョンは、_**2020-10-31**_ です。
 
 コントロール プレーン API を使用するには
 * [コントロール プレーン Swagger フォルダー](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)の最新の Swagger を参照することで、API を直接呼び出すことができます。 このリポジトリには、使用法を示す例が保存されているフォルダーもあります。
 * 現在、コントロール API の SDK には、次の言語でアクセスできます。
-  - [.NET (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([参照 [自動生成]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)) ([ソース](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
-  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([参照 [自動生成]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview)) ([ソース](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
-  - [JavaScript](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([ソース](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
-  - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([ソース](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
-  - [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ([ソース](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins))
+  - [ **.NET (C#)** ](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([参照 [自動生成]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)) ([ソース](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
+  - [**Java**](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([参照 [自動生成]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview)) ([ソース](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
+  - [**JavaScript**](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([ソース](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
+  - [**Python**](https://pypi.org/project/azure-mgmt-digitaltwins/) ([ソース](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
+  - [**Go**](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ([ソース](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins))
 
 また、コントロール プレーン API の演習を行うには、[Azure portal](https://portal.azure.com) および [CLI](how-to-use-cli.md) を使用して Azure Digital Twins を操作します。
 
 ## <a name="overview-data-plane-apis"></a>概要: データ プレーン API
 
 データ プレーン API は、Azure Digital Twins API であり、Azure Digital Twins インスタンス内の要素を管理するために使用されます。 これには、ルートの作成、モデルのアップロード、リレーションシップの作成、ツインの管理などの操作が含まれます。 これらは、主に次のカテゴリに分けることができます。
-* **DigitalTwinModels** - DigitalTwinModels カテゴリには、Azure Digital Twins のインスタンスの[モデル](concepts-models.md)を管理するための API が含まれています。 管理アクティビティには、DTDL で作成されたモデルのアップロード、検証、取得、および削除が含まれます。
+* **DigitalTwinModels** - DigitalTwinModels カテゴリには、Azure Digital Twins のインスタンスの [モデル](concepts-models.md)を管理するための API が含まれています。 管理アクティビティには、DTDL で作成されたモデルのアップロード、検証、取得、および削除が含まれます。
 * **DigitalTwins** - DigitalTwins カテゴリには、開発者が Azure Digital Twins のインスタンスで [Digital Twins](concepts-twins-graph.md) とその関係を作成、変更、および削除するための API が含まれています。
 * **Query** - 開発者は、Query カテゴリを使用して、複数のリレーションシップにわたる [ツイングラフで一連の Digital Twins を検索できます](how-to-query-graph.md)。
-* **Event Routes** - Event Routes カテゴリには、システムを通してダウンストリーミング サービスに[データをルーティングする](concepts-route-events.md) API が含まれています。
+* **Event Routes** - Event Routes カテゴリには、システムを通してダウンストリーミング サービスに [データをルーティングする](concepts-route-events.md) API が含まれています。
 
-最新のデータ プレーン API のバージョンは、 _**2020-10-31**_ です。
+最新のデータ プレーン API のバージョンは、_**2020-10-31**_ です。
 
 データ プレーン API を使用するには
 * API を直接呼び出すには、次の操作を実行します。
    - [データ プレーン Swagger フォルダー](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)の最新の Swagger を参照する。 このリポジトリには、使用法を示す例が保存されているフォルダーもあります。 
    - [API リファレンス ドキュメント](/rest/api/azure-digitaltwins/)を参照する。
-* **.NET (C#)** SDK を使用する。 .NET SDK は次の方法で使用します。
+* **.NET (C#)** SDK を使用できます。 .NET SDK は次の方法で使用します。
    - NuGet からパッケージを表示して追加する。[Azure.DigitalTwins.Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core) を表示する。 
    - [SDK のリファレンス ドキュメント](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)を確認する。
    - GitHub で、サンプルのフォルダーを含む SDK ソース [Azure IoT Digital Twins client library for .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) を探す。 
-   - 詳細な情報と使用例については、この記事の「[.NET (C#) SDK (データ プレーン)](#net-c-sdk-data-plane)」セクションを参照してください。
-* **Java** SDK を使用する。 Java SDK を使用するには、次のようにします。
+   - 詳細な情報と使用例については、この記事の「[ *.NET (C#) SDK (データ プレーン)* ](#net-c-sdk-data-plane)」セクションを参照してください。
+* **Java** SDK を使用できます。 Java SDK を使用するには、次のようにします。
    - Maven からパッケージを表示してインストールする。[`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar)
-   - [SDK のリファレンス ドキュメント](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-preview)を確認する
+   - [SDK のリファレンス ドキュメント](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-stable)を確認する
    - GitHub で SDK のソースを探す。[Azure IoT Digital Twins client library for Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
-* **JavaScript** SDK を使用する。 JavaScript SDK を使用するには、次のようにします。
-   - npm からパッケージを表示してインストールする。[JavaScript 用 Azure Azure Digital Twins クライアント ライブラリ](https://www.npmjs.com/package/@azure/digital-twins-core)。
-   - [SDK のリファレンス ドキュメント](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest)を確認する。
+* **JavaScript** SDK を使用できます。 JavaScript SDK を使用するには、次のようにします。
+   - npm からパッケージを表示してインストールする。[JavaScript 用 Azure Digital Twins コア クライアント ライブラリ](https://www.npmjs.com/package/@azure/digital-twins-core)。
+   - [SDK のリファレンス ドキュメント](/javascript/api/@azure/digital-twins-core/?branch=master&view=azure-node-latest&preserve-view=true)を確認する。
    - GitHub で SDK のソースを探す。[JavaScript 用 Azure Digital Twins コア クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core)
-* **Python** SDK を使用する。 Python SDK を使用するには、次のようにします。
-   - パッケージを表示してインストールする。[Azure Azure Digital Twins Core client library for Python](https://pypi.org/project/azure-digitaltwins-core/1.0.0b1/)。
+* **Python** SDK を使用できます。 Python SDK を使用するには、次のようにします。
+   - PyPi からパッケージを表示してインストールする。[Azure Azure Digital Twins Core client library for Python](https://pypi.org/project/azure-digitaltwins-core/)。
+   - [SDK のリファレンス ドキュメント](/python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python&preserve-view=true)を確認する。
    - GitHub で SDK のソースを探す。[Azure Digital Twins Core client library for Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
-* AutoRest を使用して、別の言語用の SDK を生成することができます。 [" *AutoRest を使用して Azure Digital Twins 用のカスタム SDK を作成する方法* "](how-to-create-custom-sdks.md) の手順に従ってください。
+* AutoRest を使用して、別の言語用の SDK を生成することができます。 ["*AutoRest を使用して Azure Digital Twins 用のカスタム SDK を作成する方法*"](how-to-create-custom-sdks.md) の手順に従ってください。
 
 また、データ プレーン API の演習を行うには、[CLI](how-to-use-cli.md) を使用して Azure Digital Twins を操作します。
 
@@ -80,7 +81,7 @@ Azure Digital Twins .NET (C#) SDK は、Azure SDK for .Net に含まれていま
 > [!NOTE]
 > SDK の設計の詳細については、[Azure SDK の一般的な設計原則](https://azure.github.io/azure-sdk/general_introduction.html)と特定の [.NET 設計ガイドライン](https://azure.github.io/azure-sdk/dotnet_introduction.html)を参照してください。
 
-SDK を使用するには、NuGet パッケージ **Azure.DigitalTwins.Core** をプロジェクトに含めます。 また、 **Azure.Identity** パッケージの最新バージョンも必要です。
+SDK を使用するには、NuGet パッケージ **Azure.DigitalTwins.Core** をプロジェクトに含めます。 また、**Azure.Identity** パッケージの最新バージョンも必要です。
 
 * Visual Studio では、NuGet パッケージ マネージャーを使用してパッケージを追加できます。そのためには、[ツール] > [NuGet パッケージ マネージャー] > [ソリューションの NuGet パッケージの管理] の順に選択します。 
 * .NET コマンド ライン ツールを使用して、次のコマンドを実行できます。
@@ -90,7 +91,7 @@ SDK を使用するには、NuGet パッケージ **Azure.DigitalTwins.Core** �
     dotnet add package Azure.identity
     ```
 
-実際の API の使用方法の詳細については、 [" *クライアント アプリのコーディングに関するチュートリアル* "](tutorial-code.md) を参照してください。 
+実際の API の使用方法の詳細については、["*クライアント アプリのコーディングに関するチュートリアル*"](tutorial-code.md) を参照してください。 
 
 ### <a name="net-sdk-usage-examples"></a>.NET SDK の使用例
 
@@ -155,7 +156,7 @@ await foreach (string twin in result)
 }
 ```
 
-このサンプル コード アプリの詳細については、 [" *クライアント アプリのコーディングに関するチュートリアル* "](tutorial-code.md) を参照してください。 
+このサンプル コード アプリの詳細については、["*クライアント アプリのコーディングに関するチュートリアル*"](tutorial-code.md) を参照してください。 
 
 その他のサンプルについては、[.NET (C#) SDK 用 GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core/samples)を参照してください。
 
@@ -274,7 +275,7 @@ client.UpdateDigitalTwin("myTwin", updateTwinData);
 ## <a name="general-apisdk-usage-notes"></a>一般的な API/SDK の使用上の注意
 
 > [!NOTE]
-> 現時点では、Azure Digital Twins では **クロス オリジン リソース共有 (CORS)** がサポートされないことに注意してください。 影響と解決方法の詳細については、 [ *「クロス オリジン リソース共有 (CORS)」*](concepts-security.md#cross-origin-resource-sharing-cors)セクション ( *概念:Azure Digital Twins ソリューションのセキュリティ* に関するページを参照してください。
+> 現時点では、Azure Digital Twins では **クロス オリジン リソース共有 (CORS)** がサポートされないことに注意してください。 影響と解決方法の詳細については、[ *「クロス オリジン リソース共有 (CORS)」*](concepts-security.md#cross-origin-resource-sharing-cors)セクション (*概念:Azure Digital Twins ソリューションのセキュリティ* に関するページを参照してください。
 
 次のリストに、API と SDK の使用に関する追加詳細情報および一般的なガイドラインを示します。
 
@@ -303,7 +304,7 @@ portal のホームページで、Azure Digital Twins インスタンスを検�
 ## <a name="next-steps"></a>次のステップ
 
 API を使用して Azure Digital Twins インスタンスと認証を設定する方法を参照してください。
-* [*方法: インスタンスと認証を設定する* "](how-to-set-up-instance-cli.md)
+* [*方法: インスタンスと認証を設定する*"](how-to-set-up-instance-cli.md)
 
 または、次のチュートリアルで使用されているようなクライアント アプリの作成手順を実行します。
 * [*チュートリアル:クライアント アプリをコーディングする*](tutorial-code.md)

@@ -1,7 +1,7 @@
 ---
 title: 分散トレーニングとは
 titleSuffix: Azure Machine Learning
-description: 分散トレーニングと、Azure Machine Learning がどのようにこれをサポートするかについて説明します。
+description: Azure Machine Learning でサポートされている分散トレーニングの種類と、分散トレーニングに使用できるオープン ソース フレームワーク統合について説明します。
 services: machine-learning
 ms.service: machine-learning
 author: nibaccam
@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 4c479a64b2100cfc1a6fdf17f5e6f5636d3a689d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4e1972e0530656bf6cc0e6319191ab4ebbfbfddb
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322228"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358577"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Azure Machine Learning を使用した分散トレーニング
 

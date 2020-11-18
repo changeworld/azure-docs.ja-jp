@@ -5,14 +5,14 @@ description: Azure Monitor で Azure Digital Twins メトリックを表示す�
 author: baanders
 ms.author: baanders
 ms.date: 8/4/2020
-ms.topic: troubleshooting
+ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7fde67ab9b9160bb89493748d09e83bd9cfcff34
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 46e053856b05f5a009eb1ae8bc6a7246dfb6167e
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091703"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616690"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure Digital Twins のトラブルシューティング: メトリック
 
@@ -22,7 +22,7 @@ ms.locfileid: "93091703"
 
 ## <a name="how-to-view-azure-digital-twins-metrics"></a>Azure Digital Twins メトリックを表示する方法
 
-1. Azure Digital Twins インスタンスを作成します。 Azure Digital Twins インスタンスを設定する方法については、 [*インスタンスと認証を設定する方法*](how-to-set-up-instance-portal.md)に関するページを参照してください。
+1. Azure Digital Twins インスタンスを作成します。 Azure Digital Twins インスタンスを設定する方法については、[*インスタンスと認証を設定する方法*](how-to-set-up-instance-portal.md)に関するページを参照してください。
 
 2. [Azure portal](https://portal.azure.com) で Azure Digital Twins インスタンスを見つけます (ポータルの検索バーに名前を入力して、そのページを開くことができます)。 
 
@@ -36,12 +36,12 @@ ms.locfileid: "93091703"
 
     :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="[診断設定] ページと追加するボタンが示されているスクリーンショット":::
 
-    このプロセスの詳細については、 [*トラブルシューティング: 診断の設定*](troubleshoot-diagnostics.md)に関するページを参照してください。
+    このプロセスの詳細については、[*トラブルシューティング: 診断の設定*](troubleshoot-diagnostics.md)に関するページを参照してください。
 
 4. メニューから **[アラート]** を選択し、 **[+ 新しいアラート ルール]** を選択することで、メトリック データのアラートを設定できます。
     :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="[アラート] ページと追加するボタンを示すスクリーンショット":::
 
-    このプロセスの詳細については、 [*トラブルシューティング: アラートの設定*](troubleshoot-alerts.md)に関するページを参照してください。
+    このプロセスの詳細については、[*トラブルシューティング: アラートの設定*](troubleshoot-alerts.md)に関するページを参照してください。
 
 ## <a name="azure-digital-twins-metrics-and-how-to-use-them"></a>Azure Digital Twins メトリックとその使用方法
 
@@ -64,7 +64,7 @@ API 要求に関連するメトリック:
 課金に関連するメトリック:
 
 >[!NOTE]
->これらのメトリックは引き続き選択可能なリストに表示されますが、サービスの新しい価格が使用できるようになるまで 0 のままになります。 詳細については、「 [*Azure Digital Twins の価格*](https://azure.microsoft.com/pricing/details/digital-twins/)」を参照してください。
+>これらのメトリックは引き続き選択可能なリストに表示されますが、サービスの新しい価格が使用できるようになるまで 0 のままになります。 詳細については、「[*Azure Digital Twins の価格*](https://azure.microsoft.com/pricing/details/digital-twins/)」を参照してください。
 
 | メトリック | メトリックの表示名 | ユニット | 集計の種類| 説明 | Dimensions |
 | --- | --- | --- | --- | --- | --- |
@@ -109,4 +109,4 @@ API 要求に関連するメトリック:
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Digital Twins の記録されたメトリックの管理の詳細については、 [*トラブルシューティング: 診断の設定*](troubleshoot-diagnostics.md)に関するページを参照してください。
+Azure Digital Twins の記録されたメトリックの管理の詳細については、[*トラブルシューティング: 診断の設定*](troubleshoot-diagnostics.md)に関するページを参照してください。

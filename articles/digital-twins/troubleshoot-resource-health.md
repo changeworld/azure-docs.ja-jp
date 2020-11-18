@@ -5,14 +5,14 @@ description: Azure Resource Health を使用して Azure Digital Twins インス
 author: baanders
 ms.author: baanders
 ms.date: 10/6/2020
-ms.topic: troubleshooting
+ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9c31345a4ddaf9ac2b75204172dbc47606cb07db
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: b64ee4d1538276bbbcab3fe09054f399ad20c162
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681366"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616551"
 ---
 # <a name="troubleshooting-azure-digital-twins-resource-health"></a>Azure Digital Twins のトラブルシューティング: リソース ヘルス
 
@@ -32,9 +32,9 @@ Azure Resource Health は、Azure Digital Twins インスタンスが稼働し�
 
     :::image type="content" source="media/troubleshoot-resource-health/resource-health.png" alt-text="[リソース正常性] ページを示すスクリーンショット。過去 9 日間の日時レポートが表示された [正常性の履歴] セクションがあります。毎日、&quot;使用可能&quot; の状態が示されています。":::
 
-上の図では、このインスタンスは " *使用可能* " と示されており、過去 9 日間分あります。 " *使用可能* " 状態と、表示される可能性のあるその他の状態の種類の詳細については、 [*Azure リソースの正常性の概要*](../service-health/resource-health-overview.md)に関するページを参照してください。
+上の図では、このインスタンスは "*使用可能*" と示されており、過去 9 日間分あります。 "*使用可能*" 状態と、表示される可能性のあるその他の状態の種類の詳細については、[*Azure リソースの正常性の概要*](../service-health/resource-health-overview.md)に関するページを参照してください。
 
-さまざまな種類の Azure リソースにおけるリソースの正常性の詳細については、「 [*Azure Resource Health で利用できるリソースの種類と正常性チェック*](../service-health/resource-health-checks-resource-types.md)」を参照してください。
+さまざまな種類の Azure リソースにおけるリソースの正常性の詳細については、「[*Azure Resource Health で利用できるリソースの種類と正常性チェック*](../service-health/resource-health-checks-resource-types.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

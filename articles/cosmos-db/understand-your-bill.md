@@ -5,26 +5,26 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
+ms.date: 11/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 7b26c88bcbd303f00dc6163dd0323b07cbb83dcf
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3ac90b79053e59047dbe64598688e77b9df059d1
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073827"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358713"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Azure Cosmos DB の課金内容を理解する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 完全に管理されたクラウドネイティブ データベース サービスとして、Azure Cosmos DB では、データベース操作と使用ストレージに対してのみ請求することで、課金を簡略化しています。 オンプレミスまたは IaaS でホストされている別のサービスに比べ、追加のライセンス料、ハードウェア、ユーティリティのコスト、設備のコストは発生しません。 Azure Cosmos DB の複数リージョンの機能を考えると、データベース サービスでは、既存のオンプレミスまたは IaaS ソリューションに比べ、コストが大幅に削減されます。
 
-- **データベース操作** : データベース操作に対する請求方法は、使用している Azure Cosmos アカウントの種類によって異なります。
+- **データベース操作**: データベース操作に対する請求方法は、使用している Azure Cosmos アカウントの種類によって異なります。
 
-  - **プロビジョニング済みのスループット** :対象となる 1 時間での最大のプロビジョニング スループットに対し、100 RU/秒ずつ、時間単位で課金されます。
-  - **サーバーレス** : データベース操作によって使用された要求ユニットの合計に対し、時間単位で課金されます。
+  - **プロビジョニング済みのスループット**:対象となる 1 時間での最大のプロビジョニング スループットに対し、100 RU/秒ずつ、時間単位で課金されます。
+  - **サーバーレス**: データベース操作によって使用された要求ユニットの合計に対し、時間単位で課金されます。
 
-- **ストレージ** : 対象となる 1 時間にデータおよびインデックスで使用されたストレージの合計量 (GB 単位) に対し、固定料金が課金されます。
+- **ストレージ**: 対象となる 1 時間にデータおよびインデックスで使用されたストレージの合計量 (GB 単位) に対し、固定料金が課金されます。
 
 最新の価格情報については、[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。
 
@@ -105,9 +105,9 @@ ms.locfileid: "93073827"
 
 :::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="共有スループットの課金の例":::
 
-## <a name="billing-examples-with-geo-replication-and-multi-region-writes"></a>geo レプリケーションとマルチリージョンの書き込みでの課金の例  
+## <a name="billing-examples-with-geo-replication"></a>geo レプリケーションでの課金の例  
 
-世界中のどこの Azure リージョンでも、いつでも Azure Cosmos データベース アカウントに追加したり、削除したりできます。 さまざまな Azure Cosmos データベースおよびコンテナーに対して構成したスループットは、Azure Cosmos データベース アカウントに関連付けられている各 Azure リージョンで予約されます。 ご利用の Azure Cosmos データベース アカウント (時間単位でプロビジョニングされた) 内のすべてのデータベースとコンテナーに対して構成されている、プロビジョニングされたスループットの合計 (RU/秒) が T で、ご利用のデータベース アカウントに関連付けられている Azure リージョンの数が N の場合、Azure Cosmos データベース アカウントに対する、特定の時間のプロビジョニングされたスループットの合計は、(a) 1 つの書き込みリージョンで構成されている場合は T x N RU/秒に等しく、(b) 書き込み処理が可能なすべてのリージョンで構成されている場合は T x (N+1) RU/秒にそれぞれ等しくなります。 プロビジョニングされたスループット (単一書き込みリージョン) のコストは 100 RU/秒で $0.008/時間になり、複数の書き込み可能リージョン (マルチリージョン書き込み構成) でのプロビジョニングされたスループットのコストは 100 RU/秒で $0.016/時間になります ([価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照)。 単一の書き込みリージョンであっても、複数の書き込みリージョンであっても、Azure Cosmos DB では任意のリージョンからデータを読み取ることができます。
+世界中のどこの Azure リージョンでも、いつでも Azure Cosmos データベース アカウントに追加したり、削除したりできます。 さまざまな Azure Cosmos データベースおよびコンテナーに対して構成したスループットは、Azure Cosmos データベース アカウントに関連付けられている各 Azure リージョンで予約されます。 ご利用の Azure Cosmos データベース アカウント (時間単位でプロビジョニングされた) 内のすべてのデータベースとコンテナーに対して構成されている、プロビジョニングされたスループットの合計 (RU/秒) が T で、ご利用のデータベース アカウントに関連付けられている Azure リージョンの数が N の場合、Azure Cosmos データベース アカウントに対する、特定の時間のプロビジョニングされたスループットの合計は T x N RU/秒に等しくなります。プロビジョニングされたスループット (単一書き込みリージョン) のコストは 100 RU/秒で $0.008/時間になり、複数の書き込み可能リージョン (マルチリージョン書き込み構成) でのプロビジョニングされたスループットのコストは 100 RU/秒で $0.016/時間になります ([価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照)。 単一の書き込みリージョンであっても、複数の書き込みリージョンであっても、Azure Cosmos DB では任意のリージョンからデータを読み取ることができます。
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-single-region-writes"></a>課金の例: 複数リージョンの Azure Cosmos アカウント、単一リージョン書き込み
 
@@ -271,7 +271,7 @@ RU/秒の合計:500 + 400 = 900 時間あたりのコスト:900/100 * $0.008 = $
 
 総月額料金 = ストレージの毎月のコスト + スループットの毎月のコスト 総月額料金 = $25.00 + $53.57 = $78.57
 
-*料金はリージョンによって異なる場合があります。最新の料金については、 [価格ページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。*
+*料金はリージョンによって異なる場合があります。最新の料金については、[価格ページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。*
 
 ## <a name="billing-with-azure-cosmos-db-reserved-capacity"></a>Azure Cosmos DB の予約容量での課金
 

@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: d825a30cf43b3e7f9017638138df91d5145d280e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cdc6cbbea8b222007d94ecac99902bc4498a42fe
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791598"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505259"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -56,6 +56,11 @@ ms.locfileid: "92791598"
 ライブ イベントでは、さまざまな入力の縦横比の受信がサポートされています。 ストレッチ モードを使用すると、顧客が出力の拡張動作を指定できます。
 
 ライブ エンコードに、0.5 - 20 秒の固定キー フレーム間隔フラグメントを出力する機能が追加されました。
+
+## <a name="accounts"></a>アカウント
+
+> [!WARNING]
+> 2020-05-01 API バージョンで Media Services アカウントを作成した場合、RESTv2 では機能しません。 
 
 ## <a name="august-2020"></a>2020 年 8 月
 
@@ -109,7 +114,7 @@ Azure Media Player ドキュメントは、[Azure ドキュメント](../azure-m
 
 ### <a name="azure-government-cloud-updates"></a>Azure Government クラウドの更新
 
-Media Services が次の Azure Government リージョンで一般公開されました。 *米国政府アリゾナ* および *米国政府テキサス* 。
+Media Services が次の Azure Government リージョンで一般公開されました。*米国政府アリゾナ* および *米国政府テキサス*。
 
 ## <a name="december-2019"></a>2019 年 12 月
 
@@ -139,7 +144,7 @@ Media Services が次の Azure Government リージョンで一般公開され�
 
 ### <a name="content-protection"></a>コンテンツの保護
 
-去る 9 月に限定リージョンで公開された " *トークン再生防止* " 機能が全リージョンで利用できるようになりました。
+去る 9 月に限定リージョンで公開された "*トークン再生防止*" 機能が全リージョンで利用できるようになりました。
 Media Services をご利用のお客様は、キーまたはライセンスの要求に同じトークンを使用できる回数に上限を設定できるようになりました。 詳細については、「[トークン再生の防止](content-protection-overview.md#token-replay-prevention)」を参照してください。
 
 ### <a name="new-recommended-live-encoder-partners"></a>新しいおすすめのライブ エンコーダー パートナー
@@ -173,7 +178,7 @@ Media Services v3 で、24 時間 365 日のライブ イベントのライブ �
 
 #### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
 
-*Azure Media Indexer* および " *Azure Media Indexer 2 プレビュー* " の廃止を発表します。 提供終了日については、[レガシ コンポーネント](../previous/legacy-components.md)に関する記事を参照してください。 [Azure Media Services Video Indexer](../video-indexer/index.yml) が、これらの従来のメディア プロセッサに取って代わります。
+*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 提供終了日については、[レガシ コンポーネント](../previous/legacy-components.md)に関する記事を参照してください。 [Azure Media Services Video Indexer](../video-indexer/index.yml) が、これらの従来のメディア プロセッサに取って代わります。
 
 詳細については、[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer への移行](../previous/migrate-indexer-v1-v2.md)に関する記事をご覧ください。
 
@@ -407,12 +412,12 @@ Media Services v3 CLI または API を使用して 9 月 28 日から 10 月 12
 
 .NET SDK には次の機能があります。
 
-* **Transforms** と **Job** : メディア コンテンツをエンコードまたは分析します。 例については、「[ファイルのストリーミング](stream-files-tutorial-with-api.md)」と「[分析](analyze-videos-tutorial-with-api.md)」を参照してください。
-* **ストリーミング ロケーター** : コンテンツをエンドユーザー デバイスに公開およびストリーミングします。
-* **ストリーミング ポリシー** および **コンテンツ キー ポリシー** : コンテンツ配信時のキーの配信とコンテンツ保護 (DRM) を構成します。
-* **ライブ イベント** および **ライブ出力** : ライブ ストリーミング コンテンツの取り込みとアーカイブを構成します。
-* **Asset** : メディア コンテンツの Azure Storage への格納と発行を行います。 
-* **ストリーミング エンドポイント** : ダイナミック パッケージ、暗号化、およびライブとオンデマンドの両方のメディア コンテンツのストリーミングを構成およびスケーリングします。
+* **Transforms** と **Job**: メディア コンテンツをエンコードまたは分析します。 例については、「[ファイルのストリーミング](stream-files-tutorial-with-api.md)」と「[分析](analyze-videos-tutorial-with-api.md)」を参照してください。
+* **ストリーミング ロケーター**: コンテンツをエンドユーザー デバイスに公開およびストリーミングします。
+* **ストリーミング ポリシー** および **コンテンツ キー ポリシー**: コンテンツ配信時のキーの配信とコンテンツ保護 (DRM) を構成します。
+* **ライブ イベント** および **ライブ出力**: ライブ ストリーミング コンテンツの取り込みとアーカイブを構成します。
+* **Asset**: メディア コンテンツの Azure Storage への格納と発行を行います。 
+* **ストリーミング エンドポイント**: ダイナミック パッケージ、暗号化、およびライブとオンデマンドの両方のメディア コンテンツのストリーミングを構成およびスケーリングします。
 
 ### <a name="known-issues"></a>既知の問題
 

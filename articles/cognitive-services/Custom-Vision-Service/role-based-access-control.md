@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 096946a1a63c0826381875cd3ce4eaf0129a85df
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d265b6698a87c1c651dff1413cf48dd4984cd606
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146366"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616894"
 ---
 # <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 
-Custom Vision では、Azure リソースへの個々のアクセスを管理するための認可システムである、Azure のロールベースのアクセス制御 (Azure RBAC) がサポートされています。 Azure RBAC を使用すると、チーム メンバーによって異なる Custom Vision プロジェクトに対するアクセス許可レベルを割り当てることができます。 Azure RBAC の詳細については、「[Azure RBAC のドキュメント](https://docs.microsoft.com/azure/role-based-access-control/)」を参照してください。
+Custom Vision では、Azure リソースへの個々のアクセスを管理するための認可システムである、Azure のロールベースのアクセス制御 (Azure RBAC) がサポートされています。 Azure RBAC を使用すると、チーム メンバーによって異なる Custom Vision プロジェクトに対するアクセス許可レベルを割り当てることができます。 Azure RBAC の詳細については、「[Azure RBAC のドキュメント](../../role-based-access-control/index.yml)」を参照してください。
 
 ## <a name="add-role-assignment-to-custom-vision-resource"></a>Custom Vision リソースへのロールの割り当ての追加
 

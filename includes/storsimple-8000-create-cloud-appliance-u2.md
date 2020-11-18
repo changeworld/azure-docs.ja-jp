@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: d1ca6d37d6133786aff7ad3156fea2a0c22dfb97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1522bb133c7d8f877a334e47bf7929c533ea3465
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67181239"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376180"
 ---
 #### <a name="to-create-a-cloud-appliance"></a>クラウド アプライアンスを作成するには
 
@@ -18,7 +18,7 @@ ms.locfileid: "67181239"
     ![StorSimple の [クラウド アプライアンスの作成]](./media/storsimple-8000-create-cloud-appliance-u2/sca-create1.png)
 3. **[クラウド アプライアンスの作成]** ブレードで、次のように詳細を指定します。
    
-    ![StorSimple の [クラウド アプライアンスの作成]](./media/storsimple-8000-create-cloud-appliance-u2/sca-create2m.png)
+    ![StorSimple の [クラウド アプライアンスの作成] 2](./media/storsimple-8000-create-cloud-appliance-u2/sca-create2m.png)
    
    1. **[名前]** – クラウド アプライアンスの一意の名前。
    2. **[モデル]** - クラウド アプライアンスのモデルを選択します。 8010 デバイスは 30 TB の Standard Storage を提供し、8020 は 64 TB の Premium Storage を提供します。 バックアップから項目レベルの取得を行うシナリオをデプロイする場合は、8010 を指定します。 高いパフォーマンスと短い待ち時間が求められるワークロードをデプロイするか、ディザスター リカバリーのためのセカンダリ デバイスとして使用する場合は、8020 を選択します。

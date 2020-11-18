@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: efba69372f46c9b8a7f2857e37b34ec8c88654a0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1a9d5fe69cd9d853d0bf8ec971f31518bbf47c9a
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546281"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504698"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure Private Link を使用した Azure Cache for Redis (パブリック プレビュー)
 この記事では、Azure portal を使用して、仮想ネットワークと、プライベート エンドポイントを利用する Azure Cache for Redis インスタンスを作成する方法について学習します。 また、既存の Azure Cache for Redis インスタンスにプライベート エンドポイントを追加する方法について学習します。
@@ -33,7 +33,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成 
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、 **[リソースの作成]** を選択します。
+1. [Azure Portal](https://portal.azure.com) にサインインし、**[リソースの作成]** を選択します。
 
     :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="[リソースの作成] を選択します。":::
 
@@ -77,7 +77,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
    
    | 設定      | 推奨値  | 説明 |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS 名** | グローバルに一意の名前を入力します。 | キャッシュ名は 1 から 63 文字の文字列で、数字、英字、ハイフンのみを使用する必要があります。 名前の先頭と末尾には数字または文字を使用する必要があり、連続するハイフンを含めることはできません。 キャッシュ インスタンスの " *ホスト名* " は、 *\<DNS name>.redis.cache.windows.net* になります。 | 
+   | **DNS 名** | グローバルに一意の名前を入力します。 | キャッシュ名は 1 から 63 文字の文字列で、数字、英字、ハイフンのみを使用する必要があります。 名前の先頭と末尾には数字または文字を使用する必要があり、連続するハイフンを含めることはできません。 キャッシュ インスタンスの "*ホスト名*" は、 *\<DNS name>.redis.cache.windows.net* になります。 | 
    | **サブスクリプション** | ドロップダウンで、ご自身のサブスクリプションを選択します。 | この新しい Azure Cache for Redis インスタンスが作成されるサブスクリプション。 | 
    | **リソース グループ** | ドロップ ダウンでリソース グループを選択するか、 **[新規作成]** を選択し、新しいリソース グループの名前を入力します。 | その中にキャッシュやその他のリソースを作成するリソース グループの名前。 すべてのアプリ リソースを 1 つのリソース グループに配置することで、それらをまとめて簡単に管理または削除できます。 | 
    | **場所** | ドロップ ダウンで場所を選択します。 | キャッシュを使用する他のサービスの近くの[リージョン](https://azure.microsoft.com/regions/)を選択します。 |
@@ -99,7 +99,6 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 1. Premium キャッシュ インスタンスの **[詳細]** タブで、非 TLS ポート、クラスタリング、データ永続化の設定を構成します。
 
-
 1. **[次へ: タグ]** タブを選択するか、ページの下部にある **[次へ: タグ]** ボタンをクリックします。
 
 1. 必要に応じて、 **[タグ]** タブで、リソースを分類する場合は名前と値を入力します。 
@@ -108,7 +107,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 1. 緑色の検証に成功のメッセージが表示された後、 **[作成]** を選択します。
 
-キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に " **実行中** " と表示されている場合は、キャッシュを使用する準備ができています。 
+キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に "**実行中**" と表示されている場合は、キャッシュを使用する準備ができています。 
     
 > [!IMPORTANT]
 > 
@@ -135,7 +134,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成 
 仮想ネットワークを作成するには、これらの手順に従います。
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、 **[リソースの作成]** を選択します。
+1. [Azure Portal](https://portal.azure.com) にサインインし、**[リソースの作成]** を選択します。
 
 2. **[新規]** ページで、 **[ネットワーク]** を選択してから、 **[仮想ネットワーク]** を選択します。
 
@@ -168,7 +167,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 プライベート エンドポイントを作成するには、これらの手順に従います。
 
-1. Azure portal で、 **Azure Cache for Redis** を検索し、Enter キーを押すか、検索候補からそれを選択します。
+1. Azure portal で、**Azure Cache for Redis** を検索し、Enter キーを押すか、検索候補からそれを選択します。
 
     :::image type="content" source="media/cache-private-link/4-search-for-cache.png" alt-text="Azure Cache for Redis を検索する。":::
 
@@ -205,7 +204,37 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 13. 緑色の **検証に成功** のメッセージが表示された後、 **[作成]** を選択します。
 
+## <a name="faq"></a>よく寄せられる質問
+
+### <a name="why-cant-i-connect-to-a-private-endpoint"></a>プライベート エンドポイントに接続できないのはなぜですか。
+キャッシュが既に VNet インジェクションされたキャッシュである場合、プライベート エンドポイントをそのキャッシュ インスタンスで使用できません。 キャッシュ インスタンスがサポートされていない機能 (下記参照) を使用している場合は、プライベート エンドポイント インスタンスに接続できません。 さらに、プライベート エンドポイントを使用するには、キャッシュ インスタンスが 7 月 27 日より後に作成されている必要があります。
+
+### <a name="what-features-are-not-supported-with-private-endpoints"></a>プライベート エンドポイントでサポートされていない機能は何ですか。
+geo レプリケーション、ファイアウォール規則、ポータル コンソールのサポート、クラスター化されたキャッシュあたり複数のエンドポイント、ファイアウォール規則とゾーン冗長の永続化。 
+
+### <a name="how-can-i-change-my-private-endpoint-to-be-disabled-from-public-network-access"></a>プライベート エンドポイントをパブリック ネットワーク アクセスから無効にするように変更するにはどうすればよいですか。
+`publicNetworkAccess` フラグは既定で `Enabled` に設定されています。 このフラグは、パブリック エンドポイントとプライベート エンドポイントの両方に対してキャッシュへのアクセスを必要に応じて許可できるようにするためにあります (`Enabled` に設定されている場合)。 `Disabled` に設定すると、プライベート エンドポイントのアクセスのみが許可されます。 この値を `Disabled` に設定するには、次の PATCH 要求を使用します。
+```http
+PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
+{    "properties": {
+       "publicNetworkAccess":"Disabled"
+   }
+}
+```
+
+### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>ネットワーク セキュリティ グループ (NSG) はプライベート エンドポイントでは有効になっていますか。
+いいえ、プライベート エンドポイントでは無効になっています。 ただし、サブネットに他のリソースがある場合は、NSG の強制がこれらのリソースに適用されます。
+
+### <a name="how-can-i-connect-to-a-clustered-cache"></a>クラスター化されたキャッシュに接続するにはどうすればよいですか。
+`publicNetworkAccess` を `Disabled` に設定する必要があり、プライベート エンドポイント接続は 1 つしか保持できません。
+
+### <a name="since-my-private-endpoint-instance-is-not-in-my-vnet-how-is-it-associated-with-my-vnet"></a>プライベート エンドポイント インスタンスは自分の VNet に含まれていませんが、VNet とどのように関連付けられていますか。
+お使いの VNet にリンクされているだけです。 これは VNet 内に存在しないため、依存エンドポイントに対して NSG 規則を変更する必要はありません。
+
+### <a name="how-can-i-migrate-my-vnet-injected-cache-to-a-private-endpoint-cache"></a>VNet インジェクションされたキャッシュをプライベート エンドポイント キャッシュに移行するにはどうすればよいですか。
+VNet インジェクションされたキャッシュを削除し、プライベート エンドポイントで新しいキャッシュ インスタンスを作成する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Private Link の詳細については、[Azure Private Link のドキュメント](../private-link/private-link-overview.md)を参照してください。
+* Azure Private Link の詳細については、[Azure Private Link のドキュメント](../private-link/private-link-overview.md)を参照してください。
+* キャッシュ インスタンスのさまざまなネットワークの分離のオプションを比較するには、「[Azure Cache for Redis のネットワークの分離オプション](cache-network-isolation.md)」のドキュメントを参照してください。

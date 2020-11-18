@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 086f79239fd4f6b01f4b76d1385598bac52bb471
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 9a7c19e30c6c26d7bf7f11d6f03a0acaee160c9a
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358972"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578639"
 ---
 # <a name="tutorial-configure-alertmedia-for-automatic-user-provisioning"></a>チュートリアル:AlertMedia を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -53,7 +53,7 @@ ms.locfileid: "94358972"
 
 1. AlertMedia アカウントにログインします。 **[Company]\(会社\) > [API]** に移動します。
 2. **[Add New]\(新規追加\)** をクリックします。
-3. キーがどこで使用されるかを簡単に把握できるように、 **API 統合** に名前を指定することを選択します。
+3. キーがどこで使用されるかを簡単に把握できるように、**API 統合** に名前を指定することを選択します。
 4. 統合を関連付けたい管理者を選択します。
 5. **[キーの生成]** と **[保存]** ボタンをクリックします。
 6. 統合から **[クライアント トークン]** をコピーして保存します。 これは、Azure portal で AlertMedia アプリケーションの [プロビジョニング] タブの **[シークレット トークン]** として使用されます。
@@ -67,7 +67,7 @@ Azure AD アプリケーション ギャラリーから AlertMedia を追加し�
 
 Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当て、ユーザーまたはグループの属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、以下の[手順](../manage-apps/assign-user-or-group-access-portal.md)を使用して、ユーザーとグループをアプリケーションに割り当てることができます。 ユーザーまたはグループの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)で説明されているスコープ フィルターを使用できます。 
 
-* AlertMedia にユーザーとグループを割り当てるときは、 **既定のアクセス** 以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)してロールを追加することができます。 
+* AlertMedia にユーザーとグループを割り当てるときは、**既定のアクセス** 以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)してロールを追加することができます。 
 
 * 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループでテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループに設定される場合、これを制御するには、1 つまたは 2 つのユーザーまたはグループをアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)を指定できます。 
 
@@ -95,9 +95,9 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
     ![[プロビジョニング] タブの [自動]](common/provisioning-automatic.png)
 
 5. **[管理者の資格情報]** セクションで、次のいずれかの方法で、AlertMedia の **テナント URL** を入力します。
-      * (カスタム ドメインなし) https://dashboard.alertmedia.com/api/scim/v3
+      * (カスタム ドメインなし) `https://dashboard.alertmedia.com/api/scim/v3`
 
-      * (カスタム ドメイン) https://subdomain.alertmedia.com/api/scim/v3
+      * (カスタム ドメイン) `https://subdomain.alertmedia.com/api/scim/v3`
 
       **[シークレット トークン]** に、手順 2 で取得したものを入力します。 **[テスト接続]** をクリックして、Azure AD から AlertMedia に接続できることを確保します。 接続できない場合は、使用中の AlertMedia アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

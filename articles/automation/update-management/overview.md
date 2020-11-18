@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 36540de8924a1433f16f942d9aedc059efae05de
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 09bd82225fb7d8a6eefe84b5a70660e4553a3070
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348680"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360787"
 ---
 # <a name="update-management-overview"></a>Update Management の概要
 
@@ -19,7 +19,10 @@ Azure Automation の Update Management を使用すると、Azure、オンプレ
 > [!NOTE]
 > Update Management で構成されたコンピューターを使用して Azure Automation からカスタム スクリプトを実行することはできません。 このコンピューターで実行できるのは、Microsoft が署名した更新プログラム スクリプトのみです。
 
-入手できる " *クリティカル* " パッチまたは " *セキュリティ* " パッチを Azure VM に自動でダウンロードし、インストールする方法については、Windows VM 向け [VM ゲストの自動パッチ適用](../../virtual-machines/windows/automatic-vm-guest-patching.md)に関するページを参照してください。
+> [!NOTE]
+> 現時点では、Arc 対応サーバーから Update Management を直接有効にすることはサポートされていません。 要件とサーバーに対する有効化の方法を理解するには、「[Automation アカウントから Update Management を有効にする](../../automation/update-management/enable-from-automation-account.md)」を参照してください。
+
+入手できる "*クリティカル*" パッチまたは "*セキュリティ*" パッチを Azure VM に自動でダウンロードし、インストールする方法については、Windows VM 向け [VM ゲストの自動パッチ適用](../../virtual-machines/windows/automatic-vm-guest-patching.md)に関するページを参照してください。
 
 Update Management をデプロイしてマシンを管理できるようにする前に、次のセクションの情報を理解しておいてださい。  
 
@@ -142,7 +145,7 @@ Operations Manager 管理グループが [Log Analytics ワークスペースに
 * 更新プログラムの展開 MP
 
 > [!NOTE]
-> ログ データを収集するように管理グループに構成されたエージェントを使用して Log Analytics ワークスペースに接続される Operations Manager 1807 または 2019 管理グループがある場合、 **Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** 規則でパラメーター `IsAutoRegistrationEnabled` をオーバーライドして True に設定する必要があります。
+> ログ データを収集するように管理グループに構成されたエージェントを使用して Log Analytics ワークスペースに接続される Operations Manager 1807 または 2019 管理グループがある場合、**Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** 規則でパラメーター `IsAutoRegistrationEnabled` をオーバーライドして True に設定する必要があります。
 
 管理パックの更新プログラムの詳細については、[Azure Monitor ログへの Operations Manager の接続](../../azure-monitor/platform/om-agents.md)に関する記事を参照してください。
 
@@ -182,7 +185,7 @@ Update Management には次のアドレスが明示的に必要です。 この�
 |`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
 |`*.azure-automation.net` | `*.azure-automation.us`|
 
-ネットワーク グループのセキュリティ規則を作成する場合、または Automation サービスと Log Analytics ワークスペースへのトラフィックを許可するように Azure Firewall を構成する場合は、 [サービス タグ](../../virtual-network/service-tags-overview.md#available-service-tags)の **GuestAndHybridManagement** と **AzureMonitor** を使用します。 これにより、ネットワーク セキュリティ規則の継続的な管理が簡単になります。 Azure VM から安全かつプライベートに Automation サービスに接続するには、[Azure Private Link の使用](../how-to/private-link-security.md)に関するページを確認してください。 現在のサービス タグと範囲情報を、オンプレミスのファイアウォール構成の一部として取得して含めるには、[ダウンロード可能な JSON ファイル](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)に関するページを参照してください。
+ネットワーク グループのセキュリティ規則を作成する場合、または Automation サービスと Log Analytics ワークスペースへのトラフィックを許可するように Azure Firewall を構成する場合は、[サービス タグ](../../virtual-network/service-tags-overview.md#available-service-tags)の **GuestAndHybridManagement** と **AzureMonitor** を使用します。 これにより、ネットワーク セキュリティ規則の継続的な管理が簡単になります。 Azure VM から安全かつプライベートに Automation サービスに接続するには、[Azure Private Link の使用](../how-to/private-link-security.md)に関するページを確認してください。 現在のサービス タグと範囲情報を、オンプレミスのファイアウォール構成の一部として取得して含めるには、[ダウンロード可能な JSON ファイル](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)に関するページを参照してください。
 
 Windows マシンでは、Windows Update で必要なすべてのエンドポイントへのトラフィックも許可する必要があります。 必要なエンドポイントの更新された一覧は、「[HTTP またはプロキシに関連する問題](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)」で確認できます。 ローカル環境に [Windows Update サーバー](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)がある場合は、[WSUS キー](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)で指定されているサーバーへのトラフィックも許可する必要があります。
 

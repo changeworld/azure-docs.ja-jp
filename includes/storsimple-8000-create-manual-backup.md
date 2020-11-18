@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 4fc92931979aa367bdead435c3d6fd758d66a397
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89f7be31514f0b78c3bfb3efd6e6aca14658d5cd
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67181250"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376069"
 ---
 #### <a name="to-create-a-manual-backup"></a>手動でバックアップを作成するには
 
@@ -21,13 +21,13 @@ ms.locfileid: "67181250"
 
 3. **[今すぐバックアップ]** ブレードで、次の操作を行います。
 
-    1. **[スナップショットの種類]** ボックスの一覧から、**ローカル** スナップショットと**クラウド** スナップショットのどちらか適切なほうを選択します。 高速なバックアップや復元が必要な場合はローカル スナップショットを選択し、データの回復性が求められる場合はクラウド スナップショットを選択します。
+    1. **[スナップショットの種類]** ボックスの一覧から、**ローカル** スナップショットと **クラウド** スナップショットのどちらか適切なほうを選択します。 高速なバックアップや復元が必要な場合はローカル スナップショットを選択し、データの回復性が求められる場合はクラウド スナップショットを選択します。
 
-        ![手動バックアップの作成](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
+        ![手動バックアップの作成 2](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
 
     2. **[OK]** をクリックすると、スナップショットを作成するジョブが開始されます。 ジョブが正常に作成されると、ページの上部に通知が表示されます。
 
-        ![手動バックアップの作成](./media/storsimple-8000-create-manual-backup/createmanualbu4.png)
+        ![手動バックアップの作成 3](./media/storsimple-8000-create-manual-backup/createmanualbu4.png)
 
     3. ジョブを監視するには、通知をクリックします。 **[ジョブ]** ブレードが表示され、ジョブの進行状況を確認できます。
 

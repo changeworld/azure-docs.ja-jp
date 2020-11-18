@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: c742240cc82035b2a9af16348eaa9f2a40a32fa3
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 548d936538a909da10796d0377f119826582c420
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900327"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616061"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Custom Vision プロジェクトをコピーして移動する
 
@@ -30,15 +30,15 @@ Custom Vision プロジェクトを作成してトレーニングした後、プ
 
 - 2 つの Azure Custom Vision リソース。 これらがない場合、Azure portal に移動し、[新しい Custom Vision リソースを作成してください](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true)。
 - Custom Vision リソースのトレーニング キーとエンドポイント URL。 これらの値は Azure portal 上のリソースの **[概要]** タブにあります。
-- 作成済みの Custom Vision プロジェクト。 これを行う手順については、「[分類器の構築](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/getting-started-build-a-classifier)」を参照してください。
+- 作成済みの Custom Vision プロジェクト。 これを行う手順については、「[分類器の構築](./getting-started-build-a-classifier.md)」を参照してください。
 
 ## <a name="process-overview"></a>プロセスの概要
 
 プロジェクトをコピーするプロセスは、次の手順で構成されます。
 
 1. 最初に、コピーするソース アカウントのプロジェクトの ID を取得します。
-1. 次に、このプロジェクト ID とソース アカウントのトレーニング キーを使用して、 **ExportProject** API を呼び出します。 一時トークン文字列を受け取ります。
-1. 次に、このトークン文字列とターゲット アカウントのトレーニング キーを使用して、 **ImportProject** API を呼び出します。 プロジェクトがターゲット アカウントの下に一覧表示されます。
+1. 次に、このプロジェクト ID とソース アカウントのトレーニング キーを使用して、**ExportProject** API を呼び出します。 一時トークン文字列を受け取ります。
+1. 次に、このトークン文字列とターゲット アカウントのトレーニング キーを使用して、**ImportProject** API を呼び出します。 プロジェクトがターゲット アカウントの下に一覧表示されます。
 
 ## <a name="get-the-project-id"></a>プロジェクト ID を取得する
 

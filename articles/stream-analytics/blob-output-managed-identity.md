@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/11/2020
-ms.openlocfilehash: 7eb610f741681be89ef44f8288ed47674c1d6440
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: f14ded89ad294abbfaf9861e5f4caf17dd82fb98
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348578"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490714"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>マネージド ID を使用して、Azure Blob Storage 出力に対して Azure Stream Analytics ジョブを認証する
 
@@ -158,7 +158,7 @@ Stream Analytics ジョブには、次の 2 つのレベルのアクセス権の
 1. **コンテナー レベルのアクセス権:** このオプションでは、既存の特定コンテナーへのアクセス権がジョブに付与されます。
 2. **アカウント レベルのアクセス権:** このオプションでは、ストレージ アカウントへの一般的なアクセス権がジョブに付与され、新しいコンテナーの作成など行うことができます。
 
-自分のためにコンテナーを作成するためのジョブが必要でない限り、 **コンテナー レベルのアクセス権** を選択してください。これは、このオプションでは、必要な最小レベルのアクセス権がジョブに付与されるためです。 Azure portal とコマンド ラインでの両方のオプションについて、以下で説明します。
+自分のためにコンテナーを作成するためのジョブが必要でない限り、**コンテナー レベルのアクセス権** を選択してください。これは、このオプションでは、必要な最小レベルのアクセス権がジョブに付与されるためです。 Azure portal とコマンド ラインでの両方のオプションについて、以下で説明します。
 
 ### <a name="grant-access-via-the-azure-portal"></a>Azure portal を使用してアクセス権を付与する
 
@@ -223,6 +223,10 @@ Stream Analytics ジョブには、次の 2 つのレベルのアクセス権の
 3.    これを有効にした場合、 **[保存]** をクリックします。
 
    ![VNET アクセスを有効にする](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-vnet-exception.png)
+
+## <a name="remove-managed-identity"></a>マネージド ID を削除する
+
+Stream Analytics ジョブに対して作成されたマネージド ID は、そのジョブが削除されたときにのみ削除されます。 そのジョブを削除せずにマネージド ID を削除する方法はありません。 マネージド ID を使用する必要がなくなった場合は、出力の認証方法を変更できます。 マネージド ID はジョブが削除されるまで存在し続け、マネージド ID の認証を再度使用する場合に使用されます。
 
 ## <a name="limitations"></a>制限事項
 この機能の現在の制限は次のとおりです。

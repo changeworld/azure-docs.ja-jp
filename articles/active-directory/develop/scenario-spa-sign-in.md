@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: c8ec151c813bfb0b9777e583a4ea5144e3b2079a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a73af0a0488043d31722b4dc46ca19530cf34ac
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297061"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443774"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>シングルページ アプリケーション：サインインとサインアウト
 
@@ -306,5 +306,4 @@ this.authService.logout();
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [アプリのトークンの取得](scenario-spa-acquire-token.md)
+このシナリオの次の記事である[アプリのトークンの取得](scenario-spa-acquire-token.md)に関する記事に進みます。

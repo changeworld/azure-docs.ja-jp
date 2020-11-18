@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 957e827e621d07ed9b5533a1607f955f05985d9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c271107b85e4903153c29b58aadadd37fb051b76
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004784"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626743"
 ---
 # <a name="use-azure-files-with-linux"></a>Linux で Azure Files を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、[SMB カーネル クライアント](https://wiki.samba.org/index.php/LinuxCIFS)を使用して Linux ディストリビューションにマウントできます。 この記事では、Azure ファイル共有を `mount` コマンドを使用してオンデマンドでマウントするか、`/etc/fstab` にエントリを作成することで起動時にマウントするという 2 つの方法について説明します。
@@ -40,7 +40,7 @@ uname -r
 * <a id="install-cifs-utils"></a>**cifs-utils パッケージがインストールされていることを確認します。**  
     cifs-utils パッケージは、選択した Linux ディストリビューションのパッケージ マネージャーを使用してインストールできます。 
 
-    **Ubuntu** と **Debian ベースの**ディストリビューションでは、`apt` パッケージ マネージャーを使用します。
+    **Ubuntu** と **Debian ベースの** ディストリビューションでは、`apt` パッケージ マネージャーを使用します。
 
     ```bash
     sudo apt update
@@ -67,7 +67,7 @@ uname -r
 
     他のディストリビューションでは、適切なパッケージ マネージャーを使用するか、[ソースからコンパイル](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)します。
 
-* **Azure コマンド ライン インターフェイス (CLI) の最新バージョン。** Azure CLI をインストールする方法の詳細については、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照し、ご利用のオペレーティング システムを選択してください。 PowerShell 6 以降で Azure PowerShell モジュールを使用することは可能ですが、以下の手順は Azure CLI 用に提供されています。
+* **Azure コマンド ライン インターフェイス (CLI) の最新バージョン。** Azure CLI をインストールする方法の詳細については、[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照し、ご利用のオペレーティング システムを選択してください。 PowerShell 6 以降で Azure PowerShell モジュールを使用することは可能ですが、以下の手順は Azure CLI 用に提供されています。
 
 * **ポート 445 が開いていることを確認する**: SMB は、TCP ポート 445 経由で通信します。ファイアウォールによってクライアント コンピューターの TCP ポート 445 がブロックされないことを確認してください。  `<your-resource-group>` と `<your-storage-account>` を置き換え、次のスクリプトを実行します。
     ```bash
@@ -202,7 +202,7 @@ Azure ファイル共有の使用を完了したら、`sudo umount $mntPath` を
 
     autofs パッケージは、任意の Linux ディストリビューションのパッケージ マネージャーを使用してインストールできます。 
 
-    **Ubuntu** と **Debian ベースの**ディストリビューションでは、`apt` パッケージ マネージャーを使用します。
+    **Ubuntu** と **Debian ベースの** ディストリビューションでは、`apt` パッケージ マネージャーを使用します。
     ```bash
     sudo apt update
     sudo apt install autofs
@@ -326,5 +326,5 @@ cat /sys/module/cifs/parameters/disable_legacy_dialects
 Azure Files の詳細については、次のリンクをご覧ください。
 
 * [Azure Files のデプロイの計画](storage-files-planning.md)
-* [FAQ](../storage-files-faq.md)
+* [FAQ](./storage-files-faq.md)
 * [トラブルシューティング](storage-troubleshoot-linux-file-connection-problems.md)

@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: Azure App Service, Web アプリ, Linux, Windows, Docker, コンテナー
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: f3c687d5c8b4e4c6d0b7f4ff912137066fe10bbb
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b5682275a9e5f3993de715ab5f23a708d5df47ae
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743724"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130121"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>カスタム コンテナーを使用してカスタム ソフトウェアを Azure App Service に移行する
 
@@ -46,7 +46,7 @@ ms.locfileid: "92743724"
 
 ### <a name="install-the-font"></a>フォントをインストールする
 
-エクスプローラーで _custom-font-win-container-master/CustomFontSample_ に移動し、 _FrederickatheGreat-Regular.ttf_ を右クリックして、 **[インストール]** を選択します。
+エクスプローラーで _custom-font-win-container-master/CustomFontSample_ に移動し、_FrederickatheGreat-Regular.ttf_ を右クリックして、 **[インストール]** を選択します。
 
 このフォントは、[Google Fonts](https://fonts.google.com/specimen/Fredericka+the+Great) で一般公開されています。
 
@@ -64,11 +64,11 @@ ms.locfileid: "92743724"
 
 ソリューション エクスプローラーで **CustomFontSample** を右クリックし、 **[追加]**  >  **[Container Orchestration Support]\(コンテナー オーケストレーションのサポート\)** を選択します。
 
-:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="既定のブラウザーに表示されているアプリを示すスクリーンショット。":::
+:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="CustomFontSample プロジェクトを示す [ソリューション エクスプローラー] ウィンドウのスクリーンショット。[追加] および [コンテナー オーケストレーター サポート] メニュー項目が選択されている。":::
 
 **[Docker Compose]**  >  **[OK]** を選択します。
 
-プロジェクトが Windows コンテナーで実行するように設定されます。 _Dockerfile_ が **CustomFontSample** プロジェクトに追加され、 **docker-compose** プロジェクトがソリューションに追加されます。 
+プロジェクトが Windows コンテナーで実行するように設定されます。 _Dockerfile_ が **CustomFontSample** プロジェクトに追加され、**docker-compose** プロジェクトがソリューションに追加されます。 
 
 ソリューション エクスプローラーで **Dockerfile** を開きます。
 
@@ -98,13 +98,13 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 
 ソリューション エクスプローラーで **CustomFontSample** プロジェクトを右クリックし、 **[発行]** を選択します。
 
-:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="既定のブラウザーに表示されているアプリを示すスクリーンショット。":::
+:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="CustomFontSample プロジェクトを示し、[発行] が選択されているソリューション エクスプローラーのスクリーンショット。":::
 
 ### <a name="create-registry-and-publish"></a>レジストリを作成して発行する
 
 発行ウィザードで **[コンテナー レジストリ]**  >  **[新しい Azure コンテナー レジストリを作成する]**  >  **[発行]** を選択します。
 
-:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="既定のブラウザーに表示されているアプリを示すスクリーンショット。":::
+:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="[コンテナー レジストリ]、[新しい Azure コンテナー レジストリを作成する]、[発行] ボタンの順に選択されているところを示す発行ウィザードのスクリーンショット。":::
 
 ### <a name="sign-in-with-azure-account"></a>Azure アカウントでサインインする
 
@@ -119,7 +119,7 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 | 設定  | 推奨値 | 詳細情報 |
 | ----------------- | ------------ | ----|
 |**DNS プレフィックス**| 生成されたレジストリ名をそのまま使用するか、または別の一意名に変更します。 |  |
-|**リソース グループ**| **[新規]** をクリックし、「 **myResourceGroup** 」と入力して、 **[OK]** をクリックします。 |  |
+|**リソース グループ**| **[新規]** をクリックし、「**myResourceGroup**」と入力して、 **[OK]** をクリックします。 |  |
 |**SKU**| Basic | [価格レベル](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**レジストリの場所**| 西ヨーロッパ | |
 
@@ -137,17 +137,17 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ### <a name="configure-app-basics"></a>アプリの基本情報を構成する
 
-**基本** タブで、次の表に従って設定を構成し、 **Next: Docker\(次へ: Docker** をクリックします。
+**基本** タブで、次の表に従って設定を構成し、**Next: Docker\(次へ: Docker** をクリックします。
 
 | 設定  | 推奨値 | 詳細情報 |
 | ----------------- | ------------ | ----|
 |**サブスクリプション**| 正しいサブスクリプションが選択されていることを確認します。 |  |
-|**リソース グループ**| **[新規作成]** を選択し、「 **myResourceGroup** 」と入力して、 **[OK]** をクリックします。 |  |
+|**リソース グループ**| **[新規作成]** を選択し、「**myResourceGroup**」と入力して、 **[OK]** をクリックします。 |  |
 |**名前**| 一意の名前を入力します。 | Web アプリの URL は `http://<app-name>.azurewebsites.net` です。`<app-name>` には自分のアプリの名前を指定します。 |
 |**発行**| Docker コンテナー | |
 |**オペレーティング システム**| Windows | |
 |**リージョン**| 西ヨーロッパ | |
-|**Windows プラン**| **[新規作成]** を選択し、「 **myAppServicePlan** 」と入力して、 **[OK]** をクリックします。 | |
+|**Windows プラン**| **[新規作成]** を選択し、「**myAppServicePlan**」と入力して、 **[OK]** をクリックします。 | |
 
 **[基本]** タブは、次のように表示されます。
 
@@ -276,9 +276,9 @@ cd docker-django-webapp-linux
 
 ### <a name="download-from-github"></a>GitHub からのダウンロード
 
-Git Clone を使用する代わりに、 [https://github.com/Azure-Samples/docker-django-webapp-linux](https://github.com/Azure-Samples/docker-django-webapp-linux) にアクセスして **[Clone]\(クローン\)** を選択し、 **[Download ZIP]\(ZIP のダウンロード\)** を選択してもかまいません。 
+Git Clone を使用する代わりに、[https://github.com/Azure-Samples/docker-django-webapp-linux](https://github.com/Azure-Samples/docker-django-webapp-linux) にアクセスして **[Clone]\(クローン\)** を選択し、 **[Download ZIP]\(ZIP のダウンロード\)** を選択してもかまいません。 
 
-その ZIP ファイルを、 *docker-django-webapp-linux* という名前のフォルダーに展開します。 
+その ZIP ファイルを、*docker-django-webapp-linux* という名前のフォルダーに展開します。 
 
 次に、その *docker-django-webapp-linux* フォルダーからターミナル ウィンドウを開きます。
 
@@ -319,6 +319,10 @@ ENTRYPOINT ["init.sh"]
 
 ## <a name="build-and-test-the-image-locally"></a>イメージをローカルで作成してテストする
 
+> [!NOTE]
+> Docker Hub には、[無料ユーザーごとに、IP あたりの匿名プル数と、認証済みプル数にクォータがあります (「**データ転送**」を参照してください)](https://www.docker.com/pricing)。 まだログインしておらず、Docker Hub からのプルが制限されていることに気付いた場合は `docker login` を試してください。
+> 
+
 1. 次のコマンドを実行して、イメージをビルドします。
 
     ```bash
@@ -334,7 +338,7 @@ ENTRYPOINT ["init.sh"]
     この [`docker run`](https://docs.docker.com/engine/reference/commandline/run/) コマンドに `-p` 引数でポートを指定し、続けてイメージの名前を指定します。 
     
     > [!TIP]
-    > Windows を実行していて " *standard_init_linux.go:211: exec user process caused "no such file or directory" (standard_init_linux.go:211: exec ユーザー プロセスが原因で "ファイルまたはディレクトリの欠落" が発生しました)* " というエラーが表示された場合、LF であるはずの *init.sh* ファイルの行末が CR-LF になっています。 このエラーは、Git を使用してサンプル リポジトリをクローンした際、`--config core.autocrlf=input` パラメーターを省略した場合に発生します。 その場合は、`--config`` 引数を使用して、再度リポジトリをクローンしてください。 *init.sh* を編集し、行末に CRLF を使用して保存した場合にも、このエラーが表示される可能性があります。 この場合は、行末を LF のみにして再度ファイルを保存してください。
+    > Windows を実行していて "*standard_init_linux.go:211: exec user process caused "no such file or directory" (standard_init_linux.go:211: exec ユーザー プロセスが原因で "ファイルまたはディレクトリの欠落" が発生しました)* " というエラーが表示された場合、LF であるはずの *init.sh* ファイルの行末が CR-LF になっています。 このエラーは、Git を使用してサンプル リポジトリをクローンした際、`--config core.autocrlf=input` パラメーターを省略した場合に発生します。 その場合は、`--config`` 引数を使用して、再度リポジトリをクローンしてください。 *init.sh* を編集し、行末に CRLF を使用して保存した場合にも、このエラーが表示される可能性があります。 この場合は、行末を LF のみにして再度ファイルを保存してください。
 
 1. ブラウザーで `http://localhost:8000` にアクセスして、Web アプリとコンテナーが正しく機能していることを確認します。
 
@@ -561,7 +565,7 @@ Azure App Service にコンテナーをデプロイするには、まず App Ser
 
     `https://<app-name>.scm.azurewebsites.net/api/logs/docker` で、ブラウザーからログ ファイルを検査することもできます。
 
-1. 任意のタイミングでログのストリーミングを停止するには、 **Ctrl**+**C** キーを押します。
+1. 任意のタイミングでログのストリーミングを停止するには、**Ctrl**+**C** キーを押します。
 
 ## <a name="connect-to-the-container-using-ssh"></a>SSH を使用してコンテナーに接続する
 
