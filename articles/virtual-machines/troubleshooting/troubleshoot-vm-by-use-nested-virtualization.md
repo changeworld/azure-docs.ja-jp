@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: e1acfc3216ccfaeac035f1ff31e82c7b67c17daf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f950cb63b5083a85ab5420434abdd9a720115b1a
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76119620"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94734550"
 ---
 # <a name="troubleshoot-a-faulty-azure-vm-by-using-nested-virtualization-in-azure"></a>Azure で入れ子になった仮想化を使用して問題のある Azure VM のトラブルシューティングを行う
 
@@ -72,7 +72,7 @@ ms.locfileid: "76119620"
 
 3.  ディスクの管理 (diskmgmt.msc) を開きます。 問題のある VM のディスクが **[オフライン]** に設定されていることを確認します。
 
-4.  Hyper-V マネージャーを開き、 **[サーバー マネージャー]** で **Hyper-V ロール**を選択します。 そのサーバーを右クリックし、 **[Hyper-V マネージャー]** を選択します。
+4.  Hyper-V マネージャーを開き、 **[サーバー マネージャー]** で **Hyper-V ロール** を選択します。 そのサーバーを右クリックし、 **[Hyper-V マネージャー]** を選択します。
 
 5.  Hyper-V マネージャーで、復旧 VM を右クリックし、 **[新規]**  >  **[仮想マシン]**  >  **[次へ]** の順に選択します。
 
@@ -111,7 +111,7 @@ ms.locfileid: "76119620"
 
 1.  VM をオンライン状態に復帰させた後、その VM を Hyper-V マネージャーでシャットダウンします。
 
-2.  [修復された OS ディスクのマウントを解除して切断](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk
+2.  [修復された OS ディスクのマウントを解除して切断](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-the-original-virtual-hard-disk
 )します。
 3.  [VM によって使用されている OS ディスクを修復された OS ディスクに交換](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm
 )します。

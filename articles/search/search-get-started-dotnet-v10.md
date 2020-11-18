@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6dd64ae8b7b7307d7dcd510d1fdb877365c6f36
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8dc2eb898c12e374bc503c5a05f00eb20667443b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675951"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701842"
 ---
 # <a name="quickstart-create-a-search-index-using-the-legacy-microsoftazuresearch-v10-client-library"></a>クイックスタート: レガシ Microsoft.Azure.Search v10 クライアント ライブラリを使用して検索インデックスを作成する
 
@@ -55,7 +55,7 @@ Visual Studio と [Microsoft.Azure.Search クライアント ライブラリ](/d
 
    クエリ キーも入手します。 読み取り専用アクセスを使用してクエリ要求を発行することをお勧めします。
 
-![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-postman/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
+![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-rest/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
 
 すべての要求では、サービスに送信されるすべての要求に API キーが必要です。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
@@ -201,7 +201,7 @@ Visual Studio と [Microsoft.Azure.Search クライアント ライブラリ](/d
     > [!NOTE]
     > .NET SDK では、フィールドに [`IsSearchable`](/dotnet/api/microsoft.azure.search.models.field.issearchable)、[`IsFilterable`](/dotnet/api/microsoft.azure.search.models.field.isfilterable)、[`IsSortable`](/dotnet/api/microsoft.azure.search.models.field.issortable)、[`IsFacetable`](/dotnet/api/microsoft.azure.search.models.field.isfacetable) の属性を明示的に付ける必要があります。 この動作は、データ型に基づいて暗黙的に属性が有効になる REST API とは対照的です (たとえば、単純な文字列フィールドは自動的に検索可能です)。
 
-    実際のインデックス内の `string` 型のフィールドを 1 つだけ、各ドキュメントを一意に識別する " *キー* " フィールドにする必要があります。 このスキーマでは、キーは `HotelId` です。
+    実際のインデックス内の `string` 型のフィールドを 1 つだけ、各ドキュメントを一意に識別する "*キー*" フィールドにする必要があります。 このスキーマでは、キーは `HotelId` です。
 
     このインデックスの説明フィールドでは、既定の標準 Lucene アナライザーをオーバーライドする場合に指定する、オプションの [`analyzer`](/dotnet/api/microsoft.azure.search.models.field.analyzer) プロパティを使用します。 `description_fr` フィールドでは、フランス語のテキストを格納するため、フランス語の Lucene アナライザー ([FrLucene](/dotnet/api/microsoft.azure.search.models.analyzername.frlucene)) を使用します。 `description` では、オプションの Microsoft 言語アナライザー ([EnMicrosoft](/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft)) を使用します。
 

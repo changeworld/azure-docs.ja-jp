@@ -3,7 +3,7 @@ title: Azure Media Analytics で顔を編集する | Microsoft Docs
 description: Azure Media Redactor は、クラウドでスケーラブルな顔編集を提供する Azure Media Analytics メディア プロセッサです。 この記事では、Azure Media Analytics で顔を編集する方法を示します。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,31 +11,34 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 11/17/2020
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a5b5759f0a7fff0f76e8c65cbf879fcd06337712
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: df2962c8d428694a663acddf5922829f8b913b92
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017185"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94737491"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Azure Media Analytics で顔を編集する
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>概要
-**Azure Media Redactor** は、クラウドでスケーラブルな顔編集を提供する [Azure Media Analytics](./legacy-components.md) メディア プロセッサ (MP) です。 顔編集では、ビデオを編集して選択した個人の顔をぼかすことができます。 顔編集サービスは、公共の安全やニュース媒体などに使用していただけます。 複数人の顔を含んでいる映像の場合、顔編集を手作業で行うと数分の映像でも数時間かかりますが、このサービスを使えば数ステップの簡単な手順で完了します。 詳細については、[こちらの投稿](https://azure.microsoft.com/blog/azure-media-redactor/)を参照してください。
+
+**Azure Media Redactor** は、クラウドでスケーラブルな顔編集を提供する [Azure Media Analytics](./legacy-components.md) メディア プロセッサ (MP) です。 顔編集では、ビデオを編集して選択した個人の顔をぼかすことができます。 顔編集サービスは、公共の安全やニュース媒体などに使用していただけます。 複数人の顔を含んでいる映像の場合、顔編集を手作業で行うと数分の映像でも数時間かかりますが、このサービスを使えば数ステップの簡単な手順で完了します。
 
 ここでは、**Azure Media Redactor** の詳細と、Media Services SDK for .NET での使用方法について説明します。
 
 ## <a name="face-redaction-modes"></a>顔編集モード
+
 顔編集は、ビデオのフレームごとに顔を検出し、その顔オブジェクトを時間軸の前後にわたって追跡することで、同一の人間を他の角度からも処理します。 自動修正のプロセスは複雑で、常に 100% 満足のいく結果になるとは限りません。そのため、Media Analytics には最終的なアウトプットを変更する方法がいくつか用意されています。
 
-完全な自動モードに加え、2 パス ワークフローというものがあり、これによって、検出された顔を ID リストを使って選択または選択解除することができます。 また、任意のフレームごとの調整をするには、JSON 形式でメタデータ ファイルを使用します。 このワークフローは、**分析**モードと**編集**モードに分かれています。 単一のパスに 2 つのモードを結合して、両方のタスクを 1 つのジョブで実行します。このモードは**結合**と呼ばれます。
+完全な自動モードに加え、2 パス ワークフローというものがあり、これによって、検出された顔を ID リストを使って選択または選択解除することができます。 また、任意のフレームごとの調整をするには、JSON 形式でメタデータ ファイルを使用します。 このワークフローは、**分析** モードと **編集** モードに分かれています。 単一のパスに 2 つのモードを結合して、両方のタスクを 1 つのジョブで実行します。このモードは **結合** と呼ばれます。
 
 ### <a name="combined-mode"></a>結合モード
+
 手作業なしで、自動的に修正された mp4 が生成されます。
 
 | 段階 | ファイル名 | Notes |
@@ -44,13 +47,8 @@ ms.locfileid: "92017185"
 | 入力 config |ジョブ構成プリセット |{'version':'1.0', 'options': {'mode':'combined'}} |
 | 出力資産 |foo_redacted.mp4 |ぼかしが適用されたビデオ |
 
-#### <a name="input-example"></a>入力例:
-[ビデオ](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fed99001d-72ee-4f91-9fc0-cd530d0adbbc%2FDancing.mp4)
-
-#### <a name="output-example"></a>出力例:
-[ビデオ](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc6608001-e5da-429b-9ec8-d69d8f3bfc79%2Fdance_redacted.mp4)
-
 ### <a name="analyze-mode"></a>分析モード
+
 2 パス ワークフローの **分析** パスでは、ビデオ入力を受け取り、顔の位置の JSON ファイルと、検出された顔それぞれの jpg イメージを生成します。
 
 | 段階 | ファイル名 | Notes |
@@ -60,58 +58,59 @@ ms.locfileid: "92017185"
 | 出力資産 |foo_annotations.json |JSON 形式での、顔の位置の注釈データです。 ユーザー編集によりぼかし枠を変更することができます。 以下のサンプルを参照してください。 |
 | 出力資産 |foo_thumb%06d.jpg [foo_thumb000001.jpg, foo_thumb000002.jpg] |検出された顔それぞれをトリミングした jpg (数字は顔の labelId を示す) |
 
-#### <a name="output-example"></a>出力例:
+#### <a name="output-example"></a>出力例
 
 ```json
+{
+  "version": 1,
+  "timescale": 24000,
+  "offset": 0,
+  "framerate": 23.976,
+  "width": 1280,
+  "height": 720,
+  "fragments": [
     {
-      "version": 1,
-      "timescale": 24000,
-      "offset": 0,
-      "framerate": 23.976,
-      "width": 1280,
-      "height": 720,
-      "fragments": [
-        {
-          "start": 0,
-          "duration": 48048,
-          "interval": 1001,
-          "events": [
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [
-              {
-                "index": 13,
-                "id": 1138,
-                "x": 0.29537,
-                "y": -0.18987,
-                "width": 0.36239,
-                "height": 0.80335
-              },
-              {
-                "index": 13,
-                "id": 2028,
-                "x": 0.60427,
-                "y": 0.16098,
-                "width": 0.26958,
-                "height": 0.57943
-              }
-            ],
+      "start": 0,
+      "duration": 48048,
+      "interval": 1001,
+      "events": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          {
+            "index": 13,
+            "id": 1138,
+            "x": 0.29537,
+            "y": -0.18987,
+            "width": 0.36239,
+            "height": 0.80335
+          },
+          {
+            "index": 13,
+            "id": 2028,
+            "x": 0.60427,
+            "y": 0.16098,
+            "width": 0.26958,
+            "height": 0.57943
+          }
+        ],
 
-    … truncated
+    ... truncated
 ```
 
 ### <a name="redact-mode"></a>編集モード
+
 ワークフローの 2 番目のパスでは、単一の資産に結合する必要のある大量の入力を受け取ります。
 
 これには、ぼかす対象となる Id の一覧、元のビデオ、JSON の注釈が含まれます。 このモードでは、注釈を使用して入力ビデオにぼかし効果を適用します。
@@ -127,13 +126,12 @@ Analyze パスからの出力は、元のビデオを含みません。 ビデ�
 | 出力資産 |foo_redacted.mp4 |注釈に基づいてぼかし効果を適用したビデオ |
 
 #### <a name="example-output"></a>出力例
+
 これは 1 つの ID を選択した場合の IDList からの出力です。
 
-[ビデオ](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
-
 foo_IDList.txt の例
- 
-```output
+
+```
 1
 2
 3
@@ -145,16 +143,22 @@ foo_IDList.txt の例
 
 ぼかしの種類のサンプルを以下に示します。
 
-### <a name="example-json"></a>サンプル JSON:
+### <a name="example-json"></a>JSON の例
 
 ```json
-    {'version':'1.0', 'options': {'Mode': 'Combined', 'BlurType': 'High'}}
+{
+    'version':'1.0',
+    'options': {
+        'Mode': 'Combined',
+        'BlurType': 'High'
+    }
+}
 ```
 
 #### <a name="low"></a>低
 
 ![低](./media/media-services-face-redaction/blur1.png)
- 
+
 #### <a name="med"></a>Med
 
 ![Med](./media/media-services-face-redaction/blur2.png)
@@ -193,11 +197,11 @@ Redaction MP は、高精度の顔位置検出と追跡を行い、ビデオ フ
             }
     ```
 
-3. 出力 JSON ファイルをダウンロードします。 
+3. 出力 JSON ファイルをダウンロードします。
 
-#### <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
+### <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
 
-「[.NET を使用した Media Services 開発](media-services-dotnet-how-to-use.md)」の説明に従って、開発環境をセットアップし、app.config ファイルに接続情報を指定します。 
+「[.NET を使用した Media Services 開発](media-services-dotnet-how-to-use.md)」の説明に従って、開発環境をセットアップし、app.config ファイルに接続情報を指定します。
 
 #### <a name="example"></a>例
 
@@ -374,9 +378,11 @@ namespace FaceRedaction
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供
+
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>関連リンク
+
 [Azure Media Services Analytics の概要](./legacy-components.md)
 
 [Azure Media Analytics デモ](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
