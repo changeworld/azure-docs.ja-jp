@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 65e1b1b5e84c3344a082b73b7768935d788a3394
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 668976e9777b35e514746070f0f4039a12b4e02b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707409"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651721"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシからのオンプレミス アプリケーションへのリモート アクセス
 
@@ -36,7 +36,7 @@ Azure AD アプリケーション プロキシの特徴:
 アプリケーション プロキシは次に対応します。
 
 * 認証に[統合 Windows 認証](application-proxy-configure-single-sign-on-with-kcd.md)を使用する Web アプリ
-* フォーム ベースまたは[ヘッダー ベース](application-proxy-configure-single-sign-on-with-ping-access.md)のアクセスを使用する Web アプリ
+* フォーム ベースまたは[ヘッダー ベース](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers)のアクセスを使用する Web アプリ
 * さまざまなデバイスの豊富なアプリケーションに公開する Web API
 * [リモート デスクトップ ゲートウェイ](application-proxy-integrate-with-remote-desktop-services.md)の背後でホストされているアプリケーション
 * Microsoft Authentication Library (MSAL) と統合されるリッチ クライアント アプリ
@@ -74,4 +74,3 @@ Azure AD アプリケーション プロキシの特徴:
 
 ## <a name="next-steps"></a>次のステップ
 アプリケーション プロキシの使用を開始するには、[アプリケーション プロキシを使用したリモート アクセスを行うためのオンプレミス アプリケーションの追加に関するチュートリアル](application-proxy-add-on-premises-application.md)を参照してください。
-

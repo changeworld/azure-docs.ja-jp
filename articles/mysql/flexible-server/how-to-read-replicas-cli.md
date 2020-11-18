@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 10/23/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: acbb0d5b643919d7fa1bf3966532ebd83129fc2a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 151b72eb11600713b115d45e5927d8170a519ad1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795044"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635774"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL フレキシブル サーバーの読み取りレプリカを作成し、管理する方法
 
@@ -29,7 +29,7 @@ Azure CLI を使用して、読み取りレプリカを作成して管理でき�
 
 ### <a name="prerequisites"></a>前提条件
 
-- [Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)
 - ソース サーバーとして使用される [Azure Database for MySQL フレキシブル サーバー](quickstart-create-server-cli.md)。
 
 ### <a name="create-a-read-replica"></a>読み取りレプリカを作成します

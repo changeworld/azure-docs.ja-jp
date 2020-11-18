@@ -8,12 +8,12 @@ ms.date: 09/19/2017
 ms.custom: devx-track-java
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2c80d741ca1cf0b4d66bc18488af8ef1da44fd14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 977777aff4aa32bf6876e1d573970d71ec71584e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462600"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629769"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Java での Azure Files 用の開発
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "89462600"
 * ファイルのアップロード、ダウンロード、および削除
 
 > [!Note]  
-> Azure Files は SMB 経由でアクセスできるため、ファイル I/O の標準 Java I/O クラスを使って Azure ファイル共有にアクセスするアプリケーションを作成できます。 この記事では、Azure Storage Java SDK を使うアプリケーションを記述する方法を説明します。この SDK は、Azure Files との通信に [Azure Files REST API](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) を使います。
+> Azure Files は SMB 経由でアクセスできるため、ファイル I/O の標準 Java I/O クラスを使って Azure ファイル共有にアクセスするアプリケーションを作成できます。 この記事では、Azure Storage Java SDK を使うアプリケーションを記述する方法を説明します。この SDK は、Azure Files との通信に [Azure Files REST API](/rest/api/storageservices/file-service-rest-api) を使います。
 
 ## <a name="create-a-java-application"></a>Java アプリケーションの作成
 サンプルを作成するには、Java Development Kit (JDK) と [Azure Storage SDK for Java](https://github.com/Azure/azure-storage-java) が必要です。 また、Azure ストレージ アカウントを作成しておく必要があります。
@@ -229,7 +229,7 @@ if ( file.deleteIfExists() ) {
 * [Azure Storage SDK for Java](https://github.com/azure/azure-storage-java)
 * [Azure Storage SDK for Android に関するページ に関するページ](https://github.com/azure/azure-storage-android)
 * [Azure ストレージ クライアント SDK リファレンス](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
-* [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Azure のストレージ チーム ブログ](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
-* [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](../common/storage-use-azcopy.md)
+* [Azure Storage Services REST API (Azure Storage サービスの REST API)](/rest/api/storageservices/)
+* [Azure のストレージ チーム ブログ](/archive/blogs/windowsazurestorage/)
+* [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](../common/storage-use-azcopy-v10.md)
 * [Azure Files に関する問題のトラブルシューティング - Windows](storage-troubleshoot-windows-file-connection-problems.md)

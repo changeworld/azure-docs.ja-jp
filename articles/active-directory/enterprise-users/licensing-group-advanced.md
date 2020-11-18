@@ -9,18 +9,18 @@ manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.subservice: users-groups-roles
-ms.date: 08/13/2020
+ms.subservice: enterprise-users
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56f16dea1f81f7f6a35409d8481550fd000864b1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c4f298cf7487e00f6ee6a8aa8913fd32f8c6beee
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373582"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647105"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題
 
@@ -70,13 +70,13 @@ Microsoft サービスの中には、すべての場所では利用できない�
 
 ユーザーは、ライセンスを持つ複数のグループのメンバーになることができます。 考慮事項をいくつか以下に示します。
 
-- 同じ製品の複数のライセンスが重複することがあり、その結果、有効になっているすべてのサービスがユーザーに適用されることがあります。 次の例は、2 つのライセンス グループを示しています。 *E3 base services (E3 基本サービス)* にはすべてのユーザーに先にデプロイする基本サービスが含まれています。 " *E3 extended services (E3 拡張サービス)* " には一部のユーザーにのみデプロイするその他のサービス (Sway と Planner) が含まれています。 この例では、ユーザーは両方のグループに追加されました。
+- 同じ製品の複数のライセンスが重複することがあり、その結果、有効になっているすべてのサービスがユーザーに適用されることがあります。 次の例は、2 つのライセンス グループを示しています。*E3 base services (E3 基本サービス)* にはすべてのユーザーに先にデプロイする基本サービスが含まれています。 "*E3 extended services (E3 拡張サービス)* " には一部のユーザーにのみデプロイするその他のサービス (Sway と Planner) が含まれています。 この例では、ユーザーは両方のグループに追加されました。
 
   ![有効になっているサービスのスクリーンショット](./media/licensing-group-advanced/view-enabled-services.png)
 
   その結果、この製品のライセンスを 1 つのみ使用して、製品の 12 のサービスのうち 7 つが有効になっています。
 
-- " *E3* " ライセンスを選ぶと、どのグループ ライセンス割り当てによってどのサービスがユーザーに対して有効になったかという情報などの詳細が表示されます。
+- "*E3*" ライセンスを選ぶと、どのグループ ライセンス割り当てによってどのサービスがユーザーに対して有効になったかという情報などの詳細が表示されます。
 
 ## <a name="direct-licenses-coexist-with-group-licenses"></a>グループ ライセンスと共存する直接ライセンス
 
@@ -86,7 +86,7 @@ Microsoft サービスの中には、すべての場所では利用できない�
 
 直接割り当てられたライセンスは削除できます。また、継承されたライセンスに影響しません。 グループから Office 365 Enterprise E3 ライセンスを継承するユーザーについて考えてみましょう。
 
-最初に、ユーザーは " *E3 basic services (E3 基本サービス)* " グループからのみライセンスを継承します。このグループでは 4 つのサービス プランが有効になります。
+最初に、ユーザーは "*E3 basic services (E3 基本サービス)* " グループからのみライセンスを継承します。このグループでは 4 つのサービス プランが有効になります。
 
 1. **[割り当て]** を選択して、E3 ライセンスをユーザーに直接割り当てます。 このケースでは、Yammer Enterprise 以外のすべてのサービス プランを無効にします。
 
@@ -106,19 +106,19 @@ Microsoft が製品ライセンス プランに新しいサービスを追加す
 
 このプロセスの例を次に示します。
 
-1. 当初、 *Office 365 Enterprise E5* 製品がいくつかのグループに割り当てられています。 " *O365 E5 - Exchange のみ* " と呼ばれるこれらのグループの 1 つは、" *Exchange Online (プラン 2)* " サービスのみをメンバーに対して有効にするよう設計されています。
+1. 当初、*Office 365 Enterprise E5* 製品がいくつかのグループに割り当てられています。 "*O365 E5 - Exchange のみ*" と呼ばれるこれらのグループの 1 つは、"*Exchange Online (プラン 2)* " サービスのみをメンバーに対して有効にするよう設計されています。
 
-2. ユーザーは Microsoft から、E5 製品が新しいサービス ( *Microsoft Stream* ) で拡張される予定であるという内容の通知を受け取ります。 サービスが組織で利用可能になると、次の操作を行うことができます。
+2. ユーザーは Microsoft から、E5 製品が新しいサービス (*Microsoft Stream*) で拡張される予定であるという内容の通知を受け取ります。 サービスが組織で利用可能になると、次の操作を行うことができます。
 
 3. [ **[Azure Active Directory] > [ライセンス] > [すべての製品]**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) ブレードに移動して、 *[Office 365 Enterprise E5]* を選択してから、 **[ライセンスされているグループ]** を選択し、その製品を持つすべてのグループの一覧を表示します。
 
 4. 確認するグループをクリックします (この場合は、 *[O365 E5 - Exchange のみ]* )。 これにより、 **[ライセンス]** タブが開きます。E5 ライセンスをクリックすると、すべての有効なサービスを一覧表示するブレードが開きます。
    > [!NOTE]
-   > このグループで *Exchange Online* サービスに加え、 *Microsoft Stream* サービスも自動的に追加され、有効になっています。
+   > このグループで *Exchange Online* サービスに加え、*Microsoft Stream* サービスも自動的に追加され、有効になっています。
 
    ![グループ ライセンスに追加された新しいサービスのスクリーン ショット](./media/licensing-group-advanced/manage-new-services.png)
 
-5. このグループで新しいサービスを無効にする場合は、サービスの横にある **[オン]/[オフ]** の切り替えをクリックし、 **[保存]** ボタンをクリックして変更を確認します。 これで、Azure AD はグループ内のすべてのユーザーに対する処理を実行して変更を適用します。新しいユーザーをグループに追加しても、 *Microsoft Stream* サービスは有効にならなくなります。
+5. このグループで新しいサービスを無効にする場合は、サービスの横にある **[オン]/[オフ]** の切り替えをクリックし、 **[保存]** ボタンをクリックして変更を確認します。 これで、Azure AD はグループ内のすべてのユーザーに対する処理を実行して変更を適用します。新しいユーザーをグループに追加しても、*Microsoft Stream* サービスは有効にならなくなります。
 
    > [!NOTE]
    > 他のライセンス割り当て (そのユーザーが属する他のグループまたはライセンスの直接割り当て) によって、そのサービスがまだユーザーに対して有効になっている可能性があります。
@@ -134,7 +134,7 @@ PowerShell スクリプトを使用して、ユーザーがライセンスを直
 
    ![Get-Msolaccountsku コマンドレットのスクリーンショット](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
-3. 対象ライセンスの *AccountSkuId* 値と、 [この PowerShell スクリプト](licensing-ps-examples.md#check-if-user-license-is-assigned-directly-or-inherited-from-a-group)を併用します。 そうすると、このライセンスを持っているユーザーの一覧と、ライセンスの割り当て状況に関する情報が生成されます。
+3. 対象ライセンスの *AccountSkuId* 値と、[この PowerShell スクリプト](licensing-ps-examples.md#check-if-user-license-is-assigned-directly-or-inherited-from-a-group)を併用します。 そうすると、このライセンスを持っているユーザーの一覧と、ライセンスの割り当て状況に関する情報が生成されます。
 
 ## <a name="use-audit-logs-to-monitor-group-based-licensing-activity"></a>監査ログを使用してグループベースのライセンスのアクティビティを監視する
 
@@ -144,7 +144,7 @@ PowerShell スクリプトを使用して、ユーザーがライセンスを直
 - グループ ライセンス割り当ての結果としてユーザーに加えられたライセンス変更の内容
 
 >[!NOTE]
-> 監査ログは、ポータルの Azure Active Directory セクションのほとんどのブレードで利用できます。 アクセス元のブレードによっては、フィルターが事前に適用され、そのブレードのコンテキストに関連するアクティビティだけが表示される場合があります。 期待どおりの結果が表示されない場合は、 [フィルター処理オプション](../reports-monitoring/concept-audit-logs.md#filtering-audit-logs)を調べるか、 [ **[Azure Active Directory] > [アクティビティ] > [監査ログ]**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit)の下で、フィルター処理されていない監査ログにアクセスします。
+> 監査ログは、ポータルの Azure Active Directory セクションのほとんどのブレードで利用できます。 アクセス元のブレードによっては、フィルターが事前に適用され、そのブレードのコンテキストに関連するアクティビティだけが表示される場合があります。 期待どおりの結果が表示されない場合は、[フィルター処理オプション](../reports-monitoring/concept-audit-logs.md#filtering-audit-logs)を調べるか、[ **[Azure Active Directory] > [アクティビティ] > [監査ログ]**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit)の下で、フィルター処理されていない監査ログにアクセスします。
 
 ### <a name="find-out-who-modified-a-group-license"></a>グループ ライセンスの変更者を検出する
 
@@ -163,7 +163,7 @@ PowerShell スクリプトを使用して、ユーザーがライセンスを直
 
 グループ上でライセンスが変更されると、Azure AD ではすべてのユーザーに対してその変更の適用が開始されます。
 
-1. グループ上の処理が開始された時点を参照するには、 **[アクティビティ]** フィルターを *[ユーザーに対するグループ ベースのライセンスの適用の開始]* に設定します。 この操作のアクターは、 *Microsoft Azure AD グループベースのライセンス* - すべてのグループ ライセンスの変更を実行するために使用されるシステム アカウントであることにご注意ください。
+1. グループ上の処理が開始された時点を参照するには、 **[アクティビティ]** フィルターを *[ユーザーに対するグループ ベースのライセンスの適用の開始]* に設定します。 この操作のアクターは、*Microsoft Azure AD グループベースのライセンス* - すべてのグループ ライセンスの変更を実行するために使用されるシステム アカウントであることにご注意ください。
    >[!TIP]
    > *[変更されたプロパティ]* フィールドを表示するには、一覧内の項目をクリックします。処理するために選ばれたライセンスの変更が表示されます。 これは、グループに複数の変更を加えて、処理した変更がわからなくなった場合に便利です。
 

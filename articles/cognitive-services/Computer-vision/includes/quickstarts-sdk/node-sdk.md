@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 9c0ed50cc0f7ef3580d1441fe2f361065e6f8524
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: b6c879d126b0c16f2dc6ceb41a1dfcc3ecf6a2d5
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92886635"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94639614"
 ---
 <a name="HOLTop"></a>
 
@@ -68,7 +68,7 @@ npm install @azure/cognitiveservices-computervision
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_vars)]
 
 > [!IMPORTANT]
-> Azure Portal にアクセスします。 「 **前提条件** 」セクションで作成した [製品名] リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
+> Azure Portal にアクセスします。 「**前提条件**」セクションで作成した [製品名] リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
 >
 > 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)に関するページを参照してください。
 
@@ -79,7 +79,7 @@ npm install @azure/cognitiveservices-computervision
 |名前|説明|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) | このクラスは、すべての Computer Vision の機能に必要です。 サブスクリプション情報を使用してインスタンス化し、そのインスタンスを使用して、画像に対するほとんどの操作を実行することができます。|
-|[VisualFeatureTypes](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes?view=azure-node-latest)| この列挙型は、標準の分析操作で実行できるさまざまな種類の画像分析を定義します。 必要に応じて、 **VisualFeatureTypes** の値のセットを指定します。 |
+|[VisualFeatureTypes](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes?view=azure-node-latest)| この列挙型は、標準の分析操作で実行できるさまざまな種類の画像分析を定義します。 必要に応じて、**VisualFeatureTypes** の値のセットを指定します。 |
 
 ## <a name="code-examples"></a>コード例
 
@@ -107,7 +107,7 @@ npm install @azure/cognitiveservices-computervision
 このセクションのコードでは、リモートの画像を分析して、さまざまなビジュアル機能を抽出します。 これらの操作は、クライアント オブジェクトの **analyzeImage** メソッドの一部として実行するか、個別のメソッドを使用して呼び出すことができます。 詳細については、[リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)を参照してください。
 
 > [!NOTE]
-> ローカルの画像を分析することもできます。 [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) のメソッドを参照してください ( **analyzeImageInStream** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上のサンプル コードを参照してください。
+> ローカルの画像を分析することもできます。 [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) のメソッドを参照してください (**analyzeImageInStream** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上のサンプル コードを参照してください。
 
 ### <a name="get-image-description"></a>画像の説明の取得
 
@@ -215,7 +215,7 @@ Computer Vision では、特殊なモデルを使用して、画像をさらに�
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype_describe)]
 
-## <a name="extract-text-ocr-with-read"></a>Read を使用したテキストの抽出 (OCR)
+## <a name="read-printed-and-handwritten-text"></a>印刷されたテキストと手書きのテキストを読み取る
 
 Computer Vision では、画像に映っているテキストを抽出し、文字ストリームに変換することができます。 このサンプルでは、Read 操作を使用します。
 
@@ -226,7 +226,7 @@ Computer Vision では、画像に映っているテキストを抽出し、文�
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_images)]
 
 > [!NOTE]
-> また、ローカルの画像からテキストを読み取ることもできます。 [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) のメソッドを参照してください ( **readInStream** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上のサンプル コードを参照してください。
+> また、ローカルの画像からテキストを読み取ることもできます。 [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) のメソッドを参照してください (**readInStream** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上のサンプル コードを参照してください。
 
 ### <a name="call-the-read-api"></a>Read API を呼び出す
 

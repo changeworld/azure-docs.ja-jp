@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 85264eae325d9ed7049daac47a124cf1efb806e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a35c34a08dba625b16940d7ec5fb870952dba36b
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91649951"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630245"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 [Azure Files](storage-files-introduction.md) は、サーバーレスの Azure ファイル共有を直接マウントすることと、Azure File Sync を使用してオンプレミスで Azure ファイル共有をキャッシュすることの 2 つの主な方法でデプロイできます。選択するデプロイ オプションによって、デプロイを計画する際に考慮する必要がある内容が変わります。 
@@ -96,21 +96,21 @@ Azure Files には、データがバックアップされて回復可能であ�
 
 ほとんどのファイル共有に対しては、論理的な削除を有効にすることをお勧めします。 共有の削除が一般的かつ望まれているワークフローでは、保持期間を非常に短く設定するか、または論理的な削除をまったく有効にしないことを決定することができます。
 
-論理的な削除の詳細については、[データの誤削除の防止](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion)に関する記事を参照してください。
+論理的な削除の詳細については、[データの誤削除の防止](./storage-files-prevent-file-share-deletion.md)に関する記事を参照してください。
 
 ### <a name="backup"></a>バックアップ
-[共有スナップショット](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)を利用して、Azure ファイル共有をバックアップすることができます。これは、特定の時点の共有の読み取り専用のコピーです。 スナップショットは増分であり、以前のスナップショット以降に変更されたデータだけが含まれます。 ファイル共有ごとに最大 200 のスナップショットを保持し、最大 10 年間保存できます。 これらのスナップショットを取得するには、Azure portal、PowerShell、またはコマンドライン インターフェイス (CLI) を使用して手動で行うか、または [Azure Backup](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json) を使用することができます。 スナップショットはファイル共有内に格納されます。つまり、ファイル共有を削除すると、スナップショットも削除されます。 スナップショット バックアップを誤削除から保護するために、共有に対して論理的な削除が有効になっていることを確認します。
+[共有スナップショット](./storage-snapshots-files.md)を利用して、Azure ファイル共有をバックアップすることができます。これは、特定の時点の共有の読み取り専用のコピーです。 スナップショットは増分であり、以前のスナップショット以降に変更されたデータだけが含まれます。 ファイル共有ごとに最大 200 のスナップショットを保持し、最大 10 年間保存できます。 これらのスナップショットを取得するには、Azure portal、PowerShell、またはコマンドライン インターフェイス (CLI) を使用して手動で行うか、または [Azure Backup](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) を使用することができます。 スナップショットはファイル共有内に格納されます。つまり、ファイル共有を削除すると、スナップショットも削除されます。 スナップショット バックアップを誤削除から保護するために、共有に対して論理的な削除が有効になっていることを確認します。
 
-[Azure ファイル共有の Azure Backup ](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)によって、スナップショットのスケジュール設定と保持期間が処理されます。 三世代 (GFS: grandfather-father-son) 機能は、日次、週次、月次、年次のスナップショットを取得できることを意味し、それぞれに個別の保持期間が設けられています。 また、Azure Backup によって論理的な削除の有効化が調整され、その中のいずれかのファイル共有がバックアップに構成されると、すぐにストレージ アカウント上で削除のロックが行われます。 最後に、顧客が自身のバックアップ資産の統合されたビューを利用できるように、Azure Backup には、特定の主な監視機能およびアラート機能が用意されています。
+[Azure ファイル共有の Azure Backup ](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)によって、スナップショットのスケジュール設定と保持期間が処理されます。 三世代 (GFS: grandfather-father-son) 機能は、日次、週次、月次、年次のスナップショットを取得できることを意味し、それぞれに個別の保持期間が設けられています。 また、Azure Backup によって論理的な削除の有効化が調整され、その中のいずれかのファイル共有がバックアップに構成されると、すぐにストレージ アカウント上で削除のロックが行われます。 最後に、顧客が自身のバックアップ資産の統合されたビューを利用できるように、Azure Backup には、特定の主な監視機能およびアラート機能が用意されています。
 
 Azure portal 上で、Azure Backup を使用して、項目レベルおよび共有レベルの両方の復元を実行できます。 必要な作業は、復元ポイント (特定のスナップショット)、特定のファイルまたはディレクトリ (該当する場合)、復元先の場所 (元の場所または別の場所) を選択することだけです。 バックアップ サービスによって、スナップショット データのコピーが処理され、ポータル上に復元の進行状況が表示されます。
 
-バックアップの詳細については、「[Azure ファイル共有のバックアップについて](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)」を参照してください。
+バックアップの詳細については、「[Azure ファイル共有のバックアップについて](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)」を参照してください。
 
 ### <a name="advanced-threat-protection-for-azure-files-preview"></a>Advanced Threat Protection for Azure Files (プレビュー)
 Advanced Threat Protection (ATP) for Azure Storage には、ストレージ アカウントへの通常とは異なるアクセス試行など、ストレージ アカウント上で異常なアクティビティが検出されたときにアラートを提示するセキュリティ インテリジェンスの追加レイヤーが用意されています。 また、ATP によってマルウェアのハッシュ評価分析も実行され、既知のマルウェアに関するアラート通知が行われます。 Azure Security Center を使用して、サブスクリプションまたはストレージ アカウント レベルで ATP を構成できます。 
 
-詳細については、[Advanced Threat Protection for Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection) に関するページを参照してください。
+詳細については、[Advanced Threat Protection for Azure Storage](../common/azure-defender-storage-configure.md) に関するページを参照してください。
 
 ## <a name="storage-tiers"></a>ストレージ層
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
@@ -124,7 +124,7 @@ Advanced Threat Protection (ATP) for Azure Storage には、ストレージ ア�
     - Standard ファイル共有は、ローカル冗長、ゾーン冗長、geo 冗長 (GRS)、および geo ゾーン冗長 (GZRS) ストレージで使用できます。
 - **ファイル共有の最大サイズ**
     - Premium ファイル共有の場合、追加作業なしで最大 100 TiB のプロビジョニングが可能です。
-    - 既定では、Standard ファイル共有は最大 5 TiB にのみまたがることができますが、"*大きいファイルの共有*" ストレージ アカウント機能フラグを選択することで、共有の制限を 100 TiB に増やすことができます。 ローカル冗長ストレージ アカウントまたはゾーン冗長ストレージ アカウントの場合、Standard ファイル共有は最大 100 TiB にのみまたがることができます。 ファイル共有サイズの増加の詳細については、「[大きなファイル共有の有効化と作成](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share)」を参照してください。
+    - 既定では、Standard ファイル共有は最大 5 TiB にのみまたがることができますが、"*大きいファイルの共有*" ストレージ アカウント機能フラグを選択することで、共有の制限を 100 TiB に増やすことができます。 ローカル冗長ストレージ アカウントまたはゾーン冗長ストレージ アカウントの場合、Standard ファイル共有は最大 100 TiB にのみまたがることができます。 ファイル共有サイズの増加の詳細については、「[大きなファイル共有の有効化と作成](./storage-files-how-to-create-large-file-share.md)」を参照してください。
 - **リージョン別の提供状況**
     - Premium ファイル共有は、ほとんどの Azure リージョンで使用できますが、いくつかのリージョンは例外です。 ゾーン冗長のサポートは、リージョンのサブセットで利用できます。 ご自分のリージョンで現在 Premium ファイル共有を使用できるかどうかを見つけるには、Azure の [[リージョン別の利用可能な製品]](https://azure.microsoft.com/global-infrastructure/services/?products=storage) ページを参照してください。 ZRS をサポートしているリージョンを確認するには、「[ゾーン冗長ストレージ](../common/storage-redundancy.md#zone-redundant-storage)」を参照してください。 この[アンケート](https://aka.ms/pfsfeedback)にご記入ください。新しいリージョンと機能に優先順位を付けるために役立ちます。
     - Standard ファイル共有は、すべての Azure リージョンで使用できます。
@@ -169,7 +169,7 @@ Premium ファイル共有は、固定 GiB/IOPS/スループット比に基づ�
 > ファイル共有のパフォーマンスは、他の多くの要因の中でも特にマシン ネットワークの制限、使用可能なネットワーク帯域幅、IO サイズ、並列処理の影響を受けます。 たとえば、8 KiB の読み取り/書き込み IO サイズでの内部テストに基づいて、SMB 経由で Premium ファイル共有に接続された単一の Windows 仮想マシン (*Standard F16s_v2*) は 20K の読み取り IOPS と 15K の書き込み IOPS を実現できます。 512 MiB の読み取り/書き込み IO サイズでは、同じ VM は 1.1 GiB/秒の送信スループットと 370 MiB/秒の受信スループットを実現できます。 最大のパフォーマンス スケールを達成するには、負荷を複数の VM に分散します。 一般的なパフォーマンスの問題と回避策については、[トラブルシューティング ガイド](storage-troubleshooting-files-performance.md)に関するページを参照してください。
 
 #### <a name="bursting"></a>バースト
-Premium ファイル共有は、最大 3 倍の IOPS をバーストできます。 バーストは自動化され、クレジット システムに基づいて動作します。 バーストはベスト エフォートで動作し、バースト限度は保証されるものではなく、ファイル共有は限度*まで*バーストすることができます。
+Premium ファイル共有は、最大 3 倍の IOPS をバーストできます。 バーストは自動化され、クレジット システムに基づいて動作します。 バーストはベスト エフォートで動作し、バースト限度は保証されるものではなく、ファイル共有は限度 *まで* バーストすることができます。
 
 クレジットは、ファイル共有のトラフィックがベースライン IOPS を下回るたびに、バースト バケットに蓄積されます。 たとえば、100 GiB 共有には 100 ベースライン IOPS が含まれます。 共有の実際のトラフィックが特定の 1 秒間で 40 IOPS だった場合は、未使用の 60 IOPS がバースト バケットに補充されます。 これらのクレジットは、後で操作がベースライン IOP を超えたときに使用されます。
 

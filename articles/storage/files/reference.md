@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.service: storage
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: cbbd4960a498516182323748e6609b834b1d4884
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fe6befbfc3c6f12cf804841052795647cd1f76a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90014686"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629837"
 ---
 # <a name="azure-files-reference"></a>Azure Files のリファレンス
 
@@ -25,7 +25,7 @@ Azure Files API リファレンス、ライブラリ パッケージ、readme �
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [.NET 用 Azure Files クライアント ライブラリ v12](/dotnet/api/overview/azure/storage.files.shares-readme) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files/) | &nbsp; |
-| 11.x | [Microsoft.Azure.Storage.File 名前空間](/dotnet/api/microsoft.azure.storage.file) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/) | [.NET での Azure Files 用の開発](/azure/storage/files/storage-dotnet-how-to-use-files) |
+| 11.x | [Microsoft.Azure.Storage.File 名前空間](/dotnet/api/microsoft.azure.storage.file) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/) | [.NET での Azure Files 用の開発](./storage-dotnet-how-to-use-files.md) |
 
 ### <a name="storage-management"></a>記憶域の管理
 
@@ -50,7 +50,7 @@ Azure Files API リファレンス、ライブラリ パッケージ、readme �
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [Java 用 Azure Files クライアント ライブラリ](/java/api/overview/azure/storage-file-share-readme) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-file-share) | &nbsp; |
-| 8.x | [com.microsoft.azure.storage.file](/java/api/com.microsoft.azure.storage.file) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Java を使用して Azure Files 用に開発する](/azure/storage/files/storage-java-how-to-use-file-storage) |
+| 8.x | [com.microsoft.azure.storage.file](/java/api/com.microsoft.azure.storage.file) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Java を使用して Azure Files 用に開発する](./storage-java-how-to-use-file-storage.md) |
 
 ### <a name="storage-management"></a>記憶域の管理
 
@@ -67,7 +67,7 @@ Azure Files API リファレンス、ライブラリ パッケージ、readme �
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [Python 用 Azure Storage クライアント ライブラリ v12](/azure/developer/python/sdk/storage/overview) | [パッケージ (PyPI)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [使用例](/python/api/overview/azure/storage-file-share-readme#examples) |
-| 2.x | [Python 用 Azure Storage クライアント ライブラリ v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [パッケージ (PyPI)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Python を使用して Azure Files 用に開発する](/azure/storage/files/storage-python-how-to-use-file-storage) |
+| 2.x | [Python 用 Azure Storage クライアント ライブラリ v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [パッケージ (PyPI)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Python を使用して Azure Files 用に開発する](./storage-python-how-to-use-file-storage.md) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript クライアント ライブラリ
 

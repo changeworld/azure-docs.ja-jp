@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 03b569422b6ce9e74f77637a514c1c0b28011bed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02b8d72ab88f9eca2e1fac4858c14826dae57dbe
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761143"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629174"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>パート 3: SMB 経由でディレクトリとファイル レベルのアクセス許可を構成する 
 
@@ -44,7 +44,7 @@ Azure RBAC によって共有レベルのアクセス許可を割り当てたら
 
 ## <a name="supported-permissions"></a>サポートされているアクセス許可
 
-Azure Files では、基本的な Windows ACL と詳細な Windows ACL で構成される完全なセットをサポートします。 Azure ファイル共有内のディレクトリとファイルの Windows ACL を表示および構成するには、共有をマウントしてから、Windows エクスプローラーを使用するか、Windows の [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) コマンドを実行するか、または [Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-acl) コマンドを実行します。 
+Azure Files では、基本的な Windows ACL と詳細な Windows ACL で構成される完全なセットをサポートします。 Azure ファイル共有内のディレクトリとファイルの Windows ACL を表示および構成するには、共有をマウントしてから、Windows エクスプローラーを使用するか、Windows の [icacls](/windows-server/administration/windows-commands/icacls) コマンドを実行するか、または [Set-ACL](/powershell/module/microsoft.powershell.security/set-acl) コマンドを実行します。 
 
 スーパーユーザー アクセス許可を持つ ACL を構成するには、ドメインに参加している VM からのストレージ アカウント キーを使って共有をマウントする必要があります。 コマンド プロンプトから Azure ファイル共有をマウントし、Windows ACL を構成するには、次のセクションの説明に従ってください。
 
@@ -85,7 +85,7 @@ else
 
 ```
 
-Azure Files への接続で問題が発生した場合は、[Windows での Azure Files マウント エラーに対して発行したトラブルシューティング ツール](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)に関するページをご覧ください。 また、ポート 445 がブロックされている場合のシナリオを回避するための[ガイダンス](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access)も提供されています。 
+Azure Files への接続で問題が発生した場合は、[Windows での Azure Files マウント エラーに対して発行したトラブルシューティング ツール](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)に関するページをご覧ください。 また、ポート 445 がブロックされている場合のシナリオを回避するための[ガイダンス](./storage-files-faq.md#on-premises-access)も提供されています。 
 
 ## <a name="configure-windows-acls"></a>Windows ACL を構成する
 
@@ -114,7 +114,7 @@ Windows エクスプローラーを使用して、ルート ディレクトリ�
 icacls <mounted-drive-letter>: /grant <user-email>:(f)
 ```
 
-icacls を使用して Windows ACL を設定する方法や、サポートされるさまざまな種類のアクセス許可の詳細については、[コマンド ライン リファレンスの icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) に関するページをご覧ください。
+icacls を使用して Windows ACL を設定する方法や、サポートされるさまざまな種類のアクセス許可の詳細については、[コマンド ライン リファレンスの icacls](/windows-server/administration/windows-commands/icacls) に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

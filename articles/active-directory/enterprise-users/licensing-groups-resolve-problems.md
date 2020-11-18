@@ -7,20 +7,20 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7529d72c3d94e3c7bef58c6a26af62b97ac92d9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bd61a33bdcc0d18dee7dba651f097f7cd49e7149
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373534"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647037"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory のグループのライセンスに関する問題を特定して解決する
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 
 ## <a name="not-enough-licenses"></a>ライセンス数の不足
 
-**問題** :グループに指定されたいずれかの製品について、利用できるライセンスの数が不足しています。 該当する製品のライセンスを追加で購入するか、他のユーザーかグループから未使用のライセンスを解放する必要があります。
+**問題**:グループに指定されたいずれかの製品について、利用できるライセンスの数が不足しています。 該当する製品のライセンスを追加で購入するか、他のユーザーかグループから未使用のライセンスを解放する必要があります。
 
 利用できるライセンスの数を確認するには、 **[Azure Active Directory]**  >  **[ライセンス]**  >  **[すべての製品]** を選択します。
 
@@ -64,7 +64,7 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 
 ## <a name="conflicting-service-plans"></a>サービス プランの競合
 
-**問題** :グループに指定されたいずれかの製品に含まれているサービス プランが、他の製品でユーザーに既に割り当てられている別のサービス プランと競合しています。 一部のサービス プランは、関連する他のサービス プランと同じユーザーに割り当てられないように構成されています。
+**問題**:グループに指定されたいずれかの製品に含まれているサービス プランが、他の製品でユーザーに既に割り当てられている別のサービス プランと競合しています。 一部のサービス プランは、関連する他のサービス プランと同じユーザーに割り当てられないように構成されています。
 
 各データ メンバー フィールドが JSON オブジェクトにマップされ、フィールド名がオブジェクトの "key" 部分にマップされ、"value" 部分がオブジェクトの値の部分に再帰的にマップされます。 すべてのプランを有効にした Office 365 Enterprise *E1* のライセンスがユーザーに直接割り当てられているとします。 このユーザーが、Office 365 Enterprise *E3* 製品を割り当てられたグループに追加された場合、 この E3 製品には E1 に含まれているプランと重複できないサービス プランが含まれているため、グループのライセンス割り当ては、"競合するサービス プラン" エラーで失敗します。 この例では、競合しているサービス プランは次のとおりです。
 
@@ -79,7 +79,7 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 
 ## <a name="other-products-depend-on-this-license"></a>特定のライセンスに依存する他の製品
 
-**問題** :グループに指定されたいずれかの製品に、他の製品の他のサービス プランが機能するうえで有効である必要があるサービス プランが含まれています。 このエラーは、Azure AD がサービス プランを削除しようとしたときに発生します。 たとえば、ユーザーをグループから削除したときに、発生する可能性があります。
+**問題**:グループに指定されたいずれかの製品に、他の製品の他のサービス プランが機能するうえで有効である必要があるサービス プランが含まれています。 このエラーは、Azure AD がサービス プランを削除しようとしたときに発生します。 たとえば、ユーザーをグループから削除したときに、発生する可能性があります。
 
 この問題を解決するには、他の方法を使用して目的のプランがユーザーに引き続き割り当てられていること、または依存するサービスがこれらのユーザーに対して無効になっていることを確認する必要があります。 その後、ユーザーからグループ ライセンスを問題なく削除できます。
 
@@ -87,7 +87,7 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 
 ## <a name="usage-location-isnt-allowed"></a>利用場所が許可されていない
 
-**問題** :一部の Microsoft サービスは、地域の法律と規制が理由ですべての場所で利用することはできません。 ライセンスをユーザーに割り当てる前に、ユーザーの **[利用場所]** プロパティを指定する必要があります。 場所は、Azure portal の **[ユーザー]**  >  **[プロファイル]**  >  **[編集]** セクションで指定できます。
+**問題**:一部の Microsoft サービスは、地域の法律と規制が理由ですべての場所で利用することはできません。 ライセンスをユーザーに割り当てる前に、ユーザーの **[利用場所]** プロパティを指定する必要があります。 場所は、Azure portal の **[ユーザー]**  >  **[プロファイル]**  >  **[編集]** セクションで指定できます。
 
 利用場所がサポートされていないユーザーへのグループ ライセンスの割り当てが Azure AD により試行されると、その操作は失敗し、エラーがユーザーに記録されます。
 
@@ -113,13 +113,13 @@ Exchange Online を使用する場合は、組織内の一部のユーザーが�
 
 ## <a name="azure-ad-mail-and-proxyaddresses-attribute-change"></a>Azure AD Mail と ProxyAddresses の属性の変更
 
-**問題** :ユーザーまたはグループのライセンス割り当てを更新している間に、一部のユーザーの Azure AD Mail および ProxyAddresses の属性が変更されたことがわかる場合があります。
+**問題**:ユーザーまたはグループのライセンス割り当てを更新している間に、一部のユーザーの Azure AD Mail および ProxyAddresses の属性が変更されたことがわかる場合があります。
 
 ユーザーのライセンス割り当てを更新すると、プロキシ アドレスの計算が開始され、それによってユーザーの属性が変更されることがあります。 変更の正確な理由を理解し、問題を解決するには、[Azure AD で proxyAddresses 属性がどのように設定されるか](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad)についての、この記事を参照してください。
 
 ## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>監査ログの LicenseAssignmentAttributeConcurrencyException
 
-**問題** :ライセンス割り当ての LicenseAssignmentAttributeConcurrencyException がユーザーの監査ログに記録されています。
+**問題**:ライセンス割り当ての LicenseAssignmentAttributeConcurrencyException がユーザーの監査ログに記録されています。
 グループベースのライセンスで、ユーザーに対する同じライセンスの同時ライセンス割り当てを処理しようとすると、この例外がユーザーに記録されます。 これは通常、同じライセンスが割り当てられた複数のグループにユーザーが属している場合に発生します。 Azure AD ではユーザー ライセンスの処理が再試行され、問題が解決されます。 この問題を解決するためにお客様の対処は必要ありません。
 
 ## <a name="more-than-one-product-license-assigned-to-a-group"></a>1 つのグループに割り当てられた複数の製品ライセンス
@@ -138,7 +138,7 @@ Exchange Online を使用する場合は、組織内の一部のユーザーが�
 
 ## <a name="manage-licenses-for-products-with-prerequisites"></a>前提条件のある製品のライセンスを管理する
 
-Microsoft Online 製品の中には " *アドオン* " であるものがあります。 ユーザーやグループにライセンスを割り当てるには、前提条件のサービス プランをユーザーまたはグループに対して有効にする必要があります。 グループごとにライセンスを付与する場合は、前提条件とアドオンのサービス プランが同じグループに存在する必要があります。 この措置によって、そのグループに追加されたユーザーに、完全に動作する製品が与えられます。 次の例について考察してみましょう。
+Microsoft Online 製品の中には "*アドオン*" であるものがあります。 ユーザーやグループにライセンスを割り当てるには、前提条件のサービス プランをユーザーまたはグループに対して有効にする必要があります。 グループごとにライセンスを付与する場合は、前提条件とアドオンのサービス プランが同じグループに存在する必要があります。 この措置によって、そのグループに追加されたユーザーに、完全に動作する製品が与えられます。 次の例について考察してみましょう。
 
 Microsoft Workplace Analytics はアドオン製品です。 同じ名前の単一サービス プランが含まれています。 このサービス プランは、次の前提条件のいずれかが割り当てられている場合にのみ、ユーザーまたはグループに割り当てることができます。
 

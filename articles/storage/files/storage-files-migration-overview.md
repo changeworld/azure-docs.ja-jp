@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: e3ecf29be94074f51ead3173f997154df6dfa88f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 995ae176a8eec58f8dc9522e6fac6fd78170014d
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785614"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628919"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Azure ファイル共有への移行
 
@@ -34,10 +34,10 @@ Azure には、複数の種類のクラウド ストレージが用意されて�
 
 ファイルの基本的なコンポーネントは次の 2 つです。
 
-- **データ ストリーム** : ファイルのデータ ストリームにはファイル コンテンツが格納されます。
-- **ファイル メタデータ** : ファイル メタデータには次のサブコンポーネントがあります。
+- **データ ストリーム**: ファイルのデータ ストリームにはファイル コンテンツが格納されます。
+- **ファイル メタデータ**: ファイル メタデータには次のサブコンポーネントがあります。
    * ファイル属性 (読み取り専用など)
-   * ファイルのアクセス許可。" *NTFS アクセス許可* " または " *ファイルとフォルダーの ACL* " と呼ばれることがあります
+   * ファイルのアクセス許可。"*NTFS アクセス許可*" または "*ファイルとフォルダーの ACL*" と呼ばれることがあります
    * タイムスタンプ。特に作成時と最終更新時のタイムスタンプ
    * 代替データ ストリーム。これは、より多くの非標準プロパティを格納するための領域です
 
@@ -111,7 +111,7 @@ Microsoft およびその他のファイル コピー ツールがいくつか�
 
     ツールを最初に実行するときに、データの大部分がコピーされます。 この最初の実行は、しばらく時間がかかる場合があります。 多くの場合、ビジネス プロセスのためにデータ ソースをオフラインにするのに要する時間よりも長くかかります。
 
-    ソースをターゲットにミラーリングすることにより ( **robocopy /MIR** と同様)、同じソースとターゲットでツールを再度実行できます。 前回の実行後に発生したソースの変更のみを転送する必要があるため、今回の実行はずっと速くなります。 この方法でコピー ツールを再実行すると、ダウンタイムを大幅に短縮できます。
+    ソースをターゲットにミラーリングすることにより (**robocopy /MIR** と同様)、同じソースとターゲットでツールを再度実行できます。 前回の実行後に発生したソースの変更のみを転送する必要があるため、今回の実行はずっと速くなります。 この方法でコピー ツールを再実行すると、ダウンタイムを大幅に短縮できます。
 
 次の表は、Microsoft ツールと、Azure ファイル共有との現時点での適合性を分類したものです。
 
@@ -134,7 +134,7 @@ Microsoft およびその他のファイル コピー ツールがいくつか�
 
 #### <a name="robocopy-from-microsoft-corporation"></a>Microsoft Corporation 製の RoboCopy
 
-RoboCopy は、ファイルの移行に最も適しているツールの 1 つです。 これは Windows の一部として提供されます。 このツールの多くのオプションについては、主要な [RoboCopy ドキュメント](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy)がリソースとして役に立ちます。
+RoboCopy は、ファイルの移行に最も適しているツールの 1 つです。 これは Windows の一部として提供されます。 このツールの多くのオプションについては、主要な [RoboCopy ドキュメント](/windows-server/administration/windows-commands/robocopy)がリソースとして役に立ちます。
 
 #### <a name="treesize-from-jam-software-gmbh"></a>JAM Software GmbH 製の TreeSize
 

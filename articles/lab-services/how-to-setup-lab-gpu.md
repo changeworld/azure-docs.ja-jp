@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: abd182339719f19a521feed95f7cfbed6942b3e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cbca82ba88baf5ddda2a6d7a6cdd35b62f28b8e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404784"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647938"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>GPU 仮想マシンを使用してラボを設定する
 
@@ -24,20 +24,20 @@ ms.locfileid: "91404784"
 
 ![[新しいラボ] ウィンドウの VM サイズ選択のスクリーンショット](./media/how-to-setup-gpu/lab-gpu-selection.png)
 
-このプロセスでは、**視覚化** GPU または**コンピューティング** GPU を選択できます。  学生が使用するソフトウェアに基づいて GPU の種類を選択することが重要です。  
+このプロセスでは、**視覚化** GPU または **コンピューティング** GPU を選択できます。  学生が使用するソフトウェアに基づいて GPU の種類を選択することが重要です。  
 
 次の表で説明するように、"*コンピューティング*" GPU サイズはコンピューティング集約型アプリケーションを対象としています。  たとえば、[自然言語処理でのディープ ラーニング クラスの種類](./class-type-deep-learning-natural-language-processing.md)では、**小規模 GPU (コンピューティング)** サイズを使用します。  学生は [Data Science Virtual Machine イメージ](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)で提供されるディープ ラーニング フレームワークとツールを使用して、大量のデータのセットでディープ ラーニング モデルをトレーニングするので、この種類のクラスにはコンピューティング GPU が適しています。
 
 | サイズ | コア | RAM | 説明 | 
 | ---- | ----- | --- | ----------- | 
-| Small GPU (Compute) | -&nbsp;6&nbsp;コア<br>-&nbsp;56&nbsp;GB&nbsp;RAM  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |このサイズは、人工知能 (AI) やディープ ラーニングなどのコンピューティング集中型アプリケーションに最適です。 |
+| Small GPU (Compute) | -&nbsp;6&nbsp;コア<br>-&nbsp;56&nbsp;GB&nbsp;RAM  | [Standard_NC6](../virtual-machines/nc-series.md) |このサイズは、人工知能 (AI) やディープ ラーニングなどのコンピューティング集中型アプリケーションに最適です。 |
 
 "*視覚化*" GPU サイズは、グラフィックス集約型アプリケーションを対象としています。  たとえば、[SOLIDWORKS エンジニアリング クラスの種類](./class-type-solidworks.md)では、**小規模 GPU (視覚化)** サイズの使用が示されています。  学生はソリッド オブジェクトのモデリングと視覚化に SOLIDWORKS 3D コンピューター支援設計 (CAD) 環境を使用するため、この種類のクラスには視覚化 GPU が適しています。
 
 | サイズ | コア | RAM | 説明 | 
 | ---- | ----- | --- | ----------- | 
-| Small GPU (視覚化) | -&nbsp;6&nbsp;コア<br>-&nbsp;56&nbsp;GB&nbsp;RAM  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | このサイズは、OpenGL や DirectX などのフレームワークを使用するリモート視覚化、ストリーミング、ゲーム、エンコードに最適です。 |
-| Medium GPU (視覚化) | -&nbsp;12&nbsp;コア<br>-&nbsp;112&nbsp;GB&nbsp;RAM  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | このサイズは、OpenGL や DirectX などのフレームワークを使用するリモート視覚化、ストリーミング、ゲーム、エンコードに最適です。 |
+| Small GPU (視覚化) | -&nbsp;6&nbsp;コア<br>-&nbsp;56&nbsp;GB&nbsp;RAM  | [Standard_NV6](../virtual-machines/nv-series.md) | このサイズは、OpenGL や DirectX などのフレームワークを使用するリモート視覚化、ストリーミング、ゲーム、エンコードに最適です。 |
+| Medium GPU (視覚化) | -&nbsp;12&nbsp;コア<br>-&nbsp;112&nbsp;GB&nbsp;RAM  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | このサイズは、OpenGL や DirectX などのフレームワークを使用するリモート視覚化、ストリーミング、ゲーム、エンコードに最適です。 |
 
 > [!NOTE]
 > クラスルーム ラボを作成する際、これらの VM サイズの一部が一覧に表示されない場合があります。 このリストの内容は、ラボの場所の現在の容量に基づいて表示されます。 ラボ アカウントの作成者が、[ラボの作成者にラボの場所の選択を許可している](allow-lab-creator-pick-lab-location.md)場合は、ラボに対して別の場所を選択し、VM サイズが表示されるかどうかを確認してください。 VM を利用できるリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/?products=virtual-machines)」を参照してください。
@@ -76,7 +76,7 @@ ms.locfileid: "91404784"
 1. ドライバーと、クラスに必要な他のソフトウェアをインストールした後、 **[発行]** を選択して学生の VM を作成します。
 
 > [!NOTE]
-> Linux イメージを使用している場合は、インストーラーをダウンロードした後、[Linux への CUDA ドライバーのインストール](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup?toc=/azure/virtual-machines/linux/toc.json#install-cuda-drivers-on-n-series-vms)に関するページの手順に従って、ドライバーをインストールします。
+> Linux イメージを使用している場合は、インストーラーをダウンロードした後、[Linux への CUDA ドライバーのインストール](../virtual-machines/linux/n-series-driver-setup.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#install-cuda-drivers-on-n-series-vms)に関するページの手順に従って、ドライバーをインストールします。
 
 #### <a name="install-the-visualization-gpu-drivers"></a>視覚化 GPU ドライバーをインストールする
 
@@ -85,8 +85,8 @@ ms.locfileid: "91404784"
 1. ラボ作成ウィザードで、[ラボを作成する](./how-to-manage-classroom-labs.md)ときに、 **[GPU ドライバーをインストールする]** の設定を無効にします。
 1. ラボが作成された後、テンプレート VM に接続して、適切なドライバーをインストールします。
 1. お使いのオペレーティング システムの指示に従って、Microsoft から提供されている GRID ドライバーをテンプレート VM にインストールします。
-   -  [Windows NVIDIA GRID ドライバー](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)
-   -  [Linux NVIDIA GRID ドライバー](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup?toc=/azure/virtual-machines/linux/toc.json#nvidia-grid-drivers)
+   -  [Windows NVIDIA GRID ドライバー](../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers)
+   -  [Linux NVIDIA GRID ドライバー](../virtual-machines/linux/n-series-driver-setup.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#nvidia-grid-drivers)
   
 1. テンプレート VM を再起動します。
 1. 「[インストールされているドライバーを検証する](how-to-setup-lab-gpu.md#validate-the-installed-drivers)」セクションの手順に従って、ドライバーが正しくインストールされていることを検証します。
@@ -96,13 +96,13 @@ ms.locfileid: "91404784"
 このセクションでは、GPU ドライバーが正しくインストールされていることを検証する方法について説明します。
 
 #### <a name="windows-images"></a>Windows イメージ
-1.  「[Windows を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation)」の「ドライバーのインストールの確認」セクションの手順に従います。
+1.  「[Windows を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする](../virtual-machines/windows/n-series-driver-setup.md#verify-driver-installation)」の「ドライバーのインストールの確認」セクションの手順に従います。
 1.  "*視覚化*" GPU を使用している場合は、次のようにすることもできます。
-    - NVIDIA コントロール パネルで GPU の設定を表示および調整します。 これを行うには、**Windows コントロール パネル**で **[ハードウェア]** を選択してから、 **[NVIDIA Control Panel]\(NVIDIA コントロール パネル\)** を選択します。
+    - NVIDIA コントロール パネルで GPU の設定を表示および調整します。 これを行うには、**Windows コントロール パネル** で **[ハードウェア]** を選択してから、 **[NVIDIA Control Panel]\(NVIDIA コントロール パネル\)** を選択します。
 
       ![[NVIDIA Control Panel]\(NVIDIA コントロール パネル\) のリンクが示されている Windows コントロール パネルのスクリーンショット](./media/how-to-setup-gpu/control-panel-nvidia-settings.png) 
 
-     - **タスク マネージャー**を使用して、GPU のパフォーマンスを表示します。  そのためには、 **[パフォーマンス]** タブを選択し、 **[GPU]** オプションを選択します。
+     - **タスク マネージャー** を使用して、GPU のパフォーマンスを表示します。  そのためには、 **[パフォーマンス]** タブを選択し、 **[GPU]** オプションを選択します。
 
        ![タスク マネージャーの GPU パフォーマンス タブのスクリーンショット](./media/how-to-setup-gpu/task-manager-gpu.png) 
 
@@ -110,7 +110,7 @@ ms.locfileid: "91404784"
       > NVIDIA コントロール パネルの設定には、"*視覚化*" GPU の場合にのみアクセスできます。  コンピューティング GPU の場合に NVIDIA コントロール パネルを開こうとすると、次のエラーが表示されます。"NVIDIA Display settings are not available.  You are not currently using a display attached to an NVIDIA GPU." (NVIDIA ディスプレイの設定は使用できません。現在、NVIDIA GPU に接続されているディスプレイは使用されていません。)  同様に、タスク マネージャーの GPU パフォーマンス情報は、視覚化 GPU に対してのみ提供されます。
 
 #### <a name="linux-images"></a>Linux イメージ
-「[Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#verify-driver-installation)」の「ドライバーのインストールの確認」セクションの手順に従います。
+「[Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする](../virtual-machines/linux/n-series-driver-setup.md#verify-driver-installation)」の「ドライバーのインストールの確認」セクションの手順に従います。
 
 ## <a name="next-steps"></a>次のステップ
 次の記事をご覧ください。
@@ -118,6 +118,3 @@ ms.locfileid: "91404784"
 - [クラスルーム ラボを作成して管理する](how-to-manage-classroom-labs.md)
 - [SOLIDWORKS のコンピューター支援設計 (CAD) クラスの種類](class-type-solidworks.md)
 - [MATLAB (matrix laboratory) クラスの種類](class-type-matlab.md)
-
-
-

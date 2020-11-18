@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: bf75537c0baf029bc3fc63e320f6290a1f41a524
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7680e251d8411ce154e1f7dfb8af1d66514dd579
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738840"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629463"
 ---
 # <a name="how-to-create-an-nfs-share"></a>NFS 共有を作成する方法
 
@@ -38,7 +38,7 @@ Azure ファイル共有は、クラウド内に存在するフル マネージ�
     - [Azure Files で使用する Linux 上のポイント対サイト (P2S) VPN を構成](storage-files-configure-p2s-vpn-linux.md)します。
     - [Azure Files で使用するサイト間 VPN を構成](storage-files-configure-s2s-vpn.md)します。
     - [ExpressRoute](../../expressroute/expressroute-introduction.md) を構成します。
-- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="register-the-nfs-41-protocol"></a>NFS 4.1 プロトコルを登録する
 
@@ -110,7 +110,7 @@ az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscr
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   お使いの PowerShell のバージョンをアップグレードするには、「[既存の Windows PowerShell をアップグレードする](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)」を参照してください。
+   お使いの PowerShell のバージョンをアップグレードするには、「[既存の Windows PowerShell をアップグレードする](/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)」を参照してください。
     
 1. PowerShellGet モジュールの最新バージョンをインストールします。
 
@@ -126,7 +126,7 @@ az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscr
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
    ```
 
-   PowerShell モジュールのインストール方法の詳細については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0)」を参照してください。
+   PowerShell モジュールのインストール方法の詳細については、「[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps?view=azps-3.0.0)」を参照してください。
    
 1. Azure PowerShell モジュールを使用して Premium ファイル共有を作成するには、[New-AzRmStorageShare](/powershell/module/az.storage/new-azrmstorageshare) コマンドレットを使用します。
 

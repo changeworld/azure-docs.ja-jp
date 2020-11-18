@@ -9,12 +9,13 @@ ms.reviewer: ebertra
 ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: bf7e841586250142c23d6672491af30a011043ca
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+monikerRange: '>=iotedge-2020-11'
+ms.openlocfilehash: ef92895374f07c79f8ba8d626a0aab3d89733f40
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447514"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629650"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Aure IoT Edge を使用した発行とサブスクライブ
 
@@ -30,8 +31,10 @@ Azure IoT Edge MQTT ブローカーを使用して、メッセージの発行と
 - SKU (F1、S1、S2、S3 のいずれか) の **IoT Hub**。
 - **バージョン 1.2 以上の IoT Edge デバイス** があること。 IoT Edge MQTT ブローカーは現在パブリック プレビュー段階であるため、edgeHub コンテナーで次の環境変数を true に設定して、MQTT ブローカーを有効にします。
 
-    - experimentalFeatures__enabled
-    - mqttbroker__enabled
+   | 名前 | 値 |
+   | - | - |
+   | `experimentalFeatures__enabled` | `true` |
+   | `experimentalFeatures__mqttBrokerEnabled` | `true` |
 
 - IoT Edge デバイスにインストールされている **Mosquitto クライアント**。 この記事では、[MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) および [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html) を含む一般的な Mosquitto クライアントを使用します。 代わりに他の MQTT クライアントを使用することもできます。 Ubuntu デバイスに Mosquitto クライアントをインストールするには、次のコマンドを実行します。
 

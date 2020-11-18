@@ -3,22 +3,22 @@ title: アンマネージド Azure AD の組織で職場または学校アカウ
 description: アンマネージド Azure Active Directory のご自身の職場または学校アカウントを削除する方法。
 services: active-directory
 author: rolyon
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 05/20/2019
+ms.date: 11/20/2020
 ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87e03214e2a00a16064763f35f38bdd3ea0e6123
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 142143f96314539051ea44c00c6ff95cb2650566
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373486"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650208"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>アンマネージド Azure AD 組織の職場または学校アカウントを削除する
 

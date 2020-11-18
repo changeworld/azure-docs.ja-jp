@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 747d03b228d41066cfc834b4a9c044b16c767622
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 026f4f36986fa5fcfad4dac5186e9dc0b0997d72
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329365"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629412"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Azure File Sync ネットワーク エンドポイントの構成
 Azure Files および Azure File Sync では、Azure ファイル共有にアクセスするための次の主な 2 種類のエンドポイントが提供されます。 
@@ -33,8 +33,8 @@ Azure Files と Azure File Sync はどちらも、それぞれに Azure 管理�
 - ストレージ同期サービスを既に作成し、それにご使用の Windows ファイル サーバーを登録している。 Azure File Sync をデプロイする方法については、[Azure File Sync のデプロイ](storage-sync-files-deployment-guide.md)に関するページを参照してください。
 
 追加として:
-- Azure PowerShell を使用する場合は、[最新バージョンをインストールしてください](https://docs.microsoft.com/powershell/azure/install-az-ps)。
-- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- Azure PowerShell を使用する場合は、[最新バージョンをインストールしてください](/powershell/azure/install-az-ps)。
+- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="create-the-private-endpoints"></a>プライベート エンドポイントを作成する
 Azure リソースのプライベート エンドポイントを作成すると、次のリソースがデプロイされます。
@@ -130,7 +130,7 @@ Address: 192.168.0.5
 > ストレージ同期サービス リソースに対してプライベート エンドポイントを使用するには、Azure File Sync エージェント バージョン10.1 以降を使用する必要があります。 10.1 より前のバージョンのエージェントでは、ストレージ同期サービスに対するプライベート エンドポイントはサポートされません。 以前のすべてのエージェント バージョンでは、ストレージ アカウント リソースに対するプライベート エンドポイントがサポートされています。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
-Azure portal の上部にある検索バーに「*プライベート リンク*」と入力して、**プライベート リンク センター**に移動します。 プライベート リンク センターの目次で **[プライベート エンドポイント]** を選択した後、 **[+ 追加]** を選択して、新しいプライベート エンドポイントを作成します。
+Azure portal の上部にある検索バーに「*プライベート リンク*」と入力して、**プライベート リンク センター** に移動します。 プライベート リンク センターの目次で **[プライベート エンドポイント]** を選択した後、 **[+ 追加]** を選択して、新しいプライベート エンドポイントを作成します。
 
 [![プライベート リンク センターのスクリーンショット](media/storage-sync-files-networking-endpoints/create-storage-sync-private-endpoint-0.png)](media/storage-sync-files-networking-endpoints/create-storage-sync-private-endpoint-0.png#lightbox)
 

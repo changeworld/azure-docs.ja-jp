@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4b5ce48cf15c890fbdb3dfd90d9d0ab922a2f4b2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9abe306668a4b20e42e45c498bf85b540dfaaee5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320270"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630194"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>Azure Files の DNS 転送の構成
 Azure Files では、ファイル共有を含むストレージ アカウントのプライベート エンドポイントを作成することができます。 プライベート エンドポイントは、多くの異なるアプリケーションで役立ちますが、プライベート ピアリングを使用する VPN または ExpressRoute 接続を使って、オンプレミス ネットワークから Azure ファイル共有に接続する場合に特に便利です。 
@@ -43,7 +43,7 @@ Azure Files への DNS 転送を設定する前に、次の手順を完了して
 
 - マウントする Azure ファイル共有を含むストレージ アカウント。 ストレージ アカウントと Azure ファイル共有を作成する方法については、「[Azure ファイル共有を作成する](storage-how-to-create-file-share.md)」を参照してください。
 - ストレージ アカウントのプライベート エンドポイント。 Azure Files のプライベート エンドポイントを作成する方法については、「[プライベート エンドポイントを作成する](storage-files-networking-endpoints.md#create-a-private-endpoint)」を参照してください。
-- [最新バージョン](https://docs.microsoft.com/powershell/azure/install-az-ps)の Azure PowerShell モジュール。
+- [最新バージョン](/powershell/azure/install-az-ps)の Azure PowerShell モジュール。
 
 > [!Important]  
 > このガイドでは、オンプレミス環境の Windows Server 内で DNS サーバーを使用することを前提としています。 このガイドで説明されているすべての手順は、Windows DNS Server だけでなく、どの DNS サーバーでも使用できます。

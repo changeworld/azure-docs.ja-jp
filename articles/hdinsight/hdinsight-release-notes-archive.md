@@ -8,18 +8,48 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 10/07/2020
-ms.openlocfilehash: d8b36676c9b95992bdcf382c1f474b56e30ad3fb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3973e32fdc724bd3c0894d6aaf2eb06ad3ba3adc
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535554"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629939"
 ---
 # <a name="archived-release-notes"></a>アーカイブされたリリース ノート
 
 ## <a name="summary"></a>まとめ
 
 Azure HDInsight は、Azure 上でオープンソースの Apache Hadoop および Apache Spark の分析を行う、エンタープライズのお客様の間で最も人気のあるサービスの 1 つです。
+
+## <a name="release-date-10082020"></a>リリース日: 2020 年 10 月 8 日
+
+このリリースは HDInsight 3.6 と HDInsight 4.0 の両方に適用されます。 HDInsight リリースは、数日以内にすべてのリージョンでご利用になれます。 ここのリリース日は、最初のリージョンのリリース日です。 以下の変更が見られない場合は、お客様のリージョンで数日以内にリリースがライブになるまでお待ちください。
+
+### <a name="new-features"></a>新機能
+#### <a name="hdinsight-private-clusters-with-no-public-ip-and-private-link-preview"></a>パブリック IP とプライベート リンクを使用しない HDInsight プライベート クラスター (プレビュー)
+HDInsight は、プレビュー段階でクラスターへのパブリック IP およびプライベート リンク アクセスを使用しないクラスターの作成をサポートするようになりました。 新しい高度なネットワーク設定を使用して、パブリック IP を使用しない完全に分離されたクラスターを作成し、独自のプライベート エンドポイントを使用してクラスターにアクセスできます。 
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットへの移行
+HDInsight では、Azure 仮想マシンを使用してクラスターをプロビジョニングするようになりました。 このリリース以降、サービスは徐々に [Azure 仮想マシン スケール セット](../virtual-machine-scale-sets/overview.md)に移行されます。 このプロセス全体に数か月かかる可能性があります。 リージョンとサブスクリプションが移行された後は、新しく作成された HDInsight クラスターは、お客様が操作することなく、仮想マシン スケール セット上で動作するようになります。 破壊的変更は想定されていません。
+
+### <a name="deprecation"></a>非推奨
+#### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>HDInsight 3.6 ML Services クラスターの非推奨
+HDInsight 3.6 ML Services クラスターの種類は、2020 年 12 月 31 日でサポートの終了となります。 その後は新しい 3.6 ML Services クラスターを作成できなくなります。 既存のクラスターはそのまま実行され、Microsoft からのサポートはありません。 HDInsight のバージョンとクラスターの種類に関するサポートの有効期限については、[こちら](./hdinsight-component-versioning.md#available-versions)で確認してください。
+
+### <a name="behavior-changes"></a>動作の変更
+このリリースに動作変更はありません。
+
+### <a name="upcoming-changes"></a>今後の変更
+今後のリリースでは、次の変更が行われます。
+
+#### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>Spark、Hadoop、および ML Services 用のさまざまな Zookeeper 仮想マシン サイズを選択する機能
+現在、HDInsight では、Spark、Hadoop、および ML サービス クラスターの種類での Zookeeper ノード サイズのカスタマイズはサポートされていません。 既定値は A2_v2 および A2 の仮想マシン サイズであり、無料で提供されます。 今後のリリースでは、お客様のシナリオに最も適した Zookeeper 仮想マシン サイズを選択できます。 A2_v2 および A2 以外の仮想マシン サイズの Zookeeper ノードには課金されます。 A2_v2 および A2 の仮想マシンは引き続き無料で提供されます。
+
+### <a name="bug-fixes"></a>バグの修正
+HDInsight は引き続き、クラスターの信頼性とパフォーマンスの向上を実現します。 
+
+### <a name="component-version-change"></a>コンポーネントのバージョンの変更
+このリリースでは、コンポーネントのバージョン変更はありません。 HDInsight 4.0 と HDInsight 3.6 の現在のコンポーネント バージョンについては、[こちらのドキュメント](./hdinsight-component-versioning.md)を参照してください。
 
 ## <a name="release-date-09282020"></a>リリース日: 2020 年 9 月 28 日
 
@@ -39,7 +69,7 @@ HDInsight では、HDInsight HBase 3.6 および 4.0 クラスターのプライ
 お客様は、プラットフォーム マネージド キーによる IPSec 暗号化を使用して、クラスター ノード間での転送中の暗号化を有効にすることができます。 このオプションは、クラスターの作成時に有効にすることができます。 詳しくは、[転送中の暗号化を有効にする方法](./domain-joined/encryption-in-transit.md)についての記事をご覧ください。
 
 #### <a name="encryption-at-host"></a>ホストでの暗号化
-ホストでの暗号化を有効にすると、VM ホスト上の格納データは、保存時に暗号化され、暗号化された状態でストレージ サービスに送られます。 このリリースでは、クラスターの作成時に、 **一時データ ディスク上のホストでの暗号化を有効にする** ことができます。 ホストでの暗号化は、[限られたリージョンの特定の VM SKU](../virtual-machines/disks-enable-host-based-encryption-portal.md) でのみサポートされています。 HDInsight では、[次のノード構成と SKU](./hdinsight-supported-node-configuration.md) がサポートされています。 詳しくは、[ホストでの暗号化を有効にする方法](./disk-encryption.md#encryption-at-host-using-platform-managed-keys)についての記事をご覧ください。
+ホストでの暗号化を有効にすると、VM ホスト上の格納データは、保存時に暗号化され、暗号化された状態でストレージ サービスに送られます。 このリリースでは、クラスターの作成時に、**一時データ ディスク上のホストでの暗号化を有効にする** ことができます。 ホストでの暗号化は、[限られたリージョンの特定の VM SKU](../virtual-machines/disks-enable-host-based-encryption-portal.md) でのみサポートされています。 HDInsight では、[次のノード構成と SKU](./hdinsight-supported-node-configuration.md) がサポートされています。 詳しくは、[ホストでの暗号化を有効にする方法](./disk-encryption.md#encryption-at-host-using-platform-managed-keys)についての記事をご覧ください。
 
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットへの移行
 HDInsight では、Azure 仮想マシンを使用してクラスターをプロビジョニングするようになりました。 このリリース以降、サービスは徐々に [Azure 仮想マシン スケール セット](../virtual-machine-scale-sets/overview.md)に移行されます。 このプロセス全体に数か月かかる可能性があります。 リージョンとサブスクリプションが移行された後は、新しく作成された HDInsight クラスターは、お客様が操作することなく、仮想マシン スケール セット上で動作するようになります。 破壊的変更は想定されていません。
@@ -526,9 +556,9 @@ Apache Storm と ML サービスは、HDInsight 4.0 では使用できません�
 
 *  ***Microsoft R Server 9.1 から Machine Learning Services 9.3 への更新** _: このリリースでは、データ サイエンティストとエンジニア向けに先進的なアルゴリズムと使いやすさで強化したオープン ソースを提供しています。すべての機能を Apache Spark の速度で、好みの言語で利用できます。 このリリースでは、Microsoft R Server で提供されている機能に基づいて拡張し、Python のサポートを追加したため、クラスター名を Microsoft R Server から ML Services に変更しました。 
 
-_* **Azure Data Lake Storage Gen2 のサポート** _: HDInsight は、Azure Data Lake Storage Gen2 のプレビュー リリースをサポートします。 利用可能なリージョンのお客様は、HDInsight クラスターの主ストアまたは 2 次ストアとして、ADLS Gen2 アカウントを選択できるようになります。
+_***Azure Data Lake Storage Gen2 のサポート** _: HDInsight は、Azure Data Lake Storage Gen2 のプレビュー リリースをサポートします。 利用可能なリージョンのお客様は、HDInsight クラスターの主ストアまたは 2 次ストアとして、ADLS Gen2 アカウントを選択できるようになります。
 
-_* **HDInsight Enterprise セキュリティ パッケージの更新プログラム (プレビュー)** _: (プレビュー) [仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)は、Azure Blob Storage、ADLS Gen1、Cosmos DB、および Azure DB をサポートします。
+_***HDInsight Enterprise セキュリティ パッケージの更新プログラム (プレビュー)** _: (プレビュー) [仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)は、Azure Blob Storage、ADLS Gen1、Cosmos DB、および Azure DB をサポートします。
 
 ### <a name="component-versions"></a>コンポーネントのバージョン
 

@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 11/03/2020
 ms.custom: generated
-ms.openlocfilehash: e337cef9121dc5992f87b9996cfd01d16d9cc188
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cf8c8e7d56f4eff351361edd148f91e81a07bfbb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309378"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649145"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure リソース プロバイダーの操作
 
@@ -792,7 +792,7 @@ Azure サービス:クラシック デプロイ モデルの仮想ネットワ�
 
 ### <a name="microsoftnetwork"></a>Microsoft.Network
 
-Azure サービス:[Application Gateway](../application-gateway/index.yml)、[Azure Bastion](../bastion/index.yml)、[Azure DDoS Protection](../virtual-network/ddos-protection-overview.md)、[Azure DNS](../dns/index.yml)、[Azure ExpressRoute](../expressroute/index.yml)、[Azure Firewall](../firewall/index.yml), [Azure Front Door Service](../frontdoor/index.yml)、[Azure Private Link](../private-link/index.yml)、[Load Balancer](../load-balancer/index.yml)、[Network Watcher](../network-watcher/index.yml)、[Traffic Manager](../traffic-manager/index.yml)、[Virtual Network](../virtual-network/index.yml)、[Virtual WAN](../virtual-wan/index.yml)、[VPN Gateway](../vpn-gateway/index.yml)
+Azure サービス:[Application Gateway](../application-gateway/index.yml)、[Azure Bastion](../bastion/index.yml)、[Azure DDoS Protection](../ddos-protection/ddos-protection-overview.md)、[Azure DNS](../dns/index.yml)、[Azure ExpressRoute](../expressroute/index.yml)、[Azure Firewall](../firewall/index.yml), [Azure Front Door Service](../frontdoor/index.yml)、[Azure Private Link](../private-link/index.yml)、[Load Balancer](../load-balancer/index.yml)、[Network Watcher](../network-watcher/index.yml)、[Traffic Manager](../traffic-manager/index.yml)、[Virtual Network](../virtual-network/index.yml)、[Virtual WAN](../virtual-wan/index.yml)、[VPN Gateway](../vpn-gateway/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -3850,7 +3850,7 @@ Azure サービス:[Azure Cosmos DB](../cosmos-db/index.yml)
 
 ### <a name="microsoftsql"></a>Microsoft.Sql
 
-Azure サービス:[Azure SQL Database](../azure-sql/database/index.yml)、[Azure SQL Managed Instance](../azure-sql/managed-instance/index.yml)、[Azure Synapse Analytics (旧称 SQL Data Warehouse)](../sql-data-warehouse/index.yml)
+Azure サービス:[Azure SQL Database](../azure-sql/database/index.yml)、[Azure SQL Managed Instance](../azure-sql/managed-instance/index.yml)、[Azure Synapse Analytics (旧称 SQL Data Warehouse)](../synapse-analytics/sql-data-warehouse/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -4331,7 +4331,7 @@ Azure サービス:[Azure Analysis Services](../analysis-services/index.yml)
 
 ### <a name="microsoftdatabricks"></a>Microsoft.Databricks
 
-Azure サービス:[Azure Databricks](https://docs.microsoft.com/azure/databricks/)
+Azure サービス:[Azure Databricks](/azure/databricks/)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -4619,7 +4619,7 @@ Azure サービス:[Azure Data Explorer](/azure/data-explorer/)
 
 ### <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
-Azure サービス:[Power BI Embedded](https://docs.microsoft.com/azure/power-bi-embedded/)
+Azure サービス:[Power BI Embedded](/azure/power-bi-embedded/)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -4712,7 +4712,7 @@ Azure サービス:[Azure Blockchain Service](../blockchain/workbench/index.yml)
 
 ### <a name="microsoftbotservice"></a>Microsoft.BotService
 
-Azure サービス:[Azure Bot Service](https://docs.microsoft.com/azure/bot-service/)
+Azure サービス:[Azure Bot Service](/azure/bot-service/)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -6187,7 +6187,7 @@ Azure サービス:[Logic Apps](../logic-apps/index.yml)
 
 ### <a name="microsoftrelay"></a>Microsoft.Relay
 
-Azure サービス:[Azure Relay](../service-bus-relay/relay-what-is-it.md)
+Azure サービス:[Azure Relay](../azure-relay/relay-what-is-it.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -6257,7 +6257,7 @@ Azure サービス:[Azure Relay](../service-bus-relay/relay-what-is-it.md)
 
 ### <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
-Azure サービス:[Service Bus](../service-bus/index.md)
+Azure サービス:[Service Bus](../service-bus-messaging/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -6957,7 +6957,7 @@ Azure サービス:[Azure Lab Services](../lab-services/index.yml)
 
 ### <a name="microsoftvisualstudio"></a>Microsoft.VisualStudio
 
-Azure サービス:[Azure DevOps](https://docs.microsoft.com/azure/devops/)
+Azure サービス:[Azure DevOps](/azure/devops/)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -8924,7 +8924,7 @@ Azure サービス:[Azure Arc](../azure-arc/index.yml)
 
 ### <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
 
-Azure サービス:[Azure Arc 対応 Kubernetes](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)
+Azure サービス:[Azure Arc 対応 Kubernetes](../azure-arc/kubernetes/overview.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -9677,7 +9677,7 @@ Azure サービス:Microsoft Monitoring Insights
 
 ### <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 
-Azure サービス:[Bing Maps](https://docs.microsoft.com/BingMaps/)
+Azure サービス:[Bing Maps](/BingMaps/)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |

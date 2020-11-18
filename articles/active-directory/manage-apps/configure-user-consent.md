@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: c1c0c3038c687b7f91d3c75d8c4c9589c5e245a3
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1617015d6d4a026d5dadda667dcd03447a20c288
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427635"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649502"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>エンド ユーザーがアプリケーションに同意する方法を構成する
 
@@ -38,11 +38,11 @@ ms.locfileid: "92427635"
 
 * **ユーザーの同意を無効にする** - ユーザーはアプリケーションにアクセス許可を付与できません。 ユーザーは、以前に同意していたアプリ、または管理者によって代理で同意されているアプリにサインインし続けることができますが、新しいアクセス許可や新しいアプリに独自に同意することは許可されません。 同意するアクセス許可を含むディレクトリ ロールが付与されているユーザーのみが、新しいアプリに同意できます。
 
-* **ユーザーは、確認済み発行者または自分の組織からのアプリに対し、選択されたアクセス許可にのみ同意できる** - すべてのユーザーが同意できるのは、 [確認済み発行者](../develop/publisher-verification-overview.md) によって発行されたアプリと、テナントに登録されているアプリのみです。 ユーザーは、"低影響" として分類されたアクセス許可に対してのみ同意できます。 ユーザーが同意を許可されるアクセス許可を選択するには、[アクセス許可を分類](configure-permission-classifications.md)する必要があります。
+* **ユーザーは、確認済み発行者または自分の組織からのアプリに対し、選択されたアクセス許可にのみ同意できる** - すべてのユーザーが同意できるのは、[確認済み発行者](../develop/publisher-verification-overview.md) によって発行されたアプリと、テナントに登録されているアプリのみです。 ユーザーは、"低影響" として分類されたアクセス許可に対してのみ同意できます。 ユーザーが同意を許可されるアクセス許可を選択するには、[アクセス許可を分類](configure-permission-classifications.md)する必要があります。
 
 * **ユーザーはすべてのアプリに同意できる** - すべてのユーザーが、すべてのアプリケーションに対し、管理者の同意を必要としないすべてのアクセス許可に同意することができます。
 
-* **カスタム アプリの同意ポリシー** - ユーザーが同意するタイミングを管理する条件に関してさらに多くのオプションが必要な場合は、 [カスタム アプリの同意ポリシーを作成](manage-app-consent-policies.md#create-a-custom-app-consent-policy)し、それらをユーザーの同意に適用するように構成することができます。
+* **カスタム アプリの同意ポリシー** - ユーザーが同意するタイミングを管理する条件に関してさらに多くのオプションが必要な場合は、[カスタム アプリの同意ポリシーを作成](manage-app-consent-policies.md#create-a-custom-app-consent-policy)し、それらをユーザーの同意に適用するように構成することができます。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -57,7 +57,7 @@ Azure portal を使用してユーザーの同意設定を構成するには:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-最新の Azure AD PowerShell プレビュー モジュールである [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) を使用して、アプリケーションに対するユーザーの同意を制御するアプリの同意ポリシーを選択できます。
+最新の Azure AD PowerShell プレビュー モジュールである [AzureADPreview](/powershell/azure/active-directory/install-adv2?preserve-view=true&view=azureadps-2.0-preview) を使用して、アプリケーションに対するユーザーの同意を制御するアプリの同意ポリシーを選択できます。
 
 #### <a name="disable-user-consent"></a>ユーザーの同意を無効にする
 
@@ -101,7 +101,7 @@ Set-AzureADMSAuthorizationPolicy `
 
 ## <a name="risk-based-step-up-consent"></a>リスクに基づくステップアップ同意
 
-リスクに基づくステップアップ同意を使用すると、[違法な同意要求](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)を行う悪質なアプリへのユーザーの露出を減らすことができます。 危険なエンドユーザー同意要求が Microsoft によって検出されると、管理者の同意への "ステップアップ" が求められます。 この機能は既定で有効になりますが、動作変更が生じるのは、エンドユーザーの同意が有効な場合だけです。
+リスクに基づくステップアップ同意を使用すると、[違法な同意要求](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)を行う悪質なアプリへのユーザーの露出を減らすことができます。 危険なエンドユーザー同意要求が Microsoft によって検出されると、管理者の同意への "ステップアップ" が求められます。 この機能は既定で有効になりますが、動作変更が生じるのは、エンドユーザーの同意が有効な場合だけです。
 
 危険な同意要求が検出されると、管理者の承認が必要であることを示すメッセージが同意プロンプトに表示されます。 [管理者の同意要求ワークフロー](configure-admin-consent-workflow.md)が有効になっている場合、ユーザーは同意プロンプトから直接その要求を管理者に送信してさらなる確認を求めることができます。 有効になっていない場合は、次のメッセージが表示されます。
 
@@ -114,9 +114,9 @@ Set-AzureADMSAuthorizationPolicy `
 
 ### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>PowerShell を使用して、リスクに基づくステップアップ同意を無効にしたり再度有効にしたりする
 
-Microsoft によってリスクが検出された場合に必要となる管理者の同意へのステップアップは、Azure AD PowerShell プレビュー モジュールである [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) を使用して無効にしたり、過去に無効にされていた場合は再度有効にしたりすることができます。
+Microsoft によってリスクが検出された場合に必要となる管理者の同意へのステップアップは、Azure AD PowerShell プレビュー モジュールである [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) を使用して無効にしたり、過去に無効にされていた場合は再度有効にしたりすることができます。
 
-1. [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) モジュールを使用していることを確認します。 この手順は、[AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) モジュールと [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) モジュールの両方がインストールされている場合に重要です。
+1. [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) モジュールを使用していることを確認します。 この手順は、[AzureAD](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0) モジュールと [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) モジュールの両方がインストールされている場合に重要です。
 
     ```powershell
     Remove-Module AzureAD
@@ -182,7 +182,7 @@ Microsoft によってリスクが検出された場合に必要となる管理�
 * [管理者の同意ワークフローの構成](configure-admin-consent-workflow.md)
 * [アプリケーションへの同意を管理する方法と同意要求を評価する方法](manage-consent-requests.md)
 * [アプリケーションへのテナント全体の管理者の同意の付与](grant-admin-consent.md)
-* [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/active-directory-v2-scopes.md)
+* [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/v2-permissions-and-consent.md)
 
 ヘルプを表示したり、質問に対する回答を検索したりするには、以下を参照してください。
 * [StackOverflow での Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

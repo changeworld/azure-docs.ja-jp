@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 10/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 027cd8eb9c855afb845b08ce6aada7ddfd44daba
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: e44437bb926e8d2d1ffcd3134bbc63538a112ff0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147013"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648312"
 ---
 # <a name="list-azure-role-assignments-using-azure-cli"></a>Azure CLI を使用して Azure ロールの割り当てを一覧表示する
 
@@ -30,7 +30,7 @@ ms.locfileid: "93147013"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Azure Cloud Shell の Bash](/azure/cloud-shell/overview) または [Azure CLI](/cli/azure)
+- [Azure Cloud Shell の Bash](../cloud-shell/overview.md) または [Azure CLI](/cli/azure)
 
 ## <a name="list-role-assignments-for-a-user"></a>ユーザーのロールの割り当ての表示
 
@@ -42,7 +42,7 @@ az role assignment list --assignee {assignee}
 
 既定では、現在のサブスクリプションのロールの割り当てのみが表示されます。 現在のサブスクリプションとその下のロールの割り当てを表示するには、`--all` パラメーターを追加します。 継承されたロールの割り当てを表示するには、`--include-inherited` パラメーターを追加します。
 
-次の例では、 *patlong\@contoso.com* ユーザーに直接割り当てられているロールの割り当てを一覧表示します。
+次の例では、*patlong\@contoso.com* ユーザーに直接割り当てられているロールの割り当てを一覧表示します。
 
 ```azurecli
 az role assignment list --all --assignee patlong@contoso.com --output json --query '[].{principalName:principalName, roleDefinitionName:roleDefinitionName, scope:scope}'
@@ -71,7 +71,7 @@ az role assignment list --all --assignee patlong@contoso.com --output json --que
 az role assignment list --resource-group {resourceGroup}
 ```
 
-次の例では、 *pharma-sales* リソース グループに対するロールの割り当てを一覧表示します。
+次の例では、*pharma-sales* リソース グループに対するロールの割り当てを一覧表示します。
 
 ```azurecli
 az role assignment list --resource-group pharma-sales --output json --query '[].{principalName:principalName, roleDefinitionName:roleDefinitionName, scope:scope}'
@@ -97,7 +97,7 @@ az role assignment list --resource-group pharma-sales --output json --query '[].
 
 ## <a name="list-role-assignments-for-a-subscription"></a>サブスクリプションのロールの割り当ての一覧表示
 
-サブスクリプション スコープに存在するすべてのロールの割り当てを一覧表示するには、[az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) を使用します。 サブスクリプション ID を取得するには、Azure portal の **[サブスクリプション]** ブレードで確認するか、 [az account list](/cli/azure/account#az-account-list) を使用できます。
+サブスクリプション スコープに存在するすべてのロールの割り当てを一覧表示するには、[az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) を使用します。 サブスクリプション ID を取得するには、Azure portal の **[サブスクリプション]** ブレードで確認するか、[az account list](/cli/azure/account#az-account-list) を使用できます。
 
 ```azurecli
 az role assignment list --subscription {subscriptionNameOrId}
@@ -134,7 +134,7 @@ az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --ou
 
 ## <a name="list-role-assignments-for-a-management-group"></a>管理グループに対するロールの割り当ての一覧表示
 
-管理グループ スコープに存在するすべてのロールの割り当てを一覧表示するには、[az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) を使用します。 管理グループ ID を取得するには、Azure portal の **[管理グループ]** ブレードで確認するか、 [az account management-group list](/cli/azure/account/management-group#az-account-management-group-list) を使用します。
+管理グループ スコープに存在するすべてのロールの割り当てを一覧表示するには、[az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) を使用します。 管理グループ ID を取得するには、Azure portal の **[管理グループ]** ブレードで確認するか、[az account management-group list](/cli/azure/account/management-group#az-account-management-group-list) を使用します。
 
 ```azurecli
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/{groupId}

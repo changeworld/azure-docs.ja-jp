@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperfq1
-ms.openlocfilehash: 16ead03af14da70b5aaedc21118488c6dd3012c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75f2eb90e2418b57e5e0a358fbd6282b20ddc9e7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597656"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648363"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Azure CLI を使用して Azure でのロールの割り当てを追加または削除する
 
@@ -26,7 +26,7 @@ ms.locfileid: "91597656"
 ロールの割り当てを追加または削除するには、以下が必要です。
 
 - `Microsoft.Authorization/roleAssignments/write` および `Microsoft.Authorization/roleAssignments/delete` のアクセス許可 ([ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)や[所有者](built-in-roles.md#owner)など)
-- [Azure Cloud Shell の Bash](/azure/cloud-shell/overview) または [Azure CLI](/cli/azure)
+- [Azure Cloud Shell の Bash](../cloud-shell/overview.md) または [Azure CLI](/cli/azure)
 
 ## <a name="steps-to-add-a-role-assignment"></a>ロールの割り当てを追加する手順
 
@@ -232,7 +232,7 @@ az role assignment create --assignee "patlong@contoso.com" \
 
 ロールの名前が変更される場合でも、ロールの ID は変わりません。 スクリプトまたはオートメーションを使用してロールの割り当てを作成する場合は、ロール名ではなく一意のロール ID を使用するのがベスト プラクティスです。 そうすれば、ロールの名前が変更されても、スクリプトが動作する可能性が高くなります。
 
-次の例では、*pharma-sales* リソース グループ スコープで、*patlong\@contoso.com* ユーザーに[仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールが付与されます。
+次の例では、*pharma-sales* リソース グループ スコープで、*patlong\@contoso.com* ユーザーに [仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールが付与されます。
 
 ```azurecli
 az role assignment create --assignee "patlong@contoso.com" \
@@ -362,4 +362,4 @@ az role assignment delete --assignee "alain@example.com" \
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure CLI を使用して Azure でのロールの割り当てを一覧表示する](role-assignments-list-cli.md)
-- [Azure CLI を使用して Azure のリソースとリソース グループを管理する](../azure-resource-manager/cli-azure-resource-manager.md)
+- [Azure CLI を使用して Azure のリソースとリソース グループを管理する](../azure-resource-manager/management/manage-resources-cli.md)

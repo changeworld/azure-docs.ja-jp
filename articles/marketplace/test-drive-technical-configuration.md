@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: 6faecdd561d7c434d2948e70886d6f1b19115d9f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: f628c2a4c2f8eb474bbc34ef2d3fd2f03f668992
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504834"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629905"
 ---
 # <a name="test-drive-technical-configuration"></a>体験版の技術的な構成
 
@@ -66,13 +66,13 @@ Power BI アプリの設定の詳細については、[Power BI アプリとは]
 
 Microsoft が体験版のデプロイを代行できるようにするには、固有の Azure サブスクリプションを別に作成して指定します (Power BI 体験版の場合は必要ありません)。
 
-- **[Azure サブスクリプション ID]** (Azure Resource Manager および Logic Apps では必須) – リソースの使用状況レポート用および課金用の Azure アカウント サービスへのアクセス権を付与するサブスクリプション ID を入力します。 まだお持ちでない場合、体験版に使用するために[別個の Azure サブスクリプションの作成](../cost-management-billing/manage/create-subscription.md)を検討することをお勧めします。 Azure サブスクリプション ID は、 [Azure portal](https://portal.azure.com/) にログインし、左側にあるメニューの **[サブスクリプション]** タブに移動して見つけることができます。 このタブを選択すると、自分のサブスクリプション ID (例: "a83645ac-1234-5ab6-6789-1h234g764ghty") が表示されます。
+- **[Azure サブスクリプション ID]** (Azure Resource Manager および Logic Apps では必須) – リソースの使用状況レポート用および課金用の Azure アカウント サービスへのアクセス権を付与するサブスクリプション ID を入力します。 まだお持ちでない場合、体験版に使用するために[別個の Azure サブスクリプションの作成](../cost-management-billing/manage/create-subscription.md)を検討することをお勧めします。 Azure サブスクリプション ID は、[Azure portal](https://portal.azure.com/) にログインし、左側にあるメニューの **[サブスクリプション]** タブに移動して見つけることができます。 このタブを選択すると、自分のサブスクリプション ID (例: "a83645ac-1234-5ab6-6789-1h234g764ghty") が表示されます。
 
-- **Azure AD テナント ID** (必須) – ご利用の Azure Active Directory (AD) [テナント ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) を入力します。 この ID を見つけるには、 [Azure portal](https://portal.azure.com/) にサインインし、左側のメニューで [Active Directory] タブを選択します。 **[プロパティ]** を選択した後、表示される **ディレクトリ ID** 番号を確認します (例: 50c464d3-4930-494c-963c-1e951d15360e)。 また、[https://www.whatismytenantid.com](https://www.whatismytenantid.com) でドメイン名アドレスを使用して、組織のテナント ID を検索することもできます。
+- **Azure AD テナント ID** (必須) – ご利用の Azure Active Directory (AD) [テナント ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) を入力します。 この ID を見つけるには、[Azure portal](https://portal.azure.com/) にサインインし、左側のメニューで [Active Directory] タブを選択します。 **[プロパティ]** を選択した後、表示される **ディレクトリ ID** 番号を確認します (例: 50c464d3-4930-494c-963c-1e951d15360e)。 また、[https://www.whatismytenantid.com](https://www.whatismytenantid.com) でドメイン名アドレスを使用して、組織のテナント ID を検索することもできます。
 
 - **Azure AD テナント名** (Dynamic 365 では必須) – お使いの Azure Active Directory (AD) 名を入力します。 この名前を見つけるには、[Azure portal](https://portal.azure.com/) にサインインします。右上隅にある自分のアカウント名の下に、テナント名が表示されます。
 
-- **Azure AD アプリ ID** (必須) – ご利用の Azure Active Directory (AD) [アプリケーション ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) を入力します。 この ID を見つけるには、 [Azure portal](https://portal.azure.com/) にサインインして左側のメニューで [Active Directory] タブを選択し、 **[アプリの登録]** を選んでから、一覧表示される **アプリケーション ID** 番号を探します (`50c464d3-4930-494c-963c-1e951d15360e` など)。
+- **Azure AD アプリ ID** (必須) – ご利用の Azure Active Directory (AD) [アプリケーション ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) を入力します。 この ID を見つけるには、[Azure portal](https://portal.azure.com/) にサインインして左側のメニューで [Active Directory] タブを選択し、 **[アプリの登録]** を選んでから、一覧表示される **アプリケーション ID** 番号を探します (`50c464d3-4930-494c-963c-1e951d15360e` など)。
 
 - **Azure AD アプリ クライアントのシークレット** (必須) – ご利用の Azure AD アプリケーションの [クライアント シークレット](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)) を入力します。 この値を探すには、[Azure portal](https://portal.azure.com/) にサインインします。 左側のメニューにある **[Azure Active Directory]** タブを選択し、 **[アプリの登録]** を選択してから、体験版アプリを選択します。 次に、 **[Certificates and secrets]\(証明書とシークレット\)** 、 **[New client secret]\(新しいクライアント シークレット\)** の順に選択し、説明を入力し、 **[Expires]\(有効期限\)** で **[Never]\(なし\)** を選択してから、 **[追加]** を選択します。 必ず値をコピーしておいてください。 値をコピーする前に、ページから移動しないでください。
 

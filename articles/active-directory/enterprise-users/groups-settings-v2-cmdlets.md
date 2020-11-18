@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e40dc986fcf7017b4a8ffbe35373c3a98631ea77
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 61c445a7df05eda578fb6b3de6de915a94402049
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373590"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647071"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>グループ管理用の Azure Active Directory バージョン 2 のコマンドレット
 
@@ -134,7 +134,7 @@ Azure AD PowerShell コマンドレットを使用してグループの管理を
 ```
 
 > [!NOTE]
-> Azure AD PowerShell コマンドレットは標準の OData クエリを実装しています。 詳しくは、「 [OData エンドポイントを使用する OData システム クエリ オプション](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7)#BKMK_filter)」の「 **$filter** 」を参照してください。
+> Azure AD PowerShell コマンドレットは標準の OData クエリを実装しています。 詳しくは、「[OData エンドポイントを使用する OData システム クエリ オプション](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7)#BKMK_filter)」の「 **$filter**」を参照してください。
 
 ## <a name="create-groups"></a>グループを作成する
 

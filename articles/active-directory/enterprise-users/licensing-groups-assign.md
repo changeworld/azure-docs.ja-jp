@@ -9,18 +9,18 @@ manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.subservice: users-groups-roles
-ms.date: 04/29/2020
+ms.subservice: enterprise-users
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e1b61ca00b83d4c6b43fb5ade68dfb1228f0e0d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 732a92aea321bac0bc9cea4d3eee5a3979a469b1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373547"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650582"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Azure Active Directory でのグループ メンバーシップによるユーザーへのライセンスの割り当て
 
@@ -71,7 +71,7 @@ ms.locfileid: "92373547"
 
    ![ライセンス エラーとライセンスの状態](./media/licensing-groups-assign/assignment-errors.png)
 
-1. ライセンスの処理に関する詳細情報は、 **[Azure Active Directory]**  >  **[ユーザーとグループ]**  >  " *グループ名* "  >  **[監査ログ]** の順に移動して入手できます。 次のアクティビティに注意してください。
+1. ライセンスの処理に関する詳細情報は、 **[Azure Active Directory]**  >  **[ユーザーとグループ]**  >  "*グループ名*"  >  **[監査ログ]** の順に移動して入手できます。 次のアクティビティに注意してください。
 
    - アクティビティ: `Start applying group based license to users`。 このログは、システムによってグループでのライセンス割り当ての変更が検出され、すべてのユーザー メンバーに対するその変更の適用が開始されたときに、記録されます。 ここには、行われた変更の情報が含まれます。
 
@@ -91,7 +91,7 @@ ms.locfileid: "92373547"
 
    ![ユーザーのすべてのライセンスの競合を表示します](./media/licensing-groups-assign/user-licence-conflicting-service-plans.png)
 
-1. この競合を解消するには、 **キオスク ユーザー** グループからこのユーザーを削除します。 Azure AD によって変更が処理された後、 **人事部** のライセンスは正常に割り当てられます。
+1. この競合を解消するには、**キオスク ユーザー** グループからこのユーザーを削除します。 Azure AD によって変更が処理された後、**人事部** のライセンスは正常に割り当てられます。
 
 ## <a name="next-steps"></a>次のステップ
 

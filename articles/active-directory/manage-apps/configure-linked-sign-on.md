@@ -11,25 +11,25 @@ ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 49191ffc0033559f0668a5330b8c91643dee39d3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8fc26b00214106aa08e0e6e4c41f9f05aca9344d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073973"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648040"
 ---
 # <a name="understand-linked-sign-on"></a>リンクされたサインオンの概要
 
-アプリケーション管理の[クイックスタート シリーズ](view-applications-portal.md)では、アプリケーションの ID プロバイダー (IdP) として Azure AD を使用する方法について学習しました。 このクイックスタート ガイドでは、SAML ベースまたは OIDC ベースの SSO を構成しました。 他に、**リンク**というオプションがあります。 この記事では、リンクのオプションについて詳しく説明します。
+アプリケーション管理の[クイックスタート シリーズ](view-applications-portal.md)では、アプリケーションの ID プロバイダー (IdP) として Azure AD を使用する方法について学習しました。 このクイックスタート ガイドでは、SAML ベースまたは OIDC ベースの SSO を構成しました。 他に、**リンク** というオプションがあります。 この記事では、リンクのオプションについて詳しく説明します。
 
-**[リンク]** オプションを使用すると、ユーザーが組織の[マイ アプリ](https://myapps.microsoft.com/)、または Office 365 ポータルでアプリを選択するときにターゲットとなる場所を構成できます。
+**[リンク]** オプションを使用すると、ユーザーが組織の [マイ アプリ](https://myapps.microsoft.com/)、または Office 365 ポータルでアプリを選択するときにターゲットとなる場所を構成できます。
 
 リンク オプションが役立つ一般的なシナリオには、次のようなものがあります。
 - Active Directory フェデレーション サービス (AD FS) など、現在フェデレーションを使用しているカスタム Web アプリケーションにリンクを追加する。
 - ユーザーのアクセス パネルに表示するだけの特定の SharePoint ページまたは他の Web ページにディープ リンクを追加する。
 - 認証を必要としないアプリにリンクを追加する。 
  
- **[リンク]** オプションでは、Azure AD 資格情報を使用したサインオン機能は提供されません。 ただし、**エンタープライズ アプリケーション**のその他の機能の一部を使用することはできます。 たとえば、監査ログを使用したり、カスタム ロゴとアプリ名を追加したりできます。
+ **[リンク]** オプションでは、Azure AD 資格情報を使用したサインオン機能は提供されません。 ただし、**エンタープライズ アプリケーション** のその他の機能の一部を使用することはできます。 たとえば、監査ログを使用したり、カスタム ロゴとアプリ名を追加したりできます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -38,9 +38,9 @@ ms.locfileid: "92073973"
 **[リンク]** オプションは Azure AD を使用したサインオン機能を提供しません。 このオプションは、[マイ アプリ](https://myapps.microsoft.com/)、または Microsoft 365 アプリ ランチャーでアプリを選択したときにユーザーが送信される場所が設定されるだけです。  このサインインでは Azure AD を通じたサインオン機能は提供されないため、リンクされたシングル サインオンで構成されたアプリケーションで条件付きアクセスを使用することはできません。
 
 > [!IMPORTANT] 
-> 一部のシナリオでは、**エンタープライズ アプリケーション**内のアプリケーションのナビゲーションに**シングル サインオン** オプションが表示されません。 
+> 一部のシナリオでは、**エンタープライズ アプリケーション** 内のアプリケーションのナビゲーションに **シングル サインオン** オプションが表示されません。 
 >
-> アプリケーションが**アプリの登録**を使用して登録された場合、既定では、OIDC OAuth を使用するようにシングル サインオン機能が設定されます。 この場合、 **[シングル サインオン]** オプションは、 **[エンタープライズ アプリケーション]** の下のナビゲーションに表示されません。 **アプリの登録**を使用してカスタム アプリを追加する場合は、マニフェスト ファイルでオプションを構成します。 マニフェスト ファイルの詳細については、「[Azure Active Directory のアプリ マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)」を参照してください。 SSO 標準の詳細については、「[Microsoft ID プラットフォームを使用した認証と承認](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)」を参照してください。 
+> アプリケーションが **アプリの登録** を使用して登録された場合、既定では、OIDC OAuth を使用するようにシングル サインオン機能が設定されます。 この場合、 **[シングル サインオン]** オプションは、 **[エンタープライズ アプリケーション]** の下のナビゲーションに表示されません。 **アプリの登録** を使用してカスタム アプリを追加する場合は、マニフェスト ファイルでオプションを構成します。 マニフェスト ファイルの詳細については、「[Azure Active Directory のアプリ マニフェスト](../develop/reference-app-manifest.md)」を参照してください。 SSO 標準の詳細については、「[Microsoft ID プラットフォームを使用した認証と承認](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-microsoft-identity-platform)」を参照してください。 
 >
 > ナビゲーションに **[シングル サインオン]** が表示されないその他のシナリオには、アプリケーションが別のテナントでホストされている場合や、アカウントに必要なアクセス許可 (グローバル管理者、クラウド アプリケーション管理者、アプリケーション管理者、またはサービス プリンシパルの所有者) がない場合などがあります。 アクセス許可によっては、 **[シングル サインオン]** を開くことができるが、保存できないシナリオが発生する場合もあります。 Azure AD の管理者ロールの詳細については、(https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) を参照してください。
 
@@ -52,5 +52,5 @@ ms.locfileid: "92073973"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [アプリケーションにユーザーまたはグループを割り当てる](methods-for-assigning-users-and-groups.md)
+- [アプリケーションにユーザーまたはグループを割り当てる](./assign-user-or-group-access-portal.md)
 - [自動ユーザー アカウント プロビジョニングを構成する](../app-provisioning/configure-automatic-user-provisioning-portal.md)

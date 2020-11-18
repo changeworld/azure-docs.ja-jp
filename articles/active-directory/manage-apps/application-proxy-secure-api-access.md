@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e72129b1f391996f6d5b085fe602adb35a3aecbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e38d8261bf141248fd143f27c74e0761e54f73f9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371220"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649332"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したオンプレミス API へのアクセスのセキュリティ保護
 
-ビジネス ロジック API がオンプレミスで実行されていたり、クラウドの仮想マシンでホストされていたりすることがあります。 Android、iOS、Mac、または Windows のネイティブ アプリは、データを使用したりユーザー対話を提供したりするために、この API エンドポイントと対話する必要があります。 Azure AD アプリケーション プロキシと [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/active-directory-authentication-libraries) を使用すると、ネイティブ アプリはオンプレミス API に安全にアクセスすることができます。 Azure Active Directory アプリケーション プロキシは、ファイアウォール ポートを開いてアプリ層で認証と承認を制御するよりも高速かつ安全なソリューションです。
+ビジネス ロジック API がオンプレミスで実行されていたり、クラウドの仮想マシンでホストされていたりすることがあります。 Android、iOS、Mac、または Windows のネイティブ アプリは、データを使用したりユーザー対話を提供したりするために、この API エンドポイントと対話する必要があります。 Azure AD アプリケーション プロキシと [Microsoft Authentication Library (MSAL)](../azuread-dev/active-directory-authentication-libraries.md) を使用すると、ネイティブ アプリはオンプレミス API に安全にアクセスすることができます。 Azure Active Directory アプリケーション プロキシは、ファイアウォール ポートを開いてアプリ層で認証と承認を制御するよりも高速かつ安全なソリューションです。
 
 この記事では、ネイティブ アプリがアクセスできる Web API サービスをホストするための Azure AD アプリケーション プロキシ ソリューションを設定する手順を説明します。
 
@@ -34,9 +34,9 @@ ms.locfileid: "91371220"
 
 ![Azure AD アプリケーション プロキシの API アクセス](./media/application-proxy-secure-api-access/overview-publish-api-app-proxy.png)
 
-Azure AD アプリケーション プロキシはこのソリューションのバックボーンを形成し、API アクセスのパブリック エンドポイントとして機能し、認証と承認を提供します。 [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/active-directory-authentication-libraries) ライブラリを使用することで、さまざまなプラットフォームから API にアクセスできます。
+Azure AD アプリケーション プロキシはこのソリューションのバックボーンを形成し、API アクセスのパブリック エンドポイントとして機能し、認証と承認を提供します。 [Microsoft Authentication Library (MSAL)](../azuread-dev/active-directory-authentication-libraries.md) ライブラリを使用することで、さまざまなプラットフォームから API にアクセスできます。
 
-Azure AD アプリケーション プロキシの認証と承認は Azure AD 上に構築されているため、Azure AD の条件付きアクセスを使用して、信頼済みデバイスのみがアプリケーション プロキシ経由で公開された API にアクセスできるようにすることが可能です。 デスクトップについては Azure AD Join または Azure AD Hybrid Joined を使用し、デバイスについては Intune Managed を使用します。 Azure Multi-Factor Authentication などの Azure Active Directory Premium 機能や、[Azure Identity Protection](/azure/active-directory/active-directory-identityprotection) の機械学習支援型のセキュリティも活用できます。
+Azure AD アプリケーション プロキシの認証と承認は Azure AD 上に構築されているため、Azure AD の条件付きアクセスを使用して、信頼済みデバイスのみがアプリケーション プロキシ経由で公開された API にアクセスできるようにすることが可能です。 デスクトップについては Azure AD Join または Azure AD Hybrid Joined を使用し、デバイスについては Intune Managed を使用します。 Azure Multi-Factor Authentication などの Azure Active Directory Premium 機能や、[Azure Identity Protection](../identity-protection/overview-identity-protection.md) の機械学習支援型のセキュリティも活用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -96,7 +96,7 @@ Azure AD アプリケーション プロキシを通じて Web API を公開し�
 1. **[割り当ての追加]** ページに戻り、 **[割り当て]** を選択します。
 
 > [!NOTE]
-> 統合 Windows 認証を使用する API では、[追加の手順](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd)が必要になる場合があります。
+> 統合 Windows 認証を使用する API では、[追加の手順](./application-proxy-configure-single-sign-on-with-kcd.md)が必要になる場合があります。
 
 ## <a name="register-the-native-app-and-grant-access-to-the-api"></a>ネイティブ アプリを登録して API へのアクセス権を付与する
 

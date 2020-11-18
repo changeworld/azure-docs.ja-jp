@@ -12,20 +12,20 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperfq2
-ms.openlocfilehash: 12b11d6283bbed4e43daf52a65c0c259c476e73f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: e75669c70c67d55c94642a0f6dbe3c9dbc3376e6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357914"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651551"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>SAML ベースのシングル サインオンで構成されたアプリへのサインインに関する問題
 以下のサインインに関する問題を解決する場合は、より優れた診断、および解決手順の自動化に向けて、次を行うことをお勧めします。
 
-- [My Apps Secure Browser Extension](access-panel-extension-problem-installing.md) をインストールします。これをインストールすると、Azure portal でテスト体験を使用するとき、Azure Active Directory (Azure AD) からより良い診断と解決策が得られます。
-- Azure portal のアプリ構成ページにあるテスト体験を使用し、エラーを再現します。 [SAML ベースのシングル サインオン アプリケーションをデバッグする](../azuread-dev/howto-v1-debug-saml-sso-issues.md)方法に関するページを参照してください。
+- [My Apps Secure Browser Extension](./access-panel-deployment-plan.md) をインストールします。これをインストールすると、Azure portal でテスト体験を使用するとき、Azure Active Directory (Azure AD) からより良い診断と解決策が得られます。
+- Azure portal のアプリ構成ページにあるテスト体験を使用し、エラーを再現します。 [SAML ベースのシングル サインオン アプリケーションをデバッグする](./debug-saml-sso-issues.md)方法に関するページを参照してください。
 
-My Apps Secure Browser Extension を使用して、Azure portal で[テスト体験](../azuread-dev/howto-v1-debug-saml-sso-issues.md)を使用する場合は、[SAML ベースのシングル サインオンの構成] ページを開くための次の手順を、手動で行う必要はありません。
+My Apps Secure Browser Extension を使用して、Azure portal で[テスト体験](./debug-saml-sso-issues.md)を使用する場合は、[SAML ベースのシングル サインオンの構成] ページを開くための次の手順を、手動で行う必要はありません。
 
 [SAML ベースのシングル サインオンの構成] ページを開くには、次の手順を行います。
 1.  [**Azure portal**](https://portal.azure.com/) を開き、**グローバル管理者**、または **共同管理者** としてサインインします。
@@ -88,7 +88,7 @@ Azure AD は、シングル サインオン用のアプリケーションによ�
 
 **解決策**
 
-1. SAML 要求をキャプチャします。 [Azure AD でのアプリケーションへの SAML ベースのシングル サインオンをデバッグする方法](../azuread-dev/howto-v1-debug-saml-sso-issues.md)に関するチュートリアルに従って、SAML 要求をキャプチャする方法を確認します。
+1. SAML 要求をキャプチャします。 [Azure AD でのアプリケーションへの SAML ベースのシングル サインオンをデバッグする方法](./debug-saml-sso-issues.md)に関するチュートリアルに従って、SAML 要求をキャプチャする方法を確認します。
 1. アプリケーション ベンダーに連絡し、次の情報を伝えます。
     - SAML 要求
     - [Azure AD でのシングル サインオンの SAML プロトコルの要件](../develop/single-sign-on-saml-protocol.md)
@@ -174,5 +174,5 @@ Azure AD によって、HTTP 要求の URL パラメーター内から SAML 要�
 
 ## <a name="next-steps"></a>次のステップ
 - [アプリケーション管理のクイックスタート シリーズ](add-application-portal-assign-users.md)
-- [Azure AD のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
-- [Azure AD でのシングル サインオンの SAML プロトコルの要件](../develop/active-directory-single-sign-on-protocol-reference.md)
+- [Azure AD のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](./debug-saml-sso-issues.md)
+- [Azure AD でのシングル サインオンの SAML プロトコルの要件](../develop/single-sign-on-saml-protocol.md)

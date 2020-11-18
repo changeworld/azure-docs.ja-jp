@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: arvindh
-ms.openlocfilehash: 8968fd54968f3115641d2315a534ba61a247a06d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9bcf45cdfbadbf16f48f8f2ac3bd0c6320a2803f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605126"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649230"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションのエンド ユーザー エクスペリエンス
 
@@ -37,13 +37,13 @@ Azure Active Directory (Azure AD) には、組織内のエンド ユーザーに
 
 マイ アプリは Azure portal から独立しているため、ユーザーが Azure サブスクリプションや Microsoft 365 サブスクリプションを持っている必要はありません。
 
-Azure AD のマイ アプリの詳細については、[マイ アプリの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。
+Azure AD のマイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="microsoft-365-application-launcher"></a>Microsoft 365 アプリケーション起動プログラム
 
 Microsoft 365 をデプロイしている組織では、Azure AD を介してユーザーに割り当てられているアプリケーションは Office 365 ポータル ([https://portal.office.com/myapps](https://portal.office.com/myapps)) にも表示されます。 これにより、組織のユーザーは、2 つ目のポータルを使用することなく簡単かつ手軽にアプリを起動できます。これは、Microsoft 365 を使用する組織に対して推奨されるアプリ起動ソリューションです。
 
-Office 365 アプリケーション起動プログラムの詳細については、 [Office 365 アプリ起動プログラムにアプリを表示する方法](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher)に関するページを参照してください。
+Office 365 アプリケーション起動プログラムの詳細については、 [Office 365 アプリ起動プログラムにアプリを表示する方法](/previous-versions/office/office-365-api/)に関するページを参照してください。
 
 ## <a name="direct-sign-on-to-federated-apps"></a>フェデレーション アプリへの直接サインオン
 
@@ -53,7 +53,7 @@ SAML 2.0、WS-Federation、または OpenID Connect をサポートするほと�
 
 Azure AD では、パスワードベースのシングル サインオン、リンクされたシングル サインオン、任意の形式のフェデレーション シングル サインオンをサポートする個々のアプリケーションへの直接シングル サインオン リンクもサポートされます。
 
-これらのリンクは、特定のアプリケーションについてユーザーを Azure AD サインイン プロセスに送るための特別に生成された URL です。ユーザーは、Azure AD のマイ アプリまたは Microsoft 365 からアプリケーションを起動する必要はありません。 これらの**ユーザー アクセス URL** は、使用できるエンタープライズ アプリケーションのプロパティの下にあります。 Azure portal で、 **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]** を選択します。 アプリケーションを選択し、**[プロパティ]** を選択します。
+これらのリンクは、特定のアプリケーションについてユーザーを Azure AD サインイン プロセスに送るための特別に生成された URL です。ユーザーは、Azure AD のマイ アプリまたは Microsoft 365 からアプリケーションを起動する必要はありません。 これらの **ユーザー アクセス URL** は、使用できるエンタープライズ アプリケーションのプロパティの下にあります。 Azure portal で、 **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]** を選択します。 アプリケーションを選択し、**[プロパティ]** を選択します。
 
 ![Twitter プロパティのユーザー アクセス URL の例](media/end-user-experiences/direct-sign-on-link.png)
 

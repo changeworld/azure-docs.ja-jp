@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: c7a013e07ada0ba88b20598c23f706eb5ee71d49
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 512accd274da35c1f747f2ef185f0b3eefa4756d
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073065"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636794"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Azure Cosmos DB のコンプライアンス 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -79,4 +79,4 @@ Azure のコンプライアンス認証の詳細については、以下の記�
 
 * FedRAMP コンプライアンスの情報については、「[FedRAMP および DoD CC SRG 監査スコープ別の Azure サービス](../azure-government/compliance/azure-services-in-fedramp-auditscope.md)」を参照してください。
 
-* DoD コンプライアンスの情報については、[DoD コンプライアンス認証](/microsoft-365/compliance/offering-dod-disa-l2-l4-l5?view=o365-worldwide)に関する記事を参照してください。
+* DoD コンプライアンスの情報については、[DoD コンプライアンス認証](/microsoft-365/compliance/offering-dod-disa-l2-l4-l5)に関する記事を参照してください。

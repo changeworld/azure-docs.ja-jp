@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c457dacd947c7af8a6be94205ed135ce04a49a06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 194b0f2ff94197fe11c189e97dbc65c9d0367932
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85509508"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630585"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Azure File Sync に登録されたサーバーの管理
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
@@ -32,7 +32,7 @@ Azure ファイル同期を使用すると、オンプレミスのファイル �
     
     ![[IE セキュリティ強化の構成] が強調表示された サーバー マネージャーの UI](media/storage-sync-files-server-registration/server-manager-ie-config.png)
 
-* Azure PowerShell モジュールがサーバーにインストールされていること。 サーバーがフェールオーバー クラスターのメンバーである場合、そのクラスター内のすべてのノードには Az モジュールが必要になります。 Az モジュールをインストールする方法の詳細については、[Azure PowerShell のインストールと構成](https://docs.microsoft.com/powershell/azure/install-Az-ps)に関するページを参照してください。
+* Azure PowerShell モジュールがサーバーにインストールされていること。 サーバーがフェールオーバー クラスターのメンバーである場合、そのクラスター内のすべてのノードには Az モジュールが必要になります。 Az モジュールをインストールする方法の詳細については、[Azure PowerShell のインストールと構成](/powershell/azure/install-Az-ps)に関するページを参照してください。
 
     > [!Note]  
     > サーバーの登録と登録解除には、最新バージョンの Az PowerShell モジュールを使用することをお勧めします。 Az パッケージがこのサーバーにインストールされていたことがあり、そのサーバー上の PowerShell バージョンが 5.* 以降の場合、`Update-Module` コマンドレットを使用してそのパッケージを更新することができます。 
@@ -180,7 +180,7 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 ```
 
 ### <a name="use-windows-server-storage-qos"></a>Windows Server の記憶域 QoS を使用する 
-Windows Server 仮想化ホストで実行されている仮想マシンで Azure File Sync がホストされている場合、記憶域 QoS (記憶域のサービス品質) を使用して記憶域 IO の使用を調整できます。 記憶域 QoS ポリシーは、最大値 (制限、上記の StorageSyncNetwork の制限を強制する方法と同様) または最小値 (予約) として設定できます。 最大値ではなく最小値を設定すると、使用可能なストレージ帯域幅を他のワークロードが使用していない場合に、Azure File Sync がバーストして使用できるようになります。 詳細については、[記憶域のサービス品質](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview)に関する記事をご覧ください。
+Windows Server 仮想化ホストで実行されている仮想マシンで Azure File Sync がホストされている場合、記憶域 QoS (記憶域のサービス品質) を使用して記憶域 IO の使用を調整できます。 記憶域 QoS ポリシーは、最大値 (制限、上記の StorageSyncNetwork の制限を強制する方法と同様) または最小値 (予約) として設定できます。 最大値ではなく最小値を設定すると、使用可能なストレージ帯域幅を他のワークロードが使用していない場合に、Azure File Sync がバーストして使用できるようになります。 詳細については、[記憶域のサービス品質](/windows-server/storage/storage-qos/storage-qos-overview)に関する記事をご覧ください。
 
 ## <a name="see-also"></a>関連項目
 - [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)

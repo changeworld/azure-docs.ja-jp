@@ -10,27 +10,27 @@ editor: ''
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.subservice: users-groups-roles
-ms.date: 04/27/2020
+ms.subservice: enterprise-users
+ms.date: 11/15/2020
 ms.author: kakern
 ms.reviewer: kakern
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f7b74fe368e10a0cd6ee63196d4330c456d56ea
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: db07f18b97936389d9b2360f7d4476c67d9f284a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373720"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646901"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>ライセンスのための製品名とサービス プラン 識別子
 
-[Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) または [Microsoft 365 管理センター](https://admin.microsoft.com)でライセンスを管理する場合、 *Office 365 E3* のような製品名が表示されます。 PowerShell v1.0 コマンドレットを使用すると、同じ製品が、具体的ですがわかりにくい名前 ( *ENTERPRISEPACK* ) で識別されます。 PowerShell v2.0 コマンドレットまたは Microsoft Graph を使用すると、同じ製品が GUID 値 ( *6fd2c87f-b296-42f0-b197-1e91e994b900* ) で識別されます。 次の表は、特に一般的に使用される Microsoft オンライン サービス製品と、それぞれの ID 値を示しています。 これらの表は参照用です。この記事の最終更新時点でのみ正確です。 Microsoft では、新しく追加されたサービスを定期的に更新する予定はありません。
+[Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) または [Microsoft 365 管理センター](https://admin.microsoft.com)でライセンスを管理する場合、*Office 365 E3* のような製品名が表示されます。 PowerShell v1.0 コマンドレットを使用すると、同じ製品が、具体的ですがわかりにくい名前 (*ENTERPRISEPACK*) で識別されます。 PowerShell v2.0 コマンドレットまたは Microsoft Graph を使用すると、同じ製品が GUID 値 (*6fd2c87f-b296-42f0-b197-1e91e994b900*) で識別されます。 次の表は、特に一般的に使用される Microsoft オンライン サービス製品と、それぞれの ID 値を示しています。 これらの表は参照用です。この記事の最終更新時点でのみ正確です。 Microsoft では、新しく追加されたサービスを定期的に更新する予定はありません。
 
-- **製品名** :管理ポータルで使用されます。
-- **文字列 ID** :ライセンスでの操作を実行するときに PowerShell v1.0 コマンドレットによって使用されます。
-- **GUID** :Microsoft Graph API によって使用される GUID
-- **含まれるサービス プラン** :文字列 ID および GUID に対応する製品のサービス プランの一覧です
+- **製品名**:管理ポータルで使用されます。
+- **文字列 ID**:ライセンスでの操作を実行するときに PowerShell v1.0 コマンドレットによって使用されます。
+- **GUID**:Microsoft Graph API によって使用される GUID
+- **含まれるサービス プラン**:文字列 ID および GUID に対応する製品のサービス プランの一覧です
 - **含まれるサービス プラン (フレンドリ名)** : 文字列 ID および GUID に対応する製品のサービス プラン (フレンドリ名) の一覧です。
 
 >[!NOTE]
@@ -150,16 +150,16 @@ ms.locfileid: "92373720"
 -   SharePoint Online (プラン 2) と SharePoint Online (プラン 1) の競合
 -   Exchange Online (プラン 2) と Exchange Online (プラン 1) の競合
 
-グループ ベースのライセンスを使用すると、[このエラー状態](licensing-groups-resolve-problems.md#conflicting-service-plans)が発生します。 PowerShell を使用すると、 *MutuallyExclusiveViolation* エラーが発生します。
+グループ ベースのライセンスを使用すると、[このエラー状態](licensing-groups-resolve-problems.md#conflicting-service-plans)が発生します。 PowerShell を使用すると、*MutuallyExclusiveViolation* エラーが発生します。
 
 このセクションでは、特に一般的な、相互に排他的なサービス プランをサービスの種類ごとに一覧表示しています。 この情報を使用してライセンスのデプロイを計画し、割り当てエラーを回避することができます。 これらの表は参照用です。この記事の最終更新時点でのみ正確です。 Microsoft では、新しく追加されたサービスを定期的に更新する予定はありません。
 
-### <a name="service-azure-active-directory"></a>サービス: *Azure Active Directory*
+### <a name="service-azure-active-directory"></a>サービス:*Azure Active Directory*
 
 >[!NOTE]
 >Azure Active Directory に関連するすべてのサービス プランを、同じユーザーに同時に割り当てることができるようになりました。 これにより、Azure AD Basic から Azure AD Premium P1 へのユーザーの移動など、特定のライセンス管理のシナリオが簡略化します。
 
-### <a name="service-dynamics-crm"></a>サービス: *Dynamics CRM*
+### <a name="service-dynamics-crm"></a>サービス:*Dynamics CRM*
 
 以下のサービス プランは、同時に割り当てることができません。
 
@@ -175,7 +175,7 @@ ms.locfileid: "92373720"
 | DYN365_ENTERPRISE_TEAM_MEMBERS    | 6a54b05e-4fab-40e7-9828-428db3b336fa |
 | EMPLOYEE_SELF_SERVICE | ba5f0cfa-d54a-4ea0-8cf4-a7e1dc4423d8 |
 
-### <a name="service-exchange-online"></a>サービス: *Exchange Online*
+### <a name="service-exchange-online"></a>サービス:*Exchange Online*
 
 以下のサービス プランは、同時に割り当てることができません。
 
@@ -190,7 +190,7 @@ ms.locfileid: "92373720"
 | EXCHANGE_S_STANDARD   | 9aaf7827-d63c-4b61-89c3-182f06f82e5c |
 | EXCHANGE_S_STANDARD_MIDMARKET | fc52cc4b-ed7d-472d-bbe7-b081c23ecc56 |
 
-### <a name="service-microsoft-365"></a>サービス: *Microsoft 365*
+### <a name="service-microsoft-365"></a>サービス:*Microsoft 365*
 
 以下のサービス プランは、同時に割り当てることができません。
 
@@ -199,7 +199,7 @@ ms.locfileid: "92373720"
 | RMS_S_ENTERPRISE  | bea4c11e-220a-4e6d-8eb8-8ea15d019f90 |
 | RMS_S_ENTERPRISE_GOV  | 6a76346d-5d6e-4051-9fe3-ed3f312b5597 |
 
-### <a name="service-intune"></a>サービス: *Intune*
+### <a name="service-intune"></a>サービス:*Intune*
 
 以下のサービス プランは、同時に割り当てることができません。
 
@@ -209,7 +209,7 @@ ms.locfileid: "92373720"
 | INTUNE_A_VL   | 3e170737-c728-4eae-bbb9-3f3360f7184c |
 | INTUNE_B  | 2dc63b8a-df3d-448f-b683-8655877c9360 |
 
-### <a name="service-sharepoint-online"></a>サービス: *SharePoint Online*
+### <a name="service-sharepoint-online"></a>サービス:*SharePoint Online*
 
 以下のサービス プランは、同時に割り当てることができません。
 
@@ -226,7 +226,7 @@ ms.locfileid: "92373720"
 | SHAREPOINTSTANDARD_EDU    | 0a4983bb-d3e5-4a09-95d8-b2d0127b3df5 |
 | SHAREPOINTSTANDARD_YAMMERSHADOW | 4c9efd0c-8de7-4c71-8295-9f5fdb0dd048 |
 
-### <a name="service-skype-for-business"></a>サービス: *Skype for Business*
+### <a name="service-skype-for-business"></a>サービス:*Skype for Business*
 
 以下のサービス プランは、同時に割り当てることができません。
 
@@ -245,7 +245,7 @@ ms.locfileid: "92373720"
 | MCOPSTN2  | 5a10155d-f5c1-411a-a8ec-e99aae125390 |
 | MCOPSTN5  | 54a152dc-90de-4996-93d2-bc47e670fc06 |
 
-### <a name="service-yammer"></a>サービス: *Yammer*
+### <a name="service-yammer"></a>サービス:*Yammer*
 
 以下のサービス プランは、同時に割り当てることができません。
 

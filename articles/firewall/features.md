@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: victorh
-ms.openlocfilehash: 7429be4430b2b520fb2a66b6b2c0dd138af8e501
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c71d9325ff7c1c5d2e7eff03a587a28335efd72
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850593"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652146"
 ---
 # <a name="azure-firewall-features"></a>Azure Firewall の機能
 
@@ -84,7 +84,7 @@ Azure Firewall では、必要に応じてスケールアップしてネット�
 
 仮想ネットワーク トラフィックの送信 IP アドレスはすべて Azure Firewall パブリック IP に変換されます (送信元ネットワーク アドレス変換)。 仮想ネットワークからインターネット上のリモートの送信先に向かうトラフィックを特定して許可できます。 宛先 IP が [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) のプライベート IP 範囲である場合、Azure Firewall は SNAT を行いません。 
 
-組織でプライベート ネットワークに対してパブリック IP アドレス範囲を使用している場合、Azure Firewall は、SNAT を使用して、トラフィックのアドレスを AzureFirewallSubnet のいずれかのファイアウォール プライベート IP アドレスに変換します。 パブリック IP アドレス範囲の SNAT が**行われない**ように、Azure Firewall を構成することができます。 詳細については、「[Azure Firewall の SNAT プライベート IP アドレス範囲](snat-private-range.md)」を参照してください。
+組織でプライベート ネットワークに対してパブリック IP アドレス範囲を使用している場合、Azure Firewall は、SNAT を使用して、トラフィックのアドレスを AzureFirewallSubnet のいずれかのファイアウォール プライベート IP アドレスに変換します。 パブリック IP アドレス範囲の SNAT が **行われない** ように、Azure Firewall を構成することができます。 詳細については、「[Azure Firewall の SNAT プライベート IP アドレス範囲](snat-private-range.md)」を参照してください。
 
 ## <a name="inbound-dnat-support"></a>受信 DNAT のサポート
 
@@ -103,7 +103,7 @@ Azure Firewall では、必要に応じてスケールアップしてネット�
 
 すべてのイベントは Azure Monitor と統合されます。そのため、ログをストレージ アカウントにアーカイブしたり、イベントをイベント ハブにストリーム配信したり、それらを Azure Monitor ログに送信したりできます。 Azure Monitor ログのサンプルについては、「[Azure Firewall の Azure Monitor ログ](log-analytics-samples.md)」をご覧ください。
 
-詳細については、[「Azure Firewall のログとメトリックを監視する](tutorial-diagnostics.md)」を参照してください。 
+詳細については、[「Azure Firewall のログとメトリックを監視する](./firewall-diagnostics.md)」を参照してください。 
 
 Azure Firewall ブックにより、Azure Firewall のデータ分析のための柔軟なキャンバスが提供されます。 これを使用して、Azure portal 内で高度な視覚的レポートを作成できます。 詳細については、「[Azure Firewall ブックを使用してログを監視する](firewall-workbook.md)」をご覧ください。
 

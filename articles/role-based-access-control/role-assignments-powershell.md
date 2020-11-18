@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9b0df4337a5e5faff3427222fb66caf8e02184a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3fc54829be301c063440bd3508472287b6db265
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86146661"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648327"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Azure PowerShell を使用して Azure ロールの割り当てを追加または削除する
 
@@ -32,7 +32,7 @@ ms.locfileid: "86146661"
 ロールの割り当てを追加または削除するには、以下が必要です。
 
 - `Microsoft.Authorization/roleAssignments/write` および `Microsoft.Authorization/roleAssignments/delete` のアクセス許可 ([ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)や[所有者](built-in-roles.md#owner)など)
-- [Azure Cloud Shell の PowerShell](/azure/cloud-shell/overview) または [Azure PowerShell](/powershell/azure/install-az-ps)
+- [Azure Cloud Shell の PowerShell](../cloud-shell/overview.md) または [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="get-object-ids"></a>オブジェクト ID を取得する
 
@@ -112,7 +112,7 @@ CanDelegate        : False
 New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -Scope <resource_group_name/resource/management groups>
 ```
 
-次の例では、*pharma-sales* リソース グループで、*alain\@example.com* ユーザーに[仮想マシンの共同作成者](built-in-roles.md#virtual-machine-contributor)ロールを付与します。 一意のロール ID を取得するには、[Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) を使用するか、「[Azure 組み込みロール](built-in-roles.md)」を参照してください。
+次の例では、*pharma-sales* リソース グループで、*alain\@example.com* ユーザーに [仮想マシンの共同作成者](built-in-roles.md#virtual-machine-contributor)ロールを付与します。 一意のロール ID を取得するには、[Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) を使用するか、「[Azure 組み込みロール](built-in-roles.md)」を参照してください。
 
 ```Example
 PS C:\> New-AzRoleAssignment -ObjectId 44444444-4444-4444-4444-444444444444 -RoleDefinitionId 9980e02c-c2be-4d73-94e8-173b1dc7cf3c -Scope /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales

@@ -7,19 +7,19 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 04/29/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86b3b44e480ccdc823853b5c790cad02a0821795
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 046a19d41364f7e4db3edcb011c8c65519924b3c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373660"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650327"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD でのグループベース ライセンスの PowerShell と Graph の例
 
@@ -71,7 +71,7 @@ location: https://graph.microsoft.com/v2/d056d009-17b3-4106-8173-cd3978ada898/di
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>グループに割り当てられた製品ライセンスの表示
 
-[Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) コマンドレットでは、グループ オブジェクトを取得し、 *ライセンス* プロパティを確認できます (グループに現在割り当てられているすべての製品ライセンスが一覧表示されます)。
+[Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) コマンドレットでは、グループ オブジェクトを取得し、*ライセンス* プロパティを確認できます (グループに現在割り当てられているすべての製品ライセンスが一覧表示されます)。
 
 ```powershell
 (Get-MsolGroup -ObjectId 99c4216a-56de-42c4-a4ac-e411cd8c7c41).Licenses
@@ -402,7 +402,7 @@ function UserHasLicenseAssignedFromGroup
 }
 ```
 
-このスクリプトは、SKU ID を入力値として利用し、組織の各ユーザーに関数を実行します。この例では、 *Enterprise Mobility + Security* のライセンスに注目します。組織でこれは *contoso:EMS* という ID で表されます。
+このスクリプトは、SKU ID を入力値として利用し、組織の各ユーザーに関数を実行します。この例では、*Enterprise Mobility + Security* のライセンスに注目します。組織でこれは *contoso:EMS* という ID で表されます。
 
 ```powershell
 #the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your organization

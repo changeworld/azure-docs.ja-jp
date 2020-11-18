@@ -1,7 +1,7 @@
 ---
 title: Azure Machine Learning パイプラインのスケジュールを設定する
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning SDK for Python を使用して機械学習パイプラインのスケジュールを設定します。 スケジュールされたパイプラインを使用すると、データ処理、トレーニング、監視などの時間のかかる日常的なタスクを自動化できます。
+description: スケジュールされたパイプラインを使用すると、データ処理、トレーニング、監視などの時間のかかる日常的なタスクを自動化できます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/12/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 97d0f822e63bb6eb32b1cd2f211621af8ad1c4b8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2c931aa6cd170c72654eb9ced6813d26e21ce5d0
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313996"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630313"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Azure Machine Learning SDK for Python を使用して機械学習パイプラインのスケジュールを設定する
 
@@ -81,7 +81,7 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 ### <a name="create-a-change-based-schedule"></a>変更ベースのスケジュールを作成する
 
-ファイルの変更によってトリガーされるパイプラインは、時間ベースのスケジュールよりも効率的な場合があります。 たとえば、ファイルが変更されたとき、または新しいファイルがデータ ディレクトリに追加されたときに、前処理手順を実行することもできます。 データストアまたはデータストア内の特定のディレクトリ内の変更に対する変更を監視できます。 特定のディレクトリを監視する場合、そのディレクトリのサブディレクトリ内の変更は、実行をトリガー _しません_ 。
+ファイルの変更によってトリガーされるパイプラインは、時間ベースのスケジュールよりも効率的な場合があります。 たとえば、ファイルが変更されたとき、または新しいファイルがデータ ディレクトリに追加されたときに、前処理手順を実行することもできます。 データストアまたはデータストア内の特定のディレクトリ内の変更に対する変更を監視できます。 特定のディレクトリを監視する場合、そのディレクトリのサブディレクトリ内の変更は、実行をトリガー _しません_。
 
 ファイルに対応する `Schedule` を作成するには、[Schedule.create](/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-) の呼び出しに `datastore` パラメーターを設定する必要があります。 フォルダーを監視するには、`path_on_datastore` 引数を設定します。
 

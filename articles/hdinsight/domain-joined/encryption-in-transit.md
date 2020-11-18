@@ -7,19 +7,16 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: 6f043a1cb870d003e371d2f20d0e1f6614c9201e
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: ac210adbc29075f27739b08dcf83eeedbeea3ed5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628985"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630364"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>Azure HDInsight での転送中の IPSec 暗号化
 
 この記事では、Azure HDInsight クラスター ノード間の通信に対する転送中の暗号化の実装について説明します。
-
-> [!Note]
-> 現在、転送中の暗号化が有効なリージョンは、米国東部、米国中南部、米国西部 2 です。
 
 ## <a name="background"></a>バックグラウンド
 

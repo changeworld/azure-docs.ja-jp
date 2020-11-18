@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 9/10/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d64f7423d537958b6d3c388cb12f23bd2e30e36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a936552bd7d3b97e2c027f7b0d23abd7c21b6e2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90087090"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652197"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-azure-active-directory"></a>安全なハイブリッド アクセス:Azure Active Directory を使用してレガシ アプリをセキュリティで保護する
 
@@ -28,44 +28,44 @@ ms.locfileid: "90087090"
 
 - [仮想プライベートネットワーク (VPN) アプリケーションおよび Software-Defined Perimeter (SDP) アプリケーション](#sha-through-vpn-and-sdp-applications)
 
-Azure AD [条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)や Azure AD [Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection) などの Azure AD 機能を使用し、すべてのアプリケーションでお使いのセキュリティに対する姿勢間の差をなくし、強化することができます。
+Azure AD [条件付きアクセス](../conditional-access/overview.md)や Azure AD [Identity Protection](../identity-protection/overview-identity-protection.md) などの Azure AD 機能を使用し、すべてのアプリケーションでお使いのセキュリティに対する姿勢間の差をなくし、強化することができます。
 
 ## <a name="secure-hybrid-access-sha-through-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したセキュリティで保護されたハイブリッド アクセス (SHA)
   
-[アプリケーション プロキシ](https://aka.ms/whyappproxy)を使用すると、お使いのオンプレミスの Web アプリケーションに[セキュリティで保護されたリモート アクセス](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy)を提供できます。 ユーザーが VPN を使用する必要はありません。 ユーザーは [シングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal-setup-sso)の後、簡単に任意のデバイスからアプリケーションに接続できるようになります。 サービスとしてのリモート アクセスを提供するアプリケーション プロキシを使用すると、企業ネットワーク外のユーザーに[お使いのオンプレミスのアプリケーションを簡単に発行](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)できるようになります。 お使いのオンプレミス アプリケーションは変更せずに、自分のクラウド アクセス管理を拡張できます。 次の手順として、「[Azure AD アプリケーション プロキシのデプロイ計画](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-deployment-plan)」に進みます。
+[アプリケーション プロキシ](./what-is-application-proxy.md)を使用すると、お使いのオンプレミスの Web アプリケーションに[セキュリティで保護されたリモート アクセス](./application-proxy.md)を提供できます。 ユーザーが VPN を使用する必要はありません。 ユーザーは [シングル サインオン](./add-application-portal-setup-sso.md)の後、簡単に任意のデバイスからアプリケーションに接続できるようになります。 サービスとしてのリモート アクセスを提供するアプリケーション プロキシを使用すると、企業ネットワーク外のユーザーに[お使いのオンプレミスのアプリケーションを簡単に発行](./application-proxy-add-on-premises-application.md)できるようになります。 お使いのオンプレミス アプリケーションは変更せずに、自分のクラウド アクセス管理を拡張できます。 次の手順として、「[Azure AD アプリケーション プロキシのデプロイ計画](./application-proxy-deployment-plan.md)」に進みます。
 
 ## <a name="azure-ad-partner-integrations"></a>Azure AD のパートナーとの統合
 
 ### <a name="sha-through-networking-and-delivery-controllers"></a>ネットワークおよびデリバリー コントローラーを使用した SHA
 
-Microsoft では、[ゼロ トラスト フレームワーク](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)を使用するために、[Azure AD アプリケーション プロキシ](https://aka.ms/whyappproxy)以外に、サードパーティ プロバイダーと提携しています。 お使いの既存のネットワークとデリバリー コントローラーを使用し、これまでは Azure AD では保護できなかった自分のビジネス プロセスに非常に重要なレガシ アプリケーションを容易に保護できます。 これらのアプリケーションの保護を開始するのに必要なものはすべて、おそらく既に持っていることでしょう。
+Microsoft では、[ゼロ トラスト フレームワーク](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)を使用するために、[Azure AD アプリケーション プロキシ](./what-is-application-proxy.md)以外に、サードパーティ プロバイダーと提携しています。 お使いの既存のネットワークとデリバリー コントローラーを使用し、これまでは Azure AD では保護できなかった自分のビジネス プロセスに非常に重要なレガシ アプリケーションを容易に保護できます。 これらのアプリケーションの保護を開始するのに必要なものはすべて、おそらく既に持っていることでしょう。
 
 ![ネットワーク パートナーとアプリケーション プロキシを使用した、セキュリティで保護されたハイブリッド アクセスを示す図](./media/secure-hybrid-access/secure-hybrid-access.png)
 
 Azure AD と統合できる、構築済みのソリューションと詳細なガイダンスを提供しているベンダーは次のとおりです。
 
-- [Akamai Enterprise Application Access (EAA)](https://docs.microsoft.com/azure/active-directory/saas-apps/akamai-tutorial)
+- [Akamai Enterprise Application Access (EAA)](../saas-apps/akamai-tutorial.md)
 
-- [Citrix アプリケーション デリバリー コントローラー (ADC)](https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial)
+- [Citrix アプリケーション デリバリー コントローラー (ADC)](../saas-apps/citrix-netscaler-tutorial.md)
 
-- [F5 Big-IP APM](https://docs.microsoft.com/azure/active-directory/saas-apps/headerf5-tutorial)
+- [F5 Big-IP APM](../saas-apps/headerf5-tutorial.md)
 
-- [Kemp](https://docs.microsoft.com/azure/active-directory/saas-apps/kemp-tutorial)
+- [Kemp](../saas-apps/kemp-tutorial.md)
 
 ### <a name="sha-through-vpn-and-sdp-applications"></a>VPN アプリケーションおよび SDP アプリケーションを使用した SHA
 
-VPN および SDP ソリューションを使用すると、自分の組織のデータを保護しながら、任意の場所で任意のデバイスから自分のエンタープライズ ネットワークに、セキュリティで保護されたアクセスを提供できます。 Azure AD を ID プロバイダー (IDP) として使用することで、Azure AD [シングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)や[多要素認証](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)などの最新の認証および承認方法を使用し、お使いのオンプレミスのレガシ アプリケーションをセキュリティで保護することができます。  
+VPN および SDP ソリューションを使用すると、自分の組織のデータを保護しながら、任意の場所で任意のデバイスから自分のエンタープライズ ネットワークに、セキュリティで保護されたアクセスを提供できます。 Azure AD を ID プロバイダー (IDP) として使用することで、Azure AD [シングル サインオン](./what-is-single-sign-on.md)や[多要素認証](../authentication/concept-mfa-howitworks.md)などの最新の認証および承認方法を使用し、お使いのオンプレミスのレガシ アプリケーションをセキュリティで保護することができます。  
 
 ![VPN パートナーとアプリ プロキシを使用した、セキュリティで保護されたハイブリッド アクセスを示す図 ](./media/secure-hybrid-access/app-proxy-vpn.png)
 
 Azure AD と統合できる構築済みのソリューションと詳細なガイダンスを提供している VPN および SDP ベンダーは次のとおりです。
 
-• [Cisco AnyConnect](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-anyconnect)
+• [Cisco AnyConnect](../saas-apps/cisco-anyconnect.md)
 
-• [Fortinet](https://docs.microsoft.com/azure/active-directory/saas-apps/fortigate-ssl-vpn-tutorial)
+• [Fortinet](../saas-apps/fortigate-ssl-vpn-tutorial.md)
 
-• [F5 Big-IP APM](https://aka.ms/f5-hybridaccessguide)
+• [F5 Big-IP APM](../saas-apps/headerf5-tutorial.md)
 
-• [Palo Alto Networks Global Protect](https://docs.microsoft.com/azure/active-directory/saas-apps/paloaltoadmin-tutorial)
+• [Palo Alto Networks Global Protect](../saas-apps/paloaltoadmin-tutorial.md)
 
-• [Zscaler Private Access (ZPA)](https://aka.ms/zscaler-hybridaccessguide)
+• [Zscaler Private Access (ZPA)](../saas-apps/zscalerprivateaccess-tutorial.md)

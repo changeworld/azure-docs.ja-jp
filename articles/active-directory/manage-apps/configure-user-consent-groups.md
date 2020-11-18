@@ -12,16 +12,16 @@ ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: df50231b03f71008f967c4f09ce09c5b5890802f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d5c42675b182fbc34354c75778214463adfe491f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427650"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648142"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>グループ データにアクセスするアプリに対するグループ所有者の同意を構成する
 
-グループ所有者とチーム所有者は、アプリケーション (たとえば、サードパーティ ベンダーによって発行されたアプリケーション) が、グループに関連付けられている組織のデータにアクセスすることを承認できます。 たとえば、Microsoft Teams のチーム所有者は、アプリがチーム内のすべての Teams メッセージを読み取ること、またはグループのメンバーの基本プロファイルを一覧表示することを許可できます。 詳細については、「[Microsoft Teams でのリソース固有の同意](https://docs.microsoft.com/microsoftteams/resource-specific-consent)」を参照してください。
+グループ所有者とチーム所有者は、アプリケーション (たとえば、サードパーティ ベンダーによって発行されたアプリケーション) が、グループに関連付けられている組織のデータにアクセスすることを承認できます。 たとえば、Microsoft Teams のチーム所有者は、アプリがチーム内のすべての Teams メッセージを読み取ること、またはグループのメンバーの基本プロファイルを一覧表示することを許可できます。 詳細については、「[Microsoft Teams でのリソース固有の同意](/microsoftteams/resource-specific-consent)」を参照してください。
 
 ## <a name="manage-group-owner-consent-to-apps"></a>アプリに対するグループ所有者の同意を管理する
 
@@ -42,9 +42,9 @@ ms.locfileid: "92427650"
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Azure AD PowerShell プレビュー モジュールである [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) を使用して、グループ所有者が所有するグループに関連する組織のデータにアクセスするアプリケーションに対してグループ所有者が同意する機能を有効または無効にできます。
+Azure AD PowerShell プレビュー モジュールである [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) を使用して、グループ所有者が所有するグループに関連する組織のデータにアクセスするアプリケーションに対してグループ所有者が同意する機能を有効または無効にできます。
 
-1. [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) モジュールを使用していることを確認します。 この手順は、[AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) モジュールと [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) モジュールの両方がインストールされている場合に重要です。
+1. [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) モジュールを使用していることを確認します。 この手順は、[AzureAD](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0) モジュールと [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) モジュールの両方がインストールされている場合に重要です。
 
     ```powershell
     Remove-Module AzureAD
@@ -121,7 +121,7 @@ Azure AD PowerShell プレビュー モジュールである [AzureADPreview](ht
 * [管理者の同意ワークフローの構成](configure-admin-consent-workflow.md)
 * [アプリケーションへの同意を管理する方法と同意要求を評価する方法](manage-consent-requests.md)
 * [アプリケーションへのテナント全体の管理者の同意の付与](grant-admin-consent.md)
-* [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/active-directory-v2-scopes.md)
+* [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/v2-permissions-and-consent.md)
 
 ヘルプを表示したり、質問に対する回答を検索したりするには、以下を参照してください。
 * [StackOverflow での Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

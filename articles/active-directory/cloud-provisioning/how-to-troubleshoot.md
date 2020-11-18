@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 34796a435536a48100b7434ed5267802cd2d549f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94cf1f34db590abeb084c5e95367781e50c85efc
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226949"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650099"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>クラウド プロビジョニングのトラブルシューティング
 
@@ -47,11 +47,11 @@ ms.locfileid: "89226949"
 1. 左側の **[Azure Active Directory]**  >  **[Azure AD Connect]** を選択します。 中央の **[プロビジョニングの管理 (プレビュー)]** を選択します。
 1. **[Azure AD のプロビジョニング (プレビュー)]** 画面で **[すべてのエージェントの確認]** を選択します。
 
-   ![すべてのエージェントの確認](media/how-to-install/install7.png)</br>
+   ![すべてのエージェントの確認](media/how-to-install/install-7.png)</br>
  
 1. **[オンプレミスのプロビジョニング エージェント]** 画面に、インストールしたエージェントが表示されます。 該当するエージェントが存在すること、また *[正常]* としてマークされていることを確認します。
 
-   ![[オンプレミスのプロビジョニング エージェント] 画面](media/how-to-install/install8.png)</br>
+   ![[オンプレミスのプロビジョニング エージェント] 画面](media/how-to-install/install-8.png)</br>
 
 ### <a name="verify-the-port"></a>ポートを確認する
 
@@ -59,7 +59,7 @@ Azure がポート 443 でリッスンしていて、お使いのエージェン
 
 このテストでは、エージェントがポート 443 を介して Azure と通信できることを確認します。 ブラウザーを開き、エージェントがインストールされているサーバーから前の URL に移動します。
 
-![ポートの到達可能性の確認](media/how-to-install/verify2.png)
+![ポートの到達可能性の確認](media/how-to-install/verify-2.png)
 
 ### <a name="on-the-local-server"></a>ローカル サーバーの場合
 

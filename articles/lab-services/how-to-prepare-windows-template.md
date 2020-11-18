@@ -5,12 +5,12 @@ author: EMaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: cf1b9db8de2c0f2c852a41d1e30343c5cef1b20b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 216dc843b31eac355e1d818014f3d70b2ef83132
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396690"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647904"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Azure Lab Services での Windows テンプレート マシンの設定に関するガイド
 
@@ -47,7 +47,7 @@ Write-Host "Installing OneDrive..."
 
 ### <a name="onedrive-customizations"></a>OneDrive のカスタマイズ
 
-[OneDrive に対して実行できるカスタマイズ](https://docs.microsoft.com/onedrive/use-group-policy)は多数あります。 より一般的なカスタマイズについて、いくつか説明します。
+[OneDrive に対して実行できるカスタマイズ](/onedrive/use-group-policy)は多数あります。 より一般的なカスタマイズについて、いくつか説明します。
 
 #### <a name="silently-move-windows-known-folders-to-onedrive"></a>サイレント モードで Windows の既知のフォルダーを OneDrive に移動する
 
@@ -61,7 +61,7 @@ Active Directory を使用していないマシン上では、ユーザーは、
 
 仮想マシンが Active Directory に接続されている場合は、既知のフォルダーを OneDrive に移動することを学生に自動的に求めるように、テンプレート マシンを設定できます。  
 
-まず、組織 ID を取得する必要があります。  詳しい手順については、[「Microsoft 365 組織 ID を検索する」](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id)を参照してください。  次の PowerShell を使用して、組織 ID を取得することもできます。
+まず、組織 ID を取得する必要があります。  詳しい手順については、[「Microsoft 365 組織 ID を検索する」](/onedrive/find-your-office-365-tenant-id)を参照してください。  次の PowerShell を使用して、組織 ID を取得することもできます。
 
 ```powershell
 Install-Module MSOnline -Confirm
@@ -137,7 +137,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
 
 ### <a name="change-the-microsoft-365-update-channel"></a>Microsoft 365 の更新プログラム チャネルを変更する
 
-Office 構成ツールを使用すれば、Office で更新プログラムを受信する頻度を設定することができます。 ただし、インストール後に Office で更新プログラムを受信する頻度を変更する必要がある場合は、更新プログラム チャネルの URL を変更することができます。 更新プログラム チャネル URL アドレスは「[組織内のデバイスの Microsoft 365 アプリ更新チャネルを変更する](https://docs.microsoft.com/deployoffice/change-update-channels)」で見つけることができます。 以下の例は、月次更新チャネルを使用するように Microsoft 365 を設定する方法を示しています。
+Office 構成ツールを使用すれば、Office で更新プログラムを受信する頻度を設定することができます。 ただし、インストール後に Office で更新プログラムを受信する頻度を変更する必要がある場合は、更新プログラム チャネルの URL を変更することができます。 更新プログラム チャネル URL アドレスは「[組織内のデバイスの Microsoft 365 アプリ更新チャネルを変更する](/deployoffice/change-update-channels)」で見つけることができます。 以下の例は、月次更新チャネルを使用するように Microsoft 365 を設定する方法を示しています。
 
 ```powershell
 # Update to the Microsoft 365 Monthly Channel
@@ -154,7 +154,7 @@ Set-ItemProperty
 テンプレート VM を発行する前に、セキュリティ上の理由から、テンプレート マシンに最新の Microsoft 更新プログラムをインストールすることをお勧めします。  そうすれば、更新プログラムが予期しないときに実行された場合に、学生の作業の中断を防げる可能性もあります。
 
 1. [スタート] メニューから **[設定]** を起動します
-2. **[更新**とセキュリティ] をクリックします
+2. **[更新** とセキュリティ] をクリックします
 3. **[更新プログラムのチェック]** をクリックします
 4. 更新プログラムがダウンロードされ、インストールされます。
 
@@ -177,7 +177,7 @@ Set-ExecutionPolicy default -Force
 
 1. **Microsoft Store** アプリケーションを起動します。
 2. アプリケーションの上の隅にある、ユーザーの写真の横の省略記号 (...) をクリックします。
-3. ドロップダウン メニューから、 **[ダウンロード**と更新] を選択します。
+3. ドロップダウン メニューから、 **[ダウンロード** と更新] を選択します。
 4. **[更新プログラムの取得]** ボタンをクリックします。
 
 また、PowerShell を使用して、既にインストールされている Microsoft Store アプリケーションを更新することもできます。
@@ -188,7 +188,7 @@ Set-ExecutionPolicy default -Force
 
 ### <a name="stop-automatic-windows-updates"></a>Windows の自動更新を停止する
 
-Windows を最新バージョンに更新した後で、Windows 更新プログラムを停止することを検討できます。  自動更新によって、スケジュールされた授業時間が妨げられる可能性があります。  コースが長期に行われるものである場合は、学生に更新プログラムを手動で確認することを求めるか、スケジュールされた授業時間外の時刻に自動更新を設定することを検討してください。  Windows Update のカスタマイズ オプションの詳細については、「[その他の Windows Update 設定の管理](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings)」を参照してください。
+Windows を最新バージョンに更新した後で、Windows 更新プログラムを停止することを検討できます。  自動更新によって、スケジュールされた授業時間が妨げられる可能性があります。  コースが長期に行われるものである場合は、学生に更新プログラムを手動で確認することを求めるか、スケジュールされた授業時間外の時刻に自動更新を設定することを検討してください。  Windows Update のカスタマイズ オプションの詳細については、「[その他の Windows Update 設定の管理](/windows/deployment/update/waas-wu-settings)」を参照してください。
 
 Windows の自動更新は、次の PowerShell スクリプトを使用して停止される場合があります。
 

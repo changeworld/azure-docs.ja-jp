@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: 1267f040b13184f50c9d98fe0fb13fb24db0f4f7
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: fd3c8a08e5512d15be4dfb26ca3eff151d08386f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026838"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651364"
 ---
 # <a name="use-azure-sentinel-watchlists"></a>Azure Sentinel ウォッチリストを使用する
 
@@ -66,7 +66,7 @@ Azure Sentinel ウォッチリストを使用すると、Azure Sentinel 環境�
 
     :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-list.png" alt-text="クエリでのウォッチリストの使用" lightbox="./media/watchlists/sentinel-watchlist-queries-list.png":::
 
-1. ウォッチリストの項目がクエリのために自動的に抽出され、 **[結果]** タブに表示されます。次の例では、 **ServerName** および **IpAddress** フィールドの抽出結果を示しています。
+1. ウォッチリストの項目がクエリのために自動的に抽出され、 **[結果]** タブに表示されます。次の例では、**ServerName** および **IpAddress** フィールドの抽出結果を示しています。
 
     > [!NOTE]
     > クエリのタイムスタンプは、クエリ UI とスケジュールされたアラートの両方で無視されます。
@@ -89,6 +89,5 @@ Azure Sentinel ウォッチリストを使用すると、Azure Sentinel 環境�
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Azure Sentinel でウォッチリストを使用して、データを強化し、調査を向上させる方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
+- [Azure Sentinel を使用した脅威の検出](./tutorial-detect-threats-built-in.md)の概要。
 - [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
-

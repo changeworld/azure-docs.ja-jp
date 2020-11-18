@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 21b407002adce01155b37321c068fb10d2c003f6
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0196330df01f98e216c39bcc689eac2bde2f4cd9
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319795"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629344"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET を使用して Azure Files 用に開発する
 
@@ -41,7 +41,7 @@ Azure Files は、クライアント アプリケーションに対して、サ�
 
 API | 使用する場合 | メモ
 ----|-------------|------
-[System.IO](https://docs.microsoft.com/dotnet/api/system.io) | アプリケーションが次のような場合。 <ul><li>SMB を使用してファイルの読み取り/書き込みをする必要がある</li><li>ポート 445 経由で Azure Files アカウントにアクセスするデバイスで実行している</li><li>ファイル共有のどの管理設定も管理する必要がない</li></ul> | SMB 経由の Azure Files によるファイル I/O の実装は、通常、ネットワーク ファイル共有またはローカル ストレージ デバイスでの I/O と同じです。 ファイル I/O など、.NET のさまざまな機能の概要については、「[コンソール アプリケーション](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter)」のチュートリアルを参照してください。
+[System.IO](/dotnet/api/system.io) | アプリケーションが次のような場合。 <ul><li>SMB を使用してファイルの読み取り/書き込みをする必要がある</li><li>ポート 445 経由で Azure Files アカウントにアクセスするデバイスで実行している</li><li>ファイル共有のどの管理設定も管理する必要がない</li></ul> | SMB 経由の Azure Files によるファイル I/O の実装は、通常、ネットワーク ファイル共有またはローカル ストレージ デバイスでの I/O と同じです。 ファイル I/O など、.NET のさまざまな機能の概要については、「[コンソール アプリケーション](/dotnet/csharp/tutorials/console-teleprompter)」のチュートリアルを参照してください。
 [Azure.Storage.Files.Shares](/dotnet/api/azure.storage.files.shares) | アプリケーションが次のような場合。 <ul><li>ファイアウォールや ISP の制約のため、ポート 445 で SMB を使用して Azure Files にアクセスできない</li><li>ファイル共有のクォータを設定したり共有アクセス署名を作成したりする管理機能を必要としている</li></ul> | この記事では、SMB の代わりに REST を使用するファイル I/O のため、およびファイル共有の管理のために、`Azure.Storage.Files.Shares` を使用する方法について説明します。
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>コンソール アプリケーションの作成とアセンブリの取得
@@ -54,7 +54,7 @@ Visual Studio で、新しい Windows コンソール アプリケーション�
 1. **[新しいプロジェクトの作成]** で、C# の **[コンソール アプリ (.NET Framework)]** を選択してから、 **[次へ]** を選択します。
 1. **[新しいプロジェクトの構成]** で、アプリの名前を入力し、 **[作成]** を選択します。
 
-この記事のすべてのコード例は、 *Program.cs* ファイルの `Program` クラスに追加します。
+この記事のすべてのコード例は、*Program.cs* ファイルの `Program` クラスに追加します。
 
 ## <a name="use-nuget-to-install-the-required-packages"></a>NuGet を使用した必要なパッケージのインストール
 
@@ -70,7 +70,7 @@ Visual Studio で、新しい Windows コンソール アプリケーション�
 NuGet を使用してパッケージを取得できます。 次の手順に従います。
 
 1. **ソリューション エクスプローラー** でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
-1. **NuGet パッケージ マネージャー** で、 **[参照]** を選択します。 次に、 **Azure.Core** を検索して選択し、 **[インストール]** を選択します。
+1. **NuGet パッケージ マネージャー** で、 **[参照]** を選択します。 次に、**Azure.Core** を検索して選択し、 **[インストール]** を選択します。
 
    この手順により、パッケージとその依存関係がインストールされます。
 
@@ -90,7 +90,7 @@ NuGet を使用してパッケージを取得できます。 次の手順に従�
 NuGet を使用してパッケージを取得できます。 次の手順に従います。
 
 1. **ソリューション エクスプローラー** でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
-1. **NuGet パッケージ マネージャー** で、 **[参照]** を選択します。 次に、 **Microsoft.Azure.Storage.Blob** を検索して選択し、 **[インストール]** を選択します。
+1. **NuGet パッケージ マネージャー** で、 **[参照]** を選択します。 次に、**Microsoft.Azure.Storage.Blob** を検索して選択し、 **[インストール]** を選択します。
 
    この手順により、パッケージとその依存関係がインストールされます。
 1. それらのパッケージを検索してインストールします。
@@ -316,7 +316,7 @@ Shared Access Signature の作成方法と使用方法の詳細については�
 
 Azure Files クライアント ライブラリのバージョン 5.x 以降の場合、ファイルを別のファイルにコピーしたり、ファイルを BLOB にコピーしたり、BLOB をファイルにコピーしたりすることができます。
 
-また、AzCopy を使用してあるファイルを別のファイルにコピーしたり、BLOB をファイルにコピーしたり、その反対の操作をしたりすることもできます。 [AzCopy の作業開始](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)に関するページを参照してください。
+また、AzCopy を使用してあるファイルを別のファイルにコピーしたり、BLOB をファイルにコピーしたり、その反対の操作をしたりすることもできます。 [AzCopy の作業開始](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)に関するページを参照してください。
 
 > [!NOTE]
 > BLOB をファイルにコピーしたり、ファイルを BLOB にコピーしたりする場合は、同じストレージ アカウント内でコピーする場合でも、Shared Access Signature (SAS) を使用してソース オブジェクトへのアクセスを承認する必要があります。
@@ -559,7 +559,7 @@ Azure Storage Analytics により Azure Files のメトリクスがサポート�
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-まず、 *Program.cs* ファイルに、先ほど追加したディレクティブと共に、次の `using` ディレクティブを追加します。
+まず、*Program.cs* ファイルに、先ほど追加したディレクティブと共に、次の `using` ディレクティブを追加します。
 
 ```csharp
 using Microsoft.Azure.Storage.File.Protocol;
@@ -624,8 +624,8 @@ Azure Files の詳細については、次のリソースを参照してくだ�
 
 ### <a name="tooling-support-for-file-storage"></a>File Storage 用のツールのサポート
 
-- [AzCopy を使ってみる](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
-- [Windows での Azure Files に関する問題のトラブルシューティング](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
+- [AzCopy を使ってみる](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)
+- [Windows での Azure Files に関する問題のトラブルシューティング](./storage-troubleshoot-windows-file-connection-problems.md)
 
 ### <a name="reference"></a>リファレンス
 

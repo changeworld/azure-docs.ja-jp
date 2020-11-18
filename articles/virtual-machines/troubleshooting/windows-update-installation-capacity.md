@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 596303223554589ef26938486ccfd2281ccd46f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f83a1820eb931fa075681da7a9661b304059cd2a
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86999107"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635707"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>OS の起動に関するトラブルシューティングを行う - Windows Update のインストール容量
 
@@ -62,8 +62,6 @@ ms.locfileid: "86999107"
 
 1. ディスクがいっぱいかどうかを確認します。 ディスクのサイズが 1 TB 未満の場合は、[PowerShell を使用](../windows/expand-os-disk.md)して最大 1 TB まで拡張します。
 1. ディスクが既に 1 TB の場合は、ディスク クリーンアップを実行する必要があります。
-   1. [破損した VM から](../windows/detach-disk.md)データ ディスクを切断します。
-   1. データ ディスクを、[機能している VM に](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)接続します。
    1. [ディスク クリーンアップ ツール](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) を使用して、空き領域を増やします。
 1. サイズ変更とクリーンアップが完了したら、次のコマンドを使用してドライブをデフラグします。
 
@@ -80,7 +78,7 @@ ms.locfileid: "86999107"
 1. 管理者として、管理者特権でのコマンド プロンプト セッションを開きます。
 1. 次のコマンドを実行します。
 
-   **シリアル コンソールを有効にする**:
+   **シリアル コンソールの有効化**:
    
    ```
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
@@ -107,7 +105,7 @@ ms.locfileid: "86999107"
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **ControlSet002 で有効にする**:
+   **ControlSet002 での有効化**:
 
    ```
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -115,7 +113,7 @@ ms.locfileid: "86999107"
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **破損した OS ディスクをアンロードする**:
+   **破損した OS ディスクのアンロード**:
 
    ```
    REG UNLOAD HKLM\BROKENSYSTEM
@@ -123,4 +121,4 @@ ms.locfileid: "86999107"
    
 ### <a name="rebuild-the-vm"></a>VM を再構築する
 
-[VM 修復コマンドの手順 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) を使用して、VM を再構築します。
+[VM 修復コマンドの手順 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) に従って VM を再構築します。

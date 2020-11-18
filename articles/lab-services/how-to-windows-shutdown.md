@@ -3,19 +3,19 @@ title: Azure Lab Services での Windows シャットダウン動作の制御に
 description: アイドル状態の Windows 仮想マシンを自動的にシャットダウンし、Windows シャットダウン コマンドを削除する手順について説明します。
 ms.topic: article
 ms.date: 09/29/2020
-ms.openlocfilehash: c6021131787dde4fe23ec4caad107bda2e20158a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 248bbeabaf704ba636e2f82c7a93d0ee90a09f22
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541562"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647700"
 ---
 # <a name="guide-to-controlling-windows-shutdown-behavior"></a>Windows シャットダウン動作の制御ガイド
 
 Azure Lab Services には、Windows 仮想マシン (VM) が予期せずに実行され続けることがないように、次のようないくつかのコスト制御が用意されています。
- - [スケジュールを設定する](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#set-a-schedule-for-the-lab)
- - [ユーザーのクォータを設定する](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users)
- - [切断時の自動シャットダウンを有効にする](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
+ - [スケジュールを設定する](./tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+ - [ユーザーのクォータを設定する](./how-to-configure-student-usage.md#set-quotas-for-users)
+ - [切断時の自動シャットダウンを有効にする](./how-to-enable-shutdown-disconnect.md)
 
 これらのコスト制御を使用しても、次の場合のように、Windows VM が予期せず実行され続けることがあり、その結果、学生のクォータから差し引かれることになります。
 
@@ -25,7 +25,7 @@ Azure Lab Services には、Windows 仮想マシン (VM) が予期せずに実�
 
 - **VM をオフにするために Windows シャットダウン コマンドが使用されている**
   
-    学生は、[Azure Lab Services の [停止] ボタン](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-use-classroom-lab#start-or-stop-the-vm)を使用する代わりに、Windows シャットダウン コマンドや、Windows で提供されている他のシャットダウン メカニズムを使用して、VM をオフにすることがあります。  この場合、Azure Lab Services の観点からは、VM は引き続き使用されています。
+    学生は、[Azure Lab Services の [停止] ボタン](./how-to-use-classroom-lab.md#start-or-stop-the-vm)を使用する代わりに、Windows シャットダウン コマンドや、Windows で提供されている他のシャットダウン メカニズムを使用して、VM をオフにすることがあります。  この場合、Azure Lab Services の観点からは、VM は引き続き使用されています。
     
 このガイドでは、このような状況が発生しないようにするために、アイドル状態の Windows VM を自動的にシャットダウンし、 **[スタート]** メニューから Windows シャットダウン コマンドを削除する手順について説明します。  
 
@@ -46,7 +46,7 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 
 1. Windows キーを押して **gpedit** と入力し、次に **[グループ ポリシーの編集] (コントロール パネル)** を選択します。
 
-1. **[コンピューターの構成] > [管理用テンプレート] > タスク バーと [スタート] メニュー**に進みます。  
+1. **[コンピューターの構成] > [管理用テンプレート] > タスク バーと [スタート] メニュー** に進みます。  
 
     ![ローカル グループ ポリシー エディター](./media/how-to-windows-shutdown/group-policy-shutdown.png)
 

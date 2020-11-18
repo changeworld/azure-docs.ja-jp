@@ -4,21 +4,21 @@ description: Azure 管理センターで、一括操作でグループメンバ�
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 04/27/2020
+manager: daveba
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5da3da152fa8d0f568ee0f4075dafb8da8c3bf8a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 83b905faa892cc338b5bdf4f998ad95f7b8a484e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373615"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650855"
 ---
 # <a name="bulk-remove-group-members-in-azure-active-directory"></a>Azure Active Directory でのグループ メンバーの一括削除
 
@@ -34,9 +34,9 @@ Azure Active Directory (Azure AD) ポータルでは、コンマ区切り値 (CS
 
 ダウンロードした CSV テンプレート内の行は次のとおりです。
 
-- **バージョン番号** : アップロード CSV の先頭行にバージョン番号を含める必要があります。
-- **列見出し** :列見出しの形式は、&lt;*項目名*&gt; [PropertyName] &lt;*Required または空白*&gt; です。 たとえば、「 `Member object ID or user principal name [memberObjectIdOrUpn] Required` 」のように入力します。 以前のバージョンのテンプレートの中には、内容が少し異なるものがあります。 グループ メンバーシップを変更する場合は、使用する識別子として、メンバー オブジェクト ID またはユーザー プリンシパル名のいずれかを選択できます。
-- **例の行** :このテンプレートには、各列に使用できる値のサンプル行が含まれています。 サンプル行を削除し、独自のエントリに置き換える必要があります。
+- **バージョン番号**: アップロード CSV の先頭行にバージョン番号を含める必要があります。
+- **列見出し**:列見出しの形式は、&lt;*項目名*&gt; [PropertyName] &lt;*Required または空白*&gt; です。 たとえば、「 `Member object ID or user principal name [memberObjectIdOrUpn] Required` 」のように入力します。 以前のバージョンのテンプレートの中には、内容が少し異なるものがあります。 グループ メンバーシップを変更する場合は、使用する識別子として、メンバー オブジェクト ID またはユーザー プリンシパル名のいずれかを選択できます。
+- **例の行**:このテンプレートには、各列に使用できる値のサンプル行が含まれています。 サンプル行を削除し、独自のエントリに置き換える必要があります。
 
 ### <a name="additional-guidance"></a>その他のガイダンス
 
@@ -57,10 +57,10 @@ Azure Active Directory (Azure AD) ポータルでは、コンマ区切り値 (CS
 
 1. CSV ファイルを開き、グループから削除する各グループ メンバーの行を追加します (必要な値は、メンバー オブジェクト ID またはユーザー プリンシパル名です)。 そのうえでファイルを保存します。
 
-    :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="CSV ファイルには、削除するグループ メンバーの名前と ID が含まれています&quot;:::
+    :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="CSV ファイルには、削除するグループ メンバーの名前と ID が含まれています":::
 
 1. **[グループ メンバーの一括削除]** ページの **[csv ファイルをアップロードします]** で、そのファイルを参照します。 ファイルを選択すると、CSV ファイルの検証が開始されます。
-1. ファイルの内容が検証されると、一括インポート ページに &quot; **ファイルが正常にアップロードされました** " と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。
+1. ファイルの内容が検証されると、一括インポート ページに "**ファイルが正常にアップロードされました**" と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。
 1. ファイルが検証に合格したら、 **[送信]** を選択して、グループ メンバーをグループから削除する Azure の一括操作を開始します。
 1. 削除操作が完了すると、一括操作が成功したという通知が表示されます。
 

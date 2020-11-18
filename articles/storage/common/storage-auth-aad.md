@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 7128a11ae9d5c9844353404309f8ad40cba53972
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9d03496634c5d30d30b23a76b5b47b1e810af288
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787586"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635400"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Azure Active Directory を使用して BLOB とキューへのアクセスを承認する
 
@@ -79,11 +79,11 @@ BLOB またはキューのデータにアクセスしようとすると、Azure 
 
 Azure AD アカウントを使用して Azure Portal から BLOB またはキュー データにアクセスするには、その BLOB やキュー データにアクセスするためのアクセス許可が必要です。また、Azure Portal でストレージ アカウント リソース内を移動するためのアクセス許可も必要です。 Azure Storage によって提供される組み込みロールでは BLOB やキュー リソースへのアクセス権が付与されますが、ストレージ アカウント リソースへのアクセス許可は付与されません。 このため、ポータルへのアクセスには、スコープがストレージ アカウント以上のレベルに設定された、[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロールなどの Azure Resource Manager ロールの割り当ても必要です。 **リーダー** 役割は最も制限の厳しいアクセス許可を付与しますが、ストレージ アカウントの管理リソースへのアクセス権を付与する別の Azure Resource Manager ロールも受け入れることができます。 Azure AD アカウントを使用した Azure portal 内のデータ アクセスのためにユーザーにアクセス許可を割り当てる方法の詳細については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](storage-auth-aad-rbac-portal.md)」を参照してください。
 
-Azure Portal では、コンテナーまたはキューに移動すると、どの承認スキームが使用されているかが示されます。 ポータルでのデータ アクセスの詳細については、「[Azure portal で BLOB データへのアクセスの承認方法を選択する](../blobs/authorize-blob-access-portal.md)」と「[Azure portal でキュー データへのアクセスの承認方法を選択する](../queues/authorize-queue-access-portal.md)」を参照してください。
+Azure Portal では、コンテナーまたはキューに移動すると、どの承認スキームが使用されているかが示されます。 ポータルでのデータ アクセスの詳細については、「[Azure portal で BLOB データへのアクセスの承認方法を選択する](../blobs/authorize-data-operations-portal.md)」と「[Azure portal でキュー データへのアクセスの承認方法を選択する](../queues/authorize-data-operations-portal.md)」を参照してください。
 
 ### <a name="data-access-from-powershell-or-azure-cli"></a>PowerShell または Azure CLI からのデータ アクセス
 
-Azure CLI と PowerShell では、Azure AD の資格情報を使ったサインインをサポートします。 サインインした後、セッションはその資格情報で実行されます。 詳細については、「[Azure AD ID を使用し、CLI または PowerShell で BLOB とキューのデータにアクセスする](../blobs/authorize-active-directory-powershell.md)」を参照してください。
+Azure CLI と PowerShell では、Azure AD の資格情報を使ったサインインをサポートします。 サインインした後、セッションはその資格情報で実行されます。 詳細については、「[Azure AD ID を使用し、CLI または PowerShell で BLOB とキューのデータにアクセスする](../blobs/authorize-data-operations-powershell.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

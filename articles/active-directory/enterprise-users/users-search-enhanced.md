@@ -8,19 +8,19 @@ manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 10/23/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0e2ce094b792d6f3f7e5f8fe1920d87a9cceea2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: d0136f7677aa722e578ac54c4f7d34338e47b0f7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517177"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646612"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Azure Active Directory でのユーザー管理の機能強化 (プレビュー)
 
@@ -73,7 +73,7 @@ Microsoft ではエクスペリエンスの向上のため、皆様からのフ�
 
 ### <a name="deleted-users-page"></a>[削除済みのユーザー] ページ
 
-**[削除済みのユーザー]** ページには、 **[すべてのユーザー** ] ページで使用できるすべての列と、次のいくつかの追加の列が含まれています。
+**[削除済みのユーザー]** ページには、 **[すべてのユーザー**] ページで使用できるすべての列と、次のいくつかの追加の列が含まれています。
 
 - 削除日:ユーザーが最初に組織から削除された日付 (このユーザーは復元できます)。
 - 完全削除日:組織からユーザーを完全に削除するプロセスが自動的に開始される日付。 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
-ms.openlocfilehash: badf10da8af0ed3829deb2498b51b5d5c8ce6a93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56b6638462acaf43b6353787495e5b7993acb413
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604111"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648278"
 ---
 # <a name="steps-to-add-a-role-assignment"></a>ロールの割り当てを追加する手順
 
@@ -26,7 +26,7 @@ ms.locfileid: "91604111"
 
 ![ロール割り当てのセキュリティ プリンシパル](./media/shared/rbac-security-principal.png)
 
-- ユーザー - Azure Active Directory 内にプロファイルを持つ個人です。 他のテナント内のユーザーにロールを割り当てることもできます。 他の組織のユーザーについては、「[Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md)」をご覧ください。
+- ユーザー - Azure Active Directory 内にプロファイルを持つ個人です。 他のテナント内のユーザーにロールを割り当てることもできます。 他の組織のユーザーについては、「[Azure Active Directory B2B](../active-directory/external-identities/what-is-b2b.md)」をご覧ください。
 - グループ - Azure Active Directory 内に作成されたユーザーのセットです。 グループにロールを割り当てると、そのグループ内のすべてのユーザーがそのロールを持つようになります。 
 - サービス プリンシパル - 特定の Azure リソースにアクセスするためにアプリケーションまたはサービスによって使用されるセキュリティ ID です。 アプリケーションに対する "*ユーザー ID*" (ユーザー名とパスワード、または証明書) と考えることができます。
 - マネージド ID - Azure によって自動的に管理される Azure Active Directory 内の ID。 通常、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は、Azure サービスに対する認証を受けるための資格情報を管理するクラウド アプリケーションを開発するときに使用します。

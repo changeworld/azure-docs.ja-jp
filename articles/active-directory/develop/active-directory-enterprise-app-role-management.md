@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 8ec87a8d78f73af48b662c5971dfe1803717f88a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 376086d0fc84e04645215b26ba896cf22f3f9c57
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704550"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647887"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>方法:エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する
 
@@ -62,16 +62,16 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
       ![[アクセス許可の変更] ボタン](./media/active-directory-enterprise-app-role-management/graph-explorer-new9.png)
 
+    >[!NOTE]
+    >クラウド アプリ管理者とアプリ管理者のロールは、このシナリオでは使用できません。ディレクトリの読み取りと書き込みのために全体管理者のアクセス許可が必要になるためです。
+
     c. 一覧から次のアクセス許可を選択し (まだ持っていない場合)、 **[アクセス許可の変更]** を選択します。
 
       ![アクセス許可の一覧と [アクセス許可の変更] ボタン](./media/active-directory-enterprise-app-role-management/graph-explorer-new10.png)
 
-    > [!Note]
-    > クラウド アプリ管理者とアプリ管理者のロールは、このシナリオでは使用できません。ディレクトリの読み取りと書き込みのために全体管理者のアクセス許可が必要になるためです。
-
     d. 同意を受け入れます。 システムにもう一度ログインされます。
 
-    e. バージョンを**ベータ版**に変更し、次のクエリを使用してテナントからサービス プリンシパルの一覧を取得します。
+    e. バージョンを **ベータ版** に変更し、次のクエリを使用してテナントからサービス プリンシパルの一覧を取得します。
 
      `https://graph.microsoft.com/beta/servicePrincipals`
 
@@ -79,9 +79,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
       ![サービス プリンシパルをフェッチするためのクエリを表示している Graph Explorer ダイアログ ボックス](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
-      > [!Note]
-      > Microsoft では、サービスの途絶を経験しているお客様のために、この API をアップグレードするプロセスを既に進めています。
-
+      
     f. フェッチしたサービス プリンシパルの一覧から、変更する必要があるものを取得します。 Ctrl + F を使用して、一覧に示されたすべてのサービス プリンシパルからアプリケーションを検索することもできます。 [プロパティ] ページからコピーした **オブジェクト ID** を検索し、次のクエリを使用してサービス プリンシパルを取得します。
 
       `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`
@@ -92,8 +90,8 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
       ![appRoles プロパティの詳細](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
 
-      > [!Note]
-      > カスタム アプリ (Azure Marketplace 以外のアプリ) を使用している場合は、2 つの既定のロール (user と msiam_access) が表示されます。 Marketplace アプリの場合、既定のロールは msiam_access のみとなります。 既定のロールに変更を加える必要はありません。
+      
+      カスタム アプリ (Azure Marketplace 以外のアプリ) を使用している場合は、2 つの既定のロール (user と msiam_access) が表示されます。 Marketplace アプリの場合、既定のロールは msiam_access のみとなります。 既定のロールに変更を加える必要はありません。
 
     h. アプリケーションの新しいロールを生成します。
 
@@ -128,8 +126,8 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
       }
       ```
 
-      > [!Note]
-      > パッチ操作では、msiam_access の後にのみ、新しいロールを追加できます。 また、組織が必要とする数のロールを追加できます。 Azure AD では、SAML 応答の要求値として、これらのロールの値を送信します。 新しいロールの ID の GUID 値を生成するには、[こちら](https://www.guidgenerator.com/)のような Web ツールを使用します。
+      
+      パッチ操作では、msiam_access の後にのみ、新しいロールを追加できます。 また、組織が必要とする数のロールを追加できます。 Azure AD では、SAML 応答の要求値として、これらのロールの値を送信します。 新しいロールの ID の GUID 値を生成するには、[こちら](https://www.guidgenerator.com/)のような Web ツールを使用します。
 
     i. Graph Explorer に戻り、メソッドを **GET** から **PATCH** に変更します。 前の例に示されているように **appRoles** プロパティを更新して、必要なロールを持つようにサービス プリンシパル オブジェクトを修正します。 **[クエリの実行]** をクリックして、パッチ操作を実行します。 成功メッセージにより、ロールの作成が確認されます。
 
@@ -143,8 +141,8 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
     ![[割り当ての編集] ウィンドウと [ロールの選択] ウィンドウ](./media/active-directory-enterprise-app-role-management/graph-explorer-new6.png)
 
-    > [!Note]
-    > 新しいロールを表示するには、Azure Portal でセッションを更新する必要があります。
+    
+    新しいロールを表示するには、Azure Portal でセッションを更新する必要があります。
 
 8. **[属性]** テーブルを更新して、ロール要求のカスタマイズされたマッピングを定義します。
 
@@ -154,8 +152,8 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
     | -------------- | ----------------|
     | ロール名  | user.assignedroles |
 
-    >[!NOTE]
-    >ロール要求の値が null の場合、Azure AD はトークンでこの値を送信しません。これは、設計上の既定値です。
+    
+    ロール要求の値が null の場合、Azure AD はトークンでこの値を送信しません。これは、設計上の既定値です。
 
     a. **[編集]** アイコンをクリックして、 **[ユーザー属性と要求]** ダイアログを開きます。
 
@@ -167,7 +165,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
       ![[属性の追加] ウィンドウ](./media/active-directory-enterprise-app-role-management/tutorial_attribute_05.png)
 
-    c. **[名前]** ボックスに、必要に応じて属性名を入力します。 この例では、要求名として**ロールの名前**を使用します。
+    c. **[名前]** ボックスに、必要に応じて属性名を入力します。 この例では、要求名として **ロールの名前** を使用します。
 
     d. **[名前空間]** ボックスは空白のままにします。
 
@@ -185,7 +183,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
 2. テナントのグローバル管理者または共同管理者の資格情報を使用して、Graph Explorer サイトにサインインします。
 
-3. バージョンを**ベータ版**に変更し、次のクエリを使用してテナントからサービス プリンシパルの一覧を取得します。
+3. バージョンを **ベータ版** に変更し、次のクエリを使用してテナントからサービス プリンシパルの一覧を取得します。
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
@@ -209,7 +207,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
     a. メソッドを **GET** から **PATCH** に変更します。
 
-    b. 既存のロールをコピーし、それらを**要求本文**に貼り付けます。
+    b. 既存のロールをコピーし、それらを **要求本文** に貼り付けます。
 
     c. 必要に応じて、ロールの説明、ロール値、またはロールの表示名を更新することで、ロールの値を更新します。
 
@@ -223,7 +221,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
 2. テナントのグローバル管理者または共同管理者の資格情報を使用して、Graph Explorer サイトにサインインします。
 
-3. バージョンを**ベータ版**に変更し、次のクエリを使用してテナントからサービス プリンシパルの一覧を取得します。
+3. バージョンを **ベータ版** に変更し、次のクエリを使用してテナントからサービス プリンシパルの一覧を取得します。
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
@@ -247,21 +245,21 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
     a. メソッドを **GET** から **PATCH** に変更します。
 
-    b. アプリケーションから既存のロールをコピーし、それらを**要求本文**に貼り付けます。
+    b. アプリケーションから既存のロールをコピーし、それらを **要求本文** に貼り付けます。
 
     c. 削除するロールの **IsEnabled** の値を **false** に設定します。
 
     d. **[クエリの実行]** を選択します。
 
-    > [!NOTE]
-    > msiam_access ユーザー ロールを持っていること、および ID が生成されたロールと一致していることを確認してください。
+    
+    msiam_access ユーザー ロールを持っていること、および ID が生成されたロールと一致していることを確認してください。
 
 7. ロールを無効にした後、そのロールのブロックを **appRoles** セクションから削除します。 メソッドを **PATCH** にしたまま、 **[クエリの実行]** を選択します。
 
 8. クエリを実行すると、ロールが削除されます。
 
-    > [!NOTE]
-    > ロールは、先に無効にしてから削除する必要があります。
+    
+    ロールは、先に無効にしてから削除する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: c300faf33f57518d26f82234bdff94a37235cd66
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2d65889a841655fe27994d3855f30f7a7e20e1ed
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275790"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647598"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)
 
@@ -36,7 +36,7 @@ ms.locfileid: "92275790"
 
 ## <a name="claims-mapping-policy-type"></a>要求のマッピング ポリシーの種類
 
-Azure AD では、 **ポリシー** オブジェクトは、組織の個々のアプリケーションまたはすべてのアプリケーションに適用される規則のセットを表します。 それぞれのポリシーの種類は、割り当てられているオブジェクトに適用されるプロパティのセットを含む一意の構造体を持ちます。
+Azure AD では、**ポリシー** オブジェクトは、組織の個々のアプリケーションまたはすべてのアプリケーションに適用される規則のセットを表します。 それぞれのポリシーの種類は、割り当てられているオブジェクトに適用されるプロパティのセットを含む一意の構造体を持ちます。
 
 要求のマッピング ポリシーは **ポリシー** オブジェクトの一種であり、特定のアプリケーションに対して発行されたトークンに出力される要求を変更します。
 
@@ -239,28 +239,30 @@ Azure AD では、 **ポリシー** オブジェクトは、組織の個々の�
 
 出力される要求内容とデータの送信元を制御するには、要求のマッピング ポリシーのプロパティを使用します。 ポリシーが設定されていない場合は、アプリケーションが受信するように選んだコア要求セット、基本要求セット、[省略可能な要求](active-directory-optional-claims.md)を含むトークンが発行されます。
 
+> [!NOTE]
+> コア要求セット内の要求については、このプロパティの設定に関係なく、すべてのトークンに提示されます。
+
 ### <a name="include-basic-claim-set"></a>Include 基本要求セット
 
 **文字列:** IncludeBasicClaimSet
 
-**データ型** : ブール値 (True または False)
+**データ型**: ブール値 (True または False)
 
 **概要:** このプロパティは、基本要求セットが、このポリシーの影響を受けるトークンに含まれるかどうかを判断します。
 
 - True に設定されている場合、基本要求セット内のすべての要求が、ポリシーの影響を受けるトークンに出力されます。
 - False に設定されている場合、基本要求セット内の要求は、同じポリシーの要求スキーマ プロパティに個別に追加されない限り、トークンに追加されません。
 
-> [!NOTE]
-> コア要求セット内の要求については、このプロパティの設定に関係なく、すべてのトークンに提示されます。
+
 
 ### <a name="claims-schema"></a>要求スキーマ
 
 **文字列:** ClaimsSchema
 
-**データ型** : 1 つ以上の要求スキーマ エントリを含む JSON BLOB
+**データ型**: 1 つ以上の要求スキーマ エントリを含む JSON BLOB
 
 **概要:** このプロパティは、基本要求セットやコア要求セットのほか、ポリシーの影響を受けるトークンにどの要求を提示するかを定義します。
-このプロパティで定義されている要求スキーマ エントリごとに、特定の情報が必要です。 データのソース ( **Value** 、 **Source/ID ペア** 、または **Source/ExtensionID ペア** ) と、どの要求としてデータを出力するか ( **要求の種類** ) を指定します。
+このプロパティで定義されている要求スキーマ エントリごとに、特定の情報が必要です。 データのソース (**Value**、**Source/ID ペア**、または **Source/ExtensionID ペア**) と、どの要求としてデータを出力するか (**要求の種類**) を指定します。
 
 ### <a name="claim-schema-entry-elements"></a>要求スキーマ エントリ要素
 
@@ -279,7 +281,7 @@ Azure AD では、 **ポリシー** オブジェクトは、組織の個々の�
 - "company":要求のデータは、リソース テナントの会社のオブジェクトのプロパティです。
 - "transformation":要求のデータは、要求からの変換です (この記事の後述の「要求の変換」セクションを参照してください)。
 
-ソースが transformation の場合、 **TransformationID** 要素も、この要求の定義に含める必要があります。
+ソースが transformation の場合、**TransformationID** 要素も、この要求の定義に含める必要があります。
 
 ID 要素により、ソースのどのプロパティが要求の値を提供するかが特定されます。 次の表は、ソースの各値に対して有効な ID の値を示しています。
 
@@ -334,7 +336,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 **TransformationID:** TransformationID 要素は、ソース要素が "transformation" に設定されている場合にのみ指定する必要があります。
 
-- この要素は、この要求のデータを生成する方法を定義する、 **ClaimsTransformation** プロパティの変換エントリの ID 要素と一致する必要があります。
+- この要素は、この要求のデータを生成する方法を定義する、**ClaimsTransformation** プロパティの変換エントリの ID 要素と一致する必要があります。
 
 **要求の種類:** **JwtClaimType** 要素と **SamlClaimType** 要素は、この要求スキーマ エントリが、どの要求を参照するかを定義します。
 
@@ -350,7 +352,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 **文字列:** ClaimsTransformation
 
-**データ型** : 1 つ以上の変換エントリを含む JSON BLOB
+**データ型**: 1 つ以上の変換エントリを含む JSON BLOB
 
 **概要:** このプロパティを使用して、共通の変換をソース データに適用し、要求スキーマで指定された要求の出力データを生成します。
 
@@ -358,7 +360,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 **TransformationMethod:** TransformationMethod 要素は、要求のデータを生成するときに実行される操作を特定します。
 
-選択した方法に基づいて、一連の入力と出力が想定されます。 **InputClaims** 要素、 **InputParameters** 要素、 **OutputClaims** 要素を使用して入出力を定義します。
+選択した方法に基づいて、一連の入力と出力が想定されます。 **InputClaims** 要素、**InputParameters** 要素、**OutputClaims** 要素を使用して入出力を定義します。
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>表 4:変換方法と想定される入出力
 
@@ -367,17 +369,17 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 |Join|string1, string2, separator|outputClaim|入力文字列の間に区切り記号を使用して、その文字列を結合します。 例: string1:"foo@bar.com" , string2:"sandbox" , separator:"." の結果は outputClaim:"foo@bar.com.sandbox" になります|
 |ExtractMailPrefix|電子メールまたは UPN|抽出された文字列|ExtensionAttributes 1-15 または、UPN やユーザーのメール アドレス値 (johndoe@contoso.com など) を格納するその他のあらゆるスキーマ拡張。 メール アドレスのローカル部分を抽出します。 例: mail:"foo@bar.com" の結果は outputClaim:"foo" になります。 \@ 記号がない場合、元の入力文字列がそのまま返されます。|
 
-**InputClaims:** InputClaims 要素を使用して、要求スキーマ エントリから変換にデータを渡します。 この要素には 2 つの属性があります。 **ClaimTypeReferenceId** と **TransformationClaimType** です。
+**InputClaims:** InputClaims 要素を使用して、要求スキーマ エントリから変換にデータを渡します。 この要素には 2 つの属性があります。**ClaimTypeReferenceId** と **TransformationClaimType** です。
 
 - **ClaimTypeReferenceId** は要求スキーマ エントリの ID 要素と結合され、該当する入力要求を検索します。
 - **TransformationClaimType** は、この入力に一意の名前を指定するときに使用されます。 この名前は、変換方法に対する想定される入力のいずれかと一致する必要があります。
 
-**InputParameters:** InputParameters 要素を使用して、定数値を変換に渡します。 この要素には 2 つの属性があります。 **Value** と **ID** です。
+**InputParameters:** InputParameters 要素を使用して、定数値を変換に渡します。 この要素には 2 つの属性があります。**Value** と **ID** です。
 
 - **Value** は、渡される実際の定数値です。
 - **ID** は、入力に一意の名前を指定するときに使用されます。 この名前は、変換方法に対する想定される入力のいずれかと一致する必要があります。
 
-**OutputClaims:** OutputClaims 要素を使用して、変換によって生成されたデータを保持し、そのデータを要求スキーマ エントリに関連付けます。 この要素には 2 つの属性があります。 **ClaimTypeReferenceId** と **TransformationClaimType** です。
+**OutputClaims:** OutputClaims 要素を使用して、変換によって生成されたデータを保持し、そのデータを要求スキーマ エントリに関連付けます。 この要素には 2 つの属性があります。**ClaimTypeReferenceId** と **TransformationClaimType** です。
 
 - **ClaimTypeReferenceId** は要求スキーマ エントリの ID と結合され、該当する出力要求を検索します。
 - **TransformationClaimType** は、出力に一意の名前を指定するときに使用されます。 この名前は、変換方法に対する想定される出力のいずれかと一致する必要があります。
@@ -439,8 +441,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 Azure AD では、特定のサービス プリンシパルに対するトークンに発行された要求をカスタマイズできる場合、多くのシナリオが考えられます。 このセクションでは、要求のマッピング ポリシーの種類を使用する方法を理解するうえで役に立つ、一般的なシナリオをいくつか取り上げて説明します。
 
-> [!NOTE]
-> 要求のマッピングポリシーを作成するときに、トークンのディレクトリ スキーマ拡張属性から要求を出力することもできます。 `ClaimsSchema` 要素の *ID* ではなく、拡張属性の *ExtensionID* を使用します。  拡張属性の詳細については、[ディレクトリ スキーマ拡張属性の使用](active-directory-schema-extensions.md)に関するページをご覧ください。
+要求のマッピングポリシーを作成するときに、トークンのディレクトリ スキーマ拡張属性から要求を出力することもできます。 `ClaimsSchema` 要素の *ID* ではなく、拡張属性の *ExtensionID* を使用します。  拡張属性の詳細については、[ディレクトリ スキーマ拡張属性の使用](active-directory-schema-extensions.md)に関するページをご覧ください。
 
 #### <a name="prerequisites"></a>前提条件
 

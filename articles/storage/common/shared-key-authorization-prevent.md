@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 7679c613c4804f7df315918ee5d6946c07eb8b4f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 49a89228afd3b46f38afafb8ff16bc63a40dd35b
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787739"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635213"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Azure ストレージ アカウントの共有キーによる承認を禁止する (プレビュー)
 
@@ -67,7 +67,7 @@ Azure ストレージ アカウントに対するセキュリティで保護さ�
 
 メトリックを構成すると、ストレージ アカウントに対する要求がグラフに表示されるようになります。 次の図では、共有キーを使用して承認されたか、SAS トークンを使用して行われた要求が示されています。 過去 30 日間の要求が、1 日ごとに集計されています。
 
-:::image type="content" source="media/shared-key-authorization-prevent/metric-shared-key-requests.png" alt-text="共有キーまたは SAS を使用して行われたトランザクション数を合計するようにメトリックを構成する方法を示すスクリーンショット":::
+:::image type="content" source="media/shared-key-authorization-prevent/metric-shared-key-requests.png" alt-text="共有キーを使用して承認された要求の集計を示すスクリーンショット":::
 
 ストレージ アカウントで共有キーを使用して承認された要求が一定数に達したら通知する警告ルールを構成することもできます。 詳細については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-metric.md)」を参照してください。
 
@@ -90,10 +90,10 @@ Azure Monitor で Azure Storage のデータをログに記録し、Azure Log An
 1. 要求をログに記録する Azure Storage サービスを選択します。 たとえば、Blob Storage に対する要求をログに記録するには、 **[Blob]** を選択します。
 1. **[診断設定の追加]** を選択します。
 1. 診断設定の名前を指定します。
-1. **[カテゴリの詳細]** の **[ログ]** セクションで、 **StorageRead** 、 **StorageWrite** 、 **StorageDelete** を選択して、選択したサービスに対するすべてのデータ要求をログに記録します。
+1. **[カテゴリの詳細]** の **[ログ]** セクションで、**StorageRead**、**StorageWrite**、**StorageDelete** を選択して、選択したサービスに対するすべてのデータ要求をログに記録します。
 1. **[宛先の詳細]** で、 **[Log Analytics への送信]** を選択します。 以下の図に示すように、ご利用のサブスクリプションと、先ほど作成した Log Analytics ワークスペースを選択します。
 
-    :::image type="content" source="media/shared-key-authorization-prevent/create-diagnostic-setting-logs.png" alt-text="共有キーまたは SAS を使用して行われたトランザクション数を合計するようにメトリックを構成する方法を示すスクリーンショット":::
+    :::image type="content" source="media/shared-key-authorization-prevent/create-diagnostic-setting-logs.png" alt-text="要求のログを記録するための診断設定の作成方法を示すスクリーンショット":::
 
 ストレージ アカウント内の Azure Storage リソースの種類ごとに、診断設定を作成できます。
 
@@ -133,7 +133,7 @@ Azure portal でストレージ アカウントに対する共有キーによる
 1. **[設定]** から **[構成]** 設定を探します。
 1. **[Allow shared key access]\(共有キーによるアクセスを許可する\)** を **[無効]** に設定します。
 
-    :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="共有キーまたは SAS を使用して行われたトランザクション数を合計するようにメトリックを構成する方法を示すスクリーンショット":::
+    :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="アカウントに対する共有キーによるアクセスを禁止する方法を示すスクリーンショット":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -200,8 +200,8 @@ resources
 | SAS の種類 | 承認の種類 | AllowSharedKeyAccess が false の場合の動作 |
 |-|-|-|
 | ユーザー委任 SAS(BLOB ストレージのみ) | Azure AD | 要求は許可されます。 Microsoft では、セキュリティ向上のため、可能な限りユーザー委任 SAS を使用することを推奨しています。 |
-| サービス SAS | 共有キー | Blob Storage の場合、要求は拒否されます。 Queue storage、Table Storage、Azure Files の場合、要求は許可されます。 詳細については、「 **プレビューについて** 」セクションの「 [AllowSharedKeyAccess が false のとき、キュー、テーブル、ファイルについては、SAS トークンを使用する要求は許可される](#requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false)」を参照してください。 |
-| アカウント SAS | 共有キー | Blob Storage の場合、要求は拒否されます。 Queue storage、Table Storage、Azure Files の場合、要求は許可されます。 詳細については、「 **プレビューについて** 」セクションの「 [AllowSharedKeyAccess が false のとき、キュー、テーブル、ファイルについては、SAS トークンを使用する要求は許可される](#requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false)」を参照してください。 |
+| サービス SAS | 共有キー | Blob Storage の場合、要求は拒否されます。 Queue storage、Table Storage、Azure Files の場合、要求は許可されます。 詳細については、「**プレビューについて**」セクションの「[AllowSharedKeyAccess が false のとき、キュー、テーブル、ファイルについては、SAS トークンを使用する要求は許可される](#requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false)」を参照してください。 |
+| アカウント SAS | 共有キー | Blob Storage の場合、要求は拒否されます。 Queue storage、Table Storage、Azure Files の場合、要求は許可されます。 詳細については、「**プレビューについて**」セクションの「[AllowSharedKeyAccess が false のとき、キュー、テーブル、ファイルについては、SAS トークンを使用する要求は許可される](#requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false)」を参照してください。 |
 
 Shared Access Signature の詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](storage-sas-overview.md)」を参照してください。
 
@@ -213,10 +213,10 @@ Shared Access Signature の詳細については、「[Shared Access Signatures 
 
 | Azure ツール | Azure Storage に対する Azure AD 承認 |
 |-|-|
-| Azure portal | サポートされています。 Azure portal からの Azure AD アカウントを使用した承認の詳細については、「[Azure portal で BLOB データへのアクセスの承認方法を選択する](../blobs/authorize-blob-access-portal.md)」を参照してください。 |
+| Azure portal | サポートされています。 Azure portal からの Azure AD アカウントを使用した承認の詳細については、「[Azure portal で BLOB データへのアクセスの承認方法を選択する](../blobs/authorize-data-operations-portal.md)」を参照してください。 |
 | AzCopy | Blob Storage の場合、サポートされています。 AzCopy の操作の承認については、AzCopy のドキュメントの「[認証資格情報の提供方法を選択する](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials)」を参照してください。 |
 | Azure ストレージ エクスプローラー | Blob Storage と Azure Data Lake Storage Gen2 の場合にのみ、サポートされています。 Queue storage に対する Azure AD のアクセスはサポートされていません。 正しい Azure AD テナントを選択してください。 詳細については、「[Storage Explorer の概要](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure)」を参照してください |
-| Azure PowerShell | サポートされています。 Azure AD で BLOB またはキューの操作の PowerShell コマンドを承認する方法の詳細については、「[Azure AD の資格情報を使用して PowerShell コマンドを実行して BLOB データにアクセスする](../blobs/authorize-active-directory-powershell.md)」または「[Azure AD 資格情報を使用して PowerShell コマンドを実行してキューのデータにアクセスする](../queues/authorize-active-directory-powershell.md)」を参照してください。 |
+| Azure PowerShell | サポートされています。 Azure AD で BLOB またはキューの操作の PowerShell コマンドを承認する方法の詳細については、「[Azure AD の資格情報を使用して PowerShell コマンドを実行して BLOB データにアクセスする](../blobs/authorize-data-operations-powershell.md)」または「[Azure AD 資格情報を使用して PowerShell コマンドを実行してキューのデータにアクセスする](../queues/authorize-data-operations-powershell.md)」を参照してください。 |
 | Azure CLI | サポートされています。 BLOB およびキューのデータにアクセスするために、Azure AD で Azure CLI コマンドを承認する方法については、[Azure AD 資格情報を使用して Azure CLI コマンドを実行して BLOB またはキューのデータにアクセスする方法](authorize-data-operations-cli.md)に関する記事を参照してください。 |
 | Azure IoT Hub | サポートされています。 詳細については、[IoT Hub による仮想ネットワークのサポート](../../iot-hub/virtual-network-support.md)に関する記事を参照してください。 |
 | Azure Cloud Shell | Azure Cloud Shell は、Azure portal の統合シェルです。 Azure Cloud Shell では、ストレージ アカウントの Azure ファイル共有で永続化するためのファイルがホストされています。 そのストレージ アカウントで共有キーによる承認が許可されていない場合、これらのファイルはアクセスできなくなります。 詳細については、「[Microsoft Azure Files ストレージの接続](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage)」を参照してください。 <br /><br /> Azure Cloud Shell でコマンドを実行して、共有キーによるアクセスが禁止されているストレージ アカウントを管理するには、最初に、Azure ロールベースのアクセス制御 (Azure RBAC) で、これらのアカウントに必要なアクセス許可が付与されていることを確認します。 詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。 |
@@ -236,10 +236,10 @@ Shared Access Signature の詳細については、「[Shared Access Signatures 
 
 Azure Monitor での Azure のメトリックとログでは、プレビュー段階のさまざまな種類の共有アクセス署名は区別されません。 Azure メトリックス エクスプローラーの **[SAS]** フィルター、および Azure Monitor の Azure Storage ログでの **[SAS]** フィールドのどちらでも、すべての種類の SAS で承認された要求が報告されます。 ただし、共有アクセス署名の種類が異なると、承認方法が異なり、共有キー アクセスが禁止されたときの動作が異なります。
 
-- サービス SAS トークンまたはアカウント SAS トークンは、共有キーを使用して承認されるので、 **AllowSharedKeyAccess** プロパティが **false** に設定されていると、Blob Storage への要求では許可されません。
-- ユーザー委任 SAS は、Azure AD を使用して承認されるので、 **AllowSharedKeyAccess** プロパティが **false** に設定されていても、Blob Storage への要求で許可されます。
+- サービス SAS トークンまたはアカウント SAS トークンは、共有キーを使用して承認されるので、**AllowSharedKeyAccess** プロパティが **false** に設定されていると、Blob Storage への要求では許可されません。
+- ユーザー委任 SAS は、Azure AD を使用して承認されるので、**AllowSharedKeyAccess** プロパティが **false** に設定されていても、Blob Storage への要求で許可されます。
 
-ストレージ アカウントへのトラフィックを評価するときは、「[クライアント アプリケーションによって使用されている承認の種類を検出する](#detect-the-type-of-authorization-used-by-client-applications)」で説明されているメトリックとログに、ユーザー委任 SAS を使用して行われた要求が含まれている可能性があることに注意してください。 **AllowSharedKeyAccess** プロパティが **false** に設定されているときの、SAS に対する Azure Storage の応答方法の詳細については、「 [共有キーを禁止したときの SAS トークンに対する影響を理解する](#understand-how-disallowing-shared-key-affects-sas-tokens)」を参照してください。
+ストレージ アカウントへのトラフィックを評価するときは、「[クライアント アプリケーションによって使用されている承認の種類を検出する](#detect-the-type-of-authorization-used-by-client-applications)」で説明されているメトリックとログに、ユーザー委任 SAS を使用して行われた要求が含まれている可能性があることに注意してください。 **AllowSharedKeyAccess** プロパティが **false** に設定されているときの、SAS に対する Azure Storage の応答方法の詳細については、「[共有キーを禁止したときの SAS トークンに対する影響を理解する](#understand-how-disallowing-shared-key-affects-sas-tokens)」を参照してください。
 
 ### <a name="requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false"></a>AllowSharedKeyAccess が false のとき、キュー、テーブル、ファイルについては、SAS トークンを使用する要求は許可される
 

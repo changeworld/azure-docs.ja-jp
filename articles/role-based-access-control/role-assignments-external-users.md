@@ -16,16 +16,16 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: a891830d876bfa99d29087278dd5b870ae7e2866
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 846e1a83f3cba5f87210ae4f825b5fac4f1569c6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368385"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648380"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Azure portal を使用して外部ゲスト ユーザーの Azure ロール割り当てを追加または削除する
 
-[Azure ロールベースのアクセス制御 (Azure RBAC)](overview.md) を使用すると、環境内の特定のリソースへのアクセスが必要なものの、インフラストラクチャ全体や課金に関連するスコープへのアクセスが必ずしも必要ではない外部のコラボレーター、ベンダー、フリーランサーと連携している大企業や中小企業向けの、優れたセキュリティ管理を実現できます。 [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) の機能を使用して外部ゲスト ユーザーと共同作業を行うことができます。また、Azure RBAC を使用して、自分の環境でゲスト ユーザーに必要なアクセス許可のみを付与することができます。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](overview.md) を使用すると、環境内の特定のリソースへのアクセスが必要なものの、インフラストラクチャ全体や課金に関連するスコープへのアクセスが必ずしも必要ではない外部のコラボレーター、ベンダー、フリーランサーと連携している大企業や中小企業向けの、優れたセキュリティ管理を実現できます。 [Azure Active Directory B2B](../active-directory/external-identities/what-is-b2b.md) の機能を使用して外部ゲスト ユーザーと共同作業を行うことができます。また、Azure RBAC を使用して、自分の環境でゲスト ユーザーに必要なアクセス許可のみを付与することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -49,13 +49,13 @@ ms.locfileid: "92368385"
 
 Azure Active Directory ページを使用してディレクトリにゲスト ユーザーを追加するには、次の手順を実行します。
 
-1. 組織の外部コラボレーション設定が、ゲストを招待できるように構成されていることを確認します。 詳細については、「[B2B 外部コラボレーションを有効にしてゲストを招待できるユーザーを管理する](../active-directory/b2b/delegate-invitations.md)」を参照してください。
+1. 組織の外部コラボレーション設定が、ゲストを招待できるように構成されていることを確認します。 詳細については、「[B2B 外部コラボレーションを有効にしてゲストを招待できるユーザーを管理する](../active-directory/external-identities/delegate-invitations.md)」を参照してください。
 
 1. Azure portal で、 **[Azure Active Directory]**  >  **[ユーザー]**  >  **[新しいゲスト ユーザー]** の順にクリックします。
 
     ![Azure portal の [新しいゲスト ユーザー] 機能](./media/role-assignments-external-users/invite-guest-user.png)
 
-1. 手順に従って新しいゲスト ユーザーを追加します。 詳細については、「[Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../active-directory/b2b/add-users-administrator.md#add-guest-users-to-the-directory)」を参照してください。
+1. 手順に従って新しいゲスト ユーザーを追加します。 詳細については、「[Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../active-directory/external-identities/add-users-administrator.md#add-guest-users-to-the-directory)」を参照してください。
 
 ゲスト ユーザーをディレクトリに追加すると、共有アプリへの直接リンクをゲスト ユーザーに送信するか、ゲスト ユーザーが招待メール内の引き換えの URL をクリックできます。
 
@@ -65,7 +65,7 @@ Azure Active Directory ページを使用してディレクトリにゲスト �
 
 ![ゲスト ユーザーの招待レビューのアクセス許可](./media/role-assignments-external-users/invite-review-permissions.png)
 
-招待プロセスの詳細については、「[Azure Active Directory B2B コラボレーションの招待の利用](../active-directory/b2b/redemption-experience.md)」を参照してください。
+招待プロセスの詳細については、「[Azure Active Directory B2B コラボレーションの招待の利用](../active-directory/external-identities/redemption-experience.md)」を参照してください。
 
 ## <a name="add-a-role-assignment-for-a-guest-user"></a>ゲスト ユーザーにロールの割り当てを追加する
 
@@ -145,7 +145,7 @@ Azure RBAC でアクセス権を付与するには、ロールを割り当てま
 
 1. ゲスト ユーザーに招待リンクを送信して招待プロセスを完了します。
 
-    招待プロセスの詳細については、「[Azure Active Directory B2B コラボレーションの招待の利用](../active-directory/b2b/redemption-experience.md)」を参照してください。
+    招待プロセスの詳細については、「[Azure Active Directory B2B コラボレーションの招待の利用](../active-directory/external-identities/redemption-experience.md)」を参照してください。
 
 ## <a name="remove-a-guest-user-from-your-directory"></a>ディレクトリからゲスト ユーザーを削除する
 
@@ -183,7 +183,7 @@ Azure RBAC でアクセス権を付与するには、ロールを割り当てま
 
 ![ゲスト ユーザーがディレクトリ内のユーザーを参照できません](./media/role-assignments-external-users/directory-no-users.png)
 
-ゲスト ユーザーがディレクトリで追加の特権を必要とする場合は、ゲスト ユーザーにディレクトリ ロールを割り当てることができます。 ゲスト ユーザーにディレクトリへのフル読み取りアクセス権を付与する場合は、Azure AD の[ディレクトリ閲覧者](../active-directory/roles/permissions-reference.md)ロールにゲスト ユーザーを追加できます。 詳細については、「[Azure Active Directory テナントでパートナー組織からユーザーにアクセス許可を付与する](../active-directory/b2b/add-guest-to-role.md)」を参照してください。
+ゲスト ユーザーがディレクトリで追加の特権を必要とする場合は、ゲスト ユーザーにディレクトリ ロールを割り当てることができます。 ゲスト ユーザーにディレクトリへのフル読み取りアクセス権を付与する場合は、Azure AD の[ディレクトリ閲覧者](../active-directory/roles/permissions-reference.md)ロールにゲスト ユーザーを追加できます。 詳細については、「[Azure Active Directory テナントでパートナー組織からユーザーにアクセス許可を付与する](../active-directory/external-identities/add-guest-to-role.md)」を参照してください。
 
 ![ディレクトリ閲覧者ロールの割り当て](./media/role-assignments-external-users/directory-roles.png)
 
@@ -193,17 +193,17 @@ Azure RBAC でアクセス権を付与するには、ロールを割り当てま
 
 ![ゲスト ユーザーがセキュリティ プリンシパルを参照してロールを割り当てられません](./media/role-assignments-external-users/directory-no-browse.png)
 
-ゲスト ユーザーは、ディレクトリ内のユーザーの正確なサインイン名を知っていれば、アクセス権を付与することができます。 ゲスト ユーザーにディレクトリへのフル読み取りアクセス権を付与する場合は、Azure AD の[ディレクトリ閲覧者](../active-directory/roles/permissions-reference.md)ロールにゲスト ユーザーを追加できます。 詳細については、「[Azure Active Directory テナントでパートナー組織からユーザーにアクセス許可を付与する](../active-directory/b2b/add-guest-to-role.md)」を参照してください。
+ゲスト ユーザーは、ディレクトリ内のユーザーの正確なサインイン名を知っていれば、アクセス権を付与することができます。 ゲスト ユーザーにディレクトリへのフル読み取りアクセス権を付与する場合は、Azure AD の[ディレクトリ閲覧者](../active-directory/roles/permissions-reference.md)ロールにゲスト ユーザーを追加できます。 詳細については、「[Azure Active Directory テナントでパートナー組織からユーザーにアクセス許可を付与する](../active-directory/external-identities/add-guest-to-role.md)」を参照してください。
 
 ### <a name="guest-user-cannot-register-applications-or-create-service-principals"></a>ゲスト ユーザーがアプリケーションを登録できません、またはサービス プリンシパルを作成できません
 
-ゲスト ユーザーは、ディレクトリ アクセス許可を制限されています。 ゲスト ユーザーがアプリケーションを登録できる、またはサービス プリンシパルを作成できる必要がある場合は、Azure AD の[アプリケーション開発者](../active-directory/roles/permissions-reference.md)ロールにゲスト ユーザーを追加します。 詳細については、「[Azure Active Directory テナントでパートナー組織からユーザーにアクセス許可を付与する](../active-directory/b2b/add-guest-to-role.md)」を参照してください。
+ゲスト ユーザーは、ディレクトリ アクセス許可を制限されています。 ゲスト ユーザーがアプリケーションを登録できる、またはサービス プリンシパルを作成できる必要がある場合は、Azure AD の[アプリケーション開発者](../active-directory/roles/permissions-reference.md)ロールにゲスト ユーザーを追加します。 詳細については、「[Azure Active Directory テナントでパートナー組織からユーザーにアクセス許可を付与する](../active-directory/external-identities/add-guest-to-role.md)」を参照してください。
 
 ![ゲスト ユーザーがアプリケーションを登録できません](./media/role-assignments-external-users/directory-access-denied.png)
 
 ### <a name="guest-user-does-not-see-the-new-directory"></a>ゲスト ユーザーに新しいディレクトリが表示されません
 
-ゲスト ユーザーにディレクトリへのアクセス権が付与されていても、 **[ディレクトリ + サブスクリプション]** ウィンドウで切り替えようとしたときに Azure portal の一覧に新しいディレクトリが表示されない場合は、ゲスト ユーザーが招待プロセスを完了していることを確認してください。 招待プロセスの詳細については、「[Azure Active Directory B2B コラボレーションの招待の利用](../active-directory/b2b/redemption-experience.md)」を参照してください。
+ゲスト ユーザーにディレクトリへのアクセス権が付与されていても、 **[ディレクトリ + サブスクリプション]** ウィンドウで切り替えようとしたときに Azure portal の一覧に新しいディレクトリが表示されない場合は、ゲスト ユーザーが招待プロセスを完了していることを確認してください。 招待プロセスの詳細については、「[Azure Active Directory B2B コラボレーションの招待の利用](../active-directory/external-identities/redemption-experience.md)」を参照してください。
 
 ### <a name="guest-user-does-not-see-resources"></a>ゲスト ユーザーにリソースが表示されません
 
@@ -213,7 +213,7 @@ Azure RBAC でアクセス権を付与するには、ロールを割り当てま
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../active-directory/b2b/add-users-administrator.md)
-- [Azure Active Directory B2B コラボレーション ユーザーのプロパティ](../active-directory/b2b/user-properties.md)
-- [B2B コラボレーションの招待メールの要素 - Azure Active Directory](../active-directory/b2b/invitation-email-elements.md)
+- [Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../active-directory/external-identities/add-users-administrator.md)
+- [Azure Active Directory B2B コラボレーション ユーザーのプロパティ](../active-directory/external-identities/user-properties.md)
+- [B2B コラボレーションの招待メールの要素 - Azure Active Directory](../active-directory/external-identities/invitation-email-elements.md)
 - [ゲスト ユーザーを共同管理者として追加する](classic-administrators.md#add-a-guest-user-as-a-co-administrator)

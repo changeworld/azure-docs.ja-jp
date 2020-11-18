@@ -10,18 +10,18 @@ editor: ''
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.subservice: users-groups-roles
-ms.date: 07/07/2020
+ms.subservice: enterprise-users
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50915aebc9cb76c7bb67235e40564ff32ce656b1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8ec9a215d25ce1177b015b392c4f36d7547be521
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373574"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647020"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Azure Active Directory でのユーザーまたはグループのライセンス割り当ての変更
 

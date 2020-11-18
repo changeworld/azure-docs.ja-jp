@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d27cd30d6543d967cca2648597854a06f8ea4eb7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d70676e117a71fbd194e921b4755ba5d196871c7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373717"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650310"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Azure Active Directory で LinkedIn アカウント接続を統合します。
 

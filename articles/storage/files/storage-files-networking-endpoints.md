@@ -8,12 +8,12 @@ ms.date: 08/17/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b494e7f7f99394c7337d663ea9a9c7e1f74dacf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 880eeb87d8727d65b2aaecdad8b0ed9ccaacea7a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612831"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629854"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Azure Files ネットワーク エンドポイントの構成
 
@@ -31,7 +31,7 @@ Azure Files では、Azure ファイル共有にアクセスするための次�
 
 - この記事では、既に Azure サブスクリプションが作成されていることを前提としています。 サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 - この記事では、オンプレミスから接続するストレージ アカウントに Azure ファイル共有が既に作成されていることを前提としています。 Azure ファイル共有を作成する方法については、「[Azure ファイル共有を作成する](storage-how-to-create-file-share.md)」をご覧ください。
-- Azure PowerShell を使用する場合は、[最新バージョンをインストールしてください](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+- Azure PowerShell を使用する場合は、[最新バージョンをインストールしてください](/powershell/azure/install-az-ps)。
 - Azure CLI を使用する場合は、[最新バージョンをインストールしてください](/cli/azure/install-azure-cli)。
 
 ## <a name="endpoint-configurations"></a>エンドポイント構成

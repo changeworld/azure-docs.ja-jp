@@ -5,20 +5,20 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 04/27/2020
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4031356c3a2ff51f6f3da8b53dd0dcc9fd5a426
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d141637286ed931701e82d29088186de32ff9f9c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373494"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646782"
 ---
 # <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Azure Active Directory での削除済みユーザーの一括復元
 
@@ -34,9 +34,9 @@ CSV テンプレートをダウンロードして入力し、Azure AD ユーザ�
 
 ダウンロードした CSV テンプレート内の行は次のとおりです。
 
-- **バージョン番号** : アップロード CSV の先頭行にバージョン番号を含める必要があります。
-- **列見出し** :列見出しの形式は、&lt;*項目名*&gt; [PropertyName] &lt;*Required または空白*&gt; です。 たとえば、「 `Object ID [objectId] Required` 」のように入力します。 テンプレートの古いバージョンの中には、微妙に異なるものもあります。
-- **例の行** :このテンプレートには、各列に使用できる値のサンプル行が含まれています。 サンプル行を削除し、独自のエントリに置き換える必要があります。
+- **バージョン番号**: アップロード CSV の先頭行にバージョン番号を含める必要があります。
+- **列見出し**:列見出しの形式は、&lt;*項目名*&gt; [PropertyName] &lt;*Required または空白*&gt; です。 たとえば、「 `Object ID [objectId] Required` 」のように入力します。 テンプレートの古いバージョンの中には、微妙に異なるものもあります。
+- **例の行**:このテンプレートには、各列に使用できる値のサンプル行が含まれています。 サンプル行を削除し、独自のエントリに置き換える必要があります。
 
 ### <a name="additional-guidance"></a>その他のガイダンス
 
@@ -55,10 +55,10 @@ CSV テンプレートをダウンロードして入力し、Azure AD ユーザ�
 
 1. この CSV テンプレートを開いて、復元するユーザーごとに 1 行を追加します。 唯一の必須値は **ObjectID** です。 そのうえでファイルを保存します。
 
-    :::image type="content" source="./media/users-bulk-restore/upload-button.png" alt-text="追加するユーザーをリストするローカル CSV ファイルを選択する&quot;:::
+    :::image type="content" source="./media/users-bulk-restore/upload-button.png" alt-text="追加するユーザーをリストするローカル CSV ファイルを選択する":::
 
 1. **[ユーザーの一括復元]** ページの **[CSV ファイルをアップロード]** で、そのファイルを参照します。 ファイルを選択して **[送信]** をクリックすると、CSV ファイルの検証が開始されます。
-1. ファイルの内容が検証されると、&quot; **ファイルが正常にアップロードされました** " と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。
+1. ファイルの内容が検証されると、"**ファイルが正常にアップロードされました**" と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。
 1. ファイルの検証に合格したら、 **[送信]** を選択して、ユーザーを復元する Azure 一括操作を開始します。
 1. 復元操作が完了すると、一括操作が成功したという通知が表示されます。
 

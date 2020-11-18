@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 30cdc9924d41fdbe27156fcf90688d4baf440487
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 7e17cdca508db81551d988c795bd1235fa729e82
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209363"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636862"
 ---
 # <a name="apache-kafka-with-confluent-schema-registry-in-azure-hdinsight"></a>Azure HDInsight での Apache Kafka と Confluent スキーマ レジストリ
 
@@ -34,7 +34,7 @@ HDInsight のマネージド Kafka クラスターでは、ヘッド ノード�
 
 1. 下の **[Azure へのデプロイ]** ボタンを選択して Azure にサインインし、Resource Manager テンプレートを開きます。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Farnabganguly%2FKafkaschemaregistry%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="./media/schema-registry/hdi-deploy-to-azure1.png"/></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Farnabganguly%2FKafkaschemaregistry%2Fmaster%2Fazuredeploy.json" target="_blank">:::image type="icon" source="media/schema-registry/hdi-deploy-to-azure1.png":::</a>
 
 1. カスタム デプロイ テンプレートで、以下に示すようにフィールドに値を入力します。
 
@@ -113,7 +113,7 @@ HDInsight のマネージド Kafka クラスターでは、ヘッド ノード�
     debug=true
     ```
 
-1. ファイルを保存するには、 **Ctrl + X** キー、 **Y** キー、 **Enter** キーの順に押します。
+1. ファイルを保存するには、**Ctrl + X** キー、**Y** キー、**Enter** キーの順に押します。
 
 1. スキーマ レジストリを起動し、更新されたスキーマ レジストリのプロパティ ファイルを使用するように指定します。 次のコマンドを実行します。
 

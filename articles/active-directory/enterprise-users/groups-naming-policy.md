@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 08/13/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45dac4425f4d2f563cbc942f23d81583728139f6
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e404b3eeadd8eef45e413eea2bd753d08cc505ca
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489456"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650633"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory での Microsoft 365 グループに対する名前付けポリシーの適用
 
@@ -36,9 +36,9 @@ ms.locfileid: "94489456"
 
 グループの名前付けポリシーは、次の 2 通りの方法で強制できます。
 
-- **プレフィックス/サフィックス名前付けポリシー** : グループに名前付け規則を強制するために自動的に追加される、プレフィックスまたはサフィックスを定義できます (たとえば、グループ名 "GRP\_JAPAN\_My Group\_Engineering" では、GRP\_JAPAN\_ がプレフィックス、\_Engineering がサフィックスです)。 
+- **プレフィックス/サフィックス名前付けポリシー**: グループに名前付け規則を強制するために自動的に追加される、プレフィックスまたはサフィックスを定義できます (たとえば、グループ名 "GRP\_JAPAN\_My Group\_Engineering" では、GRP\_JAPAN\_ がプレフィックス、\_Engineering がサフィックスです)。 
 
-- **カスタム禁止単語** : ユーザーが作成したグループで禁止される、組織固有の一連の禁止単語 (例: "CEO, Payroll, HR") をアップロードできます。
+- **カスタム禁止単語**: ユーザーが作成したグループで禁止される、組織固有の一連の禁止単語 (例: "CEO, Payroll, HR") をアップロードできます。
 
 ### <a name="prefix-suffix-naming-policy"></a>プレフィックス/サフィックス名前付けポリシー
 
@@ -123,7 +123,7 @@ PowerShell コマンドを実行する前に、古いバージョンの Windows 
    Install-Module AzureADPreview
    ```
 
-   信頼されていないリポジトリへのアクセスに関するメッセージが表示されたら、「 **Y** 」と入力します。新しいモジュールのインストールには数分かかる場合があります。
+   信頼されていないリポジトリへのアクセスに関するメッセージが表示されたら、「**Y**」と入力します。新しいモジュールのインストールには数分かかる場合があります。
 
 ## <a name="configure-naming-policy-in-powershell"></a>PowerShell で名前付けポリシーを構成する
 

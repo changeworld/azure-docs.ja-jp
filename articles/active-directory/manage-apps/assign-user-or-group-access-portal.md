@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: f49377743521e27c2312e95491762ca48d8448c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55934e8c33b74740b7398be1ae18a3ef899aee74
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604327"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651279"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Azure Active Directory のアプリに対するユーザー割り当ての管理
 
@@ -58,7 +58,7 @@ ms.locfileid: "90604327"
 Azure portal を使用してユーザーまたはグループの割り当てまたは割り当て解除を行う方法については、[アプリケーション管理に関するクイック スタート シリーズ](add-application-portal-assign-users.md)を参照してください。
 
 ## <a name="assign-or-unassign-users-and-groups-for-an-app-using-the-graph-api"></a>Graph API を使用して、アプリに対してユーザーとグループの割り当ておよび割り当て解除を行う
-Graph API を使用して、アプリのユーザーとグループを割り当てたり、割り当てを解除したりすることができます。 詳細については、「[アプリの役割の割り当て](https://docs.microsoft.com/graph/api/resources/approleassignment)」を参照してください。
+Graph API を使用して、アプリのユーザーとグループを割り当てたり、割り当てを解除したりすることができます。 詳細については、「[アプリの役割の割り当て](/graph/api/resources/approleassignment)」を参照してください。
 
 ## <a name="assign-users-and-groups-to-an-app-using-powershell"></a>PowerShell を使用してアプリに対してユーザーとグループを割り当てる
 1. 管理者特権での Windows PowerShell コマンド プロンプトを開きます。
@@ -81,11 +81,11 @@ Graph API を使用して、アプリのユーザーとグループを割り当�
     # Assign the user to the app role
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
-アプリケーション ロールにユーザーを割り当てる方法の詳細については、「[AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0)」のドキュメントをご覧ください。
+アプリケーション ロールにユーザーを割り当てる方法の詳細については、「[AzureADUserAppRoleAssignment](/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0)」のドキュメントをご覧ください。
 
 グループをエンタープライズ アプリに割り当てるには、`Get-AzureADUser` を `Get-AzureADGroup` に置き換え、`New-AzureADUserAppRoleAssignment` を `New-AzureADGroupAppRoleAssignment` に置き換える必要があります。
 
-アプリケーション ロールにグループを割り当てる方法の詳細については、「[AzureADGroupAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureadgroupapproleassignment?view=azureadps-2.0)」のドキュメントをご覧ください。
+アプリケーション ロールにグループを割り当てる方法の詳細については、「[AzureADGroupAppRoleAssignment](/powershell/module/azuread/new-azureadgroupapproleassignment?view=azureadps-2.0)」のドキュメントをご覧ください。
 
 ### <a name="example"></a>例
 
@@ -154,6 +154,6 @@ Graph API を使用して、アプリのユーザーとグループを割り当�
 ## <a name="next-steps"></a>次のステップ
 
 - [自分のグループをすべて表示する](../fundamentals/active-directory-groups-view-azure-portal.md)
-- [エンタープライズ アプリケーションからユーザーまたはグループの割り当てを削除する](remove-user-or-group-access-portal.md)
+- [エンタープライズ アプリケーションからユーザーまたはグループの割り当てを削除する]()
 - [エンタープライズ アプリケーションのユーザー サインインを無効にする](disable-user-sign-in-portal.md)
-- [エンタープライズ アプリケーションの名前またはロゴを変更する](change-name-or-logo-portal.md)
+- [エンタープライズ アプリケーションの名前またはロゴを変更する](./add-application-portal-configure.md)

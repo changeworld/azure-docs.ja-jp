@@ -142,6 +142,6 @@
   expanded: true
   items:
     - name: アクセス レビュー - Graph API
-      href: /graph/api/resources/accessreviews-root?view=graph-rest-beta
+      href: /graph/api/resources/accessreviewsv2-root?view=graph-rest-beta
     - name: エンタイトルメント管理 - Graph API
       href: /graph/api/resources/entitlementmanagement-root?view=graph-rest-beta

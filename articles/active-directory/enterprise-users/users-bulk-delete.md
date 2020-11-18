@@ -4,8 +4,8 @@ description: Azure Active Directory の Azure 管理センターでユーザー�
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 04/27/2020
+manager: daveba
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4146fb6bfe6c06e699df1f563e1f26e0716b023
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b312ef8735477e0921bcb9cdec541f97ba3003eb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373522"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650276"
 ---
 # <a name="bulk-delete-users-in-azure-active-directory"></a>Azure Active Directory でユーザーを一括削除する
 
@@ -34,9 +34,9 @@ CSV テンプレートをダウンロードして入力すると、Azure AD ユ�
 
 ダウンロードした CSV テンプレート内の行は次のとおりです。
 
-- **バージョン番号** : アップロード CSV には、バージョン番号を含む最初の行を含める必要があります。
-- **列見出し** :列見出しの形式は &lt;*項目名*&gt; [PropertyName] &lt;*Required または空白*&gt; です。 たとえば、「 `User name [userPrincipalName] Required` 」のように入力します。 テンプレートの古いバージョンの中には、微妙に異なるものもあります。
-- **例の行** :このテンプレートには、各列に使用できる値の例の行が含まれています。 例の行を削除し、独自のエントリに置き換える必要があります。
+- **バージョン番号**: アップロード CSV には、バージョン番号を含む最初の行を含める必要があります。
+- **列見出し**:列見出しの形式は &lt;*項目名*&gt; [PropertyName] &lt;*Required または空白*&gt; です。 たとえば、「 `User name [userPrincipalName] Required` 」のように入力します。 テンプレートの古いバージョンの中には、微妙に異なるものもあります。
+- **例の行**:このテンプレートには、各列に使用できる値の例の行が含まれています。 例の行を削除し、独自のエントリに置き換える必要があります。
 
 ### <a name="additional-guidance"></a>その他のガイダンス
 
@@ -53,12 +53,12 @@ CSV テンプレートをダウンロードして入力すると、Azure AD ユ�
 
    ![削除するユーザーをリストするローカル CSV ファイルを選択する](./media/users-bulk-delete/bulk-delete.png)
 
-1. この CSV ファイルを開いて、削除するユーザーごとに 1 行を追加します。 唯一の必須値は、 **ユーザー プリンシパル名** です。 そのうえでファイルを保存します。
+1. この CSV ファイルを開いて、削除するユーザーごとに 1 行を追加します。 唯一の必須値は、**ユーザー プリンシパル名** です。 そのうえでファイルを保存します。
 
    ![CSV ファイルには、削除するユーザーの名前と ID が含まれています。](./media/users-bulk-delete/delete-csv-file.png)
 
 1. **[ユーザーの一括削除]** ページの **[CSV ファイルをアップロード]** で、そのファイルを参照します。 ファイルを選択して [送信] をクリックすると、CSV ファイルの検証が開始されます。
-1. ファイルの内容が検証されると、" **ファイルが正常にアップロードされました** " と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。
+1. ファイルの内容が検証されると、"**ファイルが正常にアップロードされました**" と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。
 1. ファイルの検証に合格したら、 **[送信]** を選択して、ユーザーを削除する Azure 一括操作を開始します。
 1. 削除操作が完了すると、一括操作が成功したという通知が表示されます。
 

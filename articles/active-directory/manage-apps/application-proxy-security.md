@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8051621cf05b0f8c387c41cf0b95bb32e15e667
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 794c4e1a0859fc8a36b0abf4fcc9d5243c8bd308
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825903"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649570"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項
 
@@ -49,7 +49,7 @@ Azure AD アプリケーション プロキシでは、すべての認証に Azu
 
 [条件付きアクセス](../conditional-access/concept-conditional-access-cloud-apps.md)を使用すると、ユーザーがアプリケーションにアクセスするときの制限を定義できます。 場所、認証の強度、およびユーザーのリスク プロファイルに基づいてサインインを制限するポリシーを作成できます。
 
-条件付きアクセスを使用して Multi-Factor Authentication のポリシーを構成することで、ユーザー認証に別のセキュリティ層を追加することもできます。 さらに、Azure AD 条件付きアクセスを利用して Microsoft Cloud App Security にお使いのアプリケーションをルーティングし、[アクセス](https://docs.microsoft.com/cloud-app-security/access-policy-aad) ポリシーおよび[セッション](https://docs.microsoft.com/cloud-app-security/session-policy-aad) ポリシーによって、リアルタイムの監視と制御を提供することも可能です。
+条件付きアクセスを使用して Multi-Factor Authentication のポリシーを構成することで、ユーザー認証に別のセキュリティ層を追加することもできます。 さらに、Azure AD 条件付きアクセスを利用して Microsoft Cloud App Security にお使いのアプリケーションをルーティングし、[アクセス](/cloud-app-security/access-policy-aad) ポリシーおよび[セッション](/cloud-app-security/session-policy-aad) ポリシーによって、リアルタイムの監視と制御を提供することも可能です。
 
 ### <a name="traffic-termination"></a>トラフィックの終了
 
@@ -69,7 +69,7 @@ Azure AD アプリケーション プロキシはリバース プロキシであ
 
 最先端のセキュリティ保護を得ることができます。
 
-アプリケーション プロキシは Azure Active Directory の一部であるため、[Azure AD Identity Protection](../active-directory-identityprotection.md) と、Microsoft の Security Response Center やデジタル犯罪対策部門からのデータを活用できます。 これらの組織は ID が攻撃されたアカウントを被害の発生前に特定し、危険性の高いサインインが実行されないように保護します。どのサインインの試みが高リスクであるかを判断するために、さまざまな要素が考慮されます。 要素としては、感染したデバイスのフラグ、ネットワークの匿名化、特殊な場所や可能性の低い場所などが含まれます。
+アプリケーション プロキシは Azure Active Directory の一部であるため、[Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) と、Microsoft の Security Response Center やデジタル犯罪対策部門からのデータを活用できます。 これらの組織は ID が攻撃されたアカウントを被害の発生前に特定し、危険性の高いサインインが実行されないように保護します。どのサインインの試みが高リスクであるかを判断するために、さまざまな要素が考慮されます。 要素としては、感染したデバイスのフラグ、ネットワークの匿名化、特殊な場所や可能性の低い場所などが含まれます。
 
 これらのレポートとイベントの多くは、お客様のセキュリティ情報およびイベント管理 (SIEM) システムとの統合を可能にする API を通じて既に使用可能です。
 
@@ -79,7 +79,7 @@ Azure AD アプリケーション プロキシはリバース プロキシであ
 
 パッチの適用されていないソフトウェアは、依然として多数の攻撃の的となっています。 Azure AD アプリケーション プロキシは Microsoft によるインターネット規模のサービスであるため、常に最新のセキュリティ パッチとアップグレードを取得できます。
 
-Azure AD アプリケーション プロキシによって発行されたアプリケーションのセキュリティを強化するために、Web クローラー ロボットによるアプリケーションのインデックス作成およびアーカイブ操作はブロックされます。 Web クローラー ロボットが発行されたアプリのロボット設定を取得しようとするたびに、アプリケーション プロキシでは、`User-agent: * Disallow: /` が含まれる robots.txt ファイルによって応答します。
+Azure AD アプリケーション プロキシによって発行されたアプリケーションのセキュリティを強化するために、Web クローラー ロボットによるアプリケーションのインデックス作成およびアーカイブ操作はブロックされます。 Web クローラー ロボットが発行されたアプリのロボット設定を取得しようとするたびに、アプリケーション プロキシは、`User-agent: * Disallow: /` が含まれる robots.txt ファイルで応答します。
 
 #### <a name="azure-ddos-protection-service"></a>Azure DDoS Protection サービス
 
@@ -107,8 +107,8 @@ Azure AD アプリケーション プロキシは、以下の 2 つで構成さ�
 
 コネクタの初回セットアップ時に、次のフロー イベントが発生します。
 
-1. サービスへのコネクタの登録は、コネクタのインストールの一環として発生します。 ユーザーは、Azure AD 管理者の資格情報の入力を求められます。 この認証から取得されたトークンが、Azure AD アプリケーション プロキシ サービスに提示されます。
-2. アプリケーション プロキシ サービスがトークンを評価します。 ユーザーがテナントの会社管理者であるかどうかを確認します。 ユーザーが管理者でない場合、このプロセスは終了します。
+1. サービスへのコネクタの登録は、コネクタのインストールの一環として発生します。 ユーザーは、Azure AD 管理者の資格情報の入力を求められます。  この認証から取得されたトークンが、Azure AD アプリケーション プロキシ サービスに提示されます。
+2. アプリケーション プロキシ サービスがトークンを評価します。 ユーザーがテナントの会社管理者であるかどうかを確認します。  ユーザーが管理者でない場合、このプロセスは終了します。
 3. コネクタは、クライアント証明書要求を生成し、トークンと共にアプリケーション プロキシ サービスに渡します。 次に、サービスがトークンを検証し、クライアント証明書要求に署名します。
 4. コネクタはアプリケーション プロキシ サービスとのその後の通信の際に、このクライアント証明書を使用します。
 5. コネクタはクライアント証明書を使用して、サービスからのシステム構成データの初回の収集を実行します。これで要求を受け入れる準備が完了します。
@@ -173,7 +173,7 @@ Azure AD を使用して事前認証を使用するようにアプリを構成�
 
 コネクタは、応答を受け取ると、アプリケーション プロキシ サービスへの送信接続を確立して、ヘッダーの情報を返し、返されるデータのストリーミングを開始します。
 
-#### <a name="5-the-service-streams-data-to-the-user"></a>5.サービスがユーザーにデータをストリーミングする 
+#### <a name="5-the-service-streams-data-to-the-user"></a>5.サービスがユーザーにデータをストリーミングする 
 
 アプリケーションの何らかの処理がここで発生する場合があります。 アプリケーションのヘッダーまたは URL を変換するようにアプリケーション プロキシを構成した場合、その処理は、この手順の中で必要に応じて実行されます。
 

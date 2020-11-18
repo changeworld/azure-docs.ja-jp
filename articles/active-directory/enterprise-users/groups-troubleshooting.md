@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: troubleshooting
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8730ac8aa6a6056db67613f2ac8decf11740c467
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d114896319929a0506f0201905d72d081b6408a4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373579"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650515"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>グループに関する問題のトラブルシューティングと解決
 
@@ -51,7 +51,7 @@ Powershell で _動的グループ ポリシーの最大許容グループ数に
 
 **グループに対するルールを構成しましたが、グループのメンバーシップが更新されません**<br/>
 1. ルール内のユーザー属性またはデバイス属性の値を確認します。 ルールを満たすユーザーが存在することを確認してください。 デバイスの場合は、デバイスのプロパティを調べて、同期された属性に予期される値が含まれていることを確認してください。<br/>
-2. メンバーシップの処理の状態を調べて、処理が完了しているかどうかを確認してください。 グループの **[概要]** ページで、 [メンバーシップの処理状態](groups-create-rule.md#check-processing-status-for-a-rule)と最終更新日を確認できます。
+2. メンバーシップの処理の状態を調べて、処理が完了しているかどうかを確認してください。 グループの **[概要]** ページで、[メンバーシップの処理状態](groups-create-rule.md#check-processing-status-for-a-rule)と最終更新日を確認できます。
 
 何も問題がなさそうな場合、グループが設定されるまでしばらく待ってください。 グループを初めて設定する場合、またはルールの変更後に設定する場合、Azure AD 組織のサイズによっては最大 24 時間かかる場合があります。
 

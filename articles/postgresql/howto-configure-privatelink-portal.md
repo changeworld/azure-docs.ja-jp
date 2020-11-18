@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 98d3beef72d314f93f6a2bc580b1dd5de5735f23
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 23b9774f28f915596abafbd8c1f6c38fc4f55748
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242468"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636267"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>ポータルを使用して Azure Database for PostgreSQL 単一サーバー用の Private Link を作成および管理する
 
@@ -37,13 +37,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     | 設定 | 値 |
     | ------- | ----- |
-    | 名前 | 「 *MyVirtualNetwork* 」と入力します。 |
-    | アドレス空間 | 「 *10.1.0.0/16* 」を入力します。 |
+    | 名前 | 「*MyVirtualNetwork*」と入力します。 |
+    | アドレス空間 | 「*10.1.0.0/16*」を入力します。 |
     | サブスクリプション | サブスクリプションを選択します。|
-    | Resource group | **[新規作成]** を選択し、「 *myResourceGroup* 」と入力して、 **[OK]** を選択します。 |
+    | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
     | 場所 | **[西ヨーロッパ]** を選択します。|
-    | サブネット - 名前 | 「 *mySubnet* 」と入力します。 |
-    | サブネット アドレス範囲 | 「 *10.1.0.0/24* 」と入力します。 |
+    | サブネット - 名前 | 「*mySubnet*」と入力します。 |
+    | サブネット アドレス範囲 | 「*10.1.0.0/24*」と入力します。 |
     |||
 3. 残りは既定値のままにして、 **[作成]** を選択します。
 
@@ -59,7 +59,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。  |
     | **インスタンスの詳細** |  |
-    | 仮想マシン名 | 「 *myVm* 」と入力します。 |
+    | 仮想マシン名 | 「*myVm*」と入力します。 |
     | リージョン | **[西ヨーロッパ]** を選択します。 |
     | 可用性のオプション | 既定値 **[インフラストラクチャ冗長は必要ありません]** をそのまま使用します。 |
     | Image | **[Windows Server 2019 Datacenter]** を選択します。 |
@@ -93,7 +93,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認および作成]** ページが表示され、Azure によって構成が検証されます。
 
-1. " **証に成功しました** " というメッセージが表示されたら、 **[作成]** を選択します。
+1. "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。
 
 > [!NOTE]
 > Azure Database for PostgreSQL と VNet サブネットが異なるサブスクリプションに存在する場合があります。 このような場合は、次の構成を確認する必要があります。
@@ -113,7 +113,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。|
     | **サーバーの詳細** |  |
-    |サーバー名  | 「 *myserver* 」と入力します。 この名前を取得する場合は、一意の名前を作成します。|
+    |サーバー名  | 「*myserver*」と入力します。 この名前を取得する場合は、一意の名前を作成します。|
     | 管理者ユーザー名| 任意の管理者名を入力します。 |
     | Password | 任意のパスワードを入力します。 パスワードは 8 文字以上で、定義された要件を満たす必要があります。 |
     | 場所 | PostgreSQL サーバーを配置する Azure リージョンを選択します。 |
@@ -143,7 +143,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。|
     | **インスタンスの詳細** |  |
-    | 名前 | 「 *myPrivateEndpoint* 」と入力します。 この名前を取得する場合は、一意の名前を作成します。 |
+    | 名前 | 「*myPrivateEndpoint*」と入力します。 この名前を取得する場合は、一意の名前を作成します。 |
     |リージョン|**[西ヨーロッパ]** を選択します。|
     |||
 5. **[Next:リソース]** を選択します。
@@ -174,7 +174,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     > サービスに事前に定義されているプライベート DNS ゾーンを使用するか、優先する DNS ゾーン名を指定します。 詳細については、「[Azure サービス DNS ゾーンの構成](../private-link/private-endpoint-dns.md)」を参照してください。
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認および作成]** ページが表示され、Azure によって構成が検証されます。 
-2. " **証に成功しました** " というメッセージが表示されたら、 **[作成]** を選択します。 
+2. "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。 
 
     :::image type="content" source="media/concepts-data-access-and-security-private-link/show-postgres-private-link.png" alt-text="作成された Private Link":::
 
@@ -186,11 +186,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **myVm** を作成した後、次のようにインターネットからそれに接続します。 
 
-1. ポータルの検索バーに、「 *myVm* 」と入力します。
+1. ポータルの検索バーに、「*myVm*」と入力します。
 
 1. **[接続]** を選択します。 **[接続]** ボタンを選択すると、 **[Connect to virtual machine]\(仮想マシンに接続する\)** が開きます。
 
-1. **[RDP ファイルのダウンロード]** を選択します。 リモート デスクトップ プロトコル ( *.rdp* ) ファイルが作成され、お使いのコンピューターにダウンロードされます。
+1. **[RDP ファイルのダウンロード]** を選択します。 リモート デスクトップ プロトコル ( *.rdp*) ファイルが作成され、お使いのコンピューターにダウンロードされます。
 
 1. *downloaded.rdp* ファイルを開きます。
 
@@ -222,7 +222,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     Address:  10.1.3.4
     ```
 
-3. 使用可能な任意のクライアントを使用して、PostgreSQL サーバーのプライベートリンク接続をテストします。 次の例では、[Azure Data Studio](/sql/azure-data-studio/download?view=sql-server-ver15) を使用して操作を行いました。
+3. 使用可能な任意のクライアントを使用して、PostgreSQL サーバーのプライベートリンク接続をテストします。 次の例では、[Azure Data Studio](/sql/azure-data-studio/download?view=sql-server-ver15&preserve-view=true) を使用して操作を行いました。
 
 4. **[新しい接続]** で、この情報を入力または選択します。
 
@@ -246,7 +246,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 プライベート エンドポイント、PostgreSQL サーバー、VM を使い終えたら、リソース グループとそこに含まれるすべてのリソースを削除します。
 
-1. ポータルの上部にある **検索** ボックスに「 *myResourceGroup* 」と入力し、検索結果から  *myResourceGroup*  を選択します。
+1. ポータルの上部にある **検索** ボックスに「*myResourceGroup*」と入力し、検索結果から  *myResourceGroup*  を選択します。
 2. **[リソース グループの削除]** を選択します。
 3. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「myResourceGroup」と入力し、 **[削除]** を選択します。
 

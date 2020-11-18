@@ -8,19 +8,19 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb51f402cd7032358e6a9d2f9fad9aa64316b809
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f3544d81059cd4c25c584d8af1b6fcd45a41b8bb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373671"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650718"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 グループの有効期限ポリシーを構成する
 
@@ -98,13 +98,13 @@ User | 自分が所有する Microsoft 365 グループを更新できます<br>
 
 ![有効期限に関する電子メール通知](./media/groups-lifecycle/expiration-notification.png)
 
-グループの所有者は、 **グループの更新** 通知電子メールから、 [アクセス パネル](https://account.activedirectory.windowsazure.com/r#/applications)のグループ詳細ページに直接アクセスできます。 そこで、ユーザーは、グループについての詳細 (グループの説明、最終更新日時、有効期限が切れる日時など) や、グループを更新する機能についても知ることができます。 グループの詳細ページには、現在、Microsoft 365 グループ リソースへのリンクも含まれているので、グループの所有者がそのグループの内容とアクティビティを簡単に確認できます。
+グループの所有者は、**グループの更新** 通知電子メールから、[アクセス パネル](https://account.activedirectory.windowsazure.com/r#/applications)のグループ詳細ページに直接アクセスできます。 そこで、ユーザーは、グループについての詳細 (グループの説明、最終更新日時、有効期限が切れる日時など) や、グループを更新する機能についても知ることができます。 グループの詳細ページには、現在、Microsoft 365 グループ リソースへのリンクも含まれているので、グループの所有者がそのグループの内容とアクティビティを簡単に確認できます。
 
 グループが有効期限切れになると、有効期限日の 1 日後にグループが削除されます。 次のような電子メール通知が Microsoft 365 グループの所有者に送信され、その Microsoft 365 グループの有効期限とその後の削除について通知されます。
 
 ![グループの削除に関する電子メール通知](./media/groups-lifecycle/deletion-notification.png)
 
-削除してから 30 日以内であれば、 **[Restore group]\(グループの復元\)** を選択するか、または「 [Azure Active Directory で削除された Microsoft 365 グループを復元する](groups-restore-deleted.md)」に記載されている PowerShell コマンドレットを使用することで、グループを復元できます。 30 日間のグループの復元期間はカスタマイズできないことに注意してください。
+削除してから 30 日以内であれば、 **[Restore group]\(グループの復元\)** を選択するか、または「[Azure Active Directory で削除された Microsoft 365 グループを復元する](groups-restore-deleted.md)」に記載されている PowerShell コマンドレットを使用することで、グループを復元できます。 30 日間のグループの復元期間はカスタマイズできないことに注意してください。
 
 復元するグループにドキュメント、SharePoint サイト、または他の永続的なオブジェクトが含まれている場合は、グループとその内容を完全に復元するまでに最大 24 時間かかることがあります。
 

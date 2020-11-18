@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 69fdfea6768a895db1f85df4c2936936a2ffd3f5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 95139c862b82a85dbf7f50aef021ad71c5c8210f
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675785"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629446"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure File Sync のプロキシとファイアウォールの設定
 Azure File Sync は、オンプレミスのサーバーを Azure Files に接続することで、マルチサイトの同期とクラウドの階層化の機能を実現します。 そのため、オンプレミスのサーバーがインターネットに接続されている必要があります。 サーバーから Azure Cloud Services に到達するための最適なパスは、IT 管理者が決める必要があります。
@@ -154,7 +154,7 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 ### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>Azure File Sync IP アドレスの許可リスト
 Azure File Sync では[サービス タグ](../../virtual-network/service-tags-overview.md)の使用がサポートされています。これは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表すものです。 サービス タグを使用して、Azure File Sync サービスとの通信を可能にするファイアウォール規則を作成できます。 Azure File Sync のサービス タグは `StorageSyncService` です。
 
-Azure 内で Azure File Sync を使用している場合は、ネットワーク セキュリティ グループでサービス タグ名を直接使用して、トラフィックを許可することができます。 詳しい方法については、「[セキュリティ グループ](../../virtual-network/security-overview.md)」を参照してください。
+Azure 内で Azure File Sync を使用している場合は、ネットワーク セキュリティ グループでサービス タグ名を直接使用して、トラフィックを許可することができます。 詳しい方法については、「[セキュリティ グループ](../../virtual-network/network-security-groups-overview.md)」を参照してください。
 
 オンプレミスの Azure File Sync を使用している場合は、サービス タグ API を使用して、ファイアウォールの許可リスト用の特定の IP アドレス範囲を取得できます。 この情報を取得するには、次の 2 つの方法があります。
 
@@ -164,9 +164,9 @@ Azure 内で Azure File Sync を使用している場合は、ネットワーク
     - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062)
     - [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)
 - サービス タグ検出 API (プレビュー) を使用すると、サービス タグの現在の一覧をプログラムで取得できます。 プレビューの段階では、サービス タグ検出 API によって返される情報は、Microsoft ダウンロード センターに公開されている JSON ドキュメントから返される情報よりも古い場合があります。 API サーフェスは、ご自分の自動化の設定に基づいて使用できます。
-    - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
-    - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
-    - [Azure CLI](https://docs.microsoft.com/cli/azure/network#az-network-list-service-tags)
+    - [REST API](/rest/api/virtualnetwork/servicetags/list)
+    - [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
+    - [Azure CLI](/cli/azure/network#az-network-list-service-tags)
 
 サービス タグ検出 API は、Microsoft ダウンロード センターに公開される JSON ドキュメントほど頻繁に更新されないため、JSON ドキュメントを使用して、オンプレミスのファイアウォールの許可リストを更新することをお勧めします。 そのためには、次の手順に従います。
 

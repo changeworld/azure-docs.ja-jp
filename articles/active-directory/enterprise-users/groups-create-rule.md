@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a94d1a4fa717bbee9974f7218e704ba06dad530d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1f9fcdd2ce17e967be432f8edc910dcf2fcdbed3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373688"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650905"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Azure Active Directory で動的グループを作成または更新する
 
@@ -90,17 +90,17 @@ Azure AD には、重要なルールをすばやく作成したり更新した�
 
 **[メンバーシップの処理]** の状態には、次の状態メッセージが表示される場合があります。
 
-- **評価中** :グループの変更が受信され、更新プログラムが評価されています。
-- **処理** : 更新プログラムが処理されています。
-- **更新の完了** :処理が完了し、該当するすべての更新が行われました。
-- **処理エラー** :メンバーシップのルール評価におけるエラーが原因で、処理を完了できませんでした。
-- **更新の一時停止** :動的メンバーシップ規則の更新プログラムが管理者によって一時停止されました。 MembershipRuleProcessingState は、"一時停止" に設定されます。
+- **評価中**:グループの変更が受信され、更新プログラムが評価されています。
+- **処理**: 更新プログラムが処理されています。
+- **更新の完了**:処理が完了し、該当するすべての更新が行われました。
+- **処理エラー**:メンバーシップのルール評価におけるエラーが原因で、処理を完了できませんでした。
+- **更新の一時停止**:動的メンバーシップ規則の更新プログラムが管理者によって一時停止されました。 MembershipRuleProcessingState は、"一時停止" に設定されます。
 
 **[メンバーシップの最終更新日時]** の状態には、次の状態メッセージが表示される場合があります。
 
 - &lt;**日付と時刻**&gt;:メンバーシップが最後に更新された日時。
-- **進行中** : 更新は現在進行中です。
-- **不明** :最終更新時刻を取得することができません。 新しいグループである可能性があります。
+- **進行中**: 更新は現在進行中です。
+- **不明**:最終更新時刻を取得することができません。 新しいグループである可能性があります。
 
 特定のグループのメンバーシップ規則の処理中にエラーが発生すると、そのグループの **[概要]** ページの上部にアラートが表示されます。 24 時間以上、組織内のすべてのグループに対して保留中の動的メンバーシップの更新が処理できない場合は、 **[すべてグループ]** の上部にアラートが表示されます。
 

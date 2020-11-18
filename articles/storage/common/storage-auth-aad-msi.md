@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 16ac28e46e9231918f433c0e9eb077cb0d8cf230
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 21b563bf383dce486de86bc51913feac7863d8e1
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791173"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635162"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Azure リソースに対するマネージド ID を使用して BLOB およびキュー データへのアクセスを認証する
 
@@ -48,7 +48,7 @@ Azure ID クライアント ライブラリの利点は、アプリケーショ�
 
 ### <a name="assign-azure-roles-for-access-to-data"></a>データにアクセスするための Azure ロールを割り当る
 
-Azure AD セキュリティ プリンシパルが Blob またはキュー データにアクセスしようとする場合、そのセキュリティ プリンシパルはリソースへのアクセス許可を保持している必要があります。 セキュリティ プリンシパルが Azure 内のマネージド ID であるか、開発環境でコードを実行している Azure AD ユーザー アカウントであるかにかかわらず、Azure Storage での BLOB またはキュー データへのアクセスを許可する Azure ロールをセキュリティ プリンシパルに割り当てる必要があります。 Azure RBAC 経由でのアクセス許可の割り当てについては、「 [Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)」の「 **アクセス権に Azure ロールを割り当てる** 」というタイトルのセクションを参照してください。
+Azure AD セキュリティ プリンシパルが Blob またはキュー データにアクセスしようとする場合、そのセキュリティ プリンシパルはリソースへのアクセス許可を保持している必要があります。 セキュリティ プリンシパルが Azure 内のマネージド ID であるか、開発環境でコードを実行している Azure AD ユーザー アカウントであるかにかかわらず、Azure Storage での BLOB またはキュー データへのアクセスを許可する Azure ロールをセキュリティ プリンシパルに割り当てる必要があります。 Azure RBAC 経由でのアクセス許可の割り当てについては、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)」の「**アクセス権に Azure ロールを割り当てる**」というタイトルのセクションを参照してください。
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>開発環境でユーザーを認証する
 
@@ -66,7 +66,7 @@ Azure CLI を使用してサービス Azure ロールを割り当てるには、
 
 サービス プリンシパルにロールを割り当てるための十分なアクセス許可がない場合は、アカウント所有者または管理者にロールの割り当ての実行を依頼しなければならない可能性があります。
 
-次の例では、Azure CLI を使用して新しいサービス プリンシパルを作成し、 **ストレージ BLOB データ閲覧者ロール** をアカウント スコープで割り当てています。
+次の例では、Azure CLI を使用して新しいサービス プリンシパルを作成し、**ストレージ BLOB データ閲覧者ロール** をアカウント スコープで割り当てています。
 
 ```azurecli-interactive
 az ad sp create-for-rbac \
@@ -165,4 +165,4 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 - [Azure RBAC を使用してストレージ データへのアクセス権を管理する](./storage-auth-aad-rbac-portal.md)。
 - [ストレージ アプリケーションで Azure AD を使用する](storage-auth-aad-app.md)。
-- [Azure AD 資格情報を使用して PowerShell コマンドを実行して BLOB データにアクセスする](../blobs/authorize-active-directory-powershell.md)
+- [Azure AD 資格情報を使用して PowerShell コマンドを実行して BLOB データにアクセスする](../blobs/authorize-data-operations-powershell.md)

@@ -7,19 +7,19 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 05/21/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf8eeb2d1f19ca0848ae5c608ba9f0d8e9526e05
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 189eaf3a08ce0e8411ce67170fdf1a895cbc56d2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373691"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647717"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Azure Active Directory でテナントを削除する
 
@@ -52,7 +52,7 @@ Azure AD 組織 (テナント) を削除すると、その組織に含まれる�
 
 ## <a name="if-you-cant-delete-the-organization"></a>組織を削除できない場合
 
-Azure AD 組織を構成したときに、Azure AD Premium P2、Microsoft 365 Business Standard、または Enterprise Mobility + Security E5 など、組織のライセンスベースのサブスクリプションもアクティブになっていた可能性があります。 偶発的なデータ損失を回避するため、サブスクリプションが完全に削除されるまでは組織を削除できません。 組織の削除を許可するには、サブスクリプションが **プロビジョニング解除済み** 状態である必要があります。 **有効期限切れ** または **キャンセル済み** のサブスクリプションは、 **無効** 状態に移行します。そして、最終段階が **プロビジョニング解除済み** 状態です。
+Azure AD 組織を構成したときに、Azure AD Premium P2、Microsoft 365 Business Standard、または Enterprise Mobility + Security E5 など、組織のライセンスベースのサブスクリプションもアクティブになっていた可能性があります。 偶発的なデータ損失を回避するため、サブスクリプションが完全に削除されるまでは組織を削除できません。 組織の削除を許可するには、サブスクリプションが **プロビジョニング解除済み** 状態である必要があります。 **有効期限切れ** または **キャンセル済み** のサブスクリプションは、**無効** 状態に移行します。そして、最終段階が **プロビジョニング解除済み** 状態です。
 
 試用版の Microsoft 365 サブスクリプション (有償のパートナー/CSP、Enterprise Agreement、ボリューム ライセンスは含まれません) の有効期限が切れたときに起こることについては、次の表を参照してください。 Microsoft 365 のデータ保有とサブスクリプションのライフ サイクルの詳細については、「[一般法人向け Microsoft 365 のサブスクリプションが終了したとき、データとアクセスはどうなりますか?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3)」を参照してください。 
 

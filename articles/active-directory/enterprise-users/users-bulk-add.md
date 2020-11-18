@@ -4,21 +4,21 @@ description: Azure Active Directory の Azure AD 管理センターでユーザ�
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 08/11/2020
+manager: daveba
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8e6ab8fd726eaba309f0949020139901dd3712f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 42e26e9b1e3548d3caeff58079ec489c2d282a63
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373526"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646884"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Azure Active Directory でのユーザーの一括作成
 
@@ -41,9 +41,9 @@ Azure Active Directory (Azure AD) では、ユーザーの一括作成および�
 
 ダウンロードした CSV テンプレート内の行は次のとおりです。
 
-- **バージョン番号** : アップロード CSV には、バージョン番号を含む最初の行を含める必要があります。
-- **列見出し** :列見出しの形式は &lt;*項目名*&gt; [PropertyName] &lt;*Required または空白*&gt; です。 たとえば、「 `Name [displayName] Required` 」のように入力します。 テンプレートの古いバージョンの中には、微妙に異なるものもあります。
-- **例の行** :このテンプレートには、各列に使用できる値の例の行が含まれています。 例の行を削除し、独自のエントリに置き換える必要があります。
+- **バージョン番号**: アップロード CSV には、バージョン番号を含む最初の行を含める必要があります。
+- **列見出し**:列見出しの形式は &lt;*項目名*&gt; [PropertyName] &lt;*Required または空白*&gt; です。 たとえば、「 `Name [displayName] Required` 」のように入力します。 テンプレートの古いバージョンの中には、微妙に異なるものもあります。
+- **例の行**:このテンプレートには、各列に使用できる値の例の行が含まれています。 例の行を削除し、独自のエントリに置き換える必要があります。
 
 ### <a name="additional-guidance"></a>その他のガイダンス
 
@@ -66,7 +66,7 @@ Azure Active Directory (Azure AD) では、ユーザーの一括作成および�
    [![CSV ファイルには、作成するユーザーの名前と ID が含まれています。](./media/users-bulk-add/add-csv-file.png)](./media/users-bulk-add/add-csv-file.png#lightbox)
 
 1. **[ユーザーの一括作成]** ページの [CSV ファイルをアップロード] で、そのファイルを参照します。 ファイルを選択して **[送信]** をクリックすると、CSV ファイルの検証が開始されます。
-1. ファイルの内容が検証された後、" **ファイルが正常にアップロードされました** " と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。
+1. ファイルの内容が検証された後、"**ファイルが正常にアップロードされました**" と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。
 1. ファイルが検証に合格したら、 **[送信]** を選択して、新しいユーザーをインポートする Azure の一括操作を開始します。
 1. インポート操作が完了すると、一括操作ジョブの状況に関する通知が表示されます。
 

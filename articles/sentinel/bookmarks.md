@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
-ms.openlocfilehash: eacc104bf7157732f91507f631bcda2cd166bfb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e3b6802bab2c5fae97be8e55c8d5c11ff570f78
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77588690"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651314"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Azure Sentinel でハンティング中にデータを追跡する
 
@@ -105,7 +105,7 @@ ms.locfileid: "77588690"
 
 1. Azure portal で、 **[Sentinel]**  >  **[脅威の管理]**  >  **[ハンティング]**  >  **[ブックマーク]** タブの順に移動して、インシデントに追加するブックマーク (複数可) を選択します。
 
-2. コマンド バーから **[インシデント アクション (プレビュー)] ** を選択します。
+2. コマンド バーから **[インシデント アクション (プレビュー)]** を選択します。
     
     > [!div class="mx-imgBorder"]
     > ![インシデントにブックマークを追加する](./media/bookmarks/incident-actions.png)
@@ -133,7 +133,7 @@ ms.locfileid: "77588690"
 > [!div class="mx-imgBorder"]
 > ![ブックマーク ログ](./media/bookmarks/bookmark-logs.png)
 
-このビューには、メタデータが関連付けられているすべてのブックマークが表示されます。 [キーワード クエリ言語](https://docs.microsoft.com/sharepoint/dev/general-development/keyword-query-language-kql-syntax-reference) (KQL) クエリを使用して、検索している特定のブックマークの最新版に絞り込むことができます。
+このビューには、メタデータが関連付けられているすべてのブックマークが表示されます。 [キーワード クエリ言語](/sharepoint/dev/general-development/keyword-query-language-kql-syntax-reference) (KQL) クエリを使用して、検索している特定のブックマークの最新版に絞り込むことができます。
 
 > [!NOTE]
 > ブックマークの作成時から、それが **[ブックマーク]** タブに表示されるまでの間に、著しい遅れ (分単位) が発生することがあります。

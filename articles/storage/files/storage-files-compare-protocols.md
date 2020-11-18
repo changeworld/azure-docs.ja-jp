@@ -8,16 +8,16 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 5149024f8621754451520e0ae249ed61f0b07f99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 961ba457136d20fbb63ae3315fe8143cffb56be2
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568473"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629310"
 ---
 # <a name="azure-file-share-protocols"></a>Azure ファイル共有プロトコル
 
-Azure Files には、Azure ファイル共有を接続してマウントするために 2 つのプロトコルが用意されています。 [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)と [Network File System (NFS) プロトコル](https://en.wikipedia.org/wiki/Network_File_System) (プレビュー) です。 現在、Azure Files ではマルチプロトコル アクセスがサポートされていないため、共有は NFS 共有または SMB 共有のどちらかに限られます。 このため、Azure ファイル共有を作成する前に、自分のニーズに最も適したプロトコルを特定することをお勧めします。
+Azure Files には、Azure ファイル共有を接続してマウントするために 2 つのプロトコルが用意されています。 [Server Message Block (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)と [Network File System (NFS) プロトコル](https://en.wikipedia.org/wiki/Network_File_System) (プレビュー) です。 現在、Azure Files ではマルチプロトコル アクセスがサポートされていないため、共有は NFS 共有または SMB 共有のどちらかに限られます。 このため、Azure ファイル共有を作成する前に、自分のニーズに最も適したプロトコルを特定することをお勧めします。
 
 ## <a name="differences-at-a-glance"></a>相違点の一覧
 
@@ -64,7 +64,7 @@ Azure Files を使用した NFS は、次の場合に最適です。
 - [プライベート エンドポイント](storage-files-networking-overview.md#private-endpoints)
 - [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
     - [ポイント対サイト (P2S) VPN](../../vpn-gateway/point-to-site-about.md)
-    - [サイト間](https://docs.microsoft.com/azure/vpn-gateway/design#s2smulti)
+    - [サイト間](../../vpn-gateway/design.md#s2smulti)
 - [ExpressRoute](../../expressroute/expressroute-introduction.md)
 - [制限付きパブリック エンドポイント](storage-files-networking-overview.md#storage-account-firewall-settings)
 

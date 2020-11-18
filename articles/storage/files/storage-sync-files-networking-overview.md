@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b291bd45b4003dd2241f40c810ed9d78af9f8bc9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 76d97e3312c1df51193d8a881f3ee07fcd155d75
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91267790"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629361"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure File Sync のネットワークに関する考慮事項
 Azure ファイル共有には、次の 2 つの方法で接続できます。
@@ -55,7 +55,7 @@ Azure File Sync には、次のサービスのサービス タグによって識
 | Azure Resource Manager | Azure Resource Manager は、Azure の管理インターフェイスです。 Azure File Sync サーバー登録と同期サーバーの継続的なタスクを含むすべての管理呼び出しは、Azure Resource Manager を通じて行われます。 | `AzureResourceManager` |
 | Azure Active Directory | Azure Active Directory (Azure AD) には、ストレージ同期サービスに対するサーバーの登録を承認するために必要なユーザー プリンシパルと、ご使用のクラウド リソースへのアクセスを Azure File Sync に許可するために必要なサービス プリンシパルが含まれています。 | `AzureActiveDirectory` |
 
-Azure 内で Azure File Sync を使用している場合は、リージョンが異なっていても、ご自分のネットワーク セキュリティ グループ内でサービス タグ名を直接使用して、そのサービスに対するトラフィックを許可することができます。 詳しい方法については、「[セキュリティ グループ](../../virtual-network/security-overview.md)」を参照してください。 
+Azure 内で Azure File Sync を使用している場合は、リージョンが異なっていても、ご自分のネットワーク セキュリティ グループ内でサービス タグ名を直接使用して、そのサービスに対するトラフィックを許可することができます。 詳しい方法については、「[セキュリティ グループ](../../virtual-network/network-security-groups-overview.md)」を参照してください。 
 
 オンプレミスの Azure File Sync を使用している場合は、サービス タグ API を使用して、ファイアウォールの許可リスト用の特定の IP アドレス範囲を取得できます。 この情報を取得するには、次の 2 つの方法があります。
 
@@ -65,9 +65,9 @@ Azure 内で Azure File Sync を使用している場合は、リージョンが
     - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062)
     - [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)
 - サービス タグ検出 API (プレビュー) を使用すると、サービス タグの現在の一覧をプログラムで取得できます。 プレビューの段階では、サービス タグ検出 API によって返される情報は、Microsoft ダウンロード センターに公開されている JSON ドキュメントから返される情報よりも古い場合があります。 API サーフェスは、ご自分の自動化の設定に基づいて使用できます。
-    - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
-    - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
-    - [Azure CLI](https://docs.microsoft.com/cli/azure/network#az-network-list-service-tags)
+    - [REST API](/rest/api/virtualnetwork/servicetags/list)
+    - [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
+    - [Azure CLI](/cli/azure/network#az-network-list-service-tags)
 
 サービス タグ API を利用してご使用のサービスのアドレスを取得する方法の詳細については、「[Azure File Sync IP アドレスの許可リスト](storage-sync-files-firewall-and-proxy.md#allow-list-for-azure-file-sync-ip-addresses)」を参照してください。
 
