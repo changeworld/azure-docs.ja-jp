@@ -16,16 +16,16 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f7a1b63864f0fbd945b97d6c2e285bfccbf934f
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 558c6dc24f6d0d17c9a82bbc79f39649f63dc7f4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874545"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658487"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>アプリケーションに同意すると、予期しないエラーが発生する
 
-この記事では、アプリケーションに同意する処理の最中に発生する可能性があるエラーについて説明します。 エラー メッセージが含まれていない、予期しない同意プロンプトをトラブルシューティングをする場合は、「[Azure AD の認証シナリオ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios)」を参照してください。
+この記事では、アプリケーションに同意する処理の最中に発生する可能性があるエラーについて説明します。 エラー メッセージが含まれていない、予期しない同意プロンプトをトラブルシューティングをする場合は、「[Azure AD の認証シナリオ](../develop/authentication-vs-authorization.md)」を参照してください。
 
 Azure Active Directory と統合する多くのアプリケーションが機能するためには、他のリソースへのアクセス許可が必要です。 これらのリソースを Azure Active Directory に統合する際にも、共通同意フレームワークを使用してリソースへのアクセス許可がしばしば要求されます。 同意プロンプトが表示されます。これは、通常は、アプリケーションを初めて使用するときに発生しますが、その後のアプリケーションの使用時にも発生する可能性があります。
 
@@ -90,8 +90,6 @@ Azure Active Directory と統合する多くのアプリケーションが機能
 
 ## <a name="next-steps"></a>次のステップ 
 
-[Azure Active Directory (v1 エンドポイント) のアプリ、アクセス許可、および同意](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
+[Azure Active Directory (v1 エンドポイント) のアプリ、アクセス許可、および同意](../develop/quickstart-register-app.md)<br>
 
-[Azure Active Directory (v2.0 エンドポイント) のスコープ、アクセス許可、および同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
-
-
+[Azure Active Directory (v2.0 エンドポイント) のスコープ、アクセス許可、および同意](../develop/v2-permissions-and-consent.md)

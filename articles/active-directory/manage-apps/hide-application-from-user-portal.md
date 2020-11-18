@@ -12,12 +12,12 @@ ms.date: 03/25/2020
 ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23d2d6645bea6e99e9f62e36364adf8816329c26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0a103ac9b8e6d29830b5ecd6732cd19547014b0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601141"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659065"
 ---
 # <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>Azure Active Directory のエンドユーザーに対してエンタープライズ アプリケーションを非表示にする
 
@@ -47,7 +47,7 @@ MyApps パネルと Microsoft 365 アプリケーション ランチャーにア
 
 ## <a name="use-azure-ad-powershell-to-hide-an-application"></a>Azure AD PowerShell を使用してアプリケーションを非表示にする
 
-MyApps パネルからアプリケーションを非表示にするには、アプリケーションのサービス プリンシパルに HideApp タグを手動で追加します。 次の [AzureAD PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#service_principals) コマンドを実行して、アプリケーションの **[ユーザーに表示しますか?]** プロパティを **[いいえ]** に設定します。 
+MyApps パネルからアプリケーションを非表示にするには、アプリケーションのサービス プリンシパルに HideApp タグを手動で追加します。 次の [AzureAD PowerShell](/powershell/module/azuread/?view=azureadps-2.0#service_principals) コマンドを実行して、アプリケーションの **[ユーザーに表示しますか?]** プロパティを **[いいえ]** に設定します。 
 
 ```PowerShell
 Connect-AzureAD
@@ -74,6 +74,5 @@ MyApps パネルに一切の Microsoft 365 アプリケーションが表示さ�
 ## <a name="next-steps"></a>次のステップ
 * [自分のグループをすべて表示する](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](assign-user-or-group-access-portal.md)
-* [エンタープライズ アプリケーションからユーザーまたはグループの割り当てを削除する](remove-user-or-group-access-portal.md)
-* [エンタープライズ アプリケーションの名前またはロゴを変更する](change-name-or-logo-portal.md)
-
+* [エンタープライズ アプリケーションからユーザーまたはグループの割り当てを削除する](./assign-user-or-group-access-portal.md)
+* [エンタープライズ アプリケーションの名前またはロゴを変更する](./add-application-portal-configure.md)

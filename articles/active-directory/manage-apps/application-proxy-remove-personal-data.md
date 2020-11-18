@@ -15,12 +15,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e78efd71943332e8a40e5b44b6b78f88e516649a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99fb466debd5a2ee4bb659aea3494469a8bbe8e1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84759965"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658419"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシの個人データの削除
 
@@ -35,7 +35,7 @@ Azure Active Directory アプリケーション プロキシでは、デバイ�
 
 ## <a name="remove-personal-data-from-windows-event-logs"></a>Windows イベント ログから個人データを削除する
 
-Windows イベント ログのデータ保有期間を構成する方法については、「[Settings for event logs (イベント ログの設定)](https://technet.microsoft.com/library/cc952132.aspx)」をご覧ください。 Windows イベント ログについては、「[Using Windows Event Log (Windows イベント ログの使用)](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx)」をご覧ください。
+Windows イベント ログのデータ保有期間を構成する方法については、「[Settings for event logs (イベント ログの設定)](https://technet.microsoft.com/library/cc952132.aspx)」をご覧ください。 Windows イベント ログについては、「[Using Windows Event Log (Windows イベント ログの使用)](/windows/win32/wes/using-windows-event-log)」をご覧ください。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 
@@ -54,7 +54,7 @@ Windows イベント ログのデータ保有期間を構成する方法につ�
 
 特定のデータを表示またはエクスポートするには、各コネクタ イベント ログで関連エントリを検索します。 ログは、`C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace` にあります。
 
-ログはテキスト ファイルであるため、[findstr](https://docs.microsoft.com/windows-server/administration/windows-commands/findstr) を使用してユーザーに関連するテキスト エントリを検索できます。  
+ログはテキスト ファイルであるため、[findstr](/windows-server/administration/windows-commands/findstr) を使用してユーザーに関連するテキスト エントリを検索できます。  
 
 個人データを見つけるには、ログ ファイルで ユーザー ID を検索します。
 

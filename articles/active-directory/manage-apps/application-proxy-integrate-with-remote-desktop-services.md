@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 83d7ed6c937d515520058819636bc23c8de173fd
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 03e89b0da25a915a00c70a9a87bd0f675b8e12d6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015278"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658079"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
 
@@ -28,7 +28,7 @@ ms.locfileid: "92015278"
 
 ## <a name="how-application-proxy-fits-in-the-standard-rds-deployment"></a>アプリケーション プロキシが RDS の標準デプロイにどのように適合するか
 
-RDS の標準デプロイには、Windows Server で実行されるさまざまなリモート デスクトップ ロール サービスが含まれています。 [リモート デスクトップ サービスのアーキテクチャ](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture)を見ると、複数のデプロイ オプションがあります。 他の RDS デプロイ オプションとは異なり、[Azure AD アプリケーション プロキシを使用した RDS デプロイ](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture) (次の図に示します) には、コネクタ サービスを実行しているサーバーからの永続的な送信接続があります。 その他のデプロイでは、ロード バランサーを介した着信接続が開いたままになります。
+RDS の標準デプロイには、Windows Server で実行されるさまざまなリモート デスクトップ ロール サービスが含まれています。 [リモート デスクトップ サービスのアーキテクチャ](/windows-server/remote/remote-desktop-services/Desktop-hosting-logical-architecture)を見ると、複数のデプロイ オプションがあります。 他の RDS デプロイ オプションとは異なり、[Azure AD アプリケーション プロキシを使用した RDS デプロイ](/windows-server/remote/remote-desktop-services/Desktop-hosting-logical-architecture) (次の図に示します) には、コネクタ サービスを実行しているサーバーからの永続的な送信接続があります。 その他のデプロイでは、ロード バランサーを介した着信接続が開いたままになります。
 
 ![アプリケーション プロキシは RDS VM とパブリック インターネットの間に位置する](./media/application-proxy-integrate-with-remote-desktop-services/rds-with-app-proxy.png)
 
@@ -37,13 +37,13 @@ RDS デプロイでは、RD Web ロールと RD ゲートウェイ ロールは�
 - ユーザーが RDP 接続を起動すると、RD ゲートウェイが関与するようになります。 RD ゲートウェイは、インターネット経由で送信される暗号化された RDP トラフィックを処理し、ユーザーが接続しているオンプレミスのサーバーに渡します。 このシナリオでは、RD ゲートウェイの受信トラフィックは Azure AD アプリケーション プロキシからのものです。
 
 >[!TIP]
->これまでに RDS をデプロイしていないか、開始する前に詳細情報が必要な場合は、[Azure Resource Manager と Azure Marketplace で RDS をシームレスにデプロイする](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure)方法をご確認ください。
+>これまでに RDS をデプロイしていないか、開始する前に詳細情報が必要な場合は、[Azure Resource Manager と Azure Marketplace で RDS をシームレスにデプロイする](/windows-server/remote/remote-desktop-services/rds-in-azure)方法をご確認ください。
 
 ## <a name="requirements"></a>必要条件
 
 - RD Web と RD ゲートウェイの両方のエンドポイントが同じコンピューター上にあり、ルートが共通である必要があります。 RD Web と RD ゲートウェイはアプリケーション プロキシで単一のアプリケーションとして発行されるため、2 つのアプリケーション間でシングル サインオン エクスペリエンスを実現できます。
 
-- [RDS をデプロイ](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure)し、[アプリケーション プロキシを有効にしている](application-proxy-add-on-premises-application.md)必要があります。
+- [RDS をデプロイ](/windows-server/remote/remote-desktop-services/rds-in-azure)し、[アプリケーション プロキシを有効にしている](application-proxy-add-on-premises-application.md)必要があります。
 
 - エンド ユーザーは、RD Web または RD Web クライアントに接続するために、互換性のあるブラウザーを使用する必要があります。 詳細については、[クライアント構成のサポート](#support-for-other-client-configurations)に関するセクションをご覧ください。
 
@@ -51,7 +51,7 @@ RDS デプロイでは、RD Web ロールと RD ゲートウェイ ロールは�
 
 - Internet Explorer で RDS Web を使用する場合は、RDS ActiveX アドオンを有効にする必要があります。
 
-- RD Web クライアントを使用する場合は、アプリケーション プロキシ [コネクタ バージョン 1.5.1975 以降](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-release-version-history)を使用する必要があります。
+- RD Web クライアントを使用する場合は、アプリケーション プロキシ [コネクタ バージョン 1.5.1975 以降](./application-proxy-release-version-history.md)を使用する必要があります。
 
 - Azure AD の事前認証フローでは、ユーザーは **[RemoteApp およびデスクトップ]** ウィンドウで自分に公開されているリソースにのみ接続できます。 ユーザーは **[リモート PC に接続]** ウィンドウを使用してデスクトップに接続できません。
 
@@ -111,7 +111,7 @@ RDS デプロイに管理者として接続し、デプロイの RD ゲートウ
 リモート デスクトップを構成したため、Azure AD アプリケーション プロキシはインターネットに接続している RDS のコンポーネントを引き継ぎます。 RD Web と RD ゲートウェイのコンピューター上のインターネットに接続しているその他のパブリック エンドポイントは削除できます。
 
 ### <a name="enable-the-rd-web-client"></a>RD Web クライアントを有効にする
-ユーザーも RD Web クライアントを使用できるようにする場合は、「[ユーザー用にリモート デスクトップ Web クライアントをセットアップする](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client-admin)」の手順に従って RD Web クライアントを有効にします。
+ユーザーも RD Web クライアントを使用できるようにする場合は、「[ユーザー用にリモート デスクトップ Web クライアントをセットアップする](/windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client-admin)」の手順に従って RD Web クライアントを有効にします。
 
 リモート デスクトップ Web クライアントを有効にすると、ユーザーは Microsoft Edge、Internet Explorer 11、Google Chrome、Safari、Mozilla Firefox (v55.0 以降) などの HTML5 互換 Web ブラウザーを使用して組織のリモート デスクトップ インフラストラクチャにアクセスできます。
 
@@ -130,7 +130,7 @@ Windows 7 または 10 のコンピューターで Internet Explorer を使用�
 
 | 認証方法 | サポートされているクライアント構成 |
 | --------------------- | ------------------------------ |
-| 事前認証    | RD Web: Internet Explorer または [Edge Chromium IE モード](https://docs.microsoft.com/deployedge/edge-ie-mode)と RDS ActiveX アドオンを使用する Windows 7 または 10 |
+| 事前認証    | RD Web: Internet Explorer または [Edge Chromium IE モード](/deployedge/edge-ie-mode)と RDS ActiveX アドオンを使用する Windows 7 または 10 |
 | 事前認証    | RD Web クライアント: Microsoft Edge、Internet Explorer 11、Google Chrome、Safari、Mozilla Firefox (v55.0 以降) などの HTML5 互換 Web ブラウザー |
 | パススルー | Microsoft リモート デスクトップ アプリケーションをサポートするその他の任意のオペレーティング システム |
 

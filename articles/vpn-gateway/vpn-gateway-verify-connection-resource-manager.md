@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: cherylmc
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fef9eb49b10008c86ee044a199ae69a43585f4f3
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: b59294d07ef64875cb6fbd3e3a49dec61d8b8135
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217973"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659405"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>VPN Gateway 接続の確認
 
@@ -31,7 +31,7 @@ PowerShell を使用して Resource Manager デプロイ モデルでの VPN ゲ
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Azure CLI を使用して Resource Manager デプロイ モデルでの VPN ゲートウェイ接続を確認するには、[CLI コマンドレット](https://docs.microsoft.com/cli/azure/install-azure-cli)の最新バージョン (2.0 以降) をインストールします。
+Azure CLI を使用して Resource Manager デプロイ モデルでの VPN ゲートウェイ接続を確認するには、[CLI コマンドレット](/cli/azure/install-azure-cli)の最新バージョン (2.0 以降) をインストールします。
 
 [!INCLUDE [CLI](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
 

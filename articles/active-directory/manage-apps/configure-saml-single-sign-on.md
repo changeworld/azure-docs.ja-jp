@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: c72a2b134fc2c24789ebb75f61d9b64d63d3d48e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: ec020ecd4c2bcf6e9186afb3d2c4a79ef235c371
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339480"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658912"
 ---
 # <a name="understand-saml-based-single-sign-on"></a>SAML ベースのシングル サインオンについて理解する
 
@@ -30,9 +30,9 @@ Azure AD を ID プロバイダー (IdP) として使用し、シングル サ�
 [クイックスタート シリーズ](add-application-portal-setup-sso.md)には、シングル サインオンの構成に関する記事があります。 そこでは、アプリの SAML 構成ページにアクセスする方法について説明しています。 SAML 構成ページには 5 つのセクションがあります。 これらのセクションについては、この記事で詳しく説明します。
 
 > [!IMPORTANT] 
-> 一部のシナリオでは、 **エンタープライズ アプリケーション** 内のアプリケーションのナビゲーションに **シングル サインオン** オプションが表示されません。 
+> 一部のシナリオでは、**エンタープライズ アプリケーション** 内のアプリケーションのナビゲーションに **シングル サインオン** オプションが表示されません。 
 >
-> **アプリの登録** を使用してアプリケーションが登録された場合、既定では、OIDC OAuth を使用するようにシングル サインオン機能が構成されます。 この場合、 **[シングル サインオン]** オプションは、 **[エンタープライズ アプリケーション]** の下のナビゲーションに表示されません。 **アプリの登録** を使用してカスタム アプリを追加する場合は、マニフェスト ファイルでオプションを構成します。 マニフェスト ファイルの詳細については、「[Azure Active Directory のアプリ マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)」を参照してください。 SSO 標準の詳細については、「[Microsoft ID プラットフォームを使用した認証と承認](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)」を参照してください。 
+> **アプリの登録** を使用してアプリケーションが登録された場合、既定では、OIDC OAuth を使用するようにシングル サインオン機能が構成されます。 この場合、 **[シングル サインオン]** オプションは、 **[エンタープライズ アプリケーション]** の下のナビゲーションに表示されません。 **アプリの登録** を使用してカスタム アプリを追加する場合は、マニフェスト ファイルでオプションを構成します。 マニフェスト ファイルの詳細については、「[Azure Active Directory のアプリ マニフェスト](../develop/reference-app-manifest.md)」を参照してください。 SSO 標準の詳細については、「[Microsoft ID プラットフォームを使用した認証と承認](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-microsoft-identity-platform)」を参照してください。 
 >
 > ナビゲーションに **[シングル サインオン]** が表示されないその他のシナリオには、アプリケーションが別のテナントでホストされている場合や、アカウントに必要なアクセス許可 (グローバル管理者、クラウド アプリケーション管理者、アプリケーション管理者、またはサービス プリンシパルの所有者) がない場合などがあります。 アクセス許可によっては、 **[シングル サインオン]** を開くことができるが、保存できないシナリオが発生する場合もあります。 Azure AD の管理者ロールの詳細については、(https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) を参照してください。
 
@@ -72,7 +72,7 @@ SAML 要求のカスタマイズの詳細については、「[方法: エンタ
 >- Azure portal でカスタム ロールを作成するには、[ロール要求の構成](../develop/active-directory-enterprise-app-role-management.md)に関するページを参照してください。
 >- PowerShell を使用して要求をカスタマイズするには、[要求のカスタマイズ (PowerShell)](../develop/active-directory-claims-mapping.md) に関するページを参照してください。
 >- お使いのアプリケーション向けに省略可能な要求を構成するようアプリケーション マニフェストを変更するには、[省略可能な要求の構成](../develop/active-directory-optional-claims.md)に関するページを参照してください。
->- 更新トークン、アクセス トークン、セッション トークン、ID トークンのトークンの有効期間ポリシーを設定するには、[トークンの有効期間の構成](../develop/active-directory-configurable-token-lifetimes.md)に関するページを参照してください。 また、Azure AD の条件付きアクセスを使用して認証セッションを制限するには、[認証セッションの管理機能](https://go.microsoft.com/fwlink/?linkid=2083106)に関するページを参照してください。
+>- 更新トークン、アクセス トークン、セッション トークン、ID トークンのトークンの有効期間ポリシーを設定するには、[トークンの有効期間の構成](../develop/active-directory-configurable-token-lifetimes.md)に関するページを参照してください。 また、Azure AD の条件付きアクセスを使用して認証セッションを制限するには、[認証セッションの管理機能](../conditional-access/howto-conditional-access-session-lifetime.md)に関するページを参照してください。
 
 ## <a name="saml-signing-certificate"></a>SAML 署名証明書
 
@@ -84,8 +84,8 @@ Azure AD では、アプリケーションに送信する SAML トークンの�
 Azure AD の **[SAML によるシングル サインオンのセットアップ]** メイン ページから直接、Base64 または未加工形式でアクティブな証明書をダウンロードできます。 また、アクティブな証明書は、アプリケーションのメタデータ XML ファイルをダウンロードするか、アプリのフェデレーション メタデータ URL を使用して取得することもできます。 証明書 (アクティブまたは非アクティブ) を表示、作成、またはダウンロードするには、次の手順を実行します。
 
 証明書を検証するための一般的な確認事項としては、次のようなものがあります。 
-   - " *正しい有効期限。* " 最大 3 年間の有効期限を構成できます。
-   - " *適切な証明書の状態がアクティブになっていること。* " 状態が **非アクティブ** の場合は、 **アクティブ** に変更します。 状態を変更するには、目的の証明書の行を右クリックし、 **[証明書をアクティブにする]** を選択します。
+   - "*正しい有効期限。* " 最大 3 年間の有効期限を構成できます。
+   - "*適切な証明書の状態がアクティブになっていること。* " 状態が **非アクティブ** の場合は、**アクティブ** に変更します。 状態を変更するには、目的の証明書の行を右クリックし、 **[証明書をアクティブにする]** を選択します。
    - *適切な署名オプションおよびアルゴリズム。*
    - *適切な通知用メール アドレス。* アクティブな証明書の有効期限が近づくと、Azure AD は、このフィールドに構成されている電子メール アドレスに通知を送信します。
 
@@ -128,12 +128,12 @@ SAML ベースの ID プロバイダーとして Azure AD を使用するよう�
 
 4. 成功するまでテストを再実行します。
 
-詳細については、「[Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする](../azuread-dev/howto-v1-debug-saml-sso-issues.md)」を参照してください。
+詳細については、「[Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする](./debug-saml-sso-issues.md)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
 - [アプリケーション管理のクイックスタート シリーズ](view-applications-portal.md)
-- [アプリケーションにユーザーまたはグループを割り当てる](methods-for-assigning-users-and-groups.md)
+- [アプリケーションにユーザーまたはグループを割り当てる](./assign-user-or-group-access-portal.md)
 - [自動ユーザー アカウント プロビジョニングを構成する](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 - [シングル サインオンの SAML プロトコル](../develop/single-sign-on-saml-protocol.md)

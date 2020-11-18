@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 9c5e57f2eb3c38a7df23052a4b3d33bc5a9675fc
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 657221a2acbf592a56cb4659ced2199023bc5e5b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425934"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658793"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel のユーザーとエンティティの行動分析 (UEBA) を使用して高度な脅威を特定する
 
@@ -180,7 +180,7 @@ Azure Sentinel は、セキュリティ アナリストが、ユーザーのベ�
 
 ### <a name="querying-behavior-analytics-data"></a>行動分析データへのクエリ実行
 
-[KQL](https://docs.microsoft.com/azure/data-explorer/kusto/query/) を使用すると、行動分析テーブルにクエリを実行できます。
+[KQL](/azure/data-explorer/kusto/query/) を使用すると、行動分析テーブルにクエリを実行できます。
 
 たとえば、Azure リソースへのサインインに失敗したユーザーのすべてのケースを見つけたい場合 (それがそのユーザーの特定の国からの最初の接続の試みであり、そのユーザーのピアに対してもその国からの接続はまれである場合) は、次のクエリを使用できます。
 

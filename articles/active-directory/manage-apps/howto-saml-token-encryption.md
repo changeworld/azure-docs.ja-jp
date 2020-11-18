@@ -15,12 +15,12 @@ ms.date: 03/13/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 779d1b73f45f9be5b4bd00d546987b7c1e0b6a43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 820e2cb0d422597f0e649e6934fd8bb11c1521db
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763348"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659031"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption"></a>方法:Azure AD SAML トークン暗号化の構成
 
@@ -124,7 +124,7 @@ Graph、PowerShell、またはアプリケーション マニフェストを使�
 
 1. 最新の Azure AD PowerShell モジュールを使用して、テナントに接続します。
 
-1. **[Set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** コマンドを使用して、トークン暗号化設定を設定します。
+1. **[Set-AzureApplication](/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** コマンドを使用して、トークン暗号化設定を設定します。
 
     ```
     Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>
@@ -144,7 +144,7 @@ Graph、PowerShell、またはアプリケーション マニフェストを使�
 
 1. ドロップダウン リストから **[すべてのアプリ]** 選択してすべてのアプリを表示し、構成するエンタープライズ アプリケーションを選択します。
 
-1. アプリケーションのページで、 **[マニフェスト]** を選択して[アプリケーション マニフェスト](../develop/reference-app-manifest.md)を編集します。
+1. アプリケーションのページで、 **[マニフェスト]** を選択して [アプリケーション マニフェスト](../develop/reference-app-manifest.md)を編集します。
 
 1. `tokenEncryptionKeyId` 属性の値を設定します。
 

@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 38bff38ebe44d9018299444b89d7743c4cc92b72
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: ef38c5364a0df1df63be825e2c46009174840b72
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424193"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658130"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問
 
@@ -58,7 +58,7 @@ Azure AD アプリケーション プロキシを使用するには、Azure AD P
 アプリケーション プロキシ コネクタは、Azure に対して証明書ベースの認証を実行します。 TLS 終了 (TLS/HTTPS 検査またはアクセラレーション) は、この認証方法を中断するため、サポートされていません。 コネクタから Azure へのトラフィックは、TLS 終了を実行しているデバイスをすべてバイパスする必要があります。  
 
 ### <a name="is-tls-12-required-for-all-connections"></a>すべての接続に TLS 1.2 が必要ですか。
-はい。 Application Proxy サービスでは、お客様にクラス最高の暗号化を提供するために、アクセスが TLS 1.2 プロトコルのみに制限されています。 これらの変更は段階的にロールアウトされ、2019 年 8 月 31 日以降に有効となりました。 すべてのクライアントとサーバーおよびブラウザーとサーバーの組み合わせが、TLS 1.2 を使用して Application Proxy サービスへの接続を維持するように更新されていることを確認してください。 これらには、Application Proxy を通じて公開されたアプリケーションにアクセスするためにユーザーが使用しているクライアントも含まれます。 便利な参考資料とリソースについては、「[Office 365 での TLS 1.2 に対する準備](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365)」を参照してください。
+はい。 Application Proxy サービスでは、お客様にクラス最高の暗号化を提供するために、アクセスが TLS 1.2 プロトコルのみに制限されています。 これらの変更は段階的にロールアウトされ、2019 年 8 月 31 日以降に有効となりました。 すべてのクライアントとサーバーおよびブラウザーとサーバーの組み合わせが、TLS 1.2 を使用して Application Proxy サービスへの接続を維持するように更新されていることを確認してください。 これらには、Application Proxy を通じて公開されたアプリケーションにアクセスするためにユーザーが使用しているクライアントも含まれます。 便利な参考資料とリソースについては、「[Office 365 での TLS 1.2 に対する準備](/microsoft-365/compliance/prepare-tls-1.2-in-office-365)」を参照してください。
 
 ### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>コネクタ サーバーとバックエンド アプリケーション サーバーの間に転送プロキシ デバイスを配置できますか。
 はい。このシナリオは、コネクタ バージョン 1.5.1526.0 以降でサポートされています。 「[既存のオンプレミス プロキシ サーバーと連携する](application-proxy-configure-connectors-with-proxy-servers.md)」を参照してください。
@@ -102,7 +102,7 @@ SSL 証明書のアップロード後に、ポータルに「証明書が無効�
 
 ### <a name="how-do-i-change-the-landing-page-my-application-loads"></a>アプリケーションで読み込むランディング ページを変更する方法を教えてください。
 
-[アプリケーションの登録] ページで、ホームページの URL を任意のランディング ページの外部 URL に変更できます。 アプリケーションがマイ アプリまたは Office 365 ポータルから起動されると、指定したページが読み込まれます。 構成手順については、「[Azure AD アプリケーション プロキシを使用して、発行されたアプリのカスタム ホーム ページを設定する](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-home-page)」を参照してください
+[アプリケーションの登録] ページで、ホームページの URL を任意のランディング ページの外部 URL に変更できます。 アプリケーションがマイ アプリまたは Office 365 ポータルから起動されると、指定したページが読み込まれます。 構成手順については、「[Azure AD アプリケーション プロキシを使用して、発行されたアプリのカスタム ホーム ページを設定する](./application-proxy-configure-custom-home-page.md)」を参照してください
 
 ### <a name="can-only-iis-based-applications-be-published-what-about-web-applications-running-on-non-windows-web-servers-does-the-connector-have-to-be-installed-on-a-server-with-iis-installed"></a>公開できるのは IIS ベースのアプリケーションのみですか。 Windows 以外の Web サーバーで実行されている Web アプリケーションを公開することはできますか。 コネクタを IIS がインストールされているサーバーにインストールする必要はありますか。
 
@@ -171,7 +171,7 @@ NTLM 認証は、事前認証またはシングル サインオンの方法と�
 
 ### <a name="can-i-use-the-sharepoint-mobile-app-ios-android-to-access-a-published-sharepoint-server"></a>SharePoint モバイル アプリ (iOS/Android) を使用して、公開された SharePoint サーバーにアクセスできますか。
 
-[SharePoint モバイルアプリ](https://docs.microsoft.com/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises)では、現在、Azure Active Directory 事前認証はサポートされていません。
+[SharePoint モバイルアプリ](/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises)では、現在、Azure Active Directory 事前認証はサポートされていません。
 
 ## <a name="active-directory-federation-services-ad-fs-publishing"></a>Active Directory フェデレーション サービス (AD FS) の公開 
 
@@ -193,7 +193,7 @@ Windows Admin Center (WAC) または Remote Desktop Web クライアント (HTML
 
 はい。 リンク変換の使用はパフォーマンスに影響します。 アプリケーション プロキシ サービスは、アプリケーションでハードコードされたリンクをスキャンし、ユーザーに公開する前にそれぞれ公開されている外部 URL で置換します。 
 
-最適なパフォーマンスを得るには、[カスタム ドメイン](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain)を構成して、同じ内部 URL と外部 URL を使用することをお勧めします。 カスタム ドメインを使用できない場合は、マイ アプリによるセキュリティで保護されたサインイン拡張機能またはモバイルの Microsoft Edge ブラウザーを使用することで、リンク変換のパフォーマンスを向上させることができます。 「[Azure AD アプリケーション プロキシで公開されているアプリのハードコードされたリンクをリダイレクトする](application-proxy-configure-hard-coded-link-translation.md)」を参照してください。
+最適なパフォーマンスを得るには、[カスタム ドメイン](./application-proxy-configure-custom-domain.md)を構成して、同じ内部 URL と外部 URL を使用することをお勧めします。 カスタム ドメインを使用できない場合は、マイ アプリによるセキュリティで保護されたサインイン拡張機能またはモバイルの Microsoft Edge ブラウザーを使用することで、リンク変換のパフォーマンスを向上させることができます。 「[Azure AD アプリケーション プロキシで公開されているアプリのハードコードされたリンクをリダイレクトする](application-proxy-configure-hard-coded-link-translation.md)」を参照してください。
 
 ## <a name="wildcards"></a>ワイルドカード
 
@@ -204,5 +204,5 @@ Windows Admin Center (WAC) または Remote Desktop Web クライアント (HTML
 1. ワイルドカードを使用して HTTP と HTTPS の両方の URL を個別のアプリケーションとして公開し、それぞれに異なるカスタム ドメインを指定します。 この構成は、外部 URL が異なるため可能です。
 
 2. ワイルドカード アプリケーションを使用して HTTPS URL を公開します。 次のアプリケーション プロキシの PowerShell コマンドレットを使用して、HTTP アプリケーションを個別に公開します。
-   - [アプリケーション プロキシ アプリケーションの管理](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management&preserve-view=true)
-   - [アプリケーション プロキシ コネクタの管理](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management&preserve-view=true)
+   - [アプリケーション プロキシ アプリケーションの管理](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management&preserve-view=true)
+   - [アプリケーション プロキシ コネクタの管理](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management&preserve-view=true)

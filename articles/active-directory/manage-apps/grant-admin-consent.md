@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9680c9bee6d0cf5c9605ce7b6009a500abd81ffb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7e56968250c10bb46553e618fd278df7d642683f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369099"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659082"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>アプリケーションに対してテナント全体の管理者の同意を付与する
 
@@ -30,7 +30,7 @@ ms.locfileid: "92369099"
 テナント全体の管理者の同意を付与するには、[グローバル管理者](../roles/permissions-reference.md#global-administrator--company-administrator)、[アプリケーション管理者](../roles/permissions-reference.md#application-administrator)、または[クラウド アプリケーション管理者](../roles/permissions-reference.md#cloud-application-administrator)としてサインインする必要があります。
 
 > [!IMPORTANT]
-> アプリケーションにテナント全体の管理者の同意が付与されていると、ユーザーの割り当てが必要であると構成されていない限り、すべてのユーザーがアプリにサインインできるようになります。 アプリケーションにサインインできるユーザーを制限するには、ユーザー割り当てを要求してから、アプリケーションにユーザーまたはグループを割り当てます。 詳細については、[ユーザーとグループの割り当て方法](methods-for-assigning-users-and-groups.md)に関するページを参照してください。
+> アプリケーションにテナント全体の管理者の同意が付与されていると、ユーザーの割り当てが必要であると構成されていない限り、すべてのユーザーがアプリにサインインできるようになります。 アプリケーションにサインインできるユーザーを制限するには、ユーザー割り当てを要求してから、アプリケーションにユーザーまたはグループを割り当てます。 詳細については、[ユーザーとグループの割り当て方法](./assign-user-or-group-access-portal.md)に関するページを参照してください。
 >
 > Microsoft Graph API にアプリケーション許可のための管理者の同意を与えるには、グローバル管理者ロールが必要です。
 
@@ -43,7 +43,7 @@ ms.locfileid: "92369099"
 
 ### <a name="grant-admin-consent-in-enterprise-apps"></a>エンタープライズ アプリで管理者の同意を付与する
 
-テナントでアプリケーションが既にプロビジョニングされている場合、" *エンタープライズ アプリケーション* " を通じて、テナント全体の管理者の同意を付与できます。 たとえば、少なくとも 1 人のユーザーが既にアプリケーションに同意している場合は、アプリがテナントでプロビジョニングされている可能性があります。 詳細については、「[アプリケーションを Azure AD に追加する方法と理由](../develop/active-directory-how-applications-are-added.md)」を参照してください。
+テナントでアプリケーションが既にプロビジョニングされている場合、"*エンタープライズ アプリケーション*" を通じて、テナント全体の管理者の同意を付与できます。 たとえば、少なくとも 1 人のユーザーが既にアプリケーションに同意している場合は、アプリがテナントでプロビジョニングされている可能性があります。 詳細については、「[アプリケーションを Azure AD に追加する方法と理由](../develop/active-directory-how-applications-are-added.md)」を参照してください。
 
 **[エンタープライズ アプリケーション]** に一覧表示されているアプリにテナント全体の管理者の同意を付与するには:
 
@@ -99,6 +99,6 @@ https://login.microsoftonline.com/{tenant-id}/adminconsent?client_id={client-id}
 
 [管理者の同意ワークフローの構成](configure-admin-consent-workflow.md)
 
-[Microsoft ID プラットフォームでのアクセス許可と同意](../develop/active-directory-v2-scopes.md)
+[Microsoft ID プラットフォームでのアクセス許可と同意](../develop/v2-permissions-and-consent.md)
 
 [StackOverflow での Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

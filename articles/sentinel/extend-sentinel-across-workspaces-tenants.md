@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 502b93b4459fba4da04207d9186f8c7ce6b298c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d13f401fab126f57d07d405ab5d6ce461c26e139
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578480"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658946"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>ワークスペースおよびテナント全体での Azure Sentinel の拡張
 
@@ -84,7 +84,7 @@ Azure Sentinel では[複数ワークスペースのインシデント ビュー
 Azure Sentinel では、[1 つのクエリでの複数のワークスペース](../azure-monitor/log-query/cross-workspace-query.md)の照会がサポートされており、1 つのクエリで複数のワークスペースのデータを検索して関連付けることができます。 
 
 - 異なるワークスペースのテーブルを参照するには、[workspace() 式](../azure-monitor/log-query/workspace-expression.md)を使用します。 
-- 複数のワークスペースの複数のテーブルに対してクエリを適用するには、workspace() 式と共に [union 演算子](https://docs.microsoft.com/azure/data-explorer/kusto/query/unionoperator?pivots=azuremonitor)を使用します。
+- 複数のワークスペースの複数のテーブルに対してクエリを適用するには、workspace() 式と共に [union 演算子](/azure/data-explorer/kusto/query/unionoperator?pivots=azuremonitor)を使用します。
 
 保存されている[関数](../azure-monitor/log-query/functions.md)を使用すると、クロスワークスペース クエリを簡単に行うことができます。 たとえば、ワークスペースへの参照が長い場合、式 `workspace("customer-A's-hard-to-remember-workspace-name").SecurityEvent` を `SecurityEventCustomerA` という名前の関数として保存することができます。 その後、`SecurityEventCustomerA | where ...` のようにクエリを記述できます。
 

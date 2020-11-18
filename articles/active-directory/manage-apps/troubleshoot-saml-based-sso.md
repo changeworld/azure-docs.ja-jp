@@ -10,15 +10,15 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 7f7f999c145903be5db3b20ab60bd0f5a18778ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e8508d4fceb1e7fb580350c726dd70eeaea31c6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89463277"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658878"
 ---
 # <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>Azure Active Directory での SAML に基づいたシングル サインオンをトラブルシューティングする
-アプリケーションを構成しているときに問題が発生する場合は、 アプリケーションのチュートリアルに記載されているすべての手順を実行したことを確認します。 アプリケーションの構成内に、アプリケーションの構成方法についてのインライン ドキュメントがあります。 また、[SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)にアクセスして、詳しいステップ バイ ステップ ガイダンスを参照することもできます。
+アプリケーションを構成しているときに問題が発生する場合は、 アプリケーションのチュートリアルに記載されているすべての手順を実行したことを確認します。 アプリケーションの構成内に、アプリケーションの構成方法についてのインライン ドキュメントがあります。 また、[SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)にアクセスして、詳しいステップ バイ ステップ ガイダンスを参照することもできます。
 
 ## <a name="cant-add-another-instance-of-the-application"></a>アプリケーションの別のインスタンスを追加することができません
 アプリケーションの 2 つ目のインスタンスを追加するには、以下のことができる必要があります。
@@ -31,7 +31,7 @@ ms.locfileid: "89463277"
 識別子または応答 URL を構成できない場合は、ID と応答 URL の値がアプリケーション用に構成済みのパターンに一致していることを確認します。
 
 アプリケーション用に構成済みのパターンを確認するには、次の手順に従います。
-1. [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。既に Azure AD のアプリケーションの構成ブレードが表示されている場合は、手順 7. に進みます。
+1. [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者** または **共同管理者** としてサインインします。既に Azure AD のアプリケーションの構成ブレードが表示されている場合は、手順 7. に進みます。
 2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 4. Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
@@ -42,7 +42,7 @@ ms.locfileid: "89463277"
 8. **[モード]** ボックスの一覧から、**[SAML ベースのサインオン]** を選択します。
 9. **[ドメインと URL]** セクションの **[識別子]** または **[応答 URL]** ボックスに移動します。
 10. アプリケーションでサポートされているパターンを確認するには、次の 3 つの方法があります。
-    * テキスト ボックスで、サポートされているパターンがプレースホルダーとして表示されます (*例: * <https://contoso.com>)。
+    * テキスト ボックスで、サポートされているパターンがプレースホルダーとして表示されます (*例:* <https://contoso.com>)。
     * パターンがサポートされていない場合は、テキスト ボックスに値を入力しようとすると、赤い感嘆符が表示されます。 赤い感嘆符にポインターを置くと、サポートされているパターンが表示されます。
     * アプリケーションのチュートリアルでも、サポートされているパターンに関する情報を取得することができます。 **[Azure AD シングル サインオンの構成]** セクションで、 **[ドメインと URL]** セクションにある、値を構成するための手順に移動します。
 
@@ -53,11 +53,11 @@ ms.locfileid: "89463277"
 ## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>EntityID (ユーザー識別子) の形式はどこで設定しますか
 Azure AD がユーザー認証後の応答でアプリケーションに送信する EntityID (ユーザー ID) の形式は、選択することができません。
 
-Azure AD は、選択した値に基づく NameID 属性 (ユーザー ID) の形式、または SAML AuthRequest でアプリケーションによって要求された形式を選択します。 詳細については、「[シングル サインオンの SAML プロトコル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest)」の「NameIDPolicy」セクションを参照してください。
+Azure AD は、選択した値に基づく NameID 属性 (ユーザー ID) の形式、または SAML AuthRequest でアプリケーションによって要求された形式を選択します。 詳細については、「[シングル サインオンの SAML プロトコル](../develop/single-sign-on-saml-protocol.md#authnrequest)」の「NameIDPolicy」セクションを参照してください。
 
 ## <a name="cant-find-the-azure-ad-metadata-to-complete-the-configuration-with-the-application"></a>アプリケーションでの構成を完了するための Azure AD メタデータが見つかりません
 Azure AD からアプリケーションのメタデータまたは証明書をダウンロードするには、次の手順に従います。
-1. [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
+1. [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者** または **共同管理者** としてサインインします。
 2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 4. Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
@@ -70,7 +70,7 @@ Azure AD からアプリケーションのメタデータまたは証明書を�
 Azure AD には、メタデータを取得する URL は用意されていません。 メタデータは、XML ファイルとしてのみ取得できます。
 
 ## <a name="customize-saml-claims-sent-to-an-application"></a>アプリケーションに送信される SAML 要求をカスタマイズする
-アプリケーションに送信される SAML 属性要求をカスタマイズする方法については、「[Azure Active Directory での要求マッピング](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)」をご覧ください。
+アプリケーションに送信される SAML 属性要求をカスタマイズする方法については、「[Azure Active Directory での要求マッピング](../develop/active-directory-claims-mapping.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 * [アプリケーション管理のクイックスタート シリーズ](view-applications-portal.md)

@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c7e72718e13106b9d895921a2335f1525a7b88c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe4e981782878ce4f86dd7dcb8ae635a60b2405a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763127"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658708"
 ---
 # <a name="one-click-app-configuration-of-single-sign-on"></a>アプリの One Click シングル サインオンの構成
 
@@ -40,7 +40,7 @@ One Click SSO 機能は、SAML プロトコルをサポートする Azure Market
 ## <a name="prerequisites"></a>前提条件
 
 - SSO を構成するアプリケーションのアクティブなサブスクリプション。 また、管理者の資格情報も必要です。
-- ブラウザーにインストールされた、Microsoft の **My Apps Secure Sign-in 拡張機能**。 詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)」を参照してください。
+- ブラウザーにインストールされた、Microsoft の **My Apps Secure Sign-in 拡張機能**。 詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
 ## <a name="one-click-sso-configuration-steps"></a>One Click SSO の構成手順
 
@@ -55,7 +55,7 @@ One Click SSO 機能は、SAML プロトコルをサポートする Azure Market
     > [!NOTE]
     > アプリケーションに構成する必要があるカスタム要求がある場合は、One Click SSO を実行する前にそれらを処理します。
 
-5. Azure Marketplace アプリケーションで One Click SSO 機能を利用できる場合は、次の画面が表示されます。 場合によっては、 **[拡張機能のインストール]** を選択して、**My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+5. Azure Marketplace アプリケーションで One Click SSO 機能を利用できる場合は、次の画面が表示されます。 場合によっては、 **[拡張機能のインストール]** を選択して、**My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
    ![My Apps Secure Sign-in ブラウザー拡張機能をインストールする](./media/one-click-sso-tutorial/install-myappssecure-extension.png)
 
@@ -84,6 +84,5 @@ One Click SSO 機能は、SAML プロトコルをサポートする Azure Market
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
-* [My Apps Secure Sign-in ブラウザー拡張機能の概要](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)
- 
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)
+* [My Apps Secure Sign-in ブラウザー拡張機能の概要](../user-help/my-apps-portal-end-user-access.md)
