@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
-ms.custom: subject-armqs
-ms.openlocfilehash: 9ca92bf81acd72260d89404051f941b317ee3e1d
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.custom: subject-armqs, devx-track-azurecli
+ms.openlocfilehash: 4afaad77fdff7a1ba80a385e9f2c3d8ddef8ab96
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363393"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842109"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Cognitive Services リソースを作成する
 
@@ -61,7 +61,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) を使用し�
     |---------|---------|
     | **サブスクリプション** | Azure サブスクリプションを選択します。 |
     | **リソース グループ** | **[新規作成]** を選択し、リソース グループの一意の名前を入力し、 **[OK]** をクリックします。 |
-    | **リージョン** | リージョンを選択します。  たとえば、 **East US** などとします。 |
+    | **リージョン** | リージョンを選択します。  たとえば、**East US** などとします。 |
     | **Cognitive Service 名** | リソースの一意の名前に置き換えます。 次のセクションでデプロイを検証するときに、その名前が必要です。 |
     | **場所** | 上で使用したリージョンに置き換えます。 |
     | **SKU** | リソースの[価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/)。 |
