@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 0c05db39e02a6bc2a7fa5d62b8b891626eb0d241
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 362f46290bbe2008f9fb862a8711577050050192
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675796"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693251"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Azure Cognitive Search でのクエリの種類と構成
 
@@ -33,15 +33,15 @@ Azure Cognitive Search では、クエリにラウンドトリップ処理すべ
 }
 ```
 
-+ **`queryType`** にはパーサーを設定します。設定できるのは、 [既定の単純なクエリ パーサー](search-query-simple-examples.md) (フル テキスト検索に最適) または、正規表現、近接検索、ファジー検索、ワイルドカード検索など高度なクエリ構成で使用される [完全な Lucene クエリ パーサー](search-query-lucene-examples.md)です。
++ **`queryType`** にはパーサーを設定します。設定できるのは、[既定の単純なクエリ パーサー](search-query-simple-examples.md) (フル テキスト検索に最適) または、正規表現、近接検索、ファジー検索、ワイルドカード検索など高度なクエリ構成で使用される [完全な Lucene クエリ パーサー](search-query-lucene-examples.md)です。
 
-+ **`search`** には一致条件を指定します。通常は用語全体またはフレーズですが、ブール演算子が伴う場合もよくあります。 1 つの用語を単独で指定すると、" *用語* " クエリです。 複数の部分を引用符で囲むと、" *フレーズ* " クエリです。 **`search=*`** のように、検索は未定義にすることができます。ただし、一致条件がないために、結果セットは任意の選択されたドキュメントで構成されます。
++ **`search`** には一致条件を指定します。通常は用語全体またはフレーズですが、ブール演算子が伴う場合もよくあります。 1 つの用語を単独で指定すると、"*用語*" クエリです。 複数の部分を引用符で囲むと、"*フレーズ*" クエリです。 **`search=*`** のように、検索は未定義にすることができます。ただし、一致条件がないために、結果セットは任意の選択されたドキュメントで構成されます。
 
-+ **`searchFields`** は、クエリの実行を特定のフィールドに制限します。 インデックス スキーマ内で " *検索可能* " の属性を持つフィールドは、このパラメーターの候補になります。
++ **`searchFields`** は、クエリの実行を特定のフィールドに制限します。 インデックス スキーマ内で "*検索可能*" の属性を持つフィールドは、このパラメーターの候補になります。
 
 応答も、クエリに指定するパラメーターによって形成されます。
 
-+ **`select`** : 応答で返すフィールドを指定します。 select ステートメントでは、インデックスで " *取得可能* " とマークされたフィールドのみを使用できます。
++ **`select`** : 応答で返すフィールドを指定します。 select ステートメントでは、インデックスで "*取得可能*" とマークされたフィールドのみを使用できます。
 
 + **`top`** : 指定した数の最もよく一致するドキュメントを返します。 この例では、10 個のヒットのみが返されます。 top と skip (ここには非表示) を使用して、結果のページを移動することができます。
 
@@ -61,7 +61,7 @@ Azure Cognitive Search では、クエリ実行の対象となるのは常に、
 
 Azure Cognitive Search では、インデックスの設計とクエリの設計は密接に関連しています。 事前に知っておくべき基本的な事実は、各フィールドに属性が設定された *インデックス スキーマ* によって、構築できるクエリの種類が決まるということです。 
 
-フィールドのインデックス属性によって、許可される操作が設定されます。フィールドがインデックス内で " *検索可能* " か、結果に " *取得可能* " か、" *ソート可能* " か、" *フィルター可能* " かなどです。 例のクエリ文字列で `"$orderby": "Rating"` が処理されるのは、Rating フィールドがインデックス スキーマで " *ソート可能* " とマークされているためです。 
+フィールドのインデックス属性によって、許可される操作が設定されます。フィールドがインデックス内で "*検索可能*" か、結果に "*取得可能*" か、"*ソート可能*" か、"*フィルター可能*" かなどです。 例のクエリ文字列で `"$orderby": "Rating"` が処理されるのは、Rating フィールドがインデックス スキーマで "*ソート可能*" とマークされているためです。 
 
 ![ホテル サンプルのインデックス定義](./media/search-query-overview/hotel-sample-index-definition.png "ホテル サンプルのインデックス定義")
 
@@ -91,7 +91,7 @@ Azure Cognitive Search では、インデックスの設計とクエリの設計
 | 手法 | 説明 |
 |-------------|-------------|
 | [Search エクスプローラー (ポータル)](search-explorer.md) | 検索バーのほか、インデックスと API バージョンの選択に関するオプションが用意されています。 結果は JSON ドキュメントとして返されます。 探索、テスト、検証用に推奨されます。 <br/>[詳細情報。](search-get-started-portal.md#query-index) | 
-| [Postman またはその他の REST ツール](search-get-started-postman.md) | Web テスト ツールは、REST 呼び出しを作成するための優れた選択肢です。 REST API では、Azure Cognitive Search で利用可能なすべての操作をサポートします。 この記事では、Azure Cognitive Search に要求を送信するために HTTP 要求のヘッダーと本文を設定する方法について学習します。  |
+| [Postman またはその他の REST ツール](search-get-started-rest.md) | Web テスト ツールは、REST 呼び出しを作成するための優れた選択肢です。 REST API では、Azure Cognitive Search で利用可能なすべての操作をサポートします。 この記事では、Azure Cognitive Search に要求を送信するために HTTP 要求のヘッダーと本文を設定する方法について学習します。  |
 | [SearchClient (.NET)](/dotnet/api/azure.search.documents.searchclient) | Azure Cognitive Search のインデックスに対してクエリを実行するために使用できるクライアント。  <br/>[詳細情報。](search-howto-dotnet-sdk.md)  |
 | [Search Documents (REST API)](/rest/api/searchservice/search-documents) | インデックスに対する GET メソッドまたは POST メソッド。追加の入力には、クエリ パラメーターを使用します。  |
 
@@ -107,7 +107,7 @@ Azure Cognitive Search は、Apache Lucene を基盤としており、一般的�
 queryType=simple&search=ocean historic^3&searchFields=Description, Tags&$select=HotelId, HotelName, Tags, Description&$count=true
 ```
 
-完全な Lucene パーサーを使用した同じクエリでは、`^3` がフィールド内の語句ブースターとして解釈されます。 パーサーを切り替えると順位が変更され、 *historic* という用語が含まれた結果が表示されます。
+完全な Lucene パーサーを使用した同じクエリでは、`^3` がフィールド内の語句ブースターとして解釈されます。 パーサーを切り替えると順位が変更され、*historic* という用語が含まれた結果が表示されます。
 
 ```
 queryType=full&search=ocean historic^3&searchFields=Description, Tags&$select=HotelId, HotelName, Tags, Description&$count=true
@@ -121,8 +121,8 @@ Azure Cognitive Search では、幅広いクエリの種類がサポートされ
 
 | クエリの種類 | 使用法 | 例と詳細 |
 |------------|--------|-------------------------------|
-| 自由形式のテキスト検索 | search パラメーターといずれかのパーサー| フルテキスト検索は、インデックスのすべての " *検索可能* " フィールドで 1 つ以上の語句をスキャンし、Google や Bing などの検索エンジンに期待するのと同様に機能します。 最初の例はフルテキスト検索です。<br/><br/>フルテキスト検索では、標準の Lucene アナライザーを使用した語彙分析が行われ (既定)、すべての語句を小文字に変換し、"the" のようなストップワードを除去します。 語彙分析を変更する[英語以外のアナライザー](index-add-language-analyzers.md#language-analyzer-list)や[言語に関係なく使える特別なアナライザー](index-add-custom-analyzers.md#AnalyzerTable)を使用して、既定値をオーバーライドできます。 たとえば、フィールドの内容全体を 1 つのトークンとして扱う [keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) です。 これは、郵便番号、ID、製品名などのデータで役立ちます。 | 
-| フィルター検索 | [OData フィルター式](query-odata-filter-orderby-syntax.md)といずれかのパーサー | フィルター クエリは、インデックスのすべての " *フィルター処理可能* " フィールドでブール式を評価します。 検索クエリと異なり、フィルター クエリはフィールドの内容を厳密に照合します。たとえば、文字列フィールドでは大文字と小文字が区別されます。 もう 1 つの違いは、フィルター クエリは OData 構文で表されることです。 <br/>[フィルター式の例](search-query-simple-examples.md#example-3-filter-queries) |
+| 自由形式のテキスト検索 | search パラメーターといずれかのパーサー| フルテキスト検索は、インデックスのすべての "*検索可能*" フィールドで 1 つ以上の語句をスキャンし、Google や Bing などの検索エンジンに期待するのと同様に機能します。 最初の例はフルテキスト検索です。<br/><br/>フルテキスト検索では、標準の Lucene アナライザーを使用した語彙分析が行われ (既定)、すべての語句を小文字に変換し、"the" のようなストップワードを除去します。 語彙分析を変更する[英語以外のアナライザー](index-add-language-analyzers.md#language-analyzer-list)や[言語に関係なく使える特別なアナライザー](index-add-custom-analyzers.md#AnalyzerTable)を使用して、既定値をオーバーライドできます。 たとえば、フィールドの内容全体を 1 つのトークンとして扱う [keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) です。 これは、郵便番号、ID、製品名などのデータで役立ちます。 | 
+| フィルター検索 | [OData フィルター式](query-odata-filter-orderby-syntax.md)といずれかのパーサー | フィルター クエリは、インデックスのすべての "*フィルター処理可能*" フィールドでブール式を評価します。 検索クエリと異なり、フィルター クエリはフィールドの内容を厳密に照合します。たとえば、文字列フィールドでは大文字と小文字が区別されます。 もう 1 つの違いは、フィルター クエリは OData 構文で表されることです。 <br/>[フィルター式の例](search-query-simple-examples.md#example-3-filter-queries) |
 | 地理空間検索 | フィールドの [Edm.GeographyPoint 型](/rest/api/searchservice/supported-data-types)、フィルター式、いずれかのパーサー | Edm.GeographyPoint 型のフィールドに格納された座標が、"近くを探す" つまりマップに基づいた検索コントロールで使用されます。 <br/>[地理空間検索の例](search-query-simple-examples.md#example-5-geo-search)|
 | 範囲検索 | フィルター式と単純なパーサー | Azure Cognitive Search では、範囲クエリは filter パラメーターを使用して作成されます。 <br/>[範囲フィルターの例](search-query-simple-examples.md#example-4-range-filters) | 
 | [フィールド検索](query-lucene-syntax.md#bkmk_fields) | search パラメーターと完全なパーサー | 1 つのフィールドを対象とする複合クエリ式を作成します。 <br/>[フィールド検索の例](search-query-lucene-examples.md#example-2-fielded-search) |

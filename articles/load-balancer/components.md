@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 97b872c5fe0a155bb6e474f327f8d0c65e22b21f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: bf7a35e8cedbe62aafb29aa6d9dc8fcb42e90b2e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317450"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693768"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer のコンポーネント
 
@@ -128,7 +128,7 @@ Basic Load Balancer では、アウトバウンド規則がサポートされて
 
 ## <a name="limitations"></a>制限事項
 
-- Load Balancer の[制限](https://aka.ms/lblimits)を確認してください 
+- Load Balancer の[制限](../azure-resource-manager/management/azure-subscription-service-limits.md)を確認してください 
 - ロード バランサーは特定の TCP または UDP プロトコルに対する負荷分散とポート フォワーディングを行います。 負荷分散規則と受信 NAT 規則は TCP および UDP をサポートしますが、ICMP を含む他の IP プロトコルはサポートしていません。
 - 内部 Load Balancer のフロントエンドへのバックエンド VM からのアウトバウンド フローは失敗します。
 - ロード バランサーの規則は、2 つの仮想ネットワークにまたがることはできません。  フロントエンドとそのバックエンド インスタンスは、同じ仮想ネットワークに配置されている必要があります。  
@@ -138,12 +138,12 @@ Basic Load Balancer では、アウトバウンド規則がサポートされて
 
 - Load Balancer の使用を開始するには、[パブリック Standard Load Balancer の作成](quickstart-load-balancer-standard-public-portal.md)に関するページを参照してください。
 - [Azure Load Balancer](load-balancer-overview.md) についてさらに詳しく学習する。
-- [パブリック IP アドレス](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)について学習する。
-- [プライベート IP アドレス](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)について学習する。
+- [パブリック IP アドレス](../virtual-network/virtual-network-public-ip-address.md)について学習する。
+- [プライベート IP アドレス](../virtual-network/private-ip-addresses.md)について学習する。
 - [Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)の使用について学習する。
 - [Standard Load Balancer の診断](load-balancer-standard-diagnostics.md)について学習する。
 - [アイドル時の TCP リセット](load-balancer-tcp-reset.md)について学習する。
 - [HA ポート負荷分散ルールでの Standard Load Balancer](load-balancer-ha-ports-overview.md) について学習する。
-- [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)の詳細を確認する。
-- [ロード バランサーの制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)について詳細を確認する。
-- [ポート フォワーディング](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal)の使用について学習する。
+- [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)の詳細を確認する。
+- [ロード バランサーの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)について詳細を確認する。
+- [ポート フォワーディング](./tutorial-load-balancer-port-forwarding-portal.md)の使用について学習する。

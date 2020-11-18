@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5dbad07401d77a15cd860a8ae492560c5fced819
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d071bbabf630dd326ae46f4c840f8e60f957f9fe
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310618"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685632"
 ---
 # <a name="query-json-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プール (プレビュー) を使用して JSON ファイルのクエリを実行する
 

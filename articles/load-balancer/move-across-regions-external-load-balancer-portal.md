@@ -6,18 +6,18 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 0598f21cddbaeef6b3cd10cd77250eeae8bd34bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f83ff3d1d03354daef3466c1f48eaa505e378634
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84808709"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693751"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Azure portal を使用して外部ロード バランサーを別のリージョンに移動する
 
 外部ロード バランサーをリージョン間で移動する必要があるさまざまなシナリオがあります。 たとえば、テスト用に同じ構成でもう 1 つの外部ロード バランサーを作成する必要がある場合があります。 ディザスター リカバリー計画の一部として、外部ロード バランサーを別のリージョンに移動する必要がある場合もあります。
 
-文字どおりの意味では、Azure 外部ロード バランサーをリージョン間で移動することはできません。 しかし、Azure Resource Manager テンプレートを使用して、外部ロード バランサーの既存の構成とパブリック IP アドレスをエクスポートすることはできます。 その後、ロード バランサーとパブリック IP をテンプレートにエクスポートして別のリージョンにリソースをステージし、宛先リージョンに合わせてパラメーターを変更してから、新しいリージョンにテンプレートをデプロイできます。 Resource Manager とテンプレートの詳細については、「[リソース グループをテンプレートにエクスポートする](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)」を参照してください。
+文字どおりの意味では、Azure 外部ロード バランサーをリージョン間で移動することはできません。 しかし、Azure Resource Manager テンプレートを使用して、外部ロード バランサーの既存の構成とパブリック IP アドレスをエクスポートすることはできます。 その後、ロード バランサーとパブリック IP をテンプレートにエクスポートして別のリージョンにリソースをステージし、宛先リージョンに合わせてパラメーターを変更してから、新しいリージョンにテンプレートをデプロイできます。 Resource Manager とテンプレートの詳細については、「[リソース グループをテンプレートにエクスポートする](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)」を参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -32,7 +32,7 @@ ms.locfileid: "84808709"
 
 - Azure サブスクリプションで、ターゲット リージョンに外部ロード バランサーを作成できることを確認します。 サポートに連絡して、必要なクォータを有効にしてください。
 
-- 自分のサブスクリプションに、ロード バランサーの追加をサポートするのに十分なリソースがあることを確認してください。 「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)」をご覧ください。
+- 自分のサブスクリプションに、ロード バランサーの追加をサポートするのに十分なリソースがあることを確認してください。 「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)」をご覧ください。
 
 ## <a name="prepare-and-move"></a>準備と移動
 次の手順では、Resource Manager テンプレートを使って外部ロード バランサーの移動を準備し、Azure portal を使用して外部ロード バランサーの構成をターゲット リージョンに移動する方法を示します。 まず、外部ロード バランサーのパブリック IP 構成をエクスポートする必要があります。
@@ -110,9 +110,9 @@ ms.locfileid: "84808709"
             },
         ```
 
-        Basic と Standard SKU のパブリック IP の違いについては、「[パブリック IP アドレスの作成、変更、削除](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)」を参照してください。
+        Basic と Standard SKU のパブリック IP の違いについては、「[パブリック IP アドレスの作成、変更、削除](../virtual-network/virtual-network-public-ip-address.md)」を参照してください。
 
-    * **パブリック IP の割り当て方法**と**アイドル タイムアウト**。 パブリック IP の割り当て方法を変更するには、**publicIPAllocationMethod** プロパティを **Dynamic** から **Static**、または **Static** から **Dynamic** に変更します。 アイドル タイムアウトを変更するには、**idleTimeoutInMinutes** プロパティを目的の値に変更します。 既定値は **4** です。
+    * **パブリック IP の割り当て方法** と **アイドル タイムアウト**。 パブリック IP の割り当て方法を変更するには、**publicIPAllocationMethod** プロパティを **Dynamic** から **Static**、または **Static** から **Dynamic** に変更します。 アイドル タイムアウトを変更するには、**idleTimeoutInMinutes** プロパティを目的の値に変更します。 既定値は **4** です。
 
         ```json
           "resources": [
@@ -136,7 +136,7 @@ ms.locfileid: "84808709"
 
         ```
 
-        割り当て方法とアイドル タイムアウト値については、「[パブリック IP アドレスの作成、変更、削除](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)」を参照してください。
+        割り当て方法とアイドル タイムアウト値については、「[パブリック IP アドレスの作成、変更、削除](../virtual-network/virtual-network-public-ip-address.md)」を参照してください。
 
  
 13. オンライン エディターで **[保存]** を選択します。
@@ -183,7 +183,7 @@ ms.locfileid: "84808709"
     1. 別のブラウザー タブまたはウィンドウで、[Azure portal](https://portal.azure.com) にサインインし、 **[リソース グループ]** を選択します。
     2. 前の手順で移動したパブリック IP が含まれている移動先リソース グループを探します。 それを選択します。
     3. **[設定]**  >  **[プロパティ]** の順に選択します。
-    4. 右側のブレードで**リソース ID** を強調表示し、それをクリップボードにコピーします。 または、 **[リソース ID]** パスの右側にある **[クリップボードにコピー]** を選択することもできます。
+    4. 右側のブレードで **リソース ID** を強調表示し、それをクリップボードにコピーします。 または、 **[リソース ID]** パスの右側にある **[クリップボードにコピー]** を選択することもできます。
     5. 別のブラウザー ウィンドウまたはタブで開いた **[パラメーターの編集]** エディターで、**value** プロパティにリソース ID を貼り付けます。
 
         ```json
@@ -202,7 +202,7 @@ ms.locfileid: "84808709"
     6. オンライン エディターで **[保存]** を選択します。
 
 
-7.  ロード バランサー用にアウトバウンド NAT とアウトバウンド規則を構成した場合、このファイルには、アウトバウンド パブリック IP 用の外部 ID の 3 つ目のエントリが示されます。 **移動先リージョン**で前の手順を繰り返してアウトバウンド パブリック IP 用の ID を取得します。 その ID を parameters.json ファイルに貼り付けます。
+7.  ロード バランサー用にアウトバウンド NAT とアウトバウンド規則を構成した場合、このファイルには、アウトバウンド パブリック IP 用の外部 ID の 3 つ目のエントリが示されます。 **移動先リージョン** で前の手順を繰り返してアウトバウンド パブリック IP 用の ID を取得します。 その ID を parameters.json ファイルに貼り付けます。
 
     ```json
             "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -257,7 +257,7 @@ ms.locfileid: "84808709"
                 "tier": "Regional"
             },
         ```
-      Basic SKU と Standard SKU のロード バランサーの違いについては、「[Azure Standard Load Balancer の概要](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)」を参照してください。
+      Basic SKU と Standard SKU のロード バランサーの違いについては、「[Azure Standard Load Balancer の概要](./load-balancer-overview.md)」を参照してください。
 
     * **負荷分散規則**。 構成の負荷分散規則を追加または削除できます。そのためには、template.json ファイルの **loadBalancingRules** セクションでエントリを追加または削除します。
 
@@ -385,7 +385,7 @@ ms.locfileid: "84808709"
                 ]
         ```
 
-         詳細については、「[Load Balancer のアウトバウンド規則](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)」を参照してください。
+         詳細については、「[Load Balancer のアウトバウンド規則](./load-balancer-outbound-connections.md#outboundrules)」を参照してください。
 
 12. オンライン エディターで **[保存]** を選択します。
 
@@ -414,5 +414,5 @@ ms.locfileid: "84808709"
 このチュートリアルでは、Azure 外部ロード バランサーをあるリージョンから別のリージョンに移動し、ソース リソースをクリーンアップしました。 リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、以下を参照してください。
 
 
-- [リソースを新しいリソース グループまたはサブスクリプションに移動する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Azure VM を別のリージョンに移動する](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [リソースを新しいリソース グループまたはサブスクリプションに移動する](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Azure VM を別のリージョンに移動する](../site-recovery/azure-to-azure-tutorial-migrate.md)

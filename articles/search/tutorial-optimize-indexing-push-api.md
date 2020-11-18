@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/12/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 13825422358fdddf6742353fbabaac0303b0c82e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d22ff5c863617a3feb2a08d4b1889d0a7c10cd3a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973446"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693401"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>チュートリアル:プッシュ API を使用してインデックス作成を最適化する
 
@@ -73,7 +73,7 @@ API 呼び出しには、サービス URL とアクセス キーが必要です�
 
 1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
-   ![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-postman/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
+   ![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-rest/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
 
 ## <a name="2---set-up-your-environment"></a>2 - 環境を設定する
 
@@ -162,7 +162,7 @@ List<Hotel> hotels = dg.GetHotels(numDocuments, "large");
 Azure Cognitive Search は、1 つまたは複数のドキュメントをインデックスに読み込む次の API をサポートしています。
 
 + [ドキュメントの追加、更新、削除 (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [IndexDocumentsAction class](/dotnet/api/azure.search.documents.models.indexdocumentsaction?view=azure-dotnet) または [IndexDocumentsBatch class](/dotnet/api/azure.search.documents.models.indexdocumentsbatch?view=azure-dotnet)
++ [IndexDocumentsAction class](/dotnet/api/azure.search.documents.models.indexdocumentsaction) または [IndexDocumentsBatch class](/dotnet/api/azure.search.documents.models.indexdocumentsbatch)
 
 ドキュメントのインデックスをバッチ単位で作成することによって、インデックス作成のパフォーマンスが大幅に向上します。 バッチの最大サイズは、1,000 ドキュメントまたは約 16 MB です。
 

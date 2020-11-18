@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 098256c3174f5a737bec4f6a62cb1d2af99e6f4f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a284e453a621860c0aebf68bef13d30e77971f88
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311073"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686159"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Visual Studio と SSDT を使用して Synapse SQL に接続する
 
@@ -53,7 +53,7 @@ Visual Studio を使用して Azure Synapse Analytics を使用した専用 SQL 
     ![[サーバーへの接続]](./media/get-started-visual-studio/connection-dialog.png)
    
    * **[サーバー名]** : 前の手順で特定した **サーバー名** を入力します。
-   * **認証** : **[SQL Server 認証]** または **[Active Directory 統合認証]** を選択します。
+   * **認証**: **[SQL Server 認証]** または **[Active Directory 統合認証]** を選択します。
    * **[ユーザー名]** と **[パスワード]** : 先ほど [SQL Server 認証] を選択した場合は、ユーザー名とパスワードを入力します。
    * **[Connect]** をクリックします。
 5. 確認のために、Azure SQL Server を展開します。 サーバーに関連付けられているデータベースが表示されます。 AdventureWorksDW を展開すると、サンプル データベース内のテーブルが表示されます。

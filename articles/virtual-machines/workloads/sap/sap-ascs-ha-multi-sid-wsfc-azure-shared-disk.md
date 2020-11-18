@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c8116f3e00d13c0bd1e5f075a7fbe3264f337079
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: df611e01fefacd22f4dc026a819d4c71ede6e7e3
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970403"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686091"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>Windows Server フェールオーバー クラスタリングと Azure 共有ディスクを使用した SAP ASCS/SCS インスタンスのマルチ SID 高可用性
 
@@ -35,12 +35,12 @@ ms.locfileid: "91970403"
 現時点では、SAP ASCS/SCS インスタンスの Azure 共有ディスクとして Azure Premium SSD ディスクを使用できます。 次の制限事項が適用されます。
 
 -  [Azure Ultra Disk](../../disks-types.md#ultra-disk) は、SAP ワークロード用の Azure 共有ディスクとしてはサポートされていません。 現時点では、Azure Ultra Disk を可用性セット内で使用して、Azure VM を配置することはできません
--  Premium SSD ディスクを使用した [Azure 共有ディスク](../../windows/disks-shared.md)は、可用性セット内の VM でのみサポートされています。 Availability Zones のデプロイではサポートされていません。 
+-  Premium SSD ディスクを使用した [Azure 共有ディスク](../../disks-shared.md)は、可用性セット内の VM でのみサポートされています。 Availability Zones のデプロイではサポートされていません。 
 -  Azure 共有ディスクの値 [maxShares](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) によって、その共有ディスクを使用できるクラスター ノードの数が決まります。 通常、SAP ASCS/SCS インスタンスには、Windows フェールオーバー クラスターに 2 つのノードを構成するため、`maxShares` の値は 2 に設定する必要があります。
 -  すべての SAP ASCS/SCS クラスター VM が、同じ [Azure 近接配置グループ](../../windows/proximity-placement-groups.md)にデプロイされる必要があります。   
    Windows クラスター VM を、PPG を使用せずに Azure 共有ディスクがある可用性セット内にデプロイすることはできますが、PPG を使用すると Azure 共有ディスクとクラスター VM の物理的近距離を確保できるため、VM とストレージ層の間の待機時間が短くなります。    
 
-Azure 共有ディスクの制限事項の詳細については、Azure 共有ディスクのドキュメントの「[制限事項](../../linux/disks-shared.md#limitations)」セクションを参照してください。  
+Azure 共有ディスクの制限事項の詳細については、Azure 共有ディスクのドキュメントの「[制限事項](../../disks-shared.md#limitations)」セクションを参照してください。  
 
 > [!IMPORTANT]
 > Azure 共有ディスクを使用して SAP ASCS/SCS Windows フェールオーバー クラスターをデプロイする場合は、デプロイが 1 つの記憶域クラスター内の単一の共有ディスクを使用して動作することに注意してください。 SAP ASCS/SCS インスタンスは、Azure 共有ディスクがデプロイされている記憶域クラスターで問題が発生した場合に影響を受けます。  
@@ -103,11 +103,11 @@ Windows Server 2016 と Windows Server 2019 の両方がサポートされてい
 | --- | --- | --- |---| ---|
 | 最初のクラスター ノードの ASCS/SCS クラスター |pr1-ascs-10 |10.0.0.4 |pr1-ascs-avset |PR1PPG |
 | 2 番目のクラスター ノードの ASCS/SCS クラスター |pr1-ascs-11 |10.0.0.5 |pr1-ascs-avset |PR1PPG |
-| クラスター ネットワーク名 | pr1clust |10.0.0.42 (Win 2016 クラスターの場合**のみ**) | 該当なし | 該当なし |
+| クラスター ネットワーク名 | pr1clust |10.0.0.42 (Win 2016 クラスターの場合 **のみ**) | 該当なし | 該当なし |
 | **SID1** ASCS クラスターのネットワーク名 | pr1-ascscl |10.0.0.43 | 該当なし | 該当なし |
-| **SID1** ERS クラスターのネットワーク名 (ERS2 の場合**のみ**) | pr1-erscl |10.0.0.44 | 該当なし | 該当なし |
+| **SID1** ERS クラスターのネットワーク名 (ERS2 の場合 **のみ**) | pr1-erscl |10.0.0.44 | 該当なし | 該当なし |
 | **SID2** ASCS クラスターのネットワーク名 | pr2-ascscl |10.0.0.45 | 該当なし | 該当なし |
-| **SID2** ERS クラスターのネットワーク名 (ERS2 の場合**のみ**) | pr1-erscl |10.0.0.46 | 該当なし | 該当なし |
+| **SID2** ERS クラスターのネットワーク名 (ERS2 の場合 **のみ**) | pr1-erscl |10.0.0.46 | 該当なし | 該当なし |
 
 ### <a name="create-azure-internal-load-balancer"></a>Azure 内部ロード バランサーを作成する
 
@@ -121,17 +121,17 @@ SAP ASCS、SAP SCS、および新しい SAP ERS2 により、仮想ホスト名�
 - バックエンドの構成  
     既に準備済み - SAP SID **PR1** の構成中に、VM が既にバックエンド プールに追加されています
 - プローブ ポート
-    - ポート 620**nr** **[62002]** プロトコル (TCP)、間隔 (5)、異常しきい値 (2) の既定のオプションのままにします
+    - ポート 620 **nr** **[62002]** プロトコル (TCP)、間隔 (5)、異常しきい値 (2) の既定のオプションのままにします
 - 負荷分散規則
     - Standard Load Balancer を使用する場合は、 [HA ポート] を選択します
     - Basic Load Balancer を使用する場合は、次のポートの負荷分散規則を作成します
-        - 32**nr** TCP **[3202]**
-        - 36**nr** TCP **[3602]**
-        - 39**nr** TCP **[3902]**
-        - 81**nr** TCP **[8102]**
-        - 5**nr**13 TCP **[50213]**
-        - 5**nr**14 TCP **[50214]**
-        - 5**nr**16 TCP **[50216]**
+        - 32 **nr** TCP **[3202]**
+        - 36 **nr** TCP **[3602]**
+        - 39 **nr** TCP **[3902]**
+        - 81 **nr** TCP **[8102]**
+        - 5 **nr** 13 TCP **[50213]**
+        - 5 **nr** 14 TCP **[50214]**
+        - 5 **nr** 16 TCP **[50216]**
         - **PR2** ASCS フロントエンド IP、正常性プローブ、および既存のバックエンド プールに関連付けます。  
 
     - [アイドルタイムアウト (分)] が最大値の 30 に設定され、[フローティング IP (ダイレクト サーバー リターン)] が有効になっていることを確認します。
@@ -146,16 +146,16 @@ SAP ASCS、SAP SCS、および新しい SAP ERS2 により、仮想ホスト名�
   VM は ILB バックエンド プールに既に追加されています。  
 
 - 新しいプローブ ポート
-    - ポート 621**nr** **[62112]** プロトコル (TCP)、間隔 (5)、異常しきい値 (2) の既定のオプションのままにします
+    - ポート 621 **nr** **[62112]** プロトコル (TCP)、間隔 (5)、異常しきい値 (2) の既定のオプションのままにします
 
 - 新しい負荷分散規則
     - Standard Load Balancer を使用する場合は、 [HA ポート] を選択します
     - Basic Load Balancer を使用する場合は、次のポートの負荷分散規則を作成します
-        - 32**nr** TCP **[3212]**
-        - 33**nr** TCP **[3312]**
-        - 5**nr**13 TCP **[51212]**
-        - 5**nr**14 TCP **[51212]**
-        - 5**nr**16 TCP **[51212]**
+        - 32 **nr** TCP **[3212]**
+        - 33 **nr** TCP **[3312]**
+        - 5 **nr** 13 TCP **[51212]**
+        - 5 **nr** 14 TCP **[51212]**
+        - 5 **nr** 16 TCP **[51212]**
         - **PR2** ERS2 フロントエンド IP、正常性プローブ、および既存のバックエンド プールに関連付けます。  
 
     - [アイドルタイムアウト (分)] が最大値 (例: 30) に設定され、[フローティング IP (ダイレクト サーバー リターン)] が有効になっていることを確認します。
@@ -293,7 +293,7 @@ SAP の説明に従ってインストール手順を行います。 インスト
 ただし、アクティブなインスタンスが 1 つだけであるため、一部のクラスター構成では動作しません。 他のインスタンスはパッシブであり、ワークロードを受け付けることができません。 プローブ機能は、Azure 内部ロード バランサーによって、アクティブなインスタンスが検出され、アクティブなインスタンスのみが対象とされる場合に役立ちます。  
 
 > [!IMPORTANT]
-> この例の構成では、**ProbePort** は 620**Nr** に設定されます。 番号が **02** の SAP ASCS インスタンスの場合は、620**02** です。
+> この例の構成では、**ProbePort** は 620 **Nr** に設定されます。 番号が **02** の SAP ASCS インスタンスの場合は、620 **02** です。
 > SAP インスタンス番号と SAP SID に合わせて構成を調整する必要があります。
 
 プローブ ポートを追加するには、次のいずれかのクラスター VM でこの PowerShell モジュールを実行します。
