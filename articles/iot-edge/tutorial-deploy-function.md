@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure 関数をモジュールとしてデプロイする - Azure IoT Edge
-description: このチュートリアルでは、Azure 関数を IoT Edge モジュールとして開発した後、エッジ デバイスにそれを展開します。
+title: チュートリアル:Azure Functions をモジュールとして展開する - Azure IoT Edge
+description: このチュートリアルでは、Azure 関数を IoT Edge モジュールとして開発した後、エッジ デバイスに展開します。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 6e148adfe6db62e6fdaea53165a5c23d9a08efba
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 45f990e5426516db5537319d07c11aa705e462e7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042373"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534842"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>チュートリアル:Azure Functions を IoT Edge モジュールとして展開する
 
@@ -71,7 +71,7 @@ Azure Functions を使用して IoT Edge モジュールを開発するには、
    | Provide a solution name (ソリューション名の指定) | **FunctionSolution** のように、ソリューションのわかりやすい名前を入力するか、既定値をそのまま使用します。 |
    | Select module template (モジュール テンプレートの選択) | **[Azure Functions - C#]** を選択します。 |
    | Provide a module name (モジュール名の指定) | モジュールに **CSharpFunction** という名前を付けます。 |
-   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、前の手順で事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリの**ログイン サーバー**の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 文字列は最終的に、\<registry name\>.azurecr.io/CSharpFunction のようになります。 |
+   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、前の手順で事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリの **ログイン サーバー** の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 文字列は最終的に、\<registry name\>.azurecr.io/CSharpFunction のようになります。 |
 
    ![Docker イメージ リポジトリを指定する](./media/tutorial-deploy-function/repository.png)
 
@@ -82,7 +82,7 @@ Azure Functions を使用して IoT Edge モジュールを開発するには、
 IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格情報をプルし、それらを環境ファイルに取り込もうとします。 資格情報が既に含まれているかどうかを確認します。 含まれていない場合は、次のようにして追加します。
 
 1. VS Code エクスプローラーで、.env ファイルを開きます。
-2. ご自身の Azure コンテナー レジストリからコピーした**ユーザー名**と**パスワード**の値を使用して、フィールドを更新します。
+2. ご自身の Azure コンテナー レジストリからコピーした **ユーザー名** と **パスワード** の値を使用して、フィールドを更新します。
 3. このファイルを保存します。
 
 ### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する

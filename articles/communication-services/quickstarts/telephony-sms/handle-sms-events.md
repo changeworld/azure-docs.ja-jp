@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e66d5c4dd4fc1c6c641da975b0ac2254f459642a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e153c873305cc128ce97ae7c6a907a8f592f8b32
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976931"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357472"
 ---
 # <a name="quickstart-handle-sms-events"></a>クイック スタート:SMS イベントの処理
 
@@ -59,17 +59,19 @@ Azure Portal で次の操作を行います。
 
 **[イベント サブスクリプションの追加]** をクリックして、作成ウィザードに入ります。
 
-**[イベント サブスクリプションの作成]** ページで、イベント サブスクリプションの**名前**を入力します。
+**[イベント サブスクリプションの作成]** ページで、イベント サブスクリプションの **名前** を入力します。
 
 特定のイベントをサブスクライブすることで、どの SMS イベントを追跡し、どこにイベントを送信するかを Event Grid に伝えることができます。 サブスクライブするイベントをドロップダウン メニューから選択します。 SMS の場合は、`SMS Received` と `SMS Delivery Report Received` を選択できます。 
 
+**システム トピック名** を入力するように求められた場合は、生成された後のイベントをフィルター処理するために必要に応じて使用できる一意の識別子を自由に指定します。
+
 [Azure Communication Services でサポートされているイベント](../../concepts/event-handling.md)の完全な一覧を確認してください。
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="リソースのイベント ページ内のイベント サブスクリプション ボタンの選択を示すスクリーンショット。":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="SMS Received および SMS Delivery Report Received のイベントの種類が選択されていることを示すスクリーンショット。":::
 
 **[エンドポイントのタイプ]** には **[Webhook]** を選択します。 
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="リソースのイベント ページ内のイベント サブスクリプション ボタンの選択を示すスクリーンショット。":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="[エンドポイントのタイプ] フィールドが [Webhook] に設定されていることを示すスクリーンショット。":::
 
 **[エンドポイント]** については、 **[エンドポイントの選択]** をクリックして、お使いの Web アプリの URL を入力します。
 
@@ -77,7 +79,7 @@ Azure Portal で次の操作を行います。
 
 次に、 **[選択の確認]** を選択します。
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-selectwebhook-epadd.png" alt-text="リソースのイベント ページ内のイベント サブスクリプション ボタンの選択を示すスクリーンショット。":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-selectwebhook-epadd.png" alt-text="Webhook エンドポイントの確認を示すスクリーンショット。":::
 
 ## <a name="viewing-sms-events"></a>SMS イベントの表示
 
@@ -94,15 +96,15 @@ Azure Portal で次の操作を行います。
 
 上記のいずれかのアクションを完了すると、`SMS Received` および `SMS Delivery Report Received` イベントがお使いのエンドポイントに送信されることがわかります。 これらのイベントは、最初に設定した [Azure Event Grid ビューアーのサンプル](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)に表示されます。 イベントの横にある目のアイコンを押すと、ペイロード全体を表示できます。 イベントは次のようになります。
 
-:::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="リソースのイベント ページ内のイベント サブスクリプション ボタンの選択を示すスクリーンショット。":::
+:::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="SMS 受信イベントの Event Grid スキーマを示すスクリーンショット。":::
 
-:::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="リソースのイベント ページ内のイベント サブスクリプション ボタンの選択を示すスクリーンショット。":::
+:::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="SMS Delivery Report Event の Event Grid スキーマを示すスクリーンショット。":::
 
 詳細については、[イベント スキーマとその他のイベントの概念](../../concepts/event-handling.md)に関する記事を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Communication Services サブスクリプションをクリーンアップして解除したい場合は、リソースまたはリソース グループを削除できます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。 詳細については、[リソースのクリーンアップ](../create-communication-resource.md#clean-up-resources)に関する記事を参照してください。
+Communication Services サブスクリプションをクリーンアップして解除する場合は、リソースまたはリソース グループを削除できます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。 詳細については、[リソースのクリーンアップ](../create-communication-resource.md#clean-up-resources)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

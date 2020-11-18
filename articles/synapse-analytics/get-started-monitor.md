@@ -10,16 +10,16 @@ ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
 ms.date: 10/15/2020
-ms.openlocfilehash: d497ff1a829902c0623740f01a457e6496db2401
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2970bb58bb73d52c75729b00a8209a9c576d4ec0
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744953"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427413"
 ---
 # <a name="monitor-your-synapse-workspace"></a>Synapse ワークスペースを監視する
 
-このチュートリアルでは、ご利用の Synapse ワークスペースでのアクティビティを監視する方法について説明します。 SQL、Apache Spark、および Pipelines の現在および過去のアクティビティを監視できます 。 
+このチュートリアルでは、ご利用の Synapse ワークスペースでのアクティビティを監視する方法について説明します。 SQL、Apache Spark、および Pipelines の現在および過去のアクティビティを監視できます。 
 
 ## <a name="introduction-to-the-monitor-hub"></a>監視ハブの概要
 
@@ -31,8 +31,7 @@ Synapse Studio を開き、 **[監視]** ハブに移動します。 ここに�
 ## <a name="integration"></a>統合
 
 1. **[Integration]\(統合\) > [パイプライン]** の順に移動します。 このビューでは、ご利用のワークスペース内で特定のパイプラインが実行された時刻をすべて確認できます。 
-1. 前の手順で実行したパイプラインを見つけて、その **パイプライン名** をクリックします。
-1. これで、そのパイプライン内の個々のアクティビティがどのように実行されるかを確認できます。
+1. 前の手順で実行したパイプラインを見つけて、その **パイプライン名** をクリックし、詳細を表示します。
 1. Synapse Studio の上部近くにある **[階層リンク バー]** をクリックします。 **[すべてのパイプラインの実行]** をクリックすると、前のビューに戻ります。
 
 ## <a name="apache-spark-activities"></a>Apache Spark アクティビティ

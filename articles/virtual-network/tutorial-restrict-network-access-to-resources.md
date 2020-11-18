@@ -16,12 +16,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 08/23/2018
 ms.author: kumud
-ms.openlocfilehash: 85fc5687b82947ed16bde0c30ca2b947514ba958
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6716d2ad4252169cfbbf611b0dadc5b077cd362
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74186370"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042568"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用して仮想ネットワーク サービス エンドポイントで PaaS リソースへのネットワーク アクセスを制限する
 
@@ -54,7 +54,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
    |Name| myVirtualNetwork |
    |アドレス空間| 10.0.0.0/16|
    |サブスクリプション| サブスクリプションを選択します。|
-   |Resource group | **[新規作成]** を選択し、「*myResourceGroup*と入力します。|
+   |Resource group | **[新規作成]** を選択し、「*myResourceGroup* と入力します。|
    |Location| **[米国東部]** を選択します。 |
    |サブネット名| パブリック|
    |サブネットのアドレス範囲| 10.0.0.0/24|
@@ -195,13 +195,13 @@ Azure Portal (https://portal.azure.com ) にログインします。
     |仮想ネットワーク|**[仮想ネットワーク]** で **myVirtualNetwork** を選びます。|
     |サブネット| **[サブネット]** で **Private** を選びます|
 
-    ![ファイアウォールと仮想ネットワーク](./media/tutorial-restrict-network-access-to-resources/storage-firewalls-and-virtual-networks.png)
+    ![[ネットワークの追加] ペインを示すスクリーンショット。ここで、指定された値を入力できます。](./media/tutorial-restrict-network-access-to-resources/storage-firewalls-and-virtual-networks.png)
 
 5. **[保存]** を選択します。
 6. **[ファイアウォールと仮想ネットワーク]** ボックスを閉じます。
 7. 次の図に示すように、ストレージ アカウントの **[設定]** で、 **[アクセス キー]** を選びます。
 
-      ![ファイアウォールと仮想ネットワーク](./media/tutorial-restrict-network-access-to-resources/storage-access-key.png)
+      ![[設定] で選択されている [アクセス キー] を示すスクリーンショット。ここで、キーを取得できます。](./media/tutorial-restrict-network-access-to-resources/storage-access-key.png)
 
 8. **[キー]** の値をメモします。後の手順でファイル共有を VM のドライブ文字にマップするときに、この値を手入力する必要があります。
 

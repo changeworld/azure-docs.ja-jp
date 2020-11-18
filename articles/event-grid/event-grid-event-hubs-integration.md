@@ -4,12 +4,12 @@ description: チュートリアル:Azure Event Grid と Event Hubs を使用し�
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 64d4b9769e1a228294bd7d8741f6f4b1260fb0dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fb26bf92e6af1fd9e97f3b9434b4ab5e76316b3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91270561"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305273"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>チュートリアル:ビッグ データをデータ ウェアハウスにストリーミングする
 Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (イベント) への対応を可能にするインテリジェントなイベント ルーティング サービスです。 たとえば、Azure BLOB ストレージや Azure Data Lake Storage にキャプチャされた Event Hubs データを処理する Azure 関数をトリガーして、データを別のデータ リポジトリに移行できます。 この [Event Hubs と Event Grid の統合のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)では、Event Hubs と Event Grid を使用して、キャプチャされた Event Hubs データを BLOB ストレージから Azure Synapse Analytics (旧称、SQL Data Warehouse) にシームレスに移行する方法を説明しています。
@@ -80,7 +80,7 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
         ```azurecli
         az group create -l eastus -n rgDataMigration
         ```
-    2. **Enter**キーを押します。 
+    2. **Enter** キーを押します。 
 
         たとえば次のようになります。
     
@@ -129,7 +129,7 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
         ```powershell
         New-AzResourceGroup -Name rgDataMigration -Location eastus
         ```
-    2. **リソース グループ**の名前を指定します。
+    2. **リソース グループ** の名前を指定します。
     3. Enter キーを押します。 
 3. 次のコマンドを実行して、前のセクションで説明したリソース (イベント ハブ、ストレージ アカウント、関数アプリ、Azure Synapse Analytics) をすべてデプロイします。
     1. コマンドをコピーして Cloud Shell ウィンドウに貼り付けます。 または、お好みのエディターにコピーして貼り付け、値を設定してから、コマンドを Cloud Shell にコピーすることもできます。 
@@ -165,11 +165,11 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
 ### <a name="create-a-table-in-azure-synapse-analytics"></a>Azure Synapse Analytics でテーブルを作成する
 [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) スクリプトを実行して、お客様のデータ ウェアハウスにテーブルを作成します。 スクリプトを実行するには、Visual Studio を使用できます。または、ポータルのクエリ エディターを使用できます。 次の手順では、クエリ エディターの使用方法について説明します。 
 
-1. リソース グループのリソースの一覧で、**Synapse SQL プール (データ ウェアハウス)** を選択します。 
+1. リソース グループ内のリソースの一覧で、**専用 SQL プール** を選択します。 
 2. Azure Synapse Analytics のページで、左側のメニューの **[クエリ エディター (プレビュー)]** を選択します。 
 
     ![Azure Synapse Analytics ページ](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
-2. SQL サーバーの**ユーザー**の名前と**パスワード**を入力し、 **[OK]** を選択します。 SQL サーバーに正常にログインするために、クライアント IP アドレスをファイアウォールに追加することが必要な場合があります。 
+2. SQL サーバーの **ユーザー** の名前と **パスワード** を入力し、 **[OK]** を選択します。 SQL サーバーに正常にログインするために、クライアント IP アドレスをファイアウォールに追加することが必要な場合があります。 
 
     ![SQL Server 認証](media/event-grid-event-hubs-integration/sql-server-authentication.png)
 4. クエリ ウィンドウに、次の SQL スクリプトをコピーして実行します。 
@@ -269,7 +269,7 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
     ![イベント ハブ名前空間の接続文字列](media/event-grid-event-hubs-integration/get-connection-string.png)
 1. お客様の Visual Studio ソリューションに戻ります。 
 2. WindTurbineDataGenerator プロジェクトで、**program.cs** を開きます。
-5. 2 つの定数の値を置き換えます。 **EventHubConnectionString** には、コピーした値を使用します。 **hubdatamigration**イベント ハブの名前を使用します。 イベント ハブに別の名前を使用した場合は、その名前を指定します。 
+5. 2 つの定数の値を置き換えます。 **EventHubConnectionString** には、コピーした値を使用します。 **hubdatamigration** イベント ハブの名前を使用します。 イベント ハブに別の名前を使用した場合は、その名前を指定します。 
 
    ```cs
    private const string EventHubConnectionString = "Endpoint=sb://demomigrationnamespace.servicebus.windows.net/...";

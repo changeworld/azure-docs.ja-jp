@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fb1415874c42e3913d98d4a674732a4d9b98a0c5
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ecc6e1e1a543f3190e9f73512ca0b9ae45cc3fe9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123910"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335215"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>チュートリアル:Azure Data Box から SMB 経由でデータをコピーする (プレビュー)
 
@@ -54,7 +54,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
 
 2. [共有にアクセスしてデータをコピーする] ダイアログ ボックスで、共有に対応する **[ユーザー名]** と **[パスワード]** をコピーします。 **[OK]** を選択します。
     
-    ![共有の資格情報を取得する 2](media/data-box-deploy-export-copy-data/get-share-credentials-2.png)
+    ![共有の資格情報の取得、共有にアクセスしてデータをコピーする](media/data-box-deploy-export-copy-data/get-share-credentials-2.png)
 
 3. 自分のストレージ アカウントに関連付けられている共有 (次の例の場合は、*exportbvtdataset2*) にホスト コンピューターからアクセスするために、コマンド ウィンドウを開きます。 コマンド プロンプトに、次のコマンドを入力します。
 
@@ -73,13 +73,13 @@ Windows Server ホスト コンピューターを使用している場合は、�
     The command completed successfully.
     ```
 
-4. Windows キーを押しながら R キーを押します。 **[ファイル名指定して実行]** ウィンドウで、「`\\<device IP address>`」と入力します。 **[OK]** を選択して、エクスプローラーを開きます。
+5. Windows キーを押しながら R キーを押します。 **[ファイル名指定して実行]** ウィンドウで、「`\\<device IP address>`」と入力します。 **[OK]** を選択して、エクスプローラーを開きます。
     
-    ![エクスプローラーで共有に接続する](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
+    ![エクスプローラーで共有に接続し、デバイスの IP を入力する](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
 
     共有がフォルダーとして表示されます。
     
-    ![エクスプローラーで共有に接続する 2](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-2.png)
+    ![エクスプローラーで共有に接続し、共有を表示する](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-2.png)
 
     
 Linux クライアントを使用している場合は、次のコマンドを使用して、SMB 共有をマウントします。 以下の "vers" パラメーターは、Linux ホストがサポートしている SMB のバージョンです。 次のコマンドで、適切なバージョンを指定します。 Data Box でサポートされている SMB のバージョンについては、「[Linux クライアントでサポートされるファイル システム](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients)」を参照してください 
@@ -100,7 +100,7 @@ Data Box 共有に接続したら、次にデータをコピーします。
 
 Robocopy コマンドについて詳しくは、「[Robocopy and a few examples](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx)」(Robocopy といくつかの例) をご覧ください。
 
-コピーが完了したら、**ダッシュボード**に移動し、デバイス上の使用済み領域と空き領域を確認します。
+コピーが完了したら、**ダッシュボード** に移動し、デバイス上の使用済み領域と空き領域を確認します。
 
 これで、Microsoft への Data Box の発送に進むことができます。
 

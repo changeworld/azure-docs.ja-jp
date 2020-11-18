@@ -1,19 +1,19 @@
 ---
-title: Azure IoT ソリューションに接続されている IoT プラグ アンド プレイ デバイスとやり取りする (Node.js) | Microsoft Docs
-description: Node.js を使用して、ご利用の Azure IoT ソリューションに接続されている IoT プラグ アンド プレイ デバイスと接続してやり取りします。
+title: クイックスタート - Azure IoT ソリューションに接続されている IoT プラグ アンド プレイ デバイスとやり取りする (Node.js) | Microsoft Docs
+description: クイックスタート - Node.js を使用して、ご利用の Azure IoT ソリューションに接続されている IoT プラグ アンド プレイ デバイスと接続してやり取りします。
 author: elhorton
 ms.author: elhorton
 ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 9a71a45f69f7a2bd2fbc198292526a6928e421a2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 814221997bc927cf411e531b523d693f3ef5854c
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736003"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421517"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>クイック スタート:ご利用のソリューションに接続されている IoT プラグ アンド プレイ デバイスとやり取りする (Node.js)
 
@@ -51,7 +51,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
 1. ターミナル ウィンドウを開いて、GitHub からクローンした Microsoft Azure IoT SDK for Node.js リポジトリが格納されているローカル フォルダーに移動します。
 
-1. このターミナル ウィンドウは、 **デバイス** ターミナルとして使用されます。 クローンしたリポジトリのフォルダーに移動し、 */azure-iot-sdk-node/device/samples/pnp* フォルダーに移動します。 次のコマンドを実行して、すべての依存関係をインストールします。
+1. このターミナル ウィンドウは、**デバイス** ターミナルとして使用されます。 クローンしたリポジトリのフォルダーに移動し、 */azure-iot-sdk-node/device/samples/pnp* フォルダーに移動します。 次のコマンドを実行して、すべての依存関係をインストールします。
 
     ```cmd/sh
     npm install
@@ -69,8 +69,8 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
 「[IoT プラグ アンド プレイのクイックスタートとチュートリアル用の環境の設定](set-up-environment.md)」では、IoT ハブとデバイスに接続するようにサンプルを構成するための 2 つの環境変数を作成しました。
 
-* **IOTHUB_CONNECTION_STRING** : 先ほどメモした IoT ハブ接続文字列。
-* **IOTHUB_DEVICE_ID** : `"my-pnp-device"`。
+* **IOTHUB_CONNECTION_STRING**: 先ほどメモした IoT ハブ接続文字列。
+* **IOTHUB_DEVICE_ID**: `"my-pnp-device"`。
 
 このクイックスタートでは、Node.js 内の IoT ソリューションのサンプルを使用して、先ほど設定したサンプル デバイスとやり取りします。
 
@@ -91,7 +91,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
     sending telemetry message 0...
     ```
 
-1. " **サービス** " ターミナルにアクセスし、次のコマンドを使用して、デバイス情報を読み取るためのサンプルを実行します。
+1. "**サービス**" ターミナルにアクセスし、次のコマンドを使用して、デバイス情報を読み取るためのサンプルを実行します。
 
     ```cmd/sh
     node twin.js
@@ -146,7 +146,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
     }
     ```
 
-1. 次のスニペットは、デバイス ツインのモデル ID を取得する、 *twin.js* のコードを示しています。
+1. 次のスニペットは、デバイス ツインのモデル ID を取得する、*twin.js* のコードを示しています。
 
     ```javascript
     var registry = Registry.fromConnectionString(connectionString);
@@ -164,11 +164,11 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 このシナリオでは、`Model Id: dtmi:com:example:Thermostat;1`が出力されます。
 
 > [!NOTE]
-> これらのサービス サンプルでは、 **IoT Hub サービス クライアント** からの **Registry** クラスを使用します。 デジタル ツイン API を含む API の詳細については、[サービス開発者ガイド](concepts-developer-guide-service.md)を参照してください。
+> これらのサービス サンプルでは、**IoT Hub サービス クライアント** からの **Registry** クラスを使用します。 デジタル ツイン API を含む API の詳細については、[サービス開発者ガイド](concepts-developer-guide-service.md)を参照してください。
 
 ### <a name="update-a-writable-property"></a>書き込み可能なプロパティを更新する
 
-1. コード エディターで、 *twin.js* ファイルを開きます。
+1. コード エディターで、*twin.js* ファイルを開きます。
 
 1. サンプル コードを見てみましょう。ここには、デバイス ツインを更新する 2 つの方法が示されています。 最初の方法を使用するには、`twinPatch` 変数を次のように変更します。
 
@@ -233,7 +233,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
 1. *device_method.js* ファイルを開き、コードを確認します。
 
-1. " **サービス** " ターミナルにアクセスします。 次のコマンドを使用して、コマンドを呼び出すためのサンプルを実行します。
+1. "**サービス**" ターミナルにアクセスします。 次のコマンドを使用して、コマンドを呼び出すためのサンプルを実行します。
 
     ```cmd/sh
     set IOTHUB_METHOD_NAME=getMaxMinReport

@@ -12,12 +12,12 @@ ms.date: 10/21/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 49bba8054065123d7409f26b61d1dfc2580ef720
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e56748df2fb69ace4e9b8d9f6908bc8013176a19
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636053"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287802"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft ID プラットフォームのコード サンプル (v2.0 エンドポイント)
 
@@ -55,23 +55,25 @@ GitHub でサンプルに協力することもできます。 その方法につ
 
 | プラットフォーム | ユーザーのサインインのみ | ユーザーのサインインと Microsoft Graph の呼び出し |
 | -------- | ------------------- | --------------------------------- |
-| ![ASP.NET Core のロゴを示す画像](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [ASP.NET Core Web アプリのユーザーのサインインに関するチュートリアル](https://aka.ms/aspnetcore-webapp-sign-in) | [ASP.NET Core Web アプリが Microsoft Graph を呼び出す](https://aka.ms/aspnetcore-webapp-call-msgraph)フェーズと同じサンプル |
-| ![ASP.NET のロゴを示す画像](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET クイック スタート](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
+| ![ASP.NET Core のロゴを示す画像](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [ASP.NET Core Web アプリのユーザーのサインインに関するチュートリアル](https://aka.ms/aspnetcore-webapp-sign-in) | [ASP.NET Core Web アプリが Microsoft Graph を呼び出す](https://aka.ms/aspnetcore-webapp-call-msgraph)フェーズと同じサンプル</p>高度なサンプル「[バックグラウンド アプリ、API、サービスから、ログインしているユーザーのトークン キャッシュへのアクセス](https://github.com/Azure-Samples/ms-identity-dotnet-advanced-token-cache)」 |
+| ![この画像は ASP.NET Framework ロゴを示しています](media/sample-v2-code/logo_NETframework.png)</p>ASP.NET Core | [開発者向けの、AD FS から Azure AD へのアプリケーション移行プレイブック](https://github.com/Azure-Samples/ms-identity-dotnet-adfs-to-aad)。Active Directory フェデレーション サービス (AD FS) と統合されているアプリケーションを Azure Active Directory (Azure AD) に安全に移行する方法を学習 | |
+| ![この画像は ASP.NET Framework ロゴを示しています](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET クイック スタート](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 | ![Java のロゴを示す画像](media/sample-v2-code/logo_java.png)  |                   | [ms-identity-java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
 | ![Python のロゴを示す画像](media/sample-v2-code/logo_python.png)  | [ms-identity-python-flask-webapp-authentication](https://github.com/Azure-Samples/ms-identity-python-flask-webapp-authentication) | [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp) |
 | ![Ruby のロゴを示す画像](media/sample-v2-code/logo_ruby.png) |                   | [msgraph-training-rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp) |
 
 ## <a name="desktop-and-mobile-public-client-apps"></a>デスクトップおよびモバイルのパブリック クライアント アプリ
 
-次のサンプルは、ユーザーの名前で Microsoft Graph API またはお客様独自の Web API にアクセスするパブリック クライアント アプリケーション (デスクトップまたはモバイル アプリケーション) を示しています。 " *WAM を使用するデスクトップ (コンソール)* " を除き、これらのすべてのクライアント アプリケーションで Microsoft Authentication Library (MSAL) を使用します。
+次のサンプルは、ユーザーの名前で Microsoft Graph API またはお客様独自の Web API にアクセスするパブリック クライアント アプリケーション (デスクトップまたはモバイル アプリケーション) を示しています。 "*WAM を使用するデスクトップ (コンソール)* " を除き、これらのすべてのクライアント アプリケーションで Microsoft Authentication Library (MSAL) を使用します。
 
 | クライアント アプリケーション | プラットフォーム | フロー/許可 | Microsoft Graph の呼び出し | ASP.NET Core Web API の呼び出し |
 | ------------------ | -------- |  ----------| ---------- | ------------------------- |
-| デスクトップ (WPF)      | ![.NET/C# のロゴを示す画像](media/sample-v2-code/logo_NET.png) | [承認コード](msal-authentication-flows.md#authorization-code)| [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi) |
+| デスクトップ チュートリアル (.NET Core) - 必要に応じて以下を使用</p>- クロス プラットフォーム トークン キャッシュ</p>- カスタム Web UI | ![.NET/C# のロゴを示す画像](media/sample-v2-code/logo_NETcore.png) | [承認コード](msal-authentication-flows.md#authorization-code)| [ms-identity-dotnet-desktop-tutorial](https://github.com/azure-samples/ms-identity-dotnet-desktop-tutorial) | |
+| デスクトップ (WPF)      | ![.NET デスクトップ/C# のロゴを示す画像](media/sample-v2-code/logo_NET.png) | [承認コード](msal-authentication-flows.md#authorization-code)| [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi) |
 | デスクトップ (コンソール)   | ![.NET/C# (デスクトップ) のロゴを示す画像](media/sample-v2-code/logo_NET.png) | [統合 Windows 認証](msal-authentication-flows.md#integrated-windows-authentication) | [dotnet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2) |  |
 | デスクトップ (コンソール)   | ![Java のロゴを示す画像](media/sample-v2-code/logo_java.png) | [統合 Windows 認証](msal-authentication-flows.md#integrated-windows-authentication) |[ms-identity-java-desktop](https://github.com/Azure-Samples/ms-identity-java-desktop/) |  |
-| デスクトップ (コンソール)   | ![.NET/C# (デスクトップ) のロゴを示す画像](media/sample-v2-code/logo_NETcore.png) | [ユーザー名/パスワード](msal-authentication-flows.md#usernamepassword) |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) |  |
-| WAM を使用するデスクトップ (コンソール)  | ![.NET/C# (デスクトップ) のロゴを示す画像](media/sample-v2-code/logo_NETcore.png) | [Web アカウント マネージャー](/windows/uwp/security/web-account-manager) (WAM) による対話型 |[dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) |  |
+| デスクトップ (コンソール)   | ![.NET/C# (デスクトップ) のロゴ](media/sample-v2-code/logo_NETcore.png) | [ユーザー名/パスワード](msal-authentication-flows.md#usernamepassword) |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) |  |
+| WAM を使用するデスクトップ (コンソール)  | ![.NET/C# (デスクトップ) のロゴ](media/sample-v2-code/logo_NETcore.png) | [Web アカウント マネージャー](/windows/uwp/security/web-account-manager) (WAM) による対話型 |[dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) |  |
 | デスクトップ (コンソール)   | ![Java のロゴを示す画像](media/sample-v2-code/logo_java.png) | [ユーザー名/パスワード](msal-authentication-flows.md#usernamepassword) |[ms-identity-java-desktop](https://github.com/Azure-Samples/ms-identity-java-desktop/) |  |
 | デスクトップ (コンソール)   | ![Python のロゴを示す画像](media/sample-v2-code/logo_python.png) | [ユーザー名/パスワード](msal-authentication-flows.md#usernamepassword) |[ms-identity-python-desktop](https://github.com/Azure-Samples/ms-identity-python-desktop) |  |
 | モバイル (Android、iOS、UWP)   | ![.NET/C# (Xamarin) のロゴを示す画像](media/sample-v2-code/logo_xamarin.png) | [承認コード](msal-authentication-flows.md#authorization-code) |[xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) |  |
@@ -87,7 +89,7 @@ GitHub でサンプルに協力することもできます。 その方法につ
 | クライアント アプリケーション | プラットフォーム | フロー/許可 | Microsoft Graph の呼び出し |
 | ------------------ | -------- | ---------- | -------------------- |
 | コンソール | ![.NET Core のロゴを示す画像](media/sample-v2-code/logo_NETcore.png)</p> ASP.NET  | [クライアントの資格情報](msal-authentication-flows.md#client-credentials) | [dotnetcore-daemon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2) |
-| Web アプリ | ![ASP.NET のロゴを示す画像](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | [クライアントの資格情報](msal-authentication-flows.md#client-credentials) | [dotnet-daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2) |
+| Web アプリ | ![ASP.NET のロゴを示すスクリーンショット。](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | [クライアントの資格情報](msal-authentication-flows.md#client-credentials) | [dotnet-daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2) |
 | コンソール | ![Java のロゴを示す画像](media/sample-v2-code/logo_java.png) | [クライアントの資格情報](msal-authentication-flows.md#client-credentials) | [ms-identity-java-daemon](https://github.com/Azure-Samples/ms-identity-java-daemon) |
 | コンソール | ![Python のロゴを示す画像](media/sample-v2-code/logo_python.png) | [クライアントの資格情報](msal-authentication-flows.md#client-credentials) | [ms-identity-python-daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) |
 
@@ -103,7 +105,7 @@ GitHub でサンプルに協力することもできます。 その方法につ
 
 ## <a name="multi-tenant-saas-applications"></a>マルチテナント SaaS アプリケーション
 
-次のサンプルでは、任意の Azure Active Directory (Azure AD) テナントからのサインインを受け付けるようにアプリケーションを構成する方法を示します。 アプリケーションを " *マルチテナント* " として構成すると、 **サービスとしてのソフトウェア** (SaaS) アプリケーションを多数の組織に提供でき、ユーザーはアカウントの使用に同意した後でアプリケーションにサインインできるようになります。
+次のサンプルでは、任意の Azure Active Directory (Azure AD) テナントからのサインインを受け付けるようにアプリケーションを構成する方法を示します。 アプリケーションを "*マルチテナント*" として構成すると、**サービスとしてのソフトウェア** (SaaS) アプリケーションを多数の組織に提供でき、ユーザーはアカウントの使用に同意した後でアプリケーションにサインインできるようになります。
 
 | プラットフォーム | 説明 | Link |
 | -------- | --------------------- | -------- |
@@ -141,4 +143,4 @@ Azure AD での認証を含む、Microsoft Graph API のさまざまな使用パ
 
 ## <a name="see-also"></a>関連項目
 
-[Microsoft Graph API の概念とリファレンス](/graph/use-the-api?context=graph%2fapi%2fbeta&view=graph-rest-beta)
+[Microsoft Graph API の概念とリファレンス](/graph/use-the-api?context=graph%2fapi%2fbeta&view=graph-rest-beta&preserve-view=true)

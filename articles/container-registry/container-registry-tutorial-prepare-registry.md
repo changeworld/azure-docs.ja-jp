@@ -4,12 +4,12 @@ description: Azure Container Registry を作成し、geo レプリケーショ�
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: c473e3cd891214c2c5789bd43b0d293cb25d660a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 804f07762bef596f4631fbc5f694ecc6b308bfad
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739480"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027229"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>チュートリアル:geo レプリケーション Azure Container Registry の準備
 
@@ -50,14 +50,14 @@ Azure Cloud Shell には、このチュートリアルの各ステップを完�
 
 次の設定で、新しいレジストリを構成します。 **[基本]** タブを次のように設定します。
 
-* **レジストリ名** :Azure 内でグローバルに一意で、5 - 50 文字の英数字を含むレジストリ名を作成します
-* **リソース グループ** : **新規作成** > `myResourceGroup`
-* **場所** : `West US`
-* **SKU** : `Premium` (geo レプリケーションに必要)
+* **レジストリ名**:Azure 内でグローバルに一意で、5 - 50 文字の英数字を含むレジストリ名を作成します
+* **リソース グループ**:**新規作成** > `myResourceGroup`
+* **場所**: `West US`
+* **SKU**: `Premium` (geo レプリケーションに必要)
 
 **[確認および作成]** 、 **[作成]** の順に選択して、レジストリ インスタンスを作成します。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="Azure portal でコンテナー レジストリを作成する":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="Azure portal でコンテナー レジストリを構成する":::
 
 このチュートリアルの残りの部分では、選択したコンテナー **レジストリ名** のプレースホルダーとして `<acrName>` を使用します。
 
@@ -70,19 +70,19 @@ Premium レジストリを使用できるようになったので、geo レプ�
 
 Azure portal で新しいコンテナー レジストリに移動し、 **[サービス]** の **[レプリケーション]** を選択します。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Azure portal でコンテナー レジストリを作成する":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Azure portal のコンテナー レジストリ UI の [レプリケーション]":::
 
 マップに、geo レプリケーションで使用できる Azure リージョンを表す緑色の六角形が表示されます。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Azure portal でコンテナー レジストリを作成する":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Azure portal のリージョン マップ":::
 
 その緑色の六角形を選択して、米国東部リージョンにレジストリをレプリケートし、 **[レプリケーションの作成]** で **[作成]** を選択します。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Azure portal でコンテナー レジストリを作成する":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Azure portal の [レプリケーションの作成] UI":::
 
 レプリケーションが完了すると、ポータルで、両方のリージョンに対して *準備完了* が示されます。 **[更新]** ボタンを使用して、レプリケーションの状態を更新します。レプリカが作成され、同期されるまで、1 分ほどかかる可能性があります。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Azure portal でコンテナー レジストリを作成する":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Azure portal の [レプリケーションの状態] UI":::
 
 
 ## <a name="enable-admin-account"></a>管理者アカウントを有効にする
@@ -91,7 +91,7 @@ Azure portal で新しいコンテナー レジストリに移動し、 **[サ�
 
 Azure portal で新しいコンテナー レジストリに移動し、 **[設定]** の **[アクセス キー]** を選択します。 **[管理者ユーザー]** の **[有効にする]** を選択します。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Azure portal でコンテナー レジストリを作成する":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Azure portal で管理者アカウントを有効にする":::
 
 
 ## <a name="container-registry-login"></a>Container Registry のログイン
@@ -110,7 +110,7 @@ az acr login --name <acrName>
 
 このチュートリアルのサンプルには、[ASP.NET Core][aspnet-core] で構築した小さな Web アプリケーションが含まれます。 アプリケーションは、Azure Container Registry によってイメージがデプロイされたリージョンを表示する HTML ページを提供します。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="Azure portal でコンテナー レジストリを作成する":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="ブラウザーに表示されたチュートリアル アプリ":::
 
 Git を使用して、サンプルをローカル ディレクトリにダウンロードし、`cd` でそのディレクトリに変更します。
 
@@ -123,19 +123,19 @@ cd acr-helloworld
 
 ## <a name="update-dockerfile"></a>Dockerfile の更新
 
-サンプルに含まれる Dockerfile は、コンテナーの構築方法を示しています。 公式の [aspnetcore][dockerhub-aspnetcore] イメージから開始し、アプリケーション ファイルをコンテナーにコピーし、依存関係をインストールして、公式の [aspnetcore-build][dockerhub-aspnetcore-build]イメージを使用して出力をコンパイルし、最後に、最適化された aspnetcore イメージを構築します。
+サンプルに含まれる Dockerfile は、コンテナーの構築方法を示しています。 公式の ASP.NET Core ランタイム イメージから開始し、アプリケーション ファイルをコンテナーにコピーし、依存関係をインストールして、公式の .NET Core SDK イメージを使用して出力をコンパイルし、最後に、最適化された aspnetcore イメージを構築します。
 
 [Dockerfile][dockerfile] は複製されたソース内の `./AcrHelloworld/Dockerfile` にあります。
 
 ```Dockerfile
-FROM microsoft/aspnetcore:2.0 AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS base
 # Update <acrName> with the name of your registry
 # Example: uniqueregistryname.azurecr.io
 ENV DOCKER_REGISTRY <acrName>.azurecr.io
 WORKDIR /app
 EXPOSE 80
 
-FROM microsoft/aspnetcore-build:2.0 AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
 WORKDIR /src
 COPY *.sln ./
 COPY AcrHelloworld/AcrHelloworld.csproj AcrHelloworld/
@@ -187,8 +187,8 @@ Docker イメージが構築されると、複数行の出力が表示されま�
 
 ```bash
 Sending build context to Docker daemon  523.8kB
-Step 1/18 : FROM microsoft/aspnetcore:2.0 AS base
-2.0: Pulling from microsoft/aspnetcore
+Step 1/18 : FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS base
+2.2: Pulling from mcr.microsoft.com/dotnet/core/aspnet
 3e17c6eae66c: Pulling fs layer
 
 [...]
@@ -212,7 +212,7 @@ uniqueregistryname.azurecr.io/acr-helloworld    v1     01ac48d5c8cf    About a m
 
 ## <a name="push-image-to-azure-container-registry"></a>Azure Container Registry へのイメージのプッシュ
 
-次に、`docker push` コマンドを使用して、 *acr-helloworld* イメージをレジストリにプッシュします。 `<acrName>` をレジストリの名前に置き換えます。
+次に、`docker push` コマンドを使用して、*acr-helloworld* イメージをレジストリにプッシュします。 `<acrName>` をレジストリの名前に置き換えます。
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
@@ -245,6 +245,4 @@ v1: digest: sha256:0799014f91384bda5b87591170b1242bcd719f07a03d1f9a1ddbae72b3543
 <!-- LINKS - External -->
 [acr-helloworld-zip]: https://github.com/Azure-Samples/acr-helloworld/archive/master.zip
 [aspnet-core]: https://dot.net
-[dockerhub-aspnetcore]: https://hub.docker.com/r/microsoft/aspnetcore/
-[dockerhub-aspnetcore-build]: https://store.docker.com/community/images/microsoft/aspnetcore-build
 [dockerfile]: https://github.com/Azure-Samples/acr-helloworld/blob/master/AcrHelloworld/Dockerfile

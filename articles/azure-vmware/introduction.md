@@ -3,12 +3,12 @@ title: はじめに
 description: Azure で VMware ベースのワークロードをデプロイして管理するための、Azure VMware Solution の機能とメリットについて学習します。
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: b71427402e08167e5868128ed1e553c69bef425d
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 1875f535a5ca3e346362409c143da82cb8c07a12
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574461"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488589"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Azure VMware Solution とは
 
@@ -44,7 +44,7 @@ Azure VMware Solution プライベート クラウドと VMware ソフトウェ�
 
 ## <a name="monitoring-your-private-cloud"></a>プライベート クラウドの監視
 
-Azure VMware Solution をサブスクリプションにデプロイすると、[Azure Monitor ログ](../azure-monitor/overview.md)が自動的に生成されます。 また、プライベート クラウド内の各仮想マシンでログを収集することもできます。 Azure VMware Solution プライベート クラウドで実行されている Linux および Windows 仮想マシンに [MMA エージェントをダウンロードしてインストール](../azure-monitor/platform/log-analytics-agent.md#installation-options)したり、[Azure Diagnostics 拡張機能](../azure-monitor/platform/diagnostics-extension-overview.md)を有効にしたりすることができます。 通常は仮想マシンで実行するクエリと同じものを実行することもできます。 クエリの作成の詳細については、[クエリの作成方法](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries)に関する記事を参照してください。 Azure VMware Solution における監視のパターンは、IaaS プラットフォーム内の Azure Virtual Machines に似ています。 追加情報と操作方法については、「[Azure Monitor を使用して Azure 仮想マシンを監視する](../azure-monitor/insights/monitor-vm-azure.md)」を参照してください。
+Azure VMware Solution をサブスクリプションにデプロイすると、[Azure Monitor ログ](../azure-monitor/overview.md)が自動的に生成されます。 また、プライベート クラウド内の各仮想マシンでログを収集することもできます。 Azure VMware Solution プライベート クラウドで実行されている Linux および Windows 仮想マシンに [MMA エージェントをダウンロードしてインストール](../azure-monitor/platform/log-analytics-agent.md#installation-options)したり、[Azure Diagnostics 拡張機能](../azure-monitor/platform/diagnostics-extension-overview.md)を有効にしたりすることができます。 通常は仮想マシンで実行するクエリと同じものを実行することもできます。 クエリの作成の詳細については、「[Azure Monitor ログの概要](../azure-monitor/platform/data-platform-logs.md)」を参照してください。 Azure VMware Solution における監視のパターンは、IaaS プラットフォーム内の Azure Virtual Machines に似ています。 追加情報と操作方法については、「[Azure Monitor を使用して Azure 仮想マシンを監視する](../azure-monitor/insights/monitor-vm-azure.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,30 +1,30 @@
 ---
-title: 'クイックスタート: Azure Resource Manager テンプレートを使用して NSG フロー ログを構成する'
-description: Azure Resource Manager テンプレート (ARM テンプレート) と Azure PowerShell を使用して、プログラムで NSG フロー ログを有効にする方法について説明します。
+title: 'クイックスタート: Azure Resource Manager テンプレート (ARM テンプレート) を使用してネットワーク セキュリティ グループのフロー ログを構成する'
+description: Azure Resource Manager テンプレート (ARM テンプレート) と Azure PowerShell を使用してプログラムでネットワーク セキュリティ グループ (NSG) のフロー ログを有効にする方法について学習します。
 services: network-watcher
 author: damendo
-Customer intent: I need to enable the NSG flow logs using Azure Resource Manager Template
+Customer intent: I need to enable the network security group flow logs by using an Azure Resource Manager template.
 ms.service: network-watcher
 ms.topic: quickstart
 ms.date: 07/22/2020
 ms.author: damendo
 ms.custom: subject-armqs
-ms.openlocfilehash: 96f30c05527754cbce3b7593c8d62fb56844d41e
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 563f111a656376899fcd0201b42f87bfea445865
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042760"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488048"
 ---
-# <a name="quickstart-configure-nsg-flow-logs-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して NSG フロー ログを構成する
+# <a name="quickstart-configure-network-security-group-flow-logs-by-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用してネットワーク セキュリティ グループのフロー ログを構成する
 
-このクイックスタートでは、[Azure Resource Manager](../azure-resource-manager/management/overview.md) テンプレート (ARM テンプレート) と Azure PowerShell を使用して [NSG フロー ログ](network-watcher-nsg-flow-logging-overview.md)を有効にします。
+このクイックスタートでは、[Azure Resource Manager](../azure-resource-manager/management/overview.md) テンプレート (ARM テンプレート) と Azure PowerShell を使用して[ネットワーク セキュリティ グループ (NSG) のフロー ログ](network-watcher-nsg-flow-logging-overview.md)を有効にする方法について学習します。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-まず、NSG フロー ログ オブジェクトのプロパティの概要と、いくつかのサンプル テンプレートを提供します。 次に、ローカルの PowerShell インスタンスを使用してテンプレートをデプロイします。
+まず、NSG フロー ログ オブジェクトのプロパティの概要を説明します。 サンプル テンプレートが用意されています。 このテンプレートを、ローカルの Azure PowerShell インスタンスを使用してデプロイします。
 
-環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 テンプレートが Azure portal で開きます。
 
 [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-networkwatcher-flowLogs-create%2Fazuredeploy.json)
 
@@ -34,18 +34,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-networkwatcher-flowlogs-create)からのものです。
+このクイックスタートで使用するテンプレートは、[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-networkwatcher-flowlogs-create)からのものです。
 
 :::code language="json" source="~/quickstart-templates/101-networkwatcher-flowlogs-create/azuredeploy.json":::
 
-テンプレートでは、複数のリソースが定義されています。
+テンプレートでは、次のリソースが定義されています。
 
 - [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
 - [Microsoft.Resources/deployments](/azure/templates/microsoft.resources/deployments)
 
 ## <a name="nsg-flow-logs-object"></a>NSG フロー ログ オブジェクト
 
-すべてのパラメーターが指定された NSG フロー ログ オブジェクトを以下に示します。 プロパティの詳細については、「[Microsoft.Network networkWatchers/flowLogs](/azure/templates/microsoft.network/networkwatchers/flowlogs)」を参照してください。
+次のコードは、NSG フロー ログ オブジェクトとそのパラメーターを示しています。 `Microsoft.Network/networkWatchers/flowLogs` リソースを作成するには、次のコードをテンプレートの resources セクションに追加します。
 
 ```json
 {
@@ -76,20 +76,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 }
 ```
 
-`Microsoft.Network/networkWatchers/flowLogs` リソースを作成するには、テンプレートのリソース セクションに上記の JSON を追加します。
+NSG フロー ログ オブジェクトのプロパティの完全な概要については、「[Microsoft.Network networkWatchers/flowLogs](/azure/templates/microsoft.network/networkwatchers/flowlogs)」を参照してください。
 
-## <a name="creating-your-template"></a>テンプレートを作成する
+## <a name="create-your-template"></a>テンプレートを作成する
 
-ARM テンプレートを初めて使用する場合は、以下のリンクから詳細を確認できます。
+ARM テンプレートを初めて使用する場合は、ARM テンプレートの詳細について、次の記事を参照してください。
 
 - [ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
 - [チュートリアル:初めての ARM テンプレートを作成してデプロイする](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-networkwatcher-flowlogs-create)からのものです。
+完全なテンプレートの例を次に示します。 これは、テンプレートの最も単純なバージョンでもあります。 この例には、NSG フロー ログを設定するために渡される最小限のパラメーターが含まれています。 その他の例については、概要記事の「[Azure Resource Manager テンプレートから NSG フロー ログを構成する](network-watcher-nsg-flow-logging-azure-resource-manager.md)」を参照してください。
 
-以下に示す完全なテンプレートの例は、NSG フロー ログを設定するための最小限のパラメーターを渡す最も単純なバージョンです。 その他の例については、こちらの[ハウツー ガイド](network-watcher-nsg-flow-logging-azure-resource-manager.md)に移動してください。
+### <a name="example"></a>例
 
-**例** :次のテンプレートを使用すると、ターゲット NSG の NSG フロー ログが有効になり、特定のストレージ アカウントに格納されます。
+次のテンプレートでは、NSG のフロー ログを有効にした後、ログを特定のストレージ アカウントに保存します。
 
 ```json
 {
@@ -116,16 +116,19 @@ ARM テンプレートを初めて使用する場合は、以下のリンクか�
 ```
 
 > [!NOTE]
-> - リソースの名前の形式は、" _親リソース_子リソース_ " となります。 ここで、親リソースはリージョンの Network Watcher インスタンス (形式:NetworkWatcher_RegionName。 例:NetworkWatcher_centraluseuap)
+> - リソース名には、_ParentResource_ChildResource_ の形式を使用します。 この例では、親リソースはリージョンの Azure Network Watcher インスタンスです。
+>    - **Format**: NetworkWatcher_RegionName
+>    - **例**:NetworkWatcher_centraluseuap
 > - `targetResourceId` は、ターゲット NSG のリソース ID です。
 > - `storageId` は、コピー先のストレージ アカウントのリソース ID です。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 このチュートリアルでは、既存のリソース グループと、フローのログ記録を有効にできる NSG があることを前提としています。
-上記の例のテンプレートは、すべて `azuredeploy.json` としてローカルに保存できます。 プロパティ値を更新して、サブスクリプション内の有効なリソースを参照するようにします。
 
-テンプレートをデプロイするには、PowerShell で次のコマンドを実行します。
+この記事に記載されているサンプル テンプレートは、すべて *azuredeploy.json* としてローカルに保存できます。 プロパティ値を更新して、お使いのサブスクリプション内の有効なリソースを参照するようにします。
+
+テンプレートをデプロイするには、Azure PowerShell で次のコマンドを実行します。
 
 ```azurepowershell-interactive
 $context = Get-AzSubscription -SubscriptionId <subscription Id>
@@ -135,29 +138,34 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 ```
 
 > [!NOTE]
-> 上記のコマンドでは、NetworkWatcherRG リソース グループにリソースがデプロイされ、NSG を含むリソース グループにはデプロイされません
+> これらのコマンドを使用すると、NSG を含むリソース グループではなく、サンプルの NetworkWatcherRG リソース グループにリソースがデプロイされます。
 
 ## <a name="validate-the-deployment"></a>デプロイの検証
 
-デプロイが成功したかどうかを確認するには、いくつかの方法があります。 PowerShell コンソールでは、`ProvisioningState` が `Succeeded` と表示されます。 また、変更内容を確認するには、[NSG フロー ログのポータル ページ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)を参照してください。 デプロイに問題がある場合は、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../azure-resource-manager/templates/common-deployment-errors.md)」を参照してください。
+デプロイが成功したかどうかを確認するには、次の 2 つのオプションがあります。
+
+- PowerShell コンソールに `ProvisioningState` が `Succeeded` として表示されます。
+- [NSG フロー ログのポータル ページ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)に移動して、変更内容を確認します。 
+
+デプロイに問題がある場合は、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../azure-resource-manager/templates/common-deployment-errors.md)」を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Azure では、`Complete` デプロイ モードによってリソースを削除できます。 フロー ログ リソースを削除するには、削除するリソースを含めずに、`Complete` モードでデプロイを指定します。 [完全デプロイ モード](../azure-resource-manager/templates/deployment-modes.md#complete-mode)の詳細をお読みください。
+完全デプロイ モードを使用して Azure リソースを削除することができます。 フロー ログ リソースを削除するには、削除するリソースを含めずに、完全モードでデプロイを指定します。 [完全デプロイ モード](../azure-resource-manager/templates/deployment-modes.md#complete-mode)の詳細をお読みください。
 
-または、以下の手順に従って、NSG フロー ログを Azure portal から無効にすることもできます。
+Azure portal で NSG フロー ログを無効にすることもできます。
 
-1. Azure portal にログインします。
-1. ポータルの左上隅の **[すべてのサービス]** を選択します。 _[フィルター]_ ボックスに「 **Network Watcher** 」と入力します。 検索結果に **[Network Watcher]** が表示されたら、それを選択します。
+1. Azure portal にサインインします。
+1. **[すべてのサービス]** を選択します。 **[フィルター]** ボックスに、「**network watcher**」と入力します。 検索結果で、 **[Network Watcher]** を選択します。
 1. **[ログ]** の **[NSG フロー ログ]** を選択します。
-1. NSG の一覧から、フロー ログを無効にする NSG を選択します。
-1. **[フローのログ設定]** で、フロー ログの状態を **[オフ]** に設定します。
-1. 下へスクロールし、 **[保存]** を選択します。
+1. NSG の一覧で、フロー ログを無効にする NSG を選択します。
+1. **[フローのログ設定]** で、 **[オフ]** を選択します。
+1. **[保存]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、NSG フロー ログを有効にしました。 この後は、以下の記事を使用して、NSG フロー データを視覚化する方法について学習しましょう。
+このクイックスタートでは、ARM テンプレートを使用して NSG フロー ログを有効にする方法について学習しました。 次は、以下のいずれかのオプションを使用して NSG フロー データを視覚化する方法について学習しましょう。
 
 - [Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
-- [オープン ソース ツール](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+- [オープンソース ツール](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 - [Azure Traffic Analytics](traffic-analytics.md)

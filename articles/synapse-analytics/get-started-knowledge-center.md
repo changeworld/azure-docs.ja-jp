@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: dd055eecaef00a2f3b555034f44f3c04684a1722
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 461fabd0dd9948e8967ac61919f77e3e23a981b9
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171873"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331959"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Synapse Knowledge Center を探索する
 
@@ -37,9 +37,9 @@ Synapse Studio で Knowledge Center を検索するには、次の 2 つの方�
 * **[Browser available sample]\(使用可能なサンプルを参照する\)** 。 このオプションを使用すると、サンプル データ セットをリンクして、SQL スクリプト、ノートブック、パイプラインの形式でサンプル コードを追加できます。
 * **[Tour Synapse studio]\(Synapse Studio のツアーを見る\)** 。 このオプションでは、Synapse Studio の基本的な部分についての簡単なツアーを見ることができます。 これは、Synapse Studio をこれまで使用したことがない場合に役立ちます。
 
-## <a name="exploring-blob-storage-with-sql-on-demand"></a>SQL オンデマンドを使用して BLOB ストレージを探索する
+## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>サーバーレス SQL プールを使用して Blob Storage を探索する
 
-1. **[Knowledge Center]** で、 **[Use samples immediately]\(サンプルをすぐに使用する\)** をクリックします。
+1. **[Knowledge Center]** に移動して、 **[Use samples immediately]\(サンプルをすぐに使用する\)** をクリックします。
 1. **[Query data with SQL]\(SQL を使用してデータを照会する\)** を選択します。 
 1. **[Use samples immediately]\(サンプルをすぐに使用する\)** をクリックします。
 1. これにより、新しい SQL スクリプトが作成されます。
@@ -47,7 +47,7 @@ Synapse Studio で Knowledge Center を検索するには、次の 2 つの方�
 1. [実行] をクリックします。 選択したテキストが実行されます。
 
 ## <a name="loading-more-nyc-taxi-data"></a>ニューヨーク市のタクシー データの追加の読み込み
-1. **[Knowledge Center]** で、 **[Browse available sample]\(使用可能なサンプルを参照する\)** をクリックします。 
+1. **[Knowledge Center]** に移動し、 **[Browse available samples]\(使用可能なサンプルを参照する\)** をクリックします。 
 1. 上部にある **[SQL スクリプト]** タブを選択します。
 1. **[ニューヨークのタクシー データを読み込む]** を選択します。
 1. **[入力]** で、 **[既存のプールを選択する]** を選択し、 **[SQLDB1]** を選択します。
@@ -60,4 +60,4 @@ Synapse Studio で Knowledge Center を検索するには、次の 2 つの方�
 
 * [Azure Synapse Analytics の使用を開始する](get-started.md)
 * [ワークスペースを作成する](quickstart-create-workspace.md)
-* [SQL オンデマンドを使用する](quickstart-sql-on-demand.md)
+* [サーバーレス SQL プールを使用する](quickstart-sql-on-demand.md)

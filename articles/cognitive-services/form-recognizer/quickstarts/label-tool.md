@@ -11,12 +11,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: ドキュメントの処理
-ms.openlocfilehash: 287315440199c4dc3ded1298532167d37d89a877
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5df8ced885768308369599d94c5734fa0620c507
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976149"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360872"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>サンプル ラベル付けツールを使用したラベルによる Form Recognizer モデルのトレーニング
 
@@ -37,6 +37,14 @@ ms.locfileid: "91976149"
 ## <a name="create-a-form-recognizer-resource"></a>Form Recognizer リソースを作成する
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
+
+## <a name="try-it-out"></a>試してみる
+
+Form Recognizer サンプル ラベル付けツールをオンラインで試すには、[FOTT の Web サイト](https://fott-preview.azurewebsites.net/)にアクセスします。
+
+> [!div class="nextstepaction"]
+> [Form Recognizer サンプル ラベル付けツール](https://fott-preview.azurewebsites.net/)
+
 
 ## <a name="set-up-the-sample-labeling-tool"></a>サンプル ラベル付けツールを設定する
 
@@ -116,7 +124,7 @@ ms.locfileid: "91976149"
 
 接続は、複数のプロジェクトにまたがって設定および共有できます。 拡張可能なプロバイダー モデルが使用されるため、新しいソースまたはターゲット プロバイダーを簡単に追加できます。
 
-新しい接続を作成するには、左側のナビゲーション バーにある**新しい接続** (プラグ) アイコンをクリックします。
+新しい接続を作成するには、左側のナビゲーション バーにある **新しい接続** (プラグ) アイコンをクリックします。
 
 フィールドに次の値を入力します。
 
@@ -139,7 +147,7 @@ ms.locfileid: "91976149"
 * **[API キー]** - Form Recognizer のサブスクリプション キー。
 * **[説明]** (省略可能) - プロジェクトの説明
 
-:::image type="content" source="../media/label-tool/new-project.png" alt-text="サンプル ラベル付けツールの接続設定。":::
+:::image type="content" source="../media/label-tool/new-project.png" alt-text="サンプル ラベル付けツールの新規プロジェクト ページ。":::
 
 ## <a name="label-your-forms"></a>フォームにラベルを付ける
 
@@ -155,7 +163,7 @@ ms.locfileid: "91976149"
 
 どのテーブルが自動的に抽出されたかも示されます。 ドキュメントの左側にあるテーブル (グリッド) アイコンをクリックすると、抽出されたテーブルが表示されます。 テーブルの内容は自動的に抽出されるため、このクイックスタートではテーブルの内容に対するラベル付けは行わず、自動化された抽出を信頼することにします。
 
-:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="サンプル ラベル付けツールの接続設定。":::
+:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="サンプル ラベル付けツールでのテーブルの視覚化。":::
 
 ### <a name="apply-labels-to-text"></a>ラベルをテキストに適用する
 
@@ -201,7 +209,7 @@ ms.locfileid: "91976149"
 
 ---
 
-:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="サンプル ラベル付けツールの接続設定。":::
+:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="サンプル ラベル付けツールのメインのエディター ウィンドウ。":::
 
 
 上記の手順に従って、少なくとも 5 つのフォームにラベルを付けてください。
@@ -256,7 +264,7 @@ ms.locfileid: "91976149"
 * タグの一覧と、タグごとの予測精度。
 
 
-:::image type="content" source="../media/label-tool/train-screen.png" alt-text="サンプル ラベル付けツールの接続設定。":::
+:::image type="content" source="../media/label-tool/train-screen.png" alt-text="トレーニング ビュー。":::
 
 トレーニングが完了したら、 **[Average Accuracy]\(平均精度\)** の値を確認します。 低い場合は、入力ドキュメントをさらに追加して、上記の手順を繰り返す必要があります。 既にラベルを付けたドキュメントは、プロジェクトのインデックスに残ります。
 
@@ -275,7 +283,7 @@ ms.locfileid: "91976149"
 
 サンプル ラベル付けツールでモデルを作成するには、左側にある [Model Compose]\(モデルの作成\) (マージされる矢印) アイコンをクリックします。 左側で、一緒に作成したいモデルを選択します。 矢印アイコンの付いたモデルは、既に作成済みのモデルです。 [作成] ボタンをクリックします。 ポップアップで、新しく作成するモデルに名前を付け、[作成] をクリックします。 操作が完了すると、新しく作成されたモデルが一覧に表示されます。 
 
-:::image type="content" source="../media/label-tool/model-compose.png" alt-text="サンプル ラベル付けツールの接続設定。":::
+:::image type="content" source="../media/label-tool/model-compose.png" alt-text="モデルの作成の UX ビュー。":::
 
 ---
 

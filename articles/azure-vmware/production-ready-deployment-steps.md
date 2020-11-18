@@ -3,12 +3,12 @@ title: Azure VMware Solution のデプロイの計画
 description: この記事では、Azure VMware Solution のデプロイ ワークフローの概要について説明します。  最終的な結果として、仮想マシン (VM) の作成と移行に向けて環境の準備が整います。
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: e30692f26af786097f3cdb81690be617bfea0c79
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9b6d04e1e7a60bf812ca2b1e370c5075d306c432
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517363"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287054"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware Solution のデプロイの計画
 
@@ -17,7 +17,7 @@ ms.locfileid: "92517363"
 このクイック スタートのプロセスにより、仮想マシン (VM) の作成と移行のための運用準備ができた環境が得られます。 
 
 >[!IMPORTANT]
->Azure VMware Solution リソースを作成する前に、「[Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)」の記事に従い、サポート チケットを提出してノードの割り当てを依頼してください。 サポート チームがリクエストを受け取ると、リクエストが確認されてノードが割り当てられるまでに、最大 5 営業日かかります。 Azure VMware Solution の既存のプライベート クラウドがあり、さらに多くのノードを割り当てる必要がある場合は、同じプロセスを実行します。 
+>Azure VMware Solution リソースを作成する前に、「[Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)」に従い、サポート チケットを提出してホストの割り当てを依頼してください。 サポート チームがリクエストを受け取った後、リクエストが確認され、ホストが割り当てられるまでに、最大 5 営業日かかります。 Azure VMware Solution の既存のプライベート クラウドがあり、さらに多くのホストを割り当てる必要がある場合は、同じプロセスを実行します。 
 
 
 ## <a name="subscription"></a>サブスクリプション
@@ -39,9 +39,9 @@ Azure VMware Solution のデプロイ先リージョンを特定します。  �
 
 デプロイ時に使用するリソース名を定義します。  リソース名はわかりやすく説明的な名前であり、その中で Azure VMware Solution プライベート クラウドにタイトルを付けます。
 
-## <a name="size-nodes"></a>サイズ ノード
+## <a name="size-hosts"></a>サイズ ホスト
 
-Azure VMware Solution のデプロイ時に使用するサイズ ノードを特定します。  完全な一覧については、[Azure VMware Solution プライベート クラウドとクラスター](concepts-private-clouds-clusters.md#hosts)に関するドキュメントを参照してください。
+Azure VMware Solution のデプロイ時に使用するサイズ ホストを特定します。  完全な一覧については、[Azure VMware Solution プライベート クラウドとクラスター](concepts-private-clouds-clusters.md#hosts)に関するドキュメントを参照してください。
 
 ## <a name="number-of-hosts"></a>ホストの数
 
@@ -79,7 +79,7 @@ L2 ネットワークの拡張だけを計画している場合でも、環境�
 
 **例:** 10.0.4.0/24
 
-:::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="特定する - IP アドレス セグメント" border="false":::     
+:::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="特定する - 仮想マシンのワークロードの IP アドレス セグメント" border="false":::     
 
 ## <a name="optional-extend-networks"></a>(省略可能) ネットワークを拡張する
 
@@ -96,7 +96,7 @@ ExpressRoute Global Reach ピアリングのために必要な `/29` CIDR ネッ
 
 **例:** 10.1.0.0/29
 
-:::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="特定する - IP アドレス セグメント" border="false":::
+:::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="特定する - ExpressRoute Global Reach ピアリング ネットワーク" border="false":::
 
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure VMware Solution を接続するための Azure Virtual Network
 
@@ -119,7 +119,7 @@ Azure VMware Solution からの ExpressRoute 回線を既存の ExpressRoute ゲ
 >[!NOTE]
 >この仮想ネットワークは、オンプレミス環境と Azure VMware Solution から認識されるため、この仮想ネットワークで使用する IP セグメントとサブネットが重複しないようにしてください。
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="特定する - IP アドレス セグメント" border="false":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="特定する - Azure VMware Solution を接続するための Azure Virtual Network" border="false":::
 
 ## <a name="vmware-hcx-network-segments"></a>VMware HCX のネットワーク セグメント
 

@@ -3,27 +3,27 @@ title: クイックスタート - アクセス トークンを作成して管理
 titleSuffix: An Azure Communication Services quickstart
 description: Azure Communication Services 管理クライアント ライブラリを使用して、ID とアクセス トークンを管理する方法について説明します。
 author: tomaschladek
-manager: jken
+manager: nmurav
 services: azure-communication-services
 ms.author: tchladek
 ms.date: 08/20/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: e323f1f50fe6c67a841c300fcbec1eed3afc4497
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: b67d0808643797d88628b626403c1b9d97cf1cad
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074126"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506250"
 ---
 # <a name="quickstart-create-and-manage-access-tokens"></a>クイック スタート:アクセス トークンを作成して管理する
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-Communication Services 管理クライアント ライブラリを使用してアクセス トークンをプロビジョニングして管理することによって、Azure Communication Services の使用を開始します。 アクセス トークンを使用すると、チャットと通話のクライアント ライブラリが Azure Communication Services に対して直接認証を行うことができます。 これらのトークンは、実装するサーバー側のトークン プロビジョニング サービスで生成されます。 その後これらは、クライアント デバイス上で Communication Services クライアント ライブラリを初期化するために使用されます。
+Communication Services 管理クライアント ライブラリを使用して、Azure Communication Services の使用を開始します。 これを使用することにより、ID を作成し、アクセス トークンを管理できます。 ID は、Azure Communication Services のアプリケーションのエンティティ (ユーザーやデバイスなど) を表します。 アクセス トークンを使用すると、チャットと通話のクライアント ライブラリが Azure Communication Services に対して直接認証を行うことができます。 アクセス トークンは、サーバー側のサービスで生成することをお勧めします。 その後アクセス トークンは、クライアント デバイス上で Communication Services クライアント ライブラリを初期化するために使用されます。
 
-このチュートリアルを通して画像に表示されている料金は、あくまでも例示のためのものであることに注意してください。
+このチュートリアルを通して画像に表示されている料金は、例示のみを目的としています。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [.NET](./includes/user-access-token-net.md)]
@@ -46,21 +46,20 @@ Communication Services 管理クライアント ライブラリを使用して�
 ```console
 Azure Communication Services - Access Tokens Quickstart
 
-Issued a access token with 'voip' scope for identity with ID: 8:acs:fecfaddf-bf2c-4a0e-b52f-7d918c9536e6_65012b-1400da9050:
+Created an identity: 8:acs:4ccc92c8-9815-4422-bddc-ceea181dc774_00000006-19e0-2727-80f5-8b3a0d003502
+
+Issued a access token with 'voip' scope for identity with ID: 8:acs:4ccc92c8-9815-4422-bddc-ceea181dc774_00000006-19e0-2727-80f5-8b3a0d003502:
 <token signature here>
 
-Issued a access token with 'chat' scope for identity with ID: 8:acs:fecfaddf-bf2c-4a0e-b52f-7d918c9536e6_65012b-1400da9050:
-<token signature here>
+Successfully deleted the identity with ID: 8:acs:4ccc92c8-9815-4422-bddc-ceea181dc774_00000006-19e0-2727-80f5-8b3a0d003502
 
-Successfully deleted the identity with ID: 8:acs:fecfaddf-bf2c-4a0e-b52f-7d918c9536e6_65012b-1400da9050
-
-Deleted the identity with ID: 8:acs:fecfaddf-bf2c-4a0e-b52f-7d918c9536e6_65012b-1400da9050
+Deleted the identity with ID: 8:acs:4ccc92c8-9815-4422-bddc-ceea181dc774_00000006-19e0-2727-80f5-8b3a0d003502
 ```
 <!---cSpell:enable --->
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Communication Services サブスクリプションをクリーンアップして解除したい場合は、リソースまたはリソース グループを削除できます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。 詳細については、[リソースのクリーンアップ](./create-communication-resource.md#clean-up-resources)に関する記事を参照してください。
+Communication Services サブスクリプションをクリーンアップして解除する場合は、リソースまたはリソース グループを削除できます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。 詳細については、[リソースのクリーンアップ](./create-communication-resource.md#clean-up-resources)に関する記事を参照してください。
 
 
 ## <a name="next-steps"></a>次の手順
@@ -81,3 +80,4 @@ Communication Services サブスクリプションをクリーンアップして
  - [認証について学習する](../concepts/authentication.md)
  - [チャットをアプリに追加する](./chat/get-started.md)
  - [クライアントとサーバーのアーキテクチャについて学習する](../concepts/client-and-server-architecture.md)
+ 

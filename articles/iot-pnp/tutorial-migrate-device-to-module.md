@@ -1,18 +1,18 @@
 ---
-title: 汎用 IoT プラグ アンド プレイのモジュールを接続する | Microsoft Docs
-description: 汎用モジュールでサンプルの C# IoT プラグ アンド プレイ デバイス コードを使用します。
+title: チュートリアル - 汎用 Azure IoT プラグ アンド プレイのモジュールを接続する | Microsoft Docs
+description: チュートリアル - 汎用モジュールでサンプルの C# IoT プラグ アンド プレイ デバイス コードを使用します。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d425152f83821e1d157065370bd02e2d990ec876
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: dc86340026ec7b85afc9e5208ea8ef8c32d8bac6
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426941"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421466"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>チュートリアル:IoT プラグ アンド プレイ モジュールを接続する (C#)
 
@@ -31,15 +31,15 @@ Windows でこのチュートリアルを完了するには、ご利用のロー
 * [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/)。
 * [Git](https://git-scm.com/download/).
 
-Azure IoT エクスプローラー ツールを使用して、 **my-module-device** という新しいデバイスを IoT ハブに追加します。
+Azure IoT エクスプローラー ツールを使用して、**my-module-device** という新しいデバイスを IoT ハブに追加します。
 
-**my-module-device** に、 **my-module** というモジュールを追加します。
+**my-module-device** に、**my-module** というモジュールを追加します。
 
-1. Azure IoT エクスプローラー ツールで、 **my-module-device** デバイスに移動します。
+1. Azure IoT エクスプローラー ツールで、**my-module-device** デバイスに移動します。
 
 1. **[モジュール ID]** を選択してから、 **[+ 追加]** を選択します。
 
-1. モジュール ID 名として「 **my-module** 」と入力し、 **[保存]** を選択します。
+1. モジュール ID 名として「**my-module**」と入力し、 **[保存]** を選択します。
 
 1. モジュール ID の一覧で **[my-module]** を選択します。 次に、プライマリ接続文字列をコピーします。 このチュートリアルでのちほど、このモジュール接続文字列が必要になります。
 
@@ -94,7 +94,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 
 サンプル プロジェクトを開いて準備するには:
 
-1. Visual Studio 2019 で、 *azure-iot-sdk-csharp\iot-hub\Samples\device\PnpDeviceSamples\Thermostat\Thermostat.csproj* プロジェクト ファイルを開きます。
+1. Visual Studio 2019 で、*azure-iot-sdk-csharp\iot-hub\Samples\device\PnpDeviceSamples\Thermostat\Thermostat.csproj* プロジェクト ファイルを開きます。
 
 1. Visual Studio で、 **[プロジェクト] > [Thermostat のプロパティ] > [デバッグ]** の順に移動します。 プロジェクトに次の環境変数を追加します。
 
@@ -109,7 +109,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 
 デバイスではなくモジュールとして動作するようにコードを変更するには:
 
-1. Visual Studio で *Parameter.cs* を開き、 **PrimaryConnectionString** 変数を設定する行を次のように変更します。
+1. Visual Studio で *Parameter.cs* を開き、**PrimaryConnectionString** 変数を設定する行を次のように変更します。
 
     ```csharp
     public string PrimaryConnectionString { get; set; } = Environment.GetEnvironmentVariable("IOTHUB_MODULE_CONNECTION_STRING");
@@ -169,7 +169,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 
 サービスの SDK を使用すると、接続されている IoT プラグ アンド プレイ デバイスとモジュールのモデル ID を取得できます。 サービスの SDK を使用して、書き込み可能なプロパティを設定し、コマンドを呼び出すことができます。
 
-1. Visual Studio の別のインスタンスで、 *azure-iot-sdk-csharp\iot-hub\Samples\service\PnpServiceSamples\Thermostat\Thermostat.csproj* プロジェクトを開きます。
+1. Visual Studio の別のインスタンスで、*azure-iot-sdk-csharp\iot-hub\Samples\service\PnpServiceSamples\Thermostat\Thermostat.csproj* プロジェクトを開きます。
 
 1. Visual Studio で、 **[プロジェクト] > [Thermostat のプロパティ] > [デバッグ]** の順に移動します。 プロジェクトに次の環境変数を追加します。
 

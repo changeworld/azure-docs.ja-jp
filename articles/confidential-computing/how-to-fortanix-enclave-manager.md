@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: 235f4eb236e144d41ffb9958b09dab0cf5c269b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2c266d31a3aacc5bc97434de2246bfb1285a1ee
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462430"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565706"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>方法:Fortanix Enclave Manager でアプリケーションを実行する 
 
@@ -89,7 +89,7 @@ Fortanix は、Azure インフラストラクチャ上に構築された製品�
 
 ## <a name="create-an-image"></a>イメージの作成
 Fortanix EM イメージは、アプリケーションのソフトウェア リリースまたはバージョンです。 各イメージは、1 つのエンクレーブ ハッシュ (MRENCLAVE) に関連付けられています。 
-1. **[Add Image]** ページで、 **[Output image name]** に**レジストリ資格**情報を入力します。 これらの資格情報は、イメージがプッシュされるプライベート docker レジストリにアクセスするために使用されます。 
+1. **[Add Image]** ページで、 **[Output image name]** に **レジストリ資格** 情報を入力します。 これらの資格情報は、イメージがプッシュされるプライベート docker レジストリにアクセスするために使用されます。 
 
     ![イメージを作成する](media/how-to-fortanix-enclave-manager/create-image.png)
 1. イメージ タグを指定し、 **[Create]** を選択します。
@@ -117,10 +117,10 @@ Fortanix Node Agent を作成すると、仮想マシン、ネットワーク �
      ![search marketplace](media/how-to-fortanix-enclave-manager/search-fortanix-marketplace.png)
 1. **[今すぐ入手]** を選択し、必要に応じて情報を入力して、 **[続行]** を選択します。 Azure portal にリダイレクトされます。 
 1. **[作成]** を選択して、Fortanix Confidential Computing Node Agent のデプロイ ページを開きます。
-1. このページでは、仮想マシンをデプロイするための情報を入力します。 具体的には、この VM は、Fortanix Node Agent ソフトウェアがインストールされた、Azure からの DCsv2 シリーズの Intel SGX 対応の仮想マシンです。 Node Agent により、変換されたイメージは Azure の Intel SGX ノードで安全に実行できます。  仮想マシンおよび関連付けられているリソースをデプロイする**サブスクリプション**と**リソース グループ**を選択します。 
+1. このページでは、仮想マシンをデプロイするための情報を入力します。 具体的には、この VM は、Fortanix Node Agent ソフトウェアがインストールされた、Azure からの DCsv2 シリーズの Intel SGX 対応の仮想マシンです。 Node Agent により、変換されたイメージは Azure の Intel SGX ノードで安全に実行できます。  仮想マシンおよび関連付けられているリソースをデプロイする **サブスクリプション** と **リソース グループ** を選択します。 
  
     > [!NOTE]
-    > DCsv2 シリーズの仮想マシンを Azure にデプロイする場合、制約があります。 追加のコアのクォータを要求することが必要な場合もあります。 詳細については、[Azure VM でのコンフィデンシャル コンピューティング ソリューション](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions)に関するページを参照してください。 
+    > DCsv2 シリーズの仮想マシンを Azure にデプロイする場合、制約があります。 追加のコアのクォータを要求することが必要な場合もあります。 詳細については、[Azure VM でのコンフィデンシャル コンピューティング ソリューション](./virtual-machine-solutions.md)に関するページを参照してください。 
 
 1. 使用可能なリージョンを選択します。
 1. 仮想マシンの名前を **[ノード名]** フィールドに入力します。 
@@ -152,7 +152,7 @@ Fortanix Node Agent を作成すると、仮想マシン、ネットワーク �
     
 ## <a name="verify-and-monitor-the-running-application"></a>実行中のアプリケーションを確認して監視する
 1. [Fortanix Enclave Manager](https://em.fortanix.com/console) に戻ります
-1. ノードを登録した**アカウント**内で作業していることを確認します
+1. ノードを登録した **アカウント** 内で作業していることを確認します
 1. 左側のナビゲーション ペインの上部アイコンを選択して、 **[管理コンソール]** に移動します 
 1. **[アプリケーション]** タブを選択します
 1. コンピューティング ノードが関連付けられている実行中のアプリケーションがあることを確認します
@@ -174,4 +174,4 @@ Fortanix Node Agent を作成すると、仮想マシン、ネットワーク �
 
 Azure のコンフィデンシャル コンピューティング サービスの詳細については、[「Azure Confidential Computing の概要」](overview.md)を参照してください。
 
- Azure 上で ([Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) や [Scone](https://sconedocs.github.io)などの) 他のサードパーティ オファリングを使用して同様のタスクを実行する方法について学習します。  
+ Azure 上で ([Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) や [Scone](https://sconedocs.github.io)などの) 他のサードパーティ オファリングを使用して同様のタスクを実行する方法について学習します。

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/22/2017
+ms.date: 11/03/2020
 ms.author: barclayn
 ROBOTS: NOINDEX,NOFOLLOW
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8a898e116ee2d88f4ccc5a0131737b2723f8b8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f899a6c1b4f359f7e8d6e1e05389aa697b4f1bd7
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90969086"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359699"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>チュートリアル:Linux VM 上でユーザー割り当てマネージド ID を使用して Azure Resource Manager にアクセスする
 
@@ -39,14 +39,11 @@ ms.locfileid: "90969086"
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
-
-- [Azure portal にサインインする](https://portal.azure.com)
-
-- [Linux 仮想マシンを作成する](../../virtual-machines/linux/quick-create-portal.md)
-
+- マネージド ID の知識。 Azure リソースのマネージド ID 機能に慣れていない場合は、こちらの[概要](overview.md)を参照してください。 
+- Azure アカウント。[無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。
+- Linux 仮想マシンも必要です。 このチュートリアル用に仮想マシンを作成する必要がある場合は、[Azure portal での Linux 仮想マシンの作成](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)に関する記事に従ってください。
 - サンプル スクリプトを実行するには、次の 2 つのオプションがあります。
-    - [Azure Cloud Shell](../../cloud-shell/overview.md) を使用します。これは、コード ブロックの右上隅にある **[Try It]\(試してみる\)** ボタンを使用して開くことができます。
+    - [Azure Cloud Shell](../../cloud-shell/overview.md) を使用する。これは、コード ブロックの右上隅にある **[Try It]\(試してみる\)** ボタンを使用して開くことができます。
     - 最新バージョンの [Azure CLI](/cli/azure/install-azure-cli) をインストールしてスクリプトをローカルで実行した後、[az login](/cli/azure/reference-index#az-login) を使用して Azure にサインインします。
 
 ## <a name="create-a-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID を作成する
@@ -76,7 +73,7 @@ az identity create -g <RESOURCE GROUP> -n <UAMI NAME>
 }
 ```
 
-## <a name="assign-a-user-assigned-managed-identity-to-your-linux-vm"></a>Linux VM にユーザー割り当てマネージド ID を割り当てる
+## <a name="assign-an-identity-to-your-linux-vm"></a>Linux VM に ID を割り当てる
 
 ユーザー割り当てマネージド ID は、複数の Azure リソース上のクライアントで使用できます。 単一の VM にユーザー割り当てマネージド ID を割り当てるには、次のコマンドを使用します。 `-IdentityID` パラメーターには、前の手順で返された `Id` プロパティを使用します。
 
@@ -86,7 +83,7 @@ az identity create -g <RESOURCE GROUP> -n <UAMI NAME>
 az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAMI NAME>"
 ```
 
-## <a name="grant-your-user-assigned-managed-identity-access-to-a-resource-group-in-azure-resource-manager"></a>Azure Resource Manager でユーザー割り当てマネージド ID にリソース グループへのアクセスを許可する 
+## <a name="grant-access-to-a-resource-group-in-azure-resource-manager"></a>Azure Resource Manager でリソース グループへのアクセスを許可する
 
 Azure AD 認証をサポートするリソース API に認証するアクセス トークンを要求するためにコードで使用する ID が、Azure リソースのマネージド ID により提供されます。 このチュートリアルでは、コードは Azure Resource Manager API にアクセスします。  
 
@@ -122,20 +119,20 @@ az role assignment create --assignee <UAMI PRINCIPALID> --role 'Reader' --scope 
 1. Azure [Portal](https://portal.azure.com) にサインインします。
 2. Portal で **[仮想マシン]** に移動し、Linux 仮想マシンに移動して、**[概要]** の **[接続]** をクリックします。 VM に接続する文字列をコピーします。
 3. 任意の SSH クライアントを使用して、VM に接続します。 Windows を使用している場合は、[Windows Subsystem for Linux](/windows/wsl/about) で SSH クライアントを使用することができます。 SSH クライアント キーの構成について支援が必要な場合は、「[Azure 上の Windows で SSH キーを使用する方法](~/articles/virtual-machines/linux/ssh-from-windows.md)」または「[Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成して使用する方法](~/articles/virtual-machines/linux/mac-create-ssh-keys.md)」をご覧ください。
-4. ターミナル ウィンドウで、CURL を使用して、Azure Instance Metadata Service (IMDS) の ID エンドポイントに対して Azure Resource Manager のアクセス トークンを取得するよう要求します。  
+4. ターミナル ウィンドウで、CURL を使用して、Azure Instance Metadata Service (IMDS) の ID エンドポイントに対して Azure Resource Manager のアクセス トークンを取得するよう要求します。  
 
-   アクセス トークンを取得するための CURL 要求を次の例に示します。`<CLIENT ID>` を、「[ユーザー割り当てマネージド ID を作成する](#create-a-user-assigned-managed-identity)」の `az identity create` コマンドによって返された `clientId` プロパティで置き換えてください。 
+   アクセス トークンを取得するための CURL 要求を次の例に示します。 `<CLIENT ID>` を、「[ユーザー割り当てマネージド ID を作成する](#create-a-user-assigned-managed-identity)」の `az identity create` コマンドによって返された `clientId` プロパティで置き換えてください。 
     
    ```bash
-   curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com/&client_id=<UAMI CLIENT ID>"   
+   curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com/&client_id=<UAMI CLIENT ID>"   
    ```
     
     > [!NOTE]
-    > `resource` パラメーターの値は、Azure AD で予期される値と完全に一致している必要があります。Resource Manager のリソース ID を使用する場合は、URI の末尾にスラッシュを含める必要があります。 
+    > `resource` パラメーターの値は、Azure AD で予期される値と完全に一致している必要があります。 Resource Manager のリソース ID を使用する場合は、URI の末尾にスラッシュを含める必要があります。 
     
-    応答には、Azure Resource Manager へのアクセスに必要なアクセス トークンが含まれています。 
+    応答には、Azure Resource Manager へのアクセスに必要なアクセス トークンが含まれています。 
     
-    応答の例:  
+    応答の例:  
 
     ```bash
     {
@@ -146,19 +143,19 @@ az role assignment create --assignee <UAMI PRINCIPALID> --role 'Reader' --scope 
     "not_before":"1504126627",
     "resource":"https://management.azure.com",
     "token_type":"Bearer"
-    } 
+    } 
     ```
 
 5. このアクセス トークンを使用して Azure Resource Manager にアクセスし、以前にユーザー割り当てマネージド ID にアクセスを許可したリソース グループのプロパティを読み取ります。 `<SUBSCRIPTION ID>` と `<RESOURCE GROUP>` は、以前に指定した値で必ず置き換えてください。`<ACCESS TOKEN>` は、前の手順で返されたトークンで置き換えてください。
 
     > [!NOTE]
-    > URL では大文字小文字が区別されるため、リソース グループの命名時に使用したものと同じ大文字と小文字の使い分けが使用されていること、および `resourceGroups` の "G" が大文字であることを確認してください。  
+    > URL では大文字小文字が区別されるため、リソース グループの命名時に使用したものと同じ大文字と小文字の使い分けが使用されていること、および `resourceGroups` の "G" が大文字であることを確認してください。  
 
     ```bash 
-    curl https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-09-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
+    curl https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-09-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
     ```
 
-    応答には、次の例のように、特定のリソース グループの情報が含まれています。 
+    応答には、次の例のように、特定のリソース グループの情報が含まれています。 
 
     ```bash
     {
@@ -166,9 +163,9 @@ az role assignment create --assignee <UAMI PRINCIPALID> --role 'Reader' --scope 
     "name":"DevTest",
     "location":"westus",
     "properties":{"provisioningState":"Succeeded"}
-    } 
+    } 
     ```
-    
+    
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure Resource Manager API にアクセスするために、ユーザー割り当てマネージド ID を作成して、それを Linux 仮想マシンに添付する方法について学習しました。  Azure Resource Manager の詳細については、以下を参照してください。

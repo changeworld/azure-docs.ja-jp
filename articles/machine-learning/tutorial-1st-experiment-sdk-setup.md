@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:Jupyter Notebook の概要 (Python)
 titleSuffix: Azure Machine Learning
-description: Jupyter Notebook チュートリアルに向けてセットアップします。 Azure Machine Learning ワークスペースを作成し、Jupyter Notebook をワークスペースに複製して、ノートブックを実行するコンピューティング インスタンスを作成します。
+description: Jupyter Notebook チュートリアルに向けてセットアップします。 ワークスペースを作成し、ノートブックをワークスペースに複製して、ノートブックを実行するコンピューティング インスタンスを作成します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 601e124c1ad87724babfabffc95e9265bc962d87
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 6eb76c9d8cc8447755e045972a7aceddefd1604a
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913298"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532972"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>チュートリアル:Jupyter Notebook で Azure Machine Learning の作業を開始する
 
@@ -82,7 +82,7 @@ Azure Machine Learning では、インストール不要であらかじめ構成
     
 1. **tutorials/image-classification-mnist-data** フォルダー内の **tutorial-1st-experiment-sdk-train.ipynb** ファイルを選択します。
 
-    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="Clone チュートリアル フォルダーを示すスクリーンショット。":::
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="tutorials フォルダーを開いたところを示すスクリーンショット。":::
 
 1. 上部のバーで、ノートブックの実行に使用するコンピューティング インスタンスを選択します。 これらの仮想マシン (VM) には、[Azure Machine Learning を実行するために必要なすべてのもの](concept-compute-instance.md#contents)があらかじめ構成されています。
 

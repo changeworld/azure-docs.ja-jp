@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 58b4a8c445548c711c2ad76c2d983acaec11ca7f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 47427f8d3690218060fd1e6221b1b089c68d6e1d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786277"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94441836"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Key Vault と Azure CLI を使用してストレージ アカウント キーを管理する
 
@@ -34,11 +34,11 @@ Azure Storage と Azure Active Directory (Azure AD) の統合 (Microsoft のク�
 
 Azure AD では、ストレージ アカウントの資格情報ではなく、アプリケーションまたはユーザーの ID を使用してクライアント アプリケーションを認証することができます。 Azure で実行するときは、[Azure AD マネージド ID](../../active-directory/managed-identities-azure-resources/index.yml) を使用できます。 マネージド ID を使用すると、クライアント認証やアプリケーションでの資格情報の保存が不要になります。
 
-Azure AD は、Key Vault でもサポートされているロール ベースのアクセス制御 (RBAC) を使用して承認を管理します。
+Azure AD は、Key Vault でもサポートされている Azure ロールベースのアクセス制御 (Azure RBAC) を使用して承認を管理します。
 
 ## <a name="service-principal-application-id"></a>サービス プリンシパルのアプリケーション ID
 
-Azure AD テナントは、登録されている各アプリケーションに[サービス プリンシパル](../../active-directory/develop/developer-glossary.md#service-principal-object)を提供します。 サービス プリンシパルはアプリケーション ID として機能します。アプリケーション ID は、RBAC を介した他の Azure リソースへのアクセスに対する承認のセットアップ時に使用されます。
+Azure AD テナントは、登録されている各アプリケーションに[サービス プリンシパル](../../active-directory/develop/developer-glossary.md#service-principal-object)を提供します。 サービス プリンシパルはアプリケーション ID として機能し、Azure RBAC を介した他の Azure リソースへのアクセスに対する承認のセットアップ時に使用されます。
 
 Key Vault は、すべての Azure AD テナントに事前登録されている Microsoft アプリケーションです。 Key Vault は、各 Azure クラウド内に同じアプリケーション ID で登録されています。
 
@@ -137,29 +137,13 @@ az keyvault storage sas-definition create --vault-name <YourKeyVaultName> --acco
 
 ### <a name="verify-the-shared-access-signature-definition"></a>Shared Access Signature 定義の検証
 
-Shared Access Signature 定義がキー コンテナーに格納されていることを確認するには、Azure CLI の [az keyvault secret list](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-list) および [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) コマンドを使用します。
+Shared Access Signature 定義がキー コンテナーに格納されていることを確認するには、Azure CLI の [az keyvault storage sas-definition show](/cli/azure/keyvault/storage/sas-definition?#az_keyvault_storage_sas_definition_show) コマンドを使用します。
 
-最初に、[az keyvault secret list](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-list) コマンドを使用して、キー コンテナー内の Shared Access Signature 定義を検索します。
-
-```azurecli-interactive
-az keyvault secret list --vault-name <YourKeyVaultName>
-```
-
-SAS 定義に対応するシークレットには、次のプロパティがあります。
-
-```console
-    "contentType": "application/vnd.ms-sastoken-storage",
-    "id": "https://<YourKeyVaultName>.vault.azure.net/secrets/<YourStorageAccountName>-<YourSASDefinitionName>",
-```
-
-ここで、[az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) コマンドと `id` プロパティを使用して、そのシークレットの内容を表示できます。
+ここで、[az keyvault storage sas-definition show](/cli/azure/keyvault/storage/sas-definition?#az_keyvault_storage_sas_definition_show) コマンドと `id` プロパティを使用して、そのシークレットの内容を表示できます。
 
 ```azurecli-interactive
-az keyvault secret show --vault-name <YourKeyVaultName> --id <SasDefinitionID>
+az keyvault storage sas-definition show --id https://<YourKeyVaultName>.vault.azure.net/storage/<YourStorageAccountName>/sas/<YourSASDefinitionName>
 ```
-
-このコマンドの出力では、SAS 定義文字列が `value` として表示されます。
-
 
 ## <a name="next-steps"></a>次のステップ
 

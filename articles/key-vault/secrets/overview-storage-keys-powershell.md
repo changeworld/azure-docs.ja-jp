@@ -9,12 +9,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 18bf8d865a5bb4d96fb55199137b38ec30861dbe
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 50fbaf5092e793369daaa71fc7364dfd406e03b3
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793043"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444896"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Key Vault と Azure PowerShell を使用してストレージ アカウント キーを管理する
 
@@ -33,13 +33,13 @@ Azure Storage と Azure Active Directory (Azure AD) の統合 (Microsoft のク�
 
 Azure AD では、ストレージ アカウントの資格情報ではなく、アプリケーションまたはユーザーの ID を使用してクライアント アプリケーションを認証することができます。 Azure で実行するときは、[Azure AD マネージド ID](../../active-directory/managed-identities-azure-resources/index.yml) を使用できます。 マネージド ID を使用すると、クライアント認証やアプリケーションでの資格情報の保存が不要になります。
 
-Azure AD は、Key Vault でもサポートされているロール ベースのアクセス制御 (RBAC) を使用して承認を管理します。
+Azure AD は、Key Vault でもサポートされている Azure ロールベースのアクセス制御 (Azure RBAC) を使用して承認を管理します。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="service-principal-application-id"></a>サービス プリンシパルのアプリケーション ID
 
-Azure AD テナントは、登録されている各アプリケーションに[サービス プリンシパル](../../active-directory/develop/developer-glossary.md#service-principal-object)を提供します。 サービス プリンシパルはアプリケーション ID として機能し、RBAC を介した他の Azure リソースへのアクセスに対する承認のセットアップ時に使用されます。
+Azure AD テナントは、登録されている各アプリケーションに[サービス プリンシパル](../../active-directory/develop/developer-glossary.md#service-principal-object)を提供します。 サービス プリンシパルはアプリケーション ID として機能し、Azure RBAC を介した他の Azure リソースへのアクセスに対する承認のセットアップ時に使用されます。
 
 Key Vault は、すべての Azure AD テナントに事前登録されている Microsoft アプリケーションです。 Key Vault は、各 Azure クラウド内に同じアプリケーション ID で登録されています。
 
@@ -99,7 +99,7 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -St
 
 ### <a name="give-key-vault-access-to-your-storage-account"></a>Key Vault にストレージ アカウントへのアクセス権を付与する
 
-Key Vault からストレージ アカウント キーにアクセスして管理できるようにするには、ストレージ アカウントへのアクセスを承認する必要があります。 Key Vault アプリケーションでは、ストレージ アカウントのキーを " *一覧表示* " し " *再生成* " するアクセス許可が必要です。 このようなアクセス許可は、Azure 組み込みロールである[ストレージ アカウント キー オペレーターのサービス ロール](../../role-based-access-control/built-in-roles.md#storage-account-key-operator-service-role)で有効になります。
+Key Vault からストレージ アカウント キーにアクセスして管理できるようにするには、ストレージ アカウントへのアクセスを承認する必要があります。 Key Vault アプリケーションでは、ストレージ アカウントのキーを "*一覧表示*" し "*再生成*" するアクセス許可が必要です。 このようなアクセス許可は、Azure 組み込みロールである[ストレージ アカウント キー オペレーターのサービス ロール](../../role-based-access-control/built-in-roles.md#storage-account-key-operator-service-role)で有効になります。
 
 Azure PowerShell の [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) コマンドレットを使用して、このロールを Key Vault サービス プリンシパルに割り当て、範囲をそのストレージ アカウントに限定します。
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Spark を使用した分析の概要
+title: 'クイックスタート: Spark を使用して分析を開始する'
 description: このチュートリアルでは、Apache Spark を使用してデータを分析する方法について説明します
 services: synapse-analytics
 author: saveenr
@@ -10,16 +10,16 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: ec6af7c23f781d25114794066a228adbfe7528d0
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 89bc2723a0d7c99160c651fb433db6f8892ee676
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093618"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321077"
 ---
 # <a name="analyze-with-apache-spark"></a>Apache Spark を使用して分析を行う
 
-## <a name="analyze-nyc-taxi-data-in-blob-storage--using-spark"></a>Spark を使用して BLOB ストレージの NYC タクシー データを分析する
+## <a name="analyze-nyc-taxi-data-in-blob-storage-using-spark"></a>Spark を使用して Blob Storage の NYC タクシー データを分析する
 
 このチュートリアルでは、Apache Spark for Azure Synapse でデータを読み込んで分析する基本的な手順について説明します。
 
@@ -32,8 +32,8 @@ ms.locfileid: "92093618"
     data_df = data.to_spark_dataframe()
     display(data_df.limit(10))
     ```
-1. ノートブックの **[Attach to]\(接続先\)** メニューで spark プールを選択します
-1. セルで **[実行]** をクリックします
+1. ノートブックの **[Attach to]\(接続先\)** メニューで、サーバーレス Spark プールを選択します。
+1. セルで **[実行]** を選択します。
 
 ## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>NYC タクシーのデータを Spark nyctaxi データベースに読み込む
 
@@ -53,8 +53,8 @@ ms.locfileid: "92093618"
 
 1. **[データ]** ハブに移動し、 **[データベース]** を右クリックして、 **[更新]** を選択します。 次のデータベースが表示されます。
 
-    - **SQLDB1** (SQL プール)
-    - **nyctaxi** (Spark)
+    - **SQLDB1** (専用 SQL プール)
+    - **nyctaxi** (サーバーレス Apache Spark プール)
 
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Spark とノートブックを使用して NYC タクシーのデータを分析する
 
@@ -67,7 +67,7 @@ ms.locfileid: "92093618"
    display(df)
    ```
 
-1. 次のコードを実行して、先ほど SQL プール **SQLDB1** で行ったのと同じ分析を実行します。 このコードにより、分析の結果が **nyctaxi.passengercountstats** という名前のテーブルに保存され、結果が視覚化されます。
+1. 次のコードを実行して、先ほど専用 SQL プール **SQLDB1** で行ったのと同じ分析を実行します。 このコードにより、分析の結果が **nyctaxi.passengercountstats** という名前のテーブルに保存され、結果が視覚化されます。
 
    ```py
    %%pyspark
@@ -105,11 +105,11 @@ matplotlib.pyplot.show()
 
 
 
-## <a name="load-data-from-a-spark-table-into-a-sql-pool-table"></a>Spark テーブルから SQL プール テーブルにデータを読み込む
+## <a name="load-data-from-a-spark-table-into-a-dedicated-sql-pool-table"></a>Spark テーブルから専用 SQL プール テーブルにデータを読み込む
 
-先ほど SQL プール テーブル **SQLDB1.dbo.Trip** のデータを Spark テーブル **nyctaxi.trip** にコピーしました。 次に、Spark を使用して、データを Spark テーブル **nyctaxi.passengercountstats** に集約しました。 今度は、**nyctaxi.passengercountstats** のデータを **SQLDB1.dbo.PassengerCountStats** という名前の SQL プール テーブルにコピーします。
+先ほど、専用 SQL プール テーブル **SQLDB1.dbo.Trip** のデータを Spark テーブル **nyctaxi.trip** にコピーしました。 次に、Spark を使用して、データを Spark テーブル **nyctaxi.passengercountstats** に集約しました。 今度は、**nyctaxi.passengercountstats** のデータを **SQLDB1.dbo.PassengerCountStats** という専用 SQL プール テーブルにコピーします。
 
-ノートブックで次のセルを実行します。 集約された Spark テーブルが再度 SQL プール テーブルにコピーされます。
+ノートブックで次のセルを実行します。 集約された Spark テーブルが専用 SQL プール テーブルにコピーされます。
 
 ```scala
 %%spark
@@ -120,6 +120,6 @@ df.write.sqlanalytics("SQLDB1.dbo.PassengerCountStats", Constants.INTERNAL )
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [SQL オンデマンドを使用してデータを分析する](get-started-analyze-sql-on-demand.md)
+> [サーバーレス SQL プールを使用してデータを分析する](get-started-analyze-sql-on-demand.md)
 
 

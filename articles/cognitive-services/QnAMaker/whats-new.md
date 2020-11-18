@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 73044f35b90fd3e5996899fd7c3b0a925056f8ed
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2016d6dfedef68c334758660e9affa0ad9b9d4a3
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87836877"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505242"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker の新機能
 
@@ -23,6 +23,14 @@ ms.locfileid: "87836877"
 
 QnA Maker の新機能について説明します。
 
+### <a name="november-2020"></a>2020 年 11 月
+
+* 無料パブリック プレビューでの提供が始まった新しいバージョンの QnA Maker。 詳細については、[こちら](https://techcommunity.microsoft.com/t5/azure-ai/introducing-qna-maker-managed-now-in-public-preview/ba-p/1845575)をご覧ください。
+* 簡素化されたリソースの作成
+* エンド ツー エンドのリージョン サポート
+* ディープ ラーニングされたランキング モデル
+* 正確な回答のためのコンピューター読み取りの理解
+  
 ### <a name="july-2020"></a>2020 年 7 月
 
 * [メタデータ: `OR` による複数のメタデータ ペアの論理の組み合わせ](how-to/metadata-generateanswer-usage.md#logical-or-using-strictfilterscompoundoperationtype-property)

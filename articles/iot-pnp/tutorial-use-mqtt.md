@@ -1,20 +1,20 @@
 ---
-title: MQTT を使用して IoT プラグ アンド プレイ デバイス クライアントを作成する | Microsoft Docs
-description: MQTT プロトコルを直接使用して、Azure IoT Device SDK を使用せずに、IoT プラグ アンド プレイ デバイス クライアントを作成します
+title: チュートリアル - MQTT を使用して Azure IoT プラグ アンド プレイ デバイス クライアントを作成する | Microsoft Docs
+description: チュートリアル - MQTT プロトコルを直接使用して、Azure IoT Device SDK を使用せずに、IoT プラグ アンド プレイ デバイス クライアントを作成します
 author: ericmitt
 ms.author: ericmitt
 ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d0ac0f000b6a096ae3de1f4f00a17b64f1948c1e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6852b0532b23e46c7b986926b21cd0b7e9f9736d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046283"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421381"
 ---
-# <a name="use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>MQTT を使用して IoT プラグ アンド プレイ デバイス クライアントを開発する
+# <a name="tutorial---use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>チュートリアル - MQTT を使用して IoT プラグ アンド プレイ デバイス クライアントを開発する
 
 可能であれば、いずれかの Azure IoT Device SDK を使用して、IoT プラグ アンド プレイ デバイス クライアントを構築する必要があります。 ただし、メモリに制約のあるデバイスの使用時などのシナリオでは、MQTT ライブラリを使用して IoT ハブと通信することが必要になる場合があります。
 
@@ -26,7 +26,7 @@ ms.locfileid: "92046283"
 
 Windows でこのチュートリアルを完了するには、ご利用のローカル Windows 環境に次のソフトウェアをインストールします。
 
-* [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/)。Visual Studio を[インストール](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019)するときに、 **[C++ によるデスクトップ開発]** ワークロードを必ず含めてください
+* [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/)。Visual Studio を [インストール](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019)するときに、 **[C++ によるデスクトップ開発]** ワークロードを必ず含めてください
 * [Git](https://git-scm.com/download/)
 * [CMake](https://cmake.org/download/)
 
@@ -37,8 +37,8 @@ Windows でこのチュートリアルを完了するには、ご利用のロー
 1. **[デバイス]** ページで **[+ 新規]** を選択します。
 1. 自動生成された対称キーを使用する *my-mqtt-device* というデバイスを作成します。
 1. **[デバイス ID]** ページで、 **[Connection string with SAS token]\(SAS トークンを含む接続文字列\)** を展開します。
-1. **対称キー**として使用する**主キー**を選択し、有効期限を 60 分に設定して、 **[生成]** を選択します。
-1. 生成された **SAS トークン接続文字列**をコピーします。この値は、このチュートリアルで後ほど使用します。
+1. **対称キー** として使用する **主キー** を選択し、有効期限を 60 分に設定して、 **[生成]** を選択します。
+1. 生成された **SAS トークン接続文字列** をコピーします。この値は、このチュートリアルで後ほど使用します。
 
 ## <a name="clone-sample-repo"></a>サンプル リポジトリを複製する
 
@@ -80,7 +80,7 @@ cd vcpkg
 
 Visual Studio でサンプル コードを表示するには、*IoTMQTTSample\src\Windows* フォルダーにある *MQTTWin32.sln* ソリューション ファイルを開きます。
 
-**ソリューション エクスプローラー**で、** TelemetryMQTTWin32** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。
+**ソリューション エクスプローラー **で、** TelemetryMQTTWin32** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。
 
 **TelemetryMQTTWin32** プロジェクトで、**MQTT_Mosquitto.cpp** ソース ファイルを開きます。 前に記録したデバイスの詳細を使用して、接続情報の定義を更新します。 トークン文字列プレースホルダーを次のように置き換えます。
 
@@ -96,7 +96,7 @@ Azure IoT エクスプローラーを起動し、テレメトリのリッスン�
 
 Azure IoT エクスプローラーでは、デバイスが IoT プラグ アンド プレイ デバイスではないことがわかります。
 
-:::image type="content" source="media/tutorial-use-mqtt/non-pnp-iot-explorer.png" alt-text="MQTT サンプル アプリケーションからの出力":::
+:::image type="content" source="media/tutorial-use-mqtt/non-pnp-iot-explorer.png" alt-text="Azure IoT エクスプローラーでの IoT プラグ アンド プレイではないデバイス":::
 
 ### <a name="make-the-device-an-iot-plug-and-play-device"></a>デバイスを IoT プラグ アンド プレイ デバイスにする
 
@@ -117,11 +117,11 @@ IoT プラグ アンド プレイ デバイスでは、一連の簡単な規則�
 
 デバイス ツインにモデル ID が含まれるようになりました。
 
-:::image type="content" source="media/tutorial-use-mqtt/model-id-iot-explorer.png" alt-text="MQTT サンプル アプリケーションからの出力":::
+:::image type="content" source="media/tutorial-use-mqtt/model-id-iot-explorer.png" alt-text="Azure IoT エクスプローラーでモデル ID を表示する":::
 
 IoT プラグ アンド プレイ コンポーネント内を移動できるようになりました。
 
-:::image type="content" source="media/tutorial-use-mqtt/components-iot-explorer.png" alt-text="MQTT サンプル アプリケーションからの出力":::
+:::image type="content" source="media/tutorial-use-mqtt/components-iot-explorer.png" alt-text="Azure IoT エクスプローラーでのコンポーネントの表示":::
 
 これで、デバイス コードを変更して、モデルで定義されているテレメトリ、プロパティ、コマンドを実装できます。 Mosquitto ライブラリを使用したサーモスタット デバイスの実装例については、GitHub の「[Windows の IoT SDK を使用せずに Azure IoTHub で MQTT PnP を使用する](https://github.com/Azure-Samples/IoTMQTTSample/tree/master/src/Windows/PnPMQTTWin32)」を参照してください。
 

@@ -1,7 +1,7 @@
 ---
 title: Jupyter ノートブックの例
 titleSuffix: Azure Machine Learning
-description: サンプルの Jupyter Notebook を検索して使用し、Azure Machine Learning Python SDK を探索します。
+description: SDK の探索を支援し、独自の機械学習プロジェクトのモデルとして機能するように設計されている Jupyter Notebook を検索して使用する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: f8b4256f33a143c711a23a3564c2a46c69e0783b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 3f5cb2831a58ce9d0d30039b80815e281401e883
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675770"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542560"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Jupyter ノートブックを使用して Azure Machine Learning を探索する
 
@@ -32,7 +32,7 @@ ms.locfileid: "92675770"
 - [Data Science Virtual Machine](#dsvm)
 
 > [!NOTE]
-> リポジトリを複製すると、 **tutorials** フォルダー内にチュートリアル ノートブック、 **how-to-use-azureml** フォルダー内に機能固有のノートブックがあることがわかります。
+> リポジトリを複製すると、**tutorials** フォルダー内にチュートリアル ノートブック、**how-to-use-azureml** フォルダー内に機能固有のノートブックがあることがわかります。
 
 <a name="notebookvm"></a>
 ## <a name="get-samples-on-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスでサンプルを取得する
@@ -47,7 +47,7 @@ ms.locfileid: "92675770"
 
 [!INCLUDE [aml-your-server](../../includes/aml-your-server.md)]
 
-これらの手順では、クイック スタートとチュートリアルのノートブックに必要な基本 SDK パッケージがインストールされます。 その他のサンプル ノートブックでは、追加のコンポーネントのインストールが必要になる場合があります。 詳細については、「[Install the Azure Machine Learning SDK for Python (Azure Machine Learning SDK for Python をインストールする)](https://docs.microsoft.com/python/api/overview/azure/ml/install)」を参照してください。
+これらの手順では、クイック スタートとチュートリアルのノートブックに必要な基本 SDK パッケージがインストールされます。 その他のサンプル ノートブックでは、追加のコンポーネントのインストールが必要になる場合があります。 詳細については、「[Install the Azure Machine Learning SDK for Python (Azure Machine Learning SDK for Python をインストールする)](/python/api/overview/azure/ml/install)」を参照してください。
 
 <a name="dsvm"></a>
 ## <a name="get-samples-on-dsvm"></a>DSVM 上でサンプルを入手する

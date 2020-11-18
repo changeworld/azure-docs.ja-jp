@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 0ba0cbbccd1f4a9bc8ff8a4895e238c9150c9b17
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 5b60082db53b458adc53ac23d98731ad1c97b52b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413073"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563649"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Azure Front Door Service の Azure Web アプリケーション ファイアウォールに関してよく寄せられる質問
 
@@ -55,7 +55,7 @@ Front Door の送信 IP アドレス範囲のみを許可し、インターネ�
 
 ## <a name="which-azure-waf-options-should-i-choose"></a>どの Azure WAF オプションを選択すればよいですか?
 
-Azure に WAF ポリシーを適用する場合、2 つの選択肢があります。 Azure Front Door を使用した WAF は、グローバルに分散したエッジ セキュリティ ソリューションです。 Application Gateway を使用した WAFは、リージョンの専用ソリューションです。 全体的なパフォーマンスとセキュリティの要件に基づいてソリューションを選択することをお勧めします。 詳細については、「[Azure のアプリケーション配信スイートでの負荷分散](https://docs.microsoft.com/azure/frontdoor/front-door-lb-with-azure-app-delivery-suite)」を参照してください。
+Azure に WAF ポリシーを適用する場合、2 つの選択肢があります。 Azure Front Door を使用した WAF は、グローバルに分散したエッジ セキュリティ ソリューションです。 Application Gateway を使用した WAFは、リージョンの専用ソリューションです。 全体的なパフォーマンスとセキュリティの要件に基づいてソリューションを選択することをお勧めします。 詳細については、「[Azure のアプリケーション配信スイートでの負荷分散](../../frontdoor/front-door-lb-with-azure-app-delivery-suite.md)」を参照してください。
 
 
 ## <a name="do-you-support-same-waf-features-in-all-integrated-platforms"></a>すべての統合プラットフォームで同じ WAF 機能がサポートされますか?

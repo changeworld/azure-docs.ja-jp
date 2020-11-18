@@ -1,18 +1,18 @@
 ---
-title: IoT プラグ アンド プレイのサンプル Python コンポーネント デバイス コードを IoT Hub に接続する | Microsoft Docs
-description: 複数のコンポーネントを使用し、IoT ハブに接続する、IoT プラグ アンド プレイのサンプル Python デバイス コードをビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
+title: チュートリアル - IoT プラグ アンド プレイのサンプル Python コンポーネント デバイス コードを Azure IoT Hub に接続する | Microsoft Docs
+description: チュートリアル - 複数のコンポーネントを使用し、IoT ハブに接続する、IoT プラグ アンド プレイのサンプル Python デバイス コードをビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 7/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1b329206dcc41d8f7fcb3874da037f5b57142722
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 0a4130688d479902f7836ae09c4006bb36fc16d2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613664"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421398"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-python"></a>チュートリアル:IoT プラグ アンド プレイの複数コンポーネント デバイス アプリケーションのサンプルを IoT Hub に接続する (Python)
 

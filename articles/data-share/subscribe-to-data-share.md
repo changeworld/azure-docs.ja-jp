@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: 4d4ef9f1d80604373463450adf597f8202611175
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 9031ea2d862a23df5d597b790fffc49e624e53fb
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216574"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491921"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>チュートリアル:Azure Data Share を使用したデータの受け入れと受信  
 
@@ -130,7 +130,14 @@ ms.locfileid: "92216574"
    ![コンシューマー データセット](./media/consumer-datasets.png "コンシューマー データセットのマッピング") 
 
 ## <a name="view-history"></a>履歴を表示する
-この手順は、スナップショットベースの共有にのみ適用されます。 スナップショットの履歴を表示するには、 **[履歴]** タブを選択します。ここには、過去 30 日間に生成されたすべてのスナップショットの履歴があります。 
+この手順は、スナップショットベースの共有にのみ適用されます。 スナップショットの履歴を表示するには、 **[履歴]** タブを選択します。ここには、過去 30 日間に生成されたすべてのスナップショットの履歴があります。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+リソースが不要になったら、**Data Share の [概要]** ページに移動し、 **[削除]** を選択して削除します。
 
 ## <a name="next-steps"></a>次の手順
-このチュートリアルでは、Azure Data Share の受け入れ方法と受信方法について学習しました。 Azure Data Share の概念についてさらに詳しく学習するには、[概念:Azure Data Share の用語集](terminology.md)に進んでください。
+このチュートリアルでは、Azure Data Share の受け入れ方法と受信方法について学習しました。 Azure Data Share の概念の詳細については、Azure Data Share の用語に進んでください。
+
+> [!div class="nextstepaction"]
+> [Azure Data Share の概念](terminology.md)

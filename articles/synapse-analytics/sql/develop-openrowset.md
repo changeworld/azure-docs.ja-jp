@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e7713239391b49663328a7a058f8f6fd5b444335
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b08e834233e1ce12392d940cb0ccc0bef7e96158
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341333"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337748"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プール (プレビュー) を使う際の OPENROWSET の使用方法
 
@@ -129,7 +129,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 読み取り対象のフォルダーまたはファイルを指す、ストレージ内のパスを指定します。 パスがコンテナーまたはフォルダーを指している場合は、その特定のコンテナーまたはフォルダーからすべてのファイルが読み取られます。 サブフォルダー内のファイルは含まれません。 
 
 ワイルドカードを使用して、複数のファイルまたはフォルダーを対象にすることができます。 連続しない複数のワイルドカードを使用できます。
-次に示すのは、 */csv/population* で始まるすべてのフォルダーから、 *population* で始まるすべての *csv* ファイルを読み取る例です。  
+次に示すのは、 */csv/population* で始まるすべてのフォルダーから、*population* で始まるすべての *csv* ファイルを読み取る例です。  
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
 unstructured_data_path をフォルダーとして指定すると、サーバーレス SQL プール クエリによってそのフォルダーからファイルが取得されます。 
@@ -261,12 +261,12 @@ Parquet ファイルには、すべての列の型の説明が含まれていま
 | BINARY |UTF8 |varchar \*(UTF8 照合順序) |
 | BINARY |STRING |varchar \*(UTF8 照合順序) |
 | BINARY |ENUM|varchar \*(UTF8 照合順序) |
-| BINARY |UUID |UNIQUEIDENTIFIER |
+| FIXED_LEN_BYTE_ARRAY |UUID |UNIQUEIDENTIFIER |
 | BINARY |DECIMAL |decimal |
-| BINARY |JSON |varchar(max) \*(UTF8 照合順序) |
-| BINARY |BSON |varbinary(max) |
+| BINARY |JSON |varchar(8000) \*(UTF8 照合順序) |
+| BINARY |BSON | サポートされていません |
 | FIXED_LEN_BYTE_ARRAY |DECIMAL |decimal |
-| BYTE_ARRAY |INTERVAL |varchar(max)、標準化された形式にシリアル化 |
+| BYTE_ARRAY |INTERVAL | サポートされていません |
 | INT32 |INT(8, true) |smallint |
 | INT32 |INT(16, true) |smallint |
 | INT32 |INT(32, true) |INT |
@@ -279,10 +279,10 @@ Parquet ファイルには、すべての列の型の説明が含まれていま
 | INT64 |INT(64, true) |bigint |
 | INT64 |INT(64, false) |decimal (20,0) |
 | INT64 |DECIMAL |decimal |
-| INT64 |TIME (MICROS / NANOS) |time |
-|INT64 |TIMESTAMP (MILLIS / MICROS / NANOS) |datetime2 |
-|[複合型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |リスト |varchar(max)、JSON にシリアル化 |
-|[複合型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|MAP|varchar(max)、JSON にシリアル化 |
+| INT64 |TIME (MICROS) |time - TIME(NANOS) はサポートされません |
+|INT64 |TIMESTAMP (MILLIS または MICROS) |datetime2 - TIMESTAMP(NANOS) はサポートされません |
+|[複合型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |リスト |varchar(8000)、JSON にシリアル化 |
+|[複合型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|MAP|varchar(8000)、JSON にシリアル化 |
 
 ## <a name="examples"></a>例
 

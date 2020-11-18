@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: fc62c87fd12457c60d3eb26cba6814aa1df76f87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52a4dbc4ff01515af8cd7d2503877184a09f7e64
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839216"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566097"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>クライアント アプリケーションへのカスタム コマンド アクティビティの送信
 
@@ -37,16 +37,18 @@ ms.locfileid: "91839216"
 1. 前に作成したカスタム コマンド アプリケーションを開きます。
 1. **TurnOnOff** コマンドを選択し、完了ルールの **[ConfirmationResponse]** を選択してから、 **[アクションの追加]** を選択します。
 1. **[新しいアクションの種類]** で、 **[クライアントへのアクティビティの送信]** を選択します。
-1. 以下の JSON を**アクティビティ コンテンツ**にコピーしてします
+1. 以下の JSON を **アクティビティ コンテンツ** にコピーしてします
    ```json
    {
-     "type": "event",
-     "name": "UpdateDeviceState",
-     "state": "{OnOff}",
-     "device": "{SubjectDevice}"
-   }
+      "type": "event",
+      "name": "UpdateDeviceState",
+      "value": {
+        "state": "{OnOff}",
+        "device": "{SubjectDevice}"
+      }
+    }
    ```
-1. **[保存]** をクリックして、アクティビティの送信アクションを含む新しいルールを作成し、変更内容を**トレーニング**して**公開**します
+1. **[保存]** をクリックして、アクティビティの送信アクションを含む新しいルールを作成し、変更内容を **トレーニング** して **公開** します
 
    > [!div class="mx-imgBorder"]
    > ![アクティビティの送信の完了規則](media/custom-commands/send-activity-to-client-completion-rules.png)
@@ -55,7 +57,7 @@ ms.locfileid: "91839216"
 
 [方法: Speech SDK (プレビュー) を使用してカスタム コマンド アプリケーションを設定する](./how-to-custom-commands-setup-speech-sdk.md) では、`turn on the tv`、`turn off the fan` などのコマンドを処理する Speech SDK を使用して UWP クライアント アプリケーションを作成しました。 いくつかのビジュアルを追加して、それらのコマンドの結果を確認できます。
 
-**オン**または**オフ**を示すテキストを含むラベル付きボックスを追加するには、以下の StackPanel の XML ブロックを `MainPage.xaml` に追加します。
+**オン** または **オフ** を示すテキストを含むラベル付きボックスを追加するには、以下の StackPanel の XML ブロックを `MainPage.xaml` に追加します。
 
 ```xml
 <StackPanel Orientation="Vertical" H......>
@@ -114,8 +116,8 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
     if (name.Equals("UpdateDeviceState"))
     {
         Debug.WriteLine("Here");
-        var state = activity?.device != null ? activity.state.ToString() : string.Empty;
-        var device = activity?.device != null ? activity.device.ToString() : string.Empty;
+        var state = activity?.value?.state != null ? activity.value.state.ToString() : string.Empty;
+        var device = activity?.value?.device != null ? activity.value.device.ToString() : string.Empty;
 
         if (state.Equals("on") || state.Equals("off"))
         {

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/20/2020
+ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: a5e7e46041e339646e4813a4cce61046f2a57e5e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2102ea1ef4afb6d7f3ce96e4cd7ead0e7af08bf0
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319061"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129441"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と 8x8 の統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "92319061"
 * 8x8 にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して 8x8 に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,8 +42,6 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * 8x8 では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
-* 8x8 を構成したら、ご自分の組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
@@ -53,7 +49,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 Azure AD への 8x8 の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に 8x8 を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
@@ -64,7 +60,7 @@ Azure AD への 8x8 の統合を構成するには、ギャラリーからマネ
 
 **B.Simon** というテスト ユーザーを使用して、8x8 に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと 8x8 の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-8x8 で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+8x8 に対して Azure AD SSO を構成してテストするには、次の手順を実行します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -77,7 +73,7 @@ Azure AD への 8x8 の統合を構成するには、ギャラリーからマネ
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **8x8** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal の **8x8** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -130,12 +126,12 @@ Azure AD への 8x8 の統合を構成するには、ギャラリーからマネ
 
 このチュートリアルの次の部分は、8x8 で使用しているサブスクリプションの種類によって異なります。
 
-* 管理に Configuration Manager を使用している 8x8 エディションおよび X シリーズのお客様の場合は、「[8x8 Configuration Manager の構成](#configure-8x8-configuration-manager)」を参照してください。
+* 管理に Configuration Manager を使用している 8x8 エディションおよび X シリーズのお客様の場合は、「[8x8 管理コンソールの構成](#configure-8x8-admin-console)」を参照してください。
 * 管理に Account Manager を使用している Virtual Office のお客様の場合は、「[8x8 Account Manager の構成](#configure-8x8-account-manager)」を参照してください。
 
-### <a name="configure-8x8-configuration-manager"></a>8x8 Configuration Manager の構成
+### <a name="configure-8x8-admin-console"></a>8x8 Admin Console の構成
 
-1. 8x8 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. 8x8 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -143,7 +139,7 @@ Azure AD への 8x8 の統合を構成するには、ギャラリーからマネ
 
     ![セットアップの構成](common/setup-sso.png)
 
-1. 8x8 を手動で設定する場合は、管理者として 8x8 [Configuration Manager](https://vo-cm.8x8.com/) にサインインします。
+1. 8x8 を手動で設定する場合は、管理者として 8x8 [Admin Console](https://admin.8x8.com/) にサインインします。
 
 1. ホーム ページで、 **[Identity Management]\(ID 管理\)** をクリックします。
 
@@ -153,13 +149,13 @@ Azure AD への 8x8 の統合を構成するには、ギャラリーからマネ
 
     ![[Single Sign On (SSO)]\(シングル サインオン (SSO)\) と [Microsoft Azure AD] オプションが強調表示されているスクリーンショット。](./media/8x8virtualoffice-tutorial/configure2.png)
 
-1. 3 つの URL と署名証明書を、Azure AD の **[SAML でシングル サインオンをセットアップします]** ページから、8x8 Configuration Manager の **[Microsoft Azure AD SAML Settings]\(Microsoft Azure AD SAML 設定\)** セクションにコピーします。
+1. 3 つの URL と署名証明書を、Azure AD の **[SAML でシングル サインオンをセットアップします]** ページから、8x8 Admin Console の **[Microsoft Azure AD SAML Settings]\(Microsoft Azure AD SAML 設定\)** セクションにコピーします。
 
-    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure3.png)
+    ![8x8 Admin Console](./media/8x8virtualoffice-tutorial/configure3.png)
 
     a. **ログイン URL** を **[IDP Login URL]\(IDP ログイン URL\)** にコピーします。
 
-    b. **Azure AD 識別子**を **[IDP Issuer URL/URN]\(IDP 発行者 URL/URN\)** にコピーします。
+    b. **Azure AD 識別子** を **[IDP Issuer URL/URN]\(IDP 発行者 URL/URN\)** にコピーします。
 
     c. **ログアウト URL** を **[IDP Logout URL]\(IDP ログアウト URL\)** にコピーします。
 
@@ -195,9 +191,9 @@ Azure AD への 8x8 の統合を構成するには、ギャラリーからマネ
 
     ![Configure On App Side](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_006.png)
 
-    a. **[Sign In URL]\(サインイン URL\)** テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    a. **[Sign In URL]\(サインイン URL\)** テキストボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    b. **[Sign Out URL]\(サインアウト URL\)** テキストボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    b. **[Sign Out URL]\(サインアウト URL\)** テキストボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
     c. **[Issuer URL]\(発行者 URL\)** テキストボックスに、Azure portal からコピーした、**Azure AD ID** の値を貼り付けます。
 
@@ -211,20 +207,21 @@ Azure AD への 8x8 の統合を構成するには、ギャラリーからマネ
 
 ## <a name="test-sso"></a>SSO のテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネル上で [8x8] タイルをクリックすると、SSO を設定した 8x8 に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+#### <a name="sp-initiated"></a>SP Initiated:
 
-## <a name="additional-resources"></a>その他のリソース
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる 8x8 のサインオン URL にリダイレクトされます。  
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* 8x8 のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP Initiated:
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した 8x8 に自動的にサインインされます 
 
-- [Azure AD で 8x8 を試す](https://aad.portal.azure.com/)
+また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで 8x8 タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した 8x8 に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって 8x8 を保護する方法](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>次のステップ
+
+8x8 を構成したら、ご自分の組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

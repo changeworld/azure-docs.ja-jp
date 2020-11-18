@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 1437ef8675d0ddc96eb7fc641b3663b66c3ea11b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f9bbf6e9d1d932f7225807613b789821c1462932
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285236"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94441853"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Azure Key Vault のアクセス ポリシーの問題のトラブルシューティング
 
@@ -53,7 +53,7 @@ Azure CLI の `az keyvault set-policy` コマンド、または Azure PowerShell
 
 現在、Key Vault の再デプロイでは、Key Vault のアクセス ポリシーが削除され、ARM テンプレートのアクセス ポリシーに置き換えられます。 Key Vault のアクセス ポリシーに増分オプションはありません。 Key Vault のアクセス ポリシーを保持するには、Key Vault の既存のアクセス ポリシーを読み取り、ARM テンプレートにそれらのポリシーを設定して、アクセスの停止を回避する必要があります。
 
-このシナリオに役立つ可能性があるもう 1 つの選択肢は、アクセス ポリシーの代替として RBAC ロールを利用することです。 RBAC を使用すると、ポリシーを再度指定しなくても、キー コンテナーを再デプロイできます。 このソリューションの詳細は[こちら](./rbac-guide.md)でご覧いただけます。
+このシナリオに役立つ可能性があるもう 1 つの選択肢は、アクセス ポリシーの代替として Azure RBAC とロールを利用することです。 Azure RBAC を使用すると、ポリシーを再度指定しなくても、キー コンテナーを再デプロイできます。 このソリューションの詳細は[こちら](./rbac-guide.md)でご覧いただけます。
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>次のエラーの種類に対して推奨されるトラブルシューティングの手順
 

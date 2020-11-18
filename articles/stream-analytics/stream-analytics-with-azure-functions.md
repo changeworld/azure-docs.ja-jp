@@ -7,18 +7,21 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: 70ea5ec9ee91fdba8023b9c6af1ce65b691a17fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 291586bc2e34784a7bbf29016ea1da35d51e844b
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006892"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489949"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>チュートリアル:Azure Stream Analytics ジョブから Azure Functions を実行する 
 
 Azure Stream Analytics から Azure Functions を実行するには、Stream Analytics ジョブへの出力シンクの 1 つとして Functions を構成します。 Functions はイベント ドリブン型コンピューティング オンデマンド エクスペリエンスであり、これにより、Azure またはサード パーティのサービスで発生するイベントによってトリガーされるコードを実装できます。 トリガーに応答する Azure Functions の機能によって、それは Azure Stream Analytics への自然な出力になります。
 
 Stream Analytics では、HTTP トリガーを使用して Functions を呼び出します。 Functions の出力アダプターにより、ユーザーは Functions を Stream Analytics に接続し、Stream Analytics クエリに基づいてイベントをトリガーできるようになります。 
+
+> [!NOTE]
+> マルチテナント クラスターで実行されている Stream Analytics ジョブから仮想ネットワーク (VNet) 内の Azure Functions への接続はサポートされていません。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -44,7 +47,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. 「[Create a cache](../azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)」 (キャッシュを作成する) で説明されている手順を使用して、Azure Cache for Redis でキャッシュを作成します。  
 
-2. キャッシュを作成したら、 **[設定]** にある **[アクセス キー]** を選択します。 **プライマリ接続文字列**をメモします。
+2. キャッシュを作成したら、 **[設定]** にある **[アクセス キー]** を選択します。 **プライマリ接続文字列** をメモします。
 
    ![Azure Cache for Redis の接続文字列のスクリーンショット](./media/stream-analytics-with-azure-functions/image2.png)
 
@@ -130,11 +133,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
  
 4. Azure Portal に戻ります。 **[プラットフォーム機能]** タブで、目的の関数を参照します。 **[開発ツール]** で **[Azure App Service]** を選択します。 
  
-   ![App Service エディターのスクリーンショット](./media/stream-analytics-with-azure-functions/image3.png)
+   ![[プラットフォーム機能] タブを示すスクリーンショット。[App Service Editor] が選択されています。](./media/stream-analytics-with-azure-functions/image3.png)
 
 5. App Service エディターで、ルート ディレクトリを右クリックし、**project.json** ファイルをアップロードします。 アップロードが成功したら、ページを更新します。 これで、自動生成された **project.lock.json** という名前のファイルが表示されるはずです。 自動生成されたファイルには、project.json ファイルで指定されている .dll ファイルへの参照が含まれています。  
 
-   ![App Service エディターのスクリーンショット](./media/stream-analytics-with-azure-functions/image4.png)
+   ![メニューから選択された [ファイルのアップロード] を示すスクリーンショット。](./media/stream-analytics-with-azure-functions/image4.png)
 
 ## <a name="update-the-stream-analytics-job-with-the-function-as-output"></a>出力としての関数で Stream Analytics ジョブを更新する
 
@@ -198,7 +201,7 @@ Azure Functions へのイベントの送信中にエラーが発生した場合�
 
 Azure Portal では、最大バッチ サイズ/最大バッチ カウントの値を空 (既定値) にリセットしようとしても、保存時には以前に入力した値に戻ります。 この場合は、それらのフィールドに既定値を手動で入力します。
 
-Azure Functions での [HTTP ルーティング](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp)の使用は、現在、Stream Analytics ではサポートされていません。
+Azure Functions での [HTTP ルーティング](/sandbox/functions-recipes/routes?tabs=csharp)の使用は、現在、Stream Analytics ではサポートされていません。
 
 仮想ネットワークでホストされている Azure Functions に接続するためのサポートが、有効になっていません。
 

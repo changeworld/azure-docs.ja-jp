@@ -9,12 +9,12 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-python
-ms.openlocfilehash: b5f1d0712098e4fe331607860f6e0ed488d29c1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 394e735be5da65ffa75e10200589a4adb4e7cad2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87848794"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313932"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>チュートリアル:Azure Data Lake Storage Gen2、Azure Databricks、および Spark
 
@@ -33,7 +33,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * Azure Data Lake Storage Gen2 アカウントを作成します。
 
-  「[Azure Data Lake Storage Gen2 アカウントを作成する](data-lake-storage-quickstart-create-account.md)」を参照してください。
+  「[Azure Data Lake Storage Gen2 で使用するストレージ アカウントを作成する](create-data-lake-storage-account.md)」をご覧ください。
 
 * ユーザー アカウントに[ストレージ BLOB データ共同作成者ロール](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac)が割り当てられていることを確認します。
 
@@ -43,7 +43,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
   この記事の手順を実行する際に、いくつかの特定の作業を行う必要があります。
 
-  :heavy_check_mark:記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)」セクションの手順を実行するときに、必ず**ストレージ BLOB データ共同作成者**ロールをサービス プリンシパルに割り当ててください。
+  :heavy_check_mark:記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)」セクションの手順を実行するときに、必ず **ストレージ BLOB データ共同作成者** ロールをサービス プリンシパルに割り当ててください。
 
   > [!IMPORTANT]
   > Data Lake Storage Gen2 ストレージ アカウントの範囲内のロールを割り当てるようにしてください。 親リソース グループまたはサブスクリプションにロールを割り当てることはできますが、それらのロール割り当てがストレージ アカウントに伝達されるまで、アクセス許可関連のエラーが発生します。

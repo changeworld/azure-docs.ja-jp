@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 08/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 30ca4d330d9b16214396ac81e5ab5722ca0e7569
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b6a6cbf51ef2ff1f1ef53b53a2b84c7a4f9510d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89254298"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376186"
 ---
 1. [Azure portal](https://portal.azure.com/) で Azure Stack Edge リソースを選択し、 **[概要]** に移動します。 デバイスがオンラインになっている必要があります。
 
@@ -34,6 +34,6 @@ ms.locfileid: "89254298"
     
 4. この新しいストレージ アカウントを選択して **[アクセス キー]** に移動すると、Blob service エンドポイントと、対応するストレージ アカウント名を確認できます。 これらの値とアクセス キーを一緒に使用すると Edge ストレージ アカウントに接続できるので、この情報をコピーしておきます。
 
-    ![ストレージ アカウントの追加](media/azure-stack-edge-gateway-add-storage-account/add-storage-account-4.png)
+    ![ストレージ アカウントの追加 2](media/azure-stack-edge-gateway-add-storage-account/add-storage-account-4.png)
 
     アクセス キーを取得するには、[Azure Resource Manager を使用してデバイスのローカル API に接続](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md)します。 

@@ -5,14 +5,15 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python
 zone_pivot_groups: python-frameworks-01
-ms.openlocfilehash: eef0a4f24ba65fea4bb33c68f7e7d15f592e808d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+adobe-target: true
+ms.openlocfilehash: 8b88b8ef81dc8186c122a24896d85114ef8a163d
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92915473"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506466"
 ---
-# <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Python アプリを作成する
+# <a name="quickstart-create-a-python-app-in-azure-app-service-for-linux"></a>クイックスタート: Azure App Service for Linux で Python アプリを作成する
 
 このクイック スタートでは、Azure のスケーラビリティに優れた自己適用型の Web ホスティング サービスである [App Service on Linux](overview.md#app-service-on-linux) に、Python Web アプリをデプロイします。 Mac、Linux、または Windows コンピューター上でローカル [Azure コマンドライン インターフェイス (CLI)](/cli/azure/install-azure-cli) を使用して、Flask または Django のいずれかのフレームワークを使用したサンプルをデプロイします。 構成する Web アプリでは、App Service の Free レベルを使用するため、この記事の中で料金が発生することはありません。
 
@@ -99,7 +100,7 @@ cd python-docs-hello-django
 
 ## <a name="deploy-the-sample"></a>サンプルのデプロイ
 
-`az webapp up` コマンドを使用して、ローカル フォルダー ( *python-docs-hello-world* ) にコードをデプロイします。
+`az webapp up` コマンドを使用して、ローカル フォルダー (*python-docs-hello-world*) にコードをデプロイします。
 
 ```azurecli
 az webapp up --sku F1 --name <app-name>
@@ -107,10 +108,10 @@ az webapp up --sku F1 --name <app-name>
 
 - `az` コマンドが認識されない場合は、「[初期環境を設定する](#set-up-your-initial-environment)」の説明に従って Azure CLI がインストールされていることを確認してください。
 - `webapp` コマンドが認識されない場合、それはご利用の Azure CLI のバージョンが 2.0.80 以上だからです。 そうでない場合は、最[新バージョンをインストール](/cli/azure/install-azure-cli)してください。
-- `<app_name>` を Azure 全体で一意の名前で置き換えます (" *有効な文字は、`a-z`、`0-9`、および `-` です* ")。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。
+- `<app_name>` を Azure 全体で一意の名前で置き換えます ("*有効な文字は、`a-z`、`0-9`、および `-` です*")。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。
 - `--sku F1` 引数を使用すると、Free 価格レベルで Web アプリが作成されます。 この引数を省略するとより高速な Premium レベルが使用されるため、時間単位のコストが発生します。
 - 必要に応じて、引数 `--location <location-name>` を含めることができます。ここで、`<location_name>` は利用可能な Azure リージョンです。 [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) コマンドを実行すると、お使いの Azure アカウントで使用可能なリージョンの一覧を取得できます。
-- "Could not auto-detect the runtime stack of your app (アプリのランタイム スタックを自動検出できませんでした)" というエラーが表示された場合は、 *requirements.txt* ファイルがある *python-docs-hello-world* フォルダー (Flask) または *python-docs-hello-django フォルダー (Django)* でコマンドを実行していることを確認してください。 (GitHub の [az webapp up を使用して自動検出の問題をトラブルシューティングする方法](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md)に関するページを参照してください。)
+- "Could not auto-detect the runtime stack of your app (アプリのランタイム スタックを自動検出できませんでした)" というエラーが表示された場合は、*requirements.txt* ファイルがある *python-docs-hello-world* フォルダー (Flask) または *python-docs-hello-django フォルダー (Django)* でコマンドを実行していることを確認してください。 (GitHub の [az webapp up を使用して自動検出の問題をトラブルシューティングする方法](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md)に関するページを参照してください。)
 
 コマンドが完了するまでに数分かかる場合があります。 実行中には、リソース グループ、App Service プラン、およびホスティング アプリの作成、ログ記録の構成、ZIP デプロイの実行に関するメッセージが表示されます。 次に、"http://&lt;app-name&gt;.azurewebsites.net でアプリを起動することができます" という内容のメッセージが表示されます。これは、Azure 上のアプリの URL です。
 
@@ -141,7 +142,7 @@ Python サンプル コードによって、App Service 内で、組み込みの
 
     [!include [virtual environment setup](../../includes/app-service-quickstart-python-venv.md)]
 
-    "[Errno 2] そのようなファイルまたはディレクトリはありません: 'requirements.txt'。" と表示された場合は、 *python-docs-hello-world* フォルダーを開いていることを確認してください。
+    "[Errno 2] そのようなファイルまたはディレクトリはありません: 'requirements.txt'。" と表示された場合は、*python-docs-hello-world* フォルダーを開いていることを確認してください。
 
 1. 開発サーバーを実行します。
 
@@ -151,7 +152,7 @@ Python サンプル コードによって、App Service 内で、組み込みの
     
     既定では、サーバーによって、アプリのエントリ モジュールが、サンプルで使用されている *app.py* 内にあると想定されています (別のモジュール名を使用する場合は、`FLASK_APP` 環境変数をその名前に設定します)。
 
-1. Web ブラウザーを開き、`http://localhost:5000/` のサンプル アプリに移動します。 アプリに、 **Hello World!** というメッセージが表示されます。
+1. Web ブラウザーを開き、`http://localhost:5000/` のサンプル アプリに移動します。 アプリに、**Hello World!** というメッセージが表示されます。
 
     ![サンプル Python アプリをローカルで実行する](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
     
@@ -165,7 +166,7 @@ Python サンプル コードによって、App Service 内で、組み込みの
 
     [!include [virtual environment setup](../../includes/app-service-quickstart-python-venv.md)]
 
-    "[Errno 2] そのようなファイルまたはディレクトリはありません: 'requirements.txt'。" と表示された場合は、 *python-docs-hello-django* フォルダーを開いていることを確認してください。
+    "[Errno 2] そのようなファイルまたはディレクトリはありません: 'requirements.txt'。" と表示された場合は、*python-docs-hello-django* フォルダーを開いていることを確認してください。
     
 1. 開発サーバーを実行します。
 
@@ -189,7 +190,7 @@ Python サンプル コードによって、App Service 内で、組み込みの
 
     ---    
 
-1. Web ブラウザーを開き、`http://localhost:8000/` のサンプル アプリに移動します。 アプリに、 **Hello World!** というメッセージが表示されます。
+1. Web ブラウザーを開き、`http://localhost:8000/` のサンプル アプリに移動します。 アプリに、**Hello World!** というメッセージが表示されます。
 
     ![サンプル Python アプリをローカルで実行する](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
     

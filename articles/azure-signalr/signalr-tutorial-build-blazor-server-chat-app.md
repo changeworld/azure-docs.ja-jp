@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: d1c13c5d4bea8bfdb0f70e67ce8f264a1929b8a2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 16fd15a5939cc6c268a80e88401f05042a206075
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150885"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516817"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>チュートリアル:Blazor Server チャット アプリを構築する
 
@@ -96,7 +96,7 @@ Visual Studio 2019 バージョン 16.2.0 以降では、Azure SignalR Service �
    dotnet add package Microsoft.AspNetCore.SignalR.Client --version 3.1.7
    ```
 
-1. `Pages` フォルダーに `ChartRoom.razor` を作成して、SignalR クライアントを実装します。 次の手順に従うか、[ChatRoom.razor](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BlazorChat/Pages/ChatRoom.razor) をそのままコピーしてください。
+1. `Pages` フォルダーに `ChatRoom.razor` を作成して、SignalR クライアントを実装します。 次の手順に従うか、[ChatRoom.razor](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BlazorChat/Pages/ChatRoom.razor) をそのままコピーしてください。
 
    1. ページ リンクと参照を追加します。
       
@@ -285,7 +285,7 @@ Visual Studio 2019 バージョン 16.2.0 以降では、Azure SignalR Service �
    </li>
    ```
    
-1. `site.css` を更新して、グラフ エリアのバブル ビューを最適化します。 末尾に次のコードを追加します。
+1. `site.css` を更新して、チャット領域のバブル ビューを最適化します。 末尾に次のコードを追加します。
 
    ```css
    /* improved for chat text box */

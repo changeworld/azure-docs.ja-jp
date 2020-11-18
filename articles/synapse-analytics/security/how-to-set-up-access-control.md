@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 080e56a5b6be8ba68c901509fe87421632144643
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 79a4db1f7d4be88260ea41ce1090007bc66cc7c8
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312033"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556031"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Synapse ワークスペース (プレビュー) のセキュリティ保護 
 
@@ -31,7 +31,7 @@ Synapse ワークスペース (プレビュー) をセキュリティ保護す�
   - Apache Spark for Azure Synapse Analytics 管理者
 - Azure Data Lake Storage Gen 2 (ADLSGEN2) でのデータのアクセス制御。
 - Synapse SQL および Spark データベースのアクセス制御
-- 
+
 ## <a name="steps-to-secure-a-synapse-workspace"></a>Synapse ワークスペースをセキュリティ保護する手順
 
 このドキュメントでは、手順を簡素化するために、標準名を使用しています。 それらを任意の名前に置き換えてください。

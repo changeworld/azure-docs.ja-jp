@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: 09641fb66d2f68054d23abbf8ee9f4324e19832f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7d31649e18f8cc687a9716c8ecafe556fa250de6
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521511"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377889"
 ---
 # <a name="what-is-the-speech-service"></a>音声サービスとは
 
 音声サービスは、音声テキスト変換、テキスト読み上げ、音声翻訳が 1 つの Azure サブスクリプションにまとめられたものです。 [Speech CLI](spx-overview.md)、[Speech SDK](speech-sdk-reference.md)、[Speech Devices SDK](https://aka.ms/sdsdk-quickstart)、[Speech Studio](https://speech.microsoft.com/)、または [REST API](rest-apis.md) を使用して、アプリケーション、ツール、デバイスを簡単に音声対応にできます。
 
 > [!IMPORTANT]
-> Speech Service は、Bing Speech API と Translator Speech に代わるものです。 移行の手順については、" _移行_ " に関するセクションを参照してください。
+> Speech Service は、Bing Speech API と Translator Speech に代わるものです。 移行の手順については、"_移行_" に関するセクションを参照してください。
 
 以下の機能は、Speech Service に属しています。 各機能の一般的なユース ケースの詳細を学習したり、API リファレンスを参照したりするには、次の表のリンクを使用してください。
 
@@ -46,14 +46,12 @@ ms.locfileid: "92521511"
 
 次の手順では、Microsoft アカウントと Azure アカウントの両方が必要です。 Microsoft アカウントがない場合は、[Microsoft アカウント ポータル](https://account.microsoft.com/account)で無料のものにサインアップすることができます。 **[Microsoft アカウントでサインイン]** を選択し、サインインを求められたら **[Microsoft アカウントの作成]** を選択します。 新しい Microsoft アカウントを作成して確認する手順に従います。
 
-Azure アカウントを作成したら、 [Azure サインアップ ページ](https://azure.microsoft.com/free/ai/)に移動し、 **[無料で始める]** を選択し、Microsoft アカウントを使用して新しい Azure アカウントを作成します。
+Azure アカウントを作成したら、[Azure サインアップ ページ](https://azure.microsoft.com/free/ai/)に移動し、 **[無料で始める]** を選択し、Microsoft アカウントを使用して新しい Azure アカウントを作成します。 [Azure 無料アカウントにサインアップする方法](https://www.youtube.com/watch?v=GWT2R1C_uUU)については、こちらの動画をご覧ください。
 
 > [!NOTE]
-> 音声サービスには、無料とサブスクリプションの 2 つのサービス レベルがあります。これには、異なる制限事項と特典があります。 無料の Azure アカウントにサインアップすると、最大 30 日間有効な、有料の音声サービス サブスクリプションに充当できる 200 ドルのサービス クレジットが付属しています。
+> 無料の Azure アカウントにサインアップすると、最大 30 日間有効な、有料の音声サービス サブスクリプションに充当できる 200 ドルのサービス クレジットが付属しています。 クレジットの残高がなくなるか、30 日が経過して有効期限が切れると、ご利用の Azure サービスは無効になります。 Azure サービスを引き続き使用するには、アカウントをアップグレードする必要があります。 詳細については、[Azure 無料アカウントのアップグレード方法](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription)に関するページを参照してください。 
 >
-> 無料の小規模の音声サービス レベルを使用する場合は、無料試用版またはサービス クレジットの有効期限が切れた後でも、この無料のサブスクリプションを保持できます。
->
-> 詳細については、「[Cognitive Services の価格 - Speech Services](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)」を参照してください。
+> 音声サービスには、無料 (f0) とサブスクリプション (s0) の 2 つのサービス レベルがあります。これには、異なる制限事項と特典があります。 無料の小規模の音声サービス レベルを使用する場合は、無料試用版またはサービス クレジットの有効期限が切れた後でも、この無料のサブスクリプションを保持できます。 詳細については、「[Cognitive Services の価格 - Speech Services](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)」を参照してください。
 
 ### <a name="create-the-azure-resource"></a>Azure リソースを作成する
 
@@ -72,11 +70,11 @@ Speech Service リソース (無料または有料レベル) を Azure アカウ
 1. **[作成]** を選択して、次のことを行います。
 
    - 新しいリソースに一意の名前を指定します。 この名前は、同じサービスに関連付けられた複数のサブスクリプションを区別するのに役立ちます。
-   - 新しいリソースが関連付けられている Azure サブスクリプションを選択して、料金の課金方法を決定します。
-   - リソースが使用される[リージョン](regions.md)を選択します。
-   - 無料 (F0) または有料 (S0) の価格レベルのどちらかを選択します。 各レベルの価格と使用量クォータの完全な情報については、 **[価格の詳細を表示]** を選択します。 サブスクリプションごとに作成できるリソースの制限については、[Azure Cognitive Services の制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cognitive-services-limits)に関するページをご覧ください。
+   - 新しいリソースが関連付けられている Azure サブスクリプションを選択して、料金の課金方法を決定します。 Azure portal で [Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription#create-a-subscription-in-the-azure-portal)の概要はこちらにあります。
+   - リソースが使用される[リージョン](regions.md)を選択します。 Azure は、世界中のさまざまな地域で一般的に利用できるグローバル クラウド プラットフォームです。 パフォーマンスを最適にするには、ユーザーまたはアプリケーションが実行されている場所に最も近いリージョンを選択します。 音声サービスの可用性は、リージョンによって異なります。 サポートされているリージョンにリソースが作成されていることを確認してください。 [音声サービスがサポートされているリージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-to-text-text-to-speech-and-translation)に関するページを参照してください。
+   - 無料 (F0) または有料 (S0) の価格レベルのどちらかを選択します。 各レベルの価格と使用量クォータの完全な情報については、 **[価格の詳細を表示]** を選択するか、[音声サービスの価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)に関するページを参照してください。 リソースの制限については、「[Azure Cognitive Services の制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cognitive-services-limits)」を参照してください。
    - この Speech サブスクリプションの新しいリソース グループを作成するか、既存のリソース グループにサブスクリプションを割り当てます。 リソース グループは、さまざまな Azure サブスクリプションを整理しておくのに役立ちます。
-   - **［作成］** を選択します これでデプロイの概要に移動し、デプロイの進行状況を示すメッセージが表示されます。
+   - **［作成］** を選択します これでデプロイの概要に移動し、デプロイの進行状況を示すメッセージが表示されます。  
 <!--
 > [!NOTE]
 > You can create an unlimited number of standard-tier subscriptions in one or multiple regions. However, you can create only one free-tier subscription. Model deployments on the free tier that remain unused for 7 days will be decommissioned automatically.
@@ -95,7 +93,7 @@ Speech Service リソース (無料または有料レベル) を Azure アカウ
 
 各サブスクリプションには 2 つのキーがあります。アプリケーションでどちらのキーを使用しても構いません。 キーをコード エディターやその他の場所にコピーして貼り付けるには、各キーの横にあるコピー ボタンを選択し、ウィンドウを切り替えてクリップボードの内容を目的の場所に貼り付けます。
 
-さらに、SDK 呼び出しのリージョン ID (`LOCATION`、 など) である  値をコピーします。 <ph id="ph1">`westus`</ph>, <ph id="ph2">`westeurope`</ph>) for SDK calls.
+さらに、SDK 呼び出しのリージョン ID (、 など) である  値をコピーします。 SDK 呼び出しのリージョン ID (`westus`、`westeurope` など) です。
 
 > [!IMPORTANT]
 > これらのサブスクリプション キーは、Cognitive Service API にアクセスするために使用されます。 キーを共有しないでください。 Azure Key Vault を使用するなどして、安全に保管してください。 これらのキーを定期的に再生成することもお勧めします。 API 呼び出しを行うために必要なキーは 1 つだけです。 最初のキーを再生成するときに、2 番目のキーを使用してサービスに継続的にアクセスすることができます。
@@ -129,7 +127,7 @@ Speech Service のサンプル コードは、GitHub 上で入手できます。
 
 Speech Service は組み込みのモデルで問題なく動作しますが、製品や環境に合わせてエクスペリエンスをさらにカスタマイズおよび調整したいことがあります。 カスタマイズ オプションは、音響モデルのチューニングから、独自ブランドに固有の音声フォントにまで及びます。
 
-その他の製品では、医療や保険など特定の目的に合わせてチューニングされた音声モデルが用意されていますが、それらは、すべてのユーザーに対して一律に提供されるものです。 Azure Speech のカスタマイズは、他のユーザーやカスタマーが手にすることのできない " *独自* " の競争優位をもたらします。 つまり、カスタマイズしたモデルは自分だけのものであり、ユースケースに合わせて独自にチューニングされています。
+その他の製品では、医療や保険など特定の目的に合わせてチューニングされた音声モデルが用意されていますが、それらは、すべてのユーザーに対して一律に提供されるものです。 Azure Speech のカスタマイズは、他のユーザーやカスタマーが手にすることのできない "*独自*" の競争優位をもたらします。 つまり、カスタマイズしたモデルは自分だけのものであり、ユースケースに合わせて独自にチューニングされています。
 
 | Speech Service | プラットフォーム | 説明 |
 | -------------- | -------- | ----------- |

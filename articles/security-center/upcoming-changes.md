@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2020
+ms.date: 11/09/2020
 ms.author: memildin
-ms.openlocfilehash: 549a95b0b2ffc2b2d2bf5670a961e0454683e33a
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: df863372cbf7abfb6fee145b7d13bb00d8deb074
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026719"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380167"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Security Center に対する今後の重要な変更
 
@@ -31,49 +31,48 @@ ms.locfileid: "93026719"
 
 ## <a name="planned-changes"></a>計画されている変更
 
-### <a name="recommendations-related-to-azure-security-benchmark-to-be-added-preview"></a>追加される Azure セキュリティ ベンチマークに関連する推奨事項 (プレビュー)
+### <a name="system-updates-should-be-installed-on-your-machines-recommendation-getting-sub-recommendations"></a>"システム更新プログラムをマシンにインストールする必要がある" 推奨事項のサブ推奨事項の作成
+
+#### <a name="summary"></a>まとめ
 
 | 側面 | 詳細 |
 |---------|---------|
-|Announcement date (発表日) | 2020 年 10 月 26 日  |
-|この変更の日付  |  2020 年 11 月 |
-|影響     | さらに多くの推奨事項がレビューされる可能性があります。<br>すぐにはセキュリティ スコアに影響しません。プレビューの推奨事項は、セキュリティ スコアに影響しません。<br>すぐにはリソースの正常性状態に影響しません。プレビューの推奨事項によってリソースが "異常" になることはありません。|
+|Announcement date (発表日) | 2020 月 11 月 9 日  |
+|この変更の日付  |  2020 年 11 月中旬 |
+|影響     | この推奨事項の現在のバージョンからそれに代わるものへの移行の過程で、セキュリティ スコアが変更される可能性があります。 |
 |  |  |
 
-Azure セキュリティ ベンチマークは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインのセットです。 [Azure セキュリティ ベンチマークの詳細を確認してください](../security/benchmarks/introduction.md)。
+"**システム更新プログラムをマシンにインストールする必要がある**" 推奨事項の拡張バージョンをリリースしています。 新しいバージョンにより、システムの更新プログラムの適用セキュリティ コントロールの現在のバージョンは "*置き換えられ*"、次の機能強化が行われます。
 
-ベンチマークのカバレッジを拡大するために、次の 18 個の新しい推奨事項が Security Center に追加されます。
+- 不足している各更新プログラムに対するサブ推奨事項
+- Azure portal の Azure Security Center ページでの再設計されたエクスペリエンス
+- Azure Resource Graph からの推奨事項用に強化されたデータ
 
-プレビューの推奨事項によってリソースが異常な状態になることはありません。これらの推奨事項は、セキュリティ スコアの計算には含まれません。 これらの推奨事項はプレビュー期間が終了した時点でスコアに反映されるため、可能な限り修復してください。 これらの推奨事項に対応する方法については、「[Azure Security Center の修復レコメンデーション](security-center-remediate-recommendations.md)」を参照してください。
+#### <a name="transition-period"></a>切り替え期間
 
-- 仮想マシンに対して Azure Backup を有効にする必要がある
-- MySQL データベース サーバーで [SSL 接続を強制する] が有効でなければならない
-- PostgreSQL データベース サーバーで [SSL 接続を強制する] が有効でなければならない
-- Azure Database for MariaDB の geo 冗長バックアップを有効にする必要がある
-- Azure Database for MySQL の geo 冗長バックアップを有効にする必要がある
-- Azure Database for PostgreSQL の geo 冗長バックアップを有効にする必要がある
-- API アプリに対して Java を最新バージョンに更新する必要がある
-- 関数アプリに対して Java を最新バージョンに更新する必要がある
-- Web アプリに対して Java を最新バージョンに更新する必要がある
-- API アプリに対して PHP を最新バージョンに更新する必要がある
-- Web アプリに対して PHP を最新バージョンに更新する必要がある
-- MariaDB サーバーに対してプライベート エンドポイントを有効にする必要がある
-- MySQL サーバーに対してプライベート エンドポイントを有効にする必要がある
-- PostgreSQL サーバーに対してプライベート エンドポイントを有効にする必要がある
-- API アプリに対して Python を最新バージョンに更新する必要がある
-- 関数アプリに対して Python を最新バージョンに更新する必要がある
-- Web アプリに対して Python を最新バージョンに更新する必要がある
-- Web アプリではすべての受信要求に対して SSL 証明書を要求する必要がある
+切り替え期間は約 36 時間です。 中断の可能性を最小限に抑えるため、週末に更新が行われるようにスケジュールされています。 切り替えの過程で、セキュリティ スコアが影響を受ける可能性があります。
 
-関連リンク:
+#### <a name="redesigned-portal-experience"></a>再設計されたポータルのエクスペリエンス
 
-- [Azure セキュリティ ベンチマークについての詳細情報](../security/benchmarks/introduction.md)
-- [Azure API アプリについての詳細情報](../app-service/app-service-web-tutorial-rest-api.md)
-- [Azure 関数アプリについての詳細情報](../azure-functions/functions-overview.md)
-- [Azure Web アプリについての詳細情報](../app-service/overview.md)
-- [Azure Database for MariaDB についての詳細情報](../mariadb/overview.md)
-- [Azure Database for MySQL についての詳細情報](../mysql/overview.md)
-- [Azure Database for PostgreSQL についての詳細情報](../postgresql/overview.md)
+"**システム更新プログラムをマシンにインストールする必要がある**" に関する推奨事項の詳細ページには、次に示すような結果の一覧が表示されます。 1 つの結果を選択すると、詳細ウィンドウが開き、修復情報および影響を受けるリソースの一覧へのリンクが表示されます。
+
+:::image type="content" source="./media/upcoming-changes/system-updates-should-be-installed-subassessment.png" alt-text="更新された推奨事項のポータル エクスペリエンスで、サブ推奨事項のいずれかを開く":::
+
+
+#### <a name="richer-data-from-azure-resource-graph"></a>Azure Resource Graph からの豊富なデータ
+
+Azure Resource Graph は、効率的なリソース探索を実現するように設計されている Azure のサービスです。 ARG を使用すると、特定のサブスクリプション セットの大規模なクエリを実行し、環境を効果的に管理できます。 
+
+Azure Security Center では、ARG および [Kusto クエリ言語 (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) を使用して、幅広いセキュリティ態勢データに対してクエリを実行できます。
+
+現在のバージョンの "**システム更新プログラムをマシンにインストールする必要がある**" に対するクエリを実行した場合、ARG から利用できるのは、コンピューター上で推奨事項を修復する必要があるという情報だけです。 更新バージョンがリリースされると、次のクエリによって、足りないシステム更新プログラムがコンピューター別にグループ化されて返されます。
+
+```kusto
+securityresources
+| where type =~ "microsoft.security/assessments/subassessments"
+| where extract(@"(?i)providers/Microsoft.Security/assessments/([^/]*)", 1, id) == "4ab6e3c5-74dd-8b35-9ab9-f61b30875b27"
+| where properties.status.code == "Unhealthy"
+```
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,17 +1,17 @@
 ---
 title: バックアップと復元 - Azure Database for MariaDB
 description: Azure Database for MariaDB サーバーの自動バックアップと復元について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: 1d95459797a32ab3e026ee1c3a2cf93fe6e95cc4
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 68605a22dd0d0b2b716b148399c8406a1ea8d89e
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378960"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541744"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でのバックアップと復元
 

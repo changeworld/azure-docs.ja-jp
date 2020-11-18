@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: ced33bb17e9c24faa127b27adacce9cab011e1d8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7ecccd64921b2d95155318fe91c897725e340b7e
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426263"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94334671"
 ---
 ::: zone target="docs"
 
@@ -78,7 +78,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
     
     ![共有のユーザー名とパスワード](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
-3. 自分のストレージ アカウントに関連付けられている共有 (次の例の場合は、 *utsac1* ) にホスト コンピューターからアクセスするために、コマンド ウィンドウを開きます。 コマンド プロンプトに、次のコマンドを入力します。
+3. 自分のストレージ アカウントに関連付けられている共有 (次の例の場合は、*utsac1*) にホスト コンピューターからアクセスするために、コマンド ウィンドウを開きます。 コマンド プロンプトに、次のコマンドを入力します。
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -103,7 +103,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
     
     ![エクスプローラーに表示されている共有](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
-    **常にコピーしようとするファイル用のフォルダーを共有下に作成してから、ファイルをそのフォルダーにコピーします** 。 ブロック BLOB およびページ BLOB の共有の下に作成したフォルダーは、データが BLOB としてアップロードされるコンテナーになります。 ストレージ アカウント内の *root* フォルダーに直接ファイルをコピーすることはできません。
+    **常にコピーしようとするファイル用のフォルダーを共有下に作成してから、ファイルをそのフォルダーにコピーします**。 ブロック BLOB およびページ BLOB の共有の下に作成したフォルダーは、データが BLOB としてアップロードされるコンテナーになります。 ストレージ アカウント内の *root* フォルダーに直接ファイルをコピーすることはできません。
     
 Linux クライアントを使用している場合は、次のコマンドを使用して、SMB 共有をマウントします。 以下の "vers" パラメーターは、Linux ホストがサポートしている SMB のバージョンです。 次のコマンドで、適切なバージョンを指定します。 Data Box でサポートされている SMB のバージョンについては、「[Linux クライアントでサポートされるファイル システム](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients)」を参照してください 
 
@@ -229,11 +229,11 @@ Robocopy コマンドについて詳しくは、「[Robocopy and a few examples]
 
 **[問題の一覧をダウンロードする]** を選択します。
 
-![[接続とコピー] でエラーをダウンロードして表示する 2](media/data-box-deploy-copy-data/view-errors-2.png)
+![[接続とコピー]、[問題の一覧をダウンロードする]](media/data-box-deploy-copy-data/view-errors-2.png)
 
 一覧を開いてエラーの詳細を表示し、解決用 URL を選択して推奨される解決方法を確認します。
 
-![[接続とコピー] でエラーをダウンロードして表示する 3](media/data-box-deploy-copy-data/view-errors-3.png)
+![[接続とコピー]、エラーをダウンロードして表示する](media/data-box-deploy-copy-data/view-errors-3.png)
 
 詳細については、「[View error logs during data copy to Data Box (Data Box へのデータのコピー中のエラー ログを表示する)](data-box-logs.md#view-error-log-during-data-copy)」を参照してください。 データのコピー中のエラーの詳細な一覧については、[Data Box の問題のトラブルシューティング](data-box-troubleshoot.md)に関するページを参照してください。
 
@@ -279,7 +279,7 @@ NFS 経由でデータをコピーするには、次のようにします。
 
 REST 経由でデータをコピーするには、次のようにします。
 
-1. REST API シリーズ経由で Data Box BLOB ストレージを使用してデータをコピーするには、 *http* または *https* 経由で接続できます。
+1. REST API シリーズ経由で Data Box BLOB ストレージを使用してデータをコピーするには、*http* または *https* 経由で接続できます。
 2. データを Data Box BLOB ストレージにコピーするには、AzCopy を使用できます。
 
 具体的な手順については、「[チュートリアル: REST API 経由で Azure Data Box BLOB ストレージにデータをコピーする](data-box-deploy-copy-data-via-nfs.md)」を参照してください。

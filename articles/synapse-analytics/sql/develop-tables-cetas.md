@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d0805aaf694f1569e613ab74135c95e454adbdc0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: df0198ba77e1661bb18aa72285e100ca070966a8
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315068"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331738"
 ---
 # <a name="cetas-with-synapse-sql"></a>Synapse SQL での CETAS
 
@@ -68,7 +68,7 @@ DATA_SOURCE = *external_data_source_name*
 
 FILE_FORMAT = *external_file_format_name*
 
-外部データ ファイルの形式を含む、外部ファイル形式オブジェクトの名前を指定します。 外部ファイル形式を作成するには、[CREATE EXTERNAL FILE FORMAT (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format) を使用します。 現在サポートされている外部ファイル形式は、FORMAT_TYPE=PARQUET と FORMAT_TYPE=DELIMITEDTEXT だけです。
+外部データ ファイルの形式を含む、外部ファイル形式オブジェクトの名前を指定します。 外部ファイル形式を作成するには、[CREATE EXTERNAL FILE FORMAT (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format) を使用します。 現在サポートされている外部ファイル形式は、FORMAT_TYPE=PARQUET と FORMAT_TYPE=DELIMITEDTEXT だけです。 DELIMITEDTEXT 形式に対する GZip 圧縮はサポートされません。
 
 WITH *<common_table_expression>*
 
@@ -144,32 +144,30 @@ CETAS を使用して、次の SQL データ型の結果セットを格納でき
 - varbinary
 - char
 - varchar
+- nchar
+- nvarchar
+- smalldate
 - date
-- time
+- DATETIME
 - datetime2
+- datetimeoffset
+- time
 - decimal
 - numeric
 - float
 - real
 - bigint
-- INT
-- smallint
 - tinyint
+- smallint
+- INT
+- bigint
 - bit
-
-> [!NOTE]
-> LOB を CETAS と共に使用することはできません。
-
-次のデータ型は、CETAS の SELECT 部分では使用できません。
-
-- nchar
-- nvarchar
-- DATETIME
-- smalldatetime
-- datetimeoffset
 - money
 - smallmoney
 - UNIQUEIDENTIFIER
+
+> [!NOTE]
+> 1 MB を超える LOB を CETAS と共に使用することはできません。
 
 ## <a name="next-steps"></a>次のステップ
 

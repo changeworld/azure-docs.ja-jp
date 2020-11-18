@@ -8,12 +8,12 @@ ms.subservice: language-understanding
 ms.date: 09/01/2020
 ms.topic: include
 ms.custom: include file, devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: 2a3129e6a4ce51d9c50d210c6ce87a8d6fbda6de
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 46e749f05dfb3dd9778f9f96911390a6b9468a2c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91545675"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94574202"
 ---
 .NET 用 Language Understanding (LUIS) クライアント ライブラリを使用して次のことを行います。
 * アプリを作成する
@@ -28,7 +28,7 @@ ms.locfileid: "91545675"
 * 現在のバージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core) および [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/)。
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
 * Azure サブスクリプションを入手したら、Azure portal で [Language Understanding 作成リソースを作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)し、キーとエンドポイントを取得します。 デプロイするまで待ち、 **[リソースに移動]** ボタンをクリックします。
-    * アプリケーションを Language Understanding 作成に接続するには、[作成](../luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal)したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。 Free 価格レベル (`F0`) を利用して、サービスを試用できます。
+    * アプリケーションを Language Understanding 作成に接続するには、[作成](../luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal)したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。 Free 価格レベル (`F0`) を利用して、サービスを試用できます。
 
 ## <a name="setting-up"></a>設定
 
@@ -178,7 +178,7 @@ Quantity サブエンティティに特徴を割り当てるために、クラ�
 
 [ExampleLabelObject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models.examplelabelobject?view=azure-dotnet) オブジェクトの一覧 (発話の例 1 件につき 1 つのオブジェクト) を作成し、発話の例を追加します。 それぞれの例では、エンティティの名前とエンティティの値から成る名前と値のペアのディクショナリを使用し、エンティティをすべてマークする必要があります。 エンティティの値は、発話の例のテキストに表示されているものと正確に一致している必要があります。
 
-:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="ポータルの部分的なスクリーンショット。サブエンティティを備えた機械学習エンティティが作成され、さまざまな特徴が `Quantity` サブエンティティに適用される。":::
+:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="ポータルでのラベル付けされた発話の例を示す部分的なスクリーンショット。":::
 
 アプリ ID、バージョン ID、および例を指定して [Examples.AddAsync](https://docs.microsoft.com//dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.addasync?view=azure-dotnet) を呼び出します。
 

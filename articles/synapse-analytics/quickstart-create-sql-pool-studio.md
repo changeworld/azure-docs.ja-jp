@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 10/16/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6ffa7bb07ddb42946acdcef6ee3b7f2aa804f774
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f3ed5f3940a9b02701ad2f3c779b791e128e288c
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324307"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506347"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-using-synapse-studio"></a>クイックスタート: Synapse Studio を使用して専用 SQL プールを作成する
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 1. Synapse ワークスペースに移動します。ここでは、検索バーにサービス名 (またはリソース名を直接) 入力して、専用 SQL プールを作成します。
 
     ![「Synapse ワークスペース」と入力されている Azure portal の検索バー。](media/quickstart-create-sql-pool/create-sql-pool-00a.png)
-1. ワークスペースの一覧で、開くワークスペースの名前 (または名前の一部) を入力します。 この例では、 **contosoanalytics** という名前のワークスペースを使用します。
+1. ワークスペースの一覧で、開くワークスペースの名前 (または名前の一部) を入力します。 この例では、**contosoanalytics** という名前のワークスペースを使用します。
 
     ![名前に Contoso を含むワークスペースを表示するためにフィルター処理された Synapse ワークスペースの一覧。](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
 
@@ -76,6 +76,8 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 4. 次の **[追加設定]** タブで、 **[なし]** を選択して、データを含まない SQL プールをプロビジョニングします。 既定の照合順序は、選択されたままにします。
 
+    復元ポイントから専用の SQL プールを復元する場合は、 **[復元ポイント]** を選択します。 復元を実行する方法の詳細については、[既存の専用 SQL プールを復元する方法](backuprestore/restore-sql-pool.md)に関するページをご覧ください
+
     ![SQL プールの作成フロー - 追加設定のタブ。](media/quickstart-create-sql-pool/create-sql-pool-studio-25.png)
 
 1. ここではタグを追加しないため、次に **[確認と作成]** を選択します。
@@ -101,7 +103,7 @@ Synapse Studio を使用してワークスペースから専用 SQL プールを
 専用 SQL プールを削除する場合は、次の手順を行います。
 
 1. Synapse Studio で管理ハブにある SQL プールに移動します。
-1. 削除する専用 SQL プールの省略記号 (この場合は、 **contosoedw** ) を選択して、専用 SQL プールのコマンドを表示します。
+1. 削除する専用 SQL プールの省略記号 (この場合は、**contosoedw**) を選択して、専用 SQL プールのコマンドを表示します。
 
     ![最近作成されたプールが選択されている SQL プールの一覧。](media/quickstart-create-sql-pool/create-sql-pool-studio-28.png)
 1. **[削除]** を押します。

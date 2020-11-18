@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 10/1/2020
 ms.author: rahugup
-ms.openlocfilehash: eed10f13b9495ab2cccfd9c57ae14ccc5d8e4a63
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 185979fcc0eeaebbe1c3b09d74050e05899737af
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043546"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376801"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>VMware VM を Azure に移行する (エージェントレス) - PowerShell
 
@@ -87,6 +87,9 @@ Azure Migrate には軽量の [Azure Migrate アプライアンス](migrate-appl
 
 Azure Migrate プロジェクト内の特定の VMware VM を取得するには、Azure Migrate プロジェクトの名前 (`ProjectName`)、Azure Migrate プロジェクトのリソース グループ (`ResourceGroupName`)、VM 名 (`DisplayName`) を指定します。 
 
+> [!NOTE]
+> **VM 名 (`DisplayName`) パラメーター値では、大文字と小文字が区別されます**。
+
 ```azurepowershell
 # Get a specific VMware VM in an Azure Migrate project
 $DiscoveredServer = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -DisplayName "MyTestVM"
@@ -146,7 +149,7 @@ Invoke-WebRequest https://raw.githubusercontent.com/Azure/azure-docs-powershell-
 - **ターゲット仮想ネットワークとサブネット** - `TargetNetworkId` および `TargetSubnetName` パラメーターを使用して、VM の移行先となる Azure 仮想ネットワークの ID とサブネットの名前を指定します。 
 - **ターゲット VM 名** - `TargetVMName` パラメーターを使用して、作成する Azure VM の名前を指定します。
 - **ターゲット VM サイズ** - `TargetVMSize` パラメーターを使用して、レプリケートする VM に使用する Azure VM のサイズを指定します。 たとえば、VM を Azure の D2_v2 VM に移行するには、`TargetVMSize` の値を "Standard_D2_v2" と指定します。  
-- **ライセンス** - アクティブなソフトウェア アシュアランスまたは Windows Server サブスクリプションの対象となっている Windows Server コンピューターの Azure ハイブリッド特典を使用するには、`LicenseType` パラメーターの値を "AHUB" と指定します。 それ以外の場合は、`LicenseType` パラメーターの値を "NoLicenseType" と指定します。
+- **ライセンス** - アクティブなソフトウェア アシュアランスまたは Windows Server サブスクリプションの対象となっている Windows Server マシンの Azure ハイブリッド特典を使用するには、`LicenseType` パラメーターの値として "WindowsServer" を指定します。 それ以外の場合は、`LicenseType` パラメーターの値を "NoLicenseType" と指定します。
 - **OS ディスク** - オペレーティング システムのブートローダーとインストーラーがあるディスクの一意識別子を指定します。 使用するディスク ID は、`Get-AzMigrateServer` コマンドレットを使用して取得したディスクの一意識別子 (UUID) プロパティです。
 - **ディスクの種類** - `DiskType` パラメーターの値を次のように指定します。
     - Premium マネージド ディスクを使用するには、`DiskType` パラメーターの値として "Premium_LRS" を指定します。 
@@ -156,7 +159,8 @@ Invoke-WebRequest https://raw.githubusercontent.com/Azure/azure-docs-powershell-
     - 可用性ゾーン。移行されたマシンをリージョン内の特定の可用性ゾーンにピン留めします。 このオプションを使用して、複数ノードのアプリケーション層を形成するサーバーを可用性ゾーン間で分散させます。 このオプションは、移行用に選択したターゲット リージョンで Availability Zones がサポートされている場合にのみ使用できます。 可用性ゾーンを使用するには、`TargetAvailabilityZone` パラメーターの可用性ゾーンの値を指定します。
     - 可用性セット。移行されたマシンを可用性セットに配置します。 このオプションを使用するには、選択したターゲット リソース グループに 1 つ以上の可用性セットが必要です。 可用性セットを使用するには、`TargetAvailabilitySet` パラメーターの可用性セット ID を指定します。 
 
-このチュートリアルでは、検出された VM のすべてのディスクをレプリケートし、Azure での VM の新しい名前を指定します。 検出されたサーバーの最初のディスクを OS ディスクとして指定し、すべてのディスクを Standard HDD として移行します。 OS ディスクは、オペレーティング システムのブートローダーとインストーラーがあるディスクです。
+### <a name="replicate-vms-with-all-disks"></a>すべてのディスクを使用して VM をレプリケートする
+このチュートリアルでは、検出された VM のすべてのディスクをレプリケートし、Azure での VM の新しい名前を指定します。 検出されたサーバーの最初のディスクを OS ディスクとして指定し、すべてのディスクを Standard HDD として移行します。 OS ディスクは、オペレーティング システムのブートローダーとインストーラーがあるディスクです。 コマンドレットは、操作の状態を監視するために追跡できるジョブを返します。 
 
 ```azurepowershell
 # Retrieve the resource group that you want to migrate to
@@ -178,6 +182,7 @@ while (($MigrateJob.State -eq "InProgress") -or ($MigrateJob.State -eq "NotStart
 Write-Output $MigrateJob.State
 ```
 
+### <a name="replicate-vms-with-select-disks"></a>選択したディスクを使用して VM をレプリケートする
 `New-AzMigrateDiskMapping` コマンドレットを使用して検出された VM のディスクを、`New-AzMigrateServerReplication` コマンドレットで `DiskToInclude` パラメーターに入力として指定することで、選択的にレプリケートすることもできます。 `New-AzMigrateDiskMapping` コマンドレットを使用して、レプリケートする個々のディスクに対して異なるターゲット ディスクの種類を指定することもできます。 
 
 `New-AzMigrateDiskMapping` コマンドレットの次のパラメーターの値を指定します。
@@ -186,7 +191,7 @@ Write-Output $MigrateJob.State
 - **IsOSDisk** - 移行するディスクが VM の OS ディスクである場合は "true" を指定し、それ以外の場合は "false" を指定します。
 - **DiskType** - Azure で使用するディスクの種類を指定します。 
 
-次の例では、検出された VM の 2 つのディスクのみをレプリケートします。 OS ディスクを指定し、レプリケートするディスクごとに異なるディスクの種類を使用します。
+次の例では、検出された VM の 2 つのディスクのみをレプリケートします。 OS ディスクを指定し、レプリケートするディスクごとに異なるディスクの種類を使用します。 コマンドレットは、操作の状態を監視するために追跡できるジョブを返します。 
 
 ```azurepowershell
 # View disk details of the discovered server
@@ -308,9 +313,18 @@ $replicatingserver.ProviderSpecificDetail | convertto-json
 - 初期レプリケーション中に、VM スナップショットが作成されます。 スナップショットのディスク データは、Azure のレプリカ マネージド ディスクにレプリケートされます。
 - 初期レプリケーションが完了すると、差分レプリケーションが開始されます。 オンプレミスのディスクに対する増分変更は、Azure のレプリカ ディスクに定期的にレプリケートされます。
 
+## <a name="retrieve-the-status-of-a-job"></a>ジョブの状態を取得する
+
+`Get-AzMigrateJob` コマンドレットを使用して、ジョブの状態を監視できます。 
+
+```azurepowershell
+# Retrieve the updated status for a job
+$job = Get-AzMigrateJob -InputObject $job
+```
+
 ## <a name="update-properties-of-a-replicating-vm"></a>レプリケートする VM のプロパティを更新する
 
-[Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) を使用すると、レプリケートする VM の名前、サイズ、リソース グループ、NIC 構成などのターゲット プロパティを変更できます。 
+[Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) を使用すると、レプリケートする VM の名前、サイズ、リソース グループ、NIC 構成などのターゲット プロパティを変更できます。 コマンドレットは、操作の状態を監視するために追跡できるジョブを返します。 
 
 ```azurepowershell
 # Retrieve the replicating VM details by using the discovered VM identifier
@@ -348,6 +362,15 @@ $NicMapping += $NicMapping2
 
 # Update the name, size and NIC configuration of a replicating server
 $UpdateJob = Set-AzMigrateServerReplication -InputObject $ReplicatingServer -TargetVMSize "Standard_DS13_v2" -TargetVMName "MyMigratedVM" -NicToUpdate $NicMapping
+
+# Track job status to check for completion
+while (($UpdateJob.State -eq "InProgress") -or ($UpdateJob.State -eq "NotStarted")){
+        #If the job hasn't completed, sleep for 10 seconds before checking the job status again
+        sleep 10;
+        $UpdateJob = Get-AzMigrateJob -InputObject $UpdateJob
+}
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+Write-Output $UpdateJob.State
 ```
 
 また、Azure Migrate プロジェクト内のレプリケートするすべてのサーバーを一覧表示してから、レプリケートする VM の識別子を使用して VM のプロパティを更新することもできます。
@@ -363,7 +386,7 @@ $ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $Replicating
 
 ## <a name="run-a-test-migration"></a>テスト移行を実行する
 
-差分レプリケーションが開始されるとき、Azure への完全な移行を実行する前に、VM のテスト移行を実行できます。 各マシンで少なくとも 1 回は、移行前にテスト移行を実行することを強くお勧めします。
+差分レプリケーションが開始されるとき、Azure への完全な移行を実行する前に、VM のテスト移行を実行できます。 各マシンで少なくとも 1 回は、移行前にテスト移行を実行することを強くお勧めします。 コマンドレットは、操作の状態を監視するために追跡できるジョブを返します。 
 
 - テスト移行を実行すると、移行が想定どおりに動作することが確認されます。 テスト移行を行ってもオンプレミスのマシンには影響がなく稼働状態が維持され、レプリケーションが続行されます。 
 - テスト移行では、レプリケートされたデータを使用して Azure VM を作成することによって、移行がシミュレートされます (通常は、自分の Azure サブスクリプション内の非運用 VNet に移行されます)。
@@ -377,32 +400,69 @@ $TestVirtualNetwork = Get-AzVirtualNetwork -Name MyTestVirtualNetwork
 
 # Start test migration for a replicating server
 $TestMigrationJob = Start-AzMigrateTestMigration -InputObject $ReplicatingServer -TestNetworkID $TestVirtualNetwork.Id
+
+# Track job status to check for completion
+while (($TestMigrationJob.State -eq "InProgress") -or ($TestMigrationJob.State -eq "NotStarted")){
+        #If the job hasn't completed, sleep for 10 seconds before checking the job status again
+        sleep 10;
+        $TestMigrationJob = Get-AzMigrateJob -InputObject $TestMigrationJob
+}
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+Write-Output $TestMigrationJob.State
 ```
 
-テストが完了したら、`Start-AzMigrateTestMigrationCleanup` コマンドレットを使用してテスト移行をクリーンアップします。
+テストが完了したら、`Start-AzMigrateTestMigrationCleanup` コマンドレットを使用してテスト移行をクリーンアップします。 コマンドレットは、操作の状態を監視するために追跡できるジョブを返します。 
 
 ```azurepowershell
 # Clean-up test migration for a replicating server
 $CleanupTestMigrationJob = Start-AzMigrateTestMigrationCleanup -InputObject $ReplicatingServer
+
+# Track job status to check for completion
+while (($CleanupTestMigrationJob.State -eq "InProgress") -or ($CleanupTestMigrationJob.State -eq "NotStarted")){
+        #If the job hasn't completed, sleep for 10 seconds before checking the job status again
+        sleep 10;
+        $CleanupTestMigrationJob = Get-AzMigrateJob -InputObject $CleanupTestMigrationJob
+}
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+Write-Output $CleanupTestMigrationJob.State
 ```
 
 ## <a name="migrate-vms"></a>VM の移行
 
-テスト移行が想定どおりに動作することを確認したら、次のコマンドレットを使用して、レプリケートするサーバーを移行できます。
+テスト移行が想定どおりに動作することを確認したら、次のコマンドレットを使用して、レプリケートするサーバーを移行できます。 コマンドレットは、操作の状態を監視するために追跡できるジョブを返します。 
+
+移行元サーバーの電源がオフにならないようにするには、`TurnOffSourceServer` パラメーターを使用しないでください。
 
 ```azurepowershell
 # Start migration for a replicating server and turn off source server as part of migration
 $MigrateJob = Start-AzMigrateServerMigration -InputObject $ReplicatingServer -TurnOffSourceServer 
+
+# Track job status to check for completion
+while (($MigrateJob.State -eq "InProgress") -or ($MigrateJob.State -eq "NotStarted")){
+        #If the job hasn't completed, sleep for 10 seconds before checking the job status again
+        sleep 10;
+        $MigrateJob = Get-AzMigrateJob -InputObject $MigrateJob
+}
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+Write-Output $MigrateJob.State
 ```
-移行元サーバーの電源がオフにならないようにするには、`TurnOffSourceServer` パラメーターを使用しないでください。
 
 ## <a name="complete-the-migration"></a>移行を完了する
 
-1. 移行が完了したら、次のコマンドレットを使用して、オンプレミスのマシンのレプリケーションを停止し、VM のレプリケーション状態情報をクリーンアップします。
+1. 移行が完了したら、次のコマンドレットを使用して、オンプレミスのマシンのレプリケーションを停止し、VM のレプリケーション状態情報をクリーンアップします。 コマンドレットは、操作の状態を監視するために追跡できるジョブを返します。 
 
 ```azurepowershell
 # Stop replication for a migrated server
 $StopReplicationJob = Remove-AzMigrateServerReplication -InputObject $ReplicatingServer 
+
+# Track job status to check for completion
+while (($StopReplicationJob.State -eq "InProgress") -or ($StopReplicationJob.State -eq "NotStarted")){
+        #If the job hasn't completed, sleep for 10 seconds before checking the job status again
+        sleep 10;
+        $StopReplicationJob = Get-AzMigrateJob -InputObject $StopReplicationJob
+}
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+Write-Output $StopReplicationJob.State
 ```
 
 2. Azure VM の [Windows](../virtual-machines/extensions/agent-windows.md) または [Linux](../virtual-machines/extensions/agent-linux.md) エージェントを、移行されたマシンにインストールします。

@@ -4,13 +4,13 @@ description: Azure portal で指定するリージョンは、LUIS アプリを�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 11/19/2019
-ms.openlocfilehash: 134f71e957b39cf35b4e45e42c2101fbce233f05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: a591a8d0df751c071a17b1d77febdb3607a1b53d
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91277157"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555772"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>作成と公開のリージョンと関連付けられているキー
 
@@ -23,9 +23,9 @@ ms.locfileid: "91277157"
 
 |LUIS|オーサリング リージョン|Azure リージョン名|
 |--|--|--|
-|[www.luis.ai][www.luis.ai] <br>[previous.luis.ai](https://previous.luis.ai)|米国<br>ヨーロッパ以外<br>オーストラリア以外| `westus`|
-|[au.luis.ai][au.luis.ai] <br>[previous.au.luis.ai](https://previous.au.luis.ai)|オーストラリア| `australiaeast`|
-|[eu.luis.ai][eu.luis.ai] <br>[previous.eu.luis.ai](https://previous.eu.luis.ai)|ヨーロッパ|`westeurope`|
+|[www.luis.ai][www.luis.ai] |米国<br>ヨーロッパ以外<br>オーストラリア以外| `westus`|
+|[au.luis.ai][au.luis.ai] |オーストラリア| `australiaeast`|
+|[eu.luis.ai][eu.luis.ai] |ヨーロッパ|`westeurope`|
 
 オーサリング リージョンには、[ペア フェールオーバー リージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)があります。
 

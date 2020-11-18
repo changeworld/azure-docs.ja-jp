@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 4cb706bfa1c10e941e6d2d44358c784549973302
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: f6ec6bced9c84e4e5b0f04cc32eebb438052bd6c
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927976"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348289"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー)
 
@@ -75,7 +75,7 @@ Azure Database for MySQL フレキシブル サーバーに接続するには、
    * VPN または ExpressRoute を使用して Azure 以外のリソースからフレキシブル サーバーに接続する
    * パブリック エンドポイントがない
 
-* **パブリック アクセス (許可された IP アドレス)** – パブリック エンドポイントを使用してフレキシブル サーバーをデプロイできます。 パブリック エンドポイントは、パブリックに解決できる DNS アドレスです。 "許可された IP アドレス" という表現は、サーバーに対するアクセス許可を付与することを選択する、ある範囲の IP を指しています。 これらのアクセス許可は、 **ファイアウォール規則** と呼ばれます。
+* **パブリック アクセス (許可された IP アドレス)** – パブリック エンドポイントを使用してフレキシブル サーバーをデプロイできます。 パブリック エンドポイントは、パブリックに解決できる DNS アドレスです。 "許可されている IP アドレス" という語句は、サーバーへのアクセス許可を付与することが選択された IP の範囲を意味します。 これらのアクセス許可は、**ファイアウォール規則** と呼ばれます。
 
 詳細については、[ネットワークの概念](concepts-networking.md)に関する記事を参照してください。
 
@@ -89,7 +89,7 @@ Azure Database for MySQL フレキシブル サーバーに接続するには、
 
 MySQL は、インターネット規模の Web およびモバイル アプリケーションを実行するための一般的なデータベース エンジンの 1 つです。 多くのお客様は、オンライン教育サービス、ビデオ ストリーミング サービス、デジタル支払いソリューション、eコマース プラットフォーム、ゲーム サービス、ニュース ポータル、政府機関、医療機関の Web サイトなどにそれを使用しています。 これらのサービスは、Web またはモバイル アプリケーションでのトラフィックの増加に合わせて、サービスを提供し、スケーリングする必要があります。
 
-アプリケーション側に関しては、通常、アプリケーションは Java または PHP で開発され、 [Azure 仮想マシン スケール セット](/azure/virtual-machine-scale-sets/overview.md) や  [Azure App Services](/azure/app-service/overview.md)  で実行できるように移行されたり、 [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes.md) で実行できるようにコンテナー化されたりします。 仮想マシン スケール セット、App Service、または AKS が基盤のインフラストラクチャである場合、アプリケーションのスケーリングは、新しい VM が即座にプロビジョニングされ、要求に対応するためにアプリケーションのステートレス コンポーネントがレプリケートされることによって簡単に行われますが、多くの場合、データベースが集中的なステートフル コンポーネントとしてボトルネックになります。
+アプリケーション側に関しては、通常、アプリケーションは Java または PHP で開発され、 [Azure 仮想マシン スケール セット](../../virtual-machine-scale-sets/overview.md) や  [Azure App Services](../../app-service/overview.md)  で実行できるように移行されたり、 [Azure Kubernetes Service (AKS)](../../aks/intro-kubernetes.md) で実行できるようにコンテナー化されたりします。 仮想マシン スケール セット、App Service、または AKS が基盤のインフラストラクチャである場合、アプリケーションのスケーリングは、新しい VM が即座にプロビジョニングされ、要求に対応するためにアプリケーションのステートレス コンポーネントがレプリケートされることによって簡単に行われますが、多くの場合、データベースが集中的なステートフル コンポーネントとしてボトルネックになります。
 
 読み取りレプリカ機能を使用すると、Azure Database for MySQL フレキシブル サーバーから読み取り専用サーバーに、データをレプリケートできます。 ソース サーバーから **最大で 10 個のレプリカ** にレプリケートできます。 レプリカは、MySQL エンジンのネイティブな[バイナリ ログ (binlog) ファイルの位置ベースのレプリケーション テクノロジ](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)を使用して、非同期で更新されます。 [ProxySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042) などのロード バランサー プロキシ ソリューションを使用して、アプリケーションのワークロードをシームレスにスケールアウトし、アプリケーションのリファクタリング コストを発生させずにレプリカを読み取ることができます。 
 
@@ -126,7 +126,7 @@ MySQL は、インターネット規模の Web およびモバイル アプリ�
 このサービスでは、MySQL のコミュニティ バージョンが実行されます。 これにより、アプリケーションの完全な互換性が確保され、MySQL エンジン上で開発された既存のアプリケーションを単一サーバー サービスに移行するために必要なリファクタリング コストが最小限に抑えられます。 単一サーバーへの移行は、次のいずれかのオプションを使用して実行できます。
 
 - **ダンプと復元** – ユーザーがダウンタイムを許容できるオフライン移行では、mysqldump や mydumper などのコミュニティ ツールを使用してダンプと復元を行うことで、最も迅速に移行することができます。 詳細については、ダンプと復元を使用した移行に関する記事を参照してください。 
-- **Azure Database Migration Service** – 最小限のダウンタイムで単一サーバーへのシームレスで簡素化された移行を行うには、 [Azure Database Migration Service](../../dms/tutorial-mysql-azure-mysql-online.md) を利用できます。 
+- **Azure Database Migration Service** – 最小限のダウンタイムで単一サーバーへのシームレスで簡素化された移行を行うには、[Azure Database Migration Service](../../dms/tutorial-mysql-azure-mysql-online.md) を利用できます。 
 
 ## <a name="azure-regions"></a>Azure Azure リージョン
 

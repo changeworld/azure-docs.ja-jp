@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/30/2020
+ms.date: 10/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 585ec818e836c1d0dbf59b8c91394c6080103c53
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: dade2c08f357e5a3eafbd8d195f353c2b3d0d9b1
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92510107"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146894"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-skedda"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Skedda の統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "92510107"
 * Skedda にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Skedda に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,19 +37,20 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Skedda では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Skedda では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
-* Skedda を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="adding-skedda-from-the-gallery"></a>ギャラリーからの Skedda の追加
 
 Azure AD への Skedda の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Skedda を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Skedda** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Skedda**」と入力します。
 1. 結果のパネルから **[Skedda]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -59,7 +58,7 @@ Azure AD への Skedda の統合を構成するには、ギャラリーからマ
 
 **B.Simon** というテスト ユーザーを使用して、Skedda に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Skedda の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-Skedda で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+Skedda に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -72,13 +71,20 @@ Skedda で Azure AD SSO を構成してテストするには、次の構成要�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Skedda** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal の **Skedda** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. アプリは Azure と事前に統合済みであるため、 **[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+
+     **[応答 URL]** テキスト ボックスに、次のいずれかの URL を入力します。
+
+    | [応答 URL]|
+    |----------|
+    | `https://www.skedda.com/saml2/acs` |
+    | `https://app.skedda.com/saml2/acs` |
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -115,15 +121,9 @@ Skedda で Azure AD SSO を構成してテストするには、次の構成要�
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[Skedda]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-skedda-sso"></a>Skedda の SSO の構成
@@ -136,20 +136,21 @@ Skedda で Azure AD SSO を構成してテストするには、次の構成要�
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネル上で [Skedda] タイルをクリックすると、SSO を設定した Skedda に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+#### <a name="sp-initiated"></a>SP Initiated:
 
-## <a name="additional-resources"></a>その他のリソース
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Skedda のサインオン URL にリダイレクトされます。  
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* Skedda のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP Initiated:
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Skedda に自動的にサインインされます 
 
-- [Azure AD で Skedda を試す](https://aad.portal.azure.com/)
+また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで [Skedda] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Skedda に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって Skedda を保護する方法](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>次のステップ
+
+Skedda を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

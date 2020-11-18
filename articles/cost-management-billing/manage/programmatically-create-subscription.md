@@ -9,12 +9,12 @@ ms.date: 10/29/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 7b44abbbf2e7592205d5d5c291ce99d381a283f7
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: de93d96085269c2cc8fcf6c18d7e6643facfcaa4
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043280"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372712"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-the-latest-apis"></a>最新の API を使用してプログラムで Azure サブスクリプションを作成する
 
@@ -400,7 +400,7 @@ we're still working on enabling CLI SDK for billing APIs. Check back soon.
 
 ### <a name="create-a-subscription-for-an-invoice-section"></a>請求書セクションのサブスクリプションを作成する
 
-次の例では、 *Development* 請求書セクションに対して *Dev Team subscription* という名前のサブスクリプションが作成されます。 サブスクリプションは *Contoso Billing Profile* 課金プロファイルに対して請求され、請求書の *Development* セクションに表示されます。 前の手順でコピーした課金スコープ `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx` を使用します。 
+次の例では、*Development* 請求書セクションに対して *Dev Team subscription* という名前のサブスクリプションが作成されます。 サブスクリプションは *Contoso Billing Profile* 課金プロファイルに対して請求され、請求書の *Development* セクションに表示されます。 前の手順でコピーした課金スコープ `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx` を使用します。 
 
 ### <a name="rest"></a>[REST](#tab/rest-MCA)
 
@@ -678,7 +678,7 @@ we're still working on enabling CLI SDK for billing APIs. Check back soon.
 
 ### <a name="create-a-subscription-for-a-customer"></a>顧客のサブスクリプションを作成する
 
-次の例では、 *Dev Team subscription* という名前のサブスクリプションを *Fabrikam toys* 用に作成し、 *Wingtip* リセラーをそのサブスクリプションに関連付けます。 前の手順でコピーした課金スコープ `/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx` を使用します。 
+次の例では、*Dev Team subscription* という名前のサブスクリプションを *Fabrikam toys* 用に作成し、*Wingtip* リセラーをそのサブスクリプションに関連付けます。 前の手順でコピーした課金スコープ `/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx` を使用します。 
 
 ### <a name="rest"></a>[REST](#tab/rest-MPA)
 
@@ -798,7 +798,15 @@ Azure Resource Manager テンプレート (ARM テンプレート) でサブス�
 
 ### <a name="prerequisites"></a>前提条件
 
-サブスクリプションを作成するには、請求書セクションで所有者、共同作成者、または Azure サブスクリプション作成者のロールを持っているか、課金プロファイルまたは課金アカウントで所有者または共同作成者のロールを持っている必要があります。 詳細については、「[サブスクリプションの課金ロールとタスク](understand-mca-roles.md#subscription-billing-roles-and-tasks)」を参照してください。
+サブスクリプションを作成するには、以下のいずれかのロールを持っている必要があります。 
+
+- 請求書セクションに対する Azure サブスクリプション所有者
+- 請求書セクションに対する Azure サブスクリプション共同作成者
+- 請求書セクションに対する Azure サブスクリプション作成者ロール
+- 課金プロファイルまたは課金アカウントに対する Azure サブスクリプション所有者
+- 課金プロファイルまたは課金アカウントに対する Azure サブスクリプション共同作成者ロール
+
+ 詳細については、「[サブスクリプションの課金ロールとタスク](understand-mca-roles.md#subscription-billing-roles-and-tasks)」を参照してください。
 
 また、ARM テンプレートのデプロイを行っているので、ルート オブジェクトに対する書き込みアクセス許可が必要です。 そのため、管理グループの下で ARM のデプロイを作成している場合は、管理グループに対する書き込みアクセス許可が必要です。 アクションは ARM デプロイの作成だけであることに注意してください。サブスクリプションが作成される場合は、ARM テンプレートで指定されている管理グループだけに作成されます。
 
@@ -958,7 +966,7 @@ we're still working on enabling CLI SDK for billing APIs. Check back soon.
 
 ### <a name="create-a-subscription-and-resource-group-with-a-template"></a>テンプレートを使用してサブスクリプションとリソース グループを作成する
 
-次の ARM テンプレートを使用すると、 *Development* 請求書セクションに対して *Dev Team subscription* という名前のサブスクリプションが作成されます。 サブスクリプションは *Contoso Billing Profile* 課金プロファイルに対して請求され、請求書の *Development* セクションに表示されます。 前の手順でコピーした課金スコープ `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx` を使用します。 
+次の ARM テンプレートを使用すると、*Development* 請求書セクションに対して *Dev Team subscription* という名前のサブスクリプションが作成されます。 サブスクリプションは *Contoso Billing Profile* 課金プロファイルに対して請求され、請求書の *Development* セクションに表示されます。 前の手順でコピーした課金スコープ `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx` を使用します。 
 
 #### <a name="request"></a>Request
 

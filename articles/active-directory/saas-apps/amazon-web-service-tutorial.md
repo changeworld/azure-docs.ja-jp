@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/14/2020
+ms.date: 11/03/2020
 ms.author: jeedes
-ms.openlocfilehash: fe591c55065372245d95210ab0282a0070c96434
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 764342f237452d9322d44c86ebdb41691b44495d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318787"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360719"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) とアマゾン ウェブ サービス (AWS) の統合
 
@@ -27,6 +27,9 @@ ms.locfileid: "92318787"
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
+
+> [!Note]
+> Azure AD では、AWS SSO とのシングル サインオン統合はサポートされていません。これは AWS とは異なる製品です。 AWS ではこの点について[こちら](https://docs.aws.amazon.com/singlesignon/latest/userguide/azure-ad-idp.html)で説明していますが、Azure AD では代わりに AWS IAM 統合を使用することをお勧めします。これにより、個々のアカウントで条件付きアクセス ポリシーを使用してより優れたセキュリティ制御を実現でき、これらのアプリケーションのガバナンスを向上させることもできます。
 
 ![Azure AD と AWS の関係の図](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
@@ -61,7 +64,6 @@ Azure AD ではこれらの値から **#** の値を削除し、正しい値 `ht
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * アマゾン ウェブ サービス (AWS) では、**SP と IDP** によって開始される SSO がサポートされます
-* アマゾン ウェブ サービス (AWS) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -95,7 +97,7 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の**アマゾン ウェブ サービス (AWS)** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **アマゾン ウェブ サービス (AWS)** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -171,7 +173,7 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
 1. 別のブラウザー ウィンドウで、管理者として AWS 企業サイトにサインオンします。
 
-2. **AWS ホーム**を選択します。
+2. **AWS ホーム** を選択します。
 
     ![AWS ホーム アイコンが強調表示された AWS 企業サイトのスクリーンショット][11]
 
@@ -191,7 +193,7 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
     b. **[プロバイダ名]** にプロバイダー名を入力します (例: *WAAD*)。
 
-    c. Azure Portal からダウンロードした**メタデータ ファイル**をアップロードするには、 **[Choose File]\(ファイルの選択\)** を選択します。
+    c. Azure Portal からダウンロードした **メタデータ ファイル** をアップロードするには、 **[Choose File]\(ファイルの選択\)** を選択します。
 
     d. **[Next Step]\(次のステップ\)** を選択します。
 
@@ -209,7 +211,7 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
     a. **[信頼されたエンティティの種類を選択]** で、 **[SAML 2.0 フェデレーション]** を選択します。
 
-    b. **[SAML 2.0 プロバイダーを選択]** で、先ほど作成した **SAML プロバイダー**を選択します (例: *WAAD*)。
+    b. **[SAML 2.0 プロバイダーを選択]** で、先ほど作成した **SAML プロバイダー** を選択します (例: *WAAD*)。
 
     c. **[Allow programmatic and AWS Management Console access]** を選択します。
   
@@ -364,37 +366,40 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
 ## <a name="test-sso"></a>SSO のテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネルで [アマゾン ウェブ サービス (AWS)] タイルをクリックすると、SSO を設定した Amazon Web Services (AWS) アプリケーションに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+#### <a name="sp-initiated"></a>SP Initiated:
+
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できるアマゾン ウェブ サービス (AWS) のサインオン URL にリダイレクトされます。  
+
+* アマゾン ウェブ サービス (AWS) のサインオン URL に直接移動し、そこからログイン フローを開始します。
+
+#### <a name="idp-initiated"></a>IDP Initiated:
+
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定したアマゾン ウェブ サービス (AWS) に自動的にサインインされます 
+
+また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで [アマゾン ウェブ サービス (AWS)] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定したアマゾン ウェブ サービス (AWS) に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+
 
 ## <a name="known-issues"></a>既知の問題
 
  * **[プロビジョニング]** セクションの **[マッピング]** サブセクションには、"読み込み中..." というメッセージが表示され、属性マッピングは表示されません。 現在サポートされている唯一のプロビジョニング ワークフローは、ユーザーまたはグループ割り当て時の選択のために、AWS から Azure AD にロールをインポートすることです。 このための属性マッピングは事前に決定されており、構成はできません。
 
- * **[準備中]** セクションでは、1 つの AWS テナントに対して、一度に 1 セットの資格情報の入力だけがサポートされています。 インポートされたすべてのロールは、AWS テナントの Azure AD [`servicePrincipal` オブジェクト](/graph/api/resources/serviceprincipal?view=graph-rest-beta)の `appRoles` プロパティに書き込まれます。
+ * **[準備中]** セクションでは、1 つの AWS テナントに対して、一度に 1 セットの資格情報の入力だけがサポートされています。 インポートされたすべてのロールは、AWS テナントの Azure AD [`servicePrincipal` オブジェクト](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)の `appRoles` プロパティに書き込まれます。
 
    プロビジョニングのために複数の AWS テナント (`servicePrincipals` によって表される) をギャラリーから Azure AD に追加できます。 ただし、プロビジョニングに使用される複数の AWS `servicePrincipals` からインポートされたすべてのロールを、SSO に使用される単一の `servicePrincipal` に自動的に書き込むことができないという既知の問題があります。
 
-   回避策として、[Microsoft Graph API](/graph/api/resources/serviceprincipal?view=graph-rest-beta) を使用して、プロビジョニングが構成されている各 AWS `servicePrincipal` にインポートされたすべての `appRoles` を抽出できます。 その後、これらのロール文字列を、SSO が構成されている AWS `servicePrincipal` に追加できます。
+   回避策として、[Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) を使用して、プロビジョニングが構成されている各 AWS `servicePrincipal` にインポートされたすべての `appRoles` を抽出できます。 その後、これらのロール文字列を、SSO が構成されている AWS `servicePrincipal` に追加できます。
 
 * AWS から Azure AD へのインポート対象となるロールは、次の要件を満たす必要があります。
 
   * ロールには、AWS で SAML プロバイダーが 1 つだけ定義されている必要があります。
+  * ロールの ARN (Amazon Resource Name) と、関連付けられている SAML プロバイダーの ARN を組み合わせた長さが 120 文字未満である必要があります。
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="next-steps"></a>次の手順
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+アマゾン ウェブ サービス (AWS) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
-
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
-
-- [Azure AD でアマゾン ウェブ サービス (AWS) を試す](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
-
-- [高度な可視性と制御によって Amazon Web Services (AWS) を保護する方法](/cloud-app-security/protect-aws)
 
 [11]: ./media/amazon-web-service-tutorial/ic795031.png
 [12]: ./media/amazon-web-service-tutorial/ic795032.png

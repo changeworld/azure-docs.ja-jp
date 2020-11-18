@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 60087dc23b804dac6644dc09cddc031526fb0f8f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 930c1f94446eb145a093bf7a8706485d40eec210
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313781"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379677"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Synapse マネージド プライベート エンドポイント (プレビュー)
 
@@ -49,7 +49,7 @@ Azure Synapse のマネージド プライベート エンドポイントを作�
 
 ワークスペースが作成されると、そのワークスペースに、専用 SQL プールとサーバーレス SQL プールに対する 2 つのマネージド プライベート エンドポイントが Azure Synapse によって作成されます。 
 
-この 2 つのマネージド プライベート エンドポイントは、Azure Synapse Studio に一覧表示されます。 左側のナビゲーションで **[管理]** を選択し、 **[Managed Virtual Networks]\(マネージド仮想ネットワーク\)** を選択すると、それらが Studio に表示されます。
+この 2 つのマネージド プライベート エンドポイントは、Synapse Studio に表示されます。 これらを Studio に表示するには、左側のナビゲーションで **[管理]** を選択し、 **[Managed private endpoints]\(マネージド プライベート エンドポイント\)** を選択します。
 
 SQL プールを対象としたマネージド プライベート エンドポイントは *synapse-ws-sql--\<workspacename\>* で、サーバーレス SQL プールを対象にしたマネージド プライベート エンドポイントは *synapse-ws-sqlOnDemand--\<workspacename\>* です。
 

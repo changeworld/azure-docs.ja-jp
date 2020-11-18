@@ -1,76 +1,86 @@
 ---
-title: Azure API Management で要求トレースを使用して API をデバッグする | Microsoft Docs
-description: このチュートリアルの手順に従って、Azure API Management で要求処理手順を検査する方法を学びます。
+title: チュートリアル - 要求トレースを使用して Azure API Management で API をデバッグする
+description: このチュートリアルの手順に従って、Azure API Management でトレースを有効にし、要求プロセスのステップを検査します。
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: cfowler
 editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 10/30/2020
 ms.author: apimpm
-ms.openlocfilehash: fc5e8c7a7aa0d4693d96c3405ec0e180a6d13f8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 531e346569b85ababc382f997fd7764a92b3d05f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75768531"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542316"
 ---
-# <a name="debug-your-apis-using-request-tracing"></a>要求トレースを使用して API をデバッグする
+# <a name="tutorial-debug-your-apis-using-request-tracing"></a>チュートリアル:要求トレースを使用して API をデバッグする
 
-このチュートリアルでは、API のデバッグとトラブルシューティングに役立つ要求処理の検査方法について説明します。 
+このチュートリアルでは、API のデバッグとトラブルシューティングに役立つように、Azure API Management で要求処理を検査 (トレース) する方法について説明します。 
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * 呼び出しのトレース
+> * 呼び出しの例をトレースする
+> * 要求プロセスのステップを確認する
 
-![API インスペクター](media/api-management-howto-api-inspector/api-inspector001.PNG)
+:::image type="content" source="media/api-management-howto-api-inspector/api-inspector-001.png" alt-text="API インスペクター":::
 
 ## <a name="prerequisites"></a>前提条件
 
 + [Azure API Management の用語](api-management-terminology.md)について学習します。
-+ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
-+ また、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」のチュートリアルも完了します。
++ 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)。
++ 次のチュートリアルを完了すること: [最初の API のインポートと発行](import-and-publish.md)。
+
+## <a name="verify-allow-tracing-setting"></a>[トレースを許可] 設定を確認する 
+
+API に使用するサブスクリプションの **[トレースを許可]** 設定を有効にする必要があります。 すべてのアクセス許可が組み込まれたサブスクリプションを使用している場合は、既定で有効になっています。 ポータルで確認するには、API Management インスタンスに移動し、 **[サブスクリプション]** を選択します。
+
+   :::image type="content" source="media/api-management-howto-api-inspector/allow-tracing.png" alt-text="サブスクリプションの [トレースを許可]":::
 
 ## <a name="trace-a-call"></a>呼び出しのトレース
 
-![API のトレース](media/api-management-howto-api-inspector/06-DebugYourAPIs-01-TraceCall.png)
-
+1. [Azure portal](https://portal.azure.com) にサインインし、API Management インスタンスに移動します。
 1. **[API]** を選択します。
-2. API の一覧で **[Demo Conference API]\(デモ会議 API\)** をクリックします。
-3. **[テスト]** タブに切り替えます。
-4. **[GetSpeakers]** 操作を選択します。
-5. **Ocp-Apim-Trace** という名前の HTTP ヘッダーを、値を **true** に設定して含めます。
+1. API の一覧で **[Demo Conference API]\(デモ会議 API\)** を選択します。
+1. **[テスト]** タブを選びます。
+1. **[GetSpeakers]** 操作を選択します。
+1. HTTP 要求ヘッダーに、**Ocp-Apim-Trace: True** と **Ocp-Apim-Subscription-Key** の有効な値が含まれていることを確認します。 そうでない場合は、 **[+ ヘッダーの追加]** を選択してヘッダーを追加します。
+1. **[送信]** を選択して、API 呼び出しを行います。
 
-   > [!NOTE]
-   > * Ocp-Apim-Subscription-Key が自動的に入力されない場合は、開発者ポータルに移動し、プロファイル ページのキーを公開することで取得できます。
-   > * Ocp-Apim-Trace HTTP ヘッダーが使用されたときにトレースを取得するには、サブスクリプション キーの **[トレースを許可]** の設定を有効にする必要があります。 **[トレースを許可]** 設定を構成するには、左側のメニューの **[API Management]** で **[サブスクリプション]** を選択します。
-   >   ![[API Management] の [サブスクリプション] ペインの [トレースを許可]](media/api-management-howto-api-inspector/allowtracing.png)
+  :::image type="content" source="media/api-management-howto-api-inspector/06-debug-your-apis-01-trace-call.png" alt-text="API トレースを構成する":::
 
-6. **[送信]** をクリックして、API 呼び出しを行います。 
-7. 呼び出しが完了するのを待ちます。 
-8. **API コンソール**の **[トレース]** タブに移動します。 詳細なトレース情報に移動するには、リンク ( **[受信]** 、 **[バックエンド]** 、 **[送信]** ) をクリックします。
+> [!TIP]
+> **Ocp-Apim-Subscription-Key** が HTTP 要求に自動的に入力されない場合は、ポータルで取得できます。 **[サブスクリプション]** を選択し、サブスクリプションのコンテキスト メニュー ( **...** ) を開きます。 **[キーの表示/非表示]** を選択ます。 必要に応じて、キーを再生成することもできます。 次に、キーをヘッダーに追加します。
 
-    **[受信]** セクションには、API Management が呼び出し元から受信した元の要求と、要求に適用されるすべてのポリシー (手順 2. で追加した rate-limit、set-header ポリシーなど) が表示されます。
+## <a name="review-trace-information"></a>トレース情報を確認する
 
-    **[バックエンド]** セクションには、API Management が API バックエンドに送信した要求と、受信した応答が表示されます。
+1. 呼び出しが完了したら、 **[HTTP 応答]** の **[トレース]** タブに移動します。
+1. 詳細なトレース情報に移動するには、次のいずれかのリンクを選択します: **[受信]** 、 **[バックエンド]** 、 **[送信]** 。
 
-    **[送信]** セクションには、呼び出し元に送り返される前に応答に適用されるすべてのポリシーが表示されます。
+     :::image type="content" source="media/api-management-howto-api-inspector/response-trace.png" alt-text="応答トレースを確認する":::
+
+    * **[受信]** - API Management が呼び出し元から受信した元の要求と、その要求に適用されているポリシーが表示されます。 たとえば、「[チュートリアル: API を変換および保護する](transform-api.md)」のポリシーを追加した場合、ここに表示されます。
+
+    * **[バックエンド]** - API Management が API バックエンドに送信した要求と、受信した応答が表示されます。
+
+    * **[送信]** - 呼び出し元に送り返される前に応答に適用されるポリシーが表示されます。
 
     > [!TIP]
     > 各ステップには、API Management が要求を受信してからの経過時間も表示されます。
 
-## <a name="next-steps"></a>次のステップ
+1. **[メッセージ]** タブの **ocp-apim-trace-location** ヘッダーには、Azure Blob Storage に格納されているトレース データの場所が表示されます。 必要に応じて、この場所に移動してトレースを取得します。
+
+     :::image type="content" source="media/api-management-howto-api-inspector/response-message.png" alt-text="Azure Storage 内のトレースの場所":::
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
-> * 呼び出しのトレース
+> * 呼び出しの例をトレースする
+> * 要求プロセスのステップを確認する
 
 次のチュートリアルに進みます。
 

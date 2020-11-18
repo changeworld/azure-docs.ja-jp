@@ -7,12 +7,12 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 3fdc9a9f99b239f68022067a5aedbc7e6e0d12a4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7423114d2da23207dfcc1a329675b8c902b1f320
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287494"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445542"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Azure Key Vault に対する認証
 
@@ -38,13 +38,13 @@ Key Vault による認証は、特定の **セキュリティ プリンシパル
 
     詳細については、[マネージド ID の概要](../../active-directory/managed-identities-azure-resources/overview.md)に関する記事を参照してください。 また、[マネージド ID がサポートされている Azure サービス](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)に関する記事も参照してください。それには、特定のサービス (App Service、Azure Functions、Virtual Machines など) でマネージド ID を有効にする方法について説明されている記事へのリンクが含まれます。
 
-* マネージド ID を使用できない場合は、Azure AD テナントにアプリケーションを **登録** します。詳細については、 [クイックスタート: Azure ID プラットフォームでのアプリケーションの登録](../../active-directory/develop/quickstart-register-app.md)に関する記事を参照してください。 また、登録によって、すべてのテナントでそのアプリを示す 2 つ目のアプリケーション オブジェクトも作成されます。
+* マネージド ID を使用できない場合は、Azure AD テナントにアプリケーションを **登録** します。詳細については、[クイックスタート: Azure ID プラットフォームでのアプリケーションの登録](../../active-directory/develop/quickstart-register-app.md)に関する記事を参照してください。 また、登録によって、すべてのテナントでそのアプリを示す 2 つ目のアプリケーション オブジェクトも作成されます。
 
 ## <a name="authorize-a-security-principal-to-access-key-vault"></a>セキュリティ プリンシパルが Key Vault にアクセスすることを承認する
 
 Key Vault は、2 つの異なる承認レベルで動作します。
 
-- **アクセス ポリシー** では、ユーザー、グループ、またはサービス プリンシパルに対して既存の Key Vault リソースの " *内部にある* " シークレット、キー、証明書へのアクセスが承認されるかどうかが制御されます("データ プレーン" 操作とも呼ばれます)。 通常、アクセス ポリシーは、ユーザー、グループ、アプリケーションに対して付与されます。
+- **アクセス ポリシー** では、ユーザー、グループ、またはサービス プリンシパルに対して既存の Key Vault リソースの "*内部にある*" シークレット、キー、証明書へのアクセスが承認されるかどうかが制御されます("データ プレーン" 操作とも呼ばれます)。 通常、アクセス ポリシーは、ユーザー、グループ、アプリケーションに対して付与されます。
 
     アクセス ポリシーを割り当てる方法については、次の記事を参照してください。
 
@@ -125,4 +125,4 @@ Key Vault では、パブリック IP アドレスを使用してリソースに
 - [Key Vault のアクセス ポリシーのトラブルシューティング](troubleshooting-access-issues.md)
 - [Key Vault REST API のエラー コード](rest-error-codes.md)
 - [Key Vault 開発者ガイド](developers-guide.md)
-- [Azure のロールベースのアクセス制御 (RBAC) とは](../../role-based-access-control/overview.md)
+- [Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)

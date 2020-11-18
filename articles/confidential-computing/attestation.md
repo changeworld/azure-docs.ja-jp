@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 9/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 70a17aacde67744eae74ca263200f2c65fbd300a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86856d1f66b5b7d723c907c17d7179ffcd2b82ab
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993501"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565672"
 ---
 # <a name="attesting-sgx-enclaves"></a>SGX エンクレーブの構成証明
 
@@ -30,11 +30,11 @@ Azure のコンフィデンシャル コンピューティングからは、コ�
 
 構成証明は、システムのソフトウェアや半導体に適合した安全な構成証明サービスを使用して実装する必要があります。 使用できるサービスの例
 
-- [Microsoft Azure Attestation (プレビュー)](https://docs.microsoft.com/azure/attestation/overview) または
+- [Microsoft Azure Attestation (プレビュー)](../attestation/overview.md) または
 - [Intel の構成証明およびプロビジョニング サービス](https://software.intel.com/sgx/attestation-services)
 
 
 いずれも Azure コンフィデンシャル コンピューティング Intel SGX インフラストラクチャと互換性があります。 
 
 ## <a name="next-steps"></a>次のステップ
-[エンクレーブ対応アプリ向け Microsoft Azure Attestation サンプル](https://docs.microsoft.com/samples/azure-samples/microsoft-azure-attestation/sample-code-for-intel-sgx-attestation-using-microsoft-azure-attestation/)をお試しください。
+[エンクレーブ対応アプリ向け Microsoft Azure Attestation サンプル](/samples/azure-samples/microsoft-azure-attestation/sample-code-for-intel-sgx-attestation-using-microsoft-azure-attestation/)をお試しください。

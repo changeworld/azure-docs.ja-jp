@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8a42711bba8f77070e2b30a9b07d29d5b5095945
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9ff05f2cf9f29ef86a6db9955e7d28c9035e1bf4
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973888"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376963"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン
 
@@ -41,7 +41,7 @@ Azure でアプリケーション インフラストラクチャを構築する�
 * VM で必要な関連リソース
 
 ### <a name="locations"></a>場所
-Azure で作成されるすべてのリソースは、世界各地の複数の[地理的リージョン](https://azure.microsoft.com/regions/)に分散されます。 通常、このリージョンは VM の作成時には**場所**と呼ばれます。 VM の場合、この場所によって仮想ハード ディスクの格納場所を指定します。
+Azure で作成されるすべてのリソースは、世界各地の複数の[地理的リージョン](https://azure.microsoft.com/regions/)に分散されます。 通常、このリージョンは VM の作成時には **場所** と呼ばれます。 VM の場合、この場所によって仮想ハード ディスクの格納場所を指定します。
 
 次の表に、利用可能な場所の一覧を取得する方法の一部を示します。
 
@@ -104,6 +104,12 @@ VM の[拡張機能](../extensions/features-windows.md?toc=/azure/virtual-machin
 | [パブリック IP アドレス](../../virtual-network/public-ip-addresses.md) |いいえ |VM には、リモートでアクセスするためのパブリック IP アドレスを割り当てることができます。 |
 | [ネットワーク インターフェイス](../../virtual-network/virtual-network-network-interface.md) |はい |VM には、ネットワークで通信するためのネットワーク インターフェイスが必要です。 |
 | [データ ディスク](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |いいえ |VM には、ストレージ容量を拡張するためのデータ ディスクを含めることができます。 |
+
+
+## <a name="data-residency"></a>データの保存場所
+
+Azure では、顧客データを 1 つのリージョンに格納できるようにする機能は現在、アジア太平洋地域の東南アジア リージョン (シンガポール) と、ブラジル地域のブラジル南部リージョン (サンパウロ州) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは geo 内に格納されます。 詳細については、[セキュリティ センター](https://azuredatacentermap.azurewebsites.net/)に関するページを参照してください。
+
 
 ## <a name="next-steps"></a>次のステップ
 

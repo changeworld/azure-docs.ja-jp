@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:SQL オンデマンド (プレビュー) を使用して Azure Synapse Studio (プレビュー) で Azure Open Datasets を分析する
-description: このチュートリアルでは、SQL オンデマンド (プレビュー) を使用してさまざまな Azure Open Datasets を組み合わせた探索的データ分析を簡単に実行し、Azure Synapse Studio で結果を視覚化する方法について説明します。
+title: チュートリアル:サーバーレス SQL プール (プレビュー) を使用して Azure Synapse Studio (プレビュー) で Azure Open Datasets を分析する
+description: このチュートリアルでは、サーバーレス SQL プール (プレビュー) を使用してさまざまな Azure Open Datasets を組み合わせることで探索的データ分析を簡単に実行し、Azure Synapse Studio で結果を視覚化する方法について説明します。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0471bd594dcf1b0654d6b4c496e5d39ade2739fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cec16041edd10a57088df4ae9cfe0587906919eb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539522"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309291"
 ---
-# <a name="tutorial-use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>チュートリアル:SQL オンデマンドを使用した Azure Open Datasets の分析と Azure Synapse Studio での結果の視覚化
+# <a name="tutorial-use-serverless-sql-pool-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>チュートリアル:サーバーレス SQL プールを使用して Azure Open Datasets を分析し、Azure Synapse Studio で結果を視覚化する
 
-このチュートリアルでは、SQL オンデマンドを使用してさまざまな Azure Open Datasets を組み合わせることで探索的データ分析を実行し、Azure Synapse Studio で結果を視覚化する方法について説明します。
+このチュートリアルでは、サーバーレス SQL プールを使用してさまざまな Azure Open Datasets を組み合わせることで探索的データ分析を実行し、Azure Synapse Studio で結果を視覚化する方法について説明します。
 
 特に、[ニューヨーク市 (NYC) のタクシー データセット](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)を分析します。これには次のものが含まれます。
 
@@ -102,7 +102,7 @@ ORDER BY 1 ASC
 
 ![毎年のタクシー乗車数の結果のスニペット](./media/tutorial-data-analyst/4.png)
 
-データは Synapse Studio で**テーブル** ビューから**グラフ** ビューに切り替えることによって視覚化できます。 さまざまな種類のグラフ ( **[面]** 、 **[横棒]** 、 **[縦棒]** 、 **[折れ線]** 、 **[円]** 、 **[散布図]** など) から選択できます。 この例で、 **[Category** column]\(カテゴリ列\) を **current_year** に設定した **[縦棒]** グラフをプロットしてみましょう。
+データは Synapse Studio で **テーブル** ビューから **グラフ** ビューに切り替えることによって視覚化できます。 さまざまな種類のグラフ ( **[面]** 、 **[横棒]** 、 **[縦棒]** 、 **[折れ線]** 、 **[円]** 、 **[散布図]** など) から選択できます。 この例で、 **[Category** column]\(カテゴリ列\) を **current_year** に設定した **[縦棒]** グラフをプロットしてみましょう。
 
 ![年間の乗車数を示す縦棒グラフ](./media/tutorial-data-analyst/5.png)
 
@@ -213,9 +213,9 @@ WHERE countryorregion = 'US' AND CAST([datetime] AS DATE) = '2016-01-23' AND sta
 - 寒かった (気温が摂氏 0 度を下回った)。
 - 強風だった (約 10 m/秒)。
 
-このチュートリアルでは、データ アナリストが探索的データ分析を迅速に実行し、SQL オンデマンドを使用してさまざまなデータセットを簡単に結合し、Azure Synapse Studio を使用して結果を視覚化する方法について説明しました。
+このチュートリアルでは、データ アナリストが探索的データ分析を迅速に実行し、サーバーレス SQL プールを使用してさまざまなデータセットを簡単に結合し、Azure Synapse Studio を使用して結果を視覚化する方法について説明しました。
 
 ## <a name="next-steps"></a>次のステップ
 
-SQL オンデマンドを Power BI Desktop に接続してレポートを作成する方法については、[SQL オンデマンドの Power BI Desktop への接続とレポートの作成](tutorial-connect-power-bi-desktop.md)に関する記事を参照してください。
+サーバーレス SQL プールを Power BI Desktop に接続してレポートを作成する方法については、[サーバーレス SQL プールの Power BI Desktop への接続とレポートの作成](tutorial-connect-power-bi-desktop.md)に関する記事をご覧ください。
  

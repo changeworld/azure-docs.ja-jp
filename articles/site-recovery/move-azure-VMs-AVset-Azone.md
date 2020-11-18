@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: fd541e551102b205acff28b6bc06bc88abd14763
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8224ae4a48bb4915492240c414b90edb86a4c258
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605109"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393134"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Azure VM を Availability Zones に移動する
 
@@ -62,7 +62,7 @@ VM を "*単一インスタンス*" として特定のリージョンにデプ�
 4. Linux VM の場合は、Linux ディストリビューターから提供されるガイダンスに従って、VM で最新の信頼されたルート証明書と証明書失効リストを取得します。
 5. 移動しようとする VM のネットワーク接続を制御するために認証プロキシを使用していないことを確認します。
 
-6. 移動しようとしている VM にインターネットへのアクセスが存在しない場合や、ファイアウォール プロキシを使用してアウトバウンド アクセスを制御している場合は、「[発信ネットワーク接続の構成](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms)」で要件を確認してください。
+6. [VM の発信接続要件](azure-to-azure-tutorial-enable-replication.md#set-up-vm-connectivity)を確認します。
 
 7. ソース ネットワーク レイアウトと確認のために現在使用しているリソースを特定します (ロード バランサー、NSG、パブリック IP など)。
 
@@ -99,16 +99,12 @@ VM を "*単一インスタンス*" として特定のリージョンにデプ�
 1. Azure portal で **[仮想マシン]** を選択して、Availability Zones に移動する VM を選択します。
 2. **[操作]** で、 **[ディザスター リカバリー]** を選択します。
 3. **[ディザスター リカバリーの構成]**  >  **[ターゲット リージョン]** で、レプリケート先のターゲット リージョンを選択します。 このリージョンで Availability Zones が[サポートされている](../availability-zones/az-region.md)ことを確認します。
-
-    ![ターゲット リージョンの選択](media/azure-vms-to-zones/enable-rep-1.PNG)
-
 4. **詳細設定** を選択します。
 5. ターゲット サブスクリプション、ターゲット VM リソース グループ、仮想ネットワークに適切な値を選択します。
 6. **[可用性]** セクションで、VM の移動先となる可用性ゾーンを選択します。 
    > [!NOTE]
    > 可用性セットまたは可用性ゾーンのオプションが表示されない場合は、[前提条件](#prepare-the-source-vms)が満たされていること、またソース VM の[準備](#prepare-the-source-vms)が完了していることを確認します。
   
-    ![可用性ゾーンを選択するための選択](media/azure-vms-to-zones/enable-rep-2.PNG)
 
 7. **[レプリケーションを有効にする]** を選択します。 これにより VM レプリケーションを有効にするジョブが開始されます。
 
@@ -119,7 +115,6 @@ VM を "*単一インスタンス*" として特定のリージョンにデプ�
 1. VM のメニューで、 **[ディザスター リカバリー]** を選択します。
 2. レプリケーションの正常性、作成された復旧ポイント、およびマップ上のソース リージョンとターゲット リージョンを確認できます。
 
-   ![レプリケーションの状態](media/azure-to-azure-quickstart/replication-status.png)
 
 ## <a name="test-the-configuration"></a>構成をテストする
 

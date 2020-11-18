@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sourabha, sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 7b2432fda70e8f9a5fa8bc64ede846d977672e9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75e6ebaea4c5ba883820d2309212b35fed128142
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886489"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422129"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>IoT Edge のモジュールと接続を設定する
 
@@ -49,27 +49,30 @@ Azure SQL Edge で鉄鉱石の不純物を予測する、この 3 部構成チ�
    [ユーザー名]|ユーザー名
    Password|Password
   
-## <a name="deploy-the-data-generator-module"></a>データ ジェネレーター モジュールのデプロイ
+## <a name="build-push-and-deploy-the-data-generator-module"></a>データ ジェネレーター モジュールのビルド、プッシュ、およびデプロイ
 
-1. **[IoT Edge]** セクションの **[デバイスの自動管理]** で **[デバイス ID]** をクリックします。 このチュートリアルの ID は `IronOrePredictionDevice` です。次に **[モジュールの設定]** をクリックします。
-
-2.  **[デバイスのモジュールを設定してください:]** ページの **[IoT Edge モジュール]** セクションで、 **[+ 追加]** をクリックして **[IoT Edge モジュール]** を選択します。
-
-3. [IoT Edge モジュール] に有効な名前およびイメージ URI を入力します。
-   イメージ URI は、このチュートリアルのパート 1 で作成されたリソース グループのコンテナー レジストリで確認できます。 **[サービス]** の下にある **[リポジトリ]** セクションを選択します。 このチュートリアルでは、`silicaprediction` という名前のリポジトリを選択します。 適切なタグを選択します。 イメージの URI の形式は次のとおりです。
-
-   *<コンテナー レジストリのログイン サーバー>* / *<リポジトリ名>* : *<タグ名>*
-
-   次に例を示します。
-
+1. [プロジェクト ファイル](https://github.com/microsoft/sqlsourabh/tree/main/SQLEdgeSamples/IoTEdgeSamples/IronOreSilica)をお使いのマシンにクローンします。
+2. Visual Studio 2019 を使用して、ファイル **IronOre_Silica_Predict.sln** を開きます
+3. **deployment.template.json** 内のコンテナー レジストリの詳細を更新します 
+   ```json
+   "registryCredentials":{
+        "RegistryName":{
+            "username":"",
+            "password":""
+            "address":""
+        }
+    }
    ```
-   ASEdemocontregistry.azurecr.io/silicaprediction:amd64
+4. **modules.json** ファイルを更新して、ターゲット コンテナー レジストリ (またはモジュールのリポジトリ) を指定します
+   ```json
+   "image":{
+        "repository":"samplerepo.azurecr.io/ironoresilicapercent",
+        "tag":
+    }
    ```
-
-4. *[再起動ポリシー]* と *[必要な状態]* の各フィールドはそのままにします。
-
-5. **[追加]** をクリックします。
-
+5. デバッグ モードまたはリリース モードでプロジェクトを実行し、プロジェクトが問題なく実行できることを確認します 
+6. プロジェクト名を右クリックし、 **[Build and Push IoT Edge Modules]\(IoT Edge モジュールをビルドしてプッシュする\)** を選択して、プロジェクトをコンテナー レジストリにプッシュします。
+7. データ ジェネレーター モジュールを IoT Edge モジュールとしてエッジ デバイスにデプロイします。 
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>Azure SQL Edge モジュールのデプロイ
 
@@ -77,9 +80,9 @@ Azure SQL Edge で鉄鉱石の不純物を予測する、この 3 部構成チ�
 
 2. **[IoT Edge モジュールの Marketplace]** ブレードで、*Azure SQL Edge* を検索して *[Azure SQL Edge Developer]* を選択します。 
 
-3. **[IoT Edge モジュール]** に新しく追加された *Azure SQL Edge* モジュールをクリックして、Azure SQL Edge モジュールを構成します。 構成オプションの詳細については、「[Azure SQL Edge のデプロイ](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal)」を参照してください。
+3. **[IoT Edge モジュール]** に新しく追加された *Azure SQL Edge* モジュールをクリックして、Azure SQL Edge モジュールを構成します。 構成オプションの詳細については、「[Azure SQL Edge のデプロイ](./deploy-portal.md)」を参照してください。
 
-4. *Azure SQL Edge* モジュールのデプロイに `MSSQL_PACKAGE` 環境変数を追加して、このチュートリアルの[パート 1](tutorial-deploy-azure-resources.md) の手順 8 で作成したデータベース DACPAC ファイルの SAS URL を指定します。
+4. *Azure SQL Edge* モジュールのデプロイに `MSSQL_PACKAGE` 環境変数を追加して、このチュートリアルの [パート 1](tutorial-deploy-azure-resources.md) の手順 8 で作成したデータベース DACPAC ファイルの SAS URL を指定します。
 
 5. **[update]\(更新\)** をクリックします。
 

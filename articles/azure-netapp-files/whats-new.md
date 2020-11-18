@@ -12,18 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/30/2020
+ms.date: 11/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 56ae3ac1331ed054a1fb808ae06e990b67c06bae
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 3f13d997f73e9737b8770eec7e0742d50bf1abb8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932415"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421704"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files の新機能
 
 Azure NetApp Files は定期的に更新されています。 この記事では、最新の新機能と機能強化の概要について説明します。 
+
+## <a name="november-2020"></a>2020 年 11 月
+
+* [スナップショットの復元](azure-netapp-files-manage-snapshots.md#revert-a-volume-using-snapshot-revert)
+
+    スナップショットを元に戻す機能を使用すると、特定のスナップショットが作成されたときの状態にボリュームをすばやく戻すことができます。 ほとんどの場合、ボリュームを元に戻す方が、個々のファイルをスナップショットからアクティブなファイル システムに復元するよりもはるかに高速です。 また、スナップショットを新しいボリュームに復元する場合と比べて、スペース効率が高くなります。
 
 ## <a name="september-2020"></a>2020 年 9 月
 

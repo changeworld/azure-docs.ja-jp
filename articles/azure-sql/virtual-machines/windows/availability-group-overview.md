@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: eb17b8286ce994146c1fa9867cd8131a909c8ace
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: d04f689dec3a3c182c0da23007247c20c4f8063d
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146690"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504392"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 上の SQL Server の Always On 可用性グループ
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -72,13 +72,13 @@ DNN リスナーを既存の VNN リスナーの代わりに使用するか、�
 
 Azure VM 上の SQL Server に可用性グループをデプロイするためのオプションは複数あり、その一部は他のものよりも自動化されています。 
 
-次の表は、使用可能なオプションの比較を示しています。 
+次の表は、使用可能なオプションの比較を示しています。
 
-| |**[Azure portal](availability-group-azure-portal-configure.md)**|**[Azure CLI / PowerShell](./availability-group-az-commandline-configure.md)**|**[クイックスタート テンプレート](availability-group-quickstart-template-configure.md)**|**[マニュアル](availability-group-manually-configure-prerequisites-tutorial.md)** | 
-|---------|---------|---------|--------- |---------|
+| | Azure portal | Azure CLI / PowerShell | クイック スタート テンプレート | マニュアル |
+|---------|---------|---------|---------|---------|
 |**SQL Server のバージョン** |2016 以降 |2016 以降|2016 以降|2012 以降|
 |**SQL Server のエディション** |Enterprise |Enterprise |Enterprise |Enterprise、Standard|
-|**Windows Server のバージョン**| 2016 以降 | 2016 以降 | 2016 以降 | All| 
+|**Windows Server のバージョン**| 2016 以降 | 2016 以降 | 2016 以降 | All|
 |**クラスターを自動作成**|はい|はい | はい |いいえ|
 |**可用性グループを自動作成** |はい |いいえ|いいえ|いいえ|
 |**リスナーとロード バランサーを別々に作成** |いいえ|いいえ|いいえ|はい|
@@ -90,9 +90,8 @@ Azure VM 上の SQL Server に可用性グループをデプロイするため�
 |**同一リージョン内の複数のゾーンを使用した DR**|はい|はい|はい|はい|
 |**AD なしの分散型 AG**|いいえ|いいえ|いいえ|はい|
 |**クラスターなしの分散型 AG** |いいえ|いいえ|いいえ|はい|
-||||||
 
-
+詳細については、[Azure portal](availability-group-azure-portal-configure.md)、[Azure CLI/PowerShell](./availability-group-az-commandline-configure.md)、[クイックスタート テンプレート](availability-group-quickstart-template-configure.md)、および[手動](availability-group-manually-configure-prerequisites-tutorial.md)に関するページを参照してください。
 
 ## <a name="considerations"></a>考慮事項 
 

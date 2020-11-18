@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/02/2020
+ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 4a4df1ff0561e180ca0a3fd36363ceff7da042df
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: e645f4075aa1c4c027e8ea884108fdeb708467af
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522429"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279949"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nitro-productivity-suite"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Nitro Productivity Suite の統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "92522429"
 * Nitro Productivity Suite にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Nitro Productivity Suite に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
-
-サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、[Azure Active Directory を使用したアプリケーション アクセスとシングル サインオンの概要](../manage-apps/what-is-single-sign-on.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,19 +37,18 @@ ms.locfileid: "92522429"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Nitro Productivity Suite では、 **SP** Initiated SSO と **IDP** Initiated SSO がサポートされます。
-* Nitro Productivity Suite では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます。
-* Nitro Productivity Suite を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 詳細については、[Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)に関するページを参照してください。
+* Nitro Productivity Suite では、**SP** Initiated SSO と **IDP** Initiated SSO がサポートされます。
+* Nitro Productivity Suite では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 
 ## <a name="add-nitro-productivity-suite-from-the-gallery"></a>ギャラリーからの Nitro Productivity Suite の追加
 
 Azure AD への Nitro Productivity Suite の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Nitro Productivity Suite を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左側のペインで、 **[Azure Active Directory]** を選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Nitro Productivity Suite** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Nitro Productivity Suite**」と入力します。
 1. 結果から **[Nitro Productivity Suite]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -62,17 +59,19 @@ Azure AD への Nitro Productivity Suite の統合を構成するには、ギャ
 Nitro Productivity Suite に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
 1. [Azure AD SSO を構成](#configure-azure-ad-sso)して、ユーザーがこの機能を使用できるようにします。
-    1. [Azure AD のテスト ユーザーを作成](#create-an-azure-ad-test-user)して、B.Simon を使って Azure AD のシングル サインオンをテストします。
-    1. [Azure AD テスト ユーザーを割り当て](#assign-the-azure-ad-test-user)て、B.Simon が Azure AD シングル サインオンを使用できるようにします。
-1. [Nitro Productivity Suite SSO を構成](#configure-nitro-productivity-suite-sso)して、アプリケーション側でシングル サインオン設定を構成します。
-    1. [Nitro Productivity Suite のテスト ユーザーを作成](#create-a-nitro-productivity-suite-test-user)して、B.Simon に対応するユーザーを Nitro Productivity Suite に作成し、Azure AD の B.Simon にリンクさせます。
+
+    a. [Azure AD のテスト ユーザーを作成](#create-an-azure-ad-test-user)して、B.Simon を使って Azure AD のシングル サインオンをテストします。
+    
+    b. [Azure AD テスト ユーザーを割り当て](#assign-the-azure-ad-test-user)て、B.Simon が Azure AD シングル サインオンを使用できるようにします。
+    
+2. [Nitro Productivity Suite のテスト ユーザーを作成](#create-a-nitro-productivity-suite-test-user)して、B.Simon に対応するユーザーを Nitro Productivity Suite に作成し、Azure AD の B.Simon にリンクさせます。
 1. [SSO をテスト](#test-sso)して、構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Nitro Productivity Suite** アプリケーション統合ページで、 **[管理]** セクションを見つけます。 **[シングル サインオン]** を選択します。
+1. Azure portal の **Nitro Productivity Suite** アプリケーション統合ページで、 **[管理]** セクションを見つけます。 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけます。 **[ダウンロード]** を選択して証明書をダウンロードし、コンピューターに保存します。
 
@@ -99,9 +98,9 @@ Nitro Productivity Suite に対する Azure AD SSO を構成してテストす�
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、 [Nitro Admin ポータル](https://admin.gonitro.com/)から **[SAML Entity ID]\(SAML エンティティ ID\)** フィールドをコピーして貼り付けます。 この値は `urn:auth0:gonitro-prod:<ENVIRONMENT>` 形式になっています。
+    a. **[識別子]** ボックスに、[Nitro Admin ポータル](https://admin.gonitro.com/)から **[SAML Entity ID]\(SAML エンティティ ID\)** フィールドをコピーして貼り付けます。 この値は `urn:auth0:gonitro-prod:<ENVIRONMENT>` 形式になっています。
 
-    b. **[応答 URL]** ボックスに、 [Nitro Admin ポータル](https://admin.gonitro.com/)から **[ACS URL]** フィールドをコピーして貼り付けます。 この値は `https://gonitro-prod.eu.auth0.com/login/callback?connection=<ENVIRONMENT>` 形式になっています。
+    b. **[応答 URL]** ボックスに、[Nitro Admin ポータル](https://admin.gonitro.com/)から **[ACS URL]** フィールドをコピーして貼り付けます。 この値は `https://gonitro-prod.eu.auth0.com/login/callback?connection=<ENVIRONMENT>` 形式になっています。
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** を選択して次の手順を実行します。
 
@@ -139,20 +138,10 @@ Nitro Productivity Suite に対する Azure AD SSO を構成してテストす�
 1. Azure portal で、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に選択します。
 1. アプリケーションの一覧で **[Nitro Productivity Suite]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] が強調表示された [管理] セクションのスクリーンショット](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択します。 次に、 **[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] が強調表示された [ユーザーとグループ] ページのスクリーンショット](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログ ボックスで、ユーザーの一覧から **[B.Simon]** を選択します。 次に、画面の下部にある **[選択]** を選択します。
-1. SAML アサーション内にロール値が必要な場合、 **[ロールの選択]** ダイアログ ボックスで、一覧からユーザーに適したロールを選択します。 次に、画面の下部にある **[選択]** を選択します。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
-
-## <a name="configure-nitro-productivity-suite-sso"></a>Nitro Productivity Suite SSO の構成
-
-Nitro Productivity Suite 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [Nitro Productivity Suite サポート チーム](https://www.gonitro.com/support)に送信します。 サポート チームは、SAML SSO 接続が両方の側で正しく設定されていることを確認します。
 
 ### <a name="create-a-nitro-productivity-suite-test-user"></a>Nitro Productivity Suite テスト ユーザーを作成する
 
@@ -160,20 +149,21 @@ Nitro Productivity Suite では、Just-In-Time ユーザー プロビジョニ�
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネル上で [Nitro Productivity Suite] タイルを選択すると、SSO を設定した Nitro Productivity Suite に自動的にサインインします。 詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
+#### <a name="sp-initiated"></a>SP Initiated:
 
-## <a name="additional-resources"></a>その他のリソース
+1. Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Nitro Productivity Suite のサインオン URL にリダイレクトされます。  
 
-- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](./tutorial-list.md)
+2. Nitro Productivity Suite のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP Initiated:
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Nitro Productivity Suite に自動的にサインインされます 
 
-- [Azure AD で Nitro Productivity Suite を試す](https://aad.portal.azure.com/)
+また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで [Nitro Productivity Suite] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Nitro Productivity Suite に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって Nitro Productivity Suite を保護する](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>次のステップ
+
+Nitro Productivity Suite を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。

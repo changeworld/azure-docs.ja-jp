@@ -1,18 +1,18 @@
 ---
-title: IoT プラグ アンド プレイのサンプル C# デバイス コードを IoT Hub に接続する | Microsoft Docs
-description: IoT ハブに接続する IoT プラグ アンド プレイのサンプル デバイス コードを Windows 上でビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
+title: クイックスタート - IoT プラグ アンド プレイのサンプル C# デバイス コードを Azure IoT Hub に接続する | Microsoft Docs
+description: クイックスタート - IoT ハブに接続する Windows 上で IoT プラグ アンド プレイのサンプル デバイス コードをビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: da1ac77ad2716abf964c835634d049895fe88654
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 01e87b08f8d0abcf3659e0d7bfe081fd3516ff08
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044549"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421619"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-windows-to-iot-hub-c"></a>クイックスタート: Windows 上で実行されている IoT プラグ アンド プレイのサンプル デバイス アプリケーションを IoT Hub に接続する (C#)
 

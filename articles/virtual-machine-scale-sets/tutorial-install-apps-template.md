@@ -9,12 +9,12 @@ ms.subservice: template
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 357d3aaa9cf9e324f8dd27636b9f34f503f566de
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2d748f787b40bb26e9faebb028d71c6c3e30ee55
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746009"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516562"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>チュートリアル:Azure テンプレートを使用した仮想マシン スケール セットへのアプリケーションのインストール
 スケール セット内の仮想マシン (VM) インスタンスでアプリケーションを実行する　には、まず、アプリケーション コンポーネントと必要なファイルをインストールする必要があります。 前のチュートリアルでは、カスタム VM イメージを作成および使用して VM インスタンスをデプロイする方法について学習しました。 このカスタム イメージには、手動によるアプリケーションのインストールと構成が含まれていました。 このほか、各 VM インスタンスがデプロイされた後のスケール セットへのアプリケーションのインストールを自動化したり、既にスケール セットで実行されているアプリケーションを更新したりできます。 このチュートリアルで学習する内容は次のとおりです。
@@ -24,11 +24,11 @@ ms.locfileid: "92746009"
 > * Azure カスタム スクリプト拡張機能の使用
 > * スケール セットで実行中のアプリケーションの更新
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.29 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+- この記事では、Azure CLI のバージョン 2.0.29 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 
 ## <a name="what-is-the-azure-custom-script-extension"></a>Azure カスタム スクリプト拡張機能とは
@@ -40,9 +40,9 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 
 ## <a name="create-custom-script-extension-definition"></a>カスタム スクリプト拡張機能の定義の作成
-Azure テンプレートを使用して仮想マシン スケール セットを定義する場合、 *Microsoft.Compute/virtualMachineScaleSets* リソース プロバイダーに拡張機能のセクションを含めることができます。 *extensionsProfile* には、スケール セット内の VM インスタンスに適用される項目が詳しく記述されています。 カスタム スクリプト拡張機能を使用するには、発行元として *Microsoft.Azure.Extensions* を指定し、タイプとして *CustomScript* を指定します。
+Azure テンプレートを使用して仮想マシン スケール セットを定義する場合、*Microsoft.Compute/virtualMachineScaleSets* リソース プロバイダーに拡張機能のセクションを含めることができます。 *extensionsProfile* には、スケール セット内の VM インスタンスに適用される項目が詳しく記述されています。 カスタム スクリプト拡張機能を使用するには、発行元として *Microsoft.Azure.Extensions* を指定し、タイプとして *CustomScript* を指定します。
 
-*fileUris* プロパティは、ソース インストール スクリプトまたはパッケージを定義するために使用します。 インストール プロセスを開始するために必要なスクリプトは、 *commandToExecute* に定義します。 次の例では、NGINX Web サーバーをインストールおよび構成する GitHub のサンプル スクリプトを定義します。
+*fileUris* プロパティは、ソース インストール スクリプトまたはパッケージを定義するために使用します。 インストール プロセスを開始するために必要なスクリプトは、*commandToExecute* に定義します。 次の例では、NGINX Web サーバーをインストールおよび構成する GitHub のサンプル スクリプトを定義します。
 
 ```json
 "extensionProfile": {
@@ -70,7 +70,7 @@ Azure テンプレートを使用して仮想マシン スケール セットを
 
 
 ## <a name="create-a-scale-set"></a>スケール セットを作成する
-サンプル テンプレートを使用してスケール セットを作成し、カスタム スクリプト拡張機能を適用しましょう。 最初に、[az group create](/cli/azure/group) を使用して、リソース グループを作成します。 次の例では、 *myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+サンプル テンプレートを使用してスケール セットを作成し、カスタム スクリプト拡張機能を適用しましょう。 最初に、[az group create](/cli/azure/group) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -108,7 +108,7 @@ az network public-ip show \
 
 
 ## <a name="update-app-deployment"></a>アプリのデプロイの更新
-スケール セットのライフサイクル全体にわたり、アプリケーションの更新されたバージョンをデプロイする必要があります。 カスタム スクリプト拡張機能を使用すると、更新されたデプロイ スクリプトを参照し、拡張機能をスケール セットに再適用することができます。 前の手順で作成したスケール セットでは、 *upgradePolicy* が *Automatic* に設定されていました。 この設定により、スケール セット内の VM インスタンスは、自動的にアプリケーションを更新して最新バージョンを適用できます。
+スケール セットのライフサイクル全体にわたり、アプリケーションの更新されたバージョンをデプロイする必要があります。 カスタム スクリプト拡張機能を使用すると、更新されたデプロイ スクリプトを参照し、拡張機能をスケール セットに再適用することができます。 前の手順で作成したスケール セットでは、*upgradePolicy* が *Automatic* に設定されていました。 この設定により、スケール セット内の VM インスタンスは、自動的にアプリケーションを更新して最新バージョンを適用できます。
 
 カスタム スクリプト拡張機能の定義を更新するために、新しいインストール スクリプトを参照するようにテンプレートを編集します。 この変更をカスタム スクリプト拡張機能に認識させるには、新しいファイル名を使用する必要があります。 カスタム スクリプト拡張機能には、スクリプトの内容を調べて変更を識別する機能はありません。 次の定義では、名前の末尾に *_v2* が付加された、更新されたインストール スクリプトを使用しています。
 

@@ -11,18 +11,18 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: afc851be08e6708efc0138dc45931cda147c67c1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 20173c4ba02f53a526167a5a8e22bd0cedc85594
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895887"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393220"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>チュートリアル:"Hello world!" Python スクリプトを実行する (パート 2/4) Python script (part 2 of 4)
 
 このチュートリアルでは、Azure Machine Learning SDK for Python を使用して、Python の "Hello World" スクリプトを送信および実行する方法について説明します。  スクリプトを入手してください。
 
-このチュートリアルは、" *4 部構成のチュートリアル シリーズのパート 2* " であり、Azure Machine Learning の基礎を学習し、Azure でジョブベースの機械学習タスクを実行します。 このチュートリアルは、[パート 1 のローカル マシンを Azure Machine Learning 用に設定する方法](tutorial-1st-experiment-sdk-setup-local.md)に関するページで完了した作業に基づいて構築されています。
+このチュートリアルは、"*4 部構成のチュートリアル シリーズのパート 2*" であり、Azure Machine Learning の基礎を学習し、Azure でジョブベースの機械学習タスクを実行します。 このチュートリアルは、[パート 1 のローカル マシンを Azure Machine Learning 用に設定する方法](tutorial-1st-experiment-sdk-setup-local.md)に関するページで完了した作業に基づいて構築されています。
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -99,7 +99,7 @@ print(aml_url)
       `ws = Workspace.from_config()`
    :::column-end:::
    :::column span="2":::
-      [Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) は Azure Machine Learning ワークスペースに接続して、Azure Machine Learning リソースと通信できるようにします。
+      [Workspace](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) は Azure Machine Learning ワークスペースに接続して、Azure Machine Learning リソースと通信できるようにします。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -107,7 +107,7 @@ print(aml_url)
       `experiment =  Experiment( ... )`
    :::column-end:::
    :::column span="2":::
-      [Experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true) は、複数の実行を 1 つの名前で整理する簡単な方法を提供します。 後で実験を使用して、多数の実行の間でメトリックを簡単に比較する方法を確認できます。
+      [Experiment](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) は、複数の実行を 1 つの名前で整理する簡単な方法を提供します。 後で実験を使用して、多数の実行の間でメトリックを簡単に比較する方法を確認できます。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -115,7 +115,7 @@ print(aml_url)
       `config = ScriptRunConfig( ... )` 
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) は、`hello.py` コードをラップしてワークスペースに渡します。 名前に示されているように、このクラスを使用して、Azure Machine Learning で _スクリプト_ を _実行_ する方法を _構成_ できます。 スクリプトを実行するコンピューティング ターゲットも指定します。 このコードでは、ターゲットは[セットアップ チュートリアル](tutorial-1st-experiment-sdk-setup-local.md)で作成したコンピューティング クラスターです。
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) は、`hello.py` コードをラップしてワークスペースに渡します。 名前に示されているように、このクラスを使用して、Azure Machine Learning で _スクリプト_ を _実行_ する方法を _構成_ できます。 スクリプトを実行するコンピューティング ターゲットも指定します。 このコードでは、ターゲットは[セットアップ チュートリアル](tutorial-1st-experiment-sdk-setup-local.md)で作成したコンピューティング クラスターです。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -123,7 +123,7 @@ print(aml_url)
       `run = experiment.submit(config)`
    :::column-end:::
    :::column span="2":::
-       スクリプトを送信します。 この送信は[実行](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true)と呼ばれます。 実行には、コードの 1 回の実行がカプセル化されています。 実行を使用して、スクリプトの進行状況を監視したり、出力をキャプチャしたり、結果を分析したり、メトリックを視覚化したりすることができます。
+       スクリプトを送信します。 この送信は[実行](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)と呼ばれます。 実行には、コードの 1 回の実行がカプセル化されています。 実行を使用して、スクリプトの進行状況を監視したり、出力をキャプチャしたり、結果を分析したり、メトリックを視覚化したりすることができます。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -138,6 +138,14 @@ print(aml_url)
 ## <a name="submit-and-run-your-code-in-the-cloud"></a>クラウドでコードを送信して実行する
 
 コントロール スクリプトを実行します。そうすると、[セットアップ チュートリアル](tutorial-1st-experiment-sdk-setup-local.md)で作成したコンピューティング クラスター上で `hello.py` が順に実行されます。
+
+最初の実行は、完了までに 5 分から 10 分かかります。 これは、以下のことが行われるためです。
+
+* クラウドで Docker イメージが構築されます
+* コンピューティング クラスターのサイズが 0 ノードから 1 ノードに変更されます
+* Docker イメージがコンピューティングにダウンロードされます。 
+
+Docker イメージがコンピューティングにキャッシュされるため、それ以降の実行にかかる時間は大幅に短くなります (15 秒以内)。これをテストするには、最初の実行が完了した後に、以下のコードを再送信します。
 
 ```bash
 python 03-run-hello.py

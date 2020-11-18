@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 11/11/2020
 ms.author: aahi
-ms.openlocfilehash: 348fb301d1a36c8df405c641f7644889417b11ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb9b0da609169288521d21ee6d5e412a786c7549
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91545049"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94574416"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Azure Cognitive Services コンテナーのセキュリティ
 
@@ -23,7 +23,7 @@ ms.locfileid: "91545049"
 > [!IMPORTANT]
 > 既定では、Cognitive Services コンテナー API に "*セキュリティはありません*"。 この理由は、ほとんどの場合、ネットワーク ブリッジによって外部から保護されるポッドの一部としてコンテナーが実行されるためです。 ただし、[クラウドベースの Cognitive Services][request-authentication] にアクセスするときに使用する認証と同じように動作する認証を有効にすることができます。
 
-次の図は、**セキュリティで保護されていない**既定のアプローチを示しています。
+次の図は、**セキュリティで保護されていない** 既定のアプローチを示しています。
 
 ![コンテナーのセキュリティ](../media/container-security.svg)
 
@@ -33,7 +33,7 @@ ms.locfileid: "91545049"
 
 ### <a name="container-networking"></a>コンテナー ネットワーク
 
-Cognitive Services コンテナーは、課金のために使用状況測定情報を送信する必要があります。 唯一の例外は、*オフライン コンテナー*です。それらは、異なる課金方法に従っているからです。 Cognitive Services コンテナーが依存しているさまざまなネットワーク チャネルの一覧表示を許可しないと、コンテナーは動作しなくなります。
+Cognitive Services コンテナーは、課金のために使用状況測定情報を送信する必要があります。 Cognitive Services コンテナーが依存しているさまざまなネットワーク チャネルの一覧表示を許可しないと、コンテナーは動作しなくなります。
 
 #### <a name="allow-list-cognitive-services-domains-and-ports"></a>Cognitive Services のドメインとポートの一覧表示を許可する
 

@@ -9,20 +9,20 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 16e13a18f93da9063a7eb08e3a2df27db9e3090f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2052e27cde3427986dbf7784dcd5dbb179c5b209
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321701"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380931"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Azure Synapse Analytics (ワークスペース プレビュー) とは
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-エンタープライズ分析では、生データ、洗練化されたデータ、高度にキュレーションされたデータなど、あらゆる種類のデータを大規模に処理する必要があります。 通常そのためには、企業は、ビッグ データとデータ ウェアハウジング テクノロジを、リレーショナル ストアとデータ レイク内のデータ間で機能する複雑なデータ パイプラインに結合する必要があります。 この種のソリューションは、構築、保守、セキュリティ保護が困難です。 この複雑さにより、企業が必要とする分析情報の提供が遅くなります。
+エンタープライズ分析では、生データ、洗練化されたデータ、高度にキュレーションされたデータなど、あらゆる種類のデータを大規模に処理する必要があります。 通常そのためには、企業は、ビッグ データとデータ ウェアハウジング テクノロジを、リレーショナル ストアとデータ レイク内のデータ間で機能する複雑なデータ パイプラインに結合する必要があります。 この種のソリューションは、構築、保守、およびセキュリティ保護が困難です。 この複雑さにより、企業が必要とする分析情報の提供が遅くなります。
 
-**Azure Synapse** は、データ ウェアハウスやビッグ データ システム全体にわたって分析情報を取得する時間を早める統合分析サービスです。 Azure Synapse は、エンタープライズ データ ウェアハウジングで使用される **SQL** テクノロジー、ビッグ データ用に使用される **Spark** テクノロジー、そしてデータ統合と ETL (または ELT) のための **パイプライン** の長所を組み合わせたものです。 **Synapse Studio** には、管理、監視、コーディング、セキュリティのための一元化されたエクスペリエンスが用意されています。 Synapse は、 **PowerBI** 、 **CosmosDB** 、 **AzureML** などの他の Azure サービスとの緊密な統合機能を備えています。
+**Azure Synapse** は、データ ウェアハウスやビッグ データ システム全体にわたって分析情報を取得する時間を早める統合分析サービスです。 Azure Synapse は、エンタープライズ データ ウェアハウジングで使用される **SQL** テクノロジー、ビッグ データ用に使用される **Spark** テクノロジー、そしてデータ統合と ETL (または ELT) のための **パイプライン** の長所を組み合わせたものです。 **Synapse Studio** には、管理、監視、コーディング、セキュリティのための一元化されたエクスペリエンスが用意されています。 Synapse は、**PowerBI**、**CosmosDB**、**AzureML** などの他の Azure サービスとの緊密な統合機能を備えています。
 
 ## <a name="key-features--benefits"></a>主な機能と利点
 
@@ -30,7 +30,7 @@ ms.locfileid: "93321701"
 
 * **Synapse SQL** は、使い慣れた標準の T-SQL エクスペリエンスを使用して、エンタープライズがデータ ウェアハウジングおよびデータ仮想化シナリオを実装できるようにする分散クエリ システムです。 また、SQL の機能を拡張して、ストリーミングや機械学習のシナリオに対応します。
 
-* Synapse SQL には、 **サーバーレス** と **専用** の両方のリソース モデルが用意されており、ユーザーのニーズに合った使用量および課金のオプションが提供されます。 予測可能なパフォーマンスとコストに対しては、専用 SQL プールを作成して、SQL テーブルに格納されているデータの処理能力を確保します。 計画外または突発性のワークロードに対しては、常に使用可能なサーバーレスの SQL エンドポイントを使用します。
+* Synapse SQL には、**サーバーレス** と **専用** の両方のリソース モデルが用意されており、ユーザーのニーズに合った使用量および課金のオプションが提供されます。 予測可能なパフォーマンスとコストに対しては、専用 SQL プールを作成して、SQL テーブルに格納されているデータの処理能力を確保します。 計画外または突発性のワークロードに対しては、常に使用可能なサーバーレスの SQL エンドポイントを使用します。
 * 組み込みの **ストリーミング** 機能を使用して、クラウド データ ソースから SQL テーブルにデータを取り込みます
 * **機械学習** モデルを使用し、[T-SQL PREDICT 関数](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)を使用してデータをスコア付けすることにより、AI を SQL と統合します
 
@@ -74,6 +74,11 @@ Azure Synapse は、エンタープライズが分析リソースを管理し、
 * エンドツーエンドの分析ソリューションを 1 か所で構築: 取り込み、探索、準備、調整、視覚化
 * SQL または Spark コードを記述するデータ エンジニアのための業界最高水準の生産性: オーサリング、デバッグ、およびパフォーマンスの最適化
 * エンタープライズ CI/CD プロセスとの統合
+
+## <a name="engage-with-the-synapse-engineering-team"></a>Synapse エンジニアリング チームとの連携
+
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse):開発に関する質問はこちらへ
+- [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html): 技術的なご質問はこちらへ
 
 ## <a name="next-steps"></a>次のステップ
 

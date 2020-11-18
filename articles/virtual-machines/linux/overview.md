@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b205665a0e5fc06fdc784efa91036f26da5d3cde
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 95e4ac884e0eda3b4f469484226962e3fd2e2eea
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88654346"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375382"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure の Linux 仮想マシン
 
@@ -30,7 +30,7 @@ Azure の仮想マシンは、さまざまな方法で利用できます。 い�
 アプリケーションで使用する VM の数は、ニーズに応じてスケールアップおよびスケールアウトできます。
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>VM の作成前に検討する必要のある事項
-Azure でアプリケーション インフラストラクチャを構築する際には、多数の[設計上の考慮事項](/azure/architecture/reference-architectures/n-tier/windows-vm)が必ず存在します。 開始する前に、VM の次の側面を考慮することが重要です。
+Azure でアプリケーション インフラストラクチャを構築する際には、多数の[設計上の考慮事項](/azure/architecture/reference-architectures/n-tier/linux-vm)が必ず存在します。 開始する前に、VM の次の側面を考慮することが重要です。
 
 * アプリケーション リソースの名前
 * リソースが格納される場所
@@ -41,7 +41,7 @@ Azure でアプリケーション インフラストラクチャを構築する�
 * VM で必要な関連リソース
 
 ### <a name="locations"></a>場所
-Azure で作成されるすべてのリソースは、世界各地の複数の[地理的リージョン](https://azure.microsoft.com/regions/)に分散されます。 通常、このリージョンは VM の作成時には**場所**と呼ばれます。 VM の場合、この場所によって仮想ハード ディスクの格納場所を指定します。
+Azure で作成されるすべてのリソースは、世界各地の複数の[地理的リージョン](https://azure.microsoft.com/regions/)に分散されます。 通常、このリージョンは VM の作成時には **場所** と呼ばれます。 VM の場合、この場所によって仮想ハード ディスクの格納場所を指定します。
 
 次の表に、利用可能な場所の一覧を取得する方法の一部を示します。
 
@@ -74,24 +74,24 @@ Managed Disks により、Azure Storage アカウントの作成および管理�
 また、Azure リージョンごとに 1 つのストレージ アカウントでカスタム イメージを管理することができます。このカスタム イメージを使用すると、同じサブスクリプション内で何百もの VM を作成することができます。 Managed Disks の詳細については、[Managed Disks の概要](../managed-disks-overview.md)に関するページをご覧ください。
 
 ## <a name="distributions"></a>ディストリビューション 
-Microsoft Azure は、現在普及しているさまざまな Linux ディストリビューションに対応します。Microsoft の多数のパートナーが、それらのディストリビューションを提供、管理しています。  Azure Marketplace には、Red Hat Enterprise、CentOS、SUSE Linux Enterprise、Debian、Ubuntu、CoreOS、RancherOS、FreeBSD などのディストリビューションがあります。 Microsoft はさまざまな Linux コミュニティと積極的に連携し、[Azure 動作保証済み Linux ディストリビューション](endorsed-distros.md) リストを拡充しています。
+Microsoft Azure は、現在普及しているさまざまな Linux ディストリビューションに対応します。Microsoft の多数のパートナーが、それらのディストリビューションを提供、管理しています。  Azure Marketplace で利用可能なディストリビューションを検索できます。 Microsoft はさまざまな Linux コミュニティと積極的に連携し、[Azure 動作保証済み Linux ディストリビューション](endorsed-distros.md) リストを拡充しています。
 
 必要な Linux ディストリビューションが現時点でギャラリーに存在しない場合は、[Azure で Linux VHD を作成およびアップロード](create-upload-generic.md)することで、必要とする Linux の VM を導入できます。
 
-Microsoft はパートナーと連携し、利用可能なイメージが Azure ランタイム用に更新、最適化されたことを確認します。  Azure パートナーの詳細については、次のリンクを参照してください。
+Microsoft はパートナーと連携し、利用可能なイメージが Azure ランタイム用に更新、最適化されたことを確認します。  Azure パートナーのオファーの詳細については、次のリンクを参照してください。
 
 * [Azure での動作保証済み Linux ディストリビューション](endorsed-distros.md)
-* SUSE - [Azure Marketplace - SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/marketplace/apps?search=suse%20sles&page=1)
-* Red Hat - [Azure Marketplace - Red Hat Enterprise Linux 8.1](https://azuremarketplace.microsoft.com/marketplace/apps/RedHat.RedHatEnterpriseLinux81-ARM)
+* SUSE - [Azure Marketplace - SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=suse)
+* Red Hat - [Azure Marketplace - Red Hat Enterprise Linux](https://azuremarketplace.microsoft.com/marketplace/apps?search=Red%20Hat%20Enterprise%20Linux)
 * Canonical - [Azure Marketplace - Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer)
-* Debian - [Azure Marketplace - Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian)
-* FreeBSD - [Azure Marketplace - FreeBSD 10.4](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
-* CoreOS - [Azure Marketplace - CoreOS の Container Linux](https://azuremarketplace.microsoft.com/marketplace/apps/CoreOS.CoreOS)
+* Debian - [Azure Marketplace - Debian](https://azuremarketplace.microsoft.com/marketplace/apps?search=Debian&page=1)
+* FreeBSD - [Azure Marketplace - FreeBSD](https://azuremarketplace.microsoft.com/marketplace/apps?search=freebsd&page=1)
+* Flatcar - [Azure Marketplace - Flatcar Container Linux](https://azuremarketplace.microsoft.com/marketplace/apps?search=Flatcar&page=1)
 * RancherOS - [Azure Marketplace - RancherOS](https://azuremarketplace.microsoft.com/marketplace/apps/rancher.rancheros)
 * Bitnami - [Bitnami Library for Azure](https://azure.bitnami.com/)
 * Mesosphere - [Azure Marketplace - Mesosphere DC/OS on Azure](https://azure.microsoft.com/services/kubernetes-service/mesosphere/)
 * Docker - [Azure Marketplace - Docker イメージ](https://azuremarketplace.microsoft.com/marketplace/apps?search=docker&page=1&filters=virtual-machine-images)
-* Jenkins - [Azure Marketplace - CloudBees Jenkins Platform](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudbees.cloudbees-core-contact)
+* Jenkins - [Azure Marketplace - CloudBees Jenkins Platform](https://azuremarketplace.microsoft.com/marketplace/apps/cloudbees.cloudbees-core-contact)
 
 
 ## <a name="cloud-init"></a>cloud-init 
@@ -99,7 +99,7 @@ Microsoft はパートナーと連携し、利用可能なイメージが Azure 
 適切な DevOps カルチャを実現するには、すべてのインフラストラクチャがコードである必要があります。  すべてのインフラストラクチャがコードである場合、簡単に再作成できます。  Azure は、Ansible、Chef、SaltStack、Puppet などのすべての主要なオートメーション ツールと連携します。  Azure には、自動化のための独自のツールもあります。
 
 * [Azure テンプレート](create-ssh-secured-vm-from-template.md)
-* [Azure VMAccess](../extensions/vmaccess.md)
+* [Azure `VMaccess`](../extensions/vmaccess.md)
 
 Azure は Linux ディストリビューションの多くで、[cloud-init](https://cloud-init.io/) をサポートしています。  Microsoft は、動作保証済み Linux ディストリビューションのパートナーと協力して、cloud-init 対応のイメージを Azure Marketplace で利用できるようにする作業を行っています。 これらのイメージによって、cloud-init のデプロイと構成が、VM および仮想マシン スケール セット とシームレスに動作するようになります。
 
@@ -115,6 +115,11 @@ Azure は Linux ディストリビューションの多くで、[cloud-init](htt
 * [Azure 内の IP アドレス](../../virtual-network/public-ip-addresses.md)
 * [Azure での Linux VM へのポートの開放](nsg-quickstart.md)
 * [Azure Portal での完全修飾ドメイン名の作成](portal-create-fqdn.md)
+
+
+## <a name="data-residency"></a>データの保存場所
+
+Azure では、顧客データを 1 つのリージョンに格納できるようにする機能は現在、アジア太平洋地域の東南アジア リージョン (シンガポール) と、ブラジル地域のブラジル南部リージョン (サンパウロ州) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは geo 内に格納されます。 詳細については、[セキュリティ センター](https://azuredatacentermap.azurewebsites.net/)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

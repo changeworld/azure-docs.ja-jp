@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 7aa21ef8-9cfb-43e0-bfda-3f10a2a2f3ef
 ms.date: 10/23/2020
-ms.openlocfilehash: 875d04751475d1d5236e9f15fbca585cdc9b1ab0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 842913b8e9f83ff3b188976da55aef7c909518ca
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897631"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359920"
 ---
 # <a name="quickstart-wildfly-on-centos-8"></a>クイックスタート: CentOS 8 上の WildFly
 
@@ -31,7 +31,7 @@ WildFly は、ユース ケースに応じてスタンドアロン モードま�
 
 ## <a name="configuration-choice"></a>構成の選択肢
 
-WildFly は、 **スタンドアロン サーバー** モードで起動することができます。このモードでは、スタンドアロン サーバーのインスタンスが、JBoss Application Server (AS) 3、4、5、または 6 のインスタンスと同じく、独立したプロセスとなります。 スタンドアロンのインスタンスを起動できるスクリプトとしては、standalone.sh と standalone.bat の 2 つがあります。 スタンドアロンのインスタンスが複数存在する場合には、マルチサーバーの管理をユーザーの責任で調整する必要があります。
+WildFly は、**スタンドアロン サーバー** モードで起動することができます。このモードでは、スタンドアロン サーバーのインスタンスが、JBoss Application Server (AS) 3、4、5、または 6 のインスタンスと同じく、独立したプロセスとなります。 スタンドアロンのインスタンスを起動できるスクリプトとしては、standalone.sh と standalone.bat の 2 つがあります。 スタンドアロンのインスタンスが複数存在する場合には、マルチサーバーの管理をユーザーの責任で調整する必要があります。
 
 構成フォルダーにある構成ファイルを使うと、別の構成で WildFly インスタンスを起動することもできます。
 
@@ -49,13 +49,15 @@ WildFly は、 **スタンドアロン サーバー** モードで起動する�
 
 たとえば、クラスタリング機能を備えた Jakarta EE Platform 8 を使用するには、次のコマンドを使用します。
 
-`./standalone.sh --server-config=standalone-full-ha.xml`
+```
+./standalone.sh --server-config=standalone-full-ha.xml
+```
 
 各種の構成の詳細については、[WildFly の入門ガイド](https://docs.wildfly.org/18/Getting_Started_Guide.html#wildfly-10-configurations)を参照してください。
 
 ## <a name="licensing-support-and-subscription-notes"></a>ライセンス、サポート、サブスクリプションに関する注記
 
-Azure CentOS 8 イメージは従量課金制 (PAYG) の VM イメージであり、ユーザーがライセンスを取得する必要はありません。 VM を初めて起動した時点で VM の OS のライセンス認証が自動的に実施され、その後は 1 時間単位で料金が課金されます。 これは、Microsoft の Linux VM について 1 時間あたりに発生する料金に追加する形で課金されます。 詳細については、[Linux VM の価格](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#linux)に関するページを参照してください。 WildFly はダウンロード、使用とも無料であり、Red Hat のサブスクリプションやライセンスも必要ありません。
+Azure CentOS 8 イメージは従量課金制 (PAYG) の VM イメージであり、ユーザーがライセンスを取得する必要はありません。 VM を初めて起動したときに、VM の OS のライセンス認証が自動的に実行され、その後は 1 時間単位で料金が課金されます。 これは、Microsoft の Linux VM について 1 時間あたりに発生する料金に追加する形で課金されます。 詳細については、[Linux VM の価格](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#linux)に関するページを参照してください。 WildFly はダウンロード、使用とも無料であり、Red Hat のサブスクリプションやライセンスも必要ありません。
 
 ## <a name="how-to-consume"></a>使用方法
 
@@ -63,15 +65,23 @@ Azure CentOS 8 イメージは従量課金制 (PAYG) の VM イメージであ�
 
 - PowerShell を使う - 次のコマンドを実行してテンプレートをデプロイします (Azure PowerShell のインストールと構成に関する詳細については、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) に関するページを参照してください)。
 
-    `New-AzResourceGroup -Name <resource-group-name> -Location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment`
+    ```
+    New-AzResourceGroup -Name <resource-group-name> -Location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment
+    ```
 
-    `New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json`
+    ```
+    New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
+    ```
     
 - Azure CLI を使う - 次のコマンドを実行してテンプレートをデプロイします (Azure クロスプラットフォーム コマンドライン インターフェイスのインストールと構成に関する詳細については、[Azure クロスプラットフォーム コマンドライン](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください)。
 
-    `az group create --name <resource-group-name> --location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment`
+    ```
+    az group create --name <resource-group-name> --location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment
+    ```
 
-    `az group deployment create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json`
+    ```
+    az group deployment create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
+    ```
 
 - Azure portal を使う - <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fwildfly-standalone-centos8%2Fazuredeploy.json" target="_blank">ここ</a>をクリックして Azure portal にログインし、テンプレートをデプロイします。
 
@@ -81,7 +91,7 @@ Azure CentOS 8 イメージは従量課金制 (PAYG) の VM イメージであ�
 
 ## <a name="resource-links"></a>リソース リンク
 
-* [WildFly 18](https://wildfly.org/18) の詳細
+* [WildFly 18](https://docs.wildfly.org/18/) の詳細
 * [Azure 上の Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)の詳細
 * [Java 開発者向け Azure ドキュメント](https://github.com/JasonFreeberg/jboss-on-app-service)
 

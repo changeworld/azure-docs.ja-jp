@@ -8,16 +8,16 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4921078e9e7b5d9de06fbbc9a97dc4a964569e04
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ff3e7fee87661fb89ba930b7368bd54e71ad57bf
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92754665"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357625"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure Communication Services でのトラブルシューティング
 
-このドキュメントは、Communication Services ソリューションのトラブルシューティングに必要な情報の収集に役立ちます。
+このドキュメントでは、Communication Services ソリューションで発生する可能性がある問題のトラブルシューティングについて説明します。 SMS のトラブルシューティングを行う場合は、[Event Grid で配信レポートを有効にする](../quickstarts/telephony-sms/handle-sms-events.md)ことで、SMS の配信の詳細を取得できます。
 
 ## <a name="getting-help"></a>ヘルプの表示
 
@@ -30,9 +30,11 @@ Azure サブスクリプションの[サポート プラン](https://azure.micro
 
 特定の種類の問題のトラブルシューティングを支援するために、次の情報をおたずねする場合があります。
 
-* **MS-CV ID** : この ID は、通話とメッセージのトラブルシューティングに使用されます。 
-* **通話 ID** : この ID は、Communication Services の通話を識別するために使用されます。
-* **SMS メッセージ ID** : この ID は、SMS メッセージを識別するために使用されます。
+* **MS-CV ID**: この ID は、通話とメッセージのトラブルシューティングに使用されます。 
+* **通話 ID**: この ID は、Communication Services の通話を識別するために使用されます。
+* **SMS メッセージ ID**: この ID は、SMS メッセージを識別するために使用されます。
+* **呼び出しログ**: これらのログには、呼び出しとネットワークの問題のトラブルシューティングに使用できる詳細情報が含まれています。
+
 
 ## <a name="access-your-ms-cv-id"></a>MS-CV ID にアクセスする
 
@@ -126,6 +128,44 @@ console.log(result); // your message ID will be in the result
 }
 ```
 ---
+
+## <a name="enable-and-access-call-logs"></a>呼び出しログを有効にしてアクセスする
+
+
+
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+次のコードを使用すると、JavaScript クライアント ライブラリを使用してコンソールにログを出力するように、`AzureLogger` を構成することができます。
+
+```javascript
+import { AzureLogger } from '@azure/logger'; 
+
+AzureLogger.verbose = (...args) => { console.info(...args); } 
+AzureLogger.info = (...args) => { console.info(...args); } 
+AzureLogger.warning = (...args) => { console.info(...args); } 
+AzureLogger.error = (...args) => { console.info(...args); } 
+
+callClient = new CallClient({logger: AzureLogger}); 
+```
+
+# <a name="ios"></a>[iOS](#tab/ios)
+
+iOS 用に開発する場合、ログは `.blog` ファイルに格納されます。 ログは暗号化されているため、直接表示できないことに注意してください。
+
+これらにアクセスするには、Xcode を開きます。 [Windows]\(ウィンドウ\) > [Devices and Simulators]\(デバイスとシミュレーター\) > [Devices]\(デバイス\) に移動します。 デバイスを選択します。 [Installed Apps]\(インストールされているアプリ\) でアプリケーションを選択し、[Download container]\(コンテナーのダウンロード\) をクリックします。 
+
+これにより、`xcappdata` ファイルを取得できます。 このファイルを右クリックし、[Show package contents]\(パッケージの内容の表示\) を選択します。 その後、`.blog` ファイルを表示し、それを Azure サポート リクエストに添付できます。
+
+# <a name="android"></a>[Android](#tab/android)
+
+Android 用に開発する場合、ログは `.blog` ファイルに格納されます。 ログは暗号化されているため、直接表示できないことに注意してください。
+
+Android Studio で、シミュレーターとデバイスの両方から [View]\(表示\) > [Tool Windows]\(ツール ウィンドウ\) > [Device File Explorer]\(デバイス ファイル エクスプローラー\) を選択して、デバイス ファイル エクスプローラーに移動します。 `.blog` ファイルはアプリケーションのディレクトリ内にあり、`/data/data/[app_name_space:com.contoso.com.acsquickstartapp]/files/acs_sdk.blog` のように表示されるはずです。 このファイルをサポート リクエストに添付できます。 
+   
+
+---
+
 
 ## <a name="related-information"></a>関連情報
 - [ログと診断](logging-and-diagnostics.md)

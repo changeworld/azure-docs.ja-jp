@@ -9,104 +9,88 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 11/02/2020
 ms.author: jeedes
-ms.openlocfilehash: ab1e46f3bcd4c54e49f68d649777857d7a054234
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8025728ffc40aca27807068eff29f5a889a8d76e
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457454"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331398"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>チュートリアル: Azure Active Directory と BambooHR の統合
 
-このチュートリアルでは、BambooHR と Azure Active Directory (Azure AD) を統合する方法について説明します。
-BambooHR と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、BambooHR と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と BambooHR を統合すると、次のことができます。
 
-* Azure AD で誰が BambooHR にアクセスできるかを制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して BambooHR に自動的にサインイン (シングル サインオン) できるようにすることができます。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
-
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+* BambooHR にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して BambooHR に自動的にサインインできるように設定できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure AD と BambooHR の統合を構成するには、次の項目が必要です。
+開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* BambooHR でのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* BambooHR でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* BambooHR では、 **SP** によって開始される SSO がサポートされます
+* BambooHR では、**SP** によって開始される SSO がサポートされます
+
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
+
 
 ## <a name="adding-bamboohr-from-the-gallery"></a>ギャラリーからの BambooHR の追加
 
 BambooHR の Azure AD への統合を構成するには、BambooHR をギャラリーから管理対象 SaaS アプリの一覧に追加する必要があります。
 
-**ギャラリーから BambooHR を追加するには、次の手順を実行します。**
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**BambooHR**」と入力します。
+1. 結果のパネルから **[BambooHR]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-sso-for-bamboohr"></a>BambooHR の Azure AD SSO の構成とテスト
 
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
+**B.Simon** というテスト ユーザーを使用して、BambooHR に対する Azure AD SSO を構成してテストします。 SSO を機能させるには、Azure AD ユーザーと BambooHR の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+BambooHR に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+2. **[BambooHR の SSO の構成](#configure-bamboohr-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    * **[BambooHR テスト ユーザーの作成](#create-bamboohr-test-user)** - BambooHR で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+3. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-4. 検索ボックスに「 **BambooHR** 」と入力し、結果パネルで **[BambooHR]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-     ![結果一覧の BambooHR](common/search-new-app.png)
+1. Azure portal の **BambooHR** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、BambooHR を使用して Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと BambooHR 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
-
-BambooHR で Azure AD のシングル サインオンを構成およびテストするには、次の構成要素を完了する必要があります。
-
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[BambooHR シングル サインオンの構成](#configure-bamboohr-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[BambooHR テスト ユーザーの作成](#create-bamboohr-test-user)** - BambooHR で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-
-このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
-
-BambooHR を使用して Azure AD のシングル サインオンを構成するには、次の手順を実行します。
-
-1. [Azure portal](https://portal.azure.com/) の **BambooHR** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
-
-    ![シングル サインオン構成のリンク](common/select-sso.png)
-
-2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
-
-    ![シングル サインオン選択モード](common/select-saml-option.png)
-
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
-
-    ![基本的な SAML 構成を編集する](common/edit-urls.png)
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    ![[BambooHR のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
-
     a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<company>.bamboohr.com`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`BambooHR-SAML`
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
+
+    | [応答 URL] |
+    |-----------|
+    | `https://<company>.bamboohr.com/saml/consume.php` |
+    | `https://<company>.bamboohr.co.uk/saml/consume.php` |
 
     > [!NOTE]
-    > **サインオン URL** は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 値を取得するには、[BambooHR クライアント サポート チーム](https://www.bamboohr.com/contact.php)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値を、実際のサインオン URL および応答 URL で更新してください。 値を取得するには、[BambooHR クライアント サポート チーム](https://www.bamboohr.com/contact.php)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -116,13 +100,32 @@ BambooHR を使用して Azure AD のシングル サインオンを構成する
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-    a. ログイン URL
 
-    b. Azure AD 識別子
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-    c. ログアウト URL
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-### <a name="configure-bamboohr-single-sign-on"></a>BambooHR のシングル サインオンの構成
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
+
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+
+このセクションでは、B.Simon に BambooHR へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で、**[BambooHR]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+
+## <a name="configure-bamboohr-sso"></a>BambooHR の SSO の構成
 
 1. 新しいウィンドウで、BambooHR ｌ企業サイトに管理者としてサインインします。
 
@@ -146,57 +149,6 @@ BambooHR を使用して Azure AD のシングル サインオンを構成する
    
     c. **[保存]** を選択します。
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
-
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
-
-1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
-
-2. 画面の上部にある **[新しいユーザー]** を選択します。
-
-    ![[新しいユーザー] ボタン](common/new-user.png)
-
-3. [ユーザーのプロパティ] で、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、BambooHR へのアクセス権を付与することによって、Britta Simon が Azure シングル サインオンを使用できるようにします。
-
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[BambooHR]** を選択します。
-
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
-
-2. アプリケーションの一覧で「 **BambooHR** 」と入力して選択します。
-
-    ![アプリケーションの一覧の BambooHR リンク](common/all-applications.png)
-
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
-
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
-
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-
-6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
-
-7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
-
 ### <a name="create-bamboohr-test-user"></a>BambooHR テスト ユーザーの作成
 
 Azure AD ユーザーで BambooHR にサインインできるようにするには、次の手順に従い、それらのユーザーを BambooHR に手動で設定します。
@@ -218,16 +170,17 @@ Azure AD ユーザーで BambooHR にサインインできるようにするに�
 >[!NOTE]
 >Azure AD ユーザー アカウントの設定は、BambooHR のユーザー アカウント作成ツールや API を使って行うこともできます。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
+### <a name="test-sso"></a>SSO のテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネル上で [BambooHR] タイルをクリックすると、SSO を設定した BambooHR に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+1. Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始する BambooHR のサインオン URL にリダイレクトされます。 
 
-## <a name="additional-resources"></a>その他のリソース
+2. BambooHR のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [BambooHR] タイルをクリックすると、BambooHR サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+## <a name="next-steps"></a>次のステップ
+
+BambooHR を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。

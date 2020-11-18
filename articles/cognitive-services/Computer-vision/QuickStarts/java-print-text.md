@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: 63bc767c5843862ec056f3d68a9c96dccca4fba0
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ad14eec6bcebcb144d73581ebc15479a489ad333
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969065"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542849"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-java"></a>クイック スタート:Computer Vision の REST API と Java を使用して印刷されたテキスト (OCR) を抽出する
 
 > [!NOTE]
 > 英語のテキストを抽出する場合は、新しい[読み取り操作](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)の使用を検討してください。 [Java のクイックスタート](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/java-hand-text)を使用できます。 
 
-このクイックスタートでは、Computer Vision の REST API を使用して、光学式文字認識 (OCR) で印刷されたテキストを抽出します。 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドを使って画像内の印刷されたテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出します。
+このクイックスタートでは、Computer Vision の REST API を使用して、光学式文字認識 (OCR) で印刷されたテキストを抽出します。 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) メソッドを使って画像内の印刷されたテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -217,4 +217,4 @@ Computer Vision を使用して光学文字認識 (OCR) を実行する Java Swi
 > [!div class="nextstepaction"]
 > [Computer Vision API Java チュートリアル](../Tutorials/java-tutorial.md)
 
-* Computer Vision API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)をお試しください。
+* Computer Vision API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b/console)をお試しください。

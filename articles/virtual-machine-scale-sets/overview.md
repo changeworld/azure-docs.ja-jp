@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: f381afa69d1a445d2bdb14dd663341e4a18f8cd9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dff83159511c6e8a08e8f212c01244e923ad1f5b
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88648668"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376946"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>仮想マシン スケール セットとは
 Azure Virtual Machine Scale Sets では、負荷分散が行われる VM のグループを作成して管理することができます。 需要または定義されたスケジュールに応じて、VM インスタンスの数を自動的に増減させることができます。 スケール セットは、アプリケーションの高可用性を実現します。また、多数の VM の一元的な管理、構成、更新を可能にします。 仮想マシン スケール セットを使用すると、コンピューティング、ビッグ データ、コンテナー ワークロードなどの分野で大規模なサービスを構築できます。
@@ -61,9 +61,9 @@ Azure Virtual Machine Scale Sets は、多数の VM で実行されるアプリ�
 
 ページ ビュー、アプリケーションの要求、例外など、アプリケーションに関する詳細情報を収集するには、Application Insights を使った[仮想マシン スケール セット アプリケーション](../azure-monitor/app/azure-vm-vmss-apps.md)の監視を有効します。 さらにアプリケーションの可用性を検証するには、ユーザー トラフィックをシミュレートする[可用性テスト](../azure-monitor/app/monitor-web-app-availability.md)を構成します。
 
-## <a name="singapore-data-residency"></a>シンガポールのデータ所在地
+## <a name="data-residency"></a>データの保存場所
 
-Azure では、顧客データを 1 つのリージョンに格納できるようにする機能は現在、アジア太平洋地域の東南アジア リージョン (シンガポール) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは geo 内に格納されます。 詳細については、[セキュリティ センター](https://azuredatacentermap.azurewebsites.net/)に関するページを参照してください。
+Azure では、顧客データを 1 つのリージョンに格納できるようにする機能は現在、アジア太平洋地域の東南アジア リージョン (シンガポール) と、ブラジル地域のブラジル南部リージョン (サンパウロ州) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは geo 内に格納されます。 詳細については、[セキュリティ センター](https://azuredatacentermap.azurewebsites.net/)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 まずは、Azure Portal で最初の仮想マシン スケール セットを作成します。

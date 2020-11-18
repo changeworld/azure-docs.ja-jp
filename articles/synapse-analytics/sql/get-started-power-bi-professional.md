@@ -1,6 +1,6 @@
 ---
 title: Power BI Professional で Synapse SQL に接続する
-description: このチュートリアルでは、Power BI Desktop を SQL オンデマンド (プレビュー) に接続する手順について説明します。
+description: このチュートリアルでは、Power BI Desktop をサーバーレス SQL プール (プレビュー) に接続する手順について説明します。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: d88406646099a136d196a104f9cf4352a367f6d2
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 97b611c449302c95d4b24c305ce50ee7683e85ea
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899117"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316465"
 ---
-# <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Power BI Professional で Synapse SQL に接続する
+# <a name="connect-to-serverless-sql-pool-with-power-bi-professional"></a>Power BI Professional でサーバーレス SQL プールに接続する
 
 > [!div class="op_single_selector"]
 >
@@ -26,7 +26,7 @@ ms.locfileid: "92899117"
 > - [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 
-このチュートリアルでは、Power BI Desktop を SQL オンデマンド (プレビュー) に接続する手順について説明します。
+このチュートリアルでは、Power BI Desktop をサーバーレス SQL プール (プレビュー) に接続する手順について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,17 +43,17 @@ ms.locfileid: "92899117"
 
 | パラメーター                                 | 説明                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| SQL オンデマンド サービス エンドポイント アドレス    | サーバー名として使用されます                                   |
-| SQL オンデマンド サービス エンドポイント リージョン     | サンプルで使用するストレージを決定するために使用されます |
+| サーバーレス SQL プール サービス エンドポイント アドレス    | サーバー名として使用されます                                   |
+| サーバーレス SQL プール サービス エンドポイント リージョン     | サンプルで使用するストレージを決定するために使用されます |
 | エンドポイント アクセスのユーザー名とパスワード | エンドポイントへのアクセスに使用されます                               |
-| ビューの作成に使用するデータベース     | このデータベースはサンプルの開始点として使用されます       |
+| ビューの作成に使用するデータベース       | このデータベースはサンプルの開始点として使用されます       |
 
 ## <a name="first-time-setup"></a>初回セットアップ
 
 サンプルを使用する前に、次の 2 つの手順を実行します。
 
 1. ビューのデータベースを作成します
-2. SQL オンデマンドがストレージ内のファイルにアクセスするために使用する資格情報を作成します
+2. サーバーレス SQL プールがストレージ内のファイルにアクセスするために使用する資格情報を作成します
 
 ### <a name="create-database"></a>データベースの作成
 
@@ -70,12 +70,12 @@ DROP DATABASE IF EXISTS demo;
 
 ### <a name="create-credentials"></a>資格情報を作成する
 
-クエリを実行する前に、資格情報を作成する必要があります。 この資格情報は、SQL オンデマンド サービスがストレージ内のファイルにアクセスするために使用されます。
+クエリを実行する前に、資格情報を作成する必要があります。 この資格情報は、サーバーレス SQL プール サービスがストレージ内のファイルにアクセスするために使用されます。
 
 > [!NOTE]
-> ストレージ アカウントにアクセスするための資格情報を作成する必要があります。 SQL オンデマンドは異なるリージョンからストレージにアクセスできますが、ストレージと Azure Synapse ワークスペースを同じリージョンにすると、パフォーマンスが向上します。
+> ストレージ アカウントにアクセスするための資格情報を作成する必要があります。 サーバーレス SQL プールはさまざまなリージョンからストレージにアクセスできますが、ストレージと Azure Synapse ワークスペースを同じリージョンに配置すると、パフォーマンスが向上します。
 
-**国勢調査データ コンテナーの資格情報を作成する方法についてのコード スニペット** :
+**国勢調査データ コンテナーの資格情報を作成する方法についてのコード スニペット**:
 
 ```sql
 IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
@@ -108,5 +108,4 @@ Power BI Desktop アプリケーションを開き、 **[データの取得]** �
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Data Studio を使用して SQL オンデマンドに接続する方法については、[ストレージ ファイルに対するクエリ](get-started-azure-data-studio.md)に関する記事に進んでください。
- 
+[ストレージ ファイルのクエリ](get-started-azure-data-studio.md)に関する記事に進み、Azure Data Studio を使用してサーバーレス SQL プールに接続する方法を学習します。

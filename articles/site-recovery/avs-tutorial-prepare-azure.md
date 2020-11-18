@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用して Azure VMware Solution のディザスター リカバリーのために Azure リソースを準備する
+title: Azure VMware Solution VM のディザスター リカバリーのために Azure Site Recovery リソースを準備する
 description: Azure Site Recovery を使用して、Azure VMware Solution マシンのディザスター リカバリーのために Azure リソースを準備する方法について説明します。
 services: site-recovery
 author: Harsha-CS
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: harshacs
 ms.custom: MVC
-ms.openlocfilehash: 83e2c46e1ce1977d0dd136e821c90843ce2de481
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 2bd305e3760a8c3d743037e7d90b71f5e9579eda
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91814269"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395480"
 ---
-# <a name="prepare-azure-resources-for-disaster-recovery-of-azure-vmware-solution-to-azure"></a>Azure への Azure VMware Solution のディザスター リカバリーのために Azure リソースを準備する
+# <a name="prepare-azure-site-recovery-resources-for-disaster-recovery-of-azure-vmware-solution-vms"></a>Azure VMware Solution VM のディザスター リカバリーのために Azure Site Recovery リソースを準備する
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスを使用して Azure VMware Solution VM のディザスター リカバリーを設定できるように、Azure のリソースとコンポーネントを準備する方法について説明します。 [Azure VMware Solution](../azure-vmware/introduction.md) は、Azure でプライベート クラウドを提供します。 これらのプライベート クラウドには、専用のベアメタル Azure インフラストラクチャから構築された vSphere クラスターが含まれます。
 
@@ -61,7 +61,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure portal メニューで **[リソースの作成]** を選択し、Marketplace で "**Recovery**" を検索します。
 2. 検索結果から **[Backup and Site Recovery]\(バックアップおよびサイトの回復\)** を選択し、[Backup and Site Recovery]\(バックアップおよびサイトの回復\) ページで **[作成]** をクリックします。 
-3. **[Recovery Services コンテナーの作成]** ページで、 **[サブスクリプション]** を選択します。 ここでは **Contoso サブスクリプション**を使用します。
+3. **[Recovery Services コンテナーの作成]** ページで、 **[サブスクリプション]** を選択します。 ここでは **Contoso サブスクリプション** を使用します。
 4. **[リソース グループ]** で、既存のリソース グループを選択するか、新しいリソース グループを作成します。 このチュートリアルでは **contosoRG** を使用しています。
 5. **[コンテナー名]** に、コンテナーを識別する表示名を入力します。 この一連のチュートリアルでは、**ContosoVMVault** を使用します。
 6. **[リージョン]** で、コンテナーを配置するリージョンを選びます。 **[西ヨーロッパ]** を使います。
@@ -80,7 +80,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. **[名前]** で、ネットワーク名を入力します。 Azure リソース グループ内で一意となる名前を使用してください。 このチュートリアルでは **ContosoASRnet** を使います。
 4. **[アドレス空間]** で、仮想ネットワークのアドレス範囲を CIDR 表記で入力します。 ここでは **10.1.0.0/24** を使用します。
 5. **[サブスクリプション]** で、ネットワークを作成するサブスクリプションを選択します。
-6. ネットワークを作成する**リソース グループ**を指定します。 既存のリソース グループ **contosoRG** を使っています。
+6. ネットワークを作成する **リソース グループ** を指定します。 既存のリソース グループ **contosoRG** を使っています。
 7. **[場所]** で、Recovery Services コンテナーが作成されたリージョンと同じリージョンを選択します。 このチュートリアルでは、"**西ヨーロッパ**" を使用します。 ネットワークは、コンテナーと同じリージョンにある必要があります。
 8. **[アドレス範囲]** に、ネットワークの範囲を入力します。 ここでは、サブネットを使用せずに **10.1.0.0/24** を使用しています。
 9. 基本的な DDoS 保護の既定のオプションのままにし、ネットワーク上にサービス エンドポイントもファイアウォールも置きません。

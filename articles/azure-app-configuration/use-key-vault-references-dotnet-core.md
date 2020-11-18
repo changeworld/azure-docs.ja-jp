@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/08/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 3e6403f41d8e4b52ca64e9fa452524fa25efe870
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff11546225a3b07cbe9f8773dab2139636af787e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213253"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124800"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリで Key Vault 参照を使用する
 
@@ -51,7 +51,7 @@ App Configuration に格納されているその他のキーの場合と同様�
 
 1. Azure Portal の左上隅にある **[リソースの作成]** オプションを選択します。
 
-    ![Key Vault の作成が完了した後の出力](./media/quickstarts/search-services.png)
+    ![Azure portal の [リソースの作成] オプションを示すスクリーンショット。](./media/quickstarts/search-services.png)
 1. 検索ボックスに「**Key Vault**」と入力します。
 1. 結果リストで、左側の **[キー コンテナー]** を選択します。
 1. **[キー コンテナー]** で、 **[追加]** を選択します。
@@ -65,7 +65,7 @@ App Configuration に格納されているその他のキーの場合と同様�
 
 この時点で、お使いの Azure アカウントが、この新しいコンテナーへのアクセスが承認されている唯一のアカウントになります。
 
-![Key Vault の作成が完了した後の出力](./media/quickstarts/vault-properties.png)
+![キー コンテナーを示すスクリーンショット。](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>Key Vault にシークレットを追加する
 

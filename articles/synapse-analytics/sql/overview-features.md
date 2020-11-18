@@ -9,27 +9,27 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: fe30a2a0885e1a579eb32ad84ef467f7162febe4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 03995166df5d40f7f8be7054aed0727be254ed73
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310320"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376895"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Azure Synapse SQL でサポートされる Transact-SQL 機能
 
 Azure Synapse SQL は、T-SQL 言語を使用してデータのクエリと分析を実行できるビッグ データ分析サービスです。 SQL Server と Azure SQL Database で使用される SQL 言語の標準の ANSI 準拠言語をデータ分析に使用できます。 
 
-Transact-SQL 言語は、Synapse SQL のサーバーレスおよびプロビジョニング モデルで使用されます。これらでは参照できるオブジェクトが異なり、サポートされている機能のセットにいくつかの違いがあります。 このページでは、Synapse SQL の消費モデル間での Transact-SQL 言語の大まかな違いについて確認できます。
+Transact-SQL 言語は Synapse SQL サーバーレスで使用されます。専用モデルは別のオブジェクトを参照でき、サポートされている機能のセットが少し異なります。 このページでは、Synapse SQL の消費モデル間での Transact-SQL 言語の大まかな違いについて確認できます。
 
 ## <a name="database-objects"></a>データベース オブジェクト
 
 Synapse SQL の消費モデルでは、さまざまなデータベース オブジェクトを使用できます。 サポートされているオブジェクトの種類を比較した表を次に示します。
 
-|   | プロビジョニング済み | サーバーレス |
+|   | 専用 | サーバーレス |
 | --- | --- | --- |
 | **テーブル** | [はい](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | いいえ。サーバーレス モデルでは、[Azure Storage](#storage-options) に配置された外部データに対してのみクエリを実行できます |
-| **ビュー** | [はい](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 ビューでは、プロビジョニング モデルで使用可能な[クエリ言語要素](#query-language)を使用できます。 | [はい](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 ビューでは、サーバーレス モデルで使用可能な[クエリ言語要素](#query-language)を使用できます。 |
+| **ビュー** | [はい](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 ビューでは、専用モデルで使用可能な[クエリ言語要素](#query-language)を使用できます。 | [はい](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 ビューでは、サーバーレス モデルで使用可能な[クエリ言語要素](#query-language)を使用できます。 |
 | **スキーマ** | [はい](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | [はい](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |
 | **一時テーブル** | [はい](../sql-data-warehouse/sql-data-warehouse-tables-temporary.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | いいえ |
 | **手順** | [はい](/sql/t-sql/statements/create-procedure-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | いいえ |
@@ -48,7 +48,7 @@ Synapse SQL の消費モデルでは、さまざまなデータベース オブ�
 
 Synapse SQL で使用されるクエリ言語では、従量課金モデルに応じてサポートされる機能が異なります。 次の表では、Transact-SQL 言語において最も重要なクエリ言語の違いについて説明します。
 
-|   | プロビジョニング済み | サーバーレス |
+|   | 専用 | サーバーレス |
 | --- | --- | --- |
 | **SELECT ステートメント** | はい。 Transact-SQL クエリ句 [FOR XML/FOR JSON](/sql/t-sql/queries/select-for-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) および [MATCH](/sql/t-sql/queries/match-sql-graph?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) はサポートされていません。 | はい。 Transact-SQL クエリ句 [FOR XML](/sql/t-sql/queries/select-for-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、[MATCH](/sql/t-sql/queries/match-sql-graph?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、[PREDICT](/sql/t-sql/queries/predict-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、クエリ ヒントはサポートされていません。 [OFFSET、FETCH](/sql/t-sql/queries/select-order-by-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#using-offset-and-fetch-to-limit-the-rows-returned)、[PIVOT、UNPIVOT](/sql/t-sql/queries/from-using-pivot-and-unpivot?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) は、システム オブジェクトのクエリにのみ使用できます (外部データには使用できません)。 |
 | **INSERT ステートメント** | はい | いいえ |
@@ -73,7 +73,7 @@ Synapse SQL で使用されるクエリ言語では、従量課金モデルに�
 
 Synapse SQL では、組み込みのセキュリティ機能を使用し、データをセキュリティで保護してアクセスを制御できます。 次の表は、Synapse SQL 消費モデル間の大まかな違いを比較したものです。
 
-|   | プロビジョニング済み | サーバーレス |
+|   | 専用 | サーバーレス |
 | --- | --- | --- |
 | **ログイン** | なし (データベースでサポートされるのは包含ユーザーのみ) | はい |
 | **ユーザー** |  なし (データベースでサポートされるのは包含ユーザーのみ) | はい |
@@ -109,7 +109,7 @@ Synapse SQL では、組み込みのセキュリティ機能を使用し、デ�
 
 さまざまなツールを使用して Synapse SQL に接続し、データのクエリを実行できます。
 
-|   | プロビジョニング済み | サーバーレス |
+|   | 専用 | サーバーレス |
 | --- | --- | --- |
 | **Synapse Studio** | はい。SQL スクリプト | はい。SQL スクリプト |
 | **Power BI** | はい | [はい](tutorial-connect-power-bi-desktop.md) |
@@ -120,13 +120,13 @@ Synapse SQL では、組み込みのセキュリティ機能を使用し、デ�
 > [!NOTE]
 > SSMS を使用してサーバーレス SQL プール (プレビュー) に接続し、クエリを実行できます。 これはバージョン 18.5 以降、部分的にサポートされています。接続してクエリを実行する場合にのみ使用できます。
 
-標準の Transact-SQL 言語が使用されるほとんどのアプリケーションでは、プロビジョニングとサーバーレス両方の Synapse SQL 消費モデルのクエリを実行できます。
+標準の Transact-SQL 言語が使用されるほとんどのアプリケーションでは、専用とサーバーレス両方の Synapse SQL 消費モデルのクエリを実行できます。
 
 ## <a name="storage-options"></a>ストレージ オプション
 
 分析されるデータは、さまざまな種類のストレージで保存できます。 次の表は、すべての使用可能なストレージ オプションの一覧です。
 
-|   | プロビジョニング済み | サーバーレス |
+|   | 専用 | サーバーレス |
 | --- | --- | --- |
 | **内部ストレージ** | はい | いいえ |
 | **Azure Data Lake v2** | はい | はい |
@@ -137,7 +137,7 @@ Synapse SQL では、組み込みのセキュリティ機能を使用し、デ�
 
 分析されるデータは、さまざまな形式のストレージで保存できます。 次の表は、分析できるすべての使用可能なデータ形式の一覧です。
 
-|   | プロビジョニング済み | サーバーレス |
+|   | 専用 | サーバーレス |
 | --- | --- | --- |
 | **区切り記号** | [はい](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | [はい](query-single-csv-file.md) |
 | **CSV** | はい (複数の文字による区切り記号はサポートされません) | [はい](query-single-csv-file.md) |

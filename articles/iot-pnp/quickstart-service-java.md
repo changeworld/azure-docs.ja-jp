@@ -1,6 +1,6 @@
 ---
-title: Azure IoT ソリューションに接続されている IoT プラグ アンド プレイ デバイスとやり取りする (Java) | Microsoft Docs
-description: Java を使用して、ご利用の Azure IoT ソリューションに接続されている IoT プラグ アンド プレイ デバイスと接続してやり取りします。
+title: クイックスタート - Azure IoT ソリューションに接続されている IoT プラグ アンド プレイ デバイスを操作する (Java) | Microsoft Docs
+description: クイックスタート - Java を使用して、ご利用の Azure IoT ソリューションに接続されている IoT プラグ アンド プレイ デバイスに接続して操作します。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 9/17/2020
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: ce41e6b502aef1c44cf96f3b4a5efe401fba3173
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7229eedc82dfa7b76ae4a22d095f20c41f102e16
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046487"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421534"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-java"></a>クイック スタート:ご利用のソリューションに接続されている IoT プラグ アンド プレイ デバイスとやり取りする (Java)
 
@@ -76,7 +76,7 @@ git clone https://github.com/Azure/azure-iot-sdk-java.git
 このクイックスタートでは、Java で記述されたサンプルの IoT ソリューションを使用して、先ほど設定したサンプル デバイスとやり取りします。
 
 > [!NOTE]
-> このサンプルでは、**IoT Hub サービス クライアント**の **com.microsoft.azure.sdk.iot.service** 名前空間を使用します。 デジタル ツイン API を含む API の詳細については、[サービス開発者ガイド](concepts-developer-guide-service.md)を参照してください。
+> このサンプルでは、**IoT Hub サービス クライアント** の **com.microsoft.azure.sdk.iot.service** 名前空間を使用します。 デジタル ツイン API を含む API の詳細については、[サービス開発者ガイド](concepts-developer-guide-service.md)を参照してください。
 
 1. **サービス** ターミナルとして使用する別のターミナル ウィンドウを開きます。
 

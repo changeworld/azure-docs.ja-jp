@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/08/2020
+ms.date: 10/26/2020
 ms.author: duau
-ms.openlocfilehash: cad098ed2dedc7abba57394ef1e26b9b7c87cd9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb55e4633ef64bee0577b1c1defba27dad24a3b7
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855473"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515870"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-the-azure-portal"></a>チュートリアル:Azure portal を使用した ExpressRoute 回線のピアリングの作成と変更
 
@@ -67,17 +67,15 @@ ExpressRoute 回線にプライベート ピアリングおよび Microsoft ピ�
 
    **回線 - プロバイダーの状態:未プロビジョニング**
 
-   [![ExpressRoute デモ回線の [概要] ページを示すスクリーンショット。赤い枠によって、[未プロビジョニング] に設定されたプロバイダーの状態が強調表示されている。](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
-
+    :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/not-provisioned.png" alt-text="ExpressRoute デモ回線の [概要] ページを示すスクリーンショット。赤い枠によって、[未プロビジョニング] に設定されたプロバイダーの状態が強調表示されている":::
 
    **回線 - プロバイダーの状態:プロビジョニング済み**
 
-   [![ExpressRoute デモ回線の [概要] ページを示すスクリーンショット。赤い枠によって、[プロビジョニング済み] に設定されたプロバイダーの状態が強調表示されている。](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
+    :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/provisioned.png" alt-text="ExpressRoute デモ回線の [概要] ページを示すスクリーンショット。赤い枠によって、[プロビジョニング済み] に設定されたプロバイダーの状態が強調表示されている":::
 
 2. 回路の Microsoft ピアリングを構成する 続行する前に、次の情報を確認してください。
 
-   * プライマリ リンク用の /30 サブネット。 アドレス ブロックは、自分が所有し、RIR/IRR に登録されている有効なパブリック IPv4 プレフィックスである必要があります。 このサブネットから、1 番目に使用可能な IP アドレスを自分のルーターに割り当て、Microsoft は 2 番目に使用可能な IP アドレスをそのルーターに割り当てます。
-   * セカンダリ リンク用の /30 サブネット。 アドレス ブロックは、自分が所有し、RIR/IRR に登録されている有効なパブリック IPv4 プレフィックスである必要があります。 このサブネットから、1 番目に使用可能な IP アドレスを自分のルーターに割り当て、Microsoft は 2 番目に使用可能な IP アドレスをそのルーターに割り当てます。
+   * 自分が所有し、RIR や IRR に登録されている /30 サブネットのペア。 これらは有効なパブリック IPv4 プレフィックスである必要があります。 一方のサブネットはプライマリ リンク用に使用され、もう一方はセカンダリ リンク用に使用されます。 これらの各サブネットから、ユーザーは 1 番目に使用可能な IP アドレスを自分のルーターに割り当て、Microsoft は 2 番目に使用可能な IP アドレスをそのルーターに割り当てます。
    * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングが同じ VLAN ID を使用しないようにしてください。 プライマリとセカンダリの両方のリンクで、同じ VLAN ID を使用する必要があります。
    * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。
    * アドバタイズするプレフィックス:BGP セッションを介してアドバタイズする予定のすべてのプレフィックスのリストを指定します。 パブリック IP アドレス プレフィックスのみが受け入れられます。 一連のプレフィックスを送信する場合は、コンマ区切りのリストを送信できます。 これらのプレフィックスは、RIR/IRR に登録する必要があります。
@@ -86,10 +84,11 @@ ExpressRoute 回線にプライベート ピアリングおよび Microsoft ピ�
    * **省略可能 -** MD5 を使用する場合には、パスワードを準備します。
 3. 次の例のように、構成するピアリングを選ぶことができます。 Microsoft ピアリング行を選択します。
 
-   [![Microsoft ピアリング行の選択](./media/expressroute-howto-routing-portal-resource-manager/select-peering-m.png "Microsoft ピアリング行の選択")](./media/expressroute-howto-routing-portal-resource-manager/select-peering-m-lightbox.png#lightbox)
-4. Microsoft ピアリングを構成します。 すべてのパラメーターを指定したら、構成を**保存**します。 次の図は構成例です。
+   :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/select-microsoft-peering.png" alt-text="Microsoft ピアリング行の選択":::
 
-   ![Microsoft ピアリングを構成する](./media/expressroute-howto-routing-portal-resource-manager/configuration-m.png)
+4. Microsoft ピアリングを構成します。 すべてのパラメーターを指定したら、構成を **保存** します。 次の図は構成例です。
+
+   :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/configuration-m-validation-needed.png" alt-text="Microsoft ピアリングの構成 - 確認が必要":::
 
 > [!IMPORTANT]
 > Microsoft は、指定された 'アドバタイズされたパブリック プレフィックス' と 'ピア ASN' (または '顧客 ASN') がインターネット ルーティング レジストリでユーザーに割り当てられているかどうかを確認します。 別のエンティティからパブリック プレフィックスを取得している場合、およびルーティング レジストリに割り当てが記録されていない場合、自動検証は完了せず、手動検証が必要になります。 自動検証が失敗した場合は、[検証が必要です] というメッセージが表示されます。 
@@ -99,22 +98,23 @@ ExpressRoute 回線にプライベート ピアリングおよび Microsoft ピ�
 
    回線が "検証が必要です" の状態になった場合、サポート チケットを開き、プレフィックスの所有権を示す証拠をサポート チームに示してください。 次の例のように、ポータルから直接サポート チケットを開くことができます。
 
-   ![検証が必要です - サポート チケット](./media/expressroute-howto-routing-portal-resource-manager/ticket-portal-m.png)
+   :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/ticket-portal-m.png" alt-text="検証が必要です - サポート チケット":::
 
 5. 構成が正常に受け付けられると、次のような画面が表示されます。
 
-   ![ピアリングの状態: 構成済み](./media/expressroute-howto-routing-portal-resource-manager/configured-m.png "ピアリングの状態: 構成済み")
+   :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/microsoft-peering-validation-configured.png" alt-text="ピアリングの状態: 構成済み":::
 
 ### <a name="to-view-microsoft-peering-details"></a><a name="getmsft"></a>Microsoft ピアリングの詳細を表示するには
 
 Microsoft ピアリングの行を選択して、そのピアリングのプロパティを表示できます。
 
-[![Microsoft ピアリングのプロパティの表示](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m.png "プロパティの表示")](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m-lightbox.png#lightbox)
+:::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/view-peering-m.png" alt-text="Microsoft ピアリングのプロパティの表示":::
+
 ### <a name="to-update-microsoft-peering-configuration"></a><a name="updatemsft"></a>Microsoft ピアリング構成を更新するには
 
 変更するピアリングの行を選択し、次にピアリング プロパティを変更して変更内容を保存できます。
 
-![ピアリングの行を選択する](./media/expressroute-howto-routing-portal-resource-manager/update-peering-m.png)
+:::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/configuration-m.png" alt-text="ピアリングの行を選択する":::
 
 ## <a name="azure-private-peering"></a><a name="private"></a>Azure プライベート ピアリング
 
@@ -128,60 +128,60 @@ Microsoft ピアリングの行を選択して、そのピアリングのプロ�
 
    **回線 - プロバイダーの状態:未プロビジョニング**
 
-   [![ExpressRoute デモ回線の [概要] ページを示すスクリーンショット。赤い枠によって、[未プロビジョニング] に設定されたプロバイダーの状態が強調表示されている。](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p.png)](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p-lightbox.png#lightbox)
+   :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-private.png" alt-text="ExpressRoute デモ回線の [概要] ページを示すスクリーンショット。赤い枠によって、[未プロビジョニング] に設定されたプロバイダーの状態が強調表示されている":::
 
    **回線 - プロバイダーの状態:プロビジョニング済み**
 
-   [![ExpressRoute デモ回線の [概要] ページを示すスクリーンショット。赤い枠によって、[プロビジョニング済み] に設定されたプロバイダーの状態が強調表示されている。](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p-lightbox.png#lightbox)
+   :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/provisioned-private-peering.png" alt-text="ExpressRoute デモ回線の [概要] ページを示すスクリーンショット。赤い枠によって、[プロビジョニング済み] に設定されたプロバイダーの状態が強調表示されている":::
 
 2. 回線用に Azure プライベート ピアリングを構成します。 次の手順に進む前に、以下のものがそろっていることを確認します。
 
-   * プライマリ リンク用の /30 サブネット。 サブネットを、仮想ネットワーク用に予約されたアドレス空間の一部にすることはできません。 このサブネットから、1 番目に使用可能な IP アドレスを自分のルーターに割り当て、Microsoft は 2 番目に使用可能な IP アドレスをそのルーターに割り当てます。
-   * セカンダリ リンク用の /30 サブネット。 サブネットを、仮想ネットワーク用に予約されたアドレス空間の一部にすることはできません。 このサブネットから、1 番目に使用可能な IP アドレスを自分のルーターに割り当て、Microsoft は 2 番目に使用可能な IP アドレスをそのルーターに割り当てます。
+   * 自分が所有し、RIR や IRR に登録されている /30 サブネットのペア。 一方のサブネットはプライマリ リンク用に使用され、もう一方はセカンダリ リンク用に使用されます。 これらの各サブネットから、ユーザーは 1 番目に使用可能な IP アドレスを自分のルーターに割り当て、Microsoft は 2 番目に使用可能な IP アドレスをそのルーターに割り当てます。 このサブネットのペアには、3 つのオプションがあります。
    * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングが同じ VLAN ID を使用しないようにしてください。 プライマリとセカンダリの両方のリンクで、同じ VLAN ID を使用する必要があります。
    * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。 このピアリングではプライベート AS 番号を使用できます (ただし、65515 ～ 65520 までの番号を除きます)。
    * プライベート ピアリングを構成するときに、オンプレミスの Edge ルーターから BGP 経由で Azure にルートをアドバタイズする必要があります。
    * **省略可能 -** MD5 を使用する場合には、パスワードを準備します。
 3. 次の例で示すように、Azure プライベート ピアリング行を選択します。
 
-   [![プライベート ピアリング行の選択](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p.png "プライベート ピアリング行の選択")](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p-lightbox.png#lightbox)
-4. プライベート ピアリングを構成します。 すべてのパラメーターを指定したら、構成を**保存**します。
+   :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/select-private-peering.png" alt-text="プライベート ピアリング行の選択":::
 
-   ![プライベート ピアリングを構成する](./media/expressroute-howto-routing-portal-resource-manager/configuration-p.png)
+4. プライベート ピアリングを構成します。 すべてのパラメーターを指定したら、構成を **保存** します。
+
+   :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/private-peering-configuration.png" alt-text="プライベート ピアリングの構成":::
+
 5. 構成が正常に受け付けられると、次のような画面が表示されます。
 
-   ![保存されたプライベート ピアリング](./media/expressroute-howto-routing-portal-resource-manager/save-p.png)
+   :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/save-private-peering.png" alt-text="保存されたプライベート ピアリング":::
 
 ### <a name="to-view-azure-private-peering-details"></a><a name="getprivate"></a>Azure プライベート ピアリングの詳細を表示するには
 
 ピアリングを選択して、Azure プライベート ピアリングのプロパティを表示することができます。
 
-[![プライベート ピアリングのプロパティの表示](./media/expressroute-howto-routing-portal-resource-manager/view-p.png "プライベート ピアリングのプロパティの表示")](./media/expressroute-howto-routing-portal-resource-manager/view-p-lightbox.png#lightbox)
+:::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/view-peering-m.png" alt-text="プライベート ピアリングのプロパティの表示":::
 
 ### <a name="to-update-azure-private-peering-configuration"></a><a name="updateprivate"></a>Azure プライベート ピアリングの構成を更新するには
 
 ピアリングの行を選択し、ピアリングのプロパティを変更できます。 更新後、変更を保存します。
 
-![プライベート ピアリングを更新する](./media/expressroute-howto-routing-portal-resource-manager/update-peering-p.png)
+:::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/update-private-peering.png" alt-text="プライベート ピアリングの更新":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ### <a name="to-delete-microsoft-peering"></a><a name="deletemsft"></a>Microsoft ピアリングを削除するには
 
-次の図のように削除アイコンをクリックして、ピアリングの構成を削除できます。
+次の図に示すように、ピアリングを右クリックし、 **[削除]** を選択することで、Microsoft ピアリングの構成を削除できます。
 
-![ピアリングを削除する](./media/expressroute-howto-routing-portal-resource-manager/delete-peering-m.png)
+:::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/delete-microsoft-peering.png" alt-text="Microsoft ピアリングの削除":::
 
 ### <a name="to-delete-azure-private-peering"></a><a name="deleteprivate"></a>Azure プライベート ピアリングを削除するには
 
-ピアリングの構成を削除するには、次の図ように削除アイコンを選びます。
+次の図に示すように、ピアリングを右クリックし、 **[削除]** を選択することで、プライベート ピアリングの構成を削除できます。
 
 > [!WARNING]
-> この例を実行する前に、すべての仮想ネットワークと ExpressRoute Global Reach 接続が削除されていることを確認する必要があります。 
-> 
+> この操作を実行する前に、すべての仮想ネットワークと ExpressRoute Global Reach 接続が削除されていることを確認する必要があります。 
 > 
 
-![プライベート ピアリングを削除する](./media/expressroute-howto-routing-portal-resource-manager/delete-p.png)
+:::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/delete-private-peering.png" alt-text="プライベート ピアリングの削除":::
 
 ## <a name="next-steps"></a>次のステップ
 

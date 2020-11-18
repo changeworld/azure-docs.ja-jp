@@ -2,20 +2,20 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: azure-communication-services
-author: matthewrobertson
-manager: nimag
+author: tomaschladek
+manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
-ms.author: marobert
-ms.openlocfilehash: 5c9066f369183de3b4cfe19cc5635e8f1b4a94a2
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.author: tchladek
+ms.openlocfilehash: 50819e8746860e72feda194915f75c4630677d0c
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779070"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506266"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,16 +27,16 @@ ms.locfileid: "91779070"
 
 ### <a name="create-a-new-c-application"></a>新しい C# アプリケーションを作成する
 
-コンソール ウィンドウ (cmd、PowerShell、Bash など) で、`dotnet new` コマンドを使用し、`UserAccessTokensQuickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイルを使用する単純な "Hello World" C# プロジェクトが作成されます。**Program.cs**。
+コンソール ウィンドウ (cmd、PowerShell、Bash など) で、`dotnet new` コマンドを使用し、`AccessTokensQuickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイルを使用する単純な "Hello World" C# プロジェクトが作成されます。**Program.cs**。
 
 ```console
-dotnet new console -o UserAccessTokensQuickstart
+dotnet new console -o AccessTokensQuickstart
 ```
 
 新しく作成したアプリ フォルダーにディレクトリを変更し、`dotnet build` コマンドを使用してアプリケーションをコンパイルします。
 
 ```console
-cd UserAccessTokensQuickstart
+cd AccessTokensQuickstart
 dotnet build
 ```
 
@@ -62,22 +62,19 @@ dotnet add package Azure.Communication.Administration --version 1.0.0-beta.2
 using System;
 using Azure.Communication.Administration;
 
-namespace UserAccessTokensQuickstart
+namespace AccessTokensQuickstart
 {
     class Program
     {
         static async System.Threading.Tasks.Task Main(string[] args)
         {
-            Console.WriteLine("Azure Communication Services - User Access Tokens Quickstart");
+            Console.WriteLine("Azure Communication Services - Access Tokens Quickstart");
 
             // Quickstart code goes here
         }
     }
 }
 ```
-
-[!INCLUDE [User Access Tokens Object Model](user-access-tokens-object-model.md)]
-
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
 接続文字列を使用して `CommunicationIdentityClient` を初期化します。 次のコードは、 `COMMUNICATION_SERVICES_CONNECTION_STRING` という名前の環境変数からリソースの接続文字列を取得します。 [リソースの接続文字列を管理する](../create-communication-resource.md#store-your-connection-string)方法について確認してください。
@@ -91,47 +88,57 @@ string ConnectionString = Environment.GetEnvironmentVariable("COMMUNICATION_SERV
 var client = new CommunicationIdentityClient(ConnectionString);
 ```
 
-## <a name="create-a-user"></a>ユーザーを作成する
+## <a name="create-an-identity"></a>ID の作成
 
-Azure Communication Services は、軽量の ID ディレクトリを保持します。 `createUser` メソッドを使用して、一意の `Id` を持つディレクトリに新しいエントリを作成します。 お使いのアプリケーションのユーザーと、Communication Services で生成された ID の間のマッピングを (アプリケーション サーバーのデータベースにこれらを格納するなどによって) 維持する必要があります。
+Azure Communication Services は、軽量の ID ディレクトリを保持します。 `createUser` メソッドを使用して、一意の `Id` が指定された新しいエントリをディレクトリ内に作成します。受け取った ID を、アプリケーションのユーザーへのマッピングと共に格納します。 これらは、アプリケーション サーバーのデータベースなどに格納します。 ID は、後でアクセス トークンを発行するために必要になります。
 
 ```csharp
-var userResponse = await client.CreateUserAsync();
-var user = userResponse.Value;
-Console.WriteLine($"\nCreated a user with ID: {user.Id}");
+var identityResponse = await client.CreateUserAsync();
+var identity = identityResponse.Value;
+Console.WriteLine($"\nCreated an identity with ID: {identity.Id}");
 ```
 
-## <a name="issue-user-access-tokens"></a>ユーザー アクセス トークンを発行する
+## <a name="issue-identity-access-tokens"></a>ID のアクセス トークンを発行する
 
-Communication Services ユーザーのアクセス トークンを発行するには、`issueToken` メソッドを使用します。 オプションの `user` パラメーターを指定しない場合は、新しいユーザーが作成され、トークンと共に返されます。
+既存の Communication Services ID のアクセス トークンを発行するには、`issueToken` メソッドを使用します。 パラメーター `scopes` によって、このアクセス トークンを承認するプリミティブのセットが定義されます。 [サポートされているアクションの一覧](../../concepts/authentication.md)を参照してください。 パラメーター `communicationUser` の新しいインスタンスは、Azure Communication Services ID の文字列表現に基づいて作成できます。
 
 ```csharp
-// Issue an access token with the "voip" scope for a new user
-var tokenResponse = await client.IssueTokenAsync(user, scopes: new [] { CommunicationTokenScope.VoIP });
+// Issue an access token with the "voip" scope for an identity
+var tokenResponse = await client.IssueTokenAsync(identity, scopes: new [] { CommunicationTokenScope.VoIP });
 var token =  tokenResponse.Value.Token;
 var expiresOn = tokenResponse.Value.ExpiresOn;
-Console.WriteLine($"\nIssued a token with 'voip' scope that expires at {expiresOn}:");
+Console.WriteLine($"\nIssued an access token with 'voip' scope that expires at {expiresOn}:");
 Console.WriteLine(token);
 ```
 
-ユーザー アクセス トークンは、ユーザーのサービス中断を防ぐために再発行する必要がある、有効期間の短い資格情報です。 `expiresOn` 応答プロパティは、トークンの有効期間を示します。
+アクセス トークンは有効期間の短い資格情報であるため、再発行が必要になります。 そうしないと、アプリケーションのユーザー エクスペリエンスが中断される可能性があります。 `expiresOn` 応答プロパティは、アクセス トークンの有効期間を示します。 
 
-## <a name="revoke-user-access-tokens"></a>ユーザー アクセス トークンを取り消す
+## <a name="refresh-access-tokens"></a>アクセス トークンの更新
 
-場合によっては、ユーザーがサービスへの認証に使用するパスワードを変更したときなどに、ユーザー アクセス トークンを明示的に取り消す必要があります。 この機能は、Azure Communication Services 管理クライアント ライブラリを通じて利用できます。
+アクセス トークンを更新するには、`CommunicationUser` オブジェクトを使用して再発行します。
 
 ```csharp  
-await client.RevokeTokensAsync(user);
-Console.WriteLine($"\nSuccessfully revoked all tokens for user with ID: {user.Id}");
+// Value existingIdentity represents identity of Azure Communication Services stored during identity creation
+identity = new CommunicationUser(existingIdentity);
+tokenResponse = await client.IssueTokenAsync(identity, scopes: new [] { CommunicationTokenScope.VoIP });
 ```
 
-## <a name="delete-a-user"></a>ユーザーの削除
+## <a name="revoke-access-tokens"></a>アクセス トークンの取り消し
 
-ID を削除すると、すべてのアクティブなトークンが取り消され、その ID についての後続のトークンを発行できなくなります。 また、ユーザーに関連付けられているすべての永続化されたコンテンツも削除されます。
+場合によっては、明示的にアクセス トークンを取り消すことがあります。 たとえば、アプリケーションのユーザーが、サービスに対する認証に使用するパスワードを変更するような場合です。 `RevokeTokensAsync` メソッドを使用すると、ID に対して発行されたすべてのアクティブなアクセス トークンを無効にできます。
+
+```csharp  
+await client.RevokeTokensAsync(identity);
+Console.WriteLine($"\nSuccessfully revoked all access tokens for identity with ID: {identity.Id}");
+```
+
+## <a name="delete-an-identity"></a>ID の削除
+
+ID を削除すると、すべてのアクティブなアクセス トークンが取り消され、その ID に対してアクセス トークンを発行できなくなります。 また、ID に関連付けられているすべての永続化されたコンテンツも削除されます。
 
 ```csharp
-await client.DeleteUserAsync(user);
-Console.WriteLine($"\nDeleted the user with ID: {user.Id}");
+await client.DeleteUserAsync(identity);
+Console.WriteLine($"\nDeleted the identity with ID: {identity.Id}");
 ```
 
 ## <a name="run-the-code"></a>コードの実行

@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 28232981d007e7be04d520ec46739408d03d90b4
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1394cf6511a65a0e406e51229953e8666d4d4d8d
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124015"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337680"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>チュートリアル:Data Box を使用して Azure のマネージド ディスクとしてデータをインポートする
 
@@ -76,11 +76,11 @@ Windows Server ホスト コンピューターを使用している場合は、�
     > [!NOTE]
     > マネージド ディスクのすべての共有の資格情報は同じです。
 
-    ![共有の資格情報を取得する](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
+    ![[接続とコピー]、共有の資格情報を取得する](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
-2. [共有にアクセスしてデータをコピーする] ダイアログ ボックスで、共有の **[ユーザー名]** と **[パスワード]** をコピーします。 **[OK]** をクリックします。
+2. **[共有にアクセスしてデータをコピーする]** ダイアログ ボックスで、共有の **[ユーザー名]** と **[パスワード]** をコピーします。 **[OK]** をクリックします。
     
-    ![共有の資格情報を取得する 2](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
+    ![[接続とコピー]、共有の資格情報をコピーする](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
 3. ご自分のリソースに関連付けられている共有 (以下の例の場合は、*mydbmdrg1*) にホスト コンピューターからアクセスするため、コマンド ウィンドウを開きます。 コマンド プロンプトに、次のコマンドを入力します。
 
@@ -100,13 +100,13 @@ Windows Server ホスト コンピューターを使用している場合は、�
     C: \>
     ```
 
-4. Windows キーを押しながら R キーを押します。 **[ファイル名指定して実行]** ウィンドウで、「`\\<device IP address>\<ShareName>`」と入力します。 **[OK]** をクリックして、エクスプローラーを開きます。
+5. Windows キーを押しながら R キーを押します。 **[ファイル名指定して実行]** ウィンドウで、「`\\<device IP address>\<ShareName>`」と入力します。 **[OK]** をクリックして、エクスプローラーを開きます。
     
     ![エクスプローラーで共有に接続する](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
     各共有内に、事前に作成された次のフォルダーが表示されます。
     
-    ![エクスプローラーで共有に接続する 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer2.png)
+    ![エクスプローラーで共有に接続する。共有のフォルダー](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer2.png)
 
 
 ### <a name="connect-to-data-box-via-nfs"></a>NFS 経由で Data Box に接続する
@@ -119,7 +119,7 @@ Linux ホスト コンピューターを使用している場合は、次の手�
 
 2. NFS クライアントの IP アドレスを指定して、 **[追加]** をクリックします。 この手順を繰り返すことにより、複数の NFS クライアントに対するアクセスを構成できます。 **[OK]** をクリックします。
 
-    ![NFS のクライアント アクセスを構成する 2](media/data-box-deploy-copy-data-from-vhds/nfs-client-access2.png)
+    ![NFS クライアントの IP アドレスを構成する](media/data-box-deploy-copy-data-from-vhds/nfs-client-access2.png)
 
 2. Linux ホスト コンピューターに[サポートされているバージョン](data-box-system-requirements.md)の NFS クライアントがインストールされていることを確認します。 お使いの Linux ディストリビューションの特定のバージョンを使用します。
 
@@ -166,7 +166,7 @@ SMB と NFS のどちらを経由して接続するかに応じて、次の方�
     
 ![ダッシュボードで空き領域と使用済み領域を確認する](media/data-box-deploy-copy-data-from-vhds/verify-used-space-dashboard.png)
 
-コピー ジョブが完了したら、**発送準備**に進むことができます。
+コピー ジョブが完了したら、**発送準備** に進むことができます。
 
 
 ## <a name="next-steps"></a>次のステップ

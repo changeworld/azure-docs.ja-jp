@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/17/2019
 ms.author: jowargo
 ms.custom: include file
-ms.openlocfilehash: 5afcc8e4524a0e8353766ba239d5ab9161b29d86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ec602f056b339a1b1dcb78d6b8d7583aeaf0434
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67509097"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375829"
 ---
 1. [Azure portal](https://portal.azure.com) にサインインする
 
@@ -41,7 +41,7 @@ ms.locfileid: "67509097"
 
 1. **[通知]** (ベルのアイコン) を選択し、 **[リソースに移動]** を選択します。 **[Notification Hubs]** ページの一覧を最新の情報に更新して、お使いの通知ハブを選択することもできます。
 
-      ![Azure Portal > [通知] > [リソースに移動]](./media/notification-hubs-portal-create-new-hub/go-to-notification-hub.png)
+      ![Azure portal - リソースに移動](./media/notification-hubs-portal-create-new-hub/go-to-notification-hub.png)
 
 1. リストから **[アクセス ポリシー]** を選択します。 使用可能な 2 つの接続文字列を書き留めてください。 これらは、後でプッシュ通知を処理するために必要になります。
 

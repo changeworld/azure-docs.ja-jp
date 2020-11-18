@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: af8479f6460a6cc555d7ea67dcfe65c779878624
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 057b211179c6932d4214e6118e3fa97b95145ba0
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357864"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926633"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Azure Application Insights でランタイムの例外を見つけて診断する
 
@@ -81,7 +81,7 @@ Snapshot Debugger は、お使いのアプリケーションで最も一般的�
 
 3. 有効な値を持つ最初の呼び出しが **ValidZipCode** であるため、郵便番号が整数に変換できない文字で提供されていたことが確認できます。  これは、修正する必要があるコードのエラーのようです。
 
-    ![スナップショットをデバッグする](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
+    ![修正が必要なコード エラーを示すスクリーンショット。    ](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
 
 4. このオプションを Visual Studio にダウンロードして、修正する必要がある実際のコードをそこで見つけることができます。 これを行うには、 **[スナップショットのダウンロード]** をクリックします。
 5. スナップショットは、Visual Studio に読み込まれます。

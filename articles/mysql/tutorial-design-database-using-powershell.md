@@ -1,19 +1,19 @@
 ---
 title: チュートリアル:サーバーを設計する - Azure PowerShell - Azure Database for MySQL
 description: このチュートリアルでは、PowerShell を使用して、Azure Database for MySQL サーバーとデータベースを作成および管理する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 04/29/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: b5dd66b16674e1441865f796153e7508acc854d0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: fd8294d60ed0af4e8d1eeb8a3cd07c737b69aadd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543748"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533584"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-powershell"></a>チュートリアル:PowerShell を使用して Azure Database for MySQL を設計する
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > Az.MySql PowerShell モジュールがプレビュー段階にある間は、次のコマンドを使用して、Az PowerShell モジュールとは別にこれをインストールする必要があります: `Install-Module -Name Az.MySql -AllowPrerelease`。
 > Az.MySql PowerShell モジュールは、一般提供された後、将来の Az PowerShell モジュール リリースの一部となり、Azure Cloud Shell 内からネイティブに使用できるようになります。
 
-Azure Database for MySQL サービスを初めて使用する場合は、 **Microsoft.DBforMySQL** リソースプロバイダーを登録する必要があります。
+Azure Database for MySQL サービスを初めて使用する場合は、**Microsoft.DBforMySQL** リソースプロバイダーを登録する必要があります。
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.DBforMySQL
@@ -56,7 +56,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、[Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
 
-次の例では、 **myresourcegroup** という名前のリソース グループを **米国西部** リージョンに作成します。
+次の例では、**myresourcegroup** という名前のリソース グループを **米国西部** リージョンに作成します。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myresourcegroup -Location westus
@@ -66,7 +66,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 `New-AzMySqlServer` コマンドレットを使用して、Azure Database for MySQL サーバーを作成します。 1 つのサーバーで複数のデータベースを管理できます。 通常は、プロジェクトまたはユーザーごとに個別のデータベースを使用します。
 
-次の例では、 **米国西部** リージョンの **myresourcegroup** リソース グループに **mydemoserver** という名前の MySQL サーバーを作成しています。サーバー管理者ログインは **myadmin** です。 これは、2 つの仮想コアを備え geo 冗長バックアップが有効になっている、汎用価格レベルの Gen 5 サーバーです。 例の最初の行に使用されているパスワードは MySQL server 管理者アカウントのパスワードであるため、これを記録しておきます。
+次の例では、**米国西部** リージョンの **myresourcegroup** リソース グループに **mydemoserver** という名前の MySQL サーバーを作成しています。サーバー管理者ログインは **myadmin** です。 これは、2 つの仮想コアを備え geo 冗長バックアップが有効になっている、汎用価格レベルの Gen 5 サーバーです。 例の最初の行に使用されているパスワードは MySQL server 管理者アカウントのパスワードであるため、これを記録しておきます。
 
 > [!TIP]
 > サーバー名は DNS 名に対応しており、Azure 内でグローバルに一意であることが必要です。
@@ -82,7 +82,7 @@ New-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup -Sku GP_
 - `-Sku GP_Gen5_32` は、"汎用、Gen 5、および 32 個の仮想コア" にマップされます。
 - `-Sku MO_Gen5_2` は、"メモリ最適化、Gen 5、および 2 個の仮想コア" にマップされます。
 
-リージョンおよびレベルごとの有効な **Sku** 値については、「 [Azure Database for MySQL の価格レベル](./concepts-pricing-tiers.md)」を参照してください。
+リージョンおよびレベルごとの有効な **Sku** 値については、「[Azure Database for MySQL の価格レベル](./concepts-pricing-tiers.md)」を参照してください。
 
 低負荷なコンピューティングと I/O がワークロードに適している場合は、Basic 価格レベルの使用を検討してください。
 
@@ -93,7 +93,7 @@ New-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup -Sku GP_
 
 `New-AzMySqlFirewallRule` コマンドレットを使用して、Azure Database for MySQL サーバーレベルのファイアウォール規則を作成します。 サーバーレベルのファイアウォール規則により、`mysql` コマンドライン ツールや MySQL Workbench などの外部アプリケーションが、Azure Database for MySQL サービス ファイアウォールを経由してサーバーに接続できるようになります。
 
-次の例では、特定の IP アドレス 192.168.0.1 からの接続を許可する、 **AllowMyIP** と呼ばれるファイアウォール規則を作成しています。 実際の接続元の場所に対応する IP アドレスまたは IP アドレスの範囲に置き換えてください。
+次の例では、特定の IP アドレス 192.168.0.1 からの接続を許可する、**AllowMyIP** と呼ばれるファイアウォール規則を作成しています。 実際の接続元の場所に対応する IP アドレスまたは IP アドレスの範囲に置き換えてください。
 
 ```azurepowershell-interactive
 New-AzMySqlFirewallRule -Name AllowMyIP -ResourceGroupName myresourcegroup -ServerName mydemoserver -StartIPAddress 192.168.0.1 -EndIPAddress 192.168.0.1
@@ -119,7 +119,7 @@ mydemoserver.mysql.database.azure.com       myadmin
 
 ## <a name="connect-to-the-server-using-the-mysql-command-line-tool"></a>mysql コマンドライン ツールを使用してサーバーに接続する
 
-`mysql` コマンドライン ツールを使用してサーバーに接続します。 コマンドライン ツールをダウンロードしてインストールするには、「[MySQL コミュニティ ダウンロード](https://dev.mysql.com/downloads/shell/)」を参照してください。 また、この記事のコード サンプルにある **[試してみる]** ボタンを選択することにより、Azure Cloud Shell の `mysql` コマンドライン ツールのプレインストール バージョンにアクセスすることもできます。 Azure Cloud Shell にアクセスするその他の方法として、Azure portal の右上のツール バーにある **[>_]** を選択するか、 [shell.azure.com](https://shell.azure.com/) にアクセスします。
+`mysql` コマンドライン ツールを使用してサーバーに接続します。 コマンドライン ツールをダウンロードしてインストールするには、「[MySQL コミュニティ ダウンロード](https://dev.mysql.com/downloads/shell/)」を参照してください。 また、この記事のコード サンプルにある **[試してみる]** ボタンを選択することにより、Azure Cloud Shell の `mysql` コマンドライン ツールのプレインストール バージョンにアクセスすることもできます。 Azure Cloud Shell にアクセスするその他の方法として、Azure portal の右上のツール バーにある **[>_]** を選択するか、[shell.azure.com](https://shell.azure.com/) にアクセスします。
 
 ```azurepowershell-interactive
 mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
@@ -207,6 +207,24 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 復元プロセスが完了したら、新しいサーバーを検索して、想定どおりにデータが復元できたかどうかを確認します。 新しいサーバーには、復元が開始された時点の既存のサーバーで有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
 
 復元中に作成される新しいサーバーには、元のサーバーに存在した VNet サービス エンドポイントはありません。 新しいサーバー用に、これらの規則を個別に設定する必要があります。 元のサーバーのファイアウォール規則は復元されます。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このチュートリアルで作成したリソースが別のクイックスタートまたはチュートリアルで必要でない場合は、次の例を実行して削除できます。
+
+> [!CAUTION]
+> 次の例では、指定されたリソース グループとそれに含まれるすべてのリソースを削除します。
+> 指定したリソース グループにこのチュートリアルの範囲外のリソースが含まれている場合、それらも削除されます。
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name myresourcegroup
+```
+
+リソース グループを削除せずに、このチュートリアルで作成したサーバーのみを削除するには、`Remove-AzMySqlServer` コマンドレットを使用します。
+
+```azurepowershell-interactive
+Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
+```
 
 ## <a name="next-steps"></a>次のステップ
 

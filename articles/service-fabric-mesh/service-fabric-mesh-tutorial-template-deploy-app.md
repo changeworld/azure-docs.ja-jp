@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 3727e9a83827261bf9e8a526ffedb6d3fc644afa
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b02c16c63d83fc33be5512d26eafb0ca0d6c9b98
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745986"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145890"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>チュートリアル: テンプレートを使用して Service Fabric Mesh にアプリケーションをデプロイする
 
@@ -61,7 +61,7 @@ az account set --subscription "<subscriptionName>"
 
 ### <a name="create-a-resource-group"></a>リソース グループを作成する
 
-Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次のコマンドを使用して、 *myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次のコマンドを使用して、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -69,7 +69,7 @@ az group create --name myResourceGroup --location eastus
 
 ### <a name="create-the-container-registry"></a>コンテナー レジストリを作成する
 
-`az acr create` コマンドを使用して ACR のインスタンスを作成します。 レジストリの名前は Azure 内で一意にする必要があり、英数字で 5 ～ 50 文字にする必要があります。 次の例では、 *myContainerRegistry* という名前を使用します。 レジストリの名前が使用されているエラーが発生する場合は、別の名前を選択します。
+`az acr create` コマンドを使用して ACR のインスタンスを作成します。 レジストリの名前は Azure 内で一意にする必要があり、英数字で 5 ～ 50 文字にする必要があります。 次の例では、*myContainerRegistry* という名前を使用します。 レジストリの名前が使用されているエラーが発生する場合は、別の名前を選択します。
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name myContainerRegistry --sku Basic
@@ -103,6 +103,11 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry --sku 
 このチュートリアルでは、例として To Do List サンプル アプリケーションを使います。  [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) および [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) サービスのコンテナー イメージは、Docker Hub にあります。 Visual Studio でアプリケーションをビルドする方法については、[Service Fabric Mesh Web アプリのビルド](service-fabric-mesh-tutorial-create-dotnetcore.md)に関するページを参照してください。 Service Fabric Mesh では、Windows または Linux の Docker コンテナーを実行できます。  Linux コンテナーを使用している場合は、Docker で **[Switch to Linux containers]\(Linux コンテナーに切り替える\)** を選択します。  Windows コンテナーを使用している場合は、Docker で **[Switch to Windows containers]\(Windows コンテナーに切り替える\)** を選択します。
 
 ACR のインスタンスにイメージをプッシュするには、まずコンテナー イメージを用意する必要があります。 ローカル コンテナー イメージがまだない場合は、[docker pull](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して、[WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) イメージと [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) イメージを Docker Hub からプルします。
+
+>[!NOTE]
+> 2020 年 11 月 2 日より、Docker の無料プラン アカウントから Docker Hub に対する匿名と認証済みの要求に[ダウンロード レート制限](https://docs.docker.com/docker-hub/download-rate-limit/)が適用されるようになり、IP アドレスによって実施されます。 
+> 
+> これらのコマンドには、Docker Hub のパブリック イメージが利用されています。 レート制限を受ける場合があるので注意してください。 詳細については、「[Docker Hub に対する認証](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub)」を参照してください。
 
 Windows イメージをプルします。
 
@@ -156,7 +161,7 @@ seabreeze/azure-mesh-todo-webfrontend
 seabreeze/azure-mesh-todo-service
 ```
 
-次の例では、 **azure-mesh-todo-service** リポジトリのタグが一覧表示されます。
+次の例では、**azure-mesh-todo-service** リポジトリのタグが一覧表示されます。
 
 ```azurecli
 az acr repository show-tags --name myContainerRegistry --repository seabreeze/azure-mesh-todo-service --output table
@@ -196,9 +201,9 @@ Service Fabric Mesh アプリケーションは、Azure Resource Manager (RM) �
 このチュートリアルでは、例として To Do List サンプルを使います。  新しいテンプレート ファイルとパラメーター ファイルを作成する代わりに、[mesh_rp.windows.json デプロイ テンプレート](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) ファイルと [mesh_rp.windows.parameter.json パラメーター](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) ファイルをダウンロードします。
 
 ### <a name="parameters"></a>パラメーター
-アプリケーションのデプロイ後に変更が予想される値がテンプレートにある場合、またはデプロイごとにオプションを変更する場合 (他のデプロイにこのテンプレートを再利用する場合)、ベスト プラクティスは値をパラメーター化することです。 これを行う適切な方法は、デプロイ テンプレートの先頭に "parameters" セクションを作成し、そこでパラメーターの名前とプロパティを指定して、以降のデプロイ テンプレートではそれを参照することです。 各パラメーターの定義には、 *type* 、 *defaultValue* 、および省略可能な *metadata* セクションと *description* が含まれます。
+アプリケーションのデプロイ後に変更が予想される値がテンプレートにある場合、またはデプロイごとにオプションを変更する場合 (他のデプロイにこのテンプレートを再利用する場合)、ベスト プラクティスは値をパラメーター化することです。 これを行う適切な方法は、デプロイ テンプレートの先頭に "parameters" セクションを作成し、そこでパラメーターの名前とプロパティを指定して、以降のデプロイ テンプレートではそれを参照することです。 各パラメーターの定義には、*type*、*defaultValue*、および省略可能な *metadata* セクションと *description* が含まれます。
 
-parameters セクションは、デプロイ テンプレートの先頭の、 *resources* セクションの直前で定義します。
+parameters セクションは、デプロイ テンプレートの先頭の、*resources* セクションの直前で定義します。
 
 ```json
 {
@@ -336,7 +341,7 @@ To Do List アプリケーションの仕様については、[mesh_rp.windows.j
 
 パラメーター ファイルでは、次のパラメーター値を更新します。
 
-|パラメーター|値|
+|パラメーター|[値]|
 |---|---|
 |location|アプリケーションをデプロイするリージョン。  たとえば、"eastus"。|
 |registryPassword|前の「[レジストリの資格情報を取得する](#retrieve-credentials-for-the-registry)」で取得したパスワード。 テンプレートのこのパラメーターはセキュリティで保護された文字列であり、デプロイの状態または `az mesh service show` コマンドでは表示されません。|

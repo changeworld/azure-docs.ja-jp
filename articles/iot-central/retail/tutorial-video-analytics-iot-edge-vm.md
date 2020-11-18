@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: aa4ddfc773e2226fe155b563c237f1c533d52311
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 23173432db9364f25901e6e9b285d390c6a63a34
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127030"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426547"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>チュートリアル:ビデオ分析用の IoT Edge インスタンスを作成する (Linux VM)
 
@@ -54,10 +54,10 @@ IoT Edge では、これらのサービスがクロスプラットフォーム�
 | DNS ラベル プレフィックス | VM の一意の DNS プレフィックスを選択します。 |
 | 管理ユーザー名 | *AzureUser* |
 | 管理パスワード | パスワードを入力します。 このパスワードは後で使用します。*scratchpad.txt* ファイルに書き留めてください。 |
-| スコープ ID | 前のチュートリアルでゲートウェイ デバイスを追加する際に *scratchpad.txt* ファイルに書き留めた**スコープ ID**。 |
-| デバイス ID | *lva-gateway-001* - 前のチュートリアルで作成したゲートウェイ デバイス。 |
+| スコープ ID | 前のチュートリアルでゲートウェイ デバイスを追加する際に *scratchpad.txt* ファイルに書き留めた **スコープ ID**。 |
+| デバイス ID | *gateway-001* - 前のチュートリアルで作成したゲートウェイ デバイス。 |
 | デバイス キー | 前のチュートリアルでゲートウェイ デバイスを追加する際に *scratchpad.txt* ファイルに書き留めたデバイスのプライマリ キー。 |
-| IoT Central アプリ ホスト | 前のチュートリアルで *scratchpad.txt* ファイルに書き留めた**アプリケーション URL** (例: *traders.azureiotcentral.com*)。 |
+| IoT Central アプリ ホスト | 前のチュートリアルで *scratchpad.txt* ファイルに書き留めた **アプリケーション URL** (例: *traders.azureiotcentral.com*)。 |
 | IoT Central アプリ API トークン | 前のチュートリアルで書き留めたオペレーター API トークン。 |
 | IoT Central デバイス プロビジョニング キー | 前のチュートリアルで *scratchpad.txt* ファイルに書き留めた、プライマリ グループの Shared Access Signature トークン。 |
 | VM サイズ | *Standard_DS1_v2* |

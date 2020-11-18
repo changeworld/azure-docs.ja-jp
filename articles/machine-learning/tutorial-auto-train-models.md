@@ -1,7 +1,7 @@
 ---
 title: '回帰のチュートリアル: 自動化された ML'
 titleSuffix: Azure Machine Learning
-description: このチュートリアルでは、自動機械学習を使用して機械学習モデルを生成する方法を学習します。 Azure Machine Learning では、データの事前処理、アルゴリズムの選択、ハイパーパラメーターの選択をユーザーに代わって自動的に実行できます。
+description: 指定したトレーニング データと構成設定に基づいて回帰モデルを生成する自動機械学習実験を作成します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: aniththa
 ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: cf6616dcc3935946ad4a7213263bb20281d25354
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-python, automl
+ms.openlocfilehash: 811f1c27af660d388ecb875741c073591bd25f7f
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896778"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358611"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>チュートリアル:自動機械学習を使用してタクシー料金を予測する
 
@@ -173,7 +173,7 @@ final_df.describe()
 
 ## <a name="configure-workspace"></a>ワークスペースの構成
 
-既存のワークスペースからワークスペース オブジェクトを作成します。 [ワークスペース](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true)は、お客様の Azure サブスクリプションとリソースの情報を受け取るクラスです。 また、これにより、お客様のモデル実行を監視して追跡するためのクラウド リソースが作成されます。 `Workspace.from_config()` により、**config.json** ファイルが読み取られ、認証の詳細情報が `ws` という名前のオブジェクトに読み込まれます。 `ws` は、このチュートリアルの残りのコード全体で使用されています。
+既存のワークスペースからワークスペース オブジェクトを作成します。 [ワークスペース](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py)は、お客様の Azure サブスクリプションとリソースの情報を受け取るクラスです。 また、これにより、お客様のモデル実行を監視して追跡するためのクラウド リソースが作成されます。 `Workspace.from_config()` により、**config.json** ファイルが読み取られ、認証の詳細情報が `ws` という名前のオブジェクトに読み込まれます。 `ws` は、このチュートリアルの残りのコード全体で使用されています。
 
 ```python
 from azureml.core.workspace import Workspace
@@ -300,7 +300,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-the-results"></a>結果を検索する
 
-[Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)を使用して、自動トレーニングの結果を探索します。 このウィジェットを使用すると、トレーニング精度のメトリックとメタデータと共に、各実行のすべてのイテレーションのグラフと表を確認できます。 さらに、ドロップダウン セレクターを使用して、主なメトリック以外にも、さまざまな精度メトリックを条件としてフィルター処理することができます。
+[Jupyter ウィジェット](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)を使用して、自動トレーニングの結果を探索します。 このウィジェットを使用すると、トレーニング精度のメトリックとメタデータと共に、各実行のすべてのイテレーションのグラフと表を確認できます。 さらに、ドロップダウン セレクターを使用して、主なメトリック以外にも、さまざまな精度メトリックを条件としてフィルター処理することができます。
 
 ```python
 from azureml.widgets import RunDetails

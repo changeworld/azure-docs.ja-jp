@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/30/2020
-ms.openlocfilehash: 75cacf0dc899f47d55c44e5262b23bae73bfa7ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: df6da5ce1dcd5213b3e54abe54c087bfdd8480c5
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88924369"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379975"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Cognitive Search のナレッジ ストアを作成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "88924369"
 
 パイプラインでは、非構造化テキストと画像コンテンツが入力され、Cognitive Services (OCR や自然言語処理など) を利用して AI が適用されて、以前は存在しなかった新しい構造と情報が出力されます。 パイプラインによって作成される物理的な成果物の 1 つは[ナレッジ ストア](knowledge-store-concept-intro.md)です。ツールを使用してこれにアクセスし、コンテンツを分析および探索することができます。
 
-このクイックスタートでは、Azure クラウドのサービスとデータを組み合わせてナレッジ ストアを作成します。 すべての準備が整ったら、ポータルの**データ インポート** ウィザードを実行して、それらを 1 つにまとめます。 最終的な結果は、元のテキスト コンテンツと、ポータル ([Storage Explorer](knowledge-store-view-storage-explorer.md)) で表示できる AI で生成されたコンテンツです。
+このクイックスタートでは、Azure クラウドのサービスとデータを組み合わせてナレッジ ストアを作成します。 すべての準備が整ったら、ポータルの **データ インポート** ウィザードを実行して、それらを 1 つにまとめます。 最終的な結果は、ポータル ([Storage Explorer](knowledge-store-view-storage-explorer.md)) で表示できる、元のテキスト コンテンツと AI で生成されたコンテンツです。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -58,7 +58,7 @@ ms.locfileid: "88924369"
 
 1. BLOB ストレージ ページを終了する前に、左側のナビゲーション ペインにあるリンクを使用して、 **[アクセス キー]** ページを開きます。 Blob ストレージからデータを取得するために接続文字列を取得します。 接続文字列は次の例のようになります。`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
-これで**データのインポート** ウィザードに進む準備が整いました。
+これで **データのインポート** ウィザードに進む準備が整いました。
 
 ## <a name="run-the-import-data-wizard"></a>データ インポート ウィザードを実行する
 
@@ -96,7 +96,7 @@ ms.locfileid: "88924369"
 
 1. **[スキルセット名]** に「`hotel-reviews-ss`」と入力します。
 
-1. **[ソース データ] フィールド**には **reviews_text** を選択します。
+1. **[ソース データ] フィールド** には **reviews_text** を選択します。
 
 1. **[エンリッチメントの粒度レベル]** で **[ページ (5,000 文字チャンク)]** を選択します。
 
@@ -109,12 +109,12 @@ ms.locfileid: "88924369"
 
 1. **[ナレッジ ストアにエンリッチメントを保存する]** を展開します。
 
-1. 次の **Azure テーブル プロジェクション**を選択します。
+1. 次の **Azure テーブル プロジェクション** を選択します。
     + **ドキュメント**
     + **ページ**
     + **キー フレーズ**
 
-1. 前の手順で保存した**ストレージ アカウントの接続文字列**を入力します。
+1. 前の手順で保存した **ストレージ アカウントの接続文字列** を入力します。
 
     ![ナレッジ ストアを構成する](media/knowledge-store-create-portal/hotel-reviews-ks.png "ナレッジ ストアを構成する")
 
@@ -140,7 +140,7 @@ ms.locfileid: "88924369"
 
 このウィザードの手順では、ウィザードのこれまでの手順で定義したデータ ソース、スキルセット、インデックスのまとめ役となるインデクサーを構成します。
 
-1. **名前**には、`hotel-reviews-idxr`を入力します。
+1. **名前** には、`hotel-reviews-idxr`を入力します。
 
 1. **[スケジュール]** では、既定値の **[Once]\(1 回\)** のままにします。
 

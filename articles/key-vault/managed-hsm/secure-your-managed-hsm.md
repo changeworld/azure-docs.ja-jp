@@ -1,6 +1,6 @@
 ---
 title: マネージド HSM へのアクセスをセキュリティで保護する - Azure Key Vault Managed HSM
-description: Azure RBAC とローカルの Managed HSM RBAC を使用してマネージド HSM へのアクセスをセキュリティで保護する方法について説明します
+description: Azure RBAC と Managed HSM ローカル RBAC を使用してマネージド HSM へのアクセスをセキュリティで保護する方法について説明します
 services: key-vault
 author: amitbapat
 tags: azure-resource-manager
@@ -9,18 +9,18 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 18ffa0f878effda8888200c13ab312851aaebdcd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99918d039052c9913400b85ac3caa4a1a5481155
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90992486"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445321"
 ---
 # <a name="secure-access-to-your-managed-hsms"></a>マネージド HSM へのアクセスをセキュリティで保護する
 
 Azure Key Vault Managed HSM は、暗号化キーを保護するクラウド サービスです。 このデータは機密性が高く、ビジネス上重要であるため、承認されたアプリケーションとユーザーからのアクセスのみを許可することで、ご利用のマネージド HSM へのアクセスをセキュリティで保護する必要があります。 この記事では、Managed HSM のアクセス制御モデルの概要について説明します。 認証と承認について説明するほか、ご利用のマネージド HSM へのアクセスをセキュリティで保護する方法について解説します。
 
-このチュートリアルでは、Azure RBAC とローカルの Managed HSM RBAC を使用して職務とアクセス制御を分離する方法がわかる、簡単な例を紹介します。 Managed HSM アクセス制御モデルの詳細については、「[Managed HSM のアクセス制御](access-control.md)」をご覧ください。
+このチュートリアルでは、Azure RBAC と Managed HSM ローカル RBAC を使用して職務の分離とアクセス制御を実現する方法を示す簡単な例を紹介します。 Managed HSM アクセス制御モデルの詳細については、「[Managed HSM のアクセス制御](access-control.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 

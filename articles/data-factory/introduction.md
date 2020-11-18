@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 1840bf93cbca73e593465c999b416e7cbd7af201
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 730141d22b318d79c8c2b7d995b98ee1c311aaf5
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89536314"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491275"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure Data Factory とは何ですか。
 
@@ -22,7 +22,7 @@ ms.locfileid: "89536314"
 
 ビッグ データの世界では、未整理の生データは、多くの場合、リレーショナル、非リレーショナル、その他のストレージ システム内に格納されます。 ただし、生データ自体には、アナリストや、データ サイエンティスト、管理職意思決定者に有用な分析を提供するのに必要となる正しいコンテキストや意味はありません。 
 
-ビッグ データに必要なのは、データ制御と運用化の処理によって、膨大な量の生データを実用的なビジネス分析へと転換できるサービスです。 Azure Data Factory は、ETL (抽出 - 変換 - 読み込み)、ELT (抽出 - 読み込み - 変換)、データ統合という複雑なハイブリッド プロジェクト用に構築された、管理クラウド サービスです。
+ビッグ データには、これらの膨大な量の生データをアクションにつながるビジネス分析へと精製するプロセスを統合および運用化できるサービスが必要です。 Azure Data Factory は、ETL (抽出 - 変換 - 読み込み)、ELT (抽出 - 読み込み - 変換)、データ統合という複雑なハイブリッド プロジェクト用に構築された、管理クラウド サービスです。
 
 たとえば、クラウド内のゲームで生成される、数ペタバイト規模のゲーム ログを収集するゲーム会社があるとします。 その会社がこれらのログを分析して顧客の好みや内訳、利用行動などについての洞察を得たいと考えているとしましょう。 また同社は、アップセルやクロス セルの商機の見極め、魅力的な新機能の開発、ビジネスの成長の後押し、カスタマー エクスペリエンスの向上にも興味があります。
 
@@ -91,7 +91,7 @@ Data Factory では、Azure DevOps と GitHub を使用したデータ パイプ
 
 Data Factory ではリンクされたサービスは 2 つの目的に使用されます。
 
-- SQL Server データベース、Oracle データベース、ファイル共有、Azure Blob Storage アカウント、その他の**データ ストア**を表すため。 サポートされるデータ ストアの一覧については、「[コピー アクティビティ](copy-activity-overview.md)」を参照してください。
+- SQL Server データベース、Oracle データベース、ファイル共有、Azure Blob Storage アカウント、その他の **データ ストア** を表すため。 サポートされるデータ ストアの一覧については、「[コピー アクティビティ](copy-activity-overview.md)」を参照してください。
 
 - アクティビティの実行をホストできる **コンピューティング リソース** を表すため。 たとえば、HDInsightHive アクティビティは HDInsight Hadoop クラスターで実行されます。 変換アクティビティとサポートされているコンピューティング環境の一覧については、「[データの変換](transform-data.md)」を参照してください。
 

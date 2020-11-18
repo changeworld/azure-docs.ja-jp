@@ -3,13 +3,13 @@ title: Azure VMware Solution をデプロイして構成する
 description: 計画ステージで収集した情報を使用して、Azure VMware Solution プライベート クラウドをデプロイする方法について説明します。
 ms.topic: tutorial
 ms.author: tredavis
-ms.date: 10/02/2020
-ms.openlocfilehash: 0839048c2d0ad5944566a48f54cca07a4daeb754
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.date: 11/09/2020
+ms.openlocfilehash: 264ad99b21150f391c367eba2da31f0d08f4ab08
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152037"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336337"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware Solution をデプロイして構成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "92152037"
 ## <a name="create-the-jump-box"></a>ジャンプ ボックスを作成する
 
 >[!IMPORTANT]
->**[プライベート クラウドの作成]** 画面の初期プロビジョニング手順で **[Virtual Network]** オプションを空白のままにした場合は、このセクションを続行する **前** に、 [VMware プライベート クラウドのネットワークを構成する](tutorial-configure-networking.md)ことに関するチュートリアルを完了してください。  
+>**[プライベート クラウドの作成]** 画面の初期プロビジョニング手順で **[Virtual Network]** オプションを空白のままにした場合は、このセクションを続行する **前** に、[VMware プライベート クラウドのネットワークを構成する](tutorial-configure-networking.md)ことに関するチュートリアルを完了してください。  
 
 Azure VMware Solution のデプロイ後に、vCenter および NSX に接続する仮想ネットワークのジャンプ ボックスを作成します。 いったん ExpressRoute 回線と ExpressRoute Global Reach を構成したら、ジャンプ ボックスは必要ありません。  しかし、Azure VMware Solution 内の vCenter や NSX に接続するのに便利です。  
 
@@ -59,7 +59,7 @@ Azure のデプロイ画面で既に仮想ネットワークを定義した場�
 
 有効なルートの一覧には、Azure VMware Solution のデプロイの一部として作成されたネットワークが表示されるはずです。 この記事の、以前の[デプロイ手順](#deploy-azure-vmware-solution)の間に[定義した `/22` ネットワーク](production-ready-deployment-steps.md#ip-address-segment)から派生した複数のネットワークが表示されます。
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Azure VMware Solution のジャンプ ボックスを作成する" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Azure VMware Solution から Azure Virtual Network にアドバタイズされたネットワーク ルートを確認する" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 
 この例では、デプロイ時にネットワークとして 10.74.72.0/22 が入力され、/24 ネットワークが派生しています。  同様の内容が表示される場合は、Azure VMware Solution 内の vCenter に接続できます。
 
@@ -97,10 +97,10 @@ DNS が必要なため、どの DNS サーバーを使用するかを特定し�
 
 NSX-T セグメントで DHCP を使用する予定の場合は、このセクションを続けます。 その他の場合は、「[NSX-T ネットワーク セグメントに VM を追加する](#add-a-vm-on-the-nsx-t-network-segment)」セクションに進みます。  
 
-これで、NSX-T ネットワーク セグメントを作成したので、次のいずれかの方法を実行できます。
+NSX-T ネットワーク セグメントを作成したら、Azure VMware Solution で DHCP を作成して管理できます。次の 2 とおりの方法があります。
 
-* 作成されたセグメントの DHCP サーバーとして NSX-T を使用します。 このオプションでは、[NSX-T 内に DHCP サーバーを作成](manage-dhcp.md#create-dhcp-server)し、[そのサーバーにリレー](manage-dhcp.md#create-dhcp-relay-service)します。
-* NSX-T セグメントから、環境内の他の場所にある DHCP サーバーに DHCP 要求をリレーします。 このオプションの場合、[リレーの構成のみを行います](manage-dhcp.md#create-dhcp-relay-service)。
+* NSX-T を使用して DHCP サーバーをホストする場合は、[DHCP サーバーを作成](manage-dhcp.md#create-a-dhcp-server)し、[そのサーバーにリレー](manage-dhcp.md#create-dhcp-relay-service)する必要があります。 
+* ネットワークでサード パーティの外部 DHCP サーバーを使用する場合は、[DHCP リレー サービスを作成](manage-dhcp.md#create-dhcp-relay-service)する必要があります。  このオプションの場合、[リレーの構成のみを行います](manage-dhcp.md#create-dhcp-relay-service)。
 
 
 ## <a name="add-a-vm-on-the-nsx-t-network-segment"></a>NSX-T ネットワーク セグメントに VM を追加する

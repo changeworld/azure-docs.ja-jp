@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - Spark & Hive Tools for VSCode (Spark アプリケーション)
-description: チュートリアル - Spark & Hive Tools for VSCode を使用して、Python で記述された Spark アプリケーションを開発し、Apache Spark プール (プレビュー) に送信します。
+description: チュートリアル - Spark & Hive Tools for VSCode を使用して、Python で記述された Spark アプリケーションを開発し、サーバーレス Apache Spark プール (プレビュー) に送信します。
 services: synapse-analytics
 author: hrasheed-msft
 ms.author: jejiang
@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 09/03/2020
-ms.openlocfilehash: 6778d78ff5e342d97c1c9bc477c1a88eca42a10a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99b2b04d0f29d92b503cc0bed2460b79cfa6c354
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91338112"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315663"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-vscode-using-a-synapse-workspace"></a>チュートリアル:VSCode で Synapse ワークスペースを使用して Apache Spark アプリケーションを作成する
 
@@ -26,7 +26,7 @@ Spark & Hive Tools は、Visual Studio Code でサポートされているプラ
 
 この記事の手順を完了するには、次の項目が必要です。
 
-- Apache Spark プール。 Apache Spark プールを作成するには、「[Azure portal を使用して Apache Spark プールを作成する](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)」を参照してください。
+- サーバーレス Apache Spark プール。 サーバーレス Apache Spark プールを作成するには、[Azure portal を使用した Apache Spark プールの作成](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)に関する記事をご覧ください。
 - [Visual Studio Code](https://code.visualstudio.com/)。
 - [Mono](https://www.mono-project.com/docs/getting-started/install/)。 Mono は Linux と macOS でのみ必要です。
 - [Visual Studio Code 用の PySpark 対話型環境](../../hdinsight/set-up-pyspark-interactive-environment.md)。
@@ -174,7 +174,7 @@ for (word, count) in sortedCollection:
 
 1. コマンド パレットからコマンドを使用するか、ワークスペースで新しい .ipynb ファイルを作成することで、Jupyter Notebook を作成できます。 詳細については、「[Visual Studio Code での Jupyter Notebook の使用](https://code.visualstudio.com/docs/python/jupyter-support)」を参照してください。
 
-2. **[セルの実行]** ボタンをクリックし、画面の指示に従って**既定の Spark プールを設定**します (ノートブックを開く前に毎回既定のクラスターまたはプールを設定することを強くお勧めします)。その後、ウィンドウを**再度読み込みます**。
+2. **[セルの実行]** ボタンをクリックし、画面の指示に従って **既定の Spark プールを設定** します (ノートブックを開く前に毎回既定のクラスターまたはプールを設定することを強くお勧めします)。その後、ウィンドウを **再度読み込みます**。
 
      ![既定の Spark プールを設定して再度読み込む](./media/vscode-tool-synapse/set-the-default-spark-pool-and-reload.png)
 

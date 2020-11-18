@@ -2,20 +2,20 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: azure-communication-services
-author: matthewrobertson
-manager: nimag
+author: tomaschladek
+manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
-ms.author: marobert
-ms.openlocfilehash: 4be8821a949527fefcc9005b1de7f4f7c438c568
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: tchladek
+ms.openlocfilehash: e307265cc95815f426317cee69d64b210bcd67a9
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90945750"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506273"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,17 +30,17 @@ ms.locfileid: "90945750"
 1. ターミナルまたはコマンド ウィンドウを開き、アプリ用の新しいディレクトリを作成し、そこに移動します。
 
    ```console
-   mkdir user-tokens-quickstart && cd user-tokens-quickstart
+   mkdir access-tokens-quickstart && cd access-tokens-quickstart
    ```
 
-1. テキスト エディターを使用して、**issue-tokens.py** という名前のファイルをプロジェクトのルート ディレクトリに作成し、基本的な例外処理を含むプログラムの構造を追加します。 このクイックスタートのソース コードはすべて、以降のセクションでこのファイルに追加します。
+1. テキスト エディターを使用して、**issue-access-tokens.py** という名前のファイルをプロジェクトのルート ディレクトリに作成し、基本的な例外処理を含むプログラムの構造を追加します。 このクイックスタートのソース コードはすべて、以降のセクションでこのファイルに追加します。
 
    ```python
    import os
    from azure.communication.administration import CommunicationIdentityClient
 
    try:
-      print('Azure Communication Services - User Access Tokens Quickstart')
+      print('Azure Communication Services - Access Tokens Quickstart')
       # Quickstart code goes here
    except Exception as ex:
       print('Exception:')
@@ -54,8 +54,6 @@ ms.locfileid: "90945750"
 ```console
 pip install azure-communication-administration
 ```
-
-[!INCLUDE [User Access Tokens Object Model](user-access-tokens-object-model.md)]
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
@@ -72,51 +70,61 @@ connection_string = os.environ['COMMUNICATION_SERVICES_CONNECTION_STRING']
 client = CommunicationIdentityClient.from_connection_string(connection_string)
 ```
 
-## <a name="create-a-user"></a>ユーザーを作成する
+## <a name="create-an-identity"></a>ID の作成
 
-Azure Communication Services は、軽量の ID ディレクトリを保持します。 `create_user` メソッドを使用して、一意の `Id` を持つディレクトリに新しいエントリを作成します。 お使いのアプリケーションのユーザーと、Communication Services で生成された ID の間のマッピングを (アプリケーション サーバーのデータベースにこれらを格納するなどによって) 維持する必要があります。
+Azure Communication Services は、軽量の ID ディレクトリを保持します。 `create_user` メソッドを使用して、一意の `Id` を持つディレクトリに新しいエントリを作成します。 受け取った ID を、アプリケーションのユーザーへのマッピングと共に格納します。 これらは、アプリケーション サーバーのデータベースなどに格納します。 ID は、後でアクセス トークンを発行するために必要になります。
 
 ```python
-user = client.create_user()
-print("\nCreated a user with ID: " + user.identifier + ":")
+identity = client.create_user()
+print("\nCreated an identity with ID: " + identity.identifier + ":")
 ```
 
-## <a name="issue-user-access-tokens"></a>ユーザー アクセス トークンを発行する
+## <a name="issue-access-tokens"></a>アクセス トークンを発行する
 
-Communication Services ユーザーのアクセス トークンを発行するには、`issue_token` メソッドを使用します。 オプションの `user` パラメーターを指定しない場合は、新しいユーザーが作成され、トークンと共に返されます。
+既存の Communication Services ID のアクセス トークンを発行するには、`issue_token` メソッドを使用します。 パラメーター `scopes` によって、このアクセス トークンを承認するプリミティブのセットが定義されます。 [サポートされているアクションの一覧](../../concepts/authentication.md)を参照してください。 パラメーター `communicationUser` の新しいインスタンスは、Azure Communication Services ID の文字列表現に基づいて作成できます。
 
 ```python
-# Issue an access token with the "voip" scope for a new user
+# Issue an access token with the "voip" scope for an identity
 token_result = client.issue_token(user, ["voip"])
 expires_on = token_result.expires_on.strftime('%d/%m/%y %I:%M %S %p')
-print("\nIssued a token with 'voip' scope that expires at " + expires_on + ":")
+print("\nIssued an access token with 'voip' scope that expires at " + expires_on + ":")
 print(token_result.token)
 ```
 
-ユーザー アクセス トークンは、ユーザーのサービス中断を防ぐために再発行する必要がある、有効期間の短い資格情報です。 `expires_on` 応答プロパティは、トークンの有効期間を示します。
+アクセス トークンは有効期間の短い資格情報であるため、再発行が必要になります。 そうしないと、アプリケーションのユーザー エクスペリエンスが中断される可能性があります。 `expires_on` 応答プロパティは、アクセス トークンの有効期間を示します。
 
-## <a name="revoke-user-access-tokens"></a>ユーザー アクセス トークンを取り消す
+## <a name="refresh-access-tokens"></a>アクセス トークンの更新
 
-場合によっては、ユーザーがサービスへの認証に使用するパスワードを変更したときなどに、ユーザー アクセス トークンを明示的に取り消す必要があります。 この機能は、Azure Communication Services 管理クライアント ライブラリを通じて利用できます。
+アクセス トークンを更新するには、`CommunicationUser` オブジェクトを使用して再発行します。
 
 ```python  
-client.revoke_tokens(user)
-print("\nSuccessfully revoked all tokens for user with ID: " + user.identifier)
+# Value existingIdentity represents identity of Azure Communication Services stored during identity creation
+identity = CommunicationUser(existingIdentity)
+token_result = client.issue_token( identity, ["voip"])
 ```
 
-## <a name="delete-a-user"></a>ユーザーの削除
+## <a name="revoke-access-tokens"></a>アクセス トークンの取り消し
 
-ID を削除すると、すべてのアクティブなトークンが取り消され、その ID についての後続のトークンを発行できなくなります。 また、ユーザーに関連付けられているすべての永続化されたコンテンツも削除されます。
+場合によっては、明示的にアクセス トークンを取り消すことがあります。 たとえば、アプリケーションのユーザーが、サービスに対する認証に使用するパスワードを変更するような場合です。 `revoke_tokens` メソッドを使用すると、ID に対して発行されたすべてのアクティブなアクセス トークンを無効にできます。
+
+```python  
+client.revoke_tokens(identity)
+print("\nSuccessfully revoked all access tokens for identity with ID: " + identity.identifier)
+```
+
+## <a name="delete-an-identity"></a>ID の削除
+
+ID を削除すると、すべてのアクティブなアクセス トークンが取り消され、その ID に対してアクセス トークンを発行できなくなります。 また、ID に関連付けられているすべての永続化されたコンテンツも削除されます。
 
 ```python
-client.delete_user(user)
-print("\nDeleted the user with ID: " + user.identifier)
+client.delete_user(identity)
+print("\nDeleted the identity with ID: " + identity.identifier)
 ```
 
 ## <a name="run-the-code"></a>コードの実行
 
-コンソール プロンプトから、*issue-token.py* ファイルが格納されているディレクトリに移動し、次の `python` コマンドを実行してアプリを実行します。
+コンソール プロンプトから、*issue-access-token.py* ファイルが格納されているディレクトリに移動し、次の `python` コマンドを実行してアプリを実行します。
 
 ```console
-python ./issue-token.py
+python ./issue-access-token.py
 ```

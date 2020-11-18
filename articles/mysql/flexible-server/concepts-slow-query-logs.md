@@ -1,17 +1,17 @@
 ---
 title: クエリ ログの表示 - Azure Database for MySQL - フレキシブル サーバー
 description: Azure Database for MySQL フレキシブル サーバーで使用できる低速クエリ ログについて説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 512a103f5ac116f1f4eb18631cdc8e4a8b9380c9
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: dde9575a70ea80ad262bc01bb9d5d0015c803427
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399212"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543019"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL フレキシブル サーバーの低速クエリ ログ (プレビュー)
 

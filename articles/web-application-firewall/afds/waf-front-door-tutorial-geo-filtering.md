@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: a7ab7debffc8e88f385fbba6ae52af74ef98b25f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 479b1d8ed1f4238486bb78e33a6139463578dbba
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266942"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563309"
 ---
 # <a name="set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Front Door に使用する geo フィルタリング WAF ポリシーを設定する
 
@@ -25,9 +25,9 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 
 geo フィルター ポリシーの設定を開始する前に、PowerShell 環境を設定して Front Door プロファイルを作成します。
 ### <a name="set-up-your-powershell-environment"></a>PowerShell 環境をセットアップする
-Azure PowerShell には、Azure リソースの管理に [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) モデルを使う一連のコマンドレットが用意されています。 
+Azure PowerShell には、Azure リソースの管理に [Azure Resource Manager](../../azure-resource-manager/management/overview.md) モデルを使う一連のコマンドレットが用意されています。 
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) をローカル コンピューターにインストールして、すべての PowerShell セッションで使用することができます。 リンク先のページの手順に従って Azure の資格情報でサインインし、Az PowerShell モジュールをインストールします。
+[Azure PowerShell](/powershell/azure/) をローカル コンピューターにインストールして、すべての PowerShell セッションで使用することができます。 リンク先のページの手順に従って Azure の資格情報でサインインし、Az PowerShell モジュールをインストールします。
 
 #### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>サインインのための対話型ダイアログを使用して Azure に接続する
 

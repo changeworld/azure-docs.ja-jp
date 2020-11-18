@@ -10,18 +10,18 @@ ms.subservice: video-indexer
 ms.topic: quickstart
 ms.date: 10/30/2020
 ms.author: juliako
-ms.openlocfilehash: 9ad004f65335d79205cbaddaa190b92a19c327d5
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 7099b0d303965b987fb316170738cc82568dc6d6
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147285"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505599"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>クイック スタート:サインアップして最初のビデオをアップロードする方法
 
 この入門クイック スタートでは、Video Indexer Web サイトにサインインする方法と、最初のビデオをアップロードする方法を示します。
 
-Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer 使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、[ご使用の Azure サブスクリプションと Azure Media Services アカウントに接続される](connect-to-azure.md) Video Indexer アカウントを作成します。 Azure Media Services アカウント関連の料金と同様に、インデックス作成時間 (分単位) の料金がかかります。 
+Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer 使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、[ご使用の Azure サブスクリプションと Azure Media Services アカウントに接続される](connect-to-azure.md) Video Indexer アカウントを作成します。 インデックス作成にかかった時間 (分) に対して支払います。詳細については、「[Media Services の価格](https://azure.microsoft.com/pricing/details/media-services/)」を参照してください。 
 
 ## <a name="sign-up-for-video-indexer"></a>Video Indexer にサインアップする
 

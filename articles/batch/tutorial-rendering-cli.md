@@ -4,12 +4,12 @@ description: チュートリアル - Batch Rendering サービスと Azure コ�
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 516f5a3f80f1252dbf63e3b254f0c7200de16e11
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 579a5446cb199bb73f98e2e1cbb0948f062470a8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747045"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542390"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>チュートリアル:Azure Batch を使用したシーンのレンダリング 
 
@@ -26,19 +26,21 @@ Azure Batch は、クラウド規模のレンダリング機能を従量課金�
 
 ## <a name="prerequisites"></a>前提条件
 
-Batch で従量課金制のレンダリング アプリケーションを使用するには、従量課金制サブスクリプションまたはその他の Azure 購入オプションが必要です。 **金融クレジットを提供する無料の Azure オファーを使用する場合、従量課金制ライセンスはサポートされません。**
+ - Batch で従量課金制のレンダリング アプリケーションを使用するには、従量課金制サブスクリプションまたはその他の Azure 購入オプションが必要です。 **金融クレジットを提供する無料の Azure オファーを使用する場合、従量課金制ライセンスはサポートされません。**
 
-このチュートリアル用のサンプル 3DS Max シーンは、サンプルの Bash スクリプトと JSON 構成ファイルと共に [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) にあります。 3DS Max シーンは、[Autodesk 3DS Max サンプル ファイル](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe)に含まれています  (Autodesk 3DS Max のサンプル ファイルは、Creative Commons Attribution-NonCommercial-Share Alike ライセンスで入手可能です。 Copyright &copy; Autodesk, Inc.)
+ - このチュートリアル用のサンプル 3DS Max シーンは、サンプルの Bash スクリプトと JSON 構成ファイルと共に [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) にあります。 3DS Max シーンは、[Autodesk 3DS Max サンプル ファイル](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe)に含まれています  (Autodesk 3DS Max のサンプル ファイルは、Creative Commons Attribution-NonCommercial-Share Alike ライセンスで入手可能です。 Copyright &copy; Autodesk, Inc.)
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.20 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+- このチュートリアルには、Azure CLI のバージョン 2.0.20 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
+> [!TIP]
+> [Arnold ジョブ テンプレート](https://github.com/Azure/batch-extension-templates/tree/master/templates/arnold/render-windows-frames)は、Azure Batch 拡張機能テンプレート GitHub リポジトリで確認できます。
 ## <a name="create-a-batch-account"></a>Batch アカウントを作成する
 
 サブスクリプションにリソース グループ、Batch アカウント、リンクされているストレージ アカウントをまだ作成してない場合は作成します。 
 
-[az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 次の例では、 *myResourceGroup* という名前のリソース グループを *eastus2* に作成します。
+[az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus2* に作成します。
 
 ```azurecli-interactive 
 az group create \
@@ -55,7 +57,7 @@ az storage account create \
     --location eastus2 \
     --sku Standard_LRS
 ```
-[az batch account create](/cli/azure/batch/account#az-batch-account-create) コマンドを使用して Batch アカウントを作成します。 次の例では、 *mybatchaccount* という名前の Batch アカウントを *myResourceGroup* に作成し、作成したアカウントをリンクします。  
+[az batch account create](/cli/azure/batch/account#az-batch-account-create) コマンドを使用して Batch アカウントを作成します。 次の例では、*mybatchaccount* という名前の Batch アカウントを *myResourceGroup* に作成し、作成したアカウントをリンクします。  
 
 ```azurecli-interactive 
 az batch account create \
@@ -83,7 +85,7 @@ export AZURE_STORAGE_KEY=$(az storage account keys list --account-name mystorage
 export AZURE_STORAGE_ACCOUNT=mystorageaccount
 ```
 
-ここで、シーン ファイル用にストレージ アカウントに BLOB コンテナーを作成します。 次の例では、 [az storage container create](/cli/azure/storage/container#az-storage-container-create) コマンドを使用して、パブリック読み取りアクセスを許可する *scenefiles* という名前の BLOB コンテナーを作成します。
+ここで、シーン ファイル用にストレージ アカウントに BLOB コンテナーを作成します。 次の例では、[az storage container create](/cli/azure/storage/container#az-storage-container-create) コマンドを使用して、パブリック読み取りアクセスを許可する *scenefiles* という名前の BLOB コンテナーを作成します。
 
 ```azurecli-interactive
 az storage container create \
@@ -107,7 +109,7 @@ az storage blob upload-batch \
 
 ## <a name="create-a-rendering-pool"></a>レンダリング プールの作成
 
-[az batch pool create](/cli/azure/batch/pool#az-batch-pool-create) コマンドを使用して、レンダリング用の Batch プールを作成します。 この例では、JSON ファイルでプールの設定を指定します。 現在のシェル内で、 *mypool.json* という名前のファイルを作成し、次の内容をコピーして貼り付けます。 すべてのテキストが正しくコピーされるようにしてください  (このファイルは [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/mypool.json) からダウンロードできます)。
+[az batch pool create](/cli/azure/batch/pool#az-batch-pool-create) コマンドを使用して、レンダリング用の Batch プールを作成します。 この例では、JSON ファイルでプールの設定を指定します。 現在のシェル内で、*mypool.json* という名前のファイルを作成し、次の内容をコピーして貼り付けます。 すべてのテキストが正しくコピーされるようにしてください  (このファイルは [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/mypool.json) からダウンロードできます)。
 
 
 ```json
@@ -155,7 +157,7 @@ az batch pool show \
 
 ## <a name="create-a-blob-container-for-output"></a>出力用 BLOB コンテナーの作成
 
-このチュートリアルの例では、レンダリング ジョブの各タスクで出力ファイルが作成されます。 ジョブのスケジュールを設定する前に、出力ファイルの保存先として BLOB コンテナーをストレージ アカウントに作成します。 次の例では、 [az storage container create](/cli/azure/storage/container#az-storage-container-create) コマンドを使用して、パブリック読み取りアクセスを持つ *job-myrenderjob* コンテナーを作成します。 
+このチュートリアルの例では、レンダリング ジョブの各タスクで出力ファイルが作成されます。 ジョブのスケジュールを設定する前に、出力ファイルの保存先として BLOB コンテナーをストレージ アカウントに作成します。 次の例では、[az storage container create](/cli/azure/storage/container#az-storage-container-create) コマンドを使用して、パブリック読み取りアクセスを持つ *job-myrenderjob* コンテナーを作成します。 
 
 ```azurecli-interactive
 az storage container create \
@@ -193,7 +195,7 @@ az batch job create \
 
 ### <a name="create-a-task"></a>タスクを作成します。
 
-[az batch task create](/cli/azure/batch/task#az-batch-task-create) コマンドを使用して、ジョブにレンダリング タスクを作成します。 この例では、JSON ファイルでタスクの設定を指定します。 現在のシェル内で、 *myrendertask.json* という名前のファイルを作成し、次の内容をコピーして貼り付けます。 すべてのテキストが正しくコピーされるようにしてください  (このファイルは [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask.json) からダウンロードできます)。
+[az batch task create](/cli/azure/batch/task#az-batch-task-create) コマンドを使用して、ジョブにレンダリング タスクを作成します。 この例では、JSON ファイルでタスクの設定を指定します。 現在のシェル内で、*myrendertask.json* という名前のファイルを作成し、次の内容をコピーして貼り付けます。 すべてのテキストが正しくコピーされるようにしてください  (このファイルは [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask.json) からダウンロードできます)。
 
 このタスクでは、3DS Max コマンドを指定して、単一フレームの *MotionBlur-DragonFlying.max* シーンをレンダリングします。
 
@@ -276,7 +278,7 @@ az storage blob download \
 
 ## <a name="scale-the-pool"></a>プールのスケーリング
 
-ここで、複数のフレームを使用して、より大きなレンダリング ジョブに備えるようにプールを変更します。 Batch には、タスク要求の変更に応じてノードを追加または削除する[自動スケール](batch-automatic-scaling.md)など、コンピューティング リソースをスケーリングする方法は多数あります。 この基本的な例では、 [az batch pool resize](/cli/azure/batch/pool#az-batch-pool-resize) コマンドを使用して、プール内の低優先度ノードの数を *6* に引き上げます。
+ここで、複数のフレームを使用して、より大きなレンダリング ジョブに備えるようにプールを変更します。 Batch には、タスク要求の変更に応じてノードを追加または削除する[自動スケール](batch-automatic-scaling.md)など、コンピューティング リソースをスケーリングする方法は多数あります。 この基本的な例では、[az batch pool resize](/cli/azure/batch/pool#az-batch-pool-resize) コマンドを使用して、プール内の低優先度ノードの数を *6* に引き上げます。
 
 ```azurecli-interactive
 az batch pool resize --pool-id myrenderpool --target-dedicated-nodes 0 --target-low-priority-nodes 6
@@ -286,7 +288,7 @@ az batch pool resize --pool-id myrenderpool --target-dedicated-nodes 0 --target-
 
 ## <a name="render-a-multiframe-scene"></a>マルチフレーム シーンのレンダリング
 
-単一フレームの例と同様、 [az batch task create](/cli/azure/batch/task#az-batch-task-create) コマンドを使用して、 *myrenderjob* という名前のジョブにレンダリング タスクを作成します。 ここでは、 *myrendertask_multi.json* という JSON ファイルでタスクの設定を指定します  (このファイルは [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json) からダウンロードできます)。6 つのタスクそれぞれで、Arnold コマンド ラインを指定して、3DS Max シーン *MotionBlur-DragonFlying.max* の 1 つのフレームをレンダリングします。
+単一フレームの例と同様、[az batch task create](/cli/azure/batch/task#az-batch-task-create) コマンドを使用して、*myrenderjob* という名前のジョブにレンダリング タスクを作成します。 ここでは、*myrendertask_multi.json* という JSON ファイルでタスクの設定を指定します  (このファイルは [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json) からダウンロードできます)。6 つのタスクそれぞれで、Arnold コマンド ラインを指定して、3DS Max シーン *MotionBlur-DragonFlying.max* の 1 つのフレームをレンダリングします。
 
 現在のシェルに *myrendertask_multi.json* という名前のファイルを作成し、ダウンロードしたファイルから内容をコピーして貼り付けます。 JSON ファイルの `blobSource` 要素と `containerURL` 要素を変更して、ストレージ アカウントと SAS トークンの名前を含めます。 6 つのタスクそれぞれで設定を変更するようにしてください。 ファイルを保存し、次のコマンドを実行してタスクをキューに登録します。
 
@@ -312,7 +314,7 @@ az batch task show \
     --task-id mymultitask1
 ```
  
-このタスクにより、 *dragon0002.jpg* - *dragon0007.jpg* という名前の出力ファイルがコンピューティング ノード上に生成され、ストレージ アカウント内の *job-myrenderjob* コンテナーにアップロードされます。 出力を表示するには、[az storage blob download-batch](/cli/azure/storage/blob) コマンドを使用して、ファイルをローカル コンピューター上のフォルダーにダウンロードします。 次に例を示します。
+このタスクにより、*dragon0002.jpg* - *dragon0007.jpg* という名前の出力ファイルがコンピューティング ノード上に生成され、ストレージ アカウント内の *job-myrenderjob* コンテナーにアップロードされます。 出力を表示するには、[az storage blob download-batch](/cli/azure/storage/blob) コマンドを使用して、ファイルをローカル コンピューター上のフォルダーにダウンロードします。 次に例を示します。
 
 ```azurecli-interactive
 az storage blob download-batch \

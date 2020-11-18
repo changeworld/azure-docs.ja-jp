@@ -5,27 +5,28 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/06/2020
+ms.date: 11/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3d03d0267ff4fb16042d5cc2016e87139b88281a
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: e7e65d5d2941765df98b3bf3b7fb8ff2e89b7e9f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056584"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411203"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してユーザー VPN 接続を作成する
 
-このチュートリアルでは、Virtual WAN を使用して IPsec/IKE (IKEv2) または OpenVPN VPN 接続経由で Azure のリソースに接続する方法を示します。 この種類の接続では、クライアント コンピューターでクライアントを構成する必要があります。 Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください
+このチュートリアルでは、Virtual WAN を使用して IPsec/IKE (IKEv2) または OpenVPN VPN 接続経由で Azure のリソースに接続する方法を示します。 この種類の接続を使うには、クライアント コンピューター上で VPN クライアントを構成する必要があります。 Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * WAN を作成する
+> * 仮想 WAN を作成する
 > * P2S の構成を作成する
-> * ハブを作成する
+> * 仮想ハブを作成する
 > * DNS サーバーの指定
-> * VPN クライアント プロファイルをダウンロードする
+> * VPN クライアント プロファイル構成パッケージを生成する
+> * VPN クライアントの構成
 > * 仮想 WAN を表示する
 
 ![Virtual WAN のダイアグラム](./media/virtual-wan-about/virtualwanp2s.png)
@@ -42,27 +43,28 @@ ms.locfileid: "92056584"
 
 ポイント対サイト (P2S) 構成では、リモート クライアントを接続するためのパラメーターを定義します。
 
-[!INCLUDE [Create client profiles](../../includes/virtual-wan-p2s-configuration-include.md)]
+[!INCLUDE [Create P2S configuration](../../includes/virtual-wan-p2s-configuration-include.md)]
 
-## <a name="create-hub-with-point-to-site-gateway"></a><a name="hub"></a>ポイント対サイト ゲートウェイを持つハブを作成する
+## <a name="create-virtual-hub-and-gateway"></a><a name="hub"></a>仮想ハブとゲートウェイを作成する
 
 [!INCLUDE [Create hub](../../includes/virtual-wan-p2s-hub-include.md)]
 
 ## <a name="specify-dns-server"></a><a name="dns"></a>DNS サーバーを指定する
 
-Virtual WAN ユーザー VPN ゲートウェイでは、最大 5 つの DNS サーバーを指定できます。 これはハブの作成プロセス時に構成するか、後で変更することができます。 そのためには、仮想ハブを見つける必要があります。 **[ユーザー VPN (ポイントからサイトへ)]** で **[構成]** を選択し、 **[Custom DNS Servers]\(カスタム DNS サーバー\)** ボックスに DNS サーバーの IP アドレスを入力します。
+この設定はハブの作成時に構成するか、後で変更することができます。 変更するには、仮想ハブを見つけます。 **[ユーザー VPN (ポイントからサイトへ)]** で **[構成]** を選択し、 **[Custom DNS Servers]\(カスタム DNS サーバー\)** ボックスに DNS サーバーの IP アドレスを入力します。 最大 5 個の DNS サーバーを指定することができます。
 
    :::image type="content" source="media/virtual-wan-point-to-site-portal/custom-dns.png" alt-text="カスタム DNS" lightbox="media/virtual-wan-point-to-site-portal/custom-dns-expand.png":::
 
-## <a name="download-vpn-profile"></a><a name="download"></a>VPN プロファイルをダウンロードする
+## <a name="generate-vpn-client-profile-package"></a><a name="download"></a>VPN クライアント プロファイル パッケージを生成する
 
-VPN プロファイルを使用してクライアントを構成します。
+VPN クライアント プロファイル パッケージを生成してダウンロードし、VPN クライアントを構成します。
 
 [!INCLUDE [Download profile](../../includes/virtual-wan-p2s-download-profile-include.md)]
 
-### <a name="configure-user-vpn-clients"></a>ユーザー VPN クライアントを構成する
+## <a name="configure-vpn-clients"></a><a name="configure-client"></a>VPN クライアントの構成
 
-ダウンロードしたプロファイルを使用して、リモート アクセス クライアントを構成します。 オペレーティング システムごとに手順は異なります。お使いのシステムに適用される手順に従ってください。
+ダウンロードしたプロファイル パッケージを使用して、リモート アクセス VPN クライアントを構成します。 オペレーティング システムごとに手順は異なります。 お使いシステムに適用される指示に従ってください。
+クライアントの構成が完了したら、接続できます。
 
 [!INCLUDE [Configure clients](../../includes/virtual-wan-p2s-configure-clients-include.md)]
 

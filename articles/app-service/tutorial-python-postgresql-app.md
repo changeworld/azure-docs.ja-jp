@@ -3,7 +3,7 @@ title: チュートリアル:Postgres を使用した Python Django アプリを
 description: PostgreSQL データベースを使用する Python Web アプリを作成し、Azure にデプロイします。 このチュートリアルは Django フレームワークを使用しており、アプリは Azure App Service on Linux でホストされています。
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 10/09/2020
+ms.date: 11/02/2020
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 63fdee6036580df42f7f965244b5f888c1ec082d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 348721304970a5d1d697ecf546a8c5039e81afc1
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540756"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506109"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>チュートリアル:PostgreSQL を使用した Django Web アプリを Azure App Service にデプロイする
 
@@ -79,7 +79,7 @@ az login
 
 サインイン後は、Azure CLI を使用して Azure コマンドを実行して、サブスクリプション内のリソースを操作することができます。
 
-[問題がある場合は、お知らせください。](https://aka.ms/DjangoCLITutorialHelp)
+問題がある場合は、 [お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
 ## <a name="clone-or-download-the-sample-app"></a>サンプル アプリをクローンまたはダウンロードする
 
@@ -101,7 +101,7 @@ cd djangoapp
 
 [https://github.com/Azure-Samples/djangoapp](https://github.com/Azure-Samples/djangoapp) にアクセスして **[Clone]\(クローン\)** を選択し、 **[Download ZIP]\(ZIP のダウンロード\)** を選択します。 
 
-その ZIP ファイルを、 *djangoapp* という名前のフォルダーに展開します。 
+その ZIP ファイルを、*djangoapp* という名前のフォルダーに展開します。 
 
 次に、その *djangoapp* フォルダー内でターミナル ウィンドウを開きます。
 
@@ -111,12 +111,12 @@ djangoapp サンプルには、データ ドリブンの Django 投票アプリ�
 
 このサンプルは、App Service のような運用環境で実行するために変更もされています。
 
-- 運用環境の設定は、 *azuresite/production.py* ファイルにあります。 開発の詳細は *azuresite/settings.py* にあります。
-- `DJANGO_ENV` 環境変数を "production" に設定した場合に、アプリで運用環境の設定が使用されます。 この環境変数は、PostgreSQL データベース構成に使用する他のものと共に、チュートリアルの後半で作成します。
+- 運用環境の設定は、*azuresite/production.py* ファイルにあります。 開発環境の設定は、*azuresite/settings.py* にあります。
+- `WEBSITE_HOSTNAME` 環境変数を設定すると、アプリで運用環境の設定が使用されます。 この変数は、Azure App Service によって Web アプリの URL (`msdocs-django.azurewebsites.net` など) に自動的に設定され ます。
 
-これらの変更は、任意の運用環境で実行するために Django を構成する場合に固有であり、App Service に固有ではありません。 詳細については、[Django デプロイ チェックリスト](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/)に関するページを参照してください。 一部の変更点の詳細については、[Azure 上での Django の運用設定](configure-language-python.md#production-settings-for-django-apps)に関するセクションを参照してください。
+運用環境の設定は、任意の運用環境で実行するために Django を構成する場合に固有であり、App Service に固有なものではありません。 詳細については、[Django デプロイ チェックリスト](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/)に関するページを参照してください。 一部の変更点の詳細については、[Azure 上での Django の運用設定](configure-language-python.md#production-settings-for-django-apps)に関するセクションを参照してください。
 
-[問題がある場合は、お知らせください。](https://aka.ms/DjangoCLITutorialHelp)
+問題がある場合は、 [お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
 ## <a name="create-postgres-database-in-azure"></a>Azure で Postgres データベースを作成する
 
@@ -159,7 +159,7 @@ az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --
 > [!TIP]
 > `-l <location-name>` は、いずれかの [Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)に設定することができます。 ご利用のサブスクリプションから使用できるリージョンは、[`az account list-locations`](/cli/azure/account#az-account-list-locations) コマンドを使用して取得できます。 運用アプリの場合は、データベースとアプリを同じ場所に配置してください。
 
-[問題がある場合は、お知らせください。](https://aka.ms/DjangoCLITutorialHelp)
+問題がある場合は、 [お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
 ## <a name="deploy-the-code-to-azure-app-service"></a>Azure App Service にコードをデプロイする
 
@@ -194,30 +194,27 @@ az webapp up --resource-group DjangoPostgres-tutorial-rg --location westus2 --pl
 
 ![az webapp up コマンド出力の例](./media/tutorial-python-postgresql-app/az-webapp-up-output.png)
 
-[問題がある場合は、お知らせください。](https://aka.ms/DjangoCLITutorialHelp)
-
-> [!NOTE]
-> この時点でアプリの URL にアクセスしようとすると、"DisallowedHost at /" というエラーが発生します。 このエラーは、前に説明した運用環境の設定を使用するようにアプリがまだ構成されていないために発生します。これについては、次のセクションで説明します。
+問題がある場合は、 まず、[トラブルシューティング ガイド](configure-language-python.md#troubleshooting)を参照し、それでも解決しない場合は[お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
 ### <a name="configure-environment-variables-to-connect-the-database"></a>データベースに接続するための環境変数を構成する
 
 コードを App Service にデプロイしたので、次の手順として、アプリを Azure の Postgres データベースに接続します。
 
-アプリ コードでは、`DBHOST`、`DBNAME`、`DBUSER`、および `DBPASS` という 4 つの環境変数でデータベース情報を検索することを想定しています。 運用設定を使用するには、`DJANGO_ENV` 環境変数が `production` に設定されていることも必要です。
+アプリ コードでは、`DBHOST`、`DBNAME`、`DBUSER`、および `DBPASS` という 4 つの環境変数でデータベース情報を検索することを想定しています。
 
 App Service で環境変数を設定するには、次の [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) コマンドを使用して "アプリ設定" を作成します。
 
 ```azurecli
-az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<postgres-server-name>" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"
+az webapp config appsettings set --settings DBHOST="<postgres-server-name>" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"
 ```
 
 - *\<postgres-server-name>* は、先ほど `az postgres up` コマンドで使用した名前に置き換えます。 *azuresite/production.py* 内のコードによって、完全な Postgres サーバー URL を作成するための `.postgres.database.azure.com` が自動的に追加されます。
 - *\<username>* と *\<password>* を、前の `az postgres up` コマンドで使用した管理者の資格情報、または `az postgres up` によって自動的に生成された資格情報に置き換えます。 *azuresite/production.py* 内のコードを実行すると、完全な Postgres ユーザー名が `DBUSER` および `DBHOST` を基に自動的に作成されます。そのため、`@server` の部分は含めないようにしてください。 (また、前述したように、どちらの値にも `$` 文字は使用しないでください。Linux 環境変数では、この文字に特殊な意味があります。)
 - リソース グループとアプリ名は、 *.azure/config* ファイル内のキャッシュされた値から取得されます。
 
-Python コードでは、`os.environ.get('DJANGO_ENV')` のようなステートメントを使用して、環境変数としてこれらの設定にアクセスします。 詳細については、「[環境変数へのアクセス](configure-language-python.md#access-environment-variables)」を参照してください。
+Python コードでは、`os.environ.get('DBHOST')` のようなステートメントを使用して、環境変数としてこれらの設定にアクセスします。 詳細については、「[環境変数へのアクセス](configure-language-python.md#access-environment-variables)」を参照してください。
 
-[問題がある場合は、お知らせください。](https://aka.ms/DjangoCLITutorialHelp)
+問題がある場合は、 まず、[トラブルシューティング ガイド](configure-language-python.md#troubleshooting)を参照し、それでも解決しない場合は[お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
 ### <a name="run-django-database-migrations"></a>Django データベースの移行を実行する
 
@@ -235,7 +232,7 @@ Django データベースの移行によって、Azure データベース上の 
 
     SSH セッションに接続できない場合は、アプリ自体が起動に失敗しています。 詳細については、[診断ログを確認](#stream-diagnostic-logs)してください。 たとえば、前のセクションで必要なアプリ設定を作成していない場合、ログには `KeyError: 'DBNAME'` と示されます。
 
-1. SSH セッションで次のコマンドを実行します ( **Ctrl**+**Shift**+**V** キーを使用してコマンドを貼り付けることができます)。
+1. SSH セッションで次のコマンドを実行します (**Ctrl**+**Shift**+**V** キーを使用してコマンドを貼り付けることができます)。
 
     ```bash
     # Change to the folder where the app code is deployed
@@ -254,11 +251,11 @@ Django データベースの移行によって、Azure データベース上の 
     python manage.py createsuperuser
     ```
 
-1. `createsuperuser` コマンドを使用すると、スーパーユーザーの資格情報の入力を求められます。 このチュートリアルの目的では、既定のユーザー名である `root` を使用し、 **Enter** キーを押してメール アドレスを空白のままにして、パスワードを「`Pollsdb1`」と入力します。
+1. `createsuperuser` コマンドを使用すると、スーパーユーザーの資格情報の入力を求められます。 このチュートリアルの目的では、既定のユーザー名である `root` を使用し、**Enter** キーを押してメール アドレスを空白のままにして、パスワードを「`Pollsdb1`」と入力します。
 
 1. データベースがロックされているというエラーが表示された場合は、前のセクションで `az webapp settings` コマンドを実行したことを確認してください。 それらの設定を行わないと、migrate コマンドがデータベースと通信できずにエラーが発生します。
 
-[問題がある場合は、お知らせください。](https://aka.ms/DjangoCLITutorialHelp)
+問題がある場合は、 まず、[トラブルシューティング ガイド](configure-language-python.md#troubleshooting)を参照し、それでも解決しない場合は[お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
     
 ### <a name="create-a-poll-question-in-the-app"></a>アプリで投票の質問を作成する
 
@@ -274,7 +271,7 @@ Django データベースの移行によって、Azure データベース上の 
 
 **お疲れさまでした。** アクティブな Postgres データベースを使用して、Azure App Service for Linux で Python Django Web アプリが実行されています。
 
-[問題がある場合は、お知らせください。](https://aka.ms/DjangoCLITutorialHelp)
+問題がある場合は、 [お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
 > [!NOTE]
 > App Service では、各サブフォルダー内で *wsgi.py* ファイル (`manage.py startproject` によって既定で作成されます) を探すことにより、Django プロジェクトが検出されます。 App Service でそのファイルが見つかると、Django Web アプリが読み込まれます。 詳細については、[組み込みの Python イメージの構成](configure-language-python.md)に関するページを参照してください。
@@ -356,7 +353,7 @@ Web アプリが完全に読み込まれると、Django 開発サーバーによ
 
 ローカルで実行している場合、アプリではローカルの Sqlite3 データベースを使用しており、運用データベースに干渉することはありません。 必要に応じて、ローカルの PostgreSQL データベースを使用して、運用環境をより正確にシミュレートすることもできます。
 
-[問題がある場合は、お知らせください。](https://aka.ms/DjangoCLITutorialHelp)
+問題がある場合は、 [お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
 ### <a name="update-the-app"></a>アプリの更新
 
@@ -374,11 +371,11 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-`python manage.py runserver` を使用して開発サーバーを再度実行し、 *http:\//localhost:8000/admin* でアプリをテストします。
+`python manage.py runserver` を使用して開発サーバーを再度実行し、*http:\//localhost:8000/admin* でアプリをテストします。
 
 **Ctrl**+**C** キーを使用して Django Web サーバーを再度停止します。
 
-[問題がある場合は、お知らせください。](https://aka.ms/DjangoCLITutorialHelp)
+問題がある場合は、 まず、[トラブルシューティング ガイド](configure-language-python.md#troubleshooting)を参照し、それでも解決しない場合は[お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
 ### <a name="redeploy-the-code-to-azure"></a>Azure にコードを再デプロイする
 
@@ -390,7 +387,7 @@ az webapp up
 
 このコマンドでは、 *.azure/config* ファイルにキャッシュされたパラメーターを使用します。 アプリが既に存在することが App Service によって検出されるので、コードの再デプロイだけが行われます。
 
-[問題がある場合は、お知らせください。](https://aka.ms/DjangoCLITutorialHelp)
+問題がある場合は、 まず、[トラブルシューティング ガイド](configure-language-python.md#troubleshooting)を参照し、それでも解決しない場合は[お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
 ### <a name="rerun-migrations-in-azure"></a>Azure で移行を再実行する
 
@@ -407,13 +404,13 @@ source /antenv/bin/activate
 python manage.py migrate
 ```
 
-[問題がある場合は、お知らせください。](https://aka.ms/DjangoCLITutorialHelp)
+問題がある場合は、 まず、[トラブルシューティング ガイド](configure-language-python.md#troubleshooting)を参照し、それでも解決しない場合は[お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
 ### <a name="review-app-in-production"></a>運用環境でアプリを確認する
 
 `http://<app-name>.azurewebsites.net` に移動し、運用環境でアプリを再度テストします (データベース フィールドの長さを変更しただけなので、質問の作成時に長い回答を入力しようとした場合にのみ、この変更が明らかになります)。
 
-[問題がある場合は、お知らせください。](https://aka.ms/DjangoCLITutorialHelp)
+問題がある場合は、 まず、[トラブルシューティング ガイド](configure-language-python.md#troubleshooting)を参照し、それでも解決しない場合は[お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
 ## <a name="stream-diagnostic-logs"></a>診断ログをストリーミングする
 
@@ -427,9 +424,9 @@ az webapp log tail
 
 コンソール ログがすぐに表示されない場合は、30 秒以内にもう一度確認します。
 
-任意のタイミングでログのストリーミングを停止するには、 **Ctrl**+**C** キーを押します。
+任意のタイミングでログのストリーミングを停止するには、**Ctrl**+**C** キーを押します。
 
-[問題がある場合は、お知らせください。](https://aka.ms/DjangoCLITutorialHelp)
+問題がある場合は、 [お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
 > [!NOTE]
 > `https://<app-name>.scm.azurewebsites.net/api/logs/docker` で、ブラウザーからログ ファイルを検査することもできます。
@@ -450,7 +447,7 @@ az webapp log tail
 
 ![Azure portal の [概要] ページで Python Django アプリを管理する](./media/tutorial-python-postgresql-app/manage-django-app-in-app-services-in-the-azure-portal.png)
 
-[問題がある場合は、お知らせください。](https://aka.ms/DjangoCLITutorialHelp)
+問題がある場合は、 まず、[トラブルシューティング ガイド](configure-language-python.md#troubleshooting)を参照し、それでも解決しない場合は[お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -464,7 +461,7 @@ az group delete --no-wait
 
 すべてのリソースが削除されるまでには多少時間がかかります。 `--no-wait` 引数を指定すると、コマンドからすぐに制御が戻されます。
 
-[問題がある場合は、お知らせください。](https://aka.ms/DjangoCLITutorialHelp)
+問題がある場合は、 [お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
 ## <a name="next-steps"></a>次のステップ
 

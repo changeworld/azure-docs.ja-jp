@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c9dcb2fa8be22c21cc2b005cce1bf8bb1c614381
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2230784eedd044acd95b3087793ba664b544f76a
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324297"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505072"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-preview-using-the-azure-portal"></a>クイックスタート: Azure portal を使用して専用 SQL プール (プレビュー) を作成する
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 1. Synapse ワークスペースに移動します。ここでは、検索バーにサービス名 (またはリソース名を直接) 入力して、専用 SQL プールを作成します。
 ![「Synapse ワークスペース」と入力されている Azure portal の検索バー。](media/quickstart-create-sql-pool/create-sql-pool-00a.png) 
-1. ワークスペースの一覧で、開くワークスペースの名前 (または名前の一部) を入力します。 この例では、 **contosoanalytics** という名前のワークスペースを使用します。
+1. ワークスペースの一覧で、開くワークスペースの名前 (または名前の一部) を入力します。 この例では、**contosoanalytics** という名前のワークスペースを使用します。
 ![名前に Contoso を含むワークスペースを表示するためにフィルター処理された Synapse ワークスペースの一覧。](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
 
 ## <a name="create-new-dedicated-sql-pool"></a>新しい専用 SQL プールを作成する
@@ -59,6 +59,9 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 3. **[Next:追加設定]** を選択します。
 4. データなしで専用 SQL プールをプロビジョニングするには、 **[None]\(なし\)** を選択します。 既定の照合順序を選択したままにします。
+
+    復元ポイントから専用の SQL プールを復元する場合は、 **[復元ポイント]** を選択します。 復元を実行する方法の詳細については、[既存の専用 SQL プールを復元する方法](backuprestore/restore-sql-pool.md)に関するページをご覧ください
+
 ![専用 SQL プールの作成フロー - 追加設定のタブ。](media/quickstart-create-sql-pool/create-sql-pool-portal-03.png)
 
 5. **[Review + create]\(レビュー + 作成\)** を選択します。
@@ -84,7 +87,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 専用 SQL プールを削除するには、次の手順を完了します。
 
 1. ワークスペース ブレードの [SQL プール] ブレードに移動します。
-1. 削除する専用 SQL プール (この場合は **contosowdw** ) を選択します
+1. 削除する専用 SQL プール (この場合は **contosowdw**) を選択します
 1. 選択したら、 **[削除]** を押します
 1. 削除を確認し、 **[削除]** ボタンを押します![専用 SQL プールの概要 - 削除の確認が強調表示されています。](media/quickstart-create-sql-pool/create-sql-pool-portal-11.png)
 1. プロセスが正常に完了すると、専用 SQL プールはワークスペース リソースの一覧に表示されなくなります。

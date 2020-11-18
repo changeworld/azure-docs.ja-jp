@@ -1,6 +1,6 @@
 ---
-title: IoT プラグ アンド プレイのサンプル Python デバイス コードを Azure IoT Hub に接続する | Microsoft Docs
-description: Python を使用して、IoT ハブと接続する IoT プラグ アンド プレイのサンプル デバイス コードをビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
+title: クイックスタート - IoT プラグ アンド プレイのサンプル Python デバイス コードを Azure IoT Hub に接続する | Microsoft Docs
+description: クイックスタート - Python を使用して、IoT ハブと接続する IoT プラグ アンド プレイのサンプル デバイス コードをビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 7/14/2020
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 065e65c0c8ccf61dd67da19fd5a94d4506db73ff
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 38c6b835f0a3ddaaf4c049ca6ea3aeb484ad3280
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737314"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421568"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-to-iot-hub-python"></a>クイック スタート:サンプルの IoT プラグ アンド プレイ デバイス アプリケーションを IoT Hub に接続する (Python)
 
@@ -37,7 +37,7 @@ python --version
 pip install azure-iot-device
 ```
 
-Python SDK IoT リポジトリをクローンし、 **master** をチェックアウトします。
+Python SDK IoT リポジトリをクローンし、**master** をチェックアウトします。
 
 ```cmd/sh
 git clone https://github.com/Azure/azure-iot-sdk-python
@@ -45,7 +45,7 @@ git clone https://github.com/Azure/azure-iot-sdk-python
 
 ## <a name="run-the-sample-device"></a>サンプル デバイスを実行する
 
-*azure-iot-sdk-python\azure-iot-device\samples\pnp* フォルダーには、IoT プラグ アンド プレイ デバイスのサンプル コードが含まれています。 このクイックスタートでは、 *simple_thermostat.py* ファイルを使用します。 このサンプル コードでは、IoT プラグ アンド プレイ互換デバイスを実装し、Azure IoT Python デバイス クライアント ライブラリを使用します。
+*azure-iot-sdk-python\azure-iot-device\samples\pnp* フォルダーには、IoT プラグ アンド プレイ デバイスのサンプル コードが含まれています。 このクイックスタートでは、*simple_thermostat.py* ファイルを使用します。 このサンプル コードでは、IoT プラグ アンド プレイ互換デバイスを実装し、Azure IoT Python デバイス クライアント ライブラリを使用します。
 
 テキスト エディターで **simple_thermostat.py** ファイルを開きます。 次の点に注意してください。
 
@@ -67,7 +67,7 @@ git clone https://github.com/Azure/azure-iot-sdk-python
         - `user_command_handler` 関数では、コマンドを受信したときにデバイスによって行われる必要がある内容を定義します。 たとえば、アラームが鳴る場合、このコマンドを受信することの効果は、目を覚ますことです。 これは、呼び出されるコマンドの "効果" と考えてください。
         - `create_user_response_handler` 関数により、コマンドが正常に実行されたときに IoT ハブに送信される応答が作成されます。 たとえば、アラームが鳴る場合、スヌーズを押して応答します。これは、サービスに対するフィードバックです。 これは、サービスに与える返信と考えてください。 この応答はポータルで確認できます。
 
-    1. テレメトリの送信が開始されます。 pnp_methods.py ファイルには、 **pnp_send_telemetry** が定義されています。 サンプル コードでは、ループを使用して、8 秒ごとにこの関数を呼び出しています。
+    1. テレメトリの送信が開始されます。 pnp_methods.py ファイルには、**pnp_send_telemetry** が定義されています。 サンプル コードでは、ループを使用して、8 秒ごとにこの関数を呼び出しています。
 
     1. ユーザーが **Q** または **q** キーを押したら、すべてのリスナーとタスクを無効にし、ループを終了します。
 

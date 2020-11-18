@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aaa9fa036f86fc822a4bb2175f404cdff1ca81d7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 9e6b03a2f9dd0089b1112000804e46f3d214cd3c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362571"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131294"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>チュートリアル:ログ分析ウィザードを構成する
 
@@ -96,11 +96,11 @@ Log Analytics ワークスペースの構成は、主に 2 つの手順で構成
 
 7. **Azure Active Directory** を検索します。
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Search 内の Azure Active Directory を示すスクリーンショット。](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 8. **[監視]** セクションで、 **[診断設定]** をクリックします。
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/diagnostic-settings.png)
+    ![[監視] で選択された [診断設定] を示すスクリーンショット。](./media/tutorial-log-analytics-wizard/diagnostic-settings.png)
 
 9. **[診断設定]** ページで、 **[診断設定を追加する]** をクリックします。
 
@@ -128,13 +128,13 @@ Log Analytics ワークスペースの構成は、主に 2 つの手順で構成
 
 2. **Azure Active Directory** を検索します。
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Search 内の Azure Active Directory を示すスクリーンショット。](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. **[監視]** セクションで、 **[ログ]** をクリックします。
 
 4. **[ログ]** ページで **[Get Started]\(開始\)** をクリックします。
 
-5. **検索*ボックスに、クエリを入力します。
+5. **検索* ボックスに、クエリを入力します。
 
 6. **[実行]** をクリックします。  
 
@@ -210,13 +210,13 @@ Log Analytics ワークスペースの構成は、主に 2 つの手順で構成
 
 2. **Azure Active Directory** を検索します。
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Search 内の Azure Active Directory を示すスクリーンショット。](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. **[監視]** セクションで、 **[ログ]** をクリックします。
 
 4. **[ログ]** ページで **[Get Started]\(開始\)** をクリックします。
 
-5. **検索**ボックスに、「`SigninLogs |where UserDisplayName contains "BreakGlass" | project UserDisplayName`」と入力します。
+5. **検索** ボックスに、「`SigninLogs |where UserDisplayName contains "BreakGlass" | project UserDisplayName`」と入力します。
 
 6. **[実行]** をクリックします。  
 
@@ -301,7 +301,7 @@ Log Analytics ワークスペースの構成は、主に 2 つの手順で構成
 
 2. **Azure Active Directory** を検索します。
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Search 内の Azure Active Directory を示すスクリーンショット。](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. **[監視]** セクションで、 **[ブック]** をクリックします。
 
@@ -332,7 +332,7 @@ Log Analytics ワークスペースの構成は、主に 2 つの手順で構成
 
 10. [**クエリの実行**] をクリックします。
 
-    ![Run query](./media/tutorial-log-analytics-wizard/run-workbook-query.png)
+    ![[クエリの実行] ボタンを示すスクリーンショット。](./media/tutorial-log-analytics-wizard/run-workbook-query.png)
 
 11. ツール バーの **[視覚化]** で、 **[円グラフ]** をクリックします。
 
@@ -353,7 +353,7 @@ Log Analytics ワークスペースの構成は、主に 2 つの手順で構成
 
 2. **Azure Active Directory** を検索します。
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Search 内の Azure Active Directory を示すスクリーンショット。](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. **[監視]** セクションで、 **[ブック]** をクリックします。
 
@@ -361,11 +361,11 @@ Log Analytics ワークスペースの構成は、主に 2 つの手順で構成
 
 4. **[条件付きアクセス]** セクションで、 **[Conditional Access Insights and Reporting]\(条件付きアクセスに関する分析情報とレポート\)** をクリックします。
 
-    ![条件付きアクセス テンプレート](./media/tutorial-log-analytics-wizard/conditional-access-template.png)
+    ![[Conditional Access Insights and Reporting]\(条件付きアクセスに関する分析情報とレポート\) オプションを示すスクリーンショット。](./media/tutorial-log-analytics-wizard/conditional-access-template.png)
 
 5. ツール バーで、 **[編集]** をクリックします。
 
-    ![条件付きアクセス テンプレート](./media/tutorial-log-analytics-wizard/edit-workbook-template.png)
+    ![[編集] ボタンを示すスクリーンショット。](./media/tutorial-log-analytics-wizard/edit-workbook-template.png)
 
 6. ツール バーで、3 つのドット、 **[追加]** 、 **[クエリの追加]** の順にクリックします。
 
@@ -375,7 +375,7 @@ Log Analytics ワークスペースの構成は、主に 2 つの手順で構成
 
 8. [**クエリの実行**] をクリックします。
 
-    ![Run query](./media/tutorial-log-analytics-wizard/run-workbook-insights-query.png)
+    ![このクエリを実行する [クエリの実行] ボタンを示すスクリーンショット。](./media/tutorial-log-analytics-wizard/run-workbook-insights-query.png)
 
 9. **[期間]** をクリックし、 **[クエリに設定します]** を選択します。
 

@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - Azure Toolkit for IntelliJ (Spark アプリケーション)
-description: チュートリアル - Azure Toolkit for IntelliJ を使用して Scala で記述された Spark アプリケーションを開発し、Apache Spark プール (プレビュー) に送信します。
+description: チュートリアル - Azure Toolkit for IntelliJ を使用して Scala で記述された Spark アプリケーションを開発し、サーバーレス Apache Spark プール (プレビュー) に送信します。
 services: synapse-analytics
 author: hrasheed-msft
 ms.author: jejiang
@@ -9,16 +9,16 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: be127d4214577e017522aec6a1b61b8f62638ed9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5a9fcf3e13c2f86a11e9626be486a585ec659044
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368742"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325233"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>チュートリアル:IntelliJ で Synapse ワークスペースを使用して Apache Spark アプリケーションを作成する
 
-このチュートリアルでは、Azure Toolkit for IntelliJ プラグインを使用して [Scala](https://www.scala-lang.org/) で記述された Apache Spark アプリケーションを開発してから、それを IntelliJ 統合開発環境 (IDE) から直接 Spark プール (プレビュー) に送信する方法を説明します。 このプラグインには、次のような使い方があります。
+このチュートリアルでは、Azure Toolkit for IntelliJ プラグインを使用して、[Scala](https://www.scala-lang.org/) で記述された Apache Spark アプリケーションを開発し、それを IntelliJ 統合開発環境 (IDE) からサーバーレス Apache Spark プール (プレビュー) に直接送信する方法について説明します。 このプラグインには、次のような使い方があります。
 
 - Scala Spark アプリケーションを開発して Spark プール に送信する。
 - Spark プール リソースにアクセスする。
@@ -40,7 +40,7 @@ ms.locfileid: "92368742"
 - 次の前提条件は、Windows ユーザーのみを対象としています。
 
   Windows コンピューターでローカルの Spark Scala アプリケーションを実行中に、[SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) で説明されている例外が発生する場合があります。 この例外は、Windows 上に WinUtils.exe がないことが原因で発生します。
-  このエラーを回避するには、 [WinUtils 実行可能ファイル](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)をダウンロードして、 **C:\WinUtils\bin** などの場所に保存します。 次に、環境変数 **HADOOP_HOME** を追加し、この変数の値を **C:\WinUtils** に設定します。
+  このエラーを回避するには、[WinUtils 実行可能ファイル](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)をダウンロードして、**C:\WinUtils\bin** などの場所に保存します。 次に、環境変数 **HADOOP_HOME** を追加し、この変数の値を **C:\WinUtils** に設定します。
 
 ## <a name="create-a-spark-scala-application-for-a-spark-pool"></a>Spark プールの Spark Scala アプリケーションを作成する
 
@@ -49,8 +49,8 @@ ms.locfileid: "92368742"
 3. メイン ウィンドウから **[サンプルありの Spark プロジェクト (Scala)]** を選択します。
 4. **[Build tool]\(ビルド ツール\)** ドロップダウン ボックスの一覧で、次のいずれかの種類を選択します。
 
-   - Scala プロジェクト作成ウィザードをサポートする場合は **Maven** 。
-   - 依存関係を管理し、Scala プロジェクトをビルドする場合は **SBT** 。
+   - Scala プロジェクト作成ウィザードをサポートする場合は **Maven**。
+   - 依存関係を管理し、Scala プロジェクトをビルドする場合は **SBT**。
 
     ![IntelliJ IDEA の [New Project]\(新しいプロジェクト\) ダイアログ ボックス](./media/intellij-tool-synapse/create-synapse-application01.png)
 
@@ -178,7 +178,7 @@ Scala アプリケーションを作成した後、これをリモートから�
 
     ![Intellij の実行/デバッグ構成 (ローカル実行 2)](./media/intellij-tool-synapse/local-run-synapse01.png)
 
-3. ローカル実行が完了したら、スクリプトに出力が含まれている場合は、 **[data]**  >  **[ __default__ ]** から出力ファイルを確認できます。
+3. ローカル実行が完了したら、スクリプトに出力が含まれている場合は、 **[data]**  >  **[__default__]** から出力ファイルを確認できます。
 
     ![Intellij プロジェクトのローカル実行の結果 1](./media/intellij-tool-synapse/spark-local-run-result.png)
 

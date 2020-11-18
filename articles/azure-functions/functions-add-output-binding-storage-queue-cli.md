@@ -5,20 +5,39 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 3e84db3aa13ae77f931a46683f0c5e4572f6ce44
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c7d41d889692856a9818aacd265e67b0c2d3d1ad
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87852635"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422880"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>コマンド ライン ツールを使用して Azure Functions を Azure Storage に接続する
 
-この記事では、[前のクイックスタート](functions-create-first-azure-function-azure-cli.md)で作成したストレージ アカウントと関数に Azure Storage キューを統合します。 この統合は、HTTP 要求からキュー内のメッセージにデータを書き込む "*出力バインディング*" を使用して実現します。 この記事を完了しても、前のクイックスタートの数セントを超えるコストが追加で発生することはありません。 バインドの詳細については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」を参照してください。
+この記事では、前のクイックスタート記事で作成したストレージ アカウントと関数に Azure Storage キューを統合します。 この統合は、HTTP 要求からキュー内のメッセージにデータを書き込む "*出力バインディング*" を使用して実現します。 この記事を完了しても、前のクイックスタートの数セントを超えるコストが追加で発生することはありません。 バインドの詳細については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」を参照してください。
 
 ## <a name="configure-your-local-environment"></a>ローカル環境を構成する
 
-開始する前に、「[クイックスタート:コマンド ラインから Azure Functions プロジェクトを作成する](functions-create-first-azure-function-azure-cli.md)」という記事を終える必要があります。 その記事の最後でリソースをクリーンアップした場合は、もう一度手順に従って Azure で関数アプリと関連リソースを再作成してください。
+開始する前に、「[クイックスタート:コマンド ラインから Azure Functions プロジェクトを作成する][previous-quickstart]」という記事を終える必要があります。 その記事の最後でリソースをクリーンアップした場合は、もう一度手順に従って Azure で関数アプリと関連リソースを再作成してください。
+
+::: zone pivot="programming-language-csharp"  
+開始する前に、「[クイックスタート:コマンド ラインから Azure Functions プロジェクトを作成する](create-first-function-cli-csharp.md)」という記事を終える必要があります。 その記事の最後でリソースをクリーンアップした場合は、もう一度手順に従って Azure で関数アプリと関連リソースを再作成してください。  
+::: zone-end  
+::: zone pivot="programming-language-javascript"  
+開始する前に、「[クイックスタート:コマンド ラインから Azure Functions プロジェクトを作成する](create-first-function-cli-node.md)」という記事を終える必要があります。 その記事の最後でリソースをクリーンアップした場合は、もう一度手順に従って Azure で関数アプリと関連リソースを再作成してください。  
+::: zone-end   
+::: zone pivot="programming-language-java"  
+開始する前に、「[クイックスタート:コマンド ラインから Azure Functions プロジェクトを作成する](create-first-function-cli-java.md)」という記事を終える必要があります。 その記事の最後でリソースをクリーンアップした場合は、もう一度手順に従って Azure で関数アプリと関連リソースを再作成してください。  
+::: zone-end   
+::: zone pivot="programming-language-typescript"  
+開始する前に、「[クイックスタート:コマンド ラインから Azure Functions プロジェクトを作成する](create-first-function-cli-typescript.md)」という記事を終える必要があります。 その記事の最後でリソースをクリーンアップした場合は、もう一度手順に従って Azure で関数アプリと関連リソースを再作成してください。  
+::: zone-end   
+::: zone pivot="programming-language-python"  
+開始する前に、「[クイックスタート:コマンド ラインから Azure Functions プロジェクトを作成する](create-first-function-cli-python.md)」という記事を終える必要があります。 その記事の最後でリソースをクリーンアップした場合は、もう一度手順に従って Azure で関数アプリと関連リソースを再作成してください。  
+::: zone-end   
+::: zone pivot="programming-language-powershell"  
+開始する前に、「[クイックスタート:コマンド ラインから Azure Functions プロジェクトを作成する](create-first-function-cli-powershell.md)」という記事を終える必要があります。 その記事の最後でリソースをクリーンアップした場合は、もう一度手順に従って Azure で関数アプリと関連リソースを再作成してください。  
+::: zone-end   
 
 [!INCLUDE [functions-cli-get-storage-connection](../../includes/functions-cli-get-storage-connection.md)]
 
@@ -101,7 +120,7 @@ mvn azure-functions:deploy
 
     # <a name="browser"></a>[ブラウザー](#tab/browser)
     
-    publish コマンドの出力に表示されている完全な**呼び出し URL** にクエリ パラメーター `&name=Functions` を追加して、ブラウザーのアドレス バーにコピーします。 関数をローカルで実行したときと同様の出力がブラウザーに表示されるはずです。
+    publish コマンドの出力に表示されている完全な **呼び出し URL** にクエリ パラメーター `&name=Functions` を追加して、ブラウザーのアドレス バーにコピーします。 関数をローカルで実行したときと同様の出力がブラウザーに表示されるはずです。
 
     ![Azure 上で実行された関数の出力をブラウザーで表示したところ](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-browser.png)
 
@@ -129,33 +148,41 @@ HTTP によってトリガーされる関数を、ストレージ キューに�
 
 + [Azure Functions Core Tools の操作](functions-run-local.md)  
 
++ [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
+
 ::: zone pivot="programming-language-csharp"  
 + [C# での完全な関数プロジェクトの例](/samples/browse/?products=azure-functions&languages=csharp)。
 
 + [Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-dotnet-class-library.md)  
+
+[previous-quickstart]: create-first-function-cli-csharp.md
+
 ::: zone-end 
 ::: zone pivot="programming-language-javascript"  
 + [JavaScript での完全な関数プロジェクトの例](/samples/browse/?products=azure-functions&languages=javascript)。
 
 + [Azure Functions の JavaScript 開発者向けガイド](functions-reference-node.md)  
+
+[previous-quickstart]: create-first-function-cli-javascript.md
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
 + [TypeScript での完全な関数プロジェクトの例](/samples/browse/?products=azure-functions&languages=typescript)。
 
 + [Azure Functions の TypeScript 開発者向けガイド](functions-reference-node.md#typescript)  
+
+[previous-quickstart]: create-first-function-cli-typescript.md
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
 + [Python での完全な関数プロジェクトの例](/samples/browse/?products=azure-functions&languages=python)。
 
 + [Azure Functions の Python 開発者向けガイド](functions-reference-python.md)  
+
+[previous-quickstart]: create-first-function-cli-python.md
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"  
 + [PowerShell での完全な関数プロジェクトの例](/samples/browse/?products=azure-functions&languages=azurepowershell)。
 
 + [Azure Functions の PowerShell 開発者向けガイド](functions-reference-powershell.md) 
+
+[previous-quickstart]: create-first-function-cli-powershell.md
 ::: zone-end
-+ [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
-
-+ [Functions の価格に関するページ](https://azure.microsoft.com/pricing/details/functions/)
-
-+ [従量課金プランのコストの見積もり](functions-consumption-costs.md) 

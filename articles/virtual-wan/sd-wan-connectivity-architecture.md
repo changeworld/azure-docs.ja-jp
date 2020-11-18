@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sukishen
-ms.openlocfilehash: e3f6f947b86b1cb34fde66c62199336403037827
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: ea9ddd05fe6fc745a3eefc29ab4f1d6aababc936
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828052"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564703"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>Azure Virtual WAN を使用した SD-WAN 接続アーキテクチャ
 
@@ -44,9 +44,9 @@ Virtual WAN では、ユーザーは Azure パス選択を利用できます。�
 
 ## <a name="direct-interconnect-model-with-nva-in-vwan-hub"></a><a name="direct"></a>NVA-in-VWAN-hub による直接相互接続モデル
 
-:::image type="content" source="./media/sd-wan-connectivity-architecture/direct-nva.png" alt-text="直接相互接続モデル":::
+:::image type="content" source="./media/sd-wan-connectivity-architecture/direct-nva.png" alt-text="NVA-in-VWAN-hub による直接相互接続モデル":::
 
-このアーキテクチャ モデルでは、サードパーティ製の[ネットワーク仮想アプライアンス (NVA) を仮想ハブに直接](https://docs.microsoft.com/azure/virtual-wan/about-nva-hub)デプロイできます。 これにより、ブランチ CPE を仮想ハブにある同じブランドの NVA に接続したいお客様は、Azure ワークロードに接続するとき、独自のエンドツーエンド SD-WAN 機能を活用できるようになります。 
+このアーキテクチャ モデルでは、サードパーティ製の[ネットワーク仮想アプライアンス (NVA) を仮想ハブに直接](./about-nva-hub.md)デプロイできます。 これにより、ブランチ CPE を仮想ハブにある同じブランドの NVA に接続したいお客様は、Azure ワークロードに接続するとき、独自のエンドツーエンド SD-WAN 機能を活用できるようになります。 
 
 数社の Virtual WAN パートナーが、デプロイ プロセスの一環として NVA を自動的に構成するエクスペリエンスを提供できるよう取り組んできました。 NVA が仮想ハブにプロビジョニングされた後は、NVA で必要になる可能性がある追加の構成は NVA パートナー ポータルまたは管理アプリケーションを使用して行う必要があります。 NVA への直接アクセスは使用できません。 Azure Virtual WAN ハブに直接デプロイできる NVA は、仮想ハブで使用するために特別に設計されています。 NVA-in-VWAN-hub をサポートするパートナーとそのデプロイ ガイドについては、[Virtual WAN パートナー](virtual-wan-locations-partners.md#partners-with-integrated-virtual-hub-offerings)に関する記事を参照してください。
 
@@ -55,7 +55,7 @@ Virtual WAN では、ユーザーは Azure パス選択を利用できます。�
 
 ## <a name="indirect-interconnect-model"></a><a name="indirect"></a>間接相互接続モデル
 
-:::image type="content" source="./media/sd-wan-connectivity-architecture/indirect.png" alt-text="直接相互接続モデル":::
+:::image type="content" source="./media/sd-wan-connectivity-architecture/indirect.png" alt-text="間接相互接続モデル":::
 
 このアーキテクチャ モデルでは、SD-WAN ブランチの CPE は Virtual WAN ハブに間接的に接続されます。 図に示すように、SD-WAN 仮想 CPE はエンタープライズ VNet にデプロイされます。 この仮想 CPE は、IPsec を使用して Virtual WAN ハブに接続されます。 仮想 CPE は、Azure への SD-WAN ゲートウェイとして機能します。 Azure のワークロードにアクセスする必要があるブランチは、v-CPE ゲートウェイ経由でアクセスできます。
 
@@ -63,7 +63,7 @@ Azure への接続は v-CPE ゲートウェイ (NVA) 経由であるため、Azu
   
 ## <a name="managed-hybrid-wan-model"></a><a name="hybrid"></a>マネージド ハイブリッド WAN モデル
 
-:::image type="content" source="./media/sd-wan-connectivity-architecture/hybrid.png" alt-text="直接相互接続モデル":::
+:::image type="content" source="./media/sd-wan-connectivity-architecture/hybrid.png" alt-text="マネージド ハイブリッド WAN モデル":::
 
 このアーキテクチャ モデルでは、企業はマネージ ドサービス プロバイダー (MSP) パートナーが提供するマネージド SD-WAN サービスを利用できます。 このモデルは、上記の直接モデルまたは間接モデルに似ています。 ただし、このモデルでは、SD-WAN の設計、オーケストレーション、運用は、SD-WAN プロバイダーによって行われます。
 

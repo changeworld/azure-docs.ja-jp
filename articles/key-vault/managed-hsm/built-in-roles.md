@@ -8,16 +8,16 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 6b39c1d6fe2e84055e7c94dde076514d04a24f36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5ecd8f13a3255a565168f62f358a6a38e3cbab4
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90992442"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445219"
 ---
 # <a name="managed-hsm-local-rbac-built-in-roles"></a>Managed HSM のローカル RBAC の組み込みロール
 
-Managed HSM のローカル RBAC には、ユーザー、サービス プリンシパル、グループ、マネージド ID に割り当てることのできる組み込みロールがいくつかあります。 プリンシパルが操作を実行できるようにするには、その操作を実行するためのアクセス許可が付与されるロールを割り当てる必要があります。 これらのロールと操作で管理できるのは、データ プレーン操作に対するアクセス許可のみです。 Managed HSM リソースの制御プレーンのアクセス許可を管理する (新しいマネージド HSM を作成したり、既存のものを更新、移動、削除したりする) には、[Azure のロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) を使用する必要があります。
+Managed HSM のローカル RBAC には、ユーザー、サービス プリンシパル、グループ、マネージド ID に割り当てることのできる組み込みロールがいくつかあります。 プリンシパルが操作を実行できるようにするには、その操作を実行するためのアクセス許可が付与されるロールを割り当てる必要があります。 これらのロールと操作で管理できるのは、データ プレーン操作に対するアクセス許可のみです。 Managed HSM リソースのコントロール プレーンのアクセス許可を管理する (新しいマネージド HSM を作成したり、既存のものを更新、移動、削除したりする) には、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を使用する必要があります。
 
 ## <a name="built-in-roles"></a>組み込みのロール
 
@@ -77,5 +77,5 @@ Managed HSM のローカル RBAC には、ユーザー、サービス プリン�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure ロールベースのアクセス制御 (RBAC) の概要](../../role-based-access-control/overview.md)を確認します。
+- [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) の概要を確認します。
 - [Managed HSM のロール管理](role-management.md)に関するチュートリアルを確認します。

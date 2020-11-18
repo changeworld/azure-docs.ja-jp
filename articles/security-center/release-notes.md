@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 3ea8e944a004dc89dadc74e4ab2e3e4b295b3a9b
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 375dff1dacc949dd4373bbf26908feb504750224
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900241"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372343"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -25,15 +25,63 @@ Security Center のセキュリティは精力的な開発の下、継続的に�
 
 このページは頻繁に更新されるため、定期的にアクセスしてご確認ください。 
 
-Security Center で近日中に公開を " *予定されている* " 変更については、「[Azure Security Center への今後予定されている重要な変更](upcoming-changes.md)」を参照してください。 
+Security Center で近日中に公開を "*予定されている*" 変更については、「[Azure Security Center への今後予定されている重要な変更](upcoming-changes.md)」を参照してください。 
 
 > [!TIP]
 > 6 か月以上前の項目を探す場合は、「[Azure Security Center の最新情報のアーカイブ](release-notes-archive.md)」をご覧ください。
 
 
+## <a name="november-2020"></a>2020 年 11 月
+
+11 月の更新プログラムには次のものが含まれます。
+
+- [Azure セキュリティ ベンチマークのカバレッジを広げるために追加された、29 個のプレビュー推奨事項](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
+- [Security Center の法令遵守ダッシュボードに追加された NIST SP 800 171 R2](#nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard)
+
+
+### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>Azure セキュリティ ベンチマークのカバレッジを広げるために追加された、29 個のプレビュー推奨事項
+
+Azure セキュリティ ベンチマークは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインのセットです。 [Azure セキュリティ ベンチマークの詳細を確認してください](../security/benchmarks/introduction.md)。
+
+ベンチマークのカバレッジを拡大するために、次の 29 個のプレビュー推奨事項が Security Center に追加されています。
+
+プレビューの推奨事項によってリソースが異常な状態になることはありません。これらの推奨事項は、セキュリティ スコアの計算には含まれません。 これらの推奨事項はプレビュー期間が終了した時点でスコアに反映されるため、可能な限り修復してください。 これらの推奨事項に対応する方法については、「[Azure Security Center の修復レコメンデーション](security-center-remediate-recommendations.md)」を参照してください。
+
+| セキュリティ コントロール                     | 新しい推奨事項                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 転送中のデータを暗号化する              | - PostgreSQL データベース サーバーでは [SSL 接続を強制する] が有効でなければならない<br>- MySQL データベース サーバーでは [SSL 接続を強制する] が有効でなければならない<br>- API アプリに対して TLS を最新バージョンに更新する必要がある<br>- 関数アプリに対して TLS を最新バージョンに更新する必要がある<br>- Web アプリに対して TLS を最新バージョンに更新する必要がある<br>- API アプリでは FTPS を必須とする<br>- 関数アプリでは FTPS を必須とする<br>- Web アプリでは FTPS を必須とする                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| アクセスおよびアクセス許可の管理        | - Web アプリではすべての受信要求に対して SSL 証明書を要求する必要がある<br>- API アプリではマネージド ID を使用する必要がある<br>- 関数アプリではマネージド ID を使用する必要がある<br>- Web アプリではマネージド ID を使用する必要がある                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| 承認されていないネットワーク アクセスの制限 | - PostgreSQL サーバーに対してプライベート エンドポイントを有効にする必要がある<br>- MariaDB サーバーに対してプライベート エンドポイントを有効にする必要がある<br>- MySQL サーバーに対してプライベート エンドポイントを有効にする必要がある                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| 監査とログ記録を有効にする          | - App Services の診断ログを有効にする必要があります                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| セキュリティのベストプラクティスを実装する    | - 仮想マシンに対して Azure Backup を有効にする必要がある<br>- Azure Database for MariaDB の geo 冗長バックアップを有効にする必要がある<br>- Azure Database for MySQL の geo 冗長バックアップを有効にする必要がある<br>- Azure Database for PostgreSQL の geo 冗長バックアップを有効にする必要がある<br>- API アプリに対して PHP を最新バージョンに更新する必要がある<br>- Web アプリに対して PHP を最新バージョンに更新する必要がある<br>- API アプリに対して Java を最新バージョンに更新する必要がある<br>- 関数アプリに対して Java を最新バージョンに更新する必要がある<br>- Web アプリに対して Java を最新バージョンに更新する必要がある<br>- API アプリに対して Python を最新バージョンに更新する必要がある<br>- 関数アプリに対して Python を最新バージョンに更新する必要がある<br>- Web アプリに対して Python を最新バージョンに更新する必要がある<br>- SQL サーバーの監査のリテンション期間は少なくとも 90 日に設定する必要がある |
+|                                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+
+関連リンク:
+
+- [Azure セキュリティ ベンチマークについての詳細情報](../security/benchmarks/introduction.md)
+- [Azure API アプリについての詳細情報](../app-service/app-service-web-tutorial-rest-api.md)
+- [Azure 関数アプリについての詳細情報](../azure-functions/functions-overview.md)
+- [Azure Web アプリについての詳細情報](../app-service/overview.md)
+- [Azure Database for MariaDB についての詳細情報](../mariadb/overview.md)
+- [Azure Database for MySQL についての詳細情報](../mysql/overview.md)
+- [Azure Database for PostgreSQL についての詳細情報](../postgresql/overview.md)
+
+
+### <a name="nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard"></a>Security Center の法令遵守ダッシュボードに追加された NIST SP 800 171 R2
+
+NIST SP 800-171 R2 標準が、Azure Security Center の法令遵守ダッシュボードで使用するための組み込みイニシアティブとして使用できるようになりました。 コントロールのマッピングの詳細については、「[NIST SP 800-171 R2 規制コンプライアンスの組み込みイニシアチブの詳細](../governance/policy/samples/nist-sp-800-171-r2.md)」を参照してください。 
+
+標準をサブスクリプションに適用し、対応状態を継続的に監視するには、「[規制コンプライアンス ダッシュボードでの標準セットのカスタイマイズ](update-regulatory-compliance-packages.md)」の手順を使用します。
+
+:::image type="content" source="media/release-notes/nist-sp-800-171-r2-standard.png" alt-text="Security Center の法令遵守ダッシュボードでの NIST SP 800 171 R2 標準":::
+
+このコンプライアンス標準の詳細については、[NIST SP 800-171 R2](https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final) に関するページを参照してください。
+
+
 
 ## <a name="october-2020"></a>2020 年 10 月
 
+10 月の更新プログラムには次のものが含まれます。
 - [オンプレミスおよびマルチクラウド マシンの脆弱性評価 (プレビュー)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview)
 - [Azure Firewall の推奨事項の追加 (プレビュー)](#azure-firewall-recommendation-added-preview)
 - ["Kubernetes Services では承認された IP 範囲を定義する必要があります" という推奨事項のクイック修正による更新](#authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix)
@@ -46,7 +94,7 @@ Security Center で近日中に公開を " *予定されている* " 変更に�
 
 Azure 以外のマシンで Azure Arc を有効にした場合、Security Center では、統合された脆弱性スキャナーをそれらに手動で大規模にデプロイできるようにします。
 
-この更新では、 **Azure Defender for servers** の能力を最大限に活用して、すべての Azure および Azure 以外の資産にわたって脆弱性管理プログラムを統合できます。
+この更新では、**Azure Defender for servers** の能力を最大限に活用して、すべての Azure および Azure 以外の資産にわたって脆弱性管理プログラムを統合できます。
 
 主な機能は、次のとおりです。
 
@@ -82,7 +130,7 @@ Azure Firewall を使用してすべての仮想ネットワークを保護す�
 
 Security Center の規制コンプライアンス ダッシュボードでは、特定のコンプライアンスのコントロールと要件をどのように満たしているかに基づいて、コンプライアンス体制に関する分析情報が提供されます。
 
-ダッシュボードには、規制標準の既定のセットが含まれています。 提供されている標準に、組織に関連していないものが含まれている場合、簡単なプロセスでサブスクリプションの UI から削除できるようになりました。 標準は、" *サブスクリプション* " レベルだけで削除できます。管理グループのスコープでは、削除できません。
+ダッシュボードには、規制標準の既定のセットが含まれています。 提供されている標準に、組織に関連していないものが含まれている場合、簡単なプロセスでサブスクリプションの UI から削除できるようになりました。 標準は、"*サブスクリプション*" レベルだけで削除できます。管理グループのスコープでは、削除できません。
 
 詳細については、「[ダッシュボードから標準を削除する](update-regulatory-compliance-packages.md#removing-a-standard-from-your-dashboard)」セクションを参照してください。
 
@@ -98,7 +146,33 @@ Azure Security Center では、ARG および [Kusto クエリ言語 (KQL)](https
 
 ARG 内には、クエリで使用できるデータのテーブルがあります。
 
-:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="クイック修正オプションがある &quot;Kubernetes Services では承認された IP 範囲を定義する必要があります&quot; という推奨事項"
+:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Azure Resource Graph エクスプローラーと利用可能なテーブル":::
+
+> [!TIP]
+> ARG ドキュメントの「[Azure Resource Graph のテーブルとリソースの種類のリファレンス](../governance/resource-graph/reference/supported-tables-resources.md)」には、使用可能なすべてのテーブルの一覧があります。
+
+この更新から、**Microsoft.Security/securityStatuses** テーブルが削除されました。 securityStatuses API は引き続き使用できます。
+
+データ置換は、Microsoft.Security/Assessments テーブルで使用できます。
+
+Microsoft.Security/securityStatuses と Microsoft.Security/Assessments の大きな違いは、前者が評価の集計を示すのに対して、後者はそれぞれの単一のレコードを保持することです。
+
+たとえば、Microsoft.Security/securityStatuses は、次のように 2 つの policyAssessments の配列で結果を返します。
+
+```
+{
+id: "/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet",
+name: "mico-rg-vnet",
+type: "Microsoft.Security/securityStatuses",
+properties:  {
+    policyAssessments: [
+        {assessmentKey: "e3deicce-f4dd-3b34-e496-8b5381bazd7e", category: "Networking", policyName: "Azure DDOS Protection Standard should be enabled",...},
+        {assessmentKey: "sefac66a-1ec5-b063-a824-eb28671dc527", category: "Compute", policyName: "",...}
+    ],
+    securitystateByCategory: [{category: "Networking", securityState: "None" }, {category: "Compute",...],
+    name: "GenericResourceHealthProperties",
+    type: "VirtualNetwork",
+    securitystate: "High"
 }
 ```
 一方、Microsoft.Security/Assessments では、次のような各ポリシー評価のレコードが保持されます。
@@ -215,7 +289,7 @@ Azure Key Vault は、暗号化キーとシークレット (証明書、接続�
 
 このオプション プランの一般提供が開始されました。 この機能は、プレビューでは "Azure Key Vault 向けの高度な脅威防止機能" として利用できました。
 
-また、Azure portal の Key Vault ページには、 **Security Center** の推奨事項とアラートの専用 **セキュリティ** ページが追加されています。
+また、Azure portal の Key Vault ページには、**Security Center** の推奨事項とアラートの専用 **セキュリティ** ページが追加されています。
 
 詳細については、「[Azure Defender for Key Vault](defender-for-key-vault-introduction.md)」を参照してください。
 
@@ -235,7 +309,7 @@ Azure Key Vault は、暗号化キーとシークレット (証明書、接続�
 
 Azure Security Center の資産インベントリ ページを使用すると、Security Center に接続したリソースのセキュリティ態勢が 1 つのページに表示されます。
 
-Security Center では、Azure リソースのセキュリティの状態が定期的に分析されて、潜在的なセキュリティ脆弱性が特定されます。 その後、これらの脆弱性を修正する方法に関するレコメンデーションが提供されます。
+Security Center では、Azure リソースのセキュリティの状態が定期的に分析されて、潜在的なセキュリティ脆弱性が特定されます。 その後、これらの脆弱性を修正する方法に関する推奨事項が提供されます。
 
 いずれかのリソースに未処理のレコメンデーションがある場合は、インベントリに表示されます。
 
@@ -298,7 +372,7 @@ Security Center の統合された脆弱性評価ツールは、"仮想マシン
 
 推奨事項を選択し **[セキュリティに関する調査結果を含める]** オプションを有効にすることで、連続エクスポートを介して、セキュリティに関する調査結果をエクスポートに利用できるようにるようになりました。
 
-:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="クイック修正オプションがある &quot;Kubernetes Services では承認された IP 範囲を定義する必要があります&quot; という推奨事項" :::
+:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="連続エクスポート構成でのセキュリティに関する調査結果トグルを含める" :::
 
 関連するページ:
 
@@ -308,7 +382,7 @@ Security Center の統合された脆弱性評価ツールは、"仮想マシン
 
 ### <a name="prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources"></a>新しいリソースを作成するときに推奨事項を適用してセキュリティ構成ミスを防止
 
-セキュリティ構成ミスは、セキュリティ インシデントの大きな原因です。 Security Center には、特定の推奨事項に関する新しいリソースの構成ミスを " *防止* " する際に役立つ機能が追加されました。 
+セキュリティ構成ミスは、セキュリティ インシデントの大きな原因です。 Security Center には、特定の推奨事項に関する新しいリソースの構成ミスを "*防止*" する際に役立つ機能が追加されました。 
 
 この機能は、ワークロードの安全性を確保し、ご自身のセキュリティ スコアを安定させるうえで役立ちます。
 
@@ -357,13 +431,13 @@ Security Center の統合された脆弱性評価ツールは、"仮想マシン
 
 Security Center は、セキュリティの問題について、リソース、サブスクリプション、および組織を継続的に評価します。 その後、すべての結果を 1 つのスコアに集約して、現在のセキュリティの状況を一目で確認できるようにします。スコアが高くなるほど、識別されたリスク レベルが低下します。
 
-新しい脅威が発見されると、新しいセキュリティに関するアドバイスが、新しい推奨事項を介して Security Center で利用できるようになります。 突然セキュリティ スコアが変わることがないように、また、スコアが影響を受ける前に、新しい推奨事項を調べる猶予期間を確保できるように、 **プレビュー** のフラグが設定されている推奨事項が、セキュリティ スコアの計算から除外されるようになりました。 それでも、その推奨事項はプレビュー期間が終了した時点でスコアに反映されるため、可能な限り修復しておく必要があります。
+新しい脅威が発見されると、新しいセキュリティに関するアドバイスが、新しい推奨事項を介して Security Center で利用できるようになります。 突然セキュリティ スコアが変わることがないように、また、スコアが影響を受ける前に、新しい推奨事項を調べる猶予期間を確保できるように、**プレビュー** のフラグが設定されている推奨事項が、セキュリティ スコアの計算から除外されるようになりました。 それでも、その推奨事項はプレビュー期間が終了した時点でスコアに反映されるため、可能な限り修復しておく必要があります。
 
-また、 **プレビュー** の推奨事項によって、リソースの "異常" がレンダリングされることはありません。
+また、**プレビュー** の推奨事項によって、リソースの "異常" がレンダリングされることはありません。
 
 プレビューの推奨事項の例を次に示します。
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="クイック修正オプションがある &quot;Kubernetes Services では承認された IP 範囲を定義する必要があります&quot; という推奨事項":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="プレビュー フラグが設定された推奨事項":::
 
 [セキュリティ スコアの詳細](secure-score-security-controls.md)。
 
@@ -372,7 +446,7 @@ Security Center は、セキュリティの問題について、リソース、�
 
 推奨事項の詳細ページに、更新間隔インジケーター (関連する場合) が追加され、推奨事項の重大度が明確に表示されるようになりました。
 
-:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="クイック修正オプションがある &quot;Kubernetes Services では承認された IP 範囲を定義する必要があります&quot; という推奨事項":::
+:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="更新間隔と重大度が表示されている推奨事項ページ":::
 
 
 
@@ -391,7 +465,7 @@ Security Center は、セキュリティの問題について、リソース、�
 
 Security Center の資産インベントリ (現在プレビュー) を使用すると、Security Center に接続したリソースのセキュリティ態勢を確認することができます。
 
-Security Center では、Azure リソースのセキュリティの状態が定期的に分析されて、潜在的なセキュリティ脆弱性が特定されます。 その後、これらの脆弱性を修正する方法に関するレコメンデーションが提供されます。 いずれかのリソースに未処理の推奨事項がある場合は、インベントリに表示されます。
+Security Center では、Azure リソースのセキュリティの状態が定期的に分析されて、潜在的なセキュリティ脆弱性が特定されます。 その後、これらの脆弱性を修正する方法に関する推奨事項が提供されます。 いずれかのリソースに未処理の推奨事項がある場合は、インベントリに表示されます。
 
 ビューとそのフィルターを使用して、セキュリティの態勢データを調査し、結果に基づいてさらにアクションを実行できます。
 
@@ -574,7 +648,7 @@ Security Center でのコンテナー セキュリティの詳細については
 
 適応型アプリケーション制御の機能に、2 つの重要な更新プログラムが適用されています。
 
-* 新しい推奨事項により、以前は許可されていなかった、正当である可能性のある動作が識別されます。 新しい推薦事項の「 **適応型アプリケーション制御ポリシーの許可リスト ルールを更新する必要がある** 」により、既存のポリシーに新しいルールを追加して、適応型アプリケーション制御違反アラートの擬陽性の数を減らすよう求めるメッセージが表示されます。
+* 新しい推奨事項により、以前は許可されていなかった、正当である可能性のある動作が識別されます。 新しい推薦事項の「**適応型アプリケーション制御ポリシーの許可リスト ルールを更新する必要がある**」により、既存のポリシーに新しいルールを追加して、適応型アプリケーション制御違反アラートの擬陽性の数を減らすよう求めるメッセージが表示されます。
 
 * パス規則でワイルドカードがサポートされるようになっています。 この更新プログラムから、ワイルドカードの使用が許可されたパス規則を構成できます。 サポートされているシナリオは 2 つあります。
 
@@ -618,7 +692,7 @@ SQL マシンの高度なデータ セキュリティに関連する 6 つのポ
 
 ### <a name="secure-score-api-preview"></a>セキュリティ スコア API (プレビュー)
 
-[セキュリティ スコア API](/rest/api/securitycenter/securescores/) (現在プレビュー段階) を使用して、スコアにアクセスできるようになりました。 この API メソッドにより、より柔軟にデータに対してクエリを実行したり、一定期間のセキュリティ スコアをレポートする独自のメカニズムを構築できるようになります。 たとえば、 **Secure Scores** API を使用して、特定のサブスクリプションのスコアを取得できます。 また、 **Secure Score Controls** API を使用して、サブスクリプションのセキュリティ コントロールと現在のスコアを一覧表示できます。
+[セキュリティ スコア API](/rest/api/securitycenter/securescores/) (現在プレビュー段階) を使用して、スコアにアクセスできるようになりました。 この API メソッドにより、より柔軟にデータに対してクエリを実行したり、一定期間のセキュリティ スコアをレポートする独自のメカニズムを構築できるようになります。 たとえば、**Secure Scores** API を使用して、特定のサブスクリプションのスコアを取得できます。 また、**Secure Score Controls** API を使用して、サブスクリプションのセキュリティ コントロールと現在のスコアを一覧表示できます。
 
 セキュリティ スコア API で実現可能な外部ツールの例については、「[GitHub コミュニティのセキュリティ スコア エリア](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)」を参照してください。
 
@@ -649,7 +723,7 @@ Advanced Data Security では、SQL マシンに対して、場所によらず�
 - **Log Analytics エージェントを Windows ベースの Azure Arc マシンにインストールする必要がある (プレビュー)**
 - **Log Analytics エージェントを Linux ベースの Azure Arc マシンにインストールする必要がある (プレビュー)**
 
-これらの新しい推奨事項は、既存の (関連する) 推奨事項である、「 **お使いのマシンに監視エージェントをインストールする必要があります** 」と同じ、セキュリティ構成の修復、適応型アプリケーション制御の適用、システムの更新プログラムの適用、Endpoint Protection を有効にするという 4 つのセキュリティ コントロールに表示されます。
+これらの新しい推奨事項は、既存の (関連する) 推奨事項である、「**お使いのマシンに監視エージェントをインストールする必要があります**」と同じ、セキュリティ構成の修復、適応型アプリケーション制御の適用、システムの更新プログラムの適用、Endpoint Protection を有効にするという 4 つのセキュリティ コントロールに表示されます。
 
 推奨事項には、デプロイ プロセスを高速化するためのクイック修復機能も含まれています。 
 
@@ -688,7 +762,7 @@ Azure Security Center でエージェントを使用する方法の詳細につ�
 
 - **インターネットに接続されていない仮想マシンをネットワーク セキュリティ グループで保護する必要がある**
 
-既存の推奨事項である「 **インターネットに接続する仮想マシンは、ネットワーク セキュリティ グループを使用して保護する必要がある** 」では、インターネットに接続された仮想マシンとインターネットに接続されていない仮想マシンが区別されていませんでした。 どちらの場合でも、VM がネットワーク セキュリティ グループに割り当てられていないと、重大度の高い推奨事項が生成されていました。 この新しい推奨事項では、インターネットに接続されていないマシンを分離することで擬陽性を減らし、不必要な重要度の高いアラートを回避します。
+既存の推奨事項である「**インターネットに接続する仮想マシンは、ネットワーク セキュリティ グループを使用して保護する必要がある**」では、インターネットに接続された仮想マシンとインターネットに接続されていない仮想マシンが区別されていませんでした。 どちらの場合でも、VM がネットワーク セキュリティ グループに割り当てられていないと、重大度の高い推奨事項が生成されていました。 この新しい推奨事項では、インターネットに接続されていないマシンを分離することで擬陽性を減らし、不必要な重要度の高いアラートを回避します。
 
 詳細については、「[ネットワークの推奨事項](recommendations-reference.md#recs-network)」テーブルを参照してください。
 
@@ -715,137 +789,3 @@ Azure Security Center でエージェントを使用する方法の詳細につ�
 |                                                                                                                                                                                                                                                                       |                                      |
 
 詳細については、「[Azure Security Center での脅威の防止](azure-defender.md)」を参照してください。
-
-
-
-
-
-## <a name="may-2020"></a>2020 年 5 月
-
-5 月の更新プログラムには次のものが含まれます。
-- [アラート抑制ルール (プレビュー)](#alert-suppression-rules-preview)
-- [仮想マシンに対する脆弱性評価の一般提供の開始](#virtual-machine-vulnerability-assessment-is-now-generally-available)
-- [Just-In-Time (JIT) 仮想マシン (VM) へのアクセスの変更](#changes-to-just-in-time-jit-virtual-machine-vm-access)
-- [別のセキュリティ コントロールへのカスタム推奨事項の移動](#custom-recommendations-have-been-moved-to-a-separate-security-control)
-- [推奨事項をコントロールまたは単純なリストで表示するためのトグルの追加](#toggle-added-to-view-recommendations-in-controls-or-as-a-flat-list)
-- [拡張されたセキュリティ コントロール "セキュリティのベスト プラクティスの実装"](#expanded-security-control-implement-security-best-practices)
-- [カスタム メタデータを使用したカスタム ポリシーの一般提供の開始](#custom-policies-with-custom-metadata-are-now-generally-available)
-- [ファイルレス攻撃検出へのクラッシュ ダンプ分析機能の移行](#crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection)
-
-
-### <a name="alert-suppression-rules-preview"></a>アラート抑制ルール (プレビュー)
-
-この新機能 (現在プレビュー段階) は、アラート疲れを減らすのに役立ちます。 ルールを使用して、無害であることが判明している、または組織内の通常の活動に関連しているアラートを自動的に非表示にします。 これにより、最も重要な脅威に集中できます。 
-
-有効にした抑制ルールと一致するアラートは、引き続き生成されますが、その状態は "無視" に設定されます。 状態は Azure portal でも確認できますが、Security Center のセキュリティ アラートにアクセスして確認することもできます。
-
-抑制ルールでは、アラートが自動的に無視される条件を定義します。 通常は、次のような場合に抑制ルールを使用します。
-
-- ユーザーが擬陽性と判断したアラートを抑制する
-
-- あまりにも頻繁にトリガーされるため有用ではないアラートを抑制する
-
-詳しくは、「[Azure Security Center の脅威防止からのアラートの抑制](alerts-suppression-rules.md)」を参照してください。
-
-
-### <a name="virtual-machine-vulnerability-assessment-is-now-generally-available"></a>仮想マシンに対する脆弱性評価の一般提供の開始
-
-Security Center の Standard レベルに、追加料金なしで仮想マシンの統合脆弱性評価が追加されました。 この拡張機能には Qualys が利用されていますが、結果は Security Center に直接レポートされます。 Qualys ライセンスも Qualys アカウントも必要ありません。すべてが Security Center 内でシームレスに処理されます。
-
-この新しいソリューションでは、お客様の仮想マシンを継続的にスキャンし、脆弱性を検出してその結果を Security Center に表示できます。 
-
-ソリューションをデプロイするには、新しいセキュリティの推奨事項を使用します。
-
-"組み込みの脆弱性評価ソリューションを仮想マシンで有効にする (Qualys を利用)"
-
-詳しくは、[仮想マシンに対する Security Center の統合脆弱性評価](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)に関するページを参照してください。
-
-
-
-### <a name="changes-to-just-in-time-jit-virtual-machine-vm-access"></a>Just-In-Time (JIT) 仮想マシン (VM) へのアクセスの変更
-
-Security Center には、VM の管理ポートを保護するオプションの機能が備わっています。 これにより、最も一般的な形式のブルート フォース攻撃を防ぐことができます。
-
-この更新では、この機能に次の変更が加えられました。
-
-- VM での JIT の有効化を勧める推奨事項の名前が変更されました。 以前の "仮想マシンに Just-In-Time ネットワーク アクセス制御を適用する必要があります" から次のように変わりました: "仮想マシンの管理ポートは、Just-In-Time ネットワーク アクセス制御によって保護されている必要があります"。
-
-- この推奨事項は、オープンな管理ポートがある場合にのみトリガーされます。
-
-詳しくは、[JIT アクセス機能](security-center-just-in-time.md)に関するページを参照してください。
-
-
-### <a name="custom-recommendations-have-been-moved-to-a-separate-security-control"></a>別のセキュリティ コントロールへのカスタム推奨事項の移動
-
-強化されたセキュア スコアと共に導入されたセキュリティ コントロールの 1 つが、"セキュリティのベスト プラクティスの実装" です。 お客様のサブスクリプションで作成されたカスタム推奨事項は自動的に、このコントロールに配置されていました。 
-
-カスタム推奨事項は見つけやすいように、専用のセキュリティ コントロールである "カスタム推奨事項" に移行しました。 このコントロールは、お客様のセキュア スコアに影響しません。
-
-セキュリティ コントロールの詳細については、「[Azure Security Center の強化されたセキュア スコア (プレビュー)](secure-score-security-controls.md)」を参照してください。
-
-
-### <a name="toggle-added-to-view-recommendations-in-controls-or-as-a-flat-list"></a>推奨事項をコントロールまたは単純なリストで表示するためのトグルの追加
-
-セキュリティ コントロールは、関連するセキュリティ推奨事項の論理グループです。 これらはお客様の脆弱な攻撃対象領域を反映します。 コントロールは、セキュリティに関する一連の推奨事項と、これらの推奨事項を実装するための指示内容です。
-
-組織が個々の攻撃対象領域をどの程度セキュリティで保護しているかをすぐに確認するには、各セキュリティ コントロールのスコアを確認します。
-
-既定では、推奨事項がセキュリティ コントロールに表示されます。 この更新プログラムから、それらをリストとしても表示できるようになりました。 影響を受けるリソースの正常性状態で並べ替えられた単純なリストとして表示するには、新しいトグル "コントロールによるグループ化" を使用します。 このトグルはポータル内のリストの上にあります。
-
-セキュリティ コントロール (およびこのトグル) は、新しいセキュア スコア エクスペリエンスの一部です。 ポータル内からフィードバックをお送りいただけますとさいわいです。
-
-セキュリティ コントロールの詳細については、「[Azure Security Center の強化されたセキュア スコア (プレビュー)](secure-score-security-controls.md)」を参照してください。
-
-:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="クイック修正オプションがある &quot;Kubernetes Services では承認された IP 範囲を定義する必要があります&quot; という推奨事項":::
-
-### <a name="expanded-security-control-implement-security-best-practices"></a>拡張されたセキュリティ コントロール "セキュリティのベスト プラクティスの実装" 
-
-強化されたセキュア スコアと共に導入されたセキュリティ コントロールの 1 つが、"セキュリティのベスト プラクティスの実装" です。 このコントロールに推奨事項があっても、セキュア スコアに影響はありません。 
-
-この更新により、3 つの推奨事項が当初配置されていたコントロールからこのベスト プラクティス コントロールに移動されました。 この操作が行われたのは、これら 3 つの推奨事項のリスクが当初考えていたよりも低いことが判明したためです。
-
-さらに、2 つの新しい推奨事項が導入され、このコントロールに追加されました。
-
-移動された 3 つの推奨事項は次のとおりです。
-
-- **ご利用のサブスクリプションに対して読み取りアクセス許可があるアカウントでは、MFA を有効にする必要があります** (当初は "MFA の有効化" コントロール内)
-- **読み取りアクセス許可がある外部アカウントは、ご使用のサブスクリプションから削除する必要があります** (当初は "アクセスとアクセス許可の管理" コントロール内)
-- **お使いのサブスクリプションに、最大 3 人の所有者を指定する必要があります** (当初は "アクセスとアクセス許可の管理" コントロール内)
-
-コントロールに追加された 2 つの新しい推奨事項は次のとおりです。
-
-- **ゲスト構成拡張機能が Windows 仮想マシンにインストールされている必要がある (プレビュー)** - [Azure Policy ゲスト構成](../governance/policy/concepts/guest-configuration.md)を使用することで、サーバーとアプリケーションの設定に対して仮想マシンが可視化されます (Windows のみ)。
-
-- **お使いのマシンで Windows Defender Exploit Guard を有効にする必要がある (プレビュー)** - Windows Defender Exploit Guard では、Azure Policy ゲスト構成エージェントが利用されます。 Exploit Guard には、さまざまな攻撃ベクトルに対してデバイスをロックダウンし、マルウェア攻撃でよく使用される動作をブロックするよう設計された 4 つのコンポーネントがありますが、企業がセキュリティ リスクと生産性の要件のバランスをとれるようになっています (Windows のみ)。
-
-Windows Defender Exploit Guard の詳細については、「[Exploit Guard ポリシーの作成と展開](/mem/configmgr/protect/deploy-use/create-deploy-exploit-guard-policy)」を参照してください。
-
-セキュリティ コントロールの詳細については、[強化されたセキュリティ スコア (プレビュー)](secure-score-security-controls.md) に関するページを参照してください。
-
-
-
-### <a name="custom-policies-with-custom-metadata-are-now-generally-available"></a>カスタム メタデータを使用したカスタム ポリシーの一般提供の開始
-
-カスタム ポリシーは、Security Center の推奨事項エクスペリエンス、セキュア スコア、規制コンプライアンス標準ダッシュボードに含まれました。 この機能の一般提供が開始され、お客様は Security Center で組織のセキュリティ評価の範囲を拡大できるようになりました。 
-
-Azure Policy でカスタム イニシアチブを作成し、それにポリシーを追加して Azure Security Center にオンボードし、推奨事項として視覚化します。
-
-さらに、カスタム推奨事項のメタデータを編集するオプションも追加されました。 メタデータ オプションには、重要度、修復手順、脅威情報などが含まれます。  
-
-詳しくは、「[詳細情報でのカスタム推奨事項の拡張](custom-security-policies.md#enhance-your-custom-recommendations-with-detailed-information)」を参照してください。
-
-
-
-### <a name="crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection"></a>ファイルレス攻撃検出へのクラッシュ ダンプ分析機能の移行 
-
-Microsoft は Windows クラッシュ ダンプ (CDA) 検出機能を[ファイルレス攻撃検出](defender-for-servers-introduction.md#what-are-the-benefits-of-azure-defender-for-servers)に移行しています。 ファイルレス攻撃検出分析では、Windows マシンで次のセキュリティ アラートの高度なバージョンを利用できます。コード インジェクションの検出、Windows モジュールの偽装の検出、シェルコードの検出、疑わしいコード セグメントの検出。
-
-この移行のメリットをいくつか紹介します。
-
-- **プロアクティブかつタイムリーなマルウェア検出** - CDA のアプローチでは、クラッシュが発生して初めて分析を実行し、悪意のあるアーティファクトを検出する必要がありました。 ファイルレス攻撃検出を使用すると、メモリ内の脅威が活動しているのをプロアクティブに特定できます。 
-
-- **強化されたアラート** - ファイルレス攻撃検出のセキュリティ アラートには、CDA では利用できない強化が加わっています (例: アクティブなネットワーク接続情報)。 
-
-- **アラートの集計** - CDA では、単一のクラッシュ ダンプ内で複数の攻撃パターンを検出した場合に、複数のセキュリティ アラートをトリガーしていました。 ファイルレス攻撃検出では、同じプロセスから特定された攻撃パターンをすべて単一のアラートにまとめて、複数のアラートを関連付ける必要をなくしています。
-
-- **Log Analytics ワークスペースでの要件の減少** - 機密データを含んでいる可能性があるクラッシュ ダンプは、Log Analytics ワークスペースにアップロードされなくなります。

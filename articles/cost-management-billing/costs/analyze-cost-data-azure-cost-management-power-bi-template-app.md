@@ -3,17 +3,17 @@ title: Power BI アプリを使用して Azure のコストを分析する
 description: この記事では、Azure Cost Management Power BI アプリをインストールして使用する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2020
+ms.date: 11/09/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 7282ef9269c1168214fe57d3faa5488e531af8da
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 1c5adf58f670f3cadcedbe710568551004b77b78
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131124"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413243"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Enterprise Agreement (EA) 用の Azure Cost Management Power BI アプリを使用してコストを分析する
 
@@ -44,9 +44,9 @@ Azure Cost Management Power BI アプリは現在、[Enterprise Agreement](https
 7. **[アプリへ移動]** を選択します。
 8. **[新しいアプリを開始する]** の **[データを接続]** の下で、 **[接続]** を選択します。  
   ![新しいアプリを開始する - 接続](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
-9. 表示されるダイアログで、 **BillingProfileIdOrEnrollmentNumber** の EA 登録番号を入力します。 取得するデータの月数を指定します。 既定の **[範囲]** 値である **[Enrollment Number]\(登録番号\)** のままにして、 **[次へ]** を選択します。  
+9. 表示されるダイアログで、**BillingProfileIdOrEnrollmentNumber** の EA 登録番号を入力します。 取得するデータの月数を指定します。 既定の **[範囲]** 値である **[Enrollment Number]\(登録番号\)** のままにして、 **[次へ]** を選択します。  
   ![EA 登録情報を入力する](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
-10. 次のダイアログでは、Azure に接続し、予約インスタンスの推奨事項に必要なデータを取得します。 " *構成された既定値のままにして* "、 **[サインイン]** を選択します。  
+10. 次のダイアログでは、Azure に接続し、予約インスタンスの推奨事項に必要なデータを取得します。 "*構成された既定値のままにして*"、 **[サインイン]** を選択します。  
   ![既定値が表示されている [Connect to Azure Cost Management App]\(Azure Cost Management アプリに接続する\) ダイアログ ボックスを示すスクリーンショット。](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
 11. 最後のインストール手順では、EA 登録に接続し、[エンタープライズ管理者](../manage/understand-ea-roles.md)アカウントが必要です。 **[サインイン]** を選択して、お客様の EA 登録で認証します。 この手順では、Power BI でデータ更新操作も開始します。  
   ![EA 登録に接続する](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
@@ -80,7 +80,7 @@ Azure Cost Management Power BI アプリは現在、[Enterprise Agreement](https
 
 ![Azure ハイブリッド特典の完全なレポート](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png)
 
-このレポートでは、ハイブリッド特典が **有効になっているが** 、vCPU が 8 つ " _未満_ " の Windows VM も識別されます。 また、vCPU が 8 つ " _以上_ " あり、ハイブリッド特典が **有効になっていない** 場合も表示されます。 この情報は、ハイブリッド特典を最大限に活用するのに役立ちます。 最もコストのかかる仮想マシンに特典を適用して、削減可能なコストを最大化します。
+このレポートでは、ハイブリッド特典が **有効になっているが**、vCPU が 8 つ "_未満_" の Windows VM も識別されます。 また、vCPU が 8 つ "_以上_" あり、ハイブリッド特典が **有効になっていない** 場合も表示されます。 この情報は、ハイブリッド特典を最大限に活用するのに役立ちます。 最もコストのかかる仮想マシンに特典を適用して、削減可能なコストを最大化します。
 
 ![Azure ハイブリッド特典 – vCPU が 8 つ未満および vCPU が有効になっていない](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png)
 
@@ -204,8 +204,8 @@ Failed to update data source credentials: The credentials provided for the Azure
 | [**Budgets**](/rest/api/consumption/budgets/get#definitions) | 既存の予算目標に対する実績のコストまたは使用量を表示するための予算の詳細。 |
 | [**Pricesheets**](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet#see-also) | 指定された課金プロファイルまたは EA 登録に適用可能な測定レート。 |
 | [**RI charges**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges#response) | 過去 24 か月間の予約インスタンスに関連する料金。 |
-| [**RI recommendations (shared)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response) | 過去 7 日間、30 日間、または 60 日間のすべてのサブスクリプション使用傾向に基づく予約インスタンス購入の推奨事項。 |
-| [**RI recommendations (single)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response-1) | 過去 7 日間、30 日間、または 60 日間の単一のサブスクリプション使用傾向に基づく予約インスタンス購入の推奨事項。 |
+| [**RI recommendations (shared)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response) | 過去 7 日間のすべてのサブスクリプション使用傾向に基づく予約インスタンス購入の推奨事項。 |
+| [**RI recommendations (single)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response-1) | 過去 7 日間の単一のサブスクリプション使用傾向に基づく予約インスタンス購入の推奨事項。 |
 | [**RI usage details**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#response) | 過去 1 か月間の既存の予約インスタンスに関する消費量の詳細。 |
 | [**RI usage summary**](/rest/api/consumption/reservationssummaries/list) | 日次の Azure の予約使用率。 |
 | [**Usage details**](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#usage-details-field-definitions) | EA 登録の指定された課金プロファイルでの消費量と推定料金の内訳。 |

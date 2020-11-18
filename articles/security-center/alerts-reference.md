@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: memildin
-ms.openlocfilehash: f98927e71a675cc6264c413ba07b3cf689b91560
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3cc64d2721f73da36fdc4fce009cccb5fdfd6b6b
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784288"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372695"
 ---
 # <a name="security-alerts---a-reference-guide"></a>セキュリティ アラート - リファレンス ガイド
 
@@ -456,10 +456,12 @@ Security Center でサポートされているキル チェーンの意図は、
 | **影響**              | 影響イベントでは、主として、システム、サービス、ネットワークの可用性や整合性を直接低下させることが試みられます。ビジネスまたは運用プロセスに影響を与えるデータの操作が含まれます。 多くの場合、ランサムウェア、改ざん、データ操作などの手法が使用されます。                                                                                                                                                                                                                                                                                                     |
 |                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |  |
 
+> [!NOTE]
+> プレビュー段階のアラートの場合: [!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]
 
 ## <a name="next-steps"></a>次のステップ
 アラートの詳細については、以下を参照してください。
 
 - [Security alerts in Azure Security Center](security-center-alerts-overview.md)
 - [Azure Security Center でのセキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md)
-- [Security Center のデータを連続的にエクスポートする](continuous-export.md)
+- [継続的に Security Center データをエクスポートする](continuous-export.md)

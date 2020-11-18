@@ -2,15 +2,16 @@
 title: クイック スタート:Python アプリを作成する
 description: Azure App Service で Linux コンテナーに初めての Python アプリをデプロイして、App Service の使用を開始します。
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 11/10/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
-ms.openlocfilehash: 8f48f31cdaaa555e0a8f6f0fd4756bb61a9f417d
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+adobe-target: true
+ms.openlocfilehash: b32977ac1c8cfe0c461bcd1628c08a0ca215ba93
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741108"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506194"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Python アプリを作成する
 
@@ -63,7 +64,7 @@ az login
 
 サインイン後は、Azure CLI を使用して Azure コマンドを実行して、サブスクリプション内のリソースを操作することができます。
 
-[問題がある場合は、お知らせください。](https://aka.ms/FlaskCLIQuickstartHelp)
+問題がありますか。 [お知らせください。](https://aka.ms/FlaskCLIQuickstartHelp)
 
 ## <a name="clone-the-sample"></a>サンプルを複製する
 
@@ -95,7 +96,7 @@ cd python-docs-hello-django
 
 このサンプルには、Azure App Service がアプリの起動時に認識するフレームワーク固有のコードが含まれています。 詳細については、「[コンテナーのスタートアップ プロセス](configure-language-python.md#container-startup-process)」を参照してください。
 
-[問題がある場合は、お知らせください。](https://aka.ms/FlaskCLIQuickstartHelp)
+問題がありますか。 [お知らせください。](https://aka.ms/FlaskCLIQuickstartHelp)
 
 ## <a name="run-the-sample"></a>サンプルを実行する
 
@@ -106,7 +107,7 @@ cd python-docs-hello-django
 
     [!include [virtual environment setup](../../includes/app-service-quickstart-python-venv.md)]
 
-    "[Errno 2] そのようなファイルまたはディレクトリはありません: 'requirements.txt'。" と表示された場合は、 *python-docs-hello-world* フォルダーを開いていることを確認してください。
+    "[Errno 2] そのようなファイルまたはディレクトリはありません: 'requirements.txt'。" と表示された場合は、*python-docs-hello-world* フォルダーを開いていることを確認してください。
 
 1. 開発サーバーを実行します。
 
@@ -116,7 +117,7 @@ cd python-docs-hello-django
     
     既定では、サーバーによって、アプリのエントリ モジュールが、サンプルで使用されている *app.py* 内にあると想定されています (別のモジュール名を使用する場合は、`FLASK_APP` 環境変数をその名前に設定します)。
 
-1. Web ブラウザーを開き、`http://localhost:5000/` のサンプル アプリに移動します。 アプリに、 **Hello World!** というメッセージが表示されます。
+1. Web ブラウザーを開き、`http://localhost:5000/` のサンプル アプリに移動します。 アプリに、**Hello World!** というメッセージが表示されます。
 
     ![サンプル Python アプリをローカルで実行する](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
     
@@ -130,7 +131,7 @@ cd python-docs-hello-django
 
     [!include [virtual environment setup](../../includes/app-service-quickstart-python-venv.md)]
 
-    "[Errno 2] そのようなファイルまたはディレクトリはありません: 'requirements.txt'。" と表示された場合は、 *python-docs-hello-django* フォルダーを開いていることを確認してください。
+    "[Errno 2] そのようなファイルまたはディレクトリはありません: 'requirements.txt'。" と表示された場合は、*python-docs-hello-django* フォルダーを開いていることを確認してください。
     
 1. 開発サーバーを実行します。
 
@@ -138,18 +139,18 @@ cd python-docs-hello-django
     python manage.py runserver
     ```
 
-1. Web ブラウザーを開き、`http://localhost:8000/` のサンプル アプリに移動します。 アプリに、 **Hello World!** というメッセージが表示されます。
+1. Web ブラウザーを開き、`http://localhost:8000/` のサンプル アプリに移動します。 アプリに、**Hello World!** というメッセージが表示されます。
 
     ![サンプル Python アプリをローカルで実行する](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
     
 1. ターミナル ウィンドウで **Ctrl** + **C** キーを押して、開発サーバーを終了します。
 ::: zone-end
 
-[問題がある場合は、お知らせください。](https://aka.ms/FlaskCLIQuickstartHelp)
+問題がありますか。 [お知らせください。](https://aka.ms/FlaskCLIQuickstartHelp)
 
 ## <a name="deploy-the-sample"></a>サンプルのデプロイ
 
-`az webapp up` コマンドを使用して、ローカル フォルダー ( *python-docs-hello-world* ) にコードをデプロイします。
+`az webapp up` コマンドを使用して、ローカル フォルダー (*python-docs-hello-world*) にコードをデプロイします。
 
 ```azurecli
 az webapp up --sku F1 --name <app-name>
@@ -157,22 +158,22 @@ az webapp up --sku F1 --name <app-name>
 
 - `az` コマンドが認識されない場合は、「[初期環境を設定する](#set-up-your-initial-environment)」の説明に従って Azure CLI がインストールされていることを確認してください。
 - `webapp` コマンドが認識されない場合、それはご利用の Azure CLI のバージョンが 2.0.80 以上だからです。 そうでない場合は、最[新バージョンをインストール](/cli/azure/install-azure-cli)してください。
-- `<app_name>` を Azure 全体で一意の名前で置き換えます (" *有効な文字は、`a-z`、`0-9`、および `-` です* ")。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。
+- `<app_name>` を Azure 全体で一意の名前で置き換えます ("*有効な文字は、`a-z`、`0-9`、および `-` です*")。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。
 - `--sku F1` 引数を使用すると、Free 価格レベルで Web アプリが作成されます。 この引数を省略するとより高速な Premium レベルが使用されるため、時間単位のコストが発生します。
 - 必要に応じて、引数 `--location <location-name>` を含めることができます。ここで、`<location_name>` は利用可能な Azure リージョンです。 [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) コマンドを実行すると、お使いの Azure アカウントで使用可能なリージョンの一覧を取得できます。
-- "Could not auto-detect the runtime stack of your app (アプリのランタイム スタックを自動検出できませんでした)" というエラーが表示された場合は、 *requirements.txt* ファイルがある *python-docs-hello-world* フォルダー (Flask) または *python-docs-hello-django フォルダー (Django)* でコマンドを実行していることを確認してください。 (GitHub の [az webapp up を使用して自動検出の問題をトラブルシューティングする方法](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md)に関するページを参照してください。)
+- "Could not auto-detect the runtime stack of your app (アプリのランタイム スタックを自動検出できませんでした)" というエラーが表示された場合は、*requirements.txt* ファイルがある *python-docs-hello-world* フォルダー (Flask) または *python-docs-hello-django フォルダー (Django)* でコマンドを実行していることを確認してください。 (GitHub の [az webapp up を使用して自動検出の問題をトラブルシューティングする方法](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md)に関するページを参照してください。)
 
 コマンドが完了するまでに数分かかる場合があります。 実行中には、リソース グループ、App Service プラン、およびホスティング アプリの作成、ログ記録の構成、ZIP デプロイの実行に関するメッセージが表示されます。 次に、"http://&lt;app-name&gt;.azurewebsites.net でアプリを起動することができます" という内容のメッセージが表示されます。これは、Azure 上のアプリの URL です。
 
 ![az webapp up コマンドの出力例](./media/quickstart-python/az-webapp-up-output.png)
 
-[問題がある場合は、お知らせください。](https://aka.ms/FlaskCLIQuickstartHelp)
+問題がありますか。 まず、[トラブルシューティング ガイド](configure-language-python.md#troubleshooting)を参照し、それでも解決しない場合は[お知らせください](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 [!include [az webapp up command note](../../includes/app-service-web-az-webapp-up-note.md)]
 
 ## <a name="browse-to-the-app"></a>アプリの参照
 
-URL `http://<app-name>.azurewebsites.net` を使って、お使いの Web ブラウザーでデプロイされたアプリケーションを参照します。 最初にアプリを起動するのにしばらく時間がかかります。
+URL `http://<app-name>.azurewebsites.net` を使って、お使いの Web ブラウザーでデプロイされたアプリケーションを参照します。 アプリが起動するまでに 1 から 2 分かかる場合があるため、既定のアプリ ページが表示される場合は、しばらく待ってからブラウザーを更新してください。
 
 Python サンプル コードによって、App Service 内で、組み込みのイメージを使用して、Linux コンテナーが実行されています。
 
@@ -180,7 +181,7 @@ Python サンプル コードによって、App Service 内で、組み込みの
 
 **お疲れさまでした。** App Service に Python アプリをデプロイすることができました。
 
-[問題がある場合は、お知らせください。](https://aka.ms/FlaskCLIQuickstartHelp)
+問題がありますか。 まず、[トラブルシューティング ガイド](configure-language-python.md#troubleshooting)を参照し、それでも解決しない場合は[お知らせください](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 ## <a name="redeploy-updates"></a>更新の再デプロイ
 
@@ -217,7 +218,7 @@ az webapp up
 
 ![更新したサンプル Python アプリを Azure で実行する](./media/quickstart-python/run-updated-hello-world-sample-python-app-in-browser.png)
 
-[問題がある場合は、お知らせください。](https://aka.ms/FlaskCLIQuickstartHelp)
+問題がありますか。 まず、[トラブルシューティング ガイド](configure-language-python.md#troubleshooting)を参照し、それでも解決しない場合は[お知らせください](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 > [!TIP]
 > Visual Studio Code には、Python と Azure App Service 用の強力な拡張機能が用意されています。これを使うと、App Service に Python Web アプリをデプロイするプロセスが簡単になります。 詳細については、[Visual Studio Code から App Service への Python アプリのデプロイ](/azure/python/tutorial-deploy-app-service-on-linux-01)に関する記事をご覧ください。
@@ -240,7 +241,7 @@ az webapp log tail
 
 ログ ストリーミングを任意のタイミングで停止するには、ターミナルで **Ctrl** + **C** キーを押します。
 
-[問題がある場合は、お知らせください。](https://aka.ms/FlaskCLIQuickstartHelp)
+問題がありますか。 [お知らせください。](https://aka.ms/FlaskCLIQuickstartHelp)
 
 ## <a name="manage-the-azure-app"></a>Azure アプリの管理
 
@@ -258,7 +259,7 @@ az webapp log tail
 
 App Service のメニューには、アプリを構成するためのさまざまなページが用意されています。
 
-[問題がある場合は、お知らせください。](https://aka.ms/FlaskCLIQuickstartHelp)
+問題がありますか。 まず、[トラブルシューティング ガイド](configure-language-python.md#troubleshooting)を参照し、それでも解決しない場合は[お知らせください](https://aka.ms/FlaskCLIQuickstartHelp)。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -274,7 +275,7 @@ az group delete --no-wait
 
 `--no-wait` 引数を使用すると、操作が完了する前にコマンドから戻ることができます。
 
-[問題がある場合は、お知らせください。](https://aka.ms/FlaskCLIQuickstartHelp)
+問題がありますか。 [お知らせください。](https://aka.ms/FlaskCLIQuickstartHelp)
 
 ## <a name="next-steps"></a>次のステップ
 

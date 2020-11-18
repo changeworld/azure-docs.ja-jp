@@ -10,16 +10,16 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: ba4ef77dee8eb3cad753aca54a77aeedd166f142
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 99339914b66dc40f686cc46cacbcea15438c9004
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784560"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413345"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>HSM で保護されたキーを Key Vault にインポートする
 
-Azure Key Vault の使用時にさらに安心感を高める場合、ハードウェア セキュリティ モジュール (HSM) でキーをインポートしたり、生成したりできます。キーは HSM の境界内から出ることはありません。 このシナリオは、多くの場合、 *Bring Your Own Key* または BYOK と呼ばれています。 Azure Key Vault では、HSM の nCipher nShield ファミリ (FIPS 140-2 レベル 2 で検証済み) を使用してキーが保護されます。
+Azure Key Vault の使用時にさらに安心感を高める場合、ハードウェア セキュリティ モジュール (HSM) でキーをインポートしたり、生成したりできます。キーは HSM の境界内から出ることはありません。 このシナリオは、多くの場合、*Bring Your Own Key* または BYOK と呼ばれています。 Azure Key Vault では、HSM の nCipher nShield ファミリ (FIPS 140-2 レベル 2 で検証済み) を使用してキーが保護されます。
 
 この機能は Azure China 21Vianet では使用できません。
 
@@ -38,7 +38,9 @@ HSM で保護されたキーの Key Vault への転送は、使用する HSM に
 |Fortanix|製造元、<br/>サービスとしての HSM|<ul><li>Self-Defending Key Management Service (SDKMS)</li><li>Equinix SmartKey</li></ul>|[新しい BYOK の方法を使用する](hsm-protected-keys-byok.md)|
 |Marvell|Manufacturer|以下を含む LiquidSecurity のすべての HSM<ul><li>ファームウェア バージョン 2.0.4 以降</li><li>ファームウェア バージョン 3.2 以降</li></ul>|[新しい BYOK の方法を使用する](hsm-protected-keys-byok.md)|
 |Cryptomathic|ISV (エンタープライズ キー管理システム)|以下を含む複数の HSM ブランドおよびモデル<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>詳細については、[Cryptomathic のサイト](https://www.cryptomathic.com/azurebyok)を参照してください|[新しい BYOK の方法を使用する](hsm-protected-keys-byok.md)|
-
+|Securosys SA|製造元、サービスとしての HSM|Primus HSM ファミリ、Securosys Clouds HSM|[新しい BYOK の方法を使用する](hsm-protected-keys-byok.md)|
+|StorMagic|ISV (エンタープライズ キー管理システム)|以下を含む複数の HSM ブランドおよびモデル<ul><li>Utimaco</li><li>Thales</li><li>nCipher</li></ul>[詳細については、StorMagic のサイト](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)を参照してください|[新しい BYOK の方法を使用する](hsm-protected-keys-byok.md)|
+|||||
 
 ## <a name="next-steps"></a>次のステップ
 

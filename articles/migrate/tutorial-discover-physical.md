@@ -4,12 +4,12 @@ description: Azure Migrate Server Assessment を使用して、オンプレミ�
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: e7cbd7939248686a251fdf56bf1a5f1acc952a3a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 83ff63392c6cbcaa6a2ea011eb60199f61844bb1
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314080"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148339"
 ---
 # <a name="tutorial-discover-physical-servers-with-server-assessment"></a>チュートリアル:Server Assessment を使用して物理サーバーを検出する
 
@@ -69,17 +69,21 @@ Azure Migrate プロジェクトを作成し、Azure Migrate アプライアン�
 
     ![[ユーザー設定] で、ユーザーが Active Directory アプリを登録できることを確認する](./media/tutorial-discover-physical/register-apps.png)
 
-9. テナントおよびグローバル管理者は、AAD アプリの登録を許可する目的で**アプリケーション開発者**ロールをアカウントに割り当てることもできます。 [詳細については、こちらを参照してください](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
+9. テナントおよびグローバル管理者は、AAD アプリの登録を許可する目的で **アプリケーション開発者** ロールをアカウントに割り当てることもできます。 [詳細については、こちらを参照してください](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ## <a name="prepare-physical-servers"></a>物理サーバーを準備する
 
 アプライアンスが物理サーバーへのアクセスに使用できるアカウントを設定します。
 
-- Windows サーバーの場合、検出に含めるすべての Windows サーバー上にローカル ユーザー アカウントを設定します。 そのユーザー アカウントを、Remote Management Users、Performance Monitor Users、Performance Log Users の各グループに追加します。
-- Linux サーバーの場合は、検出する Linux サーバーのルート アカウントが必要です。 または、次のようにアクセスを設定します。
-    - setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/fdisk
-    - setcap CAP_DAC_READ_SEARCH+eip /sbin/fdisk (/usr/sbin/fdisk が存在しない場合)<br/> - setcap "cap_dac_override、cap_dac_read_search、cap_fowner、cap_fsetid、cap_setuid、cap_setpcap、cap_net_bind_service、cap_net_admin、cap_sys_chroot、cap_sys_admin、cap_sys_resource、cap_audit_control、cap_setfcap=+eip" /sbin/lvm
-    - setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/dmidecode chmod a+r /sys/class/dmi/id/product_uuid
+- Windows サーバーの場合は、ドメイン参加済みのマシンにはドメイン アカウントを、ドメインに参加していないマシンにはローカル アカウントを使用します。 次のグループにユーザー アカウントを追加する必要があります:リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー。
+- Linux サーバーの場合は、検出する Linux サーバーのルート アカウントが必要です。 または、次のコマンドを使用して、必要な機能を持つ非ルート アカウントを設定することもできます。
+
+**コマンド** | **目的**
+--- | --- |
+setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/fdisk <br></br> setcap CAP_DAC_READ_SEARCH+eip /sbin/fdisk _(/usr/sbin/fdisk が存在しない場合)_ | ディスク構成データを収集するため
+setcap "cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_setuid,<br>cap_setpcap,cap_net_bind_service,cap_net_admin,cap_sys_chroot,cap_sys_admin,<br>cap_sys_resource,cap_audit_control,cap_setfcap=+eip" /sbin/lvm | ディスクのパフォーマンス データを収集するため
+setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/dmidecode | BIOS のシリアル番号を収集するため
+chmod a+r /sys/class/dmi/id/product_uuid | BIOS の GUID を収集するため
 
 
 ## <a name="set-up-a-project"></a>プロジェクトの設定
@@ -117,7 +121,7 @@ Azure Migrate プロジェクトを作成し、Azure Migrate アプライアン�
 2. **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[物理またはその他 (AWS、GCP、Xen など)]** を選択します。
 3. **[1:Azure Migrate プロジェクト キーを生成します]** で、物理サーバーまたは仮想サーバーの検出用に設定する Azure Migrate アプライアンスの名前を指定します。名前は 14 文字以内の英数字にする必要があります。
 1. **[キーの生成]** をクリックして、必要な Azure リソースの作成を開始します。 リソースの作成中に [マシンの検出] ページを閉じないでください。
-1. Azure リソースが正常に作成されると、**Azure Migrate プロジェクト キー**が生成されます。
+1. Azure リソースが正常に作成されると、**Azure Migrate プロジェクト キー** が生成されます。
 1. このキーはアプライアンスを設定する際、登録を完了するために必要なので、コピーしておきます。
 
 ### <a name="download-the-installer-script"></a>インストーラー スクリプトをダウンロードする
@@ -137,13 +141,13 @@ Azure Migrate プロジェクトを作成し、Azure Migrate アプライアン�
 3.  最新のアプライアンス バージョンとハッシュ値を確認します。
     - パブリック クラウドの場合:
 
-        **シナリオ** | **ダウンロード*** | **ハッシュ値**
+        **シナリオ** | **ダウンロード** _ | _ *ハッシュ値**
         --- | --- | ---
         物理 (85.8 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140334) | ce5e6f0507936def8020eb7b3109173dad60fc51dd39c3bd23099bc9baaabe29
 
     - Azure Government の場合:
 
-        **シナリオ** | **ダウンロード*** | **ハッシュ値**
+        **シナリオ** | **ダウンロード** _ | _ *ハッシュ値**
         --- | --- | ---
         物理 (85.8 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140338) | ae132ebc574caf231bf41886891040ffa7abbe150c8b50436818b69e58622276
  
@@ -190,7 +194,7 @@ Azure Migrate プロジェクトを作成し、Azure Migrate アプライアン�
 1. アプライアンスに接続できる任意のマシン上でブラウザーを開き、アプライアンス Web アプリの URL を開きます (**https://*アプライアンス名または IP アドレス*:44368**)。
 
    または、アプリのショートカットをクリックして、デスクトップからアプリを開くこともできます。
-2. **ライセンス条項**に同意し、サード パーティの情報を確認します。
+2. **ライセンス条項** に同意し、サード パーティの情報を確認します。
 1. Web アプリの **[前提条件のセットアップ]** で、以下を実行します。
     - **接続**:サーバーがインターネットにアクセスできることが、アプリによって確認されます。 サーバーでプロキシを使用する場合は、次の操作を行います。
         - **[プロキシの設定]** をクリックし、プロキシ アドレス (http://ProxyIPAddress または http://ProxyFQDN) の形式) とリッスン ポートを指定します。
@@ -202,7 +206,7 @@ Azure Migrate プロジェクトを作成し、Azure Migrate アプライアン�
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
-1. ポータルからコピーした **Azure Migrate プロジェクト キー**を貼り付けます。 このキーがない場合は、 **[Server Assessment] > [検出] > [Manage existing appliances]\(既存のアプライアンスの管理\)** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
+1. ポータルからコピーした **Azure Migrate プロジェクト キー** を貼り付けます。 このキーがない場合は、 **[Server Assessment] > [検出] > [既存のアプライアンスの管理]** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
 1. **[ログイン]** をクリックします。 新しいブラウザー タブで Azure ログイン プロンプトが開きます。表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
 1. 新しいタブで、Azure のユーザー名とパスワードを使用してサインインします。
    
@@ -216,10 +220,10 @@ Azure Migrate プロジェクトを作成し、Azure Migrate アプライアン�
 
 次に、アプライアンスから検出対象の物理サーバーに接続し、検出を開始します。
 
-1. **ステップ 1:Windows および Linux の物理サーバーまたは仮想サーバーを検出するための資格情報を指定**し、**資格情報の追加** をクリックして資格情報のフレンドリ名を指定します。Windows または Linux サーバーの **ユーザー名**と**パスワード**を追加します。 **[Save]** をクリックします。
+1. **ステップ 1:Windows および Linux の物理サーバーまたは仮想サーバーを検出するための資格情報を指定** し、**資格情報の追加** をクリックして資格情報のフレンドリ名を指定します。Windows または Linux サーバーの **ユーザー名** と **パスワード** を追加します。 **[Save]** をクリックします。
 1. 複数の資格情報を一度に追加するには、 **[さらに追加]** をクリックして資格情報を保存して追加します。 物理サーバーの検出では、複数の資格情報がサポートされています。
 1. **[Step 2:Provide physical or virtual server details]\(ステップ 2:物理サーバーまたは仮想サーバーの詳細を指定する\)** で、 **[Add discovery source]\(検出ソースの追加\)** をクリックして、サーバーの **[IP address/FQDN]\(IP アドレスまたは FQDN\)** と、サーバーに接続するための資格情報のフレンドリ名を指定します。
-1. 一度に **1 つの項目を追加**するか、一括で**複数の項目を追加**することができます。 また、 **[Import CSV]\(CSV のインポート\)** を使用して、サーバーの詳細を指定することもできます。
+1. 一度に **1 つの項目を追加** するか、一括で **複数の項目を追加** することができます。 また、 **[Import CSV]\(CSV のインポート\)** を使用して、サーバーの詳細を指定することもできます。
 
 
     - **[Add single item]\(1 つの項目を追加\)** を選択した場合は、OS のタイプ、資格情報のフレンドリ名を指定し、サーバーの **[IP address/FQDN]\(IP アドレスまたは FQDN\)** を追加して、 **[保存]** をクリックします。
@@ -229,7 +233,7 @@ Azure Migrate プロジェクトを作成し、Azure Migrate アプライアン�
 1. [保存] をクリックすると、アプライアンスによって追加されたサーバーへの接続が検証され、各サーバーの **[Validation status]\(検証状態\)** が表に表示されます。
     - サーバーの検証に失敗した場合は、表の [状態] 列にある **[Validation failed]\(検証に失敗しました\)** をクリックしてエラーを確認します。 問題を修正し、もう一度検証してください。
     - サーバーを削除するには、 **[削除]** をクリックします。
-1. 検出を開始する前に、サーバーへの接続はいつでも**再検証**できます。
+1. 検出を開始する前に、サーバーへの接続はいつでも **再検証** できます。
 1. 正常に検証されたサーバーの検出を開始するには **[Start discovery]\(検出の開始\)** をクリックします。 検出が正常に開始されたら、各サーバーに対する検出の状態を表で確認できます。
 
 

@@ -4,14 +4,15 @@ description: このチュートリアルでは、シークレット ストア �
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: c101cb4eca246ee68a30ba3499981c589c564f92
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b7d587f2be5141f7de82e9294b1fdb9fba4a6a41
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368657"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488645"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>チュートリアル:Kubernetes 上のシークレット ストア CSI ドライバー向けに Azure Key Vault プロバイダーを構成して実行する
 
@@ -35,7 +36,7 @@ ms.locfileid: "92368657"
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-* このチュートリアルを開始する前に、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) をインストールします。
+* このチュートリアルを開始する前に、[Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) をインストールします。
 
 ## <a name="create-a-service-principal-or-use-managed-identities"></a>サービス プリンシパルを作成するかマネージド ID を使用する
 
@@ -52,11 +53,17 @@ az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
 
 後で使用するために、**appId** と **password** の資格情報をコピーします。
 
+## <a name="flow-for-using-managed-identity"></a>マネージド ID を使用するためのフロー
+
+この図は、マネージド ID の AKS と Key Vault の統合のフローを示しています。
+
+![マネージド ID の AKS と Key Vault の統合のフローを示す図](../media/aks-key-vault-integration-flow.png)
+
 ## <a name="deploy-an-azure-kubernetes-service-aks-cluster-by-using-the-azure-cli"></a>Azure CLI を使用して Azure Kubernetes Service (AKS) クラスターをデプロイする
 
 Azure Cloud Shell を使用する必要はありません。 Azure CLI がインストールされているコマンド プロンプト (ターミナル) で十分です。 
 
-[Azure CLI を使用した Azure Kubernetes Service クラスターのデプロイ](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough)に関するページの「リソース グループを作成する」、「AKS クラスターの作成」、および「クラスターに接続する」セクションを完了します。 
+[Azure CLI を使用した Azure Kubernetes Service クラスターのデプロイ](../../aks/kubernetes-walkthrough.md)に関するページの「リソース グループを作成する」、「AKS クラスターの作成」、および「クラスターに接続する」セクションを完了します。 
 
 > [!NOTE] 
 > サービス プリンシパルの代わりにポッド ID を使用する予定の場合は、次のコマンドに示すように、Kubernetes クラスターを作成する際にそれを必ず有効にしてください。
@@ -103,7 +110,7 @@ Azure Cloud Shell を使用する必要はありません。 Azure CLI がイン
 
 ## <a name="create-an-azure-key-vault-and-set-your-secrets"></a>Azure キー コンテナーを作成してシークレットを設定する
 
-独自のキー コンテナーを作成してシークレットを設定するには、[Azure CLI を使用した Azure キー コンテナーへのシークレットの設定および取得](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-cli)に関するページの手順に従います。
+独自のキー コンテナーを作成してシークレットを設定するには、[Azure CLI を使用した Azure キー コンテナーへのシークレットの設定および取得](../secrets/quick-create-cli.md)に関するページの手順に従います。
 
 > [!NOTE] 
 > Azure Cloud Shell を使用したり、新しいリソース グループを作成したりする必要はありません。 以前 Kubernetes クラスター用に作成したリソース グループを使用できます。
@@ -210,7 +217,7 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
 
 マネージド ID を使用する場合は、作成した AKS クラスターに特定のロールを割り当てます。 
 
-1. ユーザー割り当てのマネージド ID の作成、一覧表示、または読み取りを行うには、AKS クラスターに[マネージド ID オペレーター](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) ロールを割り当てる必要があります。 **$clientId** が Kubernetes クラスターの clientId であることを確認します。 スコープについては、お使いの Azure サブスクリプション サービス、特に AKS クラスターの作成時に作成されたノード リソース グループの下に配置されます。 このスコープによって、そのグループ内のリソースのみが、以下に割り当てられたロールの影響を受けるようになります。 
+1. ユーザー割り当てのマネージド ID の作成、一覧表示、または読み取りを行うには、AKS クラスターに[マネージド ID オペレーター](../../role-based-access-control/built-in-roles.md#managed-identity-operator) ロールを割り当てる必要があります。 **$clientId** が Kubernetes クラスターの clientId であることを確認します。 スコープについては、お使いの Azure サブスクリプション サービス、特に AKS クラスターの作成時に作成されたノード リソース グループの下に配置されます。 このスコープによって、そのグループ内のリソースのみが、以下に割り当てられたロールの影響を受けるようになります。 
 
     ```azurecli
     RESOURCE_GROUP=contosoResourceGroup
@@ -355,4 +362,4 @@ kubectl exec -it nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 
 キー コンテナーが回復可能であることを確認するには、以下を参照してください。
 > [!div class="nextstepaction"]
-> [論理的な削除を有効にする](https://docs.microsoft.com/azure/key-vault/general/soft-delete-cli)
+> [論理的な削除を有効にする](./soft-delete-cli.md)

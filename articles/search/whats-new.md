@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ddf418c90857b5bb7eca97eb2c6943cc93fce9ab
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7f71cacee86edd5b3f054f0996893c2148c626eb
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518927"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422673"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
@@ -42,7 +42,7 @@ Azure Active Directory に検索サービスの ID を作成した後、Azure RB
 
 |機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | カテゴリ | 説明 | 可用性  |
 |---------|------------------|-------------|---------------|
-| [Azure.Search.Documents クライアント ライブラリ](/dotnet/api/overview/azure/search.documents-readme) | Azure SDK for .NET | Azure SDK チームによってリリースされた .NET クライアント ライブラリです。他の .NET クライアント ライブラリとの一貫性を保つように設計されています。 <br/><br/>バージョン 11 は Search REST api-version=2020-06-30 を対象としていますが、ナレッジ ストア、地理空間型、[FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder) はまだサポートしていません。 <br/><br/>詳細については、[インデックスの作成に関するクイックスタート](search-get-started-dotnet.md)および [Azure.Search.Documents (v11) へのアップグレード](search-dotnet-sdk-migration-version-11.md)に関するページをご覧ください。 | 一般提供されています。 </br> NuGet から [Azure.Search.Documents パッケージ](https://www.nuget.org/packages/Azure.Search.Documents/)をインストールします。 |
+| [Azure.Search.Documents クライアント ライブラリ](/dotnet/api/overview/azure/search.documents-readme) | Azure SDK for .NET | Azure SDK チームによってリリースされた .NET クライアント ライブラリです。他の .NET クライアント ライブラリとの一貫性を保つように設計されています。 <br/><br/>バージョン 11 は Search REST api-version=2020-06-30 を対象としていますが、ナレッジ ストアと地理空間型はまだサポートしていません。 <br/><br/>詳細については、[インデックスの作成に関するクイックスタート](search-get-started-dotnet.md)および [Azure.Search.Documents (v11) へのアップグレード](search-dotnet-sdk-migration-version-11.md)に関するページをご覧ください。 | 一般提供されています。 </br> NuGet から [Azure.Search.Documents パッケージ](https://www.nuget.org/packages/Azure.Search.Documents/)をインストールします。 |
 | [azure.search.documents クライアント ライブラリ](/python/api/overview/azure/search-documents-readme)  | Azure SDK for Python| Azure SDK チームによってリリースされた Python クライアント ライブラリです。他の Python クライアント ライブラリとの一貫性を保つように設計されています。 <br/><br/>バージョン 11 は Search REST api-version=2020-06-30 を対象としています。 | 一般提供されています。 </br> PyPI から [azure-search-documents パッケージ](https://pypi.org/project/azure-search-documents/)をインストールします。 |
 | [@azure/search-documents クライアント ライブラリ](/javascript/api/overview/azure/search-documents-readme)  | Azure SDK for JavaScript | Azure SDK チームによってリリースされた JavaScript クライアント ライブラリです。他の JavaScript クライアント ライブラリとの一貫性を保つように設計されています。 <br/><br/>バージョン 11 は Search REST api-version=2020-06-30 を対象としています。 | 一般提供されています。 </br> npm から [@azure/search-documents パッケージ](https://www.npmjs.com/package/@azure/search-documents)をインストールします。 |
 
@@ -63,7 +63,7 @@ Azure Active Directory に検索サービスの ID を作成した後、Azure RB
 | [**インバウンド ファイアウォールをサポートするための IP 規則**](service-configure-firewall.md) | セキュリティ | 検索サービス エンドポイントへのアクセスを特定の IP アドレスに制限します。 | 一般提供されています。 </br> [Management REST API 2020-03-13](/rest/api/searchmanagement/) 以降、またはポータルを使用します。 |
 | [**プライベート検索エンドポイント用の Azure Private Link**](service-create-private-endpoint.md) | セキュリティ| 検索サービスをプライベート リンク リソースとして実行することによって、パブリック インターネットからサービスをシールドします。これにより、同じ仮想ネットワーク上のクライアント アプリやその他の Azure サービスのみがアクセスできます。 | 一般提供されています。 </br> [Management REST API 2020-03-13](/rest/api/searchmanagement/) 以降、またはポータルを使用します。 |
 | [**システム マネージド ID (プレビュー)**](search-howto-managed-identities-data-sources.md) | セキュリティ (インデクサー) | Azure Active Directory を使用して、信頼できるサービスとして検索サービスを登録し、インデックス作成用にサポートされている Azure データ ソースへの接続を設定します。 Azure SQL Database、Azure Cosmos DB、Azure Storage などの Azure データ ソースからコンテンツを取り込む[インデクサー](search-indexer-overview.md)に適用されます。 | パブリック プレビュー。 </br> 検索サービスを登録するには、ポータルを使用します。 |
-| [**sessionId クエリ パラメーター**](index-similarity-and-scoring.md)、 [scoringStatistics=global パラメーター](index-similarity-and-scoring.md#scoring-statistics) | クエリ (関連性) | クエリに sessionID を追加して、検索スコアを計算するためのセッションを確立します。このとき scoringStatistics=global を指定すると、すべてのシャードからスコアを収集できるため、より一貫性のある検索スコア計算を行うことができます。 | 一般提供されています。 </br> [Search REST API 2020-06-30](/rest/api/searchservice/) 以降、または REST API 2019-05-06 を使用します。 |
+| [**sessionId クエリ パラメーター**](index-similarity-and-scoring.md)、[scoringStatistics=global パラメーター](index-similarity-and-scoring.md#scoring-statistics) | クエリ (関連性) | クエリに sessionID を追加して、検索スコアを計算するためのセッションを確立します。このとき scoringStatistics=global を指定すると、すべてのシャードからスコアを収集できるため、より一貫性のある検索スコア計算を行うことができます。 | 一般提供されています。 </br> [Search REST API 2020-06-30](/rest/api/searchservice/) 以降、または REST API 2019-05-06 を使用します。 |
 | [**featuresMode (プレビュー)**](index-similarity-and-scoring.md#featuresMode-param) | クエリ | このクエリ パラメーターを追加して関連性スコアを拡張し、より詳細な情報 (フィールドごとの類似性スコア、フィールドごとの用語の頻度、フィールドごとの一致する一意のトークンの数) を表示します。 これらのデータ ポイントは、カスタム スコアリング アルゴリズムで使用できます。 この機能を示すサンプルについては、[検索の関連性への機械学習 (LearnToRank) の追加](https://github.com/Azure-Samples/search-ranking-tutorial)に関するページを参照してください。 | パブリック プレビュー。 </br> [Search REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) または REST API 2019-05-06-Preview を使用します。 |
 
 ## <a name="march-2020"></a>2020 年 3 月
@@ -119,7 +119,7 @@ Azure Active Directory に検索サービスの ID を作成した後、Azure RB
 
 ## <a name="new-service-name"></a>新しいサービス名
 
-Azure Search は、コア操作での拡張された (ただし、省略可能な) 認知スキルと AI 処理の使用を反映するために、 **Azure Cognitive Search** に名前が変更されました。 API のバージョン、NuGet のパッケージ、名前空間、およびエンドポイントは変更されません。 新規および既存の検索ソリューションは、サービス名の変更の影響を受けません。
+Azure Search は、コア操作での拡張された (ただし、省略可能な) 認知スキルと AI 処理の使用を反映するために、**Azure Cognitive Search** に名前が変更されました。 API のバージョン、NuGet のパッケージ、名前空間、およびエンドポイントは変更されません。 新規および既存の検索ソリューションは、サービス名の変更の影響を受けません。
 
 ## <a name="service-updates"></a>サービスの更新情報
 

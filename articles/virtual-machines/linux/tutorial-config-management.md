@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 175c92c02196105e9fb1249e5b88d73bc8b87d48
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 3210829b3281aa862cdf0dbdc9c915249a55e423
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735238"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518007"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure で変更を監視し、Linux 仮想マシンを更新する
 
@@ -32,23 +32,19 @@ Azure Linux VM では、Azure [Change Tracking](../../automation/change-tracking
 > * Linux の更新プログラムを管理する
 > * 変更とインベントリを監視する
 
-## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+- このチュートリアルには、Azure CLI のバージョン 2.0.30 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-vm"></a>VM を作成する
 
-診断とメトリックの動作を確認するには、VM が必要です。 最初に、[az group create](/cli/azure/group#az-group-create) を使用して、リソース グループを作成します。 次の例では、 *myResourceGroupMonitor* という名前のリソース グループを場所 *eastus* に作成します。
+診断とメトリックの動作を確認するには、VM が必要です。 最初に、[az group create](/cli/azure/group#az-group-create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroupMonitor* という名前のリソース グループを場所 *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroupMonitor --location eastus
 ```
 
-ここで [az vm create](/cli/azure/vm#az-vm-create) を使用して VM を作成します。 次の例では、 *myVM* という名前の VM を作成し、SSH キーを生成します ( *~/.ssh/* にまだ存在していない場合)。
+ここで [az vm create](/cli/azure/vm#az-vm-create) を使用して VM を作成します。 次の例では、*myVM* という名前の VM を作成し、SSH キーを生成します ( *~/.ssh/* にまだ存在していない場合)。
 
 ```azurecli-interactive
 az vm create \
@@ -141,9 +137,9 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 **[新プログラムを実行した結果]** のタイルに表示されるのは、VM 上の更新プログラムの合計数とデプロイ結果の概要です。
 右側の表に、各更新プログラムとインストールの結果の詳細が示されます。これは、次の値のいずれかになります。
 
-* **試行されていません** : メンテナンス期間として定義した時間が十分ではなかったため、更新プログラムがインストールされませんでした。
-* **成功** : 更新できました。
-* **失敗** : 更新できませんでした。
+* **試行されていません**: メンテナンス期間として定義した時間が十分ではなかったため、更新プログラムがインストールされませんでした。
+* **成功**: 更新できました。
+* **失敗**: 更新できませんでした。
 
 展開によって作成されたログ エントリをすべて表示するには、 **[すべてのログ]** を選択します。
 

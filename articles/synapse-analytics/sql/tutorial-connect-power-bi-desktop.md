@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:SQL オンデマンドを Power BI Desktop に接続してレポートを作成する
-description: このチュートリアルでは、Azure Synapse Analytics の SQL オンデマンドを Power BI Desktop に接続し、ビューに基づいてデモ レポートを作成する方法について説明します。
+title: チュートリアル:サーバーレス SQL プールを Power BI Desktop に接続してレポートを作成する
+description: このチュートリアルでは、Azure Synapse Analytics のサーバーレス SQL プールを Power BI Desktop に接続し、ビューに基づいてデモ レポートを作成する方法について説明します。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c86825d6dce8681e114ec930add751b6beae085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc2b068dd7c5e7fb3f9e3505f93245515d90ae23
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539556"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317183"
 ---
-# <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>チュートリアル:SQL オンデマンドを Power BI Desktop で使用してレポートを作成する
+# <a name="tutorial-use-serverless-sql-pool-with-power-bi-desktop--create-a-report"></a>チュートリアル:Power BI Desktop でサーバーレス SQL プールを使用してレポートを作成する
 
 このチュートリアルでは、次の作業を行う方法について説明します。
 
@@ -24,7 +24,7 @@ ms.locfileid: "91539556"
 >
 > - デモ データベースの作成
 > - レポートに使用するビューの作成
-> - SQL オンデマンドへの Power BI Desktop の接続
+> - サーバーレス SQL プールへの Power BI Desktop の接続
 > - ビューに基づくレポートの作成
 
 ## <a name="prerequisites"></a>前提条件
@@ -42,8 +42,8 @@ ms.locfileid: "91539556"
 
 | パラメーター                                 | 説明                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| SQL オンデマンド サービス エンドポイント アドレス    | サーバー名として使用されます                                   |
-| SQL オンデマンド サービス エンドポイント リージョン     | サンプルで使用されるストレージを決定するために使用されます |
+| サーバーレス SQL プール サービス エンドポイント アドレス    | サーバー名として使用されます                                   |
+| サーバーレス SQL プール サービス エンドポイント リージョン     | サンプルで使用されるストレージを決定するために使用されます |
 | エンドポイント アクセスのユーザー名とパスワード | エンドポイントへのアクセスに使用されます                               |
 | ビューの作成に使用するデータベース     | サンプルの開始点として使用されるデータベース       |
 
@@ -65,7 +65,7 @@ GO
 
 ## <a name="2---create-data-source"></a>2 - データ ソースの作成
 
-SQL オンデマンド サービスがストレージ内のファイルにアクセスするにはデータ ソースが必要です。 エンドポイントと同じリージョンにあるストレージ アカウントのデータ ソースを作成します。 SQL オンデマンドは異なるリージョンからストレージ アカウントにアクセスできますが、ストレージとエンドポイントを同じリージョンに配置するとパフォーマンスが向上します。
+サーバーレス SQL プール サービスがストレージ内のファイルにアクセスするにはデータ ソースが必要です。 エンドポイントと同じリージョンにあるストレージ アカウントのデータ ソースを作成します。 サーバーレス SQL プールはさまざまなリージョンからストレージ アカウントにアクセスできますが、ストレージとエンドポイントを同じリージョンに配置するとパフォーマンスが向上します。
 
 次の Transact-SQL (T-SQL) スクリプトを実行して、データ ソースを作成します。
 

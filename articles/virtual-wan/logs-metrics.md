@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 78165e9c14d4a83dbc20cbccd2f31dc8ac4c79ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53b8d74d6eb35347d6ac5b27d12fa5b5eaed2582
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440870"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566369"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure Virtual WAN のログとメトリック
 
@@ -66,7 +66,7 @@ Azure ExpressRoute ゲートウェイでは、次のメトリックを利用で�
 
 4. **[メトリック]** ページ上で、関心のあるメトリックを閲覧できます。
 
-   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="スクリーンショットには、Azure Monitor で [表示] が選択されたサイト間 VPN ペインが示されています。":::
+   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="カテゴリが強調表示されている [メトリック] ページを示すスクリーンショット。":::
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic"></a>診断ログ
 
@@ -93,15 +93,15 @@ Azure ポイント対サイト VPN ゲートウェイでは、次の診断を利
 
 1. ポータル上で、Virtual WAN リソースに移動します。 ポータル上の [Virtual WAN] ページの **[概要]** セクションで、 **[Essentials]** を選択してビューを展開し、リソース グループ情報を取得します。 リソース グループ情報をコピーします。
 
-   :::image type="content" source="./media/logs-metrics/3.png" alt-text="スクリーンショットには、Azure Monitor で [表示] が選択されたサイト間 VPN ペインが示されています。":::
+   :::image type="content" source="./media/logs-metrics/3.png" alt-text="[コピー] ボタンを指す矢印の付いた [概要] セクションを示すスクリーンショット。":::
 
 2. [監視] セクションで、リソース グループに移動します。 **[診断設定]** を選択して、リソース情報を入力します。 これは、この記事で前述した「[ゲートウェイ メトリックを表示する](#metrics-steps)」の手順 2 でコピーしたリソース情報です。
 
-   :::image type="content" source="./media/logs-metrics/4.png" alt-text="スクリーンショットには、Azure Monitor で [表示] が選択されたサイト間 VPN ペインが示されています。":::
+   :::image type="content" source="./media/logs-metrics/4.png" alt-text="[リソース] ドロップダウンを指す矢印の付いた [監視] セクションを示すスクリーンショット。":::
 
 3. [結果] ページで、 **[+ 診断設定を追加する]** を選択してから、オプションを選択します。 Log Analytics への送信、イベント ハブへのストリーム、またはストレージ アカウントへの単純なアーカイブから選ぶことができます。
 
-   :::image type="content" source="./media/logs-metrics/5.png" alt-text="スクリーンショットには、Azure Monitor で [表示] が選択されたサイト間 VPN ペインが示されています。":::
+   :::image type="content" source="./media/logs-metrics/5.png" alt-text="メトリック ページ":::
 
 ### <a name="log-analytics-sample-query"></a><a name="sample-query"></a>Log Analytics サンプル クエリ
 
@@ -123,5 +123,5 @@ Azure ポイント対サイト VPN ゲートウェイでは、次の診断を利
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Firewall のログとメトリックを監視する方法については、[Azure Firewall のログを監視する方法に関するチュートリアル](../firewall/tutorial-diagnostics.md)を参照してください。
+* Azure Firewall のログとメトリックを監視する方法については、[Azure Firewall のログを監視する方法に関するチュートリアル](../firewall/firewall-diagnostics.md)を参照してください。
 * Azure Monitor のメトリックの詳細については、「[Azure Monitor のメトリック](../azure-monitor/platform/data-platform-metrics.md)」を参照してください。

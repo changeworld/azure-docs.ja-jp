@@ -2,20 +2,20 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: azure-communication-services
-author: matthewrobertson
-manager: nimag
+author: tomaschladek
+manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
-ms.author: marobert
-ms.openlocfilehash: a9c8d604e5564526936f37edcc9eec5891443a47
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.author: tchladek
+ms.openlocfilehash: de578ec286a8232ee8d4e259b2f37fb76101f7a5
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779344"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506237"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,7 +28,7 @@ ms.locfileid: "91779344"
 
 ### <a name="create-a-new-java-application"></a>新しい Java アプリケーションを作成する
 
-ターミナルまたはコマンド ウィンドウを開き、Java アプリケーションを作成するディレクトリに移動します。 次のコマンドを実行して、maven-archetype-quickstart テンプレートから Java プロジェクトを生成します。
+ターミナルまたはコマンド ウィンドウを開きます。 Java アプリケーションを作成するディレクトリに移動します。 次のコマンドを実行して、maven-archetype-quickstart テンプレートから Java プロジェクトを生成します。
 
 ```console
 mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=communication-quickstart -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
@@ -60,23 +60,23 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 次のコードを使用して開始します。
 
 ```java
-import com.azure.communication.common.CommunicationUser;
-import com.azure.communication.administration.models.CommunicationIdentityToken;
-import com.azure.communication.administration.CommunicationIdentityClient;
-import com.azure.communication.administration.CommunicationIdentityClientBuilder;
+import com.azure.communication.administration.*;
+import com.azure.communication.common.*;
 import java.io.*;
+import java.util.*;
+import java.time.*;
+
+import com.azure.core.http.*;
 
 public class App
 {
     public static void main( String[] args ) throws IOException
     {
-        System.out.println("Azure Communication Services - User Access Tokens Quickstart");
+        System.out.println("Azure Communication Services - Access Tokens Quickstart");
         // Quickstart code goes here
     }
 }
 ```
-
-[!INCLUDE [User Access Tokens Object Model](user-access-tokens-object-model.md)]
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
@@ -85,65 +85,77 @@ public class App
 `main` メソッドに次のコードを追加します。
 
 ```java
-// Your can find your endpoint and access token from your resource in the Azure Portal
+// Your can find your endpoint and access key from your resource in the Azure Portal
 String endpoint = "https://<RESOURCE_NAME>.communication.azure.com";
-String accessToken = "SECRET";
+String accessKey = "SECRET";
 
 // Create an HttpClient builder of your choice and customize it
 // Use com.azure.core.http.netty.NettyAsyncHttpClientBuilder if that suits your needs
+// -> Add "import com.azure.core.http.netty.*;"
+// -> Add azure-core-http-netty dependency to file pom.xml
+
 HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
 
 CommunicationIdentityClient communicationIdentityClient = new CommunicationIdentityClientBuilder()
     .endpoint(endpoint)
-    .credential(new CommunicationClientCredential(accessToken))
+    .credential(new CommunicationClientCredential(accessKey))
     .httpClient(httpClient)
     .buildClient();
 ```
 
 `com.azure.core.http.HttpClient` インターフェイスを実装する任意のカスタム HTTP クライアントを使用して、クライアントを初期化できます。 上記のコードは、`azure-core` によって提供される [Azure Core Netty HTTP クライアント](https://docs.microsoft.com/java/api/overview/azure/core-http-netty-readme?view=azure-java-stable&preserve-view=true)の使用方法を示しています。
 
-## <a name="create-a-user"></a>ユーザーを作成する
+## <a name="create-an-identity"></a>ID の作成
 
-Azure Communication Services は、軽量の ID ディレクトリを保持します。 `createUser` メソッドを使用して、一意の `Id` を持つディレクトリに新しいエントリを作成します。 お使いのアプリケーションのユーザーと、Communication Services で生成された ID の間のマッピングを (アプリケーション サーバーのデータベースにこれらを格納するなどによって) 維持する必要があります。
+Azure Communication Services は、軽量の ID ディレクトリを保持します。 `createUser` メソッドを使用して、一意の `Id` を持つディレクトリに新しいエントリを作成します。 受け取った ID を、アプリケーションのユーザーへのマッピングと共に格納します。 これらは、アプリケーション サーバーのデータベースなどに格納します。 ID は、後でアクセス トークンを発行するために必要になります。
 
 ```java
-CommunicationUser user = communicationIdentityClient.createUser();
-System.out.println("\nCreated a user with ID: " + user.getId());
+CommunicationUser identity = communicationIdentityClient.createUser();
+System.out.println("\nCreated an identity with ID: " + identity.getId());
 ```
 
-## <a name="issue-user-access-tokens"></a>ユーザー アクセス トークンを発行する
+## <a name="issue-access-tokens"></a>アクセス トークンを発行する
 
-Communication Services ユーザーのアクセス トークンを発行するには、`issueToken` メソッドを使用します。 オプションの `user` パラメーターを指定しない場合は、新しいユーザーが作成され、トークンと共に返されます。
+既存の Communication Services ID のアクセス トークンを発行するには、`issueToken` メソッドを使用します。 パラメーター `scopes` によって、このアクセス トークンを承認するプリミティブのセットが定義されます。 [サポートされているアクションの一覧](../../concepts/authentication.md)を参照してください。 パラメーター `user` の新しいインスタンスは、Azure Communication Services ID の文字列表現に基づいて作成できます。
 
 ```java
-// Issue an access token with the "voip" scope for a new user
+// Issue an access token with the "voip" scope for an identity
 List<String> scopes = new ArrayList<>(Arrays.asList("voip"));
-CommunicationUserToken response = communicationIdentityClient.issueToken(user, scopes);
+CommunicationUserToken response = communicationIdentityClient.issueToken(identity, scopes);
 OffsetDateTime expiresOn = response.getExpiresOn();
 String token = response.getToken();
-String userId = response.getUser().getId();
-System.out.println("\nIssued a access token with 'voip' scope for identity with ID: " + userId + ": " + token);
-System.out.println(token);
+String identityId = response.getUser().getId();
+System.out.println("\nIssued a access token with 'voip' scope for identity with ID: " + identityId + ": " + token);
 ```
 
-ユーザー アクセス トークンは、ユーザーのサービス中断を防ぐために再発行する必要がある、有効期間の短い資格情報です。 `expiresAt` 応答プロパティは、トークンの有効期間を示します。
+アクセス トークンは有効期間の短い資格情報であるため、再発行が必要になります。 そうしないと、アプリケーションのユーザー エクスペリエンスが中断される可能性があります。 `expiresAt` 応答プロパティは、アクセス トークンの有効期間を示します。
 
-## <a name="revoke-user-access-tokens"></a>ユーザー アクセス トークンを取り消す
+## <a name="refresh-access-tokens"></a>アクセス トークンの更新
 
-場合によっては、ユーザーがサービスへの認証に使用するパスワードを変更したときなどに、ユーザー アクセス トークンを明示的に取り消す必要があります。 これには `revokeTokens` メソッドを使用して、すべてのユーザーのアクセス トークンを無効にします。
+アクセス トークンを更新するには、`CommunicationUser` オブジェクトを使用して再発行します。
 
 ```java  
-communicationIdentityClient.revokeTokens(user, OffsetDateTime.now());
-System.out.println("\nRevoked tokens for the user with ID: " + user.getId());
+// Value existingIdentity represents identity of Azure Communication Services stored during identity creation
+CommunicationUser identity = new CommunicationUser(existingIdentity);
+response = communicationIdentityClient.issueToken(identity, scopes);
 ```
 
-## <a name="delete-a-user"></a>ユーザーの削除
+## <a name="revoke-access-tokens"></a>アクセス トークンの取り消し
 
-ユーザーを削除すると、すべてのアクティブなトークンが取り消され、その ID についての後続のトークンを発行できなくなります。 また、ユーザーに関連付けられているすべての永続化されたコンテンツも削除されます。
+場合によっては、明示的にアクセス トークンを取り消すことがあります。 たとえば、アプリケーションのユーザーが、サービスに対する認証に使用するパスワードを変更するような場合です。 `revokeTokens` メソッドを使用すると、ID に対して発行されたすべてのアクティブなアクセス トークンを無効にできます。
+
+```java  
+communicationIdentityClient.revokeTokens(identity, OffsetDateTime.now());
+System.out.println("\nRevoked access tokens for the user with ID: " + identity.getId());
+```
+
+## <a name="delete-an-identity"></a>ID の削除
+
+ID を削除すると、すべてのアクティブなアクセス トークンが取り消され、その ID に対してアクセス トークンを発行できなくなります。 また、ID に関連付けられているすべての永続化されたコンテンツも削除されます。
 
 ```java
-communicationIdentityClient.deleteUser(user);
-System.out.println("\nSuccessfully deleted the identity with ID: " + user.getId());
+communicationIdentityClient.deleteUser(identity);
+System.out.println("\nSuccessfully deleted the identity with ID: " + identity.getId());
 ```
 
 ## <a name="run-the-code"></a>コードの実行

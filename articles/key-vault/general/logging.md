@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5423fc27ecc58bcd79b36a845e4b7569f342f712
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: eef4f6b8ee5821e54b5b7709eee7f8dad8749e63
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286694"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488538"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault のログ記録
 
@@ -73,15 +73,15 @@ Key Vault の概要については、「[Azure Key Vault とは](overview.md)」
 | **callerIpAddress** |要求を行ったクライアントの IP アドレスです。 |
 | **correlationId** |オプションの GUID であり、クライアント側のログとサービス側の (Key Vault) ログを対応付ける場合に渡します。 |
 | **identity** |REST API 要求に提示されたトークンからの ID です。 これは、通常、Azure PowerShell コマンドレットの実行結果として生じる要求の場合と同様に、"user"、"service principal"、または組み合わせ "user+appId" となります。 |
-| **properties** |操作によって異なる情報です ( **operationName** )。 ほとんどの場合、このフィールドには、クライアント情報 (クライアントから渡されたユーザー エージェント文字列)、正確な REST API 要求 URI、および HTTP 状態コードが含まれます。 さらに、要求 ( **KeyCreate** や **VaultGet** など) を行った結果としてオブジェクトが返される場合、キーの URI (`id` として)、コンテナーの URI、またはシークレットの URI も含まれます。 |
+| **properties** |操作によって異なる情報です (**operationName**)。 ほとんどの場合、このフィールドには、クライアント情報 (クライアントから渡されたユーザー エージェント文字列)、正確な REST API 要求 URI、および HTTP 状態コードが含まれます。 さらに、要求 (**KeyCreate** や **VaultGet** など) を行った結果としてオブジェクトが返される場合、キーの URI (`id` として)、コンテナーの URI、またはシークレットの URI も含まれます。 |
 
-**operationName** フィールドの値は、 *ObjectVerb* 形式となります。 次に例を示します。
+**operationName** フィールドの値は、*ObjectVerb* 形式となります。 次に例を示します。
 
 * キー コンテナーに関するすべての操作は、`Vault<action>` 形式となります (`VaultGet` や `VaultCreate` など)。
 * キーに関するすべての操作は、`Key<action>` 形式となります (`KeySign` や `KeyList` など)。
 * シークレットに関するすべての操作は、`Secret<action>` 形式となります (`SecretGet` や `SecretListVersions` など)。
 
-次の表に、 **operationName** の値と、対応する REST API コマンドを示します。
+次の表に、**operationName** の値と、対応する REST API コマンドを示します。
 
 ### <a name="operation-names-table"></a>操作名の表
 
@@ -93,12 +93,14 @@ Key Vault の概要については、「[Azure Key Vault とは](overview.md)」
 | **VaultDelete** |[キー コンテナーを削除します](/rest/api/keyvault/vaults) |
 | **VaultPatch** |[Key Vault を更新します](/rest/api/keyvault/vaults) |
 | **VaultList** |[リソース グループ内のすべてのキー コンテナーを一覧表示します](/rest/api/keyvault/vaults) |
+| **VaultPurge** |[削除されたコンテナーを消去します](/rest/api/keyvault/vaults/purgedeleted) |
+| **VaultRecover** |削除されたコンテナーを復旧します|
+| **VaultGetDeleted** |[削除されたコンテナーを取得します](/rest/api/keyvault/vaults/getdeleted) |
+| **VaultListDeleted** |[削除されたコンテナーを一覧表示します](/rest/api/keyvault/vaults/listdeleted) |
 | **KeyCreate** |[キーを作成します](/rest/api/keyvault/createkey) |
 | **KeyGet** |[キーに関する情報を取得します](/rest/api/keyvault/getkey) |
 | **KeyImport** |[コンテナーにキーをインポートします](/rest/api/keyvault/vaults) |
-| **KeyBackup** |[キーをバックアップします](/rest/api/keyvault/backupkey) |
 | **KeyDelete** |[キーを削除します](/rest/api/keyvault/deletekey) |
-| **KeyRestore** |[キーを復元します](/rest/api/keyvault/restorekey) |
 | **KeySign** |[キーで署名します](/rest/api/keyvault/sign) |
 | **KeyVerify** |[キーで確認します](/rest/api/keyvault/vaults) |
 | **KeyWrap** |[キーをラップします](/rest/api/keyvault/wrapkey) |
@@ -106,14 +108,56 @@ Key Vault の概要については、「[Azure Key Vault とは](overview.md)」
 | **KeyEncrypt** |[キーで暗号化します](/rest/api/keyvault/encrypt) |
 | **KeyDecrypt** |[キーで復号化します](/rest/api/keyvault/decrypt) |
 | **KeyUpdate** |[キーを更新します](/rest/api/keyvault/updatekey) |
-| **KeyList** |[コンテナー内のキーを一覧表示します](/rest/api/keyvault/vaults) |
+| **KeyList** |[コンテナー内のキーを一覧表示します](/rest/api/keyvault/getkeys) |
 | **KeyListVersions** |[キーのバージョンを一覧表示します](/rest/api/keyvault/getkeyversions) |
+| **KeyPurge** |[キーを消去します](/rest/api/keyvault/purgedeletedkey) |
+| **KeyBackup** |[キーをバックアップします](/rest/api/keyvault/backupkey) |
+| **KeyRestore** |[キーを復元します](/rest/api/keyvault/restorekey) |
+| **KeyRecover** |[キーを復旧します](/rest/api/keyvault/recoverdeletedkey) |
+| **KeyGetDeleted** |[削除されたキーを取得します](/rest/api/keyvault/getdeletedkey) |
+| **KeyListDeleted** |[コンテナー内の削除されたキーを一覧表示します](/rest/api/keyvault/getdeletedkeys) |
+| **CertificateGet** |[証明書に関する情報を取得する](/rest/api/keyvault/getcertificate) |
+| **CertificateCreate** |[証明書を作成します](/rest/api/keyvault/createcertificate) |
+| **CertificateImport** |[証明書をコンテナーにインポートします](/rest/api/keyvault/importcertificate) |
+| **CertificateUpdate** |[証明書を更新します](/rest/api/keyvault/updatecertificate) |
+| **CertificateList** |[コンテナー内の証明書を一覧表示します](/rest/api/keyvault/getcertificates) |
+| **CertificateListVersions** |[証明書のバージョンを一覧表示します](/rest/api/keyvault/getcertificateversions) |
+| **CertificateDelete** |[証明書を削除します](/rest/api/keyvault/deletecertificate) |
+| **CertificatePurge** |[証明書を消去します](/rest/api/keyvault/purgedeletedcertificate) |
+| **CertificateBackup** |[証明書をバックアップします](/rest/api/keyvault/backupcertificate) |
+| **CertificateRestore** |[証明書を復元します](/rest/api/keyvault/restorecertificate) |
+| **CertificateRecover** |[証明書を復旧します](/rest/api/keyvault/recoverdeletedcertificate) |
+| **CertificateGetDeleted** |[削除された証明書を取得します](/rest/api/keyvault/getdeletedcertificate) |
+| **CertificateListDeleted** |[コンテナー内の削除された証明書を一覧表示します](/rest/api/keyvault/getdeletedcertificates) |
+| **CertificatePolicyGet** |[証明書ポリシーを取得します](/rest/api/keyvault/getcertificatepolicy) |
+| **CertificatePolicyUpdate** |[証明書ポリシーを更新します](/rest/api/keyvault/updatecertificatepolicy) |
+| **CertificatePolicySet** |[証明書ポリシーを作成します](/rest/api/keyvault/createcertificate) |
+| **CertificateContactsGet** |[証明書の連絡先を取得します](/rest/api/keyvault/getcertificatecontacts) |
+| **CertificateContactsSet** |[証明書の連絡先を設定します](/rest/api/keyvault/setcertificatecontacts) |
+| **CertificateContactsDelete** |[証明書の連絡先を削除します](/rest/api/keyvault/deletecertificatecontacts) |
+| **CertificateIssuerGet** |[証明書の発行者を取得します](/rest/api/keyvault/getcertificateissuer) |
+| **CertificateIssuerSet** |[証明書の発行者を設定します](/rest/api/keyvault/setcertificateissuer) |
+| **CertificateIssuerUpdate** |[証明書の発行者を更新します](/rest/api/keyvault/updatecertificateissuer) |
+| **CertificateIssuerDelete** |[証明書の発行者を削除します](/rest/api/keyvault/deletecertificateissuer) |
+| **CertificateIssuersList** |[証明書の発行者を一覧表示します](/rest/api/keyvault/getcertificateissuers) |
+| **CertificateEnroll** |証明書を登録します |
+| **CertificateRenew** |証明書を更新する |
+| **CertificatePendingGet** |保留中の証明書を取得します |
+| **CertificatePendingMerge** |証明書のマージを保留しています |
+| **CertificatePendingUpdate** |証明書の更新を保留しています |
+| **CertificatePendingDelete** |保留中の証明書を削除します |
 | **SecretSet** |[シークレットを作成します](/rest/api/keyvault/updatecertificate) |
 | **SecretGet** |[シークレットを取得します](/rest/api/keyvault/getsecret) |
 | **SecretUpdate** |[シークレットを更新します](/rest/api/keyvault/updatesecret) |
 | **SecretDelete** |[シークレットを削除します](/rest/api/keyvault/deletesecret) |
-| **SecretList** |[コンテナー内のシークレットを一覧表示します](/rest/api/keyvault/vaults) |
+| **SecretList** |[コンテナー内のシークレットを一覧表示します](/rest/api/keyvault/getsecrets) |
 | **SecretListVersions** |[シークレットのバージョンを一覧表示します](/rest/api/keyvault/getsecretversions) |
+| **SecretPurge** |[シークレットを消去します](/rest/api/keyvault/purgedeletedsecret) |
+| **SecretBackup** |[シークレットをバックアップします](/rest/api/keyvault/backupsecret) |
+| **SecretRestore** |[シークレットを復元します](/rest/api/keyvault/restoresecret) |
+| **SecretRecover** |[シークレットを復旧します](/rest/api/keyvault/recoverdeletedsecret) |
+| **SecretGetDeleted** |[削除されたシークレットを取得します](/rest/api/keyvault/getdeletedsecret) |
+| **SecretListDeleted** |[コンテナー内の削除されたシークレットを一覧表示します](/rest/api/keyvault/getdeletedsecrets) |
 | **VaultAccessPolicyChangedEventGridNotification** | コンテナーのアクセス ポリシーが変更されたイベントが公開されました |
 | **SecretNearExpiryEventGridNotification** |有効期限が近づいているシークレット イベントが公開されました |
 | **SecretExpiredEventGridNotification** |期限切れのシークレット イベントが公開されました |

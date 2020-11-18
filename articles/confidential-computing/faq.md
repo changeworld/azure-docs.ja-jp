@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: cf90ff5b94eb03f76dffc8b64dd4d92a44ac20ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9df3d9771029e6d72e9d0092a129cddc27be6cd7
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848910"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564108"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Azure Confidential Computing についてよく寄せられる質問
 
@@ -32,7 +32,7 @@ DCsv2 VM は次のような方法でデプロイできます。
 
 **すべての OS イメージが Azure Confidential Computing と連動しますか?**
 
-いいえ。 仮想マシンをデプロイできるのは、Ubuntu Server 18.04、Ubuntu Server 16.04、Windows Server 2019 Datacenter、および Windows Server 2016 Datacenter を搭載した第 2 世代のオペレーティング マシン上だけです。 [Linux](../virtual-machines/linux/generation-2.md) と [Windows](../virtual-machines/windows/generation-2.md) の Gen 2 VM に関する詳細をご覧ください。
+いいえ。 仮想マシンをデプロイできるのは、Ubuntu Server 18.04、Ubuntu Server 16.04、Windows Server 2019 Datacenter、および Windows Server 2016 Datacenter を搭載した第 2 世代のオペレーティング マシン上だけです。 [Linux](../virtual-machines/generation-2.md) と [Windows](../virtual-machines/generation-2.md) の Gen 2 VM に関する詳細をご覧ください。
 
 **DCsv2 仮想マシンがポータルで淡色表示され、選択できません**
 

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: ecebaf9384bcb0dbbb6fe36df4dd474738422149
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 8e97a2f077efd4d00eec4a91645dc1b65057ebd9
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043414"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565009"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>P2S OpenVPN プロトコル接続用に VPN クライアントを構成する:Azure AD 認証
 
@@ -138,7 +138,7 @@ Always-on を使用して自動的に接続するように構成するには、�
 
 ## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>接続の問題を診断する
 
-1. 接続の問題を診断するには、 **診断** ツールを使用します。 診断する VPN 接続の横にある **[...]** を選択して、メニューを表示します。 次に、 **[診断]** を選択します。
+1. 接続の問題を診断するには、**診断** ツールを使用します。 診断する VPN 接続の横にある **[...]** を選択して、メニューを表示します。 次に、 **[診断]** を選択します。
 
     ![メニューで [診断] が選択されていることを示すスクリーンショット。](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
@@ -192,7 +192,7 @@ Always-on を使用して自動的に接続するように構成するには、�
 ```
 
 > [!NOTE]
-> OpenVPN Azure AD クライアントは、DNS 名前解決ポリシー テーブル (NRPT) エントリを利用します。したがって、DNS サーバーは `ipconfig /all` の出力には一覧表示されません。 使用中の DNS 設定を確認するには、PowerShell で [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) を参照してください。
+> OpenVPN Azure AD クライアントは、DNS 名前解決ポリシー テーブル (NRPT) エントリを利用します。したがって、DNS サーバーは `ipconfig /all` の出力には一覧表示されません。 使用中の DNS 設定を確認するには、PowerShell で [Get-DnsClientNrptPolicy](/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) を参照してください。
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>VPN クライアントにカスタム ルートを追加する方法

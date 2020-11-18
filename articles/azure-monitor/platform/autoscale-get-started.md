@@ -4,12 +4,12 @@ description: Azure でリソースの Web アプリ、クラウド サービス�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 3662f6007049a5531e11c193adf71e8f8442dcdb
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 543ecc80abeb9a437a895224de6ade679698c4d7
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377022"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565638"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure での自動スケールの使用
 この記事では、Microsoft Azure Portal でリソースの自動スケール設定をセットアップする方法について説明します。
@@ -127,7 +127,7 @@ ARM テンプレートでこの機能を有効にするには、`Microsoft.Web/s
 
 #### <a name="security"></a>セキュリティ 
 
-大企業の開発チームは、多くの場合、その公開されている API のセキュリティ要件に従う必要があります。 正常性チェック エンドポイントをセキュリティで保護するには、まず [IP 制限](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)、[クライアント証明書](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)、Virtual Network などの機能を使用して、アプリケーションへのアクセスを制限する必要があります。 着信要求の `User-Agent` が `ReadyForRequest/1.0` と一致するように要求することで、正常性チェック エンドポイント自体をセキュリティで保護できます。 以前のセキュリティ機能によって要求が既にセキュリティで保護されているため、User-Agent になりすますことはできません。
+大企業の開発チームは、多くの場合、その公開されている API のセキュリティ要件に従う必要があります。 正常性チェック エンドポイントをセキュリティで保護するには、まず [IP 制限](../../app-service/app-service-ip-restrictions.md#set-an-ip-address-based-rule)、[クライアント証明書](../../app-service/app-service-ip-restrictions.md#set-an-ip-address-based-rule)、Virtual Network などの機能を使用して、アプリケーションへのアクセスを制限する必要があります。 着信要求の `User-Agent` が `ReadyForRequest/1.0` と一致するように要求することで、正常性チェック エンドポイント自体をセキュリティで保護できます。 以前のセキュリティ機能によって要求が既にセキュリティで保護されているため、User-Agent になりすますことはできません。
 
 ### <a name="behavior"></a>動作
 

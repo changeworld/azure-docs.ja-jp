@@ -15,12 +15,12 @@ ms.date: 12/05/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
-ms.openlocfilehash: 07a0581cd7fe2e7a9c13f860c862e34da3cfd1ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f55b6eafe230f722979d535111ce45aa35981f0
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88998290"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125039"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する
 
@@ -66,7 +66,7 @@ UWP アプリにプッシュ通知を送信するには、アプリを Windows �
 3. **[Product management]\(製品管理\)** を展開し、 **[WNS/MPNS]** を選択してから、 **[Live Services site]\(Live Services サイト\)** を選択します。 Microsoft アカウントにサインインする。 アプリケーション登録ページが新しいタブで開きます。あるいは、[[マイ アプリケーション]](https://apps.dev.microsoft.com) ページに直接移動し、アプリケーション名を選択してこのページを表示できます。
 
     ![[WNS MPNS] ページ](./media/notification-hubs-windows-store-dotnet-get-started/wns-mpns-page.png)
-4. **アプリケーション シークレット** パスワードと**パッケージ セキュリティ ID (SID)** をメモします。
+4. [Windows ストア] セクションでは、**アプリケーション シークレット** パスワードだけでなく、**パッケージ セキュリティ識別子 (SID)** と **アプリケーション ID** にも注意してください。
 
     >[!WARNING]
     >アプリケーション シークレットおよびパッケージ SID は、重要なセキュリティ資格情報です。 これらの値は、他のユーザーと共有したり、アプリケーションで配信したりしないでください。
@@ -78,7 +78,7 @@ UWP アプリにプッシュ通知を送信するには、アプリを Windows �
 ### <a name="configure-wns-settings-for-the-hub"></a>WNS の設定をハブ用に構成する
 
 1. **[通知設定]** カテゴリで、 **[Windows (WNS)]** を選択します。
-2. 前のセクションからメモした**パッケージ SID** と**セキュリティ キー**の値を入力します。
+2. 前のセクションからメモした **パッケージ SID** と **セキュリティ キー** の値を入力します。
 3. ツール バーの **[Save]\(保存\)** をクリックします。
 
     ![[パッケージ SID] ボックスと [セキュリティ キー] ボックス](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
@@ -98,7 +98,7 @@ UWP アプリにプッシュ通知を送信するには、アプリを Windows �
     3. **[新しいプロジェクトの構成]** ダイアログで、 **[プロジェクト名]** を入力し、プロジェクト ファイルの **[場所]** を入力します。
     4. **［作成］** を選択します
 
-3. **ターゲット**と**最小**プラットフォーム バージョンの既定値を受け入れ、 **[OK]** を選択します。
+3. **ターゲット** と **最小** プラットフォーム バージョンの既定値を受け入れ、 **[OK]** を選択します。
 4. ソリューション エクスプローラーで Windows ストア アプリ プロジェクトを右クリックし、 **[発行]** 、 **[アプリケーションをストアと関連付ける]** の順に選択します。 **アプリケーションを Windows ストアと関連付ける** ウィザードが表示されます。
 5. ウィザードで、自分の Microsoft アカウントでサインインします。
 6. 手順 2. で登録したアプリを選択し、 **[次へ]** 、 **[関連付け]** の順に選択します。 この操作により、必要な Windows ストア登録情報がアプリケーション マニフェストに追加されます。
@@ -149,7 +149,9 @@ UWP アプリにプッシュ通知を送信するには、アプリを Windows �
 
     これにより、アプリケーションが起動するたびに必ずチャネル URI が通知ハブに登録されます。
 
-12. アプリを実行するために、キーボードの **F5** キーを押します。 登録キーを示すダイアログ ボックスが表示されます。 ダイアログ ボックスを閉じるには、 **[OK]** をクリックします。
+12. `Package.appxmanifest` を右クリックし、[コードの表示] (**F7** キー) を選択します。 `<Identity .../>` を見つけ、その値を、[前に](#create-an-app-in-windows-store)作成した WNS の **アプリケーション ID** で置き換えます。
+
+13. アプリを実行するために、キーボードの **F5** キーを押します。 登録キーを示すダイアログ ボックスが表示されます。 ダイアログ ボックスを閉じるには、**[OK]** をクリックします。
 
     ![登録が成功しました](./media/notification-hubs-windows-store-dotnet-get-started/registration-successful.png)
 
@@ -163,19 +165,19 @@ UWP アプリにプッシュ通知を送信するには、アプリを Windows �
 
     ![[テスト送信] ボタン](./media/notification-hubs-windows-store-dotnet-get-started/test-send-button.png)
 2. **[テスト送信]** ウィンドウで、次のアクションを実行します。
-    1. **[プラットフォーム]** として、 **[Windows]** を選択します。
-    2. **通知の種類** として、 **[トースト]** を選択します。
+    1. **[プラットフォーム]** として、**[Windows]** を選択します。
+    2. **通知の種類** として、**[トースト]** を選択します。
     3. **[送信]** を選択します。
 
         ![[テスト送信] ウィンドウ](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-test-send-wns.png)
 3. ウィンドウの一番下の **[結果]** 一覧で、[送信] 操作の結果を確認します。 アラート メッセージも表示されます。
 
     ![[送信] 操作の結果](./media/notification-hubs-windows-store-dotnet-get-started/result-of-send.png)
-4. 通知メッセージとして、"**Test message**" がデスクトップに表示されます。
+4. 通知メッセージが表示されます。デスクトップ上の **テスト メッセージ**。
 
     ![通知メッセージ](./media/notification-hubs-windows-store-dotnet-get-started/test-notification-message.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ポータルまたはコンソール アプリを使用して、すべての Windows デバイスにブロードキャスト通知を送信しました。 特定のデバイスにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]

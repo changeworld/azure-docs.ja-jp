@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: db3836e6171d187539b8615efcb5ab782c368020
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a78f74b4aadd26af141ed84ca99a092693f56af5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88752453"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369564"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>クイック スタート:静的 Web アプリを初めてビルドする
 
@@ -42,29 +42,29 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
     > [!NOTE]
     > Azure と GitHub へのサインインが必要です。 Visual Studio Code から Azure と GitHub にまだサインインしていない場合は、拡張機能により、作成プロセス中に両方にサインインするように求められます。
 
-1. マウス ポインターを _[Static Web Apps]_ ラベルの上に置き、**プラス記号**を選択します。
+1. マウス ポインターを _[Static Web Apps]_ ラベルの上に置き、**プラス記号** を選択します。
 
-    :::image type="content" source="media/getting-started/extension-create-button.png" alt-text="Azure ロゴ":::
+    :::image type="content" source="media/getting-started/extension-create-button.png" alt-text="アプリケーション名":::
 
 1. エディターの上部にコマンド パレットが表示され、アプリケーションの名前を入力するように求められます。
 
     「**my-first-static-web-app**」と入力し、**Enter** キーを押します。
 
-    :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="Azure ロゴ":::
+    :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="静的 Web アプリを作成する":::
 
 1. **master** ブランチを選択し、**Enter** キーを押します。
 
-    :::image type="content" source="media/getting-started/extension-branch.png" alt-text="Azure ロゴ":::
+    :::image type="content" source="media/getting-started/extension-branch.png" alt-text="ブランチ名":::
 
 1. アプリケーション コードの場所として **/** を選択し、**Enter** キーを押します。
 
-    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="Azure ロゴ":::
+    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="アプリケーション コードの場所":::
 
 1. 拡張機能により、アプリケーション内の API の場所の入力が求められます。 この記事では API を実装しません。
 
     **[Skip for now]\(後で確認する\)** を選択し、**Enter** キーを押します。
 
-    :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="Azure ロゴ":::
+    :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="API の場所":::
 
 1. アプリで運用環境用にファイルを構築する場所を選択します。
 
@@ -72,39 +72,39 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 
     ボックスをクリアし、**Enter** キーを押します。
 
-    :::image type="content" source="media/getting-started/extension-artifact-no-framework.png" alt-text="Azure ロゴ":::
+    :::image type="content" source="media/getting-started/extension-artifact-no-framework.png" alt-text="アプリ ファイルのパス":::
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
     「**dist/angular-basic**」と入力し、**Enter** キーを押します。
 
-    :::image type="content" source="media/getting-started/extension-artifact-angular.png" alt-text="Azure ロゴ":::
+    :::image type="content" source="media/getting-started/extension-artifact-angular.png" alt-text="Angular アプリのファイル パス":::
 
     # <a name="react"></a>[React](#tab/react)
 
     「**build**」と入力し、**Enter** キーを押します。
 
-    :::image type="content" source="media/getting-started/extension-artifact-react.png" alt-text="Azure ロゴ":::
+    :::image type="content" source="media/getting-started/extension-artifact-react.png" alt-text="React アプリのファイル パス":::
 
     # <a name="vue"></a>[Vue](#tab/vue)
 
     「**dist**」と入力し、**Enter** キーを押します。
 
-    :::image type="content" source="media/getting-started/extension-artifact-vue.png" alt-text="Azure ロゴ":::
+    :::image type="content" source="media/getting-started/extension-artifact-vue.png" alt-text="Vue アプリのファイル パス":::
 
     ---
 
 1. 最も近い場所を選択し、**Enter** キーを押します。
 
-    :::image type="content" source="media/getting-started/extension-location.png" alt-text="Azure ロゴ":::
+    :::image type="content" source="media/getting-started/extension-location.png" alt-text="リソースの場所":::
 
 1. アプリが作成されると、確認通知が Visual Studio Code に表示されます。
 
-    :::image type="content" source="media/getting-started/extension-confirmation.png" alt-text="Azure ロゴ":::
+    :::image type="content" source="media/getting-started/extension-confirmation.png" alt-text="作成された確認":::
 
-1. Visual Studio Code エクスプローラー ウィンドウで、 _[Static Web Apps]_ セクションに戻ります。 **[Production]\(実稼働\)** を右クリックし、 **[ポータルで開く]** を選択して Azure portal でアプリを表示します。
+1. Visual Studio Code エクスプローラー ウィンドウで、自分のサブスクリプション名が表示されているノードに移動して展開します。 デプロイが完了するまでに数分かかる場合があるので注意してください。 その後、[Static Web Apps] セクションに戻り、アプリの名前を選択して、[my-first-static-web-app] を右クリックし、[ポータルで開く] を選択すると、Azure portal でアプリが表示されます。
 
-    :::image type="content" source="media/getting-started/extension-open-in-portal.png" alt-text="Azure ロゴ":::
+    :::image type="content" source="media/getting-started/extension-open-in-portal.png" alt-text="ポータルを開く":::
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 
@@ -114,7 +114,7 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 
 Visual Studio Code エクスプローラー ウィンドウで、 _[Static Web Apps]_ セクションに戻ります。 **[my-first-static-web-app]** を右クリックし、 **[削除]** を選択します。
 
-:::image type="content" source="media/getting-started/extension-delete.png" alt-text="Azure ロゴ":::
+:::image type="content" source="media/getting-started/extension-delete.png" alt-text="アプリの削除":::
 
 ## <a name="next-steps"></a>次のステップ
 

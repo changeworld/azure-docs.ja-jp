@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: 46bdc314e7aa0002937e808d7982f43c8e725d6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de0065abaf5669859e864186fc9a3fb88219414b
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357473"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555823"
 ---
 # <a name="cicd-for-custom-speech"></a>Custom Speech の CI/CD
 
@@ -31,13 +31,13 @@ ms.locfileid: "91357473"
 
 これらのワークフローの目的は、各 Custom Speech モデルの認識の正確性を確実に以前のビルドよりも向上させることです。 テスト データやトレーニング データの更新によって正確性が向上する場合、これらのワークフローによって新しい Custom Speech エンドポイントが作成されます。
 
-GitHub や Azure DevOps などの Git サーバーを使用すると、マージや pull request などの特定の Git イベントが発生したときに、自動ワークフローを実行できます。 たとえば、テスト データの更新が " *マスター* " ブランチにプッシュされたときに、CI ワークフローをトリガーできます。 Git サーバーによってツールも異なりますが、ビルド サーバー上で実行されるように、スクリプト コマンドライン インターフェイス (CLI) コマンドを作成することができます。
+GitHub や Azure DevOps などの Git サーバーを使用すると、マージや pull request などの特定の Git イベントが発生したときに、自動ワークフローを実行できます。 たとえば、テスト データの更新が "*マスター*" ブランチにプッシュされたときに、CI ワークフローをトリガーできます。 Git サーバーによってツールも異なりますが、ビルド サーバー上で実行されるように、スクリプト コマンドライン インターフェイス (CLI) コマンドを作成することができます。
 
 その過程で、ワークフローでは、元のコミットまたはバージョンまでさかのぼって追跡できるように、データ、テスト、テスト ファイル、モデル、エンドポイントに名前を付けて保存するようにします。 また、このような資産に名前を付けると、テスト データとトレーニング データを更新した後に作成された資産を簡単に確認できるようになります。
 
 ### <a name="ci-workflow-for-testing-data-updates"></a>データの更新をテストするための CI ワークフロー
 
-CI/CD ワークフローの主な目的は、トレーニング データを使用して新しいモデルを構築することと、テスト データを使用してそのモデルをテストし、[ワード エラー率](how-to-custom-speech-evaluate-data.md#what-is-word-error-rate-wer) (WER) がそれまでの最高のパフォーマンスのモデル ("ベンチマーク モデル") と比較して改善されたかどうかを確認することです。 新しいモデルのパフォーマンスが向上すると、新しいモデルが以降のモデルと比較される新しいベンチマーク モデルになります。
+CI/CD ワークフローの主な目的は、トレーニング データを使用して新しいモデルを構築することと、テスト データを使用してそのモデルをテストし、[ワード エラー率](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (WER) がそれまでの最高のパフォーマンスのモデル ("ベンチマーク モデル") と比較して改善されたかどうかを確認することです。 新しいモデルのパフォーマンスが向上すると、新しいモデルが以降のモデルと比較される新しいベンチマーク モデルになります。
 
 データの更新をテストするための CI ワークフローでは、更新されたテスト データを使用して現在のベンチマーク モデルを再テストし、変更された WER を計算する必要があります。 こうすることで、新しいモデルの WER とベンチマークの WER を比較するときに、両方のモデルが同じテスト データに対してテストされ、同じように比較されていることが保証されます。
 
@@ -84,8 +84,8 @@ Custom Speech 用に既に実装されている DevOps ソリューションに�
 
 - テンプレート リポジトリを GitHub アカウントにコピーし、GitHub Actions CI/CD ワークフロー用の Azure リソースと[サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を作成します。
 - "[開発者の内部ループ](https://mitchdenny.com/the-inner-loop/)" の手順を確認します。 機能ブランチのトレーニングおよびテスト データを更新し、一時的な開発モデルを使用して変更をテストし、pull request を発生させて変更を提案および確認します。
-- トレーニング データが pull request で " *マスター* " に更新されたら、GitHub Actions CI ワークフローを使用してモデルをトレーニングします。
-- 自動正確性テストを実行し、モデルの[ワード エラー率](how-to-custom-speech-evaluate-data.md#what-is-word-error-rate-wer) (WER) を確立します。 テスト結果を Azure BLOB に格納します。
+- トレーニング データが pull request で "*マスター*" に更新されたら、GitHub Actions CI ワークフローを使用してモデルをトレーニングします。
+- 自動正確性テストを実行し、モデルの[ワード エラー率](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (WER) を確立します。 テスト結果を Azure BLOB に格納します。
 - WER が改善されたら、CD ワークフローを実行してエンドポイントを作成します。
 
 ## <a name="next-steps"></a>次のステップ

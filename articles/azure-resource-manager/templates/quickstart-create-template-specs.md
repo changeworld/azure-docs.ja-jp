@@ -2,15 +2,15 @@
 title: テンプレート スペックの作成とデプロイ
 description: ARM テンプレートからテンプレート スペックを作成する方法について説明します。 次に、サブスクリプションのリソース グループにテンプレート スペックをデプロイします。
 author: tfitzmac
-ms.date: 10/02/2020
+ms.date: 11/10/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: e1bd2f3da8204cf5947d0cf423cd57b023674608
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 96ef5796aac1d0ee02e6bbafc40b7d3bcdea4e2f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728779"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506364"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>クイック スタート:テンプレート スペックの作成とデプロイ (プレビュー)
 
@@ -29,7 +29,7 @@ ms.locfileid: "91728779"
 
 テンプレート スペックは、**Microsoft.Resources/templateSpecs** という名前のリソースの種類です。 テンプレート スペックを作成するには、Azure PowerShell、Azure CLI、または ARM テンプレートを使用できます。 すべてのオプションで、テンプレート スペック内にパッケージ化された ARM テンプレートが必要です。
 
-PowerShell および CLI では、ARM テンプレートはパラメーターとしてコマンドに渡されます。 ARM テンプレートを使用すると、テンプレート スペック内にパッケージ化する ARM テンプレートがテンプレート スペック定義内に埋め込まれます。
+PowerShell と CLI では、ARM テンプレートはパラメーターとしてコマンドに渡されます。 ARM テンプレートを使用すると、テンプレート スペック内にパッケージ化する ARM テンプレートがテンプレート スペック定義内に埋め込まれます。
 
 これらのオプションを次に示します。
 
@@ -88,7 +88,7 @@ PowerShell および CLI では、ARM テンプレートはパラメーターと
 1. ARM テンプレートを使用してテンプレート スペックを作成する場合は、テンプレートはリソース定義に埋め込まれます。 次のテンプレートをコピーし、**azuredeploy.json** としてローカルに保存します。 このクイックスタートでは、パス **c:\Templates\azuredeploy.json** に保存したことを想定していますが、任意のパスを使用できます。
 
     > [!NOTE]
-    > 埋め込みテンプレートでは、すべての左角かっこを 2 番目の左角かっこでエスケープする必要があります。 `[` ではなく `[[` を使用します。
+    > 埋め込みテンプレートの場合、すべての[テンプレート式](template-expressions.md)を 2 番目の左角かっこでエスケープする必要があります。 `"[` ではなく `"[[` を使用します。 JSON 配列の場合は、やはり 1 つの左かっこを使用します。
 
     ```json
     {

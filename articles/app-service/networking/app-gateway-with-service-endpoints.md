@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: dbf38c303f024884971e95f7be9d4dfc50d118de
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 954e94063ec91cd2a6d67d154dfd7da553e0935a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127826"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560895"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>サービス エンドポイントと Application Gateway の統合
 App Service には、Azure Application Gateway との統合において少し異なる構成を必要とする 3 つのバリエーションがあります。 バリエーションには、通常の App Service (マルチテナント、内部ロード バランサー (ILB) App Service Environment (ASE)、外部 ASE とも呼ばれます) が含まれます。 この記事では、App Service (マルチテナント) を使用して構成し、ILB と外部 ASE に関する考慮事項について説明します。
@@ -36,7 +36,7 @@ Azure portal では、4 つの手順に従ってセットアップのプロビ�
 1. [.Net Core のクイック スタート](../quickstart-dotnetcore.md)などの App Service ドキュメントのクイック スタートのいずれかを使用して、App Service を作成します。
 2. [ポータルのクイック スタート](../../application-gateway/quick-create-portal.md)を使用して Application Gateway を作成します。この際、[バックエンド ターゲットの追加] セクションはスキップします。
 3. [Application Gateway で App Service をバックエンドとして](../../application-gateway/configure-web-app-portal.md)構成します。この際、[アクセスを制限する] セクションはスキップします。
-4. 最後に、[サービス エンドポイントを使用してアクセス制限](../../app-service/app-service-ip-restrictions.md#service-endpoints)を作成します。
+4. 最後に、[サービス エンドポイントを使用してアクセス制限](../../app-service/app-service-ip-restrictions.md#use-service-endpoints)を作成します。
 
 Application Gateway を通じて App Service にアクセスできるようになりましたが、App Service に直接アクセスしようとすると、Web サイトが停止していることを示す 403 HTTP エラーが表示されます。
 

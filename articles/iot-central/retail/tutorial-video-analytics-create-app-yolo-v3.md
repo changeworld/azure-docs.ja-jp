@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 10/06/2020
-ms.openlocfilehash: 8066f42a5ab34f5cab0afcdc42cc6ccacfff2855
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 3994b05f613cbebcf6daa05cf8db3ef429b52407
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876674"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94428064"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-yolo-v3"></a>チュートリアル:Azure IoT Central でビデオ分析 (物体とモーションの検出) アプリケーションを作成する (YOLO v3)
 
@@ -65,7 +65,7 @@ IoT Edge モジュールは、配置マニフェストを使用してデプロ�
 
 1. これらのプロパティが、テンプレートによって IoT Central に公開されることはありません。Media Services の構成値を自分で配置マニフェストに追加する必要があります。 `lvaEdge` モジュールを探し、プレースホルダーを、Media Services アカウントの作成時に *scratchpad.txt* ファイルに書き留めた値に置き換えます。
 
-    `azureMediaServicesArmId` は、Media Services アカウントの作成時に *scratchpad.txt* ファイルに書き留めた**リソース ID** です。
+    `azureMediaServicesArmId` は、Media Services アカウントの作成時に *scratchpad.txt* ファイルに書き留めた **リソース ID** です。
 
     `aadTenantId`、`aadServicePrincipalAppId`、`aadServicePrincipalSecret` は、Media Services アカウントのサービス プリンシパルを作成する際に *scratchpad.txt* ファイルに書き留めました。
 
@@ -111,7 +111,7 @@ IoT Edge モジュールは、配置マニフェストを使用してデプロ�
 
 ### <a name="replace-the-manifest"></a>マニフェストを置き換える
 
-**[LVA Edge Gateway]** ページで、 **[+ Replace manifest]\(+ マニフェストを置き換える\)** を選択します。
+**[LVA Edge Gateway v2]** ページで、 **[+ Replace manifest]\(+ マニフェストを置き換える\)** を選択します。
 
 :::image type="content" source="./media/tutorial-video-analytics-create-app-yolo-v3/replace-manifest.png" alt-text="マニフェストを置き換える":::
 

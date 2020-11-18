@@ -1,19 +1,19 @@
 ---
-title: IoT プラグ アンド プレイのサンプル Node.js コンポーネント デバイス コードを IoT Hub に接続する | Microsoft Docs
-description: 複数のコンポーネントを使用し、IoT ハブに接続する、IoT プラグ アンド プレイのサンプル Node.js デバイス コードをビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
+title: チュートリアル - IoT プラグ アンド プレイのサンプル Node.js コンポーネント デバイス コードを Azure IoT Hub に接続する | Microsoft Docs
+description: チュートリアル - 複数のコンポーネントを使用し、IoT ハブに接続する、IoT プラグ アンド プレイのサンプル Node.js デバイス コードをビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
 author: olivakar
 ms.author: olkar
 ms.date: 07/10/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 2f0bf3b4b6e7091222b98e1743f0fb4f431fdd12
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: devx-track-js
+ms.openlocfilehash: 70fa10f5319de072ee8ea7dad4e73c58d4bdeede
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736043"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421425"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-nodejs"></a>チュートリアル:IoT プラグ アンド プレイの複数コンポーネント デバイス アプリケーションのサンプルを IoT Hub に接続する (Node.js)
 
@@ -105,7 +105,7 @@ npm install
 
   - `desiredPropertyPatchListener` を使用して、プロパティの更新をリッスンします。
 
-  - すべてのリスナーとタスクを無効にし、 **Q** または **q** キーが押されたときにループを終了します。
+  - すべてのリスナーとタスクを無効にし、**Q** または **q** キーが押されたときにループを終了します。
 
 [!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
 

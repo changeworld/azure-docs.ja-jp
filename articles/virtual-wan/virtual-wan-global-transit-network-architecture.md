@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: e3a0eaeebbc0659b217051c6e98d67803896f2e1
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 59e60dadda7c0de37cfabadbc36ca53bc3c2b336
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102325"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563734"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>グローバル トランジット ネットワーク アーキテクチャと Virtual WAN
 
@@ -29,7 +29,7 @@ ms.locfileid: "92102325"
 
 ![ハブ アンド スポーク](./media/virtual-wan-global-transit-network-architecture/figure1.png)
 
-" **図 1:グローバル トランジット ハブアンドスポーク ネットワーク**
+"**図 1:グローバル トランジット ハブアンドスポーク ネットワーク**
 
 図 1 で示すグローバル トランジット ネットワークの論理ビューでは、地理的に分散したユーザー、物理サイト、VNet が、クラウドでホストされたネットワーク ハブを介して相互接続されています。 このアーキテクチャでは、ネットワーク エンドポイント間の論理的な 1 ホップ トランジット接続が可能になります。
 
@@ -41,7 +41,7 @@ Azure Virtual WAN を使うと、VNet、ブランチ サイト、SaaS および 
 
 ![Azure Virtual WAN](./media/virtual-wan-global-transit-network-architecture/figure2.png)
 
-" **図 2:グローバル トランジット ネットワークと Virtual WAN**
+"**図 2:グローバル トランジット ネットワークと Virtual WAN**
 
 Azure Virtual WAN アーキテクチャでは、Virtual WAN のハブは Azure リージョンにおいてプロビジョニングされ、それにブランチ、VNet、リモート ユーザーを接続できます。 物理ブランチ サイトは、Premium または Standard の ExpressRoute またはサイト間 VPN によってハブに接続されます。VNet は、VNet 接続によってハブに接続されます。リモート ユーザーは、ユーザー VPN (ポイント対サイト VPN) を使ってハブに直接接続できます。 また、Virtual WAN を使うと、あるリージョン内の VNet を別のリージョンの Virtual WAN ハブに接続できるリージョン間 VNet 接続もサポートされます。
 
@@ -53,7 +53,7 @@ Virtual WAN を確立するには、スポーク (ブランチ、VNet、ユー�
 
 ![リージョン間](./media/virtual-wan-global-transit-network-architecture/figure3.png)
 
-" **図 3:Virtual WAN のリージョン間接続**
+"**図 3:Virtual WAN のリージョン間接続**
 
 1 つの Virtual WAN で複数のハブを有効にすると、ハブはハブ間リンクによって自動的に相互接続されるため、複数のリージョンに分散されたブランチと VNet の間のグローバル接続が可能になります。 
 
@@ -67,7 +67,7 @@ Virtual WAN を確立するには、スポーク (ブランチ、VNet、ユー�
 
 ![Any-to-Any](./media/virtual-wan-global-transit-network-architecture/figure4.png)
 
-" **図 4:Virtual WAN のトラフィックのパス**
+"**図 4:Virtual WAN のトラフィックのパス**
 
 Azure Virtual WAN では、次のグローバル トランジット接続パスがサポートされています。 かっこ内の文字は図 4 に対応します。
 
@@ -127,7 +127,7 @@ VNet 対 VNet トランジットを使うと、VNet を相互に接続し、複�
 
 Azure Virtual WAN ハブにより、ハイブリッド ネットワーク上のすべてのネットワーク エンドポイントが相互接続され、すべてのトランジット ネットワーク トラフィックが認識される可能性があります。 VWAN ハブ内に Azure Firewall を展開し、クラウドベースのセキュリティ、アクセス、ポリシー制御を有効にすることにより、Virtual WAN ハブをセキュリティ保護付き仮想ハブに変換できます。 Virtual WAN ハブ内の Azure Firewall のオーケストレーションは、Azure Firewall Manager で実行できます。
 
-[Azure Firewall Manager](https://go.microsoft.com/fwlink/?linkid=2107683) を使うと、セキュリティを管理し、グローバル トランジット ネットワーク用にスケーリングする機能が提供されます。 Azure Firewall Manager には、Azure Firewall と共に、ルーティングの一元管理、グローバル ポリシーの管理、サードパーティによる高度なインターネット セキュリティ サービスの機能が用意されています。
+[Azure Firewall Manager](../firewall-manager/index.yml) を使うと、セキュリティを管理し、グローバル トランジット ネットワーク用にスケーリングする機能が提供されます。 Azure Firewall Manager には、Azure Firewall と共に、ルーティングの一元管理、グローバル ポリシーの管理、サードパーティによる高度なインターネット セキュリティ サービスの機能が用意されています。
 
 ![Azure Firewall によるセキュリティ保護付き仮想ハブ](./media/virtual-wan-global-transit-network-architecture/figure5.png)
 
@@ -177,4 +177,4 @@ Virtual WAN を使って接続を作成し、VWAN ハブに Azure Firewall を�
 
 * [Virtual WAN を使用するサイト間接続](virtual-wan-site-to-site-portal.md)
 * [Virtual WAN を使用する ExpressRoute 接続](virtual-wan-expressroute-portal.md)
-* [VWAN に Azure FW を展開するための Azure Firewall Manager](https://go.microsoft.com/fwlink/?linkid=2107683)
+* [VWAN に Azure FW を展開するための Azure Firewall Manager](../firewall-manager/index.yml)

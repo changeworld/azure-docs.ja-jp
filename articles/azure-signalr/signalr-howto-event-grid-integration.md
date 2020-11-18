@@ -7,22 +7,22 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: chenyl
-ms.openlocfilehash: 04059ac1feae04cb6fa8b09f7b7077b7e11bac4c
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.openlocfilehash: 84b83c1dd541418c446a89a6f51be668cb41e54e
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170376"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562646"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>イベントを Azure SignalR Service から Event Grid に送信する方法
 
 Azure Event Grid は、pub-sub モデルを使用した画一的なイベント使用を提供する、完全に管理されたイベント ルーティング サービスです。 このガイドでは、Azure CLI を使用して Azure SignalR Service を作成し、接続イベントをサブスクライブして、イベントを受信するサンプル Web アプリケーションをデプロイします。 最後に、接続および接続解除し、サンプル アプリケーションでイベントのペイロードを確認します。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント][azure-account] を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-この記事の Azure CLI コマンドは、**Bash** シェル用にフォーマットされています。 PowerShell、コマンド プロンプトなど、別のシェルを使用している場合は、必要に応じて、行連結文字または変数代入行を適切に調整する必要があります。 この記事では変数を使用して、必要なコマンド編集を最小限に抑えています。
+ - この記事の Azure CLI コマンドは、**Bash** シェル用にフォーマットされています。 PowerShell、コマンド プロンプトなど、別のシェルを使用している場合は、必要に応じて、行連結文字または変数代入行を適切に調整する必要があります。 この記事では変数を使用して、必要なコマンド編集を最小限に抑えています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 

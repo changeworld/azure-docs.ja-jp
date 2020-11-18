@@ -1,19 +1,19 @@
 ---
 title: データのラベル付けプロジェクトを作成する
 titleSuffix: Azure Machine Learning
-description: ラベル付けプロジェクトを作成して実行し、機械学習用のデータにタグを付ける方法について説明します。  ツールには、ML によるラベル付けのほか、そのタスクを支援する人間参加型 (Human in the loop) のラベル付けがあります。
+description: ラベル付けプロジェクトを作成して実行し、機械学習用のデータにタグを付ける方法について説明します。  支援付き機械学習ラベル付け、つまり人間参加型 (Human in the loop) のラベル付けを使用して、このタスクを補助します。
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: e30140dc23e64bfc733a0a51fa77fe811ba8fbc7
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: da046fd633120944231ee440605367bdb730cbff
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776121"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543223"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>データのラベル付けプロジェクトを作成してラベルをエクスポートする 
 
@@ -55,10 +55,10 @@ ms.locfileid: "91776121"
 
 プロジェクトを作成するには、 **[プロジェクトの追加]** を選択します。 プロジェクトに適切な名前を付け、 **[ラベル付けタスクの種類]** を選択します。
 
-:::image type="content" source="media/how-to-create-labeling-projects/labeling-creation-wizard.png" alt-text="ラベル付けプロジェクト作成ウィザード&quot;:::
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-creation-wizard.png" alt-text="ラベル付けプロジェクト作成ウィザード":::
 
-* ラベルのセットから &quot;*1 つのラベル*&quot; だけを画像に適用する場合は、プロジェクトに対して **[イメージ分類の複数クラス]** を選択します。
-* ラベルのセットから &quot;*1 つまたは複数*&quot; のラベルを画像に適用する場合は、プロジェクトに対して **[Image Classification Multi-label]\(画像分類の複数ラベル\)** を選択します。 たとえば、犬の写真には &quot;*犬*&quot; と &quot;*日中*" の両方のラベルが付けられる可能性があります。
+* ラベルのセットから "*1 つのラベル*" だけを画像に適用する場合は、プロジェクトに対して **[イメージ分類の複数クラス]** を選択します。
+* ラベルのセットから "*1 つまたは複数*" のラベルを画像に適用する場合は、プロジェクトに対して **[Image Classification Multi-label]\(画像分類の複数ラベル\)** を選択します。 たとえば、犬の写真には "*犬*" と "*日中*" の両方のラベルが付けられる可能性があります。
 * 画像内の各オブジェクトにラベルと境界ボックスを割り当てる場合は、プロジェクトに対して **[オブジェクト ID (四角形領域)]** を選択します。
 
 続行する準備ができたら、 **[次へ]** を選択します。
@@ -77,7 +77,7 @@ ms.locfileid: "91776121"
 Azure Blob Storage に既に格納済みのデータからデータセットを作成するには:
 
 1. **[Create a dataset]\(データセットの作成\)**  >  **[From datastore]\(データストアから\)** の順に選択します。
-1. データセットに**名前**を割り当てます。
+1. データセットに **名前** を割り当てます。
 1. **[データセットの種類]** として **[ファイル]** を選択します。  ファイルというデータセットの種類のみがサポートされています。
 1. データストアを選択します。
 1. データがお使いの Blob Storage 内のサブフォルダーにある場合は、 **[参照]** を選択してパスを選択します。
@@ -93,7 +93,7 @@ Azure Blob Storage に既に格納済みのデータからデータセットを�
 データを直接アップロードするには:
 
 1. **[Create a dataset]\(データセットの作成\)**  >  **[From local files]\(ローカル ファイルから\)** の順に選択します。
-1. データセットに**名前**を割り当てます。
+1. データセットに **名前** を割り当てます。
 1. **[データセットの種類]** として [ファイル] を選択します。
 1. *省略可能:* **[詳細設定]** を選択して、データストア、コンテナー、およびデータへのパスをカスタマイズします。
 1. **[参照]** を選択し、アップロードするローカル ファイルを選択します。
@@ -105,7 +105,7 @@ Azure Blob Storage に既に格納済みのデータからデータセットを�
 
 ## <a name="configure-incremental-refresh"></a><a name="incremental-refresh"> </a> 増分更新を構成する
 
-新しい画像をデータセットに追加する予定がある場合、増分更新を使用して、これらの新しい画像をプロジェクトに追加します。   **増分更新**が有効になっている場合、ラベル付けの完了率に基づいて、プロジェクトに追加する新しい画像がないかどうかデータセットが定期的にチェックされます。   プロジェクトに最大 50 万件の画像が含まれている場合は、新しいデータのチェックは停止されます。
+新しい画像をデータセットに追加する予定がある場合、増分更新を使用して、これらの新しい画像をプロジェクトに追加します。   **増分更新** が有効になっている場合、ラベル付けの完了率に基づいて、プロジェクトに追加する新しい画像がないかどうかデータセットが定期的にチェックされます。   プロジェクトに最大 50 万件の画像が含まれている場合は、新しいデータのチェックは停止されます。
 
 プロジェクトにさらに多くのイメージを追加するには、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、BLOB ストレージ内の適切なフォルダーにアップロードします。 
 
@@ -189,10 +189,7 @@ ML によるラベル付けを開始するために必要とされるラベル�
 
 **[ダッシュボード]** タブに、ラベル付けタスクの進行状況が表示されます。
 
-:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="ラベル付けプロジェクト作成ウィザード&quot;:::
-
-* ラベルのセットから &quot;*1 つのラベル*&quot; だけを画像に適用する場合は、プロジェクトに対して **[イメージ分類の複数クラス]** を選択します。
-* ラベルのセットから &quot;*1 つまたは複数*&quot; のラベルを画像に適用する場合は、プロジェクトに対して **[Image Classification Multi-label]\(画像分類の複数ラベル\)** を選択します。 たとえば、犬の写真には &quot;*犬*&quot; と &quot;*日中*":::
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="データのラベル付けダッシュボード":::
 
 進行状況グラフには、ラベル付けされた項目の数と、まだそれが行われていない項目の数が表示されます。  保留中の項目は次のとおりです。
 
@@ -263,4 +260,4 @@ COCO ファイルは、Azure Machine Learning ワークスペースの既定の 
 
 * [チュートリアル:初めての画像分類のラベル付けプロジェクトの作成に関するチュートリアル](tutorial-labeling.md)を参照してください。
 * [画像の分類またはオブジェクトの検出](how-to-label-images.md)のために、画像にラベルを付けます
-* [Azure Machine Learning と Machine Learning Studio (クラシック)](compare-azure-ml-to-studio-classic.md) について学習します
+* [Azure Machine Learning と Machine Learning Studio (クラシック)](./overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) について学習します

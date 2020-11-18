@@ -17,12 +17,12 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: bc763a99c945925b80171738f4076e6305d92df9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3443cb73e85fc69349e7293597a5f4a723959d3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89229461"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130053"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>チュートリアル:Azure Active Directory Reporting API と証明書を使用したデータの取得
 
@@ -34,7 +34,7 @@ ms.locfileid: "89229461"
 
 1. サインイン データにアクセスするには、プレミアム (P1/P2) ライセンスを持つ Azure Active Directory テナントがあることを確認してください。 Azure Active Directory エディションにアップグレードするには、「[Azure Active Directory Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。 アップグレード前のアクティビティ データがない場合は、プレミアム ライセンスにアップグレードしてからレポートにデータが表示されるようになるまでに数日かかることに注意してください。 
 
-2. テナントの**グローバル管理者**、**セキュリティ管理者**、**セキュリティ閲覧者**、または**レポート閲覧者**ロールに含まれているユーザー アカウントに切り替えるか、そのようなアカウントを新たに作成します。 
+2. テナントの **グローバル管理者**、**セキュリティ管理者**、**セキュリティ閲覧者**、または **レポート閲覧者** ロールに含まれているユーザー アカウントに切り替えるか、そのようなアカウントを新たに作成します。 
 
 3. [Azure Active Directory Reporting API にアクセスするための前提条件](howto-configure-prerequisites-for-reporting-api.md)を満たします。 
 
@@ -85,15 +85,17 @@ ms.locfileid: "89229461"
    ``` 
 6. これで、この証明書を使用して MS Graph API のアクセス トークンを取得できるようになりました。 MSCloudIdUtils PowerShell モジュールの **Get-MSCloudIdMSGraphAccessTokenFromCert** コマンドレットを使い、前の手順で取得したアプリケーション ID とサムプリントを渡します。 
 
-   ![Azure portal](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
+   ![PowerShell ウィンドウを示すスクリーンショット。アクセス トークンを作成するコマンドが表示されています。](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
 7. PowerShell スクリプトでアクセス トークンを使用して、Graph API のクエリを実行します。 MSCloudIDUtils の **Invoke-MSCloudIdMSGraphQuery** コマンドレットを使って SignIns と directoryAudits エンドポイントを列挙します。 複数のページにわたる結果を処理し、それらの結果を PowerShell パイプラインに送っています。
 
 8. directoryAudits エンドポイントを照会して、監査ログを取得します。 
-   ![Azure Portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
+
+   ![PowerShell ウィンドウを示すスクリーンショット。前の手順で作成したアクセス トークンを使用して、directoryAudits エンドポイントにクエリを実行するコマンドが表示されています。](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
 9. SignIns エンドポイントを照会して、サインイン ログを取得します。
-    ![Azure Portal](./media/tutorial-access-api-with-certificates/query-signins.png)
+
+    ![PowerShell ウィンドウを示すスクリーンショット。前の手順で作成したアクセス トークンを使用して、Signins エンドポイントにクエリを実行するコマンドが表示されています。](./media/tutorial-access-api-with-certificates/query-signins.png)
 
 10. このデータを CSV にエクスポートし、SIEM システムに保存できるようになります。 また、スケジュールされたタスクにスクリプトをラップすれば、ソース コードにアプリケーション キーを保存せずに Azure AD データをテナントから定期的に取得することができます。 
 

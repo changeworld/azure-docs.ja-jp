@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/18/2020
+ms.date: 11/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 59f8148cf6e1d705094e8a6c4ee267b6c77ab7da
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: ac7382f60d5c49ac8c784566af4d9db8ea78956b
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518417"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331306"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>チュートリアル: Azure Active Directory と Citrix ShareFile の統合
 
@@ -26,9 +26,6 @@ Citrix ShareFile と Azure AD の統合には、次の利点があります。
 * Citrix ShareFile にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが Azure AD アカウントで自動的に Citrix ShareFile にサインインできるようにします (シングル サインオン)。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
-
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,26 +38,25 @@ Azure AD と Citrix ShareFile の統合を構成するには、次のものが�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Citrix ShareFile では、 **SP** によって開始される SSO がサポートされます
-* Citrix ShareFile を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Citrix ShareFile では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-citrix-sharefile-from-the-gallery"></a>ギャラリーからの Citrix ShareFile の追加
 
 Azure AD への Citrix ShareFile の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Citrix ShareFile を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Citrix ShareFile** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Citrix ShareFile**」と入力します。
 1. 結果のパネルから **[Citrix ShareFile]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Citrix ShareFile で Azure AD シングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Citrix ShareFile で Azure AD シングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Citrix ShareFile 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
-Citrix ShareFile で Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+Citrix ShareFile で Azure AD シングル サインオンを構成し、テストするには、次の手順を実行します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     
@@ -74,7 +70,7 @@ Citrix ShareFile で Azure AD シングル サインオンを構成してテス�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Citrix ShareFile** アプリケーション統合ページ上で、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. Azure portal の **Citrix ShareFile** アプリケーション統合ページ上で、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -92,7 +88,7 @@ Citrix ShareFile で Azure AD シングル サインオンを構成してテス�
     - `https://<tenant-name>.sharefile1.eu/saml/info`
     - `https://<tenant-name>.sharefile.eu/saml/info`
 
-    c. **[応答 URL]** ボックスに、 のパターンを使用して URL を入力します。
+    c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
     
     - `https://<tenant-name>.sharefile.com/saml/acs`
     - `https://<tenant-name>.sharefile.eu/saml/<URL path>`
@@ -108,12 +104,6 @@ Citrix ShareFile で Azure AD シングル サインオンを構成してテス�
 6. **[Citrix ShareFile のセットアップ]** セクションで、要件のとおりに適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
-
-    a. ログイン URL
-
-    b. Azure AD 識別子
-
-    c. ログアウト URL
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -134,26 +124,24 @@ Citrix ShareFile で Azure AD シングル サインオンを構成してテス�
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[Citrix ShareFile]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-citrix-sharefile-sso"></a>Citrix ShareFile の SSO の構成
 
 1. 別の Web ブラウザーのウィンドウで、管理者として **Citrix ShareFile** の会社サイトにログインします。
 
-1. 左側のメニューで、 **[Settings]\(設定\) アイコン** ->  **[Security]\(セキュリティ\)**  ->  **[Login & Security Policy]\(ログインとセキュリティ ポリシー\)** をクリックします。
+1. **[Dashboard]\(ダッシュボード\)** で **[Settings]\(設定\)** をクリックし、 **[Admin Settings]\(管理者設定\)** を選択します。
+
+    ![管理](./media/sharefile-tutorial/settings.png)
+
+1. [Admin Settings]\(管理者設定\) で、 **[Security]\(セキュリティ\)**  ->  **[Login & Security Policy]\(ログインとセキュリティ ポリシー\)** に移動します。
    
     ![アカウント管理](./media/sharefile-tutorial/settings-security.png "[アカウント管理]")
 
-1. [ **Single Sign-On/ SAML 2.0 Configuration** ] ダイアログ ページの [ **Basic Settings** ] で、以下の手順を実行します。
+1. [**Single Sign-On/ SAML 2.0 Configuration**] ダイアログ ページの [**Basic Settings**] で、以下の手順を実行します。
    
     ![シングル サインオン](./media/sharefile-tutorial/saml-configuration.png "シングル サインオン")
    
@@ -169,7 +157,7 @@ Citrix ShareFile で Azure AD シングル サインオンを構成してテス�
     
     f. **[Logout URL]\(ログアウト URL\)** ボックスに、Azure portal からコピーした **[ログアウト URL]** の値を貼り付けます。
 
-5. Citrix ShareFile 管理ポータルで [ **Save** ] をクリックします。
+5. Citrix ShareFile 管理ポータルで [**Save**] をクリックします。
 
 ## <a name="create-citrix-sharefile-test-user"></a>Citrix ShareFile テスト ユーザーの作成
 
@@ -183,11 +171,11 @@ Citrix ShareFile で Azure AD シングル サインオンを構成してテス�
    
     ![基本情報](./media/sharefile-tutorial/user-form.png "基本情報")
    
-    a. **[名]** ボックスに、ユーザーの **名** を、「 **Britta** 」と入力します。
+    a. **[名]** ボックスに、ユーザーの **名** を、「**Britta**」と入力します。
    
-    b.  **[姓]** ボックスに、ユーザーの **姓** を、「 **Simon** 」と入力します。
+    b.  **[姓]** ボックスに、ユーザーの **姓** を、「**Simon**」と入力します。
    
-    c. **[メール アドレス]** テキストボックスに、Britta Simon のメール アドレスとして「 **brittasimon\@contoso.com** 」と入力します。
+    c. **[メール アドレス]** テキストボックスに、Britta Simon のメール アドレスとして「**brittasimon\@contoso.com**」と入力します。
 
 4. **[ユーザーの追加]** をクリックします。
   
@@ -196,14 +184,15 @@ Citrix ShareFile で Azure AD シングル サインオンを構成してテス�
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネルで [Citrix ShareFile] タイルをクリックすると、SSO を設定した Citrix ShareFile に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+1. Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Citrix ShareFile のサインオン URL にリダイレクトされます。 
 
-## <a name="additional-resources"></a>その他のリソース
+2. Citrix ShareFile のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Citrix ShareFile] タイルをクリックすると、Citrix ShareFile サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+## <a name="next-steps"></a>次のステップ
+
+Citrix ShareFile を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

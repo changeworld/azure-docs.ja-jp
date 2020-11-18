@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用して Azure への Azure VMware Solution VM のディザスター リカバリーを設定する
+title: Azure VMware Solution VM のために Azure Site Recovery を設定する
 description: Azure Site Recovery を使用して、Azure VMware Solution VM の Azure へのディザスター リカバリーを設定する方法について説明します。
 author: Harsha-CS
 manager: rochakm
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: harshacs
 ms.custom: MVC
-ms.openlocfilehash: 62c35ec29ab43cc60a412e5fa54f16f45c09d781
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 3ac1f5bd3d44b7f98284cead60b34689f3d7be30
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370459"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395497"
 ---
-# <a name="set-up-disaster-recovery-to-azure-for-azure-vmware-solution-vms"></a>Azure VMware Solution VM の Azure へのディザスター リカバリーを設定する
+# <a name="setup-azure-site-recovery-for-azure-vmware-solution-vms"></a>Azure VMware Solution VM のために Azure Site Recovery を設定する
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスを使用した Azure へのディザスター リカバリーのために、Azure VMware Solution VM のレプリケーションを有効にする方法について説明します。
 
@@ -50,7 +50,7 @@ ms.locfileid: "92370459"
 
 ## <a name="select-a-protection-goal"></a>保護の目標を選択する
 
-1. **[Recovery Services コンテナー]** で、コンテナー名を選択します。 このシナリオでは、 **ContosoVMVault** を使います。
+1. **[Recovery Services コンテナー]** で、コンテナー名を選択します。 このシナリオでは、**ContosoVMVault** を使います。
 2. **[作業の開始]** で、[Site Recovery] を選択します。 次に、 **[インフラストラクチャの準備]** を選択します。
 3. **[保護の目標]**  >  **[マシンのある場所]** で、 **[オンプレミス]** を選びます。
 4. **[マシンをどこにレプリケートしますか]** で、 **[To Azure]\(Azure\)** を選びます。
@@ -62,12 +62,12 @@ ms.locfileid: "92370459"
 
 ソース環境では、これらのオンプレミスの Site Recovery コンポーネントをホストするために、オンプレミスの高可用性マシンが 1 台必要です。
 
-- **構成サーバー** : 構成サーバーは、Azure VMware Solution プライベート クラウドと Azure 間の通信を調整し、データ レプリケーションを管理します。
-- **プロセス サーバー** :プロセス サーバーはレプリケーション ゲートウェイとして機能します。 レプリケーション データを受信し、それをキャッシュ、圧縮、暗号化によって最適化して、Azure のキャッシュ ストレージ アカウントに送信します。 また、プロセス サーバーでは、レプリケートする VM にモビリティ サービス エージェントをインストールし、Azure VMware Solution VM の自動検出を実行します。
-- **マスター ターゲット サーバー** :マスター ターゲット サーバーは、Azure からのフェールバック中にレプリケーション データを処理します。
+- **構成サーバー**: 構成サーバーは、Azure VMware Solution プライベート クラウドと Azure 間の通信を調整し、データ レプリケーションを管理します。
+- **プロセス サーバー**:プロセス サーバーはレプリケーション ゲートウェイとして機能します。 レプリケーション データを受信し、それをキャッシュ、圧縮、暗号化によって最適化して、Azure のキャッシュ ストレージ アカウントに送信します。 また、プロセス サーバーでは、レプリケートする VM にモビリティ サービス エージェントをインストールし、Azure VMware Solution VM の自動検出を実行します。
+- **マスター ターゲット サーバー**:マスター ターゲット サーバーは、Azure からのフェールバック中にレプリケーション データを処理します。
 
 
-これらのコンポーネントは、" *構成サーバー* " と呼ばれる単一の Azure VMware Solution マシンにすべて一緒にインストールされます。 Azure VMware Solution のディザスター リカバリーの場合、既定では、構成サーバーを高可用性 VMware VM として設定します。 そのためには、用意されている Open Virtualization Application (OVA) テンプレートをダウンロードし、そのテンプレートを VMware にインポートして VM を作成します。
+これらのコンポーネントは、"*構成サーバー*" と呼ばれる単一の Azure VMware Solution マシンにすべて一緒にインストールされます。 Azure VMware Solution のディザスター リカバリーの場合、既定では、構成サーバーを高可用性 VMware VM として設定します。 そのためには、用意されている Open Virtualization Application (OVA) テンプレートをダウンロードし、そのテンプレートを VMware にインポートして VM を作成します。
 
 - 構成サーバーの最新バージョンはポータルで入手できます。 [Microsoft ダウンロード センター](https://aka.ms/asrconfigurationserver)から直接ダウンロードすることもできます。
 - 何かの理由で OVA テンプレートを使用して VM を設定できない場合は、[こちらの説明](physical-manage-configuration-server.md)に従って、構成サーバーを手動で設定してください。
@@ -160,7 +160,7 @@ ms.locfileid: "92370459"
 ## <a name="create-a-replication-policy"></a>レプリケーション ポリシーを作成する
 
 1. [Azure Portal](https://portal.azure.com)を開きます。 **[Recovery Services コンテナー]** を検索して選択します。
-2. Recovery Services コンテナー (このチュートリアルでは **ContosoVMVault** ) を選択します
+2. Recovery Services コンテナー (このチュートリアルでは **ContosoVMVault**) を選択します
 3. レプリケーション ポリシーを作成するには、 **[Site Recovery インフラストラクチャ]**  >  **[レプリケーション ポリシー]**  >  **[+ レプリケーション ポリシー]** の順に選択します。
 4. **[レプリケーション ポリシーの作成]** で、ポリシー名を入力します。 **VMwareRepPolicy** を使用しています。
 5. **[RPO しきい値]** では、既定値の 60 分が使用されます。 この値で、復旧ポイントの作成頻度を指定します。 継続的なレプリケーションがこの制限を超えると、アラートが生成されます。
@@ -182,7 +182,7 @@ ms.locfileid: "92370459"
 2. **[ソース]** で、 **[オンプレミス]** を選択し、 **[ソースの場所]** の構成サーバーを選択します。
 3. **[マシンの種類]** で、 **[仮想マシン]** を選択します。
 4. **[vCenter/vSphere Hypervisor]\(vCenter/vSphere ハイパーバイザー\)** で、vSphere ホストまたは vCenter サーバーを管理するホストを選択します。
-5. (構成サーバー VM に既定でインストールされる) プロセス サーバーを選択します。 **[OK]** をクリックします。 各プロセス サーバーの正常性状態が、推奨される制限とその他のパラメーターに従って示されます。 正常なプロセス サーバーを選択します。 [クリティカル](vmware-physical-azure-monitor-process-server.md#process-server-alerts)であるプロセス サーバーは選択できません。 エラーを [トラブルシューティングして解決](vmware-physical-azure-troubleshoot-process-server.md)するか、 **または**[スケールアウト プロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定できます。
+5. (構成サーバー VM に既定でインストールされる) プロセス サーバーを選択します。 **[OK]** をクリックします。 各プロセス サーバーの正常性状態が、推奨される制限とその他のパラメーターに従って示されます。 正常なプロセス サーバーを選択します。 [クリティカル](vmware-physical-azure-monitor-process-server.md#process-server-alerts)であるプロセス サーバーは選択できません。 エラーを [トラブルシューティングして解決](vmware-physical-azure-troubleshoot-process-server.md)するか、**または**[スケールアウト プロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定できます。
 6. **[ターゲット]** で、サブスクリプションと、フェールオーバー対象の VM を作成するリソース グループを選択します。 Resource Manager デプロイ モデルを使用しています。
 7. フェールオーバー後に作成された Azure VM が接続する Azure ネットワークとサブネットを選択します。
 8. **[選択したマシン用に今すぐ構成します。]** を選択し、レプリケーションを有効にするすべての VM にネットワーク設定を適用します。 マシンごとに Azure ネットワークを選択する場合は、 **[後で構成する]** を選択します。
@@ -190,7 +190,7 @@ ms.locfileid: "92370459"
 10. **[プロパティ]**  >  **[プロパティの構成]** で、モビリティ サービスをマシンに自動的にインストールするためにプロセス サーバーが使用するアカウントを選択します。
 11. **[レプリケーション設定]**  >  **[レプリケーション設定の構成]** で、正しいレプリケーション ポリシーが選択されていることを確認します。
 12. **[レプリケーションを有効にする]** を選択します。 VM のレプリケーションを有効にすると、Site Recovery がモビリティ サービスをインストールします。
-13. **[設定]**  >  **[ジョブ]**  >  **[Site Recovery ジョブ]** の順にクリックして、 **保護の有効化** ジョブの進行状況を追跡できます。 **[保護の最終処理]** ジョブが実行され、復旧ポイントの生成が完了すると、マシンはフェールオーバーできる状態になります。
+13. **[設定]**  >  **[ジョブ]**  >  **[Site Recovery ジョブ]** の順にクリックして、**保護の有効化** ジョブの進行状況を追跡できます。 **[保護の最終処理]** ジョブが実行され、復旧ポイントの生成が完了すると、マシンはフェールオーバーできる状態になります。
 14. 変更が反映されてポータルに表示されるまで 15 分以上かかる場合があります。
 15. 追加する VM を監視するには、 **[構成サーバー]**  >  **[最後の使用]** で VM の最終検出時刻を確認します。 定期検出を待たずに VM を追加するには、構成サーバーを強調表示し (選択しないでください)、 **[更新]** を選択します。
 

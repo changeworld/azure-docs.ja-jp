@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 2f6051277f1ddb89e67ce8013c78571a2a7314b7
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 55e47b09ac4a6256a125a75c8a0f856e867e7c0e
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089130"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337789"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>クイック スタート:Azure Spring Cloud の構成サーバーを設定する
 
@@ -70,9 +70,33 @@ Azure Spring Cloud 構成サーバーは、分散システムのための一元�
 ```azurecli
 az spring-cloud config-server git set -n <service instance name> --uri https://github.com/Azure-Samples/piggymetrics-config
 ```
-
 ---
 ::: zone-end
+
+## <a name="troubleshooting-of-azure-spring-cloud-config-server"></a>Azure Spring Cloud Config Server のトラブルシューティング
+
+次の手順では、Config Server の設定のトラブルシューティングを行う方法について説明します。
+
+1. Azure portal でサービスの **[概要]** ページに移動し、 **[ログ]** を選択します。 
+1. **[クエリ]** を選択し、 **[Show the application logs that contain the "error" or "exception" terms"]\("エラー" または "例外" という語句を含むアプリケーション ログを表示する\)** を選択します。 
+1. **[実行]** をクリックします。 
+1. ログで **java.lang.illegalStateException** エラーが見つかった場合、これは Spring Cloud サービスで Config Server からプロパティを見つけることができないことを示します。
+
+    [ ![ASC ポータルでのクエリの実行](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png)
+
+1. サービスの **[概要]** ページに移動します。
+1. **[Diagnose and solve prolems]\(問題の診断と解決\)** を選択します。 
+1. **[Config Server]\(Config Server\)** 検出機能を選択します。
+
+    [ ![ASC ポータルでの問題の診断](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png)
+
+3. **[Config Server Health Check]\(Config Server の正常性チェック\)** をクリックします。
+
+    [ ![ASC ポータルでの問題](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png)
+
+4. **[Config Server Status]\(Config Server の状態\)** をクリックして、検出機能の詳細を表示します。
+
+    [ ![ASC ポータルでの正常性の状態](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -12,20 +12,20 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 890afadc82acc90ab0324058e07aa5c4d34d04e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 867349a321f2909d8e568be7e482a5517ddb50b9
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87926163"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517956"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>チュートリアル:Azure CLI を使用した Linux 仮想マシンの管理方法の説明
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Azure CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+- このチュートリアルには、Azure CLI のバージョン 2.0.30 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="understand-scope"></a>スコープを理解する
 
@@ -65,7 +65,7 @@ az role assignment create --assignee-object-id $adgroupId --role "Virtual Machin
 
 "**プリンシパル \<guid> がディレクトリ**  にありません" というエラーが発生した場合、まだ新しいグループが Azure Active Directory 全体に伝達されていません。 そのときは、コマンドをもう一度実行してみます。
 
-通常は、デプロイされたリソースを管理するユーザーが確実に割り当てられるようにするために、このプロセスを*ネットワークの共同作業者*と*ストレージ アカウントの共同作業者*に対して繰り返します。 この記事では、これらの手順を省略できます。
+通常は、デプロイされたリソースを管理するユーザーが確実に割り当てられるようにするために、このプロセスを *ネットワークの共同作業者* と *ストレージ アカウントの共同作業者* に対して繰り返します。 この記事では、これらの手順を省略できます。
 
 ## <a name="azure-policy"></a>Azure Policy
 
@@ -141,7 +141,7 @@ az vm create --resource-group myResourceGroup --name myVM --image UbuntuLTS --ge
 
 [リソースのロック](../../azure-resource-manager/management/lock-resources.md)は、組織内のユーザーが重要なリソースを誤って削除したり変更したりするのを防ぎます。 ロールベースのアクセス制御とは異なり、リソースのロックはすべてのユーザーとロールに制限を適用します。 ロック レベルは *CanNotDelete* または *ReadOnly* に設定できます。
 
-管理ロックを作成または削除するには、`Microsoft.Authorization/locks/*` アクションにアクセスできる必要があります。 組み込みロールのうち、**所有者**と**ユーザー アクセス管理者**にのみこれらのアクションが許可されています。
+管理ロックを作成または削除するには、`Microsoft.Authorization/locks/*` アクションにアクセスできる必要があります。 組み込みロールのうち、**所有者** と **ユーザー アクセス管理者** にのみこれらのアクションが許可されています。
 
 仮想マシンとネットワーク セキュリティ グループをロックするには、[az lock create](/cli/azure/resource/lock?view=azure-cli-latest#az-resource-lock-create) コマンドを使います。
 

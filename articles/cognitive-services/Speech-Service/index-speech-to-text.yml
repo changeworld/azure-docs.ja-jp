@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/19/2020
   ms.author: trbye
-  ms.openlocfilehash: 99f29466c5f81eabbf0b603a89674fa2c70da9d8
-  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.openlocfilehash: e8ffb5469f8aa2997a6e94b0a3836e7d954e9c07
+  ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/22/2020
-  ms.locfileid: "92756973"
+  ms.lasthandoff: 11/12/2020
+  ms.locfileid: "94555901"
 landingContent:
 - title: 音声テキスト変換について
   linkLists:
@@ -26,6 +26,8 @@ landingContent:
       url: speech-to-text.md
     - text: 一括音声テキスト変換
       url: batch-transcription.md
+    - text: Custom Speech とは
+      url: custom-speech-overview.md
     - text: コードなしの音声テキスト変換に Speech CLI を使用する
       url: spx-overview.md
   - linkListType: quickstart

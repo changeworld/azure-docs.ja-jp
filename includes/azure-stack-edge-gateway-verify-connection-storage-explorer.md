@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 12/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 3474a97f4b05fd1f944e18abebcef927232453e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 203c977fe9109cd8b2b6de561e975e20aacf700e
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89080572"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375967"
 ---
 Storage Explorer の初回使用時は、次の手順を実行する必要があります。
 
@@ -24,11 +24,11 @@ Storage Explorer の初回使用時は、次の手順を実行する必要があ
 
 1. Storage Explorer でストレージ アカウントを選択します。 右クリックして **[Azure Storage へ接続する]** オプションを選択します。 
 
-    ![Storage Explorer を構成する](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-2.png)
+    ![Storage Explorer を構成する 2](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-2.png)
 
 2. **[Azure Storage へ接続]** ダイアログで、**[Use a storage account name and key]\(ストレージ アカウント名とキーを使用\)** を選択します。
 
-    ![Storage Explorer を構成する](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-3.png)
+    ![Storage Explorer を構成する 3](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-3.png)
 
 2. **[名前とキーを使用して接続する]** ダイアログで、次の手順のようにします。
 
@@ -39,11 +39,11 @@ Storage Explorer の初回使用時は、次の手順を実行する必要があ
     5. 転送は *http* 経由なので、 **[HTTP を使用する]** オプションをオンにします。 
     6. **[次へ]** を選択します。
 
-    ![Storage Explorer を構成する](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-4.png)    
+    ![Storage Explorer を構成する 4](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-4.png)    
 
 3. **[接続の概要]** ダイアログで、指定した情報を確認します。 **[接続]** を選択します。
 
-    ![Storage Explorer を構成する](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-5.png)
+    ![Storage Explorer を構成する 5](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-5.png)
 
 4. 正常に追加されたアカウントが、名前の後に "External, Other (外部、その他)" を伴って Storage Explorer に表示されます。 **[BLOB コンテナー]** を選択すると、コンテナーが表示されます。
 
@@ -59,27 +59,27 @@ Storage Explorer の初回使用時は、次の手順を実行する必要があ
 
 2. **[ファイルのアップロード]** ダイアログで、アップロードするファイルに移動して選択します。 **[次へ]** を選択します。
 
-    ![データ転送を検証する](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-2.png)
+    ![データ転送を検証する 2](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-2.png)
 
 3. ファイルがアップロードされたことを確認します。 アップロードされたファイルがコンテナーに表示されます。
 
-    ![データ転送を検証する](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-3.png)
+    ![データ転送を検証する 3](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-3.png)
 
 4. 次に、この Edge ストレージ アカウントにマップされた Azure ストレージ アカウントに接続します。 Edge ストレージ アカウントにアップロードされたデータは、Azure ストレージ アカウントに自動的に階層化されます。 
     
     Azure ストレージ アカウントの接続文字列を取得するには、 **[Azure ストレージ アカウント] > [アクセス キー]** に移動し、接続文字列をコピーします。
 
-    ![データ転送を検証する](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-5.png)
+    ![データ転送を検証する 4](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-5.png)
 
     接続文字列を使用して、Azure ストレージ アカウントに接続します。  
 
-    ![データ転送を検証する](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-4.png)
+    ![データ転送を検証する 5](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-4.png)
 
 
 5. **[接続の概要]** ダイアログで、指定した情報を確認します。 **[接続]** を選択します。
 
-    ![データ転送を検証する](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-6.png)
+    ![データ転送を検証する 6](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-6.png)
 
 6. Edge ストレージ アカウントにアップロードしたファイルが Azure ストレージ アカウントに転送されたことがわかります。
 
-    ![データ転送を検証する](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-7.png)
+    ![データ転送を検証する 7](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-7.png)

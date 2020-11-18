@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 23684dbbc5cb8c2d5fc4880ae8fe1999450928e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d661800c53cc0795efde1f411675d17661fb968
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400572"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345535"
 ---
 # <a name="tutorial-work-with-azure-storage-queues-in-net"></a>チュートリアル:.NET での Azure ストレージ キューの操作
 
@@ -39,7 +39,7 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
 
 - プラットフォームに依存しない [Visual Studio Code](https://code.visualstudio.com/download) エディターの無料コピーを入手します。
 - [.NET Core SDK](https://dotnet.microsoft.com/download) バージョン 3.1 以降をダウンロードし、インストールします。
-- 現行の Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
+- Azure サブスクリプションを現在お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 
 ## <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
 
@@ -94,6 +94,8 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
 
    C:\Tutorials\QueueApp>_
    ```
+
+<!-- markdownlint-disable MD023 -->
 
 ## <a name="add-the-azure-client-libraries"></a>Azure クライアント ライブラリを追加する
 
@@ -160,7 +162,7 @@ Azure API を呼び出す前に、Azure portal から資格情報を取得する
 
 1. Visual Studio Code に戻ります。
 
-1. **Main** メソッドで、`Console.WriteLine("Hello World!");` コードを次の行に置き換えます。環境変数から接続文字列を取得するものです。
+1. **Main** メソッドで、`Console.WriteLine("Hello World!");` コードを、環境変数から接続文字列を取得する次の行に置き換えます。
 
    # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 

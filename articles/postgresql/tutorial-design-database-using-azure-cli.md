@@ -8,12 +8,12 @@ ms.custom: mvc, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 475c2dfecbc882575955627d73b7159fa33ac4d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 019e6e738ea312b7e6a16c44354c7dcd54e24f2f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710211"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331898"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure Database for PostgreSQL - 単一サーバーを設計する 
 このチュートリアルでは、Azure CLI (コマンド ライン インターフェイス) とその他のユーティリティを使用して、次のことを行う方法を説明します。
@@ -27,6 +27,9 @@ ms.locfileid: "91710211"
 > * データの復元
 
 このチュートリアルのコマンドを実行するには、ブラウザーで Azure Cloud Shell を使用するか、お使いのコンピューターに [Azure CLI をインストール]( /cli/azure/install-azure-cli)します。
+
+## <a name="prerequisites"></a>前提条件
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -199,9 +202,9 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 `az postgres server restore` コマンドには、次のパラメーターが必要です。
 
-| 設定 | 推奨値 | 説明  |
+| 設定 | 推奨値 | 説明  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
+| resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
 | name | mydemoserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
 | restore-point-in-time | 2017-04-13T13:59:00Z | 復元する特定の時点を選びます。 この日付と時刻は、ソース サーバーのバックアップ保有期間内でなければなりません。 ISO8601 の日時形式を使います。 たとえば、ローカルなタイムゾーン (例: `2017-04-13T05:59:00-08:00`) または UTC Zulu 形式 (例: `2017-04-13T13:59:00Z`) を使うことができます。 |
 | source-server | mydemoserver | 復元元のソース サーバーの名前または ID。 |
@@ -210,16 +213,21 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 コマンドは同期的であり、サーバーが復元された後に戻ります。 復元が終了した後、作成された新しいサーバーを調べます。 データが期待どおりに復元されたことを確認します。
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+前の手順では、サーバー グループ内に Azure リソースを作成しました。 これらのリソースが将来不要であると思われる場合は、サーバー グループを削除します。 サーバー グループの *[概要]* ページで、 *[削除]* ボタンを押します。 ポップアップ ページでメッセージが表示されたら、サーバー グループの名前を確認し、最後の *[削除]* ボタンをクリックします。
+
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure CLI (コマンド ライン インターフェイス) とその他のユーティリティを使用して、次のことを行う方法を説明しました。
 > [!div class="checklist"]
 > * Azure Database for PostgreSQL サーバーの作成
 > * サーバーのファイアウォールの構成
-> * [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html) ユーティリティを使用したデータベースの作成
+> * **psql** ユーティリティを使用したデータベースの作成
 > * サンプル データを読み込む
 > * クエリ データ
 > * データの更新
 > * データの復元
 
-次は、Azure portal を使って同様のタスクを行う方法について見てみましょう。[Azure portal を使用して最初の Azure Database for PostgreSQL を設計する方法](tutorial-design-database-using-azure-portal.md)に関するチュートリアルを参照してください。
+> [!div class="nextstepaction"]
+> [Azure portal を使用して最初の Azure Database for PostgreSQL を設計する方法](tutorial-design-database-using-azure-portal.md)に関するチュートリアルを参照してください。

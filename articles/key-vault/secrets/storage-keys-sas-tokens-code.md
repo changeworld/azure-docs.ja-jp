@@ -9,19 +9,19 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0d2d28a525f38aad3f48e439992a23abde0b7718
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2a0202c5259ccebedf03ade217f57b6305b9fa1b
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786073"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444930"
 ---
 # <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>コードでの SAS 定義の作成と Shared Access Signature トークンの取得
 
 キー コンテナー内に格納されている Shared Access Signature (SAS) トークンを使用して、ご利用のストレージ アカウントを管理できます。 詳細については、[SAS を使用した Azure Storage リソースへの制限付きアクセスの許可](../../storage/common/storage-sas-overview.md)に関するページを参照してください。
 
 > [!NOTE]
-> 共有キーによる承認のセキュリティと使いやすさを強化できるように、[ロールベースのアクセス制御 (RBAC)](../../storage/common/storage-auth-aad.md) を使用してストレージ アカウントをセキュリティで保護することをお勧めします。
+> 共有キーによる承認のセキュリティと使いやすさを強化できるように、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../storage/common/storage-auth-aad.md) を使用してストレージ アカウントをセキュリティで保護することをお勧めします。
 
 この記事では、SAS 定義を作成し、SAS トークンをフェッチする .NET コードのサンプルを示します。 Key Vault マネージド ストレージ アカウント用に生成されたクライアントなど、詳細については、[ShareLink](/samples/azure/azure-sdk-for-net/share-link/) のサンプルを参照してください。 SAS トークンを作成して保存する方法の詳細については、「[Key Vault と Azure CLI を使用してストレージ アカウント キーを管理する](overview-storage-keys.md)」または「[Key Vault と Azure PowerShell を使用してストレージ アカウント キーを管理する](overview-storage-keys-powershell.md)」を参照してください。
 

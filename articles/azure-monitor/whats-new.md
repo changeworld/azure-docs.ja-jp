@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: c9679fec1d9c5d501ead03bcfbf28132d9e3b90a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6ed00931e8cca1febac0b9b72b53eeb7e81042ea
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151806"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94487994"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 
@@ -157,7 +157,7 @@ ms.locfileid: "92151806"
 ### <a name="alerts"></a>警告
 - [Azure Monitor アラートのアクション ルール](platform/alerts-action-rules.md) - CLI プロセスを追加しました。
 - [Azure portal でのアクション グループの作成および管理](platform/action-groups.md) - UI の変更を反映して更新しました。
-- [Azure Monitor Log Analytics の保存済みクエリ](log-query/saved-queries.md) - 新しい記事。
+- [Azure Monitor Log Analytics のサンプル クエリ](log-query/example-queries.md) - 新しい記事。
 - [Azure Monitor のログ アラートのトラブルシューティング](platform/alerts-troubleshoot-log.md) - アラート ルール クォータに関するセクションを追加しました。
 - [Azure メトリック警告のトラブルシューティング](platform/alerts-troubleshoot-metric.md) - まだ生成されていないカスタム メトリックに対するアラート ルールに関するセクションを追加しました。
 - [Azure Monitor でのメトリック アラートのしくみを理解する](platform/alerts-metric-overview.md) - 集計の粒度を選択するための推奨事項を追加しました。

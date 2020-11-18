@@ -8,18 +8,18 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 66d09503f5db95811f807aa7faa83b92facca992
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a6923f0a1d568cc695b86d1538ba55a3eb3444da
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543697"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341486"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>チュートリアル:Azure Resource Manager テンプレートを使用して Azure Database for MySQL サーバーをプロビジョニングする
 
 [Azure Database for MySQL の REST API](/rest/api/mysql/) により、DevOps エンジニアは、Azure 内のマネージド MySQL サーバーおよびデータベースのプロビジョニング、構成、操作を自動化および統合できます。  API を使用して、Azure Database for MySQL サービス上の MySQL サーバーおよびデータベースを作成、列挙、管理、削除できます。
 
-Azure Resource Manager では、基になる REST API を利用し、コード概念としてのインフラストラクチャに合わせて、大規模デプロイに必要な Azure リソースを宣言およびプログラミングします。 テンプレートでは、Azure リソース名、SKU、ネットワーク、ファイアウォール構成、設定をパラメーター化し、1 回の作成で複数回使用できるようにします。  Azure Resource Manager テンプレートは、[Azure portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) または [Visual Studio Code](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=CLI) を使用して簡単に作成できます。 これらにより、アプリケーションのパッケージ化、標準化、およびデプロイの自動化が可能になり、DevOps CI/CD パイプライン内で統合できます。  たとえば、Azure Database for MySQL バックエンドと共に Web アプリをすばやくデプロイしようとする場合は、GitHub ギャラリーにあるこの[クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/)を使用してエンドツーエンドのデプロイを実行できます。
+Azure Resource Manager では、基になる REST API を利用して、コード概念としてのインフラストラクチャに合わせて、大規模デプロイに必要な Azure リソースを宣言およびプログラミングします。 テンプレートでは、Azure リソース名、SKU、ネットワーク、ファイアウォール構成、設定をパラメーター化し、1 回の作成で複数回使用できるようにします。  Azure Resource Manager テンプレートは、[Azure portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) または [Visual Studio Code](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=CLI) を使用して簡単に作成できます。 これらにより、アプリケーションのパッケージ化、標準化、およびデプロイの自動化が可能になり、DevOps CI/CD パイプライン内で統合できます。  たとえば、Azure Database for MySQL バックエンドと共に Web アプリをすばやくデプロイしようとする場合は、GitHub ギャラリーにあるこの[クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/)を使用してエンドツーエンドのデプロイを実行できます。
 
 このチュートリアルでは、Azure Resource Manager テンプレートとその他のユーティリティを使用して、次のことを行う方法を説明します。
 
@@ -29,6 +29,8 @@ Azure Resource Manager では、基になる REST API を利用し、コード�
 > * サンプル データを読み込む
 > * クエリ データ
 > * データの更新
+
+## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 
@@ -199,13 +201,47 @@ UPDATE inventory SET quantity = 200 WHERE name = 'banana';
 SELECT * FROM inventory;
 ```
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+不要になったら、リソース グループを削除してください。リソース グループを削除すれば、リソース グループ内のリソースが削除されます。
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+1. [Azure portal](https://portal.azure.com) で、 **[リソース グループ]** を検索して選択します。
+
+2. リソース グループの一覧で、リソース グループの名前を選択します。
+
+3. リソース グループの **[概要]** ページで、 **[リソース グループの削除]** を選択します。
+
+4. 確認のダイアログ ボックスでリソース グループの名前を入力し、 **[削除]** を選択します。
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+Write-Host "Press [ENTER] to continue..."
+```
+
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+az group delete --name $resourceGroupName &&
+echo "Press [ENTER] to continue ..."
+```
+
+---
+
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルで学習した内容は次のとおりです。
 > [!div class="checklist"]
 > * Azure Resource Manager テンプレートを使用して、VNet サービス エンドポイントによって Azure Database for MySQL サーバーを作成する
-> * [mysql コマンドライン ツール](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)を使用したデータベースの作成
+> * mysql コマンドライン ツールを使用したデータベースの作成
 > * サンプル データを読み込む
 > * クエリ データ
 > * データの更新
-> 
+
+> [!div class="nextstepaction"]
 > [Azure Database for MySQL にアプリケーションを接続する方法](./howto-connection-string.md)

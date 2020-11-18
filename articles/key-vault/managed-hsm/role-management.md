@@ -8,17 +8,17 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 370be4501a113403a9b1db14571f5a021ac15517
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 78d4d9a8b5023731530c5e348f5c9ba72815d410
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149114"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445644"
 ---
 # <a name="managed-hsm-role-management"></a>Managed HSM のロール管理
 
 > [!NOTE]
-> Key Vault では、コンテナーとマネージド HSM という 2 種類のリソースがサポートされています。 この記事では、 **Managed HSM** について説明します。 コンテナーの管理方法については、「[Azure CLI を使用して Key Vault を管理する](../general/manage-with-cli2.md)」を参照してください。
+> Key Vault では、コンテナーとマネージド HSM という 2 種類のリソースがサポートされています。 この記事では、**Managed HSM** について説明します。 コンテナーの管理方法については、「[Azure CLI を使用して Key Vault を管理する](../general/manage-with-cli2.md)」を参照してください。
 
 Managed HSM の概要については、[Managed HSM の概要](overview.md)に関するページをご覧ください。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -113,7 +113,7 @@ az keyvault role definition list --hsm-name ContosoMHSM
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure ロールベースのアクセス制御 (RBAC) の概要](../../role-based-access-control/overview.md)を確認します。
+- [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) の概要を確認します。
 - [Managed HSM のロール管理](role-management.md)に関するチュートリアルを確認します。
 - [Managed HSM アクセス制御モデル](access-control.md)の詳細を確認します。
 - すべての [Managed HSM のローカル RBAC の組み込みロール](built-in-roles.md)を確認します。

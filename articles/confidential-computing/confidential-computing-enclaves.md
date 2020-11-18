@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 9/3/2020
 ms.author: JenCook
-ms.openlocfilehash: a7e3ade66aa4ebf7584e03b75f85c48b44537d97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 565f4971fffde1cbeb2234b43aaad5cce73b5404
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993505"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564380"
 ---
 # <a name="azure-confidential-computing-virtual-machines-vms-overview"></a>Azure Confidential Computing 仮想マシン (VM) の概要
 
@@ -29,7 +29,7 @@ Azure Confidential Computing の仮想マシンでは、CPU ハードウェア�
 
 Azure Confidential Computing インフラストラクチャは現在、特殊な SKU の仮想マシン (VM) で構成されています。 これらの VM は、Software Guard Extension (Intel SGX) を搭載した Intel プロセッサ上で動作します。 [Intel SGX](https://intel.com/sgx) は、コンフィデンシャル コンピューティングの核となる保護機能の強化を実現するコンポーネントです。 
 
-現在 Azure では、ハードウェアベースのエンクレーブ作成用に、Intel SGX テクノロジを基盤とする [DCsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/dcv2-series)を提供しています。 DCsv2 シリーズの VM で動作するセキュア エンクレーブベースのアプリケーションを構築すれば、アプリケーションのデータとコードをその使用中に保護することができます。 
+現在 Azure では、ハードウェアベースのエンクレーブ作成用に、Intel SGX テクノロジを基盤とする [DCsv2 シリーズ](../virtual-machines/dcv2-series.md)を提供しています。 DCsv2 シリーズの VM で動作するセキュア エンクレーブベースのアプリケーションを構築すれば、アプリケーションのデータとコードをその使用中に保護することができます。 
 
 ハードウェアベースの信頼できるエンクレーブを使用した Azure Confidential Computing 仮想マシンのデプロイについて、[詳しい情報](virtual-machine-solutions.md)をご覧いただけます。
 
@@ -39,7 +39,7 @@ Azure Confidential Computing インフラストラクチャは現在、特殊な
 
 基本的に、エンクレーブはセキュリティで保護されたボックスと考えてください。 暗号化されたコードとデータは、箱の中に置くことになります。 箱の外からは何も見えません。 データを取り出す際は、まずデータの暗号化を解除するためのキーをエンクレーブに与えます。その後データは処理され、再び暗号化したうえで、エンクレーブから取り出されます。
 
-各エンクレーブには、各エンクレーブが保持できるメモリの量を決定する、暗号化されたページ キャッシュ (EPC) のサイズが設定されています。 DCsv2 仮想マシンが大きくなるほど、EPC メモリの量が増えます。 VM サイズあたりの最大 EPC については、[DCsv2 の仕様](https://docs.microsoft.com/azure/virtual-machines/dcv2-series)に関するページを参照してください。
+各エンクレーブには、各エンクレーブが保持できるメモリの量を決定する、暗号化されたページ キャッシュ (EPC) のサイズが設定されています。 DCsv2 仮想マシンが大きくなるほど、EPC メモリの量が増えます。 VM サイズあたりの最大 EPC については、[DCsv2 の仕様](../virtual-machines/dcv2-series.md)に関するページを参照してください。
 
 
 

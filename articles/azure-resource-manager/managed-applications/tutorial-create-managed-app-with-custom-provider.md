@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ace58bd3bb89f9e8545bf125f272e62c3a134061
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: f327749d1bdfb8cf2cba00cf4c5f68b4b2b77999
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949832"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379555"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>チュートリアル:カスタム アクションおよびリソースを備えたマネージド アプリケーションを作成する
 
@@ -41,7 +41,7 @@ ms.locfileid: "91949832"
 
 このチュートリアルでは、マネージド アプリケーションを作成します。アプリケーションのマネージド リソース グループには、カスタム プロバイダー インスタンス、ストレージ アカウント、関数を含めます。 この例で使用する Azure 関数は、アクションとリソースに関するカスタム プロバイダーの操作を処理する API を実装するものです。 Azure ストレージ アカウントは、カスタム プロバイダー リソースの基本ストレージとして使用されます。
 
-マネージド アプリケーション インスタンスの作成に必要なこのユーザー インターフェイス定義ファイルには、`funcname` と `storagename` という入力要素があります。 ストレージ アカウント名と関数名はグローバルに一意である必要があります。 関数ファイルのデプロイ元は、既定では[サンプル関数パッケージ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip)になっています。ただし、*createUIDefinition.json* 内にパッケージ リンクの入力要素を追加することにより、デプロイ元を変更することもできます。
+マネージド アプリケーション インスタンスの作成に必要なこのユーザー インターフェイス定義ファイルには、`funcname` と `storagename` という入力要素があります。 ストレージ アカウント名と関数名はグローバルに一意である必要があります。 既定では、関数ファイルは [サンプル関数パッケージ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip)からデプロイされますが、*createUiDefinition.json* 内にパッケージ リンクの入力要素を追加することでこれを変更できます。
 
 ```json
 {
@@ -74,7 +74,7 @@ ms.locfileid: "91949832"
 }
 ```
 
-*createUIDefinition.json* の出力は次のとおりです。
+*createUiDefinition.json* の出力は次のとおりです。
 
 ```json
   "funcname": "[steps('applicationSettings').funcname]",
@@ -82,13 +82,13 @@ ms.locfileid: "91949832"
   "zipFileBlobUri": "[steps('applicationSettings').zipFileBlobUri]"
 ```
 
-*createUIDefinition.json* のサンプルの全容については、「[リファレンス:ユーザー インターフェイス要素のアーティファクト](reference-createuidefinition-artifact.md)」を参照してください。
+*createUiDefinition.json* の完全なサンプルについては、「[リファレンス: ユーザー インターフェイス要素のアーティファクト](reference-createuidefinition-artifact.md)」を参照してください。
 
 ## <a name="template-with-custom-provider"></a>カスタム プロバイダーを指定したテンプレート
 
 カスタム プロバイダーを備えたマネージド アプリケーション インスタンスを作成するには、**mainTemplate.json** の中で名前が **public**、種類が **Microsoft.CustomProviders/resourceProviders** のカスタム プロバイダー リソースを定義する必要があります。 そのリソースで、サービスのリソースの種類とアクションを定義します。 Azure 関数と Azure ストレージ アカウントのインスタンスをデプロイするには、種類が `Microsoft.Web/sites` と `Microsoft.Storage/storageAccounts` のリソースをそれぞれ定義します。
 
-このチュートリアルでは、リソースの種類 `users`、カスタム アクション `ping`、カスタム リソース `users` のコンテキストで実行するカスタム アクション `users/contextAction` を、それぞれ作成します。 リソースの種類とアクションのそれぞれに、[createUIDefinition.json](#user-interface-definition) の中で指定された名前の関数を指すエンドポイントを指定します。 **routingType** は、リソースの種類なら `Proxy,Cache`、アクションなら `Proxy` に、それぞれ指定します。
+このチュートリアルでは、リソースの種類 `users`、カスタム アクション `ping`、カスタム リソース `users` のコンテキストで実行するカスタム アクション `users/contextAction` を、それぞれ作成します。 リソースの種類とアクションのそれぞれに、[createUiDefinition.json](#user-interface-definition) で指定された名前の関数を指すエンドポイントを指定します。 **routingType** は、リソースの種類なら `Proxy,Cache`、アクションなら `Proxy` に、それぞれ指定します。
 
 ```json
 {
@@ -254,8 +254,8 @@ az managedapp definition create \
 
 3. サービス カタログの定義を作成するための値を指定します。
 
-    * サービス カタログの定義に一意の**名前**のほか、(オプションで) **表示名**と*説明*を指定します。
-    * **サブスクリプション**、**リソース グループ**、アプリケーションの定義が作成される**場所**を選択します。 zip パッケージ用に使用しているものと同じリソース グループを使用することも、新しいリソース グループを作成することもできます。
+    * サービス カタログの定義に一意の **名前** のほか、(オプションで) **表示名** と *説明* を指定します。
+    * **サブスクリプション**、**リソース グループ**、アプリケーションの定義が作成される **場所** を選択します。 zip パッケージ用に使用しているものと同じリソース グループを使用することも、新しいリソース グループを作成することもできます。
     * **[パッケージ ファイルの URI]** には、前の手順で作成した zip ファイルのパスを指定します。
 
     ![値を指定する](./media/tutorial-create-managed-app-with-custom-provider/add-service-catalog-managed-application.png)
@@ -314,7 +314,7 @@ az managedapp create \
 
 4. サービス カタログの定義からマネージド アプリケーション インスタンスを作成するための値を指定します。
 
-    * **サブスクリプション**、**リソース グループ**、アプリケーション インスタンスが作成される**場所**を選択します。
+    * **サブスクリプション**、**リソース グループ**、アプリケーション インスタンスが作成される **場所** を選択します。
     * Azure 関数と Azure ストレージ アカウントにそれぞれ一意の名前を指定します。
 
     ![アプリケーションの設定](./media/tutorial-create-managed-app-with-custom-provider/application-settings.png)
@@ -327,11 +327,11 @@ az managedapp create \
 
 ## <a name="custom-actions-and-resources"></a>カスタム アクションとリソース
 
-サービス カタログ アプリケーション インスタンスをデプロイした後には、2 つの新しいリソース グループが作成されています。 1 つめのリソース グループ `applicationGroup` にはマネージド アプリケーションのインスタンスが含まれます。2 つめのリソース グループ `managedResourceGroup` は、そのマネージド アプリケーションのためのリソース (**カスタム プロバイダー**など) を保持するものです。
+サービス カタログ アプリケーション インスタンスをデプロイした後には、2 つの新しいリソース グループが作成されています。 1 つめのリソース グループ `applicationGroup` にはマネージド アプリケーションのインスタンスが含まれます。2 つめのリソース グループ `managedResourceGroup` は、そのマネージド アプリケーションのためのリソース (**カスタム プロバイダー** など) を保持するものです。
 
 ![アプリケーション リソース グループ](./media/tutorial-create-managed-app-with-custom-provider/application-resource-groups.png)
 
-マネージド アプリケーション インスタンスに移動すると、[概要] ページでは**カスタム アクション**の実行、[ユーザー] ページでは **users** カスタム リソースの作成、カスタム リソースでは**カスタム コンテキスト アクション**の実行ができます。
+マネージド アプリケーション インスタンスに移動すると、[概要] ページでは **カスタム アクション** の実行、[ユーザー] ページでは **users** カスタム リソースの作成、カスタム リソースでは **カスタム コンテキスト アクション** の実行ができます。
 
 * [概要] ページに移動し、[Ping Action]\(Ping アクション\) ボタンをクリックします。
 
@@ -339,11 +339,11 @@ az managedapp create \
 
 * [ユーザー] ページに移動し、[追加] ボタンをクリックします。 リソースを作成するための入力を指定し、フォームを送信します。
 
-![カスタム リソースを作成する](./media/tutorial-create-managed-app-with-custom-provider/create-custom-resource.png)
+![[ユーザー] で選択された [追加] ボタンを示すスクリーンショット。](./media/tutorial-create-managed-app-with-custom-provider/create-custom-resource.png)
 
 * [ユーザー] ページに移動し、"users" リソースを選択して [Custom Context Action]\(カスタム コンテキスト アクション\) をクリックします。
 
-![カスタム リソースを作成する](./media/tutorial-create-managed-app-with-custom-provider/perform-custom-resource-action.png)
+![[Custom Context Action]\(カスタム コンテキスト アクション\) が選択されていることを示すスクリーンショット。](./media/tutorial-create-managed-app-with-custom-provider/perform-custom-resource-action.png)
 
 [!INCLUDE [clean-up-section-portal](../../../includes/clean-up-section-portal.md)]
 

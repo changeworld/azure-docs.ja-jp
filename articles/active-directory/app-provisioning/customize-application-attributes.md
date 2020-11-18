@@ -1,5 +1,5 @@
 ---
-title: Azure AD 属性マッピングのカスタマイズ | Microsoft Docs
+title: チュートリアル - Azure Active Directory 属性マッピングをカスタマイズする
 description: Azure Active Directory における SaaS アプリの属性マッピングとは何かと、この属性マッピングをビジネス ニーズに合わせて変更する方法について説明します。
 services: active-directory
 author: kenwith
@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: how-to
-ms.date: 10/26/2020
+ms.topic: tutorial
+ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: cac7b169232bb43ba1b1893b59dac81ce4c39c49
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 42ec826ab95363c2599be541fe451473be5ca08d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233885"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94441955"
 ---
-# <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ
+# <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>チュートリアル - Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングをカスタマイズする
 
 Microsoft Azure AD では、Salesforce、G Suite、およびその他のサードパーティの SaaS アプリケーションへのユーザー プロビジョニングのサポートを提供します。 サード パーティの SaaS アプリケーションでユーザー プロビジョニングを有効にした場合、Azure portal では属性マッピングによってその属性値を管理します。
 
@@ -110,7 +110,7 @@ ServiceNow、Box、G Suite などいくつかのアプリケーションでは�
 - Workday から Active Directory / Workday から Azure Active Directory へ
 - SuccessFactors から Active Directory へ / SuccessFactors から Azure Active Directory へ
 - Azure Active Directory ([Azure AD Graph API の既定の属性](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)とカスタム ディレクトリ拡張機能がサポートされる)
-- [SCIM 2.0](https://tools.ietf.org/html/rfc7643) をサポートするアプリ ([コア スキーマ](https://tools.ietf.org/html/rfc7643)に定義された属性を追加する必要がある)
+- [SCIM 2.0](https://tools.ietf.org/html/rfc7643) をサポートするアプリ
 - Workday または SuccessFactors への Azure Active Directory の書き戻しについては、サポートされている属性 (XPATH と JSONPath) の関連メタデータを更新することはサポートされていますが、既定のスキーマに含まれているもの以外の新しい Workday または SuccessFactors の属性を追加することはサポートされていません
 
 
@@ -146,7 +146,7 @@ SCIM アプリケーションの場合は、次の例に示すパターンに従
 
 これらの手順は、SCIM 対応アプリケーションにのみ適用されます。 ServiceNow や Salesforce などのアプリケーションは、SCIM を使用する Azure AD と統合されていないため、カスタム属性を追加するときにこの特定の名前空間は必要ありません。
 
-カスタム属性を参照属性または複数値の属性にすることはできません。 現在、カスタムの複数値の拡張属性は、ギャラリー内のアプリケーションに対してのみサポートされています。  
+カスタム属性は、参照属性、複数値の属性、または複合型の属性にすることはできません。 現在、カスタムの複数値または複合型の拡張属性は、ギャラリー内のアプリケーションに対してのみサポートされています。  
  
 **拡張属性を持つユーザーの表記を次に示します。**
 
@@ -192,7 +192,7 @@ SCIM アプリケーションの場合は、次の例に示すパターンに従
 ## <a name="provisioning-a-role-to-a-scim-app"></a>SCIM アプリへのロールのプロビジョニング
 ユーザーのロールをアプリケーションにプロビジョニングするには、次の手順を使用します。 下記の説明は、カスタム SCIM アプリケーションに固有のものであることに注意してください。 Salesforce や ServiceNow などのギャラリー アプリケーションの場合、事前定義済みのロール マッピングを使用します。 下記の項目は、アプリケーションで想定されている形式に AppRoleAssignments 属性を変換する方法を説明しています。
 
-- Azure AD の appRoleAssignment をアプリケーションのロールにマップするには、[式](../app-provisioning/functions-for-customizing-application-data.md)を使用して属性を変換する必要があります。 ロールの詳細を解析するための式を使用せずに、appRoleAssignment 属性をロール属性に **直接マップしないでください** 。 
+- Azure AD の appRoleAssignment をアプリケーションのロールにマップするには、[式](../app-provisioning/functions-for-customizing-application-data.md)を使用して属性を変換する必要があります。 ロールの詳細を解析するための式を使用せずに、appRoleAssignment 属性をロール属性に **直接マップしないでください**。 
 
 - **SingleAppRoleAssignment** 
   - **使用する場合:** ユーザーの 1 つのロールをプロビジョニングする、またプライマリ ロールを指定するには、SingleAppRoleAssignment 式を使用します。 

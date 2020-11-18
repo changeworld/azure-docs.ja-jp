@@ -8,86 +8,48 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 164f5803b6e9e62447423735e98f6e4c36c73f13
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: de916fcbe0623185821e2f5da15a8f9cf71dfd4e
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876667"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426779"
 ---
-### <a name="add-relationships"></a>リレーションシップの追加
-
-**[LVA Edge Gateway]** デバイス テンプレートの **[Modules/LVA Edge Gateway Module]\(モジュール/LVA Edge Gateway モジュール\)** で **[Relationships]\(リレーションシップ\)** を選択します。 **[+ リレーションシップの追加]** を選択し、次の 2 つのリレーションシップを追加します。
-
-|表示名               |名前          |移行先 |
-|-------------------------- |------------- |------ |
-|LVA Edge Motion Detector   |既定値を使用します。   |LVA Edge Motion Detector Device |
-|LVA Edge Object Detector   |既定値を使用します。   |LVA Edge Object Detector Device |
-
-次に、 **[保存]** を選択します。
-
-:::image type="content" source="media/iot-central-video-analytics-part4/relationships.png" alt-text="リレーションシップの追加":::
-
-### <a name="add-views"></a>ビューを追加する
-
-**LVA Edge Gateway** デバイス テンプレートには、ビューの定義が含まれていません。
-
-デバイス テンプレートにビューを追加するには:
-
-1. **LVA Edge Gateway** デバイス テンプレートで、 **[Views]\(ビュー\)** に移動し、 **[デバイスの視覚化]** タイルを選択します。
-
-1. ビューの名前として「*LVA Edge Gateway device*」と入力します。
-
-1. 次のタイルをビューに追加します。
-
-    * **[デバイス情報]** のプロパティ (**デバイス モデル**、**製造元**、**オペレーティング システム**、**プロセッサ アーキテクチャ**、**ソフトウェア バージョン**、**メモリ合計**、**ストレージの合計**) を含むタイル。
-    * **[Free Memory]\(空きメモリ\)** と **[System Heartbeat]\(システム ハートビート\)** のテレメトリ値を含む折れ線グラフのタイル。
-    * **[Create Camera]\(カメラの作成\)** 、 **[Delete Camera]\(カメラの削除\)** 、 **[Module Restart]\(モジュールの再起動\)** 、 **[Module Started]\(モジュール開始\)** 、 **[Module Stopped]\(モジュール停止\)** の各イベントを含むイベント履歴タイル。
-    * **[IoT Central Client State]\(IoT Central クライアントの状態\)** のテレメトリを表示する最後の既知の値タイル (2x1)。
-    * **[Module State]\(モジュールの状態\)** のテレメトリを表示する最後の既知の値タイル (2x1)。
-    * **[System Heartbeat]\(システム ハートビート\)** のテレメトリを表示する最後の既知の値タイル (1x1)。
-    * **[Connected Cameras]\(接続されているカメラ\)** のテレメトリを表示する最後の既知の値タイル (1x1)。
-
-    :::image type="content" source="media/iot-central-video-analytics-part4/gateway-dashboard.png" alt-text="リレーションシップの追加":::
-
-1. **[保存]** を選択します。
-
 ### <a name="publish-the-device-template"></a>デバイス テンプレートを発行する
 
 デバイスをアプリケーションに追加する前に、デバイス テンプレートを発行する必要があります。
 
-1. **LVA Edge Gateway** デバイス テンプレートで **[発行]** を選択します。
+1. **LVA Edge Gateway v2** デバイス テンプレートで **[発行]** を選択します。
 
 1. **[このデバイス テンプレートのアプリケーションへの発行]** ページで、 **[発行]** を選択します。
 
-アプリケーションの **[デバイス]** ページに、使用するデバイスの種類として **LVA Edge Gateway** が表示されるようになります。
+アプリケーションの **[デバイス]** ページに、使用するデバイスの種類として **LVA Edge Gateway v2** が表示されるようになります。
 
-## <a name="add-a-gateway-device"></a>ゲートウェイ デバイスを追加する
+## <a name="migrate-the-gateway-device"></a>ゲートウェイ デバイスを移行する
 
-**LVA Edge Gateway** デバイスをアプリケーションに追加するには:
+既存の **gateway-001** デバイスは、**LVA Edge Gateway** デバイス テンプレートを使用します。 新しいデプロイ マニフェストを使用するには、デバイスを新しいデバイス テンプレートに移行します。
 
-1. **[デバイス]** ページに移動し、 **[LVA Edge Gateway]** デバイス テンプレートを選択します。
+**gateway-001** デバイスを移行するには、次のようにします。
 
-1. **[+新規]** を選択します。
+1. **[デバイス]** ページに移動し、 **[gateway-001]** デバイスを選択します。一覧で、このデバイスが強調表示されます。
 
-1. **[新しいデバイスを作成します]** ダイアログで、デバイス名を *LVA Gateway 001* に変更し、デバイス ID を *lva-gateway-001* に変更します。
+1. **[移行]** を選択します。 **[移行]** アイコンが表示されない場合は、 **[...]** を選択して、その他のオプションを表示します。
 
-    > [!NOTE]
-    > デバイス ID は、アプリケーション内で一意である必要があります。
+    :::image type="content" source="media/iot-central-video-analytics-part4/migrate-device.png" alt-text="ゲートウェイ デバイスを新しいバージョンに移行する":::
 
-1. **［作成］** を選択します
+1. **[移行]** ダイアログの一覧で、 **[LVA Edge Gateway v2]** を選択し、 **[移行]** を選択します。
 
-デバイスの状態が **[登録済み]** になります。
+数秒後、移行が完了します。 デバイスでは、カスタマイズしたデプロイ マニフェストと共に **LVA Edge Gateway v2** デバイス テンプレートが使用されるようになりました。
 
 ### <a name="get-the-device-credentials"></a>デバイスの資格情報を取得する
 
 お使いの IoT Central アプリケーションへの接続をデバイスに許可する資格情報が必要になります。 デバイスの資格情報を取得するには、次の手順を実行します。
 
-1. **[デバイス]** ページで、先ほど作成した **lva-gateway-001** デバイスを選択します。
+1. **[デバイス]** ページで、**gateway-001** デバイスを選択します。
 
 1. **[接続]** を選択します。
 
-1. **[デバイス接続]** ページで、**ID スコープ**、**デバイス ID**、デバイスの**プライマリ キー**を *scratchpad.txt* ファイルに書き留めます。 これらの値は後で使用します。
+1. **[デバイス接続]** ページで、**ID スコープ**、**デバイス ID**、デバイスの **プライマリ キー** を *scratchpad.txt* ファイルに書き留めます。 これらの値は後で使用します。
 
 1. 接続方法が **Shared Access Signature** に設定されていることを確認します。
 

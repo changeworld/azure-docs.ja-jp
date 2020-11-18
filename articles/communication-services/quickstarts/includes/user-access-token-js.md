@@ -2,20 +2,20 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: azure-communication-services
-author: matthewrobertson
-manager: nimag
+author: tomaschladek
+manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
-ms.author: marobert
-ms.openlocfilehash: 22cfe369561eab1ca334c7ff2450162dfae3e761
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.author: tchladek
+ms.openlocfilehash: af5af26a8970409b07eda6195b0853c3fa931b3f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92347323"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506255"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,7 +30,7 @@ ms.locfileid: "92347323"
 ターミナルまたはコマンド ウィンドウを開き、アプリ用の新しいディレクトリを作成し、そこに移動します。
 
 ```console
-mkdir user-tokens-quickstart && cd user-tokens-quickstart
+mkdir access-tokens-quickstart && cd access-tokens-quickstart
 ```
 
 `npm init -y` を実行して、既定の設定で **package.json** ファイルを作成します。
@@ -49,7 +49,7 @@ npm install @azure/communication-administration --save
 
 ```
 
-`--save` オプションを使用すると、 **package.json** ファイル内の依存関係としてライブラリが表示されます。
+`--save` オプションを使用すると、**package.json** ファイル内の依存関係としてライブラリが表示されます。
 
 ## <a name="set-up-the-app-framework"></a>アプリのフレームワークを設定する
 
@@ -65,7 +65,7 @@ npm install @azure/communication-administration --save
 const { CommunicationIdentityClient } = require('@azure/communication-administration');
 
 const main = async () => {
-  console.log("Azure Communication Services - User Access Tokens Quickstart")
+  console.log("Azure Communication Services - Access Tokens Quickstart")
 
   // Quickstart code goes here
 };
@@ -76,9 +76,7 @@ main().catch((error) => {
 })
 ```
 
-1. 新しいファイルを **issue-token.js** として *user-tokens-quickstart* ディレクトリに保存します。
-
-[!INCLUDE [User Access Tokens Object Model](user-access-tokens-object-model.md)]
+1. 新しいファイルを **issue-access-token.js** として *access-tokens-quickstart* ディレクトリに保存します。
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
@@ -91,64 +89,67 @@ main().catch((error) => {
 // from an environment variable.
 const connectionString = process.env['COMMUNICATION_SERVICES_CONNECTION_STRING'];
 
-// Instantiate the user token client
+// Instantiate the identity client
 const identityClient = new CommunicationIdentityClient(connectionString);
 ```
 
-## <a name="create-a-user"></a>ユーザーを作成する
+## <a name="create-an-identity"></a>ID の作成
 
-Azure Communication Services は、軽量の ID ディレクトリを保持します。 `createUser` メソッドを使用して、一意の `Id` を持つディレクトリに新しいエントリを作成します。 お使いのアプリケーションのユーザーと、Communication Services で生成された ID の間のマッピングを (アプリケーション サーバーのデータベースにこれらを格納するなどによって) 維持する必要があります。
+Azure Communication Services は、軽量の ID ディレクトリを保持します。 `createUser` メソッドを使用して、一意の `Id` を持つディレクトリに新しいエントリを作成します。 受け取った ID を、アプリケーションのユーザーへのマッピングと共に格納します。 これらは、アプリケーション サーバーのデータベースなどに格納します。 ID は、後でアクセス トークンを発行するために必要になります。
 
 ```javascript
-let userResponse = await identityClient.createUser();
-console.log(`\nCreated a user with ID: ${userResponse.communicationUserId}`);
+let identityResponse = await identityClient.createUser();
+console.log(`\nCreated an identity with ID: ${identityResponse.communicationUserId}`);
 ```
 
-## <a name="issue-user-access-tokens"></a>ユーザー アクセス トークンを発行する
+## <a name="issue-access-tokens"></a>アクセス トークンを発行する
 
-Communication Services ユーザーのアクセス トークンを発行するには、`issueToken` メソッドを使用します。 オプションの `user` パラメーターを指定しない場合は、新しいユーザーが作成され、トークンと共に返されます。
+既存の Communication Services ID のアクセス トークンを発行するには、`issueToken` メソッドを使用します。 パラメーター `scopes` によって、このアクセス トークンを承認するプリミティブのセットが定義されます。 [サポートされているアクションの一覧](../../concepts/authentication.md)を参照してください。 パラメーター `communicationUser` の新しいインスタンスは、Azure Communication Services ID の文字列表現に基づいて作成できます。
 
 ```javascript
-// Issue an access token with the "voip" scope for a new user
-let tokenResponse = await identityClient.issueToken(userResponse, ["voip"]);
+// Issue an access token with the "voip" scope for an identity
+let tokenResponse = await identityClient.issueToken(identityResponse, ["voip"]);
 const { token, expiresOn } = tokenResponse;
-console.log(`\nIssued a token with 'voip' scope that expires at ${expiresOn}:`);
+console.log(`\nIssued an access token with 'voip' scope that expires at ${expiresOn}:`);
 console.log(token);
 ```
 
-ユーザー アクセス トークンは、ユーザーのサービス中断を防ぐために再発行する必要がある、有効期間の短い資格情報です。 `expiresOn` 応答プロパティは、トークンの有効期間を示します。
+アクセス トークンは有効期間の短い資格情報であるため、再発行が必要になります。 そうしないと、アプリケーションのユーザー エクスペリエンスが中断される可能性があります。 `expiresOn` 応答プロパティは、アクセス トークンの有効期間を示します。
 
-## <a name="revoke-user-access-tokens"></a>ユーザー アクセス トークンを取り消す
 
-場合によっては、ユーザーがサービスへの認証に使用するパスワードを変更したときなどに、ユーザー アクセス トークンを明示的に取り消す必要があります。 これには `revokeTokens` メソッドを使用して、すべてのユーザーのアクセス トークンを無効にします。
+## <a name="refresh-access-tokens"></a>アクセス トークンの更新
 
-```javascript  
-await identityClient.revokeTokens(userResponse);
-console.log(`\nSuccessfully revoked all tokens for user with Id: ${userResponse.communicationUserId}`);
-```
-
-## <a name="refresh-user-access-tokens"></a>ユーザー アクセス トークンを更新する
-
-トークンを更新するには、`CommunicationUser` オブジェクトを使用して再発行します。
+アクセス トークンを更新するには、`CommunicationUser` オブジェクトを使用して再発行します。
 
 ```javascript  
-let userResponse = new CommunicationUser(existingUserId);
-let tokenResponse = await identityClient.issueToken(userResponse, ["voip"]);
+// Value existingIdentity represents identity of Azure Communication Services stored during identity creation
+identityResponse = new CommunicationUser(existingIdentity);
+tokenResponse = await identityClient.issueToken(identityResponse, ["voip"]);
 ```
 
-## <a name="delete-a-user"></a>ユーザーの削除
 
-ユーザーを削除すると、すべてのアクティブなトークンが取り消され、その ID についての後続のトークンを発行できなくなります。 また、ユーザーに関連付けられているすべての永続化されたコンテンツも削除されます。
+## <a name="revoke-access-tokens"></a>アクセス トークンの取り消し
+
+場合によっては、明示的にアクセス トークンを取り消すことがあります。 たとえば、アプリケーションのユーザーが、サービスに対する認証に使用するパスワードを変更するような場合です。 `revokeTokens` メソッドを使用すると、ID に対して発行されたすべてのアクティブなアクセス トークンを無効にできます。
+
+```javascript  
+await identityClient.revokeTokens(identityResponse);
+console.log(`\nSuccessfully revoked all access tokens for identity with Id: ${identityResponse.communicationUserId}`);
+```
+
+## <a name="delete-an-identity"></a>ID の削除
+
+ID を削除すると、すべてのアクティブなアクセス トークンが取り消され、その ID に対してアクセス トークンを発行できなくなります。 また、ID に関連付けられているすべての永続化されたコンテンツも削除されます。
 
 ```javascript
-await identityClient.deleteUser(userResponse);
-console.log(`\nDeleted the user with Id: ${userResponse.communicationUserId}`);
+await identityClient.deleteUser(identityResponse);
+console.log(`\nDeleted the identity with Id: ${identityResponse.communicationUserId}`);
 ```
 
 ## <a name="run-the-code"></a>コードの実行
 
-コンソール プロンプトから、 *issue-token.js* ファイルが格納されているディレクトリに移動し、次の `node` コマンドを実行してアプリを実行します。
+コンソール プロンプトから、*issue-access-token.js* ファイルが格納されているディレクトリに移動し、次の `node` コマンドを実行してアプリを実行します。
 
 ```console
-node ./issue-token.js
+node ./issue-access-token.js
 ```

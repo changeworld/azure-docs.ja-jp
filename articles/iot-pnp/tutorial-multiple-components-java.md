@@ -1,18 +1,18 @@
 ---
-title: IoT プラグ アンド プレイのサンプル Java コンポーネント デバイス コードを IoT Hub に接続する | Microsoft Docs
-description: 複数のコンポーネントを使用し、IoT ハブに接続する、IoT プラグ アンド プレイのサンプル Java デバイス コードをビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
+title: チュートリアル - IoT プラグ アンド プレイのサンプル Java コンポーネント デバイス コードを Azure IoT Hub に接続する | Microsoft Docs
+description: チュートリアル - 複数のコンポーネントを使用し、IoT ハブに接続する、IoT プラグ アンド プレイのサンプル Java デバイス コードをビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: fce6477313cb7fb917c0fb81d03a73eec4714915
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 92732eee94a17aa59257ce2894775b2f881632d4
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046402"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421424"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-java"></a>チュートリアル:IoT プラグ アンド プレイの複数コンポーネント デバイス アプリケーションのサンプルを IoT Hub に接続する (Java)
 

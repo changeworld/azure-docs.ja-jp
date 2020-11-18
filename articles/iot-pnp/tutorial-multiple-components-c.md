@@ -1,18 +1,18 @@
 ---
-title: IoT プラグ アンド プレイのサンプル C デバイス コードを IoT Hub に接続する  | Microsoft Docs
-description: 複数のコンポーネントを使用し、IoT ハブに接続する、IoT プラグ アンド プレイのサンプル C デバイス コードをビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
+title: チュートリアル - IoT プラグ アンド プレイのサンプル C デバイス コードを Azure IoT Hub に接続する | Microsoft Docs
+description: チュートリアル - 複数のコンポーネントを使用し、IoT ハブに接続する、IoT プラグ アンド プレイのサンプル C デバイス コードをビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: e1a2a45d0f5743874ce0c0b20190d7d396094e43
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 0bf0e45f6e9b088567dd48d3eb12ae979ba679e4
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046385"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421483"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-applications-running-on-linux-or-windows-to-iot-hub-c"></a>チュートリアル: Linux または Windows 上で実行されている IoT プラグ アンド プレイの複数コンポーネントのデバイス アプリケーションを IoT Hub に接続する (C)
 
@@ -52,7 +52,7 @@ gcc --version
 
 Windows でこのチュートリアルを完了するには、ご利用のローカル Windows 環境に次のソフトウェアをインストールします。
 
-* [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/)。Visual Studio を[インストール](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019)するときに、 **[C++ によるデスクトップ開発]** ワークロードを必ず含めてください。
+* [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/)。Visual Studio を [インストール](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019)するときに、 **[C++ によるデスクトップ開発]** ワークロードを必ず含めてください。
 * [Git](https://git-scm.com/download/).
 * [CMake](https://cmake.org/download/)。
 
@@ -79,7 +79,7 @@ git submodule update --init
 ### <a name="use-visual-studio"></a>Visual Studio を使用する
 
 1. クローンされたリポジトリのルート フォルダーを開きます。 数秒後、プロジェクトを実行してデバッグするのに必要なものがすべて Visual Studio の **CMake** サポートによって作成されます。
-1. Visual Studio の準備ができたら、**ソリューション エクスプローラー**で、サンプル *iothub_client/samples/pnp/pnp_temperature_controller/* に移動します。
+1. Visual Studio の準備ができたら、**ソリューション エクスプローラー** で、サンプル *iothub_client/samples/pnp/pnp_temperature_controller/* に移動します。
 1. *pnp_temperature_controller.c* ファイルを右クリックし、 **[Add Debug Configuration]\(デバッグ構成の追加\)** を選択します。 **[既定値]** を選択します。
 1. Visual Studio によって、*launch.vs.json* ファイルが開かれます。 このファイルを、次のスニペットに示すように編集して、必要な環境変数を設定します。 「[IoT プラグ アンド プレイのクイックスタートとチュートリアル用の環境の設定](set-up-environment.md)」を完了したときに、スコープ ID と登録プライマリ キーを書き留めました。
 

@@ -3,12 +3,12 @@ title: クラウドでの継続的なビデオ記録と再生に関するチュ�
 description: このチュートリアルでは、Azure Live Video Analytics on Azure IoT Edge を使用して、クラウドにビデオを継続的に記録し、Azure Media Services を使用してそのビデオの任意の部分をストリーム配信する方法について説明します。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 4333ceb9c02f39629e4bd06d3d9634b97bb2e2d7
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 7e8bf1202e95cb4e76b54473f9d84076d24accea
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91774030"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346368"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>チュートリアル:クラウドでの継続的なビデオ記録と再生
 
@@ -93,7 +93,7 @@ ms.locfileid: "91774030"
     IoT Hub 接続文字列を設定すると、Visual Studio Code を使用して Azure IoT Hub 経由でエッジ モジュールにコマンドを送信できます。
     
 1. 次に、src/edge フォルダーに移動して、 **.env** という名前のファイルを作成します。
-1. ~/clouddrive/lva-sample/.env ファイルの内容をコピーします。 このテキストは次のようになっています。
+1. ~/clouddrive/lva-sample/edge-deployment/.env ファイルの内容をコピーします。 このテキストは次のようになっています。
 
     ```
     SUBSCRIPTION_ID="<Subscription ID>"  
@@ -121,7 +121,7 @@ Visual Studio Code で、src/edge/deployment.template.json を開きます。 �
 
 * **c2d-console-app.csproj**:Visual Studio Code 用のプロジェクト ファイルです。
 * **operations.json**:このファイルには、実行できるさまざまな操作がリストされています。
-* **Program.cs**サンプル プログラム コードです。これは次のことを実行します。
+* **Program.cs** サンプル プログラム コードです。これは次のことを実行します。
     * アプリ設定を読み込みます。
     * Live Video Analytics on IoT Edge モジュールによって公開されているダイレクト メソッドを呼び出します。 このモジュールを使用して、その[ダイレクト メソッド](direct-methods.md)を呼び出すことで、ライブ ビデオ ストリームを分析できます。
     * プログラムからの出力を **[ターミナル]** ウィンドウで、またモジュールによって生成されたイベントを **[出力]** ウィンドウで詳しく調べることができるように一時停止します。
@@ -141,7 +141,7 @@ Visual Studio Code で、src/edge/deployment.template.json を開きます。 �
 1. src/edge/config/deployment.amd64.json ファイルを右クリックし、 **[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\)** を選択します。
 
    ![単一デバイスのデプロイを作成する](./media/quickstarts/create-deployment-single-device.png)
-1. その後、**IoT Hub デバイスを選択する**ように求められます。 ドロップダウン リストから lva-sample-device を選択します。
+1. その後、**IoT Hub デバイスを選択する** ように求められます。 ドロップダウン リストから lva-sample-device を選択します。
 1. 30 秒ほど経過したら、左下のセクションで Azure IoT Hub を更新します。 エッジ デバイスに次のモジュールがデプロイされたことがわかります。
     * Live Video Analytics on IoT Edge (モジュール名 **lvaEdge**)
     * RTSP シミュレーター (モジュール名: **rtspsim**)
@@ -164,11 +164,63 @@ Live Video Analytics on IoT Edge モジュールを使用して、ライブ ビ�
 1. マウスの右ボタンをクリックし、 **[拡張機能の設定]** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="メディア グラフ":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="拡張機能の設定":::
 1. [Show Verbose Message]\(詳細メッセージの表示\) を検索して有効にします。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="メディア グラフ"
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="詳細メッセージの表示":::
+1. <!--In Visual Studio Code, go-->src/cloud-to-device-console-app/operations.js に移動します。
+1. **GraphTopologySet** ノードで、次を編集します。
+
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
+1. 次に、**GraphInstanceSet** および **GraphTopologyDelete** のノードで、**topologyName** の値が、前のグラフ トポロジの **name** プロパティの値と一致していることを確認します。
+
+    `"topologyName" : "CVRToAMSAsset"`  
+1. ブラウザーでその[トポロジ](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json)を開き、assetNamePattern を確認します。 資産の名前を確実に一意にするために、operations.json ファイル内でグラフ インスタンスの名前を (既定値の "Sample-Graph-1" から) 変更することをお勧めします。
+
+    `"assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}"`    
+1. F5 キーを押して、デバッグ セッションを開始します。 **[ターミナル]** ウィンドウにいくつかのメッセージが出力されます。
+1. operations.json ファイルは、GraphTopologyList および GraphInstanceList の呼び出しで開始されます。 前回のクイックスタートまたはチュートリアルの後に、リソースをクリーンアップした場合は、このアクションによって空のリストが返された後、一時停止して、以下のように **Enter** キーの入力待ち状態になります。
+
+    ```
+    --------------------------------------------------------------------------
+    Executing operation GraphTopologyList
+    -----------------------  Request: GraphTopologyList  --------------------------------------------------
+    {
+      "@apiVersion": "1.0"
+    }
+    ---------------  Response: GraphTopologyList - Status: 200  ---------------
+    {
+      "value": []
+    }
+    --------------------------------------------------------------------------
+    Executing operation WaitForInput
+    Press Enter to continue
+    ```
+
+1. **[ターミナル]** ウィンドウで **Enter** キーを押すと、次に示す一連のダイレクト メソッド呼び出しが実行されます。
+   * 前の topologyUrl を使用した GraphTopologySet の呼び出し
+   * 次の本文を使用した GraphInstanceSet の呼び出し
+     
+     ```
+     {
+       "@apiVersion": "1.0",
+       "name": "Sample-Graph-1",
+       "properties": {
+         "topologyName": "CVRToAMSAsset",
+         "description": "Sample graph description",
+         "parameters": [
+           {
+             "name": "rtspUrl",
+             "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
+           },
+           {
+             "name": "rtspUserName",
+             "value": "testuser"
+           },
+           {
+             "name": "rtspPassword",
+             "value": "testpassword"
            }
          ]
        }

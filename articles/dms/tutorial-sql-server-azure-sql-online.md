@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/21/2020
-ms.openlocfilehash: 88aaa9ccf3d0c1319637036373463e2a93ccb649
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a34b0ae819f7bbb29a0004a89ea5417b52c127e
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291318"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392675"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>チュートリアル:DMS を使用して SQL Server を Azure SQL Database の単一データベースまたはプールされたデータベースにオンラインで移行する
 
@@ -68,7 +68,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 - 仮想ネットワークのネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への以下のインバウンド通信ポートが確実にブロックされないようにします。443、53、9354、445、12000。 Azure Virtual Network NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)に関する記事を参照してください。
 - [データベース エンジン アクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
-- Azure Database Migration Service がソースの SQL Server にアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 1433 が使用されます。
+- Azure Database Migration Service がソースの SQL Server にアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 1433 が使用されます。 使用している既定のインスタンスが他のポートでリッスンしている場合は、そのポートをファイアウォールに追加してください。
 - 動的ポートを使用して複数の名前付き SQL Server インスタンスを実行している場合は、SQL Browser サービスを有効にし、ファイアウォール経由の UDP ポート 1434 へのアクセスを許可することをお勧めします。これにより、Azure Database Migration Service はソース サーバー上の名前付きインスタンスに接続できるようになります。
 - ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
 - Azure SQL Database のサーバーレベルの[ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service がターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用する仮想ネットワークのサブネット範囲を指定します。
@@ -154,8 +154,8 @@ SQL Server インスタンスから Azure SQL Database にデータを移行す�
 
     評価では、Azure SQL Database の単一データベースまたはプールされたデータベースについて、単一データベースまたはプールされたデータベースへのデプロイでの機能パリティの問題と移行の障害となっている問題が特定されます。
 
-    - **SQL Server の機能類似性**カテゴリでは、幅広い推奨事項や、Azure で利用できる代替アプローチ、および移行プロジェクトの計画に役立つ移行手順を確認できます。
-    - **互換性問題**カテゴリでは、部分的にサポートされている機能やサポートされていない機能を確認できます。この情報は、SQL Server データベースから Azure SQL Database への移行を妨げる可能性がある互換性の問題を反映しています。 また、それらの問題への対処に役立つ推奨事項も確認できます。
+    - **SQL Server の機能類似性** カテゴリでは、幅広い推奨事項や、Azure で利用できる代替アプローチ、および移行プロジェクトの計画に役立つ移行手順を確認できます。
+    - **互換性問題** カテゴリでは、部分的にサポートされている機能やサポートされていない機能を確認できます。この情報は、SQL Server データベースから Azure SQL Database への移行を妨げる可能性がある互換性の問題を反映しています。 また、それらの問題への対処に役立つ推奨事項も確認できます。
 
 6. 特定のオプションを選択して、移行を妨げる問題と機能の類似性の問題についての評価結果をレビューします。
 
@@ -323,7 +323,7 @@ SQL Server インスタンスから Azure SQL Database にデータを移行す�
 
 1. 移行アクティビティ画面で、移行の **[状態]** が **[実行中]** になるまで **[最新の情報に更新]** を選択して表示を更新します。
 
-2. 特定のデータベースを選択して、**データ全体の読み込み**操作と**増分データ同期**操作の移行状態を取得します。
+2. 特定のデータベースを選択して、**データ全体の読み込み** 操作と **増分データ同期** 操作の移行状態を取得します。
 
     ![アクティビティの状態 - 進行中](media/tutorial-sql-server-to-azure-sql-online/dms-activity-in-progress.png)
 

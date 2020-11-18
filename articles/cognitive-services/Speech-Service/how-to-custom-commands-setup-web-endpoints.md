@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 7a8bdd911db82a07bfcdd1596b7a8203a19a6442
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 0e2406cd35fb2d4dd99da4f5139a9f0f80697912
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341959"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566250"
 ---
 # <a name="set-up-web-endpoints"></a>Web エンドポイントを設定する
 
@@ -125,14 +125,14 @@ ms.locfileid: "92341959"
     1. 以下の JSON を **[Activity Content]\(アクティビティ コンテンツ\)** にコピーする
    ```json
    {
-     "type": "event",
-     "name": "UpdateDeviceState",
-     "state": "{OnOff}",
-     "device": "{SubjectDevice}"
-   }
+      "type": "event",
+      "name": "UpdateDeviceState",
+      "value": {
+        "state": "{OnOff}",
+        "device": "{SubjectDevice}"
+      }
+    }
    ```
-    > [!div class="mx-imgBorder"]
-    > ![成功時にアクティビティを送信する](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-activity.png)
    
 これで、Web エンドポイントへの要求が成功した場合にのみ、アクティビティをクライアントに送信することになります。
 
@@ -207,3 +207,4 @@ private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs 
 
 > [!div class="nextstepaction"]
 > [Custom Commands アプリケーションをリモートのスキルとしてエクスポートする](./how-to-custom-commands-integrate-remote-skills.md)
+

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: f36836681e338c597c068a91a6d4bc011cce3511
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a73005580c9b7ddeae17e3e0490aa586bd9b0fbb
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206799"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335799"
 ---
 # <a name="tutorial-order-azure-data-box"></a>チュートリアル:Azure Data Box を注文する
 
@@ -123,7 +123,7 @@ Azure Data Box の拡張機能をインストールするには、`az extension 
 
 CLI コマンドは、Azure でホストされる対話型のシェル環境、[Azure Cloud Shell](https://shell.azure.com/) をブラウザーから使用して実行できます。 Azure サービスに関して、Azure Cloud Shell は Bash または Windows PowerShell をサポートします。 Azure CLI は、アカウントで使用できるように事前にインストールおよび構成されています。 Azure portal の右上のセクションのメニューで [Cloud Shell] ボタンを選択します。
 
-![Cloud Shell](../storage/common/media/storage-quickstart-create-account/cloud-shell-menu.png)
+![Cloud Shell メニューの選択](../storage/common/media/storage-quickstart-create-account/cloud-shell-menu.png)
 
 このボタンによって対話型のシェルが起動されます。このハウツー記事で説明する手順は、これを使って実行できます。
 
@@ -213,13 +213,13 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 デバイスを注文するには、Azure portal で次の手順を実行します。
 
 1. Microsoft Azure 資格情報を使用して、次の URL にサインインします。[https://portal.azure.com](https://portal.azure.com)
-2. **[+ リソースの作成]** を選択し、 *Azure Data Box* を検索します。 **[Azure Data Box]** を選択します。
+2. **[+ リソースの作成]** を選択し、*Azure Data Box* を検索します。 **[Azure Data Box]** を選択します。
 
-   ![[新規] セクションのスクリーンショット。検索フィールドに [Azure Data Box] と入っています。](media/data-box-deploy-ordered/select-data-box-import-02.png)
+   ![[新規] セクションのスクリーンショット。検索フィールドに「Azure Data Box」と入力されています](media/data-box-deploy-ordered/select-data-box-import-02.png)
 
 3. **［作成］** を選択します
 
-   ![[Azure Data Box] のスクリーンショット。[作成] オプションが呼び出されています。](media/data-box-deploy-ordered/select-data-box-import-03.png)
+   ![Azure Data Box のスクリーンショット。[作成] オプションが強調表示されています](media/data-box-deploy-ordered/select-data-box-import-03.png)
 
 4. ご利用のリージョンで Data Box サービスが利用可能かどうかを確認します。 次の情報を入力または選択し、 **[適用]** を選択します。
 
@@ -231,11 +231,11 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
     |ソースの国/地域    |    データが現在存在する国/地域を選択します。         |
     |宛先 Azure リージョン     |     データを転送する Azure リージョンを選択します。 <br> 詳細については、[利用可能なリージョン](data-box-overview.md#region-availability)に関する記事をご覧ください。            |
 
-    [![Azure Data Box のインポート注文](media/data-box-deploy-ordered/select-data-box-import-04b.png)](media/data-box-deploy-ordered/select-data-box-import-04b.png#lightbox)
+    [![Azure Data Box インポート注文の開始](media/data-box-deploy-ordered/select-data-box-import-04b.png)](media/data-box-deploy-ordered/select-data-box-import-04b.png#lightbox)
 
 5. **[Data Box]** を選択します。 1 つの注文での使用可能な最大容量は 80 TB です。 データ サイズがこれより大きい場合は、複数の注文を作成できます。
 
-    ![さまざまなデータ サイズのスクリーンショット。Data Box Disk 40 テラバイト、Data Box 100 テラバイト、Data Box Heavy、1000 テラバイト、自己所有ディスクの発送 1 テラバイトから選択できます。](media/data-box-deploy-ordered/select-data-box-import-05.png)
+    ![使用可能なデータ サイズ: Data Box Disk 40 テラバイト、Data Box 100 テラバイト、Data Box Heavy、1000 テラバイト、自己所有ディスクの発送 1 テラバイト](media/data-box-deploy-ordered/select-data-box-import-05.png)
 
 6. **[注文]** で、 **[基本]** タブに移動します。次の情報を入力または選択し、 **[次へ: データの格納先 >]** を選択します。
 
@@ -245,7 +245,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
     |Resource group    | 前に選択したリソース グループ。 |
     |Import order name (インポート注文名) | 注文を追跡するためのフレンドリ名を指定します。 <br> 名前の長さは 3 ～ 24 文字で、文字、数字、ハイフンを使うことができます。 <br> 名前の最初と最後は、文字か数字とする必要があります。    |
 
-    ![[注文] ウィザードのスクリーンショット。ウィザードの [基本] 手順が表示されています。正しい情報が入力されています。](media/data-box-deploy-ordered/select-data-box-import-06.png)
+    ![Data Box インポート注文ウィザードの [基本] 画面、正しい情報が入力された状態](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
     既定では、デバイスのロック解除パスワードは、Microsoft マネージド キーを使用して暗号化されます。 注文が完了したら、カスタマー マネージド キーを追加できます。 カスタマー マネージド キーを使用すると、独自の Azure Key Vault キーを使用して、デバイスのロック解除パスワードを保護できます。 詳細については、「[Azure Key Vault のカスタマー マネージド キーを Azure Data Box に使用する](data-box-customer-managed-encryption-key-portal.md)」を参照してください。
 
@@ -253,9 +253,9 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 
     格納先として **ストレージ アカウント** を使用している場合は、以下のようなスクリーンショットが表示されます。
 
-    ![Azure Data Box のデータの格納先](media/data-box-deploy-ordered/select-data-box-import-07.png)
+    ![Data Box インポート注文ウィザードの [データの格納先] 画面。ストレージ アカウントが選択されています](media/data-box-deploy-ordered/select-data-box-import-07.png)
 
-    指定した Azure リージョンに基づいて、既存のストレージ アカウントのフィルター処理された一覧から 1 つまたは複数のストレージ アカウントを選択します。 Data Box は、最大 10 個のストレージ アカウントにリンクできます。 新しい **汎用 v1 アカウント** 、 **汎用 v2 アカウント** 、または **Blob Storage アカウント** を作成することもできます。
+    指定した Azure リージョンに基づいて、既存のストレージ アカウントのフィルター処理された一覧から 1 つまたは複数のストレージ アカウントを選択します。 Data Box は、最大 10 個のストレージ アカウントにリンクできます。 新しい **汎用 v1 アカウント**、**汎用 v2 アカウント**、または **Blob Storage アカウント** を作成することもできます。
 
     仮想ネットワークに対するストレージ アカウントがサポートされます。 セキュリティで保護されたストレージ アカウントと Data Box サービスとを連携させるには、ストレージ アカウントのネットワーク ファイアウォール設定内で、信頼できるサービスを有効にします。 詳細については、[Azure Data Box を信頼できるサービスとして追加する](../storage/common/storage-network-security.md#exceptions)方法を参照してください。
 
@@ -265,7 +265,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
     |---------|---------|
     |リソース グループ     | オンプレミスの VHD からマネージド ディスクを作成する場合は、新しい リソース グループを作成します。 既存のリソース グループを使用できるのは、Data Box サービスでマネージド ディスクの Data Box 注文を作成するときに、そのリソース グループがすでに作成されていた場合に限られます。 <br> 複数のリソース グループを指定するときは、各リソース グループをセミコロンで区切ります。 サポートされるリソース グループは、最大 10 個です。|
 
-    ![[注文] ウィザードのスクリーンショット。ウィザードの [データの格納先] 手順が表示されています。正しい情報が入力されています。](media/data-box-deploy-ordered/select-data-box-import-07b.png)
+    ![Data Box のインポート注文ウィザードの [データの格納先] 画面。Managed Disks が選択されています](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     マネージド ディスクに指定されたストレージ アカウントは、ステージング ストレージ アカウントとして使用されます。 VHD は、Data Box サービスにより、ページ BLOB としてステージング ストレージ アカウントにアップロードされた後、マネージド ディスクに変換され、リソース グループに移動されます。 詳細については、「[Azure へのデータのアップロードを確認する](data-box-deploy-picked-up.md#verify-data-upload-to-azure)」を参照してください。
    > [!NOTE]
@@ -277,23 +277,23 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 
     **[セキュリティ]** 画面の設定はすべてオプションです。 設定を変更しない場合は、既定の設定が適用されます。
 
-    ![Data Box インポート注文の [セキュリティ] 画面](media/data-box-deploy-ordered/select-data-box-import-security-01.png)
+    ![Data Box インポート注文ウィザードの [セキュリティ] 画面](media/data-box-deploy-ordered/select-data-box-import-security-01.png)
 
-1. Azure Data Box で既定で使用される、システムによって生成されるパスワードを使用したくない場合は、 **[Bring your own password]\(独自のパスワードを使用する\)** を展開します。
+8. Azure Data Box で既定で使用される、システムによって生成されるパスワードを使用したくない場合は、 **[Bring your own password]\(独自のパスワードを使用する\)** を展開します。
 
    システムによって生成されるパスワードは安全であるため、組織で特に必要な場合を除いて推奨されます。
 
-   ![Data Box インポート注文の展開された [Bring your own password]\(独自のパスワードを使用する\) オプション](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
+   ![Data Box インポート注文の [Security]\(セキュリティ\) 画面。[Bring your own password]\(独自のパスワードを使用する\) オプションが展開されています](media/data-box-deploy-ordered/select-data-box-import-security-02.png)
 
    - 新しいデバイスに独自のパスワードを使用するには、 **[Set preference for the device password]\(デバイス パスワードの基本設定の設定\)** で、 **[Use your own password]\(独自のパスワードを使用する\)** を選択し、セキュリティ要件を満たすパスワードを入力します。
    
-     ![Data Box インポートの [セキュリティ] 画面。独自のデバイス パスワードを使用するためのオプション](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
+     ![Data Box インポート注文の [Security]\(セキュリティ\) 画面。独自のデバイス パスワードを使用するためのオプション](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
 
    - 共有に独自のパスワードを使用するには:
 
      1. **[Set preference for the share passwords]\(共有パスワードの基本設定の設定\)** で、 **[Use your own passwords]\(独自のパスワードを使用する\)** を選択し、次に **共有のパスワードを選択** します。
      
-        ![Data Box インポートの [セキュリティ] 画面。独自の共有パスワードを使用するためのオプション](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
+        ![Data Box インポート注文の [Security]\(セキュリティ\) 画面。共有に独自のパスワードを使用するためのオプション](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
 
      1. 注文内の各ストレージ アカウントのパスワードを入力します。 パスワードは、ストレージ アカウントのすべての共有で使用されます。
      
@@ -301,11 +301,11 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
      
         ![Data Box のインポート注文の共有パスワードを入力するための画面](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
 
-       **[セキュリティ]** 画面で、 **[View of change passwords]\(変更パスワードの表示\)** を使用してパスワードを変更できます。
+       **[セキュリティ]** 画面で、 **[View or change passwords]\(パスワードの表示または変更\)** を使用してパスワードを変更できます。
 
-1. **[セキュリティ]** で、ソフトウェアベースの二重暗号化を有効にしたい場合は、 **[Double-encryption (for highly secure environments)]\(二重暗号化 (高度にセキュリティ保護された環境用)\)** を展開し、 **[Enable double encryption for the order]\(この注文に関して二重暗号化を有効にする\)** を選択します。
+9. **[セキュリティ]** で、ソフトウェアベースの二重暗号化を有効にしたい場合は、 **[Double-encryption (for highly secure environments)]\(二重暗号化 (高度にセキュリティ保護された環境用)\)** を展開し、 **[Enable double encryption for the order]\(この注文に関して二重暗号化を有効にする\)** を選択します。
 
-   ![Data Box のインポート注文の [セキュリティ] 画面。Data Box 注文に対してソフトウェアベースの暗号化を有効にする](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
+   ![Data Box インポート注文の [Security]\(セキュリティ\) 画面。ソフトウェアベースの暗号化を有効にするためのオプション](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
 
    Data Box 上のデータに対し、AES-256 ビットの暗号化に加えて、ソフトウェアベースの暗号化が実行されます。
 
@@ -314,29 +314,29 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 
    **[Next:連絡先の詳細]** を選択して続行します。
 
-8. **[連絡先の詳細]** で、 **[+ 配送先住所の追加]** を選択します。
+10. **[連絡先の詳細]** で、 **[+ 配送先住所の追加]** を選択します。
 
-    ![[注文] ウィザードのスクリーンショット。ウィザードの [連絡先の詳細] 手順が表示されています。[配送先住所の追加] オプションが強調表示されています。](media/data-box-deploy-ordered/select-data-box-import-08a.png)
+    ![[連絡先の詳細] 画面から、Azure Data Box インポート注文に配送先住所を追加します](media/data-box-deploy-ordered/select-data-box-import-08a.png)
 
-9. **[配送先住所]** に、お客様の氏名、会社の名前と郵送先住所、および有効な電話番号を入力します。 **[住所の確認]** を選択します。 配送先住所でサービスが利用可能かどうかが確認されます。 指定した配送先住所でサービスを利用できる場合は、その旨が通知されます。
+11. **[Shipping Address]\(配送先住所\)** に、お客様の氏名、会社の名前と郵送先住所、および有効な電話番号を入力します。 次に、 **[住所の確認]** を選択します。 その住所でサービスが利用可能かどうかが確認されます。 その配送先住所でサービスを利用できる場合は、その旨が通知されます。
 
-   ![[配送先住所の追加] ダイアログ ボックスのスクリーンショット。[出荷方法] オプションと [配送先住所の追加] オプションが強調表示されています。](media/data-box-deploy-ordered/select-data-box-import-10.png)
+     ![[配送先住所の追加] ダイアログ ボックス。[出荷方法] オプションと [配送先住所の追加] オプションが強調表示されています](media/data-box-deploy-ordered/select-data-box-import-10.png)
 
-   [自己管理の出荷] を選択した場合、注文が正常に処理されると電子メール通知が届きます。 自己管理の出荷の詳細については、[自己管理の出荷の使用](data-box-portal-customer-managed-shipping.md)に関するページをご覧ください。
+    [自己管理の出荷] を選択した場合、注文が正常に処理されると電子メール通知が届きます。 自己管理の出荷の詳細については、[自己管理の出荷の使用](data-box-portal-customer-managed-shipping.md)に関するページをご覧ください。
 
-10. 配送の詳細が正常に検証されたら、 **[配送先住所の追加]** を選択します。 **[連絡先の詳細]** タブが再び表示されます。
+12. 配送の詳細が正常に検証されたら、 **[配送先住所の追加]** を選択します。 **[連絡先の詳細]** タブが再び表示されます。
 
-11. **[連絡先の詳細]** に戻ったら、1 つまたは複数のメール アドレスを追加します。 指定した電子メール アドレスに、注文の状態の更新に関する電子メール通知が送信されます。
+13. **[連絡先の詳細]** に戻ったら、1 つまたは複数のメール アドレスを追加します。 指定した電子メール アドレスに、注文の状態の更新に関する電子メール通知が送信されます。
 
     グループの管理者が辞めた場合も引き続き通知を受け取ることができるように、グループ メールを使用することをお勧めします。
 
-    ![[注文] ウィザードの [連絡先の詳細] 手順の [電子メール] セクションのスクリーンショット。[電子メール] テキスト ボックスと [次へ: 確認と注文] オプションが選択されています。](media/data-box-deploy-ordered/select-data-box-import-08c.png)
+    ![注文ウィザードの [連絡先の詳細] のメール セクション](media/data-box-deploy-ordered/select-data-box-import-08c.png)
 
 12. **[確認と注文]** で、注文、連絡先、通知、プライバシー条項に関する情報を確認します。 プライバシー条項への同意に対応するボックスをオンにします。
 
 13. **[注文]** を選択します。 注文が作成されるまで数分かかります。
 
-    ![[注文] ウィザードのスクリーンショット。[確認と注文] 手順が表示されています。[注文] オプションが強調表示されています。](media/data-box-deploy-ordered/select-data-box-import-11.png)
+    ![注文ウィザードの [確認と注文] 画面](media/data-box-deploy-ordered/select-data-box-import-11.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -526,11 +526,11 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 
 デバイスの準備が完了すると、ポータルでは、注文が **[処理済み]** 状態で表示されます。
 
-![処理された Data Box の注文](media/data-box-overview/data-box-order-status-processed.png)
+![処理済みの Data Box の注文](media/data-box-overview/data-box-order-status-processed.png)
 
-次に、Microsoft は、デバイスを準備して地域の運送業者を通じて発送します。 デバイスが出荷されると、お客様に追跡番号が送信されます。 ポータルには、 **出荷済み** 状態の注文が表示されます。
+次に、Microsoft は、デバイスを準備して地域の運送業者を通じて発送します。 デバイスが出荷されると、お客様に追跡番号が送信されます。 ポータルには、**出荷済み** 状態の注文が表示されます。
 
-![発送された Data Box の注文](media/data-box-overview/data-box-order-status-dispatched.png)
+![発送済みの Data Box の注文](media/data-box-overview/data-box-order-status-dispatched.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
