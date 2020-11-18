@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 97541a4f8d86b90bf6045fc2a9e5abbe86aee5cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c322620e1d66182937be41bb02d48fd1469f459
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88717338"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697562"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>メトリック、アラート、およびリソース正常性を使用した Standard Load Balancer の診断
 
 Azure Standard Load Balancer では、次の診断機能が公開されています。
 
-* **多次元メトリックおよびアラート**: Standard Load Balancer 構成用に、[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) を介して多次元診断機能が提供されています。 ご利用の Standard Load Balancer リソースの監視、管理、トラブルシューティングを行うことができます。
+* **多次元メトリックおよびアラート**: Standard Load Balancer 構成用に、[Azure Monitor](../azure-monitor/overview.md) を介して多次元診断機能が提供されています。 ご利用の Standard Load Balancer リソースの監視、管理、トラブルシューティングを行うことができます。
 
 * **[リソース正常性]** :Load Balancer の Resource Health の状態は、[監視] にある [Resource Health] ページで確認できます。 この自動チェックによって、Load Balancer リソースの現在の可用性が通知されます。
 
@@ -70,7 +70,7 @@ Standard Load Balancer リソースのメトリックを表示するには:
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>API を使用してプログラムで多次元メトリックを取得する
 
-多次元メトリックの定義と値を取得するための API のガイダンスについては、「[Azure 監視 REST API のチュートリアル](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api)」をご覧ください。 これらのメトリックは、"すべてのメトリック" オプションのみを使用してストレージ アカウントに書き込むことができます。 
+多次元メトリックの定義と値を取得するための API のガイダンスについては、「[Azure 監視 REST API のチュートリアル](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api)」をご覧ください。 これらのメトリックは、"すべてのメトリック" オプションのみを使用してストレージ アカウントに書き込むことができます。 
 
 ### <a name="configure-alerts-for-multi-dimensional-metrics"></a>多次元メトリックのアラートを構成する ###
 
@@ -84,7 +84,7 @@ Azure Standard Load Balancer では、多次元メトリックの簡単に構成
     1.  アラートの重大度、名前、直感的な反応を可能にする説明を割り当てます。
 
   >[!NOTE]
-  >アラートの条件の構成ウィンドウには、シグナル履歴の時系列が表示されます。 この時系列をバックエンド IP などのディメンションでフィルター処理するためのオプションがあります。 これにより、アラート自体**ではなく**、時系列グラフがフィルター処理されます。 アラートを特定のバックエンド IP アドレスに対して構成することはできません。
+  >アラートの条件の構成ウィンドウには、シグナル履歴の時系列が表示されます。 この時系列をバックエンド IP などのディメンションでフィルター処理するためのオプションがあります。 これにより、アラート自体 **ではなく**、時系列グラフがフィルター処理されます。 アラートを特定のバックエンド IP アドレスに対して構成することはできません。
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>一般的な診断シナリオと推奨されるビュー
 
@@ -116,7 +116,7 @@ Standard Load Balancer リソースのデータ パスの可用性を取得す�
 
 診断の目的で、[データ パスの可用性メトリックと共に正常性プローブの状態](#vipavailabilityandhealthprobes)を使うことができます。
 
-ほとんどのシナリオでは集計として**平均**を使います。
+ほとんどのシナリオでは集計として **平均** を使います。
 </details>
 
 #### <a name="are-the-backend-instances-for-my-load-balancer-responding-to-probes"></a>Load Balancer のバックエンド インスタンスはプローブに応答しているか?
@@ -132,15 +132,15 @@ Standard Load Balancer リソースの正常性プローブの状態を取得す
 - リッスンしていないポート、応答していないポート、または正しくないプロトコルを使用しているポートに対して、正常性プローブを構成している。 サービスが Direct Server Return (DSR、またはフローティング IP) ルールを使っている場合は、サービスが、フロントエンド IP アドレスで構成されたループバックだけでなく、NIC の IP 構成の IP アドレスでリッスンしていることを確認します。
 - プローブが、ネットワーク セキュリティ グループ、VM のゲスト OS のファイアウォール、またはアプリケーション レイヤーのフィルターによって許可されていない。
 
-ほとんどのシナリオでは集計として**平均**を使います。
+ほとんどのシナリオでは集計として **平均** を使います。
 </details>
 
 #### <a name="how-do-i-check-my-outbound-connection-statistics"></a>送信接続の統計情報を確認する方法 
 <details>
   <summary>expand</summary>
-SNAT 接続メトリックは、([送信フロー](https://aka.ms/lboutbound)の) 接続の成功と失敗の量を示します。
+SNAT 接続メトリックは、([送信フロー](./load-balancer-outbound-connections.md)の) 接続の成功と失敗の量を示します。
 
-失敗した接続の量が 0 より大きい場合は、SNAT ポートが不足していることを示します。 さらに詳しく調査し、このようなエラーの原因を特定する必要があります。 SNAT ポートの不足は、[送信フロー](https://aka.ms/lboutbound)確立の失敗として示されます。 シナリオおよび動作メカニズムを理解し、SNAT ポートの不足を軽減する方法または回避する設計の方法を学習するには、送信接続に関する記事をご覧ください。 
+失敗した接続の量が 0 より大きい場合は、SNAT ポートが不足していることを示します。 さらに詳しく調査し、このようなエラーの原因を特定する必要があります。 SNAT ポートの不足は、[送信フロー](./load-balancer-outbound-connections.md)確立の失敗として示されます。 シナリオおよび動作メカニズムを理解し、SNAT ポートの不足を軽減する方法または回避する設計の方法を学習するには、送信接続に関する記事をご覧ください。 
 
 SNAT 接続の統計情報を取得するには:
 1. トリックの種類として **[SNAT Connections]\(SNAT 接続\)** を、集計として **[合計]** を選択します。 
@@ -157,14 +157,14 @@ SNAT 接続の統計情報を取得するには:
   <summary>expand</summary>
 [使用された SNAT ポート] メトリックでは、送信フローを保持するために使用されている SNAT ポートの数が追跡されます。 これは、インターネット ソースと、ロード バランサーの背後にあり、パブリック IP アドレスを持たないバックエンド VM または仮想マシン スケール セットの間で確立された一意のフローの数を示します。 使用している SNAT の数と割り当てられた SNAT ポート メトリックを比較すると、サービスで SNAT 不足が発生しているか、またはそのリスクがあるか、および結果の送信フローで障害が発生しているかどうかを判断できます。 
 
-メトリックが[送信フロー](https://aka.ms/lboutbound)障害のリスクを示している場合は、サービスの正常性を確保するために、こちらの記事を参照し、この問題を軽減するための手順を実行してください。
+メトリックが[送信フロー](./load-balancer-outbound-connections.md)障害のリスクを示している場合は、サービスの正常性を確保するために、こちらの記事を参照し、この問題を軽減するための手順を実行してください。
 
 SNAT ポートの使用状況と割り当てを確認するには:
 1. グラフの時間の集計を 1 分に設定して、目的のデータが表示されるようにします。
 1. メトリックの種類として **[使用された SNAT ポート]** および/または **[割り当てられた SNAT ポート]** を選択し、集計として **[平均]** を選択します。
     * 既定では、これらのメトリックは、各バックエンド VM または VMSS に割り当てられた、またはこれらが使用している SNAT ポートの平均数です。これは、ロード バランサーにマップされたすべてのフロントエンド パブリック IP に対応し、TCP と UDP で集計されます。
     * ロード バランサーが使用している、またはロード バランサーに割り当てられた SNAT ポートの合計数を確認するには、メトリック集計の **[Sum]\(合計\)** を使用します。
-1. フィルター処理によって、特定の**プロトコルの種類**、一連の**バックエンド IP**、および/または**フロントエンド IP** に絞り込みます。
+1. フィルター処理によって、特定の **プロトコルの種類**、一連の **バックエンド IP**、および/または **フロントエンド IP** に絞り込みます。
 1. バックエンドまたはフロントエンド インスタンスごとに正常性を監視するには、分割を適用します。 
     * 分割では、一度に 1 つのメトリックしか表示できないので注意してください。 
 1. たとえば、コンピューターごとに TCP フローの SNAT 使用状況を監視するには、 **[平均]** で集計し、 **[Backend IPs]\(バックエンド IP\)** で分割し、 **[プロトコルの種類]** でフィルター処理します。 
@@ -181,9 +181,9 @@ SNAT ポートの使用状況と割り当てを確認するには:
 #### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>サービスに対する受信/送信接続の試行を確認する方法
 <details>
   <summary>expand</summary>
-SYN パケット メトリックは、特定のフロントエンドに関連付けられている、到着した TCP SYN パケットまたは送信された TCP SYN パケット ([送信フロー](https://aka.ms/lboutbound)の場合) の量を示します。 このメトリックを使用して、サービスへの TCP 接続の試行を把握できます。
+SYN パケット メトリックは、特定のフロントエンドに関連付けられている、到着した TCP SYN パケットまたは送信された TCP SYN パケット ([送信フロー](./load-balancer-outbound-connections.md)の場合) の量を示します。 このメトリックを使用して、サービスへの TCP 接続の試行を把握できます。
 
-ほとんどのシナリオでは、集計として**合計**を使います。
+ほとんどのシナリオでは、集計として **合計** を使います。
 
 ![SYN 接続](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
@@ -196,7 +196,7 @@ SYN パケット メトリックは、特定のフロントエンドに関連付
   <summary>expand</summary>
 バイト カウンターおよびパケット カウンターのメトリックは、フロントエンドごとにサービスによって送信または受信されたバイトおよびパケットの量を示します。
 
-ほとんどのシナリオでは、集計として**合計**を使います。
+ほとんどのシナリオでは、集計として **合計** を使います。
 
 バイト数またはパケット数の統計情報を取得するには:
 1. メトリックの種類として **[Bytes Count]\(バイト数\)** および **[Packet Count]\(パケット数\)** 、またはその両方を、集計として **[平均]** を選択します。 
@@ -252,7 +252,7 @@ Standard Load Balancer リソースの正常性状態は、 **[Monitor]\(監視\
 
    *図:Load Balancer リソースの正常性ビュー*
  
-一般的なリソースの正常性状態については、[RHC のドキュメント](https://docs.microsoft.com/azure/service-health/resource-health-overview)を参照してください。 Azure Load Balancer の特定の状態については、次の表を参照してください。 
+一般的なリソースの正常性状態については、[RHC のドキュメント](../service-health/resource-health-overview.md)を参照してください。 Azure Load Balancer の特定の状態については、次の表を参照してください。 
 
 | リソースの正常性状態 | 説明 |
 | --- | --- |
@@ -263,7 +263,7 @@ Standard Load Balancer リソースの正常性状態は、 **[Monitor]\(監視\
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Standard Load Balancer](load-balancer-standard-overview.md) の詳細を確認する。
-- [ロード バランサーの送信接続](https://aka.ms/lboutbound)の詳細を確認します。
-- [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) について学習する。
-- [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) および [REST API を使用してメトリックを取得する方法](/rest/api/monitor/metrics/list)を学習する。
+- [Standard Load Balancer](./load-balancer-overview.md) の詳細を確認する。
+- [ロード バランサーの送信接続](./load-balancer-outbound-connections.md)の詳細を確認します。
+- [Azure Monitor](../azure-monitor/overview.md) について学習する。
+- [Azure Monitor REST API](/rest/api/monitor/) および [REST API を使用してメトリックを取得する方法](/rest/api/monitor/metrics/list)を学習する。

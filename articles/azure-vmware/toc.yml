@@ -44,6 +44,8 @@
       href: concepts-identity.md
     - name: ロールベースのアクセス制御
       href: concepts-role-based-access-control.md
+    - name: プライベート クラウドのモニターと修復
+      href: concepts-monitor-repair-private-cloud.md
     - name: プライベート クラウドのアップグレード
       href: concepts-upgrades.md
 - name: 操作方法ガイド

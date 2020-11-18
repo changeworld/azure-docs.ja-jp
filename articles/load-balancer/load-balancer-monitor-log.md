@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 42ec5a661bd7b42ba5de5bfa99b3898291cc60fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f24ab2c646757f0241748336243b0d5f977d081c
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935604"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698327"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>パブリック Basic ロード バランサーの Azure Monitor ログ
 
 Azure の各種ログを使用して、Basic Load Balancer の管理やトラブルシューティングを行うことができます。 一部のログにはポータルからアクセスできます。 ログは、イベント ハブまたは Log Analytics ワークスペースにストリーム配信できます。 どのログも Azure Blob Storage から抽出し、Excel や Power BI などのさまざまなツールで表示できます。  各種ログの詳細については、以下の一覧を参照してください。
 
-* **アクティビティ ログ:** 「[リソースのアクションを監視するアクティビティ ログの表示](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)」を使用して、Azure サブスクリプションに送信されているすべてのアクティビティとそれらの状態を表示できます。 アクティビティ ログは既定で有効になっており、Azure portal で表示できます。
+* **アクティビティ ログ:** 「[リソースのアクションを監視するアクティビティ ログの表示](../azure-resource-manager/management/view-activity-logs.md)」を使用して、Azure サブスクリプションに送信されているすべてのアクティビティとそれらの状態を表示できます。 アクティビティ ログは既定で有効になっており、Azure portal で表示できます。
 * **アラート イベント ログ:** ロード バランサーによって生成されたアラートは、このログで確認できます。 ロード バランサーの状態は 5 分ごとに収集されます。 このログは、ロード バランサーのアラート イベントが発生した場合にのみ書き込まれます。
 * **正常性プローブ ログ:** 正常性プローブによって検出された問題 (バックエンド プールの中で、正常性プローブの障害が原因でロード バランサーから要求を受信していないインスタンスの数など) は、このログで確認できます。 このログは、正常性プローブの状態に変化があったときに書き込まれます。
 
@@ -35,7 +35,7 @@ Azure の各種ログを使用して、Basic Load Balancer の管理やトラブ
 
 アクティビティ ログは、Resource Manager のすべてのリソースで自動的に有効になります。 イベント ログと正常性プローブ ログでデータの収集を開始するには、これらのログを有効にします。 ログ記録を有効にするには、次の手順に従います。
 
-[Azure portal](https://portal.azure.com) にサインインします。 ロード バランサーをまだ作成していない場合は、先に進む前に [ロード バランサーを作成](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) します。
+[Azure portal](https://portal.azure.com) にサインインします。 ロード バランサーをまだ作成していない場合は、先に進む前に [ロード バランサーを作成](./quickstart-load-balancer-standard-public-portal.md) します。
 
 1. ポータルで、 **[リソース グループ]** をクリックします。
 2. ロード バランサーがある **\<resource-group-name>** を選択します。
@@ -49,29 +49,29 @@ Azure の各種ログを使用して、Basic Load Balancer の管理やトラブ
    * **Log Analytics への送信**
 
     ### <a name="archive-to-a-storage-account"></a>ストレージ アカウントへのアーカイブ
-    このプロセス用に既に作成されているストレージ アカウントが必要になります。  ストレージ アカウントを作成する場合は、「[ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)」を参照してください
+    このプロセス用に既に作成されているストレージ アカウントが必要になります。  ストレージ アカウントを作成する場合は、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md?tabs=azure-portal)」を参照してください
 
     1. **[ストレージ アカウントへのアーカイブ]** の横のチェックボックスをオンにします。
     2. **[構成]** を選択して、 **[ストレージ アカウントの選択]** ウィンドウを開きます。
-    3. プルダウン ボックスで、ストレージ アカウントが作成された**サブスクリプション**を選択します。
+    3. プルダウン ボックスで、ストレージ アカウントが作成された **サブスクリプション** を選択します。
     4. プルダウン ボックスの **[ストレージ アカウント]** で、ストレージ アカウントの名前を選択します。
     5. [OK] を選択します。
 
     ### <a name="stream-to-an-event-hub"></a>イベント ハブへのストリーミング
-    このプロセス用に既に作成されているイベント ハブが必要になります。  イベント ハブを作成するには、「[クイックスタート:Azure portal を使用したイベント ハブの作成](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)」を参照してください
+    このプロセス用に既に作成されているイベント ハブが必要になります。  イベント ハブを作成するには、「[クイックスタート:Azure portal を使用したイベント ハブの作成](../event-hubs/event-hubs-create.md)」を参照してください
 
     1. **[イベント ハブへのストリーム]** の横にあるチェックボックスをオンにします
     2. **[構成]** を選択して、 **[イベント ハブの選択]** ウィンドウを開きます。
-    3. プルダウン ボックスで、イベント ハブが作成された**サブスクリプション**を選択します。
+    3. プルダウン ボックスで、イベント ハブが作成された **サブスクリプション** を選択します。
     4. プルダウン ボックスで **[イベント ハブの名前空間の選択]** を選択します。
     5. プルダウン ボックスで **[イベント ハブ ポリシー名の選択]** を選択します。
     6. [OK] を選択します。
 
     ### <a name="send-to-log-analytics"></a>Log Analytics への送信
-    このプロセスでは、Log Analytics ワークスペースが既に作成され、構成されている必要があります。  Log Analytics ワークスペースを作成するには、「[Azure portal で Log Analytics ワークスペースを作成する](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)」を参照してください
+    このプロセスでは、Log Analytics ワークスペースが既に作成され、構成されている必要があります。  Log Analytics ワークスペースを作成するには、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)」を参照してください
 
     1. **[Log Analytics への送信]** の横のチェックボックスをオンにします。
-    2. プルダウン ボックスで、Log Analytics ワークスペースがある**サブスクリプション**を選択します。
+    2. プルダウン ボックスで、Log Analytics ワークスペースがある **サブスクリプション** を選択します。
     3. プルダウン ボックスで、 **[Log Analytics ワークスペース]** を選択します。
 
 
@@ -86,7 +86,7 @@ Azure の各種ログを使用して、Basic Load Balancer の管理やトラブ
 
 ## <a name="activity-log"></a>アクティビティ ログ
 
-アクティビティ ログは既定で生成されます。 ログは、Azure のイベント ログ ストアに 90 日間保存されます。 これらのログについて詳しくは、「[リソースのアクションを監視するアクティビティ ログの表示](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)」を参照してください。
+アクティビティ ログは既定で生成されます。 ログは、Azure のイベント ログ ストアに 90 日間保存されます。 これらのログについて詳しくは、「[リソースのアクションを監視するアクティビティ ログの表示](../azure-resource-manager/management/view-activity-logs.md)」を参照してください。
 
 ## <a name="archive-to-storage-account-logs"></a>ストレージ アカウント ログへのアーカイブ
 
@@ -171,7 +171,7 @@ JSON 形式の出力でプロパティ フィールドを見れば、プロー�
 診断情報がイベント ハブにストリーム配信されたら、Azure Monitor 統合を使用して、サードパーティ製の SIEM ツールで集中ログ分析に使用できます。 詳しくは、「[イベント ハブへの Azure 監視データのストリーム配信](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)」を参照してください
 
 ## <a name="send-to-log-analytics"></a>Log Analytics への送信
-Azure 内のリソースは、Log Analytics ワークスペースに直接送信される診断情報を持つことができます。このワークスペースでは、トラブルシューティングと分析のために情報に対して複雑なクエリを実行できます。  詳しくは、「[Azure Monitor の Log Analytics ワークスペースで Azure リソース ログを収集する](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace)」を参照してください
+Azure 内のリソースは、Log Analytics ワークスペースに直接送信される診断情報を持つことができます。このワークスペースでは、トラブルシューティングと分析のために情報に対して複雑なクエリを実行できます。  詳しくは、「[Azure Monitor の Log Analytics ワークスペースで Azure リソース ログを収集する](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)」を参照してください
 
 ## <a name="next-steps"></a>次のステップ
 

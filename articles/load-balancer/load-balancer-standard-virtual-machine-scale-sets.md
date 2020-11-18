@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: irenehua
-ms.openlocfilehash: 41f1d6c18eab35bd1a41d4cfa98d0cbda69b35ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdca40d5113f06d185255be2e237cb52b47e9793
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88650334"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697443"
 ---
 # <a name="azure-load-balancer-with-azure-virtual-machine-scale-sets"></a>Azure Virtual Machine Scale Sets と Azure Load Balancer
 
@@ -54,6 +54,6 @@ ms.locfileid: "88650334"
 
 既存の Azure Load Balancer で仮想マシン スケール セットをデプロイするには、次の方法を使用できます。
 
-* [Azure portal を使用して、既存の Azure Load Balancer で仮想マシン スケール セットを構成する](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-portal)。
-* [Azure PowerShell を使用して、既存の Azure Load Balancer で仮想マシン スケール セットを構成する](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-powershell)。
-* [Azure CLI を使用して、既存の Azure Load Balancer で仮想マシン スケール セットを構成する](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-cli)。
+* [Azure portal を使用して、既存の Azure Load Balancer で仮想マシン スケール セットを構成する](./configure-vm-scale-set-portal.md)。
+* [Azure PowerShell を使用して、既存の Azure Load Balancer で仮想マシン スケール セットを構成する](./configure-vm-scale-set-powershell.md)。
+* [Azure CLI を使用して、既存の Azure Load Balancer で仮想マシン スケール セットを構成する](./configure-vm-scale-set-cli.md)。

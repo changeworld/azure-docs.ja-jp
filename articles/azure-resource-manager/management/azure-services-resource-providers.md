@@ -2,13 +2,13 @@
 title: Azure サービス別のリソース プロバイダー
 description: Azure Resource Manager のすべてのリソース プロバイダー名前空間を一覧表示し、その名前空間の Azure サービスを示します。
 ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: f9e31f902d36cf84fc559337f3c69529cf1c014b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 11/17/2020
+ms.openlocfilehash: c447a08b4422929f042315370b5888f3db0626e4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949124"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697732"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure サービスのリソース プロバイダー
 
@@ -39,9 +39,9 @@ ms.locfileid: "91949124"
 | Microsoft.Batch | [Batch](../../batch/index.yml) |
 | Microsoft.Billing<sup>1</sup> | [Cost Management と Billing](/azure/billing/) |
 | Microsoft.BingMaps | [Bing Maps](/BingMaps/#pivot=main&panel=BingMapsAPI) |
-| Microsoft.Blockchain | [Azure Blockchain サービス](../../blockchain/workbench/index.yml) |
+| Microsoft.Blockchain | [Azure Blockchain Service](../../blockchain/workbench/index.yml) |
 | Microsoft.BlockchainTokens | [Azure Blockchain Tokens](https://azure.microsoft.com/services/blockchain-tokens/) |
-| Microsoft.Blueprint | [Azure Blueprints](../../governance/blueprints/index.yml) |
+| Microsoft.Blueprint | [Azure Blueprint](../../governance/blueprints/index.yml) |
 | Microsoft.BotService | [Azure Bot Service](/azure/bot-service/) |
 | Microsoft.Cache | [Azure Cache for Redis](../../azure-cache-for-redis/index.yml) |
 | Microsoft.Capacity | core |
@@ -58,7 +58,7 @@ ms.locfileid: "91949124"
 | Microsoft.Compute | [Virtual Machines](../../virtual-machines/index.yml)<br />[Virtual Machine Scale Sets](../../virtual-machine-scale-sets/index.yml) |
 | Microsoft.Consumption<sup>1</sup> | [Cost Management](/azure/cost-management/) |
 | Microsoft.ContainerInstance | [Container Instances](../../container-instances/index.yml) |
-| Microsoft.ContainerRegistry | [Container Registry](../../container-registry/index.yml) |
+| Microsoft.ContainerRegistry | [コンテナー レジストリ](../../container-registry/index.yml) |
 | Microsoft.ContainerService | [Azure Kubernetes Service (AKS)](../../aks/index.yml) |
 | Microsoft.CostManagement<sup>1</sup> | [Cost Management](/azure/cost-management/) |
 | Microsoft.CostManagementExports | [Cost Management](/azure/cost-management/) |
@@ -79,7 +79,7 @@ ms.locfileid: "91949124"
 | Microsoft.DBforPostgreSQL | [Azure Database for PostgreSQL](../../postgresql/index.yml) |
 | Microsoft.DeploymentManager | [Azure Deployment Manager](../templates/deployment-manager-overview.md) |
 | Microsoft.DesktopVirtualization | [Windows Virtual Desktop](../../virtual-desktop/index.yml) |
-| Microsoft.Devices | [Azure IoT Hub](../../iot-hub/index.yml)<br />[Azure IoT Hub Device Provisioning Service](../../iot-dps/index.yml) |
+| Microsoft.Devices | [Azure IoT Hub](../../iot-hub/index.yml)<br />[Azure IoT Hub Device Provisioning Service](../../iot-dps/index.yml) |
 | Microsoft.DevOps | [Azure DevOps](/azure/devops/) |
 | Microsoft.DevSpaces | [Azure Dev Spaces](../../dev-spaces/index.yml) |
 | Microsoft.DevTestLab | [Azure Lab Services](../../lab-services/index.yml) |
@@ -101,7 +101,7 @@ ms.locfileid: "91949124"
 | Microsoft.HybridNetwork  | [Private Edge Zones](../../networking/edge-zones-overview.md) |
 | Microsoft.ImportExport | [Azure Import/Export](../../storage/common/storage-import-export-service.md) |
 | microsoft.insights | [Azure Monitor](../../azure-monitor/index.yml) |
-| Microsoft.IoTCentral | [Azure IoT Central](../../iot-central/index.yml) |
+| Microsoft.IoTCentral | [Azure IoT Central](../../iot-central/index.yml) |
 | Microsoft.IoTSpaces | [Azure Digital Twins](../../digital-twins/index.yml) |
 | Microsoft.Intune | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.KeyVault | [Key Vault](../../key-vault/index.yml) |
@@ -150,8 +150,7 @@ ms.locfileid: "91949124"
 | Microsoft.SaaS | core |
 | Microsoft.Scheduler | [Scheduler](../../scheduler/index.yml) |
 | Microsoft.Search | [Azure Cognitive Search](../../search/index.yml) |
-| Microsoft.Security | [Security Center](../../security-center/index.yml) |
-| Microsoft.SecurityGraph | [Security Center](../../security-center/index.yml) |
+| Microsoft.Security | [セキュリティ センター](../../security-center/index.yml) |
 | Microsoft.SecurityInsights | [Azure Sentinel](../../sentinel/index.yml) |
 | Microsoft.SerialConsole<sup>1</sup> | [Windows 用 Azure シリアル コンソール](../../virtual-machines/troubleshooting/serial-console-windows.md) |
 | Microsoft.ServiceBus | [Service Bus](/azure/service-bus/) |
@@ -174,10 +173,10 @@ ms.locfileid: "91949124"
 | Microsoft.TimeSeriesInsights | [Azure Time Series Insights](../../time-series-insights/index.yml) |
 | Microsoft.Token | トークン |
 | Microsoft.VirtualMachineImages | [Azure Image Builder](../../virtual-machines/linux/image-builder-overview.md) |
-| microsoft.visualstudio | [Azure DevOps](/azure/devops/?view=azure-devops) |
+| microsoft.visualstudio | [Azure DevOps](/azure/devops/) |
 | Microsoft.VMware | [Azure VMware Solution](../../azure-vmware/index.yml) |
 | Microsoft.VMwareCloudSimple | [Azure VMware Solution by CloudSimple](../../vmware-cloudsimple/index.md) |
-| Microsoft.VSOnline | [Azure DevOps](/azure/devops/?view=azure-devops) |
+| Microsoft.VSOnline | [Azure DevOps](/azure/devops/) |
 | Microsoft.Web | [App Service](../../app-service/index.yml)<br />[Azure Functions](../../azure-functions/index.yml) |
 | Microsoft.WindowsDefenderATP | [Microsoft Defender Advanced Threat Protection](../../security-center/security-center-wdatp.md) |
 | Microsoft.WindowsESU | Extended Security Updates |
