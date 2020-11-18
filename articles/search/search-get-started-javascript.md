@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5ccbe1035c5cc73993e069c7683d6b15ae18e21c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 0e1b7aa0eb56d5668b6561b36a0f63e719974573
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795533"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698898"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-the-javascript-sdk"></a>クイックスタート: JavaScript SDK を使用して Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -24,10 +24,10 @@ ms.locfileid: "92795533"
 > * [ポータル](search-get-started-portal.md)
 > * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
-> * [Postman](search-get-started-postman.md)
+> * [REST](search-get-started-rest.md)
 
 
-[Azure Cognitive Search 用 JavaScript (TypeScript) SDK](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest) を使用して、検索インデックスの作成、読み込み、クエリを実行するための Node.js アプリケーションを JavaScript で作成します。
+[Azure Cognitive Search 用 JavaScript (TypeScript) SDK](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme) を使用して、検索インデックスの作成、読み込み、クエリを実行するための Node.js アプリケーションを JavaScript で作成します。
 
 この記事では、アプリケーションを作成する方法について詳しく説明します。 代わりに、[ソース コードとデータをダウンロード](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11)して、コマンド ラインでアプリケーションを実行することもできます。
 
@@ -58,7 +58,7 @@ ms.locfileid: "92795533"
 
 2. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。オブジェクトを作成したり削除したりする場合には必須となります。 キーには、プライマリとセカンダリの 2 つがあり、どちらでも同じように機能します どちらを使ってもかまいません。
 
-   ![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-postman/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
+   ![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-rest/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
 
 すべての要求では、サービスに送信されるすべての要求に API キーが必要です。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
@@ -80,7 +80,7 @@ VS Code およびその[統合ターミナル](https://code.visualstudio.com/doc
     ```
      既定値をそのまま使用します。ただし、ライセンスは "MIT" に設定する必要があります。 
 
-3. `@azure/search-documents` ([Azure Cognitive Search 用 JavaScript (TypeScript) SDK](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest)) をインストールします。
+3. `@azure/search-documents` ([Azure Cognitive Search 用 JavaScript (TypeScript) SDK](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme)) をインストールします。
 
     ```cmd
     npm install @azure/search-documents
@@ -171,7 +171,7 @@ main().catch((err) => {
 
 **hotels_quickstart_index.json** というファイルを作成します。  このファイルでは、次の手順で読み込むドキュメントに対する Azure Cognitive Search の処理を定義します。 各フィールドは `name` によって識別されます。それぞれ、指定された `type` を備えています。 さらに各フィールドは、Azure Cognitive Search がそのフィールドに対して検索、フィルター、並べ替え、およびファセットを実行できるかどうかを指定する、一連のインデックス属性も備えています。 ほとんどのフィールドは単純なデータ型ですが、`AddressType` のように、自分のインデックスでリッチなデータ構造を作成できる複合型もあります。  [サポートされているデータ型](/rest/api/searchservice/supported-data-types)と[インデックス属性](./search-what-is-an-index.md#index-attributes)について、詳細をお読みください。 
 
-以下を **hotels_quickstart_index.json** に追加するか、 [ファイルをダウンロードします](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/v11/hotels_quickstart_index.json)。 
+以下を **hotels_quickstart_index.json** に追加するか、[ファイルをダウンロードします](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/v11/hotels_quickstart_index.json)。 
 
 ```json
 {
@@ -305,7 +305,7 @@ main().catch((err) => {
 }
 ```
 
-インデックスの定義が完了したら、main 関数でインデックスの定義にアクセスできるように、 **index.js** の冒頭で **hotels_quickstart_index.json** をインポートする必要があります。
+インデックスの定義が完了したら、main 関数でインデックスの定義にアクセスできるように、**index.js** の冒頭で **hotels_quickstart_index.json** をインポートする必要があります。
 
 ```javascript
 const indexDefinition = require('./hotels_quickstart_index.json');
@@ -450,7 +450,7 @@ Azure Cognitive Search では、ドキュメントにはインデックス作成
 }
 ```
 
-indexDefinition で行ったのと同様に、main 関数でデータにアクセスできるように、 **index.js** の冒頭で `hotels.json` をインポートする必要もあります。
+indexDefinition で行ったのと同様に、main 関数でデータにアクセスできるように、**index.js** の冒頭で `hotels.json` をインポートする必要もあります。
 
 ```javascript
 const hotelData = require('./hotels.json');
@@ -480,7 +480,7 @@ let indexDocumentsResult = await searchClient.mergeOrUploadDocuments(hotelData['
 console.log(`Index operations succeeded: ${JSON.stringify(indexDocumentsResult.results[0].succeeded)}`);
 ```
 
-`node index.js` でプログラムを再度実行します。 手順 1 で表示されたのとは若干異なるメッセージが表示されるはずです。 今回はインデックスが存在して " *いる* " ので、その削除に関するメッセージが表示されます。そしてその後に、アプリによって新しいインデックスが作成され、そこにデータがポストされます。 
+`node index.js` でプログラムを再度実行します。 手順 1 で表示されたのとは若干異なるメッセージが表示されるはずです。 今回はインデックスが存在して "*いる*" ので、その削除に関するメッセージが表示されます。そしてその後に、アプリによって新しいインデックスが作成され、そこにデータがポストされます。 
 
 次の手順でクエリを実行する前に、プログラムを 1 秒間待機させる関数を定義します。 これは、インデックスの作成を確実に完了し、クエリ用のインデックスでドキュメントを利用できるようにするために、ただテストやデモの目的で行います。
 

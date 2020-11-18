@@ -10,18 +10,18 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 994f2829d260223567dcb5aed859812aa1fef3d1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a76c6467dac69fd3d21aa659c52227046c166938
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91829270"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94816612"
 ---
 ## <a name="prerequisites"></a>前提条件
 開始する前に、必ず次のことを行ってください。
 - アクティブなサブスクリプションがある Azure アカウントを作成します。 詳細については、[アカウントの無料作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)に関するページを参照してください。 
 - [Visual Studio](https://visualstudio.microsoft.com/downloads/) 
-- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication リソースの作成](../../create-communication-resource.md)に関するページを参照してください。 このクイックスタート用に、自分のリソースの**エンドポイント**を記録する必要があります。
+- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication リソースの作成](../../create-communication-resource.md)に関するページを参照してください。 このクイックスタート用に、自分のリソースの **エンドポイント** を記録する必要があります。
 - [ユーザー アクセス トークン](../../access-tokens.md)。 スコープは必ず "chat" に設定し、トークン文字列と userId 文字列をメモしてください。
 
 ## <a name="setting-up"></a>設定
@@ -46,7 +46,7 @@ dotnet build
 .NET 用 Azure Communication チャット クライアント ライブラリをインストールする
 
 ```PowerShell
-dotnet add package Azure.Communication.Chat --version 1.0.0-beta.2
+dotnet add package Azure.Communication.Chat --version 1.0.0-beta.3
 ``` 
 
 ## <a name="object-model"></a>オブジェクト モデル
@@ -77,7 +77,7 @@ ChatClient chatClient = new ChatClient(endpoint, communicationUserCredential);
 
 チャット スレッドは、`createChatThread` メソッドを使用して作成します。
 - このチャットにトピックを指定するには、`topic` を使用します。チャット スレッドの作成後に、`UpdateThread` 関数を使用してトピックを更新することができます。
-- `members` プロパティを使用して、チャット スレッドに追加する `ChatThreadMember` オブジェクトのリストを渡します。 `ChatThreadMember` オブジェクトは、`CommunicationUser` オブジェクトを使用して初期化します。 `CommunicationUser` オブジェクトを取得するには、[ユーザーの作成](../../access-tokens.md#create-a-user)手順に従って作成したアクセス ID を渡す必要があります
+- `members` プロパティを使用して、チャット スレッドに追加する `ChatThreadMember` オブジェクトのリストを渡します。 `ChatThreadMember` オブジェクトは、`CommunicationUser` オブジェクトを使用して初期化します。 `CommunicationUser` オブジェクトを取得するには、[ユーザーの作成](../../access-tokens.md#create-an-identity)手順に従って作成したアクセス ID を渡す必要があります
 
 作成されたチャット スレッドに対して操作 (チャット スレッドへのメンバーの追加、メッセージの送信、メッセージの削除など) を実行するには、応答 `chatThreadClient` を使用します。これには、チャット スレッドの一意の ID である `Id` 属性が含まれています。 
 

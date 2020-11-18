@@ -8,38 +8,33 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 1ddc8c2b9531dd78c1c6746e28b8ff5864af563e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: d174e410aaef876dfe97af62750322641de95fd3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93331949"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659456"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Database for PostgreSQL サーバーを作成する
 
 このクイックスタートでは、[Azure Cloud Shell](https://shell.azure.com) で [Azure CLI](/cli/azure/get-started-with-azure-cli) コマンドを使用して、単一の Azure Database for PostgreSQL サーバーを 5 分で作成する方法について説明します。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-> [!TIP]
-> 現在プレビュー段階にあるよりシンプルな [az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI コマンドの使用を検討してください。 こちらの[クイック スタート](./quickstart-create-server-up-azure-cli.md) をお試しください。
+- この記事では、Azure CLI のバージョン 2.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
-## <a name="prerequisites"></a>前提条件
-この記事では、Azure CLI バージョン 2.0 以降をローカルで実行する必要があります。 インストールされているバージョンを確認するには、`az --version` コマンドを実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+    > [!TIP]
+    >  現在プレビュー段階にあるよりシンプルな [az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI コマンドの使用を検討してください。 こちらの[クイック スタート](./quickstart-create-server-up-azure-cli.md) をお試しください。
 
-[az login](/cli/azure/reference-index#az-login) コマンドを使用して、お使いのアカウントにログインする必要があります。 **id** プロパティに注意してください。これは、お使いの Azure アカウントの **サブスクリプション ID** を参照します。 
+- [az account set](/cli/azure/account) コマンドを使用して、お使いのアカウントの特定のサブスクリプション ID を選択します。
 
-```azurecli-interactive
-az login
-```
+    - **az login** 出力の **id** の値をメモしておいて、このコマンドの **subscription** 引数の値として使用します。 
 
-[az account set](/cli/azure/account) コマンドを使用して、お使いのアカウントの特定のサブスクリプション ID を選択します。 **az login** 出力の **id** の値をメモしておいて、このコマンドの **subscription** 引数の値として使用します。 
+        ```azurecli
+        az account set --subscription <subscription id>
+        ```
 
-```azurecli
-az account set --subscription <subscription id>
-```
-
-複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 お使いのすべてのサブスクリプションを取得するには、[az account list](/cli/azure/account#az-account-list) を使用します。
+    - 複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 お使いのすべてのサブスクリプションを取得するには、[az account list](/cli/azure/account#az-account-list) を使用します。
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーの作成
 
@@ -61,13 +56,13 @@ az postgres server create --resource-group myresourcegroup --name mydemoserver  
 name | mydemoserver | Azure Database for PostgreSQL サーバーを識別する一意の名前。 サーバー名に含めることができるのは、英小文字、数字、およびハイフン (-) のみであり、 3 から 63 文字にする必要があります。 詳細については、[Azure Database for PostgreSQL の名前付け規則](../azure-resource-manager/management/resource-name-rules.md#microsoftdbforpostgresql)に関するページを参照してください。
 resource-group | myresourcegroup | Azure リソース グループの名前。
 location | westus | サーバーの Azure の場所。
-admin-user | myadmin | 管理者ログインのユーザー名。 これを **azure_superuser** 、 **admin** 、 **administrator** 、 **root** 、 **guest** 、 **public** にすることはできません。
+admin-user | myadmin | 管理者ログインのユーザー名。 これを **azure_superuser**、**admin**、**administrator**、**root**、**guest**、**public** にすることはできません。
 admin-password | *セキュリティで保護されたパスワード* | 管理者ユーザーのパスワード。 これには、次のうちの 3 つのカテゴリの、8 から 128 文字が含まれている必要があります。英大文字、英小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。
 sku-name|GP_Gen5_2| 価格レベルとコンピューティング構成の名前。 省略表現の {価格レベル}" _{コンピューティング世代}_ "{仮想コア} という規則に従います。 詳しくは、「[Azure Database for PostgreSQL の価格](https://azure.microsoft.com/pricing/details/postgresql/server/)」をご覧ください。
 
 >[!IMPORTANT] 
 >- サーバーの既定の PostgreSQL バージョンは 9.6 です。 サポートされているすべてのバージョンを確認するには、「[サポートされる PostgreSQL のメジャー バージョン](./concepts-supported-versions.md)」をご覧ください。
->- **az postgres server create** コマンドのすべての引数を確認するには、 [このリファレンス ドキュメント](/cli/azure/postgres/server#az-postgres-server-create)を参照してください。
+>- **az postgres server create** コマンドのすべての引数を確認するには、[このリファレンス ドキュメント](/cli/azure/postgres/server#az-postgres-server-create)を参照してください。
 >- サーバーでは、既定で SSL が有効になっています。 SSL の詳細については、[SSL 接続の構成](./concepts-ssl-connection-security.md)に関するページを参照してください。
 
 ## <a name="configure-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則の構成 

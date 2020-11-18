@@ -1,15 +1,15 @@
 ---
 title: 管理グループを使用してリソースを整理する - Azure Governance
 description: 管理グループ、そのアクセス許可のしくみ、その使用方法について説明します。
-ms.date: 09/22/2020
+ms.date: 11/17/2020
 ms.topic: overview
 ms.custom: contperfq1
-ms.openlocfilehash: be3369369f28930fd1ecad295a4dad4d14e75cd3
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: c48361e7f3d67c6d3eec40d5acb47917f7835db5
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951878"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699595"
 ---
 # <a name="what-are-azure-management-groups"></a>Azure 管理グループとは
 
@@ -150,7 +150,7 @@ Azure 管理グループでは、すべてのリソース アクセスとロー�
 
 実際に見た方がわかりやすいので、ある階層のごく一部分を例に見てみましょう。
 
-:::image type="complex" source="./media/subtree.png" alt-text="サンプル管理グループの階層の図。" border="false":::
+:::image type="complex" source="./media/subtree.png" alt-text="サンプル管理グループの階層のサブセットの図。" border="false":::
    この図では、子の IT およびマーケティング管理グループを持つルート管理グループに焦点を当てています。 IT 管理グループには、運用環境という名前の子マネージメント管理グループが 1 つありますが、マーケティング管理グループには無料試用版の子サブスクリプションが 2 つあります。
 :::image-end:::
 
@@ -171,7 +171,11 @@ Marketing 管理グループに定義されたカスタム ロールがあると
  - 新しいロールの割り当て可能なスコープに定義できる管理グループは 1 つだけです。 この制限は、ロールの定義とロールの割り当てが切り離される状況の発生回数を減らすために設けられています。 この状況は、ロールを割り当てたサブスクリプションまたは管理グループが、そのロールの定義が存在しない別の親に移動されると発生します。  
  - 管理グループのカスタム ロールでリソース プロバイダー データ プレーンのアクションを定義することはできません。 この制限は、データ プレーン リソースプロバイダーを更新する際の待ち時間の問題があるために設けられています。
    この待ち時間の問題は現在対応中であり、これらのアクションは、リスクを軽減するためにロールの定義では無効にされる予定です。
- - ロールの定義の割り当て可能なスコープに管理グループが存在するかどうかは、Azure Resource Manager では確認されません。 入力ミスや間違った管理グループ ID が記載されていても、ロールの定義は作成されます。  
+ - ロールの定義の割り当て可能なスコープに管理グループが存在するかどうかは、Azure Resource Manager では確認されません。 入力ミスや間違った管理グループ ID が記載されていても、ロールの定義は作成されます。
+
+> [!IMPORTANT]
+> `AssignableScopes` への管理グループの追加は、現在プレビューの段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。
+> 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="moving-management-groups-and-subscriptions"></a>管理グループとサブスクリプションの移動 
 
@@ -194,7 +198,7 @@ Marketing 管理グループに定義されたカスタム ロールがあると
 
 管理グループは、[Azure アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)内でサポートされます。 他の Azure リソースと同じ一元的な場所で、管理グループに発生するすべてのイベントを検索できます。 たとえば、特定の管理グループに対して行われた、ロールの割り当てまたはポリシーの割り当ての変更を、すべて確認できます。
 
-:::image type="content" source="./media/al-mg.png" alt-text="サンプル管理グループの階層の図。" border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="選択した管理グループに関連するアクティビティ ログと操作のスクリーンショット。" border="false":::
 
 Azure portal の外部で管理グループに対するクエリを使用する場合、管理グループのターゲット スコープは、 **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** のようになります。
 

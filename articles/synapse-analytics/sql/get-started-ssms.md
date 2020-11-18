@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4337d6bb108042a909250b3d87d13ab60357cfec
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4239b5400e919621dfff001ca7e6cb9de1626658
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311116"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686210"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) を使用して Synapse SQL に接続する
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ ms.locfileid: "93311116"
     ![サーバーに接続する 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
    * **[サーバー名]** : 前の手順で特定した **サーバー名** を入力します。
-   * **認証** :認証の種類を選択します ( **[SQL Server 認証]** 、 **[Active Directory 統合認証]** など)。
+   * **認証**:認証の種類を選択します ( **[SQL Server 認証]** 、 **[Active Directory 統合認証]** など)。
    * **[ユーザー名]** と **[パスワード]** : 先ほど [SQL Server 認証] を選択した場合は、ユーザー名とパスワードを入力します。
 
 1. **オブジェクト エクスプローラー** で Azure SQL Server を展開します。 サンプル AdventureWorksDW データベースなど、サーバーに関連付けられているデータベースを確認できます。 データベースを展開することで、テーブルを表示できます。
@@ -73,7 +73,7 @@ ms.locfileid: "93311116"
     ![サーバーに接続する 2](./media/get-started-ssms/connect-object-explorer1.png)
    
    * **[サーバー名]** : 前の手順で特定した **サーバー名** を入力します。
-   * **認証** :認証の種類を選択します ( **[SQL Server 認証]** 、 **[Active Directory 統合認証]** など)。
+   * **認証**:認証の種類を選択します ( **[SQL Server 認証]** 、 **[Active Directory 統合認証]** など)。
    * **[ユーザー名]** と **[パスワード]** : 先ほど [SQL Server 認証] を選択した場合は、ユーザー名とパスワードを入力します。
    * **[接続]** を選択します。
 

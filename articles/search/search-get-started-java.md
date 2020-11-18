@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 336f58635465f77c60d04c53bb1893cb60f5f35f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2ab87dfdeb18f97265c3bb2f34616c942a345c1e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791224"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698949"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>クイック スタート:REST API を使用して Java で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "92791224"
 > * [ポータル](search-get-started-portal.md)
 > * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
-> * [Postman](search-get-started-postman.md)
+> * [REST](search-get-started-rest.md)
 
 [IntelliJ](https://www.jetbrains.com/idea/)、[Java 11 SDK](/java/azure/jdk/)、[Azure Cognitive Search REST API](/rest/api/searchservice/) を使用して検索インデックスの作成、読み込み、クエリを実行する Java コンソール アプリケーションを作成します。 この記事では、アプリケーションを作成するための具体的な手順を紹介します。 代わりに、[完全なアプリケーションをダウンロードして実行する](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/)こともできます。
 
@@ -67,7 +67,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[Maven]** を選択します。
 1. **[Project SDK]\(プロジェクト SDK\)** ボックスの一覧で、Java 11 SDK を選択します。
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="サービス名、管理キー、クエリ キーの取得" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="Maven プロジェクトを作成する" border="false":::
 
 1. **[GroupId]** と **[ArtifactId]** で、「`AzureSearchQuickstart`」と入力します。
 1. 他の既定値をそのまま使用して、プロジェクトを開きます。
@@ -78,7 +78,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[Settings]\(設定\)** ウィンドウで、 **[Build, Execution, Deployment]\(ビルド、実行、デプロイ\)**  >  **[Build Tools]\(構築ツール\)**  >  **[Maven]**  >  **[Importing]\(インポート\)** の順に選択します。
 1. **[Import Maven projects automatically]\(Maven プロジェクトを自動的にインポートする\)** チェック ボックスをオンにし、 **[OK]** をクリックしてウィンドウを閉じます。 Maven のプラグインとその他の依存関係は、次の手順で pom.xml ファイルを更新すると自動的に同期されるようになります。
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="サービス名、管理キー、クエリ キーの取得" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="IntelliJ の設定の Maven インポート オプション" border="false":::
 
 1. pom.xml ファイルを開き、その内容を次の Maven の構成の詳細に置き換えます。 これには、[Exec Maven プラグイン](https://www.mojohaus.org/exec-maven-plugin/)と [JSON インターフェイス API](https://javadoc.io/doc/org.glassfish/javax.json/1.0.2) への参照が含まれています。
 
@@ -140,7 +140,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     完了すると、プロジェクト ツリーは次の図のようになります。
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="サービス名、管理キー、クエリ キーの取得" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="プロジェクトのディレクトリ構造" border="false":::
 
 1. **[OK]** をクリックしてウィンドウを閉じます。
 
@@ -373,10 +373,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. プロジェクトの構造が次のようになっていることを確認します。
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="サービス名、管理キー、クエリ キーの取得" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="プロジェクトのディレクトリ構造とクラス" border="false":::
 
 1. **[Maven]** ツール ウィンドウを開き、次の Maven 目標を実行します: `verify exec:java`
-:::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="サービス名、管理キー、クエリ キーの取得" border="false":::
+:::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="Maven 目標 verify exec:java を実行する" border="false":::
 
 処理が完了すると、ビルド成功のメッセージに続いてゼロ (0) 終了コードが表示されることを確認します。
 

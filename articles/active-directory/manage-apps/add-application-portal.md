@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: 2946590cbb4c5e8f495a1f6ee4aac65929cd4d0e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fd81e5f87aaf4a28676b79863df60b71707849e9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91305747"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656515"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>クイック スタート:Azure Active Directory (Azure AD) テナントにアプリケーションを追加する
 
@@ -54,11 +54,11 @@ Azure AD テナントにアプリケーションを追加するには、次の�
 
     :::image type="content" source="media/add-application-portal/sso-types.png" alt-text="SSO の種類のセレクターを示すスクリーンショット。" lightbox="media/add-application-portal/sso-types.png":::
 
-    - アプリの開発者が SSO に **OIDC 標準**を使用している場合は、 **[サインアップ]** を選択します。 設定ページが表示されます。 次に、OIDC ベースのシングル サインオンの設定に関するクイックスタートに進んでください。
-    :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="SSO の種類のセレクターを示すスクリーンショット。":::
+    - アプリの開発者が SSO に **OIDC 標準** を使用している場合は、 **[サインアップ]** を選択します。 設定ページが表示されます。 次に、OIDC ベースのシングル サインオンの設定に関するクイックスタートに進んでください。
+    :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="OIDC ベースの SSO アプリの追加を示すスクリーンショット。":::
 
     - アプリの開発者が SSO に **SAML 標準** を使用している場合は、 **[作成]** を選択します。 [作業の開始] ページが表示され、組織のアプリケーションを構成するためのオプションが表示されます。 フォームでは、組織のニーズに合わせてアプリケーションの名前を編集できます。 次に、SAML ベースのシングル サインオンの設定に関するクイックスタートに進んでください。
-    :::image type="content" source="media/add-application-portal/create-application.png" alt-text="SSO の種類のセレクターを示すスクリーンショット。":::
+    :::image type="content" source="media/add-application-portal/create-application.png" alt-text="SAML ベースの SSO アプリの追加を示すスクリーンショット。":::
 
 
 > [!IMPORTANT]
@@ -69,7 +69,7 @@ Azure AD テナントにアプリケーションを追加するには、次の�
 アプリケーションの追加が完了しました。 次のクイックスタートでは、アプリケーションのロゴを変更し、他のプロパティを編集する方法を示します。
 
 > [!TIP]
-> Graph API を使用してアプリの管理を自動化できます。[Microsoft Graph API によるアプリ管理の自動化](https://docs.microsoft.com/graph/application-saml-sso-configure-api)に関するページを参照してください。
+> Graph API を使用してアプリの管理を自動化できます。[Microsoft Graph API によるアプリ管理の自動化](/graph/application-saml-sso-configure-api)に関するページを参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

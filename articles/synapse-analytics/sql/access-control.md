@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: a0fbcab194b90bbe89948fee1efb604266dbbb0f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7c6de17e4ed4f5666554908e9b13fb9e299b027a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311745"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682062"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>ワークスペース、データ、およびパイプラインへのアクセスを管理する
 
@@ -100,7 +100,7 @@ Azure Synapse ワークスペースへの運用環境のデプロイでは、お
 ## <a name="access-control-to-sql-databases"></a>SQL データベースに対するアクセス制御
 
 > [!TIP]
-> 以下の手順は、すべての SQL データベースへのユーザー アクセスを付与するために、SQL データベース **ごと** に実行する必要があります。ただし、ユーザーに sysadmin ロールを割り当てることができる「 [サーバー レベルのアクセス許可](#server-level-permission)」セクションは除きます。
+> 以下の手順は、すべての SQL データベースへのユーザー アクセスを付与するために、SQL データベース **ごと** に実行する必要があります。ただし、ユーザーに sysadmin ロールを割り当てることができる「[サーバー レベルのアクセス許可](#server-level-permission)」セクションは除きます。
 
 ### <a name="serverless-sql-pool"></a>サーバーレス SQL プール
 
@@ -166,8 +166,8 @@ ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
     ```
 
 > [!IMPORTANT]
-> *db_owner* アクセス許可を付与することが望ましくない場合は、 *db_datareader* および *db_datawriter* を読み取りまたは書き込みアクセス許可のために使用することができます。
-> Spark ユーザーが Spark と専用 SQL プールとの間で直接読み取りまたは書き込みを行うには、 *db_owner* アクセス許可が必要です。
+> *db_owner* アクセス許可を付与することが望ましくない場合は、*db_datareader* および *db_datawriter* を読み取りまたは書き込みアクセス許可のために使用することができます。
+> Spark ユーザーが Spark と専用 SQL プールとの間で直接読み取りまたは書き込みを行うには、*db_owner* アクセス許可が必要です。
 
 ユーザーを作成した後、サーバーレス SQL プールを使用してストレージ アカウントにクエリを実行できることを検証します。
 

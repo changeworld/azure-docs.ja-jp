@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: d578529839afb5393dd013cb10f48c755f08addd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 302cf97db7c1d2ba489a84b6be912816d20f6091
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316233"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685564"
 ---
 # <a name="create-and-use-views-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プール (プレビュー) を使用してビューを作成および使用する
 
@@ -26,7 +26,7 @@ ms.locfileid: "93316233"
 
 ## <a name="create-a-view"></a>ビューの作成
 
-ビューは、通常の SQL Server ビューを作成するのと同じ方法で作成できます。 次のクエリによって、 *population.csv* ファイルを読み取るビューが作成されます。
+ビューは、通常の SQL Server ビューを作成するのと同じ方法で作成できます。 次のクエリによって、*population.csv* ファイルを読み取るビューが作成されます。
 
 > [!NOTE]
 > クエリの最初の行 ([mydbname]) は、自分で作成したデータベースを使用するように変更してください。
@@ -72,7 +72,7 @@ FROM
 
 ビューは、SQL Server クエリ内でビューを使用するのと同じ方法でクエリ内で使用できます。
 
-次のクエリは、「 [ビューの作成](#create-a-view)」で作成した *population_csv* ビューの使用方法を示しています。 これにより、国/地域名が 2019 年の人口の降順に返されます。
+次のクエリは、「[ビューの作成](#create-a-view)」で作成した *population_csv* ビューの使用方法を示しています。 これにより、国/地域名が 2019 年の人口の降順に返されます。
 
 > [!NOTE]
 > クエリの最初の行 ([mydbname]) は、自分で作成したデータベースを使用するように変更してください。

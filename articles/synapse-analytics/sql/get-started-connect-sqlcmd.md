@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 10f15ec2108e897164206543358d7a9e7bd40f64
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 43fae026f91e4430fbce0d01141a86a913db089d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316502"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686142"
 ---
 # <a name="connect-to-synapse-sql-with-sqlcmd"></a>sqlcmd を使用して Synapse SQL に接続する
 
@@ -28,7 +28,7 @@ ms.locfileid: "93316502"
 [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) コマンド ライン ユーティリティを使用して、Synapse SQL 内のサーバーレス SQL プール (プレビュー) および専用 SQL プールに接続し、クエリを実行することができます。  
 
 ## <a name="1-connect"></a>1.接続する
-[sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) の使用を開始するには、コマンド プロンプトを開いて「 **sqlcmd** 」と入力し、続けて Synapse SQL データベースの接続文字列を入力します。 接続文字列では、次のパラメーターが必要になります。
+[sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) の使用を開始するには、コマンド プロンプトを開いて「**sqlcmd**」と入力し、続けて Synapse SQL データベースの接続文字列を入力します。 接続文字列では、次のパラメーターが必要になります。
 
 * **サーバー (-S):** サーバー。`<`Server Name`>`.database.windows.net の形式で指定します。
 * **データベース (-d):** データベース名

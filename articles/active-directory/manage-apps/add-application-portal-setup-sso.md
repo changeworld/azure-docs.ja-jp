@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 2e5c588db6f372a50b2a80afd8a2a023ece34502
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 235c5c19c9a6e587106b3fd41691a3f775caa84f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203622"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656617"
 ---
 # <a name="quickstart-set-up-saml-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>クイックスタート:Azure Active Directory (Azure AD) テナント内のアプリケーションへの SAML ベースのシングル サインオン (SSO) を設定する
 
@@ -53,17 +53,17 @@ Azure AD テナントへのアプリケーションの追加が完了すると�
 
 1. **[SAML]** を選択して SSO の構成ページを開きます。 この例では、SSO 用に構成しているアプリケーションは GitHub です。 GitHub が設定されると、ユーザーは自分の Azure AD テナントの資格情報を使用して GitHub にサインインできるようになります。
 
-    :::image type="content" source="media/add-application-portal-setup-sso/github-sso.png" alt-text="Azure AD ポータル上のシングル サインオンの構成ページを示すスクリーンショット。":::
+    :::image type="content" source="media/add-application-portal-setup-sso/github-sso.png" alt-text="GitHub 上のシングル サインオンの構成ページを示すスクリーンショット。":::
 
-1. SAML ベースの SSO に Azure AD を使用するようにアプリケーションを構成するプロセスは、アプリケーションによって異なります。 GitHub に関するガイダンスへのリンクが表示されています。 他のアプリに関するガイドは、「[SaaS アプリケーションと Azure Active Directory の統合に関するチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/)」で見つけることができます。
+1. SAML ベースの SSO に Azure AD を使用するようにアプリケーションを構成するプロセスは、アプリケーションによって異なります。 GitHub に関するガイダンスへのリンクが表示されています。 他のアプリに関するガイドは、「[SaaS アプリケーションと Azure Active Directory の統合に関するチュートリアル](/azure/active-directory/saas-apps/)」で見つけることができます。
 1. アプリケーションへの SSO を設定するには、そのガイドに従ってください。 多くのアプリケーションには、SSO 機能に関する特定のサブスクリプション要件があります。 たとえば、GitHub の場合は Enterprise サブスクリプションが必要です。
     > [!TIP]
     > SAML 構成オプションの詳細については、「[SAML ベースのシングル サインオンの構成](configure-saml-single-sign-on.md)」を参照してください。
 
-    :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="Azure AD ポータル上のシングル サインオンの構成ページを示すスクリーンショット。":::
+    :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="GitHub の価格設定ページの Enterprise サブスクリプション内に表示されたシングル サインオン オプションを示すスクリーンショット。":::
 
 > [!TIP]
-> Graph API を使用してアプリの管理を自動化できます。[Microsoft Graph API によるアプリ管理の自動化](https://docs.microsoft.com/graph/application-saml-sso-configure-api)に関するページを参照してください。
+> Graph API を使用してアプリの管理を自動化できます。[Microsoft Graph API によるアプリ管理の自動化](/graph/application-saml-sso-configure-api)に関するページを参照してください。
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

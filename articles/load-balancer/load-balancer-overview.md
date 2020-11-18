@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 4a397a67c0e40de8be1d42ee56618357cf36c55f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 96c0242414c67d97fc324977b1259f63c27c3a26
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017728"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696814"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer の概要
 
@@ -44,29 +44,29 @@ Standard Load Balancer を使用すると、アプリケーションをスケー
 
 Standard Load Balancer を使用して実現できる主なシナリオは、次のとおりです。
 
-- **[内部](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-internal-portal)** および **[外部](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-manage-portal)** トラフィックを Azure 仮想マシンに負荷分散する。
+- **[内部](./quickstart-load-balancer-standard-internal-portal.md)** および **[外部](./tutorial-load-balancer-standard-manage-portal.md)** トラフィックを Azure 仮想マシンに負荷分散する。
 
-- ゾーンの **[内部で](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zonal-portal)** 、および複数のゾーンに **[わたって](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal)** リソースを分散することによって、可用性を向上させる。
+- ゾーンの **[内部で](./tutorial-load-balancer-standard-public-zonal-portal.md)** 、および複数のゾーンに **[わたって](./tutorial-load-balancer-standard-public-zone-redundant-portal.md)** リソースを分散することによって、可用性を向上させる。
 
-- Azure 仮想マシンの **[アウトバウンド接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)** を構成する。
+- Azure 仮想マシンの **[アウトバウンド接続](./load-balancer-outbound-connections.md)** を構成する。
 
-- **[正常性プローブ](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)** を使用して、負荷分散されたリソースを監視する。
+- **[正常性プローブ](./load-balancer-custom-probe-overview.md)** を使用して、負荷分散されたリソースを監視する。
 
-- **[ポート転送](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal)** を使用して、仮想ネットワーク内の仮想マシンにパブリック IP アドレスとポートでアクセスする。
+- **[ポート転送](./tutorial-load-balancer-port-forwarding-portal.md)** を使用して、仮想ネットワーク内の仮想マシンにパブリック IP アドレスとポートでアクセスする。
 
-- **[IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)** の **[負荷分散](https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell)** のサポートを有効にする。
+- **[IPv6](../virtual-network/ipv6-overview.md)** の **[負荷分散](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** のサポートを有効にする。
 
-- Standard Load Balancer は [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) を通じて多次元メトリックを提供します。  これらのメトリックは、フィルター処理し、グループ化し、特定のディメンションに分割することができます。  サービスのパフォーマンスと正常性に関する現在と過去の分析情報を提供します。  リソースの正常性もサポートされます。 詳細については、 **[Standard Load Balancer の診断](load-balancer-standard-diagnostics.md)** に関するページを参照してください。
+- Standard Load Balancer は [Azure Monitor](../azure-monitor/overview.md) を通じて多次元メトリックを提供します。  これらのメトリックは、フィルター処理し、グループ化し、特定のディメンションに分割することができます。  サービスのパフォーマンスと正常性に関する現在と過去の分析情報を提供します。  リソースの正常性もサポートされます。 詳細については、 **[Standard Load Balancer の診断](load-balancer-standard-diagnostics.md)** に関するページを参照してください。
 
-- **[複数のポート、複数の IP アドレス、またはその両方](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview)** にサービスを負荷分散する。
+- **[複数のポート、複数の IP アドレス、またはその両方](./load-balancer-multivip-overview.md)** にサービスを負荷分散する。
 
-- 複数の Azure リージョンにわたる **[内部](https://docs.microsoft.com/azure/load-balancer/move-across-regions-internal-load-balancer-portal)** および **[外部](https://docs.microsoft.com/azure/load-balancer/move-across-regions-external-load-balancer-portal)** のロード バランサー リソースに移動する。
+- 複数の Azure リージョンにわたる **[内部](./move-across-regions-internal-load-balancer-portal.md)** および **[外部](./move-across-regions-external-load-balancer-portal.md)** のロード バランサー リソースに移動する。
 
-- **[HA ポート](https://docs.microsoft.com/azure/load-balancer/load-balancer-ha-ports-overview)** を使用して、TCP と UDP のフローをすべてのポートに同時に負荷分散する。
+- **[HA ポート](./load-balancer-ha-ports-overview.md)** を使用して、TCP と UDP のフローをすべてのポートに同時に負荷分散する。
 
 ### <a name="secure-by-default"></a><a name="securebydefault"></a>既定でのセキュリティ保護
 
-Standard Load Balancer は、ゼロ トラスト ネットワーク セキュリティ モデルを中核として構築されています。 既定では Standard Load Balancer はセキュリティで保護され、仮想ネットワークの一部です。 仮想ネットワークは、プライベートの分離されたネットワークです。  つまり、Standard Load Balancer と Standard パブリック IP アドレスは、ネットワーク セキュリティ グループによって開かれない限り、インバウンド フローに閉じられています。 NSG は、トラフィックを明示的に許可するために使用されます。  お使いの仮想マシン リソースのサブネットまたは NIC に NSG がない場合、トラフィックはこのリソースに到達することを許可されません。 NSG と、ネットワーク セキュリティ グループをシナリオに適用する方法の詳細については、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)に関する記事をご覧ください。
+Standard Load Balancer は、ゼロ トラスト ネットワーク セキュリティ モデルを中核として構築されています。 既定では Standard Load Balancer はセキュリティで保護され、仮想ネットワークの一部です。 仮想ネットワークは、プライベートの分離されたネットワークです。  つまり、Standard Load Balancer と Standard パブリック IP アドレスは、ネットワーク セキュリティ グループによって開かれない限り、インバウンド フローに閉じられています。 NSG は、トラフィックを明示的に許可するために使用されます。  お使いの仮想マシン リソースのサブネットまたは NIC に NSG がない場合、トラフィックはこのリソースに到達することを許可されません。 NSG と、ネットワーク セキュリティ グループをシナリオに適用する方法の詳細については、[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)に関する記事をご覧ください。
 Basic Load Balancer は、既定ではインターネットに対して公開されています。 また、Load Balancer には顧客データは格納されません。
 
 ## <a name="pricing-and-sla"></a>料金と SLA
@@ -84,4 +84,3 @@ RSS フィードを購読し、[Azure の更新情報](https://azure.microsoft.c
 ロード バランサーの使用を開始するには、[パブリックな標準ロード バランサーの作成](quickstart-load-balancer-standard-public-portal.md)に関する記事をご覧ください。
 
 Azure Load Balancer の制限とコンポーネントの詳細については、「[Azure Load Balancer のコンポーネント](./components.md)」と「[Azure Load Balancer の概念](./concepts.md)」を参照してください
-
