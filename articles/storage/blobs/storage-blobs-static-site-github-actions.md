@@ -9,28 +9,31 @@ ms.reviewer: dineshm
 ms.date: 09/11/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure
-ms.openlocfilehash: 919fa0d7b6dff0361e4439b442bcfe9648ed8677
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 7213cea0796197e230cc5914f7cebfac7c69ae49
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776393"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395735"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>GitHub Actions ワークフローを設定して、静的 Web サイトを Azure Storage にデプロイする
 
-ワークフローを使用して静的サイトを Azure Storage Blob にデプロイすることによって、[GitHub Actions](https://docs.github.com/en/actions) を開始します。 GitHub Actions ワークフローを設定すると、サイトのコードに変更を加えたときに、GitHub から Azure にサイトを自動的にデプロイできるようになります。 
+ワークフローを使用して静的サイトを Azure Storage アカウントにデプロイすることによって、[GitHub Actions](https://docs.github.com/en/actions) を開始します。 GitHub Actions ワークフローを設定すると、サイトのコードに変更を加えたときに、GitHub から Azure にサイトを自動的にデプロイできるようになります。
 
 > [!NOTE]
 > [Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/) を使用している場合は、GitHub Actions ワークフローを手動で設定する必要はありません。
-> Azure Static Web Apps によって GitHub ワークフローが自動的に作成されます。 
+> Azure Static Web Apps によって GitHub Actions ワークフローが自動的に作成されます。 
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションと GitHub アカウント。 
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- GitHub アカウントと静的 Web サイト コード。 GitHub アカウントをお持ちでない場合は、[無料でサインアップ](https://github.com/join)できます。  
-- Azure Storage でホストされている作業用の静的 Web サイト。 Azure Storage で静的 Web サイトをホストする方法については、[こちら](storage-blob-static-website-how-to.md)をご覧ください。 静的 Web サイトには、[Azure CDN](static-website-content-delivery-network.md) が含まれている必要があります。
+- GitHub リポジトリと静的 Web サイト コード。 GitHub アカウントをお持ちでない場合は、[無料でサインアップ](https://github.com/join)できます。  
+- Azure Storage でホストされている作業用の静的 Web サイト。 Azure Storage で静的 Web サイトをホストする方法については、[こちら](storage-blob-static-website-how-to.md)をご覧ください。 この例を実行するには、[Azure CDN](static-website-content-delivery-network.md) のデプロイも必要になります。
+
+> [!NOTE]
+> コンテンツ配信ネットワーク (CDN) を使用して、世界中のユーザーの待機時間を短縮し、ストレージ アカウントに対するトランザクションの数を減らすことが一般的です。 静的コンテンツをクラウドベースのストレージ サービスにデプロイすると、高価なコンピューティング インスタンスが必要になる可能性が低くなります。 詳細については、「[静的コンテンツ ホスティング パターン](/azure/architecture/patterns/static-content-hosting)」を参照してください。
 
 ## <a name="generate-deployment-credentials"></a>デプロイ資格情報を生成する
 
@@ -42,7 +45,7 @@ Azure サブスクリプションと GitHub アカウント。
    az ad sp create-for-rbac --name {myStaticSite} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} --sdk-auth
 ```
 
-上記の例で、プレースホルダーを実際のサブスクリプション ID とリソース グループ名に置き換えます。 これにより、以下のようなご自分の App Service アプリにアクセスするためのロールの割り当て資格情報を含む JSON オブジェクトが出力されます。 この JSON オブジェクトを後のためにコピーします。
+上記の例で、プレースホルダーを実際のサブスクリプション ID とリソース グループ名に置き換えます。 これにより、以下のような、ご自分のストレージ アカウントにアクセスするためのロールの割り当て資格情報を含む JSON オブジェクトが出力されます。 この JSON オブジェクトを後のためにコピーします。
 
 ```output 
   {
@@ -77,7 +80,7 @@ Azure サブスクリプションと GitHub アカウント。
 
 1. GitHub リポジトリの **[Actions]\(アクション\)** にアクセスします。 
 
-    :::image type="content" source="media/storage-blob-static-website/storage-blob-github-actions-header.png" alt-text="GitHub の [Actions]\(アクション\) メニュー項目&quot;:::
+    :::image type="content" source="media/storage-blob-static-website/storage-blob-github-actions-header.png" alt-text="GitHub の [Actions]\(アクション\) メニュー項目":::
 
 1. **[Set up a workflow yourself]\(ワークフローを自分でセットアップする\)** を選択します。 
 
@@ -128,7 +131,7 @@ Azure サブスクリプションと GitHub アカウント。
         with:
             azcliversion: 2.0.72
             inlineScript: |
-            az cdn endpoint purge --content-paths  &quot;/*&quot; --profile-name &quot;CDN_PROFILE_NAME&quot; --name &quot;CDN_ENDPOINT&quot; --resource-group &quot;RESOURCE_GROUP&quot;
+            az cdn endpoint purge --content-paths  "/*" --profile-name "CDN_PROFILE_NAME" --name "CDN_ENDPOINT" --resource-group "RESOURCE_GROUP"
     ``` 
 
 1. Azure のログアウトにアクションを追加して、ワークフローを完成させます。 完成したワークフローを次に示します。 このファイルは、リポジトリの `.github/workflows` フォルダー内に表示されます。
@@ -162,7 +165,7 @@ Azure サブスクリプションと GitHub アカウント。
         with:
             azcliversion: 2.0.72
             inlineScript: |
-            az cdn endpoint purge --content-paths  &quot;/*&quot; --profile-name &quot;CDN_PROFILE_NAME&quot; --name &quot;CDN_ENDPOINT&quot; --resource-group &quot;RESOURCE_GROUP"
+            az cdn endpoint purge --content-paths  "/*" --profile-name "CDN_PROFILE_NAME" --name "CDN_ENDPOINT" --resource-group "RESOURCE_GROUP"
             # Azure logout 
         - name: logout
           run: |
@@ -175,96 +178,11 @@ Azure サブスクリプションと GitHub アカウント。
 
 1. 最初の結果を開くと、ワークフローの実行の詳細なログが表示されます。 
  
-    :::image type="content" source="../media/index/github-actions-run.png" alt-text="GitHub の [Actions]\(アクション\) メニュー項目&quot;:::
-
-1. **[Set up a workflow yourself]\(ワークフローを自分でセットアップする\)** を選択します。 
-
-1. ワークフロー ファイルの `on:` セクションの後にあるすべてのものを削除します。 たとえば、残りのワークフローは次のようになります。 
-
-    ```yaml
-    name: CI
-
-    on:
-    push:
-        branches: [ master ]
-    pull_request:
-        branches: [ master ]
-    ```
-
-1. ワークフロー `Blob storage website CI` の名前を変更し、チェックアウトとログインのアクションを追加します。 これらのアクションは、サイト コードをチェックアウトし、先ほど作成した `AZURE_CREDENTIALS` GitHub シークレットを使用して Azure で認証を行います。 
-
-    ```yaml
-    name: Blob storage website CI
-
-    on:
-    push:
-        branches: [ master ]
-    pull_request:
-        branches: [ master ]
-
-    jobs:
-      build:
-        runs-on: ubuntu-latest
-        steps:            
-        - uses: actions/checkout@v2
-        - uses: azure/login@v1
-          with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-    ```
-
-1. Azure CLI アクションを使用して、コードを BLOB ストレージにアップロードし、CDN エンドポイントを消去します。 `az storage blob upload-batch` の場合、プレースホルダーを実際のストレージ アカウント名に置き換えます。 スクリプトが `$web` コンテナーにアップロードされます。 `az cdn endpoint purge` の場合、プレースホルダーを CDN プロファイル名、CDN エンドポイント名、およびリソース グループに置き換えます。
-
-    ```yaml
-        - name: Upload to blob storage
-        uses: azure/CLI@v1
-        with:
-            azcliversion: 2.0.72
-            inlineScript: |
-                az storage blob upload-batch --account-name <STORAGE_ACCOUNT_NAME> -d '$web' -s .
-        - name: Purge CDN endpoint
-        uses: azure/CLI@v1
-        with:
-            azcliversion: 2.0.72
-            inlineScript: |
-            az cdn endpoint purge --content-paths  &quot;/*&quot; --profile-name &quot;CDN_PROFILE_NAME&quot; --name &quot;CDN_ENDPOINT&quot; --resource-group &quot;RESOURCE_GROUP&quot;
-    ``` 
-
-1. Azure のログアウトにアクションを追加して、ワークフローを完成させます。 完成したワークフローを次に示します。 このファイルは、リポジトリの `.github/workflows` フォルダー内に表示されます。
-
-    ```yaml
-   name: Blob storage website CI
-
-    on:
-    push:
-        branches: [ master ]
-    pull_request:
-        branches: [ master ]
-
-    jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v2
-        - name: Azure Login
-        uses: azure/login@v1
-        with:
-            creds: ${{ secrets.AZURE_CREDENTIALS }}    
-        - name: Azure CLI script
-        uses: azure/CLI@v1
-        with:
-            azcliversion: 2.0.72
-            inlineScript: |
-                az storage blob upload-batch --account-name <STORAGE_ACCOUNT_NAME> -d '$web' -s .
-        - name: Azure CLI script
-        uses: azure/CLI@v1
-        with:
-            azcliversion: 2.0.72
-            inlineScript: |
-            az cdn endpoint purge --content-paths  &quot;/*&quot; --profile-name &quot;CDN_PROFILE_NAME&quot; --name &quot;CDN_ENDPOINT&quot; --resource-group &quot;RESOURCE_GROUP":::
+    :::image type="content" source="../media/index/github-actions-run.png" alt-text="GitHub アクション実行のログ":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Azure の静的サイトとリポジトリが不要になったら、リソース グループと GitHub リポジトリを削除して、デプロイしたリソースをクリーンアップします。 
+静的 Web サイトと GitHub リポジトリが不要になったら、リソース グループと GitHub リポジトリを削除して、デプロイしたリソースをクリーンアップします。 
 
 ## <a name="next-steps"></a>次の手順
 

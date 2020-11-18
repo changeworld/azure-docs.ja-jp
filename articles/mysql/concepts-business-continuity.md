@@ -1,17 +1,17 @@
 ---
 title: ビジネス継続性 - Azure Database for MySQL
 description: Azure Database for MySQL サービスを使用する場合のビジネス継続性 (ポイントインタイム リストア、データ センターの停止、geo リストア) について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: b21062256896ebfc9c11b031413538b39620d1e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15fde6e7558c685537d36f45bcc7e3ff341544ff
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89613973"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542495"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mysql"></a>Azure Database for MySQL でのビジネス継続性を理解する
 
@@ -29,7 +29,7 @@ Azure Database for MySQL で提供されるビジネス継続性機能には、�
 | Geo レプリケーション バックアップからの geo リストア | サポートされていません | ERT < 12 時間<br/>RPO < 1 時間 | ERT < 12 時間<br/>RPO < 1 時間 |
 
 > [!IMPORTANT]
-> 削除したサーバーは、復元**できません**。 サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。
+> 削除したサーバーは、復元 **できません**。 サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>ユーザーまたはアプリケーション エラーの後でサーバーを復旧する
 

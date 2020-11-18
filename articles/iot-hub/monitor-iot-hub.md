@@ -5,13 +5,13 @@ author: robinsh
 ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
-ms.date: 10/22/2020
-ms.openlocfilehash: 71a7041ec02da9a85de411f1113814311c21cd4f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/06/2020
+ms.openlocfilehash: dc239843c4ed597949b4ba00c44ec84fc70741a8
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128881"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357608"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Azure IoT Hub の監視
 
@@ -71,7 +71,7 @@ Azure portal、CLI、または PowerShell を使用して診断設定を作成�
 
 IoT Hub のプラットフォーム メトリックを他の場所にルーティングするときは、以下の点にご注意ください。
 
-- 次のプラットフォーム メトリックは、診断設定を使用してエクスポートできません: *接続されているデバイス (プレビュー)* と *デバイスの合計数 (プレビュー)* 。
+- 次のプラットフォーム メトリックは、診断設定を使用してエクスポートできません:*接続されているデバイス (プレビュー)* と *デバイスの合計数 (プレビュー)* 。
 
 - 多次元メトリック (一部の[ルーティング メトリック](monitor-iot-hub-reference.md#routing-metrics)など) は、現在、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。 詳細については、「[他の場所へのプラットフォーム メトリックのエクスポート](/azure/azure-monitor/platform/metrics-supported#exporting-platform-metrics-to-other-locations)」を参照してください。
 
@@ -107,7 +107,7 @@ Azure Monitor 内のすべてのリソース ログには、同じフィール�
 
 IoT Hub のプラットフォーム メトリックを Azure Monitor ログにルーティングするときは、以下の点にご注意ください。
 
-- 次のプラットフォーム メトリックは、診断設定を使用してエクスポートできません: *接続されているデバイス (プレビュー)* と *デバイスの合計数 (プレビュー)* 。
+- 次のプラットフォーム メトリックは、診断設定を使用してエクスポートできません:*接続されているデバイス (プレビュー)* と *デバイスの合計数 (プレビュー)* 。
 
 - 多次元メトリック (一部の[ルーティング メトリック](monitor-iot-hub-reference.md#routing-metrics)など) は、現在、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。 詳細については、「[他の場所へのプラットフォーム メトリックのエクスポート](/azure/azure-monitor/platform/metrics-supported#exporting-platform-metrics-to-other-locations)」を参照してください。
 
@@ -291,6 +291,14 @@ class Program
 Azure Monitor のアラートは、監視データで重要な状態が見つかると事前に通知します。 これにより、ユーザーが気付く前に、管理者が問題を識別して対処できます。 アラートは[メトリック](/azure/azure-monitor/platform/alerts-metric-overview)、[ログ](/azure/azure-monitor/platform/alerts-unified-log)、[アクティビティ ログ](/azure/azure-monitor/platform/activity-log-alerts)に対して設定できます。 アラートの種類に応じて、さまざまな利点と欠点があります。
 
 プラットフォーム メトリックに基づいてアラート ルールを作成する場合は、カウント単位で収集される IoT Hub のプラットフォーム メトリックについて、一部の集計が有効でない場合や使用できない場合があることにご注意ください。 詳細については、[「Monitoring Azure IoT Hub data reference (Azure IoT Hub 監視データのリファレンス)」の「サポートされる集計」](monitor-iot-hub-reference.md#supported-aggregations)を参照してください。
+
+## <a name="monitor-per-device-disconnects-with-event-grid"></a>Event Grid を使用したデバイスごとの切断の監視
+
+Azure Monitor には、"*接続されているデバイス*" のメトリックが用意されています。このメトリックを使用して IoT Hub に接続されているデバイスの数を監視し、接続されているデバイスの数がしきい値を下回るとアラートをトリガーできます。 一部のシナリオではこれで十分ですが、[Azure Event Grid](/azure/event-grid/) では、重要なデバイスとインフラストラクチャのデバイス接続を追跡するために使用できる、待機時間の短い、デバイスごとの監視ソリューションが提供されます。
+
+Event Grid を使用すると、IoT Hub [**DeviceConnected** と **DeviceDisconnected** イベント](iot-hub-event-grid.md#event-types)をサブスクライブして、アラートをトリガーし、デバイスの接続状態を監視することができます。 Event Grid は Azure Monitor と比べてはるかにイベント待機時間が短く、接続されているデバイスの合計数ではなく、デバイスごとに監視できます。 これらの要因により、Event Grid は重要なデバイスとインフラストラクチャの接続を監視するための推奨される方法となっています。 運用環境では、デバイスの接続の監視には Event Grid を使用することを強くお勧めします。
+
+Event Grid と Azure Monitor を使用したデバイス接続の監視の詳細については、「[Azure IoT Hub との切断に関する監視、診断、およびトラブルシューティング](iot-hub-troubleshoot-connectivity.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,5 +1,6 @@
 ---
 title: Azure Machine Learning パイプラインとは
+titleSuffix: Azure Machine Learning
 description: 機械学習 (ML) パイプラインによって機械学習ワークフローを構築、最適化、管理する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,12 @@ ms.author: laobri
 author: lobrien
 ms.date: 08/17/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 2ebe3976813c00e92f041faf267ef0d8ae98a909
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c29ee87ab177357f4289134bb39353c764a0d75b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323019"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535301"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning パイプラインとは
 
@@ -44,7 +45,7 @@ Azure クラウドでは、目的が異なるさまざまなパイプライン�
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Azure ML パイプラインでできること
 
-Azure Machine Learning パイプラインは、独立して実行できる完全な機械学習タスクのワークフローです。 サブタスクは、パイプライン内の一連のステップとしてカプセル化されます。 Azure Machine Learning パイプラインは、Python スクリプトを呼び出すのと同じくらいシンプルなものにすることができるため、ほとんどのことを実行 " _できます_ "。 パイプラインは、次のような機械学習タスクに重点を置く " _必要があります_ "。
+Azure Machine Learning パイプラインは、独立して実行できる完全な機械学習タスクのワークフローです。 サブタスクは、パイプライン内の一連のステップとしてカプセル化されます。 Azure Machine Learning パイプラインは、Python スクリプトを呼び出すのと同じくらいシンプルなものにすることができるため、ほとんどのことを実行 "_できます_"。 パイプラインは、次のような機械学習タスクに重点を置く "_必要があります_"。
 
 + インポート、検証、クリーンアップ、マンジングと変換、正規化、ステージングなどのデータ準備
 + 引数のパラメーター化、ファイルパス、ログ/レポートの構成などのトレーニング構成

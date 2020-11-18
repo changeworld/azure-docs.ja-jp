@@ -1,17 +1,17 @@
 ---
 title: パフォーマンスの推奨事項 - Azure Database for MySQL
 description: この記事では、Azure Database for MySQL のパフォーマンスの推奨事項機能について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 6f41863f45bdc90cb9fe589ba0a5011dea84a67c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1445ad3d6be020326c34d60c555c24c435548fd0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84485255"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537647"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mysql"></a>Azure Database for MySQL のパフォーマンスの推奨事項
 
@@ -21,7 +21,7 @@ ms.locfileid: "84485255"
 
 ## <a name="permissions"></a>アクセス許可
 
-パフォーマンスに関する推奨事項機能を使用して分析を実行するには、**所有者**または**共同作成者**の許可が必要です。
+パフォーマンスに関する推奨事項機能を使用して分析を実行するには、**所有者** または **共同作成者** の許可が必要です。
 
 ## <a name="performance-recommendations"></a>パフォーマンスに関する推奨事項
 
@@ -35,7 +35,7 @@ Azure portal の MySQL サーバーに関するページで、メニュー バ�
 
 **[推奨事項]** ウィンドウには、推奨事項の一覧 (推奨事項が見つかった場合) と、その推奨事項が生成された関連するクエリ ID が表示されます。 このクエリ ID を使用して、[mysql.query_store](concepts-query-store.md#mysqlquery_store) ビューでクエリの詳細を確認できます。
 
-:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="パフォーマンスに関する推奨事項ランディング ページ":::
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="パフォーマンスに関する推奨事項の新しいページ":::
 
 推奨事項は自動的には適用されません。 推奨事項を適用するには、クエリ テキストをコピーし、任意のクライアントから実行します。 推奨事項を評価するため、監視とテストを忘れずに行ってください。
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: a6d6ca825a556ea3c98fb94d4becbb75b8f2a7d7
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: dd6e760fe8052463491f249b54c3af3d2636d46d
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93294208"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376886"
 ---
 # <a name="tutorial-for-configuring-theaccesshub-admin-tool-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して TheAccessHub 管理ツールを構成するためのチュートリアル
 
@@ -102,7 +102,7 @@ TheAccessHub 管理ツールがディレクトリにアクセスすることを�
 
 5. プロンプトに従って **[同意する]** を選択し、要求されたアクセス許可を TheAccessHub 管理ツールに付与します。
 
-## <a name="configure-a-new-csrhelpdesk-user-using-your-enterprise-identity"></a>エンタープライズ ID を使用して新しい CSR/ヘルプデスク ユーザーを構成する
+## <a name="configure-a-new-csr-user-using-your-enterprise-identity"></a>エンタープライズ ID を使用して新しい CSR ユーザーを構成する
 
 既存のエンタープライズ Azure Active Directory 資格情報を使用して、TheAccessHub 管理ツールにアクセスする CSR/ヘルプデスク ユーザーを作成します。
 
@@ -126,7 +126,7 @@ TheAccessHub 管理ツールがディレクトリにアクセスすることを�
 
 6. **[Submit]\(送信\)** をクリックします。
 
-## <a name="configure-a-new-csrhelpdesk-user-using-a-new-identity"></a>新しい ID を使用して新しい CSR/ヘルプデスク ユーザーを構成する
+## <a name="configure-a-new-csr-user-using-a-new-identity"></a>新しい ID を使用して新しい CSR ユーザーを構成する
 
 TheAccessHub 管理ツールに固有の新しいローカル資格情報を使用して、TheAccessHub 管理ツールにアクセスする CSR/ヘルプデスク ユーザーを作成します。 これは Azure AD を使用していない企業の組織によって主に使用されます。
 
@@ -150,7 +150,7 @@ SSO を使用せずに [CSR/ヘルプデスク ユーザーをセットアップ
 
 7. **[送信]** を選択します
 
-## <a name="configure-partitioned-csrhelpdesk-administration"></a>パーティション分割された CSR/ヘルプデスクの管理を構成する
+## <a name="configure-partitioned-csr-administration"></a>パーティション分割された CSR の管理を構成する
 
 TheAccessHub 管理ツールで顧客および CSR/ヘルプデスク ユーザーを管理するためのアクセス許可は、組織階層を使用して管理されます。 すべての仕事仲間と顧客には、所属するホーム組織があります。 特定の仕事仲間または仕事仲間のグループを、組織の所有者として割り当てることができます。  組織の所有者は、自分が所有する組織やサブ組織の仕事仲間や顧客を管理 (変更) できます。 複数の仕事仲間が一連のユーザーを管理できるようにするために、多数のメンバーを含むグループを作成できます。 その後、そのグループを組織所有者として割り当てることができ、グループのすべてのメンバーは組織内の仕事仲間や顧客を管理できます。
 
@@ -318,13 +318,13 @@ TheAccessHub 管理ツールを使用すると、さまざまなデータベー�
 
 15. **[送信]** を選択します
 
-16. **[Now]\(今\) のスケジュール** が選択された場合、新しいレコードがデータ同期画面にすぐに追加されます。 検証フェーズが 100% に達したら、 **新しいレコード** を選択して、読み込みの予想される結果を確認します。 スケジュールされた読み込みの場合、これらのレコードはスケジュールされた時刻より後にのみ表示されます。
+16. **[Now]\(今\) のスケジュール** が選択された場合、新しいレコードがデータ同期画面にすぐに追加されます。 検証フェーズが 100% に達したら、**新しいレコード** を選択して、読み込みの予想される結果を確認します。 スケジュールされた読み込みの場合、これらのレコードはスケジュールされた時刻より後にのみ表示されます。
 
 17. エラーがない場合は、 **[Run]\(実行\)** を選択して変更をコミットします。 それ以外の場合は、 **[More]\(その他\)** メニューから **[Remove]\(削除\)** を選択して読み込みを削除します。 その後、ソース データを修正するか、マッピングを読み込んで、もう一度やり直してください。 エラーの数が少ない場合は、代わりに手動でレコードを更新し、各レコードの **[Update]\(更新\)** を選択して修正できます。 最終的に、エラーのあるまま続行し、TheAccessHub 管理ツールで **サポート介入** として後でエラーを解決できます。
 
 18. 読み込みフェーズで **データ同期** レコードが 100% になると、その読み込みの結果として生じたすべての変更が開始されています。 Azure AD B2C で顧客の表示と変更の受信が開始されます。
 
-## <a name="synchronize-azure-ad-b2c-customer-data-into-theaccesshub-admin-tool"></a>Azure AD B2C 顧客データを TheAccessHub 管理ツールに同期する
+## <a name="synchronize-azure-ad-b2c-customer-data"></a>Azure AD B2C の顧客データを同期する 
 
 TheAccessHub 管理ツールは、1 回限りまたは継続的な操作として、Azure AD B2C のすべての顧客情報を TheAccessHub 管理ツールに同期できます。 これにより、CSR/ヘルプデスクの管理者は最新の顧客情報を確認できます。
 
@@ -356,7 +356,7 @@ Azure AD B2C 顧客データを TheAccessHub 管理ツールに同期するに�
 
 13. 読み込みフェーズで **データ同期** レコードが 100% になると、その読み込みの結果として生じたすべての変更が開始されています。
 
-## <a name="configure-azure-ad-b2c-policies-to-call-theaccesshub-admin-tool"></a>TheAccessHub 管理ツールを呼び出す Azure AD B2C ポリシーを構成する
+## <a name="configure-azure-ad-b2c-policies"></a>Azure AD B2C ポリシーを構成する
 
 場合によっては、Azure AD B2C に応じて TheAccessHub 管理ツールを最新の状態に同期する機能に制限があります。 TheAccessHub 管理ツールの API と Azure AD B2C ポリシーを活用して、変更が発生したときに TheAccessHub 管理ツールに通知できます。 このソリューションには、[Azure AD B2C カスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started#:~:text=%20Get%20started%20with%20custom%20policies%20in%20Azure,Experience%20Framework%20applications.%20Azure%20AD%20B2C...%20More%20)に関する技術的な知識が必要です。 次のセクションでは、TheAccessHub 管理ツールにサインアップ カスタム ポリシー内の新しいアカウントを通知するための、ポリシー ステップとセキュリティで保護された証明書の例を示します。
 

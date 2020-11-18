@@ -1,17 +1,17 @@
 ---
 title: 最小限のダウンタイムでの移行 - Azure Database for MySQL
 description: この記事では、Azure Database Migration Service を使用して、MySQL データベースを Azure Database for MySQL に最小限のダウンタイムで移行する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/30/2020
-ms.openlocfilehash: 9a3eefc9e820735efec302eed0f879a748cb1200
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 75b548b53de4c0f4ea39959c3d70e9ddb361d64c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125786"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540333"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>最小限のダウンタイムでの Azure Database for MySQL への移行
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]

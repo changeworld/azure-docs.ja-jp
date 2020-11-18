@@ -1,17 +1,17 @@
 ---
 title: Query Performance Insight - Azure Database for MySQL
 description: この記事では、Azure Database for MySQL の Query Performance Insight 機能について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: 7aefa6cd048c41feb1535f2ae7fa5c87bf628b2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30457b950e6400c799f35924e7b2ee90d868a465
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90884905"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535182"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Azure Database for MySQL の Query Performance Insight
 
@@ -33,7 +33,7 @@ Query Performance Insight では、実行時間が最長のクエリ、クエリ
 
 ## <a name="permissions"></a>アクセス許可
 
-Query Performance Insight で、クエリのテキストを表示するために必要な**所有者**または**共同作成者**のアクセス許可。 **リーダー**はグラフとテーブルを表示できますが、クエリ テキストは表示できません。
+Query Performance Insight で、クエリのテキストを表示するために必要な **所有者** または **共同作成者** のアクセス許可。 **リーダー** はグラフとテーブルを表示できますが、クエリ テキストは表示できません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -64,7 +64,7 @@ Azure Database for MySQL サーバーのポータル ページのメニュー �
 
 待機統計ビューに表示されるクエリは、指定された時間間隔での最大待機を示すクエリでグループ化されます。
 
-:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Query Performance Insight 実行時間が長いクエリ":::
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Query Performance Insight の待機時間の統計":::
 
 ## <a name="next-steps"></a>次のステップ
 

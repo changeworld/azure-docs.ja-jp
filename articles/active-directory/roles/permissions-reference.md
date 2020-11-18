@@ -7,19 +7,19 @@ manager: daveba
 search.appverid: MET150
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: reference
-ms.date: 09/22/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ece458960002fb6af9e0ef5065e6e926a9fc17d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 6dd88f6e8eb2ce95c1aa68c63f3d14a14e079d19
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373950"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396517"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) を使用して、特権が低いロールで 
 
 ### <a name="find-the-role-you-need"></a>必要なロールを調べる
 
-多くのロールのリストから必要なロールを見つけるのが面倒な場合は、Azure AD でロールのカテゴリに基づいてロールのサブセットを表示できます。 選択した種類のロールだけが表示される、 [Azure AD ロールと管理者](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators)に対する新しい **種類** フィルターを確認してください。
+多くのロールのリストから必要なロールを見つけるのが面倒な場合は、Azure AD でロールのカテゴリに基づいてロールのサブセットを表示できます。 選択した種類のロールだけが表示される、[Azure AD ロールと管理者](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators)に対する新しい **種類** フィルターを確認してください。
 
 ### <a name="a-role-exists-now-that-didnt-exist-when-you-assigned-the-global-administrator-role"></a>グローバル管理者ロールを割り当てたときには存在していなかったロールが存在する
 
@@ -56,10 +56,10 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 このロールのユーザーは、エンタープライズ アプリケーション、アプリケーション登録、アプリケーション プロキシの設定の全側面を作成して管理できます。 このロールに割り当てられたユーザーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されないことに注意してください。
 
-さらに、このロールは、委任されたアクセス許可とアプリケーション アクセス許可 (Microsoft Graph API に対するアクセス許可を除く) に " _同意する_ " 権限を付与します。
+さらに、このロールは、委任されたアクセス許可とアプリケーション アクセス許可 (Microsoft Graph API に対するアクセス許可を除く) に "_同意する_" 権限を付与します。
 
 > [!IMPORTANT]
-> この例外は、" _他の_ " アプリ (たとえば、Microsoft 以外のアプリや自分が登録したアプリなど) に対するアクセス許可には引き続き同意できるが、Azure AD 自体に対するアクセス許可には同意できないことを意味します。 アプリ登録の一環としてこれらのアクセス許可を " _要求_ " することはできますが、 これらのアクセス許可を " _許可する_ " (つまり、同意する) には、Azure AD 管理者が必要です。つまり、悪意のあるユーザーは、ディレクトリ全体に書き込み可能なアプリを作成してそれに同意し、そのアプリのアクセス許可を通じて自分自身をグローバル管理者に昇格させるなどの方法によって、自分のアクセス許可を簡単に昇格させることはできません。
+> この例外は、"_他の_" アプリ (たとえば、Microsoft 以外のアプリや自分が登録したアプリなど) に対するアクセス許可には引き続き同意できるが、Azure AD 自体に対するアクセス許可には同意できないことを意味します。 アプリ登録の一環としてこれらのアクセス許可を "_要求_" することはできますが、 これらのアクセス許可を "_許可する_" (つまり、同意する) には、Azure AD 管理者が必要です。つまり、悪意のあるユーザーは、ディレクトリ全体に書き込み可能なアプリを作成してそれに同意し、そのアプリのアクセス許可を通じて自分自身をグローバル管理者に昇格させるなどの方法によって、自分のアクセス許可を簡単に昇格させることはできません。
 >
 >このロールは、アプリケーションの資格情報を管理する権限を付与します。 このロールが割り当てられたユーザーは、アプリケーションに資格情報を追加し、その資格情報を使用してアプリケーションの ID を偽装することができます。 アプリケーションの ID にリソースへのアクセス権 (ユーザーやその他のオブジェクトの作成や更新など) が付与されている場合、このロールに割り当てられたユーザーは、アプリケーションを偽装している間にこのようなアクションを実行することができます。 アプリケーションの ID を偽装するこの機能は、ユーザーがロール割り当てを使用して実行できることを越えた特権の昇格になる可能性があります。 ユーザーにアプリケーション管理者ロールを割り当てると、そのユーザーがアプリケーションの ID を偽装できるようになることを理解することが重要です。
 
@@ -69,7 +69,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="authentication-administrator"></a>[認証管理者](#authentication-administrator-permissions)
 
-このロールのユーザーは、一部のユーザーのパスワード以外の資格情報の設定やリセットを実行でき、すべてのユーザーのパスワードを更新できます。 認証管理者は、パスワード以外の既存の資格情報 (たとえば、MFA、FIDO) に対する再登録を管理者以外のユーザー、または一部のロールに割り当てられているユーザーに要求し、" **このデバイスに MFA を記憶する** " 機能を取り消すことができます。これによって、管理者でないユーザーや次のロールのみが割り当てられているユーザーが次回サインインするときに MFA の入力を求めることもできます。 これらのアクションは、管理者以外のユーザー、または次の 1 つ以上のロールが割り当てられているユーザーにのみ適用されます。
+このロールのユーザーは、一部のユーザーのパスワード以外の資格情報の設定やリセットを実行でき、すべてのユーザーのパスワードを更新できます。 認証管理者は、パスワード以外の既存の資格情報 (たとえば、MFA、FIDO) に対する再登録を管理者以外のユーザー、または一部のロールに割り当てられているユーザーに要求し、"**このデバイスに MFA を記憶する**" 機能を取り消すことができます。これによって、管理者でないユーザーや次のロールのみが割り当てられているユーザーが次回サインインするときに MFA の入力を求めることもできます。 これらのアクションは、管理者以外のユーザー、または次の 1 つ以上のロールが割り当てられているユーザーにのみ適用されます。
 
 * 認証管理者
 * ディレクトリ リーダー
@@ -90,7 +90,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="azure-devops-administrator"></a>[Azure DevOps 管理者](#azure-devops-administrator-permissions)
 
-このロールが割り当てられたユーザーは、Azure DevOps ポリシーを管理して、新しい Azure DevOps 組織の作成を、構成可能な一連のユーザーやグループに制限できます。 このロールのユーザーは、会社の Azure AD 組織を支える Azure DevOps 組織を通じて、このポリシーを管理できます。
+このロールが割り当てられたユーザーは、Azure DevOps ポリシーを管理して、新しい Azure DevOps 組織の作成を、構成可能な一連のユーザーやグループに制限できます。 このロールのユーザーは、会社の Azure AD 組織によってサポートされている Azure DevOps 組織を通じて、このポリシーを管理できます。 このロールは、会社の Azure AD 組織によってサポートされている Azure DevOps 組織の中で、Azure DevOps 固有の他のアクセス許可 (プロジェクト コレクション管理者など) を付与しません。
 
 エンタープライズ Azure DevOps のすべてのポリシーは、このロールのユーザーによって管理できます。
 
@@ -233,7 +233,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 >- [OneDrive 管理センター](https://admin.onedrive.com/) - OneDrive 管理センターでは、グローバル閲覧者ロールはサポートされていません。
 >- [M365 管理者センター](https://admin.microsoft.com/Adminportal/Home#/homepage) - グローバル閲覧者はカスタマー ロックボックス要求を閲覧できません。 M365 管理者センターの左側のウィンドウにある **[サポート]** の下に **[カスタマー ロックボックス要求]** タブがありません。
 >- [Office セキュリティ/コンプライアンス センター](https://sip.protection.office.com/homepage) - グローバル閲覧者は、SCC 監査ログを読み取ることも、コンテンツ検索を実行することも、セキュリティ スコアを確認することもできません。
->- [Teams 管理者センター](https://admin.teams.microsoft.com) - グローバル閲覧者は **Teams ライフサイクル** 、 **分析 & レポート** 、 **IP 電話デバイス管理** 、 **アプリ カタログ** を閲覧できません。
+>- [Teams 管理者センター](https://admin.teams.microsoft.com) - グローバル閲覧者は **Teams ライフサイクル**、**分析 & レポート**、**IP 電話デバイス管理**、**アプリ カタログ** を閲覧できません。
 >- [Privileged Access Management (PAM)](/office365/securitycompliance/privileged-access-management-overview) では、グローバル閲覧者ロールがサポートされていません。
 >- [Azure Information Protection](/azure/information-protection/what-is-information-protection) - グローバル閲覧者は、[中央レポート](/azure/information-protection/reports-aip)のみでサポートされ、Azure AD 組織が [統合ラベル付けプラットフォーム](/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)にない場合にサポートされます。
 >
@@ -311,7 +311,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 使用しないでください。 このロールは、Commerce から自動的に割り当てられます。他の用途に使用するためのものではなく、他の用途ではサポートされていません。 詳細は以下を参照してください。
 
-Modern Commerce ユーザー ロールは、特定のユーザーに Microsoft 365 管理センターにアクセスして、 **ホーム** 、 **課金** 、 **サポート** の左側のナビゲーション エントリを表示するためのアクセス許可を付与します。 これらの領域で利用可能なコンテンツは、ユーザーが自分自身または組織のために購入した製品を管理するために、ユーザーに割り当てられた[コマース固有のロール](../../cost-management-billing/manage/understand-mca-roles.md)によって制御されます。 これには、請求書の支払いや、課金アカウントや課金プロファイルへのアクセスなどのタスクが含まれる場合があります。 
+Modern Commerce ユーザー ロールは、特定のユーザーに Microsoft 365 管理センターにアクセスして、**ホーム**、**課金**、**サポート** の左側のナビゲーション エントリを表示するためのアクセス許可を付与します。 これらの領域で利用可能なコンテンツは、ユーザーが自分自身または組織のために購入した製品を管理するために、ユーザーに割り当てられた[コマース固有のロール](../../cost-management-billing/manage/understand-mca-roles.md)によって制御されます。 これには、請求書の支払いや、課金アカウントや課金プロファイルへのアクセスなどのタスクが含まれる場合があります。 
 
 Modern Commerce ユーザー ロールを持つユーザーは、通常、他の Microsoft 購入システムの管理権限を持っていますが、管理センターへのアクセスに使用されるグローバル管理者ロールまたは課金管理者ロールは持っていません。 
 
@@ -437,7 +437,7 @@ Windows Defender ATP および EDR | セキュリティ閲覧者ロールのす�
 --- | ---
 [Microsoft 365 セキュリティ センター](https://protection.office.com) | Microsoft 365 サービス全体のセキュリティ関連ポリシーの表示<br>セキュリティの脅威とアラートの表示<br>レポートの表示
 Identity Protection Center | 各セキュリティ機能の全セキュリティ レポートと設定情報の閲覧<br><ul><li>スパム対策<li>暗号化<li>データ損失の防止<li>マルウェア対策<li>高度な脅威保護<li>フィッシング詐欺対策<li>メールフロー ルール
-[Privileged Identity Management](../privileged-identity-management/pim-configure.md) | Azure AD Privileged Identity Management に表示されるすべての情報への読み取り専用アクセス権を持ちます。Azure AD ロール割り当てに関するポリシーとレポート、およびセキュリティ レビュー。<br>Azure AD Privileged Identity Management へのサインアップおよびそれに対する変更を行うことは **できません** 。 このロールのユーザーは、追加のロール (グローバル管理者や特権ロール管理者など) の資格がある場合、Privileged Identity Management ポータルまたは PowerShell からそれらのロールを有効化することができます。
+[Privileged Identity Management](../privileged-identity-management/pim-configure.md) | Azure AD Privileged Identity Management に表示されるすべての情報への読み取り専用アクセス権を持ちます。Azure AD ロール割り当てに関するポリシーとレポート、およびセキュリティ レビュー。<br>Azure AD Privileged Identity Management へのサインアップおよびそれに対する変更を行うことは **できません**。 このロールのユーザーは、追加のロール (グローバル管理者や特権ロール管理者など) の資格がある場合、Privileged Identity Management ポータルまたは PowerShell からそれらのロールを有効化することができます。
 [Office 365 セキュリティ/コンプライアンス センター](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | セキュリティ ポリシーの表示<br>セキュリティの脅威の表示および調査<br>レポートの表示
 Windows Defender ATP および EDR | アラートを表示して調査します。 Windows Defender ATP でロールベースのアクセス制御を有効にすると、Azure AD セキュリティ閲覧者ロールなどの読み取り専用アクセス許可を持つユーザーは、Windows Defender ATP ロールが割り当てられるまで、アクセス権を失います。
 [Intune](/intune/role-based-access-control) | ユーザー、デバイス、登録、構成、アプリケーション情報の表示。 Intune に変更を加えることはできません。

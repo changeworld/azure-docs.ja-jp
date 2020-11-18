@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 815b1789c54d1ce505c16dc89e199d451ae9a588
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 846c47017ba2887c287dd080c44c46b372660d0e
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396129"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443604"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Web API を呼び出す Web アプリ: Web API を呼び出す
 
@@ -199,5 +199,4 @@ def graphcall():
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [運用環境への移行](scenario-web-app-call-api-production.md)
+このシナリオの次の記事「[運用環境に移行する](scenario-web-app-call-api-production.md)」に進みます。

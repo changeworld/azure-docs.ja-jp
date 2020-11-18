@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a6cbb574245c7b11d2437693d60fd952becedba3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4effdde131f93ccf430029edc4d87e0627010c8b
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257556"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443194"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>シナリオ:Web API を呼び出すデスクトップ アプリ
 
@@ -61,5 +61,4 @@ Web API を呼び出すデスクトップ アプリを構築するために必�
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [デスクトップ アプリ:アプリの登録](scenario-desktop-app-registration.md)
+このシナリオの次の記事「[アプリの登録](scenario-desktop-app-registration.md)」に進みます。

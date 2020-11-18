@@ -11,13 +11,13 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/09/2020
-ms.openlocfilehash: 761841c1f2146a33b35cdddc4adc4d3eb1a4b139
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/06/2020
+ms.openlocfilehash: 6b37a0df994546762abbcf3452d8e7b52dec6847
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635288"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331415"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-sql-database-geo-replication-and-failover"></a>SQL Database geo レプリケーションとフェールオーバーを使用して Azure-SSIS 統合ランタイムを構成する
 
@@ -33,29 +33,32 @@ SQL Database の geo レプリケーションとフェールオーバーの詳�
 
 ### <a name="prerequisites"></a>前提条件
 
-Azure SQL マネージド インスタンスでは、" *データベース マスター キー (DMK)* " を使用して、データベースに格納されるデータ、資格情報、および接続情報がセキュリティで保護されます。 DMK の暗号化を自動的に解除できるように、 *サーバー マスター キー (SMK)* を使用してキーのコピーが暗号化されます。 
+Azure SQL マネージド インスタンスでは、"*データベース マスター キー (DMK)* " を使用して、データベースに格納されるデータ、資格情報、および接続情報がセキュリティで保護されます。 DMK の暗号化を自動的に解除できるように、*サーバー マスター キー (SMK)* を使用してキーのコピーが暗号化されます。 
 
 SMK はフェールオーバー グループにレプリケートされません。 フェールオーバー後の DMK 復号化のために、プライマリ インスタンスとセカンダリ インスタンスの両方にパスワードを追加する必要があります。
 
 1. プライマリ インスタンスで SSISDB に対して次のコマンドを実行します。 この手順では、新しい暗号化パスワードが追加されます。
 
-    ```sql
-    ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'password'
-    ```
+   ```sql
+   ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'password'
+   ```
 
 2. SQL マネージド インスタンスのフェールオーバー グループを構成します。
 
 3. 新しい暗号化パスワードを使用して、セカンダリ インスタンスに **sp_control_dbmasterkey_password**  を実行します。
 
-    ```sql
-    EXEC sp_control_dbmasterkey_password @db_name = N'SSISDB',   
-        @password = N'<password>', @action = N'add';  
-    GO
-    ```
+   ```sql
+   EXEC sp_control_dbmasterkey_password @db_name = N'SSISDB', @password = N'<password>', @action = N'add';  
+   GO
+   ```
 
 ### <a name="scenario-1-azure-ssis-ir-is-pointing-to-a-readwrite-listener-endpoint"></a>シナリオ 1: Azure-SSIS IR が読み取りと書き込みのリスナー エンドポイントを指している
 
-Azure-SSIS IR が読み取りと書き込みのリスナー エンドポイントを指すようにするには、まず、プライマリ サーバー エンドポイントを指す必要があります。 SSISDB をフェールオーバー グループに配置した後は、読み取りと書き込みのリスナー エンドポイントに変更して Azure-SSIS IR を再起動することができます。
+Azure-SSIS IR が読み取りと書き込みのリスナー エンドポイントを指すようにするには、まず、プライマリ サーバー エンドポイントを指す必要があります。 SSISDB をフェールオーバー グループに配置したら、Azure-SSIS IR を停止し、Azure PowerShell を使用して、それを読み取りと書き込みのリスナー エンドポイントを指すように変更して、再起動することができます。
+
+```powershell
+Set-AzDataFactoryV2IntegrationRuntime -CatalogServerEndpoint "Azure SQL Managed Instance read/write listener endpoint"
+```
 
 #### <a name="solution"></a>解決策
 
@@ -65,12 +68,12 @@ Azure-SSIS IR が読み取りと書き込みのリスナー エンドポイン�
 
 2. セカンダリ インスタンスでカスタム セットアップを行うには、新しいリージョン、仮想ネットワーク、および Shared Access Signature (SAS) URI 情報を使用して Azure-SSIS IR を編集します。 Azure-SSIS IR が読み取りと書き込みのリスナーを指し、エンドポイントが Azure-SSIS IR に対して透過的であるため、エンドポイントを編集する必要はありません。
 
-    ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                -VNetId "new VNet" `
-                -Subnet "new subnet" `
-                -SetupScriptContainerSasUri "new custom setup SAS URI"
-    ```
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+      -VNetId "new VNet" `
+      -Subnet "new subnet" `
+      -SetupScriptContainerSasUri "new custom setup SAS URI"
+   ```
 
 3. Azure-SSIS IR を再起動します。
 
@@ -86,35 +89,35 @@ Azure-SSIS IR が読み取りと書き込みのリスナー エンドポイン�
 
 2. セカンダリ インスタンスの新しいリージョン、エンドポイント、および仮想ネットワークの情報を使って Azure-SSIS IR を編集します。
 
-    ```powershell
-      Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                    -CatalogServerEndpoint "Azure SQL Database endpoint" `
-                    -CatalogAdminCredential "Azure SQL Database admin credentials" `
-                    -VNetId "new VNet" `
-                    -Subnet "new subnet" `
-                    -SetupScriptContainerSasUri "new custom setup SAS URI"
-        ```
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+      -CatalogServerEndpoint "Azure SQL Database endpoint" `
+      -CatalogAdminCredential "Azure SQL Database admin credentials" `
+      -VNetId "new VNet" `
+      -Subnet "new subnet" `
+      -SetupScriptContainerSasUri "new custom setup SAS URI"
+   ```
 
-3. Restart the Azure-SSIS IR.
+3. Azure-SSIS IR を再起動します。
 
-### Scenario 3: Azure-SSIS IR is pointing to a public endpoint of a SQL Managed Instance
+### <a name="scenario-3-azure-ssis-ir-is-pointing-to-a-public-endpoint-of-a-sql-managed-instance"></a>シナリオ 3: Azure-SSIS IR が SQL Managed Instance のパブリック エンドポイントを指している
 
-This scenario is suitable if the Azure-SSIS IR is pointing to a public endpoint of a Azure SQL Managed Instance and it doesn't join to a virtual network. The only difference from scenario 2 is that you don't need to edit virtual network information for the Azure-SSIS IR after failover.
+このシナリオは、Azure-SSIS IR が Azure SQL Managed Instance のパブリック エンドポイントを指していて、仮想ネットワークに参加していない場合に適しています。 シナリオ 2 との唯一の違いは、フェールオーバー後に Azure-SSIS IR の仮想ネットワーク情報を編集する必要がないことです。
 
-#### Solution
+#### <a name="solution"></a>解決策
 
-When failover occurs, take the following steps:
+フェールオーバーが発生した場合は、次の手順を行います。
 
-1. Stop the Azure-SSIS IR in the primary region.
+1. プライマリ リージョンの Azure-SSIS IR を停止します。
 
-2. Edit the Azure-SSIS IR with the new region and endpoint information for the secondary instance.
+2. セカンダリ インスタンスの新しいリージョンとエンドポイントの情報で Azure-SSIS IR を編集します。
 
-    ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                -CatalogServerEndpoint "Azure SQL Database server endpoint" `
-                -CatalogAdminCredential "Azure SQL Database server admin credentials" `
-                -SetupScriptContainerSasUri "new custom setup SAS URI"
-    ```
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+      -CatalogServerEndpoint "Azure SQL Database server endpoint" `
+      -CatalogAdminCredential "Azure SQL Database server admin credentials" `
+      -SetupScriptContainerSasUri "new custom setup SAS URI"
+   ```
 
 3. Azure-SSIS IR を再起動します。
 
@@ -133,43 +136,41 @@ When failover occurs, take the following steps:
 
 2. ストアド プロシージャを実行して、 **\<new_data_factory_name\>** と **\<new_integration_runtime_name\>** からの接続を受け入れるように SSISDB 内のメタデータを更新します。
    
-    ```sql
-    EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
-    ```
+   ```sql
+   EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
+   ```
 
 3. 新しいリージョン内に **\<new_data_factory_name\>** という名前の新しいデータ ファクトリを作成します。
 
-    ```powershell
-    Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
-                      -Location "new region"`
-                      -Name "<new_data_factory_name>"
-    ```
-    
-    この PowerShell コマンドの詳細については、[PowerShell を使用した Azure データ ファクトリの作成](quickstart-create-data-factory-powershell.md)に関するページを参照してください。
+   ```powershell
+   Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
+      -Location "new region"`
+      -Name "<new_data_factory_name>"
+   ```
+   
+   この PowerShell コマンドの詳細については、[PowerShell を使用した Azure データ ファクトリの作成](quickstart-create-data-factory-powershell.md)に関するページを参照してください。
 
 4. Azure PowerShell を使用して、新しいリージョン内に **\<new_integration_runtime_name\>** という名前の新しい Azure-SSIS IR を作成します。
 
-    ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
-                                           -DataFactoryName "new data factory name" `
-                                           -Name "<new_integration_runtime_name>" `
-                                           -Description $AzureSSISDescription `
-                                           -Type Managed `
-                                           -Location $AzureSSISLocation `
-                                           -NodeSize $AzureSSISNodeSize `
-                                           -NodeCount $AzureSSISNodeNumber `
-                                           -Edition $AzureSSISEdition `
-                                           -LicenseType $AzureSSISLicenseType `
-                                           -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
-                                           -VnetId "new vnet" `
-                                           -Subnet "new subnet" `
-                                           -CatalogServerEndpoint $SSISDBServerEndpoint `
-                                           -CatalogPricingTier $SSISDBPricingTier
-    ```
-
-    この PowerShell コマンドの詳細については、「[Azure Data Factory で Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md)」を参照してください。
-
-
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
+      -DataFactoryName "new data factory name" `
+      -Name "<new_integration_runtime_name>" `
+      -Description $AzureSSISDescription `
+      -Type Managed `
+      -Location $AzureSSISLocation `
+      -NodeSize $AzureSSISNodeSize `
+      -NodeCount $AzureSSISNodeNumber `
+      -Edition $AzureSSISEdition `
+      -LicenseType $AzureSSISLicenseType `
+      -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
+      -VnetId "new vnet" `
+      -Subnet "new subnet" `
+      -CatalogServerEndpoint $SSISDBServerEndpoint `
+      -CatalogPricingTier $SSISDBPricingTier
+   ```
+   
+   この PowerShell コマンドの詳細については、「[Azure Data Factory で Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md)」を参照してください。
 
 ## <a name="azure-ssis-ir-failover-with-sql-database"></a>SQL Database による Azure-SSIS IR フェールオーバー
 
@@ -178,9 +179,13 @@ When failover occurs, take the following steps:
 このシナリオは、次の場合に適しています。
 
 - Azure-SSIS IR がフェールオーバー グループの読み取りと書き込みのリスナー エンドポイントを指している。
-- SQL Database サーバーが仮想ネットワーク サービス エンドポイントに関する規則で " *構成されていない* "。
+- SQL Database サーバーが仮想ネットワーク サービス エンドポイントに関する規則で "*構成されていない*"。
 
-Azure-SSIS IR が読み取りと書き込みのリスナー エンドポイントを指すようにするには、まず、プライマリ サーバー エンドポイントを指す必要があります。 SSISDB をフェールオーバー グループに配置した後は、読み取りと書き込みのリスナー エンドポイントに変更して Azure-SSIS IR を再起動することができます。
+Azure-SSIS IR が読み取りと書き込みのリスナー エンドポイントを指すようにするには、まず、プライマリ サーバー エンドポイントを指す必要があります。 SSISDB をフェールオーバー グループに配置したら、Azure-SSIS IR を停止し、Azure PowerShell を使用して、それを読み取りと書き込みのリスナー エンドポイントを指すように変更して、再起動することができます。
+
+```powershell
+Set-AzDataFactoryV2IntegrationRuntime -CatalogServerEndpoint "Azure SQL Database read/write listener endpoint"
+```
 
 #### <a name="solution"></a>解決策
 
@@ -201,14 +206,14 @@ Azure-SSIS IR のリージョンまたはその他の情報を更新する場合
 
 2. セカンダリ インスタンスの新しいリージョン、エンドポイント、および仮想ネットワークの情報を使って Azure-SSIS IR を編集します。
 
-    ```powershell
-      Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                        -CatalogServerEndpoint "Azure SQL Database endpoint" `
-                        -CatalogAdminCredential "Azure SQL Database admin credentials" `
-                        -VNetId "new VNet" `
-                        -Subnet "new subnet" `
-                        -SetupScriptContainerSasUri "new custom setup SAS URI"
-    ```
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+      -CatalogServerEndpoint "Azure SQL Database endpoint" `
+      -CatalogAdminCredential "Azure SQL Database admin credentials" `
+      -VNetId "new VNet" `
+      -Subnet "new subnet" `
+      -SetupScriptContainerSasUri "new custom setup SAS URI"
+   ```
 
 3. Azure-SSIS IR を再起動します。
 
@@ -227,42 +232,41 @@ Azure-SSIS IR のリージョンまたはその他の情報を更新する場合
 
 2. ストアド プロシージャを実行して、 **\<new_data_factory_name\>** と **\<new_integration_runtime_name\>** からの接続を受け入れるように SSISDB 内のメタデータを更新します。
    
-    ```sql
-    EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
-    ```
+   ```sql
+   EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
+   ```
 
 3. 新しいリージョン内に **\<new_data_factory_name\>** という名前の新しいデータ ファクトリを作成します。
 
-    ```powershell
-    Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
-                         -Location "new region"`
-                         -Name "<new_data_factory_name>"
-    ```
-    
-    この PowerShell コマンドの詳細については、[PowerShell を使用した Azure データ ファクトリの作成](quickstart-create-data-factory-powershell.md)に関するページを参照してください。
+   ```powershell
+   Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
+      -Location "new region"`
+      -Name "<new_data_factory_name>"
+   ```
+   
+   この PowerShell コマンドの詳細については、[PowerShell を使用した Azure データ ファクトリの作成](quickstart-create-data-factory-powershell.md)に関するページを参照してください。
 
 4. Azure PowerShell を使用して、新しいリージョン内に **\<new_integration_runtime_name\>** という名前の新しい Azure-SSIS IR を作成します。
 
-    ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
-                                           -DataFactoryName "new data factory name" `
-                                           -Name "<new_integration_runtime_name>" `
-                                           -Description $AzureSSISDescription `
-                                           -Type Managed `
-                                           -Location $AzureSSISLocation `
-                                           -NodeSize $AzureSSISNodeSize `
-                                           -NodeCount $AzureSSISNodeNumber `
-                                           -Edition $AzureSSISEdition `
-                                           -LicenseType $AzureSSISLicenseType `
-                                           -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
-                                           -VnetId "new vnet" `
-                                           -Subnet "new subnet" `
-                                           -CatalogServerEndpoint $SSISDBServerEndpoint `
-                                           -CatalogPricingTier $SSISDBPricingTier
-    ```
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
+      -DataFactoryName "new data factory name" `
+      -Name "<new_integration_runtime_name>" `
+      -Description $AzureSSISDescription `
+      -Type Managed `
+      -Location $AzureSSISLocation `
+      -NodeSize $AzureSSISNodeSize `
+      -NodeCount $AzureSSISNodeNumber `
+      -Edition $AzureSSISEdition `
+      -LicenseType $AzureSSISLicenseType `
+      -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
+      -VnetId "new vnet" `
+      -Subnet "new subnet" `
+      -CatalogServerEndpoint $SSISDBServerEndpoint `
+      -CatalogPricingTier $SSISDBPricingTier
+   ```
 
-    この PowerShell コマンドの詳細については、「[Azure Data Factory で Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md)」を参照してください。
-
+   この PowerShell コマンドの詳細については、「[Azure Data Factory で Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

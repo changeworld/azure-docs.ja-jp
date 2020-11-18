@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 707b6d0f8a5fa3cff89339b9b0465d96b5369a34
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 596de459b888bb9973aca1c7d72f2f9e24c966eb
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287602"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445134"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
 
@@ -56,14 +56,14 @@ Key Vault には、アクセスを許可するために Azure AD セキュリテ
 Azure にデプロイされたアプリケーションにはマネージド ID を使用することをお勧めします。 マネージド ID がサポートされていない Azure サービスを使用する場合、またはアプリケーションをオンプレミスに展開している場合は、他の可能な方法として[証明書を使用したサービス プリンシパル](../../active-directory/develop/howto-create-service-principal-portal.md)があります。 そのシナリオでは、証明書が Key Vault に格納され、頻繁にローテーションされることになります。 シークレットを使用したサービス プリンシパルは、開発およびテスト環境で使用できます。また、ユーザー プリンシパルを使用してローカルまたは Cloud Shell で使用することをお勧めします。
 
 環境ごとに推奨されるセキュリティ プリンシパル:
-- **運用環境** :
+- **運用環境**:
   - 証明書を使用したマネージド ID またはサービス プリンシパル
-- **テストおよび開発環境** :
+- **テストおよび開発環境**:
   - マネージド ID、証明書を使用したサービス プリンシパル、またはシークレットを指定したサービス プリンシパル
-- **ローカル開発** :
+- **ローカル開発**:
   - シークレットを指定したユーザー プリンシパルまたはサービス プリンシパル
 
-上記の認証シナリオは、 **Azure ID クライアント ライブラリ** でサポートされており、Key Vault SDK と統合されています。 Azure ID ライブラリは、コードを変更することなく、異なる複数の環境やプラットフォームで使用できます。 Azure ID を使用すると、Azure CLI、Visual Studio、Visual Studio Code などによって Azure にログインしたユーザーから、認証トークンを自動的に取得することもできます。 
+上記の認証シナリオは、**Azure ID クライアント ライブラリ** でサポートされており、Key Vault SDK と統合されています。 Azure ID ライブラリは、コードを変更することなく、異なる複数の環境やプラットフォームで使用できます。 Azure ID を使用すると、Azure CLI、Visual Studio、Visual Studio Code などによって Azure にログインしたユーザーから、認証トークンを自動的に取得することもできます。 
 
 Azure ID クライアント ライブラリの詳細については、以下を参照してください。
 
@@ -79,7 +79,7 @@ Azure ID クライアント ライブラリの詳細については、以下を�
 
 ## <a name="manage-keys-certificates-and-secrets"></a>キー、証明書、シークレットの管理
 
-キー、シークレット、および証明書へのアクセスは、データ プレーンによって制御されます。 データ プレーンのアクセス制御は、ローカルのコンテナー アクセス ポリシーまたは RBAC (プレビュー) を使用して行うことができます。
+キー、シークレット、および証明書へのアクセスは、データ プレーンによって制御されます。 データ プレーンのアクセス制御は、ローカルのコンテナー アクセス ポリシーまたは Azure RBAC (プレビュー) を使用して行うことができます。
 
 **キーの API と SDK**
 
@@ -104,7 +104,7 @@ Azure ID クライアント ライブラリの詳細については、以下を�
 
 インストール パッケージとソース コードについては、[クライアント ライブラリ](client-libraries.md)に関するページを参照してください。
 
-Key Vault データ プレーンのセキュリティの詳細については、[Key Vault データ プレーンとアクセス ポリシー](./secure-your-key-vault.md#data-plane-and-access-policies)および [Key Vault データ プレーンと RBAC (プレビュー)](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview) に関するページを参照してください。
+Key Vault データ プレーンのセキュリティの詳細については、[Key Vault データ プレーンとアクセス ポリシー](./secure-your-key-vault.md#data-plane-and-access-policies)および [Key Vault データ プレーンと Azure RBAC (プレビュー)](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview) に関するページをご覧ください
 
 ### <a name="code-examples"></a>コード例
 

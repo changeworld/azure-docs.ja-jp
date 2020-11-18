@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: dffa8393dcfebf1cb73e3ab72890999cfa633b80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/06/2020
+ms.openlocfilehash: 80c3f9aa02680097276f966ce6aea02acf1e40fb
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532569"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358798"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーをスケジュールする方法
 
@@ -92,28 +92,32 @@ REST API を使用してインデクサーのスケジュールを定義でき�
 
 Azure Cognitive Search .NET SDK を使用してインデクサーのスケジュールを定義できます。 そのためには、インデクサーを作成または更新するときに、**schedule** プロパティを含めます。
 
-次の C# の例では、定義済みのデータ ソースとインデックスを使用してインデクサーを作成し、初回は今から 30 分後、その後は毎日 1 回実行するようにスケジュールを設定します。
+次の C# の例では、定義済みのデータ ソースとインデックスを使用して Azure SQL データベースのインデクサーを作成し、今後毎日 1 回実行するようにスケジュールを設定します。
 
+```csharp
+var schedule = new IndexingSchedule(TimeSpan.FromDays(1))
+{
+    StartTime = DateTimeOffset.Now
+};
+
+var indexer = new SearchIndexer("hotels-sql-idxr", dataSource.Name, searchIndex.Name)
+{
+    Description = "Data indexer",
+    Schedule = schedule
+};
+
+await indexerClient.CreateOrUpdateIndexerAsync(indexer);
 ```
-    Indexer indexer = new Indexer(
-        name: "azure-sql-indexer",
-        dataSourceName: dataSource.Name,
-        targetIndexName: index.Name,
-        schedule: new IndexingSchedule(
-                        TimeSpan.FromDays(1), 
-                        new DateTimeOffset(DateTime.UtcNow.AddMinutes(30))
-                    )
-        );
-    await searchService.Indexers.CreateOrUpdateAsync(indexer);
-```
-**schedule** パラメーターを省略した場合、インデクサーは作成直後に 1 回だけ実行されます。
 
-**startTime** パラメーターは過去の時間に設定できます。 その場合、最初の実行は、指定された **startTime** から継続的にインデクサーが実行されているかのようにスケジュールされます。
 
-スケジュールは [IndexingSchedule](/dotnet/api/microsoft.azure.search.models.indexingschedule) クラスを使用して定義されます。 **IndexingSchedule** コンストラクターでは、**TimeSpan** オブジェクトを使用して **interval** パラメーターを指定する必要があります。 設定できる最短の間隔値は 5 分、最長は 24 時間です。 **DateTimeOffset** オブジェクトとして指定された 2 番目の **startTime** パラメーターは省略可能です。
+**Schedule** プロパティを省略した場合、インデクサーは作成直後に 1 回だけ実行されます。
 
-.NET SDK では、[SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) クラスとその [Indexers](/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) プロパティを使用してインデクサーの操作を制御できます。これは、**IIndexersOperations** インターフェイスのメソッドを実装します。 
+**StartTime** パラメーターは過去の時間に設定できます。 その場合、最初の実行は、指定された **StartTime** から継続的にインデクサーが実行されているかのようにスケジュールされます。
 
-[Run](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run)、[RunAsync](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync)、または [RunWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) メソッドのいずれかを使用して、いつでも必要に応じてインデクサーを実行できます。
+スケジュールは [IndexingSchedule](/dotnet/api/azure.search.documents.indexes.models.indexingschedule) クラスを使用して定義されます。 **IndexingSchedule** コンストラクターでは、**TimeSpan** オブジェクトを使用して **Interval** パラメーターを指定する必要があります。 設定できる最短の間隔値は 5 分、最長は 24 時間です。 **DateTimeOffset** オブジェクトとして指定された 2 番目の **StartTime** パラメーターは省略可能です。
 
-インデクサーの作成、更新、および実行の詳細については、[IIindexersOperations](/dotnet/api/microsoft.azure.search.iindexersoperations) を参照してください。
+.NET SDK では、[SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient)を使用してインデクサー操作を制御できます。 
+
+[RunIndexer](/dotnet/api/azure.search.documents.indexes.searchindexerclient.runindexer) または [RunIndexerAsync](/dotnet/api/azure.search.documents.indexes.searchindexerclient.runindexerasync) メソッドのいずれかを使用して、いつでも必要に応じてインデクサーを実行できます。
+
+インデクサーの作成、更新、および実行の詳細については、[SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient) を参照してください。

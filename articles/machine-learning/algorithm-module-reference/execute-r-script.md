@@ -1,7 +1,7 @@
 ---
 title: R スクリプトの実行:モジュール リファレンス
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で R スクリプトの実行モジュールを使用し、R コードを実行する方法について説明します。
+description: Azure Machine Learning デザイナーで R スクリプトの実行モジュールを使用し、カスタム R コードを実行する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: 0a3dbb42e69978a8a4895f44b57cc3ca5353e799
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3e94172096daf5fd06549f8645d05b874948a917
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323734"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420820"
 ---
 # <a name="execute-r-script-module"></a>R スクリプトの実行モジュール
 
@@ -147,11 +147,11 @@ R スクリプトの実行モジュールには、出発点として利用でき
 
 1. スクリプトに必要なすべての入力を接続します。 入力は、任意指定であり、データと追加の R コードを含めることができます。
 
-    * **Dataset1** :`dataframe1` として 1 番目の入力を参照します。 入力データセットは、CSV、TSV、または ARFF ファイル形式にする必要があります。 または、Azure Machine Learning データセットを接続することもできます。
+    * **Dataset1**:`dataframe1` として 1 番目の入力を参照します。 入力データセットは、CSV、TSV、または ARFF ファイル形式にする必要があります。 または、Azure Machine Learning データセットを接続することもできます。
 
-    * **Dataset2** :`dataframe2` として 2 番目の入力を参照します。 このデータセットも、CSV、TSV、ARFF ファイル形式、または Azure Machine Learning データセット形式にする必要があります。
+    * **Dataset2**:`dataframe2` として 2 番目の入力を参照します。 このデータセットも、CSV、TSV、ARFF ファイル形式、または Azure Machine Learning データセット形式にする必要があります。
 
-    * **スクリプト バンドル** :3 つ目の入力には、.zip ファイルを指定できます。 ZIP ファイルには、複数のファイルと複数のファイルの種類を含めることができます。
+    * **スクリプト バンドル**:3 つ目の入力には、.zip ファイルを指定できます。 ZIP ファイルには、複数のファイルと複数のファイルの種類を含めることができます。
 
 1. **[R script]\(R スクリプト\)** テキストボックスに、有効な R スクリプトを入力するか貼り付けます。
 
@@ -194,7 +194,7 @@ R スクリプトの実行モジュールには、出発点として利用でき
     > [!NOTE]
     > 既存の R コードは、デザイナー パイプラインで実行するために、多少の変更が必要な場合があります。 たとえば、CSV 形式で指定した入力データは、コードで使用する前に、データセットに明示的に変換する必要があります。 また、R 言語で使用されるデータ型および列型は、デザイナーで使用されるデータ型および列型とはいくつかの点で異なります。
 
-1. スクリプトが 16 KB を超える場合は、 **スクリプト バンドル** ポートを使用すると、 *[CommandLine exceeds the limit of 16597 characters] (CommandLine が上限の 16,597 文字を超えています)* などのエラーを回避できます。 
+1. スクリプトが 16 KB を超える場合は、**スクリプト バンドル** ポートを使用すると、 *[CommandLine exceeds the limit of 16597 characters] (CommandLine が上限の 16,597 文字を超えています)* などのエラーを回避できます。 
     
     1. スクリプトとその他のカスタム リソースを zip ファイルにバンドルます。
     1. この zip ファイルを **[ファイル データセット]** として Studio にアップロードします。 
@@ -289,10 +289,10 @@ azureml_main <- function(dataframe1, dataframe2){
 
 この例は、R スクリプトの実行モジュールへの入力として .zip ファイル内のデータセットを使用する方法を示しています。
 
-1. CSV 形式でデータ ファイルを作成し、「 **mydatafile.csv** 」という名前を付けます。
+1. CSV 形式でデータ ファイルを作成し、「**mydatafile.csv**」という名前を付けます。
 1. .zip ファイルを作成し、CSV ファイルをアーカイブに追加します。
 1. ZIP ファイルを Azure Machine Learning ワークスペースにアップロードします。 
-1. 結果として得られるデータセットを、 **R スクリプトの実行** モジュールの **ScriptBundle** 入力に接続します。
+1. 結果として得られるデータセットを、**R スクリプトの実行** モジュールの **ScriptBundle** 入力に接続します。
 1. ZIP ファイルから CSV データを読み取るには、次のコードを使用します。
 
 ```R

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 4d98323ebe973f13e654324f463ae01a8f1268c9
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 66e2f70a5d55d263f7da343c0987e77a9f60c3b0
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629223"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372678"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Azure で利用可能な Red Hat Enterprise Linux (RHEL) イメージ
 Azure では、さまざまなユース ケースに対応する多様な RHEL イメージを提供しています。
@@ -28,10 +28,10 @@ Azure では、さまざまなユース ケースに対応する多様な RHEL �
 
 プラン| SKU | パーティション分割 | プロビジョニング | Notes
 :----|:----|:-------------|:-------------|:-----
-RHEL          | 6.7      | RAW    | Linux エージェント | 
-|             | 6.8      | RAW    | Linux エージェント | 
-|             | 6.9      | RAW    | Linux エージェント | 
-|             | 6.10     | RAW    | Linux エージェント | 
+RHEL          | 6.7      | RAW    | Linux エージェント | 12 月 1 日から延長ライフサイクル サポートを利用できます。 [詳細については、こちらを参照してください。](redhat-extended-lifecycle-support.md)
+|             | 6.8      | RAW    | Linux エージェント | 12 月 1 日から延長ライフサイクル サポートを利用できます。 [詳細については、こちらを参照してください。](redhat-extended-lifecycle-support.md)
+|             | 6.9      | RAW    | Linux エージェント | 12 月 1 日から延長ライフサイクル サポートを利用できます。 [詳細については、こちらを参照してください。](redhat-extended-lifecycle-support.md)
+|             | 6.10     | RAW    | Linux エージェント | 12 月 1 日から延長ライフサイクル サポートを利用できます。 [詳細については、こちらを参照してください。](redhat-extended-lifecycle-support.md)
 |             | 7-RAW    | RAW    | Linux エージェント | RHEL 7.x イメージ ファミリ。 <br> 既定で (EUS ではなく) 標準リポジトリに接続されています。
 |             | 7-LVM    | LVM    | Linux エージェント | RHEL 7.x イメージ ファミリ。 <br> 既定で (EUS ではなく) 標準リポジトリに接続されています。 デプロイする標準の RHEL イメージを探している場合は、このイメージのセット、またはそれに対応する第 2 世代のイメージを使用します。
 |             | 7lvm-gen2| LVM    | Linux エージェント | 第 2 世代、RHEL 7.x イメージ ファミリ。 <br> 既定で (EUS ではなく) 標準リポジトリに接続されています。 デプロイする標準の RHEL イメージを探している場合は、このイメージのセット、またはそれに対応する第 1 世代のイメージを使用します。
@@ -67,9 +67,9 @@ RHEL-SAP      | 7.4      | LVM    | Linux エージェント | RHEL 7.4 for SAP 
 |             | 7.6       | LVM    | Linux エージェント | RHEL 7.6 for SAP HANA および Business Apps。 E4S リポジトリに接続されており、SAP および RHEL の割増料金と基本コンピューティング料金が請求されます。
 |             | 76sap-gen2| LVM    | Linux エージェント | RHEL 7.6 for SAP HANA および Business Apps。 第 2 世代イメージ。 E4S リポジトリに接続されており、SAP および RHEL の割増料金と基本コンピューティング料金が請求されます。
 |             | 7.7       | LVM    | Linux エージェント | RHEL 7.7 for SAP HANA および Business Apps。 E4S リポジトリに接続されており、SAP および RHEL の割増料金と基本コンピューティング料金が請求されます。
-RHEL-SAP-HANA (2020 年 10 月に Marketplace から削除されます) | 6.7       | RAW    | Linux エージェント | RHEL 6.7 for SAP HANA。 RHEL-SAP イメージを優先して古くなりました。 このイメージは、2020 年 10 月に Azure Martketplace から削除されます。 Red Hat の SAP クラウド サービスの詳細については[こちら](https://access.redhat.com/articles/3751271)を参照してください。
-|             | 7.2       | LVM    | Linux エージェント | RHEL 7.2 for SAP HANA。 RHEL-SAP イメージを優先して古くなりました。 このイメージは、2020 年 10 月に Azure Martketplace から削除されます。 Red Hat の SAP クラウド サービスの詳細については[こちら](https://access.redhat.com/articles/3751271)を参照してください。
-|             | 7.3       | LVM    | Linux エージェント | RHEL 7.3 for SAP HANA。 RHEL-SAP イメージを優先して古くなりました。 このイメージは、2020 年 10 月に Azure Martketplace から削除されます。 Red Hat の SAP クラウド サービスの詳細については[こちら](https://access.redhat.com/articles/3751271)を参照してください。
+RHEL-SAP-HANA (2020 年 11 月に削除されます) | 6.7       | RAW    | Linux エージェント | RHEL 6.7 for SAP HANA。 RHEL-SAP イメージを優先して古くなりました。 このイメージは 2020 年 11 月に削除されます。 Red Hat の SAP クラウド サービスの詳細については[こちら](https://access.redhat.com/articles/3751271)を参照してください。
+|             | 7.2       | LVM    | Linux エージェント | RHEL 7.2 for SAP HANA。 RHEL-SAP イメージを優先して古くなりました。 このイメージは 2020 年 11 月に削除されます。 Red Hat の SAP クラウド サービスの詳細については[こちら](https://access.redhat.com/articles/3751271)を参照してください。
+|             | 7.3       | LVM    | Linux エージェント | RHEL 7.3 for SAP HANA。 RHEL-SAP イメージを優先して古くなりました。 このイメージは 2020 年 11 月に削除されます。 Red Hat の SAP クラウド サービスの詳細については[こちら](https://access.redhat.com/articles/3751271)を参照してください。
 RHEL-SAP-APPS | 6.8       | RAW    | Linux エージェント | RHEL 6.8 for SAP Business Applications。 RHEL-SAP イメージを優先して古くなりました。
 |             | 7.3       | LVM    | Linux エージェント | RHEL 7.3 for SAP Business Applications。 RHEL-SAP イメージを優先して古くなりました。
 |             | 7.4       | LVM    | Linux エージェント | RHEL 7.4 for SAP Business Applications。

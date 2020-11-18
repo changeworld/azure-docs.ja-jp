@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 781b37405bebc5ddc3d33cbbc089049b0c0f8ca4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: aca7b7e8590c9c8eb3db987c5d1527d9f135bf3f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325538"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392998"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure 仮想ネットワークで Azure Machine Learning Studio を使用する
 
@@ -36,7 +36,7 @@ ms.locfileid: "93325538"
 
 
 > [!IMPORTANT]
-> ワークスペースが Azure Government や Azure China 21Vianet などの __ソブリン クラウド__ にある場合、統合ノートブックでは仮想ネットワーク内のストレージを使用 " _できません_ "。 代わりに、コンピューティング インスタンスから Jupyter Notebook を使用できます。 詳細については、「[コンピューティング インスタンス ノートブック内のデータにアクセスする](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook)」のセクションを参照してください。
+> ワークスペースが Azure Government や Azure China 21Vianet などの __ソブリン クラウド__ にある場合、統合ノートブックでは仮想ネットワーク内のストレージを使用 "_できません_"。 代わりに、コンピューティング インスタンスから Jupyter Notebook を使用できます。 詳細については、「[コンピューティング インスタンス ノートブック内のデータにアクセスする](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook)」のセクションを参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -53,7 +53,7 @@ ms.locfileid: "93325538"
 
 仮想ネットワーク内のリソース (コンピューティング インスタンスや仮想マシンなど) からスタジオにアクセスする場合は、仮想ネットワークからスタジオへの送信トラフィックを許可する必要があります。 
 
-たとえば、ネットワーク セキュリティ グループ (NSG) を使用して送信トラフィックを制限している場合は、 __AzureFrontDoor.Frontend__ の __サービス タグ__ 宛先に規則を追加します。
+たとえば、ネットワーク セキュリティ グループ (NSG) を使用して送信トラフィックを制限している場合は、__AzureFrontDoor.Frontend__ の __サービス タグ__ 宛先に規則を追加します。
 
 ## <a name="access-data-using-the-studio"></a>Studio を使用したデータへのアクセス
 
@@ -97,7 +97,10 @@ Azure Machine Learning では、[データストア](concept-data.md#datastores)
 
 ## <a name="technical-notes-for-managed-identity"></a>マネージド ID のテクニカル ノート
 
-ストレージ サービスへのアクセス時にマネージド ID を使用すると、いくつかのセキュリティの考慮事項に影響します。 これらの考慮事項は、アクセスしているストレージ アカウントの種類によって異なります。 このセクションでは、ストレージ アカウントの種類ごとの変化について説明します。
+ストレージ サービスへのアクセス時にマネージド ID を使用すると、いくつかのセキュリティの考慮事項に影響します。 このセクションでは、ストレージ アカウントの種類ごとの変化について説明します。
+
+> [!IMPORTANT]
+> これらの考慮事項は、アクセスしている __ストレージ アカウントの種類__ によって異なります。
 
 ### <a name="azure-blob-storage"></a>Azure BLOB ストレージ
 

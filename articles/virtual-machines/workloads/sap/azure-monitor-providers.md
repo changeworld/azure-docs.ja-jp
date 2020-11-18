@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: 235572cc4d697e7488765c464b12f9349c1e012b
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f5df8bccc10ca64ee9a04f195299c5228b7274c1
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994177"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356452"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>SAP ソリューション向け Azure Monitor のプロバイダー (プレビュー)
 
@@ -53,13 +53,24 @@ SAP モニター リソースのデプロイ時にお客様がプロバイダー
 
 ![SAP ソリューション向け Azure Monitor のプロバイダー - 高可用性クラスター](./media/azure-monitor-sap/azure-monitor-providers-pacemaker-cluster.png)
 
-高可用性クラスター プロバイダーを構成するには、次の 2 つの主要な手順が必要です。 
-1. Pacemaker クラスター内の "*各*" ノードに [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) をインストールする 
-    - お客様は、Azure Automation スクリプトを使用して、高可用性クラスターをデプロイできます。 スクリプトを実行すると、各クラスター ノードに [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) がインストールされます。  
-    - または、お客様は、[このページ](https://github.com/ClusterLabs/ha_cluster_exporter)の手順に従って手動インストールを実行できます 
-2. Pacemaker クラスター内の "*各*" ノードで高可用性クラスター プロバイダーを構成する  
-  高可用性クラスター プロバイダーを構成するには、Prometheus の URL、クラスター名、ホスト名、およびシステム ID が必要です。   
-  クラスター ノードごとに 1 つのプロバイダーを構成することをお勧めします。   
+高可用性クラスター プロバイダーを構成するには、次の 2 つの主要な手順が必要です。
+
+1. Pacemaker クラスター内の *それぞれの* ノードに [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) をインストールします。
+
+   ha_cluster_exporter をインストールするには、次の 2 つのオプションがあります。
+   
+   - Azure Automation スクリプトを使用して、高可用性クラスターをデプロイする。 スクリプトを実行すると、各クラスター ノードに [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) がインストールされます。  
+   - [手動でインストール](https://github.com/ClusterLabs/ha_cluster_exporter#manual-clone--build)する。 
+
+2. Pacemaker クラスター内の *それぞれの* ノードで、高可用性クラスター プロバイダーを構成します。
+
+   高可用性クラスター プロバイダーを構成するには、次の情報が必要です。
+   
+   - **[名前]**。 このプロバイダーの名前です。 この Azure Monitor for SAP Solutions インスタンスで一意である必要があります。
+   - **Prometheus エンドポイント**。 通常は、http\://\<servername or ip address\>:9664/metrics です。
+   - **SID**。 SAP システムでは、SAP SID を使用します。 その他のシステム (たとえば、NFS クラスターなど) では、そのクラスターを表す 3 文字の名前を使用します。 この SID は、監視されている他のクラスターとは異なっている必要があります。   
+   - **クラスター名**。 クラスターの作成時に使用されたクラスター名です。 クラスター名は、クラスター プロパティ `cluster-name` で確認できます。
+   - **Hostname**。 VM の Linux ホスト名です。  
 
 ## <a name="provider-type-microsoft-sql-server"></a>プロバイダーの種類: Microsoft SQL Server
 

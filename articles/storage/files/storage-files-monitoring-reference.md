@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 11f89a0a42a42fd84d1dc0c8606128f5af9e751e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6f4b932bb8f16af3c0368ab219bd8a12bf2face
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711055"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357982"
 ---
 # <a name="azure-files-monitoring-data-reference"></a>Azure Files 監視データのリファレンス
 
@@ -26,7 +26,7 @@ Azure Files の監視データの収集と分析の詳細については、「[A
 
 ### <a name="capacity-metrics"></a>容量メトリック
 
-容量メトリックの値は 1 時間ごとに Azure Monitor に送信され、 毎日更新されます。 時間グレインは、メトリック値が提供される時間間隔を定義します。 すべての容量メトリックに対して、1 時間 (PT1H) の時間グレインがサポートされます。
+容量メトリックの値は毎日 (最大 24 時間) 更新されます。 時間グレインは、メトリック値が提供される時間間隔を定義します。 すべての容量メトリックに対して、1 時間 (PT1H) の時間グレインがサポートされます。
 
 Azure Files は、Azure Monitor で次の容量メトリックを提供します。
 

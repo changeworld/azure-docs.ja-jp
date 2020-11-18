@@ -1,17 +1,17 @@
 ---
 title: 価格レベル - Azure Database for MySQL
 description: コンピューティング世代、ストレージの種類、ストレージのサイズ、仮想コア、メモリ、バックアップのリテンション期間など、Azure Database for MySQL のさまざまな価格レベルについて説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 1d1a7e760a709c7068f16ca415a00de424b7e339
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: c70e4a097a56b76089a26510bcf33b4c7c24c266
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124085"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535148"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL の価格レベル
 
@@ -97,7 +97,7 @@ Azure Database for MySQL は、プロビジョニングされているサーバ�
 
 ## <a name="pricing"></a>価格
 
-最新の料金情報については、サービスの[料金ページ](https://azure.microsoft.com/pricing/details/mysql/)を参照してください。 必要な構成のコストについては、 [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer) で、選択したオプションに基づいて表示される **[価格レベル]** タブの月額コストを確認します。 Azure サブスクリプションを取得していない場合は、Azure 料金計算ツールを使用して見積もり価格を確認できます。 [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)の Web サイトで **[項目の追加]** を選択し、 **[データベース]** カテゴリを展開し、 **[Azure Database for MySQL]** を選択してオプションをカスタマイズします。
+最新の料金情報については、サービスの[料金ページ](https://azure.microsoft.com/pricing/details/mysql/)を参照してください。 必要な構成のコストについては、[Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer) で、選択したオプションに基づいて表示される **[価格レベル]** タブの月額コストを確認します。 Azure サブスクリプションを取得していない場合は、Azure 料金計算ツールを使用して見積もり価格を確認できます。 [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)の Web サイトで **[項目の追加]** を選択し、 **[データベース]** カテゴリを展開し、 **[Azure Database for MySQL]** を選択してオプションをカスタマイズします。
 
 ## <a name="next-steps"></a>次のステップ
 

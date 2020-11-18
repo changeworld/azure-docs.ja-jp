@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 754d693294235ff34c68f828235cca5bb2389a2b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c85624d9eced3130a1c7b99943095688beee62bd
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544836"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93417590"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>Azure Database for MySQL - 単一サーバーの計画メンテナンス通知
 
@@ -40,7 +40,7 @@ Azure Database for MySQL サービスでは、基になるハードウェア、O
 
 **計画メンテナンス通知** によって、Azure Database for MySQL に対してまもなく実行されるメンテナンスに関するアラートを受信できます。 これらの通知は [Service Health の](../service-health/overview.md)計画メンテナンスに統合されており、サブスクリプションに対してスケジュールされたすべてのメンテナンスを 1 か所に表示できます。 また、異なるリソースに対しては異なる連絡先が必要になる場合があるため、さまざまなリソース グループに対して適切なユーザーへの通知をスケーリングすることも可能です。 まもなく実行されるメンテナンスに関する通知は、そのイベントの 72 カレンダー時間前に受信します。
 
-Microsoft では、 **計画メンテナンスの通知** の 72 時間での通知をすべてのイベントに対して提供するために、あらゆる試みを行います。 ただし、重大時やセキュリティ更新プログラムに関する場合には、イベントが迫ってから通知が送信されたり、あるいは通知が省略されたりすることがあります。
+Microsoft では、**計画メンテナンスの通知** の 72 時間での通知をすべてのイベントに対して提供するために、あらゆる試みを行います。 ただし、重大時やセキュリティ更新プログラムに関する場合には、イベントが迫ってから通知が送信されたり、あるいは通知が省略されたりすることがあります。
 
 Azure portal で計画メンテナンス通知を確認するか、通知を受信するようにアラートを構成できます。 
 
@@ -48,7 +48,7 @@ Azure portal で計画メンテナンス通知を確認するか、通知を受�
 
 1. [Azure portal](https://portal.azure.com) で、 **[サービス正常性]** を選択します。
 2. **[計画メンテナンス]** タブを選択します
-3. 計画メンテナンス通知を確認する **サブスクリプション** 、**リージョン、 **サービス** を選択します。 
+3. 計画メンテナンス通知を確認する **サブスクリプション**、**リージョン**、**サービス** を選択します。 
    
 ### <a name="to-receive-planned-maintenance-notification"></a>計画メンテナンスの通知を受信するには
 
@@ -61,7 +61,7 @@ Azure portal で計画メンテナンス通知を確認するか、通知を受�
 7. [ルールの作成時に有効にする] を確実に [はい] に設定します。
 8. **[アラート ルールの作成]** を選択してアラートを完成させます
 
-**サービス正常性アラート** の作成方法の詳細な手順については、「 [サービス通知のアクティビティ ログ アラートを作成する](../service-health/alerts-activity-log-service-notifications-portal.md)」を参照してください。
+**サービス正常性アラート** の作成方法の詳細な手順については、「[サービス通知のアクティビティ ログ アラートを作成する](../service-health/alerts-activity-log-service-notifications-portal.md)」を参照してください。
 
 ## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>計画メンテナンスのキャンセルや延期は可能ですか?
 

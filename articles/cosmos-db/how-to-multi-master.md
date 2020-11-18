@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
-ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: a2b1ca8434c40eca610f95a3031e677782866e04
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp, "seo-nov-2020"
+ms.openlocfilehash: 6f71f4c0ec353f36614ea6dcabf4d698b31baacb
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342013"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336728"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>Azure Cosmos DB を使用するアプリケーションで複数リージョン書き込みを構成する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "93342013"
 
 ## <a name="azure-portal"></a><a id="portal"></a> Azure portal
 
-Azure portal から複数リージョン書き込みを有効にするには、次の手順に従います。
+Azure portal から複数リージョン書き込みを有効にするには、次の手順を使用します。
 
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 

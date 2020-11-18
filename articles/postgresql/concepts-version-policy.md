@@ -5,14 +5,14 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 11/05/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b88d42071beba0ddd5a5627cefbe50229b4d27eb
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f325a43895e1e9d73b11c06662851d7654d31ddb
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93294204"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331823"
 ---
 # <a name="azure-database-for-postgresql-versioning-policy"></a>Azure Database for PostgreSQL のバージョン管理ポリシー
 
@@ -47,18 +47,18 @@ Azure Database for PostgreSQL では、定期的なメンテナンスの一環�
 | [PostgreSQL 11](https://www.postgresql.org/about/news/postgresql-11-released-1894/) | [機能](https://www.postgresql.org/docs/11/release-11.html) | 2019 年 7 月 24 日  | 2023 年 11 月 9 日
 | [PostgreSQL 12](https://www.postgresql.org/about/news/postgresql-12-released-1976/) | [機能](https://www.postgresql.org/docs/12/release-12.html) | 2020 年 9 月 22 日  | 2024 年 11 月 14 日
 
-## <a name="retired-postgresql-engine-versions-not-supported-in-azure-postgresql"></a>Azure PostgreSQL でサポートされていない、提供終了した PostgreSQL エンジンのバージョン
+## <a name="retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL でサポートされていない、廃止された PostgreSQL エンジンのバージョン
 
 各 PostgreSQL データベース バージョンが提供終了した後に、提供終了したバージョンを引き続き実行する場合は、次の制限事項に注意してください。
-- コミュニティではバグの修正やセキュリティの修正プログラムがリリースされることはないため、Azure for PostgreSQL では、提供終了したデータベース エンジンにバグやセキュリティ上の問題に対応するパッチが適用されたり、提供終了したデータベース エンジンに関してセキュリティ対策が実施されたりすることはありません。 その結果、セキュリティの脆弱性やその他の問題が発生する可能性があります。 ただし、Azure では、ホスト、OS、コンテナー、およびその他のサービス関連のコンポーネントに対して、定期的なメンテナンスとパッチの適用が引き続き実行されます。
-- PostgreSQL データベースに関連する問題が発生した場合、Microsoft ではサポートを提供できません。 このような場合、Microsoft がサポートを提供するには、お客様がデータベースをアップグレードする必要があります。
+- コミュニティではバグの修正やセキュリティの修正プログラムが今後リリースされることはないため、Azure Database for PostgreSQL では、提供終了したデータベース エンジンにバグやセキュリティ上の問題に対応するパッチが適用されたり、提供終了したデータベース エンジンに関してセキュリティ対策が実施されたりすることはありません。 その結果、セキュリティの脆弱性やその他の問題が発生する可能性があります。 ただし、Azure では、ホスト、OS、コンテナー、およびその他のサービス関連のコンポーネントに対して、定期的なメンテナンスとパッチの適用が引き続き実行されます。
+- PostgreSQL データベースに関連するサポートの問題が発生した場合、Microsoft ではサポートを提供できない場合があります。 このような場合、Microsoft がサポートを提供するには、お客様がデータベースをアップグレードする必要があります。
 - 提供終了したバージョンの新しいデータベース サーバーを作成することはできません。 ただし、特定の時点への回復を実行し、既存のサーバーの読み取りレプリカを作成することはできます。
 - Azure Database for PostgreSQL で開発された新しいサービス機能は、サポートされているデータベース サーバーのバージョンでのみ使用できます。
 - アップタイム SLA は、Azure Database for PostgreSQL のサービス関連の問題に対してのみ適用され、データベース エンジンに関連するバグに起因するダウンタイムには適用されません。  
-- 提供終了したデータベース バージョンで重大なデータベース セキュリティの脆弱性が見つかった場合、Azure によって、データベースがより新しいバージョンに自動的にアップグレードされることがあります。
+- サービスに深刻な脅威を及ぼす PostgreSQL データベース エンジンの脆弱性が廃止されたデータベース バージョンに見つかった場合、Azure はサービスをセキュリティで保護するため、ユーザーのデータベース サーバーを停止する場合があります。 このような場合、サーバーを稼働させる前に、サーバーをアップグレードするように通知されます。
 
 ## <a name="postgresql-version-syntax"></a>PostgreSQL バージョンの構文
-PostgreSQL バージョン 10 より前は、 [PostgreSQL のバージョン管理ポリシー](https://www.postgresql.org/support/versioning/)では、1 番目 _または_ 2 番目の番号が増えることが _メジャー バージョン_ のアップグレードと見なされていました。 たとえば、9.5 から 9.6 への変更は、 _メジャー_ バージョンのアップグレードと見なされていました。 バージョン 10 以降は、1 番目の番号の変更のみがメジャー バージョンのアップグレードと見なされます。 たとえば、10.0 から 10.1 への変更は、 _マイナー_ リリースのアップグレードになります。 バージョン 10 から 11 への変更が、 _メジャー_ バージョンのアップグレードになります。
+PostgreSQL バージョン 10 より前は、[PostgreSQL のバージョン管理ポリシー](https://www.postgresql.org/support/versioning/)では、1 番目 _または_ 2 番目の番号が増えることが _メジャー バージョン_ のアップグレードと見なされていました。 たとえば、9.5 から 9.6 への変更は、_メジャー_ バージョンのアップグレードと見なされていました。 バージョン 10 以降は、1 番目の番号の変更のみがメジャー バージョンのアップグレードと見なされます。 たとえば、10.0 から 10.1 への変更は、_マイナー_ リリースのアップグレードになります。 バージョン 10 から 11 への変更が、_メジャー_ バージョンのアップグレードになります。
 
 ## <a name="next-steps"></a>次のステップ
 - Azure Database for PostgreSQL - シングル サーバーで[サポートされるバージョン](./concepts-supported-versions.md)を参照してください

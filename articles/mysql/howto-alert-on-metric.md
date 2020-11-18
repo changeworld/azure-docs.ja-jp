@@ -1,17 +1,17 @@
 ---
 title: メトリック アラートを構成する - Azure portal - Azure Database for MySQL
 description: この記事では、Azure Portal から Azure Database for MySQL のメトリック アラートを構成およびアクセスする方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: bb86bc3fbfd4beffdaca713d7989218550841f03
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 81003be986524b94e9c4487cd0d8606540445d16
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546893"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542084"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Azure Portal を使用して Azure Database for MySQL のメトリックのアラートを設定する 
 
@@ -40,19 +40,19 @@ ms.locfileid: "92546893"
 
 4. 以下のように、 **[ルールの作成]** ページが開きます。 必要な情報を入力します。
 
-   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="アラート ルールを選択する":::
+   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="メトリック アラート フォームを追加する":::
 
 5. **[条件]** セクションで、 **[条件の追加]** を選択します。
 
 6. アラート通知のシグナルの一覧からメトリックを選択します。 この例では、[ストレージの割合] を選択します。
    
-   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="アラート ルールを選択する":::
+   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="メトリックを選択する":::
 
 7. アラート ロジックを構成します。これには、 **[条件]** (例: 「より大きい」)、 **[しきい値]** (例: 85 パーセント)、 **[時間の集計]** 、どのくらいの期間メトリック ルールが満たされた後にアラートがトリガーされるかを示す **[期間]** (例: 「直近 30 分」)、と **[頻度]** があります。
    
    完了したら、 **[完了]** を選択します。
 
-   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="アラート ルールを選択する":::
+   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="メトリック 2 を選択する":::
 
 8. **[アクション グループ]** セクション内で **[新規作成]** を選択して、アラートの通知を受信する新しいグループを作成します。
 
@@ -66,11 +66,11 @@ ms.locfileid: "92546893"
 
     完了したら、 **[OK]** を選択します。
 
-    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="アラート ルールを選択する":::
+    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="アクション グループ":::
 
 11. [アラート ルール名]、[説明]、[重大度] を指定します。
 
-    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="アラート ルールを選択する"::: 
+    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="アクション グループ 2"::: 
 
 12. **[アラート ルールの作成]** を選択して、アラートを作成します。
 

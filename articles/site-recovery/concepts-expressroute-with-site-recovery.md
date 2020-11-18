@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 12bec5af95e7da595d5af09fe9020992b1cf839d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 99fa8d4cf8f48d0fe72da36baef20c83add438c0
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367994"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330259"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute と Azure Site Recovery
 
@@ -31,7 +31,7 @@ ExpressRoute 回線には、複数のルーティング ドメインが関連付
 
 Azure Site Recovery により、オンプレミスの [HYPER-V 仮想マシン](hyper-v-azure-architecture.md)、[VMware 仮想マシン](vmware-azure-architecture.md)、および[物理サーバー](physical-azure-architecture.md)のディザスター リカバリーと Azure への移行が可能になります。 オンプレミスから Azure へのすべてのシナリオで、レプリケーション データは Azure Storage アカウントに送信され、格納されます。 レプリケーション中に仮想マシンの料金は発生しません。 Azure へのフェールオーバーを実行すると、Site Recovery は Azure IaaS 仮想マシンを自動的に作成します。
 
-Site Recovery は、パブリック エンドポイント経由で、ターゲット Azure リージョンの Azure ストレージ アカウントまたはレプリカ マネージド ディスクにデータをレプリケートします。 Site Recovery のレプリケーション トラフィックに ExpressRoute を使用するために、[Microsoft ピアリング](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)または既存の[パブリック ピアリング](../expressroute/about-public-peering.md) (新規作成では非推奨) を利用できます。 Microsoft ピアリングは、レプリケーション用に推奨されるルーティング ドメインです。 プライベート ピアリングを介したレプリケーションはサポートされていません。
+Site Recovery は、パブリック エンドポイント経由で、ターゲット Azure リージョンの Azure ストレージ アカウントまたはレプリカ マネージド ディスクにデータをレプリケートします。 Site Recovery のレプリケーション トラフィックに ExpressRoute を使用するために、[Microsoft ピアリング](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)または既存の[パブリック ピアリング](../expressroute/about-public-peering.md) (新規作成では非推奨) を利用できます。 Microsoft ピアリングは、レプリケーション用に推奨されるルーティング ドメインです。 レプリケーションは、[コンテナーでプライベート エンド ポイントが有効になっている](hybrid-how-to-enable-replication-private-endpoints.md)場合にのみ、プライベート ピアリング経由でサポートされることに注意してください。
 
 構成サーバーの[ネットワークの要件](vmware-azure-configuration-server-requirements.md#network-requirements)も確実に満たされるようにします。 Site Recovery レプリケーションを調整する場合、構成サーバーが特定の URL に接続する必要があります。 この接続には ExpressRoute は使用できません。 
 

@@ -1,7 +1,7 @@
 ---
 title: トレーニングの実行を構成する
 titleSuffix: Azure Machine Learning
-description: さまざまなトレーニング環境 (コンピューティング先) で機械学習モデルをトレーニングします。 トレーニング環境を簡単に切り替えることができます。 ローカルでトレーニングを開始します。 スケール アウトする必要がある場合は、クラウド ベースのコンピューティング先に切り替えます。
+description: さまざまなトレーニング環境 (コンピューティング先) で機械学習モデルをトレーニングします。 トレーニング環境を簡単に切り替えることができます。
 services: machine-learning
 author: sdgilley
 ms.author: sgilley
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 8280af20d63da969504cda8ffe875405d4bf0218
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cb10eb0f89ce37bc484c8570995ebaa098c696f1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324716"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541302"
 ---
 # <a name="configure-and-submit-training-runs"></a>トレーニングの実行を構成して送信する
 
@@ -24,7 +24,7 @@ ms.locfileid: "93324716"
 
 トレーニングの場合は、ローカル コンピューター上で開始し、後でクラウドベースのクラスターにスケール アウトするのが一般的です。 Azure Machine Learning では、トレーニング スクリプトを変更しなくても、さまざまなコンピューティング先でスクリプトを実行できます。
 
-必要なのは、 **スクリプト実行構成** 内で各コンピューティング先の環境を定義することだけです。  その後、異なるコンピューティング先でトレーニング実験を実行するときは、そのコンピューティングの実行構成を指定します。
+必要なのは、**スクリプト実行構成** 内で各コンピューティング先の環境を定義することだけです。  その後、異なるコンピューティング先でトレーニング実験を実行するときは、そのコンピューティングの実行構成を指定します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,10 +38,10 @@ ms.locfileid: "93324716"
 
 ScriptRunConfig オブジェクトを使用して、トレーニング実験を送信します。  このオブジェクトには以下のものが含まれます。
 
-* **source_directory** :トレーニング スクリプトが格納されているソース ディレクトリ
-* **script** :実行するトレーニング スクリプト
-* **compute_target** : 実行が行われるコンピューティング ターゲット
-* **環境** : スクリプトを実行する場合に使用する環境
+* **source_directory**:トレーニング スクリプトが格納されているソース ディレクトリ
+* **script**:実行するトレーニング スクリプト
+* **compute_target**: 実行が行われるコンピューティング ターゲット
+* **環境**: スクリプトを実行する場合に使用する環境
 * および、いくつかの構成可能な追加のオプション (詳細については、該当する[リファレンス ドキュメント](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)を参照してください)
 
 ## <a name="train-your-model"></a><a id="submit"></a>モデルをトレーニングする

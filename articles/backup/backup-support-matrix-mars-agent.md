@@ -3,12 +3,12 @@ title: MARS エージェントを使用したサポート マトリックス
 description: この記事では、Microsoft Azure Recovery Services (MARS) エージェントを実行しているコンピューターをバックアップする場合の Azure Backup のサポートを要約しています。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 53034d058e0cd2e1623acc6629da0a694b35e60b
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 26a47c2648d1307d2e7da2b25455f3f036cbf32d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173531"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363240"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントを使用したバックアップのサポート マトリックス
 
@@ -169,6 +169,17 @@ Windows Server 2008 SP2| 1,700 GB
 Windows 8 以降| 54,400 GB
 Windows 7| 1,700 GB
 
+### <a name="minimum-retention-limits"></a>最小保有期間の制限
+
+さまざまな回復ポイントに対して設定できる最小の保有期間は次のとおりです。
+
+|回復ポイント |Duration  |
+|---------|---------|
+|日次の回復ポイント    |   7 日      |
+|週次の回復ポイント     |    4 週間     |
+|月次の回復ポイント    |   3 か月      |
+|年次の回復ポイント  |      1 年   |
+
 ### <a name="other-limitations"></a>その他の制限事項
 
 - MARS では、1 つのコンテナーに対して、同じ名前を持つ複数のマシンの保護をサポートしていません。
@@ -200,12 +211,12 @@ DFS レプリケーションが有効になっているフォルダー | サポ�
 ネットワーク共有| サポートされていません |サーバー上でボリュームがローカルである必要があります。
 BitLocker でロックされているボリューム| サポートされていません |バックアップを開始する前に、ボリュームのロックを解除する必要があります。
 ファイル システムの識別| サポートされていません |NTFS のみがサポートされます。
-リムーバブル メディア| サポートされていません |バックアップ項目のすべてのソースが*固定*の状態である必要があります。
+リムーバブル メディア| サポートされていません |バックアップ項目のすべてのソースが *固定* の状態である必要があります。
 重複除去されたドライブ | サポートされています | Azure Backup は、重複除去されたデータを通常のデータに変換します。 データを最適化および暗号化して格納し、コンテナーに送信します。
 
 ## <a name="support-for-initial-offline-backup"></a>初期のオフライン バックアップのサポート
 
-Azure Backup は、ディスクを使用して初期バックアップ データを Azure に転送する*オフライン シード処理*をサポートしています。 このサポートは、初期バックアップが数テラバイト (TB) のサイズ範囲にある可能性がある場合に役立ちます。 オフライン バックアップのサポート対象は次のとおりです。
+Azure Backup は、ディスクを使用して初期バックアップ データを Azure に転送する *オフライン シード処理* をサポートしています。 このサポートは、初期バックアップが数テラバイト (TB) のサイズ範囲にある可能性がある場合に役立ちます。 オフライン バックアップのサポート対象は次のとおりです。
 
 - MARS エージェントを実行しているオンプレミスのコンピューター上でのファイルやフォルダーの直接バックアップ。
 - DPM サーバーまたは MABS からのワークロードやファイルのバックアップ。

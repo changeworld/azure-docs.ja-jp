@@ -1,7 +1,7 @@
 ---
 title: 自動 ML の実験を作成する
 titleSuffix: Azure Machine Learning
-description: 自動機械学習は、アルゴリズムを自動的に選択して、デプロイできる状態のモデルを生成します。 自動機械学習の実験の構成に使用できるオプションについて説明します。
+description: 自動機械学習の実験のデータ ソース、計算、および構成設定を定義する方法について説明します。
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: 09fe93d4e3ba50ced6c8f07d6fe25ace2376c388
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python,contperfq1, automl
+ms.openlocfilehash: 435476bee4839d083e3fe6cb0aa635d5ca67c4c0
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320524"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352576"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 
@@ -46,7 +46,7 @@ ms.locfileid: "93320524"
     SDK をインストールするには、次のいずれかを行います。 
     * コンピューティング インスタンスを作成します。これにより、SDK が自動的にインストールされ、ML ワークフロー用に事前構成されます。 詳細については、「[Azure Machine Learning コンピューティング インスタンスの作成と管理](how-to-create-manage-compute-instance.md)」を参照してください。 
 
-    * [SDK をご自分でインストールしてください](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。 必ず extra の `automl` を含めるようにしてください。 
+    * SDK の[既定のインストール](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py#default-install&preserve-view=true)が含まれる、[`automl` パッケージを自分でインストール](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)します。
 
 ## <a name="select-your-experiment-type"></a>実験の種類を選択する
 
@@ -63,13 +63,13 @@ automl_config = AutoMLConfig(task = "classification")
 
 ## <a name="data-source-and-format"></a>データ ソースと形式
 
-自動機械学習では、ローカル デスクトップ上またはクラウド (Azure Blob Storage など) に存在するデータがサポートされます。 データは、 **Pandas DataFrame** または **Azure Machine Learning TabularDataset** に読み込むことができます。 [データセットの詳細情報](how-to-create-register-datasets.md).
+自動機械学習では、ローカル デスクトップ上またはクラウド (Azure Blob Storage など) に存在するデータがサポートされます。 データは、**Pandas DataFrame** または **Azure Machine Learning TabularDataset** に読み込むことができます。 [データセットの詳細情報](how-to-create-register-datasets.md).
 
 トレーニング データの要件:
 - データは表形式である必要があります。
 - 予測する値、ターゲット列は、データ内にある必要があります。
 
-**リモート実験の場合** 、トレーニング データにリモート コンピューティングからアクセスできる必要があります。 AutoML により、リモート コンピューティングでの作業時に [Azure Machine Learning TabularDatasets](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) のみが受け入れられます。 
+**リモート実験の場合**、トレーニング データにリモート コンピューティングからアクセスできる必要があります。 AutoML により、リモート コンピューティングでの作業時に [Azure Machine Learning TabularDatasets](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) のみが受け入れられます。 
 
 Azure Machine Learning のデータセットによって、次の機能が公開されます。
 
@@ -83,7 +83,7 @@ from azureml.core.dataset import Dataset
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
 dataset = Dataset.Tabular.from_delimited_files(data)
   ```
-**ローカル コンピューティングの実験の場合** 、より高速な処理時間を実現するために、pandas dataframes をお勧めします。
+**ローカル コンピューティングの実験の場合**、より高速な処理時間を実現するために、pandas dataframes をお勧めします。
 
   ```python
   import pandas as pd
@@ -103,9 +103,9 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 |トレーニング&nbsp;データ&nbsp;のサイズ| 検証の方法 |
 |---|-----|
 |**20,000&nbsp;行&nbsp;より&nbsp;多い**| トレーニング/検証データの分割が適用されます。 既定では、初期トレーニング データ セットの 10% が検証セットとして取得されます。 次に、その検証セットがメトリックの計算に使用されます。
-|**20,000&nbsp;行&nbsp;より&nbsp;少ない**| クロス検証アプローチが適用されます。 フォールドの既定の数は行数によって異なります。 <br> **データセットが 1,000 行より少ない場合は** 、10 個のフォールドが使用されます。 <br> **行が 1,000 から 20,000 の間の場合は** 、3 つのフォールドが使用されます。
+|**20,000&nbsp;行&nbsp;より&nbsp;少ない**| クロス検証アプローチが適用されます。 フォールドの既定の数は行数によって異なります。 <br> **データセットが 1,000 行より少ない場合は**、10 個のフォールドが使用されます。 <br> **行が 1,000 から 20,000 の間の場合は**、3 つのフォールドが使用されます。
 
-現時点では、モデルの評価用に独自の **テストデータ** を提供する必要があります。 モデル評価のために独自のテスト データを取り込むコード例については、 [この Jupyter ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)の **テスト** に関するセクションを参照してください。
+現時点では、モデルの評価用に独自の **テストデータ** を提供する必要があります。 モデル評価のために独自のテスト データを取り込むコード例については、[この Jupyter ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)の **テスト** に関するセクションを参照してください。
 
 ## <a name="compute-to-run-experiment"></a>実験を実行するために計算する
 
@@ -117,7 +117,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
     Azure Machine Learning Managed Compute を使用したリモートの例については、[このノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)を参照してください。 
 
-* Azure サブスクリプション内の **Azure Databricks クラスター** 。 詳細については、[自動 ML のための Azure Databricks クラスターの構成](how-to-configure-environment.md#aml-databricks)に関する記事を参照してください。 Azure Databricks でのノートブックの例については、こちらの [GitHub サイト](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl)をご覧ください。
+* Azure サブスクリプション内の **Azure Databricks クラスター**。 詳細については、[自動 ML のための Azure Databricks クラスターの構成](how-to-configure-databricks-automl-environment.md)に関する記事を参照してください。 Azure Databricks でのノートブックの例については、こちらの [GitHub サイト](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl)をご覧ください。
 
 <a name='configure-experiment'></a>
 
@@ -239,7 +239,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 投票は、加重平均を使用したソフト投票を実装します。 スタッキング実装は 2 層の実装を使用します。ここでは、第 1 層は投票アンサンブルと同じモデルを持ち、第 2 層のモデルは、第 1 層からのモデルの最適な組み合わせを見つけるために使用されます。 
 
-ONNX モデルを使用している場合、 **または** モデルの説明を有効にしている場合、スタッキングは無効になり、投票だけが使用されます。
+ONNX モデルを使用している場合、**または** モデルの説明を有効にしている場合、スタッキングは無効になり、投票だけが使用されます。
 
 アンサンブル トレーニングは、`enable_voting_ensemble` および `enable_stack_ensemble` のブール型パラメーターを使用して無効にすることができます。
 
@@ -261,12 +261,12 @@ automl_classifier = AutoMLConfig(
 > [!IMPORTANT]
 >  次のパラメーターは、AutoMLConfig クラスの明示的なパラメーターではありません。 
 
-* `ensemble_download_models_timeout_sec`: **VotingEnsemble** と **StackEnsemble** モデルの生成中に、以前の子実行の複数の適合モデルがダウンロードされます。 `AutoMLEnsembleException: Could not find any models for running ensembling` のエラーが発生した場合は、モデルのダウンロードにより長い時間が必要になることがあります。 既定値は、これらのモデルを並列でダウンロードする場合は 300 秒で、タイムアウトの上限はありません。 より長い時間が必要な場合は、このパラメーターを 300 秒より大きい値に設定します。 
+* `ensemble_download_models_timeout_sec`:**VotingEnsemble** と **StackEnsemble** モデルの生成中に、以前の子実行の複数の適合モデルがダウンロードされます。 `AutoMLEnsembleException: Could not find any models for running ensembling` のエラーが発生した場合は、モデルのダウンロードにより長い時間が必要になることがあります。 既定値は、これらのモデルを並列でダウンロードする場合は 300 秒で、タイムアウトの上限はありません。 より長い時間が必要な場合は、このパラメーターを 300 秒より大きい値に設定します。 
 
   > [!NOTE]
   >  タイムアウトに達し、ダウンロードしたモデルがある場合は、アンサンブルはダウンロードしたモデルと同じ数だけ処理を続行します。 そのタイムアウト以内にすべてのモデルのダウンロードを終える必要はありません。
 
-次のパラメーターは、 **StackEnsemble** モデルにのみ適用されます。 
+次のパラメーターは、**StackEnsemble** モデルにのみ適用されます。 
 
 * `stack_meta_learner_type`: メタ学習器は、個々の異種モデルの出力でトレーニングされたモデルです。 既定のメタ学習器は、分類タスクには `LogisticRegression` (またはクロス検証が有効になっている場合は `LogisticRegressionCV`) で、回帰/予測タスクには `ElasticNet` (またはクロス検証が有効になっている場合は `ElasticNetCV`) です。 このパラメーターは、`LogisticRegression`、`LogisticRegressionCV`、`LightGBMClassifier`、`ElasticNet`、`ElasticNetCV`、`LightGBMRegressor`、または `LinearRegression` のいずれかの文字列になります。
 

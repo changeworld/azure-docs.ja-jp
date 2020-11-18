@@ -1,14 +1,14 @@
 ---
 title: Azure PowerShell を使用して VM 拡張機能を有効にする
 description: この記事では、Azure PowerShell を使用して、ハイブリッド環境で実行されている Azure Arc 対応サーバーに仮想マシン拡張機能をデプロイする方法について説明します。
-ms.date: 10/23/2020
+ms.date: 11/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: d2408f75c7b6d81ba297de6dcdb85a712cd8908f
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 5ed9db23cd19814ff05c2f142f51cea869f2c2d4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495437"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359070"
 ---
 # <a name="enable-azure-vm-extensions-using-azure-powershell"></a>Azure PowerShell を使用して Azure VM 拡張機能を有効にする
 
@@ -43,6 +43,37 @@ PS C:\> New-AzConnectedMachineExtension -Name OMSLinuxAgent -ResourceGroupName "
 ```powershell
 PS C:\> $Setting = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
 PS C:\> New-AzConnectedMachineExtension -Name custom -ResourceGroupName myResourceGroup -MachineName myMachineName -Location eastus -Publisher "Microsoft.Compute" -TypeHandlerVersion 1.10 -Settings $Setting -ExtensionType CustomScriptExtension
+```
+
+### <a name="key-vault-vm-extension-preview"></a>Key Vault VM 拡張機能 (プレビュー)
+
+> [!WARNING]
+> 多くの場合、PowerShell クライアントでは、`[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.` エラーを伴って akvvm_service が失敗する原因となる settings.json で、`\` が `"` に追加されます。
+
+次の例では、Arc 対応サーバーで Key Vault VM 拡張機能 (プレビュー) を有効にします。
+
+```powershell
+# Build settings
+    $settings = @{
+      secretsManagementSettings = @{
+       observedCertificates = @{
+        "observedCert1"
+       }
+      certificateStoreLocation = "myMachineName" # For Linux use "/var/lib/waagent/Microsoft.Azure.KeyVault.Store/"
+      certificateStore = "myCertificateStoreName"
+      pollingIntervalInS = "pollingInterval"
+      }
+    authenticationLocationSettings = @{
+     msiEndpoint = "http://localhost:40342/metadata/identity"
+     }
+    }
+
+    $resourceGroup = "resourceGroupName"
+    $machineName = "myMachineName"
+    $location = "regionName"
+
+    # Start the deployment
+    New-AzConnectedMachineExtension -ResourceGroupName $resourceGRoup -Location $location -MachineName $machineName -Name "KeyVaultForWindows or KeyVaultforLinux" -Publisher "Microsoft.Azure.KeyVault" -ExtensionType "KeyVaultforWindows or KeyVaultforLinux" -Setting (ConvertTo-Json $settings)
 ```
 
 ## <a name="list-extensions-installed"></a>インストールされている拡張機能を一覧表示する

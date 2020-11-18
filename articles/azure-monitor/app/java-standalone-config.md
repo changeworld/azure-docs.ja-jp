@@ -1,60 +1,61 @@
 ---
-title: 任意の場所の Java アプリケーションを監視する - Azure Monitor Application Insights
-description: アプリをインストルメント化することなく、任意の環境で実行されている Java アプリケーションのアプリケーション パフォーマンスをコード不要で監視します。 分散トレースとアプリケーション マップを使用して、問題の根本原因を見つけます。
+title: 構成オプション - Azure Monitor Application Insights Java
+description: Azure Monitor Application Insights Java の構成オプション
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 11/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 36f2add41457d1d82b0efd6c6804496018c85225
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: b703a708af564b9dafc8c1409333a2cfed6d2653
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215265"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427702"
 ---
-# <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>構成オプション - Azure Monitor Application Insights の Java スタンドアロン エージェント
+# <a name="configuration-options-for-azure-monitor-application-insights-java"></a>Azure Monitor Application Insights Java の構成オプション
 
-
+> [!WARNING]
+> **3.0 Preview からアップグレードする場合**
+>
+> ファイル名自体がすべて小文字になったのに加えて、JSON 構造体が完全に変更されたため、以下のすべての構成オプションを注意深く確認してください。
 
 ## <a name="connection-string-and-role-name"></a>接続文字列とロール名
 
+接続文字列とロール名は、作業を開始するために必要な最も一般的な設定です。
+
 ```json
 {
-  "instrumentationSettings": {
-    "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
-    "preview": {
-      "roleName": "my cloud role name"
-    }
+  "connectionString": "InstrumentationKey=...",
+  "role": {
+    "name": "my cloud role name"
   }
 }
 ```
 
 接続文字列は必須です。ロール名は、異なるアプリケーションから同じ Application Insights リソースにデータを送信する場合に常に重要です。
 
-詳細については、以下の詳細と追加の構成オプションをご覧ください。
+詳細と追加の構成オプションについては、以下をご覧ください。
 
 ## <a name="configuration-file-path"></a>構成ファイルのパス
 
-既定では Application Insights Java 3.0 Preview は、構成ファイルが `ApplicationInsights.json` という名前で、`applicationinsights-agent-3.0.0-PREVIEW.5.jar` と同じディレクトリに配置されていることが想定されています。
+Application Insights Java 3.0 は、既定では構成ファイルが `applicationinsights.json` という名前で、`applicationinsights-agent-3.0.0.jar` と同じディレクトリに配置されていることが想定されています。
 
 独自の構成ファイルのパスを指定するには、以下のいずれかを使用します
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE`環境変数、または
-* `applicationinsights.configurationFile` Java システム プロパティ
+* `applicationinsights.configuration.file` Java システム プロパティ
 
-相対パスを指定すると、`applicationinsights-agent-3.0.0-PREVIEW.5.jar` が配置されているディレクトリからの相対でパスが解決されます。
+相対パスを指定すると、`applicationinsights-agent-3.0.0.jar` が配置されているディレクトリからの相対でパスが解決されます。
 
 ## <a name="connection-string"></a>接続文字列
 
-これは必須です。 接続文字列は、Application Insights リソースで確認できます。
+接続文字列は必須です。 接続文字列は、Application Insights リソースで確認できます。
 
 :::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights の接続文字列":::
 
 
 ```json
 {
-  "instrumentationSettings": {
-    "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000"
-  }
+  "connectionString": "InstrumentationKey=..."
 }
 ```
 
@@ -70,10 +71,8 @@ ms.locfileid: "92215265"
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {   
-      "roleName": "my cloud role name"
-    }
+  "role": {   
+    "name": "my cloud role name"
   }
 }
 ```
@@ -90,43 +89,118 @@ ms.locfileid: "92215265"
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "roleInstance": "my cloud role instance"
-    }
+  "role": {
+    "name": "my cloud role name",
+    "instance": "my cloud role instance"
   }
 }
 ```
 
 環境変数 `APPLICATIONINSIGHTS_ROLE_INSTANCE` を使用して、クラウド ロール インスタンスを設定することもできます。
 
-## <a name="application-log-capture"></a>アプリケーション ログ キャプチャ
+## <a name="sampling"></a>サンプリング
 
-Application Insights Java 3.0 Preview では、Log4j、Logback、java.util.logging を使用して、アプリケーションのログが自動的にキャプチャされます。
+サンプリングは、コストの削減が必要な場合に役立ちます。
+サンプリングは、操作 ID (トレース ID とも呼ばれます) で関数として実行されるため、操作 ID が同じ場合は常にサンプリング決定が同じになります。 これにより、分散トランザクションの一部がサンプリング対象となって、その他の部分がサンプリング対象外となることがないように保証されます。
 
-既定では、`INFO` レベル以上で実行されるすべてのログがキャプチャされます。
+たとえば、サンプリングを 10% に設定した場合、トランザクションの 10% のみが表示されますが、これらの 10% のそれぞれに完全なエンドツーエンドのトランザクション詳細が含まれます。
 
-このしきい値を変更する場合は、次のように設定します。
+ここでは、**すべてのトランザクションの約 3 分の 1** をキャプチャするようにサンプリングを設定する方法の例を示します。必ず、ユースケースに適したサンプリング レートを設定してください。
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "instrumentation": {
-        "logging": {
-          "threshold": "WARN"
-        }
-      }
+  "sampling": {
+    "percentage": 33.333
+  }
+}
+```
+
+環境変数 `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` を使用してサンプリング率を設定することもできます。
+
+> [!NOTE]
+> サンプリング率には、N を整数として 100/N に近い割合を選択します。 サンプリングでは現在、その他の値はサポートされていません。
+
+## <a name="jmx-metrics"></a>JMX メトリック
+
+追加の JMX メトリックを収集する場合は、次のようにします。
+
+```json
+{
+  "jmxMetrics": [
+    {
+      "name": "JVM uptime (millis)",
+      "objectName": "java.lang:type=Runtime",
+      "attribute": "Uptime"
+    },
+    {
+      "name": "MetaSpace Used",
+      "objectName": "java.lang:type=MemoryPool,name=Metaspace",
+      "attribute": "Usage.used"
+    }
+  ]
+}
+```
+
+`name` は、この JMX メトリックに割り当てられるメトリック名です (何でもかまいません)。
+
+`objectName` は、収集する JMX MBean の[オブジェクト名](https://docs.oracle.com/javase/8/docs/api/javax/management/ObjectName.html)です。
+
+`attribute` は、収集する JMX MBean 内の属性名です。
+
+数値およびブール型の JMX メトリック値がサポートされています。 ブール型の JMX メトリックは、false の場合は `0` に、true の場合は `1` にマップされます。
+
+[//]: # "注: APPLICATIONINSIGHTS_JMX_METRICS に関する説明がここに記載されていません"
+[//]: # "env var に埋め込まれている json は整理されておらず、コード不要のアタッチ シナリオについてのみ記載する方がよいと考えられます"
+
+## <a name="custom-dimensions"></a>カスタム ディメンション
+
+すべてのテレメトリにカスタム ディメンションを追加する場合は、次のようにします。
+
+```json
+{
+  "customDimensions": {
+    "mytag": "my value",
+    "anothertag": "${ANOTHER_VALUE}"
+  }
+}
+```
+
+`${...}` を使用すると、起動時に指定した環境変数から値を読み取ることができます。
+
+## <a name="telemetry-processors-preview"></a>テレメトリ プロセッサ (プレビュー)
+
+この機能はプレビュー段階にあります。
+
+要求、依存関係、トレースのテレメトリに適用されるルールを構成できます。次に例を示します。
+ * 機密データをマスクする
+ * 条件付きでカスタム ディメンションを追加する
+ * 集計や表示に使用されるテレメトリ名を更新する
+
+詳細については、[テレメトリ プロセッサ](./java-standalone-telemetry-processors.md)を確認してください。
+
+## <a name="auto-collected-logging"></a>自動収集されるログ
+
+Log4j、Logback、java.util.logging は自動的にインストルメント化され、これらのログ記録フレームワークを介して実行されるログは自動収集されます。
+
+既定では、`INFO` レベル以上でログ記録が実行された場合にのみ、ログが収集されます。
+
+この収集レベルを変更する場合は、次のようにします。
+
+```json
+{
+  "instrumentation": {
+    "logging": {
+      "level": "WARN"
     }
   }
 }
 ```
 
-環境変数 `APPLICATIONINSIGHTS_LOGGING_THRESHOLD` を使用して、ログのしきい値を設定することもできます。
+環境変数 `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` を使用してしきい値を設定することもできます。
 
-以下に、`ApplicationInsights.json` ファイルに指定できる有効な `threshold` 値と、それらが、各種ログ フレームワークでどのようにログ レベルに対応するかを示しています。
+以下に、`applicationinsights.json` ファイルに指定できる有効な `level` 値と、それらが各種ログ フレームワークのログ レベルにどのように対応するかを示します。
 
-| しきい値   | Log4j  | Logback | JUL     |
+| level             | Log4j  | Logback | JUL     |
 |-------------------|--------|---------|---------|
 | OFF               | OFF    | OFF     | OFF     |
 | FATAL             | FATAL  | ERROR   | SEVERE  |
@@ -139,53 +213,22 @@ Application Insights Java 3.0 Preview では、Log4j、Logback、java.util.loggi
 | TRACE (または FINEST) | TRACE  | TRACE   | FINEST  |
 | ALL               | ALL    | ALL     | ALL     |
 
-## <a name="jmx-metrics"></a>JMX メトリック
+## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>自動収集される Micrometer メトリック (Spring Boot アクチュエータ メトリックを含む)
 
-キャプチャしたい JMX メトリックがある場合は、次のように設定します。
+アプリケーションで [Micrometer](https://micrometer.io) が使用されている場合、Micrometer のグローバル レジストリに送信されたメトリックは自動収集されます。
 
-```json
-{
-  "instrumentationSettings": {
-    "preview": {
-      "jmxMetrics": [
-        {
-          "objectName": "java.lang:type=Runtime",
-          "attribute": "Uptime",
-          "display": "JVM uptime (millis)"
-        },
-        {
-          "objectName": "java.lang:type=MemoryPool,name=Metaspace",
-          "attribute": "Usage.used",
-          "display": "MetaSpace Used"
-        }
-      ]
-    }
-  }
-}
-```
+また、アプリケーションで [Spring Boot アクチュエータ](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)が使用されている場合、Spring Boot アクチュエータによって構成されたメトリックも自動収集されます。
 
-数値およびブール型の JMX メトリック値がサポートされています。 ブール型の JMX メトリックは、false の場合は `0` に、true の場合は `1` にマップされます。
+Micrometer メトリック (Spring Boot アクチュエータ メトリックを含む) の自動収集を無効にするには、次のようにします。
 
-[//]: # "注: APPLICATIONINSIGHTS_JMX_METRICS に関する説明がここに記載されていません"
-[//]: # "env var に埋め込まれている json は整理されておらず、コード不要のアタッチ シナリオについてのみ記載する方がよいと考えられます"
-
-## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Micrometer (Spring Boot アクチュエータのメトリックを含む)
-
-アプリケーションで [Micrometer](https://micrometer.io) が使用されている場合、Application Insights 3.0 (Preview.2 以降) では、Micrometer のグローバル レジストリに送信されたメトリックがキャプチャされるようになりました。
-
-アプリケーションで [Spring Boot アクチュエータ](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)が使用されている場合、Application Insights 3.0 (Preview.4 以降) では、Spring Boot アクチュエータ (Micrometer を使用するが、Micrometer のグローバル レジストリは使用しない) によって構成されたメトリックがキャプチャされるようになりました。
-
-これらの機能を無効にする場合は、次のようにします。
+> [!NOTE]
+> カスタム メトリックの料金は別途請求され、追加のコストが発生する可能性があります。 必ず、詳しい[価格情報](https://azure.microsoft.com/pricing/details/monitor/)を確認してください。 Micrometer と Spring Actuator のメトリックを無効にするには、以下の構成を構成ファイルに追加します。
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "instrumentation": {
-        "micrometer": {
-          "enabled": false
-        }
-      }
+  "instrumentation": {
+    "micrometer": {
+      "enabled": false
     }
   }
 }
@@ -193,103 +236,120 @@ Application Insights Java 3.0 Preview では、Log4j、Logback、java.util.loggi
 
 ## <a name="heartbeat"></a>Heartbeat
 
-既定では Application Insights Java 3.0 Preview は、15 分ごとにハートビート メトリックを送信します。 ハートビート メトリックを使用してアラートをトリガーする場合は、このハートビートの頻度を増やすことができます。
+Application Insights Java 3.0 は、既定では 15 分ごとにハートビート メトリックを送信します。 ハートビート メトリックを使用してアラートをトリガーする場合は、このハートビートの頻度を増やすことができます。
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "heartbeat": {
-        "intervalSeconds": 60
-      }
-    }
+  "heartbeat": {
+    "intervalSeconds": 60
   }
 }
 ```
 
 > [!NOTE]
-> ハートビートデータは Application Insights の使用状況を追跡するためにも使用されるため、このハートビートの頻度を下げることはできません。
-
-## <a name="sampling"></a>サンプリング
-
-サンプリングは、コストの削減が必要な場合に役立ちます。
-サンプリングは、操作 ID (トレース ID とも呼ばれます) で関数として実行されるため、操作 ID が同じ場合は常にサンプリング決定が同じになります。 これにより、分散トランザクションの一部がサンプリング対象となって、その他の部分がサンプリング対象外となることがないように保証されます。
-
-たとえば、サンプリングを 10% に設定した場合、トランザクションの 10% のみが表示されますが、これらの 10% のそれぞれに完全なエンドツーエンドのトランザクション詳細が含まれます。
-
-ここでは、サンプリングを **すべてのトランザクションの 10%** に設定する方法の例を示します。必ず、ユースケースに適したサンプリング レートを設定してください。
-
-```json
-{
-  "instrumentationSettings": {
-    "preview": {
-      "sampling": {
-        "fixedRate": {
-          "percentage": 10
-        }
-      }
-    }
-  }
-}
-```
-
-環境変数 `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` を使用してサンプリング率を設定することもできます。
+> ハートビート データは Application Insights の使用状況を追跡するためにも使用されるため、ハートビートの頻度を下げることはできません。
 
 ## <a name="http-proxy"></a>HTTP Proxy
 
-アプリケーションがファイアウォールの背後にあり、Application Insights に直接接続できない場合 ([Application Insights によって使用される IP アドレス](./ip-addresses.md)に関するページを参照)、HTTP プロキシを使用するように Application Insights Java 3.0 Preview を構成できます。
+アプリケーションがファイアウォールの背後にあり、Application Insights に直接接続できない場合 ([Application Insights によって使用される IP アドレス](./ip-addresses.md)に関するページを参照)、HTTP プロキシを使用するように Application Insights Java 3.0 を構成できます。
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "httpProxy": {
-        "host": "myproxy",
-        "port": 8080
-      }
-    }
+  "proxy": {
+    "host": "myproxy",
+    "port": 8080
   }
 }
 ```
+
+[//]: # "注 0.9.0 からの大規模な破壊的変更を伴う 0.10.0 をサポートするまでは、OpenTelemetry のサポートを公表しません"
+
+[//]: # "## 1.0 より前の OpenTelemetry API リリースのサポート"
+
+[//]: # "OpenTelemetry API はまだ安定していないため、1.0 より前の OpenTelemetry API バージョンのサポートはオプトインです。"
+[//]: # "そのため、エージェントの各バージョンでは、1.0 より前の特定の OpenTelemetry API バージョンのみがサポートされています "
+[//]: # "(この制限は、OpenTelemetry API 1.0 がリリースされた後は適用されません)。"
+
+[//]: # "```json"
+[//]: # "{"
+[//]: # "  \"プレビュー\": {"
+[//]: # "    \"openTelemetryApiSupport\": true"
+[//]: # "  }"
+[//]: # "}"
+[//]: # "```"
 
 ## <a name="self-diagnostics"></a>自己診断
 
-"自己診断" では、Application Insights Java 3.0 Preview からの内部ログを参照します。
+"自己診断" では、Application Insights Java 3.0 からの内部ログを参照します。
 
-これは、Application Insights 自体の問題を発見して診断する場合に役立ちます。
+この機能は、Application Insights 自体の問題を発見して診断する場合に役立ちます。
 
-既定では、この構成に対応するレベル `warn` でコンソールにログが記録されます。
+Application Insights Java 3.0 は、既定では `applicationinsights.log` ファイルとコンソールの両方に `INFO` レベルでログを記録します。これらは次の構成に対応します。
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "selfDiagnostics": {
-        "destination": "console",
-        "level": "WARN"
-      }
+  "selfDiagnostics": {
+    "destination": "file+console",
+    "level": "INFO",
+    "file": {
+      "path": "applicationinsights.log",
+      "maxSizeMb": 5,
+      "maxHistory": 1
     }
   }
 }
 ```
 
-有効なレベルは、`OFF`、`ERROR`、`WARN`、`INFO`、`DEBUG`、`TRACE` です。
+`destination` には、`file`、`console`、`file+console` のいずれかを指定できます。
 
-コンソールにログ記録するのではなく、ファイルにログを記録する場合は、次のように設定します。
+`level` には、`OFF`、`ERROR`、`WARN`、`INFO`、`DEBUG`、`TRACE` のいずれかを指定できます。
+
+`path` には、絶対パスまたは相対パスを指定できます。 相対パスは、`applicationinsights-agent-3.0.0.jar` があるディレクトリを基準にして解決されます。
+
+`maxSizeMb` は、ロールオーバーされる前のログ ファイルの最大サイズです。
+
+`maxHistory` は、(現在のログ ファイルに加えて) 保持される、ロールオーバーされたログ ファイルの数です。
+
+## <a name="an-example"></a>使用例
+
+これは、単に複数のコンポーネントを含む構成ファイルがどのように表示されるかを示す例です。
+各自のニーズに応じて特定のオプションを構成してください。
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "selfDiagnostics": {
-        "destination": "file",
-        "directory": "/var/log/applicationinsights",
-        "level": "WARN",
-        "maxSizeMB": 10
-      }
+  "connectionString": "InstrumentationKey=...",
+  "role": {
+    "name": "my cloud role name"
+  },
+  "sampling": {
+    "percentage": 100
+  },
+  "jmxMetrics": [
+  ],
+  "customDimensions": {
+  },
+  "instrumentation": {
+    "logging": {
+      "level": "INFO"
+    },
+    "micrometer": {
+      "enabled": true
+    }
+  },
+  "httpProxy": {
+  },
+  "preview": {
+    "processors": [
+    ]
+  },
+  "selfDiagnostics": {
+    "destination": "file+console",
+    "level": "INFO",
+    "file": {
+      "path": "applicationinsights.log",
+      "maxSizeMb": 5,
+      "maxHistory": 1
     }
   }
 }
 ```
-
-ファイルのログ記録を使用する場合、ファイルが `maxSizeMB` に達すると、ロールオーバーされ、現在のログ ファイルに加えて最後に完了したログ ファイルのみが保持されます。

@@ -106,7 +106,7 @@ Web アプリ ボットのコードを開発するためには、コードをダ
 
 ## <a name="review-code-to-send-utterance-to-luis-and-get-response"></a>LUIS に発話を送信し、応答を取得するコードを確認する
 
-1. ユーザーの発話を LUIS の予測エンドポイントに送信するには、 **FlightBookingRecognizer.cs** ファイルを開きます。 これは、ボット内に入力されたユーザーの発話が LUIS に送信される場所です。 LUIS からの応答は、 **RecognizeAsync** メソッドから返されます。
+1. ユーザーの発話を LUIS の予測エンドポイントに送信するには、**FlightBookingRecognizer.cs** ファイルを開きます。 これは、ボット内に入力されたユーザーの発話が LUIS に送信される場所です。 LUIS からの応答は、**RecognizeAsync** メソッドから返されます。
 
     ```csharp
     // Copyright (c) Microsoft Corporation. All rights reserved.

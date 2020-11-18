@@ -1,18 +1,18 @@
 ---
 title: ストレージの自動拡張 - Azure PowerShell - Azure Database for MariaDB
 description: この記事では、PowerShell を使用して Azure Database for MariaDB のストレージの自動拡張を有効にする方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 5/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1da49f574ceadf98d0870fdd94b7d86f26d840d1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 87438c406ea2b31942003d9211cf5e285628f15d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426051"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540996"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mariadb-server-using-powershell"></a>PowerShell を使用した Azure Database for MariaDB サーバーのストレージの自動拡張
 

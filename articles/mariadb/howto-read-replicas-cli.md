@@ -1,18 +1,18 @@
 ---
 title: 読み取りレプリカを管理する - Azure CLI、REST API - Azure Database for MariaDB
 description: この記事では、Azure CLI と REST API を使用して Azure Database for MariaDB の読み取りレプリカを設定し、管理する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c8bb8ad4baec4c59a78afd6a92d69e94240c056a
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 70da1e9c70bf80737065362c68781652dd9ab6e5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542626"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537511"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Azure CLI と REST API を使用して Azure Database for MariaDB の読み取りレプリカを作成および管理する方法
 

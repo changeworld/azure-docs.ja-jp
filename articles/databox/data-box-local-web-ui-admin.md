@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 9f4f9f65b562b01466aec69cd541ea77f443f803
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: f5bcb5c42661c375372d4d0b17571d784152dd5f
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127526"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337289"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>ローカル Web UI を使用して Data Box および Data Box Heavy を管理する
 
@@ -85,7 +85,7 @@ BOM またはマニフェスト ファイルには、Data Box または Data Box
 
 開始する前に、次の手順に従って、インポート注文の BOM またはマニフェスト ファイルをダウンロードします。
 
-1. ご自分のデバイスのローカル Web UI に移動します。 **デバイスの発送準備**手順が完了していることを確認します。 デバイスの準備が完了すると、デバイスの状態が **[発送する準備ができました]** と表示されます。
+1. ご自分のデバイスのローカル Web UI に移動します。 **デバイスの発送準備** 手順が完了していることを確認します。 デバイスの準備が完了すると、デバイスの状態が **[発送する準備ができました]** と表示されます。
 
     ![デバイスの発送準備完了](media/data-box-local-web-ui-admin/prepare-to-ship-3.png)
 
@@ -212,9 +212,9 @@ Azure デバイスでバックアップ オペレーターの特権を有効に�
 
 1. デバイスのローカル Web UI の右上隅にある **[設定]** を選択します。
 
-   ![Data Box の設定を開く](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+   ![Data Box の設定を開く - 1](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
-2. バックアップ オペレーターの特権を**有効にします**。
+2. バックアップ オペレーターの特権を **有効にします**。
 
    ![バックアップ オペレーターの特権を有効にする](media/data-box-local-web-ui-admin/data-box-backup-operator-privileges-1.png)
 
@@ -235,9 +235,9 @@ Azure Files からの ACL の転送を有効にするには、次のようにし
 
 1. デバイスのローカル Web UI の右上隅にある **[設定]** を選択します。
 
-    ![Data Box の設定を開く](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+    ![Data Box の設定を開く - 2](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
-2. Azure Files の ACL を**有効にします**。
+2. Azure Files の ACL を **有効にします**。
 
      ![Azure Files の ACL を有効にする](media/data-box-local-web-ui-admin/data-box-acls-for-azure-files-1.png)
   
@@ -255,7 +255,7 @@ Azure デバイスで TLS 1.1 を有効にするには、次のようにしま�
 
 1. デバイスのローカル Web UI の右上隅にある **[設定]** を選択します。
 
-    ![Data Box の設定を開く](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+    ![Data Box の設定を開く - 3](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. TLS 1.1 を **[有効]** にします。
 

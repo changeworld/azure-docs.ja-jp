@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 30c2da4ac750375c66b92cdca552e1a51a8dbc40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f270ac736bb5dbc429dc8659cc88e63d0b51a523
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90932475"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366640"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーの制限
 
@@ -73,10 +73,12 @@ PostgreSQL 接続はアイドル状態であっても、約 10 MB のメモリ�
 - ファイアウォール規則は VNET ではサポートされていません。代わりに、ネットワーク セキュリティ グループを使用できます。
 - パブリック アクセス データベース サーバーでは、 `postgres_fdw` などを使用してパブリック インターネットに接続できます。このアクセスを制限することはできません。 VNET ベースのサーバーでは、ネットワーク セキュリティ グループを使用して、送信アクセスを制限することができます。
 
-### <a name="high-availability"></a>高可用性
+### <a name="high-availability-ha"></a>高可用性 (HA)
 
 - ゾーン冗長 HA は現在、バースト可能のサーバーについてはサポートされていません。
 - データベース サーバーの IP アドレスは、サーバーが HA スタンバイにフェールオーバーすると変更されます。 サーバーの IP アドレスではなく、DNS レコードを必ず使用してください。
+- 論理レプリケーションが HA で構成されたフレキシブル サーバーで構成されている場合、スタンバイ サーバーでのフェールオーバー発生時に、論理レプリケーション スロットがスタンバイ サーバーにコピーされることはありません。 
+- 制限事項を含むゾーン冗長 HA の詳細については、[HA の概念に関するドキュメント](concepts-high-availability.md)のページをご覧ください。
 
 ### <a name="availability-zones"></a>可用性ゾーン
 

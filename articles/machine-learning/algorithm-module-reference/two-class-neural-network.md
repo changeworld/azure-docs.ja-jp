@@ -1,7 +1,7 @@
 ---
 title: 2 クラス ニューラル ネットワーク:モジュール リファレンス
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning の 2 クラス ニューラル ネットワーク モジュールを使用して、2 つの値だけを持つターゲットを予測するのに使用できるニューラル ネットワーク モデルを作成する方法について説明します。
+description: Azure Machine Learning の 2 クラス ニューラル ネットワーク モジュールを使用して、バイナリ分類器を作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 2ad4fc575a6e9d07e4e24c2d570f68edbbea46c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9131a2439facef00cae818bffef38e536a40a2fd
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907689"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421160"
 ---
 # <a name="two-class-neural-network-module"></a>2 クラス ニューラル ネットワーク モジュール
 
@@ -76,7 +76,7 @@ ms.locfileid: "90907689"
   
 13. ラベル付けされたデータセットをパイプラインに追加し、モデルをトレーニングします。
 
-    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと[モデルのトレーニング](train-model.md) モジュールを接続します。  
+    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと [モデルのトレーニング](train-model.md) モジュールを接続します。  
   
     + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Parameter Range]\(パラメーター範囲\)** に設定した場合は、[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)を使用して、タグ付けしたデータセットを接続してモデルをトレーニングします。  
   
@@ -96,7 +96,7 @@ ms.locfileid: "90907689"
 
 + トレーニングされたモデルのスナップショットを保存するには、 **[モデルのトレーニング]** モジュールの右側のパネルにある **[出力]** タブを選択します。 **[データセットの登録]** アイコンを選択して、再利用可能なモジュールとしてモデルを保存します。
 
-+ このモデルをスコアリングに使用するには、**モデルのスコア付け**モジュールをパイプラインに追加します。
++ このモデルをスコアリングに使用するには、**モデルのスコア付け** モジュールをパイプラインに追加します。
 
 
 ## <a name="next-steps"></a>次のステップ

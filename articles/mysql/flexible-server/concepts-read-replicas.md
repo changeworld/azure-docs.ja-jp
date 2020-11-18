@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 6f3482bdc608d97e4adba5f99393e74f2e6c7cde
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ae73885016a40cd3cf79de968ca7c07c51f1400a
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795020"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336065"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL - フレキシブル サーバーでの読み取りレプリカ
 
@@ -31,7 +31,7 @@ MySQL レプリケーションの機能と問題の詳細については、[MySQ
 > [!NOTE]
 > バイアスフリーなコミュニケーション
 >
-> Microsoft では、多様性を尊重する環境がサポートされています。 この記事には、" _スレーブ_ " という単語への言及があります。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これを排他的な単語と認めています。 この単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
+> Microsoft では、多様性を尊重する環境がサポートされています。 この記事には、"_スレーブ_" という単語への言及があります。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これを排他的な単語と認めています。 この単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
 >
 
 ## <a name="common-use-cases-for-read-replica"></a>読み取りレプリカの一般的なユース ケース
@@ -117,6 +117,7 @@ Azure Database for MySQL フレキシブル サーバーにより、Azure Monito
 | シナリオ | 制限と考慮事項 |
 |:-|:-|
 | ゾーン冗長 HA が有効になっているサーバー上のレプリカ | サポートされていません |
+| リージョン間読み取りレプリケーション | サポートされていません |
 | 価格 | レプリカ サーバーの実行のコストは、レプリカ サーバーが実行されているリージョンに基づきます |
 | ソース サーバーの再起動 | 既存のレプリカがないソースのレプリカを作成すると、ソースは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク期間中に実行します |
 | 新しいレプリカ | 読み取りレプリカは、新しい Azure Database for MySQL フレキシブル サーバーとして作成されます。 既存のサーバーをレプリカにすることはできません。 別の読み取りレプリカのレプリカを作成することはできません |
@@ -124,7 +125,7 @@ Azure Database for MySQL フレキシブル サーバーにより、Azure Monito
 | 停止されたレプリカ | ソース サーバーと読み取りレプリカの間のレプリケーションを停止すると、停止されたレプリカは、読み取りと書き込みの両方を受け入れるスタンドアロン サーバーになります。 スタンドアロン サーバーをもう一度レプリカにすることはできません。 |
 | 削除されたソースおよびスタンドアロン サーバー | ソース サーバーが削除されると、すべての読み取りレプリカへのレプリケーションが停止されます。 これらのレプリカは自動的にスタンドアロン サーバーになり、読み取りと書き込みの両方を受け入れることができます。 ソース サーバー自体は削除されます。 |
 | ユーザー アカウント | ソース サーバー上のユーザーは、読み取りレプリカにレプリケートされます。 ソース サーバー上で使用可能なユーザー アカウントのみを使って読み取りレプリカに接続できます。 |
-| サーバー パラメーター | データが非同期にならないようにするため、また潜在的なデータの損失や破損を防ぐために、一部のサーバー パラメーターは、読み取りレプリカの使用時に更新されないようにロックされます。 <br> 次のサーバー パラメーターは、ソースとレプリカの両サーバーでロックされます。<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) パラメーターは、レプリカ サーバーでロックされます。 <br> ソース サーバーで上記のパラメーターのいずれかを更新するには、レプリカ サーバーを削除し、ソースでパラメーターの値を更新してから、レプリカを再作成してください。 |
+| サーバー パラメーター | データが非同期にならないようにするため、また潜在的なデータの損失や破損を防ぐために、一部のサーバー パラメーターは、読み取りレプリカの使用時に更新されないようにロックされます。 <br> 次のサーバー パラメーターは、ソースとレプリカの両サーバーでロックされます。<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) パラメーターは、レプリカ サーバーでロックされます。 <br> ソース サーバーで上記のパラメーターのいずれかを更新するには、レプリカ サーバーを削除し、ソースでパラメーターの値を更新してから、レプリカを再作成してください。 |
 | その他 | - レプリカのレプリカを作成することはサポートされていません。 <br> - メモリ内テーブルを使用すると、レプリカが同期しなくなる可能性があります。これは、MySQL レプリケーション テクノロジの制限事項です。 詳細については、[MySQL のリファレンス ドキュメント](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html)をお読みください。 <br>- ソース サーバーのテーブルに主キーがあることを確認します。 主キーがないと、ソースとレプリカ間でレプリケーションの待機時間が発生する可能性があります。<br>- MySQL のレプリケーションの制限事項の完全な一覧については、[MySQL のドキュメント](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)を確認してください |
 
 ## <a name="next-steps"></a>次のステップ

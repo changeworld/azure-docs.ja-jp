@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 03/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: dca5d65364d11e96a15913309686bc532d130278
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a9b68b2d4298c5e692782e529bae9a9df6359953
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313964"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331160"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する
 
@@ -28,9 +28,9 @@ ms.locfileid: "93313964"
 > [!TIP]
 > Azure Machine Learning SDK では、セキュリティで保護された通信に関連するプロパティに "SSL" の用語を使用します。 つまり、Web サービスでは *TLS* を使用しません。 SSL は、より一般的に認識されている用語に過ぎません。
 >
-> 具体的には、Azure Machine Learning によってデプロイされた Web サービスにより、AKS と ACI では TLS バージョン 1.2 がサポートされます。 ACI デプロイでは、以前のバージョンの TLS を使用している場合は、最新の TLS バージョンを取得するために再デプロイすることをお勧めします。
+> 具体的には、Azure Machine Learning によってデプロイされた Web サービスにより、AKS と ACI の新しいデプロイでは TLS バージョン 1.2 がサポートされます。 ACI デプロイでは、以前のバージョンの TLS を使用している場合は、最新の TLS バージョンを取得するために再デプロイすることをお勧めします。
 
-TLS と SSL の両方とも、" *デジタル証明書* " に依存しています。デジタル証明書は、暗号化の実行と ID の検証に役立ちます。 デジタル証明書のしくみの詳細については、ウィキペディアの「[public key infrastructure (公開キー基盤)](https://en.wikipedia.org/wiki/Public_key_infrastructure)」のトピックを参照してください。
+TLS と SSL の両方とも、"*デジタル証明書*" に依存しています。デジタル証明書は、暗号化の実行と ID の検証に役立ちます。 デジタル証明書のしくみの詳細については、ウィキペディアの「[public key infrastructure (公開キー基盤)](https://en.wikipedia.org/wiki/Public_key_infrastructure)」のトピックを参照してください。
 
 > [!WARNING]
 > Web サービスで HTTPS を使用しない場合は、そのサービスとの間で送受信されるデータがインターネット上の他のユーザーに表示される場合があります。
@@ -54,14 +54,14 @@ TLS と SSL の両方とも、" *デジタル証明書* " に依存していま�
 
 ## <a name="get-a-domain-name"></a>ドメイン名を取得する
 
-ドメイン名をまだ所有していない場合は、 *ドメイン名レジストラー* から購入します。 プロセスと価格は、レジストラーによって異なります。 レジストラーは、ドメイン名を管理するためのツールを提供します。 これらのツールを使用して、完全修飾ドメイン名 (FQDN) (www\.contoso.com など) を、Web サービスをホストする IP アドレスにマップします。
+ドメイン名をまだ所有していない場合は、*ドメイン名レジストラー* から購入します。 プロセスと価格は、レジストラーによって異なります。 レジストラーは、ドメイン名を管理するためのツールを提供します。 これらのツールを使用して、完全修飾ドメイン名 (FQDN) (www\.contoso.com など) を、Web サービスをホストする IP アドレスにマップします。
 
 ## <a name="get-a-tlsssl-certificate"></a>TLS/SSL 証明書を取得する
 
-TLS/SSL 証明書 (デジタル証明書) を取得する方法はたくさんあります。 最も一般的な方法は、 *証明機関* (CA) から購入することです。 証明書の取得場所に関係なく、次のファイルが必要です。
+TLS/SSL 証明書 (デジタル証明書) を取得する方法はたくさんあります。 最も一般的な方法は、*証明機関* (CA) から購入することです。 証明書の取得場所に関係なく、次のファイルが必要です。
 
-* **証明書** 。 証明書は、完全な証明書チェーンを含み、"PEM でエンコード" されている必要があります。
-* **キー** 。 キーも、PEM でエンコードされている必要があります。
+* **証明書**。 証明書は、完全な証明書チェーンを含み、"PEM でエンコード" されている必要があります。
+* **キー**。 キーも、PEM でエンコードされている必要があります。
 
 証明書を要求するときは、Web サービスで使用する予定のアドレスの FQDN を指定する必要があります (www\.contoso.com など)。 Web サービスの ID を検証するときに、証明書に記載されているアドレスとクライアントによって使用されるアドレスが比較されます。 これらのアドレスが一致しない場合、クライアントにはエラー メッセージが返されます。
 
@@ -73,7 +73,7 @@ TLS/SSL 証明書 (デジタル証明書) を取得する方法はたくさん�
 
 ## <a name="enable-tls-and-deploy"></a><a id="enable"></a> TLS を有効にしてデプロイする
 
-TLS が有効なサービスをデプロイ (または再デプロイ) するには、" *ssl_enabled* " パラメーターを "True" に設定します (該当する場合は必ず)。 *ssl_certificate* パラメーターを *certificate* ファイルの値に設定します。 *ssl_key* を *key* ファイルの値に設定します。
+TLS が有効なサービスをデプロイ (または再デプロイ) するには、"*ssl_enabled*" パラメーターを "True" に設定します (該当する場合は必ず)。 *ssl_certificate* パラメーターを *certificate* ファイルの値に設定します。 *ssl_key* を *key* ファイルの値に設定します。
 
 ### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>AKS およびフィールド プログラマブル ゲート アレイ (FPGA) にデプロイする
 
@@ -87,9 +87,9 @@ AKS にデプロイする場合、新しい AKS クラスターを作成する�
 
 **enable_ssl** メソッドは、Microsoft によって提供される証明書でも、購入する証明書を使用することもできます。
 
-  * Microsoft 提供の証明書を使用する場合、 *leaf_domain_label* パラメーターを使用する必要があります。 このパラメーターは、サービスの DNS 名を生成します。 たとえば、"contoso" という値を使用すると "contoso\<six-random-characters>.\<azureregion>.cloudapp.azure.com" というドメイン名が作成されます。この場合の \<azureregion> は、サービスが含まれるリージョンを意味しています。 必要に応じて、 *overwrite_existing_domain* パラメーターを使用して既存の *leaf_domain_label* を上書きできます。
+  * Microsoft 提供の証明書を使用する場合、*leaf_domain_label* パラメーターを使用する必要があります。 このパラメーターは、サービスの DNS 名を生成します。 たとえば、"contoso" という値を使用すると "contoso\<six-random-characters>.\<azureregion>.cloudapp.azure.com" というドメイン名が作成されます。この場合の \<azureregion> は、サービスが含まれるリージョンを意味しています。 必要に応じて、*overwrite_existing_domain* パラメーターを使用して既存の *leaf_domain_label* を上書きできます。
 
-    TLS が有効なサービスをデプロイ (または再デプロイ) するには、" *ssl_enabled* " パラメーターを "True" に設定します (該当する場合は必ず)。 *ssl_certificate* パラメーターを *certificate* ファイルの値に設定します。 *ssl_key* を *key* ファイルの値に設定します。
+    TLS が有効なサービスをデプロイ (または再デプロイ) するには、"*ssl_enabled*" パラメーターを "True" に設定します (該当する場合は必ず)。 *ssl_certificate* パラメーターを *certificate* ファイルの値に設定します。 *ssl_key* を *key* ファイルの値に設定します。
 
     > [!IMPORTANT]
     > Microsoft 提供の証明書を使用する場合、独自の証明書またはドメイン名を購入する必要はありません。
@@ -115,7 +115,7 @@ AKS にデプロイする場合、新しい AKS クラスターを作成する�
     attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
 
-  * *購入した証明書* を使用する場合、 *ssl_cert_pem_file* 、 *ssl_key_pem_file* 、および *ssl_cname* のパラメーターを使用します。 次の例では、 *.pem* ファイルを使用して、購入した TLS/SSL 証明書を使用する構成を作成する方法を示します。
+  * *購入した証明書* を使用する場合、*ssl_cert_pem_file*、*ssl_key_pem_file*、および *ssl_cname* のパラメーターを使用します。 次の例では、 *.pem* ファイルを使用して、購入した TLS/SSL 証明書を使用する構成を作成する方法を示します。
 
     ```python
     from azureml.core.compute import AksCompute
@@ -130,7 +130,7 @@ AKS にデプロイする場合、新しい AKS クラスターを作成する�
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
-*enable_ssl* の詳細については、 [AksProvisioningConfiguration.enable_ssl()](/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?preserve-view=true&view=azure-ml-py#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) および [AksAttachConfiguration.enable_ssl()](/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?preserve-view=true&view=azure-ml-py#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) に関する記事を参照してください。
+*enable_ssl* の詳細については、[AksProvisioningConfiguration.enable_ssl()](/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?preserve-view=true&view=azure-ml-py#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) および [AksAttachConfiguration.enable_ssl()](/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?preserve-view=true&view=azure-ml-py#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) に関する記事を参照してください。
 
 ### <a name="deploy-on-azure-container-instances"></a>Azure Container Instances にデプロイする
 
@@ -170,7 +170,7 @@ TLS/SSL 証明書には有効期限切れがあるため、更新する必要が
 
 ### <a name="update-a-microsoft-generated-certificate"></a>Microsoft が生成した証明書を更新する
 
-証明書が元は Microsoft によって ( *leaf_domain_label* を使用してサービスを作成するときに) 生成されたものである場合、次のいずれかの例を使用して証明書を更新します。
+証明書が元は Microsoft によって (*leaf_domain_label* を使用してサービスを作成するときに) 生成されたものである場合、次のいずれかの例を使用して証明書を更新します。
 
 > [!IMPORTANT]
 > * 既存の証明書がまだ有効な場合は、`renew=True` (SDK) か `--ssl-renew` (CLI) を使用して、構成によってこれを強制的に更新します。 たとえば、既存の証明書があと 10 日間有効で、`renew=True` を使用しない場合、証明書は更新されない可能性があります。

@@ -5,14 +5,14 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 11/05/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9fd828baed5a03cbce5d5327248eb34045ffd6bc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2fa8794066739302d2f32acb13c936c524dc89a8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489712"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422350"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Azure CLI、REST API から読み取りレプリカを作成および管理する
 
@@ -27,7 +27,9 @@ ms.locfileid: "92489712"
 * **レプリカ** - **[オフ]** よりも冗長です。 これは、[読み取りレプリカ](concepts-read-replicas.md)を機能させるために必要な最小レベルのログです。 ほとんどのサーバーでは、この設定が既定値です。
 * **論理** - **[レプリカ]** よりも冗長です。 これは、論理デコードを機能させるための最小レベルのログです。 読み取りレプリカはこの設定でも機能します。
 
-このパラメーターを変更した後、サーバーを再起動する必要があります。 内部的には、このパラメーターによって、Postgres のパラメーター `wal_level`、`max_replication_slots`、および `max_wal_senders` が設定されます。
+
+> [!NOTE]
+> 書き込み集中型の永続的で大量のプライマリのワークロードのために読み取りレプリカをデプロイする場合、レプリケーションの遅延が増加し続け、プライマリに追いつくことができない可能性があります。 これにより、レプリカで受信されるまで WAL ファイルが削除されないため、プライマリでのストレージの使用量も増加する可能性があります。
 
 ## <a name="azure-cli"></a>Azure CLI
 Azure CLI を使用して、読み取りレプリカを作成して管理できます。

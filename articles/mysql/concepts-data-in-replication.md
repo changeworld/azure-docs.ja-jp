@@ -1,17 +1,17 @@
 ---
 title: データイン レプリケーション - Azure Database for MySQL
 description: データイン レプリケーションを使用して、外部のサーバーから Azure Database for MySQL サービスに同期する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/7/2020
-ms.openlocfilehash: e84f0c9beaee8a755499467925d28a83ba3139fc
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 99beddba470f73d6eadb448dfe1b77453ce6426d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544054"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541591"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>データを Azure Database for MySQL にレプリケートする
 
@@ -28,7 +28,7 @@ ms.locfileid: "92544054"
 ## <a name="limitations-and-considerations"></a>制限と考慮事項
 
 ### <a name="data-not-replicated"></a>レプリケートされないデータ
-ソース サーバー上の [" *mysql システム データベース* "](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) はレプリケートされません。 ソース サーバーでのアカウントとアクセス許可の変更はレプリケートされません。 ソース サーバーでアカウントを作成し、そのアカウントでレプリカ サーバーにアクセスする必要がある場合は、レプリカ サーバー側で同じアカウントを手動で作成します。 システム データベースに含まれているテーブルの詳細については、[MySQL のマニュアル](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)を参照してください。
+ソース サーバー上の ["*mysql システム データベース*"](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) はレプリケートされません。 ソース サーバーでのアカウントとアクセス許可の変更はレプリケートされません。 ソース サーバーでアカウントを作成し、そのアカウントでレプリカ サーバーにアクセスする必要がある場合は、レプリカ サーバー側で同じアカウントを手動で作成します。 システム データベースに含まれているテーブルの詳細については、[MySQL のマニュアル](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)を参照してください。
 
 ### <a name="filtering"></a>フィルター処理
 (オンプレミス、仮想マシン、あるいは他のクラウド プロバイダーによってホストされているデータベース サービスでホストされている) ソース サーバーからのテーブル複製をスキップするために、`replicate_wild_ignore_table` パラメーターがサポートされています。 任意で、[Azure portal](howto-server-parameters.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) を使用し、Azure でホストされているレプリカ サーバー上でこのパラメーターを更新します。

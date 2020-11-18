@@ -1,17 +1,17 @@
 ---
 title: バックアップと復元 - Azure Database for MySQL
 description: Azure Database for MySQL サーバーの自動バックアップと復元について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 00cd5a76a52e1b58bc2f01315dd3a1a859074a58
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4438ceaa7bb4e9c29a05de0481acdad571e3bb64
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348459"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542339"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Azure Database for MySQL でのバックアップと復元
 
@@ -115,7 +115,12 @@ geo 冗長バックアップ用にサーバーを構成した場合は、サー�
 
 geo リストアは、サーバーがホストされているリージョンでのインシデントが原因でサーバーが利用できない場合の既定の復旧オプションです。 リージョン内の大規模なインシデントにより、データベース アプリケーションが使用できなくなった場合、geo 冗長バックアップから他の任意のリージョン内のサーバーに、サーバーを復元できます。 geo リストアでは、サーバーの最新のバックアップが利用されます。 バックアップが取得される時刻と、別のリージョンにそのバックアップがレプリケートされる時刻には時間差があります。 この時間差は最大 1 時間なので、障害が発生した場合、最大 1 時間分のデータが損失する可能性があります。
 
+> [!IMPORTANT]
+>新しく作成されたサーバーに対して geo リストアを実行する場合、初期の完全スナップショット バックアップのコピー時間が大幅に長くなるため、データ サイズによっては初期バックアップの同期が 24 時間より長くかかることがあります。 その後のスナップショット バックアップは増分コピーであるため、サーバーを作成してから 24 時間後には復元がより高速になります。 RTO を定義するために geo リストアを評価している場合は、より適切な評価にするために、サーバーを作成してから **24 時間経過してから** geo リストアを評価することをお勧めします。
+
 geo リストア中に変更できるサーバー構成は、コンピューティング世代、仮想コア、バックアップの保有期間、バックアップ冗長オプションなどです。 geo リストア中の、価格レベル (Basic、汎用、またはメモリ最適化) とストレージのサイズの変更はいずれもできません。
+
+復旧の推定所要時間は、データベースのサイズ、トランザクション ログのサイズ、ネットワーク帯域幅、同じリージョン内で同時に復旧するデータベースの合計数など、複数の要因によって異なります。 通常は 12 時間もかかりません。
 
 ### <a name="perform-post-restore-tasks"></a>復元後のタスクの実行
 

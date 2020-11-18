@@ -1,17 +1,17 @@
 ---
 title: 読み取りレプリカ - Azure Database for MySQL
 description: 'Azure Database for MySQL の読み取りレプリカについて次の内容を説明します: リージョンの選択、レプリカの作成、レプリカへの接続、レプリケーションの監視、レプリケーションの停止。'
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 10f2158edc12e7242c65a2e8ba58a18d390d47c8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 730b634f23599c5eef8c4c6c988820ae5e4fa9c8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091312"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535114"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ
 
@@ -24,7 +24,7 @@ MySQL レプリケーションの機能と問題の詳細については、[MySQ
 > [!NOTE]
 > バイアスフリーなコミュニケーション
 >
-> Microsoft では、多様性を尊重する環境がサポートされています。 この記事には、" _スレーブ_ " という単語への言及があります。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これを排他的な単語と認めています。 この単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
+> Microsoft では、多様性を尊重する環境がサポートされています。 この記事には、"_スレーブ_" という単語への言及があります。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これを排他的な単語と認めています。 この単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
 >
 
 ## <a name="when-to-use-a-read-replica"></a>読み取りレプリカを使用する場合

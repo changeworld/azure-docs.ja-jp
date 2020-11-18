@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4a522e58677e2c71cb52ad7e04b288622ad62d91
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 3d959cccd4fbce24e36b1ed62bc6bf417af23c82
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287323"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445508"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Key Vault を使用するためのベスト プラクティス
 
@@ -24,7 +24,7 @@ ms.locfileid: "93287323"
 Azure Key Vault は、暗号化キーとシークレット (証明書、接続文字列、パスワードなど) を保護するクラウド サービスです。 このデータは機密性が高く、ビジネス上重要であるため、承認されたアプリケーションとユーザーだけを許可することで、ご利用のキー コンテナーへのアクセスをセキュリティで保護する必要があります。 この[記事](secure-your-key-vault.md)では、Key Vault アクセス モデルの概要について説明します。 認証と承認について、およびご利用のキー コンテナーへのアクセスをセキュリティで保護する方法について説明します。
 
 コンテナーへのアクセスを制御している間の推奨事項としては次のようなものがあります。
-1. サブスクリプション、リソース グループ、および Key Vaults (RBAC) へのアクセスをロックダウンする
+1. サブスクリプション、リソース グループ、および Key Vaults (Azure RBAC) へのアクセスをロックダウンする
 2. すべてのコンテナーのアクセス ポリシーを作成する
 3. 最小特権アクセス プリンシパルを使用してアクセス権を付与する
 4. ファイアウォールと [VNET サービス エンドポイント](overview-vnet-service-endpoints.md)を有効にする

@@ -5,18 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: ffd4ab463080001dbab5b0ed9ece69c4b5f91382
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/6/2020
+ms.openlocfilehash: 2f9c4cc5bac27e4734c9aabe7895002a045d583d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81272085"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357013"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での低速クエリ ログ
 Azure Database for MariaDB では、ユーザーは低速クエリ ログを使用できます。 トランザクション ログへのアクセスはサポートされていません。 低速クエリ ログは、トラブルシューティングの目的でパフォーマンスのボトルネックを特定するために使用できます。
 
 低速クエリ ログについて詳しくは、[低速クエリ ログ](https://mariadb.com/kb/en/library/slow-query-log-overview/)に関する MariaDB のドキュメントをご覧ください。
+
+サーバーで[クエリ ストア](concepts-query-store.md)が有効になっている場合、低速クエリ ログに "`CALL mysql.az_procedure_collect_wait_stats (900, 30);`" のようなクエリが記録されている可能性があります。 この動作は、クエリ ストア機能によってクエリに関する統計情報を収集するために必要です。 
 
 ## <a name="configure-slow-query-logging"></a>低速クエリ ログを構成する
 既定では、低速クエリ ログは無効です。 有効にするには、`slow_query_log` を ON に設定します。 これは、Azure portal または Azure CLI を使用して有効にすることができます。 

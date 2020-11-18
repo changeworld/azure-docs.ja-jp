@@ -1,7 +1,7 @@
 ---
 title: モデルのクロス検証:モジュール リファレンス
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning のクロス検証モジュールを使用して、データをパーティション分割することにより、分類モデルまたは回帰モデルのパラメーター推定値を相互検証する方法を説明します。
+description: Azure Machine Learning デザイナーのクロス検証モデル モジュールを使用して、分類モデルまたは回帰モデルのパラメーター推定値を相互検証します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 63c61b12ad68a3add2e7b40ab0bec38d3c2835e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4099ecf6e6bcc6654391e54292878393fb22914
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898576"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421347"
 ---
 # <a name="cross-validate-model"></a>モデルのクロス検証
 
@@ -62,7 +62,7 @@ ms.locfileid: "90898576"
 
 2. 分類モデルまたは回帰モデルの出力を接続します。 
 
-    たとえば、分類に **2 クラス ブースト デシジョン ツリー**を使用する場合は、モデルに必要なパラメーターを構成します。 次に、分類器の **[Untrained model]\(未トレーニングのモデル\)** ポートのコネクタを、モデルのクロス検証の対応するポートにドラッグします。 
+    たとえば、分類に **2 クラス ブースト デシジョン ツリー** を使用する場合は、モデルに必要なパラメーターを構成します。 次に、分類器の **[Untrained model]\(未トレーニングのモデル\)** ポートのコネクタを、モデルのクロス検証の対応するポートにドラッグします。 
 
     > [!TIP] 
     > モデルのクロス検証では評価の一環としてモデルが自動的にトレーニングされるため、モデルのトレーニングを行う必要はありません。  

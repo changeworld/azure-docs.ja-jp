@@ -10,19 +10,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: 47a97bb8fbe52d3dde84afd77997b179a5c9248d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 22901c4e8409fc4846c1566a57b2679f4fa92396
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325505"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444563"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>Azure Policy を使用した Azure Machine Learning の監査と管理
 
 [Azure Policy](../governance/policy/index.yml) は、Azure リソースがポリシーに準拠していることを確認できるガバナンス ツールです。 Azure Machine Learning を使用すると、次のポリシーを割り当てることができます。
 
-* **カスタマー マネージド キー** : ワークスペースでカスタマー マネージド キーを使用する必要があることを監査または適用します。
-* **Private Link** : ワークスペースで仮想ネットワークとの通信にプライベート エンドポイントが使用されているかどうかを監査します。
+* **カスタマー マネージド キー**: ワークスペースでカスタマー マネージド キーを使用する必要があることを監査または適用します。
+* **Private Link**: ワークスペースで仮想ネットワークとの通信にプライベート エンドポイントが使用されているかどうかを監査します。
 
 ポリシーは、サブスクリプション レベルやリソース グループ レベルなど、さまざまなスコープで設定できます。 詳細については、[Azure Policy のドキュメント](../governance/policy/overview.md)を参照してください。
 
@@ -42,11 +42,11 @@ Azure Machine Learning に関連する組み込みのポリシー定義を表示
 
 ## <a name="workspaces-encryption-with-customer-managed-key"></a>カスタマーマネージド キーによるワークスペースの暗号化
 
-ワークスペースをカスタマーマネージド キー (CMK) で暗号化するか、Microsoft マネージド キーを使用してメトリックとメタデータを暗号化するかを制御します。 CMK の使用の詳細については、エンタープライズ セキュリティの記事の [Azure Cosmos DB](concept-enterprise-security.md#azure-cosmos-db) に関するセクションを参照してください。
+ワークスペースをカスタマーマネージド キーで暗号化するか、Microsoft マネージド キーを使用してメトリックとメタデータを暗号化するかを制御します。 カスタマーマネージド キーの使用の詳細については、データ暗号化の記事の [Azure Cosmos DB](concept-data-encryption.md#azure-cosmos-db) に関するセクションをご覧ください。
 
-このポリシーを構成するには、effect パラメーターを __audit__ または __deny__ に設定します。 __audit__ に設定すると、CMK を使用せずにワークスペースを作成できます。また、アクティビティ ログに警告イベントが作成されます。
+このポリシーを構成するには、effect パラメーターを __audit__ または __deny__ に設定します。 __audit__ に設定すると、カスタマー マネージド キーを使用せずにワークスペースを作成できます。また、アクティビティ ログに警告イベントが作成されます。
 
-ポリシーが __deny__ に設定されている場合、CMK を指定しないのであれば、ワークスペースを作成できません。 CMK を使用せずにワークスペースを作成しようとすると、`Resource 'clustername' was disallowed by policy` のようなエラーが発生し、アクティビティ ログにエラーが作成されます。 このエラーの一部としてポリシー識別子も返されます。
+ポリシーが __deny__ に設定されている場合は、カスタマー マネージド キーを指定しないとワークスペースを作成できません。 カスタマー マネージド キーを使用せずにワークスペースを作成しようとすると、`Resource 'clustername' was disallowed by policy` のようなエラーが発生し、アクティビティ ログにエラーが作成されます。 このエラーの一部としてポリシー識別子も返されます。
 
 ## <a name="workspaces-should-use-private-link"></a>プライベート リンクを使用する必要があるワークスペース
 

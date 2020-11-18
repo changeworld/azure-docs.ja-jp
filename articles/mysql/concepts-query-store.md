@@ -1,17 +1,17 @@
 ---
 title: クエリ ストア - Azure Database for MySQL
 description: Azure Database for MySQL のクエリ ストア機能について説明します。これは、時間の経過と共にパフォーマンスを追跡するのに役立ちます。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: 12623dccdc298aaad23ad6779caf33d895c5634a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70e1e5d06ef025801322e15e589d26e31f116fc3
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766125"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535080"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>クエリ ストアを使用した Azure Database for MySQL のパフォーマンスの監視
 
@@ -36,12 +36,12 @@ Azure Database for MySQL のクエリ ストア機能を使用すると、クエ
 1. Azure portal にサインインし、ご利用の Azure Database for MySQL サーバーを選択します。
 1. メニューの **[設定]** セクションで、 **[サーバー パラメーター]** を選択します。
 1. query_store_capture_mode パラメーターを検索します。
-1. 値を ALL に設定し、**保存**します。
+1. 値を ALL に設定し、**保存** します。
 
 クエリ ストアでの待機統計を有効にするには、次の手順に従います。
 
 1. query_store_wait_sampling_capture_mode パラメーターを検索します。
-1. 値を ALL に設定し、**保存**します。
+1. 値を ALL に設定し、**保存** します。
 
 mysql データベース内にデータの最初のバッチが保持されるまで最大 20 分かかります。
 
@@ -104,7 +104,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 > [!NOTE]
 > 現時点では、**query_store_capture_mode** がこの構成よりも優先されます。そのため、待機統計を機能させるには、**query_store_capture_mode** と **query_store_wait_sampling_capture_mode** の両方を ALL に設定して有効にする必要があります。 待機統計では、有効になっている performance_schema と、クエリ ストアによってキャプチャされた query_text を利用するため、**query_store_capture_mode** がオフになっている場合、待機統計もオフになります。
 
-パラメーターの別の値を取得または設定するには、 [Azure portal](howto-server-parameters.md)  または  [Azure CLI](howto-configure-server-parameters-using-cli.md)  を使用します。
+パラメーターに対して別の値を取得または設定するには [Azure portal](howto-server-parameters.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) を使用します。
 
 ## <a name="views-and-functions"></a>ビューと関数
 

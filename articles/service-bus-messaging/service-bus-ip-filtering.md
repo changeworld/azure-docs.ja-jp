@@ -3,17 +3,17 @@ title: Azure Service Bus の IP ファイアウォール規則を構成する
 description: ファイアウォール ルールを使用して、特定の IP アドレスから Azure Service Bus への接続を許可する方法です。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 561ee90fb6d1e25123d15a09bbf143aef59bcf6f
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 3aacf54dca07f0e1f2a66c8cdd85f892dda68cd4
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058065"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426585"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>特定の IP アドレスまたは範囲から Azure Service Bus への接続を許可します
 既定では、要求が有効な認証と承認を受けている限り、Service Bus 名前空間にはインターネットからアクセスできます。 これは IP ファイアウォールを使用して、さらに [CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IPv4 アドレスまたは IPv4 アドレス範囲のみに制限できます。
 
-この機能は、Azure Service Bus へのアクセスを特定の既知のサイトからのみに制限したいシナリオで役立ちます。 ファイアウォール規則を使用すると、特定の IPv4 アドレスから送信されたトラフィックを受け入れる規則を構成できます。 たとえば、[Azure Express Route][express-route] で Service Bus を使用する場合、お使いのオンプレミスのインフラストラクチャ IP アドレスまたは会社の NAT ゲートウェイのアドレスからのトラフィックのみ許可する**ファイアウォール規則**を作成できます。 
+この機能は、Azure Service Bus へのアクセスを特定の既知のサイトからのみに制限したいシナリオで役立ちます。 ファイアウォール規則を使用すると、特定の IPv4 アドレスから送信されたトラフィックを受け入れる規則を構成できます。 たとえば、[Azure Express Route][express-route] で Service Bus を使用する場合、お使いのオンプレミスのインフラストラクチャ IP アドレスまたは会社の NAT ゲートウェイのアドレスからのトラフィックのみ許可する **ファイアウォール規則** を作成できます。 
 
 > [!IMPORTANT]
 > ファイアウォールと仮想ネットワークは、Service Bus の **Premium** レベルでのみサポートされます。 **Premier** レベルへのアップグレードを選択できない場合は、Shared Access Signature (SAS) トークンのセキュリティを維持し、承認されたユーザーとのみ共有することをお勧めします。 SAS 認証については、[認証と承認](service-bus-authentication-and-authorization.md#shared-access-signature)に関するページを参照してください。
@@ -22,24 +22,16 @@ ms.locfileid: "92058065"
 この IP ファイアウォール規則は、Service Bus 名前空間レベルで適用されます。 したがって、規則は、サポートされているプロトコルを使用するクライアントからのすべての接続に適用されます。 Service Bus 名前空間上の許可 IP 規則に一致しない IP アドレスからの接続試行は、未承認として拒否されます。 IP 規則に関する記述は応答に含まれません。 IP フィルター規則は順に適用され、IP アドレスと一致する最初の規則に基づいて許可アクションまたは拒否アクションが決定されます。
 
 >[!WARNING]
-> ファイアウォール ルールを実装すると、他の Azure サービスが Service Bus と対話するのを禁止できます。
->
-> IP フィルター処理 (ファイアウォール ルール) が実装されているときは信頼できる Microsoft サービスはサポートされませんが、近日中に使用できるようになります。
->
-> IP フィルター処理では動作しない Azure の一般的なシナリオは次のとおりです (網羅的なリストでは**ない**ことに注意してください)
-> - Azure Event Grid との統合
-> - Azure IoT Hub ルート
-> - Azure IoT Device Explorer
+> ファイアウォール ルールを実装すると、他の Azure サービスが Service Bus と対話するのを禁止できます。 例外として、IP フィルターが有効になっている場合でも、特定の信頼できるサービスからの Service Bus リソースへのアクセスを許可できます。 信頼できるサービスの一覧については、[信頼できるサービス](#trusted-microsoft-services)に関するセクションを参照してください。 
 >
 > 仮想ネットワーク上には、次の Microsoft サービスが必要です
 > - Azure App Service
 > - Azure Functions
-> - Azure Monitor (診断設定)
 
 ## <a name="use-azure-portal"></a>Azure Portal の使用
 このセクションでは、Azure portal を使用して、Service Bus 名前空間の IP ファイアウォール規則を作成する方法について説明します。 
 
-1. [Azure portal](https://portal.azure.com) で、ご利用の **Service Bus 名前空間**に移動します。
+1. [Azure portal](https://portal.azure.com) で、ご利用の **Service Bus 名前空間** に移動します。
 2. 左側のメニューで、 **[設定]** の下にある **[ネットワーク]** オプションを選択します。  
 
     > [!NOTE]
@@ -55,7 +47,7 @@ ms.locfileid: "92058065"
 1. 指定した IP アドレスからのアクセスのみを許可するには、 **[選択されたネットワーク]** オプションを選択します (まだ選択されていない場合)。 **[ファイアウォール]** セクションで、次の手順のようにします。
     1. 現在のクライアント IP にその名前空間へのアクセスを許可するには、 **[クライアント IP アドレスを追加する]** オプションを選択します。 
     2. **[アドレス範囲]** に、特定の IPv4 アドレスまたは IPv4 アドレスの範囲を CIDR 表記で入力します。 
-    3. **信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する**かどうかを指定します。 
+    3. **信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する** かどうかを指定します。 
 
         > [!WARNING]
         > **[選択されたネットワーク]** オプションを選び、IP アドレスまたはアドレス範囲を指定しなかった場合、サービスではすべてのネットワークからのトラフィックが許可されます。 
@@ -65,6 +57,8 @@ ms.locfileid: "92058065"
 
     > [!NOTE]
     > 特定の仮想ネットワークへのアクセスを制限するには、[特定のネットワークからのアクセスの許可](service-bus-service-endpoints.md)に関する記事をご覧ください。
+
+[!INCLUDE [service-bus-trusted-services](../../includes/service-bus-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Resource Manager テンプレートの使用
 このセクションには、仮想ネットワークとファイアウォール規則を作成するサンプル Azure Resource Manager テンプレートが含まれています。
@@ -78,7 +72,7 @@ ms.locfileid: "92058065"
 
 > [!NOTE]
 > 可能な拒否ルールはありませんが、Azure Resource Manager テンプレートには、接続を制限しない **"Allow"** に設定された既定のアクション セットがあります。
-> 仮想ネットワークまたはファイアウォールのルールを作成するときは、***"defaultAction"*** を変更する必要があります。
+> 仮想ネットワークまたはファイアウォールのルールを作成するときは、**_"defaultAction"_** を変更する必要があります
 > 
 > from
 > ```json

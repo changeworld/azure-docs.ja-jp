@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
 ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "87088395"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Visual Studio から Azure 仮想マシンへ ASP.NET Web アプリケーションを発行する
@@ -33,7 +33,7 @@ Azure VM へ ASP.NET プロジェクトを発行するには、Visual Studio を
 
 1. Visual Studio 2019 で Web アプリケーション ソリューションを開きます。
 2. ソリューション エクスプローラーでプロジェクトを右クリックし、 **[発行]** を選択します。
-3. ページの右側の矢印を使用して、 **Microsoft Azure Virtual Machines** が表示されるまで発行オプションをスクロールします。  
+3. ページの右側の矢印を使用して、**Microsoft Azure Virtual Machines** が表示されるまで発行オプションをスクロールします。  
 
    ![発行 ページ - 右矢印]
 

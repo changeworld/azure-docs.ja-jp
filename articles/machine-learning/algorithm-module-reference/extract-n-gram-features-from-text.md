@@ -1,7 +1,7 @@
 ---
 title: テキストからの N gram 特徴抽出モジュール リファレンス
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で N-gram の抽出モジュールを使用して、テキスト データの特徴を抽出する方法について説明します。
+description: Azure Machine Learning デザイナーで N-gram の抽出モジュールを使用して、テキスト データの特徴を抽出する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: c21c63bdb64f7c15c049bfe4039ef47cea689922
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4d9c7c2cb7a0a86824a373f1b64044b6dcd6c20
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907966"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420803"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>テキストからの N gram 特徴抽出モジュール リファレンス
 
@@ -34,11 +34,11 @@ ms.locfileid: "90907966"
 
 1.  テキストからの N-gram 特徴抽出モジュールをパイプラインに追加し、処理するテキストが含まれているデータセットを接続します。
 
-1.  **テキスト列**を使用して、抽出するテキストを含む string 型の列を選択します。 結果は詳細であるため、一度に処理できるのは 1 列だけです。
+1.  **テキスト列** を使用して、抽出するテキストを含む string 型の列を選択します。 結果は詳細であるため、一度に処理できるのは 1 列だけです。
 
 1. **[Vocabulary mode]\(ボキャブラリ モード\)** を **[Create]\(作成\)** に設定して、新しい N-gram の特徴リストを作成していることを示します。 
 
-1. **[N-Grams size]\(N-gram のサイズ\)** を設定して、抽出して格納する N-gram の*最大*サイズを示します。 
+1. **[N-Grams size]\(N-gram のサイズ\)** を設定して、抽出して格納する N-gram の *最大* サイズを示します。 
 
     たとえば、3 を入力すると、unigram、bigram、trigram が作成されます。
 
@@ -54,9 +54,9 @@ ms.locfileid: "90907966"
  
     *  **TF-IDF ウェイト (TF-IDF Weight)** :抽出された N-gram に、用語頻度/逆ドキュメント頻度 (TF/IDF) スコアを割り当てます。 各 N-gram の値は、その TF スコアを IDF スコアで乗算したものです。
 
-1. **[Minimum word length]\(単語の最小長\)** を、N-gram 内の任意の *1 つの単語*に使用できる最小文字数に設定します。
+1. **[Minimum word length]\(単語の最小長\)** を、N-gram 内の任意の *1 つの単語* に使用できる最小文字数に設定します。
 
-1. **[Maximum word length]\(単語の最大長\)** を使用して、N-gram 内の任意の *1 つの単語*に使用できる最大文字数を設定します。
+1. **[Maximum word length]\(単語の最大長\)** を使用して、N-gram 内の任意の *1 つの単語* に使用できる最大文字数を設定します。
 
     既定では、単語またはトークンごとに最大 25 文字を使用できます。
 
@@ -96,7 +96,7 @@ ms.locfileid: "90907966"
 
 ### <a name="score-or-publish-a-model-that-uses-n-grams"></a>N-gram を使用するモデルのスコア付けまたは発行を行う
 
-1.  **テキストからの N-gram 特徴抽出**モジュールをトレーニング データフローからスコアリング データフローにコピーします。
+1.  **テキストからの N-gram 特徴抽出** モジュールをトレーニング データフローからスコアリング データフローにコピーします。
 
 1.  **[Result Vocabulary]\(結果のボキャブラリ\)** 出力を、トレーニング データフローからスコアリング データフローの **[Input Vocabulary]\(入力ボキャブラリ\)** に接続します。
 

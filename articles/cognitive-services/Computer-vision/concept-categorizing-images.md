@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 477349f1addf71a30e8ecb179266d8eac5510887
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43359c47b4d2c1b8895938271c74dab03f7731f7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80244752"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541778"
 ---
 # <a name="categorize-images-by-subject-matter"></a>主題によるイメージの分類
 
@@ -62,7 +62,7 @@ Computer Vision では次の図の 86 カテゴリの一覧を使用して、大
 
 ## <a name="use-the-api"></a>API の使用
 
-分類機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API に含まれています。 ネイティブ SDK または REST を呼び出すことでこの API を呼び出すことができます。 `Categories` を **visualFeatures** クエリ パラメーターに追加します。 その後、完全な JSON 応答が得られたら、`"categories"` セクションのコンテンツを対象に文字列を解析します。
+分類機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API に含まれています。 ネイティブ SDK または REST を呼び出すことでこの API を呼び出すことができます。 `Categories` を **visualFeatures** クエリ パラメーターに追加します。 その後、完全な JSON 応答が得られたら、`"categories"` セクションのコンテンツを対象に文字列を解析します。
 
 * [クイック スタート: Computer Vision .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
 * [クイック スタート: 画像の分析 (REST API)](./quickstarts/csharp-analyze.md)

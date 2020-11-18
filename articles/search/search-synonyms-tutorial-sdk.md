@@ -7,31 +7,33 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 842d43c82875a1a8e5e45ba14f47ceb6eac26727
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b97b223ac180df7f8eb07ad8eaab66847f50776
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538808"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422996"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>例:C# で Azure Cognitive Search にシノニムを追加する
 
 シノニムは、意味的に入力用語と同等と見なされる用語を一致させることにより、クエリを拡張します。 たとえば、"car" を "automobile" または "vehicle" という用語が含まれているドキュメントと一致させたい場合があります。 
 
-Azure Cognitive Search では、シノニムは同等の用語を関連付ける "*マッピング規則*" を通じて "*シノニム マップ*" で定義されています。 この例では、既にインデックスがある状態で同意語を追加して使用する最も重要な手順について取り上げます。 学習内容は次のとおりです。
+Azure Cognitive Search では、シノニムは同等の用語を関連付ける "*マッピング規則*" を通じて "*シノニム マップ*" で定義されています。 この例では、既にインデックスがある状態で同意語を追加して使用する最も重要な手順について取り上げます。
+
+この例では、次のことについて説明します。
 
 > [!div class="checklist"]
-> * [SynonymMap](/dotnet/api/microsoft.azure.search.models.synonymmap) クラスを使用して、シノニム マップを作成する。 
-> * シノニムを介してクエリ拡張をサポートする必要があるフィールドに対して [SynonymMaps](/dotnet/api/microsoft.azure.search.models.field.synonymmaps) プロパティを設定する。
+> * [SynonymMap クラス](/dotnet/api/azure.search.documents.indexes.models.synonymmap)を使用して、シノニム マップを作成する。 
+> * シノニムを介してクエリ拡張をサポートする必要があるフィールドに対して [SynonymMapsName プロパティ](/dotnet/api/azure.search.documents.indexes.models.searchfield.synonymmapnames)を設定する。
 
 シノニム対応フィールドに対するクエリは、通常と同じ方法で実行できます。 クエリ構文を追加しなくてもシノニムにアクセスできます。
 
 複数のシノニム マップを作成し、サービス全体の任意のインデックスで使用できるリソースとしてポストして、フィールド レベルでどのマップを使用するかを参照することができます。 クエリの際に、Azure Cognitive Search はインデックスを検索するだけでなく、クエリで使用されているフィールドにシノニム マップが指定されていれば、そのマップも参照します。
 
 > [!NOTE]
-> シノニムは、プログラムで作成できますが、ポータルでは作成できません。 Azure portal でのシノニムのサポートが役に立つ場合は、[UserVoice](https://feedback.azure.com/forums/263029-azure-search) でフィードバックをお送りください
+> シノニムは、プログラムで作成できますが、ポータルでは作成できません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,109 +41,105 @@ Azure Cognitive Search では、シノニムは同等の用語を関連付ける
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure Cognitive Search サービス](search-create-service-portal.md)
-* [Microsoft.Azure.Search .NET ライブラリ](/dotnet/api/overview/azure/search)
-* [.NET アプリケーションから Azure Cognitive Search を使用する方法](./search-howto-dotnet-sdk.md)
+* [Azure.Search.Documents パッケージ](https://www.nuget.org/packages/Azure.Search.Documents/)
+
+.NET クライアント ライブラリに慣れていない場合は、[.NET での Azure Cognitive Search の使用方法](search-howto-dotnet-sdk.md)に関するページを参照してください 。
+
+## <a name="sample-code"></a>サンプル コード
+
+この例で使用したサンプル アプリケーションの完全なソース コードは [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) にあります。
 
 ## <a name="overview"></a>概要
 
-前と後のクエリで、シノニムの値を示します。 この例では、サンプル インデックスに対してクエリを実行して結果を返すサンプル アプリケーションを使用します。 サンプル アプリケーションは "hotels" という名前の小さいインデックスを作成し、2 つのドキュメントを設定します。 アプリケーションはインデックス内に出現しない語句を使用して検索クエリを実行し、シノニム機能を有効にしてから同じ検索を再度発行します。 次のコードは、全体的な流れを示しています。
+前と後のクエリは、シノニムの値を示すために使用されます。 この例では、サンプル アプリケーションによってクエリが実行され、2 つのドキュメントが設定されたサンプルの "hotels" インデックスに対して結果が返されます。 まず、アプリケーションから、インデックス内に出現しない語句を使用した検索クエリが実行されます。 次に、コードによってシノニム機能が有効になり、同じクエリが再発行されます。今回は、シノニム マップの一致に基づいて結果が返されます。 
+
+次のコードは、全体的な流れを示しています。
 
 ```csharp
-  static void Main(string[] args)
-  {
-      SearchServiceClient serviceClient = CreateSearchServiceClient();
+static void Main(string[] args)
+{
+   SearchIndexClient indexClient = CreateSearchIndexClient();
 
-      Console.WriteLine("{0}", "Cleaning up resources...\n");
-      CleanupResources(serviceClient);
+   Console.WriteLine("Cleaning up resources...\n");
+   CleanupResources(indexClient);
 
-      Console.WriteLine("{0}", "Creating index...\n");
-      CreateHotelsIndex(serviceClient);
+   Console.WriteLine("Creating index...\n");
+   CreateHotelsIndex(indexClient);
 
-      ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
+   SearchClient searchClient = indexClient.GetSearchClient("hotels");
 
-      Console.WriteLine("{0}", "Uploading documents...\n");
-      UploadDocuments(indexClient);
+   Console.WriteLine("Uploading documents...\n");
+   UploadDocuments(searchClient);
 
-      ISearchIndexClient indexClientForQueries = CreateSearchIndexClient();
+   SearchClient searchClientForQueries = CreateSearchClientForQueries();
 
-      RunQueriesWithNonExistentTermsInIndex(indexClientForQueries);
+   RunQueriesWithNonExistentTermsInIndex(searchClientForQueries);
 
-      Console.WriteLine("{0}", "Adding synonyms...\n");
-      UploadSynonyms(serviceClient);
-      EnableSynonymsInHotelsIndex(serviceClient);
-      Thread.Sleep(10000); // Wait for the changes to propagate
+   Console.WriteLine("Adding synonyms...\n");
+   UploadSynonyms(indexClient);
 
-      RunQueriesWithNonExistentTermsInIndex(indexClientForQueries);
+   Console.WriteLine("Enabling synonyms in the test index...\n");
+   EnableSynonymsInHotelsIndexSafely(indexClient);
+   Thread.Sleep(10000); // Wait for the changes to propagate
 
-      Console.WriteLine("{0}", "Complete.  Press any key to end application...\n");
+   RunQueriesWithNonExistentTermsInIndex(searchClientForQueries);
 
-      Console.ReadKey();
-  }
+   Console.WriteLine("Complete.  Press any key to end application...\n");
+
+   Console.ReadKey();
+}
 ```
-サンプル インデックスの作成と設定の手順は、[.NET アプリケーションから Azure Cognitive Search を使用する方法](./search-howto-dotnet-sdk.md)に関する記事で説明されています。
 
 ## <a name="before-queries"></a>"前" のクエリ
 
 `RunQueriesWithNonExistentTermsInIndex` では、"five star"、"internet"、および "economy AND hotel" で検索クエリを発行します。
+
 ```csharp
 Console.WriteLine("Search the entire index for the phrase \"five star\":\n");
-results = indexClient.Documents.Search<Hotel>("\"five star\"", parameters);
+results = searchClient.Search<Hotel>("\"five star\"", searchOptions);
 WriteDocuments(results);
 
 Console.WriteLine("Search the entire index for the term 'internet':\n");
-results = indexClient.Documents.Search<Hotel>("internet", parameters);
+results = searchClient.Search<Hotel>("internet", searchOptions);
 WriteDocuments(results);
 
 Console.WriteLine("Search the entire index for the terms 'economy' AND 'hotel':\n");
-results = indexClient.Documents.Search<Hotel>("economy AND hotel", parameters);
+results = searchClient.Search<Hotel>("economy AND hotel", searchOptions);
 WriteDocuments(results);
 ```
-これらの用語は 2 つのインデックス付きドキュメントのどちらにも含まれていないため、最初の `RunQueriesWithNonExistentTermsInIndex` からは次の出力が返されます。
-```
-Search the entire index for the phrase "five star":
 
-no document matched
-
-Search the entire index for the term 'internet':
-
-no document matched
-
-Search the entire index for the terms 'economy' AND 'hotel':
-
-no document matched
-```
+これらの用語は 2 つのインデックス付きドキュメントのどちらにも含まれていないため、最初の `RunQueriesWithNonExistentTermsInIndex` からは **no document matched**(ドキュメントがマッチしませんでした) という出力が返されます。
 
 ## <a name="enable-synonyms"></a>シノニムの有効化
 
-シノニムの有効化は、2 段階のプロセスです。 まず、シノニム規則を定義してアップロードします。次に、それらを使用するフィールドを構成します。 プロセスの概要は、`UploadSynonyms` および `EnableSynonymsInHotelsIndex` で示されています。
+"前" のクエリが実行されると、サンプル コードによってシノニムが有効になります。 シノニムの有効化は、2 段階のプロセスです。 最初に、シノニム規則を定義してアップロードします。 次に、それらを使用するようにフィールドを構成します。 プロセスの概要は、`UploadSynonyms` および `EnableSynonymsInHotelsIndex` で示されています。
 
 1. シノニム マップを検索サービスに追加します。 `UploadSynonyms` で、シノニム マップ 'desc-synonymmap' に 4 つの規則を定義し、サービスにアップロードします。
-   ```csharp
-    var synonymMap = new SynonymMap()
-    {
-        Name = "desc-synonymmap",
-        Format = "solr",
-        Synonyms = "hotel, motel\n
-                    internet,wifi\n
-                    five star=>luxury\n
-                    economy,inexpensive=>budget"
-    };
 
-    serviceClient.SynonymMaps.CreateOrUpdate(synonymMap);
+   ```csharp
+   private static void UploadSynonyms(SearchIndexClient indexClient)
+   {
+      var synonymMap = new SynonymMap("desc-synonymmap", "hotel, motel\ninternet,wifi\nfive star=>luxury\neconomy,inexpensive=>budget");
+
+      indexClient.CreateOrUpdateSynonymMap(synonymMap);
+   }
    ```
-   シノニム マップは、オープン ソース標準の `solr` の形式に準拠する必要があります。 この形式については、セクション `Apache Solr synonym format` の [Azure Cognitive Search におけるシノニム](search-synonyms.md)に関する記事で説明されています。
 
-2. インデックス定義でシノニム マップを使用するように、検索可能フィールドを構成します。 `EnableSynonymsInHotelsIndex` の 2 つのフィールド `category` および `tags` で、`synonymMaps` プロパティを新たにアップロードしたシノニム マップの名前に設定して、シノニムを有効にします。
+1. インデックス定義でシノニム マップを使用するように、検索可能フィールドを構成します。 `AddSynonymMapsToFields` の 2 つのフィールド `category` および `tags` で、`SynonymMapNames` プロパティを新たにアップロードしたシノニム マップの名前に設定して、シノニムを有効にします。
+
    ```csharp
-   Index index = serviceClient.Indexes.Get("hotels");
-   index.Fields.First(f => f.Name == "category").SynonymMaps = new[] { "desc-synonymmap" };
-   index.Fields.First(f => f.Name == "tags").SynonymMaps = new[] { "desc-synonymmap" };
-
-   serviceClient.Indexes.CreateOrUpdate(index);
+   private static SearchIndex AddSynonymMapsToFields(SearchIndex index)
+   {
+      index.Fields.First(f => f.Name == "category").SynonymMapNames.Add("desc-synonymmap");
+      index.Fields.First(f => f.Name == "tags").SynonymMapNames.Add("desc-synonymmap");
+      return index;
+   }
    ```
-   シノニム マップを追加するときに、インデックスの再作成は必要ありません。 シノニム マップをサービスに追加し、任意のインデックス内の既存のフィールド定義を、新しいシノニム マップを使用するように修正できます。 新しい属性を追加しても、インデックスの可用性に影響はありません。 フィールドでシノニムを無効にする場合も同様です。 単に `synonymMaps` プロパティに空のリストを設定するだけです。
+
+   シノニム マップを追加するときに、インデックスの再作成は必要ありません。 シノニム マップをサービスに追加し、任意のインデックス内の既存のフィールド定義を、新しいシノニム マップを使用するように修正できます。 新しい属性を追加しても、インデックスの可用性に影響はありません。 フィールドでシノニムを無効にする場合も同様です。 単に `SynonymMapNames` プロパティに空のリストを設定するだけです。
+
    ```csharp
-   index.Fields.First(f => f.Name == "category").SynonymMaps = new List<string>();
+   index.Fields.First(f => f.Name == "category").SynonymMapNames.Add("desc-synonymmap");
    ```
 
 ## <a name="after-queries"></a>"後" のクエリ
@@ -161,12 +159,10 @@ Search the entire index for the terms 'economy' AND 'hotel':
 
 Name: Roach Motel       Category: Budget        Tags: [motel, budget]
 ```
+
 最初のクエリは、規則 `five star=>luxury` からドキュメントを見つけます。 2 番目のクエリは `internet,wifi` を使用して検索を拡張し、3 番目のクエリは `hotel, motel` と `economy,inexpensive=>budget` の両方を使用してそれらと一致するドキュメントを見つけます。
 
 シノニムを追加することで、検索エクスペリエンスがまったく違うものになります。 この例で元のクエリは、インデックス内のドキュメントが関連性を持っているにもかかわらず、意味のある結果を返すことができませんでした。 シノニムを有効にすると、インデックス内の基になるデータは変更せずに、よく使用される用語が含まれるようにインデックスを拡張できます。
-
-## <a name="sample-application-source-code"></a>サンプル アプリケーションのソース コード
-このチュートリアルで使用したサンプル アプリケーションの完全なソース コードが [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) にあります。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -174,7 +170,7 @@ Name: Roach Motel       Category: Budget        Tags: [motel, budget]
 
 ## <a name="next-steps"></a>次のステップ
 
-この例では、マッピング規則を作成、ポストしてからクエリでシノニム マップを呼び出す C# コードのシノニム機能を示します。 さらに詳しい情報については、[.NET SDK](/dotnet/api/microsoft.azure.search) と [REST API](/rest/api/searchservice/) のリファレンス ドキュメントをご覧ください。
+この例では、マッピング規則を作成、ポストしてからクエリでシノニム マップを呼び出す C# コードのシノニム機能を示します。 さらに詳しい情報については、[.NET SDK](/dotnet/api/overview/azure/search.documents-readme) と [REST API](/rest/api/searchservice/) のリファレンス ドキュメントをご覧ください。
 
 > [!div class="nextstepaction"]
 > [Azure Cognitive Search でシノニムを使用する方法](search-synonyms.md)

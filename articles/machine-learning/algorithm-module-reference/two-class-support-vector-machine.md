@@ -1,7 +1,7 @@
 ---
 title: '2 クラス サポート ベクター マシン: モジュール リファレンス'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で **2 クラス サポート ベクター マシン** モジュールを使用し、サポート ベクター マシン アルゴリズムに基づくモデルを作成する方法について説明します。
+description: Azure Machine Learning で 2 クラス サポート ベクター マシン モジュールを使用して、バイナリ分類器を作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 1dc2f8bdf6ed2823b44d25bdf65766b1f7ae060c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46cfdd319fc89e569d165dc2e11303e67c6dd54e
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907667"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420565"
 ---
 # <a name="two-class-support-vector-machine-module"></a>2 クラス サポート ベクター マシン モジュール
 
@@ -66,7 +66,7 @@ ms.locfileid: "90907667"
   
 9. ラベルが付けられたデータセットを接続し、モデルをトレーニングします。
 
-    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと[モデルのトレーニング](train-model.md) モジュールを接続します。  
+    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと [モデルのトレーニング](train-model.md) モジュールを接続します。  
   
     + **[トレーナー モードの作成]** を **[パラメーター範囲]** に設定した場合は、[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)を使用して、タグ付けしたデータセットを接続してモデルをトレーニングします。  
   
@@ -86,7 +86,7 @@ ms.locfileid: "90907667"
 
 + トレーニングされたモデルのスナップショットを保存するには、 **[モデルのトレーニング]** モジュールの右側のパネルにある **[出力]** タブを選択します。 **[データセットの登録]** アイコンを選択して、再利用可能なモジュールとしてモデルを保存します。
 
-+ このモデルをスコアリングに使用するには、**モデルのスコア付け**モジュールをパイプラインに追加します。
++ このモデルをスコアリングに使用するには、**モデルのスコア付け** モジュールをパイプラインに追加します。
 
 
 ## <a name="next-steps"></a>次のステップ

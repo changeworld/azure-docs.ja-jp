@@ -5,15 +5,15 @@ services: synapse-analytics
 author: djpmsft
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 11/06/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: be098977ba51e529aaecfb5dc3b7a03444f55a7e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 10f5336dd4c8a02acf623b1b14226ca676006953
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91339722"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357651"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Azure Synapse Analytics と Azure Data Factory のデータ統合
 
@@ -27,27 +27,26 @@ Azure Data Factory の機能または記事が Azure Synapse に適用される�
 
 次の機能は、Azure Data Factory では使用できますが、Azure Synapse では計画されていません。
 
-* SSIS パッケージのリフト アンド シフト機能。
-* コピー アクティビティとマッピング データ フローのシンクとしての Snowflake。
-* Azure 統合ランタイムのライブ設定へのマッピング データ フロー時間。
+* **SSIS パッケージのリフト アンド シフト:** Azure Data Factory には、SSIS 統合ランタイムを使用して SSIS パッケージをリフト アンド シフトする機能があります。 SSIS 統合ランタイムと SSIS パッケージの実行アクティビティは、Synapse ワークスペースでは使用できません。 
+* **Time to Live:** Time to Live は、マッピング データ フローでデータ フローの完了後に Spark クラスターの *ウォーム* 状態を一定期間維持できるようにする Azure 統合ランタイムの設定です。 この機能は、Synapse ワークスペースでは使用できません。
 
 ## <a name="azure-synapse-features-not-supported-in-azure-data-factory"></a>Azure Data Factory でサポートされていない Azure Synapse の機能
 
 次の機能は、Azure Synapse では使用できますが、Azure Data Factory では計画されていません。
 
-* Spark ジョブによるマッピング データ フローの監視は、Synapse でのみ使用できます。 Synapse では、Spark エンジンはユーザーのサブスクリプションに含まれているため、ユーザーは詳細な Spark ログを確認できます。 Azure Data Factory では、ジョブの実行は Azure Data Factory で管理されている Spark クラスターで行われます。 
+* **Spark ジョブによるマッピング データ フローの監視:** Synapse では、Spark エンジンはユーザーのサブスクリプションに含まれているため、ユーザーは詳細な Spark ログを確認できます。 Azure Data Factory では、ジョブの実行は Azure Data Factory で管理されている Spark クラスターで行われるため、この情報は使用できません。 
 
 ## <a name="azure-data-factory-features-that-behave-differently-in-synapse"></a>Synapse とは動作が異なる Azure Data Factory の機能
 
 次の機能は、動作が異なるか、現在 Azure Synapse に存在しません。 
 
-* ラングリング データ フロー
-* ソリューション テンプレート ギャラリー
-* Git 統合とネイティブ CI/CD ソリューション
-* Azure Monitor との統合
-* 発行後のリソースの名前変更
-* Synapse ワークスペース内のハイブリッド統合ランタイム構成。 ユーザーは、マネージド VNet IR と Azure IR の両方を持つことはできません。
-* Synapse ワークスペース間での統合ランタイムの共有
+* **ラングリング データ フロー:** ラングリング データ フロー アクティビティは、現時点では Azure Data Factory でのみ使用可能です。
+* **ソリューション テンプレート ギャラリー:** Azure Data Factory では、ユーザーはソリューション テンプレート ギャラリーでパイプライン テンプレートを見つけることができます。 Synapse ワークスペースでは、ナレッジ センターに、追加のデータセットや SQL スクリプトとともにさまざまなテンプレートのセットが含まれています。 
+* **Git 統合とネイティブ CI/CD ソリューション:** 現時点では、Synapse ワークスペースは Git リポジトリに接続できず、Azure Data Factory と同じ継続的インテグレーションと配信プロセスにも従いません。
+* **Azure Monitor との統合:** Synapse ワークスペースは、Azure Data Factory のように Azure Monitor と統合されません。
+* **ハイブリッド統合ランタイム構成:** Synapse ワークスペースでは、ユーザーがマネージド VNet IR と Azure IR の両方を持つことはできません。 この機能は、Azure Data Factory でサポートされています。
+* **統合ランタイムの共有:** セルフホステッド統合ランタイムは、Synapse ワークスペース間で共有できません。 この機能は、Azure Data Factory でサポートされています。
+* **データ フロー用のリージョン間統合ランタイム:** Synapse ワークスペースとは異なるリージョンの統合ランタイムでは、データ フローを実行できません。 この機能は、Azure Data Factory でサポートされています。
 
 ## <a name="next-steps"></a>次の手順
 

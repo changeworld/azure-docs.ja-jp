@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 2036505dea134a59e7dc0c75a030175b15dac0b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 066e9cf6c63c9f2073ba869e8b40e25bfc993cd8
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031944"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491377"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics のログ クエリのスコープと時間範囲
 [Azure portal の [Log Analytics]](get-started-portal.md) で[ログ クエリ](log-query-overview.md)を実行するとき、クエリによって評価されるデータのセットは、選択したスコープと時間範囲によって異なります。 この記事では、スコープと時間範囲、および要件に応じてそれぞれを設定する方法について説明します。 さまざまな種類のスコープの動作についても説明します。
@@ -51,9 +51,7 @@ ms.locfileid: "90031944"
 - [workspace](workspace-expression.md)
  
 
-## <a name="query-limits"></a>クエリの制限
-複数の Log Analytics ワークスペースにデータを書き込む Azure リソースのビジネス要件がある場合があります。 ワークスペースはリソースと同じリージョンに存在する必要はなく、1 つのワークスペースでさまざまなリージョンのリソースからデータを収集できます。  
-
+## <a name="query-scope-limits"></a>クエリ スコープの制限
 スコープをリソースまたはリソース セットに設定する機能は、分散データを自動的に 1 つのクエリに統合できるため、Log Analytics の非常に強力な機能です。 しかし、複数の Azure リージョンにわたるワークスペースからデータを取得する必要があると、パフォーマンスが大幅に低下する可能性があります。
 
 Log Analytics は、特定の数のリージョンが使用されているときに警告またはエラーを発行して、複数のリージョンのワークスペースにまたがるクエリから過剰なオーバーヘッドを防ぐのに役立ちます。 スコープに 5 つ以上のリージョンのワークスペースが含まれている場合、クエリで警告が表示されます。 それでも実行されますが、完了するまでに時間がかかることがあります。
@@ -66,12 +64,8 @@ Log Analytics は、特定の数のリージョンが使用されているとき
 
 
 ## <a name="time-range"></a>時間の範囲
-時間範囲は、レコードが作成された時期に基づいてクエリで評価されるレコード セットを指定します。 次の表で説明しているように、これはワークスペースまたはアプリケーション内のすべてのレコードの標準の列によって定義されます。
+時間範囲は、レコードが作成された時期に基づいてクエリで評価されるレコード セットを指定します。 次のテーブルで指定しているように、これはワークスペースまたはアプリケーション内のすべてのレコードの **TimeGenerated** 列によって定義されます。 クラシック Application Insights アプリケーションの場合は、時間範囲に **timestamp** 列が使用されます。
 
-| 場所 | 列 |
-|:---|:---|
-| Log Analytics ワークスペース          | TimeGenerated |
-| Application Insights アプリケーション | timestamp     |
 
 Log Analytics ウィンドウの上部にあるタイム ピッカーから選択して、時間範囲を設定します。  定義済みの期間を選択するか、 **[カスタム]** を選択して特定の時間範囲を指定することができます。
 
@@ -81,13 +75,13 @@ Log Analytics ウィンドウの上部にあるタイム ピッカーから選�
 
 ![フィルター処理されたクエリ](media/scope/query-filtered.png)
 
-[workspace](workspace-expression.md) または [app](app-expression.md) コマンドを使用して別のワークスペースまたはアプリケーションからデータを取得する場合、タイム ピッカーの動作が異なることがあります。 スコープが Log Analytics ワークスペースのときに **app** を使用している、またはスコープが Application Insights アプリケーションのときに **workspace** を使用している場合、Log Analytics は、フィルターで使用される列によって時間フィルターが決まることを理解していない可能性があります。
+[workspace](workspace-expression.md) または [app](app-expression.md) コマンドを使用して別のワークスペースまたはクラシック アプリケーションからデータを取得する場合、タイム ピッカーの動作が異なることがあります。 スコープが Log Analytics ワークスペースのときに **app** を使用している場合、またはスコープがクラシック Application Insights アプリケーションのときに **workspace** を使用している場合、Log Analytics では、フィルターで使用される列によって時間フィルターが決まることが理解されない可能性があります。
 
 次の例では、スコープは Log Analytics ワークスペースに設定されています。  クエリは **workspace** を使用して別の Log Analytics ワークスペースからデータを取得します。 タイム ピッカーは、予想された **TimeGenerated** 列を使用するフィルターを認識するので、 **[Set in query]\(クエリに設定\)** に変わります。
 
 ![ワークスペースのクエリ](media/scope/query-workspace.png)
 
-一方、クエリで **app** を使用して Application Insights アプリケーションからデータを取得する場合、Log Analytics はフィルターの **timestamp** 列を認識せず、タイム ピッカーは変更されません。 この場合、両方のフィルターが適用されます。 この例では、クエリの **where** 句で 7 日を指定した場合でも、過去 24 時間以内に作成されたレコードしかクエリに含まれません。
+ただし、クエリで **app** を使用してクラシック Application Insights アプリケーションからデータを取得する場合、Log Analytics でフィルターの **timestamp** 列が認識されず、タイム ピッカーは変更されません。 この場合、両方のフィルターが適用されます。 この例では、クエリの **where** 句で 7 日を指定した場合でも、過去 24 時間以内に作成されたレコードしかクエリに含まれません。
 
 ![アプリのクエリ](media/scope/query-app.png)
 

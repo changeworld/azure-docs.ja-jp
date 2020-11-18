@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperfq4
-ms.date: 10/02/2020
-ms.openlocfilehash: b49e7ab7f3412177ee9eafad8d1a68525e054421
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/09/2020
+ms.openlocfilehash: 46763bddd0f173ccf73edc54e5f2688d3bf6efc0
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314760"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445393"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning の既知の問題とトラブルシューティング
 
@@ -42,7 +42,7 @@ ms.locfileid: "93314760"
 
 ## <a name="installation-and-import"></a>インストールとインポート
                            
-* **pip のインストール:依存関係は単一行のインストールとの整合性が保証されていない** : 
+* **pip のインストール:依存関係は単一行のインストールとの整合性が保証されていない**: 
 
    これは pip の既知の制限であり、単一行としてインストールするときに、機能する依存関係競合回避モジュールがないことが原因です。 pip によって参照されるのは、最初の固有の依存関係のみです。 
 
@@ -81,7 +81,7 @@ ms.locfileid: "93314760"
                              **automl_settings)
     ``` 
     
-* **panda のエラー:通常は AutoML 実験中に見られる** :
+* **panda のエラー:通常は AutoML 実験中に見られる**:
    
    pip を使用して手動で環境を設定すると、サポートされていないパッケージ バージョンがインストールされるため、(特に pandas の) 属性エラーが表示される場合があります。 このようなエラーを回避するには、[automl_setup.cmd を使用して AutoML SDK をインストールしてください](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md)。
    
@@ -149,7 +149,7 @@ ms.locfileid: "93314760"
     %sh /databricks/python/bin/pip install pandas==0.23.4
     ```
 
-* **Databricks インポート エラー:'pandas.core.indexes' という名前のモジュールはありません** :自動化された機械学習を使用しているときにこのエラーが表示される場合は、以下を実行します。
+* **Databricks インポート エラー:'pandas.core.indexes' という名前のモジュールはありません**:自動化された機械学習を使用しているときにこのエラーが表示される場合は、以下を実行します。
 
     1. 次のコマンドを実行して、Azure Databricks クラスターに 2 つのパッケージをインストールします。
     
@@ -162,7 +162,7 @@ ms.locfileid: "93314760"
     
     これらの手順で問題が解決しない場合は、クラスターを再起動してみてください。
 
-* **Databricks FailToSendFeather** :Azure Databricks クラスター上のデータの読み取り時に `FailToSendFeather` エラーが表示された場合は、次の解決策を参照してください。
+* **Databricks FailToSendFeather**:Azure Databricks クラスター上のデータの読み取り時に `FailToSendFeather` エラーが表示された場合は、次の解決策を参照してください。
     
     * `azureml-sdk[automl]` パッケージを最新バージョンにアップグレードします。
     * `azureml-dataprep` バージョン 1.1.8 以降を追加します。
@@ -173,11 +173,11 @@ ms.locfileid: "93314760"
 > [!WARNING]
 > Azure Machine Learning ワークスペースを別のサブスクリプションに移動したり、所有するサブスクリプションを新しいテナントに移動したりすることは、サポートされていません。 エラーの原因になります。
 
-* **Azure ポータル** : 
+* **Azure ポータル**: 
   * SDK または Azure portal で共有リンクからワークスペースに直接移動する場合、拡張機能のサブスクリプション情報を含む標準の **[概要]** ページは表示できません。 このシナリオでは、別のワークスペースに切り替えることもできません。 別のワークスペースを表示するには、[Azure Machine Learning Studio](https://ml.azure.com) に直接移動し、そのワークスペース名を検索します。
-  * すべての資産 (データセット、実験、コンピューティングなど) は、[Azure Machine Learning Studio](https://ml.azure.com) でのみ使用できます。 Azure portal から使用することは " *できません* "。
+  * すべての資産 (データセット、実験、コンピューティングなど) は、[Azure Machine Learning Studio](https://ml.azure.com) でのみ使用できます。 Azure portal から使用することは "*できません*"。
 
-* **Azure Machine Learning スタジオの Web ポータルでサポートされているブラウザー** :オペレーティング システムと互換性のある最新ブラウザーを使うことをお勧めします。 次のブラウザーがサポートされています。
+* **Azure Machine Learning スタジオの Web ポータルでサポートされているブラウザー**:オペレーティング システムと互換性のある最新ブラウザーを使うことをお勧めします。 次のブラウザーがサポートされています。
   * Microsoft Edge (新しい Microsoft Edge の最新バージョンです。 Microsoft Edge レガシではありません)。
   * Safari (最新バージョン、Mac のみ)
   * Chrome (最新バージョン)
@@ -185,9 +185,9 @@ ms.locfileid: "93314760"
 
 ## <a name="set-up-your-environment"></a>環境の設定方法
 
-* **AmlCompute の作成に関する問題** :まれにですが、GA リリースの前に Azure portal から Azure Machine Learning ワークスペースを作成したユーザーが、そのワークスペースに AmlCompute を作成できないことがあります。 サービスにサポート リクエストを送るか、ポータルまたは SDK を使って新しいワークスペースを作成することで、すぐにブロックを解除することができます。
+* **AmlCompute の作成に関する問題**:まれにですが、GA リリースの前に Azure portal から Azure Machine Learning ワークスペースを作成したユーザーが、そのワークスペースに AmlCompute を作成できないことがあります。 サービスにサポート リクエストを送るか、ポータルまたは SDK を使って新しいワークスペースを作成することで、すぐにブロックを解除することができます。
 
-* **Azure Container Registry では現在、リソース グループ名に Unicode 文字を使用できません** :そのリソース グループ名に Unicode 文字が含まれているため、ACR 要求が失敗する可能性があります。 この問題を軽減するため、別の名前を付けたリソース グループで ACR を作成することをお勧めします。
+* **Azure Container Registry では現在、リソース グループ名に Unicode 文字を使用できません**:そのリソース グループ名に Unicode 文字が含まれているため、ACR 要求が失敗する可能性があります。 この問題を軽減するため、別の名前を付けたリソース グループで ACR を作成することをお勧めします。
 
 ## <a name="work-with-data"></a>データの処理
 
@@ -199,7 +199,7 @@ ms.locfileid: "93314760"
 
 ### <a name="passing-data-as-input"></a>入力としてのデータの引き渡し
 
-*  **TypeError:FileNotFound:そのようなファイルまたはディレクトリはありません** :このエラーは、指定したファイル パスにファイルがない場合に発生します。 ファイルを参照する方法が、コンピューティング先でデータセットをマウントした場所と一致していることを確認する必要があります。 確定的な状態を確保するには、データセットをコンピューティング先にマウントするときに抽象パスを使用することをお勧めします。 たとえば、次のコードでは、コンピューティング先のファイルシステムのルート `/tmp` にデータセットをマウントしています。 
+*  **TypeError:FileNotFound:そのようなファイルまたはディレクトリはありません**:このエラーは、指定したファイル パスにファイルがない場合に発生します。 ファイルを参照する方法が、コンピューティング先でデータセットをマウントした場所と一致していることを確認する必要があります。 確定的な状態を確保するには、データセットをコンピューティング先にマウントするときに抽象パスを使用することをお勧めします。 たとえば、次のコードでは、コンピューティング先のファイルシステムのルート `/tmp` にデータセットをマウントしています。 
     
     ```python
     # Note the leading / in '/tmp/dataset'
@@ -211,7 +211,7 @@ ms.locfileid: "93314760"
     先頭のスラッシュ "/" を含めない場合は、データセットをマウントする場所を示すために、コンピューティング先の作業ディレクトリをプレフィックスとして付ける必要があります (たとえば、`/mnt/batch/.../tmp/dataset`)。
 
 ### <a name="mount-dataset"></a>データセットのマウント
-* **データセットの初期化に失敗しました:マウント ポイントの準備が完了するまで待っていましたがタイムアウトになりました** :この問題を軽減するため、再試行ロジックが `azureml-sdk >=1.12.0` で追加されています。 前の azureml-sdk バージョンをご利用の場合、最新版にアップグレードしてください。 既に `azureml-sdk>=1.12.0` をご利用の場合、修正プログラムで最新のパッチが適用されるよう、環境を再作成してください。
+* **データセットの初期化に失敗しました:マウント ポイントの準備が完了するまで待っていましたがタイムアウトになりました**:この問題を軽減するため、再試行ロジックが `azureml-sdk >=1.12.0` で追加されています。 前の azureml-sdk バージョンをご利用の場合、最新版にアップグレードしてください。 既に `azureml-sdk>=1.12.0` をご利用の場合、修正プログラムで最新のパッチが適用されるよう、環境を再作成してください。
 
 ### <a name="data-labeling-projects"></a>プロジェクトのラベル付けデータ
 
@@ -258,7 +258,20 @@ ms.locfileid: "93314760"
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning デザイナー
 
-* **計算の準備時間が長い:**
+### <a name="dataset-visualization-in-the-designer"></a>デザイナーでのデータセットの視覚化
+
+データセットを **[データセット]** 資産ページまたは SDK を使用して登録すると、デザイナー キャンバスの左側にある一覧の **[データセット]** カテゴリの下に表示されます。
+
+ただし、データセットをキャンバスにドラッグして視覚化すると、次のような理由により視覚化できないことがあります。
+
+- 現時点では、デザイナーでは表形式のデータセットのみを視覚化できます。 デザイナーの外部でファイル データセットを登録した場合、デザイナー キャンバスでそのデータセットを視覚化することはできません。
+- データセットは仮想ネットワーク (VNet) に格納されます。 視覚化する場合は、データストアのワークスペース マネージド ID を有効にする必要があります。
+    1. 関連するデータストアにアクセスし、 **[資格情報の更新]** をクリックします。
+    :::image type="content" source="./media/resource-known-issues/datastore-update-credential.png" alt-text="資格情報の更新":::
+    1. **[はい]** を選択して、ワークスペース マネージド ID を有効にします。
+    :::image type="content" source="./media/resource-known-issues/enable-workspace-managed-identity.png" alt-text="ワークスペース マネージド ID を有効にする":::
+
+### <a name="long-compute-preparation-time"></a>計算の準備時間が長い
 
 初回の接続時またはコンピューティング ターゲットの作成時に、数分またはそれ以上の時間がかかることがあります。 
 
@@ -269,7 +282,7 @@ import time
 time.sleep(600)
 ```
 
-* **リアルタイム エンドポイントのためのログ記録:**
+### <a name="log-for-real-time-endpoints"></a>リアルタイム エンドポイントのログ
 
 リアルタイム エンドポイントのログは、お客様のデータです。 リアルタイム エンドポイントのトラブルシューティングでは、次のコードを使用してログを有効にできます。 
 
@@ -306,13 +319,13 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
  
 * **NameError (名前が定義されていない)、AttributeError (オブジェクトに属性がない)** :この例外は、トレーニング スクリプトに起因しているはずです。 Azure portal からログ ファイルを参照して、定義されていない特定の名前または属性エラーに関する詳細情報を取得できます。 SDK から、`run.get_details()` を使用して、エラー メッセージを確認できます。 これにより、実行に対して生成されたすべてのログ ファイルも一覧表示されます。 実行を再送信する前に、トレーニング スクリプトを確認し、エラーを修正してください。 
 
-* **Horovod がシャットダウンされている** :"AbortedError:Horovod がシャットダウンされました" に遭遇した場合のほとんどで、この例外は、プロセスの 1 つにおいて horovod のシャットダウンを引き起こす基となる例外が発生していたことを意味します。 MPI ジョブの各ランクでは、Azure ML 内にある固有の専用ログ ファイルが取得されます。 これらのログは、`70_driver_logs` という名前です。 分散トレーニングの場合、ログを区別しやすいようにログ名の末尾に `_rank` が付与されます。 実際に Horovod シャットダウンの原因となったエラーを見つけるには、すべてのログ ファイルを確認して、driver_log ファイルの末尾にある `Traceback` を探します。 これらのファイルの 1 つから、基になる実際の例外がわかります。 
+* **Horovod がシャットダウンされている**:"AbortedError:Horovod がシャットダウンされました" に遭遇した場合のほとんどで、この例外は、プロセスの 1 つにおいて horovod のシャットダウンを引き起こす基となる例外が発生していたことを意味します。 MPI ジョブの各ランクでは、Azure ML 内にある固有の専用ログ ファイルが取得されます。 これらのログは、`70_driver_logs` という名前です。 分散トレーニングの場合、ログを区別しやすいようにログ名の末尾に `_rank` が付与されます。 実際に Horovod シャットダウンの原因となったエラーを見つけるには、すべてのログ ファイルを確認して、driver_log ファイルの末尾にある `Traceback` を探します。 これらのファイルの 1 つから、基になる実際の例外がわかります。 
 
-* **実行または実験の削除** :実験をアーカイブするには、 [Experiment.archive](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truearchive--) メソッドを使用するか、[Archive experiment]\(アーカイブ実験\) ボタンを介して Azure Machine Learning Studio クライアントの [実験] タブ ビューを使用します。 この操作により、実験はリスト クエリおよびビューから非表示になりますが、削除はされません。
+* **実行または実験の削除**:実験をアーカイブするには、[Experiment.archive](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truearchive--) メソッドを使用するか、[Archive experiment]\(アーカイブ実験\) ボタンを介して Azure Machine Learning Studio クライアントの [実験] タブ ビューを使用します。 この操作により、実験はリスト クエリおよびビューから非表示になりますが、削除はされません。
 
     個々の実験または実行を完全に削除することは現在サポートされていません。 ワークスペース アセットの削除の詳細については、「[Machine Learning service のワークスペース データをエクスポートまたは削除する](how-to-export-delete-data.md)」を参照してください。
 
-* **メトリック ドキュメントが大きすぎる** :Azure Machine Learning には、トレーニングの実行から一度にログに記録できるメトリック オブジェクトのサイズに関する内部制限があります。 リスト値メトリックのログ記録時に "Metric Document is too large (メトリック ドキュメントが大きすぎます)" エラーが発生した場合は、次の例のように、リストを小さいチャンクに分割してみてください。
+* **メトリック ドキュメントが大きすぎる**:Azure Machine Learning には、トレーニングの実行から一度にログに記録できるメトリック オブジェクトのサイズに関する内部制限があります。 リスト値メトリックのログ記録時に "Metric Document is too large (メトリック ドキュメントが大きすぎます)" エラーが発生した場合は、次の例のように、リストを小さいチャンクに分割してみてください。
 
     ```python
     run.log_list("my metric name", my_metric[:N])
@@ -323,7 +336,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 ## <a name="automated-machine-learning"></a>自動化された機械学習
 
-* **AutoML 依存関係の最近のアップグレードで互換性がなくなります** :SDK のバージョン 1.13.0 以降、前のパッケージでピン留めした旧バージョンと今回ピン留めする新バージョンとの間に互換性がないことに起因し、古い SDK でモデルが読み込まれません。 次のようなエラーが表示されます。
+* **AutoML 依存関係の最近のアップグレードで互換性がなくなります**:SDK のバージョン 1.13.0 以降、前のパッケージでピン留めした旧バージョンと今回ピン留めする新バージョンとの間に互換性がないことに起因し、古い SDK でモデルが読み込まれません。 次のようなエラーが表示されます。
   * モジュールが見つかりません:例: `No module named 'sklearn.decomposition._truncated_svd`、
   * インポート エラー:例: `ImportError: cannot import name 'RollingOriginValidator'`、
   * 属性エラー:例: `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
@@ -343,9 +356,9 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     pip install --upgrade scikit-learn==0.20.3
   ```
  
-* **R2 スコアの予測は常にゼロになります** 。この問題は、指定されたトレーニング データに、最後の `n_cv_splits` + `forecasting_horizon` データポイントと同じ値を含む時系列がある場合に発生します。 時系列でこのパターンが想定される場合は、プライマリ メトリックを正規化された二乗平均平方根誤差に切り替えることができます。
+* **R2 スコアの予測は常にゼロになります**。この問題は、指定されたトレーニング データに、最後の `n_cv_splits` + `forecasting_horizon` データポイントと同じ値を含む時系列がある場合に発生します。 時系列でこのパターンが想定される場合は、プライマリ メトリックを正規化された二乗平均平方根誤差に切り替えることができます。
  
-* **TensorFlow** : SDK のバージョン 1.5.0 以降の自動機械学習では、TensorFlow モデルは既定ではインストールされません。 自動 ML 実験で TensorFlow をインストールして使用するには、CondaDependecies を使用して tensorflow==1.12.0 をインストールしてください。 
+* **TensorFlow**: SDK のバージョン 1.5.0 以降の自動機械学習では、TensorFlow モデルは既定ではインストールされません。 自動 ML 実験で TensorFlow をインストールして使用するには、CondaDependecies を使用して tensorflow==1.12.0 をインストールしてください。 
  
    ```python
    from azureml.core.runconfig import RunConfiguration
@@ -353,18 +366,18 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
    run_config = RunConfiguration()
    run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['tensorflow==1.12.0'])
   ```
-* **実験グラフ** :自動化された ML の実験のイテレーションで示される二項分類グラフ (精度と再現率、ROC、ゲイン カーブなど) は、4/12 以降のユーザー インターフェイスでは正しくレンダリングされません。 グラフのプロットは現在、逆の結果を示しており、パフォーマンスが良いモデルほど低い結果で示されています。 解決策を調査中です。
+* **実験グラフ**:自動化された ML の実験のイテレーションで示される二項分類グラフ (精度と再現率、ROC、ゲイン カーブなど) は、4/12 以降のユーザー インターフェイスでは正しくレンダリングされません。 グラフのプロットは現在、逆の結果を示しており、パフォーマンスが良いモデルほど低い結果で示されています。 解決策を調査中です。
 
-* **Databricks での自動化された機械学習の実行をキャンセルする** :自動化された機械学習機能を Azure Databricks で使用しているときに、実行をキャンセルして新しい実験の実行を開始するには、Azure Databricks クラスターを再起動してください。
+* **Databricks での自動化された機械学習の実行をキャンセルする**:自動化された機械学習機能を Azure Databricks で使用しているときに、実行をキャンセルして新しい実験の実行を開始するには、Azure Databricks クラスターを再起動してください。
 
-* **Databricks での自動化された機械学習の 10 回を超える繰り返し** :自動化された機械学習の設定で、繰り返し回数が 10 回を超えている場合は、実行を送信するときに `show_output` を `False` に設定します。
+* **Databricks での自動化された機械学習の 10 回を超える繰り返し**:自動化された機械学習の設定で、繰り返し回数が 10 回を超えている場合は、実行を送信するときに `show_output` を `False` に設定します。
 
-* **Azure Machine Learning SDK 用の Databricks ウィジェットと自動化された機械学習** :Azure Machine Learning SDK ウィジェットは、Databricks ノートブックではサポートされていません。この理由は、ノートブックが HTML ウィジェットを解析できないからです。 Azure Databricks のノートブック セルで次の Python コードを使用することにより、portal でウィジェットを表示することができます。
+* **Azure Machine Learning SDK 用の Databricks ウィジェットと自動化された機械学習**:Azure Machine Learning SDK ウィジェットは、Databricks ノートブックではサポートされていません。この理由は、ノートブックが HTML ウィジェットを解析できないからです。 Azure Databricks のノートブック セルで次の Python コードを使用することにより、portal でウィジェットを表示することができます。
 
     ```
     displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
     ```
-* **automl_setup が失敗する** : 
+* **automl_setup が失敗する**: 
     * Windows の場合は、Anaconda プロンプトから automl_setup を実行します。 このリンクを使用して、[Miniconda をインストール](https://docs.conda.io/en/latest/miniconda.html)します。
     * `conda info` コマンドを実行して、Conda 64 ビット (32 ビットではなく) がインストールされていることを確認します。 `platform` は、Windows の場合は `win-64`、Mac の場合は `osx-64` にする必要があります。
     * Conda 4.4.10 以降がインストールされていることを確認します。 バージョンは、コマンド `conda -V` を使用して確認できます。 以前のバージョンがインストールされている場合は、`conda update conda` コマンドを使用して更新できます。
@@ -372,36 +385,36 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
       *  `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` エラーが発生した場合は、コマンド `sudo apt-get install build-essential` を使用して build essential をインストールします。
       * 新しい名前を最初のパラメーターとして automl_setup に渡して、新しい Conda 環境を作成します。 `conda env list` を使用して既存の Conda 環境を表示し、`conda env remove -n <environmentname>` を使用してそれらを削除します。
       
-* **automl_setup_linux が失敗する** :Ubuntu Linux で automl_setup_linus.sh がエラーで失敗する場合: `unable to execute 'gcc': No such file or directory`-
+* **automl_setup_linux が失敗する**:Ubuntu Linux で automl_setup_linus.sh がエラーで失敗する場合: `unable to execute 'gcc': No such file or directory`-
   1. 送信ポート 53 および 80 が有効になっていることを確認します。 Azure VM でこれを行うには、Azure portal で VM を選択し、[ネットワーク] をクリックします。
   2. `sudo apt-get update` コマンドを実行します
   3. `sudo apt-get install build-essential --fix-missing` コマンドを実行します
   4. `automl_setup_linux.sh` をもう一度実行します
 
-* **configuration.ipynb が失敗する** :
+* **configuration.ipynb が失敗する**:
   * ローカル Conda の場合は、最初に automl_setup が正常に実行されていることを確実にします。
   * subscription_id が正しいことを確認します。 Azure portal で [すべてのサービス]、[サブスクリプション] の順に選択して、subscription_id を見つけます。 subscription_id 値に文字 "<" と ">" を含めることはできません。 たとえば、`subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` は有効な形式です。
   * 共同作成者または所有者がサブスクリプションにアクセスできることを確認します。
   * リージョンがサポートされているリージョン (`eastus2`、`eastus`、`westcentralus`、`southeastasia`、`westeurope`、`australiaeast`、`westus2`、`southcentralus`) のいずれかであることを確認します。
   * Azure portal を使用してリージョンにアクセスできることを確認します。
   
-* **AutoMLConfig のインポートが失敗する** :自動機械学習バージョン 1.0.76 にはパッケージの変更があり、新しいバージョンに更新する前に、以前のバージョンをアンインストールする必要があります。 v1.0.76 より前の SDK バージョンから v1.0.76 以降にアップグレードした後で `ImportError: cannot import name AutoMLConfig` が発生した場合は、`pip uninstall azureml-train automl` を実行してから `pip install azureml-train-auotml` を実行してエラーを解決します。 これは、automl_setup.cmd スクリプトによって自動的に行われます。 
+* **AutoMLConfig のインポートが失敗する**:自動機械学習バージョン 1.0.76 にはパッケージの変更があり、新しいバージョンに更新する前に、以前のバージョンをアンインストールする必要があります。 v1.0.76 より前の SDK バージョンから v1.0.76 以降にアップグレードした後で `ImportError: cannot import name AutoMLConfig` が発生した場合は、`pip uninstall azureml-train automl` を実行してから `pip install azureml-train-auotml` を実行してエラーを解決します。 これは、automl_setup.cmd スクリプトによって自動的に行われます。 
 
-* **workspace.from_config が失敗する** :呼び出し ws = Workspace.from_config()' が失敗する場合 -
+* **workspace.from_config が失敗する**:呼び出し ws = Workspace.from_config()' が失敗する場合 -
   1. configuration.ipynb ノートブックが正常に実行されていることを確認します。
   2. ノートブックが、`configuration.ipynb` が実行されたフォルダーの配下ではないフォルダーから実行されている場合は、フォルダー aml_config と、それに含まれているファイル config.json を新しいフォルダーにコピーします。 Workspace.from_config により、ノートブック フォルダーまたはその親フォルダーの config.json が読み取られます。
   3. 新しいサブスクリプション、リソース グループ、ワークスペース、またはリージョンが使用されている場合は、もう一度 `configuration.ipynb` ノートブックを実行してください。 指定されたサブスクリプションの指定されたリソース グループにワークスペースが既に存在する場合にのみ、config.json を直接変更することができます。
   4. リージョンを変更する場合は、ワークスペース、リソース グループ、またはサブスクリプションを変更してください。 指定されたリージョンが異なる場合でも、ワークスペースが既に存在する場合は、`Workspace.create` によりワークスペースが作成または更新されることはありません。
   
-* **サンプル ノートブックが失敗する** :プロパティ、メソッド、またはライブラリが存在しないというエラーでサンプル ノートブックが失敗する場合:
+* **サンプル ノートブックが失敗する**:プロパティ、メソッド、またはライブラリが存在しないというエラーでサンプル ノートブックが失敗する場合:
   * Jupyter Notebook で正しいカーネルが選択されていることを確実にします。 カーネルがノートブック ページの右上に表示されます。 既定値は azure_automl です。 カーネルがノートブックの一部として保存されていることに注意してください。 そのため、新しい Conda 環境に切り替える場合は、ノートブックで新しいカーネルを選択する必要があります。
       * Azure Notebooks の場合は、Python 3.6 にする必要があります。 
       * ローカルの Conda 環境の場合は、automl_setup で指定した Conda 環境名にする必要があります。
   * ノートブックが、使用している SDK のバージョンに対応していることを確認します。 Jupyter Notebook セルで `azureml.core.VERSION` を実行することで、SDK のバージョンを確認できます。 GitHub から以前のバージョンのサンプル ノートブックをダウンロードするには、[`Branch`] ボタンをクリックし、[`Tags`] タブを選択して、バージョンを選択します。
 
-* **NumPy のインポートが Windows で失敗する** :一部の Windows 環境で、Python の最新バージョン 3.6.8 を使用した NumPy の読み込みでエラーが発生することがあります。 この問題が発生した場合は、Python バージョン 3.6.7 を試してください。
+* **NumPy のインポートが Windows で失敗する**:一部の Windows 環境で、Python の最新バージョン 3.6.8 を使用した NumPy の読み込みでエラーが発生することがあります。 この問題が発生した場合は、Python バージョン 3.6.7 を試してください。
 
-* **NumPy のインポートが失敗する** :自動 ML Conda 環境で TensorFlow のバージョンを確認します。 サポートされているバージョンは、1.13 未満です。 バージョンが 1.13 以降の場合は、環境から TensorFlow をアンインストールします。TensorFlow のバージョンを確認して、次のようにアンインストールできます。
+* **NumPy のインポートが失敗する**:自動 ML Conda 環境で TensorFlow のバージョンを確認します。 サポートされているバージョンは、1.13 未満です。 バージョンが 1.13 以降の場合は、環境から TensorFlow をアンインストールします。TensorFlow のバージョンを確認して、次のようにアンインストールできます。
   1. コマンド シェルを起動し、自動 ML パッケージがインストールされている Conda 環境をアクティブにします。
   2. `pip freeze` を入力して `tensorflow`を探します。見つかった場合は、表示されるバージョンは 1.13 未満になるはずです。
   3. 表示されているバージョンがサポートされているバージョンでない場合は、コマンド シェルで `pip uninstall tensorflow` を入力し、確認のために「y」を入力します。

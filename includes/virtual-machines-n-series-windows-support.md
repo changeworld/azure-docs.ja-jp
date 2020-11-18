@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: bfb7d1d52549d7fda9547b65a259fe2ce73f8839
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 22d2ddc65616bbeb0c511afa6f60bc12c6ec67ef
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91997937"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94482614"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>サポートされているオペレーティング システムとドライバー
 
@@ -34,12 +34,12 @@ NC、NCv2、NCv3、NCasT4_v3、ND、および NDv2 シリーズ VM (NV シリー
 
 Microsoft では、仮想ワークステーションまたは仮想アプリケーションとして使用される NV および NVv3 シリーズ VM 用の NVIDIA GRID ドライバーのインストーラーを再分配します。 次の表に記載されているオペレーティング システム上でのみ、これらの GRID ドライバーを Azure NV シリーズ VM にインストールします。 これらのドライバーには、Azure での GRID 仮想 GPU ソフトウェアのライセンスが含まれています。 NVIDIA vGPU ソフトウェア ライセンス サーバーを設定する必要はありません。
 
-Azure によって再頒布された GRID ドライバーは、NV シリーズ以外の VM (NC、NCv2、NCv3、ND、NDv2 シリーズの VM など) では機能しません。
+Azure によって再頒布された GRID ドライバーは、NV シリーズ以外の VM (NC、NCv2、NCv3、ND、NDv2 シリーズの VM など) では機能しません。 1 つの例外として、NCas_T4_V3 VM シリーズがあります。このシリーズでは、GRID ドライバーによって、NV シリーズに似たグラフィックス機能が有効になります。
 
 Nvidia の拡張機能では、常に最新のドライバーがインストールされます。 次に、古いバージョンに依存しているお客様用に、以前のバージョンへのリンクを示します。
 
 Windows Server 2019、Windows Server 2016、Windows 10 (ビルド 2004 以下):
-- [GRID 11 (452.39)](https://go.microsoft.com/fwlink/?linkid=874181) (.exe)
+- [GRID 11.1 (452.39)](https://go.microsoft.com/fwlink/?linkid=874181) (.exe)
 - [GRID 11.0 (451.48)](https://download.microsoft.com/download/C/1/4/c147a482-1364-4d12-b9e3-0beda0f00a13/451.48_grid_win10_server2016_server2019_64bit_international.exe) (.exe) 
 
 Windows Server 2012 R2: 

@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 04076ed5b91f8e840a084b784477d07eea5adee7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cba8837fc738884fc187b13083487c2ab62d25f0
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015972"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392579"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Microsoft 以外のアカウントを Microsoft Authenticator アプリに追加する
 
@@ -36,7 +36,7 @@ ms.locfileid: "87015972"
     >[!Note]
     >初めて Microsoft Authenticator アプリを設定する場合は、アプリによるカメラへのアクセスを許可するか (iOS)、またはアプリによる画像の撮影とビデオの録画を許可するか (Android) を確認するメッセージが表示されることがあります。 認証アプリがカメラにアクセスして、次の手順で QR コードを撮影できるようにするには、 **[許可]** を選択する必要があります。 カメラを許可しない場合でも、認証アプリを設定できますが、手動でコード情報を追加する必要があります。 コードを手動で追加する方法の詳細については、「[アプリにアカウントを手動で追加する](user-help-auth-app-add-account-manual.md)」を参照してください。
 
-ここでは、Facebook、Google、GitHub、および Amazon のアカウントに関するプロセスについて説明しますが、このプロセスは、Instagram、Netflix、または Adobe などの他のアプリの場合も同じです。
+ここでは、Facebook、Google、GitHub、および Amazon のアカウントに関するプロセスについて説明しますが、このプロセスは、Instagram や Adobe などの他のアプリの場合も同じです。
 
 ## <a name="add-your-google-account"></a>Google アカウントを追加する
 

@@ -1,17 +1,17 @@
 ---
 title: レプリケーションでのデータの構成 - Azure Database for MySQL
 description: この記事では、Azure Database for MySQL のデータイン レプリケーションをセットアップする方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: 58df34ae6a6ff3304304da192b429ac83c1b55c3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b7f1f16b5182658f42ad6594aace22fb5a1a80fc
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544037"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541404"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL のデータイン レプリケーションを構成する方法
 
@@ -20,7 +20,7 @@ ms.locfileid: "92544037"
 > [!NOTE]
 > バイアスフリーなコミュニケーション
 >
-> Microsoft では、多様性を尊重する環境がサポートされています。 この記事には、" _スレーブ_ " という単語への言及があります。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これを排他的な単語と認めています。 この単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
+> Microsoft では、多様性を尊重する環境がサポートされています。 この記事には、"_スレーブ_" という単語への言及があります。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これを排他的な単語と認めています。 この単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
 >
 
 Azure Database for MySQL サービスでレプリカを作成するために、[データイン レプリケーション](concepts-data-in-replication.md)によって、オンプレミス、仮想マシン (VM)、またはクラウド データベース サービスのソース MySQL サーバーからデータが同期されます。 データイン レプリケーションは、MySQL のネイティブなバイナリ ログ (binlog) ファイルの位置ベースのレプリケーションに基づいています。 binlog レプリケーションの詳細については、[MySQL binlog レプリケーションの概要](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)に関する記事を参照してください。
@@ -140,11 +140,11 @@ Azure Database for MySQL サービスでレプリカを作成するために、[
 
    **[Login Name]\(ログイン名\)** フィールドにユーザー名を入力します。 
 
-   :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="[Users and Privileges]\(ユーザーと権限\)":::
+   :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="同期ユーザー":::
  
    **[Administrative Roles]\(管理者ロール\)** パネルをクリックし、 **[Global Privileges]\(グローバル権限\)** の一覧から **[Replication Slave]\(レプリケーション スレーブ\)** を選択します。 次に、 **[Apply]\(適用\)** をクリックして、レプリケーション ロールを作成します。
 
-   :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="[Users and Privileges]\(ユーザーと権限\)":::
+   :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="[Replication Slave]\(レプリケーション スレーブ\)":::
 
 1. ソース サーバーを読み取り専用モードに設定する
 
@@ -164,7 +164,7 @@ Azure Database for MySQL サービスでレプリカを作成するために、[
    ```
    その結果は次のようになります。 バイナリ ファイルの名前は、この後の手順で使用するので書き留めておいてください。
 
-   :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="[Users and Privileges]\(ユーザーと権限\)":::
+   :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="master status の結果":::
  
 ## <a name="dump-and-restore-source-server"></a>ソース サーバーのダンプと復元
 

@@ -1,7 +1,7 @@
 ---
 title: Preprocess Text (テキストの前処理):モジュール リファレンス
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning 内で Preprocess Text (テキストの前処理) モジュールを使用して、テキストをクリーンアップして簡素化する方法について説明します。
+description: Azure Machine Learning デザイナーの Preprocess Text (テキストの前処理) モジュールを使用して、テキストをクリーンアップして簡素化する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: 4112d26d6a21ac800e20bb67ce24a35ca9d09a13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d512a691b76cb7cbc72b4cbcb1fc821e928ea1b0
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905234"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421228"
 ---
 # <a name="preprocess-text"></a>Preprocess Text (テキストの前処理)
 

@@ -1,17 +1,17 @@
 ---
 title: データイン レプリケーション - Azure Database for MariaDB
 description: データイン レプリケーションを使用して、外部のサーバーから Azure Database for MariaDB サービスに同期する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: db85892115f345039353cd90eeedbe809eb6ae67
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 331e064bcf11af31a778cb8dd06c463712421b7c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425567"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533431"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>データを Azure Database for MariaDB にレプリケートする
 
@@ -26,7 +26,7 @@ ms.locfileid: "92425567"
 ## <a name="limitations-and-considerations"></a>制限と考慮事項
 
 ### <a name="data-not-replicated"></a>レプリケートされないデータ
-ソース サーバー上の " [*mysql システム データベース*](https://mariadb.com/kb/en/library/the-mysql-database-tables/)" はレプリケートされません。 ソース サーバーでのアカウントとアクセス許可の変更はレプリケートされません。 ソース サーバーでアカウントを作成し、そのアカウントでレプリカ サーバーにアクセスする必要がある場合は、レプリカ サーバー側で同じアカウントを手動で作成します。 システム データベースに含まれているテーブルの詳細については、[MariaDB のドキュメント](https://mariadb.com/kb/en/library/the-mysql-database-tables/)を参照してください。
+ソース サーバー上の "[*mysql システム データベース*](https://mariadb.com/kb/en/library/the-mysql-database-tables/)" はレプリケートされません。 ソース サーバーでのアカウントとアクセス許可の変更はレプリケートされません。 ソース サーバーでアカウントを作成し、そのアカウントでレプリカ サーバーにアクセスする必要がある場合は、レプリカ サーバー側で同じアカウントを手動で作成します。 システム データベースに含まれているテーブルの詳細については、[MariaDB のドキュメント](https://mariadb.com/kb/en/library/the-mysql-database-tables/)を参照してください。
 
 ### <a name="requirements"></a>必要条件
 - ソース サーバーのバージョンは、MariaDB バージョン 10.2 以上である必要があります。

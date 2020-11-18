@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ee18916a59bb081d65494f46e7aba7c29c7177cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e41eb0f6a61f7b195e251739ae93207c731cac5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71718512"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535879"
 ---
 # <a name="detect-adult-content"></a>成人向けコンテンツを検出する
 
@@ -29,13 +29,13 @@ Computer Vision では、イメージ内にある成人向けの素材を検出�
 
 "成人向け" 分類内には、次のようなカテゴリがあります。
 
-- **成人向け**イメージは、露骨に性的な内容で、その多くがヌードや性的な行為を描写したものと定義されています。
-- **わいせつ**なイメージは、性的なものを想起させるものの、**成人向け** とタグ付けされたイメージに比べると性的に明白な内容が少ないものと定義されています。
-- **不快な**イメージは、血が描写されているものとして定義されています。
+- **成人向け** イメージは、露骨に性的な内容で、その多くがヌードや性的な行為を描写したものと定義されています。
+- **わいせつ** なイメージは、性的なものを想起させるものの、**成人向け** とタグ付けされたイメージに比べると性的に明白な内容が少ないものと定義されています。
+- **不快な** イメージは、血が描写されているものとして定義されています。
 
 ## <a name="use-the-api"></a>API の使用
 
-成人向けコンテンツは、[Analyze Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API を使用して検出できます。 **visualFeatures** クエリ パラメーターに値 `Adult` を追加すると、API の JSON 応答で、3 つのブール型プロパティ `isAdultContent`、`isRacyContent`、`isGoryContent` が返されます。 メソッドでは、それぞれのカテゴリに対する信頼度スコアが 0 から 1 の範囲の値で表されている、対応するプロパティ `adultScore`、`racyScore`、`goreScore` も返されます。
+成人向けコンテンツは、[Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API を使用して検出できます。 **visualFeatures** クエリ パラメーターに値 `Adult` を追加すると、API の JSON 応答で、3 つのブール型プロパティ `isAdultContent`、`isRacyContent`、`isGoryContent` が返されます。 メソッドでは、それぞれのカテゴリに対する信頼度スコアが 0 から 1 の範囲の値で表されている、対応するプロパティ `adultScore`、`racyScore`、`goreScore` も返されます。
 
 - [クイック スタート: 画像の分析 (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
 - [クイック スタート: 画像の分析 (REST API)](./quickstarts/csharp-analyze.md)

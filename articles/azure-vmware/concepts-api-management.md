@@ -2,13 +2,13 @@
 title: 概念 - API Management
 description: Azure VMware Solution 仮想マシン (VM) 上で実行されている API を API Management が保護する方法について説明します
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: f412ee81fc77435f2586a31c1bf6f6bdf22c66e2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 10/27/2020
+ms.openlocfilehash: 958cc52c48d1121a69dca2fc901289ad1ed671cb
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670368"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541965"
 ---
 # <a name="api-management-to-publish-and-protect-apis-running-on-azure-vmware-solution-based-vms"></a>Azure VMware Solution ベースの VM で実行されている API を発行および保護するための API Management
 

@@ -1,14 +1,14 @@
 ---
 title: Azure portal からハイブリッド マシンを Azure に接続する
 description: この記事では、Azure portal から Azure Arc 対応サーバーを使用して、エージェントをインストールし、マシンを Azure に接続する方法について説明します。
-ms.date: 10/21/2020
+ms.date: 11/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8769a3b76172bc6508b7c52eda359695c01eaa4b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ca3c08acdef1b2a1f7c3774f5755967d472c93ed
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370153"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398030"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Azure portal からハイブリッド マシンを Azure に接続する
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     1. マシンがプロキシ サーバー経由でインターネットに接続して通信を行っている場合は、プロキシ サーバーの IP アドレス、またはマシンでプロキシ サーバーとの通信に使用されている名前とポート番号を指定します。 `http://<proxyURL>:<proxyport>` の形式で値を入力します。
     1. **タグ** を選択します。
 
-1. **[タグ]** ページで、提案されている既定の **物理的な場所のタグ** を確認し、値を入力するか、 **カスタム タグ** を 1 つ以上指定して標準をサポートします。
+1. **[タグ]** ページで、提案されている既定の **物理的な場所のタグ** を確認し、値を入力するか、**カスタム タグ** を 1 つ以上指定して標準をサポートします。
 
 1. **[Next:Download and run script]\(次: スクリプトをダウンロードして実行する\)** を選択します。
 
@@ -55,7 +55,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Windows インストーラー パッケージ *AzureConnectedMachineAgent.msi* を実行することで、Connected Machine エージェントを手動でインストールできます。 最新バージョンの [Windows エージェント Windows インストーラー パッケージ](https://aka.ms/AzureConnectedMachineAgent)を Microsoft ダウンロード センターからダウンロードできます。
 
 >[!NOTE]
->* エージェントをインストールまたはアンインストールするには、" *管理者* " アクセス許可が必要です。
+>* エージェントをインストールまたはアンインストールするには、"*管理者*" アクセス許可が必要です。
 >* まず、インストーラー パッケージをダウンロードし、ターゲット サーバー上のフォルダーにコピーするか、共有ネットワーク フォルダーからコピーする必要があります。 オプションを指定せずにこのインストーラー パッケージを実行すると、セットアップ ウィザードが起動します。ここで、指示に従って対話形式でエージェントをインストールできます。
 
 マシンがプロキシ サーバーを介してサービスと通信する必要がある場合は、エージェントをインストールした後、以下の手順で説明するコマンドを実行する必要があります。 このコマンドにより、プロキシ サーバーのシステム環境変数 `https_proxy` が設定されます。
@@ -113,9 +113,9 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
 
 Linux 用の Connected Machine エージェントは、Microsoft [パッケージ リポジトリ](https://packages.microsoft.com/)でホストされたディストリビューション (.RPM または .DEB) に適したパッケージ形式で提供されます。 この[シェル スクリプト バンドル `Install_linux_azcmagent.sh`](https://aka.ms/azcmagent) により、次のアクションが実行されます。
 
-- packages.microsoft.com からエージェント パッケージをダウンロードするようにホスト マシンを構成します。
-- ハイブリッド リソース プロバイダー パッケージをインストールします。
-- Azure Arc を使用してマシンを登録します
+* packages.microsoft.com からエージェント パッケージをダウンロードするようにホスト マシンを構成します。
+
+* ハイブリッド リソース プロバイダー パッケージをインストールします。
 
 必要に応じて、`--proxy "{proxy-url}:{proxy-port}"` パラメーターを含めることで、プロキシ情報を使用してエージェントを構成できます。
 
@@ -131,15 +131,30 @@ wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 bash ~/Install_linux_azcmagent.sh
 ```
 
-プロキシ サーバー経由で通信するようにエージェントを構成するための `--proxy` パラメーターを含めてエージェントをダウンロードし、インストールするには、次のコマンドを実行します。
+1. プロキシ サーバー経由で通信するようにエージェントを構成するための `--proxy` パラメーターを含めてエージェントをダウンロードし、インストールするには、次のコマンドを実行します。
 
-```bash
-# Download the installation package.
-wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
+    ```bash
+    # Download the installation package.
+    wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 
-# Install the connected machine agent. 
-bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
-```
+    # Install the connected machine agent.
+    bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
+    ```
+
+2. エージェントをインストールしたら、次のコマンドを実行して、Azure Arc サービスと通信するようにエージェントを構成する必要があります。
+
+    ```bash
+    azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --cloud "cloudName"
+    if [ $? = 0 ]; then echo "\033[33mTo view your onboarded server(s), navigate to https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.HybridCompute%2Fmachines\033[m"; fi
+    ```
+
+### <a name="install-with-the-scripted-method"></a>スクリプト化された手法を使用してインストールする
+
+1. ルート アクセス権を持つアカウントを使用してサーバーにログインします。
+
+1. スクリプトをコピーしたフォルダーまたは共有に移動し、`./OnboardingScript.sh` スクリプトを実行することでそのスクリプトをサーバー上で実行します。
+
+セットアップの完了後にエージェントが起動しない場合は、詳細なエラー情報のログを確認します。 ログ ディレクトリは、*var/opt/azcmagent/log* です。
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Azure Arc との接続を検証する
 

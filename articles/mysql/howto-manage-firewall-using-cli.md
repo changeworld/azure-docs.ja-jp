@@ -1,19 +1,19 @@
 ---
 title: ファイアウォール規則の管理 - Azure CLI - Azure Database for MySQL
 description: この記事では、Azure CLI コマンド ラインを使って Azure Database for MySQL ファイアウォール規則を作成し、管理する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cb7f8547419b45314ad044b41957a53085cdbe13
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: eaddd8b2979b30251301ad041ea4b872c23d680b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546400"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541336"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用して、特定の IP アドレスまたは IP アドレス範囲からの Azure Database for MySQL サーバーへのアクセスを管理できます。 便利な Azure CLI コマンドを使用すると、サーバーを管理するためのファイアウォール規則の作成、更新、削除、一覧化、表示などができます。 Azure Database for MySQL ファイアウォールの概要については、「[Azure Database for MySQL サーバーのファイアウォール規則](./concepts-firewall-rules.md)」をご覧ください。
@@ -28,11 +28,11 @@ ms.locfileid: "92546400"
 Azure CLI の **az mysql server firewall-rule** コマンドで、ファイアウォール規則を作成、削除、一覧表示、表示、更新します。
 
 コマンド:
-- **create** :Azure MySQL サーバーのファイアウォール規則を作成します。
-- **delete** :Azure MySQL サーバーのファイアウォール規則を削除します。
-- **list** :Azure MySQL サーバーのファイアウォール規則を一覧表示します。
-- **show** :Azure MySQL サーバーのファイアウォール規則の詳細を表示します。
-- **update** :Azure MySQL サーバーのファイアウォール規則を更新します。
+- **create**:Azure MySQL サーバーのファイアウォール規則を作成します。
+- **delete**:Azure MySQL サーバーのファイアウォール規則を削除します。
+- **list**:Azure MySQL サーバーのファイアウォール規則を一覧表示します。
+- **show**:Azure MySQL サーバーのファイアウォール規則の詳細を表示します。
+- **update**:Azure MySQL サーバーのファイアウォール規則を更新します。
 
 ## <a name="sign-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Azure にサインインして Azure Database for MySQL サーバーを一覧表示する
 **az login** コマンドを使用して、ご利用の Azure アカウントで Azure CLI に安全に接続します。

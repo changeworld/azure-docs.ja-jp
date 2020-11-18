@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/30/2020
 ms.author: duau
-ms.openlocfilehash: dbce9019e33c07dd4faa91ffd490eba4d313c675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e810a31fab4457e47329e37f54b16e6f488c9da
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630612"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337629"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>ルーティングの一般的な問題のトラブルシューティング
 
@@ -103,5 +103,26 @@ ms.locfileid: "91630612"
             * *[accepted protocols]* \(許可されているプロトコル\) は、HTTP および HTTPS です。 *[転送プロトコル]* は HTTP です。 HTTPS は許可されているプロトコルであるため、一致要求は機能しません。要求が HTTPS で受信された場合、Front Door は HTTPS を使用してそれを転送します。
 
             * *[accepted protocols]* \(許可されているプロトコル\) は、HTTP です。 *[転送プロトコル]* は、一致要求または HTTP です。
-
     - *[Url の書き換え]* は、既定では無効化されています。 このフィールドは、バックエンドでホストされているリソースの利用可能にする範囲を限定したい場合にのみ使用します。 これを無効にすると、Front Door は受信したのと同じ要求パスを転送します。 このフィールドを間違って構成する可能性があります。 その場合、Front Door によって、利用できないバックエンドのリソースが要求されると、HTTP 404 の状態コードが返されます。
+
+## <a name="request-to-frontend-host-name-returns-411-status-code"></a>フロントエンドのホスト名の要求で状態コード 411 が返される
+
+### <a name="symptom"></a>症状
+
+Front Door を作成し、フロントエンド ホスト、少なくとも 1 つ以上のバックエンドがあるバックエンド プール、フロントエンド ホストをバックエンド プールに接続するルーティング規則を作成しました。 構成したフロントエンド ホストに要求を送信しても、HTTP 411 の状態コードが返されるのでコンテンツを利用できないようです。
+
+これらの要求に対する応答には、説明文が記載された HTML エラー ページが応答本文に含まれる場合もあります。 例: `HTTP Error 411. The request must be chunked or have a content length`
+
+### <a name="cause"></a>原因
+
+この現象にはいくつかの原因が考えられますが、全体的には、HTTP 要求が完全には RFC に準拠していないことが理由です。 
+
+非準拠の例としては、`Content-Length` または `Transfer-Encoding` ヘッダーを使用せずに送信される `POST` 要求があります (たとえば、`curl -X POST https://example-front-door.domain.com` を使用)。 この要求は [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.3.2) で規定されている要件を満たしておらず、Front Door によってブロックされ、HTTP 411 応答が返されます。
+
+この動作は、Front Door の WAF 機能とは別のものです。 現時点では、この動作を無効にする方法はありません。 WAF の機能が使用されていない場合でも、すべての HTTP 要求では要件が満たされている必要があります。
+
+### <a name="troubleshooting-steps"></a>トラブルシューティングの手順
+
+- 要求が、必要な RFC で規定されている要件に準拠していることを確認します。
+
+- 要求への応答として返される HTML メッセージ本文をメモしておきます。これは、要求が *どのように* 非準拠であるかを正確に説明してあることが多いためです。

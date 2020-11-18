@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d72b70248e317d1caee4527be38fe304cfe7f16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f757d8f59c06d573d71099941530dfc28174ac42
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658332"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420489"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory シームレス シングル サインオン:よく寄せられる質問
 
@@ -107,6 +107,9 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
    >ドメイン管理者ではなく、ドメイン管理者によってアクセス許可が割り当てられた場合は、`Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount` を呼び出す必要があります
    
    3. 機能が有効に設定されている AD フォレストごとに、上記の手順を繰り返します。
+   
+  >[!NOTE]
+   >Azure AD Connect 以外のフォレストを更新している場合は、グローバル カタログ サーバー (TCP 3268 および TCP 3269) への接続が使用可能であることを確認します。
 
    >[!IMPORTANT]
    >`Update-AzureADSSOForest` コマンドは、"_複数回実行しない_" でください。 複数回実行すると、ユーザーの Kerberos チケットの期限が切れてオンプレミスの Active Directory によって再発行されるまで、この機能は動作を停止します。

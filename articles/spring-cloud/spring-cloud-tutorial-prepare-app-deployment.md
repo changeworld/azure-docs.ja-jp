@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 31e25fb8c67e3d271bc37eb4b0d28c67d94a664f
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 9e613331760a1715c3821bdc7dbbf0469e8bfd97
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092802"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337612"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud にデプロイするアプリケーションを準備する
 
@@ -30,15 +30,38 @@ Azure Spring Cloud は、Steeltoe アプリをホスト、監視、スケール�
 Azure Spring Cloud は以下をサポートしています。
 
 * .NET Core 3.1
-* Steeltoe 2.4
+* Steeltoe 2.4 および 3.0
 
 ## <a name="dependencies"></a>依存関係
 
-[Microsoft.Azure.SpringCloud.Client](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/) パッケージをインストールします。
+Steeltoe 2.4 の場合は、最新の [Microsoft.Azure.SpringCloud.Client 1.x.x](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/) パッケージをプロジェクト ファイルに追加します。
+
+```xml
+<ItemGroup>
+  <PackageReference Include="Microsoft.Azure.SpringCloud.Client" Version="1.0.0-preview.1" />
+  <PackageReference Include="Steeltoe.Discovery.ClientCore" Version="2.4.4" />
+  <PackageReference Include="Steeltoe.Extensions.Configuration.ConfigServerCore" Version="2.4.4" />
+  <PackageReference Include="Steeltoe.Management.TracingCore" Version="2.4.4" />
+  <PackageReference Include="Steeltoe.Management.ExporterCore" Version="2.4.4" />
+</ItemGroup>
+```
+
+Steeltoe 3.0 の場合は、最新の [Microsoft.Azure.SpringCloud.Client 2.x.x](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/) パッケージをプロジェクト ファイルに追加します。
+
+```xml
+<ItemGroup>
+  <PackageReference Include="Microsoft.Azure.SpringCloud.Client" Version="2.0.0-preview.1" />
+  <PackageReference Include="Steeltoe.Discovery.ClientCore" Version="3.0.0" />
+  <PackageReference Include="Steeltoe.Extensions.Configuration.ConfigServerCore" Version="3.0.0" />
+  <PackageReference Include="Steeltoe.Management.TracingCore" Version="3.0.0" />
+</ItemGroup>
+```
 
 ## <a name="update-programcs"></a>Program.cs の更新
 
 `Program.Main` メソッドで、`UseAzureSpringCloudService` メソッドを呼び出します。
+
+Steeltoe 2.4.4 の場合は、`ConfigureWebHostDefaults` および `AddConfigServer` (呼び出される場合) の後に `UseAzureSpringCloudService` を呼び出します。
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -47,7 +70,21 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         {
             webBuilder.UseStartup<Startup>();
         })
+        .AddConfigServer()
         .UseAzureSpringCloudService();
+```
+
+Steeltoe 3.0.0 の場合は、`ConfigureWebHostDefaults` および Steeltoe 構成コードの前に `UseAzureSpringCloudService` を呼び出します。
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .UseAzureSpringCloudService()
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        })
+        .AddConfigServer();
 ```
 
 ## <a name="enable-eureka-server-service-discovery"></a>Eureka Server サービスの検出を有効にする

@@ -1,19 +1,19 @@
 ---
 title: サーバー パラメーターの構成 - Azure CLI - Azure Database for MariaDB
 description: この記事では、Azure CLI コマンド ライン ユーティリティを使って Azure Database for MariaDB のサービス パラメーターを構成する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/1/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ce9fc7a7af18a163207f8fc497149d885423607b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4009d8047dae7bf8d9ba66566ff8797fa09a8878
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626447"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538140"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB サーバーのサーバー パラメーターを構成する
 Azure コマンド ライン ユーティリティ である Azure CLI を使用して、Azure Database for MariaDB サーバーの構成パラメーターを一覧表示、表示、および更新できます。 エンジン構成のサブセットは、サーバー レベルで公開され、変更が可能です。

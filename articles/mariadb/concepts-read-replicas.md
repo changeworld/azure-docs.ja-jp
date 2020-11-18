@@ -1,17 +1,17 @@
 ---
 title: 読み取りレプリカ - Azure Database for MariaDB
 description: 'Azure Database for MariaDB の読み取りレプリカについて次の内容を説明します: リージョンの選択、レプリカの作成、レプリカへの接続、レプリケーションの監視、レプリケーションの停止。'
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: fcf368c9fbbb185ac3f47faa5705e1933d085c81
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b2dbaa932c01c96582cb038143fa7686707be67d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126456"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541166"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB の読み取りレプリカ
 
@@ -24,7 +24,7 @@ GTID レプリケーションの詳細については、[MariaDB のレプリケ
 > [!NOTE]
 > バイアスフリーなコミュニケーション
 >
-> Microsoft では、多様性を尊重する環境がサポートされています。 この記事には、" _スレーブ_ " という単語への言及があります。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これを排他的な単語と認めています。 この単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
+> Microsoft では、多様性を尊重する環境がサポートされています。 この記事には、"_スレーブ_" という単語への言及があります。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これを排他的な単語と認めています。 この単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
 >
 
 ## <a name="when-to-use-a-read-replica"></a>読み取りレプリカを使用する場合

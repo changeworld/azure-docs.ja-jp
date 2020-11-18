@@ -4,12 +4,12 @@ description: Azure でリソースの Web アプリ、クラウド サービス�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: e0c9770e2065002a4e2acc1198ed096dc588f8e5
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 3662f6007049a5531e11c193adf71e8f8442dcdb
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342217"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377022"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure での自動スケールの使用
 この記事では、Microsoft Azure Portal でリソースの自動スケール設定をセットアップする方法について説明します。
@@ -32,9 +32,9 @@ Azure Monitor で自動スケールを適用できるすべてのリソースを
 
 各リソースについて、現在のインスタンス数と自動スケールの状態を確認できます。 自動スケールの状態は次のいずれかになります。
 
-- **未構成** : このリソースの自動スケール設定はまだ有効になっていません。
-- **有効** : このリソースの自動スケール設定は有効になっています。
-- **Disabled** : このリソースの自動スケール設定は無効になっています。
+- **未構成**: このリソースの自動スケール設定はまだ有効になっていません。
+- **有効**: このリソースの自動スケール設定は有効になっています。
+- **Disabled**: このリソースの自動スケール設定は無効になっています。
 
 ## <a name="create-your-first-autoscale-setting"></a>最初の自動スケール設定を作成する
 
@@ -133,6 +133,9 @@ ARM テンプレートでこの機能を有効にするには、`Microsoft.Web/s
 
 正常性チェック パスを指定すると、App Service によってすべてのインスタンス上のそのパスに対して ping が実行されます。 ping を 5 回実行しても成功の応答コードが返されない場合、そのインスタンスは "異常" と見なされます。 異常なインスタンスは、ロード バランサーのローテーションから除外されます。 `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` アプリ設定を使用すると、必要な ping の失敗回数を構成できます。 このアプリ設定は、2 から 10 の任意の整数に設定できます。 たとえば、これを `2` に設定した場合、ping が 2 回失敗すると、インスタンスがロード バランサーから削除されます。 さらに、スケール アップまたはスケール アウトする場合は、新しいインスタンスが要求に対して準備ができていることを保証するために、ロード バランサーに追加される前に App Service によって正常性チェック パスに対して ping が実行されます。
 
+> [!NOTE]
+> ロード バランサーの除外を行うには、App Service プランを 2 つ以上のインスタンスにスケールアウトする必要があることに注意してください。 インスタンスが 1 つしかない場合は、異常な状態であってもロード バランサーからは削除されません。 
+
 残りの正常なインスタンスでは、負荷が増加する可能性があります。 残りのインスタンスが過負荷にならないように、ご利用のインスタンスの半分以下が除外されます。 たとえば、App Service プランが 4 つのインスタンスにスケール アウトされ、そのうちの 3 つが異常である場合、最大 2 つがロードバランサーのローテーションから除外されます。 他の 2 つのインスタンス (1 つは正常、1 つは異常) は、引き続き要求を受信することになります。 すべてのインスタンスが異常であるという最悪のシナリオでは、何も除外されません。この動作をオーバーライドする場合は、`WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` アプリ設定の値を `0` と `100` の間に設定できます。 これを大きな値に設定すると、異常なインスタンスがさらに多く削除されます (既定値は 50)。
 
 インスタンスが 1 時間、異常のままである場合、それは新しいインスタンスに置き換えられます。 App Service プランによれば、1 時間あたり最大で 1 つのインスタンス、1 日あたり最大で 3 つのインスタンスが置き換えられます。
@@ -140,6 +143,20 @@ ARM テンプレートでこの機能を有効にするには、`Microsoft.Web/s
 ### <a name="monitoring"></a>監視
 
 アプリケーションの正常性チェック パスを指定したら、Azure Monitor を使用してご利用のサイトの正常性を監視できます。 ポータルの **[正常性チェック]** ブレードで、上部のツールバーにある **[メトリック]** をクリックします。 これにより新しいブレードが開き、サイトの過去の正常性状態を確認したり、新しいアラート ルールを作成したりできるようになります。 サイトの監視方法の詳細については、[Azure Monitor に関するガイドを参照してください](../../app-service/web-sites-monitor.md)。
+
+## <a name="moving-autoscale-to-a-different-region"></a>自動スケーリングの別のリージョンへの移動
+このセクションでは、Azure の自動スケーリングを同じサブスクリプションおよびリソース グループの別のリージョンに移動する方法について説明します。 REST API を使って自動スケーリング設定を移動できます。
+### <a name="prerequisite"></a>前提条件
+1. サブスクリプションとリソース グループが使用可能であり、移動元と移動先のリージョンの両方で詳細が同じであることを確認します。
+1. [移動先の Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all)で Azure の自動スケーリングが使用可能であることを確認します。
+
+### <a name="move"></a>詳細ビュー
+新しい環境で自動スケーリング設定を作成するには、[REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings/createorupdate) を使います。 移動先のリージョンで作成される自動スケーリング設定は、移動元リージョンの自動スケーリング設定のコピーになります。
+
+移動元リージョンの自動スケーリング設定と関連付けて作成された[診断設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)は移動できません。 自動スケーリング設定の作成が完了した後で、移行先リージョンで診断設定を再作成する必要があります。 
+
+### <a name="learn-more-about-moving-resources-across-azure-regions"></a>Azure リージョン間でのリソースの移動に関する詳細情報
+リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、「[リソースを新しいリソース グループまたはサブスクリプションに移動する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 - [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.openlocfilehash: 08d1d393b4ba52e6feeb36c0538f2664e1407d38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/05/2020
+ms.openlocfilehash: 9fdef187e9bdf77b29c548f767a4b4edfeb62f44
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708290"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422180"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Azure portal から Azure Database for PostgreSQL - 単一サーバーの読み取りレプリカを作成および管理する
 
@@ -31,7 +31,9 @@ ms.locfileid: "91708290"
 * **レプリカ** - **[オフ]** よりも冗長です。 これは、[読み取りレプリカ](concepts-read-replicas.md)を機能させるために必要な最小レベルのログです。 ほとんどのサーバーでは、この設定が既定値です。
 * **論理** - **[レプリカ]** よりも冗長です。 これは、論理デコードを機能させるための最小レベルのログです。 読み取りレプリカはこの設定でも機能します。
 
-このパラメーターを変更した後、サーバーを再起動する必要があります。 内部的には、このパラメーターによって、Postgres パラメーター `wal_level`、`max_replication_slots`、および `max_wal_senders` が設定されます。
+
+> [!NOTE]
+> 永続的で高負荷の、書き込み集中型プライマリ ワークロードのために読み取りレプリカをデプロイする場合、レプリケーションの遅延が増加し続け、プライマリで対応できない可能性があります。 これにより、レプリカで受信されるまで WAL ファイルが削除されないため、プライマリでのストレージの使用量も増加する可能性があります。
 
 ## <a name="prepare-the-primary-server"></a>プライマリ サーバーを準備する
 
@@ -45,11 +47,11 @@ ms.locfileid: "91708290"
 
 4. サーバーを再起動して変更を適用するには、 **[はい]** を選択します。
 
-   :::image type="content" source="./media/howto-read-replicas-portal/confirm-restart.png" alt-text="Azure Database for PostgreSQL - レプリケーション - レプリカの設定と保存":::
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-restart.png" alt-text="Azure Database for PostgreSQL - レプリケーション - 再起動の確認":::
 
 5. 操作が完了すると、Azure portal の通知を 2 つ受け取ります。 1 つの通知は、サーバー パラメーターの更新に関するものです。 もう 1 つの通知は、すぐ後のサーバーの再起動に関するものです。
 
-   :::image type="content" source="./media/howto-read-replicas-portal/success-notifications.png" alt-text="Azure Database for PostgreSQL - レプリケーション - レプリカの設定と保存":::
+   :::image type="content" source="./media/howto-read-replicas-portal/success-notifications.png" alt-text="成功通知":::
 
 6. Azure portal のページを最新の情報に更新して、レプリケーション ツール バーを更新します。 このサーバーの読み取りレプリカを作成できるようになります。
    
@@ -63,15 +65,15 @@ ms.locfileid: "91708290"
 
 3. **[レプリカの追加]** を選択します。
 
-   :::image type="content" source="./media/howto-read-replicas-portal/add-replica.png" alt-text="Azure Database for PostgreSQL - レプリケーション - レプリカの設定と保存":::
+   :::image type="content" source="./media/howto-read-replicas-portal/add-replica.png" alt-text="レプリカを追加する":::
 
 4. 読み取りレプリカの名前を入力します。 
 
-    :::image type="content" source="./media/howto-read-replicas-portal/name-replica.png" alt-text="Azure Database for PostgreSQL - レプリケーション - レプリカの設定と保存":::
+    :::image type="content" source="./media/howto-read-replicas-portal/name-replica.png" alt-text="レプリカに名前を付ける":::
 
 5. レプリカの場所を選択します。 既定の場所は、プライマリ サーバーの場所と同じです。
 
-    :::image type="content" source="./media/howto-read-replicas-portal/location-replica.png" alt-text="Azure Database for PostgreSQL - レプリケーション - レプリカの設定と保存":::
+    :::image type="content" source="./media/howto-read-replicas-portal/location-replica.png" alt-text="場所を選択します。":::
 
    > [!NOTE]
    > レプリカを作成できるリージョンの詳細については、[読み取りレプリカの概念に関する記事](concepts-read-replicas.md)を参照してください。 
@@ -80,7 +82,7 @@ ms.locfileid: "91708290"
 
 読み取りレプリカが作成されたら、それを **[レプリケーション]** ウィンドウから表示できます。
 
-:::image type="content" source="./media/howto-read-replicas-portal/list-replica.png" alt-text="Azure Database for PostgreSQL - レプリケーション - レプリカの設定と保存":::
+:::image type="content" source="./media/howto-read-replicas-portal/list-replica.png" alt-text="[レプリケーション] ウィンドウに新しいレプリカを表示する":::
  
 
 > [!IMPORTANT]
@@ -102,15 +104,15 @@ Azure portal からプライマリ サーバーと読み取りレプリカの間
 
 3. レプリケーションを停止するレプリカ サーバーを選択します。
 
-   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="Azure Database for PostgreSQL - レプリケーション - レプリカの設定と保存":::
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="レプリカを選択する":::
  
 4. **[レプリケーションを停止する]** を選択します。
 
-   :::image type="content" source="./media/howto-read-replicas-portal/select-stop-replication.png" alt-text="Azure Database for PostgreSQL - レプリケーション - レプリカの設定と保存":::
+   :::image type="content" source="./media/howto-read-replicas-portal/select-stop-replication.png" alt-text="レプリケーションの停止を選択する":::
  
 5. **[OK]** を選択して、レプリケーションを停止します。
 
-   :::image type="content" source="./media/howto-read-replicas-portal/confirm-stop-replication.png" alt-text="Azure Database for PostgreSQL - レプリケーション - レプリカの設定と保存":::
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-stop-replication.png" alt-text="レプリケーションの停止を確認する":::
  
 
 ## <a name="delete-a-primary-server"></a>プライマリ サーバーの削除
@@ -125,11 +127,11 @@ Azure Portal からサーバーを削除するには、次の手順に従いま�
 
 2. サーバーの **[概要]** ページを開きます。 **[削除]** を選択します。
 
-   :::image type="content" source="./media/howto-read-replicas-portal/delete-server.png" alt-text="Azure Database for PostgreSQL - レプリケーション - レプリカの設定と保存":::
+   :::image type="content" source="./media/howto-read-replicas-portal/delete-server.png" alt-text="サーバーの [概要] ページで、プライマリ サーバーの削除を選択します":::
  
 3. 削除するプライマリ サーバーの名前を入力します。 **[削除]** を選択して、プライマリ サーバーの削除を確認します。
 
-   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete.png" alt-text="Azure Database for PostgreSQL - レプリケーション - レプリカの設定と保存":::
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete.png" alt-text="プライマリ サーバーの削除を確認する":::
  
 
 ## <a name="delete-a-replica"></a>レプリカの削除
@@ -137,7 +139,7 @@ Azure Portal からサーバーを削除するには、次の手順に従いま�
 
 - Azure Portal で、読み取りレプリカの **[概要]** ページを開きます。 **[削除]** を選択します。
 
-   :::image type="content" source="./media/howto-read-replicas-portal/delete-replica.png" alt-text="Azure Database for PostgreSQL - レプリケーション - レプリカの設定と保存":::
+   :::image type="content" source="./media/howto-read-replicas-portal/delete-replica.png" alt-text="レプリカの [概要] ページで、レプリカの削除を選択します。":::
  
 次の手順に従って、 **[レプリケーション]** ウィンドウから読み取りレプリカを削除することもできます。
 
@@ -147,15 +149,15 @@ Azure Portal からサーバーを削除するには、次の手順に従いま�
 
 3. 削除する読み取りレプリカを選択します。
 
-   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="Azure Database for PostgreSQL - レプリケーション - レプリカの設定と保存":::
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="削除するレプリカを選択する":::
  
 4. **[レプリカの削除]** を選択します。
 
-   :::image type="content" source="./media/howto-read-replicas-portal/select-delete-replica.png" alt-text="Azure Database for PostgreSQL - レプリケーション - レプリカの設定と保存":::
+   :::image type="content" source="./media/howto-read-replicas-portal/select-delete-replica.png" alt-text="レプリカの削除を選択する":::
  
 5. 削除するレプリカの名前を入力します。 **[削除]** を選択して、レプリカの削除を確認します。
 
-   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete-replica.png" alt-text="Azure Database for PostgreSQL - レプリケーション - レプリカの設定と保存":::
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete-replica.png" alt-text="レプリカの削除を確認する":::
  
 
 ## <a name="monitor-a-replica"></a>レプリカの監視
@@ -168,7 +170,7 @@ Azure Portal からサーバーを削除するには、次の手順に従いま�
 
 2.  **[メトリック]** を選びます。 **[メトリック]** ウィンドウで、 **[Max Lag Across Replicas] (レプリカ間の最大ラグ)** を選択します。
 
-    :::image type="content" source="./media/howto-read-replicas-portal/select-max-lag.png" alt-text="Azure Database for PostgreSQL - レプリケーション - レプリカの設定と保存":::
+    :::image type="content" source="./media/howto-read-replicas-portal/select-max-lag.png" alt-text="レプリカ間の最大ラグを監視する":::
  
 3.  **[集計]** で **[Max] (最大)** を選択します。
 
@@ -180,7 +182,7 @@ Azure Portal からサーバーを削除するには、次の手順に従いま�
 
 2. **[メトリック]** を選びます。 **[メトリック]** ウィンドウで、 **[Replica Lag] (レプリカ ラグ)** を選択します。
 
-   :::image type="content" source="./media/howto-read-replicas-portal/select-replica-lag.png" alt-text="Azure Database for PostgreSQL - レプリケーション - レプリカの設定と保存":::
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica-lag.png" alt-text="レプリカ ラグを監視する":::
  
 3. **[集計]** で **[Max] (最大)** を選択します。 
  

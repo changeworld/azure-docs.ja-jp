@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: a3899d9fbf04f9629885ec38f6b0b2bde728561b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 09fc29b54951d2f33acc725c734e01e3d3364ff0
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740148"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331608"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>開発するモバイル アプリでシングル サインオンとアプリ保護ポリシーをサポートする
 
@@ -30,7 +30,7 @@ ms.locfileid: "92740148"
 
 さらに、アプリでシングル サインオンを有効にすると、[パスワードなしログイン](../authentication/concept-authentication-passwordless.md)などの先進認証を使用する新しい認証メカニズムがロック解除されます。 ユーザー名とパスワードは、アプリケーションに対する最も一般的な攻撃ベクトルの 1 つです。SSO を有効にすると、さらにセキュリティを強化したり、より安全な認証メカニズムに依存する条件付きアクセスまたはパスワードなしログインを適用することで、このリスクを軽減することができます。 最後に、シングル サインオンを有効にすると、[シングル サインアウト](v2-protocols-oidc.md#single-sign-out)も有効になります。これは、共有デバイスで使用される作業アプリケーションのような状況で役立ちます。
 
-[アプリ保護ポリシー (APP)](/mem/intune/apps/app-protection-policy) を使用すると、組織のデータが安全に格納され続けます。 これにより、企業はアプリ内のデータを管理および保護し、アプリとそのデータにアクセスできるユーザーを制御できるようになります。 アプリ保護ポリシーを実装すると、アプリは条件付きアクセス ポリシーによって保護されているリソースにユーザーを接続し、他の保護されたアプリとの間で安全にデータを転送することができます。 アプリ保護ポリシーによってロック解除されるシナリオとしては、アプリを開くために PIN を要求する場合、アプリ間でデータの共有を制御する場合、会社のアプリ データがデバイス上の個人の保存場所に保存されるのを防ぐ場合などがあります。
+[アプリ保護ポリシー (APP)](/mem/intune/apps/app-protection-policy) を使用すると、組織のデータが安全に格納され続けます。 これにより、企業はアプリ内のデータを管理および保護し、アプリとそのデータにアクセスできるユーザーを制御できるようになります。 アプリ保護ポリシーを実装すると、アプリは条件付きアクセス ポリシーによって保護されているリソースにユーザーを接続し、他の保護されたアプリとの間で安全にデータを転送することができます。 アプリ保護ポリシーによってロック解除されるシナリオとしては、アプリを開くために PIN を要求する場合、アプリ間でデータの共有を制御する場合、会社のアプリ データが個人の保存場所に保存されるのを防ぐ場合などがあります。
 
 ## <a name="implementing-single-sign-on"></a>シングル サインオンの実装
 

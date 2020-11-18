@@ -3,12 +3,12 @@ title: Azure VMware Solution 上に Horizon をデプロイする
 description: Azure VMware Solution 上に VMware Horizon をデプロイする方法について説明します。
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: babce512b896009c08165d2e3d9aec7c33724bf4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fb5e5b4c5f5da4c140f8d3575b963545f3a57db8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321351"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93423105"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Azure VMware Solution 上に Horizon をデプロイする 
 
@@ -120,13 +120,25 @@ Azure Virtual Network の AD ドメイン コントローラーを、VPN また�
 
 各リージョン内の Azure Virtual Network を、他方のリージョン内のプライベート クラウドまたは SDDC に接続します。 これにより、CPA フェデレーションの一部である Horizon 接続サーバーが、管理下にあるすべてのデスクトップに接続できるようになります。 この構成にプライベート クラウドまたは SDDC を追加すると、全体で 24,000 のセッションにスケーリングできるようになります。 
 
-同じリージョンに 2 つの Horizon ポッドをデプロイすると、同じ原則が適用されます。  2 つ目のホライズン ポッドは必ず " *別の Azure Virtual Network* " にデプロイしてください。 単一ポッドの例と同じように、ExpressRoute と Global Reach を使用して、企業ネットワークとオンプレミスのポッドをこのマルチポッドおよびリージョンの例に接続できます。 
+同じリージョンに 2 つの Horizon ポッドをデプロイすると、同じ原則が適用されます。  2 つ目のホライズン ポッドは必ず "*別の Azure Virtual Network*" にデプロイしてください。 単一ポッドの例と同じように、ExpressRoute と Global Reach を使用して、企業ネットワークとオンプレミスのポッドをこのマルチポッドおよびリージョンの例に接続できます。 
 
 :::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text="複数のリージョンにわたる Azure VMware Solution 上の複数の Horizon ポッド" border="false":::
 
 ## <a name="size-azure-vmware-solution-hosts-for-horizon-deployments"></a>Horizon のデプロイのために Azure VMware Solution ホストのサイズを変更する 
 
 Azure VMware Solution で実行されているホスト上の Horizon のサイズ設定方法は、オンプレミスの Horizon よりも簡単です。  これは、Azure VMware Solution のホスト インスタンスが標準化されているためです。  ホストのサイズを正確に設定すると、VDI 要件をサポートするために必要なホストの数を特定できます。  これは、デスクトップあたりのコストを決定する上で中心的な役割を果たします。
+
+### <a name="sizing-tables"></a>サイズ設定表
+
+この表は、Login VSI のナレッジ ワーカー ワークロードとパワー ワーカー ワークロードの一般的なワークロードを示しています。
+
+#### <a name="knowledge-worker-workloads"></a>ナレッジ ワーカー ワークロード
+
+:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" alt-text="VMware Horizon の Login VSI のナレッジ ワーカー ワークロードの一般的な VDI プロファイルの表" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" border="false":::
+
+#### <a name="power-worker-workloads"></a>パワー ワーカー ワークロード
+
+:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-power.png" alt-text="VMware Horizon の Login VSI のパワー ワーカー ワークロードの一般的な VDI プロファイルの表" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-power.png" border="false":::
 
 ### <a name="azure-vmware-solution-host-instance"></a>Azure VMware Solution のホスト インスタンス
 

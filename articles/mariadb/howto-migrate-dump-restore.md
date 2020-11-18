@@ -1,17 +1,17 @@
 ---
 title: ダンプと復元を使用した移行 - Azure Database for MariaDB
 description: この記事では、mysqldump、MySQL Workbench、PHPMyAdmin などのツールを使用して、Azure Database for MariaDB でデータベースをバックアップして復元する一般的な 2 つの方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 2/27/2020
-ms.openlocfilehash: 674622e6210c3cceda5af3b53bf4ba1851f7179b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c23b027b428ef58ae51a6ba1d2603e94b1eaaf8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86118853"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540860"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>ダンプと復元を使用した Azure Database for MariaDB への MariaDB データベースの移行
 この記事では、Azure Database for MariaDB でデータベースをバックアップして復元する一般的な 2 つの方法について説明します
@@ -116,7 +116,7 @@ $ mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p te
 2. phpMyAdmin セットアップ ページで、 **[追加]** をクリックして Azure Database for MariaDB サーバーを追加します。 接続の詳細とログイン情報を入力します。
 3. データベースを作成して適切な名前を付けたら、画面の左側でそのデータベースを選択します。 既存のデータベースを再作成するには、データベース名をクリックし、テーブル名の横のすべてのチェック ボックスをオンにします。 **[ドロップ]** を選択して既存のテーブルを削除します。 
 4. **[SQL]** リンクをクリックします。表示されたページで、SQL コマンドを入力したり、SQL ファイルをアップロードしたりできます。 
-5. **参照**ボタンを使用して、データベース ファイルを検索します。 
+5. **参照** ボタンを使用して、データベース ファイルを検索します。 
 6. **[実行]** をクリックすると、バックアップがエクスポートされ、SQL コマンドが実行された後、データベースが再作成されます。
 
 ## <a name="next-steps"></a>次のステップ

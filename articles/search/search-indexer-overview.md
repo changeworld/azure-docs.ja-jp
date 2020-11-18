@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7f6be959bf09cbe20bb37dfa3d17d64467758bd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 305682812896bb74474b5065cfd56a071a73ed15
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397897"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358781"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサー
 
@@ -32,7 +32,7 @@ Azure Cognitive Search の *インデクサー* は、検索可能なデータ�
 
 * [Portal のデータのインポート ウィザード](search-import-data-portal.md)
 * [Service REST API](/rest/api/searchservice/Indexer-operations)
-* [.NET SDK](/dotnet/api/microsoft.azure.search.iindexersoperations)
+* [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 
 最初は、新しいインデクサーがプレビュー機能として発表されます。 プレビュー機能は、まず API (REST および .NET) に導入され、その後、一般公開を経てポータルに統合されます。 新しいインデクサーを評価する場合は、コードの作成を検討してください。
 
@@ -88,22 +88,22 @@ Azure Cognitive Search の *インデクサー* は、検索可能なデータ�
 
 次の図は、インデクサーのステージ (ドキュメント解析、フィールド マッピング、スキルセットの実行、出力フィールド マッピング) のサンプル インデクサーの[デバッグ セッション](cognitive-search-debug-session.md)表現を示しています。
 
-:::image type="content" source="media/search-indexer-overview/sample-debug-session.png" alt-text="インデクサーのステージ" lightbox="media/search-indexer-overview/sample-debug-session.png":::
+:::image type="content" source="media/search-indexer-overview/sample-debug-session.png" alt-text="デバッグ セッションのサンプル" lightbox="media/search-indexer-overview/sample-debug-session.png":::
 
 ## <a name="basic-configuration-steps"></a>基本的な構成手順
 
 インデクサーで実行できる機能は、データ ソースごとに異なります。 そのためインデクサーやデータ ソースの構成には、インデクサーの種類ごとに異なる点があります。 しかし基本的な成り立ちと要件は、すべてのインデクサーに共通です。 以降、すべてのインデクサーに共通の手順について取り上げます。
 
 ### <a name="step-1-create-a-data-source"></a>手順 1:データ ソースを作成する
-インデクサーは、*データ ソース* オブジェクトからデータ ソース接続を取得します。 データ ソース定義では、接続文字列と、場合によっては資格情報が提供されます。 [データ ソースの作成](/rest/api/searchservice/create-data-source) REST API または [DataSource クラス](/dotnet/api/microsoft.azure.search.models.datasource)を呼び出して、リソースを作成します。
+インデクサーは、*データ ソース* オブジェクトからデータ ソース接続を取得します。 データ ソース定義では、接続文字列と、場合によっては資格情報が提供されます。 [データ ソースの作成](/rest/api/searchservice/create-data-source) REST API または [SearchIndexerDataSourceConnection クラス](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection)を呼び出して、リソースを作成します。
 
 データ ソースは、それを使用するインデクサーとは別に構成および管理されます。これは、1 つのデータ ソースを複数のインデクサーで使用して、一度に複数のインデックスを読み込めることを意味します。
 
 ### <a name="step-2-create-an-index"></a>手順 2:インデックスを作成する
-インデクサーは、データ インジェストに関連したいくつかのタスクを自動化しますが通常、そこにはインデックスの作成は含まれていません。 前提条件として、定義済みのインデックスが必要です。加えてそのフィールドは、外部データ ソース内のフィールドと一致している必要があります。 各フィールドでは、名前とデータ型が一致する必要があります。 インデックス構築の詳細については、「[インデックスの作成 (Azure Cognitive Search REST API)](/rest/api/searchservice/Create-Index)」または「[Index クラス](/dotnet/api/microsoft.azure.search.models.index)」を参照してください。 フィールドの関連付けについては、[Azure Cognitive Search インデクサーのフィールド マッピング](search-indexer-field-mappings.md)に関する記事を参照してください。
+インデクサーは、データ インジェストに関連したいくつかのタスクを自動化しますが通常、そこにはインデックスの作成は含まれていません。 前提条件として、定義済みのインデックスが必要です。加えてそのフィールドは、外部データ ソース内のフィールドと一致している必要があります。 各フィールドでは、名前とデータ型が一致する必要があります。 インデックス構築の詳細については、「[インデックスの作成 (Azure Cognitive Search REST API)](/rest/api/searchservice/Create-Index)」または「[SearchIndex クラス](/dotnet/api/azure.search.documents.indexes.models.searchindex)」を参照してください。 フィールドの関連付けについては、[Azure Cognitive Search インデクサーのフィールド マッピング](search-indexer-field-mappings.md)に関する記事を参照してください。
 
 > [!Tip]
-> インデクサーで自動的にインデックスを生成することはできませんが、ポータルにある**データのインポート**ウィザードを活用することができます。 ほとんどの場合、ウィザードで、ソース内の既存のメタデータからインデックス スキーマを推測し、仮のインデックス スキーマを得ることができます。ウィザードがアクティブである間は、このスキーマをインライン編集することが可能です。 サービスのインデックスが作成された後にポータルで行う編集は、主に新しいフィールドの追加に限定されます。 ウィザードは、あくまでインデックスの作成にご使用ください。インデックスの修正には適していません。 実践的なスキルを身に付けるには、[ポータルのチュートリアル](search-get-started-portal.md)をご覧ください。
+> インデクサーで自動的にインデックスを生成することはできませんが、ポータルにある **データのインポート** ウィザードを活用することができます。 ほとんどの場合、ウィザードで、ソース内の既存のメタデータからインデックス スキーマを推測し、仮のインデックス スキーマを得ることができます。ウィザードがアクティブである間は、このスキーマをインライン編集することが可能です。 サービスのインデックスが作成された後にポータルで行う編集は、主に新しいフィールドの追加に限定されます。 ウィザードは、あくまでインデックスの作成にご使用ください。インデックスの修正には適していません。 実践的なスキルを身に付けるには、[ポータルのチュートリアル](search-get-started-portal.md)をご覧ください。
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>手順 3:インデクサーを作成してスケジュールを設定する
 インデクサー定義は、データの取り込みに関連するすべての要素をまとめたコンストラクトです。 必要な要素には、データ ソースとインデックスが含まれます。 省略可能な要素には、スケジュールとフィールド マッピングが含まれます。 フィールド マッピングは、ソース フィールドとインデックス フィールドが明らかに対応している場合にのみ、省略可能となります。 インデクサー構築の詳細については、「[インデクサーの作成 (Azure Cognitive Search REST API)](/rest/api/searchservice/Create-Indexer)」を参照してください。

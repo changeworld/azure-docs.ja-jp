@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: bab81809f42c9afa3d2c701398fa5ff8ffc2800d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2c4cce492c48ebe6e09ad142f97bc6377a8a5e1
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744170"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94334618"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Azure Data Box の配線方法
 
@@ -80,8 +80,8 @@ Data Box に 2 つのポート (管理トラフィック用に MGMT ポート、
 
    - **IP アドレス**: 192.168.100.5
    - **サブネット**: 255.255.255.0
-
-     ![スイッチを使用した 2 ポートの設定](media/data-box-cable-options/cabling-with-static-ip.png)
+  
+   ![スイッチを使用した 2 ポートの設定](media/data-box-cable-options/cabling-with-static-ip.png)
 
 3. デバイスのローカル Web UI (192.168.100.10) にアクセスします。 サインインし、Azure portal からロック解除のパスワードを使用して Data Box のロックを解除します。
 4. DHCP サーバーにより割り当てられた IP アドレスを特定します。
@@ -126,6 +126,7 @@ Data Box に 2 つのポート (管理トラフィック用に MGMT ポート、
 1. (DHCP サーバーがアクセス可能な) スイッチを介して、RJ45 または SFP+ ケーブルを使用してサーバーに接続します。
 
     ![スイッチを使用した 2 ポートの設定 3](media/data-box-cable-options/cabling-dhcp-data-only.png)
+
 2. DHCP サーバーまたは DNS サーバーを使用して IP アドレスを特定します。
 3. 同じネットワーク上のサーバーから、DHCP サーバーによって割り当てられた IP アドレスを使用してデバイスのローカル Web UI にアクセスします。 サインインし、Azure portal からロック解除のパスワードを使用して Data Box のロックを解除します。
 

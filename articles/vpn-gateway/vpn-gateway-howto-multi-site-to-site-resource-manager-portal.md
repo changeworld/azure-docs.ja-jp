@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: cherylmc
 ms.openlocfilehash: 92d39b0d39511571701fd092f641cb8ca3ae42c7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "92890150"
 ---
 # <a name="add-additional-s2s-connections-to-a-vnet-azure-portal"></a>サイト間接続を VNet に追加します。Azure portal
@@ -55,7 +55,7 @@ ms.locfileid: "92890150"
 
 ## <a name="add-a-local-network-gateway"></a><a name="local"></a>ローカル ネットワーク ゲートウェイの追加
 
-1. **[ローカル ネットワーク ゲートウェイ]** フィールドで、 **_[ローカル ネットワーク ゲートウェイを選択する]_ *_ を選択します。これで、_* [ローカル ネットワーク ゲートウェイの選択]** ページが開きます。
+1. **[ローカル ネットワーク ゲートウェイ]** フィールドで、**_[ローカル ネットワーク ゲートウェイを選択する]_ *_ を選択します。これで、_* [ローカル ネットワーク ゲートウェイの選択]** ページが開きます。
 1. **[+ 新規作成]** を選択して **[ローカル ネットワーク ゲートウェイの作成]** ページを開きます。
 
    :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/create-local-network-gateway.png" alt-text="[ローカル ネットワーク ゲートウェイの作成] ページ":::

@@ -5,37 +5,30 @@ author: spelluru
 ms.author: spelluru
 ms.date: 10/07/2020
 ms.topic: article
-ms.openlocfilehash: 54649c47a896937a512a6041e485abfb03ca88dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66de9a4ff65c73264257cb6f7f215fc15820c95f
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91824981"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427149"
 ---
 # <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>プライベート エンドポイント経由での Azure Service Bus 名前空間へのアクセスを許可する
+Azure Private Link サービスを使用すると、自分の仮想ネットワーク内の **プライベート エンドポイント** 経由で、Azure サービス (Azure Service Bus、Azure Storage、Azure Cosmos DB など) と、Azure でホストされている顧客またはパートナー サービスにアクセスできます。
 
-Azure Private Link サービスを使用すると、自分の仮想ネットワーク内の**プライベート エンドポイント**経由で、Azure サービス (Azure Service Bus、Azure Storage、Azure Cosmos DB など) と、Azure でホストされている顧客またはパートナー サービスにアクセスできます。
+> [!IMPORTANT]
+> この機能は、Azure Service Bus の **Premium** レベルでサポートされています。 Premium レベルの詳細については、「[Service Bus の Premium および Standard メッセージング レベル](service-bus-premium-messaging.md)」の記事を参照してください。
 
 プライベート エンドポイントとは、Azure Private Link を使用するサービスにプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントは、ご自分の VNet からのプライベート IP アドレスを使用して、サービスを実質的に VNet に取り込みます。 サービスへのすべてのトラフィックをプライベート エンドポイント経由でルーティングできるため、ゲートウェイ、NAT デバイス、ExpressRoute または VPN 接続、パブリック IP アドレスは必要ありません。 仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを経由して、パブリック インターネットからの公開を排除します。 最高レベルの細分性でアクセスを制御しながら Azure リソースのインスタンスに接続できます。
 
 詳細については、「[Azure Private Link とは](../private-link/private-link-overview.md)」を参照してください。
 
 >[!WARNING]
-> プライベート エンドポイントを実装すると、他の Azure サービスが Service Bus と対話するのを禁止できます。
+> プライベート エンドポイントを実装すると、他の Azure サービスが Service Bus と対話するのを禁止できます。 例外として、プライベート エンドポイントが有効になっている場合でも、特定の信頼できるサービスからの Service Bus リソースへのアクセスを許可できます。 信頼できるサービスの一覧については、[信頼できるサービス](#trusted-microsoft-services)に関するセクションを参照してください。
 >
-> 仮想ネットワークを使用しているときは、信頼できる Microsoft サービスはサポートされません。
->
-> 仮想ネットワークでは動作しない Azure の一般的なシナリオは次のとおりです (網羅的なリストでは**ない**ことに注意してください)
-> - Azure Event Grid との統合
-> - Azure IoT Hub ルート
-> - Azure IoT Device Explorer
->
-> 次の Microsoft サービスが仮想ネットワーク上に存在する必要があります
+> 仮想ネットワーク上には、次の Microsoft サービスが必要です
 > - Azure App Service
 > - Azure Functions
 
-> [!IMPORTANT]
-> この機能は、Azure Service Bus の **Premium** レベルでサポートされています。 Premium レベルの詳細については、「[Service Bus の Premium および Standard メッセージング レベル](service-bus-premium-messaging.md)」の記事を参照してください。
 
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Azure portal を使用してプライベート エンドポイントを追加する
@@ -46,7 +39,7 @@ Service Bus 名前空間を Azure Private Link と統合するには、次のエ
 
 - Service Bus 名前空間。
 - Azure 仮想ネットワーク。
-- 仮想ネットワーク内のサブネット。 **既定**のサブネットを使用できます。 
+- 仮想ネットワーク内のサブネット。 **既定** のサブネットを使用できます。 
 - Service Bus 名前空間と仮想ネットワークの両方に対する所有者または共同作成者のアクセス許可。
 
 プライベート エンドポイントと仮想ネットワークは、同じリージョンに存在する必要があります。 ポータルを使用してプライベート エンドポイントのリージョンを選択すると、自動的にフィルター処理が行われ、そのリージョン内にある仮想ネットワークのみが表示されます。 ご利用の Service Bus 名前空間は、別のリージョンに配置することができます。 さらに、ご利用のプライベート エンドポイントでは、自分の仮想ネットワーク内のプライベート IP アドレスが使用されます。
@@ -57,7 +50,7 @@ Service Bus 名前空間を Azure Private Link と統合するには、次のエ
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 
 2. 検索バーで、「**Service Bus**」と入力します。
-3. プライベート エンドポイントを追加する**名前空間**を一覧から選択します。
+3. プライベート エンドポイントを追加する **名前空間** を一覧から選択します。
 2. 左側のメニューで、 **[設定]** の下にある **[ネットワーク]** オプションを選択します。 
 
     > [!NOTE]
@@ -75,32 +68,32 @@ Service Bus 名前空間を Azure Private Link と統合するには、次のエ
 
     ![[プライベート エンドポイントの追加] ボタン](./media/private-link-service/private-link-service-3.png)
 7. **[基本]** ページで、次の手順を行います。 
-    1. プライベート エンドポイントを作成する **Azure サブスクリプション**を選択します。 
-    2. プライベート エンドポイント リソース用の**リソース グループ**を選択します。
-    3. プライベート エンドポイントの**名前**を入力します。 
-    5. プライベート エンドポイントの**リージョン**を選択します。 プライベート エンドポイントが存在するリージョンは仮想ネットワークと同じでなければなりませんが、接続しようとしているプライベート リンク リソースのリージョンとは異なっていても構いません。 
+    1. プライベート エンドポイントを作成する **Azure サブスクリプション** を選択します。 
+    2. プライベート エンドポイント リソース用の **リソース グループ** を選択します。
+    3. プライベート エンドポイントの **名前** を入力します。 
+    5. プライベート エンドポイントの **リージョン** を選択します。 プライベート エンドポイントが存在するリージョンは仮想ネットワークと同じでなければなりませんが、接続しようとしているプライベート リンク リソースのリージョンとは異なっていても構いません。 
     6. **Next:次へ: リソース >** ボタンがページの下部にあるのでクリックします。
 
         ![[プライベート エンドポイントの作成 - 基本] ページ](./media/private-link-service/create-private-endpoint-basics-page.png)
 8. **[リソース]** ページで、次の手順を行います。
     1. 接続方法について、 **[マイ ディレクトリ内の Azure リソースに接続します]** を選択した場合は、次の手順に従います。   
-        1. ご自分の **Service Bus 名前空間**が存在する **Azure サブスクリプション**を選択します。 
-        2. **リソースの種類**については、 **[リソースの種類]** で **[Microsoft.ServiceBus/namespaces]** を選択します。
+        1. ご自分の **Service Bus 名前空間** が存在する **Azure サブスクリプション** を選択します。 
+        2. **リソースの種類** については、 **[リソースの種類]** で **[Microsoft.ServiceBus/namespaces]** を選択します。
         3. **[リソース]** については、ドロップダウン リストから Service Bus 名前空間を選択します。 
         4. **[ターゲット サブリソース]** が **[名前空間]** に設定されていることを確認します。
         5. **Next:次へ: 構成 >** ボタンがページの下部にあるのでクリックします。 
         
             ![[プライベート エンドポイントの作成 - リソース] ページ](./media/private-link-service/create-private-endpoint-resource-page.png)
     2. **[リソース ID またはエイリアスを使って Azure リソースに接続します]** を選択した場合は、次の手順に従います。
-        1. **リソース ID** または**別名**を入力します。 それは誰かが自分と共有しているリソース ID または別名とすることができます。 リソース ID を取得する最も簡単な方法は、Azure portal で Service Bus 名前空間に移動し、`/subscriptions/` から始まる URI の部分をコピーすることです。 例については、次の図を参照してください。 
+        1. **リソース ID** または **別名** を入力します。 それは誰かが自分と共有しているリソース ID または別名とすることができます。 リソース ID を取得する最も簡単な方法は、Azure portal で Service Bus 名前空間に移動し、`/subscriptions/` から始まる URI の部分をコピーすることです。 例については、次の図を参照してください。 
         2. **[ターゲット サブリソース]** では、「**名前空間**」と入力します。 これは、ご自分のプライベート エンドポイントでアクセスできるサブリソースの種類です。 
-        3. (省略可能) **要求メッセージ**を入力します。 このメッセージは、プライベート エンドポイント接続の管理中にリソース所有者に表示されます。 
+        3. (省略可能) **要求メッセージ** を入力します。 このメッセージは、プライベート エンドポイント接続の管理中にリソース所有者に表示されます。 
         4. 次に、**Next:次へ: 構成 >** ボタンがページの下部にあるのでクリックします。 
 
             ![プライベート エンドポイントの作成 - リソース ID を使用した接続](./media/private-link-service/connect-resource-id.png)
 9. **[構成]** ページで、プライベート エンドポイントのデプロイ先とする仮想ネットワーク内のサブネットを選択します。 
     1. **[仮想ネットワーク]** を選択します。 ドロップダウン リストには、現在選択されているサブスクリプションおよび場所内の仮想ネットワークのみが一覧表示されます。 
-    2. 選択した仮想ネットワーク内の**サブネット**を選択します。 
+    2. 選択した仮想ネットワーク内の **サブネット** を選択します。 
     3. **Next:次へ: タグ >** ボタンがページの下部にあるので選択します。 
 
         ![[プライベート エンドポイントの作成 - 構成] ページ](./media/private-link-service/create-private-endpoint-configuration-page.png)
@@ -111,6 +104,8 @@ Service Bus 名前空間を Azure Private Link と統合するには、次のエ
 12. プライベート エンドポイントが作成されていることを確認します。 ご自分がリソースの所有者であり、 **[接続方法]** として **[マイ ディレクトリ内の Azure リソースに接続します]** を選択してある場合は、エンドポイント接続を **[自動承認]** にする必要があります。 それが **[保留中]** 状態にある場合は、「[Azure portal を使用してプライベート エンドポイントを管理する](#manage-private-endpoints-using-azure-portal)」セクションを参照してください。
 
     ![作成されたプライベート エンドポイント](./media/private-link-service/private-endpoint-created.png)
+
+[!INCLUDE [service-bus-trusted-services](../../includes/service-bus-trusted-services.md)]
 
 ## <a name="add-a-private-endpoint-using-powershell"></a>PowerShell を使用してプライベート エンドポイントを追加する
 次の例では、Azure PowerShell を使用して、Service Bus 名前空間へのプライベート エンドポイント接続を作成する方法を示します。
@@ -191,18 +186,18 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 
 1. Azure portal にサインインします。
 1. 検索バーで、「**Service Bus**」と入力します。
-1. 管理する**名前空間**を選択します。
+1. 管理する **名前空間** を選択します。
 1. **[ネットワーク]** タブを選択します。
 5. 必要としている操作 (承認、拒否、または削除) に応じて、以下の適切なセクションに進みます。 
 
 ### <a name="approve-a-private-endpoint-connection"></a>プライベート エンドポイント接続を承認する
 
 1. 保留中の接続がある場合は、プロビジョニング状態に **[保留]** と表示されている接続がリストに表示されます。 
-2. 承認する**プライベート エンドポイント**を選択します
+2. 承認する **プライベート エンドポイント** を選択します
 3. **[承認]** ボタンを選択します。
 
     ![プライベート エンドポイントを承認する](./media/private-link-service/private-endpoint-approve.png)
-4. **[接続の承認]** ページで、必要に応じて**コメント**を入力し、 **[はい]** を選択します。 **[いいえ]** を選択した場合は、何も起こりません。 
+4. **[接続の承認]** ページで、必要に応じて **コメント** を入力し、 **[はい]** を選択します。 **[いいえ]** を選択した場合は、何も起こりません。 
 
     ![[接続の承認] ページ](./media/private-link-service/approve-connection-page.png)
 5. リストに表示された接続の状態が **[承認済み]** に変更されていることを確認します。 

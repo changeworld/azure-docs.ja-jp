@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/28/2020
+ms.date: 11/08/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 9339ac86595a1edbbd996e410d416074680695ed
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 8cf0652148ad54eeacdec874823ea680f39f670c
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340039"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372729"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database および Azure Synapse Analytics の監査
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -40,12 +40,12 @@ SQL Database 監査を使用して、以下を行うことができます。
 - **分析** 。 疑わしいイベント、異常な活動、および傾向を発見できます。
 
 > [!IMPORTANT]
-> Azure SQL Database 監査は、可用性とパフォーマンスのために最適化されています。 非常に高いアクティビティの実行時に、Azure SQL Database または Azure Synapse では、操作の続行を可能にするために、一部の監査イベントが記録されない場合があります。
+> Azure SQL Database と Azure Synapse の監査は、可用性とパフォーマンスのために最適化されています。 アクティビティ量が非常に多いか、またはネットワークの負荷が高いときに、Azure SQL Database と Azure Synapse では、操作の続行を可能にするために、一部の監査イベントが記録されない場合があります。
 
 ### <a name="auditing-limitations"></a>監査の制限事項
 
-- **Premium Storage** は現在 **サポートされていません** 。
-- **Azure Data Lake Storage Gen2 ストレージ アカウント** 用の **階層型名前空間** は現在 **サポートされていません** 。
+- **Premium Storage** は現在 **サポートされていません**。
+- **Azure Data Lake Storage Gen2 ストレージ アカウント** 用の **階層型名前空間** は現在 **サポートされていません**。
 - 一時停止中の **Azure Synapse** で監査を有効にすることはサポートされていません。 監査を有効にするには、Azure Synapse を再開します。
 
 #### <a name="define-server-level-vs-database-level-auditing-policy"></a><a id="server-vs-database-level"></a>サーバー レベルおよびデータベース レベルの監査ポリシーを定義する
@@ -54,14 +54,14 @@ SQL Database 監査を使用して、以下を行うことができます。
 
 - サーバー ポリシーがサーバー上にある既存と新規作成のすべてのデータベースに適用されます。
 
-- " *サーバー監査が有効* " な場合は、" *常にデータベースに適用* " されます。 データベース監査設定に関係なく、データベースが監査されます。
+- "*サーバー監査が有効*" な場合は、"*常にデータベースに適用*" されます。 データベース監査設定に関係なく、データベースが監査されます。
 
-- サーバー上だけでなく、データベース上でも監査を有効にした場合であっても、サーバーの監査の設定がオーバーライドされたり変更されたりすることは " *ありません* "。 どちらの監査も並行して存在します。 つまり、データベースは並行して 2 回監査されることになります (1 回はサーバー ポリシー、もう 1 回はデータベース ポリシーによって監査されます)。
+- サーバー上だけでなく、データベース上でも監査を有効にした場合であっても、サーバーの監査の設定がオーバーライドされたり変更されたりすることは "*ありません*"。 どちらの監査も並行して存在します。 つまり、データベースは並行して 2 回監査されることになります (1 回はサーバー ポリシー、もう 1 回はデータベース ポリシーによって監査されます)。
 
    > [!NOTE]
    > 次の場合を除き、サーバー監査とデータベース BLOB 監査の両方を有効にすることは避けてください。
     >
-    > - 特定のデータベースに対して異なる " *ストレージ アカウント* "、" *リテンション期間* "、" *Log Analytics ワークスペース* " を使用する場合。
+    > - 特定のデータベースに対して異なる "*ストレージ アカウント*"、"*リテンション期間*"、"*Log Analytics ワークスペース*" を使用する場合。
     > - 特定のデータベースの監査対象とするイベントの種類またはカテゴリが、このサーバー上の他のデータベースの管理対象と異なる場合。 たとえば、特定のデータベースに対してのみ監査が必要なテーブルの挿入がある場合など。
    >
    > これらに該当しない場合は、サーバー レベルの監査のみを有効にし、すべてのデータベースに対してデータベース レベルの監査を無効にすることをお勧めします。
@@ -76,7 +76,7 @@ SQL Database 監査を使用して、以下を行うことができます。
   
 [Azure PowerShell を使用した SQL Database の監査の管理](#manage-auditing)に関するセクションで説明されているように、PowerShell を使用してさまざまな種類のアクションおよびアクション グループの監査を構成することができます。
 
-Azure SQL Database および Azure Synapse の監査では、監査レコードの文字フィールドに 4,000 文字のデータを格納します。 監査可能なアクションから返された、 **statement** または **data_sensitivity_information** 値に 4,000 を超える文字が含まれる場合、最初の 4,000 文字以降のすべてのデータは、 **切り捨てられ、監査されません** 。
+Azure SQL Database および Azure Synapse の監査では、監査レコードの文字フィールドに 4,000 文字のデータを格納します。 監査可能なアクションから返された、**statement** または **data_sensitivity_information** 値に 4,000 を超える文字が含まれる場合、最初の 4,000 文字以降のすべてのデータは、**切り捨てられ、監査されません**。
 以下のセクションでは、Azure Portal を使用した監査の構成について説明します。
 
   > [!NOTE]
@@ -129,7 +129,7 @@ AzureDiagnostics
 - VNet またはファイアウォールの背後にある Azure Storage アカウントに監査ログを書き込むことができます。 具体的な手順については、[VNet とファイアウォールの背後にあるストレージ アカウントに監査を書き込む](audit-write-storage-account-behind-vnet-firewall.md)方法に関する記事を参照してください。
 - 監査設定を構成した後に、新しい脅威の検出機能をオンにし、電子メールを構成してセキュリティの警告を受信します。 脅威の検出を使用すると、セキュリティ上の脅威になる可能性がある異常なデータベース アクティビティに対するプロアクティブ アラートを受信できます。 詳細については、[脅威の検出の概要](threat-detection-overview.md)に関するページを参照してください。
 - ログの形式、ストレージ フォルダーの階層、および命名規則の詳細については、[BLOB 監査ログ形式のリファレンス](./audit-log-format.md)に関するドキュメントを参照してください。
-- Azure AD Authentication を使用している場合は、失敗したログインのレコードは SQL 監査ログに表示 " *されません* "。 失敗したログインの監査レコードを表示するには、これらのイベントの詳細をログに記録している [Azure Active Directory ポータル](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)にアクセスする必要があります。
+- Azure AD Authentication を使用している場合は、失敗したログインのレコードは SQL 監査ログに表示 "*されません*"。 失敗したログインの監査レコードを表示するには、これらのイベントの詳細をログに記録している [Azure Active Directory ポータル](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)にアクセスする必要があります。
 - [読み取り専用レプリカ](read-scale-out.md)での監査は自動的に有効になります。 ストレージ フォルダーの階層、命名規則、ログ形式の詳細については、「[SQL Database 監査ログの形式](audit-log-format.md)」を参照してください。
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Log Analytics 保存先への監査
@@ -168,7 +168,7 @@ Azure Log Analytics ワークスペースの詳細については、「[Azure Mo
 
     ![Log Analytics のセキュリティ分析情報](media/auditing-overview/auditing-log-analytics-dashboard-data.png)
 
-- また、Log Analytics ブレードから監査ログにアクセスすることもできます。 ご自身の Log Analytics ワークスペースを開いて、 **[全般]** セクションで **[ログ]** をクリックします。 監査ログを表示するには、 *search "SQLSecurityAuditEvents"* などの単純なクエリから始めることができます。
+- また、Log Analytics ブレードから監査ログにアクセスすることもできます。 ご自身の Log Analytics ワークスペースを開いて、 **[全般]** セクションで **[ログ]** をクリックします。 監査ログを表示するには、*search "SQLSecurityAuditEvents"* などの単純なクエリから始めることができます。
     ここから [Azure Monitor ログ](../../azure-monitor/log-query/log-query-overview.md) を使用して、監査ログのデータに対して詳細検索を実行することもできます。 Azure Monitor ログにより、統合された検索とカスタム ダッシュボードを使用してオペレーション インサイトがリアルタイムで得られるため、ワークロードやサーバー全体に散在する何百万件のレコードもすぐに分析できます。 Azure Monitor ログの検索言語とコマンドに関する有用な追加情報については、[Azure Monitor ログ検索リファレンス](../../azure-monitor/log-query/log-query-overview.md)に関するページをご覧ください。
 
 監査ログをイベント ハブに書き込む場合:
@@ -187,7 +187,7 @@ Azure Log Analytics ワークスペースの詳細については、「[Azure Mo
     **[監査レコード]** が開きます。ここからログを参照できます。
 
   - **[監査レコード]** ページの上部にある **[フィルター]** をクリックすると、特定の日付を表示できます。
-  - **[監査対象]** を切り替えると、" *サーバー監視ポリシー* " で作成された監査レコードと " *データベース監査ポリシー* " で作成された監査レコードを切り替えることができます。
+  - **[監査対象]** を切り替えると、"*サーバー監視ポリシー*" で作成された監査レコードと "*データベース監査ポリシー*" で作成された監査レコードを切り替えることができます。
   - **[Show only audit records for SQL injections]\(SQL インジェクションの監査レコードのみを表示する\)** チェックボックスをオンにすると、SQL インジェクション関連の監査レコードのみを表示できます。
 
        ![監査レコードを表示するためのオプションを示すスクリーンショット。]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
@@ -221,9 +221,9 @@ Azure Log Analytics ワークスペースの詳細については、「[Azure Mo
 
 Geo レプリケーション データベースでは、プライマリ データベースの監査を有効にすると、セカンダリ データベースにも同一の監査ポリシーが適用されます。 プライマリ データベースとは別に **セカンダリ サーバー** で監査を有効にすることで、セカンダリ データベースに対する監査を設定することもできます。
 
-- サーバー レベル ( **推奨** ): **プライマリ サーバー** と **セカンダリ サーバー** の両方で監査を有効にします。プライマリ データベースとセカンダリ データベースは、それぞれのサーバーレベル ポリシーに基づいて個別に監査されます。
+- サーバー レベル (**推奨**):**プライマリ サーバー** と **セカンダリ サーバー** の両方で監査を有効にします。プライマリ データベースとセカンダリ データベースは、それぞれのサーバーレベル ポリシーに基づいて個別に監査されます。
 - データベースレベル:セカンダリ データベースのデータベースレベルの監査は、プライマリ データベースの監査設定から構成する必要があります。
-  - 監査は、サーバーではなく " *プライマリ データベース自体* " で有効にする必要があります。
+  - 監査は、サーバーではなく "*プライマリ データベース自体*" で有効にする必要があります。
   - プライマリ データベースで監査を有効にすると、セカンダリ データベースでも有効になります。
 
     > [!IMPORTANT]
@@ -259,7 +259,7 @@ Geo レプリケーション データベースでは、プライマリ デー�
 
 ### <a name="using-rest-api"></a>REST API の使用
 
-**REST API** :
+**REST API**:
 
 - [データベース監査ポリシーの作成または更新](/rest/api/sql/database%20auditing%20settings/createorupdate)
 - [サーバー監査ポリシーの作成または更新](/rest/api/sql/server%20auditing%20settings/createorupdate)
@@ -268,10 +268,10 @@ Geo レプリケーション データベースでは、プライマリ デー�
 
 WHERE 句のサポートによってフィルタリングを強化した拡張ポリシー:
 
-- [データベース " *拡張* " 監査ポリシーの作成または更新](/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-- [サーバー " *拡張* " 監査ポリシーの作成または更新](/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [データベース " *拡張* " 監査ポリシーの取得](/rest/api/sql/database%20extended%20auditing%20settings/get)
-- [サーバー " *拡張* " 監査ポリシーの取得](/rest/api/sql/server%20auditing%20settings/get)
+- [データベース "*拡張*" 監査ポリシーの作成または更新](/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+- [サーバー "*拡張*" 監査ポリシーの作成または更新](/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [データベース "*拡張*" 監査ポリシーの取得](/rest/api/sql/database%20extended%20auditing%20settings/get)
+- [サーバー "*拡張*" 監査ポリシーの取得](/rest/api/sql/server%20auditing%20settings/get)
 
 ### <a name="using-azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレートを作成する
 

@@ -4,12 +4,12 @@ description: エージェント、拡張機能、ディスクに関する Azure 
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 1711652434be3d9937c8199bc1999273ef58e4d0
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.openlocfilehash: dd6f4d7884b120d2f8b5ea3f3ccb8d5385dd0880
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170291"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377107"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -23,14 +23,14 @@ ms.locfileid: "92170291"
 
 ### <a name="step-1-check-azure-vm-health"></a>手順 1:Azure VM の正常性を確認する
 
-- **Azure VM のプロビジョニングの状態が '実行中' であることを確認します**:[VM のプロビジョニングの状態](../virtual-machines/states-lifecycle.md#provisioning-states)が**停止/割り当て解除済み/更新中**の状態にある場合、バックアップ操作が妨げられます。 *[Azure portal] > [VM] > [概要] >* の順に開き、VM の状態をチェックして**実行中**であることを確認してから、バックアップ操作を再試行してください。
+- **Azure VM のプロビジョニングの状態が '実行中' であることを確認します**:[VM のプロビジョニングの状態](../virtual-machines/states-lifecycle.md#provisioning-states)が **停止/割り当て解除済み/更新中** の状態にある場合、バックアップ操作が妨げられます。 *[Azure portal] > [VM] > [概要] >* の順に開き、VM の状態をチェックして **実行中** であることを確認してから、バックアップ操作を再試行してください。
 - **保留中の OS の更新または再起動を確認します**:VM で保留中の OS 更新プログラムがないか、または再起動が保留されていないかを確認してください。
 
 ### <a name="step-2-check-azure-vm-guest-agent-service-health"></a>手順 2:Azure VM ゲスト エージェント サービスの正常性を確認する
 
 - **Azure VM ゲスト エージェント サービスが開始されており、最新の状態であることを確認します**:
   - Windows VM の場合:
-    - **services.msc** に移動し、**Windows Azure VM ゲスト エージェント サービス**が動作していることを確認します。 また、[最新バージョン](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)がインストールされていることを確認してください。 詳細については、[Windows VM ゲスト エージェントの問題](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)に関するページを参照してください。
+    - **services.msc** に移動し、**Windows Azure VM ゲスト エージェント サービス** が動作していることを確認します。 また、[最新バージョン](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)がインストールされていることを確認してください。 詳細については、[Windows VM ゲスト エージェントの問題](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)に関するページを参照してください。
     - Azure VM エージェントは、既定でポータル、PowerShell、コマンド ライン インターフェイス、または Azure Resource Manager テンプレートから Azure Marketplace イメージによってデプロイされた、すべての Windows VM にインストールされます。 Azure にデプロイするカスタム VM イメージを作成する場合は、[エージェントの手動インストール](../virtual-machines/extensions/agent-windows.md#manual-installation)が必要となる場合があります。
     - サポート マトリックスを確認して、VM が[サポートされている Windows オペレーティング システム](backup-support-matrix-iaas.md#operating-system-support-windows)で動作するかどうかを確認します。
   - Linux VM の場合は、
@@ -43,21 +43,21 @@ ms.locfileid: "92170291"
 - **すべての Azure VM 拡張機能が "プロビジョニング成功" の状態であることを確認します**:エラー状態の拡張機能がある場合、バックアップが影響を受ける可能性があります。
 - *Azure portal を開いて [VM] > [設定] > [拡張機能] > [拡張機能の状態]* に移動し、すべての拡張機能が **[プロビジョニング成功]** の状態になっていることを確認します。
 - すべての[拡張機能の問題](../virtual-machines/extensions/overview.md#troubleshoot-extensions)が解決されていることを確認して、バックアップ操作をやり直してください。
-- **COM+ System Application** が動作していることを確認します。 また、**分散トランザクション コーディネーター サービス**も**ネットワーク サービス アカウント**として実行されている必要があります。 [COM+ と MSDTC の問題のトラブルシューティング](backup-azure-vms-troubleshoot.md#extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error)に関する記事の手順に従います。
+- **COM+ System Application** が動作していることを確認します。 また、**分散トランザクション コーディネーター サービス** も **ネットワーク サービス アカウント** として実行されている必要があります。 [COM+ と MSDTC の問題のトラブルシューティング](backup-azure-vms-troubleshoot.md#extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error)に関する記事の手順に従います。
 
 ### <a name="step-4-check-azure-backup-vm-extension-health"></a>手順 4:Azure Backup VM 拡張機能の正常性を確認する
 
 Azure Backup では、VM スナップショット拡張機能を使用して Azure 仮想マシンのアプリケーション整合性バックアップを作成します。 Azure Backup によって、バックアップの有効化の後にトリガーされる最初のスケジュールされたバックアップの一部として、拡張機能がインストールされます。
 
-- **VMSnapshot 拡張機能がエラー状態でないことを確認します**:この[セクション](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state)に記載されている手順に従って、Azure Backup 拡張機能が正常であることを検証して確認します。
+- **VMSnapshot 拡張機能がエラー状態でないことを確認します**:この [セクション](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state)に記載されている手順に従って、Azure Backup 拡張機能が正常であることを検証して確認します。
 
 - **ウイルス対策によって拡張機能がブロックされているかどうかを確認します**:特定のウイルス対策ソフトウェアによって、拡張機能の実行が妨げられる場合があります。
   
-  バックアップ エラーが発生した際は、***イベント ビューアーのアプリケーション ログ***に、***障害が発生しているアプリケーション名:IaaSBcdrExtension.exe*** と記載されたログ エントリがあるかどうかを確認します。 エントリが見つかった場合、VM で構成されているウイルス対策によってバックアップ拡張機能の実行が制限されている可能性があります。 ウイルス対策構成で次のディレクトリを除外してテストを行い、バックアップ操作を再試行してください。
+  バックアップ エラーが発生した際は、**_イベント ビューアーのアプリケーション ログ_* _ に、_*_障害が発生しているアプリケーション名:IaaSBcdrExtension.exe_*_ と記載されたログ エントリがあるかどうかを確認します。 エントリが見つかった場合、VM で構成されているウイルス対策によってバックアップ拡張機能の実行が制限されている可能性があります。 ウイルス対策構成で次のディレクトリを除外してテストを行い、バックアップ操作を再試行してください。
   - `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
   - `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 
-- **ネットワーク アクセスが必要かどうかを確認します**:拡張機能パッケージは、Azure Storage 拡張機能リポジトリからダウンロードされ、拡張機能ステータスのアップロードが Azure Storage に転記されます。 [詳細については、こちらを参照してください](../virtual-machines/extensions/features-windows.md#network-access)。
+- _*ネットワーク アクセスが必要かどうかを確認します**:拡張機能パッケージは、Azure Storage 拡張機能リポジトリからダウンロードされ、拡張機能ステータスのアップロードが Azure Storage に転記されます。 [詳細については、こちらを参照してください](../virtual-machines/extensions/features-windows.md#network-access)。
   - サポートされていないバージョンのエージェントを使用する場合は、そのリージョン内の Azure Storage への VM からの送信アクセスを許可する必要があります。
   - ゲスト ファイアウォールまたはプロキシを使用して `168.63.129.16` へのアクセスをブロックしている場合は、上記とは関係なく拡張機能はエラーになります。 ポート 80、443、および 32526 が必要です。[詳細はこちらを参照してください](../virtual-machines/extensions/features-windows.md#network-access)。
 
@@ -103,7 +103,7 @@ Azure Backup サービスに VM を登録してスケジュール設定すると
 
 このエラーは、拡張機能の１つが失敗して、VM がプロビジョニング失敗状態になる場合に発生します。<br>**Azure portal を開いて [VM] > [設定] > [拡張機能] > [拡張機能の状態]** に移動し、すべての拡張機能が **[プロビジョニング成功]** の状態になっていることを確認します。 詳細については、「[プロビジョニング状態](../virtual-machines/states-lifecycle.md#provisioning-states)」を参照してください。
 
-- 他の拡張機能が失敗状態にあると、バックアップが干渉される可能性があります。 これらの拡張機能の問題が解決されていることを確認して、バックアップ操作をやり直してください。
+- エラー状態の拡張機能がある場合、バックアップが影響を受ける可能性があります。 これらの拡張機能の問題が解決されていることを確認して、バックアップ操作をやり直してください。
 - VM のプロビジョニング状態が更新中の状態になっている場合は、バックアップが妨げられる可能性があります。 正常であることを確認してから、バックアップ操作を再試行してください。
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached - The Restore Point collection max limit has reached (復元ポイント コレクションの上限に達しました)
@@ -277,7 +277,7 @@ VM のバックアップは、基礎となるストレージ アカウントへ�
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>復旧ポイントのリソース グループに対するロックを解除する
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. **[すべてのリソース] オプション**に移動して、AzureBackupRG_`<Geo>`_`<number>` という形式の復元ポイント コレクションのリソース グループを選択します。
+2. **[すべてのリソース] オプション** に移動して、AzureBackupRG_`<Geo>`_`<number>` という形式の復元ポイント コレクションのリソース グループを選択します。
 3. **[設定]** セクションで **[ロック]** を選択して、ロックを表示します。
 4. ロックを解除するには、省略記号を選択し、 **[削除]** を選択します。
 

@@ -1,17 +1,17 @@
 ---
 title: 読み取りレプリカを管理する - Azure portal - Azure Database for MariaDB
 description: この記事では、ポータルを使用して Azure Database for MariaDB の読み取りレプリカを設定し、管理する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: 5faed87995d1c49ab635f39264354a791f729b57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ca6ef3c368a5f578cc90fae3923caa89f3b076a
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742861"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537749"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB の読み取りレプリカを作成および管理する方法
 
@@ -27,7 +27,7 @@ ms.locfileid: "91742861"
 ## <a name="create-a-read-replica"></a>読み取りレプリカを作成します
 
 > [!IMPORTANT]
-> 既存のレプリカがないソース用のレプリカを作成すると、まず、ソースがレプリケーションの準備をするために再起動されます。 これを考慮して、これらの操作はオフピーク期間中に実行してください。
+> 既存のレプリカがないソースのレプリカを作成すると、ソースは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク期間中に実行してください。
 
 読み取りレプリカ サーバーは、次の手順を使用して作成できます。
 

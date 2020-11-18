@@ -8,16 +8,16 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 190aaae81d51434b57b5aaa6817a443dc541d26e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c611d65c30cceba5fd6ff409ef71b906cd8674c
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069138"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330310"
 ---
 # <a name="enable-and-create-large-file-shares"></a>大きなファイル共有の有効化と作成
 
-ストレージ アカウントで大きなファイル共有を有効にすると、ファイル共有は 100 TiB までスケールアップできます。 既存のファイル共有のため、既存のストレージ アカウントに対してこのスケーリングを有効にすることができます。
+ストレージ アカウントで大きなファイル共有を有効にすると、ファイル共有を 100 TiB までスケール アップでき、標準共有の IOPS とスループットの上限も上がります。 既存のファイル共有のために、既存のストレージ アカウントに対してこのスケーリングを有効にすることもできます。 詳細については、「[ファイル共有とファイルのスケール ターゲット](storage-files-scale-targets.md#azure-files-scale-targets)」を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 

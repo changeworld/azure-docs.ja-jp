@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 03b077c7cadbfd101705c040e485c5766909c2de
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4fb62ec8d3a6fa97fe6db5b146ba58d3ad66b1b4
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318160"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94441989"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 
@@ -117,9 +117,9 @@ Azure Machine Learning には、Web サービスへのアクセスを制御す�
 |Key|既定で無効| 既定で有効|
 |トークン| 利用不可| 既定で無効 |
 
-キーまたはトークンで保護されているサービスに要求を送信する場合は、 __Authorization__ ヘッダーを使用してキーまたはトークンを渡します。 キーまたはトークンは `Bearer <key-or-token>` の形式にする必要があります。ここで、`<key-or-token>` はキーまたはトークンの値です。
+キーまたはトークンで保護されているサービスに要求を送信する場合は、__Authorization__ ヘッダーを使用してキーまたはトークンを渡します。 キーまたはトークンは `Bearer <key-or-token>` の形式にする必要があります。ここで、`<key-or-token>` はキーまたはトークンの値です。
 
-キーとトークンの主な違いは、 **キーは静的であり、手動で再生成することができ** 、 **トークンは有効期限に更新する必要があることです** 。 キーベースの認証は、Azure Container Instance と Azure Kubernetes Service でデプロイされた Web サービスでサポートされています。また、トークンベースの認証は Azure Kubernetes サービスのデプロイで **のみ** 使用できます。 詳細および具体的なコード サンプルについては、認証に関する[方法](how-to-setup-authentication.md#web-service-authentication)を参照してください。
+キーとトークンの主な違いは、**キーは静的であり、手動で再生成することができ**、**トークンは有効期限に更新する必要があることです**。 キーベースの認証は、Azure Container Instance と Azure Kubernetes Service でデプロイされた Web サービスでサポートされています。また、トークンベースの認証は Azure Kubernetes サービスのデプロイで **のみ** 使用できます。 認証の構成の詳細については、「[Web サービスとしてデプロイされたモデルの認証を構成する](how-to-authenticate-web-service.md)」を参照してください。
 
 
 #### <a name="authentication-with-keys"></a>キーによる認証

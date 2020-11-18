@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 31147d534109e0d74d33d102075c69eeb703496e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40b777342c2c565efc5b40d361a259c98eae693c
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91739937"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337704"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Azure Key Vault のカスタマー マネージド キーを Azure Data Box に使用する
 
@@ -55,40 +55,40 @@ Azure Data Box のカスタマー マネージド キーの構成は省略可能
 
     ![カスタマー マネージド キーを選択する](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-3.png)
 
-5. **[Azure Key Vault からのキーの選択]** ブレードで、サブスクリプションが自動的に設定されます。 **[キー コンテナー]** で、ドロップダウン リストから既存のキー コンテナーを選択できます。
+4. **[Azure Key Vault からのキーの選択]** ブレードで、サブスクリプションが自動的に設定されます。 **[キー コンテナー]** で、ドロップダウン リストから既存のキー コンテナーを選択できます。
 
-    ![新しい Azure Key Vault を作成する](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-31.png)
+    ![既存の Azure Key Vault を選択する](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-3-a.png)
 
     **[新規作成]** を選択して、新しいキー コンテナーを作成することもできます。 **[キー コンテナーの作成]** ブレードで、リソース グループとキー コンテナーの名前を入力します。 **[論理的な削除]** と **[消去保護]** が有効になっていることを確認します。 その他のすべての既定値をそのまま使用します。 **[確認および作成]** を選択します。
 
-    ![新しい Azure Key Vault 2 を作成する](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
+    ![Azure Key Vault を確認および作成する](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
 
-7. キー コンテナーに関連付けられている情報を確認し、 **[作成]** を選択します。 キー コンテナーの作成が完了するまで数分待ちます。
+5. キー コンテナーに関連付けられている情報を確認し、 **[作成]** を選択します。 キー コンテナーの作成が完了するまで数分待ちます。
 
-    ![Azure Key Vault を作成する](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-5.png)
+    ![設定を使用して Azure Key Vault を作成する](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-5.png)
 
-8. **[Azure Key Vault からのキーの選択]** ブレードで、既存のキー コンテナー内のキーを選択できます。
+6. **[Azure Key Vault からのキーの選択]** ブレードで、既存のキー コンテナー内のキーを選択できます。
 
-    ![Azure Key Vault 3 で新しいキーを作成する](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
+    ![Azure Key Vault からキーを選択する](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
 
-9. 新しいキーを作成する場合は、 **[新規作成]** を選択してキーを作成します。 RSA キーのサイズは 2048 以上にすることができます。
+7. 新しいキーを作成する場合は、 **[新規作成]** を選択してキーを作成します。 RSA キーのサイズは 2048 以上にすることができます。
 
-    ![Azure Key Vault 4 で新しいキーを作成する](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-61.png)
+    ![Azure Key Vault で新しいキーを作成する](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6-a.png)
 
-10. キーの名前を指定し、他の既定値をそのまま使用して、 **[作成]** を選択します。 
+8. キーの名前を指定し、他の既定値をそのまま使用して、 **[作成]** を選択します。
 
-    ![新しいキーを作成する](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-7.png)
+    ![新しいキーに名前を付ける](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-7.png)
 
 
-11. キー コンテナー内にキーが作成されたことが通知されます。 **[バージョン]** を選択し、 **[選択]** を選択します。
+9. キー コンテナー内にキーが作成されたことが通知されます。 **[バージョン]** を選択し、 **[選択]** を選択します。
 
-    ![キー コンテナーで作成された新しいキー](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-8.png)
+    ![新しいキーのバージョンを選択する](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-8.png)
 
-12. **[暗号化の種類]** ペインで、カスタマー マネージド キー用に選択されているキー コンテナーとキーを確認できます。
+10. **[暗号化の種類]** ペインで、カスタマー マネージド キー用に選択されているキー コンテナーとキーを確認できます。
 
     ![カスタマー マネージド キーのキーとキー コンテナー](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-9.png)
 
-13. キーを保存します。 
+11. キーを保存します。 
 
     ![カスタマー マネージド キーを保存する](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-10.png)
 

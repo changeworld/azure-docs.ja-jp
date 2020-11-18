@@ -2,17 +2,17 @@
 title: デプロイ用のテンプレートをリンクする
 description: Azure リソース マネージャー テンプレートでリンクされたテンプレートを使用して、モジュール構造のテンプレート ソリューションを作成する方法について説明します。 パラメーターの値を渡す方法、パラメーター ファイルを指定する方法、および URL を動的に作成する方法を示します。
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: fb742ed4fabd6630d2d27f5876719e2e2b1a9a4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/06/2020
+ms.openlocfilehash: 603445fdd96cc72a2d64bae21a47cfeabd6dd167
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91369316"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366339"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用
 
-複雑なソリューションをデプロイするには、テンプレートを複数の関連するテンプレートに分割し、メイン テンプレートを使用してそれらをまとめてデプロイできます。 関連するテンプレートは、独立したファイルでも、メイン テンプレート内に埋め込まれるテンプレート構文でもかまいません。 この記事では、メイン テンプレートからリンクを介して参照される独立したテンプレート ファイルに対して、**リンクされたテンプレート**という用語を使用します。 メイン テンプレートに埋め込まれたテンプレート構文に対して、**入れ子になったテンプレート**という用語を使用します。
+複雑なソリューションをデプロイするには、テンプレートを複数の関連するテンプレートに分割し、メイン テンプレートを使用してそれらをまとめてデプロイできます。 関連するテンプレートは、独立したファイルでも、メイン テンプレート内に埋め込まれるテンプレート構文でもかまいません。 この記事では、メイン テンプレートからリンクを介して参照される独立したテンプレート ファイルに対して、**リンクされたテンプレート** という用語を使用します。 メイン テンプレートに埋め込まれたテンプレート構文に対して、**入れ子になったテンプレート** という用語を使用します。
 
 中小規模のソリューションの場合、テンプレートを 1 つにするとわかりやすく、保守も簡単になります。 すべてのリソースと値を 1 つのファイルで参照できます。 高度なシナリオの場合、リンクされたテンプレートを使用することで、対象となるコンポーネントにソリューションを分割することができます。 これらのテンプレートは、他のシナリオで簡単に再利用できます。
 
@@ -283,7 +283,7 @@ ms.locfileid: "91369316"
 
 ## <a name="linked-template"></a>リンク済みテンプレート
 
-テンプレートをリンクするには、メイン テンプレートに[デプロイ リソース](/azure/templates/microsoft.resources/deployments)を追加します。 **templateLink** プロパティに、含めるテンプレートの URI を指定します。 次の例では、新しいストレージ アカウントをデプロイするテンプレートにリンクしています。
+テンプレートをリンクするには、メイン テンプレートに[デプロイ リソース](/azure/templates/microsoft.resources/deployments)を追加します。 **templateLink** プロパティに、含めるテンプレートの URI を指定します。 次の例では、ストレージ アカウントにあるテンプレートにリンクしています。
 
 ```json
 {
@@ -310,13 +310,17 @@ ms.locfileid: "91369316"
 }
 ```
 
-リンク済みテンプレートを参照する場合、`uri` の値は、ローカル ファイル、またはローカル ネットワークでのみ使用できるファイルにはしないでください。 **http** または **https** としてダウンロードできる URI 値を指定する必要があります。
+リンク済みテンプレートを参照する場合、`uri` の値は、ローカル ファイル、またはローカル ネットワークでのみ使用できるファイルにはしないでください。 Azure Resource Manager は、テンプレートにアクセスできる必要があります。 **http** または **https** としてダウンロードできる URI 値を指定してください。 
 
-> [!NOTE]
->
-> 次のように `_artifactsLocation` パラメーターを使用するなど、**http** または **https** を使用するものに最終的に 解決されるパラメーターを使用して、テンプレートを参照できます: `"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
+**http** または **https** を含むパラメーターを使用して、テンプレートを参照することができます。 たとえば、一般的なパターンでは、`_artifactsLocation` パラメーターを使用します。 次のような式を使用して、リンク済みテンプレートを設定できます。
 
-Resource Manager は、テンプレートにアクセスできる必要があります。 1 つと選択肢として、ストレージ アカウントにリンク済みテンプレートを配置し、その項目の URI を使用できます。
+```json
+"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]"
+```
+
+GitHub のテンプレートにリンクしている場合は、生の URL を使用します。 このリンクの形式は、`https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-with-templates/quickstart-template/azuredeploy.json` です。 生のリンクを取得するには **[Raw]\(生\)** を選択します。
+
+:::image type="content" source="./media/linked-templates/select-raw.png" alt-text="生の URL の選択":::
 
 ### <a name="parameters-for-linked-template"></a>リンクされたテンプレートのパラメーター
 

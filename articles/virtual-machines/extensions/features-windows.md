@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78ea26adb8299cc13d4677c66a0e06cba901d9dc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 00cb63f63ffb1f2e10a276cfdeee9c5e8e1022de
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977376"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427379"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能
 
@@ -92,7 +92,7 @@ Azure VM 拡張機能は既存の VM で実行できます。これは、構成�
 
 ### <a name="powershell"></a>PowerShell
 
-個々の拡張機能を実行するための PowerShell コマンドがいくつか存在します。 一覧を表示するには、[Get-command](/powershell/module/microsoft.powershell.core/get-command) を使用して*拡張機能*をフィルター処理します。
+個々の拡張機能を実行するための PowerShell コマンドがいくつか存在します。 一覧を表示するには、[Get-command](/powershell/module/microsoft.powershell.core/get-command) を使用して *拡張機能* をフィルター処理します。
 
 ```powershell
 Get-Command Set-Az*Extension* -Module Az.Compute
@@ -286,9 +286,9 @@ Microsoft.Compute     CustomScriptExtension                1.9
 
 #### <a name="agent-updates"></a>エージェントの更新プログラム
 
-Windows ゲスト エージェントには*拡張機能処理コード*のみが含まれ、*Windows プロビジョニング コード*は分離されています。 Windows ゲスト エージェントは、アンインストールできます。 Window ゲスト エージェントの自動更新を無効にすることはできません。
+Windows ゲスト エージェントには *拡張機能処理コード* のみが含まれ、*Windows プロビジョニング コード* は分離されています。 Windows ゲスト エージェントは、アンインストールできます。 Window ゲスト エージェントの自動更新を無効にすることはできません。
 
-*拡張機能処理コード*は、Azure ファブリックとの通信を担い、インストール、ステータスのレポート、個々の拡張機能の更新と削除などの VM 拡張機能の操作を処理します。 更新プログラムには、*拡張機能処理コード*に対するセキュリティ修正プログラム、バグ修正プログラム、および拡張機能が含まれます。
+*拡張機能処理コード* は、Azure ファブリックとの通信を担い、インストール、ステータスのレポート、個々の拡張機能の更新と削除などの VM 拡張機能の操作を処理します。 更新プログラムには、*拡張機能処理コード* に対するセキュリティ修正プログラム、バグ修正プログラム、および拡張機能が含まれます。
 
 実行しているバージョンを確認するには、[インストールされている Windows ゲスト エージェントの検出](agent-windows.md#detect-the-vm-agent)に関するページを参照してください。
 
@@ -355,7 +355,7 @@ AutoUpgradeMinorVersion     : True
 
 1. Windows ゲスト エージェント ログをチェックするには、*C:\WindowsAzure\Logs\WaAppAgent.log* で拡張機能がプロビジョニングされたときのアクティビティを確認します
 
-2. *C:\WindowsAzure\Logs\Plugins\<extensionName>* で、実際の拡張機能ログの詳細を確認します
+2. *C:\WindowsAzure\Logs\Plugins\\<extensionName>* の実際の拡張機能ログで詳細を確認します
 
 3. エラーコードや既知の問題などについて、拡張機能固有のドキュメントのトラブルシューティングのセクションを確認します。
 

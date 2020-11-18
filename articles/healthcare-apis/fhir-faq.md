@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 20bf72c55a5b6d76a3b214f0a679e28da81e41e2
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 8f4d16931f09f94af81dd4e0f178ce6e0f990881
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558569"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426206"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Azure API for FHIR についてよく寄せられる質問
 
@@ -29,6 +29,9 @@ ms.locfileid: "92558569"
 ### <a name="what-identity-provider-do-you-support"></a>どの ID プロバイダーがサポートされますか?
 
 現在当社は、ID プロバイダーとして Microsoft Azure Active Directory をサポートしています。
+
+### <a name="what-is-the-recovery-point-objective-rpo-for-the-azure-api-for-fhir"></a>Azure API for FHIR の回復ポイントの目標 (RPO) はどれくらいですか?
+Azure API for FHIR では、永続化プロバイダーとして Cosmos DB が使用されています。 このため、サービスの RPO は [Cosmos DB (単一リージョン)](https://docs.microsoft.com/azure/cosmos-db/consistency-levels) と等しくなり、240 分未満です。
 
 ### <a name="what-fhir-version-do-you-support"></a>どのバージョンの FHIR がサポートされますか?
 
@@ -52,7 +55,7 @@ Azure API for FHIR にリリースされている内容の一部については�
 
 ### <a name="in-which-regions-is-azure-api-for-fhir-available"></a>Azure API for FHIR はどのリージョンで使用できますか?
 
-現在、[複数の geo リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=azure-api-for-fhir&regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,canada-east,canada-central,usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia)で、パブリックと政府機関の両方に対して一般提供しています。 Microsoft の政府機関向けクラウド サービスの詳細については、[FedRAMP による Azure サービス](https://docs.microsoft.com/azure/azure-government/compliance/azure-services-in-fedramp-auditscope)を確認してください。
+現在、[複数の geo リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=azure-api-for-fhir&regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,canada-east,canada-central,usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia)で、パブリックと政府機関の両方に対して一般提供しています。 Microsoft の政府機関向けクラウド サービスの詳細については、[FedRAMP による Azure サービス](../azure-government/compliance/azure-services-in-fedramp-auditscope.md)を確認してください。
 
 ### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>Azure API for FHIR にリリースされる内容はどこで確認できますか?
 
@@ -97,17 +100,17 @@ Azure API for FHIR で、[コンパートメント検索](https://www.hl7.org/fh
 
 ### <a name="what-is-the-default-sort-when-searching-for-resources-in-azure-api-for-fhir"></a>Azure API for FHIR でリソースを検索するときの既定の並べ替えは何ですか?
 
-最終更新日での並べ替えをサポートしています (_sort=_lastUpdated)。 サポートされているその他の検索パラメーターの詳細については、[サポートされている機能のページ](https://docs.microsoft.com/azure/healthcare-apis/fhir-features-supported#search)を確認してください。
+最終更新日での並べ替えをサポートしています (_sort=_lastUpdated)。 サポートされているその他の検索パラメーターの詳細については、[サポートされている機能のページ](./fhir-features-supported.md#search)を確認してください。
 
 ### <a name="how-does-export-work"></a>$export はどのように動作しますか?
 
-$export は、FHIR 仕様 (https://hl7.org/fhir/uv/bulkdata/export/index.html ) に含まれています。 FHIR サービスが管理対象 ID とストレージ アカウントで構成されていて、管理対象 ID がそのストレージ アカウントにアクセスできる場合、FHIR API で $export を呼び出すだけで、すべての FHIR リソースがストレージ アカウントにエクスポートされます。 詳細については、[$export の記事](https://docs.microsoft.com/azure/healthcare-apis/export-data)を確認してください。
+$export は、FHIR 仕様 (https://hl7.org/fhir/uv/bulkdata/export/index.html ) に含まれています。 FHIR サービスが管理対象 ID とストレージ アカウントで構成されていて、管理対象 ID がそのストレージ アカウントにアクセスできる場合、FHIR API で $export を呼び出すだけで、すべての FHIR リソースがストレージ アカウントにエクスポートされます。 詳細については、[$export の記事](./export-data.md)を確認してください。
 
 ## <a name="using-azure-api-for-fhir"></a>Azure API for FHIR の使用
 
 ### <a name="how-do-i-enable-log-analytics-for-azure-api-for-fhir"></a>Azure API for FHIR のログ分析を有効にするにはどうすればよいですか?
 
-診断ログを有効にし、これらのログのサンプル クエリを確認できるようにしています。 監査ログとサンプル クエリの有効化の詳細については、[このセクション](https://docs.microsoft.com/azure/healthcare-apis/enable-diagnostic-logging)を確認してください。 ログに追加情報を含める場合は、[カスタム HTTP ヘッダーの使用](https://docs.microsoft.com/azure/healthcare-apis/use-custom-headers)に関するページを確認してください。
+診断ログを有効にし、これらのログのサンプル クエリを確認できるようにしています。 監査ログとサンプル クエリの有効化の詳細については、[このセクション](./enable-diagnostic-logging.md)を確認してください。 ログに追加情報を含める場合は、[カスタム HTTP ヘッダーの使用](./use-custom-headers.md)に関するページを確認してください。
 
 ### <a name="where-can-i-see-some-examples-of-using-the-azure-api-for-fhir-within-a-workflow"></a>ワークフロー内での Azure API for FHIR の使用例は、どこで確認できますか?
 
@@ -121,7 +124,7 @@ $export は、FHIR 仕様 (https://hl7.org/fhir/uv/bulkdata/export/index.html ) 
 
 ### <a name="is-there-a-way-to-encrypt-my-data-using-my-personal-key-not-a-default-key"></a>既定のキーではなく個人用キーを使用してデータを暗号化する方法はありますか?
 
-はい。Azure API for FHIR では、Cosmos DB のサポートを利用して、カスタマー マネージド キーを構成できます。 個人用キーでデータを暗号化する方法の詳細については、[このセクション](https://docs.microsoft.com/azure/healthcare-apis/customer-managed-key)を確認してください。
+はい。Azure API for FHIR では、Cosmos DB のサポートを利用して、カスタマー マネージド キーを構成できます。 個人用キーでデータを暗号化する方法の詳細については、[このセクション](./customer-managed-key.md)を確認してください。
 
 ## <a name="azure-api-for-fhir-preview-features"></a>Azure API for FHIR:プレビュー機能
 

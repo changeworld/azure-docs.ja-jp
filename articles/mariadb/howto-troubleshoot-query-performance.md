@@ -1,17 +1,17 @@
 ---
 title: クエリ パフォーマンスのトラブルシューティング - Azure Database for MariaDB
 description: EXPLAIN を使って Azure Database for MariaDB でのクエリのパフォーマンスをトラブルシューティングする方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: ae3637eb5e9f6f70d0f53d7b1cb97bd348c114bc
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 2b7491723ffcff73e4b243fe54ef18608167d636
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424422"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537239"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>EXPLAIN を使用して Azure Database for MariaDB でのクエリのパフォーマンスをプロファイリングする方法
 **EXPLAIN** は、クエリを最適化するための便利なツールです。 EXPLAIN ステートメントを使うと、SQL ステートメントの実行状況に関する情報を取得できます。 EXPLAIN ステートメントを実行したときの出力の例を次に示します。
@@ -33,7 +33,7 @@ possible_keys: NULL
         Extra: Using where
 ```
 
-この例からわかるように、 *key* の値が NULL になっています。 この出力は、MariaDB がクエリ用に最適化されたインデックスを見つけることができず、フル テーブル スキャンを実行していることを意味します。 **ID** 列にインデックスを追加することで、このクエリを最適化してみます。
+この例からわかるように、*key* の値が NULL になっています。 この出力は、MariaDB がクエリ用に最適化されたインデックスを見つけることができず、フル テーブル スキャンを実行していることを意味します。 **ID** 列にインデックスを追加することで、このクエリを最適化してみます。
 
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY (id);
@@ -75,7 +75,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-出力からわかるように、適切なインデックスを利用できないため、MariaDB はインデックスを使っていません。 また、 *Using temporary; Using file sort* と表示されていますが、これは MariaDB が一時テーブルを作成して **GROUP BY** 句を満たしていることを意味します。
+出力からわかるように、適切なインデックスを利用できないため、MariaDB はインデックスを使っていません。 また、*Using temporary; Using file sort* と表示されていますが、これは MariaDB が一時テーブルを作成して **GROUP BY** 句を満たしていることを意味します。
  
 **c2** 列だけにインデックスを作成しても違いはなく、MariaDB はまだ一時テーブルを作成する必要があります。
 
@@ -97,7 +97,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-この場合、 **c1** と **c2** の両方に対して **カバリング インデックス** を作成することができ、それによりインデックスに **c2** の値を直接追加してさらにデータの参照を減らすことができます。
+この場合、**c1** と **c2** の両方に対して **カバリング インデックス** を作成することができ、それによりインデックスに **c2** の値を直接追加してさらにデータの参照を減らすことができます。
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);
@@ -120,7 +120,7 @@ possible_keys: covered
 上の EXPLAIN が示すように、MariaDB はカバリング インデックスを使うことで、一時テーブルを作成しなくて済むようになっています。 
 
 ## <a name="combined-index"></a>結合インデックス
-結合インデックスは、複数の列の値で構成され、インデックス付き列の連結値により並べ替えられた行の配列と見なすことができます。  この方法は、 **GROUP BY** ステートメントで役に立ちます。
+結合インデックスは、複数の列の値で構成され、インデックス付き列の連結値により並べ替えられた行の配列と見なすことができます。  この方法は、**GROUP BY** ステートメントで役に立ちます。
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
@@ -139,7 +139,7 @@ possible_keys: NULL
         Extra: Using where; Using filesort
 ```
 
-MariaDB の " *ファイル並べ替え* " 操作の実行はかなり遅く、多くの行を並べ替える必要があるときは特にそうです。 このクエリを最適化するには、並べ替えられる両方の列に対して結合インデックスを作成します。
+MariaDB の "*ファイル並べ替え*" 操作の実行はかなり遅く、多くの行を並べ替える必要があるときは特にそうです。 このクエリを最適化するには、並べ替えられる両方の列に対して結合インデックスを作成します。
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);

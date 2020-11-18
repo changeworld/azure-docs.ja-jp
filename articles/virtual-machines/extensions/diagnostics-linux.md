@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 1faf4455a983e87ce4c702c09f8bf2d9fbe70047
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0ae6366acf270d762b1c15563bfec1b2eb2a1b8d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893405"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421075"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -70,10 +70,33 @@ Debian 7 などのメジャー バージョンのみを示しているディス�
 
 ### <a name="prerequisites"></a>前提条件
 
-* **Azure Linux エージェント バージョン 2.2.0 以降** 。 ほとんどの Azure VM Linux ギャラリー イメージには、バージョン 2.2.7 以降が含まれています。 `/usr/sbin/waagent -version` を実行して、VM にインストールされているバージョンを確認します。 VM で古いバージョンのゲスト エージェントを実行している場合は、[次の手順](./update-linux-agent.md)に従って更新します。
-* **Azure CLI** 。 ご使用のマシンに [Azure CLI 環境をセットアップ](/cli/azure/install-azure-cli)します。
+* **Azure Linux エージェント バージョン 2.2.0 以降**。 ほとんどの Azure VM Linux ギャラリー イメージには、バージョン 2.2.7 以降が含まれています。 `/usr/sbin/waagent -version` を実行して、VM にインストールされているバージョンを確認します。 VM で古いバージョンのゲスト エージェントを実行している場合は、[次の手順](./update-linux-agent.md)に従って更新します。
+* **Azure CLI**。 ご使用のマシンに [Azure CLI 環境をセットアップ](/cli/azure/install-azure-cli)します。
 * wget コマンド。まだ持っていない場合は `sudo apt-get install wget` を実行します。
 * 既存の Azure サブスクリプションと、データを格納するための既存の汎用ストレージ アカウント。  汎用ストレージ アカウントでは、必須のテーブル ストレージがサポートされます。  BLOB ストレージ アカウントは機能しません。
+* Python 2
+
+### <a name="python-requirement"></a>Python の要件
+
+Linux Diagnostic Extension には、Python 2 が必要です。 既定で Python 2 が含まれないディストリビューションが仮想マシンで使用されている場合、それをインストールする必要があります。 次のサンプル コマンドでは、異なるディストリビューションに Python 2 がインストールされます。    
+
+ - Red Hat、CentOS、Oracle: `yum install -y python2`
+ - Ubuntu、Debian: `apt-get install -y python2`
+ - SUSE: `zypper install -y python2`
+
+python2 実行可能ファイルに *python* という別名を付ける必要があります。 この別名を設定するために使用できる 1 つの方法を次に示します。
+
+1. 次のコマンドを実行して、既存の別名を削除します。
+ 
+    ```
+    sudo update-alternatives --remove-all python
+    ```
+
+2. 次のコマンドを実行して、別名を作成します。
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
+    ```
 
 ### <a name="sample-installation"></a>サンプル インストール
 
@@ -175,7 +198,7 @@ Protected 設定または Public 設定を変更した後、同じコマンド�
 
 ### <a name="migration-from-previous-versions-of-the-extension"></a>以前のバージョンの拡張機能からの移行
 
-拡張機能の最新バージョンは **3.0** です。 **以前のバージョン (2.x) は非推奨となり、2018 年 7 月 31 日以降は非公開になる可能性があります** 。
+拡張機能の最新バージョンは **3.0** です。 **以前のバージョン (2.x) は非推奨となり、2018 年 7 月 31 日以降は非公開になる可能性があります**。
 
 > [!IMPORTANT]
 > この拡張機能では、構成の面で大幅な変更点が導入されます。 その変更点の 1 つは、拡張機能のセキュリティを向上させるために行われました。結果として、2.x との下位互換性を維持できなくなりました。 また、この拡張機能の Extension Publisher は、2.x バージョンのパブリッシャーとは異なります。
@@ -581,7 +604,7 @@ TransfersPerSecond | 1 秒あたりの読み取りまたは書き込み操作
 
 すべてのファイル システムの集計値は、`"condition": "IsAggregate=True"` のように設定すると取得できます。 "/mnt" のような特定のマウントされたファイル システムの値は、`"condition": 'Name="/mnt"'` のように設定すると取得できます。 
 
-**注** :JSON ではなく Azure Portal を使用する場合、正しい条件フィールド形式は Name='/mnt' になります。
+**注**:JSON ではなく Azure Portal を使用する場合、正しい条件フィールド形式は Name='/mnt' になります。
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>"ディスク" クラスの組み込みメトリック
 

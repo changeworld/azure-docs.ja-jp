@@ -1,14 +1,14 @@
 ---
 title: Azure Arc 対応サーバーを使用した VM 拡張機能の管理
 description: Azure Arc 対応サーバーを使用すると、Azure 以外の VM でのデプロイ後構成と自動化タスクを提供する仮想マシン拡張機能のデプロイを管理できます。
-ms.date: 10/19/2020
+ms.date: 11/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: e9865761fd3e5897ee3f01cd3d6ca620d5ea2f4b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7682f6c8631bbaf2310d501d7cee6aecb2311226
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460888"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358033"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーを使用した仮想マシン拡張機能の管理
 
@@ -33,6 +33,8 @@ Azure Arc 対応サーバーによる VM 拡張機能のサポートには、次
 
 - スクリプトをダウンロードし、カスタム スクリプト拡張機能を使用してハイブリッド接続マシンで実行します。 この拡張機能は、展開後の構成、ソフトウェアのインストール、その他の構成タスクや管理タスクに役立ちます。
 
+- [Azure Key Vault](../../key-vault/general/overview.md) に保存されている証明書を自動的に更新します。
+
 ## <a name="availability"></a>可用性
 
 VM 拡張機能は、[サポートされているリージョン](overview.md#supported-regions)の一覧でのみ使用できます。 これらのリージョンのいずれかにマシンをオンボードしてください。
@@ -47,10 +49,12 @@ VM 拡張機能は、[サポートされているリージョン](overview.md#su
 |DSC |Windows |Microsoft.PowerShell|[Windows PowerShell DSC 拡張機能](../../virtual-machines/extensions/dsc-windows.md)|
 |Log Analytics エージェント |Windows |Microsoft.EnterpriseCloud.Monitoring |[Windows 用 Log Analytics VM 拡張機能](../../virtual-machines/extensions/oms-windows.md)|
 |Microsoft Dependency Agent | Windows |Microsoft.Compute | [Windows 用 Dependency Agent 仮想マシン拡張機能](../../virtual-machines/extensions/agent-dependency-windows.md)|
+|Key Vault | Windows | Microsoft.Compute | [Windows 用の Key Vault 仮想マシン拡張機能](../../virtual-machines/extensions/key-vault-windows.md) |
 |CustomScript|Linux |Microsoft.Azure.Extension |[Linux カスタム スクリプト拡張機能バージョン 2](../../virtual-machines/extensions/custom-script-linux.md) |
 |DSC |Linux |Microsoft.OSTCExtensions |[Linux 用 PowerShell DSC 拡張機能](../../virtual-machines/extensions/dsc-linux.md) |
 |Log Analytics エージェント |Linux |Microsoft.EnterpriseCloud.Monitoring |[Linux 用 Log Analytics VM 拡張機能](../../virtual-machines/extensions/oms-linux.md) |
 |Microsoft Dependency Agent | Linux |Microsoft.Compute | [Linux 用 Dependency Agent 仮想マシン拡張機能](../../virtual-machines/extensions/agent-dependency-linux.md) |
+|Key Vault | Linux | Microsoft.Compute | [Linux 用の Key Vault 仮想マシン拡張機能](../../virtual-machines/extensions/key-vault-linux.md) |
 
 Azure Connected Machine エージェント パッケージと拡張機能エージェント コンポーネントの詳細については、[エージェントの概要](agent-overview.md#agent-component-details)に関する記事を参照してください。
 
@@ -63,7 +67,29 @@ Azure Connected Machine エージェント パッケージと拡張機能エー�
 
 まだ登録されていない場合は、「[Azure リソースプロバイダーを登録する](agent-overview.md#register-azure-resource-providers)」の手順に従ってください。
 
+### <a name="log-analytics-vm-extension"></a>Log Analytics VM 拡張機能
+
 Linux 用の Log Analytics エージェント VM 拡張機能を使用するには、ターゲット マシンに Python 2.x がインストールされている必要があります。
+
+### <a name="azure-key-vault-vm-extension-preview"></a>Azure Key Vault VM 拡張機能 (プレビュー)
+
+Key Vault VM 拡張機能 (プレビュー) では、次の Linux オペレーティング システムはサポートされません。
+
+- CentOS Linux 7 (x64)
+- Red Hat Enterprise Linux (RHEL) 7 (x64)
+- Amazon Linux 2 (x64)
+
+Azure Key Vault VM 拡張機能 (プレビュー) のデプロイは、以下を使用した場合にのみサポートされます。
+
+- Azure CLI
+- Azure PowerShell
+- Azure Resource Manager テンプレート
+
+機能拡張をデプロイする前に、次の作業を完了する必要があります。
+
+1. [コンテナーと証明書 (自己署名証明書またはインポート証明書) を作成](../../key-vault/certificates/quick-create-portal.md)します。
+
+2. Azure Arc 対応サーバーに証明書シークレットへのアクセスを許可します。 [RBAC プレビュー](../../key-vault/general/rbac-guide.md)を使用する場合は、Azure Arc リソースの名前を検索し、それを **Key Vault Secrets User (プレビュー)** ロールに割り当てます。 [Key Vault アクセス ポリシー](../../key-vault/general/assign-access-policy-portal.md)を使用する場合は、Azure Arc リソースのシステム割り当て ID にシークレットの **Get** アクセス許可を割り当てます。
 
 ### <a name="connected-machine-agent"></a>Connected Machine エージェント
 
@@ -75,4 +101,4 @@ Windows および Linux のこの機能でサポートされる Connected Machin
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure CLI](manage-vm-extensions-cli.md)、[PowerShell](manage-vm-extensions-powershell.md)、[Azure portal](manage-vm-extensions-portal.md)、または [Azure Resource Manager テンプレート](manage-vm-extensions-template.md)を使用して、VM 拡張機能をデプロイ、管理、および削除できます。
+[Azure CLI](manage-vm-extensions-cli.md)、[Azure PowerShell](manage-vm-extensions-powershell.md)、[Azure portal](manage-vm-extensions-portal.md)、または [Azure Resource Manager テンプレート](manage-vm-extensions-template.md)を使用して、VM 拡張機能をデプロイ、管理、および削除できます。

@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: b51b219daec01d0bce3bbfb71c29e9374363665d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8caa39bea2d0d835a94bc95a747f1f870bae3b12
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711066"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357540"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Azure Blob Storage 監視データのリファレンス
 
@@ -26,7 +26,7 @@ Azure Storage の監視データの収集と分析の詳細については、「
 
 ### <a name="capacity-metrics"></a>容量メトリック
 
-容量メトリックの値は 1 時間ごとに Azure Monitor に送信され、 毎日更新されます。 時間グレインは、メトリック値が提供される時間間隔を定義します。 すべての容量メトリックに対して、1 時間 (PT1H) の時間グレインがサポートされます。
+容量メトリックの値は毎日 (最大 24 時間) 更新されます。 時間グレインは、メトリック値が提供される時間間隔を定義します。 すべての容量メトリックに対して、1 時間 (PT1H) の時間グレインがサポートされます。
 
 Azure Storage は、Azure Monitor で次の容量メトリックを提供します。
 

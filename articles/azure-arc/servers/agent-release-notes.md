@@ -2,13 +2,13 @@
 title: Azure Arc 対応サーバー エージェントの新機能
 description: この記事には、Azure Arc 対応サーバー エージェントのリリース ノートが含まれています。 まとめられている問題の多くについては、追加詳細のリンクがあります。
 ms.topic: conceptual
-ms.date: 09/16/2020
-ms.openlocfilehash: 1918d03b5bbfaaa64b7d74c18fad4eb9a86800a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/10/2020
+ms.openlocfilehash: 5322a92bfc67d9f80c2271a3ef9b5626455e9ad7
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908151"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445287"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの新機能
 
@@ -17,6 +17,21 @@ Azure Arc 対応サーバーの Connected Machine エージェントは、継続
 - 最新のリリース
 - 既知の問題
 - バグの修正
+
+## <a name="november-2020"></a>2020 年 11 月
+
+### <a name="fixed"></a>固定
+
+RPM ベースのディストリビューションでアップグレード後にプロキシ構成が失われる可能性がある問題が解決されました。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+### <a name="fixed"></a>固定
+
+- 代替 GC デーモンのユニット ファイルの場所を処理するようにプロキシ スクリプトが修正されました。
+- GuestConfig エージェントの信頼性が変更されています。
+- GuestConfig エージェントで US Gov バージニア リージョンがサポートされます。
+- GuestConfig エージェント拡張機能によって、エラー発生時により詳細なメッセージが報告されます。
 
 ## <a name="september-2020"></a>2020 年 9 月
 
@@ -60,4 +75,4 @@ Azure Arc 対応サーバーの Connected Machine エージェントは、継続
 
 ## <a name="next-steps"></a>次のステップ
 
-複数のハイブリッド マシンにまたがって Arc 対応サーバーを評価するか、または有効にする前に、[Connected Machine エージェントの概要](agent-overview.md)を確認して、要件、エージェントに関する技術的な詳細、デプロイ方法を理解してください。
+複数のハイブリッド マシン間で Arc 対応サーバーを評価または有効化する前に、[Connected Machine エージェントの概要](agent-overview.md)を確認し、要件、エージェントに関する技術的な詳細、およびデプロイ方法を把握してください。

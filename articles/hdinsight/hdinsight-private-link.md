@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 4948d23af98e267e72e6f0e0efcc1a4037173576
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3c6bee570312009af5fbdf42a018ad2b387662d9
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547420"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422299"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Private Link を使用して Azure HDInsight クラスターを保護および分離する (プレビュー)
 
@@ -25,13 +25,13 @@ Azure Resource Manager (ARM) テンプレートで特定のネットワーク �
 
 ## <a name="remove-public-ip-addresses"></a>パブリック IP アドレスを削除する
 
-既定では、パブリック IP を使用したクラスターへの " *受信* " 接続が HDInsight RP で使用します。 `resourceProviderConnection` ネットワーク プロパティが " *送信* " に設定されている場合は、常にクラスター内部から RP への接続が開始されるように、HDInsight RP への接続が元に戻されます。 受信接続を使用しない場合は、受信サービス タグまたはパブリック IP アドレスが必要ありません。
+既定では、パブリック IP を使用したクラスターへの "*受信*" 接続が HDInsight RP で使用します。 `resourceProviderConnection` ネットワーク プロパティが "*送信*" に設定されている場合は、常にクラスター内部から RP への接続が開始されるように、HDInsight RP への接続が元に戻されます。 受信接続を使用しない場合は、受信サービス タグまたはパブリック IP アドレスが必要ありません。
 
 既定の仮想ネットワーク アーキテクチャで使用される基本ロード バランサーでは、必要な送信依存関係 (HDInsight RP など) にアクセスするために、パブリック NAT (ネットワーク アドレス変換) が自動的に提供されます。 パブリック インターネットへの送信接続を制限する場合は、[ファイアウォールを構成](./hdinsight-restrict-outbound-traffic.md)できます。ただし、必須ではありません。
 
-`resourceProviderConnection` を [送信] に構成すると、プライベート エンドポイントを使用してクラスター固有のリソース (Azure Data Lake Storage Gen2 や外部メタストアなど) にアクセスすることもできます。 HDInsight クラスターを作成する前に、プライベート エンドポイントと DNS エントリを構成する必要があります。 クラスターの作成時は、必要な外部 SQL データベース (Apache Ranger、Ambari、Oozie、Hive メタストアなど) をすべて作成して、提供することが推奨されています。
+`resourceProviderConnection` を [送信] に構成すると、プライベート エンドポイントを使用してクラスター固有のリソース (Azure Data Lake Storage Gen2 や外部メタストアなど) にアクセスすることもできます。 これらのリソースにプライベート エンドポイントを使用することは必須ではありませんが、これらのリソースでプライベート エンドポイントを使用する予定がある場合は、HDInsight クラスターを作成する前`before`にプライベート エンドポイントと DNS エントリを構成する必要があります。 クラスターの作成時は、必要な外部 SQL データベース (Apache Ranger、Ambari、Oozie、Hive メタストアなど) をすべて作成して、提供することが推奨されています。 これらのすべてのリソースが、独自のプライベート エンドポイントを介して、またはそれ以外の方法で、クラスター サブネット内からアクセスできる必要があることが要件です。
 
-Azure Key Vault のプライベート エンドポイントはサポートされていません。 保存時の CMK 暗号化に Azure Key Vault を使用している場合は、プライベート エンドポイントを使用せずに、HDInsight サブネット内から Azure Key Vault エンドポイントにアクセスできる必要があります。
+Azure Key Vault のプライベート エンドポイントの使用はサポートされていません。 保存時の CMK 暗号化に Azure Key Vault を使用している場合は、プライベート エンドポイントを使用せずに、HDInsight サブネット内から Azure Key Vault エンドポイントにアクセスできる必要があります。
 
 次の図は、`resourceProviderConnection` が [送信] に設定されている場合に考えられる HDInsight 仮想ネットワーク アーキテクチャを示しています。
 
@@ -52,9 +52,9 @@ Azure Key Vault のプライベート エンドポイントはサポートされ
 
 ## <a name="enable-private-link"></a>Private Link を有効にする
 
-既定で無効になっている Private Link を使用するには、クラスターを作成する前に、ユーザー定義ルート (UDR) とファイアウォール ルールを適切に設定するための幅広いネットワークに関する知識が必要です。 前のセクションで説明したように、`resourceProviderConnection` ネットワーク プロパティが " *送信* " に設定されている場合にのみ、Private Link からクラスターにアクセスできます。
+既定で無効になっている Private Link を使用するには、クラスターを作成する前に、ユーザー定義ルート (UDR) とファイアウォール ルールを適切に設定するための幅広いネットワークに関する知識が必要です。 この設定は省略可能ですが、前のセクションで説明したように、`resourceProviderConnection` ネットワーク プロパティが "*送信*" に設定されている場合にのみ使用できます。
 
-`privateLink` が " *有効* " に設定されている場合は、内部 [標準ロード バランサー](../load-balancer/load-balancer-overview.md) (SLB) が作成され、SLB ごとに Azure Private Link サービスがプロビジョニングされます。 Private Link サービスを使用すると、プライベート エンドポイントから HDInsight クラスターにアクセスできます。
+`privateLink` が "*有効*" に設定されている場合は、内部 [標準ロード バランサー](../load-balancer/load-balancer-overview.md) (SLB) が作成され、SLB ごとに Azure Private Link サービスがプロビジョニングされます。 Private Link サービスを使用すると、プライベート エンドポイントから HDInsight クラスターにアクセスできます。
 
 標準ロード バランサーでは、[パブリック送信 NAT](../load-balancer/load-balancer-outbound-connections.md) (基本ロードバランサーなど) が自動的に提供されません。 送信依存関係のために、独自の NAT ソリューション ([Virtual Network NAT](../virtual-network/nat-overview.md) や[ファイアウォール](./hdinsight-restrict-outbound-traffic.md)など) を提供する必要があります。 HDInsight クラスターから送信依存関係へのアクセスは引き続き必要です。 このような送信依存関係が許可されていない場合は、クラスターの作成に失敗する可能性があります。
 

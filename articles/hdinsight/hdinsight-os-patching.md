@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
-ms.openlocfilehash: 005bfd4b7e7d062640a79896ccd3d7f76e3d6fb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b789bf01a043b167d6740f09df935d9b683c48f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447197"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357761"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Linux ベースの HDInsight クラスターの OS 修正プログラム適用スケジュールを構成する
 
@@ -64,7 +64,7 @@ Welcome to Spark on HDInsight.
 
 | パラメーター | 指定可能な値 | 定義 |
 | --- | --- | --- |
-| インストールする更新プログラムの種類 | 0、1、または 2 | 値 0 の場合、カーネル更新プログラムのみインストールされます。 値 1 の場合、すべての更新プログラムがインストールされます。値 2 の場合、カーネル + セキュリティ更新プログラムのみインストールされます。 パラメーターを指定しない場合、既定値は 0 です。 |
+| インストールする更新プログラムの種類 | 0、1、または 2 | 値 0 の場合、カーネル更新プログラムのみインストールされます。 値 1 の場合、カーネル + セキュリティ更新プログラムがインストールされ、2 の場合、すべての更新プログラムがインストールされます。 パラメーターを指定しない場合、既定値は 0 です。 |
 | 実行する再起動の種類 | 0、1、または 2 | 値 0 の場合、再起動は無効になります。 値 1 の場合、スケジュール再起動が有効になります。値 2 の場合、即時再起動が有効になります。 パラメーターを指定しない場合、既定値は 0 です。 ユーザーは、入力パラメーター 1 を入力パラメーター 2 に変更する必要があります。 |
 
 > [!NOTE]

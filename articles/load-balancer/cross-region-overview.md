@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: d55f52b5e99a7a617e2bec8bea4d6e6ef687730a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 898b0d00fcad99a1059e01ad54ce13d192f1227f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336532"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398013"
 ---
 # <a name="cross-region-load-balancer-preview"></a>リージョン間ロード バランサー (プレビュー)
 
@@ -45,7 +45,7 @@ Azure Standard Load Balancer では、リージョン間の負荷分散がサポ
 :::image type="content" source="./media/cross-region-overview/cross-region-load-balancer.png" alt-text="リージョン間ロード バランサーの図。" border="true":::
 
 > [!NOTE]
-> リージョン間ロード バランサー上の負荷分散規則のバックエンド ポートは、リージョンの標準的なロード バランサー上の負荷分散規則またはインバウンド NAT 規則のフロントエンド ポートと一致している必要があります。 
+> リージョン間ロード バランサー上の負荷分散規則のバックエンド ポートは、リージョンの標準ロード バランサー上の負荷分散規則またはインバウンド NAT 規則のフロントエンド ポートと一致している必要があります。 
 
 ### <a name="regional-redundancy"></a>リージョン冗長
 
@@ -55,7 +55,7 @@ Azure Standard Load Balancer では、リージョン間の負荷分散がサポ
 
 リージョン間ロード バランサーの正常性プローブによって、20 秒ごとに可用性に関する情報が収集されます。 1 つのリージョンのロード バランサーの可用性が 0 に落ちると、リージョン間ロード バランサーによってエラーが検出されます。 その後、そのリージョン ロード バランサーはローテーションから外されます。 
 
-:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="リージョン間ロード バランサーの図。" border="true":::
+:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="グローバル リージョンのトラフィック ビューの図。" border="true":::
 
 ### <a name="ultra-low-latency"></a>超低遅延
 
@@ -94,7 +94,7 @@ Azure のリージョン間ロード バランサーでは、ルーティング�
 
 既存のロード バランサーのデプロイをリージョン間ロード バランサーに追加して、高可用性のリージョン間デプロイを実現します。
 
-**ホーム リージョン**は、リージョン間ロード バランサーがデプロイされる場所です。 このリージョンは、トラフィックのルーティング方法には影響しません。 ホーム リージョンがダウンしても、トラフィックのフローには影響しません。
+**ホーム リージョン** は、リージョン間ロード バランサーがデプロイされる場所です。 このリージョンは、トラフィックのルーティング方法には影響しません。 ホーム リージョンがダウンしても、トラフィックのフローには影響しません。
 
 ### <a name="home-regions"></a>ホーム リージョン
 * 米国東部 2
@@ -108,7 +108,7 @@ Azure のリージョン間ロード バランサーでは、ルーティング�
 > [!NOTE]
 > リージョン間ロード バランサーをデプロイできるのは、上記の 8 つのリージョンのいずれかに限られます。
 
-**参加リージョン**は、ロード バランサーのグローバル パブリック IP を使用できる場所です。 
+**参加リージョン** は、ロード バランサーのグローバル パブリック IP を使用できる場所です。 
 
 ユーザーが開始したトラフィックは、Microsoft のコア ネットワークを経由して、最も近い参加リージョンに到達します。 
 

@@ -1,7 +1,7 @@
 ---
 title: データセットへの変換:モジュール リファレンス
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning のデータセットへの変換モジュールを使用して、データ入力を Microsoft Azure Machine Learning で使用される内部データセット形式に変換する方法について説明します。
+description: Azure Machine Learning デザイナーのデータセットへの変換モジュールを使用して、データ入力を内部データセット形式に変換する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 9c014f14149b903713ae2f03b98956cd4ecaf8a1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 671a8f7c6fa4c20ef4fc88f57d4a946a84614389
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323053"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420871"
 ---
 # <a name="convert-to-dataset"></a>データセットへの変換
 
@@ -39,14 +39,14 @@ ms.locfileid: "93323053"
 
 3.  **[アクション]** ボックスの一覧で、データセットを保存する前にデータのクリーンアップを実行するかどうかを指定します。  
   
-    - **なし** : データをそのまま使用します。  
+    - **なし**: データをそのまま使用します。  
   
-    - **SetMissingValue** :データセット内の特定の値を欠損値に設定します。 既定のプレースホルダーは疑問符 (?) ですが、 **[Custom missing value]\(カスタム欠損値\)** オプションを使用して別の値を入力することもできます。 たとえば、 **[Custom missing value]\(カスタム欠損値\)** に「 **Taxi** 」と入力すると、データセット内に出てくる **Taxi** という値がすべて欠損値に変わります。
+    - **SetMissingValue**:データセット内の特定の値を欠損値に設定します。 既定のプレースホルダーは疑問符 (?) ですが、 **[Custom missing value]\(カスタム欠損値\)** オプションを使用して別の値を入力することもできます。 たとえば、 **[Custom missing value]\(カスタム欠損値\)** に「**Taxi**」と入力すると、データセット内に出てくる **Taxi** という値がすべて欠損値に変わります。
   
-    - **ReplaceValues** :このオプションを使用して、その他の正確な値に置き換えられる単一の正確な値を指定します。 欠損値とカスタム値のどちらを置換するかに応じて、 **[置換]** の方法を次のように設定します。
+    - **ReplaceValues**:このオプションを使用して、その他の正確な値に置き換えられる単一の正確な値を指定します。 欠損値とカスタム値のどちらを置換するかに応じて、 **[置換]** の方法を次のように設定します。
 
       - **[Missing]\(欠損\)** :入力データセット内の欠損値を置き換える場合にこのオプションを選択します。 **[新しい値]** には、欠損値を置き換える値を入力します。
-      - **Custom** :入力データセット内のカスタム値を置き換える場合にこのオプションを選択します。 **[Custom value]\(カスタム値\)** には、検索する値を入力します。 たとえば、欠損値のプレースホルダーとして使用される文字列 `obs` がデータに含まれている場合は、「`obs`」と入力します。 **[新しい値]** には、元の文字列を置き換える新しい値を入力します。
+      - **Custom**:入力データセット内のカスタム値を置き換える場合にこのオプションを選択します。 **[Custom value]\(カスタム値\)** には、検索する値を入力します。 たとえば、欠損値のプレースホルダーとして使用される文字列 `obs` がデータに含まれている場合は、「`obs`」と入力します。 **[新しい値]** には、元の文字列を置き換える新しい値を入力します。
   
     **ReplaceValues** 操作は、完全一致にのみ適用されることに注意してください。 たとえば、`obs.` や `obsolete` といった文字列は影響を受けません。  
  

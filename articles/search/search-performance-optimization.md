@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 5fd949466978714fe1dc0c4ccc67a3cb8f993314
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 362d5f2046ff4e9ba52dd2e73433cc39e80f7a50
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934958"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420599"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Azure Cognitive Search のパフォーマンスのためのスケーリング
 
@@ -30,7 +30,7 @@ ms.locfileid: "88934958"
 
 1. 少ない QPS (1 秒あたりのクエリ数) から始め、あらかじめ定めた目標をクエリの待機時間が下回るまで、数を徐々に増やしながらテストを実行します。 これは、アプリケーションの普及に伴ってスケールの計画を立てる際に役立つ重要なベンチマークです。
 
-1. 可能な限り、HTTP 接続を再利用します。 Azure Cognitive Search .NET SDK を使用している場合、これはインスタンスまたは [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) インスタンスを再利用することを意味します。REST API を使用している場合は、1 つの HttpClient を再利用します。
+1. 可能な限り、HTTP 接続を再利用します。 Azure Cognitive Search .NET SDK を使用している場合、これはインスタンスまたは [SearchClient](/dotnet/api/azure.search.documents.searchclient) インスタンスを再利用することを意味します。REST API を使用している場合は、1 つの HttpClient を再利用します。
 
 1. インデックスのさまざまな部分で検索が行われるように、クエリ要求の内容を変更します。 同じ検索要求を継続的に実行すると、データのキャッシュによって、異なるクエリ セットを使用した場合よりもパフォーマンスが高く見えるようになるため、バリエーションを持たせることが重要です。
 
@@ -43,7 +43,7 @@ ms.locfileid: "88934958"
 + Azure Cognitive Search によって、バックグラウンドでインデックス作成タスクが実行されることはありません。 サービスがクエリとインデックス作成のワークロードを同時に処理する場合は、インデックス作成ジョブをクエリ テストに組み込むか、ピーク時を避けてインデックス作成ジョブを実行するオプションを調べることで、この点を考慮してください。
 
 > [!Tip]
-> ロード テスト ツールを利用し、現実的なクエリ負荷をシミュレートすることができます。 [Azure DevOps でロード テスト](/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops)を試すか、次のいずれかの[代替案](/azure/devops/test/load-test/overview?view=azure-devops#alternatives)を利用してください。
+> ロード テスト ツールを利用し、現実的なクエリ負荷をシミュレートすることができます。 [Azure DevOps でロード テスト](/azure/devops/test/load-test/get-started-simple-cloud-load-test)を試すか、次のいずれかの[代替案](/azure/devops/test/load-test/overview#alternatives)を利用してください。
 
 ## <a name="scale-for-high-query-volume"></a>大量のクエリに対応するスケーリング
 

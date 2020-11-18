@@ -1,7 +1,7 @@
 ---
 title: ポワソン回帰:モジュール リファレンス
 titleSuffix: Azure Machine Learning
-description: ポワソン回帰モジュールを使用して、ポワソン回帰モデルを作成する方法について説明します。
+description: Azure Machine Learning デザイナーのポワソン回帰モジュールを使用して、ポワソン回帰モデルを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: 91d6d15fc8855b49bece3a7ed903074e716b7ac4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2dfd8b3d919f9eeb3e183135ef543f417c878977
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319421"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420701"
 ---
 # <a name="poisson-regression"></a>ポワソン回帰
 
@@ -59,9 +59,9 @@ ms.locfileid: "93319421"
   
     - **Single Parameter (単一パラメーター)** : モデルの構成方法を決めている場合は、特定の値のセットを引数として渡します。
   
-    - **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわからない場合は、 [[モデルのハイパーパラメーターの調整]](tune-model-hyperparameters.md) モジュールを使用してパラメーターのスイープを行います。 トレーナーは、指定された複数の値で繰り返し最適な構成を見つけます。
+    - **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわからない場合は、[[モデルのハイパーパラメーターの調整]](tune-model-hyperparameters.md) モジュールを使用してパラメーターのスイープを行います。 トレーナーは、指定された複数の値で繰り返し最適な構成を見つけます。
   
-4. **最適化の公差** :最適化中に、公差の間隔を定義する値を入力します。 値が低いほど、学習の速度は遅くなりその正確度は高くなります。
+4. **最適化の公差**:最適化中に、公差の間隔を定義する値を入力します。 値が低いほど、学習の速度は遅くなりその正確度は高くなります。
 
 5. **[L1 正則化の重み]** と **[L2 正則化の重み]** :L1 と L2 の正則化に使用する値を入力します。 *[正則化]* では、トレーニング データに依存しない、こうしたモデルの側面に関するアルゴリズムに制約が追加されます。 正則化は通常、オーバーフィットを回避するときにも使用されます。 
 
@@ -75,7 +75,7 @@ ms.locfileid: "93319421"
 
     L1 および L2 の正則化の詳細については、「[機械学習向けの L1 および L2 正規化](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning)」を参照してください。
 
-6. **L-BFGS のメモリ サイズ** :モデルの調整と最適化のために予約するメモリの量を指定します。
+6. **L-BFGS のメモリ サイズ**:モデルの調整と最適化のために予約するメモリの量を指定します。
 
      L-BFGS は、BFGS (Broyden–Fletcher–Goldfarb–Shanno) アルゴリズムに基づいて最適化するための特定のメソッドです。 このメソッドでは、制限されたメモリ量 (L) を使用して次のステップ指示が計算されます。
 
@@ -83,9 +83,9 @@ ms.locfileid: "93319421"
 
 7. トレーニング データセットと未トレーニング モデルをトレーニング モジュールのいずれかに接続します。 
 
-    - **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、 [モデルのトレーニング](train-model.md) モジュールを使用します。
+    - **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[モデルのトレーニング](train-model.md) モジュールを使用します。
 
-    - **[Create trainer mode]\(トレーナー モードの作成\)** を **[Parameter Range]\(パラメーター範囲\)** を設定する場合は、 [[Tune Model Hyperparameters]\(モデルのハイパーパラメーターの調整\)](tune-model-hyperparameters.md) モジュールを使用します。
+    - **[Create trainer mode]\(トレーナー モードの作成\)** を **[Parameter Range]\(パラメーター範囲\)** を設定する場合は、[[Tune Model Hyperparameters]\(モデルのハイパーパラメーターの調整\)](tune-model-hyperparameters.md) モジュールを使用します。
 
     > [!WARNING]
     > 

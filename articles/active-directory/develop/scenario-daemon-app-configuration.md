@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 8e065651a5527c0ab425614197ce128325454942
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 24e3841abc9c397ab307e55405bdcc208815570e
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257675"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444165"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出すデーモン アプリ - コードの構成
 
@@ -34,7 +34,7 @@ Web API を呼び出すデーモン アプリケーションのコードを構�
 
 ## <a name="configure-the-authority"></a>機関を構成する
 
-デーモン アプリケーションでは、委任されたアクセス許可ではなく、アプリケーションのアクセス許可が使用されます。 そのため、サポートされているアカウントの種類を、組織のディレクトリ内のアカウントまたは個人用 Microsoft アカウント (例: Skype、Xbox、Outlook.com) にすることはできません。 Microsoft の個人アカウントの場合、デーモン アプリケーションに同意を付与するテナント管理者はいません。 *自分の所属組織のアカウント*または*任意の組織のアカウント*を選択する必要があります。
+デーモン アプリケーションでは、委任されたアクセス許可ではなく、アプリケーションのアクセス許可が使用されます。 そのため、サポートされているアカウントの種類を、組織のディレクトリ内のアカウントまたは個人用 Microsoft アカウント (例: Skype、Xbox、Outlook.com) にすることはできません。 Microsoft の個人アカウントの場合、デーモン アプリケーションに同意を付与するテナント管理者はいません。 *自分の所属組織のアカウント* または *任意の組織のアカウント* を選択する必要があります。
 
 そのため、アプリケーション構成に指定された機関は、(組織に関連付けられたテナント ID またはドメイン名を指定して) テナント化する必要があります。
 
@@ -51,7 +51,7 @@ MSAL ライブラリでは、クライアントの資格情報 (シークレッ�
 
 構成ファイルでは、以下を定義します。
 
-- *機関*を構成するクラウド インスタンスとテナント ID。
+- *機関* を構成するクラウド インスタンスとテナント ID。
 - アプリケーションの登録から返されたクライアント ID。
 - クライアント シークレットまたは証明書のいずれか。
 
@@ -352,17 +352,14 @@ ConfidentialClientApplication cca =
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-> [!div class="nextstepaction"]
-> [デーモン アプリ - アプリのトークンの取得](./scenario-daemon-acquire-token.md?tabs=dotnet)
+このシナリオの次の記事である[アプリのトークンの取得](./scenario-daemon-acquire-token.md?tabs=dotnet)に関する記事に進みます。
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [デーモン アプリ - アプリのトークンの取得](./scenario-daemon-acquire-token.md?tabs=python)
+このシナリオの次の記事である[アプリのトークンの取得](./scenario-daemon-acquire-token.md?tabs=python)に関する記事に進みます。
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [デーモン アプリ - アプリのトークンの取得](./scenario-daemon-acquire-token.md?tabs=java)
+このシナリオの次の記事である[アプリのトークンの取得](./scenario-daemon-acquire-token.md?tabs=java)に関する記事に進みます。
 
 ---

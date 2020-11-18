@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 10/30/2020
+ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 0a97286564f7d2c04268034d6f70b1a178cbb5a5
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 95ac1abc1f286330bc5e7036f01faa6cf1b22d70
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348340"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337901"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>コマーシャル マーケットプレース パートナーと顧客の使用状況の属性
 
@@ -43,7 +43,7 @@ ms.locfileid: "93348340"
 GUID は、32 桁の 16 進数を含む一意の参照識別子です。 追跡に使用する GUID を作成するには、たとえば PowerShell 経由で、GUID ジェネレーターを使用することをお勧めします。
 
 ```powershell
-[guid]::NewGuid()]
+[guid]::NewGuid()
 ```
 
 各製品について、オファーと配布チャネルごとに一意の GUID を作成することをお勧めします。 レポートを分割したくない場合は、製品の複数配布チャネルに対して単一の GUID を使用することを選択できます。
@@ -100,7 +100,7 @@ GUID は、32 桁の 16 進数を含む一意の参照識別子です。 追跡�
 
 1. Resource Manager テンプレートを開きます。
 
-1. メイン テンプレート ファイルで [Microsoft.Resources/deployments](/azure/templates/microsoft.resources/deployments) 型の新しいリソースを追加します。 リソースは、 **mainTemplate.json** ファイルまたは **azuredeploy.json** ファイルのみにあればよく、入れ子またはリンクされたテンプレート内には必要ありません。
+1. メイン テンプレート ファイルで [Microsoft.Resources/deployments](/azure/templates/microsoft.resources/deployments) 型の新しいリソースを追加します。 リソースは、**mainTemplate.json** ファイルまたは **azuredeploy.json** ファイルのみにあればよく、入れ子またはリンクされたテンプレート内には必要ありません。
 
 1. `pid-` プレフィックスの後にリソースの名前として GUID 値を入力します。 たとえば、GUID が eb7927c8-dd66-43e1-b0cf-c346a422063 の場合、リソース名は _pid-eb7927c8-dd66-43e1-b0cf-c346a422063_ になります。
 
@@ -113,7 +113,7 @@ GUID は、32 桁の 16 進数を含む一意の参照識別子です。 追跡�
 ### <a name="sample-resource-manager-template-code"></a>サンプル Resource Manager テンプレート コード
 
 テンプレートのリソースの追跡を有効にするには、リソース セクションに次の追加リソースを追加する必要があります。 メインのテンプレート ファイルに追加するときは、以下のサンプル コードを独自の入力で変更してください。
-リソースは、 **mainTemplate.json** ファイルまたは **azuredeploy.json** ファイルのみに追加する必要があります。入れ子またはリンクされたテンプレート内には必要ありません。
+リソースは、**mainTemplate.json** ファイルまたは **azuredeploy.json** ファイルのみに追加する必要があります。入れ子またはリンクされたテンプレート内には必要ありません。
 
 ```json
 // Make sure to modify this sample code with your own inputs where applicable
@@ -150,7 +150,7 @@ Resource Manager テンプレートを使用している場合は、上記の手
 
 #### <a name="example-the-python-sdk"></a>例:Python SDK
 
-Python では、 **config** 属性を使用します。 この属性は UserAgent に対してのみ追加できます。 次に例を示します。
+Python では、**config** 属性を使用します。 この属性は UserAgent に対してのみ追加できます。 次に例を示します。
 
 ![ユーザー エージェントへの属性の追加](media/marketplace-publishers-guide/python-for-lu.PNG)
 
@@ -181,7 +181,7 @@ Azure PowerShell でリソースをデプロイする場合は、次の方法を
 
 #### <a name="tag-a-deployment-by-using-the-azure-cli"></a>Azure CLI を使用してデプロイにタグを付ける
 
-Azure CLI を使用して GUID を追加するときは、 **AZURE_HTTP_USER_AGENT** 環境変数を設定します。 この変数は、スクリプトのスコープ内で設定できます。 シェル スコープを対象として、この変数をグローバルに設定することもできます。
+Azure CLI を使用して GUID を追加するときは、**AZURE_HTTP_USER_AGENT** 環境変数を設定します。 この変数は、スクリプトのスコープ内で設定できます。 シェル スコープを対象として、この変数をグローバルに設定することもできます。
 
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
@@ -192,7 +192,7 @@ export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 
 Terraform のサポートは Azure プロバイダーの 1.21.0 リリースを通じて利用できます ([https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019))。  このサポートは、Terraform を介してソリューションをデプロイするすべてのパートナー、および Azure プロバイダー (バージョン 1.21.0 以降) によってデプロイおよび測定されるすべてのリソースに適用されます。
 
-Terraform 用の Azure プロバイダーでは、 [*partner_id*](https://www.terraform.io/docs/providers/azurerm/#partner_id) という新しいオプション フィールドが追加されました。このフィールドには、ソリューションに使用する追跡 GUID を指定します。 このフィールドの値は、 *ARM_PARTNER_ID* 環境変数から提供することもできます。
+Terraform 用の Azure プロバイダーでは、[*partner_id*](https://www.terraform.io/docs/providers/azurerm/#partner_id) という新しいオプション フィールドが追加されました。このフィールドには、ソリューションに使用する追跡 GUID を指定します。 このフィールドの値は、*ARM_PARTNER_ID* 環境変数から提供することもできます。
 
 ```
 provider "azurerm" {
@@ -205,7 +205,7 @@ provider "azurerm" {
 顧客の使用状況の属性によって追跡される Terraform を介してデプロイを取得するパートナーは、以下を行う必要があります。
 
 * GUID を作成する (GUID は、オファーまたは SKU ごとに追加する必要があります)
-* Azure プロバイダーを更新し、 *partner_id* の値を GUID に設定する (GUID の前に "pid-" を付けずに、実際の GUID に設定してください)
+* Azure プロバイダーを更新し、*partner_id* の値を GUID に設定する (GUID の前に "pid-" を付けずに、実際の GUID に設定してください)
 
 
 ## <a name="verify-the-guid-deployment"></a>GUID のデプロイを確認する
@@ -311,10 +311,6 @@ Microsoft はパートナーに対し、そのソリューションの顧客デ�
 **この方法は Digital Partner of Record (DPOR) に似ていますか?**
 
 デプロイと使用状況をパートナーのソリューションに結び付けるこの新しい方法は、パートナーのソリューションを Azure の使用状況にリンクするメカニズムを提供します。 DPOR が目的とするのは、コンサルティング (システム インテグレーター) または管理 (マネージド サービス プロバイダー) パートナーを顧客の Azure サブスクリプションに関連付けることです。
-
-**Azure Storage の GUID ジェネレーター フォームを使用するメリットは何ですか?**
-
-Azure Storage の GUID ジェネレーター フォームでは、必要な形式の GUID が生成されることが保証されます。 さらに、Azure Storage のデータ プレーン追跡方法のいずれかを使用している場合は、同じ GUID を Marketplace のコントロール プレーンの追跡に利用できます。 これにより、別の GUID を維持することなく、パートナーの属性に単一の統一 GUID を活用できます。
 
 **Azure Marketplace 内でソリューション テンプレート オファー用にプライベートのカスタム VHD を使用できますか?**
 

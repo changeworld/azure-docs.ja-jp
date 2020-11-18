@@ -11,12 +11,12 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 1767f149d9935c86281c7b7be3e684aa82a603f9
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 05d810928a71aec0e3314c32051e5f3565413564
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999044"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444607"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Azure Machine Learning コンピューティング インスタンスへのモデルのデプロイ
 
@@ -63,7 +63,7 @@ Azure Machine Learning を使用して Azure Machine Learning コンピューテ
 > [!NOTE]
 > コンピューティング インスタンスでのデプロイに対して認証を行う場合、認証は Azure Active Directory を使用して行われます。 コード例の `interactive_auth.get_authentication_header()` を呼び出すと、AAD を使用してあなたが認証され、コンピューティング インスタンスでのサービスに対する認証に使用できるヘッダーが返されます。 詳細については、「[Azure Machine Learning のリソースとワークフローの認証を設定する](how-to-setup-authentication.md#interactive-authentication)」を参照してください。
 >
-> Azure Kubernetes Service または Azure Container Instances でのデプロイに対して認証を行う場合は、別の認証方法が使用されます。 詳細については、「[Azure Machine Learning のリソースとワークフローの認証を設定する](how-to-setup-authentication.md#web-service-authentication)」を参照してください。
+> Azure Kubernetes Service または Azure Container Instances でのデプロイに対して認証を行う場合は、別の認証方法が使用されます。 詳細については、「[Web サービスとしてデプロイされた Azure Machine モデルの認証を構成する](how-to-authenticate-web-service.md)」を参照してください。
 
 ```python
 import requests

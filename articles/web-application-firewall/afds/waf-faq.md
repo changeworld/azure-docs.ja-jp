@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: d129c37c909c630623f8a41c06da9aa80e4e2392
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ba0cbbccd1f4a9bc8ff8a4895e238c9150c9b17
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82837636"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413073"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Azure Front Door Service の Azure Web アプリケーション ファイアウォールに関してよく寄せられる質問
 
@@ -64,7 +64,7 @@ Azure に WAF ポリシーを適用する場合、2 つの選択肢がありま�
 
 ## <a name="is-ddos-protection-integrated-with-front-door"></a>DDoS 保護は Front Door と統合されていますか? 
 
-Azure のネットワーク エッジにグローバルに分散された Azure Front Door は、大量の攻撃を受け止めて地理的に隔離することができます。 既知のシグネチャを持つ http(s) 攻撃を自動的にブロックおよびレート制限するためのカスタム WAF ポリシーを作成できます。 さらに、バックエンドがデプロイされている VNet で DDoS Protection Standard を有効にすることができます。 Azure DDoS Protection Standard をご利用のお客様は、コスト保護、SLA 保証、攻撃の際に DDoS Rapid Response Team の専門家に相談してすぐに支援を受けるなど、追加の利点を得ることができます。
+Azure のネットワーク エッジにグローバルに分散された Azure Front Door は、大量の攻撃を受け止めて地理的に隔離することができます。 既知のシグネチャを持つ http(s) 攻撃を自動的にブロックおよびレート制限するためのカスタム WAF ポリシーを作成できます。 さらに、バックエンドがデプロイされている VNet で DDoS Protection Standard を有効にすることができます。 Azure DDoS Protection Standard をご利用のお客様は、コスト保護、SLA 保証、攻撃の際に DDoS Rapid Response Team の専門家に相談してすぐに支援を受けるなど、追加の利点を得ることができます。 詳細については、「[Front Door での DDoS Protection](../../frontdoor/front-door-ddos.md)」を参照してください。
 
 ## <a name="why-do-additional-requests-above-the-threshold-configured-for-my-rate-limit-rule-get-passed-to-my-backend-server"></a>レート制限のルールに構成されているしきい値を超えた追加の要求が、バックエンド サーバーに渡されるのはなぜですか?
 

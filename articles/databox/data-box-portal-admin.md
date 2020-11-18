@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 978d1de158f93b06d08ff93605405573000b6b6e
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 7d2734d386f1e49e2227058b148ee6b591d14a42
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123717"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336422"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Azure portal を使用して Azure Data Box および Azure Data Box Heavy を管理する
 
@@ -34,13 +34,13 @@ ms.locfileid: "92123717"
 
 1.  **[概要] > [キャンセル]** に移動します。
 
-    ![注文のキャンセル 1](media/data-box-portal-admin/cancel-order1.png)
+    ![注文の [概要] タブにある [キャンセル] コマンド](media/data-box-portal-admin/portal-admin-cancel-command.png)
 
 2.  注文のキャンセル理由を入力します。  
 
-    ![注文のキャンセル 2](media/data-box-portal-admin/cancel-order2.png)
+    ![[注文のキャンセル] ダイアログ ボックス](media/data-box-portal-admin/portal-admin-cancel-order-dbox.png)
 
-3.  注文のキャンセル後、ポータルで注文の状態が更新され、**取り消し済み**として表示されます。
+3.  注文のキャンセル後、ポータルで注文の状態が更新され、**取り消し済み** として表示されます。
 
 ## <a name="clone-an-order"></a>注文の複製
 
@@ -53,7 +53,7 @@ ms.locfileid: "92123717"
 
 1.  **[概要] > [複製]** に移動します。 
 
-    ![注文の複製 1](media/data-box-portal-admin/clone-order1.png)
+    ![注文の [概要] タブにある [複製] コマンド](media/data-box-portal-admin/portal-admin-clone-command.png)
 
 2.  注文の詳細はすべてそのままの状態で維持されます。 複製された注文は、元の名前の最後に " *-Clone*" を追加した名前になります。 プライバシー情報を確認済みであることへの同意として、チェック ボックスをオンにします。 **Create** をクリックしてください。
 
@@ -70,7 +70,7 @@ ms.locfileid: "92123717"
 
 2. 削除する注文をクリックし、 **[概要]** に移動します。 コマンド バーの **[削除]** をクリックします。
 
-    ![Data Box 注文の削除 1](media/data-box-portal-admin/delete-order1.png)
+    ![注文の [概要] タブにある [削除] コマンド](media/data-box-portal-admin/portal-admin-delete-command.png)
 
 3. 注文の削除を確認するメッセージが表示されたら注文の名前を入力します。 **[削除]** をクリックします。
 
@@ -82,11 +82,11 @@ Data Box の E インク表示が動作しておらず、返送ラベルが表�
 
 1.  **[概要] > [出荷ラベルをダウンロード]** に移動します。 このオプションは、デバイスの発送後にのみ選択できます。 
 
-    ![配送先住所ラベルのダウンロード](media/data-box-portal-admin/download-shipping-label.png)
+    ![配送先住所ラベルのダウンロード](media/data-box-portal-admin/portal-admin-download-shipping-label.png)
 
 2.  次の返送ラベルがダウンロードされます。 ラベルを保存し、印刷します。ラベルを折りたたみ、デバイスのクリア カバーに挿入します。 ラベルが見えることを確認します。 以前の出荷で使用したステッカーをデバイスからはがします。
 
-    ![配送先住所ラベルの例](media/data-box-portal-admin/example-shipping-label.png)
+    ![配送先住所ラベルの例](media/data-box-portal-admin/portal-admin-example-shipping-label.png)
 
 ## <a name="edit-shipping-address"></a>配送先住所の編集
 
@@ -96,11 +96,11 @@ Data Box の E インク表示が動作しておらず、返送ラベルが表�
 
 1. **[注文の詳細] > [配送先住所の編集]** に移動します。
 
-    ![配送先住所の編集 1](media/data-box-portal-admin/edit-shipping-address1.png)
+    ![[注文の詳細] の [配送先住所の編集] コマンド](media/data-box-portal-admin/portal-admin-edit-shipping-address-command.png)
 
 2. 配送先住所を編集して検証し、変更を保存します。
 
-    ![配送先住所の編集 2](media/data-box-portal-admin/edit-shipping-address2.png)
+    ![[配送先住所の編集] ダイアログ ボックス](media/data-box-portal-admin/portal-admin-edit-shipping-address-dbox.png)
 
 ## <a name="edit-notification-details"></a>通知の詳細の編集
 
@@ -110,11 +110,11 @@ Data Box の E インク表示が動作しておらず、返送ラベルが表�
 
 1. **[注文の詳細] > [通知の詳細の編集]** に移動します。
 
-    ![通知の詳細の編集 1](media/data-box-portal-admin/edit-notification-details1.png)
+    ![[注文の詳細] の [通知の詳細の編集] コマンド](media/data-box-portal-admin/portal-admin-edit-notification-details-command.png)
 
 2. これで通知の詳細を編集し、変更を保存できるようになります。
  
-    ![通知の詳細の編集 2](media/data-box-portal-admin/edit-notification-details2.png)
+    ![[通知の詳細の編集] ダイアログ ボックス](media/data-box-portal-admin/portal-admin-edit-notification-details-dbox.png)
 
 
 ## <a name="download-order-history"></a>注文履歴のダウンロード
@@ -125,13 +125,13 @@ Data Box の注文が完了すると、デバイス ディスク上のデータ�
 
 1. Data Box の注文で、 **[概要]** に移動します。 注文が完了していることを確認します。 注文が完了し、デバイスのクリーンアップが完了している場合は、 **[注文の詳細]** に移動します。 **[注文履歴のダウンロード]** オプションが使用可能になっています。
 
-    ![注文履歴のダウンロード](media/data-box-portal-admin/download-order-history-1.png)
+    ![注文履歴のダウンロード](media/data-box-portal-admin/portal-admin-download-order-history.png)
 
 2. **[注文履歴のダウンロード]** をクリックします。 ダウンロードした履歴には、運送業者の追跡ログの記録が含まれています。 Data Box Heavy 上の 2 つのノードに対応する 2 セットのログがあります。 このログの一番下までスクロールすると、次の項目へのリンクが表示されます。
     
    - **コピー ログ** - Data Box から Azure Storage アカウントに (インポート注文) または "*その逆に*" (エクスポート注文) データをコピーしている間にエラーが発生したファイルのリストが含まれます。
    - **監査ログ** - Azure データセンターの外部にあるときの Data Box の電源投入と共有へのアクセス方法に関する情報が含まれます。
-   - **インポート注文の BOM ファイル** - **発送の準備**中にダウンロードでき、ファイル名、ファイル サイズ、およびファイル チェックサムを持つファイルのリスト (ファイル マニフェストとも呼ばれます) が含まれます。
+   - **インポート注文の BOM ファイル** - **発送の準備** 中にダウンロードでき、ファイル名、ファイル サイズ、およびファイル チェックサムを持つファイルのリスト (ファイル マニフェストとも呼ばれます) が含まれます。
    - **エクスポート注文の詳細ログ** - Azure Storage アカウントから Data Box にデータをコピーしたときの、ファイル名、ファイル サイズ、およびチェックサム計算を含むファイルのリストが含まれます。
 
    次に、インポート注文の注文履歴のサンプルを示します。
@@ -198,11 +198,11 @@ Data Box の注文が完了すると、デバイス ディスク上のデータ�
 
     次に、ストレージ アカウントに移動し、コピー ログを表示できます。
 
-![ストレージ アカウント内のログ](media/data-box-portal-admin/logs-in-storage-acct-2.png)
+   ![ストレージ アカウントのコピー ログ](media/data-box-portal-admin/portal-admin-storage-account-copy-logs.png)
 
-また、監査ログと BOM ファイルを含む生産物流管理ログを表示することもできます。
+   また、監査ログと BOM ファイルが含まれる、生産物流管理ログを表示することもできます。
 
-![ストレージ アカウント内のログ 2](media/data-box-portal-admin/logs-in-storage-acct-1.png)
+   ![ストレージ アカウントの生産物流管理ログ](media/data-box-portal-admin/portal-admin-storage-account-chain-of-custody-logs.png)
 
 ## <a name="view-order-status"></a>注文の状態の確認
 

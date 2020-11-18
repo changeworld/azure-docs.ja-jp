@@ -8,22 +8,22 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 08641814e2a4fdf6f174f94b1e38e4124cf531d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e583cedc04113615c50cc9906cbd11a99ff48683
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934924"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421721"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Cognitive Search での検索結果の操作方法
 
 この記事では、一致するドキュメントの合計数、ページ分割された結果、並べ替えられた結果、検索結果が強調表示された用語と共に返されるクエリ応答を取得する方法について説明します。
 
-応答の構造は、クエリ内のパラメーター、つまり REST API での[検索ドキュメント](/rest/api/searchservice/Search-Documents)または .NET SDK での [DocumentSearchResult クラス](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)によって決定されます。
+応答の構造は、クエリ内のパラメーター、つまり REST API での[検索ドキュメント](/rest/api/searchservice/Search-Documents)または .NET SDK での [SearchResults クラス](/dotnet/api/azure.search.documents.models.searchresults-1)によって決定されます。
 
 ## <a name="result-composition"></a>結果の構成
 
-検索ドキュメントは多数のフィールドで構成される可能性がありますが、一般に、結果セット内の各ドキュメントを表すために必要なものは数個しかありません。 クエリ要求で、応答にどのフィールドを表示するかを指定するには `$select=<field list>` を追加します。 あるフィールドを結果に含めるには、そのフィールドのインデックスに**取得可能**の属性が付けられている必要があります。 
+検索ドキュメントは多数のフィールドで構成される可能性がありますが、一般に、結果セット内の各ドキュメントを表すために必要なものは数個しかありません。 クエリ要求で、応答にどのフィールドを表示するかを指定するには `$select=<field list>` を追加します。 あるフィールドを結果に含めるには、そのフィールドのインデックスに **取得可能** の属性が付けられている必要があります。 
 
 最適に機能するフィールドには、各ドキュメントを比較対照して区別することにより、ユーザーの側にクリックスルー応答を誘うための十分な情報を提供するフィールドが含まれます。 eコマース サイトでは、それは製品名、説明、ブランド、色、サイズ、価格、評価などである場合があります。 hotels-sample-index という組み込みのサンプルの場合、それは次の例のフィールドのようになります。
 
@@ -37,7 +37,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 ```
 
 > [!NOTE]
-> 結果に画像ファイル (製品の写真やロゴなど) を含める場合、それらは Azure Cognitive Search の外部に格納しますが、画像の URL を参照するためのインデックス内のフィールドを検索ドキュメントに含めます。 結果内の画像をサポートするサンプル インデックスには、この[クイックスタート](search-create-app-portal.md)で紹介されている **realestate-sample-us** のデモや、[ニューヨーク市のジョブ デモ アプリ](https://aka.ms/azjobsdemo)が含まれます。
+> 結果に画像ファイル (製品の写真やロゴなど) を含める場合、それらは Azure Cognitive Search の外部に格納しますが、画像の URL を参照するためのインデックス内のフィールドを検索ドキュメントに含めます。 結果内の画像をサポートするサンプル インデックスには、この [クイックスタート](search-create-app-portal.md)で紹介されている **realestate-sample-us** のデモや、[ニューヨーク市のジョブ デモ アプリ](https://aka.ms/azjobsdemo)が含まれます。
 
 ## <a name="paging-results"></a>ページングの結果
 
@@ -52,7 +52,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 + 2 番目のセットを返し、次の 15 個を取得するために最初の 15 個をスキップします: `$top=15&$skip=15`。 15 個の 3 番目のセットについて同じことを行います: `$top=15&$skip=30`
 
 基になるインデックスが変更されている場合、ページ分割されたクエリの結果の安定性は保証されません。 ページングによって各ページの `$skip` の値が変更されますが、各クエリは独立しており、クエリ時にインデックス内に存在する (つまり、汎用データベースで見られるような結果のキャッシュやスナップショットは存在しない) ため、データの現在のビューに対して動作します。
- 
+ 
 次の例は、重複がどのように発生するかを示しています。 4 つのドキュメントを含む次のインデックスがあるとします。
 
 ```text
@@ -61,21 +61,21 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 { "id": "3", "rating": 2 }
 { "id": "4", "rating": 1 }
 ```
- 
+ 
 ここでは、結果を一度に 2 つ、評価の順序で返してもらいたいとします。 結果の最初のページを取得するために `$top=2&$skip=0&$orderby=rating desc` というクエリを実行すると、次の結果が生成されます。
 
 ```text
 { "id": "1", "rating": 5 }
 { "id": "2", "rating": 3 }
 ```
- 
+ 
 このサービスでは、クエリ呼び出しの間に `{ "id": "5", "rating": 4 }` という 5 番目のドキュメントがインデックスに追加されたとします。  その後すぐに、2 ページ目をフェッチするために `$top=2&$skip=2&$orderby=rating desc` というクエリを実行すると、次の結果が得られます。
 
 ```text
 { "id": "2", "rating": 3 }
 { "id": "3", "rating": 2 }
 ```
- 
+ 
 ドキュメント 2 が 2 回フェッチされることに注意してください。 これは、新しいドキュメント 5 の方が評価の値が大きいため、ドキュメント 2 の前に並べ替えられ、最初のページに割り当てられるためです。 この動作は予期されない可能性がありますが、検索エンジンの動作としては一般的なものです。
 
 ## <a name="ordering-results"></a>結果の並べ替え
@@ -92,7 +92,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 ### <a name="consistent-ordering"></a>一貫した順序付け
 
-結果の順序付けが柔軟であるなら、一貫性がアプリケーションの要件である場合は、他のオプションを調査することもできます。 最も簡単なアプローチは、評価や日付などのフィールド値での並べ替えです。 評価や日付などの特定のフィールドで並べ替えるシナリオの場合は、**並べ替え可能**のインデックスが付けられた任意のフィールドに適用できる [`$orderby` 式](query-odata-filter-orderby-syntax.md)を明示的に定義できます。
+結果の順序付けが柔軟であるなら、一貫性がアプリケーションの要件である場合は、他のオプションを調査することもできます。 最も簡単なアプローチは、評価や日付などのフィールド値での並べ替えです。 評価や日付などの特定のフィールドで並べ替えるシナリオの場合は、**並べ替え可能** のインデックスが付けられた任意のフィールドに適用できる [`$orderby` 式](query-odata-filter-orderby-syntax.md)を明示的に定義できます。
 
 別のオプションとして、[カスタム スコアリング プロファイル](index-add-scoring-profiles.md)の使用があります。 スコアリング プロファイルを使用すると、検索結果内の項目のランク付けをより細かく制御できるため、特定のフィールドで見つかる一致を向上させることができます。 追加のスコアリング ロジックにより、各ドキュメントの検索スコアがさらに離れるため、レプリカ間のわずかな違いのオーバーライドに役立ちます。 このアプローチには[ランク付けアルゴリズム](index-ranking-similarity.md)をお勧めします。
 
@@ -100,7 +100,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 検索結果の強調表示とは、結果内の一致する用語に適用され、一致が容易に見つかるようにするテキストの書式設定 (太字や黄色の強調表示など) を指します。 検索結果の強調表示の手順については、[クエリ要求](/rest/api/searchservice/search-documents)に関する記事で説明しています。 
 
-ヒットの強調表示を有効にするには、`highlight=[comma-delimited list of string fields]` を追加して、強調表示を使用するフィールドを指定します。 強調表示は、説明フィールドなど、一致が一目ではわかりにくい、長いコンテンツ フィールドに対して便利です。 **検索可能**として属性付けされたフィールド定義だけが、ヒットの強調表示に使用できます。
+ヒットの強調表示を有効にするには、`highlight=[comma-delimited list of string fields]` を追加して、強調表示を使用するフィールドを指定します。 強調表示は、説明フィールドなど、一致が一目ではわかりにくい、長いコンテンツ フィールドに対して便利です。 **検索可能** として属性付けされたフィールド定義だけが、ヒットの強調表示に使用できます。
 
 既定では、Azure Cognitive Search によって、フィールドごとに最大 5 つの強調表示が返されます。 この数値を調整するには、フィールドに、ダッシュに続く整数を追加します。 たとえば、`highlight=Description-10` とすると、[説明] フィールドの一致するコンテンツに対して最大 10 個の強調表示が返されます。
 
@@ -131,7 +131,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
     ```html
     '<em>super bowl</em> is super awesome with a bowl of chips'
     ```
-  用語 *bowl of chips*はフル フレーズと一致しないため、強調表示されていないことに注意してください。
+  用語 *bowl of chips* はフル フレーズと一致しないため、強調表示されていないことに注意してください。
 
 ヒットの強調表示を実装するクライアント コードを記述する場合は、この変更点に注意してください。 まったく新しい検索サービスを作成しない限り、この変更の影響を受けることはありません。
 

@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: 081f073fa4933d67604173d2169a7abdc3ac7c3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4f54aff78526ba52e56ed9f4cf1feddf40fa69b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403570"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358394"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Azure Cognitive Search で大容量のデータ セットのインデックスを作成する方法
 
@@ -27,7 +27,7 @@ Azure Cognitive Search は、検索インデックスにデータをインポー
 
 ## <a name="use-the-push-api"></a>プッシュ API を使用する
 
-[ドキュメントの追加 REST API](/rest/api/searchservice/addupdate-or-delete-documents) か [Index メソッド](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index)を使用してデータをインデックスにプッシュするとき、インデックス作成の速度に影響を与える重要な考慮事項がいくつかあります。 そのような要因について、サービス容量の設定からコードの最適化まで、以下のセクションで説明します。
+[ドキュメントの追加 REST API](/rest/api/searchservice/addupdate-or-delete-documents) か [IndexDocuments メソッド](/dotnet/api/azure.search.documents.searchclient.indexdocuments)を使用してデータをインデックスにプッシュするとき、インデックス作成の速度に影響を与える重要な考慮事項がいくつかあります。 そのような要因について、サービス容量の設定からコードの最適化まで、以下のセクションで説明します。
 
 プッシュ モデルのインデックス作成について説明する詳細とコード サンプルが必要であれば、[インデックス作成速度の最適化に関するチュートリアル](tutorial-optimize-indexing-push-api.md)を参照してください。
 
@@ -52,7 +52,7 @@ Azure Cognitive Search は、検索インデックスにデータをインポー
 
 ### <a name="check-the-batch-size"></a>バッチ サイズを確認する
 
-大容量のデータ セットにインデックスを付けるための最も簡単なメカニズムの 1 つは、複数のドキュメントまたはレコードを 1 つの要求で送信するというものです。 ペイロード全体が 16 MB を超えない限り、1 つの要求によって、一括アップロード操作で最大 1000 のドキュメントを処理できます。 .NET SDK で [Add Documents REST API](/rest/api/searchservice/addupdate-or-delete-documents) と [Index メソッド](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index)のどちらを使用しているかによって、これらの制限が適用されます。 どちらの API でも、各要求の本文に 1,000 個のドキュメントをパッケージ化します。
+大容量のデータ セットにインデックスを付けるための最も簡単なメカニズムの 1 つは、複数のドキュメントまたはレコードを 1 つの要求で送信するというものです。 ペイロード全体が 16 MB を超えない限り、1 つの要求によって、一括アップロード操作で最大 1000 のドキュメントを処理できます。 [ドキュメントの追加 REST API](/rest/api/searchservice/addupdate-or-delete-documents) と .NET SDK の [IndexDocuments メソッド](/dotnet/api/azure.search.documents.searchclient.indexdocuments)のどちらを使用しているかに関係なく、これらの制限が適用されます。 どちらの API でも、各要求の本文に 1,000 個のドキュメントをパッケージ化します。
 
 バッチを使用してドキュメントにインデックスを付けると、インデックス作成のパフォーマンスが大幅に向上します。 実際のデータに最適なバッチ サイズを見極めることが、インデックスの作成速度を最適化するうえで重要な要素となります。 最適なバッチ サイズは主に、次の 2 つの要因によって左右されます。
 
@@ -142,7 +142,7 @@ Push API と同様に、インデクサーを使用すると、バッチごと�
 
 1. [Azure Portal](https://portal.azure.com) の、検索サービス ダッシュ ボードの **[概要]** ページにある、 **[価格レベル]** で並列インデックスに対応できることを確認してください。 Basic および Standard の両方のレベルで、複数のレプリカが提供されています。
 
-2. サービス内の検索単位数と同じ数のインデクサーを並列で実行できます。 **[設定]**  >  **[スケール]** で、並列処理用の[レプリカを増やす](search-capacity-planning.md)かパーティションを増やします (インデクサー ワークロードごとに 1 つのレプリカまたはパーティションを追加します)。 既存のクエリ量は十分な数に設定します。 インデックス作成のためのクエリ ワークロードを犠牲にすることは、適切なトレードオフではありません。
+2. サービス内の検索単位数と同じ数のインデクサーを並列で実行できます。 **[設定]**  >  **[スケール]** で、並列処理用の [レプリカを増やす](search-capacity-planning.md)かパーティションを増やします (インデクサー ワークロードごとに 1 つのレプリカまたはパーティションを追加します)。 既存のクエリ量は十分な数に設定します。 インデックス作成のためのクエリ ワークロードを犠牲にすることは、適切なトレードオフではありません。
 
 3. Azure Cognitive Search インデクサーが到達可能なレベルの複数のコンテナーにデータを分割します。 これには、Azure SQL Database 内の複数のテーブル、Azure BLOB ストレージ内の複数のコンテナー、または複数のコレクションが考えられます。 テーブルまたはコンテナーごとに 1 つのデータ ソース オブジェクトを定義します。
 

@@ -1,17 +1,17 @@
 ---
 title: サーバー パラメーターの構成 - Azure portal - Azure Database for MySQL
 description: この記事では、Azure ポータルを使用して Azure Database for MySQL で使用できる MySQL サーバー パラメータを構成する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/1/2020
-ms.openlocfilehash: c28f0edafd72794a60ef577fc3177e4436157950
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 363be8b34f230b812bc24276e1f3925faf0cdc1c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631479"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540843"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MySQL サーバーのサーバー パラメータを構成する
 
@@ -26,11 +26,11 @@ Azure Database for MySQL では、いくつかのサーバー パラメーター
 2. **[設定]** セクションの **[サーバー パラメーター]** をクリックして、Azure Database for MySQL サーバーの [サーバー パラメーター] ページを開きます。
 :::image type="content" source="./media/howto-server-parameters/auzre-portal-server-parameters.png" alt-text="Azure Portal の [サーバー パラメーター] ページ":::
 3. 調整が必要な設定を探します。 **[説明]** 列を確認して、目的と許可される値を理解します。
-:::image type="content" source="./media/howto-server-parameters/3-toggle_parameter.png" alt-text="Azure Portal の [サーバー パラメーター] ページ":::
+:::image type="content" source="./media/howto-server-parameters/3-toggle_parameter.png" alt-text="列挙ドロップ ダウン":::
 4. **[保存]** をクリックして変更を保存します。
-:::image type="content" source="./media/howto-server-parameters/4-save_parameters.png" alt-text="Azure Portal の [サーバー パラメーター] ページ":::
+:::image type="content" source="./media/howto-server-parameters/4-save_parameters.png" alt-text="変更の保存または破棄":::
 5. パラメーターの新しい値を保存した場合は、 **[すべて既定値にリセット]** を選択していつでもすべてを既定値に戻すことができます。
-:::image type="content" source="./media/howto-server-parameters/5-reset_parameters.png" alt-text="Azure Portal の [サーバー パラメーター] ページ":::
+:::image type="content" source="./media/howto-server-parameters/5-reset_parameters.png" alt-text="すべて既定値にリセット":::
 
 ## <a name="setting-parameters-not-listed"></a>設定パラメーターが一覧に含まれていない
 
@@ -72,7 +72,7 @@ SELECT name FROM mysql.time_zone_name;
 
 Azure Portal の **[サーバー パラメーター]** ページからグローバル レベルのタイム ゾーンを設定できます。 下の画像では、グローバル タイム ゾーンが値 "US/Pacific" に設定されています。
 
-:::image type="content" source="./media/howto-server-parameters/timezone.png" alt-text="Azure Portal の [サーバー パラメーター] ページ":::
+:::image type="content" source="./media/howto-server-parameters/timezone.png" alt-text="タイム ゾーン パラメーターを設定する":::
 
 ### <a name="setting-the-session-level-time-zone"></a>セッション レベルのタイム ゾーンを設定する
 

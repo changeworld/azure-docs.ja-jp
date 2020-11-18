@@ -1,30 +1,30 @@
 ---
 title: Azure IoT エクスプローラーをインストールして使用する | Microsoft Docs
-description: Azure IoT エクスプローラー ツールをインストールして、IoT ハブに接続されている IoT プラグ アンド プレイ デバイスとの対話に使用します。
-author: rido-min
-ms.author: rmpablos
-ms.date: 09/23/2020
+description: Azure IoT エクスプローラー ツールをインストールして、IoT ハブに接続されている IoT プラグ アンド プレイ デバイスとの対話に使用します。 この記事では IoT プラグ アンド プレイ デバイスの操作について重点的に説明しますが、このツールはハブに接続されている任意のデバイスで使用できます。
+author: dominicbetts
+ms.author: dobett
+ms.date: 11/10/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc
-ms.openlocfilehash: bf68bdafbb8b6fde187a2d787bb5464e5ece4cb2
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.custom: contperfq2
+ms.openlocfilehash: 8482ba608ee5fcefb006234b339cd9b711a38020
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019156"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445304"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Azure IoT エクスプローラーをインストールして使用する
 
-Azure IoT エクスプローラーは、お使いの IoT プラグ アンド プレイ デバイスと対話し、テストを実施するためのグラフィカル ツールです。 ローカル マシンにツールをインストールしたら、それを使用してハブに接続できます。 このツールを使用して、デバイスから送信されるテレメトリの表示、デバイスのプロパティの操作、コマンドの呼び出しを行うことができます。
+Azure IoT エクスプローラーは、IoT ハブに接続されている任意のデバイスと対話するためのグラフィカル ツールです。 この記事では、このツールを使用して IoT プラグ アンド プレイ デバイスをテストする方法について重点的に説明します。 ローカル マシンにツールをインストールしたら、それを使用してハブに接続できます。 このツールを使用して、デバイスから送信されるテレメトリの表示、デバイスのプロパティの操作、コマンドの呼び出しを行うことができます。
 
 この記事で取り上げるテクニック:
 
 - Azure IoT エクスプローラー ツールをインストールして構成する。
-- ツールを使用してデバイスと対話し、デバイスをテストする。
+- ツールを使用して IoT プラグ アンド プレイ デバイスと対話し、デバイスをテストする。
 
-## <a name="prerequisites"></a>前提条件
+ツールの使用方法に関するより一般的な情報については、GitHub の [Readme](https://github.com/Azure/azure-iot-explorer/blob/master/README.md) をご覧ください。
 
 Azure IoT エクスプローラー ツールを使用するには、次のものが必要です。
 
@@ -40,7 +40,7 @@ Azure IoT エクスプローラー ツールを使用するには、次のもの
 
 ## <a name="use-azure-iot-explorer"></a>Azure IoT エクスプローラーを使用する
 
-デバイスに関しては、自分のデバイスを接続するか、サンプルのシミュレートされたデバイスのいずれかを使用することができます。 シミュレートされたデバイスのサンプルを実行する場合には、[こちらの手順](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples)に従ってください。
+デバイスに関しては、自分のデバイスを接続するか、サンプルのシミュレートされたデバイスのいずれかを使用することができます。 異なる言語で記述されたシミュレート デバイスの例については、クイックスタート「[サンプルの IoT プラグ アンド プレイ デバイス アプリケーションを IoT Hub に接続する (Node.js)](quickstart-connect-device-node.md)」を参照してください。
 
 ### <a name="connect-to-your-hub"></a>お使いのハブに接続する
 
@@ -50,12 +50,12 @@ IoT プラグ アンド プレイ デバイス用のモデル定義は、パブ�
 
 ソースを追加するには:
 
-1. **ホーム/IoT プラグ アンド プレイの設定**にアクセスします。
+1. **ホーム/IoT プラグ アンド プレイの設定** にアクセスします。
 2. **[追加]** を選択し、リポジトリまたはローカル フォルダーからソースを選択します。
 
 ソースを削除するには:
 
-1. **ホーム/IoT プラグ アンド プレイの設定**にアクセスします。
+1. **ホーム/IoT プラグ アンド プレイの設定** にアクセスします。
 2. 削除するソースを見つけます。
 3. **[X]** を選択して削除します。
 
@@ -82,16 +82,16 @@ IoT プラグ アンド プレイ デバイス用のモデル定義は、パブ�
 
 - [デバイス ID](../iot-hub/iot-hub-devguide-identity-registry.md) の情報は、 **[デバイス ID]** タブで表示および更新できます。
 - [デバイス ツイン](../iot-hub/iot-hub-devguide-device-twins.md)の情報には、 **[デバイス ツイン]** タブでアクセスできます。
-- デバイスが接続されており、データをアクティブに送信している場合には、 **[テレメトリ]** タブで[テレメトリ](../iot-hub/iot-hub-devguide-messages-read-builtin.md)を表示できます。
-- **[ダイレクト メソッド]** タブで、デバイス上で[ダイレクト メソッド](../iot-hub/iot-hub-devguide-direct-methods.md)を呼び出すことができます。
+- デバイスが接続されており、データをアクティブに送信している場合には、 **[テレメトリ]** タブで [テレメトリ](../iot-hub/iot-hub-devguide-messages-read-builtin.md)を表示できます。
+- **[ダイレクト メソッド]** タブで、デバイス上で [ダイレクト メソッド](../iot-hub/iot-hub-devguide-direct-methods.md)を呼び出すことができます。
 - **[cloud-to-device メッセージ]** タブで [cloud-to-device メッセージ](../iot-hub/iot-hub-devguide-messages-c2d.md)を送信できます。
 - [モジュール ツイン](../iot-hub/iot-hub-devguide-module-twins.md)情報にアクセスできます。
 
 ### <a name="iot-plug-and-play-components"></a>IoT プラグ アンド プレイ コンポーネント
 
-デバイスが**モデル ID** を使用してハブに接続されている場合、ツールに **[IoT Plug and Play components]\(IoT プラグ アンド プレイ コンポーネント\)** タブ '' が表示され、**モデル ID** を確認できます。
+デバイスが **モデル ID** を使用してハブに接続されている場合、ツールに **[IoT Plug and Play components]\(IoT プラグ アンド プレイ コンポーネント\)** タブが表示され、**モデル ID** を確認できます。
 
-構成されているソース (パブリック リポジトリまたはローカル フォルダー) のいずれかに**モデル ID** がある場合は、コンポーネントの一覧が表示されます。 コンポーネントを選択すると、使用可能なプロパティ、コマンド、およびテレメトリが表示されます。
+構成されているソース (パブリック リポジトリまたはローカル フォルダー) のいずれかに **モデル ID** がある場合は、コンポーネントの一覧が表示されます。 コンポーネントを選択すると、使用可能なプロパティ、コマンド、およびテレメトリが表示されます。
 
 **[コンポーネント]** ページでは、読み取り専用のプロパティの表示、書き込み可能なプロパティの更新、コマンドの呼び出し、およびこのコンポーネントによって生成されるテレメトリ メッセージの表示を行うことができます。
 
@@ -99,7 +99,7 @@ IoT プラグ アンド プレイ デバイス用のモデル定義は、パブ�
 
 #### <a name="properties"></a>Properties
 
-:::image type="content" source="media/howto-use-iot-explorer/properties-iot-explorer.png" alt-text="Azure IoT エクスプローラーでのコンポーネントの表示":::
+:::image type="content" source="media/howto-use-iot-explorer/properties-iot-explorer.png" alt-text="Azure IoT エクスプローラーでのプロパティの表示":::
 
 **[Properties (read-only)]\(プロパティ (読み取り専用)\)** タブでは、インターフェイスで定義されている読み取り専用プロパティを表示できます。 **[Properties (writable)]\(プロパティ (書き込み可能)\)** タブでは、インターフェイスで定義されている書き込み可能なプロパティを更新できます。
 
@@ -126,13 +126,7 @@ IoT プラグ アンド プレイ デバイス用のモデル定義は、パブ�
 
 #### <a name="known-issues"></a>既知の問題
 
-- IoT Edge のサポート:現在のバージョンには、デバイス一覧に IoT Edge デバイスが表示されません。
-- DTDL 言語の機能:IoT Explorer 0.12.x は DTDL v2 に完全には準拠しておらず、次のような機能がサポートされていません。
-  - `extends` とのインターフェイス継承
-  - マップ内のマップ (入れ子になったマップ)
-  - 配列型
-  - カスタム スキーマ
-  - カスタムのセマンティック型
+ツールの最新バージョンでサポートされている IoT 機能の一覧については、[機能一覧](https://github.com/Azure/azure-iot-explorer/wiki)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

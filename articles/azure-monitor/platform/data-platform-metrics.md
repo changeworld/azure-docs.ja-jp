@@ -9,37 +9,58 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: b05007e2ea7815afbba2a7a71368686cf7c049fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f64a91e3b285c265296c361366a10443eda18201
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325612"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489425"
 ---
-# <a name="metrics-in-azure-monitor"></a>Azure Monitor のメトリック
+# <a name="azure-monitor-metrics-overview"></a>Azure Monitor メトリックの概要
+Azure Monitor メトリックは、[監視対象のリソース](../monitor-reference.md)から時系列データベースに数値データを収集する Azure Monitor の機能です。 メトリックは、一定の間隔で収集される数値であり、特定の時刻におけるシステムの何らかの特性を表しています。 Azure Monitor のログは軽量であり、ほぼリアルタイムのシナリオをサポートできるため、アラートと問題の迅速な検出に特に役立ちます。 メトリック エクスプローラーを使用すると、対話形式で分析することができます。値がしきい値を超えるときにアラートで事前に通知したり、ブックやダッシュボードで視覚化したりすることができます。
+
 
 > [!NOTE]
-> Azure Monitor データ プラットフォームは、2 つの基本的なデータの種類に基づいています。メトリックとログです。 この記事では、メトリックについて説明します。 ログの詳細な説明については、「[Logs in Azure Monitor](data-platform-logs.md)」(Azure Monitor のログ) を参照し、これら 2 つの比較については、「[Azure Monitor data platforn](data-platform.md)」(Azure Monitor データ プラットフォーム) を参照してください。
+> Azure Monitor メトリックは、Azure Monitor をサポートするデータ プラットフォームの半分を担っています。 もう半分は、ログとパフォーマンス データを収集して整理し、豊富なクエリ言語で分析できる [Azure Monitor ログ](data-platform-logs.md)です。 メトリックは、Azure Monitor ログのデータよりも軽量であり、ほぼリアルタイムのシナリオに対応しており、問題の通知や迅速な検出に特に役立ちます。 ただし、メトリックが特定の構造に数値データを格納することしかできないのに対し、ログは、それぞれ独自の構造を持つさまざまなデータ型を格納できます。 メトリック データの分析に使用できないログ クエリを使用して、ログ データで複雑な分析を実行することもできます。
 
-Azure Monitor のログは軽量であり、ほぼリアルタイムのシナリオをサポートできるため、アラートと問題の迅速な検出に特に役立ちます。 この記事では、メトリックの構造と、メトリックを使用してできること、およびメトリックにデータを保存できるさまざまなデータ ソースについて説明します。
-
-## <a name="what-are-metrics"></a>メトリックとは
-メトリックは、特定の時点におけるシステムの何らかの側面を表す数値です。 メトリックは定期的に収集されます。これらは頻繁にサンプリングでき、比較的単純なロジックですばやくアラートを生成できるため、アラートを発行するときに役に立ちます。
 
 ## <a name="what-can-you-do-with-azure-monitor-metrics"></a>Azure Monitor のメトリックでできること
-次の表に、Azure Monitor でメトリック データを使用できるさまざまな方法を示します。
+Azure Monitor のメトリックを使用できるさまざまな方法を次の表に示します。
 
-|  | 説明 |
+|  |  |
 |:---|:---|
 | **分析** | [メトリックス エクスプローラー](metrics-charts.md)を使用して、収集されたメトリックをグラフで分析し、異なるリソースからのメトリックを比較します。 |
-| **視覚化** | メトリックス エクスプローラーのグラフを [Azure ダッシュボード](../learn/tutorial-app-dashboards.md)にピン留めします。<br>[ブック](./workbooks-overview.md)を作成して、複数のデータのセットを対話型のレポートにまとめます。クエリの結果を [Grafana](grafana-plugin.md) にエクスポートし、そのダッシュボードを利用して他のデータ ソースと組み合わせます。 |
 | **Alert** | メトリックがしきい値を超えたときに、通知を送信または[自動化されたアクション](action-groups.md)を実行する[メトリック アラート ルール](alerts-metric.md)を構成します。 |
+| **視覚化** | メトリックス エクスプローラーのグラフを [Azure ダッシュボード](../learn/tutorial-app-dashboards.md)にピン留めします。<br>[ブック](./workbooks-overview.md)を作成して、複数のデータのセットを対話型のレポートにまとめます。クエリの結果を [Grafana](grafana-plugin.md) にエクスポートし、そのダッシュボードを利用して他のデータ ソースと組み合わせます。 |
 | **自動化** |  [自動スケーリング](autoscale-overview.md)を使用して、しきい値を超えるメトリック値に基づいてリソースを増加または減少させます。 |
-| **エクスポート** | [メトリックをログにルーティング](./resource-logs.md#send-to-azure-storage)して、Azure Monitor メトリックのデータと Azure Monitor ログのデータを一緒に分析し、93 日間より長くメトリック値を保存します。<br>メトリックを [Event Hub](stream-monitoring-data-event-hubs.md) にストリーミングして、外部システムにルーティングします。 |
 | **取得** | [PowerShell コマンドレット](/powershell/module/az.applicationinsights)を使用して、コマンド ラインからメトリック値にアクセスします。<br>[REST API](rest-api-walkthrough.md) を使用して、カスタム アプリケーションからメトリック値にアクセスします。<br>[CLI](/cli/azure/monitor/metrics) を使用して、コマンド ラインからメトリック値にアクセスします。 |
+| **エクスポート** | [メトリックをログにルーティング](./resource-logs.md#send-to-azure-storage)して、Azure Monitor メトリックのデータと Azure Monitor ログのデータを一緒に分析し、93 日間より長くメトリック値を保存します。<br>メトリックを [Event Hub](stream-monitoring-data-event-hubs.md) にストリーミングして、外部システムにルーティングします。 |
 | **Archive** | コンプライアンス、監査、オフライン レポートの目的で、リソースのパフォーマンスや正常性の履歴を[アーカイブ](./platform-logs-overview.md)します。 |
 
-## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>Azure Monitor メトリックのデータの構造
+![メトリックの概要](media/data-platform-metrics/metrics-overview.png)
+
+
+## <a name="data-collection"></a>データ コレクション
+Azure Monitor によって収集されるメトリックのソースには、基本的なものが 3 つあります。 Azure Monitor メトリック データベースでこれらのメトリックが収集されると、そのソースとは無関係に一緒に評価できます。
+
+**Azure リソース**。 プラットフォームのメトリックは Azure リソースによって作成され、リソースの正常性とパフォーマンスについての可視化を提供します。 リソースの種類ごとに[別個のメトリックのセット](metrics-supported.md)が作成され、必要な構成はありません。 メトリックの定義で特に指定がない限り、プラットフォーム メトリックは 1 分間隔で Azure リソースから収集されます。 
+
+**アプリケーション**。 メトリックは、監視対象のアプリケーションについて Application Insights によって作成され、パフォーマンスの問題を検出し、アプリケーションがどのように使用されているかの傾向を追跡するために役立ちます。 これには、_サーバー応答時間_ と _ブラウザー例外_ などの値が含まれます。
+
+**仮想マシン エージェント**。 メトリックは、仮想マシンのゲスト オペレーティング システムから収集されます。 Windows 仮想マシンの場合は [Windows Diagnostic Extension (WAD)](./diagnostics-extension-overview.md) を使用し、Linux 仮想マシンの場合は [InfluxData Telegraf エージェント](https://www.influxdata.com/time-series-platform/telegraf/)を使用して、ゲスト OS メトリックを有効にします。
+
+**カスタム メトリック**。 自動的に使用できる標準メトリックに加えて、メトリックを定義することができます。 Application Insights によって監視される[カスタム メトリックをアプリケーション内で定義](../app/api-custom-events-metrics.md)したり、[カスタム メトリック API](metrics-store-custom-rest-api.md) を使用して Azure サービスのカスタム メトリックを作成したりできます。
+
+- Azure Monitor メトリックにデータを送信できるデータ ソースの完全なリストについては、「[Azure Monitor によって監視される内容](../monitor-reference.md)」を参照してください。
+
+## <a name="metrics-explorer"></a>メトリックス エクスプローラー
+[メトリックス エクスプ ローラー](metrics-charts.md)を使用して、メトリック データベース内のデータを対話的に分析し、一定期間にわたる複数のメトリックの値をグラフにします。 グラフをダッシュボードにピン留めして、他の視覚化と一緒に表示できます。 [Azure monitoring REST API](rest-api-walkthrough.md) を使用してメトリックを取得することもできます。
+
+![メトリックス エクスプローラー](media/data-platform/metrics-explorer.png)
+
+- メトリックス エクスプローラーの使用を開始するには、「[Azure Monitor メトリックス エクスプローラーの概要](metrics-getting-started.md)」を参照してください。
+
+## <a name="data-structure"></a>データ構造
 Azure Monitor メトリックによって収集されるデータは、タイムスタンプ付きのデータの分析用に最適化された時系列データベースに保存されます。 メトリック値の各セットは、次のプロパティを持つ時系列です。
 
 * 値が収集された時刻
@@ -78,22 +99,6 @@ Azure Monitor メトリックによって収集されるデータは、タイム
 | 8/9/2017 8:15 | IP="10.24.2.15"  | 方向 = "受信" | 100.1 Kbps |
 
 このメトリックは、「各 IP アドレスのネットワーク スループットは?」 や 「データの送信量と受信量?」といった質問に応えることができます。 多次元メトリックは、ディメンションを持たないメトリックに比べ、分析と診断に使用できる多数の値を提供します。
-
-## <a name="interacting-with-azure-monitor-metrics"></a>Azure Monitor メトリックの操作
-[メトリックス エクスプ ローラー](metrics-charts.md)を使用して、メトリック データベース内のデータを対話的に分析し、一定期間にわたる複数のメトリックの値をグラフにします。 グラフをダッシュボードにピン留めして、他の視覚化と一緒に表示できます。 [Azure monitoring REST API](rest-api-walkthrough.md) を使用してメトリックを取得することもできます。
-
-![メトリックス エクスプローラー](media/data-platform/metrics-explorer.png)
-
-## <a name="sources-of-azure-monitor-metrics"></a>Azure Monitor メトリックのソース
-Azure Monitor によって収集されるメトリックのソースには、基本的なものが 3 つあります。 Azure Monitor メトリック データベースでこれらのメトリックが収集されると、そのソースとは無関係に一緒に評価できます。
-
-**プラットフォームのメトリック**は Azure リソースによって作成され、リソースの正常性とパフォーマンスについての可視化を提供します。 リソースの種類ごとに[別個のメトリックのセット](metrics-supported.md)が作成され、必要な構成はありません。 メトリックの定義で特に指定がない限り、プラットフォーム メトリックは 1 分間隔で Azure リソースから収集されます。 
-
-**ゲスト OS メトリック**は、仮想マシンのゲスト オペレーティング システムから収集されます。 Windows 仮想マシンの場合は [Windows Diagnostic Extension (WAD)](./diagnostics-extension-overview.md) を使用し、Linux 仮想マシンの場合は [InfluxData Telegraf エージェント](https://www.influxdata.com/time-series-platform/telegraf/)を使用して、ゲスト OS メトリックを有効にします。
-
-**アプリケーション メトリック**は、監視対象のアプリケーションについて Application Insights によって作成され、パフォーマンスの問題を検出し、アプリケーションがどのように使用されているかの傾向を追跡する助けになります。 これには、_サーバー応答時間_ と _ブラウザー例外_ などの値が含まれます。
-
-**カスタム メトリック**は、自動的に利用できる標準メトリックに加えて、ユーザーが定義するメトリックです。 Application Insights によって監視される[カスタム メトリックをアプリケーション内で定義](../app/api-custom-events-metrics.md)したり、[カスタム メトリック API](metrics-store-custom-rest-api.md) を使用して Azure サービスのカスタム メトリックを作成したりできます。
 
 ## <a name="retention-of-metrics"></a>メトリックの保有期間
 Azure の多くのリソースでは、メトリックは 93 日間保存されます。 ただし、例外があります。

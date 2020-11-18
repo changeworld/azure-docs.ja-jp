@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: d3c0ba55541baf3f31952b82a2fa357b48a5f1a9
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 9c5e57f2eb3c38a7df23052a4b3d33bc5a9675fc
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148356"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425934"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel のユーザーとエンティティの行動分析 (UEBA) を使用して高度な脅威を特定する
 
@@ -30,7 +30,7 @@ ms.locfileid: "93148356"
 >    - 西ヨーロッパ リージョン
 >    - オーストラリア地域
 >
-> - 他のすべての地域およびリージョンでは、これらの機能は **パブリック プレビュー** 段階のままであり、サービス レベル アグリーメントなしで提供されます。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> - 他のすべての地域およびリージョンでは、これらの機能は当分の間、**プレビュー** 段階のままです。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[**Microsoft Azure プレビューの追加使用条件**](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>ユーザーとエンティティの行動分析 (UEBA) の概要
 
@@ -195,7 +195,7 @@ BehaviorAnalytics
 
 ユーザー ピア メタデータは、脅威の検出、インシデントの調査、潜在的な脅威のハンティングにおける重要なコンテキストを提供します。 セキュリティ アナリストは、あるユーザーのピアの通常のアクティビティを観察して、そのユーザーのアクティビティがピアのアクティビティと比較して異常であるかどうかを判定できます。
 
-Azure Sentinel は、ユーザーの Azure AD セキュリティ グループ メンバーシップ、メーリング リストなどに基づいて、そのユーザーのピアを計算してランク付けし、1 ～ 20 にランク付けされたピアを **UserPeerAnalytics** テーブルに格納します。 次のスクリーンショットは UserPeerAnalytics テーブルのスキーマを示し、ユーザー Kendall Collins の上位 8 つのランク付けされたピアを表示しています。 Azure Sentinel は、 *用語の出現頻度/逆文書頻度* (TF-IDF) アルゴリズムを使用して、ランク付けを計算するための重みを正規化します。グループが小さいほど、重みが大きくなります。 
+Azure Sentinel は、ユーザーの Azure AD セキュリティ グループ メンバーシップ、メーリング リストなどに基づいて、そのユーザーのピアを計算してランク付けし、1 ～ 20 にランク付けされたピアを **UserPeerAnalytics** テーブルに格納します。 次のスクリーンショットは UserPeerAnalytics テーブルのスキーマを示し、ユーザー Kendall Collins の上位 8 つのランク付けされたピアを表示しています。 Azure Sentinel は、*用語の出現頻度/逆文書頻度* (TF-IDF) アルゴリズムを使用して、ランク付けを計算するための重みを正規化します。グループが小さいほど、重みが大きくなります。 
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-peers-metadata.png" alt-text="ユーザー ピア メタデータ テーブルのスクリーンショット":::
 

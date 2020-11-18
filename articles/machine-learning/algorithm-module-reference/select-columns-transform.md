@@ -1,7 +1,7 @@
 ---
 title: Select Columns Transform (列変換の選択):モジュール リファレンス
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning の Select Columns Transform (列変換の選択) モジュールを使用して、指定されたデータセットと同じ列のサブセットを選択する変換を作成する方法について説明します。
+description: Azure Machine Learning デザイナーで Select Columns Transform (列変換の選択) モジュールを使用して、選択変換を実行する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2020
-ms.openlocfilehash: 14f08502f35afdc8a9a2cdc741b539b5f9cca712
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: f03840e55366d7f105ca4b57bd60061c82833e72
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945595"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420718"
 ---
 # <a name="select-columns-transform"></a>Select Columns Transform (列変換の選択)
 

@@ -1,17 +1,17 @@
 ---
 title: 低速クエリ ログの構成 - Azure portal - Azure Database for MySQL - フレキシブル サーバー
 description: この記事では、Azure portal から Azure Database for MySQL フレキシブル サーバーの低速クエリ ログを構成し、それにアクセスする方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: e2046673cda17c58153ceb12eee31edb83365092
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: a61c8e3451d661dae2e5ad56a0d4a947252ec873
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91565731"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540065"
 ---
 # <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MySQL フレキシブル サーバーの低速クエリ ログの構成とアクセス
 
@@ -34,13 +34,13 @@ MySQL の低速クエリ ログへのアクセスを構成します。
    :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/server-parameters.png" alt-text="[サーバー パラメーター] ページ。":::
 
 1. **slow_query_log** パラメーターを **[ON]** に更新します。
-   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/slow-query-log-enable.png" alt-text="[サーバー パラメーター] ページ。":::
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/slow-query-log-enable.png" alt-text="低速クエリ ログを有効にします。":::
 
 1. 必要なその他のすべてのパラメーターを変更します (例: `long_query_time`, `log_slow_admin_statements`). その他のパラメーターについては、[低速クエリ ログ](./concepts-slow-query-logs.md#configure-slow-query-logging)のドキュメントを参照してください。  
-   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/long-query-time.png" alt-text="[サーバー パラメーター] ページ。":::
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/long-query-time.png" alt-text="低速クエリ ログに関連するパラメーターを更新します。":::
 
 1. **[保存]** を選択します。 
-   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/save-parameters.png" alt-text="[サーバー パラメーター] ページ。":::
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/save-parameters.png" alt-text="低速クエリ ログ パラメーターを保存します。":::
 
 **[サーバー パラメーター]** ページを閉じると、ログの一覧に戻ることができます。
 
@@ -50,17 +50,17 @@ MySQL の低速クエリ ログへのアクセスを構成します。
 
 1. サイドバーの **[監視]** セクションの下で、 **[診断設定]**  >  **[診断設定を追加する]** を選択します。
 
-   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/add-diagnostic-setting.png" alt-text="[サーバー パラメーター] ページ。":::
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/add-diagnostic-setting.png" alt-text="[診断設定] のオプションのスクリーンショット":::
 
 1. 診断設定の名前を指定します。
 
 1. どの送信先 (ストレージ アカウント、イベント ハブ、Log Analytics ワークスペース) に低速クエリ ログを送信するか指定します。
 
 1. ログの種類として **[MySqlSlowLogs]** を選択します。
-    :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/configure-diagnostic-setting.png" alt-text="[サーバー パラメーター] ページ。":::
+    :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/configure-diagnostic-setting.png" alt-text="診断設定構成オプションのスクリーンショット":::
 
 1. 低速クエリ ログをパイプするようにデータ シンクを設定した後、 **[保存]** を選択します。
-    :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/save-diagnostic-setting.png" alt-text="[サーバー パラメーター] ページ。":::
+    :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/save-diagnostic-setting.png" alt-text="[保存] が強調して示されている診断設定構成オプションのスクリーンショット":::
 
 1. 構成したデータ シンクを調べて低速クエリ ログにアクセスします。 ログが表示されるまでに最大で 10 分かかる可能性があります。
 

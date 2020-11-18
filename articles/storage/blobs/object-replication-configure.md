@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/14/2020
+ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: bca960100ee0c9d7e2a779dc86030fc59949dca5
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: e3503a9eef5c11db35684ca61fb1ee39525a465d
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055972"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427600"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>ブロック BLOB のオブジェクト レプリケーションを構成する
 
@@ -65,19 +65,19 @@ Azure portal でレプリケーション ポリシーを作成するには、次
 
     次の図は、レプリケーション ルールの一部としてコピーされる BLOB を制限するフィルターを示しています。
 
-    :::image type="content" source="media/object-replication-configure/configure-replication-copy-prefix.png" alt-text="Azure portal のレプリケーション ルールを示すスクリーンショット":::
+    :::image type="content" source="media/object-replication-configure/configure-replication-copy-prefix.png" alt-text="レプリケーション ルールのフィルターを示すスクリーンショット":::
 
-1. 既定では、コピー スコープは新しいオブジェクトのみをコピーするように設定されています。 コンテナー内のすべてのオブジェクトをコピーするか、カスタムの日付と時刻からオブジェクトをコピーするには、**変更**リンクを選択し、コンテナー ペアのコピー スコープを構成します。
+1. 既定では、コピー スコープは新しいオブジェクトのみをコピーするように設定されています。 コンテナー内のすべてのオブジェクトをコピーするか、カスタムの日付と時刻からオブジェクトをコピーするには、**変更** リンクを選択し、コンテナー ペアのコピー スコープを構成します。
 
     次の図は、指定した日付と時刻からオブジェクトをコピーするカスタム コピー スコープを示しています。
 
-    :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="Azure portal のレプリケーション ルールを示すスクリーンショット":::
+    :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="オブジェクト レプリケーションのカスタム コピー スコープを示すスクリーンショット":::
 
 1. **[保存して適用する]** を選択してレプリケーション ポリシーを作成し、データのレプリケーションを開始します。
 
 オブジェクト レプリケーションを構成すると、次の図に示すように、Azure portal にレプリケーション ポリシーとルールが表示されます。
 
-:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="Azure portal のレプリケーション ルールを示すスクリーンショット":::
+:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="Azure portal のオブジェクト レプリケーション ポリシーを示すスクリーンショット":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -244,7 +244,7 @@ az storage account or-policy show \
 
 | このアカウントに JSON ファイルを作成する場合は、 | この値にポリシー ID とルール ID を設定します。 |
 |-|-|
-| 宛先アカウント | 文字列の*既定値*。 Azure Storage で自動的にポリシー ID とルール ID が作成されます。 |
+| 宛先アカウント | 文字列の *既定値*。 Azure Storage で自動的にポリシー ID とルール ID が作成されます。 |
 | ソース アカウント | 宛先アカウントで定義されているポリシーを JSON ファイルとしてダウンロードすると、ポリシー ID とルール ID の値が返されます。 |
 
 次の例では、プレフィックス *b* が一致する 1 つのルールを使用して宛先アカウントにレプリケーション ポリシーを定義し、レプリケート対象の BLOB に最小作成時間を設定しています。 山かっこ内の値は、実際の値に置き換えてください。
@@ -276,7 +276,7 @@ az storage account or-policy show \
 
 Azure portal で JSON ファイルを使用して宛先アカウントにオブジェクト レプリケーションを構成するには、次の手順に従います。
 
-1. 宛先アカウントにレプリケーション ポリシーを定義するローカル JSON ファイルを作成します。 Azure Storage でポリシー ID が定義されるように、**policyId** フィールドを**既定値**に設定します。
+1. 宛先アカウントにレプリケーション ポリシーを定義するローカル JSON ファイルを作成します。 Azure Storage でポリシー ID が定義されるように、**policyId** フィールドを **既定値** に設定します。
 
     レプリケーション ポリシーを定義する JSON ファイルを簡単に作成する方法は、まず、Azure portal で 2 つのストレージ アカウント間にテスト レプリケーション ポリシーを作成することです。 その後、レプリケーション ルールをダウンロードし、必要に応じて JSON ファイルを変更できます。
 
@@ -284,7 +284,7 @@ Azure portal で JSON ファイルを使用して宛先アカウントにオブ�
 1. **[レプリケーション ルールのアップロード]** を選択します。
 1. JSON ファイルをアップロードします。 Azure portal には、次の図に示すように、作成されるポリシーとルールが表示されます。
 
-    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="Azure portal のレプリケーション ルールを示すスクリーンショット":::
+    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="JSON ファイルをアップロードしてレプリケーション ポリシーを定義する方法を示すスクリーンショット":::
 
 1. **[アップロード]** を選択して、宛先アカウントにレプリケーション ポリシーを作成 ます。
 
@@ -293,7 +293,7 @@ Azure portal で JSON ファイルを使用して宛先アカウントにオブ�
 1. Azure portal で宛先アカウントの **[オブジェクト レプリケーション]** 設定に移動します。
 1. 次の図に示すように、ダウンロードするポリシーの横にある **[詳細]** ボタンを選択し、 **[ルールのダウンロード]** を選択します。
 
-    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="Azure portal のレプリケーション ルールを示すスクリーンショット":::
+    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="レプリケーション ルールを JSON ファイルにダウンロードする方法を示すスクリーンショット":::
 
 1. JSON ファイルをローカル コンピューターに保存して別のユーザーと共有して、ソース アカウントにポリシーを構成します。
 
@@ -361,7 +361,7 @@ Azure portal でソース アカウントの BLOB のレプリケーションの
 1. ソース BLOB が含まれているコンテナーを探します。
 1. BLOB を選択して、そのプロパティを表示します。 BLOB が正常にレプリケートされている場合は、状態が *[完了]* に設定されていることが **[オブジェクト レプリケーション]** セクションに示されます。 このコンテナーのオブジェクト レプリケーションを管理するルールのレプリケーション ポリシー ID と ID も表示されます。
 
-:::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="Azure portal のレプリケーション ルールを示すスクリーンショット":::
+:::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="ソース アカウントの BLOB のレプリケーションの状態を示すスクリーンショット":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -391,6 +391,12 @@ az storage blob show \
 ```
 
 ---
+
+ソース アカウントの BLOB のレプリケーションの状態が失敗を示している場合は、次の考えられる原因を調査します。
+
+- 宛先アカウントに対してオブジェクト レプリケーション ポリシーが構成されていることを確認します。
+- 宛先コンテナーがまだ存在することを確認します。
+- 書き込み操作の一部としてカスタマー指定のキーでソース BLOB が暗号化されている場合、オブジェクトのレプリケーションは失敗します。 カスタマー指定のキーの詳細については、「[BLOB ストレージに対する要求で暗号化キーを指定する](encryption-customer-provided-keys.md)」を参照してください。
 
 ## <a name="remove-a-replication-policy"></a>レプリケーション ポリシーを削除する
 

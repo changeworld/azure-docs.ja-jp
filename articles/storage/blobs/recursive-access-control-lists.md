@@ -9,19 +9,16 @@ ms.date: 11/03/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c0323bed627fd622471724b20677914736c564d3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: efa434959df1d0310e390e78cee2ada726f61827
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319916"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427537"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のアクセス制御リスト (ACL) を再帰的に設定する
 
 ACL の継承は、親ディレクトリの下に作成された新しい子項目に対して既に利用可能です。 また、親ディレクトリの既存の子項目に対して ACL を再帰的に追加、更新、および削除することもできます。それぞれの子項目に対してこれらの変更を個別に行う必要はありません。
-
-> [!NOTE]
-> アクセス リストを再帰的に設定する機能はパブリック プレビュー段階であり、すべてのリージョンで使用できます。  
 
 [ライブラリ](#libraries) | [サンプル](#code-samples) | [ベスト プラクティス](#best-practice-guidelines) | [フィードバックの送信](#provide-feedback)
 
@@ -29,7 +26,7 @@ ACL の継承は、親ディレクトリの下に作成された新しい子項�
 
 - Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-- 階層型名前空間 (HNS) が有効になっているストレージ アカウント。 作成するには、[こちら](data-lake-storage-quickstart-create-account.md)の手順に従います。
+- 階層型名前空間 (HNS) が有効になっているストレージ アカウント。 作成するには、[こちら](create-data-lake-storage-account.md)の手順に従います。
 
 - 再帰的な ACL プロセスを実行するための適切なアクセス許可。 適切なアクセス許可には、次のいずれかが含まれます。 
 
@@ -39,7 +36,7 @@ ACL の継承は、親ディレクトリの下に作成された新しい子項�
 
 - ディレクトリとファイルに ACL を適用する方法を理解していること。 「[Azure Data Lake Storage Gen2 のアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)」を参照してください。 
 
-PowerShell、.NET SDK、および Python SDK のインストール ガイドについては、この記事の「 **プロジェクトの設定** 」セクションを参照してください。
+PowerShell、.NET SDK、および Python SDK のインストール ガイドについては、この記事の「**プロジェクトの設定**」セクションを参照してください。
 
 ## <a name="set-up-your-project"></a>プロジェクトの設定
 
@@ -309,7 +306,7 @@ static public DataLakeServiceClient GetDataLakeServiceClient
 
 [Java 用 Azure ID クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity)を使用して、Azure AD でアプリケーションを認証できます。
 
-この例では、クライアント ID、クライアント シークレット、およびテナント ID を使用して、 **DataLakeServiceClient** インスタンスを作成します。  これらの値を取得するには、「[クライアント アプリケーションからの要求を承認するために Azure AD からトークンの取得する](../common/storage-auth-aad-app.md)」を参照してください。
+この例では、クライアント ID、クライアント シークレット、およびテナント ID を使用して、**DataLakeServiceClient** インスタンスを作成します。  これらの値を取得するには、「[クライアント アプリケーションからの要求を承認するために Azure AD からトークンの取得する](../common/storage-auth-aad-app.md)」を参照してください。
 
 ```java
 static public DataLakeServiceClient GetDataLakeServiceClient
@@ -389,7 +386,7 @@ except Exception as e:
 
 ## <a name="set-an-acl-recursively"></a>ACL を再帰的に設定する
 
-ACL を " *設定する* " 場合は、ACL 全体 (そのすべてのエントリを含む) を **置換** します。 セキュリティ プリンシパルのアクセス許可レベルの変更または ACL への新しいセキュリティ プリンシパルの追加を、他の既存のエントリに影響を与えることなく行いたい場合は、代わりに ACL を " *更新* " する必要があります。 ACL を置換するのでなく更新するには、この記事の「[ACL を再帰的に更新する](#update-an-acl-recursively)」セクションを参照してください。   
+ACL を "*設定する*" 場合は、ACL 全体 (そのすべてのエントリを含む) を **置換** します。 セキュリティ プリンシパルのアクセス許可レベルの変更または ACL への新しいセキュリティ プリンシパルの追加を、他の既存のエントリに影響を与えることなく行いたい場合は、代わりに ACL を "*更新*" する必要があります。 ACL を置換するのでなく更新するには、この記事の「[ACL を再帰的に更新する](#update-an-acl-recursively)」セクションを参照してください。   
 
 このセクションには、ACL の設定方法の例が含まれています。 
 
@@ -414,7 +411,9 @@ Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $
 ```
 
 > [!NOTE]
-> **既定の** ACL エントリを設定する場合は、 **Set-AzDataLakeGen2ItemAclObject** コマンドを実行するときに **-DefaultScope** パラメーターを使用します。 (例: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`)。
+> **既定の** ACL エントリを設定する場合は、**Set-AzDataLakeGen2ItemAclObject** コマンドを実行するときに **-DefaultScope** パラメーターを使用します。 (例: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`)。
+
+バッチ サイズを指定してバッチ内の ACL を再帰的に設定する例については、[Set-AzDataLakeGen2AclRecursive](https://docs.microsoft.com/powershell/module/az.storage/set-azdatalakegen2aclrecursive) のリファレンス記事をご覧ください。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -433,7 +432,7 @@ az storage fs access set-recursive --acl "user::rwx,group::r-x,other::---,user:x
 
 **DataLakeDirectoryClient.SetAccessControlRecursiveAsync** メソッドを呼び出すことによって、ACL を再帰的に設定します。 このメソッドに [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) の [List](/dotnet/api/system.collections.generic.list-1) を渡します。 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) はそれぞれ ACL エントリを定義します。 
 
-**既定の** ACL エントリを設定する場合は、 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) の [PathAccessControlItem.DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) プロパティを **true** に設定できます。 
+**既定の** ACL エントリを設定する場合は、[PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) の [PathAccessControlItem.DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) プロパティを **true** に設定できます。 
 
 この例では、`my-parent-directory` という名前のディレクトリの ACL を設定します。 このメソッドは、既定の ACL を設定するかどうかを指定する `isDefaultScope` という名前のブール型パラメーターを受け取ります。 そのパラメーターは [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) のコンストラクターで使用されます。 これらの ACL エントリでは、所有ユーザーには読み取り、書き込み、実行のアクセス許可を付与し、所有グループには読み取りと実行のアクセス許可のみを付与し、他のすべてのユーザーにはアクセスを許可しません。 この例の最後の ACL エントリでは、"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" というオブジェクト ID を持つ特定のユーザーに、読み取りと実行のアクセス許可を付与しています。
 
@@ -471,13 +470,15 @@ public async void SetACLRecursively(DataLakeServiceClient serviceClient, bool is
 
 ```
 
+バッチ サイズを指定してバッチ内の ACL を再帰的に設定する例については、.NET の[サンプル](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FRecursive-Acl-Sample-Net.zip%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A45%253A28Z%26se%3D2021-09-25T07%253A45%253A00Z%26sr%3Db%26sp%3Dr%26sig%3D2GI3f0KaKMZbTi89AgtyGg%252BJePgNSsHKCL68V6I5W3s%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C6eae76c57d224fb6de8908d848525330%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637338865714571853&sdata=%2FWom8iI3DSDMSw%2FfYvAaQ69zbAoqXNTQ39Q9yVMnASA%3D&reserved=0)をご覧ください。
+
 ### <a name="java"></a>[Java](#tab/java)
 
 **DataLakeDirectoryClient.setAccessControlRecursive** メソッドを呼び出すことによって、ACL を再帰的に設定します。 このメソッドに [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) オブジェクトの [List](https://docs.oracle.com/javase/8/docs/api/java/util/List.html) を渡します。 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) はそれぞれ ACL エントリを定義します。 
 
-**既定の** ACL エントリを設定する場合は、 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) の **setDefaultScope** メソッドを呼び出し、 **true** の値を渡すことができます。 
+**既定の** ACL エントリを設定する場合は、[PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) の **setDefaultScope** メソッドを呼び出し、**true** の値を渡すことができます。 
 
-この例では、`my-parent-directory` という名前のディレクトリの ACL を設定します。 このメソッドは、既定の ACL を設定するかどうかを指定する `isDefaultScope` という名前のブール型パラメーターを受け取ります。 そのパラメーターは、 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) の **setDefaultScope** メソッドを呼び出すたびに使用されます。 これらの ACL エントリでは、所有ユーザーには読み取り、書き込み、実行のアクセス許可を付与し、所有グループには読み取りと実行のアクセス許可のみを付与し、他のすべてのユーザーにはアクセスを許可しません。 この例の最後の ACL エントリでは、"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" というオブジェクト ID を持つ特定のユーザーに、読み取りと実行のアクセス許可を付与しています。
+この例では、`my-parent-directory` という名前のディレクトリの ACL を設定します。 このメソッドは、既定の ACL を設定するかどうかを指定する `isDefaultScope` という名前のブール型パラメーターを受け取ります。 そのパラメーターは、[PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) の **setDefaultScope** メソッドを呼び出すたびに使用されます。 これらの ACL エントリでは、所有ユーザーには読み取り、書き込み、実行のアクセス許可を付与し、所有グループには読み取りと実行のアクセス許可のみを付与し、他のすべてのユーザーにはアクセスを許可しません。 この例の最後の ACL エントリでは、"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" というオブジェクト ID を持つ特定のユーザーに、読み取りと実行のアクセス許可を付与しています。
 
 ```java
 static public void SetACLRecursively(DataLakeFileSystemClient fileSystemClient, Boolean isDefaultScope){
@@ -573,11 +574,13 @@ def set_permission_recursively(is_default_scope):
      print(e)
 ```
 
+バッチ サイズを指定してバッチ内の ACL を再帰的に処理する例については、Python の[サンプル](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py)をご覧ください。
+
 ---
 
 ## <a name="update-an-acl-recursively"></a>ACL を再帰的に更新する
 
-ACL を " *更新する* " 場合は、ACL を置換するのでなく ACL を変更します。 たとえば、ACL にリストされている他のセキュリティ プリンシパルに影響を与えることなく、新しいセキュリティ プリンシパルを ACL に追加することができます。  ACL を更新するのでなく、置換する場合は、この記事の「[ACL を再帰的に設定する](#set-an-acl-recursively)」セクションを参照してください。 
+ACL を "*更新する*" 場合は、ACL を置換するのでなく ACL を変更します。 たとえば、ACL にリストされている他のセキュリティ プリンシパルに影響を与えることなく、新しいセキュリティ プリンシパルを ACL に追加することができます。  ACL を更新するのでなく、置換する場合は、この記事の「[ACL を再帰的に設定する](#set-an-acl-recursively)」セクションを参照してください。 
 
 ACL を更新するには、更新したい ACL エントリを含む新しい ACL オブジェクトを作成してから、そのオブジェクトを ACL の更新操作で使用します。 既存の ACL は取得せずに、更新する ACL エントリを指定するだけです。
 
@@ -601,7 +604,9 @@ Update-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Pat
 ```
 
 > [!NOTE]
-> **既定の** ACL エントリを更新する場合は、 **Set-AzDataLakeGen2ItemAclObject** コマンドを実行するときに **-DefaultScope** パラメーターを使用します。 (例: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission rwx -DefaultScope`)。
+> **既定の** ACL エントリを更新する場合は、**Set-AzDataLakeGen2ItemAclObject** コマンドを実行するときに **-DefaultScope** パラメーターを使用します。 (例: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission rwx -DefaultScope`)。
+
+バッチ サイズを指定してバッチ内の ACL を再帰的に更新する例については、[Update-AzDataLakeGen2AclRecursive](https://docs.microsoft.com/powershell/module/az.storage/update-azdatalakegen2aclrecursive) のリファレンス記事をご覧ください。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -620,7 +625,7 @@ az storage fs access update-recursive --acl "user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxx
 
 **DataLakeDirectoryClient.UpdateAccessControlRecursiveAsync** メソッドを呼び出すことによって、ACL を再帰的に更新します。  このメソッドに [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) の [List](/dotnet/api/system.collections.generic.list-1) を渡します。 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) はそれぞれ ACL エントリを定義します。 
 
-**既定の** ACL エントリを更新する場合は、 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) の [PathAccessControlItem.DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) プロパティを **true** に設定できます。 
+**既定の** ACL エントリを更新する場合は、[PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) の [PathAccessControlItem.DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) プロパティを **true** に設定できます。 
 
 この例では、書き込みアクセス許可を持つ ACL エントリを更新します。 このメソッドは、既定の ACL を更新するかどうかを指定する `isDefaultScope` という名前のブール型パラメーターを受け取ります。 そのパラメーターは [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) のコンストラクターで使用されます。
 
@@ -647,13 +652,15 @@ public async void UpdateACLsRecursively(DataLakeServiceClient serviceClient, boo
 }
 ```
 
+バッチ サイズを指定してバッチ内の ACL を再帰的に更新する例については、.NET の[サンプル](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FRecursive-Acl-Sample-Net.zip%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A45%253A28Z%26se%3D2021-09-25T07%253A45%253A00Z%26sr%3Db%26sp%3Dr%26sig%3D2GI3f0KaKMZbTi89AgtyGg%252BJePgNSsHKCL68V6I5W3s%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C6eae76c57d224fb6de8908d848525330%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637338865714571853&sdata=%2FWom8iI3DSDMSw%2FfYvAaQ69zbAoqXNTQ39Q9yVMnASA%3D&reserved=0)をご覧ください。
+
 ### <a name="java"></a>[Java](#tab/java)
 
 **DataLakeDirectoryClient.updateAccessControlRecursive** メソッドを呼び出すことによって、ACL を再帰的に更新します。  このメソッドに [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) オブジェクトの [List](https://docs.oracle.com/javase/8/docs/api/java/util/List.html) を渡します。 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) はそれぞれ ACL エントリを定義します。 
 
-**既定の** ACL エントリを更新する場合は、 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) の **setDefaultScope** メソッドを呼び出し、 **true** の値を渡すことができます。 
+**既定の** ACL エントリを更新する場合は、[PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) の **setDefaultScope** メソッドを呼び出し、**true** の値を渡すことができます。 
 
-この例では、書き込みアクセス許可を持つ ACL エントリを更新します。 このメソッドは、既定の ACL を更新するかどうかを指定する `isDefaultScope` という名前のブール型パラメーターを受け取ります。 そのパラメーターは、 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) の **setDefaultScope** メソッドの呼び出しに使用されます。 
+この例では、書き込みアクセス許可を持つ ACL エントリを更新します。 このメソッドは、既定の ACL を更新するかどうかを指定する `isDefaultScope` という名前のブール型パラメーターを受け取ります。 そのパラメーターは、[PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) の **setDefaultScope** メソッドの呼び出しに使用されます。 
 
 ```java
 static public void UpdateACLRecursively(DataLakeFileSystemClient fileSystemClient, Boolean isDefaultScope){
@@ -712,6 +719,8 @@ def update_permission_recursively(is_default_scope):
      print(e)
 ```
 
+バッチ サイズを指定してバッチ内の ACL を再帰的に処理する例については、Python の[サンプル](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py)をご覧ください。
+
 ---
 
 ## <a name="remove-acl-entries-recursively"></a>ACL エントリを再帰的に削除する
@@ -736,7 +745,9 @@ Remove-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName  -Ac
 ```
 
 > [!NOTE]
-> **既定の** ACL エントリを削除する場合は、 **Set-AzDataLakeGen2ItemAclObject** コマンドを実行するときに **-DefaultScope** パラメーターを使用します。 (例: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission "---" -DefaultScope`)。
+> **既定の** ACL エントリを削除する場合は、**Set-AzDataLakeGen2ItemAclObject** コマンドを実行するときに **-DefaultScope** パラメーターを使用します。 (例: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission "---" -DefaultScope`)。
+
+バッチ サイズを指定してバッチ内の ACL を再帰的に削除する例については、[Remove-AzDataLakeGen2AclRecursive](https://docs.microsoft.com/powershell/module/az.storage/remove-azdatalakegen2aclrecursive) のリファレンス記事をご覧ください。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -755,7 +766,7 @@ az storage fs access remove-recursive --acl "user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxx
 
 **DataLakeDirectoryClient.RemoveAccessControlRecursiveAsync** メソッドを呼び出すことによって、ACL を再帰的に削除します。 このメソッドに [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) の [List](/dotnet/api/system.collections.generic.list-1) を渡します。 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) はそれぞれ ACL エントリを定義します。 
 
-**既定の** ACL エントリを削除する場合は、 [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) の [PathAccessControlItem.DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) プロパティを **true** に設定できます。 
+**既定の** ACL エントリを削除する場合は、[PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) の [PathAccessControlItem.DefaultScope](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) プロパティを **true** に設定できます。 
 
 この例では、`my-parent-directory` という名前のディレクトリの ACL から ACL エントリを削除します。 このメソッドは、既定の ACL からエントリを削除するかどうかを指定する `isDefaultScope` という名前のブール型パラメーターを受け取ります。 そのパラメーターは [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) のコンストラクターで使用されます。
 
@@ -779,13 +790,15 @@ public async void RemoveACLsRecursively(DataLakeServiceClient serviceClient, isD
 }
 ```
 
+バッチ サイズを指定してバッチ内の ACL を再帰的に削除する例については、.NET の[サンプル](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FRecursive-Acl-Sample-Net.zip%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A45%253A28Z%26se%3D2021-09-25T07%253A45%253A00Z%26sr%3Db%26sp%3Dr%26sig%3D2GI3f0KaKMZbTi89AgtyGg%252BJePgNSsHKCL68V6I5W3s%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C6eae76c57d224fb6de8908d848525330%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637338865714571853&sdata=%2FWom8iI3DSDMSw%2FfYvAaQ69zbAoqXNTQ39Q9yVMnASA%3D&reserved=0)をご覧ください。
+
 ### <a name="java"></a>[Java](#tab/java)
 
 **DataLakeDirectoryClient.removeAccessControlRecursive** メソッドを呼び出すことによって、ACL を再帰的に削除します。 このメソッドに [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) オブジェクトの [List](https://docs.oracle.com/javase/8/docs/api/java/util/List.html) を渡します。 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) はそれぞれ ACL エントリを定義します。 
 
-**既定の** ACL エントリを削除する場合は、 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) の **setDefaultScope** メソッドを呼び出し、 **true** の値を渡すことができます。  
+**既定の** ACL エントリを削除する場合は、[PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) の **setDefaultScope** メソッドを呼び出し、**true** の値を渡すことができます。  
 
-この例では、`my-parent-directory` という名前のディレクトリの ACL から ACL エントリを削除します。 このメソッドは、既定の ACL からエントリを削除するかどうかを指定する `isDefaultScope` という名前のブール型パラメーターを受け取ります。 そのパラメーターは、 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) の **setDefaultScope** メソッドの呼び出しに使用されます。
+この例では、`my-parent-directory` という名前のディレクトリの ACL から ACL エントリを削除します。 このメソッドは、既定の ACL からエントリを削除するかどうかを指定する `isDefaultScope` という名前のブール型パラメーターを受け取ります。 そのパラメーターは、[PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) の **setDefaultScope** メソッドの呼び出しに使用されます。
 
 
 ```java
@@ -839,6 +852,8 @@ def remove_permission_recursively(is_default_scope):
      print(e)
 ```
 
+バッチ サイズを指定してバッチ内の ACL を再帰的に処理する例については、Python の[サンプル](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py)をご覧ください。
+
 ---
 
 ## <a name="recover-from-failures"></a>エラーからの復旧
@@ -847,42 +862,23 @@ def remove_permission_recursively(is_default_scope):
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-この例では、ACL バッチで設定します。 すべての ACL が設定されるまで、 **Set-AzDataLakeGen2AclRecursive** を呼び出すたびに後続トークンが返されます。 この例では、`$ContinueOnFailure` という名前の変数を `$false` に設定して、アクセス許可エラーが発生した場合は、プロセスによる ACL の設定を続行しないことを示します。 後続トークンは `&token` 変数に格納されます。 障害が発生した場合は、そのトークンを使用して、障害発生時点からプロセスを再開することができます。
+この例では、結果を変数に返し、失敗したエントリを書式設定されたテーブルにパイプします。
 
 ```powershell
-$ContinueOnFailure = $false
+$result = Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
+$result
+$result.FailedEntries | ft 
+```
 
-$token = $null
-$TotalDirectoriesSuccess = 0
-$TotalFilesSuccess = 0
-$totalFailure = 0
-$FailedEntries = New-Object System.Collections.Generic.List[System.Object]
-do
-{
-    if ($ContinueOnFailure)
-    {
-        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 -ContinueOnFailure
-    }
-    else
-    {
-        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 
-    }
-    echo $result
-    $TotalFilesSuccess += $result.TotalFilesSuccessfulCount
-    $TotalDirectoriesSuccess += $result.TotalDirectoriesSuccessfulCount
-    $totalFailure += $result.TotalFailureCount
-    $FailedEntries += $result.FailedEntries
-    $token = $result.ContinuationToken
-} while (($token -ne $null) -and (($ContinueOnFailure) -or ($result.TotalFailureCount -eq 0)))
-echo ""
-echo "[Result Summary]"
-echo "TotalDirectoriesSuccessfulCount: `t$($TotalDirectoriesSuccess)"
-echo "TotalFilesSuccessfulCount: `t`t`t$($TotalFilesSuccess)"
-echo "TotalFailureCount: `t`t`t`t`t$($totalFailure)"
-echo "FailedEntries:"$($FailedEntries | ft)
+テーブルの出力に基づいて、アクセス許可のエラーを修正し、継続トークンを使用して実行を再開できます。
 
+```powershell
+$result = Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl -ContinuationToken $result.ContinuationToken
+$result
 
 ```
+
+バッチ サイズを指定してバッチ内の ACL を再帰的に設定する例については、[Set-AzDataLakeGen2AclRecursive](https://docs.microsoft.com/powershell/module/az.storage/set-azdatalakegen2aclrecursive) のリファレンス記事をご覧ください。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -924,6 +920,8 @@ public async Task<string> ResumeAsync(DataLakeServiceClient serviceClient,
 
 }
 ```
+
+バッチ サイズを指定してバッチ内の ACL を再帰的に設定する例については、.NET の[サンプル](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FRecursive-Acl-Sample-Net.zip%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A45%253A28Z%26se%3D2021-09-25T07%253A45%253A00Z%26sr%3Db%26sp%3Dr%26sig%3D2GI3f0KaKMZbTi89AgtyGg%252BJePgNSsHKCL68V6I5W3s%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C6eae76c57d224fb6de8908d848525330%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637338865714571853&sdata=%2FWom8iI3DSDMSw%2FfYvAaQ69zbAoqXNTQ39Q9yVMnASA%3D&reserved=0)をご覧ください。
 
 ### <a name="java"></a>[Java](#tab/java)
 
@@ -985,48 +983,27 @@ def resume_set_acl_recursive(continuation_token):
      return continuation_token
 ```
 
+バッチ サイズを指定してバッチ内の ACL を再帰的に処理する例については、Python の[サンプル](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py)をご覧ください。
+
 ---
 
 アクセス許可エラーによって中断されずにプロセスを完了したい場合は、それを指定できます。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-この例では、`$ContinueOnFailure` 変数を `$true` に設定して、アクセス許可エラーが発生した場合でも、プロセスによる ACL の設定を続行する必要があることを示します。 
+この例では、`ContinueOnFailure` パラメーターを使用して、操作中にアクセス許可エラーが検出された場合でも実行が継続されるようにします。 
 
 ```powershell
-$ContinueOnFailure = $true
+$result = Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl -ContinueOnFailure
 
-$token = $null
-$TotalDirectoriesSuccess = 0
-$TotalFilesSuccess = 0
-$totalFailure = 0
-$FailedEntries = New-Object System.Collections.Generic.List[System.Object]
-do
-{
-    if ($ContinueOnFailure)
-    {
-        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 -ContinueOnFailure
-    }
-    else
-    {
-        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 
-    }
-    echo $result
-    $TotalFilesSuccess += $result.TotalFilesSuccessfulCount
-    $TotalDirectoriesSuccess += $result.TotalDirectoriesSuccessfulCount
-    $totalFailure += $result.TotalFailureCount
-    $FailedEntries += $result.FailedEntries
-    $token = $result.ContinuationToken
-} while (($token -ne $null) -and (($ContinueOnFailure) -or ($result.TotalFailureCount -eq 0)))
-echo ""
 echo "[Result Summary]"
-echo "TotalDirectoriesSuccessfulCount: `t$($TotalDirectoriesSuccess)"
-echo "TotalFilesSuccessfulCount: `t`t`t$($TotalFilesSuccess)"
-echo "TotalFailureCount: `t`t`t`t`t$($totalFailure)"
-echo "FailedEntries:"$($FailedEntries | ft)
-
-
+echo "TotalDirectoriesSuccessfulCount: `t$($result.TotalFilesSuccessfulCount)"
+echo "TotalFilesSuccessfulCount: `t`t`t$($result.TotalDirectoriesSuccessfulCount)"
+echo "TotalFailureCount: `t`t`t`t`t$($result.TotalFailureCount)"
+echo "FailedEntries:"$($result.FailedEntries | ft) 
 ```
+
+バッチ サイズを指定してバッチ内の ACL を再帰的に設定する例については、[Set-AzDataLakeGen2AclRecursive](https://docs.microsoft.com/powershell/module/az.storage/set-azdatalakegen2aclrecursive) のリファレンス記事をご覧ください。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -1038,7 +1015,7 @@ az storage fs access set-recursive --acl "user::rw-,group::r-x,other::---" --con
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-プロセスが中断されずに確実に完了されるようにするには、 **AccessControlChangedOptions** オブジェクトを渡し、そのオブジェクトの **ContinueOnFailure** プロパティを ``true`` に設定します。
+プロセスが中断されずに確実に完了されるようにするには、**AccessControlChangedOptions** オブジェクトを渡し、そのオブジェクトの **ContinueOnFailure** プロパティを ``true`` に設定します。
 
 この例では、ACL エントリを再帰的に設定します。 このコードでアクセス許可エラーが発生した場合は、そのエラーが記録されて、実行が継続されます。 この例では、エラーの数をコンソールに出力します。 
 
@@ -1065,9 +1042,11 @@ public async Task ContinueOnFailureAsync(DataLakeServiceClient serviceClient,
 }
 ```
 
+バッチ サイズを指定してバッチ内の ACL を再帰的に設定する例については、.NET の[サンプル](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FRecursive-Acl-Sample-Net.zip%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A45%253A28Z%26se%3D2021-09-25T07%253A45%253A00Z%26sr%3Db%26sp%3Dr%26sig%3D2GI3f0KaKMZbTi89AgtyGg%252BJePgNSsHKCL68V6I5W3s%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C6eae76c57d224fb6de8908d848525330%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637338865714571853&sdata=%2FWom8iI3DSDMSw%2FfYvAaQ69zbAoqXNTQ39Q9yVMnASA%3D&reserved=0)をご覧ください。
+
 ### <a name="java"></a>[Java](#tab/java)
 
-プロセスが中断されずに確実に完了されるようにするには、 [PathSetAccessControlRecursiveOptions](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) オブジェクトの **setContinueOnFailure** メソッドを呼び出し、値 **true** を渡します。
+プロセスが中断されずに確実に完了されるようにするには、[PathSetAccessControlRecursiveOptions](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) オブジェクトの **setContinueOnFailure** メソッドを呼び出し、値 **true** を渡します。
 
 この例では、ACL エントリを再帰的に設定します。 このコードでアクセス許可エラーが発生した場合は、そのエラーが記録されて、実行が継続されます。 この例では、エラーの数をコンソールに出力します。 
 
@@ -1099,7 +1078,7 @@ List<PathAccessControlEntry> accessControlList){
 
 ### <a name="python"></a>[Python](#tab/python)
 
-プロセスが中断されずに確実に完了されるようにするには、 **DataLakeDirectoryClient.set_access_control_recursive** メソッドに後続トークンを渡さないようにします。
+プロセスが中断されずに確実に完了されるようにするには、**DataLakeDirectoryClient.set_access_control_recursive** メソッドに後続トークンを渡さないようにします。
 
 この例では、ACL エントリを再帰的に設定します。 このコードでアクセス許可エラーが発生した場合は、そのエラーが記録されて、実行が継続されます。 この例では、エラーの数をコンソールに出力します。 
 
@@ -1122,6 +1101,8 @@ def continue_on_failure():
     except Exception as e:
      print(e)
 ```
+
+バッチ サイズを指定してバッチ内の ACL を再帰的に処理する例については、Python の[サンプル](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py)をご覧ください。
 
 ---
 

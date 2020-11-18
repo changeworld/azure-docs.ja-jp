@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 10/21/2020
+ms.date: 11/06/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: a1144560b8bd8638477828f1aeafcacbc8b77f1d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e920af85c511387e66bcafcb6a140844d25f204c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096480"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369292"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API でのインデックス作成を管理する
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -122,7 +122,7 @@ Azure Cosmos DB の MongoDB 用 API では、現在、テキスト インデッ�
 
 `db.coll.createIndex({"children.$**" : 1})`
 
-**MongoDB とは異なり、ワイルドカード インデックスはクエリ述語内の複数のフィールドをサポートできます** 。 プロパティごとに個別のインデックスを作成する代わりに 1 つのワイルドカード インデックスを使用しても、クエリのパフォーマンスに違いはありません。
+**MongoDB とは異なり、ワイルドカード インデックスはクエリ述語内の複数のフィールドをサポートできます**。 プロパティごとに個別のインデックスを作成する代わりに 1 つのワイルドカード インデックスを使用しても、クエリのパフォーマンスに違いはありません。
 
 ワイルドカード構文を使用して、次の種類のインデックスを作成できます。
 
@@ -148,7 +148,7 @@ Azure Cosmos DB の MongoDB 用 API では、現在、テキスト インデッ�
 - TTL
 - 一意
 
-**MongoDB とは異なり** 、MongoDB 用の Azure Cosmos DB の API では、次の場合にワイルドカード インデックスを使用することは **できません** 。
+**MongoDB とは異なり**、MongoDB 用の Azure Cosmos DB の API では、次の場合にワイルドカード インデックスを使用することは **できません**。
 
 - 複数の特定のフィールドを含むワイルドカード インデックスの作成
 
@@ -211,7 +211,7 @@ globaldb:PRIMARY> db.runCommand({shardCollection: db.coll._fullName, key: { univ
         "ok" : 1,
         "collectionsharded" : "test.coll"
 }
-globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1, "university" : 1 }, {unique:true})
+globaldb:PRIMARY> db.coll.createIndex( { "university" : 1, "student_id" : 1 }, {unique:true});
 {
         "_t" : "CreateIndexesResponse",
         "ok" : 1,
@@ -335,6 +335,51 @@ Azure Cosmos DB の MongoDB 用 API のバージョン 3.6 では、データベ
 
 > [!NOTE]
 > [インデックスの進行状況を追跡する](#track-index-progress)ことができます。
+
+## <a name="reindex-command"></a>reIndex コマンド
+
+`reIndex` コマンドによって、コレクションのすべてのインデックスが再作成されます。 ほとんどの場合、これは必要ありません。 ただし、まれに、`reIndex` コマンドの実行後にクエリのパフォーマンスが向上する場合があります。
+
+`reIndex` コマンドは、次の構文を使用して実行できます。
+
+`db.runCommand({ reIndex: <collection> })`
+
+次の構文を使用して、`reIndex` コマンドを実行する必要があるかどうかを確認できます。
+
+`db.runCommand({"customAction":"GetCollection",collection:<collection>, showIndexes:true})`
+
+サンプル出力:
+
+```
+{
+        "database" : "myDB",
+        "collection" : "myCollection",
+        "provisionedThroughput" : 400,
+        "indexes" : [
+                {
+                        "v" : 1,
+                        "key" : {
+                                "_id" : 1
+                        },
+                        "name" : "_id_",
+                        "ns" : "myDB.myCollection",
+                        "requiresReIndex" : true
+                },
+                {
+                        "v" : 1,
+                        "key" : {
+                                "b.$**" : 1
+                        },
+                        "name" : "b.$**_1",
+                        "ns" : "myDB.myCollection",
+                        "requiresReIndex" : true
+                }
+        ],
+        "ok" : 1
+}
+```
+
+`reIndex` が必要な場合、**requiresReIndex** が true になります。 `reIndex` が必要ない場合、このプロパティは省略されます。
 
 ## <a name="migrate-collections-with-indexes"></a>インデックス付きのコレクションを移行する
 

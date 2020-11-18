@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-dotnet
-ms.openlocfilehash: 52241972e283db1c5e000e1e9f5d655dfdd9c8a3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ce75b5465d18f988d9dfd2b329c4157bab41ded9
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88928192"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534519"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-20-rest-api-ocr-operation-and-c"></a>クイック スタート:Computer Vision 2.0 REST API の OCR 操作と C# を使用してテキストを抽出する
 
 > [!IMPORTANT]
 > 英語、オランダ語、フランス語、ドイツ語、イタリア語、ポルトガル語、スペイン語、簡易字中国語 (プレビュー) のテキストを抽出する場合は、新しい [Read 操作](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)の使用をお勧めします。 [C# のクイックスタート](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text)を使用できます。 
 
-このクイックスタートでは、Computer Vision REST API の [OCR 操作](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)機能を使って、印刷されたテキストを画像から抽出します。 この操作を使用すると、画像内の印刷されたテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出することができます。
+このクイックスタートでは、Computer Vision REST API の [OCR 操作](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d)機能を使って、印刷されたテキストを画像から抽出します。 この操作を使用すると、画像内の印刷されたテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出することができます。
 
 ## <a name="prerequisites"></a>前提条件
 

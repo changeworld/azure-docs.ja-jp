@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 5194e088ce2bd35208a92c5295457e6c34cd2cc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18504f1ed4200889b20c9608c9c0ad2c13c9aaa5
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570331"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425764"
 ---
 # <a name="wildcard-domains"></a>ワイルドカード ドメイン
 
@@ -27,7 +27,7 @@ ms.locfileid: "91570331"
 - アプリケーションで新しいサブドメインが追加された場合に、運用中の Front Door 構成を変更する必要がなくなりました。 以前は、サブドメインを追加し、それに証明書をバインドし、Web アプリケーション ファイアウォール (WAF) ポリシーをアタッチして、ドメインを個別のルーティング規則に追加する必要がありました。
 
 > [!NOTE]
-> 現在のところ、ワイルドカード ドメインは API、PowerShell、Azure CLI でのみサポートされています。 Azure portal でワイルドカード ドメインを追加、管理することはサポートされていません。
+> 現在のところ、Azure DNS を使用したワイルドカード ドメインの追加は、API、PowerShell、Azure CLI でのみサポートされています。 Azure portal でワイルドカード ドメインを追加、管理することはサポートされていません。
 
 ## <a name="adding-wildcard-domains"></a>ワイルドカード ドメインの追加
 
@@ -63,7 +63,7 @@ ms.locfileid: "91570331"
 
 ## <a name="waf-policies"></a>WAF ポリシー
 
-WAF ポリシーは、他のドメインと同様に、ワイルドカード ドメインにもアタッチできます。 ワイルドカード ドメインのサブドメインに、別の WAF ポリシーを適用することもできます。 サブドメインについては、ワイルドカード ドメインと同じポリシーを使用する場合であっても、使用する WAF ポリシーを指定する必要があります。 サブドメインでは、ワイルドカード ドメインから WAF ポリシーが自動的に継承されることは*ありません*。
+WAF ポリシーは、他のドメインと同様に、ワイルドカード ドメインにもアタッチできます。 ワイルドカード ドメインのサブドメインに、別の WAF ポリシーを適用することもできます。 サブドメインについては、ワイルドカード ドメインと同じポリシーを使用する場合であっても、使用する WAF ポリシーを指定する必要があります。 サブドメインでは、ワイルドカード ドメインから WAF ポリシーが自動的に継承されることは *ありません*。
 
 サブドメインに対して WAF ポリシーを実行したくない場合は、管理されていないルールセット、またはカスタム ルールセットを使用せずに、空の WAF ポリシーを作成します。
 

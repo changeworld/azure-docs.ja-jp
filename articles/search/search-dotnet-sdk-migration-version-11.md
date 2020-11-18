@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f6953f145621e11506a009fa59d67a5f40508a13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90fc356929a9ea5713a8d359dfaa83286017b8f8
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539573"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445440"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Azure Cognitive Search .NET SDK バージョン 11 へのアップグレード
 
@@ -169,6 +169,24 @@ Azure Cognitive Search クライアント ライブラリの各バージョン�
    ```
 
 1. インデクサー関連オブジェクトの新しいクライアント参照を追加します。 インデクサー、データソース、またはスキルセットを使用している場合は、クライアント参照を [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient) に変更します。 このクライアントはバージョン 11 で新しく追加されたものであり、元の機能はありません。
+
+1. コレクションを見直します。 新しい SDK では、リストに null 値が含まれている場合にダウンストリームの問題が発生するのを回避するため、すべてのリストが読み取り専用になっています。 コードを変更して、リストに項目を追加するようにします。 たとえば、Select プロパティに文字列を割り当てる代わりに、次のように文字列を追加します。
+
+   ```csharp
+   var options = new SearchOptions
+    {
+       SearchMode = SearchMode.All,
+       IncludeTotalCount = true
+    };
+
+    // Select fields to return in results.
+    options.Select.Add("HotelName");
+    options.Select.Add("Description");
+    options.Select.Add("Tags");
+    options.Select.Add("Rooms");
+    options.Select.Add("Rating");
+    options.Select.Add("LastRenovationDate");
+   ```
 
 1. クエリとデータ インポートのクライアント参照を更新します。 [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) のインスタンスは [SearchClient](/dotnet/api/azure.search.documents.searchclient) に変更する必要があります。 名前の混乱を避けるために、次の手順に進む前に、すべてのインスタンスをキャッチしてください。
 

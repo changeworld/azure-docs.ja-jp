@@ -2,13 +2,13 @@
 title: Azure VMware Solution のデプロイまたはプロビジョニングのエラーに関するサポート
 description: Azure VMware Solution のプライベート クラウドから情報を取得して、Azure VMware Solution のデプロイまたはプロビジョニングのエラーに対するサービス要求を提出します。
 ms.topic: how-to
-ms.date: 06/09/2020
-ms.openlocfilehash: 6d609774b0d3a2de7809d04e4fa0c4e3e6593590
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 10/28/2020
+ms.openlocfilehash: 27b645f4ca225fdd74bca6499b6581b3803e41a4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349122"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542407"
 ---
 # <a name="open-a-support-request-for-an-azure-vmware-solution-deployment-or-provisioning-failure"></a>Azure VMware Solution のデプロイまたはプロビジョニングのエラーに関するサポート リクエストを開く
 

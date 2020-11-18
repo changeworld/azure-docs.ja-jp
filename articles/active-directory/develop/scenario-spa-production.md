@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 21ba0193c3f1e19ffc74452aaceee34759c7e606
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a51442870fb72e2b3cd93d9f03736d2c679ed06
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88949016"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442822"
 ---
 # <a name="single-page-application-move-to-production"></a>シングルページ アプリケーション：運用環境に移行する
 
@@ -36,27 +36,12 @@ Azure Storage サービスと Azure App Service でそれぞれ SPA プロジェ
 
 ## <a name="next-steps"></a>次のステップ
 
-ユーザーをサインインさせ、**MSAL.js** を使用して **Microsoft Graph API** を呼び出すためのアクセス トークンを取得する方法に関するコードが説明されている、クイックスタート サンプルの詳細を確認します。
+- ユーザーをサインインさせ、**MSAL.js** を使用して **Microsoft Graph API** を呼び出すためのアクセス トークンを取得する方法に関するコードが説明されている、クイックスタート サンプルの詳細を確認します。[JavaScript SPA チュートリアル](./tutorial-v2-javascript-spa.md)。
 
-> [!div class="nextstepaction"]
-> [JavaScript SPA チュートリアル](./tutorial-v2-javascript-spa.md)
+- **MSAL.js** を使用して独自のバックエンド Web API (ASP.NET Core) 用のトークンを取得する方法を示すサンプル：[ASP.NET バックエンドを使用する SPA](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi)。
 
-**MSAL.js** を使用して独自のバックエンド Web API (ASP.NET Core) 用のトークンを取得する方法を示すサンプル：
+- **passport-azure-ad** を使用してバックエンド Web API (Node.js) 用のアクセス トークンを検証する方法を示すサンプル:[Node.js Web API (Azure AD)](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)。
 
-> [!div class="nextstepaction"]
-> [ASP.NET バックエンドを使用する SPA](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi)
+- **MSAL.js** を使用して、**Azure Active Directory B2C** (Azure AD B2C) に登録されているアプリにユーザーをサインインさせる方法を示すサンプル:[Azure AD B2C を使用する SPA](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)。
 
-**passport-azure-ad** を使用してバックエンド Web API (Node.js) 用のアクセス トークンを検証する方法を示すサンプル。
-
-> [!div class="nextstepaction"]
-> [Node.js Web API (Azure AD)](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)
-
-**MSAL.js** を使用して、**Azure Active Directory B2C** (Azure AD B2C) に登録されているアプリにユーザーをサインインさせる方法を示すサンプル:
-
-> [!div class="nextstepaction"]
-> [Azure AD B2C を使用する SPA](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
-
-**passport-azure-ad** を使用して、**Azure Active Directory B2C** (Azure AD B2C) に登録されているアプリ用のアクセス トークンを検証する方法を示すサンプル
-
-> [!div class="nextstepaction"]
-> [Node.js Web API (Azure AD B2C)](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)
+- **passport-azure-ad** を使用して、**Azure Active Directory B2C** (Azure AD B2C) に登録されているアプリ用のアクセス トークンを検証する方法を示すサンプル:[Node.js Web API (Azure AD B2C)](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)。

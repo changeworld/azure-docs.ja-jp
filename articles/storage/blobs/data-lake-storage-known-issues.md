@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: f995750c1e009febcb9872c230e22921ff9c50c4
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: 909d64d3d32e8b9a314f7afb06b9c0121f624cec
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186588"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358485"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -54,7 +54,9 @@ BLOB API と Data Lake Storage Gen2 API では、同じデータを処理でき�
 * [Get Page Ranges](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
 * [Incremental Copy Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
 * [Put Page from URL](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
+* [Append Block](https://docs.microsoft.com/rest/api/storageservices/append-block)
 * [Append Block from URL](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
+
 
 アンマネージド VM ディスクは、階層型名前空間があるアカウントではサポートされていません。 ストレージ アカウントで階層型名前空間を有効にする場合は、階層型名前空間機能が有効ではないストレージ アカウントにアンマネージド VM ディスクを配置してください。
 
@@ -62,7 +64,7 @@ BLOB API と Data Lake Storage Gen2 API では、同じデータを処理でき�
 
 ## <a name="support-for-setting-access-control-lists-acls-recursively"></a>アクセス制御リスト (ACL) を再帰的に設定するためのサポート
 
-親ディレクトリから子項目に ACL 変更を再帰的に適用する機能は、[パブリック プレビュー](recursive-access-control-lists.md)にあります。 この機能の現在のリリースでは、PowerShell、.NET SDK、および Python SDK を使用して ACL の変更を適用できます。 Java SDK、Azure CLI、Azure portal、または Azure Storage Explorer のサポートはまだ提供されていません。
+親ディレクトリから子項目に ACL 変更を再帰的に適用する機能が公開されています。 この機能の現在のリリースでは、PowerShell、Azure CLI、および .NET、Java、および Python SDK を使用して ACL の変更を適用できます。 Azure portal または Azure Storage Explorer のサポートはまだ提供されていません。
 
 <a id="known-issues-tools"></a>
 

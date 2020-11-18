@@ -1,7 +1,7 @@
 ---
 title: 順列の特徴量の重要度:モジュール リファレンス
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning の順列の特徴量の重要度モジュールを使用して、トレーニング済みモデルとテスト データセットに対する特徴変数についての順列の特徴量の重要度スコアを計算する方法について説明します。
+description: デザイナーで順列の特徴量の重要度モジュールを使用して、特徴変数についての順列の特徴量の重要度スコアを計算する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
-ms.openlocfilehash: bddd9a6825899f646a86ae274c539b54156667c5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8ae1e79922cc0f34e8b2d1f253fce5078df286d2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319403"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421245"
 ---
 # <a name="permutation-feature-importance"></a>順列の特徴量の重要度
 
@@ -63,7 +63,7 @@ ms.locfileid: "93319403"
 
 Permutation Feature Importance (順列の特徴量の重要度) は、各特徴列の値を一度に 1 列ずつランダムに変更することによって機能します。 その後、モデルを評価します。 
 
-このモジュールによって提供される順位付けは、[Filter Based Feature Selection (フィルターに基づく特徴選択)](filter-based-feature-selection.md) から得られるものとは異なることがよくあります。 Filter Based Feature Selection (フィルターに基づく特徴選択) では、モデルの作成 " *前* " にスコアが計算されます。 
+このモジュールによって提供される順位付けは、[Filter Based Feature Selection (フィルターに基づく特徴選択)](filter-based-feature-selection.md) から得られるものとは異なることがよくあります。 Filter Based Feature Selection (フィルターに基づく特徴選択) では、モデルの作成 "*前*" にスコアが計算されます。 
 
 この違いの理由は、Permutation Feature Importance (順列の特徴量の重要度) では、特徴量と目標値の間の関連付けが測定されないためです。 代わりに、モデルからの予測に対して各特徴量がどの程度の影響を与えるかをキャプチャします。
   

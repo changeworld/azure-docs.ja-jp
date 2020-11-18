@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperfq2
-ms.openlocfilehash: ec39a6d106973808e26b7c06dce8b3054af490ff
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 12b11d6283bbed4e43daf52a65c0c259c476e73f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427380"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357914"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>SAML ベースのシングル サインオンで構成されたアプリへのサインインに関する問題
 以下のサインインに関する問題を解決する場合は、より優れた診断、および解決手順の自動化に向けて、次を行うことをお勧めします。
@@ -28,9 +28,9 @@ ms.locfileid: "92427380"
 My Apps Secure Browser Extension を使用して、Azure portal で[テスト体験](../azuread-dev/howto-v1-debug-saml-sso-issues.md)を使用する場合は、[SAML ベースのシングル サインオンの構成] ページを開くための次の手順を、手動で行う必要はありません。
 
 [SAML ベースのシングル サインオンの構成] ページを開くには、次の手順を行います。
-1.  [**Azure portal**](https://portal.azure.com/) を開き、 **グローバル管理者** 、または **共同管理者** としてサインインします。
+1.  [**Azure portal**](https://portal.azure.com/) を開き、**グローバル管理者**、または **共同管理者** としてサインインします。
 1.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** を選択して **[Azure Active Directory 拡張機能]** を開きます。
-1.  フィルター検索ボックスに「 **Azure Active Directory** 」と入力し、 **[Azure Active Directory]** 項目を選択します。
+1.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 1.  Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** を選択します。
 1.  **[すべてのアプリケーション]** を選択して、すべてのアプリケーションの一覧を表示します。
     ここに表示したいアプリケーションが表示されない場合は、 **[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、 **[表示]** オプションを **[すべてのアプリケーション]** に設定します。
@@ -121,7 +121,7 @@ SAML 要求内の `Issuer` 属性が Azure AD で構成された識別子の値�
 1. SAML ベースの SSO 構成画面の **[SAML 署名証明書]** セクションで、 **[新しい証明書の作成]** を選択します。
 1. 有効期限を選択し、 **[保存]** をクリックします。
 1. **[新しい証明書をアクティブにする]** をオンにして、アクティブな証明書をオーバーライドします。 次に、ウィンドウの上部にある **[保存]** をクリックし、ロールオーバー証明書をアクティブにすることを受け入れます。
-1. **[SAML 署名証明書]** セクションで、 **[削除]** をクリックして、 **未使用** の証明書を削除します。
+1. **[SAML 署名証明書]** セクションで、 **[削除]** をクリックして、**未使用** の証明書を削除します。
 
 ## <a name="saml-request-not-present-in-the-request"></a>SAML 要求が要求にない
 `Error AADSTS750054: SAMLRequest or SAMLResponse must be present as query string parameters in HTTP request for SAML Redirect binding.`
@@ -146,6 +146,23 @@ Azure AD によって、HTTP 要求の URL パラメーター内から SAML 要�
 アプリケーションに構成されている未使用の応答 URL を削除します。
 
 [SAML ベースのシングル サインオンの構成] ページの **[応答 URL (Assertion Consumer Service URL)]** で、システムによって作成された未使用の URL または既定の応答 URL を削除します。 たとえば、「 `https://127.0.0.1:444/applications/default.aspx` 」のように入力します。
+
+
+## <a name="authentication-method-by-which-the-user-authenticated-with-the-service-doesnt-match-requested-authentication-method"></a>サービスでのユーザーの認証に使用された認証方法が、要求された認証方法と一致しません
+`Error: AADSTS75011 Authentication method by which the user authenticated with the service doesn't match requested authentication method 'AuthnContextClassRef'. `
+
+**考えられる原因**
+
+`RequestedAuthnContext` が SAML 要求に含まれている。 これは、アプリが `AuthnContextClassRef` によって指定された `AuthnContext` を想定していることを意味します。 しかし、ユーザーはアプリケーションにアクセスする前に既に認証されており、その以前の認証で使用された `AuthnContext` (認証方法) が要求されているものと異なります。 たとえば、myapps と WIA へのフェデレーション ユーザーのアクセスが行われたとします。 `AuthnContextClassRef` は `urn:federation:authentication:windows` になります。 AAD では、新しい認証要求が実行されず、IdP (このケースでは ADFS またはその他のフェデレーション サービス) によって、それを経由して渡された認証コンテキストが使用されます。 そのため、アプリで `urn:federation:authentication:windows` 以外が要求されると、不一致が発生します。 もう 1 つのシナリオは、MultiFactor が使用された場合です (`'X509, MultiFactor`)。
+
+**解像度**
+
+
+`RequestedAuthnContext` は省略可能な値です。 次に、可能であれば、アプリケーションにそれを削除できるかどうかを確認します。
+
+別のオプションとして、`RequestedAuthnContext` が受け入れられるようにします。 これは、新しい認証を要求することによって行われます。 これを行うことにより、SAML 要求が処理されるときに、新しい認証が行われ、`AuthnContext` が受け入れられます。 新しい認証を要求するために、SAML 要求にはほとんど `forceAuthn="true"`値が含まれています。 
+
+
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>アプリケーションに送信される SAML 要求をカスタマイズする際の問題
 アプリケーションに送信される SAML 属性要求をカスタマイズする方法については、「[Azure Active Directory での要求マッピング](../develop/active-directory-claims-mapping.md)」をご覧ください。

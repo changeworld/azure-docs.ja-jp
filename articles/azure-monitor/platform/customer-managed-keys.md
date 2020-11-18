@@ -1,79 +1,76 @@
 ---
 title: Azure Monitor のカスタマー マネージド キー
-description: カスタマー マネージド キー (CMK) を、Azure Key Vault キーを使用して Log Analytics ワークスペースのデータを暗号化するように構成するための情報と手順。
+description: Azure Key Vault キーを使用して Log Analytics ワークスペースのデータを暗号化するように、カスタマー マネージド キーを構成するための情報と手順。
 ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 09/09/2020
-ms.openlocfilehash: 532d96163e2ec66730dc3fdf87f10904fd584224
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.date: 11/09/2020
+ms.openlocfilehash: 62621a36955808ec3f2c796681fe660e6e8524bc
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107999"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443383"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor のカスタマー マネージド キー 
 
-この記事では、Log Analytics のワークスペースに対して、カスタマー マネージド キー (CMK) を構成するための背景情報と手順について説明します。 構成が完了すると、ワークスペースに送信されるすべてのデータが Azure Key Vault キーで暗号化されます。
+この記事では、Log Analytics のワークスペースに対して、カスタマー マネージド キーを構成するための背景情報と手順について説明します。 構成が完了すると、ワークスペースに送信されるすべてのデータが Azure Key Vault キーで暗号化されます。
 
 構成の前に「[制限と制約](#limitationsandconstraints)」を確認することをお勧めします。
 
-## <a name="customer-managed-key-cmk-overview"></a>カスタマー マネージド キー (CMK) の概要
+## <a name="customer-managed-key-overview"></a>カスタマー マネージド キーの概要
 
 [保存時の暗号化](../../security/fundamentals/encryption-atrest.md)は、組織の一般的なプライバシーおよびセキュリティ要件です。 保存時の暗号化は Azure で完全に管理できますが、暗号化または暗号化キーを厳密に管理するさまざまなオプションが提供されています。
 
-Azure Monitor により、Microsoft マネージド キー (MMK) を使用して、すべてのデータおよび保存されたクエリが保存時に暗号化されるようになります。 Azure Monitor には、[Azure Key Vault](../../key-vault/general/overview.md) に格納され、システムによって割り当てられた[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) 認証を使用してアクセスされる、独自のキーを使用した暗号化のオプションも用意されています。 このキー (CMK) は、[ソフトウェアまたはハードウェアの HSM で保護](../../key-vault/general/overview.md)できます。 Azure Monitor での暗号化の使用は、[Azure Storage の暗号化](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption)での運用方法とまったく同じです。
+Azure Monitor により、Microsoft マネージド キー (MMK) を使用して、すべてのデータおよび保存されたクエリが保存時に暗号化されるようになります。 Azure Monitor には、[Azure Key Vault](../../key-vault/general/overview.md) に格納され、データ暗号化のためにストレージによって使用される、独自のキーを使用した暗号化のオプションも用意されています。 キーは、[ソフトウェアまたはハードウェアの HSM で保護](../../key-vault/general/overview.md)できます。 Azure Monitor での暗号化の使用は、[Azure Storage の暗号化](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption)での運用方法とまったく同じです。
 
-CMK 機能は専用の Log Analytics クラスターに提供され、データへのアクセスをいつでも取り消し、[ロックボックス](#customer-lockbox-preview) コントロールを使用して保護することができます。 お客様のリージョン内の専用クラスターで必要な容量があることを確認するために、お客様のサブスクリプションが事前に許可されている必要があります。 CMK の構成を開始する前に、Microsoft の担当者に依頼して、お客様のサブスクリプションを許可してください。
+カスタマー マネージド キー機能は、専用の Log Analytics クラスターで提供されます。 これにより、[ロックボックス](#customer-lockbox-preview) コントロールを使用してデータを保護し、データへのアクセスをいつでも取り消すことができます。 過去 14 日間に取り込まれたデータも、効率的なクエリ エンジン操作のためにホットキャッシュ (SSD ベース) で保持されます。 このデータは、カスタマー マネージド キーの構成に関係なく、Microsoft キーで暗号化されたままになりますが、SSD データに対する制御は[キーの失効](#key-revocation)に従います。 2021 年の前半には、カスタマー マネージド キーを使用して SSD データを暗号化できるように準備しています。
 
 [Log Analytics クラスターの価格モデル](./manage-cost-storage.md#log-analytics-dedicated-clusters)では、1,000 GB/日レベルから始まる容量予約が使用されます。
 
-過去 14 日間に取り込まれたデータも、効率的なクエリ エンジン操作のためにホットキャッシュ (SSD ベース) で保持されます。 このデータは、CMK 構成に関係なく、Microsoft キーで暗号化されたままになりますが、SSD データに対する制御は[キーの失効](#cmk-kek-revocation)に従います。 2020 年の後半には、SSD データを CMK で暗号化できるように取り組んでいます。
+> [!IMPORTANT]
+> 一時的な容量の制約があるため、クラスターを作成する前に事前登録する必要があります。 Microsoft に連絡するか、サポート要求を開いてサブスクリプション ID を登録してください。
 
-## <a name="how-cmk-works-in-azure-monitor"></a>Azure Monitor での CMK の動作
+## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Azure Monitor でのカスタマー マネージド キーの動作
 
-Azure Monitor は、システム割り当てのマネージド ID を活用して Azure Key Vault にアクセス権を付与します。 システム割り当てマネージド ID は、1 つの Azure リソースにのみ関連付けできますが、Log Analytics クラスターの ID はクラスター レベルでサポートされます。これは、CMK 機能が専用の Log Analytics クラスターで提供されることを意味します。 複数のワークスペースで CMK をサポートするために、新しい Log Analytics " *クラスター* " リソースは、Key Vault と Log Analytics のワークスペースの間の中間 ID 接続として実行されます。 Log Analytics クラスター ストレージは、" *クラスター* " リソースに関連付けられているマネージド ID を使用して、Azure Active Directory 経由で Azure Key Vault に対する認証を行います。 
+Azure Monitor は、システム割り当てのマネージド ID を活用して Azure Key Vault にアクセス権を付与します。 システム割り当てマネージド ID は、1 つの Azure リソースにのみ関連付けできますが、Log Analytics クラスターの ID はクラスター レベルでサポートされます。これは、この機能が専用の Log Analytics クラスターで提供されることを意味します。 複数のワークスペースでカスタマー マネージド キーをサポートするために、新しい Log Analytics "*クラスター*" リソースは、Key Vault と Log Analytics のワークスペースの間の中間 ID 接続として実行されます。 Log Analytics クラスター ストレージは、"*クラスター*" リソースに関連付けられているマネージド ID を使用して、Azure Active Directory 経由で Azure Key Vault に対する認証を行います。 
 
-CMK の構成後、専用クラスターにリンクされているワークスペースに取り込まれるすべてのデータは、Key Vault 内のキーを使用して暗号化されます。 いつでも、クラスターからワークスペースのリンクを解除できます。 新しいデータが Log Analytics ストレージに取り込まれて Microsoft キーで暗号化されますが、新しいデータと古いデータに対してシームレスにクエリを実行することができます。
+構成後、専用クラスターにリンクされているワークスペースに取り込まれるすべてのデータは、Key Vault 内のキーを使用して暗号化されます。 いつでも、クラスターからワークスペースのリンクを解除できます。 その後、新しいデータが Log Analytics ストレージに取り込まれて Microsoft キーで暗号化されますが、新しいデータと古いデータに対してシームレスにクエリを実行することができます。
 
 
-![CMK の概要](media/customer-managed-keys/cmk-overview.png)
+![カスタマー マネージド キーの概要](media/customer-managed-keys/cmk-overview.png)
 
 1. Key Vault
-2. Key Vault に対するアクセス許可があるマネージド ID を持つ Log Analytics " *クラスター* " リソース – ID は、土台となる専用の Log Analytics クラスター ストレージに伝達されます
+2. Key Vault に対するアクセス許可があるマネージド ID を持つ Log Analytics "*クラスター*" リソース – ID は、土台となる専用の Log Analytics クラスター ストレージに伝達されます
 3. 専用の Log Analytics クラスター
-4. CMK 暗号化のために " *クラスター* " リソースにリンクされているワークスペース
+4. "*クラスター*" リソースにリンクされたワークスペース 
 
 ## <a name="encryption-keys-operation"></a>暗号化キー操作
 
 ストレージ データの暗号化には、次の 3 種類のキーが関係します。
 
-- **KEK** - キー暗号化キー (CMK)
+- **KEK** - キー暗号化キー (カスタマー マネージド キー)
 - **AEK** - アカウント暗号化キー
 - **DEK** - データ暗号化キー
 
 次の規則が適用されます。
 
-- Log Analytics クラスター ストレージ アカウントは、すべてのストレージ アカウントに対して一意の暗号化キーを生成します。これは、AEK と呼ばれます。
-
+- Log Analytics クラスター ストレージ アカウントでは、すべてのストレージ アカウントに対して一意の暗号化キーが生成されます。これは、AEK と呼ばれます。
 - AEK は、ディスクに書き込まれた各データ ブロックの暗号化に使用されるキーである DEK を派生させるために使用されます。
-
 - Key Vault でキーを構成し、それをクラスターで参照すると、Azure Storage によって Azure Key Vault に要求が送信され、AEK がラップおよびラップ解除されて、データの暗号化と解読の操作が実行されます。
-
 - KEK が Key Vault から離れることはありません。また、HSM キーの場合はハードウェアから離れることはありません。
+- Azure Storage により、"*クラスター*" リソースに関連付けられているマネージド ID を使用して、Azure Active Directory 経由での Azure Key Vault への認証とアクセスが行われます。
 
-- Azure Storage により、" *クラスター* " リソースに関連付けられているマネージド ID を使用して、Azure Active Directory 経由での Azure Key Vault への認証とアクセスが行われます。
+## <a name="customer-managed-key-provisioning-procedure"></a>カスタマー マネージド キーのプロビジョニング手順
 
-## <a name="cmk-provisioning-procedure"></a>CMK のプロビジョニング手順
+1. サブスクリプションの登録とクラスターの作成の許可
+1. Azure Key Vault の作成とキーの格納
+1. クラスターの作成
+1. Key Vault へのアクセス許可の付与
+1. Log Analytics ワークスペースのリンク
 
-1. サブスクリプションの許可 - CMK 機能は専用の Log Analytics クラスターで提供されます。 お客様のリージョンに必要な容量があることを確認するために、お客様のサブスクリプションが事前に許可されている必要があります。 Microsoft の担当者に依頼して、お客様のサブスクリプションを許可してください。
-2. Azure Key Vault の作成とキーの格納
-3. クラスターの作成
-4. Key Vault へのアクセス許可の付与
-5. Log Analytics ワークスペースのリンク
-
-CMK の構成は Azure portal でサポートされておらず、プロビジョニングは [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/)、[CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics)、または [REST](https://docs.microsoft.com/rest/api/loganalytics/) の要求を使用して実行されます。
+カスタマー マネージド キーの構成は Azure portal でサポートされておらず、プロビジョニングは [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/)、[CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics)、または [REST](https://docs.microsoft.com/rest/api/loganalytics/) の要求を使用して実行されます。
 
 ### <a name="asynchronous-operations-and-status-check"></a>非同期操作と状態のチェック
 
@@ -82,7 +79,7 @@ CMK の構成は Azure portal でサポートされておらず、プロビジ�
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
 
-次に、 *Azure-AsyncOperation* ヘッダー値に GET 要求を送信することにより、非同期操作の状態を確認できます。
+次に、*Azure-AsyncOperation* ヘッダー値に GET 要求を送信することにより、非同期操作の状態を確認できます。
 ```rst
 GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-08-01
 Authorization: Bearer <token>
@@ -149,12 +146,10 @@ Authorization: Bearer <token>
 }
 ```
 
-### <a name="allowing-subscription-for-cmk-deployment"></a>CMK デプロイのためのサブスクリプションの許可
-
-CMK 機能は専用の Log Analytics クラスターで提供されます。 お客様のリージョンに必要な容量があることを確認するために、お客様のサブスクリプションが事前に許可されている必要があります。 連絡先を Microsoft に登録して、サブスクリプション ID を提供します。
+### <a name="allowing-subscription"></a>サブスクリプションを許可する
 
 > [!IMPORTANT]
-> CMK 機能はリージョン別です。 Azure Key Vault、クラスター、リンクされた Log Analytics ワークスペースは、同じリージョンに存在している必要がありますが、サブスクリプションは異なっていてもかまいません。
+> カスタマー マネージド キー機能はリージョン単位で機能します。 Azure Key Vault、クラスター、リンクされた Log Analytics ワークスペースは、同じリージョンに存在している必要がありますが、サブスクリプションは異なっていてもかまいません。
 
 ### <a name="storing-encryption-key-kek"></a>暗号化キー (KEK) の格納
 
@@ -162,7 +157,7 @@ Azure Key Vault を作成するか既存のものを使用して、データの�
 
 ![論理的な削除と消去保護の設定](media/customer-managed-keys/soft-purge-protection.png)
 
-これらの設定は、CLI と PowerShell を使用して更新できます。
+これらの設定は、CLI と PowerShell を使用して Key Vault で更新できます。
 
 - [論理的な削除](../../key-vault/general/soft-delete-overview.md)
 - [[Purge protection]\(消去保護\)](../../key-vault/general/soft-delete-overview.md#purge-protection) は、論理的な削除の後もシークレットやコンテナーを強制削除から保護します
@@ -176,7 +171,7 @@ Azure Key Vault を作成するか既存のものを使用して、データの�
 
 ### <a name="grant-key-vault-permissions"></a>Key Vault アクセス許可を付与する
 
-お使いのキー コンテナーを、クラスターへのアクセス許可を付与する新しいアクセス ポリシーで更新します。 これらのアクセス許可は、データの暗号化のために下層の Azure Monitor ストレージによって使用されます。 Azure portal で Key Vault を開き、[アクセス ポリシー]、[+ アクセス ポリシーの追加] の順にクリックして、次の設定でポリシーを作成します。
+Key Vault でアクセス ポリシーを作成し、クラスターにアクセス許可を付与します。 これらのアクセス許可は、データの暗号化のために下層の Azure Monitor ストレージによって使用されます。 Azure portal で Key Vault を開き、[アクセス ポリシー]、[+ アクセス ポリシーの追加] の順にクリックして、次の設定でポリシーを作成します。
 
 - [キーのアクセス許可]: [取得]、[キーを折り返す]、および [キーの折り返しを解除] の各アクセス許可を選択します。
 - [プリンシパルの選択]: 前のステップの応答で返されたクラスター名またはプリンシパル ID の値を入力します。
@@ -199,47 +194,40 @@ Azure Key Vault で現在のバージョンのキーを選択して、キー識�
 
 操作は非同期であり、完了するまでに時間がかかることがあります。
 
+```azurecli
+az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --key-name "key-name" --key-vault-uri "key-uri" --key-version "key-version"
+```
+
 ```powershell
 Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -KeyVaultUri "key-uri" -KeyName "key-name" -KeyVersion "key-version"
 ```
 
-> [!NOTE]
-> PATCH を使用して、クラスターの *sku* 、 *keyVaultProperties* 、または *billingType* を更新できます。
-
 ```rst
-PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
-Authorization: Bearer <token>
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name"?api-version=2020-08-01
+Authorization: Bearer <token> 
 Content-type: application/json
-
+ 
 {
-   "identity": { 
-     "type": "systemAssigned" 
-     },
-   "sku": {
-     "name": "capacityReservation",
-     "capacity": 1000
-     },
-   "properties": {
-    "billingType": "cluster",
-     "KeyVaultProperties": {
-       "KeyVaultUri": "https://<key-vault-name>.vault.azure.net",
-       "KeyName": "<key-name>",
-       "KeyVersion": "<current-version>"
-       }
-   },
-   "location":"<region-name>"
+  "properties": {
+    "keyVaultProperties": {
+      "keyVaultUri": "https://key-vault-name.vault.azure.net",
+      "kyName": "key-name",
+      "keyVersion": "current-version"
+  },
+  "sku": {
+    "name": "CapacityReservation",
+    "capacity": 1000
+  }
 }
 ```
 
 **Response**
 
-200 OK とヘッダー。
 キー識別子の伝播が完了するまで数分かかります。 更新の状態を確認するには、次の 2 つの方法があります。
 1. 応答から Azure-AsyncOperation URL 値をコピーし、[非同期操作と状態のチェック](#asynchronous-operations-and-status-check)に従います。
-2. クラスターに GET 要求を送信し、 *KeyVaultProperties* のプロパティを調べます。 最近更新されたキー識別子の詳細が、応答で返されます。
+2. クラスターに GET 要求を送信し、*KeyVaultProperties* のプロパティを調べます。 最近更新されたキー識別子の詳細が、応答で返されます。
 
-キー識別子の更新が完了すると、GET 要求に対する応答は次のようになります。
-
+キー識別子の更新が完了すると、GET 要求に対する応答は次のようになります。200 OK とヘッダー
 ```json
 {
   "identity": {
@@ -279,11 +267,11 @@ Content-type: application/json
 > [!IMPORTANT]
 > この手順は、Log Analytics クラスターのプロビジョニングが完了した後にのみ実行してください。 プロビジョニングの前にワークスペースをリンクしてデータを取り込むと、取り込まれたデータは削除され、回復できなくなります。
 
-この操作は非同期であり、完了までに時間が掛かります。
+この操作は非同期であり、完了するまでに時間が掛かります。
 
 [専用クラスターに関する記事](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters#link-a-workspace-to-the-cluster)で示されている手順に従います。
 
-## <a name="cmk-kek-revocation"></a>CMK (KEK) の失効
+## <a name="key-revocation"></a>キーの失効
 
 キーを無効にするか、キー コンテナーでクラスターのアクセス ポリシーを削除することによって、データへのアクセスを失効させることができます。 Log Analytics クラスターは常に 1 時間以内にキーのアクセス許可の変更に対応し、ストレージがすぐに使用できなくなります。 クラスターにリンクされているワークスペースに取り込まれた新しいデータは、すべて削除されて復旧できなくなり、データにはアクセスできず、これらのワークスペースへのクエリは失敗します。 クラスターおよびワークスペースが削除されていない限り、以前に取り込まれたデータはストレージに残ります。 アクセスできないデータは、データ保持ポリシーによって管理され、リテンション期間に達すると削除されます。 
 
@@ -291,33 +279,38 @@ Content-type: application/json
 
 ストレージは、Key Vault を定期的にポーリングして暗号化キーの折り返しを解除しようとし、アクセスされた後、データ インジェストとクエリが 30 分以内に再開されます。
 
-## <a name="cmk-kek-rotation"></a>CMK (KEK) のローテーション
+## <a name="key-rotation"></a>キーの交換
 
-CMK のローテーションを行うには、Azure Key Vault の新しいキー バージョンでクラスターを明示的に更新する必要があります。 「キー識別子の詳細を使用してクラスターを更新する」の手順に従ってください。 クラスターの新しいキー識別子の詳細を更新しない場合、Log Analytics クラスター ストレージでの暗号化には以前のキーが引き続き使用されます。 クラスターの新しいキーを更新する前に古いキーを無効にしたり削除したりすると、[キーの失効](#cmk-kek-revocation)状態になります。
+カスタマー マネージド キーのローテーションを行うには、Azure Key Vault の新しいキー バージョンでクラスターを明示的に更新する必要があります。 「キー識別子の詳細を使用してクラスターを更新する」の手順に従ってください。 クラスターの新しいキー識別子の詳細を更新しない場合、Log Analytics クラスター ストレージでの暗号化には以前のキーが引き続き使用されます。 クラスターの新しいキーを更新する前に古いキーを無効にしたり削除したりすると、[キーの失効](#key-revocation)状態になります。
 
 アカウント暗号化キー (AEK) は新しいキー暗号化キー (KEK) バージョンによって Key Vault で暗号化されるようになりますが、データは常に AEK によって暗号化されているため、キー ローテーション操作後も、すべてのデータにアクセスできます。
 
-## <a name="cmk-for-queries"></a>クエリの CMK
+## <a name="customer-managed-key-for-queries"></a>クエリ用のカスタマー マネージド キー
 
-Log Analytics で使用されるクエリ言語は表現力が豊かで、クエリに追加するコメントまたはクエリ構文に機密情報を含めることができます。 組織によっては、このような情報を CMK ポリシーの一環として保護しておく必要があり、キーで暗号化された状態でクエリを保存する必要があります。 Azure Monitor では、独自のキーを使用して暗号化された " *保存された検索条件* " および " *ログ アラート* " のクエリを、ワークスペースに接続したときに独自のストレージ アカウントに保存しておくことができます。 
+Log Analytics で使用されるクエリ言語は表現力が豊かで、クエリに追加するコメントまたはクエリ構文に機密情報を含めることができます。 組織によっては、このような情報をカスタマー マネージド キー ポリシーによって保護しておく必要があり、キーで暗号化された状態でクエリを保存する必要があります。 Azure Monitor では、独自のキーを使用して暗号化された "*保存された検索条件*" および "*ログ アラート*" のクエリを、ワークスペースに接続したときに独自のストレージ アカウントに保存しておくことができます。 
 
 > [!NOTE]
-> Log Analytics クエリは、使用されるシナリオに応じて、さまざまなストアに保存できます。 CMK の構成に関係なく、次のシナリオでは、Microsoft キー (MMK) を使用してクエリの暗号化が維持されます: Azure Monitor のブック、Azure ダッシュボード、Azure Logic App、Azure Notebooks、および Automation Runbook。
+> Log Analytics クエリは、使用されるシナリオに応じて、さまざまなストアに保存できます。 カスタマー マネージド キーの構成に関係なく、次のシナリオでは、Microsoft キー (MMK) を使用してクエリの暗号化が維持されます:Azure Monitor のブック、Azure ダッシュボード、Azure Logic App、Azure Notebooks、および Automation Runbook。
 
-Bring Your Own Storage (BYOS) を使用して、それをワークスペースにリンクすると、サービスによって、" *保存された検索条件* " と " *ログ アラート* " のクエリがストレージ アカウントにアップロードされます。 つまり、Log Analytics クラスター内のデータの暗号化に使用するのと同じキー、または別のキーを使用して、ストレージ アカウントと[保存時の暗号化ポリシー](../../storage/common/customer-managed-keys-overview.md)を制御することを意味します。 ただし、そのストレージ アカウントに関連するコストについては、お客様が責任を負うものとします。 
+Bring Your Own Storage (BYOS) を使用して、それをワークスペースにリンクすると、サービスによって、"*保存された検索条件*" と "*ログ アラート*" のクエリがストレージ アカウントにアップロードされます。 つまり、Log Analytics クラスター内のデータの暗号化に使用するのと同じキー、または別のキーを使用して、ストレージ アカウントと[保存時の暗号化ポリシー](../../storage/common/customer-managed-keys-overview.md)を制御することを意味します。 ただし、そのストレージ アカウントに関連するコストについては、お客様が責任を負うものとします。 
 
-**クエリ用に CMK を設定する前の考慮事項**
+**クエリにカスタマー マネージド キーを設定する前の考慮事項**
 * ワークスペースとストレージ アカウントの両方に対して "書き込み" アクセス許可を持っている必要があります
 * ストレージ アカウントは、Log Analytics ワークスペースと同じリージョンに作成してください。
 * ストレージ内の *保存された検索条件* はサービス アーティファクトと見なされ、その形式は変更される可能性があります
-* 既存の *保存された検索条件* は、ワークスペースから削除されます。 必要な *保存された検索条件* は、構成前にコピーしてください。 [PowerShell](/powershell/module/az.operationalinsights/get-azoperationalinsightssavedsearch) を使用して、" *保存された検索条件* " を表示できます
+* 既存の *保存された検索条件* は、ワークスペースから削除されます。 必要な *保存された検索条件* は、構成前にコピーしてください。 [PowerShell](/powershell/module/az.operationalinsights/get-azoperationalinsightssavedsearch) を使用して、"*保存された検索条件*" を表示できます
 * クエリ履歴はサポートされていないため、実行したクエリは表示できません
-* クエリを保存するために、1 つのストレージ アカウントをワークスペースにリンクすることができますが、これは " *保存された検索条件* " と " *ログ アラート* " のクエリの両方から使用できます
+* クエリを保存するために、1 つのストレージ アカウントをワークスペースにリンクすることができますが、これは "*保存された検索条件*" と "*ログ アラート*" のクエリの両方から使用できます
 * ダッシュボードへのピン留めはサポートされていません
 
 **保存された検索条件のクエリ用に BYOS を構成する**
 
-" *クエリ* " 用のストレージ アカウントをワークスペースにリンクします。" *保存された検索条件* " のクエリはストレージ アカウントに保存されます。 
+"*クエリ*" 用のストレージ アカウントをワークスペースにリンクします。"*保存された検索条件*" のクエリはストレージ アカウントに保存されます。 
+
+```azurecli
+$storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
+az monitor log-analytics workspace linked-storage create --type Query --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
+```
 
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
@@ -344,7 +337,12 @@ Content-type: application/json
 
 **ログ アラートのクエリ用の BYOS を構成する**
 
-" *アラート* " 用のストレージ アカウントをワークスペースにリンクします。" *ログ アラート* " のクエリはストレージ アカウントに保存されます。 
+"*アラート*" 用のストレージ アカウントをワークスペースにリンクします。"*ログ アラート*" のクエリはストレージ アカウントに保存されます。 
+
+```azurecli
+$storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
+az monitor log-analytics workspace linked-storage create --type ALerts --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
+```
 
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
@@ -376,10 +374,14 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
 
 詳細については、「[Microsoft Azure 用カスタマー ロックボックス](../../security/fundamentals/customer-lockbox-overview.md)」を参照してください。
 
-## <a name="cmk-management"></a>CMK 管理
+## <a name="customer-managed-key-operations"></a>カスタマー マネージド キーの操作
 
 - **リソース グループ内のすべてのクラスターを取得する**
   
+  ```azurecli
+  az monitor log-analytics cluster list --resource-group "resource-group-name"
+  ```
+
   ```powershell
   Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name"
   ```
@@ -425,7 +427,11 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
   ```
 
 - **サブスクリプション内のすべてのクラスターを取得する**
-  
+
+  ```azurecli
+  az monitor log-analytics cluster list
+  ```
+
   ```powershell
   Get-AzOperationalInsightsCluster
   ```
@@ -439,12 +445,16 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
     
   "リソース グループ内のクラスター" に対するものと同じ応答ですが、サブスクリプション スコープです。
 
-- **クラスターの " *容量予約* " を更新する**
+- **クラスターの "*容量予約*" を更新する**
 
   リンクされたワークスペースへのデータ量が時間の経過と共に変化し、容量予約のレベルを適切に更新することが必要になる場合があります。 [クラスターの更新](#update-cluster-with-key-identifier-details)の手順に従って、新しい容量の値を指定してください。 これは 1 日あたり 1000 GB から 3000 GB の範囲で、100 刻みで指定できます。 1 日あたり 3000 GB を超えるレベルの場合は、Microsoft の担当者に有効化を依頼してください。 完全な REST 要求本文を指定する必要はなく、sku を含める必要があることに注意してください。
 
+  ```azurecli
+  az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --sku-capacity daily-ingestion-gigabyte
+  ```
+
   ```powershell
-  Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity "daily-ingestion-gigabyte"
+  Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity daily-ingestion-gigabyte
   ```
 
   ```rst
@@ -455,7 +465,7 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
   {
     "sku": {
       "name": "capacityReservation",
-      "Capacity": 1000
+      "Capacity": daily-ingestion-gigabyte
     }
   }
   ```
@@ -466,7 +476,7 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
   - *cluster* (既定) - 課金は、クラスター リソースをホストするサブスクリプションに帰属します
   - *workspaces* - 課金は、ワークスペースをホストするサブスクリプションに比例的に帰属します
   
-  [クラスターの更新](#update-cluster-with-key-identifier-details)の手順に従って、新しい billingType の値を指定してください。 完全な REST 要求本文を指定する必要はなく、 *billingType* を含める必要があることに注意してください。
+  [クラスターの更新](#update-cluster-with-key-identifier-details)の手順に従って、新しい billingType の値を指定してください。 完全な REST 要求本文を指定する必要はなく、*billingType* を含める必要があることに注意してください。
 
   ```rst
   PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
@@ -486,6 +496,10 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
 
   この操作は非同期であり、完了までに時間が掛かります。
 
+  ```azurecli
+  az monitor log-analytics workspace linked-service delete --resource-group "resource-group-name" --name "cluster-name" --workspace-name "workspace-name"
+  ```
+
   ```powershell
   Remove-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -Name "workspace-name" -LinkedServiceName cluster
   ```
@@ -495,18 +509,13 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
   Authorization: Bearer <token>
   ```
 
-  **Response**
-
-  200 OK とヘッダー。
-
-  リンク解除操作後に取り込まれたデータは、Log Analytics ストレージに格納されますが、これが完了するまでに 90 分かかることがあります。 ワークスペースのリンク解除状態は、次の 2 つの方法で確認できます。
-
-  1. 応答から Azure-AsyncOperation URL 値をコピーし、[非同期操作と状態のチェック](#asynchronous-operations-and-status-check)に従います。
-  2. [Workspaces – Get](/rest/api/loganalytics/workspaces/get) 要求を送信し、応答を観察します。リンク解除されたワークスペースには *features* の下に *clusterResourceId* が含まれません。
-
-- **ワークスペースのリンク状態を確認する**
+  - **ワークスペースのリンク状態を確認する**
   
-  ワークスペースで Get 操作を実行し、応答の *features* の下に *clusterResourceId* プロパティが存在するかどうかを確認します。 リンクされたワークスペースには、 *clusterResourceId* プロパティが存在します。
+  ワークスペースで Get 操作を実行し、応答の *features* の下に *clusterResourceId* プロパティが存在するかどうかを確認します。 リンクされたワークスペースには、*clusterResourceId* プロパティが存在します。
+
+  ```azurecli
+  az monitor log-analytics cluster show --resource-group "resource-group-name" --name "cluster-name"
+  ```
 
   ```powershell
   Get-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
@@ -518,6 +527,10 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
   
   リンク解除操作は非同期であり、完了するまでに最大 90 分かかることがあります。
 
+  ```azurecli
+  az monitor log-analytics cluster delete --resource-group "resource-group-name" --name "cluster-name"
+  ```
+ 
   ```powershell
   Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
   ```
@@ -526,28 +539,24 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
-
-  **Response**
-
-  200 OK
-
+  
 - **クラスターとデータを回復する** 
   
-  過去 14 日以内に削除されたクラスターは、論理的な削除状態であり、そのデータで回復できます。 クラスターが削除されると、すべてのワークスペースがそれからリンク解除されるため、CMK 暗号化のために回復後にワークスペースを再びリンクする必要があります。 復旧操作は、現在、製品グループごとに手動で実行されます。 復旧要求には、Microsoft チャネルを使用します。
+  過去 14 日以内に削除されたクラスターは、論理的な削除状態であり、そのデータで回復できます。 クラスターが削除されると、すべてのワークスペースがリンク解除されるため、クラスターの回復後にワークスペースを再びリンクする必要があります。 回復操作は、現在、製品グループごとに手動で実行します。 削除されたクラスターの回復については、Microsoft の販売代理店に連絡するか、サポート要求を開いてください。
 
 ## <a name="limitations-and-constraints"></a>制限と制約
 
-- CMK は専用の Log Analytics クラスターでサポートされており、1 日あたり 1 TB 以上を送信するお客様に適しています。
+- カスタマー マネージド キーは専用の Log Analytics クラスターでサポートされており、1 日あたり 1 TB 以上を送信するお客様に適しています。
 
 - リージョンおよびサブスクリプションごとのクラスターの最大数は 2 です
 
-クラスターにリンクされたワークスペースの最大数は 100 です
+- クラスターにリンクされたワークスペースの最大数は 1000 です
 
-- ワークスペースをクラスターにリンクした後、そのワークスペースに対して CMK が必要ない場合は、リンクを解除することができます。 特定のワークスペースでのワークスペース リンク操作の回数は、30 日間に 2 回に制限されています
+- クラスターにワークスペースをリンクし、その後、リンクを解除することができます。 特定のワークスペースでのワークスペース リンク操作の回数は、30 日間に 2 回に制限されています
 
 - クラスターへのワークスペースのリンクは、Log Analytics クラスターのプロビジョニングが完了したことを確認した後でのみ、実行する必要があります。 完了前にワークスペースに送信されたデータは削除され、復旧できなくなります。
 
-- CMK の暗号化は、CMK の構成後に新しく取り込まれたデータに適用されます。 CMK の構成より前に取り込まれたデータは、Microsoft キーで暗号化されたままになります。 取り込まれたデータのクエリは CMK 構成の前後にシームレスに実行できます。
+- カスタマー マネージド キーの暗号化は、構成後に新しく取り込まれたデータに適用されます。 構成より前に取り込まれたデータは、Microsoft キーで暗号化されたままになります。 カスタマー マネージド キーの構成の前後に取り込まれたデータのクエリは、シームレスに実行できます。
 
 - Azure Key Vault は、回復可能として構成する必要があります。 これらのプロパティは既定では有効になっておらず、CLI または PowerShell を使用して構成する必要があります。<br>
   - [論理的な削除](../../key-vault/general/soft-delete-overview.md)
@@ -557,7 +566,7 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
 
 - お使いの Azure キー コンテナー、クラスター、およびリンクされたワークスペースは、同じリージョンで同じ Azure Active Directory (Azure AD) テナント内に存在している必要がありますが、サブスクリプションは異なっていてもかまいません。
 
-- 別のクラスターにリンクされている場合、クラスターへのワークスペースリンクは失敗します
+- 別のクラスターにリンクされている場合、クラスターへのワークスペースのリンクは失敗します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -566,7 +575,7 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
     
   - 一時的な接続エラー -- Storage は、キーが短時間キャッシュにとどまることができるようにすることで一時的なエラー (タイムアウト、接続エラー、DNS の問題) を処理し、これにより可用性の小さな中断を克服できます。 クエリ機能と取り込み機能は中断されることなく続行されます。
     
-  - ライブ サイト -- 約 30 分で使用できなくなると、Storage アカウントが使用できなくなります。 クエリ機能は使用できず、データの損失を防ぐために、Microsoft キーを使用して数時間の間、取り込まれたデータがキャッシュされます。 Key Vault へのアクセスが復元されると、クエリが使用可能になり、一時的にキャッシュされたデータがデータストアに取り込まれ、CMK で暗号化されます。
+  - ライブ サイト -- 約 30 分で使用できなくなると、Storage アカウントが使用できなくなります。 クエリ機能は使用できず、データの損失を防ぐために、Microsoft キーを使用して数時間の間、取り込まれたデータがキャッシュされます。 Key Vault へのアクセスが復元されると、クエリが使用可能になり、一時的にキャッシュされたデータがデータストアに取り込まれ、カスタマー マネージド キーで暗号化されます。
 
   - Key Vault へのアクセス レート - 折り返し操作と折り返しの解除操作のために Azure Monitor Storage が Key Vault にアクセスする頻度は、6 秒から 60 秒です。
 
@@ -584,7 +593,7 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
 
 - クラスターの作成、クラスターのキーの更新、クラスターの削除などの一部の操作には長時間かかるため、完了までにしばらく時間がかかる場合があります。 操作の状態を確認するには、次の 2 つの方法があります。
   1. REST を使用している場合、応答から Azure-AsyncOperation URL 値をコピーし、「[非同期操作と状態のチェック](#asynchronous-operations-and-status-check)」に従います。
-  2. GET 要求をクラスターまたはワークスペースに送信し、応答を観察します。 たとえば、リンクされていないワークスペースには、 *features* の下に *clusterResourceId* が存在しません。
+  2. GET 要求をクラスターまたはワークスペースに送信し、応答を観察します。 たとえば、リンクされていないワークスペースには、*features* の下に *clusterResourceId* が存在しません。
 
 - カスタマー マネージド キーに関するサポートおよびヘルプを受けるには、お客様の連絡先を Microsoft に登録してください。
 

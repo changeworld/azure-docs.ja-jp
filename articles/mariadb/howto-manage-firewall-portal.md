@@ -1,17 +1,17 @@
 ---
 title: ファイアウォール規則の管理 - Azure portal - Azure Database for MariaDB
 description: Azure portal を使用した Azure Database for MariaDB ファイアウォール規則の作成と管理
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 464b13fe4aa727a4d3ca3ff074b8bb94544576a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 895c8e51e16cb0b82ebf3edcf954dabe62b08ff4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86101224"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537133"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MariaDB ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用して、指定した IP アドレスまたは IP アドレス範囲からの Azure Database for MariaDB サーバーへのアクセスを管理できます。
@@ -50,7 +50,7 @@ Azure からアプリケーションが Azure Database for MariaDB サーバー�
 ## <a name="manage-existing-firewall-rules-in-the-azure-portal"></a>Azure portal での既存のファイアウォール規則の管理
 ファイアウォール規則を管理する手順を繰り返します。
 * 現在のコンピューターを追加するには、 **[自分の IP を追加]** をクリックします。 **[保存]** をクリックして変更を保存します。
-* さらに IP アドレスを追加するには、**規則名**、**開始 IP**、および**終了 IP** を入力します。 **[保存]** をクリックして変更を保存します。
+* さらに IP アドレスを追加するには、**規則名**、**開始 IP**、および **終了 IP** を入力します。 **[保存]** をクリックして変更を保存します。
 * 既存の規則を変更するには、規則内の任意のフィールドをクリックしてから、変更します。 **[保存]** をクリックして変更を保存します。
 * 既存の規則を削除するには、省略記号 [...] をクリックして、**削除** をクリックします。 **[保存]** をクリックして変更を保存します。
 

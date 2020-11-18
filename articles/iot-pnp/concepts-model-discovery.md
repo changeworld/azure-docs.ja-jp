@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: caaa4499cbed1dce1a858c33a9488650649a5a44
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: dda0e3d6739e94df4ce5910938c164e3db336bce
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042917"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445576"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>Iot ソリューションで IoT プラグ アンド プレイを使用する
 
@@ -121,7 +121,7 @@ content-encoding:utf-8
 
 新しいデバイス接続用のモデル ID を識別したら、次の手順を行います。
 
-1. モデル リポジトリからのモデル ID を使用して、モデル定義を取得します。 詳細については、[モデルの取得](/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)に関するページを参照してください。
+1. モデル リポジトリからのモデル ID を使用して、モデル定義を取得します。 詳細については、「[デバイス モデル リポジトリ](concepts-model-repository.md)」を参照してください。
 
 1. 接続されたデバイスのモデル定義を使用すれば、デバイスの機能を列挙できます。
 

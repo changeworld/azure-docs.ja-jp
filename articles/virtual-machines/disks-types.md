@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 7f274827e646ea0a7c0fd103983cfc566d699228
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 0a6b6196888aedfd6aa60c9395ff27611907661a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91596772"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413157"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure で利用できるディスクの種類
 
@@ -59,6 +59,8 @@ Ultra Disk の主な機能は次のとおりです。
 |256     |76,800         |2,000         |
 |512     |153,600         |2,000         |
 |1,024 - 65,536 (この範囲内のサイズは 1 TiB ずつ増えます)     |160,000         |2,000         |
+
+Ultra ディスクは、ミリ秒未満の遅延と、前出の表に示した目標 IOPS とスループットを 99.99% の時間で提供するように設計されています。
 
 ### <a name="ga-scope-and-limitations"></a>GA の範囲と制限事項
 

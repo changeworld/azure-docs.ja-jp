@@ -2,15 +2,15 @@
 title: Automation アカウントから Azure Automation Update Management を有効にする
 description: この記事では、Automation アカウントから Update Management を有効にする方法について説明します。
 services: automation
-ms.date: 11/04/2020
+ms.date: 11/09/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 6f14516f36975d84256f9bb1bd3b4949dbf80448
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: b97e1e61401697204f79004e4678e6f2286f4a98
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348833"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380540"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Automation アカウントから Update Management を有効にする
 
@@ -49,7 +49,7 @@ ms.locfileid: "93348833"
 
 ## <a name="enable-non-azure-vms"></a>Azure 以外の VM の有効化
 
-Azure に存在しないマシンは手動で追加する必要があります。
+Azure の外部でホストされているマシンまたはサーバー (Azure Arc 対応サーバーに登録されたものを含む) で Update Management を有効にするには、次の手順を実行します。  
 
 1. Automation アカウントから、 **[更新プログラムの管理]** で **[更新プログラムの管理]** を選択します。
 

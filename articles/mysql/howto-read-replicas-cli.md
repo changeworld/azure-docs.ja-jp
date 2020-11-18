@@ -1,18 +1,18 @@
 ---
 title: 読み取りレプリカの管理 - Azure CLI、REST API - Azure Database for MySQL
 description: Azure CLI または REST API を使用して Azure Database for MySQL の読み取りレプリカを設定し、管理する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 747b8bc1abbf19c861e180faf17e2fa1a143a237
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1a5bc9638e2e6eeff8f2176247f579b64beede90
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546315"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540214"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Azure CLI と REST API を使用して Azure Database for MySQL の読み取りレプリカを作成および管理する方法
 
@@ -32,7 +32,7 @@ Azure CLI を使用して、読み取りレプリカを作成して管理でき�
 ### <a name="create-a-read-replica"></a>読み取りレプリカを作成します
 
 > [!IMPORTANT]
-> 既存のレプリカがないソース用のレプリカを作成すると、まず、ソースがレプリケーションの準備をするために再起動されます。 これを考慮して、これらの操作はオフピーク期間中に実行してください。
+> 既存のレプリカがないソースのレプリカを作成すると、ソースは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク期間中に実行してください。
 
 読み取りレプリカ サーバーは、次のコマンドを使用して作成できます。
 

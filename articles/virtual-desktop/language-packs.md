@@ -3,15 +3,15 @@ title: Windows Virtual Desktop の Windows 10 VM に言語パックをインス�
 description: Windows Virtual Desktop で Windows 10 マルチセッション VM の言語パックをインストールする方法について説明します。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/21/2020
+ms.date: 11/06/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fbc2aba21212a83bd73d5664f4fe288017954c0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10d79d08e3f6ed422f0354074ebc6e0acc125553
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90084211"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354038"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Windows 10 マルチセッション イメージへの言語パックの追加
 
@@ -43,6 +43,11 @@ Windows 10 Enterprise マルチセッション イメージをカスタマイズ
      - 受信トレイ アプリ ISO:
         - [Windows 10 バージョン 1903 または 1909 受信トレイ アプリ ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_InboxApps.iso)
         - [Windows 10 バージョン 2004 受信トレイ アプリ ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_InboxApps.iso)
+        - [Windows 10 バージョン 20H2 受信トレイ アプリ ISO](https://software-download.microsoft.com/download/pr/19041.508.200905-1327.vb_release_svc_prod1_amd64fre_InboxApps.iso)
+     
+     - Windows 10 バージョン 2004 または 20H2 を使用している場合は、Local Experience Pack (LXP) ISO を使用して新しい言語をダウンロードできます。 「[Windows 10 での言語の追加: 既知の問題](/windows-hardware/manufacture/desktop/language-packs-known-issue)」に記載されている情報を基に、バージョン 9B または 9C のどちらをダウンロードする必要があるかどうかを確認してください。
+        - [Windows 10 バージョン 2004 または 20H2 **9B** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_64_ARM64_MultiLang_LangPckAll_LIP_LXP_ONLY)
+        - [Windows 10 バージョン 2004 または 20H2 **9C** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY) 
 
 - Azure ファイル共有または Windows ファイル サーバー仮想マシン上のファイル共有
 
@@ -59,7 +64,7 @@ Windows 10 Enterprise マルチセッション イメージをカスタマイズ
 
 3. 言語パック ISO にアクセスし、**LocalExperiencePacks** および **x64\\langpacks** フォルダーの内容をコピーし、その内容をファイル共有に貼り付けます。
 
-4. **FOD ISO ファイル**にアクセスし、その内容をすべてコピーしてファイル共有に貼り付けます。
+4. **FOD ISO ファイル** にアクセスし、その内容をすべてコピーしてファイル共有に貼り付けます。
 5. 受信トレイ アプリ ISO で **amd64fre** フォルダーにアクセスし、準備した受信トレイ アプリ用のリポジトリにコンテンツをコピーします。
 
      >[!NOTE]

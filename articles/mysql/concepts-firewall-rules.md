@@ -1,17 +1,17 @@
 ---
 title: ファイアウォール規則 - Azure Database for MySQL
 description: ファイアウォール規則を使用して、ご利用の Azure Database for MySQL サーバーへの接続を有効にする方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 63b3fd64526f45994919267a2f4ddc730d0b2fd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4efd9fd814165755d27de1d269b6319890f7190d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90882653"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541608"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Azure Database for MySQL サーバーのファイアウォール規則
 ファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてサーバーへのアクセス権を付与します。
@@ -43,7 +43,7 @@ ms.locfileid: "90882653"
 > **[Azure サービスへのアクセス許可]** オプションでは、他のお客様のサブスクリプションからの接続を含む、Azure からのすべての接続を許可するようにファイアウォールが構成されます。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
 > 
 
-:::image type="content" source="./media/concepts-firewall-rules/allow-azure-services.png" alt-text="ファイアウォールのしくみを示すサンプル フロー":::
+:::image type="content" source="./media/concepts-firewall-rules/allow-azure-services.png" alt-text="ポータルで [Azure サービスへのアクセスを許可] を構成する":::
 
 ### <a name="connecting-from-a-vnet"></a>VNet からの接続
 VNet から Azure Database for MySQL サーバーに安全に接続するには、[VNet サービス エンドポイント](./concepts-data-access-and-security-vnet.md)の使用を検討してください。 

@@ -5,24 +5,27 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: 4ab4a64fa395c105ced8e47cdcec019373f7f835
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/05/2020
+ms.openlocfilehash: 0e9773e5c08f9d07f76a70bc4f899acf5004d3c2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708613"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421811"
 ---
 # <a name="logical-decoding"></a>論理デコード
  
+> [!NOTE]
+> 論理デコードは、Azure Database for PostgreSQL - Single Server のパブリック プレビューです。
+
 [PostgreSQL で論理デコード](https://www.postgresql.org/docs/current/logicaldecoding.html)を使用すると、データの変更を外部のコンシューマーにストリーミングできます。 論理デコードは、イベント ストリーミングおよび変更データ キャプチャのシナリオでよく使用されます。
 
-論理デコードでは、出力プラグインを使用して、Postgres の先行書き込みログ (WAL) を読み取り可能な形式に変換します。 Azure Database for PostgreSQL には、[wal2json](https://github.com/eulerto/wal2json)、[test_decoding](https://www.postgresql.org/docs/current/test-decoding.html)、および pgoutput という出力プラグインが用意されています。 pgoutput は、Postgres バージョン 10 以上の Postgres で使用できます。
+論理デコードでは、出力プラグインを使用して、Postgres の先行書き込みログ (WAL) を読み取り可能な形式に変換します。 Azure Database for PostgreSQL には、[wal2json](https://github.com/eulerto/wal2json)、[test_decoding](https://www.postgresql.org/docs/current/test-decoding.html)、および pgoutput という出力プラグインが用意されています。 pgoutput は、PostgreSQL バージョン 10 以上の PostgreSQL で使用できます。
 
 Postgres の論理デコードのしくみの概要については、[弊社のブログ](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/change-data-capture-in-postgres-how-to-use-logical-decoding-and/ba-p/1396421)を参照してください。 
 
 > [!NOTE]
-> 論理デコードは、Azure Database for PostgreSQL - Single Server のパブリック プレビューです。
+> PostgreSQL パブリケーション/サブスクリプションを使用した論理レプリケーションは、Azure Database for PostgreSQL - 単一サーバーではサポートされていません。
 
 
 ## <a name="set-up-your-server"></a>サーバーのセットアップ 
@@ -39,14 +42,15 @@ Postgres の論理デコードのしくみの概要については、[弊社の�
 ### <a name="using-azure-cli"></a>Azure CLI の使用
 
 1. Replication_support を `logical` に設定します。
-   ```
+   ```azurecli-interactive
    az postgres server configuration set --resource-group mygroup --server-name myserver --name azure.replication_support --value logical
    ``` 
 
 2. サーバーを再起動して変更を適用します。
-   ```
+   ```azurecli-interactive
    az postgres server restart --resource-group mygroup --name myserver
    ```
+3. Postgres 9.5 または 9.6 を実行していて、パブリック ネットワーク アクセスを使用している場合は、論理レプリケーションを実行するクライアントのパブリック IP アドレスを含めるようにファイアウォール規則を追加します。 ファイアウォール規則名には **_replrule** を含める必要があります。 たとえば、*test_replrule* のように指定します。 サーバーに新しいファイアウォール規則を作成するには、[az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) コマンドを実行します。 
 
 ### <a name="using-azure-portal"></a>Azure Portal の使用
 
@@ -56,8 +60,11 @@ Postgres の論理デコードのしくみの概要については、[弊社の�
 
 2. サーバーを再起動して変更を適用するには、 **[はい]** を選択します。
 
-   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="[Azure Database for PostgreSQL] - [レプリケーション] - [Azure レプリケーションのサポート]":::
+   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL - レプリケーション - 再起動の確認":::
 
+3. Postgres 9.5 または 9.6 を実行していて、パブリック ネットワーク アクセスを使用している場合は、論理レプリケーションを実行するクライアントのパブリック IP アドレスを含めるようにファイアウォール規則を追加します。 ファイアウォール規則名には **_replrule** を含める必要があります。 たとえば、*test_replrule* のように指定します。 **[保存]** をクリックします。
+
+   :::image type="content" source="./media/concepts-logical/client-replrule-firewall.png" alt-text="Azure Database for PostgreSQL - レプリケーション - ファイアウォール規則の追加":::
 
 ## <a name="start-logical-decoding"></a>論理デコードを開始する
 
@@ -145,7 +152,7 @@ pg_replication_slots ビューの「active」列には、コンシューマー�
 SELECT * FROM pg_replication_slots;
 ```
 
-*[使用済みストレージ]* と *[レプリカの最大ラグ]* メトリックで[アラートを設定](howto-alert-on-metric.md)し、値が通常のしきい値を超えたら通知するようにします。 
+*[使用済みストレージ]* と *[レプリカの最大ラグ]* メトリックで [アラートを設定](howto-alert-on-metric.md)し、値が通常のしきい値を超えたら通知するようにします。 
 
 > [!IMPORTANT]
 > 未使用のレプリケーション スロットはドロップする必要があります。 これを行わなければ、サーバーを使用できなくなる可能性があります。

@@ -1,17 +1,17 @@
 ---
 title: データイン レプリケーションの構成 － Azure Database for MariaDB
 description: この記事では、Azure Database for MariaDB でデータイン レプリケーションをセットアップする方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: 21a0aaaa9e10a7c3e445145eb178b50b446ba6ae
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fe7e02cc34dc9c97e540d7b8d96c48ee8d5cfe09
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425999"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535369"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でのデータイン レプリケーションの構成
 
@@ -45,7 +45,7 @@ ms.locfileid: "92425999"
 > [!NOTE]
 > バイアスフリーなコミュニケーション
 >
-> Microsoft では、多様性を尊重する環境がサポートされています。 この記事には、" _スレーブ_ " という単語への言及があります。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これを排他的な単語と認めています。 この単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
+> Microsoft では、多様性を尊重する環境がサポートされています。 この記事には、"_スレーブ_" という単語への言及があります。 Microsoft の[バイアスフリーなコミュニケーションに関するスタイル ガイド](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)では、これを排他的な単語と認めています。 この単語は現在、ソフトウェアに表示される単語であるため、一貫性を保つためにこの記事で使用されています。 単語を削除するためにソフトウェアを更新するのに合わせて、この記事は更新されます。
 >
 
 ## <a name="configure-the-source-server"></a>ソース サーバーを構成する
@@ -99,7 +99,7 @@ ms.locfileid: "92425999"
 
    変数 [`log_bin`](https://mariadb.com/kb/en/library/replication-and-binary-log-server-system-variables/#log_bin) で値 `ON` が返された場合、サーバーでバイナリ ログが有効になっています。
 
-   `log_bin` で値 `OFF` が返された場合、 **my.cnf** ファイルを編集して、`log_bin=ON` によってバイナリ ログを有効にします。 変更を有効にするためにサーバーを再起動します。
+   `log_bin` で値 `OFF` が返された場合、**my.cnf** ファイルを編集して、`log_bin=ON` によってバイナリ ログを有効にします。 変更を有効にするためにサーバーを再起動します。
 
 3. ソース サーバーの設定を構成します。
 

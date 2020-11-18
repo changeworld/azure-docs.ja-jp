@@ -1,7 +1,7 @@
 ---
 title: 特徴ハッシュ モジュール リファレンス
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で特徴ハッシュ モジュールを使用して、テキスト データの特徴を抽出する方法について説明します。
+description: Azure Machine Learning デザイナーの特徴ハッシュ モジュールを使用して、テキスト データの特徴を抽出する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: a9ef6ff81a2c9f3697f7c3ccf1cd8e91ad2fb683
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cd48b32afee320aa3d252540d566317c374c73a8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323723"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420786"
 ---
 # <a name="feature-hashing-module-reference"></a>特徴ハッシュ モジュール リファレンス
 
@@ -22,7 +22,7 @@ ms.locfileid: "93323723"
 
 特徴ハッシュ モジュールを使用して、英語テキストのストリームを整数の特徴セットに変換します。 その後、このハッシュされた特徴セットを機械学習アルゴリズムに渡して、テキスト分析モデルをトレーニングすることができます。
 
-このモジュールで提供される特徴ハッシュ機能は、NimbusML フレームワークに基づいています。 詳細については、「[NgramHash クラス](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest)」を参照してください。
+このモジュールで提供される特徴ハッシュ機能は、NimbusML フレームワークに基づいています。 詳細については、「[NgramHash クラス](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest&preserve-view=true)」を参照してください。
 
 ## <a name="what-is-feature-hashing"></a>特徴ハッシュとは
 
@@ -46,7 +46,7 @@ ms.locfileid: "93323723"
 |I hated|1|
 |I loved|1|
 
-N-gram のサイズは、 **N-gram** プロパティを使用して制御できます。 bigram を選択した場合、unigram も計算されます。 辞書には、次のような単一の用語も含まれます。
+N-gram のサイズは、**N-gram** プロパティを使用して制御できます。 bigram を選択した場合、unigram も計算されます。 辞書には、次のような単一の用語も含まれます。
 
 |用語 (unigram)|頻度|
 |------------|---------------|
@@ -90,7 +90,7 @@ N-gram のサイズは、 **N-gram** プロパティを使用して制御でき�
     
     既定のビット サイズは 10 です。 多くの問題に対して、この値が適切です。 トレーニング テキストの N-gram ボキャブラリのサイズによっては、衝突を避けるためにより多くの領域が必要になる場合があります。
     
-1. **[N-grams]\(N-gram\)** には、トレーニング辞書に追加する N-gram の最大長を定義する数値を入力します。 N-gram は、一意の単位として扱われる、 *n* 個の単語のシーケンスです。
+1. **[N-grams]\(N-gram\)** には、トレーニング辞書に追加する N-gram の最大長を定義する数値を入力します。 N-gram は、一意の単位として扱われる、*n* 個の単語のシーケンスです。
 
     たとえば、3 を入力すると、unigram、bigram、trigram が作成されます。
 

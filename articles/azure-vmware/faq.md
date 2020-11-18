@@ -4,12 +4,12 @@ description: Azure VMware Solution についてよく寄せられる質問にお
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: a1ca50e1e1374b5e819c9355be1a48e2b7c3e536
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 33250b0ba9209f7806346668dac0ef308101e7c2
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349088"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94487791"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware Solution についてよく寄せられる質問
 
@@ -74,7 +74,7 @@ Azure VMware Solution のお客様はすべての Azure サービスを利用で
 Azure Bastion は、Azure VMware Solution がインターネットに公開されないようにジャンプ ボックスに接続する場合に推奨されるサービスです。 Azure VMware Solution の VM は Azure IaaS オブジェクトではないため、Azure Bastion を使用してそれらの VM に接続することはできません。
 
 #### <a name="can-azure-load-balancer-internal-be-used-for-azure-vmware-solution-vms"></a>Azure VMware Solution VM で内部 Azure Load Balancer 使用できますか?
-いいえ。 内部 Azure Load Balancer では、Azure IaaS VM のみがサポートされます。 Azure Load Balancer は IP ベースのバックエンド プールをサポートしていません。Azure VMware Solution VM が Azure オブジェクトではない Azure VM または仮想マシン スケール セット (VMSS) オブジェクトのみです。
+いいえ。 内部 Azure Load Balancer では、Azure IaaS VM のみがサポートされます。 Azure Load Balancer は IP ベースのバックエンド プールをサポートしていません。Azure VMware Solution VM が Azure オブジェクトではない Azure VM または仮想マシン スケール セット オブジェクトのみです。
 
 #### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>既存の ExpressRoute ゲートウェイを使用して、Azure VMware Solution に接続できますか?
 はい。仮想ネットワークあたり 4 つの ExpressRoute 回線という上限を超えない限り、既存の ExpressRoute ゲートウェイを使用して Azure VMware Solution に接続できます。  ただし、ExpressRoute 経由でオンプレミスから Azure VMware Solution にアクセスするには、ExpressRoute Global Reach を用意する必要があります。ExpressRoute ゲートウェイでは、それに接続されている回線間で推移的ルーティングが行われないためです。
@@ -115,7 +115,7 @@ Microsoft で把握している限りでは、HotAdd トランスポート モ�
 
 #### <a name="what-is-the-correct-storage-policy-for-the-dedupe-setup"></a>重複除去の設定に適切なストレージ ポリシーは何ですか?
 
-VM テンプレートに " *thin_provision* " ストレージ ポリシーを使用します。  既定値は " *thick_provision* " です。
+VM テンプレートに "*thin_provision*" ストレージ ポリシーを使用します。  既定値は "*thick_provision*" です。
 
 #### <a name="are-the-snmp-infrastructure-logs-shared"></a>SNMP インフラストラクチャのログは共有されますか?
 
@@ -195,6 +195,12 @@ Azure portal で、プライベート クラウドのインターネット接続
 はい。 NSX-T Manager を使用して、インターネットへの VM のアクセスを制限するファイアウォールを作成する必要があります。
 
 
+#### <a name="can-azure-vmware-solution-use-azure-virtual-wan-hosted-expressroute-gateways"></a>Azure VMware Solution では、Azure Virtual WAN でホストされた ExpressRoute ゲートウェイを使用できますか?
+はい。
+
+#### <a name="can-transit-connectivity-be-established-between-on-premises-and-azure-vmware-solution-through-azure-virtual-wan-over-expressroute-global-reach"></a>ExpressRoute Global Reach 経由で Azure Virtual WAN を使用して、オンプレミスと Azure VMware Solution の間にトランジット接続を確立できますか?
+Azure Virtual WAN では、接続されている 2 つの ExpressRoute 回線と Virtual WAN 以外の ExpressRoute ゲートウェイの間に推移的なルーティングは提供されません。 ExpressRoute Global Reach を使用すると、オンプレミスと Azure VMware Solution の接続が可能になりますが、Virtual WAN ハブではなく Microsoft のグローバル ネットワークを通過します。
+
 
 ## <a name="accounts-and-privileges"></a>アカウントと特権
 
@@ -237,7 +243,7 @@ Microsoft と Red Hat は、Azure プラットフォームで実行される Red
 
 #### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>VMware HCX Enterprise Edition を利用できますか? 利用できる場合、コストはどのくらいですか?
 
-VMware HCX Enterprise Edition (EE) は、Azure VMware Solution で、 *プレビュー* の機能/サービスとして使用できます。 Azure VMware Solution 向けの VMware HCX EE はプレビュー段階ですが、無料の機能/サービスであり、プレビュー サービスの利用規約が適用されます。 VMware HCX EE サービスが GA になると、課金が切り替わるという通知が 30 日間前に届きます。 サービスを停止またはオプトアウトすることができます。
+VMware HCX Enterprise Edition (EE) は、Azure VMware Solution で、*プレビュー* の機能/サービスとして使用できます。 Azure VMware Solution 向けの VMware HCX EE はプレビュー段階ですが、無料の機能/サービスであり、プレビュー サービスの利用規約が適用されます。 VMware HCX EE サービスが GA になると、課金が切り替わるという通知が 30 日間前に届きます。 サービスを停止またはオプトアウトすることができます。
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Azure VMware Solution に対するホスト クォータの増量はどのようにリクエストすればよいですか?
 
@@ -280,6 +286,17 @@ Azure VMware Solution リソースを作成する前に、サポート チケッ
    `"
 
    For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md).
+
+
+## Customer communication
+
+#### How can I receive an alert when Azure sends service health notifications to my Azure subscription?
+
+Service issues, planned maintenance, health advisories, security advisories notifications are published through **Service Health** in the Azure portal.  You can take timely actions when you set up activity log alerts for these notifications. For more information, see [Create service health alerts using the Azure portal](../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal).
+
+:::image type="content" source="media/service-health.png" alt-text="Screenshot of Service Health notifications":::
+
+
 
 <!-- LINKS - external -->
 [kb2106952]: https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=21069522

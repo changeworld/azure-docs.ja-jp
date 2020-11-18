@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: d0727f512ab24342b493ba2563262a9253d95d8c
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.custom: seo-nov-2020
+ms.openlocfilehash: 9cde9586d453632ceaa61de7c095a5f95d1ea2e4
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339973"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337408"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Azure Cosmos DB の分析ストア (プレビュー) とは
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -19,7 +20,9 @@ ms.locfileid: "93339973"
 > [!IMPORTANT]
 > Azure Cosmos DB の分析ストアは現在プレビュー段階にあります。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
-Azure Cosmos DB の分析ストアは、トランザクション ワークロードに影響を与えることなく、Azure Cosmos DB 内の運用データに対する大規模な分析を可能にするための、完全に分離された列ストアです。  
+Azure Cosmos DB の分析ストアは、トランザクション ワークロードに影響を与えることなく、Azure Cosmos DB 内の運用データに対する大規模な分析を可能にするための、完全に分離された列ストアです。 
+
+Azure Cosmos DB のトランザクション ストアはスキーマに依存せず、スキーマやインデックスを管理する必要なしに、アプリケーション上で反復処理を実行できます。 これに対し、Azure Cosmos DB の分析ストアは、分析クエリのパフォーマンスを最適化するためにスキーマ化されています。 この記事では、分析ストレージについて詳しく説明します。
 
 ## <a name="challenges-with-large-scale-analytics-on-operational-data"></a>運用データでの大規模な分析に関する課題
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 10/09/2020
-ms.openlocfilehash: f722345b5be91a09bc513064b476f0b94eda765d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/06/2020
+ms.openlocfilehash: 7532366d533aa957525235511a1f29649d6f8828
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094508"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369212"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -67,7 +67,7 @@ ms.locfileid: "93094508"
 たとえば、保持期間の制限を 90 日間から 30 日間に減らしたとします。 実行履歴から 60 日前の実行が削除されます。 保有期間を 30 日間から 60 日間に増やした場合、20 日前の実行はさらに 40 日間実行履歴に残ります。
 
 > [!IMPORTANT]
-> 実行の継続時間が現在の実行履歴の保持期間の制限を超えると、その実行はストレージの実行履歴から削除されます。 実行履歴が失われないようにするには、保持期間の制限を、実行の可能な最長期間よりも " *常に* " 多くします。
+> 実行の継続時間が現在の実行履歴の保持期間の制限を超えると、その実行はストレージの実行履歴から削除されます。 実行履歴が失われないようにするには、保持期間の制限を、実行の可能な最長期間よりも "*常に*" 多くします。
 
 1. [Azure portal](https://portal.azure.com) の検索ボックスで、 **[ロジック アプリ]** を検索して選択します。
 
@@ -108,14 +108,23 @@ ms.locfileid: "93094508"
 
 ロジック アプリの 1 回の実行の制限を次に示します。
 
+### <a name="loops"></a>ループ
+
 | 名前 | 制限 | Notes |
 | ---- | ----- | ----- |
-| トリガーのコンカレンシー | - コンカレンシー制御がオフの場合は無制限 <p><p>- コンカレンシー制御がオンの場合は、25 が既定の制限です。コンカレンシーを有効にした後、これを元に戻すことはできません。 既定値は、1 から 50 までの値に変更することができます。 | この制限は、同時に (つまり、並列で) 実行できるロジック アプリ インスタンスの最大数を示します。 <p><p>**注** :コンカレンシーが有効になっていると、 [配列のバッチ解除](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)のために SplitOn 上限が 100 項目に下がります。 <p><p>既定の制限を 1 ～ 50 の値に変更するには、[トリガーのコンカレンシーの制限の変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)に関するページまたは「[インスタンスを順次トリガーする](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)」を参照してください。 |
-| 待機中の実行の最大数 | - コンカレンシーが無効な場合、待機中の実行の最小数は 1 で、最大数は 50 です。 <p><p>- コンカレンシーが有効な場合、待機中の実行の最小数は、10 に同時実行 (トリガーのコンカレンシー) の数を加えたものになります。 最大数は 100 以下で変更することができます。 | この制限は、ロジック アプリで最大数の同時実行インスタンスが既に実行されている場合に、実行を待機できるロジック アプリ インスタンスの最大数を示します。 <p><p>既定の制限を変更するには、「[実行待機の制限を変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)」を参照してください。 |
 | Foreach の配列項目 | 100,000 | この制限は、"for each" ループで処理できる配列項目の最大数を示します。 <p><p>さらに大きな配列にフィルターを適用するには、[クエリ アクション](logic-apps-perform-data-operations.md#filter-array-action)を使用できます。 |
-| Foreach のコンカレンシー | コンカレンシー制御がオフの場合、20 が既定値の制限となります。 既定値は、1 から 50 までの値に変更することができます。 | この制限は、同時に (つまり、並列で) 実行できる "for each" ループ イテレーションの最大数です。 <p><p>既定の制限を 1 ～ 50 の値に変更するには、["for each" のコンカレンシーの制限の変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency)に関するページまたは「["for each" ループを順次実行する](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)」を参照してください。 |
-| SplitOn 項目数 | - トリガーのコンカレンシーが無効な場合は 100,000 <p><p>- トリガーのコンカレンシーが有効な場合は 100 | 配列を返すトリガーの場合、"Foreach" ループを使用するのではなく、処理のために配列項目を複数のワークフロー インスタンスに[分割、つまり、バッチ解除する](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) 'SplitOn' プロパティを使用する式を指定できます。 この式では、各配列項目のワークフロー インスタンスを作成および実行するために使用する配列を参照します。 <p><p>**注** :コンカレンシーが有効になっていると、SplitOn 上限が 100 項目に下がります。 |
-| Until 反復数 | - 既定:60 <p><p>- 最大値:5,000 | |
+| Foreach のコンカレンシー | コンカレンシーがオフの場合:20 <p><p>コンカレンシーがオンの場合: <p><p>- 既定:20 <br>- 最小:1 <br>- 最大:50 | この制限は、同時に (つまり、並列で) 実行できる "for each" ループ イテレーションの最大数です。 <p><p>この制限を変更するには、["for each" のコンカレンシー制限を変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency)方法に関するページ、または「["for each" ループを順次実行する](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)」を参照してください。 |
+| Until 反復数 | - 既定:60 <br>- 最小:1 <br>- 最大:5,000 | ロジック アプリの実行中に、"Until" ループで実行できる最大サイクル数。 <p><p>この制限を変更するには、"Until" ループ図形で **[制限の変更]** を選択し、 **[カウント]** プロパティの値を指定します。 |
+| タイムアウトまで | - 既定:PT1H (1 時間) | "Until" ループを終了するまでに実行できる最大時間数であり、[ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)で指定されます。 タイムアウト値は、ループのサイクルごとに評価されます。 ループ内のアクションがタイムアウト制限より長くなる場合、現在のサイクルは停止しません。 ただし、制限の条件が満たされていないため、次のサイクルは開始しません。 <p><p>この制限を変更するには、"Until" ループ図形で **[制限の変更]** を選択し、 **[タイムアウト]** プロパティの値を指定します。 |
+||||
+
+### <a name="concurrency-and-debatching"></a>コンカレンシーと分割処理
+
+| 名前 | 制限 | Notes |
+| ---- | ----- | ----- |
+| トリガーのコンカレンシー | コンカレンシーがオフの場合:無制限 <p><p>コンカレンシーがオンの場合、これを有効にした後に元に戻すことはできません。 <p><p>- 既定:25 <br>- 最小:1 <br>- 最大:50 | この制限は、同時に (つまり、並列で) 実行できるロジック アプリ インスタンスの最大数です。 <p><p>**注**:コンカレンシーが有効になっていると、[配列のバッチ解除](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)のために SplitOn 上限が 100 項目に下がります。 <p><p>この制限を変更するには、[トリガーのコンカレンシー制限を変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)方法に関するページまたは「[インスタンスを順次トリガーする](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)」を参照してください。 |
+| 待機中の実行の最大数 | コンカレンシーがオフの場合: <p><p>- 最小:1 <br>- 最大:50 <p><p>コンカレンシーがオンの場合: <p><p>- 最小:10 + 同時実行の数 (トリガーのコンカレンシー) <br>- 最大:100 | この制限は、ロジック アプリで最大数の同時実行インスタンスが既に実行されている場合に、実行を待機できるロジック アプリ インスタンスの最大数です。 <p><p>この制限を変更するには、「[実行待機の制限を変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)」を参照してください。 |
+| SplitOn 項目数 | コンカレンシーがオフの場合:100,000 <p><p>コンカレンシーがオンの場合:100 | 配列を返すトリガーの場合、"Foreach" ループを使用するのではなく、処理のために配列項目を複数のワークフロー インスタンスに[分割、つまり、バッチ解除する](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) 'SplitOn' プロパティを使用する式を指定できます。 この式では、各配列項目のワークフロー インスタンスを作成および実行するために使用する配列を参照します。 <p><p>**注**:コンカレンシーが有効になっていると、SplitOn 上限が 100 項目に下がります。 |
 ||||
 
 <a name="throughput-limits"></a>
@@ -128,13 +137,57 @@ ms.locfileid: "93094508"
 
 | 名前 | 制限 | Notes |
 | ---- | ----- | ----- |
-| アクション:5 分あたりの実行数 | 既定の制限は 100,000、上限は 300,000 です。 | 既定の制限を変更するには、["高スループット" モードでのロジック アプリの実行](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)に関する記事をご覧ください。 または、必要に応じて複数のロジック アプリにワークロードを分散できます。 |
+| アクション:5 分あたりの実行数 | 既定の制限は 100,000、上限は 300,000 です。 | ロジック アプリの既定の制限を最大に引き上げるには、プレビュー段階の「[高スループット モードで実行する](#run-high-throughput-mode)」を参照してください。 または、必要に応じて[複数のロジック アプリにワークロードを分散](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling)できます。 |
 | アクション:同時送信呼び出し | ～ 2,500 | 必要に応じて、同時要求数を削減するか期間を短縮できます。 |
 | ランタイム エンドポイント: 同時受信呼び出し | ～ 1,000 | 必要に応じて、同時要求数を削減するか期間を短縮できます。 |
 | ランタイム エンドポイント: 5 分あたりの読み取り呼び出し数  | 60,000 | この制限は、ロジック アプリの実行履歴から未加工の入力と出力を取得する呼び出しに適用されます。 必要に応じて、複数のアプリにわたってワークロードを分散できます。 |
 | ランタイム エンドポイント: 5 分あたりの起動呼び出し数 | 45,000 | 必要に応じて、複数のアプリにワークロードを分散できます。 |
 | 5 分あたりのコンテンツのスループット | 600 MB | 必要に応じて、複数のアプリにワークロードを分散できます。 |
 ||||
+
+<a name="run-high-throughput-mode"></a>
+
+#### <a name="run-in-high-throughput-mode"></a>高スループット モードで実行する
+
+1 回のロジック アプリの定義において、5 分ごとに実行されるアクションの数には、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)が設定されています。 ロジック アプリの既定の制限を最大に引き上げるには、プレビュー段階の高スループット モードを有効にします。 または、必要に応じて[複数のロジック アプリにワークロードを分散](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling)できます。
+
+1. Azure portal のロジック アプリのメニューで **[設定]** の **[ワークフロー設定]** を選択します。
+
+1. **[ランタイム オプション]** ** > [高スループット]** で設定を **[オン]** に変更します。
+
+   ![[ワークフロー設定] と [高スループット] が [オン] に設定されている Azure portal のロジック アプリ メニューを示すスクリーンショット。](./media/logic-apps-limits-and-config/run-high-throughput-mode.png)
+
+ロジック アプリをデプロイするために、ARM テンプレートのこの設定を有効にするには、ロジック アプリのリソース定義の `properties` オブジェクトで、`operationOptions` プロパティを `OptimizedForHighThroughput`に設定した `runtimeConfiguration` オブジェクトを追加します。
+
+```json
+{
+   <template-properties>
+   "resources": [
+      // Start logic app resource definition
+      {
+         "properties": {
+            <logic-app-resource-definition-properties>,
+            <logic-app-workflow-definition>,
+            <more-logic-app-resource-definition-properties>,
+            "runtimeConfiguration": {
+               "operationOptions": "OptimizedForHighThroughput"
+            }
+         },
+         "name": "[parameters('LogicAppName')]",
+         "type": "Microsoft.Logic/workflows",
+         "location": "[parameters('LogicAppLocation')]",
+         "tags": {},
+         "apiVersion": "2016-06-01",
+         "dependsOn": [
+         ]
+      }
+      // End logic app resource definition
+   ],
+   "outputs": {}
+}
+```
+
+ロジック アプリのリソース定義の詳細については、「[概要:Azure Resource Manager テンプレートを使用して Azure Logic Apps のデプロイを自動化する](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)」を参照してください。
 
 ### <a name="integration-service-environment-ise"></a>統合サービス環境 (ISE)
 
@@ -170,8 +223,8 @@ Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの
 
 | 名前 | マルチ テナントの制限 | 統合サービス環境の制限 | Notes |
 |------|--------------------|---------------------------------------|-------|
-| 送信要求 | 120 秒 <br>(2 分) | 240 秒 <br>(4 分) | 送信要求の例には、HTTP トリガーによる呼び出しが含まれます。 <p><p>**ヒント** :これよりも実行時間が長い要求には、 [非同期ポーリング パターン](../logic-apps/logic-apps-create-api-app.md#async-pattern) または [until ループ](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)を使用します。 [呼び出し可能なエンドポイント](logic-apps-http-endpoint.md)を持つ別のロジック アプリを呼び出したときにタイムアウト制限を回避するには、組み込みの Azure Logic Apps アクションを代わりに使用できます。これは、 **[Built-in]\(組み込み\)** の下のコネクタ ピッカーにあります。 |
-| 受信要求 | 120 秒 <br>(2 分) | 240 秒 <br>(4 分) | 受信要求の例には、要求トリガーと Webhook トリガーによって受信された呼び出しが含まれます。 <p><p>**注** :元の呼び出し元で応答を受け取るには、別のロジック アプリを入れ子のワークフローとして呼び出す場合を除き、応答のすべての手順が制限内に完了する必要があります。 詳細については、「[ロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。 |
+| 送信要求 | 120 秒 <br>(2 分) | 240 秒 <br>(4 分) | 送信要求の例には、HTTP トリガーによる呼び出しが含まれます。 <p><p>**ヒント**:これよりも実行時間が長い要求には、[非同期ポーリング パターン](../logic-apps/logic-apps-create-api-app.md#async-pattern) または [until ループ](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)を使用します。 [呼び出し可能なエンドポイント](logic-apps-http-endpoint.md)を持つ別のロジック アプリを呼び出したときにタイムアウト制限を回避するには、組み込みの Azure Logic Apps アクションを代わりに使用できます。これは、 **[Built-in]\(組み込み\)** の下のコネクタ ピッカーにあります。 |
+| 受信要求 | 120 秒 <br>(2 分) | 240 秒 <br>(4 分) | 受信要求の例には、要求トリガーと Webhook トリガーによって受信された呼び出しが含まれます。 <p><p>**注**:元の呼び出し元で応答を受け取るには、別のロジック アプリを入れ子のワークフローとして呼び出す場合を除き、応答のすべての手順が制限内に完了する必要があります。 詳細については、「[ロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。 |
 |||||
 
 <a name="message-size-limits"></a>
@@ -285,7 +338,7 @@ ISE に含まれている統合アカウント以外に追加する統合アカ�
 | アーティファクト | 制限 | Notes |
 | -------- | ----- | ----- |
 | アセンブリ | 8 MB | 2 MB を超えるファイルをアップロードするには、[Azure ストレージ アカウントと BLOB コンテナー](../logic-apps/logic-apps-enterprise-integration-schemas.md)を使用します。 |
-| マップ (XSLT ファイル) | 8 MB | 2 MB を超えるファイルをアップロードするには、[Azure Logic Apps REST API - Maps](/rest/api/logic/maps/createorupdate) を使用します。 <p><p>**注** :マップで正常に処理できるデータまたはレコードの量は、Azure Logic Apps のメッセージ サイズとアクション タイムアウトの制限に基づいています。 たとえば、HTTP アクションを使用する場合、[HTTP メッセージ サイズとタイムアウトの制限](#request-limits)に基づき、マップでは、HTTP タイムアウトの制限内で操作が完了するのであれば、HTTP メッセージ サイズの制限までデータを処理できます。 |
+| マップ (XSLT ファイル) | 8 MB | 2 MB を超えるファイルをアップロードするには、[Azure Logic Apps REST API - Maps](/rest/api/logic/maps/createorupdate) を使用します。 <p><p>**注**:マップで正常に処理できるデータまたはレコードの量は、Azure Logic Apps のメッセージ サイズとアクション タイムアウトの制限に基づいています。 たとえば、HTTP アクションを使用する場合、[HTTP メッセージ サイズとタイムアウトの制限](#request-limits)に基づき、マップでは、HTTP タイムアウトの制限内で操作が完了するのであれば、HTTP メッセージ サイズの制限までデータを処理できます。 |
 | スキーマ | 8 MB | 2 MB を超えるファイルをアップロードするには、[Azure ストレージ アカウントと BLOB コンテナー](../logic-apps/logic-apps-enterprise-integration-schemas.md)を使用します。 |
 ||||
 
@@ -332,12 +385,12 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 > セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、このセクションの後半で説明する各リージョンの Logic Apps IP アドレスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md)を使用することもできます。
 > これらのタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。
 >
-> * **LogicAppsManagement** :Logic Apps サービスの受信 IP アドレスのプレフィックスを表します。
-> * **LogicApps** :Logic Apps サービスの送信 IP アドレスのプレフィックスを表します。
+> * **LogicAppsManagement**:Logic Apps サービスの受信 IP アドレスのプレフィックスを表します。
+> * **LogicApps**:Logic Apps サービスの送信 IP アドレスのプレフィックスを表します。
 
 * [Azure China 21Vianet](/azure/china/) については、Azure Storage, SQL Server や Office 365 Outlook など、[カスタム コネクタ](../logic-apps/custom-connector-overview.md)や[マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)で固定または予約済みの IP アドレスを利用できません。
 
-* ロジック アプリが [HTTP](../connectors/connectors-native-http.md)、 [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)、および他の HTTP 要求を使用して直接実行する呼び出しをサポートするには、ロジック アプリが存在するリージョンに基づいて、Logic Apps サービスで使用されるすべての [受信](#inbound) " *および* " [送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの **受信** と **送信** の見出しの下に、リージョン別に並べ替えられて表示されます。
+* ロジック アプリが [HTTP](../connectors/connectors-native-http.md)、[HTTP + Swagger](../connectors/connectors-native-http-swagger.md)、および他の HTTP 要求を使用して直接実行する呼び出しをサポートするには、ロジック アプリが存在するリージョンに基づいて、Logic Apps サービスで使用されるすべての [受信](#inbound) "*および*" [送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの **受信** と **送信** の見出しの下に、リージョン別に並べ替えられて表示されます。
 
 * [マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)が実行する呼び出しをサポートするには、ロジック アプリが存在するリージョンに基づいて、これらのコネクタで使用される *すべて* の [送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの **送信** の見出しの下に、リージョン別に並べ替えられて表示されます。
 
@@ -354,7 +407,7 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 このセクションには、Azure Logic Apps サービスのみの受信 IP アドレスが一覧表示されています。 Azure Government をご使用の場合は、「[Azure Government - 受信 IP アドレス](#azure-government-inbound)」を参照してください。
 
 > [!TIP]
-> セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、各リージョンの受信 Logic Apps IP アドレスのプレフィックスを指定するのではなく、 [サービス タグ](../virtual-network/service-tags-overview.md) **LogicAppsManagement** を使用することもできます。
+> セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、各リージョンの受信 Logic Apps IP アドレスのプレフィックスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md) **LogicAppsManagement** を使用することもできます。
 > このタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。
 
 <a name="multi-tenant-inbound"></a>
@@ -418,7 +471,7 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 このセクションには、Azure Logic Apps サービスとマネージド コネクタの送信 IP アドレスが一覧表示されています。 Azure Government をご使用の場合は、「[Azure Government - 送信 IP アドレス](#azure-government-outbound)」を参照してください。
 
 > [!TIP]
-> セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、各リージョンの送信 Logic Apps IP アドレスのプレフィックスを指定するのではなく、 [サービス タグ](../virtual-network/service-tags-overview.md) **LogicApps** を使用することもできます。
+> セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、各リージョンの送信 Logic Apps IP アドレスのプレフィックスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md) **LogicApps** を使用することもできます。
 > マネージド コネクタの場合は、リージョンごとに送信マネージド コネクタの IP アドレス プレフィックスを指定する代わりに、必要に応じて **AzureConnectors** サービス タグを使用することができます。 これらのタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。 
 
 <a name="multi-tenant-outbound"></a>

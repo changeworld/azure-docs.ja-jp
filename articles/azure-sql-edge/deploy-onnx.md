@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 10/13/2020
-ms.openlocfilehash: 8da0b34339f2ac03f50e2dcb1a4ed13cc2ea9785
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 6dd7715292470d186806443d0a0b05bdbb084a43
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075435"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392182"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model-and-sql-machine-learning"></a>ONNX モデルおよび SQL 機械学習を使用したデプロイと予測
 
@@ -26,11 +26,11 @@ ms.locfileid: "92075435"
 
 * Azure SQL Edge を使用していて、Azure SQL Edge モジュールをデプロイしていない場合は、[Azure portal を使用して SQL Edge をデプロイする](deploy-portal.md)手順に従います。
 
-* [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download) をインストールします。
+* [Azure Data Studio](/sql/azure-data-studio/download) をインストールします。
 
 * このクイックスタートに必要な Python パッケージをインストールします。
 
-  1. Python 3 カーネルに接続された[新しいノートブック](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks)を開きます。 
+  1. Python 3 カーネルに接続された[新しいノートブック](/sql/azure-data-studio/sql-notebooks)を開きます。 
   1. **[パッケージの管理]** をクリックします
   1. **[インストール済み]** タブの、インストール済みパッケージの一覧で、以下の Python パッケージを探します。 これらのパッケージのいずれかがインストールされていない場合は、 **[新規追加]** タブを選択し、そのパッケージを検索して、 **[インストール]** をクリックします。
      - **scikit-learn**
@@ -76,7 +76,7 @@ print("\n**_ Training dataset y\n")
 print(y_train.head())
 ```
 
-**出力**:
+_*出力**:
 
 ```text
 **_ Training dataset x
@@ -141,7 +141,7 @@ print('_*_ Scikit-learn r2 score: {}'.format(sklearn_r2_score))
 print('_*_ Scikit-learn MSE: {}'.format(sklearn_mse))
 ```
 
-**出力**:
+_*出力**:
 
 ```text
 **_ Scikit-learn r2 score: 0.7406426641094094
@@ -215,7 +215,7 @@ print('MSE are equal' if sklearn_mse == onnx_mse else 'Difference in MSE scores:
 print()
 ```
 
-**出力**:
+_*出力**:
 
 ```text
 **_ Onnx r2 score: 0.7406426691136831
@@ -227,7 +227,7 @@ MSE are equal
 
 ## <a name="insert-the-onnx-model"></a>ONNX モデルを挿入する
 
-Azure SQL Edge または Azure SQL Managed Instance で、`onnx` データベースの `models` テーブルにモデルを格納します。 接続文字列に、**サーバー アドレス**、**ユーザー名**、**パスワード**を指定します。
+Azure SQL Edge または Azure SQL Managed Instance で、`onnx` データベースの `models` テーブルにモデルを格納します。 接続文字列に、_*サーバー アドレス**、**ユーザー名**、**パスワード** を指定します。
 
 ```python
 import pyodbc

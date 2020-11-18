@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: a78c67892e2bccb7c98d680539a84c2cc1f49a95
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 6830bdd38e8e1f1d649673cfdaf48e8c50ba6c3e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372295"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413226"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Azure Arc データ コントローラーを作成する
 
@@ -36,16 +36,17 @@ Azure Arc 対応データ サービスは、複数の異なる種類の Kubernet
 - Kubeadm を使用して通常デプロイされるオープンソースのアップストリーム Kubernetes
 
 > [!IMPORTANT]
-> * Kubernetes のサポートされている最小バージョンは 1.14 です。
+> * Kubernetes のサポートされている最小バージョンは 1.17 です。
+> * サポートされる OCP の最小バージョンは 4.3 です。
 > * 環境と Azure の間に必要な接続については、「[接続要件](connectivity.md)」を参照してください。
 > * 永続ストレージを構成する方法の詳細については、「[ストレージ構成ガイダンス](storage-configuration.md)」を参照してください。
-> * Azure Kubernetes Service を使用している場合は、クラスターのワーカー ノードの VM サイズが少なくとも **Standard_D8s_v3** であり、 **Premium ディスク** を使用している必要があります。 クラスターは複数の可用性ゾーンにまたがることはできません。 
+> * Azure Kubernetes Service を使用している場合は、クラスターのワーカー ノードの VM サイズが少なくとも **Standard_D8s_v3** であり、**Premium ディスク** を使用している必要があります。 クラスターは複数の可用性ゾーンにまたがることはできません。 
 > * 別の Kubernetes ディストリビューションまたはサービスを使用している場合は、最小ノード サイズとして 8 GB RAM および 4 コアが必要であり、かつすべての Kubernetes ノードで使用可能な容量として合計 32 GB RAM を確保する必要があります。 たとえば、32 GB RAM と 4 コアのノードを 1 つ使用することも、それぞれが 16 GB RAM と 4 コアのノードを 2 つ使用することもできます。
 
 > [!NOTE]
 > Azure で Red Hat OpenShift Container Platform を使用している場合は、利用できる中で最新のバージョンを使用することをお勧めします。
 
-選択するオプションによっては、特定のツールが " _必要_ " になりますが、Azure Arc データ コントローラーの作成を開始する前に、 [すべてのクライアント ツール](./install-client-tools.md)をインストールしておくことをお勧めします。
+選択するオプションによっては、特定のツールが "_必要_" になりますが、Azure Arc データ コントローラーの作成を開始する前に、[すべてのクライアント ツール](./install-client-tools.md)をインストールしておくことをお勧めします。
 
 選択するオプションに関わりなく、作成プロセス中に次の情報を指定する必要があります。
 

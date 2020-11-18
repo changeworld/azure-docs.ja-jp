@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 01eb35a60a6d51b5742d8fedd2ee0631aa86c924
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3a915ac8de83a5e183660ec4a3d05044eafff4a9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147947"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337510"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>お使いの Azure Data Box と Azure Data Box Heavy のエクスポート注文の追跡とイベント ログ記録
 
@@ -39,7 +39,7 @@ Data Box または Data Box Heavy のエクスポート注文は、注文、設�
 Azure Data Box サービスに対して定義できる 2 つのロールは次のとおりです。
 
 - **Data Box 閲覧者** - スコープによって定義されている、注文に対する読み取り専用アクセス権を持ちます。 表示できるのは注文の詳細のみです。 ストレージ アカウントに関連するその他の詳細にアクセスしたり、住所などの注文の詳細を編集したりすることはできません。
-- **Data Box 共同作成者** - *既にストレージ アカウントへの書き込みアクセス権を持っている場合は* 、特定のストレージ アカウントにデータを転送するためにのみ注文を作成できます。 ストレージ アカウントへのアクセス権がない場合は、アカウントにデータをコピーするために Data Box の注文を作成することもできません。 このロールは、ストレージ アカウントに関連するアクセス許可を定義することも、ストレージ アカウントにアクセス権を付与することもありません。  
+- **Data Box 共同作成者** - *既にストレージ アカウントへの書き込みアクセス権を持っている場合は*、特定のストレージ アカウントにデータを転送するためにのみ注文を作成できます。 ストレージ アカウントへのアクセス権がない場合は、アカウントにデータをコピーするために Data Box の注文を作成することもできません。 このロールは、ストレージ アカウントに関連するアクセス許可を定義することも、ストレージ アカウントにアクセス権を付与することもありません。  
 
 注文へのアクセスを制限するためには、次のようにすることができます。
 
@@ -52,9 +52,9 @@ Azure Data Box サービスに対して定義できる 2 つのロールは次�
 
 Data Box のエクスポート注文を設定する場合、詳細ログの収集を有効にするかどうかのオプションがあります。 詳細ログを有効にする注文画面は次のとおりです。
 
-![Select export option (エクスポート オプションの選択)](media/data-box-deploy-export-ordered/azure-data-box-export-04b.png)
+![Select export option (エクスポート オプションの選択)](media/data-box-deploy-export-ordered/azure-data-box-export-order-export-option.png)
 
-**[Include verbose log]\(詳細ログを含める\)** オプションを選択すると、お使いの Azure Storage アカウントからデータをコピーするときに詳細ログ ファイルが生成されます。 このログには、正常にエクスポートされたすべてのファイルが一覧表示されます。      
+**[Include verbose log]\(詳細ログを含める\)** オプションを選択すると、お使いの Azure Storage アカウントからデータをコピーするときに詳細ログ ファイルが生成されます。 このログには、正常にエクスポートされたすべてのファイルが一覧表示されます。
 
 エクスポート注文の詳細については、[Data Box のエクスポート注文の作成](data-box-deploy-export-ordered.md)に関するページを参照してください。
 
@@ -97,7 +97,7 @@ Data Box のエクスポート注文を設定する場合、詳細ログの収�
 </CopyLog>
 ``` 
     
-次に示すのは、 *コピー ログ* 内にエラーがあり、一部のファイルを Azure からコピーできなかった場合のサンプル出力です。
+次に示すのは、*コピー ログ* 内にエラーがあり、一部のファイルを Azure からコピーできなかった場合のサンプル出力です。
 
 ```output
 <ErroredEntity CloudFormat="AppendBlob" Path="export-ut-appendblob/wastorage.v140.3.0.2.nupkg">
@@ -252,7 +252,7 @@ The authentication information fields provide detailed information about this sp
 
 - デバイスの運送業者の追跡情報。
 - *SecureErase* アクティビティのイベント。 これらのイベントは、ディスク上のデータの消去に対応します。
-- Data Box ログのリンク。 *監査ログ* 、 *コピー ログ* 、および *BOM* ファイルのパスが表示されます。
+- Data Box ログのリンク。 *監査ログ*、*コピー ログ*、および *BOM* ファイルのパスが表示されます。
 
 次に、Azure portal からの注文履歴ログのサンプルを示します。
 

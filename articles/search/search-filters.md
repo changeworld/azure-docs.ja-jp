@@ -9,20 +9,20 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6c46dfb3f36c3ef7f67ce2f3b52c2ffe4c805a61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d83e5c39f97db49e2cc9b77cc806cff0a1fa6de
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534796"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94355986"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure Cognitive Search のフィルター 
 
-*フィルター*は、Azure Cognitive Search で使用されているドキュメントの選択条件です。 フィルター処理されていない検索には、インデックスのすべてのドキュメントが含まれます。 フィルターによって、検索クエリの範囲がドキュメントのサブセットに絞り込まれます。 たとえば、フィルターによって、フルテキスト検索を特定のブランドや色、特定のしきい値を超える価格帯の製品のみに制限することができます。
+*フィルター* は、Azure Cognitive Search で使用されているドキュメントの選択条件です。 フィルター処理されていない検索には、インデックスのすべてのドキュメントが含まれます。 フィルターによって、検索クエリの範囲がドキュメントのサブセットに絞り込まれます。 たとえば、フィルターによって、フルテキスト検索を特定のブランドや色、特定のしきい値を超える価格帯の製品のみに制限することができます。
 
 一部の検索エクスペリエンスは実装の一部としてフィルター要件を課しますが、*値ベース* (製品の種類を "書籍"、カテゴリを "ノンフィクション"、出版元を "Simon & Schuster" に検索範囲を指定するなど) の条件を使用して検索を制限したいときにいつでもフィルターを使用できます。
 
-値ベースではなく、特定のデータ*構造* (検索範囲を顧客レビュー フィールドに指定するなど) を対象にした検索が目標の場合、以下のように代替の方法があります。
+値ベースではなく、特定のデータ *構造* (検索範囲を顧客レビュー フィールドに指定するなど) を対象にした検索が目標の場合、以下のように代替の方法があります。
 
 ## <a name="when-to-use-a-filter"></a>フィルターを使用する場合
 
@@ -64,7 +64,7 @@ ms.locfileid: "91534796"
 ## <a name="defining-filters"></a>フィルターを定義する
 フィルターは [Azure Cognitive Search でサポートされている OData V4 構文のサブセット](/rest/api/searchservice/odata-expression-syntax-for-azure-search)を使用して記述される OData 式です。 
 
-各**検索**操作に 1 つのフィルターを指定できますが、フィルター自体には複数のフィールド、複数の条件、および複数のフルテキスト検索式 (**ismatch** 関数を使用する場合) を含めることができます。 マルチパートのフィルター式では、任意の順序で述語を指定できます (演算子の優先順位の規則に従います)。 特定の順序で述語を並べ替えても、感知できるほどパフォーマンスが向上することはありません。
+各 **検索** 操作に 1 つのフィルターを指定できますが、フィルター自体には複数のフィールド、複数の条件、および複数のフルテキスト検索式 (**ismatch** 関数を使用する場合) を含めることができます。 マルチパートのフィルター式では、任意の順序で述語を指定できます (演算子の優先順位の規則に従います)。 特定の順序で述語を並べ替えても、感知できるほどパフォーマンスが向上することはありません。
 
 フィルター式に関する制限の 1 つとして、要求サイズの上限があります。 要求全体として (フィルターを含め)、POST の場合は最大 16 MB、GET の場合は最大 8 KB です。 また、フィルター式内の句の数にも制限があります。 目安として数百単位の句がある場合、上限に達する危険性があります。 サイズが無制限のフィルターを生成しない方法でアプリケーションを設計することをお勧めします。
 
@@ -138,11 +138,11 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 REST API では、フィルター可能の設定は単純型フィールドの場合は既定で "*オン*" です。 フィルター可能なフィールドはインデックス サイズが大きくなります。実際にフィルターで使用する予定がないフィールドの場合は、`"filterable": false` を設定してください。 フィールド定義の設定の詳細については、「[Create Index](/rest/api/searchservice/create-index)」(インデックスの作成) を参照してください。
 
-.NET SDK では、フィルター可能の設定は既定で*オフ*です。 対応する [Field](/dotnet/api/microsoft.azure.search.models.field) オブジェクトの [IsFilterable プロパティ](/dotnet/api/microsoft.azure.search.models.field.isfilterable) を `true` に設定することで、フィールドをフィルター可能にすることができます。 また、これは、[IsFilterable 属性](/dotnet/api/microsoft.azure.search.isfilterableattribute)を使用して宣言によって行うこともできます。 次の例では、属性は、インデックス定義にマップされるモデル クラスの `BaseRate` プロパティで設定されています。
+.NET SDK では、フィルター可能の設定は既定で *オフ* です。 対応する [SearchField](/dotnet/api/azure.search.documents.indexes.models.searchfield) オブジェクトの [IsFilterable プロパティ](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) を `true` に設定することで、フィールドをフィルター可能にすることができます。 次の例では、属性は、インデックス定義にマップされるモデル クラスの `BaseRate` プロパティで設定されています。
 
 ```csharp
-    [IsFilterable, IsSortable, IsFacetable]
-    public double? BaseRate { get; set; }
+[IsFilterable, IsSortable, IsFacetable]
+public double? BaseRate { get; set; }
 ```
 
 ### <a name="making-an-existing-field-filterable"></a>既存のフィールドをフィルター可能にする
@@ -171,7 +171,7 @@ REST API では、フィルター可能の設定は単純型フィールドの�
 
 ## <a name="next-steps"></a>次のステップ
 
-まずポータルの **Search エクスプローラー**で、 **$filter** パラメーターを使用したクエリを送信します。 [real-estate-sample インデックス](search-get-started-portal.md)では、検索バーに次のフィルターされたクエリを貼り付けると、興味深い結果になります。
+まずポータルの **Search エクスプローラー** で、**$filter** パラメーターを使用したクエリを送信します。 [real-estate-sample インデックス](search-get-started-portal.md)では、検索バーに次のフィルターされたクエリを貼り付けると、興味深い結果になります。
 
 ```
 # Geo-filter returning documents within 5 kilometers of Redmond, Washington state
@@ -196,10 +196,10 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 
 その他の例については、[「OData Filter Expression Syntax」(OData フィルター式の構文) > 「Examples」(例)](./search-query-odata-filter.md#examples) を参照してください。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 + [Azure Cognitive Search でのフルテキスト検索のしくみ](search-lucene-query-architecture.md)
 + [Search Documents REST API](/rest/api/searchservice/search-documents)
 + [単純なクエリ構文](/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Lucene クエリ構文](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [サポートされているデータ型](/rest/api/searchservice/supported-data-types)
++ [サポートされるデータ型](/rest/api/searchservice/supported-data-types)

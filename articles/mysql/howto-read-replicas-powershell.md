@@ -1,18 +1,18 @@
 ---
 title: 読み取りレプリカの管理 - Azure PowerShell - Azure Database for MySQL
 description: PowerShell を使用して Azure Database for MySQL の読み取りレプリカを設定し、管理する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 8/24/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e9c8ce7519c6e2c84ef47fc78897c4b67b89e56a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe33730fc11bfc18b7d67471e1077fb9490385d4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541018"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541931"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>PowerShell を使用して Azure Database for MySQL の読み取りレプリカを作成し、管理する方法
 
@@ -54,12 +54,12 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `New-AzMySqlReplica` コマンドには、次のパラメーターが必要です。
 
-| 設定 | 値の例 | 説明  |
+| 設定 | 値の例 | 説明  |
 | --- | --- | --- |
-| ResourceGroupName |  myresourcegroup |  レプリカ サーバーが作成されるリソース グループ。  |
+| ResourceGroupName |  myresourcegroup |  レプリカ サーバーが作成されるリソース グループ。  |
 | 名前 | mydemoreplicaserver | 作成する新しいレプリカ サーバーの名前。 |
 
-リージョンをまたがる読み取りレプリカを作成するには、**Location** パラメーターを使用します。 次の例では、**米国西部**リージョンにレプリカを作成します。
+リージョンをまたがる読み取りレプリカを作成するには、**Location** パラメーターを使用します。 次の例では、**米国西部** リージョンにレプリカを作成します。
 
 ```azurepowershell-interactive
 Get-AzMySqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
@@ -83,9 +83,9 @@ Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 `Get-AzMySqlReplica` コマンドには、次のパラメーターが必要です。
 
-| 設定 | 値の例 | 説明  |
+| 設定 | 値の例 | 説明  |
 | --- | --- | --- |
-| ResourceGroupName |  myresourcegroup |  レプリカ サーバーを作成するリソース グループ。  |
+| ResourceGroupName |  myresourcegroup |  レプリカ サーバーを作成するリソース グループ。  |
 | ServerName | mydemoserver | ソース サーバーの名前または ID。 |
 
 ### <a name="delete-a-replica-server"></a>レプリカ サーバーを削除します

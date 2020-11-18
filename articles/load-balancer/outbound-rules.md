@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 51810876e3636b7023ce9c9318a071636bb00c4c
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 947ecaa2efbfb013f1f3e8203d1c4296b9ca329f
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92002613"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422163"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>Azure Load Balancer のアウトバウンド規則
 
-アウトバウンド規則を使用すると、パブリック標準ロード バランサーの送信 SNAT (送信元ネットワーク アドレス変換) を構成できます。 この構成では、ロード バランサーのパブリック IP をプロキシとして使用できます。
+アウトバウンド規則を使用すると、パブリック標準ロード バランサーの SNAT (送信元ネットワーク アドレス変換) を明示的に定義できます。 この構成では、ロード バランサーのパブリック IP を使用して、バックエンド インスタンスに対して送信インターネット接続を提供できます。
 
 この構成を使用すると、以下が可能になります。
 
@@ -37,7 +37,7 @@ ms.locfileid: "92002613"
 
 * **どの仮想マシンがどのパブリック IP アドレスに変換されるか。**
      * 2 つの規則により、バックエンド プール A によって IP アドレス A と B が使用され、バックエンド プール B によって IP アドレス C と D が使用されます。
-* **送信 SNAT ポートを指定する方法。**
+* **アウトバウンド SNAT ポートの割り当て方法。**
      * バックエンド プール B は送信接続を行う唯一のプールであり、バックエンド プール B にすべての SNAT ポートを提供し、バックエンド プール A には何も提供しません。
 * **アウトバウンド変換の提供対象となるプロトコル。**
      * バックエンド プール B には、送信用の UDP ポートが必要です。 バックエンド プール A には TCP が必要です。 TCP ポートを A に、UDP ポートを B に提供します。
@@ -99,14 +99,155 @@ VM が Azure Load Balancer からの正常性プローブ要求を受け取る�
 
 NSG が AZURE_LOADBALANCER 既定タグからの正常性プローブ要求をブロックすると、VM の正常性プローブが失敗して VM が利用不可とマークされます。 ロード バランサーにより、その VM への新しいフローの送信が停止されます。
 
+## <a name="scenarios-with-outbound-rules"></a>アウトバウンド規則を使用するシナリオ
+        
+
+### <a name="outbound-rules-scenarios"></a>アウトバウンド規則のシナリオ
+
+
+* アウトバウンド接続をパブリック IP またはプレフィックスの特定のセットに構成します。
+* [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) ポートの割り当てを変更します。
+* アウトバウンドのみを有効にします。
+* VM のアウトバウンド NAT のみ (インバウンドなし)。
+* 内部の標準ロード バランサーのアウトバウンド NAT。
+* パブリック標準ロード バランサーでアウトバウンド NAT の TCP プロトコルと UDP プロトコルの両方を有効にします。
+
+
+### <a name="scenario-1-configure-outbound-connections-to-a-specific-set-of-public-ips-or-prefix"></a><a name="scenario1out"></a>シナリオ 1:アウトバウンド接続をパブリック IP またはプレフィックスの特定のセットに構成する
+
+
+#### <a name="details"></a>詳細
+
+
+このシナリオは、一連のパブリック IP アドレスから送信されるアウトバウンド接続を調整する場合に使用します。 送信元に基づいて、許可リストまたは拒否リストにパブリック IP またはプレフィックスを追加します。
+
+
+このパブリック IP またはプレフィックスは、負荷分散規則で使用されるものと同じにすることができます。 
+
+
+負荷分散規則で使用されるものとは異なるパブリック IP またはプレフィックスを使用するには、次のようにします。 
+
+
+1. パブリック IP プレフィックスまたはパブリック IP アドレスを作成します。
+2. パブリック標準ロード バランサーを作成します。 
+3. 使用するパブリック IP プレフィックスまたはパブリック IP アドレスを参照するフロントエンドを作成します。 
+4. バックエンド プールを再利用するか、バックエンド プールを作成し、VM をパブリック ロード バランサーのバックエンド プールに配置します。
+5. フロントエンドを使用して VM のアウトバウンド NAT を有効にするように、パブリック ロード バランサーのアウトバウンド規則を構成します。 アウトバウンドに負荷分散規則を使用することは推奨されません。負荷分散規則のアウトバウンド SNAT を無効にしてください。
+
+
+### <a name="scenario-2-modify-snat-port-allocation"></a><a name="scenario2out"></a>シナリオ 2:[SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) ポートの割り当てを変更する
+
+
+#### <a name="details"></a>詳細
+
+
+アウトバウンド規則を使用して、[バックエンド プール サイズに基づく SNAT ポートの自動割り当て](load-balancer-outbound-connections.md#preallocatedports)を調整できます。 
+
+
+SNAT 不足が発生した場合は、[SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) ポートの数を既定値の 1,024 よりも増やします。 
+
+
+パブリック IP アドレスごとに、最大 64,000 個のエフェメラル ポートが提供されます。 バックエンド プール内の VM の数によって、各 VM に配布されるポートの数が決まります。 バックエンド プール内の 1 つの VM は、最大 64,000 個のポートにアクセスできます。 2 つの VM の場合、アウトバウンド規則を使用して最大 32,000 個の [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) ポートを提供することができます (2 x 32,000 = 64,000)。 
+
+
+アウトバウンド規則を使用すると、既定で提供される SNAT ポートを調整できます。 既定の [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) ポートの割り当てよりも多くまたは少なく提供します。 1 つのアウトバウンド規則を構成するフロントエンドのパブリック IP アドレスごとに、[SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) ポートとして使用する最大 64,000 個のエフェメラル ポートが提供されます。 
+
+
+ロード バランサーは、[SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) ポートを 8 の倍数で提供します。 8 で割り切れない値を指定すると、その構成操作は拒否されます。 各負荷分散規則とインバウンド NAT 規則は、8 つのポートの範囲を使用します。 負荷分散規則またはインバウンド NAT 規則が別の規則と同じ 8 つの範囲を共有する場合、追加のポートは使用されません。
+
+
+パブリック IP アドレスの数に基づく使用可能な [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) ポートの数よりも多くのポートを提供しようとすると、その構成操作は拒否されます。 たとえば、VM ごとに 10,000 個のポートを指定し、バックエンド プール内の 7 つの VM が 1 つのパブリック IP を共有する場合、構成は拒否されます。 7 を 10,000 に乗算した値が 64,000 個のポート制限を超えています。 このシナリオに対応するには、アウトバウンド規則のフロントエンドにパブリック IP アドレスを追加します。 
+
+
+ポート数に 0 を指定して、[既定のポート割り当て](load-balancer-outbound-connections.md#preallocatedports)に戻します。 最大インスタンス数に達するまで、最初の 50 VM インスタンスは 1,024 ポートを取得し、51 から 100 の VM インスタンスは 512 ポートを取得します。 SNAT ポートの既定の割り当ての詳細については、[SNAT ポートの割り当てについての表](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)を参照してください。
+
+
+### <a name="scenario-3-enable-outbound-only"></a><a name="scenario3out"></a>シナリオ 3:アウトバウンドのみを有効にする
+
+
+#### <a name="details"></a>詳細
+
+
+パブリック標準ロード バランサーを使用して、VM のグループにアウトバウンド NAT を提供します。 このシナリオでは、追加の規則を構成せずに、アウトバウンド規則を単独で使用します。
+
+
+> [!NOTE]
+> **Azure Virtual Network NAT** では、ロード バランサーを使わずに、仮想マシンに対するアウトバウンド接続を提供できます。 詳細については、[Azure Virtual Network NAT](../virtual-network/nat-overview.md) に関するページを参照してください。
+
+### <a name="scenario-4-outbound-nat-for-vms-only-no-inbound"></a><a name="scenario4out"></a>シナリオ 4:VM のアウトバウンド NAT のみ (インバウンドなし)
+
+
+> [!NOTE]
+> **Azure Virtual Network NAT** では、ロード バランサーを使わずに、仮想マシンに対するアウトバウンド接続を提供できます。 詳細については、[Azure Virtual Network NAT](../virtual-network/nat-overview.md) に関するページを参照してください。
+
+#### <a name="details"></a>詳細
+
+
+このシナリオでは、次のようにします。Azure Load Balancer のアウトバウンド規則と Virtual Network NAT は、仮想ネットワークからのエグレスに使用できるオプションです。
+
+
+1. パブリック IP またはプレフィックスを作成します。
+2. パブリック標準ロード バランサーを作成します。 
+3. アウトバウンド専用のパブリック IP またはプレフィックスに関連付けられているフロントエンドを作成します。
+4. VM のバックエンド プールを作成します。
+5. VM をバックエンド プールに配置します。
+6. アウトバウンド NAT を有効にするアウトバウンド規則を構成します。
+
+
+
+プレフィックスまたはパブリック IP を使用して、[SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) ポートをスケーリングします。 アウトバウンド接続の送信元を許可リストまたは拒否リストに追加します。
+
+
+
+### <a name="scenario-5-outbound-nat-for-internal-standard-load-balancer"></a><a name="scenario5out"></a>シナリオ 5:内部の標準ロード バランサーのアウトバウンド NAT
+
+
+> [!NOTE]
+> **Azure Virtual Network NAT** では、内部の標準ロード バランサーを利用して、仮想マシンに対するアウトバウンド接続を提供できます。 詳細については、[Azure Virtual Network NAT](../virtual-network/nat-overview.md) に関するページを参照してください。
+
+#### <a name="details"></a>詳細
+
+
+インスタンスレベルのパブリック IP または Virtual Network NAT を使用して明示的に宣言するか、バックエンド プールのメンバーをアウトバウンド専用のロード バランサー構成に関連付けるまで、アウトバウンド接続を内部の標準ロード バランサーで使用することはできません。 
+
+
+詳細については、「[送信専用ロード バランサーの構成](https://docs.microsoft.com/azure/load-balancer/egress-only)」を参照してください。
+
+
+
+
+### <a name="scenario-6-enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a><a name="scenario6out"></a>シナリオ 6:パブリック標準ロード バランサーでアウトバウンド NAT の TCP プロトコルと UDP プロトコルの両方を有効にする
+
+
+#### <a name="details"></a>詳細
+
+
+パブリック標準ロード バランサーを使用する場合、提供される自動アウトバウンド NAT は負荷分散規則のトランスポート プロトコルに対応します。 
+
+
+1. 負荷分散規則でアウトバウンド [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) を無効にします。 
+2. 同じロード バランサーのアウトバウンド規則を構成します。
+3. VM によって既に使用されているバックエンド プールを再利用します。 
+4. アウトバウンド規則の一部として "protocol": "All" を指定します。 
+
+
+インバウンド NAT 規則のみを使用している場合、アウトバウンド NAT は提供されません。 
+
+
+1. VM をバックエンド プールに配置します。
+2. パブリック IP アドレスまたはパブリック IP プレフィックスを使用して、1 つまたは複数のフロントエンド IP 構成を定義します。 
+3. 同じロード バランサーのアウトバウンド規則を構成します。 
+4. アウトバウンド規則の一部として "protocol": "All" を指定します
+
+
 ## <a name="limitations"></a>制限事項
 
 - フロントエンド IP アドレスごとに使用可能なエフェメラル ポートの最大数は 64,000 個です。
 - 構成可能なアウトバウンド アイドル タイムアウトの範囲は、4 から 120 分 (240 から 7200 秒) です。
 - ロード バランサーでは、アウトバウンド NAT の ICMP はサポートされていません。
 - アウトバウンド規則は、NIC のプライマリ IP 構成にのみ適用できます。  VM または NVA のセカンダリ IP のアウトバウンド規則を作成することはできません。 複数 NIC がサポートされています。
-- **可用性セット**内のすべての仮想マシンを、アウトバウンド接続のバックエンド プールに追加する必要があります。 
-- **仮想マシン スケール セット**内のすべての仮想マシンを、アウトバウンド接続のバックエンド プールに追加する必要があります。
+- **可用性セット** 内のすべての仮想マシンを、アウトバウンド接続のバックエンド プールに追加する必要があります。 
+- **仮想マシン スケール セット** 内のすべての仮想マシンを、アウトバウンド接続のバックエンド プールに追加する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 

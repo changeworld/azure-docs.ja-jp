@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 132c072ad4cbee5cc3ac49695aa34480dc827400
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9330f99a0473aa38da2fcbb8ae0624a37746613
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565763"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444760"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box のセキュリティとデータ保護
 
@@ -32,11 +32,11 @@ Microsoft Azure Data Box ソリューションは、互いに連携し合う 4 �
 
 次の図は、オンプレミスから Azure への Azure Data Box ソリューション経由のデータの流れと、ソリューション経由でデータが流れるときのさまざまなセキュリティ機能を示しています。 このフローは Data Box のインポート注文に関するものです。
 
-![Data Box のインポートのセキュリティ](media/data-box-security/data-box-security-2.png)
+![Data Box のインポートのセキュリティ](media/data-box-security/data-box-security-import.png)
 
 次の図は、Data Box のエクスポート注文に関するものです。
 
-![Data Box のエクスポートのセキュリティ](media/data-box-security/data-box-security-3.png)
+![Data Box のエクスポートのセキュリティ](media/data-box-security/data-box-security-export.png)
 
 データがこのソリューションを通過すると、イベントがログに記録され、ログが生成されます。 詳細については、次を参照してください。
 
@@ -56,7 +56,7 @@ Data Box デバイスは、次の機能によって保護されます。
 - Data Box 固有のソフトウェアのみを実行します。
 - ロック状態で起動します。
 - デバイスのロック解除パスワードによってデバイスへのアクセスを制御します。
-- デバイスとの間でデータをコピーするためのアクセス資格情報。 Azure portal の **[デバイスの資格情報]** ページへのすべてのアクセスは[アクティビティ ログ](data-box-logs.md#query-activity-logs-during-setup)に記録されます。
+- デバイスとの間でデータをコピーするためのアクセス資格情報。 Azure portal の **[デバイスの資格情報]** ページへのすべてのアクセスは [アクティビティ ログ](data-box-logs.md#query-activity-logs-during-setup)に記録されます。
 
 ### <a name="data-box-data-protection"></a>Data Box のデータ保護
 

@@ -1,7 +1,7 @@
 ---
 title: '多クラスのロジスティック回帰: モジュール リファレンス'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で多クラスのロジスティック回帰モジュールを使用し、複数の値を予測するのに使用できるロジスティック回帰モデルを作成する方法について説明します。
+description: Azure Machine Learning デザイナーで多クラスのロジスティック回帰モジュールを使用し、複数の値を予測する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 247a0bef8e166c72f185f2d384067fc5814a602e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2bbc28735bcbfd952c4941453956acd0568ea67
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90893748"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420735"
 ---
 # <a name="multiclass-logistic-regression-module"></a>多クラスのロジスティック回帰モジュール
 
@@ -34,7 +34,7 @@ Azure Machine Learning には、[2 クラスのロジスティック回帰](./tw
 
 ## <a name="configure-a-multiclass-logistic-regression"></a>多クラスのロジスティック回帰を構成する
 
-1. **多クラスのロジスティック回帰**モジュールをパイプラインに追加します。
+1. **多クラスのロジスティック回帰** モジュールをパイプラインに追加します。
 
 2. **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。
 
@@ -56,7 +56,7 @@ Azure Machine Learning には、[2 クラスのロジスティック回帰](./tw
 
 8. ラベルが付けられたデータセットを接続し、モデルをトレーニングします。
 
-    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと[モデルのトレーニング](train-model.md) モジュールを接続します。  
+    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと [モデルのトレーニング](train-model.md) モジュールを接続します。  
   
     + **[トレーナー モードの作成]** を **[パラメーター範囲]** に設定した場合は、[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)を使用して、タグ付けしたデータセットを接続してモデルをトレーニングします。  
   

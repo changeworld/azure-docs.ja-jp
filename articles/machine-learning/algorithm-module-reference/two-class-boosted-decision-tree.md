@@ -1,7 +1,7 @@
 ---
 title: 2 クラス ブースト デシジョン ツリーモジュール リファレンス
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で 2 クラス ブースト デシジョン ツリー モジュールを使用し、ブースト デシジョン ツリー アルゴリズムに基づく機械学習モデルを作成する方法について説明します。
+description: デザイナーで 2 クラス ブースト デシジョン ツリー モジュールを使用して、二項分類器を作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/24/2020
-ms.openlocfilehash: 833caa0cf264fb49d8b32255f429132cd888c6c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 810878956a89b6e7400be99692cf43925d1cd134
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907742"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375915"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>2 クラス ブースト デシジョン ツリー モジュール
 
@@ -56,7 +56,7 @@ ms.locfileid: "90907742"
   
 6.  集団として作成するデシジョン ツリーの総数を **[Number of trees constructed]\(構築するツリーの数\)** に指定します。 作成するデシジョン ツリーを増やすと、カバレッジが向上する可能性はありますが、トレーニング時間が長くなります。
   
-     トレーニング済みのモデルを可視化したときに表示されるツリーの数も、この値によって制御されます。 ツリーを 1 つだけ表示または出力したい場合は、この値を「1」に設定してください。 ただし、その場合、生成されるツリーは 1 つ (最初の一連のパラメーターを持ったツリー) だけであり、それ以上のイテレーションは実行されません。
+     値に 1 を設定した場合、生成されるツリーは 1 つ (最初の一連のパラメーターを持ったツリー) だけであり、それ以上のイテレーションは実行されません。
   
 7.  **[Random number seed]\(乱数シード\)** に、ランダム シード値として使用する値 (負でない整数) を必要に応じて入力します。 シードを指定することによって、同じデータとパラメーターで繰り返し実行したときの再現性が確保されます。  
   
@@ -65,7 +65,7 @@ ms.locfileid: "90907742"
 
 9. モデルをトレーニングする:
 
-    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと[モデルのトレーニング](train-model.md) モジュールを接続します。  
+    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと [モデルのトレーニング](train-model.md) モジュールを接続します。  
   
     + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Parameter Range]\(パラメーター範囲\)** に設定した場合は、[[Tune Model Hyperparameters]\(モデルのハイパーパラメーターの調整\)](tune-model-hyperparameters.md) を使用して、タグ付けしたデータセットを接続してモデルをトレーニングします。  
   
@@ -83,7 +83,7 @@ ms.locfileid: "90907742"
 
 + トレーニングされたモデルのスナップショットを保存するには、 **[モデルのトレーニング]** モジュールの右側のパネルにある **[出力]** タブを選択します。 **[データセットの登録]** アイコンを選択して、再利用可能なモジュールとしてモデルを保存します。
 
-+ このモデルをスコアリングに使用するには、**モデルのスコア付け**モジュールをパイプラインに追加します。
++ このモデルをスコアリングに使用するには、**モデルのスコア付け** モジュールをパイプラインに追加します。
 
 ## <a name="next-steps"></a>次のステップ
 

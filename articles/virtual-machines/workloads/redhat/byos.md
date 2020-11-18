@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 8896ed3eed291e6ec18c45df60e6079ada769b28
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 3a597b6454b3fb738ca192fa7750ca94fdb873ab
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993337"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372797"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image
 
@@ -28,7 +28,7 @@ Red Hat Enterprise Linux (RHEL) イメージは、従量課金制またはサブ
 - Standard サポート ポリシーは、これらのイメージから作成された VM に適用されます。
 - Red Hat Gold Image からプロビジョニングされた VM は、RHEL 従量課金制イメージに関連付けられている RHEL 料金がかかりません。
 - イメージには、権利がありません。 Red Hat から直接更新プログラムを取得するために、Red Hat のサブスクリプション マネージャーを使用して VM を登録およびサブスクライブする必要があります。
-- 現時点では、Linux イメージの BYOS と従量課金制の課金モデルを動的に切り替えることはできません。 課金モデルを切り替えるには、それぞれのイメージから VM を再デプロイする必要があります。
+- [Azure ハイブリッド特典](../../linux/azure-hybrid-benefit-linux.md)を使用して、従量課金制イメージから BYOS に切り替えることができます。 ただし、最初にデプロイされた BYOS から従量課金制に Linux イメージの課金モデルを切り替えることはできません。 課金モデルを BYOS から従量課金制に切り替えるには、それぞれのイメージから VM を再デプロイする必要があります。
 
 >[!NOTE]
 > 現在、第 2 世代の RHEL BYOS イメージは、マーケットプレースのオファーから入手できません。 第 2 世代の RHEL BYOS イメージが必要な場合は、Red Hat サブスクリプション管理の Cloud Access ダッシュボードにアクセスしてください。 詳細については、[Red Hat のドキュメント](https://access.redhat.com/articles/4847681)を参照してください。
@@ -177,7 +177,7 @@ Cloud Access を有効にする手順が完了すると、Red Hat によって R
 
 ## <a name="encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images"></a>Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image の暗号化
 
-Red Hat Enterprise Linux の BYOS Gold Image は、[Azure Disk Encryption](../../linux/disk-encryption-overview.md) を利用してセキュリティで保護できます。 サブスクリプションは、暗号化を有効にする前に登録する*必要があります*。 RHEL BYOS Gold Image を登録する方法の詳細については、「[How to register and subscribe a system to the Red Hat Customer Portal using Red Hat Subscription-Manager (Red Hat サブスクリプション マネージャーを使用して、Red Hat カスタマー ポータルにシステムを登録およびサブスクライブする方法)](https://access.redhat.com/solutions/253273)」を参照してください。 アクティブな Red Hat サブスクリプションをお持ちの場合は、「[Creating Red Hat Customer Portal Activation Keys (Red Hat カスタマー ポータルのアクティベーション キーを作成する)](https://access.redhat.com/articles/1378093)」もご覧ください。
+Red Hat Enterprise Linux の BYOS Gold Image は、[Azure Disk Encryption](../../linux/disk-encryption-overview.md) を利用してセキュリティで保護できます。 サブスクリプションは、暗号化を有効にする前に登録する *必要があります*。 RHEL BYOS Gold Image を登録する方法の詳細については、「[How to register and subscribe a system to the Red Hat Customer Portal using Red Hat Subscription-Manager (Red Hat サブスクリプション マネージャーを使用して、Red Hat カスタマー ポータルにシステムを登録およびサブスクライブする方法)](https://access.redhat.com/solutions/253273)」を参照してください。 アクティブな Red Hat サブスクリプションをお持ちの場合は、「[Creating Red Hat Customer Portal Activation Keys (Red Hat カスタマー ポータルのアクティベーション キーを作成する)](https://access.redhat.com/articles/1378093)」もご覧ください。
 
 [Red Hat カスタム イメージ](../../linux/redhat-create-upload-vhd.md)では、Azure Disk Encryption はサポートされていません。 Azure Disk Encryption の追加の要件と前提条件については、[Linux VM 向けの Azure Disk Encryption](../../linux/disk-encryption-overview.md#additional-vm-requirements) に関するページに記載されています。
 

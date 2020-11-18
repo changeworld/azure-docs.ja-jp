@@ -1,17 +1,17 @@
 ---
 title: コンピューティングとストレージのオプション - Azure Database for MySQL - フレキシブル サーバー
 description: この記事では、Azure Database for MySQL - フレキシブル サーバーのコンピューティングとストレージのオプションについて説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: 0755ca7e77592a2efd6d8687f9eb19eacc2f0128
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 36f31ee390a6a208b202698ec9bda59b644c9e30
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315170"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534672"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL のコンピューティングとストレージのオプション - フレキシブル サーバー (プレビュー)
 
@@ -130,7 +130,7 @@ Azure Database for MySQL フレキシブル サーバーは、次の 3 つのコ
 | Standard_E48ds_v4    | 20000               | 
 | Standard_E64ds_v4    | 20000               |  
 
-最大有効 IOPS は、コンピューティング サイズごとの使用可能な最大 IOPS によって異なります。 次の数式を見て、列 *[キャッシュされていない最大ディスク スループット:IOPS/MBps]* を、 [B シリーズ](../../virtual-machines/sizes-b-series-burstable.md)、 [Ddsv4 シリーズ](../../virtual-machines/ddv4-ddsv4-series.md)、および [Edsv4 シリーズ](../../virtual-machines/edv4-edsv4-series.md)のドキュメントで調べてください。
+最大有効 IOPS は、コンピューティング サイズごとの使用可能な最大 IOPS によって異なります。 次の数式を見て、列 *[キャッシュされていない最大ディスク スループット:IOPS/MBps]* を、[B シリーズ](../../virtual-machines/sizes-b-series-burstable.md)、[Ddsv4 シリーズ](../../virtual-machines/ddv4-ddsv4-series.md)、および [Edsv4 シリーズ](../../virtual-machines/edv4-edsv4-series.md)のドキュメントで調べてください。
 
 **最大有効 IOPS** = 最小 ( *「キャッシュされていない最大ディスク スループット:IOPS/MBps」* ( ストレージが 3 GiB でプロビジョニングされたコンピューティング サイズの)
 
@@ -153,7 +153,7 @@ Azure portal (Azure Monitor を含む) での自分の I/O 使用量は、[IO �
 
 ## <a name="pricing"></a>価格
 
-最新の料金情報については、サービスの[料金ページ](https://azure.microsoft.com/pricing/details/MySQL/)を参照してください。 必要な構成のコストについては、 [Azure portal](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) で、選択したオプションに基づいて **[コンピューティング + ストレージ]** タブに表示される月額コストをご覧ください。 Azure サブスクリプションを取得していない場合は、Azure 料金計算ツールを使用して見積もり価格を確認できます。 [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)の Web サイトで **[項目の追加]** を選択し、 **[データベース]** カテゴリを展開します。 **[Azure Database for MySQL]** を選択し、デプロイの種類として **[フレキシブル サーバー]** を選択してオプションをカスタマイズします。
+最新の料金情報については、サービスの[料金ページ](https://azure.microsoft.com/pricing/details/MySQL/)を参照してください。 必要な構成のコストについては、[Azure portal](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) で、選択したオプションに基づいて **[コンピューティング + ストレージ]** タブに表示される月額コストをご覧ください。 Azure サブスクリプションを取得していない場合は、Azure 料金計算ツールを使用して見積もり価格を確認できます。 [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)の Web サイトで **[項目の追加]** を選択し、 **[データベース]** カテゴリを展開します。 **[Azure Database for MySQL]** を選択し、デプロイの種類として **[フレキシブル サーバー]** を選択してオプションをカスタマイズします。
 
 サーバーのコストを最適化する場合は、次のヒントを検討してください。
 

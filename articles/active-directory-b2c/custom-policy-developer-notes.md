@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7788d45a9cc30cb688d33a629fbb6e53f5ca16cb
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e2ebc0033f2d2d55571ba45a38b5e0061716673d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92214908"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532479"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーに関する開発者向けのメモ
 
@@ -108,16 +108,6 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 | [表示コントロール](display-controls.md) |  |X  |  |  |
 
 
-### <a name="page-layout-versions"></a>ページ レイアウト バージョン
-
-| 機能 | 開発 | プレビュー | GA | Notes |
-| ------- | :-----------: | :-------: | :--: | ----- |
-| [2.0.0](page-layout.md) |  | X |  |  |
-| [1.2.0](page-layout.md) |  | X |  |  |
-| [1.1.0](page-layout.md) |  |  | X |  |
-| [1.0.0](page-layout.md) |  |  | X |  |
-| [JavaScript のサポート](javascript-samples.md) |  | X |  |  |
-
 ### <a name="app-ief-integration"></a>アプリケーションと IEF の統合
 
 | 機能 | 開発 | プレビュー | GA | Notes |
@@ -127,6 +117,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 | `client_assertion` を使用して JSON をユーザー体験に挿入 | X |  |  | 非推奨となる予定。 |
 | `id_token_hint` として JSON をユーザー体験に挿入 |  | X |  | JSON を渡す順方向の転送方法。 |
 | [ID プロバイダー トークンをアプリケーションに渡す](idp-pass-through-custom.md) |  | X |  | 例: Facebook からアプリへ。 |
+
 
 ### <a name="session-management"></a>セッションの管理
 

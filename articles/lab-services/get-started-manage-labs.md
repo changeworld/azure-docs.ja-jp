@@ -1,0 +1,175 @@
+---
+title: Azure Lab Services の概要
+description: この記事では、Azure Lab Services の使用を開始する方法について説明します。
+ms.topic: article
+ms.date: 10/02/2020
+ms.openlocfilehash: 33e052931b0c3bd1bb1434b7eeefeed7a2a7ceab
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93380082"
+---
+# <a name="get-started-with-lab-services"></a>Lab Services の概要 
+
+学生は、自分の研究プログラムで必要になる業界標準のソフトウェアに仮想マシン (VM) 上でアクセスするために、Azure Lab Services を使えます。 
+
+教師は、学生に発行された一対一のハードウェアを通じて、指導で Azure Lab Services を利用するように学生に教える方法を理解する必要があります。
+
+この記事では、Azure Lab Services のアクセス、管理、学生への利用の指導などを行う方法について、教師向けの情報を提供します。
+
+## <a name="overview"></a>概要
+
+VM とは何ですか。また、どのように機能するのでしょうか。
+
+仮想マシン (VM) は、仮想コンピューターとして機能する仮想環境です。 VM には、独自のプロセッサ、メモリ、およびストレージがあります。 VM は、実際のコンピューターに代わるものであり、ユーザーが自分のデバイスにオペレーティング システムやソフトウェアを用意しなくても、ユーザーがそれらにアクセスすることを可能にします。 Azure Lab Services には、VM にアクセスしてナビゲートするための学生向けのツールと、仮想コンピューター ラボを管理するための教員向けのツールが用意されています。 
+
+詳細については、「[クラスルーム ラボを作成して管理する](how-to-manage-classroom-labs.md)」を参照してください。
+
+## <a name="lab-dashboards"></a>ラボのダッシュボード
+
+Azure Lab Services のクラスルーム ラボ用のダッシュボードでは、VM 情報、割り当て済みおよび未割り当て VM の数、登録および登録解除されたユーザーの数、ラボのスケジュールに関する情報など、特定のラボのさまざまなアスペクトのスナップショットが提供されます。 
+
+> [!NOTE]
+> ダッシュボードと [Azure Lab Services Web サイト](https://labs.azure.com/)のほとんどの管理アスペクトは教師に表示されますが、自分のロールに固有のアクセス許可が、ダッシュボードの特定の条件を変更できるかどうかに影響を与える可能性があります。 特定のラボのセットアップで問題が発生した場合は、CTE 管理者に連絡してください。
+
+:::image type="content" source="./media/use-dashboard/dashboard.png" alt-text="Azure Lab Services ポータル":::
+
+1. [Azure Lab Services Web サイト](https://labs.azure.com/)に移動してサインインします。
+1. ラボを選択します。
+1. ウィンドウの左側に **[ダッシュボード]** が表示されます。 **[ダッシュボード]** をクリックすると、ダッシュボードにいくつかのタイルが表示されます。
+1. **[Costs & Billing]\(コストと課金\)** タイルの下には、[テンプレート]、[Virtual Machine Pools]\(仮想マシン プール\)、[ユーザー]、および [スケジュール] のタイルもあります。これらを使用して、クラスルーム ラボのアスペクトを変更し、詳細を表示できます。
+
+    1. [テンプレート] - テンプレートが作成され、最後に発行された日付を示します。 
+    1. [Virtual Machine Pools]\(仮想マシン プール\) - 割り当て済み VM と未割り当て VM の数を示します。
+    1. [ユーザー] - 登録済みのユーザーと、ラボに追加されていても登録されていないユーザーの数を示します。
+    1. [スケジュール] - ラボで今後予定されているイベントと、その他のイベントを表示するためのリンクが表示されます。
+
+詳細については、「[ダッシュボードを使用する](use-dashboard.md)」を参照してください。
+
+## <a name="quota-hours"></a>[Quota hours]\(クォータ時間\)
+
+学生は、スケジュールされたクラス時間中は、クォータ時間には影響を与えずに、いつでも VM にアクセスできます。 クォータ時間は学期全体に対して設定され、定期的にスケジュールされているクラス時間外に学生が VM を使用できる時間数を決定します。
+
+1 週間あたり 8 時間で、累積せず日曜日にリセットされます。
+
+詳細については、[クォータの設定](how-to-configure-student-usage.md#set-quotas-for-users)に関する記事を参照してください。
+
+### <a name="automatic-shut-down"></a>自動シャットダウン
+
+コストを抑え、学生のクォータ時間を節約するために、ラボでは自動シャットダウンが有効化されます。 自動シャットダウンによって、非アクティブな (マウスやキーボードの入力がない) 状態で一定の期間が経過すると、VM がオフになります。 自動シャットダウンは 2 段階で行われます。まず、非アクティブ状態が一定期間続くと、学生は VM から切断されます。 この時点で、VM はまだ **実行中** で、学生は接続できます。 接続が切断された後に非アクティブな期間がさらに経過すると VM はシャットダウンします。
+
+自動シャットダウンは、コストを節約するための重要なツールですが、作業を保存し、大きなプロジェクト ファイルをレンダリングするという課題を学生に提示します。 学生が、頻繁な切断や VM がすぐにオフになるという経験をしている場合には、 CTE 管理者に連絡してください。 
+
+詳細については、[ラボ アカウントで VM の自動シャットダウンを構成する](how-to-configure-lab-accounts.md)方法に関するページを参照してください。
+
+## <a name="managing-virtual-machines"></a>Virtual Machine の管理
+
+ラボの管理により、教師はラボの容量 (学生が利用できる VM の数) や、VM の手動による開始、停止、リセットなどを制御できます。 教師は VM に接続して、学生のインターフェイスを体験し、ファイルにアクセスして、ソフトウェアや VM 自体に関する問題のトラブルシューティングを行うこともできます。
+
+VM を管理するときに覚えておく必要がある最も重要な点として、マシンが **実行中** のときは常に、VM に誰も接続していなくてもコストが発生しています。
+
+### <a name="manually-starting-vms"></a>VM を手動で起動する
+
+1. **[Virtual machine pool]\(仮想マシン プール\)** ページで、ページの上部にある **[Start all]\(すべて開始\)** ボタンをクリックすると、ラボ内のすべての VM を起動できます。
+
+    :::image type="content" source="./media/how-to-set-virtual-machine-passwords/start-all-vms-button.png" alt-text="VM の起動":::
+1. [状態] の切り替えをクリックすると、VM を個別に起動できます。 
+
+    切り替えの表示は、VM の起動時には **[開始中]** になり、VM が起動した後は **[実行中]** になります。
+1. また、 **[名前]** 列の左側にあるチェック ボックスを使用して、いくつかの VM を選択することもできます。 
+
+    目的の VM を選択したら、画面の上部にある **[開始]** ボタンをクリックします。
+1. 開始したら、 **[Stop all]\(すべて停止\)** ボタンをクリックしてすべての VM を停止できます。
+
+    :::image type="content" source="./media/how-to-set-virtual-machine-passwords/stop-all-vms-button.png" alt-text="VM の停止":::
+
+### <a name="stopping-and-resetting-vms"></a>VM を停止およびリセットする
+
+* 状態の切り替えをクリックすると、VM を個別に停止できます。
+* また、チェック ボックスを使用して、画面の上部にある [停止] ボタンをクリックすると、複数の VM を停止することもできます。
+
+VM への接続の問題を学生が経験している場合、または他の理由で VM をリセットする必要がある場合は、リセット機能を使えます。
+1. 1 つ以上の VM をリセットするには、チェック ボックスを使用してそれらを選択し、ページの上部にある **[リセット]** ボタンをクリックします。
+1. ポップアップ ウィンドウで、 **[リセット]** をクリックします。
+
+    :::image type="content" source="./media/how-to-set-virtual-machine-passwords/reset-vms-dialog.png" alt-text="VM のリセット":::
+
+    > [!NOTE]
+    > 学生の VM をオンにしても、学生のクォータには影響しません。 ユーザーのクォータによって指定されるのは、スケジュールされたクラス時間外にユーザーが使用できるラボ時間数です。
+
+### <a name="connect-to-virtual-machines"></a>仮想マシンに接続する
+
+教師が学生の VM に接続できるのは、VM がオンになっていて、学生が VM に接続していない場合のみです。 VM に接続することにより、VM 上のローカル ファイルにアクセスし、学生が問題をトラブルシューティングすることをサポートできます。
+
+1. 学生用 VM に接続するには、一覧で VM 上にマウス ポインターを置いて、 **[接続]** ボタンをクリックします。 
+1. 次に、Chromebook、Mac、または PC のいずれかの、学生向けファースト ステップ ガイドに従ってください。
+
+:::image type="content" source="./media/how-to-set-virtual-machine-passwords/connect-student-vm.png" alt-text="学生用 VM への接続ボタン":::
+
+## <a name="add-and-manage-lab-users"></a>ラボ ユーザーを追加および管理する
+
+教師は、学生ユーザーをラボに追加し、その時間クォータを監視することができます。 
+
+### <a name="add-users-by-email-address"></a>メール アドレスでユーザーを追加する
+
+1. [Azure Lab Services Web サイト](https://labs.azure.com/)から、ウィンドウの左側にある **[ユーザー]** クリックします。
+1. ウィンドウの上部で、 **[ユーザーの追加]** をクリックし、 **[メール アドレスによる追加]** を選択します。 
+
+    :::image type="content" source="./media/how-to-configure-student-usage/add-users-button.png" alt-text="[ユーザーの追加] ボタン":::
+1. 右側に表示される **[ユーザーの追加]** ウィンドウで、学生のメール アドレスを別個の行に入力します。または、セミコロンで区切って 1 行に入力します。
+1. **[保存]** をクリックします。
+
+    :::image type="content" source="./media/get-started-manage-labs/add-students.png" alt-text="ラボに学生を追加する":::
+1. これで、ユーザーの一覧がメール アドレス、状態、招待、クォータ時間で更新されます。
+
+    学生がラボに登録されると、その名前は、MPS ディレクトリの姓と名で更新されます。
+
+    > [!NOTE]
+    > ユーザーに対して [アクセスの制限] オプションの切り替えをオンにしたままにします。 これは、リストに存在するユーザーだけが、受け取った登録リンクを使用してラボに登録できることを意味します。
+
+### <a name="add-users-using-a-spreadsheet"></a>スプレッドシートを使用してユーザーを追加する 
+
+ユーザーのメール アドレスを含む CSV ファイルをアップロードしてユーザーを追加することもできます。
+
+1. Microsoft Excel で、学生のメール アドレスを 1 列で列挙する CSV ファイルを作成します。
+1. [Azure Lab Services Web サイト](https://labs.azure.com/)で、 **[ユーザー]** ページの上部にある **[ユーザーの追加]** ボタンをクリックします。
+1. **[CSV のアップロード]** を選択します。
+1. 学生のメール アドレスを含む CSV ファイルを選択し、 **[開く]** をクリックします。
+
+    :::image type="content" source="./media/get-started-manage-labs/add-users-spreadsheet.png" alt-text="スプレッドシートを使用してユーザーを追加する":::
+1. これで、右側のウィンドウにメール アドレスが表示されます。 **[保存]** をクリックします。
+
+    :::image type="content" source="./media/get-started-manage-labs/register-users.png" alt-text="ユーザーの登録":::
+
+### <a name="register-users"></a>ユーザーを登録する
+
+ユーザーをラボに追加した後は、VM にアクセスするために登録する必要があります。 これを行うには、Azure Web サービス ポータルからユーザーを招待します。これにより、ラボへの登録リンクを含む電子メールが送信されます。 または、登録リンクをコピーして、電子メールまたはその他の学生とのコミュニケーション形式に貼り付けます。
+
+1. **[ユーザー]** ページの一覧から、1 人または複数の学生を選択します。
+
+    選択した学生の行で、一覧内のエンベロープ アイコンを選択するか、画面の上部にある **[招待]** をクリックします。
+
+    :::image type="content" source="./media/get-started-manage-labs/send-invitation.png" alt-text="招待状を送信する":::
+    
+    **[Send invitation by email]\(メールで招待を送信する\)** ウィンドウで、学生へのオプションのメッセージ (ユーザー名とパスワードなど) を入力し、 **[送信]** をクリックします。 
+    
+    :::image type="content" source="./media/get-started-manage-labs/send-invitation-mail.png" alt-text="メールで招待を送信する":::
+
+    または、同じ **[ユーザー]** ページで、画面の上部にある **[登録リンク]** ボタンをクリックすることもできます。 
+
+    :::image type="content" source="./media/get-started-manage-labs/registration-link.png" alt-text="ユーザー登録リンク":::
+    
+    テキスト フィールドから登録リンクをコピーし、電子メールまたはお好みのセキュリティで保護されたメッセージング ツールに貼り付けます。  
+    
+    :::image type="content" source="./media/get-started-manage-labs/user-registration.png" alt-text="ユーザー登録の送信":::
+
+Azure portal を通じて、またはリンクを共有してユーザーを招待した後、 **[ユーザー]** ページの **[状態]** 列で、どのユーザーが正常に登録されたかを監視できるようになります。 
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このクイックスタートで作成したリソースを引き続き使用する予定がない場合は、これらのリソースを削除します。
+
+## <a name="next-steps"></a>次のステップ
+
+[ラボ アカウントを設定する](tutorial-setup-lab-account.md)

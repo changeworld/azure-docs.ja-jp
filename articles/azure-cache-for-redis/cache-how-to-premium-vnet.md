@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: a55db6a9db8cc53da15ba6e818db7b78b72cefc9
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: f7b4a22c0473acb7da0708f095c25b4f3f78fe66
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927738"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445593"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Premium Azure Cache for Redis の Virtual Network のサポートを構成する方法
 Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能を含め、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 VNet とは、クラウド内のプライベート ネットワークです。 VNet を使用して Azure Cache for Redis インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、VNet 内の仮想マシンとアプリケーションからしかアクセスできません。 この記事では、Premium Azure Cache for Redis インスタンスの仮想ネットワークのサポートを構成する方法について説明します。
@@ -28,7 +28,7 @@ Azure Cache for Redis には、クラスタリング、永続性、仮想ネッ�
 ## <a name="virtual-network-support"></a>Virtual Network のサポート
 仮想ネットワーク (VNet) のサポートは、キャッシュの作成中に **[New Azure Cache for Redis]\(新しい Azure Cache for Redis\)** ブレードで構成します。 
 
-1. Premium キャッシュを作成するには、 [Azure portal](https://portal.azure.com) にサインインし、 **[リソースの作成]** を選択します。 キャッシュは、Azure portal だけでなく、Resource Manager テンプレート、PowerShell、または Azure CLI を使用して作成することもできることにご注意ください。 Azure Cache for Redis の作成について詳しくは、[キャッシュの作成](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)に関するページを参照してください。
+1. Premium キャッシュを作成するには、[Azure portal](https://portal.azure.com) にサインインし、 **[リソースの作成]** を選択します。 キャッシュは、Azure portal だけでなく、Resource Manager テンプレート、PowerShell、または Azure CLI を使用して作成することもできることにご注意ください。 Azure Cache for Redis の作成について詳しくは、[キャッシュの作成](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)に関するページを参照してください。
 
     :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="リソースの作成。":::
    
@@ -40,7 +40,7 @@ Azure Cache for Redis には、クラスタリング、永続性、仮想ネッ�
    
    | 設定      | 推奨値  | 説明 |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS 名** | グローバルに一意の名前を入力します。 | キャッシュ名は 1 から 63 文字の文字列で、数字、英字、ハイフンのみを使用する必要があります。 名前の先頭と末尾には数字または文字を使用する必要があり、連続するハイフンを含めることはできません。 キャッシュ インスタンスの " *ホスト名* " は、 *\<DNS name>.redis.cache.windows.net* になります。 | 
+   | **DNS 名** | グローバルに一意の名前を入力します。 | キャッシュ名は 1 から 63 文字の文字列で、数字、英字、ハイフンのみを使用する必要があります。 名前の先頭と末尾には数字または文字を使用する必要があり、連続するハイフンを含めることはできません。 キャッシュ インスタンスの "*ホスト名*" は、 *\<DNS name>.redis.cache.windows.net* になります。 | 
    | **サブスクリプション** | ドロップダウンでご自身のサブスクリプションを選択します。 | この新しい Azure Cache for Redis インスタンスが作成されるサブスクリプション。 | 
    | **リソース グループ** | ドロップダウンでリソース グループを選択するか、 **[新規作成]** を選択して新しいリソース グループ名を入力します。 | その中にキャッシュやその他のリソースを作成するリソース グループの名前。 すべてのアプリ リソースを 1 つのリソース グループに配置することで、それらをまとめて簡単に管理または削除できます。 | 
    | **場所** | ドロップダウンで場所を選択します。 | キャッシュを使用する他のサービスの近くの[リージョン](https://azure.microsoft.com/regions/)を選択します。 |
@@ -48,7 +48,7 @@ Azure Cache for Redis には、クラスタリング、永続性、仮想ネッ�
 
 4. **[ネットワーク]** タブを選択するか、ページの下部にある **[ネットワーク]** ボタンをクリックします。
 
-5. **[ネットワーク]** タブで、接続方法として **[仮想ネットワーク]** を選択します。 新しい仮想ネットワークを使用するには、まず [Azure portal を使用した仮想ネットワークの作成](../virtual-network/manage-virtual-network.md#create-a-virtual-network)に関するページまたは「 [Azure portal を使用した仮想ネットワーク (クラシック) の作成](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal)」の手順に従ってそれを作成した後、 **[New Azure Cache for Redis]\(新しい Azure Cache for Redis\)** ブレードに戻り、Premium キャッシュを作成して構成します。
+5. **[ネットワーク]** タブで、接続方法として **[仮想ネットワーク]** を選択します。 新しい仮想ネットワークを使用するには、まず [Azure portal を使用した仮想ネットワークの作成](../virtual-network/manage-virtual-network.md#create-a-virtual-network)に関するページまたは「[Azure portal を使用した仮想ネットワーク (クラシック) の作成](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal)」の手順に従ってそれを作成した後、 **[New Azure Cache for Redis]\(新しい Azure Cache for Redis\)** ブレードに戻り、Premium キャッシュを作成して構成します。
 
    > [!IMPORTANT]
    > Azure Cache for Redis を Resource Manager VNet にデプロイする場合、キャッシュは、Azure Cache for Redis インスタンス以外のリソースを含まない専用サブネット内に存在する必要があります。 Resource Manager VNet で他のリソースが含まれる Resource Manager VNet のサブネットに Azure Cache for Redis をデプロイしようとすると、そのデプロイは失敗します。
@@ -80,7 +80,7 @@ Azure Cache for Redis には、クラスタリング、永続性、仮想ネッ�
 
 11. 緑色の検証に成功のメッセージが表示された後、 **[作成]** を選択します。
 
-キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に " **実行中** " と表示されている場合は、キャッシュを使用する準備ができています。 キャッシュが作成されたら、 **[リソース]** メニューの **[仮想ネットワーク]** をクリックすることで、VNet の構成を表示できます。
+キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に "**実行中**" と表示されている場合は、キャッシュを使用する準備ができています。 キャッシュが作成されたら、 **[リソース]** メニューの **[仮想ネットワーク]** をクリックすることで、VNet の構成を表示できます。
 
 ![仮想ネットワーク][redis-cache-vnet-info]
 
@@ -159,7 +159,7 @@ Azure Virtual Network 内のキャッシュ間で geo レプリケーション�
 | 6379, 6380 |受信 |TCP |Redis へのクライアント通信、Azure 負荷分散 | (Redis サブネット) | (Redis サブネット)、Virtual Network、Azure Load Balancer <sup>1</sup> |
 | 8443 |受信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
 | 8500 |受信 |TCP/UDP |Azure 負荷分散 | (Redis サブネット) |Azure Load Balancer |
-| 10221-10231 |受信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット)、Azure Load Balancer |
+| 10221-10231 |受信 |TCP |Redis クラスターへのクライアント通信、Redis の内部通信 | (Redis サブネット) |(Redis サブネット)、Azure Load Balancer、(クライアント サブネット) |
 | 13000-13999 |受信 |TCP |Redis クラスターへのクライアント通信、Azure 負荷分散 | (Redis サブネット) |Virtual Network、Azure Load Balancer |
 | 15000-15999 |受信 |TCP |Redis クラスター、Azure 負荷分散、geo レプリケーションへのクライアント通信 | (Redis サブネット) |Virtual Network、Azure Load Balancer、(geo レプリカ ピア サブネット) |
 | 16001 |受信 |TCP/UDP |Azure 負荷分散 | (Redis サブネット) |Azure Load Balancer |
@@ -171,15 +171,15 @@ Azure Virtual Network 内のキャッシュ間で geo レプリケーション�
 
 Azure Cache for Redis のネットワーク接続要件には、仮想ネットワークで最初から満たされていないものがある可能性があります。 仮想ネットワーク内で使用したときに正常に動作させるには、Azure Cache for Redis に次の項目すべてが必要になります。
 
-* 世界各国の Azure Storage エンドポイントに対する発信ネットワーク接続 これには、Azure Cache for Redis インスタンスと同じリージョンにあるエンドポイントと、 **他の** Azure リージョンにあるストレージ エンドポイントが含まれます。 Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net* 、 *blob.core.windows.net* 、 *queue.core.windows.net* 、 *file.core.windows.net* 。 
-* *ocsp.digicert.com* 、 *crl4.digicert.com* 、 *ocsp.msocsp.com* 、 *mscrl.microsoft.com* 、 *crl3.digicert.com* 、 *cacerts.digicert.com* 、 *oneocsp.microsoft.com* 、 *crl.microsoft.com* への送信ネットワーク接続。 この接続は、TLS/SSL 機能をサポートするために必要です。
+* 世界各国の Azure Storage エンドポイントに対する発信ネットワーク接続 これには、Azure Cache for Redis インスタンスと同じリージョンにあるエンドポイントと、**他の** Azure リージョンにあるストレージ エンドポイントが含まれます。 Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net*、*file.core.windows.net*。 
+* *ocsp.digicert.com*、*crl4.digicert.com*、*ocsp.msocsp.com*、*mscrl.microsoft.com*、*crl3.digicert.com*、*cacerts.digicert.com*、*oneocsp.microsoft.com*、*crl.microsoft.com* への送信ネットワーク接続。 この接続は、TLS/SSL 機能をサポートするために必要です。
 * 仮想ネットワークの DNS 構成は、前述したすべてのエンドポイントとドメインを解決できるようにする必要があります。 これらの DNS 要件を満たすには、仮想ネットワークの有効な DNS インフラストラクチャを構成し、保守します。
-* 以下の DNS ドメインで解決される次の Azure Monitoring エンドポイントに対する発信ネットワーク接続: *shoebox2-black.shoebox2.metrics.nsatc.net* 、 *north-prod2.prod2.metrics.nsatc.net* 、 *azglobal-black.azglobal.metrics.nsatc.net* 、 *shoebox2-red.shoebox2.metrics.nsatc.net* 、 *east-prod2.prod2.metrics.nsatc.net* 、 *azglobal-red.azglobal.metrics.nsatc.net* 。
+* 以下の DNS ドメインで解決される次の Azure Monitoring エンドポイントに対する発信ネットワーク接続: *shoebox2-black.shoebox2.metrics.nsatc.net*、*north-prod2.prod2.metrics.nsatc.net*、*azglobal-black.azglobal.metrics.nsatc.net*、*shoebox2-red.shoebox2.metrics.nsatc.net*、*east-prod2.prod2.metrics.nsatc.net*、*azglobal-red.azglobal.metrics.nsatc.net*。
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>VNET で自分のキャッシュの動作を確認するにはどうすればよいですか
 
 >[!IMPORTANT]
->VNET にホストされている Azure Cache for Redis インスタンスに接続している場合、キャッシュ クライアントは同じ VNET にあるか、または同じ Azure リージョン内の VNET ピアリングが有効な VNET にある必要があります。 グローバル VNET ピアリングは現在サポートされていません。 これには、テスト アプリケーションや診断 ping ツールが含まれます。 クライアント アプリケーションがどこでホストされているかに関係なく、クライアントのネットワーク トラフィックが Redis インスタンスに到達できるようネットワーク セキュリティ グループを構成する必要があります。
+>VNET にホストされている Azure Cache for Redis インスタンスに接続している場合、キャッシュ クライアントは同じ VNET にあるか、または同じ Azure リージョン内の VNET ピアリングが有効な VNET にある必要があります。 グローバル VNET ピアリングは現在サポートされていません。 これには、テスト アプリケーションや診断 ping ツールが含まれます。 クライアント アプリケーションがどこでホストされているかに関係なく、クライアントのネットワーク トラフィックが Redis インスタンスに到達できるようネットワーク セキュリティ グループまたは他のネットワーク層を構成する必要があります。
 >
 >
 
@@ -256,7 +256,7 @@ ExpressRoute を使用したオンプレミス アプリケーションから Az
 >ExpressRoute 構成でアドバタイズされたルートよりも優先するには、UDR に定義されているルートを詳細にする **必要があります** 。 以下の例では、0.0.0.0/0 の広域なアドレス範囲を使用しているので、より詳細なアドレス範囲を使用するルート アドバタイズで誤ってオーバーライドされる可能性があります。
 
 >[!WARNING]  
->Azure Cache for Redis は、 **パブリック ピアリング パスからプライベート ピアリング パスにルートを正しくクロスアドバタイズしていない** ExpressRoute 構成ではサポートされません。 パブリック ピアリングが構成された ExpressRoute 構成は、大規模な Microsoft Azure の IP アドレス範囲について Microsoft からルート アドバタイズを受信します。 これらのアドレス範囲がプライベート ピアリング パスで誤ってクロスアドバタイズされている場合、Azure Cache for Redis インスタンスのサブネットからのすべての発信ネットワーク パケットは、誤って顧客のオンプレミス ネットワーク インフラストラクチャに強制的にトンネリングされます。 このネットワーク フローでは、Azure Cache for Redis が機能しません。 この問題を解決するには、パブリック ピアリング パスからプライベート ピアリング パスへのルートのクロスアドバタイズを停止します。
+>Azure Cache for Redis は、**パブリック ピアリング パスからプライベート ピアリング パスにルートを正しくクロスアドバタイズしていない** ExpressRoute 構成ではサポートされません。 パブリック ピアリングが構成された ExpressRoute 構成は、大規模な Microsoft Azure の IP アドレス範囲について Microsoft からルート アドバタイズを受信します。 これらのアドレス範囲がプライベート ピアリング パスで誤ってクロスアドバタイズされている場合、Azure Cache for Redis インスタンスのサブネットからのすべての発信ネットワーク パケットは、誤って顧客のオンプレミス ネットワーク インフラストラクチャに強制的にトンネリングされます。 このネットワーク フローでは、Azure Cache for Redis が機能しません。 この問題を解決するには、パブリック ピアリング パスからプライベート ピアリング パスへのルートのクロスアドバタイズを停止します。
 
 
 ユーザー定義ルートの背景情報については、この [概要](../virtual-network/virtual-networks-udr-overview.md)を参照してください。

@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 08/27/2020
-ms.openlocfilehash: 5032676848536f0b9498cf4beecf86277484a901
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a59b47dadd845f1a522854c503af11c8fff72fd
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230808"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331976"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Azure Logic Apps で HTTPS エンドポイントを使用して、ロジック アプリの呼び出し、トリガー、または入れ子を行います
 
@@ -23,7 +23,8 @@ ms.locfileid: "89230808"
 
 この記事では、Request トリガーを使用してロジック アプリで呼び出し可能エンドポイントを作成し、別のロジック アプリからそのエンドポイントを呼び出す方法について説明します。 原則はすべて、入ってくる要求を受け取るための他のトリガー タイプに同じように適用されます。
 
-[トランスポート層セキュリティ (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) (以前の Secure Sockets Layer (SSL)) や [Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml) などの、ロジック アプリへの受信呼び出しの暗号化、セキュリティ、認可については、[アクセスとデータのセキュリティ保護に関するページの「要求ベースのトリガーへのアクセス」のセクション](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)を参照してください。
+
+[トランスポート層セキュリティ (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) (以前の Secure Sockets Layer (SSL))、[Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml)、Azure API Management によるロジック アプリの公開、または受信呼び出しを発信する IP アドレスの制限などの、ロジック アプリへの受信呼び出しのセキュリティ、認可、および暗号化の詳細については、[アクセスとデータのセキュリティ保護に関するページの「要求ベースのトリガーへの受信呼び出しへのアクセス」](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -301,7 +302,7 @@ ms.locfileid: "89230808"
 
 ## <a name="create-nested-logic-apps"></a>入れ子になったロジック アプリを作成する
 
-要求を受信できる他のロジック アプリを追加することで、ロジック アプリでワークフローを入れ子にできます。 これらのロジック アプリを含めるには、次の手順に従います。
+要求を受信できる他のロジック アプリを追加することで、ロジック アプリにワークフローを入れ子にできます。 これらのロジック アプリを含めるには、次の手順に従います。
 
 1. 別のロジック アプリを呼び出すステップで、 **[新しいステップ]**  >  **[アクションの追加]** の順に選択します。
 
@@ -338,7 +339,7 @@ ms.locfileid: "89230808"
 
 ## <a name="respond-to-requests"></a>要求に応答する
 
-ロジック アプリをトリガーする特定の要求に、呼び出し元にコンテンツを返すことによって応答したい場合があります。 応答の状態コード、ヘッダー、および本文を構築するには、応答アクションを使用します。 このアクションは、ワークフローの最後のみでなく、ロジック アプリの任意の場所に使用できます。 ロジック アプリに応答アクションが含まれていない場合、エンドポイントは **202 Accepted** 状態で*直ちに*応答します。
+ロジック アプリをトリガーする特定の要求に、呼び出し元にコンテンツを返すことによって応答したい場合があります。 応答の状態コード、ヘッダー、および本文を構築するには、応答アクションを使用します。 このアクションは、ワークフローの最後のみでなく、ロジック アプリの任意の場所に使用できます。 ロジック アプリに応答アクションが含まれていない場合、エンドポイントは **202 Accepted** 状態で *直ちに* 応答します。
 
 元の呼び出し元が応答を正常に取得するには、トリガーされたロジック アプリが入れ子になったロジック アプリとして呼び出されていない限り、応答のためにすべての必要な手順が[要求タイムアウト制限](./logic-apps-limits-and-config.md)内に完了する必要があります。 この制限内に応答が返されない場合、受信要求はタイムアウトし、**408 Client timeout** 応答を受信します。
 
@@ -391,6 +392,8 @@ ms.locfileid: "89230808"
 > * 共有アクセス キーが URL に表示されます。
 > * Azure Logic Apps の顧客にまたがる共有ドメインのために、セキュリティ コンテンツ ポリシーを管理できません。
 
+[トランスポート層セキュリティ (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) (以前の Secure Sockets Layer (SSL))、[Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml)、Azure API Management によるロジック アプリの公開、または受信呼び出しを発信する IP アドレスの制限などの、ロジック アプリへの受信呼び出しのセキュリティ、認可、および暗号化の詳細については、[アクセスとデータのセキュリティ保護に関するページの「要求ベースのトリガーへの受信呼び出しへのアクセス」](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)を参照してください。
+
 #### <a name="q-can-i-configure-callable-endpoints-further"></a>Q:呼び出し可能なエンドポイントをさらに構成することは可能でしょうか。
 
 **A**: はい。HTTPS エンドポイントは、[Azure API Management](../api-management/api-management-key-concepts.md) を通してより高度な構成をサポートしています。 このサービスでは、次のような、ロジック アプリを含むすべての API の一貫した管理、カスタム ドメイン名の設定、他の認証方法の使用などの機能も提供します。
@@ -403,4 +406,4 @@ ms.locfileid: "89230808"
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Logic Apps を使用して、HTTPS 呼び出しを受信して応答する](../connectors/connectors-native-reqres.md)
-* [Azure Logic Apps におけるアクセスとデータのセキュリティ保護 - アクセス - 要求ベースのトリガーへの受信呼び出しへのアクセス](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)
+* [Azure Logic Apps におけるアクセスとデータのセキュリティ保護 - 要求ベースのトリガーへの受信呼び出しへのアクセス](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)

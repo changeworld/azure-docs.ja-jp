@@ -11,24 +11,22 @@ ms.topic: reference
 ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 49626d418f90f8b4bc7288a6d2f7d195cd906f7a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 950c159ed4d2c57796f33b9505e6931dbec983ba
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961359"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532377"
 ---
 # <a name="display-controls"></a>表示コントロール
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**表示コントロール**は、特別な機能を備え、Azure Active Directory B2C (Azure AD B2C) バックエンド サービスと作用するユーザー インターフェイス要素です。 これにより、ユーザーがバックエンドで[検証技術プロファイル](validation-technical-profile.md)を呼び出すページで操作を実行できるようになります。 ページに表示コントロールが表示され、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって参照されます。
+**表示コントロール** は、特別な機能を備え、Azure Active Directory B2C (Azure AD B2C) バックエンド サービスと作用するユーザー インターフェイス要素です。 これにより、ユーザーがバックエンドで[検証技術プロファイル](validation-technical-profile.md)を呼び出すページで操作を実行できるようになります。 ページに表示コントロールが表示され、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって参照されます。
 
 次の図は、プライマリとセカンダリの電子メール アドレスを検証する 2 つの表示コントロールを含むセルフアサート サインアップ ページを示しています。
 
 ![レンダリングされた表示コントロールの例](media/display-controls/display-control-email.png)
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -78,7 +76,7 @@ ms.locfileid: "91961359"
 
 各種類の表示コントロールには、クレーム表示、[クレーム出力](#output-claims)、および実行される[アクション](#display-control-actions)の異なるセットが必要です。
 
-[セルフアサート技術プロファイル](self-asserted-technical-profile.md#display-claims)で定義されている**クレーム表示**と同様に、このクレーム表示では、表示コントロール内でユーザーから収集されるクレームを表します。 参照される **ClaimType** 要素では、**UserInputType** 要素として、`TextBox` または `DropdownSingleSelect` など Azure AD B2C がサポートするユーザー入力タイプを指定する必要があります。 **Action** にクレーム表示の値が必要な場合は、**Required** 属性を `true` に設定して、ユーザーが特定のクレーム表示の値を指定しなければならないようにします。
+[セルフアサート技術プロファイル](self-asserted-technical-profile.md#display-claims)で定義されている **クレーム表示** と同様に、このクレーム表示では、表示コントロール内でユーザーから収集されるクレームを表します。 参照される **ClaimType** 要素では、**UserInputType** 要素として、`TextBox` または `DropdownSingleSelect` など Azure AD B2C がサポートするユーザー入力タイプを指定する必要があります。 **Action** にクレーム表示の値が必要な場合は、**Required** 属性を `true` に設定して、ユーザーが特定のクレーム表示の値を指定しなければならないようにします。
 
 特定の種類の表示コントロールには、特定のクレーム表示が必要です。 たとえば、種類が **VerificationControl** の表示コントロールには、**VerificationCode** が必要です。 属性 **ControlClaimType** を使用して、その必須のクレームに対して指定される DisplayClaim を指定します。 次に例を示します。
 
@@ -88,15 +86,15 @@ ms.locfileid: "91961359"
 
 ### <a name="output-claims"></a>出力クレーム
 
-表示コントロールの**クレーム出力**は、次のオーケストレーション ステップには送信されません。 これらは、現在の表示コントロール セッションに対してのみ一時的に保存されます。 これらの一時的なクレームは、同じ表示コントロールの異なるアクション間で共有できます。
+表示コントロールの **クレーム出力** は、次のオーケストレーション ステップには送信されません。 これらは、現在の表示コントロール セッションに対してのみ一時的に保存されます。 これらの一時的なクレームは、同じ表示コントロールの異なるアクション間で共有できます。
 
 クレーム出力を次のオーケストレーション ステップにバブルアップするには、この表示コントロールを参照する実際のセルフアサート技術プロファイルの **OutputClaims** を使用します。
 
 ### <a name="display-control-actions"></a>表示コントロールのアクション
 
-表示コントロールの**アクション**は、ユーザーがクライアント側 (ブラウザー) で特定のアクションを実行したときに Azure AD B2C バックエンドで発生するプロシージャです。 たとえば、ユーザーがページのボタンを選択したときに実行する検証です。
+表示コントロールの **アクション** は、ユーザーがクライアント側 (ブラウザー) で特定のアクションを実行したときに Azure AD B2C バックエンドで発生するプロシージャです。 たとえば、ユーザーがページのボタンを選択したときに実行する検証です。
 
-アクションは、**検証技術プロファイル**の一覧を定義します。 これらは、表示コントロールのクレーム表示の一部またはすべてを検証するために使用されます。 検証技術プロファイルは、ユーザー入力を検証し、ユーザーにエラーを返す場合があります。 セルフアサート技術プロファイルで[検証技術プロファイル](validation-technical-profile.md)に使用される方法と同様に、**ContinueOnError**、**ContinueOnSuccess**、および **Preconditions** 表示コントロールのアクションで使用することができます。
+アクションは、**検証技術プロファイル** の一覧を定義します。 これらは、表示コントロールのクレーム表示の一部またはすべてを検証するために使用されます。 検証技術プロファイルは、ユーザー入力を検証し、ユーザーにエラーを返す場合があります。 セルフアサート技術プロファイルで [検証技術プロファイル](validation-technical-profile.md)に使用される方法と同様に、**ContinueOnError**、**ContinueOnSuccess**、および **Preconditions** 表示コントロールのアクションで使用することができます。
 
 #### <a name="actions"></a>アクション
 

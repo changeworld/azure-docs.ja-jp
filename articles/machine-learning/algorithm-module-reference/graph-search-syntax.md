@@ -1,7 +1,7 @@
 ---
 title: グラフ検索のクエリ構文
 titleSuffix: Azure Machine Learning
-description: 検索クエリ構文を使用して、パイプライン グラフ内のノードを検索する方法について説明します。
+description: Azure Machine Learning デザイナーの検索クエリ構文を使用して、パイプライン グラフ内のノードを検索する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 8/24/2020
-ms.openlocfilehash: 166b87159b5ac2434c3ce7a7c66529a4b61ee565
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 762581ea5b3183d62913e9ea6935bf7e4c4ae67f
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91290502"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420769"
 ---
 # <a name="graph-search-query-syntax"></a>グラフ検索のクエリ構文
 
@@ -36,7 +36,7 @@ Lucene クエリとフィルター クエリのどちらも使用できます。
 
  
 - AND/OR
-- **?** および **\*** 演算子を使用したワイルドカードでの照合。
+- **?** および * *\** _ 演算子を使用したワイルドカードでの照合。
 
 ### <a name="examples"></a>例
 
@@ -49,7 +49,7 @@ Lucene クエリとフィルター クエリのどちらも使用できます。
  
 - ワイルドカードでの照合: 
     - `machi?e learning`
-    - `mach*ing`
+    - `mach_ing`
  
 >[!NOTE]
 > Lucene クエリを "*" 文字で開始することはできません。

@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/26/2020
+ms.date: 11/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0861d1fd3ab2a378f0b9afc4e8b35b32badfc3db
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bbaa9d33d3a31b682a66b2a3254fc2265b6f8d7b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670660"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357079"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 仮想マシンのストレージ構成
 
@@ -37,7 +37,7 @@ Azure では、Azure Standard および Premium Storage の 2 つの VHD デプ�
 ストレージの種類と、IOPS およびストレージ スループットの SLA の一覧については、[マネージド ディスクに関する Azure ドキュメント](https://azure.microsoft.com/pricing/details/managed-disks/)をご覧ください。
 
 > [!IMPORTANT]
-> 選択した Azure ストレージの種類に関係なく、そのストレージで使用されるファイル システムは、特定のオペレーティング システムと DBMS 向けに SAP でサポートされている必要があります。 [SAP サポート ノート #405827](https://launchpad.support.sap.com/#/notes/405827) には、SAP HANA を含むさまざまなオペレーティング システムとデータベースでサポートされるファイル システムの一覧が示されています。 これは、任意のタスクの読み取りと書き込みのために SAP HANA がアクセスする可能性があるすべてのボリュームに適用されます。 特に Azure for SAP HANA で NFS を使用する場合は、この記事で後述するように、NFS バージョンに関する追加の制限が適用されます 
+> 選択した Azure ストレージの種類に関係なく、そのストレージで使用されるファイル システムは、特定のオペレーティング システムと DBMS 向けに SAP でサポートされている必要があります。 [SAP サポート ノート #2972496](https://launchpad.support.sap.com/#/notes/2972496) には、SAP HANA を含むさまざまなオペレーティング システムとデータベースでサポートされるファイル システムの一覧が示されています。 これは、任意のタスクの読み取りと書き込みのために SAP HANA がアクセスする可能性があるすべてのボリュームに適用されます。 特に Azure for SAP HANA で NFS を使用する場合は、この記事で後述するように、NFS バージョンに関する追加の制限が適用されます 
 
 
 各種ストレージにおける SAP HANA 認定の最低条件は次のとおりです。 
@@ -46,7 +46,7 @@ Azure では、Azure Standard および Premium Storage の 2 つの VHD デプ�
 - **/hana/log** ボリュームには、少なくとも Azure Ultra Disk が必要です。 **/hana/data** ボリュームは、Azure 書き込みアクセラレータなしで Premium Storage に配置できます。また、再起動時間を短縮するために Ultra Disk に配置することもできます。
 - **/hana/log および /hana/data** には、Azure NetApp Files 上の **NFS v4.1** ボリュームを使用します。 /hana/shared のボリュームでは、NFS v3 または NFS v4.1 プロトコルを使用できます。
 
-ストレージの種類によっては、組み合わせることができます。 たとえば、 **/hana/data** を Premium Storage に配置し、必要な低遅延を確保するために、 **/hana/log** を Ultra Disk ストレージに配置できます。 **/hana/data** に ANF に基づくボリュームを使用する場合は、 **/hana/log** ボリュームも、ANF 上の NFS に基づく必要があります。 一方のボリューム (/hana/data など) に ANF 上の NFS を使用し、もう一方のボリューム ( **/hana/log** など) に Azure Premium Storage または Ultra Disk を使用することは **サポートされていません** 。
+ストレージの種類によっては、組み合わせることができます。 たとえば、 **/hana/data** を Premium Storage に配置し、必要な低遅延を確保するために、 **/hana/log** を Ultra Disk ストレージに配置できます。 **/hana/data** に ANF に基づくボリュームを使用する場合は、 **/hana/log** ボリュームも、ANF 上の NFS に基づく必要があります。 一方のボリューム (/hana/data など) に ANF 上の NFS を使用し、もう一方のボリューム ( **/hana/log** など) に Azure Premium Storage または Ultra Disk を使用することは **サポートされていません**。
 
 オンプレミスでは、I/O サブシステムとその機能を気にする必要はほとんどありませんでした。 SAP HANA に対する最低限のストレージ要件が満たされていることを、アプライアンスのベンダーが保証する必要があったためです。 Azure インフラストラクチャを自身でビルドする場合は、これらの SAP が発行した要件の一部に注意する必要があります。 SAP が推奨している最小スループット特性の一部を次に示します。
 
@@ -179,8 +179,8 @@ SAP **/hana/data** ボリュームの構成:
 
 | VM の SKU | RAM | 最大 VM I/O<br /> スループット | /hana/shared | /root ボリューム | /usr/sap |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
-| M32ts | 192 GiB | 500 MBps | 1 x P20 | 1 x P6 | 1 x P6 |
-| M32ls | 256 GiB | 500 MBps |  1 x P20 | 1 x P6 | 1 x P6 |
+| M32ts | 192 GiB | 500 MBps | 1 x P15 | 1 x P6 | 1 x P6 |
+| M32ls | 256 GiB | 500 MBps |  1 x P15 | 1 x P6 | 1 x P6 |
 | M64ls | 512 GiB | 1000 MBps | 1 x P20 | 1 x P6 | 1 x P6 |
 | M64s | 1,000 GiB | 1,000 MBps | 1 x P30 | 1 x P6 | 1 x P6 |
 | M64ms | 1,750 GiB | 1,000 MBps | 1 x P30 | 1 x P6 | 1 x P6 | 
@@ -224,7 +224,7 @@ Ultra Disk 上の **/hana/log** など、その他のボリュームの場合、
 - 100 IOPS から 160K IOPS の IOPS の範囲 (最大値は VM の種類によっても異なる)
 - 300 MB/秒から 2,000 MB/秒のストレージのスループット
 
-Ultra Disk によって、自分のサイズ、IOPS、ディスク スループットの範囲を実行する 1 つのディスクを定義することができます。 Azure Premium Storage 上の LVM や MDADM などの論理ボリューム マネージャーを使用する代わりに、IOPS とストレージ スループットの要件を満たすボリュームを構築します。 Ultra Disk と Premium Storage の間で構成の組み合わせを実行できます。 その場合、Ultra Disk の使用をパフォーマンス クリティカルな / **hana/data** および **/hana/log** ボリュームに限定し、その他のボリュームには Azure Premium Storage で対応できます。
+Ultra Disk によって、自分のサイズ、IOPS、ディスク スループットの範囲を実行する 1 つのディスクを定義することができます。 Azure Premium Storage 上の LVM や MDADM などの論理ボリューム マネージャーを使用する代わりに、IOPS とストレージ スループットの要件を満たすボリュームを構築します。 Ultra Disk と Premium Storage の間で構成の組み合わせを実行できます。 その場合、Ultra Disk の使用をパフォーマンス クリティカルな /**hana/data** および **/hana/log** ボリュームに限定し、その他のボリュームには Azure Premium Storage で対応できます。
 
 Ultra Disk のその他の利点は、Premium Storage と比較して読み取り待ち時間が短いことです。 読み取り待機時間が短いということは、HANA の起動時間とその後のメモリへのデータの読み込みを短縮する必要がある場合に利点があります。 Ultra Disk ストレージの利点は、HANA によってセーブポイントが書き込まれているときにも感じることができます。 
 

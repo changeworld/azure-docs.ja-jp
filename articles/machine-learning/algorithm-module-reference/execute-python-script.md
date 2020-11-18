@@ -1,7 +1,7 @@
 ---
 title: 'Python スクリプトの実行: モジュール リファレンス'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で Python スクリプトの実行モジュールを使用し、Python コードを実行する方法について説明します。
+description: Azure Machine Learning デザイナーの Python スクリプトの実行モジュールを使用し、Python コードを実行する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: e6a7eabec76cf27044b5d0e13acfc2431cb19b77
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e0da478e221fe392135362cd74cbdd8baca101ef
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323760"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421364"
 ---
 # <a name="execute-python-script-module"></a>Python スクリプトの実行モジュール
 
@@ -37,7 +37,7 @@ Azure Machine Learning で使用されている Python の Anaconda ディスト
 
 完全な一覧については、「[プレインストールされている Python パッケージ](#preinstalled-python-packages)」セクションを参照してください。
 
-プレインストール一覧に含まれていないパッケージ ( *scikit-misc* など) をインストールするには、スクリプトに次のコードを追加します。 
+プレインストール一覧に含まれていないパッケージ (*scikit-misc* など) をインストールするには、スクリプトに次のコードを追加します。 
 
 ```python
 import os
@@ -120,7 +120,7 @@ Python スクリプトの実行モジュールには、出発点として利用�
 
     ![Python 実行入力マップ](media/module/python-module.png)
 
-4. 新しい Python パッケージまたはコードをインクルードするには、それらのカスタム リソースが含まれる ZIP ファイルを **スクリプト バンドル** ポートに接続します。 または、スクリプトが 16 KB を超える場合は、 **スクリプト バンドル** ポートを使用すると、 *CommandLine exceeds the limit of 16597 characters (CommandLine が上限の 16,597 文字を超えています)* などのエラーを回避できます。 
+4. 新しい Python パッケージまたはコードをインクルードするには、それらのカスタム リソースが含まれる ZIP ファイルを **スクリプト バンドル** ポートに接続します。 または、スクリプトが 16 KB を超える場合は、**スクリプト バンドル** ポートを使用すると、*CommandLine exceeds the limit of 16597 characters (CommandLine が上限の 16,597 文字を超えています)* などのエラーを回避できます。 
 
     
     1. スクリプトとその他のカスタム リソースを zip ファイルにバンドルます。
@@ -131,7 +131,7 @@ Python スクリプトの実行モジュールには、出発点として利用�
     アップロード済みの ZIP アーカイブに格納されていれば、どのファイルでもパイプラインの実行中に使用できます。 アーカイブにディレクトリ構造が含まれる場合、その構造が保持されます。
  
     > [!WARNING]
-    > **app** は、組み込みサービスの予約語であるため、 **app** をフォルダー名またはスクリプトとして使用 **しないでください** 。 ただし、`app123` など、他の名前空間は使用できます。
+    > **app** は、組み込みサービスの予約語であるため、**app** をフォルダー名またはスクリプトとして使用 **しないでください**。 ただし、`app123` など、他の名前空間は使用できます。
    
     Python スクリプト ファイルと txt ファイルが含まれているスクリプト バンドルの例を次に示します。
       
@@ -185,7 +185,7 @@ Python スクリプトの実行モジュールには、出発点として利用�
     デザイナーに対しては 2 つのデータセットを返すことができます。このとき、データセットは `pandas.DataFrame` 型のシーケンスになっている必要があります。 その他の出力は Python コードで作成し、直接 Azure Storage に書き込むことができます。
 
     > [!WARNING]
-    > **Python スクリプトの実行モジュール** で、データベースまたはその他の外部ストレージに接続することは **お勧めしません** 。 [データのインポート モジュール](./import-data.md)と[データのエクスポート モジュール](./export-data.md)を使用できます。     
+    > **Python スクリプトの実行モジュール** で、データベースまたはその他の外部ストレージに接続することは **お勧めしません**。 [データのインポート モジュール](./import-data.md)と[データのエクスポート モジュール](./export-data.md)を使用できます。     
 
 6. パイプラインを送信します。
 
@@ -197,9 +197,9 @@ Python スクリプトの実行モジュールには、出発点として利用�
 
 このモジュールからは、次の 2 つのデータセットが返されます。  
   
-+ **Results Dataset 1** : Python スクリプトで最初に返される pandas データフレームによって定義されます。
++ **Results Dataset 1**: Python スクリプトで最初に返される pandas データフレームによって定義されます。
 
-+ **Result Dataset 2** : Python スクリプトで 2 番目に返される pandas データフレームによって定義されます。
++ **Result Dataset 2**: Python スクリプトで 2 番目に返される pandas データフレームによって定義されます。
 
 ## <a name="preinstalled-python-packages"></a>プレインストールされている Python パッケージ
 プレインストールされているパッケージは次のとおりです。

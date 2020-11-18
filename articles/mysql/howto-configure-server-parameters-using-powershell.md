@@ -1,19 +1,19 @@
 ---
 title: サーバー パラメーターの構成 - Azure PowerShell - Azure Database for MySQL
 description: この記事では、PowerShell を使って Azure Database for MySQL のサービス パラメーターを構成する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 10/1/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3888e83738d8617d6ec1433a3b760a2c518b874c
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 973025dfd8c0141ed0884539fe5207cc64ec822c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91627212"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541863"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-powershell"></a>PowerShell を使用して Azure Database for MySQL のサーバー パラメーターを構成する
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b6b94c30f00765164385987ed0ea9b201044f248
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 78a882378becda8c381ac036d786b32a2b42a5f1
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077441"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379470"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management 用の Azure セキュリティ ベースライン
 
@@ -323,7 +323,7 @@ Azure Monitor に加えて、Azure API Management を 1 つまたは複数の Az
 
 * [Azure API Management の診断設定を有効にする方法](./api-management-howto-use-azure-monitor.md#activity-logs)
 
-* [承認されていない要求に対してアラート ルールを構成する方法](./api-management-howto-use-azure-monitor.md#set-up-an-alert-rule-for-unauthorized-request)
+* [Azure API Management の警告ルールを構成する方法](./api-management-howto-use-azure-monitor.md#set-up-an-alert-rule)
 
 * [Azure API Management インスタンスの容量メトリックを表示する方法](./api-management-capacity.md)
 
@@ -375,11 +375,11 @@ Azure Security Center からの推奨事項に従って、管理者アカウン�
 
 * [Azure API Management でロールベースのアクセス制御を使用する方法](./api-management-role-based-access-control.md)
 
-* [Azure API Management インスタンスのユーザーの一覧を取得する方法](/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
+* [Azure API Management インスタンスのユーザーの一覧を取得する方法](/powershell/module/az.apimanagement/get-azapimanagementuser)
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールに割り当てられたユーザーの一覧を取得する方法](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールに割り当てられたユーザーの一覧を取得する方法](/powershell/module/az.resources/get-azroleassignment)
 
-* [PowerShell を使用して Azure AD でディレクトリ ロール定義を取得する方法](/powershell/module/az.resources/get-azroledefinition?view=azps-3.7.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロール定義を取得する方法](/powershell/module/az.resources/get-azroledefinition)
 
 * [Azure Security Center からの ID とアクセスの推奨事項について](../security-center/recommendations-reference.md#recs-identity)
 
@@ -480,7 +480,7 @@ Azure Security Center からの推奨事項に従って、管理者アカウン�
 
 ### <a name="39-use-azure-active-directory"></a>3.9: Azure Active Directory を使用する
 
-**ガイダンス**:可能な限り、Azure AD を中央認証および承認システムとして使用します。 AAD でデータを保護するには、保存データと転送中のデータに強力な暗号化を使用します。 また、Azure AD では、ユーザーの資格情報がソルト化およびハッシュされ、安全に格納されます。
+**ガイダンス**:可能な限り、Azure AD を中央認証および承認システムとして使用します。 Azure AD でデータを保護するには、保存データと転送中のデータに強力な暗号化を使用します。 また、Azure AD では、ユーザーの資格情報がソルト化およびハッシュされ、安全に格納されます。
 
 Azure Active Directory を使用して開発者アカウントを認証するように Azure API Management 開発者ポータルを構成します。
 
@@ -490,7 +490,7 @@ Azure Active Directory (AD) で OAuth 2.0 プロトコルを使用して API を
 
 * [Azure Active Directory と API Management で OAuth 2.0 を使用して API を保護する方法](./api-management-howto-protect-backend-with-aad.md)
 
-* [AAD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+* [Azure AD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -506,7 +506,7 @@ Azure Active Directory (AD) で OAuth 2.0 プロトコルを使用して API を
 
 * [Azure API Management でユーザー アカウントを管理する方法](./api-management-howto-create-or-invite-developers.md)
 
-* [API Management ユーザーの一覧を取得する方法](/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
+* [API Management ユーザーの一覧を取得する方法](/powershell/module/az.apimanagement/get-azapimanagementuse)
 
 * [Azure API Management でグループを作成および使用して開発者アカウントを管理する方法](./api-management-howto-create-groups.md)
 
@@ -746,7 +746,7 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 
 * [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription)
 
 * [Azure RBAC について](../role-based-access-control/overview.md)
 
@@ -888,7 +888,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**:Azure Policy を使用して、Azure API Management サービスの標準的なセキュリティ構成を定義して実装します。 Azure API Management サービスの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.ApiManagement" 名前空間で Azure Policy エイリアスを使用します。
 
-* [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias)
 
 * [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -928,9 +928,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: カスタムの Azure Policy 定義を使用する場合は、Azure DevOps または Azure Repos を使用して、Azure API Management サービスの構成を安全に格納して管理します。
 
-* [Azure DevOps でファイルを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps でファイルを格納する方法](/azure/devops/repos/git/gitworkflow)
 
-* [Azure Repos のドキュメント](/azure/devops/repos/index?view=azure-devops)
+* [Azure Repos のドキュメント](/azure/devops/repos/index)
 
 * [Azure API Management DevOps リソース キットについて](./api-management-security-controls.md#configuration-management)
 
@@ -1086,7 +1086,7 @@ API Management のサービスのバックアップと復元の機能では、�
 
 * [Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
-* [Azure Key Vault の証明書をバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate?view=azurermps-6.13.0)
+* [Azure Key Vault の証明書をバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1098,7 +1098,7 @@ API Management のサービスのバックアップと復元の機能では、�
 
 * [API Management の復元操作を呼び出す方法](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
 
-* [Azure Key Vault の証明書を復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
+* [Azure Key Vault の証明書を復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate)
 
 **Azure Security Center の監視**: 適用なし
 

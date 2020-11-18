@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 83afdf7e9dc50e50d747db99cd8439d75e6f7804
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 27372207df66b4198bd9c785ecc099fa88cbe548
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167816"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335696"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>トラブルシューティング:Azure で仮想ネットワークを削除できない
 
@@ -31,10 +31,11 @@ Microsoft Azure で仮想ネットワークを削除しようとすると、エ�
 
 1. [仮想ネットワークで仮想ネットワーク ゲートウェイが実行されていないか確認する](#check-whether-a-virtual-network-gateway-is-running-in-the-virtual-network)
 2. [仮想ネットワークでアプリケーション ゲートウェイが実行されていないか確認する](#check-whether-an-application-gateway-is-running-in-the-virtual-network)
-3. [仮想ネットワークで Azure Active Directory ドメイン サービスが有効になっていないか確認する](#check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network)
-4. [仮想ネットワークが他のリソースに接続されていないか確認する](#check-whether-the-virtual-network-is-connected-to-other-resource)
-5. [仮想ネットワークに実行中の仮想マシンがないか確認する](#check-whether-a-virtual-machine-is-still-running-in-the-virtual-network)
-6. [仮想ネットワークが移行の途中で停止していないか確認する](#check-whether-the-virtual-network-is-stuck-in-migration)
+3. [仮想ネットワークに Azure コンテナー インスタンスがまだ存在するか確認する](#check-whether-azure-container-instances-still-exist-in-the-virtual-network)。
+4. [仮想ネットワークで Azure Active Directory ドメイン サービスが有効になっていないか確認する](#check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network)
+5. [仮想ネットワークが他のリソースに接続されていないか確認する](#check-whether-the-virtual-network-is-connected-to-other-resource)
+6. [仮想ネットワークに実行中の仮想マシンがないか確認する](#check-whether-a-virtual-machine-is-still-running-in-the-virtual-network)
+7. [仮想ネットワークが移行の途中で停止していないか確認する](#check-whether-the-virtual-network-is-stuck-in-migration)
 
 ## <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 
@@ -59,6 +60,19 @@ Microsoft Azure で仮想ネットワークを削除しようとすると、エ�
 ![Azure portal の仮想ネットワークの接続デバイス一覧のスクリーンショット。 アプリケーション ゲートウェイが一覧で強調表示されています。](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
 
 アプリケーション ゲートウェイがある場合は、仮想ネットワークを削除する間に削除する必要があります。
+
+### <a name="check-whether-azure-container-instances-still-exist-in-the-virtual-network"></a>仮想ネットワークに Azure コンテナー インスタンスがまだ存在するか確認する
+
+1. Azure portal で、リソース グループの **[概要]** ページに移動します。
+1. リソース グループのリソースの一覧のヘッダーで、 **[非表示の型の表示]** を選択します。 ネットワーク プロファイルの種類は、既定で Azure portal に表示されません。
+1. コンテナー グループに関連するネットワーク プロファイルを選択します。
+1. **[削除]** を選択します。
+
+   ![非表示のネットワーク プロファイルの一覧のスクリーンショット。](media/virtual-network-troubleshoot-cannot-delete-vnet/container-instances.png)
+
+1. サブネットまたは仮想ネットワークを再度削除します。
+
+これらの手順で問題が解決しない場合は、これらの [Azure CLI コマンド](https://docs.microsoft.com/azure/container-instances/container-instances-vnet#clean-up-resources) を使用してリソースをクリーンアップします。 
 
 ### <a name="check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network"></a>仮想ネットワークで Azure Active Directory ドメイン サービスが有効になっていないか確認する
 

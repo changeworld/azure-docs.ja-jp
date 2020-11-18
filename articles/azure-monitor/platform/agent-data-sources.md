@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: a52f10c7081875113a0ad22bd687776e71d238e2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: ad5e91a6dcdb61e09a64e61a27f12148ec28168e
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460803"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490578"
 ---
 # <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Azure Monitor の Log Analytics エージェントのデータ ソース
 Azure Monitor で [Log Analytics](log-analytics-agent.md) エージェントを使用して仮想マシンから収集されるデータは、[Log Analytics ワークスペース](data-platform-logs.md)で構成するデータ ソースによって定義されます。   データ ソースはそれぞれ異なるタイプのレコードを作成し、各レコード タイプは独自のプロパティ セットを持っています。
@@ -20,6 +20,9 @@ Azure Monitor で [Log Analytics](log-analytics-agent.md) エージェントを�
 > この記事では、Azure Monitor で使用されるエージェントの 1 つである [Log Analytics エージェント](log-analytics-agent.md)のデータ ソースについて説明します。 他のエージェントは異なるデータを収集し、異なる方法で構成されます。 使用可能なエージェントとそれらが収集できるデータの一覧については、「[Azure Monitor エージェントの概要](agents-overview.md)」を参照してください。
 
 ![ログ データ コレクション](media/agent-data-sources/overview.png)
+
+> [!IMPORTANT]
+> この記事で説明するデータ ソースは、Log Analytics エージェントを実行している仮想マシンにのみ適用されます。 
 
 ## <a name="summary-of-data-sources"></a>データ ソースの概要
 次の表に、現在 Log Analytics で使用できるエージェントのデータ ソースを示します。  各データ ソースのリンクをクリックすると、それぞれのデータ ソースについて詳しく説明する記事に移動します。   また、収集の手法および頻度に関する情報についても提供します。 

@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
-ms.date: 10/01/2020
+ms.date: 11/10/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 93c2f847678292a1d38eff540a813b591c255ef0
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 955990ed9209ea1e12eed824241e8a5a456ed73b
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043210"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444879"
 ---
 # <a name="azure-tls-certificate-changes"></a>Azure TLS 証明書の変更  
 
@@ -22,12 +22,15 @@ Microsoft では、異なるルート証明機関 (CA) のセットからの TLS
 
 ## <a name="when-will-this-change-happen"></a>この変更はいつ行われますか?
 
-- 2020 年 7 月 7 日に、[Azure Active Directory](/azure/active-directory) (Azure AD) サービスでこの移行が開始されました。
-- 新しく作成されるすべての Azure TLS/SSL エンドポイントには、新しいルート CA にチェーンする更新された証明書が含まれています。
-- 既存の Azure エンドポイントは、2020 年 8 月 13 日から段階的に移行されます。
-- [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) と [DPS](/azure/iot-dps/) は Baltimore CyberTrust ルート CA に残りますが、中間 CA は変更されます。 詳細については、[こちら](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456)をクリックしてください。
-- [Azure Storage](/azure/storage) は Baltimore CyberTrust ルート CA に残りますが、中間 CA は変更されます。 詳細については、[こちら](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518)をクリックしてください。
-- [Azure Cache for Redis](/azure/azure-cache-for-redis) は Baltimore CyberTrust ルート CA に残りますが、中間 CA は変更されます。 詳細については、[こちら](../../azure-cache-for-redis/cache-whats-new.md)をクリックしてください。
+既存の Azure エンドポイントは、2020 年 8 月 13 日以降、段階的に移行されました。 新しく作成されるすべての Azure TLS/SSL エンドポイントには、新しいルート CA にチェーンする更新された証明書が含まれています。
+
+サービス固有の詳細:
+
+- 2020 年 7 月 7 日に、[Azure Active Directory](../../active-directory/index.yml) (Azure AD) サービスでこの移行が開始されました。
+- [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) と [DPS](../../iot-dps/index.yml) は Baltimore CyberTrust ルート CA に残りますが、中間 CA は変更されます。 詳細については、[こちら](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456)をクリックしてください。
+- [Azure Storage](../../storage/index.yml) は Baltimore CyberTrust ルート CA に残りますが、中間 CA は変更されます。 詳細については、[こちら](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518)をクリックしてください。
+- [Azure Cache for Redis](../../azure-cache-for-redis/index.yml) は Baltimore CyberTrust ルート CA に残りますが、中間 CA は変更されます。 詳細については、[こちら](../../azure-cache-for-redis/cache-whats-new.md)をクリックしてください。
+
 > [!IMPORTANT]
 > お客様は、Azure サービスに接続しようとしたときの接続エラーを防ぐため、この変更後にアプリケーションを更新することが必要になる場合があります。
 
@@ -52,7 +55,7 @@ Azure サービスによって使用される TLS 証明書は、次のいずれ
 
 ## <a name="when-can-i-retire-the-old-intermediate-thumbprint"></a>古い中間サムプリントはいつ廃止できますか?
 
-現在の CA 証明書は、2021 年 2 月 15 日まで取り消され " *ません* "。 その期日の後で、古いサムプリントをコードから削除できます。
+現在の CA 証明書は、2021 年 2 月 15 日まで取り消され "*ません*"。 その期日の後で、古いサムプリントをコードから削除できます。
 
 この期日が変更された場合、新しい失効日が通知されます。
 
@@ -67,11 +70,11 @@ Azure サービスによって使用される TLS 証明書は、次のいずれ
 - Azure API または他の Azure サービスと統合されているアプリケーションがあり、証明書のピン留めが使用されているかどうか不明な場合は、アプリケーション ベンダーに確認してください。
 
 - Azure サービスと通信するさまざまなオペレーティング システムと言語ランタイムでは、新しいルートを使用して証明書チェーンを正しく構築するために追加の手順が必要になる場合があります。
-    - **Linux** :多くのディストリビューションでは、CA を /etc/ssl/certs に追加する必要があります。 具体的な手順については、ディストリビューションのドキュメントを参照してください。
-    - **Java** : Java キース トアに上記の CA が含まれていることを確認します。
-    - **切断された環境で実行されている Windows** : 切断された環境で実行されているシステムでは、新しいルートを信頼されたルート証明機関ストアに追加し、中間を中間証明機関ストアに追加する必要があります。
-    - **Android** : デバイスのドキュメントと Android のバージョンを確認してください。
-    - **その他のハードウェア デバイス、特に IoT** : デバイスの製造元に問い合わせてください。
+    - **Linux**:多くのディストリビューションでは、CA を /etc/ssl/certs に追加する必要があります。 具体的な手順については、ディストリビューションのドキュメントを参照してください。
+    - **Java**: Java キース トアに上記の CA が含まれていることを確認します。
+    - **切断された環境で実行されている Windows**: 切断された環境で実行されているシステムでは、新しいルートを信頼されたルート証明機関ストアに追加し、中間を中間証明機関ストアに追加する必要があります。
+    - **Android**: デバイスのドキュメントと Android のバージョンを確認してください。
+    - **その他のハードウェア デバイス、特に IoT**: デバイスの製造元に問い合わせてください。
 
 - 特定の証明書失効リスト (CRL) のダウンロードやオンライン証明書状態プロトコル (OCSP) の検証場所のみに対する発信呼び出しが許可されるようにファイアウォール規則が設定されている環境の場合。 次の CRL と OCSP の URL を許可する必要があります。
 

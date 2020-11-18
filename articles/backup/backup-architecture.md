@@ -3,12 +3,12 @@ title: アーキテクチャの概要
 description: Azure Backup サービスによって使用される、アーキテクチャ、コンポーネント、およびプロセスの概要を示します。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: f5d4c881244ddae41ba4c706812bd7b8274a374e
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 288b073c20b93bf1802f34f5dcd17b12430bb279
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173278"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427736"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup のアーキテクチャとコンポーネント
 
@@ -123,6 +123,12 @@ DPM/MABS ディスクにバックアップしてから、Azure にバックア�
 - "毎月"、"毎年" のバックアップ ポイントに対するデータ保持は、長期保有 (LTR) と呼ばれます。
 - コンテナーが作成されると、"DefaultPolicy" も作成され、リソースのバックアップに使用できます。
 - バックアップ ポリシーの保持期間に変更が加えられると、新しいものを除き、すべての古い復旧ポイントにさかのぼって適用されます。
+
+### <a name="impact-of-policy-change-on-recovery-points"></a>復旧ポイントに対するポリシーの変更の影響
+
+- **保有期間の増加/減少:** 保有期間を変更すると、新しい保有期間が既存の復旧ポイントにも適用されます。 その結果、一部の復旧ポイントがクリーン アップされます。 保有期間が長くなると、既存の復旧ポイントの保有期間も長くなります。
+- **日単位から週単位への変更:** スケジュールされたバックアップが日次から週次に変更されると、既存の日次の復旧ポイントがクリーン アップされます。
+- **週次から日次への変更:** 既存の週次のバックアップは、現在の保持ポリシーに従って残りの日数に基づいて保持されます。
 
 ### <a name="additional-reference"></a>その他の参照情報
 

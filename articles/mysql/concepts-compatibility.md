@@ -1,17 +1,17 @@
 ---
 title: ドライバーとツールの互換性 - Azure Database for MySQL
 description: この記事では、Azure Database for MySQL との、MySQL ドライバーと管理ツールの互換性について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 8d222eca76f020703f89dd1bdd5848cec4bc52ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2ea7af0ec9c740c07cd3a5e4ebd88a9ad1a031d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006535"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542645"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Azure Database for MySQL に対する MySQL ドライバーと管理ツールの互換性
 この記事では、Azure Database for MySQL との、ドライバーと管理ツールの互換性について説明します。

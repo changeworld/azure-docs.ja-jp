@@ -8,12 +8,12 @@ ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 30eb19e418292e74989be81d94ed684c917f6971
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: a78aec8c18f3b89629bbf696de3a097397ac59bc
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088637"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337918"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Azure Spring Cloud で分散トレースを使用する
 
@@ -28,14 +28,18 @@ Azure Spring Cloud の分散トレース ツールを使用すると、複雑な
 
 ## <a name="dependencies"></a>依存関係
 
-次の NuGet パッケージをインストールします
+Steeltoe 2.4.4 の場合は、次の NuGet パッケージを追加します。
 
 * [Steeltoe.Management.TracingCore](https://www.nuget.org/packages/Steeltoe.Management.TracingCore/)
 * [Steeltoe.Management.ExporterCore](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/)
 
+Steeltoe 3.0.0 の場合は、次の NuGet パッケージを追加します。
+
+* [Steeltoe.Management.TracingCore](https://www.nuget.org/packages/Steeltoe.Management.TracingCore/)
+
 ## <a name="update-startupcs"></a>Startup.cs を更新する
 
-1. `ConfigureServices` メソッドで、`AddDistributedTracing` メソッドと `AddZipkinExporter` メソッドを呼び出します。
+1. Steeltoe 2.4.4 の場合は、`ConfigureServices` メソッドで `AddDistributedTracing` および `AddZipkinExporter` を呼び出します。
 
    ```csharp
    public void ConfigureServices(IServiceCollection services)
@@ -45,14 +49,29 @@ Azure Spring Cloud の分散トレース ツールを使用すると、複雑な
    }
    ```
 
-1. `Configure` メソッドで、`UseTracingExporter` メソッドを呼び出します。
+   Steeltoe 3.0.0 の場合は、`ConfigureServices` メソッドで `AddDistributedTracing` を呼び出します。
+
+   ```csharp
+   public void ConfigureServices(IServiceCollection services)
+   {
+       services.AddDistributedTracing(Configuration, builder => builder.UseZipkinWithTraceOptions(services));
+   }
+   ```
+
+1. Steeltoe 2.4.4 の場合は、`Configure` メソッドで `UseTracingExporter` を呼び出します。
 
    ```csharp
    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
    {
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
         app.UseTracingExporter();
    }
    ```
+
+   Steeltoe 3.0.0 の場合、`Configure` メソッドを変更する必要はありません。
 
 ## <a name="update-configuration"></a>構成を更新する
 

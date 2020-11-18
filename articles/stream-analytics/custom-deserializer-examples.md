@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a69ca707577ceddc56ae691d6e5e701458cae28
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4adf0b8a7c12abed9689b9ac0cc9c5d5c8c3f980
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346603"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488436"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>.NET カスタム逆シリアライザーを使用して任意の形式の入力を読み取る
 
@@ -201,7 +201,7 @@ namespace ExampleCustomCode.Serialization
 
 ## <a name="serialization-format-for-rest-apis"></a>REST API のシリアル化形式
 
-Stream Analytics のすべての入力には、 **シリアル化形式** があります。 入力オプションについて詳しくは、[入力 REST API](/rest/api/streamanalytics/2016-03-01/inputs) のドキュメントをご覧ください。
+Stream Analytics のすべての入力には、**シリアル化形式** があります。 入力オプションについて詳しくは、[入力 REST API](/rest/api/streamanalytics/2016-03-01/inputs) のドキュメントをご覧ください。
 
 次の JavaScript コードは、REST API を使用する場合の .NET 逆シリアライザーのシリアル化形式の例です。
 
@@ -249,9 +249,9 @@ Stream Analytics のすべての入力には、 **シリアル化形式** があ
 
 逆シリアライザーを実装した後は、コミュニティと共有することにより、他のユーザーに役立てることができます。 コードを [Azure Stream Analytics GitHub リポジトリ](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)に送信してください。
 
-### <a name="what-are-the-other-limitation-of-using-custom-deserializers-in-stream-analytics"></a>Stream Analytics でカスタム デシリアライザーの使用について、他にどのような制限がありますか?
+### <a name="what-are-the-other-limitations-of-using-custom-deserializers-in-stream-analytics"></a>Stream Analytics でカスタム デシリアライザーを使用する場合、他にどのような制限がありますか?
 
-入力が MapField 型を含むスキーマの Protobuf 形式の場合、カスタム デシリアライザーを実装することはできません。 Microsoft では、今後この型に対するサポートを提供できるように取り組んでいます。
+入力が `MapField` 型を含むスキーマの Protobuf 形式の場合、カスタム デシリアライザーを実装することはできません。 また、カスタム デシリアライザーでは、サンプル データやプレビュー データはサポートされません。 
 
 ## <a name="next-steps"></a>次の手順
 

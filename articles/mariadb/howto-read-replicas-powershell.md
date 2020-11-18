@@ -1,18 +1,18 @@
 ---
 title: 読み取りレプリカの管理 - Azure PowerShell - Azure Database for MariaDB
 description: PowerShell を使用して Azure Database for MariaDB の読み取りレプリカを設定し、管理する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e2b622372c881997fd77a83feb8f6c393504900b
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a5921026c8f260683f091870850350fcc4619f6b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428292"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538616"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>PowerShell を使用して Azure Database for MariaDB の読み取りレプリカを作成し、管理する方法
 
@@ -59,7 +59,7 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 | ResourceGroupName |  myresourcegroup |  レプリカ サーバーが作成されるリソース グループ。  |
 | 名前 | mydemoreplicaserver | 作成する新しいレプリカ サーバーの名前。 |
 
-リージョンをまたがる読み取りレプリカを作成するには、 **Location** パラメーターを使用します。 次の例では、 **米国西部** リージョンにレプリカを作成します。
+リージョンをまたがる読み取りレプリカを作成するには、**Location** パラメーターを使用します。 次の例では、**米国西部** リージョンにレプリカを作成します。
 
 ```azurepowershell-interactive
 Get-AzMariaDbServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
@@ -68,7 +68,7 @@ Get-AzMariaDbServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
 
 レプリカを作成できるリージョンの詳細については、[読み取りレプリカの概念に関する記事](concepts-read-replicas.md)を参照してください。
 
-既定では、 **Sku** パラメーターが指定されていない限り、読み取りレプリカはソースと同じサーバー構成で作成されます。
+既定では、**Sku** パラメーターが指定されていない限り、読み取りレプリカはソースと同じサーバー構成で作成されます。
 
 > [!NOTE]
 > レプリカをマスターと維持できるようにするために、レプリカ サーバーの構成をソースと同じかそれ以上の値にしておくことをお勧めします。

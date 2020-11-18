@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
-ms.custom: seodec18
-ms.openlocfilehash: 6d0ae81177ca8488c410e40ca56642199694c08c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: seodec18, "seo-nov-2020"
+ms.openlocfilehash: c8c479050b434904de57397e5e7d73594090e031
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93072662"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336133"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB の変更フィードのサポートは、Azure Cosmos コンテナーの変更をリッスンすることで機能します。 変更されたドキュメントは、変更された順に並べ替えられた一覧に出力されます。 変更は保持され、非同期的に増分処理できます。また、出力を 1 つ以上のコンシューマーに分散させて並列処理することもできます。
+Azure Cosmos DB の変更フィードは、コンテナーに対して行われた変更が発生した順番で記録されている永続的な記録です。 Azure Cosmos DB の変更フィードのサポートは、Azure Cosmos コンテナーの変更をリッスンすることで機能します。 変更されたドキュメントは、変更された順に並べ替えられた一覧に出力されます。 永続的な変更は非同期的に増分処理できます。また、出力を 1 つ以上のコンシューマーに分散させて並列処理することもできます。
 
 [変更フィードの設計パターン](change-feed-design-patterns.md)について、さらに学習します。
 

@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Manager テンプレートを使用して VM 拡張機能を有効にする
 description: この記事では、Azure Resource Manager テンプレートを使用して、ハイブリッド環境で実行されている Azure Arc 対応サーバーに仮想マシン拡張機能をデプロイする方法について説明します。
-ms.date: 10/22/2020
+ms.date: 11/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 935fa38fbb98622f2da7d2ce9e1d166b12a32e44
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d5c7f5055f3e41a91fa00e1e3ad08e7686145b9e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491208"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353868"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>ARM テンプレートを使用して VM 拡張機能を有効にする
 
@@ -129,7 +129,7 @@ Log Analytics エージェントを簡単にデプロイするため、Windows �
 }
 ```
 
-テンプレート ファイルとパラメーター ファイルをディスクに保存し、デプロイに適した値を使用してパラメーター ファイルを編集します。 その後、次のコマンドを使用して、リソース グループ内の接続されているすべてのマシンに拡張機能をインストールできます。 このコマンドでは、 *TemplateFile* パラメーターを使用してテンプレートを指定し、 *TemplateParameterFile* パラメーターを使用して、パラメーターとパラメーター値が含まれるファイルを指定します。
+テンプレート ファイルとパラメーター ファイルをディスクに保存し、デプロイに適した値を使用してパラメーター ファイルを編集します。 その後、次のコマンドを使用して、リソース グループ内の接続されているすべてのマシンに拡張機能をインストールできます。 このコマンドでは、*TemplateFile* パラメーターを使用してテンプレートを指定し、*TemplateParameterFile* パラメーターを使用して、パラメーターとパラメーター値が含まれるファイルを指定します。
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\LogAnalyticsAgentWin.json" -TemplateParameterFile "D:\Azure\Templates\LogAnalyticsAgentWinParms.json"
@@ -623,8 +623,85 @@ Azure Monitor 依存関係エージェント拡張機能を使用するため、
 }
 ```
 
+## <a name="deploy-azure-key-vault-vm-extension-preview"></a>Azure Key Vault VM 拡張機能 (プレビュー) のデプロイ
+
+次の JSON は、Key Vault VM 拡張機能 (プレビュー) のスキーマを示しています。 この拡張機能では、保護された設定は必要ありません。そのすべての設定はパブリック情報と見なされます。 この拡張機能には、監視対象の証明書、ポーリング頻度、および宛先の証明書ストアの一覧が必要です。 具体的な内容は次のとおりです。
+
+### <a name="template-file-for-linux"></a>Linux 用テンプレート ファイル
+
+```json
+{
+      "type": "Microsoft.HybridCompute/machines/extensions",
+      "name": "KeyVaultForLinux",
+      "apiVersion": "2019-07-01",
+      "location": "<location>",
+      "dependsOn": [
+          "[concat('Microsoft.HybridCompute/machines/extensions/', <machineName>)]"
+      ],
+      "properties": {
+      "publisher": "Microsoft.Azure.KeyVault",
+      "type": "KeyVaultForLinux",
+      "typeHandlerVersion": "1.0",
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+          "secretsManagementSettings": {
+          "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
+          "certificateStoreName": <ingnored on linux>,
+          "certificateStoreLocation": <disk path where certificate is stored, default: "/var/lib/waagent/Microsoft.Azure.KeyVault">,
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+          }
+      }
+     }
+}
+```
+
+### <a name="template-file-for-windows"></a>Windows 用テンプレート ファイル
+
+```json
+{
+      "type": "Microsoft.HybridCompute/machines/extensions",
+      "name": "KVVMExtensionForWindows",
+      "apiVersion": "2019-07-01",
+      "location": "<location>",
+      "dependsOn": [
+          "[concat('Microsoft.HybridCompute/machines/extensions/', <machineName>)]"
+      ],
+      "properties": {
+      "publisher": "Microsoft.Azure.KeyVault",
+      "type": "KeyVaultForWindows",
+      "typeHandlerVersion": "1.0",
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+        "secretsManagementSettings": {
+          "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
+          "certificateStoreName": <certificate store name, e.g.: "MY">,
+          "linkOnRenewal": <Only Windows. This feature ensures s-channel binding when certificate renews, without necessitating a re-deployment.  e.g.: false>,
+          "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
+          "requireInitialSync": <initial synchronization of certificates e..g: true>,
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+        },
+        "authenticationSettings": {
+                "msiEndpoint":  <Optional MSI endpoint e.g.: "http://169.254.169.254/metadata/identity">,
+                "msiClientId":  <Optional MSI identity e.g.: "c7373ae5-91c2-4165-8ab6-7381d6e75619">
+        }
+      }
+     }
+}
+```
+
+> [!NOTE]
+> 確認された証明書の URL は、`https://myVaultName.vault.azure.net/secrets/myCertName` の形式である必要があります。
+> 
+> これは、`/secrets` のパスでは秘密キーを含む完全な証明書が返されるのに対し、`/certificates` のパスでは返されないためです。 証明書について詳しくは、次の記事をご覧ください: 「[Key Vault 証明書](../../key-vault/general/about-keys-secrets-certificates.md)」
+
+テンプレート ファイルをディスクに保存します。 その後、次のコマンドを使用して、リソース グループ内の接続されているすべてのマシンに拡張機能をインストールできます。
+
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\KeyVaultExtension.json"
+```
+
 ## <a name="next-steps"></a>次のステップ
 
-* Azure CLI または PowerShell を使用して拡張機能をデプロイおよび削除できます。
+* [Azure PowerShell](manage-vm-extensions-powershell.md)、[Azure portal](manage-vm-extensions-portal.md)、または [Azure CLI](manage-vm-extensions-cli.md) を使用して、VM 拡張機能をデプロイ、管理、削除できます。
 
 * トラブルシューティングに関する情報は、[VM 拡張機能のトラブルシューティング ガイド](troubleshoot-vm-extensions.md)に記載されています。

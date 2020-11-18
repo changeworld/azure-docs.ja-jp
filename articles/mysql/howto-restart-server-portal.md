@@ -1,17 +1,17 @@
 ---
 title: サーバーを再起動する - Azure portal - Azure Database for MySQL
 description: この記事では、Azure portal を使用して Azure Database for MySQL サーバーを再起動する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: d885cc64eeebd4873ad5993b39b48845d1365c23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d19c0bd4ef5c49b8be82ffa11115ff6a1c6b302
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90902761"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541795"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-azure-portal"></a>Azure portal を使用して Azure Database for MySQL サーバーを再起動する
 このトピックでは、Azure Database for MySQL サーバーを再起動する方法について説明します。 メンテナンス上の理由でサーバーの再起動が必要な場合があります。これを行うと、サーバーが操作を実行しているときに短時間の停止が発生します。
@@ -36,15 +36,15 @@ ms.locfileid: "90902761"
 
 3. **[はい]** をクリックして、サーバーを再起動することを確認します。
 
-   :::image type="content" source="./media/howto-restart-server-portal/3-restart-confirm.png" alt-text="Azure Database for MySQL - [概要] - [再起動] ボタン":::
+   :::image type="content" source="./media/howto-restart-server-portal/3-restart-confirm.png" alt-text="Azure Database for MySQL - 再起動の確認":::
 
 4. サーバーの状態が [再起動中] に変わることを確認します。
 
-   :::image type="content" source="./media/howto-restart-server-portal/4-restarting-status.png" alt-text="Azure Database for MySQL - [概要] - [再起動] ボタン":::
+   :::image type="content" source="./media/howto-restart-server-portal/4-restarting-status.png" alt-text="Azure Database for MySQL - 再起動の状態":::
 
 5. サーバーの再起動が成功したことを確認します。
 
-   :::image type="content" source="./media/howto-restart-server-portal/5-restart-success.png" alt-text="Azure Database for MySQL - [概要] - [再起動] ボタン":::
+   :::image type="content" source="./media/howto-restart-server-portal/5-restart-success.png" alt-text="Azure Database for MySQL - 再起動の成功":::
 
 ## <a name="next-steps"></a>次のステップ
 

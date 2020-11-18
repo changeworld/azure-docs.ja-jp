@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3bd54d8a23aca7e493cd3c0ddb7f057a6e1f5362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e7f2e445c3e4e8df7420c0587e156968f3a2c92
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761483"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542679"
 ---
 # <a name="sizing-guidance"></a>サイズ設定のガイダンス
 
@@ -39,7 +39,7 @@ Azure Arc データ サービスのデプロイを計画する場合は、Azure 
 
 ## <a name="minimum-deployment-requirements"></a>最小のデプロイ要件
 
-Azure Arc 対応データ サービスの最小デプロイ サイズは、Azure Arc データ コントローラーに加えて、2 つのワーカー ノードを使用した 1 つの SQL Managed Instance と 1 つの PostgreSQL Hyperscale サーバー グループと考えることができます。  この構成では、Kubernetes クラスター上の_使用可能な_容量である少なくとも 16 GB RAM と 4 コアが必要です。  8 GB RAM と 4 コアという最小の Kubernetes ノード サイズと、すべての Kubernetes ノードにわたって使用可能な 16 GB RAM の合計容量があることを確認する必要があります。  たとえば、32 GB RAM と 4 コアのノードを 1 つ使用することも、それぞれが 16 GB RAM と 4 コアのノードを 2 つ使用することもできます。
+Azure Arc 対応データ サービスの最小デプロイ サイズは、Azure Arc データ コントローラーに加えて、2 つのワーカー ノードを使用した 1 つの SQL Managed Instance と 1 つの PostgreSQL Hyperscale サーバー グループと考えることができます。  この構成では、Kubernetes クラスター上の _使用可能な_ 容量である少なくとも 16 GB RAM と 4 コアが必要です。  8 GB RAM と 4 コアという最小の Kubernetes ノード サイズと、すべての Kubernetes ノードにわたって使用可能な 16 GB RAM の合計容量があることを確認する必要があります。  たとえば、32 GB RAM と 4 コアのノードを 1 つ使用することも、それぞれが 16 GB RAM と 4 コアのノードを 2 つ使用することもできます。
 
 ストレージのサイズ設定の詳細については、[ストレージ構成](storage-configuration.md)に関する記事を参照してください。
 
@@ -56,7 +56,7 @@ Azure Arc 対応データ サービスの最小デプロイ サイズは、Azure
 |**logsdb**|200m|1600Mi|2|1600Mi||
 |**logsui**|100m|500Mi|2|2Gi||
 |**metricsdb**|200m|800Mi|400m|2Gi||
-|**metricsdc**|100m|200Mi|200m|300Mi|metricsdc は、クラスター内の各 Kubernetes ノード上に作成されるデーモンセットです。  この表に示されている数値は_ノードあたり_です。 データ コントローラーを作成する前にデプロイ プロファイル ファイルで allowNodeMetricsCollection = false を設定した場合、metricsdc デーモンセットは作成されません。|
+|**metricsdc**|100m|200Mi|200m|300Mi|metricsdc は、クラスター内の各 Kubernetes ノード上に作成されるデーモンセットです。  この表に示されている数値は _ノードあたり_ です。 データ コントローラーを作成する前にデプロイ プロファイル ファイルで allowNodeMetricsCollection = false を設定した場合、metricsdc デーモンセットは作成されません。|
 |**metricsui**|20m|200Mi|500m|200Mi||
 |**mgmtproxy**|200m|250Mi|500m|500Mi||
 
@@ -89,9 +89,10 @@ Azure Arc 対応データ サービスの最小デプロイ サイズは、Azure
 - コア:1
 
 作成される各 SQL Managed Instance ポッドには、次の 3 つのコンテナーがあります。
+
 |コンテナー名|CPU 要求|メモリ要求|CPU の制限|メモリの制限|メモ|
 |---|---|---|---|---|---|
-|fluentbit|100m|100Mi|指定なし|指定なし|fluentbit コンテナー リソース要求は、SQL Managed Instance に対して指定された要求_に追加_されます。||
+|fluentbit|100m|100Mi|指定なし|指定なし|fluentbit コンテナー リソース要求は、SQL Managed Instance に対して指定された要求 _に追加_ されます。||
 |arc-sqlmi|ユーザー指定または指定なし。|ユーザー指定または指定なし。|ユーザー指定または指定なし。|ユーザー指定または指定なし。||
 |collectd|指定なし|指定なし|指定なし|指定なし||
 
@@ -104,9 +105,10 @@ Azure Arc 対応データ サービスの最小デプロイ サイズは、Azure
 - コア:1
 
 作成される各 PostgreSQL Hyperscale サーバー グループ コーディネーターまたはワーカー ポッドには、次の 3 つのコンテナーがあります。
+
 |コンテナー名|CPU 要求|メモリ要求|CPU の制限|メモリの制限|メモ|
 |---|---|---|---|---|---|
-|fluentbit|100m|100Mi|指定なし|指定なし|fluentbit コンテナー リソース要求は、PostgreSQL Hyperscale サーバー グループ ノードに対して指定された要求_に追加_されます。|
+|fluentbit|100m|100Mi|指定なし|指定なし|fluentbit コンテナー リソース要求は、PostgreSQL Hyperscale サーバー グループ ノードに対して指定された要求 _に追加_ されます。|
 |postgres|ユーザー指定または指定なし。|ユーザー指定または 256Mi (既定値)。|ユーザー指定または指定なし。|ユーザー指定または指定なし。||
 |telegraf|指定なし|指定なし|指定なし|指定なし||
 

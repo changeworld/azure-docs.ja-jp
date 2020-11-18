@@ -1,7 +1,7 @@
 ---
 title: イメージ変換の初期化イメージ変換
 titleSuffix: Azure Machine Learning
-description: イメージ変換の初期化モジュールを使用して、イメージ変換を初期化する方法について説明します。
+description: Azure Machine Learning デザイナーの Init Image Transformation (イメージ変換の初期化) モジュールを使用して、イメージ変換を初期化する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: aa81987f9214870e248ef9b625e6afcd1093fe5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc0eb196ed24e413c35d64f0571ff29dc3725032
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907881"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421279"
 ---
 # <a name="init-image-transformation"></a>イメージ変換の初期化
 
-この記事では、Azure Machine Learning デザイナーの**イメージ変換の初期化**モジュールを使用して、イメージ変換を初期化し、イメージを変換する方法を指定する方法について説明します。
+この記事では、Azure Machine Learning デザイナーの **イメージ変換の初期化** モジュールを使用して、イメージ変換を初期化し、イメージを変換する方法を指定する方法について説明します。
 
 ## <a name="how-to-configure-init-image-transformation"></a>イメージ変換の初期化の構成方法
 
-1.  デザイナーで**イメージ変換の初期化**モジュールをパイプラインに追加します。 
+1.  デザイナーで **イメージ変換の初期化** モジュールをパイプラインに追加します。 
 
 2.  **[サイズ変更]** では、入力 PIL イメージのサイズを、指定したサイズに変更するかどうかを指定します。 'True' を選択した場合は、目的の出力イメージのサイズを **[サイズ]** で指定できます (既定値は 256)。 
 
@@ -95,7 +95,7 @@ ms.locfileid: "90907881"
 
 | 名前                        | Type                    | 説明                              |
 | --------------------------- | ----------------------- | ---------------------------------------- |
-| イメージ変換を出力します | TransformationDirectory | **イメージ変換の適用**モジュールに接続できるイメージ変換を出力します。 |
+| イメージ変換を出力します | TransformationDirectory | **イメージ変換の適用** モジュールに接続できるイメージ変換を出力します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

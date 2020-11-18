@@ -1,19 +1,19 @@
 ---
 title: サーバー パラメーターの構成 - Azure PowerShell - Azure Database for MariaDB
 description: この記事では、PowerShell を使って Azure Database for MariaDB のサービス パラメーターを構成する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 10/1/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d116bdec2974fa2c39c6a56364e54ca7d776b682
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 8ace6306bec4c79cbce0a1572360db1acd2cea97
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426027"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538242"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-powershell"></a>PowerShell を使用して Azure Database for MariaDB のサーバー パラメーターを構成する
 

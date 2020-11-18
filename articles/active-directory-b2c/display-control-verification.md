@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e42c889277f937a33e72eaf57819385166d6a409
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd90be6d93dc5ca399ac87daba0ca44fa7e88ff8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85202316"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532496"
 ---
 # <a name="verification-display-control"></a>検証表示コントロール
 
@@ -26,15 +26,13 @@ ms.locfileid: "85202316"
 
 検証表示コントロールは、次の 2 つの手順 (アクション) で構成されます。
 
-1. 確認コードの送信先 (電子メールアドレスや電話番号など) をユーザーに要求します。 ユーザーが **[コードの送信]** ボタンを選択すると、検証表示コントロールの **SendCode アクション** が実行されます。 **SendCode アクション**によってコードが生成され、送信されるコンテンツが構築され、それがユーザーに送信されます。 アドレスの値を事前に設定して、2 要素認証として使用できます。
+1. 確認コードの送信先 (電子メールアドレスや電話番号など) をユーザーに要求します。 ユーザーが **[コードの送信]** ボタンを選択すると、検証表示コントロールの **SendCode アクション** が実行されます。 **SendCode アクション** によってコードが生成され、送信されるコンテンツが構築され、それがユーザーに送信されます。 アドレスの値を事前に設定して、2 要素認証として使用できます。
 
     ![[コードの送信] アクションのサンプル ページ](media/display-control-verification/display-control-verification-email-action-01.png)
 
-1. コードが送信されたら、ユーザーはメッセージを読んで、表示コントロールによって提供されたコントロールに確認コードを入力し、 **[コードの確認]** を選択します。 **[コードの確認]** を選択することで、**VerifyCode アクション**が実行され、アドレスに関連付けられたコードが検証されます。 ユーザーが **[新しいコードの送信]** を選択した場合は、最初のアクションが再び実行されます。
+1. コードが送信されたら、ユーザーはメッセージを読んで、表示コントロールによって提供されたコントロールに確認コードを入力し、 **[コードの確認]** を選択します。 **[コードの確認]** を選択することで、**VerifyCode アクション** が実行され、アドレスに関連付けられたコードが検証されます。 ユーザーが **[新しいコードの送信]** を選択した場合は、最初のアクションが再び実行されます。
 
     ![コードの確認アクションのサンプル ページ](media/display-control-verification/display-control-verification-email-action-02.png)
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="verificationcontrol-required-elements"></a>VerificationControl の必須要素
 
@@ -51,7 +49,7 @@ ms.locfileid: "85202316"
 
 次の例では、**email** テキスト ボックスがページに表示されます。 ユーザーが電子メール アドレスを入力して **[コードの送信]** を選択すると、**SendCode** アクションが Azure AD B2C バックエンドでトリガーされます。
 
-その後、ユーザーが**確認コード**を入力し、 **[コードの確認]** を選択して、バックエンドで **VerifyCode** アクションをトリガーします。 すべての検証に合格すれば、**VerificationControl** は完了したとみなされ、ユーザーは次の手順に進むことができます。
+その後、ユーザーが **確認コード** を入力し、 **[コードの確認]** を選択して、バックエンドで **VerifyCode** アクションをトリガーします。 すべての検証に合格すれば、**VerificationControl** は完了したとみなされ、ユーザーは次の手順に進むことができます。
 
 ```xml
 <DisplayControl Id="emailVerificationControl" UserInterfaceControlType="VerificationControl">

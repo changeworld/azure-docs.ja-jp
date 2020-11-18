@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 2f788452455bfbbc47f0a48689ccf3344515fdae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06d5196e612bcf20e11f17634b32db028cd5bc88
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904252"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378093"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>自分のサービス向けに Spring Cloud Config Server インスタンスを設定する
 
@@ -81,6 +81,9 @@ SSH を使用するプライベート Git リポジトリを設定するため�
 | `host-key`                 | いいえ     | Git リポジトリ サーバーのホスト キーには、`host-key-algorithm` で対応されているアルゴリズム プレフィックスを含めないでください。 |
 | `host-key-algorithm`       | いいえ     | ホスト キー アルゴリズム。*ssh-dss*、*ssh-rsa*、*ecdsa-sha2-nistp256*、*ecdsa-sha2-nistp384*、*ecdsa-sha2-nistp521* のいずれかを指定する必要があります。 `host-key` が存在する場合にのみ "*必須*"。 |
 | `strict-host-key-checking` | いいえ     | プライベートな `host-key` が指定されたら、Config Server インスタンスが起動に失敗するかどうかを示します。 *true* (既定値) または *false* にする必要があります。 |
+
+> [!NOTE]
+> 指定されていない場合、Config Server は既定のラベルとして `master` (om Git 自体) を受け取ります。 しかし、GitHub では、最近既定のブランチが `master` から `main` に変更されました。 Azure Spring Cloud Config Server の障害を回避するには、Config Server を GitHub で設定するときに既定のラベルに注意してください (特に、新しく作成されたリポジトリの場合)。
 
 -----
 
@@ -151,15 +154,15 @@ SSH を使用するプライベート Git リポジトリを設定するため�
     ![[認証の編集] ペインの基本認証](media/spring-cloud-tutorial-config-server/basic-auth.png)
     
     > [!CAUTION]
-    > GitHub など、一部の Git リポジトリ サーバーでは、**基本認証**に *personal-token* や *access-token* (パスワードなど) が使用されます。 その種のトークンは、有効期限切れになることがないため、Azure Spring Cloud でパスワードとして使用できます。 ただし、Bitbucket や Azure DevOps などの他の Git リポジトリ サーバーでは、*access-token* が 1 時間または 2 時間以内に期限切れになります。 つまり、それらのリポジトリ サーバーを Azure Spring Cloud で使用する場合、このオプションは非現実的です。
+    > GitHub など、一部の Git リポジトリ サーバーでは、**基本認証** に *personal-token* や *access-token* (パスワードなど) が使用されます。 その種のトークンは、有効期限切れになることがないため、Azure Spring Cloud でパスワードとして使用できます。 ただし、Bitbucket や Azure DevOps などの他の Git リポジトリ サーバーでは、*access-token* が 1 時間または 2 時間以内に期限切れになります。 つまり、それらのリポジトリ サーバーを Azure Spring Cloud で使用する場合、このオプションは非現実的です。
 
-    * **SSH**: **[既定のリポジトリ]** セクションの **[URI]** ボックスにリポジトリの URI を貼り付けてから、 **[認証]** ("鉛筆" アイコン) ボタンを選択します。 **[認証の編集]** ペインの **[認証の種類]** ボックスの一覧から **[SSH]** を選択し、**秘密キー**を入力します。 必要に応じて、**ホスト キー**と**ホスト キー アルゴリズム**を指定します。 Config Server リポジトリには公開キーを含めるようにしてください。 **[OK]** を選択し、 **[適用]** を選択して、Config Server インスタンスの設定を完了します。
+    * **SSH**: **[既定のリポジトリ]** セクションの **[URI]** ボックスにリポジトリの URI を貼り付けてから、 **[認証]** ("鉛筆" アイコン) ボタンを選択します。 **[認証の編集]** ペインの **[認証の種類]** ボックスの一覧から **[SSH]** を選択し、**秘密キー** を入力します。 必要に応じて、**ホスト キー** と **ホスト キー アルゴリズム** を指定します。 Config Server リポジトリには公開キーを含めるようにしてください。 **[OK]** を選択し、 **[適用]** を選択して、Config Server インスタンスの設定を完了します。
 
     ![[認証の編集] ペインの SSH 認証](media/spring-cloud-tutorial-config-server/ssh-auth.png)
 
 #### <a name="pattern-repository"></a>パターン リポジトリ
 
-オプションの**パターン リポジトリ**を使用してサービスを構成する場合は、**既定のリポジトリ**と同じように、**URI** と **認証**を指定します。 パターンの**名前**を必ず指定し、 **[適用]** を選択してインスタンスに接続します。 
+オプションの **パターン リポジトリ** を使用してサービスを構成する場合は、**既定のリポジトリ** と同じように、**URI** と **認証** を指定します。 パターンの **名前** を必ず指定し、 **[適用]** を選択してインスタンスに接続します。 
 
 ### <a name="enter-repository-information-into-a-yaml-file"></a>リポジトリの情報を YAML ファイルに入力する
 
@@ -221,8 +224,8 @@ Azure Spring Cloud では、SSH または HTTP 基本認証によってセキュ
 1. サービス ページの左ペインで、 **[設定]** の **[Config Server]** タブを選択します。前に作成したリポジトリを構成します。
    - 前のセクションから保存したリポジトリ URL を追加します
    - `Authentication` をクリックして [`HTTP Basic`] を選択します。
-   - __ユーザー名__は前のセクションで保存したユーザー名です
-   - __パスワード__は前のセクションで保存したパスワードです
+   - __ユーザー名__ は前のセクションで保存したユーザー名です
+   - __パスワード__ は前のセクションで保存したパスワードです
    - [適用] をクリックし、処理が正常に完了するまで待ちます
 
    ![Spring Cloud Config Server](media/spring-cloud-tutorial-config-server/config-server-azure-repos.png)
