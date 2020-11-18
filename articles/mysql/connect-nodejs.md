@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:Node.js を使用して接続する - Azure Database for MySQL
 description: このクイックスタートでは、Azure Database for MySQL に接続してデータを照会するために使用できる、Node.js コード サンプルをいくつか紹介します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 55c352df83e8f72a418452dd28d621556b207e5e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: d1291b645e987f33bd2035580587650b843f1771
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93332170"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535658"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:Node.js を使用して Azure Database for MySQL に接続してデータを照会する
 
@@ -50,7 +50,7 @@ ms.locfileid: "93332170"
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 
-1. 次のコマンドを実行して、 **Node.js** と、Node.js 用のパッケージ マネージャー **npm** をインストールします。
+1. 次のコマンドを実行して、**Node.js** と、Node.js 用のパッケージ マネージャー **npm** をインストールします。
 
    ```bash
    sudo apt-get install -y nodejs npm
@@ -90,7 +90,7 @@ ms.locfileid: "93332170"
 Azure Database for MySQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. Azure portal の左側のメニューにある **[すべてのリソース]** を選択し、作成したサーバー (例: **mydemoserver** ) を検索します。
+2. Azure portal の左側のメニューにある **[すべてのリソース]** を選択し、作成したサーバー (例: **mydemoserver**) を検索します。
 3. サーバー名を選択します。
 4. サーバーの **[概要]** パネルから、 **[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
  :::image type="content" source="./media/connect-nodejs/server-name-azure-database-mysql.png" alt-text="Azure Database for MySQL サーバー名":::
@@ -172,7 +172,7 @@ function queryDatabase(){
 
 ## <a name="read-data"></a>データの読み取り
 
-接続し、 **SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
+接続し、**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
 
 MySQL サーバーとやり取りするには、[mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) メソッドを使用します。 サーバーとの接続を確立するには、[connect()](https://github.com/mysqljs/mysql#establishing-connections) メソッドを使用します。 MySQL データベースに対して SQL クエリを実行するには、[query()](https://github.com/mysqljs/mysql#performing-queries) メソッドを使用します。 クエリの結果は、results 配列を使って保存します。
 
@@ -225,7 +225,7 @@ function readData(){
 
 ## <a name="update-data"></a>データの更新
 
-接続し、 **UPDATE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
+接続し、**UPDATE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
 
 MySQL サーバーとやり取りするには、[mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) メソッドを使用します。 サーバーとの接続を確立するには、[connect()](https://github.com/mysqljs/mysql#establishing-connections) メソッドを使用します。 MySQL データベースに対して SQL クエリを実行するには、[query()](https://github.com/mysqljs/mysql#performing-queries) メソッドを使用します。 
 
@@ -274,7 +274,7 @@ function updateData(){
 
 ## <a name="delete-data"></a>データの削除
 
-接続し、 **DELETE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
+接続し、**DELETE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
 
 MySQL サーバーとやり取りするには、[mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) メソッドを使用します。 サーバーとの接続を確立するには、[connect()](https://github.com/mysqljs/mysql#establishing-connections) メソッドを使用します。 MySQL データベースに対して SQL クエリを実行するには、[query()](https://github.com/mysqljs/mysql#performing-queries) メソッドを使用します。 
 

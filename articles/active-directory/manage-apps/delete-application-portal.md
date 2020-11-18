@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 659d136695943d846fe57986d4b64a37f0d8f30e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 677c9c0123c174fdf2cf8e94f9c8110656d21306
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89300121"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649400"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>クイック スタート:Azure Active Directory (Azure AD) テナントからアプリケーションを削除する
 
@@ -45,7 +45,7 @@ Azure AD テナントからアプリケーションを削除するには:
 1. **[削除]** を選択してから **[はい]** を選び、Azure AD テナントからアプリを削除することを確定します。
 
 > [!TIP]
-> Graph API を使用してアプリの管理を自動化できます。[Microsoft Graph API によるアプリ管理の自動化](https://docs.microsoft.com/graph/application-saml-sso-configure-api)に関するページを参照してください。
+> Graph API を使用してアプリの管理を自動化できます。[Microsoft Graph API によるアプリ管理の自動化](/graph/application-saml-sso-configure-api)に関するページを参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

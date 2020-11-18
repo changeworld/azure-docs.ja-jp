@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: a009cd7763b4a4dc0c502d4c47a20d6fdffe61d7
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1b945ac9f656a227bcc3335cb0ec995626f98f77
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125443"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564176"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Azure Kubernetes Service のコンフィデンシャル コンピューティング ノード (パブリック プレビュー)
 
@@ -20,7 +20,7 @@ ms.locfileid: "92125443"
 
 ## <a name="overview"></a>概要
 
-Azure Kubernetes Service (AKS) は、Intel SGX を基盤とする [DCsv2 コンフィデンシャル コンピューティング ノード](confidential-computing-enclaves.md)の追加をサポートします。 これらのノードは、メモリのプライベート領域の割り当てをユーザーレベルのコードに許可することで、ハードウェアベースの高信頼実行環境 (TEE: Trusted Execution Environment ) 内で機密のワークロードを実行できます。 これらのプライベート メモリ領域は、エンクレーブと呼ばれています。 エンクレーブは、コードとデータを、より高い特権で実行されるプロセスから保護するように設計されています。 SGX の実行モデルは、ゲスト OS とホスト OS、ハイパーバイザーという中間レイヤーを排除します。 " *コンテナーごとに分離されたハードウェア ベースの実行* " モデルによって、特殊なメモリ ブロックを暗号化したまま、アプリケーションを直接 CPU で実行することができます。 コンフィデンシャル コンピューティング ノードは、AKS におけるコンテナー アプリケーションの全体的なセキュリティの状態に寄与し、多層防御のコンテナー戦略をいっそう強固なものとします。 
+Azure Kubernetes Service (AKS) は、Intel SGX を基盤とする [DCsv2 コンフィデンシャル コンピューティング ノード](confidential-computing-enclaves.md)の追加をサポートします。 これらのノードは、メモリのプライベート領域の割り当てをユーザーレベルのコードに許可することで、ハードウェアベースの高信頼実行環境 (TEE: Trusted Execution Environment ) 内で機密のワークロードを実行できます。 これらのプライベート メモリ領域は、エンクレーブと呼ばれています。 エンクレーブは、コードとデータを、より高い特権で実行されるプロセスから保護するように設計されています。 SGX の実行モデルは、ゲスト OS とホスト OS、ハイパーバイザーという中間レイヤーを排除します。 "*コンテナーごとに分離されたハードウェア ベースの実行*" モデルによって、特殊なメモリ ブロックを暗号化したまま、アプリケーションを直接 CPU で実行することができます。 コンフィデンシャル コンピューティング ノードは、AKS におけるコンテナー アプリケーションの全体的なセキュリティの状態に寄与し、多層防御のコンテナー戦略をいっそう強固なものとします。 
 
 ![SGX ノードの概要](./media/confidential-nodes-aks-overview/sgxaksnode.jpg)
 
@@ -61,10 +61,10 @@ AKS では、機密ノード上で動作して、SDK やフレームワークを
 
 [機密コンテナーのクイック スタート サンプル](https://github.com/Azure-Samples/confidential-container-samples)
 
-[DCsv2 SKU リスト](https://docs.microsoft.com/azure/virtual-machines/dcv2-series)
+[DCsv2 SKU リスト](../virtual-machines/dcv2-series.md)
 
 <!-- LINKS - external -->
-[Azure Attestation]: https://docs.microsoft.com/en-us/azure/attestation/
+[Azure Attestation]: ../attestation/index.yml
 
 
 <!-- LINKS - internal -->

@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 9c88feca5bf4bdac91af7f88c24cd342dc1b04cf
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: b4c14417a31f28ea5d6475b3f84ee079d990dd6b
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426291"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637066"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に Python 関数を作成する
 
@@ -250,7 +250,8 @@ HTTP トリガーの場合、この関数は、*function.json* に定義され�
     New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -FunctionsVersion 3 -RuntimeVersion 3.8 -Runtime python -Location 'West Europe'
     ```
     
-    <a name="the-new-azfunctionapp-cmdlet-creates-the-function-app-in-azure-if-youre-using-python-37-or-36-change--runtimeversion-to-37-or-36-respectively"></a>[New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) コマンドレットによって、Azure に関数アプリが作成されます。 Python 3.7 または 3.6 を使用している場合は、`-RuntimeVersion` をそれぞれ `3.7` または `3.6` に変更します。
+    [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) コマンドレットによって、Azure に関数アプリが作成されます。 Python 3.7 または 3.6 を使用している場合は、`-RuntimeVersion` をそれぞれ `3.7` または `3.6` に変更します。
+
     ---
     
     前の例では、`<STORAGE_NAME>` を前の手順で使用したアカウントの名前に、`<APP_NAME>` を適宜グローバルに一意の名前に置き換えてください。  `<APP_NAME>` は、関数アプリの既定の DNS ドメインでもあります。 
@@ -275,3 +276,5 @@ func azure functionapp logstream <APP_NAME> --browser
 
 > [!div class="nextstepaction"]
 > [Azure Storage キューに接続する](functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-python)
+
+[問題がある場合は、お知らせください。](https://aka.ms/python-functions-qs-survey)

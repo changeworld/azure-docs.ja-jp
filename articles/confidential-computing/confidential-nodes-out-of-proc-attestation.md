@@ -6,12 +6,12 @@ author: agowdamsft
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 90b74e51dce994c3041c15feec729ff1fae2bb00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b79b3b40f3fbfe7d70550db3aaf7b365aa455e89
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90998454"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564159"
 ---
 # <a name="platform-software-management-with-sgx-quote-helper-daemon-set"></a>SGX クォート ヘルパー デーモン セットによるプラットフォーム ソフトウェア管理
 
@@ -26,7 +26,7 @@ ms.locfileid: "90998454"
  
 Open Enclave SDK を使用して作成された SGX アプリケーションには、既定でインプロセス構成証明モードが使用されます。 SGX ベースのアプリケーションはアウトプロセスに対応していますが、そのためには、アプリケーションの外部で、Architectural Enclave Service Manager (AESM) などの必須コンポーネントを別途ホストして公開する必要があります。
 
-この機能を利用することを**強くお勧め**します。Intel プラットフォームの更新時や DCAP ドライバーの更新時のエンクレーブ アプリのアップタイムが向上します。
+この機能を利用することを **強くお勧め** します。Intel プラットフォームの更新時や DCAP ドライバーの更新時のエンクレーブ アプリのアップタイムが向上します。
 
 ## <a name="why-and-what-are-the-benefits-of-out-of-proc"></a>アウトプロセスを使用する理由と利点
 
@@ -126,10 +126,10 @@ spec:
 
 [機密コンテナーのクイック スタート サンプル](https://github.com/Azure-Samples/confidential-container-samples)
 
-[DCsv2 SKU リスト](https://docs.microsoft.com/azure/virtual-machines/dcv2-series)
+[DCsv2 SKU リスト](../virtual-machines/dcv2-series.md)
 
 <!-- LINKS - external -->
-[Azure Attestation]: https://docs.microsoft.com/en-us/azure/attestation/
+[Azure Attestation]: ../attestation/index.yml
 
 
 <!-- LINKS - internal -->

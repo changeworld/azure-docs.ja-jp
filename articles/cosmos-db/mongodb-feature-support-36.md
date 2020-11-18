@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 7fd52376e6b2d435e3ac6a60243f85ab34e59381
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: bb9efa3fde0ed840589b66db7b28392de67ee8dd
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412954"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635604"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.6 バージョン) 用 API: サポートされる機能と構文
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -576,7 +576,7 @@ Cosmos DB では、ドキュメントのタイムスタンプに基づく Time-t
 
 ## <a name="user-and-role-management"></a>ユーザーとロールの管理
 
-Cosmos DB では、ユーザーとロールはまだサポートされていません。 Cosmos DB では、ロールベース アクセス制御 (RBAC) と、[Azure portal](https://portal.azure.com) ([接続文字列] ページ) から取得できる読み取りと書き込みおよび読み取り専用のパスワードとキーがサポートされています。
+Cosmos DB では、ユーザーとロールはまだサポートされていません。 ただし、Azure ロールベース アクセス制御 (Azure RBAC) と、[Azure portal](https://portal.azure.com) ([接続文字列] ページ) から取得できる読み取りと書き込みおよび読み取り専用のパスワードとキーがサポートされています。
 
 ## <a name="replication"></a>レプリケーション
 

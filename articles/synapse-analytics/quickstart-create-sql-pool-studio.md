@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 10/16/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: f3ed5f3940a9b02701ad2f3c779b791e128e288c
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 3644891f12a6475ec9cfec51f572df4742481e8f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506347"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541846"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-using-synapse-studio"></a>クイックスタート: Synapse Studio を使用して専用 SQL プールを作成する
 
@@ -110,6 +110,7 @@ Synapse Studio を使用してワークスペースから専用 SQL プールを
 1. 削除を確認し、 **[削除]** を押します。
 1. プロセスが正常に完了すると、専用 SQL プールはワークスペース リソースの一覧に表示されなくなります。
 
-## <a name="next-steps"></a>次のステップ 
+## <a name="next-steps"></a>次のステップ
+ 
 - 「[クイック スタート:Apache Spark ノートブックの作成](quickstart-apache-spark-notebook.md)に関するページを参照してください。
 - 「[クイック スタート:Azure portal を使用して専用 SQL プールを作成する](quickstart-create-sql-pool-portal.md)」を参照してください。

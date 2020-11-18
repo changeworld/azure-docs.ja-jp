@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: overview
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1dc0429ae4507172e95618bc95e6a2c51034d352
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8a448b510662eb2c3c4c8ae5a68c2ebc2ed448dc
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92378889"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647360"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -100,7 +100,7 @@ user.department -eq "Sales"
 | companyName | 任意の文字列値または *null* | (user.companyName -eq "value") |
 | department |任意の文字列値または *null* |(user.department -eq "value") |
 | displayName |任意の文字列値 |(user.displayName -eq "value") |
-| employeeId |任意の文字列値 |(user.employeeId -eq "value")<br>(user.employeeId -ne *null* ) |
+| employeeId |任意の文字列値 |(user.employeeId -eq "value")<br>(user.employeeId -ne *null*) |
 | facsimileTelephoneNumber |任意の文字列値または *null* |(user.facsimileTelephoneNumber -eq "value") |
 | givenName |任意の文字列値または *null* |(user.givenName -eq "value") |
 | jobTitle |任意の文字列値または *null* |(user.jobTitle -eq "value") |
@@ -190,10 +190,10 @@ David は true と評価され、Da は false と評価されます。
 
 ### <a name="use-of-null-values"></a>Null 値の使用
 
-ルールで null 値を指定するには、 *null* 値を使用します。 
+ルールで null 値を指定するには、*null* 値を使用します。 
 
 * 式で *null* 値を比較するとき、-eq または -ne を使用します。
-* リテラル文字列値として解釈する場合にのみ、 *null* という語を引用符で囲みます。
+* リテラル文字列値として解釈する場合にのみ、*null* という語を引用符で囲みます。
 * -not 演算子は、null の比較演算子として使用できません。 使うと、null または $null のどちらを使ってもエラーになります。
 
 null 値を参照する正しい方法は次のとおりです。

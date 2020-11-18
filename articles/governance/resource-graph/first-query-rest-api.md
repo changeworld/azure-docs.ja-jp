@@ -3,12 +3,12 @@ title: クイック スタート:自分の初めての REST API クエリ
 description: このクイックスタートでは、手順に従い、REST API 用に Resource Graph エンドポイントを呼び出し、ご自分の初めてのクエリを実行します。
 ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 8be0556b6aa2fd234c0f3e25d83c0239c8f674bb
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: eafbd0b408ab50f901d52e59efcfbd5f89b46fe5
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057231"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566080"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>クイック スタート:REST API を使用して自分の初めて Resource Graph クエリを実行する
 
@@ -30,7 +30,7 @@ Azure Resource Graph の仕様については、[Azure Resource Graph REST API](
 
 ### <a name="rest-api-and-powershell"></a>REST API と PowerShell
 
-REST API の呼び出しを行うためのツールがまだない場合は、PowerShell を使うことを検討してください。 次のコード サンプルでは、Azure で認証を行うためのヘッダーを取得します。 認証ヘッダー (**ベアラー トークン**と呼ばれることもあります) を生成し、パラメーターまたは**要求本文**で接続する REST API の URI を提供します。
+REST API の呼び出しを行うためのツールがまだない場合は、PowerShell を使うことを検討してください。 次のコード サンプルでは、Azure で認証を行うためのヘッダーを取得します。 認証ヘッダー (**ベアラー トークン** と呼ばれることもあります) を生成し、パラメーターまたは **要求本文** で接続する REST API の URI を提供します。
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if not using Cloud Shell
@@ -50,11 +50,11 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 ```
 
 `$restUri` 変数の `{subscriptionId}` を置き換えて、サブスクリプションに関する情報を取得します。
-`$response` 変数には `Invoke-RestMethod` コマンドレットの結果が保持されており、[ConvertFrom-json](/powershell/module/microsoft.powershell.utility/convertfrom-json) などのコマンドレットを使用して解析できます。 REST API サービス エンドポイントで**要求本文**が必要な場合は、JSON 形式の変数を `Invoke-RestMethod` の `-Body` パラメーターに提供します。
+`$response` 変数には `Invoke-RestMethod` コマンドレットの結果が保持されており、[ConvertFrom-json](/powershell/module/microsoft.powershell.utility/convertfrom-json) などのコマンドレットを使用して解析できます。 REST API サービス エンドポイントで **要求本文** が必要な場合は、JSON 形式の変数を `Invoke-RestMethod` の `-Body` パラメーターに提供します。
 
 ## <a name="run-your-first-resource-graph-query"></a>最初の Resource Graph クエリを実行する
 
-ご自分の選択した環境に REST API ツールが追加されたので、簡単な Resource Graph クエリを試してみましょう。 このクエリでは、各リソースの**名前**と**リソースの種類**を使用して、最初の 5 つの Azure リソースが返されます。
+ご自分の選択した環境に REST API ツールが追加されたので、簡単な Resource Graph クエリを試してみましょう。 このクエリでは、各リソースの **名前** と **リソースの種類** を使用して、最初の 5 つの Azure リソースが返されます。
 
 各 REST API 呼び出しの要求本文には、自分固有の値に置き換える必要がある変数が使用されています。
 
@@ -76,14 +76,13 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
              "{subscriptionID}"
          ],
          "query": "Resources | project name, type | limit 5"
-         }
      }
      ```
 
    > [!NOTE]
    > このクエリ例では、`order by` などの並べ替え修飾子を指定していません。そのため、このクエリを複数回実行すると、要求ごとに、得られる一連のリソースが異なる可能性があります。
 
-1. `resouces` エンドポイントへの呼び出しを更新し、**Name** プロパティで並べ替えられる (`order by`) ように**クエリ**を変更します。
+1. `resouces` エンドポイントへの呼び出しを更新し、**Name** プロパティで並べ替えられる (`order by`) ように **クエリ** を変更します。
 
    - REST API URI
 
@@ -99,14 +98,13 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
              "{subscriptionID}"
          ],
          "query": "Resources | project name, type | limit 5 | order by name asc"
-         }
      }
      ```
 
    > [!NOTE]
    > 最初のクエリと同様に、このクエリを複数回実行すると要求あたり異なる一連のリソースを生成する可能性があります。 クエリ コマンドの順序が重要です。 この例では、`limit` の後に `order by` がきます。 このコマンドの順序によって、まずクエリ結果が制限され、次にその結果が並べ替えられます。
 
-1. `resources` への呼び出しを更新し、最初にクエリを **Name** プロパティで並べ替え (`order by`)、次に上位 5 件の結果に制限 (`limit`) するように**クエリ**を変更します。
+1. `resources` への呼び出しを更新し、最初にクエリを **Name** プロパティで並べ替え (`order by`)、次に上位 5 件の結果に制限 (`limit`) するように **クエリ** を変更します。
 
    - REST API URI
 
@@ -122,7 +120,6 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
              "{subscriptionID}"
          ],
          "query": "Resources | project name, type | order by name asc | limit 5"
-         }
      }
      ```
 

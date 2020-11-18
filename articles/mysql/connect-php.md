@@ -1,75 +1,93 @@
 ---
 title: クイック スタート:PHP を使用して接続する - Azure Database for MySQL
 description: このクイックスタートでは、Azure Database for MySQL に接続してデータを照会するために使用できる、PHP コード サンプルをいくつか紹介します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 5/26/2020
-ms.openlocfilehash: ec406208f862eac2450cc6352f13f3596a7c9775
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 10/28/2020
+ms.openlocfilehash: ae767905e24e2d7ddf3b8e12ec77b1efe782cf85
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337389"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535607"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:PHP を使用して Azure Database for MySQL に接続してデータを照会する
-このクイックスタートでは、[PHP](https://secure.php.net/manual/intro-whatis.php) アプリケーションを使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 このトピックでは、PHP を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
+このクイックスタートでは、[PHP](https://secure.php.net/manual/intro-whatis.php) アプリケーションを使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。
 
 ## <a name="prerequisites"></a>前提条件
-このクイックスタートでは、次のいずれかのガイドで作成されたリソースを出発点として使用します。
-- [Azure Portal を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-portal.md)
-- [Azure CLI を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-cli.md)
+このクイックスタートでは、以下が必要です。
 
-> [!IMPORTANT] 
-> [Azure portal](./howto-manage-firewall-using-portal.md) または [Azure CLI](./howto-manage-firewall-using-cli.md) を使用して、接続元の IP アドレスにサーバーのファイアウォール規則が追加されていることを確認します。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free)。
+- Azure Database for MySQL 単一サーバーを、[Azure portal](./quickstart-create-mysql-server-database-using-azure-portal.md) <br/> [Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md) を使用して、Azure Database for PostgreSQL の単一サーバーを作成します (まだない場合)。
+- パブリック アクセスとプライベート アクセスのどちらを使用しているかに基づいて、次の **いずれか** のアクションを実行して、接続を有効にします。
 
-## <a name="install-php"></a>PHP のインストール
-独自のサーバーに PHP をインストールするか、PHP が含まれた Azure [Web アプリ](../app-service/overview.md)を作成します。
+    |アクション| 接続方法|ハウツー ガイド|
+    |:--------- |:--------- |:--------- |
+    | **ファイアウォール規則を構成する** | パブリック | [ポータル](./howto-manage-firewall-using-portal.md) <br/> [CLI](./howto-manage-firewall-using-cli.md)|
+    | **サービス エンドポイントを構成する** | パブリック | [ポータル](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)|
+    | **プライベート リンクを構成する** | プライベート | [ポータル](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) |
 
-### <a name="macos"></a>macOS
-- [PHP 7.1.4 バージョン](https://secure.php.net/downloads.php)をダウンロードします。
-- PHP をインストールし、さらなる構成については [PHP マニュアル](https://secure.php.net/manual/install.macosx.php)を参照します。
+- [データベースと管理者以外のユーザーを作成する](/howto-create-users?tabs=single-server)
+- お使いのオペレーティング システム用の最新バージョンの PHP をインストールします
+    - [macOS の PHP](https://secure.php.net/manual/install.macosx.php)
+    - [Linux の PHP](https://secure.php.net/manual/install.unix.php)
+    - [Windows の PHP](https://secure.php.net/manual/install.windows.php)
 
-### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-- [PHP 7.1.4 非スレッドセーフ バージョン (x64)](https://secure.php.net/downloads.php) をダウンロードします。
-- PHP をインストールし、さらなる構成については [PHP マニュアル](https://secure.php.net/manual/install.unix.php)を参照します。
-
-### <a name="windows"></a>Windows
-- [PHP 7.1.4 非スレッドセーフ バージョン (x64)](https://windows.php.net/download#php-7.1) をダウンロードします。
-- PHP をインストールし、さらなる構成については [PHP マニュアル](https://secure.php.net/manual/install.windows.php)を参照します。
+> [!NOTE]
+> このクイックスタートでは、[MySQLi](https://www.php.net/manual/en/book.mysqli.php) ライブラリを使用して、接続を管理し、サーバーのクエリを実行します。
 
 ## <a name="get-connection-information"></a>接続情報の取得
-Azure Database for MySQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。
+データベース サーバーの接続情報は、Azure portal で次の手順のようにして取得できます。
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したサーバー (例: **mydemoserver** ) を検索します。
-3. サーバー名をクリックします。
-4. サーバーの **[概要]** パネルから、 **[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
- :::image type="content" source="./media/connect-php/1_server-overview-name-login.png" alt-text="Azure Database for MySQL サーバー名":::
+2. Azure Databases for MySQL のページに移動します。 **Azure Database for MySQL** を検索して選択できます。
+:::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/find-azure-mysql-in-portal.png" alt-text="Azure Database for MySQL を見つける":::
 
-## <a name="connect-and-create-a-table"></a>接続とテーブルの作成
-接続し、 **CREATE TABLE** SQL ステートメントを使用してテーブルを作成するには、次のコードを使用します。 
+2. MySQL サーバー (**mydemoserver** など) を選択します。
+3. **[概要]** ページで、 **[サーバー名]** の横にある完全修飾サーバー名と、 **[サーバー管理者ログイン名]** の横にある管理者ユーザー名をコピーします。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。
 
-このコードでは、PHP に含まれている **MySQL Improved 拡張機能** (mysqli) クラスを使用します。 このコードでは、[mysqli_init](https://secure.php.net/manual/mysqli.init.php) メソッドと [mysqli_real_connect](https://secure.php.net/manual/mysqli.real-connect.php) メソッドを呼び出して MySQL に接続します。 次に、[mysqli_query](https://secure.php.net/manual/mysqli.query.php) メソッドを呼び出してクエリを実行します。 その後、[mysqli_close](https://secure.php.net/manual/mysqli.close.php) メソッドを呼び出して接続を閉じます。
+> [!IMPORTANT]
+> - パスワードを忘れた場合は、[パスワードをリセットする](./howto-create-manage-server-portal.md#update-admin-password)ことができます。
+> - **host、username、password、** **db_name** の各パラメーターは実際の値に置き換えてください**
 
-host、username、password、db_name の各パラメーターは実際の値に置き換えてください。 
+## <a name="step-1-connect-to-the-server"></a>手順 1:サーバーへの接続
+SSL は、既定で有効になっています。 ローカル環境から接続するには、[DigiCertGlobalRootG2 SSL 証明書](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)をダウンロードする必要がある場合があります。 このコードからは次のものが呼び出されます。
+- MySQLi を初期化するための [mysqli_init](https://secure.php.net/manual/mysqli.init.php)。
+- SSL 証明書のパスを指し示すための [mysqli_ssl_set](https://www.php.net/manual/en/mysqli.ssl-set.php)。 これはローカル環境では必要ですが、App Service Web アプリまたは Azure 仮想マシンには必要ありません。
+- MySQL に接続するための [mysqli_real_connect](https://secure.php.net/manual/mysqli.real-connect.php)。
+- 接続を閉じるための [mysqli_close](https://secure.php.net/manual/mysqli.close.php)。
+
 
 ```php
-<?php
 $host = 'mydemoserver.mysql.database.azure.com';
 $username = 'myadmin@mydemoserver';
 $password = 'your_password';
 $db_name = 'your_database';
 
-//Establishes the connection
+//Initializes MySQLi
 $conn = mysqli_init();
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
 
+// If using  Azure Virtual machines or Azure Web App, 'mysqli-ssl_set()' is not required as the certificate is already installed on the machines.
+mysqli_ssl_set($conn,NULL,NULL, "/var/www/html/DigiCertGlobalRootG2.crt.pem", NULL, NULL);
+
+// Establish the connection
+mysqli_real_connect($conn, 'mydemoserver.mysql.database.azure.com', 'myadmin@mydemoserver', 'yourpassword', 'quickstartdb', 3306, MYSQLI_CLIENT_SSL);
+
+//If connection failed, show the error
+if (mysqli_connect_errno($conn))
+{
+    die('Failed to connect to MySQL: '.mysqli_connect_error());
+}
+```
+[問題がある場合は、お知らせください](https://aka.ms/mysql-doc-feedback)
+
+## <a name="step-2-create-a-table"></a>手順 2:テーブルを作成する
+次のコードを使用して接続します。 このコードからは次のものが呼び出されます。
+- クエリを実行するための [mysqli_query](https://secure.php.net/manual/mysqli.query.php)。
+```php
 // Run the create table query
 if (mysqli_query($conn, '
 CREATE TABLE Products (
@@ -82,139 +100,56 @@ PRIMARY KEY (`Id`)
 ')) {
 printf("Table created\n");
 }
-
-//Close the connection
-mysqli_close($conn);
-?>
 ```
 
-## <a name="insert-data"></a>データの挿入
-接続し、 **INSERT** SQL ステートメントを使用してデータを挿入するには、次のコードを使用します。
+## <a name="step-3-insert-data"></a>手順 3:データの挿入
+**INSERT** SQL ステートメントを使用してデータを挿入するには、次のコードを使用します。 このコードでは、次のメソッドが使用されます。
+- 準備された挿入ステートメントを作成するための [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php)
+- 挿入された各列の値にパラメーターをバインドするための [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php)。
+- [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php)
+- メソッドを使用してステートメントを閉じるための [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php)
 
-このコードでは、PHP に含まれている **MySQL Improved 拡張機能** (mysqli) クラスを使用します。 このコードでは、[mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) メソッドを使用して、準備済みの INSERT ステートメントを作成した後、[mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) メソッドを使用して、挿入される列の値ごとにパラメーターをバインドします。 このコードでは、[mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) メソッドでステートメントを実行してから、[mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) メソッドでステートメントを閉じます。
-
-host、username、password、db_name の各パラメーターは実際の値に置き換えてください。 
 
 ```php
-<?php
-$host = 'mydemoserver.mysql.database.azure.com';
-$username = 'myadmin@mydemoserver';
-$password = 'your_password';
-$db_name = 'your_database';
-
-//Establishes the connection
-$conn = mysqli_init();
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
-
 //Create an Insert prepared statement and run it
 $product_name = 'BrandNewProduct';
 $product_color = 'Blue';
 $product_price = 15.5;
-if ($stmt = mysqli_prepare($conn, "INSERT INTO Products (ProductName, Color, Price) VALUES (?, ?, ?)")) {
-mysqli_stmt_bind_param($stmt, 'ssd', $product_name, $product_color, $product_price);
-mysqli_stmt_execute($stmt);
-printf("Insert: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
-mysqli_stmt_close($stmt);
+if ($stmt = mysqli_prepare($conn, "INSERT INTO Products (ProductName, Color, Price) VALUES (?, ?, ?)"))
+{
+    mysqli_stmt_bind_param($stmt, 'ssd', $product_name, $product_color, $product_price);
+    mysqli_stmt_execute($stmt);
+    printf("Insert: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
+    mysqli_stmt_close($stmt);
 }
 
-// Close the connection
-mysqli_close($conn);
-?>
 ```
 
-## <a name="read-data"></a>データの読み取り
-接続し、 **SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。  このコードでは、PHP に含まれている **MySQL Improved 拡張機能** (mysqli) クラスを使用します。 このコードでは、[mysqli_query](https://secure.php.net/manual/mysqli.query.php) メソッドを使用して SQL クエリを実行し、[mysqli_fetch_assoc](https://secure.php.net/manual/mysqli-result.fetch-assoc.php) メソッドを使用して結果の行をフェッチします。
-
-host、username、password、db_name の各パラメーターは実際の値に置き換えてください。 
+## <a name="step-4-read-data"></a>手順 4:データの読み取り
+**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。  そのコードでは、次のメソッドが使用されます。
+- **SELECT** クエリを実行するための [mysqli_query](https://secure.php.net/manual/mysqli.query.php)
+- 結果の行をフェッチするための [mysqli_fetch_assoc](https://secure.php.net/manual/mysqli-result.fetch-assoc.php)。
 
 ```php
-<?php
-$host = 'mydemoserver.mysql.database.azure.com';
-$username = 'myadmin@mydemoserver';
-$password = 'your_password';
-$db_name = 'your_database';
-
-//Establishes the connection
-$conn = mysqli_init();
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
-
 //Run the Select query
 printf("Reading data from table: \n");
 $res = mysqli_query($conn, 'SELECT * FROM Products');
-while ($row = mysqli_fetch_assoc($res)) {
-var_dump($row);
-}
+while ($row = mysqli_fetch_assoc($res))
+ {
+    var_dump($row);
+ }
 
-//Close the connection
-mysqli_close($conn);
-?>
-```
-
-## <a name="update-data"></a>データの更新
-接続し、 **UPDATE** SQL ステートメントを使用してデータを更新するには、次のコードを使用します。
-
-このコードでは、PHP に含まれている **MySQL Improved 拡張機能** (mysqli) クラスを使用します。 このコードでは、[mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) メソッドを使用して、準備済みの UPDATE ステートメントを作成し、[mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) メソッドを使用して、更新される列の値ごとにパラメーターをバインドします。 このコードでは、[mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) メソッドでステートメントを実行してから、[mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) メソッドでステートメントを閉じます。
-
-host、username、password、db_name の各パラメーターは実際の値に置き換えてください。 
-
-```php
-<?php
-$host = 'mydemoserver.mysql.database.azure.com';
-$username = 'myadmin@mydemoserver';
-$password = 'your_password';
-$db_name = 'your_database';
-
-//Establishes the connection
-$conn = mysqli_init();
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
-
-//Run the Update statement
-$product_name = 'BrandNewProduct';
-$new_product_price = 15.1;
-if ($stmt = mysqli_prepare($conn, "UPDATE Products SET Price = ? WHERE ProductName = ?")) {
-mysqli_stmt_bind_param($stmt, 'ds', $new_product_price, $product_name);
-mysqli_stmt_execute($stmt);
-printf("Update: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
-
-//Close the connection
-mysqli_stmt_close($stmt);
-}
-
-mysqli_close($conn);
-?>
 ```
 
 
-## <a name="delete-data"></a>データの削除
-接続し、 **DELETE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
-
-このコードでは、PHP に含まれている **MySQL Improved 拡張機能** (mysqli) クラスを使用します。 このコードでは、[mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) メソッドを使用して、準備済みの DELETE ステートメントを作成し、[mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) メソッドを使用して、ステートメント内の WHERE 句のパラメーターをバインドします。 このコードでは、[mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) メソッドでステートメントを実行してから、[mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) メソッドでステートメントを閉じます。
-
-host、username、password、db_name の各パラメーターは実際の値に置き換えてください。 
+## <a name="step-5-delete-data"></a>手順 5: データの削除
+**DELETE** SQL ステートメントを使用して行を削除するには、次のコードを使用します。 そのコードでは、次のメソッドが使用されます。
+- 準備された削除ステートメントを作成するための [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php)
+- パラメーターをバインドするための [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php)
+- 準備された削除ステートメントを実行するための [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php)
+- ステートメントを閉じるための [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php)
 
 ```php
-<?php
-$host = 'mydemoserver.mysql.database.azure.com';
-$username = 'myadmin@mydemoserver';
-$password = 'your_password';
-$db_name = 'your_database';
-
-//Establishes the connection
-$conn = mysqli_init();
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
-
 //Run the Delete statement
 $product_name = 'BrandNewProduct';
 if ($stmt = mysqli_prepare($conn, "DELETE FROM Products WHERE ProductName = ?")) {
@@ -223,10 +158,6 @@ mysqli_stmt_execute($stmt);
 printf("Delete: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
 mysqli_stmt_close($stmt);
 }
-
-//Close the connection
-mysqli_close($conn);
-?>
 ```
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
@@ -241,4 +172,9 @@ az group delete \
 
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
-> [Azure Database for MySQL に SSL で接続する](howto-configure-ssl.md)
+> [ポータルを使用して Azure Database for MySQL サーバーを管理する](./howto-create-manage-server-portal.md)<br/>
+
+> [!div class="nextstepaction"]
+> [CLI を使用して Azure Database for MySQL サーバーを管理する](./how-to-manage-single-server-cli.md)
+
+[お探しの情報が見つからない場合は、お知らせください。](https://aka.ms/mysql-doc-feedback)

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
-ms.custom: identityplatformtop40
-ms.openlocfilehash: e63d2cac97a16674c4e2e880f94373b0af1510de
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.custom: identityplatformtop40, contperfq2
+ms.openlocfilehash: 3f18913bb0d05c45ae57152d438b229b8bcc1d48
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056414"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94627916"
 ---
 # <a name="what-is-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームとは
 
@@ -74,7 +74,7 @@ Microsoft IDプラットフォーム を使用してアプリに認証と承認�
 
 [Azure AD B2B](../external-identities/what-is-b2b.md) - 外部ユーザーを自分の Azure AD テナントに "ゲスト" ユーザーとして招待し、認可のためにアクセス許可を割り当てますが、認証にはユーザー自身の既存の資格情報を使用します。
 
-[開発者向け Azure Active Directory (v1.0)](../azuread-dev/v1-overview.md) - 以前の v1.0 エンドポイントを使用する既存のアプリがある開発者向けに、ここに表示されます。 新しいプロジェクトには、v1.0 を使用**しないでください**。
+[開発者向け Azure Active Directory (v1.0)](../azuread-dev/v1-overview.md) - 以前の v1.0 エンドポイントを使用する既存のアプリがある開発者向けに、ここに表示されます。 新しいプロジェクトには、v1.0 を使用 **しないでください**。
 
 ## <a name="next-steps"></a>次のステップ
 

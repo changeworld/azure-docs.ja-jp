@@ -1,18 +1,18 @@
 ---
 title: 概要 - Azure Database for MariaDB
 description: MySQL Community Edition をベースとした、Microsoft クラウドのリレーショナル データベース サービス、Azure Database for MariaDB サービスについて説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
 ms.date: 3/18/2020
-ms.openlocfilehash: 84fd24890495e7278c69c2f83c7182fd65f86791
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8115625099543d378728a6313a8cc4c95fec0cd2
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "79535563"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537001"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Azure Database for MariaDB とは
 
@@ -41,7 +41,7 @@ For a set of Azure CLI samples, see:
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>数秒以内でのパフォーマンスの調整とスケール
 
-Azure Database for MariaDB サービスには、複数のサービス レベル (Basic、汎用、およびメモリ最適化) が用意されています。 軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、レベルごとに異なるパフォーマンスと機能 を提供しています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳しくは、 [価格レベル](concepts-pricing-tiers.md)に関するページをご覧ください。
+Azure Database for MariaDB サービスには、複数のサービス レベル (Basic、汎用、およびメモリ最適化) が用意されています。 軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、レベルごとに異なるパフォーマンスと機能 を提供しています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳細については、[価格レベル](concepts-pricing-tiers.md)に関するページを参照してください。
 
 ## <a name="monitoring-and-alerting"></a>監視とアラート
 

@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 8c2e7b6a02c0a0fea32fb1effb30b682971c3f6f
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: fa7919f54663387ddef811d02137da6d3ffb9d9b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348799"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646629"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Stream Analytics ジョブを作成する
 
@@ -23,43 +23,13 @@ ms.locfileid: "93348799"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-* Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="prepare-your-environment"></a>環境を準備する
+- リソース グループを作成します。 Azure リソースはすべてリソース グループにデプロイする必要があります。 リソース グループを使用すると、関連する Azure リソースを整理して管理できます。
 
-1. サインインします。
-
-   CLI のローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az-login) コマンドを使用してサインインします。
-
-    ```azurecli
-    az login
-    ```
-
-    ターミナルに表示される手順に従って、認証プロセスを完了します。
-
-2. Azure CLI 拡張機能をインストールします。
-
-   Azure CLI の拡張機能の参照を操作する場合は、最初に拡張機能をインストールする必要があります。  Azure CLI 拡張機能を使用すると、コア CLI の一部としてまだ出荷されていない実験用コマンドおよびプレリリース コマンドにアクセスできます。  更新とアンインストールを含む拡張機能の詳細については、「[Azure CLI で拡張機能を使用する](/cli/azure/azure-cli-extensions-overview)」を参照してください。
-
-   次のコマンドを実行して、[Stream Analytics の拡張機能](/cli/azure/ext/stream-analytics/stream-analytics)をインストールします。
-
-    ```azurecli
-    az extension add --name stream-analytics
-    ```
-
-   次のコマンドを実行して、[Azure IoT の拡張機能](/cli/azure/ext/azure-iot)をインストールします。
-
-    ```azurecli
-    az extension add --name azure-iot
-    ```
-
-3. リソース グループを作成します。
-
-   Azure リソースはすべてリソース グループにデプロイする必要があります。 リソース グループを使用すると、関連する Azure リソースを整理して管理できます。
-
-   このクイックスタートでは、次の [az group create](/cli/azure/group#az-group-create) コマンドを使用して、 *streamanalyticsrg* という名前のリソース グループを *eastus* の場所に作成します。
+   このクイックスタートでは、次の [az group create](/cli/azure/group#az-group-create) コマンドを使用して、*streamanalyticsrg* という名前のリソース グループを *eastus* の場所に作成します。
 
    ```azurecli
    az group create --name streamanalyticsrg --location eastus
@@ -71,7 +41,7 @@ Stream Analytics ジョブを定義する前に、ジョブの入力に使用さ
 
 次の Azure CLI コード ブロックは、ジョブに必要な入力データを準備するコマンドです。 コードを理解するためにセクションを確認してください。
 
-1. [az iot hub create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) コマンドを使用して、IoT ハブを作成します。 この例では、 **MyASAIoTHub** という名前の IoT ハブを作成します。 IoT ハブの名前は一意であるため、独自の IoT ハブ名を考案する必要があります。 サブスクリプションで Free レベルを使用できる場合は、SKU を F1 に設定して Free レベルを使用します。 そうでない場合は、次に低いレベルを選択します。
+1. [az iot hub create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) コマンドを使用して、IoT ハブを作成します。 この例では、**MyASAIoTHub** という名前の IoT ハブを作成します。 IoT ハブの名前は一意であるため、独自の IoT ハブ名を考案する必要があります。 サブスクリプションで Free レベルを使用できる場合は、SKU を F1 に設定して Free レベルを使用します。 そうでない場合は、次に低いレベルを選択します。
 
     ```azurecli
     az iot hub create --name "MyASAIoTHub" --resource-group streamanalyticsrg --sku S1
@@ -83,7 +53,7 @@ Stream Analytics ジョブを定義する前に、ジョブの入力に使用さ
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
     ```
 
-2. [az iothub device-identity create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) コマンドを使用して、デバイスを IoT ハブに追加します。 この例では、 **MyASAIoTDevice** という名前のデバイスを作成します。
+2. [az iothub device-identity create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) コマンドを使用して、デバイスを IoT ハブに追加します。 この例では、**MyASAIoTDevice** という名前のデバイスを作成します。
 
     ```azurecli
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
@@ -270,7 +240,7 @@ az stream-analytics job start
 
 リソース グループ、ストリーミング ジョブ、および関連するすべてのリソースは、不要になったら削除します。 ジョブを削除すると、ジョブによって消費されるストリーミング ユニットに対する課金を回避することができます。 ジョブを後で使用する計画がある場合、削除をスキップしてこのジョブを一時的に停止できます。 このジョブを今後使用しない場合には、次のコマンドレットを実行して、このクイック スタートで作成したすべてのリソースを削除してください。
 
-```powershell
+```azurecli
 az group delete \
     --name streamanalyticsrg \
     --no-wait

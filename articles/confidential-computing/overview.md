@@ -8,12 +8,12 @@ ms.subservice: workloads
 ms.topic: overview
 ms.date: 09/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 16f45c39a329998f4b4da4ea89315683a0fab790
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 44479db6b29075e87b0d2dcef6f0d9bc1881738c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90967581"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560827"
 ---
 # <a name="confidential-computing-on-azure"></a>Azure におけるコンフィデンシャル コンピューティング
 
@@ -37,7 +37,7 @@ Microsoft は、お客様のクラウド データをセキュリティで保護
 - 自社内の特権管理者からのセキュリティ上の脅威を防ぐにはどうすればよいか。
 - 機密性の高い顧客データにサードパーティがアクセスできないようにするために、他にどのような方法があるか。
 
-Microsoft Azure なら、攻撃面を最小限に抑え、より強固なデータ保護を実現するのに役立ちます。 Azure には、クライアント側暗号化やサーバー側暗号化などのモデルを使用して[**保存データ**](../security/fundamentals/encryption-atrest.md)を保護するさまざまなツールが既に用意されています。 さらに、TLS や HTTPS といった安全なプロトコルを通じて、[**転送中のデータ**](../security/fundamentals/data-encryption-best-practices.md#protect-data-in-transit)を暗号化するメカニズムも備わっています。 このページで紹介するのは、第 3 のデータ暗号化、つまり**使用中のデータ**の暗号化です。
+Microsoft Azure なら、攻撃面を最小限に抑え、より強固なデータ保護を実現するのに役立ちます。 Azure には、クライアント側暗号化やサーバー側暗号化などのモデルを使用して [**保存データ**](../security/fundamentals/encryption-atrest.md)を保護するさまざまなツールが既に用意されています。 さらに、TLS や HTTPS といった安全なプロトコルを通じて、[**転送中のデータ**](../security/fundamentals/data-encryption-best-practices.md#protect-data-in-transit)を暗号化するメカニズムも備わっています。 このページで紹介するのは、第 3 のデータ暗号化、つまり **使用中のデータ** の暗号化です。
 
 ## <a name="introduction-to-confidential-computing"></a>コンフィデンシャル コンピューティングの概要 
 
@@ -84,7 +84,7 @@ Azure のコンフィデンシャル コンピューティング IaaS サービ�
 
 ### <a name="azure-security"></a>Azure Security 
 複数の検証方法とハードウェアバインド キー管理によってワークロードがセキュリティで保護されていることを確認します。 
-- 構成証明: [Microsoft Azure Attestation (プレビュー)](https://docs.microsoft.com/azure/attestation/overview)
+- 構成証明: [Microsoft Azure Attestation (プレビュー)](../attestation/overview.md)
 - キー管理: Managed-HSM (プレビュー)
 
 ### <a name="develop"></a>開発

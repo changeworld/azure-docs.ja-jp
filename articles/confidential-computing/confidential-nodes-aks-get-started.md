@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: quickstart
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 994cf78a9a9b8c418d0f29f5d595f88f021659b4
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 95626836afb09ada286cf7e171f97db450167999
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341908"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564346"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-using-azure-cli-preview"></a>クイック スタート:コンフィデンシャル コンピューティング ノードを含んだ Azure Kubernetes Service (AKS) クラスターを Azure CLI を使用してデプロイする (プレビュー)
 
@@ -19,7 +19,7 @@ ms.locfileid: "92341908"
 
 ## <a name="overview"></a>概要
 
-このクイックスタートでは、Azure CLI を使用して、コンフィデンシャル コンピューティング ノードを含んだ Azure Kubernetes Service (AKS) クラスターをデプロイし、Hello World アプリケーションをエンクレーブ内で実行する方法について説明します。 AKS は、クラスターをすばやくデプロイおよび管理することができる、マネージド Kubernetes サービスです。 AKS の詳細については、[こちら](https://docs.microsoft.com/azure/aks/intro-kubernetes)を参照してください。
+このクイックスタートでは、Azure CLI を使用して、コンフィデンシャル コンピューティング ノードを含んだ Azure Kubernetes Service (AKS) クラスターをデプロイし、Hello World アプリケーションをエンクレーブ内で実行する方法について説明します。 AKS は、クラスターをすばやくデプロイおよび管理することができる、マネージド Kubernetes サービスです。 AKS の詳細については、[こちら](../aks/intro-kubernetes.md)を参照してください。
 
 > [!NOTE]
 > コンフィデンシャル コンピューティング DCsv2 VM には、上位の価格が適用されて利用可能なリージョンが限られる特殊なハードウェアが活用されています。 詳細については、仮想マシンに関するページで[利用可能な SKU とサポートされるリージョン](virtual-machine-solutions.md)を参照してください。
@@ -27,17 +27,17 @@ ms.locfileid: "92341908"
 ### <a name="deployment-pre-requisites"></a>デプロイの前提条件
 
 1. 有効な Azure サブスクリプションを持っている。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)アカウントを作成してください。
-1. デプロイ マシンに Azure CLI バージョン 2.0.64 以降がインストールされ、構成されている (バージョンを調べるには `az --version` を実行します)。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli)に関するページを参照してください
+1. デプロイ マシンに Azure CLI バージョン 2.0.64 以降がインストールされ、構成されている (バージョンを調べるには `az --version` を実行します)。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](../container-registry/container-registry-get-started-azure-cli.md)に関するページを参照してください
 1. [aks-preview 拡張機能](https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview) (バージョン 0.4.62 以降) 
-1. ご利用のサブスクリプションで最低 6 つの **DC<x>s-v2** コアが利用できる。 既定では、コンフィデンシャル コンピューティングの VM コア クォータは、Azure サブスクリプションごとに 8 コアです。 プロビジョニングする予定のクラスターに必要なコア数が 8 を超える場合は、[こちら](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)の手順に従って、クォータの引き上げチケットを起票してください。
+1. ご利用のサブスクリプションで最低 6 つの **DC<x>s-v2** コアが利用できる。 既定では、コンフィデンシャル コンピューティングの VM コア クォータは、Azure サブスクリプションごとに 8 コアです。 プロビジョニングする予定のクラスターに必要なコア数が 8 を超える場合は、[こちら](../azure-portal/supportability/per-vm-quota-requests.md)の手順に従って、クォータの引き上げチケットを起票してください。
 
 ### <a name="confidential-computing-node-features-dcxs-v2"></a>コンフィデンシャル コンピューティング ノードの機能 (DC<x>s-v2)
 
 1. Linux コンテナーのみをサポートする Linux ワーカー ノード
 1. Ubuntu 第 2 世代 18.04 仮想マシン
-1. Intel SGX ベースの CPU と EPC (Encrypted Page Cache) メモリ。 詳細については、[こちら](https://docs.microsoft.com/azure/confidential-computing/faq)をご覧ください。
+1. Intel SGX ベースの CPU と EPC (Encrypted Page Cache) メモリ。 詳細については、[こちら](./faq.md)をご覧ください。
 1. Kubernetes バージョン 1.16 以上
-1. Intel SGX DCAP ドライバーのプレインストール。 詳細については、[こちら](https://docs.microsoft.com/azure/confidential-computing/faq)をご覧ください。
+1. Intel SGX DCAP ドライバーのプレインストール。 詳細については、[こちら](./faq.md)をご覧ください。
 1. プレビュー期間中は CLI ベースでのデプロイ
 
 
@@ -75,13 +75,13 @@ az provider register --namespace Microsoft.ContainerService
 
 前述の要件を満たしている AKS クラスターが既にある場合は、[既存のクラスターのセクションに進み](#existing-cluster)、新しいコンフィデンシャル コンピューティング ノード プールを追加してください。
 
-まず、az group create コマンドを使用して、クラスターのリソース グループを作成します。 次の例では、 *myResourceGroup* という名前のリソース グループを *westus2* リージョンに作成します。
+まず、az group create コマンドを使用して、クラスターのリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *westus2* リージョンに作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus2
 ```
 
-ここで、az aks create コマンドを使用して、AKS クラスターを作成します。 次の例では、サイズ `Standard_DC2s_v2` の 1 つのノードを含むクラスターを作成します。 その他、サポートされている一連の DCsv2 SKU は、[こちら](https://docs.microsoft.com/azure/virtual-machines/dcv2-series)から選択できます。
+ここで、az aks create コマンドを使用して、AKS クラスターを作成します。 次の例では、サイズ `Standard_DC2s_v2` の 1 つのノードを含むクラスターを作成します。 その他、サポートされている一連の DCsv2 SKU は、[こちら](../virtual-machines/dcv2-series.md)から選択できます。
 
 ```azurecli-interactive
 az aks create \
@@ -94,7 +94,7 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --aks-custom-headers usegen2vm=true
 ```
-上のコマンドを実行すると、 **DC<x>s-v2** ノード プールを含んだ新しい AKS クラスターがプロビジョニングされ、2 つのデーモン セット ([SGX Device Plugin](confidential-nodes-aks-overview.md#sgx-plugin) および [SGX Quote Helper](confidential-nodes-aks-overview.md#sgx-quote)) が自動的にインストールされます。
+上のコマンドを実行すると、**DC<x>s-v2** ノード プールを含んだ新しい AKS クラスターがプロビジョニングされ、2 つのデーモン セット ([SGX Device Plugin](confidential-nodes-aks-overview.md#sgx-plugin) および [SGX Quote Helper](confidential-nodes-aks-overview.md#sgx-quote)) が自動的にインストールされます。
 
 az aks get-credentials コマンドを使用して、AKS クラスターの資格情報を取得します。
 
@@ -130,7 +130,7 @@ az aks update --enable-addons confcom --resource-group myResourceGroup --name my
 ```azurecli-interactive
 az aks enable-addons --addons confcom --name MyManagedCluster --resource-group MyResourceGroup 
 ```
-次に、 **DC<x>s-v2** ノード プールをクラスターに追加します。
+次に、**DC<x>s-v2** ノード プールをクラスターに追加します。
     
 > [!NOTE]
 > コンフィデンシャル コンピューティングの機能を使用するためには、既存の AKS クラスターに **DC<x>s-v2** VM SKU ベースのノード プールが少なくとも 1 つ存在する必要があります。 コンフィデンシャル コンピューティング DCsv2 VM SKU について詳しくは、[使用可能な SKU とサポートされるリージョン](virtual-machine-solutions.md)に関するページを参照してください。
@@ -244,6 +244,3 @@ az aks nodepool delete --cluster-name myAKSCluster --name myNodePoolName --resou
 [機密コンテナーのサンプル](https://github.com/Azure-Samples/confidential-container-samples)を参照します。機密コンテナーを使用して、Python、Node などのアプリケーションを、機密性を保った状態で実行してみましょう。
 
 [エンクレーブ対応の Azure Container サンプル](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/)を参照して、エンクレーブ対応のアプリケーションを実行します。
-
-
-

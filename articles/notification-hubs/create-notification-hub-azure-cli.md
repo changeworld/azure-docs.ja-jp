@@ -14,12 +14,12 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e7e140e26da79475bea032c8190ee64740370d04
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6c565be3aea43fc4dc86fd793e0dc2dea0b08d4c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312873"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563751"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Azure CLI を使用して Azure 通知ハブを作成する
 
@@ -32,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 > [!IMPORTANT]
-> Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要です。 [az version](/cli/azure/reference-index?#az_version) を実行し、インストールされているバージョンおよび依存ライブラリを検索します。 最新バージョンにアップグレードするには、[az upgrade](/cli/azure/reference-index?#az_upgrade) を実行します。
+> Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要です。 [az version](/cli/azure/reference-index#az_version) を実行し、インストールされているバージョンおよび依存ライブラリを検索します。 最新バージョンにアップグレードするには、[az upgrade](/cli/azure/reference-index#az_upgrade) を実行します。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 

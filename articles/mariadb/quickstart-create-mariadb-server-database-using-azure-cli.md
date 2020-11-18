@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:サーバーを作成する - Azure CLI - Azure Database for MariaDB
 description: このクイック スタートでは、Azure CLI を使用して、Azure Database for MariaDB サーバーを Azure リソース グループに作成する方法を説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 198a8eee38da2738552bc5e2a2ba52e13a890122
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 4d2300e36bd06313cf889f40f37d672d66534db6
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424479"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538395"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Database for MariaDB サーバーを作成する
 
@@ -51,12 +51,12 @@ name | **mydemoserver** | Azure Database for MariaDB サーバーを識別する
 resource-group | **myresourcegroup** | Azure リソース グループの名前を入力します。
 sku-name | **GP_Gen5_2** | SKU の名前。 省略表現の *<価格レベル>* \_ *<コンピューティング世代>* \_ *<仮想コア>* という規則に従います。 **sku-name** パラメーターの詳細については、この表の後続のセクションを参照してください。
 backup-retention | **7** | バックアップを保持する必要のある時間。 単位は日数です。 範囲は 7 から 35 です。 
-geo-redundant-backup | **Disabled** | このサーバーに対して geo 冗長バックアップを有効にする必要があるかどうかどうか。 使用できる値は以下の通りです。 **Enabled** 、 **Disabled**
+geo-redundant-backup | **Disabled** | このサーバーに対して geo 冗長バックアップを有効にする必要があるかどうかどうか。 使用できる値は以下の通りです。**Enabled**、**Disabled**
 location | **westus** | サーバーの Azure の場所。
-ssl-enforcement | **有効** | このサーバーに対して SSL を有効にする必要があるかどうかどうか。 使用できる値は以下の通りです。 **Enabled** 、 **Disabled**
+ssl-enforcement | **有効** | このサーバーに対して SSL を有効にする必要があるかどうかどうか。 使用できる値は以下の通りです。**Enabled**、**Disabled**
 storage-size | **51200** | サーバーのストレージ容量 (単位はメガバイト)。 有効なストレージ サイズは 5,120 MB 以上です (増分単位は 1,024 MB)。 ストレージ サイズの制限の詳細については、[価格レベル](./concepts-pricing-tiers.md)に関するページを参照してください。 
 version | **10.2** | MariaDB メジャー エンジンのバージョン。
-admin-user | **myadmin** | 管理者ログインのユーザー名。 **admin-user** パラメーターに **azure_superuser** 、 **admin** 、 **administrator** 、 **root** 、 **guest** 、 **public** は使用できません。
+admin-user | **myadmin** | 管理者ログインのユーザー名。 **admin-user** パラメーターに **azure_superuser**、**admin**、**administrator**、**root**、**guest**、**public** は使用できません。
 admin-password | *<お使いのパスワード>* | 管理者ユーザーのパスワード。 パスワードは 8 から 128 文字にする必要があります。 パスワードには、英大文字、英小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。
 
 sku-name パラメーターの値は、次の例のように、{価格レベル}\_{コンピューティング世代}\_{仮想コア数} という規約に従います。
@@ -139,7 +139,7 @@ az mariadb server show --resource-group myresourcegroup --name mydemoserver
 
 ## <a name="connect-to-the-server-by-using-the-mysql-command-line-tool"></a>mysql コマンドライン ツールを使用してサーバーに接続する
 
-mysql コマンドライン ツールを使用してサーバーに接続します。 このコマンドライン ツールは、[ダウンロード](https://dev.mysql.com/downloads/)してコンピューターにインストールできます。 また、この記事のコード サンプルにある **[使ってみる]** ボタンを選択することで、コマンドライン ツールにアクセスすることもできます。 さらに、Azure portal の右上のツール バーにある **[>_]** ボタンを選択し、 **Azure Cloud Shell** を開くことによって、コマンドライン ツールにアクセスすることもできます。
+mysql コマンドライン ツールを使用してサーバーに接続します。 このコマンドライン ツールは、[ダウンロード](https://dev.mysql.com/downloads/)してコンピューターにインストールできます。 また、この記事のコード サンプルにある **[使ってみる]** ボタンを選択することで、コマンドライン ツールにアクセスすることもできます。 さらに、Azure portal の右上のツール バーにある **[>_]** ボタンを選択し、**Azure Cloud Shell** を開くことによって、コマンドライン ツールにアクセスすることもできます。
 
 mysql コマンドライン ツールを使用してサーバーに接続するには:
 

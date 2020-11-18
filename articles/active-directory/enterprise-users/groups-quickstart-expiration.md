@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fa15a9134fdc49d87baea48490854c1289a662a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 842cd92e451b8d959dcf04135da504d7cf85a16e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92378853"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647207"
 ---
 # <a name="quickstart-set-microsoft-365-groups-to-expire-in-azure-active-directory"></a>Azure Active Directory における Microsoft 365 グループの有効期限を設定する
 
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ユーザー管理者アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 
-2. **[グループ]** を選択し、 **[全般]** を選択します。
+2. **[グループ]** を選択し、**[全般]** を選択します。
   
    ![セルフ サービスのグループ設定ページ](./media/groups-quickstart-expiration/self-service-settings.png)
 
@@ -55,7 +55,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="set-group-expiration"></a>グループの有効期限の設定
 
-1. [Azure portal](https://portal.azure.com) にサインインし、 **[Azure Active Directory]** > **[グループ]** > **[有効期限]** の順に選択して有効期限の設定を開きます。
+1. [Azure portal](https://portal.azure.com) にサインインし、**[Azure Active Directory]** > **[グループ]** > **[有効期限]** の順に選択して有効期限の設定を開きます。
   
    ![グループの有効期限の設定ページ](./media/groups-quickstart-expiration/expiration-settings.png)
 
@@ -63,7 +63,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 3. グループに所有者がいない場合に、有効期限の通知を送信するメール アドレスを指定します。
 
-4. このクイックスタートでは、 **[これらの Microsoft 365 グループの有効期限を有効にする]** を **[すべて]** に設定します。
+4. このクイックスタートでは、**[これらの Microsoft 365 グループの有効期限を有効にする]** を **[すべて]** に設定します。
 
 5. 最後に **[保存]** を選択して有効期限の設定を保存します。
 

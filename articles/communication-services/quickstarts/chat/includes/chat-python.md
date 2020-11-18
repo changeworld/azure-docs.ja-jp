@@ -10,19 +10,19 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 3c05596e16edc5243b8a97002a5cc5990c69ec43
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2b7d00335253772683b867acf0765b77fc493e79
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90945623"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523823"
 ---
 ## <a name="prerequisites"></a>前提条件
 開始する前に、必ず次のことを行ってください。
 
 - アクティブなサブスクリプションがある Azure アカウントを作成します。 詳細については、[アカウントの無料作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)に関するページを参照してください。 
 - [Python](https://www.python.org/downloads/) のインストール
-- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication リソースの作成](../../create-communication-resource.md)に関するページを参照してください。 このクイックスタート用に、自分のリソースの**エンドポイント**を記録する必要があります
+- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication リソースの作成](../../create-communication-resource.md)に関するページを参照してください。 このクイックスタート用に、自分のリソースの **エンドポイント** を記録する必要があります
 - [ユーザー アクセス トークン](../../access-tokens.md)。 スコープは必ず "chat" に設定し、トークン文字列と userId 文字列をメモしてください。
 
 ## <a name="setting-up"></a>設定
@@ -85,7 +85,7 @@ chat_client = ChatClient(endpoint, CommunicationUserCredential(<Access Token>))
 チャット スレッドは、`create_chat_thread` メソッドを使用して作成します。
 
 - スレッドにトピックを指定するには、`topic` を使用します。チャット スレッドの作成後に、`update_thread` 関数を使用してトピックを更新することができます。
-- チャット スレッドに追加する `ChatThreadMember` をリストアップするには、`members` を使用します。`ChatThreadMember` は、[ユーザーを作成](../../access-tokens.md#create-a-user)することによって得られる `CommunicationUser` 型を `user` として受け取ります。
+- チャット スレッドに追加する `ChatThreadMember` をリストアップするには、`members` を使用します。`ChatThreadMember` は、[ユーザーを作成](../../access-tokens.md#create-an-identity)することによって得られる `CommunicationUser` 型を `user` として受け取ります。
 
 新しく作成されたチャット スレッドに対して操作 (チャット スレッドへのメンバーの追加、メッセージの送信、メッセージの削除など) を実行するには、応答 `chat_thread_client` を使用します。これには、チャット スレッドの一意の ID である `thread_id` プロパティが含まれています。
 
@@ -158,7 +158,7 @@ chat_messages = chat_thread_client.list_messages()
 threadId で識別されるスレッドにメンバーを追加するには、`add_members` メソッドを使用します。
 
 - チャット スレッドに追加するメンバーをリストアップするには、`members` を使用します。
-- `user` (必須) は、[ユーザーの作成](../../access-tokens.md#create-a-user)時に `CommunicationIdentityClient` で作成した `CommunicationUser` です。
+- `user` (必須) は、[ユーザーの作成](../../access-tokens.md#create-an-identity)時に `CommunicationIdentityClient` で作成した `CommunicationUser` です。
 - `display_name` (省略可) は、スレッド メンバーの表示名です。
 - `share_history_time` (省略可) は、メンバーとの間でチャット履歴が共有される際の起点となる時刻です。 チャット スレッドの始めから履歴を共有する場合は、スレッドの作成日時と同じかそれ以前の任意の日付にこのプロパティを設定してください。 メンバーが追加された時点よりも前の履歴は共有しない場合は、現在の日付に設定します。 履歴を部分的に共有するには、中間の日付に設定します。
 

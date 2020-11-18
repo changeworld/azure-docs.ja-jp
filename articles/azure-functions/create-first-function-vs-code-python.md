@@ -4,12 +4,12 @@ description: Visual Studio Code の Azure Functions 拡張機能を使用して 
 ms.topic: quickstart
 ms.date: 11/04/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 5733af8a62373d8763899d6b98393cd6ba0823a9
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4d37acfddeb5f5b6220e7082e729a7d6e6dfe66b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424846"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542424"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-python-using-visual-studio-code"></a>クイックスタート: Visual Studio Code と Python を使用して Azure に関数を作成する
 
@@ -122,6 +122,8 @@ Visual Studio Code を使用して、HTTP によってトリガーされる単�
 
 > [!div class="nextstepaction"]
 > [Azure Storage キューに接続する](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-python)
+
+[問題がある場合は、お知らせください。](https://aka.ms/python-functions-qs-survey)
 
 [Azure Functions Core Tools]: functions-run-local.md
 [Azure Functions extension for Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions

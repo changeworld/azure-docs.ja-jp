@@ -7,20 +7,20 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: overview
 ms.workload: identity
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ec578370d32664e36ffcc4bd075c3f6a3ed68ab
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c0edd85ea4478ac95ea854b73717056d52a9098b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92378898"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647564"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Azure Active Directory のセルフサービス サインアップについて
 
@@ -35,9 +35,9 @@ ms.locfileid: "92378898"
 
 ## <a name="terms-and-definitions"></a>用語と定義
 
-* **セルフサービス サインアップ** :ユーザーがこの方法でクラウド サービスにサインアップすると、電子メール ドメインに基づいた ID が Azure AD に自動的に作成されます。
-* **管理されていない Azure AD ディレクトリ** :これは、前述の ID が作成されるディレクトリです。 管理されていないディレクトリは、グローバル管理者がいないディレクトリです。
-* **電子メール検証済みユーザー** :これは Azure AD のユーザー アカウントの一種です。 セルフサービス プランへのサインアップ後に自動作成された ID を持つユーザーは、電子メール検証済みユーザーです。 電子メール検証済みユーザーは、creationmethod=EmailVerified でタグ付けされたディレクトリの通常メンバーです。
+* **セルフサービス サインアップ**:ユーザーがこの方法でクラウド サービスにサインアップすると、電子メール ドメインに基づいた ID が Azure AD に自動的に作成されます。
+* **管理されていない Azure AD ディレクトリ**:これは、前述の ID が作成されるディレクトリです。 管理されていないディレクトリは、グローバル管理者がいないディレクトリです。
+* **電子メール検証済みユーザー**:これは Azure AD のユーザー アカウントの一種です。 セルフサービス プランへのサインアップ後に自動作成された ID を持つユーザーは、電子メール検証済みユーザーです。 電子メール検証済みユーザーは、creationmethod=EmailVerified でタグ付けされたディレクトリの通常メンバーです。
 
 ## <a name="how-do-i-control-self-service-settings"></a>セルフサービス設定の管理方法
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: a5a958228d79c86550604109d7aaf19e68593a57
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a9f58a9cdf8dea9631443d499548f2aee61eda69
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314890"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553677"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Synapse SQL で外部テーブルを使用する
 
@@ -238,7 +238,7 @@ FORMAT_TYPE = [ PARQUET | DELIMITEDTEXT]: 外部データの形式を指定し�
 - PARQUET: Parquet 形式を指定します。
 - DELIMITEDTEXT: フィールド ターミネータとも呼ばれる、列区切り記号付きのテキスト形式を指定します。
 
-FIELD_TERMINATOR = *field_terminator* : 区切りテキスト ファイルにのみ適用されます。 フィールド ターミネータは、テキスト区切りファイルでの各フィールド (列) の終了を示す 1 つ以上の文字を指定します。 既定値はパイプ文字 (ꞌ|ꞌ) です。
+FIELD_TERMINATOR = *field_terminator*: 区切りテキスト ファイルにのみ適用されます。 フィールド ターミネータは、テキスト区切りファイルでの各フィールド (列) の終了を示す 1 つ以上の文字を指定します。 既定値はパイプ文字 (ꞌ|ꞌ) です。
 
 例 :
 
@@ -246,7 +246,7 @@ FIELD_TERMINATOR = *field_terminator* : 区切りテキスト ファイルにの
 - FIELD_TERMINATOR = ' '
 - FIELD_TERMINATOR = ꞌ\tꞌ
 
-STRING_DELIMITER = *string_delimiter* : テキスト区切りのファイル内の文字列型のデータにはフィールド ターミネータを指定します。 文字列の区切り記号の長さは 1 文字または複数文字とし、単一引用符で囲みます。 既定値は空の文字列 ("") です。
+STRING_DELIMITER = *string_delimiter*: テキスト区切りのファイル内の文字列型のデータにはフィールド ターミネータを指定します。 文字列の区切り記号の長さは 1 文字または複数文字とし、単一引用符で囲みます。 既定値は空の文字列 ("") です。
 
 例 :
 
@@ -254,7 +254,7 @@ STRING_DELIMITER = *string_delimiter* : テキスト区切りのファイル内�
 - STRING_DELIMITER = '*'
 - STRING_DELIMITER = ꞌ,ꞌ
 
-FIRST_ROW = *First_row_int* : 最初に読み取られる行の番号を指定し、すべてのファイルに適用します。 値を 2 に設定すると、データの読み込み時に各ファイルの最初の行 (ヘッダー行) がスキップされます。 行は、行ターミネータ (/r/n、/r、/n) の存在に基づいてスキップされます。
+FIRST_ROW = *First_row_int*: 最初に読み取られる行の番号を指定し、すべてのファイルに適用します。 値を 2 に設定すると、データの読み込み時に各ファイルの最初の行 (ヘッダー行) がスキップされます。 行は、行ターミネータ (/r/n、/r、/n) の存在に基づいてスキップされます。
 
 USE_TYPE_DEFAULT = { TRUE | **FALSE** }: テキスト ファイルからデータを取得するときに、区切りテキスト ファイル内の不足値を処理する方法を指定します。
 
@@ -268,7 +268,7 @@ FALSE: すべての不足値を NULL として格納します。 区切りテキ
 
 Encoding = {'UTF8' | 'UTF16'}: サーバーレス SQL プールでは、UTF8 および UTF16 でエンコードされた区切りテキスト ファイルを読み取ることができます。
 
-DATA_COMPRESSION = *data_compression_method* : この引数では、外部データのデータ圧縮方法を指定します。 
+DATA_COMPRESSION = *data_compression_method*: この引数では、外部データのデータ圧縮方法を指定します。 
 
 PARQUET ファイル形式の種類では、次の圧縮方法がサポートされています。
 
@@ -323,7 +323,7 @@ column_name <data_type>
 
 作成するテーブルの 1 つから 3 つの部分で構成される名前。 外部テーブルの場合、サーバーレス SQL プールではテーブルのメタデータのみが格納されます。 サーバーレス SQL プールでは、実際のデータの移動または格納は行われません。
 
-<column_definition>, ... *n* ]
+<column_definition>, ...*n* ]
 
 CREATE EXTERNAL TABLE では、列名、データ型、NULL 値の許容、照合順序を構成できます。 外部テーブルに対して DEFAULT CONSTRAINT を使用することはできません。
 
@@ -332,7 +332,7 @@ CREATE EXTERNAL TABLE では、列名、データ型、NULL 値の許容、照�
 
 Parquet ファイルからの読み取りの場合は、読み取りたい列だけを指定して、残りをスキップすることができます。
 
-LOCATION = ' *folder_or_filepath* '
+LOCATION = '*folder_or_filepath*'
 
 Azure Blob Storage にある実際のデータのフォルダーまたはファイル パスとファイル名を指定します。 ルート フォルダーから、場所を開始します。 ルート フォルダーは、外部データ ソースで指定されたデータの場所です。
 
@@ -345,9 +345,9 @@ Azure Blob Storage にある実際のデータのフォルダーまたはファ�
 
 ![外部テーブルの再帰型データ](./media/develop-tables-external-tables/folder-traversal.png)
 
-DATA_SOURCE = *external_data_source_name* : 外部データの場所が含まれている外部データ ソースの名前を指定します。 外部データ ソースを作成するには、[CREATE EXTERNAL DATA SOURCE](#create-external-data-source) を使用します。
+DATA_SOURCE = *external_data_source_name*: 外部データの場所が含まれている外部データ ソースの名前を指定します。 外部データ ソースを作成するには、[CREATE EXTERNAL DATA SOURCE](#create-external-data-source) を使用します。
 
-FILE_FORMAT = *external_file_format_name* : 外部データのファイルの種類と圧縮方法を格納する外部ファイル形式のオブジェクトの名前を指定します。 外部ファイル形式を作成するには、[CREATE EXTERNAL FILE FORMAT](#create-external-file-format) を使用します。
+FILE_FORMAT = *external_file_format_name*: 外部データのファイルの種類と圧縮方法を格納する外部ファイル形式のオブジェクトの名前を指定します。 外部ファイル形式を作成するには、[CREATE EXTERNAL FILE FORMAT](#create-external-file-format) を使用します。
 
 ### <a name="permissions-create-external-table"></a>CREATE EXTERNAL TABLE のアクセス許可
 
@@ -388,8 +388,6 @@ Data Lake の探索機能を使用することで、ファイルを右クリッ�
 - 少なくとも ADLS Gen2 アカウントに対するストレージ BLOB データ共同作成者 ARM アクセス ロールがある状態で、ワークスペースにアクセスできる必要があります
 
 - SQL プールまたは SQL オンデマンドで外部テーブルを[作成してクエリを実行するためのアクセス許可](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2&preserve-view=true)が少なくとも必要です
-
-- ADLS Gen2 アカウントに関連付けられているリンクされたサービスには、 **ファイルへのアクセス権が必要です** 。 たとえば、リンクされたサービスの認証メカニズムがマネージド ID の場合、ワークスペースのマネージド ID には、ストレージ アカウントに対するストレージ BLOB 閲覧者アクセス許可が少なくとも必要です
 
 [データ] パネルで、外部テーブルの作成元にするファイルを選択します。
 > [!div class="mx-imgBorder"]
