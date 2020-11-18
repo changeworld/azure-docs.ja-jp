@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 5935bc3f59585b19fc3b45bdfd567bb1f9404234
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 0e209e8114d8f1791a00e87894fa12206edcf34e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675589"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700224"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Azure Cognitive Search サービスの管理者 API キーを作成する
 
 Search サービスへのすべての HTTP 要求には、対象のサービス専用に生成された読み取り専用の `api-key` が必要です。 `api-key` は、その Search サービス エンドポイントへのアクセスを認証するための唯一のメカニズムであり、すべての要求に含まれる必要があります。 
 
-+ [REST ソリューション](search-get-started-postman.md)では、通常、API キーは要求のヘッダーで指定されます
++ [REST ソリューション](search-get-started-rest.md)では、通常、API キーは要求のヘッダーで指定されます
 
 + [.NET ソリューション](search-howto-dotnet-sdk.md)では、キーが多くの場合に構成設定として指定され、[AzureKeyCredential](/dotnet/api/azure.azurekeycredential) として渡されます
 

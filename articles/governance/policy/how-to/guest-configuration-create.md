@@ -3,12 +3,12 @@ title: Windows 用のゲスト構成ポリシーを作成する方法
 description: Windows に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 325b00ac1cc747555d38b4c250709638f5e74d95
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: ea9b40006deefbac2c253082eda4ef2da12149a4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348884"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700681"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows 用のゲスト構成ポリシーを作成する方法
 
@@ -90,7 +90,7 @@ DSC の概念と用語の概要については、[PowerShell DSC の概要](/pow
 1. 関数によって返されるブール値は、ゲスト割り当ての Azure Resource Manager ステータスが準拠しているべきか否かを決定します。
 1. プロバイダーによって `Get-TargetResource` が実行され、各設定の現在の状態が返されます。これにより、コンピューターが準拠していない理由と、現在の状態が準拠していることの確認に関する両方の詳細情報が得られます。
 
-ゲスト構成の割り当てに値を渡す Azure Policy のパラメーターは、 _文字列_ 型である必要があります。 DSC リソースで配列がサポートされている場合でも、パラメーターを使用して配列を渡すことはできません。
+ゲスト構成の割り当てに値を渡す Azure Policy のパラメーターは、_文字列_ 型である必要があります。 DSC リソースで配列がサポートされている場合でも、パラメーターを使用して配列を渡すことはできません。
 
 ### <a name="get-targetresource-requirements"></a>Get-TargetResource の要件
 
@@ -98,11 +98,11 @@ DSC の概念と用語の概要については、[PowerShell DSC の概要](/pow
 
 - 返されるハッシュテーブルには **Reasons** という名前のプロパティが含まれている必要があります。
 - Reason プロパティは配列である必要があります。
-- 配列内の各項目は、 **コード** および **フレーズ** という名前のキーを持つハッシュテーブルである必要があります。
+- 配列内の各項目は、**コード** および **フレーズ** という名前のキーを持つハッシュテーブルである必要があります。
 
 Reason プロパティは、マシンが準拠していない場合に情報をどのように表示するかをサービスが標準化するために使用されます。 Reasons の各項目は、そのリソースが準拠していない「理由」であると考えることができます。 リソースが複数の理由で準拠していない可能性があるため、プロパティは配列となっています。
 
-サービスでは、プロパティ **コード** および **フレーズ** を指定する必要があります。 カスタムリソースを作成する場合、リソースが準拠していない理由として表示するテキスト (通常は stdout) を **フレーズ** の値に設定します。 **コード** には特定の書式設定要件があるため、監査を行うために使用されたリソースに関する情報をレポートではっきり表示できます。 このソリューションにより、ゲスト構成を拡張できます。 出力を、 **Phrase** プロパティの文字列値として返すことができる限り、任意のコマンドを実行できます。
+サービスでは、プロパティ **コード** および **フレーズ** を指定する必要があります。 カスタムリソースを作成する場合、リソースが準拠していない理由として表示するテキスト (通常は stdout) を **フレーズ** の値に設定します。 **コード** には特定の書式設定要件があるため、監査を行うために使用されたリソースに関する情報をレポートではっきり表示できます。 このソリューションにより、ゲスト構成を拡張できます。 出力を、**Phrase** プロパティの文字列値として返すことができる限り、任意のコマンドを実行できます。
 
 - **コード** (文字列):リソースの名前、繰り返し、およびスペースを含まない短い名前を理由の識別子として指定します。 これら 3 つの値は、スペースを含まず、コロンで区切られている必要があります。
   - たとえば、`registry:registry:keynotpresent` などです
@@ -144,7 +144,7 @@ class ResourceName : OMI_BaseResource
 
 ### <a name="scaffolding-a-guest-configuration-project"></a>ゲスト構成プロジェクトのスキャフォールディング
 
-サンプル コードを使用して作業開始プロセスの迅速化に取り組む開発者は、 **ゲスト構成プロジェクト** という名前のコミュニティ プロジェクトをインストールできます。 プロジェクトによって、[Plaster](https://github.com/powershell/plaster) PowerShell モジュールのテンプレートがインストールされます。 このツールを使用することで、作業中の構成とサンプルリソースを含むプロジェクトと、プロジェクトを検証するための一連の [Pester](https://github.com/pester/pester) をスキャフォールディングできます。 このテンプレートには、ゲスト構成パッケージの構築と検証を自動化するための Visual Studio Code のタスク ランナーも含まれています。 詳細については、[ゲスト構成プロジェクト](https://github.com/microsoft/guestconfigurationproject) に関する GitHub プロジェクトを参照してください。
+サンプル コードを使用して作業開始プロセスの迅速化に取り組む開発者は、**ゲスト構成プロジェクト** という名前のコミュニティ プロジェクトをインストールできます。 プロジェクトによって、[Plaster](https://github.com/powershell/plaster) PowerShell モジュールのテンプレートがインストールされます。 このツールを使用することで、作業中の構成とサンプルリソースを含むプロジェクトと、プロジェクトを検証するための一連の [Pester](https://github.com/pester/pester) をスキャフォールディングできます。 このテンプレートには、ゲスト構成パッケージの構築と検証を自動化するための Visual Studio Code のタスク ランナーも含まれています。 詳細については、[ゲスト構成プロジェクト](https://github.com/microsoft/guestconfigurationproject) に関する GitHub プロジェクトを参照してください。
 
 一般的な構成の操作に関する詳細については、[構成の作成、コンパイル、適用](/powershell/scripting/dsc/configurations/write-compile-apply-configuration)に関する記事をご覧ください。
 
@@ -169,7 +169,7 @@ PowerShell コマンドレットは、パッケージの作成に役立ちます
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Windows 用のカスタム ゲスト構成監査ポリシーを作成する手順
 
-DSC 構成を作成して設定を監査します。 次の PowerShell スクリプトの例では、 **AuditBitLocker** という名前の構成を作成し、 **PsDscResources** リソース モジュールをインポートし、`Service` リソースを使って実行中のサービスを監査しています。 構成スクリプトは、Windows または macOS コンピューターから実行できます。
+DSC 構成を作成して設定を監査します。 次の PowerShell スクリプトの例では、**AuditBitLocker** という名前の構成を作成し、**PsDscResources** リソース モジュールをインポートし、`Service` リソースを使って実行中のサービスを監査しています。 構成スクリプトは、Windows または macOS コンピューターから実行できます。
 
 ```powershell
 # Add PSDscResources module to environment
@@ -202,9 +202,9 @@ MOF をコンパイルしたら、サポート ファイルをまとめてパッ
 
 `New-GuestConfigurationPackage` コマンドレットでパッケージを作成します。 構成に必要なモジュールは、`$Env:PSModulePath` 内で利用可能になっている必要があります。 Windows コンテンツを作成するときの `New-GuestConfigurationPackage` コマンドレットのパラメーター:
 
-- **Name** :ゲスト構成のパッケージ名。
-- **構成** :コンパイル済み DSC 構成ドキュメントの完全なパス。
-- **パス** :出力フォルダーのパス。 このパラメーターは省略可能です。 指定しないと、パッケージは現在のディレクトリに作成されます。
+- **Name**:ゲスト構成のパッケージ名。
+- **構成**:コンパイル済み DSC 構成ドキュメントの完全なパス。
+- **パス**:出力フォルダーのパス。 このパラメーターは省略可能です。 指定しないと、パッケージは現在のディレクトリに作成されます。
 
 次のコマンドを実行して、前の手順で指定した構成を使用してパッケージを作成します。
 
@@ -220,9 +220,9 @@ New-GuestConfigurationPackage `
 
 `Test-GuestConfigurationPackage` コマンドレットのパラメーター:
 
-- **Name** :ゲスト構成ポリシーの名前。
-- **Parameter** : ハッシュテーブル形式で提供されるポリシー パラメーター。
-- **パス** :ゲスト構成パッケージの完全なパス。
+- **Name**:ゲスト構成ポリシーの名前。
+- **Parameter**: ハッシュテーブル形式で提供されるポリシー パラメーター。
+- **パス**:ゲスト構成パッケージの完全なパス。
 
 次のコマンドを実行して、前の手順で作成したパッケージをテストします。
 
@@ -247,13 +247,13 @@ Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName 
 
 `New-GuestConfigurationPolicy` コマンドレットのパラメーター:
 
-- **ContentUri** : ゲスト構成コンテンツ パッケージのパブリック HTTP(S) URI。
-- **DisplayName** : ポリシーの表示名。
-- **説明** :ポリシーの説明。
-- **Parameter** : ハッシュテーブル形式で提供されるポリシー パラメーター。
-- **バージョン** :ポリシーのバージョン。
-- **パス** :ポリシー定義が作成されるターゲット パス。
-- **Platform** : ゲスト構成ポリシーとコンテンツ パッケージのターゲット プラットフォーム (Windows/Linux)。
+- **ContentUri**: ゲスト構成コンテンツ パッケージのパブリック HTTP(S) URI。
+- **DisplayName**: ポリシーの表示名。
+- **説明**:ポリシーの説明。
+- **Parameter**: ハッシュテーブル形式で提供されるポリシー パラメーター。
+- **バージョン**:ポリシーのバージョン。
+- **パス**:ポリシー定義が作成されるターゲット パス。
+- **Platform**: ゲスト構成ポリシーとコンテンツ パッケージのターゲット プラットフォーム (Windows/Linux)。
 - **Tag** は、ポリシー定義に 1 つ以上のタグ フィルターを追加します
 - **カテゴリ** は、ポリシー定義のカテゴリ メタデータ フィールドを設定します
 
@@ -278,7 +278,7 @@ New-GuestConfigurationPolicy `
 
 最後に、`Publish-GuestConfigurationPolicy` コマンドレットを使用してポリシー定義を発行します。 コマンドレットのパラメーターは、`New-GuestConfigurationPolicy` によって作成される JSON ファイルの場所を指し示す **Path** だけです。
 
-Publish コマンドを実行するには、Azure でポリシーを作成するためのアクセス権が必要です。 特定の承認要件については、[Azure Policy の概要](../overview.md)に関するページに記載されています。 最適な組み込みロールは、 **リソース ポリシーの共同作成者** です。
+Publish コマンドを実行するには、Azure でポリシーを作成するためのアクセス権が必要です。 特定の承認要件については、[Azure Policy の概要](../overview.md)に関するページに記載されています。 最適な組み込みロールは、**リソース ポリシーの共同作成者** です。
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPolicy -Path '.\policyDefinitions'
@@ -329,7 +329,7 @@ Azure で作成されるポリシーに関する最後のステップでは、�
 
 ゲスト構成では、実行時に構成のプロパティをオーバーライドすることができます。 この機能は、パッケージの MOF ファイル内の値を静的と見なす必要がないことを意味します。 オーバーライドする値は Azure Policy を通じて提供され、構成の作成方法またはコンパイル方法には影響しません。
 
-`New-GuestConfigurationPolicy` と `Test-GuestConfigurationPolicyPackage` のコマンドレットには、 **Parameters** という名前のパラメーターが含まれています。 このパラメーターによって、各パラメーターの詳細をすべて含むハッシュテーブル定義を受け取り、Azure Policy 定義に使用される各ファイルの必要なセクションが作成されます。
+`New-GuestConfigurationPolicy` と `Test-GuestConfigurationPolicyPackage` のコマンドレットには、**Parameters** という名前のパラメーターが含まれています。 このパラメーターによって、各パラメーターの詳細をすべて含むハッシュテーブル定義を受け取り、Azure Policy 定義に使用される各ファイルの必要なセクションが作成されます。
 
 次の例では、サービスを監査するためのポリシー定義を作成します。ポリシーの割り当て時に一覧からユーザーが選択します。
 
@@ -436,7 +436,7 @@ end
 
 このファイル `wmi_service.rb` を `wmi_service` ディレクトリ内の `controls` という名前の新しいフォルダーに保存します。
 
-最後に、構成を作成し、 **GuestConfiguration** リソース モジュールをインポートし、`gcInSpec` リソースを使用して InSpec プロファイルの名前を設定します。
+最後に、構成を作成し、**GuestConfiguration** リソース モジュールをインポートし、`gcInSpec` リソースを使用して InSpec プロファイルの名前を設定します。
 
 ```powershell
 # Define the configuration and import GuestConfiguration
@@ -472,12 +472,12 @@ wmi_service -out ./Config
 
 サポート ファイルはまとめてパッケージ化する必要があります。 完成したパッケージは、Azure Policy の定義を作成するためにゲスト構成によって使われます。
 
-`New-GuestConfigurationPackage` コマンドレットでパッケージを作成します。 サードパーティ製コンテンツの場合は、 **FilesToInclude** パラメーターを使用して、パッケージに InSpec コンテンツを追加します。 Linux パッケージの場合、 **ChefProfilePath** を指定する必要はありません。
+`New-GuestConfigurationPackage` コマンドレットでパッケージを作成します。 サードパーティ製コンテンツの場合は、**FilesToInclude** パラメーターを使用して、パッケージに InSpec コンテンツを追加します。 Linux パッケージの場合、**ChefProfilePath** を指定する必要はありません。
 
-- **Name** :ゲスト構成のパッケージ名。
-- **構成** :コンパイル済み構成ドキュメントの完全なパス。
-- **パス** :出力フォルダーのパス。 このパラメーターは省略可能です。 指定しないと、パッケージは現在のディレクトリに作成されます。
-- **FilesoInclude** : InSpec プロファイルへの完全なパス。
+- **Name**:ゲスト構成のパッケージ名。
+- **構成**:コンパイル済み構成ドキュメントの完全なパス。
+- **パス**:出力フォルダーのパス。 このパラメーターは省略可能です。 指定しないと、パッケージは現在のディレクトリに作成されます。
+- **FilesoInclude**: InSpec プロファイルへの完全なパス。
 
 次のコマンドを実行して、前の手順で指定した構成を使用してパッケージを作成します。
 
@@ -496,9 +496,9 @@ New-GuestConfigurationPackage `
 > [!NOTE]
 > ゲスト構成割り当ての `version` プロパティは、Microsoft によってホストされているパッケージにのみ影響します。 カスタム コンテンツのバージョン管理のベストプラクティスは、ファイル名にバージョンを含めることです。
 
-- **バージョン** :`New-GuestConfigurationPolicy` コマンドレットを実行するときは、現在発行されているバージョンより大きいバージョン番号を指定する必要があります。
-- **contentUri** :`New-GuestConfigurationPolicy` コマンドレットを実行するときは、パッケージの場所の URI を指定する必要があります。 ファイル名にパッケージのバージョンを含めると、各リリースでこのプロパティの値が変更されます。
-- **contentHash** : このプロパティは、`New-GuestConfigurationPolicy` コマンドレットによって自動的に更新されます。 `New-GuestConfigurationPackage` によって作成されるパッケージのハッシュ値です。 このプロパティは、発行する `.zip` ファイルに対して適切なものである必要があります。 **contentUri** プロパティのみが更新された場合、拡張機能ではコンテンツ パッケージが受け入れられません。
+- **バージョン**:`New-GuestConfigurationPolicy` コマンドレットを実行するときは、現在発行されているバージョンより大きいバージョン番号を指定する必要があります。
+- **contentUri**:`New-GuestConfigurationPolicy` コマンドレットを実行するときは、パッケージの場所の URI を指定する必要があります。 ファイル名にパッケージのバージョンを含めると、各リリースでこのプロパティの値が変更されます。
+- **contentHash**: このプロパティは、`New-GuestConfigurationPolicy` コマンドレットによって自動的に更新されます。 `New-GuestConfigurationPackage` によって作成されるパッケージのハッシュ値です。 このプロパティは、発行する `.zip` ファイルに対して適切なものである必要があります。 **contentUri** プロパティのみが更新された場合、拡張機能ではコンテンツ パッケージが受け入れられません。
 
 更新されたパッケージをリリースする最も簡単な方法は、この記事で説明されているプロセスを繰り返し、更新されたバージョン番号を指定することです。 このプロセスにより、すべてのプロパティが正しく更新されることが保証されます。
 
@@ -518,8 +518,8 @@ Protect-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindo
 
 `Protect-GuestConfigurationPackage` コマンドレットのパラメーター:
 
-- **パス** :ゲスト構成パッケージの完全なパス。
-- **Certificate** : パッケージに署名するためのコード署名証明書。 このパラメーターは、Windows 用のコンテンツに署名する場合にのみサポートされます。
+- **パス**:ゲスト構成パッケージの完全なパス。
+- **Certificate**: パッケージに署名するためのコード署名証明書。 このパラメーターは、Windows 用のコンテンツに署名する場合にのみサポートされます。
 
 GuestConfiguration エージェントにより、Windows マシンの場合は "信頼されたルート証明機関" に、Linux マシンの場合はパス `/usr/local/share/ca-certificates/extra` に、証明書の公開キーが存在していることが求められます。 署名されたコンテンツをノードで検証するには、カスタム ポリシーを適用する前に、マシンに証明書の公開キーをインストールします。 このプロセスは、VM 内で任意の方法を使うか、Azure Policy を使って、行うことができます。 テンプレートの例は、[こちら](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)で提供されています。
 Key Vault のアクセス ポリシーでは、デプロイ中にコンピューティング リソース プロバイダーが証明書にアクセスできるようにする必要があります。 詳しい手順については、[Azure Resource Manager の仮想マシンの Key Vault を設定する](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault)に関する記事をご覧ください。
@@ -532,12 +532,6 @@ $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 ```
 
 コンテンツを発行した後、コード署名が必要なすべての仮想マシンに、名前が `GuestConfigPolicyCertificateValidation` で値が `enabled` のタグを追加します。 Azure Policy を使用して大規模にタグを配信する方法については、[タグのサンプル](../samples/built-in-policies.md#tags)に関する記事を参照してください。 このタグを配置すると、`New-GuestConfigurationPolicy` コマンドレットを使って生成されるポリシー定義では、ゲスト構成拡張による要件が有効になります。
-
-## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>ゲスト構成ポリシー割り当てのトラブルシューティング (プレビュー)
-
-Azure Policy ゲスト構成割り当てのトラブルシューティングに役立つツールをプレビューで利用できます。 このツールはプレビュー段階であり、[Guest Configuration Troubleshooter](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/) というモジュール名で PowerShell ギャラリーに公開されています。
-
-このツールのコマンドレットの詳細については、PowerShell の Get-Help コマンドを使用して、組み込みのガイダンスを参照してください。 ツールは頻繁に更新されるため、この方法が最新の情報を取得するための最適な方法です。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: e15aab3ebfe82fa97f5716769b5ff9675b4b3dc4
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 01cca2f2233ed5cdfb3003bb44c40f481bcf9bda
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91637017"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699408"
 ---
 # <a name="azure-load-balancer-floating-ip-configuration"></a>Azure Load Balancer のフローティング IP の構成
 
@@ -45,4 +45,4 @@ Floating IP なしでは、Azure は従来の負荷分散 IP アドレスのマ�
 - [Azure Load Balancer](load-balancer-overview.md) についてさらに詳しく学習する。
 - [正常性プローブ](load-balancer-custom-probe-overview.md)について学習する。
 - [Standard Load Balancer の診断](load-balancer-standard-diagnostics.md)について学習する。
-- [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)の詳細を確認する。
+- [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)の詳細を確認する。

@@ -10,22 +10,22 @@ ms.custom: REST, seodec18
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 3b5aedb20bc7a8d2aa6f3aa3d8691a71af4cd3a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eeca560989c174bcb654116eb13da40d6ec79e60
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84808367"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700513"
 ---
 # <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>REST API を使用して Load Balancer の使用状況メトリックを取得する
 
-[Azure REST API](/rest/api/azure/) を使用して、ある期間に [Standard Load Balancer](/azure/load-balancer/load-balancer-standard-overview) によって処理されたバイト数を収集します。
+[Azure REST API](/rest/api/azure/) を使用して、ある期間に [Standard Load Balancer](./load-balancer-overview.md) によって処理されたバイト数を収集します。
 
 完全なリファレンス ドキュメントと REST API の他の例は、[Azure Monitor REST リファレンス](/rest/api/monitor)で確認できます。 
 
 ## <a name="build-the-request"></a>要求を作成する
 
-Standard Load Balancer から [ByteCount メトリック](/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics)を収集するには、次の GET 要求を使用します。 
+Standard Load Balancer から [ByteCount メトリック](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)を収集するには、次の GET 要求を使用します。 
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=ByteCount&timespan=2018-06-05T03:00:00Z/2018-06-07T03:00:00Z
@@ -44,10 +44,10 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 | Name | 説明 |
 | :--- | :---------- |
-| subscriptionId | Azure サブスクリプションを識別するサブスクリプション ID。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)を参照してください｡ |
+| subscriptionId | Azure サブスクリプションを識別するサブスクリプション ID。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)を参照してください｡ |
 | resourceGroupName | リソースが含まれているリソース グループの名前。 この値は、Azure Resource Manager API、CLI、またはポータルから取得できます。 |
 | loadBalancerName | Azure Load Balancer の名前。 |
-| metric names | 有効な[Load Balancer メトリック](/azure/load-balancer/load-balancer-standard-diagnostics)のコンマ区切りリスト。 |
+| metric names | 有効な[Load Balancer メトリック](./load-balancer-standard-diagnostics.md)のコンマ区切りリスト。 |
 | api-version | 要求で使用する API のバージョン。<br /><br /> このドキュメントでは、api-version `2018-01-01` を使用し、上記の URL に含まれています。  |
 | TimeSpan | クエリの期間。 これは `startDateTime_ISO/endDateTime_ISO` の形式を持つ文字列です。 この省略可能なパラメーターは、例では 1 日分のデータを返すように設定されています。 |
 | &nbsp; | &nbsp; |
