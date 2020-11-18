@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 898b0d00fcad99a1059e01ad54ce13d192f1227f
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 8b2f8e82cac1d26689659286a5a0f81f06fb68ca
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398013"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695063"
 ---
 # <a name="cross-region-load-balancer-preview"></a>リージョン間ロード バランサー (プレビュー)
 
@@ -74,7 +74,7 @@ Azure のリージョン間ロード バランサーでは、ルーティング�
 
 リージョン ロード バランサーの構成済み負荷分散モードは、geo 近接に複数のリージョン ロード バランサーが使用されている場合に、最終的なルーティングを決定するために使用されます。
 
-詳細については、「[Azure Load Balancer の分散モードを構成する](https://docs.microsoft.com/azure/load-balancer/load-balancer-distribution-mode)」を参照してください。
+詳細については、「[Azure Load Balancer の分散モードを構成する](./load-balancer-distribution-mode.md)」を参照してください。
 
 
 ### <a name="ability-to-scale-updown-behind-a-single-endpoint"></a>1 つのエンドポイントの背後でスケールアップまたはスケールダウンする機能
@@ -84,7 +84,7 @@ Azure のリージョン間ロード バランサーでは、ルーティング�
 <!---To learn about how to add or remove a regional deployment from the backend, read more [here](TODO: Insert CLI doc here).--->
 
 ### <a name="static-ip"></a>静的 IP
-リージョン間ロード バランサーには静的パブリック IP が付属しています。これにより、IP アドレスを同じままにすることができます。 静的 IP の詳細については、[こちら](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#allocation-method)を参照してください
+リージョン間ロード バランサーには静的パブリック IP が付属しています。これにより、IP アドレスを同じままにすることができます。 静的 IP の詳細については、[こちら](../virtual-network/public-ip-addresses.md#allocation-method)を参照してください
 
 ### <a name="client-ip-preservation"></a>クライアント IP の保持
 リージョン間ロード バランサーは、レイヤー 4 のパススルー ネットワーク ロード バランサーです。 このパススルーによって、パケットの元の IP が保持されます。  元の IP は、仮想マシン上で実行するコードで使用できます。 この保持機能により、IP アドレスに固有のロジックを適用できます。

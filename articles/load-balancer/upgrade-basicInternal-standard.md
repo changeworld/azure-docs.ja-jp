@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 08/07/2020
 ms.author: irenehua
-ms.openlocfilehash: a6d2b69b0b498601497c4b33fb6bdfede87002df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59bf5eb22289238633b1f07c29a878bd0a9ae620
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500251"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696168"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Azure Internal Load Balancer のアップグレード - 送信接続は不要
-[Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](https://docs.microsoft.com/azure/load-balancer/skus#skus)を参照してください。
+[Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](./skus.md#skus)を参照してください。
 
 この記事では、Basic Load Balancer と同じ構成で Standard Load Balancer を作成し、Basic Load Balancer から Standard Load Balancer にトラフィックを移行する PowerShell スクリプトについて説明します。
 
@@ -23,14 +23,14 @@ ms.locfileid: "89500251"
 
 次の処理を行う Azure PowerShell スクリプトが用意されています。
 
-* 指定した場所に Standard Internal SKU Load Balancer を作成します。 Standard Internal Load Balancer によって[送信接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)が提供されないことに注意してください。
+* 指定した場所に Standard Internal SKU Load Balancer を作成します。 Standard Internal Load Balancer によって[送信接続](./load-balancer-outbound-connections.md)が提供されないことに注意してください。
 * 新しく作成した Standard Load Balancer に Basic SKU Load Balancer の構成をシームレスにコピーします。
 * 新しく作成した Standard Load Balancer に Basic Load Balancer からプライベート IP をシームレスに移動します。
 * Standard Load Balancer のバックエンド プールに Basic Load Balancer のバックエンド プールから VM をシームレスに移動します。
 
 ### <a name="caveatslimitations"></a>注意事項と制限事項
 
-* スクリプトでは、送信接続の必要がない Internal Load Balancer のアップグレードのみをサポートしています。 一部の VM に[送信接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)が必要な場合は、この[ページ](upgrade-InternalBasic-To-PublicStandard.md)の説明をご覧ください。 
+* スクリプトでは、送信接続の必要がない Internal Load Balancer のアップグレードのみをサポートしています。 一部の VM に[送信接続](./load-balancer-outbound-connections.md)が必要な場合は、この[ページ](upgrade-InternalBasic-To-PublicStandard.md)の説明をご覧ください。 
 * Basic Load Balancer は、バックエンド VM および NIC と同じリソース グループに存在する必要があります。
 * Standard Load Balancer が別のリージョンに作成されている場合、以前のリージョンに存在する VM を新しく作成した Standard Load Balancer に関連付けることはできません。 この制限を回避するには、必ず新しいリージョンに新しい VM を作成してください。
 * Load Balancer にフロントエンド IP 構成またはバックエンド プールがない場合は、スクリプトの実行中にエラーが発生する可能性があります。 それらが空でないことを確認してください。

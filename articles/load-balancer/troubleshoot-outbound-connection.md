@@ -7,19 +7,19 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
 ms.author: errobin
-ms.openlocfilehash: c37c0e9b914854ff41053526740d3454c5c23f90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 516576f4e005cc9fe2303945ecb1a13489908a5d
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628997"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696355"
 ---
 # <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a>アウトバウンド接続エラーのトラブルシューティング
 
 この記事は、Azure Load Balancer からのアウトバウンド接続で発生する可能性のある一般的な問題の解決策を提供することを目的としています。 顧客が体験するアウトバウンド接続に関する問題のほとんどは、SNAT ポートの枯渇と、接続タイムアウトを原因とするパケットのドロップです。 この記事では、これらの各問題を軽減する手順について説明します。
 
 ## <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a> SNAT (PAT) ポート不足の管理
-[PAT](load-balancer-outbound-connections.md) に使用される[エフェメラル ポート](load-balancer-outbound-connections.md)は、「[パブリック IP アドレスなしのスタンドアロン VM](load-balancer-outbound-connections.md)」および「[パブリック IP アドレスなしの負荷分散 VM](load-balancer-outbound-connections.md)」で説明されている有限のリソースです。 [この](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation)ガイドを使用して、エフェメラル ポートの使用状況を監視し、現在の割り当てと比較して、SNAT の枯渇のリスクを判断したり確認したりできます。
+[PAT](load-balancer-outbound-connections.md) に使用される[エフェメラル ポート](load-balancer-outbound-connections.md)は、「[パブリック IP アドレスなしのスタンドアロン VM](load-balancer-outbound-connections.md)」および「[パブリック IP アドレスなしの負荷分散 VM](load-balancer-outbound-connections.md)」で説明されている有限のリソースです。 [この](./load-balancer-standard-diagnostics.md#how-do-i-check-my-snat-port-usage-and-allocation)ガイドを使用して、エフェメラル ポートの使用状況を監視し、現在の割り当てと比較して、SNAT の枯渇のリスクを判断したり確認したりできます。
 
 同じ宛先 IP アドレスとポートに対して多数の TCP 送信接続または UDP 送信接続が開始されることがわかっている場合、送信接続エラーが出る場合、または SNAT ポート ([PAT](load-balancer-outbound-connections.md) によって使用される事前割り当て済みの[エフェメラル ポート](load-balancer-outbound-connections.md#preallocatedports)) が不足しているとサポートから指摘された場合、いくつかの一般的な軽減策の選択肢があります。 これらのオプションを確認し、使用可能であり、実際のシナリオに最適な選択肢を判断してください。 それらを 1 つまたは複数組み合わせることが状況改善に役立つ場合もあります。
 
@@ -63,7 +63,7 @@ SNAT に使用される一時ポートの需要は、アプリケーションで
 割り当てられたポートを再割り当てする必要がある場合に、次に大きなバックエンド プール サイズ レベルにスケールアウトすると、送信接続の一部がタイムアウトする可能性があります。  SNAT ポートの一部しか使用していない場合は、次に大きなバックエンド プール サイズにスケールアウトすることは重要ではありません。  既存のポートの半分は、次のバックエンド プール レベルに移行するたびに再割り当てされます。  これを行わない場合は、デプロイをそのレベルのサイズに合わせる必要があります。  または、必要に応じてアプリケーションが検出し、再試行できる必要があります。  TCP キープアライブは、再割り当てによって SNAT ポートが機能しなくなったときの検出に役立ちます。
 
 ## <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a><a name="idletimeout"></a>キープアライブを使用して送信アイドル タイムアウトをリセットする
-送信接続には、4 分間のアイドル タイムアウトが設けられています。 このタイムアウトは、[送信ルール](../load-balancer/load-balancer-outbound-rules-overview.md#idletimeout)を使用して調整できます。 必要に応じて、転送 (TCP キープアライブなど) またはアプリケーション レイヤー キープアライブを使用して、アイドル フローを更新したりこのアイドル タイムアウトをリセットしたりできます。  
+送信接続には、4 分間のアイドル タイムアウトが設けられています。 このタイムアウトは、[送信ルール](outbound-rules.md)を使用して調整できます。 必要に応じて、転送 (TCP キープアライブなど) またはアプリケーション レイヤー キープアライブを使用して、アイドル フローを更新したりこのアイドル タイムアウトをリセットしたりできます。  
 
 TCP キープアライブを使用するときは、接続の一方で有効にすれば十分です。 たとえば、フローのアイドル タイマーをリセットするときは、サーバー側でのみ有効にすれば十分であり、両側が TCP キープアライブを開始する必要はありません。  データベースのクライアント/サーバー構成など、アプリケーション レイヤーにも同様の概念があります。  サーバー側で、アプリケーション固有のキープアライブのどのようなオプションが存在するかを確認します。
 

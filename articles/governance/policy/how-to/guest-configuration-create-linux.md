@@ -4,12 +4,12 @@ description: Linux VM に対する Azure Policy のゲスト構成ポリシー�
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 240f22a076b5f185ebe3028b201b66d187c9bb2d
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 1e81d1a5157cc5872ba2628c8d6cb408e35ab9c6
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346878"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694244"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux 用のゲスト構成ポリシーを作成する方法
 
@@ -119,7 +119,7 @@ end
 
 このファイルを `linux-path.rb` という名前で、`linux-path` ディレクトリ内の `controls` という名前の新しいフォルダーに保存します。
 
-最後に、構成を作成し、 **PSDesiredStateConfiguration** リソース モジュールをインポートした後、構成をコンパイルします。
+最後に、構成を作成し、**PSDesiredStateConfiguration** リソース モジュールをインポートした後、構成をコンパイルします。
 
 ```powershell
 # import PSDesiredStateConfiguration module
@@ -163,10 +163,10 @@ AuditFilePathExists -out ./Config
 
 `New-GuestConfigurationPackage` コマンドレットでパッケージを作成します。 Linux コンテンツを作成するときの `New-GuestConfigurationPackage` コマンドレットのパラメーター:
 
-- **Name** :ゲスト構成のパッケージ名。
-- **構成** :コンパイル済み構成ドキュメントの完全なパス。
-- **パス** :出力フォルダーのパス。 このパラメーターは省略可能です。 指定しないと、パッケージは現在のディレクトリに作成されます。
-- **ChefInspecProfilePath** : InSpec プロファイルへの完全なパス。 このパラメーターは、Linux を監査するコンテンツを作成する場合にのみサポートされます。
+- **Name**:ゲスト構成のパッケージ名。
+- **構成**:コンパイル済み構成ドキュメントの完全なパス。
+- **パス**:出力フォルダーのパス。 このパラメーターは省略可能です。 指定しないと、パッケージは現在のディレクトリに作成されます。
+- **ChefInspecProfilePath**: InSpec プロファイルへの完全なパス。 このパラメーターは、Linux を監査するコンテンツを作成する場合にのみサポートされます。
 
 次のコマンドを実行して、前の手順で指定した構成を使用してパッケージを作成します。
 
@@ -183,9 +183,9 @@ New-GuestConfigurationPackage `
 
 `Test-GuestConfigurationPackage` コマンドレットのパラメーター:
 
-- **Name** :ゲスト構成ポリシーの名前。
-- **Parameter** : ハッシュテーブル形式で提供されるポリシー パラメーター。
-- **パス** :ゲスト構成パッケージの完全なパス。
+- **Name**:ゲスト構成ポリシーの名前。
+- **Parameter**: ハッシュテーブル形式で提供されるポリシー パラメーター。
+- **パス**:ゲスト構成パッケージの完全なパス。
 
 次のコマンドを実行して、前の手順で作成したパッケージをテストします。
 
@@ -210,13 +210,13 @@ Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName 
 
 `New-GuestConfigurationPolicy` コマンドレットのパラメーター:
 
-- **ContentUri** : ゲスト構成コンテンツ パッケージのパブリック HTTP(S) URI。
-- **DisplayName** : ポリシーの表示名。
-- **説明** :ポリシーの説明。
-- **Parameter** : ハッシュテーブル形式で提供されるポリシー パラメーター。
-- **バージョン** :ポリシーのバージョン。
-- **パス** :ポリシー定義が作成されるターゲット パス。
-- **Platform** : ゲスト構成ポリシーとコンテンツ パッケージのターゲット プラットフォーム (Windows/Linux)。
+- **ContentUri**: ゲスト構成コンテンツ パッケージのパブリック HTTP(S) URI。
+- **DisplayName**: ポリシーの表示名。
+- **説明**:ポリシーの説明。
+- **Parameter**: ハッシュテーブル形式で提供されるポリシー パラメーター。
+- **バージョン**:ポリシーのバージョン。
+- **パス**:ポリシー定義が作成されるターゲット パス。
+- **Platform**: ゲスト構成ポリシーとコンテンツ パッケージのターゲット プラットフォーム (Windows/Linux)。
 - **Tag** は、ポリシー定義に 1 つ以上のタグ フィルターを追加します
 - **カテゴリ** は、ポリシー定義のカテゴリ メタデータ フィールドを設定します
 
@@ -241,7 +241,7 @@ New-GuestConfigurationPolicy `
 
 最後に、`Publish-GuestConfigurationPolicy` コマンドレットを使用してポリシー定義を発行します。 コマンドレットのパラメーターは、`New-GuestConfigurationPolicy` によって作成される JSON ファイルの場所を指し示す **Path** だけです。
 
-Publish コマンドを実行するには、Azure でポリシーを作成するためのアクセス権が必要です。 特定の承認要件については、[Azure Policy の概要](../overview.md)に関するページに記載されています。 最適な組み込みロールは、 **リソース ポリシーの共同作成者** です。
+Publish コマンドを実行するには、Azure でポリシーを作成するためのアクセス権が必要です。 特定の承認要件については、[Azure Policy の概要](../overview.md)に関するページに記載されています。 最適な組み込みロールは、**リソース ポリシーの共同作成者** です。
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPolicy `
@@ -277,7 +277,7 @@ describe file(attr_path) do
 end
 ```
 
-`New-GuestConfigurationPolicy` と `Test-GuestConfigurationPolicyPackage` のコマンドレットには、 **Parameters** という名前のパラメーターが含まれています。 このパラメーターは、各パラメーターの詳細をすべて含むハッシュテーブルを受け取り、各 Azure Policy 定義の作成に使用されるファイルのすべての必要なセクションが自動的に作成されます。
+`New-GuestConfigurationPolicy` と `Test-GuestConfigurationPolicyPackage` のコマンドレットには、**Parameters** という名前のパラメーターが含まれています。 このパラメーターは、各パラメーターの詳細をすべて含むハッシュテーブルを受け取り、各 Azure Policy 定義の作成に使用されるファイルのすべての必要なセクションが自動的に作成されます。
 
 次の例では、ファイル パスを監査するポリシー定義を作成します。このパスは、ポリシーの割り当て時にユーザーが指定します。
 
@@ -330,9 +330,9 @@ Configuration AuditFilePathExists
 > [!NOTE]
 > ゲスト構成割り当ての `version` プロパティは、Microsoft によってホストされているパッケージにのみ影響します。 カスタム コンテンツのバージョン管理のベスト プラクティスは、ファイル名にバージョンを含めることです。
 
-- **バージョン** :`New-GuestConfigurationPolicy` コマンドレットを実行するときは、現在発行されているバージョンより大きいバージョン番号を指定する必要があります。
-- **contentUri** : `New-GuestConfigurationPolicy` コマンドレットを実行するときは、パッケージの場所の URI を指定する必要があります。 ファイル名にパッケージのバージョンを含めると、各リリースでこのプロパティの値が変更されます。
-- **contentHash** : このプロパティは、`New-GuestConfigurationPolicy` コマンドレットによって自動的に更新されます。 `New-GuestConfigurationPackage` によって作成されるパッケージのハッシュ値です。 このプロパティは、発行する `.zip` ファイルに対して適切なものである必要があります。 **contentUri** プロパティのみが更新された場合、拡張機能ではコンテンツ パッケージが受け入れられません。
+- **バージョン**:`New-GuestConfigurationPolicy` コマンドレットを実行するときは、現在発行されているバージョンより大きいバージョン番号を指定する必要があります。
+- **contentUri**: `New-GuestConfigurationPolicy` コマンドレットを実行するときは、パッケージの場所の URI を指定する必要があります。 ファイル名にパッケージのバージョンを含めると、各リリースでこのプロパティの値が変更されます。
+- **contentHash**: このプロパティは、`New-GuestConfigurationPolicy` コマンドレットによって自動的に更新されます。 `New-GuestConfigurationPackage` によって作成されるパッケージのハッシュ値です。 このプロパティは、発行する `.zip` ファイルに対して適切なものである必要があります。 **contentUri** プロパティのみが更新された場合、拡張機能ではコンテンツ パッケージが受け入れられません。
 
 更新されたパッケージをリリースする最も簡単な方法は、この記事で説明されているプロセスを繰り返し、更新されたバージョン番号を指定することです。 このプロセスにより、すべてのプロパティが正しく更新されることが保証されます。
 
@@ -375,8 +375,8 @@ Configuration AuditFilePathExists
 
 `Protect-GuestConfigurationPackage` コマンドレットのパラメーター:
 
-- **パス** :ゲスト構成パッケージの完全なパス。
-- **PublicGpgKeyPath** : パブリック GPG キーのパス。 このパラメーターは、Linux 用のコンテンツに署名する場合にのみサポートされます。
+- **パス**:ゲスト構成パッケージの完全なパス。
+- **PublicGpgKeyPath**: パブリック GPG キーのパス。 このパラメーターは、Linux 用のコンテンツに署名する場合にのみサポートされます。
 
 Linux マシンで使用する GPG キーの作成については、GitHub の[新しい GPG キーの生成](https://help.github.com/en/articles/generating-a-new-gpg-key)に関する記事に優れたリファレンスが提供されています。
 
@@ -384,12 +384,6 @@ GuestConfiguration エージェントにより、Linux マシンの場合はパ�
 Key Vault のアクセス ポリシーでは、デプロイ中にコンピューティング リソース プロバイダーが証明書にアクセスできるようにする必要があります。 詳しい手順については、[Azure Resource Manager の仮想マシンの Key Vault を設定する](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault)に関する記事をご覧ください。
 
 コンテンツを発行した後、コード署名が必要なすべての仮想マシンに、名前が `GuestConfigPolicyCertificateValidation` で値が `enabled` のタグを追加します。 Azure Policy を使用して大規模にタグを配信する方法については、[タグのサンプル](../samples/built-in-policies.md#tags)に関する記事を参照してください。 このタグを配置すると、`New-GuestConfigurationPolicy` コマンドレットを使って生成されるポリシー定義では、ゲスト構成拡張による要件が有効になります。
-
-## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>ゲスト構成ポリシー割り当てのトラブルシューティング (プレビュー)
-
-Azure Policy ゲスト構成割り当てのトラブルシューティングに役立つツールをプレビューで利用できます。 このツールはプレビュー段階であり、[Guest Configuration Troubleshooter](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/) というモジュール名で PowerShell ギャラリーに公開されています。
-
-このツールのコマンドレットの詳細については、PowerShell の Get-Help コマンドを使用して、組み込みのガイダンスを参照してください。 ツールは頻繁に更新されるため、この方法が最新の情報を取得するための最適な方法です。
 
 ## <a name="next-steps"></a>次のステップ
 

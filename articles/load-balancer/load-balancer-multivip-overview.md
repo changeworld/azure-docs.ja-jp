@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 2e27b168087966701fb53cc8df19d264861257d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c2072d13cab9839a276c0437747d7075918e78a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448104"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696882"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer の複数のフロントエンド
 
 Azure Load Balancer は、複数のポート、複数の IP アドレス、またはその両方のサービスの負荷を分散できます。 パブリックおよび内部ロード バランサーの定義を使用して、一連の VM のフローの負荷を分散できます。
 
-この記事では、この機能の基礎と重要な概念、制約について説明します。 1 つの IP アドレスにのみサービスを公開する場合は、[パブリック](load-balancer-get-started-internet-portal.md)または[内部](load-balancer-get-started-ilb-arm-portal.md)ロード バランサーの構成に関する簡略化された手順が用意されています。 複数フロントエンドの追加は、1 つのフロントエンド構成に対する増分です。 この記事の概念を使用することで、簡略化された構成をいつでも展開できます。
+この記事では、この機能の基礎と重要な概念、制約について説明します。 1 つの IP アドレスにのみサービスを公開する場合は、[パブリック](./quickstart-load-balancer-standard-public-portal.md)または[内部](./quickstart-load-balancer-standard-internal-portal.md)ロード バランサーの構成に関する簡略化された手順が用意されています。 複数フロントエンドの追加は、1 つのフロントエンド構成に対する増分です。 この記事の概念を使用することで、簡略化された構成をいつでも展開できます。
 
 Azure Load Balancer を定義するときに、フロントエンドおよびバックエンド プールの構成は規則に接続されています。 規則によって参照される正常性プローブは、新しいフローをバックエンド プールのノードに送信する方法を決定します。 フロントエンド (VIP ともいう) は、IP アドレス (パブリックまたは内部)、トランスポート プロトコル (UDP または TCP)、および負荷分散規則のポート番号で構成される 3 タプルで定義されます。 バックエンド プールは、Load Balancer バックエンド プールを参照する、Virtual Machine IP 構成 (NIC リソースの一部) のコレクションです。
 

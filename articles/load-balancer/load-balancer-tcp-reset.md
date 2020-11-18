@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2020
 ms.author: allensu
-ms.openlocfilehash: 060048bf786f424d5df6eb8fb4813877acb0fea0
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 0d02b46345af13770f77a7dac452127a665e01fd
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91823214"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696746"
 ---
 # <a name="load-balancer-tcp-reset-and-idle-timeout"></a>Load Balancer の TCP リセットおよびアイドルのタイムアウト
 
-[Standard Load Balancer](load-balancer-standard-overview.md) を使用して、特定の規則のアイドル時の TCP リセットを有効にすることにより、シナリオのより予測可能なアプリケーション動作を作成します。 ロード バランサーの既定の動作では、フローのアイドル タイムアウトに達したときに、警告なしでフローを削除します。  この機能を有効にすると、ロード バランサーがアイドル タイムアウト時に双方向 TCP リセット (TCP RST パケット) を送信します。  これは、接続がタイムアウトしたため、使用できなくなったことをアプリケーション エンドポイントに通知します。  エンドポイントは、必要に応じて直ちに新しい接続を確立できます。
+[Standard Load Balancer](./load-balancer-overview.md) を使用して、特定の規則のアイドル時の TCP リセットを有効にすることにより、シナリオのより予測可能なアプリケーション動作を作成します。 ロード バランサーの既定の動作では、フローのアイドル タイムアウトに達したときに、警告なしでフローを削除します。  この機能を有効にすると、ロード バランサーがアイドル タイムアウト時に双方向 TCP リセット (TCP RST パケット) を送信します。  これは、接続がタイムアウトしたため、使用できなくなったことをアプリケーション エンドポイントに通知します。  エンドポイントは、必要に応じて直ちに新しい接続を確立できます。
 
 ![ロード バランサー TCP リセット](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
  
 ## <a name="tcp-reset"></a>TCP リセット
 
-この既定の動作は変更でき、受信 NAT 規則、負荷分散規則、[送信規則](https://aka.ms/lboutboundrules)に基づいて、アイドル タイムアウト時の TCP リセットの送信を有効にできます。  規則ごとに有効にすると、ロード バランサーは双方向 TCP リセット (TCP RST パケット) を、クライアントとサーバーの両方のエンドポイントに対して、一致するすべてのフローのアイドル タイムアウト時に送信します。
+この既定の動作は変更でき、受信 NAT 規則、負荷分散規則、[送信規則](./load-balancer-outbound-connections.md#outboundrules)に基づいて、アイドル タイムアウト時の TCP リセットの送信を有効にできます。  規則ごとに有効にすると、ロード バランサーは双方向 TCP リセット (TCP RST パケット) を、クライアントとサーバーの両方のエンドポイントに対して、一致するすべてのフローのアイドル タイムアウト時に送信します。
 
 TCP RST パケットを受信するエンドポイントでは、対応するソケットをすぐに閉じます。 これは、接続のリリースが行われ、今後同じ TCP 接続での通信は失敗するという即時通知をエンドポイントに提供します。  必要に応じてソケットが閉じられ接続が再確立されるときに、最終的にTCP 接続のタイムアウトまで待つことなく、アプリケーションは接続を削除できます。
 
@@ -48,7 +48,7 @@ Azure Load Balancer のアイドルには、次のタイムアウト範囲があ
 
 接続が閉じられると、クライアント アプリケーションは、次のエラー メッセージを受信する場合があります。"基になる接続が閉じられました: 維持される必要があった接続が、サーバーによって切断されました。"
 
-一般的な方法として、TCP keep-alive を使用します。 この方法を使用すると、接続が長時間アクティブ状態に維持されます。 詳細については、こちらの [.NET の例](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx)をご覧ください。 keep-alive を有効にすると、接続のアイドル時間にパケットが送信されます。 keep-alive パケットにより、アイドル タイムアウト値に達することがなくなり、接続が長時間維持されます。
+一般的な方法として、TCP keep-alive を使用します。 この方法を使用すると、接続が長時間アクティブ状態に維持されます。 詳細については、こちらの [.NET の例](/dotnet/api/system.net.servicepoint.settcpkeepalive)をご覧ください。 keep-alive を有効にすると、接続のアイドル時間にパケットが送信されます。 keep-alive パケットにより、アイドル タイムアウト値に達することがなくなり、接続が長時間維持されます。
 
 設定は、着信接続に対してのみ有効です。 接続の切断を避けるためには、アイドル タイムアウト設定よりも小さい間隔で、TCP keep-alive を構成するか、アイドル タイムアウト値を大きくします。 これらのシナリオをサポートするために、構成可能なアイドル タイムアウトのサポートが追加されました。
 
@@ -63,6 +63,6 @@ TCP keep-alive は、バッテリーの寿命に制約がないシナリオに�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Standard Load Balancer](load-balancer-standard-overview.md) を参照します。
-- [送信の規則](load-balancer-outbound-rules-overview.md)を参照します。
+- [Standard Load Balancer](./load-balancer-overview.md) を参照します。
+- [送信の規則](./load-balancer-outbound-connections.md#outboundrules)を参照します。
 - [アイドル タイムアウトでの TCP RST の構成](load-balancer-tcp-idle-timeout.md)

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
-ms.openlocfilehash: 1af3ce7125d30ed0cb9b8ca6b3cb9322dc14c520
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcfce06bb158888b56483a73ededd354c229a99b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855244"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696321"
 ---
 # <a name="troubleshoot-resource-health-frontend-and-backend-availability-issues"></a>リソース正常性、フロントエンド、およびバックエンドの可用性に関する問題のトラブルシューティング 
 
@@ -52,7 +52,7 @@ ms.locfileid: "88855244"
   * この NSG の問題が見つかった場合は、既存の許可規則を移動するか、優先度の高い新しい規則を作成して AzureLoadBalancer トラフィックを許可します
 * OS を確認します。 VM がプローブ ポートでリッスンしていることを確認し、OS のファイアウォール規則を確認して、IP アドレス 168.63.129.16 から送信されるプローブ トラフィックをブロックしていないことを確認します
   * Windows コマンド プロンプトで netstat -a を実行するか、Linux ターミナルで netstat -l を実行することで、リスニング ポートを確認できます
-* ファイアウォール NVA VM をロード バランサーのバックエンド プールに配置しないでください。[ユーザー定義ルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined)を使用して、ファイアウォール経由でバックエンド インスタンスにトラフィックをルーティングします
+* ファイアウォール NVA VM をロード バランサーのバックエンド プールに配置しないでください。[ユーザー定義ルート](../virtual-network/virtual-networks-udr-overview.md#user-defined)を使用して、ファイアウォール経由でバックエンド インスタンスにトラフィックをルーティングします
 * 適切なプロトコルを使用していることを確認します。HTTP を使用して、HTTP 以外のアプリケーションをリッスンしているポートをプローブする場合、プローブは失敗します
 
 このチェックリストを使用しても正常性プローブの障害がまだ検出される場合は、インスタンスのプローブ サービスに影響を与える珍しいプラットフォームの問題が発生している可能性があります。 この場合では Azure のサポートを受けられ、すべてのプラットフォームの問題を迅速に解決するための自動アラートが Microsoft のチームに送信されます。
@@ -61,5 +61,3 @@ ms.locfileid: "88855244"
 
 * [Azure Load Balancer の正常性プローブの詳細について学習する](load-balancer-custom-probe-overview.md)
 * [Azure Load Balancer のメトリックの詳細について学習する](load-balancer-standard-diagnostics.md)
-
-

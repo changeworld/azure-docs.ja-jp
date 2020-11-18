@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2020
 ms.author: allensu
-ms.openlocfilehash: b44f626546b313299701687157b37b7df021bd61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee264a22de5ce094e8a4c1335ace77cbbba49270
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88038146"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694995"
 ---
 # <a name="outbound-only-load-balancer-configuration"></a>送信専用のロード バランサーの構成
 
@@ -276,7 +276,7 @@ Azure portal を使用して、次を作成します。
     | ------- | ----- |
     | 名前 | 「**myOutboundRule**」と入力します。 |
     | フロントエンド IP アドレス | **[LoadBalancerFrontEnd]** を選択します。|
-    | アイドル タイムアウト (分) | スライダーを **15 分**に移動します。|
+    | アイドル タイムアウト (分) | スライダーを **15 分** に移動します。|
     | TCP リセット | **[Enabled]** を選択します。|
     | バックエンド プール | **[myPublicBackendPool]** を選択します。| |
     | [ポートの割り当て] -> [ポートの割り当て] | **[送信ポートの既定の数を使用する]** を選択します |
@@ -316,4 +316,4 @@ Azure portal を使用して、次を作成します。
 - [Azure Load Balancer](load-balancer-overview.md) について確認します。
 - [Azure でのアウトバウンド接続](load-balancer-outbound-connections.md)について確認します。
 - ロード バランサーの [FAQ](load-balancer-faqs.md)。
-- [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) について確認します
+- [Azure Bastion](../bastion/bastion-overview.md) について確認します

@@ -10,12 +10,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.author: anavin
-ms.openlocfilehash: 527f71b1980b5a62d3db94fe89a1bce98142e31a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae3899a61e942695fed1e3da5fc543b298a42e24
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84221009"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695556"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>Azure Load Balancer での一般的な Azure デプロイ エラーのトラブルシューティング
 
@@ -35,11 +35,11 @@ ms.locfileid: "84221009"
 |CannotUseInactiveHealthProbe| 仮想マシン スケール セットの正常性に関して構成されたルールで使用されていないプローブは、使用できません。 設定されているプローブがアクティブに使用されていることを確認します。 |
 |VMScaleSetCannotUseMultipleLoadBalancersOfSameType| 同じ種類 (内部、パブリック) のロード バランサーを複数使用することはできません。 最大で 1 つの内部ロード バランサーと 1 つのパブリック ロード バランサーを使用できます。 |
 |VMScaleSetCannotReferenceLoadbalancerWhenLargeScaleOrCrossAZ | Basic Load Balancer は、複数配置グループの仮想マシン スケール セットまたは複数の可用性ゾーンにまたがる仮想マシン スケール セットではサポートされていません。 代わりに Standard Load Balancer を使用します。 |
-|MarketplacePurchaseEligibilityFailed | サブスクリプションが EA サブスクリプションであるため、購入を有効にするには、適切な管理者アカウントに切り替えます。 詳細については、[こちら](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase)を参照してください。 |
+|MarketplacePurchaseEligibilityFailed | サブスクリプションが EA サブスクリプションであるため、購入を有効にするには、適切な管理者アカウントに切り替えます。 詳細については、[こちら](../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase)を参照してください。 |
 |ResourceDeploymentFailure| ロード バランサーがエラー状態になっている場合は、次の手順に従ってエラー状態から復帰します。<ol><li>https://resources.azure.com に移動し、Azure portal の資格情報でサインインします。</li><li>**[Read/Write]\(読み取り/書き込み\)** を選択します。</li><li>左側で、 **[Subscriptions]\(サブスクリプション\)** を展開し、更新する Load Balancer を含むサブスクリプションを展開します。</li><li>**[ResourceGroups]** を展開し、更新する Load Balancer を含むリソース グループを展開します。</li><li>**[Microsoft. Network]**  >  **[LoadBalancers]** を選択し、更新する Load Balancer である **[LoadBalancer_1]** を選択します。</li><li>**[LoadBalancer_1]** の表示ページで、 **[GET]\(取得\)**  >  **[Edit]\(編集\)** を選択 します。</li><li>**ProvisioningState** の値を **Failed** から **Succeeded** に更新します。</li><li>**[PUT]** を選択します。</li></ol>|
 |  |  |
 
 ## <a name="next-steps"></a>次のステップ
 
 * Azure Load Balancer の[SKU 比較表](./skus.md)を確認する
-* [Azure Load Balancer の制限事項](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)について詳しく学習する
+* [Azure Load Balancer の制限事項](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)について詳しく学習する

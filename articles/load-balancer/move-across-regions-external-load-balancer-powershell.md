@@ -6,18 +6,18 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: be1971c9184d0b2b406b669ae9d1ea61598b201f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e43d8f1050f6b2b458c0926c674c05f7f18edc63
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84809428"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696661"
 ---
 # <a name="move-azure-external-load-balancer-to-another-region-using-azure-powershell"></a>Azure PowerShell を使用して Azure 外部ロード バランサーを別のリージョンに移動する
 
 既存の外部ロード バランサーをリージョン間で移動する必要があるさまざまなシナリオがあります。 たとえば、テスト用に同じ構成で外部ロード バランサーを作成する必要がある場合があります。 ディザスター リカバリー計画の一部として、外部ロード バランサーを別のリージョンに移動する必要がある場合もあります。
 
-Azure 外部ロード バランサーをリージョン間で移動することはできません。 しかし、Azure Resource Manager テンプレートを使用して、外部ロード バランサーの既存の構成とパブリック IP をエクスポートすることはできます。  その後、ロード バランサーとパブリック IP をテンプレートにエクスポートして別のリージョンにリソースをステージし、宛先リージョンに合わせてパラメーターを変更してから、新しいリージョンにテンプレートをデプロイできます。  Resource Manager とテンプレートの詳細については、「[リソース グループをテンプレートにエクスポートする](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)」を参照してください
+Azure 外部ロード バランサーをリージョン間で移動することはできません。 しかし、Azure Resource Manager テンプレートを使用して、外部ロード バランサーの既存の構成とパブリック IP をエクスポートすることはできます。  その後、ロード バランサーとパブリック IP をテンプレートにエクスポートして別のリージョンにリソースをステージし、宛先リージョンに合わせてパラメーターを変更してから、新しいリージョンにテンプレートをデプロイできます。  Resource Manager とテンプレートの詳細については、「[リソース グループをテンプレートにエクスポートする](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)」を参照してください
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -32,7 +32,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
 
 - Azure サブスクリプションで、使用するターゲット リージョンに外部ロード バランサーを作成できることを確認します。 サポートに連絡して、必要なクォータを有効にしてください。
 
-- 自分のサブスクリプションに、このプロセスでロード バランサーの追加をサポートするのに十分なリソースがあることを確認してください。  「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)」をご覧ください。
+- 自分のサブスクリプションに、このプロセスでロード バランサーの追加をサポートするのに十分なリソースがあることを確認してください。  「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)」をご覧ください。
 
 
 ## <a name="prepare-and-move"></a>準備と移動
@@ -43,18 +43,18 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
 
 ### <a name="export-the-public-ip-template-and-deploy-from-azure-powershell"></a>パブリック IP テンプレートをエクスポートして Azure PowerShell からデプロイする
 
-1. [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。
+1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
-2. [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0) を使用して、ターゲット リージョンに移動するパブリック IP のリソース ID を取得し、変数に配置します。
+2. [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0) を使用して、ターゲット リージョンに移動するパブリック IP のリソース ID を取得し、変数に配置します。
 
     ```azurepowershell-interactive
     $sourcePubIPID = (Get-AzPublicIPaddress -Name <source-public-ip-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0) コマンドを実行するディレクトリの .json ファイルに、パブリック IP をエクスポートします。
+3. [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0) コマンドを実行するディレクトリの .json ファイルに、パブリック IP をエクスポートします。
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
@@ -107,7 +107,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
              ]             
     ```
   
-7. リージョンの場所コードを取得するには、次のコマンドを実行して、Azure PowerShell コマンドレットの [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) を使用できます。
+7. リージョンの場所コードを取得するには、次のコマンドを実行して、Azure PowerShell コマンドレットの [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) を使用できます。
 
     ```azurepowershell-interactive
 
@@ -131,9 +131,9 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
                     },
          ```
 
-         Basic と Standard SKU のパブリック IP の違いについて詳しくは、「[パブリック IP アドレスの作成、変更、削除](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)」を参照してください。
+         Basic と Standard SKU のパブリック IP の違いについて詳しくは、「[パブリック IP アドレスの作成、変更、削除](../virtual-network/virtual-network-public-ip-address.md)」を参照してください。
 
-    * **パブリック IP の割り当て方法**と**アイドル タイムアウト** - **publicIPAllocationMethod** プロパティを **Dynamic** から**Static** または **Static** から **Dynamic** に変更することで、テンプレートのこれらのオプションの両方を変更できます。 アイドル タイムアウトは、**idleTimeoutInMinutes** プロパティを目的の量に変えることで変更できます。  既定値は **4** です。
+    * **パブリック IP の割り当て方法** と **アイドル タイムアウト** - **publicIPAllocationMethod** プロパティを **Dynamic** から **Static** または **Static** から **Dynamic** に変更することで、テンプレートのこれらのオプションの両方を変更できます。 アイドル タイムアウトは、**idleTimeoutInMinutes** プロパティを目的の量に変えることで変更できます。  既定値は **4** です。
 
          ```json
          "resources": [
@@ -158,17 +158,17 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
                 }            
          ```
 
-        割り当て方法とアイドル タイムアウト値の詳細については、「[パブリック IP アドレスの作成、変更、削除](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)」を参照してください。
+        割り当て方法とアイドル タイムアウト値の詳細については、「[パブリック IP アドレスの作成、変更、削除](../virtual-network/virtual-network-public-ip-address.md)」を参照してください。
 
 
 9. **\<resource-group-name>.json** ファイルを保存します。
 
-10. [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) を使用して、デプロイするターゲット パブリック IP のターゲット リージョンにリソース グループを作成します。
+10. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) を使用して、デプロイするターゲット パブリック IP のターゲット リージョンにリソース グループを作成します。
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. 編集した **\<resource-group-name>.json** ファイルを、[New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) を使用して、前の手順で作成したリソース グループにデプロイします。
+11. 編集した **\<resource-group-name>.json** ファイルを、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) を使用して、前の手順で作成したリソース グループにデプロイします。
 
     ```azurepowershell-interactive
 
@@ -176,7 +176,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
     
     ```
 
-12. ターゲット リージョンにリソースが作成されたことを確認するには、[Get-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) と [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0) を使用します。
+12. ターゲット リージョンにリソースが作成されたことを確認するには、[Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) と [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0) を使用します。
     
     ```azurepowershell-interactive
 
@@ -192,19 +192,19 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
 
 ### <a name="export-the-external-load-balancer-template-and-deploy-from-azure-powershell"></a>外部ロード バランサー テンプレートをエクスポートして Azure PowerShell からデプロイする
 
-1. [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。
+1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
 
-2. [Get-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0) を使用して、ターゲット リージョンに移動する外部ロード バランサーのリソース ID を取得し、変数に配置します。
+2. [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0) を使用して、ターゲット リージョンに移動する外部ロード バランサーのリソース ID を取得し、変数に配置します。
 
     ```azurepowershell-interactive
     $sourceExtLBID = (Get-AzLoadBalancer -Name <source-external-lb-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0) コマンドを実行するディレクトリの .json ファイルに、ソース外部ロード バランサー構成をエクスポートします。
+3. [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0) コマンドを実行するディレクトリの .json ファイルに、ソース外部ロード バランサー構成をエクスポートします。
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceExtLBID -IncludeParameterDefaultValue
@@ -232,7 +232,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
 
     ```
 
-6.  上で移動したターゲット パブリック IP の値を編集するには、まず、リソース ID を取得し、それをコピーして **\<resource-group-name>.json** ファイルに貼り付ける必要があります。  ID を取得するには、[Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0) を使用します。
+6.  上で移動したターゲット パブリック IP の値を編集するには、まず、リソース ID を取得し、それをコピーして **\<resource-group-name>.json** ファイルに貼り付ける必要があります。  ID を取得するには、[Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0) を使用します。
 
     ```azurepowershell-interactive
     $targetPubIPID = (Get-AzPublicIPaddress -Name <target-public-ip-name> -ResourceGroupName <target-resource-group-name>).Id
@@ -244,7 +244,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
     /subscriptions/7668d659-17fc-4ffd-85ba-9de61fe977e8/resourceGroups/myResourceGroupLB-Move/providers/Microsoft.Network/publicIPAddresses/myPubIP-in-move
     ```
 
-7.  **\<resource-group-name>.json** ファイルで、パブリック IP の外部 ID に対する 2 つ目のパラメーターの **defaultValue** の代わりに、変数の**リソース ID** を貼り付け、パスが引用符で囲まれていることを確認します。
+7.  **\<resource-group-name>.json** ファイルで、パブリック IP の外部 ID に対する 2 つ目のパラメーターの **defaultValue** の代わりに、変数の **リソース ID** を貼り付け、パスが引用符で囲まれていることを確認します。
 
     ```json
             "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -261,7 +261,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
 
     ```
 
-8.  ロード バランサー用にアウトバウンド NAT 規則とアウトバウンド規則を構成した場合、このファイルには、アウトバウンド パブリック IP 用の外部 ID の 3 つ目のエントリが示されます。  **ターゲット リージョン**で上記の手順を繰り返してアウトバウンド パブリック IP 用の ID を取得し、そのエントリを **\<resource-group-name>.json** ファイルに貼り付けます。
+8.  ロード バランサー用にアウトバウンド NAT 規則とアウトバウンド規則を構成した場合、このファイルには、アウトバウンド パブリック IP 用の外部 ID の 3 つ目のエントリが示されます。  **ターゲット リージョン** で上記の手順を繰り返してアウトバウンド パブリック IP 用の ID を取得し、そのエントリを **\<resource-group-name>.json** ファイルに貼り付けます。
 
     ```json
             "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -297,7 +297,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
                 },
     ```
 
-11. リージョンの場所コードを取得するには、次のコマンドを実行して、Azure PowerShell コマンドレットの [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) を使用できます。
+11. リージョンの場所コードを取得するには、次のコマンドを実行して、Azure PowerShell コマンドレットの [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) を使用できます。
 
     ```azurepowershell-interactive
 
@@ -320,7 +320,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
                 "tier": "Regional"
             },
         ```
-      Basic SKU と Standard SKU のロード バランサーの違いの詳細については、「[Azure Standard Load Balancer の概要](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)」を参照してください。
+      Basic SKU と Standard SKU のロード バランサーの違いの詳細については、「[Azure Standard Load Balancer の概要](./load-balancer-overview.md)」を参照してください。
 
     * **負荷分散規則** - 構成の負荷分散規則を追加または削除できます。そのためには、 **\<resource-group-name>.json** ファイルの **loadBalancingRules** セクションでエントリを追加または削除します。
 
@@ -352,7 +352,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
                     }
                 ]
         ```
-       負荷分散規則の詳細については、「[Azure Load Balancer とは](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)」を参照してください。
+       負荷分散規則の詳細については、「[Azure Load Balancer とは](./load-balancer-overview.md)」を参照してください。
 
     * **プローブ** - 構成のロード バランサーのプローブを追加または削除できます。そのためには、 **\<resource-group-name>.json** ファイルの **probes** セクションでエントリを追加または削除します。
 
@@ -372,7 +372,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
                     }
                 ],
         ```
-       Azure Load Balancer の正常性プローブの詳細については、「[Load Balancer の正常性プローブ](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)」を参照してください。
+       Azure Load Balancer の正常性プローブの詳細については、「[Load Balancer の正常性プローブ](./load-balancer-custom-probe-overview.md)」を参照してください。
 
     * **インバウンド NAT 規則** - ロード バランサーのインバウンド NAT 規則を追加または削除できます。そのためには、 **\<resource-group-name>.json** ファイルの **inboundNatRules** セクションでエントリを追加または削除します。
 
@@ -420,7 +420,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
             }
         }
         ```
-        インバウンド NAT 規則の詳細については、「[Azure Load Balancer とは](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)」を参照してください。
+        インバウンド NAT 規則の詳細については、「[Azure Load Balancer とは](./load-balancer-overview.md)」を参照してください。
 
     * **アウトバウンド規則** - 構成のアウトバウンド規則を追加または削除できます。そのためには、 **\<resource-group-name>.json** ファイルの **outboundRules** プロパティを編集します。
 
@@ -448,16 +448,16 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
                 ]
         ```
 
-         アウトバウンド規則の詳細については、「[Load Balancer のアウトバウンド規則](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)」を参照してください
+         アウトバウンド規則の詳細については、「[Load Balancer のアウトバウンド規則](./load-balancer-outbound-connections.md#outboundrules)」を参照してください
 
 13. **\<resource-group-name>.json** ファイルを保存します。
     
-10. [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) を使用して、デプロイするターゲット外部ロード バランサーのターゲット リージョンにリソース グループを作成します。 このプロセスの一環として、上記の既存のリソース グループを再利用することもできます。
+10. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) を使用して、デプロイするターゲット外部ロード バランサーのターゲット リージョンにリソース グループを作成します。 このプロセスの一環として、上記の既存のリソース グループを再利用することもできます。
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. 編集した **\<resource-group-name>.json** ファイルを、[New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) を使用して、前の手順で作成したリソース グループにデプロイします。
+11. 編集した **\<resource-group-name>.json** ファイルを、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) を使用して、前の手順で作成したリソース グループにデプロイします。
 
     ```azurepowershell-interactive
 
@@ -465,7 +465,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
     
     ```
 
-12. ターゲット リージョンにリソースが作成されたことを確認するには、[Get-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) と [Get-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0) を使用します。
+12. ターゲット リージョンにリソースが作成されたことを確認するには、[Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) と [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0) を使用します。
     
     ```azurepowershell-interactive
 
@@ -481,7 +481,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
 
 ## <a name="discard"></a>破棄 
 
-デプロイ後に、ターゲット内のパブリック IP とロード バランサーを最初からやり直すか破棄する場合は、ターゲットで作成されたリソース グループを削除します。これにより、移動したパブリック IP とロード バランサーが削除されます。  リソース グループを削除するには、[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) を使用します。
+デプロイ後に、ターゲット内のパブリック IP とロード バランサーを最初からやり直すか破棄する場合は、ターゲットで作成されたリソース グループを削除します。これにより、移動したパブリック IP とロード バランサーが削除されます。  リソース グループを削除するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) を使用します。
 
 ```azurepowershell-interactive
 
@@ -491,7 +491,7 @@ Remove-AzResourceGroup -Name <resource-group-name>
 
 ## <a name="clean-up"></a>クリーンアップ
 
-変更をコミットし、NSG の移動を完了するには、[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) または [Remove-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/remove-azpublicipaddress?view=azps-2.6.0) および [Remove-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/remove-azloadbalancer?view=azps-2.6.0) を使用して、ソース NSG またはリソース グループを削除します
+変更をコミットし、NSG の移動を完了するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) または [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress?view=azps-2.6.0) および [Remove-AzLoadBalancer](/powershell/module/az.network/remove-azloadbalancer?view=azps-2.6.0) を使用して、ソース NSG またはリソース グループを削除します
 
 ```azurepowershell-interactive
 
@@ -513,5 +513,5 @@ Remove-AzPublicIpAddress -Name <public-ip> -ResourceGroupName <resource-group-na
 このチュートリアルでは、Azure ネットワーク セキュリティ グループをあるリージョンから別のリージョンに移動し、移動元リソースをクリーンアップしました。  リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、以下を参照してください。
 
 
-- [リソースを新しいリソース グループまたはサブスクリプションに移動する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Azure VM を別のリージョンに移動する](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [リソースを新しいリソース グループまたはサブスクリプションに移動する](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Azure VM を別のリージョンに移動する](../site-recovery/azure-to-azure-tutorial-migrate.md)
