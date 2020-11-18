@@ -8,12 +8,12 @@ ms.reviewer: amberb
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: banders
-ms.openlocfilehash: 02919cf2e35fdd4d981f3fde53085c2174f11bd1
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: c13670df26e5d0f7774b5a2aac81f656de94c960
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132569"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844712"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Azure Enterprise サブスクリプションを作成する権限を付与する (プレビュー)
 
@@ -23,7 +23,7 @@ ms.locfileid: "92132569"
 
 ## <a name="grant-access"></a>アクセス権の付与
 
-[登録アカウントでサブスクリプションを作成する](programmatically-create-subscription.md)には、ユーザーがそのアカウントに対して Azure RBAC [所有者ロール](../../role-based-access-control/built-in-roles.md#owner)を持っている必要があります。 次の手順に従うことによって、ユーザーまたはユーザー グループに、登録アカウントに対する Azure RBAC 所有者ロールを付与できます。
+[登録アカウントでサブスクリプションを作成する](programmatically-create-subscription-enterprise-agreement.md)には、ユーザーがそのアカウントに対して Azure RBAC [所有者ロール](../../role-based-access-control/built-in-roles.md#owner)を持っている必要があります。 次の手順に従うことによって、ユーザーまたはユーザー グループに、登録アカウントに対する Azure RBAC 所有者ロールを付与できます。
 
 1. アクセス権を付与する登録アカウントのオブジェクト ID を取得します
 
@@ -174,7 +174,7 @@ ms.locfileid: "92132569"
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
     ```
 
-    登録アカウントの Azure RBAC 所有者になったユーザーは、そのアカウントで[プログラミングによってサブスクリプションを作成](programmatically-create-subscription.md)できるようになります。 委任されたユーザーによって作成されたサブスクリプションには、元のアカウント所有者がサービス管理者として設定されたままになりますが、既定で委任されたユーザーも Azure RBAC 所有者として設定されています。
+    登録アカウントの Azure RBAC 所有者になったユーザーは、そのアカウントで[プログラミングによってサブスクリプションを作成](programmatically-create-subscription-enterprise-agreement.md)できるようになります。 委任されたユーザーによって作成されたサブスクリプションには、元のアカウント所有者がサービス管理者として設定されたままになりますが、既定で委任されたユーザーも Azure RBAC 所有者として設定されています。
 
     ---
 
@@ -193,7 +193,7 @@ ms.locfileid: "92132569"
 
 ## <a name="next-steps"></a>次のステップ
 
-* これで、ユーザーまたはサービス プリンシパルにサブスクリプションを作成する権限が与えられたので、その ID を使って [Azure Enterprise サブスクリプションをプログラムで作成](programmatically-create-subscription.md)できます。
+* これで、ユーザーまたはサービス プリンシパルにサブスクリプションを作成する権限が与えられたので、その ID を使って [Azure Enterprise サブスクリプションをプログラムで作成](programmatically-create-subscription-enterprise-agreement.md)できます。
 * .NET を使用してサブスクリプションを作成する例については、[GitHub のサンプル コード](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core)を参照してください。
 * Azure Resource Manager とその API については、「[Azure Resource Manager の概要](../../azure-resource-manager/management/overview.md)」を参照してください。
 * 管理グループを使用して大量のサブスクリプションを管理する方法については、「[Azure 管理グループのリソースを整理する](../../governance/management-groups/overview.md)」を参照してください。
