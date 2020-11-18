@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: cherylmc
-ms.openlocfilehash: 94ad0a05dafe2c405b1b9cb62242675aa54c4432
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1aba87b2139fb8a7d395fb3180d2074e47310fa9
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424326"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661156"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN ゲートウェイの構成設定について
 
@@ -79,7 +79,7 @@ VPN ゲートウェイがあり、別のゲートウェイ SKU を使用する�
 
 1. Basic SKU を除き、同じ世代 (Generation1 または Generation2) 内で VPN ゲートウェイ SKU を別の VPN ゲートウェイ SKU にサイズ変更することができます。 たとえば、Generation1 の VpnGw1 は Generation1 の VpnGw2 にサイズ変更できますが、Generation2 の VpnGw2 にはサイズ変更できません。
 2. 古いゲートウェイ SKU では、Basic、Standard、HighPerformance SKU の間でサイズ変更できます。
-3. Basic/Standard/HighPerformance SKU から VpnGw SKU にサイズ変更することは **できません** 。 代わりに新しい SKU に[変更](#change)する必要があります。
+3. Basic/Standard/HighPerformance SKU から VpnGw SKU にサイズ変更することは **できません**。 代わりに新しい SKU に[変更](#change)する必要があります。
 
 #### <a name="to-resize-a-gateway"></a><a name="resizegwsku"></a>ゲートウェイのサイズを変更する
 
@@ -176,7 +176,7 @@ VPN Gateway 構成に対して REST API、PowerShell コマンドレット、ま
 | **クラシック** | **Resource Manager** |
 | --- | --- |
 | [PowerShell](/powershell/module/az.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
-| [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |
+| [REST API](/previous-versions/azure/reference/jj154113(v=azure.100)) |[REST API](/rest/api/network/virtualnetworkgateways) |
 | サポートされていません | [Azure CLI](/cli/azure/network/vnet-gateway)|
 
 ## <a name="next-steps"></a>次のステップ

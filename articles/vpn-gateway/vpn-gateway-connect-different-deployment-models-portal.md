@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 2bcd919629eb03581c35a2090d53e451141d94a4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: f307ff9e7d609628bc22374fc5874dcbf993e4c2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487111"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661190"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>ポータルを使って異なるデプロイ モデルの仮想ネットワークを接続する
 
@@ -86,7 +86,7 @@ Connection name = RMtoClassic
 
 ### <a name="1-create-a-classic-vnet"></a>1.<a name="classicvnet"></a>クラシック VNet の作成
 
-クラシック VNet を所有しておらず、これらの手順を演習として実行している場合、[この記事](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)と上記の設定[例](#values)の値を使用して VNet を作成できます。
+クラシック VNet を所有しておらず、これらの手順を演習として実行している場合、[この記事](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal)と上記の設定[例](#values)の値を使用して VNet を作成できます。
 
 VPN Gateway と共に VNet を既に使用している場合、そのゲートウェイが動的であることを確認してください。 静的である場合は、まず VPN ゲートウェイを削除してから、「[ローカル サイトの構成](#local)」に進む必要があります。
 
@@ -114,7 +114,7 @@ VPN Gateway と共に VNet を既に使用している場合、そのゲート�
 2. **[ゲートウェイの構成 (オプション)]** をクリックして、 **[ゲートウェイの構成]** ページを開きます。
 
    ![[ゲートウェイの構成] ページを開く](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "[ゲートウェイの構成] ページを開く")
-3. **[Subnet - Configure required settings]\(サブネット - 必要な設定の構成\)** ページをクリックして、 **[サブネットの追加]** を開きます。 **[名前]** は、必須の値 **GatewaySubnet** 。
+3. **[Subnet - Configure required settings]\(サブネット - 必要な設定の構成\)** ページをクリックして、 **[サブネットの追加]** を開きます。 **[名前]** は、必須の値 **GatewaySubnet**。
 4. **[アドレス範囲]** は、ゲートウェイ サブネットの範囲を示します。 /29 アドレス範囲 (3 アドレス) でゲートウェイ サブネットを作成することもできますが、さらに多くの IP アドレスを含むゲートウエイ サブネットを作成することをお勧めします。 これにより、将来の構成でさらに多くの IP アドレスが必要になった場合にも対応できるようになります。 可能であれば、/27 または /28 を使います。 これらの手順を演習として使用している場合は、[例の値](#values)を参照してください。 この例では、10.0.0.32/28 を使用します。 **[OK]** をクリックして、ゲートウェイ サブネットを作成します。
 5. **[ゲートウェイの構成]** ページの **[サイズ]** は、ゲートウェイの SKU を示します。 VPN Gateway のゲートウェイ SKU を選びます。
 6. **[ルーティングの種類]** が **[動的]** であることを確認した後、 **[OK]** をクリックして **[新しい VPN 接続]** ページに戻ります。
@@ -194,7 +194,7 @@ Resource Manager VNet を所有しておらず、これらの手順を演習と�
 5. ローカル サイトの接続ページで、ローカル サイトの名前をクリックして、 **[ローカル サイト]** ページを開きます。
 
    ![[ローカル サイト] を開く](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "ローカル サイトを開く")
-6. **[ローカル サイト]** ページで、 **VPN Gateway の IP アドレス** を、Resource Manager ゲートウェイの IP アドレスで置き換えます。
+6. **[ローカル サイト]** ページで、**VPN Gateway の IP アドレス** を、Resource Manager ゲートウェイの IP アドレスで置き換えます。
 
    ![ゲートウェイ IP アドレス](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "ゲートウェイ IP アドレス")
 7. **[OK]** をクリックして、IP アドレスを更新します。
@@ -273,7 +273,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 
 ### <a name="3-create-the-connection"></a>3.接続の作成
 
-共有キーを設定し、クラシック VNet から Resource Manager VNet への接続を作成します。 ポータルを使用して共有キーを設定することはできません。 次の手順を実行するときは、クラシック バージョンの PowerShell コマンドレットを使用してログインします。 それには、 **Add-azureaccount** を使用します。 それ以外の場合は、"-AzureVNetGatewayKey" を設定できません。
+共有キーを設定し、クラシック VNet から Resource Manager VNet への接続を作成します。 ポータルを使用して共有キーを設定することはできません。 次の手順を実行するときは、クラシック バージョンの PowerShell コマンドレットを使用してログインします。 それには、**Add-azureaccount** を使用します。 それ以外の場合は、"-AzureVNetGatewayKey" を設定できません。
 
 - この例では、 **-VNetName** はクラシック VNet の名前で、ネットワーク構成ファイルに示されているとおりです。 
 - **-LocalNetworkSiteName** はローカル サイトに指定した名前で、ネットワーク構成ファイルに示されているとおりです。
