@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: c7f71d24ab516044a0ce48ad40f78bc659268866
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 59aa6f5560917651d8f60c667145b0953bf72ef5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91442165"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660867"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>SSTP から OpenVPN プロトコルまたは IKEv2 に移行する
 
@@ -58,9 +58,9 @@ SSTP と OpenVPN は両方とも TLS ベースのプロトコルであるため�
 
 ![ポイント対サイト](./media/ikev2-openvpn-from-sstp/sstptoopenvpn.png "OpenVPN")
 
-ゲートウェイが構成されると、既存のクライアントは、[OpenVPN クライアントを展開および構成する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn-clients)まで接続できなくなります。
+ゲートウェイが構成されると、既存のクライアントは、[OpenVPN クライアントを展開および構成する](./vpn-gateway-howto-openvpn-clients.md)まで接続できなくなります。
 
-Windows 10 を使用している場合は、[Windows 用の Azure VPN クライアント](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-client#to-download-the-azure-vpn-client)を使用することもできます。
+Windows 10 を使用している場合は、[Windows 用の Azure VPN クライアント](./openvpn-azure-ad-client.md#to-download-the-azure-vpn-client)を使用することもできます。
 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問

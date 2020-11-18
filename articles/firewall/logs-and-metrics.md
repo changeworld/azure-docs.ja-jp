@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 09/10/2020
 ms.author: victorh
-ms.openlocfilehash: a0333f9afa69b533ac28dc302987e6d057bfeeb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69890e2d846a63a70c1b7459b1df13ce5e891289
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090161"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659473"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Firewall のログとメトリック
 
@@ -158,7 +158,7 @@ Azure Firewall では、次のメトリックを利用できます。
   - 状態:値は *[Healthy]* \(正常\)、 *[Degraded]* \(低下\)、 *[Unhealthy]* \(異常\) のいずれかになります。
   - 理由:ファイアウォールの対応する状態の理由を示します。 
 
-     SNAT ポートの使用率が 95% を超える場合、使い果たされたと見なされ、正常性は 50% で、状態 = **低下**および理由 = **SNAT ポート**になります。 ファイアウォールはトラフィックの処理を継続し、既存の接続に影響はありません。 ただし、新しい接続は断続的に確立されない可能性があります。
+     SNAT ポートの使用率が 95% を超える場合、使い果たされたと見なされ、正常性は 50% で、状態 = **低下** および理由 = **SNAT ポート** になります。 ファイアウォールはトラフィックの処理を継続し、既存の接続に影響はありません。 ただし、新しい接続は断続的に確立されない可能性があります。
 
      SNAT ポートの使用率が 95% 未満の場合、ファイアウォールは正常と見なされ、正常性は 100% として表示されます。
 
@@ -173,6 +173,6 @@ Azure Firewall では、次のメトリックを利用できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure Firewall のログとメトリックを監視する方法については、[Azure Firewall のログを監視する方法に関するチュートリアル](tutorial-diagnostics.md)を参照してください。
+- Azure Firewall のログとメトリックを監視する方法については、[Azure Firewall のログを監視する方法に関するチュートリアル](./firewall-diagnostics.md)を参照してください。
 
 - Azure Monitor のメトリックの詳細については、「[Azure Monitor のメトリック](../azure-monitor/platform/data-platform-metrics.md)」を参照してください。

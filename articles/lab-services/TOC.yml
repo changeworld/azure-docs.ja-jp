@@ -6,7 +6,7 @@
       href: lab-services-overview.md
 - name: クイックスタート
   items:
-    - name: 作業開始
+    - name: はじめに
       href: get-started-manage-labs.md
 - name: チュートリアル
   items:
@@ -167,7 +167,7 @@
 - name: リファレンス
   items:
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/labservices/'
+      href: /rest/api/labservices/
     - name: Az.LabServices PowerShell モジュール (プレビュー)
       href: reference-powershell-module.md
 - name: リソース

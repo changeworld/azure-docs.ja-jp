@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 428c24236aad9a57a9d52eb0a6ff3a7aeb9fe541
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9502f3fbd50aad756e15daa4db1badda2abf9ab
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442147"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660068"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Azure CLI を使用して VNet 間の VPN ゲートウェイ接続を構成する
 
@@ -134,7 +134,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
    ```azurecli
    az network vnet create -n TestVNet1 -g TestRG1 --address-prefix 10.11.0.0/16 -l eastus --subnet-name FrontEnd --subnet-prefix 10.11.0.0/24
    ```
-3. バックエンド サブネット用に追加のアドレス空間を作成します。 この手順では、先ほど作成したアドレス空間と追加するアドレス空間の両方を指定することに注意してください。 これは、[az network vnet update](https://docs.microsoft.com/cli/azure/network/vnet) コマンドによって前の設定が上書きされるためです。 このコマンドを使用する際は、必ずすべてのアドレス プレフィックスを指定するようにしてください。
+3. バックエンド サブネット用に追加のアドレス空間を作成します。 この手順では、先ほど作成したアドレス空間と追加するアドレス空間の両方を指定することに注意してください。 これは、[az network vnet update](/cli/azure/network/vnet) コマンドによって前の設定が上書きされるためです。 このコマンドを使用する際は、必ずすべてのアドレス プレフィックスを指定するようにしてください。
 
    ```azurecli
    az network vnet update -n TestVNet1 --address-prefixes 10.11.0.0/16 10.12.0.0/16 -g TestRG1
@@ -214,10 +214,10 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
    ```
    "activeActive": false, 
    "bgpSettings": { 
-    "asn": 65515, 
-    "bgpPeeringAddress": "10.12.255.30", 
-    "peerWeight": 0 
-   }, 
+    "asn": 65515, 
+    "bgpPeeringAddress": "10.12.255.30", 
+    "peerWeight": 0 
+   }, 
    "enableBgp": false, 
    "etag": "W/\"ecb42bc5-c176-44e1-802f-b0ce2962ac04\"", 
    "gatewayDefaultSite": null, 
@@ -356,7 +356,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
    出力の "id:" をコピーします。 メールやその他の方法で、VNet ゲートウェイ (VNet5GW) の ID と名前をサブスクリプション 1 の管理者に送信します。
 
-3. **[サブスクリプション 1]** この手順では、TestVNet1 から TestVNet5 への接続を作成します。 共有キーには独自の値を使用することができますが、両方の接続の共有キーが一致する必要があります。 接続の作成完了までしばらくかかります。 サブスクリプション 1 に接続します。
+3. **[サブスクリプション 1]** この手順では、TestVNet1 から TestVNet5 への接続を作成します。 共有キーには独自の値を使用することができますが、両方の接続の共有キーが一致する必要があります。 接続の作成完了までしばらくかかります。  サブスクリプション 1 に接続します。
 
    ```azurecli
    az network vpn-connection create -n VNet1ToVNet5 -g TestRG1 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW -l eastus --shared-key "eeffgg" --vnet-gateway2 /subscriptions/e7e33b39-fe28-4822-b65c-a4db8bbff7cb/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW
@@ -378,5 +378,5 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
 ## <a name="next-steps"></a>次のステップ
 
-* 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines のドキュメント](https://docs.microsoft.com/azure/)を参照してください。
+* 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines のドキュメント](../index.yml)を参照してください。
 * BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。

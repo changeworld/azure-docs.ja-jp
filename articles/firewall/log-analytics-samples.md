@@ -7,22 +7,22 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: victorh
-ms.openlocfilehash: 2d4ed76e849385c4edecb7bd97d58087c8e5b4b3
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 86538f6d0467eb15e549179166ca957902a2d0c3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132790"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659558"
 ---
 # <a name="azure-monitor-logs-for-azure-firewall"></a>Azure Firewall の Azure Monitor ログ
 
-次の Azure Monitor ログのサンプルは、Azure Firewall のログの分析に使用できます。 サンプル ファイルは Azure Monitor のビュー デザイナーに組み込まれ、[Azure Monitor ビュー デザイナー](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) の記事には、ビュー デザインの概念に関する詳細な情報が記載されています。
+次の Azure Monitor ログのサンプルは、Azure Firewall のログの分析に使用できます。 サンプル ファイルは Azure Monitor のビュー デザイナーに組み込まれ、[Azure Monitor ビュー デザイナー](../azure-monitor/platform/view-designer.md) の記事には、ビュー デザインの概念に関する詳細な情報が記載されています。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="azure-monitor-logs-view"></a>Azure Monitor ログのビュー
 
-Azure Monitor ログの視覚化の例を構成する方法を次に示します。 視覚化の例は、[azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) リポジトリからダウンロードできます。 最も簡単な方法は、このページのハイパーリンクを右クリックし、 *[名前を付けてて保存]* を選択し、 **AzureFirewall.omsview** のような名前を指定することです。 
+Azure Monitor ログの視覚化の例を構成する方法を次に示します。 視覚化の例は、[azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) リポジトリからダウンロードできます。 最も簡単な方法は、このページのハイパーリンクを右クリックし、 *[名前を付けてて保存]* を選択し、**AzureFirewall.omsview** のような名前を指定することです。 
 
 次の手順を実行して、Log Analytics ワークスペースにビューを追加します。
 
@@ -40,7 +40,7 @@ Azure Monitor ログの視覚化の例を構成する方法を次に示します
 
 ![ネットワーク ルールのログ データ]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
 
-Azure Firewall は、カテゴリが **AzureFirewallApplicationRule** または **AzureFirewallNetworkRule** のいずれかの AzureDiagnostics の下のデータを記録します。 詳細情報が含まれているデータは、msg_s フィールドに格納されます。 [parse](https://docs.microsoft.com/azure/kusto/query/parseoperator) 演算子を使用すると、msg_s フィールドからさまざまな重要なプロパティを抽出できます。 次のクエリでは、両方のカテゴリの情報を抽出します。
+Azure Firewall は、カテゴリが **AzureFirewallApplicationRule** または **AzureFirewallNetworkRule** のいずれかの AzureDiagnostics の下のデータを記録します。 詳細情報が含まれているデータは、msg_s フィールドに格納されます。 [parse](/azure/kusto/query/parseoperator) 演算子を使用すると、msg_s フィールドからさまざまな重要なプロパティを抽出できます。 次のクエリでは、両方のカテゴリの情報を抽出します。
 
 ## <a name="application-rules-log-data-query"></a>アプリケーション ルールのログ データのクエリ
 
@@ -172,9 +172,9 @@ AzureDiagnostics
 
 :::image type="content" source="media/log-analytics-samples/log1.png" alt-text="ログ エントリのスクリーンショット。タイム スタンプ、プロトコル、ポート番号、アクション、ルールのコレクション、ルールなど、複数の値が表示されています。" border="false":::
 
-:::image type="content" source="media/log-analytics-samples/log2.png" alt-text="ログ エントリのスクリーンショット。タイム スタンプ、プロトコル、ポート番号、アクション、ルールのコレクション、ルールなど、複数の値が表示されています。" border="false":::
+:::image type="content" source="media/log-analytics-samples/log2.png" alt-text="ログ エントリのスクリーンショット。タイム スタンプ、プロトコル、ソースおよびターゲット I P アドレス、アクションなど、複数の値が表示されています。" border="false":::
 
-:::image type="content" source="media/log-analytics-samples/log3.png" alt-text="ログ エントリのスクリーンショット。タイム スタンプ、プロトコル、ポート番号、アクション、ルールのコレクション、ルールなど、複数の値が表示されています。" border="false":::
+:::image type="content" source="media/log-analytics-samples/log3.png" alt-text="ログ エントリのスクリーンショット。タイム スタンプ、プロトコル、ソースおよびターゲット I P アドレス、ポート、メッセージなど、複数の値が表示されています。" border="false":::
 ## <a name="next-steps"></a>次のステップ
 
-Azure Firewall の監視と診断については、「[チュートリアル: Azure Firewall のログとメトリックを監視する](tutorial-diagnostics.md)」を参照してください。
+Azure Firewall の監視と診断については、「[チュートリアル: Azure Firewall のログとメトリックを監視する](./firewall-diagnostics.md)」を参照してください。

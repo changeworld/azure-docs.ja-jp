@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: bce381ba4916bc58d2c7acf8d69b323dbdf972aa
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 64a4eb1b473c8944dadea4e1ee4323dfe4e9bcde
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544785"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661122"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS 認証を使用して VNet へのポイント対サイト接続を構成する:PowerShell
 
@@ -83,7 +83,7 @@ Azure サブスクリプションを持っていることを確認します。 A
 * **サブスクリプション:** サブスクリプションが複数ある場合は、適切なサブスクリプションを使用していることを確認します。
 * **リソース グループ:TestRG**
 * **場所:米国東部**
-* **DNS サーバー** : VNet の名前解決に利用する DNS サーバーの IP アドレス。 (省略可能)
+* **DNS サーバー**: VNet の名前解決に利用する DNS サーバーの IP アドレス。 (省略可能)
 * **GW 名: Vnet1GW**
 * **パブリック IP 名: VNet1GWPIP**
 * **VPN の種類:RouteBased**
@@ -119,7 +119,7 @@ Azure サブスクリプションを持っていることを確認します。 A
    ```azurepowershell-interactive
    New-AzResourceGroup -Name "TestRG" -Location "East US"
    ```
-2. 仮想ネットワークのサブネット構成を作成し、 *FrontEnd* 、 *BackEnd* 、 *GatewaySubnet* いう名前を付けます。 これらのプレフィックスは、宣言した VNet アドレス空間に含まれている必要があります。
+2. 仮想ネットワークのサブネット構成を作成し、*FrontEnd*、*BackEnd*、*GatewaySubnet* いう名前を付けます。 これらのプレフィックスは、宣言した VNet アドレス空間に含まれている必要があります。
 
    ```azurepowershell-interactive
    $fesub = New-AzVirtualNetworkSubnetConfig -Name "FrontEnd" -AddressPrefix "192.168.1.0/24"  
@@ -133,7 +133,7 @@ Azure サブスクリプションを持っていることを確認します。 A
    ```azurepowershell-interactive
    New-AzVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG" -Location "East US" -AddressPrefix "192.168.0.0/16","10.254.0.0/16" -Subnet $fesub, $besub, $gwsub -DnsServer 10.2.1.3
    ```
-4. VPN ゲートウェイには、パブリック IP アドレスが必要です。 これにはまず IP アドレスのリソースを要求したうえで、仮想ネットワーク ゲートウェイの作成時にそのリソースを参照する必要があります。 IP アドレスは、VPN ゲートウェイの作成時にリソースに対して動的に割り当てられます。 VPN Gateway では現在、パブリック IP アドレスの " *動的* " 割り当てのみサポートしています。 静的パブリック IP アドレスの割り当てを要求することはできません。 もっとも、VPN ゲートウェイに割り当てられた IP アドレスが後から変わることは基本的にありません。 パブリック IP アドレスが変わるのは、ゲートウェイが削除され、再度作成されたときのみです。 VPN ゲートウェイのサイズ変更、リセット、その他の内部メンテナンス/アップグレードでは、IP アドレスは変わりません。
+4. VPN ゲートウェイには、パブリック IP アドレスが必要です。 これにはまず IP アドレスのリソースを要求したうえで、仮想ネットワーク ゲートウェイの作成時にそのリソースを参照する必要があります。 IP アドレスは、VPN ゲートウェイの作成時にリソースに対して動的に割り当てられます。 VPN Gateway では現在、パブリック IP アドレスの "*動的*" 割り当てのみサポートしています。 静的パブリック IP アドレスの割り当てを要求することはできません。 もっとも、VPN ゲートウェイに割り当てられた IP アドレスが後から変わることは基本的にありません。 パブリック IP アドレスが変わるのは、ゲートウェイが削除され、再度作成されたときのみです。 VPN ゲートウェイのサイズ変更、リセット、その他の内部メンテナンス/アップグレードでは、IP アドレスは変わりません。
 
    動的に割り当てられたパブリック IP アドレスを要求する変数を指定します。
 
@@ -152,7 +152,7 @@ Azure サブスクリプションを持っていることを確認します。 A
 2. RADIUS で VPN ゲートウェイを RADIUS クライアントとして構成します。 この RADIUS クライアントを追加する際に、作成した仮想ネットワーク GatewaySubnet を指定します。 
 3. RADIUS サーバーの設定が完了したら、RADIUS クライアントが RADIUS サーバーとの通信に使用する RADIUS サーバーの IP アドレスと共有シークレットを取得します。 RADIUS サーバーが Azure VNet 内にある場合、RADIUS サーバー VM の CA IP を使用します。
 
-記事「[ネットワーク ポリシー サーバー (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)」では、AD ドメイン認証用に Windows RADIUS サーバー (NPS) を構成する方法についてのガイダンスが示されています。
+記事「[ネットワーク ポリシー サーバー (NPS)](/windows-server/networking/technologies/nps/nps-top)」では、AD ドメイン認証用に Windows RADIUS サーバー (NPS) を構成する方法についてのガイダンスが示されています。
 
 ## <a name="4-create-the-vpn-gateway"></a>4.<a name="creategw"></a>VPN ゲートウェイの作成
 
@@ -252,7 +252,7 @@ VPN クライアント構成を使用すると、デバイスは P2S 接続を�
 
 ### <a name="connect-from-a-mac-vpn-client"></a>Mac の VPN クライアントから接続する
 
-[ネットワーク] ダイアログ ボックスで使用するクライアント プロファイルを探し、 **[接続]** をクリックします。
+[ネットワーク] ダイアログ ボックスで使用するクライアント プロファイルを探し、**[接続]** をクリックします。
 
   ![Mac の接続](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 
@@ -292,4 +292,4 @@ P2S 接続のトラブルシューティングについては、「[トラブル
 
 ## <a name="next-steps"></a>次のステップ
 
-接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/linux/azure-vm-network-overview.md)」を参照してください。
+接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](../index.yml) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/network-overview.md)」を参照してください。

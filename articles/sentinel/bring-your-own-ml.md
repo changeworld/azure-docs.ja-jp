@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
-ms.openlocfilehash: 17c0ba7306ab4cc51fe8bbe3709d5b6bc85fa487
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a891a301d5869603a7d90d28bb9063d7d5bdb1d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91340521"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660578"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>独自の機械学習 (ML) を Azure Sentinel に持ち込む
 
@@ -32,7 +32,7 @@ ML 検出モデルでは、個々の環境とユーザー動作の変化に適�
 
 ## <a name="what-is-the-bring-your-own-machine-learning-byo-ml-platform"></a>独自の機械学習 (BYO-ML) プラットフォームとは
 
-ML リソースがあり、独自のビジネス ニーズに合わせてカスタマイズされた ML モデルを構築する必要がある組織には、**BYO-ML プラットフォーム**を提供しています。 このプラットフォームでは、[Azure Databricks](https://docs.microsoft.com/azure/databricks/scenarios/what-is-azure-databricks)/[Apache Spark](http://spark.apache.org/) 環境と Jupyter Notebook を使用して ML 環境を生成します。 提供されるコンポーネントを次に示します。
+ML リソースがあり、独自のビジネス ニーズに合わせてカスタマイズされた ML モデルを構築する必要がある組織には、**BYO-ML プラットフォーム** を提供しています。 このプラットフォームでは、[Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks)/[Apache Spark](http://spark.apache.org/) 環境と Jupyter Notebook を使用して ML 環境を生成します。 提供されるコンポーネントを次に示します。
 
 - BYO-ML パッケージ。データにアクセスして結果を Log Analytics (LA) にプッシュするために役立つライブラリが含まれているため、結果を検出、調査、および検索に統合できます。 
 
@@ -95,7 +95,7 @@ BYO ML パッケージには、セキュリティのための ML のフロント
 
 ### <a name="setup-the-databricksspark-environment"></a>Databricks/Spark 環境の設定
 
-まだお持ちでない場合は、独自の Databricks 環境を設定する必要があります。 手順については、[Databricks のクイック スタート](https://docs.microsoft.com/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal?tabs=azure-portal)に関するドキュメントを参照してください。
+まだお持ちでない場合は、独自の Databricks 環境を設定する必要があります。 手順については、[Databricks のクイック スタート](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal?tabs=azure-portal)に関するドキュメントを参照してください。
 
 ### <a name="auto-export-instruction"></a>自動エクスポート命令
 
@@ -103,9 +103,9 @@ Sentinel で独自のデータに基づいてカスタム ML モデルを作成�
 
 この例では、Azure Blob Storage のファイル共有アクセス ログのトレーニング データが必要です。 データの形式については、ノートブックとライブラリに記載されています。
 
-[Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/monitor/log-analytics) を使用して、Log Analytics からデータを自動的にエクスポートできます。 
+[Azure コマンド ライン インターフェイス (CLI)](/cli/azure/monitor/log-analytics) を使用して、Log Analytics からデータを自動的にエクスポートできます。 
 
-コマンドを実行するには、Log Analytics ワークスペース、ストレージ アカウント、および EventHub リソースの**共同作成者**ロールが割り当てられている必要があります。 
+コマンドを実行するには、Log Analytics ワークスペース、ストレージ アカウント、および EventHub リソースの **共同作成者** ロールが割り当てられている必要があります。 
 
 自動エクスポートを設定するためのコマンドのサンプル セットを次に示します。
 
@@ -159,13 +159,13 @@ Azure Sentinel の外部から Blob Storage またはイベント ハブにデ�
 
 スコアリングされた結果を関連ログの詳細と共に表示するには、Azure Sentinel ポータルに戻ります。 **[ログ]** > [カスタム ログ] で、**AnomalousResourceAccessResult_CL** テーブル (または独自のカスタム テーブル名) に結果が表示されます。 これらの結果を使用して、調査と検索のエクスペリエンスを向上させることができます。
 
-:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="機械学習フレームワーク":::
+:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="異常なリソース アクセス ログ":::
 
 ### <a name="build-custom-analytics-rule-with-ml-results"></a>ML の結果を使用してカスタム分析ルールを作成する
 
 ML の結果がカスタム ログ テーブルにあり、スコアの忠実度が満たされていることを確認したら、結果に基づいて検出を作成できます。 Azure Sentinel ポータルから **Analytics** にアクセスし、[新しい検出ルールを作成します](tutorial-detect-threats-custom.md)。 検出の作成に使用されるクエリの例を次に示します。
 
-:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="機械学習フレームワーク":::
+:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="B Y O M L 検出のためのカスタム分析ルールを作成する":::
 
 ### <a name="view-and-respond-to-incidents"></a>インシデントを表示して対応する
 ML の結果に基づいて分析ルールを設定した後、クエリで設定したしきい値を超える結果が発生すると、インシデントが生成されて Azure Sentinel の **[インシデント]** ページに表示されます。 

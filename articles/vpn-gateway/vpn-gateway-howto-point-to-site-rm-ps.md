@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: b6df7aa919721576aad10d6a476be976ef81df7d
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: ed0a60c88c33af70b7d780d6c4735c5f8e65b35b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145873"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660408"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>ネイティブ Azure 証明書認証を使用した VNet へのポイント対サイト VPN 接続の構成:PowerShell
 
@@ -69,7 +69,7 @@ $DNS = "10.2.1.4"
    New-AzResourceGroup -Name $RG -Location $Location
    ```
 
-1. 仮想ネットワークのサブネット構成を作成し、 *FrontEnd* および *GatewaySubnet* という名前を付けます。 これらのプレフィックスは、宣言した VNet アドレス空間に含まれている必要があります。
+1. 仮想ネットワークのサブネット構成を作成し、*FrontEnd* および *GatewaySubnet* という名前を付けます。 これらのプレフィックスは、宣言した VNet アドレス空間に含まれている必要があります。
 
    ```azurepowershell-interactive
    $fesub = New-AzVirtualNetworkSubnetConfig -Name $FESubName -AddressPrefix $FESubPrefix
@@ -97,7 +97,7 @@ $DNS = "10.2.1.4"
    $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
    ```
 
-1. VPN ゲートウェイには、パブリック IP アドレスが必要です。 これにはまず IP アドレスのリソースを要求したうえで、仮想ネットワーク ゲートウェイの作成時にそのリソースを参照する必要があります。 IP アドレスは、VPN ゲートウェイの作成時にリソースに対して動的に割り当てられます。 VPN Gateway では現在、パブリック IP アドレスの " *動的* " 割り当てのみサポートしています。 静的パブリック IP アドレスの割り当てを要求することはできません。 もっとも、VPN ゲートウェイに割り当てられた IP アドレスが後から変わることは基本的にありません。 パブリック IP アドレスが変わるのは、ゲートウェイが削除され、再度作成されたときのみです。 VPN ゲートウェイのサイズ変更、リセット、その他の内部メンテナンス/アップグレードでは、IP アドレスは変わりません。
+1. VPN ゲートウェイには、パブリック IP アドレスが必要です。 これにはまず IP アドレスのリソースを要求したうえで、仮想ネットワーク ゲートウェイの作成時にそのリソースを参照する必要があります。 IP アドレスは、VPN ゲートウェイの作成時にリソースに対して動的に割り当てられます。 VPN Gateway では現在、パブリック IP アドレスの "*動的*" 割り当てのみサポートしています。 静的パブリック IP アドレスの割り当てを要求することはできません。 もっとも、VPN ゲートウェイに割り当てられた IP アドレスが後から変わることは基本的にありません。 パブリック IP アドレスが変わるのは、ゲートウェイが削除され、再度作成されたときのみです。 VPN ゲートウェイのサイズ変更、リセット、その他の内部メンテナンス/アップグレードでは、IP アドレスは変わりません。
 
    動的に割り当てられたパブリック IP アドレスを要求します。
 
@@ -110,8 +110,8 @@ $DNS = "10.2.1.4"
 
 この手順では、VNet の仮想ネットワーク ゲートウェイを構成して作成します。
 
-* -GatewayType は **Vpn** 、-VpnType は **RouteBased** にする必要があります。
-* -VpnClientProtocol は、有効にするトンネルの種類を指定する際に使用します。 トンネルのオプションには、 **OpenVPN、SSTP** 、 **IKEv2** があります。 いずれか 1 つを有効にすることも、サポートされるすべての組み合わせを有効にすることもできます。 複数の種類を有効にする場合は、名前をコンマで区切って指定します。 OpenVPN と SSTP は一緒に有効にすることができません。 Android と Linux の strongSwan クライアントおよび iOS と OSX のネイティブ IKEv2 VPN クライアントでは、接続に IKEv2 トンネルのみを使用します。 Windows クライアントでは最初に IKEv2 を試し、接続できなかった場合に SSTP を使用します。 OpenVPN クライアントを使用して、OpenVPN トンネルの種類に接続することができます。
+* -GatewayType は **Vpn**、-VpnType は **RouteBased** にする必要があります。
+* -VpnClientProtocol は、有効にするトンネルの種類を指定する際に使用します。 トンネルのオプションには、**OpenVPN、SSTP**、**IKEv2** があります。 いずれか 1 つを有効にすることも、サポートされるすべての組み合わせを有効にすることもできます。 複数の種類を有効にする場合は、名前をコンマで区切って指定します。 OpenVPN と SSTP は一緒に有効にすることができません。 Android と Linux の strongSwan クライアントおよび iOS と OSX のネイティブ IKEv2 VPN クライアントでは、接続に IKEv2 トンネルのみを使用します。 Windows クライアントでは最初に IKEv2 を試し、接続できなかった場合に SSTP を使用します。 OpenVPN クライアントを使用して、OpenVPN トンネルの種類に接続することができます。
 * 仮想ネットワーク ゲートウェイ 'Basic' SKU では、IKEv2、OpenVPN、RADIUS 認証はサポートされません。 Mac クライアントを仮想ネットワークに接続する予定がある場合は、Basic SKU を使用しないでください。
 * 選択する[ゲートウェイ SKU](vpn-gateway-about-vpn-gateway-settings.md) によっては、VPN ゲートウェイで処理が完了するまでに最大で 45 分かかる場合があります。 この例では、IKEv2 を使用します。
 
@@ -229,7 +229,7 @@ $profile.VPNProfileSASUrl
 ### <a name="mac-vpn-client"></a>Mac VPN クライアント
 
 [ネットワーク] ダイアログ ボックスで使用するクライアント プロファイルを探し、 **[接続]** をクリックします。
-手順の詳細については、[Mac (OS X) のインストール](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac)に関するセクションを参照してください。 接続に問題がある場合は、仮想ネットワーク ゲートウェイが Basic SKU を使用していないことを確認します。 Basic SKU は Mac クライアントではサポートされていません。
+手順の詳細については、[Mac (OS X) のインストール](./point-to-site-vpn-client-configuration-azure-cert.md#installmac)に関するセクションを参照してください。 接続に問題がある場合は、仮想ネットワーク ゲートウェイが Basic SKU を使用していないことを確認します。 Basic SKU は Mac クライアントではサポートされていません。
 
   ![Mac の接続](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 
@@ -324,7 +324,7 @@ Azure には、最大 20 個のルート証明書 .cer ファイルを追加で�
 
 **取り消するには、次を実行します。**
 
-1. クライアント証明書の拇印を取得します。 詳細については、「[方法: 証明書のサムプリントを取得する](https://msdn.microsoft.com/library/ms734695.aspx)」を参照してください。
+1. クライアント証明書の拇印を取得します。 詳細については、「[方法: 証明書のサムプリントを取得する](/dotnet/framework/wcf/feature-details/how-to-retrieve-the-thumbprint-of-a-certificate)」を参照してください。
 
 1. 情報をテキスト エディターにコピーし、文字列が 1 つにつながるようにスペースをすべて削除します。 この文字列を次の手順で変数として宣言します。
 
@@ -385,6 +385,6 @@ Azure には、最大 20 個のルート証明書 .cer ファイルを追加で�
 
 ## <a name="next-steps"></a>次のステップ
 
-接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/linux/azure-vm-network-overview.md)」を参照してください。
+接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](../index.yml) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/network-overview.md)」を参照してください。
 
 P2S のトラブルシューティング情報については、[Azure ポイント対サイト接続の問題のトラブルシューティング](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)に関するページを参照してください。

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: scottnap
-ms.openlocfilehash: 4783016e472907392f2d379efa0fed2d90ed21bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: beb59674d678ed9c61c9ee0b425da7032794ca64
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595361"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660612"
 ---
 # <a name="working-remotely-network-virtual-appliance-nva-considerations-for-remote-work"></a>リモートでの作業：リモート作業でのネットワーク仮想アプライアンス (NVA) に関する考慮事項
 
@@ -30,7 +30,7 @@ Azure Marketplace のすべての主要な NVA ベンダーは、ソリューシ
 
 - **容量および同時接続ユーザー数** - 各接続ユーザーが1つの暗号化された (IPSec または SSL VPN) トンネルを作成するため、ポイント対サイト VPN のユーザーにとって、この数字は特に重要です。  
 - **集計スループット** - リモートアクセスの提供を受けるユーザー数に対応するために必要となる合計帯域幅です。
-- **必要な VM サイズ** - NVA ベンダーの推奨する VM サイズを常に使用する必要があります。  ポイント対サイト VPN に関しては、多数のユーザーが接続同時を行う場合には、[Dv2 や DSv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/dv2-dsv2-series "Dv2 および Dsv2 シリーズ") VM など、より大きな VM サイズを使用する必要があります。 より多くの vCPU を備えたこれらの VM は、より多くの VPN セッションを同時に処理できます。  仮想コアの数が増えるだけでなく、Azure の VM サイズが大きいほど、VM のサイズが小さい場合よりも多くの集計帯域幅容量を使用できます。
+- **必要な VM サイズ** - NVA ベンダーの推奨する VM サイズを常に使用する必要があります。  ポイント対サイト VPN に関しては、多数のユーザーが接続同時を行う場合には、[Dv2 や DSv2 シリーズ](../virtual-machines/dv2-dsv2-series.md "Dv2 および Dsv2 シリーズ") VM など、より大きな VM サイズを使用する必要があります。 より多くの vCPU を備えたこれらの VM は、より多くの VPN セッションを同時に処理できます。  仮想コアの数が増えるだけでなく、Azure の VM サイズが大きいほど、VM のサイズが小さい場合よりも多くの集計帯域幅容量を使用できます。
     > **重要:** 各ベンダーは、異なる方法でリソースを利用します。  想定されるユーザー負荷に対応するために必要なインスタンスサイズが不明な場合には、ソフトウェア ベンダーに直接連絡してレコメンデーションを確認してください。
 - **インスタンスの数** - 多数のユーザー数と接続数が想定される場合、実行可能な NVA インスタンスサイズのスケールアップに関する制限があります。  複数の VM インスタンスをデプロイすることを検討してください。
 - **IPSec vpn と SSL VPN の比較** - 一般的に、IPSec VPN 実装の方が、SSL VPN 実装よりもパフォーマンスが優れています。  

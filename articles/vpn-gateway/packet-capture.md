@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: radwiv
-ms.openlocfilehash: 3be01f6d8e1fb1f6ba541f8d1cb0c92d2a43b0da
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c6aa2b63344ef629d55f5a4efb66e4ee0e55975e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073106"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661037"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>VPN ゲートウェイのパケット キャプチャを構成する
 
@@ -318,7 +318,7 @@ VPN Gateway パケット キャプチャは、必要に応じて、ゲートウ�
 
 ## <a name="set-up-packet-capture-by-using-powershell"></a>PowerShell を使用したパケット キャプチャの設定
 
-次の例は、パケット キャプチャを開始および停止する PowerShell コマンドを示しています。 パラメーター オプションの詳細については、「[AzVirtualnetworkGatewayPacketCapture](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)」を参照してください。
+次の例は、パケット キャプチャを開始および停止する PowerShell コマンドを示しています。 パラメーター オプションの詳細については、「[AzVirtualnetworkGatewayPacketCapture](/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)」を参照してください。
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>VPN ゲートウェイのパケット キャプチャを開始する
 
@@ -354,7 +354,7 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 - 推奨される最小パケット キャプチャ期間は 600 秒です。 パス上の複数のコンポーネント間で同期の問題が発生するため、パケット キャプチャの時間が短いと、完全なデータを取得できない場合があります。
 - パケット キャプチャ データ ファイルは PCAP 形式で生成されます。 PCAP ファイルを開くには、Wireshark または他の一般に利用できるアプリケーションを使用します。
 - パケット キャプチャは、ポリシーベースのゲートウェイではサポートされていません。
-- `SASurl` パラメーターが正しく構成されていない場合、トレースはストレージ エラーで失敗する可能性があります。 `SASurl` パラメーターを正しく生成する方法の例については、「[Stop-AzVirtualNetworkGatewayPacketCapture](https://docs.microsoft.com/powershell/module/az.network/stop-azvirtualnetworkgatewaypacketcapture)」を参照してください。
+- `SASurl` パラメーターが正しく構成されていない場合、トレースはストレージ エラーで失敗する可能性があります。 `SASurl` パラメーターを正しく生成する方法の例については、「[Stop-AzVirtualNetworkGatewayPacketCapture](/powershell/module/az.network/stop-azvirtualnetworkgatewaypacketcapture)」を参照してください。
 
 
 
