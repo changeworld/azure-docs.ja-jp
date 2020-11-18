@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/13/2020
+ms.date: 11/06/2020
 ms.author: b-juche
-ms.openlocfilehash: 54e6f4abd5ca6d15a4cc5a7bc9015abb005296a0
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: c6194469837997108964feda82d406c9108641b9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013646"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369241"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>容量プールに関する問題のトラブルシューティング
 
@@ -34,11 +34,14 @@ ms.locfileid: "92013646"
 | ボリュームの作成または変更が `Requested throughput not available` エラーで失敗する | 1 つのボリュームで使用可能なスループットは、容量プールのサイズとサービス レベルによって決まります。 十分なスループットがない場合は、プール サイズを増やすか、既存のボリュームのスループットを調整する必要があります。 | 
 
 ## <a name="issues-moving-a-capacity-pool"></a>容量プールの移動に関する問題 
+
+> [!IMPORTANT] 
+> 「[ボリュームのサービス レベルを動的に変更する](dynamic-change-volume-service-level.md)」のパブリック プレビュー登録は、通知があるまで保留中です。
+
 |     エラー状態    |     解像度    |
 |-|-|
 | ボリュームの容量プールを変更することが許可されない。 | この機能を使用することがまだ承認されていない可能性があります。 <br> ボリュームを別の容量プールに移動する機能は、現在プレビューの段階です。 この機能を初めて使用する場合は、まず機能を登録し、`-FeatureName ANFTierChange` を設定する必要があります。 「[ボリュームのサービス レベルを動的に変更する](dynamic-change-volume-service-level.md)」の登録手順を参照してください。 |
 | ボリュームの合計サイズに対して容量プールのサイズが小さすぎる。 |  このエラーは、移動先の容量プールに、移動しようとしているボリュームのために使用できる容量がないことの結果です。  <br> 移動先のプールのサイズを増やすか、より大きな別のプールを選択してください。  「[容量プールまたはボリュームをサイズ変更する](azure-netapp-files-resize-capacity-pools-or-volumes.md)」を参照してください。   |
-| 移動先の容量プールの暗号化の種類が、元の容量プールと異なる場合にボリュームを移動できない。  たとえば、二重暗号化から単一暗号化への移行や、その逆の移行をしようとしている。  | ソース容量プールと同じ種類の暗号化を使用している移動先の容量プールを選択します。   |
 |  `'{source pool name}'` という名前のボリュームが移動先プール `'{target pool name}'` に既に存在するため、プールの変更を完了できない | このエラーは、同じ名前のボリュームが、移動先の容量プールに既に存在しているために発生します。  同じ名前のボリュームがない、別の容量プールを選択してください。   | 
 
 ## <a name="next-steps"></a>次のステップ  

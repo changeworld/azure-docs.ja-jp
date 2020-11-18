@@ -1,32 +1,31 @@
 ---
-title: Azure Firewall の DNS 設定 (プレビュー)
+title: Azure Firewall の DNS 設定
 description: DNS サーバーと DNS プロキシ設定を使用して Azure Firewall を構成できます。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 06/30/2020
+ms.date: 11/06/2020
 ms.author: victorh
-ms.openlocfilehash: 09ffac4f19d50d9a386110e1b89f8f147652a2cd
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: ad0ac040b510783656617ddbf2063cd94c80aae7
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132008"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380948"
 ---
-# <a name="azure-firewall-dns-settings-preview"></a>Azure Firewall の DNS 設定 (プレビュー)
-
-> [!IMPORTANT]
-> 現在、Azure Firewall の DNS 設定はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="azure-firewall-dns-settings"></a>Azure Firewall の DNS 設定
 
 カスタム DNS サーバーを構成して、Azure Firewall の DNS プロキシを有効にすることができます。 ファイアウォール以降を展開するときに、 **[DNS 設定]** ページからこれらの設定を構成できます。
 
 ## <a name="dns-servers"></a>DNS サーバー
 
-DNS サーバーでは、ドメイン名から IP アドレスに管理と解決が行われます。 Azure Firewall では、名前解決に Azure DNS が既定で使用されます。 **DNS サーバー**設定を使用すると、Azure Firewall の名前解決に対して独自の DNS サーバーを構成できます。 1 つまたは複数のサーバーを構成することができます。
+DNS サーバーでは、ドメイン名から IP アドレスに管理と解決が行われます。 Azure Firewall では、名前解決に Azure DNS が既定で使用されます。 **DNS サーバー** 設定を使用すると、Azure Firewall の名前解決に対して独自の DNS サーバーを構成できます。 1 つまたは複数のサーバーを構成することができます。
 
-### <a name="configure-custom-dns-servers-preview"></a>カスタム DNS サーバーを構成する (プレビュー)
+> [!NOTE]
+> Azure Firewall Manager を使用して管理されている Azure Firewall の場合は、関連する Azure Firewall ポリシーで DNS 設定が構成されます。
+
+### <a name="configure-custom-dns-servers---azure-portal"></a>カスタム DNS サーバーを構成する - Azure portal
 
 1. Azure Firewall の **[設定]** で、 **[DNS 設定]** を選択します。
 2. **[DNS サーバー]** では、Virtual Network で以前に指定された既存の DNS サーバーを入力または追加できます。
@@ -35,22 +34,58 @@ DNS サーバーでは、ドメイン名から IP アドレスに管理と解決
 
 :::image type="content" source="media/dns-settings/dns-servers.png" alt-text="DNS サーバー":::
 
-## <a name="dns-proxy-preview"></a>DNS プロキシ (プレビュー)
+### <a name="configure-custom-dns-servers---azure-cli"></a>カスタム DNS サーバーを構成する - Azure CLI
+
+次の例では、Azure CLI を使用して、カスタム DNS サーバーで Azure Firewall を更新します。
+
+```azurecli-interactive
+az network firewall update \
+    --name fwName \ 
+    --resource-group fwRG \
+    --dns-servers 10.1.0.4 10.1.0.5
+```
+
+> [!IMPORTANT]
+> コマンド `az network firewall` を使用するには、Azure CLI 拡張機能 `azure-firewall` をインストールする必要があります。 これは、コマンド `az extension add --name azure-firewall` を使用してインストールできます。 
+
+### <a name="configure-custom-dns-servers---azure-powershell"></a>カスタム DNS サーバーを構成する - Azure PowerShell
+
+次の例では、Azure PowerShell を使用して、カスタム DNS サーバーで Azure Firewall を更新します。
+
+```azurepowershell
+$dnsServers = @("10.1.0.4", "10.1.0.5")
+$azFw = Get-AzFirewall -Name "fwName" -ResourceGroupName "fwRG"
+$azFw.DNSServer = $dnsServers
+
+$azFw | Set-AzFirewall
+```
+
+## <a name="dns-proxy"></a>DNS プロキシ
 
 Azure Firewall が DNS プロキシとして機能するように構成できます。 DNS プロキシは、クライアント仮想マシンから DNS サーバーへの DNS 要求の仲介役として機能します。 カスタム DNS サーバーを構成する場合は、DNS 解決の不一致を回避するために DNS プロキシを有効にして、ネットワーク ルールで FQDN フィルタリングを有効にする必要があります。
 
 DNS プロキシを有効にしない場合は、クライアントからの DNS 要求は、別の時刻に DNS サーバーに移動するか、ファイアウォールの応答とは異なる応答を返します。 DNS プロキシでは、不整合を回避するために、クライアント要求のパスに Azure Firewall が配置されます。
+
+Azure Firewall が DNS プロキシの場合、次の 2 種類のキャッシュ関数が発生します。
+
+- 正のキャッシュ – DNS 解決が成功しました。 ファイアウォールによって、パケットまたはオブジェクトの TTL (time-to-live) が使用されます。 
+
+- 負のキャッシュ – DNS 解決が、応答なし、または解決なしという結果になります。 ファイアウォールによって、この情報は 1 時間キャッシュされます。
+
+DNS プロキシによって、すべての解決済み IP アドレスが FQDN からネットワーク ルールに格納されます。 ベスト プラクティスとして、1 つの IP アドレスに解決される FQDN を使用することをお勧めします。  
+
+### <a name="dns-proxy-configuration"></a>DNS プロキシの構成
 
 DNS プロキシの構成には、次の 3 つの手順が必要です。
 1. Azure Firewall の [DNS 設定] で DNS プロキシを有効にします。
 2. 必要に応じて、カスタム DNS サーバーを構成するか、指定された既定のものを使用します。
 3. 最後に、仮想ネットワークの DNS サーバーの設定で、Azure Firewall のプライベート IP アドレスをカスタム DNS アドレスとして構成する必要があります。 これにより、DNS トラフィックが Azure Firewall に送信されるようになります。
 
-### <a name="configure-dns-proxy-preview"></a>DNS プロキシを構成する (プレビュー)
+#### <a name="configure-dns-proxy---azure-portal"></a>DNS プロキシを構成する - Azure portal
 
-DNS プロキシを構成するには、ファイアウォールのプライベート IP アドレスを使用するように、仮想ネットワークの DNS サーバー設定を構成する必要があります。 次に、Azure Firewall ポリシーの **[DNS 設定]** で DNS プロキシを有効にします。
+DNS プロキシを構成するには、ファイアウォールのプライベート IP アドレスを使用するように、仮想ネットワークの DNS サーバー設定を構成する必要があります。 次に、Azure Firewall の **[DNS 設定]** で、DNS プロキシを有効にします。
 
-#### <a name="configure-virtual-network-dns-servers"></a>仮想ネットワークの DNS サーバーを構成する
+##### <a name="configure-virtual-network-dns-servers"></a>仮想ネットワークの DNS サーバーを構成する 
 
 1. Azure Firewall 経由で DNS トラフィックがルーティングされる仮想ネットワークを選択します。
 2. **[設定]** で、 **[DNS サーバー]** を選択します。
@@ -59,15 +94,68 @@ DNS プロキシを構成するには、ファイアウォールのプライベ�
 5. **[保存]** を選択します。
 6. 新しい DNS サーバー設定が割り当てられるように、仮想ネットワークに接続されている VM を再起動します。 再起動されるまで、VM は現在の DNS 設定を使用し続けます。
 
-#### <a name="enable-dns-proxy-preview"></a>DNS プロキシを有効にする (プレビュー)
+##### <a name="enable-dns-proxy"></a>DNS プロキシを有効にする
 
 1. Azure Firewall 選択します。
 2. **[設定]** で、 **[DNS 設定]** を選択します。
-3. 既定では、**DNS プロキシ**は無効になっています。 有効にすると、ファイアウォールはポート 53 でリッスンし、構成済みの DNS サーバーに DNS 要求を転送します。
-4. **DNS サーバー**の構成を確認して、設定が環境に適していることを確認します。
+3. 既定では、**DNS プロキシ** は無効になっています。 有効にすると、ファイアウォールはポート 53 でリッスンし、構成済みの DNS サーバーに DNS 要求を転送します。
+4. **DNS サーバー** の構成を確認して、設定が環境に適していることを確認します。
 5. **[保存]** を選択します。
 
-:::image type="content" source="media/dns-settings/dns-proxy.png" alt-text="DNS サーバー":::
+:::image type="content" source="media/dns-settings/dns-proxy.png" alt-text="DNS プロキシ":::
+
+#### <a name="configure-dns-proxy---azure-cli"></a>DNS プロキシを構成する - Azure CLI
+
+Azure CLI を使用して Azure Firewall で DNS プロキシ設定を構成し、仮想ネットワークを更新して、Azure Firewall を DNS サーバーとして使用できます。
+
+##### <a name="configure-virtual-network-dns-servers"></a>仮想ネットワークの DNS サーバーを構成する
+
+この例では、Azure Firewall を DNS サーバーとして使用するように VNet を構成します。
+ 
+```azurecli-interactive
+az network vnet update \
+    --name VNetName \ 
+    --resource-group VNetRG \
+    --dns-servers <firewall-private-IP>
+```
+
+##### <a name="enable-dns-proxy"></a>DNS プロキシを有効にする
+
+この例では、Azure Firewall の DNS プロキシ機能を有効にします。
+
+```azurecli-interactive
+az network firewall update \
+    --name fwName \ 
+    --resource-group fwRG \
+    --enable-dns-proxy true
+```
+
+#### <a name="configure-dns-proxy---azure-powershell"></a>DNS プロキシを構成する - Azure PowerShell
+
+Azure PowerShell を使用して Azure Firewall で DNS プロキシ設定を構成し、仮想ネットワークを更新して、Azure Firewall を DNS サーバーとして使用できます。
+
+##### <a name="configure-virtual-network-dns-servers"></a>仮想ネットワークの DNS サーバーを構成する
+
+ この例では、Azure Firewall を DNS サーバーとして使用するように VNet を構成します。
+
+```azurepowershell
+$dnsServers = @("<firewall-private-IP>")
+$VNet = Get-AzVirtualNetwork -Name "VNetName" -ResourceGroupName "VNetRG"
+$VNet.DhcpOptions.DnsServers = $dnsServers
+
+$VNet | Set-AzVirtualNetwork
+```
+
+##### <a name="enable-dns-proxy"></a>DNS プロキシを有効にする
+
+この例では、Azure Firewall の DNS プロキシ機能を有効にします。
+
+```azurepowershell
+$azFw = Get-AzFirewall -Name "fwName" -ResourceGroupName "fwRG"
+$azFw.DNSEnableProxy = $true
+
+$azFw | Set-AzFirewall
+```
 
 ## <a name="next-steps"></a>次のステップ
 

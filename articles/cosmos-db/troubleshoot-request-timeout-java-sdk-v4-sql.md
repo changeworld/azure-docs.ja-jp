@@ -8,12 +8,12 @@ ms.date: 10/28/2020
 ms.author: kuthapar
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 442d6638e88462b1dc87e9321dc631fe0a4f3a10
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: a805300ac62d0627c9b06188c9764a6887947afe
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340085"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411288"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-java-v4-sdk-request-timeout-exceptions"></a>Azure Cosmos DB Java v4 SDK の要求タイムアウト例外を診断してトラブルシューティングする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,6 +22,9 @@ HTTP 408 エラーは、タイムアウト制限が発生する前に SDK が要
 
 ## <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 次の一覧には、要求タイムアウト例外の既知の原因と解決方法が含まれています。
+
+### <a name="existing-issues"></a>既存の問題
+要求がより長い期間停止しているか、タイムアウトがより頻繁に発生していると表示されている場合は、Java v4 SDK を最新バージョンにアップグレードしてください。 注: 4.7.0 以降のバージョンの使用を強くお勧めします。 詳細については、[Java v4 SDK リリース ノート](sql-api-sdk-java-v4.md)に関する記事を参照してください。
 
 ### <a name="high-cpu-utilization"></a>高い CPU 使用率
 高い CPU 使用率は最も一般的なケースです。 最適な待機時間を実現するには、CPU 使用率は 40% ほどである必要があります。 CPU 使用率の (平均ではなく) 最大値を監視するには、間隔として 10 秒を使用します。 CPU スパイクは、1 つのクエリに対して複数の接続を実行する可能性があるクロスパーティション クエリでは、より一般的です。
@@ -75,7 +78,7 @@ Azure Cosmos DB は、プロビジョニングされたスループット全体�
 ### <a name="high-degree-of-concurrency"></a>同時実行の程度が高い
 アプリケーションで高レベルの同時実行が行われています。これにより、チャネル上で競合が発生する可能性があります。
 
-#### <a name="solution"></a>解答:
+#### <a name="solution"></a>解決方法:
 SDK を使用するクライアント アプリケーションをスケールアップまたはスケールアウトする必要があります。
 
 ### <a name="large-requests-or-responses"></a>大量の要求または応答

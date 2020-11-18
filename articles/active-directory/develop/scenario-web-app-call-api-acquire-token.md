@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4fe3744f3f8cb39a7493ce788ee9badc1b31b75e
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: c8af9ddd3649e2a5757e47ab2a3d8edca1c83929
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396180"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442618"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Web API を呼び出す Web アプリ:アプリのトークンを取得する
 
@@ -203,5 +203,4 @@ def graphcall():
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [Web API を呼び出す](scenario-web-app-call-api-call-api.md)
+このシナリオの次の記事である [Web API の呼び出し](scenario-web-app-call-api-call-api.md)に関する記事に進みます。

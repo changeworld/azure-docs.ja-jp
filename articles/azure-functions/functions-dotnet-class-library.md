@@ -4,12 +4,12 @@ description: C# を使用して Azure Functions を開発する方法につい�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 19edfaf7998632ed1ebb48ff4ad36468669732ae
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 51a7ffe72f8597fbaa11eae12585ebde8bb83153
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167748"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380965"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 
@@ -38,7 +38,7 @@ Functions ランタイムの各バージョンは、.NET の特定のバージ�
 
 ## <a name="functions-class-library-project"></a>関数クラス ライブラリ プロジェクト
 
-Visual Studio では、 **Azure Functions** プロジェクト テンプレートは、次のファイルを含む C# クラス ライブラリ プロジェクトを作成します。
+Visual Studio では、**Azure Functions** プロジェクト テンプレートは、次のファイルを含む C# クラス ライブラリ プロジェクトを作成します。
 
 * [host.json](functions-host-json.md) - ローカルまたは Azure 内で実行される場合に、プロジェクト内のすべての関数に影響を及ぼす構成設定を格納します。
 * [local.settings.json](functions-run-local.md#local-settings-file) - ローカルで実行される場合に使用されるアプリ設定および接続文字列を格納します。 このファイルにはシークレットが含まれていて、Azure の関数アプリには公開されません。 代わりに、[関数アプリにアプリ設定を追加](functions-develop-vs.md#function-app-settings)します。
@@ -139,7 +139,7 @@ public static class BindingExpressionsExample
 
 このファイルの目的は、[従量課金プランでのスケーリングの判断](functions-scale.md#how-the-consumption-and-premium-plans-work)に使用するスケール コントローラーに情報を提供することです。 このため、ファイルはトリガー情報だけを含み、入力または出力バインドは含まれません。
 
-生成された *function.json* ファイルには、 *function.json* 構成ではなく、バインドの .NET 属性を使用するようにランタイムに指示する `configurationSource` プロパティが含まれます。 次に例を示します。
+生成された *function.json* ファイルには、*function.json* 構成ではなく、バインドの .NET 属性を使用するようにランタイムに指示する `configurationSource` プロパティが含まれます。 次に例を示します。
 
 ```json
 {
@@ -160,7 +160,7 @@ public static class BindingExpressionsExample
 
 ## <a name="microsoftnetsdkfunctions"></a>Microsoft.NET.Sdk.Functions
 
-*function.json* ファイルの生成は、NuGet パッケージ ( [Microsoft\.NET\.Sdk\.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions)) によって実行されます。 
+*function.json* ファイルの生成は、NuGet パッケージ ([Microsoft\.NET\.Sdk\.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions)) によって実行されます。 
 
 Functions ランタイムのバージョン 1.x と 2.x では同じパッケージが使用されます。 1\.x プロジェクトと 2.x プロジェクトの違いはターゲット フレームワークです。 次に示すのは *.csproj* ファイルの関連する部分で、ターゲット フレームが異なっていることと、`Sdk` パッケージが同じであることがわかります。
 
@@ -313,7 +313,7 @@ public static class CancellationTokenExample
 
 ## <a name="logging"></a>ログ記録
 
-関数のコードで、Application Insights でトレースとして表示されるログに出力を書き込むことができます。 ログ書き込みには、[ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) という種類のパラメーターを含める方法をお勧めします。これは通常 `log` という名前です。 Functions バージョン 1.x のランタイムでは `TraceWriter` が使用されていました。ここでは Application Insights への書き込みは行われますが、構造化ログはサポートされていません。 `Console.Write` を使ってログを書き込んでも、このデータは Application Insights によってキャプチャされないため、使用は避けてください。 
+関数のコードで、Application Insights でトレースとして表示されるログに出力を書き込むことができます。 ログ書き込みには、[ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) という種類のパラメーターを含める方法をお勧めします。これは通常 `log` という名前です。 Functions バージョン 1.x のランタイムでは `TraceWriter` が使用されていました。ここでは Application Insights への書き込みは行われますが、構造化ログはサポートされていません。 このデータは Application Insights によってキャプチャされないため、ログの書き込みに `Console.Write` を使用しないでください。 
 
 ### <a name="ilogger"></a>ILogger
 
@@ -565,7 +565,7 @@ public static class EnvironmentVariablesExample
 }
 ```
 
-アプリ設定は、ローカルでの開発中と Azure での実行中の両方で、環境変数から読み取ることができます。 ローカルでの開発時、アプリ設定は *local.settings.json* ファイルの `Values` コレクションから取得します。 ローカルと Azure の両方の環境において、`GetEnvironmentVariable("<app setting name>")` は名前付きアプリ設定の値を取得します。 たとえば、ローカルでの実行中、 *local.settings.json* ファイルに `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }` が含まれている場合は、"My Site Name" が返されます。
+アプリ設定は、ローカルでの開発中と Azure での実行中の両方で、環境変数から読み取ることができます。 ローカルでの開発時、アプリ設定は *local.settings.json* ファイルの `Values` コレクションから取得します。 ローカルと Azure の両方の環境において、`GetEnvironmentVariable("<app setting name>")` は名前付きアプリ設定の値を取得します。 たとえば、ローカルでの実行中、*local.settings.json* ファイルに `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }` が含まれている場合は、"My Site Name" が返されます。
 
 [System.Configuration.ConfigurationManager.AppSettings](/dotnet/api/system.configuration.configurationmanager.appsettings) プロパティは、アプリ設定値を取得するための代替 API ですが、次に示すように `GetEnvironmentVariable` を使用することをお勧めします。
 

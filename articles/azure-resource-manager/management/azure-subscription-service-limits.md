@@ -3,12 +3,12 @@ title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 この記事では、制限を引き上げる方法と、最大値に関する情報について説明します。
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: f18bd4589ea995696175fa23300432793f0f5974
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: b95c056a8885998c3ca5b5c62cb13049c3a8c66d
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950246"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412933"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 
@@ -227,7 +227,7 @@ Azure Resource Manager デプロイ モデルではなくクラシック デプ�
 ## <a name="digital-twins-limits"></a>Digital Twins の制限
 
 > [!NOTE]
-> このサービスには、調整可能な制限がある領域と、そうではない領域があります。 これは、次の表の*調整可能?* 列に示されています。 制限が調整可能な場合、*調整可能?* の値は*はい*になります。
+> このサービスには、調整可能な制限がある領域と、そうではない領域があります。 これは、次の表の *調整可能?* 列に示されています。 制限が調整可能な場合、*調整可能?* の値は *はい* になります。
 
 [!INCLUDE [digital-twins-limits](../../../includes/digital-twins-limits.md)]
 
@@ -285,7 +285,11 @@ Media Services v2 (レガシ) に固有の制限については、「[Media Serv
 
 ### <a name="virtual-network-gateway-limits"></a>仮想ネットワーク ゲートウェイの制限
 
-[!INCLUDE [virtual-wan-limits](../../../includes/azure-virtual-network-gateway-limits.md)]
+[!INCLUDE [virtual-network-gateway-limits](../../../includes/azure-virtual-network-gateway-limits.md)]
+
+### <a name="nat-gateway-limits"></a>NAT Gateway の制限
+
+[!INCLUDE [nat-gateway-limits](../../../includes/azure-nat-gateway-limits.md)]
 
 ### <a name="virtual-wan-limits"></a>Virtual WAN の制限
 

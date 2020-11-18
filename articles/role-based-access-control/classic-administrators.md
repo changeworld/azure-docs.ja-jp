@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: dc8a23d8cdb923f86d581d1af2967112d226c847
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d61d49fdd90f1f916141ca636e2c2a4dbe0b9bcd
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370629"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657742"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure の従来のサブスクリプション管理者
 
@@ -58,7 +58,7 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azu
 
 - ゲスト ユーザーは、ディレクトリ内に存在している必要があります。 これは、ユーザーがディレクトリに招待され、招待を受け入れたことを意味します。
 
-ゲスト ユーザーを自分のディレクトリに追加する方法の詳細については、「[Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../active-directory/b2b/add-users-administrator.md)」を参照してください。
+ゲスト ユーザーを自分のディレクトリに追加する方法の詳細については、「[Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../active-directory/external-identities/add-users-administrator.md)」を参照してください。
 
 ### <a name="differences-for-guest-users"></a>ゲスト ユーザーの違い
 

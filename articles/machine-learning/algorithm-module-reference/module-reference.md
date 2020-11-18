@@ -1,6 +1,6 @@
 ---
 title: アルゴリズムとモジュールのリファレンス
-description: Azure Machine Learning デザイナーで使用可能なモジュールについて説明します
+description: 独自の機械学習プロジェクトの作成に使用できる Azure Machine Learning デザイナー モジュールについて説明します。
 titleSuffix: Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/19/2020
-ms.openlocfilehash: 9a2e21696409c320b89d1fed54fefad953b955e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 89ad9aae7c0d01971bbcfc7e392cb9d455ef85cd
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886407"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376844"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーのアルゴリズムとモジュールのリファレンス
 
@@ -45,7 +45,7 @@ ms.locfileid: "90886407"
 | --- |--- | --- |
 | 回帰 | 値を予測します。 | [ブースト デシジョン ツリー回帰](boosted-decision-tree-regression.md) <br/> [デシジョン フォレスト回帰](decision-forest-regression.md) <br/> [高速フォレスト分位点回帰](fast-forest-quantile-regression.md)  <br/> [線形回帰](linear-regression.md)  <br/> [ニューラル ネットワーク回帰](neural-network-regression.md)  <br/> [ポワソン回帰](poisson-regression.md)  <br/>|
 | クラスタリング | データをグループ化します。| [K-Means クラスタリング](k-means-clustering.md)
-| 分類 | クラスを予測します。  バイナリ (2 クラス) または多クラスのアルゴリズムを選択します。| [多クラスの増幅デシジョン ツリー](multiclass-boosted-decision-tree.md) <br/> [多クラス デシジョン フォレスト](multiclass-decision-forest.md) <br/> [多クラス ロジスティック回帰](multiclass-logistic-regression.md)  <br/> [多クラス ニューラル ネットワーク](multiclass-neural-network.md) <br/> [1 対全多クラス](one-vs-all-multiclass.md) <br/> [2 クラス平均化パーセプトロン](two-class-averaged-perceptron.md) <br/>  [2 クラス ブースト デシジョン ツリー](two-class-boosted-decision-tree.md)  <br/> [2 クラス デシジョン フォレスト](two-class-decision-forest.md) <br/>  [2 クラス ロジスティック回帰](two-class-logistic-regression.md) <br/> [2 クラス ニューラル ネットワーク](two-class-neural-network.md) <br/> [2 クラス サポート ベクター マシン](two-class-support-vector-machine.md) | 
+| 分類 | クラスを予測します。  バイナリ (2 クラス) または多クラスのアルゴリズムを選択します。| [多クラスの増幅デシジョン ツリー](multiclass-boosted-decision-tree.md) <br/> [多クラス デシジョン フォレスト](multiclass-decision-forest.md) <br/> [多クラス ロジスティック回帰](multiclass-logistic-regression.md)  <br/> [多クラス ニューラル ネットワーク](multiclass-neural-network.md) <br/> [1 対全多クラス](one-vs-all-multiclass.md) <br/> [One vs.One Multiclass](one-vs-one-multiclass.md) <br/>[2 クラス平均化パーセプトロン](two-class-averaged-perceptron.md) <br/>  [2 クラス ブースト デシジョン ツリー](two-class-boosted-decision-tree.md)  <br/> [2 クラス デシジョン フォレスト](two-class-decision-forest.md) <br/>  [2 クラス ロジスティック回帰](two-class-logistic-regression.md) <br/> [2 クラス ニューラル ネットワーク](two-class-neural-network.md) <br/> [2 クラス サポート ベクター マシン](two-class-support-vector-machine.md) | 
 
 ## <a name="modules-for-building-and-evaluating-models"></a>モデルを構築および評価するためのモジュール
 

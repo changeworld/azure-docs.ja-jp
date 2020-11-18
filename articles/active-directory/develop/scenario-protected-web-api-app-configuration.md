@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 613ba527c8f86257dd271d3cc9e43c97fc475068
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bfbfb1ff5b6cb9c711d987608226c51822dfc935
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257454"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442958"
 ---
 # <a name="protected-web-api-code-configuration"></a>保護された Web API: コード構成
 
@@ -170,7 +170,7 @@ services.AddControllers();
 ```
 
 > [!NOTE]
-> Microsoft.Identity.Web を使用し、*appsettings.json*内に `Audience` を設定しない場合、次が使用されます。
+> Microsoft.Identity.Web を使用し、*appsettings.json* 内に `Audience` を設定しない場合、次が使用されます。
 > -  `$"{ClientId}"`。[アクセス トークンで承認されたバージョン](scenario-protected-web-api-app-registration.md#accepted-token-version)を `2` に設定している場合、または Azure AD B2C Web API の場合。
 > - `$"api://{ClientId}`。その他すべての場合 (v1.0 [アクセス トークン](access-tokens.md)の場合)。
 > 詳細については、Microsoft.Identity.Web の[ソース コード](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RegisterValidAudience.cs#L70-L83)を参照してください。
@@ -242,5 +242,4 @@ Azure Functions では、受信アクセス トークンを検証することも
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [コードでスコープとアプリのロールを検証する](scenario-protected-web-api-verification-scope-app-roles.md)
+このシナリオの次の記事である「[コードでスコープとアプリのロールを検証する](scenario-protected-web-api-verification-scope-app-roles.md)」に進みます。

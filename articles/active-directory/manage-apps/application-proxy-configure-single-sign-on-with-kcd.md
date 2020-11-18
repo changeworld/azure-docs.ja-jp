@@ -12,12 +12,12 @@ ms.date: 08/13/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 860d29d3fff2187e770a5ff00b7145fc188a497c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: e43ad9dedf4212e9b30a08f0c978cb8d1a86776c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426494"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657416"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-sso-to-your-apps-with-application-proxy"></a>アプリケーション プロキシを使ったアプリへのシングル サインオン (SSO) の Kerberos の制約付き委任
 
@@ -42,9 +42,9 @@ ms.locfileid: "92426494"
 ## <a name="prerequisites"></a>前提条件
 IWA アプリケーションでのシングル サインオンに着手する前に、ご使用の環境が次の設定と構成に対応していることを確認してください。
 
-* 対象のアプリ (SharePoint Web アプリなど) が統合 Windows 認証を使用するように設定されていること。 詳細については、「[Kerberos 認証のサポートを有効にする](https://technet.microsoft.com/library/dd759186.aspx)」を参照してください。SharePoint の場合は、「[SharePoint 2013 で Kerberos 認証を計画する](https://technet.microsoft.com/library/ee806870.aspx)」を参照してください。
+* 対象のアプリ (SharePoint Web アプリなど) が統合 Windows 認証を使用するように設定されていること。 詳細については、「[Kerberos 認証のサポートを有効にする](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd759186(v=ws.11))」を参照してください。SharePoint の場合は、「[SharePoint 2013 で Kerberos 認証を計画する](/SharePoint/security-for-sharepoint-server/kerberos-authentication-planning)」を参照してください。
 * 対象となるすべてのアプリに[サービス プリンシパル名](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spns-setspn-syntax-setspn-exe.aspx)があること。
-* コネクタを実行するサーバーとアプリを実行するサーバーがドメインに参加し、かつ同じドメインまたは信頼する側のドメインに属していること。 ドメインへの参加の詳細については、「 [コンピューターをドメインに参加させる](https://technet.microsoft.com/library/dd807102.aspx)」を参照してください。
+* コネクタを実行するサーバーとアプリを実行するサーバーがドメインに参加し、かつ同じドメインまたは信頼する側のドメインに属していること。 ドメインへの参加の詳細については、「 [コンピューターをドメインに参加させる](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dd807102(v=ws.11))」を参照してください。
 * Connector を実行しているサーバーに、ユーザーの TokenGroupsGlobalAndUniversal 属性を読み取るためのアクセス権があること。 既定ではそのように設定されていますが、環境のセキュリティを強化する過程で変更されている可能性があります。
 
 ### <a name="configure-active-directory"></a>Active Directory を構成する
@@ -61,7 +61,7 @@ Active Directory の構成は、アプリケーション プロキシ コネク�
    ![Connector-SVR のプロパティ ウィンドウのスクリーン ショット](./media/application-proxy-configure-single-sign-on-with-kcd/properties.jpg)
 
 #### <a name="connector-and-application-server-in-different-domains"></a>異なるドメインにあるコネクタとアプリケーション サーバー
-1. ドメイン間の KCD を使用するための前提条件の一覧については、「 [ドメイン間の Kerberos の制約付き委任](https://technet.microsoft.com/library/hh831477.aspx)」を参照してください。
+1. ドメイン間の KCD を使用するための前提条件の一覧については、「 [ドメイン間の Kerberos の制約付き委任](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831477(v=ws.11))」を参照してください。
 2. Web アプリケーションのサービス アカウント (コンピューターまたは専用ドメインのユーザー アカウント) の `principalsallowedtodelegateto` プロパティを使用して、アプリケーション プロキシ (コネクタ) からの Kerberos 認証の委任を有効にします。 アプリケーション サーバーは `webserviceaccount` のコンテキストで実行され、委任サーバーは `connectorcomputeraccount` です。 `webserviceaccount` のドメイン内の (Windows Server 2012 R2 以降を実行している) ドメイン コントローラーで次のコマンドを実行します。 両方のアカウントにフラット名 (UPN 以外) を使用します。
 
    `webserviceaccount` がコンピューター アカウントの場合は、次のコマンドを使用します。
@@ -153,4 +153,3 @@ SSO プロセスにエラーがある場合は、「[トラブルシューティ
 
 * [Kerberos の制約付き委任を使用するようにアプリケーション プロキシ アプリケーションを構成する方法](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](application-proxy-troubleshoot.md)
-

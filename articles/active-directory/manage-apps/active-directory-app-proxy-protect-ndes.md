@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: a385a339122197b7055ef6f54b8e37edea8eae4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0682115727068c928418d97fbf92ed32897c39d4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88078939"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656753"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>ネットワーク デバイス登録サービス (NDES) サーバー上の Azure AD アプリケーション プロキシとの統合
 
@@ -26,7 +26,7 @@ Azure Active Directory (AD) アプリケーション プロキシを使用する
 
 Azure AD アプリケーション プロキシを使用したことがなく、詳細を確認したい場合は、[Azure AD アプリケーション プロキシからのオンプレミス アプリケーションへのリモート アクセス](application-proxy.md)に関する記事を参照してください。
 
-Azure AD アプリケーション プロキシは Azure 上に構築されています。 これは、分散型サービス拒否 (DDOS) 攻撃に対するより強力な保護と優れた可用性を実現するために、大量のネットワーク帯域幅とサーバー インフラストラクチャを提供します。 さらに、オンプレミスのネットワークに対して外部ファイアウォール ポートを開く必要がなく、DMZ サーバーは必要ありません。 すべてのトラフィックは内向きに発信されます。 送信ポートの完全な一覧については、「[チュートリアル: Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)を参照してください。
+Azure AD アプリケーション プロキシは Azure 上に構築されています。 これは、分散型サービス拒否 (DDOS) 攻撃に対するより強力な保護と優れた可用性を実現するために、大量のネットワーク帯域幅とサーバー インフラストラクチャを提供します。 さらに、オンプレミスのネットワークに対して外部ファイアウォール ポートを開く必要がなく、DMZ サーバーは必要ありません。 すべてのトラフィックは内向きに発信されます。 送信ポートの完全な一覧については、「[チュートリアル: Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](./application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)を参照してください。
 
 > Azure AD アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションを使用している場合にのみ利用できる機能です。 詳細については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。 
 > Enterprise Mobility Suite (EMS) ライセンスを所有している場合は、このソリューションを使用することができます。
@@ -77,7 +77,7 @@ Azure AD アプリケーション プロキシは Azure 上に構築されてい
    * **Name**:アプリケーションの名前を入力します。
    * **内部 URL**:コネクタをインストールした NDES サーバーの内部 URL または FQDN を入力します。
    * **事前認証**: **[パススルー]** を選択します。 いかなる形式の事前認証も使用できません。 証明書要求 (SCEP) に使用されるプロトコルでは、このオプションは提供されません。
-   * 提供された**外部 URL** をクリップボードにコピーします。
+   * 提供された **外部 URL** をクリップボードにコピーします。
 
 1. **[+追加]** をクリックして、アプリケーションを保存します。
 
@@ -87,7 +87,7 @@ Azure AD アプリケーション プロキシは Azure 上に構築されてい
 
    https://scep-test93635307549127448334.msappproxy.net/certsrv/mscep/mscep.dll
 
-1. **HTTP エラー 403 - アクセス不可**の応答が表示されるはずです。
+1. **HTTP エラー 403 - アクセス不可** の応答が表示されるはずです。
 
 1. デバイスに (Microsoft Intune 経由で) 提供された NDES URL を変更します。 この変更は、Microsoft Endpoint Configuration Manager または Microsoft Endpoint Manager 管理センターのいずれかで行うことができます。
 
@@ -96,4 +96,4 @@ Azure AD アプリケーション プロキシは Azure 上に構築されてい
 
 ## <a name="next-steps"></a>次の手順
 
-NDES と統合された Azure AD アプリケーション プロキシを使用して、ユーザーがアクセスできるようにアプリケーションを発行します。 詳しくは、[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)に関する記事をご覧ください。
+NDES と統合された Azure AD アプリケーション プロキシを使用して、ユーザーがアクセスできるようにアプリケーションを発行します。 詳しくは、[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](./application-proxy-add-on-premises-application.md)に関する記事をご覧ください。

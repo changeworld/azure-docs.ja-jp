@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b71c78f484eef0fc4d9c34a2f218a177dbffa0a8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 787380dbf6f739d4b88f18a836da2146b06024c3
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257514"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443145"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Web API を呼び出すデスクトップ アプリ:アプリの登録
 
@@ -59,5 +59,4 @@ ms.locfileid: "91257514"
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [デスクトップ アプリ:アプリの構成](scenario-desktop-app-configuration.md)
+このシナリオの次の記事である[アプリ コードの構成](scenario-desktop-app-configuration.md)に関する記事に進みます。

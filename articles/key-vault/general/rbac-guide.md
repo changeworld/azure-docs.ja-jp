@@ -9,17 +9,17 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f3775e73ce8f152fe39bc8170bbeba054f856630
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: be2fa0fa85da7c0f02567580c50968b7418e4cde
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286594"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445185"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する (プレビュー)
 
 > [!NOTE]
-> Key Vault リソース プロバイダーでは、 **コンテナー** と **マネージド HSM** という 2 種類のリソースがサポートされています。 この記事で説明するアクセス制御は、 **コンテナー** にのみ適用されます。 マネージド HSM のアクセス制御の詳細については、「[マネージド HSM アクセス制御](../managed-hsm/access-control.md)」を参照してください。
+> Key Vault リソース プロバイダーでは、**コンテナー** と **マネージド HSM** という 2 種類のリソースがサポートされています。 この記事で説明するアクセス制御は、**コンテナー** にのみ適用されます。 マネージド HSM のアクセス制御の詳細については、「[マネージド HSM アクセス制御](../managed-hsm/access-control.md)」を参照してください。
 
 Azure ロールベースのアクセス制御 (Azure RBAC) は [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 上に構築された承認システムであり、Azure リソースに対するアクセスをきめ細かく管理できます。
 
@@ -79,11 +79,11 @@ Key Vault の新しい Azure RBAC アクセス許可モデルには、コンテ�
 
 1.  新しいキー コンテナーで Azure RBAC アクセス許可を有効にします。
 
-    ![RBAC アクセス許可を有効にする - 新しいコンテナー](../media/rbac/image-1.png)
+    ![Azure RBAC アクセス許可を有効にする - 新しいコンテナー](../media/rbac/image-1.png)
 
 2.  既存のキー コンテナーで Azure RBAC アクセス許可を有効にします。
 
-    ![RBAC アクセス許可を有効にする - 既存のコンテナー](../media/rbac/image-2.png)
+    ![Azure RBAC アクセス許可を有効にする - 既存のコンテナー](../media/rbac/image-2.png)
 
 ### <a name="assign-role"></a>ロールを割り当てる
 

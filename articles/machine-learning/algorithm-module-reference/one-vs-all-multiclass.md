@@ -1,7 +1,7 @@
 ---
 title: One-vs-All Multiclass
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning の One-vs-All Multiclass モジュールを使用して、二項分類モデルのアンサンブルから多クラス分類モデルを作成する方法を説明します。
+description: Azure Machine Learning デザイナーで One-vs-All Multiclass モジュールを使用して二項分類モデルのアンサンブルを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: dfe01e16b55325db03e4150a33ae5c4aa5822ae2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23077d7d6b476bcca0812dcff8660376568f7dd9
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898501"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376334"
 ---
 # <a name="one-vs-all-multiclass"></a>One-vs-All Multiclass
 
@@ -26,7 +26,7 @@ ms.locfileid: "90898501"
 
 分類アルゴリズムには、3 つ以上のクラスの使用が仕様で許可されているものもあります。 考えられる結果を 2 つの値のいずれかに制限するもの (バイナリ (2 クラス) モデル) もあります。 ただし、二項分類アルゴリズムでも、さまざまな戦略を使用して多クラス分類タスクに適合させることができます。 
 
-このモジュールは、複数の出力クラスのそれぞれに対してバイナリ モデルが作成される one-versus-all 法を実装しています。 このモジュールでは、個々のクラスのこれらの各バイナリ モデルが、二項分類の問題と同様に、その補集合 (モデルの他のすべてのクラス) に対して評価されます。 次に、これらの二項分類子を実行し、信頼度スコアが最も高い予測を選択することで、予測が行われます。  
+このモジュールは、複数の出力クラスのそれぞれに対してバイナリ モデルが作成される one-versus-all 法を実装しています。 このモジュールでは、個々のクラスのこれらの各バイナリ モデルが、二項分類の問題と同様に、その補集合 (モデルの他のすべてのクラス) に対して評価されます。 その計算効率 (`n_classes` 分類子のみが必要) に加え、このアプローチの利点の 1 つに、解釈能力があります。 各クラスは、分類子別でのみ表されるため、対応する分類子を調べることによって、クラスに関する知識を得ることができます。 これは、多クラス分類で最も一般的に使用される方法であり、これは公正な既定の選択肢です。 次に、これらの二項分類子を実行し、信頼度スコアが最も高い予測を選択することで、予測が行われます。 
 
 このモジュールでは、実質的に、個々のモデルのアンサンブルが作成され、結果がマージされて、すべてのクラスを予測する単一のモデルが作成されます。 任意の二項分類子を one-versus-all モデルの基礎として使用できます。  
 

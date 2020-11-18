@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用した VMware のディザスター リカ�
 description: Azure Site Recovery を使用してオンプレミスの VMware VM を Azure にディザスター リカバリーする場合のよくある質問に対する回答を確認します。
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 421a96255e7dbbec723122fb3920dcc27da72670
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8f292e7f624b80e8e13514a714c5759d88fbe57c
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359800"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379992"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware から Azure へのレプリケーションに関するよくある質問
 
@@ -106,7 +106,7 @@ Azure Site Recovery のトランザクションは大量にあるため、通常
 Site Recovery では、オンプレミスの VMware VM と物理サーバーが Azure のマネージド ディスクにレプリケートされます。
 
 - Site Recovery のプロセス サーバーは、レプリケーション ログをターゲット リージョンのキャッシュ ストレージ アカウントに書き込みます。
-- これらのログは、 **asrseeddisk** のプレフィックスを持つ Azure マネージド ディスクの復旧ポイントを作成するために使用されます。
+- これらのログは、**asrseeddisk** のプレフィックスを持つ Azure マネージド ディスクの復旧ポイントを作成するために使用されます。
 - フェールオーバーが発生すると、選択された復旧ポイントを使用して、新しいターゲット マネージド ディスクが作成されます。 このマネージド ディスクは、Azure で VM にアタッチされます。
 - 以前 (2019 年 3 月より前) にストレージ アカウントにレプリケートされた VM は影響を受けません。
 
@@ -153,7 +153,7 @@ VMware VM を Azure にレプリケートするときは、レプリケーショ
 
 ### <a name="what-is-asrseeddisk"></a>asrseeddisk とは何ですか?
 
-すべてのソース ディスクで、データは Azure のマネージド ディスクにレプリケートされます。 このディスクには、 **asrseeddisk** のプレフィックスがあります。 ここには、ソース ディスクのコピーとすべての回復ポイントのスナップショットが格納されます。
+すべてのソース ディスクで、データは Azure のマネージド ディスクにレプリケートされます。 このディスクには、**asrseeddisk** のプレフィックスがあります。 ここには、ソース ディスクのコピーとすべての回復ポイントのスナップショットが格納されます。
 
 ### <a name="can-i-exclude-disks-from-replication"></a>レプリケーションからディスクを除外できますか?
 
@@ -176,7 +176,7 @@ Azure への VMware のレプリケーションでは、ソース VM のディ�
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>進行中のレプリケーションに影響を与えることなく、オンプレミスのマシンを新しい vCenter Server に移行できますか?
 
-いいえ。 VMware Vcenter を変更したり、移行を行ったりすると、進行中のレプリケーションに影響が及びます。 新しい vCenter Server を使用して Site Recovery を設定し、マシンのレプリケーションを再度有効にします。
+新しい vCenter にマシンを移行するには、[ガイダンス](vmware-azure-manage-vcenter.md#migrate-all-vms-to-a-new-server)を参照してください。
 
 ### <a name="can-i-replicate-to-a-cache-or-target-storage-account-that-has-a-virtual-network-with-azure-firewalls-configured-on-it"></a>仮想ネットワーク (Azure Storage ファイアウォールあり) が構成されているキャッシュまたはターゲット ストレージ アカウントにレプリケートすることはできますか?
 

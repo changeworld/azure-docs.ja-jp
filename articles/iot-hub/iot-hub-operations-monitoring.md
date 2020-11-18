@@ -1,27 +1,27 @@
 ---
 title: Azure IoT Hub 操作の監視 (非推奨) | Microsoft Docs
 description: Azure IoT Hub 操作の監視を使用して、IoT Hub に対する操作の状態をリアルタイムで監視する方法。
-author: nberdy
-manager: briz
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.author: nberdy
+ms.author: robinsh
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 559dac0f37daf612404fca839e9918e97077029e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 045d5693c4388c6285bc6983ac2a385ceac9f6d0
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538495"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408126"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub 操作の監視 (非推奨)
 
 IoT Hub の操作の監視では、IoT Hub に対する操作の状態をリアルタイムで監視することができます。 IoT Hub は、複数のカテゴリにまたがる操作のイベントを追跡します。 1 つ以上のカテゴリから IoT ハブのエンドポイントにイベントを送信して処理するように選択することができます。 データを監視してエラーがないか確認したり、データ パターンに基づいてより複雑な処理をセットアップしたりできます。
 
 >[!NOTE]
->IoT Hub の **操作の監視は非推奨になっており、2019 年 3 月 10 日をもって IoT Hub から削除される予定です** 。 IoT Hub の操作と正常性の監視については、[IoT Hub の監視](monitor-iot-hub.md)に関するページを参照してください。 廃止のスケジュールについて詳しくは、「[Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)」(Azure Monitor および Azure Resource Health による Azure IoT ソリューションの監視) をご覧ください。
+>IoT Hub の **操作の監視は非推奨になっており、2019 年 3 月 10 日をもって IoT Hub から削除される予定です**。 IoT Hub の操作と正常性の監視については、[IoT Hub の監視](monitor-iot-hub.md)に関するページを参照してください。 廃止のスケジュールについて詳しくは、「[Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)」(Azure Monitor および Azure Resource Health による Azure IoT ソリューションの監視) をご覧ください。
 
 IoT Hub では、次の 6 つのカテゴリのイベントを監視します。
 
@@ -205,7 +205,7 @@ IoT Hub での監視エンドポイントは、Event Hub と互換性のある�
 
     ![サービスの共有アクセス ポリシーの主キー](./media/iot-hub-operations-monitoring/service-key.png)
 
-次の C# コード サンプルは、Visual Studio の **Windows クラシック デスクトップ** C# コンソール アプリからの抜粋です。 このプロジェクトでは、 **WindowsAzure.ServiceBus** NuGet パッケージがインストールされています。
+次の C# コード サンプルは、Visual Studio の **Windows クラシック デスクトップ** C# コンソール アプリからの抜粋です。 このプロジェクトでは、**WindowsAzure.ServiceBus** NuGet パッケージがインストールされています。
 
 * 次の例に示されているように、接続文字列プレースホルダーを、以前にメモした **Event Hub 互換エンドポイント** とサービスの **主キー** の値に置き換えます。
 
@@ -267,8 +267,8 @@ class Program
 
 ## <a name="next-steps"></a>次のステップ
 
-IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
+Azure Monitor を使用してさらに探索し、IoT Hub を監視するには、次を参照してください。
 
-* [IoT Hub 開発者ガイド](iot-hub-devguide.md)
+* [IoT Hub の監視](monitor-iot-hub.md)
 
-* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/quickstart-linux.md)
+* [IoT Hub 操作の監視から Azure Monitor に移行する](iot-hub-migrate-to-diagnostics-settings.md)

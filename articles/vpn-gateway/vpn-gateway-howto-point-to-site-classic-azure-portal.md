@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: a66b76350da6f3b3804dac73a7aeb9f54d2e34eb
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 42b0945de55775f55f20cefdeb547cb5d6492c06
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938374"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657076"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>証明書認証 (クラシック) を使用してポイント対サイト接続を構成する
 
@@ -97,7 +97,7 @@ ms.locfileid: "91938374"
 
 ## <a name="create-certificates"></a><a name="generatecerts"></a>証明書の作成
 
-Azure は、ポイント対サイト VPN の VPN クライアントを認証するために証明書を使用します。 そのため、ルート証明書の公開キー情報を Azure にアップロードします。 それにより、その公開キーは*信頼できる*と見なされます。 信頼されたルート証明書からクライアント証明書を生成し、各クライアント コンピューターの Certificates-Current User\Personal\Certificates 証明書ストアにインストールする必要があります。 この証明書は、VNet に接続しようとするクライアントを認証するために使用されます。 
+Azure は、ポイント対サイト VPN の VPN クライアントを認証するために証明書を使用します。 そのため、ルート証明書の公開キー情報を Azure にアップロードします。 それにより、その公開キーは *信頼できる* と見なされます。 信頼されたルート証明書からクライアント証明書を生成し、各クライアント コンピューターの Certificates-Current User\Personal\Certificates 証明書ストアにインストールする必要があります。 この証明書は、VNet に接続しようとするクライアントを認証するために使用されます。 
 
 自己署名証明書を使用する場合は、特定のパラメーターを使用してその証明書を作成する必要があります。 自己署名証明書は、[PowerShell と Windows 10](vpn-gateway-certificates-point-to-site.md)、または [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) の手順を使用して作成できます。 自己署名ルート証明書を使用したり、自己署名ルート証明書からクライアント証明書を生成したりする場合は、これらの説明にある手順に従うことが重要です。 そうしないと、作成する証明書が P2S 接続との互換性がなくなり、接続エラーが表示されます。
 
@@ -202,7 +202,7 @@ Azure は、ポイント対サイト VPN の VPN クライアントを認証す�
 
 失効リストに拇印を追加することで、クライアント証明書を失効させることができます。
 
-1. クライアント証明書の拇印を取得します。 詳細については、「[方法: 証明書のサムプリントを取得する](https://msdn.microsoft.com/library/ms734695.aspx)」を参照してください。
+1. クライアント証明書の拇印を取得します。 詳細については、「[方法: 証明書のサムプリントを取得する](/dotnet/framework/wcf/feature-details/how-to-retrieve-the-thumbprint-of-a-certificate)」を参照してください。
 1. この情報をテキスト エディターにコピーし、連続した文字列になるようにスペースを削除します。
 1. **[ポイント対サイト VPN 接続]** を選択し、 **[証明書の管理]** を選択します。
 1. **[失効リスト]** を選択して **[失効リスト]** ページを開きます。
@@ -217,8 +217,8 @@ Azure は、ポイント対サイト VPN の VPN クライアントを認証す�
 
 ## <a name="next-steps"></a>次のステップ
 
-* 接続が完了したら、仮想ネットワークに仮想マシンを追加できます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/) に関するページを参照してください。
+* 接続が完了したら、仮想ネットワークに仮想マシンを追加できます。 詳細については、[Virtual Machines](../index.yml) に関するページを参照してください。
 
-* ネットワークと Linux 仮想マシンに関する詳細を理解するには、[Azure と Linux の VM ネットワークの概要](../virtual-machines/linux/network-overview.md)に関するページを参照してください。
+* ネットワークと Linux 仮想マシンに関する詳細を理解するには、[Azure と Linux の VM ネットワークの概要](../virtual-machines/network-overview.md)に関するページを参照してください。
 
 * P2S のトラブルシューティング情報については、[Azure ポイント対サイト接続のトラブルシューティング](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)に関するページを参照してください。

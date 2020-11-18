@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: a3d7386e976551d70fbbc08930b2ab5603aa5d50
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 11/06/2020
+ms.openlocfilehash: 4070f373175f3497156ced011a57e2ed7bd6e770
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91269048"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364260"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概要:Azure Resource Manager テンプレートを使用して Azure Logic Apps のデプロイを自動化する
 
@@ -288,7 +288,7 @@ Azure リソース グループ内のすべてのリソースのリソース定�
 * ロジック アプリで使用される統合アカウントの ID
 * ロジック アプリのワークフロー定義
 * 実行時に使用する値を設定する `parameters` オブジェクト
-* ロジック アプリに関するその他のリソース情報 (名前、種類、場所など)
+* ロジック アプリに関するその他のリソース情報 (名前、種類、場所、実行時の構成設定など)
 
 ```json
 {
@@ -307,7 +307,8 @@ Azure リソース グループ内のすべてのリソースのリソース定�
             },
             "definition": {<workflow-definition>},
             "parameters": {<workflow-definition-parameter-values>},
-            "accessControl": {}
+            "accessControl": {},
+            "runtimeConfiguration": {}
          },
          "name": "[parameters('LogicAppName')]", // Template parameter reference
          "type": "Microsoft.Logic/workflows",
@@ -334,7 +335,8 @@ Azure リソース グループ内のすべてのリソースのリソース定�
 | `definition` | はい | Object | ロジック アプリの基になるワークフロー定義。コード ビューに表示されるのと同じオブジェクトであり、[ワークフロー定義言語のスキーマ参照](../logic-apps/logic-apps-workflow-definition-language.md)に関するトピックで詳しく説明されています。 このワークフロー定義では、`parameters` オブジェクトによって、ロジック アプリの実行時に使用される値のパラメーターが宣言されます。 詳しくは、「[ワークフロー定義とパラメーター](#workflow-definition-parameters)」をご覧ください。 <p><p>ロジック アプリのワークフロー定義内の属性を表示するには、Azure portal または Visual Studio で "デザイン ビュー" から "コード ビュー" に切り替えるか、[Azure Resource Explorer](https://resources.azure.com) などのツールを使用します。 |
 | `parameters` | いいえ | Object | ロジック アプリの実行時に使用される[ワークフロー定義のパラメーター値](#workflow-definition-parameters)。 これらの値のパラメーター定義は、[ワークフロー定義の parameters オブジェクト](#workflow-definition-parameters)内に表示されます。 また、ロジック アプリで[マネージド コネクタ](../connectors/apis-list.md)を使用して他のサービスやシステムにアクセスしている場合、このオブジェクトには、実行時に使用する接続値を設定する `$connections` オブジェクトが含まれます。 |
 | `accessControl` | いいえ | Object | 要求トリガーまたは実行履歴の入出力に対する IP アクセスの制限など、ロジック アプリのセキュリティ属性を指定します。 詳細については、[ロジック アプリへのアクセスのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md)に関するページをご覧ください。 |
-||||
+| `runtimeConfiguration` | いいえ | Object | 実行時のロジック アプリの動作を制御する `operationOptions` プロパティを指定します。 たとえば、ロジック アプリを[高スループット モード](../logic-apps/logic-apps-limits-and-config.md#run-high-throughput-mode)で実行できます。 |
+|||||
 
 これらの Logic Apps オブジェクトのリソース定義の詳細については、「[Microsoft.Logic resource types](/azure/templates/microsoft.logic/allversions)」(Microsoft.Logic リソースの種類) を参照してください。
 
@@ -437,7 +439,7 @@ Azure リソース グループ内のすべてのリソースのリソース定�
 }
 ```
 
-<a name="secure-workflow-definition-parmameters"></a>
+<a name="secure-workflow-definition-parameters"></a>
 
 ### <a name="secure-workflow-definition-parameters"></a>ワークフロー定義のパラメーターをセキュリティで保護する
 

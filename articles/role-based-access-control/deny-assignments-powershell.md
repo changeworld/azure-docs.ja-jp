@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 648de447a08e593af28d11a3be206a2cfee80902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6cf379b051ba42be2d7df7d288f07cdc2a0002a1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84790094"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657637"
 ---
 # <a name="list-azure-deny-assignments-using-azure-powershell"></a>Azure PowerShell を使用して Azure 拒否割り当てを一覧表示する
 
@@ -32,7 +32,7 @@ ms.locfileid: "84790094"
 拒否割り当てに関する情報を取得するのに必要なものは次のとおりです:
 
 - ほとんどの [Azure 組み込みロール](built-in-roles.md)に含まれている、`Microsoft.Authorization/denyAssignments/read` アクセス許可
-- [Azure Cloud Shell の PowerShell](/azure/cloud-shell/overview) または [Azure PowerShell](/powershell/azure/install-az-ps)
+- [Azure Cloud Shell の PowerShell](../cloud-shell/overview.md) または [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="list-deny-assignments"></a>拒否割り当てを一覧表示する
 

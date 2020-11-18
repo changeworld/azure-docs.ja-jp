@@ -1,14 +1,14 @@
 ---
 title: 委任されたサブスクリプションに Azure Policy を大規模にデプロイする
 description: Azure Lighthouse によって、ポリシー定義とポリシー割り当てを複数のテナントにわたってデプロイする方法について説明します。
-ms.date: 08/12/2020
+ms.date: 11/09/2020
 ms.topic: how-to
-ms.openlocfilehash: 27d32a68c1a3806e514533efbae581aa97bc6d0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5af938c61ad3e42e36360a15c6011b54fa1e823d
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167285"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412070"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>委任されたサブスクリプションに Azure Policy を大規模にデプロイする
 
@@ -91,7 +91,11 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 }
 ```
 
+> [!NOTE]
+> 複数のテナントにポリシーをデプロイすることはできますが、現時点では、これらのテナント内の非準拠リソースに関する[コンプライアンスの詳細を表示](../../governance/policy/how-to/determine-non-compliance.md#compliance-details)することはできません。
+
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Policy](../../governance/policy/index.yml) の詳細を確認する。
 - [テナント間の管理エクスペリエンス](../concepts/cross-tenant-management-experience.md)について学習します。
+- 委任されたサブスクリプション内で[修復が可能なポリシーをデプロイする](deploy-policy-remediation.md)方法について学習します。

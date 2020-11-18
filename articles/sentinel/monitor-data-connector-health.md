@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2020
 ms.author: yelevin
-ms.openlocfilehash: 161e2d424611661619b99ecac3515aac6a8464e0
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 7d52b76601a617f62ae5b10fa38841ef2608bf49
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428520"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656992"
 ---
 # <a name="monitor-the-health-of-your-data-connectors-with-this-azure-sentinel-workbook"></a>この Azure Sentinel ブックを使用してデータ コネクタの正常性を監視する
 
@@ -42,7 +42,7 @@ ms.locfileid: "94428520"
 
 1. **[概要**] タブには、選択したワークスペースでのデータ インジェストの全般的な状態 (ボリュームのメジャー、EPS 率、および最後のログ受信時刻) が表示されます。
 
-1. **[データ収集の異常]** タブでは、テーブルとデータ ソースによってデータ収集プロセスの異常を検出できます。 各タブには、特定のテーブルの異常が表示されます ( **[全般]** タブには、テーブルのコレクションが含まれています)。 異常は、**異常スコア** を返す **series_decompose_anomalies()** 関数を使用して計算されます。 この関数については、[こちら](https://docs.microsoft.com/azure/data-explorer/kusto/query/series-decompose-anomaliesfunction?WT.mc_id=Portal-fx)を参照してください。 評価する関数に次のパラメーターを設定します。
+1. **[データ収集の異常]** タブでは、テーブルとデータ ソースによってデータ収集プロセスの異常を検出できます。 各タブには、特定のテーブルの異常が表示されます ( **[全般]** タブには、テーブルのコレクションが含まれています)。 異常は、**異常スコア** を返す **series_decompose_anomalies()** 関数を使用して計算されます。 この関数については、[こちら](/azure/data-explorer/kusto/query/series-decompose-anomaliesfunction?WT.mc_id=Portal-fx)を参照してください。 評価する関数に次のパラメーターを設定します。
 
     - **AnomaliesTimeRange**:この時刻の選択は、データ収集の異常ビューにのみ適用されます。
     - **SampleInterval**:指定された時間範囲内にデータがサンプリングされる時間間隔。 異常スコアは、最後の間隔のデータに対してのみ計算されます。

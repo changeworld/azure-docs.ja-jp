@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 05a2869152def0fc9a44defaa21f0643d9fdbb08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dffaac329f1581d9082fd8ab2c314f52b1730ab
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504878"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656022"
 ---
 # <a name="connect-data-from-azure-firewall"></a>Azure Firewall からデータを接続する
 
@@ -26,7 +26,7 @@ Azure Firewall は、Azure Virtual Network リソースを保護するクラウ�
 
 Azure Firewall ログを Azure Sentinel に接続すると、ブック内でログ データを表示し、それを使用してカスタム アラートを作成し、組み込んで、調査を改善することができます。
 
-[Azure Firewall ログの監視](https://docs.microsoft.com/azure/firewall/tutorial-diagnostics)について説明します。
+[Azure Firewall ログの監視](../firewall/firewall-diagnostics.md)について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +38,7 @@ Azure Firewall ログを Azure Sentinel に接続すると、ブック内でロ�
 
 1. データ コネクタ ギャラリーから **[Azure Firewall]** を選択し、プレビュー ペインで **[コネクタ ページを開く]** を選択します。
 
-1. 接続するログが存在するすべてのファイアウォールで**診断ログ**を有効にします。
+1. 接続するログが存在するすべてのファイアウォールで **診断ログ** を有効にします。
 
     1. **[Azure Firewall を開く >]** リンクを選択します。
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: d6df94cca46d82c3e066779cd28584c84f12fbce
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 3b9f744e414e83c103f6b9249a0ccf5020588463
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339437"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356350"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>アプリを Azure AD アプリ ギャラリーで公開する
 
@@ -97,6 +97,7 @@ Azure AD アプリ ギャラリーにアプリケーションを掲載するに�
 | モバイルベースのシングル サインアウト| √| √* |
 | モバイル アプリケーションの条件付きアクセス ポリシー| √| X |
 | モバイル アプリケーションのシームレスな MFA エクスペリエンス| √| X |
+| SCIM でのプロビジョニング| √| √ |
 | Microsoft Graph へのアクセス| √| X |
 
 * 可能ですが、Microsoft ではサンプルやガイダンスを提供していません。
@@ -261,7 +262,7 @@ OpenID Connect を使用してギャラリー内の一覧にご利用のアプ�
 
 ![ギャラリーでのパスワード SSO アプリケーションの一覧表示](./media/howto-app-gallery-listing/passwordsso.png)
 
-ユーザー プロビジョニングのために SCIM 2.0 エンドポイントを実装する場合は、示されているようにオプションを選択します。 
+ユーザー プロビジョニングのために [SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) 2.0 エンドポイントを実装している場合は、示されているようにオプションを選択します。 
 
    ![ユーザー プロビジョニングの要求](./media/howto-app-gallery-listing/user-provisioning.png)
 

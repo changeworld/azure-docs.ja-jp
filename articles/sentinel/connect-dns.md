@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: a88696ba69fdf53f5c7e15d174b126d69f4230ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7701fc6d90fd9ebc7ec29f0ffdd7d050c58c036c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85555426"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655665"
 ---
 # <a name="connect-your-domain-name-server"></a>ドメイン ネーム サーバーへの接続
 
@@ -46,11 +46,11 @@ DNS ログ接続を有効にすると、次のことが可能になります。
 | [Windows エージェント](../azure-monitor/platform/agent-windows.md) | はい | ソリューションでは、Windows エージェントから DNS 情報を収集します。 |
 | [Linux エージェント](../azure-monitor/learn/quick-collect-linux-computer.md) | いいえ | ソリューションでは、ダイレクト Linux エージェントから DNS 情報は収集しません。 |
 | [System Center Operations Manager 管理グループ](../azure-monitor/platform/om-agents.md) | はい | ソリューションでは、接続された Operations Manager 管理グループ内のエージェントから DNS 情報が収集されます。 Operations Manager エージェントから Azure Monitor への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
-| [Azure Storage アカウント](../azure-monitor/platform/collect-azure-metrics-logs.md) | いいえ | ソリューションでは、Azure Storage は使用されません。 |
+| [Azure Storage アカウント](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) | いいえ | ソリューションでは、Azure Storage は使用されません。 |
 
 ### <a name="data-collection-details"></a>データ収集の詳細
 
-DNS 分析ソリューションでは、Log Analytics エージェントがインストールされている DNS サーバーから DNS インベントリと DNS イベント関連データを収集します。 インベントリ関連データ (DNS サーバーの数、ゾーンの数、リソース レコードの数など) は、DNS PowerShell コマンドレットを実行して収集します。 データは 2 日に 1 回更新されます。 イベント関連データは、Windows Server 2012 R2 の強化された DNS ログと診断機能によって提供される[分析ログと監査ログ](https://technet.microsoft.com/library/dn800669.aspx#enhanc)からほぼリアルタイムで収集されます。
+DNS 分析ソリューションでは、Log Analytics エージェントがインストールされている DNS サーバーから DNS インベントリと DNS イベント関連データを収集します。 インベントリ関連データ (DNS サーバーの数、ゾーンの数、リソース レコードの数など) は、DNS PowerShell コマンドレットを実行して収集します。 データは 2 日に 1 回更新されます。 イベント関連データは、Windows Server 2012 R2 の強化された DNS ログと診断機能によって提供される[分析ログと監査ログ](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)#enhanc)からほぼリアルタイムで収集されます。
 
 
 ## <a name="connect-your-dns-appliance"></a>DNS アプライアンスの接続
@@ -65,7 +65,7 @@ DNS 分析ソリューションでは、Log Analytics エージェントがイ�
 2. DNS マシンが Azure VM ではない場合は、次の手順を実行します。
     1. **[Install agent on non-Azure machines]\(非 Azure マシンにエージェントをインストールする\)** をクリックします。
     1. **[ダイレクト エージェント]** ウィンドウで、 **[Download Windows agent (64 bit)]\(Windows エージェントのダウンロード (64 ビット)\)** または **[Download Windows agent (32 bit)]\(Windows エージェントのダウンロード (32 ビット)\)** を選択します。
-    1. DNS マシンにエージェントをインストールします。 **ワークスペース ID**、**主キー**、**2 次キー**をコピーし、インストール中に入力を要求されたらこれらを使用します。
+    1. DNS マシンにエージェントをインストールします。 **ワークスペース ID**、**主キー**、**2 次キー** をコピーし、インストール中に入力を要求されたらこれらを使用します。
 
 3. Log Analytics で DNS ログに関連するスキーマを使用するために、**DnsEvents** を検索します。
 
@@ -76,7 +76,7 @@ Log Analytics で、スキーマ **DnsEvents** を検索し、イベントが存
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 参照クエリが Azure Sentinel に表示されない場合、クエリが正しく表示されるように次の手順を行ってください。
-1. [ご利用のサーバーで DNS Analytics ログ](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11))をオンにします。
+1. [ご利用のサーバーで DNS Analytics ログ](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11))をオンにします。
 2. Log Analytics コレクション リストに DNSEvents が表示されることを確認します。
 3. [Azure DNS Analytics](../azure-monitor/insights/dns-analytics.md) をオンにします。
 4. Azure DNS Analytics の **Configuration** で、設定を変更して保存します。必要であれば変更を戻し、再び保存します。

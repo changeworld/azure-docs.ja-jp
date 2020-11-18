@@ -16,18 +16,18 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90838b0b613c043ae41a71c76b5e9023d21df3a6
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: e7d51aa7e75d7e94d1c2ac66d7edb92a3ef9395b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025852"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657467"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>アプリケーション プロキシ を使用したオンプレミスのアプリケーションに対する SAML シングル サインオン
 
 SAML 認証でセキュリティ保護されているオンプレミスのアプリケーションに対してシングル サインオン (SSO) を提供し、アプリケーション プロキシを通じてこれらのアプリケーションへのリモート アクセスを提供できます。 SAML によるシングル サインオンでは、ユーザーの Azure Active Directory (Azure AD) アカウントを使用して、Azure AD がアプリケーションに対する認証を行います。 Azure AD は、接続プロトコルを通してアプリケーションにシングル サインオンの情報を伝達します。 また、SAML 要求で定義するルールに基づいて、ユーザーを特定のアプリケーション ロールにマップできます。 SAML SSO に加えてアプリケーション プロキシを有効にすると、ユーザーには、アプリケーションへの外部アクセスと、シームレスな SSO エクスペリエンスが提供されます。
 
-アプリケーションでは、 **Azure Active Directory** によって発行された SAML トークンを使用できる必要があります。 この構成は、オンプレミスの ID プロバイダーを使用するアプリケーションには適用されません。 このようなシナリオの場合は、[アプリケーションを Azure AD に移行するためのリソース](migration-resources.md)に関するページを参照することをお勧めします。
+アプリケーションでは、**Azure Active Directory** によって発行された SAML トークンを使用できる必要があります。 この構成は、オンプレミスの ID プロバイダーを使用するアプリケーションには適用されません。 このようなシナリオの場合は、[アプリケーションを Azure AD に移行するためのリソース](migration-resources.md)に関するページを参照することをお勧めします。
 
 アプリケーション プロキシを使用する SAML SSO は、SAML トークンの暗号化機能でも動作します。 詳しくは、「[Azure AD SAML トークン暗号化の構成](howto-saml-token-encryption.md)」をご覧ください。
 
@@ -66,7 +66,7 @@ SAML 認証でセキュリティ保護されているオンプレミスのアプ
 
 3. アプリケーションの **外部 URL** をコピーします。 SAML 構成を完了するには、この URL が必要になります。
 
-4. テスト アカウントを使用して、 **外部 URL** によってアプリケーションを開き、アプリケーション プロキシが正しく設定されていることを確認します。 問題がある場合は、「[アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング](application-proxy-troubleshoot.md)」をご覧ください。
+4. テスト アカウントを使用して、**外部 URL** によってアプリケーションを開き、アプリケーション プロキシが正しく設定されていることを確認します。 問題がある場合は、「[アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング](application-proxy-troubleshoot.md)」をご覧ください。
 
 ## <a name="update-the-saml-configuration"></a>SAML 構成の更新
 
@@ -74,7 +74,7 @@ SAML 認証でセキュリティ保護されているオンプレミスのアプ
 
 2. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の見出しに移動し、その **[編集]** アイコン (鉛筆の形) を選択します。 アプリケーション プロキシ内で構成した **外部 URL** が、 **[識別子]** 、 **[応答 URL]** 、 **[ログアウト URL]** の各フィールドに入力されていることを確認します。 これらの URL は、アプリケーション プロキシが正常に動作するために必要です。 
 
-3. 以前に構成した **[応答 URL]** を編集して、そのドメインがアプリケーション プロキシ経由でインターネットに到達できるようにします。 たとえば、 **外部 URL** が `https://contosotravel-f128.msappproxy.net` で、元の **応答 URL** が `https://contosotravel.com/acs` の場合、元の **応答 URL** を `https://contosotravel-f128.msappproxy.net/acs` に更新する必要があります。
+3. 以前に構成した **[応答 URL]** を編集して、そのドメインがアプリケーション プロキシ経由でインターネットに到達できるようにします。 たとえば、**外部 URL** が `https://contosotravel-f128.msappproxy.net` で、元の **応答 URL** が `https://contosotravel.com/acs` の場合、元の **応答 URL** を `https://contosotravel-f128.msappproxy.net/acs` に更新する必要があります。
 
     ![基本的な SAML 構成データを入力する](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
@@ -86,7 +86,7 @@ SAML 認証でセキュリティ保護されているオンプレミスのアプ
    * SP によって開始されたフローの場合、バックエンド アプリケーションで認証トークンを受け取るための適切な **応答 URL** または Assertion Consumer Service URL が指定されていることを確認します。
 
     > [!NOTE]
-    > バックエンド アプリケーションで **応答 URL** が内部 URL である必要がある場合は、 [カスタム ドメイン](application-proxy-configure-custom-domain.md)を使用して内部 URL と外部 URL を一致させるか、マイ アプリのセキュリティで保護されたサインイン拡張機能を、ユーザーのデバイスにインストールする必要があります。 この拡張機能では、適切なアプリケーション プロキシ サービスに自動的にリダイレクトされます。 拡張機能のインストールについては、「[マイ アプリによるセキュリティで保護されたサインイン拡張機能](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)」をご覧ください。
+    > バックエンド アプリケーションで **応答 URL** が内部 URL である必要がある場合は、[カスタム ドメイン](application-proxy-configure-custom-domain.md)を使用して内部 URL と外部 URL を一致させるか、マイ アプリのセキュリティで保護されたサインイン拡張機能を、ユーザーのデバイスにインストールする必要があります。 この拡張機能では、適切なアプリケーション プロキシ サービスに自動的にリダイレクトされます。 拡張機能のインストールについては、「[マイ アプリによるセキュリティで保護されたサインイン拡張機能](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)」をご覧ください。
     
 ## <a name="test-your-app"></a>アプリをテストする
 
@@ -97,5 +97,5 @@ SAML 認証でセキュリティ保護されているオンプレミスのアプ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure AD アプリケーション プロキシを使用したシングル サインオンの提供](application-proxy-single-sign-on.md)
+- [Azure AD アプリケーション プロキシを使用したシングル サインオンの提供](./what-is-single-sign-on.md)
 - [アプリケーション プロキシのトラブルシューティング](application-proxy-troubleshoot.md)

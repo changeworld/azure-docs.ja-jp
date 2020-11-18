@@ -2,14 +2,14 @@
 title: リソース プロバイダーとリソースの種類
 description: Azure Resource Manager をサポートするリソース プロバイダーについて説明します。 ここでは、そのスキーマと利用可能な API バージョン、およびリソースをホストできるリージョンについて説明します。
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 11/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8b1a9e6d539d37fb26d8fb0e3a541415dd574e9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 702836e0dc98b06ccf6e0eeb0d0f373374c4e783
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89278889"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426461"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure リソース プロバイダーと種類
 
@@ -32,11 +32,11 @@ ms.locfileid: "89278889"
 
 ## <a name="register-resource-provider"></a>リソース プロバイダーの登録
 
-リソース プロバイダーを使用する前に、Azure サブスクリプションにリソース プロバイダーを登録する必要があります。 この手順により、サブスクリプションがリソース プロバイダーと連携するように構成されます。 登録の範囲は常にサブスクリプションです。 既定では、多数のリソース プロバイダーが自動的に登録されます。 ただし、一部のリソース プロバイダーについては、手動で登録する必要がある場合もあります。
+リソース プロバイダーを使用する前に、Azure サブスクリプションにリソース プロバイダーを登録する必要があります。 登録により、サブスクリプションがリソース プロバイダーと連携するように構成されます。 一部のリソース プロバイダーが既定で登録されています。 その他のリソース プロバイダーは、特定のアクションを実行すると自動的に登録されます。 たとえば、ポータルを使用してリソースを作成すると、通常、リソース プロバイダーが自動的に登録されます。 他のシナリオでは、場合によっては、リソース プロバイダーを手動で登録する必要があります。
 
 この記事では、リソース プロバイダーの登録状態を確認し、必要に応じて登録する方法について説明します。 リソース プロバイダーの `/register/action` 操作を実行するためのアクセス許可が必要です。 このアクセス許可は、共同作成者ロールと所有者ロールに含まれます。
 
-アプリケーション コードによって、**登録中**状態にあるリソース プロバイダーのリソースの作成がブロックされるべきではありません。 リソース プロバイダーを登録すると、サポートされているリージョンごとに操作が個別に実行されます。 リージョンにリソースを作成する際は、そのリージョンでのみ登録を完了する必要があります。 登録中の状態にあるリソース プロバイダーがブロックされないようにすることで、すべてのリージョンの完了まで待機するよりもはるかに早くアプリケーションを続行できます。
+アプリケーション コードによって、**登録中** 状態にあるリソース プロバイダーのリソースの作成がブロックされるべきではありません。 リソース プロバイダーを登録すると、サポートされているリージョンごとに操作が個別に実行されます。 リージョンにリソースを作成する際は、そのリージョンでのみ登録を完了する必要があります。 登録中の状態にあるリソース プロバイダーがブロックされないようにすることで、すべてのリージョンの完了まで待機するよりもはるかに早くアプリケーションを続行できます。
 
 サブスクリプション内に特定のリソース プロバイダーからのリソースの種類がまだある場合、そのリソース プロバイダーの登録を解除することはできません。
 
@@ -83,8 +83,6 @@ ms.locfileid: "89278889"
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 Azure ですべてのリソース プロバイダーおよびサブスクリプションの登録状態を表示するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
@@ -101,6 +99,12 @@ Microsoft.ClassicNetwork         Registered
 Microsoft.ClassicStorage         Registered
 Microsoft.CognitiveServices      Registered
 ...
+```
+
+サブスクリプションに登録されているリソース プロバイダーをすべて確認するには、次のコマンドを使用します。
+
+```azurepowershell-interactive
+ Get-AzResourceProvider -ListAvailable | Where-Object RegistrationState -eq "Registered" | Select-Object ProviderNamespace, RegistrationState | Sort-Object ProviderNamespace
 ```
 
 リソース プロバイダーを登録するには、次のコマンドを使用します。
@@ -190,7 +194,7 @@ West US
 
 Azure ですべてのリソース プロバイダーおよびサブスクリプションの登録状態を表示するには、次のコマンドを使用します。
 
-```azurecli
+```azurecli-interactive
 az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
 ```
 
@@ -206,9 +210,15 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
+サブスクリプションに登録されているリソース プロバイダーをすべて確認するには、次のコマンドを使用します。
+
+```azurecli-interactive
+az provider list --query "sort_by([?registrationState=='Registered'].{Provider:namespace, Status:registrationState}, &Provider)" --out table
+```
+
 リソース プロバイダーを登録するには、次のコマンドを使用します。
 
-```azurecli
+```azurecli-interactive
 az provider register --namespace Microsoft.Batch
 ```
 
@@ -216,7 +226,7 @@ az provider register --namespace Microsoft.Batch
 
 特定のリソース プロバイダーの情報を表示するには、次のコマンドを使用します。
 
-```azurecli
+```azurecli-interactive
 az provider show --namespace Microsoft.Batch
 ```
 
@@ -235,7 +245,7 @@ az provider show --namespace Microsoft.Batch
 
 リソース プロバイダーのリソースの種類を表示するには、次のコマンドを使用します。
 
-```azurecli
+```azurecli-interactive
 az provider show --namespace Microsoft.Batch --query "resourceTypes[*].resourceType" --out table
 ```
 
@@ -254,7 +264,7 @@ API バージョンは、リリース プロバイダーがリリースする RE
 
 リソースの種類の使用可能な API バージョンを取得するには、次のコマンドを使用します。
 
-```azurecli
+```azurecli-interactive
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].apiVersions | [0]" --out table
 ```
 
@@ -274,7 +284,7 @@ Result
 
 リソースの種類のサポートされている場所を取得するには、次のコマンドを使用します。
 
-```azurecli
+```azurecli-interactive
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].locations | [0]" --out table
 ```
 

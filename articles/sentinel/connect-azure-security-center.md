@@ -9,16 +9,16 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: yelevin
-ms.openlocfilehash: b1188e533039b0137cebb22652d9921418c41deb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b37675d46d501fc43446eafc83d6c0a02f238177
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659641"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655954"
 ---
 # <a name="connect-azure-defender-alert-data-from-azure-security-center"></a>Azure Security Center からの Azure Defender アラート データを接続する
 
-Azure Defender アラート コネクタを使用して、[Azure Security Center](../security-center/security-center-intro.md) からの Azure Defender アラートを取り込み、それらを Azure Sentinel にストリーミングします。 
+Azure Defender アラート コネクタを使用して、[Azure Security Center](../security-center/security-center-introduction.md) からの Azure Defender アラートを取り込み、それらを Azure Sentinel にストリーミングします。 
 
 ## <a name="prerequisites"></a>前提条件
 

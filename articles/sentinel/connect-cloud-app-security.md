@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel に Cloud App Security データを接続する | Microsoft Docs
-description: Microsoft Cloud App Security (MCAS) のコネクタを使用して、アラートと Cloud Discovery のログを MCAS から Azure Sentinel にストリーミングする方法を説明します。 
+description: Microsoft Cloud App Security (MCAS) のコネクタを使用して、アラートと Cloud Discovery のログを MCAS から Azure Sentinel にストリーミングする方法を説明します。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 5c67f517ffd3704644fbe8041f3ac1e7b0d1f09c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9827e93f793ef47a835aa0a5fb2005e2830a0824
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904548"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655716"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Microsoft Cloud App Security からデータを接続する 
 
-[Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) のコネクタにより、アラートと [Cloud Discovery のログ](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)を MCAS から Azure Sentinel にストリーミングできます。 これにより、クラウド アプリの可視化が可能になり、サイバー脅威を特定して対処するための高度な分析とデータの移動の制御を実行できるようになります。
+[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS) のコネクタにより、アラートと [Cloud Discovery のログ](/cloud-app-security/tutorial-shadow-it)を MCAS から Azure Sentinel にストリーミングできます。 これにより、クラウド アプリの可視化が可能になり、サイバー脅威を特定して対処するための高度な分析とデータの移動の制御を実行できるようになります。
 
 ## <a name="prerequisites"></a>前提条件
 
 - ユーザーには、ワークスペースに対する読み取りと書き込みのアクセス許可が必要です。
 - ユーザーには、ワークスペースのテナントに対するグローバル管理者またはセキュリティ管理者のアクセス許可が必要です。
-- Cloud Discovery のログを Azure Sentinel にストリーミングするには、[Microsoft Cloud App Security 内で Azure Sentinel を SIEM として有効にします](https://aka.ms/AzureSentinelMCAS)。
+- Cloud Discovery のログを Azure Sentinel にストリーミングするには、[Microsoft Cloud App Security 内で Azure Sentinel を SIEM として有効にします](/cloud-app-security/siem-sentinel)。
 
 > [!IMPORTANT]
 > Cloud Discovery ログの取り込みは、現在パブリック プレビューの段階にあります。
@@ -38,7 +38,7 @@ ms.locfileid: "90904548"
  
 ## <a name="connect-to-cloud-app-security"></a>Cloud App Security に接続する
 
-Cloud App Security が既にある場合は、[ネットワークで有効](https://docs.microsoft.com/cloud-app-security/getting-started-with-cloud-app-security)になっていることを確認します。
+Cloud App Security が既にある場合は、[ネットワークで有効](/cloud-app-security/getting-started-with-cloud-app-security)になっていることを確認します。
 Cloud App Security がデプロイされていてデータを取り込んでいる場合は、アラート データを Azure Sentinel に簡単にストリーミングすることができます。
 
 
@@ -60,4 +60,4 @@ Cloud App Security がデプロイされていてデータを取り込んでい�
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Microsoft Cloud App Security を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [組み込み](tutorial-detect-threats.md)または[カスタム](tutorial-detect-threats-custom.md)のルールを使用して、Azure Sentinel で脅威の検出を開始する。
+- [組み込み](./tutorial-detect-threats-built-in.md)または[カスタム](tutorial-detect-threats-custom.md)のルールを使用して、Azure Sentinel で脅威の検出を開始する。

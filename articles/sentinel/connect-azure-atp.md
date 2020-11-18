@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 64c1a7155d0cc4e80f97db138a0626d6e9fdc9e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0cafcbc9fa6f0fcb31f44b44dfbe4fc3e10c17d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657814"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656073"
 ---
 # <a name="connect-data-from-microsoft-defender-for-identity-formerly-azure-advanced-threat-protection"></a>Microsoft Defender for Identity (旧称 Azure Advanced Threat Protection) からデータを接続する
 
@@ -27,20 +27,20 @@ ms.locfileid: "89657814"
 > Azure Sentinel での Microsoft Defender for Identity データ コネクタは、現在パブリック プレビューです。
 > この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-[Microsoft Defender for Identity](https://docs.microsoft.com/azure-advanced-threat-protection/what-is-atp) から Azure Sentinel にシングル クリックでログをストリーミングできます。
+[Microsoft Defender for Identity](/azure-advanced-threat-protection/what-is-atp) から Azure Sentinel にシングル クリックでログをストリーミングできます。
 
 ## <a name="prerequisites"></a>前提条件
 
 - グローバル管理者またはセキュリティ管理者のアクセス許可を持つユーザー
-- Microsoft Defender for Identity のプレビュー ユーザーになり、Microsoft Defender for Identity と Microsoft Cloud App Security の統合を有効にする必要があります。 詳細については、[Microsoft Defender for Identity の統合](https://docs.microsoft.com/cloud-app-security/aatp-integration)に関するページを参照してください。
+- Microsoft Defender for Identity のプレビュー ユーザーになり、Microsoft Defender for Identity と Microsoft Cloud App Security の統合を有効にする必要があります。 詳細については、[Microsoft Defender for Identity の統合](https://www.microsoft.com/microsoft-365/identity/advance-threat-protection)に関するページを参照してください。
 
 ## <a name="connect-to-microsoft-defender-for-identity"></a>Microsoft Defender for Identity に接続する
 
-Microsoft Defender for Identity プレビュー バージョンが[お使いのネットワークで有効にされている](https://docs.microsoft.com/azure-advanced-threat-protection/install-atp-step1)ことを確認します。
+Microsoft Defender for Identity プレビュー バージョンが[お使いのネットワークで有効にされている](/azure-advanced-threat-protection/install-atp-step1)ことを確認します。
 Microsoft Defender for Identity がデプロイされ、データの取り込みを行っている場合は、不審なアラートを Azure Sentinel に簡単にストリーム配信できます。 アラートが Azure Sentinel へのストリーミングを開始するには、最大で 24 時間かかる場合があります。
 
 
-1. Microsoft Defender for Identity を Azure Sentinel に接続するには、最初に Microsoft Defender for Identity と Microsoft Cloud App Security の統合を有効にする必要があります。 これを行う方法については、[Microsoft Defender for Identity の統合](https://docs.microsoft.com/cloud-app-security/aatp-integration)に関するページを参照してください。
+1. Microsoft Defender for Identity を Azure Sentinel に接続するには、最初に Microsoft Defender for Identity と Microsoft Cloud App Security の統合を有効にする必要があります。 これを行う方法については、[Microsoft Defender for Identity の統合](https://www.microsoft.com/microsoft-365/identity/advance-threat-protection)に関するページを参照してください。
 
 1. Azure Sentinel で **[データ コネクタ]** を選択し、 **[Microsoft Defender for Identity (プレビュー)]** タイルをクリックします。
 
@@ -57,4 +57,3 @@ Microsoft Defender for Identity がデプロイされ、データの取り込み
 このドキュメントでは、Microsoft Defender for Identity を Azure Sentinel に接続する方法を学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-

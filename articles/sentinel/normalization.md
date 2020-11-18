@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 0c6129a24e6ed083114971df5f254eca54924400
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9d2cd48e3b686614f7361d2007f6f8183c2361e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931558"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657025"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Azure Sentinel での正規化
 
@@ -30,13 +30,13 @@ ms.locfileid: "90931558"
 
 さまざまなデータ型とテーブルを一緒に操作することには、課題が発生します。 さまざまなデータ型とスキーマの理解を深める必要があり、特徴を共有する (たとえば、ファイアウォール デバイスに関連する) ものであっても、個々に分析ルール、ブック、およびハンティング クエリの独自のセットを記述して使用する必要があります。 調査やハンティングに必要な、さまざまなデータ型の相関関係も難しくなります。 Azure Sentinel では、統一の正規化されたビューでさまざまなソースからのデータを処理するためのシームレスなエクスペリエンスが提供されます。
 
-Azure Sentinel の**Common Information Model** は、次の 3 つの側面で構成されています。
+Azure Sentinel の **Common Information Model** は、次の 3 つの側面で構成されています。
 
-- **正規化されたスキーマ**では、簡単に使用して、統一された機能を構築できる予測可能なイベントの種類 (テーブル) の一般的なセットがカバーされています。 さらに、このスキーマには、正規化された列の規則と、値と形式の標準化 (IP アドレスなどのデータの標準の一貫性のある表現) の定義も含まれます。
+- **正規化されたスキーマ** では、簡単に使用して、統一された機能を構築できる予測可能なイベントの種類 (テーブル) の一般的なセットがカバーされています。 さらに、このスキーマには、正規化された列の規則と、値と形式の標準化 (IP アドレスなどのデータの標準の一貫性のある表現) の定義も含まれます。
 
-- **パーサー**は、さまざまな種類の既存のデータを正規化されたスキーマにマップします。 モデルに従って、クエリ時 (関数を使用) またはインジェスト時に、データを正規化されたスキーマに解析できます。 現時点では、クエリ時の解析のみがサポートされています。
+- **パーサー** は、さまざまな種類の既存のデータを正規化されたスキーマにマップします。 モデルに従って、クエリ時 (関数を使用) またはインジェスト時に、データを正規化されたスキーマに解析できます。 現時点では、クエリ時の解析のみがサポートされています。
 
-- **各正規化されたスキーマの内容**には、分析ルール、対話型ブック、ハンティング クエリ、および追加の内容が含まれます。
+- **各正規化されたスキーマの内容** には、分析ルール、対話型ブック、ハンティング クエリ、および追加の内容が含まれます。
 
 ### <a name="current-release"></a>現在のリリース
 
@@ -72,9 +72,9 @@ Azure Sentinel のお客様に固有の Log Analytics プラットフォーム�
 
 ### <a name="what-is-parsing"></a>解析とは
 
-定義済みの正規化されたテーブルの基本セットが提供されているので、データをそれらのテーブルに変換 (解析/マップ) する必要があります。 つまり、特定のデータを、その生の形式から、正規化されたスキーマの既知の列に抽出します。 Azure Sentinel の解析は**クエリ時**に行われます。パーサーは、既存のテーブル (CommonSecurityLog、カスタム ログ テーブル、syslog など) のデータを、正規化されたテーブル スキーマに変換する Log Analytics ユーザー関数 (Kusto Query Language (KQL) を使用して) として構築されています。
+定義済みの正規化されたテーブルの基本セットが提供されているので、データをそれらのテーブルに変換 (解析/マップ) する必要があります。 つまり、特定のデータを、その生の形式から、正規化されたスキーマの既知の列に抽出します。 Azure Sentinel の解析は **クエリ時** に行われます。パーサーは、既存のテーブル (CommonSecurityLog、カスタム ログ テーブル、syslog など) のデータを、正規化されたテーブル スキーマに変換する Log Analytics ユーザー関数 (Kusto Query Language (KQL) を使用して) として構築されています。
 
-Azure Sentinel でまだサポートされていない他の種類の解析は、**インジェスト時**に行われます。データをそのデータ ソースから取り込まれると同時に、正規化されたテーブルに直接収集できます。 インジェスト時の解析では、関数を使用する必要なくデータ モデルが直接クエリされるため、パフォーマンスが向上します。
+Azure Sentinel でまだサポートされていない他の種類の解析は、**インジェスト時** に行われます。データをそのデータ ソースから取り込まれると同時に、正規化されたテーブルに直接収集できます。 インジェスト時の解析では、関数を使用する必要なくデータ モデルが直接クエリされるため、パフォーマンスが向上します。
 
 ### <a name="using-query-time-parsers"></a>クエリ時パーサーの使用
 
@@ -97,7 +97,7 @@ Azure Sentinel でまだサポートされていない他の種類の解析は�
 
     1. **カテゴリ**: 既存のカテゴリを選択するか、新しいカテゴリ (*Normalizednetworksessionsparc* など) を作成できます
     
-        :::image type="content" source="./media/normalization/save-new-parser.png" alt-text="新しいパーサーをインストールする":::
+        :::image type="content" source="./media/normalization/save-new-parser.png" alt-text="パーサーを保存する":::
 
 パーサーを適切に使用するには、Empty ネットワーク スキーマ パーサー (これにより、すべてのネットワーク セッション スキーマのフィールドの空の表形式ビューが作成されます) と Network メタパーサー (これにより、すべての有効なパーサーを結合して、ネットワーク スキーマのさまざまなソースからのデータの単一ビューが作成されます) もインストールする必要があります。 これらの 2 つのパーサーのインストールは、前述の手順と同様の方法で行います。
 
@@ -107,15 +107,15 @@ Azure Sentinel でまだサポートされていない他の種類の解析は�
 
 有効にすると、メタパーサーを使用して、現在有効なすべてのパーサーの統一されたビューに対してクエリを実行できます。 これを行うには、Sentinel ログ ページにアクセスし、メタパーサーに対してクエリを実行します。
 
-:::image type="content" source="./media/normalization/query-parser.png" alt-text="新しいパーサーをインストールする":::
+:::image type="content" source="./media/normalization/query-parser.png" alt-text="パーサーのクエリ":::
  
 [クエリ エクスプローラー] をクリックして、Sentinel ログ ページのクエリ エクスプローラーを使用して、メタパーサーや個々のパーサーにアクセスすることもできます。
 
-:::image type="content" source="./media/normalization/query-explorer.png" alt-text="新しいパーサーをインストールする":::
+:::image type="content" source="./media/normalization/query-explorer.png" alt-text="クエリ エクスプローラー":::
 
 右側のウィンドウで、[保存されたクエリ] セクションを展開し、'NormalizedNetworkParsers' フォルダー (または、パーサーの作成時に選択したカテゴリ名) を見つけます。
 
-:::image type="content" source="./media/normalization/find-parser.png" alt-text="新しいパーサーをインストールする":::
+:::image type="content" source="./media/normalization/find-parser.png" alt-text="パーサーの検索":::
 
 個々のパーサーをクリックして、そこで使用されている基になる関数を確認し、実行できます (前述のように、そのエイリアスによって直接アクセスすることもできます)。 パーサーによっては、利便性のため、元のフィールドと正規化されたフィールドを横に並べて保持できます。 これは、パーサーのクエリで簡単に編集できます。
 
@@ -124,15 +124,15 @@ Azure Sentinel でまだサポートされていない他の種類の解析は�
 上記の手順 (クエリ エクスプローラーでのパーサーの検索) を繰り返すことができます。関連パーサーをクリックし、その関数の実装を確認します。
 たとえば、メタパーサーを編集して、個々のパーサーを追加または削除できます。
 
-:::image type="content" source="./media/normalization/customize-parser.png" alt-text="新しいパーサーをインストールする":::
+:::image type="content" source="./media/normalization/customize-parser.png" alt-text="パーサーのカスタマイズ":::
  
 関数を変更したら、[保存] を再度クリックし、同じ名前、エイリアス、およびカテゴリを使用します。 上書きダイアログが開きます。[OK] をクリックします。
 
-:::image type="content" source="./media/normalization/are-you-sure.png" alt-text="新しいパーサーをインストールする":::
+:::image type="content" source="./media/normalization/are-you-sure.png" alt-text="確認":::
 
 #### <a name="additional-information"></a>関連情報
 
-Log Analytics の[保存されたクエリ](../azure-monitor/log-query/saved-queries.md) (クエリ時パーサーの実装) の詳細を確認してください。
+Log Analytics の[保存されたクエリ](../azure-monitor/log-query/example-queries.md) (クエリ時パーサーの実装) の詳細を確認してください。
 
 
 ## <a name="next-steps"></a>次のステップ

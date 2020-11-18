@@ -3,12 +3,12 @@ title: Service Fabric クラスターをスケールインまたはスケール�
 description: ノードの種類/仮想マシン スケール セットごとに自動スケール ルールを設定することにより、需要に合わせて Service Fabric クラスターをスケールインまたはスケールアウトします。 Service Fabric クラスターのノードの追加または削除
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: c9393ca4531dea58859a4fc60509524e9c4a0b7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ee04c73b75d6b335e450ff816c51f0a3089b918
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86246488"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409962"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>クラスターをスケールインまたはスケールアウトする
 
@@ -54,7 +54,6 @@ Get-AzVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale se
 > [!NOTE]
 > スケールイン シナリオでは、ノードの種類の[耐久性レベル][durability]が Gold または Silver でない限り、適切なノードの名前を指定して、[Remove-ServiceFabricNodeState コマンドレット](/powershell/module/servicefabric/remove-servicefabricnodestate)を呼び出す必要があります。 Bronze の耐久性の場合、一度に 1 つを超えるノードのスケールインは推奨されません。
 > 
-> 
 
 ## <a name="manually-add-vms-to-a-node-typevirtual-machine-scale-set"></a>ノードの種類/仮想マシン スケール セットへの VM の手動の追加
 
@@ -68,7 +67,7 @@ Get-AzVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale se
 「[クイック スタート: テンプレート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing)」のサンプル/手順に従って、各ノードの種類の VM 数を変更します。 
 
 ### <a name="add-vms-using-powershell-or-cli-commands"></a>PowerShell または CLI のコマンドを使用した VM の追加
-次のコードでは、スケール セットを名前で取得し、スケール セットの**容量**を 1 ずつ増やします。
+次のコードでは、スケール セットを名前で取得し、スケール セットの **容量** を 1 ずつ増やします。
 
 ```powershell
 $scaleset = Get-AzVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
@@ -97,6 +96,9 @@ Service Fabric システム サービスは、クラスター内のプライマ�
 ### <a name="remove-the-service-fabric-node"></a>Service Fabric ノードの削除
 
 ノード状態を手動で削除するための手順は、*Bronze* の耐久性のノードの種類にのみ適用されます。  持続性レベルが *Silver* および *Gold* の場合、これらの手順はプラットフォームによって自動的に実行されます。 耐久性の詳細については、[Service Fabric クラスターの容量計画][durability]に関する記事をご覧ください。
+
+>[!NOTE]
+> 持続性レベルが Gold または Silver である任意の仮想マシン スケール セットのノードを最小数である 5 つ保持します。 このしきい値を下回ってスケールインした場合は、クラスターがエラー状態になり、削除されたノードを手動でクリーンアップすることが必要になります。
 
 クラスターのノードをアップグレード ドメインと障害ドメインに均等に分散させ続け、それによって均等な使用を実現するためには、最も最近作成されたノードが最初に削除されるようにする必要があります。 言い換えれば、ノードは作成とは逆の順序で削除される必要があります。 最も最近作成されたノードは、`virtual machine scale set InstanceId` プロパティの値が最大のノードです。 下のコード例では、最も最近作成されたノードが返されます。
 
@@ -239,6 +241,9 @@ VM が削除されたときに、ノードが削除されるようにするに�
 
 1. クラスターのノードの種類に Gold または Silver の耐久性レベルを選択します。これにより、インフラストラクチャの統合が提供されます。 これによって、スケールインしたときに、システム サービス (FM) の状態から自動的にノードが削除されます。
 [耐久性レベルの詳細](service-fabric-cluster-capacity.md)に関するページをご覧ください
+
+> [!NOTE]
+> 持続性レベルが Gold または Silver である任意の仮想マシン スケール セットのノードを最小数である 5 つ保持します。 このしきい値を下回ってスケールインした場合は、クラスターがエラー状態になり、削除されたノードを手動でクリーンアップすることが必要になります。
 
 2. VM インスタンスがスケールインされたら、[Remove-ServiceFabricNodeState コマンドレット](/powershell/module/servicefabric/remove-servicefabricnodestate)を呼び出す必要があります。
 

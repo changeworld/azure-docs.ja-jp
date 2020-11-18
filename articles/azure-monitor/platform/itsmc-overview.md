@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: ecafc0c81a6614a914d8cad3d2c35fd04544b8f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 90a5f0f84c72895a8450a42260b07f6dbea15e37
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102022"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94428029"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
 
@@ -28,6 +28,9 @@ ITSMC は、次の ITSM ツールとの接続をサポートしています。
 -   System Center Service Manager
 -   Provance
 -   Cherwell
+
+   >[!NOTE]
+> 2020 年 10 月 1 日以降、新規のお客様が Cherwell と Provance ITSM を Azure Alert と統合することはできなくなります。 新しい ITSM 接続はサポートされません。 既存の ITSM 接続はサポートされます。
 
 ITSMC を使用すると、次のことができます。
 
@@ -57,7 +60,7 @@ ITSMC を使用すると、次のことができます。
 
 3. **[OMS ワークスペース]** セクションで、ITSMC をインストールする Azure Log Analytics ワークスペースを選択します。
    >[!NOTE]
-   > * 現在進行中の、Microsoft Operations Management Suite (OMS) から Azure Monitor への移行の一環として、OMS ワークスペースは、" *Log Analytics ワークスペース* " と呼ばれるようになっています。
+   > * 現在進行中の、Microsoft Operations Management Suite (OMS) から Azure Monitor への移行の一環として、OMS ワークスペースは、"*Log Analytics ワークスペース*" と呼ばれるようになっています。
    > * ITSMC は、以下のリージョンの Log Analytics ワークスペースにのみインストールできます:米国東部、米国西部 2、米国中南部、US Gov アリゾナ、US Gov バージニア、カナダ中部、西ヨーロッパ、英国南部、東南アジア、東日本、インド中部、オーストラリア南東部。
 
 
@@ -65,7 +68,7 @@ ITSMC を使用すると、次のことができます。
 
    ![[Log Analytics ワークスペース] セクションを示すスクリーンショット。](media/itsmc-overview/itsmc-solution-workspace.png)
    >[!NOTE]
-   >現在進行中の、Microsoft Operations Management Suite (OMS) から Azure Monitor への移行の一環として、OMS ワークスペースは、" *Log Analytics ワークスペース* " と呼ばれるようになっています。
+   >現在進行中の、Microsoft Operations Management Suite (OMS) から Azure Monitor への移行の一環として、OMS ワークスペースは、"*Log Analytics ワークスペース*" と呼ばれるようになっています。
 
 5. **[OK]** を選択します。
 
@@ -87,7 +90,7 @@ ITSMC をインストールしたら、接続を作成できます。
 
 お使いの ITSM ツールを準備したら、以下の手順を完了して接続を作成します。
 
-1. **[すべてのリソース]** で、 **ServiceDesk( *<実際のワークスペース名>* )** を探します。
+1. **[すべてのリソース]** で、**ServiceDesk( *<実際のワークスペース名>* )** を探します。
 
    ![Azure portal の最新のリソースを示すスクリーンショット。](media/itsmc-overview/itsm-connections.png)
 
@@ -111,7 +114,7 @@ ITSMC をインストールしたら、接続を作成できます。
 
 ## <a name="template-definitions"></a>テンプレート定義
    作業項目の種類として、ITSM ツールによって定義されているテンプレートを使用できるものがあります。
-テンプレートを使用すると、ユーザーはアクション グループの一部として定義されている固定値に従って自動的に入力されるフィールドを定義できます。 テンプレートは ITSM ツールで定義します。
+テンプレートを使用すると、ユーザーはアクション グループの一部として定義されている固定値に従って自動的に入力されるフィールドを定義できます。 テンプレートは ITSM ツールで定義します。 アクション グループの定義で使用するテンプレートを定義できます。
       
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>Azure アラートから ITSM 作業項目を作成する
 
@@ -142,13 +145,16 @@ ITSM 接続を作成したら、ITSM ツールで、Azure アラートに基づ�
 
 7. **作業項目** の種類を選択します。
 
-8. 標準状態のフィールドに固定値を入力する場合は、 **[カスタム テンプレートを使用する]** を選択します。 それ以外の場合は、 **[テンプレート]** の一覧で既存の[テンプレート](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions)を選択し、テンプレート フィールドに固定値を入力します。
+8. 標準状態のフィールドに固定値を入力する場合は、 **[カスタム テンプレートを使用する]** を選択します。 それ以外の場合は、 **[テンプレート]** の一覧で既存の [テンプレート](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions)を選択し、テンプレート フィールドに固定値を入力します。
 
 9. **[各構成項目に個々の作業項目を作成する]** を選択すると、すべての構成項目に独自の作業項目が含められます。 構成項目ごとに 1 つの作業項目が存在することになります。 これは、作成されるアラートに従って更新されます。
 
-   **[各構成項目に個々の作業項目を作成する]** チェック ボックスをオフにすると、すべてのアラートに新しい作業項目が作成されます。 構成項目ごとに、複数のアラートが存在する場合があります。
+   * 作業項目ドロップダウン "インシデント" または "アラート" で選択した場合: **[各構成項目に個々の作業項目を作成する]** チェック ボックスをオフにすると、すべてのアラートに新しい作業項目が作成されます。 構成項目ごとに、複数のアラートが存在する場合があります。
 
    ![[ITSM チケット] ウィンドウを示すスクリーンショット。](media/itsmc-overview/itsm-action-configuration.png)
+   
+   * 作業項目ドロップダウン "イベント" で選択した場合:ラジオ ボタン選択で **[各ログ エントリに対して、個々の作業項目を作成します]** を選択した場合、アラートのたびに新しい作業項目が作成されます。 ラジオ ボタン選択で **[各構成項目に個々の作業項目を作成する]** を選択すると、すべての構成項目に独自の作業項目が含められます。
+   ![[ITSM チケット] ウィンドウを示すスクリーンショット。](media/itsmc-overview/itsm-action-configuration-event.png)
 
 10. **[OK]** を選択します。
 
@@ -299,7 +305,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 
 ## <a name="troubleshoot-itsm-connections"></a>ITSM 接続のトラブルシューティング
-- 接続対象ソースの UI からの接続が失敗し、" **接続の保存中にエラーが発生しました** " というメッセージが表示される場合は、次の手順を実行してください。
+- 接続対象ソースの UI からの接続が失敗し、"**接続の保存中にエラーが発生しました**" というメッセージが表示される場合は、次の手順を実行してください。
    - ServiceNow、Cherwell、Provance の接続の場合:  
      - 各接続のユーザー名、パスワード、クライアント ID、クライアント シークレットが正しく入力されていることを確認します。  
      - 対応する ITSM 製品で、接続を作成するための十分な特権を持っていることを確認します。  
@@ -313,7 +319,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager Web アプリのデプロイのトラブルシューティング
 -   Web アプリのデプロイに関する問題がある場合は、サブスクリプションでリソースを作成/デプロイするためのアクセス許可があることを確認します。
--   [スクリプト](itsmc-service-manager-script.md)の実行時に " **オブジェクト参照がオブジェクトのインスタンスに設定されていません** " というエラーが発生する場合は、 **[ユーザー構成]** セクションに有効な値を入力したことを確認します。
+-   [スクリプト](itsmc-service-manager-script.md)の実行時に "**オブジェクト参照がオブジェクトのインスタンスに設定されていません**" というエラーが発生する場合は、 **[ユーザー構成]** セクションに有効な値を入力したことを確認します。
 -   Service Bus Relay 名前空間を作成できない場合は、必要なリソース プロバイダーがサブスクリプションに登録されていることを確認します。 登録されていない場合は、Azure portal で、Service Bus Relay 名前空間を手動で作成します。 これは、Azure portal で[ハイブリッド接続を作成する](./itsmc-connections.md#configure-the-hybrid-connection)ときに作成することもできます。
 
 

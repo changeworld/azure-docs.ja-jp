@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 64d45861f37e2015b747a4db0feb2d32e68fe893
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 85ff3bed2a648f852c311fefa8513622c2a48285
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427319"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376538"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>セキュア エクスポートを使用して Azure を ITSM ツールに接続する
 
@@ -28,8 +28,8 @@ ITSMC では、ユーザー名とパスワードの資格情報が使用され�
 
 セキュア エクスポートのアーキテクチャには、次の新機能が導入されています。
 
-* **新しいアクション グループ** :アラートは、ITSMC で使用される ITSM アクション グループではなく、セキュア Webhook アクション グループを介して ITSM ツールに送信されます。
-* **Azure AD の認証** :認証は、ユーザー名とパスワードの資格情報ではなく Azure AD を通じて行われます。
+* **新しいアクション グループ**:アラートは、ITSMC で使用される ITSM アクション グループではなく、セキュア Webhook アクション グループを介して ITSM ツールに送信されます。
+* **Azure AD の認証**:認証は、ユーザー名とパスワードの資格情報ではなく Azure AD を通じて行われます。
 
 ## <a name="secure-export-data-flow"></a>セキュア エクスポートのデータ フロー
 
@@ -49,8 +49,8 @@ ITSMC では、ユーザー名とパスワードの資格情報が使用され�
 
 統合の主な利点は次のとおりです。
 
-* **認証の強化** :Azure AD は、ITSMC で一般的に発生するタイムアウトを発生させることなく、より安全な認証を提供します。
-* **アラートが ITSM ツールで解決される** :メトリック アラートは、"発生" と "解決済み" の状態を実装しています。 条件が満たされると、アラートの状態は "発生" になります。 条件が満たされなくなると、アラートの状態は "解決済み" になります。 ITSMC では、アラートを自動的に解決することはできません。 セキュア エクスポートでは、解決された状態が ITSM ツールに送られるため、自動的に更新されます。
+* **認証の強化**:Azure AD は、ITSMC で一般的に発生するタイムアウトを発生させることなく、より安全な認証を提供します。
+* **アラートが ITSM ツールで解決される**:メトリック アラートは、"発生" と "解決済み" の状態を実装しています。 条件が満たされると、アラートの状態は "発生" になります。 条件が満たされなくなると、アラートの状態は "解決済み" になります。 ITSMC では、アラートを自動的に解決することはできません。 セキュア エクスポートでは、解決された状態が ITSM ツールに送られるため、自動的に更新されます。
 * **[共通アラート スキーマ](./alerts-common-schema.md)** :ITSMC では、アラートのペイロードのスキーマは、アラートの種類によって異なります。 セキュア エクスポートでは、すべてのアラートの種類に共通のスキーマがあります。 この共通スキーマには、すべてのアラートの種類の CI が含まれています。 すべてのアラートの種類で、その CI を CMDB にバインドすることができます。
 
 ITSM Connector ツールの使用を開始するには、次の手順を実行します。
@@ -60,6 +60,7 @@ ITSM Connector ツールの使用を開始するには、次の手順を実行�
 3. パートナー環境を構成します。 
 
 セキュア エクスポートは、次の ITSM ツールとの接続をサポートしています。
+* [ServiceNow](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#connect-servicenow-to-azure-monitor)
 * [BMC Helix](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#connect-bmc-helix-to-azure-monitor)
 
 ## <a name="register-with-azure-active-directory"></a>Azure Active Directory に登録する
@@ -102,6 +103,26 @@ ITSM Connector ツールの使用を開始するには、次の手順を実行�
 1. セキュア エクスポート定義の URI を取得します。
 2. ITSM ツールのフローに従った定義。
 
+
+### <a name="connect-servicenow-to-azure-monitor"></a>ServiceNow を Azure Monitor に接続する
+
+以降のセクションでは、ServiceNow 製品と Azure のセキュア エクスポートを接続する方法について詳しく説明します。
+
+### <a name="prerequisites"></a>前提条件
+
+次の前提条件が満たされていることを確認します。
+
+* Azure AD が登録されている。
+* サポートされているバージョンの ServiceNow Event Management - ITOM (バージョン Orlando 以降) がある。
+
+### <a name="configure-the-servicenow-connection"></a>ServiceNow 接続の構成
+
+1. リンク https://(instance name).service-now.com/api/sn_em_connector/em/inbound_event?source=azuremonitor を使用します。これは、セキュリティで保護された定義の URI です。
+
+2. バージョンに応じた手順に従ってください。
+   * [パリ](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
+   * [Orlando](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
+
 ### <a name="connect-bmc-helix-to-azure-monitor"></a>BMC Helix を Azure Monitor に接続する
 
 以降のセクションでは、BMC Helix 製品と Azure のセキュア エクスポートを接続する方法について詳細に説明します。
@@ -135,15 +156,18 @@ ITSM Connector ツールの使用を開始するには、次の手順を実行�
    4. **[構成]** を選択します。
    5. **[新しい接続を追加]** 構成を選択します。
    6. 構成セクションの情報を入力します。
-      - **Name** :名前を指定します。
-      - **承認の種類** : **NONE**
-      - **説明** :名前を指定します。
-      - **サイト** : **Cloud**
-      - **インスタンスの数** : **2** (既定値)。
-      - **チェック** :既定では、使用が有効になるように選択されています。
+      - **Name**:名前を指定します。
+      - **承認の種類**:**NONE**
+      - **説明**:名前を指定します。
+      - **サイト**:**Cloud**
+      - **インスタンスの数**:**2** (既定値)。
+      - **チェック**:既定では、使用が有効になるように選択されています。
       - Azure テナント ID と Azure アプリケーション ID は、前に定義したアプリケーションから取得されます。
 
 ![BMC の構成を示すスクリーンショット。](media/it-service-management-connector-secure-webhook-connections/bmc-configuration.png)
+
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

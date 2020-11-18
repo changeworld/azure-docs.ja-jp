@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 658e7f206f892c9dc241aab228aa933884f95b94
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 17acb2bc5e96a136f31371c0be912c2c758c0f76
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675634"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443859"
 ---
 # <a name="scenario-single-page-application"></a>シナリオ:シングルページ アプリ
 
@@ -38,7 +38,7 @@ Microsoft ID プラットフォームにより、シングルページ アプリ
 
 ![シングルページ アプリケーション認証](./media/scenarios/spa-app-auth.svg)
 
-- [OAuth 2.0 暗黙的フロー](./v2-oauth2-implicit-grant-flow.md)。 暗黙的な許可フローでは、 **ID** と **アクセス** トークンを取得することがアプリケーションに許可されます。 認証コード フロートは異なり、暗黙的な許可フローでは **更新トークン** が返されません。
+- [OAuth 2.0 暗黙的フロー](./v2-oauth2-implicit-grant-flow.md)。 暗黙的な許可フローでは、**ID** と **アクセス** トークンを取得することがアプリケーションに許可されます。 認証コード フロートは異なり、暗黙的な許可フローでは **更新トークン** が返されません。
 
 ![シングルページ アプリケーション暗黙的](./media/scenarios/spa-app.svg)
 
@@ -58,5 +58,4 @@ Microsoft ID プラットフォームにより、シングルページ アプリ
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [アプリの登録](scenario-spa-app-registration.md)
+このシナリオの次の記事「[アプリの登録](scenario-spa-app-registration.md)」に進みます。

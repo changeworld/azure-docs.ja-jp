@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: yelevin
-ms.openlocfilehash: e8e44f69965af1987bd5f023644d966b3caf1c77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5d98a834ed4f87fb95a13e666967a7b2d80975d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505790"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656056"
 ---
 # <a name="connect-data-from-azure-ddos-protection"></a>Azure DDoS Protection からデータを接続する
 
@@ -22,15 +22,15 @@ ms.locfileid: "89505790"
 > Azure Sentinel の Azure DDoS Protection データ コネクタは、現在パブリック プレビュー段階にあります。
 > この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-分散型サービス拒否 (DDoS) 攻撃では、アプリケーションのリソースを使い果たし、正当なユーザーがアプリケーションを使用できなくなるようにすることが試みられます。 DDoS 攻撃は、インターネット経由で一般に到達可能なすべてのエンドポイントで実行できます。 [Azure DDoS Protection](../virtual-network/ddos-protection-overview.md) をアプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する堅固な防御が提供されます。 Azure DDoS Protection ログを Azure Sentinel に接続すると、ブック内でのログ データの表示、ログ データを使用したカスタム アラートの作成、および調査改善に向けたログ データの組み込みを行うことができます。 
+分散型サービス拒否 (DDoS) 攻撃では、アプリケーションのリソースを使い果たし、正当なユーザーがアプリケーションを使用できなくなるようにすることが試みられます。 DDoS 攻撃は、インターネット経由で一般に到達可能なすべてのエンドポイントで実行できます。 [Azure DDoS Protection](../ddos-protection/ddos-protection-overview.md) をアプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する堅固な防御が提供されます。 Azure DDoS Protection ログを Azure Sentinel に接続すると、ブック内でのログ データの表示、ログ データを使用したカスタム アラートの作成、および調査改善に向けたログ データの組み込みを行うことができます。 
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可が必要です。
 
-- [Azure の DDoS 標準保護プラン](../virtual-network/manage-ddos-protection.md#create-a-ddos-protection-plan)が構成されている必要があります。
+- [Azure の DDoS 標準保護プラン](../ddos-protection/manage-ddos-protection.md#create-a-ddos-protection-plan)が構成されている必要があります。
 
-- [Azure DDoS Standard が有効になっている仮想ネットワーク](../virtual-network/manage-ddos-protection.md#enable-ddos-for-a-new-virtual-network)が構成されている必要があります。
+- [Azure DDoS Standard が有効になっている仮想ネットワーク](../ddos-protection/manage-ddos-protection.md#enable-ddos-protection-for-a-new-virtual-network)が構成されている必要があります。
 
 ## <a name="connect-to-azure-ddos-protection"></a>Azure DDoS Protection に接続する
     
@@ -38,7 +38,7 @@ ms.locfileid: "89505790"
 
 1. データ コネクタ ギャラリーから **[Azure DDoS Protection]** を選択し、プレビュー ペインで **[Open Connector Page]\(コネクタ ページを開く\)** を選択します。
 
-1. 接続するログが存在するすべてのファイアウォールで**診断ログ**を有効にします。
+1. 接続するログが存在するすべてのファイアウォールで **診断ログ** を有効にします。
 
     1. **[Open Diagnostics settings]\(診断設定を開く\)** リンクを選択し、リストから **[パブリック IP アドレス]** リソースを選択します。
 
