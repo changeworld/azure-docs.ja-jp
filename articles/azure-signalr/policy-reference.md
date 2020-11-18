@@ -1,18 +1,18 @@
 ---
 title: Azure SignalR 用の組み込みポリシー定義
 description: Azure SignalR 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 author: sffamily
 ms.author: zhshang
 ms.service: signalr
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: f02861dd44203a0f2ec28f4c7f7a50a81ce21860
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 8c87bcbfbc78f349d8743cd4440a4d9028dddb27
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317810"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94745607"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-signalr"></a>Azure SignalR 用の Azure Policy 組み込み定義
 

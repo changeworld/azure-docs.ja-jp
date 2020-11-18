@@ -1,25 +1,25 @@
 ---
 title: Azure Cosmos DB 用の組み込みポリシー定義
 description: Azure Cosmos DB 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: reference
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 97458f17bcb74e54e0b0453c2a279703bb392f9f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 877a46d8a42b1ca1a1e41178347889d8ef513007
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080636"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744518"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cosmos-db"></a>Azure Cosmos DB 用の Azure Policy 組み込み定義
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 このページは、Azure Cosmos DB 用の [Azure Policy](../governance/policy/overview.md) 組み込みポリシー定義のインデックスです。 他のサービス用の Azure Policy 組み込みについては、[Azure Policy 組み込み定義](../governance/policy/samples/built-in-policies.md)に関するページをご覧ください。
 
-各組み込みポリシー定義の名前は、Azure portal のポリシー定義にリンクしています。 **[バージョン]** 列のリンクを使用すると、 [Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy)のソースを表示できます。
+各組み込みポリシー定義の名前は、Azure portal のポリシー定義にリンクしています。 **[バージョン]** 列のリンクを使用すると、[Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy)のソースを表示できます。
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 

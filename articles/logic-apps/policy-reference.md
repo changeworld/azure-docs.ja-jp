@@ -1,16 +1,16 @@
 ---
 title: Azure Logic Apps 用の組み込みポリシー定義
 description: Azure Logic Apps 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: reference
 ms.suite: integration
 ms.custom: subject-policy-reference
-ms.openlocfilehash: ee5a0c379b5c7a8fa2108537d3edf215c21205bd
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 7bfb8e392a22e53ce44d1e75a1443b09197a5979
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308244"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94745164"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-logic-apps"></a>Azure Logic Apps 用の Azure Policy 組み込み定義
 

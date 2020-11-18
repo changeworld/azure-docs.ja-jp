@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/24/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: da3194559ef5ec4c325f7dc15591f57c0d9c38c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad86ebe1ca397004745e75dd279ea0a7cfe8348e
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91368267"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94746569"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商用マーケットプレースのベネフィット
 
@@ -26,7 +26,7 @@ Marketplace 報酬は、認識アクティビティから始めて最初の顧�
 
 プログラムでは正のフィードバック ループが作成されます。成長の各段階でのベネフィットは、次の段階に進むように設計されており、パートナーは、Microsoft の現場と協力し、商用マーケットプレースをラットフォームとして利用することで Microsoft のチャネルを通して、Microsoft の顧客に対するビジネスを拡大できます。
 
-ベネフィットは、オファーが[リスト、試用版、トランザクション](determine-your-listing-type.md#choose-a-listing-option)のいずれであるかによって異なります。
+ベネフィットは、オファーが[リスト、試用版、トランザクション](determine-your-listing-type.md#available-listing-options-by-offer-type)のいずれであるかによって異なります。
 
 パートナーがオファーを発行すると、資格に基づいて、報酬チームのメンバーから連絡があります。
 

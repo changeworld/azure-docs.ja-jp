@@ -3,12 +3,12 @@ title: PowerShell での Azure Application Insights の自動化 | Microsoft Doc
 description: Azure Resource Manager テンプレートを使用して、PowerShell でのリソース、アラート、および可用性テストの作成および管理を自動化します。
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: b5f3ba12fe8a730ce45e64b896ccc9c32b17b30c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58ed537a8fa6622756e7bcddceb6e9321cfbd82e
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760905"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741078"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>PowerShell を使用した Application Insights リソースの管理
 
@@ -431,7 +431,6 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
    
     各 Web テストには、関連するアラート ルールがあるため、両方をコピーする必要があります。
    
-    メトリックでのアラートを含めることもできます。 [メトリック名](powershell-alerts.md#metric-names)。
 5. 各リソースに次の行を挿入します。
    
     `"apiVersion": "2015-05-01",`
@@ -470,8 +469,7 @@ Azure では、厳密な順序でリソースを設定する必要がありま�
 自動化に関するその他の記事:
 
 * [Application Insights リソースを作成するための PowerShell スクリプト](./create-new-resource.md#creating-a-resource-automatically) - テンプレートを使用しない簡単な方法
-* [PowerShell を使用して Application Insights のアラートを設定する](powershell-alerts.md)
-* [Web テストを作成する](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
+* [Web テストを作成する](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-alerts-metric#availability-test-with-metric-alert)
 * [Azure Diagnostics を Application Insights に送信する](powershell-azure-diagnostics.md)
 * [リリースの注釈を作成する](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
 
