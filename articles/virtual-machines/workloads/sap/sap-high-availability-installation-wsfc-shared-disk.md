@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5126ae94d8c751952964aaf4df0736a5e546ff36
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c914afb3a72ccac4753a1942b6c4303850654a2e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963637"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682640"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>Azure で SAP ASCS/SCS インスタンス用の Windows フェールオーバー クラスターと共有ディスクに SAP NetWeaver HA をインストールする
 
@@ -149,7 +149,7 @@ ms.locfileid: "91963637"
 
 この記事では、SAP ASCS/SCS インスタンスのクラスタリング用の Windows Server フェールオーバー クラスターとクラスター共有ディスクを使って、Azure に高可用性の SAP システムをインストールして構成する方法について説明します。 [アーキテクチャ ガイド: クラスター共有ディスクを使用した Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスのクラスタリング][sap-high-availability-guide-wsfc-shared-disk]に関するページ記載されているように、"*クラスター共有ディスク*" には次に 2 つの代替手段があります。
 
-- [Azure 共有ディスク](../../windows/disks-shared.md)
+- [Azure 共有ディスク](../../disks-shared.md)
 - クラスター共有ディスクをシミュレートする、[SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster/) を使用したミラー化ストレージの作成 
 
 ## <a name="prerequisites"></a>前提条件
@@ -250,7 +250,7 @@ DBMS のセットアップは使用する DBMS システムによって異なる
 ただし、アクティブなインスタンスが 1 つだけであるため、一部のクラスター構成では動作しません。 他のインスタンスはパッシブであり、ワークロードを受け付けることができません。 プローブ機能は、Azure 内部ロード バランサーによって、アクティブなインスタンスが検出され、アクティブなインスタンスのみが対象とされる場合に役立ちます。  
 
 > [!IMPORTANT]
-> この構成例では、**ProbePort** は 620**Nr** に設定されます。 番号が **00** の SAP ASCS インスタンスの場合は、620**00** です。 SAP インスタンス番号と SAP SID に合わせて構成を調整する必要があります。
+> この構成例では、**ProbePort** は 620 **Nr** に設定されます。 番号が **00** の SAP ASCS インスタンスの場合は、620 **00** です。 SAP インスタンス番号と SAP SID に合わせて構成を調整する必要があります。
 
 プローブ ポートを追加するには、次のいずれかのクラスター VM でこの PowerShell モジュールを実行します。
 

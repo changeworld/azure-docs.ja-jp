@@ -3,13 +3,13 @@ title: Azure Kubernetes Service (AKS) ノード イメージのアップグレ�
 description: AKS クラスター ノードとノード プールのイメージをアップグレードする方法について説明します。
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 08/17/2020
-ms.openlocfilehash: b6abb0eb98e2548e53ff67a943970613e6981c2b
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/17/2020
+ms.openlocfilehash: 211190228c1ea9c98004b55da96ad38808821d67
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631123"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682385"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Azure Kubernetes Service (AKS) ノード イメージのアップグレード
 
@@ -25,7 +25,7 @@ AKS によって提供される最新のイメージについて知りたい場�
 
 ## <a name="install-the-aks-cli-extension"></a>AKS CLI 拡張機能をインストールする
 
-次のコア CLI バージョンがリリースされる前にノード イメージ アップグレードを使用するには、 *aks-preview* CLI 拡張機能が必要です。 [az extension add][az-extension-add] コマンドを使用した後、[az extension update][az-extension-update] コマンドを使用して、使用可能な更新プログラムがあるかどうかを確認します。
+次のコア CLI バージョンがリリースされる前にノード イメージ アップグレードを使用するには、*aks-preview* CLI 拡張機能が必要です。 [az extension add][az-extension-add] コマンドを使用した後、[az extension update][az-extension-update] コマンドを使用して、使用可能な更新プログラムがあるかどうかを確認します。
 
 ```azurecli
 # Install the aks-preview extension
@@ -133,6 +133,6 @@ az aks nodepool show \
 [upgrade-cluster]: upgrade-cluster.md
 [security-update]: node-updates-kured.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
-[max-surge]: upgrade-cluster.md#customize-node-surge-upgrade-preview
+[max-surge]: upgrade-cluster.md#customize-node-surge-upgrade
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 8a762cfd1ecb4e290417b5d24b0ae75f6e10baf1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3d199ae202cbe99176f3ca5d0ae82ecdeec84ca4
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973702"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684510"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
 
@@ -171,7 +171,7 @@ Azure ディスク予約は、特定のリージョンと SKU (米国東部 2 �
 
 **共有ディスクはどのリージョンでサポートされていますか?**
 
-リージョンごとの情報については、[概念に関する記事](./linux/disks-shared.md)を参照してください。
+リージョンごとの情報については、[概念に関する記事](disks-shared.md)を参照してください。
 
 **共有ディスクを OS ディスクとして使用できますか?**
 
@@ -179,7 +179,7 @@ Azure ディスク予約は、特定のリージョンと SKU (米国東部 2 �
 
 **どのディスク サイズで共有ディスクがサポートされますか?**
 
-サポートされているサイズについては、[概念に関する記事](./linux/disks-shared.md)を参照してください。
+サポートされているサイズについては、[概念に関する記事](disks-shared.md)を参照してください。
 
 **既存のディスクがある場合、そこで共有ディスクを有効にできますか?**
 

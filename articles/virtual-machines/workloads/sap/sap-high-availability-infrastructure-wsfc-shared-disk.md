@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1af2e741b2ab8a6a0aa6257272798961f5962c43
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 4538654b255aad99ff00477134c9eeb5845e50d6
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167340"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682759"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>SAP ASCS/SCS 用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する
 
@@ -162,10 +162,10 @@ ms.locfileid: "92167340"
 > ![Windows OS][Logo_Windows] Windows
 
 
-この記事では、SAP ASCS インスタンスのクラスタリングのオプションとして " *クラスター共有ディスク* " を使うことで、Windows フェールオーバー クラスター上に高可用性の SAP ASCS/SCS システムをインストールして構成するための Azure インフラストラクチャを準備する手順について説明します。
-" *クラスター共有ディスク* " の 2 つの代替手段については、次のドキュメントを参照してください。
+この記事では、SAP ASCS インスタンスのクラスタリングのオプションとして "*クラスター共有ディスク*" を使うことで、Windows フェールオーバー クラスター上に高可用性の SAP ASCS/SCS システムをインストールして構成するための Azure インフラストラクチャを準備する手順について説明します。
+"*クラスター共有ディスク*" の 2 つの代替手段については、次のドキュメントを参照してください。
 
-- [Azure 共有ディスク](../../windows/disks-shared.md)
+- [Azure 共有ディスク](../../disks-shared.md)
 - クラスター化された共有ディスクをシミュレートする、[SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster/) を使用したミラー化ストレージの作成 
 
 示される構成は、SAP ワークロードの最適なネットワーク待機時間を実現するための [Azure 近接配置グループ (PPG)](./sap-proximity-placement-scenarios.md) に依存します。 このドキュメントでは、データベース層については説明していません。  
@@ -192,9 +192,9 @@ SAP ASCS/SCS クラスターの場合、Azure 可用性セットに 2 つの VM 
 | --- | --- | --- |---| ---|
 | 最初のクラスター ノードの ASCS/SCS クラスター |pr1-ascs-10 |10.0.0.4 |pr1-ascs-avset |PR1PPG |
 | 2 番目のクラスター ノードの ASCS/SCS クラスター |pr1-ascs-11 |10.0.0.5 |pr1-ascs-avset |PR1PPG |
-| クラスター ネットワーク名 | pr1clust |10.0.0.42 (Win 2016 クラスターの場合 **のみ** ) | 該当なし | 該当なし |
+| クラスター ネットワーク名 | pr1clust |10.0.0.42 (Win 2016 クラスターの場合 **のみ**) | 該当なし | 該当なし |
 | ASCS クラスター ネットワーク名 | pr1-ascscl |10.0.0.43 | 該当なし | 該当なし |
-| ERS クラスター ネットワーク名 (ERS2 の場合 **のみ** ) | pr1-erscl |10.0.0.44 | 該当なし | 該当なし |
+| ERS クラスター ネットワーク名 (ERS2 の場合 **のみ**) | pr1-erscl |10.0.0.44 | 該当なし | 該当なし |
 
 
 ## <a name="create-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> Azure 内部ロード バランサーを作成する

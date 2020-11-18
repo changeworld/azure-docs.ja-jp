@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6f819d9b6ba4d74612da304aafea0118f9094bde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7831eaaa478a3f28ff158d5c9599abaf8a107c15
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91451442"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684433"
 ---
 Azure 共有ディスクは、マネージド ディスクを複数の仮想マシン (VM) に同時に接続できるようにする Azure マネージド ディスクの新機能です。 マネージド ディスクを複数の VM に接続すると、新規にデプロイするか、既存のクラスター化されたアプリケーションを Azure に移行することができます。
 
@@ -54,9 +54,9 @@ WSFC で実行される一般的なアプリケーションには、次のよう
 ### <a name="linux"></a>Linux
 
 Azure 共有ディスクは、以下でサポートされています。
-- [SUSE SLE for SAP および SUSE SLE HA 15 SP1 以上](https://documentation.suse.com/sle-ha/15-SP1/single-html/SLE-HA-guide/index.html)
+- [SUSE SLE for SAP および SUSE SLE HA 15 SP1 以上](https://www.suse.com/c/azure-shared-disks-excercise-w-sles-for-sap-or-sle-ha/)
 - [Ubuntu 18.04 以降](https://discourse.ubuntu.com/t/ubuntu-high-availability-corosync-pacemaker-shared-disk-environments/14874)
-- [RHEL 8 バージョンの RHEL 開発者向けプレビュー](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_high_availability_clusters/index)
+- [RHEL 8 バージョンの RHEL 開発者向けプレビュー](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/deploying_red_hat_enterprise_linux_8_on_public_cloud_platforms/index?lb_target=production#azure-configuring-shared-block-storage_configuring-rhel-high-availability-on-azure)
 - [Oracle Enterprise Linux](https://docs.oracle.com/en/operating-systems/oracle-linux/8/availability/hacluster-1.html)
 
 Linux クラスターでは、[Pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker) などのクラスター マネージャーを利用できます。 Pacemaker は [Corosync](http://corosync.github.io/corosync/) 上に構築され、高可用性環境にデプロイされたアプリケーションのクラスター通信を可能にします。 一般的なクラスター化されたファイルシステムには、[ocfs2](https://oss.oracle.com/projects/ocfs2/) と [gfs2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2) があります。 SCSI 永続的予約 (SCSI PR) または STONITH Block Device (SBD) ベースのクラスター モデルを使用して、ディスクへのアクセスを調節することができます。 SCSI PR を使用する場合は、[fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) や [sg_persist](https://linux.die.net/man/8/sg_persist) などのユーティリティを使用して、予約と登録を操作できます。
@@ -131,19 +131,19 @@ Ultra ディスクには、変更可能な属性を公開して変更を許可�
 
 次は、クラスター化された共有ボリュームを使用する 2 ノード WSFC の例です。 この構成では、両方の VM でディスクに同時に書き込みアクセスできます。その結果、2 つの VM 間で `ReadWrite` スロットルが分割され、`ReadOnly` スロットルは使用されません。
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="予約所有者、登録済み、その他に対する`ReadOnly` または `Read/Write` のアクセス権を示す表の画像。":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV 2 ノード Ultra の例":::
 
 ##### <a name="two-node-cluster-without-cluster-share-volumes"></a>クラスター共有ボリュームのない 2 つのノード クラスター
 
 次は、クラスター化された共有ボリュームを使用しない 2 ノード WSFC の例です。 この構成では、1 つだけの VM がディスクに書き込みアクセスできます。 結果として、プライマリ VM に独占的に `ReadWrite` スロットルが使用され、`ReadOnly` スロットルはセカンダリでのみ使用されます。
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="予約所有者、登録済み、その他に対する`ReadOnly` または `Read/Write` のアクセス権を示す表の画像。":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV 2 ノードで CSV Ultra ディスクなしの例":::
 
 ##### <a name="four-node-linux-cluster"></a>4 ノード Linux クラスター
 
 次は、シングル ライターが 1 つ、スケールアウト リーダーが 3 つ与えられた 4 ノード Linux クラスターの例です。 この構成では、1 つだけの VM がディスクに書き込みアクセスできます。 結果として、プライマリ VM に独占的に `ReadWrite` スロットルが使用され、`ReadOnly` スロットルはセカンダリ VM によって分割されます。
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="予約所有者、登録済み、その他に対する`ReadOnly` または `Read/Write` のアクセス権を示す表の画像。":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="4 ノード Ultra の調整例":::
 
 #### <a name="ultra-pricing"></a>Ultra の価格
 

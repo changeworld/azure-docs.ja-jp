@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: inhenkel
-ms.openlocfilehash: 33aed32c30f298fd3432f4cebcc28b9c20974545
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ed436336b9b1f9f5815938d13315e821694e5f1c
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309057"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685190"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>Azure Monitor を使用した Media Services のメトリックと診断ログを監視する
 
@@ -67,8 +67,8 @@ Media Services では、次のリソースの監視メトリックがサポー�
 |Requests|Requests|ストリーミング エンドポイントで処理された HTTP 要求の合計数を提供します。|
 |エグレス|エグレス|ストリーミング エンドポイントあたりの合計エグレス バイト/分。|
 |SuccessE2ELatency|成功したエンド ツー エンドの待機時間|ストリーミング エンドポイントが要求を受信してから応答の最後のバイトが送信されるまでの期間。|
-|CPU 使用率| premium ストリーミング エンドポイントの CPU 使用率。 このデータは、standard ストリーミング エンドポイントでは使用できません。 |
-|エグレス帯域幅 | エグレス帯域幅 (ビット/秒)。|
+|CPU 使用率| | premium ストリーミング エンドポイントの CPU 使用率。 このデータは、standard ストリーミング エンドポイントでは使用できません。 |
+|エグレス帯域幅 | | エグレス帯域幅 (ビット/秒)。|
 
 ### <a name="metrics-are-useful"></a>メトリックは役に立つ
 
