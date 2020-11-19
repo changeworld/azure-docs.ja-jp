@@ -144,7 +144,7 @@
     - name: EA サブスクリプション
       items:
         - name: 作成
-          href: ../../cost-management-billing/manage/programmatically-create-subscription.md?toc=/azure/azure-resource-manager/management/toc.json
+          href: ../../cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement.md?toc=/azure/azure-resource-manager/management/toc.json
         - name: 作成のアクセス権を付与する
           href: ../../cost-management-billing/manage/grant-access-to-create-subscription.md?toc=/azure/azure-resource-manager/management/toc.json
     - name: リソース プロバイダーと種類

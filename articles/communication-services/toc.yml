@@ -103,15 +103,15 @@
     - name: リファレンス ドキュメントの概要
       href: concepts/reference.md
     - name: REST API のドキュメント
-      href: 'https://docs.microsoft.com/rest/api/communication/'
+      href: /rest/api/communication/
     - name: ライブラリの呼び出し
       items:
         - name: 呼び出し (JavaScript)
-          href: 'https://docs.microsoft.com/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js'
+          href: /javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js
         - name: 呼び出し (Android/Java)
-          href: 'https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android'
+          href: /java/api/com.azure.communication.calling?view=communication-services-java-android
         - name: 呼び出し (iOS)
-          href: 'https://docs.microsoft.com/objectivec/communication-services/calling/'
+          href: /objectivec/communication-services/calling/
     - name: チャット ライブラリ
       items:
         - name: チャット (JavaScript)

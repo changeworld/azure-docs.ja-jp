@@ -106,7 +106,7 @@
       href: operating-system-functionality.md
     - name: デプロイのベスト プラクティス
       href: deploy-best-practices.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: Recommendations
           href: security-recommendations.md
@@ -114,8 +114,8 @@
           href: overview-authentication-authorization.md
         - name: OS とランタイムの修正プログラムの適用
           href: overview-patch-os-runtime.md
-        - name: 組み込みのセキュリティ制御
-          href: app-service-security-controls.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -279,12 +279,6 @@
           href: manage-move-across-regions.md
         - name: サブスクリプションの移動
           href: ../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#checklist-before-moving-resources
-    - name: アプリの移行
-      items:
-        - name: Spring Boot
-          href: /azure/developer/java/migration/migrate-spring-boot-to-app-service
-        - name: Tomcat
-          href: /azure/developer/java/migration/migrate-tomcat-to-tomcat-app-service
     - name: バックグラウンド タスクの実行
       items:
         - name: Web ジョブの作成
