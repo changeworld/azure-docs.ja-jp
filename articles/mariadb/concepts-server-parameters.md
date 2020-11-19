@@ -1,17 +1,17 @@
 ---
 title: サーバー パラメーター - Azure Database for MariaDB
 description: このトピックでは、Azure Database for MariaDB でのサーバー パラメーターの構成に関するガイドラインを示します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: b5064e3cef7def1aca5aa0c97d031d519fd610cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4432178d5908d4360cda05a62b62d05687be4235
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626396"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541132"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でのサーバー パラメーター
 
@@ -33,7 +33,7 @@ Azure Database for MariaDB では、さまざまな MariaDB サーバー パラ�
 
 Azure Database for MariaDB では、バイナリ ログは常に有効になっています (つまり、`log_bin` が ON に設定されています)。 トリガーを使用したい場合、"*SUPER 特権を持っておらず、バイナリ ログが有効になっています (より安全度の低い `log_bin_trust_function_creators` 変数を使用することもできます)"* のようなエラーが表示されます。
 
-バイナリ ログ形式は常に**行**であり、サーバーへのすべての接続では**常に**行ベースのバイナリ ログが使用されます。 行ベースのバイナリ ログでは、セキュリティ上の問題が存在せず、バイナリ ログを中断できないため、[`log_bin_trust_function_creators`](https://mariadb.com/docs/reference/mdb/system-variables/log_bin_trust_function_creators/) を安全に **TRUE** に設定できます。
+バイナリ ログ形式は常に **行** であり、サーバーへのすべての接続では **常に** 行ベースのバイナリ ログが使用されます。 行ベースのバイナリ ログでは、セキュリティ上の問題が存在せず、バイナリ ログを中断できないため、[`log_bin_trust_function_creators`](https://mariadb.com/docs/reference/mdb/system-variables/log_bin_trust_function_creators/) を安全に **TRUE** に設定できます。
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
