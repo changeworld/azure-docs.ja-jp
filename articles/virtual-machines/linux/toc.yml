@@ -347,7 +347,7 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: インフラストラクチャの自動化
       href: ../infrastructure-automation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティとポリシー
           href: ../security-policy.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -413,17 +413,17 @@
         - name: 2023 年 3 月 1 日以降の提供終了
           href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 移行の概要
-          href: migration-classic-resource-manager-overview.md
+          href: ../migration-classic-resource-manager-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 移行の詳細
           href: ../migration-classic-resource-manager-deep-dive.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 移行の計画
-          href: migration-classic-resource-manager-plan.md
+          href: ../migration-classic-resource-manager-plan.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: CLI を使用して移行する
-          href: migration-classic-resource-manager-cli.md
+          href: ../migration-classic-resource-manager-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 移行の一般的なエラー
-          href: migration-classic-resource-manager-errors.md
+          href: migration-classic-resource-manager-errors.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 移行用のコミュニティ ツール
-          href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: よく寄せられる質問
           href: ../migration-classic-resource-manager-faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: イメージの使用
@@ -961,7 +961,7 @@
           href: /azure/architecture/topics/high-performance-computing/
         - name: IBM Db2 pureScale
           items:
-            - name: Architecture
+            - name: アーキテクチャ
               href: ibm-db2-purescale-azure.md
             - name: デプロイ
               href: deploy-ibm-db2-purescale-azure.md
