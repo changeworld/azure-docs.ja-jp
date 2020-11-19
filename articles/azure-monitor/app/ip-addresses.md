@@ -3,12 +3,12 @@ title: Application Insights および Log Analytics によって使用される 
 description: Application Insights で必要なサーバー ファイアウォール例外
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 755fd62482d7e453814cab5b5b617ba5eb0cc85a
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: bf81cc863ab795ce9be5a9166d7dc68aeb3caeed
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932364"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565842"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights および Log Analytics によって使用される IP アドレス
 [Azure Application Insights](./app-insights-overview.md) サービスは、多くの IP アドレスを使用します。 監視しているアプリがファイアウォールの背後でホストされている場合は、これらのアドレスを確認する必要があります。
@@ -27,7 +27,7 @@ Application Insights SDK や Status Monitor がポータルにデータを送信
 
 | 目的 | URL | IP | Port |
 | --- | --- | --- | --- |
-| テレメトリ |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169<br/>13.66.141.156<br/>40.71.13.170<br/>13.69.65.23<br/>20.44.17.0<br/>20.36.114.207 <br/>51.116.155.246 <br/>51.107.155.178 <br/>51.140.212.64 <br/>13.86.218.255 <br/>20.37.74.240 <br/>65.52.250.236 <br/>13.69.229.240 <br/>52.236.186.210 | 443 |
+| テレメトリ |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169<br/>13.66.141.156<br/>40.71.13.170<br/>13.69.65.23<br/>20.44.17.0<br/>20.36.114.207 <br/>51.116.155.246 <br/>51.107.155.178 <br/>51.140.212.64 <br/>13.86.218.255 <br/>20.37.74.240 <br/>65.52.250.236 <br/>13.69.229.240 <br/>52.236.186.210<br/>52.167.107.65 | 443 |
 | ライブ メトリック ストリーム | live.applicationinsights.azure.com<br/>rt.applicationinsights.microsoft.com<br/>rt.services.visualstudio.com|23.96.28.38<br/>13.92.40.198<br/>40.112.49.101<br/>40.117.80.207<br/>157.55.177.6<br/>104.44.140.84<br/>104.215.81.124<br/>23.100.122.113| 443 |
 
 ## <a name="status-monitor"></a>Status Monitor
@@ -49,7 +49,7 @@ Status Monitor の構成 - 変更を加える場合にのみ必要です。
 
 ### <a name="service-tag"></a>サービス タグ
 
-Azure ネットワーク セキュリティ グループを使用している場合は、単に **受信ポートの規則** を追加して Application Insights 可用性テストからのトラフィックを許可します。そのためには、**サービスタグ** を **ソース**として選択し、**ApplicationInsightsAvailability** を **ソースサービスタグ** として選択します。
+Azure ネットワーク セキュリティ グループを使用している場合は、単に **受信ポートの規則** を追加して Application Insights 可用性テストからのトラフィックを許可します。そのためには、**サービスタグ** を **ソース** として選択し、**ApplicationInsightsAvailability** を **ソースサービスタグ** として選択します。
 
 >[!div class="mx-imgBorder"]
 >![[設定] で [受信セキュリティ規則] を選択してから、タブの最上部にある [追加] を選択します](./media/ip-addresses/add-inbound-security-rule.png)
