@@ -5,15 +5,15 @@ services: data-factory
 author: chez-charlie
 ms.service: data-factory
 ms.topic: include
-ms.date: 10/28/2020
+ms.date: 11/16/2020
 ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: 4cbe179d015c71094e6813666a6fd0cee3e5e3c2
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 1e8d13e7cf302c486bab291ef6482216122b62a3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92909099"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94680799"
 ---
 Azure Data Factory は、お客様のサブスクリプションが互いのワークロードから保護されるように、次の既定の制限が設定されているマルチテナント サービスです。 サブスクリプションの上限まで制限を引き上げるには、サポートにお問い合わせください。
 
@@ -40,6 +40,7 @@ Azure Data Factory は、お客様のサブスクリプションが互いのワ�
 | パイプラインのアクティビティ実行の最大タイムアウト | 7 日 | 7 日 |
 | パイプライン オブジェクトのオブジェクトあたりのバイト数<sup>3</sup> | 200 KB | 200 KB |
 | データセットおよびリンクされたサービス オブジェクトのオブジェクトあたりのバイト数<sup>3</sup> | 100 KB | 2,000 KB |
+| 各アクティビティの実行のペイロードあたりのバイト数<sup>4</sup> | 896 KB | 896 KB |
 | コピー アクティビティの実行あたりのデータ統合単位<sup>1</sup> | 256 | 256 |
 | API 呼び出しの書き込み | 1,200/h | 1,200/h<br/><br/> この制限は、Azure Data Factory ではなく、Azure Resource Manager によって課せられます。 |
 | API 呼び出しの読み取り | 12,500/時 | 12,500/時<br/><br/> この制限は、Azure Data Factory ではなく、Azure Resource Manager によって課せられます。 |
@@ -60,6 +61,8 @@ Azure Data Factory は、お客様のサブスクリプションが互いのワ�
 | リージョン グループ 3 | カナダ中部、東アジア、フランス中部、韓国中部、英国南部 |
 
 <sup>3</sup> パイプライン、データ セット、およびリンクされたサービス オブジェクトは、ワークロードの論理的なグループ化を表します。 これらのオブジェクトの制限は、Azure Data Factory で移動したり処理したりできるデータ量には関係ありません。 Data Factory は、数ペタバイトのデータ処理までスケーリングできるように設計されています。
+
+<sup>4</sup> 各アクティビティの実行のペイロードには、アクティビティの構成、関連付けられているデータセットとリンクされたサービスの構成 (ある場合)、アクティビティの種類ごとに生成されるシステム プロパティの一部が含まれます。 このペイロード サイズの制限は、Azure Data Factory で移動したり処理したりできるデータ量には関係ありません。 この制限に達した場合の[現象と推奨事項](../articles/data-factory/data-factory-troubleshoot-guide.md#payload-is-too-large)について確認してください。
 
 ### <a name="version-1"></a>Version 1
 

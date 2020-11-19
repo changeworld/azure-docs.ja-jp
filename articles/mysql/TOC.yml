@@ -287,6 +287,10 @@
           items:
             - name: MySQL サーバーを停止または起動する
               href: how-to-stop-start-server.md
+        - name: メジャー バージョンのアップグレード
+          items:
+            - name: メジャー バージョンのアップグレード
+              href: how-to-major-version-upgrade.md
         - name: ストレージの自動拡張
           items:
             - name: Azure portal
@@ -507,7 +511,7 @@
           items:
             - name: Azure portal
               href: flexible-server/how-to-configure-high-availability.md
-        - name: ネットワーク
+        - name: ネットワーキング
           items:
             - name: プライベート アクセス (VNet 統合)
               items:

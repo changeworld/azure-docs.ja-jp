@@ -4,12 +4,12 @@ description: データ サイエンスの線形回帰のプロセスを示す Ju
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: cb8be1618de7e95a7096e4ea9dec78bf4aa277f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47e9a07c7b8abffc06bfd30a792af46ba04adf5c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589260"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844473"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>チュートリアル: Python を使用して Jupyter Notebook を作成して実行する
 
@@ -143,7 +143,7 @@ ms.locfileid: "88589260"
 (C) ノートブックを操作するためのコマンドが含まれるメニュー。
 (D) 一般的な操作のショートカットのツールバー。
 (E) セルが含まれる編集キャンバス。
-(F) ノートブックが信頼されているかどうかを示すインジケーター (既定では**信頼されていません**)。
+(F) ノートブックが信頼されているかどうかを示すインジケーター (既定では **信頼されていません**)。
 (G) ノートブックが実行されているカーネルと、アクティビティ インジケーター。
 
 [![Jupyter インターフェイスの主な UI 領域](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
@@ -170,7 +170,7 @@ Jupyter では、主な UI 要素の組み込みツアーが提供されてい�
 
 ## <a name="create-a-markdown-cell"></a>Markdown セルを作成する
 
-1. ノートブックのキャンバスに表示されている最初の空のセルをクリックします。 既定ではセルの種類は**コード**であり、選択したカーネル (Python、R、F#) で実行可能なコードを含むように設計されていることを意味します。 現在の種類は、ツール バーの種類ドロップダウンに表示されます。
+1. ノートブックのキャンバスに表示されている最初の空のセルをクリックします。 既定ではセルの種類は **コード** であり、選択したカーネル (Python、R、F#) で実行可能なコードを含むように設計されていることを意味します。 現在の種類は、ツール バーの種類ドロップダウンに表示されます。
 
     ![ツール バーのセルの種類ドロップダウン](media/tutorial/tutorial-cell-type-drop-down.png)
 
@@ -433,4 +433,4 @@ Jupyter では、主な UI 要素の組み込みツアーが提供されてい�
 - [スライド ショーの表示](present-jupyter-notebooks-slideshow.md)
 - [データ ファイルの操作](work-with-project-data-files.md)
 - [データ リソースへのアクセス](access-data-resources-jupyter-notebooks.md)
-- [Azure Machine Learning の使用](use-machine-learning-services-jupyter-notebooks.md)
+- [Azure Machine Learning の使用](../machine-learning/samples-notebooks.md)

@@ -67,6 +67,12 @@
           href: storage-sync-files-networking-overview.md
         - name: クラウドの階層化について
           href: storage-sync-cloud-tiering.md
+    - name: パフォーマンスとスケール
+      items:
+        - name: SMB マルチチャネルのパフォーマンス
+          href: storage-files-smb-multichannel-performance.md
+        - name: スケーラビリティとパフォーマンスのターゲット
+          href: storage-files-scale-targets.md
     - name: データの誤削除の防止
       href: storage-files-prevent-file-share-deletion.md
     - name: ファイル共有をバックアップする
@@ -74,9 +80,7 @@
     - name: 保存時の暗号化
       href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: カスタマー マネージド キーを使用した保存時の暗号化
-      href: ../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: スケーラビリティとパフォーマンスのターゲット
-      href: storage-files-scale-targets.md
+      href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: コンプライアンス認証
       href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: よく寄せられる質問
@@ -87,8 +91,6 @@
       items:
         - name: SMB ファイル共有を作成する」を参照してください。
           href: storage-how-to-create-file-share.md
-        - name: 大型ファイル共有を有効にする
-          href: storage-files-how-to-create-large-file-share.md
         - name: Premium ファイル共有を作成する
           href: storage-how-to-create-premium-fileshare.md
         - name: NFS 共有を作成する
@@ -231,6 +233,12 @@
               href: storage-files-migration-storsimple-8000.md
             - name: StorSimple 1200 の移行ガイド
               href: storage-files-migration-storsimple-1200.md
+    - name: パフォーマンスの向上
+      items:
+        - name: SMB マルチチャネルを有効にする
+          href: storage-files-enable-smb-multichannel.md
+        - name: 大型ファイル共有を有効にする
+          href: storage-files-how-to-create-large-file-share.md
     - name: 開発
       items:
         - name: 接続文字列の構成

@@ -1,18 +1,18 @@
 ---
 title: Azure Cognitive Search 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Cognitive Search に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 2a63243415959458815207c50b921b5092e461b1
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4a31b4564a36a82c2b469c3e3737ab6ecac1a1f7
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319229"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700213"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cognitive-search"></a>Azure Cognitive Search 用の Azure Policy 規制コンプライアンス コントロール
 
@@ -20,7 +20,7 @@ ms.locfileid: "92319229"
 
 Azure Cognitive Search の場合は、現在、次に示す組み込み定義が 1 つあり、ポリシーの割り当てで使用できます。 組み込みは、ログ記録と監視のためのものです。 [作成するポリシー](../governance/policy/assign-policy-portal.md)でこの組み込み定義を使用すると、システムによって[診断ログ](search-monitor-logs.md)のない検索サービスがスキャンされ、それに応じて有効にされます。
 
-[Azure Policy の規制コンプライアンス](../governance/policy/concepts/regulatory-compliance.md)により、さまざまなコンプライアンス基準に関連する**コンプライアンス ドメイン**および**セキュリティ コントロール**に対して、"_組み込み_" と呼ばれる、Microsoft によって作成および管理されるイニシアチブ定義が提供されます。 このページでは、Azure Cognitive Search 用の**コンプライアンス ドメイン**と**セキュリティ コントロール**の一覧を示します。 **セキュリティ コントロール**の組み込みを個別に割り当てることで、Azure リソースを特定の標準に準拠させることができます。
+[Azure Policy の規制コンプライアンス](../governance/policy/concepts/regulatory-compliance.md)により、さまざまなコンプライアンス基準に関連する **コンプライアンス ドメイン** および **セキュリティ コントロール** に対して、"_組み込み_" と呼ばれる、Microsoft によって作成および管理されるイニシアチブ定義が提供されます。 このページでは、Azure Cognitive Search 用の **コンプライアンス ドメイン** と **セキュリティ コントロール** の一覧を示します。 **セキュリティ コントロール** の組み込みを個別に割り当てることで、Azure リソースを特定の標準に準拠させることができます。
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]
 

@@ -129,7 +129,7 @@
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: アラート
+    - name: 警告
       items:
         - name: 概要
           href: platform/alerts-overview.md
@@ -944,14 +944,28 @@
           href: insights/vminsights-maps.md
         - name: パフォーマンスの監視
           href: insights/vminsights-performance.md
-        - name: 変更の監視
-          href: insights/vminsights-change-analysis.md
+        - name: ゲストの正常性の監視 (プレビュー)
+          items:
+            - name: 概要
+              href: insights/vminsights-health-overview.md
+            - name: 有効にする
+              href: insights/vminsights-health-enable.md
+            - name: 警告
+              href: insights/vminsights-health-alerts.md
+            - name: ポータルでのモニターの構成
+              href: insights/vminsights-health-configure.md
+            - name: モニターを大規模に構成する
+              href: insights/vminsights-health-configure-dcr.md
+            - name: トラブルシューティング
+              href: insights/vminsights-health-troubleshoot.md
         - name: ログ クエリによるデータの分析
           href: insights/vminsights-log-search.md
+        - name: パフォーマンスの監視
+          href: insights/vminsights-alerts.md
+        - name: 変更の監視
+          href: insights/vminsights-change-analysis.md
         - name: ブックを使用したデータの視覚化
           href: insights/vminsights-workbooks.md
-        - name: アラート ルールの作成
-          href: insights/vminsights-alerts.md
         - name: 監視を無効にする
           href: insights/vminsights-optout.md
     - name: コンテナーに対する Azure Monitor

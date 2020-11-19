@@ -7,13 +7,13 @@ ms.service: mysql
 ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
-ms.custom: mvc
-ms.openlocfilehash: 38665cdf42450b09d14211f7ed44d62e4adb75b1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 426cf59c9fb9d88039231ed441b2ffc7246716c7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537934"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844439"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>チュートリアル:Azure App Service で PHP (Laravel) と MySQL フレキシブル サーバー (プレビュー) のアプリを構築する
 
@@ -110,7 +110,7 @@ DB_USERNAME=root
 DB_PASSWORD=<root_password>
 ```
 
-この _.env_ ファイルを Laravel でどのように使用するかの詳細については、 [Laravel 環境の構成](https://laravel.com/docs/5.4/configuration#environment-configuration)に関するページを参照してください。
+この _.env_ ファイルを Laravel でどのように使用するかの詳細については、[Laravel 環境の構成](https://laravel.com/docs/5.4/configuration#environment-configuration)に関するページを参照してください。
 
 ### <a name="run-the-sample-locally"></a>ローカルでサンプルを実行する
 
@@ -134,7 +134,7 @@ php artisan serve
 
 ブラウザーで `http://localhost:8000` にアクセスします。 ページで、いくつかのタスクを追加します。
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="フレキシブル サーバーを使用した Azure での PHP Web アプリ":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="MySQL に正常に接続されている PHP":::
 
 PHP を停止するには、ターミナルで `Ctrl + C` キーを押します。
 
@@ -146,7 +146,7 @@ az mysql flexible-server create  --resource-group myResourceGroup --public-acces
 ```
 
 > [!IMPORTANT]
-> - 次のステップで接続して Laravel データの移行を実行するときに使用するので、 **サーバー名** と **接続文字列** を記録しておきます。
+> - 次のステップで接続して Laravel データの移行を実行するときに使用するので、**サーバー名** と **接続文字列** を記録しておきます。
 > - **IP-Address** 引数では、クライアント コンピューターの IP アドレスを指定します。 サーバーは作成時にロックされているので、ローカル環境でサーバーを管理するには、クライアント コンピューターへのアクセスを許可する必要があります。
 
 ### <a name="configure-server-firewall-to-allow-web-app-to-connect-to-the-server"></a>Web アプリがサーバーに接続できるようにサーバー ファイアウォールを構成する
@@ -219,7 +219,7 @@ MYSQL_SSL=true
 
 ### <a name="configure-tlsssl-certificate"></a>TLS/SSL 証明書を構成する
 
-既定では、MySQL フレキシブル サーバーによって、クライアントからの TLS 接続が強制されます。 Azure で MySQL データベースに接続するには、 [Azure Database for MySQL フレキシブル サーバーから提供された _.pem_ 証明書](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)を使用する必要があります。 [この証明書](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)をダウンロードし、サンプル アプリ リポジトリのローカル コピーの **ssl** フォルダーに置きます。
+既定では、MySQL フレキシブル サーバーによって、クライアントからの TLS 接続が強制されます。 Azure で MySQL データベースに接続するには、[Azure Database for MySQL フレキシブル サーバーから提供された _.pem_ 証明書](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)を使用する必要があります。 [この証明書](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)をダウンロードし、サンプル アプリ リポジトリのローカル コピーの **ssl** フォルダーに置きます。
 
 _config/database.php_ を開き、次のコードに示すように `sslmode` パラメーターと `options` パラメーターを `connections.mysql` に追加します。
 
@@ -257,7 +257,7 @@ php artisan serve --env=production
 
 ページで、いくつかのタスクを追加します。
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="フレキシブル サーバーを使用した Azure での PHP Web アプリ":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP が Azure Database for MySQL に正常にデータベースに接続されている":::
 
 PHP を停止するには、ターミナルで `Ctrl + C` キーを押します。
 
@@ -334,7 +334,7 @@ Git デプロイが有効な、空の新しい Web アプリが作成されま�
 
 ### <a name="configure-database-settings"></a>データベース設定を構成する
 
-App Service で、 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) コマンドを使用して、環境変数を " _アプリ設定_ " として設定します。
+App Service で、[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) コマンドを使用して、環境変数を "_アプリ設定_" として設定します。
 
 次のコマンドでは、アプリ設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`、および `DB_PASSWORD` を構成します。 プレースホルダーの _&lt;app-name>_ と _&lt;mysql-server-name>_ を置き換えます。
 
@@ -342,7 +342,7 @@ App Service で、 [`az webapp config appsettings set`](/cli/azure/webapp/config
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<mysql-server-name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
 ```
 
-PHP [getenv](https://www.php.net/manual/en/function.getenv.php) メソッドを使用して、これらの設定にアクセスできます。 Laravel コードでは、PHP `getenv` に対して [env](https://laravel.com/docs/5.4/helpers#method-env) ラッパーが使用されます。 たとえば、 _config/database.php_ の MySQL 構成は次のコードのようになります。
+PHP [getenv](https://www.php.net/manual/en/function.getenv.php) メソッドを使用して、これらの設定にアクセスできます。 Laravel コードでは、PHP `getenv` に対して [env](https://laravel.com/docs/5.4/helpers#method-env) ラッパーが使用されます。 たとえば、_config/database.php_ の MySQL 構成は次のコードのようになります。
 
 ```php
 'mysql' => [
@@ -375,19 +375,19 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 ### <a name="set-the-virtual-application-path"></a>仮想アプリケーション パスを設定する
 
-[Laravel アプリケーションのライフサイクル](https://laravel.com/docs/5.4/lifecycle)は、アプリケーションのルート ディレクトリではなく " _パブリック_ " ディレクトリから始まります。 App Service の既定の PHP Docker イメージでは Apache が使用されていて、Laravel 用に `DocumentRoot` をカスタマイズすることはできません。 ただし、`.htaccess` を使用して、ルート ディレクトリではなく _/public_ を指すようにすべての要求を書き換えることができます。 リポジトリ ルートには、この目的のために既に `.htaccess` が追加されています。 これにより、Laravel アプリケーションをすぐにデプロイできます。
+[Laravel アプリケーションのライフサイクル](https://laravel.com/docs/5.4/lifecycle)は、アプリケーションのルート ディレクトリではなく "_パブリック_" ディレクトリから始まります。 App Service の既定の PHP Docker イメージでは Apache が使用されていて、Laravel 用に `DocumentRoot` をカスタマイズすることはできません。 ただし、`.htaccess` を使用して、ルート ディレクトリではなく _/public_ を指すようにすべての要求を書き換えることができます。 リポジトリ ルートには、この目的のために既に `.htaccess` が追加されています。 これにより、Laravel アプリケーションをすぐにデプロイできます。
 
 詳細については、「[Change site root (サイトのルートを変更する)](../../app-service/configure-language-php.md?pivots=platform-linux#change-site-root)」を参照してください。
 
 ### <a name="push-to-azure-from-git"></a>Git から Azure へのプッシュ
 
-ローカル ターミナル ウィンドウで、ローカル Git リポジトリに Azure リモートを追加します。 _&lt;deploymentLocalGitUrl-from-create-step>_ を、 [Web アプリの作成](#create-a-web-app)に関するセクションで保存した Git リモートの URL に置き換えます。
+ローカル ターミナル ウィンドウで、ローカル Git リポジトリに Azure リモートを追加します。 _&lt;deploymentLocalGitUrl-from-create-step>_ を、[Web アプリの作成](#create-a-web-app)に関するセクションで保存した Git リモートの URL に置き換えます。
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
 ```
 
-アプリをデプロイするために、次のコマンドで Azure リモートにプッシュします。 Git Credential Manager によって資格情報の入力を求めるメッセージが表示されたら、Azure portal へのサインインに使用する資格情報ではなく、「 **デプロイ ユーザーを構成する** 」で作成した資格情報を入力してください。
+アプリをデプロイするために、次のコマンドで Azure リモートにプッシュします。 Git Credential Manager によって資格情報の入力を求めるメッセージが表示されたら、Azure portal へのサインインに使用する資格情報ではなく、「**デプロイ ユーザーを構成する**」で作成した資格情報を入力してください。
 
 ```bash
 git push azure master
@@ -414,7 +414,7 @@ remote: Running deployment command...
 
 `http://<app-name>.azurewebsites.net` を参照し、一覧にいくつかのタスクを追加します。
 
-:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="フレキシブル サーバーを使用した Azure での PHP Web アプリ":::
+:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="Azure での PHP Web アプリ":::
 
 データ主導型の PHP アプリが Azure App Service で実行されています。
 
@@ -466,7 +466,7 @@ public function down()
 php artisan migrate
 ```
 
-[Laravel の名前付け規則](https://laravel.com/docs/5.4/eloquent#defining-models)に基づいて、モデル `Task` ( _app/Task.php_ 参照) を `tasks` テーブルに既定でマップします。
+[Laravel の名前付け規則](https://laravel.com/docs/5.4/eloquent#defining-models)に基づいて、モデル `Task` (_app/Task.php_ 参照) を `tasks` テーブルに既定でマップします。
 
 ### <a name="update-application-logic"></a>アプリケーション ロジックを更新する
 
@@ -534,7 +534,7 @@ php artisan serve
 
 タスクの状態の変更を確認するには、ブラウザーで `http://localhost:8000` に移動し、チェック ボックスをオンにします。
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="フレキシブル サーバーを使用した Azure での PHP Web アプリ":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="タスクに追加されたチェック ボックス":::
 
 PHP を停止するには、ターミナルで `Ctrl + C` キーを押します。
 
@@ -556,7 +556,7 @@ git push azure master
 
 `git push` が完了したら、Azure アプリに移動し、新機能を試します。
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="フレキシブル サーバーを使用した Azure での PHP Web アプリ":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Azure に発行されたモデルとデータベースの変更":::
 
 タスクを追加した場合は、そのタスクがデータベースに保持されます。 データ スキーマに対する更新では、既存のデータはそのまま残ります。
 

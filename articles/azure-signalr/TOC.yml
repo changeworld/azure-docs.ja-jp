@@ -98,6 +98,12 @@
           href: signalr-howto-diagnostic-logs.md
         - name: Azure Policy を使用したコンプライアンスの監査
           href: signalr-howto-azure-policy.md
+    - name: トラブルシューティング
+      items:
+        - name: トラブルシューティング ガイド
+          href: signalr-howto-troubleshoot-guide.md
+        - name: トラブルシューティング方法
+          href: signalr-howto-troubleshoot-method.md
 - name: References
   items:
     - name: Azure CLI

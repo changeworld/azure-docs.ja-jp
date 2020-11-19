@@ -67,7 +67,7 @@
           href: spring-cloud-tutorial-config-server.md
         - name: サービス登録を有効にする
           href: spring-cloud-service-registration.md
-    - name: デプロイ
+    - name: 配置
       items:
         - name: ステージング環境のセットアップ
           href: spring-cloud-howto-staging-environment.md
@@ -81,6 +81,8 @@
           href: spring-cloud-howto-start-stop-delete.md
         - name: 永続的ストレージを使用する
           href: spring-cloud-howto-persistent-storage.md
+        - name: 送信パブリック IP アドレスの識別
+          href: spring-cloud-howto-outbound-public-ip.md
     - name: モニター
       items:
         - name: 分散トレースと App Insights
@@ -121,7 +123,7 @@
           href: spring-cloud-howto-self-diagnose-solve.md
         - name: トラブルシューティング ガイド
           href: spring-cloud-troubleshoot.md
-    - name: 移行
+    - name: Migrate
       items:
         - name: Spring Cloud
           href: 'https://docs.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-spring-cloud'

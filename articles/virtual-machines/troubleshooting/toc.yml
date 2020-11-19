@@ -115,6 +115,8 @@
           href: windows-boot-error-invalid-image-hash.md
         - name: Windows STOP エラー - 無効なシステム構成情報
           href: windows-stop-error-bad-system-config-info.md
+        - name: Windows STOP エラー - ハードウェアの誤動作
+          href: windows-stop-error-hardware-malfunction.md
         - name: Windows STOP エラー - メモリなし状態
           href: troubleshoot-windows-stop-error.md
         - name: Windows STOP エラー - システム プロセスは終了しました

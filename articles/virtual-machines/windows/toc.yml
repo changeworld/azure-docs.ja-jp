@@ -330,7 +330,9 @@
         - name: ディスクのバックアップとディザスター リカバリー
           href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 共有ディスク
-          href: disks-shared.md
+          href: ../disks-shared.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: ディスクのパフォーマンス レベル
+          href: ../disks-change-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: エフェメラル OS ディスク
           href: ../ephemeral-os-disks.md
     - name: ネットワーク
@@ -886,8 +888,10 @@
               href: attach-disk-ps.md
             - name: Azure portal
               href: attach-managed-disk-portal.md
-        - name: ディスク層を変更する
+        - name: ディスクのサービス レベルを変更する - PowerShell/CLI
           href: ../disks-performance-tiers.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: ディスクのサービス レベルを変更する - ポータル
+          href: ../disks-performance-tiers-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: ディスクを取り外す
           href: detach-disk.md
         - name: Resource Manager テンプレートによるディスクのデプロイ

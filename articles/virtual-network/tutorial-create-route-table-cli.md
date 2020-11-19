@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 027165f797977311fd77f3cd3e626b126c26e47b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 043d450a1b968174ad263579d39de06a296a98e4
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87494674"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741487"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Azure CLI を使用してルート テーブルでネットワーク トラフィックをルーティングする
 
@@ -36,11 +36,11 @@ ms.locfileid: "87494674"
 * 仮想マシン (VM) を異なるサブネットに展開する
 * NVA を介して、あるサブネットから別のサブネットにトラフィックをルーティングする
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-CLI をローカルにインストールして使用することを選択する場合、このクイック スタートでは、Azure CLI バージョン 2.0.28 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
+- この記事では、Azure CLI のバージョン 2.0.28 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-route-table"></a>ルート テーブルの作成
 
@@ -107,7 +107,7 @@ az network vnet subnet create \
   --address-prefix 10.0.2.0/24
 ```
 
-[az network vnet subnet update](/cli/azure/network/vnet/subnet) で、*myRouteTablePublic* ルート テーブルを*パブリック* サブネットに関連付けます。
+[az network vnet subnet update](/cli/azure/network/vnet/subnet) で、*myRouteTablePublic* ルート テーブルを *パブリック* サブネットに関連付けます。
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -160,7 +160,7 @@ az vm extension set \
 
 ## <a name="create-virtual-machines"></a>仮想マシンを作成する
 
-後の手順で、*パブリック* サブネットからのトラフィックが NVA 経由で*プライベート* サブネットにルーティングされていることを検証できるように、仮想ネットワークに 2 つの VM を作成します。 
+後の手順で、*パブリック* サブネットからのトラフィックが NVA 経由で *プライベート* サブネットにルーティングされていることを検証できるように、仮想ネットワークに 2 つの VM を作成します。 
 
 [az vm create](/cli/azure/vm) を使用して、*パブリック* サブネット内に VM を作成します。 `--no-wait` パラメーターを使用すると、Azure はバックグラウンドでコマンドを実行できるので、次のコマンドに進むことができます。 この記事を効率化するために、パスワードが使用されています。 通常、キーは運用環境デプロイで使用されます。 キーを使用する場合は、SSH エージェント転送も構成する必要があります。 詳細については、SSH クライアントのドキュメントを参照してください。 次のコマンドの `<replace-with-your-password>` を、使用するパスワードに置き換えます。
 

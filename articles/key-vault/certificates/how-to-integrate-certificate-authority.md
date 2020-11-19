@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: d36c6e8ebbb86f9027a4822daa4481b5481523c2
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 50f2515cee92ead8018ffaaf4b4574905f8007d5
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289539"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844507"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Key Vault と DigiCert 証明機関の統合
 
@@ -31,9 +31,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このガイドを完了するには、以下のリソースが必要です。
 * キー コンテナー。 既存のキー コンテナーを使用することも、次のいずれかのクイックスタートの手順に従って新しいキー コンテナーを作成することもできます。
-   - [Azure CLI を使用してキー コンテナーを作成する](../secrets/quick-create-cli.md)
-   - [Azure PowerShell を使用してキー コンテナーを作成する](../secrets/quick-create-powershell.md)
-   - [Azure portal を使用してキー コンテナーを作成する](../secrets/quick-create-portal.md)。
+   - [Azure CLI を使用してキー コンテナーを作成する](../general/quick-create-cli.md)
+   - [Azure PowerShell を使用してキー コンテナーを作成する](../general/quick-create-powershell.md)
+   - [Azure portal を使用してキー コンテナーを作成する](../general/quick-create-portal.md)。
 *   DigiCert CertCentral アカウントをアクティブにする必要があります。 CertCentral アカウントに[サインアップ](https://www.digicert.com/account/signup/)する。
 *   対象のアカウントの管理者レベルのアクセス許可。
 
@@ -56,7 +56,7 @@ DigiCert CertCentral アカウントから上記の情報を収集した後、Di
 4.  **[追加]** オプションを選択します。
  ![証明機関を追加する](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
 5.  **[Create a certificate Authority]\(証明機関の作成\)** 画面で、次の値を選択します。
-    -   **Name** :識別可能な発行者名を追加します。 例: DigicertCA
+    -   **Name**:識別可能な発行者名を追加します。 例: DigicertCA
     -   **[プロバイダー]** : メニューから DigiCert を選択します。
     -   **[アカウント ID]** : DigiCert CertCentral のアカウント ID を入力します
     -   **[Account Password]\(アカウントのパスワード\)** : DigiCert CertCentral アカウントで生成した API キーを入力します
@@ -88,9 +88,9 @@ New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
 
 キー コンテナーには一意の名前を使用する必要があります。 ここで、"Contoso-Vaultname" は、このガイド全体で使用されるキー コンテナーの名前です。
 
-- **コンテナー名** : Contoso-Vaultname。
-- **リソース グループ名** : ContosoResourceGroup。
-- **場所** : EastUS。
+- **コンテナー名**: Contoso-Vaultname。
+- **リソース グループ名**: ContosoResourceGroup。
+- **場所**: EastUS。
 
 ```azurepowershell-interactive
 New-AzKeyVault -Name 'Contoso-Vaultname' -ResourceGroupName 'ContosoResourceGroup' -Location 'EastUS'
@@ -113,7 +113,7 @@ $secureApiKey = ConvertTo-SecureString DigiCertCertCentralAPIKey -AsPlainText �
 Set-AzKeyVaultCertificateIssuer -VaultName "Contoso-Vaultname" -Name "TestIssuer01" -IssuerProvider DigiCert -AccountId $accountId -ApiKey $secureApiKey -OrganizationDetails $org -PassThru
 ```
 
-5. **キー コンテナー内の DigiCert から直接証明書のポリシーを設定し、証明書を発行します** 。
+5. **キー コンテナー内の DigiCert から直接証明書のポリシーを設定し、証明書を発行します**。
 
 ```azurepowershell-interactive
 $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "TestIssuer01" -ValidityInMonths 12 -RenewAtNumberOfDaysBeforeExpiry 60

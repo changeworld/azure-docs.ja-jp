@@ -1,22 +1,22 @@
 ---
 title: Azure Container Registry 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Container Registry に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 author: dlepow
 ms.author: danlep
 ms.service: container-registry
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 285065bf91ff8d0794ff079913ddfb9d877a2cb4
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 940bc0115d86963d6346d56aed1cefed805ac641
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308278"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701355"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-container-registry"></a>Azure Container Registry 用の Azure Policy 規制コンプライアンス コントロール
 
-[Azure Policy の規制コンプライアンス](../governance/policy/concepts/regulatory-compliance.md)により、さまざまなコンプライアンス基準に関連する**コンプライアンス ドメイン**および**セキュリティ コントロール**に対して、"_組み込み_" と呼ばれる、Microsoft が作成および管理するイニシアチブ定義が提供されます。 このページでは、Azure Container Registry 用の**コンプライアンス ドメイン**と**セキュリティ コントロール**の一覧を示します。 **セキュリティ コントロール**の組み込みを個別に割り当てることで、Azure リソースを特定の基準に準拠させることができます。
+[Azure Policy の規制コンプライアンス](../governance/policy/concepts/regulatory-compliance.md)により、さまざまなコンプライアンス基準に関連する **コンプライアンス ドメイン** および **セキュリティ コントロール** に対して、"_組み込み_" と呼ばれる、Microsoft が作成および管理するイニシアチブ定義が提供されます。 このページでは、Azure Container Registry 用の **コンプライアンス ドメイン** と **セキュリティ コントロール** の一覧を示します。 **セキュリティ コントロール** の組み込みを個別に割り当てることで、Azure リソースを特定の基準に準拠させることができます。
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]
 

@@ -3,13 +3,13 @@ title: Azure で Service Fabric クラスターのスケーリングを行う
 description: このチュートリアルでは、Azure の Service Fabric クラスターをスケールアウトおよびスケールインする方法と、残ったリソースをクリーンアップする方法について説明します。
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: d9699103f5e13301cce408d2e54f0e15780e0a35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 7f92ca28afd9d1894867aaa2c18df3a02ee0bd79
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88716896"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842687"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric クラスターのスケーリングを行う
 
@@ -80,7 +80,7 @@ Azure クラスターをスケーリングするときには、次のガイド�
 
 ### <a name="update-the-template"></a>テンプレートを更新する
 
-リソース グループから最新のデプロイの[テンプレートとパラメーター ファイルをエクスポート](#export-the-template-for-the-resource-group)します。  *parameters.json* ファイルを開きます。  このチュートリアルの[サンプル テンプレート][template]を使用してクラスターをデプロイした場合は、クラスター内に 3 つのノード タイプがあり、各ノード タイプのノード数を設定する 3 つのパラメーター (*nt0InstanceCount*、*nt1InstanceCount*、および *nt2InstanceCount*) があります。  たとえば、*nt1InstanceCount* パラメーターは 2 つ目のノード タイプのインスタンスの数を設定し、関連付けられている仮想マシン スケール セット内の VM の数を設定します。
+リソース グループから最新のデプロイの[テンプレートとパラメーター ファイルをエクスポート](#export-the-template-for-the-resource-group)します。  *parameters.json* ファイルを開きます。  このチュートリアルの [サンプル テンプレート][template]を使用してクラスターをデプロイした場合は、クラスター内に 3 つのノード タイプがあり、各ノード タイプのノード数を設定する 3 つのパラメーター (*nt0InstanceCount*、*nt1InstanceCount*、および *nt2InstanceCount*) があります。  たとえば、*nt1InstanceCount* パラメーターは 2 つ目のノード タイプのインスタンスの数を設定し、関連付けられている仮想マシン スケール セット内の VM の数を設定します。
 
 そのため、*nt1InstanceCount* の値を更新すると、2 つ目のノード タイプのノードの数が変更されます。  100 ノードを超えてノード タイプをスケールアウトすることができない点に注意してください。  ステートフルの実稼働ワークロードを実行する非プライマリ ノード タイプの場合、必ず 5 つ以上のノードが必要です。 ステートレスの実稼働ワークロードを実行する非プライマリ ノード タイプの場合、必ず 2 つ以上のノードが必要です。
 

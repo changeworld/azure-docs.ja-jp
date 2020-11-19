@@ -3,13 +3,13 @@ title: チュートリアル:Event Hubs データをデータ ウェアハウス
 description: チュートリアル:Azure Event Grid と Event Hubs を使用し、Azure Synapse Analytics にデータを移行する方法について説明します。 ここでは、Capture ファイルを取得するために Azure 関数が使用されます。
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 4fb26bf92e6af1fd9e97f3b9434b4ab5e76316b3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: e6dfcac17d79edd417af07179224fdf922906c4e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305273"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841356"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>チュートリアル:ビッグ データをデータ ウェアハウスにストリーミングする
 Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (イベント) への対応を可能にするインテリジェントなイベント ルーティング サービスです。 たとえば、Azure BLOB ストレージや Azure Data Lake Storage にキャプチャされた Event Hubs データを処理する Azure 関数をトリガーして、データを別のデータ リポジトリに移行できます。 この [Event Hubs と Event Grid の統合のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)では、Event Hubs と Event Grid を使用して、キャプチャされた Event Hubs データを BLOB ストレージから Azure Synapse Analytics (旧称、SQL Data Warehouse) にシームレスに移行する方法を説明しています。
