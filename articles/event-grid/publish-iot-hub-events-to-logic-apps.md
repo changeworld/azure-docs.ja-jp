@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: philmea
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5092aa0b5b23f04af1f49933bca234815f03f454
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 857ae8d824443e9a8abdac7c4a66e2b014be2be0
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604597"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566352"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>チュートリアル:Event Grid および Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する
 
@@ -21,13 +21,13 @@ Azure Event Grid を使うと、ダウンストリームのビジネス アプ�
 
 この記事では、IoT Hub と Event Grid を使うサンプルを構成する手順について説明します。 最終的に、デバイスが IoT Hub に接続されるか接続が解除されるたびに通知メールを送信するように Azure Logic Apps が設定されます。 Event Grid を使用すると、重要なデバイスの接続解除について、適切なタイミングで通知を受け取ることができます。 メトリックと診断がログまたはアラートとして現れるまでには、数分 (厳密な数字を挙げることは難しいですが、20 分以上) かかる場合があります。 これは、重要なインフラストラクチャでは受け入れがたい遅れでしょう。
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
-* 有効な Azure サブスクリプション サブスクリプションがない場合は、[無料の Azure アカウントを作成](https://azure.microsoft.com/pricing/free-trial/)できます。
+* Azure Logic Apps がサポートするメール プロバイダー (Office 365 Outlook、Outlook.com など) のメール アカウント。 このメール アカウントは、イベント通知の送信に使われます。
 
-* Azure Logic Apps がサポートするメール プロバイダー (Office 365 Outlook、Outlook.com など) のメール アカウント。 このメール アカウントは、イベント通知の送信に使われます。 
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-an-iot-hub"></a>IoT ハブを作成する
 
@@ -167,7 +167,7 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
 
 1. Azure Portal で、お使いの IoT ハブに移動します。 この操作は **[リソース グループ]** を選択し、このチュートリアル用のリソース グループを選択し、リソースのリストから IoT ハブを選択して実行できます。
 
-1. **イベント**を選択します。
+1. **イベント** を選択します。
 
    ![Event Grid の詳細を表示する](./media/publish-iot-hub-events-to-logic-apps/event-grid.png)
 
@@ -178,12 +178,12 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
 1. 次の値でイベント サブスクリプションを作成します。 
 
    1. **[イベント サブスクリプションの詳細]** セクションで、次の手順に従います。
-      1. イベント サブスクリプションの**名前**を指定します。 
+      1. イベント サブスクリプションの **名前** を指定します。 
       2. **[イベント スキーマ]** に **[イベント グリッド スキーマ]** を選択します。 
    2. **[トピックの詳細]** セクションで、次の手順に従います。
       1. **[トピックの種類]** が **[IoT Hub]** に設定されていることを確認します。 
       2. **[ソース リソース]** フィールドの値として IoT ハブの名前が設定されていることを確認します。 
-      3. 自動的に作成される**システム トピック**の名前を入力します。 システム トピックについては、「[システム トピックの概要](system-topics.md)」を参照してください。
+      3. 自動的に作成される **システム トピック** の名前を入力します。 システム トピックについては、「[システム トピックの概要](system-topics.md)」を参照してください。
    3. **[イベントの種類]** セクションで、次の手順に従います。
       1. **[イベントの種類のフィルター]** ドロップダウンを選択します。
       1. **[Device Created]\(デバイスの作成完了\)** チェック ボックスと **[Device Deleted]\(デバイスの削除完了\)** チェック ボックスをオフにし、 **[Device Connected]\(デバイスの接続完了\)** チェック ボックスと **[Device Disconnected]\(デバイスの切断完了\)** チェック ボックスのみをオンのままにします。

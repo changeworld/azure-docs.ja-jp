@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: tutorial
 ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: 58002140cd6ec0cd90eefc506dc743be05e7be7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9733eeb0d9941f6e23dcc9c0fa4dba60f4e4d30
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274488"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561031"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する
 
@@ -46,7 +46,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 Azure portal の左側のメニューにある **[リソースの作成]** を選択します。 **[新規作成]** ウィンドウが表示されます。
 
-**[ネットワーク]** を選択し、**おすすめ**のリストで **[Application Gateway]** を選択します。
+**[ネットワーク]** を選択し、**おすすめ** のリストで **[Application Gateway]** を選択します。
 
 ### <a name="basics-tab"></a>[基本] タブ
 
@@ -171,7 +171,7 @@ Azure portal の左側のメニューにある **[リソースの作成]** を�
 
 この例では、Azure がアプリケーション ゲートウェイを正常に作成したことを確認するためにのみ、仮想マシンに IIS をインストールします。
 
-1. [Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell)を開きます。 そのためには、Azure portal の上部のナビゲーション バーで **[Cloud Shell]** を選択して、ドロップダウン リストで **[PowerShell]** を選択します。 
+1. [Azure PowerShell](../../cloud-shell/quickstart-powershell.md)を開きます。 そのためには、Azure portal の上部のナビゲーション バーで **[Cloud Shell]** を選択して、ドロップダウン リストで **[PowerShell]** を選択します。 
 
     ![カスタム拡張機能のインストール](../media/application-gateway-web-application-firewall-portal/application-gateway-extension.png)
 
@@ -262,7 +262,7 @@ IIS はアプリケーション ゲートウェイを作成するのに必要で
 
 1. Azure portal の左側のメニューにある **[リソース グループ]** を選択します。
 2. **[リソース グループ]** ページで、リストの **myResourceGroupAG** を探して選択します。
-3. **[リソース グループ] ページ**で、 **[リソース グループの削除]** を選択します。
+3. **[リソース グループ] ページ** で、 **[リソース グループの削除]** を選択します。
 4. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「*myResourceGroupAG*」と入力し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
