@@ -20,12 +20,12 @@ ArrInspector は、実行中の Azure Remote Rendering セッションを検査�
 
 ## <a name="connecting-to-the-arrinspector"></a>ArrInspector に接続する
 
-ARR サーバーのホスト名 (末尾が `mixedreality.azure.com`) を取得したら、[ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector) を使用して接続します。 この関数により、アプリケーションが実行されているデバイス上に `StartArrInspector.html` が作成されます。 ArrInspector を起動するには、PC のブラウザー (Edge、Firefox、または Chrome) でそのファイルを開きます。 そのファイルは 24 時間だけ有効です。
+ARR サーバーのホスト名 (末尾が `mixedreality.azure.com`) を取得したら、[ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector) を使用して接続します。 この関数により、アプリケーションが実行されているデバイス上に `StartArrInspector.html` が作成されます。 ArrInspector を起動するには、PC のブラウザー (Microsoft Edge、Firefox、または Chrome) でそのファイルを開きます。 そのファイルは 24 時間だけ有効です。
 
 `ConnectToArrInspectorAsync` を呼び出すアプリが PC で既に実行されている場合:
 
 * Unity 統合を使用している場合は、自動的に起動されることがあります。
-* そうでない場合は、 *User Folders\\LocalAppData\\[your_app]\\AC\\Temp* でファイルを探します。
+* そうでない場合は、*User Folders\\LocalAppData\\[your_app]\\AC\\Temp* でファイルを探します。
 
 アプリが HoloLens で実行されている場合:
 
@@ -41,7 +41,7 @@ ARR サーバーのホスト名 (末尾が `mixedreality.azure.com`) を取得�
 
 このパネルには、サーバーによって公開される、すべてのフレームごとのパフォーマンス値のグラフが表示されます。 その値には、現在、フレーム時間、FPS、CPU とメモリの使用率、全体的な RAM 使用率などのメモリ統計、オブジェクト数などが含まれます。
 
-これらのパラメーターのいずれかを表示するには、 **[Add New]\(新規追加\)** ボタンをクリックして、ダイアログに表示される使用可能な値のいずれかを選択します。 この操作により、新しいスクロール グラフがパネルに追加されて、値がリアルタイムでトレースされます。 右側には、" *最小* "、" *最大* "、" *現在* " の値が表示されます。
+これらのパラメーターのいずれかを表示するには、 **[Add New]\(新規追加\)** ボタンをクリックして、ダイアログに表示される使用可能な値のいずれかを選択します。 この操作により、新しいスクロール グラフがパネルに追加されて、値がリアルタイムでトレースされます。 右側には、"*最小*"、"*最大*"、"*現在*" の値が表示されます。
 
 マウスで内容をドラッグすることによって、グラフをパンできます。ただし、横方向にパンできるのは、ArrInspector が一時停止状態になっている場合のみです。
 
@@ -113,7 +113,7 @@ Azure Remote Rendering チームは、デバッグ情報を使用することで
 
 既定では、このツールは、ArrInspector を提供しているのと同じホスト上で実行されている ARR サーバーに接続されます。 ただし、別のサーバーでも、ARR インスタンスが実行されていてツールのポートが開かれていれば、検査対象として構成できます。
 
-そのためには、ヘッダー バーの左側にあるメイン メニューにアクセスし、 *[Host configuration]\(ホストの構成\)* を選択します。 **[Add new host]\(新しいホストの追加\)** をクリックして、名前とホスト名を入力します。 " *ホスト名* " については、末尾が `.mixedreality.azure.com` のホスト名のみを使用し、`http://` またはポートを含めないでください。
+そのためには、ヘッダー バーの左側にあるメイン メニューにアクセスし、 *[Host configuration]\(ホストの構成\)* を選択します。 **[Add new host]\(新しいホストの追加\)** をクリックして、名前とホスト名を入力します。 "*ホスト名*" については、末尾が `.mixedreality.azure.com` のホスト名のみを使用し、`http://` またはポートを含めないでください。
 
 ![ホストの構成](./media/host-configuration.png)
 
