@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/5/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: e60c23ce07969a2c1f031e1981970ceffad1864e
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 0b85bbbbd69338f54f9e698d9d47058f78c32057
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330276"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630075"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -53,8 +53,8 @@ Azure ファイル同期を使用すると、オンプレミスのファイル �
 
 ### <a name="improvements-and-issues-that-are-fixed"></a>機能強化と修正された問題
 - 初回ダウンロードと事前呼び戻しを制御する新しいクラウドを使った階層化のモード
-    - 初回ダウンロード モード: 新しいサーバー エンドポイントへの初回ファイル ダウンロードの方法を選択できるようになりました。 すべてのファイルを階層化したり、最後に変更されたタイムスタンプに応じてサーバーにできる限り多くのファイルをダウンロードすることなどが できるようになります。 クラウドの階層化が使用できない場合も問題ありません。 システム上で階層化されたファイルを使用しないように選択できるようになりました。 詳細については、Azure File Sync のデプロイに関するドキュメントの「[サーバー エンドポイントを作成する](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal%2Cproactive-portal#create-a-server-endpoint)」セクションを参照してください。
-    - 事前呼び戻しモード: ファイルが作成または変更されるたびに、同じ同期グループ内で指定したサーバーにファイルを事前に呼び戻すことができます。 これにより、指定した各サーバーでファイルをすぐに使用できるようになります。 世界中のチームが同じデータを使用していますか? 事前呼び戻しを有効にすると、チームが翌朝到着したときに、異なるタイム ゾーンのチームが更新したすべてのファイルがダウンロードされ、すぐに使用できるようになります。 詳細については、Azure File Sync のデプロイのドキュメントにある「[新規および変更されたファイルを Azure ファイル共有から事前に呼び戻す](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal%2Cproactive-portal#proactively-recall-new-and-changed-files-from-an-azure-file-share)」セクションを参照してください。
+    - 初回ダウンロード モード: 新しいサーバー エンドポイントへの初回ファイル ダウンロードの方法を選択できるようになりました。 すべてのファイルを階層化したり、最後に変更されたタイムスタンプに応じてサーバーにできる限り多くのファイルをダウンロードすることなどが できるようになります。 クラウドの階層化が使用できない場合も問題ありません。 システム上で階層化されたファイルを使用しないように選択できるようになりました。 詳細については、Azure File Sync のデプロイに関するドキュメントの「[サーバー エンドポイントを作成する](./storage-sync-files-deployment-guide.md?tabs=azure-portal%252cproactive-portal#create-a-server-endpoint)」セクションを参照してください。
+    - 事前呼び戻しモード: ファイルが作成または変更されるたびに、同じ同期グループ内で指定したサーバーにファイルを事前に呼び戻すことができます。 これにより、指定した各サーバーでファイルをすぐに使用できるようになります。 世界中のチームが同じデータを使用していますか? 事前呼び戻しを有効にすると、チームが翌朝到着したときに、異なるタイム ゾーンのチームが更新したすべてのファイルがダウンロードされ、すぐに使用できるようになります。 詳細については、Azure File Sync のデプロイのドキュメントにある「[新規および変更されたファイルを Azure ファイル共有から事前に呼び戻す](./storage-sync-files-deployment-guide.md?tabs=azure-portal%252cproactive-portal#proactively-recall-new-and-changed-files-from-an-azure-file-share)」セクションを参照してください。
 
 - クラウドを使った階層化の最終アクセス時間の追跡からアプリケーションを除外する。最後のアクセス時間の追跡からアプリケーションを除外できるようになりました。 アプリケーションからファイルへアクセスが行われると、ファイルの最終アクセス時刻がクラウドを使った階層化データベースで更新されます。 ファイル システムをスキャンするウイルス対策アプリケーションなどを使用すると、すべてのファイルの最終アクセス時刻が同じになるため、ファイルが階層化された時間に影響を及ぼします。
 
@@ -74,7 +74,7 @@ Azure ファイル同期を使用すると、オンプレミスのファイル �
     - 階層化されたファイルにアクセスするときの呼び戻しのパフォーマンスが向上しました。
 
 ### <a name="evaluation-tool"></a>評価ツール
-Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 インストールおよび使用手順については、計画ガイドの「[評価ツール](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)」セクションを参照してください。 
+Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 インストールおよび使用手順については、計画ガイドの「[評価ツール](./storage-sync-files-planning.md#evaluation-cmdlet)」セクションを参照してください。 
 
 ### <a name="agent-installation-and-server-configuration"></a>エージェントのインストールとサーバー構成
 Windows Server で Azure File Sync エージェントをインストールして構成する方法の詳細については、「[Planning for an Azure File Sync deployment (Azure File Sync のデプロイの計画)](storage-sync-files-planning.md)」および [Azure File Sync をデプロイする方法](storage-sync-files-deployment-guide.md)に関するページを参照してください。
@@ -82,7 +82,7 @@ Windows Server で Azure File Sync エージェントをインストールして
 - エージェント インストール パッケージは、引き上げられた (管理者) 特権でインストールする必要があります。
 - Nano Server のデプロイ オプションでは、このエージェントはサポートされません。
 - このエージェントがサポートされるのは、Windows Server 2019、Windows Server 2016 および Windows Server 2012 R2 のみです。
-- エージェントには、少なくとも 2 GiB のメモリが必要です。 動的メモリを有効にした仮想マシンでサーバーが実行されている場合は、2048 MiB 以上のメモリで VM を構成する必要があります。 詳細については、「[推奨されるシステム リソース](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#recommended-system-resources)」を参照してください。
+- エージェントには、少なくとも 2 GiB のメモリが必要です。 動的メモリを有効にした仮想マシンでサーバーが実行されている場合は、2048 MiB 以上のメモリで VM を構成する必要があります。 詳細については、「[推奨されるシステム リソース](./storage-sync-files-planning.md#recommended-system-resources)」を参照してください。
 - Storage Sync Agent (FileSyncSvc) サービスは、システム ボリューム情報 (SVI) ディレクトリが圧縮されているボリュームに配置されたサーバーのエンドポイントをサポートしません。 この構成は、予期しない結果になります。
 
 ### <a name="interoperability"></a>相互運用性
@@ -115,8 +115,8 @@ Windows Server で Azure File Sync エージェントをインストールして
 - サーバーの名前を変更した場合、ポータル内のサーバー名は更新されません。
 
 ### <a name="cloud-endpoint"></a>クラウド エンドポイント
-- Azure File Sync は、Azure ファイル共有に対する直接的な変更をサポートします。 ただし、Azure ファイル共有に対して行われた変更は、まず Azure File Sync の変更検出ジョブによって認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回起動されます。 Azure ファイル共有で変更されたファイルを直ちに同期したければ、[Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) PowerShell コマンドレットを使用すると、Azure ファイル共有における変更の検出を手動で開始できます。 さらに、REST プロトコルで Azure ファイル共有に対して行われた変更は、SMB の最終更新時刻を更新するものではなく、同期による変更とは見なされません。
-- ストレージ同期サービスやストレージ アカウントは、別のリソース グループ、サブスクリプション、または Azure AD テナントに移動できます。 ストレージ同期サービスまたはストレージ アカウントを移動した後、Microsoft.StorageSync アプリケーションにストレージ アカウントへのアクセス権を付与する必要があります (「[Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)」を参照してください)。
+- Azure File Sync は、Azure ファイル共有に対する直接的な変更をサポートします。 ただし、Azure ファイル共有に対して行われた変更は、まず Azure File Sync の変更検出ジョブによって認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回起動されます。 Azure ファイル共有で変更されたファイルを直ちに同期したければ、[Invoke-AzStorageSyncChangeDetection](/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) PowerShell コマンドレットを使用すると、Azure ファイル共有における変更の検出を手動で開始できます。 さらに、REST プロトコルで Azure ファイル共有に対して行われた変更は、SMB の最終更新時刻を更新するものではなく、同期による変更とは見なされません。
+- ストレージ同期サービスやストレージ アカウントは、別のリソース グループ、サブスクリプション、または Azure AD テナントに移動できます。 ストレージ同期サービスまたはストレージ アカウントを移動した後、Microsoft.StorageSync アプリケーションにストレージ アカウントへのアクセス権を付与する必要があります (「[Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します](./storage-sync-files-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)」を参照してください)。
 
     > [!Note]  
     > クラウド エンドポイントを作成するときは、ストレージ同期サービスとストレージ アカウントが同じ Azure AD テナントに存在する必要があります。 クラウド エンドポイントが作成された後、ストレージ同期サービスとストレージ アカウントを別の Azure AD テナントに移動できます。
@@ -131,7 +131,7 @@ Windows Server で Azure File Sync エージェントをインストールして
 ### <a name="improvements-and-issues-that-are-fixed"></a>機能強化と修正された問題
 
 - Azure プライベート エンドポイントのサポート
-    - ストレージ同期サービスへの同期トラフィックをプライベート エンドポイントに送信できるようになりました。 これにより、ExpressRoute または VPN 接続を経由したトンネリングが可能になります。 詳細については、「[Azure File Sync ネットワーク エンドポイントの構成](https://docs.microsoft.com/azure/storage/files/storage-sync-files-networking-endpoints)」を参照してください。
+    - ストレージ同期サービスへの同期トラフィックをプライベート エンドポイントに送信できるようになりました。 これにより、ExpressRoute または VPN 接続を経由したトンネリングが可能になります。 詳細については、「[Azure File Sync ネットワーク エンドポイントの構成](./storage-sync-files-networking-endpoints.md)」を参照してください。
 - [同期されたファイル数] メトリックでは、進行状況が最後ではなく、大規模な同期の実行中に表示されるようになりました。
 - エージェントのインストール、クラウドを使った階層化、同期とテレメトリに関するその他の信頼性の向上
 
@@ -166,11 +166,11 @@ Windows Server で Azure File Sync エージェントをインストールして
 - さまざまなパフォーマンスと信頼性の向上
     - ストレージ アカウントで仮想ネットワーク (VNET) とファイアウォール ルールが構成されていると、Azure ファイル共有の変更検出が失敗する場合があります。
     - 再呼び出しに関連するメモリ使用量の削減。 
-    - [Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) コマンドレット使用時のパフォーマンスの向上。
+    - [Invoke-AzStorageSyncChangeDetection](/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) コマンドレット使用時のパフォーマンスの向上。
     - その他の信頼性の向上。 
     
 ### <a name="evaluation-tool"></a>評価ツール
-Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 インストールおよび使用手順については、計画ガイドの「[評価ツール](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)」セクションを参照してください。 
+Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 インストールおよび使用手順については、計画ガイドの「[評価ツール](./storage-sync-files-planning.md#evaluation-cmdlet)」セクションを参照してください。 
 
 ### <a name="agent-installation-and-server-configuration"></a>エージェントのインストールとサーバー構成
 Windows Server で Azure File Sync エージェントをインストールして構成する方法の詳細については、「[Planning for an Azure File Sync deployment (Azure File Sync のデプロイの計画)](storage-sync-files-planning.md)」および [Azure File Sync をデプロイする方法](storage-sync-files-deployment-guide.md)に関するページを参照してください。
@@ -211,8 +211,8 @@ Windows Server で Azure File Sync エージェントをインストールして
 - サーバーの名前を変更した場合、ポータル内のサーバー名は更新されません。
 
 ### <a name="cloud-endpoint"></a>クラウド エンドポイント
-- Azure File Sync は、Azure ファイル共有に対する直接的な変更をサポートします。 ただし、Azure ファイル共有に対して行われた変更は、まず Azure File Sync の変更検出ジョブによって認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回起動されます。 Azure ファイル共有で変更されたファイルを直ちに同期したければ、[Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) PowerShell コマンドレットを使用すると、Azure ファイル共有における変更の検出を手動で開始できます。 さらに、REST プロトコルで Azure ファイル共有に対して行われた変更は、SMB の最終更新時刻を更新するものではなく、同期による変更とは見なされません。
-- ストレージ同期サービスやストレージ アカウントは、別のリソース グループ、サブスクリプション、または Azure AD テナントに移動できます。 ストレージ同期サービスまたはストレージ アカウントを移動した後、Microsoft.StorageSync アプリケーションにストレージ アカウントへのアクセス権を付与する必要があります (「[Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)」を参照してください)。
+- Azure File Sync は、Azure ファイル共有に対する直接的な変更をサポートします。 ただし、Azure ファイル共有に対して行われた変更は、まず Azure File Sync の変更検出ジョブによって認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回起動されます。 Azure ファイル共有で変更されたファイルを直ちに同期したければ、[Invoke-AzStorageSyncChangeDetection](/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) PowerShell コマンドレットを使用すると、Azure ファイル共有における変更の検出を手動で開始できます。 さらに、REST プロトコルで Azure ファイル共有に対して行われた変更は、SMB の最終更新時刻を更新するものではなく、同期による変更とは見なされません。
+- ストレージ同期サービスやストレージ アカウントは、別のリソース グループ、サブスクリプション、または Azure AD テナントに移動できます。 ストレージ同期サービスまたはストレージ アカウントを移動した後、Microsoft.StorageSync アプリケーションにストレージ アカウントへのアクセス権を付与する必要があります (「[Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します](./storage-sync-files-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)」を参照してください)。
 
     > [!Note]  
     > クラウド エンドポイントを作成するときは、ストレージ同期サービスとストレージ アカウントが同じ Azure AD テナントに存在する必要があります。 クラウド エンドポイントが作成された後、ストレージ同期サービスとストレージ アカウントを別の Azure AD テナントに移動できます。
@@ -237,7 +237,7 @@ Windows Server で Azure File Sync エージェントをインストールして
 
 - セルフサービス復元のサポート
     - 以前のバージョンの機能を使用して、ユーザーが自分のファイルを復元できるようになりました。 V9 リリースより前のバージョンでは、クラウドの階層化が有効になっているボリュームで以前のバージョンの機能はサポートされていませんでした。 この機能は、クラウドの階層化が有効になっているエンドポイントが存在する各ボリュームに対して個別に有効にする必要があります。 詳細については、次を参照してください。  
-[以前のバージョンおよび VSS (ボリューム シャドウ コピー サービス) を使用するセルフサービス復元](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service)。 
+[以前のバージョンおよび VSS (ボリューム シャドウ コピー サービス) を使用するセルフサービス復元](./storage-sync-files-deployment-guide.md#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service)。 
  
 - ファイル共有のより大きなサイズのサポート 
     - Azure File Sync では、1 つの同期名前空間で最大 64 TiB、1 億ファイルがサポートされるようになりました。  
@@ -257,7 +257,7 @@ Windows Server で Azure File Sync エージェントをインストールして
         テスト - StorageSyncNetworkConnectivity
  
 - クラウドの階層化が有効になっている場合にサーバー エンドポイントの改善を削除する 
-    - 以前と同様に、サーバー エンドポイントを削除しても、Azure ファイル共有内のファイルは削除されません。 ただし、ローカル サーバー上の再解析ポイントの動作は変更されています。 再解析ポイント (サーバー上のローカルではないファイルへのポインター) は、サーバー エンドポイントを削除するときに削除されるようになりました。 完全にキャッシュ化されたファイルはサーバーに残ります。 この改善により、サーバー エンドポイントを削除するときに、[階層化されたファイルが孤立しなく](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)なりました。 サーバー エンドポイントが再作成されると、階層化されたファイルの再解析ポイントがサーバー上で再作成されます。  
+    - 以前と同様に、サーバー エンドポイントを削除しても、Azure ファイル共有内のファイルは削除されません。 ただし、ローカル サーバー上の再解析ポイントの動作は変更されています。 再解析ポイント (サーバー上のローカルではないファイルへのポインター) は、サーバー エンドポイントを削除するときに削除されるようになりました。 完全にキャッシュ化されたファイルはサーバーに残ります。 この改善により、サーバー エンドポイントを削除するときに、[階層化されたファイルが孤立しなく](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)なりました。 サーバー エンドポイントが再作成されると、階層化されたファイルの再解析ポイントがサーバー上で再作成されます。  
  
 - パフォーマンスと信頼性の向上 
     - リコールの失敗が軽減されました。 ネットワーク帯域幅に基づいて、再呼び出しサイズが自動的に調整されるようになりました。 
@@ -266,7 +266,7 @@ Windows Server で Azure File Sync エージェントをインストールして
     - サーバー エンドポイント パスがボリューム マウント ポイントの場合、特定のシナリオでは、ファイルの階層化が失敗するか、予期せずに取り消されます。
     
 ### <a name="evaluation-tool"></a>評価ツール
-Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 インストールおよび使用手順については、計画ガイドの「[評価ツール](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)」セクションを参照してください。 
+Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 インストールおよび使用手順については、計画ガイドの「[評価ツール](./storage-sync-files-planning.md#evaluation-cmdlet)」セクションを参照してください。 
 
 ### <a name="agent-installation-and-server-configuration"></a>エージェントのインストールとサーバー構成
 Windows Server で Azure File Sync エージェントをインストールして構成する方法の詳細については、「[Planning for an Azure File Sync deployment (Azure File Sync のデプロイの計画)](storage-sync-files-planning.md)」および [Azure File Sync をデプロイする方法](storage-sync-files-deployment-guide.md)に関するページを参照してください。
@@ -301,7 +301,7 @@ Windows Server で Azure File Sync エージェントをインストールして
  
 ### <a name="server-endpoint"></a>サーバー エンドポイント
 - サーバー エンドポイントは、NTFS ボリューム上にのみ作成できます。 ReFS、FAT、FAT32 などのファイル システムは、現在 Azure File Sync でサポートされていません。
-- サーバーのエンドポイントを削除する前にファイルが再呼び出しされない場合、階層化ファイルはアクセスできなくなります。 ファイルへのアクセスを復元するには、サーバー エンドポイントを再作成します。 サーバー エンドポイントが削除されてから 30 日間が経過した場合、またはクラウド エンドポイントが削除された場合は、再呼び出しされなかった階層化ファイルは使用できなくなります。 詳細については、「[サーバー エンドポイントを削除した後、サーバー上で階層化されたファイルにアクセスできない](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)」を参照してください。
+- サーバーのエンドポイントを削除する前にファイルが再呼び出しされない場合、階層化ファイルはアクセスできなくなります。 ファイルへのアクセスを復元するには、サーバー エンドポイントを再作成します。 サーバー エンドポイントが削除されてから 30 日間が経過した場合、またはクラウド エンドポイントが削除された場合は、再呼び出しされなかった階層化ファイルは使用できなくなります。 詳細については、「[サーバー エンドポイントを削除した後、サーバー上で階層化されたファイルにアクセスできない](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)」を参照してください。
 - システム ボリュームでは、クラウドの階層化はサポートされていません。 システム ボリュームにサーバー エンドポイントを作成するには、サーバー エンドポイントを作成するときにクラウドの階層化を無効にします。
 - フェールオーバー クラスタリングは、クラスター化ディスクでのみサポートされ、クラスターの共有ボリューム (CSV) ではサポートされません。
 - サーバー エンドポイントを入れ子にすることはできません。 同じボリューム上に、別のエンドポイントと並列に共存させることはできます。
@@ -309,8 +309,8 @@ Windows Server で Azure File Sync エージェントをインストールして
 - サーバーの名前を変更した場合、ポータル内のサーバー名は更新されません。
 
 ### <a name="cloud-endpoint"></a>クラウド エンドポイント
-- Azure File Sync は、Azure ファイル共有に対する直接的な変更をサポートします。 ただし、Azure ファイル共有に対して行われた変更は、まず Azure File Sync の変更検出ジョブによって認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回起動されます。 Azure ファイル共有で変更されたファイルを直ちに同期したければ、[Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) PowerShell コマンドレットを使用すると、Azure ファイル共有における変更の検出を手動で開始できます。 さらに、REST プロトコルで Azure ファイル共有に対して行われた変更は、SMB の最終更新時刻を更新するものではなく、同期による変更とは見なされません。
-- ストレージ同期サービスやストレージ アカウントは、既存の Azure AD テナント内の別のリソース グループまたはサブスクリプションに移動できます。 ストレージ アカウントを移動する場合は、そのストレージ アカウントにハイブリッド ファイル同期サービス アクセス権を付与する必要があります (「[Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)」を参照してください)。
+- Azure File Sync は、Azure ファイル共有に対する直接的な変更をサポートします。 ただし、Azure ファイル共有に対して行われた変更は、まず Azure File Sync の変更検出ジョブによって認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回起動されます。 Azure ファイル共有で変更されたファイルを直ちに同期したければ、[Invoke-AzStorageSyncChangeDetection](/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) PowerShell コマンドレットを使用すると、Azure ファイル共有における変更の検出を手動で開始できます。 さらに、REST プロトコルで Azure ファイル共有に対して行われた変更は、SMB の最終更新時刻を更新するものではなく、同期による変更とは見なされません。
+- ストレージ同期サービスやストレージ アカウントは、既存の Azure AD テナント内の別のリソース グループまたはサブスクリプションに移動できます。 ストレージ アカウントを移動する場合は、そのストレージ アカウントにハイブリッド ファイル同期サービス アクセス権を付与する必要があります (「[Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します](./storage-sync-files-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)」を参照してください)。
 
     > [!Note]  
     > Azure File Sync では、別の Azure AD テナントへのサブスクリプションの移動がサポートされません。
@@ -334,7 +334,7 @@ Windows Server で Azure File Sync エージェントをインストールして
 - さまざまなパフォーマンスと信頼性の向上
 
 ### <a name="evaluation-tool"></a>評価ツール
-Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 インストールおよび使用手順については、計画ガイドの「[評価ツール](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)」セクションを参照してください。 
+Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 インストールおよび使用手順については、計画ガイドの「[評価ツール](./storage-sync-files-planning.md#evaluation-cmdlet)」セクションを参照してください。 
 
 ### <a name="agent-installation-and-server-configuration"></a>エージェントのインストールとサーバー構成
 Windows Server で Azure File Sync エージェントをインストールして構成する方法の詳細については、「[Planning for an Azure File Sync deployment (Azure File Sync のデプロイの計画)](storage-sync-files-planning.md)」および [Azure File Sync をデプロイする方法](storage-sync-files-deployment-guide.md)に関するページを参照してください。
@@ -369,7 +369,7 @@ Windows Server で Azure File Sync エージェントをインストールして
  
 ### <a name="server-endpoint"></a>サーバー エンドポイント
 - サーバー エンドポイントは、NTFS ボリューム上にのみ作成できます。 ReFS、FAT、FAT32 などのファイル システムは、現在 Azure File Sync でサポートされていません。
-- サーバーのエンドポイントを削除する前にファイルが再呼び出しされない場合、階層化ファイルはアクセスできなくなります。 ファイルへのアクセスを復元するには、サーバー エンドポイントを再作成します。 サーバー エンドポイントが削除されてから 30 日間が経過した場合、またはクラウド エンドポイントが削除された場合は、再呼び出しされなかった階層化ファイルは使用できなくなります。 詳細については、「[サーバー エンドポイントを削除した後、サーバー上で階層化されたファイルにアクセスできない](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)」を参照してください。
+- サーバーのエンドポイントを削除する前にファイルが再呼び出しされない場合、階層化ファイルはアクセスできなくなります。 ファイルへのアクセスを復元するには、サーバー エンドポイントを再作成します。 サーバー エンドポイントが削除されてから 30 日間が経過した場合、またはクラウド エンドポイントが削除された場合は、再呼び出しされなかった階層化ファイルは使用できなくなります。 詳細については、「[サーバー エンドポイントを削除した後、サーバー上で階層化されたファイルにアクセスできない](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)」を参照してください。
 - システム ボリュームでは、クラウドの階層化はサポートされていません。 システム ボリュームにサーバー エンドポイントを作成するには、サーバー エンドポイントを作成するときにクラウドの階層化を無効にします。
 - フェールオーバー クラスタリングは、クラスター化ディスクでのみサポートされ、クラスターの共有ボリューム (CSV) ではサポートされません。
 - サーバー エンドポイントを入れ子にすることはできません。 同じボリューム上に、別のエンドポイントと並列に共存させることはできます。
@@ -377,8 +377,8 @@ Windows Server で Azure File Sync エージェントをインストールして
 - サーバーの名前を変更した場合、ポータル内のサーバー名は更新されません。
 
 ### <a name="cloud-endpoint"></a>クラウド エンドポイント
-- Azure File Sync は、Azure ファイル共有に対する直接的な変更をサポートします。 ただし、Azure ファイル共有に対して行われた変更は、まず Azure File Sync の変更検出ジョブによって認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回起動されます。 Azure ファイル共有で変更されたファイルを直ちに同期したければ、[Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) PowerShell コマンドレットを使用すると、Azure ファイル共有における変更の検出を手動で開始できます。 さらに、REST プロトコルで Azure ファイル共有に対して行われた変更は、SMB の最終更新時刻を更新するものではなく、同期による変更とは見なされません。
-- ストレージ同期サービスやストレージ アカウントは、既存の Azure AD テナント内の別のリソース グループまたはサブスクリプションに移動できます。 ストレージ アカウントを移動する場合は、そのストレージ アカウントにハイブリッド ファイル同期サービス アクセス権を付与する必要があります (「[Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)」を参照してください)。
+- Azure File Sync は、Azure ファイル共有に対する直接的な変更をサポートします。 ただし、Azure ファイル共有に対して行われた変更は、まず Azure File Sync の変更検出ジョブによって認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回起動されます。 Azure ファイル共有で変更されたファイルを直ちに同期したければ、[Invoke-AzStorageSyncChangeDetection](/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) PowerShell コマンドレットを使用すると、Azure ファイル共有における変更の検出を手動で開始できます。 さらに、REST プロトコルで Azure ファイル共有に対して行われた変更は、SMB の最終更新時刻を更新するものではなく、同期による変更とは見なされません。
+- ストレージ同期サービスやストレージ アカウントは、既存の Azure AD テナント内の別のリソース グループまたはサブスクリプションに移動できます。 ストレージ アカウントを移動する場合は、そのストレージ アカウントにハイブリッド ファイル同期サービス アクセス権を付与する必要があります (「[Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します](./storage-sync-files-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)」を参照してください)。
 
     > [!Note]  
     > Azure File Sync では、別の Azure AD テナントへのサブスクリプションの移動がサポートされません。

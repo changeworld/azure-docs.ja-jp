@@ -6,16 +6,16 @@ ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.topic: tutorial
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 11/21/2019
-ms.openlocfilehash: 8173d53a5d4cac899b22f51a001f6e373f102236
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d2b45f5b51f4656294632aa46f679a7a09c06ed3
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790799"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593928"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>チュートリアル:Azure SQL Managed Instance と SQL Server の間にトランザクション レプリケーションを構成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -69,7 +69,7 @@ New-AzResourceGroup -Name  $ResourceGroupName -Location $Location
 [Azure portal](https://portal.azure.com) を使用して、この新しいリソース グループ内に 2 つのマネージド インスタンスを作成します。
 
 - パブリッシャー マネージド インスタンスの名前は `sql-mi-publisher` (およびランダム化のためのいくつかの文字) にして、仮想ネットワークの名前は `vnet-sql-mi-publisher` にする必要があります。
-- ディストリビューター マネージド インスタンスの名前は `sql-mi-distributor` (およびランダム化のためのいくつかの文字) にして、" _パブリッシャー マネージド インスタンスと同じ仮想ネットワークに配置する_ " 必要があります。
+- ディストリビューター マネージド インスタンスの名前は `sql-mi-distributor` (およびランダム化のためのいくつかの文字) にして、"_パブリッシャー マネージド インスタンスと同じ仮想ネットワークに配置する_" 必要があります。
 
    ![ディストリビューターにはパブリッシャー VNet を使用する](./media/replication-two-instances-and-sql-server-configure-tutorial/use-same-vnet-for-distributor.png)
 
@@ -296,7 +296,7 @@ GO
 
 1. **[ウィザードのアクション]** ページで **[パブリケーションを作成する]** を選択し、後のためにこのスクリプトを保存する場合は **[パブリケーションを作成するためのステップを含むスクリプト ファイルを生成する]** を選択します (省略可能)。
 1. **[ウィザードの完了]** ページで、パブリケーションに `ReplTest` という名前を指定し、 **[次へ]** を選択してパブリケーションを作成します。
-1. パブリケーションが作成されたら、 **オブジェクト エクスプローラー** の **[レプリケーション]** ノードを更新し、 **[ローカル パブリケーション]** を展開して、新しいパブリケーションを確認します。
+1. パブリケーションが作成されたら、**オブジェクト エクスプローラー** の **[レプリケーション]** ノードを更新し、 **[ローカル パブリケーション]** を展開して、新しいパブリケーションを確認します。
 
 ## <a name="create-the-subscription"></a>サブスクリプションを作成する
 
@@ -352,8 +352,8 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 1. [Azure Portal](https://portal.azure.com) で、リソース グループに移動します。
-1. マネージド インスタンスを選び、 **[削除]** を選択します。 テキスト ボックスに「`yes`」と入力して、リソースを削除することを確認し、 **[削除]** を選択します。 このプロセスは、バックグラウンドで完了するまでに時間がかかる場合があります。完了するまでは、" *仮想クラスター* " やその他の依存リソースを削除することはできません。 **[アクティビティ]** タブで削除を監視して、マネージド インスタンスが削除されたことを確認します。
-1. マネージド インスタンスが削除されたら、" *仮想クラスター* " を削除します。そのためには、リソース グループでそれを選び、 **[削除]** を選択します。 テキスト ボックスに「`yes`」と入力して、リソースを削除することを確認し、 **[削除]** を選択します。
+1. マネージド インスタンスを選び、 **[削除]** を選択します。 テキスト ボックスに「`yes`」と入力して、リソースを削除することを確認し、 **[削除]** を選択します。 このプロセスは、バックグラウンドで完了するまでに時間がかかる場合があります。完了するまでは、"*仮想クラスター*" やその他の依存リソースを削除することはできません。 **[アクティビティ]** タブで削除を監視して、マネージド インスタンスが削除されたことを確認します。
+1. マネージド インスタンスが削除されたら、"*仮想クラスター*" を削除します。そのためには、リソース グループでそれを選び、 **[削除]** を選択します。 テキスト ボックスに「`yes`」と入力して、リソースを削除することを確認し、 **[削除]** を選択します。
 1. 残りのリソースを削除します。 テキスト ボックスに「`yes`」と入力して、リソースを削除することを確認し、 **[削除]** を選択します。
 1. リソース グループを削除するには、 **[リソース グループの削除]** を選択し、リソース グループの名前 (`myResourceGroup`) を入力して、 **[削除]** を選びます。
 

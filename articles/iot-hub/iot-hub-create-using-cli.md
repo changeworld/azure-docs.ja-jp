@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
-ms.openlocfilehash: 6daed4f5f1871d76da707edec00010cd27dfa8db
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: e9757b94330f889869080a0e961ab2728cee86f6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92142321"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659932"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Azure CLI を使用して IoT ハブを作成する
 
@@ -20,23 +20,9 @@ ms.locfileid: "92142321"
 
 この記事では、Azure CLI を使用して IoT ハブを作成する方法を説明します。
 
-## <a name="prerequisites"></a>前提条件
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-このハウツー記事を完了するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="sign-in-and-set-your-azure-account"></a>サインインして Azure アカウントを設定する
-
-Cloud Shell を使用するのではなくローカルで Azure CLI を実行している場合、Azure アカウントにサインインする必要があります。
-
-コマンド プロンプトで、[ログイン コマンド](/cli/azure/get-started-with-azure-cli)を実行します。
-
-   ```azurecli
-   az login
-   ```
-
-指示に従って、コードを使用して認証し、Web ブラウザーで Azure アカウントにサインインします。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 

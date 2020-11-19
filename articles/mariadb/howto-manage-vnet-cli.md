@@ -1,19 +1,19 @@
 ---
 title: VNet エンドポイントの管理 - Azure CLI - Azure Database for MariaDB
 description: この記事では、Azure CLI コマンド ラインを使用して Azure Database for MariaDB VNet サービス エンドポイントおよびルールを作成し、管理する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b7efa9a6ae6dda41a5503da389b59880c448bc76
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 43d1b7700395bd06960737eae4f318d61aa03717
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515474"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635247"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>Azure CLI を使用した Azure Database for MariaDB VNet サービス エンドポイントの作成と管理
 
@@ -32,9 +32,9 @@ Virtual Network (VNet) サービス エンドポイントおよびルールは�
 
 ## <a name="configure-vnet-service-endpoints"></a>VNet サービス エンドポイントの構成
 
-Virtual Network を構成するには、[az network vnet](/cli/azure/network/vnet?view=azure-cli-latest) コマンドを使用します。
+Virtual Network を構成するには、[az network vnet](/cli/azure/network/vnet) コマンドを使用します。
 
-複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [az account set](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。 そのサブスクリプションの **az login** 出力の **id** プロパティで、subscription id プレースホルダーを置き換えます。
+複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account#az-account-set) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。 そのサブスクリプションの **az login** 出力の **id** プロパティで、subscription id プレースホルダーを置き換えます。
 
 - アカウントには、仮想ネットワークとサービス エンドポイントを作成するためのアクセス許可が必要です。
 

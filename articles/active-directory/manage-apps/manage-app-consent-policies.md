@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: 07637a8be49fb2449c5c92c1a1ea4b2c7ace9a8d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 4368f20171da0c1896e642361578580b1d958296
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442261"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659048"
 ---
 # <a name="manage-app-consent-policies"></a>アプリ同意ポリシーを管理する
 
@@ -31,7 +31,7 @@ ID が "microsoft-" で始まるアプリ同意ポリシーは、組み込みの
 
 ## <a name="pre-requisites"></a>前提条件
 
-1. [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) モジュールを使用していることを確認します。 この手順は、[AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) モジュールと [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) モジュールの両方がインストールされている場合に重要です。
+1. [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) モジュールを使用していることを確認します。 この手順は、[AzureAD](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0) モジュールと [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) モジュールの両方がインストールされている場合に重要です。
 
     ```powershell
     Remove-Module AzureAD -ErrorAction SilentlyContinue
@@ -149,7 +149,7 @@ ID が "microsoft-" で始まるアプリ同意ポリシーは、組み込みの
 * [管理者の同意ワークフローの構成](configure-admin-consent-workflow.md)
 * [アプリケーションへの同意を管理する方法と同意要求を評価する方法](manage-consent-requests.md)
 * [アプリケーションへのテナント全体の管理者の同意の付与](grant-admin-consent.md)
-* [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/active-directory-v2-scopes.md)
+* [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/v2-permissions-and-consent.md)
 
 ヘルプを表示したり、質問に対する回答を検索したりするには、以下を参照してください。
 * [StackOverflow での Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

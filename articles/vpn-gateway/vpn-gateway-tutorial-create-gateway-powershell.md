@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 91004b9cb545275746f75dbd6ad46981fe4b04d5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b70a3fe4884ef209e57fbb954c27aa83486b5c98
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461160"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661003"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>チュートリアル:PowerShell を使用した VPN ゲートウェイの作成と管理
 
@@ -74,7 +74,7 @@ $GwIPConf1   = "gwipconf1"
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 リソース グループを最初に作成する必要があります。 次の例では、 *TestRG1* という名前のリソース グループが " *米国東部* " リージョンに作成されます。
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 リソース グループを最初に作成する必要があります。 次の例では、*TestRG1* という名前のリソース グループが "*米国東部*" リージョンに作成されます。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName $RG1 -Location $Location1
@@ -123,8 +123,8 @@ New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 ```
 
 主なパラメーター値は次のとおりです。
-* GatewayType: サイト間接続と VNet 対 VNet 接続には、 **Vpn** を使用します。
-* VpnType: より広範な VPN デバイスやより多くのルーティング機能と対話するには、 **RouteBased** を使用します。
+* GatewayType: サイト間接続と VNet 対 VNet 接続には、**Vpn** を使用します。
+* VpnType: より広範な VPN デバイスやより多くのルーティング機能と対話するには、**RouteBased** を使用します。
 * GatewaySku: 既定値は **VpnGw1** です。より高いスループットやより多くの接続が必要な場合は別の VpnGw SKU に変更してください。 詳細については、「[ゲートウェイの SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)」を参照してください。
 
 [使ってみる] を使用している場合、セッションはタイムアウトする可能性があります。問題ありません。 ゲートウェイは引き続き作成されます。
@@ -133,7 +133,7 @@ New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 
 ## <a name="view-the-gateway-public-ip-address"></a>ゲートウェイのパブリック IP アドレスを表示する
 
-パブリック IP アドレスの名前がわかっている場合は、[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) を使用して、ゲートウェイに割り当てられたパブリック IP アドレスを表示します。
+パブリック IP アドレスの名前がわかっている場合は、[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) を使用して、ゲートウェイに割り当てられたパブリック IP アドレスを表示します。
 
 セッションがタイムアウトした場合、一般的なネットワーク パラメーターをこのチュートリアルの先頭から新しいセッションにコピーして、続行します。
 
@@ -151,7 +151,7 @@ $gateway = Get-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
 Resize-AzVirtualNetworkGateway -GatewaySku VpnGw2 -VirtualNetworkGateway $gateway
 ```
 
-VPN ゲートウェイのサイズ変更も、約 30 から 45 分かかりますが、この操作によって、既存の接続と構成が中断されたり削除されたりすることは **ありません** 。
+VPN ゲートウェイのサイズ変更も、約 30 から 45 分かかりますが、この操作によって、既存の接続と構成が中断されたり削除されたりすることは **ありません**。
 
 ## <a name="reset-a-gateway"></a>ゲートウェイをリセットする
 
@@ -162,11 +162,11 @@ $gateway = Get-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
 Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
 ```
 
-詳細については、「[Reset a VPN gateway (VPN ゲートウェイのリセット)](vpn-gateway-resetgw-classic.md)」をご覧ください。
+詳細については、「[Reset a VPN gateway (VPN ゲートウェイのリセット)](./reset-gateway.md)」をご覧ください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-[次のチュートリアル](vpn-gateway-tutorial-vpnconnection-powershell.md)に進む場合には、これらのリソースが前提条件になっているため、残しておく必要があります。
+[次のチュートリアル](./vpn-gateway-create-site-to-site-rm-powershell.md)に進む場合には、これらのリソースが前提条件になっているため、残しておく必要があります。
 
 ただし、このゲートウェイがプロトタイプ、テスト、または概念実証のデプロイの一部である場合は、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用して、リソース グループ、VPN ゲートウェイ、およびすべての関連リソースを削除できます。
 

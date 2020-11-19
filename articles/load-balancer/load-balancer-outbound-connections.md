@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: b3924a563d8266cfa38f24106dbb84102031a182
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 5a2d7f9f60253916eae808a7f65bc4b4b289bd67
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331874"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694782"
 ---
 # <a name="using-snat-for-outbound-connections"></a>アウトバウンド接続での SNAT の使用
 
@@ -22,13 +22,13 @@ Azure パブリック ロード バランサーのフロントエンド IP を�
 SNAT を使用すると、バックエンド インスタンスの **IP マスカレード** が可能になります。 このマスカレードによって、外部ソースはバックエンド インスタンスへの直接アドレスを取得できなくなります。 バックエンド インスタンス間で 1 つの IP アドレスを共有すると、静的パブリック IP のコストが削減され、既知のパブリック IP からのトラフィックを含む IP 許可リストを簡略化するなどのシナリオがサポートされます。 
 
 >[!Note]
-> 多数のアウトバウンド接続を必要とするアプリケーションや、特定の仮想ネットワークから単一の IP セットを使用する必要がある企業のお客様の場合は、[Virtual Network NAT](https://docs.microsoft.com/azure/virtual-network/nat-overview) がお勧めのソリューションです。 その動的割り当てを使用すると、単純な構成が可能になり、各 IP アドレスから SNAT ポートを最も効率的に使用できます。 また、仮想ネットワーク内のすべてのリソースが一連の IP アドレスを共有できるようになります。これにより、ロード バランサーを共有する必要がなくなります。
+> 多数のアウトバウンド接続を必要とするアプリケーションや、特定の仮想ネットワークから単一の IP セットを使用する必要がある企業のお客様の場合は、[Virtual Network NAT](../virtual-network/nat-overview.md) がお勧めのソリューションです。 その動的割り当てを使用すると、単純な構成が可能になり、各 IP アドレスから SNAT ポートを最も効率的に使用できます。 また、仮想ネットワーク内のすべてのリソースが一連の IP アドレスを共有できるようになります。これにより、ロード バランサーを共有する必要がなくなります。
 
 >[!Important]
 > アウトバウンド SNAT が構成されていない場合でも、同じリージョン内の Azure ストレージ アカウントには引き続きアクセスでき、バックエンドのリソースは引き続き Windows Update などの Microsoft サービスにアクセスできます。
 
 >[!NOTE] 
->この記事では、Azure Resource Manager のデプロイのみを対象としています。 Azure のすべてのクラシック デプロイメント シナリオについては、「[送信接続 (クラシック)](load-balancer-outbound-connections-classic.md)」をご覧ください。
+>この記事では、Azure Resource Manager のデプロイのみを対象としています。 Azure のすべてのクラシック デプロイメント シナリオについては、「[送信接続 (クラシック)](/previous-versions/azure/load-balancer/load-balancer-outbound-connections-classic)」をご覧ください。
 
 ## <a name="sharing-frontend-ip-address-across-backend-resources"></a><a name ="snat"></a> バックエンド リソース間でフロントエンド IP アドレスを共有する
 
@@ -48,7 +48,7 @@ SNAT を使用すると、バックエンド インスタンスの **IP マス�
 >[!NOTE]
 > 負荷分散またはインバウンド NAT 規則に使用される各ポートにより、これらの 64,000 のポートから 8 つのポートの範囲が消費され、SNAT の対象となるポートの数が減ります。 負荷分散または NAT 規則が、別のものと同じ 8 個の範囲内にある場合は、追加のポートは使用されません。 
 
-[アウトバウンド規則](https://docs.microsoft.com/azure/load-balancer/outbound-rules)と負荷分散の規則を使用すると、これらの SNAT ポートをバックエンド インスタンスに分散し、アウトバウンド接続用のロード バランサーのパブリック IP を共有できるようになります。
+[アウトバウンド規則](./outbound-rules.md)と負荷分散の規則を使用すると、これらの SNAT ポートをバックエンド インスタンスに分散し、アウトバウンド接続用のロード バランサーのパブリック IP を共有できるようになります。
 
 下の[シナリオ 2](#scenario2) を構成すると、各バックエンド インスタンスのホストによって、アウトバウンド接続の一部であるパケットに対して SNAT が実行されます。 バックエンド インスタンスからのアウトバウンド接続で SNAT を実行すると、ホストによりソース IP がフロントエンド IP のいずれかに書き換えられます。 一意のフローを維持するために、ホストは、各アウトバウンド パケットの送信元ポートを、バックエンド インスタンスに割り当てられた SNAT ポートの 1 つに書き換えます。
 
@@ -66,7 +66,7 @@ SNAT を使用すると、バックエンド インスタンスの **IP マス�
  | パブリック ロード バランサーまたはスタンドアロン | [SNAT (送信元ネットワーク アドレス変換)](#snat) </br> は使用されません。 | TCP (伝送制御プロトコル) </br> UDP (ユーザー データグラム プロトコル) </br> ICMP (インターネット制御メッセージ プロトコル) </br> ESP (カプセル化セキュリティ ペイロード) |
 
 
- #### <a name="description"></a>説明
+ #### <a name="description"></a>Description
 
 
  すべてのアウトバウンド フローについて、インスタンスの NIC の IP 構成に割り当てられたパブリック IP が Azure によって使用されます。 インスタンスには、使用可能なすべてのエフェメラル ポートがあります。 VM が負荷分散されているかどうかは関係ありません。 このシナリオは他のシナリオよりも優先されます。 
@@ -83,7 +83,7 @@ SNAT を使用すると、バックエンド インスタンスの **IP マス�
  | パブリック ロード バランサー | [SNAT](#snat) 用のロード バランサー フロントエンド IP の使用。| TCP </br> UDP |
 
 
- #### <a name="description"></a>説明
+ #### <a name="description"></a>Description
 
 
  ロード バランサー リソースは、既定の SNAT を有効にするアウトバウンド規則または負荷分散規則を使用して構成されます。 この規則は、パブリック IP フロントエンドとバックエンド プールとの間にリンクを作成するために使用されます。 
@@ -101,7 +101,7 @@ SNAT を使用すると、バックエンド インスタンスの **IP マス�
  ロード バランサーのフロントエンド パブリック IP アドレスのエフェメラル ポートを使用して、VM から送信される個々のフローが区別されます。 送信フローが作成されると、[事前に割り当てられたエフェメラル ポート](#preallocatedports)が SNAT によって動的に使用されます。 
 
 
- ここでは、SNAT で使用されるエフェメラル ポートを SNAT ポートと呼びます。 [アウトバウンド規則](https://docs.microsoft.com/azure/load-balancer/outbound-rules)を明示的に構成することを強くお勧めします。 負荷分散規則に従って既定の SNAT を使用している場合は、[既定の SNAT ポート割り当てテーブル](#snatporttable)に記載されているように、SNAT ポートが事前に割り当てられます。
+ ここでは、SNAT で使用されるエフェメラル ポートを SNAT ポートと呼びます。 [アウトバウンド規則](./outbound-rules.md)を明示的に構成することを強くお勧めします。 負荷分散規則に従って既定の SNAT を使用している場合は、[既定の SNAT ポート割り当てテーブル](#snatporttable)に記載されているように、SNAT ポートが事前に割り当てられます。
 
 
  ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario3"></a>シナリオ 3:パブリック IP を持たず Basic Load Balancer の背後にある仮想マシン
@@ -111,7 +111,7 @@ SNAT を使用すると、バックエンド インスタンスの **IP マス�
  | ------------ | ------ | ------------ |
  |なし </br> Basic ロード バランサー | インスタンスレベルの動的 IP アドレスを使用する [SNAT](#snat)| TCP </br> UDP | 
 
- #### <a name="description"></a>説明
+ #### <a name="description"></a>Description
 
 
  VM がアウトバウンド フローを作成すると、Azure が、送信元 IP アドレスを動的に割り当てられたパブリック送信元 IP アドレスに変換します。 このパブリック IP アドレスは **構成することができず**、予約することもできません。 このアドレスは、サブスクリプションのパブリック IP リソースの制限に対してカウントされません。 
@@ -142,7 +142,7 @@ SNAT を使用すると、バックエンド インスタンスの **IP マス�
 
 送信接続はバーストする可能性があります。 バックエンド インスタンスに不十分な数のポートが割り当てられる可能性があります。 **接続の再使用** が有効になっていないと、SNAT **ポートの枯渇** が発生するリスクが高まります。
 
-ポートの枯渇が発生すると、宛先 IP への新しい送信接続は失敗します。 ポートが使用可能になると、接続は成功します。 この枯渇は、IP アドレスからの 64,000 個のポートが多数のバックエンド インスタンスにわたってまばらに分散されている場合に発生します。 SNAT ポートの枯渇を軽減するためのガイダンスについては、[トラブルシューティング ガイド](https://docs.microsoft.com/azure/load-balancer/troubleshoot-outbound-connection)のページを参照してください。  
+ポートの枯渇が発生すると、宛先 IP への新しい送信接続は失敗します。 ポートが使用可能になると、接続は成功します。 この枯渇は、IP アドレスからの 64,000 個のポートが多数のバックエンド インスタンスにわたってまばらに分散されている場合に発生します。 SNAT ポートの枯渇を軽減するためのガイダンスについては、[トラブルシューティング ガイド](./troubleshoot-outbound-connection.md)のページを参照してください。  
 
 TCP 接続の場合、ロード バランサーにはすべての宛先 IP とポートに 1 つの SNAT ポートが使用されます。 この複数使用により、同じ SNAT ポートを使用した同じ宛先 IP への複数の接続が可能になります。 接続が別の宛先ポートに接続されていない場合、この複数使用は制限されます。
 
@@ -194,6 +194,5 @@ Azure Virtual Network NAT の詳細については、「[Azure Virtual Network N
 
 ## <a name="next-steps"></a>次のステップ
 
-*   [SNAT の枯渇による送信接続エラーのトラブルシューティング](https://docs.microsoft.com/azure/load-balancer/troubleshoot-outbound-connection)
-*   [SNAT メトリックを確認](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation)し、それらをフィルター処理、分割、および表示する正しい方法を理解します。
-
+*   [SNAT の枯渇による送信接続エラーのトラブルシューティング](./troubleshoot-outbound-connection.md)
+*   [SNAT メトリックを確認](./load-balancer-standard-diagnostics.md#how-do-i-check-my-snat-port-usage-and-allocation)し、それらをフィルター処理、分割、および表示する正しい方法を理解します。

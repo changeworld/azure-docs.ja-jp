@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1ef24522f688c5ae1176630a2f370cd7ee7c3cd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59c489fac8bf02263cc51833675af414d5de6a52
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448004"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686006"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure File Sync の監視
 
@@ -28,7 +28,7 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) を使用してメトリックを表示し、同期、クラウドを使った階層化、およびサーバー接続に関するアラートを構成します。  
+[Azure Monitor](../../azure-monitor/overview.md) を使用してメトリックを表示し、同期、クラウドを使った階層化、およびサーバー接続に関するアラートを構成します。  
 
 ### <a name="metrics"></a>メトリック
 
@@ -56,7 +56,7 @@ Azure Monitor では、Azure File Sync の次のメトリックを使用でき�
 
 ### <a name="alerts"></a>警告
 
-アラートは、監視データで重要な状態が見つかると事前に通知します。 Azure Monitor でのアラートの構成の詳細については、「[Microsoft Azure のアラートの概要](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)」をご覧ください。
+アラートは、監視データで重要な状態が見つかると事前に通知します。 Azure Monitor でのアラートの構成の詳細については、「[Microsoft Azure のアラートの概要](../../azure-monitor/platform/alerts-overview.md)」をご覧ください。
 
 **Azure File Sync のアラートを作成する方法**
 
@@ -67,7 +67,7 @@ Azure Monitor では、Azure File Sync の次のメトリックを使用でき�
     - **ディメンション名**
     - **アラート ロジック**
 4. **[アクション グループの選択]** をクリックし、既存のアクション グループを選択するか、新しいアクション グループを作成して、アクション グループ (電子メール、SMS など) をアラートに追加します。
-5. **アラート ルール名**、**説明**、および**重大度**などの**アラートの詳細**を指定します。
+5. **アラート ルール名**、**説明**、および **重大度** などの **アラートの詳細** を指定します。
 6. **[アラート ルールの作成]** をクリックして、アラートを作成します。  
 
 次の表に、監視するシナリオの例とアラートに使用する適切なメトリックを示します。
@@ -96,23 +96,23 @@ Azure Monitor では、Azure File Sync の次のメトリックを使用でき�
 
 ### <a name="registered-server-health"></a>登録済みサーバーの正常性
 
-ポータルで**登録済みサーバーの正常性**を表示するには、 **[ストレージ同期サービス]** の **[登録済みサーバー]** セクションに移動します。
+ポータルで **登録済みサーバーの正常性** を表示するには、 **[ストレージ同期サービス]** の **[登録済みサーバー]** セクションに移動します。
 
 ![登録済みサーバーの正常性のスクリーンショット](media/storage-sync-files-troubleshoot/file-sync-registered-servers.png)
 
-- **登録済みサーバー**の状態が **[オンライン]** である場合、サーバーは正常にサービスと通信しています。
-- **登録済みサーバー**の状態が **[オフラインのようです]** である場合、ストレージ同期モニター プロセス (AzureStorageSyncMonitor.exe) が実行されていないか、またはサーバーが Azure File Sync サービスにアクセスできません。 詳細については、[トラブルシューティングのドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity)を参照してください。
+- **登録済みサーバー** の状態が **[オンライン]** である場合、サーバーは正常にサービスと通信しています。
+- **登録済みサーバー** の状態が **[オフラインのようです]** である場合、ストレージ同期モニター プロセス (AzureStorageSyncMonitor.exe) が実行されていないか、またはサーバーが Azure File Sync サービスにアクセスできません。 詳細については、[トラブルシューティングのドキュメント](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#server-endpoint-noactivity)を参照してください。
 
 ### <a name="server-endpoint-health"></a>サーバー エンドポイントの正常性
 
-ポータルで**サーバー エンドポイント**の正常性を表示するには、 **[ストレージ同期サービス]** の **[同期グループ]** セクションに移動し、**同期グループ**を選択します。
+ポータルで **サーバー エンドポイント** の正常性を表示するには、 **[ストレージ同期サービス]** の **[同期グループ]** セクションに移動し、**同期グループ** を選択します。
 
 ![サーバー エンドポイントの正常性のスクリーンショット](media/storage-sync-files-troubleshoot/file-sync-server-endpoint-health.png)
 
-- ポータルの**サーバー エンドポイントの正常性**と**同期アクティビティ**は、サーバーのテレメトリ イベント ログに記録されている同期イベント (ID 9102 および 9302) に基づきます。 一時的なエラーが原因で同期セッションが失敗した場合 (エラーで取り消された場合など)、現在の同期セッションが進行中である (ファイルが適用される) 限り、ポータルにはサーバー エンドポイントが**正常**な状態として引き続き表示されます。 イベント ID 9302 は同期の進行状況イベントであり、同期セッションが完了するとイベント ID 9102 がログに記録されます。  詳細については、[同期の正常性](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync)と[同期の進行状況](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)に関するドキュメントを参照してください。 サーバー エンドポイントの正常性に **[エラー]** または **[アクティビティなし]** が表示される場合は、ガイダンスとして[トラブルシューティング ドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors)を参照してください。
-- ポータルで**同期されていないファイル**の数は、サーバーのテレメトリ イベント ログに記録されているイベント ID 9121 に基づいています。 このイベントは、同期セッションが完了すると、アイテム単位のエラーごとにログに記録されます。 アイテム単位のエラーを解決するには、「[同期していない特定のファイルやフォルダーがあるかどうかを確認するにはどうすればよいですか](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)」を参照してください。
-- ポータルで**クラウドの階層化の効率性**を表示するには、 **[サーバー エンドポイントのプロパティ]** に移動し、 **[クラウドの階層化]** セクションに移動します。 クラウドの階層化の効率性について提供されるデータは、サーバーのテレメトリ イベント ログに記録されるイベント ID 9071 に基づいています。 詳細については、「[クラウドの階層化の概要](https://docs.microsoft.com/azure/storage/files/storage-sync-cloud-tiering)」を参照してください。
-- ポータルで**階層化されていないファイル**および**呼び戻しエラー**を表示するには、 **[サーバー エンドポイントのプロパティ]** に移動し、 **[クラウドの階層化]** セクションに移動します。 **階層化されていないファイル**は、サーバーのテレメトリ イベント ログに記録されるイベント ID 9003 に基づいており、**呼び戻しエラー**は、イベント ID 9006 に基づいています。 階層化または呼び戻しに失敗したファイルを調査するには、「[階層に失敗したファイルのトラブルシューティングを行う方法](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-tier)」と「[呼び戻しに失敗したファイルのトラブルシューティングを行う方法](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-be-recalled)」を参照してください。
+- ポータルの **サーバー エンドポイントの正常性** と **同期アクティビティ** は、サーバーのテレメトリ イベント ログに記録されている同期イベント (ID 9102 および 9302) に基づきます。 一時的なエラーが原因で同期セッションが失敗した場合 (エラーで取り消された場合など)、現在の同期セッションが進行中である (ファイルが適用される) 限り、ポータルにはサーバー エンドポイントが **正常** な状態として引き続き表示されます。 イベント ID 9302 は同期の進行状況イベントであり、同期セッションが完了するとイベント ID 9102 がログに記録されます。  詳細については、[同期の正常性](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#broken-sync)と[同期の進行状況](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)に関するドキュメントを参照してください。 サーバー エンドポイントの正常性に **[エラー]** または **[アクティビティなし]** が表示される場合は、ガイダンスとして [トラブルシューティング ドキュメント](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#common-sync-errors)を参照してください。
+- ポータルで **同期されていないファイル** の数は、サーバーのテレメトリ イベント ログに記録されているイベント ID 9121 に基づいています。 このイベントは、同期セッションが完了すると、アイテム単位のエラーごとにログに記録されます。 アイテム単位のエラーを解決するには、「[同期していない特定のファイルやフォルダーがあるかどうかを確認するにはどうすればよいですか](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)」を参照してください。
+- ポータルで **クラウドの階層化の効率性** を表示するには、 **[サーバー エンドポイントのプロパティ]** に移動し、 **[クラウドの階層化]** セクションに移動します。 クラウドの階層化の効率性について提供されるデータは、サーバーのテレメトリ イベント ログに記録されるイベント ID 9071 に基づいています。 詳細については、「[クラウドの階層化の概要](./storage-sync-cloud-tiering.md)」を参照してください。
+- ポータルで **階層化されていないファイル** および **呼び戻しエラー** を表示するには、 **[サーバー エンドポイントのプロパティ]** に移動し、 **[クラウドの階層化]** セクションに移動します。 **階層化されていないファイル** は、サーバーのテレメトリ イベント ログに記録されるイベント ID 9003 に基づいており、**呼び戻しエラー** は、イベント ID 9006 に基づいています。 階層化または呼び戻しに失敗したファイルを調査するには、「[階層に失敗したファイルのトラブルシューティングを行う方法](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#how-to-troubleshoot-files-that-fail-to-tier)」と「[呼び戻しに失敗したファイルのトラブルシューティングを行う方法](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#how-to-troubleshoot-files-that-fail-to-be-recalled)」を参照してください。
 
 ### <a name="metric-charts"></a>メトリック グラフ
 
@@ -126,14 +126,14 @@ Azure Monitor では、Azure File Sync の次のメトリックを使用でき�
   | 同期されたファイル数 | 転送された (アップロードとダウンロード) ファイルの数 | 同期グループ、サーバー エンドポイント |
   | サーバーのオンライン状態 | サーバーから受信したハートビートの数 | 登録済みサーバー |
 
-- 詳細については、「[Azure Monitor](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#azure-monitor)」セクションを参照してください。
+- 詳細については、「[Azure Monitor](#azure-monitor)」セクションを参照してください。
 
   > [!Note]  
   > ストレージ同期サービス ポータルのグラフには、24 時間の時間範囲があります。 異なる時間範囲やディメンションを表示するには、Azure Monitor を使用します。
 
 ## <a name="windows-server"></a>Windows Server
 
-Azure File Sync エージェントがインストールされている **Windows Server** で、**イベント ログ**および**パフォーマンス カウンター**を使用すると、そのサーバー上のサーバー エンドポイントの正常性を確認できます。
+Azure File Sync エージェントがインストールされている **Windows Server** で、**イベント ログ** および **パフォーマンス カウンター** を使用すると、そのサーバー上のサーバー エンドポイントの正常性を確認できます。
 
 ### <a name="event-logs"></a>イベント ログ
 
@@ -141,18 +141,18 @@ Azure File Sync エージェントがインストールされている **Windows
 
 同期の正常性
 
-- 同期セッションが完了すると、イベント ID 9102 がログに記録されます。 同期セッションが正常に終了している (**HResult = 0**) かどうか、および項目単位の同期エラーがあるかどうか (**PerItemErrorCount**) を確認する場合は、このイベントを使用します。 詳細については、[同期の正常性](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync)および[項目単位のエラー](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)に関するドキュメントを参照してください。
+- 同期セッションが完了すると、イベント ID 9102 がログに記録されます。 同期セッションが正常に終了している (**HResult = 0**) かどうか、および項目単位の同期エラーがあるかどうか (**PerItemErrorCount**) を確認する場合は、このイベントを使用します。 詳細については、[同期の正常性](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#broken-sync)および[項目単位のエラー](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)に関するドキュメントを参照してください。
 
   > [!Note]  
   > 同期セッション全体が失敗する場合や、PerItemErrorCount が 0 以外の場合があります。 しかし、それでも同期セッションは進行し、一部のファイルは正常に同期します。 このことは、Applied フィールド (AppliedFileCount、AppliedDirCount、AppliedTombstoneCount、AppliedSizeBytes) で確認できます。 このフィールドでは、成功したセッションの数が示されます。 行内に失敗した同期セッションが複数あるのに、Applied の数が増えている場合は、サポート チケットを開く前に、時間をとって同期の再試行を待ちます。
 
-- イベント ID 9121 は、同期セッションが完了すると、アイテム単位のエラーごとにログに記録されます。 このイベントを使用して、このエラーとの同期に失敗したファイルの数を確認します (**PersistentCount** と **TransientCount**)。 持続的なアイテム単位のエラーを調査する必要があります。「[同期していない特定のファイルやフォルダーがあるかどうかを確認するにはどうすればよいですか](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)」を参照してください。
+- イベント ID 9121 は、同期セッションが完了すると、アイテム単位のエラーごとにログに記録されます。 このイベントを使用して、このエラーとの同期に失敗したファイルの数を確認します (**PersistentCount** と **TransientCount**)。 持続的なアイテム単位のエラーを調査する必要があります。「[同期していない特定のファイルやフォルダーがあるかどうかを確認するにはどうすればよいですか](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)」を参照してください。
 
-- アクティブな同期セッションがある場合は、5 分から 10 分ごとにイベント ID 9302 がログに記録されます。 このイベントを使用して、同期される項目の数 (**TotalItemCount**)、それまでに同期された項目の数 (**AppliedItemCount**)、項目単位のエラーのために同期に失敗した項目の数 (**PerItemErrorCount**) を判断します。 同期が進行していない場合 (**AppliedItemCount=0**)、同期セッションは最終的に失敗し、イベント ID 9102 はエラーと共にログに記録されます。 詳細については、[同期の進行に関するドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)をご覧ください。
+- アクティブな同期セッションがある場合は、5 分から 10 分ごとにイベント ID 9302 がログに記録されます。 このイベントを使用して、同期される項目の数 (**TotalItemCount**)、それまでに同期された項目の数 (**AppliedItemCount**)、項目単位のエラーのために同期に失敗した項目の数 (**PerItemErrorCount**) を判断します。 同期が進行していない場合 (**AppliedItemCount=0**)、同期セッションは最終的に失敗し、イベント ID 9102 はエラーと共にログに記録されます。 詳細については、[同期の進行に関するドキュメント](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)をご覧ください。
 
 登録済みサーバーの正常性
 
-- サーバーでサービスのジョブについてクエリが実行されている場合、30 秒ごとにイベント ID 9301 がログに記録されます。 GetNextJob が **0 の状態**で終了した場合、サーバーはサービスと通信できます。 GetNextJob がエラーで終了した場合は、[トラブルシューティングに関するドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity)を参考にしてください。
+- サーバーでサービスのジョブについてクエリが実行されている場合、30 秒ごとにイベント ID 9301 がログに記録されます。 GetNextJob が **0 の状態** で終了した場合、サーバーはサービスと通信できます。 GetNextJob がエラーで終了した場合は、[トラブルシューティングに関するドキュメント](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#server-endpoint-noactivity)を参考にしてください。
 
 クラウドを使った階層化の正常性
 
@@ -212,7 +212,7 @@ Azure File Sync エージェントがインストールされている **Windows
     - 評価基準:集計の細分性 = **24 時間** | 評価の頻度 = **1 時間ごと** 
     - **[完了]** をクリック 
 8. **[アクション グループの選択]** をクリックし、既存のアクション グループを選択するか、新しいアクション グループを作成して、アクション グループ (電子メール、SMS など) をアラートに追加します。
-9. **アラート ルール名**、**説明**、および**重大度**などの**アラートの詳細**を指定します。
+9. **アラート ルール名**、**説明**、および **重大度** などの **アラートの詳細** を指定します。
 10. **[アラート ルールの作成]** をクリックします。 
 
 ### <a name="how-to-create-an-alert-if-files-are-failing-to-sync-to-a-server-or-cloud-endpoint"></a>ファイルがサーバーまたはクラウド エンドポイントへの同期に失敗する場合にアラートを作成する方法
@@ -229,12 +229,12 @@ Azure File Sync エージェントがインストールされている **Windows
 7. **[アラート ロジック]** に移動し、次の手順を行います。 
      - しきい値を **[Static]** に設定 
      - 演算子:**より大きい** 
-     - 集計の種類: **合計**  
+     - 集計の種類: **平均**  
      - しきい値: **100** 
      - 評価基準:集計の細分性 = **5 分** | 評価の頻度 = **5 分ごと** 
      - **[完了]** をクリック 
 8. **[アクション グループの選択]** をクリックし、既存のアクション グループを選択するか、新しいアクション グループを作成して、アクション グループ (電子メール、SMS など) をアラートに追加します。
-9. **アラート ルール名**、**説明**、および**重大度**などの**アラートの詳細**を指定します。
+9. **アラート ルール名**、**説明**、および **重大度** などの **アラートの詳細** を指定します。
 10. **[アラート ルールの作成]** をクリックします。 
 
 ### <a name="how-to-create-an-alert-if-a-registered-server-is-failing-to-communicate-with-the-storage-sync-service"></a>登録済みのサーバーがストレージ同期サービスと通信できない場合にアラートを作成する方法
@@ -254,10 +254,10 @@ Azure File Sync エージェントがインストールされている **Windows
      - 集計の種類: **[最大]**  
      - しきい値 (バイト単位):**1** 
      - 評価基準:集計の細分性 = **1 時間** | 評価の頻度 = **30 分ごと** 
-        - メトリックは 15 から 20 分ごとに Azure Monitor に送信されることにご注意ください。 **評価の頻度**を 30 分未満に設定しないでください (偽のアラートが生成されます)。
+        - メトリックは 15 から 20 分ごとに Azure Monitor に送信されることにご注意ください。 **評価の頻度** を 30 分未満に設定しないでください (偽のアラートが生成されます)。
      - **[完了]** をクリック 
 8. **[アクション グループの選択]** をクリックし、既存のアクション グループを選択するか、新しいアクション グループを作成して、アクション グループ (電子メール、SMS など) をアラートに追加します。
-9. **アラート ルール名**、**説明**、および**重大度**などの**アラートの詳細**を指定します。
+9. **アラート ルール名**、**説明**、および **重大度** などの **アラートの詳細** を指定します。
 10. **[アラート ルールの作成]** をクリックします。 
 
 ### <a name="how-to-create-an-alert-if-the-cloud-tiering-recall-size-has-exceeded-500gib-in-a-day"></a>クラウドを使った階層化の呼び戻しサイズが 1 日で 500 GiB を超えた場合にアラートを作成する方法
@@ -279,7 +279,7 @@ Azure File Sync エージェントがインストールされている **Windows
      - 評価基準:集計の細分性 = **24 時間** | 評価の頻度 = **1 時間ごと** 
     - **[完了]** をクリック 
 8. **[アクション グループの選択]** をクリックし、既存のアクション グループを選択するか、新しいアクション グループを作成して、アクション グループ (電子メール、SMS など) をアラートに追加します。
-9. **アラート ルール名**、**説明**、および**重大度**などの**アラートの詳細**を指定します。
+9. **アラート ルール名**、**説明**、および **重大度** などの **アラートの詳細** を指定します。
 10. **[アラート ルールの作成]** をクリックします。 
 
 ## <a name="next-steps"></a>次のステップ

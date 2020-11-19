@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: a714368fc0508149714eaa42f4741e1042376c52
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f91c9c0f401a455543b12af81eed48bd1a3349bd
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044957"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696440"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>チュートリアル:Azure portal を使用した Standard Load Balancer による可用性ゾーン内での VM の負荷分散
 
@@ -37,7 +37,7 @@ ms.locfileid: "92044957"
 
 可用性ゾーンと Standard Load Balancer の使用方法について詳しくは、「[Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)」をご覧ください。
 
-必要に応じて、[Azure CLI](load-balancer-standard-public-zonal-cli.md) を使用してこのチュートリアルを完了することもできます。
+必要に応じて、[Azure CLI](./quickstart-load-balancer-standard-public-cli.md) を使用してこのチュートリアルを完了することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -195,8 +195,8 @@ Standard Load Balancer では、標準パブリック IP アドレスだけが�
     - **myHealthProbe** - 正常性プローブの名前。
     - **HTTP** - プロトコルの種類。
     - **80** - ポート番号。
-    - **15** - プローブの試行の**間隔**を示す秒数。
-    - **2** - **異常しきい値**またはプローブの連続する失敗の回数。この回数を超えると、VM は異常と見なされます。
+    - **15** - プローブの試行の **間隔** を示す秒数。
+    - **2** - **異常しきい値** またはプローブの連続する失敗の回数。この回数を超えると、VM は異常と見なされます。
 4. **[OK]** を選択します。
 
    ![正常性プローブを追加する](./media/load-balancer-standard-public-availability-zones-portal/4-load-balancer-probes.png)

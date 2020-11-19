@@ -3,12 +3,12 @@ title: Azure Lab Services ラボ迅速設定ガイド
 description: ラボ作成者はこのガイドに従って、学校内で使用するラボ アカウントをすばやく作成できます。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: f7423a76fd3ceb238c8c5c1a4ea794ff83b28b4a
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 8ef168aefb69df32f57b623bb488adbb97cbd411
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491666"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659677"
 ---
 # <a name="lab-setup-guide"></a>ラボ設定ガイド
 
@@ -40,7 +40,7 @@ ms.locfileid: "94491666"
 - GPU サイズ。高い計算能力が要求されるアプリケーションを学生が使用できるようにします。 この選択は、たとえば、人工知能や機械学習でよく使用されます。
 
 適切な VM サイズを選択するためのガイダンスについては、次の記事を参照してください。
-- [VM のサイズ設定](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#vm-sizing)
+- [VM のサイズ設定](./administrator-guide.md#vm-sizing)
 - [物理ラボから Azure Lab Services への移動](https://techcommunity.microsoft.com/t5/azure-lab-services/moving-from-a-physical-lab-to-azure-lab-services/ba-p/1654931)
 
 > [!NOTE]
@@ -60,8 +60,8 @@ Lab Services では、従量課金制の価格モデルを使用します。つ�
 - **自動シャットダウン**:有効にすると、自動シャットダウン設定によって、学生がリモート デスクトップ プロトコル (RDP) セッションから切断後、Windows VM が自動的にシャットダウンされます。 既定では、この設定は無効になっています。
 
 詳細については、以下の記事を参照してください。
-- [コストの見積もり](https://docs.microsoft.com/azure/lab-services/cost-management-guide#estimate-the-lab-costs)
-- [コストを管理する](https://docs.microsoft.com/azure/lab-services/cost-management-guide#manage-costs)
+- [コストの見積もり](./cost-management-guide.md#estimate-the-lab-costs)
+- [コストを管理する](./cost-management-guide.md#manage-costs)
 
 ### <a name="how-will-students-save-their-work"></a>学生はどのようにして作業を保存するか?
 各学生には、ラボの有効期間中、各人専用の VM が割り当てられます。 学生は次のいずれかを選択できます。
@@ -75,7 +75,7 @@ Lab Services では、従量課金制の価格モデルを使用します。つ�
 > ラボ以外の場所およびクラスの終了後、学生が保存した作業に引き続きアクセスできるよう、学生は外部リポジトリに作業を保存することが推奨されています。
 
 ### <a name="how-will-students-connect-to-their-vm"></a>学生はどのようにして VM に接続するか?
-Windows VM への RDP の場合、学生は [Microsoft リモート デスクトップ クライアント](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)を使用することが推奨されています。 リモート デスクトップ クライアントでは、Mac、Chromebook、および Windows がサポートされています。
+Windows VM への RDP の場合、学生は [Microsoft リモート デスクトップ クライアント](/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)を使用することが推奨されています。 リモート デスクトップ クライアントでは、Mac、Chromebook、および Windows がサポートされています。
 
 Linux VM の場合、学生は SSH または RDP を使用できます。 学生に RDP を使用して接続させるには、必要な RDP および GUI パッケージをインストールして構成する必要があります。
 
@@ -83,47 +83,47 @@ Linux VM の場合、学生は SSH または RDP を使用できます。 学生
 Azure Lab Services は Microsoft Teams と統合されているため、教職員が Teams 内でラボを作成して管理できます。  同様に、学生は Teams 内でラボにアクセスできます。
 
 詳しくは、次の資料を参照してください。
-- [Microsoft Teams 内の Azure Lab Services](https://docs.microsoft.com/azure/lab-services/lab-services-within-teams-overview)
+- [Microsoft Teams 内の Azure Lab Services](./lab-services-within-teams-overview.md)
 
 ## <a name="set-up-your-lab"></a>ラボのセットアップ
 
 クラスのラボの要件を理解したら、設定を開始できます。 ラボの設定方法については、このセクションのリンク先を参照してください。  Teams 内でラボを使用しているかどうかによって、異なる手順が用意されていることに注意してください。
 
 1. **ラボを作成します。** ラボの作成に関するチュートリアルを参照してください。
-    - [クラスルーム ラボを作成する](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#create-a-classroom-lab) (手順)
-    - [Teams からラボを作成する](https://docs.microsoft.com/azure/lab-services/how-to-get-started-create-lab-within-teams)
+    - [クラスルーム ラボを作成する](./tutorial-setup-classroom-lab.md#create-a-classroom-lab) (手順)
+    - [Teams からラボを作成する](./how-to-get-started-create-lab-within-teams.md)
 
     > [!NOTE]
-    > クラスに入れ子の仮想化が必要な場合は、[入れ子の仮想化の有効化](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-nested-virtualization-template-vm)の手順を参照してください。
+    > クラスに入れ子の仮想化が必要な場合は、[入れ子の仮想化の有効化](./how-to-enable-nested-virtualization-template-vm.md)の手順を参照してください。
 
 1. **イメージをカスタマイズして、ラボ VM を発行します。** テンプレート VM と呼ばれる特別な VM に接続します。 次のガイドの手順を参照してください。
-    - [テンプレート VM を作成および管理する](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#publish-the-template-vm)
-    - [共有イメージ ギャラリーを使用する](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-use-shared-image-gallery)
+    - [テンプレート VM を作成および管理する](./tutorial-setup-classroom-lab.md#publish-the-template-vm)
+    - [共有イメージ ギャラリーを使用する](./how-to-use-shared-image-gallery.md)
 
     > [!NOTE]
-    > Windows を使用している場合は、[Windows テンプレート VM の準備](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-prepare-windows-template)の手順も参照してください。 これらの手順には、学生が使用する OneDrive と Office を設定するための手順が含まれています。
+    > Windows を使用している場合は、[Windows テンプレート VM の準備](./how-to-prepare-windows-template.md)の手順も参照してください。 これらの手順には、学生が使用する OneDrive と Office を設定するための手順が含まれています。
 
 1. **VM プールと容量を管理します。** VM の容量は、クラスでの必要に応じて簡単にスケールアップまたはスケールダウンできます。 新しい VM が設定されるため、VM の容量の増加には数時間かかる場合があることに注意してください。 次の記事の手順を参照してください。
-    - [VM プールを設定および管理する](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-set-virtual-machine-passwords)
-    - [Teams からの Lab Services の VM プールを管理する](https://docs.microsoft.com/azure/lab-services/how-to-manage-vm-pool-within-teams)
+    - [VM プールを設定および管理する](./how-to-set-virtual-machine-passwords.md)
+    - [Teams からの Lab Services の VM プールを管理する](./how-to-manage-vm-pool-within-teams.md)
 
 1. **ラボ ユーザーを追加して管理します。** ラボにユーザーを追加するには、次のチュートリアルの手順を参照してください。
-   - [ラボへのユーザーの追加](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#add-users-to-the-lab)
-   - [招待をユーザーに送信する](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#send-invitation-emails-to-users)
-   - [Teams を使用して Lab Services ユーザー リストを管理する](https://docs.microsoft.com/azure/lab-services/how-to-manage-user-lists-within-teams)
+   - [ラボへのユーザーの追加](./tutorial-setup-classroom-lab.md#add-users-to-the-lab)
+   - [招待をユーザーに送信する](./tutorial-setup-classroom-lab.md#send-invitation-emails-to-users)
+   - [Teams を使用して Lab Services ユーザー リストを管理する](./how-to-manage-user-lists-within-teams.md)
 
-    学生が使用できるアカウントの種類の詳細については、「[学生アカウント](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#student-accounts)」を参照してください。
+    学生が使用できるアカウントの種類の詳細については、「[学生アカウント](./how-to-configure-student-usage.md#student-accounts)」を参照してください。
   
 1. **コスト管理を設定します。** ラボのコストを管理するには、スケジュール、クォータ、および自動シャットダウンを設定します。 次のチュートリアルを参照してください。
 
-   - [スケジュールを設定する](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#set-a-schedule-for-the-lab)
+   - [スケジュールを設定する](./tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
 
         > [!NOTE]
         > インストールしたオペレーティング システムの種類によっては、VM の起動に数分かかることがあります。 スケジュールされた時間帯にラボ VM が確実に使用できるよう、30 分前に VM を起動することが推奨されます。
 
-   - [ユーザーのクォータ設定](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users)と[特定ユーザー用の追加クォータの設定](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-additional-quotas-for-specific-users)
+   - [ユーザーのクォータ設定](./how-to-configure-student-usage.md#set-quotas-for-users)と[特定ユーザー用の追加クォータの設定](./how-to-configure-student-usage.md#set-additional-quotas-for-specific-users)
   
-   - [切断時の自動シャットダウンを有効にする](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
+   - [切断時の自動シャットダウンを有効にする](./how-to-enable-shutdown-disconnect.md)
 
         > [!NOTE]
         > テンプレート VM には、スケジュールとクォータは適用されませんが、自動シャットダウン設定は適用されます。 
@@ -132,9 +132,9 @@ Azure Lab Services は Microsoft Teams と統合されているため、教職�
         > 
         > テンプレート VM は、実行時に **コスト** が発生するため、実行しておく必要がない場合はテンプレート VM がシャットダウンされるようにしてください。
 
-    - [Teams 内で Lab Services のスケジュールを作成および管理する](https://docs.microsoft.com/azure/lab-services/how-to-create-schedules-within-teams) 
+    - [Teams 内で Lab Services のスケジュールを作成および管理する](./how-to-create-schedules-within-teams.md) 
 
-1. **ダッシュボードを使用します。** 手順については、[ラボのダッシュボードの使用](https://docs.microsoft.com/azure/lab-services/classroom-labs/use-dashboard)に関するページを参照してください。
+1. **ダッシュボードを使用します。** 手順については、[ラボのダッシュボードの使用](./use-dashboard.md)に関するページを参照してください。
 
     > [!NOTE]
     > ダッシュボードに表示される推定コストは、学生によるラボの使用に対して想定できる最大のコストです。 たとえば、学生が使用していないクォータ時間に対しては、料金は発生 *しません*。 コストの予測には、テンプレート VM や共有イメージ ギャラリーの使用料金、またはラボ作成者がユーザー マシンを起動するときの料金は反映 "*されません*"。

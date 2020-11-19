@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 2ea68b8a6cf26db2e4ba440140cfa900cebbb4aa
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 396d0f6a2ef9a8c24fc92b641c889ef9e1a7df49
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335657"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578299"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>チュートリアル:.NET API を使用して Azure Batch で並列ワークロードを実行する
 
@@ -35,7 +35,7 @@ Azure Batch を使用すると、大規模な並列コンピューティング�
 
 * Batch アカウントおよびリンクされた Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
 
-* [Windows 64 ビット版の ffmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-10-01-essentials_build.7z) (.zip)。 この ZIP ファイルをローカル コンピューターにダウンロードします。 このチュートリアルで必要なのは、この ZIP ファイルのみです。 ファイルを解凍したり、ローカルにインストールしたりする必要はありません。
+* [Windows 64 ビット版の ffmpeg 4.3.1](https://github.com/GyanD/codexffmpeg/releases/tag/4.3.1-2020-11-08) (.zip)。 この ZIP ファイルをローカル コンピューターにダウンロードします。 このチュートリアルで必要なのは、この ZIP ファイルのみです。 ファイルを解凍したり、ローカルにインストールしたりする必要はありません。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -47,7 +47,7 @@ Azure Portal を使用して、ffmpeg を[アプリケーション パッケー�
 
 1. Azure Portal で、 **[その他のサービス]**  >  **[Batch アカウント]** の順にクリックし、Batch アカウントの名前をクリックします。
 3. **[アプリケーション]**  >  **[追加]** の順にクリックします。
-4. **[アプリケーション ID]** に「 *ffmpeg* 」と入力し、パッケージのバージョンは「 *4.3.1* 」と入力します。 前にダウンロードした ffmpeg の ZIP ファイルを選択し、 **[OK]** をクリックします。 ffmpeg アプリケーション パッケージが Batch アカウントに追加されます。
+4. **[アプリケーション ID]** に「*ffmpeg*」と入力し、パッケージのバージョンは「*4.3.1*」と入力します。 前にダウンロードした ffmpeg の ZIP ファイルを選択し、 **[OK]** をクリックします。 ffmpeg アプリケーション パッケージが Batch アカウントに追加されます。
 
 ![アプリケーション パッケージの追加](./media/tutorial-parallel-dotnet/add-application.png)
 

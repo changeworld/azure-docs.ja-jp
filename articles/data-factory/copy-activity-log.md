@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: yexu
-ms.openlocfilehash: c54b81ca25602fa77ad66bbb818df3cd8eee39a1
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: e56a840da07a2f6e966867699506f0122a0e7956
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518861"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593648"
 ---
 #  <a name="session-log-in-copy-activity"></a>コピー アクティビティのセッション ログ
 
@@ -60,9 +60,10 @@ ms.locfileid: "94518861"
         },
         "logLocationSettings": {
             "linkedServiceName": {
-                "referenceName": "ADLSGen2",
+               "referenceName": "ADLSGen2",
                "type": "LinkedServiceReference"
-            }
+            },
+            "path": "sessionlog/"
         }
     }
 }
@@ -71,7 +72,7 @@ ms.locfileid: "94518861"
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | -------- 
 enableCopyActivityLog | true に設定すると、コピーされたファイル、スキップされたファイル、またはスキップされた行をログに記録できます。  | True<br/>False (既定値) | いいえ
-logLevel | "Info" により、コピーされたファイル、スキップされたファイル、スキップされた行がすべてログに記録されます。 "Warning" により、スキップされたファイルおよびスキップされた行のみがログに記録されます。  | ［情報］<br/>警告 (既定値) | いいえ
+logLevel | "Info" により、コピーされたファイル、スキップされたファイル、スキップされた行がすべてログに記録されます。 "Warning" により、スキップされたファイルおよびスキップされた行のみがログに記録されます。  | Info<br/>警告 (既定値) | いいえ
 enableReliableLogging | true の場合、リライアブル モードのコピー アクティビティにより、各ファイルがコピー先にコピーされると直ちにログがフラッシュされます。  コピー アクティビティでリライアブル ログ モードを有効にして大量のファイルをコピーする場合は、ファイルをコピーするたびに二重書き込み操作が必要になるため、コピー スループットが影響を受けることが予想されます。 1 つの要求は、コピー先ストアに対する要求であり、もう 1 つの要求はログ ストレージ ストアに対する要求です。  ベスト エフォート モードのコピー アクティビティでは、一定期間内のレコードのバッチを使用してログがフラッシュされます。この場合、コピー スループットは影響を受けにくくなります。 コピー アクティビティが失敗したときにログ イベントの最後のバッチがログ ファイルにフラッシュされていない可能性があるため、このモードではログ記録の完全性と適時性は保証されません。 この時点で、コピー先にコピーされたいくつかのファイルはログに記録されません。  | True<br/>False (既定値) | いいえ
 logLocationSettings | セッション ログを格納する場所を指定するために使用できるプロパティのグループ。 | | いいえ
 linkedServiceName | セッション ログ ファイルを格納するための、[Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) のリンクされたサービスです。 | `AzureBlobStorage` または `AzureBlobFS` 型のリンクされたサービスの名前。これは、ログ ファイルを格納するために使用するインスタンスを示します。 | いいえ

@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2020
 ms.author: yelevin
-ms.openlocfilehash: ca60b9350171cee55462c9df28915c811e1cfd25
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: cd52f22004bf72f3328d1e6a0d1ec988c2406317
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94377049"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660850"
 ---
 # <a name="manage-hunting-and-livestream-queries-in-azure-sentinel-using-rest-api"></a>REST API を使用して Azure Sentinel でのハンティングとライブストリームのクエリを管理する
 
 Azure Sentinel は、一部分が Azure Monitor Log Analytics 上に構築されており、Log Analytics の REST API を使用してハンティングとライブストリームのクエリを管理することができます。 このドキュメントでは、REST API を使用して、ハンティング クエリを作成および管理する方法について説明します。  この方法で作成されたクエリは、Azure Sentinel UI に表示されます。
 
-[保存された検索 API](https://docs.microsoft.com/rest/api/loganalytics/savedsearches) の詳細については、最も信頼できる REST API リファレンスを参照してください。
+[保存された検索 API](/rest/api/loganalytics/savedsearches) の詳細については、最も信頼できる REST API リファレンスを参照してください。
 
 ## <a name="api-examples"></a>API の例
 

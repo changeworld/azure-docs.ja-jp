@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0670107d84374589aa60cc18f184b9b3d3facce1
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 4903f1e48eb2f33c68d62c635201474b841ed146
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331806"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591514"
 ---
 # <a name="azure-database-for-mysql-versioning-policy"></a>Azure Database for MySQL バージョン管理ポリシー
 
@@ -30,7 +30,7 @@ Azure Database for MySQL では、次のデータベース バージョンがサ
 
 
 ## <a name="major-version-support"></a>メジャー バージョンのサポート
-MySQL の各メジャー バージョンは、[バージョン管理ポリシー](https://en.wikipedia.org/wiki/mysql)に記載されているように、Azure によってバージョンのサポートが開始される日付から MySQL コミュニティによってバージョンが提供終了されるまで、Azure Database for MySQL によってサポートされます。
+MySQL の各メジャー バージョンは、[バージョン管理ポリシー](https://www.mysql.com/support/eol-notice.html)に記載されているように、Azure によってバージョンのサポートが開始される日付から MySQL コミュニティによってバージョンが提供終了されるまで、Azure Database for MySQL によってサポートされます。
 
 ## <a name="minor-version-support"></a>マイナー バージョンのサポート
 Azure Database for MySQL では、定期的なメンテナンスの一環として、Azure で優先される MySQL バージョンへのマイナー バージョン アップグレードが自動的に実行されます。 
@@ -40,8 +40,8 @@ Azure Database for MySQL では、定期的なメンテナンスの一環とし�
 
 | Version | 新着記事 | Azure サポートの開始日 | 提供終了日|
 | ----- | ----- | ------ | ----- |
-| [MySQL 5.6](https://dev.mysql.com/doc/relnotes/mysql/5.6/)| [機能](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-49.html)  | 2018 年 3 月 20 日 | 2021 年 2 月
-| [MySQL 5.7](https://dev.mysql.com/doc/relnotes/mysql/5.7/) | [機能](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-31.html) | 2018 年 3 月 20 日 | 2023 年 10 月
+| [MySQL 5.6](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/)| [機能](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-49.html)  | 2018 年 3 月 20 日 | 2021 年 2 月
+| [MySQL 5.7](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/) | [機能](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-31.html) | 2018 年 3 月 20 日 | 2023 年 10 月
 | [MySQL 8](https://mysqlserverteam.com/whats-new-in-mysql-8-0-generally-available/) | [機能](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)) | 2019 年 12 月 11 日 | 2026 年 4 月
 
 

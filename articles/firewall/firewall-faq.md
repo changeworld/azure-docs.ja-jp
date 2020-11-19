@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 8b94b71993285a61042be3c6cd9e4708315fab9f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3e6ea6692a81a06bbf3180904dfb465a88b105d1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413005"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653421"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall に関する FAQ
 
@@ -50,7 +50,7 @@ Azure Firewall は受信と送信のフィルター処理をサポートして�
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Azure Firewall では、どのログ記録および分析サービスがサポートされていますか?
 
-Azure Firewall は、ファイアウォール ログの表示と分析について Azure Monitor と統合されています。 Log Analytics、Azure Storage、または Event Hubs にログを送信できます。 Log Analytics や、Excel や Power BI などのさまざまなツールで分析できます。 詳細については、[Azure Firewall のログを監視する方法に関するチュートリアル](tutorial-diagnostics.md)を参照してください。
+Azure Firewall は、ファイアウォール ログの表示と分析について Azure Monitor と統合されています。 Log Analytics、Azure Storage、または Event Hubs にログを送信できます。 Log Analytics や、Excel や Power BI などのさまざまなツールで分析できます。 詳細については、[Azure Firewall のログを監視する方法に関するチュートリアル](./firewall-diagnostics.md)を参照してください。
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Azure Firewall の動作は、マーケットプレースの NVA などの既存のサービスとどのように異なりますか?
 
@@ -217,7 +217,7 @@ TCP ping は実際にはターゲット FQDN に接続していません。 Azur
 
 ## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Azure Firewall の TCP アイドル タイムアウトはどうなっていますか。
 
-ネットワーク ファイアウォールの標準的な動作では、TCP 接続が確実に維持されるようにして、アクティビティがない場合はすぐに終了するようになっています。 Azure Firewall の TCP アイドル タイムアウトは 4 分です。 この設定を構成することはできません。 アイドル時間がタイムアウト値よりも長い場合、TCP や HTTP のセッションが維持される保証はありません。 一般的な方法として、TCP keep-alive を使用します。 この方法を使用すると、接続が長時間アクティブ状態に維持されます。 詳細については、[.NET の例](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)に関するページを参照してください。
+ネットワーク ファイアウォールの標準的な動作では、TCP 接続が確実に維持されるようにして、アクティビティがない場合はすぐに終了するようになっています。 Azure Firewall の TCP アイドル タイムアウトは 4 分です。 この設定を構成することはできません。 アイドル時間がタイムアウト値よりも長い場合、TCP や HTTP のセッションが維持される保証はありません。 一般的な方法として、TCP keep-alive を使用します。 この方法を使用すると、接続が長時間アクティブ状態に維持されます。 詳細については、[.NET の例](/dotnet/api/system.net.servicepoint.settcpkeepalive?view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)に関するページを参照してください。
 
 ## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>パブリック IP アドレスを使用せずに Azure Firewall をデプロイできますか。
 

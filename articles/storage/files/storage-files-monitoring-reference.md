@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: c6f4b932bb8f16af3c0368ab219bd8a12bf2face
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: f6dc523050fdcdbf54a6b9864f0a752698a85eed
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357982"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628936"
 ---
 # <a name="azure-files-monitoring-data-reference"></a>Azure Files 監視データのリファレンス
 
@@ -36,7 +36,7 @@ Azure Files は、Azure Monitor で次の容量メトリックを提供します
 
 #### <a name="azure-files"></a>Azure Files
 
-次の表は、[Azure Files メトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsfileservices)を示しています。
+次の表は、[Azure Files メトリック](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices)を示しています。
 
 | メトリック | 説明 |
 | ------------------- | ----------------- |

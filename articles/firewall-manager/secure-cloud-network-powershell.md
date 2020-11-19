@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.service: firewall-manager
 ms.date: 10/22/2020
 ms.author: victorh
-ms.openlocfilehash: d9d9da9cd01b4bb9b3cabcf069990cd3cbd38d38
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: e2bcdf947db60fb50b44abba9d6a224768840b28
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428553"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656141"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して仮想ハブをセキュリティで保護する
 
@@ -31,7 +31,7 @@ ms.locfileid: "92428553"
 
 - PowerShell 7
 
-   このチュートリアルでは、Azure PowerShell をローカルの PowerShell 7 上で実行する必要があります。 PowerShell 7 のインストールについては、「[Windows PowerShell 5.1 から PowerShell 7 への移行](https://docs.microsoft.com/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7)」を参照してください。
+   このチュートリアルでは、Azure PowerShell をローカルの PowerShell 7 上で実行する必要があります。 PowerShell 7 のインストールについては、「[Windows PowerShell 5.1 から PowerShell 7 への移行](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7)」を参照してください。
 - Az.Network バージョン 3.2.0
 
     Az.Network バージョン 3.4.0 以降を使用している場合は、このチュートリアルのいくつかのコマンドを使用するためにダウングレードする必要があります。 ご使用の Az.Network モジュールのバージョンは、`Get-InstalledModule -Name Az.Network` というコマンドで確認できます。 Az.Network モジュールをアンインストールするには、`Uninstall-Module -name az.network` を実行します。 Az.Network 3.2.0 モジュールをインストールするには、`Install-Module az.network -RequiredVersion 3.2.0 -force` を実行します。

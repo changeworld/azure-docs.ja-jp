@@ -3,16 +3,16 @@ title: 概念 - ハブ アンド スポークのアーキテクチャで Azure V
 description: Azure のハブ アンド スポーク アーキテクチャで Azure VMware Solution のデプロイを統合する方法について説明します。
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 0895e9c97f79e433b0383f0a99fbeeb124fd9064
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: da4a5f5ec6fa2b0a2733e8d1bf0243ec75f38d55
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490816"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577721"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>ハブ アンド スポークのアーキテクチャで Azure VMware Solution を統合する
 
-この記事では、Azure の既存または新規の[ハブ アンド スポーク アーキテクチャ](/azure/architecture/reference-architectures/hybrid-networking/shared-services)で Azure VMware Solution のデプロイを統合するための推奨事項について説明します。 
+この記事では、Azure の既存または新規の[ハブ アンド スポーク アーキテクチャ](/azure/architecture/reference-architectures/hybrid-networking/#hub-spoke-network-topology)で Azure VMware Solution のデプロイを統合するための推奨事項について説明します。 
 
 
 ハブ アンド スポークのシナリオでは、次のワークロードを含むハイブリッド クラウド環境が想定されています。

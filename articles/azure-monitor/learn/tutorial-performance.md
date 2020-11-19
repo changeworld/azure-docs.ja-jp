@@ -3,16 +3,16 @@ title: Azure Application Insights を使用してパフォーマンスに関す�
 description: Azure Application Insights を使用して、アプリケーションのパフォーマンスに関する問題を検出して診断するためのチュートリアルです。
 ms.subservice: application-insights
 ms.topic: tutorial
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 06/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 3c7185e07190895dfcc97555c6603049ed41c18c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df7cfff7d5bf1b89f88105f79c072d1d7e731b31
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322501"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592568"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Azure Application Insights を使用してパフォーマンスに関する問題を検出して診断する
 
@@ -102,11 +102,6 @@ Application Insights では、サーバーのパフォーマンスのために�
 2. Logs が開き、それぞれのビューのクエリがパネルに表示されます。 最初のクエリは、一定期間のさまざまなページ ビューの実行時間を示します。
 
     ![Logs クエリ](media/tutorial-performance/10-page-view-logs.png)
-
-3.  スマート診断は、データの一意のパターンを識別する Logs の機能です。 折れ線グラフのスマート診断ドットをクリックすると、異常の原因となったレコードを除外して同じクエリが実行されます。 これらのレコードの詳細がクエリの セクションに表示されるため、過剰な実行時間の原因となっているページ ビューのプロパティを識別できます。
-
-    ![スマート診断を備える Logs](media/tutorial-performance/11-page-view-logs-dsmart.png)
-
 
 ## <a name="next-steps"></a>次のステップ
 ここでは、ランタイムの例外を識別する方法を学習しました。次のチュートリアルに進んで、エラーに応答してアラートを作成する方法を学習してください。

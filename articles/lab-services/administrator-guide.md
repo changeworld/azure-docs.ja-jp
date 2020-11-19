@@ -3,12 +3,12 @@ title: Azure Lab Services - 管理者ガイド | Microsoft Docs
 description: このガイドは、Azure Lab Services を使用してラボ アカウントを作成および管理する管理者にとって役立ちます。
 ms.topic: article
 ms.date: 10/20/2020
-ms.openlocfilehash: 8670a9d56575dbfb6d3e565ec97191581dc612a8
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: b1fadc58926b00c75ab888dad86e45b181059a38
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491037"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659847"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services - 管理者ガイド
 大学のクラウド リソースを管理する情報技術 (IT) 管理者は、通常、学校のラボ アカウントの設定を担当します。 ラボ アカウントが設定された後、管理者または教師は、ラボ アカウント内に含まれるラボを作成します。 この記事では、関連する Azure リソースの概要と、それらを作成するためのガイダンスを示します。
@@ -19,7 +19,7 @@ ms.locfileid: "94491037"
 - ラボ アカウント、共有イメージ ギャラリー、イメージ バージョンは、ご利用のサブスクリプション内でホストされます。
 - ラボ アカウントと共有イメージ ギャラリーは、同じリソース グループに含めることができます。 この図では、これらは異なるリソース グループに含まれています。
 
-アーキテクチャの詳細については、次の記事を参照してください。[ラボのアーキテクチャの基礎](https://docs.microsoft.com/azure/lab-services/classroom-labs-fundamentals)
+アーキテクチャの詳細については、次の記事を参照してください。[ラボのアーキテクチャの基礎](./classroom-labs-fundamentals.md)
 
 ## <a name="subscription"></a>サブスクリプション
 大学には 1 つ以上の Azure サブスクリプションがあります。 サブスクリプションを使用して、ラボ アカウントなど、サブスクリプション内で使用されるすべてのAzure リソース/サービスの課金とセキュリティを管理します。
@@ -58,7 +58,7 @@ ms.locfileid: "94491037"
 
 - **ラボ アカウントごとに予算を分ける**
   
-    1 つのラボ アカウントを使用してすべてのラボのコストを報告するのではなく、予算をより明確に分けることが必要な場合があります。 たとえば、大学の数学部、コンピューター サイエンス学部ごとにラボ アカウントを作成して、学部間で予算を分けることができます。  その後、[Azure Cost Management](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview) を使用して、個々のラボ アカウントのコストを表示できます。
+    1 つのラボ アカウントを使用してすべてのラボのコストを報告するのではなく、予算をより明確に分けることが必要な場合があります。 たとえば、大学の数学部、コンピューター サイエンス学部ごとにラボ アカウントを作成して、学部間で予算を分けることができます。  その後、[Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) を使用して、個々のラボ アカウントのコストを表示できます。
 
 - **パイロット ラボをアクティブ ラボ/運用ラボから分離する**
   
@@ -141,18 +141,18 @@ Azure Lab Services のリソースを設定するときに、リソースをホ�
 
   - **ラボ アカウントが仮想ネットワーク (VNet) とピアリングされている**
   
-    ラボ アカウントは、同じリージョンにある場合、[VNet とピアリング](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network)されることができます。  ラボ アカウントが VNet とピアリングされている場合、ラボ アカウントと VNet の両方が存在している同じリージョンにラボが自動的に作成されます。
+    ラボ アカウントは、同じリージョンにある場合、[VNet とピアリング](./how-to-connect-peer-virtual-network.md)されることができます。  ラボ アカウントが VNet とピアリングされている場合、ラボ アカウントと VNet の両方が存在している同じリージョンにラボが自動的に作成されます。
 
     > [!NOTE]
-    > ラボ アカウントが VNet とピアリングされている場合、 **[ラボ作成者にラボの場所の選択を許可する]** に対する設定は無効になります。 この設定に関する追加情報については、[ラボ作成者がラボ用の場所を選択できるようにする](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)方法に関する記事を参照してください。
+    > ラボ アカウントが VNet とピアリングされている場合、 **[ラボ作成者にラボの場所の選択を許可する]** に対する設定は無効になります。 この設定に関する追加情報については、[ラボ作成者がラボ用の場所を選択できるようにする](./allow-lab-creator-pick-lab-location.md)方法に関する記事を参照してください。
     
   - **どの VNet ともピアリングされておらず、* *"_かつ_"* _ラボ作成者はラボの場所の選択を許可されていない_*
   
-    ラボ アカウントとピアリングされている VNet が **なく**、"*かつ*" [ラボ作成者がラボの場所の選択を許可されて **いない**](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)場合は、使用可能な VM 容量があるリージョンにラボが自動的に作成されます。  具体的には、Azure Lab Services は、[ラボ アカウントと同じ地域内にあるリージョン](https://azure.microsoft.com/global-infrastructure/regions)の可用性を調べます。
+    ラボ アカウントとピアリングされている VNet が **なく**、"*かつ*" [ラボ作成者がラボの場所の選択を許可されて **いない**](./allow-lab-creator-pick-lab-location.md)場合は、使用可能な VM 容量があるリージョンにラボが自動的に作成されます。  具体的には、Azure Lab Services は、[ラボ アカウントと同じ地域内にあるリージョン](https://azure.microsoft.com/global-infrastructure/regions)の可用性を調べます。
 
   - **どの VNet ともピアリングされておらず、 *"_かつ_"* _ ラボ作成者はラボの場所の選択を許可されている_*
        
-    ラボ アカウントがどの VNet ともピアリングされて **おらず**、[ラボ作成者がラボの場所の選択を許可されている](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)場合は、ラボ作成者が選択できる場所は使用可能な容量に基づきます。
+    ラボ アカウントがどの VNet ともピアリングされて **おらず**、[ラボ作成者がラボの場所の選択を許可されている](./allow-lab-creator-pick-lab-location.md)場合は、ラボ作成者が選択できる場所は使用可能な容量に基づきます。
 
 > [!NOTE]
 > リージョンのための十分な VM 容量が確実に存在するようにするには、まずラボ アカウントを使用して、またはラボの作成時に容量を要求することが重要です。
@@ -169,18 +169,18 @@ Azure Lab Services のリソースを設定するときに、リソースをホ�
 
 | サイズ | 仕様 | 系列 | 推奨される用途 |
 | ---- | ----- | ------ | ------------- |
-| Small| <ul><li>2 コア</li><li>3.5 GB RAM</li> | [Standard_A2_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | このサイズは、コマンド ライン、Web ブラウザーの起動、トラフィックが少ない Web サーバー、中小規模のデータベースに最適です。 |
-| Medium | <ul><li>4 コア</li><li>7 GB RAM</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | このサイズは、リレーショナル データベース、メモリ内 Caching、および分析に最適です。 |
-| 中 (入れ子になった仮想化) | <ul><li>4 コア</li><li>16 GB RAM</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | このサイズは、リレーショナル データベース、メモリ内 Caching、および分析に最適です。
-| Large | <ul><li>8 コア</li><li>16 GB RAM</li></ul>  | [Standard_A8_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series) | このサイズは、高速の CPU、ローカル ディスクのよりすぐれたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。  また、このサイズは入れ子になった仮想化もサポートしています。 |
-| 大規模 (入れ子になった仮想化) | <ul><li>8 コア</li><li>32 GB RAM</li></ul>  | [Standard_D8s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | このサイズは、高速の CPU、ローカル ディスクのよりすぐれたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。 |
-| Small GPU (視覚化) | <ul><li>6 コア</li><li>56 GB RAM</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | このサイズは、リモートの視覚化、ストリーミング、ゲーム、OpenGL や DirectX などのフレームワークを使用したエンコードに最適です。 |
-| Small GPU (Compute) | <ul><li>6 コア</li><li>56 GB RAM</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |このサイズは、人工知能やディープ ラーニングなどのコンピューティング集中型のアプリケーションに最適です。 |
-| Medium GPU (視覚化) | <ul><li>12 コア</li><li>112 GB RAM</li></ul>  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | このサイズは、リモートの視覚化、ストリーミング、ゲーム、OpenGL や DirectX などのフレームワークを使用したエンコードに最適です。 |
+| Small| <ul><li>2 コア</li><li>3.5 GB RAM</li> | [Standard_A2_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | このサイズは、コマンド ライン、Web ブラウザーの起動、トラフィックが少ない Web サーバー、中小規模のデータベースに最適です。 |
+| Medium | <ul><li>4 コア</li><li>7 GB RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | このサイズは、リレーショナル データベース、メモリ内 Caching、および分析に最適です。 |
+| 中 (入れ子になった仮想化) | <ul><li>4 コア</li><li>16 GB RAM</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | このサイズは、リレーショナル データベース、メモリ内 Caching、および分析に最適です。
+| Large | <ul><li>8 コア</li><li>16 GB RAM</li></ul>  | [Standard_A8_v2](../virtual-machines/av2-series.md) | このサイズは、高速の CPU、ローカル ディスクのよりすぐれたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。  また、このサイズは入れ子になった仮想化もサポートしています。 |
+| 大規模 (入れ子になった仮想化) | <ul><li>8 コア</li><li>32 GB RAM</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | このサイズは、高速の CPU、ローカル ディスクのよりすぐれたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。 |
+| Small GPU (視覚化) | <ul><li>6 コア</li><li>56 GB RAM</li>  | [Standard_NV6](../virtual-machines/nv-series.md) | このサイズは、リモートの視覚化、ストリーミング、ゲーム、OpenGL や DirectX などのフレームワークを使用したエンコードに最適です。 |
+| Small GPU (Compute) | <ul><li>6 コア</li><li>56 GB RAM</li></ul>  | [Standard_NC6](../virtual-machines/nc-series.md) |このサイズは、人工知能やディープ ラーニングなどのコンピューティング集中型のアプリケーションに最適です。 |
+| Medium GPU (視覚化) | <ul><li>12 コア</li><li>112 GB RAM</li></ul>  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | このサイズは、リモートの視覚化、ストリーミング、ゲーム、OpenGL や DirectX などのフレームワークを使用したエンコードに最適です。 |
 
 ## <a name="manage-identity"></a>ID の管理
 
-[Azure ロール ベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) を使用すると、次のロールを割り当てて、ラボ アカウントとラボへのアクセス権を付与できます。
+[Azure ロール ベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) を使用すると、次のロールを割り当てて、ラボ アカウントとラボへのアクセス権を付与できます。
 
 - **ラボ アカウント所有者**
 
@@ -200,7 +200,7 @@ Azure Lab Services のリソースを設定するときに、リソースをホ�
 
 - **ラボ作成者**
 
-    ラボ アカウント内にラボを作成するには、教師が **ラボ作成者** ロールのメンバーである必要があります。  教師は、ラボを作成すると、自動的にそのラボの所有者として追加されます。  「[ユーザーを **ラボの作成者** ロールに追加する](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role)」方法について、チュートリアルを参照してください。 
+    ラボ アカウント内にラボを作成するには、教師が **ラボ作成者** ロールのメンバーである必要があります。  教師は、ラボを作成すると、自動的にそのラボの所有者として追加されます。  「[ユーザーを **ラボの作成者** ロールに追加する](./tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)」方法について、チュートリアルを参照してください。 
 
 - **ラボ所有者および共同作成者**
   
@@ -217,7 +217,7 @@ Azure Lab Services のリソースを設定するときに、リソースをホ�
 ロールの割り当てに役立つヒントを次にいくつか示します。
    - 通常は、管理者のみがラボ アカウントの **所有者** または **共同作成者** ロールのメンバーである必要があります。複数の所有者/共同作成者がいてもかまいません。
    - 教師がラボの新規作成や自身が作成したラボの管理を行うことができるようにするには、**ラボ作成者** ロールへのアクセス権の付与のみが必要です。
-   - 教師が特定のラボを管理できるようにするが、新しいラボを作成でき "*ない*" ようにするには、彼らが管理するラボごとに **所有者** または **共同作成者** のいずれかのロールへのアクセス権を割り当てる必要があります。  たとえば、教授と補助教員の両方が、ラボを共同で所有することを許可できます。  [ラボにユーザーを所有者として追加する](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-add-user-lab-owner)方法に関するガイドを参照してください。
+   - 教師が特定のラボを管理できるようにするが、新しいラボを作成でき "*ない*" ようにするには、彼らが管理するラボごとに **所有者** または **共同作成者** のいずれかのロールへのアクセス権を割り当てる必要があります。  たとえば、教授と補助教員の両方が、ラボを共同で所有することを許可できます。  [ラボにユーザーを所有者として追加する](./how-to-add-user-lab-owner.md)方法に関するガイドを参照してください。
 
 ## <a name="pricing"></a>価格
 
@@ -274,4 +274,3 @@ Azure Lab Services の価格については、「[Azure Lab Services の価格](
 - [ラボ設定ガイド](setup-guide.md)
 - [ラボのコスト管理](cost-management-guide.md)
 - [Teams 内での Azure Lab Services の使用](lab-services-within-teams-overview.md)
-
