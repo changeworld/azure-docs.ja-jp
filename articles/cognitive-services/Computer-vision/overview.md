@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 09/11/2020
+ms.date: 11/13/2020
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: computer vision, computer vision アプリケーション, computer vision サービス
-ms.openlocfilehash: fa00265f3c591578f9970b77770fbf7290d87510
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aeaa10870b8b40b907da1d1660e77ebf0271c300
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90907070"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629752"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
 
@@ -27,19 +27,19 @@ ms.locfileid: "90907070"
 
 Azure の Computer Vision サービスを使用すると、関心のある視覚的特徴に基づいて、画像を処理して情報を返す高度なアルゴリズムにアクセスできます。 たとえば、Computer Vision では、成人向けコンテンツが画像に含まれているかどうかを判断したり、特定のブランドや物体、人の顔を検出したりすることができます。
 
-Computer Vision アプリケーションを作成するには、クライアント ライブラリ SDK を使用するか、REST API を直接呼び出します。 このページでは、Computer Vision でできることを大まかに取り上げます。
+Computer Vision アプリケーションを作成するには、[クライアント ライブラリ SDK](./quickstarts-sdk/client-library.md) を使用するか、[REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) を直接呼び出します。 このページでは、Computer Vision でできることを大まかに取り上げます。
+
+## <a name="optical-character-recognition-ocr"></a>光学式文字認識 (OCR)
+
+Computer Vision には、[光学式文字認識 (OCR)](concept-recognizing-text.md) 機能が含まれています。 新しい Read API を使用して、印刷されたテキストと手書きのテキストを画像やドキュメントから抽出することができます。 最新のモデルを使用して、さまざまなサーフェスや背景でテキストを操作します。 これらには、レシート、ポスター、名刺、レター、ホワイトボードが含まれます。 2 つの OCR API では、[複数の言語](./language-support.md)で印刷されたテキストの抽出がサポートされます。 [クイックスタート](./quickstarts-sdk/client-library.md)に従って始めてください。
 
 ## <a name="computer-vision-for-digital-asset-management"></a>デジタル資産管理用の Computer Vision
 
 Computer Vision は、多くのデジタル資産管理 (DAM) シナリオに活用できます。 DAM は、リッチ メディア アセットの整理、保管、取得、およびデジタルの権利とアクセス許可の管理を行うビジネス プロセスです。 たとえば、会社では、表示されるロゴ、顔、オブジェクト、色などに基づいて、画像をグループ化し、識別することができます。 または、自動的に[画像のキャプションを生成](./Tutorials/storage-lab-tutorial.md)し、キーワードを添付して検索できるようにすることもできます。 Cognitive Services、Azure Cognitive Search、およびインテリジェント レポートを使用するオールインワンの DAM ソリューションについては、GitHub 上の「[ナレッジ マイニング ソリューション アクセラレータ ガイド](https://github.com/Azure-Samples/azure-search-knowledge-mining)」を参照してください。 その他の DAM の例については、[Computer Vision ソリューション テンプレート](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates)のリポジトリを参照してください。
 
-## <a name="optical-character-recognition-ocr"></a>光学式文字認識 (OCR)
-
-Computer Vision には、[光学式文字認識 (OCR)](concept-recognizing-text.md) 機能が含まれています。 新しい Read API を使用して、印刷されたテキストと手書きのテキストを画像やドキュメントから抽出することができます。 最新のモデルを使用して、さまざまなサーフェスや背景でテキストを操作します。 これらには、レシート、ポスター、名刺、レター、ホワイトボードが含まれます。 2 つの OCR API では、[複数の言語](./language-support.md)で印刷されたテキストの抽出がサポートされます。 [クイックスタート](#next-steps)に従って始めてください。
-
 ## <a name="analyze-images-for-insight"></a>画像を分析して分析情報を得る
 
-画像を分析し、その視覚的特徴や性質に関する分析情報を提示できます。 次の表に示したすべての機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API に備わっています。 [クイックスタート](#next-steps)に従って始めてください。
+画像を分析し、その視覚的特徴や性質に関する分析情報を提示できます。 次の表に示したすべての機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API に備わっています。 [クイックスタート](./quickstarts-sdk/client-library.md)に従って始めてください。
 
 
 ### <a name="tag-visual-features"></a>視覚的特徴のタグ付け
@@ -111,10 +111,8 @@ Computer Vision では、次の要件に合ったイメージを分析できま�
 
 Cognitive Services 全般に言えることですが、Computer Vision サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに留意する必要があります。 詳細については、Microsoft セキュリティ センターの [Cognitive Services のページ](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-以下のクイック スタート ガイドに従って、実際に Computer Vision を使ってみましょう。
+使用する開発言語のクイックスタート ガイドに従って、Computer Vision の使用を開始します。
 
-- [クイック スタート: Computer Vision .NET クライアント ライブラリ](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-- [クイック スタート: Computer Vision Python クライアント ライブラリ](./quickstarts-sdk/client-library.md?pivots=programming-language-python)
-- [クイック スタート: Computer Vision Java クライアント ライブラリ](./quickstarts-sdk/client-library.md?pivots=programming-language-java)
+- [クイック スタート:Computer Vision クライアント ライブラリ](./quickstarts-sdk/client-library.md)

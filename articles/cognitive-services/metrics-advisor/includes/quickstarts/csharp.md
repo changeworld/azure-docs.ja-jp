@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: include
-ms.date: 10/14/2020
+ms.date: 11/09/2020
 ms.author: mbullwin
-ms.openlocfilehash: 8e9b2c69344a19c027f72983a02834aee2e14ccf
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: 124a1339b1ff685016b820e51417a9f1e0acb40f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186931"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523991"
 ---
 [リファレンスのドキュメント](https://aka.ms/azsdk/net/docs/ref/metricsadvisor) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.AI.MetricsAdvisor) | [サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/samples/README.md)
 
@@ -35,9 +35,9 @@ ms.locfileid: "93186931"
 
 ### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする 
 
-新しいプロジェクトを作成したら、 **ソリューション エクスプローラー** でプロジェクト ソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択し、 **[プレリリースを含める]** をオンにして、`Azure.AI.MetricsAdvisor` を検索します。 バージョン `1.0.0-beta.1` を選択し、 **[インストール]** を選択します。 
+新しいプロジェクトを作成したら、**ソリューション エクスプローラー** でプロジェクト ソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択し、 **[プレリリースを含める]** をオンにして、`Azure.AI.MetricsAdvisor` を検索します。 バージョン `1.0.0-beta.2` を選択し、 **[インストール]** を選択します。 
 
-コンソール ウィンドウ (cmd、PowerShell、Bash など) で、`dotnet new` コマンドを使用し、`metrics-advisor-quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイル ( *program.cs* ) を使用する単純な "Hello World" C# プロジェクトが作成されます。 
+コンソール ウィンドウ (cmd、PowerShell、Bash など) で、`dotnet new` コマンドを使用し、`metrics-advisor-quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイル (*program.cs*) を使用する単純な "Hello World" C# プロジェクトが作成されます。 
 
 ```console
 dotnet new console -n metrics-advisor-quickstart
@@ -64,7 +64,7 @@ Build succeeded.
 Visual Studio 以外の IDE を使用している場合は、次のコマンドを使用して .NET 用の Metrics Advisor クライアント ライブラリをインストールできます。
 
 ```console
-dotnet add package Azure.AI.MetricsAdvisor --version 1.0.0-beta.1
+dotnet add package Azure.AI.MetricsAdvisor --version 1.0.0-beta.2
 ```
 
 > [!TIP]
@@ -77,6 +77,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.AI.MetricsAdvisor.Administration;
+using Azure.AI.MetricsAdvisor;
 using Azure.AI.MetricsAdvisor.Models;
 ```
 
@@ -95,10 +96,10 @@ static void Main(string[] args){
 
 |名前|説明|
 |---|---|
-| [MetricsAdvisorClient](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src/MetricsAdvisorClient.cs) | **使用目的** : <br> - インシデントの一覧表示 <br> - インシデントの根本原因の一覧表示 <br> - 元の時系列データと、サービスによってエンリッチされた時系列データの取得 <br> - アラートの一覧表示 <br> - モデルを調整するためのフィードバックの追加 |
-| [MetricsAdvisorAdministrationClient](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src/MetricsAdvisorAdministrationClient.cs)| **次のことを実行できます** : <br> - データ フィードを管理する <br> - 異常検出構成を設定する <br> - 異常アラート構成を設定する <br> - フックを管理する  |
+| [MetricsAdvisorClient](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src/MetricsAdvisorClient.cs) | **使用目的**: <br> - インシデントの一覧表示 <br> - インシデントの根本原因の一覧表示 <br> - 元の時系列データと、サービスによってエンリッチされた時系列データの取得 <br> - アラートの一覧表示 <br> - モデルを調整するためのフィードバックの追加 |
+| [MetricsAdvisorAdministrationClient](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src/MetricsAdvisorAdministrationClient.cs)| **次のことを実行できます**: <br> - データ フィードを管理する <br> - 異常検出構成を設定する <br> - 異常アラート構成を設定する <br> - フックを管理する  |
 | [DataFeed](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src/Models/DataFeed/DataFeed.cs)| **Metrics Advisor によってデータソースから取り込まれるもの。`DataFeed` には、次の行が含まれます:** <br> - タイムスタンプ <br> - 0 個以上のディメンション <br> - 1 つ以上のメジャー  |
-| [メトリック](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src/Models/DataFeedMetric.cs)| `Metric` は、特定のビジネス プロセスの状態を監視および評価するために使用される定量化可能なメジャーです。 ディメンションに分割された複数の時系列値を組み合わせることができます。 たとえば、web health のメトリックには、user count と en-us market のディメンションが含まれている場合があります。 |
+| [DataFeedMetric](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src/Models/DataFeed/DataFeedMetric.cs)| `DataFeedMetric` は、特定のビジネス プロセスの状態を監視および評価するために使用される定量化可能なメジャーです。 ディメンションに分割された複数の時系列値を組み合わせることができます。 たとえば、web health のメトリックには、user count と en-us market のディメンションが含まれている場合があります。 |
 
 ## <a name="code-examples"></a>コード例
 
@@ -117,7 +118,7 @@ static void Main(string[] args){
 アプリケーションの `Program` クラスに、リソースのキーとエンドポイントの変数を作成します。
 
 > [!IMPORTANT]
-> Azure Portal にアクセスします。 「 **前提条件** 」セクションで作成した Metrics Advisor リソースが正常にデプロイされたら、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 サブスクリプションのキーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 <br><br>API キーを取得するには、[https://metricsadvisor.azurewebsites.net](https://metricsadvisor.azurewebsites.net) にアクセスする必要があります。 リソースに適切な **ディレクトリ** 、 **サブスクリプション** 、 **ワークスペース** を選択し、 **[Get started]\(作業の開始\)** を選択します。 その後、[https://metricsadvisor.azurewebsites.net/api-key](https://metricsadvisor.azurewebsites.net/api-key) から API キーを取得できるようになります。   
+> Azure Portal にアクセスします。 「**前提条件**」セクションで作成した Metrics Advisor リソースが正常にデプロイされたら、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 サブスクリプションのキーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 <br><br>API キーを取得するには、[https://metricsadvisor.azurewebsites.net](https://metricsadvisor.azurewebsites.net) にアクセスする必要があります。 リソースに適切な **ディレクトリ**、**サブスクリプション**、**ワークスペース** を選択し、 **[Get started]\(作業の開始\)** を選択します。 その後、[https://metricsadvisor.azurewebsites.net/api-key](https://metricsadvisor.azurewebsites.net/api-key) から API キーを取得できるようになります。   
 >
 > 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)に関するページを参照してください。
 
@@ -143,7 +144,7 @@ var adminClient = new MetricsAdvisorAdministrationClient(new Uri(endpoint), cred
 
 ## <a name="add-a-data-feed"></a>データ フィードを追加する
 
-Metrics Advisor では、複数の種類のデータ ソースがサポートされています。 このサンプルでは、SQL Server からデータを抽出する `DataFeed` を作成する方法を示します。 `connection_String` を、実際の SQL Server 接続文字列に置き換え、`query` を、1 つのタイムスタンプでデータを返すクエリに置き換えます。 また、カスタム データに基づいて `metric` と `dimension` の値を調整する必要もあります。
+Metrics Advisor では、複数の種類のデータ ソースがサポートされています。 このサンプルでは、SQL Server からデータを抽出する `DataFeed` を作成する方法を示します。 `connection_String` を、実際の SQL Server 接続文字列に置き換え、`query` を、1 つのタイムスタンプでデータを返すクエリに置き換えます。 また、カスタム データに基づいて `DataFeedMetric` と `DataFeedDimension` の値を調整する必要もあります。
 
 
 ```csharp
@@ -151,7 +152,7 @@ string sqlServerConnectionString = "<connection_String>";
 string sqlServerQuery = "<query>";
 
 var dataFeedName = "Sample data feed";
-var dataFeedSource = new MySqlDataFeedSource(sqlServerConnectionString, sqlServerQuery);
+var dataFeedSource = new SqlServerDataFeedSource(sqlServerConnectionString, sqlServerQuery);
 var dataFeedGranularity = new DataFeedGranularity(DataFeedGranularityType.Daily);
 
 var dataFeedMetrics = new List<DataFeedMetric>()
@@ -159,10 +160,10 @@ var dataFeedMetrics = new List<DataFeedMetric>()
     new DataFeedMetric("cost"),
     new DataFeedMetric("revenue")
 };
-var dataFeedDimensions = new List<MetricDimension>()
+var dataFeedDimensions = new List<DataFeedDimension>()
 {
-    new MetricDimension("category"),
-    new MetricDimension("city")
+    new DataFeedDimension("category"),
+    new DataFeedDimension("city")
 };
 var dataFeedSchema = new DataFeedSchema(dataFeedMetrics)
 {
@@ -172,26 +173,27 @@ var dataFeedSchema = new DataFeedSchema(dataFeedMetrics)
 var ingestionStartTime = DateTimeOffset.Parse("2020-01-01T00:00:00Z");
 var dataFeedIngestionSettings = new DataFeedIngestionSettings(ingestionStartTime);
 
-Response<DataFeed> response = await adminClient.CreateDataFeedAsync(dataFeedName, dataFeedSource,
-    dataFeedGranularity, dataFeedSchema, dataFeedIngestionSettings);
+var dataFeed = new DataFeed(dataFeedName, dataFeedSource, dataFeedGranularity, dataFeedSchema, dataFeedIngestionSettings);
+
+Response<string> response = await adminClient.CreateDataFeedAsync(dataFeed);
+
+string dataFeedId = response.Value;
+
+Console.WriteLine($"Data feed ID: {dataFeedId}");
+
+// Note that only the ID of the data feed is known at this point. You can perform another
+// service call to GetDataFeedAsync or GetDataFeed to get more information, such as status,
+// created time, the list of administrators, or the metric IDs.
+
+Response<DataFeed> response = await adminClient.GetDataFeedAsync(dataFeedId);
 
 DataFeed dataFeed = response.Value;
-
-Console.WriteLine($"Data feed ID: {dataFeed.Id}");
-
-// Only the ID of the data feed is known at this point. You can perform another service
-// call to get more information, such as status, created time, the list of administrators,
-// or the metric IDs.
-
-response = await adminClient.GetDataFeedAsync(dataFeed.Id);
-
-dataFeed = response.Value;
 
 Console.WriteLine($"Data feed status: {dataFeed.Status.Value}");
 Console.WriteLine($"Data feed created time: {dataFeed.CreatedTime.Value}");
 
 Console.WriteLine($"Data feed administrators:");
-foreach (string admin in dataFeed.Options.Administrators)
+foreach (string admin in dataFeed.Administrators)
 {
     Console.WriteLine($" - {admin}");
 }
@@ -212,7 +214,10 @@ string dataFeedId = "<dataFeedId>";
 
 var startTime = DateTimeOffset.Parse("2020-01-01T00:00:00Z");
 var endTime = DateTimeOffset.Parse("2020-09-09T00:00:00Z");
-var options = new GetDataFeedIngestionStatusesOptions(startTime, endTime);
+var options = new GetDataFeedIngestionStatusesOptions(startTime, endTime)
+{
+    TopCount = 5
+};
 
 Console.WriteLine("Ingestion statuses:");
 Console.WriteLine();
@@ -222,12 +227,12 @@ int statusCount = 0;
 await foreach (DataFeedIngestionStatus ingestionStatus in adminClient.GetDataFeedIngestionStatusesAsync(dataFeedId, options))
 {
     Console.WriteLine($"Timestamp: {ingestionStatus.Timestamp}");
-    Console.WriteLine($"Status: {ingestionStatus.Status.Value}");
+    Console.WriteLine($"Status: {ingestionStatus.Status}");
     Console.WriteLine($"Service message: {ingestionStatus.Message}");
     Console.WriteLine();
 
-    // Print at most 10 statuses.
-    if (++statusCount >= 10)
+    // Print at most 5 statuses.
+    if (++statusCount >= 5)
     {
         break;
     }
@@ -260,16 +265,16 @@ var detectionCondition = new MetricWholeSeriesDetectionCondition()
 
 var detectionConfiguration = new AnomalyDetectionConfiguration(metricId, configurationName, detectionCondition);
 
-Response<AnomalyDetectionConfiguration> response = await adminClient.CreateMetricAnomalyDetectionConfigurationAsync(detectionConfiguration);
+Response<string> response = await adminClient.CreateDetectionConfigurationAsync(detectionConfiguration);
 
-detectionConfiguration = response.Value;
+string detectionConfigurationId = response.Value;
 
-Console.WriteLine($"Anomaly detection configuration ID: {detectionConfiguration.Id}");
+Console.WriteLine($"Anomaly detection configuration ID: {detectionConfigurationId}");
 ```
 
 ### <a name="create-a-hook"></a>フックを作成する
 
-Metrics Advisor では、アラート通知をサブスクライブする手段として、`EmailHook` と `WebHook` クラスがサポートされています。 この例では、`EmailHook` を作成する方法を示します。 通知の取得を開始するには、フックを異常アラート構成に渡す必要があります。 詳細については、[異常アラート構成の作成](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor#create-an-anomaly-alert-configuration)に関するサンプルを参照してください。
+Metrics Advisor では、アラート通知をサブスクライブする手段として、`EmailNotificationHook` と `WebNotificationHook` クラスがサポートされています。 この例では、`EmailNotificationHook` を作成する方法を示します。 通知の取得を開始するには、フックを異常アラート構成に渡す必要があります。 詳細については、[異常アラート構成の作成](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor#create-an-anomaly-alert-configuration)に関するサンプルを参照してください。
 
 ```csharp
 string hookName = "Sample hook";
@@ -281,11 +286,11 @@ var emailsToAlert = new List<string>()
 
 var emailHook = new EmailNotificationHook(hookName, emailsToAlert);
 
-Response<NotificationHook> response = await adminClient.CreateHookAsync(emailHook);
+Response<string> response = await adminClient.CreateHookAsync(emailHook);
 
-NotificationHook hook = response.Value;
+string hookId = response.Value;
 
-Console.WriteLine($"Hook ID: {hook.Id}");
+Console.WriteLine($"Hook ID: {hookId}");
 ```
 
 ##  <a name="create-an-alert-configuration"></a>アラート構成を作成する
@@ -307,54 +312,79 @@ var metricAlertConfigurations = new List<MetricAnomalyAlertConfiguration>()
 
 AnomalyAlertConfiguration alertConfiguration = new AnomalyAlertConfiguration(configurationName, idsOfHooksToAlert, metricAlertConfigurations);
 
-Response<AnomalyAlertConfiguration> response = await adminClient.CreateAnomalyAlertConfigurationAsync(alertConfiguration);
+Response<string> response = await adminClient.CreateAlertConfigurationAsync(alertConfiguration);
 
-alertConfiguration = response.Value;
+string alertConfigurationId = response.Value;
 
-Console.WriteLine($"Alert configuration ID: {alertConfiguration.Id}");
+Console.WriteLine($"Alert configuration ID: {alertConfigurationId}");
 ```
 
 ### <a name="query-the-alert"></a>アラートに対してクエリを実行する
 
-指定された異常アラート構成によって作成されたアラートを調べ、これらのアラートのトリガーとなった異常を一覧表示します。
+特定の異常アラート構成によって作成されたアラートを確認します。
 
 ```csharp
 string anomalyAlertConfigurationId = "<anomalyAlertConfigurationId>";
 
 var startTime = DateTimeOffset.Parse("2020-01-01T00:00:00Z");
 var endTime = DateTimeOffset.UtcNow;
-var options = new GetAlertsOptions(startTime, endTime, TimeMode.AnomalyTime);
+var options = new GetAlertsOptions(startTime, endTime, AlertQueryTimeMode.AnomalyTime)
+{
+    TopCount = 5
+};
 
 int alertCount = 0;
 
 await foreach (AnomalyAlert alert in client.GetAlertsAsync(anomalyAlertConfigurationId, options))
 {
+    Console.WriteLine($"Alert created at: {alert.CreatedTime}");
     Console.WriteLine($"Alert at timestamp: {alert.Timestamp}");
     Console.WriteLine($"Id: {alert.Id}");
-    Console.WriteLine($"Anomalies that triggered this alert:");
+    Console.WriteLine();
 
-    await foreach (DataAnomaly anomaly in client.GetAnomaliesForAlertAsync(anomalyAlertConfigurationId, alert.Id))
-    {
-        Console.WriteLine("  Anomaly:");
-        Console.WriteLine($"    Status: {anomaly.Status.Value}");
-        Console.WriteLine($"    Severity: {anomaly.Severity}");
-        Console.WriteLine($"    Series key:");
-
-        foreach (KeyValuePair<string, string> keyValuePair in anomaly.SeriesKey.AsDictionary())
-        {
-            Console.WriteLine($"      Dimension '{keyValuePair.Key}': {keyValuePair.Value}");
-        }
-
-        Console.WriteLine();
-    }
-
-    // Print at most 3 alerts.
-    if (++alertCount >= 3)
+    // Print at most 5 alerts.
+    if (++alertCount >= 5)
     {
         break;
     }
 }
 ```
+
+アラートの ID がわかったら、このアラートをトリガーした[異常](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/README.md#data-point-anomaly)を一覧表示します。
+
+```csharp
+string alertConfigurationId = "<alertConfigurationId>";
+string alertId = "<alertId>";
+
+var options = new GetAnomaliesForAlertOptions() { TopCount = 3 };
+
+int anomalyCount = 0;
+
+await foreach (DataPointAnomaly anomaly in client.GetAnomaliesAsync(alertConfigurationId, alertId, options))
+{
+    Console.WriteLine($"Anomaly detection configuration ID: {anomaly.AnomalyDetectionConfigurationId}");
+    Console.WriteLine($"Metric ID: {anomaly.MetricId}");
+    Console.WriteLine($"Anomaly at timestamp: {anomaly.Timestamp}");
+    Console.WriteLine($"Anomaly detected at: {anomaly.CreatedTime}");
+    Console.WriteLine($"Status: {anomaly.Status}");
+    Console.WriteLine($"Severity: {anomaly.Severity}");
+    Console.WriteLine("Series key:");
+
+    foreach (KeyValuePair<string, string> keyValuePair in anomaly.SeriesKey.AsDictionary())
+    {
+        Console.WriteLine($"  Dimension '{keyValuePair.Key}': {keyValuePair.Value}");
+    }
+
+    Console.WriteLine();
+
+    // Print at most 3 anomalies.
+    if (++anomalyCount >= 3)
+    {
+        break;
+    }
+}
+```
+
 
 ### <a name="run-the-application"></a>アプリケーションの実行
 

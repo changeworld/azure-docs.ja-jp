@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: a864717304dacaf6cf4c77c92050827af619ed39
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: cfd28171524ada5f5feea9e18e4b88a291254e88
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736680"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616792"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -36,7 +36,7 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
-| Language                          | Locale | カスタマイズ                                   |
+| Language                          | ロケール (BCP-47) | カスタマイズ                                   |
 |-----------------------------------|--------|--------------------------------------------------|
 |アラビア語 (バーレーン)、現代標準  |`ar-BH` | 言語モデル                                   |
 |アラビア語 (エジプト)                     |`ar-EG` | 言語モデル                                   |
@@ -136,7 +136,7 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 
 リージョン別の提供状況の詳細については、[リージョン](regions.md#standard-and-neural-voices)に関するページを参照してください。
 
-|Language  | Locale           | 性別 | 音声名 | スタイルのサポート |
+|Language  | ロケール (BCP-47)          | 性別 | 音声名 | スタイルのサポート |
 |--|--|--|--|--|
 | アラビア語 (エジプト) | `ar-EG` | Female | `ar-EG-SalmaNeural` | 全般 |
 | アラビア語 (サウジアラビア) | `ar-SA` | Female | `ar-SA-ZariyahNeural` | 全般 |
@@ -219,7 +219,7 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 
 テキストから合成音声への変換用に、45 を超える言語とロケールで 75 を超える標準的な音声が用意されています。 リージョン別の提供状況の詳細については、[リージョン](regions.md#standard-and-neural-voices)に関するページを参照してください。
 
-| Language | Locale | 性別 | 音声名 |
+| Language | ロケール (BCP-47) | 性別 | 音声名 |
 |--|--|--|--|
 | アラビア語 (アラブ)  |  `ar-EG`  |  Female  |  `ar-EG-Hoda`|
 | アラビア語 (サウジアラビア)  |  `ar-SA`  |  Male  |  `ar-SA-Naayf`|
@@ -397,7 +397,7 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 
 さまざまな Speaker Recognition API でサポートされる言語については、次の表を参照してください。 Speaker Recognition の詳細については、[概要](speaker-recognition-overview.md)に関するページを参照してください。
 
-| Language | Locale | テキスト依存の認証 | テキストに依存しない認証 | テキストに依存しない識別 |
+| Language | ロケール (BCP-47) | テキスト依存の認証 | テキストに依存しない認証 | テキストに依存しない識別 |
 |----|----|----|----|----|
 |英語 (米国)  |  ja-JP  |  はい  |  はい  |  はい |
 |中国語 (標準、簡体字) | zh-CN     |     該当なし |     はい |     はい|
@@ -413,7 +413,7 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 |スペイン語 (メキシコ)     | es-MX     | 該当なし |     はい |     はい|
 |スペイン語 (スペイン)     | es-ES | 該当なし     | はい |     はい|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [無料の Azure アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください
 * [C# で音声を認識する方法を確認する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)
