@@ -57,6 +57,12 @@
               href: manage-vm-extensions-template.md
         - name: エージェントの管理
           href: manage-agent.md
+    - name: シナリオ
+      items:
+        - name: Azure Sentinel にオンボードする
+          href: scenario-onboard-azure-sentinel.md
+        - name: Azure Security Center にオンボードする
+          href: /security-center/quickstart-onboard-machines.md
     - name: トラブルシューティング
       items:
         - name: エージェントの接続に関する問題

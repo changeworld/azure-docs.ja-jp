@@ -12,12 +12,12 @@ metadata:
   ms.author: joflore
   ms.date: 02/11/2020
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 17775be39e534d0825596973452dabc13054ee8d
-  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+  ms.openlocfilehash: d484600da9be9d84b6af7ad31754ea86bf6b6873
+  ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/13/2020
-  ms.locfileid: "91968227"
+  ms.lasthandoff: 11/18/2020
+  ms.locfileid: "94838053"
 landingContent:
 - title: 認証について
   linkLists:
@@ -51,21 +51,21 @@ landingContent:
       url: howto-sspr-deployment.md
     - text: Windows のログイン画面からパスワードをリセットできるようにする
       url: howto-sspr-windows.md
-- title: Azure Multi-Factor Authentication の有効化
+- title: Azure AD の Multi-Factor Authentication を有効にする
   linkLists:
   - linkListType: concept
     links:
-    - text: Azure Multi-Factor Authentication のしくみ
+    - text: Azure AD の Multi-Factor Authentication の仕組み
       url: concept-mfa-howitworks.md
   - linkListType: tutorial
     links:
-    - text: Azure Multi-Factor Authentication の有効化
+    - text: Azure AD の Multi-Factor Authentication を有効にする
       url: tutorial-enable-azure-mfa.md
-    - text: リスクベースの Azure Multi-Factor Authentication を有効にする
+    - text: リスクベースの Azure AD Multi-Factor Authentication を有効にする
       url: tutorial-risk-based-sspr-mfa.md
   - linkListType: deploy
     links:
-    - text: Azure Multi-Factor Authentication のデプロイ ガイド
+    - text: Azure AD の Multi-Factor Authentication のデプロイ ガイド
       url: howto-mfa-getstarted.md
     - text: NPS 拡張機能を使用してオンプレミス アプリケーションを統合する
       url: howto-mfa-nps-extension.md

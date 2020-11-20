@@ -504,14 +504,16 @@
                   href: ./spark/synapse-spark-sql-pool-import-export.md
 - name: Synapse Link
   items:
+    - name: 概要
+      items:
+        - name: Azure Cosmos DB の Synapse Link
+          href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: クイックスタート
       items:
         - name: Cosmos DB の Synapse Link に接続する
           href: quickstart-connect-synapse-link-cosmos-db.md
     - name: 概念
       items:
-        - name: Azure Cosmos DB の Synapse Link
-          href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: 分析ストアの概要
           href: ../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Synapse Link でサポートされる機能
@@ -967,7 +969,7 @@
   items:
     - name: 概要
       items:
-        - name: Synapse Analytics の機械学習とは
+        - name: Azure Synapse の機械学習とは
           href: machine-learning/what-is-machine-learning.md
     - name: クイックスタート
       items:

@@ -122,7 +122,7 @@
           href: manage/azure-plan-subscription-transfer-partners.md
         - name: Azure EA ポータルの概要
           href: manage/ea-portal-get-started.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -184,9 +184,15 @@
               href: manage/pay-by-invoice.md
             - name: 追加のサブスクリプションを作成する
               href: manage/create-subscription.md
-            - name: 最新の API を使用してプログラムでサブスクリプションを作成する
-              href: manage/programmatically-create-subscription.md
-            - name: プレビュー API を使用してプログラムでサブスクリプションを作成する
+            - name: 最新の API を使用してプログラムで EA のサブスクリプションを作成する
+              href: manage/programmatically-create-subscription-enterprise-agreement.md
+            - name: 最新の API を使用してプログラムで MCA のサブスクリプションを作成する
+              href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
+            - name: 最新の API を使用してプログラムで MPA のサブスクリプションを作成する
+              href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
+            - name: Resource Manager テンプレートを使用してプログラムでサブスクリプションを作成する
+              href: manage/create-subscription-template.md
+            - name: 以前のプレビュー API を使用してプログラムでサブスクリプションを作成する
               href: manage/programmatically-create-subscription-preview.md
             - name: EA サブスクリプションを作成するためのアクセスを許可する
               href: manage/grant-access-to-create-subscription.md

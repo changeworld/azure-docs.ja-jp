@@ -10,6 +10,10 @@
       href: tutorial-deploy-hsm-cli.md
     - name: PowerShell を使用して既存の仮想ネットワークに HSM をデプロイする
       href: tutorial-deploy-hsm-powershell.md
+- name: クイックスタート
+  items:
+    - name: Azure PowerShell を使用して Azure Dedicated HSM を作成する
+      href: quickstart-create-hsm-powershell.md
 - name: 概念
   items:
     - name: 高可用性
@@ -22,7 +26,7 @@
       href: physical-security.md
     - name: サポート
       href: supportability.md
-- name: 攻略ガイド
+- name: 操作方法ガイド
   items:
     - name: デプロイ アーキテクチャの決定
       href: deployment-architecture.md

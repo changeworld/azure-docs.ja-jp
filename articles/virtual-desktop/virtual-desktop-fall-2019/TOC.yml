@@ -72,7 +72,7 @@
           href: diagnostics-log-analytics-2019.md
     - name: 組み込みアプリの公開
       href: publish-apps-2019.md
-    - name: Azure Multi-Factor Authentication を設定する
+    - name: Azure AD の Multi-Factor Authentication を設定する
       href: ../set-up-mfa.md
 - name: 概念
   items:

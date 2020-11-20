@@ -11,12 +11,12 @@ metadata:
   manager: eliotgra
   ms.date: 03/23/2020
   ms.custom: amqp
-  ms.openlocfilehash: 11145abb06fb84f533ee6d556cafe1e943579131
-  ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+  ms.openlocfilehash: 665692e1d902dfed8cdab535d0639f356f4e709c
+  ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/28/2020
-  ms.locfileid: "92890226"
+  ms.lasthandoff: 11/19/2020
+  ms.locfileid: "94885922"
 landingContent:
 - title: 作業の開始
   linkLists:
@@ -78,6 +78,20 @@ landingContent:
       url: tutorial-routing-config-message-routing-rm-template.md
     - text: ルーティング結果の実行と表示
       url: tutorial-routing-view-message-routing-results.md
+- title: Azure Stack Hub 上の IoT Hub (プレビュー)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: オペレーター向けの概要
+      url: /azure-stack/operator/iot-hub-rp-overview
+    - text: ユーザー向けの概要
+      url: /azure-stack/user/iot-hub-overview
+  - linkListType: how-to-guide
+    links:
+    - text: インストールの前提条件
+      url: /azure-stack/operator/iot-hub-rp-prerequisites
+    - text: Azure Stack Hub に IoT Hub をインストールする方法
+      url: /azure-stack/operator/iot-hub-rp-install
 - title: IoT Hub のツールを使用する
   linkLists:
   - linkListType: how-to-guide

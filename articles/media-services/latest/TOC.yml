@@ -68,8 +68,8 @@
       items:
         - name: リモート ファイルのエンコードとストリーム配信 (REST)
           href: stream-files-tutorial-with-rest.md
-        - name: Media Services でのカスタマー マネージド キー
-          href: tutorial-byok.md
+        - name: カスタマー マネージド キーと REST API
+          href: tutorial-byok-postman.md
     - name: CLI
       items:
         - name: リモート ファイルのエンコードとストリーム配信 (CLI)
@@ -80,6 +80,8 @@
           href: stream-files-nodejs-quickstart.md
     - name: Azure portal
       items:
+        - name: カスタマー マネージド キーまたは BYOK のチュートリアル
+          href: tutorial-byok-portal.md
         - name: Azure Log Analytics での AMS イベントの保存
           href: tutorial-events-log-analytics.md
 - name: サンプル
@@ -102,6 +104,11 @@
         - name: ストレージ アカウント
           href: storage-account-concept.md
           displayName: Storage side encryption
+        - name: マネージド ID と Media Services
+          displayName: content protection
+          href: concept-managed-identities.md
+        - name: 顧客管理キー
+          href: concept-use-customer-managed-keys-byok.md
     - name: アセット
       items:
         - name: アセット
@@ -178,8 +185,6 @@
         - name: 動的暗号化とキー配信
           displayName: 'content protection, streaming protocols, encryption types, PlayReady, Widevine, FairPlay, custom'
           href: content-protection-overview.md
-        - name: 顧客管理キー
-          href: concept-use-customer-managed-keys-byok.md
         - name: マルチ DRM システムの設計
           displayName: 'drm, access control'
           href: design-multi-drm-system-with-access-control.md

@@ -96,7 +96,7 @@
       href: app-attach.md
     - name: Microsoft Teams の使用
       href: teams-on-wvd.md
-    - name: Azure Multi-Factor Authentication を設定する
+    - name: Azure AD の Multi-Factor Authentication を設定する
       href: set-up-mfa.md
     - name: 自動更新を構成する
       href: configure-automatic-updates.md

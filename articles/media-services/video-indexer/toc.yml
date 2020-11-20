@@ -65,6 +65,8 @@
       href: use-editor-create-project.md
     - name: アプリケーションへのウィジェットの埋め込み
       href: video-indexer-embed-widgets.md
+    - name: Video Indexer を大規模に使用する場合の考慮事項
+      href: considerations-when-use-at-scale.md
     - name: 障害復旧
       href: video-indexer-disaster-recovery.md
     - name: コンテンツ モデルのカスタマイズ

@@ -61,10 +61,14 @@
       href: security-baselines-overview.md
     - name: API Management のセキュリティ ベースライン
       href: ../../api-management/security-baseline.md
+    - name: App Service のセキュリティ ベースライン
+      href: ../../app-service/security-baseline.md
     - name: Application Gateway のセキュリティ ベースライン
       href: ../../application-gateway/security-baseline.md
     - name: Automation のセキュリティ ベースライン
       href: ../../automation/security-baseline.md
+    - name: Azure Advisor のセキュリティ ベースライン
+      href: ../../advisor/security-baseline.md
     - name: Azure Backup のセキュリティ ベースライン
       href: ../../backup/security-baseline.md
     - name: Azure Cache for Redis のセキュリティ ベースライン
@@ -97,6 +101,8 @@
       href: ../../frontdoor/security-baseline.md
     - name: Azure Functions のセキュリティ ベースライン
       href: ../../azure-functions/security-baseline.md
+    - name: Azure Information Protection のセキュリティ ベースライン
+      href: /azure/information-protection/security-baseline
     - name: Azure IoT Hub のセキュリティ ベースライン
       href: ../../iot-hub/security-baseline.md
     - name: Azure Kubernetes Service のセキュリティ ベースライン

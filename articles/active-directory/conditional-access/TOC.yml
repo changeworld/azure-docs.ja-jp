@@ -10,7 +10,7 @@
       href: require-tou.md
 - name: チュートリアル
   items:
-    - name: Azure Multi-Factor Authentication を必須とする
+    - name: Azure AD の Multi-Factor Authentication を必須とする
       href: ../authentication/tutorial-enable-azure-mfa.md?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json
 - name: 概念
   expanded: false

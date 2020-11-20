@@ -42,7 +42,7 @@
       href: concepts-storage.md
     - name: プライベート クラウドのアクセスと ID
       href: concepts-identity.md
-    - name: ロールベースのアクセス制御
+    - name: vSphere ロールベースのアクセス制御
       href: concepts-role-based-access-control.md
     - name: プライベート クラウドのモニターと修復
       href: concepts-monitor-repair-private-cloud.md
