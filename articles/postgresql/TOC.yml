@@ -106,8 +106,6 @@
       items:
         - name: Azure CLI
           href: sample-scripts-azure-cli.md
-        - name: Azure Policy の組み込み
-          href: ./policy-reference.md
     - name: 概念
       items:
         - name: サーバー
@@ -147,6 +145,9 @@
             - name: インフラストラクチャの二重暗号化
               href: concepts-infrastructure-double-encryption.md
               displayName: 'security, infrastructure encryption'
+            - name: Azure Policy によるセキュリティ制御
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
             - name: セキュリティ ベースライン
               href: security-baseline.md
         - name: ネットワーク
@@ -638,6 +639,9 @@
       href: /rest/api/postgresql
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

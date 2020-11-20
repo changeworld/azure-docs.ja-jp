@@ -69,17 +69,17 @@
     - name: 接続モニターへの移行
       items:
         - name: Network Performance Monitor から
-          href: migrate-to-connection-monitor-preview-from-network-performance-monitor.md
+          href: migrate-to-connection-monitor-from-network-performance-monitor.md
         - name: 接続モニターから (クラシック)
-          href: migrate-to-connection-monitor-preview-from-connection-monitor.md
+          href: migrate-to-connection-monitor-from-connection-monitor-classic.md
     - name: VM ネットワークに関する問題を診断する
       items:
         - name: VM 拡張機能をインストールする
           items:
             - name: Windows
-              href: ../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+              href: ../virtual-machines/extensions/network-watcher-windows.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json
             - name: Linux
-              href: ../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+              href: ../virtual-machines/extensions/network-watcher-linux.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json
         - name: ルーティングに関する問題を診断する
           items:
             - name: Azure PowerShell
@@ -184,7 +184,7 @@
     - name: 場所と Azure リージョンの間の相対待ち時間を確認する
       href: view-relative-latencies.md
     - name: ネットワーク パフォーマンスを監視する
-      href: ../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+      href: ../azure-monitor/insights/network-performance-monitor.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json
     - name: リソースの移動
       items:
         - name: Network Watcher リソースの移動
@@ -214,7 +214,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
+      href: /answers/topics/azure-virtual-network.html
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/network-watcher/'
     - name: サービスの更新情報

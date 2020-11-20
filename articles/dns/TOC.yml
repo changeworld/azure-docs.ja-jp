@@ -46,7 +46,7 @@
           href: tutorial-alias-rr.md
 - name: 概念
   items:
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -173,7 +173,7 @@
     - name: 機能のリクエスト
       href: 'https://feedback.azure.com/forums/217313-networking/category/77466-domain-name-service-dns-traffic-manager'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/en-us/answers/topics/azure-virtual-network.html'
+      href: /answers/topics/azure-virtual-network.html
     - name: ネットワークのブログ
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: 価格

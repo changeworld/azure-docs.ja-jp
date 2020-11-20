@@ -8,6 +8,10 @@
   items:
     - name: 集約された名前空間を計画する
       href: hpc-cache-namespace.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
 - name: 操作方法ガイド
   items:
     - name: 前提条件

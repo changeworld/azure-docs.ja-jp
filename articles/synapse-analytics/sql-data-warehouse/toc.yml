@@ -29,6 +29,8 @@
   items:
     - name: 作成と接続
       items:
+        - name: Azure CLI
+          href: create-data-warehouse-azure-cli.md
         - name: ポータル
           href: create-data-warehouse-portal.md
         - name: PowerShell

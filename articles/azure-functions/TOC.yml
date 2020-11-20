@@ -4,6 +4,8 @@
   items:
     - name: Azure Functions について
       href: functions-overview.md
+    - name: 作業の開始
+      href: functions-get-started.md
     - name: Durable Functions
       href: durable/durable-functions-overview.md
     - name: サーバーレス サービスの比較
@@ -588,8 +590,6 @@
       href: /azure/architecture/serverless-quest/serverless-overview
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/functions/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: クォータの情報

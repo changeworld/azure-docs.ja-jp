@@ -90,6 +90,10 @@
           href: migrate-appliance.md
         - name: レプリケーション アプライアンスの要件
           href: migrate-replication-appliance.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: Azure Migrate アプライアンスのアーキテクチャ
       href: migrate-appliance-architecture.md
     - name: Hyper-V 移行アーキテクチャ

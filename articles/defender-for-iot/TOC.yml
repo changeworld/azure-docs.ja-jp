@@ -57,8 +57,12 @@
       href: concept-security-alerts.md
     - name: カスタマイズ可能なセキュリティ アラート
       href: concept-customizable-security-alerts.md
-    - name: セキュリティに関する推奨事項
-      href: concept-recommendations.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティに関する推奨事項
+          href: concept-recommendations.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: ベースライン
       href: concept-baseline.md
     - name: イベントの集計
