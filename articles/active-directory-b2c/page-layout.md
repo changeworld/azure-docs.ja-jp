@@ -36,7 +36,7 @@ ms.locfileid: "88852071"
 
 **1.2.0**
 
-- ユーザー名やメールとパスワードのフィールドには `form` HTML 要素が使用され、Edge および Internet Explorer (IE) でこの情報を適切に保存できるようになりました。
+- ユーザー名やメールとパスワードのフィールドには `form` HTML 要素が使用され、Microsoft Edge および Internet Explorer (IE) でこの情報を適切に保存できるようになりました。
 - ユーザー エクスペリエンスの向上のため、構成可能なユーザー入力の検証の延期が追加されました。
 - アクセシビリティの修正
 - [HTML タグに](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) `data-preload="true"` 属性を追加して、CSS と JavaScript の読み込み順序を制御できるようになりました。
@@ -65,7 +65,7 @@ ms.locfileid: "88852071"
 
 **1.2.0**
 
-- ユーザー名やメールとパスワードのフィールドには `form` HTML 要素が使用され、Edge および Internet Explorer (IE) でこの情報を適切に保存できるようになりました。
+- ユーザー名やメールとパスワードのフィールドには `form` HTML 要素が使用され、Microsoft Edge および Internet Explorer (IE) でこの情報を適切に保存できるようになりました。
 - アクセシビリティの修正
 - [HTML タグに](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) `data-preload="true"` 属性を追加して、CSS と JavaScript の読み込み順序を制御できるようになりました。
   - HTML テンプレートと同時にリンクされた CSS ファイルを読み込みます。これにより、ファイルの読み込みの間に "ちらつき" が発生しなくなります。

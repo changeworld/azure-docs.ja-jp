@@ -31,7 +31,7 @@ ms.locfileid: "86208867"
     ![発送の準備をする 3](media/data-box-export-prepare-to-ship/prepare-to-ship3.png)
 
 
-3. **発送準備**が開始されると、進行状況バーに進行状況の通知が表示されます。
+3. **発送準備** が開始されると、進行状況バーに進行状況の通知が表示されます。
 
     ![発送の準備をする 4](media/data-box-export-prepare-to-ship/prepare-to-ship4.png)
 

@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 10/02/2020
 ms.author: aahi
-ms.openlocfilehash: 44bce7c6dd2443ea0ed1851325a5b84f325f5fae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 308b2a9cb00f44f0e330d4fef5592d8855ee3394
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779912"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553095"
 ---
 ## <a name="text-analytics-for-health-categories-entities-and-attributes"></a>Text Analytics for Health のカテゴリ、エンティティ、属性
 
@@ -49,13 +49,13 @@ ms.locfileid: "91779912"
 :::image type="content" source="../../media/ta-for-health/anatomy-entities-body-structure.png" alt-text="身体構造エンティティの例。":::
 
 
-:::image type="content" source="../../media/ta-for-health/anatomy-entities-body-structure-2.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/anatomy-entities-body-structure-2.png" alt-text="身体構造エンティティの拡張された例。":::
 
 ### <a name="attributes"></a>属性
 
 **DIRECTION** - 方向の語句。身体の構造を特徴付ける左、横、上、後部など。
 
-:::image type="content" source="../../media/ta-for-health/anatomy-attributes.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/anatomy-attributes.png" alt-text="方向属性の例。":::
 
 ### <a name="supported-relations"></a>サポートされる関係
 
@@ -67,20 +67,20 @@ ms.locfileid: "91779912"
 
 **AGE** - 年齢に関するすべての用語と語句。患者、家族、その他のものなど。 たとえば、40 歳、51 才、3 か月、成人、乳児、初老、若者、未成年、中年など。
 
-:::image type="content" source="../../media/ta-for-health/age-entity.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/age-entity.png" alt-text="年齢エンティティの例。":::
 
-:::image type="content" source="../../media/ta-for-health/age-entity-2.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/age-entity-2.png" alt-text="年齢エンティティの別の例。":::
 
 
 **GENDER** - 対象者の性別を示す用語。 たとえば、男性、女性、女、紳士、淑女など。
 
-:::image type="content" source="../../media/ta-for-health/gender-entity.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/gender-entity.png" alt-text="性別エンティティの例。":::
 
 ### <a name="attributes"></a>属性
 
 **RELATIONAL_OPERATOR** - 人口統計エンティティと追加情報の間の関係を表す語句。
 
-:::image type="content" source="../../media/ta-for-health/relational-operator.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/relational-operator.png" alt-text="関係演算子の例。":::
 
 ## <a name="examinations"></a>検査
 
@@ -88,27 +88,31 @@ ms.locfileid: "91779912"
 
 **EXAMINATION_NAME** – 診断手順と検査。 たとえば、MRI、ECG、HIV 検査、ヘモグロビン、血小板数、"*ブリストル便性状スケール*" などのスケール システム。
 
-:::image type="content" source="../../media/ta-for-health/exam-name-entities.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/exam-name-entities.png" alt-text="検査エンティティの例。":::
 
-:::image type="content" source="../../media/ta-for-health/exam-name-entities-2.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/exam-name-entities-2.png" alt-text="検査名エンティティのもう 1 つの例。":::
 
 ### <a name="attributes"></a>属性
 
 **DIRECTION** – 検査の特徴を示す方向の用語。
 
-:::image type="content" source="../../media/ta-for-health/exam-direction-attribute.png" alt-text="身体構造エンティティの例。" 検査の単位です。
+:::image type="content" source="../../media/ta-for-health/exam-direction-attribute.png" alt-text="検査名エンティティの方向属性の例。":::
 
-:::image type="content" source="../../media/ta-for-health/exam-unit-attribute.png" alt-text="身体構造エンティティの例。" 検査の値です。
+**MEASUREMENT_UNIT** – 検査の単位。 たとえば、"*ヘモグロビン > 9.5 g/dL*"。*g/dL* という用語は "*ヘモグロビン*" 検査の単位です。
 
-:::image type="content" source="../../media/ta-for-health/exam-value-attribute.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/exam-unit-attribute.png" alt-text="検査名エンティティの測定単位属性の例。":::
+
+**MEASUREMENT_VALUE** – 検査の値。 たとえば、"*ヘモグロビン > 9.5 g/dL*"。*9.5* という用語は "*ヘモグロビン*" 検査の値です。
+
+:::image type="content" source="../../media/ta-for-health/exam-value-attribute.png" alt-text="検査名エンティティの測定値属性の例。":::
 
 **RELATIONAL_OPERATOR** – 検査と追加情報の間の関係を表す語句。 たとえば、対象検査に対して必要な測定値。
 
-:::image type="content" source="../../media/ta-for-health/exam-relational-operator-attribute.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/exam-relational-operator-attribute.png" alt-text="検査名エンティティの関係演算子の例。":::
 
 **TIME** – 検査の開始や長さ (期間) に関する時間関連の用語。 たとえば、検査が行われた日時。
 
-:::image type="content" source="../../media/ta-for-health/exam-time-attribute.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/exam-time-attribute.png" alt-text="検査名エンティティの時間属性の例。":::
 
 ### <a name="supported-relations"></a>サポートされる関係
 
@@ -124,7 +128,7 @@ ms.locfileid: "91779912"
 
 **GENE** – 遺伝子に関するすべての言及。 たとえば、MTRR、F2 など。
 
-:::image type="content" source="../../media/ta-for-health/genomics-entities.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/genomics-entities.png" alt-text="遺伝子エンティティの例。":::
 
 **VARIANT** – 遺伝子のバリエーションに関するすべての言及。 たとえば、c.524C>T、(MTRR):r.1462_1557del96 など
   
@@ -134,17 +138,17 @@ ms.locfileid: "91779912"
   
 **ADMINISTRATIVE_EVENT** – 医療システムに関連するが、管理または半ば管理の性質を持つイベント。 たとえば、登録、受付、試験、研究エントリ、移植、退院、入院など。 
 
-:::image type="content" source="../../media/ta-for-health/healthcare-event-entity.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/healthcare-event-entity.png" alt-text="医療イベント エンティティの例。":::
 
 **CARE_ENVIRONMENT** – 患者が治療を受ける環境または場所。 たとえば、緊急救命室、医師の診察室、有酸素運動ユニット、ホスピス、病院など。
 
-:::image type="content" source="../../media/ta-for-health/healthcare-environment-entity.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/healthcare-environment-entity.png" alt-text="このスクリーンショットは、医療環境エンティティの例を示しています。":::
 
 **HEALTHCARE_PROFESSION** – 有資格または無資格の医療関係者。 たとえば、歯科医、病理学者、神経科医、放射線科医、薬剤師、栄養士、理学療法士、カイロプラクターなど。
 
-:::image type="content" source="../../media/ta-for-health/healthcare-profession-entity.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/healthcare-profession-entity.png" alt-text="このスクリーンショットは、医療環境エンティティの別の例を示しています。":::
 
-:::image type="content" source="../../media/ta-for-health/healthcare-profession-entity-2.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/healthcare-profession-entity-2.png" alt-text="医療環境エンティティの別の例。":::
 
 ## <a name="medical-condition"></a>病状
 
@@ -152,15 +156,15 @@ ms.locfileid: "91779912"
 
 **DIAGNOSIS** – 病気、症候群、中毒。 たとえば、乳がん、アルツハイマー病、HTN、CHF、脊髄損傷など。
 
-:::image type="content" source="../../media/ta-for-health/medical-condition-entity.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/medical-condition-entity.png" alt-text="病状エンティティの例。":::
 
-:::image type="content" source="../../media/ta-for-health/medical-condition-entity-2.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/medical-condition-entity-2.png" alt-text="病状エンティティの別の例。":::
 
 **SYMPTOM_OR_SIGN** – 病気またはその他の診断の主観的または客観的な証拠。 たとえば、胸痛、頭痛、目まい、発疹、SOB、柔らかい腹部、正常な腸音、栄養良好など。
 
-:::image type="content" source="../../media/ta-for-health/medical-condition-symptom-entity.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/medical-condition-symptom-entity.png" alt-text="病状の兆候または症状エンティティの例。":::
 
-:::image type="content" source="../../media/ta-for-health/medical-condition-symptom-entity-2.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/medical-condition-symptom-entity-2.png" alt-text="病状の兆候または症状エンティティの別の例。":::
 
 ### <a name="attributes"></a>属性
 
@@ -174,37 +178,41 @@ ms.locfileid: "91779912"
 6.  状態のスケール: 場合によっては、状態がスケールによって特徴付けられることがあります。これは、有限個の順序付けられた値のリストです。 たとえば、ステージ III の膵臓がんの患者。
 7.  状態の経過: 状態の経過や進行に関連する用語。たとえば、改善、悪化、解消、鎮静など。 
 
-:::image type="content" source="../../media/ta-for-health/condition-qualifier-diagnosis.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/condition-qualifier-diagnosis.png" alt-text="状態の修飾子属性と診断エンティティの例。":::
 
-:::image type="content" source="../../media/ta-for-health/condition-qualifier-diagnosis-2.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/condition-qualifier-diagnosis-2.png" alt-text="状態の修飾子属性と診断エンティティの別の例。":::
 
-:::image type="content" source="../../media/ta-for-health/conditional-qualifier-symptom-medication.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/conditional-qualifier-symptom-medication.png" alt-text="状態の修飾子属性と症状および薬剤エンティティの例。":::
 
-:::image type="content" source="../../media/ta-for-health/condition-qualifier-diagnosis-3.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/condition-qualifier-diagnosis-3.png" alt-text="このスクリーンショットは、状態の修飾子属性と診断エンティティの別の例を示しています。":::
 
-:::image type="content" source="../../media/ta-for-health/condition-qualifier-symptom.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/condition-qualifier-symptom.png" alt-text="このスクリーンショットは、状態の修飾子属性と診断エンティティの追加の例を示しています。":::
 
 **DIRECTION** - 身体の病状の特徴を示す方向の用語。
 
-:::image type="content" source="../../media/ta-for-health/medical-condition-direction-attribute.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/medical-condition-direction-attribute.png" alt-text="方向属性と病状エンティティの例。":::
 
 **FREQUENCY** - 病状が発生した、発生している、または発生するはずの頻度。
 
-:::image type="content" source="../../media/ta-for-health/medical-condition-frequency-attribute.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/medical-condition-frequency-attribute.png" alt-text="頻度属性と病状エンティティの例。":::
 
-:::image type="content" source="../../media/ta-for-health/medical-condition-frequency-attribute-2.png" alt-text="身体構造エンティティの例。" の測定単位です。 
+:::image type="content" source="../../media/ta-for-health/medical-condition-frequency-attribute-2.png" alt-text="方向属性と症状または兆候エンティティの別の例。":::
 
-:::image type="content" source="../../media/ta-for-health/medical-condition-measure-unit-attribute.png" alt-text="身体構造エンティティの例。" の測定値です。 
+**MEASUREMENT_UNIT** - 病状の特徴を示す単位。 たとえば、"*1.5 x 2 x 1 cm の腫瘍*" では、*cm* という用語は "*腫瘍*" の測定単位です。 
 
-:::image type="content" source="../../media/ta-for-health/medical-condition-measure-value-attribute.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/medical-condition-measure-unit-attribute.png" alt-text="測定単位属性と病状エンティティの例。":::
+
+**MEASUREMENT_VALUE** - 病状の特徴を示す値。 たとえば、"*1.5 x 2 x 1 cm の腫瘍*" では、*1.5 x 2 x 1* という用語は "*腫瘍*" の測定値です。 
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-measure-value-attribute.png" alt-text="方向属性と症状または兆候エンティティの例を示すスクリーンショット。":::
 
 **RELATIONAL_OPERATOR** - 病状の追加情報の間の関係を表す語句。 たとえば、時刻や測定値など。 
 
-:::image type="content" source="../../media/ta-for-health/medical-condition-relational-operator.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/medical-condition-relational-operator.png" alt-text="方向属性と症状または兆候エンティティの別の例を示すスクリーンショット。":::
 
 **TIME** - 病状の開始や長さ (期間) に関する時間関連の用語。 たとえば、症状が始まったとき (発病) や、病気が発生したときなど。
 
-:::image type="content" source="../../media/ta-for-health/medical-condition-time-attribute.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/medical-condition-time-attribute.png" alt-text="方向属性と症状または兆候エンティティの追加の例を示すスクリーンショット。":::
 
 ### <a name="supported-relations"></a>サポートされる関係
 
@@ -220,37 +228,37 @@ ms.locfileid: "91779912"
 
 **MEDICATION_CLASS** – 類似した作用機序、関連する作用形態、類似した化学構造を持ち、同じ疾病の治療に使用される薬剤のセット。 たとえば、ACE 抑制剤、オピオイド、抗生物質、鎮痛剤など。
 
-:::image type="content" source="../../media/ta-for-health/medication-entities-class.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/medication-entities-class.png" alt-text="薬剤クラス エンティティの例。":::
 
 **MEDICATION_NAME** – 著作権を持つブランド名やブランド名以外の名前など、薬剤に関する言及。 たとえば、アドビル、イブプロフェンなど。
 
-:::image type="content" source="../../media/ta-for-health/medication-entities-name.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/medication-entities-name.png" alt-text="薬剤名エンティティの例。":::
 
 ### <a name="attributes"></a>属性
 
 **DOSAGE** - 処方された薬剤の量。 たとえば、点滴塩化ナトリウム溶液 *1000 mL* など。
 
-:::image type="content" source="../../media/ta-for-health/medication-dosage.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/medication-dosage.png" alt-text="薬剤投薬量属性の例。":::
 
 **FREQUENCY** - 薬剤を投与する必要がある頻度。
 
-:::image type="content" source="../../media/ta-for-health/medication-frequency.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/medication-frequency.png" alt-text="薬剤頻度属性の例。":::
 
-:::image type="content" source="../../media/ta-for-health/medication-frequency-2.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/medication-frequency-2.png" alt-text="薬剤頻度属性の別の例。":::
 
 **MEDICATION_FORM** - 薬剤の形態。 たとえば、溶液、錠剤、カプセル、タブレット、パッチ、ジェル、ペースト、フォーム、スプレー、ドロップ、クリーム、シロップなど。
 
-:::image type="content" source="../../media/ta-for-health/medication-form.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/medication-form.png" alt-text="薬剤形態属性の例。":::
 
 **MEDICATION_ROUTE** - 薬剤の投与方法。 たとえば、経口、膣内、IV、硬膜外、局所、吸入など。
 
-:::image type="content" source="../../media/ta-for-health/medication-route.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/medication-route.png" alt-text="薬剤投与方法属性の例。":::
 
 **RELATIONAL_OPERATOR** - 薬剤と追加情報の間の関係を表す語句。 たとえば、必要な測定値。
 
-:::image type="content" source="../../media/ta-for-health/medication-relational-operator.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/medication-relational-operator.png" alt-text="関係演算子属性と薬剤エンティティの例を示すスクリーンショット。":::
 
-:::image type="content" source="../../media/ta-for-health/medication-time.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/medication-time.png" alt-text="関係演算子属性と薬剤エンティティの別の例を示すスクリーンショット。":::
 
 ### <a name="supported-relations"></a>サポートされる関係
 
@@ -266,25 +274,25 @@ ms.locfileid: "91779912"
 
 **TREATMENT_NAME** – 治療手段。 たとえば、膝置換手術、骨髄移植、TAVI、ダイエットなど。
 
-:::image type="content" source="../../media/ta-for-health/treatment-entities-name.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/treatment-entities-name.png" alt-text="治療名エンティティの例。":::
 
 ### <a name="attributes"></a>属性
 
 **DIRECTION** - 治療の特徴を示す方向の用語。
 
-:::image type="content" source="../../media/ta-for-health/treatment-direction.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/treatment-direction.png" alt-text="治療方向属性の例を示すスクリーンショット。":::
 
 **FREQUENCY** - 治療が行われる、または治療を行う必要がある頻度。
 
-:::image type="content" source="../../media/ta-for-health/treatment-frequency.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/treatment-frequency.png" alt-text="治療方向属性の別の例を示すスクリーンショット。":::
  
 **RELATIONAL_OPERATOR** - 治療と追加情報の間の関係を表す語句。  たとえば、前回の施術からの経過時間。
 
-:::image type="content" source="../../media/ta-for-health/treatment-relational-operator.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/treatment-relational-operator.png" alt-text="治療関係演算子属性の例。":::
 
 **TIME** - 治療の開始や長さ (期間) に関する時間関連の用語。 たとえば、治療が行われた日付など。
 
-:::image type="content" source="../../media/ta-for-health/treatment-time.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/treatment-time.png" alt-text="治療時間属性の例を示すスクリーンショット。":::
 
 
 ### <a name="supported-relations"></a>サポートされる関係
@@ -299,4 +307,4 @@ ms.locfileid: "91779912"
 
 **FAMILY_RELATION** – 対象者の家族関係に関する言及。 たとえば、父、娘、兄弟、親など。
 
-:::image type="content" source="../../media/ta-for-health/family-relation.png" alt-text="身体構造エンティティの例。":::
+:::image type="content" source="../../media/ta-for-health/family-relation.png" alt-text="治療時間属性の別の例を示すスクリーンショット。":::

@@ -52,7 +52,7 @@ Metrics Advisor には、SQL Database、Azure Data Explorer、Azure Table Storag
 
 このクイックスタートは、例として SQL Database を使用します。 同じ手順に従って独自のデータを取り込むこともできます。
 
-まず、ご使用の Active Directory アカウントで Metrics Advisor ワークスペースにサインインします。 ランディング ページから、**ディレクトリ**、**サブスクリプション**、作成した**ワークスペース**を選択して、 **[Get started]\(開始する\)** をクリックします。 ワークロードのメイン ページが読み込まれたら、左側のメニューから **[Add data feed]\(データ フィードの追加\)** を選択します。
+まず、ご使用の Active Directory アカウントで Metrics Advisor ワークスペースにサインインします。 ランディング ページから、**ディレクトリ**、**サブスクリプション**、作成した **ワークスペース** を選択して、 **[Get started]\(開始する\)** をクリックします。 ワークロードのメイン ページが読み込まれたら、左側のメニューから **[Add data feed]\(データ フィードの追加\)** を選択します。
 
 ### <a name="data-schema-requirements-and-configuration"></a>データ スキーマの要件と構成
 
@@ -70,7 +70,7 @@ Metrics Advisor には、SQL Database、Azure Data Explorer、Azure Table Storag
 * **[Ingest data since (UTC)]\(データの取り込みの開始 (UTC)\)** : 取り込む対象の最初のタイムスタンプの開始時刻。 
 
 
-次に、データ ソースの資格情報を含んだ**接続文字列**とカスタム **クエリ**を指定します。 取り込み後、必要なスキーマに変換されるデータは、このクエリを使用して指定されます。
+次に、データ ソースの資格情報を含んだ **接続文字列** とカスタム **クエリ** を指定します。 取り込み後、必要なスキーマに変換されるデータは、このクエリを使用して指定されます。
 
 [!INCLUDE [query requirements](../includes/query-requirements.md)]
 
@@ -97,12 +97,12 @@ Metrics Advisor には、SQL Database、Azure Data Explorer、Azure Table Storag
 |**無視**     | 選択した列を無視します。        |         |
 
 
-:::image type="content" source="../media/schema-configuration.png" alt-text="接続の設定" lightbox="../media/schema-configuration.png":::
+:::image type="content" source="../media/schema-configuration.png" alt-text="スキーマの構成" lightbox="../media/schema-configuration.png":::
 
 ### <a name="automatic-roll-up-settings"></a>自動ロール アップ設定
 
 > [!IMPORTANT]
-> **根本原因分析**およびその他の診断機能を有効にする場合は、"自動ロール アップ設定" を構成する必要があります。 有効にすると、自動ロールアップ設定を変更できなくなります。
+> **根本原因分析** およびその他の診断機能を有効にする場合は、"自動ロール アップ設定" を構成する必要があります。 有効にすると、自動ロールアップ設定を変更できなくなります。
 
 Metrics Advisor は、インジェスト中に各ディメンションで集計 (SUM、MAX、MIN など) を自動的に実行でき、ルート ケース分析やその他の診断機能で使用される階層を構築します。 詳細については、「[自動ロール アップ設定](../how-tos/onboard-your-data.md#automatic-roll-up-settings)」を参照してください。
 
@@ -112,12 +112,12 @@ Metrics Advisor は、インジェスト中に各ディメンションで集計 
 
 データ フィードが追加されると、Metrics Advisor は、指定された開始日からメトリック データの取り込みを試みます。 データが完全に取り込まれるまでには、しばらく時間がかかります。インジェストの状況は、データ フィード ページの上部にある **[Ingestion progress]\(インジェスト進行状況\)** をクリックして確認できます。 データが取り込まれた場合、Metrics Advisor は検出を適用し、引き続きソースの新しいデータを監視します。
 
-検出が適用されたら、データ フィードに一覧表示されるいずれかのメトリックをクリックして**メトリックの詳細ページ**を探し、次のことを行います。 
+検出が適用されたら、データ フィードに一覧表示されるいずれかのメトリックをクリックして **メトリックの詳細ページ** を探し、次のことを行います。 
 - このメトリック下にあるすべての時系列スライスの視覚エフェクトを表示する
 - 必要な結果が得られるように検出構成を更新する
 - 異常が検出された場合の通知を設定する
 
-:::image type="content" source="../media/metric-details.png" alt-text="接続の設定" lightbox="../media/metric-details.png":::
+:::image type="content" source="../media/metric-details.png" alt-text="メトリックの詳細" lightbox="../media/metric-details.png":::
 
 ## <a name="view-the-diagnostic-insights"></a>診断の分析情報を表示する
 
@@ -125,13 +125,13 @@ Metrics Advisor は、インジェスト中に各ディメンションで集計 
 
 診断の分析情報を表示するには、時系列の視覚エフェクトに表示される赤色のドットをクリックします。これらは、検出された異常を表しています。 ウィンドウが開いて、インシデント分析ページへのリンクが表示されます。 
 
-:::image type="content" source="../media/incident-link.png" alt-text="接続の設定" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="インシデント リンク" lightbox="../media/incident-link.png":::
 
-リンクをクリックすると、対応する異常に関するインシデント分析ページが、さまざまな診断の分析情報と共に表示されます。 一番上には、**重大度**、**関係する異常**、影響の**開始時刻**と**終業時刻**など、そのインシデントについての統計情報が表示されます。 
+リンクをクリックすると、対応する異常に関するインシデント分析ページが、さまざまな診断の分析情報と共に表示されます。 一番上には、**重大度**、**関係する異常**、影響の **開始時刻** と **終業時刻** など、そのインシデントについての統計情報が表示されます。 
 
 次に、そのインシデントの先祖にあたる異常や、根本原因に関する自動化されたアドバイスが表示されます。 根本原因に関する自動化されたアドバイスは、関連するすべての異常 (偏差、分散、上位の異常への寄与度など) のインシデント ツリーを分析することによって生成されます。 
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="接続の設定" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="インシデントの診断" lightbox="../media/incident-diagnostic.png":::
 
 これらの情報から、何が起こっていて、そのインシデントによってどのような影響があるか、最も考えられる根本原因は何かを簡単に、いち早く把握することができます。 早急な対応を行うことで、可能な限り速やかにインシデントを解決することができます。 
 
@@ -143,11 +143,11 @@ Metrics Advisor は、インジェスト中に各ディメンションで集計 
 
 ### <a name="create-a-web-hook"></a>Web hook を作成する
 
-Web hook は、Metrics Advisor サービスからプログラム的な手段によって通知された異常を取得するためのエントリ ポイントです。アラートがトリガーされると、そこから、ユーザーによって指定された API が呼び出されます。フックの作成方法について詳しくは、[アラートを構成する方法とフックを使用して通知を受け取る方法](../how-tos/alerts.md#create-a-hook)に関するページの**フックの作成**に関するセクションを参照してください。 
+Web hook は、Metrics Advisor サービスからプログラム的な手段によって通知された異常を取得するためのエントリ ポイントです。アラートがトリガーされると、そこから、ユーザーによって指定された API が呼び出されます。フックの作成方法について詳しくは、[アラートを構成する方法とフックを使用して通知を受け取る方法](../how-tos/alerts.md#create-a-hook)に関するページの **フックの作成** に関するセクションを参照してください。 
 
 ### <a name="configure-alert-settings"></a>アラート設定の構成
 
-フックの作成後、どのアラート通知がどのように送信されるかは、アラートの設定によって決まります。 アラートの設定は、メトリックごとに複数用意することができます。 重要な設定は 2 つあります。1 つは、対象となる異常を指定する **[Alert for]\(アラート対象\)** で、もう 1 つは、アラートに含める異常を定義する **[Filter anomaly options]\(異常のフィルター処理オプション\)** です。 詳細については、[アラートを構成する方法とフックを使用して通知を受け取る方法](../how-tos/alerts.md#add-or-edit-alert-settings)に関するページの**アラート設定を追加または編集する**方法に関するセクションを参照してください。
+フックの作成後、どのアラート通知がどのように送信されるかは、アラートの設定によって決まります。 アラートの設定は、メトリックごとに複数用意することができます。 重要な設定は 2 つあります。1 つは、対象となる異常を指定する **[Alert for]\(アラート対象\)** で、もう 1 つは、アラートに含める異常を定義する **[Filter anomaly options]\(異常のフィルター処理オプション\)** です。 詳細については、[アラートを構成する方法とフックを使用して通知を受け取る方法](../how-tos/alerts.md#add-or-edit-alert-settings)に関するページの **アラート設定を追加または編集する** 方法に関するセクションを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

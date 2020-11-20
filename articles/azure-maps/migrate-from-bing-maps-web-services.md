@@ -153,13 +153,13 @@ Azure Maps の逆ジオコーディング API には、Bing 地図では利用�
 | Bing 地図のエンティティ型 | 相当する Azure Maps のエンティティ型               | 説明                                |
 |-----------------------|-------------------------------------------------|--------------------------------------------|
 | `Address`             |                                                 | *アドレス*                                  |
-| `Neighborhood`        | `Neighbourhood`                                 | " *近隣* "                             |
-| `PopulatedPlace`      | `Municipality` または `MunicipalitySubdivision`     | " *市* "、" *町* "、または " *地区* "     |
-| `Postcode1`           | `PostalCodeArea`                                | " *郵便番号* " または " *ZIP コード* "                |
-| `AdminDivision1`      | `CountrySubdivision`                            | " *州* " または " *都道府県* "                      |
-| `AdminDivision2`      | `CountrySecondarySubdivison`                    | " *郡* " または " *行政区* "                    |
+| `Neighborhood`        | `Neighbourhood`                                 | "*近隣*"                             |
+| `PopulatedPlace`      | `Municipality` または `MunicipalitySubdivision`     | "*市*"、"*町*"、または "*地区*"     |
+| `Postcode1`           | `PostalCodeArea`                                | "*郵便番号*" または "*ZIP コード*"                |
+| `AdminDivision1`      | `CountrySubdivision`                            | "*州*" または "*都道府県*"                      |
+| `AdminDivision2`      | `CountrySecondarySubdivison`                    | "*郡*" または "*行政区*"                    |
 | `CountryRegion`       | `Country`                                       | *国名*                             |
-|                       | `CountryTertiarySubdivision`                    | " *自治区* "、" *小郡* "、" *コミューン* "          |
+|                       | `CountryTertiarySubdivision`                    | "*自治区*"、"*小郡*"、"*コミューン*"          |
 
 ## <a name="get-location-suggestions-autosuggest"></a>場所候補の取得 (自動提案)
 
@@ -442,7 +442,7 @@ Bing 地図のシェイプの種類には、線、ポリゴン、円、曲線が
 
 **後: Azure Maps**
 
-Azure Maps では、URL で *path* パラメーターを指定することにより、線とポリゴンを静的マップ イメージに追加できます。 Bing 地図と同様に、このパラメーターでスタイルと場所の一覧を指定できます。また、 *path* パラメーターを複数回指定することで、異なるスタイルの円、線、ポリゴンを複数レンダリングできます。
+Azure Maps では、URL で *path* パラメーターを指定することにより、線とポリゴンを静的マップ イメージに追加できます。 Bing 地図と同様に、このパラメーターでスタイルと場所の一覧を指定できます。また、*path* パラメーターを複数回指定することで、異なるスタイルの円、線、ポリゴンを複数レンダリングできます。
 
 > `&path=pathStyles||pathLocation1|pathLocation2|...`
 
@@ -528,7 +528,7 @@ Azure Maps では、等時線を計算するための API が提供されます�
 Bing 地図で目的地データを検索するには、次の API を使用します。
 
 -   **ローカル検索:** 名前またはエンティティの種類 (カテゴリ) を指定して、近くにある目的地を検索します (放射状検索)。 この API に最も近い Azure Maps の API は、[POI 検索](/rest/api/maps/search/getsearchpoi)と [POI カテゴリ検索](/rest/api/maps/search/getsearchpoicategory)です。
--   **位置情報認識** :ある場所から特定の距離内にある目的地を検索します。 この API に最も近い Azure Maps の API は、[近隣検索](/rest/api/maps/search/getsearchnearby)です。
+-   **位置情報認識**:ある場所から特定の距離内にある目的地を検索します。 この API に最も近い Azure Maps の API は、[近隣検索](/rest/api/maps/search/getsearchnearby)です。
 -   **ローカル情報:** 特定の座標から指定の最大走行時間内または最長走行距離内にある目的地を検索します。 これは、Azure Maps では、まず等時線を計算してから[ジオメトリ内検索](/rest/api/maps/search/postsearchinsidegeometry) API に渡すことで実現できます。
 
 Azure Maps には、目的地を検索するための複数の検索 API が用意されています。

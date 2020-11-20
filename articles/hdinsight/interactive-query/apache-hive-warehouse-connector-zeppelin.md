@@ -19,7 +19,7 @@ ms.locfileid: "92426960"
 HDInsight Spark クラスターには、異なるインタープリターを持つ Apache Zeppelin Notebook が含まれています。 この記事では、Hive Warehouse Connector を使用して Spark から Hive テーブルにアクセスする Livy インタープリターに絞って説明します。
 
 > [!NOTE]
-> この記事には、Microsoft が使用しなくなった " *ホワイトリスト* " という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+> この記事には、Microsoft が使用しなくなった "*ホワイトリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 ## <a name="prerequisite"></a>前提条件
 

@@ -85,9 +85,9 @@ display(sentiment.transform(df).select("text", col("sentiment")[0].getItem("sent
 
 | text                                      | センチメント                                             |
 |:------------------------------------------|:------------------------------------------------------|
-| I am so happy today, its sunny!           | ポジティブ                                              |
-| I am frustrated by this rush hour traffic | ネガティブ                                              |
-| The cognitive services on spark aint bad  | ポジティブ                                              |
+| I am so happy today, its sunny!           | 肯定的                                              |
+| I am frustrated by this rush hour traffic | 否定的                                              |
+| The cognitive services on spark aint bad  | 肯定的                                              |
 
 ## <a name="computer-vision-sample"></a>Computer Vision のサンプル
 

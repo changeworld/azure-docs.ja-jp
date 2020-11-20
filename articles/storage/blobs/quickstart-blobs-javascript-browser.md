@@ -77,7 +77,7 @@ Azure portal で、自分のストレージ アカウントを選択します。
 |設定  |値  | 説明 |
 |---------|---------|---------|
 | **許可されたオリジン** | **\*** | 許容されるオリジンとして設定されるドメインの、コンマ区切りの一覧を受け入れます。 値を `*` に設定すると、すべてのドメインがストレージ アカウントにアクセスできるようになります。 |
-| **許可されたメソッド** | **DELETE** 、 **GET** 、 **HEAD** 、 **MERGE** 、 **POST** 、 **OPTIONS** 、 **PUT** | ストレージ アカウントに対して実行できる HTTP 動詞の一覧です。 このクイック スタートの目的に合わせて、利用可能なすべてのオプションを選択します。 |
+| **許可されたメソッド** | **DELETE**、**GET**、**HEAD**、**MERGE**、**POST**、**OPTIONS**、**PUT** | ストレージ アカウントに対して実行できる HTTP 動詞の一覧です。 このクイック スタートの目的に合わせて、利用可能なすべてのオプションを選択します。 |
 | **許可されたヘッダー** | **\*** | ストレージ アカウントによって許可される要求ヘッダー (プレフィックス付きヘッダーを含む) の一覧を定義します。 値を `*` に設定すると、すべてのヘッダーがアクセスできるようになります。 |
 | **公開されるヘッダー** | **\*** | アカウントによって許可される応答ヘッダーの一覧です。 値を `*` に設定すると、アカウントは任意のヘッダーを送信できるようになります。 |
 | **最長有効期間** | **86400** | ブラウザーがプレフライト OPTIONS 要求をキャッシュする最大時間 (秒)。 値を *86,400* にすると、キャッシュが丸 1 日保持されます。 |
@@ -206,7 +206,7 @@ Azure Blob Storage サービスとやり取りするための [BlobServiceClient
 
 *index.js* ファイルを保存します。
 
-このコードは、[ContainerClient.listBlobsFlat](/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) 関数を呼び出し、返された各 [BlobItem](/javascript/api/@azure/storage-blob/blobitem) の名前を、反復子を使用して取得します。 `BlobItem` ごとに、 [name](/javascript/api/@azure/storage-blob/blobitem#name) プロパティの値で **Files** リストを更新します。
+このコードは、[ContainerClient.listBlobsFlat](/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) 関数を呼び出し、返された各 [BlobItem](/javascript/api/@azure/storage-blob/blobitem) の名前を、反復子を使用して取得します。 `BlobItem` ごとに、[name](/javascript/api/@azure/storage-blob/blobitem#name) プロパティの値で **Files** リストを更新します。
 
 ### <a name="upload-blobs"></a>BLOB をアップロードする
 
@@ -226,7 +226,7 @@ Azure Blob Storage サービスとやり取りするための [BlobServiceClient
 
 *index.js* ファイルを保存します。
 
-このコードでは、[ContainerClient.deleteBlob](/javascript/api/@azure/storage-blob/containerclient#deleteblob-string--blobdeleteoptions-) 関数を呼び出して、一覧で選択された各ファイルを削除しています。 その後、先ほど紹介した `listFiles` 関数を呼び出して、 **ファイル** 一覧の内容を更新しています。
+このコードでは、[ContainerClient.deleteBlob](/javascript/api/@azure/storage-blob/containerclient#deleteblob-string--blobdeleteoptions-) 関数を呼び出して、一覧で選択された各ファイルを削除しています。 その後、先ほど紹介した `listFiles` 関数を呼び出して、**ファイル** 一覧の内容を更新しています。
 
 ## <a name="run-the-code"></a>コードの実行
 
@@ -237,13 +237,13 @@ Visual Studio Code デバッガー内でコードを実行するために、ご�
 Visual Studio Code にデバッガー拡張機能を設定するには、次の手順に従います。
 
 1. **[実行] > [構成の追加]** を選択します。
-2. 前の「 [前提条件](#prerequisites)」セクションでインストールした拡張機能に応じて **Edge** 、 **Chrome** 、 **Firefox** のいずれかを選択します。
+2. 前の「[前提条件](#prerequisites)」セクションでインストールした拡張機能に応じて **Edge**、**Chrome**、**Firefox** のいずれかを選択します。
 
-新しい構成を追加することにより、 *launch.json* ファイルが作成され、エディターで開かれます。 *launch.json* ファイルを編集して、下記のように `url` の値が `http://localhost:1234/index.html` となるようにします。
+新しい構成を追加することにより、*launch.json* ファイルが作成され、エディターで開かれます。 *launch.json* ファイルを編集して、下記のように `url` の値が `http://localhost:1234/index.html` となるようにします。
 
 :::code language="json" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/.vscode/launch.json" highlight="11":::
 
-更新後、 *launch.json* ファイルを保存します。 この構成により、開くブラウザーと読み込む URL が Visual Studio Code に伝えられます。
+更新後、*launch.json* ファイルを保存します。 この構成により、開くブラウザーと読み込む URL が Visual Studio Code に伝えられます。
 
 ### <a name="launch-the-web-server"></a>Web サーバーを起動する
 
@@ -274,7 +274,7 @@ Visual Studio Code デバッガーをブラウザーにアタッチした状態�
 
 #### <a name="step-2---upload-a-blob-to-the-container"></a>手順 2 - コンテナーに BLOB をアップロードする
 
-1. ローカル コンピューターでテスト ファイル ( *test.txt* など) を作成し、保存します。
+1. ローカル コンピューターでテスト ファイル (*test.txt* など) を作成し、保存します。
 2. Web アプリの **[Select and upload files]\(ファイルを選択してアップロード\)** をクリックします。
 3. テスト ファイルを参照し、 **[開く]** を選択します。 状態を見ると、ファイルがアップロードされたこと、またファイル リストが取得されたことがわかります。
 4. Azure portal で、先ほど作成した新しいコンテナーの名前を選択します。 テスト ファイルが表示されることを確認します。
@@ -283,7 +283,7 @@ Visual Studio Code デバッガーをブラウザーにアタッチした状態�
 
 1. Web アプリの **[Files]\(ファイル\)** で、テスト ファイルを選択します。
 2. **[Delete selected files]\(選択したファイルを削除\)** を選択します。 状態を見ると、ファイルが削除されたこと、またコンテナーにファイルが存在しないことがわかります。
-3. Azure portal で **[Refresh]\(最新の情報に更新\)** を選択します。 " **BLOB が見つかりませんでした** " と表示されていることを確認します。
+3. Azure portal で **[Refresh]\(最新の情報に更新\)** を選択します。 "**BLOB が見つかりませんでした**" と表示されていることを確認します。
 
 #### <a name="step-4---delete-the-container"></a>手順 4 - コンテナーを削除する
 

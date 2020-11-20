@@ -44,7 +44,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **オーストラリア政府** | オーストラリア中部、オーストラリア中部 2 |キャンベラ、キャンベラ2 |
 | **ヨーロッパ** | フランス中部、フランス南部、ドイツ北部、ドイツ中西部、北ヨーロッパ、ノルウェー東部、ノルウェー西部、スイス北部、スイス西部、英国西部、英国南部、西ヨーロッパ |アムステルダム、アムステルダム 2、ベルリン、コペンハーゲン、ダブリン、フランクフルト、ジュネーブ、ロンドン、ロンドン 2、マルセイユ、ミラノ、ミュンヘン、ニューポート (ウェールズ)、オスロ、パリ、スタバンゲル、ストックホルム、チューリッヒ |
 | **北米** | 米国東部、米国西部、米国東部 2、米国西部 2、米国中部、米国中南部、米国中北部、米国中西部、カナダ中部、カナダ東部 |アトランタ、シカゴ、ダラス、デンバー、ラスベガス、ロサンゼルス、ロサンゼルス 2、マイアミ、ミネアポリス、モントリオール、ニューヨーク、フィーニックス、ケベック シティー、ケレタロ (メキシコ)、クインシー、サンアントニオ、シアトル、シリコン バレー、シリコン バレー 2、トロント、バンクーバー、ワシントン DC、ワシントン DC 2 |
-| **アジア** | 東アジア、東南アジア | バンコク、香港、香港 2、ジャカルタ、クアラルンプール、シンガポール、シンガポール 2、台北 |
+| **アジア** | 東アジア、東南アジア | バンコク、香港特別行政区、香港特別行政区 2、ジャカルタ、クアラルンプール、シンガポール、シンガポール 2、台北 |
 | **インド** | インド西部、インド中部、インド南部 |チェンナイ、チェンナイ 2、ムンバイ、ムンバイ 2 |
 | **日本** | 西日本、東日本 |大阪、東京、東京 2 |
 | **オセアニア** | オーストラリア東部、オーストラリア南東部 |オークランド、メルボルン、パース、シドニー、シドニー 2 | 
@@ -99,7 +99,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **フランクフルト** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | ドイツ中西部 | 10G、100G | AT&T NetBond、CenturyLink Cloud Connect、Colt、DE-CIX、Equinix、euNetworks、GEANT、InterCloud、Interxion、Megaport、Orange、Telia Carrier、T-Systems |
 | **ジュネーブ** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | スイス西部 | 10G、100G | Equinix、Megaport |
 | **香港特別行政区** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | 東アジア | 10G | Aryaka Networks、British Telecom、CenturyLink Cloud Connect、Chief Telecom、China Telecom Global、Equinix、InterCloud、Megaport、NTT Communications、Orange、PCCW Global Limited、Tata Communications、Telia Carrier、Verizon |
-| **香港 2** | [MEGA-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | 東アジア | 10G | China Mobile International、China Telecom Global、PCCW Global Limited、SingTel |
+| **香港特別行政区 2** | [MEGA-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | 東アジア | 10G | China Mobile International、China Telecom Global、PCCW Global Limited、SingTel |
 | **ジャカルタ** | Telkom Indonesia | 4 | 該当なし | 10G | |
 | **ヨハネスブルグ** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | 南アフリカ北部 | 10G | BCX、British Telecom、Internet Solutions - Cloud Connect、Liquid Telecom、Orange、Teraco |
 | **クアラルンプール** | [TIME dotCom Menara AIMS](https://www.time.com.my/enterprise/connectivity/direct-cloud) | 2 | 該当なし | 該当なし | TIME dotCom |
