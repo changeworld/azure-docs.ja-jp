@@ -90,7 +90,7 @@
       href: concept-feature-management.md
     - name: イベント処理
       href: concept-app-configuration-event.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: カスタマー マネージド キーの暗号化
           href: concept-customer-managed-keys.md
@@ -100,6 +100,8 @@
           href: concept-enable-rbac.md
         - name: Azure マネージド ID を割り当てる
           href: overview-managed-identity.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: 高可用性
       items:
         - name: 回復性とディザスター リカバリー
