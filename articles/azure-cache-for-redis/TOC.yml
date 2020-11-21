@@ -67,7 +67,7 @@
         - name: セキュリティ ベースライン
           href: security-baseline.md
     - name: キャッシュ アーキテクチャ
-      href: /azure/architecture/best-practices/caching?toc=%252fazure%252fredis-cache%252ftoc.json
+      href: /azure/architecture/best-practices/caching?toc=%2fazure%2fredis-cache%2ftoc.json
 - name: 操作方法ガイド
   items:
     - name: プラン

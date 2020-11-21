@@ -81,6 +81,9 @@
       href: azure-portal-dashboards-structure.md
     - name: Azure CLI
       href: /cli/azure/ext/portal/portal
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Azure のロードマップ

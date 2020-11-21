@@ -49,7 +49,7 @@
         - name: 構成のエクスポートとインポート
           href: export-import-provisioning-configuration.md
         - name: レポートのプロビジョニング
-          href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
+          href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: MS Graph を使用した構成の自動化
       href: 'https://docs.microsoft.com/graph/application-provisioning-configure-api'
     - name: アプリケーションのプロビジョニングのトラブルシューティング
@@ -65,7 +65,7 @@
         - name: ソース属性が存在しない
           href: user-provisioning-sync-attributes-for-mapping.md
         - name: プロビジョニング ログ
-          href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
+          href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
 - name: リファレンス
   items:
     - name: SCIM 2.0 プロトコルへの準拠

@@ -4,7 +4,7 @@
   items:
     - name: Translator とは
       href: translator-info-overview.md
-    - name: クイック スタート
+    - name: クイックスタート
       href: quickstart-translator.md
     - name: 言語サポート
       href: language-support.md
@@ -23,7 +23,7 @@
     - name: 操作方法ガイド
       items:
         - name: Translator にサインアップする
-          href: translator-text-how-to-signup.md
+          href: ./translator-how-to-signup.md
         - name: V3 Text API に移行する
           href: migrate-to-v3.md
         - name: 不適切な表現のフィルターを追加する

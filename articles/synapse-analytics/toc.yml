@@ -1,5 +1,5 @@
 - name: Azure Synapse (ワークスペース プレビュー)
-  href: sql-data-warehouse/index.yml
+  href: overview-what-is.md
 - name: Azure Synapse (旧称 SQL DW) に切り替える
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
 - name: 概要
@@ -7,10 +7,8 @@
     - name: Azure Synapse とは
       href: overview-what-is.md
       displayName: overview
-    - name: チート シート
-      href: overview-cheat-sheet.md
-    - name: よく寄せられる質問
-      href: overview-faq.md
+    - name: 用語
+      href: overview-terminology.md
     - name: リリース ノート
       href: release-notes.md
 - name: クイックスタート

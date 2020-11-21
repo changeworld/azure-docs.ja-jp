@@ -21,6 +21,10 @@
       href: work-remotely-support.md
     - name: Bastion と VNet ピアリング
       href: vnet-peering.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
 - name: 操作方法ガイド
   items:
     - name: ホストを作成する

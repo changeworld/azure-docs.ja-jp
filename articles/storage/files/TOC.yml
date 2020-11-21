@@ -102,7 +102,7 @@
         - name: Azure File Sync のデプロイ
           href: storage-sync-files-deployment-guide.md
         - name: Premium ファイル共有を使用した SQL Server FCI
-          href: ../../azure-sql/virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json
+          href: ../../azure-sql/virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: マウントする
       items:
         - name: Windows への SMB ファイル共有のマウント

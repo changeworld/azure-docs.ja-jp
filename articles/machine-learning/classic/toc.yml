@@ -7,7 +7,7 @@
       displayName: overview
       href: studio-classic-overview.md
     - name: Microsoft の ML 製品の比較
-      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/classic/context/ml-context
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=%2fazure/machine-learning/classic/context/ml-context
 - name: クイックスタート
   items:
     - name: 初めての実験を作成する

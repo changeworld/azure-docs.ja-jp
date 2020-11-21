@@ -19,7 +19,7 @@
 - name: 概念
   items:
     - name: パスワード ハッシュ同期とは
-      href: ../hybrid/whatis-phs.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
+      href: ../hybrid/whatis-phs.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
     - name: Azure AD のスキーマ、属性、および式について
       href: concept-attributes.md
     - name: Azure Active Directory における属性マッピングの式の書き方
@@ -60,13 +60,13 @@
           href: how-to-troubleshoot.md
         - name: 重複する属性
           href: /office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync
-- name: 関連項目
+- name: リファレンス
   items:
     - name: Azure AD Connect クラウド プロビジョニング エージェントのバージョン履歴
-      href: ../app-provisioning/provisioning-agent-release-version-history.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+      href: ../app-provisioning/provisioning-agent-release-version-history.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: Azure AD Connect クラウド プロビジョニングに関する FAQ
       href: reference-cloud-provisioning-faq.md
     - name: 同期される属性
-      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: Active Directory と Azure AD の基本的な環境
       href: tutorial-basic-ad-azure.md

@@ -72,7 +72,7 @@
                   href: data-box-system-requirements-rest.md
             - name: 制限を理解する
               href: data-box-limits.md
-            - name: Security
+            - name: セキュリティ
               items:
                 - name: セキュリティ ベースライン
                   href: security-baseline.md
@@ -103,7 +103,7 @@
             - name: 移行
               items:
                 - name: SharePoint Online へ
-                  href: /sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=%252fazure%252fdatabox%252fcontext%252fcontext
+                  href: /sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=%2fazure%2fdatabox%2fcontext%2fcontext
                 - name: Azure File Sync へ
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: HDFS ストアから
