@@ -1984,6 +1984,8 @@
           href: concur-provisioning-tutorial.md
         - name: cornerstone ondemand
           href: cornerstone-ondemand-provisioning-tutorial.md
+        - name: CybSafe
+          href: cybsafe-provisioning-tutorial.md
         - name: DocuSign
           href: docusign-provisioning-tutorial.md
         - name: Dropbox Business
