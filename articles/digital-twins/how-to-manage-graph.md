@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 78e0bfb0af494ecae2865fcc42679b8fcce44916
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 73aa6f8f6ee36aeeb41fbc54afe217ac776a4ebc
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359580"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533880"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>リレーションシップを使ってデジタル ツインのグラフを管理する
 
@@ -25,7 +25,13 @@ Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](co
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
-    
+
+## <a name="ways-to-manage-graph"></a>グラフの管理方法
+
+[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
+
+また、Azure Digital Twins (ADT) Explorer サンプルを使用して、グラフに変更を加えることもできます。このサンプルでは、ツインとグラフを視覚化し、バックグラウンドで SDK を利用できます。 次のセクションでは、このサンプルについて詳しく説明します。
+
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
 ## <a name="create-relationships"></a>リレーションシップの作成
@@ -219,7 +225,8 @@ private static async Task DeleteRelationship(DigitalTwinsClient client, string s
 ```csharp
 await DeleteRelationship(client, srcId, relId);
 ```
-## <a name="create-a-twin-graph"></a>ツイン グラフを作成する 
+
+## <a name="runnable-twin-graph-sample"></a>実行可能なツインのグラフのサンプル
 
 次の実行可能なコード スニペットでは、この記事のリレーションシップ操作を使用して、デジタル ツインとリレーションシップからツイン グラフを作成します。
 
@@ -575,9 +582,6 @@ namespace creating_twin_graph_from_csv
 }
 
 ```
-## <a name="manage-relationships-with-cli"></a>CLI を使用してリレーションシップを管理する
-
-ツインとそのリレーションシップは、Azure Digital Twins CLI を使用して管理することもできます。 コマンドについては、[ *「Azure Digital Twins CLI を使用する」方法*](how-to-use-cli.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

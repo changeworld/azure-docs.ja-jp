@@ -5,18 +5,18 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 76e7b3d0b0dd514feb7d16a6bc23d1b908be683f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f2e63903546e173e17f2b457b78eb41bcdf65dbd
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207208"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555568"
 ---
 # <a name="pbr-materials"></a>PBR 素材
 
-"*PBR 素材*" は、Azure Remote Rendering でサポートされている[素材の種類](../../concepts/materials.md)の 1 つです。 これらは、リアルな照明を受ける必要がある[メッシュ](../../concepts/meshes.md)に使用されます。
+"*PBR 素材*" は、Azure Remote Rendering でサポートされている [素材の種類](../../concepts/materials.md)の 1 つです。 これらは、リアルな照明を受ける必要がある[メッシュ](../../concepts/meshes.md)に使用されます。
 
-PBR は、**P**hysically **B**ased **R**endering (物理ベース レンダリング) の頭文字であり、すべての照明条件下で現実的な結果が得られるように、物理的に適切な方法で表面のビジュアル特性が素材において記述されることを意味します。 リアルタイム レンダリング用に現実世界を近似する手段としては PBR が最適であると考えられているため、最新のゲーム エンジンやコンテンツ作成ツールでは、PBR 素材がサポートされています。
+PBR は、**P** hysically **B** ased **R** endering (物理ベース レンダリング) の頭文字であり、すべての照明条件下で現実的な結果が得られるように、物理的に適切な方法で表面のビジュアル特性が素材において記述されることを意味します。 リアルタイム レンダリング用に現実世界を近似する手段としては PBR が最適であると考えられているため、最新のゲーム エンジンやコンテンツ作成ツールでは、PBR 素材がサポートされています。
 
 ![ARR によってレンダリングされたヘルメットの glTF サンプル モデル](media/helmet.png)
 
@@ -26,7 +26,7 @@ PBR は、**P**hysically **B**ased **R**endering (物理ベース レンダリ�
 
 これらのプロパティは、すべての素材に共通です。
 
-* **albedoColor:** この色には、*albedoMap* や " *:::no-loc text="vertex "::: カラー*" など、その他の色が乗算されます。 素材に対して*透明度*が有効な場合、アルファ チャネルを使用して不透明度が調整されます。ここで、`1` は完全に不透明、`0` は完全に透明を意味します。 既定値は白です。
+* **albedoColor:** この色には、*albedoMap* や " *:::no-loc text="vertex "::: カラー*" など、その他の色が乗算されます。 素材に対して *透明度* が有効な場合、アルファ チャネルを使用して不透明度が調整されます。ここで、`1` は完全に不透明、`0` は完全に透明を意味します。 既定値は白です。
 
   > [!NOTE]
   > まったく汚れのないガラスのように、PBR 素材が完全に透明な場合でも、環境が反射されます。 太陽のような明るいスポットは、反射でもやはり見えます。 これは、[色素材](color-materials.md)とは異なります。
@@ -42,6 +42,12 @@ PBR は、**P**hysically **B**ased **R**endering (物理ベース レンダリ�
 * **isDoubleSided:** 両面に対する表示が true に設定されている場合、この素材が表示されている三角形は、カメラが背面を見ている場合でもレンダリングされます。 PBR 素材の場合、照明も背面に対して適切に計算されます。 既定では、このオプションは無効になっています。 「[:::no-loc text="Single-sided"::: レンダリング](single-sided-rendering.md)」も参照してください。
 
 * **TransparencyWritesDepth:** 素材に TransparencyWritesDepth フラグが設定されていて、その素材が透明である場合、その素材を使用した物体も、最終的な深度バッファーに寄与します。 次のセクションの PBR 素材フラグ *transparent* を参照してください。 実際のユース ケースで、完全に透明なシーンの [Late Stage Reprojection](late-stage-reprojection.md) の現実感を高める必要がある場合は、この機能を有効にすることをお勧めします。 不透明と透明が混在するシーンでは、この設定によって、非現実的な再投影動作や再投影アーティファクトが生じることがあります。 このため、一般的なユース ケースにおいて推奨される既定の設定は、このフラグを無効にすることです。 書き込まれる深度値は、カメラに最も近い物体のピクセルごとの深度レイヤーから取得されます。
+
+* **FresnelEffect:** この素材フラグを使用すると、個々のマテリアルに対して付加的な[フレネル効果](../../overview/features/fresnel-effect.md)を有効にすることができます。 この効果の外観は、以下で説明する、他のフレネル パラメーターによって制御されます。 
+
+* **FresnelEffectColor:** この素材に使用されるフレネルの色。 この素材に対してフレネル効果ビットが設定されている場合にのみ重要です (上記を参照)。 このプロパティによって、フレネル光沢の基本色が制御されます (詳細な説明は「[フレネル効果](../../overview/features/fresnel-effect.md)」を参照してください)。 現在は、rgb チャネル値のみが重要であり、アルファ値は無視されます。
+
+* **FresnelEffectExponent:** この素材に使用されるフレネル指数。 この素材に対してフレネル効果ビットが設定されている場合にのみ重要です (上記を参照)。 このプロパティによって、フレネル光沢の拡散が制御されます。 最小値 0.01 の場合、オブジェクト全体にわたって拡散されます。 最大値 10.0 では、光沢が抑制され、最グレージング端にのみ表示されます。
 
 ## <a name="pbr-material-properties"></a>PBR 素材のプロパティ
 

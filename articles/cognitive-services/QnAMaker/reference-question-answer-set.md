@@ -5,31 +5,31 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: 363af72df89be9104e4d946bf8da0d44908382d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef5476ade205109f5dfede1b3bb2c3a4ae2e81a7
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776223"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506007"
 ---
-# <a name="question-and-answer-pair-concepts"></a>質問と回答のペアの概念
+# <a name="question-and-answer-pair"></a>質問と回答のペア
 
 ナレッジ ベースは、複数の質問と回答 (QnA) のペアで構成されています。  各ペアには 1 つの回答が含まれています。また、1 つのペアには、その "_回答_" に関連付けられているすべての情報が含まれます。 回答は、おおまかに言うと、データベースの行またはデータ構造インスタンスと似ています。
 
 ## <a name="question-and-answer-pairs"></a>質問と回答のペア
 
-質問と回答 (QnA) のペアで**必須の**設定は次のとおりです。
+質問と回答 (QnA) のペアで **必須の** 設定は次のとおりです。
 
 * **質問** - ユーザー クエリのテキスト。表現は異なっても回答は同じになるユーザーの質問のテキストに合わせるために、QnA Maker の機械学習で使用されます
 * **回答** - ペアの回答は、ユーザーのクエリが関連付けられている質問と一致するときに返される応答です
 
 各ペアは、**ID** で表されます。
 
-ペアの**省略可能な**設定は次のとおりです。
+ペアの **省略可能な** 設定は次のとおりです。
 
 * **別の形式の質問** - これは、QnA Maker からさまざまな質問の表現に対して正しい回答を返すために役立ちます
 * **Metadata**:メタデータは、QnA ペアに関連付けられたタグであり、キーと値のペアとして表されます。 メタデータ タグは、QnA ペアをフィルター処理してクエリとのマッチングを行う対象を制限するために使用されます。
-* **複数ターンのプロンプト**は複数ターンの会話を続けるために使用されます
+* **複数ターンのプロンプト** は複数ターンの会話を続けるために使用されます
 
 ![QnA Maker ナレッジ ベース](media/qnamaker-concepts-knowledgebase/knowledgebase.png)
 

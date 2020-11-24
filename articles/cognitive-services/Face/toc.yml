@@ -71,6 +71,16 @@
           href: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
         - name: Cognitive Services コンテナーのドキュメント
           href: ../containers/index.yml
+- name: シナリオの詳細
+  items:
+    - name: 顔登録
+      items:
+        - name: 概要
+          href: enrollment-overview.md
+        - name: 操作方法ガイド
+          items:
+            - name: React を使用した登録アプリの構築
+              href: build-enrollment-app.md
 - name: リファレンス
   items:
     - name: Face API

@@ -1,16 +1,16 @@
 ---
-title: ナレッジ ベースの設計 - QnA Maker
+title: ナレッジ ベースの設計 - QnA Maker の概念
 description: QnA Maker でナレッジ ベースを設計する方法について説明します。
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: b2661b61e0422f796813be0908d866028ee128a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c21c82b5fd024598da30f4ac7b1ed01e64561e3b
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776903"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576191"
 ---
 # <a name="question-and-answer-pair-concepts"></a>質問と回答のペアの概念
 
@@ -18,18 +18,18 @@ ms.locfileid: "91776903"
 
 ## <a name="question-and-answer-pairs"></a>質問と回答のペア
 
-質問と回答 (QnA) のペアで**必須の**設定は次のとおりです。
+質問と回答 (QnA) のペアで **必須の** 設定は次のとおりです。
 
 * **質問** - ユーザー クエリのテキスト。表現は異なっても回答は同じになるユーザーの質問のテキストに合わせるために、QnA Maker の機械学習で使用されます
 * **回答** - ペアの回答は、ユーザーのクエリが関連付けられている質問と一致するときに返される応答です
 
 各ペアは、**ID** で表されます。
 
-ペアの**省略可能な**設定は次のとおりです。
+ペアの **省略可能な** 設定は次のとおりです。
 
 * **別の形式の質問** - これは、QnA Maker からさまざまな質問の表現に対して正しい回答を返すために役立ちます
 * **Metadata**:メタデータは、QnA ペアに関連付けられたタグであり、キーと値のペアとして表されます。 メタデータ タグは、QnA ペアをフィルター処理してクエリとのマッチングを行う対象を制限するために使用されます。
-* **複数ターンのプロンプト**は複数ターンの会話を続けるために使用されます
+* **複数ターンのプロンプト** は複数ターンの会話を続けるために使用されます
 
 ![QnA Maker ナレッジ ベース](../media/qnamaker-concepts-knowledgebase/knowledgebase.png)
 

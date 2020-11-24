@@ -12,12 +12,12 @@ ms.date: 10/22/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: オンプレミス、OCR、Docker、コンテナー
-ms.openlocfilehash: 07440b99d887ee6cb4b6d505ed7fb79f4c12c784
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 33fc13722a4d0f26c71aa85809a605188b610014
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677192"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539013"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Read OCR Docker コンテナー (プレビュー) をインストールする 
 
@@ -52,7 +52,7 @@ Read 3.1-preview コンテナーは、次のものを備えています。
 
 |必須|目的|
 |--|--|
-|Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では** 、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
+|Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
 |Computer Vision リソース |コンテナーを使用するためには、以下が必要です。<br><br>Azure **Computer Vision** リソースとその関連する API キーおよびエンドポイント URI。 どちらの値も、対象リソースの概要ページとキー ページで使用でき、コンテナーを開始するために必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページに提示されているエンドポイント|
 
@@ -72,14 +72,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="advanced-vector-extension-support"></a>Advanced Vector Extension のサポート
 
-**ホスト** コンピューターとは、Docker コンテナーを実行するコンピューターのことです。 ホストは、 [高度なベクター拡張機能](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2) を *サポートしている必要があります* 。 次のコマンドを使用して、Linux ホストでの AVX2 サポートを確認できます。
+**ホスト** コンピューターとは、Docker コンテナーを実行するコンピューターのことです。 ホストは、[高度なベクター拡張機能](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2) を *サポートしている必要があります*。 次のコマンドを使用して、Linux ホストでの AVX2 サポートを確認できます。
 
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
 ```
 
 > [!WARNING]
-> AVX2 をサポートするにはホスト コンピューターが *必須* です。 AVX2 サポートがないと、コンテナーは正しく機能 *しません* 。
+> AVX2 をサポートするにはホスト コンピューターが *必須* です。 AVX2 サポートがないと、コンテナーは正しく機能 *しません*。
 
 ### <a name="container-requirements-and-recommendations"></a>コンテナーの要件と推奨事項
 
@@ -211,7 +211,7 @@ Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開しま
 
 ![タブとスペース](media/tabs-vs-spaces.png)
 
-非同期 POST が正常に実行されると、 **HTTP 202** 状態コードが返されます。 応答の一部として、要求の結果エンドポイントを保持する `operation-location` ヘッダーがあります。
+非同期 POST が正常に実行されると、**HTTP 202** 状態コードが返されます。 応答の一部として、要求の結果エンドポイントを保持する `operation-location` ヘッダーがあります。
 
 ```http
  content-length: 0
@@ -288,7 +288,7 @@ Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開しま
 
 ![タブとスペース](media/tabs-vs-spaces.png)
 
-非同期 POST が正常に実行されると、 **HTTP 202** 状態コードが返されます。 応答の一部として、要求の結果エンドポイントを保持する `operation-location` ヘッダーがあります。
+非同期 POST が正常に実行されると、**HTTP 202** 状態コードが返されます。 応答の一部として、要求の結果エンドポイントを保持する `operation-location` ヘッダーがあります。
 
 ```http
  content-length: 0
@@ -370,7 +370,7 @@ Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開しま
 
 JSON 応答オブジェクトには、非同期バージョンと同じオブジェクト グラフが含まれます。 JavaScript を使用していて、タイプ セーフが必要な場合は、TypeScript を使用して、JSON 応答をキャストすることを検討してください。
 
-ユースケースの例については、 <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">こちらの TypeScript サンドボックス <span class="docon docon-navigate-external x-hidden-focus"></span></a>を参照し、 **[Run]\(実行\)** を選択してその使いやすさを確認してください。
+ユースケースの例については、<a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">こちらの TypeScript サンドボックス <span class="docon docon-navigate-external x-hidden-focus"></span></a>を参照し、 **[Run]\(実行\)** を選択してその使いやすさを確認してください。
 
 ## <a name="stop-the-container"></a>コンテナーの停止
 
@@ -411,6 +411,6 @@ Cognitive Services コンテナーでは、Azure アカウントの対応する�
 
 * 構成設定について、[コンテナーの構成](computer-vision-resource-container-config.md)を確認する
 * [Computer Vision の概要](overview.md)ページを読み、印刷されたテキストと手書きのテキストの認識の詳細について確認する
-* コンテナーによりサポートされるメソッドの詳細を [Computer Vision API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) ページで確認する。
+* コンテナーによりサポートされるメソッドの詳細を [Computer Vision API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) ページで確認する。
 * [よく寄せられる質問 (FAQ)](FAQ.md) を参照して、Computer Vision 機能に関連する問題を解決する。
 * さらに [Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する

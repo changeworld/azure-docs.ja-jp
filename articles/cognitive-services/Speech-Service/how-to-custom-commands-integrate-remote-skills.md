@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: sausin
-ms.openlocfilehash: 6ab3e1e063409832de839da26eba80efd8b3f4d5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 8c7cb1e9f39b1de7897da29467a607953b42bb24
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92344775"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565740"
 ---
 # <a name="export-custom-commands-application-as-a-remote-skill"></a>Custom Commands アプリケーションをリモートのスキルとしてエクスポートする
 
@@ -56,7 +56,7 @@ ms.locfileid: "92344775"
 1. **[保存]** を選択します。
 
 ### <a name="configure-triggering-utterances-for-commands"></a>コマンドのトリガーとなる発話を構成する
-Custom Commands によって、スキルのトリガーとなる発話を生成するために、コマンド用に構成された例文が使用されます。 これらの **トリガーとなる発話** は、 **ディスパッチャー** セクションの [**スキル マニフェスト**](https://microsoft.github.io/botframework-solutions/skills/handbook/manifest/)の生成に使用されます。
+Custom Commands によって、スキルのトリガーとなる発話を生成するために、コマンド用に構成された例文が使用されます。 これらの **トリガーとなる発話** は、**ディスパッチャー** セクションの [**スキル マニフェスト**](https://microsoft.github.io/botframework-solutions/skills/handbook/manifest/)の生成に使用されます。
 
 作成者として、スキルのトリガーとなる発話を生成するためにどの **例文** を使用するかを制御したい場合があります。
 1. 既定では、コマンドからのすべての **トリガー例** がマニフェスト ファイルに含まれます。
@@ -64,7 +64,7 @@ Custom Commands によって、スキルのトリガーとなる発話を生成�
     > [!div class="mx-imgBorder"]
     > ![スキルの有効化されたコマンドを編集する](media/custom-commands/skill-edit-enabled-command.png)
 
-1. 次に、省略する例文の上で、 **右クリック** >  **[Disable Example Sentence]\(例文を無効にする\)** を選択します。
+1. 次に、省略する例文の上で、**右クリック** >  **[Disable Example Sentence]\(例文を無効にする\)** を選択します。
     > [!div class="mx-imgBorder"]
     > ![例を無効にする](media/custom-commands/skill-disable-example-sentences.png)
 
@@ -88,4 +88,4 @@ Custom Commands によって、スキルのトリガーとなる発話を生成�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [カスタム コマンド アプリケーションの CI/CD プロセスを有効にする](./how-to-custom-commands-deploy-cicd.md)
+> [クライアントからコマンドを更新する](./how-to-custom-commands-update-command-from-client.md)

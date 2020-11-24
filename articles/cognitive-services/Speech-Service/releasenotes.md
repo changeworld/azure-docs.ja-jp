@@ -11,14 +11,28 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 01c9cbe0438ee0efeece4c7e6b17e9607db4c4cc
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 2586b3aab9d1fb8e7ae12aea540df19ff6c37556
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356690"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553660"
 ---
 # <a name="speech-service-release-notes"></a>Speech Service リリース ノート
+
+## <a name="text-to-speech-2020-october-release"></a>テキスト読み上げの 2020 年 10 月のリリース
+
+**新機能**
+- Jenny は、新しい `newscast` スタイルをサポートしています。 [SSML での読み上げスタイルの使用方法](speech-synthesis-markup.md#adjust-speaking-styles)を参照してください。
+- **ニューラル音声が HiFiNet ボコーダーにアップグレードされ、オーディオの忠実度が向上し合成速度が速くなりました**。 これは、ビデオのダビング、オーディオ ブック、またはオンライン教材など、ハイファイ オーディオまたは長時間の対話に依存するシナリオを使用するお客様に役立ちます。 [Tech コミュニティ ブログで、ストーリーの詳細を確認し、音声のサンプルをお聴きください。](https://techcommunity.microsoft.com/t5/azure-ai/azure-neural-tts-upgraded-with-hifinet-achieving-higher-audio/ba-p/1847860)
+- **[Custom Voice](https://speech.microsoft.com/customvoice) & [Audio Content Creation Studio](https://speech.microsoft.com/audiocontentcreation) が 17 ロケールにローカライズされました**。 ユーザーは、操作しやすくするために、UI をローカル言語に簡単に切り替えることができます。   
+- **Audio Content Creation**: XiaoxiaoNeural のスタイル レベルのコントロールが追加されました。カスタマイズされた中断機能を改良して、50 ミリ秒の増分中断が含まれるようにしました。 
+
+**一般的な TTS 音声品質の改善**
+- `pl-PL` での単語レベルの発音精度が向上しました。(エラー率の低減: 51%) および `fi-FI` (エラー率の低下: 58%)
+- 辞書シナリオに対して、`ja-JP` での 1 つの単語の読み取りを改善しました。 発音エラーが 80% 削減されました。
+- `zh-CN-XiaoxiaoNeural`:センチメント/CustomerService/Newscast/Cheerful/Angry スタイルの音声品質を改善しました。
+- `zh-CN`:児化 (アルか) の発音と明るい声色を改善し、空間韻律を改良しました。これにより、明瞭度が大幅に向上します。 
 
 ## <a name="speech-sdk-1140-2020-october-release"></a>Speech SDK 1.14.0: 2020-October リリース
 
@@ -78,6 +92,18 @@ SPX は、コードを記述せずに Azure 音声サービスを使用するた
 - `spx * --http header A=B` – カスタム ヘッダーをサポートします (カスタム認証用として Office に追加済み)。 
 - `spx help` – 改良されたテキストとバック ティック テキストの色分け (青)。
 
+## <a name="text-to-speech-2020-september-release"></a>テキスト読み上げの 2020 年 9 月のリリース
+
+### <a name="new-features"></a>新機能
+
+* **ニューラル TTS** 
+    * **新たに 18 言語/ロケールにサポートを拡張しました。** 対象となるのは、ブルガリア語、チェコ語、ドイツ語 (オーストリア)、ドイツ語 (スイス)、ギリシャ語、英語 (アイルランド)、フランス語 (スイス)、ヘブライ語、クロアチア語、ハンガリー語、インドネシア語、マレー語、ルーマニア語、スロバキア語、スロベニア語、タミール語、テルグ語、およびベトナム語です。 
+    * **既存の言語を充実させるために、新たに 14 音声をリリースしました。** [言語と音声の完全な一覧](language-support.md#neural-voices)を参照してください。
+    * **`en-US` と `zh-CN` の音声での新しい読み上げスタイル** 英語 (米国) の新しい音声である Jenny は、チャットボット、カスタマー サービス、およびアシスタントの各スタイルをサポートしています。 zh-CN の音声である XiaoXiao では、新たに 10 の読み上げスタイルを使用できます。 さらに、XiaoXiao ニューラル音声では、`StyleDegree` チューニングがサポートされています。 [SSML での読み上げスタイルの使用方法](speech-synthesis-markup.md#adjust-speaking-styles)を参照してください。
+
+* **コンテナー: ニューラル TTS コンテナーがパブリック プレビューでリリースされました。14 言語で 16 音声を使用できます。** 詳細については、[ニューラル TTS 用の音声コンテナーのデプロイ方法](speech-container-howto.md)に関する記事を参照してください。  
+
+[Ignite 2020 での TTS 更新プログラムの発表の全内容](https://techcommunity.microsoft.com/t5/azure-ai/ignite-2020-neural-tts-updates-new-language-support-more-voices/ba-p/1698544)を参照してください。 
 
 ## <a name="text-to-speech-2020-august-release"></a>テキスト読み上げの 2020 年 8 月のリリース
 

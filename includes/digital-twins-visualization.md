@@ -5,18 +5,18 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/10/2020
 ms.author: baanders
-ms.openlocfilehash: a07c2684856cfe21001f996bb62ce4ea3297e8c2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 37bccbcd92f627fd45a7f786725afe5b2e475f3c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379867"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533883"
 ---
 ## <a name="visualization"></a>グラフ
 
 自分の Azure Digital Twins インスタンスは主に、[API と SDK](../articles/digital-twins/how-to-use-apis-sdks.md) を使用して操作しますが、自分のインスタンスで作成しているツインとグラフの視覚化を確認できると便利な場合があります。
 
-[**Azure Digital Twins エクスプローラー**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)は、Azure Digital Twins を視覚化して操作するためのサンプル アプリケーションです。 サンプルにある手順に従って、アプリケーション コードをダウンロードして実行します。 
+[**Azure Digital Twins (ADT) エクスプローラー**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)は、Azure Digital Twins を視覚化して操作するためのサンプル アプリケーションです。 サンプルにある手順に従って、アプリケーション コードをダウンロードして実行します。 
 
 このサンプルでは、他に作成および管理アクティビティがある中、ご自分のデジタル ツインとそれによって作成されるグラフを視覚的に表示できます。
 
