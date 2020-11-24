@@ -95,8 +95,10 @@
           href: public-ip-security-baseline.md
     - name: Security
       items:
-        - name: セキュリティ ベースライン
+        - name: Virtual Network のセキュリティ ベースライン
           href: security-baseline.md
+        - name: Virtual Network NAT のセキュリティ ベースライン
+          href: nat-security-baseline.md
         - name: ネットワーク セキュリティ グループ
           items:
             - name: 概要

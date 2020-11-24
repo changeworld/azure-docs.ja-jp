@@ -60,12 +60,14 @@
           href: how-to-troubleshoot.md
         - name: 重複する属性
           href: /office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync
-- name: リファレンス
+- name: 関連項目
   items:
-    - name: Azure AD Connect クラウド プロビジョニング エージェントのバージョン履歴
-      href: ../app-provisioning/provisioning-agent-release-version-history.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+    - name: Azure AD Connect Cloud エージェントのバージョン履歴の同期
+      href: reference-version-history.md
     - name: Azure AD Connect クラウド プロビジョニングに関する FAQ
       href: reference-cloud-provisioning-faq.md
+    - name: AADCloudSyncTools PowerShell モジュール
+      href: reference-powershell.md
     - name: 同期される属性
       href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: Active Directory と Azure AD の基本的な環境

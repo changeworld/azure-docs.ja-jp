@@ -51,6 +51,8 @@
           href: tutorial-connect-device-nodejs.md
         - name: デバイスの接続 (Python)
           href: tutorial-connect-device-python.md
+        - name: デバイスの接続 (Java)
+          href: tutorial-connect-device-java.md
         - name: ゲートウェイ デバイス テンプレートの作成
           href: tutorial-define-gateway-device-type.md
         - name: IoT Edge デバイスの接続
@@ -67,7 +69,7 @@
           href: /learn/modules/manage-iot-central-apps-with-rest-api/
 - name: 概念
   items:
-    - name: Architecture
+    - name: アーキテクチャ
       href: concepts-architecture.md
     - name: アプリケーション テンプレートとは
       href: concepts-app-templates.md

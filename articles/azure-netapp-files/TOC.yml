@@ -97,13 +97,13 @@
       href: dynamic-change-volume-service-level.md
     - name: リージョン間レプリケーションの管理
       items:
-        - name: レプリケーション ピアリングの作成
+        - name: ボリューム レプリケーションを作成する
           href: cross-region-replication-create-peering.md
         - name: レプリケーション関係の正常性状態を表示する
           href: cross-region-replication-display-health-status.md
         - name: ディザスター リカバリーの管理
           href: cross-region-replication-manage-disaster-recovery.md
-        - name: レプリケーションの削除
+        - name: ボリューム レプリケーションまたはボリュームを削除する
           href: cross-region-replication-delete.md
     - name: 開発
       items:

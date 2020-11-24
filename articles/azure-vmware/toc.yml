@@ -6,7 +6,7 @@
       href: introduction.md
 - name: クイック スタート
   items:
-    - name: 0- デプロイを計画する
+    - name: 0 - デプロイの計画
       href: production-ready-deployment-steps.md
     - name: 1 - Azure VMware Solution のデプロイ
       href: deploy-azure-vmware-solution.md

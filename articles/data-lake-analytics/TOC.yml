@@ -139,7 +139,7 @@
           href: understand-spark-code-concepts.md
     - name: U-SQL ジョブのトラブルシューティング
       items:
-        - name: U-SQL ランタイム エラーのトラブルシューティング
+        - name: U-SQL ランタイム エラーと既知の問題のトラブルシューティング
           href: runtime-troubleshoot.md
         - name: .NET アップグレードのトラブルシューティング
           href: dotnet-upgrade-troubleshoot.md

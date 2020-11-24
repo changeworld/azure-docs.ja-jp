@@ -603,8 +603,14 @@
           href: reference-hyperscale-metadata.md
     - name: 操作方法ガイド
       items:
-        - name: サーバー グループをスケーリングする
-          href: howto-hyperscale-scaling.md
+        - name: サーバー グループのサイズ
+          items:
+            - name: 初期サイズの選択
+              href: howto-hyperscale-scale-initial.md
+            - name: サーバー グループのスケーリング
+              href: howto-hyperscale-scale-grow.md
+            - name: シャードの再調整
+              href: howto-hyperscale-scale-rebalance.md
         - name: ファイアウォール規則
           items:
             - name: Azure portal

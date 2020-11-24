@@ -1,4 +1,4 @@
-- name: Azure Synapse (SQL DW)
+- name: Azure Synapse (旧称 SQL DW)
   href: index.yml
 - name: Azure Synapse に切り替える (ワークスペース プレビュー)
   href: ../overview-what-is.md

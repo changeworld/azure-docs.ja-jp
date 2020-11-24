@@ -67,6 +67,8 @@
           href: ./ag/application-gateway-waf-faq.md
     - name: フロントドア
       items:
+        - name: チューニング
+          href: ./afds/waf-front-door-tuning.md
         - name: カスタム規則
           href: ./afds/waf-front-door-custom-rules.md
         - name: 除外リスト

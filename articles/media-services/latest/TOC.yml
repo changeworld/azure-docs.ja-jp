@@ -270,9 +270,13 @@
     - name: 変換とジョブの作成
       items:
         - name: 変換を作成する
-          href: cli-create-transform.md
+          href: how-to-create-transform.md
         - name: REST を使用して基本的なオーディオ変換を作成する
           href: how-to-create-basic-audio-transform.md
+        - name: REST を使用して copyAllBitrateNonInterleaved 変換を作成する
+          href: how-to-create-copyallbitratenoninterleaved-transform.md
+        - name: REST を使用してエンコードせずにビデオをコピーする
+          href: how-to-create-copy-video-audio-transform.md
         - name: ジョブを作成する
           href: cli-create-jobs.md
         - name: ローカル ファイルと .NET を使用してジョブ入力を作成する

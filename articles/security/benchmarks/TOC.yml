@@ -69,8 +69,12 @@
       href: ../../automation/security-baseline.md
     - name: Azure Advisor のセキュリティ ベースライン
       href: ../../advisor/security-baseline.md
+    - name: Azure App Configuration のセキュリティ ベースライン
+      href: ../../azure-app-configuration/security-baseline.md
     - name: Azure Backup のセキュリティ ベースライン
       href: ../../backup/security-baseline.md
+    - name: Azure Bastion のセキュリティ ベースライン
+      href: ../../bastion/security-baseline.md
     - name: Azure Cache for Redis のセキュリティ ベースライン
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: Azure Cognitive Search のセキュリティ ベースライン
@@ -201,5 +205,7 @@
       href: ../../virtual-machines/windows/security-baseline.md
     - name: Virtual Network のセキュリティ ベースライン
       href: ../../virtual-network/security-baseline.md
+    - name: Virtual Network NAT のセキュリティ ベースライン
+      href: ../../virtual-network/nat-security-baseline.md
     - name: VPN Gateway のセキュリティ ベースライン
       href: ../../vpn-gateway/security-baseline.md

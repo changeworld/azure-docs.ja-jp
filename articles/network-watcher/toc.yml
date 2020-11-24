@@ -77,9 +77,9 @@
         - name: VM 拡張機能をインストールする
           items:
             - name: Windows
-              href: ../virtual-machines/extensions/network-watcher-windows.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json
+              href: ../virtual-machines/extensions/network-watcher-windows.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
             - name: Linux
-              href: ../virtual-machines/extensions/network-watcher-linux.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json
+              href: ../virtual-machines/extensions/network-watcher-linux.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
         - name: ルーティングに関する問題を診断する
           items:
             - name: Azure PowerShell
@@ -184,7 +184,7 @@
     - name: 場所と Azure リージョンの間の相対待ち時間を確認する
       href: view-relative-latencies.md
     - name: ネットワーク パフォーマンスを監視する
-      href: ../azure-monitor/insights/network-performance-monitor.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json
+      href: ../azure-monitor/insights/network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
     - name: リソースの移動
       items:
         - name: Network Watcher リソースの移動

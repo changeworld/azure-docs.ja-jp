@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 07/28/2020
 ms.author: aahi
 ms.openlocfilehash: 77b75b1134bbc8366478b1f9f4d14e86e9684f70
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91709542"
 ---
 # <a name="supported-entity-categories-in-the-text-analytics-api-v3"></a>Text Analytics API v3 でサポートされているエンティティのカテゴリ
@@ -35,9 +35,9 @@ ms.locfileid: "91709542"
 
 [!INCLUDE [biomedical entity types](./includes/entity-types/health-entities.md)]
 
-***
+次のステップ
 
-## <a name="next-steps"></a>次のステップ
-
-* [Text Analytics で固有表現抽出
+## <a name="next-steps"></a>[Text Analytics で固有表現抽出
 を使用する方法](how-tos/text-analytics-how-to-entity-linking.md)
+
+_ <bpt id="p1">[</bpt>How to use Named Entity Recognition in Text Analytics<ept id="p1">](how-tos/text-analytics-how-to-entity-linking.md)</ept>

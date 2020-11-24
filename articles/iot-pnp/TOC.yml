@@ -51,6 +51,8 @@
       href: /samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/
     - name: デバイス モジュールを接続する
       href: tutorial-migrate-device-to-module.md
+    - name: Time Series Insights Gen2 を使用したデータの接続および分析
+      href: tutorial-configure-tsi.md
 - name: 概念
   items:
     - name: アーキテクチャ
