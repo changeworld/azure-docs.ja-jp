@@ -81,6 +81,8 @@
       href: /azure/data-explorer/security-baseline
     - name: Azure Data Factory のセキュリティ ベースライン
       href: ../../data-factory/security-baseline.md
+    - name: Azure Data Share のセキュリティ ベースライン
+      href: ../../data-share/security-baseline.md
     - name: Azure Database for MySQL のセキュリティ ベースライン
       href: ../../mysql/security-baseline.md
     - name: Azure Database for MariaDB のセキュリティ ベースライン
@@ -91,6 +93,8 @@
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: Azure Databricks のセキュリティ ベースライン
       href: /azure/databricks/scenarios/security-baseline
+    - name: Azure Defender for IoT のセキュリティ ベースライン
+      href: ../../defender-for-iot/security-baseline.md
     - name: Azure DNS のセキュリティ ベースライン
       href: ../../dns/security-baseline.md
     - name: Azure DevTest Labs のセキュリティ ベースライン
@@ -101,18 +105,24 @@
       href: ../../frontdoor/security-baseline.md
     - name: Azure Functions のセキュリティ ベースライン
       href: ../../azure-functions/security-baseline.md
+    - name: Azure HPC Cache のセキュリティ ベースライン
+      href: ../../hpc-cache/security-baseline.md
     - name: Azure Information Protection のセキュリティ ベースライン
       href: /azure/information-protection/security-baseline
     - name: Azure IoT Hub のセキュリティ ベースライン
       href: ../../iot-hub/security-baseline.md
     - name: Azure Kubernetes Service のセキュリティ ベースライン
       href: ../../aks/security-baseline.md
+    - name: Azure Lighthouse のセキュリティ ベースライン
+      href: ../../lighthouse/security-baseline.md
     - name: Azure Load Balancer のセキュリティ ベースライン
       href: ../../load-balancer/security-baseline.md
     - name: Azure Monitor のセキュリティ ベースライン
       href: ../../azure-monitor/security-baseline.md
     - name: Azure Machine Learning のセキュリティ ベースライン
       href: ../../machine-learning/security-baseline.md
+    - name: Azure Migrate Learning のセキュリティ ベースライン
+      href: ../../migrate/security-baseline.md
     - name: Azure Policy のセキュリティ ベースライン
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
     - name: Azure Private Link のセキュリティ ベースライン
