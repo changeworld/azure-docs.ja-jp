@@ -11,11 +11,11 @@ ms.date: 08/04/2017
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d3d29bd05f67d00047499dc256e5e1a82f98693a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388801"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95990985"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Azure AD B2C Identity Experience Framework で信頼フレームワークを定義する
 
@@ -116,7 +116,7 @@ Identity Experience Framework を活用した Azure AD B2C カスタム ポリ�
 
 これらのポリシーは、Identity Experience Framework を活用する Azure AD B2C カスタム ポリシー内の、コンピューターが読み取り可能な TF コンストラクトの一部を構成します。 ポリシーには、要求プロバイダーのメタデータと技術プロファイル、要求スキーマの定義、要求変換機能、運用の調整と自動化を容易にするために書き込まれるユーザー体験を含め、運用上の詳細がすべて含められます。
 
-時間が経過すれば、ポリシーで宣言されたアクティブな参加者に関する内容は変化する可能性が高いため、ポリシーは*生きたドキュメント*になると想定されています。 参加者であるための条件が変わる可能性もあります。
+時間が経過すれば、ポリシーで宣言されたアクティブな参加者に関する内容は変化する可能性が高いため、ポリシーは *生きたドキュメント* になると想定されています。 参加者であるための条件が変わる可能性もあります。
 
 一連のポリシー (によって表されるコミュニティ) への別の要求プロバイダー/検証者の参加や脱退に伴う信頼および接続性の再構成から証明書利用者を保護することにより、フェデレーションのセットアップとメンテナンスは大幅に簡易化できます。
 

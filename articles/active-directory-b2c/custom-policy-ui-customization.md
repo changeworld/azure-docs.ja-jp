@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cb833ff35dae4fe1c0c27204ec66fa6b4cdb82c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 340c9629af89bfacb85b37503743fc5770070ae3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388886"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95990922"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする
 
@@ -34,7 +34,7 @@ ms.locfileid: "85388886"
 
 UI のカスタマイズを構成するには、**ContentDefinition** とその子要素を基本ファイルから拡張ファイルにコピーします。
 
-1. ポリシーの基本ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em>です。 この基本ファイルは、カスタム ポリシー スターター パックに含まれているポリシー ファイルの 1 つであり、[カスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)に関するページの前提条件の中で、取得済みになっている必要があります。
+1. ポリシーの基本ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`**</em>です。 この基本ファイルは、カスタム ポリシー スターター パックに含まれているポリシー ファイルの 1 つであり、[カスタム ポリシーの概要](./custom-policy-get-started.md)に関するページの前提条件の中で、取得済みになっている必要があります。
 1. **ContentDefinitions** 要素を検索し、その内容全体をコピーします。
 1. 拡張ファイルを開きます。 たとえば、*TrustFrameworkExtensions.xml* です。 **BuildingBlocks** 要素を検索します。 要素が存在しない場合は追加します。
 1. コピーした **ContentDefinitions** 要素の内容全体を **BuildingBlocks** 要素の子として貼り付けます。
