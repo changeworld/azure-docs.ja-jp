@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
 ms.openlocfilehash: 9e60903aaa61cae63d406d459937d33317eee394
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545635"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022253"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Spark のトラブルシューティング
 
@@ -31,7 +31,7 @@ Spark 構成値を調整して、Apache Spark アプリケーションの `Outof
 
 1. 構成の一覧で **[Custom-spark2-defaults]** を選択して展開します。
 
-1. **[spark.executor.memory]** など、調整する必要のある値の設定を見つけます。 この場合、 **9728m** という値は大きすぎます。
+1. **[spark.executor.memory]** など、調整する必要のある値の設定を見つけます。 この場合、**9728m** という値は大きすぎます。
 
     ![[Custom-spark-defaults] の選択](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
 
@@ -67,7 +67,7 @@ Spark 構成値を調整して、Apache Spark アプリケーションの `Outof
 
 1. 新しいプロパティを定義します。 データ型など特定の設定用のダイアログ ボックスを使用して 1 つのプロパティを定義することができます。 または、1 行につき 1 つの定義を使用して、複数のプロパティを定義することもできます。
 
-    この例では、 **spark.driver.memory** プロパティの値を **4g** に定義しています。
+    この例では、**spark.driver.memory** プロパティの値を **4g** に定義しています。
 
     ![新しいプロパティの定義](./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png)
 
