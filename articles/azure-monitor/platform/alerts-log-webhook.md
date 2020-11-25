@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
 ms.openlocfilehash: 9a074be9bcc62d8c20635400f462f52fb796d2fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294310"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012324"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>ログ アラート ルールの webhook アクション
 
@@ -55,7 +55,7 @@ Webhook アクションを使用して、1 つの HTTP POST 要求を呼び出�
 ## <a name="custom-webhook-payload-definition"></a>カスタム Webhook ペイロード定義
 
 上記のパラメーターを使用してカスタム JSON ペイロードを取得するには、 **[webhook 用のカスタム Json ペイロードを含む]** を使用できます。 追加のプロパティを生成することもできます。
-たとえば、 *text*という名前の 1 つのパラメーターを含む次のカスタム ペイロードを指定できます。 この Webhook で呼び出すサービスでは、このパラメーターが想定されます。
+たとえば、 *text* という名前の 1 つのパラメーターを含む次のカスタム ペイロードを指定できます。 この Webhook で呼び出すサービスでは、このパラメーターが想定されます。
 
 ```json
 

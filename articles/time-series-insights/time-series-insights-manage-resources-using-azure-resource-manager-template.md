@@ -11,19 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: ee4d3957403e169d41fb9e3befa0d62e4b0d9075
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 493750e69b1fdc935b04d6dc705cfd046b6b086e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597853"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96011661"
 ---
 # <a name="create-azure-time-series-insights-gen-1-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure Time Series Insights Gen 1 リソースを作成する
 
 > [!CAUTION]
 > これは Gen1 の記事です。
 
-この記事では、[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/)、PowerShell、Azure Time Series Insights リソース プロバイダーを使用して Azure Time Series Insights リソースを作成し、デプロイする方法について説明します。
+この記事では、[Azure Resource Manager テンプレート](../azure-resource-manager/index.yml)、PowerShell、Azure Time Series Insights リソース プロバイダーを使用して Azure Time Series Insights リソースを作成し、デプロイする方法について説明します。
 
 Azure Time Series Insights は、次のリソースをサポートしています。
 
@@ -32,7 +32,7 @@ Azure Time Series Insights は、次のリソースをサポートしていま�
    | 環境 | Azure Time Series Insights 環境とは、イベント ブローカーから読み取って保存したイベントを論理的にグループ化して、クエリで使用できるようにしたものです。 詳細については、「[Azure Time Series Insights 環境の計画](time-series-insights-environment-planning.md)」を参照してください |
    | イベント ソース | イベント ソースとは、イベント ブローカーへの接続を指します。Azure Time Series Insights は、このイベント ブローカーからイベントを読み取って環境に取り込みます。 現在サポートされているイベント ソースは、IoT Hub とイベント ハブです。 |
    | 参照データ セット | 参照データセットは、環境内のイベントに関するメタデータを提供します。 参照データ セット内のメタデータは、受信時にイベントと結合されます。 参照データセットは、そのイベントの主要なプロパティでリソースとして定義されています。 参照データ セットを構成する実際のメタデータをアップロードまたは変更する際は、データ プレーン API を使用します。 |
-   | アクセス ポリシー | アクセス ポリシーは、データ クエリの発行、環境内での参照データの操作、環境に関連付けられた保存クエリとパースペクティブの共有を実行するためのアクセス許可を付与します。 詳細については、[Azure portal を使用した Azure Time Series Insights 環境へのデータ アクセスの許可](time-series-insights-data-access.md)に関する記事を参照してください。 |
+   | アクセス ポリシー | アクセス ポリシーは、データ クエリの発行、環境内での参照データの操作、環境に関連付けられた保存クエリとパースペクティブの共有を実行するためのアクセス許可を付与します。 詳細については、[Azure portal を使用した Azure Time Series Insights 環境へのデータ アクセスの許可](./concepts-access-policies.md)に関する記事を参照してください。 |
 
 Resource Manager テンプレートは、リソース グループ内のリソースのインフラストラクチャと構成を定義する JSON ファイルです。 以下のドキュメントでは、テンプレート ファイルについてさらに詳しく説明しています。
 
@@ -48,7 +48,7 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
 
 次の手順では、Azure Time Series Insights 環境、イベントをイベント ハブから使用するように構成された子イベント ソース、環境のデータへのアクセスを許可するアクセス ポリシーを作成するための Azure Resource Manager テンプレートを、PowerShell を使用してデプロイする方法について説明します。 既存のイベント ハブが指定されていない場合は、デプロイ時に 1 つ作成されます。
 
-1. 「[Getting started with Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)」の手順に従って、Azure PowerShell をインストールします。
+1. 「[Getting started with Azure PowerShell](/powershell/azure/get-started-azureps)」の手順に従って、Azure PowerShell をインストールします。
 
 1. [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) テンプレートを GitHub からクローンまたはコピーします。
 
@@ -127,7 +127,7 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>PowerShell を使用してクイックスタート テンプレートをローカルにデプロイする
 
 > [!IMPORTANT]
-> 以下に表示されるコマンド ライン操作は、[Az PowerShell モジュール](https://docs.microsoft.com/powershell/azure/)を説明しています。
+> 以下に表示されるコマンド ライン操作は、[Az PowerShell モジュール](/powershell/azure/)を説明しています。
 
 1. PowerShell で Azure アカウントにログインします。
 
@@ -255,4 +255,4 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- REST API を使用して Azure Time Series Insights リソースをプログラムによって管理する方法の詳細については、[Azure Time Series Insights の管理](https://docs.microsoft.com/rest/api/time-series-insights-management/)に関するページを参照してください。
+- REST API を使用して Azure Time Series Insights リソースをプログラムによって管理する方法の詳細については、[Azure Time Series Insights の管理](/rest/api/time-series-insights-management/)に関するページを参照してください。

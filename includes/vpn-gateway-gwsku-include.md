@@ -9,11 +9,11 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8087025810214f3edbb74e628698eb69558f3500
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74085255"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010811"
 ---
 仮想ネットワーク ゲートウェイを作成する場合、使用するゲートウェイの SKU を指定する必要があります。 ワークロード、スループット、機能、および SLA の種類に基づいて、要件を満たす SKU を選択します。 Azure Availability Zones における仮想ネットワーク ゲートウェイの SKU については、[Azure Availability Zones でのゲートウェイの SKU](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md) に関するページを参照してください。
 

@@ -4,18 +4,18 @@ ms.service: storage
 ms.topic: include
 ms.date: 09/28/2020
 ms.author: normesta
-ms.openlocfilehash: 6d90b4b68f1f9f4a0fcd20c1d371a32759449fab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b18687c0a6f3e48d94431e88be8ae8137c9dcdb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711014"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011156"
 ---
 | プロパティ | 説明 |
 |:--- |:---|
 |**accountName** | ストレージ アカウントの名前。 (例: `mystorageaccount`)。  |
 |**requestUrl** | 要求された URL |
-|**userAgentHeader** | 引用符で囲んだ **User-Agent ヘッダー**値 (例: `WA-Storage/6.2.0 (.NET CLR 4.0.30319.42000; Win32NT 6.2.9200.0)`)。|
+|**userAgentHeader** | 引用符で囲んだ **User-Agent ヘッダー** 値 (例: `WA-Storage/6.2.0 (.NET CLR 4.0.30319.42000; Win32NT 6.2.9200.0)`)。|
 |**referrerHeader** | **Referrer** ヘッダー値 (例: `http://contoso.com/about.html`)。|
 |**clientRequestId** | 要求の **x-ms-client-request-id** ヘッダー値 (例: `360b66a6-ad4f-4c4a-84a4-0ad7cb44f7a6`)。 |
 |**etag** | 引用符で囲まれている、返されたオブジェクトの ETag 識別子 (例: `0x8D101F7E4B662C4`)。  |
@@ -33,8 +33,8 @@ ms.locfileid: "91711014"
 |**contentLengthHeader** | ストレージ サービスに送信された要求の Content-Length ヘッダーの値。 要求が成功した場合、この値は requestBodySize と同じです。 要求が成功しなかった場合、この値は requestBodySize と同じ値にならないことや、空になることがあります。 |
 |**tlsVersion** | 要求の接続で使用される TLS のバージョン (例: `TLS 1.2`)。 |
 |**smbTreeConnectID** | ツリー接続時に確立したサーバー メッセージ ブロック (SMB) の **treeConnectId**。 例: `0x3` |
-|**smbPersistentHandleID** | ネットワーク再接続を維持する SMB2 CREATE 要求の永続的ハンドル ID。  [MS-SMB2](https://docs.microsoft.com/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 では **SMB2_FILEID.Persistent** として参照されます。 例: `0x6003f` |
-|**smbVolatileHandleID** | ネットワーク再接続時に再利用される SMB2 CREATE 要求の揮発性ハンドル ID。  [MS-SMB2](https://docs.microsoft.com/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 では **SMB2_FILEID.Volatile**として参照されます。 例: `0xFFFFFFFF00000065` |
+|**smbPersistentHandleID** | ネットワーク再接続を維持する SMB2 CREATE 要求の永続的ハンドル ID。  [MS-SMB2](/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 では **SMB2_FILEID.Persistent** として参照されます。 例: `0x6003f` |
+|**smbVolatileHandleID** | ネットワーク再接続時に再利用される SMB2 CREATE 要求の揮発性ハンドル ID。  [MS-SMB2](/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 では **SMB2_FILEID.Volatile** として参照されます。 例: `0xFFFFFFFF00000065` |
 |**smbMessageID** | 接続の相対的な **MessageId**。 例: `0x3b165` |
 |**smbCreditsConsumed** | 要求で消費されるイングレスまたはエグレス (64k 単位)。 例: `0x3` |
 |**smbCommandDetail** | 一般的な種類の要求ではなく、この特定の要求に関する詳細情報。 例: `0x2000 bytes at offset 0xf2000` |

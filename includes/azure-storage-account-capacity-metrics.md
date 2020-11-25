@@ -4,14 +4,14 @@ ms.service: storage
 ms.topic: include
 ms.date: 09/28/2020
 ms.author: normesta
-ms.openlocfilehash: 2a8f27c0df2224aed5c69c8c38f463a97e3cf294
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48e2d798a3dcf7354e68d07785c2762ba03f39f8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711015"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011178"
 ---
-この表は、[アカウントレベルのメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccounts)を示しています。
+この表は、[アカウントレベルのメトリック](../articles/azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccounts)を示しています。
 
 | メトリック | 説明 |
 | ------------------- | ----------------- |

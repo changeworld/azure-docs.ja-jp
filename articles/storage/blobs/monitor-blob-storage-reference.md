@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 8caa39bea2d0d835a94bc95a747f1f870bae3b12
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: d33c368c271c4d1809834e2eeac8c4b5c0ba0441
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357540"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011141"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Azure Blob Storage 監視データのリファレンス
 
@@ -36,7 +36,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 #### <a name="blob-storage"></a>BLOB ストレージ
 
-この表は、[BLOB ストレージのメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsblobservices)を示しています。
+この表は、[BLOB ストレージのメトリック](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices)を示しています。
 
 | メトリック | 説明 |
 | ------------------- | ----------------- |

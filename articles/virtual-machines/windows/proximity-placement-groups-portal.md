@@ -8,11 +8,11 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: cynthn
 ms.openlocfilehash: 6a14e2bd7385430c3d0fbec06259a876af556e38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82190403"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010726"
 ---
 # <a name="create-a-proximity-placement-group-using-the-portal"></a>ポータルを使用して、近接通信配置グループを作成します。
 
@@ -55,7 +55,7 @@ ms.locfileid: "82190403"
 
 VM が可用性セットの一部である場合は、VM を追加する前に、配置グループに可用性セットを追加する必要があります。
 
-1. [ポータル](https://portal.azure.com)で*可用性セット*を検索し、結果から可用性セットを選択します。
+1. [ポータル](https://portal.azure.com)で *可用性セット* を検索し、結果から可用性セットを選択します。
 1. 各 VM を停止または割り当てを解除するために、可用性セット内の VM を選択して VM のページで **[停止]** を選択し、 **[OK]** を選択して VM を停止します。
 1. 可用性セットのページで、すべての VM の **[状態]** が **[停止済み (割り当て解除)]** として表示されていることを確認します。
 1. 左側のメニューで **[構成]** を選択します。

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: 13959c4a3c798656efdc72b5c8e5f96e4fb2392a
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375348"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011899"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -92,9 +92,9 @@ Log Analytics エージェントの Linux トラブルシューティング ツ�
 | NOT_DEFINED | 必要な依存関係がインストールされていないため、auoms auditd プラグインはインストールされません | auoms のインストールが失敗しました。パッケージ auditd をインストールします。 |
 | 2 | シェル バンドルに提供されたオプションが無効です。 使用方法については `sudo sh ./omsagent-*.universal*.sh --help` を実行してください |
 | 3 | シェル バンドルにオプションが提供されていません。 使用方法については `sudo sh ./omsagent-*.universal*.sh --help` を実行してください。 |
-| 4 | パッケージの種類またはプロキシの設定が無効です。omsagent- *rpm*.sh パッケージは RPM ベースのシステムにのみインストールでき、omsagent- *deb*.sh パッケージは Debian ベースのシステムにのみインストールできます。 [最新リリース](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux)のユニバーサル インストーラーを使うことをお勧めします。 また、プロキシの設定を確認してください。 |
+| 4 | パッケージの種類またはプロキシの設定が無効です。omsagent-*rpm*.sh パッケージは RPM ベースのシステムにのみインストールでき、omsagent-*deb*.sh パッケージは Debian ベースのシステムにのみインストールできます。 [最新リリース](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux)のユニバーサル インストーラーを使うことをお勧めします。 また、プロキシの設定を確認してください。 |
 | 5 | シェル バンドルはルートとして実行する必要があります。または、オンボード中に 403 エラーが返されました。 `sudo` を使用してコマンドを実行してください。 |
-| 6 | パッケージのアーキテクチャが無効であるか、または、オンボード中に 200 エラーが返されました。omsagent- *x64.sh パッケージは 64 ビット システムにのみインストールでき、omsagent-* x86.sh パッケージは 32 ビット システムにのみインストールできます。 アーキテクチャに合った適切なパッケージを、[最新リリース](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)からダウンロードしてください。 |
+| 6 | パッケージのアーキテクチャが無効であるか、または、オンボード中に 200 エラーが返されました。omsagent-*x64.sh パッケージは 64 ビット システムにのみインストールでき、omsagent-* x86.sh パッケージは 32 ビット システムにのみインストールできます。 アーキテクチャに合った適切なパッケージを、[最新リリース](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)からダウンロードしてください。 |
 | 17 | OMS パッケージのインストールが失敗しました。 コマンド出力で根本的な障害を調べてください。 |
 | 19 | OMI パッケージのインストールが失敗しました。 コマンド出力で根本的な障害を調べてください。 |
 | 20 | SCX パッケージのインストールが失敗しました。 コマンド出力で根本的な障害を調べてください。 |
@@ -335,9 +335,9 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
 * Azure Monitor への接続がブロックされています
 * 仮想マシンが再起動されました
 * Linux 用 Log Analytics エージェント パッケージによってインストールされたものより新しいバージョンの OMI パッケージに手動でアップグレードされました
-* DSC リソースにより、" *クラスが見つからない* " というエラーが `omsconfig.log` ログ ファイルに記録されています
+* DSC リソースにより、"*クラスが見つからない*" というエラーが `omsconfig.log` ログ ファイルに記録されています
 * Log Analytics エージェントのデータがバックアップされています
-* DSC ログの " *現在の構成が存在しません。-Path パラメーターで構成ファイルを指定して Start-DscConfiguration コマンドを実行し、現在の構成を先に作成します。* " `omsconfig.log` ログ ファイルに、`PerformRequiredConfigurationChecks` 操作に関するログ メッセージが存在しません。
+* DSC ログの "*現在の構成が存在しません。-Path パラメーターで構成ファイルを指定して Start-DscConfiguration コマンドを実行し、現在の構成を先に作成します。* " `omsconfig.log` ログ ファイルに、`PerformRequiredConfigurationChecks` 操作に関するログ メッセージが存在しません。
 
 ### <a name="resolution"></a>解像度
 1. auditd パッケージのようなすべての依存関係をインストールします。
@@ -345,7 +345,7 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
 4. プロキシを使用している場合は、上記のプロキシのトラブルシューティング手順を確認します。
 5. 一部の Azure ディストリビューション システムでは、仮想マシンの再起動後に、omid OMI サーバー デーモンが開始しません。 これにより、Audit、ChangeTracking、または UpdateManagement ソリューション関連データが表示されません。 回避するには、`sudo /opt/omi/bin/service_control restart` を実行して omi サーバーを手動で開始します。
 6. OMI パッケージを手動で新しいバージョンにアップグレードした後、Log Analytics エージェントが継続して機能するには、手動で再起動する必要があります。 この手順は、OMI サーバーがアップグレード後に自動的に起動しない一部のディストリビューションで必要です。 `sudo /opt/omi/bin/service_control restart` を実行して OMI を再起動します。
-7. DSC リソースの " *クラスが見つからない* " というエラーが omsconfig.log に記録されている場合は、`sudo /opt/omi/bin/service_control restart` を実行します。
+7. DSC リソースの "*クラスが見つからない*" というエラーが omsconfig.log に記録されている場合は、`sudo /opt/omi/bin/service_control restart` を実行します。
 8. 場合によっては、Linux 用 Log Analytics エージェントが Azure Monitor に接続できないとき、エージェント上のデータが次のバッファー サイズ全体までバックアップされます。50 MB。 `/opt/microsoft/omsagent/bin/service_control restart` コマンドを実行して、エージェントを再起動する必要があります。
 
     >[!NOTE]

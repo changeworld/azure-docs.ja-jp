@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
 ms.openlocfilehash: 9b08b59090d9dd23405f8a0ba86ce608e3a64902
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123763"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011389"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Azure Stream Analytics と Azure Machine Learning Studio (classic) を使用した感情分析の実行
 
@@ -202,7 +202,7 @@ Stream Analytics は、SQL ベースの宣言型クエリを使用し、入力�
 
 2. ページの最上部にある **[開始]** を選択します。
 
-3. **[ジョブの開始]** で **[カスタム]** を選択し、CSV ファイルを BLOB ストレージにアップロードした時刻の 1 日前を選びます。 設定が終了したら、 **[開始]** を選択します。  
+3. **[ジョブの開始]** で **[カスタム]** を選択し、CSV ファイルを BLOB ストレージにアップロードした時刻の 1 日前を選びます。 設定が終了したら、**[開始]** を選択します。  
 
 ### <a name="check-the-output"></a>出力をチェックする
 
@@ -211,7 +211,7 @@ Stream Analytics は、SQL ベースの宣言型クエリを使用し、入力�
 2. BLOB ストレージのコンテンツの確認に通常使用しているツールがある場合は、そのツールを使用してコンテナーを確認します。 別の方法として、Azure Portal で次の手順を実行します。
 
       1. Azure portal でストレージ アカウントを検索し、このアカウント内でコンテナーを検索します。 このコンテナー内には 2 つのファイルがあります。サンプル ツイートが含まれているファイルと、Stream Analytics ジョブで生成された CSV ファイルです。
-      2. 生成されたファイルを右クリックし、 **[ダウンロード]** を選択します。
+      2. 生成されたファイルを右クリックし、**[ダウンロード]** を選択します。
 
 3. 生成された CSV ファイルを開きます。 次の例のように表示されます。  
 

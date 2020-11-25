@@ -6,11 +6,11 @@ author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
 ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91871900"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011882"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows および Linux での Log Analytics エージェントの管理とメンテナンス
 
@@ -231,7 +231,7 @@ Linux コンピューターがプロキシ サーバーまたは Log Analytics �
 #### <a name="uninstall-from-control-panel"></a>コントロール パネルからアンインストールする
 1. 管理者権限を持つアカウントでコンピューターにサインオンします。
 
-2. **コントロール パネル**を開き、 **[プログラムと機能]** をクリックします。
+2. **コントロール パネル** を開き、 **[プログラムと機能]** をクリックします。
 
 3. **[プログラムと機能]** で、 **[Microsoft Monitoring Agent]** をクリックし、 **[アンインストール]** をクリックし、 **[はい]** をクリックします。
 

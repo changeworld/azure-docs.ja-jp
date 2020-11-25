@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: f43d7b2a858c5047c40157429dc5c50b467c8efc
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353137"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012392"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>チュートリアル:SAP Cloud Platform Identity Authentication を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "94353137"
 
 ## <a name="assigning-users-to-sap-cloud-platform-identity-authentication"></a>SAP Cloud Platform Identity Authentication にユーザーを割り当てる
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、SAP Cloud Platform Identity Authentication へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを SAP Cloud Platform Identity Authentication に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -57,7 +57,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 2.  新しい管理者を一覧に追加するには、左側パネルの **[+ 追加]** ボタンを押します。 **[システムの追加]** を選択し、システムの名前を入力します。   
 
 > [!NOTE]
-> SAP Cloud Platform Identity Authentication の管理者ユーザーの種類は **System** にする必要があります。 通常の管理者ユーザーを作成すると、プロビジョニング中、" *無許可* " エラーが発生することがあります。   
+> SAP Cloud Platform Identity Authentication の管理者ユーザーの種類は **System** にする必要があります。 通常の管理者ユーザーを作成すると、プロビジョニング中、"*無許可*" エラーが発生することがあります。   
 
 3.  [Configure Authorizations]\(承認の構成\) で、 **[Manage Users]\(ユーザーの管理\)**  および **[Manage Groups]\(グループの管理\)** のトグルボタンをオンにします。
 
@@ -85,7 +85,7 @@ Azure AD で自動ユーザー プロビジョニング用に SAP Cloud Platform
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **SAP Cloud Platform Identity Authentication** 」と入力して、結果パネルで **[SAP Cloud Platform Identity Authentication]** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**SAP Cloud Platform Identity Authentication**」と入力して、結果パネルで **[SAP Cloud Platform Identity Authentication]** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果リストの SAP Cloud Platform Identity Authentication](common/search-new-app.png)
 

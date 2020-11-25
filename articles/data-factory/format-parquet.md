@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 09/27/2020
 ms.author: jingwang
 ms.openlocfilehash: c99225b53266fc74ea357151de824cd8d8ed2088
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946146"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011610"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure Data Factory での Parquet 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-**Parquet ファイルの解析または Parquet 形式でのデータの書き込み**を行う場合は、この記事に従ってください。 
+**Parquet ファイルの解析または Parquet 形式でのデータの書き込み** を行う場合は、この記事に従ってください。 
 
 Parquet 形式は次のコネクタでサポートされています。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、および [SFTP](connector-sftp.md)。
 
@@ -66,7 +66,7 @@ Azure Blob Storage の Parquet データセットの例を次に示します。
 
 ### <a name="parquet-as-source"></a>ソースとしての Parquet
 
-コピー アクティビティの ***\*source\**** セクションでは、次のプロパティがサポートされます。
+コピー アクティビティの **_\_source\*** * セクションでは、次のプロパティがサポートされます。
 
 | プロパティ      | 説明                                                  | 必須 |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -75,12 +75,12 @@ Azure Blob Storage の Parquet データセットの例を次に示します。
 
 ### <a name="parquet-as-sink"></a>シンクとしての Parquet
 
-コピー アクティビティの ***\* sink \**** セクションでは、次のプロパティがサポートされます。
+コピー アクティビティの **_\_sink\*** * セクションでは、次のプロパティがサポートされます。
 
 | プロパティ      | 説明                                                  | 必須 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | コピー アクティビティ シンクの type プロパティには **ParquetSink** を設定する必要があります。 | はい      |
-| formatSettings | プロパティのグループ。 後の **Parquet の書き込み設定**に関する表を参照してください。 |    いいえ      |
+| formatSettings | プロパティのグループ。 後の **Parquet の書き込み設定** に関する表を参照してください。 |    いいえ      |
 | storeSettings | データ ストアにデータを書き込む方法を指定するプロパティのグループ。 ファイル ベースの各コネクタには、`storeSettings` に、固有のサポートされる書き込み設定があります。 **詳細については、コネクタの記事でコピー アクティビティのプロパティに関するセクションを参照してください**。 | いいえ       |
 
 `formatSettings` でサポートされている **Parquet 書き込み設定**:
@@ -161,7 +161,7 @@ Parquet 複合データ型 (MAP、LIST、STRUCT など) は、現在、コピー
 ## <a name="using-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムの使用
 
 > [!IMPORTANT]
-> オンプレミスとクラウドのデータ ストアの間など、セルフホステッド統合ランタイムを利用したコピーでは、Parquet ファイルを **そのまま**コピーしない場合は、**64-bit JRE 8 (Java Runtime Environment) または OpenJDK** と **Microsoft Visual C++ 2010 再頒布可能パッケージ** を IR マシンにインストールする必要があります。 詳細については、次の段落をご確認ください。
+> オンプレミスとクラウドのデータ ストアの間など、セルフホステッド統合ランタイムを利用したコピーでは、Parquet ファイルを **そのまま** コピーしない場合は、**64-bit JRE 8 (Java Runtime Environment) または OpenJDK** と **Microsoft Visual C++ 2010 再頒布可能パッケージ** を IR マシンにインストールする必要があります。 詳細については、次の段落をご確認ください。
 
 Parquet ファイルのシリアル化/逆シリアル化を使用してセルフホステッド IR 上で実行されるコピーでは、ADF は最初に JRE のレジストリ *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* を調べ、見つからない場合は次に OpenJDK のシステム変数 *`JAVA_HOME`* を調べることで、Java ランタイムを見つけます。
 

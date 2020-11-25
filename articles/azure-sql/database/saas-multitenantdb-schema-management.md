@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: d222234cd6ff3d910e6dbc51a394695ce467edce
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793298"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011858"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-databases"></a>共有マルチテナント データベースを使用している SaaS アプリケーションでのスキーマの管理
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -53,7 +53,7 @@ ms.locfileid: "92793298"
 - Azure PowerShell がインストールされている必要があります。 詳細については、「[Azure PowerShell を使ってみる](/powershell/azure/get-started-azureps)」をご覧ください。
 
 > [!NOTE]
-> このチュートリアルでは、限定プレビューに含まれる Azure SQL Database サービスの機能 ([Elastic Database ジョブ](elastic-database-client-library.md)) を使用します。 このチュートリアルを実行する場合、ご使用のサブスクリプション ID を *SaaSFeedback\@microsoft.com* までお送りください (件名: Elastic Jobs Preview)。 サブスクリプションが有効であることを通知するメールが届いたら、[最新のプレリリース ジョブ コマンドレットをダウンロードしてインストール](https://github.com/jaredmoo/azure-powershell/releases)します。 このプレビューは限定的であるため、関連する質問やサポートについては、 *SaaSFeedback\@microsoft.com* にお問い合わせください。
+> このチュートリアルでは、限定プレビューに含まれる Azure SQL Database サービスの機能 ([Elastic Database ジョブ](elastic-database-client-library.md)) を使用します。 このチュートリアルを実行する場合、ご使用のサブスクリプション ID を *SaaSFeedback\@microsoft.com* までお送りください (件名: Elastic Jobs Preview)。 サブスクリプションが有効であることを通知するメールが届いたら、[最新のプレリリース ジョブ コマンドレットをダウンロードしてインストール](https://github.com/jaredmoo/azure-powershell/releases)します。 このプレビューは限定的であるため、関連する質問やサポートについては、*SaaSFeedback\@microsoft.com* にお問い合わせください。
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS スキーマ管理パターンの概要
 
@@ -78,7 +78,7 @@ Wingtip Tickets SaaS マルチテナント データベースのスクリプト�
 1. **PowerShell ISE** で、 *…\\Learning Modules\\Schema Management\\Demo-SchemaManagement.ps1* を開きます。
 2. **F5** キーを押して、スクリプトを実行します。
 
-*Demo-SchemaManagement.ps1* スクリプトは *Deploy-SchemaManagement.ps1* スクリプトを呼び出して、カタログ サーバーに _jobagent_ という名前のデータベースを作成します。 次に、スクリプトはジョブ エージェントを作成し、 _jobagent_ データベースをパラメーターとして渡します。
+*Demo-SchemaManagement.ps1* スクリプトは *Deploy-SchemaManagement.ps1* スクリプトを呼び出して、カタログ サーバーに _jobagent_ という名前のデータベースを作成します。 次に、スクリプトはジョブ エージェントを作成し、_jobagent_ データベースをパラメーターとして渡します。
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>新しい参照データをすべてのテナントにデプロイするジョブの作成
 
@@ -89,7 +89,7 @@ Wingtip Tickets SaaS マルチテナント データベースのスクリプト�
 最初に、各テナント データベースに含まれている会場の種類を確認します。 SQL Server Management Studio (SSMS) でテナント データベースの 1 つに接続し、VenueTypes テーブルを調べます。  このテーブルは、データベース ページからアクセスする Azure Portal のクエリ エディターでクエリを実行することもできます。
 
 1. SSMS を開き、テナント サーバー *tenants1-dpt-&lt;ユーザー&gt;.database.windows.net* に接続します。
-1. 現在、 *Motorcycle Racing* および *Swimming Club* が **含まれていない** ことを確認するために、 *tenants1-dpt-&lt;ユーザー&gt;* サーバーの *contosoconcerthall* データベースを参照し、 *VenueTypes* テーブルに対してクエリを実行します。
+1. 現在、*Motorcycle Racing* および *Swimming Club* が **含まれていない** ことを確認するために、*tenants1-dpt-&lt;ユーザー&gt;* サーバーの *contosoconcerthall* データベースを参照し、*VenueTypes* テーブルに対してクエリを実行します。
 
 
 
@@ -97,13 +97,13 @@ Wingtip Tickets SaaS マルチテナント データベースのスクリプト�
 
 各テナント データベースの **VenueTypes** テーブルに 2 つの新しい会場タイプを追加してテーブルを更新するジョブを作成します。
 
-新しいジョブを作成するには、 _jobagent_ データベースに作成された一連のジョブ システム ストアド プロシージャを使用します。 ジョブ エージェントの作成時に、ストアド プロシージャが作成されました。
+新しいジョブを作成するには、_jobagent_ データベースに作成された一連のジョブ システム ストアド プロシージャを使用します。 ジョブ エージェントの作成時に、ストアド プロシージャが作成されました。
 
 1. SSMS で、テナント サーバー tenants1-&lt;user&gt;.database.windows.net に接続します。
 
 2. *tenants1* データベースを参照します。
 
-3. *VenueTypes* テーブルのクエリを実行して、 *Motorcycle Racing* と *Swimming Club* が結果の一覧に含まれていないことを確認します。
+3. *VenueTypes* テーブルのクエリを実行して、*Motorcycle Racing* と *Swimming Club* が結果の一覧に含まれていないことを確認します。
 
 4. カタログ サーバー *catalog-mt-&lt;user&gt;.database.windows.net* に接続します。
 
@@ -125,22 +125,22 @@ Wingtip Tickets SaaS マルチテナント データベースのスクリプト�
     - *server* ターゲット メンバー タイプ。
         - これは、テナント データベースを含む *tenants1-mt-&lt;user&gt;* サーバーです。
         - サーバーの組み込みには、ジョブが実行された時点で存在するテナント データベースを含みます。
-    - *catalog-mt-&lt;user&gt;* サーバーにある、テンプレート データベース ( *basetenantdb* ) の *database* ターゲット メンバー タイプ。
+    - *catalog-mt-&lt;user&gt;* サーバーにある、テンプレート データベース (*basetenantdb*) の *database* ターゲット メンバー タイプ。
     - 後のチュートリアルで使用する *adhocreporting* データベースを含めるための *database* ターゲット メンバー タイプ。
 
-- **sp\_add\_job** は、 *Reference Data Deployment* というジョブを作成します。
+- **sp\_add\_job** は、*Reference Data Deployment* というジョブを作成します。
 
 - **sp\_add\_jobstep** は、T-SQL コマンド テキストを含むジョブ ステップを作成して、参照テーブル VenueTypes を更新します。
 
 - スクリプトの残りのビューは、オブジェクトの存在を表示し、ジョブの実行を監視します。 これらのクエリを使用して **lifecycle** 列の状態値を調べ、ジョブがいつ終了したかを確認します。 ジョブは、テナント データベースを更新し、参照テーブルを含む 2 つの追加のデータベースを更新します。
 
-SSMS で、 *tenants1-mt-&lt;user&gt;* サーバーのテナント データベースを参照します。 *VenueTypes* テーブルのクエリを実行して、 *Motorcycle Racing* と *Swimming Club* がテーブルに追加されたことを確認します。 会場タイプの総数が 2 つ増えているはずです。
+SSMS で、*tenants1-mt-&lt;user&gt;* サーバーのテナント データベースを参照します。 *VenueTypes* テーブルのクエリを実行して、*Motorcycle Racing* と *Swimming Club* がテーブルに追加されたことを確認します。 会場タイプの総数が 2 つ増えているはずです。
 
 ## <a name="create-a-job-to-manage-the-reference-table-index"></a>参照テーブルのインデックスを管理するジョブの作成
 
 この演習では、すべてのテナント データベースで参照テーブルの主キーにインデックスを再構築するジョブを作成します。 インデックスの再構築は、管理者が大量のデータを読み込んだ後でパフォーマンス向上のために実行できる一般的なデータベース管理操作です。
 
-1. SSMS で、 *catalog-mt-&lt;User&gt;.database.windows.net* サーバーの _jobagent_ データベースに接続します。
+1. SSMS で、*catalog-mt-&lt;User&gt;.database.windows.net* サーバーの _jobagent_ データベースに接続します。
 
 2. SSMS で、 *...\\Learning Modules\\Schema Management\\OnlineReindex.sql* を開きます。
 
@@ -150,7 +150,7 @@ SSMS で、 *tenants1-mt-&lt;user&gt;* サーバーのテナント データベ�
 
 *OnlineReindex.sql* スクリプトで次の項目を確認します。
 
-* **sp\_add\_job** は、 *Online Reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885* という新しいジョブを作成します。
+* **sp\_add\_job** は、*Online Reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885* という新しいジョブを作成します。
 
 * **sp\_add\_jobstep** は、T-SQL コマンド テキストを含むジョブ ステップを作成して、インデックスを更新します。
 

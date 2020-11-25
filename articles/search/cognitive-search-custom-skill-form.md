@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 58f1c2621165a7074c04752832c6560b2fd3e423
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935434"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011967"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>例:Form Recognizer カスタム スキルを作成する
 
@@ -111,11 +111,11 @@ Azure BLOB ストレージにないリモート ドキュメントを分析す�
 
 関数の動作に満足したら、発行できます。
 
-1. Visual Studio の**ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[発行]** を選択します。 **[新規作成]**  >  **[発行]** の順に選択します。
+1. Visual Studio の **ソリューション エクスプローラー** でプロジェクトを右クリックし、 **[発行]** を選択します。 **[新規作成]**  >  **[発行]** の順に選択します。
 1. まだ Visual Studio を Azure アカウントに接続していない場合は、 **[アカウントの追加]** を選択します。
 1. 画面の指示に従います。 使用するアプリ サービス、Azure サブスクリプション、リソース グループ、ホスティング プラン、ストレージ アカウントに対して一意の名前を指定します。 リソース グループ、ホスティング プラン、ストレージ アカウントをまだ作成していない場合は新しく作成できます。 完了したら、 **[作成]** をクリックします。
 1. デプロイが完了したら、サイトの URL を書き留めておきます。 この URL は Azure の関数アプリのアドレスになります。 一時的な場所にこれを保存します。
-1. [Azure portal](https://portal.azure.com) でリソース グループに移動し、発行した `AnalyzeForm` 関数を探します。 **[管理]** セクションに [ホスト キー] が表示されます。 *既定*のホスト キーをコピーし、一時的な場所に保存します。
+1. [Azure portal](https://portal.azure.com) でリソース グループに移動し、発行した `AnalyzeForm` 関数を探します。 **[管理]** セクションに [ホスト キー] が表示されます。 *既定* のホスト キーをコピーし、一時的な場所に保存します。
 
 ## <a name="connect-to-your-pipeline"></a>パイプラインに接続する
 

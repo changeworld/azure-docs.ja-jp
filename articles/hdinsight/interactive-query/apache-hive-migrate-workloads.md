@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.openlocfilehash: bcc0faa8fdbd61ab3e3e0886256f7c796e5a98e2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534687"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011508"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3.6 Hive ワークロードを Hive HDInsight 4.0 に移行する
 
@@ -117,7 +117,7 @@ HDInsight 3.6 および 4.0 のクラスターでは、同じストレージ ア
 
 1. [Secure Shell (SSH) クライアント](../hdinsight-hadoop-linux-use-ssh-unix.md)を使用して HDInsight 3.6 クラスターに接続します。
 
-1. 開いている SSH セッションから、次のスクリプト ファイルをダウンロードして、 **alltables.sql** という名前のファイルを生成します。
+1. 開いている SSH セッションから、次のスクリプト ファイルをダウンロードして、**alltables.sql** という名前のファイルを生成します。
 
     ```bash
     wget https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/exporthive_hdi_3_6.sh
@@ -147,13 +147,13 @@ HDInsight 3.6 および 4.0 のクラスターでは、同じストレージ ア
     scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:alltables.hql c:/hdi
     ```
 
-1. **alltables.hql** を " *新しい* " HDInsight クラスターにアップロードします。
+1. **alltables.hql** を "*新しい*" HDInsight クラスターにアップロードします。
 
     ```bash
     scp c:/hdi/alltables.hql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
     ```
 
-1. 次に SSH を使用して、" *新しい* " HDInsight 4.0 クラスターに接続します。 このクラスターへの SSH セッションから、次のコードを実行します。
+1. 次に SSH を使用して、"*新しい*" HDInsight 4.0 クラスターに接続します。 このクラスターへの SSH セッションから、次のコードを実行します。
 
     ESP を使用しない場合:
 

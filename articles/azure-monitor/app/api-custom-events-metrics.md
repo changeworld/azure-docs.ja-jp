@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: e9f175e2585a5254922c9e859cf5ece2afbbc3e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264135"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011348"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -108,7 +108,7 @@ Node.js のプロジェクトでは、`new applicationInsights.TelemetryClient(i
 
 ## <a name="trackevent"></a>TrackEvent
 
-Application Insights の*カスタム イベント*はデータ ポイントであり、[メトリックス エクスプローラー](../platform/metrics-charts.md)では集計カウントとして、[診断検索](./diagnostic-search.md)では個々の発生として表示できます。 (これは MVC にも他のフレームワークの "イベント" にも関連していません)。
+Application Insights の *カスタム イベント* はデータ ポイントであり、[メトリックス エクスプローラー](../platform/metrics-charts.md)では集計カウントとして、[診断検索](./diagnostic-search.md)では個々の発生として表示できます。 (これは MVC にも他のフレームワークの "イベント" にも関連していません)。
 
 さまざまなイベントをカウントするために、`TrackEvent` 呼び出しを挿入します。 これによって、ユーザーが特定の機能を使用する頻度や、特定の目標を達成する頻度、特定の種類の間違いを起こす頻度をカウントできます。
 
@@ -247,7 +247,7 @@ appInsights.trackPageView("tab1", "http://fabrikam.com/page1.htm");
 
 ### <a name="timing-page-views"></a>ページ ビューのタイミング
 
-既定では、**ページ ビューの読み込み時間**として報告される時間は、ブラウザーが要求を送信した時点からブラウザーのページ読み込みイベントが呼び出されるまで測定されます。
+既定では、**ページ ビューの読み込み時間** として報告される時間は、ブラウザーが要求を送信した時点からブラウザーのページ読み込みイベントが呼び出されるまで測定されます。
 
 代わりに、次のいずれかを行うことができます。
 
@@ -338,7 +338,7 @@ using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operati
 
 操作のスコープ内にあるテレメトリ項目は、その操作の「子」になります。 操作コンテキストは入れ子にできます。
 
-検索では、操作コンテキストを使用して**関連項目**の一覧が作成されます。
+検索では、操作コンテキストを使用して **関連項目** の一覧が作成されます。
 
 ![関連項目](./media/api-custom-events-metrics/21.png)
 
@@ -690,7 +690,7 @@ ASP.NET Web MVC アプリケーションでの例:
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-[メトリックス エクスプローラー](../platform/metrics-charts.md)で、**ユーザー、認証アカウント**、**ユーザー アカウント**をカウントするグラフを作成できます。
+[メトリックス エクスプローラー](../platform/metrics-charts.md)で、**ユーザー、認証アカウント**、**ユーザー アカウント** をカウントするグラフを作成できます。
 
 また、特定のユーザー名とアカウントを持つクライアント データ ポイントを[検索する](./diagnostic-search.md)こともできます。
 
@@ -702,7 +702,7 @@ appInsights.setAuthenticatedUserContext(validatedId, accountId);
 
 文字列の長さには 8,192 の制限があります。 (データの大きなチャンクを送信する場合は、TrackTrace のメッセージ パラメーターを使用します。)
 
-*メトリックス*はグラフィカルに表示できる数値です。 たとえば、ゲーマーが達成するスコアに漸増があるかどうかを確認できます。 イベントともに送信されるプロパティ別にグラフをセグメント化し、ゲームごとの個別のグラフや積み重ねグラフを表示できます。
+*メトリックス* はグラフィカルに表示できる数値です。 たとえば、ゲーマーが達成するスコアに漸増があるかどうかを確認できます。 イベントともに送信されるプロパティ別にグラフをセグメント化し、ゲームごとの個別のグラフや積み重ねグラフを表示できます。
 
 メトリック値は、0 以上でないと正しく表示されません。
 
@@ -920,7 +920,7 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 *JavaScript Web クライアントの場合*、JavaScript テレメトリ初期化子を使用します。
 
-標準コレクション モジュールのデータなど、*すべてのテレメトリにプロパティを追加する*には、[`ITelemetryInitializer` を実装します](./api-filtering-sampling.md#add-properties)。
+標準コレクション モジュールのデータなど、*すべてのテレメトリにプロパティを追加する* には、[`ITelemetryInitializer` を実装します](./api-filtering-sampling.md#add-properties)。
 
 ## <a name="sampling-filtering-and-processing-telemetry"></a>テレメトリのサンプリング、フィルタリング、および処理
 
@@ -952,7 +952,7 @@ TelemetryConfiguration.Active.DisableTelemetry = true;
 telemetry.getConfiguration().setTrackingDisabled(true);
 ```
 
-*選択されている標準のコレクターを無効にする*には (たとえば、パフォーマンス カウンター、HTTP 要求、依存関係)、[ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 内の該当する行を削除するか、コメントアウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
+*選択されている標準のコレクターを無効にする* には (たとえば、パフォーマンス カウンター、HTTP 要求、依存関係)、[ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 内の該当する行を削除するか、コメントアウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
 
 *Node.js*
 
@@ -960,7 +960,7 @@ telemetry.getConfiguration().setTrackingDisabled(true);
 telemetry.config.disableAppInsights = true;
 ```
 
-初期化時にパフォーマンス カウンター、HTTP 要求、依存関係などの*選択されている標準コレクターを無効にする*には、構成メソッドを次のように SDK の初期化コードに追加します。
+初期化時にパフォーマンス カウンター、HTTP 要求、依存関係などの *選択されている標準コレクターを無効にする* には、構成メソッドを次のように SDK の初期化コードに追加します。
 
 ```javascript
 applicationInsights.setup()

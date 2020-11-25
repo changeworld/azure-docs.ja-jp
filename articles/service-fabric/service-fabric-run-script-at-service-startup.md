@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: atsenthi
 ms.openlocfilehash: a25f16f08ab8ae9564363f179d19d4b30c5315fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75464276"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012529"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>サービス スタートアップ スクリプトをローカル ユーザー アカウントまたはローカル システム アカウントとして実行する
 Service Fabric サービス実行可能ファイルを開始する前に、構成またはセットアップ作業が必要になることがあります。  たとえば、環境変数の構成です。 サービスのサービス マニフェストでは、サービス実行可能ファイルが開始される前に実行するスクリプトを指定できます。 セットアップ実行可能ファイルの実行アカウントは、サービス セットアップ エントリ ポイントの RunAs ポリシーを構成することで変更できます。  個別のセットアップ エントリ ポイントを使用すると、高い権限を持つ構成を短時間実行できるため、サービス ホスト実行可能ファイルは、長時間にわたって高い権限で実行する必要はありません。
@@ -131,7 +131,7 @@ Service Fabric サービス実行可能ファイルを開始する前に、構�
 ```
 
 > [!NOTE]
-> Linux クラスターの場合、サービスまたはセットアップ エントリ ポイントを**ルート**として実行するには、**AccountType** を **LocalSystem** として指定します。
+> Linux クラスターの場合、サービスまたはセットアップ エントリ ポイントを **ルート** として実行するには、**AccountType** を **LocalSystem** として指定します。
 
 ## <a name="run-a-script-from-the-setup-entry-point"></a>セットアップ エントリ ポイントからスクリプトを実行する
 次は、スタートアップ スクリプトをプロジェクトに追加して、管理者特権で実行します。 
@@ -161,7 +161,7 @@ PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
 MyValue
 ```
 
-サービスがデプロイされ、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) で開始したノードの名前をメモします。 たとえば、Node 2 です。 次に、アプリケーション インスタンスの作業フォルダーに移動し、 **TestVariable**の値を示す out.txt ファイルを探します。 たとえば、このサービスが Node 2 にデプロイされた場合は、**MyApplicationType** の次のパスに移動します。
+サービスがデプロイされ、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) で開始したノードの名前をメモします。 たとえば、Node 2 です。 次に、アプリケーション インスタンスの作業フォルダーに移動し、 **TestVariable** の値を示す out.txt ファイルを探します。 たとえば、このサービスが Node 2 にデプロイされた場合は、**MyApplicationType** の次のパスに移動します。
 
 ```
 C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt

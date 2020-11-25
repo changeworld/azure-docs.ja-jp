@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 273e9f7ce65cdd15000b1cc4ac7c19cde5992992
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af671996722524de9af1a90ae8dfde27f814c8c2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396775"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011814"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Network Watcher のトラブルシューティングを使用した VPN ゲートウェイの監視
 
@@ -51,7 +51,7 @@ VPN トンネルの接続状態を確認するスクリプトが含まれた Run
 
 ### <a name="create-the-runbook"></a>Runbook の作成
 
-この例を構成する最初の手順は、Runbook の作成です。 ここでは実行アカウントを使用します。 実行アカウントについては、「[Azure 実行アカウントを使用した Runbook の認証](../automation/automation-create-runas-account.md)」を参照してください。
+この例を構成する最初の手順は、Runbook の作成です。 ここでは実行アカウントを使用します。 実行アカウントについては、「[Azure 実行アカウントを使用した Runbook の認証](../automation/manage-runas-account.md)」を参照してください。
 
 ### <a name="step-1"></a>手順 1
 

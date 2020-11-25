@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 6af095c7abdb9aa61e57d543ff2ab2f9192dadc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743575"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011440"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>BLOB パスを既定のパスから変更する
 
@@ -64,7 +64,7 @@ Azure 関数を作成するには、次の手順を実行します。
 
         ![新しい C# 関数を作成する](./media/storsimple-data-manager-change-default-blob-path/new-function-parameters.png)
 
-    4. **Create** をクリックしてください。 **関数**が作成されます。
+    4. **Create** をクリックしてください。 **関数** が作成されます。
 
      
 10. [関数] ウィンドウで _.csx_ ファイルを実行します。
@@ -179,7 +179,7 @@ Azure 関数を作成するには、次の手順を実行します。
 
         ![ストレージ接続名をコピーする](./media/storsimple-data-manager-change-default-blob-path/new-function-storage-connection-name.png)
 
-    3. 関数を**保存**します。
+    3. 関数を **保存** します。
 
         ![関数を保存する](./media/storsimple-data-manager-change-default-blob-path/save-function.png)
 

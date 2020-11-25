@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: cb5ee7d3549e433fb184b8c55c28b9a28ed89272
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84982120"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011933"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Cognitive Search の強化パイプラインのカスタム Web API スキル
 
@@ -89,7 +89,7 @@ Microsoft.Skills.Custom.WebApiSkill
 
 * 最上位レベルのエンティティは `values` と呼ばれます。これはオブジェクトの配列になります。 これらのオブジェクトの数は、最大でも `batchSize` になります
 * `values` 配列内の各オブジェクトには、次のプロパティが含まれます
-    * `recordId` プロパティ。これは、そのレコードを識別するために使用される**一意の**文字列です。
+    * `recordId` プロパティ。これは、そのレコードを識別するために使用される **一意の** 文字列です。
     * `data` プロパティ。これは _JSON_ オブジェクトです。 `data` プロパティのフィールドは、スキル定義の `inputs` セクションで指定された "名前" に対応します。 これらのフィールドの値は、それらのフィールドの `source` からの値になります (これは、ドキュメント内のフィールドからの値になる可能性もありますし、他のスキルからの値になる可能性もあります)
 
 ```json
@@ -197,7 +197,7 @@ Microsoft.Skills.Custom.WebApiSkill
 Web API が利用できない場合や、成功以外の状態コードが送信された場合に加え、次の場合もエラーと見なされます。
 
 * Web API からは成功の状態コードが返されたものの、応答ではそれが `application/json` でないと示されている場合、その応答は無効と見なされ、エンリッチメントは実行されません。
-* 応答の `values` 配列内に**無効な**レコードがある場合 (元の要求に `recordId` がないか、重複する値がある場合)、**それらの**レコードに対してエンリッチメントは実行されません。
+* 応答の `values` 配列内に **無効な** レコードがある場合 (元の要求に `recordId` がないか、重複する値がある場合)、**それらの** レコードに対してエンリッチメントは実行されません。
 
 Web API が利用できないか、HTTP エラーが返された場合は、HTTP エラーに関する入手可能な詳細情報を含んだわかりやすいエラーが、インデクサーの実行履歴に追加されます。
 

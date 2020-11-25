@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
 ms.openlocfilehash: f314394d3a0ac453d525079e096162d8739f67cf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314723"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011797"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure Cognitive Search のセキュリティ - 概要
 
@@ -84,9 +84,9 @@ Azure Cognitive Search における二重暗号化は、CMK の拡張機能で�
 
 + クエリ キー (インデックスのドキュメント コレクションへの読み取り専用アクセスを許可)
 
-*管理者キー*は、サービスのプロビジョニング時に作成されます。 2 つの管理キーがあり、区別するために "*プライマリ*" と "*セカンダリ*" と呼ばれますが、これらは実際には交換可能です。 各サービスが 2 つの管理キーを持つため、サービスにアクセスしたままで一方のキーをロールオーバーできます。 Azure のセキュリティのベスト プラクティスに従って[管理キーを再生成](search-security-api-keys.md#regenerate-admin-keys)できますが、管理キーの合計数は追加できません。 Search サービスごとに最大 2 個の管理キーがあります。
+*管理者キー* は、サービスのプロビジョニング時に作成されます。 2 つの管理キーがあり、区別するために "*プライマリ*" と "*セカンダリ*" と呼ばれますが、これらは実際には交換可能です。 各サービスが 2 つの管理キーを持つため、サービスにアクセスしたままで一方のキーをロールオーバーできます。 Azure のセキュリティのベスト プラクティスに従って[管理キーを再生成](search-security-api-keys.md#regenerate-admin-keys)できますが、管理キーの合計数は追加できません。 Search サービスごとに最大 2 個の管理キーがあります。
 
-*クエリ キー*は必要に応じて作成され、クエリを発行するクライアント アプリケーション向けに設計されています。 クエリ キーは最大 50 個まで作成できます。 アプリケーション コードでは、特定のインデックスのドキュメント コレクションへの読み取り専用アクセスを許可するために検索の URL とクエリ API キーを指定します。 エンドポイント、読み取り専用アクセスのための API キー、およびターゲット インデックスの組み合わせにより、クライアント アプリケーションからの接続のスコープとアクセス レベルが定義されます。
+*クエリ キー* は必要に応じて作成され、クエリを発行するクライアント アプリケーション向けに設計されています。 クエリ キーは最大 50 個まで作成できます。 アプリケーション コードでは、特定のインデックスのドキュメント コレクションへの読み取り専用アクセスを許可するために検索の URL とクエリ API キーを指定します。 エンドポイント、読み取り専用アクセスのための API キー、およびターゲット インデックスの組み合わせにより、クライアント アプリケーションからの接続のスコープとアクセス レベルが定義されます。
 
 要求ごとに認証が必要です。この各要求は必須のキー、操作、およびオブジェクトで構成されています。 2 つのアクセス許可レベル (完全または読み取り専用) とコンテキスト (インデックスでのクエリ操作など) を組み合わせれば、サービス操作に対して全範囲のセキュリティを実現できます。 キーの詳細については、[API キーの作成と管理](search-security-api-keys.md)に関するページを参照してください。
 
@@ -94,7 +94,7 @@ Azure Cognitive Search における二重暗号化は、CMK の拡張機能で�
 
 検索サービスへのアクセスをさらに制御するために、特定の IP アドレスまたは IP アドレス範囲へのアクセスを許可する受信ファイアウォール規則を作成できます。 すべてのクライアント接続は、許可された IP アドレスを使用して行う必要があります。それ以外の場合、接続は拒否されます。
 
-:::image type="content" source="media/search-security-overview/inbound-firewall-ip-restrictions.png" alt-text="サービス エンゲージメントの各レベルでのさまざまな種類のセキュリティを表す図":::
+:::image type="content" source="media/search-security-overview/inbound-firewall-ip-restrictions.png" alt-text="IP 制限アクセスのサンプル アーキテクチャの図":::
 
 [受信アクセスを構成](service-configure-firewall.md)するには、ポータルを使用します。
 
@@ -106,7 +106,7 @@ Azure Cognitive Search の[プライベート エンドポイント](../private-
 
 プライベート エンドポイントでは、検索サービスに接続するために仮想ネットワークのアドレス空間の IP アドレスが使用されます。 クライアントと検索サービス間のネットワーク　トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベートリンクを経由することで、パブリック インターネット上での露出を排除します。 VNET によって、オンプレミス ネットワークやインターネットを利用したリソース間の安全な通信が可能になります。
 
-:::image type="content" source="media/search-security-overview/inbound-private-link-azure-cog-search.png" alt-text="サービス エンゲージメントの各レベルでのさまざまな種類のセキュリティを表す図":::
+:::image type="content" source="media/search-security-overview/inbound-private-link-azure-cog-search.png" alt-text="プライベート エンドポイント アクセスのサンプル アーキテクチャの図":::
 
 このソリューションは最も安全ですが、追加のサービスを使用すると、追加のコストがかかります。そのため、使用の前に利点の詳細を明確に理解しておく必要があります。 コストの詳細については、[価格](https://azure.microsoft.com/pricing/details/private-link/)に関するページを参照してください。 これらのコンポーネントを連携させる方法の詳細については、この記事の上部にあるビデオをご覧ください。 プライベート エンドポイント オプションの説明は、ビデオの 5:48 から始まります。 エンドポイントを設定する方法については、[Azure Cognitive Search でのプライベート エンドポイントの作成](service-create-private-endpoint.md)に関するページを参照してください。
 

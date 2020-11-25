@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: fasttrack-edit, iot
 services: iot-dps
-ms.openlocfilehash: 1dc97f92e6139475d0d5ac5ea1201d6ff6b8d470
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45a2b7a64006ab6963290be3ac86a3a5d1e4916d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532326"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010981"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Azure デバイス プロビジョニング サービス SDK でデバイスの登録を管理する方法
 "*デバイス登録*" では、ある時点でデバイス プロビジョニング サービスに登録できる、1 つのデバイスまたはデバイス グループのレコードが作成されます。 登録レコードには、必要な IoT ハブを含む、目的のデバイス初期構成がその登録の一部として含まれます。 この記事では、Azure IoT プロビジョニング サービス SDK を使ってプログラムでプロビジョニング サービスのデバイス登録を管理する方法を示します。  この SDK は、GitHub の Azure IoT SDK と同じリポジトリにあります。
@@ -21,12 +21,12 @@ ms.locfileid: "90532326"
 ## <a name="prerequisites"></a>前提条件
 * デバイス プロビジョニング サービス インスタンスから接続文字列を取得します。
 * 使用されている[構成証明メカニズム](concepts-service.md#attestation-mechanism)のデバイス セキュリティ アーティファクトを取得します。
-    * [**トラステッド プラットフォーム モジュール (TPM)** ](/azure/iot-dps/concepts-security#trusted-platform-module):
+    * [**トラステッド プラットフォーム モジュール (TPM)**](./concepts-tpm-attestation.md):
         * 個別登録: 物理デバイスまたは TPM シミュレーターからの登録 ID と TPM 保証キー。
         * 登録グループは、TPM 構成証明には適用されません。
-    * [**X.509**](/azure/iot-dps/concepts-security):
-        * 個別登録: 物理デバイスまたは SDK [DICE](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) エミュレーターからの[リーフ証明書](/azure/iot-dps/concepts-security)。
-        * 登録グループ: 物理デバイスでデバイス証明書を生成するために使われる [CA/ルート証明書](/azure/iot-dps/concepts-security#root-certificate)または[中間証明書](/azure/iot-dps/concepts-security#intermediate-certificate)。  SDK DICE エミュレーターから生成することもできます。
+    * [**X.509**](./concepts-service.md#attestation-mechanism):
+        * 個別登録: 物理デバイスまたは SDK [DICE](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) エミュレーターからの[リーフ証明書](./concepts-service.md#attestation-mechanism)。
+        * 登録グループ: 物理デバイスでデバイス証明書を生成するために使われる [CA/ルート証明書](./concepts-x509-attestation.md#root-certificate)または[中間証明書](./concepts-x509-attestation.md#intermediate-certificate)。  SDK DICE エミュレーターから生成することもできます。
 * API の正確な呼び出し方法は、言語によって異なる場合があります。 詳しくは、GitHub で提供されているサンプルをご覧ください。
    * [Java によるプロビジョニング サービス クライアントのサンプル](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
    * [Node.js によるプロビジョニング サービス クライアントのサンプル](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
@@ -35,7 +35,7 @@ ms.locfileid: "90532326"
 ## <a name="create-a-device-enrollment"></a>デバイス登録を作成する
 プロビジョニング サービスにデバイスを登録する方法には次の 2 つがあります。
 
-* **登録グループ**は、[ルート証明書](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate)または[中間証明書](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)によって署名された、X.509 証明書の構成証明メカニズムを共有するデバイス グループのエントリです。 必要な初期構成を共有するデバイスが多数ある場合や、デバイスがすべて同じテナントに属する予定の場合は、加入グループを使用することをお勧めします。 "*登録グループ*" として X.509 構成証明メカニズムを使用するデバイスのみを登録することができます。 
+* **登録グループ** は、[ルート証明書](./concepts-x509-attestation.md#root-certificate)または [中間証明書](./concepts-x509-attestation.md#intermediate-certificate)によって署名された、X.509 証明書の構成証明メカニズムを共有するデバイス グループのエントリです。 必要な初期構成を共有するデバイスが多数ある場合や、デバイスがすべて同じテナントに属する予定の場合は、加入グループを使用することをお勧めします。 "*登録グループ*" として X.509 構成証明メカニズムを使用するデバイスのみを登録することができます。 
 
     以下のワークフローに従って、SDK で登録グループを作成できます。
 
@@ -43,7 +43,7 @@ ms.locfileid: "90532326"
     1. 作成された ```attestation``` と一意の ```enrollmentGroupId``` を使って、新しい ```EnrollmentGroup``` 変数を作成します。  必要に応じて、```IoTHubHostName```、```ProvisioningStatus``` などのパラメーターを設定できます。
     2. バックエンド アプリケーションで ```EnrollmentGroup``` を指定してサービス SDK の API ```createOrUpdateEnrollmentGroup``` を呼び出し、登録グループを作成します。
 
-* **個別登録**は、登録する単一のデバイスのエントリです。 個別加入では、構成証明メカニズムとして X.509 証明書または (実際の TPM または仮想 TPM の) SAS トークンを使用できます。 固有の初期構成を必要とするデバイスや、TPM または仮想 TPM を介した SAS トークンのみを構成証明メカニズムとして使用できるデバイスには、個別加入を使用することをお勧めします。 個別登録では、必要な IoT ハブ デバイス ID が指定されている場合があります。
+* **個別登録** は、登録する単一のデバイスのエントリです。 個別加入では、構成証明メカニズムとして X.509 証明書または (実際の TPM または仮想 TPM の) SAS トークンを使用できます。 固有の初期構成を必要とするデバイスや、TPM または仮想 TPM を介した SAS トークンのみを構成証明メカニズムとして使用できるデバイスには、個別加入を使用することをお勧めします。 個別登録では、必要な IoT ハブ デバイス ID が指定されている場合があります。
 
     以下のワークフローに従って、SDK で個別登録を作成できます。
     
@@ -73,8 +73,8 @@ ms.locfileid: "90532326"
 
 ## <a name="remove-an-enrollment-entry"></a>登録エントリを削除する
 
-* **個別登録**は、```registrationId``` を使ってサービス SDK の API ```deleteIndividualEnrollment``` を呼び出すことにより削除できます。
-* **グループ登録**は、```enrollmentGroupId``` を使ってサービス SDK の API ```deleteEnrollmentGroup``` を呼び出すことにより削除できます。
+* **個別登録** は、```registrationId``` を使ってサービス SDK の API ```deleteIndividualEnrollment``` を呼び出すことにより削除できます。
+* **グループ登録** は、```enrollmentGroupId``` を使ってサービス SDK の API ```deleteEnrollmentGroup``` を呼び出すことにより削除できます。
 
 このワークフローについては、[前述](#prerequisites)のサンプルをご覧ください。
 
