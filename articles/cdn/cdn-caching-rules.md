@@ -14,16 +14,16 @@ ms.topic: how-to
 ms.date: 03/19/2019
 ms.author: allensu
 ms.openlocfilehash: a5f4f6a6e72b57638688069111071a6e0a035c49
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778967"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018666"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>キャッシュ規則で Azure CDN キャッシュの動作を制御する
 
 > [!NOTE] 
-> キャッシュ規則は、 **Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** プロファイルでのみ使用できます。 **Microsoft の Azure CDN** プロファイルの場合は、 [Standard ルール エンジン](cdn-standard-rules-engine-reference.md)を使用する必要があります。 **Azure CDN Premium from Verizon** プロファイルの場合は、同様の機能に対して **管理** ポータルで [Verizon Premium ルール エンジン](./cdn-verizon-premium-rules-engine.md)を使用する必要があります。
+> キャッシュ規則は、**Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** プロファイルでのみ使用できます。 **Microsoft の Azure CDN** プロファイルの場合は、[Standard ルール エンジン](cdn-standard-rules-engine-reference.md)を使用する必要があります。**Azure CDN Premium from Verizon** プロファイルの場合は、同様の機能に対して **管理** ポータルで [Verizon Premium ルール エンジン](./cdn-verizon-premium-rules-engine.md)を使用する必要があります。
  
 Azure Content Delivery Network (CDN) には、ファイルのキャッシュ方法を制御する方法が 2 つあります。 
 
@@ -75,9 +75,9 @@ Azure Content Delivery Network (CDN) には、ファイルのキャッシュ方�
 
 カスタム キャッシュ規則では、次の 2 つの一致条件を使うことができます。
  
-- **パス** :この条件は、ドメイン名を除く URL のパスと一致し、ワイルドカード文字 (\*) をサポートしています。 たとえば、 _/myfile.html_ 、 _/my/folder/*_ 、 _/my/images/*.jpg_ です。 最大長は 260 文字です。
+- **パス**:この条件は、ドメイン名を除く URL のパスと一致し、ワイルドカード文字 (\*) をサポートしています。 たとえば、 _/myfile.html_、 _/my/folder/*_ 、 _/my/images/*.jpg_ です。 最大長は 260 文字です。
 
-- **[拡張子]** :この条件は、要求されたファイルのファイル拡張子と一致します。 コンマで区切ってファイル拡張子のリストを指定できます。 たとえば、 _.jpg_ 、 _.mp3_ 、または _.png_ です。 拡張子の最大数は 50、各拡張子の最大文字数は 16 です。 
+- **[拡張子]** :この条件は、要求されたファイルのファイル拡張子と一致します。 コンマで区切ってファイル拡張子のリストを指定できます。 たとえば、 _.jpg_、 _.mp3_、または _.png_ です。 拡張子の最大数は 50、各拡張子の最大文字数は 16 です。 
 
 ## <a name="global-and-custom-rule-processing-order"></a>グローバル規則とカスタム規則の処理順序
 グローバル キャッシュ規則とカスタム キャッシュ規則は、次の順序で処理されます。
@@ -86,24 +86,24 @@ Azure Content Delivery Network (CDN) には、ファイルのキャッシュ方�
 
 - グローバル キャッシュ規則より、カスタム キャッシュ規則の方が優先されます (同じ適用対象について)。 カスタム キャッシュ規則は上から下へ順番に処理されます。 つまり、要求が両方の条件と一致する場合、一覧で上にある規則より下にある規則の方が優先されます。 したがって、固有性の高い規則ほど一覧の下に置く必要があります。
 
-**例** :
+**例**:
 - グローバル キャッシュ規則: 
-   - キャッシュ動作: **オーバーライド**
+   - キャッシュ動作:**オーバーライド**
    - キャッシュの有効期間:1 日
 
 - カスタム キャッシュ規則 1:
-   - 一致条件: **パス**
+   - 一致条件:**パス**
    - 一致する値: _/home/*_
-   - キャッシュ動作: **オーバーライド**
+   - キャッシュ動作:**オーバーライド**
    - キャッシュの有効期間:2 日
 
 - カスタム キャッシュ規則 2:
-   - 一致条件: **拡張子**
+   - 一致条件:**拡張子**
    - 一致する値: _.html_
-   - キャッシュ動作: **存在しない場合に設定**
+   - キャッシュ動作:**存在しない場合に設定**
    - キャッシュの有効期間:3 日
 
-これらの規則が設定されている場合、 _&lt;endpoint hostname&gt;_ .azureedge.net/home/index.html に対する要求によってカスタム キャッシュ規則 2 がトリガーされます。この設定内容は、 **[存在しない場合に設定]** と 3 日です。 したがって、 *index.html* ファイルに `Cache-Control` または `Expires` HTTP ヘッダーがある場合はそれらが適用され、これらのヘッダーが設定されていない場合は、ファイルは 3 日間キャッシュされます。
+これらの規則が設定されている場合、 _&lt;endpoint hostname&gt;_ .azureedge.net/home/index.html に対する要求によってカスタム キャッシュ規則 2 がトリガーされます。この設定内容は、 **[存在しない場合に設定]** と 3 日です。 したがって、*index.html* ファイルに `Cache-Control` または `Expires` HTTP ヘッダーがある場合はそれらが適用され、これらのヘッダーが設定されていない場合は、ファイルは 3 日間キャッシュされます。
 
 > [!NOTE] 
 > 規則が変更される前にキャッシュされたファイルは、元のキャッシュ期間の設定のままになります。 キャッシュ期間をリセットするには、[ファイルを消去する](cdn-purge-endpoint.md)必要があります。 

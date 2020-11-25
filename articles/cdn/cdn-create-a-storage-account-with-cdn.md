@@ -16,11 +16,11 @@ ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: b80437fa1ac41bb240565923eb40e562c8cf8c5b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778899"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018615"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>クイック スタート:Azure Storage アカウントと Azure CDN との統合
 
@@ -50,7 +50,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
     | 設定 | 値 | 
     | --- | --- |
-    | [プロジェクトの詳細] > [リソース グループ] | **[新規作成]** を選択し、 *CDNQuickstart-rg* という名前を使用します。 既存のリソース グループを使用してもかまいません。 |
+    | [プロジェクトの詳細] > [リソース グループ] | **[新規作成]** を選択し、*CDNQuickstart-rg* という名前を使用します。 既存のリソース グループを使用してもかまいません。 |
     | [インスタンスの詳細] > [ストレージ アカウント名] | 3 から 24 文字の小文字と数値のみを使用してアカウントの名前を入力します。 この名前は、Azure 全体で一意であることが必要です。対応するサブスクリプションの BLOB リソース、キュー リソース、またはテーブル リソースのアドレス指定に使用される URL のホスト名になります。 Blob Storage 内のコンテナー リソースをアドレス指定するには、 http:// *&lt;storageaccountname&gt;* .blob.core.windows.net/ *&lt;container-name&gt;* 形式の URI を使います。
     | [インスタンスの詳細] > [Location]\(場所\) | ドロップダウン リストから最寄りの Azure リージョンを選択します。 |
     
@@ -68,9 +68,9 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
     | 設定  | 値 |
     | -------- | ----- |
-    | **[CDN プロファイル]** | **[新規作成]** を選択し、プロファイル名を入力します (例: *cdn-profile-123* )。 プロファイルは、エンドポイントのコレクションです。 |
-    | **価格レベル** | いずれかの **Standard** オプション ( **Standard Microsoft** など) を選択します。 |
-    | **[CDN エンドポイント名]** | エンドポイントのホスト名を入力します (例: *cdn-endpoint-123* )。 この名前は、 _&lt;エンドポイント名&gt;_ .azureedge.net という URL でキャッシュされたリソースにアクセスする際に使用されるため、Azure 全体でグローバルに一意である必要があります。 |
+    | **[CDN プロファイル]** | **[新規作成]** を選択し、プロファイル名を入力します (例: *cdn-profile-123*)。 プロファイルは、エンドポイントのコレクションです。 |
+    | **価格レベル** | いずれかの **Standard** オプション (**Standard Microsoft** など) を選択します。 |
+    | **[CDN エンドポイント名]** | エンドポイントのホスト名を入力します (例: *cdn-endpoint-123*)。 この名前は、 _&lt;エンドポイント名&gt;_ .azureedge.net という URL でキャッシュされたリソースにアクセスする際に使用されるため、Azure 全体でグローバルに一意である必要があります。 |
     | **配信元のホスト名** | 既定では、新しい CDN エンドポイントは、ストレージ アカウントのホスト名を配信元サーバーとして使います。 |
 
 1. **［作成］** を選択します 作成されたエンドポイントが、エンドポイントの一覧に表示されます。
@@ -95,7 +95,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
 CDN にキャッシュされたコンテンツにアクセスするには、ポータルで提供される CDN URL を使用します。 キャッシュされた BLOB のアドレスの形式は次のようになります。
 
-http://< *endpoint-name*\>.azureedge.net/< *myPublicContainer*\>/<*BlobName*\>
+http://<*endpoint-name*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 
 > [!NOTE]
 > ストレージ アカウントへの Azure CDN アクセスを有効にすると、パブリックにアクセスできるオブジェクトが CDN POP キャッシュの対象になります。 CDN で現在キャッシュされているオブジェクトを変更する場合、キャッシュされたコンテンツの有効期限が終了した後で Azure CDN がそのコンテンツを更新するまで、Azure CDN を通して新しいコンテンツを使うことはできません。
@@ -116,7 +116,7 @@ Azure CDN に既にキャッシュされているオブジェクトは、オブ�
 
 1. Azure portal の左側のメニューで、 **[リソース グループ]** 、[*CDNQuickstart-rg*\*] の順に選択します。
 
-2. **[リソース グループ]** ページで、 **[リソース グループの削除]** を選択し、テキスト ボックスに「 *CDNQuickstart-rg* 」と入力して、 **[削除]** を選択します。
+2. **[リソース グループ]** ページで、 **[リソース グループの削除]** を選択し、テキスト ボックスに「*CDNQuickstart-rg*」と入力して、 **[削除]** を選択します。
 
     このアクションにより、このクイック スタートで作成したリソース グループ、プロファイル、およびエンドポイントが削除されます。
 

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 6372976d85c7fdce2a729047d3ae36911412ecf1
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636886"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019669"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -111,7 +111,7 @@ ms.locfileid: "92636886"
 ### <a name="typeproperties-section"></a>typeProperties セクション
 typeProperties セクションは、アクティビティごとに異なります。 変換アクティビティには type プロパティのみが存在します。 パイプラインの変換アクティビティを定義する JSON サンプルについては、この記事の[データ変換アクティビティ](#data-transformation-activities)に関するセクションを参照してください。
 
-**コピー アクティビティ** の typeProperties セクションには、 **source** と **sink** の 2 つのサブセクションが存在します。 データ ストアを source や sink として使用する JSON サンプルについては、この記事の「[データ ストア](#data-stores)」セクションを参照してください。
+**コピー アクティビティ** の typeProperties セクションには、**source** と **sink** の 2 つのサブセクションが存在します。 データ ストアを source や sink として使用する JSON サンプルについては、この記事の「[データ ストア](#data-stores)」セクションを参照してください。
 
 ### <a name="sample-copy-pipeline"></a>コピー パイプラインのサンプル
 次のサンプル パイプラインでは、 **Copy** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、[コピー アクティビティ](data-factory-data-movement-activities.md)により、Azure の BLOB ストレージから Azure SQL Database にデータをコピーします。
@@ -161,7 +161,7 @@ typeProperties セクションは、アクティビティごとに異なりま�
 
 以下の点に注意してください。
 
-* activities セクションに、 **type** が **Copy** に設定されたアクティビティが 1 つだけあります。
+* activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
 * アクティビティの入力を **InputDataset** に設定し、出力を **OutputDataset** に設定します。
 * **typeProperties** セクションでは、ソースの種類として **BlobSource** が指定され、シンクの種類として **SqlSink** が指定されています。
 
@@ -219,8 +219,8 @@ typeProperties セクションは、アクティビティごとに異なりま�
 
 以下の点に注意してください。
 
-* activities セクションに、 **type** が **HDInsightHive** に設定されたアクティビティが 1 つだけあります。
-* Hive スクリプト ファイル **partitionweblogs.hql** は、Azure ストレージ アカウント (scriptLinkedService によって指定され、 **AzureStorageLinkedService** という名前) および **adfgetstarted** コンテナーの **script** フォルダーに格納されます。
+* activities セクションに、**type** が **HDInsightHive** に設定されたアクティビティが 1 つだけあります。
+* Hive スクリプト ファイル **partitionweblogs.hql** は、Azure ストレージ アカウント (scriptLinkedService によって指定され、**AzureStorageLinkedService** という名前) および **adfgetstarted** コンテナーの **script** フォルダーに格納されます。
 * **defines** セクションは、Hive 構成値 (例: `${hiveconf:inputtable}`、`${hiveconf:partitionedtable}`) として Hive スクリプトに渡される実行時設定を指定するために使用されます。
 
 パイプラインの変換アクティビティを定義する JSON サンプルについては、この記事の[データ変換アクティビティ](#data-transformation-activities)に関するセクションを参照してください。
@@ -312,7 +312,7 @@ structure:
 ]
 ```
 
-次の表では、 **availability** セクションで使用できるプロパティについて説明します。
+次の表では、**availability** セクションで使用できるプロパティについて説明します。
 
 | プロパティ | 説明 | 必須 | Default |
 | --- | --- | --- | --- |
@@ -409,7 +409,7 @@ structure:
 リンクされたサービスには、Azure Storage のリンクされたサービスと Azure Storage SAS のリンクされたサービスの 2 種類があります。
 
 #### <a name="azure-storage-linked-service"></a>Azure Storage のリンクされたサービス
-**アカウント キー** を使用して Azure Storage アカウントをデータ ファクトリにリンクさせるには、Azure Storage のリンクされたサービスを作成します。 Azure Storage のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureStorage** に設定します。 そのうえで、 **typeProperties** セクションに以下のプロパティを指定することができます。
+**アカウント キー** を使用して Azure Storage アカウントをデータ ファクトリにリンクさせるには、Azure Storage のリンクされたサービスを作成します。 Azure Storage のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureStorage** に設定します。 そのうえで、**typeProperties** セクションに以下のプロパティを指定することができます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -430,7 +430,7 @@ structure:
 ```
 
 #### <a name="azure-storage-sas-linked-service"></a>Azure Storage SAS のリンクされたサービス
-Azure Storage SAS のリンクされたサービスを利用すると、Shared Access Signature (SAS) を使用して Azure ストレージ アカウントを Azure Data Factory にリンクできます。 これによって、Data Factory は、ストレージ内のすべてまたは特定のリソース (BLOB/コンテナー) へのアクセスが制限付きまたは期限付きになります。 Shared Access Signature を使用して Azure Storage アカウントをデータ ファクトリにリンクさせるには、Azure Storage SAS のリンクされたサービスを作成します。 Azure Storage SAS のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureStorageSas** に設定します。 そのうえで、 **typeProperties** セクションに以下のプロパティを指定することができます。
+Azure Storage SAS のリンクされたサービスを利用すると、Shared Access Signature (SAS) を使用して Azure ストレージ アカウントを Azure Data Factory にリンクできます。 これによって、Data Factory は、ストレージ内のすべてまたは特定のリソース (BLOB/コンテナー) へのアクセスが制限付きまたは期限付きになります。 Shared Access Signature を使用して Azure Storage アカウントをデータ ファクトリにリンクさせるには、Azure Storage SAS のリンクされたサービスを作成します。 Azure Storage SAS のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureStorageSas** に設定します。 そのうえで、**typeProperties** セクションに以下のプロパティを指定することができます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -460,8 +460,8 @@ Azure BLOB データセットを定義するには、データセットの **typ
 | folderPath |BLOB ストレージのコンテナーとフォルダーのパス。 例: myblobcontainer\myblobfolder\ |はい |
 | fileName |BLOB の名前です。 fileName は省略可能で、大文字と小文字を区別します。<br/><br/>fileName を指定すると、アクティビティ (コピーを含む) は特定の BLOB で動作します。<br/><br/>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべての BLOB が含まれます。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。`Data.<Guid>.txt` (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |いいえ |
 | partitionedBy |partitionedBy は任意のプロパティです。 これを使用し、時系列データに動的な folderPath と fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath をパラメーター化できます。 |いいえ |
-| format | 次の種類の形式がサポートされます: **TextFormat** 、 **JsonFormat** 、 **AvroFormat** 、 **OrcFormat** 、 **ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
-| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、 **GZip** 、 **Deflate** 、 **BZip2** 、 **ZipDeflate** です。 サポートされるレベルは、 **Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
+| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
 
 #### <a name="example"></a>例
 
@@ -493,13 +493,13 @@ Azure BLOB データセットを定義するには、データセットの **typ
 詳細については、[Azure BLOB コネクタ](data-factory-azure-blob-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="blobsource-in-copy-activity"></a>コピー アクティビティの BlobSource
-Azure Blob Storage からデータをコピーする場合は、コピー アクティビティの **source type** を **BlobSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+Azure Blob Storage からデータをコピーする場合は、コピー アクティビティの **source type** を **BlobSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | recursive |データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 |True (既定値)、False |いいえ |
 
-#### <a name="example-blobsource"></a>例: **BlobSource**
+#### <a name="example-blobsource"></a>例:**BlobSource**
 ```json
 {
     "name": "SamplePipeline",
@@ -536,7 +536,7 @@ Azure Blob Storage からデータをコピーする場合は、コピー アク
 }
 ```
 ### <a name="blobsink-in-copy-activity"></a>コピー アクティビティの BlobSink
-Azure Blob Storage にデータをコピーする場合は、コピー アクティビティの **sink type** を **BlobSink** に設定し、 **sink** セクションで以下のプロパティを指定します。
+Azure Blob Storage にデータをコピーする場合は、コピー アクティビティの **sink type** を **BlobSink** に設定し、**sink** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
@@ -586,11 +586,11 @@ Azure Blob Storage にデータをコピーする場合は、コピー アクテ
 ## <a name="azure-data-lake-store"></a>Azure Data Lake Store
 
 ### <a name="linked-service"></a>リンクされたサービス
-Azure Data Lake Store のリンクされたサービスを定義するには、リンクされたサービスの type を **AzureDataLakeStore** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Azure Data Lake Store のリンクされたサービスを定義するには、リンクされたサービスの type を **AzureDataLakeStore** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります: **AzureDataLakeStore** | はい |
+| type | type プロパティは、次のように設定する必要があります:**AzureDataLakeStore** | はい |
 | dataLakeStoreUri | Azure Data Lake Store アカウントの情報を指定します。 `https://[accountname].azuredatalakestore.net/webhdfs/v1` または `adl://[accountname].azuredatalakestore.net/` という形式で指定します。 | はい |
 | subscriptionId | Data Lake Store が属する Azure サブスクリプション ID。 | シンクでは必須 |
 | resourceGroupName | Data Lake Store が所属する Azure リソース グループの名前。 | シンクでは必須 |
@@ -636,15 +636,15 @@ Azure Data Lake Store のリンクされたサービスを定義するには、�
 詳細については、[Azure Data Lake Store コネクタ](data-factory-azure-datalake-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-Azure Data Lake Store データセットを定義するには、データセットの **type** を **AzureDataLakeStore** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Azure Data Lake Store データセットを定義するには、データセットの **type** を **AzureDataLakeStore** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | folderPath |Azure Data Lake Store のコンテナーとフォルダーのパス。 |はい |
 | fileName |Azure Data Lake Store 内のファイルの名前。 fileName は省略可能で、大文字と小文字を区別します。 <br/><br/>fileName を指定すると、アクティビティ (コピーを含む) は特定のファイルで動作します。<br/><br/>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべてのファイルが含まれます。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。`Data.<Guid>.txt` (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |いいえ |
 | partitionedBy |partitionedBy は任意のプロパティです。 これを使用し、時系列データに動的な folderPath と fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath をパラメーター化できます。 |いいえ |
-| format | 次の種類の形式がサポートされます: **TextFormat** 、 **JsonFormat** 、 **AvroFormat** 、 **OrcFormat** 、 **ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
-| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、 **GZip** 、 **Deflate** 、 **BZip2** 、 **ZipDeflate** です。 サポートされるレベルは、 **Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
+| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
 
 #### <a name="example"></a>例
 ```json
@@ -681,7 +681,7 @@ Azure Data Lake Store データセットを定義するには、データセッ�
 詳細については、[Azure Data Lake Store コネクタ](data-factory-azure-datalake-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="azure-data-lake-store-source-in-copy-activity"></a>コピー アクティビティの Azure Data Lake Store ソース
-Azure Data Lake Store からデータをコピーする場合は、コピー アクティビティの **source type** を **AzureDataLakeStoreSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+Azure Data Lake Store からデータをコピーする場合は、コピー アクティビティの **source type** を **AzureDataLakeStoreSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 **AzureDataLakeStoreSource** の **typeProperties** セクションでは、次のプロパティがサポートされます。
 
@@ -730,7 +730,7 @@ Azure Data Lake Store からデータをコピーする場合は、コピー ア
 詳細については、[Azure Data Lake Store コネクタ](data-factory-azure-datalake-connector.md#copy-activity-properties)に関する記事を参照してください。
 
 ### <a name="azure-data-lake-store-sink-in-copy-activity"></a>コピー アクティビティの Azure Data Lake Store シンク
-Azure Data Lake Store にデータをコピーする場合は、コピー アクティビティの **sink type** を **AzureDataLakeStoreSink** に設定し、 **sink** セクションで以下のプロパティを指定します。
+Azure Data Lake Store にデータをコピーする場合は、コピー アクティビティの **sink type** を **AzureDataLakeStoreSink** に設定し、**sink** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
@@ -782,7 +782,7 @@ Azure Data Lake Store にデータをコピーする場合は、コピー アク
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
 ### <a name="linked-service"></a>リンクされたサービス
-Azure Cosmos DB のリンクされたサービスを定義するには、リンクされたサービスの **type** を **DocumentDb** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Azure Cosmos DB のリンクされたサービスを定義するには、リンクされたサービスの **type** を **DocumentDb** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | **プロパティ** | **説明** | **必須** |
 | --- | --- | --- |
@@ -804,7 +804,7 @@ Azure Cosmos DB のリンクされたサービスを定義するには、リン�
 詳細については、[Azure Cosmos DB コネクタ](data-factory-azure-documentdb-connector.md#linked-service-properties)に関する記事をご覧ください。
 
 ### <a name="dataset"></a>データセット
-Azure Cosmos DB データセットを定義するには、データセットの **type** を **DocumentDbCollection** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Azure Cosmos DB データセットを定義するには、データセットの **type** を **DocumentDbCollection** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | **プロパティ** | **説明** | **必須** |
 | --- | --- | --- |
@@ -832,7 +832,7 @@ Azure Cosmos DB データセットを定義するには、データセットの 
 詳細については、[Azure Cosmos DB コネクタ](data-factory-azure-documentdb-connector.md#dataset-properties)に関する記事をご覧ください。
 
 ### <a name="azure-cosmos-db-collection-source-in-copy-activity"></a>コピー アクティビティの Azure Cosmos DB コレクション ソース
-Azure Cosmos DB からデータをコピーする場合は、コピー アクティビティの **source type** を **DocumentDbCollectionSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+Azure Cosmos DB からデータをコピーする場合は、コピー アクティビティの **source type** を **DocumentDbCollectionSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 
 | **プロパティ** | **説明** | **指定できる値** | **必須** |
@@ -879,7 +879,7 @@ Azure Cosmos DB からデータをコピーする場合は、コピー アクテ
 ```
 
 ### <a name="azure-cosmos-db-collection-sink-in-copy-activity"></a>コピー アクティビティの Azure Cosmos DB コレクション シンク
-Azure Cosmos DB にデータをコピーする場合は、コピー アクティビティの **sink type** を **DocumentDbCollectionSink** に設定し、 **sink** セクションで以下のプロパティを指定します。
+Azure Cosmos DB にデータをコピーする場合は、コピー アクティビティの **sink type** を **DocumentDbCollectionSink** に設定し、**sink** セクションで以下のプロパティを指定します。
 
 | **プロパティ** | **説明** | **指定できる値** | **必須** |
 | --- | --- | --- | --- |
@@ -932,7 +932,7 @@ Azure Cosmos DB にデータをコピーする場合は、コピー アクティ
 ## <a name="azure-sql-database"></a>Azure SQL データベース
 
 ### <a name="linked-service"></a>リンクされたサービス
-Azure SQL Database のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureSqlDatabase** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Azure SQL Database のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureSqlDatabase** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -954,7 +954,7 @@ Azure SQL Database のリンクされたサービスを定義するには、リ�
 詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-Azure SQL Database データセットを定義するには、データセットの **type** を **AzureSqlTable** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Azure SQL Database データセットを定義するには、データセットの **type** を **AzureSqlTable** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -989,7 +989,7 @@ Azure SQL Database データセットを定義するには、データセット�
 詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="sql-source-in-copy-activity"></a>コピー アクティビティの SQL ソース
-Azure SQL Database からデータをコピーする場合は、コピー アクティビティの **source type** を **SqlSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+Azure SQL Database からデータをコピーする場合は、コピー アクティビティの **source type** を **SqlSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
@@ -1043,7 +1043,7 @@ Azure SQL Database からデータをコピーする場合は、コピー アク
 詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#copy-activity-properties)に関する記事を参照してください。
 
 ### <a name="sql-sink-in-copy-activity"></a>コピー アクティビティの SQL シンク
-Azure SQL Database にデータをコピーする場合は、コピー アクティビティの **sink type** を **SqlSink** に設定し、 **sink** セクションで以下のプロパティを指定します。
+Azure SQL Database にデータをコピーする場合は、コピー アクティビティの **sink type** を **SqlSink** に設定し、**sink** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
@@ -1103,7 +1103,7 @@ Azure SQL Database にデータをコピーする場合は、コピー アクテ
 ## <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
 ### <a name="linked-service"></a>リンクされたサービス
-Azure Synapse Analytics のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureSqlDW** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Azure Synapse Analytics のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureSqlDW** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -1128,7 +1128,7 @@ Azure Synapse Analytics のリンクされたサービスを定義するには�
 詳細については、[Azure Synapse Analytics のコネクタ](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-Azure Synapse Analytics データセットを定義するには、データセットの **type** を **AzureSqlDWTable** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Azure Synapse Analytics データセットを定義するには、データセットの **type** を **AzureSqlDWTable** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -1164,7 +1164,7 @@ Azure Synapse Analytics データセットを定義するには、データセ�
 詳細については、[Azure Synapse Analytics のコネクタ](data-factory-azure-sql-data-warehouse-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="azure-synapse-analytics-source-in-copy-activity"></a>コピー アクティビティでの Azure Synapse Analytics ソース
-Azure Synapse Analytics からデータをコピーする場合は、コピー アクティビティの **source type** を **SqlDWSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+Azure Synapse Analytics からデータをコピーする場合は、コピー アクティビティの **source type** を **SqlDWSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
@@ -1219,7 +1219,7 @@ Azure Synapse Analytics からデータをコピーする場合は、コピー �
 詳細については、[Azure Synapse Analytics のコネクタ](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)に関する記事を参照してください。
 
 ### <a name="azure-synapse-analytics-sink-in-copy-activity"></a>コピー アクティビティでの Azure Synapse Analytics シンク
-Azure Synapse Analytics にデータをコピーする場合は、コピー アクティビティの **sink type** を **SqlDWSink** に設定し、 **sink** セクションで以下のプロパティを指定します。
+Azure Synapse Analytics にデータをコピーする場合は、コピー アクティビティの **sink type** を **SqlDWSink** に設定し、**sink** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
@@ -1228,7 +1228,7 @@ Azure Synapse Analytics にデータをコピーする場合は、コピー ア�
 | polyBaseSettings |**allowPolybase** プロパティが **true** に設定されているときに指定できるプロパティのグループ。 |&nbsp; |いいえ |
 | rejectValue |クエリが失敗するまでに拒否できる行の数または割合を指定します。 <br/><br/>PolyBase の拒否オプションの詳細については、「 **CREATE EXTERNAL TABLE (Transact-SQL)** 」の「 [Arguments (引数)](/sql/t-sql/statements/create-external-table-transact-sql) 」をご覧ください。 |0 (既定値)、1、2、… |いいえ |
 | rejectType |rejectValue オプションをリテラル値と割合のどちらで指定するかを指定します。 |Value (既定値)、Percentage |いいえ |
-| rejectSampleValue |拒否された行の割合が PolyBase で再計算されるまでに取得する行数を決定します。 |1、2、… |はい ( **rejectType** が **percentage** の場合) |
+| rejectSampleValue |拒否された行の割合が PolyBase で再計算されるまでに取得する行数を決定します。 |1、2、… |はい (**rejectType** が **percentage** の場合) |
 | useTypeDefault |PolyBase によってテキスト ファイルからデータが取得されるときに、区切りテキスト ファイル内の不足値を処理する方法を指定します。<br/><br/>このプロパティの詳細については、[CREATE EXTERNAL FILE FORMAT (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql) Arguments セクションをご覧ください。 |True、False (既定値) |いいえ |
 | writeBatchSize |バッファー サイズが writeBatchSize に到達したときに SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値: 10000) |
 | writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |TimeSpan<br/><br/> 例:"00:30:00" (30 分)。 |いいえ |
@@ -1282,7 +1282,7 @@ Azure Synapse Analytics にデータをコピーする場合は、コピー ア�
 ## <a name="azure-cognitive-search"></a>Azure Cognitive Search
 
 ### <a name="linked-service"></a>リンクされたサービス
-Azure Cognitive Search のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureSearch** に設定し、 **typeProperties** セクションで次のプロパティを指定します。
+Azure Cognitive Search のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureSearch** に設定し、**typeProperties** セクションで次のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
@@ -1307,7 +1307,7 @@ Azure Cognitive Search のリンクされたサービスを定義するには、
 詳細については、[Azure Cognitive Search コネクタ](data-factory-azure-search-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-Azure Cognitive Search データセットを定義するには、データセットの **type** を **AzureSearchIndex** に設定し、 **typeProperties** セクションで次のプロパティを指定します。
+Azure Cognitive Search データセットを定義するには、データセットの **type** を **AzureSearchIndex** に設定し、**typeProperties** セクションで次のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
@@ -1336,7 +1336,7 @@ Azure Cognitive Search データセットを定義するには、データセッ
 詳細については、[Azure Cognitive Search コネクタ](data-factory-azure-search-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="azure-cognitive-search-index-sink-in-copy-activity"></a>コピー アクティビティの Azure Cognitive Search インデックス シンク
-検索インデックスにデータをコピーしている場合は、コピー アクティビティの **sink type** を **AzureSearchIndexSink** に設定し、 **sink** セクションで次のプロパティを指定します。
+検索インデックスにデータをコピーしている場合は、コピー アクティビティの **sink type** を **AzureSearchIndexSink** に設定し、**sink** セクションで次のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
@@ -1394,11 +1394,11 @@ Azure Cognitive Search データセットを定義するには、データセッ
 リンクされたサービスには、Azure Storage のリンクされたサービスと Azure Storage SAS のリンクされたサービスの 2 種類があります。
 
 #### <a name="azure-storage-linked-service"></a>Azure Storage のリンクされたサービス
-**アカウント キー** を使用して Azure Storage アカウントをデータ ファクトリにリンクさせるには、Azure Storage のリンクされたサービスを作成します。 Azure Storage のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureStorage** に設定します。 そのうえで、 **typeProperties** セクションに以下のプロパティを指定することができます。
+**アカウント キー** を使用して Azure Storage アカウントをデータ ファクトリにリンクさせるには、Azure Storage のリンクされたサービスを作成します。 Azure Storage のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureStorage** に設定します。 そのうえで、**typeProperties** セクションに以下のプロパティを指定することができます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type |type プロパティは、次のように設定する必要があります: **AzureStorage** |はい |
+| type |type プロパティは、次のように設定する必要があります:**AzureStorage** |はい |
 | connectionString |connectionString プロパティのために Azure Storage に接続するために必要な情報を指定します。 |はい |
 
 **例:**
@@ -1416,11 +1416,11 @@ Azure Cognitive Search データセットを定義するには、データセッ
 ```
 
 #### <a name="azure-storage-sas-linked-service"></a>Azure Storage SAS のリンクされたサービス
-Azure Storage SAS のリンクされたサービスを利用すると、Shared Access Signature (SAS) を使用して Azure ストレージ アカウントを Azure Data Factory にリンクできます。 これによって、Data Factory は、ストレージ内のすべてまたは特定のリソース (BLOB/コンテナー) へのアクセスが制限付きまたは期限付きになります。 Shared Access Signature を使用して Azure Storage アカウントをデータ ファクトリにリンクさせるには、Azure Storage SAS のリンクされたサービスを作成します。 Azure Storage SAS のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureStorageSas** に設定します。 そのうえで、 **typeProperties** セクションに以下のプロパティを指定することができます。
+Azure Storage SAS のリンクされたサービスを利用すると、Shared Access Signature (SAS) を使用して Azure ストレージ アカウントを Azure Data Factory にリンクできます。 これによって、Data Factory は、ストレージ内のすべてまたは特定のリソース (BLOB/コンテナー) へのアクセスが制限付きまたは期限付きになります。 Shared Access Signature を使用して Azure Storage アカウントをデータ ファクトリにリンクさせるには、Azure Storage SAS のリンクされたサービスを作成します。 Azure Storage SAS のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureStorageSas** に設定します。 そのうえで、**typeProperties** セクションに以下のプロパティを指定することができます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type |type プロパティは、次のように設定する必要があります: **AzureStorageSas** |はい |
+| type |type プロパティは、次のように設定する必要があります:**AzureStorageSas** |はい |
 | sasUri |BLOB、コンテナー、テーブルなどの Azure Storage リソースへの Shared Access Signature URI を指定します。 |はい |
 
 **例:**
@@ -1440,7 +1440,7 @@ Azure Storage SAS のリンクされたサービスを利用すると、Shared A
 これらのリンクされたサービスの詳細については、[Azure Table Storage コネクタ](data-factory-azure-table-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-Azure Table データセットを定義するには、データセットの **type** を **AzureTable** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Azure Table データセットを定義するには、データセットの **type** を **AzureTable** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -1476,7 +1476,7 @@ Azure Table データセットを定義するには、データセットの **ty
 これらのリンクされたサービスの詳細については、[Azure Table Storage コネクタ](data-factory-azure-table-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="azure-table-source-in-copy-activity"></a>コピー アクティビティの Azure Table ソース
-Azure Table Storage からデータをコピーする場合は、コピー アクティビティの **source type** を **AzureTableSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+Azure Table Storage からデータをコピーする場合は、コピー アクティビティの **source type** を **AzureTableSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
@@ -1529,7 +1529,7 @@ Azure Table Storage からデータをコピーする場合は、コピー ア�
 これらのリンクされたサービスの詳細については、[Azure Table Storage コネクタ](data-factory-azure-table-connector.md#copy-activity-properties)に関する記事を参照してください。
 
 ### <a name="azure-table-sink-in-copy-activity"></a>コピー アクティビティの Azure Table シンク
-Azure Table Storage にデータをコピーする場合は、コピー アクティビティの **sink type** を **AzureTableSink** に設定し、 **sink** セクションで以下のプロパティを指定します。
+Azure Table Storage にデータをコピーする場合は、コピー アクティビティの **sink type** を **AzureTableSink** に設定し、**sink** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
@@ -1588,7 +1588,7 @@ Azure Table Storage にデータをコピーする場合は、コピー アク�
 ## <a name="amazon-redshift"></a>Amazon RedShift
 
 ### <a name="linked-service"></a>リンクされたサービス
-Amazon Redshift のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AmazonRedshift** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Amazon Redshift のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AmazonRedshift** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -1619,11 +1619,11 @@ Amazon Redshift のリンクされたサービスを定義するには、リン�
 詳細については、Amazon Redshift コネクタに関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-Amazon Redshift データセットを定義するには、データセットの **type** を **RelationalTable** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Amazon Redshift データセットを定義するには、データセットの **type** を **RelationalTable** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| tableName |リンクされたサービスが参照する Amazon Redshift データベースのテーブルの名前です。 |いいえ ( **RelationalSource** の **クエリ** が指定されている場合) |
+| tableName |リンクされたサービスが参照する Amazon Redshift データベースのテーブルの名前です。 |いいえ (**RelationalSource** の **クエリ** が指定されている場合) |
 
 
 #### <a name="example"></a>例
@@ -1648,11 +1648,11 @@ Amazon Redshift データセットを定義するには、データセットの 
 詳細については、Amazon Redshift コネクタに関する記事を参照してください。
 
 ### <a name="relational-source-in-copy-activity"></a>コピー アクティビティのリレーショナル ソース
-Amazon Redshift からデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+Amazon Redshift からデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 (例: `select * from MyTable`)。 |いいえ ( **データセット** の **tableName** が指定されている場合) |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 (例: `select * from MyTable`)。 |いいえ (**データセット** の **tableName** が指定されている場合) |
 
 #### <a name="example"></a>例
 
@@ -1700,7 +1700,7 @@ Amazon Redshift からデータをコピーする場合は、コピー アクテ
 ## <a name="ibm-db2"></a>IBM DB2
 
 ### <a name="linked-service"></a>リンクされたサービス
-IBM DB2 のリンクされたサービスを定義するには、リンクされたサービスの **type** を **OnPremisesDB2** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+IBM DB2 のリンクされたサービスを定義するには、リンクされたサービスの **type** を **OnPremisesDB2** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -1733,11 +1733,11 @@ IBM DB2 のリンクされたサービスを定義するには、リンクされ
 詳細については、IBM DB2 コネクタに関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-DB2 データセットを定義するには、データセットの **type** を **RelationalTable** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+DB2 データセットを定義するには、データセットの **type** を **RelationalTable** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| tableName |リンクされたサービスが参照する DB2 データベース インスタンスのテーブルの名前です。 tableName は、大文字と小文字が区別されます。 |いいえ ( **RelationalSource** の **クエリ** が指定されている場合)
+| tableName |リンクされたサービスが参照する DB2 データベース インスタンスのテーブルの名前です。 tableName は、大文字と小文字が区別されます。 |いいえ (**RelationalSource** の **クエリ** が指定されている場合)
 
 #### <a name="example"></a>例
 ```json
@@ -1766,12 +1766,12 @@ DB2 データセットを定義するには、データセットの **type** を
 詳細については、IBM DB2 コネクタに関する記事を参照してください。
 
 ### <a name="relational-source-in-copy-activity"></a>コピー アクティビティのリレーショナル ソース
-IBM DB2 からデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+IBM DB2 からデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 (例: `"query": "select * from "MySchema"."MyTable""`)。 |いいえ ( **データセット** の **tableName** が指定されている場合) |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 (例: `"query": "select * from "MySchema"."MyTable""`)。 |いいえ (**データセット** の **tableName** が指定されている場合) |
 
 #### <a name="example"></a>例
 ```json
@@ -1816,7 +1816,7 @@ IBM DB2 からデータをコピーする場合は、コピー アクティビ�
 ## <a name="mysql"></a>MySQL
 
 ### <a name="linked-service"></a>リンクされたサービス
-MySQL のリンクされたサービスを定義するには、リンクされたサービスの **type** を **OnPremisesMySql** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+MySQL のリンクされたサービスを定義するには、リンクされたサービスの **type** を **OnPremisesMySql** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -1851,11 +1851,11 @@ MySQL のリンクされたサービスを定義するには、リンクされ�
 詳細については、[MySQL コネクタ](data-factory-onprem-mysql-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-MySQL データセットを定義するには、データセットの **type** を **RelationalTable** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+MySQL データセットを定義するには、データセットの **type** を **RelationalTable** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| tableName |リンクされたサービスが参照する MySQL Databases インスタンスのテーブルの名前です。 |いいえ ( **RelationalSource** の **クエリ** が指定されている場合) |
+| tableName |リンクされたサービスが参照する MySQL Databases インスタンスのテーブルの名前です。 |いいえ (**RelationalSource** の **クエリ** が指定されている場合) |
 
 #### <a name="example"></a>例
 
@@ -1884,12 +1884,12 @@ MySQL データセットを定義するには、データセットの **type** �
 詳細については、[MySQL コネクタ](data-factory-onprem-mysql-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="relational-source-in-copy-activity"></a>コピー アクティビティのリレーショナル ソース
-MySQL データベースからデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+MySQL データベースからデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 (例: `select * from MyTable`)。 |いいえ ( **データセット** の **tableName** が指定されている場合) |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 (例: `select * from MyTable`)。 |いいえ (**データセット** の **tableName** が指定されている場合) |
 
 
 #### <a name="example"></a>例
@@ -1938,7 +1938,7 @@ MySQL データベースからデータをコピーする場合は、コピー �
 ## <a name="oracle"></a>Oracle
 
 ### <a name="linked-service"></a>リンクされたサービス
-Oracle のリンクされたサービスを定義するには、リンクされたサービスの **type** を **OnPremisesOracle** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Oracle のリンクされたサービスを定義するには、リンクされたサービスの **type** を **OnPremisesOracle** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -1964,11 +1964,11 @@ Oracle のリンクされたサービスを定義するには、リンクされ�
 詳細については、[Oracle コネクタ](data-factory-onprem-oracle-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-Oracle データセットを定義するには、データセットの **type** を **OracleTable** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Oracle データセットを定義するには、データセットの **type** を **OracleTable** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| tableName |リンクされたサービスが参照する Oracle データベース インスタンスのテーブルの名前です。 |いいえ ( **OracleSource** の **oracleReaderQuery** が指定されている場合) |
+| tableName |リンクされたサービスが参照する Oracle データベース インスタンスのテーブルの名前です。 |いいえ (**OracleSource** の **oracleReaderQuery** が指定されている場合) |
 
 #### <a name="example"></a>例
 
@@ -2001,11 +2001,11 @@ Oracle データセットを定義するには、データセットの **type** 
 詳細については、[Oracle コネクタ](data-factory-onprem-oracle-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="oracle-source-in-copy-activity"></a>コピー アクティビティの Oracle ソース
-Oracle データベースからデータをコピーする場合は、コピー アクティビティの **source type** を **OracleSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+Oracle データベースからデータをコピーする場合は、コピー アクティビティの **source type** を **OracleSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| oracleReaderQuery |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: `select * from MyTable` <br/><br/>指定されていない場合に実行される SQL ステートメント: `select * from MyTable` |いいえ ( **データセット** の **tableName** が指定されている場合) |
+| oracleReaderQuery |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: `select * from MyTable` <br/><br/>指定されていない場合に実行される SQL ステートメント: `select * from MyTable` |いいえ (**データセット** の **tableName** が指定されている場合) |
 
 #### <a name="example"></a>例
 
@@ -2053,7 +2053,7 @@ Oracle データベースからデータをコピーする場合は、コピー 
 詳細については、[Oracle コネクタ](data-factory-onprem-oracle-connector.md#copy-activity-properties)に関する記事を参照してください。
 
 ### <a name="oracle-sink-in-copy-activity"></a>コピー アクティビティの Oracle シンク
-Oracle データベースにデータをコピーする場合は、コピー アクティビティの **sink type** を **OracleSink** に設定し、 **sink** セクションで以下のプロパティを指定します。
+Oracle データベースにデータをコピーする場合は、コピー アクティビティの **sink type** を **OracleSink** に設定し、**sink** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
@@ -2107,7 +2107,7 @@ Oracle データベースにデータをコピーする場合は、コピー ア
 ## <a name="postgresql"></a>PostgreSQL
 
 ### <a name="linked-service"></a>リンクされたサービス
-PostgreSQL のリンクされたサービスを定義するには、リンクされたサービスの **type** を **OnPremisesPostgreSql** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+PostgreSQL のリンクされたサービスを定義するには、リンクされたサービスの **type** を **OnPremisesPostgreSql** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -2141,11 +2141,11 @@ PostgreSQL のリンクされたサービスを定義するには、リンクさ
 詳細については、[PostgreSQL コネクタ](data-factory-onprem-postgresql-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-PostgreSQL データセットを定義するには、データセットの **type** を **RelationalTable** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+PostgreSQL データセットを定義するには、データセットの **type** を **RelationalTable** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| tableName |リンクされたサービスが参照する PostgreSQL Databases インスタンスのテーブルの名前です。 tableName は、大文字と小文字が区別されます。 |いいえ ( **RelationalSource** の **クエリ** が指定されている場合) |
+| tableName |リンクされたサービスが参照する PostgreSQL Databases インスタンスのテーブルの名前です。 tableName は、大文字と小文字が区別されます。 |いいえ (**RelationalSource** の **クエリ** が指定されている場合) |
 
 #### <a name="example"></a>例
 ```json
@@ -2173,12 +2173,12 @@ PostgreSQL データセットを定義するには、データセットの **typ
 詳細については、[PostgreSQL コネクタ](data-factory-onprem-postgresql-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="relational-source-in-copy-activity"></a>コピー アクティビティのリレーショナル ソース
-PostgreSQL データベースからデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+PostgreSQL データベースからデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: "query": "select * from \"MySchema\".\"MyTable\"" |いいえ ( **データセット** の **tableName** が指定されている場合) |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: "query": "select * from \"MySchema\".\"MyTable\"" |いいえ (**データセット** の **tableName** が指定されている場合) |
 
 #### <a name="example"></a>例
 
@@ -2226,7 +2226,7 @@ PostgreSQL データベースからデータをコピーする場合は、コピ
 
 
 ### <a name="linked-service"></a>リンクされたサービス
-SAP Business Warehouse (BW) のリンクされたサービスを定義するには、リンクされたサービスの **type** を **SapBw** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+SAP Business Warehouse (BW) のリンクされたサービスを定義するには、リンクされたサービスの **type** を **SapBw** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
@@ -2282,7 +2282,7 @@ SAP BW データセットを定義するには、データセットの **type** 
 詳細については、[SAP Business Warehouse コネクタ](data-factory-sap-business-warehouse-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="relational-source-in-copy-activity"></a>コピー アクティビティのリレーショナル ソース
-SAP Business Warehouse からデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+SAP Business Warehouse からデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
@@ -2336,7 +2336,7 @@ SAP Business Warehouse からデータをコピーする場合は、コピー �
 ## <a name="sap-hana"></a>SAP HANA
 
 ### <a name="linked-service"></a>リンクされたサービス
-SAP HANA のリンクされたサービスを定義するには、リンクされたサービスの **type** を **SapHana** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+SAP HANA のリンクされたサービスを定義するには、リンクされたサービスの **type** を **SapHana** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
@@ -2390,7 +2390,7 @@ SAP HANA データセットを定義するには、データセットの **type*
 詳細については、[SAP HANA コネクタ](data-factory-sap-hana-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="relational-source-in-copy-activity"></a>コピー アクティビティのリレーショナル ソース
-SAP HANA データ ストアからデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+SAP HANA データ ストアからデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
@@ -2452,13 +2452,13 @@ SAP HANA データ ストアからデータをコピーする場合は、コピ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは次の値に設定されます。 **OnPremisesSqlServer** |はい |
+| type |type プロパティは次の値に設定されます。**OnPremisesSqlServer** |はい |
 | connectionString |SQL 認証または Windows 認証を使用して、SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
 | gatewayName |Data Factory サービスが、SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
-| username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username** 。 |いいえ |
+| username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
 
-**New-AzDataFactoryEncryptValue** コマンドレットを使用して資格情報を暗号化し、次の例で示すようにそれを接続文字列で使用できます ( **EncryptedCredential** プロパティ)。
+**New-AzDataFactoryEncryptValue** コマンドレットを使用して資格情報を暗号化し、次の例で示すようにそれを接続文字列で使用できます (**EncryptedCredential** プロパティ)。
 
 ```json
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
@@ -2501,7 +2501,7 @@ SAP HANA データ ストアからデータをコピーする場合は、コピ�
 詳細については、[SQL Server コネクタ](data-factory-sqlserver-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-SQL Server データセットを定義するには、データセットの **type** を **SqlServerTable** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+SQL Server データセットを定義するには、データセットの **type** を **SqlServerTable** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -2536,7 +2536,7 @@ SQL Server データセットを定義するには、データセットの **typ
 詳細については、[SQL Server コネクタ](data-factory-sqlserver-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="sql-source-in-copy-activity"></a>コピー アクティビティの SQL ソース
-SQL Server データベースからデータをコピーする場合は、コピー アクティビティの **source type** を **SqlSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+SQL Server データベースからデータをコピーする場合は、コピー アクティビティの **source type** を **SqlSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
@@ -2547,7 +2547,7 @@ SQL Server データベースからデータをコピーする場合は、コピ
 
 SqlSource に **sqlReaderQuery** が指定されている場合、コピー アクティビティでは、データを取得するために SQL Server Database ソースに対してこのクエリを実行します。
 
-または、 **sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
+または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
 
 SqlReaderQuery または sqlReaderStoredProcedureName を指定しない場合は、SQL Server Database に対して実行する選択クエリを作成するために、構造セクションで定義された列が使用されます。 データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
 
@@ -2597,14 +2597,14 @@ SqlReaderQuery または sqlReaderStoredProcedureName を指定しない場合�
 }
 ```
 
-この例では、SqlSource に **sqlReaderQuery** が指定されています。 コピー アクティビティでは、データを取得するために SQL Server Database ソースに対してこのクエリを実行します。 または、 **sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。 sqlReaderQuery は、入力データセットによって参照されるデータベースで複数のテーブルを参照できます。 参照できるテーブルは、データセットの tableName typeProperty として設定されるテーブルに限りません。
+この例では、SqlSource に **sqlReaderQuery** が指定されています。 コピー アクティビティでは、データを取得するために SQL Server Database ソースに対してこのクエリを実行します。 または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。 sqlReaderQuery は、入力データセットによって参照されるデータベースで複数のテーブルを参照できます。 参照できるテーブルは、データセットの tableName typeProperty として設定されるテーブルに限りません。
 
 SqlReaderQuery または sqlReaderStoredProcedureName を指定しない場合は、SQL Server Database に対して実行する選択クエリを作成するために、構造セクションで定義された列が使用されます。 データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
 
 詳細については、[SQL Server コネクタ](data-factory-sqlserver-connector.md#copy-activity-properties)に関する記事を参照してください。
 
 ### <a name="sql-sink-in-copy-activity"></a>コピー アクティビティの SQL シンク
-SQL Server データベースにデータをコピーする場合は、コピー アクティビティの **sink type** を **SqlSink** に設定し、 **sink** セクションで以下のプロパティを指定します。
+SQL Server データベースにデータをコピーする場合は、コピー アクティビティの **sink type** を **SqlSink** に設定し、**sink** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
@@ -2617,7 +2617,7 @@ SQL Server データベースにデータをコピーする場合は、コピー
 | sqlWriterTableType |ストアド プロシージャで使用するテーブル型の名前を指定します。 コピー アクティビティでは、このテーブル型の一時テーブルでデータを移動できます。 その後、ストアド プロシージャのコードにより、コピーされたデータを既存のデータと結合できます。 |テーブルの種類の名前。 |いいえ |
 
 #### <a name="example"></a>例
-パイプラインには、この入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプラインの JSON 定義で、 **source** 型が **BlobSource** に設定され、 **sink** 型が **SqlSink** に設定されています。
+パイプラインには、この入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプラインの JSON 定義で、**source** 型が **BlobSource** に設定され、**sink** 型が **SqlSink** に設定されています。
 
 ```json
 {
@@ -2665,7 +2665,7 @@ SQL Server データベースにデータをコピーする場合は、コピー
 ## <a name="sybase"></a>Sybase
 
 ### <a name="linked-service"></a>リンクされたサービス
-Sybase のリンクされたサービスを定義するには、リンクされたサービスの **type** を **OnPremisesSybase** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Sybase のリンクされたサービスを定義するには、リンクされたサービスの **type** を **OnPremisesSybase** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -2699,11 +2699,11 @@ Sybase のリンクされたサービスを定義するには、リンクされ�
 詳細については、[Sybase コネクタ](data-factory-onprem-sybase-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-Sybase データセットを定義するには、データセットの **type** を **RelationalTable** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Sybase データセットを定義するには、データセットの **type** を **RelationalTable** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| tableName |リンクされたサービスが参照する Sybase データベース インスタンスのテーブルの名前です。 |いいえ ( **RelationalSource** の **クエリ** が指定されている場合) |
+| tableName |リンクされたサービスが参照する Sybase データベース インスタンスのテーブルの名前です。 |いいえ (**RelationalSource** の **クエリ** が指定されている場合) |
 
 #### <a name="example"></a>例
 
@@ -2733,12 +2733,12 @@ Sybase データセットを定義するには、データセットの **type** 
 詳細については、[Sybase コネクタ](data-factory-onprem-sybase-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="relational-source-in-copy-activity"></a>コピー アクティビティのリレーショナル ソース
-Sybase データベースからデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+Sybase データベースからデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 (例: `select * from MyTable`)。 |いいえ ( **データセット** の **tableName** が指定されている場合) |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 (例: `select * from MyTable`)。 |いいえ (**データセット** の **tableName** が指定されている場合) |
 
 #### <a name="example"></a>例
 
@@ -2785,7 +2785,7 @@ Sybase データベースからデータをコピーする場合は、コピー 
 ## <a name="teradata"></a>Teradata
 
 ### <a name="linked-service"></a>リンクされたサービス
-Teradata のリンクされたサービスを定義するには、リンクされたサービスの **type** を **OnPremisesTeradata** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Teradata のリンクされたサービスを定義するには、リンクされたサービスの **type** を **OnPremisesTeradata** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -2844,7 +2844,7 @@ Teradata BLOB データセットを定義するには、データセットの **
 詳細については、[Teradata コネクタ](data-factory-onprem-teradata-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="relational-source-in-copy-activity"></a>コピー アクティビティのリレーショナル ソース
-Teradata データベースからデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+Teradata データベースからデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
@@ -2899,7 +2899,7 @@ Teradata データベースからデータをコピーする場合は、コピ�
 
 
 ### <a name="linked-service"></a>リンクされたサービス
-Cassandra のリンクされたサービスを定義するには、リンクされたサービスの **type** を **OnPremisesCassandra** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Cassandra のリンクされたサービスを定義するには、リンクされたサービスの **type** を **OnPremisesCassandra** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -2933,12 +2933,12 @@ Cassandra のリンクされたサービスを定義するには、リンクさ�
 詳細については、[Cassandra コネクタ](data-factory-onprem-cassandra-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-Cassandra データセットを定義するには、データセットの **type** を **CassandraTable** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Cassandra データセットを定義するには、データセットの **type** を **CassandraTable** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| keyspace |Cassandra データベースのkeyspace またはスキーマの名前。 |はい ( **CassandraSource** の **クエリ** が定義されていない場合)。 |
-| tableName |Cassandra データベースのテーブル名。 |はい ( **CassandraSource** の **クエリ** が定義されていない場合)。 |
+| keyspace |Cassandra データベースのkeyspace またはスキーマの名前。 |はい (**CassandraSource** の **クエリ** が定義されていない場合)。 |
+| tableName |Cassandra データベースのテーブル名。 |はい (**CassandraSource** の **クエリ** が定義されていない場合)。 |
 
 #### <a name="example"></a>例
 
@@ -2971,7 +2971,7 @@ Cassandra データセットを定義するには、データセットの **type
 詳細については、[Cassandra コネクタ](data-factory-onprem-cassandra-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="cassandra-source-in-copy-activity"></a>コピー アクティビティの Cassandra ソース
-Cassandra からデータをコピーする場合は、コピー アクティビティの **source type** を **CassandraSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+Cassandra からデータをコピーする場合は、コピー アクティビティの **source type** を **CassandraSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
@@ -3026,7 +3026,7 @@ Cassandra からデータをコピーする場合は、コピー アクティビ
 ## <a name="mongodb"></a>MongoDB
 
 ### <a name="linked-service"></a>リンクされたサービス
-MongoDB のリンクされたサービスを定義するには、リンクされたサービスの **type** を **OnPremisesMongoDB** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+MongoDB のリンクされたサービスを定義するには、リンクされたサービスの **type** を **OnPremisesMongoDB** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -3064,7 +3064,7 @@ MongoDB のリンクされたサービスを定義するには、リンクされ
 詳細については、[MongoDB コネクタに関する記事](data-factory-on-premises-mongodb-connector.md#linked-service-properties)を参照してください。
 
 ### <a name="dataset"></a>データセット
-MongoDB データセットを定義するには、データセットの **type** を **MongoDbCollection** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+MongoDB データセットを定義するには、データセットの **type** を **MongoDbCollection** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -3093,11 +3093,11 @@ MongoDB データセットを定義するには、データセットの **type**
 詳細については、[MongoDB コネクタに関する記事](data-factory-on-premises-mongodb-connector.md#dataset-properties)を参照してください。
 
 #### <a name="mongodb-source-in-copy-activity"></a>コピー アクティビティの MongoDB ソース
-MongoDB からデータをコピーする場合は、コピー アクティビティの **source type** を **MongoDbSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+MongoDB からデータをコピーする場合は、コピー アクティビティの **source type** を **MongoDbSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリ文字列。 (例: `select * from MyTable`)。 |いいえ ( **データセット** の **collectionName** が指定されている場合) |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリ文字列。 (例: `select * from MyTable`)。 |いいえ (**データセット** の **collectionName** が指定されている場合) |
 
 #### <a name="example"></a>例
 
@@ -3147,7 +3147,7 @@ MongoDB からデータをコピーする場合は、コピー アクティビ�
 
 
 ### <a name="linked-service"></a>リンクされたサービス
-Amazon S3 のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AwsAccessKey** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Amazon S3 のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AwsAccessKey** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
@@ -3171,7 +3171,7 @@ Amazon S3 のリンクされたサービスを定義するには、リンクさ�
 詳細については、[Amazon S3 コネクタに関する記事](data-factory-amazon-simple-storage-service-connector.md#linked-service-properties)を参照してください。
 
 ### <a name="dataset"></a>データセット
-Amazon S3 データセットを定義するには、データセットの **type** を **AmazonS3** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Amazon S3 データセットを定義するには、データセットの **type** を **AmazonS3** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
@@ -3179,8 +3179,8 @@ Amazon S3 データセットを定義するには、データセットの **type
 | key |S3 オブジェクト キー。 |String |いいえ |
 | prefix |S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 キーが空の場合にのみ適用されます。 |String |いいえ |
 | version |S3 のバージョン管理が有効になっている場合の S3 オブジェクトのバージョン。 |String |いいえ |
-| format | 次の種類の形式がサポートされます: **TextFormat** 、 **JsonFormat** 、 **AvroFormat** 、 **OrcFormat** 、 **ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ | |
-| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、 **GZip** 、 **Deflate** 、 **BZip2** 、 **ZipDeflate** です。 サポートされるレベルは、 **Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ | |
+| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ | |
+| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ | |
 
 
 > [!NOTE]
@@ -3254,7 +3254,7 @@ Amazon S3 データセットを定義するには、データセットの **type
 詳細については、[Amazon S3 コネクタに関する記事](data-factory-amazon-simple-storage-service-connector.md#dataset-properties)を参照してください。
 
 ### <a name="file-system-source-in-copy-activity"></a>コピー アクティビティのファイル システム ソース
-Amazon S3 からデータをコピーする場合は、コピー アクティビティの **source type** を **FileSystemSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+Amazon S3 からデータをコピーする場合は、コピー アクティビティの **source type** を **FileSystemSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
@@ -3366,16 +3366,16 @@ Amazon S3 からデータをコピーする場合は、コピー アクティビ
 詳細については、[ファイル システム コネクタに関する記事](data-factory-onprem-file-system-connector.md#linked-service-properties)を参照してください。
 
 ### <a name="dataset"></a>データセット
-ファイル システム データセットを定義するには、データセットの **type** を **FileShare** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+ファイル システム データセットを定義するには、データセットの **type** を **FileShare** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | folderPath |フォルダーへのサブパスを指定します。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「サンプルのリンクされたサービスとデータセットの定義」を参照してください。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを使用できます。 |はい |
-| fileName |テーブルでフォルダー内の特定のファイルを参照するには、 **folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>`Data.<Guid>.txt` (例:Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ |
+| fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>`Data.<Guid>.txt` (例:Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ |
 | fileFilter |すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。 <br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/><br/>例 1: "fileFilter": "*.log"<br/>例 2: "fileFilter":2016-1-?.txt"<br/><br/>fileFilter は FileShare 入力データセットに適用されることに注意してください。 |いいえ |
 | partitionedBy |partitionedBy を使用して時系列データに動的な folderPath/fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 |いいえ |
-| format | 次の種類の形式がサポートされます: **TextFormat** 、 **JsonFormat** 、 **AvroFormat** 、 **OrcFormat** 、 **ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
-| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、 **GZip** 、 **Deflate** 、 **BZip2** 、および **ZipDeflate** であり、サポートされるレベルは **Optimal** と **Fastest** です。 「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
+| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** であり、サポートされるレベルは **Optimal** と **Fastest** です。 「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
 
 > [!NOTE]
 > fileName と fileFilter は、同時に使用することができません。
@@ -3440,7 +3440,7 @@ Amazon S3 からデータをコピーする場合は、コピー アクティビ
 詳細については、[ファイル システム コネクタに関する記事](data-factory-onprem-file-system-connector.md#dataset-properties)を参照してください。
 
 ### <a name="file-system-source-in-copy-activity"></a>コピー アクティビティのファイル システム ソース
-ファイル システムからデータをコピーする場合は、コピー アクティビティの **source type** を **FileSystemSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+ファイル システムからデータをコピーする場合は、コピー アクティビティの **source type** を **FileSystemSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
@@ -3490,7 +3490,7 @@ Amazon S3 からデータをコピーする場合は、コピー アクティビ
 詳細については、[ファイル システム コネクタに関する記事](data-factory-onprem-file-system-connector.md#copy-activity-properties)を参照してください。
 
 ### <a name="file-system-sink-in-copy-activity"></a>コピー アクティビティのファイル システム シンク
-ファイル システムにデータをコピーする場合は、コピー アクティビティの **sink type** を **FileSystemSink** に設定し、 **sink** セクションで以下のプロパティを指定します。
+ファイル システムにデータをコピーする場合は、コピー アクティビティの **sink type** を **FileSystemSink** に設定し、**sink** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
@@ -3546,7 +3546,7 @@ auto-
 ## <a name="ftp"></a>FTP
 
 ### <a name="linked-service"></a>リンクされたサービス
-FTP のリンクされたサービスを定義するには、リンクされたサービスの **type** を **FtpServer** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+FTP のリンクされたサービスを定義するには、リンクされたサービスの **type** を **FtpServer** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 | Default |
 | --- | --- | --- | --- |
@@ -3632,16 +3632,16 @@ FTP のリンクされたサービスを定義するには、リンクされた�
 詳細については、[FTP コネクタ](data-factory-ftp-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-FTP データセットを定義するには、データセットの **type** を **FileShare** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+FTP データセットを定義するには、データセットの **type** を **FileShare** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | folderPath |フォルダーへのサブ パス。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「サンプルのリンクされたサービスとデータセットの定義」を参照してください。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを使用できます。 |はい
-| fileName |テーブルでフォルダー内の特定のファイルを参照するには、 **folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>`Data.<Guid>.txt` (例:Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ |
+| fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>`Data.<Guid>.txt` (例:Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ |
 | fileFilter |すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。<br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/><br/>例 1: `"fileFilter": "*.log"`<br/>例 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> fileFilter は FileShare 入力データセットに適用されます。 このプロパティは、HDFS ではサポートされません。 |いいえ |
 | partitionedBy |partitionedBy を使用して時系列データに動的な folderPath と fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 |いいえ |
-| format | 次の種類の形式がサポートされます: **TextFormat** 、 **JsonFormat** 、 **AvroFormat** 、 **OrcFormat** 、 **ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
-| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、 **GZip** 、 **Deflate** 、 **BZip2** 、および **ZipDeflate** であり、サポートされるレベルは **Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
+| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** であり、サポートされるレベルは **Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
 | useBinaryTransfer |バイナリ転送モードを使用するかどうかを指定します。 バイナリ モードの場合は true、ASCII モードの場合は false です。 既定値:True。 このプロパティを使用できるのは、関連するリンクされたサービスの種類が FtpServer の場合のみです。 |いいえ |
 
 > [!NOTE]
@@ -3672,7 +3672,7 @@ FTP データセットを定義するには、データセットの **type** を
 詳細については、[FTP コネクタ](data-factory-ftp-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="file-system-source-in-copy-activity"></a>コピー アクティビティのファイル システム ソース
-FTP サーバーからデータをコピーする場合は、コピー アクティビティの **source type** を **FileSystemSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+FTP サーバーからデータをコピーする場合は、コピー アクティビティの **source type** を **FileSystemSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
@@ -3724,11 +3724,11 @@ FTP サーバーからデータをコピーする場合は、コピー アクテ
 ## <a name="hdfs"></a>HDFS
 
 ### <a name="linked-service"></a>リンクされたサービス
-HDFS のリンクされたサービスを定義するには、リンクされたサービスの **type** を **Hdfs** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+HDFS のリンクされたサービスを定義するには、リンクされたサービスの **type** を **Hdfs** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります: **Hdfs** |はい |
+| type |type プロパティは、次のように設定する必要があります:**Hdfs** |はい |
 | url |HDFS への URL |はい |
 | authenticationType |Anonymous または Basic。 <br><br> HDFS コネクタに **Kerberos 認証** を使用するには、こちらのセクションを参照して、オンプレミス環境を設定します。 |はい |
 | userName |Windows 認証のユーザー名。 |あり (Windows 認証用) |
@@ -3774,15 +3774,15 @@ HDFS のリンクされたサービスを定義するには、リンクされた
 詳細については、HDFS コネクタに関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-HDFS データセットを定義するには、データセットの **type** を **FileShare** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+HDFS データセットを定義するには、データセットの **type** を **FileShare** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | folderPath |フォルダーへのパス。 例: `myfolder`<br/><br/>文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例: folder\subfolder には、folder\\\\subfolder を指定し、d:\samplefolder には、d:\\\\samplefolder を指定します。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを使用できます。 |はい |
-| fileName |テーブルでフォルダー内の特定のファイルを参照するには、 **folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>`Data.<Guid>.txt` (例:Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |いいえ |
+| fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>`Data.<Guid>.txt` (例:Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |いいえ |
 | partitionedBy |partitionedBy を使用して時系列データに動的な folderPath と fileName を指定できます。 例: 1 時間ごとのデータに対して folderPath がパラメーター化されます。 |いいえ |
-| format | 次の種類の形式がサポートされます: **TextFormat** 、 **JsonFormat** 、 **AvroFormat** 、 **OrcFormat** 、 **ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
-| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、 **GZip** 、 **Deflate** 、 **BZip2** 、 **ZipDeflate** です。 サポートされるレベルは、 **Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
+| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
 
 > [!NOTE]
 > fileName と fileFilter は、同時に使用することができません。
@@ -3810,7 +3810,7 @@ HDFS データセットを定義するには、データセットの **type** �
 詳細については、HDFS コネクタに関する記事を参照してください。
 
 ### <a name="file-system-source-in-copy-activity"></a>コピー アクティビティのファイル システム ソース
-HDFS からデータをコピーする場合は、コピー アクティビティの **source type** を **FileSystemSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+HDFS からデータをコピーする場合は、コピー アクティビティの **source type** を **FileSystemSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 **FileSystemSource** では次のプロパティがサポートされます。
 
@@ -3860,13 +3860,13 @@ HDFS からデータをコピーする場合は、コピー アクティビテ�
 
 
 ### <a name="linked-service"></a>リンクされたサービス
-SFTP のリンクされたサービスを定義するには、リンクされたサービスの **type** を **Sftp** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+SFTP のリンクされたサービスを定義するには、リンクされたサービスの **type** を **Sftp** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | host | SFTP サーバーの名前または IP アドレス。 |はい |
 | port |SFTP サーバーがリッスンしているポート。 既定値は21 |いいえ |
-| authenticationType |認証の種類を指定します。 使用できる値は以下の通りです。 **Basic** 、 **SshPublicKey** 。 <br><br> プロパティと JSON サンプルの詳細については、「基本認証を使用する」セクションと「[SSH 公開キー認証を使用する](#using-ssh-public-key-authentication)」セクションをそれぞれ参照してください。 |はい |
+| authenticationType |認証の種類を指定します。 使用できる値は以下の通りです。**Basic**、**SshPublicKey**。 <br><br> プロパティと JSON サンプルの詳細については、「基本認証を使用する」セクションと「[SSH 公開キー認証を使用する](#using-ssh-public-key-authentication)」セクションをそれぞれ参照してください。 |はい |
 | skipHostKeyValidation | ホスト キーの検証をスキップするかどうかを指定します。 | いいえ。 既定値: false |
 | hostKeyFingerprint | ホスト キーの指紋を指定します。 | はい (`skipHostKeyValidation` が false に設定されている場合)。  |
 | gatewayName |オンプレミスの SFTP サーバーに接続するための Data Management Gateway の名前。 | はい (オンプレミスの SFTP サーバーからデータをコピーする場合)。 |
@@ -3900,7 +3900,7 @@ SFTP のリンクされたサービスを定義するには、リンクされた
 }
 ```
 
-#### <a name="example-basic-authentication-with-encrypted-credential"></a>例: **資格情報が暗号化された基本認証**
+#### <a name="example-basic-authentication-with-encrypted-credential"></a>例:**資格情報が暗号化された基本認証**
 
 ```json
 {
@@ -3951,7 +3951,7 @@ SFTP のリンクされたサービスを定義するには、リンクされた
 }
 ```
 
-#### <a name="example-sshpublickey-authentication-using-private-key-content"></a>例: **秘密キーのコンテンツを使用した SshPublicKey 認証**
+#### <a name="example-sshpublickey-authentication-using-private-key-content"></a>例:**秘密キーのコンテンツを使用した SshPublicKey 認証**
 
 ```json
 {
@@ -3974,16 +3974,16 @@ SFTP のリンクされたサービスを定義するには、リンクされた
 詳細については、[SFTP コネクタ](data-factory-sftp-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-SFTP データセットを定義するには、データセットの **type** を **FileShare** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+SFTP データセットを定義するには、データセットの **type** を **FileShare** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | folderPath |フォルダーへのサブ パス。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「サンプルのリンクされたサービスとデータセットの定義」を参照してください。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを使用できます。 |はい |
-| fileName |テーブルでフォルダー内の特定のファイルを参照するには、 **folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>`Data.<Guid>.txt` (例:Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ |
+| fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>`Data.<Guid>.txt` (例:Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ |
 | fileFilter |すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。<br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/><br/>例 1: `"fileFilter": "*.log"`<br/>例 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> fileFilter は FileShare 入力データセットに適用されます。 このプロパティは、HDFS ではサポートされません。 |いいえ |
 | partitionedBy |partitionedBy を使用して時系列データに動的な folderPath と fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 |いいえ |
-| format | 次の種類の形式がサポートされます: **TextFormat** 、 **JsonFormat** 、 **AvroFormat** 、 **OrcFormat** 、 **ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
-| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、 **GZip** 、 **Deflate** 、 **BZip2** 、 **ZipDeflate** です。 サポートされるレベルは、 **Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
+| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
 | useBinaryTransfer |バイナリ転送モードを使用するかどうかを指定します。 バイナリ モードの場合は true、ASCII モードの場合は false です。 既定値:True。 このプロパティを使用できるのは、関連するリンクされたサービスの種類が FtpServer の場合のみです。 |いいえ |
 
 > [!NOTE]
@@ -4013,7 +4013,7 @@ SFTP データセットを定義するには、データセットの **type** �
 詳細については、[SFTP コネクタ](data-factory-sftp-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="file-system-source-in-copy-activity"></a>コピー アクティビティのファイル システム ソース
-SFTP ソースからデータをコピーする場合は、コピー アクティビティの **source type** を **FileSystemSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+SFTP ソースからデータをコピーする場合は、コピー アクティビティの **source type** を **FileSystemSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
@@ -4067,12 +4067,12 @@ SFTP ソースからデータをコピーする場合は、コピー アクテ�
 ## <a name="http"></a>HTTP
 
 ### <a name="linked-service"></a>リンクされたサービス
-HTTP のリンクされたサービスを定義するには、リンクされたサービスの **type** を **Http** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+HTTP のリンクされたサービスを定義するには、リンクされたサービスの **type** を **Http** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | url | Web サーバーへのベース URL | はい |
-| authenticationType | 認証の種類を指定します。 使用できる値は、以下のとおりです。 **Anonymous** 、 **Basic** 、 **Digest** 、 **Windows** 、 **ClientCertificate** 。 <br><br> これらの認証の種類それぞれのプロパティと JSON の使用例については、この表の後のセクションを参照してください。 | はい |
+| authenticationType | 認証の種類を指定します。 使用できる値は、以下のとおりです。**Anonymous**、**Basic**、**Digest**、**Windows**、**ClientCertificate**。 <br><br> これらの認証の種類それぞれのプロパティと JSON の使用例については、この表の後のセクションを参照してください。 | はい |
 | enableServerCertificateValidation | ソースが HTTPS Web サーバーである場合に、サーバーの TLS/SSL 証明書の検証を有効にするかどうかを指定します | いいえ。既定値は true です。 |
 | gatewayName | オンプレミスの HTTP ソースに接続するための Data Management Gateway の名前。 | はい (オンプレミスの HTTP ソースからデータをコピーする場合)。 |
 | encryptedCredential | HTTP エンドポイントにアクセスするための暗号化された資格情報。 コピー ウィザードまたは ClickOnce ポップアップ ダイアログで認証情報を構成すると自動生成されます。 | いいえ。 オンプレミスの HTTP サーバーからデータをコピーする場合にのみ適用します。 |
@@ -4155,16 +4155,16 @@ HTTP のリンクされたサービスを定義するには、リンクされた
 詳細については、[HTTP コネクタ](data-factory-http-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-HTTP データセットを定義するには、データセットの **type** を **Http** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+HTTP データセットを定義するには、データセットの **type** を **Http** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | relativeUrl | データを含むリソースへの相対 URL。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 <br><br> 動的 URL を構築するには、[データ ファクトリ関数とシステム変数](data-factory-functions-variables.md)を利用できます。たとえば、`"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)"` となります。 | いいえ |
-| requestMethod | Http メソッド。 使用できる値は、 **GET** または **POST** です。 | いいえ。 既定値は `GET` です。 |
+| requestMethod | Http メソッド。 使用できる値は、**GET** または **POST** です。 | いいえ。 既定値は `GET` です。 |
 | additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ |
 | requestBody | HTTP 要求の本文。 | いいえ |
-| format | **HTTP エンドポイントからデータをそのまま取得する** だけで、解析しない場合は、この形式の設定を省略してください。 <br><br> コピー中に HTTP 応答の内容を解析する場合に、次の種類の形式がサポートされます。 **TextFormat** 、 **JsonFormat** 、 **AvroFormat** 、 **OrcFormat** 、 **ParquetFormat** です。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 |いいえ |
-| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、 **GZip** 、 **Deflate** 、 **BZip2** 、 **ZipDeflate** です。 サポートされるレベルは、 **Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
+| format | **HTTP エンドポイントからデータをそのまま取得する** だけで、解析しない場合は、この形式の設定を省略してください。 <br><br> コピー中に HTTP 応答の内容を解析する場合に、次の種類の形式がサポートされます。**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
 
 #### <a name="example-using-the-get-default-method"></a>例: GET (既定) メソッドを使用する
 
@@ -4211,7 +4211,7 @@ HTTP データセットを定義するには、データセットの **type** �
 詳細については、[HTTP コネクタ](data-factory-http-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="http-source-in-copy-activity"></a>コピー アクティビティの HTTP ソース
-HTTP ソースからデータをコピーする場合は、コピー アクティビティの **source type** を **HttpSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+HTTP ソースからデータをコピーする場合は、コピー アクティビティの **source type** を **HttpSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
@@ -4265,7 +4265,7 @@ HTTP ソースからデータをコピーする場合は、コピー アクテ�
 ## <a name="odata"></a>OData
 
 ### <a name="linked-service"></a>リンクされたサービス
-OData のリンクされたサービスを定義するには、リンクされたサービスの **type** を **OData** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+OData のリンクされたサービスを定義するには、リンクされたサービスの **type** を **OData** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -4345,7 +4345,7 @@ OData のリンクされたサービスを定義するには、リンクされ�
 詳細については、[OData コネクタ](data-factory-odata-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-OData データセットを定義するには、データセットの **type** を **ODataResource** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+OData データセットを定義するには、データセットの **type** を **ODataResource** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -4380,7 +4380,7 @@ OData データセットを定義するには、データセットの **type** �
 詳細については、[OData コネクタ](data-factory-odata-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="relational-source-in-copy-activity"></a>コピー アクティビティのリレーショナル ソース
-OData ソースからデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+OData ソースからデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 例 | 必須 |
 | --- | --- | --- | --- |
@@ -4435,7 +4435,7 @@ OData ソースからデータをコピーする場合は、コピー アクテ�
 
 
 ### <a name="linked-service"></a>リンクされたサービス
-ODBC のリンクされたサービスを定義するには、リンクされたサービスの **type** を **OnPremisesOdbc** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+ODBC のリンクされたサービスを定義するには、リンクされたサービスの **type** を **OnPremisesOdbc** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -4500,7 +4500,7 @@ ODBC のリンクされたサービスを定義するには、リンクされた
 詳細については、[ODBC コネクタ](data-factory-odbc-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-ODBC データセットを定義するには、データセットの **type** を **RelationalTable** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+ODBC データセットを定義するには、データセットの **type** を **RelationalTable** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -4535,7 +4535,7 @@ ODBC データセットを定義するには、データセットの **type** �
 詳細については、[ODBC コネクタ](data-factory-odbc-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="relational-source-in-copy-activity"></a>コピー アクティビティのリレーショナル ソース
-ODBC データ ストアからデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+ODBC データ ストアからデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
@@ -4589,7 +4589,7 @@ ODBC データ ストアからデータをコピーする場合は、コピー �
 
 
 ### <a name="linked-service"></a>リンクされたサービス
-Salesforce のリンクされたサービスを定義するには、リンクされたサービスの **type** を **Salesforce** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Salesforce のリンクされたサービスを定義するには、リンクされたサービスの **type** を **Salesforce** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -4617,11 +4617,11 @@ Salesforce のリンクされたサービスを定義するには、リンクさ
 詳細については、[Salesforce コネクタ](data-factory-salesforce-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-Salesforce データセットを定義するには、データセットの **type** を **RelationalTable** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Salesforce データセットを定義するには、データセットの **type** を **RelationalTable** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| tableName |Salesforce のテーブル名。 |いいえ ( **RelationalSource** の **クエリ** が指定されている場合) |
+| tableName |Salesforce のテーブル名。 |いいえ (**RelationalSource** の **クエリ** が指定されている場合) |
 
 #### <a name="example"></a>例
 
@@ -4653,11 +4653,11 @@ Salesforce データセットを定義するには、データセットの **typ
 詳細については、[Salesforce コネクタ](data-factory-salesforce-connector.md#dataset-properties)に関する記事を参照してください。
 
 ### <a name="relational-source-in-copy-activity"></a>コピー アクティビティのリレーショナル ソース
-Salesforce からデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、 **source** セクションで以下のプロパティを指定します。
+Salesforce からデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリまたは [Salesforce オブジェクト クエリ言語 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) クエリ。 たとえば、「`select * from MyTable__c`」のように入力します。 |いいえ ( **dataset** の **tableName** が指定されている場合) |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリまたは [Salesforce オブジェクト クエリ言語 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) クエリ。 たとえば、「`select * from MyTable__c`」のように入力します。 |いいえ (**dataset** の **tableName** が指定されている場合) |
 
 #### <a name="example"></a>例
 
@@ -4712,7 +4712,7 @@ Salesforce からデータをコピーする場合は、コピー アクティ�
 ## <a name="web-data"></a>Web データ
 
 ### <a name="linked-service"></a>リンクされたサービス
-Web のリンクされたサービスを定義するには、リンクされたサービスの **type** を **Web** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Web のリンクされたサービスを定義するには、リンクされたサービスの **type** を **Web** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -4739,7 +4739,7 @@ Web のリンクされたサービスを定義するには、リンクされた�
 詳細については、[Web テーブル コネクタ](data-factory-web-table-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-Web データセットを定義するには、データセットの **type** を **WebTable** に設定し、 **typeProperties** セクションで以下のプロパティを指定します。
+Web データセットを定義するには、データセットの **type** を **WebTable** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -4939,7 +4939,7 @@ Azure Machine Learning スタジオ (クラシック) のリンクされたサ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| Type |type プロパティは次の値に設定されます。 **AzureML** 。 |はい |
+| Type |type プロパティは次の値に設定されます。**AzureML**。 |はい |
 | mlEndpoint |バッチ スコアリング URL です。 |はい |
 | apiKey |公開されたワークスペース モデルの API です。 |はい |
 
@@ -4967,7 +4967,7 @@ Azure Machine Learning スタジオ (クラシック) のリンクされたサ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| Type |type プロパティは次の値に設定されます。 **AzureDataLakeAnalytics** 。 |はい |
+| Type |type プロパティは次の値に設定されます。**AzureDataLakeAnalytics**。 |はい |
 | accountName |Azure Data Lake Analytics アカウント名。 |はい |
 | dataLakeAnalyticsUri |Azure Data Lake Analytics URI。 |いいえ |
 | authorization |Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 |はい |
@@ -5007,13 +5007,13 @@ SQL Server のリンクされたサービスを作成し、 [ストアド プロ
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは次の値に設定されます。 **OnPremisesSqlServer** |はい |
+| type |type プロパティは次の値に設定されます。**OnPremisesSqlServer** |はい |
 | connectionString |SQL 認証または Windows 認証を使用して、SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
 | gatewayName |Data Factory サービスが、SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
-| username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username** 。 |いいえ |
+| username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
 
-**New-AzDataFactoryEncryptValue** コマンドレットを使用して資格情報を暗号化し、次の例で示すようにそれを接続文字列で使用できます ( **EncryptedCredential** プロパティ)。
+**New-AzDataFactoryEncryptValue** コマンドレットを使用して資格情報を暗号化し、次の例で示すようにそれを接続文字列で使用できます (**EncryptedCredential** プロパティ)。
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
@@ -5072,7 +5072,7 @@ SQL Server のリンクされたサービスを作成し、 [ストアド プロ
 
 
 ## <a name="hdinsight-hive-activity"></a>HDInsight Hive アクティビティ
-Hive アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **HDInsightHive** である必要があります。 HDInsight のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を HDInsightHive に設定する場合、 **typeProperties** セクションで以下のプロパティがサポートされます。
+Hive アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **HDInsightHive** である必要があります。 HDInsight のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を HDInsightHive に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -5118,7 +5118,7 @@ Hive アクティビティの JSON 定義では、以下のプロパティを指
 詳細については、[Hive アクティビティ](data-factory-hive-activity.md)に関する記事を参照してください。
 
 ## <a name="hdinsight-pig-activity"></a>HDInsight Pig アクティビティ
-Pig アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **HDInsightPig** である必要があります。 HDInsight のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を HDInsightPig に設定する場合、 **typeProperties** セクションで以下のプロパティがサポートされます。
+Pig アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **HDInsightPig** である必要があります。 HDInsight のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を HDInsightPig に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -5170,7 +5170,7 @@ Pig アクティビティの JSON 定義では、以下のプロパティを指�
 詳細については、Pig アクティビティに関する記事を参照してください。
 
 ## <a name="hdinsight-mapreduce-activity"></a>HDInsight MapReduce アクティビティ
-MapReduce アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **HDInsightMapReduce** である必要があります。 HDInsight のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を HDInsightMapReduce に設定する場合、 **typeProperties** セクションで以下のプロパティがサポートされます。
+MapReduce アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **HDInsightMapReduce** である必要があります。 HDInsight のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を HDInsightMapReduce に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -5228,7 +5228,7 @@ MapReduce アクティビティの JSON 定義では、以下のプロパティ�
 詳細については、[MapReduce アクティビティ](data-factory-map-reduce.md)に関する記事を参照してください。
 
 ## <a name="hdinsight-streaming-activity"></a>HDInsight Streaming アクティビティ
-Hadoop Streaming アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **HDInsightStreaming** という種類のアクティビティが 1 つだけあります。 HDInsight のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を HDInsightStreaming に設定する場合、 **typeProperties** セクションで以下のプロパティがサポートされます。
+Hadoop Streaming アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **HDInsightStreaming** という種類のアクティビティが 1 つだけあります。 HDInsight のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を HDInsightStreaming に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
 
 | プロパティ | 説明 |
 | --- | --- |
@@ -5242,7 +5242,7 @@ Hadoop Streaming アクティビティの JSON 定義では、以下のプロパ
 | getDebugInfo | 省略可能な要素。 Failure に設定されていると、エラー時にのみログがダウンロードされます。 All に設定されていると、ログは実行状態に関係なく常にダウンロードされます。 |
 
 > [!NOTE]
-> **outputs** プロパティには、Hadoop ストリーミング アクティビティ用の出力データセットを指定する必要があります。 パイプラインのスケジュール (毎時、毎日など) を実行するために必要となるダミーのデータセットでもかまいません。 アクティビティが入力を受け取らない場合は、 **inputs** プロパティに対するアクティビティの入力データセットの指定は省略できます。
+> **outputs** プロパティには、Hadoop ストリーミング アクティビティ用の出力データセットを指定する必要があります。 パイプラインのスケジュール (毎時、毎日など) を実行するために必要となるダミーのデータセットでもかまいません。 アクティビティが入力を受け取らない場合は、**inputs** プロパティに対するアクティビティの入力データセットの指定は省略できます。
 
 ## <a name="json-example"></a>JSON の例
 
@@ -5292,7 +5292,7 @@ Hadoop Streaming アクティビティの JSON 定義では、以下のプロパ
 詳細については、[Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)に関する記事を参照してください。
 
 ## <a name="hdinsight-spark-activity"></a>HDInsight Spark アクティビティ
-Spark アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **HDInsightSpark** である必要があります。 HDInsight のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を HDInsightSpark に設定する場合、 **typeProperties** セクションで以下のプロパティがサポートされます。
+Spark アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **HDInsightSpark** である必要があります。 HDInsight のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を HDInsightSpark に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
@@ -5336,7 +5336,7 @@ Spark アクティビティの JSON 定義では、以下のプロパティを�
 以下の点に注意してください。
 
 - **type** プロパティは **HDInsightSpark** に設定されます。
-- **rootPath** は **adfspark\\pyFiles** に設定されます。ここで、adfspark は Azure BLOB コンテナー、pyFiles はそのコンテナーのファイル フォルダーです。 この例では、Azure Blob Storage は、Spark クラスターに関連付けられています。 ファイルは、別の Azure Storage にアップロードできます。 これを行う場合は、ストレージ アカウントをデータ ファクトリにリンクする Azure Storage のリンクされたサービスを作成します。 次に、リンクされたサービスの名前を、 **sparkJobLinkedService** プロパティの値として指定します。 このプロパティと、Spark アクティビティでサポートされている他のプロパティの詳細については、「Spark アクティビティのプロパティ」を参照してください。
+- **rootPath** は **adfspark\\pyFiles** に設定されます。ここで、adfspark は Azure BLOB コンテナー、pyFiles はそのコンテナーのファイル フォルダーです。 この例では、Azure Blob Storage は、Spark クラスターに関連付けられています。 ファイルは、別の Azure Storage にアップロードできます。 これを行う場合は、ストレージ アカウントをデータ ファクトリにリンクする Azure Storage のリンクされたサービスを作成します。 次に、リンクされたサービスの名前を、**sparkJobLinkedService** プロパティの値として指定します。 このプロパティと、Spark アクティビティでサポートされている他のプロパティの詳細については、「Spark アクティビティのプロパティ」を参照してください。
 - **entryFilePath** は、python ファイルである **test.py** に設定されます。
 - **getDebugInfo** プロパティは **Always** に設定されます。つまり、ログ ファイルが常に生成されます (成功または失敗)。
 
@@ -5347,7 +5347,7 @@ Spark アクティビティの JSON 定義では、以下のプロパティを�
 このアクティビティの詳細については、[Spark アクティビティ](data-factory-spark.md)に関する記事を参照してください。
 
 ## <a name="azure-machine-learning-studio-classic-batch-execution-activity"></a>Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ
-Azure Machine Learning スタジオ (クラシック) バッチ実行アクティビティの JSON 定義内で、以下のプロパティを指定できます。 このアクティビティの type プロパティは **AzureMLBatchExecution** である必要があります。 スタジオ (クラシック) のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を AzureMLBatchExecution に設定する場合、 **typeProperties** セクションで以下のプロパティがサポートされます。
+Azure Machine Learning スタジオ (クラシック) バッチ実行アクティビティの JSON 定義内で、以下のプロパティを指定できます。 このアクティビティの type プロパティは **AzureMLBatchExecution** である必要があります。 スタジオ (クラシック) のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を AzureMLBatchExecution に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
@@ -5357,7 +5357,7 @@ webServiceOutputs | スタジオ (クラシック) Web サービスの出力と�
 globalParameters | このセクションの Web サービス パラメーターの値を指定します。 | いいえ |
 
 ### <a name="json-example"></a>JSON の例
-この例では、アクティビティの入力としてデータセット **MLSqlInput** を、出力として **MLSqlOutput** を設定しています。 **MLSqlInput** は、 **webServiceInput** JSON プロパティを使用して Web サービスの入力として渡します。 **MLSqlOutput** は、 **webServiceOutputs** JSON プロパティを使用して Web サービスの出力として渡します。
+この例では、アクティビティの入力としてデータセット **MLSqlInput** を、出力として **MLSqlOutput** を設定しています。 **MLSqlInput** は、**webServiceInput** JSON プロパティを使用して Web サービスの入力として渡します。 **MLSqlOutput** は、**webServiceOutputs** JSON プロパティを使用して Web サービスの出力として渡します。
 
 ```json
 {
@@ -5403,7 +5403,7 @@ globalParameters | このセクションの Web サービス パラメーター�
 > AzureMLBatchExecution アクティビティの入力および出力だけを、パラメーターとして Web サービスに渡すことができます。 たとえば、上の JSON スニペットでは、MLSqlInput は AzureMLBatchExecution アクティビティへの入力であり、webServiceInput パラメーターを使用して Web サービスに入力として渡されます。
 
 ## <a name="azure-machine-learning-studio-classic-update-resource-activity"></a>Azure Machine Learning スタジオ (クラシック) の更新リソース アクティビティ
-Azure Machine Learning スタジオ (クラシック) 更新リソース アクティビティの JSON 定義内で、以下のプロパティを指定できます。 このアクティビティの type プロパティは **AzureMLUpdateResource** である必要があります。 スタジオ (クラシック) のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を AzureMLUpdateResource に設定する場合、 **typeProperties** セクションで以下のプロパティがサポートされます。
+Azure Machine Learning スタジオ (クラシック) 更新リソース アクティビティの JSON 定義内で、以下のプロパティを指定できます。 このアクティビティの type プロパティは **AzureMLUpdateResource** である必要があります。 スタジオ (クラシック) のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を AzureMLUpdateResource に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
@@ -5411,7 +5411,7 @@ trainedModelName | 再トレーニング済みモデルの名前。 | はい |
 trainedModelDatasetName | 再トレーニング操作から返される iLearner ファイルを指すデータセット。 | はい |
 
 ### <a name="json-example"></a>JSON の例
-パイプラインには、 **AzureMLBatchExecution** と **AzureMLUpdateResource** の 2 つのアクティビティが含まれています。 スタジオ (クラシック) バッチ実行アクティビティにより、トレーニング データが入力として使用され、iLearner ファイルが出力として作成されます。 このアクティビティは、トレーニング Web サービス (Web サービスとして公開されたトレーニング実験) と入力トレーニング データを呼び出し、Web サービスから ilearner ファイルを受け取ります。 placeholderBlob は、パイプラインを実行するために、Azure Data Factory サービスで必要とされるダミーの出力データセットです。
+パイプラインには、**AzureMLBatchExecution** と **AzureMLUpdateResource** の 2 つのアクティビティが含まれています。 スタジオ (クラシック) バッチ実行アクティビティにより、トレーニング データが入力として使用され、iLearner ファイルが出力として作成されます。 このアクティビティは、トレーニング Web サービス (Web サービスとして公開されたトレーニング実験) と入力トレーニング データを呼び出し、Web サービスから ilearner ファイルを受け取ります。 placeholderBlob は、パイプラインを実行するために、Azure Data Factory サービスで必要とされるダミーの出力データセットです。
 
 
 ```json
@@ -5470,7 +5470,7 @@ trainedModelDatasetName | 再トレーニング操作から返される iLearner
 ```
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL アクティビティ
-U-SQL アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **DataLakeAnalyticsU-SQL** である必要があります。 Azure Data Lake Analytics のリンクされたサービスを作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を DataLakeAnalyticsU-SQL に設定する場合、 **typeProperties** セクションで以下のプロパティがサポートされます。
+U-SQL アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **DataLakeAnalyticsU-SQL** である必要があります。 Azure Data Lake Analytics のリンクされたサービスを作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を DataLakeAnalyticsU-SQL に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -5543,7 +5543,7 @@ U-SQL アクティビティの JSON 定義では、以下のプロパティを�
 - Azure SQL データベース
 - Azure Synapse Analytics
 
-アクティビティの種類を SqlServerStoredProcedure に設定する場合、 **typeProperties** セクションで以下のプロパティがサポートされます。
+アクティビティの種類を SqlServerStoredProcedure に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -5583,15 +5583,15 @@ U-SQL アクティビティの JSON 定義では、以下のプロパティを�
 詳細については、「[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)」の記事を参照してください。
 
 ## <a name="net-custom-activity"></a>.NET カスタム アクティビティ
-.NET カスタム アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **DotNetActivity** です。 Azure HDInsight または Azure Batch のリンクされたサービスを作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を DotNetActivity に設定する場合、 **typeProperties** セクションで以下のプロパティがサポートされます。
+.NET カスタム アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **DotNetActivity** です。 Azure HDInsight または Azure Batch のリンクされたサービスを作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を DotNetActivity に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| AssemblyName | アセンブリの名前。 この例では、それは **MyDotnetActivity.dll** . です。 | はい |
+| AssemblyName | アセンブリの名前。 この例では、それは **MyDotnetActivity.dll**. です。 | はい |
 | EntryPoint |IDotNetActivity インターフェイスを実装するクラスの名前。 この例では、それは **MyDotNetActivityNS.MyDotNetActivity** です。ここで、MyDotNetActivityNS は名前空間であり、MyDotNetActivity はクラスです。  | はい |
 | PackageLinkedService | カスタム アクティビティの zip ファイルが格納された Blob Storage を指す、Azure Storage のリンクされたサービスの名前。 この例では、それは **AzureStorageLinkedService** を作成します。| はい |
 | PackageFile | zip ファイルの名前。 この例では **customactivitycontainer/MyDotNetActivity.zip** が該当します。 | はい |
-| extendedProperties | 独自に定義して .NET コードに渡すことができる拡張プロパティ。 この例では、 **SliceStart** 変数に、SliceStart というシステム変数に基づいた値が設定されます。 | いいえ |
+| extendedProperties | 独自に定義して .NET コードに渡すことができる拡張プロパティ。 この例では、**SliceStart** 変数に、SliceStart というシステム変数に基づいた値が設定されます。 | いいえ |
 
 ### <a name="json-example"></a>JSON の例
 

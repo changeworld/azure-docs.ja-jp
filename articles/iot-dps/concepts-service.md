@@ -9,19 +9,19 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotga
 ms.openlocfilehash: b9fc37c6589cdd0bc6a5cdce7b7ebebe2c6e9a85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531612"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019448"
 ---
 # <a name="iot-hub-device-provisioning-service-dps-terminology"></a>IoT Hub Device Provisioning Service (DPS) の用語
 
 Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サービスです。このサービスは、指定された IoT Hub にプロビジョニングするゼロタッチ デバイスの構成に使用されます。 Device Provisioning Service を使用すると、セキュリティで保護されたスケーラブルな方法で何百万台ものデバイスを[プロビジョニング](about-iot-dps.md#provisioning-process)できます。
 
-デバイス プロビジョニングのプロセスには、2 つの部分があります。 最初の部分では、デバイスを*登録*することで、デバイスと IoT ソリューション間の初期接続を確立します。 2 番目の部分では、ソリューションの特定の要件に基づいて、デバイスに適切な*構成*を適用します。 両方のステップを完了すると、デバイスが完全に*プロビジョニング*されたことになります。 デバイス プロビジョニング サービスでは、デバイスにシームレスなプロビジョニング エクスペリエンスを提供するために、両方のステップを自動化しています。
+デバイス プロビジョニングのプロセスには、2 つの部分があります。 最初の部分では、デバイスを *登録* することで、デバイスと IoT ソリューション間の初期接続を確立します。 2 番目の部分では、ソリューションの特定の要件に基づいて、デバイスに適切な *構成* を適用します。 両方のステップを完了すると、デバイスが完全に *プロビジョニング* されたことになります。 デバイス プロビジョニング サービスでは、デバイスにシームレスなプロビジョニング エクスペリエンスを提供するために、両方のステップを自動化しています。
 
-この記事では、*サービス*の管理に最適なプロビジョニング概念の概要を説明します。 この記事は、デプロイのために準備されたデバイスを取得する[クラウド セットアップ手順](about-iot-dps.md#cloud-setup-step)に関わるユーザーに最も役立ちます。
+この記事では、*サービス* の管理に最適なプロビジョニング概念の概要を説明します。 この記事は、デプロイのために準備されたデバイスを取得する[クラウド セットアップ手順](about-iot-dps.md#cloud-setup-step)に関わるユーザーに最も役立ちます。
 
 ## <a name="service-operations-endpoint"></a>サービス操作エンドポイント
 
@@ -81,9 +81,9 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 > IoT Hub は、そのサービスでの同様の概念として "認証スキーム" を使用します。
 
 デバイス プロビジョニング サービスは、以下の形式の構成証明をサポートします。
-* 標準の X.509 証明書の認証フローに基づく**X.509 証明書**。 詳細については、[X.509 の構成証明](concepts-x509-attestation.md)に関する記事をご覧ください。
-* nonce チャレンジに基づく**トラステッド プラットフォーム モジュール (TPM)** 。キーの TPM 標準を使用し、署名された Shared Access Signature (SAS) トークンを提示します。 このトークンでは、デバイス上の物理 TPM は必須ではありませんが、[TPM 仕様](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)ごとに保証キーを使用して証明するために、サービスからは物理 TPM が期待されます。詳細については、「[TPM の構成証明](concepts-tpm-attestation.md)」をご覧ください。
-* 共有アクセス署名 (SAS) **セキュリティ トークン**に基づく[対称キー](../iot-hub/iot-hub-devguide-security.md#security-tokens)。これにはハッシュの署名と埋め込みの有効期限が含まれています。 詳細については、「[対称キーの構成証明](concepts-symmetric-key-attestation.md)」を参照してください。
+* 標準の X.509 証明書の認証フローに基づく **X.509 証明書**。 詳細については、[X.509 の構成証明](concepts-x509-attestation.md)に関する記事をご覧ください。
+* nonce チャレンジに基づく **トラステッド プラットフォーム モジュール (TPM)** 。キーの TPM 標準を使用し、署名された Shared Access Signature (SAS) トークンを提示します。 このトークンでは、デバイス上の物理 TPM は必須ではありませんが、[TPM 仕様](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)ごとに保証キーを使用して証明するために、サービスからは物理 TPM が期待されます。詳細については、「[TPM の構成証明](concepts-tpm-attestation.md)」をご覧ください。
+* 共有アクセス署名 (SAS) **セキュリティ トークン** に基づく [対称キー](../iot-hub/iot-hub-devguide-security.md#security-tokens)。これにはハッシュの署名と埋め込みの有効期限が含まれています。 詳細については、「[対称キーの構成証明](concepts-symmetric-key-attestation.md)」を参照してください。
 
 
 ## <a name="hardware-security-module"></a>ハードウェア セキュリティ モジュール

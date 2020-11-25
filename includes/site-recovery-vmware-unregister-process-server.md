@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: bff9457220efbb6a6b318550a5b2dd9af4ae230f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361393"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019194"
 ---
 特定の状況に応じた手順に従います。
 
@@ -18,7 +18,7 @@ ms.locfileid: "91361393"
 1. 管理者としてプロセス サーバーにリモート接続を確立します。
 2. **[コントロール パネル]** で、 **[プログラム]、[プログラムのアンインストール]** の順に開きます。
 3. プログラム **Microsoft Azure Site Recovery Mobility Service/マスター ターゲット サーバー** をアンインストールします。
-4. プログラム**Microsoft Azure Site Recovery Configuration/Process Server (Microsoft Azure Site Recovery 構成/プロセス サーバー)** をアンインストールします。
+4. プログラム **Microsoft Azure Site Recovery Configuration/Process Server (Microsoft Azure Site Recovery 構成/プロセス サーバー)** をアンインストールします。
 5. 手順 3 と 4 のプログラムがアンインストールされたら、**Microsoft Azure Site Recovery Configuration/Process Server Dependencies (Microsoft Azure Site Recovery 構成/プロセス サーバーの依存関係)** をアンインストールします。
 
 ### <a name="unregister-a-disconnected-process-server"></a>接続されていないプロセス サーバーの登録を解除する

@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5565dd43689d0420fbb9b73f088f24a38a2d54db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5ecbabe4a5c3458c77d145fbce1281550470e00
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665907"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96019074"
 ---
 # <a name="summary-of-customer-data-request-features"></a>顧客データ要求機能の概要
 
@@ -34,7 +34,7 @@ Azure Time Series Insights は、個人データを Time Series Insights の管�
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-ただし、Portal を使用して顧客データを削除する前に、Azure Portal 内で Time Series Insights 環境からユーザーのアクセス ポリシーを削除する必要があります。 詳細については、[Azure portal を使用して Time Series Insights 環境にデータ アクセスを許可する](time-series-insights-data-access.md)方法に関するページを参照してください。
+ただし、Portal を使用して顧客データを削除する前に、Azure Portal 内で Time Series Insights 環境からユーザーのアクセス ポリシーを削除する必要があります。 詳細については、[Azure portal を使用して Time Series Insights 環境にデータ アクセスを許可する](./concepts-access-policies.md)方法に関するページを参照してください。
 
 REST API を使用して、アクセス ポリシーに対して削除操作を実行することもできます。 詳細については、「[アクセス ポリシー - 削除](/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/delete)」をお読みください。
 
@@ -46,7 +46,7 @@ Time Series Insights は、Azure Portal のポリシー ブレードと統合さ
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-テナント管理者の場合、Azure Portal で Time Series Insights 環境内のデータ アクセス ポリシーを表示できます。 詳細については、[Azure portal を使用して Time Series Insights 環境にデータ アクセスを許可する](time-series-insights-data-access.md)方法に関するページを参照してください。
+テナント管理者の場合、Azure Portal で Time Series Insights 環境内のデータ アクセス ポリシーを表示できます。 詳細については、[Azure portal を使用して Time Series Insights 環境にデータ アクセスを許可する](./concepts-access-policies.md)方法に関するページを参照してください。
 
 指定された REST API の "環境で一覧表示" 操作を使用して、アクセス ポリシーに対してエクスポート操作を実行することもできます。 詳細については、「[アクセス ポリシー - 環境で一覧表示](/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/listbyenvironment)」をお読みください。
 
@@ -68,7 +68,7 @@ Time Series Insights 内に格納されているデータを表示およびエ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Time Series Insights 環境に対するデータ アクセスの許可](./time-series-insights-data-access.md)の詳細を確認します。
+* [Azure Time Series Insights 環境に対するデータ アクセスの許可](./concepts-access-policies.md)の詳細を確認します。
 
 * [Azure Time Series Insights エクスプローラー](time-series-insights-explorer.md)について確認してください。
 

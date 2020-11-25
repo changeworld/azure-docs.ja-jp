@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
 ms.openlocfilehash: 67ea5800885b4edb16581f22c199d139053af495
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337814"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018938"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>マシンを物理サーバーとして Azure に移行する
 
@@ -98,8 +98,8 @@ Azure 仮想ネットワーク (VNet) を[設定](../virtual-network/manage-virt
 
 Azure Migrate:Server Migration では、レプリケーション アプライアンスを使用してマシンを Azure にレプリケートします。 レプリケーション アプライアンスは、次のコンポーネントを実行します。
 
-- **構成サーバー** : 構成サーバーは、オンプレミスと Azure の間の通信を調整し、データのレプリケーションを管理します。
-- **プロセス サーバー** :プロセス サーバーはレプリケーション ゲートウェイとして機能します。 レプリケーション データを受信し、それをキャッシュ、圧縮、暗号化によって最適化して、Azure のキャッシュ ストレージ アカウントに送信します。 
+- **構成サーバー**: 構成サーバーは、オンプレミスと Azure の間の通信を調整し、データのレプリケーションを管理します。
+- **プロセス サーバー**:プロセス サーバーはレプリケーション ゲートウェイとして機能します。 レプリケーション データを受信し、それをキャッシュ、圧縮、暗号化によって最適化して、Azure のキャッシュ ストレージ アカウントに送信します。 
 
 次のようにして、アプライアンスのデプロイの準備をします。
 
@@ -115,7 +115,7 @@ Azure Migrate:Server Migration では、レプリケーション アプライア
 
 Azure Migrate プロジェクトを設定し、そこに Server Migration ツールを追加します。
 
-1. Azure portal の **[すべてのサービス]** で、 **Azure Migrate** を検索します。
+1. Azure portal の **[すべてのサービス]** で、**Azure Migrate** を検索します。
 2. **[サービス]** で **[Azure Migrate]** を選択します。
 3. **[概要]** で **[サーバーの評価と移行]** をクリックします。
 4. **[サーバーの検出、評価、移行]** で、 **[サーバーの評価と移行]** をクリックします。
@@ -258,10 +258,10 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
 
 13. **[コンピューティング]** で、VM の名前、サイズ、OS ディスクの種類、および可用性構成 (前の手順で選択した場合) を確認します。 VM は [Azure の要件](migrate-support-matrix-physical-migration.md#azure-vm-requirements)に準拠している必要があります。
 
-    - **VM サイズ** : 評価の推奨事項を使用している場合は、[VM サイズ] ドロップダウンに推奨サイズが表示されます。 それ以外の場合は、Azure Migrate によって、Azure サブスクリプション内の最も近いサイズが選択されます。 または、 **[Azure VM サイズ]** でサイズを手動で選択します。
-    - **OS ディスク** :VM の OS (ブート) ディスクを指定します。 OS ディスクは、オペレーティング システムのブートローダーとインストーラーがあるディスクです。
-    - **可用性ゾーン** :使用する可用性ゾーンを指定します。
-    - **可用性セット** :使用する可用性セットを指定します。
+    - **VM サイズ**: 評価の推奨事項を使用している場合は、[VM サイズ] ドロップダウンに推奨サイズが表示されます。 それ以外の場合は、Azure Migrate によって、Azure サブスクリプション内の最も近いサイズが選択されます。 または、 **[Azure VM サイズ]** でサイズを手動で選択します。
+    - **OS ディスク**:VM の OS (ブート) ディスクを指定します。 OS ディスクは、オペレーティング システムのブートローダーとインストーラーがあるディスクです。
+    - **可用性ゾーン**:使用する可用性ゾーンを指定します。
+    - **可用性セット**:使用する可用性セットを指定します。
 
 > [!NOTE]
 > 仮想マシンのセットごとに別の可用性オプションを選択する場合は、手順 1 に進み、仮想マシンの 1 つのセットのレプリケーションを開始した後に別の可用性オプションを選択して各手順を繰り返します。
@@ -291,7 +291,7 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
 
 ジョブの状態は、ポータルの通知で追跡できます。
 
-レプリケーションの状態を監視するには、 **サーバーをレプリケートしています** をクリックします ( **Azure Migrate: Server Migration** 内)。
+レプリケーションの状態を監視するには、**サーバーをレプリケートしています** をクリックします (**Azure Migrate: Server Migration** 内)。
 ![レプリケーションの監視](./media/tutorial-migrate-physical-virtual-machines/replicating-servers.png)
 
 ## <a name="run-a-test-migration"></a>テスト移行を実行する

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
 ms.openlocfilehash: aa2f00a732a3978524fc017481285859c9535387
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779171"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018683"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Azure CDN での課金について
 
@@ -48,7 +48,7 @@ Azure CDN の請求先リージョンは、エンド ユーザーにコンテン
 たとえば、所在地がメキシコのユーザーが要求を発行し、この要求が、ピアリングまたはトラフィックの条件のために米国の POP にあるサーバーによって処理される場合、請求先リージョンは米国となります。
 
 ## <a name="what-is-a-billable-azure-cdn-transaction"></a>課金対象の Azure CDN トランザクションとは何ですか。
-CDN で終了するすべての HTTP(S) 要求は課金対象イベントで、それには応答のすべての種類 (成功、失敗、またはその他) が含まれます。 ただし、応答が異なれば、生成されるトラフィック量が異なる可能性があります。 たとえば、 *304 Not Modified* やその他のヘッダーのみの応答では、それらは小さなヘッダー応答であるため、生成されるトラフィックは少量です。同様に、エラー応答 (たとえば *404 Not Found* ) は課金対象ですが、応答のペイロードがとても小さいため、かかるコストはわずかです。
+CDN で終了するすべての HTTP(S) 要求は課金対象イベントで、それには応答のすべての種類 (成功、失敗、またはその他) が含まれます。 ただし、応答が異なれば、生成されるトラフィック量が異なる可能性があります。 たとえば、*304 Not Modified* やその他のヘッダーのみの応答では、それらは小さなヘッダー応答であるため、生成されるトラフィックは少量です。同様に、エラー応答 (たとえば *404 Not Found*) は課金対象ですが、応答のペイロードがとても小さいため、かかるコストはわずかです。
 
 ## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>Azure CDN の使用には、その他にどのような Azure コストが関連付けられていますか。
 Azure CDN の使用により、オブジェクトの配信元として使用されるサービスでもいくつかの使用料金が発生します。 これらのコストは通常、CDN 全体の使用コストのうち、ほんのわずかです。

@@ -5,18 +5,19 @@ author: MSSedusch
 manager: juergent
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: ea53eda3863ea5164142fa0d37fff7be365a4d5c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bd45b0e1070efae7ae69a74ad96e1fa94a136006
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92894102"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96019397"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines の計画と実装
 
@@ -339,7 +340,7 @@ Microsoft Azure Virtual Machines サービスを通じて、マイクロソフ�
 * SAP ランドスケープ:この用語は、お客様の IT 環境内にある SAP 資産全体を指します。 SAP ランドス ケープには、運用環境と非運用環境のすべてが含まれます。
 * SAP システム:DBMS 層とアプリケーション レイヤーを組み合わせたシステム (SAP ERP 開発システム、SAP BW テスト システム、SAP CRM 運用システムなど)。Azure のデプロイでは、オンプレミスと Azure 間でこれら 2 つの層を分割することはできません。 つまり、SAP システムはオンプレミスか Azure のいずれかにデプロイされます。 ただし、SAP ランドス ケープの異なるシステムを Azure かオンプレミスのいずれかにデプロイすることはできます。 たとえば、SAP CRM の開発システムとテスト システムを Azure にデプロイし、SAP CRM 運用システムをオンプレミスにデプロイすることは可能です。
 * クロスプレミスまたはハイブリッド:オンプレミスのデータ センターと Azure の間で、サイト間接続、マルチサイト接続、または ExpressRoute 接続を使用する Azure サブスクリプションに VM をデプロイするシナリオを指します。 一般的な Azure ドキュメントでは、この種のデプロイはクロスプレミス シナリオまたはハイブリッド シナリオとして説明されていることもあります。 この接続の目的は、オンプレミスのドメイン、オンプレミスの Active Directory/OpenLDAP、およびオンプレミスの DNS を、Azure 内に拡張することです。 オンプレミスのランドスケープが、サブスクリプションの Azure 資産に拡張されます。 この拡張により。VM はオンプレミス ドメインの一部になることができます。 オンプレミス ドメインのドメイン ユーザーは、サーバーにアクセスし、それらの VM (DBMS サービスなど) 上でサービスを実行できます。 オンプレミスにデプロイした VM と Azure にデプロイした VM の間では、通信と名前解決が可能です。 これは、ほぼ Azure に SAP 資産をデプロイする場合のみの最も一般的なケースです。 詳細については、[こちら][vpn-gateway-cross-premises-options]と[こちら][vpn-gateway-site-to-site-create]の記事を参照してください。
-* Azure Monitoring Extension、Enhanced Monitoring、および Azure Extension for SAP:全く同一のものを表しています。 これは、Azure インフラストラクチャに関する一部の基本的なデータを SAP ホスト エージェントに提供するためにユーザーがデプロイする必要がある VM 拡張機能を指しています。 SAP ノートの SAP では、Monitoring Extension または Enhanced Monitoring と呼ばれる場合があります。 Azure では、 **Azure Extension for SAP** と呼んでいます。
+* Azure Monitoring Extension、Enhanced Monitoring、および Azure Extension for SAP:全く同一のものを表しています。 これは、Azure インフラストラクチャに関する一部の基本的なデータを SAP ホスト エージェントに提供するためにユーザーがデプロイする必要がある VM 拡張機能を指しています。 SAP ノートの SAP では、Monitoring Extension または Enhanced Monitoring と呼ばれる場合があります。 Azure では、**Azure Extension for SAP** と呼んでいます。
 
 > [!NOTE]
 > SAP システムを実行する Azure Virtual Machines がオンプレミス ドメインのメンバーである SAP システムのクロスプレミスまたはハイブリッドのデプロイは、運用 SAP システムの場合にサポートされます。 クロスプレミスまたはハイブリッドの構成は、SAP ランドスケープの一部または全部を Azure にデプロイする場合にサポートされます。 Azure で完全な SAP ランドスケープを実行する場合でも、これらの VM をオンプレミス ドメインと ADS/OpenLDAP の一部に含める必要があります。
@@ -494,7 +495,7 @@ SAP ワークロードに関しては、その選択肢は、SAP ワークロー
 また、Azure には専用ホストのプランも用意されています。 この専用ホストのコンセプトを使用すると、Azure の実行するパッチングのサイクルをより細かく制御できます。 独自のスケジュールに従って、パッチングの時間を決定できます。 このプランは、通常のワークロード サイクルに従わないワークロードを使用するカスタマーを対象としています。 Azure 専用ホストプランのコンセプトについては、「[Azure Dedicated Host](../../dedicated-hosts.md)」の記事を参照してください。 このプランの使用は SAP ワークロードでサポートされており、Microsoft のインフラストラクチャと最終的なメンテナンス プランのパッチングをさらに制御する必要がある複数の SAP ユーザーによって使用されます。 仮想マシンをホストする Azure インフラストラクチャを Microsoft がどのように保守・修正しているかの詳細については、「[Azure での仮想マシンのメンテナンス](../../maintenance-and-updates.md)」の記事を参照してください。
 
 #### <a name="generation-1-and-generation-2-virtual-machines"></a>第 1 世代と第 2 世代の仮想マシン
-Microsoft のハイパーバイザーは、2つの異なる世代の仮想マシンに対応しています。 これらの形式は、 **第 1 世代** および **第 2 世代** と呼称されます。 **第 2 世代** は、Windows Server 2012 ハイパーバイザーで2012年に導入されました。 Azure は、第 1 世代の仮想マシンを使用して開始しました。 Azure 仮想マシンをデプロイすると、既定では、第 1 世代形式が使用されます。 一方、第 2 世代の VM 形式もデプロイ可能です。 「[Azure での第 2 世代VM のサポート](../../generation-2.md)」の記事で、第 2 世代の VM としてデプロイできる Azure VM ファミリの一覧が参照できます。 またこの記事には、Hyper-V プライベート クラウドおよび Azure で実行できる第 2 世代仮想マシンの、重要な機能上の違いについても一覧で記載されています。 さらに重要な点として、この記事では、Azure で実行される第 1 世代 VM と第 2 世代 VM の機能上の違いについても記載しています。
+Microsoft のハイパーバイザーは、2つの異なる世代の仮想マシンに対応しています。 これらの形式は、**第 1 世代** および **第 2 世代** と呼称されます。 **第 2 世代** は、Windows Server 2012 ハイパーバイザーで2012年に導入されました。 Azure は、第 1 世代の仮想マシンを使用して開始しました。 Azure 仮想マシンをデプロイすると、既定では、第 1 世代形式が使用されます。 一方、第 2 世代の VM 形式もデプロイ可能です。 「[Azure での第 2 世代VM のサポート](../../generation-2.md)」の記事で、第 2 世代の VM としてデプロイできる Azure VM ファミリの一覧が参照できます。 またこの記事には、Hyper-V プライベート クラウドおよび Azure で実行できる第 2 世代仮想マシンの、重要な機能上の違いについても一覧で記載されています。 さらに重要な点として、この記事では、Azure で実行される第 1 世代 VM と第 2 世代 VM の機能上の違いについても記載しています。
 
 > [!NOTE]
 > Azure で実行されている第 1 世代と第 2 世代の VM には、機能上の違いがあります。 これらの違いの一覧については、「[Azure での第 2 世代 VM のサポート](../../generation-2.md)」を参照してください。
@@ -894,7 +895,7 @@ Azure Portal では、VM イメージとディスクを Azure にアップロー
 
 * *az login* を使用してサブスクリプションにサインインする
 * *az account set --subscription `<subscription name or id`>* を使用してサブスクリプションを選択する
-* *az storage blob upload* を使用して VHD をアップロードする - 「 [Azure Storage での Azure CLI の使用][storage-azure-cli]」を参照
+* *az storage blob upload* を使用して VHD をアップロードする - 「[Azure Storage での Azure CLI の使用][storage-azure-cli]」を参照
 * (省略可能) *az disk create* を使用して VHD から管理ディスクを作成 - https://docs.microsoft.com/cli/azure/disk を参照
 * *az vm create* とパラメーター *--attach-os-disk* を使用して、アップロードした VHD または管理ディスクを OS ディスクとして指定して新しい VM を作成する
 * *az vm disk attach* とパラメーター *--new* を使用してデータ ディスクを新しい VM に追加する
@@ -908,7 +909,7 @@ Azure Portal では、VM イメージとディスクを Azure にアップロー
 #### <a name="deployment-of-a-vm-image"></a>VM イメージのデプロイメント
 オンプレミス ネットワークから既存の VM または VHD をアップロードし、それを Azure VM イメージとして使用するには、それらの VM や VHD が、このドキュメントの「[SAP 用の顧客固有のイメージを使用する VM のデプロイの準備][planning-guide-5.2.2]」の章にリストされている要件を満たしている必要があります。
 
-* Windows で *sysprep* または Linux で *waagent -deprovision* を使用して VM を汎用化 - Windows の場合:「 [Sysprep テクニカル リファレンス](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10))」、Linux の場合:「 [Resource Manager テンプレートとして使用する Linux 仮想マシンをキャプチャする方法][capture-image-linux-step-2-create-vm-image]」を参照
+* Windows で *sysprep* または Linux で *waagent -deprovision* を使用して VM を汎用化 - Windows の場合:「[Sysprep テクニカル リファレンス](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10))」、Linux の場合:「[Resource Manager テンプレートとして使用する Linux 仮想マシンをキャプチャする方法][capture-image-linux-step-2-create-vm-image]」を参照
 * *Connect-AzAccount* を使用してサブスクリプションにサインインする
 * *Set-AzContext* および SubscriptionId または SubscriptionName パラメーターを使用してコンテキストのサブスクリプションを設定する - <https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext> を参照してください
 * *Add-AzVhd* を使用して VHD を Microsoft Azure Storage アカウントにアップロードする - <https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd> を参照してください
@@ -920,16 +921,16 @@ Azure Portal では、VM イメージとディスクを Azure にアップロー
 
 **Azure CLI**
 
-* Windows で *sysprep* または Linux で *waagent -deprovision* を使用して VM を汎用化 - Windows の場合:「 [Sysprep テクニカル リファレンス](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10))」、Linux の場合:「 [Resource Manager テンプレートとして使用する Linux 仮想マシンをキャプチャする方法][capture-image-linux-step-2-create-vm-image]」を参照
+* Windows で *sysprep* または Linux で *waagent -deprovision* を使用して VM を汎用化 - Windows の場合:「[Sysprep テクニカル リファレンス](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10))」、Linux の場合:「[Resource Manager テンプレートとして使用する Linux 仮想マシンをキャプチャする方法][capture-image-linux-step-2-create-vm-image]」を参照
 * *az login* を使用してサブスクリプションにサインインする
 * *az account set --subscription `<subscription name or id`>* を使用してサブスクリプションを選択する
-* *az storage blob upload* を使用して VHD をアップロードする - 「 [Azure Storage での Azure CLI の使用][storage-azure-cli]」を参照
+* *az storage blob upload* を使用して VHD をアップロードする - 「[Azure Storage での Azure CLI の使用][storage-azure-cli]」を参照
 * (省略可能) *az image create* を使用して VHD から管理ディスク イメージを作成する - https://docs.microsoft.com/cli/azure/image を参照
 * *az vm create* とパラメーター *--image* を使用して、アップロードした VHD または管理ディスク イメージを OS ディスクとして指定して新しい VM を作成する
 
 **テンプレート**
 
-* Windows で *sysprep* または Linux で *waagent -deprovision* を使用して VM を汎用化 - Windows の場合:「 [Sysprep テクニカル リファレンス](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10))」、Linux の場合:「 [Resource Manager テンプレートとして使用する Linux 仮想マシンをキャプチャする方法][capture-image-linux-step-2-create-vm-image]」を参照
+* Windows で *sysprep* または Linux で *waagent -deprovision* を使用して VM を汎用化 - Windows の場合:「[Sysprep テクニカル リファレンス](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10))」、Linux の場合:「[Resource Manager テンプレートとして使用する Linux 仮想マシンをキャプチャする方法][capture-image-linux-step-2-create-vm-image]」を参照
 * PowerShell または Azure CLI で VHD をアップロード
 * (オプション) PowerShell、Azure CLI、または Azure portal を使用して、VHD からマネージド ディスク イメージを作成する
 * [この JSON テンプレート サンプル](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json)のようにイメージ VHD を参照する JSON テンプレートを使用するか、[この JSON テンプレート サンプル](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)のように管理ディスク イメージを使用して、VM を作成します。
@@ -1178,7 +1179,7 @@ OS と、推奨するように SAP のバイナリおよびデータベース (�
 
 ほとんどのシナリオでは、VM に SAP データベースをデプロイするために追加のディスクを作成する必要があります。 ディスクの数については、このドキュメントの「[SAP デプロイ用の VM/ディスク構造][planning-guide-5.5.1]」の章で説明しました。 基本 VM をデプロイした後、Azure Portal でディスクを接続または切断することができます。 ディスクの接続/切断は、VM が停止しているときだけでなく動作中にも行うことができます。 ディスクを接続するときは、空のディスクを接続するか、この時点で別の VM に接続されていない既存のディスクを接続するかを Azure portal で選択できます。
 
-**注** :ディスクは一度に 1 つの VM だけに接続できます。
+**注**:ディスクは一度に 1 つの VM だけに接続できます。
 
 ![Attach / detach disks with Azure Standard Storage (Azure Standard Storage によるディスクの接続/切断)][planning-guide-figure-1400]
 
@@ -1186,7 +1187,7 @@ OS と、推奨するように SAP のバイナリおよびデータベース (�
 
 次に、新規の空のディスクを作成するか、以前にアップロードした既存のディスクを選択して VM に今アタッチするするかを決める必要があります。
 
-**重要** :Azure Standard Storage ではホスト キャッシュを使用 **しない** でください。 ホスト キャッシュの設定は既定の [なし] のままにしてください。 Azure Premium Storage では、I/O 特性が主に読み取り (データベースのデータ ファイルに対する一般的な I/O トラフィックなど) である場合は、読み取りキャッシュを有効にする必要があります。 データベース トランザクションのログ ファイルについては、キャッシュなしをお勧めします。
+**重要**:Azure Standard Storage ではホスト キャッシュを使用 **しない** でください。 ホスト キャッシュの設定は既定の [なし] のままにしてください。 Azure Premium Storage では、I/O 特性が主に読み取り (データベースのデータ ファイルに対する一般的な I/O トラフィックなど) である場合は、読み取りキャッシュを有効にする必要があります。 データベース トランザクションのログ ファイルについては、キャッシュなしをお勧めします。
 
 ---
 > ![Windows ロゴ。][Logo_Windows] Windows
@@ -1732,7 +1733,7 @@ Azure Extension for SAP の全体的なアーキテクチャは次のように�
 
 ![Azure Extension for SAP ][planning-guide-figure-2500]
 
-**デプロイ時にこれらの PowerShell コマンドレットまたは CLI コマンドを使用する具体的な方法や詳しい手順については、 [デプロイ ガイド][deployment-guide]** の手順をご確認ください。
+**デプロイ時にこれらの PowerShell コマンドレットまたは CLI コマンドを使用する具体的な方法や詳しい手順については、[デプロイ ガイド][deployment-guide]** の手順をご確認ください。
 
 ### <a name="integration-of-azure-located-sap-instance-into-saprouter"></a>Azure にある SAP インスタンスの SAProuter への統合
 
@@ -1768,7 +1769,7 @@ SAP エンタープライズ ポータルの URL またはポートをカスタ�
 
 ### <a name="definition-of-terminologies"></a>用語の定義
 
-一般的に、 **高可用性 (HA)** という用語は、 **同じ** データ センター内の冗長性、フォールト トレランス、またはフェールオーバーで保護されたコンポーネントを通じて IT サービスのビジネス継続性を提供することで、IT の中断を最小限に抑える一連のテクノロジに関連します。 ここでは、Azure リージョンは 1 つです。
+一般的に、**高可用性 (HA)** という用語は、**同じ** データ センター内の冗長性、フォールト トレランス、またはフェールオーバーで保護されたコンポーネントを通じて IT サービスのビジネス継続性を提供することで、IT の中断を最小限に抑える一連のテクノロジに関連します。 ここでは、Azure リージョンは 1 つです。
 
 **障害復旧 (DR)** も IT サービスの中断を最小限に抑えることを目的としていますが、ここでは、通常数百キロメートル離れた場所にある **異なる** データ センター間での中断の最小化とその復旧に対処します。 通常、同じ地理的リージョン内の、またはお客様が独自に確立したさまざまな Azure リージョンを対象とします。
 
@@ -1776,8 +1777,8 @@ SAP エンタープライズ ポータルの URL またはポートをカスタ�
 
 Azure における SAP 高可用性の説明は、2 つの要素に分けることができます。
 
-* **Azure インフラストラクチャの高可用性** 。コンピューティング (VM)、ネットワーク、ストレージなどの高可用性、SAP アプリケーションの可用性を高めるための利点など。
-* **SAP アプリケーションの高可用性** 。SAP ソフトウェア コンポーネントの高可用性など。
+* **Azure インフラストラクチャの高可用性**。コンピューティング (VM)、ネットワーク、ストレージなどの高可用性、SAP アプリケーションの可用性を高めるための利点など。
+* **SAP アプリケーションの高可用性**。SAP ソフトウェア コンポーネントの高可用性など。
   * SAP アプリケーション サーバー
   * SAP ASCS/SCS インスタンス
   * DB サーバー
@@ -1950,7 +1951,7 @@ SAP インスタンスの自動開始に関するその他の情報について�
 
 
 その状態のリストアは、ベース VM と、ベース VM およびマウントされたディスクのオリジナル ディスクの削除、保存されたディスクのオリジナル Storage アカウントまたはマネージド ディスクのリソース グループへのコピー、システムの再デプロイで構成されます。
-この記事では、このプロセスを PowerShell でスクリプト化する方法について説明します。<http://www.westerndevs.com/azure-snapshots/>
+この記事では、このプロセスを PowerShell でスクリプト化する方法について説明します。<https://www.westerndevs.com/_/azure-snapshots/>
 
 前に説明されているように VM バックアップのリストアでは新しいハードウェア キーが作成されるため、新しい SAP ライセンスを必ずインストールしてください。
 

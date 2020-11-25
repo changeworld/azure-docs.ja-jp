@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/22/2020
 tags: connectors
 ms.openlocfilehash: b6276ff940d8b156a671cb5386ce53ede30dd879
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426649"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019713"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps と Azure Service Bus を使用してクラウド内でメッセージを交換する
 
@@ -47,7 +47,7 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
 1. [Azure portal](https://portal.azure.com) で、Azure アカウントを使ってサインインします。
 
-1. Service Bus " *名前空間* " に移動します。 名前空間ページで **[設定]** の **[共有アクセス ポリシー]** を選択します。 **[要求]** で、その名前空間に対して **管理** アクセス許可が付与されていることを確認します。
+1. Service Bus "*名前空間*" に移動します。 名前空間ページで **[設定]** の **[共有アクセス ポリシー]** を選択します。 **[要求]** で、その名前空間に対して **管理** アクセス許可が付与されていることを確認します。
 
    ![Service Bus 名前空間のアクセス許可を管理する](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
 
@@ -76,7 +76,7 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
    Service Bus トリガーを使用する場合の考慮事項を次に示します。
 
-   * すべての Service Bus トリガーは、 *長いポーリング* のトリガーです。 この説明はつまり、起動するときにすべてのメッセージを処理し、キューまたはトピック サブスクリプションにさらにメッセージが届くのを 30 秒間待機します。 30 秒以内にメッセージが届かなかった場合、トリガーの実行はスキップされます。 受信した場合、トリガーはキューまたはトピック サブスクリプションが空になるまでメッセージの読み取りを続けます。 次のトリガーのポーリングは、トリガーのプロパティで指定された繰り返し間隔に基づいています。
+   * すべての Service Bus トリガーは、*長いポーリング* のトリガーです。 この説明はつまり、起動するときにすべてのメッセージを処理し、キューまたはトピック サブスクリプションにさらにメッセージが届くのを 30 秒間待機します。 30 秒以内にメッセージが届かなかった場合、トリガーの実行はスキップされます。 受信した場合、トリガーはキューまたはトピック サブスクリプションが空になるまでメッセージの読み取りを続けます。 次のトリガーのポーリングは、トリガーのプロパティで指定された繰り返し間隔に基づいています。
 
    * **[1 つ以上のメッセージがキューに届いたとき (オート コンプリート)]** トリガーのように、1 つ以上のメッセージを返すトリガーもあります。 これらのトリガーが起動すると、1 からトリガーの **[最大メッセージ数]** プロパティで指定された数までのメッセージが返されます。
 
@@ -163,7 +163,7 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
 ## <a name="send-correlated-messages-in-order"></a>相互関係のあるメッセージを順番に送信する
 
-相互関係のあるメッセージを特定の順序で送信する必要がある場合は、 [Azure Service Bus コネクタ](../connectors/connectors-create-api-servicebus.md)を使用することによって、 [" *シーケンシャルなコンボイ* " パターン](/azure/architecture/patterns/sequential-convoy)に従うことができます。 関連付けられたメッセージには、Service Bus での[セッション](../service-bus-messaging/message-sessions.md)の ID など、それらのメッセージ間の関係を定義するプロパティがあります。
+相互関係のあるメッセージを特定の順序で送信する必要がある場合は、[Azure Service Bus コネクタ](../connectors/connectors-create-api-servicebus.md)を使用することによって、["*シーケンシャルなコンボイ*" パターン](/azure/architecture/patterns/sequential-convoy)に従うことができます。 関連付けられたメッセージには、Service Bus での[セッション](../service-bus-messaging/message-sessions.md)の ID など、それらのメッセージ間の関係を定義するプロパティがあります。
 
 ロジック アプリを作成するとき、シーケンシャルなコンボイ パターンを実装する **Correlated in-order delivery using service bus sessions** テンプレートを選択できます。 詳細については、[関連のあるメッセージを順番に送信する](../logic-apps/send-related-messages-sequential-convoy.md)方法に関するページを参照してください。
 

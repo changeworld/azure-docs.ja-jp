@@ -10,11 +10,11 @@ ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.openlocfilehash: 9ed3a4b0827e81b3f779d95a6eab1dc341e69bb1
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503268"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019380"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Synapse SQL を使用してデータを安全に読み込む
 
@@ -76,7 +76,7 @@ WITH (
 3. Azure ストレージ アカウントの **[Firewalls and Virtual networks]\(ファイアウォールと仮想ネットワーク\)** 設定メニューで、 **[Allow trusted Microsoft services to access this storage account]\(信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します\)** をオンにする必要があります。 詳しくは、この[ガイド](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions)をご覧ください。
 #### <a name="steps"></a>手順
 
-1. PowerShell で、Azure Active Directory に **お使いの SQL サーバーを登録します** 。
+1. PowerShell で、Azure Active Directory に **お使いの SQL サーバーを登録します**。
 
    ```powershell
    Connect-AzAccount
@@ -84,10 +84,10 @@ WITH (
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
    ```
 
-2. この [ガイド](../../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を使用して、 **汎用 v2 ストレージ アカウント** を作成します。
+2. この [ガイド](../../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を使用して、**汎用 v2 ストレージ アカウント** を作成します。
 
    > [!NOTE]
-   > 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この [ガイド](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を使用して、 **最初に v2 にアップグレードする** 必要があります。
+   > 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この [ガイド](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を使用して、**最初に v2 にアップグレードする** 必要があります。
 
 3. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 **ストレージ BLOB データ所有者、共同作成者、または閲覧者** の Azure ロールを SQL サーバーに割り当てます。
 

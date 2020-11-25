@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 6e1064e4362175b3de5187ce050f1719ede56bd5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516428"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018751"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talent-palette"></a>チュートリアル: Azure Active Directory と Talent Palette の統合
 
@@ -41,8 +41,8 @@ Talent Palette と Azure AD の統合を構成するには、次のものが必�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Folloze では、 **IDP** によって開始される SSO がサポートされます
-* Folloze では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Folloze では、**IDP** によって開始される SSO がサポートされます
+* Folloze では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-talent-palette-from-the-gallery"></a>ギャラリーからの Talent Palette の追加
 
@@ -62,13 +62,13 @@ Azure AD への Talent Palette の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add_new_app.png)
 
-4. 検索ボックスに「 **Talent Palette** 」と入力し、結果パネルで **[Talent Palette]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Talent Palette**」と入力し、結果パネルで **[Talent Palette]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リスト内の Talent Palette](common/search_new_app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Talent Palette を使用して Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Talent Palette を使用して Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Talent Palette 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Talent Palette を使用して Azure AD のシングル サインオンを構成し、テストするには、次の構成要素を完了する必要があります。
@@ -147,9 +147,9 @@ Talent Palette を使用して Azure AD のシングル サインオンを構成
 
     ![[ユーザー] ダイアログ ボックス](common/user_properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

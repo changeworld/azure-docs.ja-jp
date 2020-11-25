@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: ed63d148afa6f5674d36cc50c18351b2a06966eb
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636835"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019618"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory - サンプル
 > [!NOTE]
@@ -69,7 +69,7 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
 6. 先程 **[サンプル パイプライン]** ブレードでクリックしたサンプルのタイルに、デプロイの状態が表示されます。
 
     ![[デプロイ ステータス]](./media/data-factory-samples/DeploymentStatus.png)
-7. サンプルのタイルに " **デプロイに成功しました** " メッセージが表示されたら、 **[サンプル パイプライン]** ブレードを閉じます。  
+7. サンプルのタイルに "**デプロイに成功しました**" メッセージが表示されたら、 **[サンプル パイプライン]** ブレードを閉じます。  
 8. **[Data Factory]** ブレードで、リンクされたサービス、データ セット、パイプラインがデータ ファクトリに追加されたことを確認します。  
 
     ![[Data Factory] ブレード](./media/data-factory-samples/DataFactoryBladeAfter.png)
@@ -117,7 +117,7 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
 
     1. **[既存のデータ ファクトリを使用する]** オプションが選択されていることを確認します。
     2. テンプレートを使用する際に選択した **データ ファクトリ** を選択します。
-    3. **[次へ]** をクリックし、 **[項目の発行]** ページに切り替えます。 ( **[次へ]** ボタンが無効になっている場合は、 **Tab** キーを押して [名前] フィールドの外に移動します。)
+    3. **[次へ]** をクリックし、 **[項目の発行]** ページに切り替えます。 ( **[次へ]** ボタンが無効になっている場合は、**Tab** キーを押して [名前] フィールドの外に移動します。)
 14. **[項目の発行]** ページで、すべての Data Factory エンティティが選択されていることを確認し、 **[次へ]** をクリックして **[概要]** ページに切り替えます。     
 15. 概要を確認してから **[次へ]** をクリックし、デプロイ プロセスを開始して **[デプロイ ステータス]** を表示します。
 16. **[デプロイ ステータス]** ページに、デプロイメント プロセスのステータスが表示されます。 デプロイメントが完了したら、[完了] をクリックします。

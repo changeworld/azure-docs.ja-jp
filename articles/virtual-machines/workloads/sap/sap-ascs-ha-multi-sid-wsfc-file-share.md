@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/24/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a356e96b82e6fbe855d0b474dcb6b1f59c98333
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b204aa508370c62aaf33688aeb7ec63d3f8f1b0e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855214"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019363"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>Azure での Windows Server フェールオーバー クラスタリングとファイル共有による SAP ASCS/SCS インスタンスのマルチ SID 高可用性
 
@@ -32,7 +33,7 @@ ms.locfileid: "88855214"
 
 SAP がデプロイされている場合は、内部ロード バランサーを使って SAP Central Services (ASCS/SCS) インスタンスの Windows クラスター構成を作成できます。
 
-この記事では、SAP ASCS/SCS のクラスター化された追加インスタンスを、**ファイル共有**を備えた既存の Windows Server フェールオーバー クラスタリング (WSFC) クラスターにインストールすることにより、1 つの ASCS/SCS インストールから SAP マルチ SID 構成に移行する方法について取り上げます。 このプロセスが完了したら、SAP マルチ SID クラスターの構成は完了です。
+この記事では、SAP ASCS/SCS のクラスター化された追加インスタンスを、**ファイル共有** を備えた既存の Windows Server フェールオーバー クラスタリング (WSFC) クラスターにインストールすることにより、1 つの ASCS/SCS インストールから SAP マルチ SID 構成に移行する方法について取り上げます。 このプロセスが完了したら、SAP マルチ SID クラスターの構成は完了です。
 
 > [!NOTE]
 >
@@ -49,7 +50,7 @@ SAP がデプロイされている場合は、内部ロード バランサーを
 
 ## <a name="prerequisites"></a>前提条件
 
-次の図に示すように、**ファイル共有**を使って 1 つの SAP ASCS/SCS インスタンスに使う WSFC クラスターを構成済みであることが必要です。
+次の図に示すように、**ファイル共有** を使って 1 つの SAP ASCS/SCS インスタンスに使う WSFC クラスターを構成済みであることが必要です。
 
 ![図 1: 2 つのクラスターにデプロイされた SAP ASCS/SCS インスタンスと SOFS][sap-ha-guide-figure-8007]
 
@@ -98,7 +99,7 @@ _**図 2:** 2 つのクラスターの SAP マルチ SID 構成_
 _**図 3:** マルチ SID の SOFS は SAP グローバル ホスト名と同じ_
 
 > [!IMPORTANT]
->第 2 の**SAP \<SID2>** システムには、同じ Volume1 と同じ **\<SAPGlobalHost>** ネットワーク名を使います。
+>第 2 の **SAP \<SID2>** システムには、同じ Volume1 と同じ **\<SAPGlobalHost>** ネットワーク名を使います。
 >さまざまな SAP システムの共有名として **SAPMNT** を既に設定してあるので、 **\<SAPGlobalHost>** ネットワーク名を再利用するには、同じ **Volume1** を使う必要があります。
 >
 >\<SID2> グローバル ホストのファイル パスは、C:\ClusterStorage\\**Volume1**\usr\sap\<SID2>\SYS\. です。
@@ -258,7 +259,7 @@ _**図 10:** すべての設定を無効にする_
 
 <br>
 
-ファイルと sapmnt 共有に対する*フル コントロール* アクセス許可を以下に割り当てます。
+ファイルと sapmnt 共有に対する *フル コントロール* アクセス許可を以下に割り当てます。
 * **SAP_\<SID>_GlobalAdmin** ドメイン ユーザー グループ
 * ASCS/SCS クラスター ノード **ascs-1$** および **ascs-2$** のコンピューター オブジェクト
 

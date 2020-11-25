@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
 ms.openlocfilehash: f597e58c70d6ac9daff753f5c0a54199c2383c42
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746162"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019509"
 ---
 # <a name="manage-your-function-app"></a>お使いの関数アプリの管理 
 
@@ -107,7 +107,7 @@ App Service Editor は、JSON 構成ファイルとコード ファイルを変�
 
 ![Kudu の構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
 
-App Service 用の高度なツール (Kudu とも呼ばれます) を使用すると、関数アプリの高度な管理機能にアクセスできます。 Kudu から、システム情報、アプリ設定、環境変数、サイト拡張機能、HTTP ヘッダー、およびサーバー変数を管理します。 また、`https://<myfunctionapp>.scm.azurewebsites.net/` など、関数アプリの SCM エンドポイントにアクセスして、 **Kudu** を起動することもできます 
+App Service 用の高度なツール (Kudu とも呼ばれます) を使用すると、関数アプリの高度な管理機能にアクセスできます。 Kudu から、システム情報、アプリ設定、環境変数、サイト拡張機能、HTTP ヘッダー、およびサーバー変数を管理します。 また、`https://<myfunctionapp>.scm.azurewebsites.net/` など、関数アプリの SCM エンドポイントにアクセスして、**Kudu** を起動することもできます 
 
 
 ### <a name="deployment-center"></a><a name="deployment"></a>デプロイ センター

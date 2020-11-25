@@ -10,11 +10,11 @@ ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: 12aa18c966745b450b3c9aa55e87e576b0c3f99b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075962"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018530"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Protocol Buffers を使用してテレメトリをシリアル化する
 
@@ -70,7 +70,7 @@ Visual Studio Code で **remote-monitoring-services-dotnet-master\storage-adapte
 
 ストレージ アダプター マイクロサービスをローカルで実行するために、 **[デバッグ] \> [デバッグの開始]** をクリックします。
 
-Visual Studio Code の**ターミナル** ウィンドウに、実行中のマイクロサービスからの出力が表示されます。これに、Web サービスの正常性チェック用の URL (<http://127.0.0.1:9022/v1/status>) が含まれます。 このアドレスに移動すると、状態が "OK: Alive and well" と表示されます。
+Visual Studio Code の **ターミナル** ウィンドウに、実行中のマイクロサービスからの出力が表示されます。これに、Web サービスの正常性チェック用の URL (<http://127.0.0.1:9022/v1/status>) が含まれます。 このアドレスに移動すると、状態が "OK: Alive and well" と表示されます。
 
 ストレージ アダプター マイクロサービスは、以下の手順を実行している間もこの Visual Studio Code のインスタンスで実行したままにしておきます。
 
@@ -180,7 +180,7 @@ Visual Studio Code の新しいインスタンスで、GitHub からダウンロ
     protoc -I c:\temp\device-simulation-dotnet-master\Services\Models\Protobuf\proto --csharp_out=C:\temp\device-simulation-dotnet-master\Services\Models\Protobuf assettracker.proto
     ```
 
-    このコマンドは、**Services\Models\Protobuf**フォルダーに **Assettracker.cs** ファイルを生成します。
+    このコマンドは、**Services\Models\Protobuf** フォルダーに **Assettracker.cs** ファイルを生成します。
 
 ## <a name="test-protobuf-locally"></a>Protobuf をローカルでテストする
 
@@ -219,7 +219,7 @@ Visual Studio Code の新しいインスタンスで、GitHub からダウンロ
 
 マイクロサービスをローカルで実行するために、 **[デバッグ] \> [デバッグの開始]** をクリックします。
 
-Visual Studio Code の**ターミナル** ウィンドウに、実行中のマイクロサービスからの出力が表示されます。
+Visual Studio Code の **ターミナル** ウィンドウに、実行中のマイクロサービスからの出力が表示されます。
 
 デバイス シミュレーション マイクロサービスは、次の手順を実行している間もこの Visual Studio Code のインスタンスで実行したままにしておきます。
 

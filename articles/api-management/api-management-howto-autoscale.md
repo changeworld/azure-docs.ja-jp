@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 41a97c639d9148f2bff3e4f530363ea05a65a7b8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095953"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018251"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Azure API Management インスタンスを自動的にスケーリングする  
 
@@ -46,7 +46,7 @@ Azure API Management サービス インスタンスは、一連の規則に基�
 + 価格レベルもサービス インスタンスの最大ユニット数を指定します。
 + スケーリング処理には少なくとも 20 分ほどかかります。
 + サービスが別の操作によってロックされている場合、スケーリング要求は失敗し、自動的に再試行します。
-+ マルチリージョン デプロイのサービスの場合、 **プライマリの場所** にあるユニットのみスケーリング可能です。 他の場所にあるユニットはスケーリングできません。
++ マルチリージョン デプロイのサービスの場合、**プライマリの場所** にあるユニットのみスケーリング可能です。 他の場所にあるユニットはスケーリングできません。
 
 ## <a name="enable-and-configure-autoscale-for-azure-api-management-service"></a>Azure API Management サービスの自動スケールの有効化と構成
 

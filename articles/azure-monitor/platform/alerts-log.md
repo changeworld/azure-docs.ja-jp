@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
 ms.openlocfilehash: 0842efe304faa9a0d94fbf71075f1bc16ff34014
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217560"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018207"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してログ アラートを作成、表示、管理する
 
@@ -55,7 +55,7 @@ Azure Resource Manager テンプレートを使用してログ アラート ル�
 
 1. ログ アラートは、次の 2 種類の [**測定**](alerts-unified-log.md#measure)を基に作成できます。
     1. **結果の数** - クエリによって返されるレコードの数。
-    1. **メトリック測定** - 選択された式と、 [bin()](/azure/kusto/query/binfunction) の選択でグループ化された summarize を使用して計算された " *集計値* "。 次に例を示します。
+    1. **メトリック測定** - 選択された式と、[bin()](/azure/kusto/query/binfunction) の選択でグループ化された summarize を使用して計算された "*集計値*"。 次に例を示します。
 
     ```Kusto
     // Reported errors
@@ -75,15 +75,15 @@ Azure Resource Manager テンプレートを使用してログ アラート ル�
 
     ![[集計] オプション](media/alerts-log/aggregate-on.png)
 
-1. 次に、プレビュー データに基づいて、 [ **[演算子]** 、 **[しきい値]**](alerts-unified-log.md#threshold-and-operator)、 [ **[頻度]**](alerts-unified-log.md#frequency) を設定します。
+1. 次に、プレビュー データに基づいて、[ **[演算子]** 、 **[しきい値]**](alerts-unified-log.md#threshold-and-operator)、[ **[頻度]**](alerts-unified-log.md#frequency) を設定します。
 
-1. 必要に応じて、 **[合計] または [連続する違反]** を使用して、 [アラートをトリガーする違反の数](alerts-unified-log.md#number-of-violations-to-trigger-alert)を設定することもできます。
+1. 必要に応じて、 **[合計] または [連続する違反]** を使用して、[アラートをトリガーする違反の数](alerts-unified-log.md#number-of-violations-to-trigger-alert)を設定することもできます。
 
 1. **[Done]** を選択します。 
 
 1. **[アラート ルール名]** 、 **[説明]** を定義し、アラートの **[重大度]** を選択します。 これらの詳細は、すべてのアラート アクションで使用されます。 さらに、 **[ルールの作成時に有効にする]** を選択して、作成に関するアラート ルールをアクティブにしないようにできます。
 
-1. アラートが発生した後に、ルールのアクションを非表示にする場合は、 [ **[アラートを表示しない]**](alerts-unified-log.md#state-and-resolving-alerts) オプションを使用します。 ルールは引き続き実行され、アラートも作成されますが、ノイズを防ぐためにアクションはトリガーされません。 有効にするには、ミュート アクションの値がアラートの頻度よりも大きい必要があります。
+1. アラートが発生した後に、ルールのアクションを非表示にする場合は、[ **[アラートを表示しない]**](alerts-unified-log.md#state-and-resolving-alerts) オプションを使用します。 ルールは引き続き実行され、アラートも作成されますが、ノイズを防ぐためにアクションはトリガーされません。 有効にするには、ミュート アクションの値がアラートの頻度よりも大きい必要があります。
 
     ![ログ アラートのアラートを表示しない](media/alerts-log/AlertsPreviewSuppress.png)
 
@@ -94,8 +94,8 @@ Azure Resource Manager テンプレートを使用してログ アラート ル�
 
 1. ログ アラート ルールのアクションは、必要に応じてカスタマイズすることができます。
 
-    - **電子メールの件名のカスタマイズ** :電子メール アクションの " *電子メールの件名* " をオーバーライドします。 メールの本文は変更できず、このフィールドは **電子メール アドレス用ではありません** 。
-    - **カスタム JSON ペイロードを含める** : アクション グループに Webhook アクションが含まれていることを前提として、アクション グループによって使用される Webhook JSON をオーバーライドします。 詳細については、[ログ アラートの Webhook アクション](./alerts-log-webhook.md)に関するページを参照してください。
+    - **電子メールの件名のカスタマイズ**:電子メール アクションの "*電子メールの件名*" をオーバーライドします。 メールの本文は変更できず、このフィールドは **電子メール アドレス用ではありません**。
+    - **カスタム JSON ペイロードを含める**: アクション グループに Webhook アクションが含まれていることを前提として、アクション グループによって使用される Webhook JSON をオーバーライドします。 詳細については、[ログ アラートの Webhook アクション](./alerts-log-webhook.md)に関するページを参照してください。
 
     ![ログ アラートのアクションのオーバーライド](media/alerts-log/AlertsPreviewOverrideLog.png)
 
@@ -126,7 +126,7 @@ Azure Resource Manager テンプレートを使用してログ アラート ル�
 
     ![ルールを作成する](media/alerts-log/AlertsPreviewAdd.png)
 
-1. **[リソースの選択]** ボタンを選択します。 " *サブスクリプション* "、" *リソースの種類* " を選択し、リソースを選択してフィルターを適用します。 リソースに使用可能なログがあることを確認します。
+1. **[リソースの選択]** ボタンを選択します。 "*サブスクリプション*"、"*リソースの種類*" を選択し、リソースを選択してフィルターを適用します。 リソースに使用可能なログがあることを確認します。
 
    ![リソースの選択](media/alerts-log/Alert-SelectResourceLog.png)
 
@@ -148,7 +148,7 @@ Azure Resource Manager テンプレートを使用してログ アラート ル�
 
 1. **[条件]** タブから開始します。
 
-    1. [ **[測定]**](alerts-unified-log.md#measure)、 [ **[集計の種類]**](alerts-unified-log.md#aggregation-type)、および [ **[集計の粒度]**](alerts-unified-log.md#aggregation-granularity) が正しいことを確認します。 
+    1. [ **[測定]**](alerts-unified-log.md#measure)、[ **[集計の種類]**](alerts-unified-log.md#aggregation-type)、および [ **[集計の粒度]**](alerts-unified-log.md#aggregation-granularity) が正しいことを確認します。 
         1. 既定のルールでは、過去 5 分間の結果の数がカウントされます。
         1. 集計されたクエリ結果が検出されると、それを取得するため、ルールは数秒以内に自動的に更新されます。
 
@@ -164,7 +164,7 @@ Azure Resource Manager テンプレートを使用してログ アラート ル�
 
         ![プレビューのグラフ](media/alerts-log/preview-chart.png)
 
-    1. 次に、プレビュー データに基づいて、 **[アラート ロジック]** 、 [ **[演算子]** 、 **[しきい値]**](alerts-unified-log.md#threshold-and-operator)、 [ **[頻度]**](alerts-unified-log.md#frequency) を設定します。
+    1. 次に、プレビュー データに基づいて、 **[アラート ロジック]** 、[ **[演算子]** 、 **[しきい値]**](alerts-unified-log.md#threshold-and-operator)、[ **[頻度]**](alerts-unified-log.md#frequency) を設定します。
 
         ![しきい値とアラート ロジックが含まれるプレビューのグラフ](media/alerts-log/chart-and-alert-logic.png)
 

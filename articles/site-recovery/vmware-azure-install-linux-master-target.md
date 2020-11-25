@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: mayg
 ms.openlocfilehash: 9e1008f7acbfe0685b7a171176c7dc54592d1491
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146474"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019244"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>フェールバック用の Linux マスター ターゲット サーバーをインストールする
 仮想マシンを Azure にフェールオーバー後、仮想マシンをオンプレミス サイトにフェールバックできます。 フェールバックするには、Azure からオンプレミス サイトへの仮想マシンを再保護する必要があります。 このプロセスには、トラフィックを受信するオンプレミス マスター ターゲット サーバーが必要です。 
@@ -44,11 +44,11 @@ ms.locfileid: "93146474"
 ## <a name="sizing-guidelines-for-creating-master-target-server"></a>マスター ターゲット サーバーを作成するためのサイズに関するガイドライン
 
 次のサイズのガイドラインに従って、マスター ターゲットを作成します。
-- **RAM** : 6 GB 以上
-- **OS ディスク サイズ** : 100 GB 以上 (OS をインストールする場合)
-- **リテンション ドライブの追加ディスク サイズ** : 1 TB (テラバイト)
-- **CPU コア数** : 4 コア以上
-- **カーネル** : 4.16.*
+- **RAM**: 6 GB 以上
+- **OS ディスク サイズ**: 100 GB 以上 (OS をインストールする場合)
+- **リテンション ドライブの追加ディスク サイズ**: 1 TB (テラバイト)
+- **CPU コア数**: 4 コア以上
+- **カーネル**: 4.16.*
 
 ## <a name="deploy-the-master-target-server"></a>マスター ターゲット サーバーをデプロイする
 
@@ -59,27 +59,27 @@ ms.locfileid: "93146474"
 1.   [ダウンロード リンク](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso)に移動し、最も近いミラーを選択して、Ubuntu 16.04.2 最小構成 64 ビット ISO をダウンロードします。
 Ubuntu 16.04.2 最小構成 64-bit ISO を DVD ドライブに保存し、システムを起動します。
 
-1.  優先する言語として **[English]\(英語\)** を選択し、 **Enter** キーを押します。
+1.  優先する言語として **[English]\(英語\)** を選択し、**Enter** キーを押します。
     
     ![言語を選択する](./media/vmware-azure-install-linux-master-target/image1.png)
-1. **[Install Ubuntu Server]\(Ubuntu Server のインストール\)** を選択し、 **Enter** キーを押します。
+1. **[Install Ubuntu Server]\(Ubuntu Server のインストール\)** を選択し、**Enter** キーを押します。
 
     ![[Install Ubuntu Server]\(Ubuntu Server のインストール\) を選択する](./media/vmware-azure-install-linux-master-target/image2.png)
 
-1.  優先する言語として **[English]\(英語\)** を選択し、 **Enter** キーを押します。
+1.  優先する言語として **[English]\(英語\)** を選択し、**Enter** キーを押します。
 
     ![優先する言語として [English]\(英語\) を選択する](./media/vmware-azure-install-linux-master-target/image3.png)
 
-1. **[Time Zone]\(タイム ゾーン\)** オプション一覧から適切なオプションを選択し、 **Enter** キーを押します。
+1. **[Time Zone]\(タイム ゾーン\)** オプション一覧から適切なオプションを選択し、**Enter** キーを押します。
 
     ![適切なタイム ゾーンを選択する](./media/vmware-azure-install-linux-master-target/image4.png)
 
-1. **[No]\(いいえ\)** (既定のオプション) を選択し、 **Enter** キーを押します。
+1. **[No]\(いいえ\)** (既定のオプション) を選択し、**Enter** キーを押します。
 
      ![キーボードを構成する](./media/vmware-azure-install-linux-master-target/image5.png)
-1. キーボードの製造国/地域として **[English (US)]\(英語 (米国)\)** を選択し、 **Enter** キーを押します。
+1. キーボードの製造国/地域として **[English (US)]\(英語 (米国)\)** を選択し、**Enter** キーを押します。
 
-1. キーボード レイアウトとして **[English (US)]\(英語 (米国)\)** を選択し、 **Enter** キーを押します。
+1. キーボード レイアウトとして **[English (US)]\(英語 (米国)\)** を選択し、**Enter** キーを押します。
 
 1. **[Hostname]\(ホスト名\)** ボックスにサーバーのホスト名を入力し、 **[Continue]\(続行\)** を選択します。
 
@@ -93,27 +93,27 @@ Ubuntu 16.04.2 最小構成 64-bit ISO を DVD ドライブに保存し、シス
 
     ![パスワードを確認入力する](./media/vmware-azure-install-linux-master-target/image11.png)
 
-1.  ホーム ディレクトリを暗号化するための次の選択で、 **[No]\(いいえ\)** (既定のオプション) を選択し、 **Enter** キーを押します。
+1.  ホーム ディレクトリを暗号化するための次の選択で、 **[No]\(いいえ\)** (既定のオプション) を選択し、**Enter** キーを押します。
 
-1. 表示されているタイム ゾーンが正しい場合は **[Yes]\(はい\)** (既定のオプション) を選択し、 **Enter** キーを押します。 タイム ゾーンを修正するには、 **[No]\(いいえ\)** を選択します。
+1. 表示されているタイム ゾーンが正しい場合は **[Yes]\(はい\)** (既定のオプション) を選択し、**Enter** キーを押します。 タイム ゾーンを修正するには、 **[No]\(いいえ\)** を選択します。
 
-1. パーティション分割方法オプションから **[Guided - Use entire disk]\(ガイド付き - ディスク全体を使用する\)** を選択し、 **Enter** キーを押します。
+1. パーティション分割方法オプションから **[Guided - Use entire disk]\(ガイド付き - ディスク全体を使用する\)** を選択し、**Enter** キーを押します。
 
      ![パーティション分割方法オプションを選択する](./media/vmware-azure-install-linux-master-target/image14.png)
 
-1.  **[Select disk to partition]\(パーティション分割するディスクを選択してください\)** オプションで適切なディスクを選択し、 **Enter** キーを押します。
+1.  **[Select disk to partition]\(パーティション分割するディスクを選択してください\)** オプションで適切なディスクを選択し、**Enter** キーを押します。
 
     ![ディスクを選択する](./media/vmware-azure-install-linux-master-target/image15.png)
 
-1.  **[Yes]\(はい\)** を選択して変更をディスクに書き込み、 **Enter** キーを押します。
+1.  **[Yes]\(はい\)** を選択して変更をディスクに書き込み、**Enter** キーを押します。
 
     ![既定のオプションを選択する](./media/vmware-azure-install-linux-master-target/image16-ubuntu.png)
 
-1.  既定のオプションを選択し、 **[Continue]\(続行\)** を選択し、 **Enter** キーを押します。
+1.  既定のオプションを選択し、 **[Continue]\(続行\)** を選択し、**Enter** キーを押します。
      
      ![[続行] を選択してから Enter キーを選択する場所を示すスクリーンショット。](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
 
-1.  システムでのアップグレード管理用の選択で **[No automatic updates]\(自動更新なし\)** オプションを選び、 **Enter** キーを押します。
+1.  システムでのアップグレード管理用の選択で **[No automatic updates]\(自動更新なし\)** オプションを選び、**Enter** キーを押します。
 
      ![アップグレードの管理方法を選択する](./media/vmware-azure-install-linux-master-target/image18-ubuntu.png)
 
@@ -124,20 +124,20 @@ Ubuntu 16.04.2 最小構成 64-bit ISO を DVD ドライブに保存し、シス
 
     ![ソフトウェアを選択する](./media/vmware-azure-install-linux-master-target/image19-ubuntu.png)
 
-1. GRUB ブート ローダーをインストールするための選択で **[はい]** を選び、 **Enter** キーを押します。
+1. GRUB ブート ローダーをインストールするための選択で **[はい]** を選び、**Enter** キーを押します。
      
     ![GRUB ブート インストーラー](./media/vmware-azure-install-linux-master-target/image20.png)
 
 
-1. ブート ローダーのインストールに適したデバイス (可能なら **/dev/sda** ) を選択し、 **Enter** キーを押します。
+1. ブート ローダーのインストールに適したデバイス (可能なら **/dev/sda**) を選択し、**Enter** キーを押します。
      
     ![適切なデバイスを選択する](./media/vmware-azure-install-linux-master-target/image21.png)
 
-1. **[Continue]\(続行\)** を選択し、 **Enter** キーを押してインストールを完了します。
+1. **[Continue]\(続行\)** を選択し、**Enter** キーを押してインストールを完了します。
 
     ![インストールを完了する](./media/vmware-azure-install-linux-master-target/image22.png)
 
-1. インストールが完了したら、新しいユーザーの資格情報で VM にサインインします (詳細については、「 **手順 10** 」を参照してください)。
+1. インストールが完了したら、新しいユーザーの資格情報で VM にサインインします (詳細については、「**手順 10**」を参照してください)。
 
 1. 次のスクリーンショットで説明されている手順を使用して、ROOT ユーザーのパスワードを設定します。 次に ROOT ユーザーとしてサインインします。
 
@@ -146,7 +146,7 @@ Ubuntu 16.04.2 最小構成 64-bit ISO を DVD ドライブに保存し、シス
 
 ### <a name="configure-the-machine-as-a-master-target-server"></a>マスター ターゲット サーバーとしてマシンを構成する
 
-Linux 仮想マシンの各 SCSI ハード ディスクの ID を取得するには、 **disk.EnableUUID = TRUE** パラメーターを有効にする必要があります。 このパラメーターを有効にするには、次の手順を実行します。
+Linux 仮想マシンの各 SCSI ハード ディスクの ID を取得するには、**disk.EnableUUID = TRUE** パラメーターを有効にする必要があります。 このパラメーターを有効にするには、次の手順を実行します。
 
 1. 仮想マシンをシャットダウンします。
 
@@ -162,7 +162,7 @@ Linux 仮想マシンの各 SCSI ハード ディスクの ID を取得するに
 
 5. **[disk.EnableUUID]** と表示される行が存在するかどうかを確認します。
 
-   - その値が存在していて **False** に設定されている場合、 **True** に値を変更します (値の大文字小文字は区別されません)。
+   - その値が存在していて **False** に設定されている場合、**True** に値を変更します (値の大文字小文字は区別されません)。
 
    - その値が存在していて **True** に設定されている場合は、 **[Cancel]\(キャンセル\)** をクリックします。
 
@@ -234,11 +234,11 @@ Linux を使用してこれをダウンロードするには、次のように�
 
 1. 新しい 1 TB ディスクを Linux マスター ターゲット仮想マシンに接続してから、マシンを起動します。
 
-2. **multipath -ll** コマンドを使用し、リテンション ディスクのマルチパス ID を確認します。 **multipath -ll**
+2. **multipath -ll** コマンドを使用し、リテンション ディスクのマルチパス ID を確認します。**multipath -ll**
 
     ![マルチパス ID](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. ドライブをフォーマットし、 **mkfs.ext4 /dev/mapper/\<Retention disk's multipath id>** の新しいドライブにファイル システムを作成します。
+3. ドライブをフォーマットし、**mkfs.ext4 /dev/mapper/\<Retention disk's multipath id>** の新しいドライブにファイル システムを作成します。
     
     ![ファイル システム](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -257,7 +257,7 @@ Linux を使用してこれをダウンロードするには、次のように�
 
     **/dev/mapper/\<Retention disks multipath id> /mnt/retention ext4 rw 0 0**
 
-    **Esc** キーを押して「 **:wq** 」(write and quit) と入力し、エディター ウィンドウを閉じます。
+    **Esc** キーを押して「 **:wq**」(write and quit) と入力し、エディター ウィンドウを閉じます。
 
 ### <a name="install-the-master-target"></a>マスター ターゲットをインストールする
 
@@ -306,7 +306,7 @@ Linux を使用してこれをダウンロードするには、次のように�
     ./install
     ```
 
-2. インストールの既定の場所を選択します。続行するには、 **Enter** キーを押します。
+2. インストールの既定の場所を選択します。続行するには、**Enter** キーを押します。
 
     ![マスター ターゲットのインストールの既定の場所を選択する](./media/vmware-azure-install-linux-master-target/image17.png)
 

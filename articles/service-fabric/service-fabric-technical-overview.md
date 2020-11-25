@@ -7,11 +7,11 @@ ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
 ms.openlocfilehash: 7b2f1a170a792e0b4d069258264407c121dab3ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260230"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018836"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric の用語の概要
 
@@ -71,9 +71,9 @@ Azure Service Fabric は、拡張性と信頼性に優れたマイクロサー�
 * **ステートレス**:サービスの永続的な状態を外部ストレージ サービス (Azure Storage、Azure SQL Database、Azure Cosmos DB など) に保存する場合はステートレス サービスを使用します。 永続的なストレージがサービスに存在しない場合は、ステートレス サービスを使用します。 たとえば電卓サービスに値を渡すと、それらの値を使って計算が実行され、結果が返されます。
 * **ステートフル**:Service Fabric の Reliable Collection や Reliable Actors のプログラミング モデルを介してサービスの状態を管理する場合は、ステートフル サービスを使用します。 名前付きサービスを作成するときに、拡張性を得るために状態を分散させるパーティションの数を指定します。 さらに、信頼性のために、状態をノード間でレプリケートさせる回数を指定します。 それぞれの名前付きサービスは、1 つのプライマリ レプリカと複数のセカンダリ レプリカを持ちます。 名前付きサービスの状態は、プライマリ レプリカに書き込むときに変更します。 その後、状態を同期させるために Service Fabric がその状態をすべてのセカンダリ レプリカにレプリケートします。Service Fabric は、プライマリ レプリカの障害を自動的に検出し、既存のセカンダリ レプリカをプライマリ レプリカに昇格させます。 その後、Service Fabric は、新しいセカンダリ レプリカを作成します。  
 
-**レプリカまたはインスタンス**とは、デプロイされ、実行中であるサービスのコード (およびステートフル サービスの状態) のことです。 「[レプリカとインスタンス](service-fabric-concepts-replica-lifecycle.md)」をご覧ください。
+**レプリカまたはインスタンス** とは、デプロイされ、実行中であるサービスのコード (およびステートフル サービスの状態) のことです。 「[レプリカとインスタンス](service-fabric-concepts-replica-lifecycle.md)」をご覧ください。
 
-**再構成**とは、サービスのレプリカ セット内で行われる任意の変更処理を示します。 [再構成](service-fabric-concepts-reconfiguration.md)に関するページをご覧ください。
+**再構成** とは、サービスのレプリカ セット内で行われる任意の変更処理を示します。 [再構成](service-fabric-concepts-reconfiguration.md)に関するページをご覧ください。
 
 **サービス パッケージ**:サービスの種類を定義した `ServiceManifest.xml` ファイルが格納されるディスク上のディレクトリ。 このファイルは、特定の種類のサービスに必要なコード、静的データ、構成パッケージを参照します。 サービス パッケージ ディレクトリ内のファイルは、アプリケーションの種類を定義した `ApplicationManifest.xml` ファイルから参照されます。 たとえばサービス パッケージは、データベース サービスを構成するコードや静的データ、構成パッケージを参照します。
 

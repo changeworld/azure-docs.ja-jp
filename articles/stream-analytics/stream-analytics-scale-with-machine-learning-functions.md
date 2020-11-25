@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/16/2020
 ms.openlocfilehash: feeb709f67a0e75f5980ec0520b95feb7edd5960
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124409"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018819"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Azure Machine Learning Studio (クラシック) 関数を使用した Stream Analytics ジョブのスケーリング
 
@@ -36,7 +36,7 @@ Stream Analytics ジョブで使用される Studio (クラシック) 関数を�
 
 SU の適切な値を決定するには、Stream Analytics ジョブの待機時間または各 SU のスループットのどちらを最適化するかを決めます。 適切にパーティション分割された Stream Analytics クエリのスループットを向上させるために、いつでもジョブに SU を追加できます。 SU を追加すると、ジョブの実行コストが増加します。
 
-Stream Analytics ジョブの待機時間の " *許容範囲* " を決定します。 バッチ サイズを増やすと、Studio (クラシック) 要求の待ち時間と、Stream Analytics ジョブの待ち時間が増加します。
+Stream Analytics ジョブの待機時間の "*許容範囲*" を決定します。 バッチ サイズを増やすと、Studio (クラシック) 要求の待ち時間と、Stream Analytics ジョブの待ち時間が増加します。
 
 バッチ サイズを増やすと、Stream Analytics ジョブでは **同じ数** の Studio (クラシック) Web サービス要求で **より多くのイベント** を処理できます。 通常、Studio (クラシック) Web サービスの待ち時間の増加は、バッチ サイズの増加に比例します。 
 
@@ -52,7 +52,7 @@ Stream Analytics ジョブの待機時間の " *許容範囲* " を決定しま�
 
 ![Studio (クラシック) 関数を使用した Stream Analytics のスケーリング - 2 つのジョブの例](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "Studio (クラシック) 関数を使用した Stream Analytics のスケーリング - 2 つのジョブの例")
 
-一般的に、バッチ サイズが * *_B_* _ で、バッチ サイズ B での Web サービスの待機時間が _*_L_*_ (ミリ秒単位) の場合、 _*_N_*_ SU での Stream Analytics ジョブのスループットは次のようになります。
+一般的に、バッチ サイズが **_B_* _ で、バッチ サイズ B での Web サービスの待機時間が _*_L_*_ (ミリ秒単位) の場合、_*_N_*_ SU での Stream Analytics ジョブのスループットは次のようになります。
 
 ![Studio (クラシック) 関数を使用した Stream Analytics のスケーリング - 数式](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "Studio (クラシック) 関数を使用した Stream Analytics のスケーリング - 数式")
 
@@ -63,7 +63,7 @@ Studio (クラシック) Web サービスで、"最大同時呼び出し数" を
 ## <a name="example--sentiment-analysis"></a>例 – センチメント分析
 次の例には、センチメント分析 Studio (クラシック) 関数を使用した Stream Analytics ジョブが含まれています。これについては、[Stream Analytics と Machine Learning Studio (クラシック) の統合に関するチュートリアル](stream-analytics-machine-learning-integration-tutorial.md)で説明されています。
 
-次の例に示すように、クエリは完全にパーティション分割されたシンプルなクエリで、その後に _ *sentiment* * 関数が続いています。
+次の例に示すように、クエリは完全にパーティション分割されたシンプルなクエリで、その後に _ *sentiment** 関数が続いています。
 
 ```SQL
     WITH subquery AS (
@@ -79,7 +79,7 @@ Studio (クラシック) Web サービスで、"最大同時呼び出し数" を
 
 この Stream Analytics ジョブでは、1 SU でトラフィックを処理できるでしょうか。 ジョブは、既定のバッチ サイズである 1,000 を使用して、入力に対応できます。 センチメント分析 Studio (クラシック) Web サービスの既定の待ち時間は (バッチ サイズが既定の 1,000 の場合)、わずか 1 秒です。
 
-通常、Stream Analytics ジョブの **全体的な** (エンド ツー エンドの) 待機時間は数秒です。 この Stream Analytics ジョブ、" *特に* " Studio (クラシック) 関数呼び出しについて詳しく見ていきましょう。 バッチ サイズが 1,000 の場合、10,000 イベントのスループットでは、Web サービスに対する要求は約 10 個になります。 1 SU でも、この入力トラフィックに対応できる十分なコンカレント接続数があります。
+通常、Stream Analytics ジョブの **全体的な** (エンド ツー エンドの) 待機時間は数秒です。 この Stream Analytics ジョブ、"*特に*" Studio (クラシック) 関数呼び出しについて詳しく見ていきましょう。 バッチ サイズが 1,000 の場合、10,000 イベントのスループットでは、Web サービスに対する要求は約 10 個になります。 1 SU でも、この入力トラフィックに対応できる十分なコンカレント接続数があります。
 
 イベント入力速度が 100 倍に増加した場合、Stream Analytics ジョブは 1 秒あたり 1,000,000 ツイートを処理する必要があります。 スケールの拡大を実現する 2 つのオプションがあります。
 
@@ -99,7 +99,7 @@ Studio (クラシック) Web サービスで、"最大同時呼び出し数" を
 | 300 ミリ秒 | 10,000 イベント バッチ |
 | 500 ミリ秒 | 25,000 イベント バッチ |
 
-1. 最初のオプションの使用 (より多くの SU はプロビジョニング **されません** )。 バッチ サイズを **25,000** に増やすことができます。 この方法でバッチ サイズを増やすと、Studio (クラシック) Web サービスへの 20 個のコンカレント接続で 1,000,000 イベントを処理できます (待ち時間は 1 回の呼び出しあたり 500 ミリ秒)。 そのため、Studio (クラシック) Web サービス要求に対するセンチメント関数要求により、Stream Analytics ジョブの追加の待ち時間は **200 ミリ秒** から **500 ミリ秒** に増加します。 ただし、バッチ サイズを無限に増やすことは **できません** 。Studio (クラシック) Web サービスでは要求のペイロード サイズが 4 MB 以下である必要があり、Web サービス要求は操作が 100 秒を超えるとタイムアウトするためです。
+1. 最初のオプションの使用 (より多くの SU はプロビジョニング **されません**)。 バッチ サイズを **25,000** に増やすことができます。 この方法でバッチ サイズを増やすと、Studio (クラシック) Web サービスへの 20 個のコンカレント接続で 1,000,000 イベントを処理できます (待ち時間は 1 回の呼び出しあたり 500 ミリ秒)。 そのため、Studio (クラシック) Web サービス要求に対するセンチメント関数要求により、Stream Analytics ジョブの追加の待ち時間は **200 ミリ秒** から **500 ミリ秒** に増加します。 ただし、バッチ サイズを無限に増やすことは **できません**。Studio (クラシック) Web サービスでは要求のペイロード サイズが 4 MB 以下である必要があり、Web サービス要求は操作が 100 秒を超えるとタイムアウトするためです。
 1. 2 番目のオプションを使用して、バッチ サイズを 1,000 のままにし、Web サービスの待ち時間が 200 ミリ秒、Web サービスへのコンカレント接続が各 20 個の場合、1,000 * 20 * 5 イベントで 1 秒あたり 100,000 イベントを処理できます。 そのため、1 秒あたり 1,000,000 イベントを処理するには、60 SU が必要です。 最初のオプションよりも Web サービス バッチ要求の数が多くなるため、コストが増加します。
 
 異なる SU とバッチ サイズでの Stream Analytics ジョブのスループット (1 秒あたりのイベント数) を以下の表に示します。
