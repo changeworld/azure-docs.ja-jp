@@ -4,11 +4,11 @@ description: Recovery Services コンテナーに保護しているデータを�
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.openlocfilehash: 0cce45fbaaedad4cfcee0cda768aae2fa294312b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378068"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002972"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Azure Backup Server からデータを回復する
 
@@ -24,7 +24,7 @@ Azure Backup Server からデータを回復するには:
 1. Azure Backup Server 管理コンソールの **[回復]** タブで、画面の左上にある **[外部 DPM の追加]** を選択します。
 
     ![外部 DPM の追加](./media/backup-azure-alternate-dpm-server/add-external-dpm.png)
-2. データを回復する **Azure Backup Server** に関連付けられているコンテナーから新しい**コンテナー資格情報**をダウンロードし、Recovery Services コンテナーに登録されている Azure Backup Server の一覧から Azure Backup Server を選択し、データを回復する Azure Backup Server に関連付けられている**暗号化パスフレーズ**を指定します。
+2. データを回復する **Azure Backup Server** に関連付けられているコンテナーから新しい **コンテナー資格情報** をダウンロードし、Recovery Services コンテナーに登録されている Azure Backup Server の一覧から Azure Backup Server を選択し、データを回復する Azure Backup Server に関連付けられている **暗号化パスフレーズ** を指定します。
 
     ![外部 DPM の資格情報](./media/backup-azure-alternate-dpm-server/external-dpm-credentials.png)
 
@@ -59,7 +59,7 @@ Azure Backup Server からデータを回復するには:
 
      **[セキュリティの復元]** のオプションを選択します。 データを復元する復元先コンピューターのセキュリティ設定または回復ポイントが作成された時点で生成物に適用されたセキュリティを適用できます。
 
-     回復が正常に完了したら**通知**を送信するかどうかを確認します。
+     回復が正常に完了したら **通知** を送信するかどうかを確認します。
 
      ![外部の DPM 回復の通知](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
 9. **概要** 画面には、これまでに選択したオプションが一覧表示します。 **[回復]** を選択すると、該当するオンプレミスの場所にデータが回復されます。

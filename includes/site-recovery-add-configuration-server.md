@@ -10,11 +10,11 @@ ms.date: 02/28/2019
 ms.author: mayg
 ms.custom: include file
 ms.openlocfilehash: f699ffe6d5a91e8ce3ae90c7e12249bbad0fff3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500430"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001562"
 ---
 1. 統合セットアップ インストール ファイルを実行します。
 2. **[開始する前に]** で **[Install the configuration server and process server]\(構成サーバーとプロセス サーバーをインストールする\)** を選択します。
@@ -33,7 +33,7 @@ ms.locfileid: "87500430"
     - プロバイダーから直接接続するように指定する場合は、 **[プロキシを使用せずに直接 Azure Site Recovery に接続する]** を選択します。
     - 既存のプロキシで認証が必要な場合、またはプロバイダー接続にカスタム プロキシを使用する場合は、 **[Connect with custom proxy setting]\(カスタム プロキシ設定を使用して接続する\)** を選択して、アドレス、ポート、資格情報を指定します。
      ![統合セットアップの [インターネット設定] 画面のスクリーンショット。](./media/site-recovery-add-configuration-server/combined-wiz4.png)
-6. **[前提条件の確認]** では、インストールを実行できることを確認するためのチェックが実行されます。 **グローバル時刻の同期チェック**に関する警告が表示された場合は、システム クロックの時刻 ( **[日付と時刻]** 設定) がタイム ゾーンと同じであることを確認します。
+6. **[前提条件の確認]** では、インストールを実行できることを確認するためのチェックが実行されます。 **グローバル時刻の同期チェック** に関する警告が表示された場合は、システム クロックの時刻 ( **[日付と時刻]** 設定) がタイム ゾーンと同じであることを確認します。
 
     ![統合セットアップの [前提条件の確認] 画面のスクリーンショット。](./media/site-recovery-add-configuration-server/combined-wiz5.png)
 7. **[MySQL Configuration (MySQL の構成)]** で、インストールする MySQL サーバー インスタンスにログオンするための資格情報を作成します。

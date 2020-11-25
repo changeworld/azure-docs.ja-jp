@@ -14,11 +14,11 @@ ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 55a27dbb6c2ec3569bae9d6fb96fcd8087f08daf
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637668"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001679"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure Data Factory コピー ウィザード
 
@@ -74,11 +74,11 @@ Azure Data Factory コピー ウィザードを使用すると、通常はエン
 ...
 ```
 
-**[ファイルまたはフォルダー]** の **[参照]** ボタンをクリックして、これらのフォルダーのいずれか (例: 2016->03->01->02) を参照し、 **[選択]** をクリックします。 テキスト ボックスに `2016/03/01/02` と表示されます。 ここで、 **2016** を **{year}** 、 **03** を **{month}** 、 **01** を **{day}** 、 **02** を **{hour}** にそれぞれ置き換え、 **Tab** キーを押します。 この 4 つの変数の形式を選択するドロップダウン リストが表示されます。
+**[ファイルまたはフォルダー]** の **[参照]** ボタンをクリックして、これらのフォルダーのいずれか (例: 2016->03->01->02) を参照し、 **[選択]** をクリックします。 テキスト ボックスに `2016/03/01/02` と表示されます。 ここで、**2016** を **{year}** 、**03** を **{month}** 、**01** を **{day}** 、**02** を **{hour}** にそれぞれ置き換え、**Tab** キーを押します。 この 4 つの変数の形式を選択するドロップダウン リストが表示されます。
 
 ![システム変数の使用](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-次のスクリーンショットに示すように、 **custom** 変数と、任意の [サポートされる書式文字列](/dotnet/standard/base-types/custom-date-and-time-format-strings)を使用することもできます。 その構造のフォルダーを選択するには、まず **[参照]** をクリックします。 次に、値を **{custom}** に置き換え、 **Tab** キーを押して、書式文字列を入力できるテキスト ボックスを表示します。     
+次のスクリーンショットに示すように、 **custom** 変数と、任意の [サポートされる書式文字列](/dotnet/standard/base-types/custom-date-and-time-format-strings)を使用することもできます。 その構造のフォルダーを選択するには、まず **[参照]** をクリックします。 次に、値を **{custom}** に置き換え、**Tab** キーを押して、書式文字列を入力できるテキスト ボックスを表示します。     
 
 ![カスタム変数の使用](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 
@@ -98,9 +98,9 @@ Azure Data Factory コピー ウィザードを使用すると、通常はエン
 
 ### <a name="error-code-unable-to-validate-in-copy-wizard"></a>エラー コード:コピー ウィザードの "Unable to validate" (検証できません)
 
-- **現象** :コピー ウィザードの最初のステップで、"Unable to Validate" (検証できません) という警告メッセージが表示されます。
-- **原因** :これは、すべてのサード パーティの cookie が無効にされている場合に発生する可能性があります。
-- **解決方法** : 
+- **現象**:コピー ウィザードの最初のステップで、"Unable to Validate" (検証できません) という警告メッセージが表示されます。
+- **原因**:これは、すべてのサード パーティの cookie が無効にされている場合に発生する可能性があります。
+- **解決方法**: 
     - Internet Explorer または Microsoft Edge ブラウザーを使用してください。
     - Chrome ブラウザーを使用している場合は、次の手順に従って *microsoftonline.com* と *windows.net* を Cookie の例外として追加します。
         1.  Chrome ブラウザーを開きます。
@@ -124,9 +124,9 @@ Azure Data Factory コピー ウィザードを使用すると、通常はエン
 
 ### <a name="error-code-unable-to-open-login-page-and-enter-password"></a>エラー コード:Unable to open login page and enter password (ログイン ページを開けず、パスワードを入力できません)
 
-- **現象** :コピー ウィザードによってログイン ページにリダイレクトされますが、ログイン ページが正常に表示されません。
-- **原因** :この問題は、ネットワーク環境をオフィス ネットワークからホーム ネットワークに変更した場合に発生する可能性があります。 ブラウザーにはキャッシュがあります。 
-- **解決方法** : 
+- **現象**:コピー ウィザードによってログイン ページにリダイレクトされますが、ログイン ページが正常に表示されません。
+- **原因**:この問題は、ネットワーク環境をオフィス ネットワークからホーム ネットワークに変更した場合に発生する可能性があります。 ブラウザーにはキャッシュがあります。 
+- **解決方法**: 
     1.  ブラウザーを閉じて、もう一度やり直してください。 問題がまだ発生する場合は、次の手順に進みます。   
     2.  Internet Explorer ブラウザーを使用している場合は、プライベート モードで開いてみてください (Ctrl + Shift + P キーを押します)。 Chrome ブラウザーを使用している場合は、シークレット モードで開いてみてください (Ctrl + Shift + N キーを押します)。 問題がまだ発生する場合は、次の手順に進みます。 
     3.  別のブラウザーを使用してみてください。 

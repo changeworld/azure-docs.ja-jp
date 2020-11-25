@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
 ms.openlocfilehash: 327e995a8fe2f66903548fba054804768d2538ab
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534296"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001561"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>物理サーバーの Azure へのディザスター リカバリーのために構成サーバーを設定する
 
@@ -35,7 +35,7 @@ ms.locfileid: "92534296"
 
 ## <a name="choose-your-protection-goals"></a>保護の目標を選択する
 
-1. Azure Portal で、 **Recovery Services** コンテナー ブレードに移動し、コンテナーを選択します。
+1. Azure Portal で、**Recovery Services** コンテナー ブレードに移動し、コンテナーを選択します。
 2. コンテナーの **リソース** メニューで、 **[作業の開始]**  >  **[Site Recovery]**  >  **[手順 1:インフラストラクチャを準備する]**  >  **[保護の目標]** の順にクリックします。
 
     ![どこで保護の目標を選択するかを示したスクリーンショット。](./media/physical-azure-set-up-source/choose-goals.png)

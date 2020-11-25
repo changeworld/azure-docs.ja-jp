@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
 ms.openlocfilehash: c74f2ef9eed25719e722970671406c850b6a59b2
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361859"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002597"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>クラシック ストレージ リソース削除エラーのトラブルシューティング
 この記事では、Azure のクラシック ストレージ アカウント、コンテナー、*.vhd ページ BLOB ファイルを削除しようとして次のいずれかのエラーが発生した場合のトラブルシューティング ガイダンスを提供します。 
@@ -35,7 +35,7 @@ Azure ディスクについて詳しくは、[こちら](../../virtual-machines/
 
 
 1. クラシック仮想マシンを削除します。
-2. [ディスク] チェック ボックスがオンになっている場合、ページ BLOB *.vhd に関連付けられた (上の図に示されている) **ディスク リース**は解除されます。 実際のページ BLOB *.vhd ファイルはまだストレージ アカウントに残っています。
+2. [ディスク] チェック ボックスがオンになっている場合、ページ BLOB *.vhd に関連付けられた (上の図に示されている) **ディスク リース** は解除されます。 実際のページ BLOB *.vhd ファイルはまだストレージ アカウントに残っています。
 ![仮想マシンの削除を確認するダイアログ ボックスを示すスクリーンショット。](./media/storage-classic-cannot-delete-storage-account-container-vhd/steps_while_deleting_classic_vm.jpg) 
 
 3. ディスクのリースが解除されると、ページ BLOB 自体を削除できます。 ストレージ アカウントまたはコンテナーは、それらに存在する "ディスク" リソースがすべて削除されると、削除できます。
@@ -103,7 +103,7 @@ Azure の仮想マシンを削除した後、ユーザーが vhd ファイル (�
 #### <a name="azure-powershell"></a>Azure PowerShell 
 ユーザーは、PowerShell を使用した削除を選択すると、結果として次のエラーが発生します。 
 
-> <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"** </span>
+> <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"**</span>
 > 
 > <span style="color:red">Remove-AzureStorageBlob : リモート サーバーがエラー(412) There is currently a lease on the blob and no lease ID was specified in the request. (現在、BLOB にリースがありますが、リクエストでリース ID が指定されていませんでした。)HTTP 状態コード: 412 - HTTP エラー メッセージ: There is currently a lease on the blob and no lease ID was specified in the request. (現在、BLOB にリースがありますが、リクエストでリース ID が指定されていませんでした。)</span>
 

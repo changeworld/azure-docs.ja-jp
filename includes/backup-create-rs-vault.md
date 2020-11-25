@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/18/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: c111752dcca03781dfb2a11fb100dafc4bad90f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69259023484457249acd4c7b4a65c4cbe3e660ca
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91401086"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002862"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
@@ -65,4 +65,4 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
      ![バックアップ コンテナーの一覧を更新する](./media/backup-create-rs-vault/refresh-button.png)
 
 >[!IMPORTANT]
-> コンテナーでバックアップを構成する前に、 **[ストレージ レプリケーションの種類]** と **[セキュリティ設定]** の既定の設定を確認することを強くお勧めします。 詳細については、「[ストレージ冗長性の設定](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)」セクションを参照してください。
+> コンテナーでバックアップを構成する前に、 **[ストレージ レプリケーションの種類]** と **[セキュリティ設定]** の既定の設定を確認することを強くお勧めします。 詳細については、「[ストレージ冗長性の設定](../articles/backup/backup-create-rs-vault.md#set-storage-redundancy)」セクションを参照してください。

@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 53f50e98bcec4b8ace342808f0bcfd96770834b0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312342"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002223"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process の実行:Azure HDInsight Hadoop クラスターの使用
 このチュートリアルでは、[Team Data Science Process (TDSP)](overview.md) をエンド ツー エンドのシナリオで使用します。 [Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)を使用して、公開されている [NYC タクシー乗車](https://www.andresmh.com/nyctaxitrips/)データセットのデータの保存、探索、特徴エンジニアリングを行い、データのダウンサンプリングを実行します。 二項分類、多クラス分類、回帰予測タスクを処理するために、ここでは Azure Machine Learning を使用してデータのモデルを構築します。 
@@ -61,12 +61,12 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>予測タスクの例
 行う予測の種類をデータ分析に基づいて決定すると、必要なプロセス タスクを明確にするのに役立ちます。 このチュートリアルで扱う予測問題の 3 つの例を以下に示します。すべて *tip\_amount* に基づいています。
 
-- **二項分類** :乗車に対してチップが支払われたかどうかを予測します。 つまり、 *tip\_amount* が $0 より大きい場合は肯定的な例で、 *tip\_amount* が $0 の場合は否定的な例です。
+- **二項分類**:乗車に対してチップが支払われたかどうかを予測します。 つまり、*tip\_amount* が $0 より大きい場合は肯定的な例で、*tip\_amount* が $0 の場合は否定的な例です。
 
   - クラス 0: tip_amount = $0
   - クラス 1: tip_amount > $0
 
-- **多クラス分類** :乗車で支払われたチップの範囲を予測します。 *tip\_amount* を次の 5 つのクラスに分割します。
+- **多クラス分類**:乗車で支払われたチップの範囲を予測します。 *tip\_amount* を次の 5 つのクラスに分割します。
 
   - クラス 0: tip_amount = $0
   - クラス 1: tip_amount > $0 および tip_amount <= $5
@@ -74,7 +74,7 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
   - クラス 3: tip_amount > $10 および tip_amount <= $20
   - クラス 4: tip_amount > $20
 
-- **回帰タスク** :乗車で支払われたチップの金額を予測します。  
+- **回帰タスク**:乗車で支払われたチップの金額を予測します。  
 
 ## <a name="set-up-an-hdinsight-hadoop-cluster-for-advanced-analytics"></a><a name="setup"></a>高度な分析用に HDInsight Hadoop クラスターをセットアップする
 > [!NOTE]
@@ -130,7 +130,7 @@ _ * **\<storage account key>** _ クラスターで使用するストレージ �
 "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data__.csv
 ```
 
-このコマンドは、Hadoop クラスターの既定のコンテナーの * **nyctaxifareraw** _ ディレクトリに料金データをアップロードします。
+このコマンドは、Hadoop クラスターの既定のコンテナーの ***nyctaxifareraw** _ ディレクトリに料金データをアップロードします。
 
 ```console
 "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare__.csv
@@ -156,7 +156,7 @@ set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataSc
 @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 ```
 
-この 2 つのコマンドによって、このチュートリアルで必要なすべての ".hql" ファイルが、ヘッド ノード上のローカル ディレクトリ * **C:\temp&#92;** _ にダウンロードされます。
+この 2 つのコマンドによって、このチュートリアルで必要なすべての ".hql" ファイルが、ヘッド ノード上のローカル ディレクトリ ***C:\temp&#92;** _ にダウンロードされます。
 
 ## <a name="create-hive-database-and-tables-partitioned-by-month"></a><a name="#hive-db-tables"></a>Hive データベースと月ごとにパーティション分割されたテーブルを作成する
 > [!NOTE]
@@ -182,7 +182,7 @@ Hive ディレクトリ プロンプトから、ヘッド ノードの Hadoop �
 hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 ```
 
-_ *C:\temp\sample\_hive\_create\_db\_and\_tables.hql* * ファイルの内容を以下に示します。このファイルでは、Hive データベース **nyctaxidb** と、テーブル **trip** 、 **fare** が作成されます。
+_ *C:\temp\sample\_hive\_create\_db\_and\_tables.hql** ファイルの内容を以下に示します。このファイルでは、Hive データベース **nyctaxidb** と、テーブル **trip**、**fare** が作成されます。
 
 ```hiveql
 create database if not exists nyctaxidb;
@@ -491,7 +491,7 @@ hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.
 
 データセットの探索時に、値のグループの分布を確認する必要があることがよくあります。 このセクションでは、タクシーと運転手に対してこの分析を行う方法の例を示します。
 
-**sample\_hive\_trip\_count\_by\_medallion\_license.hql** ファイルは、 **medallion** と **hack_license** で設定した料金データセットをグループ化し、それぞれの組み合わせの数を返します。 その内容を次に示します。
+**sample\_hive\_trip\_count\_by\_medallion\_license.hql** ファイルは、**medallion** と **hack_license** で設定した料金データセットをグループ化し、それぞれの組み合わせの数を返します。 その内容を次に示します。
 
 ```hiveql
 SELECT medallion, hack_license, COUNT(*) as trip_count
@@ -575,7 +575,7 @@ hive -f "C:\temp\sample_hive_tipped_frequencies.hql"
 > 
 > 
 
-「[予測タスクの例](hive-walkthrough.md#mltasks)」で説明されている多クラス分類問題についても、このデータ セットは、支払われるチップの金額を予測する自然な分類に役立ちます。 箱を使って、クエリのチップの範囲を定義できます。 さまざまなチップの範囲のクラス分布を取得するには、 **sample\_hive\_tip\_range\_frequencies.hql** ファイルを使います。 その内容を次に示します。
+「[予測タスクの例](hive-walkthrough.md#mltasks)」で説明されている多クラス分類問題についても、このデータ セットは、支払われるチップの金額を予測する自然な分類に役立ちます。 箱を使って、クエリのチップの範囲を定義できます。 さまざまなチップの範囲のクラス分布を取得するには、**sample\_hive\_tip\_range\_frequencies.hql** ファイルを使います。 その内容を次に示します。
 
 ```hiveql
 SELECT tip_class, COUNT(*) AS tip_freq
@@ -629,7 +629,7 @@ and dropoff_latitude between 30 and 90;
 
 上記のクエリで、R は地球の半径 (マイル) を表し、pi はラジアンに変換されます。 緯度経度の 2 つの地点は NYC 領域から大きく外れた値を除外するためにフィルター処理されます。
 
-この場合、 **queryoutputdir** というディレクトリに結果を書き込みます。 次の一連のコマンドでは、まずこの出力ディレクトリを作成してから、Hive コマンドを実行します。
+この場合、**queryoutputdir** というディレクトリに結果を書き込みます。 次の一連のコマンドでは、まずこの出力ディレクトリを作成してから、Hive コマンドを実行します。
 
 Hive ディレクトリ プロンプトで次のコマンドを実行します。
 
@@ -639,7 +639,7 @@ hdfs dfs -mkdir wasb:///queryoutputdir
 hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
 ```
 
-クエリ結果は Hadoop クラスターの既定のコンテナーにある 9 つの Azure BLOB ( **queryoutputdir/000000\_0** ～ **queryoutputdir/000008\_0** ) に書き込まれます。
+クエリ結果は Hadoop クラスターの既定のコンテナーにある 9 つの Azure BLOB (**queryoutputdir/000000\_0** ～ **queryoutputdir/000008\_0**) に書き込まれます。
 
 個々の BLOB のサイズを表示するには、Hive ディレクトリ プロンプトで次のコマンドを実行します。
 
@@ -669,7 +669,7 @@ Azure BLOB にこのデータがあることの主な利点は、[データの�
 探索的データ分析フェーズが終了したら、Machine Learning でモデルを作成するためにデータをダウンサンプリングできます。 このセクションでは、Hive クエリを使用してデータをダウンサンプリングする方法について説明します。 Machine Learning では、[データのインポート][import-data] モジュールからこのデータにアクセスされます。
 
 ### <a name="down-sampling-the-data"></a>データのダウンサンプリング
-これには、2 つの手順があります。 まず、すべてのレコードに存在する 3 つのキー ( **medallion** 、 **hack\_license** 、 **pickup\_datetime** ) で、 **nyctaxidb.trip** テーブルと **nyctaxidb.fare** テーブルを結合します。 その後、二項分類ラベル **tipped** と多クラス分類ラベル **tip\_class** を作成します。
+これには、2 つの手順があります。 まず、すべてのレコードに存在する 3 つのキー (**medallion**、**hack\_license**、**pickup\_datetime**) で、**nyctaxidb.trip** テーブルと **nyctaxidb.fare** テーブルを結合します。 その後、二項分類ラベル **tipped** と多クラス分類ラベル **tip\_class** を作成します。
 
 Machine Learning の[データのインポート][import-data] モジュールからダウンサンプリングされたデータを直接使用できるようにするには、上記のクエリの結果を内部の Hive テーブルに格納する必要があります。 以下では、内部の Hive テーブルを作成し、結合されダウンサンプリングされたデータでその内容を設定します。
 
@@ -820,17 +820,17 @@ Machine Learning の[データのインポート][import-data] モジュール�
 
 [データのインポート][import-data] モジュールと入力するパラメーターの詳細は次のとおりです。
 
-**HCatalog サーバー URI** :クラスター名が **abc123** の場合は、https:\//abc123.azurehdinsight.net を使用します。
+**HCatalog サーバー URI**:クラスター名が **abc123** の場合は、https:\//abc123.azurehdinsight.net を使用します。
 
-**Hadoop ユーザーのアカウント名** :クラスターに選択したユーザー名 (リモート アクセスのユーザー名ではありません)。
+**Hadoop ユーザーのアカウント名**:クラスターに選択したユーザー名 (リモート アクセスのユーザー名ではありません)。
 
-**Hadoop ユーザー アカウントのパスワード** :クラスターに選択したパスワード (リモート アクセスのパスワードではありません)。
+**Hadoop ユーザー アカウントのパスワード**:クラスターに選択したパスワード (リモート アクセスのパスワードではありません)。
 
-**出力データの場所** :Azure になるように選択されます。
+**出力データの場所**:Azure になるように選択されます。
 
-**Azure ストレージ アカウント名** : クラスターに関連付けられている既定のストレージ アカウント名。
+**Azure ストレージ アカウント名**: クラスターに関連付けられている既定のストレージ アカウント名。
 
-**Azure コンテナー名** :クラスターの既定のコンテナー名。通常はクラスター名と同じです。 **abc123** というクラスターの場合、名前は abc123 になります。
+**Azure コンテナー名**:クラスターの既定のコンテナー名。通常はクラスター名と同じです。 **abc123** というクラスターの場合、名前は abc123 になります。
 
 > [!IMPORTANT]
 > Machine Learning で[データのインポート][import-data] モジュールを使ってクエリするすべてのテーブルは、内部テーブルである必要があります。
@@ -858,11 +858,11 @@ Hive クエリと[データのインポート][import-data] モジュールの�
 ### <a name="build-models-in-machine-learning"></a><a name="mlmodel"></a>Machine Learning でモデルを作成する
 これで、[Machine Learning](https://studio.azureml.net) でのモデルの作成とモデルのデプロイに進む準備が整いました。 データも、以前に特定した予測問題への対応に使用できる状態になりました。
 
-- **二項分類** :乗車に対してチップが支払われたかどうかを予測します。
+- **二項分類**:乗車に対してチップが支払われたかどうかを予測します。
 
   **使用する学習者:** 2 クラスのロジスティック回帰
 
-  a. この問題では、ターゲット (またはクラス) ラベルは **tipped** です。 元のダウンサンプリングされたデータセットには、この分類実験用のターゲット リークであるいくつかの列があります。 具体的には、 **tip\_class** 、 **tip\_amount** 、 **total\_amount** では、テスト時に利用できないターゲット ラベルについての情報が表示されます。 ここでは、[データセット内の列の選択][select-columns]モジュールを使ってこれらの列を考慮事項から除外します。
+  a. この問題では、ターゲット (またはクラス) ラベルは **tipped** です。 元のダウンサンプリングされたデータセットには、この分類実験用のターゲット リークであるいくつかの列があります。 具体的には、**tip\_class**、**tip\_amount**、**total\_amount** では、テスト時に利用できないターゲット ラベルについての情報が表示されます。 ここでは、[データセット内の列の選択][select-columns]モジュールを使ってこれらの列を考慮事項から除外します。
 
   次のダイアグラムは、特定の乗車でチップが支払われたかどうかを予測するための実験を示しています。
 
@@ -878,11 +878,11 @@ Hive クエリと[データのインポート][import-data] モジュールの�
 
   ![ACU 値のグラフ](./media/hive-walkthrough/8JDT0F8.png)
 
-- **多クラス分類** :以前に定義したクラスを使用して、乗車で支払われたチップの金額の範囲を予測します。
+- **多クラス分類**:以前に定義したクラスを使用して、乗車で支払われたチップの金額の範囲を予測します。
 
   **使用する学習者:** 多クラスのロジスティック回帰
 
-  a. この問題では、ターゲット (またはクラス) ラベルは、5 つの値 (0,1,2,3,4) のいずれかを取ることができる **tip\_class** になります。 二項分類の場合と同様に、この実験用のターゲット リークであるいくつかの列があります。 具体的には、 **tipped** 、 **tip\_amount** 、 **total\_amount** では、テスト時に利用できないターゲット ラベルについての情報が表示されます。 ここでは、[データセット内の列の選択][select-columns] モジュールを使ってこれらの列を削除します。
+  a. この問題では、ターゲット (またはクラス) ラベルは、5 つの値 (0,1,2,3,4) のいずれかを取ることができる **tip\_class** になります。 二項分類の場合と同様に、この実験用のターゲット リークであるいくつかの列があります。 具体的には、**tipped**、**tip\_amount**、**total\_amount** では、テスト時に利用できないターゲット ラベルについての情報が表示されます。 ここでは、[データセット内の列の選択][select-columns] モジュールを使ってこれらの列を削除します。
 
   次のダイアグラムは、チップが分類される可能性が高い箱を予測する実験を示しています。 ビンは、クラス 0: チップ = $0、クラス 1: チップ > $0 および チップ <= $5、クラス 2: チップ > $5 および チップ <= $10、クラス 3: チップ > $10 および チップ <= $20、クラス 4: チップ > $20 です。
 
@@ -898,11 +898,11 @@ Hive クエリと[データのインポート][import-data] モジュールの�
 
   一般的なクラスのクラス精度が良い一方で、そのモデルはまれなクラスでは "学習" がうまくいっていません。
 
-- **回帰タスク** :乗車で支払われたチップの金額を予測します。
+- **回帰タスク**:乗車で支払われたチップの金額を予測します。
 
   **使用する学習者:** ブースト デシジョン ツリー
 
-  a. この問題では、ターゲット (またはクラス) ラベルは **tip\_amount** です。 この場合のターゲット リークは、 **tipped** 、 **tip\_class** 、 **total\_amount** です。 これらの変数はすべて、通常はテスト時に利用できないチップの金額についての情報を表示します。 ここでは、[データセット内の列の選択][select-columns] モジュールを使ってこれらの列を削除します。
+  a. この問題では、ターゲット (またはクラス) ラベルは **tip\_amount** です。 この場合のターゲット リークは、**tipped**、**tip\_class**、**total\_amount** です。 これらの変数はすべて、通常はテスト時に利用できないチップの金額についての情報を表示します。 ここでは、[データセット内の列の選択][select-columns] モジュールを使ってこれらの列を削除します。
 
   次のダイアグラムは、支払われるチップの金額を予測する実験を示しています。
 

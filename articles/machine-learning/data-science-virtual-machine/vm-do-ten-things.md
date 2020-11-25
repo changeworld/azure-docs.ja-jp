@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: 766da55f2589e2a8eb09e0f1b1c9a0a5027c8c3c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320945"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002767"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Windows Data Science Virtual Machine を使用したデータ サイエンス
 
@@ -76,7 +76,7 @@ R の場合は、スタート メニューまたはデスクトップにある R
 Python に関しては、Python Tools for Visual Studio (PTVS) 拡張機能がプレインストールされる Visual Studio Community Edition などの IDE を使用できます。 既定では、ルート Conda 環境である Python 3.6 のみが PTVS で構成されます。 Anaconda Python 2.7 を有効にするには、次の手順を行います。
 
 1. Visual Studio Community Edition 内で **[ツール]**  >  **[Python ツール]**  >  **[Python 環境]** の順に移動し、 **[+ カスタム]** を選択して、各バージョンのカスタム環境を作成します。
-1. 説明を入力し、環境プレフィックス パス (Anaconda Python 2.7 の場合は **c:\anaconda\envs\python2** ) を設定します。
+1. 説明を入力し、環境プレフィックス パス (Anaconda Python 2.7 の場合は **c:\anaconda\envs\python2**) を設定します。
 1. **[自動検出]**  >  **[適用]** の順に選択して環境を保存します。
 
 Python 環境の作成方法の詳細については、[PTVS のドキュメント](/visualstudio/python/)を参照してください。
@@ -175,7 +175,7 @@ Azure Blob Storage は、大規模データにも小規模データにも対応�
 AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
 ```
 
-**C:\myfolder** は対象ファイルが保存されているパスに、 **mystorageaccount** はご自分の BLOB ストレージ アカウント名に、 **mycontainer** はコンテナー名に、 **storage account key** はご自分の BLOB ストレージ アクセス キーにそれぞれ置き換えてください。 ストレージ アカウントの資格情報は、[Azure portal](https://portal.azure.com) で確認できます。
+**C:\myfolder** は対象ファイルが保存されているパスに、**mystorageaccount** はご自分の BLOB ストレージ アカウント名に、**mycontainer** はコンテナー名に、**storage account key** はご自分の BLOB ストレージ アクセス キーにそれぞれ置き換えてください。 ストレージ アカウントの資格情報は、[Azure portal](https://portal.azure.com) で確認できます。
 
 AzCopy コマンドは、PowerShell またはコマンド プロンプトから実行します。 AzCopy コマンドの使用例をいくつか次に示します。
 
@@ -269,7 +269,7 @@ Azure Cosmos DB は、クラウドにおける NoSQL データベースです。
    
     `/s:JsonFile /s.Files:https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 
-データをインポートしたら、Jupyter にアクセスして、 *DocumentDBSample* というタイトルのノートブックを開くことができます。 それには、Azure Cosmos DB にアクセスして何らかの基本的なクエリを実行するための Python コードが含まれています。 Azure Cosmos DB の詳細については、サービスの[ドキュメント ページ](../../cosmos-db/index.yml)をご覧ください。
+データをインポートしたら、Jupyter にアクセスして、*DocumentDBSample* というタイトルのノートブックを開くことができます。 それには、Azure Cosmos DB にアクセスして何らかの基本的なクエリを実行するための Python コードが含まれています。 Azure Cosmos DB の詳細については、サービスの[ドキュメント ページ](../../cosmos-db/index.yml)をご覧ください。
 
 ## <a name="use-power-bi-reports-and-dashboards"></a>Power BI レポートとダッシュボードを使用する 
 先ほど示した Azure Cosmos DB の例での Volcano JSON ファイルを Power BI Desktop で視覚化することで、データの本質を視覚的に把握することができます。 詳しい手順については、[Power BI の記事](../../cosmos-db/powerbi-visualize.md)を参照してください。 手順の概要は次のとおりです。

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2abc04a6a4ad6ee1c3e910db0a6be11b8150d52e
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631922"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001696"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
 > [!NOTE]
@@ -70,7 +70,7 @@ Data Factory には組み込みのアクティビティが含まれています�
 
 * **コンピューティング ノード (VM) のプールで Batch を構成します。** 各ノードのノード数とサイズを指定することができます。
 
-* BLOB ストレージ、Batch コンピューティング サービス、入出力データ、データを移動および変換するアクティビティを含むワークフロー/パイプラインを表すエンティティで構成された **Data Factory インスタンスを作成します** 。
+* BLOB ストレージ、Batch コンピューティング サービス、入出力データ、データを移動および変換するアクティビティを含むワークフロー/パイプラインを表すエンティティで構成された **Data Factory インスタンスを作成します**。
 
 * **Data Factory パイプラインにカスタム .NET アクティビティを作成します。** このアクティビティは、Batch プールで実行されるユーザー コードです。
 
@@ -80,7 +80,7 @@ Data Factory には組み込みのアクティビティが含まれています�
 
 * **Data Factory は、Batch によって割り当てられたプールを使用してカスタム アクティビティを実行します。** Data Factory は、アクティビティを同時に実行できます。 各アクティビティは、データのスライスを処理します。 結果はストレージに格納されます。
 
-* アプリによる配布、または他のツールによる追加処理のために、 **Data Factory は最終的な結果を 3 次拠点に移動** させます。
+* アプリによる配布、または他のツールによる追加処理のために、**Data Factory は最終的な結果を 3 次拠点に移動** させます。
 
 ## <a name="implementation-of-the-sample-solution"></a>サンプル ソリューションの実装
 サンプル ソリューションは意図的に単純にしています。 Data Factory と Batch を併用してデータセットを処理する方法を示すために設計されています。 このソリューションでは、時系列で編成された入力ファイル内の検索語句 "Microsoft" の出現回数をカウントします。 出力ファイルにその数を出力します。
@@ -110,15 +110,15 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
 
 1. **[プール]** ブレードで、ツールバーの **[追加]** ボタンを選択してプールを追加します。
 
-   a. プールの ID を入力します ( **プール ID** )。 プールの ID をメモしておきます。 データ ファクトリ ソリューションを作成するときに必要になります。
+   a. プールの ID を入力します (**プール ID**)。 プールの ID をメモしておきます。 データ ファクトリ ソリューションを作成するときに必要になります。
 
    b. **[オペレーティング システム ファミリ]** 設定には、 **[Windows Server 2012 R2]** を指定します。
 
    c. **ノード価格レベル** を選択します。
 
-   d. **[ターゲットの専用数]** の設定値として、「 **2** 」と入力します。
+   d. **[ターゲットの専用数]** の設定値として、「**2**」と入力します。
 
-   e. **[ノードごとの最大タスク]** の設定値として、「 **2** 」と入力します。
+   e. **[ノードごとの最大タスク]** の設定値として、「**2**」と入力します。
 
    f. **[OK]** を選択してプールを作成します。
 
@@ -170,10 +170,10 @@ public IDictionary<string, string> Execute(
 
 * このメソッドには次の 4 つのパラメーターがあります。
 
-  * **linkedServices** 。 このパラメーターは、入力/出力データ ソース (たとえば、BLOB ストレージ) をデータ ファクトリにリンクする、リンクされたサービスの列挙可能なリストです。 このサンプルでは、入力と出力の両方に使用される Azure Storage 型のリンクされたサービスは 1 つのみです。
-  * **datasets** 。 このパラメーターは、データセットの列挙可能なリストです。 このパラメーターを使用すると、入力と出力のデータセットに定義されている場所とスキーマを取得できます。
-  * **activity** 。 このパラメーターは、現在のコンピューティング エンティティを表します。 この場合は Batch サービスです。
-  * **logger** 。 logger を使用すると、パイプラインの "User" ログとして表示されるデバッグ コメントを作成できます。
+  * **linkedServices**。 このパラメーターは、入力/出力データ ソース (たとえば、BLOB ストレージ) をデータ ファクトリにリンクする、リンクされたサービスの列挙可能なリストです。 このサンプルでは、入力と出力の両方に使用される Azure Storage 型のリンクされたサービスは 1 つのみです。
+  * **datasets**。 このパラメーターは、データセットの列挙可能なリストです。 このパラメーターを使用すると、入力と出力のデータセットに定義されている場所とスキーマを取得できます。
+  * **activity**。 このパラメーターは、現在のコンピューティング エンティティを表します。 この場合は Batch サービスです。
+  * **logger**。 logger を使用すると、パイプラインの "User" ログとして表示されるデバッグ コメントを作成できます。
 * メソッドから、今後、カスタム アクティビティの連結に使用できるディクショナリが返されます。 この機能はまだ実装されていないため、メソッドからは空のディクショナリが返されるだけです。
 
 #### <a name="procedure-create-the-custom-activity"></a>手順:カスタム アクティビティの作成
@@ -187,9 +187,9 @@ public IDictionary<string, string> Execute(
 
    d. 右側にあるプロジェクトの種類の一覧から **[クラス ライブラリ]** を選択します。
 
-   e. **[プロジェクト名]** に「 **MyDotNetActivity** 」と入力します。
+   e. **[プロジェクト名]** に「**MyDotNetActivity**」と入力します。
 
-   f. **[場所]** で [ **C:\\ADF** ] を選択します。 **ADF** フォルダーが存在しない場合は作成します。
+   f. **[場所]** で [**C:\\ADF**] を選択します。 **ADF** フォルダーが存在しない場合は作成します。
 
    g. **[OK]** を選択すると、プロジェクトが作成されます。
 
@@ -311,7 +311,7 @@ public IDictionary<string, string> Execute(
        return new Dictionary<string, string>();
     }
     ```
-1. 次のヘルパー メソッドをクラスに追加します。 これらのメソッドは、 **Execute** メソッドによって呼び出されます。 最も重要な点は、 **Calculate** メソッドは、各 BLOB で反復処理されるコードを分離することです。
+1. 次のヘルパー メソッドをクラスに追加します。 これらのメソッドは、 **Execute** メソッドによって呼び出されます。 最も重要な点は、**Calculate** メソッドは、各 BLOB で反復処理されるコードを分離することです。
 
     ```csharp
     /// <summary>
@@ -397,9 +397,9 @@ public IDictionary<string, string> Execute(
 
 1. プロジェクトをコンパイルします。 メニューの **[ビルド]** を選択し、 **[ソリューションのビルド]** を選択します。
 
-1. エクスプローラーを起動し、 **bin\\debug** または **bin\\release** フォルダーに移動します。 フォルダーの選択は、ビルドの種類によって変わります。
+1. エクスプローラーを起動し、**bin\\debug** または **bin\\release** フォルダーに移動します。 フォルダーの選択は、ビルドの種類によって変わります。
 
-1. **\\bin\\Debug** フォルダー内のすべてのバイナリを含む zip ファイル、 **MyDotNetActivity.zip** を作成します。 エラー発生時の問題の原因となったソース コードの行番号など、追加情報を取得するために、MyDotNetActivity. **pdb** ファイルを含めることもできます。
+1. **\\bin\\Debug** フォルダー内のすべてのバイナリを含む zip ファイル、**MyDotNetActivity.zip** を作成します。 エラー発生時の問題の原因となったソース コードの行番号など、追加情報を取得するために、MyDotNetActivity.**pdb** ファイルを含めることもできます。
 
    ![bin\Debug フォルダー一覧](./media/data-factory-data-processing-using-batch/image5.png)
 
@@ -408,7 +408,7 @@ public IDictionary<string, string> Execute(
 #### <a name="execute-method"></a>Execute メソッド
 ここでは、Execute メソッドのコードの詳細について説明します。
 
-1. 入力コレクションを反復処理するメンバーは、 [Microsoft.WindowsAzure.Storage.Blob](/java/api/com.microsoft.azure.storage.blob) 名前空間にあります。 BLOB コレクションの反復処理では、 **BlobContinuationToken** クラスを使用する必要があります。 基本的に、既存のループのメカニズムとして、トークンに do-while ループを使用する必要があります。 詳細については、[.NET から BLOB ストレージを使用する方法](../../storage/blobs/storage-quickstart-blobs-dotnet.md)に関するページを参照してください。 基本的なループを次に示します。
+1. 入力コレクションを反復処理するメンバーは、 [Microsoft.WindowsAzure.Storage.Blob](/java/api/com.microsoft.azure.storage.blob) 名前空間にあります。 BLOB コレクションの反復処理では、**BlobContinuationToken** クラスを使用する必要があります。 基本的に、既存のループのメカニズムとして、トークンに do-while ループを使用する必要があります。 詳細については、[.NET から BLOB ストレージを使用する方法](../../storage/blobs/storage-quickstart-blobs-dotnet.md)に関するページを参照してください。 基本的なループを次に示します。
 
     ```csharp
     // Initialize the continuation token.
@@ -435,7 +435,7 @@ public IDictionary<string, string> Execute(
 
 1. 論理的には、BLOB セットを操作するコードを do-while ループ内に配置します。 **Execute** メソッドの場合、do-while ループは BLOB の一覧を **Calculate** というメソッドに渡します。 Calculate メソッドは、セグメント内のすべての BLOB を反復処理した結果である **output** という文字列変数を返します。
 
-   また、 **Calculate** メソッドに渡された BLOB 内の検索語句 ("Microsoft") の出現回数を返します。
+   また、**Calculate** メソッドに渡された BLOB 内の検索語句 ("Microsoft") の出現回数を返します。
 
     ```csharp
     output += string.Format("{0} occurrences of the search term \"{1}\" were found in the file {2}.\r\n", wordCount, searchTerm, inputBlob.Name);
@@ -446,7 +446,7 @@ public IDictionary<string, string> Execute(
     // Get the output dataset by using the name of the dataset matched to a name in the Activity output collection.
     Dataset outputDataset = datasets.Single(dataset => dataset.Name == activity.Outputs.Single().Name);
     ```
-1. また、このコードは、 **GetFolderPath** というヘルパー メソッドも呼び出して、フォルダー パス (ストレージ コンテナー名) を取得します。
+1. また、このコードは、**GetFolderPath** というヘルパー メソッドも呼び出して、フォルダー パス (ストレージ コンテナー名) を取得します。
 
     ```csharp
     folderPath = GetFolderPath(outputDataset);
@@ -471,7 +471,7 @@ public IDictionary<string, string> Execute(
     // Write the name of the file.
     Uri outputBlobUri = new Uri(outputStorageAccount.BlobEndpoint, folderPath + "/" + GetFileName(outputDataset));
     ```
-1. ファイル名が出力されると、 **Calculate** メソッドから出力文字列を新しい BLOB に出力できるようになります。
+1. ファイル名が出力されると、**Calculate** メソッドから出力文字列を新しい BLOB に出力できるようになります。
 
     ```csharp
     // Create a blob and upload the output text.
@@ -533,7 +533,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    c. **[データ分析]** ブレードの **[Data Factory]** を選択します。
 
-1. **[新しい Data Factory]** ブレードで、名前に「 **CustomActivityFactory** 」と入力します。 データ ファクトリの名前はグローバルに一意にする必要があります。 "データ ファクトリ名 CustomActivityFactory は利用できません" というエラーが発生した場合は、データ ファクトリの名前を変更します。 たとえば、yournameCustomActivityFactory を使用し、もう一度データ ファクトリを作成します。
+1. **[新しい Data Factory]** ブレードで、名前に「**CustomActivityFactory**」と入力します。 データ ファクトリの名前はグローバルに一意にする必要があります。 "データ ファクトリ名 CustomActivityFactory は利用できません" というエラーが発生した場合は、データ ファクトリの名前を変更します。 たとえば、yournameCustomActivityFactory を使用し、もう一度データ ファクトリを作成します。
 
 1. **[リソース グループ名]** を選択し、既存のリソース グループを選択するか、リソース グループを作成します。
 
@@ -592,7 +592,7 @@ test custom activity Microsoft test custom activity Microsoft
       >
       >
 
-   e. **linkedServiceName** プロパティに、 **StorageLinkedService** を指定します。 このリンクされたサービスは、前の手順で作成しています。 このストレージは、ファイルおよびログのステージング領域として使用されます。
+   e. **linkedServiceName** プロパティに、**StorageLinkedService** を指定します。 このリンクされたサービスは、前の手順で作成しています。 このストレージは、ファイルおよびログのステージング領域として使用されます。
 
 1. コマンド バーの **[デプロイ]** を選択して、リンクされたサービスをデプロイします。
 
@@ -660,7 +660,7 @@ test custom activity Microsoft test custom activity Microsoft
     }
     ```
 
-    このチュートリアルでは、開始時刻が 2015-11-16T00:00:00Z、終了時刻が 2015-11-16T05:00:00Z のパイプラインを後ほど作成します。 データを毎時生成するようにスケジュールされているので、5 個の入力および出力スライスがあります ( **00** :00:00 から\> **05** :00:00 まで)。
+    このチュートリアルでは、開始時刻が 2015-11-16T00:00:00Z、終了時刻が 2015-11-16T05:00:00Z のパイプラインを後ほど作成します。 データを毎時生成するようにスケジュールされているので、5 個の入力および出力スライスがあります (**00**:00:00 から\> **05**:00:00 まで)。
 
     入力データセットの **frequency** と **interval** はそれぞれ **Hour** と **1** に設定されています。つまり、1 時間に 1 つの入力スライスを利用できます。
 
@@ -668,23 +668,23 @@ test custom activity Microsoft test custom activity Microsoft
 
     | **スライス** | **[開始時刻]**          |
     |-----------|-------------------------|
-    | 1         | 2015-11-16T **00** :00:00 |
-    | 2         | 2015-11-16T **01** :00:00 |
-    | 3         | 2015-11-16T **02** :00:00 |
-    | 4         | 2015-11-16T **03** :00:00 |
-    | 5         | 2015-11-16T **04** :00:00 |
+    | 1         | 2015-11-16T **00**:00:00 |
+    | 2         | 2015-11-16T **01**:00:00 |
+    | 3         | 2015-11-16T **02**:00:00 |
+    | 4         | 2015-11-16T **03**:00:00 |
+    | 5         | 2015-11-16T **04**:00:00 |
 
-    **folderPath** は、スライス開始時間 ( **SliceStart** ) の年、月、日、時間の部分を使用して計算されます。 入力フォルダーをスライスにマップする方法を次に示します。
+    **folderPath** は、スライス開始時間 (**SliceStart**) の年、月、日、時間の部分を使用して計算されます。 入力フォルダーをスライスにマップする方法を次に示します。
 
     | **スライス** | **[開始時刻]**          | **入力フォルダー**  |
     |-----------|-------------------------|-------------------|
-    | 1         | 2015-11-16T **00** :00:00 | 2015-11-16- **00** |
-    | 2         | 2015-11-16T **01** :00:00 | 2015-11-16- **01** |
-    | 3         | 2015-11-16T **02** :00:00 | 2015-11-16- **02** |
-    | 4         | 2015-11-16T **03** :00:00 | 2015-11-16- **03** |
-    | 5         | 2015-11-16T **04** :00:00 | 2015-11-16- **04** |
+    | 1         | 2015-11-16T **00**:00:00 | 2015-11-16-**00** |
+    | 2         | 2015-11-16T **01**:00:00 | 2015-11-16-**01** |
+    | 3         | 2015-11-16T **02**:00:00 | 2015-11-16-**02** |
+    | 4         | 2015-11-16T **03**:00:00 | 2015-11-16-**03** |
+    | 5         | 2015-11-16T **04**:00:00 | 2015-11-16-**04** |
 
-1. ツール バーの **[デプロイ]** を選択し、 **InputDataset** テーブルを作成してデプロイします。
+1. ツール バーの **[デプロイ]** を選択し、**InputDataset** テーブルを作成してデプロイします。
 
 #### <a name="create-the-output-dataset"></a>出力データセットを作成する
 この手順では、出力データを表す AzureBlob 型の別のデータセットを作成します。
@@ -725,15 +725,15 @@ test custom activity Microsoft test custom activity Microsoft
 
     | **スライス** | **[開始時刻]**          | **[出力ファイル]**       |
     |-----------|-------------------------|-----------------------|
-    | 1         | 2015-11-16T **00** :00:00 | 2015-11-16- **00.txt** |
-    | 2         | 2015-11-16T **01** :00:00 | 2015-11-16- **01.txt** |
-    | 3         | 2015-11-16T **02** :00:00 | 2015-11-16- **02.txt** |
-    | 4         | 2015-11-16T **03** :00:00 | 2015-11-16- **03.txt** |
-    | 5         | 2015-11-16T **04** :00:00 | 2015-11-16- **04.txt** |
+    | 1         | 2015-11-16T **00**:00:00 | 2015-11-16-**00.txt** |
+    | 2         | 2015-11-16T **01**:00:00 | 2015-11-16-**01.txt** |
+    | 3         | 2015-11-16T **02**:00:00 | 2015-11-16-**02.txt** |
+    | 4         | 2015-11-16T **03**:00:00 | 2015-11-16-**03.txt** |
+    | 5         | 2015-11-16T **04**:00:00 | 2015-11-16-**04.txt** |
 
     入力フォルダー (例: 2015-11-16-00) 内のすべてのファイルは、開始時刻が 2015-11-16-00 であるスライスの一部です。 このスライスを処理すると、カスタム アクティビティは各ファイルをスキャンし、出力ファイルに、検索語句 ("Microsoft") の出現回数が記述された 1 行を生成します。 2015-11-16-00 フォルダーに 3 つのファイルがある場合は、出力ファイル (2015-11-16-00.txt) に 3 行が出力されます。
 
-1. ツール バーの **[デプロイ]** をクリックし、 **OutputDataset** を作成してデプロイします。
+1. ツール バーの **[デプロイ]** をクリックし、**OutputDataset** を作成してデプロイします。
 
 #### <a name="step-4-create-and-run-the-pipeline-with-a-custom-activity"></a>手順 4:カスタム アクティビティを使用して、パイプラインを作成して実行する
 この手順では、以前に作成したカスタム アクティビティである、1 つのアクティビティでパイプラインを作成します。
@@ -793,12 +793,12 @@ test custom activity Microsoft test custom activity Microsoft
    以下の点に注意してください。
 
    * パイプラインには 1 つのアクティビティのみがあり、種類は **DotNetActivity** です。
-   * **AssemblyName** を DLL の名前 ( **MyDotNetActivity.dll** ) に設定します。
+   * **AssemblyName** を DLL の名前 (**MyDotNetActivity.dll**) に設定します。
    * **EntryPoint** を **MyDotNetActivityNS.MyDotNetActivity** に設定します。 これは基本的に \<namespace\>.\<classname\> のようにコード内で示されます。
    * **PackageLinkedService** は **StorageLinkedService** に設定されます。これは、カスタム アクティビティの zip ファイルを含む Blob Storage を示します。 入力/出力ファイルとカスタム アクティビティ zip ファイルに別のストレージ アカウントを使用している場合、Storage のリンクされたサービスを別に作成する必要があります。 この記事では、同じストレージ アカウントを使用している前提で説明します。
    * **PackageFile** を **customactivitycontainer/MyDotNetActivity.zip** に設定します。 これは \<containerforthezip\>/\<nameofthezip.zip\> という形式になっています。
-   * カスタム アクティビティは入力として **InputDataset** 、出力として **OutputDataset** を使用します。
-   * カスタム アクティビティの **linkedServiceName** プロパティは、 **AzureBatchLinkedService** を示します。これによって、Batch でカスタム アクティビティが実行する必要がある Data Factory がわかります。
+   * カスタム アクティビティは入力として **InputDataset**、出力として **OutputDataset** を使用します。
+   * カスタム アクティビティの **linkedServiceName** プロパティは、**AzureBatchLinkedService** を示します。これによって、Batch でカスタム アクティビティが実行する必要がある Data Factory がわかります。
    * **concurrency** の設定は重要です。 既定値を使用する場合は、Batch プールにコンピューティング ノードが複数ある場合でも、スライスは 1 つずつ処理されます。 そのため、Batch の並行処理機能を利用することはありません。 **concurrency** をより大きな値に設定した場合、2 とすると、つまり 2 つのスライス (Batch 内の 2 つのタスクに対応する) が、同時に処理できます。 この場合、Batch プール内の VM が両方利用されます。 concurrency プロパティを適切に設定します。
    * 既定では、1 つのみのタスク (スライス) が、VM 上で任意のポイントで実行されます。 Batch プールの既定では、 **[VM ごとの最大タスク]** は 1 に設定されています。 前提条件の一環で、このプロパティを 2 に設定してプールを作成しました。 そのため、VM 上で 2 つのデータ ファクトリ スライスを同時に実行できます。
      - **isPaused** プロパティは、既定で false に設定されています。 この例では、スライスが過去に開始されているので、パイプラインは即時に実行されます。 このプロパティを **true** に設定すると、パイプラインを一時停止できます。また **false** に設定し直すと再開されます。
@@ -842,15 +842,15 @@ test custom activity Microsoft test custom activity Microsoft
 
    ![スライス マッピングのダイアグラム](./media/data-factory-data-processing-using-batch/image16.png)
 
-1. フォルダー内の複数のファイルを試してみましょう。 フォルダー **2015-11-06-01** にある file.txt と同じ内容で、 **file2.txt** 、 **file3.txt** 、 **file4.txt** 、および **file5.txt** のファイルを作成します。
+1. フォルダー内の複数のファイルを試してみましょう。 フォルダー **2015-11-06-01** にある file.txt と同じ内容で、**file2.txt**、**file3.txt**、**file4.txt**、および **file5.txt** のファイルを作成します。
 
-1. 出力フォルダーで、 **2015-11-16-01.txt** という出力ファイルを削除します。
+1. 出力フォルダーで、**2015-11-16-01.txt** という出力ファイルを削除します。
 
 1. **[OutputDataset]** ブレードで、 **[スライス開始時間]** を **11/16/2015 01:00:00 AM** に設定したスライスを右クリックします。 **[実行]** を選択し、スライスを再実行または再度処理します。 スライスには、1 個のファイルではなく、5 個のファイルがあります。
 
     ![ラン](./media/data-factory-data-processing-using-batch/image17.png)
 
-1. スライスを実行して、その状態が **[準備完了]** になると、このスライスの出力ファイル ( **2015-11-16-01.txt** ) の内容を確認します。 この出力ファイルは、BLOB ストレージの `outputfolder` 内の `mycontainer` 以下に表示されます。 スライスのファイルごとに 1 行あります。
+1. スライスを実行して、その状態が **[準備完了]** になると、このスライスの出力ファイル (**2015-11-16-01.txt**) の内容を確認します。 この出力ファイルは、BLOB ストレージの `outputfolder` 内の `mycontainer` 以下に表示されます。 スライスのファイルごとに 1 行あります。
 
     ```
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-01/file.txt.
@@ -872,7 +872,7 @@ Data Factory サービスによって、Batch に `adf-poolname:job-xxx` とい�
 
 スライスのアクティビティの実行ごとに、1 つのタスクがジョブに作成されます。 10 個のスライスを処理する準備ができたとき、ジョブには 10 個のタスクが作成されています。 プール内に複数のコンピューティング ノードがある場合、複数のスライスを並列して実行することができます。 コンピューティング ノードあたりのタスクの最大数が 1 より大きい場合、複数のスライスを同じコンピューティングで実行できます。
 
-この例では 5 個のスライスがあるため、Batch には 5 個のタスクがあります。 データ ファクトリのパイプライン JSON の **concurrency** を **5** に設定し、 **2** 個の VM が含まれた Batch プールの **[VM ごとの最大タスク]** を **2** に設定すると、タスクが高速で実行されるようになります (タスクの開始時刻と終了時刻を確認してください)。
+この例では 5 個のスライスがあるため、Batch には 5 個のタスクがあります。 データ ファクトリのパイプライン JSON の **concurrency** を **5** に設定し、**2** 個の VM が含まれた Batch プールの **[VM ごとの最大タスク]** を **2** に設定すると、タスクが高速で実行されるようになります (タスクの開始時刻と終了時刻を確認してください)。
 
 ポータルを使用して、スライスに関連付けられている Batch ジョブとそのタスクを表示し、各スライスが実行された VM を確認します。
 
@@ -885,7 +885,7 @@ Data Factory サービスによって、Batch に `adf-poolname:job-xxx` とい�
 
    ![入力フォルダーの構造](./media/data-factory-data-processing-using-batch/image3.png)
 
-1. 問題のトラブルシューティングに役立つ情報をログに記録するには、カスタム アクティビティの **Execute** メソッドで、 **IActivityLogger** オブジェクトを使用します。 ログに記録されたメッセージは user\_0.log ファイルに表示されます。
+1. 問題のトラブルシューティングに役立つ情報をログに記録するには、カスタム アクティビティの **Execute** メソッドで、**IActivityLogger** オブジェクトを使用します。 ログに記録されたメッセージは user\_0.log ファイルに表示されます。
 
    **[OutputDataset]** ブレードで、スライスを選択すると、そのスライスの **[データ スライス]** ブレードが表示されます。 **[アクティビティの実行]** には、スライスの 1 回のアクティビティの実行が表示されます。 コマンド バーの **[実行]** を選択する場合、同じスライスの別のアクティビティの実行を開始できます。
 
@@ -893,7 +893,7 @@ Data Factory サービスによって、Batch に `adf-poolname:job-xxx` とい�
 
    ![[OutputDataset] および [データ スライス] ブレード](./media/data-factory-data-processing-using-batch/image18.png)
 
-   ログ ファイルの一覧で、 **user-0.log** を選択します。 右側のパネルには、 **IActivityLogger.Write** メソッドの使用結果が表示されます。
+   ログ ファイルの一覧で、**user-0.log** を選択します。 右側のパネルには、**IActivityLogger.Write** メソッドの使用結果が表示されます。
 
    ![[アクティビティの実行の詳細] ブレード](./media/data-factory-data-processing-using-batch/image19.png)
 
@@ -914,7 +914,7 @@ Data Factory サービスによって、Batch に `adf-poolname:job-xxx` とい�
 
    ![カスタム アクティビティの zip ファイル一覧](./media/data-factory-data-processing-using-batch/image20.png)
 
-1. **assemblyName** (MyDotNetActivity.dll)、 **entryPoint** (MyDotNetActivityNS.MyDotNetActivity)、 **packageFile** (customactivitycontainer/MyDotNetActivity.zip)、 **packageLinkedService** (zip ファイルを含む BLOB ストレージを示す必要があります) が正しい値に設定されていることを確認します。
+1. **assemblyName** (MyDotNetActivity.dll)、**entryPoint**(MyDotNetActivityNS.MyDotNetActivity)、**packageFile** (customactivitycontainer/MyDotNetActivity.zip)、**packageLinkedService** (zip ファイルを含む BLOB ストレージを示す必要があります) が正しい値に設定されていることを確認します。
 
 1. エラーを修正し、スライスを再処理する場合は、 **[OutputDataset]** ブレードのスライスを右クリックし、 **[実行]** を選択します。
 
@@ -933,7 +933,7 @@ Data Factory および Batch の機能の詳細については、このサンプ
 
 1. `inputfolder` にサブフォルダー2015-11-16-05、2015-11-16-06、201-11-16-07、2011-11-16-08、および 2015-11-16-09 を追加します。 これらのフォルダーに入力ファイルを配置します。 パイプラインの終了時刻を `2015-11-16T05:00:00Z` から `2015-11-16T10:00:00Z` に変更します。 **[ダイアグラム]** ビューで、 **[InputDataset]** をダブルクリックして、入力スライスが準備完了であることを確認します。 **[OutputDataset]** をダブルクリックして、出力スライスの状態を表示します。 **準備完了** の状態である場合、出力フォルダーで出力ファイルを確認します。
 
-1. 特に Batch 上で発生する処理のように、どのようにソリューションのパフォーマンスに影響するかを理解するには、 **concurrency** の設定を増加または減少させます。 **concurrency** 設定の詳細については、「手順 4:カスタム アクティビティを使用して、パイプラインを作成して実行する」を参照してください。
+1. 特に Batch 上で発生する処理のように、どのようにソリューションのパフォーマンスに影響するかを理解するには、**concurrency** の設定を増加または減少させます。 **concurrency** 設定の詳細については、「手順 4:カスタム アクティビティを使用して、パイプラインを作成して実行する」を参照してください。
 
 1. **[VM ごとの最大タスク]** を高くまたは低くして、プールを作成します。 新しく作成したプールを使用するには、データ ファクトリ ソリューションで、Batch のリンクされたサービスを更新します。 **[VM ごとの最大タスク]** 設定の詳細については、「手順 4:カスタム アクティビティを使用して、パイプラインを作成して実行する」を参照してください。
 
@@ -955,7 +955,7 @@ Data Factory および Batch の機能の詳細については、このサンプ
 
    プールで既定の [autoScaleEvaluationInterval](/rest/api/batchservice/pool/enableautoscale) を使用する場合、Batch サービスがカスタム アクティビティを実行する前に VM を準備するのに 15 ～ 30 分かかることがあります。 プールが異なる autoScaleEvaluationInterval を使用する場合、Batch サービスは autoScaleEvaluationInterval + 10 分を要することがあります。
 
-1. サンプル ソリューションで、 **Execute** メソッドは、出力データ スライスを生成するために入力データ スライスを処理する、 **Calculate** メソッドを呼び出します。 入力データを処理し、 **Execute** メソッドで呼び出される **Calculate** メソッドを、メソッドの呼び出しに置換する独自のメソッドを記述することができます。
+1. サンプル ソリューションで、**Execute** メソッドは、出力データ スライスを生成するために入力データ スライスを処理する、**Calculate** メソッドを呼び出します。 入力データを処理し、**Execute** メソッドで呼び出される **Calculate** メソッドを、メソッドの呼び出しに置換する独自のメソッドを記述することができます。
 
 ### <a name="next-steps-consume-the-data"></a>次のステップ:データの処理
 データを処理した後、Power BI などのオンライン ツールで使用することができます。 Power BI や Azure で使用する方法を理解するために役立つリンクを次に示します。

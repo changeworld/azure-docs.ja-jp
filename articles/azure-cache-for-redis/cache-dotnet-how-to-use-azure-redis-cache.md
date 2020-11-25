@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 06/18/2020
 ms.openlocfilehash: 762fdf0aab0077cfbf8beceeb432dc85695e4176
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077066"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002464"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-framework"></a>クイックスタート: .NET Framework で Azure Cache for Redis を使用する
 
@@ -30,7 +30,7 @@ ms.locfileid: "93077066"
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-ご自分のコンピューター上に *CacheSecrets.config* という名前のファイルを作成し、サンプル アプリケーションのソース コードでチェックインされない場所に置きます。 このクイック スタートでは、 *CacheSecrets.config* ファイルを *C:\AppSecrets\CacheSecrets.config* に配置します。
+ご自分のコンピューター上に *CacheSecrets.config* という名前のファイルを作成し、サンプル アプリケーションのソース コードでチェックインされない場所に置きます。 このクイック スタートでは、*CacheSecrets.config* ファイルを *C:\AppSecrets\CacheSecrets.config* に配置します。
 
 *CacheSecrets.config* ファイルを編集し、次の内容を追加します。
 
@@ -63,12 +63,12 @@ Visual Studio で、 **[ツール]**  >  **[NuGet パッケージ マネージ�
 Install-Package StackExchange.Redis
 ```
 
-インストールが完了すると、 *StackExchange.Redis* キャッシュ クライアントをプロジェクトに使用できるようになります。
+インストールが完了すると、*StackExchange.Redis* キャッシュ クライアントをプロジェクトに使用できるようになります。
 
 
 ## <a name="connect-to-the-cache"></a>キャッシュに接続する
 
-Visual Studio で *App.config* ファイルを開き、 *CacheSecrets.config* ファイルを参照する `appSettings` `file` 属性を含むように更新します。
+Visual Studio で *App.config* ファイルを開き、*CacheSecrets.config* ファイルを参照する `appSettings` `file` 属性を含むように更新します。
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -249,7 +249,7 @@ class Employee
 
 [Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
 
-**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、 *TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、 **[リソース グループの削除]** をクリックします。
+**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、 **[リソース グループの削除]** をクリックします。
 
 ![削除](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
 

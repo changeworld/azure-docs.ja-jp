@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: ef74c4b799c3a24636f88a8e704bf726104b034f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674320"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001594"
 ---
 # <a name="sensor-partner-integration"></a>センサー パートナーの統合
 
@@ -126,10 +126,10 @@ JSON は、任意のデータ構造をシンプルなテキストで表現する
 
 FarmBeats Datahub の次の API を使用することで、デバイス パートナーは、デバイスまたはセンサーのメタデータを作成して管理できます。
 
-- /**DeviceModel** :DeviceModel は、デバイスのメタデータ (製造元など) およびデバイスの種類 (ゲートウェイまたはノード) に対応します。
-- /**Device** :Device は、ファームに存在する物理デバイスに対応します。
-- /**SensorModel** :SensorModel は、センサーのメタデータ (製造元など)、センサーの種類 (アナログまたはデジタル)、センサーのメジャー (周辺温度や圧力) に対応します。
-- /**Sensor** :センサーは、値を記録する物理的なセンサーに対応するものです。 センサーは通常、デバイス ID を持つデバイスに接続されます。
+- /**DeviceModel**:DeviceModel は、デバイスのメタデータ (製造元など) およびデバイスの種類 (ゲートウェイまたはノード) に対応します。
+- /**Device**:Device は、ファームに存在する物理デバイスに対応します。
+- /**SensorModel**:SensorModel は、センサーのメタデータ (製造元など)、センサーの種類 (アナログまたはデジタル)、センサーのメジャー (周辺温度や圧力) に対応します。
+- /**Sensor**:センサーは、値を記録する物理的なセンサーに対応するものです。 センサーは通常、デバイス ID を持つデバイスに接続されます。
 
   DeviceModel | 説明 |
   --- | ---

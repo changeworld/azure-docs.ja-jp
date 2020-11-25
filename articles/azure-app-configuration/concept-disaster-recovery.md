@@ -7,11 +7,11 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 5c62f10d67345d68cde27af7d0a7663b22d978a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207192"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002427"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>回復性とディザスター リカバリー
 
@@ -68,7 +68,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 ### <a name="backup-manually-using-the-export-function"></a>エクスポート機能を使用して手動でバックアップする
 
-App Configuration の**エクスポート**機能を使用することで、プライマリ ストアからセカンダリにオンデマンドでデータをコピーできます。 この機能は Azure portal と CLI の両方で使用できます。
+App Configuration の **エクスポート** 機能を使用することで、プライマリ ストアからセカンダリにオンデマンドでデータをコピーできます。 この機能は Azure portal と CLI の両方で使用できます。
 
 Azure portal からは、次の手順に従って、別の構成ストアに変更をプッシュできます。
 

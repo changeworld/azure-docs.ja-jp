@@ -6,11 +6,11 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 2e9af5dcc00d8cadd0528d56ee73bc6aeba149d7
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747733"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002036"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) での Kubernetes のアップグレード
 
@@ -80,9 +80,9 @@ az aks upgrade \
 ```
 
 > [!NOTE]
-> 一度に 1 つのマイナー バージョンのみをアップグレードできます。 たとえば、 *1.14.x* から *1.15.x* にアップグレードすることはできますが、 *1.14.x* から *1.16.x* に直接アップグレードすることはできません。 *1.14.x* から *1.16.x* にアップグレードするには、まず *1.14.x* から *1.15.x* にアップグレードします。その後、 *1.15.x* から *1.16.x* にもう一度アップグレードします。
+> 一度に 1 つのマイナー バージョンのみをアップグレードできます。 たとえば、*1.14.x* から *1.15.x* にアップグレードすることはできますが、*1.14.x* から *1.16.x* に直接アップグレードすることはできません。 *1.14.x* から *1.16.x* にアップグレードするには、まず *1.14.x* から *1.15.x* にアップグレードします。その後、*1.15.x* から *1.16.x* にもう一度アップグレードします。
 
-次の出力例の抜粋には、 *1.16.8* にアップグレードした結果が示されています。 *kubernetesVersion* が *1.16.8* としてレポートされていることがわかります。
+次の出力例の抜粋には、*1.16.8* にアップグレードした結果が示されています。 *kubernetesVersion* が *1.16.8* としてレポートされていることがわかります。
 
 ```json
 {

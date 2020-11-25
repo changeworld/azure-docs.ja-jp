@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: a6f53d6ce41085b2348857ccb5b45c06132d6a99
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655461"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001985"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>スケジュールどおりにパイプラインを実行するトリガーの作成
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

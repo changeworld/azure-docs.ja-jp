@@ -16,11 +16,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: c117f9697299b94a54d9184093e65c56822b8bd2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975673"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002631"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Azure での Linux VM 接続問題に関する SSH の詳細なトラブルシューティングの手順
 SSH クライアントは、さまざまな理由で VM 上の SSH サービスに到達できない可能性があります。 [SSH のトラブルシューティングの一般的な手順](troubleshoot-ssh-connection.md)に従った場合は、接続の問題について詳細なトラブルシューティングを行う必要があります。 この記事では、詳細なトラブルシューティング手順を説明し、SSH 接続に失敗した場所の特定とその解決方法を確認します。

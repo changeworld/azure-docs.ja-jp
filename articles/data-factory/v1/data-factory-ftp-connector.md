@@ -13,11 +13,11 @@ ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: eeeb122d240d8c3eae4ebe1650f67cf0e4b9dac6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80992047"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001645"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して FTP サーバーからデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -35,22 +35,22 @@ FTP サーバーから、サポートされている任意のシンク データ
 > コピー アクティビティでは、コピー先にコピーされた後にソース ファイルが削除されることはありません。 コピー後にソース ファイルを削除する必要がある場合、カスタム アクティビティを作成してファイルを削除し、パイプラインのアクティビティを使用します。
 
 ## <a name="enable-connectivity"></a>接続性の確保
-データを**オンプレミス**の FTP サーバーからクラウド データ ストア (例: Azure Blob ストレージ) に移動する場合は、Data Management Gateway をインストールして使用します。 Data Management Gateway はオンプレミスのコンピューターにインストールされたクライアント エージェントで、これにより、クラウド サービスはオンプレミスのリソースに接続できます。 詳細については、[データ管理ゲートウェイ](data-factory-data-management-gateway.md)をご覧ください。 ゲートウェイの設定とその使用に関する手順は、[オンプレミスの場所とクラウド間のデータ移動](data-factory-move-data-between-onprem-and-cloud.md)を参照してください。 サーバーが Azure IaaS 仮想マシン (VM) 上にある場合でも、FTP サーバーに接続するためにゲートウェイを使用します。
+データを **オンプレミス** の FTP サーバーからクラウド データ ストア (例: Azure Blob ストレージ) に移動する場合は、Data Management Gateway をインストールして使用します。 Data Management Gateway はオンプレミスのコンピューターにインストールされたクライアント エージェントで、これにより、クラウド サービスはオンプレミスのリソースに接続できます。 詳細については、[データ管理ゲートウェイ](data-factory-data-management-gateway.md)をご覧ください。 ゲートウェイの設定とその使用に関する手順は、[オンプレミスの場所とクラウド間のデータ移動](data-factory-move-data-between-onprem-and-cloud.md)を参照してください。 サーバーが Azure IaaS 仮想マシン (VM) 上にある場合でも、FTP サーバーに接続するためにゲートウェイを使用します。
 
 FTP サーバーとして、同じオンプレミスのコンピューターまたは IaaS VM にゲートウェイをインストールすることが可能です。 ただし、リソースの競合を防ぎ、パフォーマンスの向上を図るために、別のコンピューターまたは IaaS VM にゲートウェイをインストールすることをお勧めします。 別のコンピューターにゲートウェイをインストールすると、そのコンピューターが FTP サーバーにアクセスできるようになります。
 
 ## <a name="get-started"></a>はじめに
 さまざまなツールまたは API を使用して、FTP ソースからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、**Data Factory コピー ウィザード**を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」で、簡単なチュートリアルをご覧いただけます。
+パイプラインを作成する最も簡単な方法は、**Data Factory コピー ウィザード** を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」で、簡単なチュートリアルをご覧いただけます。
 
 また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
-1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表す**データセット**を作成します。
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。
+1. **リンクされたサービス** を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
+2. コピー操作用の入力データと出力データを表す **データセット** を作成します。
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む **パイプライン** を作成します。
 
 ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 FTP データ ストアからデータをコピーするために使用される Data Factory エンティティ用の JSON 定義のサンプルについては、この記事の「[JSON の使用例: FTP サーバーから Azure BLOB にデータをコピーする](#json-example-copy-data-from-ftp-server-to-azure-blob)」セクションを参照してください。
 

@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.openlocfilehash: 5a104dcd6ccf500c115359a1b72c67b85359a802
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94355160"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002189"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>チュートリアル:Azure Active Directory と Jobscience の統合
 
@@ -67,7 +67,7 @@ Azure AD への Jobscience の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] が選択されたことを示すスクリーンショット。][3]
 
-1. 検索ボックスに、「 **Jobscience** 」と入力します。
+1. 検索ボックスに、「**Jobscience**」と入力します。
 
     ![[ギャラリーから追加する] に「jobscience」と入力されたことを示すスクリーンショット。](./media/jobscience-tutorial/tutorial_jobscience_search.png)
 
@@ -121,7 +121,7 @@ Jobscience で Azure AD のシングル サインオンを構成してテスト�
 
     ![[保存] ボタンを示すスクリーンショット。](./media/jobscience-tutorial/tutorial_general_400.png)
 
-1. **[Jobscience 構成]** セクションで、 **[Jobscience の構成]** をクリックして、 **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、 **サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+1. **[Jobscience 構成]** セクションで、 **[Jobscience の構成]** をクリックして、 **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
     ![Jobscience の構成ウィンドウを示すスクリーンショット。](./media/jobscience-tutorial/tutorial_jobscience_configure.png) 
 
@@ -135,7 +135,7 @@ Jobscience で Azure AD のシングル サインオンを構成してテスト�
    
    ![マイ ドメイン](./media/jobscience-tutorial/ic767825.png "[マイ ドメイン]")
 
-1. ドメインが正しく設定されていることを確認するには、" **ステップ 4 ユーザーへのデプロイ** " で " **マイ ドメインの設定** " を確認します。
+1. ドメインが正しく設定されていることを確認するには、"**ステップ 4 ユーザーへのデプロイ**" で "**マイ ドメインの設定**" を確認します。
 
     ![ユーザーにデプロイされたドメイン](./media/jobscience-tutorial/ic784377.png "ユーザーにデプロイされたドメイン")
 
@@ -218,7 +218,7 @@ Jobscience で Azure AD のシングル サインオンを構成してテスト�
  
     ![[ユーザー] ダイアログ ボックスを示すスクリーンショット。ここでは、このステップで値を入力できます。](./media/jobscience-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の **電子メール アドレス** を入力します。
 

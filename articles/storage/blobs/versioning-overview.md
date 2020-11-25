@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 48078ed06e36a33b10ee2d761a249159d14c6220
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e2d74519b9adf9a74e5af180a3da28918a9a8dab
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444505"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96001883"
 ---
 # <a name="blob-versioning"></a>BLOB のバージョン管理
 
@@ -128,7 +128,7 @@ BLOB のバージョン管理を無効にしても、既存の BLOB、バージ�
 
 ## <a name="blob-versioning-and-soft-delete"></a>BLOB のバージョン管理と論理的な削除
 
-最適なデータ保護を提供するために、BLOB のバージョン管理と BLOB の論理的な削除は連動します。 論理的な削除を有効にする場合は、Azure Storage で論理的に削除された BLOB を保持する期間を指定します。 論理的に削除された BLOB のバージョンはシステムで維持され、論理的な削除の保有期間内に削除を取り消すことができます。 BLOB の論理的な削除の詳細については、[Azure Storage BLOB の論理的な削除](storage-blob-soft-delete.md)に関するページを参照してください。
+最適なデータ保護を提供するために、BLOB のバージョン管理と BLOB の論理的な削除は連動します。 論理的な削除を有効にする場合は、Azure Storage で論理的に削除された BLOB を保持する期間を指定します。 論理的に削除された BLOB のバージョンはシステムで維持され、論理的な削除の保有期間内に削除を取り消すことができます。 BLOB の論理的な削除の詳細については、[Azure Storage BLOB の論理的な削除](./soft-delete-blob-overview.md)に関するページを参照してください。
 
 ### <a name="deleting-a-blob-or-version"></a>BLOB またはバージョンの削除
 
@@ -297,4 +297,4 @@ BLOB の論理的な削除が有効になっている場合に、層が明示的
 
 - [BLOB のバージョン管理を有効にして管理する](versioning-enable.md)
 - [BLOB のスナップショットの作成](/rest/api/storageservices/creating-a-snapshot-of-a-blob)
-- [Azure Storage BLOB の論理的な削除](storage-blob-soft-delete.md)
+- [Azure Storage BLOB の論理的な削除](./soft-delete-blob-overview.md)

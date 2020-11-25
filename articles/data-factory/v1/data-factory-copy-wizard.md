@@ -14,11 +14,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 28169e43d0e6949a16cc56c7e7d5d91d6db1ef57
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636920"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003040"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Azure Data Factory コピー ウィザードでデータを簡単にコピーまたは移動する
 > [!NOTE]
@@ -73,7 +73,7 @@ Azure Data Factory コピー ウィザードを使用すると、通常エンド
 ...
 ```
 
-**[ファイルまたはフォルダー]** の **[参照]** ボタンをクリックして、これらのフォルダーのいずれか (例: 2016->03->01->02) を参照し、 **[選択]** をクリックします。 テキスト ボックスに `2016/03/01/02` と表示されます。 ここで、 **2016** を **{year}** 、 **03** を **{month}** 、 **01** を **{day}** 、 **02** を **{hour}** にそれぞれ置き換え、Tab キーを押します。この 4 つの変数の形式を選択するドロップダウン リストが表示されます。
+**[ファイルまたはフォルダー]** の **[参照]** ボタンをクリックして、これらのフォルダーのいずれか (例: 2016->03->01->02) を参照し、 **[選択]** をクリックします。 テキスト ボックスに `2016/03/01/02` と表示されます。 ここで、**2016** を **{year}** 、**03** を **{month}** 、**01** を **{day}** 、**02** を **{hour}** にそれぞれ置き換え、Tab キーを押します。この 4 つの変数の形式を選択するドロップダウン リストが表示されます。
 
 ![システム変数の使用](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 

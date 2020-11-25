@@ -10,11 +10,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: 93d741d22ac03c132954a48731451f891042d7b4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371173"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003066"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
 
@@ -268,7 +268,7 @@ dependsOn | このプロパティを使用して、アクティビティの依�
 ```
 
 ## <a name="sample-copy-pipeline"></a>コピー パイプラインのサンプル
-次のサンプル パイプラインでは、 **Copy** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、[コピー アクティビティ](copy-activity-overview.md)によって、Azure BLOB Storage から Azure SQL Database 内のデータベースにデータをコピーします。
+次のサンプル パイプラインでは、**Copy** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、[コピー アクティビティ](copy-activity-overview.md)によって、Azure BLOB Storage から Azure SQL Database 内のデータベースにデータをコピーします。
 
 ```json
 {
@@ -310,14 +310,14 @@ dependsOn | このプロパティを使用して、アクティビティの依�
 ```
 以下の点に注意してください。
 
-- activities セクションに、 **type** が **Copy** に設定されたアクティビティが 1 つだけあります。
+- activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
 - アクティビティの入力を **InputDataset** に設定し、出力を **OutputDataset** に設定します。 JSON でのデータセットの定義の詳細については、[データセット](concepts-datasets-linked-services.md)に関する記事を参照してください。
 - **typeProperties** セクションでは、ソースの種類として **BlobSource** が指定され、シンクの種類として **SqlSink** が指定されています。 データ ストアとの間でのデータの移動については、「[データ移動アクティビティ](#data-movement-activities)」セクションで、ソースまたはシンクとして使用するデータ ストアをクリックしてください。
 
 このパイプラインの作成に関する完全なチュートリアルについては、「[Quickstart: create a data factory (クイック スタート: データ ファクトリを作成する)](quickstart-create-data-factory-powershell.md)」を参照してください。
 
 ## <a name="sample-transformation-pipeline"></a>変換パイプラインのサンプル
-次のサンプル パイプラインでは、 **HDInsightHive** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、 [HDInsight Hive アクティビティ](transform-data-using-hadoop-hive.md) が、Azure HDInsight Hadoop クラスターで Hive スクリプト ファイルを実行して、Azure BLOB ストレージからデータを変換します。
+次のサンプル パイプラインでは、**HDInsightHive** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、 [HDInsight Hive アクティビティ](transform-data-using-hadoop-hive.md) が、Azure HDInsight Hadoop クラスターで Hive スクリプト ファイルを実行して、Azure BLOB ストレージからデータを変換します。
 
 ```json
 {
@@ -357,7 +357,7 @@ dependsOn | このプロパティを使用して、アクティビティの依�
 ```
 以下の点に注意してください。
 
-- activities セクションに、 **type** が **HDInsightHive** に設定されたアクティビティが 1 つだけあります。
+- activities セクションに、**type** が **HDInsightHive** に設定されたアクティビティが 1 つだけあります。
 - Hive スクリプト ファイル **partitionweblogs.hql** は、Azure Storage アカウント (scriptLinkedService によって指定され、AzureStorageLinkedService という名前) と `adfgetstarted` コンテナーの script フォルダーに格納されます。
 - `defines` セクションは、Hive 構成値 (例: $`{hiveconf:inputtable}`, `${hiveconf:partitionedtable}`) として Hive スクリプトに渡される実行時設定を指定するために使用されます。
 

@@ -9,11 +9,11 @@ ms.date: 04/02/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: de0cf260207747f4acb02a377819a13de8b8ba22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80628418"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002522"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
@@ -35,11 +35,11 @@ ms.locfileid: "80628418"
 1. 使用するリソース グループを選択し、名前を入力します。
 1. **[増分]** を選択し、 **[確認および作成]** を選択します。
 
-    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/incremental-snapshot-create-snapshot-blade.png" alt-text="スクリーンショット。選択する必要がある **[+ スナップショットの作成]** が強調表示されたディスクのブレード。":::
+    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/incremental-snapshot-create-snapshot-blade.png" alt-text="スクリーンショット。[スナップショットの作成] ブレードで、名前を入力し、[増分] を選択し、スナップショットを作成します。":::
 
 1. **[作成]**
 
-    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-incremental-snapshot-validation.png" alt-text="スクリーンショット。選択する必要がある **[+ スナップショットの作成]** が強調表示されたディスクのブレード。":::
+    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-incremental-snapshot-validation.png" alt-text="スクリーンショット。スナップショットの [検証] ページで、選択内容を確認し、スナップショットを作成します。":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
 ms.openlocfilehash: e7d6a67f5322c5bb640430f66ccb0917f6faada1
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339786"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003499"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>BI 分析ツールと ODBC ドライバーを使用して Azure Cosmos DB に接続する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -41,11 +41,11 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
     |[Microsoft Azure Cosmos DB ODBC 32x64-bit.msi](https://aka.ms/cosmos-odbc-32x64) (64 ビット上の 32 ビット Windows 用)| Windows 8.1 以降、Windows 8、Windows 7、Windows XP、Windows Vista、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2、Windows Server 2003 の 64 ビット バージョン。| 
     |[Microsoft Azure Cosmos DB ODBC 32-bit.msi](https://aka.ms/cosmos-odbc-32x32) (32 ビット Windows 用)|Windows 8.1 以降、Windows 8、Windows 7、Windows XP、Windows Vista の 32 ビット バージョン。|
 
-    msi ファイルをローカルで実行すると、 **Microsoft Azure Cosmos DB ODBC ドライバーのインストール ウィザード** が開始されます。 
+    msi ファイルをローカルで実行すると、**Microsoft Azure Cosmos DB ODBC ドライバーのインストール ウィザード** が開始されます。 
 
 1. 既定の入力を使用して ODBC ドライバーをインストールし、インストール ウィザードを完了します。
 
-1. **ODBC データ ソース管理者** アプリをコンピューターで開きます。 これを行うには、Windows の検索ボックスに「 **ODBC データ ソース** 」と入力します。 
+1. **ODBC データ ソース管理者** アプリをコンピューターで開きます。 これを行うには、Windows の検索ボックスに「**ODBC データ ソース**」と入力します。 
     ドライバーがインストールされたことを確認するには、 **[ドライバー]** タブをクリックして **Microsoft Azure Cosmos DB ODBC ドライバー** が一覧に記載されていることを確認します。
 
     :::image type="content" source="./media/odbc-driver/odbc-driver.png" alt-text="Azure Cosmos DB ODBC データ ソース管理者":::
@@ -59,29 +59,29 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 1. **[Azure Cosmos DB ODBC Driver SDN Setup]\(Azure Cosmos DB ODBC ドライバーの SDN セットアップ\)** ウィンドウに、次の内容を入力します。 
 
     :::image type="content" source="./media/odbc-driver/odbc-driver-dsn-setup.png" alt-text="Azure Cosmos DB ODBC ドライバーの DSN セットアップ ウィンドウ":::
-    - **データ ソース名** :ODBC DSN の独自のフレンドリ名。 この名前は Azure Cosmos DB アカウントに対して一意なので、複数のアカウントがある場合は適切に名前を付けてください。
-    - **説明** :データ ソースの簡単な説明。
+    - **データ ソース名**:ODBC DSN の独自のフレンドリ名。 この名前は Azure Cosmos DB アカウントに対して一意なので、複数のアカウントがある場合は適切に名前を付けてください。
+    - **説明**:データ ソースの簡単な説明。
     - **[Host]\(ホスト\)** : Azure Cosmos DB アカウントの URI。 Azure Portal の [Azure Cosmos DB キー] ページから取得できます。次のスクリーンショットをご覧ください。 
-    - **アクセス キー** :Azure portal の [Azure Cosmos DB キー] ページから、プライマリまたはセカンダリ、読み取り/書き込みまたは読み取り専用のキーを選びます。次のスクリーンショットをご覧ください。 DSN を読み取り専用のデータ処理とレポート作成に使用する場合は、読み取り専用キーを使用することをお勧めします。
+    - **アクセス キー**:Azure portal の [Azure Cosmos DB キー] ページから、プライマリまたはセカンダリ、読み取り/書き込みまたは読み取り専用のキーを選びます。次のスクリーンショットをご覧ください。 DSN を読み取り専用のデータ処理とレポート作成に使用する場合は、読み取り専用キーを使用することをお勧めします。
     :::image type="content" source="./media/odbc-driver/odbc-cosmos-account-keys.png" alt-text="[Azure Cosmos DB キー] ページ":::
     - **Encrypt Access Key for (アクセスキーの暗号化)** :このコンピューターのユーザーに基づいた最適な選択肢を選択します。 
     
 1. **[テスト]** ボタンをクリックして、Azure Cosmos DB アカウントに接続できることを確認します。 
 
 1.  **[詳細オプション]** をクリックして、次の値を設定します。
-    *  **REST API バージョン** : 操作に使用する [REST API バージョン](/rest/api/cosmos-db/)を選択します。 既定値は 2015-12-16 です。 [大きいパーティションキー](large-partition-keys.md)を持つコンテナーがあり、REST API バージョン 2018-12-31 が必要な場合:
-        - REST API バージョンとして「 **2018-12-31** 」を入力します
-        - **スタート** メニューで「regedit」と入力し、 **レジストリ エディター** アプリケーションを検索して開きます。
-        - レジストリ エディターで、次のパスに移動します。 **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC.INI**
+    *  **REST API バージョン**: 操作に使用する [REST API バージョン](/rest/api/cosmos-db/)を選択します。 既定値は 2015-12-16 です。 [大きいパーティションキー](large-partition-keys.md)を持つコンテナーがあり、REST API バージョン 2018-12-31 が必要な場合:
+        - REST API バージョンとして「**2018-12-31**」を入力します
+        - **スタート** メニューで「regedit」と入力し、**レジストリ エディター** アプリケーションを検索して開きます。
+        - レジストリ エディターで、次のパスに移動します。**Computer\HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC.INI**
         - DSN と同じ名前の新しいサブキーを作成します。例: "Contoso Account ODBC DSN"
         - "Contoso Account ODBC DSN" サブキーに移動します。
         - 右クリックして、新しい **文字列** 値を追加します。
             - 値の名前: **IgnoreSessionToken**
-            - 値のデータ: **1**
+            - 値のデータ:**1**
             :::image type="content" source="./media/odbc-driver/cosmos-odbc-edit-registry.png" alt-text="レジストリ エディターの設定":::
     - **Query Consistency (クエリの一貫性)** :操作の [一貫性レベル](consistency-levels.md)を選択します。 既定ではセッションです。
-    - **再試行回数** :サービス レートの制限のために最初の要求が完了しない場合、操作を再試行する回数を入力します。
-    - **スキーマ ファイル** :これにはオプションがいくつかあります。
+    - **再試行回数**:サービス レートの制限のために最初の要求が完了しない場合、操作を再試行する回数を入力します。
+    - **スキーマ ファイル**:これにはオプションがいくつかあります。
         - 既定では、このエントリをそのまま (空白) にすると、ドライバーですべてのコンテナーのデータの最初のページがスキャンされ、各コンテナーのスキーマが判定されます。 これは、コンテナー マッピングとして知られています。 スキーマ ファイルが定義されていないと、ドライバーはドライバー セッションごとにスキャンを実行する必要があるため、DSN を使ったアプリケーションの起動に時間がかかることがあります。 スキーマ ファイルを DSN と常に関連付けることをお勧めします。
         - (スキーマ エディターを使用して作成した) スキーマ ファイルが既にある場合は、 **[参照]** をクリックしてファイルに移動し、 **[保存]** をクリックしてから **[OK]** をクリックします。
         - 新しいスキーマを作成する場合は、 **[OK]** をクリックしてからメイン ウィンドウの **[スキーマ エディター]** をクリックします。 次にスキーマ エディターの情報に進みます。 新しいスキーマ ファイルを作成したら、 **[詳細オプション]** ウィンドウに戻って、新しく作成されたスキーマ ファイルを含めることを忘れないでください。
@@ -92,9 +92,9 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
 ## <a name="step-3-create-a-schema-definition-using-the-container-mapping-method"></a><a id="#container-mapping"></a>手順 3:コンテナー マッピングの方法を使ってスキーマ定義を作成する
 
-使用できるサンプリング方法は、 **コンテナー マッピング** と **テーブル区切り記号** の 2 種類です。 サンプリング セッションではどちらのサンプリング方法も利用できますが、各コンテナーが使用できるのは特定のサンプリング方法のみになります。 次の手順では、コンテナー マッピングの方法を使って 1 つまた複数のコンテナー内のデータのスキーマを作成します。 このサンプリング方法では、コンテナーのページのデータを取得して、データの構造を判定します。 それにより、ODBC 側のテーブルにコンテナーを入れ替えます。 このサンプリング方法は、コンテナーのデータの種類が同じ場合は効率的で迅速です。 コンテナーに異なる型のデータが含まれる場合は、[テーブル区切り記号のマッピング方法](#table-mapping)を使用することをお勧めします。この方法は、コンテナー内のデータ構造を判定するより堅牢なサンプリング方法を提供します。 
+使用できるサンプリング方法は、**コンテナー マッピング** と **テーブル区切り記号** の 2 種類です。 サンプリング セッションではどちらのサンプリング方法も利用できますが、各コンテナーが使用できるのは特定のサンプリング方法のみになります。 次の手順では、コンテナー マッピングの方法を使って 1 つまた複数のコンテナー内のデータのスキーマを作成します。 このサンプリング方法では、コンテナーのページのデータを取得して、データの構造を判定します。 それにより、ODBC 側のテーブルにコンテナーを入れ替えます。 このサンプリング方法は、コンテナーのデータの種類が同じ場合は効率的で迅速です。 コンテナーに異なる型のデータが含まれる場合は、[テーブル区切り記号のマッピング方法](#table-mapping)を使用することをお勧めします。この方法は、コンテナー内のデータ構造を判定するより堅牢なサンプリング方法を提供します。 
 
-1. 「 [Azure Cosmos データベースに接続する](#connect)」の手順 1 から 4 が完了したら、 **[Azure Cosmos DB ODBC Driver DSN Setup]\(Azure Cosmos DB ODBC ドライバーの DSN セットアップ\)** ウィンドウの **[スキーマ エディター]** をクリックします。
+1. 「[Azure Cosmos データベースに接続する](#connect)」の手順 1 から 4 が完了したら、 **[Azure Cosmos DB ODBC Driver DSN Setup]\(Azure Cosmos DB ODBC ドライバーの DSN セットアップ\)** ウィンドウの **[スキーマ エディター]** をクリックします。
 
     :::image type="content" source="./media/odbc-driver/odbc-driver-schema-editor.png" alt-text="Azure Cosmos DB ODBC ドライバーの DSN セットアップ ウィンドウの [スキーマ エディター] ボタン":::
 1. **[スキーマ エディター]** ウィンドウで、 **[新規作成]** をクリックします。
@@ -113,11 +113,11 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
 ## <a name="step-4-create-a-schema-definition-using-the-table-delimiters-mapping-method"></a><a id="table-mapping"></a>手順 4:テーブル区切り記号のマッピング方法を使ってスキーマ定義を作成する
 
-使用できるサンプリング方法は、 **コンテナー マッピング** と **テーブル区切り記号** の 2 種類です。 サンプリング セッションではどちらのサンプリング方法も利用できますが、各コンテナーが使用できるのは特定のサンプリング方法のみになります。 
+使用できるサンプリング方法は、**コンテナー マッピング** と **テーブル区切り記号** の 2 種類です。 サンプリング セッションではどちらのサンプリング方法も利用できますが、各コンテナーが使用できるのは特定のサンプリング方法のみになります。 
 
-次の手順では、 **テーブル区切り記号** のマッピング方法を使って 1 つまたは複数のコンテナー内のデータのスキーマを作成します。 コンテナーに異なる型のデータが含まれる場合は、このサンプリング方法を使用することをお勧めします。 この方法を使って、サンプリングのスコープを一連の属性と対応する値に設定できます。 たとえば、ドキュメントに "型" のプロパティが含まれる場合は、サンプリングのスコープをこのプロパティの値に設定できます。 サンプリングの最終的な結果は、指定した型の各値が記載されたテーブルのセットになります。 たとえば、型が自動車の場合は自動車のテーブルが生成され、型が飛行機の場合は飛行機のテーブルが生成されます。
+次の手順では、**テーブル区切り記号** のマッピング方法を使って 1 つまたは複数のコンテナー内のデータのスキーマを作成します。 コンテナーに異なる型のデータが含まれる場合は、このサンプリング方法を使用することをお勧めします。 この方法を使って、サンプリングのスコープを一連の属性と対応する値に設定できます。 たとえば、ドキュメントに "型" のプロパティが含まれる場合は、サンプリングのスコープをこのプロパティの値に設定できます。 サンプリングの最終的な結果は、指定した型の各値が記載されたテーブルのセットになります。 たとえば、型が自動車の場合は自動車のテーブルが生成され、型が飛行機の場合は飛行機のテーブルが生成されます。
 
-1. 「 [Azure Cosmos データベースに接続する](#connect)」の手順 1 から 4 が完了したら、[Azure Cosmos DB ODBC Driver DSN Setup]\(Azure Cosmos DB ODBC ドライバーの DSN セットアップ\) ウィンドウの **[スキーマ エディター]** をクリックします。
+1. 「[Azure Cosmos データベースに接続する](#connect)」の手順 1 から 4 が完了したら、[Azure Cosmos DB ODBC Driver DSN Setup]\(Azure Cosmos DB ODBC ドライバーの DSN セットアップ\) ウィンドウの **[スキーマ エディター]** をクリックします。
 
 1. **[スキーマ エディター]** ウィンドウで、 **[新規作成]** をクリックします。
     **[スキーマを生成する]** ウィンドウに、Azure Cosmos DB アカウントのすべてのコンテナーが表示されます。 
@@ -244,7 +244,7 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-次のエラーが発生した場合は、 [手順 2](#connect) で、Azure Portal からコピーした **ホスト** と **アクセス キー** の値が正しいことを確認して再度試してください。 Azure Portal の **ホスト** と **アクセス キー** の値の右側にある [コピー] ボタンを使って、値を正しくコピーします。
+次のエラーが発生した場合は、[手順 2](#connect) で、Azure Portal からコピーした **ホスト** と **アクセス キー** の値が正しいことを確認して再度試してください。 Azure Portal の **ホスト** と **アクセス キー** の値の右側にある [コピー] ボタンを使って、値を正しくコピーします。
 
 ```output
 [HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}

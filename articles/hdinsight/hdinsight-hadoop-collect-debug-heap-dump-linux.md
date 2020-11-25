@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: 1ef52d74f7ae6e7e0d8c58e3b1972a0a1227c6b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85962205"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001927"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Linux ベースの HDInsight で Apache Hadoop サービスのヒープ ダンプを有効にする
 
@@ -39,7 +39,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
 各スクリプトには、JVM に渡されるオプションを含む **\*\_OPTS** のエクスポートが含まれています。 たとえば、**hadoop env.sh** スクリプトには、`export HADOOP_NAMENODE_OPTS=` で始まる行に NameNode サービスのオプションが含まれています。
 
-これらの処理が MapReduce サービスの子プロセスである場合は、マップと削減のプロセスが多少異なります。 マップや削減のプロセスはそれぞれ子コンテナーで実行され、JVM オプションを含む 2 つのエントリがあります。 どちらも **mapred-site.xml**に含まれています。
+これらの処理が MapReduce サービスの子プロセスである場合は、マップと削減のプロセスが多少異なります。 マップや削減のプロセスはそれぞれ子コンテナーで実行され、JVM オプションを含む 2 つのエントリがあります。 どちらも **mapred-site.xml** に含まれています。
 
 * **mapreduce.admin.map.child.java.opts**
 * **mapreduce.admin.reduce.child.java.opts**
@@ -100,7 +100,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
     **[保存]** ボタンを押して、変更を保存します。 変更を説明する短いメモを入力できます。
 
-5. 変更が適用されると、**再起動が必要**であることを示すアイコンが 1 つ以上のサービスの横に表示されます。
+5. 変更が適用されると、**再起動が必要** であることを示すアイコンが 1 つ以上のサービスの横に表示されます。
 
     ![再起動が必要アイコンと [再起動] ボタン](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/restart-required-icon.png)
 

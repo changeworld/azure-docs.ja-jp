@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91290689"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002240"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>コネクテッド ファクトリ ソリューション アクセラレータの構成
 
@@ -88,7 +88,7 @@ Contoso の各工場には、それぞれ 3 つのステーションで構成さ
 }
 ```
 
- `<global_configuration>`、`<factory_configuration>`、`<production_line_configuration>`、および `<station_configuration>` の共通プロパティは次のとおりです。
+`<global_configuration>`、`<factory_configuration>`、`<production_line_configuration>`、`<station_configuration>` の共通プロパティは次のとおりです。
 
 * **Name** (string 型)
 
