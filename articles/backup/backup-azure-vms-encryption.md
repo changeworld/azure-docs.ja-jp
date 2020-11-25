@@ -4,11 +4,11 @@ description: Azure Backup サービスを使用して、暗号化された Azure
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.openlocfilehash: 67c0e879fe2acf241b1ed08a5658209bf70b1b9c
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173910"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95978116"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>暗号化された Azure 仮想マシンのバックアップと復元
 
@@ -114,12 +114,12 @@ Azure Backup では、次の表にまとめたように、Azure AD アプリの�
 
 Azure Backup では、キーとシークレット、および関連付けられた VM がバックアップするために、読み取り専用のアクセス権が必要です。
 
-- ご利用の Key Vault は、Azure サブスクリプションの Azure AD テナントに関連付けられます。 **メンバー ユーザー**の場合は、さらに操作しなくても、Azure Backup によって Key Vault へのアクセス権が取得されます。
-- **ゲスト ユーザー**の場合は、キー コンテナーにアクセスするために、Azure Backup にアクセス許可を提供する必要があります。
+- ご利用の Key Vault は、Azure サブスクリプションの Azure AD テナントに関連付けられます。 **メンバー ユーザー** の場合は、さらに操作しなくても、Azure Backup によって Key Vault へのアクセス権が取得されます。
+- **ゲスト ユーザー** の場合は、キー コンテナーにアクセスするために、Azure Backup にアクセス許可を提供する必要があります。
 
 アクセス許可を設定するには
 
-1. Azure portal で **[すべてのサービス]** を選択して、**キー コンテナー**を検索します。
+1. Azure portal で **[すべてのサービス]** を選択して、**キー コンテナー** を検索します。
 1. バックアップをしている暗号化された VM と関連付けられたキー コンテナーを選択します。
 1. **[アクセス ポリシー]**  >  **[アクセス ポリシーの追加]** の順に選択します。
 
@@ -127,7 +127,7 @@ Azure Backup では、キーとシークレット、および関連付けられ�
 
 1. **[アクセス ポリシーの追加]**  > 、 **[テンプレートからの構成 (省略可能)]** で、 **[Azure Backup]** を選択します。
     - **[キーのアクセス許可]** と **[シークレットのアクセス許可]** に、必要なアクセス許可が事前入力されます。
-    - VM が **BEK のみ**を使用して暗号化される場合、シークレットのみを対象としたアクセス許可が必要なため、 **[キーのアクセス許可]** の選択を解除する必要があります。
+    - VM が **BEK のみ** を使用して暗号化される場合、シークレットのみを対象としたアクセス許可が必要なため、 **[キーのアクセス許可]** の選択を解除する必要があります。
 
     ![Azure Backup の選択](./media/backup-azure-vms-encryption/select-backup-template.png)
 
@@ -139,7 +139,7 @@ Azure Backup では、キーとシークレット、および関連付けられ�
 
 ## <a name="restore-an-encrypted-vm"></a>暗号化された VM を復元する
 
-暗号化された VM は、下の説明のとおり、VM ディスクを復元することでのみ復元できます。 **既存の置換**と **VM の復元**はサポートされていません。
+暗号化された VM は、下の説明のとおり、VM ディスクを復元することでのみ復元できます。 **既存の置換** と **VM の復元** はサポートされていません。
 
 暗号化された VM を次のように復元します。
 
