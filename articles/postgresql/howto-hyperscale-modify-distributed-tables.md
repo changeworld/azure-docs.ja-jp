@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 8/10/2020
-ms.openlocfilehash: 628944f9763dc79148e0b64c97158064208412bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf9f9ca5b8690a38c6e5aa6f519378c0a2e3a4f2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88136693"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026439"
 ---
 # <a name="distribute-and-modify-tables"></a>テーブルの分散と変更
 
@@ -51,7 +51,7 @@ SELECT create_distributed_table('github_events', 'repo_id');
 
 ### <a name="reference-tables"></a>参照テーブル
 
-上記の方法では、テーブルを複数の水平方向のシャードに分散させます。  それとは別に、テーブルを 1 つのシャードに分散させ、そのシャードをすべてのワーカー ノードにレプリケートする方法があります。 この方法で分散されたテーブルは、*参照テーブル*と呼ばれます。 これらは、クラスター内の複数のノードによって頻繁にアクセスされる必要があるデータを格納するために使用されます。
+上記の方法では、テーブルを複数の水平方向のシャードに分散させます。  それとは別に、テーブルを 1 つのシャードに分散させ、そのシャードをすべてのワーカー ノードにレプリケートする方法があります。 この方法で分散されたテーブルは、*参照テーブル* と呼ばれます。 これらは、クラスター内の複数のノードによって頻繁にアクセスされる必要があるデータを格納するために使用されます。
 
 参照テーブルの一般的な候補には、次のものがあります。
 
@@ -140,7 +140,7 @@ SELECT create_distributed_table('B', 'other_int_col');
 SELECT create_distributed_table('A', 'foo', colocate_with => 'none');
 ```
 
-同じグループ内のシャードはまとめて移動する必要があるため、関連のないテーブルを独自のコロケーション グループに分割すると、[シャードの再調整](howto-hyperscale-scaling.md#rebalance-shards)のパフォーマンスが向上します。
+同じグループ内のシャードはまとめて移動する必要があるため、関連のないテーブルを独自のコロケーション グループに分割すると、[シャードの再調整](howto-hyperscale-scale-rebalance.md)のパフォーマンスが向上します。
 
 テーブルが実際に関連している場合 (たとえば、結合される場合など)、それらを明示的に併置することは理にかなっています。 適切なコロケーションの利点は、どのオーバーヘッドの再調整よりも重要です。
 
@@ -297,7 +297,7 @@ INSERT INTO users VALUES
    ('foo@example.com'), ('hacker12@aol.com'), ('lol');
 ```
 
-アドレスを検証しようとしても、PostgreSQL では通常、既存の行に対して失敗する CHECK 制約を追加することが許可されません。 ただし、NOT VALID とマークされた制約は許可*されます*。
+アドレスを検証しようとしても、PostgreSQL では通常、既存の行に対して失敗する CHECK 制約を追加することが許可されません。 ただし、NOT VALID とマークされた制約は許可 *されます*。
 
 ```postgres
 ALTER TABLE users

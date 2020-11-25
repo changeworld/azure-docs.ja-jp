@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: f7536034eeac8548304f6a7f861910a99cd72a27
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 894398d63e326db3c6ee9de9bebc426a6e621600
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447518"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024672"
 ---
 # <a name="configure-the-api-proxy-module-for-your-gateway-hierarchy-scenario-preview"></a>ゲートウェイ階層のシナリオ用に API プロキシ モジュールを構成する (プレビュー)
 
@@ -263,7 +263,7 @@ API プロキシ モジュールがプロキシ構成を解析する際は、最
 
 プロキシ構成を動的に更新するには、次の手順に従います。
 
-1. 構成ファイルを作成します。 この既定のテンプレートを参照 ([nginx_default_config](hhttps://github.com/Azure/iotedge/blob/master/edge-modules/api-proxy-module/templates/nginx_default_config.conf)) として使用することができます。
+1. 構成ファイルを作成します。 この既定のテンプレートを参照 ([nginx_default_config](https://github.com/Azure/iotedge/blob/master/edge-modules/api-proxy-module/templates/nginx_default_config.conf)) として使用することができます。
 1. 構成ファイルのテキストをコピーし、base64 に変換します。
 1. エンコードされた構成ファイルをモジュール ツインの `proxy_config` の必要なプロパティの値として貼り付けます。
 

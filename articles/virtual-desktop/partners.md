@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fcbcaab7b5cd050e072aaded3e2c09a94a451072
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: bf314510a8569a825ccd309ec855e3ff186bba86
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578537"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023379"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -350,7 +350,7 @@ SSH2 は、Windows Virtual Desktop の付加価値サービス プロバイダ�
 appCURE により、エンドユーザーのアプリケーションに影響を与える可能性があるすべてのポイントを確実に認識するために、実行中のアプリケーションからアプリケーションの詳細がキャプチャされます。 その後、appCURE によってそれらが更新され、新しい Windows Virtual Desktop に配信されます。 appCURE により、現在の環境内のすべてのアプリケーション統合ポイントをキャプチャして、IT リソースを最適化し、これまでよりも迅速かつより良い移行を計画するための速度を提供することで、組織がより迅速に運用に至ることができるようにします。
 
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs38)
-- [パートナー ページに移動する](/azure/virtual-desktop/partners#ssh2)。
+- [パートナー ページに移動する](#ssh2)。
 
 ## <a name="thinprint"></a>ThinPrint
 

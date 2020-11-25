@@ -6,12 +6,12 @@ ms.author: shresha
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: dc03a74bfad5b1417eb9cc20b5f211718cc08646
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1c394bb1a568d59e0821b61e7acfcf8f25290f7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653708"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020761"
 ---
 # <a name="time-series-model-variables"></a>時系列モデルの変数
 
@@ -19,9 +19,9 @@ ms.locfileid: "91653708"
 
 各変数には、"*数値*"、"*カテゴリ別*"、および "*集計*" の 3 種類のうちのいずれかを指定できます。
 
-* **数値**の種類では、連続する数値が処理されます。
-* **カテゴリ別**の種類は、定義されている不連続値のセットを処理します。
-* **集計**の種類では、1 種類の複数の変数 (すべて数値、またはすべてカテゴリ別) が結合されます。
+* **数値** の種類では、連続する数値が処理されます。
+* **カテゴリ別** の種類は、定義されている不連続値のセットを処理します。
+* **集計** の種類では、1 種類の複数の変数 (すべて数値、またはすべてカテゴリ別) が結合されます。
 
 次の表に、各変数の種類に関連するプロパティを示します。
 
@@ -33,8 +33,8 @@ ms.locfileid: "91653708"
 | --- | ---|
 | 変数のフィルター | フィルターは、計算対象として考慮する行の数を制限するための、オプションの条件付きの句です。 |
 | 変数の値 | デバイスまたはセンサーからの計算、またはタイム シリーズ式を使用して変換された計算に使用されるテレメトリ値。 数値の種類の変数は、*Double* 型である必要があります。|
-| 変数の補間 | 補間は、既存のデータを使用してシグナルを再構築する方法を指定します。 *ステップ*と*線形*補間オプションを数値変数に使用できます。 |
-| 変数の集計 | [数値変数の種類に対してサポートされている集計関数](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#numeric-variable-kind)を使用した計算を実行します。 |
+| 変数の補間 | 補間は、既存のデータを使用してシグナルを再構築する方法を指定します。 *ステップ* と *線形* 補間オプションを数値変数に使用できます。 |
+| 変数の集計 | [数値変数の種類に対してサポートされている集計関数](/rest/api/time-series-insights/reference-time-series-expression-syntax#numeric-variable-kind)を使用した計算を実行します。 |
 
 変数は、次の JSON の例に準拠しています。
 
@@ -63,7 +63,7 @@ ms.locfileid: "91653708"
 | --- | ---|
 | 変数のフィルター | フィルターは、計算対象として考慮する行の数を制限するための、オプションの条件付きの句です。 |
 | 変数の値 | デバイスまたはセンサーからの計算に使用されるテレメトリ値。 カテゴリ別の種類の変数は、*Long* または *String* である必要があります。 |
-| 変数の補間 | 補間は、既存のデータを使用してシグナルを再構築する方法を指定します。 *ステップ*補間オプションは、カテゴリ別変数に使用できます。 |
+| 変数の補間 | 補間は、既存のデータを使用してシグナルを再構築する方法を指定します。 *ステップ* 補間オプションは、カテゴリ別変数に使用できます。 |
 | 変数のカテゴリ | カテゴリによって、デバイスまたはセンサーからの値とラベルの間のマッピングが作成されます。 |
 | 変数の既定のカテゴリ | 既定のカテゴリは、"categories" プロパティでマップされていないすべての値を対象としています。 |
 
@@ -102,7 +102,7 @@ ms.locfileid: "91653708"
 | 変数のプロパティ | 説明 |
 | --- | ---|
 | 変数のフィルター | フィルターは、計算対象として考慮する行の数を制限するための、オプションの条件付きの句です。 |
-| 変数の集計 | [集計変数の種類に対してサポートされている集計関数](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#aggregate-variable-kind)を使用した計算を実行します。 |
+| 変数の集計 | [集計変数の種類に対してサポートされている集計関数](/rest/api/time-series-insights/reference-time-series-expression-syntax#aggregate-variable-kind)を使用した計算を実行します。 |
 
 変数は、次の JSON の例に準拠しています。
 

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 00a3c1d0a2a905e6435b811d5f2611c16a5de502
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b60a6e53e8fecd71885204690231776ff69fc08f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328881"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018377"
 ---
 # <a name="configure-device-redirections"></a>デバイスのリダイレクトを構成する
 
@@ -19,11 +19,11 @@ Windows Virtual Desktop 環境でのデバイスのリダイレクトを構成�
 
 ## <a name="supported-device-redirections"></a>サポートされるデバイスのリダイレクト
 
-クライアントごとに異なるデバイス リダイレクトがサポートされます。 各クライアントに対してサポートされるデバイスのリダイレクトの完全な一覧については、「[クライアントの比較](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-app-compare)」をご覧ください。
+クライアントごとに異なるデバイス リダイレクトがサポートされます。 各クライアントに対してサポートされるデバイスのリダイレクトの完全な一覧については、「[クライアントの比較](/windows-server/remote/remote-desktop-services/clients/remote-desktop-app-compare)」をご覧ください。
 
 ## <a name="customizing-rdp-properties-for-a-host-pool"></a>ホスト プール用の RDP プロパティのカスタマイズ
 
-PowerShell または Azure portal を使用してホスト プール用の RDP プロパティをカスタマイズする方法の詳細については、「[RDP プロパティ](customize-rdp-properties.md)」を参照してください。 サポートされる RDP プロパティの完全な一覧については、[サポートされる RDP ファイルの設定](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context)に関する記事を参照してください。
+PowerShell または Azure portal を使用してホスト プール用の RDP プロパティをカスタマイズする方法の詳細については、「[RDP プロパティ](customize-rdp-properties.md)」を参照してください。 サポートされる RDP プロパティの完全な一覧については、[サポートされる RDP ファイルの設定](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext)に関する記事を参照してください。
 
 ## <a name="setup-device-redirections"></a>デバイスのリダイレクトを設定する
 

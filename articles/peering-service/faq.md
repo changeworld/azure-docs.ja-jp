@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 55c5e6c5b718dc2de295b9b4418ddc8607a69f8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95ce90dbbf47ffe527fe6f25704d9cd28b834ea9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84871362"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026697"
 ---
 # <a name="peering-service-faq"></a>Peering Service に関する FAQ
 
@@ -36,7 +36,7 @@ A. はい、できます。 お客様のビジネスや運用上のニーズに�
 
 **Q.Microsoft Edge PoP とは何ですか?**
 
-A. これは、Microsoft が他のネットワークと相互接続している物理的な場所です。 Microsoft Edge PoP の場所では、Azure Front Door や Azure CDN などのサービスがホストされます。 詳細については、[Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-features) に関するページを参照してください。
+A. これは、Microsoft が他のネットワークと相互接続している物理的な場所です。 Microsoft Edge PoP の場所では、Azure Front Door や Azure CDN などのサービスがホストされます。 詳細については、[Azure CDN](../cdn/cdn-features.md) に関するページを参照してください。
 
 ## <a name="peering-service-unique-characteristics"></a>Peering Service: 固有の特性
 

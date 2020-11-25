@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: d22ce3941b00903be8532caaa36a9ce55e2f2c6f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 91dfb3cb07cca8ec89c77dea43f1cd075db11bbf
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409792"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014766"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 仮想マシンのセキュリティの概要
 この記事では、仮想マシンで使用できるコアの Azure セキュリティ機能の概要を示します。
@@ -108,16 +108,16 @@ Azure Backup は、設備投資なしで、また最小限の運用コストで�
 
 Site Recovery:
 
-* **BCDR 戦略を簡素化** :Site Recovery では、1 か所から複数のビジネス ワークロードとアプリのレプリケーション、フェールオーバー、および復旧を簡単に処理できます。 Site Recovery はレプリケーションとフェールオーバーを調整しますが、アプリケーション データをインターセプトすることや、そのデータに関する情報を持つことはありません。
-* **柔軟なレプリケーション機能の提供** :Site Recovery を使うことで、Hyper-V 仮想マシン、VMware 仮想マシン、および Windows または Linux の物理サーバーで実行されているワークロードをレプリケートできます。
-* **フェールオーバーと復旧のサポート** :Site Recovery では、運用環境に影響を与えずにディザスター リカバリーの練習ができるよう、テスト フェールオーバーの機能が用意されています。 また、予期された停止の場合はデータ損失ゼロの計画されたフェールオーバーを実行し、予期しない停止の場合は (レプリケーションの頻度に応じた) 最小限のデータ損失で計画外のフェールオーバーを実行することもできます。 フェールオーバー後は、プライマリ サイトにフェールバックできます。 Site Recovery に用意されている復旧計画には、多層アプリケーションのフェールオーバーと復旧をカスタマイズできるように、スクリプトや Azure Automation ブックが含まれています。
-* **セカンダリ データセンターを排除** :オンプレミスのセカンダリ サイトまたは Azure にレプリケートできます。 ディザスター リカバリーのためのレプリケーション先として Azure を使用すると、セカンダリ サイトの管理に伴うコストと手間が削減されます。 レプリケートされたデータは Azure Storage に格納されます。
-* **既存の BCDR テクノロジとの統合** :Site Recovery は、その他のアプリケーションの BCDR 機能と連携します。 たとえば、Site Recovery を使用すると、企業のワークロードの SQL Server バックエンドを保護できます。 これには、SQL Server Always On による可用性グループのフェールオーバーの管理のネイティブ サポートが含まれます。
+* **BCDR 戦略を簡素化**:Site Recovery では、1 か所から複数のビジネス ワークロードとアプリのレプリケーション、フェールオーバー、および復旧を簡単に処理できます。 Site Recovery はレプリケーションとフェールオーバーを調整しますが、アプリケーション データをインターセプトすることや、そのデータに関する情報を持つことはありません。
+* **柔軟なレプリケーション機能の提供**:Site Recovery を使うことで、Hyper-V 仮想マシン、VMware 仮想マシン、および Windows または Linux の物理サーバーで実行されているワークロードをレプリケートできます。
+* **フェールオーバーと復旧のサポート**:Site Recovery では、運用環境に影響を与えずにディザスター リカバリーの練習ができるよう、テスト フェールオーバーの機能が用意されています。 また、予期された停止の場合はデータ損失ゼロの計画されたフェールオーバーを実行し、予期しない停止の場合は (レプリケーションの頻度に応じた) 最小限のデータ損失で計画外のフェールオーバーを実行することもできます。 フェールオーバー後は、プライマリ サイトにフェールバックできます。 Site Recovery に用意されている復旧計画には、多層アプリケーションのフェールオーバーと復旧をカスタマイズできるように、スクリプトや Azure Automation ブックが含まれています。
+* **セカンダリ データセンターを排除**:オンプレミスのセカンダリ サイトまたは Azure にレプリケートできます。 ディザスター リカバリーのためのレプリケーション先として Azure を使用すると、セカンダリ サイトの管理に伴うコストと手間が削減されます。 レプリケートされたデータは Azure Storage に格納されます。
+* **既存の BCDR テクノロジとの統合**:Site Recovery は、その他のアプリケーションの BCDR 機能と連携します。 たとえば、Site Recovery を使用すると、企業のワークロードの SQL Server バックエンドを保護できます。 これには、SQL Server Always On による可用性グループのフェールオーバーの管理のネイティブ サポートが含まれます。
 
 詳細情報:
 
 * [Azure Site Recovery とは](../../site-recovery/site-recovery-overview.md)
-* [Azure Site Recovery のしくみ](/azure/security/fundamentals/azure-to-azure-architecture)
+* [Azure Site Recovery のしくみ](/azure/site-recovery/azure-to-azure-architecture)
 * [Azure Site Recovery によって保護されるワークロードの種類](../../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>仮想ネットワーク

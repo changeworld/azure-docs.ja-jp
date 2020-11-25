@@ -10,16 +10,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: dpalled
-ms.openlocfilehash: c3948a5bdfce583384992fb87bf40e9e7251974d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0d02a6e3eb2aef4a02c90360b2016e64af579081
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91340206"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014732"
 ---
 # <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Azure Digital Twins と Time Series Insights Gen2 間のモデルの同期
 
-この記事では、Azure Digital Twins (ADT) の資産モデルを Azure Time Series Insights (TSI) の資産モデルに変換するために使用されるベスト プラクティスとツールについて説明します。  この記事は、Azure Digital Twins と Azure Time Series Insights との統合について説明する 2 部構成のチュートリアル シリーズのパート 2 です。 Azure Digital Twins と Time Series Insights の統合により、Digital Twins のテレメトリと計算されたプロパティの履歴をアーカイブおよび追跡できるようになります。 このチュートリアル シリーズは、Time Series Insights と Azure Digital Twins との統合に取り組んでいる開発者を対象としています。 パート 1 では、[Azure Digital Twins から Time Series Insights に実際のタイム シリーズ データを取り込むデータ パイプラインの確立](https://docs.microsoft.com/azure/digital-twins/how-to-integrate-time-series-insights)について説明し、このチュートリアル シリーズのパート 2 では、Azure Digital Twins と Time Series Insights 間の資産モデルの同期について説明します。 このチュートリアルでは、タイム シリーズ ID (TS ID) の名前付け規則の選択と確立、およびタイム シリーズ モデル (TSM) での階層の手動による確立のベスト プラクティスについて説明します。
+この記事では、Azure Digital Twins (ADT) の資産モデルを Azure Time Series Insights (TSI) の資産モデルに変換するために使用されるベスト プラクティスとツールについて説明します。  この記事は、Azure Digital Twins と Azure Time Series Insights との統合について説明する 2 部構成のチュートリアル シリーズのパート 2 です。 Azure Digital Twins と Time Series Insights の統合により、Digital Twins のテレメトリと計算されたプロパティの履歴をアーカイブおよび追跡できるようになります。 このチュートリアル シリーズは、Time Series Insights と Azure Digital Twins との統合に取り組んでいる開発者を対象としています。 パート 1 では、[Azure Digital Twins から Time Series Insights に実際のタイム シリーズ データを取り込むデータ パイプラインの確立](../digital-twins/how-to-integrate-time-series-insights.md)について説明し、このチュートリアル シリーズのパート 2 では、Azure Digital Twins と Time Series Insights 間の資産モデルの同期について説明します。 このチュートリアルでは、タイム シリーズ ID (TS ID) の名前付け規則の選択と確立、およびタイム シリーズ モデル (TSM) での階層の手動による確立のベスト プラクティスについて説明します。
 
 ## <a name="choosing-a-time-series-id"></a>タイム シリーズ ID の選択
 
@@ -29,7 +29,7 @@ ms.locfileid: "91340206"
 
 ## <a name="contextualizing-time-series"></a>タイム シリーズのコンテキスト化
 
-Time Series Insights でのデータ (ほとんどの場合、本質的に空間) のコンテキスト化は、資産階層を介して実現され、Time Series Insights Explorer のツリー ビューを介してデータを簡単にナビゲートするためにも使用されます。 タイム シリーズの種類、および階層は、Time Series Insights のタイム シリーズ モデル (TSM) を使用して定義されます。 TSM の種類は変数を定義するのに役立ちますが、階層レベルおよびインスタンス フィールドの値は、Time Series Insights Explorer でツリー ビューを構築するために使用されます。 TSM の詳細については、[オンラインの Time Series Insights ドキュメント](https://docs.microsoft.com/azure/time-series-insights/concepts-model-overview)を参照してください。
+Time Series Insights でのデータ (ほとんどの場合、本質的に空間) のコンテキスト化は、資産階層を介して実現され、Time Series Insights Explorer のツリー ビューを介してデータを簡単にナビゲートするためにも使用されます。 タイム シリーズの種類、および階層は、Time Series Insights のタイム シリーズ モデル (TSM) を使用して定義されます。 TSM の種類は変数を定義するのに役立ちますが、階層レベルおよびインスタンス フィールドの値は、Time Series Insights Explorer でツリー ビューを構築するために使用されます。 TSM の詳細については、[オンラインの Time Series Insights ドキュメント](./concepts-model-overview.md)を参照してください。
 
 Azure Digital Twins では、資産間の接続はツイン リレーションシップを使用して表されます。 ツイン リレーションシップは、接続された資産の単なるグラフです。 しかし、Time Series Insight では、資産間のリレーションシップは本質的に階層となります。 つまり、資産によって親子の種類のリレーションシップが共有され、ツリー構造を使用して表されます。 Azure Digital Twins のリレーションシップ情報を Time Series Insights 階層に変換するには、Azure Digital Twins から関連する階層リレーションシップを選択する必要があります。 Azure Digital Twins では、デジタル ツイン定義言語 (DTDL) と呼ばれるオープン スタンダードのモデリング言語を使用します。 DTDL モデルでは、JSON-LD と呼ばれる JSON の一種を使用して記述されます。 仕様の詳細については、[DTDL のドキュメント](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)を参照してください。
 
@@ -82,7 +82,7 @@ TSID が一意である必要があり、1 つの階層でのみ表すことが�
 
 > [!Note]
 >
-> このコード スニペットの例では、読者がこのチュートリアルの[パート 01](https://docs.microsoft.com/azure/digital-twins/tutorial-end-to-end#set-up-the-sample-function-app) をよく理解しており、このコード変更が "ProcessHubToDTEvents" 関数内で行われたことを前提とします。
+> このコード スニペットの例では、読者がこのチュートリアルの[パート 01](../digital-twins/tutorial-end-to-end.md#set-up-the-sample-function-app) をよく理解しており、このコード変更が "ProcessHubToDTEvents" 関数内で行われたことを前提とします。
 
 ```csharp
 if (propertyPath.Equals("/Flow"))
@@ -114,7 +114,7 @@ relationship for " + twinId);
 
 ## <a name="updating-instance-fields-using-apis"></a>API を使用したインスタンス フィールドの更新
 
-チュートリアルのこのセクションでは、ツインの作成、削除あるいはツイン間のリレーションシップの変更などの Azure Digital Twins でのモデル変更のリッスンと、Time Series Insights モデル API を使用したインスタンス フィールドおよび階層のプログラムによる更新について説明します。 この Time Series Insights モデルを更新する方法は、通常、Azure Functions を通じて実現されます。 Azure Digital Twins では、ツインの追加や削除などのイベント通知を Event Hubs などのダウンストリーム サービスにルーティングでき、その後、Azure Functions にフィードできます。 イベントのルーティングとフィルター処理の詳細については、[こちら](https://docs.microsoft.com/azure/digital-twins/how-to-manage-routes-portal)を参照してください。  このセクションの残りの部分では、Azure Functions で Time Series Insights モデル API を使用し、Azure Digital Twins でのツインの追加 (モデル変更の一種) に応じて Time Series Insights モデルを更新する方法について説明します。
+チュートリアルのこのセクションでは、ツインの作成、削除あるいはツイン間のリレーションシップの変更などの Azure Digital Twins でのモデル変更のリッスンと、Time Series Insights モデル API を使用したインスタンス フィールドおよび階層のプログラムによる更新について説明します。 この Time Series Insights モデルを更新する方法は、通常、Azure Functions を通じて実現されます。 Azure Digital Twins では、ツインの追加や削除などのイベント通知を Event Hubs などのダウンストリーム サービスにルーティングでき、その後、Azure Functions にフィードできます。 イベントのルーティングとフィルター処理の詳細については、[こちら](../digital-twins/how-to-manage-routes-portal.md)を参照してください。  このセクションの残りの部分では、Azure Functions で Time Series Insights モデル API を使用し、Azure Digital Twins でのツインの追加 (モデル変更の一種) に応じて Time Series Insights モデルを更新する方法について説明します。
 
 ### <a name="receiving-and-identifying-twin-addition-event-notification"></a>ツインの追加イベント通知の受信と特定
 
@@ -227,4 +227,4 @@ private async Task<TimeSeriesInstance> AddHierarchyToInstanceAsync(TimeSeriesIns
 
 ## <a name="next-steps"></a>次の手順
 
-このシリーズの 3 番目のチュートリアルでは、Time Series Insights API を使用して Azure Digital Twins からの履歴データに対してクエリを実行する方法を示します。 これは進行中の作業であり、セクションは準備ができたときに更新されます。 それまでの間、読者には、[Time Series Insights データ クエリ API のドキュメント](https://docs.microsoft.com/azure/time-series-insights/concepts-query-overview)を参照することをお勧めします。
+このシリーズの 3 番目のチュートリアルでは、Time Series Insights API を使用して Azure Digital Twins からの履歴データに対してクエリを実行する方法を示します。 これは進行中の作業であり、セクションは準備ができたときに更新されます。 それまでの間、読者には、[Time Series Insights データ クエリ API のドキュメント](./concepts-query-overview.md)を参照することをお勧めします。

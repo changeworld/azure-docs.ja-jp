@@ -3,12 +3,12 @@ title: Azure Backup の論理的な削除
 description: Azure Backup のセキュリティ機能を使用してバックアップのセキュリティを強化する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: d7998c7f9def6ce9965ded3b6ec700f7975891eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: da473b1d886ec2fe95a7baae76b09aff38fb3cd7
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91271547"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95254051"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure Backup の論理的な削除
 
@@ -73,7 +73,7 @@ REST API を使用して論理的な削除機能を無効にする方法につ�
 
 1. [論理的な削除を無効にする](#enabling-and-disabling-soft-delete)には、この手順に従います。
 
-2. Azure portal で、お使いのコンテナーにアクセスし、**バックアップ項目**にアクセスして論理的に削除された項目を選択します。
+2. Azure portal で、お使いのコンテナーにアクセスし、**バックアップ項目** にアクセスして論理的に削除された項目を選択します。
 
    ![論理的に削除された項目の選択](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
@@ -87,11 +87,11 @@ REST API を使用して論理的な削除機能を無効にする方法につ�
 
 5. バックアップ データを完全に削除するには、 **[バックアップ データの削除]** を選択します。
 
-   ![[バックアップ データの削除] の選択](/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+   ![[バックアップ データの削除] の選択](./media/backup-azure-manage-vms/delete-backup-button.png)
 
 6. バックアップ項目の名前を入力して、復旧ポイントを削除してもよいことを確認します。
 
-   ![バックアップ項目の名前の入力](/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+   ![バックアップ項目の名前の入力](./media/backup-azure-manage-vms/delete-backup-data.png)
 
 7. 項目のバックアップ データを削除するには、 **[削除]** を選択します。 バックアップ データが削除されたことを示す通知メッセージが表示されます。
 
@@ -156,7 +156,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ### <a name="can-i-perform-a-restore-operation-when-my-data-is-in-soft-delete-state"></a>データが論理的な削除状態であるときに復元操作を実行できますか?
 
-いいえ。復元するには、論理的に削除されたリソースの削除を取り消す必要があります。 削除の取り消し操作により、リソースが**データを保持して保護を停止の状態**に戻り、任意の時点に復元できるようになります。 ガベージ コレクターは、この状態で一時停止のままになります。
+いいえ。復元するには、論理的に削除されたリソースの削除を取り消す必要があります。 削除の取り消し操作により、リソースが **データを保持して保護を停止の状態** に戻り、任意の時点に復元できるようになります。 ガベージ コレクターは、この状態で一時停止のままになります。
 
 ### <a name="will-my-snapshots-follow-the-same-lifecycle-as-my-recovery-points-in-the-vault"></a>スナップショットは、コンテナー内の回復ポイントと同じライフサイクルに従いますか?
 

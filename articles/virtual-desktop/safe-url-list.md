@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 90db861a4ef4fc951844d3ae82a51d20cf9dc8c5
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 3d19a60fd6a22eb9245722c6ff69d3b39c05d29e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875106"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023175"
 ---
 # <a name="safe-url-list"></a>安全な URL リスト
 
@@ -34,7 +34,7 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンには、Azure �
 |mrsglobalsteus2prod.blob.core.windows.net|443|エージェントと SXS スタックの更新|AzureCloud|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure portal のサポート|AzureCloud|
 | 169.254.169.254 | 80 | [Azure Instance Metadata Service エンドポイント](../virtual-machines/windows/instance-metadata-service.md) | 該当なし |
-| 168.63.129.16 | 80 | [セッション ホストの正常性の監視](../virtual-network/security-overview.md#azure-platform-considerations) | 該当なし |
+| 168.63.129.16 | 80 | [セッション ホストの正常性の監視](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 該当なし |
 
 >[!IMPORTANT]
 >Windows Virtual Desktop で FQDN タグがサポートされるようになりました。 詳細については、「[Azure Firewall を使用して Windows Virtual Desktop のデプロイを保護する](../firewall/protect-windows-virtual-desktop.md)」を参照してください。
@@ -56,7 +56,7 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンには、Azure G
 |mrsglobalstugviffx.core.usgovcloudapi.net|443|エージェントと SXS スタックの更新|AzureCloud|
 |wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Azure portal のサポート|AzureCloud|
 | 169.254.169.254 | 80 | [Azure Instance Metadata Service エンドポイント](../virtual-machines/windows/instance-metadata-service.md) | 該当なし |
-| 168.63.129.16 | 80 | [セッション ホストの正常性の監視](../virtual-network/security-overview.md#azure-platform-considerations) | 該当なし |
+| 168.63.129.16 | 80 | [セッション ホストの正常性の監視](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 該当なし |
 
 次の表は、Azure 仮想マシンからアクセスできるオプションの URL の一覧です。
 
@@ -78,7 +78,7 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンには、Azure G
 >サービス トラフィックに関係した URL にはワイルドカード文字 (*) を使用する必要があります。 エージェント関連のトラフィックに * を使用したくない場合、ワイルドカードを使わずに URL を見つける方法は次のとおりです。
 >
 >1. Windows Virtual Desktop ホスト プールに仮想マシンを登録します。
->2. **イベント ビューアー**を開き、 **[Windows ログ]**  >  **[アプリケーション]**  >  **[WVD-Agent]** に移動して、イベント ID 3701 を探します。
+>2. **イベント ビューアー** を開き、 **[Windows ログ]**  >  **[アプリケーション]**  >  **[WVD-Agent]** に移動して、イベント ID 3701 を探します。
 >3. イベント ID 3701 に記載されている URL をブロック解除します。 イベント ID 3701 に記載されている URL はリージョン固有です。 仮想マシンのデプロイ先となるリージョンごとに、適切な URL を使用して、ブロック解除プロセスを繰り返す必要があります。
 
 ## <a name="remote-desktop-clients"></a>リモート デスクトップ クライアント

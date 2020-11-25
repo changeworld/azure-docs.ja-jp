@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: cac4234d5bd93de8b059ea53a4697dae1bf5c64c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89efc1d4f34b250d211f9fd7492588bd2896eb6e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667881"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016855"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 でのデータ モデリング
 
@@ -24,11 +24,11 @@ ms.locfileid: "91667881"
 > [!TIP]
 >
 > * [タイム シリーズ モデル](concepts-model-overview.md)の詳細を確認してください。
-> * [Azure Time Series Insights Gen2 エクスプローラー](./time-series-insights-update-explorer.md)での移動について参照してください。
+> * [Azure Time Series Insights Gen2 エクスプローラー](./concepts-ux-panels.md)での移動について参照してください。
 
 ## <a name="instances"></a>Instances
 
-Azure Time Series Insights エクスプローラーでは、ブラウザー内でのインスタンスの**作成**、**読み取り**、**更新**、および**削除**操作がサポートされています。
+Azure Time Series Insights エクスプローラーでは、ブラウザー内でのインスタンスの **作成**、**読み取り**、**更新**、および **削除** 操作がサポートされています。
 
 開始するには、Azure Time Series Insights エクスプローラーの **[分析]** ビューから **[モデル]** ビューを選択します。
 
@@ -58,14 +58,14 @@ Azure Time Series Insights エクスプローラーでは、ブラウザー内�
 
 ### <a name="edit-a-single-instance"></a>1 つのインスタンスを編集する
 
-1. インスタンスを選択し、 **[編集]** または**鉛筆アイコン**を選択します。
+1. インスタンスを選択し、 **[編集]** または **鉛筆アイコン** を選択します。
 1. 必要な変更を行い、 **[保存]** を選択します。
 
     [![1 つのインスタンスを編集します。](media/v2-update-how-to-tsm/how-to-tsm-edit-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-edit-instance.png#lightbox)
 
 ### <a name="delete-an-instance"></a>インスタンスを削除する
 
-1. インスタンスを選択し、 **[削除]** または**ごみ箱アイコン**を選択します。
+1. インスタンスを選択し、 **[削除]** または **ごみ箱アイコン** を選択します。
 
    [![[削除] を選択して、インスタンスを削除します。](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png#lightbox)
 
@@ -76,7 +76,7 @@ Azure Time Series Insights エクスプローラーでは、ブラウザー内�
 
 ## <a name="hierarchies"></a>階層
 
-Azure Time Series Insights エクスプローラーでは、ブラウザー内での階層の**作成**、**読み取り**、**更新**、および**削除**操作がサポートされています。
+Azure Time Series Insights エクスプローラーでは、ブラウザー内での階層の **作成**、**読み取り**、**更新**、および **削除** 操作がサポートされています。
 
 開始するには、Azure Time Series Insights エクスプローラーの **[分析]** ビューから **[モデル]** ビューを選択します。
 
@@ -111,14 +111,14 @@ Azure Time Series Insights エクスプローラーでは、ブラウザー内�
 
 ### <a name="edit-a-single-hierarchy"></a>1 つの階層を編集する
 
-1. 階層を選択し、 **[編集]** または**鉛筆アイコン**を選択します。
+1. 階層を選択し、 **[編集]** または **鉛筆アイコン** を選択します。
 1. 必要な変更を行い、 **[保存]** を選択します。
 
     [![1 つの階層を編集する場合の選択。](media/v2-update-how-to-tsm/how-to-tsm-edit-hierarchy.png)](media/v2-update-how-to-tsm/how-to-tsm-edit-hierarchy.png#lightbox)
 
 ### <a name="delete-a-hierarchy"></a>階層を削除する
 
-1. 階層を選択し、 **[削除]** または**ごみ箱アイコン**を選択します。
+1. 階層を選択し、 **[削除]** または **ごみ箱アイコン** を選択します。
 
     [![[削除] ボタンを選択して、階層を削除します。](media/v2-update-how-to-tsm/how-to-tsm-delete-hierarchy.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-hierarchy.png#lightbox)
 
@@ -126,7 +126,7 @@ Azure Time Series Insights エクスプローラーでは、ブラウザー内�
 
 ## <a name="types"></a>型
 
-Azure Time Series Insights エクスプローラーでは、ブラウザー内での型の**作成**、**読み取り**、**更新**、および**削除**操作がサポートされています。
+Azure Time Series Insights エクスプローラーでは、ブラウザー内での型の **作成**、**読み取り**、**更新**、および **削除** 操作がサポートされています。
 
 開始するには、Azure Time Series Insights エクスプローラーの **[分析]** ビューから **[モデル]** ビューを選択します。
 
@@ -154,14 +154,14 @@ Azure Time Series Insights エクスプローラーでは、ブラウザー内�
 
 ### <a name="edit-a-single-type"></a>1 つの種類を編集する
 
-1. 型を選択し、 **[編集]** または**鉛筆アイコン**を選択します。
+1. 型を選択し、 **[編集]** または **鉛筆アイコン** を選択します。
 1. 必要な変更を行い、 **[保存]** を選択します。
 
     [![ウィンドウで型を編集します。](media/v2-update-how-to-tsm/how-to-tsm-edit-type.png)](media/v2-update-how-to-tsm/how-to-tsm-edit-type.png#lightbox)
 
 ### <a name="delete-a-type"></a>種類を削除する
 
-1. 型を選択し、 **[削除]** または**ごみ箱アイコン**を選択します。
+1. 型を選択し、 **[削除]** または **ごみ箱アイコン** を選択します。
 
    [![[削除] を選択して、型を削除します。](media/v2-update-how-to-tsm/how-to-tsm-delete-type.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-type.png#lightbox)
 
@@ -171,6 +171,6 @@ Azure Time Series Insights エクスプローラーでは、ブラウザー内�
 
 * タイム シリーズ モデルの詳細については、[データ モデリング](./concepts-model-overview.md)に関する記事を参照してください。
 
-* Gen2 の詳細については、[Azure Time Series Insights Gen2 エクスプローラーでデータを視覚化する](./time-series-insights-update-explorer.md)方法に関する記事を参照してください。
+* Gen2 の詳細については、[Azure Time Series Insights Gen2 エクスプローラーでデータを視覚化する](./concepts-ux-panels.md)方法に関する記事を参照してください。
 
 * サポートされている JSON の構造については、[サポートされている JSON 構造](./time-series-insights-send-events.md#supported-json-shapes)に関する記事を参照してください。

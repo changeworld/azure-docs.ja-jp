@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a3fccc934fafd8ff7db2cffbd6ba641329ba8de2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d8b696b175c4ef841eef1a51f1d357d1781cba7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006807"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018292"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>診断機能に Log Analytics を使用する
 
@@ -46,7 +46,7 @@ Azure Monitor を使用すると、Windows Virtual Desktop のデータを分析
 Log Analytics を使用するには、まず、ワークスペースを作成する必要があります。 これを行うには、次の 2 つの記事のいずれかの手順に従います。
 
 - Azure portal を使用する場合は、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)」を参照してください。
-- PowerShell を使用する場合は、「[PowerShell を使用して Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace-posh.md)」を参照してください。
+- PowerShell を使用する場合は、「[PowerShell を使用して Log Analytics ワークスペースを作成する](../azure-monitor/platform/powershell-workspace-configuration.md)」を参照してください。
 
 ワークスペースを作成したら、「[Windows コンピューターを Azure Monitor に接続する](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)」の指示に従って、次の情報を取得します。
 
@@ -83,7 +83,7 @@ Log Analytics を使用するには、まず、ワークスペースを作成す
 6. **[保存]** を選択します。
 
 >[!NOTE]
->Log Analytics には、データを [Event Hubs](../event-hubs/event-hubs-about.md) にストリーミングしたり、ストレージ アカウント内にアーカイブしたりするオプションが用意されています。 この機能の詳細については、「[イベント ハブへの Azure 監視データのストリーム配信](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)」および「[Azure リソース ログをストレージ アカウントにアーカイブする](../azure-monitor/platform/resource-logs-collect-storage.md)」を参照してください。
+>Log Analytics には、データを [Event Hubs](../event-hubs/event-hubs-about.md) にストリーミングしたり、ストレージ アカウント内にアーカイブしたりするオプションが用意されています。 この機能の詳細については、「[イベント ハブへの Azure 監視データのストリーム配信](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)」および「[Azure リソース ログをストレージ アカウントにアーカイブする](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)」を参照してください。
 
 ## <a name="how-to-access-log-analytics"></a>Log Analytics にアクセスする方法
 
@@ -114,7 +114,7 @@ Azure portal または Azure Monitor 上で Log Analytics ワークスペース�
 5. クエリ診断の準備が整いました。 すべての診断テーブルに、"WVD" プレフィックスがあります。
 
 >[!NOTE]
->Azure Monitor ログ内に格納されているテーブルの詳細については、「[Azure Monitor のデータ リファレンス](https://docs.microsoft.com/azure/azure-monitor/reference/)」を参照してください。 Windows Virtual Desktop に関連するすべてのテーブルに "WVD" というラベルが付いています。
+>Azure Monitor ログ内に格納されているテーブルの詳細については、「[Azure Monitor のデータ リファレンス](/azure/azure-monitor/reference/)」を参照してください。 Windows Virtual Desktop に関連するすべてのテーブルに "WVD" というラベルが付いています。
 
 ## <a name="cadence-for-sending-diagnostic-events"></a>診断イベントの送信頻度
 
@@ -134,9 +134,9 @@ Azure Monitor Log Analytics UI を使用したサンプル クエリへのアク
 1. **[Windows Virtual Desktop]** を選択して、使用可能なクエリを確認します。
 1. **[実行]** を選択して、選択したクエリを実行します。
 
-サンプル クエリ インターフェイスの詳細については、「[Azure Monitor Log Analytics の保存済みクエリ](../azure-monitor/log-query/saved-queries.md)」を参照してください。
+サンプル クエリ インターフェイスの詳細については、「[Azure Monitor Log Analytics の保存済みクエリ](../azure-monitor/log-query/example-queries.md)」を参照してください。
 
-次のクエリ一覧では、1 人のユーザーの接続情報または問題を確認できます。 これらのクエリは、[Log Analytics クエリ エディター](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries)で実行できます。 クエリごとに、`userupn` を検索するユーザーの UPN に置き換えます。
+次のクエリ一覧では、1 人のユーザーの接続情報または問題を確認できます。 これらのクエリは、[Log Analytics クエリ エディター](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query)で実行できます。 クエリごとに、`userupn` を検索するユーザーの UPN に置き換えます。
 
 
 1 人のユーザーのすべての接続を検索するには:

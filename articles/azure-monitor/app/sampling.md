@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e4c5000adb2339d3fd0f828781a60f75c75894b5
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 87e33940d927fc9116c03345011e21398384d484
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168598"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024417"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -25,7 +25,7 @@ ms.locfileid: "92168598"
 * 固定レート サンプリングは、ASP.NET、ASP.NET Core、Java (エージェントと SDK の両方)、および Python 用の Application Insights SDK の最近のバージョンで使用できます。
 * インジェスト サンプリングは、Application Insights サービス エンドポイントで機能します。 これは、他のサンプリングが有効になっていない場合にのみ適用されます。 SDK でテレメトリがサンプリングされると、インジェスト サンプリングは無効になります。
 * Web アプリケーションの場合、カスタム イベントを記録しており、一連のイベントが確実にまとめて保持または破棄されるようにする必要がある場合は、それらのイベントに同じ `OperationId` 値を割り当てる必要があります。
-* Analytics クエリを作成する場合は、 [サンプリングを考慮する](../log-query/aggregations.md)必要があります。 具体的には、単純にレコードをカウントするのではなく、 `summarize sum(itemCount)`を使用する必要があります。
+* Analytics クエリを作成する場合は、 [サンプリングを考慮する](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations)必要があります。 具体的には、単純にレコードをカウントするのではなく、 `summarize sum(itemCount)`を使用する必要があります。
 * パフォーマンス メトリックやカスタム メトリックなど、一部のテレメトリの種類は、サンプリングが有効かどうかに関係なく、常に保持されます。
 
 次の表は、各 SDK およびアプリケーションの種類で使用できるサンプリングの種類をまとめたものです。
@@ -47,11 +47,11 @@ ms.locfileid: "92168598"
 
 3 つの異なるサンプリング方法があります。
 
-* **アダプティブ サンプリング**では、ASP.NET/ASP.NET Core アプリの SDK および Azure Functions から送信されるテレメトリの量が自動的に調整されます。 これは、ASP.NET または ASP.NET Core SDK を使用する場合の既定のサンプリングです。 アダプティブ サンプリングは、現在、ASP.NET サーバー側テレメトリおよび Azure Functions でのみ利用できます。
+* **アダプティブ サンプリング** では、ASP.NET/ASP.NET Core アプリの SDK および Azure Functions から送信されるテレメトリの量が自動的に調整されます。 これは、ASP.NET または ASP.NET Core SDK を使用する場合の既定のサンプリングです。 アダプティブ サンプリングは、現在、ASP.NET サーバー側テレメトリおよび Azure Functions でのみ利用できます。
 
-* **固定レート サンプリング**は、ASP.NET、ASP.NET Core、または Java サーバーとユーザーのブラウザーの両方から送信されるテレメトリの量を削減します。 管理者がレートを設定します。 クライアントとサーバーはサンプリングを同期するので、検索では関連のあるページ ビューと要求の間を移動できます。
+* **固定レート サンプリング** は、ASP.NET、ASP.NET Core、または Java サーバーとユーザーのブラウザーの両方から送信されるテレメトリの量を削減します。 管理者がレートを設定します。 クライアントとサーバーはサンプリングを同期するので、検索では関連のあるページ ビューと要求の間を移動できます。
 
-* **インジェスト サンプリング**は、Application Insights サービス エンドポイントで動作します。 アプリケーションから受信したテレメトリの一部を、設定したサンプリング レートで破棄します。 インジェスト サンプリングはアプリから送信されるテレメトリのトラフィックを削減しませんが、トラフィックを月間のクォータ (上限) 以内で維持するのに役立ちます。 インジェスト サンプリングの主な利点は、アプリを再デプロイすることなくサンプリング レートを設定できることです。 インジェスト サンプリングは、すべてのサーバーとクライアントで一様に動作しますが、他の種類のサンプリングが動作している場合は適用されません。
+* **インジェスト サンプリング** は、Application Insights サービス エンドポイントで動作します。 アプリケーションから受信したテレメトリの一部を、設定したサンプリング レートで破棄します。 インジェスト サンプリングはアプリから送信されるテレメトリのトラフィックを削減しませんが、トラフィックを月間のクォータ (上限) 以内で維持するのに役立ちます。 インジェスト サンプリングの主な利点は、アプリを再デプロイすることなくサンプリング レートを設定できることです。 インジェスト サンプリングは、すべてのサーバーとクライアントで一様に動作しますが、他の種類のサンプリングが動作している場合は適用されません。
 
 > [!IMPORTANT]
 > アダプティブ サンプリングまたは固定レート サンプリング方法の実行中は、インジェスト サンプリングは無効になります。
@@ -78,7 +78,7 @@ ms.locfileid: "92168598"
 
 * `<MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>`
   
-    アダプティブ アルゴリズムが**各サーバー ホストで**収集しようとする[論理演算](./correlation.md#data-model-for-telemetry-correlation)の目標レート。 Web アプリが多数のホストで実行される場合は、Application Insights ポータルのトラフィックの目標レート内に収まるようにこの値を減らします。
+    アダプティブ アルゴリズムが **各サーバー ホストで** 収集しようとする [論理演算](./correlation.md#data-model-for-telemetry-correlation)の目標レート。 Web アプリが多数のホストで実行される場合は、Application Insights ポータルのトラフィックの目標レート内に収まるようにこの値を減らします。
 
 * `<EvaluationInterval>00:00:15</EvaluationInterval>` 
   
@@ -116,7 +116,7 @@ ms.locfileid: "92168598"
   
     サンプリング対象にしない種類のセミコロン区切りのリスト。 認識される種類は、`Dependency`、`Event`、`Exception`、`PageView`、`Request`、`Trace` です。 指定した種類はサンプリングされます。他のすべての種類のテレメトリは常に送信されます。
 
-アダプティブ サンプリングを**オフにする**には、`ApplicationInsights.config` から `AdaptiveSamplingTelemetryProcessor` ノードを削除します。
+アダプティブ サンプリングを **オフにする** には、`ApplicationInsights.config` から `AdaptiveSamplingTelemetryProcessor` ノードを削除します。
 
 #### <a name="alternative-configure-adaptive-sampling-in-code"></a>代替手段:コードでアダプティブ サンプリングを構成する
 

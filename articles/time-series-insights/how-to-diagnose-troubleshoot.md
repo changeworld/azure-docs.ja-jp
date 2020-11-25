@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: b994e8ce34319da4827d389b49e23ed6e5bcde95
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 3d26a0ef86ab96940f3d5bb96d87340b77f1faca
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653759"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016838"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2 環境の診断とトラブルシューティングの方法
 
@@ -39,21 +39,21 @@ ms.locfileid: "91653759"
 
 - イベント ソースのデータが JSON 形式ではありません。
 
-    Time Series Insights では、JSON データのみがサポートされています。 JSON のサンプルについては、[サポートされている JSON の形式](./how-to-shape-query-json.md)に関する記事を参照してください。
+    Time Series Insights では、JSON データのみがサポートされています。 JSON のサンプルについては、[サポートされている JSON の形式](./concepts-json-flattening-escaping-rules.md)に関する記事を参照してください。
 
 - イベント ソース キーに必要なアクセス許可がありません。
 
-  - IoT Hub の場合は、**サービス接続**アクセス許可を持つキーを指定する必要があります。
+  - IoT Hub の場合は、**サービス接続** アクセス許可を持つキーを指定する必要があります。
 
     [![IoT Hub のアクセス許可を検証します。](media/preview-troubleshoot/verify-correct-permissions.png)](media/preview-troubleshoot/verify-correct-permissions.png#lightbox)
 
-    - ポリシー **iothubowner** と **service** は両方とも**サービス接続**アクセス許可が設定されているため、どちらも動作します。
+    - ポリシー **iothubowner** と **service** は両方とも **サービス接続** アクセス許可が設定されているため、どちらも動作します。
 
   - イベント ハブの場合は、**リッスン** アクセス許可を持つキーを指定する必要があります。
   
     [![イベント ハブのアクセス許可を確認します。](media/preview-troubleshoot/verify-eh-permissions.png)](media/preview-troubleshoot/verify-eh-permissions.png#lightbox)
 
-    - **Read** ポリシーと **Manage** ポリシーは両方とも**リッスン** アクセス許可が設定されているため、どちらも動作します。
+    - **Read** ポリシーと **Manage** ポリシーは両方とも **リッスン** アクセス許可が設定されているため、どちらも動作します。
 
 - お使いのコンシューマー グループが Time Series Insights 専用ではありません。
 
@@ -61,13 +61,13 @@ ms.locfileid: "91653759"
 
 - プロビジョニング時に指定したタイム シリーズ ID プロパティが、正しくないか、不足しているか、または null です。
 
-    この問題は、環境のプロビジョニング時に、タイム シリーズ ID プロパティを誤って構成した場合に発生する可能性があります。 詳細については、「[タイム シリーズ ID の選択に関するベスト プラクティス](./time-series-insights-update-how-to-id.md)」を参照してください。 現時点では、別のタイム シリーズ ID を使うように既存の Time Series Insights 環境を更新することはできません。
+    この問題は、環境のプロビジョニング時に、タイム シリーズ ID プロパティを誤って構成した場合に発生する可能性があります。 詳細については、「[タイム シリーズ ID の選択に関するベスト プラクティス](./how-to-select-tsid.md)」を参照してください。 現時点では、別のタイム シリーズ ID を使うように既存の Time Series Insights 環境を更新することはできません。
 
 ## <a name="problem-some-data-shows-but-some-is-missing"></a>問題: 表示されるデータと表示されないデータがある
 
 タイム シリーズ ID を持たないデータを送信している場合があります。
 
-- この問題は、ペイロードにタイム シリーズ ID フィールドのないイベントを送信すると発生する可能性があります。 詳細については、[サポートされている JSON の形式](./how-to-shape-query-json.md)に関する記事を参照してください。
+- この問題は、ペイロードにタイム シリーズ ID フィールドのないイベントを送信すると発生する可能性があります。 詳細については、[サポートされている JSON の形式](./concepts-json-flattening-escaping-rules.md)に関する記事を参照してください。
 - この問題は、お使いの環境が調整されているために発生する可能性があります。
 
     > [!NOTE]
@@ -111,7 +111,7 @@ ms.locfileid: "91653759"
 
 - Time Series Insights S1 または S2 環境にアクセスしている可能性があります。
 
-   タイム シリーズ モデルは、従量課金制環境でのみサポートされます。 Time Series Insights Gen2 エクスプローラーから S1 または S2 環境にアクセスする方法について詳しくは、[エクスプローラーでのデータの視覚化](./time-series-insights-update-explorer.md)に関する記事を参照してください。
+   タイム シリーズ モデルは、従量課金制環境でのみサポートされます。 Time Series Insights Gen2 エクスプローラーから S1 または S2 環境にアクセスする方法について詳しくは、[エクスプローラーでのデータの視覚化](./concepts-ux-panels.md)に関する記事を参照してください。
 
    [![環境内にイベントがない。](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 
@@ -121,7 +121,7 @@ ms.locfileid: "91653759"
 
 ## <a name="problem-all-my-instances-in-the-gen2-explorer-lack-a-parent"></a>問題: Gen2 エクスプローラーですべての自分のインスタンスに親がない
 
-この問題は、環境でタイム シリーズ モデルの階層が定義されていない場合に発生する可能性があります。 詳細については、[タイム シリーズ モデルの使用](/azure/time-series-insights/time-series-insights-overview)に関する記事を参照してください。
+この問題は、環境でタイム シリーズ モデルの階層が定義されていない場合に発生する可能性があります。 詳細については、[タイム シリーズ モデルの使用](./time-series-insights-overview.md)に関する記事を参照してください。
 
   [![親のないインスタンスによって、警告が表示されます。](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 
@@ -135,8 +135,8 @@ ms.locfileid: "91653759"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [タイム シリーズ モデルの使用](/azure/time-series-insights/time-series-insights-overview)に関する記事を参照してください。
+- [タイム シリーズ モデルの使用](./time-series-insights-overview.md)に関する記事を参照してください。
 
-- [サポートされている JSON シェイプ](./how-to-shape-query-json.md)について学習する。
+- [サポートされている JSON シェイプ](./concepts-json-flattening-escaping-rules.md)について学習する。
 
-- Azure Time Series Insights Gen2 の[計画と制限](./time-series-insights-update-plan.md)をご確認ください。
+- Azure Time Series Insights Gen2 の[計画と制限](./how-to-plan-your-environment.md)をご確認ください。

@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 09/28/2020
-ms.openlocfilehash: a04712a22536b5811b2465e56995d7b161a15c6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b6631415c32358cf445fab534b9524c88b6432e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460885"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020880"
 ---
 # <a name="connect-azure-time-series-insights-gen-2-to-power-bi"></a>Power BI に Azure Time Series Insights Gen 2 を接続する  
 
@@ -42,7 +42,7 @@ Azure Time Series Insights が [Power BI](https://powerbi.microsoft.com/) とシ
 
 データの接続にかかる時間は 1 分未満です。 Azure Time Series Insights Explorer から Power BI へとビューをすばやくエクスポートすることで、組織内のすべてのユーザーが直感的にデータにアクセスし、視覚的に変換できます。
 
-構成オプションには、**生**データと**集計レベル** データを選択して、必要な時間の範囲を指定するオプションが含まれています。
+構成オプションには、**生** データと **集計レベル** データを選択して、必要な時間の範囲を指定するオプションが含まれています。
 
 データが接続されると、Power BI の豊富な視覚化ツールとグラフ作成ツールをすべて利用して、情報共有機能をさらに強化できます。
 
@@ -65,4 +65,4 @@ Power BI 内の高度なクエリおよび編集機能を利用するには、Po
 
 * [Power BI Desktop](https://powerbi.microsoft.com/desktop/) をダウンロードして、データの接続を開始します。
 
-* [Power BI](https://docs.microsoft.com/power-bi/) について学習します。
+* [Power BI](/power-bi/) について学習します。

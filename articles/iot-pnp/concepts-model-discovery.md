@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: dda0e3d6739e94df4ce5910938c164e3db336bce
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5f82206a7c86c5ae1e6477419faee0dca88ef883
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445576"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495289"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>Iot ソリューションで IoT プラグ アンド プレイを使用する
 
@@ -125,7 +125,7 @@ content-encoding:utf-8
 
 1. 接続されたデバイスのモデル定義を使用すれば、デバイスの機能を列挙できます。
 
-1. デバイスの列挙機能を使用すれば、ユーザーが[デバイスと対話する](quickstart-service-node.md)のを許可することができます。
+1. デバイスの列挙機能を使用すれば、ユーザーが[デバイスと対話する](quickstart-service.md)のを許可することができます。
 
 ### <a name="custom-store"></a>カスタム ストア
 
@@ -137,12 +137,12 @@ content-encoding:utf-8
 
 1. 接続されたデバイスのモデル定義を使用すれば、デバイスの機能を列挙できます。 
 
-1. デバイスの列挙機能を使用すれば、ユーザーが[デバイスと対話する](quickstart-service-node.md)のを許可することができます。  
+1. デバイスの列挙機能を使用すれば、ユーザーが[デバイスと対話する](quickstart-service.md)のを許可することができます。  
 
 ## <a name="next-steps"></a>次のステップ
 
 IoT プラグ アンド プレイ モデルを IoT ソリューションに統合する方法を学習したので、次に推奨されるいくつかのステップを以下に示します。
 
-- [ソリューションからのデバイスの操作](quickstart-service-node.md)
+- [ソリューションからのデバイスの操作](quickstart-service.md)
 - [IoT Digital Twin REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT エクスプローラー](howto-use-iot-explorer.md)

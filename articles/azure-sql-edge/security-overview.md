@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: cb673efb3e5d14e72e945bcf8c23d57495823720
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 56d5eb981aa02d9da83973d49e8df79fcd9c7e9c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394953"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021016"
 ---
 # <a name="securing-azure-sql-edge"></a>Azure SQL Edge のセキュリティ保護
 
@@ -34,14 +34,14 @@ Azure SQL Edge のプラットフォームには、物理 Docker ホスト、ホ
 - Azure SQL Edge に使用されるホスト ポートの指定と制限
 - Azure SQL Edge データをホストするすべてのデータ ボリュームに適切なアクセス制御が適用されていることの確認。 
 
-Azure SQL Edge のネットワーク プロトコルと TDS エンドポイントの詳細については、[ネットワーク プロトコルと TDS エンドポイント](//previous-versions/sql/sql-server-2008-r2/ms191220(v=sql.105))に関する記事を参照してください。
+Azure SQL Edge のネットワーク プロトコルと TDS エンドポイントの詳細については、[ネットワーク プロトコルと TDS エンドポイント](/previous-versions/sql/sql-server-2008-r2/ms191220(v=sql.105))に関する記事を参照してください。
 
 ## <a name="authentication-and-authorization"></a>認証と承認 
 
 ### <a name="authentication"></a>認証  
 認証は、ユーザーが本人の主張どおりの人物であることを証明するプロセスです。 Azure SQL Edge では現在、`SQL Authentication`メカニズムのみがサポートされています。
 
-- *SQL 認証* :
+- *SQL 認証*:
 
     SQL 認証とは、ユーザーがユーザー名とパスワードを使用して Azure SQL Edge に接続するときに、そのユーザーを認証することを指します。 SQL Edge のデプロイ中に SQL の **sa** ログイン パスワードを指定する必要があります。 その後、サーバー管理者は、追加の SQL ログインとユーザーを作成できます。これにより、ユーザーはユーザー名とパスワードを使用して接続できるようになります。
 

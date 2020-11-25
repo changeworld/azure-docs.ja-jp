@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: c7a62bb3ed07ffbd8cfef520e5d504c810d11e5a
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 1558c396566b2fcfc098a749407d5e7a28316b6f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496398"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019451"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>移行ガイド:SQL Server から Azure VM 上の SQL Server 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -40,7 +40,7 @@ Azure VM 上の SQL Server への移行には、次が必要です。
 - [Database Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)。
 - [Azure Migrate プロジェクト](/azure/migrate/create-manage-projects)。
 - [Azure VM 上のターゲット SQL Server](/azure/azure-sql/virtual-machines/windows/create-sql-vm-portal) の準備 (バージョンはソース SQL Server と同じかそれ以上)。
-- [Azure とオンプレミスの間の接続](/architecture/reference-architectures/hybrid-networking)。
+- [Azure とオンプレミスの間の接続](/azure/architecture/reference-architectures/hybrid-networking)。
 - [適切な移行戦略の選択](sql-server-to-sql-on-azure-vm-migration-overview.md#migrate)。
 
 ## <a name="pre-migration"></a>移行前
@@ -59,7 +59,7 @@ Azure Migrate では、オンプレミス コンピューターの移行適合�
 
 ### <a name="assess"></a>アクセス
 
-データ ソースをすべて検出した後、[Data Migration Assistant (DMA)](/dma/dma-overview) を使用して、オンプレミスの SQL Server インスタンスから Azure VM 上の SQL Server インスタンスへの移行を評価します。これにより、ソースとターゲットのインスタンス間のギャップを把握できます。 
+データ ソースをすべて検出した後、[Data Migration Assistant (DMA)](/sql/dma/dma-overview) を使用して、オンプレミスの SQL Server インスタンスから Azure VM 上の SQL Server インスタンスへの移行を評価します。これにより、ソースとターゲットのインスタンス間のギャップを把握できます。 
 
 
 > [!NOTE]
@@ -123,7 +123,7 @@ DMA の評価の結果によっては、移行後にユーザー データベー
 1. 移行の対象となるデータベースを使用しているアプリケーションを一時停止または停止します。 
 1. [シングル ユーザー モード](/sql/relational-databases/databases/set-a-database-to-single-user-mode)を使用して、ユーザー データベースが非アクティブであることを確認します。 
 1. オンプレミスの場所へのデータベースの完全バックアップを実行します。
-1. リモート デスクトップ、[Azure Data Explorer](/data-explorer/data-explorer-overview)、または [AzCopy コマンド ライン ユーティリティ](../../../storage/common/storage-use-azcopy-v10.md) (バックアップが 2 TB を超える場合に推奨) を使用して、オンプレミスのバックアップ ファイルを自分の VM にコピーします。
+1. リモート デスクトップ、[Azure Data Explorer](/azure/data-explorer/data-explorer-overview)、または [AzCopy コマンド ライン ユーティリティ](../../../storage/common/storage-use-azcopy-v10.md) (バックアップが 2 TB を超える場合に推奨) を使用して、オンプレミスのバックアップ ファイルを自分の VM にコピーします。
 1. データベースの完全バックアップを Azure VM 上の SQL Server に復元します。
 
 ### <a name="log-shipping--minimize-downtime"></a>ログ配布 (ダウンタイムの最小化)
@@ -133,7 +133,7 @@ DMA の評価の結果によっては、移行後にユーザー データベー
 1. 要件に基づいて、Azure VM 上のターゲット SQL Server への接続を設定します。 「 [Connect to a SQL Server Virtual Machine on Azure (Resource Manager) (Azure での SQL Server 仮想マシンへの接続 (Resource Manager))](../../virtual-machines/windows/ways-to-connect-to-sql.md)」をご覧ください。
 1. 移行されるオンプレミスのユーザー データベースが、完全または一括ログ復旧モデルであることを確認します。
 1. オンプレミスの保存先へのデータベースの完全バックアップを実行します。また、[COPY_ONLY](/sql/relational-databases/backup-restore/copy-only-backups-sql-server) キーワードを使用してログ チェーンを保持するよう、データベースの完全バックアップの既存ジョブを変更します。
-1. リモート デスクトップ、[Azure Data Explorer](/data-explorer/data-explorer-overview)、または [AzCopy コマンド ライン ユーティリティ](../../../storage/common/storage-use-azcopy-v10.md) (バックアップが 1 TB を超える場合に推奨) を使用して、オンプレミスのバックアップ ファイルを自分の VM にコピーします。
+1. リモート デスクトップ、[Azure Data Explorer](/azure/data-explorer/data-explorer-overview)、または [AzCopy コマンド ライン ユーティリティ](../../../storage/common/storage-use-azcopy-v10.md) (バックアップが 1 TB を超える場合に推奨) を使用して、オンプレミスのバックアップ ファイルを自分の VM にコピーします。
 1. データベースの完全バックアップを Azure VM 上の SQL Server に復元します。
 1. オンプレミス データベースと Azure VM 上のターゲット SQL Server の間で[ログ配布](/sql/database-engine/log-shipping/configure-log-shipping-sql-server)を設定します。 前の手順で既に完了しているため、データベースは再初期化しないでください。
 1. ターゲット サーバーに **カットオーバー** します。 

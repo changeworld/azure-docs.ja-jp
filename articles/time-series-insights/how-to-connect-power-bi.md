@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: 105faf796583eb0f272eea7a316648993fdafd0d
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 680b3c5a9548fa06d0139bd441b5583c27427a77
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653776"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020778"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Azure Time Series Insights Gen2 からのデータを Power BI で視覚化する
 
@@ -32,11 +32,11 @@ Azure Time Series Insights は、クラウド内の時系列データを格納�
 ## <a name="prerequisites"></a>前提条件
 
 * 最新バージョンの [Power BI Desktop](https://powerbi.microsoft.com/downloads/) をダウンロードしてインストールすること
-* [Azure Time Series Insights Gen2 環境](time-series-insights-update-how-to-manage.md)がある、またはそれを作成する
+* [Azure Time Series Insights Gen2 環境](./how-to-provision-manage.md)がある、またはそれを作成する
 
 > [!IMPORTANT]
 >
-> * このコネクタは、現在のところ、**Warm ストア**を使用して構成された Azure Time Series Insights Gen2 環境でのみサポートされています。
+> * このコネクタは、現在のところ、**Warm ストア** を使用して構成された Azure Time Series Insights Gen2 環境でのみサポートされています。
 > * 別の Azure AD テナントから Azure Time Series Insights Gen2 環境へのゲスト アクセスを持っている場合、このコネクタにアクセスすることはできません。 [環境へのアクセスに関するポリシー](./concepts-access-policies.md)を確認してください。
 
 ## <a name="connect-data-from-azure-time-series-insights-to-power-bi"></a>Azure Time Series Insights から Power BI にデータを接続する
@@ -71,12 +71,12 @@ Azure Time Series Insights 環境を Power BI に接続するには、次の手�
 
        [![接続](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
-   1. **Warm ストア**を使用して Azure Time Series Insights 環境を構成していない場合は、警告が表示されます。
+   1. **Warm ストア** を使用して Azure Time Series Insights 環境を構成していない場合は、警告が表示されます。
 
        [![Warm ストア の警告](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
-       > Azure ポータルでは、既存のインスタンスを**Warm ストア**用に構成できます。
+       > Azure ポータルでは、既存のインスタンスを **Warm ストア** 用に構成できます。
 
 1. **[クエリをクリップボードにコピー]** を選択します。
 1. 次に、Power BI Desktop を起動します。
@@ -130,7 +130,7 @@ Azure Time Series Insights 環境を Power BI に接続するには、次の手�
 
 ## <a name="advanced-editing"></a>高度な編集
 
-データセットを既に Power BI に読み込んでいるが、クエリ (日付/時刻や環境 ID パラメーターなど) を変更する場合、Power BI の詳細エディター機能を使用してこれを行うことができます。 詳細については、[Power BI のドキュメント](https://docs.microsoft.com/power-bi/desktop-query-overview)を参照してください。
+データセットを既に Power BI に読み込んでいるが、クエリ (日付/時刻や環境 ID パラメーターなど) を変更する場合、Power BI の詳細エディター機能を使用してこれを行うことができます。 詳細については、[Power BI のドキュメント](/power-bi/desktop-query-overview)を参照してください。
 
 概要:
 
@@ -146,6 +146,6 @@ Azure Time Series Insights 環境を Power BI に接続するには、次の手�
 
 ## <a name="next-steps"></a>次の手順
 
-* Azure Time Series Insights のための [Power BI コネクタの概念](https://docs.microsoft.com/power-bi/desktop-query-overview)に関するページをご覧ください。
+* Azure Time Series Insights のための [Power BI コネクタの概念](/power-bi/desktop-query-overview)に関するページをご覧ください。
 
-* [Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-query-overview) の詳細を参照してください。
+* [Power BI Desktop](/power-bi/desktop-query-overview) の詳細を参照してください。

@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 3371b9cc0848e387c0150ca9aa7e7a971cecba1a
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e5472620fe9b07d152a5325b0654044cb1505fd7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92904928"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992439"
 ---
 # <a name="ddos-protection-reference-architectures"></a>DDoS Protection の参照アーキテクチャ
 
-DDoS Protection Standard は、[仮想ネットワークにデプロイされるサービス用](/azure/virtual-network/virtual-network-for-azure-services)に設計されています。 他のサービスには、既定の DDoS Protection Basic が適用されます。 以下の参照アーキテクチャは、アーキテクチャ パターンでグループ化されたシナリオで調整されています。
+DDoS Protection Standard は、[仮想ネットワークにデプロイされるサービス用](../virtual-network/virtual-network-for-azure-services.md)に設計されています。 他のサービスには、既定の DDoS Protection Basic が適用されます。 以下の参照アーキテクチャは、アーキテクチャ パターンでグループ化されたシナリオで調整されています。
 
 ## <a name="virtual-machine-windowslinux-workloads"></a>仮想マシン (Windows/Linux) のワークロード
 
@@ -54,7 +54,7 @@ N 層アーキテクチャを実装する方法は多数あります。 次の�
 
 Azure Traffic Manager は、着信要求をいずれかのリージョンの Application Gateway にルーティングします。 通常の運用中は、アクティブなリージョンの Application Gateway に要求をルーティングします。 そのリージョンが使用できなくなった場合、Traffic Manager はスタンバイ リージョンの Application Gateway にフェールオーバーします。
 
-インターネットから Web アプリケーションに宛てられたすべてのトラフィックは、Traffic Manager によって [Application Gateway のパブリック IP アドレス](/azure/application-gateway/application-gateway-web-app-overview)にルーティングされます。 このシナリオでは、アプリ サービス (Web アプリ) 自体は外部に対して直接公開されておらず、Application Gateway によって保護されています。 
+インターネットから Web アプリケーションに宛てられたすべてのトラフィックは、Traffic Manager によって [Application Gateway のパブリック IP アドレス](../application-gateway/application-gateway-web-app-overview.md)にルーティングされます。 このシナリオでは、アプリ サービス (Web アプリ) 自体は外部に対して直接公開されておらず、Application Gateway によって保護されています。 
 
 Application Gateway WAF SKU (禁止モード) を構成して、レイヤー 7 (HTTP/HTTPS/Web ソケット) の攻撃を防ぐことをお勧めします。 さらに、Web アプリは、ָ[Application Gateway の IP アドレスからのトラフィックのみを受け入れる](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/)ように構成されます。
 
@@ -64,7 +64,7 @@ Application Gateway WAF SKU (禁止モード) を構成して、レイヤー 7 (
 
 ### <a name="hdinsight-on-azure"></a>Azure 上の HDInsight
 
-この参照アーキテクチャは、[Azure HDInsight クラスター](/azure/hdinsight/)に対する DDoS Protection Standard の構成を示したものです。 HDInsight クラスターが仮想ネットワークにリンクされていること、および DDoS Protection がその仮想ネットワークで有効になっていることを確認してください。
+この参照アーキテクチャは、[Azure HDInsight クラスター](../hdinsight/index.yml)に対する DDoS Protection Standard の構成を示したものです。 HDInsight クラスターが仮想ネットワークにリンクされていること、および DDoS Protection がその仮想ネットワークで有効になっていることを確認してください。
 
 ![[HDInsight] および [詳細設定] ウィンドウと、仮想ネットワークの設定](./media/ddos-best-practices/image-12.png)
 
@@ -72,7 +72,7 @@ Application Gateway WAF SKU (禁止モード) を構成して、レイヤー 7 (
 
 このアーキテクチャでは、インターネットから HDInsight クラスター宛のトラフィックは、HDInsight ゲートウェイのロード バランサーに関連付けられているパブリック IP にルーティングされます。 ゲートウェイのロード バランサーは、トラフィックをヘッド ノードまたはワーカー ノードに直接送信します。 HDInsight の仮想ネットワークで DDoS Protection Standard が有効になっているので、仮想ネットワーク内のすべてのパブリック IP アドレスにはレイヤー 3/レイヤー 4 の DDoS Protection が適用されます。 この参照アーキテクチャは、N 層およびマルチリージョンの参照アーキテクチャと組み合わせることができます。
 
-この参照アーキテクチャについて詳しくは、「[Azure Virtual Network を使用した Azure HDInsight の拡張](/azure/hdinsight/hdinsight-extend-hadoop-virtual-network?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
+この参照アーキテクチャについて詳しくは、「[Azure Virtual Network を使用した Azure HDInsight の拡張](../hdinsight/hdinsight-plan-virtual-network-deployment.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
 
 
 > [!NOTE]

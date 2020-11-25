@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: a8d8a41b5d527833ef071275d90cf9102cec47f7
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e3ded2fc286117da1438b0bb28298632532c4329
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905004"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992541"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection Standard の概要
 
@@ -38,10 +38,10 @@ Azure DDoS Protection では、顧客データは保存されません。
 - **アダプティブ チューニング:** インテリジェント トラフィック プロファイリングにより、一定期間にわたってアプリケーションのトラフィックが学習され、そのサービスに最も適したプロファイルが選択および更新されます。 このプロファイルは、時間の経過とともにトラフィックが変化すると調整されます。
 - **多層保護:** Web アプリケーション ファイアウォールと併用すると、全スタックにわたって DDoS 保護が提供されます。
 - **広範囲にわたる軽減スケール:** 60 種類を超える攻撃を軽減することができ、地球規模の容量を利用して、過去最大の DDoS 攻撃からも保護されます。
-- **攻撃の分析:** 攻撃中の 5 分ごとの詳細なレポートと、攻撃終了後の完全な概要を取得します。 攻撃中のほぼリアルタイムの監視のために、軽減フローのログが [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-ddos-protection) に、またはオフラインのセキュリティ情報イベント管理 (SIEM) システムにストリーム配信されます。
+- **攻撃の分析:** 攻撃中の 5 分ごとの詳細なレポートと、攻撃終了後の完全な概要を取得します。 攻撃中のほぼリアルタイムの監視のために、軽減フローのログが [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md) に、またはオフラインのセキュリティ情報イベント管理 (SIEM) システムにストリーム配信されます。
 - **攻撃メトリック:** 各攻撃から要約されたメトリックに Azure Monitor 経由でアクセスできます。
 - **攻撃アラート:** 組み込みの攻撃メトリックを使用して、攻撃の開始時と停止時、およびその攻撃の期間にわたってアラートを構成できます。 アラートは、Microsoft Azure Monitor ログ、Splunk、Azure Storage、電子メール、Azure portal などの運用ソフトウェアに統合されます。
-- **DDoS Rapid Response** :攻撃の調査と分析の支援を受けるため、DDoS Protection Rapid Response (DRR) チームを関与させます。 詳細については、[DDoS Rapid Response](ddos-rapid-response.md) に関するページを参照してください。
+- **DDoS Rapid Response**:攻撃の調査と分析の支援を受けるため、DDoS Protection Rapid Response (DRR) チームを関与させます。 詳細については、[DDoS Rapid Response](ddos-rapid-response.md) に関するページを参照してください。
 - **コストの保証:** データ転送とアプリケーションは、ドキュメント化された DDoS 攻撃のサービス クレジットをスケールアウトします。
 
 ## <a name="pricing"></a>価格

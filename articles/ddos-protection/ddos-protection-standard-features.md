@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 133a27d8aef6c9df16ffcabfb4fac6c118665890
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: b3f903b69cebd22e870f7ccd5923e6f08455dff3
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92904924"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992388"
 ---
 # <a name="azure-ddos-protection-standard-features"></a>Azure DDoS Protection Standard の機能
 
@@ -38,7 +38,7 @@ DDoS Protection は、攻撃トラフィックをブロックし、残りのト�
 
 ## <a name="adaptive-real-time-tuning"></a>アダプティブ リアルタイム チューニング
 
-Azure DDoS Protection Basic サービスは、お客様のシステムの保護と、他のお客様への影響を防ぐのに役立ちます。 たとえば、インフラストラクチャ全体にわたる DDoS Protection ポリシーの " *トリガー レート* " より小さい正規の着信トラフィックの一般的な量に対してサービスがプロビジョニングされている場合、そのお客様のリソースに対する DDoS 攻撃は認識されない可能性があります。 さらに一般的には、最近の攻撃 (たとえば、複数ベクター DDoS) の複雑さと、テナントのアプリケーション固有の動作により、お客様ごとに保護ポリシーをカスタマイズする必要があります。 このカスタマイズは、次の 2 つのインサイト手法を通じて実行されます。
+Azure DDoS Protection Basic サービスは、お客様のシステムの保護と、他のお客様への影響を防ぐのに役立ちます。 たとえば、インフラストラクチャ全体にわたる DDoS Protection ポリシーの "*トリガー レート*" より小さい正規の着信トラフィックの一般的な量に対してサービスがプロビジョニングされている場合、そのお客様のリソースに対する DDoS 攻撃は認識されない可能性があります。 さらに一般的には、最近の攻撃 (たとえば、複数ベクター DDoS) の複雑さと、テナントのアプリケーション固有の動作により、お客様ごとに保護ポリシーをカスタマイズする必要があります。 このカスタマイズは、次の 2 つのインサイト手法を通じて実行されます。
 
 - お客様ごと (IP ごと) に、レイヤー 3 および 4 のトラフィック パターンを自動学習する。
 
@@ -48,11 +48,11 @@ Azure DDoS Protection Basic サービスは、お客様のシステムの保護�
 
 ## <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS 保護のテレメトリ、監視、アラート
 
-DDoS Protection Standard では、DDoS 攻撃の発生時に、[Azure Monitor](/azure/azure-monitor/overview) によって豊富なテレメトリが公開されます。 お客様は、DDoS Protection で使用される任意の Azure Monitor メトリックについて、アラートを構成することができます。 また、ログを Splunk (Azure Event Hubs)、Azure Monitor ログ、Azure Storage と統合し、Azure Monitor 診断インターフェースを介して高度な分析を行うこともできます。
+DDoS Protection Standard では、DDoS 攻撃の発生時に、[Azure Monitor](../azure-monitor/overview.md) によって豊富なテレメトリが公開されます。 お客様は、DDoS Protection で使用される任意の Azure Monitor メトリックについて、アラートを構成することができます。 また、ログを Splunk (Azure Event Hubs)、Azure Monitor ログ、Azure Storage と統合し、Azure Monitor 診断インターフェースを介して高度な分析を行うこともできます。
 
 ### <a name="ddos-mitigation-policies"></a>DDoS 軽減ポリシー
 
-Azure Portal で **[監視]**  >  **[メトリック]** を選択します。 **[メトリック]** ウィンドウで、リソース グループを選択し、 **パブリック IP アドレス** のリソースの種類を選択して、Azure のパブリック IP アドレスを選択します。 DDoS のメトリックが、 **使用可能なメトリック** のウィンドウに表示されます。
+Azure Portal で **[監視]**  >  **[メトリック]** を選択します。 **[メトリック]** ウィンドウで、リソース グループを選択し、**パブリック IP アドレス** のリソースの種類を選択して、Azure のパブリック IP アドレスを選択します。 DDoS のメトリックが、**使用可能なメトリック** のウィンドウに表示されます。
 
 DDoS Protection Standard は、DDoS が有効になっている仮想ネットワーク内で、保護されたリソースのパブリック IP ごとに、3 つの自動調整された軽減ポリシー (TCP SYN、TCP、UDP) を適用します。 ポリシーのしきい値は、メトリック **[Inbound packets to trigger DDoS mitigation]\(DDoS 軽減をトリガーする着信パケット数\)** を選択することで確認できます。
 
@@ -72,7 +72,7 @@ DDoS Protection Standard は、DDoS が有効になっている仮想ネット�
 
 ## <a name="web-application-firewall-for-resource-attacks"></a>リソース攻撃用の Web アプリケーション ファイアウォール
 
-アプリケーション レイヤーでのリソース攻撃に限り、お客様は Web アプリケーション ファイアウォール (WAF) を構成して Web アプリケーションのセキュリティ保護を強化する必要があります。 WAF は、着信 Web トラフィックを検査して、SQL インジェクション、クロスサイト スクリプティング、DDoS、その他のレイヤー 7 攻撃をブロックします。 Azure は、一般的な脆弱性やその悪用から Web アプリケーションを一元的に保護する [Application Gateway の機能として WAF](/azure/application-gateway/application-gateway-web-application-firewall-overview) を提供します。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1) では Azure パートナーのその他の WAF プランを利用でき、ニーズにより適したものが見つかる可能性があります。
+アプリケーション レイヤーでのリソース攻撃に限り、お客様は Web アプリケーション ファイアウォール (WAF) を構成して Web アプリケーションのセキュリティ保護を強化する必要があります。 WAF は、着信 Web トラフィックを検査して、SQL インジェクション、クロスサイト スクリプティング、DDoS、その他のレイヤー 7 攻撃をブロックします。 Azure は、一般的な脆弱性やその悪用から Web アプリケーションを一元的に保護する [Application Gateway の機能として WAF](../web-application-firewall/ag/ag-overview.md) を提供します。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1) では Azure パートナーのその他の WAF プランを利用でき、ニーズにより適したものが見つかる可能性があります。
 
 Web アプリケーション ファイアウォールを構成しても、帯域幅消費型攻撃や状態枯渇攻撃を受ける可能性があります。 WAF 仮想ネットワーク上で DDoS Protection Standard を有効にして、帯域幅消費型攻撃やプロトコル攻撃に対する保護を強化することを強くお勧めします。 詳しくは、「[DDoS Protection の参照アーキテクチャ](ddos-protection-reference-architectures.md)」セクションをご覧ください。
 

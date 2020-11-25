@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 78a882378becda8c381ac036d786b32a2b42a5f1
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 6ac568e56d201ef43e40428085b226608e83973a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379470"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024570"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management 用の Azure セキュリティ ベースライン
 
@@ -506,7 +506,7 @@ Azure Active Directory (AD) で OAuth 2.0 プロトコルを使用して API を
 
 * [Azure API Management でユーザー アカウントを管理する方法](./api-management-howto-create-or-invite-developers.md)
 
-* [API Management ユーザーの一覧を取得する方法](/powershell/module/az.apimanagement/get-azapimanagementuse)
+* [API Management ユーザーの一覧を取得する方法](/powershell/module/az.apimanagement/get-azapimanagementuser)
 
 * [Azure API Management でグループを作成および使用して開発者アカウントを管理する方法](./api-management-howto-create-groups.md)
 

@@ -11,19 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: fb0c29fb68d0bcd2405cc031008c1c8e5035476f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6f0e5230fb3c59cab690620e837f476f3392a48
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569388"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020080"
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c-sharp"></a>C# を使用して Azure Time Series Insights Gen 1 環境の参照データを管理する
 
 > [!CAUTION]
 > これは Gen1 の記事です。
 
-この記事では、C#、[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)、Azure Active Directory を組み合わせ、Azure Time Series Insights Gen 1 [参照データ管理 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api) にプログラミングによる API 要求を行う方法について説明します。
+この記事では、C#、[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)、Azure Active Directory を組み合わせ、Azure Time Series Insights Gen 1 [参照データ管理 API](/rest/api/time-series-insights/gen1-reference-data-api) にプログラミングによる API 要求を行う方法について説明します。
 
 > [!TIP]
 > [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) で GA C# コード サンプルを確認します。
@@ -33,8 +33,8 @@ ms.locfileid: "91569388"
 次のサンプル コードでは、以下の機能が示されます。
 
 * [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication** を使用し、アクセス トークンを取得する。
-* Gen 1 [参照データ管理 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api) に対する一連の CREATE、READ、UPDATE、DELETE 操作。
-* [一般的なエラー コード](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api#validation-and-error-handling)など、一般的な応答コード。
+* Gen 1 [参照データ管理 API](/rest/api/time-series-insights/gen1-reference-data-api) に対する一連の CREATE、READ、UPDATE、DELETE 操作。
+* [一般的なエラー コード](/rest/api/time-series-insights/gen1-reference-data-api#validation-and-error-handling)など、一般的な応答コード。
 
     参照データ管理 API では、各項目が個別に処理されます。ある項目にエラーが発生したために別の項目も正常に完了できなくなることはありません。 たとえば、要求に 100 個の項目が含まれるとき、1 個の項目にエラーがあった場合、99 個の項目は書き込まれ、1 個の項目が却下されます。
 
@@ -42,7 +42,7 @@ ms.locfileid: "91569388"
 
 サンプル コードをコンパイルして実行する前に、次の手順を実行します。
 
-1. [Gen 1 Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
+1. [Gen 1 Azure Time Series Insights](./time-series-insights-get-started.md
 ) 環境をプロビジョニングします。
 
 1. 自分の環境内で[参照データ セットを作成します](time-series-insights-add-reference-data-set.md)。 次の参照データ スキームを使用します。
@@ -313,4 +313,4 @@ namespace CsharpTsiMsalGaSample
 
 ## <a name="next-steps"></a>次のステップ
 
-* Gen 1 [参照データ管理 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api) の参照ドキュメントをお読みください。
+* Gen 1 [参照データ管理 API](/rest/api/time-series-insights/gen1-reference-data-api) の参照ドキュメントをお読みください。

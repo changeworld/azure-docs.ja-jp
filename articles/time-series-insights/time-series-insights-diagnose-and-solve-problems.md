@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 231f2e4df1445c60378ac06aab0d0e56f410c1c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15f2ff5aaa1d731c13125d0a3ab4ac32acb9276c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530138"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023277"
 ---
 # <a name="diagnose-and-solve-issues-in-your-azure-time-series-insights-gen1-environment"></a>Azure Time Series Insights Gen1 環境の問題を診断して解決する
 
@@ -37,7 +37,7 @@ ms.locfileid: "91530138"
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>原因 A:イベント ソース データが JSON 形式でない
 
-Azure Time Series Insights は JSON データのみをサポートしています。 JSON のサンプルについては、「[サポートされている JSON 構造](./how-to-shape-query-json.md)」を参照してください。
+Azure Time Series Insights は JSON データのみをサポートしています。 JSON のサンプルについては、「[サポートされている JSON 構造](./concepts-json-flattening-escaping-rules.md)」を参照してください。
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>原因 B:イベント ソース キーに必要なアクセス許可がない
 
@@ -45,13 +45,13 @@ Azure Time Series Insights は JSON データのみをサポートしていま�
 
    [![IoT Hub サービス接続のアクセス許可](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
-* Azure Event Hubs のイベント ハブの場合は、リッスン アクセス許可があるキーを指定する必要があります。 **読み取り**ポリシーと**管理**ポリシーは両方ともリッスン アクセス許可があるため、どちらも機能します。
+* Azure Event Hubs のイベント ハブの場合は、リッスン アクセス許可があるキーを指定する必要があります。 **読み取り** ポリシーと **管理** ポリシーは両方ともリッスン アクセス許可があるため、どちらも機能します。
 
    [![イベント ハブのリッスン アクセス許可](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
 
 ### <a name="cause-c-the-provided-consumer-group-isnt-exclusive-to-azure-time-series-insights"></a>原因 C:指定したコンシューマー グループが Azure Time Series Insights 専用ではない
 
-IoT Hub またはイベント ハブを登録するときに、データの読み取りに使用するコンシューマー グループを設定する必要があります。 このコンシューマー グループは*共有できません*。 コンシューマー グループを共有すると、基盤となる IoT Hub またはイベント ハブによってリーダーのいずれかが自動的にランダムに切断されます。 Azure Time Series Insights が読み取る一意のコンシューマー グループを指定します。
+IoT Hub またはイベント ハブを登録するときに、データの読み取りに使用するコンシューマー グループを設定する必要があります。 このコンシューマー グループは *共有できません*。 コンシューマー グループを共有すると、基盤となる IoT Hub またはイベント ハブによってリーダーのいずれかが自動的にランダムに切断されます。 Azure Time Series Insights が読み取る一意のコンシューマー グループを指定します。
 
 ### <a name="cause-d-the-environment-has-just-been-provisioned"></a>原因 D:環境がプロビジョニングされた直後である
 
@@ -85,7 +85,7 @@ Azure Time Series Insights Explorer にデータが表示されるのは、環�
 
 容量 3 の S1 SKU 環境は、毎分 2,100 イベントしか受信できません (100 万イベント/日 = 700 イベント/分 × 3 ユニット = 2,100 イベント/分)。
 
-フラット化ロジックのしくみについては、「[クエリのパフォーマンスを最大化するための JSON の調整](./how-to-shape-query-json.md)」を参照してください。
+フラット化ロジックのしくみについては、「[クエリのパフォーマンスを最大化するための JSON の調整](./concepts-json-flattening-escaping-rules.md)」を参照してください。
 
 #### <a name="recommended-resolutions-for-excessive-throttling"></a>調整が過剰な場合の推奨される解決
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: java, jakartaee, javaee, microprofile, open-liberty, websphere-liberty, aro, openshift, red hat
-ms.openlocfilehash: ee4baf8eed26a43728fa52289bce86108c9e8c4a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 41891b58942efbfd705747cc16219185f2a2daa2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413628"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018394"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Azure Red Hat OpenShift 4 クラスターに Open Liberty/WebSphere Liberty を使用する Java アプリケーションをデプロイする
 
@@ -126,7 +126,7 @@ Open Liberty でアプリケーションを実行するには、[Liberty Maven �
    [INFO] Source compilation was successful.
    ```
 
-1. ブラウザーで [http://localhost:9080/](http://localhost:9080/) を開き、アプリケーションのホームページにアクセスします。 アプリケーションの外観は次のイメージのようになります。
+1. ブラウザーで `http://localhost:9080/` を開き、アプリケーションのホームページにアクセスします。 アプリケーションの外観は次のイメージのようになります。
 
    ![JavaEE Cafe Web UI](./media/howto-deploy-java-liberty-app/javaee-cafe-web-ui.png)
 1. **Ctrl + C** キーを押して、アプリケーションと Open Liberty サーバーを停止します。
@@ -164,7 +164,7 @@ ARO 4 クラスターに Liberty アプリケーションをデプロイして�
 
 1. コンソールで `docker run -it --rm -p 9080:9080 javaee-cafe-simple:1.0.0` を実行します。
 2. Liberty サーバーが起動し、アプリケーションが正常にデプロイされるのを待機します。
-3. ブラウザーで [http://localhost:9080/](http://localhost:9080/) を開き、アプリケーションのホームページにアクセスします。
+3. ブラウザーで `http://localhost:9080/` を開き、アプリケーションのホームページにアクセスします。
 4. **Ctrl + C** キーを押して、アプリケーションと Liberty サーバーを停止します。
 
 ### <a name="push-the-image-to-the-container-image-registry"></a>コンテナー イメージ レジストリにイメージをプッシュする

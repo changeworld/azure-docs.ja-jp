@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 7408e3fb279536f61dd2e5cf1858476da57219d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1bd3c5796658663b6111723829cbe620346002c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665814"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016243"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
@@ -38,8 +38,8 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 **手順 3** に従い、アプリケーションとユーザーの資格情報を分離すると、次のことが可能になります。
 
 * 独自のアクセス許可とは異なるアクセス許可を、アプリ ID に割り当てることができます。 通常、こうしたアクセス許可はアプリで必要な操作のみに制限されます。 たとえば、アプリが特定の Azure Time Series Insights 環境からのデータのみを読み取るようにすることが可能です。
-* **クライアント シークレット**またはセキュリティ証明書を使用して、作成しているユーザーの認証資格情報から、アプリのセキュリティを分離します。 その結果、アプリケーションの資格情報は特定のユーザーの資格情報に依存しません。 ユーザーのロールが変わっても、アプリケーションは必ずしも新しい資格情報や追加の構成を必要としません。 ユーザーが自分のパスワードを変更した場合、アプリケーションへのすべてのアクセスに新しい資格情報やキーは必要ありません。
-* (存在する必要がある) 特定のユーザーの資格情報ではなく、**クライアント シークレット**またはセキュリティ証明書を使用して無人スクリプトを実行します。
+* **クライアント シークレット** またはセキュリティ証明書を使用して、作成しているユーザーの認証資格情報から、アプリのセキュリティを分離します。 その結果、アプリケーションの資格情報は特定のユーザーの資格情報に依存しません。 ユーザーのロールが変わっても、アプリケーションは必ずしも新しい資格情報や追加の構成を必要としません。 ユーザーが自分のパスワードを変更した場合、アプリケーションへのすべてのアクセスに新しい資格情報やキーは必要ありません。
+* (存在する必要がある) 特定のユーザーの資格情報ではなく、**クライアント シークレット** またはセキュリティ証明書を使用して無人スクリプトを実行します。
 * Azure Time Series Insights API へのアクセスをセキュリティで保護するには、パスワードではなくセキュリティ証明書を使用します。
 
 > [!IMPORTANT]
@@ -73,7 +73,7 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 1. **[OK]** を選択してポリシーを保存します。
 
    > [!TIP]
-   > 高度なデータ アクセスのオプションについては、[データ アクセスの許可](./time-series-insights-data-access.md)に関する記事を参照してください。
+   > 高度なデータ アクセスのオプションについては、[データ アクセスの許可](./concepts-access-policies.md)に関する記事を参照してください。
 
 ### <a name="client-app-initialization"></a>クライアント アプリの初期化
 
@@ -90,18 +90,18 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
    1. トークンは、アプリケーションが Azure Time Series Insights API を呼び出すときに、`Authorization` ヘッダーで渡すことができます。
 
 > [!IMPORTANT]
-> [Azure Active Directory 認証ライブラリ (ADAL)](https://docs.microsoft.com/azure/active-directory/azuread-dev/active-directory-authentication-libraries) を使用している場合は、[MSAL への移行](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)に関する記事をご覧ください。
+> [Azure Active Directory 認証ライブラリ (ADAL)](../active-directory/azuread-dev/active-directory-authentication-libraries.md) を使用している場合は、[MSAL への移行](../active-directory/develop/msal-net-migration.md)に関する記事をご覧ください。
 
 ## <a name="common-headers-and-parameters"></a>一般的なヘッダーとパラメーター
 
-このセクションでは、Azure Time Series Insights GA 1 API や GA2 API に対するクエリの作成に使用される、一般的な HTTP 要求ヘッダーとパラメーターについて説明します。 API 固有の要件は、[Azure Time Series Insights REST API リファレンス ドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/)に詳しく記載されています。
+このセクションでは、Azure Time Series Insights GA 1 API や GA2 API に対するクエリの作成に使用される、一般的な HTTP 要求ヘッダーとパラメーターについて説明します。 API 固有の要件は、[Azure Time Series Insights REST API リファレンス ドキュメント](/rest/api/time-series-insights/)に詳しく記載されています。
 
 > [!TIP]
-> REST API の使用方法、HTTP 要求の作成方法、および HTTP 応答の処理方法の詳細については、[Azure REST API リファレンス](https://docs.microsoft.com/rest/api/azure/) を参照してください。
+> REST API の使用方法、HTTP 要求の作成方法、および HTTP 応答の処理方法の詳細については、[Azure REST API リファレンス](/rest/api/azure/) を参照してください。
 
 ### <a name="authentication"></a>認証
 
-[Azure Time Series Insights REST API](https://docs.microsoft.com/rest/api/time-series-insights/) に対して認証されたクエリを実行するには、任意の REST クライアント (Postman、JavaScript、C#) を使用して、有効な OAuth 2.0 ベアラー トークンを [Authorization ヘッダー](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate)内で渡す必要があります。
+[Azure Time Series Insights REST API](/rest/api/time-series-insights/) に対して認証されたクエリを実行するには、任意の REST クライアント (Postman、JavaScript、C#) を使用して、有効な OAuth 2.0 ベアラー トークンを [Authorization ヘッダー](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate)内で渡す必要があります。
 
 > [!TIP]
 > チャートやグラフと共に [JavaScript クライアント SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) を使用して、プログラムによって Azure Time Series Insights API で認証を行う方法については、Azure Time Series Insights の[クライアント SDK のサンプルの視覚化](https://tsiclientsample.azurewebsites.net/)に関する記事を参照してください。
@@ -140,7 +140,7 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 ### <a name="http-parameters"></a>HTTP パラメーター
 
 > [!TIP]
-> 必須および省略可能なクエリの情報の詳細については、[参照ドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/)を参照してください。
+> 必須および省略可能なクエリの情報の詳細については、[参照ドキュメント](/rest/api/time-series-insights/)を参照してください。
 
 必須の URL クエリ文字列パラメーターは、API バージョンによって異なります。
 
@@ -157,7 +157,7 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 
 | 省略可能なクエリパラメーター | 説明 | Version |
 | --- |  --- | --- |
-| `timeout=<timeout>` | HTTP 要求実行のサーバー側のタイムアウト。 [環境イベントの取得](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability) API と[環境集計の取得](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) API にのみ適用できます。 タイムアウト値は、`"PT20S"` など、ISO 8601 の期間の形式で指定され、その範囲は `1-30 s` である必要があります。 既定値は `30 s` です。 | Gen1 |
+| `timeout=<timeout>` | HTTP 要求実行のサーバー側のタイムアウト。 [環境イベントの取得](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability) API と[環境集計の取得](/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) API にのみ適用できます。 タイムアウト値は、`"PT20S"` など、ISO 8601 の期間の形式で指定され、その範囲は `1-30 s` である必要があります。 既定値は `30 s` です。 | Gen1 |
 | `storeType=<storeType>` | ウォーム ストアが有効になっている Gen2 環境では、`WarmStore` または `ColdStore` のいずれかでクエリを実行できます。 クエリ内のこのパラメーターは、クエリを実行する必要があるストアを定義します。 定義されていない場合は、コールドストアでクエリが実行されます。 ウォームストアに対してクエリを実行するには、**storeType** を `WarmStore`に設定する必要があります。 定義されていない場合は、コールドストアに対してクエリが実行されます。 | Gen2 |
 
 ## <a name="next-steps"></a>次の手順
@@ -166,6 +166,6 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 
 * Gen2 Azure Time Series Insights API のコード サンプルを呼び出すサンプル コードについては、[C# を使用した Gen2 データの照会](./time-series-insights-update-query-data-csharp.md)に関する記事を参照してください。
 
-* API リファレンスについては、[クエリ API リファレンス](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api)のドキュメントを参照してください。
+* API リファレンスについては、[クエリ API リファレンス](/rest/api/time-series-insights/gen1-query-api)のドキュメントを参照してください。
 
 * [サービス プリンシパルを作成する](../active-directory/develop/howto-create-service-principal-portal.md)方法について学習します。

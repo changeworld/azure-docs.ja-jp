@@ -7,13 +7,13 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.custom: device-developer
-ms.openlocfilehash: 6438b938dc007e8d157f6549b3ed164cd2a723e8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.custom: device-developer, devx-track-azurecli
+ms.openlocfilehash: 2bbf400840c968587de3a0a0951d28c7c35b210f
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424478"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990892"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>デバイスからのデータが Azure IoT Central で表示されない原因を解決する
 
@@ -135,7 +135,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 | プロビジョニング済み | すぐに認識できる問題はありません。 | 該当なし |
 | 登録済み | デバイスがまだ IoT Central に接続されていません。 | デバイス ログを調べて、接続の問題の有無を確認します。 |
 | Blocked | デバイスは、IoT Central への接続をブロックされています。 | デバイスは、IoT Central アプリケーションへの接続をブロックされています。 IoT Central でデバイスのブロックを解除して、再試行します。 詳細については、[デバイスのブロック](concepts-get-connected.md#device-status-values)に関する記事を参照してください。 |
-| 未承認 | デバイスは承認されていません。 | デバイスは、IoT Central アプリケーションへの接続を承認されていません。 IoT Central でデバイスを承認し、再試行します。 詳細については、[デバイスの承認](concepts-get-connected.md#connect-without-registering-devices)に関する記事を参照してください |
+| 未承認 | デバイスは承認されていません。 | デバイスは、IoT Central アプリケーションへの接続を承認されていません。 IoT Central でデバイスを承認し、再試行します。 詳細については、[デバイスの承認](concepts-get-connected.md#device-registration)に関する記事を参照してください |
 | 関連付けなし | デバイスは、デバイス テンプレートに関連付けられていません。 | IoT Central でデータの解析方法を認識できるように、デバイスをデバイス テンプレートに関連付けます。 |
 
 デバイスの状態コードの詳細については、[こちら](concepts-get-connected.md#device-status-values)を参照してください。

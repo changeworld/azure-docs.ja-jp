@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 91bc7adaf7829766c471056c50c1c3abd70dda63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a53f947eb2a44cc8773be8ee2b2bd03ca899be22
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87828780"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521004"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer のリリース ノート
 
@@ -86,7 +86,7 @@ ms.locfileid: "87828780"
 * マネージド ディスクの機能は、Azure Stack ではサポートされていません。
 * ディスクのアップロードまたは貼り付けが失敗し、その失敗の前に新しいディスクが作成されていた場合、Storage Explorer はそのディスクを削除しません。
 * ディスクのアップロードまたは貼り付けをキャンセルしたタイミングによっては、新しいディスクが破損した状態で残される可能性があります。 この問題が発生した場合は、新しいディスクを削除するか、Disk API を手動で呼び出して、破損していない状態になるようにディスクの内容を置き換える必要があります。
-* RBAC を使用する場合、Storage Explorer は、ストレージ リソースにアクセスするために管理レイヤーのアクセス許可を必要とします。 詳細については、[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)を参照してください。
+* RBAC を使用する場合、Storage Explorer は、ストレージ リソースにアクセスするために管理レイヤーのアクセス許可を必要とします。 詳細については、[トラブルシューティング ガイド](./storage/common/storage-explorer-troubleshooting.md)を参照してください。
 * BLOB コンテナーなど、SAS URI を使用してアタッチされているリソースからデタッチすると、他のアタッチが正しく表示されないエラーが発生することがあります。 この問題は、グループ ノードを更新するだけで回避できます。 詳細については、#537 をご覧ください。
 * VS for Mac を使用しており、カスタム AAD 構成を作成したことがある場合、サインインできないことがあります。 この問題を回避するには、~/.IdentityService/AadConfigurations の内容を削除します。 これを行ってもブロックが解除されない場合は、この問題についてコメントをお寄せください。
 * Azurite は、すべての Storage API を完全に実装しているわけではありません。 そのため、開発ストレージに Azurite を使用すると、予期しないエラーや動作が発生する可能性があります。
@@ -108,7 +108,7 @@ ms.locfileid: "87828780"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux で Storage Explorer を実行するには、特定の依存関係を先にインストールする必要があります。 詳細については、Storage Explorer の[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)をご確認ください。
+* Linux で Storage Explorer を実行するには、特定の依存関係を先にインストールする必要があります。 詳細については、Storage Explorer の[トラブルシューティング ガイド](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies)をご確認ください。
 
 ## <a name="previous-releases"></a>以前のリリース
 
@@ -176,7 +176,7 @@ ms.locfileid: "87828780"
   * ディスクのスナップショットを作成する
 
 ディスクのアップロード、ダウンロード、およびリージョン間のコピーは、AzCopy v10 を利用して行われます。
-* Linux の Snap Store を介して Storage Explorer をインストールできるようになりました。 Snap Store を介してインストールすると、.NET Core を含めてすべての依存関係がインストールされます。 現時点では、Ubuntu および CentOS で Storage Explorer が正常に動作することを確認済みです。 他の Linux ディストリビューションにおいて Snap Store からのインストールで問題が発生した場合は、[GitHub でイシューを開いてください](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=)。 Snap Store からのインストールの詳細については、[概要ガイド](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux)を参照してください。 #68
+* Linux の Snap Store を介して Storage Explorer をインストールできるようになりました。 Snap Store を介してインストールすると、.NET Core を含めてすべての依存関係がインストールされます。 現時点では、Ubuntu および CentOS で Storage Explorer が正常に動作することを確認済みです。 他の Linux ディストリビューションにおいて Snap Store からのインストールで問題が発生した場合は、[GitHub でイシューを開いてください](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=)。 Snap Store からのインストールの詳細については、[概要ガイド](./vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux)を参照してください。 #68
 * Azure Active Directory (Azure AD) でのアタッチに対して、この機能が ADLS Gen2 ユーザーにとってより使いやすくなるように、次の 2 つの大きな変更が行われました。
   * アタッチするリソースが存在するテナントを選択できるようになりました。 これは、リソースのサブスクリプションへの RBAC アクセスが必要がなくなったことを意味します。
   * ADLS Gen2 BLOB コンテナーをアタッチする場合は、コンテナー内の特定のパスにアタッチできるようになりました。
@@ -202,7 +202,7 @@ ms.locfileid: "87828780"
 * ディスクのアップロードまたは貼り付けをキャンセルしたタイミングによっては、新しいディスクが破損した状態で残される可能性があります。 この問題が発生した場合は、新しいディスクを削除するか、Disk API を手動で呼び出して、破損していない状態になるようにディスクの内容を置き換える必要があります。
 * ディスクのアップロードまたは貼り付けをキャンセルしたタイミングによっては、新しいディスクが破損した状態で残される可能性があります。 この問題が発生した場合は、新しいディスクを削除するか、Disk API を手動で呼び出して、破損していない状態になるようにディスクの内容を置き換える必要があります。
 * AzCopy 以外の Blob のダウンロードを実行すると、サイズの大きいファイルの MD5 が検証されません。 これは、Storage SDK のバグが原因です。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* RBAC を使用する場合、Storage Explorer は、ストレージ リソースにアクセスするために管理レイヤーのアクセス許可を必要とします。 詳細については、[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)を参照してください。
+* RBAC を使用する場合、Storage Explorer は、ストレージ リソースにアクセスするために管理レイヤーのアクセス許可を必要とします。 詳細については、[トラブルシューティング ガイド](./storage/common/storage-explorer-troubleshooting.md)を参照してください。
 * BLOB コンテナーなど、SAS URI を使用してアタッチされているリソースからデタッチすると、他のアタッチが正しく表示されないエラーが発生することがあります。 この問題は、グループ ノードを更新するだけで回避できます。 詳細については、#537 をご覧ください。
 * VS for Mac を使用しており、カスタム AAD 構成を作成したことがある場合、サインインできないことがあります。 この問題を回避するには、~/.IdentityService/AadConfigurations の内容を削除します。 これを行ってもブロックが解除されない場合は、この問題についてコメントをお寄せください。
 * Azurite は、すべての Storage API を完全に実装しているわけではありません。 そのため、開発ストレージに Azurite を使用すると、予期しないエラーや動作が発生する可能性があります。
@@ -224,7 +224,7 @@ ms.locfileid: "87828780"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux で Storage Explorer を実行するには、特定の依存関係を先にインストールする必要があります。 詳細については、Storage Explorer の[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)をご確認ください。
+* Linux で Storage Explorer を実行するには、特定の依存関係を先にインストールする必要があります。 詳細については、Storage Explorer の[トラブルシューティング ガイド](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies)をご確認ください。
 
 
 ## <a name="version-1100"></a>バージョン 1.10.0
@@ -250,7 +250,7 @@ ms.locfileid: "87828780"
     * ディスクのスナップショットを作成する
 
     ディスクのアップロード、ダウンロード、およびリージョン間のコピーは、AzCopy v10 を利用して行われます。
-* Linux の Snap Store を介して Storage Explorer をインストールできるようになりました。 Snap Store を介してインストールすると、.NET Core を含めてすべての依存関係がインストールされます。 現時点では、Ubuntu および CentOS で Storage Explorer が正常に動作することを確認済みです。 他の Linux ディストリビューションにおいて Snap Store からのインストールで問題が発生した場合は、[GitHub でイシューを開いてください](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=)。 Snap Store からのインストールの詳細については、[概要ガイド](https://aka.ms/storageexplorer/snapinformation)を参照してください。 [#68](https://www.github.com/Microsoft/AzureStorageExplorer/issues/68)
+* Linux の Snap Store を介して Storage Explorer をインストールできるようになりました。 Snap Store を介してインストールすると、.NET Core を含めてすべての依存関係がインストールされます。 現時点では、Ubuntu および CentOS で Storage Explorer が正常に動作することを確認済みです。 他の Linux ディストリビューションにおいて Snap Store からのインストールで問題が発生した場合は、[GitHub でイシューを開いてください](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=)。 Snap Store からのインストールの詳細については、[概要ガイド](./vs-azure-tools-storage-manage-with-storage-explorer.md)を参照してください。 [#68](https://www.github.com/Microsoft/AzureStorageExplorer/issues/68)
 * Azure Active Directory (Azure AD) でのアタッチに対して、この機能が ADLS Gen2 ユーザーにとってより使いやすくなるように、次の 2 つの大きな変更が行われました。* アタッチするリソースが存在するテナントを選択できるようになりました。 これは、リソースのサブスクリプションへの RBAC アクセスが必要がなくなったことを意味します。
         * ADLS Gen2 Blob コンテナーをアタッチする場合は、コンテナー内の特定のパスにアタッチできるようになりました。
 * ADLS Gen2 のファイルとフォルダーの ACL を管理する場合、Storage Explorer に、ACL 内のエンティティのフレンドリ名が表示されるようになりました。 [#957](https://www.github.com/Microsoft/AzureStorageExplorer/issues/957)
@@ -276,7 +276,7 @@ ms.locfileid: "87828780"
 * ディスクのアップロードまたは貼り付けが失敗し、その失敗の前に新しいディスクが作成されていた場合、Storage Explorer はそのディスクを削除しません。
 * ディスクのアップロードまたは貼り付けをキャンセルしたタイミングによっては、新しいディスクが破損した状態で残される可能性があります。 この問題が発生した場合は、新しいディスクを削除するか、Disk API を手動で呼び出して、破損していない状態になるようにディスクの内容を置き換える必要があります。
 * AzCopy 以外の Blob のダウンロードを実行すると、サイズの大きいファイルの MD5 が検証されません。 これは、Storage SDK のバグが原因です。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* RBAC を使用する場合、Storage Explorer は、ストレージ リソースにアクセスするために管理レイヤーのアクセス許可を必要とします。 詳細については、[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)を参照してください。
+* RBAC を使用する場合、Storage Explorer は、ストレージ リソースにアクセスするために管理レイヤーのアクセス許可を必要とします。 詳細については、[トラブルシューティング ガイド](./storage/common/storage-explorer-troubleshooting.md)を参照してください。
 * BLOB コンテナーなど、SAS URI を使用してアタッチされているリソースからデタッチすると、他のアタッチが正しく表示されないエラーが発生することがあります。 この問題は、グループ ノードを更新するだけで回避できます。 詳細については、#537 をご覧ください。
 * VS for Mac を使用しており、カスタム AAD 構成を作成したことがある場合、サインインできないことがあります。 この問題を回避するには、~/.IdentityService/AadConfigurations の内容を削除します。 これを行ってもブロックが解除されない場合は、この問題についてコメントをお寄せください。
 * Azurite は、すべての Storage API を完全に実装しているわけではありません。 そのため、開発ストレージに Azurite を使用すると、予期しないエラーや動作が発生する可能性があります。
@@ -298,7 +298,7 @@ ms.locfileid: "87828780"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux で Storage Explorer を実行するには、特定の依存関係を先にインストールする必要があります。 詳細については、Storage Explorer の[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)をご確認ください。
+* Linux で Storage Explorer を実行するには、特定の依存関係を先にインストールする必要があります。 詳細については、Storage Explorer の[トラブルシューティング ガイド](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies)をご確認ください。
 
 ## <a name="version-190"></a>バージョン 1.9.0
 7/1/2019
@@ -334,7 +334,7 @@ ms.locfileid: "87828780"
 ### <a name="known-issues"></a>既知の問題
 
 * AzCopy 以外の Blob のダウンロードを実行すると、サイズの大きいファイルの MD5 が検証されません。 これは、Storage SDK のバグが原因です。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* RBAC を使用する場合、Storage Explorer は、ストレージ リソースにアクセスするために管理レイヤーのアクセス許可を必要とします。 詳細については、[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)を参照してください。
+* RBAC を使用する場合、Storage Explorer は、ストレージ リソースにアクセスするために管理レイヤーのアクセス許可を必要とします。 詳細については、[トラブルシューティング ガイド](./storage/common/storage-explorer-troubleshooting.md)を参照してください。
 * プロキシの背後にある場合に ADLS Gen2 BLOB にアクセスしようとすると、失敗する可能性があります。
 * BLOB コンテナーなど、SAS URI を使用してアタッチされているリソースからデタッチすると、他のアタッチが正しく表示されないエラーが発生することがあります。 この問題は、グループ ノードを更新するだけで回避できます。 詳細については、#537 をご覧ください。
 * VS for Mac を使用しており、カスタム AAD 構成を作成したことがある場合、サインインできないことがあります。 この問題を回避するには、~/.IdentityService/AadConfigurations の内容を削除します。 これを行ってもブロックが解除されない場合は、この問題についてコメントをお寄せください。
@@ -356,7 +356,7 @@ ms.locfileid: "87828780"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux で Storage Explorer を実行するには、特定の依存関係を先にインストールする必要があります。 詳細については、Storage Explorer の[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)をご確認ください。
+* Linux で Storage Explorer を実行するには、特定の依存関係を先にインストールする必要があります。 詳細については、Storage Explorer の[トラブルシューティング ガイド](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies)をご確認ください。
 
 ## <a name="version-181"></a>バージョン 1.8.1
 5/13/2019
@@ -391,7 +391,7 @@ ms.locfileid: "87828780"
 ### <a name="known-issues"></a>既知の問題
 
 * AzCopy 以外の Blob のダウンロードを実行すると、サイズの大きいファイルの MD5 が検証されません。 これは、Storage SDK のバグが原因です。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* RBAC を使用する場合、Storage Explorer は、ストレージ リソースにアクセスするために管理レイヤーのアクセス許可を必要とします。 詳細については、[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)を参照してください。
+* RBAC を使用する場合、Storage Explorer は、ストレージ リソースにアクセスするために管理レイヤーのアクセス許可を必要とします。 詳細については、[トラブルシューティング ガイド](./storage/common/storage-explorer-troubleshooting.md)を参照してください。
 * プロキシの背後にある場合に ADLS Gen2 BLOB にアクセスしようとすると、失敗する可能性があります。
 * BLOB コンテナーなど、SAS URI を使用してアタッチされているリソースからデタッチすると、他のアタッチが正しく表示されないエラーが発生することがあります。 この問題は、グループ ノードを更新するだけで回避できます。 詳細については、#537 をご覧ください。
 * VS for Mac を使用しており、カスタム AAD 構成を作成したことがある場合、サインインできないことがあります。 この問題を回避するには、~/.IdentityService/AadConfigurations の内容を削除します。 これを行ってもブロックが解除されない場合は、この問題についてコメントをお寄せください。
@@ -413,7 +413,7 @@ ms.locfileid: "87828780"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux で Storage Explorer を実行するには、特定の依存関係を先にインストールする必要があります。 詳細については、Storage Explorer の[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)をご確認ください。
+* Linux で Storage Explorer を実行するには、特定の依存関係を先にインストールする必要があります。 詳細については、Storage Explorer の[トラブルシューティング ガイド](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies)をご確認ください。
 
 ## <a name="version-180"></a>バージョン 1.8.0
 5/1/2019
@@ -443,7 +443,7 @@ ms.locfileid: "87828780"
 ### <a name="known-issues"></a>既知の問題
 
 * AzCopy 以外の Blob のダウンロードを実行すると、サイズの大きいファイルの MD5 が検証されません。 これは、Storage SDK のバグが原因です。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* RBAC を使用する場合、Storage Explorer は、ストレージ リソースにアクセスするために管理レイヤーのアクセス許可を必要とします。 詳細については、[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)を参照してください。
+* RBAC を使用する場合、Storage Explorer は、ストレージ リソースにアクセスするために管理レイヤーのアクセス許可を必要とします。 詳細については、[トラブルシューティング ガイド](./storage/common/storage-explorer-troubleshooting.md)を参照してください。
 * プロキシの背後にある場合に ADLS Gen2 BLOB にアクセスしようとすると、失敗する可能性があります。
 * BLOB コンテナーなど、SAS URI を使用してアタッチされているリソースからデタッチすると、他のアタッチが正しく表示されないエラーが発生することがあります。 この問題は、グループ ノードを更新するだけで回避できます。 詳細については、#537 をご覧ください。
 * VS for Mac を使用しており、カスタム AAD 構成を作成したことがある場合、サインインできないことがあります。 この問題を回避するには、~/.IdentityService/AadConfigurations の内容を削除します。 これを行ってもブロックが解除されない場合は、この問題についてコメントをお寄せください。
@@ -465,7 +465,7 @@ ms.locfileid: "87828780"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Linux で Storage Explorer を実行するには、特定の依存関係を先にインストールする必要があります。 詳細については、Storage Explorer の[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)をご確認ください。
+* Linux で Storage Explorer を実行するには、特定の依存関係を先にインストールする必要があります。 詳細については、Storage Explorer の[トラブルシューティング ガイド](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies)をご確認ください。
 
 ## <a name="version-170"></a>バージョン 1.7.0
 3/5/2019
@@ -499,7 +499,7 @@ ms.locfileid: "87828780"
 
 ### <a name="known-issues"></a>既知の問題
 
-* RBAC を使用する場合、Storage Explorer は、ストレージ リソースにアクセスするために管理レイヤーのアクセス許可を必要とします。 詳細については、[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)を参照してください。
+* RBAC を使用する場合、Storage Explorer は、ストレージ リソースにアクセスするために管理レイヤーのアクセス許可を必要とします。 詳細については、[トラブルシューティング ガイド](./storage/common/storage-explorer-troubleshooting.md)を参照してください。
 * プロキシの背後にある場合に ADLS Gen2 BLOB にアクセスしようとすると、失敗する可能性があります。
 * BLOB コンテナーなど、SAS URI を使用してアタッチされているリソースからデタッチすると、他のアタッチが正しく表示されないエラーが発生することがあります。 この問題は、グループ ノードを更新するだけで回避できます。 詳細については、#537 をご覧ください。
 * BLOB コンテナーなど、SAS URI を使用してアタッチされているリソースからデタッチすると、他のアタッチが正しく表示されないエラーが発生することがあります。 この問題は、グループ ノードを更新するだけで回避できます。 詳細については、#537 を参照してください。
@@ -559,7 +559,7 @@ ms.locfileid: "87828780"
         
 ### <a name="new"></a>新規
 
-* Storage Explorer を使用して、[RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 経由で BLOB データにアクセスできるようになりました。 サインインしている場合に、自分のストレージ アカウントのキーを Storage Explorer が取得できないと、データ操作時の認証に OAuth トークンが使用されます。
+* Storage Explorer を使用して、[RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) 経由で BLOB データにアクセスできるようになりました。 サインインしている場合に、自分のストレージ アカウントのキーを Storage Explorer が取得できないと、データ操作時の認証に OAuth トークンが使用されます。
 * Storage Explorer は ADLS Gen2 ストレージ アカウントをサポートするようになりました。 ストレージ アカウントに対して階層型名前空間が有効になっていることを Storage Explorer が検出すると、ストレージ アカウントの名前の横に "(ADLS Gen2 プレビュー)" と表示されます。 Storage Explorer では、サインインしている場合に階層型名前空間が有効になっているかどうかや、ストレージ アカウントに名前とキーを関連付けているかどうかを検出できます。 ADLS Gen2 ストレージ アカウントでは、Storage Explorer を使用して、以下の操作を実行できます。
   * コンテナーの作成と削除
   * コンテナーのプロパティとアクセス許可の管理 (左側)
@@ -628,7 +628,7 @@ ms.locfileid: "87828780"
         
 ### <a name="new"></a>新規
 
-* Storage Explorer を使用して、[RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 経由で BLOB データにアクセスできるようになりました。 サインインしている場合に、自分のストレージ アカウントのキーを Storage Explorer が取得できないと、データ操作時の認証に OAuth トークンが使用されます。
+* Storage Explorer を使用して、[RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) 経由で BLOB データにアクセスできるようになりました。 サインインしている場合に、自分のストレージ アカウントのキーを Storage Explorer が取得できないと、データ操作時の認証に OAuth トークンが使用されます。
 * Storage Explorer は ADLS Gen2 ストレージ アカウントをサポートするようになりました。 ストレージ アカウントに対して階層型名前空間が有効になっていることを Storage Explorer が検出すると、ストレージ アカウントの名前の横に "(ADLS Gen2 プレビュー)" と表示されます。 Storage Explorer では、サインインしている場合に階層型名前空間が有効になっているかどうかや、ストレージ アカウントに名前とキーを関連付けているかどうかを検出できます。 ADLS Gen2 ストレージ アカウントでは、Storage Explorer を使用して、以下の操作を実行できます。
   * コンテナーの作成と削除
   * コンテナーのプロパティとアクセス許可の管理 (左側)
@@ -683,7 +683,7 @@ ms.locfileid: "87828780"
 
 ### <a name="new"></a>新規
 
-* Storage Explorer を使用して、[RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 経由で BLOB データにアクセスできるようになりました。 サインインしている場合に、自分のストレージ アカウントのキーを Storage Explorer が取得できないと、データ操作時の認証に OAuth トークンが使用されます。
+* Storage Explorer を使用して、[RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) 経由で BLOB データにアクセスできるようになりました。 サインインしている場合に、自分のストレージ アカウントのキーを Storage Explorer が取得できないと、データ操作時の認証に OAuth トークンが使用されます。
 * Storage Explorer は ADLS Gen2 ストレージ アカウントをサポートするようになりました。 ストレージ アカウントに対して階層型名前空間が有効になっていることを Storage Explorer が検出すると、ストレージ アカウントの名前の横に "(ADLS Gen2 プレビュー)" と表示されます。 Storage Explorer では、サインインしている場合に階層型名前空間が有効になっているかどうかや、ストレージ アカウントに名前とキーを関連付けているかどうかを検出できます。 ADLS Gen2 ストレージ アカウントでは、Storage Explorer を使用して、以下の操作を実行できます。
   * コンテナーの作成と削除
   * コンテナーのプロパティとアクセス許可の管理 (左側)
@@ -1144,7 +1144,7 @@ ms.locfileid: "87828780"
 
 ### <a name="new"></a>新規
 * Storage Explorer で Azurite を使用できるようになりました。 注: Azurite への接続は、既定の開発エンドポイントにハードコードされています。
-* Storage Explorer で、BLOB 専用のストレージ アカウントと GPV2 ストレージ アカウントのアクセス レベルがサポートされるようになりました。 アクセス レベルの詳細については、[こちら](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)をご覧ください。
+* Storage Explorer で、BLOB 専用のストレージ アカウントと GPV2 ストレージ アカウントのアクセス レベルがサポートされるようになりました。 アクセス レベルの詳細については、[こちら](./storage/blobs/storage-blob-storage-tiers.md)をご覧ください。
 * SAS を生成するときに、開始時刻が不要になりました。
 
 ### <a name="fixes"></a>修正
@@ -1204,7 +1204,7 @@ ms.locfileid: "87828780"
 * Storage Explorer のフィードバックが GitHub で公開されるようになりました。 左下にあるフィードバック ボタンをクリックするか、[https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues) にアクセスすると、問題に関するページに移動できます。 自由に、提案、問題の報告、質問を行ったり、その他の形式のフィードバックを提供したりしてください。
 * TLS/SSL 証明書の問題が発生していて、問題となっている証明書が見つからない場合に、コマンド ラインから `--ignore-certificate-errors` フラグを指定して Storage Explorer を起動できるようになりました。 このフラグを指定して起動すると、Storage Explorer では TLS/SSL 証明書のエラーが無視されます。
 * BLOB とファイル項目のコンテキスト メニューに「ダウンロード」オプションが追加されました。
-* アクセシビリティとスクリーン リーダーのサポートが強化されました。 ユーザー補助機能を使用する場合、詳細については、[アクセシビリティのドキュメント](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility)を参照してください。
+* アクセシビリティとスクリーン リーダーのサポートが強化されました。 ユーザー補助機能を使用する場合、詳細については、[アクセシビリティのドキュメント](./vs-azure-tools-storage-explorer-accessibility.md)を参照してください。
 * Storage Explorer で Electron 1.8.3 を使用するようになりました。
 
 ### <a name="breaking-changes"></a>重大な変更

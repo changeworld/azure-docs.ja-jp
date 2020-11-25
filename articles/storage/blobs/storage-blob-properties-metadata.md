@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 19d20a208672667e5a4354fd1b7d185d0c00f8d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 984fb00e163a090534da1fb41850dcfef6c5d516
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399127"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521531"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>.NET を使用した BLOB プロパティとメタデータの管理
 
@@ -126,7 +126,7 @@ private static async Task GetBlobPropertiesAsync(CloudBlob blob)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadataasync)
 ---
 
-メタデータ名/値ペアは有効な HTTP ヘッダーであり、HTTP ヘッダーに適用されるすべての制約に準拠する必要があります。 メタデータ名は有効な HTTP ヘッダー名および有効な C# 識別子でなければならず、ASCII 文字のみを含むことができます。また、大文字と小文字が区別されないものとして扱う必要があります。 非 ASCII 文字を含む [Base64 エンコード](https://docs.microsoft.com/dotnet/api/system.convert.tobase64string)または [URL エンコード](https://docs.microsoft.com/dotnet/api/system.web.httputility.urlencode)のメタデータ値。
+メタデータ名/値ペアは有効な HTTP ヘッダーであり、HTTP ヘッダーに適用されるすべての制約に準拠する必要があります。 メタデータ名は有効な HTTP ヘッダー名および有効な C# 識別子でなければならず、ASCII 文字のみを含むことができます。また、大文字と小文字が区別されないものとして扱う必要があります。 非 ASCII 文字を含む [Base64 エンコード](/dotnet/api/system.convert.tobase64string)または [URL エンコード](/dotnet/api/system.web.httputility.urlencode)のメタデータ値。
 
 メタデータの名前は、C# 識別子の名前付け規則に従う必要があります。 メタデータ名では、それが作成されたときに使用された大文字と小文字の区別が維持されますが、設定または読み取り時には大文字と小文字が区別されません。 同じ名前を使用する 2 つ以上のメタデータ ヘッダーがリソースに送信された場合、Azure BLOB ストレージは HTTP エラー コード 400 (正しくない要求) を返します。
 

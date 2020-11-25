@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 49a763af8d936ec9fd15c59c908ba9015f803930
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 639f2ef12d190a56e04a9b48d96ea0a6537d243c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568644"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020114"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure Time Series Insights Gen1 Explorer
 
@@ -45,8 +45,8 @@ Azure Time Series Insights は、数十億件の IoT イベントを同時に簡
 Azure Time Series Insights Explorer を使用するには、以下が必要です。
 
 - Azure Time Series Insights 環境を作成する。 詳細については、[Azure Time Series Insights の使用を開始する方法](./time-series-insights-get-started.md)に関するページを参照してください。
-- 環境内でお使いのアカウントへの[アクセス権を与えます](time-series-insights-data-access.md)。
-- それに [IoT ハブ](time-series-insights-how-to-add-an-event-source-iothub.md)または[イベント ハブ](time-series-insights-how-to-add-an-event-source-eventhub.md)のイベント ソースを追加します。
+- 環境内でお使いのアカウントへの[アクセス権を与えます](./concepts-access-policies.md)。
+- それに [IoT ハブ](./how-to-ingest-data-iot-hub.md)または[イベント ハブ](./how-to-ingest-data-event-hub.md)のイベント ソースを追加します。
 
 ## <a name="explore-and-query-data"></a>データを調査しクエリを実行する
 
@@ -101,7 +101,7 @@ Azure Time Series Insights Explorer を使用するには、以下が必要で�
 
 1. グラフを表示してデータを視覚的に調査し、**グラフ** ツールを使用します。
 
-    - 特定の期間または 1 つのデータ系列を**選択**または**クリック**します。
+    - 特定の期間または 1 つのデータ系列を **選択** または **クリック** します。
     - 選択した期間の中で、ズームしたりイベントを調査したりできます。
     - データ系列の中で、系列を別の列で分割したり、系列を新しい期間として追加したり、選択した系列だけを表示したり、選択した系列を除外したり、その系列をピン留めしたり、選択した系列からイベントを調査したりできます。
     - グラフの左にあるフィルター領域では、表示されているすべてのデータ系列を確認し、値または名前で並べ替えることができます。 また、すべてのデータ系列、またはピン留めされた系列やピン留めされていない系列を表示することもできます。 1 つのデータ系列を選択してその系列を別の列で分割したり、系列を新しい期間として追加したり、選択された系列のみを表示したり、選択された系列を除外したり、その系列をピン留めしたり、選択された系列のイベントを調査したりできます。
@@ -109,7 +109,7 @@ Azure Time Series Insights Explorer を使用するには、以下が必要で�
 
     [![グラフ ツールの右上隅のオプション設定](media/time-series-insights-explorer/tsi-ga-example-chart-options.png)](media/time-series-insights-explorer/tsi-ga-example-chart-options.png#lightbox)
 
-1. 特定のクエリ内の固有のデータ系列や異常なデータ系列をすばやく見つけるには、**ヒートマップ**を使用します。 ヒートマップとして視覚化できるのは 1 つの検索期間だけです。
+1. 特定のクエリ内の固有のデータ系列や異常なデータ系列をすばやく見つけるには、**ヒートマップ** を使用します。 ヒートマップとして視覚化できるのは 1 つの検索期間だけです。
 
     [Time Series Insights Explorer のヒートマップ グラフ](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 

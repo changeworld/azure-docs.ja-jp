@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 03ece391b6f33b47f34705cec1c5907602ac7b23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 198ba23920179e71e095e498ee2173d7f0111d42
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400181"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026731"
 ---
 # <a name="azure-peering-service-overview"></a>Azure Peering Service の概要
 
@@ -45,7 +45,7 @@ Peering Service は次のように定義できます。
 Peering Service は、Azure ExpressRoute や VPN 製品などのプライベート接続製品ではありません。
 
 > [!NOTE]
-> ExpressRoute の詳細については、[ExpressRoute のドキュメント](https://docs.microsoft.com/azure/expressroute/)をご覧ください。
+> ExpressRoute の詳細については、[ExpressRoute のドキュメント](../expressroute/index.yml)をご覧ください。
 >
 
 ## <a name="background"></a>バックグラウンド
@@ -57,7 +57,7 @@ Microsoft およびパートナー サービス プロバイダーは、Peering 
 ![Microsoft ネットワークとパブリック接続](./media/peering-service-about/peering-service-background-final.png)
 
 > [!NOTE]
-> Microsoft のグローバル ネットワークの詳細については、「[マイクロソフトのグローバル ネットワーク](https://docs.microsoft.com/azure/networking/microsoft-global-network)」を参照してください。
+> Microsoft のグローバル ネットワークの詳細については、「[マイクロソフトのグローバル ネットワーク](../networking/microsoft-global-network.md)」を参照してください。
 >
 
 ## <a name="why-use-peering-service"></a>Peering Service を使用する理由

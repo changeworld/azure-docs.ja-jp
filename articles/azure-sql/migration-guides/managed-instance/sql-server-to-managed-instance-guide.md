@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 0aba809fd18dfd74a344a32b2335aba9426c9845
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 5c20fbbe25b51160f42f233d30c39ccaec0f5cac
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496310"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026063"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>移行ガイド:SQL Server から SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -99,7 +99,7 @@ SQL Managed Instance でのワークロードのパフォーマンスと SQL Ser
 
 ### <a name="create-sql-managed-instance"></a>SQL マネージド インスタンスの作成 
 
-検出および評価フェーズの情報に基づいて、適切なサイズのターゲット SQL Managed Instance を作成します。 これを行うには、[Azure portal](../../managed-instance/instance-create-quickstart.md)、[PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)、または [Azure Resource Manager (ARM) テンプレート](/../../managed-instance/create-template-quickstart.md)を使用します。 
+検出および評価フェーズの情報に基づいて、適切なサイズのターゲット SQL Managed Instance を作成します。 これを行うには、[Azure portal](../../managed-instance/instance-create-quickstart.md)、[PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)、または [Azure Resource Manager (ARM) テンプレート](/azure/azure-sql/managed-instance/create-template-quickstart)を使用します。 
 
 
 ## <a name="migrate"></a>移行
@@ -142,7 +142,7 @@ DMS を使用して移行を実行するには、次の手順に従います。
 
 バックアップと復元を使用して移行するには、次の手順に従います。 
 
-1. データベースを Azure Blob Storage にバックアップします。 たとえば、[SQL Server Management Studio](/ssms/download-sql-server-management-studio-ssms) で [[backup to url]\(URL へのバックアップ\)](/sql/relational-databases/backup-restore/sql-server-backup-to-url) を使用します。 [Microsoft Azure Tool](https://go.microsoft.com/fwlink/?LinkID=324399) を使用して、SQL Server 2012 SP1 CU2 より前のデータベースをサポートします。 
+1. データベースを Azure Blob Storage にバックアップします。 たとえば、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) で [[backup to url]\(URL へのバックアップ\)](/sql/relational-databases/backup-restore/sql-server-backup-to-url) を使用します。 [Microsoft Azure Tool](https://go.microsoft.com/fwlink/?LinkID=324399) を使用して、SQL Server 2012 SP1 CU2 より前のデータベースをサポートします。 
 1. SQL Server Management Studio を使用して Azure SQL Managed Instance に接続します。 
 1. データベース バックアップがある Azure Blob Storage のアカウントにアクセスするために、Shared Access Signature を使用して資格情報を作成します。 次に例を示します。
 

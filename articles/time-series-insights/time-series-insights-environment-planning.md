@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 546c53334b7700ab73c22edb2d82b324bfad61a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e0f1ea42aa2ba888b89dd652d3397a3a2163a3e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569449"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016209"
 ---
 # <a name="plan-your-azure-time-series-insights-gen1-environment"></a>Azure Time Series Insights Gen1 環境の計画
 
@@ -55,8 +55,8 @@ Azure Time Series Insights の 2 つの SKU の容量とリテンション期間
 
 Azure Time Series Insights には 2 つのモードがあります。
 
-- 1 つのモードでは、最新のデータに対して最適化されます。 **古いデータを消去する**ポリシーが強制され、最近のデータをインスタンスで利用できるように残します。 このモードは、既定でオンになっています。
-- もう 1 つのモードでは、構成されているリテンション制限を下回るようにデータが最適化されます。 **[Pause ingress]\(イングレスを一時停止\)** が**ストレージ上限の超過動作**として選択されているとき、新しいデータのイングレスが防止されます。
+- 1 つのモードでは、最新のデータに対して最適化されます。 **古いデータを消去する** ポリシーが強制され、最近のデータをインスタンスで利用できるように残します。 このモードは、既定でオンになっています。
+- もう 1 つのモードでは、構成されているリテンション制限を下回るようにデータが最適化されます。 **[Pause ingress]\(イングレスを一時停止\)** が **ストレージ上限の超過動作** として選択されているとき、新しいデータのイングレスが防止されます。
 
 Azure portal 内の環境の構成ページ上で、リテンション期間を調整し、2 つのモードを切り替えることができます。
 
@@ -92,7 +92,7 @@ Azure Time Series Insights 環境を計画する場合に注目すべき 2 つ�
 
 たとえば、単一の S1 SKU を用意して 1 分あたり 720 イベントのレートでデータをイングレスすると、データ レートのスパイクが 1440 イベント以下のレートで 1 時間未満であれば、環境内で顕著な待機時間は発生しません。 ただし、1 分あたり 1440 イベントを超える状態が 1 時間以上続いた場合、環境内では、視覚化されクエリに使用できるデータに待機時間が発生する傾向があります。
 
-プッシュすることが予想されるデータの量が事前にわからない場合があります。 この場合、Azure portal サブスクリプションで [Azure IoT Hub](../iot-hub/iot-hub-metrics.md) と [Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) のデータ テレメトリを確認できます。 テレメトリは、環境をプロビジョニングする方法を決定する際に役立ちます。 Azure portal にあるそれぞれのイベント ソースの **[メトリック]** ウィンドウを使用して、テレメトリを表示します。 イベント ソースのメトリックを理解すると、Azure Time Series Insights 環境をより効果的に計画し、プロビジョニングできます。
+プッシュすることが予想されるデータの量が事前にわからない場合があります。 この場合、Azure portal サブスクリプションで [Azure IoT Hub](../iot-hub/monitor-iot-hub.md) と [Azure Event Hubs](/archive/blogs/cloud_solution_architect/using-the-azure-rest-apis-to-retrieve-event-hub-metrics) のデータ テレメトリを確認できます。 テレメトリは、環境をプロビジョニングする方法を決定する際に役立ちます。 Azure portal にあるそれぞれのイベント ソースの **[メトリック]** ウィンドウを使用して、テレメトリを表示します。 イベント ソースのメトリックを理解すると、Azure Time Series Insights 環境をより効果的に計画し、プロビジョニングできます。
 
 ### <a name="calculate-ingress-requirements"></a>イングレス要件の計算
 
@@ -115,7 +115,7 @@ Azure Time Series Insights へイベントを送信する方法によって、�
 
 ## <a name="ensure-that-you-have-reference-data"></a>参照データの確認
 
-*参照データセット*は、イベント ソースからのイベントを増幅する項目の集まりです。 イベント ソースから受信した各イベントは、Azure Time Series Insights のイングレス エンジンによって、指定した参照データ セット内の対応するデータ行と結合されます。 増幅されたイベントは、その後、クエリに利用できます。 結合は、参照データセットに定義されている**主キー**列に基づきます。
+*参照データセット* は、イベント ソースからのイベントを増幅する項目の集まりです。 イベント ソースから受信した各イベントは、Azure Time Series Insights のイングレス エンジンによって、指定した参照データ セット内の対応するデータ行と結合されます。 増幅されたイベントは、その後、クエリに利用できます。 結合は、参照データセットに定義されている **主キー** 列に基づきます。
 
 > [!NOTE]
 > 参照データは、遡及的に結合されることはありません。 構成されてアップロードされた後は、現在および将来のイングレス データのみが対応付けられ、参照データセットに結合されます。 大量の履歴データを Azure Time Series Insights に送信することを計画している場合、Azure Time Series Insights 内で最初に参照データのアップロードや作成を行わないと、作業をやり直す必要が生じることがあります (ちなみに、楽しいことではありません)。  
@@ -128,6 +128,6 @@ Azure Time Series Insights での参照データの作成、アップロード�
 
 - [Azure portal で新しい Azure Time Series Insights 環境](time-series-insights-get-started.md)を作成することから開始します。
 
-- Azure Time Series Insights に[イベント ハブのイベント ソースを追加する](time-series-insights-how-to-add-an-event-source-eventhub.md)方法を学習します。
+- Azure Time Series Insights に[イベント ハブのイベント ソースを追加する](./how-to-ingest-data-event-hub.md)方法を学習します。
 
-- [IoT Hub イベント ソースを構成する](time-series-insights-how-to-add-an-event-source-iothub.md)方法を参照します。
+- [IoT Hub イベント ソースを構成する](./how-to-ingest-data-iot-hub.md)方法を参照します。

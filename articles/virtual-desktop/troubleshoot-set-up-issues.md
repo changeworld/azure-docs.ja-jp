@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d02642b49951b4b116eaae6dbea490ef2720c15d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 126a8e48a8db1c41299a7cb7a34f172342110667
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90084415"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023124"
 ---
 # <a name="host-pool-creation"></a>ホスト プールの作成
 
@@ -57,9 +57,9 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 
 Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失敗をトラブルシューティングするには、次の手順に従います。
 
-1. 「[Azure Resource Manager でのデプロイ操作の表示](../azure-resource-manager/resource-manager-deployment-operations.md)」を使用して、デプロイのエラーを確認します。
-2. デプロイにエラーがない場合、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-resource-manager/resource-group-audit.md)」を使用して、アクティビティ ログのエラーを確認します。
-3. エラーが特定されたら、エラー メッセージと、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../azure-resource-manager/resource-manager-common-deployment-errors.md)」のリソースを使用して問題に対処します。
+1. 「[Azure Resource Manager でのデプロイ操作の表示](../azure-resource-manager/templates/deployment-history.md)」を使用して、デプロイのエラーを確認します。
+2. デプロイにエラーがない場合、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-resource-manager/management/view-activity-logs.md)」を使用して、アクティビティ ログのエラーを確認します。
+3. エラーが特定されたら、エラー メッセージと、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../azure-resource-manager/templates/common-deployment-errors.md)」のリソースを使用して問題に対処します。
 4. 以前のデプロイ中に作成されたすべてのリソースを削除し、テンプレートのデプロイを再試行します。
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>エラー:デプロイに失敗しました….\<hostname>/joindomain
@@ -85,7 +85,7 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 **解決策 2:** 「[エラー: ドメイン名が解決されません](troubleshoot-vm-configuration.md#error-domain-name-doesnt-resolve)」 (「[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration.md)」) を参照してください。
 
-**原因 3:** 仮想ネットワーク (VNET) の DNS 構成が**既定**に設定されています。
+**原因 3:** 仮想ネットワーク (VNET) の DNS 構成が **既定** に設定されています。
 
 これを解決するには、次の操作を実行します。
 

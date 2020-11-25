@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/04/2016
 ms.author: mimckitt
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 536a28801193cdbb4204ca1432892abdc7fb297e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 22e0a19c0e2f5b29b35ebf43a3f250959c9b636d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268487"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521123"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Azure の Web ロールで Twilio を使用して通話する方法
 このガイドでは、Azure でホストされる Web ページから Twilio を使用して通話する方法を説明します。 次のスクリーンショットに示すように、作成されたアプリケーションは指定された番号とメッセージで呼び出しを行うことをユーザーに求めます。
@@ -30,7 +30,7 @@ ms.locfileid: "91268487"
 このトピックでコードを使用するためには次の操作を行う必要があります。
 
 1. [Twilio Console][twilio_console] から、Twilio アカウントと認証トークンを取得します。 Twilio の使用を開始するには、[https://www.twilio.com/try-twilio][try_twilio] でサインアップします。 [https://www.twilio.com/pricing][twilio_pricing] で価格を評価できます。 Twilio から提供される API については、[https://www.twilio.com/voice/api][twilio_api] を参照してください。
-2. *Twilio .NET ライブラリ*を Web ロールに追加します。 このトピックの「**Twilio ライブラリを Web ロール プロジェクトに追加するには**」のセクションを参照してください。
+2. *Twilio .NET ライブラリ* を Web ロールに追加します。 このトピックの「**Twilio ライブラリを Web ロール プロジェクトに追加するには**」のセクションを参照してください。
 
 基本的な [Azure の Web ロール][azure_webroles_get_started]の作成に精通している必要があります。
 
@@ -186,5 +186,5 @@ Azure の ASP.NET Web ロールで Twilio を使用した基本機能を示す�
 [twilio_say]: https://www.twilio.com/docs/api/twiml/say
 
 
-[azure_runtime_ref_dotnet]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.serviceruntime.aspx
-[azure_webroles_get_started]: https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-get-started
+[azure_runtime_ref_dotnet]: /previous-versions/azure/reference/ee741722(v=azure.100)
+[azure_webroles_get_started]: ./cloud-services/cloud-services-dotnet-get-started.md

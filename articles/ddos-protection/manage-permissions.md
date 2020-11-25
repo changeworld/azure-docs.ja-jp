@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 10b10309e438bab3c99cb2ed7202eaa272d24abe
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: dec2c845780b62e9a595c73504037142c511c0e6
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92904996"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989413"
 ---
 # <a name="manage-ddos-protection-plans-permissions-and-restrictions"></a>DDoS Protection プランの管理: アクセス許可と制限
 
@@ -37,7 +37,7 @@ DDoS 保護プランに関する作業を行うには、使用するアカウン
 | Microsoft.Network/ddosProtectionPlans/delete      | DDoS 保護プランを削除する            |
 | Microsoft.Network/ddosProtectionPlans/join/action | DDoS 保護プランを結合する              |
 
-仮想ネットワークに対する DDoS 保護を有効にするには、使うアカウントに[仮想ネットワークの適切なアクション](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#permissions)も割り当てられている必要があります。
+仮想ネットワークに対する DDoS 保護を有効にするには、使うアカウントに[仮想ネットワークの適切なアクション](../virtual-network/manage-virtual-network.md#permissions)も割り当てられている必要があります。
 
 ## <a name="azure-policy"></a>Azure Policy
 

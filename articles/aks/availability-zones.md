@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 2f7132ffa1fa55d1dfd8043677bf9695a589b7af
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 43b57d0b58c9268482ca27fd51040c7152ecdc25
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043029"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026053"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する
 
@@ -31,11 +31,14 @@ Azure CLI バージョン 2.0.76 以降がインストールされて構成さ�
 * オーストラリア東部
 * カナダ中部
 * 米国中部
+* 米国東部 
 * 米国東部 2
-* 米国東部
 * フランス中部
+* ドイツ中西部
 * 東日本
 * 北ヨーロッパ
+* 南アフリカ北部
+* 米国中南部
 * 東南アジア
 * 英国南部
 * 西ヨーロッパ
@@ -60,7 +63,7 @@ Kubernetes では、バージョン 1.12 以降で、Azure 可用性ゾーンが
 
 詳しくは、「[Azure の可用性ゾーンの概要][az-overview]」をご覧ください。
 
-可用性ゾーンを使用してデプロイされる AKS クラスターでは、1 つのリージョン内の複数のゾーンにノードを分散させることができます。 たとえば、  *米国東部 2*  リージョンのクラスターでは、 *米国東部 2* の 3 つすべての可用性ゾーンでノードを作成できます。 この AKS クラスターリソースの分散により、特定のゾーンの障害に対する回復力があるため、クラスターの可用性が向上します。
+可用性ゾーンを使用してデプロイされる AKS クラスターでは、1 つのリージョン内の複数のゾーンにノードを分散させることができます。 たとえば、 *米国東部 2*  リージョンのクラスターでは、*米国東部 2* の 3 つすべての可用性ゾーンでノードを作成できます。 この AKS クラスターリソースの分散により、特定のゾーンの障害に対する回復力があるため、クラスターの可用性が向上します。
 
 ![複数の可用性ゾーンへの AKS ノードの分散](media/availability-zones/aks-availability-zones.png)
 
@@ -72,7 +75,7 @@ Kubernetes では、バージョン 1.12 以降で、Azure 可用性ゾーンが
 
 AKS クラスターの作成時に既定のエージェント プールのゾーンを定義しなかった場合、コントロール プレーン コンポーネントが可用性ゾーン間で分散されることは保証されません。 [az aks nodepool add][az-aks-nodepool-add] コマンドを使用して別のノード プールを追加し、新しいノードに `--zones` を指定することはできますが、コントロール プレーンがゾーン間でどのように分散されているかは変わりません。 可用性ゾーンの設定は、クラスターまたはノード プールの作成時にのみ定義できます。
 
-次の例では、 *myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前の AKS クラスターを作成しています。 合計 *3* つのノードが作成されます (ゾーン *1* にエージェント 1 つ、ゾーン *2* にエージェント 1 つ、ゾーン *3* にエージェント 1 つ)。
+次の例では、*myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前の AKS クラスターを作成しています。 合計 *3* つのノードが作成されます (ゾーン *1* にエージェント 1 つ、ゾーン *2* にエージェント 1 つ、ゾーン *3* にエージェント 1 つ)。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus2
@@ -101,13 +104,13 @@ AKS クラスターの作成には数分かかります。
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-次に、 [kubectl describe][kubectl-describe] コマンドを使用して、クラスター内のノードを一覧表示し、 *failure-domain.beta.kubernetes.io/zone* 値でフィルター処理します。 Bash シェルの例を次に示します。
+次に、[kubectl describe][kubectl-describe] コマンドを使用して、クラスター内のノードを一覧表示し、*failure-domain.beta.kubernetes.io/zone* 値でフィルター処理します。 Bash シェルの例を次に示します。
 
 ```console
 kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"
 ```
 
-次の出力例では、指定のリージョンの複数の可用性ゾーンに分散した 3 つのノードが示されています (1 番目の可用性ゾーンは *eastus2-1* 、2 番目の可用性ゾーンは *eastus2-2* など)。
+次の出力例では、指定のリージョンの複数の可用性ゾーンに分散した 3 つのノードが示されています (1 番目の可用性ゾーンは *eastus2-1*、2 番目の可用性ゾーンは *eastus2-2* など)。
 
 ```console
 Name:       aks-nodepool1-28993262-vmss000000

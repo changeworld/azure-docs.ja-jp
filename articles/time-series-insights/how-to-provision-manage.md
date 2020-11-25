@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: e54e8e9de1df4c8a1c870285d36e4580daaa698a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c38c57a8480ef2addde494b94d70bd2eb679373
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667828"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016770"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen 2 のプロビジョニングと管理
 
@@ -31,8 +31,8 @@ Azure Time Series Insights Gen 2 環境をプロビジョニングする際に�
 
 > [!TIP]
 >
-> * [環境を計画する方法](./time-series-insights-update-plan.md)に関するページをご覧ください。
-> * [イベント ハブ ソースを追加する](./time-series-insights-how-to-add-an-event-source-eventhub.md)方法、または [IoT ハブ ソースを追加する](./time-series-insights-how-to-add-an-event-source-iothub.md)方法に関する記事を参照してください。
+> * [環境を計画する方法](./how-to-plan-your-environment.md)に関するページをご覧ください。
+> * [イベント ハブ ソースを追加する](./how-to-ingest-data-event-hub.md)方法、または [IoT ハブ ソースを追加する](./how-to-ingest-data-iot-hub.md)方法に関する記事を参照してください。
 
 学習内容:
 
@@ -57,18 +57,18 @@ Azure Time Series Insights Gen 2 環境を作成するには:
 
     > [!NOTE]
     >
-    > * タイム シリーズ ID では*大文字と小文字が区別され*、*変更できません*。 (設定後は変更できません。)
-    > * タイム シリーズ ID は最大 *3 つ*のキーから構成されます。 この ID は、データベースの主キーと考えてください。これは、環境にデータを送信する各デバイス センサーを一意に表します。 1 つのプロパティ、または最大 3 つのプロパティの組み合わせにすることができます。
-    > * 詳細は、[タイム シリーズ ID を選択する方法](time-series-insights-update-how-to-id.md)に関する記事を参照してください
+    > * タイム シリーズ ID では *大文字と小文字が区別され*、*変更できません*。 (設定後は変更できません。)
+    > * タイム シリーズ ID は最大 *3 つ* のキーから構成されます。 この ID は、データベースの主キーと考えてください。これは、環境にデータを送信する各デバイス センサーを一意に表します。 1 つのプロパティ、または最大 3 つのプロパティの組み合わせにすることができます。
+    > * 詳細は、[タイム シリーズ ID を選択する方法](./how-to-select-tsid.md)に関する記事を参照してください
 
-1. ストレージ アカウント名とアカウントの種類を選択し、[レプリケーション](https://docs.microsoft.com/azure/storage/common/redundancy-migration?tabs=portal)の選択肢を指定して、Azure Storage アカウントを作成します。 これにより、Azure Storage アカウントが自動的に作成されます。 既定では、[汎用 v2](https://docs.microsoft.com/azure/storage/common/storage-account-overview) アカウントが作成されます。 アカウントは、先に選択した Azure Time Series Insights Gen2 環境と同じリージョンで作成されます。
+1. ストレージ アカウント名とアカウントの種類を選択し、[レプリケーション](../storage/common/redundancy-migration.md?tabs=portal)の選択肢を指定して、Azure Storage アカウントを作成します。 これにより、Azure Storage アカウントが自動的に作成されます。 既定では、[汎用 v2](../storage/common/storage-account-overview.md) アカウントが作成されます。 アカウントは、先に選択した Azure Time Series Insights Gen2 環境と同じリージョンで作成されます。
 または、新しい Azure Time Series Gen2 環境を作成するときに、[Resource Manager テンプレート](./time-series-insights-manage-resources-using-azure-resource-manager-template.md)を使用して BYOS (Bring Your Own Storage) を行うこともできます。
 
 1. **(省略可能)** 環境内の最新のデータに対して高速かつ無制限のクエリが必要な場合は、環境に対してウォームストアを有効にします。 また、Azure Time Series Insights Gen2 環境を作成した後、左側のナビゲーション ウィンドウの **[ストレージ構成]** オプションを使用して、ウォーム ストアを作成または削除することもできます。
 
 1. **(省略可能)** ここでイベント ソースを追加できます。 インスタンスがプロビジョニングされるまで待機することもできます。
 
-   * Azure Time Series Insights では、イベント ソースのオプションとして [Azure IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md) と [Azure Event Hubs](./time-series-insights-how-to-add-an-event-source-eventhub.md) がサポートされています。 環境を作成するときはイベント ソースを 1 つしか追加できませんが、後でイベント ソースを追加できます。
+   * Azure Time Series Insights では、イベント ソースのオプションとして [Azure IoT Hub](./how-to-ingest-data-iot-hub.md) と [Azure Event Hubs](./how-to-ingest-data-event-hub.md) がサポートされています。 環境を作成するときはイベント ソースを 1 つしか追加できませんが、後でイベント ソースを追加できます。
 
      イベント ソースを追加するときは、既存のコンシューマー グループを選択するか、新しいコンシューマー グループを作成できます。 イベント ソースには、環境内にデータを読み取るために、一意のコンシューマー グループが必要であることに注意してください。
 
@@ -92,19 +92,19 @@ Azure portal を使用して Azure Time Series Insights Gen2 環境を管理で�
   * 容量は、Gen2 環境には適用されないため、削除されます。
   * **タイム シリーズ ID** プロパティが追加されます。 これによってデータのパーティション方法が決定されます。
   * 参照データ セットが削除されています。
-  * 表示された URL から [Azure Time Series Insights エクスプローラー](./time-series-insights-update-explorer.md)に移動できます。
+  * 表示された URL から [Azure Time Series Insights エクスプローラー](./concepts-ux-panels.md)に移動できます。
   * お使いの Azure Storage アカウント名が表示されます。
 
 * スケール ユニットは Azure Time Series Insights Gen2 環境には適用されないため、Azure portal の **[構成]** ブレードは削除されています。 ただし、 **[ストレージの構成]** を使用して、新しく導入されたウォームストアを構成できます。
 
-* 参照データの概念は[タイム シリーズ モデル (TSM)](/azure/time-series-insights/concepts-model-overview) に置き換えられたため、Azure portal の **[参照データ]** ブレードは Azure Time Series Insights Gen2 では削除されています。
+* 参照データの概念は [タイム シリーズ モデル (TSM)](./concepts-model-overview.md) に置き換えられたため、Azure portal の **[参照データ]** ブレードは Azure Time Series Insights Gen2 では削除されています。
 
 [![Azure portal の Azure Time Series Insights Gen2 環境](media/v2-update-manage/create-and-manage-overview-confirm.png)](media/v2-update-manage/create-and-manage-overview-confirm.png#lightbox)
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Time Series Insights の一般に利用可能な環境と Gen2 環境の詳細については、[環境の計画](./time-series-insights-update-plan.md)に関する記事を参照してください。
+* Azure Time Series Insights の一般に利用可能な環境と Gen2 環境の詳細については、[環境の計画](./how-to-plan-your-environment.md)に関する記事を参照してください。
 
-* [イベント ハブ ソースを追加する](./time-series-insights-how-to-add-an-event-source-eventhub.md)方法を学習します。
+* [イベント ハブ ソースを追加する](./how-to-ingest-data-event-hub.md)方法を学習します。
 
-* [IoT ハブ ソース](./time-series-insights-how-to-add-an-event-source-iothub.md)を構成します。
+* [IoT ハブ ソース](./how-to-ingest-data-iot-hub.md)を構成します。

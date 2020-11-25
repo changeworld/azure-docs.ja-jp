@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 91c7c19fddab2a4372f183c90532b24e774277d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24d27859aad7642392a5702ab7ddbb727b538d51
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88008051"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025012"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise マルチセッションに関する FAQ
 
@@ -80,8 +80,8 @@ FSLogix プロファイル コンテナーの構成方法の詳細について�
 ほとんどの仮想化環境は、ユーザーが自分のプロファイルに追加のアプリをインストールできないように、既定で構成されています。 ユーザーが Windows Virtual Desktop からサインアウトしたときにアプリが消失しないようにするには、環境内のすべてのユーザープロファイルにそのアプリをプロビジョニングする必要があります。 アプリのプロビジョニングの詳細については、次のリソースをご確認ください。
 
 - [Windows Virtual Desktop で組み込みアプリを発行する](publish-apps.md)
-- [DISM アプリ パッケージ サービスのコマンド ライン オプション](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
-- [Add-AppxProvisionedPackage](https://docs.microsoft.com/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
+- [DISM アプリ パッケージ サービスのコマンド ライン オプション](/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
+- [Add-AppxProvisionedPackage](/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
 
 ## <a name="how-do-i-make-sure-users-dont-download-and-install-apps-from-the-microsoft-store"></a>ユーザーが Microsoft Store からアプリをダウンロードしてインストールしないようにするにはどうすればいいですか？
 
@@ -92,8 +92,8 @@ Microsoft Store アプリを無効にして、ユーザーが既にプロビジ�
 1. 新しいグループ ポリシーを作成します。
 2. **[コンピューターの構成]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]** を選択します。
 3. **[ストア]** を選択します。
-4. **ストア アプリケーション**を選択します。
-5. **無効**を選択し、 **[OK]** を選択します。
+4. **ストア アプリケーション** を選択します。
+5. **無効** を選択し、 **[OK]** を選択します。
 6. **[適用]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ

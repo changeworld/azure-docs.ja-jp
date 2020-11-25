@@ -7,26 +7,26 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5f1c52b764634f8086763aca67dfc32b507d2edd
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 51bd073b6f84f3378b91091e04f2f278ea2f49b6
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042849"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495271"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>IoT プラグ アンド プレイのデジタル ツインを管理する
 
-IoT プラグ アンド プレイでは、デジタル ツインを管理するための**デジタル ツインの取得**操作および**デジタル ツインの更新**操作がサポートされています。 [REST API](/rest/api/iothub/service/digitaltwin)、または[サービス SDK](libraries-sdks.md)のいずれかを使用できます。
+IoT プラグ アンド プレイでは、デジタル ツインを管理するための **デジタル ツインの取得** 操作および **デジタル ツインの更新** 操作がサポートされています。 [REST API](/rest/api/iothub/service/digitaltwin)、または[サービス SDK](libraries-sdks.md)のいずれかを使用できます。
 
 この記事の執筆時点では、デジタル ツイン API のバージョンは `2020-09-30` です。
 
 ## <a name="update-a-digital-twin"></a>デジタル ツインを更新する
 
-IoT プラグ アンド プレイ デバイスは、[Digital Twins Definition Language v2 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) によって記述されたモデルを実装します。 ソリューション開発者は、**デジタル ツイン API の更新**を使用して、コンポーネントの状態と デジタル ツイン のプロパティを更新できます。
+IoT プラグ アンド プレイ デバイスは、[Digital Twins Definition Language v2 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) によって記述されたモデルを実装します。 ソリューション開発者は、**デジタル ツイン API の更新** を使用して、コンポーネントの状態と デジタル ツイン のプロパティを更新できます。
 
 この記事の例として使用されている IoT プラグ アンド プレイ デバイスには、[Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) コンポーネントを持つ [Temperature Controller モデル](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)が実装されています。
 
-次のスニペットは、JSON オブジェクトとしてフォーマットされた、**デジタル ツインの取得**要求に対する応答を示しています。 デジタル ツインの形式の詳細については、「[IoT プラグ アンド プレイのデジタル ツインを理解する](./concepts-digital-twin.md#digital-twin-json-format)」を参照してください。
+次のスニペットは、JSON オブジェクトとしてフォーマットされた、**デジタル ツインの取得** 要求に対する応答を示しています。 デジタル ツインの形式の詳細については、「[IoT プラグ アンド プレイのデジタル ツインを理解する](./concepts-digital-twin.md#digital-twin-json-format)」を参照してください。
 
 ```json
 {
@@ -193,6 +193,6 @@ IoT プラグ アンド プレイ デバイスは、[Digital Twins Definition La
 
 ここまでで、デジタル ツインについて学習しました。その他のリソースを次に示します。
 
-- [ソリューションからデバイスを操作する](quickstart-service-node.md)
+- [ソリューションからデバイスを操作する](quickstart-service.md)
 - [IoT デジタル ツイン REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT Explorer](howto-use-iot-explorer.md)

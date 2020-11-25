@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 64884f07bc59e5ff2b29eac645ddb469ef3db465
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b3fdf052ce7f0d6a5c3497aa1ac971d9249546a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325187"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015594"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>VM 用 Azure Monitor からログを照会する方法
 
@@ -30,7 +30,7 @@ VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、�
 
 ### <a name="connections-and-ports"></a>接続とポート
 
-接続メトリック機能により、Azure Monitor ログに 2 つの新しいテーブル (VMConnection と VMBoundPort) が導入されました。 これらのテーブルは、マシンへの接続 (受信と送信) と、それらに対する開いているまたはアクティブなサーバー ポートに関する情報を提供します。 接続メトリックは、時間枠の間に特定のメトリックを取得する手段を提供する API を介して公開されています。 リスニング ソケットで*受諾*することで得られる TCP 接続は受信ですが、所定の IP とポートに*接続*することで作成される接続は送信です。 接続の方向は Direction プロパティで表され、**受信**または**送信**のいずれかに設定できます。 
+接続メトリック機能により、Azure Monitor ログに 2 つの新しいテーブル (VMConnection と VMBoundPort) が導入されました。 これらのテーブルは、マシンへの接続 (受信と送信) と、それらに対する開いているまたはアクティブなサーバー ポートに関する情報を提供します。 接続メトリックは、時間枠の間に特定のメトリックを取得する手段を提供する API を介して公開されています。 リスニング ソケットで *受諾* することで得られる TCP 接続は受信ですが、所定の IP とポートに *接続* することで作成される接続は送信です。 接続の方向は Direction プロパティで表され、**受信** または **送信** のいずれかに設定できます。 
 
 これらのテーブル内のレコードは、Dependency Agent によって報告されるデータから生成されます。 いずれの記録も、1 分の時間間隔での観測を表します。 TimeGenerated プロパティは、時間間隔の開始を示します。 各レコードには、エンティティに関連付けられたメトリックに加えて、接続またはポートなど、それぞれのエンティティを識別する情報が含まれています。 現在のところ、TCP over IPv4 を使用することで発生するネットワーク アクティビティのみが報告されます。 
 
@@ -49,7 +49,7 @@ VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、�
 
 | プロパティ | 説明 |
 |:--|:--|
-|Direction |接続の方向であり、値は*受信*または*送信*です |
+|Direction |接続の方向であり、値は *受信* または *送信* です |
 |Machine |コンピューターの FQDN |
 |Process |プロセスまたはプロセスのグループの ID、接続の開始/受諾 |
 |SourceIp |送信元の IP アドレス |
@@ -96,7 +96,7 @@ VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、�
 
 #### <a name="geolocation"></a>地理的位置情報
 
-*VMConnection*では、レコードの次のプロパティに、各接続レコードのリモート エンドの地理的位置情報も加えられています。 
+*VMConnection* では、レコードの次のプロパティに、各接続レコードのリモート エンドの地理的位置情報も加えられています。 
 
 | プロパティ | 説明 |
 |:--|:--|
@@ -475,5 +475,5 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 * Azure Monitor でログ クエリを初めて作成する場合は、Azure portal で [Log Analytics の使用方法](../log-query/get-started-portal.md)に関するページを参照してログ クエリを作成してください。
 
-* [検索クエリの記述方法](../log-query/search-queries.md)を参照してください。
+* [検索クエリの記述方法](/azure/azure-monitor/log-query/get-started-queries)を参照してください。
 

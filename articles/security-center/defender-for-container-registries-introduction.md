@@ -7,18 +7,20 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 989115224489ff8fff360a34b27c338ea3e33058
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: d587c4dbdd8f46d6e098ff96f464d456fffc9ccf
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145822"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95529989"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Azure Defender for container registries の概要
 
 Azure Container Registry (ACR) は、Azure デプロイ用のコンテナー イメージを中央のレジストリに格納して管理する、プライベートなマネージド Docker レジストリ サービスです。 これは、オープンソースの Docker Registry 2.0 を基にしています。
 
 サブスクリプション内のすべての Azure Resource Manager ベースのレジストリを保護するには、サブスクリプション レベルで **コンテナー レジストリ用 Azure Defender** を有効にします。 その後、Security Center では、レジストリにプッシュされたイメージ、レジストリにインポートされたイメージ、または過去 30 日以内にプルされたイメージがスキャンされます。 この機能では、イメージごとに課金されます。
+
+[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-container-registries"></a>コンテナー レジストリ用 Azure Defender の利点は何ですか?
 
@@ -45,7 +47,7 @@ Security Center では、スキャナーによる検出結果がフィルター�
 
 - **プッシュ時** - イメージがレジストリにプッシュされるたびに、Security Center はそのイメージを自動的にスキャンします。 イメージのスキャンをトリガーするには、イメージをリポジトリにプッシュしてください。
 
-- **最近プルされたもの** - 新しい脆弱性は日々検出されるため、 **コンテナー レジストリ用 Azure Defender** は、過去 30 日以内にプルされたすべてのイメージもスキャンします。 再スキャンに対する追加料金は発生しません。前述のように、イメージごとに 1 回の課金となります。
+- **最近プルされたもの** - 新しい脆弱性は日々検出されるため、**コンテナー レジストリ用 Azure Defender** は、過去 30 日以内にプルされたすべてのイメージもスキャンします。 再スキャンに対する追加料金は発生しません。前述のように、イメージごとに 1 回の課金となります。
 
 - **インポート時** - Azure Container Registry には、Docker Hub、Microsoft Container Registry、またはその他の Azure コンテナー レジストリからレジストリにイメージを取り込むためのインポート ツールが用意されています。 **コンテナー レジストリ用 Azure Defender** は、インポートした、サポートされているイメージをスキャンします。 詳細については、「[コンテナー レジストリにコンテナー イメージをインポートする](../container-registry/container-registry-import-images.md)」を参照してください。
  

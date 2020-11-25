@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 61c31b24b01b40da4d73a308a4f304f6ff242e41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 729e22f8ad94d2119d0f3f3e9fc474cc83a493a8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88691413"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023073"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Windows Virtual Desktop (クラシック) の診断ツールをデプロイする
 
@@ -111,7 +111,7 @@ PowerShell スクリプトを実行するには:
 推奨されるパフォーマンス カウンターを手動で構成する方法を次に示します。
 
 1. インターネット ブラウザーを開き、管理者アカウントで [Azure portal](https://portal.azure.com/) にサインインします。
-2. 次に、**Log Analytics ワークスペース**に移動して、構成されている Windows パフォーマンス カウンターを確認します。
+2. 次に、**Log Analytics ワークスペース** に移動して、構成されている Windows パフォーマンス カウンターを確認します。
 3. **[設定]** セクションで **[詳細設定]** を選択します。
 4. その後、 **[データ]**  >  **[Windows パフォーマンス カウンター]** の順に移動し、次のカウンターを追加します。
 
@@ -121,7 +121,7 @@ PowerShell スクリプトを実行するには:
     -   Processor Information(\*)\\Processor Time
     -   User Input Delay per Session(\*)\\Max Input Delay
 
-パフォーマンス カウンターの詳細については、「[Azure Monitor での Windows および Linux のパフォーマンス データ ソース](/azure/azure-monitor/platform/data-sources-performance-counters)」を参照してください。
+パフォーマンス カウンターの詳細については、「[Azure Monitor での Windows および Linux のパフォーマンス データ ソース](../../azure-monitor/platform/data-sources-performance-counters.md)」を参照してください。
 
 >[!NOTE]
 >構成した追加のカウンターは、診断ツール自体には表示されません。 診断ツールに表示されるようにするには、ツールの構成ファイルを構成する必要があります。 詳細な管理でこれを行う方法の手順については、後日 GitHub で提供されます。
@@ -204,7 +204,7 @@ VM の正常性を確認できるようにするには、Log Analytics 接続を
 
 ユーザーが診断ツールを使用できるようにする前に、ユーザーが次のアクセス許可を持っていることを確認してください。
 
-- ユーザーは、Log Analytics の読み取りアクセス権が必要です。 詳細については、[「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](/azure/azure-monitor/platform/roles-permissions-security)を参照してください。
+- ユーザーは、Log Analytics の読み取りアクセス権が必要です。 詳細については、[「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../../azure-monitor/platform/roles-permissions-security.md)を参照してください。
 -  ユーザーは、Windows Virtual Desktop テナントに対する読み取りアクセス権 (RDS 閲覧者ロール) も必要です。 詳細については、「[Windows Virtual Desktop における委任されたアクセス](delegated-access-virtual-desktop-2019.md)」を参照してください。
 
 また、ユーザーに次の情報を提供する必要もあります。

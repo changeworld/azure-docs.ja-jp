@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 1681217c9e55b67ee2a6737aeece5303256bc1e6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 654d7b4ddb332906aba330da20d42a0e16ec79e6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461806"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021441"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor によって監視される内容
 この記事では、Azure Monitor によって監視されるさまざまなアプリケーションとサービスについて説明します。 
@@ -126,7 +126,6 @@ Insights は、特定のアプリケーションやサービスを監視する�
 |Managed Applications  | いいえ | いいえ | いいえ |  |
 |マップ  | いいえ | いいえ | いいえ |  |
 |Media Services | はい | はい | いいえ |  |
-|Microsoft Flow | いいえ | いいえ | いいえ |  |
 |Microsoft マネージド デスクトップ | いいえ | いいえ | いいえ |  |
 |Microsoft PowerApps | いいえ | いいえ | いいえ |  |
 |Microsoft Social Engagement | いいえ | いいえ | いいえ |  |
@@ -137,6 +136,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 |Notification Hubs | はい | いいえ | いいえ |  |
 |オープン データセット | いいえ | いいえ | いいえ |  |
 |ポリシー | いいえ | いいえ | いいえ |  |
+|Power Automate | いいえ | いいえ | いいえ |  |
 |Power BI Embedded | はい | はい | いいえ |  |
 |Private Link | いいえ | いいえ | いいえ |  |
 |Project Spool Communication Platform | いいえ | いいえ | いいえ |  |

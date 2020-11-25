@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: cb12777a6a4fa1e75cd65bc597c87442d592aad5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8d96d7b5952c020493af278ee1ea8ad5ff46716
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598110"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016787"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2 環境の計画
 
@@ -45,7 +45,7 @@ Azure Time Series Insights Gen2 環境をプロビジョニングするときは
 ウォーム ストアのクエリは無料ですが、コールド ストアのクエリにはコストが発生します。 クエリ パターンを理解し、それに従ってウォーム ストア構成を計画することが重要です。 最新データに対する対話型分析はウォーム ストアに配置し、パターン分析と長期的傾向はコールド ストアに配置することをお勧めします。
 
 > [!NOTE]
-> ウォーム データに対してクエリを実行する方法の詳細については、[API リファレンス](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters)に関するページを参照してください。
+> ウォーム データに対してクエリを実行する方法の詳細については、[API リファレンス](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters)に関するページを参照してください。
 
 始めに、3 つの追加項目が必要です。
 
@@ -64,7 +64,7 @@ Azure Time Series Insights Gen2 環境をプロビジョニングするときは
 > [!IMPORTANT]
 > タイム シリーズ ID *は、後で変更できません*。 最終的な選択と初めて使用する前に、それぞれを確認してください。
 
-リソースを一意に区別するために、最大 3 つのキーを選択できます。 詳細については、「[タイム シリーズ ID の選択に関するベスト プラクティス](./time-series-insights-update-how-to-id.md)」および「[取り込み規則](concepts-json-flattening-escaping-rules.md)」を参照してください。
+リソースを一意に区別するために、最大 3 つのキーを選択できます。 詳細については、「[タイム シリーズ ID の選択に関するベスト プラクティス](./how-to-select-tsid.md)」および「[取り込み規則](concepts-json-flattening-escaping-rules.md)」を参照してください。
 
 **Timestamp** プロパティも重要です。 イベント ソースを追加する際に、このプロパティを指定できます。 各イベント ソースには、時間の経過と共にイベント ソースを追跡するために使用されるオプションの Timestamp プロパティがあります。 Timestamp の値は大文字と小文字が区別され、各イベント ソースの個々の仕様に書式設定される必要があります。
 
@@ -74,7 +74,7 @@ Azure Time Series Insights Gen2 環境をプロビジョニングするときは
 
 Azure Time Series Insights 環境の時系列モデルを構成できるようになりました。 新しいモデルにより、IoT データの検索と分析が簡単になります。 時系列データのキュレーション、メンテナンス、およびエンリッチメントが可能になり、コンシューマー対応データ セットの準備に役立ちます。 モデルでは、タイム シリーズ ID が使われ、これは、型と呼ばれる変数と階層に一意のリソースを関連付けるインスタンスにマップされます。 詳細については、[時系列モデル](./concepts-model-overview.md)の概要に関する記事を参照してください。
 
-モデルは動的であるため、いつでも構築できます。 すばやく開始するには、データを Azure Time Series Insights にプッシュする前に、モデルを構築してアップロードします。 モデルを構築するには、[タイム シリーズ モデルの使用](/azure/time-series-insights/concepts-model-overview)に関するページを参照してください。
+モデルは動的であるため、いつでも構築できます。 すばやく開始するには、データを Azure Time Series Insights にプッシュする前に、モデルを構築してアップロードします。 モデルを構築するには、[タイム シリーズ モデルの使用](./concepts-model-overview.md)に関するページを参照してください。
 
 多くのお客様で、タイム シリーズ モデルは既存の資産モデルや既に設置されている ERP システムにマップされます。 既存のモデルがない場合は、迅速に開始できるように、事前構築済みのユーザー エクスペリエンスが[提供されて](https://github.com/Microsoft/tsiclient)います。 モデルがどのように役立つかを考えるため、[サンプル デモ環境](https://insights.timeseries.azure.com/preview/demo)を参照してください。
 

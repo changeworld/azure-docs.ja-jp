@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5810bea7920dbfe91a836814124cbe4c7f6f3bee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edfbbdd1b30cba74cf4f63d6b5e84c2e616e1a0f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653793"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020982"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Explorer
 
@@ -25,11 +25,11 @@ ms.locfileid: "91653793"
 
 Azure Time Series Insights Explorer を使用するには、次のことが必要です。
 
-* Azure Time Series Insights Gen2 環境がプロビジョニングされていること。 インスタンスのプロビジョニングの詳細については、[Azure Time Series Insights Gen2](./time-series-insights-update-create-environment.md) のチュートリアルをお読みください。
-* 作成した Azure Time Series Insights Gen2 環境への[データ アクセスをアカウントに対して提供](./time-series-insights-data-access.md)します。 自分自身と同じように他のユーザーにもアクセスを提供できます。
+* Azure Time Series Insights Gen2 環境がプロビジョニングされていること。 インスタンスのプロビジョニングの詳細については、[Azure Time Series Insights Gen2](./tutorials-set-up-tsi-environment.md) のチュートリアルをお読みください。
+* 作成した Azure Time Series Insights Gen2 環境への[データ アクセスをアカウントに対して提供](./concepts-access-policies.md)します。 自分自身と同じように他のユーザーにもアクセスを提供できます。
 * 環境にデータをプッシュするために Azure Time Series Insights Gen2 環境にイベント ソースを追加します。
-  * [イベント ハブに接続する方法](./time-series-insights-how-to-add-an-event-source-eventhub.md)を参照してください
-  * [IoT ハブに接続する方法](./time-series-insights-how-to-add-an-event-source-iothub.md)を参照してください
+  * [イベント ハブに接続する方法](./how-to-ingest-data-event-hub.md)を参照してください
+  * [IoT ハブに接続する方法](./how-to-ingest-data-iot-hub.md)を参照してください
 
 ## <a name="explore-the-azure-time-series-insights-explorer"></a>Azure Time Series Insights Explorer を試す
 
@@ -38,7 +38,7 @@ Azure Time Series Insights Explorer は次の 7 つの要素で構成されま�
 [![Azure Time Series Insights Explorer の概要](media/v2-update-explorer/preview-explorer-overview.png)](media/v2-update-explorer/preview-explorer-overview.png#lightbox)
 
 1. [環境パネル](#1-environment-panel):すべての Azure Time Series Insights Gen2 環境を表示します。
-1. [ナビゲーション バー](#2-navigation-bar):**分析**ページと**モデル** ページを切り替えることができます。
+1. [ナビゲーション バー](#2-navigation-bar):**分析** ページと **モデル** ページを切り替えることができます。
 1. [階層ツリーと検索パネル](#3-hierarchy-tree-and-search-panel):グラフ化する特定のデータ要素を選択したり、検索したりできます。
 1. [タイム シリーズ ウェル](#4-time-series-well):現在選択されているデータ要素がすべて表示されます。
 1. [グラフ パネル](#5-chart-panel):現在作業しているグラフが表示されます。
@@ -121,15 +121,15 @@ Azure Time Series Insights Gen2 によって、ご利用のタイム シリー�
 
 1. **マーカー要素**:現在選択されているデータ要素とそれに関連する詳細です。
 
-現在のグラフ上にあるデータ ポイントを**左クリック**したまま、選択領域を任意のエンドポイントまでドラッグすることで特定のデータ スライスの詳細を表示できます。 以下に示されるとおり、青い選択領域を**右クリック**し、 **[ズーム]** を選択します。 選択期間にある利用統計情報イベントを表示したり、ダウンロードしたりすることもできます。
+現在のグラフ上にあるデータ ポイントを **左クリック** したまま、選択領域を任意のエンドポイントまでドラッグすることで特定のデータ スライスの詳細を表示できます。 以下に示されるとおり、青い選択領域を **右クリック** し、 **[ズーム]** を選択します。 選択期間にある利用統計情報イベントを表示したり、ダウンロードしたりすることもできます。
 
   [![Gen2 グラフのズーム](media/v2-update-explorer/preview-chart-zoom.png)](media/v2-update-explorer/preview-chart-zoom.png#lightbox)
 
-**ズーム**操作を実行すると、選択したデータ セットが表示されます。 フォーマット コントロールを選択すると、データの 3 とおりの Y 軸表現が順番に表示されます。
+**ズーム** 操作を実行すると、選択したデータ セットが表示されます。 フォーマット コントロールを選択すると、データの 3 とおりの Y 軸表現が順番に表示されます。
 
   [![Gen2 グラフの y 軸](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png)](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png#lightbox)
 
-下に**重複グラフ**の例を示します。
+下に **重複グラフ** の例を示します。
 
   [![重複グラフのオプション](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png)](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png#lightbox)
 
@@ -160,7 +160,7 @@ Azure Time Series Insights Gen2 で利用できる次の Web コントロール�
 
 1. **外部日付範囲スライダー コントロール**:終端コントロールを使用して、内部日付範囲コントロールで使用できる外部日付範囲を選択します。
 
-1. **時間範囲スライダー コントロール**:過去 **30 分**、**過去 12 時間**、**カスタム範囲**など、事前設定された時間範囲の選択肢をすばやく切り替えるために使用します。 この値を変更すると、間隔サイズ スライダー ツールで説明されている使用可能な間隔範囲も変化します。
+1. **時間範囲スライダー コントロール**:過去 **30 分**、**過去 12 時間**、**カスタム範囲** など、事前設定された時間範囲の選択肢をすばやく切り替えるために使用します。 この値を変更すると、間隔サイズ スライダー ツールで説明されている使用可能な間隔範囲も変化します。
 
    [![日付範囲の開始と終了のパネル](media/v2-update-explorer/to-and-from-element.png)](media/v2-update-explorer/to-and-from-element.png#lightbox)
 
@@ -221,7 +221,7 @@ Azure Time Series Insights Gen2 条件編集パネルには、次のパラメー
 | `IN` | String、Bool、Double、DateTime、TimeSpan、NULL | すべてのオペランドは同じ型か NULL 定数である必要があります。 |
 | `HAS` | String | 右側で使用できるのは定数文字列リテラルのみです。 空の文字列や NULL は許可されません。 |
 
-サポートされているクエリ操作とデータ型の詳細については、[Time Series 式 (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) に関する記事を参照してください。
+サポートされているクエリ操作とデータ型の詳細については、[Time Series 式 (TSX)](/rest/api/time-series-insights/reference-time-series-expression-syntax) に関する記事を参照してください。
 
 ### <a name="examples-of-where-clauses"></a>Where 句の例
 
@@ -245,4 +245,4 @@ Azure Time Series Insights Gen2 条件編集パネルには、次のパラメー
 
 * Azure Time Series Insights Gen2 での[データ モデリング](./concepts-model-overview.md)について確認する。
 
-* 環境の[診断とトラブルシューティングの方法](./time-series-insights-update-how-to-troubleshoot.md)を確認する。
+* 環境の[診断とトラブルシューティングの方法](./how-to-diagnose-troubleshoot.md)を確認する。

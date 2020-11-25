@@ -8,12 +8,12 @@ mms.devlang: na
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: kumud
-ms.openlocfilehash: 70793b585a11da2eccb43fd6cf47053774f1e991
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 4cc0fd970f9adc26f5fdb024f501dcb0edf77bde
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92904932"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992422"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Azure DDoS Protection Standard との提携
 この記事では、Azure DDoS Protection Standard によって可能になるパートナーの営業案件について説明します。 この記事は、プロダクト マネージャーと営業開発の担当者が投資の道筋を理解し、パートナーとなる価値提案を分析できるように設計されています。
@@ -77,8 +77,8 @@ Azure DDoS Protection Standard パートナーの営業案件は、Azure portal�
 
 - [Azure DDoS Protection 製品のページ](https://azure.microsoft.com/services/ddos-protection/)
 - [Azure DDoS Protection のドキュメント](ddos-protection-overview.md)
-- [Azure DDoS Protection API リファレンス](https://docs.microsoft.com/rest/api/virtualnetwork/ddosprotectionplans)
-- [Azure 仮想ネットワーク API リファレンス](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks)
+- [Azure DDoS Protection API リファレンス](/rest/api/virtualnetwork/ddosprotectionplans)
+- [Azure 仮想ネットワーク API リファレンス](/rest/api/virtualnetwork/virtualnetworks)
 
 ### <a name="get-help"></a>ヘルプの参照
 

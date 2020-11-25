@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: fcc482e6231bbd925fd500a37989052765dede58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f861f9efa6ecc1886647ed6c460b6718ff97e8a1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77538536"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522330"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Azure プライベート エンドポイント接続に関する問題のトラブルシューティング
 
@@ -56,7 +56,7 @@ Azure プライベート エンドポイントは、プライベート リンク
     
        ![仮想ネットワークと DNS の構成](./media/private-endpoint-tsg/vnet-dns-configuration.png)
     
-1. [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) を使用して、データが流れているかどうか確認します。
+1. [Azure Monitor](../azure-monitor/overview.md) を使用して、データが流れているかどうか確認します。
 
     a. プライベート エンドポイント リソースで **[監視]** を選択します。
      - **[受信データ]** または **[送信データ]** を選択します。 
@@ -64,7 +64,7 @@ Azure プライベート エンドポイントは、プライベート リンク
     
        ![プライベート エンドポイント テレメトリの検証](./media/private-endpoint-tsg/private-endpoint-monitor.png)
 
-1.  Azure Network Watcher の **VM の接続のトラブルシューティング**を使用します。
+1.  Azure Network Watcher の **VM の接続のトラブルシューティング** を使用します。
 
     a. クライアント VM を選択します。
 
@@ -93,7 +93,7 @@ Azure プライベート エンドポイントは、プライベート リンク
        - プライベート DNS ゾーン レコードが存在することを確認します。 存在しなければ、作成してください。
      - カスタム DNS を使用する場合:
        - カスタム DNS 設定を確認し、DNS 構成が正しいことを検証します。
-       ガイダンスについては、[プライベート エンドポイントの概要: DNS の構成](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)に関する記事を参照してください。
+       ガイダンスについては、[プライベート エンドポイントの概要: DNS の構成](./private-endpoint-overview.md#dns-configuration)に関する記事を参照してください。
 
     b. ネットワーク セキュリティ グループ (NSG) またはユーザー定義ルートが原因で接続が失敗する場合:
      - NSG アウトバウンド規則を確認し、トラフィックを許可するための適切なアウトバウンド規則を作成します。
@@ -107,5 +107,5 @@ Azure プライベート エンドポイントは、プライベート リンク
 
 ## <a name="next-steps"></a>次のステップ
 
- * [更新されたサブネットにプライベート エンドポイントを作成する (Azure portal)](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)
+ * [更新されたサブネットにプライベート エンドポイントを作成する (Azure portal)](./create-private-endpoint-portal.md)
  * [Azure Private Link トラブルシューティング ガイド](troubleshoot-private-link-connectivity.md)

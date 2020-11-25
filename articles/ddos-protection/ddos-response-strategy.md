@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 23822ce5b311dc479824128d66bc18a15473862d
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 0a80f03ee82e8d1216353482dc867402adcf7d09
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92904902"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992235"
 ---
 # <a name="components-of-a-ddos-response-strategy"></a>DDoS 対応戦略のコンポーネント
 
@@ -44,9 +44,9 @@ Microsoft は、重要なインフラストラクチャ プロバイダーとし
 
 - サービスは複数のリージョンをまたがるフェールオーバーについてアクティブ/アクティブになっているか。
 
-アプリケーションの通常の動作を理解し、DDoS 攻撃中にアプリケーションが想定の動作をしなくなった場合の対応を準備することが不可欠です。 クライアントの動作を模倣するビジネスクリティカルなアプリケーションに監視を構成し、関連する異常が検出された場合に通知されるようにします。 アプリケーションの正常性に関する分析情報を得るには、[監視と診断のベスト プラクティス](https://docs.microsoft.com/azure/architecture/best-practices/monitoring#monitoring-and-diagnostics-scenarios)に関するセクションを参照してください。
+アプリケーションの通常の動作を理解し、DDoS 攻撃中にアプリケーションが想定の動作をしなくなった場合の対応を準備することが不可欠です。 クライアントの動作を模倣するビジネスクリティカルなアプリケーションに監視を構成し、関連する異常が検出された場合に通知されるようにします。 アプリケーションの正常性に関する分析情報を得るには、[監視と診断のベスト プラクティス](/azure/architecture/best-practices/monitoring#monitoring-and-diagnostics-scenarios)に関するセクションを参照してください。
 
-[Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 Application Insights を使用して、実行中の Web アプリケーションを監視します。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。
+[Azure Application Insights](../azure-monitor/app/app-insights-overview.md) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 Application Insights を使用して、実行中の Web アプリケーションを監視します。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。
 
 ## <a name="customer-ddos-response-team"></a>お客様の DDoS 対応チーム
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: 95c1202fb56e882554d40926e9d5ecec7be49086
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a14656bc1abc42fdc3e948fdae1ca07469681d21
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708380"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95249854"
 ---
 # <a name="display-health-status-of-replication-relationship"></a>レプリケーション関係の正常性状態を表示する 
 
@@ -51,12 +51,13 @@ ms.locfileid: "90708380"
     ![レプリケーションの正常性状態](../media/azure-netapp-files/cross-region-replication-health-status.png)
 
 > [!NOTE] 
-> 以前のレプリケーション ジョブが完了していない場合、レプリケーション関係には正常性状態が*異常*として表示されます。 この状態は、短い転送期間で大量のデータが転送された結果です (たとえば、大量のデータに 10 分間の転送時間)。 この場合、関係の状態には*転送中*が表示され、正常性状態には*異常*が表示されます。
+> 以前のレプリケーション ジョブが完了していない場合、レプリケーション関係には正常性状態が *異常* として表示されます。 この状態は、短い転送期間で大量のデータが転送された結果です (たとえば、大量のデータに 10 分間の転送時間)。 この場合、関係の状態には *転送中* が表示され、正常性状態には *異常* が表示されます。
 
 ## <a name="next-steps"></a>次のステップ  
 
 * [リージョン間レプリケーション](cross-region-replication-introduction.md)
 * [ディザスター リカバリーの管理](cross-region-replication-manage-disaster-recovery.md)
 * [ボリューム レプリケーション メトリック](azure-netapp-files-metrics.md#replication)
+* [ボリューム レプリケーションまたはボリュームを削除する](cross-region-replication-delete.md)
 * [リージョン間レプリケーションのトラブルシューティング](troubleshoot-cross-region-replication.md)
 

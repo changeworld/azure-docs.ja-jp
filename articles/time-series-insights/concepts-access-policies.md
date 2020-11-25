@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3528ff790f16b5ec759989966ab35b8bad6565a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86b465d0b3c28c50a8aa85247a14e189d4586a47
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629456"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016277"
 ---
 # <a name="grant-data-access-to-an-environment"></a>環境へのデータ アクセスの許可
 
@@ -60,7 +60,7 @@ ms.locfileid: "91629456"
 
 ## <a name="provide-guest-access-from-another-azure-ad-tenant"></a>別の Azure AD テナントからのゲスト アクセスの提供
 
-`Guest` ロールは管理ロールではありません。 あるテナントから別のテナントに招待されたアカウントを示す用語として使用されます。 テナントのディレクトリに招待されると、ゲスト アカウントには、他のアカウントと同様に、同じアクセス制御を適用できます。 [アクセス制御 (IAM)] ブレードを使用して、Azure Time Series Insights 環境に管理アクセスを許可できます。 または、[データ アクセス ポリシー] ブレードで、環境内のデータへのアクセスを許可できます。 Azure Active Directory (Azure AD) テナントのゲスト アクセスの詳細については、「[Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)」を参照してください。
+`Guest` ロールは管理ロールではありません。 あるテナントから別のテナントに招待されたアカウントを示す用語として使用されます。 テナントのディレクトリに招待されると、ゲスト アカウントには、他のアカウントと同様に、同じアクセス制御を適用できます。 [アクセス制御 (IAM)] ブレードを使用して、Azure Time Series Insights 環境に管理アクセスを許可できます。 または、[データ アクセス ポリシー] ブレードで、環境内のデータへのアクセスを許可できます。 Azure Active Directory (Azure AD) テナントのゲスト アクセスの詳細については、「[Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../active-directory/external-identities/add-users-administrator.md)」を参照してください。
 
 別のテナントから Azure AD ユーザーに Azure Time Series Insights 環境へのゲスト アクセスを付与するには、以下の手順を実行します。
 
@@ -124,4 +124,4 @@ ms.locfileid: "91629456"
 
 * Azure Active Directory アプリの登録手順については、[認証と承認](time-series-insights-authentication-and-authorization.md)に関する記事を参照してください。
 
-* [Azure Time Series Insights Explorer で自分の環境](./time-series-insights-update-explorer.md)を表示します。
+* [Azure Time Series Insights Explorer で自分の環境](./concepts-ux-panels.md)を表示します。

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 716928761d23c2cf04ebcc72e253ad7884408065
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34064fe3fe88a34b0dd2430d7adec3ebcb17ebcc
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061846"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95528229"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>(リソース グループ) のリソースをリージョン間で移動する
 
@@ -27,7 +27,7 @@ ms.locfileid: "90061846"
 - 移動するリソースが配置されているサブスクリプションの "*所有者*" アクセス権が必要です。
     - Azure サブスクリプションの特定のソースと宛先のマッピングに対してリソースを初めて追加すると、そのサブスクリプションによって信頼される[システム割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (旧称 Managed Service Identify (MSI)) が Resource Mover により作成されます。
     - ID を作成し、必要なロール (ソース サブスクリプションの共同作成者またはユーザー アクセス管理者) に割り当てるには、リソースを追加するのに使用するアカウントに、サブスクリプションに対する "*所有者*" 権限が必要です。 Azure ロールの詳細については、[こちらを参照してください](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)。
-- このサブスクリプションには、ターゲット リージョン内にソース リソースを作成するための十分なクォータが必要です。 これがない場合は、追加の制限を要求してください。 [詳細については、こちらを参照してください](/azure/azure-resource-manager/management/azure-subscription-service-limits)。
+- このサブスクリプションには、ターゲット リージョン内にソース リソースを作成するための十分なクォータが必要です。 これがない場合は、追加の制限を要求してください。 [詳細については、こちらを参照してください](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 - VM の移動先となるターゲット リージョンに関連付する料金と課金を確認します。 [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用すると便利です。
 - 移動するリソースが Resource Mover によってサポートされていることを確認します。
     - Azure VM および関連付けられているディスク

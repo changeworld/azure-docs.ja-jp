@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: b59bc33698be516ec5a2e289b52dafcb9e9efcbe
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 4da707ab698599c8ea5dd8e1ea8647f543eb2a68
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341860"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95524251"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure リージョン間で Azure VM を移動するためのサポート
 
@@ -121,11 +121,11 @@ Azure RBAC ポリシー | サポートされていません | VM の Azure ロ�
 
 **コンポーネント** | **サポート** | **詳細**
 --- | --- | ---
-OS ディスクの最大サイズ | 2048 GB | VM ディスクに関する[詳細を表示します](../virtual-machines/windows/managed-disks-overview.md)。
-一時ディスク | サポートされていません | 一時ディスクは準備プロセスから常に除外されます。<br/><br/> 一時ディスクに永続データを格納しないでください。 [詳細については、こちらを参照してください](../virtual-machines/windows/managed-disks-overview.md#temporary-disk)。
+OS ディスクの最大サイズ | 2048 GB | VM ディスクに関する[詳細を表示します](../virtual-machines/managed-disks-overview.md)。
+一時ディスク | サポートされていません | 一時ディスクは準備プロセスから常に除外されます。<br/><br/> 一時ディスクに永続データを格納しないでください。 [詳細については、こちらを参照してください](../virtual-machines/managed-disks-overview.md#temporary-disk)。
 データ ディスクの最大サイズ | マネージド ディスクの場合は 8,192 GB
 データ ディスクの最小サイズ |  マネージド ディスクの場合は 2 GB |
-データ ディスクの最大数 | 最大 64 (特定の Azure VM サイズでのサポートに従います) | VM サイズに関する[詳細を表示します](../virtual-machines/windows/sizes.md)。
+データ ディスクの最大数 | 最大 64 (特定の Azure VM サイズでのサポートに従います) | VM サイズに関する[詳細を表示します](../virtual-machines/sizes.md)。
 データ ディスクの変更レート | Premium ストレージではディスクあたり最大 10 MBps。 Standard ストレージではディスクあたり最大 2 MBps。 | ディスクでの平均データ変更レートが継続的に最大値より高い場合、準備が追いつかなくなります。<br/><br/>  ただし、上限の超過が散発的である場合は、準備が追いつきます。しかし、復旧ポイントがわずかに遅延することもあります。
 データ ディスク (Standard ストレージ アカウント) | サポートされていません。 | ストレージの種類をマネージド ディスクに変更してから、VM を移動してみてください。
 データ ディスク (Premium ストレージ アカウント) | サポートされていません | ストレージの種類をマネージド ディスクに変更してから、VM を移動してみてください。

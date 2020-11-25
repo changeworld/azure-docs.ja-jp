@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 86e3422cbd1cbf92a0d0d218267001c934403753
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: cc3a08f383368b189e41bebd204707f2483e77c0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930698"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018309"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>ホスト プールのリモート デスクトップ プロトコル (RDP) プロパティをカスタマイズする
 
@@ -20,7 +20,7 @@ ms.locfileid: "91930698"
 
 マルチ モニター エクスペリエンスやオーディオ リダイレクトなど、ホスト プールのリモート デスクトップ プロトコル (RDP) のプロパティをカスタマイズすると、ニーズに基づいてユーザーに最適なエクスペリエンスを提供できます。 Azure portal を使用するか、**Update-AzWvdHostPool** コマンドレットで *-CustomRdpProperty* パラメーターを使用して、Windows Virtual Desktop の RDP プロパティをカスタマイズできます。
 
-サポートされているプロパティとその既定値の全リストについては、「[サポートされるリモート デスクトップ RDP ファイルの設定](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context)」を参照してください。
+サポートされているプロパティとその既定値の全リストについては、「[サポートされるリモート デスクトップ RDP ファイルの設定](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext)」を参照してください。
 
 ## <a name="default-rdp-file-properties"></a>既定の RDP ファイルのプロパティ
 
@@ -44,7 +44,7 @@ Azure portal で RDP プロパティを構成するには
 2. 検索バーに「**windows virtual desktop**」と入力します。
 3. サービスの下で **[Windows Virtual Desktop]** を選択します。
 4. [Windows Virtual Desktop] ページで、画面の左側にあるメニューの **[ホスト プール]** を選択します。
-5. 更新する**ホスト プールの名前**を選択します。
+5. 更新する **ホスト プールの名前** を選択します。
 6. 画面の左側にあるメニューで **[RDP プロパティ]** を選択します。
 7. 必要なプロパティを設定します。
    - または、 **[詳細]** タブを開き、次のセクションの PowerShell の例のように、セミコロンで区切られた形式で RDP プロパティを追加できます。

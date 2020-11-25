@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 7599a0c7b48bdc371d851ec20282af82e77783bf
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: c3a23276ce19f6d7b4cf341bac155ec84363fe5f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505310"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018343"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows Virtual Desktop 用にグラフィックス処理装置 (GPU) のアクセラレーションを構成する
 
@@ -23,27 +23,27 @@ Windows Virtual Desktop では、アプリのパフォーマンスとスケー�
 
 ## <a name="select-an-appropriate-gpu-optimized-azure-virtual-machine-size"></a>GPU で最適化する Azure 仮想マシンの適切なサイズを選択する
 
-Azure の [NV シリーズ](/azure/virtual-machines/nv-series)、[NVv3 シリーズ](/azure/virtual-machines/nvv3-series)、または [NVv4 シリーズ](/azure/virtual-machines/nvv4-series)の各 VM サイズのいずれかを選択します。 これらは、アプリとデスクトップの仮想化に合わせて調整され、アプリと Windows ユーザー インターフェイスで GPU アクセラレーションを有効にすることができます。 実際のホスト プールに適した選択は、特定のアプリ ワークロード、ユーザー エクスペリエンスの望ましい品質、コストなど、さまざまなの要因に依存します。 一般に、GPU が大きくて高機能であるほど、特定のユーザー密度でのユーザー エクスペリエンスは向上しますが、GPU サイズが小さく、分割されている場合は、コストと品質をよりきめ細やかに制御することができます。
+Azure の [NV シリーズ](../virtual-machines/nv-series.md)、[NVv3 シリーズ](../virtual-machines/nvv3-series.md)、または [NVv4 シリーズ](../virtual-machines/nvv4-series.md)の各 VM サイズのいずれかを選択します。 これらは、アプリとデスクトップの仮想化に合わせて調整され、アプリと Windows ユーザー インターフェイスで GPU アクセラレーションを有効にすることができます。 実際のホスト プールに適した選択は、特定のアプリ ワークロード、ユーザー エクスペリエンスの望ましい品質、コストなど、さまざまなの要因に依存します。 一般に、GPU が大きくて高機能であるほど、特定のユーザー密度でのユーザー エクスペリエンスは向上しますが、GPU サイズが小さく、分割されている場合は、コストと品質をよりきめ細やかに制御することができます。
 
 >[!NOTE]
 >Azure の NC、NCv2、NCv3、ND、および NDv2 シリーズの VM は通常、Windows Virtual Desktop のセッション ホストには適していません。 これらの VM は、NVIDIA CUDA を使用して構築されたものなど、特殊な高パフォーマンスのコンピューティング ツールまたは機械学習ツール向けに設計されています。 NVIDIA GPU を使用した一般的なアプリとデスクトップの高速化には、NVIDIA GRID ライセンスが必要です。これは、推奨される VM サイズで Azure によって提供されますが、NC/ND シリーズ VM 用に個別に配置する必要があります。
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>ホスト プールを作成し、仮想マシンをプロビジョニングして、アプリ グループを構成する
 
-選択したサイズの VM を使って、新しいホスト プールを作成します。 手順については、「[チュートリアル:Azure portal を使用してホスト プールを作成する](/azure/virtual-desktop/create-host-pools-azure-marketplace)」を参照してください。
+選択したサイズの VM を使って、新しいホスト プールを作成します。 手順については、「[チュートリアル:Azure portal を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)」を参照してください。
 
 Windows Virtual Desktop では、次のオペレーティング システムで GPU アクセラレーションを使用したレンダリングとエンコードがサポートされています。
 
 * Windows 10 バージョン 1511 以降
 * Windows Server 2016 以降
 
-また、アプリ グループを構成するか、または新しいホスト プールを作成すると自動的に作成される ("Desktop Application Group" という名前の) 既定のデスクトップ アプリ グループを使う必要があります。 手順については、「[チュートリアル:Windows Virtual Desktop のアプリ グループを管理する](/azure/virtual-desktop/manage-app-groups)」を参照してください。
+また、アプリ グループを構成するか、または新しいホスト プールを作成すると自動的に作成される ("Desktop Application Group" という名前の) 既定のデスクトップ アプリ グループを使う必要があります。 手順については、「[チュートリアル:Windows Virtual Desktop のアプリ グループを管理する](./manage-app-groups.md)」を参照してください。
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>サポートされているグラフィック ドライバーを仮想マシンにインストールする
 
-Windows Virtual Desktop で Azure N シリーズ VM の GPU 機能を利用するには、適切なグラフィック ドライバーをインストールする必要があります。 「[サポートされているオペレーティング システムとドライバー](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers)」の手順に従って、手動で、または Azure VM 拡張機能を使用して適切なグラフィック ベンターのドライバーをインストールします。
+Windows Virtual Desktop で Azure N シリーズ VM の GPU 機能を利用するには、適切なグラフィック ドライバーをインストールする必要があります。 「[サポートされているオペレーティング システムとドライバー](../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers)」の手順に従って、手動で、または Azure VM 拡張機能を使用して適切なグラフィック ベンターのドライバーをインストールします。
 
-Windows Virtual Desktop でサポートされているのは、Azure によって配布されたドライバーのみです。 NVIDIA GPU が搭載されている Azure NV シリーズの VM の場合は、NVIDIA Tesla (CUDA) ドライバーではなく、[NVIDIA GRID ドライバー](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)のみが、汎用アプリとデスクトップ用の GPU アクセラレーションをサポートしています。
+Windows Virtual Desktop でサポートされているのは、Azure によって配布されたドライバーのみです。 NVIDIA GPU が搭載されている Azure NV シリーズの VM の場合は、NVIDIA Tesla (CUDA) ドライバーではなく、[NVIDIA GRID ドライバー](../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers)のみが、汎用アプリとデスクトップ用の GPU アクセラレーションをサポートしています。
 
 ドライバーをインストールした後は、VM を再起動する必要があります。 上記の説明の検証手順を使って、グラフィック ドライバーが正常にインストールされたことを確認します。
 
@@ -92,7 +92,7 @@ Windows Virtual Desktop でサポートされているのは、Azure によっ�
 
 アプリでレンダリングに GPU が使われていることを確認するには、次のいずれかを試します。
 
-* NVIDIA GPU を搭載した Azure VM の場合は、「[ドライバーのインストールの確認](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation)」の説明に従って `nvidia-smi` ユーティリティを使用して、アプリ実行時の GPU 使用率を確認します。
+* NVIDIA GPU を搭載した Azure VM の場合は、「[ドライバーのインストールの確認](../virtual-machines/windows/n-series-driver-setup.md#verify-driver-installation)」の説明に従って `nvidia-smi` ユーティリティを使用して、アプリ実行時の GPU 使用率を確認します。
 * サポートされているオペレーティング システムのバージョンでは、タスク マネージャーを使って GPU の利用を確認できます。 [パフォーマンス] タブで GPU を選択し、アプリで GPU が利用されているかどうかを確認します。
 
 ## <a name="verify-gpu-accelerated-frame-encoding"></a>GPU アクセラレーションを使用するフレーム エンコードを検証する
@@ -115,5 +115,5 @@ Windows Virtual Desktop でサポートされているのは、Azure によっ�
 
 これらの手順により、1 つのセッション ホスト (1 つの VM) で GPU アクセラレーションが稼働状態になるはずです。 さらに大きなホスト プールで GPU アクセラレーションを有効にするには、いくつか追加の考慮事項があります。
 
-* 多数の VM でのドライバーのインストールと更新を簡素化するには、[VM 拡張機能](/azure/virtual-machines/extensions/overview)を使用することを検討してください。 NVIDIA GPU が搭載された VM には [NVIDIA GPU ドライバー拡張機能](/azure/virtual-machines/extensions/hpccompute-gpu-windows)を使用し、AMD GPU が搭載された VM には [AMD GPU ドライバー拡張機能](/azure/virtual-machines/extensions/hpccompute-amd-gpu-windows)を使用します。
-* 多数の VM でのグループ ポリシーの構成を簡素化するには、Active Directory グループ ポリシーを使うことを検討します。 Active Directory ドメインでのグループ ポリシーのデプロイについては、「[Working with Group Policy Objects (グループ ポリシー オブジェクトの操作)](https://go.microsoft.com/fwlink/p/?LinkId=620889)」をご覧ください。
+* 多数の VM でのドライバーのインストールと更新を簡素化するには、[VM 拡張機能](../virtual-machines/extensions/overview.md)を使用することを検討してください。 NVIDIA GPU が搭載された VM には [NVIDIA GPU ドライバー拡張機能](../virtual-machines/extensions/hpccompute-gpu-windows.md)を使用し、AMD GPU が搭載された VM には [AMD GPU ドライバー拡張機能](../virtual-machines/extensions/hpccompute-amd-gpu-windows.md)を使用します。
+* 多数の VM でのグループ ポリシーの構成を簡素化するには、Active Directory グループ ポリシーを使うことを検討します。 Active Directory ドメインでのグループ ポリシーのデプロイについては、「[Working with Group Policy Objects (グループ ポリシー オブジェクトの操作)](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731212(v=ws.11))」をご覧ください。

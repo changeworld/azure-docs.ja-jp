@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 1bf0ea35c51b063a7720a1542a23a49fbcdbc557
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b02662658b2199a13f117ad95c6402f9b2974f9
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88892985"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519848"
 ---
 # <a name="create-php-web-and-worker-roles"></a>PHP Web ロールと worker ロールの作成
 
@@ -189,9 +189,9 @@ PS C:\MyProject> Stop-AzureEmulator
 詳細については、 [PHP デベロッパー センター](https://azure.microsoft.com/develop/php/)を参照してください。
 
 [install ps and emulators]: https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[サービス定義ファイル (.csdef)]: https://msdn.microsoft.com/library/windowsazure/ee758711.aspx
-[サービス構成ファイル (.cscfg)]: https://msdn.microsoft.com/library/windowsazure/ee758710.aspx
+[サービス定義ファイル (.csdef)]: /previous-versions/azure/reference/ee758711(v=azure.100)
+[サービス構成ファイル (.cscfg)]: /previous-versions/azure/reference/ee758710(v=azure.100)
 [iis.net]: https://www.iis.net/
-[sql native client]: https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation
+[sql native client]: /sql/sql-server/sql-server-technical-documentation
 [sqlsrv drivers]: https://php.net/sqlsrv
 [ フォルダーに、]: https://go.microsoft.com/fwlink/?LinkID=239648

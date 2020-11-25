@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 211ad590ab01d0be26d799064e1227accc619585
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 2c143c299cec1d48dd5438d5350c818d5cc93800
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496419"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023720"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>移行の概要: SQL Server から SQL Managed Instance
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,7 @@ SQL Server を SQL Managed Instance に移行する主な利点の 1 つは、�
 デプロイ時にコンピューティング リソースとストレージ リソースを選択できます。その後、[Azure portal](../../database/scale-resources.md) を使用して、アプリケーションのダウンタイムなしにそれらを変更できます。 
 
 > [!IMPORTANT]
-> [Managed Instance の仮想ネットワーク要件](/../../managed-instance/connectivity-architecture-overview.md#network-requirements)の不一致があると、新しいインスタンスを作成することや、既存のインスタンスを使用することができない場合があります。  [新しいネットワークの作成](/../../managed-instance/virtual-network-subnet-create-arm-template?branch=release-ignite-arc-data) および [既存のネットワークの構成](/../../managed-instance/vnet-existing-add-subnet?branch=release-ignite-arc-data) についてご確認ください。 
+> [Managed Instance の仮想ネットワーク要件](/azure/azure-sql/managed-instance/connectivity-architecture-overview#network-requirements)の不一致があると、新しいインスタンスを作成することや、既存のインスタンスを使用することができない場合があります。  [新しいネットワークの作成](/azure/azure-sql/managed-instance/virtual-network-subnet-create-arm-template?branch=release-ignite-arc-data) および [既存のネットワークの構成](/azure/azure-sql/managed-instance/vnet-existing-add-subnet?branch=release-ignite-arc-data) についてご確認ください。 
 
 ### <a name="sql-server-vm-alternative"></a>代替手段 としての SQL Server VM
 
@@ -183,7 +183,7 @@ Azure portal ([構成] ページ) を介して設定された Windows ユーザ�
 
 #### <a name="encryption"></a>暗号化
 
-ネイティブ復元オプションを使用して、 [Transparent Data Encryption](../../database/transparent-data-encryption-tde-overview.md)  によって保護されているデータベースを Managed Instance に移行する場合、データベースの復元 "*前*" に、ソース SQL Server からターゲット SQL Managed Instance に[対応する証明書を移行します](../../managed-instance/tde-certificate-migrate.md)。 
+ネイティブ復元オプションを使用して、 [Transparent Data Encryption](../../database/transparent-data-encryption-tde-overview.md)  によって保護されているデータベースを Managed Instance に移行する場合、データベースの復元 "*前*" に、ソース SQL Server からターゲット SQL Managed Instance に [対応する証明書を移行します](../../managed-instance/tde-certificate-migrate.md)。 
 
 #### <a name="system-databases"></a>システム データベース
 

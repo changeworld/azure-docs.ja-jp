@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cf96906b0dab9a94febe83468f813c7cae0675b0
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 1c957330fbd54660367fa350d6985929f0bbd3d1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874817"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95531391"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>予約容量を使用して BLOB ストレージのコストを最適化する
 
@@ -38,7 +38,7 @@ Azure Storage の予約容量は、単一サブスクリプションまたは複
 
 Azure Storage の予約容量を購入すると、ブロック BLOB と Azure Data Lake Storage Gen2 データの両方に対して予約を使用できます。 予約は購入済み範囲内の使用量に対して適用され、サブスクリプション内の特定のストレージ アカウント、コンテナー、オブジェクトに限定されるものではありません。
 
-Azure Storage の予約は、サブスクリプションまたは共有リソース グループに格納されているデータ量のみを対象としています。 早期削除、操作、帯域幅、およびデータ転送の料金は予約に含まれていません。 予約を購入するとすぐに、予約の属性に一致する容量料金は、従量課金制ではなく割引価格で課金されます。 Azure の予約の詳細については、「[Azure の予約とは](/azure/billing/billing-save-compute-costs-reservations)」を参照してください。
+Azure Storage の予約は、サブスクリプションまたは共有リソース グループに格納されているデータ量のみを対象としています。 早期削除、操作、帯域幅、およびデータ転送の料金は予約に含まれていません。 予約を購入するとすぐに、予約の属性に一致する容量料金は、従量課金制ではなく割引価格で課金されます。 Azure の予約の詳細については、「[Azure の予約とは](../../cost-management-billing/reservations/save-compute-costs-reservations.md)」を参照してください。
 
 ### <a name="supported-account-types-tiers-and-redundancy-options"></a>サポートされているアカウントの種類、アクセス層、冗長性オプション
 
@@ -55,7 +55,7 @@ Azure Storage の予約容量は、汎用 v2 (GPv2) アカウントおよび Blo
 
 予約容量を購入するには:
 
-- 少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制料金の個々のサブスクリプションで**所有者**ロールである必要があります。
+- 少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制料金の個々のサブスクリプションで **所有者** ロールである必要があります。
 - Enterprise サブスクリプションの場合、EA ポータルで **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。
 - クラウド ソリューション プロバイダー (CSP) プログラムの場合、管理者エージェントまたはセールス エージェントのみが Azure Blob Storage の予約容量を購入できます。
 
@@ -67,7 +67,7 @@ Azure Storage の予約を購入する場合は、予約のリージョン、ア
 
 ## <a name="purchase-azure-storage-reserved-capacity"></a>Azure Storage の予約容量を購入する
 
-Azure Storage の予約容量は [Azure portal](https://portal.azure.com) を使用して購入できます。 予約の支払いは、前払いまたは月払いで行います。 月払いでの購入の詳細については、「[前払いまたは月払いで Azure の予約を購入する](/azure/billing/billing-monthly-payments-reservations)」を参照してください。
+Azure Storage の予約容量は [Azure portal](https://portal.azure.com) を使用して購入できます。 予約の支払いは、前払いまたは月払いで行います。 月払いでの購入の詳細については、「[前払いまたは月払いで Azure の予約を購入する](../../cost-management-billing/reservations/prepare-buy-reservation.md)」を参照してください。
 
 お客様のシナリオに適した予約条件を特定する方法については、[Azure Storage の予約容量の割引のしくみ](../../cost-management-billing/reservations/understand-storage-charges.md)に関する記事を参照してください。
 

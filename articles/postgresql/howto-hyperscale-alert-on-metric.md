@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 7e455565a0cd5e1fc96a6fe7d9e0502da3214fcf
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 73705434aef3ee438c02fbfd6502d30e7620b695
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909915"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026456"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure portal を使用して Azure Database for PostgreSQL でのメトリックに対するアラートを設定する - Hyperscale (Citus)
 
@@ -101,8 +101,8 @@ ms.locfileid: "92909915"
 ディスクが容量制限に近づいたら、次の方法で空き領域を増やしてみます。
 
 * データ保持ポリシーを検討します。 可能であれば、古いデータをコールド ストレージに移動します。
-* サーバー グループに[ノードを追加](howto-hyperscale-scaling.md#add-worker-nodes)し、シャードを再調整することを検討します。 再調整を行うと、より多くのコンピューターにデータが分散されます。
-* ワーカー ノードの[容量を増やす](howto-hyperscale-scaling.md#increase-or-decrease-vcores-on-nodes)ことを検討します。 各ワーカーに許されるストレージの最大量は 2 TiB です。 ただし、ノードを追加する方が短時間で完了するため、ノードのサイズを変更する前に、ノードを追加する必要があります。
+* サーバー グループに[ノードを追加](howto-hyperscale-scale-grow.md#add-worker-nodes)し、シャードを再調整することを検討します。 再調整を行うと、より多くのコンピューターにデータが分散されます。
+* ワーカー ノードの[容量を増やす](howto-hyperscale-scale-grow.md#increase-or-decrease-vcores-on-nodes)ことを検討します。 各ワーカーに許されるストレージの最大量は 2 TiB です。 ただし、ノードを追加する方が短時間で完了するため、ノードのサイズを変更する前に、ノードを追加する必要があります。
 
 ### <a name="cpu-usage"></a>CPU 使用率
 

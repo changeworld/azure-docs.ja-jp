@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: b186c2d2c4b5efc8e1e052a63505549e860b5619
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b512a80fcfc26efbe5c008884509aebfd86ed3e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460830"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020846"
 ---
 # <a name="data-storage"></a>データ ストレージ
 
@@ -27,7 +27,7 @@ Azure Time Series Insights Gen2 環境を作成するときには、次のオプ
 
 * コールド データ ストレージ:
   * 環境に合わせて選択したサブスクリプションとリージョンに新しい Azure Storage リソースを作成します。
-  * 既存の Azure Storage アカウントをアタッチします。 このオプションは、Azure Resource Manager [テンプレート](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)から展開する場合にのみ使用でき、Azure portal には表示されません。
+  * 既存の Azure Storage アカウントをアタッチします。 このオプションは、Azure Resource Manager [テンプレート](/azure/templates/microsoft.timeseriesinsights/allversions)から展開する場合にのみ使用でき、Azure portal には表示されません。
 * ウォーム データ ストレージ:
   * ウォーム ストアはオプションであり、プロビジョニング時またはプロビジョニング後に有効または無効にすることができます。 ウォーム ストアを後で有効にする場合、コールド ストアに既にデータがあるときは、後述の[この](concepts-storage.md#warm-store-behavior)セクションを参照して、想定されている動作を理解してください。 ウォーム ストアのデータ保持期間は 7 ～ 31 日に構成でき、必要に応じて調整することもできます。
 
@@ -40,14 +40,14 @@ Azure Time Series Insights Gen2 環境を作成するときには、次のオプ
 
 ## <a name="data-availability"></a>データの可用性
 
-Azure Time Series Insights Gen2 では、最適なクエリ パフォーマンスのために、データのパーティション分割とインデックス付けが行われます。 データは、インデックスが付けられた後、ウォーム ストア (有効な場合) とコールド ストアの両方からクエリを実行できるようになります。 取り込まれるデータの量とパーティションごとのスループット レートは、可用性に影響を与える可能性があります。 最適なパフォーマンスを得るには、イベント ソースの[スループットの制限](./concepts-streaming-ingress-throughput-limits.md)と[ベスト プラクティス](./concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices)を確認してください。 環境でデータ処理の問題が発生した場合に通知されるように、遅延の[警告](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts)を構成することもできます。
+Azure Time Series Insights Gen2 では、最適なクエリ パフォーマンスのために、データのパーティション分割とインデックス付けが行われます。 データは、インデックスが付けられた後、ウォーム ストア (有効な場合) とコールド ストアの両方からクエリを実行できるようになります。 取り込まれるデータの量とパーティションごとのスループット レートは、可用性に影響を与える可能性があります。 最適なパフォーマンスを得るには、イベント ソースの[スループットの制限](./concepts-streaming-ingress-throughput-limits.md)と[ベスト プラクティス](./concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices)を確認してください。 環境でデータ処理の問題が発生した場合に通知されるように、遅延の[警告](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)を構成することもできます。
 
 > [!IMPORTANT]
 > データが利用可能になるまでに最大 60 秒の時間が発生することがあります。 待機時間が 60 秒を大きく上回る場合は、Azure portal を通じてサポート チケットを送信してください。
 
 ## <a name="warm-store"></a>ウォーム ストア
 
-ウォーム ストア内のデータは、[Time Series Query API](./time-series-insights-update-tsq.md)、[Azure Time Series Insights TSI エクスプローラー](./time-series-insights-update-explorer.md)、または [Power BI コネクタ](./how-to-connect-power-bi.md)を介してのみ使用できます。 ウォーム ストア クエリは無料であり、クォータはありませんが、同時要求数 [30 の制限](https://docs.microsoft.com/rest/api/time-series-insights/reference-api-limits#query-apis---limits)があります。
+ウォーム ストア内のデータは、[Time Series Query API](./concepts-query-overview.md)、[Azure Time Series Insights TSI エクスプローラー](./concepts-ux-panels.md)、または [Power BI コネクタ](./how-to-connect-power-bi.md)を介してのみ使用できます。 ウォーム ストア クエリは無料であり、クォータはありませんが、同時要求数 [30 の制限](/rest/api/time-series-insights/reference-api-limits#query-apis---limits)があります。
 
 ### <a name="warm-store-behavior"></a>ウォーム ストアの動作
 
@@ -77,9 +77,9 @@ Azure Time Series Insights Gen2 では、Azure Storage アカウント内の各�
 
 #### <a name="accessing-cold-store-data"></a>コールド ストア データへのアクセス
 
-[Azure Time Series Insights Explorer](./time-series-insights-update-explorer.md) および [Time Series Query API](./time-series-insights-update-tsq.md) からデータにアクセスするだけでなく、コールド ストアに格納されている Parquet ファイルから直接データにアクセスすることもできます。 たとえば、Jupyter Notebook でデータの読み取り、変換、クレンジングを行った後、それを使用して同じ Spark ワークフローで Azure Machine Learning モデルをトレーニングできます。
+[Azure Time Series Insights Explorer](./concepts-ux-panels.md) および [Time Series Query API](./concepts-query-overview.md) からデータにアクセスするだけでなく、コールド ストアに格納されている Parquet ファイルから直接データにアクセスすることもできます。 たとえば、Jupyter Notebook でデータの読み取り、変換、クレンジングを行った後、それを使用して同じ Spark ワークフローで Azure Machine Learning モデルをトレーニングできます。
 
-Azure Storage アカウントから直接データにアクセスするには、Azure Time Series Insights Gen2 データを格納するために使用しているアカウントへの読み取りアクセス権が必要です。 次に、「[Parquet ファイル形式](#parquet-file-format-and-folder-structure)」セクションで説明されている `PT=Time` フォルダーにある Parquet ファイルの作成時刻に基づいて、選択したデータを読み取ることができます。  ストレージ アカウントへの読み取りアクセスを有効にする方法の詳細については、[ストレージ アカウント リソースへのアクセスの管理](../storage/blobs/storage-manage-access-to-resources.md)に関するページを参照してください。
+Azure Storage アカウントから直接データにアクセスするには、Azure Time Series Insights Gen2 データを格納するために使用しているアカウントへの読み取りアクセス権が必要です。 次に、「[Parquet ファイル形式](#parquet-file-format-and-folder-structure)」セクションで説明されている `PT=Time` フォルダーにある Parquet ファイルの作成時刻に基づいて、選択したデータを読み取ることができます。  ストレージ アカウントへの読み取りアクセスを有効にする方法の詳細については、[ストレージ アカウント リソースへのアクセスの管理](../storage/blobs/anonymous-read-access-configure.md)に関するページを参照してください。
 
 #### <a name="data-deletion"></a>データの削除
 
@@ -116,13 +116,13 @@ Azure Time Series Insights Gen2 では、次のようにデータのコピーが
 Azure Time Series Insights Gen2 のイベントは、次のように、Parquet ファイル コンテンツにマップされます。
 
 * 各イベントは、1 行にマップされます。
-* すべての行には、イベントのタイムスタンプの **timestamp** 列が含まれています。 タイムスタンプ プロパティが null になることはありません。 イベント ソースでタイム スタンプ プロパティが指定されていない場合の既定値は、**イベント ソース エンキュー時刻**になります。 格納されているタイムスタンプは、常に UTC 形式です。
+* すべての行には、イベントのタイムスタンプの **timestamp** 列が含まれています。 タイムスタンプ プロパティが null になることはありません。 イベント ソースでタイム スタンプ プロパティが指定されていない場合の既定値は、**イベント ソース エンキュー時刻** になります。 格納されているタイムスタンプは、常に UTC 形式です。
 * すべての行には、Azure Time Series Insights Gen2 環境の作成時に定義される時系列 ID (TSID) 列が含まれます。 TSID プロパティ名には、サフィックス `_string` が含まれます。
 * テレメトリ データとして送信される他のすべてのプロパティは、プロパティの型に応じて、`_bool` (ブール値)、`_datetime` (タイム スタンプ)、`_long` (long)、`_double` (倍精度浮動小数点数型)、`_string` (文字列)、または `dynamic` (動的) で終わる列名にマップされます。  詳細については、「[サポートされるデータ型](./concepts-supported-data-types.md)」を参照してください。
 * このマッピング スキーマは、ファイル形式の最初のバージョンに適用され、**V = 1** として参照され、同じ名前のベース フォルダーに格納されます。 この機能が進化するにつれて、このマッピング スキーマが変更され、参照名が増える可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [データ モデリング](./time-series-insights-update-tsm.md)を確認します。
+* [データ モデリング](./concepts-model-overview.md)を確認します。
 
-* [Azure Time Series Insights Gen2 環境](./time-series-insights-update-plan.md)を計画します。
+* [Azure Time Series Insights Gen2 環境](./how-to-plan-your-environment.md)を計画します。

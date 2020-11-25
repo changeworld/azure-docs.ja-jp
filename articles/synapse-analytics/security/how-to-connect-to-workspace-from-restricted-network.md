@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7cff2d8245095489fbba3b7af24b416885995e4d
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 55ec8be176dc7274a3b9a1feca53726d57eeb422
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637134"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024467"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>制限されたネットワークからのワークスペース リソースへの接続
 
@@ -40,7 +40,7 @@ ms.locfileid: "94637134"
 
 他の 3 つのルールを作成する場合は、**宛先サービス タグ** の値をリストから **AzureFrontDoor**、**AzureActiveDirectory**、または **AzureMonitor** に置き換えます。
 
-詳細については、[サービス タグの概要](/azure/virtual-network/service-tags-overview.md)に関するページを参照してください。
+詳細については、[サービス タグの概要](/azure/virtual-network/service-tags-overview)に関するページを参照してください。
 
 ## <a name="step-2-create-private-link-hubs"></a>手順 2:プライベート リンク ハブの作成
 

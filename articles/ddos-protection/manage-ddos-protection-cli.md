@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 47733f4b141b0064e966d0c083fd6414405f65f9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e2f5528fde977520dc0aa0215a480a40ef8f1e7d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095545"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989617"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>クイックスタート: Azure CLI を使用した Azure DDoS Protection Standard の作成と構成
 
@@ -39,7 +39,7 @@ CLI をローカルにインストールして使用する場合、このクイ�
 
 Azure で、関連するリソースをリソース グループに割り当てます。 既存のリソース グループを使用することも、新しいリソース グループを作成することもできます。
 
-リソース グループを作成するには、[az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true) を使用します。 この例では、リソース グループに _MyResourceGroup_ という名前を付け、" _米国東部_ " の場所を使用します。
+リソース グループを作成するには、[az group create](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-create) を使用します。 この例では、リソース グループに _MyResourceGroup_ という名前を付け、"_米国東部_" の場所を使用します。
 
 ```azurecli-interactive
 az group create \
@@ -47,7 +47,7 @@ az group create \
     --location eastus
 ```
 
-次に、 _MyDdosProtectionPlan_ という名前の DDoS Protection プランを作成します。
+次に、_MyDdosProtectionPlan_ という名前の DDoS Protection プランを作成します。
 
 ```azurecli-interactive
 az network ddos-protection create \
@@ -73,7 +73,7 @@ az network vnet create \
 
 ### <a name="enable-ddos-protection-for-an-existing-virtual-network"></a>既存の仮想ネットワークの DDoS 保護を有効にする
 
-[DDoS Protection プランを作成](#create-a-ddos-protection-plan)するときに、1 つまたは複数の仮想ネットワークをプランに関連付けることができます。 複数の仮想ネットワークを追加するには、名前または ID をスペースで区切って列挙します。 この例では、 _MyVnet_ を追加します。
+[DDoS Protection プランを作成](#create-a-ddos-protection-plan)するときに、1 つまたは複数の仮想ネットワークをプランに関連付けることができます。 複数の仮想ネットワークを追加するには、名前または ID をスペースで区切って列挙します。 この例では、_MyVnet_ を追加します。
 
 ```azurecli-interactive
 az group create \
@@ -109,9 +109,9 @@ az network ddos-protection show \
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-次のチュートリアルのためにリソースを保持しておくことができます。 不要になったら、 _MyResourceGroup_ リソース グループを削除します。 リソース グループを削除する際に、DDoS Protection プランとその関連リソースもすべて削除します。 
+次のチュートリアルのためにリソースを保持しておくことができます。 不要になったら、_MyResourceGroup_ リソース グループを削除します。 リソース グループを削除する際に、DDoS Protection プランとその関連リソースもすべて削除します。 
 
-リソース グループを削除するには、[az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true) を使用します。
+リソース グループを削除するには、[az group delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az_group_delete) を使用します。
 
 ```azurecli-interactive
 az group delete \

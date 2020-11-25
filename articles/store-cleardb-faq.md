@@ -12,12 +12,12 @@ ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: references_regions
-ms.openlocfilehash: ced4e920936ad94c3d4140d51d5e7d4e867ee848
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cecb3a150de8c19d390cafbd163f287520c3a91d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84196069"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519037"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Azure App Service での ClearDB MySql データベースの使用に関してよく寄せられる質問 (FAQ)
 この FAQ では、Azure Web Apps での ClearDB MySQL データベースの使用と購入に関してよく寄せられる質問に答えます。
@@ -33,7 +33,7 @@ ms.locfileid: "84196069"
 Azure で MySQL をホストするには、他にもいくつかの選択肢があります。
 * [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/)
 * [Azure VM で実行する MySQL クラスター](https://github.com/azure/azure-quickstart-templates/tree/master/mysql-replication)
-* [Azure VM で実行する MySQL の 1 つのインスタンス](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Azure VM で実行する MySQL の 1 つのインスタンス](/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%252fazure%252fvirtual-machines%252fwindows%252fclassic%252ftoc.json)
 
 
 ## <a name="do-i-need-a-credit-card-for-the-web-app--mysql-template-in-the-azure-marketplace"></a>Azure Marketplace で Web アプリケーションと MySQL テンプレートを入手するには、クレジット カードが必要ですか。
@@ -48,7 +48,7 @@ Azure で MySQL をホストするには、他にもいくつかの選択肢が�
 既定のデータベース オプションは Titan で、価格は 3.50 ドルです。 データベースの作成時には価格が表示されないため、このデータベースを誤って購入してしまった可能性があります。 今後プロセスの改善に努めてまいりますが、それまでは、Web アプリケーションとデータベースについて選択した価格レベルをすべて確認してから、 **[作成]** をクリックしてリソースのデプロイを開始してください。
 
 ## <a name="i-am-running-mysql-on-my-own-azure-virtual-machine-can-i-connect-my-azure-web-app-to-my-database"></a>自分が所有する Azure 仮想マシンで MySQL を実行しています。 自分の Azure Web アプリケーションを自分のデータベースに接続することはできますか。
-はい。 Azure VM にご自身の Web アプリケーションへのリモート アクセス権が付与されていれば、そのアプリケーションをご自身のデータベースに接続していただけます。 詳細については、「 [Windows Server 2012 R2 を実行するクラシック デプロイ モデルで作成された仮想マシンに MySQL をインストールする](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
+はい。 Azure VM にご自身の Web アプリケーションへのリモート アクセス権が付与されていれば、そのアプリケーションをご自身のデータベースに接続していただけます。 詳細については、「 [Windows Server 2012 R2 を実行するクラシック デプロイ モデルで作成された仮想マシンに MySQL をインストールする](/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%252fazure%252fvirtual-machines%252fwindows%252fclassic%252ftoc.json)」を参照してください。
 
 ## <a name="in-which-countriesregions-are-cleardb-premium-mysql-clusters-supported"></a>ClearDB Premium MySQL クラスターがサポートされている国や地域を教えてください。
 ClearDB Premium MySQL クラスターは、インド、オーストラリア、ブラジル南部、中国を除く、全世界のすべての Azure リージョンでご利用いただけます。
@@ -108,4 +108,3 @@ EA 登録での料金に関するご質問は、 [エンタープライズ カ�
 
 ## <a name="more-information"></a>詳細情報
 [Azure Marketplace FAQ](https://azure.microsoft.com/marketplace/faq/)
-
