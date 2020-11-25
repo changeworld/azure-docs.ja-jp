@@ -7,13 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: f84201de1f63704fefcf5de4041b95ed8c2122cd
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 015aadb791172f5033bf0198caad567c9bc03221
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094060"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95974665"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Azure Spring Cloud のメトリックについて
 
@@ -25,7 +24,7 @@ Azure Spring Cloud では、メトリックに 2 つのビューポイントが�
 
  ![メトリック グラフ](media/metrics/metrics-1.png)
 
-アプリケーションの**概要**のグラフは、各アプリケーションの簡単な状態チェックを提供します。 一般**メトリック** ページには、参照のために使用できるすべてのメトリックが含まれます。 一般メトリック ページで独自のグラフを作成しし、それらをダッシュボードにピン留めできます。
+アプリケーションの **概要** のグラフは、各アプリケーションの簡単な状態チェックを提供します。 一般 **メトリック** ページには、参照のために使用できるすべてのメトリックが含まれます。 一般メトリック ページで独自のグラフを作成しし、それらをダッシュボードにピン留めできます。
 
 ## <a name="application-overview-page"></a>アプリケーションの概要ページ
 **[アプリ]** でアプリを選択すると、概要ページにグラフが表示されます。  
@@ -82,7 +81,7 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 ![メトリックの分割](media/metrics/metrics-8.png)
 
 >[!TIP]
-> メトリック ページに独自のグラフを構築し、**ダッシュボード**にピン留めできます。 まず、グラフに名前を付けます。  次に、右上隅の **[ダッシュボードにピン留めする]** を選択します。 これで、ポータルの**ダッシュボード**でアプリケーションを確認できるようになりました。
+> メトリック ページに独自のグラフを構築し、**ダッシュボード** にピン留めできます。 まず、グラフに名前を付けます。  次に、右上隅の **[ダッシュボードにピン留めする]** を選択します。 これで、ポータルの **ダッシュボード** でアプリケーションを確認できるようになりました。
 
 ## <a name="user-metrics-options"></a>ユーザー メトリックのオプション
 
@@ -110,7 +109,6 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 >| jvm.gc.pause.total.count | jvm.gc.pause (合計数) | Count | この JMV が起動した後の GC の合計数 (若い GC と古い GC を含む)。 |
 >| jvm.gc.pause.total.time | jvm.gc.pause (合計時間) | ミリ秒 | この JMV が起動した後に消費された GC 時間の合計 (若い GC と古い GC を含む)。 |
 
-::: zone pivot="programming-language-csharp"
 ### <a name="performance-net"></a>パフォーマンス (.NET)
 
 >[!div class="mx-tdCol2BreakAll"]
@@ -136,7 +134,6 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 >| Active timers count               | active-timer-count               | Count | 現在アクティブなタイマーの数。 アクティブなタイマーとは、将来のある時点でティックするように登録されていて、まだキャンセルされていないタイマーです。 |
 
 詳細については、[dotnet のカウンター](/dotnet/core/diagnostics/dotnet-counters)に関するページを参照してください。
-::: zone-end
 
 ### <a name="request"></a>Request
 >[!div class="mx-tdCol2BreakAll"]
@@ -147,7 +144,6 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 >| tomcat.global.request.total.count | tomcat.global.request (合計数) | Count | Tomcat Web サーバーが処理した要求の合計数 |
 >| tomcat.global.request.max | tomcat.global.request.max | ミリ秒 | 要求を処理するための Tomcat Web サーバーの最大時間 |
 
-::: zone pivot="programming-language-csharp"
 ### <a name="request-net"></a>要求 (.NET)
 
 >[!div class="mx-tdCol2BreakAll"]
@@ -159,7 +155,6 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 >| 失敗した要求 | failed-requests | Count | 失敗した要求の数。 |
 
 詳細については、[dotnet のカウンター](/dotnet/core/diagnostics/dotnet-counters)に関するページを参照してください。
-::: zone-end
 
 ### <a name="session"></a>Session
 >[!div class="mx-tdCol2BreakAll"]

@@ -13,11 +13,11 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1f5f7f823d6c5f5860c2e78fe8cacdd1d788c581
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892697"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95974121"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>チュートリアル: B2B ゲスト ユーザーに多要素認証を適用する
 
@@ -47,8 +47,8 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このチュートリアルのシナリオを完了するための要件を次に示します。
 
- - **Azure AD Premium エディションへのアクセス** 。条件付きアクセス ポリシー機能が含まれます。 MFA を適用するには、Azure AD 条件付きアクセス ポリシーを作成する必要があります。 パートナーが MFA 機能を持っているかどうかに関係なく、MFA ポリシーは常に自分の組織に適用されることに注意してください。 組織の MFA を設定する場合は、ゲスト ユーザーに対する十分な Azure AD Premium ライセンスがあるかどうかを確認する必要があります。 
- - **有効な外部電子メール アカウント** 。ゲスト ユーザーとしてテナント ディレクトリに追加し、サインインするために使用できます。 ゲスト アカウントの作成方法がわからない場合は、[Azure portal での B2B ゲスト ユーザーの追加](add-users-administrator.md)に関する記事を参照してください。
+ - **Azure AD Premium エディションへのアクセス**。条件付きアクセス ポリシー機能が含まれます。 MFA を適用するには、Azure AD 条件付きアクセス ポリシーを作成する必要があります。 パートナーが MFA 機能を持っているかどうかに関係なく、MFA ポリシーは常に自分の組織に適用されることに注意してください。 組織の MFA を設定する場合は、ゲスト ユーザーに対する十分な Azure AD Premium ライセンスがあるかどうかを確認する必要があります。 
+ - **有効な外部電子メール アカウント**。ゲスト ユーザーとしてテナント ディレクトリに追加し、サインインするために使用できます。 ゲスト アカウントの作成方法がわからない場合は、[Azure portal での B2B ゲスト ユーザーの追加](add-users-administrator.md)に関する記事を参照してください。
 
 ## <a name="create-a-test-guest-user-in-azure-ad"></a>Azure AD にテスト用のゲスト ユーザーを作成する
 
@@ -76,7 +76,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 2.  Azure Portal で、 **[Azure Active Directory]** を選びます。 
 3.  **[Azure Active Directory]** ページの **[セキュリティ]** セクションで、 **[条件付きアクセス]** を選択します。
 4.  **[条件付きアクセス]** ページで、上部のツール バーの **[新しいポリシー]** を選択します。
-5.  **[新規]** ページの **[名前]** テキスト ボックスに、「 **B2B ポータルにアクセスするには MFA が必要** 」と入力します。
+5.  **[新規]** ページの **[名前]** テキスト ボックスに、「**B2B ポータルにアクセスするには MFA が必要**」と入力します。
 6.  **[割り当て]** セクションで、 **[ユーザーとグループ]** を選択します。
 7.  **[ユーザーとグループ]** ページで、 **[ユーザーとグループの選択]** を選択し、 **[すべてのゲスト ユーザー (プレビュー)]** を選択します。
 

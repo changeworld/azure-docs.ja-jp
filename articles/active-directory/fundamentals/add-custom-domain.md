@@ -14,15 +14,15 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28847ece3c08e93d14d381b35fc93fb16dad95a1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370867"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973900"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Azure Active Directory ポータルを使用してカスタム ドメイン名を追加する
 
-新しい Azure AD テナントにはすべて、 *\<domainname>.onmicrosoft.com* という初期ドメイン名が付きます。 初期ドメイン名は変更したり削除したりできませんが、お客様の組織の名前を追加することはできます。 カスタム ドメイン名を追加すると、 *alain\@contoso.com* など、ユーザーになじみのあるユーザー名を作成するのに役立ちます。
+新しい Azure AD テナントにはすべて、 *\<domainname>.onmicrosoft.com* という初期ドメイン名が付きます。 初期ドメイン名は変更したり削除したりできませんが、お客様の組織の名前を追加することはできます。 カスタム ドメイン名を追加すると、*alain\@contoso.com* など、ユーザーになじみのあるユーザー名を作成するのに役立ちます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -84,7 +84,7 @@ Azure AD にカスタム ドメイン名を追加したら、ドメイン レジ
 
 1. 任意のページから *Azure Active Directory* を検索して選択し、 **[カスタム ドメイン名]** を選択します。
 
-1. **[カスタム ドメイン名]** から、カスタム ドメイン名を選択します。 この例では、 **contoso.com** を選択します。
+1. **[カスタム ドメイン名]** から、カスタム ドメイン名を選択します。 この例では、**contoso.com** を選択します。
 
     ![[Fabrikam - カスタム ドメイン名] ページで [Contoso] が強調表示されている](media/add-custom-domain/custom-blade-with-contoso-highlighted.png)
 
@@ -98,7 +98,7 @@ Azure AD にカスタム ドメイン名を追加したら、ドメイン レジ
 
 Azure AD でカスタム ドメイン名を検証できない場合は、次の推奨事項を試してください。
 
-- **少なくとも 1 時間待機してから、もう一度試します** 。 DNS レコードは、Azure AD がドメインを検証する前に反映されている必要があります。 このプロセスに 1 時間以上かかることがあります。
+- **少なくとも 1 時間待機してから、もう一度試します**。 DNS レコードは、Azure AD がドメインを検証する前に反映されている必要があります。 このプロセスに 1 時間以上かかることがあります。
 
 - **DNS レコードが正しいことを確認します。** ドメイン名レジストラー サイトに戻ります。 エントリがあること、およびそれが Azure AD によって提供される DNS エントリ情報と一致していることを確認します。
 
