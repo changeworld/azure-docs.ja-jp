@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: 415c9fdcbf0e8bfecaa48b8199702d4159bc32d9
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 138cd03989008aa4fbd7d6ca3e06aff94fa76e33
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629191"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989464"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>自動データベース バックアップを使用して復旧する - Azure SQL Database および SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,7 +60,7 @@ Standard または Premium のサービス レベルを使用している場合�
 サーバー全体を復元するための組み込みの方法はありません。 このタスクを実行する方法の例については、「[Azure SQL Database: サーバーの完全復旧](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666)」を参照してください。
 
 > [!IMPORTANT]
-> 自動バックアップを使って復旧するには、サブスクリプション内の SQL Server 共同作成者ロールまたは SQL Managed Instance 共同作成者ロール (復旧のターゲットによって決まります) のメンバーであるか、サブスクリプション所有者である必要があります。 詳細については、[RBAC: 組み込みのロール](../../role-based-access-control/built-in-roles.md)に関するページをご覧ください。 復旧には、Azure portal、PowerShell、または REST API を使用できます。 Transact-SQL は使用できません。
+> 自動バックアップを使って復旧するには、サブスクリプション内の SQL Server 共同作成者ロールまたは SQL Managed Instance 共同作成者ロール (復旧のターゲットによって決まります) のメンバーであるか、サブスクリプション所有者である必要があります。 詳細については、[Azure RBAC: 組み込みのロール](../../role-based-access-control/built-in-roles.md)に関するページをご覧ください。 復旧には、Azure portal、PowerShell、または REST API を使用できます。 Transact-SQL は使用できません。
 
 ## <a name="point-in-time-restore"></a>ポイントインタイム リストア
 

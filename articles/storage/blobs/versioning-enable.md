@@ -10,12 +10,12 @@ ms.date: 11/17/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a52b736efaabdca8b08427f293ebf0cda5f22e44
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 5802070bf9b495c0e866d160d6661349369a444e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695879"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95993748"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>BLOB のバージョン管理を有効にして管理する
 
@@ -77,7 +77,7 @@ Azure portal でテンプレートを使用してリソースをデプロイす�
 
 この例では、ブロック BLOB を作成してから、BLOB のメタデータを更新します。 BLOB のメタデータを更新すると、新しいバージョンの作成がトリガーされます。 この例では、初期バージョンと現在のバージョンを取得し、現在のバージョンにのみメタデータが含まれていることを示します。
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_TriggerNewBlobVersion":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_UpdateVersionedBlobMetadata":::
 
 ## <a name="list-blob-versions"></a>BLOB バージョンをリストに表示する
 
@@ -90,4 +90,4 @@ Azure portal でテンプレートを使用してリソースをデプロイす�
 ## <a name="next-steps"></a>次のステップ
 
 - [BLOB バージョン管理](versioning-overview.md)
-- [Azure Storage Blob の論理的な削除](soft-delete-overview.md)
+- [Azure Storage Blob の論理的な削除](./soft-delete-blob-overview.md)

@@ -1,7 +1,7 @@
 ---
 title: VS Code 拡張機能 (プレビュー) によるリソースの作成と管理
 titleSuffix: Azure Machine Learning
-description: VS Code 拡張機能を使用してリソースを作成および管理する
+description: Azure Machine Learning Visual Studio Code 拡張機能を使用して Azure Machine Learning リソースを作成して管理する方法について説明します。
 services: machine-learning
 author: luisquintanilla
 ms.author: luquinta
@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 09/30/2020
-ms.openlocfilehash: 2e410cbc7813031929ea040b2cc4fb2967b99c1b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/16/2020
+ms.openlocfilehash: f8eb18b190b72381f1a93575eb39b3d19d8d431b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319343"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010675"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>VS Code 拡張機能 (プレビュー) を使用して Azure Machine Learning リソースを管理する
 
@@ -47,7 +47,7 @@ VS Code 拡張機能を使用して Azure Machine Learning リソースを管理
 
 ワークスペースを作成する別の方法として、次のものがあります。
 
-- **[表示] > [コマンド パレット]** からコマンド パレットを開いて、テキスト プロンプトに「 **Azure ML:Create Workspace** 」と入力します。
+- **[表示] > [コマンド パレット]** からコマンド パレットを開いて、テキスト プロンプトに「**Azure ML:Create Workspace**」と入力します。
 - Azure Machine Learning ビューの上部にある `+` アイコンをクリックします。
 - 他のリソースをプロビジョニングするときにワークスペースを選択するように求めるメッセージが表示されたら、新しいワークスペースを作成します。
 
@@ -57,7 +57,7 @@ VS Code 拡張機能を使用して Azure Machine Learning リソースを管理
 1. 削除するワークスペースを右クリックします。
 1. 削除するかどうかを選択します。
     - *[Only the workspace] (ワークスペースのみ)* :このオプションを選択すると、ワークスペース Azure リソース **のみ** が削除されます。 ワークスペースがアタッチされていたリソース グループ、ストレージ アカウント、その他のリソースは Azure に残ります。
-    - *[With associated resources] (関連するリソースを含む)* :このオプションを選択すると、ワークスペースが削除され、 **さらに** 関連付けられているすべてのリソースが削除されます。
+    - *[With associated resources] (関連するリソースを含む)* :このオプションを選択すると、ワークスペースが削除され、**さらに** 関連付けられているすべてのリソースが削除されます。
 
 ## <a name="datastores"></a>データストア
 
@@ -97,7 +97,7 @@ VS Code 拡張機能を使用して Azure Machine Learning リソースを管理
 現在のところ、拡張機能では次のデータセットの種類がサポートされています。
 
 - *[表形式]* :データフレーム (Pandas または PySpark) にデータを具体化できます。
-- *ファイル* :ファイルまたはファイルのコレクション。 コンピューティングにファイルをダウンロードまたはマウントできます。
+- *ファイル*:ファイルまたはファイルのコレクション。 コンピューティングにファイルをダウンロードまたはマウントできます。
 
 詳細については、[データセット](concept-data.md#datasets)に関するページを参照してください
 
@@ -159,11 +159,11 @@ VS Code 拡張機能を使用して Azure Machine Learning リソースを管理
 1. 次のように入力します。
     1. 環境の名前を指定します
     1. 環境構成を定義します。
-        - *キュレーションされた環境* :Azure Machine Learning の構成済み環境。 JSON ファイルの `dependencies` プロパティを変更することで、環境をさらにカスタマイズできます。 [キュレーションされた環境](resource-curated-environments.md)の詳細については、こちらを参照してください。
-        - *Conda 依存関係ファイル* :Anaconda 環境では、環境定義を含むファイルを指定できます。
-        - *pip 要件ファイル* :pip 環境では、環境定義を含むファイルを指定できます。
-        - *既存の Conda 環境* :このオプションを選択すると、ローカル PC の conda 環境が検索され、選択した環境から環境を構築しようとします。
-        - *Custom* :独自のチャネルと依存関係を定義します
+        - *キュレーションされた環境*:Azure Machine Learning の構成済み環境。 JSON ファイルの `dependencies` プロパティを変更することで、環境をさらにカスタマイズできます。 [キュレーションされた環境](resource-curated-environments.md)の詳細については、こちらを参照してください。
+        - *Conda 依存関係ファイル*:Anaconda 環境では、環境定義を含むファイルを指定できます。
+        - *pip 要件ファイル*:pip 環境では、環境定義を含むファイルを指定できます。
+        - *既存の Conda 環境*:このオプションを選択すると、ローカル PC の conda 環境が検索され、選択した環境から環境を構築しようとします。
+        - *Custom*:独自のチャネルと依存関係を定義します
     1. エディターで構成ファイルが開きます。 構成に問題がなければ、 **[保存して続行]** を選択するか、VS Code コマンドパレット ( **[表示] > [コマンド パレット]** ) を開いて **Azure ML:Save and Continue** と入力します。
 
 ### <a name="view-environment-configurations"></a>環境構成を表示する
@@ -325,7 +325,7 @@ Azure Machine Learning Studio で実験を表示するには、以下の操作�
 1. 次のように入力します。
     1. コンピューティング ターゲットの名前を指定します
     1. 新しい環境を選択または作成します。
-    1. 実行するスクリプトの名前を入力するか、 **Enter** キーを押してローカル コンピューターのスクリプトをブラウズします。
+    1. 実行するスクリプトの名前を入力するか、**Enter** キーを押してローカル コンピューターのスクリプトをブラウズします。
     1. (省略可能) トレーニング実行用のデータ参照を作成するかどうかを選択します。 この操作を行うと、実行構成でデータセットを定義するように求められます。
         1. 登録されているデータセットの 1 つを選択して実行構成にリンクします。エディターでデータセットの構成ファイルが開きます。 構成に問題がなければ、 **[保存して続行]** を選択するか、VS Code コマンドパレット ( **[表示] > [コマンド パレット]** ) を開いて **Azure ML:Save and Continue** と入力します。
     1. 構成に問題がなければ、 **[保存して続行]** を選択するか、VS Code コマンドパレット ( **[表示] > [コマンド パレット]** ) を開いて **Azure ML:Save and Continue** と入力します。

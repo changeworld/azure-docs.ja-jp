@@ -8,12 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/19/2020
-ms.openlocfilehash: bbbc79a129ec3140ea6d286cbdce0165e2f6ae7b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 043020abd44bc1f8e671cf386149d6a818136de9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280398"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014365"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Azure Cognitive Search への安全な接続を行うためのプライベート エンドポイントを作成する
 
@@ -45,8 +45,8 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
     | 設定 | 値 |
     | ------- | ----- |
     | サブスクリプション | サブスクリプションを選択します。|
-    | Resource group | **[新規作成]** を選択し、「 *myResourceGroup* 」と入力して、 **[OK]** を選択します。 |
-    | 名前 | 「 *MyVirtualNetwork* 」と入力します。 |
+    | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
+    | 名前 | 「*MyVirtualNetwork*」と入力します。 |
     | リージョン | 目的のリージョンを選択します。 |
     |||
 
@@ -68,16 +68,16 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
     | **インスタンスの詳細** |  |
     | URL | 一意の名前を入力します。 |
     | 場所 | 目的のリージョンを選択します。 |
-    | Pricing tier | **[価格レベルの変更]** を選択し、目的のサービス レベルを選択します。 ( **Free** レベルではサポートされていません。 **Basic** 以上である必要があります。) |
+    | Pricing tier | **[価格レベルの変更]** を選択し、目的のサービス レベルを選択します。 (**Free** レベルではサポートされていません。 **Basic** 以上である必要があります。) |
     |||
   
 1. **[Next:スケール]** をクリックします。
 
 1. 残りは既定値のままにして、 **[次へ:ネットワーク]** を選択します。
 
-1. **新しい Search Service - ネットワーク** で、 **エンドポイント接続 (データ)** に **[プライベート]** を選択します。
+1. **新しい Search Service - ネットワーク** で、**エンドポイント接続 (データ)** に **[プライベート]** を選択します。
 
-1. **新しい Search Service - ネットワーク** で、 **プライベート エンドポイント** の **[+ 追加]** を選択します。 
+1. **新しい Search Service - ネットワーク** で、**プライベート エンドポイント** の **[+ 追加]** を選択します。 
 
 1. **[プライベート エンドポイントの作成]** で、次の情報を入力または選択します。
 
@@ -86,7 +86,7 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
     | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。|
     | 場所 | **[米国西部]** を選択します。|
-    | 名前 | 「 *myPrivateEndpoint* 」と入力します。  |
+    | 名前 | 「*myPrivateEndpoint*」と入力します。  |
     | ターゲット サブリソース | 既定の **searchService** をそのまま使用します。 |
     | **ネットワーク** |  |
     | 仮想ネットワーク  | リソース グループの *[myResourceGroup]* から、 *[MyVirtualNetwork]* を選択します。 |
@@ -100,13 +100,13 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認および作成]** ページが表示され、Azure によって構成が検証されます。 
 
-1. " **証に成功しました** " というメッセージが表示されたら、 **[作成]** を選択します。 
+1. "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。 
 
 1. 新しいサービスのプロビジョニングが完了したら、先ほど作成したリソースを参照します。
 
 1. 左側のコンテンツメニューから **[キー]** を選択します。
 
-1. 後からサービスに接続するときのために、 **プライマリ管理者キー** をコピーします。
+1. 後からサービスに接続するときのために、**プライマリ管理者キー** をコピーします。
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
@@ -120,7 +120,7 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
     | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。  |
     | **インスタンスの詳細** |  |
-    | 仮想マシン名 | 「 *myVm* 」と入力します。 |
+    | 仮想マシン名 | 「*myVm*」と入力します。 |
     | リージョン | **[米国西部]** 、またはあなたが使用しているリージョンを選択します。 |
     | 可用性のオプション | 既定値 **[インフラストラクチャ冗長は必要ありません]** をそのまま使用します。 |
     | Image | **[Windows Server 2019 Datacenter]** を選択します。 |
@@ -161,17 +161,17 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認および作成]** ページが表示され、Azure によって構成が検証されます。
 
-1. " **証に成功しました** " というメッセージが表示されたら、 **[作成]** を選択します。 
+1. "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。 
 
 ## <a name="connect-to-the-vm"></a>VM に接続します
 
 次の手順で、VM *myVm* をダウンロードして接続します。
 
-1. ポータルの検索バーに、「 *myVm* 」と入力します。
+1. ポータルの検索バーに、「*myVm*」と入力します。
 
 1. **[接続]** を選択します。 **[接続]** ボタンを選択すると、 **[Connect to virtual machine]\(仮想マシンに接続する\)** が開きます。
 
-1. **[RDP ファイルのダウンロード]** を選択します。 リモート デスクトップ プロトコル ( *.rdp* ) ファイルが作成され、お使いのコンピューターにダウンロードされます。
+1. **[RDP ファイルのダウンロード]** を選択します。 リモート デスクトップ プロトコル ( *.rdp*) ファイルが作成され、お使いのコンピューターにダウンロードされます。
 
 1. ダウンロードした .rdp* ファイルを開きます。
 
@@ -208,7 +208,7 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
     Aliases:  [search service name].search.windows.net
     ```
 
-1. VM から検索サービスに接続し、インデックスを作成します。 この [クイックスタート](search-get-started-postman.md) に従い、REST API を使用して Postman でのあなたのサービスに新しい検索インデックスを作成できます。 Postman からの要求を設定するには、検索サービス エンドポイント (https://[search service name].search.windows.net) と、これ以前のステップでコピーした管理者 AIP キーが必要です。
+1. VM から検索サービスに接続し、インデックスを作成します。 この[クイックスタート](search-get-started-rest.md)に従うと、REST API を使用してサービスに新しい検索インデックスを作成できます。 Web API テスト ツールからの要求を設定するには、検索サービス エンドポイント (https://[search service name].search.windows.net) と、これ以前のステップでコピーした管理者 AIP キーが必要です。
 
 1. サービスが完全に動作していることが確認できたら、VM からのクイックスタートは完了です。
 
@@ -218,9 +218,9 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする 
 プライベート エンドポイント、検索サービス、VM を使い終えたら、リソース グループとそこに含まれるすべてのリソースを削除します。
-1. ポータルの上部にある **検索** ボックスに「  *myResourceGroup* 」と入力し、検索結果から  *myResourceGroup* を選択します。 
+1. ポータルの上部にある **検索** ボックスに「 *myResourceGroup*」と入力し、検索結果から  *myResourceGroup* を選択します。 
 1. **[リソース グループの削除]** を選択します。 
-1. **[リソース グループ名を入力してください]**  に「  *myResourceGroup* 」と入力し、 **[削除]** を選択します。
+1. **[リソース グループ名を入力してください]**  に「 *myResourceGroup*」と入力し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、仮想ネットワーク上の VM と、プライベート エンドポイントを使用した検索サービスを作成しました。 あなたはインターネットから VM に接続し、 Private Link を使用して検索サービスと安全に通信を行いました。 プライベート エンドポイントの詳細については、「 [Azure プライベート エンドポイントとは](../private-link/private-endpoint-overview.md)」を参照してください。

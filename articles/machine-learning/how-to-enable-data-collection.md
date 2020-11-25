@@ -1,7 +1,7 @@
 ---
 title: 実稼働環境のモデルでデータを収集する
 titleSuffix: Azure Machine Learning
-description: デプロイされた Azure Machine Learning モデルからデータを収集する方法について説明します。
+description: Azure Kubernetes Service (AKS) クラスターにデプロイされた Azure Machine Learning モデルからデータを収集する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,14 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
-ms.openlocfilehash: 9a9ef4dbe7f6b97675d395baf441530e5bd79320
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: c6b9dc95e1d50481ac5353460910032ca1711ab1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357645"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000455"
 ---
 # <a name="collect-data-from-models-in-production"></a>実稼働環境のモデルからデータを収集する
-
-
 
 この記事では、Azure Kubernetes Service (AKS) クラスターにデプロイされた Azure Machine Learning モデルからデータを収集する方法について説明します。 収集したデータは、Azure Blob ストレージに格納されます。
 
@@ -38,7 +36,7 @@ ms.locfileid: "93357645"
 
 次のデータを収集できます。
 
-* AKS クラスターにデプロイされた Web サービスのモデル入力データ。 音声オーディオ、画像、および動画は、収集 " *されません* "。
+* AKS クラスターにデプロイされた Web サービスのモデル入力データ。 音声オーディオ、画像、および動画は、収集 "*されません*"。
   
 * 実稼働環境入力データを使用したモデル予測
 
@@ -91,7 +89,7 @@ ms.locfileid: "93357645"
     prediction_dc = ModelDataCollector("best_model", designation="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
-    *CorrelationId* は省略可能なパラメーターです。 モデルで必要ない場合は、使用する必要はありません。 *CorrelationId* を使用すると、 *LoanNumber* 、 *CustomerId* などの他のデータとより簡単にマッピングできます。
+    *CorrelationId* は省略可能なパラメーターです。 モデルで必要ない場合は、使用する必要はありません。 *CorrelationId* を使用すると、*LoanNumber*、*CustomerId* などの他のデータとより簡単にマッピングできます。
     
     *Identifier* パラメーターは、BLOB でフォルダー構造を構築するために後で使用します。 生データと処理済みデータの区別に使用できます。
 
@@ -104,7 +102,7 @@ ms.locfileid: "93357645"
     prediction_dc.collect(result) #this call is saving our input data into Azure Blob
     ```
 
-1. AKS にサービスをデプロイしても、データ コレクションは自動的には **true** に設定 " *されません* "。 次の例のように、構成ファイルを更新してください。
+1. AKS にサービスをデプロイしても、データ コレクションは自動的には **true** に設定 "*されません*"。 次の例のように、構成ファイルを更新してください。
 
     ```python
     aks_config = AksWebservice.deploy_configuration(collect_model_data=True)
@@ -153,7 +151,7 @@ ms.locfileid: "93357645"
 
 1. [Power BI Desktop](https://www.powerbi.com) をダウンロードして開きます。
 
-1. **[データを取得]** を選択し、 [**Azure Blob Storage**](/power-bi/desktop-data-sources) を選択します。
+1. **[データを取得]** を選択し、[**Azure Blob Storage**](/power-bi/desktop-data-sources) を選択します。
 
     [![Power BI BLOB の設定](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 

@@ -14,12 +14,12 @@ ms.date: 06/08/2020
 ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a0ecc36d78ffde002dac971a749889104ff10073
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: b9223ffc564620804b36f6f0e71602b3888a9f42
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556456"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025380"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Azure VM 上の SQL Server バージョンのインプレース変更
 
@@ -66,7 +66,7 @@ SQL Server のバージョンをアップグレードするには、SQL Server �
 
    :::image type="content" source="./media/change-sql-server-version/upgrade.png" alt-text="SQL Server のバージョンをアップグレードするための選択":::
 
-1. **[プロダクト キー]** ページで、SQL Server の無償のエディションにアップグレードするか、製品の運用バージョンの PID キーを持っているかを示すオプションを選択します。 詳細については、「[SQL Server 2019 (15.x) のエディションとサポートされる機能](/sql/sql-server/editions-and-components-of-sql-server-version-155)」と「[サポートされているバージョンとエディションのアップグレード (SQL Server 2016)](/sql/database-engine/install-windows/supported-version-and-edition-upgrades)」を参照してください。
+1. **[プロダクト キー]** ページで、SQL Server の無償のエディションにアップグレードするか、製品の運用バージョンの PID キーを持っているかを示すオプションを選択します。 詳細については、「[SQL Server 2019 (15.x) のエディションとサポートされる機能](/sql/sql-server/editions-and-components-of-sql-server-version-15)」と「[サポートされているバージョンとエディションのアップグレード (SQL Server 2016)](/sql/database-engine/install-windows/supported-version-and-edition-upgrades)」を参照してください。
 1. **[アップグレードの準備完了]** ページが表示されるまで **[次へ]** を選択し、 **[アップグレード]** を選択します。 変更が有効になるまで数分間、セットアップ ウィンドウの応答が停止することがあります。 **[完了]** ページで、アップグレードが完了したことが確認されます。 アップグレード手順の詳細については、[完全な手順](/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup#procedure)を参照してください。
 
    :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="[完了] ページ":::

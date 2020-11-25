@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: fd131798352aaccaea66c242e92d550c98d7c86f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 2bbc57d8ddc004c1926da7e0037efdc1fcf2d76e
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686559"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95318101"
 ---
 # <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-using-data-collection-rules-preview"></a>データ収集ルールを使用して Azure Monitor for VMs のゲストの正常性 (プレビュー) での監視を構成する
 [Azure Monitor for VMs のゲストの正常性](vminsights-health-overview.md)を使用すると、定期的にサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 この記事では、データ収集ルールを使用して、複数の仮想マシンにわたって既定の監視を変更する方法について説明します。
@@ -57,7 +57,7 @@ Azure Monitor for VMs のゲストの正常性とその構成で使用される�
 ## <a name="overrides"></a>上書き
 1 つの *オーバーライド* で、モニターのプロパティを 1 つ以上変更します。 たとえば、オーバーライドを使用すると、既定で有効になっているモニターを無効にすること、モニターの警告条件を定義すること、モニターのクリティカルのしきい値を変更することができます。 
 
-オーバーライドは、[データ収集ルール (DCR)](../platform/data-collection-rule-overview.md) で定義されます。 異なるオーバーライドのセットを使用して複数の DCR を作成し、それらを複数の仮想マシンに適用できます。 「[Azure Monitor エージェント用のデータ収集の構成 (プレビュー)](../platform/data-collection-rule-azure-monitor-agent.md#dcr-associations)」で説明しているように、関連付けを作成して DCR を仮想マシンに適用します。
+オーバーライドは、[データ収集ルール (DCR)](../platform/data-collection-rule-overview.md) で定義されます。 異なるオーバーライドのセットを使用して複数の DCR を作成し、それらを複数の仮想マシンに適用できます。 「[Azure Monitor エージェント用のデータ収集の構成 (プレビュー)](../platform/data-collection-rule-azure-monitor-agent.md#data-collection-rule-associations)」で説明しているように、関連付けを作成して DCR を仮想マシンに適用します。
 
 
 ## <a name="multiple-overrides"></a>複数のオーバーライド
@@ -103,9 +103,9 @@ Azure Monitor for VMs のゲストの正常性とその構成で使用される�
 | 要素 | 必須 | 説明 |
 |:---|:---|:---|
 | `name` | はい | その拡張機能のユーザー定義文字列。 |
-| `streams` | はい | ゲストの正常性データの送信先となるストリームの一覧。 これには **Microsoft-HealthStateChange** が含まれている必要があります。  |
-| `extensionName` | はい | 拡張機能の名前。 これは **HealthExtension** である必要があります。 |
-| `extensionSettings` | はい | 既定の構成に適用される `healthRuleOverride` 要素の配列。 |
+| `streams` | Yes | ゲストの正常性データの送信先となるストリームの一覧。 これには **Microsoft-HealthStateChange** が含まれている必要があります。  |
+| `extensionName` | Yes | 拡張機能の名前。 これは **HealthExtension** である必要があります。 |
+| `extensionSettings` | Yes | 既定の構成に適用される `healthRuleOverride` 要素の配列。 |
 
 
 ## <a name="extensionsettings-element"></a>extensionSettings 要素
@@ -122,8 +122,8 @@ Azure Monitor for VMs のゲストの正常性とその構成で使用される�
 | 要素 | 必須 | 説明 |
 |:---|:---|:---|
 | `schemaVersion` | はい | 要素の予期されるスキーマを表すために Microsoft によって定義された文字列。 現在は 1.0 に設定されている必要があります |
-| `contentVersion` | いいえ | 必要に応じて、異なるバージョンの正常性構成を追跡するためにユーザーが定義した文字列。 |
-| `healthRuleOverrides` | はい | 既定の構成に適用される `healthRuleOverride` 要素の配列。 |
+| `contentVersion` | No | 必要に応じて、異なるバージョンの正常性構成を追跡するためにユーザーが定義した文字列。 |
+| `healthRuleOverrides` | Yes | 既定の構成に適用される `healthRuleOverride` 要素の配列。 |
 
 ## <a name="healthrulesoverrides-element"></a>healthRulesOverrides 要素
 それぞれが 1 つのオーバーライドを定義する `healthRuleOverride` 要素が、1 つ以上含まれます。
@@ -143,10 +143,10 @@ Azure Monitor for VMs のゲストの正常性とその構成で使用される�
 | 要素 | 必須 | 説明 |
 |:---|:---|:---|
 | `scopes` | はい | このオーバーライドを適用できる仮想マシンを指定する 1 つ以上のスコープの一覧。 DCR が仮想マシンに関連付けられている場合でも、仮想マシンは、オーバーライドを適用するスコープ内に存在している必要があります。 |
-| `monitors` | はい | このオーバーライドをどのモニターが受け取るかを定義する 1 つ以上の文字列の一覧。  |
-| `monitorConfiguration` | いいえ | 正常性状態とその計算方法を含む、モニターの構成。 |
-| `alertConfiguration` | いいえ | モニターに対するアラートの構成。 |
-| `isEnabled` | いいえ | モニターを有効にするかどうかを制御します。 無効にされたモニターは、再度有効にされない限り、特殊な *無効* の正常性状態および無効にされた状態に切り替わります。 省略した場合、モニターは階層内の親モニターからその状態を継承します。 |
+| `monitors` | Yes | このオーバーライドをどのモニターが受け取るかを定義する 1 つ以上の文字列の一覧。  |
+| `monitorConfiguration` | No | 正常性状態とその計算方法を含む、モニターの構成。 |
+| `alertConfiguration` | No | モニターに対するアラートの構成。 |
+| `isEnabled` | No | モニターを有効にするかどうかを制御します。 無効にされたモニターは、再度有効にされない限り、特殊な *無効* の正常性状態および無効にされた状態に切り替わります。 省略した場合、モニターは階層内の親モニターからその状態を継承します。 |
 
 
 ## <a name="scopes-element"></a>scopes 要素
@@ -227,12 +227,12 @@ Azure Monitor for VMs のゲストの正常性とその構成で使用される�
 | 要素 | Mandatory | 説明 | 
 |:---|:---|:---|
 | `evaluationFrequencySecs` | いいえ | 正常性状態の評価の頻度を定義します。 各モニターは、エージェントが起動した時点で評価され、その後は、このパラメーターによって定義された定期的な間隔で評価されます。 |
-| `lookbackSecs`   | いいえ | ルックバック ウィンドウのサイズ (秒単位)。 |
-| `evaluationType` | いいえ | `min` –サンプル セット全体から最小値を取得します<br>`max` –サンプル セット全体から最大値を取得します<br>`avg` –サンプル セットの値の平均を取得します<br>`all` –セット内のすべての単一値をしきい値と比較します。 セット内のすべてのサンプルがしきい値の条件を満たす場合にのみ、モニターの状態が切り替わります。 |
-| `minSamples`     | いいえ | 値の計算に使用する値の最小数。 |
-| `maxSamples`     | いいえ | 値の計算に使用する値の最大数。 |
-| `warningCondition`  | いいえ | 警告条件のしきい値と比較ロジック。 |
-| `criticalCondition` | いいえ | クリティカル条件のしきい値と比較ロジック。 |
+| `lookbackSecs`   | No | ルックバック ウィンドウのサイズ (秒単位)。 |
+| `evaluationType` | No | `min` –サンプル セット全体から最小値を取得します<br>`max` –サンプル セット全体から最大値を取得します<br>`avg` –サンプル セットの値の平均を取得します<br>`all` –セット内のすべての単一値をしきい値と比較します。 セット内のすべてのサンプルがしきい値の条件を満たす場合にのみ、モニターの状態が切り替わります。 |
+| `minSamples`     | No | 値の計算に使用する値の最小数。 |
+| `maxSamples`     | No | 値の計算に使用する値の最大数。 |
+| `warningCondition`  | No | 警告条件のしきい値と比較ロジック。 |
+| `criticalCondition` | No | クリティカル条件のしきい値と比較ロジック。 |
 
 
 ## <a name="warningcondition-element"></a>warningCondition 要素
@@ -249,8 +249,8 @@ Azure Monitor for VMs のゲストの正常性とその構成で使用される�
 | プロパティ | Mandatory | 説明 | 
 |:---|:---|:---|
 | `isEnabled` | いいえ | 条件を有効にするかどうかを指定します。 **false** に設定した場合、しきい値や演算子のプロパティが設定されていても、条件が無効にされます。 |
-| `threshold` | いいえ | 評価された値を比較するためのしきい値を定義します。 |
-| `operator`  | いいえ | しきい値の式で使用する比較演算子を定義します。 使用できる値は >、<、>=、<=、== です。 |
+| `threshold` | No | 評価された値を比較するためのしきい値を定義します。 |
+| `operator`  | No | しきい値の式で使用する比較演算子を定義します。 使用できる値は >、<、>=、<=、== です。 |
 
 
 ## <a name="criticalcondition-element"></a>criticalCondition 要素
@@ -267,8 +267,8 @@ Azure Monitor for VMs のゲストの正常性とその構成で使用される�
 | プロパティ | Mandatory | 説明 | 
 |:---|:---|:---|
 | `isEnabled` | いいえ | 条件を有効にするかどうかを指定します。 **false** に設定した場合、しきい値や演算子のプロパティが設定されていても、条件が無効にされます。 |
-| `threshold` | いいえ | 評価された値を比較するためのしきい値を定義します。 |
-| `operator`  | いいえ | しきい値の式で使用する比較演算子を定義します。 使用できる値は >、<、>=、<=、== です。 |
+| `threshold` | No | 評価された値を比較するためのしきい値を定義します。 |
+| `operator`  | No | しきい値の式で使用する比較演算子を定義します。 使用できる値は >、<、>=、<=、== です。 |
 
 ## <a name="sample-data-collection-rule"></a>データ収集ルールのサンプル
 次のサンプル データ収集ルールは、監視を構成するオーバーライドの例を示しています。

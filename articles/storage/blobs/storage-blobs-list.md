@@ -9,12 +9,12 @@ ms.date: 11/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 906df01587201561fbbfea0661d0885864042925
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: ddd19c90c8c47016497e2c3b00e04595a94e7715
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701315"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543070"
 ---
 # <a name="list-blobs-with-net"></a>.NET を使用して BLOB を一覧表示する
 
@@ -61,7 +61,7 @@ BLOB の一覧をフィルター処理するには、`prefix` パラメーター
 
 結果と共に BLOB メタデータを返すことができます。
 
-- .NET v12 SDK を使用している場合は、[BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits) 列挙型の **Metadata** 値を指定します。
+- .NET v12 SDK を使用している場合は、[BlobTraits](/dotnet/api/azure.storage.blobs.models.blobtraits) 列挙型の **Metadata** 値を指定します。
 
 - .NET v11 SDK を使用している場合は、[BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) 列挙型の **Metadata** 値を指定します。 Azure Storage は、返される各 BLOB にメタデータを追加します。そのため、BLOB のメタデータを取得するために、いずれかの **FetchAttributes** メソッドをこのコンテキストで呼び出す必要はありません。
 

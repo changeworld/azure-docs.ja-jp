@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 11bbc30179cc27f4799b1fd2869cb312dfa34473
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c96f2cc37c47c77b82ca86d5fd0295f0c66a896
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87093070"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009485"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions のためのゼロダウンタイムのデプロイ
 
@@ -54,7 +54,7 @@ Durable Functions の[信頼性の高い実行モデル](./durable-functions-orc
 
 1. スロットごとに、新しいアプリ設定を作成します (例: `DurableManagementStorage`)。 その値を異なるストレージ アカウントの接続文字列に設定します。 これらのストレージ アカウントは、[信頼性の高い実行](./durable-functions-orchestrations.md)のために Durable Functions 拡張機能によって使用されます。 スロットごとに個別のストレージ アカウントを使用します。 この設定をデプロイ スロットの設定としてマークしないでください。
 
-1. 関数アプリの [host.json ファイルの durableTask セクション](durable-functions-bindings.md#hostjson-settings)で、ステップ 3 で作成したアプリ設定の名前として `azureStorageConnectionStringName` を指定します。
+1. 関数アプリの [host.json ファイルの durableTask セクション](durable-functions-bindings.md#hostjson-settings)で、ステップ 3 で作成したアプリ設定の名前として `connectionStringName` (Durable 2.x) または `azureStorageConnectionStringName` (Durable 1.x) を指定します。
 
 次の図では、デプロイ スロットとストレージ アカウントの説明した構成を示します。 このような事前にデプロイされている可能性のあるシナリオでは、バージョン 2 の関数アプリが運用スロットで実行されている間、バージョン 1 はステージング スロットに残っています。
 
@@ -71,7 +71,10 @@ Durable Functions の[信頼性の高い実行モデル](./durable-functions-orc
   "version": 2.0,
   "extensions": {
     "durableTask": {
-      "azureStorageConnectionStringName": "DurableManagementStorage"
+      "hubName": "MyTaskHub",
+      "storageProvider": {
+        "connectionStringName": "DurableManagementStorage"
+      }
     }
   }
 }
@@ -132,7 +135,7 @@ Azure Pipelines では、デプロイ開始前に、関数アプリで実行中�
 
 この戦略は最も複雑です。 しかし、オーケストレーションの実行と実行の間に時間がない関数アプリに使用できます。
 
-この戦略では、Durable Functions の外側に*アプリケーション ルーター*を作成する必要があります。 このルーターは Durable Functions で実装できます。 ルーターは次の役割を担います。
+この戦略では、Durable Functions の外側に *アプリケーション ルーター* を作成する必要があります。 このルーターは Durable Functions で実装できます。 ルーターは次の役割を担います。
 
 * 関数アプリをデプロイします。
 * Durable Functions のバージョンを管理します。 

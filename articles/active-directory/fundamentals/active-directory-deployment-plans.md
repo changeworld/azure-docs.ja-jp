@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acd2f49f009a8bd71d8cfc9f442e579bb1ad396b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c2a7c2813919321227bfcdc4ee43ca15186b89df
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371887"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836820"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory のデプロイ計画
 ここでは、Azure Active Directory (Azure AD) の機能のデプロイについてのエンド ツー エンドのガイダンスを紹介しています。 Azure AD のデプロイ計画では、Azure AD の代表的な機能について、そのビジネス上の価値や計画の考慮事項、正しくデプロイするうえで必要な運用手順をひととおり説明しています。
@@ -61,7 +61,7 @@ ms.locfileid: "92371887"
 
 | 機能 | 説明|
 | -| -|
-| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure Multi-Factor Authentication (MFA) は、Microsoft の 2 段階認証ソリューションです。 管理者が承認した認証方式を使用することにより、Azure MFA では、データやアプリケーションへのアクセスを保護しながら、シンプルなサインイン プロセスへの要求に応えることができます。 |
+| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure AD Multi-Factor Authentication (MFA) は、Microsoft の 2 段階認証ソリューションです。 管理者が承認した認証方式を使用することにより、Azure AD MFA では、シンプルなサインイン プロセスへの要求に応えながら、データやアプリケーションへのアクセスを保護することができます。 |
 | [条件付きアクセス](../conditional-access/plan-conditional-access.md)| 条件付きアクセスを使用すると、クラウド アプリへのアクセスをだれに許可するかを各種の条件に基づいて自動的に判断するアクセスの制御を実装できます。 |
 | [セルフサービス パスワード リセット](../authentication/howto-sspr-deployment.md)| セルフサービス パスワード リセット により、ユーザーは、必要に応じていつでも、どこでも、管理者の介入なしでパスワードをリセットできます。 |
 | [パスワードレス](../authentication/howto-authentication-passwordless-deployment.md) | 組織内の Microsoft Authenticator アプリまたは FIDO2 セキュリティ キーを使用してパスワードレス認証を実装します。 |

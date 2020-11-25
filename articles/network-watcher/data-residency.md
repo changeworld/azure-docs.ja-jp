@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: damendo
-ms.openlocfilehash: a6be3a7fd19b43bd1b18af05d0dbfaf5053fb181
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 2e6a92a4d08f1603f480a990ad437a90302a8189
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682963"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966090"
 ---
 # <a name="data-residency-for-azure-network-watcher"></a>Azure Network Watcher のデータ所在地
 Azure Network Watcher には、接続モニター (プレビュー) サービスを除き、顧客データが格納されません。
@@ -32,4 +32,4 @@ Azure では、顧客データを 1 つのリージョンに格納できるよ�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) の概要をお読みください。
+* [Network Watcher](./network-watcher-monitoring-overview.md) の概要をお読みください。

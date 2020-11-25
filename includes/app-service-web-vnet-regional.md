@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 06/08/2020
+ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 54f80310f274b757d118f34542c1aa2e838ca7b9
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 963f0698b921caa413c61059ad69284c41b4f265
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92082128"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999445"
 ---
 リージョン VNet 統合を使用すると、アプリは次のものにアクセスできるようになります。
 
@@ -42,10 +42,10 @@ ms.locfileid: "92082128"
 同じリージョンの VNet との VNet 統合を使用する場合、いくつかの制限があります。
 
 * グローバル ピアリング接続にまたがるリソースには到達できません。
-* この機能は、PremiumV2 の App Service プランをサポートするより新しい Azure App Service スケール ユニットからのみ使用できます。 "*これは、アプリを PremiumV2 価格レベルで実行しなければならないということではなく*"、単に PremiumV2 オプションを使用できる App Service プランでアプリを実行する必要があるということにご注意ください (これは、この VNet 統合機能も使用可能な新しいスケール ユニットであることを意味します)。
+* この機能は、Premium V2 と Premium V3 のすべての App Service スケール ユニットから使用できます。 また、Standard でも使用できますが、新しい App Service のスケール ユニットからのみ利用できます。 以前のスケール ユニットを使用している場合は、Premium V2 App Service プランの機能のみを使用できます。 Standard App Service プランでこの機能を使用できるようにするには、Premium V3 App Service プランでアプリを作成します。 それらのプランは、最新のスケール ユニットでのみサポートされます。 その後、必要に応じてスケールダウンできます。  
 * 統合サブネットは、1 つの App Service プランでしか使用できません。
 * この機能は、App Service Environment にある Isolated プランのアプリでは使用できません。
-* この機能には、Azure Resource Manager VNet 内に 32 個以上のアドレスを含む /27 である未使用のサブネットが必要です。
+* この機能には、Azure Resource Manager VNet 内に /28 以上の未使用のサブネットが必要です。
 * アプリと VNet は同じリージョンに存在する必要があります。
 * 統合アプリで VNet を削除することはできません。 VNet を削除する前に、統合を削除してください。
 * アプリと同じサブスクリプション内の VNet とのみ統合できます。
@@ -53,7 +53,21 @@ ms.locfileid: "92082128"
 * リージョン VNet 統合を使用しているアプリがあるときに、アプリまたはプランのサブスクリプションを変更することはできません。
 * アプリでは、構成を変更せずに Azure DNS Private Zones のアドレスを解決することはできません
 
-プランのインスタンスごとに 1 つのアドレスが使用されます。 アプリを 5 つのインスタンスにスケールする場合は、5 つのアドレスが使用されます。 割り当てた後はサブネット サイズを変更できないため、アプリが到達する可能性のあるスケールに対応できるだけの十分な大きさを持つサブネットを使用する必要があります。 推奨されるサイズは、64 のアドレスを持つ /26 です。 64 個のアドレスを持つ /26 では、Premium プランの 30 のインスタンスに対応できます。 プランをスケールアップまたはスケールダウンする場合は、短時間に 2 倍の数のアドレスが必要になります。
+VNet 統合は、専用サブネットの使用に依存します。  サブネットをプロビジョニングすると、Azure サブネットは先頭から 5 つの IP を失います。 プラン インスタンスごとに、統合サブネットから 1 つのアドレスが使用されます。 アプリを 4 つのインスタンスにスケールする場合は、4 つのアドレスが使用されます。 サブネット サイズからの 5 つのアドレスを借用するため、CIDR ブロックあたりの使用可能な最大アドレス数は次のようになります。
+
+- /28 には 11 個のアドレスがあります
+- /27 には 27 個のアドレスがあります
+- /26 には 59 個のアドレスがあります
+
+サイズをスケールアップまたはダウンする場合は、短時間の間アドレスのニーズを倍増させる必要があります。 サイズの制限は、サブネットが次のような場合に、サブネットのサイズごとにサポートされている実際に利用可能なインスタンスが次のようになることを意味します。
+
+- /28: 水平方向の最大スケールは 5 インスタンス
+- /27: 水平方向の最大スケールは 13 インスタンス
+- /26 水平方向の最大スケールは 29 インスタンス
+
+水平方向の最大スケールに関する制限は、ある時点でサイズまたは SKU のいずれかでスケールアップまたはスケールダウンする必要があることを前提としています。 
+
+割り当てた後はサブネット サイズを変更できないため、アプリが到達する可能性のあるスケールに対応できるだけの十分な大きさを持つサブネットを使用してください。 サブネット容量に関する問題を回避するには、64 個のアドレスを持つ /26 が推奨されるサイズです。  
 
 別のプラン内のご自身のアプリが、別のプラン内のアプリから既に接続されている VNet にアクセスできるようにしたい場合は、既存の VNet 統合によって使用されているものとは異なるサブネットを選択します。
 
@@ -82,20 +96,19 @@ ms.locfileid: "92082128"
 
 ### <a name="azure-dns-private-zones"></a>Azure DNS Private Zones 
 
-アプリでは、VNet に統合された後、VNet が構成されているのと同じ DNS サーバーが使用されます。 既定では、アプリは Azure DNS Private Zones で動作しません。 Azure DNS Private Zones で動作させるには、次のアプリ設定を追加する必要があります。
-
-1. 値が 168.63.129.16 の WEBSITE_DNS_SERVER 
-1. 値が 1 の WEBSITE_VNET_ROUTE_ALL
-
-これらの設定では、アプリで Azure DNS Private Zones を使用できるようにするだけでなく、アプリからのすべての送信呼び出しを VNet に送信します。
+アプリでは、VNet に統合された後、VNet が構成されているのと同じ DNS サーバーが使用されます。 アプリの設定 WEBSITE_DNS_SERVER を目的の DNS サーバーのアドレスで構成することで、アプリのこの動作をオーバーライドできます。 VNet に構成されたカスタム DNS サーバーがあるが、アプリで Azure DNS プライベート ゾーンを使用する場合は、WEBSITE_DNS_SERVER に値 168.63.129.16 を設定する必要があります。 
 
 ### <a name="private-endpoints"></a>プライベート エンドポイント
 
-[プライベート エンドポイント][privateendpoints]を呼び出す場合は、Azure DNS Private Zones と統合するか、アプリで使用される DNS サーバーでプライベート エンドポイントを管理する必要があります。 
+[プライベート エンドポイント][privateendpoints]を呼び出す場合は、DNS 参照がプライベート エンドポイントに解決されるようにする必要があります。 アプリからの DNS 参照がプライベート エンドポイントを参照するようにするために、次の選択肢があります。
+
+* Azure DNS Private Zones と統合する。 VNet にカスタム DNS サーバーがない場合、これは自動的に行われます
+* アプリで使用される DNS サーバーでプライベート エンドポイントを管理する。 これを行うには、プライベート エンドポイント アドレスを把握し、到達しようとしているエンドポイントが A レコードでそのアドレスにポイントされるようにします。
+* Azure DNS プライベート ゾーンに転送する独自の DNS サーバーを構成する
 
 <!--Image references-->
 [4]: ../includes/media/web-sites-integrate-with-vnet/vnetint-appsetting.png
 
 <!--Links-->
-[VNETnsg]: https://docs.microsoft.com/azure/virtual-network/security-overview/
-[privateendpoints]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint
+[VNETnsg]: /azure/virtual-network/security-overview/
+[privateendpoints]: ../articles/app-service/networking/private-endpoint.md

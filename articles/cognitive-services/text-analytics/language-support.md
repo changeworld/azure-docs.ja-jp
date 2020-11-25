@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: b13d82780a01771c6bb8e87091a7808ea22ca111
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b90fe6b7e0937a9ac3b300e904085122610d5645
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371187"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957080"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Text Analytics API v3 の言語のサポート 
 
@@ -35,12 +35,13 @@ ms.locfileid: "92371187"
 | フランス語                |     `fr`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | ドイツ語                |     `de`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | ギリシャ語                 |     `el`      |     ✓      |            |                            |                    |
-| ヒンディー語                 |     `hi`      |           |      ✓      |          2020-04-01                  |                    |
+| ヒンディー語                 |     `hi`      |            |      ✓     |          2020-04-01        |                    |
 | イタリア語               |     `it`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | 日本語              |     `ja`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | 韓国語                |     `ko`      |            |     ✓      |         2019-10-01         |                    |
-| ノルウェー語 (ブークモール)   |     `no`      |     ✓      |     ✓       |        2020-07-01         |                    |
+| ノルウェー語 (ブークモール)   |     `no`      |     ✓      |     ✓      |         2020-07-01         |                    |
 | ポーランド語                |     `pl`      |     ✓      |            |                            |                    |
+| ポルトガル語 (ブラジル)   |    `pt-BR`    |            |     ✓      |         2020-04-01         |                    |
 | ポルトガル語 (ポルトガル) |    `pt-PT`    |     ✓      |     ✓      |         2019-10-01         | `pt` も可能 |
 | ロシア語               |     `ru`      |     ✓      |            |                            |                    |
 | スペイン語               |     `es`      |     ✓      |     ✓      |         2019-10-01         |                    |

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 11/12/2020
-ms.openlocfilehash: 68a7dd1b9a7af9f2667785c8b822b2771510d00e
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: b41f5e9a3bd4d3cbe52cf2e1c567d24de8a661f4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562829"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95992845"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Monitor で Azure AD B2C を監視する
 
@@ -25,7 +25,7 @@ Azure Monitor を使用して、Azure Active Directory B2C (Azure AD B2C) のサ
 ログ イベントは次の場所にルーティングできます。
 
 * Azure [ストレージ アカウント](../storage/blobs/storage-blobs-introduction.md)。
-* [Log Analytics ワークスペース](../azure-monitor/platform/resource-logs-collect-workspace.md) (データの分析、ダッシュボードの作成、特定のイベントに対するアラートの作成を行う)。
+* [Log Analytics ワークスペース](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) (データの分析、ダッシュボードの作成、特定のイベントに対するアラートの作成を行う)。
 * Azure [イベント ハブ](../event-hubs/event-hubs-about.md) (Splunk および Sumo Logic のインスタンスと統合できます)。
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)

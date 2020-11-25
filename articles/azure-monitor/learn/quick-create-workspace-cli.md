@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 7421162ed68a879d9f935a3efd5c6267e159a648
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54d1d8a29c87f8d129c0ea5b29973c4fef0e6f7a
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324303"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888999"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Azure CLI 2.0 を使用して Log Analytics ワークスペースを作成する
 
@@ -28,11 +28,11 @@ Azure CLI 2.0 は、コマンド ラインやスクリプトで Azure リソー�
 * [ハイブリッド Linux コンピューターからのデータの収集](./quick-collect-linux-computer.md)
 * [ハイブリッド Windows コンピューターからのデータの収集](quick-collect-windows-computer.md)
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-CLI をローカルにインストールして使用することを選択する場合、このクイック スタートでは、Azure CLI バージョン 2.0.30 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
+- この記事では、Azure CLI のバージョン 2.0.30 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 [az group deployment create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create) を使用してワークスペースを作成します。 次の例では、ローカル コンピューターから Resource Manager テンプレートを使用して、*eastus* の場所にワークスペースを作成します。 JSON テンプレートは、ワークスペースの名前の入力だけをユーザーに求め、環境の標準構成として使用される可能性のある他のパラメーターには既定値を指定するように構成されています。 または、組織内の共有アクセス用に Azure ストレージ アカウントにテンプレートを格納することができます。 テンプレートを操作する方法の詳細については、「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-cli.md)」を参照してください
@@ -121,7 +121,7 @@ CLI をローカルにインストールして使用することを選択する�
 ## <a name="troubleshooting"></a>トラブルシューティング
 過去 14 日間に削除され、[論理的な削除状態](../platform/delete-workspace.md#soft-delete-behavior)になっているワークスペースを作成した場合は、ワークスペースの構成に応じて、操作の結果が異なる可能性があります。
 1. 削除されたワークスペースと同じワークスペース名、リソース グループ、サブスクリプション、リージョンを指定した場合は、データ、構成、および接続されたエージェントを含むワークスペースが復旧されます。
-2. 同じワークスペース名を使用していて、リソース グループ、サブスクリプション、またはリージョンが異なる場合は、*ワークスペース名 'workspace-name' が一意ではない*、または*競合している*というエラーが表示されます。 ご自分のワークスペースの論理的な削除をオーバーライドし、完全に削除して同じ名前の新しいワークスペースを作成するには、次の手順に従って、最初にワークスペースを回復してから、完全な削除を実行します。
+2. 同じワークスペース名を使用していて、リソース グループ、サブスクリプション、またはリージョンが異なる場合は、*ワークスペース名 'workspace-name' が一意ではない*、または *競合している* というエラーが表示されます。 ご自分のワークスペースの論理的な削除をオーバーライドし、完全に削除して同じ名前の新しいワークスペースを作成するには、次の手順に従って、最初にワークスペースを回復してから、完全な削除を実行します。
    * ワークスペースを[回復します](../platform/delete-workspace.md#recover-workspace)
    * ワークスペースを[完全に削除](../platform/delete-workspace.md#permanent-workspace-delete)します
    * 同じワークスペース名を使用して新しいワークスペースを作成します

@@ -3,16 +3,17 @@ title: よくあるご質問 - SAP ソリューション向け Azure Monitor | M
 description: この記事では、Azure Monitor for SAP Solutions に関してよく寄せられる質問 (FAQ) に対する回答を紹介します。
 author: rdeltcheva
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: f872264d5f7bdf4abded516412fe55c417a92e1e
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 204b809966fbf63a48f6d1ce1d80f87f706c9a56
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566114"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968572"
 ---
 # <a name="azure-monitor-for-sap-solutions-faq-preview"></a>Azure Monitor for SAP Solutions に関する FAQ (プレビュー)
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問

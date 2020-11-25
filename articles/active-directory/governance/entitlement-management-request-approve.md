@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca42ddbc648f7c342b1cd649c19b77df803257d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfbd5e6f190e0600c31aa17e9b1a75f08e213df4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979830"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973577"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス要求を承認または拒否する
 
@@ -61,7 +61,7 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 1. 要求元が指定した情報は、パネルの下部に表示されます。
 
-     ![マイ アクセス ポータル - [アクセス要求]](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
+     ![要求の詳細を示すスクリーンショット](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
 
 1. 要求元が指定した情報に基づいて、要求を承認または拒否することができます。 ガイダンスについては、「要求を承認または拒否する」の手順を参照してください。
 
@@ -81,7 +81,7 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 1. 必要に応じて、理由を入力します。
 
-    ![マイ アクセス ポータル - [アクセス要求]](./media/entitlement-management-request-approve/my-access-approve-request.png)
+    ![要求を承認または拒否するページを示すスクリーンショット。](./media/entitlement-management-request-approve/my-access-approve-request.png)
 
 1. **[送信]** をクリックして、決定を送信します。
 

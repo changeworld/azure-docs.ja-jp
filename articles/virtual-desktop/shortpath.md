@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: ee37ab90910058378172223a3435047346f5fe7c
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 6ffe631dc237e7efaf1d6bfd9ac79ab7431c7371
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701787"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023141"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows Virtual Desktop の RDP Shortpath (プレビュー)
 
@@ -36,7 +36,7 @@ RDP Shortpath により、RDP マルチトランスポート機能が拡張さ�
 
 UDP ポート 3390 は、逆方向接続トランスポートを介して認証される受信 Shortpath トラフィックにのみ使用されます。 RDP Shortpath リスナーでは、逆方向接続セッションと一致しない限り、リスナーへの接続試行はすべて無視されます。
 
-RDP Shortpath では、セッション ホストの証明書を使用して、クライアントとセッション ホスト間の TLS 接続を使用します。 既定では、RDP 暗号化に使用される証明書は、デプロイ中に OS によって自己生成されます。 必要に応じて、顧客は企業の証明機関によって発行され、一元管理された証明書を展開できます。 証明書の構成の詳細については、[Windows Server ドキュメント](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations.md)を参照してください。
+RDP Shortpath では、セッション ホストの証明書を使用して、クライアントとセッション ホスト間の TLS 接続を使用します。 既定では、RDP 暗号化に使用される証明書は、デプロイ中に OS によって自己生成されます。 必要に応じて、顧客は企業の証明機関によって発行され、一元管理された証明書を展開できます。 証明書の構成の詳細については、[Windows Server ドキュメント](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations)を参照してください。
 
 ## <a name="rdp-shortpath-connection-sequence"></a>RDP Shortpath の接続シーケンス
 
@@ -53,7 +53,7 @@ RDP Shortpath では、セッション ホストの証明書を使用して、�
 
 :::image type="content" source="media/rdp-shortpath-connections.svg" alt-text="RDP Shortpath ネットワーク接続の図" lightbox="media/rdp-shortpath-connections.svg":::
 
-## <a name="requirements"></a>必要条件
+## <a name="requirements"></a>要件
 
 RDP Shortpath をサポートするには、Windows Virtual Desktop クライアントに、セッション ホストへの直接の通信経路が必要です。 直接の通信経路を取得するには、次のテクノロジのいずれかを使用します。
 
@@ -182,12 +182,12 @@ New-NetFirewallRule -DisplayName 'Remote Desktop - Shortpath (UDP-In)'  -Action 
 ### <a name="using-log-analytics-to-verify-shortpath-connectivity"></a>Log Analytics を使用した Shortpath 接続の検証
 
 [Azure Log Analytics](./diagnostics-log-analytics.md) を使用する場合、[WVDConnections テーブル](/azure/azure-monitor/reference/tables/wvdconnections)に対してクエリを実行することで接続を監視できます。 UdpUse という名前の列は、Windows Virtual Desktop RDP スタックにより、現在のユーザー接続で UDP プロトコルが使用されているかどうかを示します。
-設定できる値は次のとおりです。
+次の値を指定できます。
 
 * **0** - ユーザー接続で RDP Shortpath は使用されていない
 * **1** - ユーザー接続で RDP Shortpath が使用されている
   
-次のクエリ一覧では、接続情報を確認できます。 このクエリは、[Log Analytics クエリ エディター](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries)で実行できます。 クエリごとに、`userupn` を検索するユーザーの UPN に置き換えます。
+次のクエリ一覧では、接続情報を確認できます。 このクエリは、[Log Analytics クエリ エディター](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query)で実行できます。 クエリごとに、`userupn` を検索するユーザーの UPN に置き換えます。
 
 ```kusto
 let Events = WVDConnections | where UserName == "userupn" ;
@@ -254,5 +254,5 @@ Get-Process -id (Get-NetUDPEndpoint  -LocalPort 3390 -LocalAddress 0.0.0.0).Owni
 
 ## <a name="next-steps"></a>次のステップ
 
-* Windows Virtual Desktop のネットワーク接続の詳細については、「[Understanding Windows Virtual Desktop network connectivity](network-connectivity.md)」 (Windows Virtual Desktop のネットワーク接続について) を参照してください。
-* Windows Virtual Desktop のサービス品質 (QoS) の使用を開始するには、「[Implement Quality of Service (QoS) for Windows Virtual Desktop](rdp-quality-of-service-qos.md)」 (Windows Virtual Desktop のサービスの品質 (QoS) を実装する) を参照してください。
+* Windows Virtual Desktop のネットワーク接続の詳細については、「[Windows Virtual Desktop のネットワーク接続について](network-connectivity.md)」を参照してください。
+* Windows Virtual Desktop のサービス品質 (QoS) の使用を開始するには、「[Windows Virtual Desktop のサービス品質 (QoS) を実装する](rdp-quality-of-service-qos.md)」を参照してください。

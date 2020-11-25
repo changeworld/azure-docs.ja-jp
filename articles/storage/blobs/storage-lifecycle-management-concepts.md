@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 85577a428f803e31aa33468496d7efca77933835
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 1b568687ffe646a91544c1bb75d26d552a23f49c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579313"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96005284"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Azure Blob Storage アクセス層の自動化によるコストの最適化
 
@@ -39,7 +39,7 @@ ms.locfileid: "94579313"
 
 ライフサイクル管理機能は、General Purpose v2 (GPv2) アカウント、BLOB ストレージ アカウント、Premium ブロック BLOB ストレージ アカウント、Azure Data Lake Storage Gen2 アカウントのすべての Azure リージョンで利用できます。 Azure portal では、既存の General Purpose (GPv1) アカウントを GPv2 アカウントにアップグレードすることができます。 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」をご覧ください。
 
-ライフサイクル管理機能は無料です。 お客様には、[Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API 呼び出しの通常の運用コストが課金されます。 削除操作は無料です。 価格の詳細については、「[ブロック BLOBの料金](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
+ライフサイクル管理機能は無料です。 お客様には、[Set Blob Tier](/rest/api/storageservices/set-blob-tier) API 呼び出しの通常の運用コストが課金されます。 削除操作は無料です。 価格の詳細については、「[ブロック BLOBの料金](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
 
 ## <a name="add-or-remove-a-policy"></a>ポリシーを追加または削除する
 
@@ -47,13 +47,13 @@ ms.locfileid: "94579313"
 
 * [Azure Portal](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
-* [REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
+* [Azure CLI](/cli/azure/install-azure-cli)
+* [REST API](/rest/api/storagerp/managementpolicies)
 
 ポリシーは、全体として読み取ったり書き込んだりすることができます。 部分的な更新はサポートされません。 
 
 > [!NOTE]
-> ストレージ アカウントのファイアウォール ルールを有効にしている場合、ライフサイクル管理要求がブロックされることがあります。 信頼できる Microsoft サービスに例外を指定することで、このような要求のブロックを解除できます。 詳細については、[ファイアウォールおよび仮想ネットワークの構成](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)に関するページの「例外」セクションを参照してください。
+> ストレージ アカウントのファイアウォール ルールを有効にしている場合、ライフサイクル管理要求がブロックされることがあります。 信頼できる Microsoft サービスに例外を指定することで、このような要求のブロックを解除できます。 詳細については、[ファイアウォールおよび仮想ネットワークの構成](../common/storage-network-security.md#exceptions)に関するページの「例外」セクションを参照してください。
 
 この記事では、ポータルと PowerShell の方法を使用してポリシーを管理する方法について説明します。
 
@@ -450,7 +450,7 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 また、クラウド内でアイドル状態のままとなり、格納されてからはほとんどアクセスされないデータもあります。 次のライフサイクル ポリシーは、取り込み直後にデータをアーカイブするように構成されます。 この例では、コンテナー `archivecontainer` 内のストレージ アカウントのブロック BLOB をアーカイブ層に移行します。 この移行は、最終変更時刻の 0 日後に BLOB を処理することによって実現されます。
 
 > [!NOTE] 
-> より効率的な方法として、BLOB をアーカイブ層に直接アップロードすることをお勧めします。 [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) または [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) の x-ms-access-tier ヘッダーを REST バージョン 2018-11-09 以降または最新の BLOB ストレージ クライアント ライブラリと使用できます。 
+> より効率的な方法として、BLOB をアーカイブ層に直接アップロードすることをお勧めします。 [PutBlob](/rest/api/storageservices/put-blob) または [PutBlockList](/rest/api/storageservices/put-block-list) の x-ms-access-tier ヘッダーを REST バージョン 2018-11-09 以降または最新の BLOB ストレージ クライアント ライブラリと使用できます。 
 
 ```json
 {
@@ -592,7 +592,7 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 
 誤って削除したデータを回復する方法を学習します。
 
-- [Azure Storage Blob の論理的な削除](../blobs/storage-blob-soft-delete.md)
+- [Azure Storage Blob の論理的な削除](./soft-delete-blob-overview.md)
 
 BLOB インデックスを使用してデータを管理および検索する方法について説明します。
 

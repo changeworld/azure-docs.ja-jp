@@ -10,18 +10,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: 8c4df64334957a78fcf05c11625335214f8e032a
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: a6ba9c02b384c1b30977d962659983d600c7b2ac
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699374"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545722"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Azure portal を使用して接続モニターでモニターを作成する
 
 接続モニターを使用して、リソース間の通信を監視する方法について説明します。 この記事では、Azure portal を使用してモニターを作成する方法について説明します。 接続モニターでは、ハイブリッドと Azure クラウドのデプロイがサポートされています。
+
 
 ## <a name="before-you-begin"></a>開始する前に 
 
@@ -102,7 +103,7 @@ Azure portal において接続モニターでテスト グループを作成す
 
 * **[テスト グループの無効化]** :このチェック ボックスをオンにすると、テスト グループで指定されているすべてのソースとターゲットに対する監視を無効にできます。 既定ではオフになっています。
 * **[名前]** :テスト グループの名前を指定します。
-* **Sources**:エージェントがインストールされていれば、Azure VM でもオンプレミスのマシンでもソースとして指定できます。 ソース用エージェントのインストールの詳細については、「[監視エージェントをインストールする](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents)」を参照してください。
+* **Sources**:エージェントがインストールされていれば、Azure VM でもオンプレミスのマシンでもソースとして指定できます。 ソース用エージェントのインストールの詳細については、「[監視エージェントをインストールする](./connection-monitor-overview.md#install-monitoring-agents)」を参照してください。
    * Azure エージェントを選択するには、 **[Azure エンドポイント]** タブを選択します。ここでは、接続モニターを作成するときに指定したリージョンにバインドされている VM のみが表示されます。 既定では、VM は属しているサブスクリプションにグループ化されます。 これらのグループは折りたたまれています。 
    
        **サブスクリプション** レベルから次の階層内の他のレベルにドリルダウンできます。
@@ -117,7 +118,7 @@ Azure portal において接続モニターでテスト グループを作成す
 
    * オンプレミスのエージェントを選択するには、 **[非 Azure エンドポイント]** タブを選択します。既定では、エージェントはリージョンごとにワークスペースにグループ化されます。 これらのワークスペースのすべてに、Network Performance Monitor が構成されます。 
    
-       ワークスペースに Network Performance Monitor ソリューションを追加する必要がある場合は、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) から入手します。 Network Performance Monitor を追加する方法について詳しくは、「[Azure Monitor での監視ソリューション](https://docs.microsoft.com/azure/azure-monitor/insights/solutions)」をご覧ください。 
+       ワークスペースに Network Performance Monitor ソリューションを追加する必要がある場合は、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) から入手します。 Network Performance Monitor を追加する方法について詳しくは、「[Azure Monitor での監視ソリューション](../azure-monitor/insights/solutions.md)」をご覧ください。 
    
        **[接続モニターの作成]** の **[基本]** タブでは、既定のリージョンが選択されています。 リージョンを変更する場合、新しいリージョンのワークスペースからエージェントを選択できます。 1 つ以上のエージェントまたはサブネットを選択できます。 **[サブネット]** ビューで、監視する特定の IP を選択できます。 複数のサブネットを追加すると、**OnPremises_Network_1** という名前のカスタムのオンプレミス ネットワークが作成されます。 また、**Group by** セレクターを変更して、エージェントごとにグループ化することもできます。
 
@@ -140,7 +141,7 @@ Azure portal において接続モニターでテスト グループを作成す
     
     * Azure 以外のエージェントをターゲットとして選択するには、 **[Azure 以外のエンドポイント]** タブを選択します。既定では、エージェントはリージョンごとにワークスペースにグループ化されます。 これらのワークスペースのすべてに、Network Performance Monitor が構成されます。 
     
-      ワークスペースに Network Performance Monitor ソリューションを追加する必要がある場合は、Azure Marketplace から入手します。 Network Performance Monitor を追加する方法について詳しくは、「[Azure Monitor での監視ソリューション](https://docs.microsoft.com/azure/azure-monitor/insights/solutions)」をご覧ください。 
+      ワークスペースに Network Performance Monitor ソリューションを追加する必要がある場合は、Azure Marketplace から入手します。 Network Performance Monitor を追加する方法について詳しくは、「[Azure Monitor での監視ソリューション](../azure-monitor/insights/solutions.md)」をご覧ください。 
 
        **[接続モニターの作成]** の  **[基本]**   タブでは、既定のリージョンが選択されています。 リージョンを変更する場合、新しいリージョンのワークスペースからエージェントを選択できます。 1 つ以上のエージェントまたはサブネットを選択できます。 **[サブネット]** ビューで、監視する特定の IP を選択できます。 複数のサブネットを追加すると、**OnPremises_Network_1** という名前のカスタムのオンプレミス ネットワークが作成されます。  
 
@@ -182,7 +183,7 @@ Azure portal において接続モニターでアラートを作成するには�
 
 - **条件名**:`Test Result(preview)` メトリックにアラートが作成されます。 接続モニター テストの結果が失敗した場合は、アラート ルールが起動します。 
 
-- **アクション グループ名**:メール アドレスを直接入力することも、アクション グループを使用してアラートを作成することもできます。 メール アドレスを直接入力すると、**NPM Email ActionGroup** という名前のアクション グループが作成されます。 メール ID がそのアクション グループに追加されます。 アクション グループを使用する場合は、以前に作成したアクション グループを選択する必要があります。 アクション グループを作成する方法の詳細については、[Azure portal でのアクション グループの作成](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)に関するページを参照してください。 アラートが作成されたら、[アラートを管理する](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric#view-and-manage-with-azure-portal)ことができます。 
+- **アクション グループ名**:メール アドレスを直接入力することも、アクション グループを使用してアラートを作成することもできます。 メール アドレスを直接入力すると、**NPM Email ActionGroup** という名前のアクション グループが作成されます。 メール ID がそのアクション グループに追加されます。 アクション グループを使用する場合は、以前に作成したアクション グループを選択する必要があります。 アクション グループを作成する方法の詳細については、[Azure portal でのアクション グループの作成](../azure-monitor/platform/action-groups.md)に関するページを参照してください。 アラートが作成されたら、[アラートを管理する](../azure-monitor/platform/alerts-metric.md#view-and-manage-with-azure-portal)ことができます。 
 
 - **アラート ルール名**:接続モニターの名前です。
 
@@ -201,5 +202,5 @@ Azure portal において接続モニターでアラートを作成するには�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [監視データを分析してアラートを設定する方法](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#analyze-monitoring-data-and-set-alerts)を確認する。
-* [ネットワークの問題を診断する方法](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#diagnose-issues-in-your-network)を確認する。
+* [監視データを分析してアラートを設定する方法](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts)を確認する。
+* [ネットワークの問題を診断する方法](./connection-monitor-overview.md#diagnose-issues-in-your-network)を確認する。

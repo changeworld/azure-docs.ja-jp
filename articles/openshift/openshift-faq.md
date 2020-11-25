@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
-ms.openlocfilehash: c09f741b37e06010a0bfbab40317980793240e29
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3a474228776c689dbbd6f15ddd926f29383400ce
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683507"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964713"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift に関する FAQ
 
@@ -21,7 +21,7 @@ ms.locfileid: "94683507"
 
 ### <a name="which-azure-regions-are-supported"></a>どの Azure リージョンがサポートされていますか?
 
-Azure Red Hat OpenShift 4.x でサポートされているリージョンのリストについては、[利用可能なリージョン](https://docs.openshift.com/aro/4/welcome/index.html#available-regions)に関するページを参照してください。
+Azure Red Hat OpenShift 4.x でサポートされているリージョンのリストについては、[利用可能なリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all)に関するページを参照してください。
 
 Azure Red Hat OpenShift 3.11 でサポートされているリージョンのリストについては、[リージョン別の利用可能な製品](supported-resources.md#azure-regions)に関するページを参照してください。
 

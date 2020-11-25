@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
 ms.openlocfilehash: 2aae71836a4eaba845e4752edf708607977763fa
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371866"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014290"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>他のアカウントから Azure サブスクリプションの課金所有権を取得する
 
@@ -21,14 +21,14 @@ ms.locfileid: "91371866"
 
 この記事では、Microsoft 顧客契約の課金アカウントについて説明します。 [Microsoft 顧客契約にアクセスできるかどうかを確認してください](#check-for-access)。
 
-課金所有権を要求するには、**請求書セクション所有者**または**請求書セクション共同作成者**であることが必要です。 詳細については、[請求書セクションのロールとタスク](understand-mca-roles.md#invoice-section-roles-and-tasks)に関するページを参照してください。
+課金所有権を要求するには、**請求書セクション所有者** または **請求書セクション共同作成者** であることが必要です。 詳細については、[請求書セクションのロールとタスク](understand-mca-roles.md#invoice-section-roles-and-tasks)に関するページを参照してください。
 
 ## <a name="request-billing-ownership"></a>課金所有権を要求する
 
 1. Microsoft 顧客契約の課金アカウントの請求書セクション所有者または共同作成者として [Azure portal](https://portal.azure.com) にサインインします。
 1. "**コスト管理 + 請求**" を検索します。  
     ![Azure portal でのコストの管理と請求の検索を示すスクリーンショット](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
-1. サブスクリプション利用の支払いに使用する課金アカウントを [課金スコープ] ページで選択します。 課金アカウントの種類は、**Microsoft 顧客契約**である必要があります。  
+1. サブスクリプション利用の支払いに使用する課金アカウントを [課金スコープ] ページで選択します。 課金アカウントの種類は、**Microsoft 顧客契約** である必要があります。  
     [![ポータルでコスト管理と請求を検索しているところを示すスクリーンショット](./media/mca-request-billing-ownership/list-of-scopes.png)](./media/mca-request-billing-ownership/list-of-scopes.png#lightbox)
     > [!NOTE]
     > ユーザーが最近アクセスした課金スコープは、Azure portal によって記憶されます。次回 [コストの管理と請求] ページにアクセスすると、そのスコープが表示されます。 過去に [コストの管理と請求] にアクセスしたことがなければ、課金スコープ ページは表示されません。 その場合は、[適切なスコープ](#check-for-access)になっていることを確認してください。 適切でない場合は、[スコープを切り替え](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)て Microsoft 顧客契約の課金アカウントを選択します。

@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2020
-ms.openlocfilehash: a8890db90fa9f76b676a5fb944f74a773b00c8cd
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 80280702748040e12d1d3d048644e6a16c926256
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737520"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832383"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>マッピング データ フローのソース変換
 
@@ -39,7 +39,7 @@ ms.locfileid: "92737520"
 
 ##  <a name="supported-source-types"></a><a name="supported-sources"></a> サポートされるソースの種類
 
-マッピング データ フローは、抽出、読み込み、変換 (ELT) のアプローチに従い、すべて Azure に存在する " *ステージング* " データセットを操作します。 現在は、次のデータセットをソース変換で使用できます。
+マッピング データ フローは、抽出、読み込み、変換 (ELT) のアプローチに従い、すべて Azure に存在する "*ステージング*" データセットを操作します。 現在は、次のデータセットをソース変換で使用できます。
 
 | コネクタ | Format | データセット/インライン |
 | --------- | ------ | -------------- |
@@ -50,6 +50,7 @@ ms.locfileid: "92737520"
 | [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure SQL Managed Instance (プレビュー)](connector-azure-sql-managed-instance.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure Cosmos DB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+| [Hive](connector-hive.md#mapping-data-flow-properties) | | -/✓ | 
 | [Snowflake](connector-snowflake.md) | | ✓/✓ |
 
 これらのコネクタに固有の設定は、 **[Source options]\(ソース オプション\)** タブにあります。これらの設定に関する情報とデータ フロー スクリプトの例は、コネクタのドキュメントに記載されています。
@@ -80,7 +81,7 @@ Azure Data Factory から、[90 を超えるネイティブ コネクタ](connec
 
 **[Skip line count]\(スキップ行数\)** : この **[Skip line count]\(スキップ行数\)** フィールドでは、データセットの先頭で無視する行数を指定します。
 
-**サンプリング** :ソースからの行数を制限するには、 **サンプリング** を有効にします。 デバッグの目的でソースのデータをテストまたはサンプリングする場合は、この設定を使用します。
+**サンプリング**:ソースからの行数を制限するには、**サンプリング** を有効にします。 デバッグの目的でソースのデータをテストまたはサンプリングする場合は、この設定を使用します。
 
 ソースが正しく構成されていることを確認するには、デバッグ モードを有効にし、データ プレビューを取り込みます。 詳細については、[デバッグ モード](concepts-data-flow-debug-mode.md)に関するページを参照してください。
 

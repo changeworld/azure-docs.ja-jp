@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: bb1f4b5e37cecc33cef115f26c44ad6375c7e327
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: d682495cb7add446adf1634de6e9ed6756d1468e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734380"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544379"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure プライベート エンドポイントの DNS 構成
 
@@ -125,7 +125,7 @@ DNS は、プライベート エンドポイント IP アドレスを正常に�
 > [!IMPORTANT]
 > 別のサブスクリプションのハブアンドスポーク モデルでプライベート エンドポイントを使用している場合は、ハブで同じプライベート DNS ゾーンを再利用します。
 
-このシナリオには、[ハブ アンド スポーク](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)のネットワーク トポロジがあります。スポーク ネットワークで共通プライベート エンドポイントを共有し、すべてのスポーク仮想ネットワークが同じプライベート DNS ゾーンにリンクされています。 
+このシナリオには、[ハブ アンド スポーク](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)のネットワーク トポロジがあります。スポーク ネットワークで共通プライベート エンドポイントを共有し、すべてのスポーク仮想ネットワークが同じプライベート DNS ゾーンにリンクされています。 
 
 :::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="ハブとスポーク、および Azure 提供の DNS":::
 
@@ -141,7 +141,7 @@ DNS は、プライベート エンドポイント IP アドレスを正常に�
 適切に構成するには、次のリソースが必要です。
 
 - オンプレミス ネットワーク
-- [オンプレミスに接続された](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)仮想ネットワーク
+- [オンプレミスに接続された](/azure/architecture/reference-architectures/hybrid-networking/)仮想ネットワーク
 - Azure にデプロイされた DNS フォワーダー 
 - プライベート DNS ゾーン [privatelink.database.windows.net](../dns/private-dns-privatednszone.md) と[タイプ A レコード](../dns/dns-zones-records.md#record-types)
 - プライベート エンドポイント情報 (FQDN レコード名とプライベート IP アドレス)
@@ -158,7 +158,7 @@ DNS は、プライベート エンドポイント IP アドレスを正常に�
 適切に構成するには、次のリソースが必要です。
 
 - カスタム DNS ソリューションが配置されているオンプレミス ネットワーク 
-- [オンプレミスに接続された](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)仮想ネットワーク
+- [オンプレミスに接続された](/azure/architecture/reference-architectures/hybrid-networking/)仮想ネットワーク
 - Azure にデプロイされた DNS フォワーダー
 - プライベート DNS ゾーン [privatelink.database.windows.net](../dns/private-dns-privatednszone.md) と[タイプ A レコード](../dns/dns-zones-records.md#record-types)
 - プライベート エンドポイント情報 (FQDN レコード名とプライベート IP アドレス)
@@ -187,7 +187,7 @@ DNS は、プライベート エンドポイント IP アドレスを正常に�
 適切に構成するには、次のリソースが必要です。
 
 - オンプレミス ネットワーク
-- [オンプレミスに接続された](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)仮想ネットワーク
+- [オンプレミスに接続された](/azure/architecture/reference-architectures/hybrid-networking/)仮想ネットワーク
 - [ピアリングされた仮想ネットワーク](../virtual-network/virtual-network-peering-overview.md) 
 - Azure にデプロイされた DNS フォワーダー
 - プライベート DNS ゾーン [privatelink.database.windows.net](../dns/private-dns-privatednszone.md) と[タイプ A レコード](../dns/dns-zones-records.md#record-types)

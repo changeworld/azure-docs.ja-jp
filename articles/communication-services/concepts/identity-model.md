@@ -9,12 +9,12 @@ ms.author: tchladek
 ms.date: 10/26/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: f172bfcb6e4f11520eb9082052968626efe6fecb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: dd2ffacb176ed3733acba8699d4e870b15dd3c42
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651245"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888710"
 ---
 # <a name="identity-model"></a>ID モデル
 
@@ -63,7 +63,7 @@ Azure Communication Services では、Azure ID 管理システムの機能はレ
 
 ID には、サーバー側のサービスに対して新しいアクセス トークンを要求する手段が必要です。 *scope* パラメーターを使用して、空ではない使用可能なプリミティブ セットを定義します。 Azure Communication Services により、アクセス トークンに対して次のスコープがサポートされます。
 
-|名前|Description|
+|名前|説明|
 |---|---|
 |チャット|  チャットに参加する機能を許可します|
 |VoIP|  ID と電話番号を呼び出す機能を許可します|
@@ -83,6 +83,6 @@ Azure Communication Services では、アクセス キーをローテーショ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* アクセス トークンの管理の概要については、「[アクセス トークンを作成して管理する](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens)」を参照してください。
-* 認証の概要については、「[Azure Communication Services に対する認証](https://docs.microsoft.com/azure/communication-services/concepts/authentication)」を参照してください。
-* データ所在地とプライバシーの概要については、「[利用可能なリージョンとデータの保存場所](https://docs.microsoft.com/azure/communication-services/concepts/privacy)」を参照してください。
+* アクセス トークンの管理の概要については、「[アクセス トークンを作成して管理する](../quickstarts/access-tokens.md)」を参照してください。
+* 認証の概要については、「[Azure Communication Services に対する認証](./authentication.md)」を参照してください。
+* データ所在地とプライバシーの概要については、「[利用可能なリージョンとデータの保存場所](./privacy.md)」を参照してください。

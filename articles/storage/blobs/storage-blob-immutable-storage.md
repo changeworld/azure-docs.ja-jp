@@ -9,12 +9,12 @@ ms.date: 11/13/2020
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 39fdde572e269bb4f5648e91bf85539d02236ff6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: acb2ebb0d7ce70c6b5963a8a6c3e392091e4bb1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658555"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010063"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>不変ストレージを使用してビジネスに不可欠な BLOB データを保存する
 
@@ -76,7 +76,7 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 
 ### <a name="allow-protected-append-blobs-writes"></a>保護された追加 BLOB の書き込みを許可する
 
-追加 BLOB はデータ ブロックで構成され、監査とログ記録のシナリオで必要なデータ追加操作用に最適化されています。 設計上、追加 BLOB では、BLOB の末尾に新しいブロックを追加することのみが許可されます。 不変性に関係なく、追加 BLOB の既存のブロックの変更や削除は、基本的には許可されていません。 追加 BLOB の詳細については、「[追加 BLOB について](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)」を参照してください。
+追加 BLOB はデータ ブロックで構成され、監査とログ記録のシナリオで必要なデータ追加操作用に最適化されています。 設計上、追加 BLOB では、BLOB の末尾に新しいブロックを追加することのみが許可されます。 不変性に関係なく、追加 BLOB の既存のブロックの変更や削除は、基本的には許可されていません。 追加 BLOB の詳細については、「[追加 BLOB について](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)」を参照してください。
 
 時間ベースの保持ポリシーのみが持っている `allowProtectedAppendWrites` 設定では、不変性の保護とコンプライアンスを維持しながら、追加 BLOB への新しいブロックの書き込みが許可されます。 この設定を有効にすると、ポリシーで保護されたコンテナー内に追加 BLOB を直接作成し、*AppendBlock* API を使用して、既存の追加 BLOB の末尾に新しいデータ ブロックを追加することができます。 新しいブロックを追加することだけができ、既存のブロックを変更したり削除したりすることはできません。 持続的不変性保護は引き続き適用され、有効な保持期間が経過するまで、追加 BLOB は削除に対して保護されます。 この設定を有効にしても、ブロック BLOB またはページ BLOB の不変性動作には影響しません。
 
@@ -103,7 +103,7 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 
 ## <a name="scenarios"></a>シナリオ
 
-次の表に、さまざまな不変シナリオで無効になる BLOB ストレージ操作の種類を示します。 詳細については、[Azure Blob Service REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) に関する記事を参照してください。
+次の表に、さまざまな不変シナリオで無効になる BLOB ストレージ操作の種類を示します。 詳細については、[Azure Blob Service REST API](/rest/api/storageservices/blob-service-rest-api) に関する記事を参照してください。
 
 | シナリオ | BLOB の状態 | 拒否される BLOB 操作 | コンテナーとアカウントの保護 |
 |--|--|--|--|
@@ -116,7 +116,7 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 <sup>2</sup> Append Block は、`allowProtectedAppendWrites` プロパティが有効になっている時間ベースの保持ポリシーに対してのみ許可されます。 詳細については、「[保護された追加 BLOB の書き込みを許可する](#allow-protected-append-blobs-writes)」を参照してください。
 
 > [!IMPORTANT]
-> 一部のワークロード ([SQL Backup to URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url) など) では、BLOB が作成され、それに追加されます。 コンテナーにアクティブな時間ベースのアイテム保持ポリシーまたは訴訟ホールドがある場合は、このパターンに失敗します。
+> 一部のワークロード ([SQL Backup to URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) など) では、BLOB が作成され、それに追加されます。 コンテナーにアクティブな時間ベースのアイテム保持ポリシーまたは訴訟ホールドがある場合は、このパターンに失敗します。
 
 ## <a name="pricing"></a>価格
 
@@ -170,11 +170,11 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 
 **不変 BLOB ポリシーと共に論理的な削除を使用できますか?**
 
-はい。コンプライアンス要件で論理削除を有効にすることが許可されている場合は可能です。 [Azure BLOB ストレージの論理的な削除](storage-blob-soft-delete.md)は、訴訟ホールドや時間ベースのリテンション ポリシーに関係なく、ストレージ アカウント内のすべてのコンテナーに適用されます。 不変 WORM ポリシーが適用されて承認される前に、保護を強化するために論理的な削除を有効にすることをお勧めします。
+はい。コンプライアンス要件で論理削除を有効にすることが許可されている場合は可能です。 [Azure BLOB ストレージの論理的な削除](./soft-delete-blob-overview.md)は、訴訟ホールドや時間ベースのリテンション ポリシーに関係なく、ストレージ アカウント内のすべてのコンテナーに適用されます。 不変 WORM ポリシーが適用されて承認される前に、保護を強化するために論理的な削除を有効にすることをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [BLOB ストレージの不変ポリシーを設定および管理する](storage-blob-immutability-policies-manage.md)
 - [ライフサイクル管理を使用して BLOB データを自動的に階層化および削除するルールを設定する](storage-lifecycle-management-concepts.md)
-- [Azure Storage Blob の論理的な削除](../blobs/storage-blob-soft-delete.md)
+- [Azure Storage Blob の論理的な削除](./soft-delete-blob-overview.md)
 - [Azure Resource Manager のロックを使用してサブスクリプション、リソース グループ、リソースを保護する](../../azure-resource-manager/management/lock-resources.md)。

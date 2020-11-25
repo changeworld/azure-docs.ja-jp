@@ -1,22 +1,22 @@
 ---
 title: Python 開発環境をセットアップする
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning のために Python 開発環境をセットアップすることについて説明します。 Conda 環境を使用し、構成ファイルを作成し、独自のクラウドベースのノートブック サーバー、Jupyter Notebook、Azure Databricks、IDE、コード エディター、および Data Science Virtual Machine を構成します。
+description: Jupyter Notebook、Visual Studio Code、Azure Databricks、Data Science Virtual Machine で、Azure Machine Learning の Python 開発環境をセットアップします。
 services: machine-learning
 author: rastala
 ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.date: 09/30/2020
+ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 451ad33a9d041635c3f51e323539b423378d02d1
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 03d10f71b585090157eff164cc98246f50608fe1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422905"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018785"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のために Python 開発環境をセットアップする
 

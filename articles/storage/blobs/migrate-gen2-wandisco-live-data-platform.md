@@ -9,12 +9,12 @@ ms.date: 11/06/2020
 ms.service: storage
 ms.custom: references_regions
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 9da6ea7abf57ffecc900a6dbef065a8c6b123e61
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: db95f22a17c3776d84f12249693fb23b3d2d94e6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94810893"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95914441"
 ---
 # <a name="meet-demanding-migration-requirements-with-wandisco-livedata-platform-for-azure-preview"></a>WANdisco LiveData Platform for Azure (プレビュー) を使用して、厳しい移行要件を満たす
 
@@ -30,7 +30,7 @@ ms.locfileid: "94810893"
 
 両方のサービスは、Azure portal と Azure CLI を使用して管理でき、どちらも他のすべての Azure サービスと同じ従量課金制の課金モデルに従います。 LiveData Platform for Azure の使用実績は、同じ毎月の Azure の請求書に記載され、使用を追跡して監視するための一貫した便利な方法を提供します。
 
-[静的な情報を Azure Data Box にコピーする](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster)か、[DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html) などの Hadoop ツールを使用することによって "_オフライン_" でデータを移行する場合とは異なり、WANdisco LiveData for Azure を使用すると、"_オンライン_" 移行中にビジネス システムの完全な操作を維持することができます。 データを Azure に移行している間も、ビッグ データ環境の稼働を維持します。
+[静的な情報を Azure Data Box にコピーする](./data-lake-storage-migrate-on-premises-hdfs-cluster.md)か、[DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html) などの Hadoop ツールを使用することによって "_オフライン_" でデータを移行する場合とは異なり、WANdisco LiveData for Azure を使用すると、"_オンライン_" 移行中にビジネス システムの完全な操作を維持することができます。 データを Azure に移行している間も、ビッグ データ環境の稼働を維持します。
 
 ## <a name="key-features-of-wandisco-livedata-platform-for-azure"></a>WANdisco LiveData Platform for Azure の主な特徴
 

@@ -5,19 +5,19 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 07/05/2020
-ms.openlocfilehash: 86d647a79b7babc2780cb0db904e689f3916673f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/12/2020
+ms.openlocfilehash: 19c9ec39d85bfc56b118498aba62c3752d6d771c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500387"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996323"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>統合サービス環境 (ISE) を使用して、Azure Logic Apps から Azure Virtual Network リソースにアクセスする
 
 ロジック アプリで、[Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内にある、または仮想ネットワークに接続されている、セキュリティで保護されたリソース (仮想マシン (VM) や他のシステムまたはサービスなど) へのアクセスが必要になる場合があります。 このアクセスを設定するために、["*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) を作成することができます。 ISE は、専用のリソースを使用し、"グローバル" なマルチテナント Logic Apps サービスとは別に実行される Logic Apps サービスのインスタンスです。
 
-たとえば、一部の Azure 仮想ネットワークでは、プライベート エンドポイント ([Azure Private Link](../private-link/private-link-overview.md) を通じてセットアップ可能) を使用して、Azure Storage、Azure Cosmos DB などの Azure PaaS サービスや、Azure でホストされている Azure SQL Database、パートナー サービス、カスタマー サービスへのアクセスが提供されます。 ロジック アプリでプライベート エンドポイントを使用する仮想ネットワークにアクセスする必要がある場合は、ISE の内部でそれらのロジック アプリを作成、デプロイ、実行する必要があります。
+たとえば、一部の Azure 仮想ネットワークでは、プライベート エンドポイント ([Azure Private Link](../private-link/private-link-overview.md) を通じて設定可能) を使用して、Azure Storage、Azure Cosmos DB などの Azure PaaS サービスや、Azure でホストされている Azure SQL Database、パートナー サービス、カスタマー サービスへのアクセスが提供されます。 ロジック アプリでプライベート エンドポイントを使用する仮想ネットワークにアクセスする必要がある場合は、ISE の内部でそれらのロジック アプリを作成、デプロイ、実行する必要があります。
 
 ISE を作成すると、Azure によってその ISE が Azure 仮想ネットワークに "*挿入*"(デプロイ) されます。 アクセスを必要とする統合アカウントやロジック アプリの場所としてその ISE を使用することができます。
 
@@ -120,7 +120,15 @@ ISE を作成するときに、内部アクセス エンドポイントと外部
 * **内部**:ロジック アプリの実行履歴から、"*仮想ネットワーク内からのみ*"、入力と出力を表示およびアクセスできる ISE のロジック アプリの呼び出しを許可するプライベート エンドポイント。
 
   > [!IMPORTANT]
-  > プライベート エンドポイントと、実行履歴へのアクセス元として使用するコンピューターの間にネットワーク接続があることを確認します。 そうでないと、ロジック アプリの実行履歴を表示しようとしたときに、"予期しないエラーが発生しました。 フェッチできませんでした。" というエラーが発生します。
+  > それらの Webhook ベース トリガーを使用する必要がある場合、ISE の作成時、内部エンドポイントでは "*なく*"、外部エンドポイントを使用してください。
+  > 
+  > * Azure DevOps
+  > * Azure Event Grid
+  > * Common Data Service
+  > * Office 365
+  > * SAP (ISE バージョン)
+  > 
+  > また、プライベート エンドポイントと、実行履歴へのアクセス元として使用するコンピューターの間にネットワーク接続があることを確認します。 そうでないと、ロジック アプリの実行履歴を表示しようとしたときに、"予期しないエラーが発生しました。 フェッチできませんでした。" というエラーが発生します。
   >
   > ![ファイアウォール経由でトラフィックを送信できないために Azure Storage アクション エラーが発生する](./media/connect-virtual-network-vnet-isolated-environment-overview/integration-service-environment-error.png)
   >

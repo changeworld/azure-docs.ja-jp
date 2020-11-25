@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: ca3cf93329ea84183ef11eec8f8fac52cd84d445
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.date: 11/13/2020
+ms.openlocfilehash: a089631ab199b0fe997bba001561c6b027034e2c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461194"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993688"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Azure Monitor で Log Analytics エージェントを使用して IIS ログを収集する
 インターネット インフォメーション サービス (IIS) では、Log Analytics エージェントが収集して [Azure Monitor ログ](data-platform.md)に格納できるログ ファイル内に、ユーザー アクティビティが格納されます。
@@ -32,6 +32,8 @@ Azure Monitor の IIS ログは、Log Analytics エージェントの [[詳細�
 ## <a name="data-collection"></a>データ コレクション
 Azure Monitor では、ログのタイムスタンプが変更されるたびに、各エージェントから IIS ログ エントリが収集されます。 ログは **5 分** ごとに読み取られます。 何らかの理由で、新しいファイルの作成時に IIS でロールオーバー時間の前にタイムスタンプが更新されない場合、新しいファイルの作成後にエントリが収集されます。 新しいファイル作成の頻度は、IIS サイトの **[Log File Rollover Schedule]\(ログ ファイルのロールオーバー スケジュール\)** 設定によって制御されます。この設定の既定値は 1 日に 1 回です。 設定が **[毎時]** である場合、Azure Monitor では 1 時間ごとにログが収集されます。 設定が **[毎日]** である場合、Azure Monitor では 24 時間ごとにログが収集されます。
 
+> [!IMPORTANT]
+> **[Log File Rollover Schedule]\(ログ ファイルのロールオーバー スケジュール\)** を **[毎時]** に設定することをお勧めします。 **[毎日]** に設定した場合、収集が 1 日に 1 回となるため、データが急増することがあります。
 
 ## <a name="iis-log-record-properties"></a>IIS ログ レコードのプロパティ
 IIS ログ レコードの型は **W3CIISLog** になり、次の表に示すプロパティがあります。

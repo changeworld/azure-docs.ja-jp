@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 11/09/2020
-ms.openlocfilehash: a133cdb72e304a254305833b9ae6e8a7ebe30ab3
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 211ef9571b5a126686b4583330dc0f80863fd47e
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540010"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992048"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの暗号化
 
@@ -129,6 +129,12 @@ Azure Storage に格納されている各コンピューティング ノード�
 ### <a name="azure-databricks"></a>Azure Databricks
 
 Azure Databricks は Azure Machine Learning パイプラインで使用できます。 既定では、Azure Databricks によって使用される Databricks ファイル システム (DBFS) は、Microsoft が管理するキーを使用して暗号化されます。 顧客が管理するキーを使用するように Azure Databricks を構成するには、「[既定 (ルート) の DBFS で顧客が管理するキーを構成する](/azure/databricks/security/customer-managed-keys-dbfs)」を参照してください。
+
+### <a name="microsoft-generated-data"></a>Microsoft が生成したデータ
+
+自動化された機械学習などのサービスを使用する場合、Microsoft では、複数のモデルをトレーニングするために、一時的な処理済みのデータを生成することがあります。 このデータはワークスペース内のデータストアに格納されます。これにより、アクセス制御と暗号化を適切に適用できます。
+
+また、[デプロイされているエンドポイントからログ記録された診断情報](how-to-enable-app-insights.md)を Azure Application Insights インスタンスに暗号化することもできます。
 
 ## <a name="encryption-in-transit"></a>転送中の暗号化
 

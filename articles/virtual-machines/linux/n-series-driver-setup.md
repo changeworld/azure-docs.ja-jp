@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: 9b6e752f8352db565239aba4a990752b1c397f5f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b80a09c82b1e932fb93b4c85ee250773aa7d3c38
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517261"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016136"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする
 
@@ -98,7 +98,9 @@ sudo reboot
   
    sudo reboot
 
-2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106).
+2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106). Check if LIS is required by verifying the results of lspci. If all GPU devices are listed as expected, installing LIS is not required.
+
+Skip this step if you plan to use CentOS 7.8(or higher) as LIS is no longer required for these versions.
 
    ```bash
    wget https://aka.ms/lis
@@ -264,7 +266,7 @@ NV シリーズまたは NVv3 シリーズの VM に NVIDIA GRID ドライバー
    sudo yum install hyperv-daemons
    ```
 
-2. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします (NV または NV2 の VM では NVIDIA ドライバーのみを使用)。これを行うには、次の内容を含む `nouveau.conf` という名前のファイルを `/etc/modprobe.d` に作成します。
+2. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします (NV または NV3 の VM では NVIDIA ドライバーのみを使用)。これを行うには、次の内容を含む `nouveau.conf` という名前のファイルを `/etc/modprobe.d` に作成します。
 
    ```
    blacklist nouveau
@@ -272,7 +274,9 @@ NV シリーズまたは NVv3 シリーズの VM に NVIDIA GRID ドライバー
    blacklist lbm-nouveau
    ```
  
-3. VM を再起動して再接続し、[Hyper-V と Azure 用の最新の Linux Integration Services](https://www.microsoft.com/download/details.aspx?id=55106) をインストールします。
+3. VM を再起動して再接続し、[Hyper-V と Azure 用の最新の Linux Integration Services](https://www.microsoft.com/download/details.aspx?id=55106) をインストールします。 lspci の結果を検証して、LIS が必要かどうかを確認します。 すべての GPU デバイスが想定どおりに一覧表示されている場合は、LIS をインストールする必要はありません。 
+
+CentOS/RHEL 7.8 以降を使用している場合は、この手順をスキップしてください。
  
    ```bash
    wget https://aka.ms/lis
@@ -373,6 +377,7 @@ fi
 
 * カードを照会する必要があるときにコマンドがより高速に出力されるように、`nvidia-smi` を使って永続化モードを設定できます。 永続化モードを設定するには、`nvidia-smi -pm 1` を実行します。 VM を再起動すると、モード設定は消失することに注意してください。 常にスタートアップ時に実行するように、モード設定をスクリプト処理できます。
 * NVIDIA CUDA ドライバーを最新バージョンに更新して、RDMA 接続が動作しなくなっていることが判明した場合は、[RDMA ドライバーを再インストールして](#rdma-network-connectivity)、その接続を再確立してください。 
+* LIS で特定の CentOS/RHEL OS バージョン (またはカーネル) がサポートされていない場合は、"サポートされていないカーネル バージョン" というエラーがスローされます。 OS およびカーネルのバージョンと共に、このエラーを報告してください。
 
 ## <a name="next-steps"></a>次のステップ
 

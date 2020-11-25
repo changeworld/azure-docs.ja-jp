@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
-ms.openlocfilehash: 6033ca5b0eaf6845d14407832c776dd8e006226b
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 647256949d1f8f13439a0a5db87f3b02d697d32b
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686497"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95318135"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Azure Monitor for VMs のゲストの正常性 (プレビュー) を有効にする
 Azure Monitor for VMs のゲストの正常性を使用すると、一定間隔でサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 この記事では、サブスクリプションでこの機能を有効にする方法と、仮想マシンごとにゲストの監視を有効にする方法について説明します。
@@ -24,12 +24,18 @@ Azure Monitor for VMs のゲストの正常性には、パブリック プレビ
   - Ubuntu 16.04 LTS、Ubuntu 18.04 LTS
   - Windows Server 2012 またはそれ以降
 - 仮想マシンは、次のいずれかのリージョンに配置されている必要があります。
+  - オーストラリア東部
   - オーストラリア南東部
+  - インド中部
   - 米国中部
   - 米国東部
   - 米国東部 2
   - 米国東部 2 EUAP
+  - ドイツ中西部
+  - 東日本
+  - 米国中北部
   - 北ヨーロッパ
+  - 米国中南部
   - 東南アジア
   - 英国南部
   - 西ヨーロッパ

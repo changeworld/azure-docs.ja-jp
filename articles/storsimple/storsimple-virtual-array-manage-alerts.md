@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a24890f42b795bb4b9a7d187f74ceb9a4f8557f5
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 12fcc9996697f3bbba35826d79bec238bfb0f8b3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539228"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993014"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャーを使用して StorSimple Virtual Array のアラートを管理する
 
@@ -72,7 +72,7 @@ StorSimple Virtual Array ごとに、アラート状態について電子メー�
 
 StorSimple Virtual Array では、さまざまな状態に応じてアラートを生成します。 最も一般的な種類のアラート状態を次に示します。
 
-* **接続の問題** – データ転送が困難な場合に、これらのアラートが生成されます。 通信の問題は、Azure ストレージ アカウントとのデータの転送中に発生する可能性があるほか、仮想デバイスと StorSimple デバイス マネージャー サービスが接続されていないことが原因で発生する場合もあります。 通信の問題は、障害点が多すぎることから、最も修正が困難な問題の 1 つです。 常に、より高度なトラブルシューティングに進む前に、まずネットワーク接続とインターネット アクセスがあることを確認する必要があります。 ポートとファイアウォールの設定については、「 [StorSimple Virtual Array のシステム要件](storsimple-ova-system-requirements.md)」を参照してください。 トラブルシューティングのヘルプについては、「 [Test-Connection コマンドレットを使用したトラブルシューティング](storsimple-troubleshoot-deployment.md)」を参照してください。
+* **接続の問題** – データ転送が困難な場合に、これらのアラートが生成されます。 通信の問題は、Azure ストレージ アカウントとのデータの転送中に発生する可能性があるほか、仮想デバイスと StorSimple デバイス マネージャー サービスが接続されていないことが原因で発生する場合もあります。 通信の問題は、障害点が多すぎることから、最も修正が困難な問題の 1 つです。 常に、より高度なトラブルシューティングに進む前に、まずネットワーク接続とインターネット アクセスがあることを確認する必要があります。 ポートとファイアウォールの設定については、「 [StorSimple Virtual Array のシステム要件](storsimple-ova-system-requirements.md)」を参照してください。 トラブルシューティングのヘルプについては、「 [Test-Connection コマンドレットを使用したトラブルシューティング](./storsimple-8000-troubleshoot-deployment.md)」を参照してください。
 * **パフォーマンスの問題** – これらのアラートは、システムの負荷が高い場合など、システムが最適に実行されていない場合に発生します。
 
 さらに、セキュリティ、更新、ジョブの失敗に関連するアラートが表示される場合もあります。
