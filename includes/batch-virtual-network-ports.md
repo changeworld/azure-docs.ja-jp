@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.date: 06/16/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 3e4bca058f554f60dfa5c237633d1fecf06dfea7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4f17fbfad1e7e550b3a1e95c93e4b061d0f1c3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87507465"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993426"
 ---
 ### <a name="general-requirements"></a>一般的な要件
 
@@ -57,7 +57,7 @@ ms.locfileid: "87507465"
 * インターネットに向かう全ポートのアウトバウンド トラフィック。 これは、サブネット レベルの NSG 規則に従って修正される可能性があります (下記参照)。
 
 > [!IMPORTANT]
-> Batch によって構成された NSG のインバウンドまたはアウトバウンド規則を変更したり追加したりする際は注意が必要です。 指定したサブネット内のコンピューティング ノードとの通信が NSG によって拒否された場合、Batch サービスによって、コンピューティング ノードの状態が**使用不可**に設定されます。 また、Batch によって作成されたリソースにはリソース ロックを適用しないでください。そうしないと、プールの削除など、ユーザーが開始した操作の結果として、リソースのクリーンアップが妨げられるからです。
+> Batch によって構成された NSG のインバウンドまたはアウトバウンド規則を変更したり追加したりする際は注意が必要です。 指定したサブネット内のコンピューティング ノードとの通信が NSG によって拒否された場合、Batch サービスによって、コンピューティング ノードの状態が **使用不可** に設定されます。 また、Batch によって作成されたリソースにはリソース ロックを適用しないでください。そうしないと、プールの削除など、ユーザーが開始した操作の結果として、リソースのクリーンアップが妨げられるからです。
 
 #### <a name="network-security-groups-specifying-subnet-level-rules"></a>ネットワーク セキュリティ グループ:サブネット レベルの規則の指定
 
@@ -69,7 +69,7 @@ ms.locfileid: "87507465"
 
 | ソース IP アドレス | 発信元サービス タグ | ソース ポート | 到着地 | 宛先ポート | Protocol | アクション |
 | --- | --- | --- | --- | --- | --- | --- |
-| 該当なし | `BatchNodeManagement` [サービス タグ](../articles/virtual-network/security-overview.md#service-tags) (リージョン バリアントを使用している場合は、Batch アカウントと同じリージョン) | * | Any | 29876 から 29877 | TCP | Allow |
+| 該当なし | `BatchNodeManagement` [サービス タグ](../articles/virtual-network/network-security-groups-overview.md#service-tags) (リージョン バリアントを使用している場合は、Batch アカウントと同じリージョン) | * | Any | 29876 から 29877 | TCP | Allow |
 | Linux マルチインスタンス タスクのためにコンピューティング ノードまたはコンピューティング ノード サブネット (あるいは両方) にリモート アクセスするためのユーザー ソース IP (必要な場合) | 該当なし | * | Any | 3389 (Windows)、22 (Linux) | TCP | Allow |
 
 > [!WARNING]
@@ -79,7 +79,7 @@ ms.locfileid: "87507465"
 
 | source | ソース ポート | 到着地 | 宛先サービス タグ | 宛先ポート | Protocol | アクション |
 | --- | --- | --- | --- | --- | --- | --- |
-| Any | * | [サービス タグ](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (リージョン バリアントを使用している場合は、Batch アカウントと同じリージョン) | 443 | TCP | Allow |
+| Any | * | [サービス タグ](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `Storage` (リージョン バリアントを使用している場合は、Batch アカウントと同じリージョン) | 443 | TCP | Allow |
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>クラウド サービスの構成におけるプール
 
@@ -95,7 +95,7 @@ ms.locfileid: "87507465"
 
 サブネットでは、コンピューティング ノード上のタスクをスケジュールできるよう、Batch サービスからのインバウンド通信を許可する必要があります。また、Azure Storage などのリソースと通信するために、アウトバウンド通信を許可する必要があります。
 
-NSG を指定する必要はありません。Batch IP アドレスからプールのノードへのみのインバウンド通信が Batch によって構成されるためです。 ただし、指定したサブネットに、NSG やファイアウォールが関連付けられている場合は、次の表に示すようにインバウンドとアウトバウンドのセキュリティ規則を構成します。 指定したサブネット内のコンピューティング ノードとの通信が NSG によって拒否された場合、Batch サービスによって、コンピューティング ノードの状態が**使用不可**に設定されます。
+NSG を指定する必要はありません。Batch IP アドレスからプールのノードへのみのインバウンド通信が Batch によって構成されるためです。 ただし、指定したサブネットに、NSG やファイアウォールが関連付けられている場合は、次の表に示すようにインバウンドとアウトバウンドのセキュリティ規則を構成します。 指定したサブネット内のコンピューティング ノードとの通信が NSG によって拒否された場合、Batch サービスによって、コンピューティング ノードの状態が **使用不可** に設定されます。
 
 ポート 3389 (Windows) のインバウンド トラフィックは、プールのノードに対する RDP アクセスを許可する必要がある場合に構成します。 これは、プールのノードを使用可能な状態にするために必要ではありません。
 

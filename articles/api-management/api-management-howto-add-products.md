@@ -7,11 +7,11 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 2f298f240d8aa7a38b42a8c78ee3c90fe3423d10
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91630574"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993552"
 ---
 # <a name="tutorial-create-and-publish-a-product"></a>チュートリアル:製品を作成して発行する  
 
@@ -38,7 +38,7 @@ Azure API Management の "[*製品*](api-management-terminology.md#term-definiti
 1. 左側のナビゲーションで **[製品]**  >  **[+ 追加]** を選択します。
 1.  **[製品の追加]** ウィンドウで、以下の表に記載されている値を入力して製品を作成します。
 
-    :::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-01.png" alt-text="ポータルにおける API Management の製品":::
+    :::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-01.png" alt-text="ポータルで製品を追加する":::
 
     | 名前                     | 説明                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -80,7 +80,7 @@ Azure API Management の "[*製品*](api-management-terminology.md#term-definiti
 1. **[+ 追加]** を選択します。
 1. 少なくとも 1 つの API を選択し、 **[選択]** を選択します。
 
-:::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-02.png" alt-text="ポータルにおける API Management の製品":::
+:::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-02.png" alt-text="既存の製品に API を追加する":::
 
 > [!TIP]
 > [REST API](/rest/api/apimanagement/2019-12-01/subscription/createorupdate) または PowerShell コマンドを通じてカスタム サブスクリプション キーを使用して、製品へのユーザーのサブスクリプションを作成または更新できます。

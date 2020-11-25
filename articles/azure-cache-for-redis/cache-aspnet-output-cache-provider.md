@@ -8,11 +8,11 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 04/22/2018
 ms.openlocfilehash: 6d711b07a10e04dcdf31259f3e53c9687af28e28
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544632"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993401"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Azure Cache for Redis の ASP.NET 出力キャッシュ プロバイダー
 
@@ -61,21 +61,21 @@ NuGet パッケージがダウンロードされ、必要なアセンブリ参�
 | *databaseIdNumber* | 正の整数 | 0 | *この属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>使用する Redis データベースを指定します。 |
 | *connectionTimeoutInMilliseconds* | 正の整数 | StackExchange.Redis によって提供されます | StackExchange.Redis.ConnectionMultiplexer の作成時に *ConnectTimeout* を設定するために使用されます。 |
 | *operationTimeoutInMilliseconds* | 正の整数 | StackExchange.Redis によって提供されます | StackExchange.Redis.ConnectionMultiplexer の作成時に *SyncTimeout* を設定するために使用されます。 |
-| *connectionString* (有効な StackExchange.Redis 接続文字列) | string | *該当なし* | AppSettings または web.config へのパラメーター参照、または有効な StackExchange.Redis 接続文字列。 この属性は、 *host* 、 *port* 、 *accessKey* 、 *ssl* 、およびその他の StackExchange.Redis 属性の値を指定できます。 *connectionString* の詳細については、「 [属性に関する注意事項](#attribute-notes)」セクションの「 [connectionString の設定](#setting-connectionstring)」を参照してください。 |
-| *settingsClassName*<br/>*settingsMethodName* | string<br/>string | *該当なし* | *これらの属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>これらの属性を使用して、接続文字列を指定します。 *settingsClassName* は、 *settingsMethodName* で指定されたメソッドを含むアセンブリ修飾クラス名である必要があります。<br/><br/>*settingsMethodName* で指定するメソッドは、戻り値の型が **string** の public、static、および void (パラメーターを取らない) である必要があります。 このメソッドは、実際の接続文字列を返します。 |
-| *loggingClassName*<br/>*loggingMethodName* | string<br/>string | *該当なし* | *これらの属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>これらの属性を使用して、セッション状態/出力キャッシュからのログと StackExchange.Redis からのログを提供することにより、アプリケーションをデバッグします。 *loggingClassName* は、 *loggingMethodName* で指定されたメソッドを含むアセンブリ修飾クラス名である必要があります。<br/><br/>*loggingMethodName* で指定するメソッドは、戻り値の型が **System.IO.TextWriter** の public、static、および void (パラメーターを取らない) である必要があります。 |
+| *connectionString* (有効な StackExchange.Redis 接続文字列) | string | *該当なし* | AppSettings または web.config へのパラメーター参照、または有効な StackExchange.Redis 接続文字列。 この属性は、*host*、*port*、*accessKey*、*ssl*、およびその他の StackExchange.Redis 属性の値を指定できます。 *connectionString* の詳細については、「[属性に関する注意事項](#attribute-notes)」セクションの「[connectionString の設定](#setting-connectionstring)」を参照してください。 |
+| *settingsClassName*<br/>*settingsMethodName* | string<br/>string | *該当なし* | *これらの属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>これらの属性を使用して、接続文字列を指定します。 *settingsClassName* は、*settingsMethodName* で指定されたメソッドを含むアセンブリ修飾クラス名である必要があります。<br/><br/>*settingsMethodName* で指定するメソッドは、戻り値の型が **string** の public、static、および void (パラメーターを取らない) である必要があります。 このメソッドは、実際の接続文字列を返します。 |
+| *loggingClassName*<br/>*loggingMethodName* | string<br/>string | *該当なし* | *これらの属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>これらの属性を使用して、セッション状態/出力キャッシュからのログと StackExchange.Redis からのログを提供することにより、アプリケーションをデバッグします。 *loggingClassName* は、*loggingMethodName* で指定されたメソッドを含むアセンブリ修飾クラス名である必要があります。<br/><br/>*loggingMethodName* で指定するメソッドは、戻り値の型が **System.IO.TextWriter** の public、static、および void (パラメーターを取らない) である必要があります。 |
 | *applicationName* | string | 現在のプロセスのモジュール名または "/" | *SessionStateProvider のみ*<br/>*この属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>Redis Cache で使用するアプリ名プレフィックス。 お客様は、異なる目的で同じ Redis Cache を使用できます。 セッション キーが競合しないようにするために、アプリケーション名をプレフィックスとして付けることができます。 |
-| *throwOnError* | boolean | true | *SessionStateProvider のみ*<br/>*この属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>エラーが発生したときに例外をスローするかどうか。<br/><br/>*throwOnError* の詳細については、「 [属性に関する注意事項](#attribute-notes)」セクションの「 [*throwOnError* に関する注意事項](#notes-on-throwonerror)」を参照してください。 |>*Microsoft.Web.Redis.RedisSessionStateProvider.LastException* 。 |
-| *retryTimeoutInMilliseconds* | 正の整数 | 5000 | *SessionStateProvider のみ*<br/>*この属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>操作が失敗したときに再試行する時間の長さ。 この値が *operationTimeoutInMilliseconds* より小さい場合、プロバイダーは再試行しません。<br/><br/>*retryTimeoutInMilliseconds* の詳細については、「 [属性に関する注意事項](#attribute-notes)」セクションの「 [*retryTimeoutInMilliseconds* に関する注意事項](#notes-on-retrytimeoutinmilliseconds)」を参照してください。 |
-| *redisSerializerType* | string | *該当なし* | Microsoft.Web.Redis.ISerializer を実装し、値をシリアル化および逆シリアル化するカスタム ロジックを含むクラスのアセンブリ修飾型名を指定します。 詳細については、「 [属性に関する注意事項](#attribute-notes)」セクションの「 [*redisSerializerType*](#about-redisserializertype) について」を参照してください。 |
+| *throwOnError* | boolean | true | *SessionStateProvider のみ*<br/>*この属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>エラーが発生したときに例外をスローするかどうか。<br/><br/>*throwOnError* の詳細については、「[属性に関する注意事項](#attribute-notes)」セクションの「[*throwOnError* に関する注意事項](#notes-on-throwonerror)」を参照してください。 |>*Microsoft.Web.Redis.RedisSessionStateProvider.LastException*。 |
+| *retryTimeoutInMilliseconds* | 正の整数 | 5000 | *SessionStateProvider のみ*<br/>*この属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>操作が失敗したときに再試行する時間の長さ。 この値が *operationTimeoutInMilliseconds* より小さい場合、プロバイダーは再試行しません。<br/><br/>*retryTimeoutInMilliseconds* の詳細については、「[属性に関する注意事項](#attribute-notes)」セクションの「[*retryTimeoutInMilliseconds* に関する注意事項](#notes-on-retrytimeoutinmilliseconds)」を参照してください。 |
+| *redisSerializerType* | string | *該当なし* | Microsoft.Web.Redis.ISerializer を実装し、値をシリアル化および逆シリアル化するカスタム ロジックを含むクラスのアセンブリ修飾型名を指定します。 詳細については、「[属性に関する注意事項](#attribute-notes)」セクションの「[*redisSerializerType*](#about-redisserializertype) について」を参照してください。 |
 
 ## <a name="attribute-notes"></a>属性に関する注意事項
 
 ### <a name="setting-connectionstring"></a>*connectionString* の設定
 
-*connectionString* の値は、AppSettings から実際の接続文字列 (そのような文字列が AppSettings に存在する場合) をフェッチするためのキーとして使用されます。 AppSettings 内に見つからない場合、 *connectionString* の値は、web.config **ConnectionString** セクション (そのセクションが存在する場合) から実際の接続文字列をフェッチするためのキーとして使用されます。 接続文字列が AppSettings または web.config **ConnectionString** セクションに存在しない場合は、StackExchange.Redis.ConnectionMultiplexer の作成時に、 *connectionString* のリテラル値が接続文字列として使用されます。
+*connectionString* の値は、AppSettings から実際の接続文字列 (そのような文字列が AppSettings に存在する場合) をフェッチするためのキーとして使用されます。 AppSettings 内に見つからない場合、*connectionString* の値は、web.config **ConnectionString** セクション (そのセクションが存在する場合) から実際の接続文字列をフェッチするためのキーとして使用されます。 接続文字列が AppSettings または web.config **ConnectionString** セクションに存在しない場合は、StackExchange.Redis.ConnectionMultiplexer の作成時に、*connectionString* のリテラル値が接続文字列として使用されます。
 
-次の例は、 *connectionString* の使用方法を示しています。
+次の例は、*connectionString* の使用方法を示しています。
 
 #### <a name="example-1"></a>例 1
 
@@ -143,11 +143,11 @@ NuGet パッケージがダウンロードされ、必要なアセンブリ参�
 
 *retryTimeoutInMilliseconds* を 2000 などの数値に設定すると、セッション操作が失敗したときに、2000 ミリ秒間再試行されてからそれがエラーとして扱われます。 そのため、セッション状態プロバイダーにこの再試行ロジックを適用させるには、タイムアウトを構成するだけで済みます。 最初の再試行は 20 ミリ秒後に行われますが、ネットワーク障害が発生したときには、ほとんどの場合、これで十分です。 その後、タイムアウトするまで、1 秒ごとに再試行されます。タイムアウトの直後に、タイムアウトを (最大でも) 1 秒短縮しないようにするためにもう一度試行されます。
 
-再試行が不要と思われる場合 (たとえば、Redis サーバーをアプリケーションと同じマシンで実行している場合)、または再試行ロジックを自分で処理する場合は、 *retryTimeoutInMilliseconds* を 0 に設定します。
+再試行が不要と思われる場合 (たとえば、Redis サーバーをアプリケーションと同じマシンで実行している場合)、または再試行ロジックを自分で処理する場合は、*retryTimeoutInMilliseconds* を 0 に設定します。
 
 ### <a name="about-redisserializertype"></a>*redisSerializerType* について
 
-既定では、Redis に値を格納するためのシリアル化は、 **BinaryFormatter** クラスが提供するバイナリ形式で行われます。 **Microsoft.Web.Redis.ISerializer** を実装し、値をシリアル化および逆シリアル化するカスタム ロジックを持つクラスのアセンブリ修飾型名を指定するには、 *redisSerializerType* を使用します。 例として、JSON.NET を使用した JSON シリアライザー クラスを次に示します。
+既定では、Redis に値を格納するためのシリアル化は、**BinaryFormatter** クラスが提供するバイナリ形式で行われます。 **Microsoft.Web.Redis.ISerializer** を実装し、値をシリアル化および逆シリアル化するカスタム ロジックを持つクラスのアセンブリ修飾型名を指定するには、*redisSerializerType* を使用します。 例として、JSON.NET を使用した JSON シリアライザー クラスを次に示します。
 
 ```cs
 namespace MyCompany.Redis

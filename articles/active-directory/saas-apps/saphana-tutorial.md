@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.openlocfilehash: 748566cf5b25157fcb8a2938a3f4bd307c930874
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895157"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993213"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>チュートリアル: Azure Active Directory と SAP HANA の統合
 
@@ -51,8 +51,8 @@ SAP HANA と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* SAP HANA では、 **IDP** によって開始される SSO がサポートされます
-* SAP HANA では、 **Just-In-Time** ユーザー プロビジョニングがサポートされています
+* SAP HANA では、**IDP** によって開始される SSO がサポートされます
+* SAP HANA では、**Just-In-Time** ユーザー プロビジョニングがサポートされています
 
 ## <a name="adding-sap-hana-from-the-gallery"></a>ギャラリーからの SAP HANA の追加
 
@@ -72,13 +72,13 @@ Azure AD への SAP HANA の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **SAP HANA** 」と入力し、結果ウィンドウで **SAP HANA** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**SAP HANA**」と入力し、結果ウィンドウで **SAP HANA** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の SAP HANA](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、SAP HANA で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、SAP HANA で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと SAP HANA 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 SAP HANA で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -131,9 +131,9 @@ SAP HANA で Azure AD シングル サインオンを構成するには、次の
 
     ![image](./media/saphana-tutorial/tutorial_usermailedit.png)
 
-    b. **[変換]** の一覧で、 **ExtractMailPrefix()** を選択します。
+    b. **[変換]** の一覧で、**ExtractMailPrefix()** を選択します。
 
-    c. **[パラメーター 1]** の一覧で、 **user.mail** を選択します。
+    c. **[パラメーター 1]** の一覧で、**user.mail** を選択します。
 
     d. **[保存]** をクリックします。
 
@@ -148,7 +148,7 @@ SAP HANA で Azure AD シングル サインオンを構成するには、次の
     > [!NOTE]
     > 既定の構成では、この URL で要求はサインイン画面にリダイレクトされ、認証済みの SAP HANA データベース ユーザーの資格情報を要求されます。 サインインするユーザーには、SAML 管理タスクを実行するアクセス許可が必要です。
 
-2. XSA Web インターフェイスで、 **SAML Identity Provider** に移動します。 ここから画面の下部にある **+** ボタンを選択し、 **[Add Identity Provider Info]\(ID プロバイダー情報の追加\)** ウィンドウを表示します。 その後、次の手順を実行します。
+2. XSA Web インターフェイスで、**SAML Identity Provider** に移動します。 ここから画面の下部にある **+** ボタンを選択し、 **[Add Identity Provider Info]\(ID プロバイダー情報の追加\)** ウィンドウを表示します。 その後、次の手順を実行します。
 
     ![ID プロバイダーの追加](./media/saphana-tutorial/sap1.png)
 
@@ -169,7 +169,7 @@ SAP HANA で Azure AD シングル サインオンを構成するには、次の
 
     ![[保存] ボタン](./media/saphana-tutorial/sap4.png)
 
-4. HANA Studio の **[Configuration]\(構成\)** タブのシステム プロパティで、 **saml** を使用して設定を絞り込みます。 次に、 **[assertion_timeout]** を **[10 sec]\(10 秒\)** から **[120 sec]\(120 秒\)** に調整します。
+4. HANA Studio の **[Configuration]\(構成\)** タブのシステム プロパティで、**saml** を使用して設定を絞り込みます。 次に、 **[assertion_timeout]** を **[10 sec]\(10 秒\)** から **[120 sec]\(120 秒\)** に調整します。
 
     ![assertion_timeout の設定](./media/saphana-tutorial/sap7.png)
 
@@ -189,9 +189,9 @@ SAP HANA で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -227,7 +227,7 @@ SAP HANA で Azure AD シングル サインオンを構成するには、次の
 ### <a name="create-sap-hana-test-user"></a>SAP HANA のテスト ユーザーを作成する
 
 SAP HANA への Azure AD ユーザーのサインインを有効にするには、SAP HANA でプロビジョニングする必要があります。
-SAP HANA では、 **Just-In-Time プロビジョニング** がサポートされています。この設定は、既定で有効になっています。
+SAP HANA では、**Just-In-Time プロビジョニング** がサポートされています。この設定は、既定で有効になっています。
 
 ユーザーを手動で作成する必要がある場合は、次の手順を実行します。
 
@@ -238,7 +238,7 @@ SAP HANA では、 **Just-In-Time プロビジョニング** がサポートさ�
 
     ![ユーザーの作成](./media/saphana-tutorial/sap5.png)
 
-2. **[SAML]** の左側にある非表示のチェック ボックスをオンにし、[ **Configure]\(構成\)** リンクを選択します。
+2. **[SAML]** の左側にある非表示のチェック ボックスをオンにし、[**Configure]\(構成\)** リンクを選択します。
 
 3. **[Add]\(追加\)** を選択して SAML IDP を追加します。  適切な SAML IDP を選択してから **[OK]** を選択します。
 

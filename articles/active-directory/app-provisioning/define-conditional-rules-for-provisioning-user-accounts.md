@@ -11,11 +11,11 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
 ms.openlocfilehash: 1765c6a7d19a11730567acd5e41deebc0a20cec2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235826"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993994"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング
 この記事では、スコープ フィルターを使用して属性ベースのルールを定義する方法について説明します。このルールで、アプリケーションに対してプロビジョニングするユーザーを指定します。
@@ -37,7 +37,7 @@ ms.locfileid: "88235826"
 
 ## <a name="scoping-filter-construction"></a>スコープ フィルターの構造
 
-スコープ フィルターは 1 つまたは複数の*句*で構成されます。 句は、各ユーザーの属性を評価することによって、スコープ フィルターを通過できるユーザーを決定します。 たとえば、ユーザーの "State" 属性が New York と等しいことを求める句が指定されていると、New York 在住のユーザーのみがアプリケーションにプロビジョニングされます。 
+スコープ フィルターは 1 つまたは複数の *句* で構成されます。 句は、各ユーザーの属性を評価することによって、スコープ フィルターを通過できるユーザーを決定します。 たとえば、ユーザーの "State" 属性が New York と等しいことを求める句が指定されていると、New York 在住のユーザーのみがアプリケーションにプロビジョニングされます。 
 
 1 つの句は、1 つの属性値の 1 つの条件を定義します。 1 つのスコープ フィルターに複数の句が作成されている場合は、"AND" ロジックでまとめて評価されます。 つまり、ユーザーをプロビジョニングするには、すべての句の評価結果が "true" になる必要があります。
 

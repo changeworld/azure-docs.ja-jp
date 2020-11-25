@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.openlocfilehash: 673856800ccb05a2b4b52511777a9a24769bcd6f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516632"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993603"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proofpoint-on-demand"></a>チュートリアル: Azure Active Directory と Proofpoint on Demand の統合
 
@@ -44,7 +44,7 @@ Azure AD と Proofpoint on Demand の統合を構成するには、次のもの�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Proofpoint on Demand では、 **SP** によって開始される SSO がサポートされます
+* Proofpoint on Demand では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-proofpoint-on-demand-from-the-gallery"></a>ギャラリーからの Proofpoint on Demand の追加
 
@@ -64,13 +64,13 @@ Azure AD への Proofpoint on Demand の統合を構成するには、ギャラ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Proofpoint on Demand** 」と入力し、結果ウィンドウで **[Proofpoint on Demand]** を選択して **[追加]** をクリックすると、アプリケーションが追加されます。
+4. 検索ボックスに「**Proofpoint on Demand**」と入力し、結果ウィンドウで **[Proofpoint on Demand]** を選択して **[追加]** をクリックすると、アプリケーションが追加されます。
 
      ![結果一覧の Proofpoint on Demand](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Proofpoint on Demand で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Proofpoint on Demand で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Expiration Reminder 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Proofpoint on Demand で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
@@ -88,7 +88,7 @@ Proofpoint on Demand で Azure AD のシングル サインオンを構成して
 
 Proofpoint on Demand で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Proofpoint on Demand** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Proofpoint on Demand** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -147,9 +147,9 @@ Proofpoint on Demand で Azure AD シングル サインオンを構成するに
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -160,11 +160,11 @@ Proofpoint on Demand で Azure AD シングル サインオンを構成するに
 
 このセクションでは、Britta Simon に Proofpoint on Demand へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Proofpoint on Demand]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Proofpoint on Demand]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、 **[Proofpoint on Demand]** を選択します。
+2. アプリケーションの一覧で、**[Proofpoint on Demand]** を選択します。
 
     ![アプリケーションの一覧の [Proofpoint on Demand] リンク](common/all-applications.png)
 

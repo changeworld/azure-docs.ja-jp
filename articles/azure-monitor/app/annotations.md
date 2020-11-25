@@ -4,11 +4,11 @@ description: Application Insights で、メトリックス エクスプローラ
 ms.topic: conceptual
 ms.date: 08/14/2020
 ms.openlocfilehash: 58f6603687838713fafbf4cd5cc3f100e22b7401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758185"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993722"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights のメトリック グラフの注釈
 
@@ -24,7 +24,7 @@ ms.locfileid: "91758185"
 
 1. [Azure DevOps](https://azure.microsoft.com/services/devops/) プロジェクトにサインインします。
    
-1. Visual Studio Marketplace の[リリース注釈拡張機能](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)のページで、自分の Azure DevOps 組織を選択し、 **[インストール]** を選択して Azure DevOps 組織に拡張機能を追加します。
+1. Visual Studio Marketplace の [リリース注釈拡張機能](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)のページで、自分の Azure DevOps 組織を選択し、 **[インストール]** を選択して Azure DevOps 組織に拡張機能を追加します。
    
    ![Azure DevOps 組織を選択してから、[インストール] を選択します。](./media/annotations/1-install.png)
    

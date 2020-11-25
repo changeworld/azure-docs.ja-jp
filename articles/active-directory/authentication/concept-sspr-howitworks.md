@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8fa1c2627917bfe386c488470f6a78db4c51f2ec
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363676"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994266"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>動作のしくみ: Azure AD のセルフサービス パスワード リセット
 
@@ -96,7 +96,7 @@ Azure AD を使用して任意のアプリケーションにサインインす�
 
 パスワードのリセットまたは変更が必要になったときに認証方法が正しいことを確実にするために、一定期間後にユーザーに登録情報を確認するように要求できます。 このオプションは、 **[Require users to register when signing in]\(サインイン時にユーザーに登録を要求する\)** オプションを有効にした場合にのみ使用できます。
 
-登録されている方法の確認をユーザーに求める有効な値は、 *0* から *730* 日までです。 この値を *0* に設定すると、ユーザーが認証情報の確認を求められることはありません。
+登録されている方法の確認をユーザーに求める有効な値は、*0* から *730* 日までです。 この値を *0* に設定すると、ユーザーが認証情報の確認を求められることはありません。
 
 ## <a name="authentication-methods"></a>認証方法
 
@@ -114,7 +114,7 @@ SSPR で使用できる認証方法は次のとおりです。
 ユーザーが自分のパスワードをリセットできるのは、管理者が有効にした認証方法を自分で登録した場合のみです。
 
 > [!WARNING]
-> Azure " *管理者* " ロールが割り当てられたアカウントは、「 [管理者リセット ポリシーの相違点](concept-sspr-policy.md#administrator-reset-policy-differences)」で定義されている方法を使用する必要があります。
+> Azure "*管理者*" ロールが割り当てられたアカウントは、「[管理者リセット ポリシーの相違点](concept-sspr-policy.md#administrator-reset-policy-differences)」で定義されている方法を使用する必要があります。
 
 ![Azure portal の [認証方法] セクション][Authentication]
 
@@ -182,7 +182,7 @@ SSPR で使用できる認証方法は次のとおりです。
 
 * 1 つの環境に 4 人の管理者がいます。
 * 管理者 *A* が SSPR を使ってパスワードをリセットします。
-* 管理者 *B* 、 *C* 、 *D* がパスワード リセットを通知するメールを受け取ります。
+* 管理者 *B*、*C*、*D* がパスワード リセットを通知するメールを受け取ります。
 
 ## <a name="on-premises-integration"></a>オンプレミスの統合
 
@@ -226,9 +226,9 @@ SSPR を使用すると、管理者によって開始されたパスワードの
 
 パスワードのリセットと変更は、すべての企業間 (B2B) 構成で完全にサポートされています。 B2B ユーザーのパスワード リセットは、次の 3 つの場合にサポートされます。
 
-* **既存の Azure AD テナントがあるパートナー組織のユーザー** :パートナーを組んでいる組織に既存の Azure AD テナントがある場合は、そのテナントで有効になっているパスワード リセット ポリシーが常に尊重されます。 パスワード リセットが機能するためにパートナー組織で必要なのは、Azure AD SSPR を有効にすることだけです。 Microsoft 365 のお客様に追加料金は発生しません。
-* **セルフ サービス サインアップを使ってサインアップしたユーザー** :パートナーを組んでいる組織が [セルフ サービス サインアップ](../enterprise-users/directory-self-service-signup.md)機能を使ってテナントに参加している場合は、登録したメールを使ってパスワードをリセットできます。
-* **B2B ユーザー** :新しい [Azure AD B2B 機能](../external-identities/what-is-b2b.md)を使って作成された B2B ユーザーも、招待プロセス中に登録した電子メールを使って自分のパスワードをリセットできます。
+* **既存の Azure AD テナントがあるパートナー組織のユーザー**:パートナーを組んでいる組織に既存の Azure AD テナントがある場合は、そのテナントで有効になっているパスワード リセット ポリシーが常に尊重されます。 パスワード リセットが機能するためにパートナー組織で必要なのは、Azure AD SSPR を有効にすることだけです。 Microsoft 365 のお客様に追加料金は発生しません。
+* **セルフ サービス サインアップを使ってサインアップしたユーザー**:パートナーを組んでいる組織が [セルフ サービス サインアップ](../enterprise-users/directory-self-service-signup.md)機能を使ってテナントに参加している場合は、登録したメールを使ってパスワードをリセットできます。
+* **B2B ユーザー**:新しい [Azure AD B2B 機能](../external-identities/what-is-b2b.md)を使って作成された B2B ユーザーも、招待プロセス中に登録した電子メールを使って自分のパスワードをリセットできます。
 
 このシナリオをテストするには、これらのパートナー ユーザーのいずれかで https://passwordreset.microsoftonline.com に移動します。 連絡用電子メールまたは認証用電子メールが定義されている場合、パスワードのリセットは予想どおりに機能します。
 

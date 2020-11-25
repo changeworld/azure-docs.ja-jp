@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c6b43cc48663be28d12fa788d92286be6f47ef08
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359885"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993535"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Azure Active Directory を使用して Event Hubs リソースにアクセスするためのマネージド ID を認証する
 Azure Event Hubs では、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用した Azure Active Directory (Azure AD) 認証がサポートされています。 Azure リソースのマネージド ID では、Azure Virtual Machines (VMs)、Function Apps、Virtual Machine Scale Sets などのサービスで実行されているアプリケーションから Event Hubs リソースへのアクセスを、Azure AD 資格情報を使用して承認することができます。 Azure リソースのマネージド ID を Azure AD 認証と一緒に使用することで、クラウドで動作するアプリケーションに資格情報を保存することを避けることができます。
@@ -72,12 +72,12 @@ Event Hubs リソースにロールを割り当てるには、Azure portal で�
 3. SendReceive.aspxがWeb アプリのデフォルトドキュメントとして設定されていることを確認します。 
 3. Web アプリの **ID** を有効にします。 
 4. このIDを名前空間レベルまたはイベント ハブ レベルで **Event Hubs データ所有者** の役割に割り当てます。 
-5. Webアプリケーションを実行し、名前空間名とイベント ハブ名、およびメッセージを入力し、 **送信** を選択します。 イベントを受信するには、 **受信** を選択します。 
+5. Webアプリケーションを実行し、名前空間名とイベント ハブ名、およびメッセージを入力し、**送信** を選択します。 イベントを受信するには、**受信** を選択します。 
 
 #### <a name="azuremessagingeventhubs-latest"></a>[ Azure.Messaging.EventHubs (最新)](#tab/latest)
 これで Web アプリケーションを起動し、ブラウザーで aspx のサンプル ページを参照できるようになりました。 [GitHub リポジトリ](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)には、Event Hubs リソースとの間でデータの送受信を行うサンプル Web アプリケーションがあります。
 
-[NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)から最新のパッケージをインストールし、 **EventHubProducerClient** を使用してEvent Hubs にイベントの送信を開始し、 **EventHubConsumerClient** を使用してイベントの受信を開始します。 
+[NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)から最新のパッケージをインストールし、**EventHubProducerClient** を使用してEvent Hubs にイベントの送信を開始し、**EventHubConsumerClient** を使用してイベントの受信を開始します。 
 
 > [!NOTE]
 > マネージド ID を使用してイベント ハブにイベントを発行する Java サンプルについては、[GitHub 上での Azure ID サンプルを使ったイベントの発行](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)に関するページを参照してください。

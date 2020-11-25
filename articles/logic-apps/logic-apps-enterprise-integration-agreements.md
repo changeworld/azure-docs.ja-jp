@@ -9,16 +9,16 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82612335"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95992944"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Azure Logic Apps で取引先契約を作成して管理する
 
 [取引先](../logic-apps/logic-apps-enterprise-integration-partners.md) 
-*契約*は、組織および企業が、企業間 (B2B) メッセージを交換するときに使用する特定の業界標準プロトコルを定義して互いにシームレスに通信するのに役立ちます。 契約には一般的に次のような利点があります。
+*契約* は、組織および企業が、企業間 (B2B) メッセージを交換するときに使用する特定の業界標準プロトコルを定義して互いにシームレスに通信するのに役立ちます。 契約には一般的に次のような利点があります。
 
 * 組織はよく知られている形式を使用して情報を交換することができます。
 * B2B トランザクションを実行する際に、効率性が向上します。

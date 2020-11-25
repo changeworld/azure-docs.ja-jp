@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4d8174cd0bfdb2297099b403fb836210c5529ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 333bb42643539cedec04d37680749c749a003536
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86170226"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994062"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Arkose Labs を構成するためのチュートリアル
 
@@ -106,7 +106,7 @@ ms.locfileid: "86170226"
 
 Git Bash をダウンロードし、次の手順に従います。
 
-1. 指示に従って [Web アプリを作成](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-php)すると、"おめでとうございます。 App Service に初めての PHP アプリをデプロイしました。" というメッセージが表示されます。
+1. 指示に従って [Web アプリを作成](../app-service/quickstart-php.md)すると、"おめでとうございます。 App Service に初めての PHP アプリをデプロイしました。" というメッセージが表示されます。
 
 2. ローカル フォルダーを開き、**index.php** ファイルの名前を **verify-token.php** に変更します。
 

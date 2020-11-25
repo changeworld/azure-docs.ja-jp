@@ -16,11 +16,11 @@ ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: devx-track-js
 ms.openlocfilehash: f5d5c7a6e1f6993b19f38db2ae846b213a1d553e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316761"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993385"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 開発の概要
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ CDN プロファイルとエンドポイントの作成と管理は、 [Azure CD
 npm init
 ```
 
-プロジェクトを初期化するための一連の指定項目が表示されます。  このチュートリアルでは、 **entry point**に *app.js*を使用します。  その他の項目については、次のスクリーンショットを参照してください。
+プロジェクトを初期化するための一連の指定項目が表示されます。  このチュートリアルでは、 **entry point** に *app.js* を使用します。  その他の項目については、次のスクリーンショットを参照してください。
 
 ![NPM init output](./media/cdn-app-dev-node/cdn-npm-init.png)
 
@@ -80,7 +80,7 @@ npm install --save azure-arm-cdn
 }
 ```
 
-最後にテキスト エディターを使用して空のテキスト ファイルを作成し、プロジェクト フォルダーのルートに *app.js*という名前で保存します。  コードを記述する準備ができました。
+最後にテキスト エディターを使用して空のテキスト ファイルを作成し、プロジェクト フォルダーのルートに *app.js* という名前で保存します。  コードを記述する準備ができました。
 
 ## <a name="requires-constants-authentication-and-structure"></a>ライブラリの読み込み、定数、認証、構造
 テキスト エディターで *app.js* を開き、プログラムの基本構造を記述していきましょう。

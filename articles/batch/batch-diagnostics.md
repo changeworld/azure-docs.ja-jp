@@ -5,11 +5,11 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18
 ms.openlocfilehash: fe2697c73f2a5f3f0b33cfb598f11f39420ed723
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108101"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994113"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch の診断の評価と監視用のメトリック、アラート、およびログ
 
@@ -76,8 +76,8 @@ Azure portal でメトリック アラートを構成するには:
 
 診断ログには、Azure リソースによって生成された、各リソースの操作を記述する情報が含まれます。 Batch では、次のログを収集できます。
 
-- プールやタスクなどの個々の Batch リソースの存続期間中に Azure Batch サービスによって生成された**サービス ログ** イベント。
-- アカウント レベルの**メトリック** ログ。
+- プールやタスクなどの個々の Batch リソースの存続期間中に Azure Batch サービスによって生成された **サービス ログ** イベント。
+- アカウント レベルの **メトリック** ログ。
 
 診断ログの収集を有効にする設定は、既定では有効になりません。 監視する Batch アカウントごとに診断ログを明示的に有効にする必要があります。
 
@@ -139,7 +139,7 @@ BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 
 ### <a name="service-log-events"></a>サービス ログ イベント
 
-Azure Batch サービス ログが収集される場合、そのログには、プールやタスクなどの個々の Batch リソースの存続期間中に Azure Batch サービスによって生成されたイベントが含まれます。 Batch によって生成された各イベントが、JSON 形式で記録されます。 たとえば、次に示すのはサンプルの**プール作成イベント**の本文です。
+Azure Batch サービス ログが収集される場合、そのログには、プールやタスクなどの個々の Batch リソースの存続期間中に Azure Batch サービスによって生成されたイベントが含まれます。 Batch によって生成された各イベントが、JSON 形式で記録されます。 たとえば、次に示すのはサンプルの **プール作成イベント** の本文です。
 
 ```json
 {

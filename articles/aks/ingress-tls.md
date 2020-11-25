@@ -6,11 +6,11 @@ services: container-service
 ms.topic: article
 ms.date: 08/17/2020
 ms.openlocfilehash: 5032880ddc5d23f824adec28aee85c652bad29d2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129662"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993152"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で HTTPS イングレス コントローラーを作成する
 
@@ -32,7 +32,7 @@ ms.locfileid: "93129662"
 
 また、この記事では、[カスタム ドメイン][custom-domain]の [DNS ゾーン][dns-zone]が、お使いの AKS クラスターと同じリソース グループにあることも前提としています。
 
-この記事では、[Helm 3][helm] を使用し、NGINX イングレス コントローラーおよび cert-manager をインストールします。 最新リリースの Helm を使用しており、 *ingress-nginx* および *jetstack* の Helm リポジトリにアクセスできることを確認します。 アップグレード手順については、[Helm のインストール ドキュメント][helm-install]を参照してください。Helm の構成および使用方法の詳細については、「[Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール][use-helm]」を参照してください。
+この記事では、[Helm 3][helm] を使用し、NGINX イングレス コントローラーおよび cert-manager をインストールします。 最新リリースの Helm を使用しており、*ingress-nginx* および *jetstack* の Helm リポジトリにアクセスできることを確認します。 アップグレード手順については、[Helm のインストール ドキュメント][helm-install]を参照してください。Helm の構成および使用方法の詳細については、「[Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール][use-helm]」を参照してください。
 
 この記事ではまた、Azure CLI バージョン 2.0.64 以降を実行していることも必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
@@ -43,7 +43,7 @@ ms.locfileid: "93129662"
 イングレス コントローラーも Linux ノード上でスケジュールする必要があります。 Windows Server ノードでは、イングレス コントローラーを実行しないでください。 ノード セレクターは、`--set nodeSelector` パラメーターを使用して指定され、Linux ベース ノード上で NGINX イングレス コントローラーを実行するように Kubernetes スケジューラに指示されます。
 
 > [!TIP]
-> 次の例では、 *ingress-basic* という名前のイングレス リソースの Kubernetes 名前空間が作成されます。 必要に応じて、ご自身の環境の名前空間を指定できます。
+> 次の例では、*ingress-basic* という名前のイングレス リソースの Kubernetes 名前空間が作成されます。 必要に応じて、ご自身の環境の名前空間を指定できます。
 
 > [!TIP]
 > クラスター内のコンテナーへの要求で[クライアント ソース IP の保持][client-source-ip]を有効にする場合は、Helm インストール コマンドに `--set controller.service.externalTrafficPolicy=Local` を追加します。 クライアント ソース IP が要求ヘッダーの *X-Forwarded-For* の下に格納されます。 クライアント ソース IP の保持が有効になっているイングレス コントローラーを使用する場合、TLS パススルーは機能しません。
@@ -78,7 +78,7 @@ nginx-ingress-ingress-nginx-controller   LoadBalancer   10.0.74.133   EXTERNAL_I
 
 ## <a name="add-an-a-record-to-your-dns-zone"></a>DNS ゾーンに A レコードを追加する
 
-[az network dns record-set a add-record][az-network-dns-record-set-a-add-record] を使用して、 *A* レコードを NGINX サービスの外部 IP アドレスが使用された DNS ゾーンに追加します。
+[az network dns record-set a add-record][az-network-dns-record-set-a-add-record] を使用して、*A* レコードを NGINX サービスの外部 IP アドレスが使用された DNS ゾーンに追加します。
 
 ```console
 az network dns record-set a add-record \
@@ -262,10 +262,10 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 
 両方のアプリケーションは、Kubernetes クラスターで実行するようになります。 ただし、構成に使用されているサービスの種類は `ClusterIP` であるため、それらのアプリケーションにインターネットからアクセスすることはできません。 公開するには、Kubernetes イングレス リソースを作成します。 イングレス リソースでは、2 つのアプリケーションのいずれかにトラフィックをルーティングするルールを構成します。
 
-次の例では、アドレス *hello-world-ingress.MY_CUSTOM_DOMAIN* へのトラフィックが *aks-helloworld* サービスにルーティングされます。 アドレス *hello-world-ingress.MY_CUSTOM_DOMAIN/hello-world-two* へのトラフィックは、 *aks-helloworld-two* サービスにルーティングされます。 *hello-world-ingress.MY_CUSTOM_DOMAIN/static* へのトラフィックは、静的アセット用の *aks-helloworld* というサービスにルーティングされます。
+次の例では、アドレス *hello-world-ingress.MY_CUSTOM_DOMAIN* へのトラフィックが *aks-helloworld* サービスにルーティングされます。 アドレス *hello-world-ingress.MY_CUSTOM_DOMAIN/hello-world-two* へのトラフィックは、*aks-helloworld-two* サービスにルーティングされます。 *hello-world-ingress.MY_CUSTOM_DOMAIN/static* へのトラフィックは、静的アセット用の *aks-helloworld* というサービスにルーティングされます。
 
 > [!NOTE]
-> カスタム ドメインではなく、イングレス コントローラーの IP アドレスの FQDN を構成した場合は、 *hello-world-ingress.MY_CUSTOM_DOMAIN* ではなく、FQDN を使用します。 たとえば、FQDN が *demo-aks-ingress.eastus.cloudapp.azure.com* の場合は、`hello-world-ingress.yaml` の *hello-world-ingress.MY_CUSTOM_DOMAIN* を *demo-aks-ingress.eastus.cloudapp.azure.com* に置き換えます。
+> カスタム ドメインではなく、イングレス コントローラーの IP アドレスの FQDN を構成した場合は、*hello-world-ingress.MY_CUSTOM_DOMAIN* ではなく、FQDN を使用します。 たとえば、FQDN が *demo-aks-ingress.eastus.cloudapp.azure.com* の場合は、`hello-world-ingress.yaml` の *hello-world-ingress.MY_CUSTOM_DOMAIN* を *demo-aks-ingress.eastus.cloudapp.azure.com* に置き換えます。
 
 次の YAML の例を使用して、`hello-world-ingress.yaml` という名前のファイルを作成します。 *hosts* と *host* を前の手順で作成した DNS 名に更新します。
 
@@ -335,7 +335,7 @@ kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
 
 次に、証明書リソースを作成する必要があります。 証明書リソースでは、必要な X.509 証明書を定義します。 詳細については、[cert-manager の証明書][cert-manager-certificates]についてのページを参照してください。 証明書マネージャーによって証明書オブジェクトが ingress-shim を使用して自動的に作成されており、その証明書オブジェクトは v0.2.2 以降の証明書マネージャーで自動的にデプロイされます。 詳しくは、[ingress-shim のドキュメント][ingress-shim]をご覧ください。
 
-証明書が正常に作成されたことを確認するには、`kubectl get certificate --namespace ingress-basic` コマンドを使用して、 *READY* が *True* になっていることを確認します。これには数分かかることがあります。
+証明書が正常に作成されたことを確認するには、`kubectl get certificate --namespace ingress-basic` コマンドを使用して、*READY* が *True* になっていることを確認します。これには数分かかることがあります。
 
 ```
 $ kubectl get certificate --namespace ingress-basic
@@ -368,7 +368,7 @@ kubectl delete namespace ingress-basic
 kubectl delete -f cluster-issuer.yaml --namespace ingress-basic
 ```
 
-`helm list` コマンドを使用して、Helm リリースを一覧表示します。 次の出力例に示すように、 *nginx* と *cert-manager* という名前のグラフを探します。
+`helm list` コマンドを使用して、Helm リリースを一覧表示します。 次の出力例に示すように、*nginx* と *cert-manager* という名前のグラフを探します。
 
 ```
 $ helm list --namespace ingress-basic

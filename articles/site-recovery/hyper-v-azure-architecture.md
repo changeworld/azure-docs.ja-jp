@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: af387b063a3c07d8b6b6c544814565e2a5ebdd46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87495728"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993773"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V から Azure へのディザスター リカバリー アーキテクチャ
 
@@ -83,7 +83,7 @@ Site Recovery を期待どおりに動作させるためには、環境でレプ
 
 ### <a name="enable-protection"></a>保護を有効にする
 
-1. Hyper-V VM の保護を有効にした後、Azure Portal またはオンプレミスで、**保護の有効化**が始まります。
+1. Hyper-V VM の保護を有効にした後、Azure Portal またはオンプレミスで、**保護の有効化** が始まります。
 2. このジョブは、マシンが前提条件を満たしていることを確認してから、構成された設定を使用してレプリケーションをセットアップするために、[CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice) を呼び出します。
 3. ジョブが [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice) メソッドを呼び出して初期レプリケーションを開始し、完全 VM レプリケーションを初期化して、VM の仮想ディスクを Azure に送信します。
 4. ジョブは **[ジョブ]** タブで監視できます。    ![[ジョブ] タブ内のジョブ一覧のスクリーンショット。](media/hyper-v-azure-architecture/image1.png)![より詳細な情報が含まれた [保護の有効化] 画面のスクリーンショット。](media/hyper-v-azure-architecture/image2.png)

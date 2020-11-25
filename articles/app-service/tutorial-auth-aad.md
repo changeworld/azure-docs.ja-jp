@@ -8,11 +8,11 @@ ms.date: 04/29/2020
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 8620d6bc403882cb308405e8ffb4412917d0c6f1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743815"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993470"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>チュートリアル:Azure App Service でユーザーをエンド ツー エンドで認証および承認する
 
@@ -122,14 +122,14 @@ az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePla
 
 ### <a name="push-to-azure-from-git"></a>Git から Azure へのプッシュ
 
-" _ローカル ターミナル ウィンドウ_ " に戻り、以下の Git コマンドを実行して、バックエンド アプリにデプロイします。 _\<deploymentLocalGitUrl-of-back-end-app>_ を、「 [Azure リソースを作成する](#create-azure-resources)」で保存した Git リモートの URL で置き換えます。 Git Credential Manager によって資格情報の入力を求めるメッセージが表示されたら、Azure portal へのサインインに使用する資格情報ではなく、[デプロイ資格情報](deploy-configure-credentials.md)を入力してください。
+"_ローカル ターミナル ウィンドウ_" に戻り、以下の Git コマンドを実行して、バックエンド アプリにデプロイします。 _\<deploymentLocalGitUrl-of-back-end-app>_ を、「[Azure リソースを作成する](#create-azure-resources)」で保存した Git リモートの URL で置き換えます。 Git Credential Manager によって資格情報の入力を求めるメッセージが表示されたら、Azure portal へのサインインに使用する資格情報ではなく、[デプロイ資格情報](deploy-configure-credentials.md)を入力してください。
 
 ```bash
 git remote add backend <deploymentLocalGitUrl-of-back-end-app>
 git push backend master
 ```
 
-ローカル ターミナル ウィンドウで、以下の Git コマンドを実行して、同じコードをフロントエンド アプリにデプロイします。 _\<deploymentLocalGitUrl-of-front-end-app>_ を、「 [Azure リソースを作成する](#create-azure-resources)」で保存した Git リモートの URL で置き換えます。
+ローカル ターミナル ウィンドウで、以下の Git コマンドを実行して、同じコードをフロントエンド アプリにデプロイします。 _\<deploymentLocalGitUrl-of-front-end-app>_ を、「[Azure リソースを作成する](#create-azure-resources)」で保存した Git リモートの URL で置き換えます。
 
 ```bash
 git remote add frontend <deploymentLocalGitUrl-of-front-end-app>
@@ -158,7 +158,7 @@ http://<front-end-app-name>.azurewebsites.net
 
 ### <a name="modify-front-end-code"></a>フロントエンド コードを変更する
 
-ローカル リポジトリで、 _Controllers/TodoController.cs_ を開きます。 `TodoController` クラスの先頭に次の行を追加し、 _\<back-end-app-name>_ を実際のバックエンド アプリの名前で置き換えます。
+ローカル リポジトリで、_Controllers/TodoController.cs_ を開きます。 `TodoController` クラスの先頭に次の行を追加し、 _\<back-end-app-name>_ を実際のバックエンド アプリの名前で置き換えます。
 
 ```cs
 private static readonly HttpClient _client = new HttpClient();
@@ -225,7 +225,7 @@ git push frontend master
 
 `http://<back-end-app-name>.azurewebsites.net` に移動して、フロントエンド アプリから追加された項目を確認します。 また、`from back end 1` や `from back end 2` などのいくつかの項目を追加し、フロントエンド アプリを更新して、変更が反映されているかどうかを確認します。
 
-:::image type="content" source="./media/tutorial-auth-aad/remote-api-call-run.png" alt-text="ブラウザー ウィンドウでの Azure App Service Rest API Sample のスクリーンショット。To do list アプリが表示されている。":::
+:::image type="content" source="./media/tutorial-auth-aad/remote-api-call-run.png" alt-text="ブラウザー ウィンドウでの Azure App Service Rest API Sample のスクリーンショット。フロントエンド アプリから項目が追加されている To do list アプリが表示されている。":::
 
 ## <a name="configure-auth"></a>auth を構成する
 
@@ -239,7 +239,7 @@ ID プロバイダーとして Azure Active Directory を使用します。 詳�
 
 **[リソース グループ]** でリソース グループを検索して選択します。 **[概要]** でバックエンド アプリの管理ページを選択します。
 
-:::image type="content" source="./media/tutorial-auth-aad/portal-navigate-back-end.png" alt-text="ブラウザー ウィンドウでの Azure App Service Rest API Sample のスクリーンショット。To do list アプリが表示されている。":::
+:::image type="content" source="./media/tutorial-auth-aad/portal-navigate-back-end.png" alt-text="サンプル リソース グループの概要を示し、バックエンド アプリの管理ページが選択されている、[リソース グループ] ウィンドウのスクリーンショット。":::
 
 バックエンド アプリの左側のメニューで **[認証/承認]** を選択し、 **[オン]** を選択して App Service 認証を有効にします。
 
@@ -247,7 +247,7 @@ ID プロバイダーとして Azure Active Directory を使用します。 詳�
 
 **[認証プロバイダー]** の下の **[Azure Active Directory]** をクリックします。
 
-:::image type="content" source="./media/tutorial-auth-aad/configure-auth-back-end.png" alt-text="ブラウザー ウィンドウでの Azure App Service Rest API Sample のスクリーンショット。To do list アプリが表示されている。":::
+:::image type="content" source="./media/tutorial-auth-aad/configure-auth-back-end.png" alt-text="[認証/承認] が選択され、右側のメニューで設定が選択されている、バックエンド アプリの左側のメニューのスクリーンショット。":::
 
 **[簡易]** を選択し、既定の設定のままで新しい AD アプリを作成して、 **[OK]** を選択します。
 
@@ -259,13 +259,15 @@ ID プロバイダーとして Azure Active Directory を使用します。 詳�
 
 Azure AD アプリケーションの **クライアント ID** をメモ帳にコピーします。 この値は、後で必要になります。
 
-:::image type="content" source="./media/tutorial-auth-aad/get-application-id-back-end.png" alt-text="ブラウザー ウィンドウでの Azure App Service Rest API Sample のスクリーンショット。To do list アプリが表示されている。" ことによって、マルチアプリ ソリューションのセキュリティを確保する方法について説明します。 
+:::image type="content" source="./media/tutorial-auth-aad/get-application-id-back-end.png" alt-text="Azure AD アプリを示している [Azure Active Directory の設定] ウィンドウと、コピーするクライアント ID を示している [Azure AD アプリケーション] ウィンドウのスクリーンショット。":::
+
+ここで終えた場合でも、既に App Service の認証と承認によってセキュリティが確保された自己完結型のアプリが完成します。 残りのセクションでは、認証済みのユーザーをフロント エンドからバックエンドに "送る" ことによって、マルチアプリ ソリューションのセキュリティを確保する方法について説明します。 
 
 ### <a name="enable-authentication-and-authorization-for-front-end-app"></a>フロントエンド アプリの認証と承認を有効にする
 
 フロントエンド アプリに対して同じ手順を行いますが、最後の手順はスキップします。 フロントエンド アプリでは、クライアント ID は必要ありません。
 
-必要に応じて、`http://<front-end-app-name>.azurewebsites.net` に移動します。 セキュリティで保護されたサインイン ページにリダイレクトされるようになったはずです。 サインインした後も、" *バックエンド アプリからはデータにアクセスできません* "。これは、バックエンド アプリでは、フロントエンド アプリからの Azure Active Directory サインインが必要になっているためです。 次の 3 つの手順を実行する必要があります。
+必要に応じて、`http://<front-end-app-name>.azurewebsites.net` に移動します。 セキュリティで保護されたサインイン ページにリダイレクトされるようになったはずです。 サインインした後も、"*バックエンド アプリからはデータにアクセスできません*"。これは、バックエンド アプリでは、フロントエンド アプリからの Azure Active Directory サインインが必要になっているためです。 次の 3 つの手順を実行する必要があります。
 
 - バックエンドへのフロントエンド アクセスを許可する
 - 使用可能なトークンを返すように App Service を構成する
@@ -276,19 +278,19 @@ Azure AD アプリケーションの **クライアント ID** をメモ帳に�
 
 ### <a name="grant-front-end-app-access-to-back-end"></a>バックエンドへのフロントエンド アプリのアクセスを許可する
 
-両方のアプリに対する認証と承認を有効にしたので、それぞれのアプリは AD アプリケーションによってサポートされています。 この手順では、ユーザーの代わりにバックエンドにアクセスするアクセス許可をフロントエンド アプリに付与します (技術的には、ユーザーの代わりにバックエンドの " _AD アプリケーション_ " にアクセスするためのアクセス許可をフロントエンドの " _AD アプリケーション_ " に付与します)。
+両方のアプリに対する認証と承認を有効にしたので、それぞれのアプリは AD アプリケーションによってサポートされています。 この手順では、ユーザーの代わりにバックエンドにアクセスするアクセス許可をフロントエンド アプリに付与します (技術的には、ユーザーの代わりにバックエンドの "_AD アプリケーション_" にアクセスするためのアクセス許可をフロントエンドの "_AD アプリケーション_" に付与します)。
 
 [[Azure portal]](https://portal.azure.com) メニューで **[Azure Active Directory]** を選択するか、任意のページから *[Azure Active Directory]* を検索して選択します。
 
 **[アプリの登録]**  >  **[所有しているアプリケーション]**  >  **[View all applications in this directory]\(このディレクトリのすべてのアプリケーションを表示\)** の順に選択します。 フロントエンド アプリ名を選択し、 **[API のアクセス許可]** を選択します。
 
-:::image type="content" source="./media/tutorial-auth-aad/add-api-access-front-end.png" alt-text="ブラウザー ウィンドウでの Azure App Service Rest API Sample のスクリーンショット。To do list アプリが表示されている。":::
+:::image type="content" source="./media/tutorial-auth-aad/add-api-access-front-end.png" alt-text="[所有しているアプリケーション]、フロントエンド アプリ名、および [API のアクセス許可] が選択されている、[Microsoft - アプリの登録] ウィンドウのスクリーンショット。":::
 
 **[アクセス許可の追加]** を選択し、 **[所属する組織で使用している API]**  >  **\<back-end-app-name>** の順に選択します。
 
 バックエンド アプリの **[API アクセス許可の要求]** ページで、 **[委任されたアクセス許可]** と **[user_impersonation]** を選択し、次に **[アクセス許可の追加]** を選択します。
 
-:::image type="content" source="./media/tutorial-auth-aad/select-permission-front-end.png" alt-text="ブラウザー ウィンドウでの Azure App Service Rest API Sample のスクリーンショット。To do list アプリが表示されている。":::
+:::image type="content" source="./media/tutorial-auth-aad/select-permission-front-end.png" alt-text="[委任されたアクセス許可]、user_impersonation、および [アクセス許可の追加] ボタンが選択されているところを示す、[API アクセス許可の要求] ページのスクリーンショット。":::
 
 ### <a name="configure-app-service-to-return-a-usable-access-token"></a>使用可能なアクセス トークンを返すように App Service を構成する
 
@@ -298,9 +300,9 @@ Azure AD アプリケーションの **クライアント ID** をメモ帳に�
 
 リソース ツリーでフロントエンド アプリが選択された状態で、[Azure Resource Explorer](https://resources.azure.com) が開きます。 ページの上部にある **[読み取り/書き込み]** をクリックして、Azure リソースの編集を有効にします。
 
-:::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="ブラウザー ウィンドウでの Azure App Service Rest API Sample のスクリーンショット。To do list アプリが表示されている。":::
+:::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="[読み取り/書き込み] ボタンが選択されている、[Azure Resource Explorer] ページの上部の [読み取り専用] および [読み取り/書き込み] ボタンのスクリーンショット。":::
 
-左側のブラウザーで、 **config** > **authsettings** にドリルダウンします。
+左側のブラウザーで、**config** > **authsettings** にドリルダウンします。
 
 **[authsettings]** ビューで、 **[編集]** をクリックします。 コピーしたクライアント ID を使用して、`additionalLoginParams` を次の JSON 文字列に設定します。 
 
@@ -308,7 +310,7 @@ Azure AD アプリケーションの **クライアント ID** をメモ帳に�
 "additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
 ```
 
-:::image type="content" source="./media/tutorial-auth-aad/additional-login-params-front-end.png" alt-text="ブラウザー ウィンドウでの Azure App Service Rest API Sample のスクリーンショット。To do list アプリが表示されている。":::
+:::image type="content" source="./media/tutorial-auth-aad/additional-login-params-front-end.png" alt-text="additionalLoginParams 文字列とクライアント ID の例を示す、[authsettings] ビューのコード例のスクリーンショット。":::
 
 **[PUT]** をクリックして、設定を保存します。
 
@@ -325,7 +327,7 @@ Azure AD アプリケーションの **クライアント ID** をメモ帳に�
 > [!NOTE]
 > これらのヘッダーは、サポートされているすべての言語用に挿入されます。 言語ごとの標準パターンを使用して、これらにアクセスします。
 
-ローカル リポジトリで、 _Controllers/TodoController.cs_ を再度開きます。 `TodoController(TodoContext context)` コンストラクターの下に、次のコードを追加します。
+ローカル リポジトリで、_Controllers/TodoController.cs_ を再度開きます。 `TodoController(TodoContext context)` コンストラクターの下に、次のコードを追加します。
 
 ```cs
 public override void OnActionExecuting(ActionExecutingContext context)
@@ -376,11 +378,11 @@ az webapp cors add --resource-group myAuthResourceGroup --name <back-end-app-nam
 
 ### <a name="point-angularjs-app-to-back-end-api"></a>Angular.js アプリをバックエンド API に合わせて設定する
 
-ローカル リポジトリで、 _wwwroot/index.html_ を開きます。
+ローカル リポジトリで、_wwwroot/index.html_ を開きます。
 
 行 51 の `apiEndpoint` 変数を、バックエンド アプリの HTTPS URL (`https://<back-end-app-name>.azurewebsites.net`) に設定します。 _\<back-end-app-name>_ は、App Service のアプリ名で置き換えます。
 
-ローカル リポジトリで、 _wwwroot/app/scripts/todoListSvc.js_ を開き、すべての API 呼び出しの前に `apiEndpoint` が付加されていることを確認します。 Angular.js アプリが、バックエンド API を呼び出すようになりました。 
+ローカル リポジトリで、_wwwroot/app/scripts/todoListSvc.js_ を開き、すべての API 呼び出しの前に `apiEndpoint` が付加されていることを確認します。 Angular.js アプリが、バックエンド API を呼び出すようになりました。 
 
 ### <a name="add-access-token-to-api-calls"></a>API 呼び出しにアクセス トークンを追加する
 
