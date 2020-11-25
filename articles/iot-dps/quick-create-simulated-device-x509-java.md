@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 0198a32800f364f921a2b9f64048166c48a14f7e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2ed458ee0267a65bb7551940fc522509dc310311
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323891"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966617"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>クイック スタート:IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使用して、シミュレートされた X.509 デバイスを作成してプロビジョニングする
 
@@ -27,13 +27,13 @@ ms.locfileid: "91323891"
 - [プロビジョニング](about-iot-dps.md#provisioning-process)の概念を理解していること。
 - [Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)が完了していること。
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- [Java SE Development Kit 8](https://aka.ms/azure-jdks)。
+- [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
 - [Maven](https://maven.apache.org/install.html)。
 - [Git](https://git-scm.com/download/).
 
 ## <a name="prepare-the-environment"></a>環境の準備 
 
-1. [Java SE Development Kit 8](https://aka.ms/azure-jdks) がマシンにインストールされていることを確認します。
+1. [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) がマシンにインストールされていることを確認します。
 
 2. [Maven](https://maven.apache.org/install.html) をダウンロードし、インストールします。
 
@@ -156,7 +156,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
     java -jar ./provisioning-x509-sample-{version}-with-deps.jar
     ```
 
-5. Azure Portal で、ご利用のプロビジョニング サービスにリンクされている IoT Hub に移動し、 **[Device Explorer]** ブレードを開きます。 シミュレートされた X.509 デバイスをハブにプロビジョニングすると、そのデバイス ID が**有効**な "*状態*" として **[Device Explorer]** ブレードに表示されます。  サンプル デバイス アプリケーションを稼働させる前にこのブレードを開いていた場合は、一番上にある **[最新の情報に更新]** を押すことが必要になる場合があります。 
+5. Azure Portal で、ご利用のプロビジョニング サービスにリンクされている IoT Hub に移動し、 **[Device Explorer]** ブレードを開きます。 シミュレートされた X.509 デバイスをハブにプロビジョニングすると、そのデバイス ID が **有効** な "*状態*" として **[Device Explorer]** ブレードに表示されます。  サンプル デバイス アプリケーションを稼働させる前にこのブレードを開いていた場合は、一番上にある **[最新の情報に更新]** を押すことが必要になる場合があります。 
 
     ![IoT ハブに登録されたデバイス](./media/java-quick-create-simulated-device-x509/hubregistration.png) 
 

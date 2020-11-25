@@ -11,12 +11,12 @@ manager: eliotgra
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e3fce15cdeb1792749224299167b52fc2311d04e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6b33b866a10ad4a44cef14f3c86d8ca1f40c4750
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318280"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965376"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service を使用したデバイスのプロビジョニング
 Microsoft Azure には、すべての IoT ソリューションのニーズに合う豊富な統合されたパブリック クラウド サービス セットがあります。 IoT Hub Device Provisioning Service (DPS) は、IoT Hub のヘルパー サービスです。適切な IoT Hub へのゼロタッチの Just-In-Time プロビジョニングを人間の介入を必要とせずに行うことができます。 DPS を使用すると、膨大な数のデバイスを、安全かつスケーラブルな方法でプロビジョニングすることができます。
@@ -49,8 +49,8 @@ Microsoft Azure には、すべての IoT ソリューションのニーズに�
 ## <a name="provisioning-process"></a>プロビジョニング プロセス
 DPS が関係するデバイスのデプロイ プロセスには 2 つの手順があり、個別に実行できます。
 
-* **製造手順**では、工場でデバイスが作成され、準備されます。
-* **クラウドのセットアップ手順**では、Device Provisioning Service が自動プロビジョニング用に構成されます。
+* **製造手順** では、工場でデバイスが作成され、準備されます。
+* **クラウドのセットアップ手順** では、Device Provisioning Service が自動プロビジョニング用に構成されます。
 
 これらの手順はどちらも、既存の製造プロセスとデプロイ プロセスにシームレスに適応します。 デバイスで接続情報を取得するために手動作業が必要な一部のデプロイ プロセスが、DPS によってさらに簡易化されます。
 
@@ -69,7 +69,7 @@ DPS によって製造プロセスに新しい手順が加わることはあり�
 自動プロビジョニング用にサービスを構成した後は、デバイスの登録を準備する必要があります。 この手順は、デバイス オペレーターが実行します。デバイス オペレーターは、デバイスの望ましい構成を把握し、IoT ハブを検索するときにプロビジョニング サービスがデバイスの ID を適切に証明できるようにする処理を担当します。 デバイス オペレーターは、製造元から識別キー情報を取得し、登録一覧に追加します。 以降、新しいエントリが追加されたときや、デバイスに関する最新情報があり、既存のエントリが更新されたときに、登録が更新される可能性があります。
 
 ## <a name="registration-and-provisioning"></a>登録とプロビジョニング
-*プロビジョニング*とは、この用語が使用される業界によって意味する処理が異なります。 IoT デバイスをクラウド ソリューションにプロビジョニングするという文脈では、プロビジョニングには 2 つのプロセスがあります。
+*プロビジョニング* とは、この用語が使用される業界によって意味する処理が異なります。 IoT デバイスをクラウド ソリューションにプロビジョニングするという文脈では、プロビジョニングには 2 つのプロセスがあります。
 
 1. 最初のプロセスでは、デバイスを登録することで、デバイスと IoT ソリューション間の初期接続を確立します。
 2. 2 つ目のプロセスでは、登録先のソリューションが持つ特定の要件に基づいて、デバイスに適切な構成を適用します。
@@ -81,7 +81,7 @@ DPS は多くの機能を備えているため、デバイスのプロビジョ�
 
 * **安全な構成証明**。X.509 と TPM ベースの ID の両方をサポートしています。
 * **登録一覧**。任意の時点で登録できるデバイスまたはデバイス グループの完全なレコードが含まれます。 登録一覧には、デバイスが登録されたときのデバイスの望ましい構成に関する情報が含まれています。いつでも更新することができます。
-* **複数の割り当てポリシー**。実際のシナリオに合わせて DPS がデバイスを IoT ハブに割り当てる方法を制御できます。最短待ち時間、均等に重み付けされた分布 (既定)、および登録リストによる静的な構成。 待ち時間は [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance) と同じ方法を使用して決定されます。
+* **複数の割り当てポリシー**。実際のシナリオに合わせて DPS がデバイスを IoT ハブに割り当てる方法を制御できます。最短待ち時間、均等に重み付けされた分布 (既定)、および登録リストによる静的な構成。 待ち時間は [Traffic Manager](../traffic-manager/traffic-manager-routing-methods.md#performance) と同じ方法を使用して決定されます。
 * **監視および診断ログ**。すべての機能が正常に動作していることを確認できます。
 * **マルチハブのサポート**。DPS でデバイスを複数の IoT ハブに割り当てることができます。 DPS は、複数の Azure サブスクリプションにわたってハブと対話できます。
 * **リージョン間のサポート**。DPS でデバイスを他のリージョンの IoT ハブに割り当てることができます。
@@ -119,7 +119,7 @@ DPS では、99.9% のサービス レベル アグリーメントが維持さ�
 * [Azure サブスクリプション サービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 ## <a name="related-azure-components"></a>関連する Azure のコンポーネント
-DPS は Azure IoT Hub を使用してデバイス プロビジョニングを自動化しています。 詳細については、「[IoT Hub のドキュメント](https://docs.microsoft.com/azure/iot-hub/)」を参照してください。
+DPS は Azure IoT Hub を使用してデバイス プロビジョニングを自動化しています。 詳細については、「[IoT Hub のドキュメント](../iot-hub/index.yml)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 ここでは、Azure で IoT デバイスをプロビジョニングする方法の概要について説明しました。 次の手順では、エンドツーエンドの IoT シナリオを試します。

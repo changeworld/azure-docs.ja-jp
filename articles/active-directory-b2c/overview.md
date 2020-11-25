@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7126cd38a9d0f9ed0079a73e1235cb08a99bcbcf
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 29b34041042f00d72b8a9fe86e31bd80f8c77dc2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396537"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953952"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Azure Active Directory B2C とは
 
@@ -77,9 +77,9 @@ WoodGrove は、個人消費者と企業顧客の両方に食料品を販売す�
 
 WoodGrove Groceries では、顧客とストアの関係に基づいて、いくつかのサインイン オプションが提供されています。
 
-* **個人**の顧客は、ソーシャル ID プロバイダーやメール アドレスとパスワードなど、個人アカウントを使用してサインアップまたはサインインできます。
-* **企業**顧客は、会社の資格情報を使用してサインアップまたはサインインできます。
-* **パートナー**と仕入先は、販売する商品を食料品ストアに提供する個人です。 パートナー ID は、[Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) によって提供されます。
+* **個人** の顧客は、ソーシャル ID プロバイダーやメール アドレスとパスワードなど、個人アカウントを使用してサインアップまたはサインインできます。
+* **企業** 顧客は、会社の資格情報を使用してサインアップまたはサインインできます。
+* **パートナー** と仕入先は、販売する商品を食料品ストアに提供する個人です。 パートナー ID は、[Azure Active Directory B2B](../active-directory/external-identities/what-is-b2b.md) によって提供されます。
 
 ![個人 (B2C)、企業 (B2C)、およびパートナー (B2B) のサインイン ページ](./media/overview/woodgrove-overview.png)
 
@@ -111,7 +111,7 @@ WoodGrove では、顧客が自分の Google、Facebook、または Microsoft �
 
 **[Sign in with your supplier account]** リンクでは、Azure Active Directory B2B のコラボレーション機能が使用されます。 Azure AD B2B は、パートナー ID を管理するための Azure Active Directory の機能のファミリです。 Azure AD B2C で保護されたアプリケーションにアクセスするため、Azure Active Directory からそれらの ID をフェデレーションすることができます。
 
-Azure AD B2B について詳しくは、「[Azure Active Directory B2B のゲスト ユーザー アクセスとは](../active-directory/b2b/what-is-b2b.md)」をご覧ください。
+Azure AD B2B について詳しくは、「[Azure Active Directory B2B のゲスト ユーザー アクセスとは](../active-directory/external-identities/what-is-b2b.md)」をご覧ください。
 
 <!-- UNCOMMENT WHEN REPO IS UPDATED WITH LATEST DEMO CODE
 ### Sample code

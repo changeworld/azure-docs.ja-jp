@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: b74987e225314112c84280e18af523bc5c3804a4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 51ad2654b285138dbdff211d5dc497a4beb48449
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296045"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957862"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>クイック スタート:仮想マシン ネットワーク トラフィック フィルターの問題を診断する - Azure PowerShell
 
@@ -177,7 +177,7 @@ Get-AzEffectiveNetworkSecurityGroup `
   },
 ```
 
-出力では、**DestinationAddressPrefix** が **Internet** であることがわかります。 しかし、「[IP フローの確認を使用する](#use-ip-flow-verify)」でテストしたアドレス 13.107.21.200 が **Internet** にどのように関連するのかはっきりしません。 **ExpandedDestinationAddressPrefix** には複数のアドレス プレフィックスが列記されています。 リストのプレフィックスの 1 つは **12.0.0.0/6** であり、これは 12.0.0.1-15.255.255.254 の IP アドレス範囲を包含します。 13.107.21.200 はそのアドレス範囲内にあるため、**AllowInternetOutBound** 規則は送信トラフィックを許可します。 さらに、`Get-AzEffectiveNetworkSecurityGroup` によって返される出力の中には、この規則をオーバーライドする**優先順位の高い** (小さい値の) 規則はありません。 13.107.21.200 への送信通信を拒否するには、その IP アドレスへのポート 80 での送信を拒否する、優先順位の高いセキュリティ規則を追加します。
+出力では、**DestinationAddressPrefix** が **Internet** であることがわかります。 しかし、「[IP フローの確認を使用する](#use-ip-flow-verify)」でテストしたアドレス 13.107.21.200 が **Internet** にどのように関連するのかはっきりしません。 **ExpandedDestinationAddressPrefix** には複数のアドレス プレフィックスが列記されています。 リストのプレフィックスの 1 つは **12.0.0.0/6** であり、これは 12.0.0.1-15.255.255.254 の IP アドレス範囲を包含します。 13.107.21.200 はそのアドレス範囲内にあるため、**AllowInternetOutBound** 規則は送信トラフィックを許可します。 さらに、`Get-AzEffectiveNetworkSecurityGroup` によって返される出力の中には、この規則をオーバーライドする **優先順位の高い** (小さい値の) 規則はありません。 13.107.21.200 への送信通信を拒否するには、その IP アドレスへのポート 80 での送信を拒否する、優先順位の高いセキュリティ規則を追加します。
 
 「[IP フローの確認を使用する](#use-ip-flow-verify)」で `Test-AzNetworkWatcherIPFlow` コマンドを実行して 172.131.0.100 への送信通信をテストしたとき、出力では **DefaultOutboundDenyAll** 規則が通信を拒否したことが示されました. **DefaultOutboundDenyAll** 規則は、`Get-AzEffectiveNetworkSecurityGroup` コマンドからの次の出力で示されている **DenyAllOutBound** 規則と同じです。
 
@@ -247,6 +247,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、VM を作成し、受信および送信ネットワーク トラフィック フィルターを診断しました。 ネットワーク セキュリティ グループの規則が、VM との間でやり取りされるトラフィックを許可または拒否することを学習しました。 [セキュリティ規則](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)および[セキュリティ規則を作成する](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule)方法について、さらに詳しく学習してください。
+このクイック スタートでは、VM を作成し、受信および送信ネットワーク トラフィック フィルターを診断しました。 ネットワーク セキュリティ グループの規則が、VM との間でやり取りされるトラフィックを許可または拒否することを学習しました。 [セキュリティ規則](../virtual-network/network-security-groups-overview.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json)および[セキュリティ規則を作成する](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule)方法について、さらに詳しく学習してください。
 
 適切なネットワーク トラフィック フィルターを適用してもまだ、ルーティングの構成のために VM への通信が失敗する可能性があります。 VM ネットワークのルーティングの問題を診断する方法については、「[VM のルーティングに関する問題を診断する](diagnose-vm-network-routing-problem-powershell.md)」をご覧ください。送信ルーティング、待機時間、およびトラフィック フィルター処理の問題を 1 つのツールで診断する方法については、[接続のトラブルシューティング](network-watcher-connectivity-powershell.md)に関するページをご覧ください。

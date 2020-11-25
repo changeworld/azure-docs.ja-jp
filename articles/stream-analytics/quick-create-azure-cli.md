@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: fa7919f54663387ddef811d02137da6d3ffb9d9b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4e50560d2f090c99d1f354ebbc11ab2357dd61e8
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646629"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874731"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Stream Analytics ジョブを作成する
 
@@ -155,7 +155,7 @@ az stream-analytics job create \
 次に、`az stream-analytics input create` コマンドレットを実行します。 必ず、`datasource` 変数の値は、ジョブ入力定義の JSON ファイルを格納したパスに、`serialization` 変数の値は、シリアル化 JSON ファイルを格納したパスに置き換えてください。
 
 ```azurecli
-az stream-analytics input create 
+az stream-analytics input create \
     --resource-group streamanalyticsrg 
     --job-name streamanalyticsjob \
     --name asaiotinput \
@@ -191,7 +191,7 @@ az stream-analytics input create
 次に、`az stream-analytics output` コマンドレットを実行します。 必ず、`datasource` 変数の値は、ジョブ出力定義の JSON ファイルを格納したパスに、`serialization` 変数の値は、シリアル化 JSON ファイルを格納したパスに置き換えてください。
 
 ```azurecli
-az stream-analytics output create 
+az stream-analytics output create \
     --resource-group streamanalyticsrg \
     --job-name streamanalyticsjob \
     --name asabloboutput \
@@ -206,7 +206,7 @@ az stream-analytics output create
 `az stream-analytics transformation create` コマンドレットを実行します。
 
 ```azurecli
-az stream-analytics transformation create 
+az stream-analytics transformation create \
     --resource-group streamanalyticsrg \
     --job-name streamanalyticsjob \
     --name Transformation \
@@ -230,7 +230,7 @@ az stream-analytics transformation create
 次のコマンドレットを実行すると、ジョブが開始されたときに出力として `True` が返されます。 変換されたデータが含まれた出力フォルダーがストレージ コンテナーに作成されます。
 
 ```azurecli
-az stream-analytics job start 
+az stream-analytics job start \
     --resource-group streamanalyticsrg \
     --name streamanalyticsjob \
     --output-start-mode JobStartTime

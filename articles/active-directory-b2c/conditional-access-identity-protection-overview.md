@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 921d9e2138c8aa9c09535a673a7cd2d32e9cddad
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f4a71740c487896208a3da7bf35bb39899c56937
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89270698"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952065"
 ---
 # <a name="identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Azure AD B2C における Identity Protection と条件付きアクセス
 
@@ -60,7 +60,7 @@ Azure AD B2C では、組み込みのユーザー フローから条件付きア
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-Azure AD B2C の条件付きアクセス ポリシーは、Microsoft Graph API で管理することもできます。 詳細については、[条件付きアクセスのドキュメント](../active-directory/conditional-access/overview.md)および [Microsoft Graph のリファレンス](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)を参照してください。
+Azure AD B2C の条件付きアクセス ポリシーは、Microsoft Graph API で管理することもできます。 詳細については、[条件付きアクセスのドキュメント](../active-directory/conditional-access/overview.md)および [Microsoft Graph のリファレンス](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

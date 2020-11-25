@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: overview
 ms.date: 09/01/2020
-ms.openlocfilehash: 90d3cb106fa93649f7d6dda5ab5755061d118f66
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1734128384d63749d3c777cf6315278fced9d140
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268385"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025142"
 ---
 # <a name="what-is-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) とは
 
@@ -33,4 +33,4 @@ PostgreSQL 向けにビルドされたアプリケーションでは、標準の
 
 - まず、最初の Azure Database for PostgreSQL - Hyperscale (Citus) サーバー グループを[作成](./quickstart-create-hyperscale-portal.md)してください。
 - コストの比較と計算については、[価格のページ](https://azure.microsoft.com/pricing/details/postgresql/)を参照してください。 Hyperscale (Citus) は、前払いの予約インスタンスの割引も提供します。詳細については、[Hyperscale (Citus) RI の価格](concepts-hyperscale-reserved-pricing.md)ページを参照してください。
-- サーバー グループに最適な[初期サイズ](howto-hyperscale-scaling.md#picking-initial-size)を決定する
+- サーバー グループに最適な[初期サイズ](howto-hyperscale-scale-initial.md)を決定する

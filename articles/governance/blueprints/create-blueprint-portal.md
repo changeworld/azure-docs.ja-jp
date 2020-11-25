@@ -4,11 +4,11 @@ description: このクイックスタートでは、Azure Blueprints を使用�
 ms.date: 08/27/2020
 ms.topic: quickstart
 ms.openlocfilehash: bb9aeb4d4b96227f7bf7296854c56df4058fbe69
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648660"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022532"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>ポータル内でブループリントを定義して割り当てる:
 
@@ -32,9 +32,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 組み込みのブループリント リストの上部にあるカードから **[空白のブループリントで始める]** を選択します。
 
-1. **MyBlueprint** など、**ブルー プリント名**を指定します (最長 48 文字でアルファベットと数字を使用でき、スペースと特殊文字は使用できません)。 ここでは、**[ブループリントの説明]** を空白のままにしておきます。
+1. **MyBlueprint** など、**ブルー プリント名** を指定します (最長 48 文字でアルファベットと数字を使用でき、スペースと特殊文字は使用できません)。 ここでは、**[ブループリントの説明]** を空白のままにしておきます。
 
-1. **[定義の場所]** ボックスで、右側にある省略記号を選択し、ブループリントを保存する[管理グループ](../management-groups/overview.md)またはサブスクリプションを選択して、**[選択]** を選択します。
+1. **[定義の場所]** ボックスで、右側にある省略記号を選択し、ブループリントを保存する [管理グループ](../management-groups/overview.md)またはサブスクリプションを選択して、**[選択]** を選択します。
 
 1. 情報が正しいことを確認します。 **[ブループリントの名前]** と **[定義の場所]** フィールドは後で変更することはできません。 ページの下部の **[次へ : 成果物]**、またはページの上部の **[成果物]** タブをクリックします。
 
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    1. **[追加]** を選択して、この成果物をブループリントに追加します。
 
-   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment.png" alt-text="[ブループリントの定義] ページの [ブループリントの作成] ボタンのスクリーンショット。" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment.png" alt-text="ブループリント定義に追加するための [ロールの割り当て] 成果物オプションのスクリーンショット。" border="false":::
 
    > [!NOTE]
    > ほとんどの成果物はパラメーターをサポートします。 ブループリントの作成時に値を割り当てられるパラメーターは、"_静的パラメーター_" です。 ブループリントの割り当て時に割り当てられるパラメーターは、"_動的パラメーター_" です。 詳細については、「[ブループリントのパラメーター](./concepts/parameters.md)」に関する記事をご覧ください。
@@ -143,11 +143,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    1. **[追加]** を選択して、この成果物をブループリントに追加します。
 
-   :::image type="content" source="./media/create-blueprint-portal/add-resource-manager-template.png" alt-text="[ブループリントの定義] ページの [ブループリントの作成] ボタンのスクリーンショット。" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/add-resource-manager-template.png" alt-text="ブループリント定義に追加するための Resource Manager テンプレート成果物オプションのスクリーンショット。" border="false":::
 
 1. 完成したブループリントは次のようになります。 各成果物の **[パラメーター]** 列に "**_x_ 個中 _y_ 個のパラメーターが入力されました**" と表示されていることを確認します。 動的パラメーターは、ブループリントのそれぞれの割り当て時に設定されます。
 
-   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint.png" alt-text="[ブループリントの定義] ページの [ブループリントの作成] ボタンのスクリーンショット。" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint.png" alt-text="それぞれの成果物の種類を含む完成したブループリント定義のスクリーンショット。" border="false":::
 
 1. 計画したすべての成果物が追加されたら、ページの下部にある **[下書きの保存]** を選択します。
 
@@ -175,11 +175,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    1. **[追加]** を選択して、この成果物をブループリントに追加します。
 
-   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment-2.png" alt-text="[ブループリントの定義] ページの [ブループリントの作成] ボタンのスクリーンショット。" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment-2.png" alt-text="ブループリント定義に追加するための 2 つ目のロールの割り当て成果物オプションのスクリーンショット。" border="false":::
 
 1. 完成したブループリントは次のようになります。 新しく追加したロールの割り当てに "**1 個中 1 個のパラメーターが入力されました**" と表示されていることを確認します。 これは、静的パラメーターであることを意味します。
 
-   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint-2.png" alt-text="[ブループリントの定義] ページの [ブループリントの作成] ボタンのスクリーンショット。" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint-2.png" alt-text="追加のロールの割り当て成果物を含む 2 つ目の完成したブループリント定義のスクリーンショット。" border="false":::
 
 1. 更新されたので、**[下書きの保存]** を選択します。
 
@@ -218,7 +218,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    1. ページの下部にある **[作成]** を選択します。
 
-      :::image type="content" source="./media/create-blueprint-portal/assignment-create-subscription.png" alt-text="[ブループリントの定義] ページの [ブループリントの作成] ボタンのスクリーンショット。" border="false":::
+      :::image type="content" source="./media/create-blueprint-portal/assignment-create-subscription.png" alt-text="新しいサブスクリプションの [サブスクリプションの作成] ウィンドウとオプションのスクリーンショット。" border="false":::
 
       > [!IMPORTANT]
       > **[作成]** を選択するとすぐに、新しいサブスクリプションが作成されます。
@@ -230,15 +230,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[場所]** で、マネージド ID およびサブスクリプションのデプロイ オブジェクトを作成するリージョンを選択します。 Azure Blueprint は、この管理対象 ID を使用して、割り当てられたブループリント内にすべての成果物をデプロイします。 詳細については、[Azure リソースのマネージド ID の概要](../../active-directory/managed-identities-azure-resources/overview.md)に関するページをご覧ください。
 
-1. **[ブループリント定義バージョン]** ドロップダウンは **v1** エントリの**発行済み**バージョンが選択されているままにしておきます (既定は最新の発行済みバージョンです)。
+1. **[ブループリント定義バージョン]** ドロップダウンは **v1** エントリの **発行済み** バージョンが選択されているままにしておきます (既定は最新の発行済みバージョンです)。
 
 1. **[割り当てのロック]** は、**[ロックしない]** の既定のままにします。 詳細については、[ブループリント リソースのロック](./concepts/resource-locking.md)に関するページを参照してください。
 
-   :::image type="content" source="./media/create-blueprint-portal/assignment-locking-mi.png" alt-text="[ブループリントの定義] ページの [ブループリントの作成] ボタンのスクリーンショット。" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/assignment-locking-mi.png" alt-text="ブループリント割り当てに対する割り当てのロックとマネージド ID オプションのスクリーンショット。" border="false":::
 
 1. **[マネージド ID]** の下で、既定の **[システム割り当て済み]** をそのままにします。
 
-1. サブスクリプション レベルのロールの割り当ての **[ユーザー グループまたはアプリケーション名] : 共同作成者**では、ユーザー、アプリ、またはグループを検索します。
+1. サブスクリプション レベルのロールの割り当ての **[ユーザー グループまたはアプリケーション名] : 共同作成者** では、ユーザー、アプリ、またはグループを検索します。
 
 1. サブスクリプション レベルのポリシーの割り当てでは、**[タグ名]** を **CostCenter** に、**[タグ値]** を **ContosoIT** に設定します。
 
@@ -265,7 +265,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ブループリントの一覧で、以前に割り当てたものを右クリックして、**[割り当ての詳細を表示する]** を選択します。
 
-   :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="[ブループリントの定義] ページの [ブループリントの作成] ボタンのスクリーンショット。" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="[割り当ての詳細を表示する] オプションが選択されたブループリント割り当てのコンテキスト メニューのスクリーンショット。" border="false":::
 
 1. **[ブループリント割り当て]** ページで、すべての成果物が正常にデプロイされたことと、デプロイ時にエラーが発生しなかったことを確認します。 エラーが発生した場合は、原因を特定する手順について、[ブループリントのトラブルシューティング](./troubleshoot/general.md)に関するページを参照してください。
 

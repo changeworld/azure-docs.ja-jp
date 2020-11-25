@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f33d7efd1c136619767c3eadd93740442ae7239a
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: f0e69e3f62d3b9e4debb5761d877dcdfdd246f60
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762044"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886024"
 ---
 # <a name="chat-concepts"></a>チャットに関する概念
 
@@ -44,7 +44,7 @@ Azure Communication Services の Chat クライアント ライブラリを使�
     
 ## <a name="message-types"></a>メッセージの種類
 
-Communication Services のチャットでは、ユーザーが生成したメッセージだけでなく、**スレッド アクティビティ**と呼ばれるシステム生成メッセージも共有されます。 スレッド アクティビティは、チャット スレッドが更新されたときに生成されます。 チャット スレッドで `List Messages` または `Get Messages` を呼び出すと、結果には、ユーザーが生成したテキスト メッセージとシステム メッセージが時系列順に含まれます。 これは、メンバーが追加または削除された日時や、チャット スレッドのトピックが更新された日時を特定するのに役立ちます。 サポートされているメッセージの種類は次のとおりです。  
+Communication Services のチャットでは、ユーザーが生成したメッセージだけでなく、**スレッド アクティビティ** と呼ばれるシステム生成メッセージも共有されます。 スレッド アクティビティは、チャット スレッドが更新されたときに生成されます。 チャット スレッドで `List Messages` または `Get Messages` を呼び出すと、結果には、ユーザーが生成したテキスト メッセージとシステム メッセージが時系列順に含まれます。 これは、メンバーが追加または削除された日時や、チャット スレッドのトピックが更新された日時を特定するのに役立ちます。 サポートされているメッセージの種類は次のとおりです。  
 
  - `Text`:チャット会話の一部としてユーザーが作成して送信する実際のメッセージ。 
  - `ThreadActivity/AddMember`:1 人以上のメンバーがチャット スレッドに追加されたことを示すシステム メッセージ。 次に例を示します。
@@ -120,7 +120,7 @@ Chat JavaScript クライアント ライブラリには、リアルタイムの
 
 ## <a name="using-cognitive-services-with-chat-client-library-to-enable-intelligent-features"></a>Cognitive Services を Chat クライアント ライブラリと共に使用してインテリジェントな機能を有効にする
 
-[Azure Cognitive API](https://docs.microsoft.com/azure/cognitive-services/) を Chat クライアント ライブラリと共に使用して、インテリジェントな機能をアプリケーションに追加できます。 たとえば、次のように操作できます。
+[Azure Cognitive API](../../../cognitive-services/index.yml) を Chat クライアント ライブラリと共に使用して、インテリジェントな機能をアプリケーションに追加できます。 たとえば、次のように操作できます。
 
 - ユーザーがさまざまな言語で互いにチャットできるようにする。 
 - サポート エージェントがチケットの優先順位を設定するために、顧客から受信した問題から否定的なセンチメントを検出する。
@@ -128,9 +128,9 @@ Chat JavaScript クライアント ライブラリには、リアルタイムの
 
 これを実現する 1 つの方法として、信頼されたサービスをチャット スレッドのメンバーとして機能させることができます。 たとえば、言語の翻訳を有効にするとします。 このサービスは、他のメンバーが交換するメッセージをリッスンし [1]、Cognitive API を呼び出してその内容を目的の言語に翻訳し [2、3]、翻訳結果をチャット スレッドのメッセージとして送信する [4] という役割を担います。 
 
-これにより、メッセージ履歴には元のメッセージと翻訳されたメッセージの両方が含まれます。 クライアント アプリケーションに、元のメッセージまたは翻訳されたメッセージを表示するロジックを追加できます。 Cognitive API を使用してテキストを別の言語に翻訳する方法については、[こちらのクイックスタート](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translator)をご覧ください。 
+これにより、メッセージ履歴には元のメッセージと翻訳されたメッセージの両方が含まれます。 クライアント アプリケーションに、元のメッセージまたは翻訳されたメッセージを表示するロジックを追加できます。 Cognitive API を使用してテキストを別の言語に翻訳する方法については、[こちらのクイックスタート](../../../cognitive-services/translator/quickstart-translator.md)をご覧ください。 
 
-:::image type="content" source="../media/chat/cognitive-services.png" alt-text="Communication Services のチャットのアーキテクチャを示す図。":::
+:::image type="content" source="../media/chat/cognitive-services.png" alt-text="Communication Services と対話する Cognitive Services を示す図。":::
 
 ## <a name="next-steps"></a>次の手順
 

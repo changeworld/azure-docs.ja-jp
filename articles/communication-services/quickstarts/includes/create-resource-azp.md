@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 11b9c553573d9e6188ba634b4cb966d6a9b850b4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 051f903c0b203045886b80f72d868adc1fa85f73
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90945935"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886100"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -23,11 +23,11 @@ Azure Communication Services のリソースを作成するには、まず [Azur
 
 **[Marketplace を検索]** 入力、または portal の上部の検索バーに「**Communication**」と入力します。
 
-:::image type="content" source="../media/create-a-communication-resource/searchbar-communication-portal.png" alt-text="Azure portal の [リソースの作成] ボタンが強調表示されているスクリーンショット。":::
+:::image type="content" source="../media/create-a-communication-resource/searchbar-communication-portal.png" alt-text="検索バーでの Communication Services の検索を示すスクリーンショット。":::
 
 結果から **[Communication Services]** を選択し、 **[追加]** を選択します。
 
-:::image type="content" source="../media/create-a-communication-resource/add-communication-portal.png" alt-text="Azure portal の [リソースの作成] ボタンが強調表示されているスクリーンショット。":::
+:::image type="content" source="../media/create-a-communication-resource/add-communication-portal.png" alt-text="[追加] ボタンが強調表示された Azure パネルを示すスクリーンショット。":::
 
 これで、Communication Services のリソースを構成できます。 作成プロセスの最初のページで、次の内容を指定するように求められます。
 
@@ -36,9 +36,9 @@ Azure Communication Services のリソースを作成するには、まず [Azur
 * Communication Services のリソースの名前
 * リソースが関連付けられる地理的な場所
 
-次の手順では、リソースにタグを割り当てることができます。 タグは、Azure リソースを整理するために使用できます。 タグの詳細については、[リソースのタグ付けに関するドキュメント](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-resources)を参照してください。
+次の手順では、リソースにタグを割り当てることができます。 タグは、Azure リソースを整理するために使用できます。 タグの詳細については、[リソースのタグ付けに関するドキュメント](../../../azure-resource-manager/management/tag-resources.md)を参照してください。
 
-最後に、構成を確認し、リソースを**作成**できます。 デプロイが完了するまでに数分かかることに注意してください。
+最後に、構成を確認し、リソースを **作成** できます。 デプロイが完了するまでに数分かかることに注意してください。
 
 ## <a name="manage-your-communication-services-resource"></a>Communication Services のリソースを管理する
 

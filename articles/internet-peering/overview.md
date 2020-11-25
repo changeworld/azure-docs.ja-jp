@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: overview
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 576bc3e37711851acd7d6c7ac811a10e40080710
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 34d340881e4f612544f4b3d68d3c1f3da598cab3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "75908914"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023430"
 ---
 # <a name="internet-peering-overview"></a>インターネット ピアリングの概要
 
@@ -41,7 +41,7 @@ Azure PowerShell またはポータルを使用して、Microsoft とのピア�
 * すべての接続の状態と帯域幅データを追跡できます。
 * 同じサブスクリプションを使用して Azure Cloud Services にアクセスできます。
 
-Microsoft とのピアリングが既に確立されている場合、これらは**レガシ ピアリング**と呼ばれます。 上記の利点を活用するために、このようなピアリングを Azure リソースとして管理することを選択できます。 新しいピアリング要求を送信する場合やレガシ ピアリングを Azure リソースに変換する場合は、以下の「**次のステップ**」セクションのリンク先の記事に従ってください。
+Microsoft とのピアリングが既に確立されている場合、これらは **レガシ ピアリング** と呼ばれます。 上記の利点を活用するために、このようなピアリングを Azure リソースとして管理することを選択できます。 新しいピアリング要求を送信する場合やレガシ ピアリングを Azure リソースに変換する場合は、以下の「**次のステップ**」セクションのリンク先の記事に従ってください。
 
 ## <a name="peering-policy"></a>ピアリング ポリシー
 Microsoft は、選択的ではあるものの一般的にオープンなピアリング ポリシーを保持しています。 ピアは、パフォーマンス、能力、および相互利益がある場所に基づいて選択され、特定の技術的、商業的、および法的要件の対象となります。 詳細については、「[ピアリング ポリシー](policy.md)」を参照してください。
@@ -53,4 +53,4 @@ Microsoft は、選択的ではあるものの一般的にオープンなピア�
 
 * Microsoft との Direct ピアリングを設定する手順の詳細については、「[Direct ピアリングのチュートリアル](walkthrough-direct-all.md)」を参照してください
 * Microsoft との Exchange ピアリングを設定する手順の詳細については、「[Exchange ピアリングのチュートリアル](walkthrough-exchange-all.md)」を参照してください。
-* Azure のその他の重要な[ネットワーク機能](https://docs.microsoft.com/azure/networking/networking-overview)について参照してください。
+* Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。

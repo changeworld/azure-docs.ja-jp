@@ -8,15 +8,15 @@ ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
 ms.date: 05/28/2019
-ms.author: Kevin
+ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 878b272e2a1a0e1d5a00a9c2028a6803b6d95383
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 470892aa46d3f75ce8e17200f7d0549ae14b0e86
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91568964"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023788"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Synapse SQL プールを作成し、クエリを実行する
 
@@ -122,7 +122,7 @@ Azure portal で、サーバーの完全修飾サーバー名を取得します�
 
 2. 左側のメニューから **[Azure Synapse Analytics]** を選択し、 **[Azure Synapse Analytics]** ページで目的のものを選択します。
 
-3. そのデータベースの Azure Portal ページの **[基本]** ウィンドウで、**サーバー名**を見つけてコピーします。 この例の完全修飾名は sqlpoolservername.database.windows.net です。
+3. そのデータベースの Azure Portal ページの **[基本]** ウィンドウで、**サーバー名** を見つけてコピーします。 この例の完全修飾名は sqlpoolservername.database.windows.net です。
 
     ![接続情報](./media/create-data-warehouse-portal/find-server-name-copy.png)
 

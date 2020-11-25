@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: overview
 ms.date: 5/22/2020
 ms.author: derekol
-ms.openlocfilehash: 3ffef24d459a2864ffd3f2271e6bca9e4bc638cc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 717a8c87c6a1c22d3f75cd4e3054bfdf0c4b5f9a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83849384"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023447"
 ---
 # <a name="internet-peering-vs-peering-service"></a>インターネット ピアリングとPeering Service
 
@@ -53,5 +53,5 @@ Microsoft Cloud に接続するときに最も大切なのは、ユーザー サ
 
 ## <a name="next-steps"></a>次のステップ
 
-* ユーザーが [Peering Service](https://docs.microsoft.com/azure/peering-service/) を使用する利点について理解を深めます。
+* ユーザーが [Peering Service](../peering-service/index.yml) を使用する利点について理解を深めます。
 * 「[Peering Service パートナーのチュートリアル](walkthrough-peering-service-all.md)」で、Peering Service の Direct ピアリングを有効にする手順を学習します。

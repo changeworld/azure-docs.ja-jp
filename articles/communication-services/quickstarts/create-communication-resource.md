@@ -10,18 +10,18 @@ ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: 8b606108d0e33ba1dd49e37c0f407b0caa350f6b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a93ac3b5d988be33c0f27726a75b1006f990d1da
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667505"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886105"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>クイック スタート:Communication Services のリソースを作成して管理する
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-最初の Communication Services リソースをプロビジョニングすることで、Azure Communication Services を開始します。 Communication Services のリソースは、Azure portal または .NET 管理クライアント ライブラリを使用してプロビジョニングできます。 管理クライアント ライブラリを使用すると、リソースの作成、構成、更新、削除を行うことができます。また、これは [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) (Azure のデプロイおよび管理サービス) と連携します。 クライアント ライブラリで使用できるすべての機能は、Azure portal で利用できます。 
+最初の Communication Services リソースをプロビジョニングすることで、Azure Communication Services を開始します。 Communication Services のリソースは、Azure portal または .NET 管理クライアント ライブラリを使用してプロビジョニングできます。 管理クライアント ライブラリを使用すると、リソースの作成、構成、更新、削除を行うことができます。また、これは [Azure Resource Manager](../../azure-resource-manager/management/overview.md) (Azure のデプロイおよび管理サービス) と連携します。 クライアント ライブラリで使用できるすべての機能は、Azure portal で利用できます。 
 
 > [!WARNING]
 > パブリック プレビュー期間中の Communication Services の利用は、米国地域に限定されることに注意してください。 また、パブリック プレビュー期間中は、通信リソースを別のサブスクリプションに転送できないことにも注意してください。
@@ -47,8 +47,8 @@ Communication Services リソースに移動した後、ナビゲーション �
 Communication Services クライアント ライブラリは、接続文字列を使用して、Communication Services に対して行われた要求を承認します。 接続文字列は次の方法で保存できます。
 
 * デスクトップまたはデバイスで実行するアプリケーションの場合は、**app.config** ファイルまたは **web.config** ファイルに接続文字列を保存できます。 この接続文字列は、これらのファイルの **AppSettings** セクションに追加します。
-* Azure App Service で実行されているアプリケーションでは、接続文字列は [App Service のアプリケーションの設定](https://docs.microsoft.com/azure/app-service/configure-common)内に格納できます。 ポータル内の [アプリケーションの設定] タブの **[接続文字列]** セクションに接続文字列を追加します。
-* 接続文字列は、[Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) に格納できます。
+* Azure App Service で実行されているアプリケーションでは、接続文字列は [App Service のアプリケーションの設定](../../app-service/configure-common.md)内に格納できます。 ポータル内の [アプリケーションの設定] タブの **[接続文字列]** セクションに接続文字列を追加します。
+* 接続文字列は、[Azure Key Vault](../../data-factory/store-credentials-in-key-vault.md) に格納できます。
 * アプリケーションをローカルで実行している場合は、環境変数に接続文字列を格納することもできます。
 
 ### <a name="store-your-connection-string-in-an-environment-variable"></a>環境変数に接続文字列を格納する

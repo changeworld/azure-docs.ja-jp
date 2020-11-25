@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 10/15/2020
 ms.author: cherylmc
 ms.openlocfilehash: 325f39b695d80c14ed7097d071380b937458546c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150487"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021488"
 ---
 # <a name="quickstart-connect-to-a-vm-securely-through-a-browser-via-private-ip-address"></a>クイックスタート: ブラウザーを使用してプライベート IP アドレスで VM に安全に接続する
 
@@ -75,29 +75,29 @@ bastion ホストは、いくつかの方法で構成できます。 以降の�
 1. ドロップダウンから **[Bastion]** を選択します。
 1. **[TestVM] の [接続] ページ** で、 **[Bastion を使用]** を選択します。
 
-   :::image type="content" source="./media/quickstart-host-portal/select-bastion.png" alt-text="仮想マシンの設定" border="false":::
+   :::image type="content" source="./media/quickstart-host-portal/select-bastion.png" alt-text="Bastion を選択する" border="false":::
 
 1. **[Bastion]** ページで、次の設定フィールドに入力します。
 
-   * **名前** :bastion ホストに名前を付けます。
-   * **サブネット** :これは、Bastion リソースのデプロイ先となる仮想ネットワークのアドレス空間です。 このサブネットは **AzureBastionSubnet** という名前で作成される必要があります。 /27 かそれより大きいサブネットを使用する必要があります (/27、/26、/25 など)。
+   * **名前**:bastion ホストに名前を付けます。
+   * **サブネット**:これは、Bastion リソースのデプロイ先となる仮想ネットワークのアドレス空間です。 このサブネットは **AzureBastionSubnet** という名前で作成される必要があります。 /27 かそれより大きいサブネットを使用する必要があります (/27、/26、/25 など)。
    * **[サブネット構成の管理]** を選択します。
 1. **[サブネット]** ページで **[+ サブネット]** を選択します。
 
-   :::image type="content" source="./media/quickstart-host-portal/subnet.png" alt-text="仮想マシンの設定":::
+   :::image type="content" source="./media/quickstart-host-portal/subnet.png" alt-text="+ サブネット":::
     
-1. **[サブネットの追加]** ページの **[名前]** に「 **AzureBastionSubnet** 」と入力します。
+1. **[サブネットの追加]** ページの **[名前]** に「**AzureBastionSubnet**」と入力します。
    * [サブネット アドレス範囲] には、仮想ネットワークのアドレス空間内のサブネット アドレスを選択します。
    * その他の設定は調整しないでください。 **[OK]** を選択してサブネットの変更を承諾し、保存します。
 
-   :::image type="content" source="./media/quickstart-host-portal/add-subnet.png" alt-text="仮想マシンの設定":::
+   :::image type="content" source="./media/quickstart-host-portal/add-subnet.png" alt-text="サブネットの追加":::
 1. ブラウザーの [戻る] ボタンをクリックして **[Bastion]** ページに戻り、値の指定を続けます。
    * **[パブリック IP アドレス]** : **[新規作成]** のままにします。
-   * **パブリック IP アドレス名** :パブリック IP アドレス リソースの名前です。
-   * **割り当て** : 既定で [静的] になります。 動的割り当ては Azure Bastion に使用できません。
+   * **パブリック IP アドレス名**:パブリック IP アドレス リソースの名前です。
+   * **割り当て**: 既定で [静的] になります。 動的割り当ては Azure Bastion に使用できません。
    * **[リソース グループ]** :VM と同じリソース グループを使用します。
 
-   :::image type="content" source="./media/quickstart-host-portal/validate.png" alt-text="仮想マシンの設定":::
+   :::image type="content" source="./media/quickstart-host-portal/validate.png" alt-text="bastion ホストを作成する":::
 1. **[作成]** を選択して bastion ホストを作成します。 Azure によって設定が検証され、ホストが作成されます。 ホストとそのリソースの作成およびデプロイには、約 5 分かかります。
 
 ## <a name="connect"></a><a name="connect"></a>接続
@@ -106,10 +106,10 @@ Bastion が仮想ネットワークにデプロイされると、画面が [接�
 
 1. 仮想マシン用のユーザー名とパスワードを入力します。 次に、 **[接続]** を選択します。
 
-   :::image type="content" source="./media/quickstart-host-portal/connect-vm.png" alt-text="仮想マシンの設定":::
+   :::image type="content" source="./media/quickstart-host-portal/connect-vm.png" alt-text="スクリーンショットは、[Azure Bastion を使用して接続する] ダイアログを示しています。":::
 1. この仮想マシンへの RDP 接続は、ポート 443 と Bastion サービスを使用して (HTML5 を介して) Azure portal で直接開きます。
 
-   :::image type="content" source="./media/quickstart-host-portal/connected.png" alt-text="仮想マシンの設定":::
+   :::image type="content" source="./media/quickstart-host-portal/connected.png" alt-text="RDP 接続":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
