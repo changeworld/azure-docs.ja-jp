@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/11/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-dotnet
-ms.openlocfilehash: ce75b5465d18f988d9dfd2b329c4157bab41ded9
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8755a600a1e6afaae4ebe7451e16f6632073587f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534519"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95746593"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-20-rest-api-ocr-operation-and-c"></a>クイック スタート:Computer Vision 2.0 REST API の OCR 操作と C# を使用してテキストを抽出する
 
 > [!IMPORTANT]
-> 英語、オランダ語、フランス語、ドイツ語、イタリア語、ポルトガル語、スペイン語、簡易字中国語 (プレビュー) のテキストを抽出する場合は、新しい [Read 操作](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)の使用をお勧めします。 [C# のクイックスタート](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text)を使用できます。 
+> 英語、オランダ語、フランス語、ドイツ語、イタリア語、ポルトガル語、スペイン語、簡易字中国語 (プレビュー) のテキストを抽出する場合は、新しい [Read 操作](../concept-recognizing-text.md)の使用をお勧めします。 [C# のクイックスタート](./csharp-hand-text.md)を使用できます。 
 
 このクイックスタートでは、Computer Vision REST API の [OCR 操作](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d)機能を使って、印刷されたテキストを画像から抽出します。 この操作を使用すると、画像内の印刷されたテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出することができます。
 
@@ -32,7 +32,7 @@ ms.locfileid: "94534519"
 * Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Computer Vision リソースを作成"  target="_blank">Computer Vision リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
     * 対象のアプリケーションを Computer Vision サービスに接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
     * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
-* キーとエンドポイント URL 用に、それぞれ `COMPUTER_VISION_SUBSCRIPTION_KEY` と `COMPUTER_VISION_ENDPOINT` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
+* キーとエンドポイント URL 用に、それぞれ `COMPUTER_VISION_SUBSCRIPTION_KEY` と `COMPUTER_VISION_ENDPOINT` という名前の[環境変数を作成](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)します。
 
 ## <a name="create-and-run-the-sample-application"></a>サンプル アプリケーションを作成して実行する
 
