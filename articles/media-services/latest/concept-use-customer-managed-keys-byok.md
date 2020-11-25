@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: a89ff56eb9e0f0a29b5b1fed7543c5f718425e51
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a56922c972efeb21c188413522bd05f83b74ca12
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92325933"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681824"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Media Services での Bring Your Own Key (カスタマー マネージド キー)
 
@@ -23,7 +23,7 @@ Bring Your Own Key (BYOK) は、お客様のワークロードをクラウドに
 
 Media Services 2020-05-01 API を使用するときには、Media Services で独自のキーを使用できます。 Media Services が所有するシステム キーで暗号化されるすべてのアカウントに対して、既定のアカウント キーが作成されます。 お客様独自のキーを使用するときには、アカウント キーはそのキーで暗号化されます。 コンテンツ キーは、アカウント キーによって暗号化されます。 JobInputHttp URL と、トークン検証用の対称キーも暗号化されます。
 
-:::image type="content" source="./media/customer-managed-key/customer-managed-key.svg" alt-text="カスタマー マネージド キーによってシステム管理キーが置き換えられます&quot;:::
+:::image type="content" source="./media/customer-managed-key/customer-managed-key.svg" alt-text="カスタマー マネージド キーによってシステム管理キーが置き換えられます":::
 
 Media Services では、Media Services アカウントのマネージド ID を使用して、ユーザーが所有する Key Vault からキーを読み取ります。 Media Services では、その Key Vault がアカウントと同じリージョンにあり、そこで論理的な削除と消去保護が有効になっている必要があります。
 
@@ -35,11 +35,13 @@ Media Services では、Media Services アカウントのマネージド ID を�
 キー名とキー バージョン、またはキー名だけを指定できます。 キー名のみを使用すると、Media Services では最新のキー バージョンが使用されます。 新しいバージョンのカスタマー キーが自動的に検出され、アカウント キーが再暗号化されます。
 
 > [!WARNING]
-> Media Services では、カスタマー キーへのアクセスが監視されます。 カスタマー キーにアクセスできなくなった場合 (キーが削除された場合、Key Vault が削除された場合、アクセスの付与が削除された場合など)、アカウントは Media Services によって、&quot;カスタマー キー アクセス不能状態" に移行されます (事実上のアカウントの無効化)。 ただし、この状態のアカウントは削除可能です。 サポートされる操作は、アカウントの GET、LIST、DELETE だけで、その他のすべての要求 (エンコード、ストリーミングなど) は、アカウント キーへのアクセスが復元されるまで失敗します。
+> Media Services では、カスタマー キーへのアクセスが監視されます。 カスタマー キーにアクセスできなくなった場合 (キーが削除された場合、Key Vault が削除された場合、アクセスの付与が削除された場合など)、アカウントは Media Services によって、"カスタマー キー アクセス不能状態" に移行されます (事実上のアカウントの無効化)。 ただし、この状態のアカウントは削除可能です。 サポートされる操作は、アカウントの GET、LIST、DELETE だけで、その他のすべての要求 (エンコード、ストリーミングなど) は、アカウント キーへのアクセスが復元されるまで失敗します。
 
-## <a name="tutorial"></a>チュートリアル
-「[Media Services でのカスタマー マネージド キーまたは Bring Your Own Key (BYOK) の使用](tutorial-byok.md)」というチュートリアルを試して、Postman と Azure REST API を使用してカスタマー マネージド キーを設定し、使用する方法を確認してください。
+## <a name="tutorials"></a>チュートリアル
 
-## <a name="next-steps"></a>次の手順
+- [Azure portal を使用して Media Services でカスタマー マネージド キーまたは BYOK を使用する](tutorial-byok-portal.md)
+- [Media Services REST API でカスタマー マネージド キーまたは BYOK を使用する](tutorial-byok-postman.md)。
 
-* [チュートリアル: Media Services でのカスタマー マネージド キーまたは Bring Your Own Key (BYOK) の使用](tutorial-byok.md)
+## <a name="next-steps"></a>次のステップ
+
+[Media Services 動的暗号化を使用してコンテンツを保護する](content-protection-overview.md)

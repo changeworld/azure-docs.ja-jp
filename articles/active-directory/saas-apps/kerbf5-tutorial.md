@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 161348f7566ff64858d563f34ad8f3f4c7511adf
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459104"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009162"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と F5 の統合
 
@@ -59,7 +59,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="access-guided-configuration"></a>アクセス ガイド付き構成
 
-* アクセス ガイド付き構成は、F5 TMOS バージョン 13.1.0.8 以降でサポートされます。 BIG-IP システムで実行されているバージョンが 13.1.0.8 未満である場合は、「 **詳細な構成** 」セクションを参照してください。
+* アクセス ガイド付き構成は、F5 TMOS バージョン 13.1.0.8 以降でサポートされます。 BIG-IP システムで実行されているバージョンが 13.1.0.8 未満である場合は、「**詳細な構成**」セクションを参照してください。
 
 * アクセス ガイド付き構成により、効率化されたまったく新しいユーザー エクスペリエンスが得られます。 このワークフローベースのアーキテクチャにより、選択したトポロジに合わせて調整された直感的で再入可能な構成ステップが提供されます。
 
@@ -86,7 +86,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* F5 では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* F5 では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 * F5 SSO は、次の 3 つの異なる方法で構成できます。
 
 - [Kerberos アプリケーション用に F5 シングル サインオンを構成する](#configure-f5-single-sign-on-for-kerberos-application)
@@ -117,7 +117,7 @@ Azure AD への F5 の統合を構成するには、ギャラリーからマネ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **F5** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**F5**」と入力します。
 1. 結果のパネルから **[F5]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>F5 の Azure AD シングル サインオンの構成とテスト
@@ -365,7 +365,7 @@ Access Policy Manager (APM) がユーザーの認証に使用するドメイン 
     >[!Note]
     > Kerberos 委任アカウントを作成し、指定する必要があります。 KCD セクションを参照してください (変数リファレンスについては、付録を参照してください)
 
-    * **ユーザー名ソース** : session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
+    * **ユーザー名ソース**: session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
 
     * **[User Realm Source]\(ユーザー領域のソース\)** : session.logon.last.domain
 
@@ -414,7 +414,7 @@ Access Policy Manager (APM) がユーザーの認証に使用するドメイン 
     * **mcget {session.logon.last.username}**
     * **mcget {session.logon.last.password**
 
-1. 新しいノードを追加するために、 **[Local Traffic]\(ローカル トラフィック\) > [Nodes]\(ノード\) > [Node List]\(ノード リスト\) の順に移動して、[Create]\(作成\) をクリックし** 、次の情報を入力して **[Finished]\(完了\)** をクリックします。
+1. 新しいノードを追加するために、 **[Local Traffic]\(ローカル トラフィック\) > [Nodes]\(ノード\) > [Node List]\(ノード リスト\) の順に移動して、[Create]\(作成\) をクリックし**、次の情報を入力して **[Finished]\(完了\)** をクリックします。
 
     * 名前:KerbApp200
     * 説明:KerbApp200
@@ -422,7 +422,7 @@ Access Policy Manager (APM) がユーザーの認証に使用するドメイン 
 
         ![[Name]\(名前\)、[Description]\(説明\)、[Address]\(アドレス\) のテキスト ボックスが強調表示され、[Finished]\(完了\) ボタンが選択された [New Node]\(新しいノード\) ページを示すスクリーンショット。](./media/kerbf5-tutorial/configure39.png)
 
-1. 新しいプールを作成するために、 **[Local Traffic]\(ローカル トラフィック\) > [Pools]\(プール\) > [Pool List]\(プール リスト\) の順に移動して、[Create]\(作成\) をクリックし** 、次の情報を入力して **[Finished]\(完了\)** をクリックします。
+1. 新しいプールを作成するために、 **[Local Traffic]\(ローカル トラフィック\) > [Pools]\(プール\) > [Pool List]\(プール リスト\) の順に移動して、[Create]\(作成\) をクリックし**、次の情報を入力して **[Finished]\(完了\)** をクリックします。
 
     * 名前:KerbApp200-Pool
     * 説明:KerbApp200-Pool

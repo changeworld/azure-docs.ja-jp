@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87093002"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009502"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Durable Functions を WebJobs として実行する方法
 
@@ -31,7 +31,7 @@ Durable Functions のチェーンのサンプルは、WebJobs SDK 2.x バージ�
 
 この記事の手順を完了するには、次のことが条件となります。
 
-* **Azure 開発**ワークロードと共に [Visual Studio 2019 をインストール](/visualstudio/install/)します。
+* **Azure 開発** ワークロードと共に [Visual Studio 2019 をインストール](/visualstudio/install/)します。
 
   Visual Studio は既にあるものの、必要なワークロードがない場合は、 **[ツール]**  >  **[ツールと機能の取得]** の順に選択してワークロードを追加してください。
 
@@ -53,7 +53,7 @@ Visual Studio には、WebJob プロジェクト テンプレートも用意さ�
 
 ## <a name="install-nuget-packages"></a>NuGet パッケージのインストール
 
-必要な NuGet パッケージは、WebJobs SDK、コア バインディング、ログ記録フレームワーク、および Durable Task 拡張機能用のパッケージです。 次に示すのは、これらのパッケージに対応する**パッケージ マネージャー コンソール** コマンドです。バージョン番号は、この記事の作成時点での、最新かつ安定したバージョンの番号です。
+必要な NuGet パッケージは、WebJobs SDK、コア バインディング、ログ記録フレームワーク、および Durable Task 拡張機能用のパッケージです。 次に示すのは、これらのパッケージに対応する **パッケージ マネージャー コンソール** コマンドです。バージョン番号は、この記事の作成時点での、最新かつ安定したバージョンの番号です。
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions -version 2.2.0

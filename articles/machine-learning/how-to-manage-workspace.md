@@ -10,16 +10,16 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 2c9d00f1d78d2dea46d4ff4a08433360e00c7b9d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 29c378d40e3a4f92852f433677125a9e8a6d1133
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445627"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540129"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning ワークスペースを作成して管理する 
 
-この記事では、Azure portal または [Python 用 SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) を使用して、 [Azure Machine Learning](overview-what-is-azure-ml.md) 用の [**Azure Machine Learning ワークスペース**](concept-workspace.md)を作成、表示、および削除します。
+この記事では、Azure portal または [Python 用 SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) を使用して、[Azure Machine Learning](overview-what-is-azure-ml.md) 用の [**Azure Machine Learning ワークスペース**](concept-workspace.md)を作成、表示、および削除します。
 
 ニーズに変化が生じたり自動化の要件が増えたりしたときに、[CLI](reference-azure-machine-learning-cli.md) または [VS Code 拡張機能](tutorial-setup-vscode-extension.md)を使用して、ワークスペースの作成と削除を行うこともできます。
 
@@ -78,7 +78,7 @@ ms.locfileid: "94445627"
                 )
     ```
 
-* **既存の Azure リソースを使用する** 。  既存の Azure リソースを Azure リソース ID 形式で使用するワークスペースを作成することもできます。 Azure portal または SDK を使用して、特定の Azure リソース ID を見つけます。 この例では、リソース グループ、ストレージ アカウント、キー コンテナー、App Insights、およびコンテナー レジストリが既に存在していることを前提としています。
+* **既存の Azure リソースを使用する**。  既存の Azure リソースを Azure リソース ID 形式で使用するワークスペースを作成することもできます。 Azure portal または SDK を使用して、特定の Azure リソース ID を見つけます。 この例では、リソース グループ、ストレージ アカウント、キー コンテナー、App Insights、およびコンテナー レジストリが既に存在していることを前提としています。
 
    ```python
    import os
@@ -117,7 +117,7 @@ ms.locfileid: "94445627"
 
       ![新しいリソースを作成](./media/how-to-manage-workspace/create-workspace.gif)
 
-1. 検索バーを使用して、 **Machine Learning** を見つけます。
+1. 検索バーを使用して、**Machine Learning** を見つけます。
 
 1. **[Machine Learning]** を選択します。
 
@@ -127,9 +127,9 @@ ms.locfileid: "94445627"
 
    フィールド|説明 
    ---|---
-   ワークスペース名 |ワークスペースを識別する一意の名前を入力します。 この例では、 **docs-ws** を使用します。 名前は、リソース グループ全体で一意である必要があります。 覚えやすく、他のユーザーが作成したワークスペースと区別しやすい名前を使用します。 ワークスペース名では、大文字と小文字は区別されません。
+   ワークスペース名 |ワークスペースを識別する一意の名前を入力します。 この例では、**docs-ws** を使用します。 名前は、リソース グループ全体で一意である必要があります。 覚えやすく、他のユーザーが作成したワークスペースと区別しやすい名前を使用します。 ワークスペース名では、大文字と小文字は区別されません。
    サブスクリプション |使用する Azure サブスクリプションを選択します。
-   Resource group | サブスクリプションの既存のリソース グループを使用するか、任意の名前を入力して新しいリソース グループを作成します。 リソース グループは、Azure ソリューションの関連するリソースを保持します。 この例では、 **docs-aml** を使用します。 既存のリソース グループを使用するには、 *共同作成者* または *所有者* のロールが必要です。  アクセスの詳細については、「[Azure Machine Learning ワークスペースへのアクセスの管理](how-to-assign-roles.md)」の記事をご覧ください。
+   Resource group | サブスクリプションの既存のリソース グループを使用するか、任意の名前を入力して新しいリソース グループを作成します。 リソース グループは、Azure ソリューションの関連するリソースを保持します。 この例では、**docs-aml** を使用します。 既存のリソース グループを使用するには、*共同作成者* または *所有者* のロールが必要です。  アクセスの詳細については、「[Azure Machine Learning ワークスペースへのアクセスの管理](how-to-assign-roles.md)」の記事をご覧ください。
    リージョン | ユーザーとデータ リソースに最も近い Azure リージョンを選択し、ワークスペースを作成します。
 
     ![ワークスペースを構成する](./media/how-to-manage-workspace/create-workspace-form.png)
@@ -177,9 +177,9 @@ Azure Machine Learning Python SDK には、[PrivateEndpointConfig](/python/api/a
 
 ### <a name="multiple-workspaces-with-private-endpoint"></a>プライベート エンドポイントを使用する複数のワークスペース
 
-プライベート エンドポイントを作成すると、 __privatelink.api.azureml.ms__ という名前の新しいプライベート DNS ゾーンが作成されます。 これには、仮想ネットワークへのリンクが含まれます。 プライベート エンドポイントがあるワークスペースを同じリソース グループ内に複数作成した場合、最初のプライベート エンドポイントの仮想ネットワークしか DNS ゾーンに追加されない場合があります。 追加のワークスペースまたはプライベート エンドポイントで使用される仮想ネットワークを追加するには、次の手順に従います。
+プライベート エンドポイントを作成すると、__privatelink.api.azureml.ms__ という名前の新しいプライベート DNS ゾーンが作成されます。 これには、仮想ネットワークへのリンクが含まれます。 プライベート エンドポイントがあるワークスペースを同じリソース グループ内に複数作成した場合、最初のプライベート エンドポイントの仮想ネットワークしか DNS ゾーンに追加されない場合があります。 追加のワークスペースまたはプライベート エンドポイントで使用される仮想ネットワークを追加するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) で、そのワークスペースが含まれているリソース グループを選択します。 次に、 __privatelink.api.azureml.ms__ という名前のプライベート DNS ゾーン リソースを選択します。
+1. [Azure portal](https://portal.azure.com) で、そのワークスペースが含まれているリソース グループを選択します。 次に、__privatelink.api.azureml.ms__ という名前のプライベート DNS ゾーン リソースを選択します。
 2. __[設定]__ で、 __[仮想ネットワーク リンク]__ を選択します。
 3. __[追加]__ を選択します。 __[仮想ネットワーク リンクの追加]__ ページで一意の __[リンク名]__ を指定し、次いで追加する __仮想ネットワーク__ を選択します。 __[OK]__ を選択して、ネットワーク リンクを追加します。
 
@@ -191,7 +191,7 @@ Azure Security Center は、ハイブリッド クラウド ワークロード�
 
 ### <a name="advanced"></a>詳細設定
 
-既定では、ワークスペースのメトリックとメタデータは、Microsoft が管理する Azure Cosmos DB インスタンスに格納されます。 このデータは Microsoft のマネージド キーで暗号化されます。
+ワークスペースのメタデータは、既定で Microsoft が管理する Azure Cosmos DB インスタンスに格納されます。 このデータは Microsoft のマネージド キーで暗号化されます。
 
 Microsoft がお使いのワークスペースで収集するデータを制限するには、ポータルで __[High business impact workspace]\(業務への影響が大きいワークスペース\)__ を選択するか、Python で `hbi_workspace=true ` を設定します。 この設定の詳細については、「[保存時の暗号化](concept-data-encryption.md#encryption-at-rest)」を参照してください。
 
@@ -200,7 +200,7 @@ Microsoft がお使いのワークスペースで収集するデータを制限�
 
 #### <a name="use-your-own-key"></a>独自のキーを使用する
 
-データ暗号化用の独自のキーを用意できます。 これを行うと、Azure サブスクリプションにメトリックとメタデータを格納する Azure Cosmos DB インスタンスが作成されます。
+データ暗号化用の独自のキーを用意できます。 これを行うと、自分の Azure サブスクリプションにメタデータを格納する Azure Cosmos DB インスタンスが作成されます。
 
 [!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
@@ -209,7 +209,7 @@ Microsoft がお使いのワークスペースで収集するデータを制限�
 > [!IMPORTANT]  
 > これらの手順を実行する前に、まず次のアクションを実行する必要があります。   
 >
-> 1. サブスクリプションに対する共同作成者のアクセス許可を使用して、 __Machine Learning アプリ__ (ID とアクセスの管理) を承認します。  
+> 1. サブスクリプションに対する共同作成者のアクセス許可を使用して、__Machine Learning アプリ__ (ID とアクセスの管理) を承認します。  
 > 1. [カスタマー マネージド キーの構成](../cosmos-db/how-to-setup-cmk.md)に関する記事の手順に従って以下を行います。
 >     * Azure Cosmos DB プロバイダーを登録する
 >     * Azure Key Vault を作成して構成する
@@ -320,7 +320,7 @@ Workspace.list('<subscription-id>')
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-1. 上部の検索フィールドに「 **Machine Learning** 」と入力します。  
+1. 上部の検索フィールドに「**Machine Learning**」と入力します。  
 
 1. **[Machine Learning]** を選択します。
 

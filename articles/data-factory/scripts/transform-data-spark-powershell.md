@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/12/2017
 ms.openlocfilehash: 3af38f4cae53807c7268f00017f02f1325116fb6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637056"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008754"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>PowerShell スクリプト - Azure Data Factory を使用してクラウド内のデータを変換する
 
@@ -26,10 +26,10 @@ ms.locfileid: "92637056"
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
-* **Azure Storage アカウント** 。 Python スクリプトと入力ファイルを作成し、Azure ストレージにアップロードします。 Spark プログラムからの出力は、このストレージ アカウントに格納されます。 オンデマンドの Spark クラスターでは、同じストレージ アカウントがプライマリ ストレージとして使用されます。  
+* **Azure Storage アカウント**。 Python スクリプトと入力ファイルを作成し、Azure ストレージにアップロードします。 Spark プログラムからの出力は、このストレージ アカウントに格納されます。 オンデマンドの Spark クラスターでは、同じストレージ アカウントがプライマリ ストレージとして使用されます。  
 
 ### <a name="upload-python-script-to-your-blob-storage-account"></a>Python スクリプトを BLOB ストレージ アカウントにアップロードする
-1. 次の内容が含まれた、 **WordCount_Spark.py** という名前の Python ファイルを作成します。 
+1. 次の内容が含まれた、**WordCount_Spark.py** という名前の Python ファイルを作成します。 
 
     ```python
     import sys
@@ -55,9 +55,9 @@ ms.locfileid: "92637056"
         main()
     ```
 2. **&lt;storageAccountName&gt;** を Azure ストレージ アカウントの名前に置き換えます。 その後、ファイルを保存します。 
-3. Azure BLOB ストレージで、 **adftutorial** という名前のコンテナーを作成します (存在しない場合)。 
+3. Azure BLOB ストレージで、**adftutorial** という名前のコンテナーを作成します (存在しない場合)。 
 4. **spark** という名前のフォルダーを作成します。
-5. **spark** フォルダーの下に、 **script** という名前のサブフォルダーを作成します。 
+5. **spark** フォルダーの下に、**script** という名前のサブフォルダーを作成します。 
 6. **WordCount_Spark.py** ファイルを **script** サブフォルダーにアップロードします。 
 
 

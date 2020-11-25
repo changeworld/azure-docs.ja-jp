@@ -16,11 +16,11 @@ ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
 ms.custom: devx-track-java, devx-track-csharp
 ms.openlocfilehash: 13b05c17cc621660576913c08a1fdbc389365a53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89003968"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009114"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Baidu での Notification Hubs の使用
 
@@ -57,7 +57,7 @@ Google Play と FCM (Firebase Cloud Messaging) は中国では利用できない
 
 &emsp;&emsp;&emsp;&emsp;![Azure Notification Hubs - Baidu (シークレット)](./media/notification-hubs-baidu-get-started/NotificationHubBaiduConfigure.png)
 
-これで、通知ハブが Baidu と連携するように構成されました。 また、アプリを登録してプッシュ通知を送受信するための**接続文字列**も得られました。
+これで、通知ハブが Baidu と連携するように構成されました。 また、アプリを登録してプッシュ通知を送受信するための **接続文字列** も得られました。
 
 [接続情報へのアクセス] ウィンドウの `DefaultListenSharedAccessSignature` と `DefaultFullSharedAccessSignature` を書き留めておいてください。
 

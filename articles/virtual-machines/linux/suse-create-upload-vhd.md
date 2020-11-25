@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: guybo
-ms.openlocfilehash: 73e07c612486d5f48b1ad3eca8044a561549092b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f35adcc797e903bb44852e9ba52e1a023f51a0d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292130"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659524"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Azure 用の SLES または openSUSE 仮想マシンの準備
 
@@ -32,7 +32,7 @@ ms.locfileid: "87292130"
 
 SUSE では、独自の VHD を構築する代わりに、 [VMDepot](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf)に SLES の BYOS (Bring Your Own Subscription) イメージを発行することもできます。
 
-## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>SUSE Linux Enterprise Server 11 SP4 を準備する
+## <a name="prepare-suse-linux-enterprise-server-for-azure"></a>Azure 用に SUSE Linux Enterprise Server を準備する
 1. Hyper-V マネージャーの中央のウィンドウで仮想マシンを選択します。
 2. **[接続]** をクリックすると、仮想マシンのウィンドウが開きます。
 3. SUSE Linux Enterprise システムを登録すると、更新プログラムをダウンロードしてパッケージをインストールできるようになります。
@@ -41,57 +41,53 @@ SUSE では、独自の VHD を構築する代わりに、 [VMDepot](https://www
     ```console
     # sudo zypper update
     ```
-
-1. SLES リポジトリから Azure Linux エージェントをインストールします (SLE11-Public-Cloud-Module)。
+    
+5. Azure Linux エージェントと cloud-init をインストールします。
 
     ```console
+    # SUSEConnect -p sle-module-public-cloud/15.2/x86_64  (SLES 15 SP2)
     # sudo zypper install python-azure-agent
+    # sudo zypper install cloud-init
     ```
 
-1. chkconfig で waagent が "on" に設定されていることを確認し、設定されていない場合は自動起動するために有効にします。
+6. waagent と cloud-init がブート時に起動されるようにします。
 
     ```console
     # sudo chkconfig waagent on
+    # systemctl enable cloud-init-local.service
+    # systemctl enable cloud-init.service
+    # systemctl enable cloud-config.service
+    # systemctl enable cloud-final.service
+    # systemctl daemon-reload
+    # cloud-init clean
     ```
 
-7. waagent サービスが実行されているかどうかを確認し、実行されていない場合は開始します。 
+7. waagent と cloud-Init の構成を更新します。
 
     ```console
-    # sudo service waagent start
+    # sudo sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    # sudo sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+
+    # sudo sh -c 'printf "datasource:\n  Azure:" > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg'
+    # sudo sh -c 'printf "reporting:\n  logging:\n    type: log\n  telemetry:\n    type: hyperv" > /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg'
     ```
 
-8. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 これを行うには、テキスト エディターで "/boot/grub/menu.lst" を開き、既定のカーネルに次のパラメーターが含まれていることを確認します。
+8. コンソール ログがシリアル ポートに送信されるように /etc/default/grub ファイルを編集してから、grub2-mkconfig -o /boot/grub2/grub.cfg を使用して主要な構成ファイルを更新します。
 
     ```config-grub
     console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     ```
-
     これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。
-9. /boot/grub/menu.lst と /etc/fstab の両方で、ディスク ID (by-id) ではなく UUID (by-uuid) を使用してディスクを参照していることを確認します。 
-   
-    ディスクの UUID を取得します。
-
-    ```console
-    # ls /dev/disk/by-uuid/
-    ```
-
-    /dev/disk/by-id/ を使用する場合は、/boot/grub/menu.lst と /etc/fstab の両方を適切な by-uuid 値で更新します。
-   
-    変更前
-   
-    `root=/dev/disk/by-id/SCSI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx-part1`
-   
-    変更後
-   
-    `root=/dev/disk/by-uuid/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`
-
+    
+9. UUID (by-uuid) を使用して、/etc/fstab ファイルでディスクが参照されるようにします。
+         
 10. udev ルールを編集して、イーサネット インターフェイスの静的ルールが生成されないようにします。 これらのルールは、Microsoft Azure または Hyper-V で仮想マシンを複製する際に問題の原因となる可能性があります。
 
     ```console
     # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
     # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
     ```
-
+   
 11. "/etc/sysconfig/network/dhcp" ファイルを編集して、次のように `DHCLIENT_SET_HOSTNAME` パラメーターを変更することをお勧めします。
 
     ```config
@@ -105,7 +101,8 @@ SUSE では、独自の VHD を構築する代わりに、 [VMDepot](https://www
     ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
     ```
 
-13. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。  通常これが既定です。
+13. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。 通常これが既定です。
+
 14. OS ディスクにスワップ領域を作成しないでください。
     
     Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。 ローカル リソース ディスクは *一時* ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。 Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。

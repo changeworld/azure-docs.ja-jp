@@ -12,11 +12,11 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b83a8bfbc79af344c4d158ee65134034db714e9c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783965"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008907"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Microsoft Azure Storage でのコンカレンシー制御の管理
 
@@ -50,7 +50,7 @@ Storage サービスでは、格納されているすべてのオブジェクト
 4. BLOB の現在の ETag の値が、要求の **If-Match** 条件ヘッダーの ETag の値と異なっている場合、サービスはクライアントに 412 エラーを返します。 このエラーは、クライアントがこの BLOB を取得した後に、別のプロセスがこれを更新したことを示しています。
 5. BLOB の現在の ETag の値が、要求の **If-Match** 条件ヘッダーの ETag と同じバージョンである場合、サービスは要求された処理を実行し、この BLOB の新しいバージョンが作成されたことを示すために現在の ETag の値を更新します。
 
-次に示す C# スニペット (Client Storage Library 4.2.0 を使用) は、事前に取得または挿入された BLOB のプロパティからアクセスされる ETag の値に基づいて **If-Match AccessCondition** を構築する簡単な例です。 BLOB を更新するときには **AccessCondition** オブジェクトを使用します。 **AccessCondition** オブジェクトは **If-Match** ヘッダーを要求に追加します。 別のプロセスが BLOB を更新した場合、BLOB のサービスによって HTTP 412 (Precondition Failed) のステータス メッセージが返されます。 完全なサンプルは、[Azure Storage でのコンカレンシー制御の管理](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)からダウンロードできます。
+次に示す C# スニペット (Client Storage Library 4.2.0 を使用) は、事前に取得または挿入された BLOB のプロパティからアクセスされる ETag の値に基づいて **If-Match AccessCondition** を構築する簡単な例です。 BLOB を更新するときには **AccessCondition** オブジェクトを使用します。**AccessCondition** オブジェクトは **If-Match** ヘッダーを要求に追加します。 別のプロセスが BLOB を更新した場合、BLOB のサービスによって HTTP 412 (Precondition Failed) のステータス メッセージが返されます。 完全なサンプルは、[Azure Storage でのコンカレンシー制御の管理](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)からダウンロードできます。
 
 ```csharp
 // Retrieve the ETag from the newly created blob
@@ -85,7 +85,7 @@ catch (StorageException ex)
 }
 ```
 
-Azure Storage によって、 **If-Modified-Since** 、 **If-Unmodified-Since** 、 **If-None-Match** の各条件ヘッダーとその組み合わせもサポートされています。 詳細については、「[BLOB サービス操作の条件ヘッダーの指定](/rest/api/storageservices/Specifying-Conditional-Headers-for-Blob-Service-Operations)」を参照してください。
+Azure Storage によって、**If-Modified-Since**、**If-Unmodified-Since**、**If-None-Match** の各条件ヘッダーとその組み合わせもサポートされています。 詳細については、「[BLOB サービス操作の条件ヘッダーの指定](/rest/api/storageservices/Specifying-Conditional-Headers-for-Blob-Service-Operations)」を参照してください。
 
 次の表は、要求に含まれている **If-Match** などの条件ヘッダーを受け取り、ETag の値を返すコンテナー操作をまとめたものです。
 
@@ -130,9 +130,9 @@ Azure Storage によって、 **If-Modified-Since** 、 **If-Unmodified-Since** 
 
 BLOB をロックして排他的に使用する場合は、[リース](/rest/api/storageservices/Lease-Blob)を取得します。 リースを取得するときは、リースの期間を指定します。 その期間は 15 から 60 秒の範囲または無限 (排他ロック) になります。 有限リースは、更新することで延長します。 リースが終わったら解放します。 期限が切れた有限のリースは、Blob Storage によって自動的に解放されます。
 
-リースを使用すると、さまざまな同期戦略をサポートできます。 戦略として、" *排他的書き込みと共有読み取り* "、" *排他的書き込みと排他的読み取り* "、" *共有書き込みと排他的読み取り* " があります。 リースが存在する場合、Azure Storage によって排他的書き込み (put、set、delete の各操作) が強制的に実行されますが、読み込み操作の排他性を確保するために、開発者はすべてのクライアント アプリケーションがリース ID を使用し、また有効なリース ID は同時に 1 つのクライアントのみが保持するようにする必要があります。 読み込み操作にリース ID を使用しない場合、共有読み取りになります。
+リースを使用すると、さまざまな同期戦略をサポートできます。 戦略として、"*排他的書き込みと共有読み取り*"、"*排他的書き込みと排他的読み取り*"、"*共有書き込みと排他的読み取り*" があります。 リースが存在する場合、Azure Storage によって排他的書き込み (put、set、delete の各操作) が強制的に実行されますが、読み込み操作の排他性を確保するために、開発者はすべてのクライアント アプリケーションがリース ID を使用し、また有効なリース ID は同時に 1 つのクライアントのみが保持するようにする必要があります。 読み込み操作にリース ID を使用しない場合、共有読み取りになります。
 
-次の C# スニペットの例では、ある BLOB で 30 秒間の排他的リースを取得し、BLOB の内容を更新します。その後でリースを解放します。 BLOB が既に有効なリースを保持している場合、新しいリースを取得しようとすると、Blob service から "HTTP (409) Conflict" 状態が結果として返されます。 また、下記のスニペットでは、Storage サービスに BLOB の更新を要求するときに、 **AccessCondition** オブジェクトを使用してリースの情報をカプセル化します。  完全なサンプルは、[Azure Storage でのコンカレンシー制御の管理](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)からダウンロードできます。
+次の C# スニペットの例では、ある BLOB で 30 秒間の排他的リースを取得し、BLOB の内容を更新します。その後でリースを解放します。 BLOB が既に有効なリースを保持している場合、新しいリースを取得しようとすると、Blob service から "HTTP (409) Conflict" 状態が結果として返されます。 また、下記のスニペットでは、Storage サービスに BLOB の更新を要求するときに、**AccessCondition** オブジェクトを使用してリースの情報をカプセル化します。  完全なサンプルは、[Azure Storage でのコンカレンシー制御の管理](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)からダウンロードできます。
 
 ```csharp
 // Acquire lease for 15 seconds
@@ -184,7 +184,7 @@ catch (StorageException ex)
 
 ### <a name="pessimistic-concurrency-for-containers"></a>コンテナーでのペシミスティック コンカレンシー制御
 
-コンテナーのリースを使用すると、BLOB でサポートされるものと同じ同期戦略 (" *排他的書き込みと共有読み取り* "、" *排他的書き込みと排他的読み取り* "、" *共有書き込みと排他的読み取り* ") がサポートされます。ただし、BLOB とは異なり、Storage サービスで排他的に実行できるのは削除操作のみです。 アクティブなリースを使用してコンテナーを削除するには、クライアントが削除要求に有効なリース ID を含める必要があります。 それ以外のコンテナー操作は、リース ID を含めなくてもリースされたコンテナーに対して正常に実行されます。この場合、各操作は共有操作になります。 更新操作 (put または set) または読み込み操作を排他的に行う必要がある場合、開発者はすべてのクライアントがリース ID を使用し、有効なリース ID を持つクライアントが一度に 1 つのみになるようにする必要があります。
+コンテナーのリースを使用すると、BLOB でサポートされるものと同じ同期戦略 ("*排他的書き込みと共有読み取り*"、"*排他的書き込みと排他的読み取り*"、"*共有書き込みと排他的読み取り*") がサポートされます。ただし、BLOB とは異なり、Storage サービスで排他的に実行できるのは削除操作のみです。 アクティブなリースを使用してコンテナーを削除するには、クライアントが削除要求に有効なリース ID を含める必要があります。 それ以外のコンテナー操作は、リース ID を含めなくてもリースされたコンテナーに対して正常に実行されます。この場合、各操作は共有操作になります。 更新操作 (put または set) または読み込み操作を排他的に行う必要がある場合、開発者はすべてのクライアントがリース ID を使用し、有効なリース ID を持つクライアントが一度に 1 つのみになるようにする必要があります。
 
 次のコンテナー操作では、ペシミスティック コンカレンシー制御の管理にリースを使用できます。
 
@@ -235,7 +235,7 @@ catch (StorageException ex)
 }
 ```
 
-コンカレンシー制御の確認を明示的に無効にするには、置換操作を実行する前に、 **employee** オブジェクトの **ETag** プロパティを "*" に設定する必要があります。
+コンカレンシー制御の確認を明示的に無効にするには、置換操作を実行する前に、**employee** オブジェクトの **ETag** プロパティを "*" に設定する必要があります。
 
 ```csharp
 customer.ETag = "*";
@@ -253,7 +253,7 @@ customer.ETag = "*";
 | エンティティの挿入または置換 |はい |いいえ |
 | エンティティの挿入または統合 |はい |いいえ |
 
-**エンティティの挿入または置換** と **エンティティの挿入または結合** の各操作の場合、ETag の値は Table サービスに送信されないため、コンカレンシー制御の確認は " *行われません* "。
+**エンティティの挿入または置換** と **エンティティの挿入または結合** の各操作の場合、ETag の値は Table サービスに送信されないため、コンカレンシー制御の確認は "*行われません*"。
 
 一般に、テーブルを使用するときには、開発者はオプティミスティック コンカレンシーを採用する必要があります。 テーブルにアクセスするときにペシミスティック ロックが必要な場合は、テーブルに対する操作を行う前に、選択した BLOB を各テーブルに割り当てます。 この手法を使用する場合は、アプリケーションでテーブルを操作する前に、すべてのデータのアクセス パスでリースを確実に取得する必要があります。 また、リース期間は最低 15 秒であるため、スケーラビリティについて慎重に考慮する必要があります。
 

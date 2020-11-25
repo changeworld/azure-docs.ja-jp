@@ -1,7 +1,7 @@
 ---
 title: ワークスペースとは
 titleSuffix: Azure Machine Learning
-description: ワークスペースは、Azure Machine Learning の最上位のリソースです。 スクリプトのログ、メトリック、出力、スナップショットなど、すべてのトレーニング実行の履歴も保持されています。 この情報を使用して、最適なモデルを生成するトレーニング実行を判断します
+description: ワークスペースは、Azure Machine Learning の最上位のリソースです。 スクリプトのログ、メトリック、出力、スナップショットとともに、すべてのトレーニング実行の履歴も保持されています。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 1076b49a101d5657397ef12b8fac672d37e477b0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7acb555ddde20d6512119af85a8db055bcd9eeed
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324807"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701655"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
 
@@ -89,7 +89,7 @@ ms.locfileid: "93324807"
 ワークスペースは、さまざまな方法で作成できます。  
 
 * ポイント アンド クリック形式のインターフェイスで各手順の作業を行う場合は、[Azure portal](how-to-manage-workspace.md?tabs=azure-portal#create-a-workspace) を使用します。
-* Python スクリプトまたは Jupiter Notebook からオンザフライでワークスペースを作成するには、[Azure Machine Learning SDK for Python](how-to-manage-workspace.md?tabs=python#create-a-workspace) を使用します。
+* Python スクリプトまたは Jupyter Notebook からオンザフライでワークスペースを作成するには、[Azure Machine Learning SDK for Python](how-to-manage-workspace.md?tabs=python#create-a-workspace) を使用します。
 * 会社のセキュリティ標準に沿って作成を自動化またはカスタマイズするには、[Azure Resource Manager テンプレート](how-to-create-workspace-template.md)または [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) を使用します。
 * Visual Studio Code で作業する場合は、[VS Code 拡張機能](how-to-manage-resources-vscode.md#create-a-workspace)を使用します。
 
@@ -105,7 +105,7 @@ ms.locfileid: "93324807"
   > [!IMPORTANT]
   > 既定では、ストレージ アカウントは汎用 v1 アカウントです。 ワークスペースの作成後に、[これを汎用 v2 にアップグレード](../storage/common/storage-account-upgrade.md)することができます。 汎用 v2 にアップグレードした後は、ストレージ アカウントで階層型名前空間を有効にしないでください。
 
-  既存の Azure Storage アカウントを使用する場合は、Premium アカウント (Premium_LRS と Premium_GRS) であってはいけません。 また、階層的名前空間 (Azure Data Lake Storage Gen2 で使用されます) を含めることもできません。 ワークスペースの _既定の_ ストレージ アカウントでは、Premium Storage と階層型名前空間はサポートされていません。 " _既定以外_ " のストレージ アカウントでは、Premium Storage または階層型名前空間を使用できます。
+  既存の Azure Storage アカウントを使用する場合は、Premium アカウント (Premium_LRS と Premium_GRS) であってはいけません。 また、階層的名前空間 (Azure Data Lake Storage Gen2 で使用されます) を含めることもできません。 ワークスペースの _既定の_ ストレージ アカウントでは、Premium Storage と階層型名前空間はサポートされていません。 "_既定以外_" のストレージ アカウントでは、Premium Storage または階層型名前空間を使用できます。
   
 + [Azure Container Registry](https://azure.microsoft.com/services/container-registry/):トレーニング中およびモデルのデプロイ時に使用する Docker コンテナーを登録します。 コストを最小限に抑えるために、ACR は、デプロイ イメージが作成されるまで **遅延読み込み** されます。
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 3200cfe290cbba208c61e914b17ffa6cd65e6eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d323504a46cd35525c889a94d2d044193c1471ac
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899561"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535947"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 上の Arc 対応 Kubernetes クラスターで Redis を使用した PHP ゲストブック ステートレス アプリケーションをデプロイする
 
@@ -79,7 +79,7 @@ Azure portal で次の手順を実行して、GitOps 構成をデプロイする
 
 1. **[構成]** に移動し、 **[+ 構成の追加]** を選択します。
 
-    ![[構成] に移動する](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
+    ![[構成の追加] が選択された Azure Arc 対応 Kubernetes クラスターを示すスクリーンショット。](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
 
 1. **[構成の追加]** で、フィールドに適切な値を入力し、 **[適用]** を選択します。
 
@@ -100,11 +100,11 @@ Azure portal で次の手順を実行して、GitOps 構成をデプロイする
 
 1. 構成のデプロイが開始され、 **[Operator state]\(演算子の状態\)** が **[Pending]\(保留中\)** と表示されます。 
 
-    ![[構成] に移動する](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-1.png)
+    ![更新時に保留中の状態にある Azure Arc 対応 Kubernetes クラスターを示すスクリーンショット。](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-1.png)
 
 1. デプロイには数分かかります。 デプロイが完了すると、 **[Operator state]\(演算子の状態\)** が **[インストール]** と表示されます。
 
-    ![[構成] に移動する](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
+    ![インストール済み状態の Azure Arc 対応 Kubernetes クラスターを示すスクリーンショット。](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
 
 
 ## <a name="verify-deployment"></a>デプロイを検証する

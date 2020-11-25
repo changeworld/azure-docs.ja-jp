@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 873bebc462ce4756d38f966a87edda167bd49501
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 610ab649d64351b0897ef7358cdaf9280fe3ba55
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506381"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684921"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server と Azure SQL Managed Instance での T-SQL の相違点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -517,12 +517,11 @@ RESTORE ステートメントについては、[RESTORE ステートメント](/
 ### <a name="failover-groups"></a>フェールオーバー グループ
 システム データベースは、フェールオーバー グループのセカンダリ インスタンスにはレプリケートされません。 そのため、オブジェクトがセカンダリに手動で作成されていない限り、セカンダリ インスタンスではシステム データベースのオブジェクトに依存するシナリオは実現できません。
 
-### <a name="failover-groups"></a>フェールオーバー グループ
-システム データベースは、フェールオーバー グループのセカンダリ インスタンスにはレプリケートされません。 そのため、オブジェクトがセカンダリに手動で作成されていない限り、セカンダリ インスタンスではシステム データベースのオブジェクトに依存するシナリオは実現できません。
-
 ### <a name="tempdb"></a>TEMPDB
-
-`tempdb` の最大ファイル サイズは、General Purpose レベルではコアあたり 24 GB より大きくすることはできません。 Business Critical レベルでは、`tempdb` の最大サイズは SQL Managed Instance ストレージ サイズによって制限されます。 `Tempdb` ログ ファイルのサイズは、General Purpose レベルでは 120 GB に制限されています。 `tempdb` のサイズがコアあたり 24 GB を超える場合、または 120 GB を超えるログ データが生成される場合は、一部のクエリでエラーが返されます。
+- `tempdb` の最大ファイル サイズは、General Purpose レベルではコアあたり 24 GB より大きくすることはできません。 Business Critical レベルでは、`tempdb` の最大サイズは SQL Managed Instance ストレージ サイズによって制限されます。 `Tempdb` ログ ファイルのサイズは、General Purpose レベルでは 120 GB に制限されています。 `tempdb` のサイズがコアあたり 24 GB を超える場合、または 120 GB を超えるログ データが生成される場合は、一部のクエリでエラーが返されます。
+- `Tempdb` は常に 12 個のデータ ファイルに分割されます (1 個のプライマリ (マスターとも呼ばれる) データ ファイルと 11 個のプライマリ以外のデータ ファイル)。 ファイル構造を変更することも、`tempdb` に新しいファイルを追加することもできません。 
+- [[メモリ最適化]`tempdb` メタデータ](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata) (新しい SQL Server 2019 のメモリ内データベース機能) は、サポートされていません。
+- `tempdb` ではモデル データベースから初期オブジェクト リストが取得されないため、再起動後またはフェールオーバー後に、モデル データベースで作成されたオブジェクトを `tempdb` で自動作成できません。 再起動後またはフェールオーバー後に、`tempdb` でオブジェクトを手動で作成する必要があります。
 
 ### <a name="msdb"></a>MSDB
 

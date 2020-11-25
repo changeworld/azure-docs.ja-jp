@@ -3,12 +3,12 @@ title: 証明書を使用して Windows 上のクラスターをセキュリテ�
 description: Azure Service Fabric スタンドアロンまたはオンプレミスのクラスター内での通信と、クライアントとクラスターの間での通信をセキュリティで保護します。
 ms.topic: conceptual
 ms.date: 10/15/2017
-ms.openlocfilehash: 18af6fd79e03cd67e77ed4d0d4b3b6291f90301d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34ba457ce0f39705393962d5c5ec8fa11668f413
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841290"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686125"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>X.509 証明書を使用して Windows 上のスタンドアロン クラスターを保護する
 この記事では、スタンドアロン Windows クラスターの多様なノード間で行われる通信をセキュリティで保護する方法について説明します。 また、X.509 証明書を使用して、そのクラスターに接続しているクライアントを認証する方法についても説明します。 認証により、許可されたユーザーのみがクラスターやデプロイ済みアプリケーションにアクセスし、管理タスクを実行できるようになります。 証明書セキュリティは、クラスターの作成時にクラスターで有効にしておく必要があります。  
@@ -122,7 +122,7 @@ ms.locfileid: "91841290"
 | ServerCertificate |テスト環境の場合に推奨されます。 この証明書は、クライアントがこのクラスターに接続しようとしたときに、クライアントに提示されます。 利便性を考えて、ClusterCertificate と ServerCertificate に同じ証明書を使用することもできます。 プライマリ証明書とアップグレード用のセカンダリ証明書の、2 つの異なるサーバー証明書を使用できます。 プライマリ証明書の拇印は Thumbprint セクションで設定し、セカンダリ証明書の拇印は ThumbprintSecondary 変数で設定します。 |
 | ServerCertificateCommonNames |運用環境の場合に推奨されます。 この証明書は、クライアントがこのクラスターに接続しようとしたときに、クライアントに提示されます。 CertificateIssuerThumbprint は、この証明書の発行者の拇印に対応します。 同じ共通名の証明書が複数使用されている場合、複数の発行者の拇印を指定できます。 利便性を考えて、ClusterCertificateCommonNames と ServerCertificateCommonNames に同じ証明書を使用することもできます。 1 つまたは 2 つのサーバー証明書の共通名を使用することができます。 |
 | ServerCertificateIssuerStores |運用環境の場合に推奨されます。 この証明書はサーバー証明書の発行者と対応します。 ServerCertificateCommonNames に発行者の拇印を指定する代わりに、このセクションで発行者の共通名とそれに対応するストア名を指定することができます。  これにより、サーバー発行者の証明書のロールオーバーが簡単になります。 複数のサーバー証明書が使用されている場合は、複数の発行者を指定できます。 空の IssuerCommonName では、X509StoreNames で指定されている対応するストア内のすべての証明書が許可されます。|
-| ClientCertificateThumbprints |この証明書のセットを認証されたクライアントにインストールします。 クラスターへのアクセスを許可するコンピューターには、いくつかの異なるクライアント証明書をインストールできます。 各証明書の拇印は CertificateThumbprint 変数で設定します。 IsAdmin を *true* に設定した場合、この証明書がインストールされたクライアントは、クラスターに対して管理者権限による管理操作を実行できるようになります。 IsAdmin が *false* の場合、この証明書がインストールされたクライアントはユーザー アクセス権限 (通常は読み取り専用) で許可される操作のみ実行できます。 ロールについて詳しくは、「[ロールベースのアクセス制御 (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)」をご覧ください。 |
+| ClientCertificateThumbprints |この証明書のセットを認証されたクライアントにインストールします。 クラスターへのアクセスを許可するコンピューターには、いくつかの異なるクライアント証明書をインストールできます。 各証明書の拇印は CertificateThumbprint 変数で設定します。 IsAdmin を *true* に設定した場合、この証明書がインストールされたクライアントは、クラスターに対して管理者権限による管理操作を実行できるようになります。 IsAdmin が *false* の場合、この証明書がインストールされたクライアントはユーザー アクセス権限 (通常は読み取り専用) で許可される操作のみ実行できます。 ロールの詳細については、「[Service Fabric のロールベースのアクセス制御](service-fabric-cluster-security.md#service-fabric-role-based-access-control)」をご覧ください。 |
 | ClientCertificateCommonNames |CertificateCommonName には、最初のクライアント証明書の共通名を設定します。 CertificateIssuerThumbprint は、この証明書の発行者の拇印です。 共通名と発行者について詳しくは、「[証明書の使用](/dotnet/framework/wcf/feature-details/working-with-certificates)」をご覧ください。 |
 | ClientCertificateIssuerStores |運用環境の場合に推奨されます。 この証明書は、クライアント証明書の発行者と対応します (管理者ロールと非管理者ロールの両方)。 ClientCertificateCommonNames に発行者の拇印を指定する代わりに、このセクションで発行者の共通名とそれに対応するストア名を指定することができます。  これにより、クライアント発行者の証明書のロールオーバーが簡単になります。 複数のクライアント証明書が使用されている場合は、複数の発行者を指定できます。 空の IssuerCommonName では、X509StoreNames で指定されている対応するストア内のすべての証明書が許可されます。|
 | ReverseProxyCertificate |テスト環境の場合に推奨されます。 これは、[リバース プロキシ](service-fabric-reverseproxy.md)をセキュリティで保護する場合に指定できる、オプションの証明書です。 この証明書を使用している場合は、nodeTypes に reverseProxyEndpointPort を設定してください。 |
@@ -252,11 +252,11 @@ ms.locfileid: "91841290"
 
 * 証明書のプロバイダーが **Microsoft Enhanced RSA and AES Cryptographic Provider** でなければならない。
 
-* RSA キーを作成するときは、キーが **2048 ビット**である必要がある。
+* RSA キーを作成するときは、キーが **2048 ビット** である必要がある。
 
 * キー使用法拡張機能に、**Digital Signature, Key Encipherment (a0)** の値が含まれている。
 
-* 拡張キー使用法拡張機能に、**サーバー認証** (OID: 1.3.6.1.5.5.7.3.1) および**クライアント認証** (OID: 1.3.6.1.5.5.7.3.2) の値が含まれている。
+* 拡張キー使用法拡張機能に、**サーバー認証** (OID: 1.3.6.1.5.5.7.3.1) および **クライアント認証** (OID: 1.3.6.1.5.5.7.3.2) の値が含まれている。
 
 テスト目的で使用するクラスターの場合は、自己署名証明書を選択することができます。
 

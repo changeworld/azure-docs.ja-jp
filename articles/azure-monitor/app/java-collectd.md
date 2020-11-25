@@ -3,17 +3,17 @@ title: Linux での Java Web アプリ パフォーマンスの監視 | Microsof
 description: Application Insights の CollectD プラグインを使用した Java Web サイトのアプリケーション パフォーマンスの拡張
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 63b64226c9e788e060298050a74d9009c8035b89
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: a4ce1ad6a8248680b8bdeec8a98195c3dbfe31a1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379011"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532870"
 ---
-# <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd:Application Insights での Linux パフォーマンス メトリック
+# <a name="collectd-linux-performance-metrics-in-application-insights-deprecated"></a>collectd:Application Insights の Linux パフォーマンス メトリック [非推奨]
 
 > [!IMPORTANT]
-> Java アプリケーションを監視する際に推奨される方法は、コードを変更せずに自動インストルメンテーションを使用することです。 [Application Insights Java 3.0 エージェント](./java-in-process-agent.md)のガイドラインに従ってください。
+> Java アプリケーションを監視する際に **推奨される方法** は、コードを変更せずに自動インストルメンテーションを使用することです。 **[Application Insights Java 3.0 エージェント](./java-in-process-agent.md)** のガイドラインに従ってください。
 
 [Application Insights](./app-insights-overview.md) で Linux システムのパフォーマンス メトリックを探索するには、[collectd](https://collectd.org/) を Application Insights のプラグインと共にインストールします。 このオープンソース ソリューションでは、さまざまなシステムおよびネットワーク統計情報を収集します。
 

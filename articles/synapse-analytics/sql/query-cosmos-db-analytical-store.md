@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9f57d435134bffbb8e7576adffeacb92bf687124
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2ffc524c14b9ba281d7e386f7f8c726093f11dbf
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310311"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661020"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Azure Synapse Link (プレビュー) でサーバーレス SQL プールを使用して Azure Cosmos DB データのクエリを実行する
 
@@ -25,7 +25,7 @@ Azure Cosmos DB のクエリを実行する場合、[SQL の関数や演算子](
 この記事では、Synapse Link が有効になっている Azure Cosmos DB コンテナーのデータのクエリを実行する、サーバーレス SQL プールを使用するクエリの作成方法について説明します。 その後は、[この](./tutorial-data-analyst.md)チュートリアルで、Azure Cosmos DB コンテナーに対するサーバーレス SQL プールのビューを構築し、それらを Power BI モデルに接続することの詳細を学習できます。 
 
 > [!IMPORTANT]
-> このチュートリアルでは、[Azure Cosmos DB の適切に定義されたスキーマ](../../cosmos-db/analytical-store-introduction.md#schema-representation)を持つコンテナーを使用します。 [Azure Cosmos DB の完全な忠実性スキーマ](#full-fidelity-schema)で利用できるサーバーレス SQL プールがもたらすクエリ エクスペリエンスは、プレビューのフィードバックに基づいて変更される一時的な動作です。 クエリ エクスペリエンスは変更され適切に定義されたスキーマに合わせて調整されている可能性があるため、完全に忠実なスキーマを持つコンテナーからデータを読み取る `WITH` 句のない `OPENROWSET` 関数の結果セット スキーマに依存しないでください。 [Azure Synapse Analytics のフィードバック フォーラム](https://feedback.azure.com/forums/307516-azure-synapse-analytics)にフィードバックを投稿いただくか、[Synapse Link の製品チーム](mailto:cosmosdbsynapselink@microsoft.com)宛にフィードバックをお寄せください。
+> このチュートリアルでは、[Azure Cosmos DB の適切に定義されたスキーマ](../../cosmos-db/analytical-store-introduction.md#schema-representation)を持つコンテナーを使用します。 サーバーレス SQL プールによって提供される、[Azure Cosmos DB の完全に忠実なスキーマ](#full-fidelity-schema)でのクエリ エクスペリエンスの動作は、プレビューのフィードバックに基づいて変更される予定の一時的なものです。 クエリ エクスペリエンスは、適切に定義されたスキーマに基づいて調整されている可能性があるため、完全に忠実なスキーマを持つコンテナーからデータを読み取る、`WITH` 句のない `OPENROWSET` 関数の結果セット スキーマには依存しないでください。 [Azure Synapse Analytics のフィードバック フォーラム](https://feedback.azure.com/forums/307516-azure-synapse-analytics)にフィードバックを投稿していただくか、[Synapse Link の製品チーム](mailto:cosmosdbsynapselink@microsoft.com)にフィードバックをお寄せください。
 
 ## <a name="overview"></a>概要
 
@@ -42,7 +42,9 @@ OPENROWSET(
 Azure Cosmos DB の接続文字列では、Azure Cosmos DB のアカウント名、データベース名、データベース アカウント マスター キー、および `OPENROWSET` 関数に対するオプションのリージョン名を指定します。 
 
 > [!IMPORTANT]
-> `OPENROWSET` の後には必ず別名を使用してください。 `OPENROWSET` 関数の後に別名を指定しなかった場合、Synapse サーバーレス SQL エンドポイントに接続の問題が発生する[既知の問題](#known-issues)があります。
+> Cosmos DB 分析ストア内の文字列値は UTF-8 テキストとしてエンコードされているため、必ず何らかの UTF-8 データベース照合順序 (`Latin1_General_100_CI_AS_SC_UTF8` など) を使用してください。
+> ファイル内のテキスト エンコードと照合順序が一致しないと、予期しないテキスト変換エラーが発生する可能性があります。
+> 現在のデータベースの既定の照合順序は、`alter database current collate Latin1_General_100_CI_AI_SC_UTF8` という T-SQL ステートメントを使用して容易に変更できます。
 
 接続文字列は次のような形式です。
 ```sql
@@ -338,8 +340,8 @@ GROUP BY geo_id
 
 ## <a name="known-issues"></a>既知の問題
 
-- 別名を `OPENROWSET` 関数 (`OPENROWSET (...) AS function_alias` など) の後に指定する **必要があります** 。 別名を省略すると、接続の問題が発生して、Synapse サーバーレスの SQL エンドポイントが一時的に使用できなくなる可能性があります。 この問題は、2020 年 11 月に解決される予定です。
 - [Azure Cosmos DB の完全な忠実性スキーマ](#full-fidelity-schema)で利用できるサーバーレス SQL プールがもたらすクエリ エクスペリエンスは、プレビューのフィードバックに基づいて変更される一時的な動作です。 クエリ エクスペリエンスは顧客フィードバックに基づいて適切に定義されたスキーマに合わせて調整されている可能性があるため、パブリック プレビュー期間中は、`WITH` 句のない `OPENROWSET` 関数のスキーマには依存しないでください。 フィードバックを提供するには、[Synapse Link の製品チーム](mailto:cosmosdbsynapselink@microsoft.com)宛にご連絡ください。
+- `OPENROSET` 列の照合順序のエンコードが UTF-8 でない場合、サーバーレス SQL プールからコンパイル時のエラーは返されません。 現在のデータベースで実行されるすべての `OPENROWSET` 関数については、次の T-SQL ステートメントを使用して既定の照合順序を容易に変更できます: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 次の表に、考えられるエラーとトラブルシューティングの操作を示します。
 
@@ -350,7 +352,7 @@ GROUP BY geo_id
 | CosmosDB パスを解決できませんでした。エラー: 'アカウント名が正しくありません' または 'データベース名が正しくありません' | 指定されたアカウント名、データベース名、またはコンテナーが見つからないか、指定されたコレクションで分析ストレージが有効になっていません|
 | CosmosDB パスを解決できませんでした。エラー: 'シークレット値が正しくありません' または 'シークレットが null または空です' | アカウント キーが無効か、見つかりません。 |
 | 型 `type name` の列 `column name` は外部データ型 `type name` と互換性がありません。 | `WITH` 句に指定された列の型が Cosmos DB コンテナーの型と一致しません。 セクション「[Azure Cosmos DB から SQL 型へのマッピング](#azure-cosmos-db-to-sql-type-mappings)」で説明されているように列の型を変更するか、または `VARCHAR` 型を使用してください。 |
-| すべてのセルで、この列には `NULL` 値が含まれます。 | `WITH` 句の列名またはパス式が間違っている可能性があります。 `WITH` 句の列名 (または列の型の後のパス式) は Cosmos DB コレクションの一部のプロパティ名と一致する必要があります。 比較では、 **大文字と小文字の区別** があります (たとえば、`productCode` と `ProductCode` は異なるプロパティです)。 |
+| すべてのセルで、この列には `NULL` 値が含まれます。 | `WITH` 句の列名またはパス式が間違っている可能性があります。 `WITH` 句の列名 (または列の型の後のパス式) は Cosmos DB コレクションの一部のプロパティ名と一致する必要があります。 比較では、**大文字と小文字の区別** があります (たとえば、`productCode` と `ProductCode` は異なるプロパティです)。 |
 
 [Azure Synapse のフィードバック ページ](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862)で、提案や問題を知らせることができます。
 

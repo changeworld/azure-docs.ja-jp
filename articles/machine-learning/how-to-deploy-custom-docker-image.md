@@ -1,22 +1,22 @@
 ---
 title: カスタム Docker イメージを使用してモデルをデプロイする
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning モデルをデプロイするときにカスタム Docker ベース イメージを使用する方法について説明します。 Azure Machine Learning には既定のベース イメージが用意されていますが、独自のベース イメージを使用することもできます。
+description: カスタム Docker ベース イメージを使用して Azure Machine Learning モデルをデプロイする方法について説明します。 Azure Machine Learning には既定のベース イメージが用意されていますが、独自のベース イメージを使用することもできます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: sagopal
 author: saachigopal
 ms.reviewer: larryfr
-ms.date: 09/09/2020
+ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 63089e853be825f9399081f2d39845e22b18ed2a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 1ff4d7693a7e493ccb736ab9363fd26c93017c79
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325179"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695352"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>カスタム Docker ベース イメージを使用してモデルをデプロイする
 
@@ -57,7 +57,7 @@ Azure Machine Learning を使用してトレーニング済みモデルをデプ
     __ワークスペースのコンテナー レジストリ__ に格納されているイメージを使用するときは、そのレジストリの認証を受ける必要はありません。 認証はワークスペースによって処理されます。
 
     > [!WARNING]
-    > ワークスペースの Azure Container Registry は、ワークスペースを使用して __モデルを初めてトレーニングまたはデプロイするときに作成されます__ 。 新しいワークスペースを作成し、モデルのトレーニングも作成も行っていない場合、そのワークスペースの Azure Container Registry は存在しません。
+    > ワークスペースの Azure Container Registry は、ワークスペースを使用して __モデルを初めてトレーニングまたはデプロイするときに作成されます__。 新しいワークスペースを作成し、モデルのトレーニングも作成も行っていない場合、そのワークスペースの Azure Container Registry は存在しません。
 
     __スタンドアロン コンテナー レジストリ__ に格納されているイメージを使用する場合は、少なくとも読み取りアクセス権を持つサービス プリンシパルを構成する必要があります。 次に、レジストリのイメージを使用するユーザーにサービス プリンシパル ID (ユーザー名) とパスワードを提供します。 例外は、コンテナー レジストリを一般にアクセス可能にする場合です。
 
@@ -100,7 +100,7 @@ CPU イメージは、ubuntu16.04 から構築されています。 cuda9 の GP
 このセクションでは、Azure Machine Learning ワークスペースの Azure Container Registry の名前を取得する方法について説明します。
 
 > [!WARNING]
-> ワークスペースの Azure Container Registry は、ワークスペースを使用して __モデルを初めてトレーニングまたはデプロイするときに作成されます__ 。 新しいワークスペースを作成し、モデルのトレーニングも作成も行っていない場合、そのワークスペースの Azure Container Registry は存在しません。
+> ワークスペースの Azure Container Registry は、ワークスペースを使用して __モデルを初めてトレーニングまたはデプロイするときに作成されます__。 新しいワークスペースを作成し、モデルのトレーニングも作成も行っていない場合、そのワークスペースの Azure Container Registry は存在しません。
 
 Azure Machine Learning を使用してモデルのトレーニングまたはデプロイを既に行っている場合は、ワークスペース用のコンテナー レジストリが作成されています。 このコンテナー レジストリの名前を確認するには、次の手順を実行します。
 
@@ -200,15 +200,15 @@ Azure Container Registry に既存のイメージをアップロードする詳�
 
 カスタム イメージを使用するには、次の情報が必要です。
 
-* __イメージ名__ 。 たとえば、`mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest` は Microsoft が提供する単純な Docker イメージへのパスです。
+* __イメージ名__。 たとえば、`mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest` は Microsoft が提供する単純な Docker イメージへのパスです。
 
     > [!IMPORTANT]
     > 作成したカスタム イメージに対しては、必ず、イメージに使用したタグを含めてください。 たとえば、`:v1`などの特定のタグを使ってイメージを作成した場合などです。 イメージの作成時に特定のタグを使用しなかった場合は、`:latest` のタグが適用済みになっています。
 
 * イメージが __プライベート リポジトリ__ 内にある場合は、次の情報が必要です。
 
-    * レジストリの __アドレス__ 。 たとえば、「 `myregistry.azureecr.io` 」のように入力します。
-    * レジストリへの読み取りアクセス権を持つサービス プリンシパルの __ユーザー名__ および __パスワード__ 。
+    * レジストリの __アドレス__。 たとえば、「 `myregistry.azureecr.io` 」のように入力します。
+    * レジストリへの読み取りアクセス権を持つサービス プリンシパルの __ユーザー名__ および __パスワード__。
 
     この情報がわからない場合は、イメージを含む Azure Container Registry の管理者に相談してください。
 
@@ -234,7 +234,7 @@ ONNX Runtime の基本イメージの詳細については、GitHub リポジト
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Azure Machine Learning SDK でイメージを使用する
 
-**ご自分のワークスペースの Azure Container Registry** 、または **パブリックにアクセスできるコンテナー レジストリ** に格納されたイメージを使用するには、次の [環境](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py)属性を設定します。
+**ご自分のワークスペースの Azure Container Registry**、または **パブリックにアクセスできるコンテナー レジストリ** に格納されたイメージを使用するには、次の [環境](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py)属性を設定します。
 
 + `docker.enabled=True`
 + `docker.base_image`:レジストリとイメージへのパスを設定します。

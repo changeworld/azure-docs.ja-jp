@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: d9f25fc419a92d125dffe5c14b9b4c19cd795c6e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 30b09d43cbe510318ac4f48e0655d5483491c215
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318443"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682776"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps の統合サービス環境 (ISE) の保存データを暗号化するためにカスタマー マネージド キーを設定する
 
@@ -39,7 +39,7 @@ Azure Logic Apps は Azure Storage を利用して、データを格納し、自
 
 * **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** プロパティが有効になっている Azure キー コンテナー。
 
-  これらのプロパティの有効化の詳細については、「[Azure Key Vault の論理的な削除の概要](../key-vault/general/soft-delete-overview.md)」と [Azure Key Vault でカスタマー マネージド キーを構成する](../storage/common/customer-managed-keys-configure-key-vault.md)方法に関する記事を参照してください。 Azure Key Vault を初めて使用する場合は、Azure portal を使用するか、または Azure PowerShell コマンドの [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)を使用して[キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md#create-a-vault)を確認してください。
+  これらのプロパティの有効化の詳細については、「[Azure Key Vault の論理的な削除の概要](../key-vault/general/soft-delete-overview.md)」と [Azure Key Vault でカスタマー マネージド キーを構成する](../storage/common/customer-managed-keys-configure-key-vault.md)方法に関する記事を参照してください。 [Azure Key Vault](../key-vault/general/overview.md) を初めて使用する場合は、[Azure portal](../key-vault/general/quick-create-portal.md)、[Azure CLI](../key-vault/general/quick-create-cli.md)、または [Azure PowerShell](../key-vault/general/quick-create-powershell.md) を使用して Key Vault を作成する方法を確認してください。
 
 * キー コンテナーで、次のプロパティ値を使用して作成されたキー。
 

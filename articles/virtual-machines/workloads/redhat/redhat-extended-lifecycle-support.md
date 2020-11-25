@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: e7c9f9b158d01204536712f8024ed098cd7a5037
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 124ff65087887a437e0b82fbd7b1e4c72e4f7b4c
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372859"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684357"
 ---
 # <a name="red-hat-enterprise-linux-rhel-extended-lifecycle-support"></a>Red Hat Enterprise Linux (RHEL) Extended Lifecycle Support
 この記事では、次の Red Hat Enterprise イメージに対する延長ライフサイクル サポートについて説明します。
@@ -40,7 +40,7 @@ ms.locfileid: "94372859"
 
 #### <a name="what-is-the-process-to-add-extended-life-cycle-support-els-repositories-to-continue-to-receive-software-maintenance-bug-and-security-fixes-and--support-for-red-hat-enterprise-linux-6"></a>Extended Life Cycle Support (ELS) リポジトリを追加して、引き続きソフトウェア メンテナンス (バグとセキュリティの修正) を受信し、Red Hat Enterprise Linux 6 をサポートするプロセスは何ですか?
 
-ELS にサインアップするエンドツーエンドのプロセスは、こちらでまもなく入手できるようになる予定です (最新情報では 2020 年 11 月 15 日までに)。
+ELS にサインアップするエンドツーエンドのプロセスは、こちらでまもなく入手できるようになる予定です (遅くとも 2020 年 11 月 30 日までに)。
 
 ## <a name="next-steps"></a>次のステップ
 

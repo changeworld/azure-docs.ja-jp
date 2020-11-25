@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/02/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 285fa34db3886cf405a3682438a27a17c75d81ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c42e9c31397e9313898d7029366bc8de169d368e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666717"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683830"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Istio をインストールして使用する
 
@@ -35,7 +35,7 @@ ms.locfileid: "91666717"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事で詳しく説明する手順では、AKS クラスターを作成済みで (Kubernetes `1.16`以上、RBAC を有効にする)、そのクラスターとの `kubectl` 接続が確立されていることを前提としています。 いずれかの項目でヘルプが必要な場合、[AKS クイック スタート][aks-quickstart]を参照してください。
+この記事で詳しく説明する手順では、AKS クラスターを (Kubernetes `1.16` 以上で Kubernetes RBAC を有効にして) 作成済みであり、そのクラスターとの `kubectl` 接続が確立されていることを前提としています。 いずれかの項目でヘルプが必要な場合、[AKS クイック スタート][aks-quickstart]を参照してください。
 
 [Istio のパフォーマンスとスケーラビリティ](https://istio.io/docs/concepts/performance-and-scalability/)に関するドキュメントを読み、AKS クラスターで Istio を実行するための追加リソース要件を理解しておいてください。 コアとメモリの要件は、特定のワークロードに基づいて変わります。 セットアップに適したノード数と VM サイズを選択します。
 
@@ -232,7 +232,7 @@ kubectl logs -n istio-operator -l name=istio-operator -f
 
 ## <a name="accessing-the-add-ons"></a>アドオンにアクセスする
 
-追加機能を提供する多数のアドオンが Istio Operator によってインストールされています。 アドオンの Web アプリが外部 IP アドレス経由で公開されることは**ありません**。 
+追加機能を提供する多数のアドオンが Istio Operator によってインストールされています。 アドオンの Web アプリが外部 IP アドレス経由で公開されることは **ありません**。 
 
 アドオン ユーザー インターフェイスにアクセスするには、`istioctl dashboard` コマンドを使用します。 このコマンドでは、[kubectl port-forward][kubectl-port-forward] とランダム ポートを使用して、クライアント コンピューターと AKS クラスターの関連ポッドの間に安全な接続を作成します。 これにより、自動的に既定のブラウザーでアドオン Web アプリが開きます。
 

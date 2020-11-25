@@ -4,12 +4,12 @@ description: デバッグ中および運用環境の Web アプリのパフォ�
 ms.topic: conceptual
 ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: a3937719fd47ba988cf1e0a93f4c06fcc8112d3e
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: d2de29d897c84496fd44d74d88d58decbc64b7f8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932211"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532904"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Visual Studio の Azure Application Insights でアプリケーションをデバッグする
 Visual Studio (2015 以降) では、[Azure Application Insights](./app-insights-overview.md) からのテレメトリを使用して、ASP.NET Web アプリのパフォーマンスの分析と問題の診断を、デバッグ中と運用環境の両方において実行できます。
@@ -53,12 +53,12 @@ Web アプリに対する要求では、クリックしてコードを表示で�
 
 スタック トレースを取得するには、例外をクリックします。 Visual Studio でアプリのコードが開かれている場合は、コードの該当する行をスタック トレースからクリックできます。
 
-![Exception stack trace](./media/visual-studio/17.png)
+![スクリーンショットは、スタック トレース内の About オブジェクトを示しています。](./media/visual-studio/17.png)
 
 ## <a name="view-request-and-exception-summaries-in-the-code"></a>コードに要求と例外の概要を表示する
 各ハンドラー メソッドの上にある CodeLens 行には、Application Insights によってログに記録された過去 24 時間の要求と例外の数が表示されます。
 
-![Exception stack trace](./media/visual-studio/21.png)
+![スクリーンショットは、コンテキスト ダイアログ ボックスの例外を示しています。](./media/visual-studio/21.png)
 
 > [!NOTE] 
 > CodeLens に Application Insights のデータが表示されるのは、[テレメトリを Application Insights ポータルに送信するようアプリを構成した](./asp-net.md)場合のみです。

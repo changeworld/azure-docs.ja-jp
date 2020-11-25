@@ -4,12 +4,12 @@ description: Visual Studio の CodeLens を使用して Application Insights の
 ms.topic: conceptual
 ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: 92879e9dc7b9de7ef5862f30241f2b80e6aac9e8
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 2cfc4e06dcb5671f34ff98794c9569b6ed5ddae7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932653"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538497"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Visual Studio の CodeLens における Application Insights テレメトリ
 Web アプリのコード内のメソッドには、実行時の例外と要求の応答時間に関するテレメトリを注釈として付けることができます。 [ Application Insights](./app-insights-overview.md) をアプリケーションにインストールすると、Visual Studio [CodeLens](/visualstudio/ide/find-code-changes-and-other-history-with-codelens?view=vs-2015) にテレメトリが表示されます。CodeLens は、各関数の上部に表示される注記で、その関数を参照している場所の数や関数を最後に変更したユーザーなどの有用な情報が表示されます。
@@ -30,7 +30,7 @@ Application Insights テレメトリは、Web アプリケーションのパブ�
 > 
 
 ## <a name="exceptions-in-codelens"></a>CodeLens における例外
-![TBD](./media/visual-studio-codelens/codelens-exceptions.png)
+![CodeLens に表示された 47 の例外を示すスクリーンショット。](./media/visual-studio-codelens/codelens-exceptions.png)
 
 例外 CodeLens インジケーターは、このメソッドから提供された要求の処理中に、過去 24 時間にアプリケーションで最も頻繁に発生した 15 の例外の発生回数を表示します。
 
@@ -52,7 +52,7 @@ Application Insights テレメトリは、Web アプリケーションのパブ�
 > 
 
 ## <a name="requests-in-codelens"></a>CodeLens における要求
-![TBD](./media/visual-studio-codelens/codelens-requests.png)
+![7% の失敗を含む、684 個の要求の詳細を示すスクリーンショット。](./media/visual-studio-codelens/codelens-requests.png)
 
 要求 CodeLens インジケーターは、過去 24 時間にメソッドによって処理された HTTP 要求の数と、これらの要求が失敗した割合を示します。
 

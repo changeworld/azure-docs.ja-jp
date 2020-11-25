@@ -12,20 +12,23 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 11/17/2020
 ms.author: b-juche
-ms.openlocfilehash: 0904ac36a9453e51dbb1efc50eee2b9bf3c669c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e08b69271ba9d115c26418bc5e421ee6c94b031d
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708382"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695709"
 ---
 # <a name="delete-replications"></a>レプリケーションの削除
 
 ボリュームのレプリケーションを削除することで、ソース ボリュームとコピー先のボリューム間のレプリケーション接続を終了できます。 ソースまたはコピー先のボリュームから削除操作を実行できます。 削除操作では、レプリケーションの承認のみが削除されます。ソース ボリュームまたはコピー先のボリュームは削除されません。 
 
 ## <a name="steps"></a>手順
+
+1. ボリューム レプリケーションを削除する前に、レプリケーション ピアリングが中断されていることを確認してください。    
+    「[レプリケーション関係の正常性状態を表示する](cross-region-replication-display-health-status.md)」と「[レプリケーション ピアリングの中断](cross-region-replication-manage-disaster-recovery.md#break-replication-peering-to-activate-the-destination-volume)」を参照してください。  
 
 1. ボリュームのレプリケーションを削除するには、ソースまたはコピー先のボリュームから **[レプリケーション]** を選択します。  
 

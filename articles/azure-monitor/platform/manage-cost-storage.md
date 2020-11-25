@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/06/2020
+ms.date: 11/16/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 04c532ceb5f40e9a5b7fa5fd5b75f60182f54580
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 71a4fba177f5bbbaf9f8d991222b071d0da66d4d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427787"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660391"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
 
@@ -52,9 +52,9 @@ Log Analytics 専用クラスターは、ワークスペースのコレクショ
 
 クラスターでの使用については、2 つの課金モードがあります。 これらは、[ご自分のクラスターを構成する](customer-managed-keys.md#customer-managed-key-operations)ときに、`billingType` パラメーターで指定できます。 次の 2 つのモードがあります。 
 
-1. **クラスター** : この場合 (既定)、取り込まれたデータに対してクラスター レベルで課金されます。 クラスターに関連付けられている各ワークスペースが取り込んだデータ量が集計され、クラスターの日次請求が計算されます。 [Azure Security Center](../../security-center/index.yml) からのノードごとの割り当ては、クラスター内のすべてのワークスペースで集計されるデータのこの集計の前にワークスペース レベルで適用されることに注意してください。 
+1. **クラスター**: この場合 (既定)、取り込まれたデータに対してクラスター レベルで課金されます。 クラスターに関連付けられている各ワークスペースが取り込んだデータ量が集計され、クラスターの日次請求が計算されます。 [Azure Security Center](../../security-center/index.yml) からのノードごとの割り当ては、クラスター内のすべてのワークスペースで集計されるデータのこの集計の前にワークスペース レベルで適用されることに注意してください。 
 
-2. **ワークスペース** : ご使用のクラスターの容量予約コストは、クラスター内のワークスペースに比例します (各ワークスペースに対する [Azure Security Center](../../security-center/index.yml) からのノードごとの割り当てを考慮した後)。1 日の間にワークスペースに取り込まれたデータ ボリュームの合計が容量予約よりも少ない場合、ワークスペースごとに容量予約分として取り込まれたデータに対して有効な 1 GB あたりの容量予約料金で課金され、容量予約の未使用分についてはクラスター リソースに課金されます。 1 日の間にワークスペースに取り込まれたデータ ボリュームの合計が容量予約よりも多い場合、ワークスペースごとにその日に取り込まれたデータの容量予約分について課金され、ワークスペースごとに容量予約を超えて取り込まれたデータ分について課金されます。 1 日の間にワークスペースに取り込まれたデータ ボリュームの合計が容量予約を超えている場合、クラスター リソースに課金されることはありません。
+2. **ワークスペース**: ご使用のクラスターの容量予約コストは、クラスター内のワークスペースに比例します (各ワークスペースに対する [Azure Security Center](../../security-center/index.yml) からのノードごとの割り当てを考慮した後)。1 日の間にワークスペースに取り込まれたデータ ボリュームの合計が容量予約よりも少ない場合、ワークスペースごとに容量予約分として取り込まれたデータに対して有効な 1 GB あたりの容量予約料金で課金され、容量予約の未使用分についてはクラスター リソースに課金されます。 1 日の間にワークスペースに取り込まれたデータ ボリュームの合計が容量予約よりも多い場合、ワークスペースごとにその日に取り込まれたデータの容量予約分について課金され、ワークスペースごとに容量予約を超えて取り込まれたデータ分について課金されます。 1 日の間にワークスペースに取り込まれたデータ ボリュームの合計が容量予約を超えている場合、クラスター リソースに課金されることはありません。
 
 クラスター課金オプションでは、データ保有はワークスペースごとに課金されます。 クラスターが作成されると、ワークスペースがそのクラスターに関連付けられているかどうかに関係なく、クラスターの課金が開始されることに注意してください。 また、クラスターに関連付けられているワークスペースの価格レベルはなくなりました。
 
@@ -98,7 +98,7 @@ Azure では、[Azure Cost Management と課金](../../cost-management-billing/c
 
 ## <a name="legacy-pricing-tiers"></a>レガシ価格レベル
 
-2018 年 4 月 2 日より前に Log Analytics ワークスペースまたはその中の Application Insights リソースがあったサブスクリプション、あるいは 2019 年 2 月 1 日より前に開始したマイクロソフト エンタープライズ契約にリンクされているサブスクリプションは、引き続きレガシ価格レベルにアクセスして利用できます: **Free** 、 **スタンドアロン (GB あたり)** 、 **ノードごと (OMS)** 。  Free 価格レベルのワークスペースでは、毎日のデータ インジェストの上限が 500 MB になります ([Azure Security Center](../../security-center/index.yml) によって収集されるセキュリティ データの種類を除く)。また、データの保持は 7 日に制限されます。 Free 価格レベルでは、評価のみが目的として意図されています。 スタンドアロンまたはノードごとの価格レベルのワークスペースには、30 日から 730 日までのユーザーが構成可能な保持が含まれています。
+2018 年 4 月 2 日より前に Log Analytics ワークスペースまたはその中の Application Insights リソースがあったサブスクリプション、あるいは 2019 年 2 月 1 日より前に開始したマイクロソフト エンタープライズ契約にリンクされているサブスクリプションは、引き続きレガシ価格レベルにアクセスして利用できます: **Free**、**スタンドアロン (GB あたり)** 、**ノードごと (OMS)** 。  Free 価格レベルのワークスペースでは、毎日のデータ インジェストの上限が 500 MB になります ([Azure Security Center](../../security-center/index.yml) によって収集されるセキュリティ データの種類を除く)。また、データの保持は 7 日に制限されます。 Free 価格レベルでは、評価のみが目的として意図されています。 スタンドアロンまたはノードごとの価格レベルのワークスペースには、30 日から 730 日までのユーザーが構成可能な保持が含まれています。
 
 スタンドアロン価格レベルでの使用量は、取り込まれたデータ ボリューム単位で請求されます。 これは **Log Analytics** サービス上で報告され、メーターには "分析対象データ" という名前が付けられています。 
 
@@ -109,7 +109,7 @@ Azure では、[Azure Cost Management と課金](../../cost-management-billing/c
 3. ノードごとに含まれるデータ: これは、集計されたデータの割り当ての範囲に含まれる取り込まれたデータ量です。 このメーターは、すべての価格レベルにワークスペースが存在する場合に、Azure Security Center によって提供される範囲のデータ量を示するためにも使用されます。
 
 > [!TIP]
-> ワークスペースで **ノードごとの** 価格レベルにアクセスできるが、従量課金制レベルよりもコストが低いかどうか知りたい場合は、 [次のクエリを使用](#evaluating-the-legacy-per-node-pricing-tier)して、推奨事項を簡単に取得できます。 
+> ワークスペースで **ノードごとの** 価格レベルにアクセスできるが、従量課金制レベルよりもコストが低いかどうか知りたい場合は、[次のクエリを使用](#evaluating-the-legacy-per-node-pricing-tier)して、推奨事項を簡単に取得できます。 
 
 2016 年 4 月より前に作成されたワークスペースの場合、元の **Standard** と **Premium** の価格レベルにもアクセスできます。これらのデータ保持は、それぞれ 30 日と 365 日に固定されています。 **Standard** または **Premium** の価格レベルに新しいワークスペースを作成することはできません。ワークスペースをこれらのレベルから移動した場合、元に戻すことはできません。 これらの従来のレベルでのデータ インジェストのメーターは、"分析対象データ" と呼ばれています。
 
@@ -210,10 +210,10 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 各ワークスペースには、1 日の異なる時間に適用される 1 日の上限があります。 リセット時間は、 **[日次上限]** ページに表示されます (下記参照)。 このリセット時間は構成できません。 
 
-日次上限に達するとすぐに、課金対象のデータの種類の収集は、その日はそれ以上行われません。 (日次上限の適用には待ち時間が内在するため、指定された日次上限のレベルは正確には適用されません)。 選択した Log Analytics ワークスペースのページの上部に警告バナーが表示され、 **LogManagement** カテゴリの *Operation* テーブルに操作イベントが送信されます。 [ *1 日の上限を次に設定する* ] で定義されているリセット時刻が過ぎると、データ収集が再開されます。 この操作イベントに基づいてアラート ルールを定義し、データの日次制限に達したら通知するよう構成することをお勧めします。 
+日次上限に達するとすぐに、課金対象のデータの種類の収集は、その日はそれ以上行われません。 (日次上限の適用には待ち時間が内在するため、指定された日次上限のレベルは正確には適用されません)。 選択した Log Analytics ワークスペースのページの上部に警告バナーが表示され、**LogManagement** カテゴリの *Operation* テーブルに操作イベントが送信されます。 [*1 日の上限を次に設定する*] で定義されているリセット時刻が過ぎると、データ収集が再開されます。 この操作イベントに基づいてアラート ルールを定義し、データの日次制限に達したら通知するよう構成することをお勧めします ([下記](#alert-when-daily-cap-reached)を参照)。 
 
 > [!NOTE]
-> 特にワークスペース上で大量のデータを受信している場合には、日次上限によって、指定された上限レベルで厳密にデータ収集を停止することはできず、一部のデータが超過することが予想されます。  
+> 特にワークスペース上で大量のデータを受信している場合には、日次上限によって、指定された上限レベルで厳密にデータ収集を停止することはできず、一部のデータが超過することが予想されます。 日次上限の動作を確認する際に役立つクエリについては、[下記](#view-the-effect-of-the-daily-cap)を参照してください。 
 
 > [!WARNING]
 > 2017 年 6 月 19 日より前にインストールされた Azure Security Center のワークスペースを除き、日次上限によって Azure Sentinal または Azure Security Center からのデータ収集が停止されることはありません。 
@@ -233,6 +233,20 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
     ![Log Analytics のデータ制限の構成](media/manage-cost-storage/set-daily-volume-cap-01.png)
     
 1 日の上限は、「[ワークスペース - 作成または更新](/rest/api/loganalytics/workspaces/createorupdate#workspacecapping)」で説明されているように、`WorkspaceCapping` の下の `dailyQuotaGb` パラメーターを設定することにより、ARM を介して構成できます。 
+
+### <a name="view-the-effect-of-the-daily-cap"></a>日次上限の効果を表示する
+
+日次上限の効果を表示する際に重要な点は、日次上限に含まれていないセキュリティ データの種類と、ワークスペースのリセット時間を考慮することです。 日次上限のリセット時間は、 **[日次上限]** ページに表示されます。  次のクエリを使用すると、日次上限のリセット間で日次上限の対象となるデータ ボリュームを追跡できます。 この例では、ワークスペースのリセット時間は 14:00 です。  この時間は、ワークスペース用に更新する必要があります。
+
+```kusto
+let DailyCapResetHour=14;
+Usage
+| where Type !in ("SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent")
+| extend TimeGenerated=datetime_add("hour",-1*DailyCapResetHour,TimeGenerated)
+| where TimeGenerated > startofday(ago(31d))
+| where IsBillable
+| summarize IngestedGbBetweenDailyCapResets=sum(_BilledSize)/1000. by day=bin(TimeGenerated, 1d) | render areachart  
+```
 
 ### <a name="alert-when-daily-cap-reached"></a>1 日の上限に達したら警告する
 
@@ -432,7 +446,7 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 > 複数の種類のデータにわたるスキャンは、実行に[多量のリソースを使うため](../log-query/query-optimization.md#query-performance-pane)、これらの `find` クエリは多用しないようにします。 サブスクリプション、リソース グループ、またはリソース名ごとの結果が不要な場合は、Usage データ型に関するクエリを実行します。
 
 > [!WARNING]
-> 使用状況データ型の一部のフィールドは、スキーマにはまだありますが非推奨とされていて、その値が設定されなくなります。 これらは、 **Computer** と、取り込みに関連するフィールド ( **TotalBatches** 、 **BatchesWithinSla** 、 **BatchesOutsideSla** 、 **BatchesCapped** 、および **AverageProcessingTimeMs** ) です。
+> 使用状況データ型の一部のフィールドは、スキーマにはまだありますが非推奨とされていて、その値が設定されなくなります。 これらは、**Computer** と、取り込みに関連するフィールド (**TotalBatches**、**BatchesWithinSla**、**BatchesOutsideSla**、**BatchesCapped**、および **AverageProcessingTimeMs**) です。
 
 
 ### <a name="querying-for-common-data-types"></a>一般的なデータ型のクエリを実行する
@@ -466,14 +480,14 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 | Container Insights         | 必要なデータのみを収集するように [Container Insights を構成](../insights/container-insights-cost.md#controlling-ingestion-to-reduce-cost)します。 |
 | セキュリティ イベント            | [一般的または最小限のセキュリティ イベント](../../security-center/security-center-enable-data-collection.md#data-collection-tier)を選択します。 <br> 必要なイベントのみを収集するようにセキュリティ監査ポリシーを変更します。 特に、次のイベントを収集する必要性を検討します。 <br> - [フィルタリング プラットフォームの監査](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772749(v=ws.10)) <br> - [レジストリの監査](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [ファイル システムの監査](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [カーネル オブジェクトの監査](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [ハンドル操作の監査](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - リムーバブル記憶域の監査 |
 | パフォーマンス カウンター       | [パフォーマンス カウンターの構成](data-sources-performance-counters.md)を次のように変更します。 <br> - 収集の頻度を減らす <br> - パフォーマンス カウンターの数を減らす |
-| イベント ログ                 | [イベント ログの構成](data-sources-windows-events.md)を次のように変更します。 <br> - 収集対象のイベント ログの数を減らす <br> - 必要なイベント レベルのみを収集する たとえば、" *情報* " レベルのイベントを収集しないようにします。 |
-| syslog                     | [syslog の構成](data-sources-syslog.md)を次のように変更します。 <br> - 収集対象の施設の数を減らす <br> - 必要なイベント レベルのみを収集する たとえば、" *情報* " と " *デバッグ* " レベルのイベントを収集しないようにします。 |
+| イベント ログ                 | [イベント ログの構成](data-sources-windows-events.md)を次のように変更します。 <br> - 収集対象のイベント ログの数を減らす <br> - 必要なイベント レベルのみを収集する たとえば、"*情報*" レベルのイベントを収集しないようにします。 |
+| syslog                     | [syslog の構成](data-sources-syslog.md)を次のように変更します。 <br> - 収集対象の施設の数を減らす <br> - 必要なイベント レベルのみを収集する たとえば、"*情報*" と "*デバッグ*" レベルのイベントを収集しないようにします。 |
 | AzureDiagnostics           | リソース ログの収集を次のように変更します。 <br> - Log Analytics へのリソース送信ログの数を減らす <br> - 必要なログのみを収集する |
 | ソリューションを必要としないコンピューターからのソリューション データ | [ソリューションのターゲット設定](../insights/solution-targeting.md)を使用して、必要なコンピューター グループからのみデータを収集するようにします。 |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>ノードごとの価格レベルでの課金対象のノードの取得
 
-ワークスペースが "ノードごと" のレガシ価格レベルである場合に、ノードとして課金対象になるコンピューターの一覧を取得するには、 **課金されるデータの種類** を送信しているノードを探します (一部のデータの種類は無料です)。 これを行うには、`_IsBillable` [プロパティ](./log-standard-columns.md#_isbillable)を使用し、完全修飾ドメイン名の左端のフィールドを使用します。 これにより、1 時間あたりの課金対象のデータがあるコンピューターの数が返されます (ノードがカウントされて課金される粒度)。
+ワークスペースが "ノードごと" のレガシ価格レベルである場合に、ノードとして課金対象になるコンピューターの一覧を取得するには、**課金されるデータの種類** を送信しているノードを探します (一部のデータの種類は無料です)。 これを行うには、`_IsBillable` [プロパティ](./log-standard-columns.md#_isbillable)を使用し、完全修飾ドメイン名の左端のフィールドを使用します。 これにより、1 時間あたりの課金対象のデータがあるコンピューターの数が返されます (ノードがカウントされて課金される粒度)。
 
 ```kusto
 find where TimeGenerated > ago(24h) project Computer, TimeGenerated
@@ -601,10 +615,10 @@ union *
 - **[アラートの条件]** では、以下を指定します。
    - **[シグナル名]** では、 **[カスタム ログ検索]** を選択します。
    - **[検索クエリ]** : `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50`。 (別のものが必要な場合) 
-   - **[アラート ロジック]** は " *結果の数* " **に基づき、** **[条件]** は **しきい値** の *0* " *より大きい* " です
+   - **[アラート ロジック]** は "*結果の数*" **に基づき、** **[条件]** は **しきい値** の *0* "*より大きい*" です
    - 1 日に 1 回実行するため、 **[期間]** を *1,440* 分に設定し、 **[アラートの頻度]** を *1,440* 分間隔に設定します。
 - **[アラートの詳細を定義します]** では、以下を指定します。
-   - **[名前]** : " *24 時間でデータ量が 50 GB を超える課金対象データ* "
+   - **[名前]** : "*24 時間でデータ量が 50 GB を超える課金対象データ*"
    - **[重大度]** : *[警告]*
 
 ログ アラートが条件に一致するときに通知されるように、既存の[アクション グループ](action-groups.md)を指定するか、アクション グループを新たに作成します。
@@ -633,7 +647,7 @@ Operation | where OperationCategory == 'Data Collection Status'
 |レガシの無料価格レベルの 1 日の制限に到達している |収集が自動的に再開される次の日まで待つか、または有料の価格レベルに変更します。|
 |次のために、Azure サブスクリプションが中断された状態にある<br> 無料試用版が終了した<br> Azure パスの期限が切れた<br> 1 月の使用制限に達した (たとえば、MSDN または Visual Studio サブスクリプションで)|有料のサブスクリプションに変換する<br> 制限を削除するか、または制限がリセットされるまで待つ|
 
-データ収集が停止したときに通知が届くようにするには、" *日次データ上限の作成* " アラートで説明されている手順を使用して、データ収集が停止したときに通知されるようにします。 [アクション グループの追加](action-groups.md)に関する記事に記載されている手順を使用して、アラート ルールに電子メール、webhook、または Runbook アクションを構成します。 
+データ収集が停止したときに通知が届くようにするには、"*日次データ上限の作成*" アラートで説明されている手順を使用して、データ収集が停止したときに通知されるようにします。 [アクション グループの追加](action-groups.md)に関する記事に記載されている手順を使用して、アラート ルールに電子メール、webhook、または Runbook アクションを構成します。 
 
 ## <a name="limits-summary"></a>制限の概要
 

@@ -3,14 +3,14 @@ title: Azure CLI を使用して Azure ファイル共有をバックアップ�
 description: Recovery Services コンテナー内のバックアップされた Azure ファイル共有を、Azure CLI を使用してバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 12d258a3242530745cc8ce31afae18f622323488
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34eea8daa6a0a8920c842178664055838b06a78a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293290"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565893"
 ---
-# <a name="back-up-azure-file-shares-with-cli"></a>CLI を使用して Azure ファイル共有をバックアップする
+# <a name="back-up-azure-file-shares-with-azure-cli"></a>Azure CLI を使用して Azure ファイル共有をバックアップする
 
 Azure コマンド ライン インターフェイス (CLI) では、Azure リソースを管理するためのコマンド ライン エクスペリエンスが提供されます。 これは、Azure リソースを使用するためのカスタム オートメーションを構築するための優れたツールです。 この記事では、Azure CLI を使用した Azure ファイル共有のバックアップ方法について詳しく説明します。 これらの手順は、[Azure PowerShell](./backup-azure-afs-automation.md) または [Azure Portal](backup-afs.md) を介して実行することもできます。
 
@@ -20,9 +20,9 @@ Azure コマンド ライン インターフェイス (CLI) では、Azure リ�
 * Azure ファイル共有のバックアップを有効にする
 * ファイル共有のオンデマンド バックアップをトリガーする
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-CLI をローカルにインストールして使用する場合は、Azure CLI バージョン 2.0.18 以降を使用する必要があります。 CLI のバージョンを調べるには、`run az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+ - このチュートリアルには、Azure CLI のバージョン 2.0.18 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
@@ -74,7 +74,7 @@ Name                                  ResourceGroup
 0caa93f4-460b-4328-ac1d-8293521dd928  azurefiles
 ```
 
-出力の **Name** 属性は、**バックアップの有効化**操作のためにバックアップ サービスによって作成されたジョブの名前に対応しています。 ジョブの状態を追跡するには、[az backup job show](/cli/azure/backup/job#az-backup-job-show) コマンドレットを使用します。
+出力の **Name** 属性は、**バックアップの有効化** 操作のためにバックアップ サービスによって作成されたジョブの名前に対応しています。 ジョブの状態を追跡するには、[az backup job show](/cli/azure/backup/job#az-backup-job-show) コマンドレットを使用します。
 
 ## <a name="trigger-an-on-demand-backup-for-file-share"></a>ファイル共有のオンデマンド バックアップをトリガーする
 
@@ -82,8 +82,8 @@ Name                                  ResourceGroup
 
 オンデマンド バックアップをトリガーするには、次のパラメーターを定義する必要があります。
 
-* **--container-name** は、ファイル共有がホストされているストレージ アカウントの名前です。 コンテナーの**名前**または**フレンドリ名**を取得するには、[az backup container list](/cli/azure/backup/container#az-backup-container-list) コマンドを使用します。
-* **--item-name** は、オンデマンド バックアップをトリガーするファイル共有の名前をです。 バックアップ項目の**名前**または**フレンドリ名**を取得するには、[az backup item list](/cli/azure/backup/item#az-backup-item-list) コマンドを使用します。
+* **--container-name** は、ファイル共有がホストされているストレージ アカウントの名前です。 コンテナーの **名前** または **フレンドリ名** を取得するには、[az backup container list](/cli/azure/backup/container#az-backup-container-list) コマンドを使用します。
+* **--item-name** は、オンデマンド バックアップをトリガーするファイル共有の名前をです。 バックアップ項目の **名前** または **フレンドリ名** を取得するには、[az backup item list](/cli/azure/backup/item#az-backup-item-list) コマンドを使用します。
 * **--retain-until** は、回復ポイントを保持する日付を指定します。 値は UTC 時刻形式 (dd-mm-yyyy) で設定する必要があります。
 
 次の例では、*afsaccount* ストレージ アカウントの *azurefiles* ファイル共有のオンデマンド バックアップを、*20-01-2020* まで保持した状態でトリガーします。

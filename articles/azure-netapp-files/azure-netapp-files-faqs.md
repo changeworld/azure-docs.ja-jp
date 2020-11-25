@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 11/16/2020
 ms.author: b-juche
-ms.openlocfilehash: 4c578f99e22e35871f0c52440c3b73a636ef958b
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 5409f9177116add1fd794ec1e72f276daf34e029
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089317"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659150"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -150,7 +150,7 @@ Azure NetApp Files では、SMB 2.1 と SMB 3.1 (SMB 3.0 のサポートを含�
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>サポートされている Active Directory 接続はいくつですか?
 
-Azure NetApp Files は、AD 接続が異なる NetApp アカウントにある場合でも、1 つの " *リージョン* " で複数の Active Directory (AD) 接続をサポートしていません。 ただし、AD 接続が異なるリージョンにある場合に限り、1 つの " *サブスクリプション* " で複数の AD 接続を使用できます。 1 つのリージョンに複数の AD 接続が必要な場合は、別のサブスクリプションを使用してこれを行うことができます。 
+Azure NetApp Files は、AD 接続が異なる NetApp アカウントにある場合でも、1 つの "*リージョン*" で複数の Active Directory (AD) 接続をサポートしていません。 ただし、AD 接続が異なるリージョンにある場合に限り、1 つの "*サブスクリプション*" で複数の AD 接続を使用できます。 1 つのリージョンに複数の AD 接続が必要な場合は、別のサブスクリプションを使用してこれを行うことができます。 
 
 AD 接続は、NetApp アカウントごとに構成され、作成された NetApp アカウントを介してのみ表示されます。
 
@@ -168,21 +168,15 @@ Azure NetApp Files では、Windows Server 2008r2SP1-2019 バージョンの Act
 
 SMB クライアントで報告されるボリューム サイズは、Azure NetApp Files ボリュームを拡張できる最大サイズです。 SMB クライアントに表示される Azure NetApp Files ボリュームのサイズは、クォータやボリュームのサイズを反映するものではありません。 API Azure NetApp Files ボリュームのサイズまたはクォータは、Azure portal または API を使用して取得できます。
 
+### <a name="im-having-issues-connecting-to-my-smb-share-what-should-i-do"></a>SMB 共有に接続すると問題が発生します。 どうすればよいですか。
+
+ベスト プラクティスとして、コンピューターのクロック同期の最大許容値を 5 分に設定します。 詳細については、[コンピューターのクロック同期の最大許容値](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj852172(v=ws.11))に関するページをご覧ください。 
+
 <!--
 ### Does Azure NetApp Files support LDAP signing? 
 
 Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
 --> 
-
-## <a name="dual-protocol-faqs"></a>デュアルプロトコルに関する FAQ
-
-### <a name="i-tried-to-use-the-root-and-local-users-to-access-a-dual-protocol-volume-with-the-ntfs-security-style-on-a-unix-system-why-did-i-encounter-a-permission-denied-error"></a>‘root’ とローカル ユーザーを使用して、UNIX システムの NTFS セキュリティ スタイルでデュアルプロトコル ボリュームにアクセスしようとしました。 "アクセス許可が拒否されました" というエラーが発生するのはなぜですか?   
-
-解決方法については、「[デュアルプロトコル ボリュームのトラブルシューティング](troubleshoot-dual-protocol-volumes.md)」を参照してください。
-
-### <a name="when-i-try-to-create-a-dual-protocol-volume-why-does-the-creation-process-fail-with-the-error-failed-to-validate-ldap-configuration-try-again-after-correcting-ldap-configuration"></a>デュアル プロトコル ボリュームを作成しようとすると、"Failed to validate LDAP configuration, try again after correcting LDAP configuration (LDAP 構成を検証できませんでした。LDAP 構成を修正した後にもう一度お試しください)" というエラーで作成プロセスが失敗するのはなぜですか?  
-
-解決方法については、「[デュアルプロトコル ボリュームのトラブルシューティング](troubleshoot-dual-protocol-volumes.md)」を参照してください。
 
 ## <a name="capacity-management-faqs"></a>容量管理に関する FAQ
 

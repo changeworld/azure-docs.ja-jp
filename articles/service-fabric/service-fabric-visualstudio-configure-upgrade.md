@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mikhegn
 ms.openlocfilehash: 1db6cea0af229664b07e88463e279b2a64d7e267
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86256052"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008516"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Visual Studio での Service Fabric アプリケーションのアップグレードの構成
 Visual Studio Service Fabric ツールは、ローカルまたはリモート クラスターへの発行のアップグレード サポートを提供します。 テストやデバッグ中にアプリケーションを置き換えるのではなく、アプリケーションを新しいバージョンにアップグレードしたくなるシナリオが 3 つあります。
@@ -37,7 +37,7 @@ Visual Studio Service Fabric ツールを使用して Service Fabric アプリ�
 1. チェック ボックスの横の **[設定]** ボタンをクリックします。 **[アップグレード パラメーターの編集]** ダイアログ ボックスが表示されます。 **[アップグレード パラメーターの編集]** ダイアログ ボックスでは、Monitored、UnmonitoredAuto、UnmonitoredManual の各アップグレード モードをサポートしています。
 2. 使用するアップグレード モードを選択し、パラメーター グリッドに値を入力します。
 
-    各パラメーターには既定値があります。 オプション パラメーターの *DefaultServiceTypeHealthPolicy* は、ハッシュ テーブルの入力を受け取ります。 *DefaultServiceTypeHealthPolicy*のハッシュ テーブルの入力形式の例を次に示します。
+    各パラメーターには既定値があります。 オプション パラメーターの *DefaultServiceTypeHealthPolicy* は、ハッシュ テーブルの入力を受け取ります。 *DefaultServiceTypeHealthPolicy* のハッシュ テーブルの入力形式の例を次に示します。
 
     ```
     @{ ConsiderWarningAsError = "false"; MaxPercentUnhealthyDeployedApplications = 0; MaxPercentUnhealthyServices = 0; MaxPercentUnhealthyPartitionsPerService = 0; MaxPercentUnhealthyReplicasPerPartition = 0 }

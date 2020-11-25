@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 7f925854f4ef09ccc74c0ec1e8fdcca6b71d1437
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8bdf637ab773e90a5eac42bcaa443cf6741db636
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744066"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696015"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Azure App Service 向けの Node.js アプリを構成する
 
@@ -85,6 +85,36 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ::: zone-end
 
+## <a name="get-port-number"></a>ポート番号を取得する
+
+Node.js アプリでは、受信要求を受信するために適切なポートがリッスンされる必要があります。
+
+::: zone pivot="platform-windows"  
+
+Windows の App Service では、[IISNode](https://github.com/Azure/iisnode) を使用して Node.js アプリがホストされるため、Node.js アプリでは `process.env.PORT` 変数で指定されたポートがリッスンされる必要があります。 次の例は、単純な簡易アプリで行う方法を示しています。
+
+::: zone-end
+
+::: zone pivot="platform-linux"  
+
+App Service では、Node.js コンテナーに環境変数 `PORT` が設定され、そのポート番号で受信要求がコンテナーに転送されます。 要求を受信するには、アプリで `process.env.PORT` を使用して、そのポートがリッスンされる必要があります。 次の例は、単純な簡易アプリで行う方法を示しています。
+
+::: zone-end
+
+```javascript
+const express = require('express')
+const app = express()
+const port = process.env.PORT || 3000
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
+```
+
 ::: zone pivot="platform-linux"
 
 ## <a name="customize-build-automation"></a>ビルドの自動化のカスタマイズ
@@ -123,7 +153,7 @@ Node.js コンテナーには、製造工程マネージャーである [PM2](ht
 
 ### <a name="run-custom-command"></a>カスタム コマンドを実行する
 
-App Service は、 *run.sh* のような実行可能ファイルなどのカスタム コマンドを使用してアプリを開始できます。たとえば、`npm run start:prod` を実行するには、 [Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
+App Service は、*run.sh* のような実行可能ファイルなどのカスタム コマンドを使用してアプリを開始できます。たとえば、`npm run start:prod` を実行するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "npm run start:prod"
@@ -144,7 +174,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 }
 ```
 
-プロジェクトでカスタム *package.json* を使用するには、 [Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
+プロジェクトでカスタム *package.json* を使用するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<filename>.json"
@@ -164,7 +194,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 次の拡張子を持つカスタム スタート ファイルを構成することもできます。
 
 - *.js* ファイル
-- *.json* 、 *. config.js* 、 *.yaml* 、または *.yml* の拡張子を持つ [PM2 ファイル](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)
+- *.json*、*. config.js*、*.yaml*、または *.yml* の拡張子を持つ [PM2 ファイル](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)
 
 カスタム スタート ファイルを追加するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
 
@@ -177,7 +207,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 > [!NOTE]
 > リモート デバッグは、現在、プレビュー段階です。
 
-[PM2 で実行](#run-with-pm2)するように構成した場合、*.config.js、*.yml、または *.yaml* を使用して実行したときを除き、 [Visual Studio Code](https://code.visualstudio.com/) で Node.js アプリをリモートからデバッグできます。
+[PM2 で実行](#run-with-pm2)するように構成した場合、*.config.js、*.yml、または *.yaml* を使用して実行したときを除き、[Visual Studio Code](https://code.visualstudio.com/) で Node.js アプリをリモートからデバッグできます。
 
 ほとんどの場合、アプリ用に追加の構成は必要ありません。 アプリが *process.json* ファイル (既定またはカスタム) で実行されている場合、JSON ルートに `script` プロパティが必要です。 次に例を示します。
 
@@ -191,9 +221,9 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 リモート デバッグ用に Visual Studio Code を設定するには、[App Service 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)をインストールします。 拡張機能ページの指示に従い、Visual Studio Code で Azure にサインインします。
 
-Azure エクスプローラーで、デバッグするアプリを見つけ、それを右クリックして、 **[リモート デバッグを開始する]** を選択します。 **[はい]** をクリックしてアプリに対して有効にします。 App Service により、トンネル プロキシが開始され、デバッガがアタッチされます。 続いて、アプリに対して要求を行って、ブレーク ポイントで中断しているデバッガを確認できます。
+Azure エクスプローラーで、デバッグするアプリを見つけ、それを右クリックして、**[リモート デバッグを開始する]** を選択します。 **[はい]** をクリックしてアプリに対して有効にします。 App Service により、トンネル プロキシが開始され、デバッガがアタッチされます。 続いて、アプリに対して要求を行って、ブレーク ポイントで中断しているデバッガを確認できます。
 
-デバッグが完了すると、 **[切断]** を選択してデバッガを停止します。 求められたら、 **[はい]** をクリックしてリモート デバッグを無効にする必要があります。 後で無効にするには、Azure エクスプローラーでもう一度アプリを右クリックし、 **[リモート デバッグの無効化]** を選択します。
+デバッグが完了すると、**[切断]** を選択してデバッガを停止します。 求められたら、**[はい]** をクリックしてリモート デバッグを無効にする必要があります。 後で無効にするには、Azure エクスプローラーでもう一度アプリを右クリックし、**[リモート デバッグの無効化]** を選択します。
 
 ::: zone-end
 
@@ -209,7 +239,7 @@ process.env.NODE_ENV
 
 既定では、App Service のビルド自動化によって、Node.js アプリが Git またはビルド自動化が有効になっている Zip デプロイを介してデプロイされることが認識されると、`npm install --production` が実行されます。 アプリで、Grunt、Bower、Gulp など、一般的な自動化ツールのいずれかが必要な場合、それを実行する[カスタム デプロイ スクリプト](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)を提供する必要があります。
 
-リポジトリでこれらのツールを実行できるようにするには、 *package.json* での依存関係にこれらを追加する必要があります。 次に例を示します。
+リポジトリでこれらのツールを実行できるようにするには、*package.json* での依存関係にこれらを追加する必要があります。 次に例を示します。
 
 ```json
 "dependencies": {

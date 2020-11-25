@@ -1,7 +1,7 @@
 ---
 title: scikit-learn 機械学習モデルをトレーニングする
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で scikit-learn トレーニング スクリプトを実行する方法について説明します。
+description: Azure Machine Learning でエラスティック クラウド コンピューティング リソースを使用して、scikit-learn のトレーニング ジョブをスケールアウトする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 91a9957c7a68f1752d7a6b9ea66910ec642b7bd1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 4758e937a0ed105bf136acf7e78f2d44c84e74fb
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360906"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536056"
 ---
 # <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して scikit-learn モデルを大規模にトレーニングする
 
@@ -31,7 +31,7 @@ scikit-learn の機械学習モデルを一からトレーニングする場合�
  - Azure Machine Learning コンピューティング インスタンス - ダウンロードやインストールは必要なし
 
     - 「[チュートリアル: 環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
-    - ノートブック サーバー上の samples トレーニング用フォルダーで、 **how-to-use-azureml > ml-frameworks > scikit-learn > train-hyperparameter-tune-deploy-with-sklearn** フォルダーの順に選択してこのディレクトリに移動し、完了済みで展開済みのノートブックを見つけます。
+    - ノートブック サーバー上の samples トレーニング用フォルダーで、**how-to-use-azureml > ml-frameworks > scikit-learn > train-hyperparameter-tune-deploy-with-sklearn** フォルダーの順に選択してこのディレクトリに移動し、完了済みで展開済みのノートブックを見つけます。
 
  - 独自の Jupyter Notebook サーバー
 
@@ -142,13 +142,13 @@ run.wait_for_completion(show_output=True)
 ### <a name="what-happens-during-run-execution"></a>実行実施中の動作
 実行は、以下の段階を経て実施されます。
 
-- **準備** :docker イメージは、定義されている環境に従って作成されます。 イメージはワークスペースのコンテナー レジストリにアップロードされ、後で実行するためにキャッシュされます。 ログは実行履歴にもストリーミングされ、進行状況を監視するために表示することができます。 代わりにキュレーションされた環境が指定されている場合は、そのキュレーションされた環境をバッキングするキャッシュされたイメージが使用されます。
+- **準備**:docker イメージは、定義されている環境に従って作成されます。 イメージはワークスペースのコンテナー レジストリにアップロードされ、後で実行するためにキャッシュされます。 ログは実行履歴にもストリーミングされ、進行状況を監視するために表示することができます。 代わりにキュレーションされた環境が指定されている場合は、そのキュレーションされた環境をバッキングするキャッシュされたイメージが使用されます。
 
-- **拡大縮小** :Batch AI クラスターでの実行に現在使用可能な数より多くのノードが必要な場合、クラスターはスケールアップを試みます。
+- **拡大縮小**:Batch AI クラスターでの実行に現在使用可能な数より多くのノードが必要な場合、クラスターはスケールアップを試みます。
 
 - **[実行中]** : script フォルダー内のすべてのスクリプトがコンピューティング先にアップロードされ、データ ストアがマウントまたはコピーされ、`script` が実行されます。 stdout および **./logs** フォルダーの出力は実行履歴にストリーミングされ、実行を監視するために使用できます。
 
-- **後処理** :実行の **./outputs** フォルダーが実行履歴にコピーされます。
+- **後処理**:実行の **./outputs** フォルダーが実行履歴にコピーされます。
 
 ## <a name="save-and-register-the-model"></a>モデルを保存して登録する
 

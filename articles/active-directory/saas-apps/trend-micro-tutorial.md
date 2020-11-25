@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.openlocfilehash: b76c41787d7a35fb3024fa18c0122bc966243bbc
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514539"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008397"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>チュートリアル:Trend Micro Web Security (TMWS) と Azure Active Directory のシングル サインオン (SSO) 統合
 
@@ -50,7 +50,7 @@ Azure AD への TMWS の統合を構成するには、ギャラリーからマ�
 1. 左側のウィンドウで、 **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Trend Micro Web Security (TMWS)** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Trend Micro Web Security (TMWS)** 」と入力します。
 1. 検索結果で **[Trend Micro Web Security (TMWS)]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-tmws"></a>TMWS の Azure AD SSO の構成とテスト
@@ -116,7 +116,7 @@ B.Simon というテスト ユーザーを使用して、TMWS に対する Azure
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
    1. **[名前]** ボックスに、「`B.Simon`」と入力します。  
-   1. **[ユーザー名]** ボックスに、「* *_username_@* companydomain *.* extension***」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[ユーザー名]** ボックスに、「**_username_@* companydomain *.* extension***」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
    1. **[パスワードを表示]** をオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **［作成］** を選択します
 
@@ -134,7 +134,7 @@ B.Simon というテスト ユーザーを使用して、TMWS に対する Azure
 
     ![[ユーザーの追加] を選択する](common/add-assign-user.png)
 
-1. **[ユーザーとグループ]** ダイアログ ボックスで、 **ユーザー** の一覧で **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. **[ユーザーとグループ]** ダイアログ ボックスで、**ユーザー** の一覧で **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. SAML アサーションにロール値が必要な場合は、 **[ロールの選択]** ダイアログ ボックスでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
 
@@ -224,7 +224,7 @@ Azure AD サービスを構成し、ユーザーの認証方法として Azure A
 
 1. インターネットの任意の Web サイトにアクセスします。 TMWS により、TMWS のキャプティブ ポータルに移動します。
 
-1. Active Directory アカウント (形式: *domain*\\*sAMAccountName* または *sAMAccountName*@*domain* )、メール アドレス、または UPN を指定し、 **[Log On]\(ログオン\)** を選択します。 TMWS により Azure AD サインイン ウィンドウにリダイレクトされます。
+1. Active Directory アカウント (形式: *domain*\\*sAMAccountName* または *sAMAccountName*@*domain*)、メール アドレス、または UPN を指定し、 **[Log On]\(ログオン\)** を選択します。 TMWS により Azure AD サインイン ウィンドウにリダイレクトされます。
 
 1. Azure AD サインイン ウィンドウで、Azure AD アカウントの資格情報を入力します。 これで TMWS にサインインできます。
 

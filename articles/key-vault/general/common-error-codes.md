@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 09/29/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a36e15a56a5a4c8a637120ca730ae1da764d376d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: a543f03cb73d9eae8eaa81eeb3a37fd59e4e6a81
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422902"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685802"
 ---
 # <a name="common-error-codes-for-azure-key-vault"></a>Azure Key Vault の一般的なエラー コード
 
@@ -30,6 +30,7 @@ Azure Key Vault に対して操作を実行した結果、返される可能性�
 | RegionNotSupported |  このリソースでは、指定された Azure リージョンはサポートされていません。 |
 | SkuNotSupported |  このリソースでは、指定された SKU の種類はサポートされていません。 |
 | ResourceNotFound |  指定した Azure リソースが見つかりません。 |
+| ResourceGroupNotFound | 指定した Azure リソース グループが見つかりません。 |
 | CertificateExpired |  証明書の有効期限と有効期間を確認してください。 |
 
 

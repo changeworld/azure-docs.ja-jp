@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 10c7d4146d61f5b589b29bc8faad5fa8e60a293a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae8fd7f405beb20d516835ccb80b86e769fd0393
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924029"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697086"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Azure Cognitive Search のインデックスを再構築する方法
 
@@ -48,7 +48,7 @@ ms.locfileid: "88924029"
 
 ## <a name="update-conditions"></a>条件を更新する
 
-他の変更の多くは、既存の物理構造に影響を与えずに行うことができます。 具体的には、以下の変更では、インデックスの再構築を行う*必要はありません*。 これらの変更については、変更と共に[インデックス定義を更新](/rest/api/searchservice/update-index)できます。
+他の変更の多くは、既存の物理構造に影響を与えずに行うことができます。 具体的には、以下の変更では、インデックスの再構築を行う *必要はありません*。 これらの変更については、変更と共に[インデックス定義を更新](/rest/api/searchservice/update-index)できます。
 
 + 新しいフィールドの追加
 + 既存のフィールドに **retrievable** 属性を設定する
@@ -91,7 +91,7 @@ ms.locfileid: "88924029"
 
 最初のドキュメントが読み込まれたらすぐに、インデックスのクエリを始めることができます。 ドキュメントの ID がわかっている場合、[Lookup Document REST API](/rest/api/searchservice/lookup-document) では特定のドキュメントが返されます。 さらに範囲の広いテストでは、インデックスが完全に読み込まれるまで待ってから、クエリを使用して表示されるはずのコンテキストを確認する必要があります。
 
-[Search エクスプローラー](search-explorer.md)または Web テスト ツール ([Postman](search-get-started-postman.md) など) を使用して、更新されたコンテンツをチェックできます。
+[Search エクスプローラー](search-explorer.md)または Web テスト ツール ([Postman や Visual Studio Code](search-get-started-rest.md) など) を使用して、更新されたコンテンツをチェックできます。
 
 フィールドを追加したり名前変更したりした場合は、[$select](search-query-odata-select.md) を使用してこのフィールドを返します。`search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 

@@ -3,29 +3,27 @@ title: Azure CLI を使用して Azure ファイル共有のバックアップ�
 description: Azure CLI を使用して、Azure Backup によってバックアップされた Azure ファイル共有を管理および監視する方法について説明します。
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: 44c095d58e2da5a74985ce216268aab15922ed1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a8a785016845b836a102663a959e4b2f28696b6
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332748"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566454"
 ---
 # <a name="manage-azure-file-share-backups-with-the-azure-cli"></a>Azure CLI を使用して Azure ファイル共有のバックアップを管理する
 
 Azure CLI では、Azure リソースを管理するためのコマンド ライン エクスペリエンスが提供されます。 これは、Azure リソースを使用するためのカスタム オートメーションを構築するための優れたツールです。 この記事では、[Azure Backup](./backup-overview.md) によってバックアップされた Azure ファイル共有を管理および監視するためのタスクを実行する方法について説明します。 これらの手順は、[Azure portal](https://portal.azure.com/) を使用して実行することもできます。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-CLI をローカルにインストールして使用するには、Azure CLI バージョン 2.0.18 以降を実行する必要があります。 CLI のバージョンを調べるには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
-
 ## <a name="prerequisites"></a>前提条件
 
 この記事では、[Azure Backup](./backup-overview.md) によってバックアップされた Azure ファイル共有が既にあることを前提としています。 ない場合は、「[CLI を使用して Azure ファイル共有をバックアップする](backup-afs-cli.md)」を参照して、ファイル共有のバックアップを構成してください。 この記事では、次のリソースを使用します。
-
-* **リソース グループ**: *azurefiles*
-* **Recovery Services コンテナー**: *azurefilesvault*
-* **ストレージ アカウント**: *afsaccount*
-* **ファイル共有**: *azurefiles*
+   -  **リソース グループ**: *azurefiles*
+   -  **Recovery Services コンテナー**: *azurefilesvault*
+   -  **ストレージ アカウント**: *afsaccount*
+   -  **ファイル共有**: *azurefiles*
+  
+  [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+   - このチュートリアルには、Azure CLI のバージョン 2.0.18 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="monitor-jobs"></a>ジョブの監視
 
@@ -98,8 +96,8 @@ az backup job list --resource-group azurefiles --vault-name azurefilesvault
 
 ポリシーを変更するには、次のパラメーターを定義します。
 
-* **--container-name**:ファイル共有がホストされているストレージ アカウントの名前。 コンテナーの**名前**または**フレンドリ名**を取得するには、[az backup container list](/cli/azure/backup/container#az-backup-container-list) コマンドを使用します。
-* **--name**: ポリシーを変更するファイル共有の名前。 バックアップ項目の**名前**または**フレンドリ名**を取得するには、[az backup item list](/cli/azure/backup/item#az-backup-item-list) コマンドを使用します。
+* **--container-name**:ファイル共有がホストされているストレージ アカウントの名前。 コンテナーの **名前** または **フレンドリ名** を取得するには、[az backup container list](/cli/azure/backup/container#az-backup-container-list) コマンドを使用します。
+* **--name**: ポリシーを変更するファイル共有の名前。 バックアップ項目の **名前** または **フレンドリ名** を取得するには、[az backup item list](/cli/azure/backup/item#az-backup-item-list) コマンドを使用します。
 * **--policy-name**:ファイル共有に設定するバックアップ ポリシーの名前。 [az backup policy list](/cli/azure/backup/policy#az-backup-policy-list) を使用して、コンテナーのすべてのポリシーを表示できます。
 
 次の例では、*afsaccount* ストレージ アカウントに存在する *azurefiles* ファイル共有に対して *schedule2* バックアップ ポリシーを設定します。
@@ -136,8 +134,8 @@ Azure Backup によって作成された基になるスナップショットが�
 
 ファイル共有の保護を停止するには、次のパラメーターを定義します。
 
-* **--container-name**:ファイル共有がホストされているストレージ アカウントの名前。 コンテナーの**名前**または**フレンドリ名**を取得するには、[az backup container list](/cli/azure/backup/container#az-backup-container-list) コマンドを使用します。
-* **--item-name**:保護を停止するファイル共有の名前。 バックアップ項目の**名前**または**フレンドリ名**を取得するには、[az backup item list](/cli/azure/backup/item#az-backup-item-list) コマンドを使用します。
+* **--container-name**:ファイル共有がホストされているストレージ アカウントの名前。 コンテナーの **名前** または **フレンドリ名** を取得するには、[az backup container list](/cli/azure/backup/container#az-backup-container-list) コマンドを使用します。
+* **--item-name**:保護を停止するファイル共有の名前。 バックアップ項目の **名前** または **フレンドリ名** を取得するには、[az backup item list](/cli/azure/backup/item#az-backup-item-list) コマンドを使用します。
 
 ### <a name="stop-protection-and-retain-recovery-points"></a>保護を停止して復旧ポイントを保持する
 
@@ -168,7 +166,7 @@ fec6f004-0e35-407f-9928-10a163f123e5  azurefiles
 
 ### <a name="stop-protection-without-retaining-recovery-points"></a>復旧ポイントを保持しないで保護を停止する
 
-復旧ポイントを保持しないで保護を停止するには、[az backup protection disable](/cli/azure/backup/protection#az-backup-protection-disable) コマンドレットを使用し、**delete-backup-data オプション**を **true** に設定します。
+復旧ポイントを保持しないで保護を停止するには、[az backup protection disable](/cli/azure/backup/protection#az-backup-protection-disable) コマンドレットを使用し、**delete-backup-data オプション** を **true** に設定します。
 
 次の例では、復旧ポイントを保持しないで、*azurefiles* ファイル共有の保護を停止します。
 
@@ -191,8 +189,8 @@ Azure ファイル共有の保護を停止したが、復旧ポイントを保�
 
 ファイル共有の保護を再開するには、次のパラメーターを定義します。
 
-* **--container-name**:ファイル共有がホストされているストレージ アカウントの名前。 コンテナーの**名前**または**フレンドリ名**を取得するには、[az backup container list](/cli/azure/backup/container#az-backup-container-list) コマンドを使用します。
-* **--item-name**:保護を再開するファイル共有の名前。 バックアップ項目の**名前**または**フレンドリ名**を取得するには、[az backup item list](/cli/azure/backup/item#az-backup-item-list) コマンドを使用します。
+* **--container-name**:ファイル共有がホストされているストレージ アカウントの名前。 コンテナーの **名前** または **フレンドリ名** を取得するには、[az backup container list](/cli/azure/backup/container#az-backup-container-list) コマンドを使用します。
+* **--item-name**:保護を再開するファイル共有の名前。 バックアップ項目の **名前** または **フレンドリ名** を取得するには、[az backup item list](/cli/azure/backup/item#az-backup-item-list) コマンドを使用します。
 * **--policy-name**:ファイル共有の保護を再開するバックアップ ポリシーの名前。
 
 次の例では、[az backup protection resume](/cli/azure/backup/protection#az-backup-protection-resume) コマンドレットを使用し、*schedule1* バックアップ ポリシーを使用して *azurefiles* ファイル共有の保護を再開します。
@@ -222,7 +220,7 @@ Name                                  ResourceGroup
 
 特定のストレージ アカウントのファイル共有を別の Recovery Services コンテナーを使用して保護する場合は、まず最初に、そのストレージ アカウント内の[すべてのファイル共有の保護を停止](#stop-protection-on-a-file-share)します。 次に、現在、保護に使用されている Recovery Services コンテナーからアカウントの登録を解除します。
 
-ストレージ アカウントの登録を解除するには、コンテナー名を指定する必要があります。 コンテナーの**名前**または**フレンドリ名**を取得するには、[az backup container list](/cli/azure/backup/container#az-backup-container-list) コマンドを使用します。
+ストレージ アカウントの登録を解除するには、コンテナー名を指定する必要があります。 コンテナーの **名前** または **フレンドリ名** を取得するには、[az backup container list](/cli/azure/backup/container#az-backup-container-list) コマンドを使用します。
 
 次の例では、[az backup container unregister](/cli/azure/backup/container#az-backup-container-unregister) コマンドレットを使用して、*azurefilesvault* から *afsaccount* ストレージ アカウントの登録を解除します。
 

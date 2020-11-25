@@ -3,12 +3,12 @@ title: Azure Resource Manager を使用したデプロイとアップグレー�
 description: Azure Resource Manager テンプレートを使用して Service Fabric クラスターにアプリケーションとサービスをデプロイする方法を説明します。
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: a849bdff0d2719f02b6b5f2d7159b87ce664c13f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb866eb24fb1b286f496bad9845d1ee557baa221
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86256511"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681671"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>アプリケーションとサービスを Azure Resource Manager のリソースとして管理する
 
@@ -17,8 +17,8 @@ Azure Resource Manager を使用して、Service Fabric クラスターにアプ
 これは、クラスターに必要なセットアップ、ガバナンス、またはクラスター管理アプリケーションをデプロイする方法として推奨されます。 これには、[パッチ オーケストレーション アプリケーション](service-fabric-patch-orchestration-application.md)、ウォッチドッグ、または他のアプリケーションやサービスをデプロイする前にクラスターで実行する必要があるすべてのアプリケーションが含まれます。 
 
 該当する場合は、アプリケーションを Resource Manager のリソースとして管理することで次のメリットが得られます。
-* 監査証跡:Resource Manager はすべての操作を監査し、詳細な*アクティビティ ログ* を保存します。このログは、アプリケーションとクラスターに加えられたすべての変更を追跡するのに役立ちます。
-* ロールベースのアクセス制御 (RBAC):同じ Resource Manager テンプレートを使用して、クラスターと、そのクラスターにデプロイされたアプリケーションへのアクセスを管理できます。
+* 監査証跡:Resource Manager はすべての操作を監査し、詳細な *アクティビティ ログ* を保存します。このログは、アプリケーションとクラスターに加えられたすべての変更を追跡するのに役立ちます。
+* Azure ロールベースのアクセス制御 (Azure RBAC):同じ Resource Manager テンプレートを使用して、クラスターと、そのクラスターにデプロイされたアプリケーションへのアクセスを管理できます。
 * Azure Resource Manager (Azure Portal 経由) を使用して、クラスターと重要なアプリケーションのデプロイをすべて 1 か所で管理できます。
 
 次のスニペットは、1 つのテンプレートを使用して管理できるさまざまな種類のリソースを示しています。

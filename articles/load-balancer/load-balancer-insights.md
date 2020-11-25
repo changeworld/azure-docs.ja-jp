@@ -11,22 +11,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: 2168ee05ab93655cc0ad87221bff29c1b6b1035d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 63b91194c9ffb10fd8f4c5f1341eaf74bc81f5e1
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897572"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694883"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>Azure Load Balancer を監視および構成するための分析情報の使用
 
-[Azure Monitor for Networks](https://docs.microsoft.com/azure/azure-monitor/insights/insights-overview#azure-monitor-for-networks-preview) を使用すると、機能の依存関係の視覚化と、Load Balancer に対する事前構成済みのメトリック ダッシュボードが提供されます。 これらのビジュアルは、情報に基づいて設計に関する決定を行い、任意の障害を速やかに特定、診断、解決するのに役立ちます。
+ネットワーク用の Azure Monitor を使用すると、機能の依存関係の視覚化と、Load Balancer に対する事前構成済みのメトリック ダッシュボードが提供されます。 これらのビジュアルは、情報に基づいて設計に関する決定を行い、任意の障害を速やかに特定、診断、解決するのに役立ちます。
 
 >[!NOTE] 
 >この機能はプレビュー段階であり、機能依存関係ビューと事前構成済みダッシュボードは、このエクスペリエンスを向上させるために変更される可能性があることに注意してください
 
 >[!IMPORTANT]
->構成済みメトリック ダッシュボードで Load Balancer 名前空間のメトリックを表示するには、Standard Load Balancer が必要です。 VM、仮想マシン スケール セット、接続モニターの名前空間のメトリックを表示することもできますが、運用ワークロードの場合は、Load Balancer メトリックの堅牢なセットを利用するため、[Standard にアップグレードする](https://docs.microsoft.com/azure/load-balancer/upgrade-basic-standard)ことをお勧めします。
+>構成済みメトリック ダッシュボードで Load Balancer 名前空間のメトリックを表示するには、Standard Load Balancer が必要です。 VM、仮想マシン スケール セット、接続モニターの名前空間のメトリックを表示することもできますが、運用ワークロードの場合は、Load Balancer メトリックの堅牢なセットを利用するため、[Standard にアップグレードする](./upgrade-basic-standard.md)ことをお勧めします。
 
 ## <a name="functional-dependency-view"></a>機能依存関係ビュー
 
@@ -40,7 +40,7 @@ Standard Load Balancer の場合、バックエンド プールのリソース�
 
 ## <a name="metrics-dashboard"></a>メトリック ダッシュボード
 
-Load Balancer の [分析情報] ブレードからは、より詳細なメトリックを選択して、Load Balancer の特定の側面に関連するメトリック ビジュアルが含まれる事前構成済みの [Azure Monitor ブック](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)を表示できます。 このダッシュボードには、Load Balancer の状態と関連ドキュメントへのリンクがページの上部に表示されます。
+Load Balancer の [分析情報] ブレードからは、より詳細なメトリックを選択して、Load Balancer の特定の側面に関連するメトリック ビジュアルが含まれる事前構成済みの [Azure Monitor ブック](../azure-monitor/platform/workbooks-overview.md)を表示できます。 このダッシュボードには、Load Balancer の状態と関連ドキュメントへのリンクがページの上部に表示されます。
 
 最初に [概要] タブが表示されます。使用可能なタブ間を移動できます。各タブには、お使いの Load Balancer の特定の側面に関連するビジュアルが含まれます。 ダッシュボードの各タブの下部には、それぞれの明示的なガイダンスがあります。
 
@@ -68,16 +68,16 @@ Load Balancer の [分析情報] ブレードからは、より詳細なメト�
 ### <a name="flow-distribution"></a>フローの分布
 フローの分布に関するタブは、バックエンド インスタンスによって受信および生成されているフローの数を視覚化および管理するのに役立ちます。 受信トラフィックと送信トラフィックのフロー作成速度とフロー数、および各 VM と仮想マシン スケール セット インスタンスが受信しているネットワーク トラフィックが表示されます。 
 
-これらのビューを使用すると、お使いの Load Balancer の構成またはトラフィック パターンによってトラフィックがアンバランスになっているかどうかについてのフィードバックを得ることができます。 たとえば、セッション アフィニティが構成されていて、1 つのクライアントが過剰な数の要求を行っている場合などです。 また、マシンのサイズに対する [VM ごとのフロー制限](https://docs.microsoft.com/azure/virtual-network/virtual-machine-network-throughput#flow-limits-and-recommendations)に近づいているかどうかも確認できます。
+これらのビューを使用すると、お使いの Load Balancer の構成またはトラフィック パターンによってトラフィックがアンバランスになっているかどうかについてのフィードバックを得ることができます。 たとえば、セッション アフィニティが構成されていて、1 つのクライアントが過剰な数の要求を行っている場合などです。 また、マシンのサイズに対する [VM ごとのフロー制限](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations)に近づいているかどうかも確認できます。
 
 ### <a name="connection-monitors"></a>接続モニター
-接続モニターに関するタブには、構成されているすべての[接続モニター](https://docs.microsoft.com/azure/network-watcher/connection-monitor)のグローバル マップでのラウンドトリップ待機時間が表示されます。 これらのビジュアルにより、厳密な待機時間が必要なサービスに役立つ情報が提供されます。 要件を満たすには、リージョンのデプロイを追加するか、[クロスリージョン負荷分散](https://docs.microsoft.com/azure/load-balancer/cross-region-overview)モデルに移行することが必要になる場合があります
+接続モニターに関するタブには、構成されているすべての[接続モニター](../network-watcher/connection-monitor.md)のグローバル マップでのラウンドトリップ待機時間が表示されます。 これらのビジュアルにより、厳密な待機時間が必要なサービスに役立つ情報が提供されます。 要件を満たすには、リージョンのデプロイを追加するか、[クロスリージョン負荷分散](./cross-region-overview.md)モデルに移行することが必要になる場合があります
 
 ### <a name="metric-definitions"></a>メトリック定義
-メトリック定義に関するタブには、[多次元メトリックに関する記事](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics)で示されているすべての情報が含まれます。
+メトリック定義に関するタブには、[多次元メトリックに関する記事](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)で示されているすべての情報が含まれます。
 
 ## <a name="next-steps"></a>次のステップ
 * ダッシュボードを確認し、改善できるものがある場合は、次のリンクを使用してフィードバックを提供します
-* [メトリックのドキュメントを見て、各メトリックの計算方法を理解していることを確認します](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics)
-* [Load Balancer に対する接続モニターを作成します](https://docs.microsoft.com/azure/network-watcher/connection-monitor)
-* [独自のブックを作成](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)します。詳細なメトリック ダッシュボードで編集ボタンをクリックして、インスピレーションを得ることができます
+* [メトリックのドキュメントを見て、各メトリックの計算方法を理解していることを確認します](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)
+* [Load Balancer に対する接続モニターを作成します](../network-watcher/connection-monitor.md)
+* [独自のブックを作成](../azure-monitor/platform/workbooks-overview.md)します。詳細なメトリック ダッシュボードで編集ボタンをクリックして、インスピレーションを得ることができます

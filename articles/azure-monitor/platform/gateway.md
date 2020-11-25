@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
 ms.openlocfilehash: dc4d1b852b0a498de0834731b2b1cd1225b9748b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107778"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008856"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>インターネットにアクセスできないコンピューターを Azure Monitor で Log Analytics ゲートウェイを使って接続する
 
@@ -78,7 +78,7 @@ Log Analytics ゲートウェイは、次の言語で利用できます。
 - ハンガリー語
 - イタリア語
 - 日本語
-- Korean
+- 韓国語
 - ポーランド語
 - ポルトガル語 (ブラジル)
 - ポルトガル語 (ポルトガル)
@@ -203,7 +203,7 @@ Windows Server 2016 のネットワーク負荷分散クラスターの設計お
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
-Azure Load Balancer を設計してデプロイする方法については、「[Azure Load Balancer の概要](../../load-balancer/load-balancer-overview.md)」を参照してください。 基本的なロード バランサーをデプロイするには、この[クイック スタート](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)に記載されている手順 (「**バックエンド サーバーを作成する**」の手順は除く) を実行します。   
+Azure Load Balancer を設計してデプロイする方法については、「[Azure Load Balancer の概要](../../load-balancer/load-balancer-overview.md)」を参照してください。 基本的なロード バランサーをデプロイするには、この [クイック スタート](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)に記載されている手順 (「**バックエンド サーバーを作成する**」の手順は除く) を実行します。   
 
 > [!NOTE]
 > **Basic SKU** を使用して Azure Load Balancer を構成するには、可用性セットに属する Azure 仮想マシンが必要です。 可用性セットの詳細については、、「[Azure での Windows 仮想マシンの可用性の管理](../../virtual-machines/manage-availability.md)」を参照してください。 既存の仮想マシンを可用性セットに追加するには、「[Set Azure Resource Manager VM Availability Set (Azure Resource Manager VM の可用性セットを設定する)](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)」を参照してください。

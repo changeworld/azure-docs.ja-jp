@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: fc2f9e5408dd760b48fc63c4021230446fe40de9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3a96a7116c83bf9ea2c3798c335c6cefcbdbc36d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542320"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659490"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>HDInsight クラスター管理のベスト プラクティス
 
@@ -49,7 +49,7 @@ HDInsight クラスターを管理するためのベストプラクティスを�
 
 | エラー | 詳細情報 |
 |---|---|
-| クォータなし | 各リージョンのサブスクリプションに対して作成できるクォータの数には割り当てがあります。 詳細については、「[容量計画：割り当て](./hdinsight-capacity-planning.md)」を参照してください。 |
+| クォータなし | 各リージョンのサブスクリプションで作成できるコア数にはクォータがあります。 詳細については、「[容量計画：割り当て](./hdinsight-capacity-planning.md)」を参照してください。 |
 | 使用可能な IP アドレスがこれ以上ありません | 各 VNet には、IP アドレスの数の制限があります。 HDInsightクラスターを作成すると、各ノード（zookeeper およびゲートウェイノードを含む）は、これらの割り当てられた IP アドレスの一部を使用します。 すべての IP アドレスが使用されている場合は、次のエラーが発生します。  |
 | ネットワークセキュリティグループ (NSG) ルールにより、HDInsight リソースプロバイダーとの通信が許可されません | NSG またはユーザー定義ルート (UDR) を使用して、HDInsight クラスターへの受信トラフィックを制御する場合、クラスターが Azure の重要な正常性サービスと管理サービスと通信できるようにする必要があります。 詳細については、「[Azure HDInsight のネットワークセキュリティグループ（NSG）サービスタグ](./hdinsight-service-tags.md)」を参照してください |
 | クラスター名の再利用 | 以前に使用したクラスター名を使用する場合は、クラスターを再作成する前に X 分間待機する必要があります。 そうしないと、リソースが既に存在するというメッセージが表示されます。 |

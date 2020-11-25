@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 3b9a94f7f9f64426374a5ea349b3653d837fc1ac
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: a9ac4830d11aa3360a272ac1feb167eb20c26c9a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494435"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009808"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Azure Database Migration Service を使用した Azure DB for MySQL へのオンライン移行の問題と制限事項
 
@@ -66,28 +66,28 @@ MySQL から Azure Database for MySQL へのオンライン移行に関する既
 
 ## <a name="datatype-limitations"></a>データ型に関する制限事項
 
-- **制限事項** :ソースの MySQL データベースに JSON データ型がある場合、移行は、継続的同期中に失敗します。
+- **制限事項**:ソースの MySQL データベースに JSON データ型がある場合、移行は、継続的同期中に失敗します。
 
-    **回避策** :ソース MySQL データベース内の JSON データ型を medium text または longtext に変更します。
+    **回避策**:ソース MySQL データベース内の JSON データ型を medium text または longtext に変更します。
 
-- **制限事項** :テーブルに主キーがない場合、継続的同期は失敗します。
+- **制限事項**:テーブルに主キーがない場合、継続的同期は失敗します。
 
-    **回避策** :移行を続行するには、テーブルの主キーを一時的に設定します。 データの移行が完了した後は、主キーを削除できます。
+    **回避策**:移行を続行するには、テーブルの主キーを一時的に設定します。 データの移行が完了した後は、主キーを削除できます。
 
 ## <a name="lob-limitations"></a>LOB に関する制限事項
 
 ラージ オブジェクト (LOB) 列は、サイズが大きくなる可能性のある列です。 MySQL の場合、LOB のデータ型には、Medium text、Longtext、BLOB、Mediumblob、Longblob などがあります。
 
-- **制限事項** :LOB のデータ型を主キーとして使用すると、移行は失敗します。
+- **制限事項**:LOB のデータ型を主キーとして使用すると、移行は失敗します。
 
-    **回避策** :主キーを、LOB ではない他のデータ型または列に置き換えます。
+    **回避策**:主キーを、LOB ではない他のデータ型または列に置き換えます。
 
-- **制限事項** :ラージ オブジェクト (LOB) 列の長さが [LOB サイズを制限する] パラメーターを超える場合 (64 KB を超えてはなりません)、ターゲットでデータが切り捨てられることがあります。 次のクエリを使用して、LOB 列の長さを確認できます。
+- **制限事項**:ラージ オブジェクト (LOB) 列の長さが [LOB サイズを制限する] パラメーターを超える場合 (64 KB を超えてはなりません)、ターゲットでデータが切り捨てられることがあります。 次のクエリを使用して、LOB 列の長さを確認できます。
     ```
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **回避策** :64 KB を超える LOB オブジェクトがある場合は、[無制限の LOB サイズを許可する] パラメーターを使用します。 [無制限の LOB サイズを許可する] パラメーターを使用した移行は、[LOB サイズを制限する] パラメーターを使用した移行よりも低速になることに注意してください。
+    **回避策**:64 KB を超える LOB オブジェクトがある場合は、[無制限の LOB サイズを許可する] パラメーターを使用します。 [無制限の LOB サイズを許可する] パラメーターを使用した移行は、[LOB サイズを制限する] パラメーターを使用した移行よりも低速になることに注意してください。
 
 ## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>AWS RDS MySQL からオンラインで移行するときの制限事項
 
@@ -95,8 +95,8 @@ AWS RDS MySQL から Azure Database for MySQL へのオンライン移行を実�
 
 - **エラー:** データベース '{0}' はターゲットに外部キーを持っています。 ターゲットを修正し、新しいデータ移行アクティビティを開始します。 ターゲットで次のスクリプトを実行して、外部キーを表示します。
 
-  **制限事項** :スキーマに外部キーが含まれている場合、移行の初回の読み込みと継続的同期は失敗します。
-  **回避策** :MySQL Workbench で次のスクリプトを実行して、外部キー削除スクリプトと外部キー追加スクリプトを抽出します。
+  **制限事項**:スキーマに外部キーが含まれている場合、移行の初回の読み込みと継続的同期は失敗します。
+  **回避策**:MySQL Workbench で次のスクリプトを実行して、外部キー削除スクリプトと外部キー追加スクリプトを抽出します。
 
   ```
   SET group_concat_max_len = 8192; SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery FROM (SELECT KCU.REFERENCED_TABLE_SCHEMA as SchemaName, KCU.TABLE_NAME, KCU.COLUMN_NAME, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' ADD CONSTRAINT ', KCU.CONSTRAINT_NAME, ' FOREIGN KEY (`', KCU.COLUMN_NAME, '`) REFERENCES `', KCU.REFERENCED_TABLE_NAME, '` (`', KCU.REFERENCED_COLUMN_NAME, '`) ON UPDATE ',RC.UPDATE_RULE, ' ON DELETE ',RC.DELETE_RULE) AS AddQuery FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU, information_schema.REFERENTIAL_CONSTRAINTS RC WHERE KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA AND KCU.REFERENCED_TABLE_SCHEMA = 'SchemaName') Queries GROUP BY SchemaName;
@@ -104,21 +104,21 @@ AWS RDS MySQL から Azure Database for MySQL へのオンライン移行を実�
 
 - **エラー:** Database '{0}' does not exists on server.\(データベース '{0}' はサーバーに存在しません。\) Provided MySQL source server is case sensitive.\(指定された MySQL ソース サーバーでは大文字と小文字が区別されます。\) Please check the database name.\(データベース名を確認してください。\)
 
-  **制限事項** :コマンド ライン インターフェイス (CLI) を使用して MySQL データベースを Azure に移行するときに、このエラーが発生する場合があります。 サービスはソース サーバーでデータベースを見つけることができませんでした。データベース名が正しく指定されていないか、一覧表示されたサーバーにデータベースが存在しない可能性があります。 データベース名では大文字と小文字が区別されることに注意してください。
+  **制限事項**:コマンド ライン インターフェイス (CLI) を使用して MySQL データベースを Azure に移行するときに、このエラーが発生する場合があります。 サービスはソース サーバーでデータベースを見つけることができませんでした。データベース名が正しく指定されていないか、一覧表示されたサーバーにデータベースが存在しない可能性があります。 データベース名では大文字と小文字が区別されることに注意してください。
 
-  **回避策** :正確なデータベース名を指定して、再試行してください。
+  **回避策**:正確なデータベース名を指定して、再試行してください。
 
 - **エラー:** There are tables with the same name in the database '{database}'.\(データベース '{database}' に同じ名前のテーブルがあります。\) Azure Database for MySQL does not support case sensitive tables.\(Azure Database for MySQL では、大文字と小文字を区別するテーブルはサポートされていません。\)
 
-  **制限事項** :このエラーは、ソース データベースに同じ名前の 2 つのテーブルがある場合に発生します。 Azure Database for MySQL では、大文字と小文字を区別するテーブルはサポートされていません。
+  **制限事項**:このエラーは、ソース データベースに同じ名前の 2 つのテーブルがある場合に発生します。 Azure Database for MySQL では、大文字と小文字を区別するテーブルはサポートされていません。
 
-  **回避策** :テーブル名を一意になるように更新して、再試行してください。
+  **回避策**:テーブル名を一意になるように更新して、再試行してください。
 
 - **エラー:** ターゲット データベース {database} が空です。 スキーマを移行してください。
 
-  **制限事項** :このエラーは、ターゲットとなる Azure Database for MySQL データベースに必要なスキーマがない場合に発生します。 データをターゲットに移行できるようにするには、スキーマの移行が必要です。
+  **制限事項**:このエラーは、ターゲットとなる Azure Database for MySQL データベースに必要なスキーマがない場合に発生します。 データをターゲットに移行できるようにするには、スキーマの移行が必要です。
 
-  **回避策** :ソース データベースからターゲット データベースに [スキーマを移行](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#migrate-the-sample-schema)してください。
+  **回避策**:ソース データベースからターゲット データベースに [スキーマを移行](./tutorial-mysql-azure-mysql-online.md#migrate-the-sample-schema)してください。
 
 ## <a name="other-limitations"></a>その他の制限事項
 
@@ -136,10 +136,10 @@ AWS RDS MySQL から Azure Database for MySQL へのオンライン移行を実�
 
 - Azure Database Migration Service では、1 回の移行アクティビティで移行できるデータベースは最大で 4 個です。
 
-- Azure DMS では、CASCADE 参照操作はサポートされていません。これは、親テーブルで行が削除または更新されたときに子テーブル内の一致する行を自動的に削除または更新するのに役立つ操作です。 詳細については、MySQL のドキュメントで、[FOREIGN KEY 制約](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)に関する記事の参照操作のセクションを参照してください。 Azure DMS では、初期データの読み込み中に、ターゲット データベース サーバーで外部キー制約を削除する必要があるため、参照操作を使用できません。 ワークロードが、この参照操作による、関連する子テーブルの更新に依存している場合は、代わりに[ダンプと復元](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore)を実行することをお勧めします。 
+- Azure DMS では、CASCADE 参照操作はサポートされていません。これは、親テーブルで行が削除または更新されたときに子テーブル内の一致する行を自動的に削除または更新するのに役立つ操作です。 詳細については、MySQL のドキュメントで、[FOREIGN KEY 制約](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)に関する記事の参照操作のセクションを参照してください。 Azure DMS では、初期データの読み込み中に、ターゲット データベース サーバーで外部キー制約を削除する必要があるため、参照操作を使用できません。 ワークロードが、この参照操作による、関連する子テーブルの更新に依存している場合は、代わりに[ダンプと復元](../mysql/concepts-migrate-dump-restore.md)を実行することをお勧めします。 
 
 - **エラー:** 行サイズが大きすぎます (> 8126)。 一部の列をテキストまたは BLOB に変更すると役立つ場合があります。 現在の行形式では、0 バイトの BLOB プレフィックスがインラインで格納されます。
 
-  **制限事項** :このエラーは、InnoDB ストレージ エンジンを使用して Azure Database for MySQL に移行しているときに、テーブルの行サイズが大きすぎる (> 8126 バイト) 場合に発生します。
+  **制限事項**:このエラーは、InnoDB ストレージ エンジンを使用して Azure Database for MySQL に移行しているときに、テーブルの行サイズが大きすぎる (> 8126 バイト) 場合に発生します。
 
-  **回避策** :行のサイズが 8126 バイトを超えるテーブルのスキーマを更新します。 データが切り捨てられるため、厳格モードを変更することはお勧めしません。 page_size の変更はサポートされていません。
+  **回避策**:行のサイズが 8126 バイトを超えるテーブルのスキーマを更新します。 データが切り捨てられるため、厳格モードを変更することはお勧めしません。 page_size の変更はサポートされていません。

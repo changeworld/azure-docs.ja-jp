@@ -9,24 +9,26 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/01/2020
-ms.openlocfilehash: b8ca96dd0b11f7a4c76f7a954959ef5005fb4a40
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a77f9c8f7e37d2c5a040a48b6bd96bef11d51f14
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323981"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533482"
 ---
 # <a name="monitor-azure-machine-learning"></a>Azure Machine Learning の監視
 
 Azure リソースに依存するクリティカルなアプリケーションとビジネス プロセスがある場合は、それらのリソースの可用性、パフォーマンス、操作を監視する必要があります。 この記事では、Azure Machine Learning によって生成される監視データと、Azure Monitor でこのデータを分析してアラートを生成する方法について説明します。
 
 > [!TIP]
-> このドキュメントは、 *ワークスペース* レベルでの Azure Machine Learning の監視について説明するものであり、記載されている情報は主に管理者を対象としています。 データ サイエンティストまたは開発者の方で、 *モデルのトレーニング実行* に固有の情報を監視したい場合は、次のドキュメントを参照してください。
+> このドキュメントは、Azure Machine Learning service と関連する Azure サービスの監視について説明するものであり、記載されている情報は主に "__管理者__" を対象としています。 "__データ サイエンティスト__" または "__開発者__" の方で、"*モデルのトレーニング実行*" に固有の情報を監視したい場合は、次のドキュメントを参照してください。
 >
 > * [トレーニングの実行の開始、監視、およびキャンセル](how-to-manage-runs.md)
 > * [トレーニング実行のメトリックを記録する](how-to-track-experiments.md)
 > * [MLflow を使用して実験を追跡する](how-to-use-mlflow.md)
 > * [TensorBoard を使用して実行を視覚化する](how-to-monitor-tensorboard.md)
+>
+> Web サービスまたは IoT Edge モジュールとしてデプロイされたモデルにより生成された情報を監視するには、[モデル データの収集](how-to-enable-data-collection.md)および [Application Insights での監視](how-to-enable-app-insights.md)に関する記事を参照してください。
 
 ## <a name="what-is-azure-monitor"></a>Azure Monitor とは
 
@@ -83,7 +85,7 @@ Azure Machine Learning の次のログを構成できます。
 
 収集されるプラットフォーム メトリックの一覧については、「[Azure Machine Learning 監視データのリファレンス メトリック](monitor-resource-reference.md#metrics)」を参照してください。
 
-Azure Machine Learning のすべてのメトリックは、 **Machine Learning Service ワークスペース** という名前空間にあります。
+Azure Machine Learning のすべてのメトリックは、**Machine Learning Service ワークスペース** という名前空間にあります。
 
 ![Machine Learning Service ワークスペースが選択されているメトリックス エクスプローラー](./media/monitor-azure-machine-learning/metrics.png)
 
@@ -93,14 +95,14 @@ Azure Machine Learning のすべてのメトリックは、 **Machine Learning S
 
 ディメンションをサポートするメトリックについては、ディメンション値を使用してフィルターを適用できます。 たとえば、`cpu-cluster`という **クラスター名** の **アクティブ コア** をフィルター処理します。 
 
-また、メトリックをディメンションで分割して、メトリックのセグメントを互いに比較してどのように異なるかを視覚化することもできます。 たとえば、 **パイプラインのステップの種類** を分割して、パイプラインで使用されているステップの種類の数を確認します。
+また、メトリックをディメンションで分割して、メトリックのセグメントを互いに比較してどのように異なるかを視覚化することもできます。 たとえば、**パイプラインのステップの種類** を分割して、パイプラインで使用されているステップの種類の数を確認します。
 
 フィルター処理と分割の詳細については、[Azure Monitor の高度な機能](../azure-monitor/platform/metrics-charts.md)に関する記事をご覧ください。
 
 <a id="analyzing-log-data"></a>
 ## <a name="analyzing-logs"></a>ログの分析
 
-Azure Monitor Log Analytics を使用するには、診断構成を作成して、 __Log Analytics への情報の送信__ を有効にする必要があります。 詳細については、「[コレクションとルーティング](#collection-and-routing)」セクションを参照してください。
+Azure Monitor Log Analytics を使用するには、診断構成を作成して、__Log Analytics への情報の送信__ を有効にする必要があります。 詳細については、「[コレクションとルーティング](#collection-and-routing)」セクションを参照してください。
 
 Azure Monitor のログのデータはテーブルに格納され、各テーブルには独自の一意のプロパティ セットがあります。 Azure Machine Learning は、次のテーブルにデータを格納します。
 
@@ -111,7 +113,7 @@ Azure Monitor のログのデータはテーブルに格納され、各テーブ
 | AmlComputeJobEvent | Azure Machine Learning コンピューティングで実行されているジョブからのイベント。 |
 
 > [!IMPORTANT]
-> Azure Machine Learning のメニューから **[ログ]** を選択すると、クエリのスコープが現在のワークスペースに設定された状態で Log Analytics が開きます。 つまり、ログ クエリには、そのリソースからのデータのみが含まれます。 他のデータベースのデータや他の Azure サービスのデータを含むクエリを実行する場合は、 **Azure Monitor** のメニューから **[ログ]** を選択します。 詳細については、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](../azure-monitor/log-query/scope.md)」を参照してください。
+> Azure Machine Learning のメニューから **[ログ]** を選択すると、クエリのスコープが現在のワークスペースに設定された状態で Log Analytics が開きます。 つまり、ログ クエリには、そのリソースからのデータのみが含まれます。 他のデータベースのデータや他の Azure サービスのデータを含むクエリを実行する場合は、**Azure Monitor** のメニューから **[ログ]** を選択します。 詳細については、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](../azure-monitor/log-query/scope.md)」を参照してください。
 
 ログおよびメトリックの詳細なリファレンスについては、「[Azure Machine Learning 監視データのリファレンス](monitor-resource-reference.md)」を参照してください。
 
@@ -156,7 +158,7 @@ Azure Monitor のログのデータはテーブルに格納され、各テーブ
 
 ## <a name="alerts"></a>アラート
 
-Azure Machine Learning のアラートにアクセスするには、 **Azure Monitor** のメニューから **[アラート]** を開きます。 アラートの作成の詳細については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../azure-monitor/platform/alerts-metric.md)」を参照してください。
+Azure Machine Learning のアラートにアクセスするには、**Azure Monitor** のメニューから **[アラート]** を開きます。 アラートの作成の詳細については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../azure-monitor/platform/alerts-metric.md)」を参照してください。
 
 次の表に、Azure Machine Learning の一般的および推奨されるメトリック アラート ルールを示します。
 

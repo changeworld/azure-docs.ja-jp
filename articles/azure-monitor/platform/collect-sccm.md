@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
 ms.openlocfilehash: 20d55de7ef0f7b7f49b922409f8cb61874fae0f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448156"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008975"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager を Azure Monitor に接続する
 お使いの Microsoft Endpoint Configuration Manager 環境を Azure Monitor に接続して、デバイス コレクション データを同期し、Azure Monitor と Azure Automation でこれらのコレクションを参照することができます。  
@@ -121,7 +121,7 @@ Configuration Manager を Azure Monitor にリンクした後、コレクショ�
 パスワードまたはクライアント秘密鍵が期限切れになるか、それらを紛失した場合は、Log Analytics の接続プロパティを手動で更新する必要があります。
 
 1. Configuration Manager の **[管理]** ワークスペースで **[Cloud Services]** を選択し、 **[OMS コネクタ]** を選択して **[OMS Connection Properties]\(OMS 接続プロパティ\)** ページを開きます。
-2. このページで **[Azure Active Directory]** タブをクリックし、 **[テナント]** 、 **[クライアント ID]** 、 **[Client secret key expiration (クライアントの秘密鍵の期限切れ)]** を表示します。 **クライアントの秘密鍵**が期限切れかどうかを**確認**します。
+2. このページで **[Azure Active Directory]** タブをクリックし、 **[テナント]** 、 **[クライアント ID]** 、 **[Client secret key expiration (クライアントの秘密鍵の期限切れ)]** を表示します。 **クライアントの秘密鍵** が期限切れかどうかを **確認** します。
 
 ## <a name="import-collections"></a>コレクションをインポートする
 

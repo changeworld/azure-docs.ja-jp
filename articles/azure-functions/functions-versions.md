@@ -4,19 +4,19 @@ description: Azure Functions では、複数のバージョンのランタイム
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 12/09/2019
-ms.openlocfilehash: 6641461e63d7c9452351f3b0b99a274d2714a92e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c67708b5c23667a7b0a1603b756d564b35fa0c3f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208105"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533737"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions ランタイム バージョンの概要
 
 現在、Azure Functions では、次の 3 つのバージョンのランタイム ホストがサポートされています。これらは、1.x、2.x、および 3.x です。 3 つのすべてのバージョンは、運用環境シナリオでサポートされています。  
 
 > [!IMPORTANT]
-> バージョン 1.x はメンテナンス モードであり、Azure portal または Windows コンピューター上のローカルでの開発のみをサポートします。 拡張機能は、それ以降のバージョンでのみ提供されます。 
+> バージョン 1.x はメンテナンス モードであり、Azure portal、Azure Stack Hub ポータル、または Windows コンピューター上のローカルでの開発のみをサポートします。 拡張機能は、それ以降のバージョンでのみ提供されます。 
 
 この記事では、各種のバージョン間のいくつかの相違点、各バージョンを作成する方法、およびバージョンの変更方法について詳細に説明します。
 

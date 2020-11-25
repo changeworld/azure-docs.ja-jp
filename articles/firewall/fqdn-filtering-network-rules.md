@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 11/06/2020
 ms.author: victorh
-ms.openlocfilehash: 2f2cf9639acfa1330c8347ff654649004d7c382e
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: f7196c7715ad5d2c02759040b780b96218e1655e
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380907"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695947"
 ---
 # <a name="use-fqdn-filtering-in-network-rules"></a>ネットワーク ルールでの FQDN フィルタリング
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 0d893eb2bf7a57e173d7acb8f15104522edbc3bf
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 749c32091ed10d5bb39d7b67c8b737e002fc9909
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408211"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693734"
 ---
 # <a name="introduction-to-azure-security"></a>Azure のセキュリティの概要
 ## <a name="overview"></a>概要
@@ -141,8 +141,8 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 ## <a name="storage"></a>ストレージ
 このセクションでは、Azure Storage のセキュリティの重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
-### <a name="role-based-access-control-rbac"></a>ロール ベースのアクセス制御 (RBAC)
-ロールベースのアクセス制御 (RBAC) を使用して、ストレージ アカウントをセキュリティで保護できます。 データ アクセスにセキュリティ ポリシーを適用する組織では、[必知事項](https://en.wikipedia.org/wiki/Need_to_know)と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)のセキュリティ原則に基づいてアクセスを制限することが不可欠です。 これらのアクセス権は、グループおよびアプリケーションに適切な Azure ロールを特定のスコープで割り当てることによって付与されます。 [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md) (ストレージ アカウントの共同作成者など) を使用して、ユーザーに権限を割り当てることができます。 [Azure Resource Manager](../../storage/blobs/security-recommendations.md) モデルを使用したストレージ アカウントのストレージ キーに対するアクセス権は、ロールベースのアクセス制御 (RBAC) で制御できます。
+### <a name="azure-role-based-access-control-azure-rbac"></a>Azure ロールベースのアクセス制御 (Azure RBAC)
+Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、ストレージ アカウントをセキュリティで保護できます。 データ アクセスにセキュリティ ポリシーを適用する組織では、[必知事項](https://en.wikipedia.org/wiki/Need_to_know)と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)のセキュリティ原則に基づいてアクセスを制限することが不可欠です。 これらのアクセス権は、グループおよびアプリケーションに適切な Azure ロールを特定のスコープで割り当てることによって付与されます。 [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md) (ストレージ アカウントの共同作成者など) を使用して、ユーザーに権限を割り当てることができます。 [Azure Resource Manager](../../storage/blobs/security-recommendations.md) モデルを使用したストレージ アカウントのストレージ キーに対するアクセス権は、Azur RBAC で制御できます。
 
 ### <a name="shared-access-signature"></a>Shared Access Signature
 [shared access signature (SAS)](../../storage/common/storage-sas-overview.md) を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 SAS により、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。 この制限付きアクセス許可を付与するとき、アカウント アクセス キーを共有する必要はありません。
@@ -221,7 +221,7 @@ Azure Virtual Network とオンプレミスのサイトとの間でネットワ�
 ### <a name="express-route"></a>ExpressRoute
 Microsoft Azure [ExpressRoute](../../expressroute/expressroute-introduction.md) は専用の WAN リンクです。これにより接続プロバイダーが提供する専用プライベート接続で、オンプレミスのネットワークを Microsoft クラウドに拡張できます。
 
-![ExpressRoute](./media/overview/azure-security-fig1.png)
+![ExpressRoute](./media/overview/azure-security-figure-1.png)
 
 ExpressRoute では、Microsoft Azure、Microsoft 365、CRM Online などの Microsoft クラウド サービスへの接続を確立できます。 接続には、任意の環境間 (IP VPN) 接続、ポイントツーポイントのイーサネット接続、共有施設での接続プロバイダーによる仮想交差接続があります。
 
@@ -231,7 +231,7 @@ ExpressRoute 接続はパブリック インターネットを経由しないた
 ### <a name="application-gateway"></a>Application Gateway
 Microsoft [Azure Application Gateway](../../application-gateway/overview.md) によって[アプリケーション配信コントローラー (ADC) ](https://en.wikipedia.org/wiki/Application_delivery_controller)がサービスとして提供され、さまざまなレイヤー 7 負荷分散機能がアプリケーションで利用できるようになります。
 
-![Application Gateway](./media/overview/azure-security-fig2.png)
+![Application Gateway](./media/overview/azure-security-figure-2.png)
 
 これにより、CPU 集中型の TLS 終端を Application Gateway にオフロードすることによって Web ファームの生産性を最適化できます ("TLS オフロード" または "TLS ブリッジ" とも呼ばれます)。 また、着信トラフィックのラウンド ロビン分散、Cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、単一の Application Gateway の背後で複数の Web サイトをホストする機能など、その他のレイヤー 7 ルーティング機能も用意されています。 Azure Application Gateway はレイヤー 7 のロード バランサーです。
 
@@ -242,7 +242,7 @@ Application Gateway には、HTTP 負荷分散、Cookie ベースのセッショ
 ### <a name="web-application-firewall"></a>Web アプリケーション ファイアウォール
 Web アプリケーション ファイアウォール (WAF) は [Azure Application Gateway](../../application-gateway/overview.md) の機能で、標準のアプリケーション配信コントロール (ADC) 機能に対してアプリケーション ゲートウェイを使用して、Web アプリケーションを保護します。 Web アプリケーション ファイアウォールは、OWASP の上位 10 件の一般的 Web 脆弱性の大部分に対する保護を提供することで、これを実現します。
 
-![Web アプリケーション ファイアウォール](./media/overview/azure-security-fig1.png)
+![Web アプリケーション ファイアウォール](./media/overview/azure-security-figure-3.png)
 
 -   SQL インジェクションからの保護
 
@@ -336,7 +336,7 @@ Microsoft では、複数のセキュリティ上の方法およびテクノロ�
 
 -   [トークン ベースの認証](../../active-directory/develop/authentication-vs-authorization.md)によって、Azure Active Directory 経由の認証を有効にします。
 
--   [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/built-in-roles.md) によって、ユーザーに割り当てられたロールに基づいたアクセス権の付与が可能になります。これにより、ユーザーの職務実行に必要なアクセス権のみを簡単に付与できるようになります。 RBAC は、組織のビジネス モデルやリスク許容度に応じてカスタマイズできます。
+-   [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/built-in-roles.md) によって、ユーザーに割り当てられたロールに基づいたアクセス権の付与が可能になります。これにより、ユーザーの職務実行に必要なアクセス権のみを簡単に付与できるようになります。 Azure RBAC は、組織のビジネス モデルやリスク許容度に応じてカスタマイズできます。
 
 -   [ID 管理 (ハイブリッド ID) の統合](../../active-directory/hybrid/plan-hybrid-identity-design-considerations-overview.md)により、すべてのリソースに対する認証および承認用に単一のユーザー ID を作成して、内部のデータ センターとクラウド プラットフォームでのユーザーのアクセス権制御を維持することができます。
 

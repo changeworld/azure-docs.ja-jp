@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: e3b755ca3ca5338acfc1918bd2085d9fba18b8ac
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: a1d045e66771026d2b4cf7ad44fd6943d2d407f4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380213"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701604"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する
 
@@ -28,7 +28,7 @@ AKS の送信依存関係は、ほぼすべて、背後に静的アドレスが�
 既定で、AKS クラスターは、送信 (エグレス) インターネット アクセスが無制限です。 このレベルのネットワーク アクセスでは、実行しているノードやサービスから必要に応じて外部リソースにアクセスできます。 エグレス トラフィックを制限する場合は、正常なクラスター メンテナンス タスクを維持するために、アクセスできるポートとアドレスの数を制限する必要があります。 送信アドレスをセキュリティで保護する最も簡単なソリューションは、ドメイン名に基づいて送信トラフィックを制御できるファイアウォール デバイスを使用することです。 たとえば、Azure Firewall では、送信先の FQDN に基づいて HTTP と HTTPS の送信トラフィックを制限できます。 また、適切なファイアウォール規則とセキュリティ規則を構成し、これらの必要なポートとアドレスを許可することができます。
 
 > [!IMPORTANT]
-> このドキュメントでは、AKS サブネットから出て行くトラフィックをロックダウンする方法についてのみ説明します。 既定では、AKS にはイングレス要件はありません。  ネットワーク セキュリティ グループ (NSG) とファイアウォールを使用して **内部サブネット トラフィック** をブロックすることは、サポートされていません。 クラスター内のトラフィックを制御およびブロックするには、 [**_ネットワーク ポリシー_* _][network-policy]を使用します。
+> このドキュメントでは、AKS サブネットから出て行くトラフィックをロックダウンする方法についてのみ説明します。 既定では、AKS にはイングレス要件はありません。  ネットワーク セキュリティ グループ (NSG) とファイアウォールを使用して **内部サブネット トラフィック** をブロックすることは、サポートされていません。 クラスター内のトラフィックを制御およびブロックするには、[**_ネットワーク ポリシー_* _][network-policy]を使用します。
 
 ## <a name="required-outbound-network-rules-and-fqdns-for-aks-clusters"></a>AKS クラスターに必要な送信ネットワーク規則と FQDN
 
@@ -38,7 +38,7 @@ _ IP アドレスの依存関係が HTTP/S 以外のトラフィック (TCP ト�
 * FQDN HTTP/HTTPS エンドポイントは、ファイアウォール デバイスに配置することができます。
 * HTTP と HTTPS のワイルドカード エンドポイントは、いくつかの修飾子に基づき、AKS クラスターによって異なる場合がある依存関係です。
 * AKS では、アドミッション コントローラーを使用して、kube-system と gatekeeper-system の下にあるすべてのデプロイに対し、FQDN が環境変数として挿入されます。これにより、ノードと API サーバー間のすべてのシステム通信において、API サーバーの IP ではなく、API サーバーの FQDN が使用されるようになります。 
-* API サーバーと通信する必要があるアプリまたはソリューションがある場合は、ネットワーク規則を **追加** して、" *API サーバーの IP のポート 443 への TCP 通信* を許可する必要があります。
+* API サーバーと通信する必要があるアプリまたはソリューションがある場合は、ネットワーク規則を **追加** して、"*API サーバーの IP のポート 443 への TCP 通信* を許可する必要があります。
 * まれに、メンテナンスが行われると、API サーバーの IP が変わる可能性があります。 API サーバーの IP が変わる可能性がある計画メンテナンス操作は、常に事前に通知されます。
 
 
@@ -159,7 +159,7 @@ GPU が有効になっている AKS クラスターの場合、次の FQDN/ア�
 
 ### <a name="azure-monitor-for-containers"></a>コンテナーに対する Azure Monitor
 
-Azure Monitor for containers へのアクセスを提供するには 2 つのオプションがあります。Azure Monitor の [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) を許可するか、 **または** 、必要な FQDN とアプリケーションの規則へのアクセスを提供することができます。
+Azure Monitor for containers へのアクセスを提供するには 2 つのオプションがあります。Azure Monitor の [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) を許可するか、**または**、必要な FQDN とアプリケーションの規則へのアクセスを提供することができます。
 
 #### <a name="required-network-rules"></a>必要なネットワーク規則
 
@@ -209,8 +209,10 @@ Azure Policy が有効になっている AKS クラスターの場合、次の F
 
 | FQDN                                          | Port      | 用途      |
 |-----------------------------------------------|-----------|----------|
-| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | このアドレスは、Azure Policy の適切な操作のために使用されます。 (現在 AKS でプレビュー段階) |
-| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | このアドレスは、Azure Policy の正しい動作のために組み込みポリシーを GitHub から取得するために使用されます。 (現在 AKS でプレビュー段階) |
+| **`data.policy.core.windows.net`** | **`HTTPS:443`** | このアドレスは、Kubernetes ポリシーをプルし、クラスターのコンプライアンス状態をポリシー サービスにレポートするために使用されます。 |
+| **`store.policy.core.windows.net`** | **`HTTPS:443`** | このアドレスは、組み込みポリシーの Gatekeeper アーティファクトをプルするために使用されます。 |
+| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | このアドレスは、Azure Policy の適切な操作のために使用されます。  |
+| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | このアドレスは、Azure Policy の正しい動作のために組み込みポリシーを GitHub から取得するために使用されます。 |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | テレメトリ データを Application Insights エンドポイントに送信するAzure Policy アドオン。 |
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>Azure Firewall を使用してエグレス トラフィックを制限する
@@ -309,7 +311,7 @@ Azure Firewall の受信および送信規則を構成する必要がありま�
 
 > [!IMPORTANT]
 > クラスターまたはアプリケーションにより、同じ送信先または送信先の小さいサブセットに対して多数の送信接続が作成される場合、フロントエンド IP あたりのポート数の上限に達するのを防ぐため、より多くのファイアウォール フロントエンド IP が必要になることがあります。
-> 複数の IP を持つ Azure ファイアウォールを作成する方法の詳細については、「 [**こちら**](../firewall/quick-create-multiple-ip-template.md)」を参照してください
+> 複数の IP を持つ Azure ファイアウォールを作成する方法の詳細については、「[**こちら**](../firewall/quick-create-multiple-ip-template.md)」を参照してください
 
 Azure Firewall フロントエンド アドレスとして使用される Standard SKU のパブリック IP リソースを作成します。
 
@@ -445,7 +447,7 @@ SUBNETID=$(az network vnet subnet show -g $RG --vnet-name $VNET_NAME --name $AKS
 サブネット上に既に存在する UDR を使用するように、送信の種類を定義します。 この構成により、AKS ではロード バランサーに対するセットアップと IP のプロビジョニングをスキップできるようになります。
 
 > [!IMPORTANT]
-> 制限など、送信の種類 UDR の詳細については、 [**エグレス送信の種類 UDR**](egress-outboundtype.md#limitations)に関する記事を参照してください。
+> 制限など、送信の種類 UDR の詳細については、[**エグレス送信の種類 UDR**](egress-outboundtype.md#limitations)に関する記事を参照してください。
 
 
 > [!TIP]

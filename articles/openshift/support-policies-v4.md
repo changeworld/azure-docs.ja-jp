@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: fe703b9589dcd49298ac45d5a14032ca7e556bfd
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e396cfa032a3030467b2e2318d61393713894cd4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408408"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628222"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift のサポート ポリシー
 
@@ -23,6 +23,7 @@ Azure Red Hat OpenShift 4 クラスターの一部の構成は、クラスター
 ## <a name="cluster-configuration-requirements"></a>クラスター構成の要件
 
 * すべての OpenShift Cluster オペレーターは、管理された状態のままである必要があります。 `oc get clusteroperators` を実行して、クラスター オペレーターの一覧を返すことができます。
+* クラスターには、少なくとも 1 つのワーカー ノードが必要です。 クラスター ワーカーをゼロにスケーリングしないでください。
 * クラスターの Prometheus および Alertmanager サービスを削除または変更しないでください。
 * Service Alertmanager ルールを削除しないでください。
 * Azure Red Hat OpenShift サービス ログ (mdsd ポッド) を削除または変更しないでください。

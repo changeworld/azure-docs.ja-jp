@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 2b99d032b953caecfca2b34d5eadafe94f45f307
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87809376"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009536"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Azure における Durable Functions でのインスタンスの管理
 
@@ -800,7 +800,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.co
 > [!NOTE]
 > この API は、適切なエラー処理や再試行ポリシーの代わりとなるものではありません。 予期しない理由でオーケストレーション インスタンスが失敗する場合にのみ使用するものです。 エラー処理と再試行ポリシーについて詳しくは、[エラー処理](durable-functions-error-handling.md)に関する記事をご覧ください。
 
-[オーケストレーション クライアントのバインド](durable-functions-bindings.md#orchestration-client)上の `RewindAsync` (.NET) または `rewind` (JavaScript) メソッドを使用して、オーケストレーションを*実行中*の状態に戻します。 またこのメソッドは、オーケストレーション エラーの原因となったアクティビティやサブ オーケストレーションの実行失敗も再実行します。
+[オーケストレーション クライアントのバインド](durable-functions-bindings.md#orchestration-client)上の `RewindAsync` (.NET) または `rewind` (JavaScript) メソッドを使用して、オーケストレーションを *実行中* の状態に戻します。 またこのメソッドは、オーケストレーション エラーの原因となったアクティビティやサブ オーケストレーションの実行失敗も再実行します。
 
 たとえば、一連の[人による承認](durable-functions-overview.md#human)が含まれるワークフローがあるものとします。 承認が必要であることをユーザーに通知し、リアルタイムの応答を待機する一連のアクティビティ関数があるとします。 すべての承認アクティビティが応答を受信するかタイムアウトになった後、アプリケーションの構成ミス (無効なデータベース接続文字列など) により別のアクティビティが失敗します。 結果として、ワークフローの深い部分でオーケストレーションが失敗します。 `RewindAsync` (.NET) または `rewind` (JavaScript) API を使用すると、アプリケーション管理者は構成エラーを修正し、失敗したオーケストレーションを失敗の直前の状態に巻き戻すことができます。 人間の対話手順はいずれも再承認が不要で、オーケストレーションは正常に完了できるようになります。
 
@@ -997,7 +997,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 ---
 
 > [!NOTE]
-> 履歴の消去の操作を成功させるには、ターゲット インスタンスの実行時の状態が**完了**、**終了**、または**失敗**になっている必要があります。
+> 履歴の消去の操作を成功させるには、ターゲット インスタンスの実行時の状態が **完了**、**終了**、または **失敗** になっている必要があります。
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 

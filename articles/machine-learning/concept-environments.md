@@ -1,23 +1,22 @@
 ---
 title: Azure Machine Learning 環境について
 titleSuffix: Azure Machine Learning
-description: この記事では、さまざまなコンピューティング先での再現可能、監査可能、移植可能な機械学習の依存関係定義を有効にする、機械学習環境の利点について説明します。
+description: さまざまなコンピューティング先での再現可能、監査可能、移植可能な機械学習の依存関係定義を有効にする機械学習環境について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
-ms.date: 07/08/2020
-ms.openlocfilehash: 9c554abc8aef89ca353e06c14b04fab2622d2827
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/16/2020
+ms.openlocfilehash: 78f8d6d216659eaad01d512dd45696dd31035885
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322194"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695386"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Azure Machine Learning 環境とは?
-
 
 Azure Machine Learning 環境は、機械学習トレーニングが行われる環境をカプセル化したものです。 そこでは、トレーニングとスコアリングのスクリプトに関連する、Python パッケージ、環境変数、およびソフトウェア設定を指定します。 また、実行時間 (Python、Spark、または Docker) も指定します。 環境は、Machine Learning ワークスペース内で管理およびバージョン管理されるエンティティであり、さまざまなコンピューティング先で再現、監査、移植が可能な機械学習ワークフローを実現します。
 
@@ -35,7 +34,7 @@ Azure Machine Learning 環境は、機械学習トレーニングが行われる
 
 ## <a name="types-of-environments"></a>環境の種類
 
-環境は、 *キュレーション* 、 *ユーザー管理* 、 *システム管理* の 3 つのカテゴリに大別できます。
+環境は、*キュレーション*、*ユーザー管理*、*システム管理* の 3 つのカテゴリに大別できます。
 
 キュレートされた環境は Azure Machine Learning から提供され、既定でお使いのワークスペースで利用できます。 これらには、現状のまま使用する目的で、Python のパッケージと設定のコレクションが含まれていて、さまざまな機械学習フレームワークの使用を開始する助けとなります。 これらの事前に作成された環境を利用すると、デプロイ時間の短縮も可能です。 完全な一覧については、[キュレーションされた環境に関する記事](resource-curated-environments.md)を参照してください。
 
@@ -103,7 +102,7 @@ Azure Machine Learning service では、Docker イメージと Conda 環境に�
 ![Docker イメージとしての環境のキャッシュの図](./media/concept-environments/environment-caching.png)
 
 >[!IMPORTANT]
-> ```numpy``` など、固定されていないパッケージの依存関係を持つ環境を作成すると、その環境では、" _環境の作成時_ " にインストールされたパッケージのバージョンが引き続き使用されます。 また、一致した定義を持つ将来の環境では、古いバージョンが使用され続けます。 
+> ```numpy``` など、固定されていないパッケージの依存関係を持つ環境を作成すると、その環境では、"_環境の作成時_" にインストールされたパッケージのバージョンが引き続き使用されます。 また、一致した定義を持つ将来の環境では、古いバージョンが使用され続けます。 
 
 パッケージを更新するには、バージョン番号を指定してイメージのリビルドを強制します (```numpy==1.18.1``` など)。 以前の動作シナリオが破壊される可能性がある、新しい依存関係 (入れ子になった依存関係など) がインストールされます。 
 

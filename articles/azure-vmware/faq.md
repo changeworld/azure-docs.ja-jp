@@ -2,14 +2,14 @@
 title: よく寄せられる質問
 description: Azure VMware Solution についてよく寄せられる質問にお答えします。
 ms.topic: conceptual
-ms.date: 09/25/2020
+ms.date: 11/12/2020
 ms.author: dikamath
-ms.openlocfilehash: 33250b0ba9209f7806346668dac0ef308101e7c2
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 2d71c30d2fb08629674c352ae812d8890463abfe
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94487791"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695103"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware Solution についてよく寄せられる質問
 
@@ -229,9 +229,15 @@ NSX-T に対する完全な管理者特権があり、オンプレミスの NSX-
 
 価格に関する一般的な質問については、Azure VMware Solution の[価格](https://azure.microsoft.com/pricing/details/azure-vmware)に関するページを参照してください。 
 
+#### <a name="can-azure-vmware-solution-be-purchased-through-a-microsoft-csp"></a>Microsoft CSP から Azure VMware Solution を購入できますか。
+
+はい。顧客は CSP で管理されている Azure サブスクリプション内に Azure VMware Solution をデプロイできます。
+
 #### <a name="who-supports-azure-vmware-solution"></a>Azure VMware Solution のサポート提供元はどこですか?
 
-Azure VMware Solution のサポートは、Microsoft が提供します。 [サポート リクエスト](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を送信できます。
+Azure VMware Solution のサポートは、Microsoft が提供します。 [サポート リクエスト](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を送信できます。 
+
+CSP で管理されているサブスクリプションの場合は、他の Azure サービス用の CSP と同様に、ソリューション プロバイダーから第 1 レベルのサポートが提供されます。
 
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>Azure VMware Solution のプライベート クラウドを作成するにはどのアカウントが必要ですか?
 
@@ -246,6 +252,10 @@ Microsoft と Red Hat は、Azure プラットフォームで実行される Red
 VMware HCX Enterprise Edition (EE) は、Azure VMware Solution で、*プレビュー* の機能/サービスとして使用できます。 Azure VMware Solution 向けの VMware HCX EE はプレビュー段階ですが、無料の機能/サービスであり、プレビュー サービスの利用規約が適用されます。 VMware HCX EE サービスが GA になると、課金が切り替わるという通知が 30 日間前に届きます。 サービスを停止またはオプトアウトすることができます。
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Azure VMware Solution に対するホスト クォータの増量はどのようにリクエストすればよいですか?
+
+CSP で管理されているサブスクリプションの場合は、顧客がパートナーへの要求を行う必要があり、パートナー チームが Microsoft と協力して、サブスクリプションのクォータを増やします。 詳細については、「[Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)」をご覧ください。 
+
+EA サブスクリプションの場合は、顧客がこの手順に従う必要があります。
 
 * Microsoft との [Azure Enterprise Agreement (EA)](../cost-management-billing/manage/ea-portal-agreements.md) が必要です。
 * Azure サブスクリプションの Azure アカウントが必要です。
@@ -283,9 +293,16 @@ Azure VMware Solution リソースを作成する前に、サポート チケッ
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
-   `"
 
-   For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md).
+   For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md). 
+
+#### Are Reserved Instances available for purchasing through the Cloud Solution Provider (CSP) program?
+
+Yes. CSP can purchase reserved instances on behalf of their customers, see [Save costs with a reserved instance](reserved-instance.md) article. 
+
+#### Does Azure VMware Solution offer multi-tenancy for hosting CSP partners?
+
+No. Currently Azure VMware Solution does not offer multi-tenancy.
 
 
 ## Customer communication

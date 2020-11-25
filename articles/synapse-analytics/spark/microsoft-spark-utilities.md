@@ -4,24 +4,27 @@ description: Azure Synapse Analytics ノートブックでの MSSparkutils の�
 author: ruxu
 services: synapse-analytics
 ms.service: synapse-analytics
-ms.topic: conceptual
+ms.topic: reference
 ms.subservice: spark
 ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 648c5b75f125725ebda2966d3ebc4200ee76b98c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: c03d8e744598386db3d6d03a71e4d1b735d9d71f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428500"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533278"
 ---
 # <a name="introduction-of-microsoft-spark-utilities"></a>Microsoft Spark Utilities の概要
-Microsoft Spark Utilities (MSSparkUtils) は、一般的なタスクをより簡単に実行できるようにするための組み込みパッケージです。 MSSparkUtils を使用すると、ファイルシステムを効率的に操作し、環境変数を取得し、シークレットを操作できます。 MSSparkUtils は、`PySpark (Python)`、`Scala`、および `.NET Spark (C#)` ノートブックと Synapse パイプラインで使用できます。
+
+Microsoft Spark Utilities (MSSparkUtils) は、一般的なタスクをより簡単に実行できるようにする組み込みパッケージです。 MSSparkUtils を使用すると、ファイル システムを操作し、環境変数を取得し、シークレットを操作できます。 MSSparkUtils は、`PySpark (Python)`、`Scala`、および `.NET Spark (C#)` ノートブックと Synapse パイプラインで使用できます。
 
 ## <a name="pre-requisites"></a>前提条件
+
 ### <a name="configure-access-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 へのアクセスを構成する 
+
 Synapse ノートブックでは、Azure Active Directory (Azure AD) パススルーを使用して、ADLS Gen2 アカウントにアクセスします。 ADLS Gen2 アカウント (またはフォルダー) にアクセスするには、**Blob Storage 共同作成者** である必要があります。 
 
 Synapse パイプラインでは、ワークスペース ID (MSI) を使用してストレージ アカウントにアクセスします。 パイプライン アクティビティで MSSparkUtils を使用するには、ADLS Gen2 アカウント (またはフォルダー) にアクセスするために、ワークスペース ID が **Blob Storage 共同作成者** である必要があります。
@@ -29,8 +32,8 @@ Synapse パイプラインでは、ワークスペース ID (MSI) を使用し�
 Azure AD とワークスペースの MSI が ADLS Gen2 アカウントにアクセスできることを確認するには、次の手順に従います。
 1. [Azure portal](https://portal.azure.com/) と、アクセスしたいストレージ アカウントを開きます。 アクセスしたい特定のコンテナーに移動できます。
 2. 左側のパネルから **[アクセス制御 (IAM)]** を選択します。
-3. ストレージ アカウントの **Storage Blob データ共同作成者** ロールを **Azure AD アカウント** と **ワークスペース ID** (ワークスペース名と同じ) に割り当てるか、既に割り当てられていることを確認します。 
-4. **[保存]** をクリックします。
+3. **Azure AD アカウント** と **ワークスペース ID** (ワークスペース名と同じ) をストレージ アカウントの **Storage Blob データ共同作成者** ロールに割り当てます (まだ割り当てていない場合)。 
+4. **[保存]** を選択します。
 
 Synapse Spark を使用して ADLS Gen2 のデータにアクセスするには、次の URL を使用します。
 
@@ -47,8 +50,8 @@ Azure Blob Storage アカウントにリンクされたサービスを新しく�
 3. 右側にある **[新しいリンクされたサービス]** パネルで **Azure Blob Storage** を検索します。
 4. **[続行]** をクリックします。
 5. リンクされたサービス名にアクセスして構成するには、Azure Blob Storage アカウントを選択します。 **[認証方法]** には、 **[アカウント キー]** を使用することをお勧めします。
-6. **[テスト接続]** をクリックして設定が正しいことを検証します。
-7. 最初に **[作成]** クリックし、 **[すべて公開]** をクリックして、変更を保存します。 
+6. **[テスト接続]** を選択して設定が正しいことを検証します。
+7. 最初に **[作成]** を選択し、 **[すべて公開]** をクリックして、変更を保存します。 
 
 Synapse Spark を使用して Azure Blob Storage のデータにアクセスするには、次の URL を使用します。
 
@@ -103,19 +106,19 @@ Synapse で資格情報を管理するために、リンクされたサービス
 2. 左側のパネルで **[管理]** を選択し、 **[外部接続]** の下にある **[リンクされたサービス]** を選択します。
 3. 右側にある **[新しいリンクされたサービス]** パネルで **Azure Key Vault** を検索します。
 4. リンクされたサービス名にアクセスして構成するには、Azure Key Vault アカウントを選択します。
-5. **[テスト接続]** をクリックして設定が正しいことを検証します。
-6. 最初に **[作成]** をクリックし、 **[すべて公開]** をクリックして、変更を保存します。 
+5. **[テスト接続]** を選択して設定が正しいことを検証します。
+6. 最初に **[作成]** を選択し、 **[すべて公開]** をクリックして、変更を保存します。 
 
 Synapse ノートブックでは、Azure Active Directory (Azure AD) パススルーを使用して、Azure Key Vault にアクセスします。 Synapse パイプラインでは、ワークスペース ID (MSI) を使用して Azure Key Vault にアクセスします。 コードがノートブックと Synapse パイプラインの両方で動作することを確認するには、Azure AD アカウントとワークスペース ID の両方に対してシークレット アクセス許可を付与することをお勧めします。
 
 ワークスペース ID にシークレット アクセス権を付与するには、次の手順に従います。
 1. [Azure portal](https://portal.azure.com/) と、アクセスしたい Azure Key Vault を開きます。 
 2. 左側のパネルで **[アクセス ポリシー]** を選択します。
-3. **[アクセス ポリシーの追加]** をクリックします。 
+3. **[アクセス ポリシーの追加]** を選択します。 
     - 構成テンプレートとして **[キー、シークレット、および証明書の管理]** を選択します。
     - プリンシパルの選択で **Azure AD アカウント** と **ワークスペース ID** (ワークスペース名と同じ) を選択するか、既に割り当てられていることを確認します。 
-4. **[選択]** および **[追加]** をクリックします。
-5. **[保存]** ボタンをクリックして変更をコミットします。  
+4. **[選択]** および **[追加]** を選択します。
+5. **[保存]** ボタンを選択して変更をコミットします。  
 
 ## <a name="file-system-utilities"></a>ファイルシステム ユーティリティ
 
@@ -196,7 +199,7 @@ FS.Ls("Your directory path")
 
 
 ### <a name="view-file-properties"></a>ファイルのプロパティを表示します
-ファイル名、ファイル パス、ファイル サイズ、ディレクトリであるかどうか、ファイルであるかどうかなど、ファイルのプロパティを返します。
+ファイル名、ファイル パス、ファイル サイズ、ディレクトリであるかファイルであるかどうかなど、ファイルのプロパティを返します。
 
 :::zone pivot = "programming-language-python"
 
@@ -230,7 +233,8 @@ foreach(var File in Files) {
 ::: zone-end
 
 ### <a name="create-new-directory"></a>新しいディレクトリの作成
-指定されたディレクトリが存在しない場合は作成し、必要な親ディレクトリも作成します。
+
+指定されたディレクトリが存在しない場合は作成し、必要な親ディレクトリを作成します。
 
 :::zone pivot = "programming-language-python"
 
@@ -256,7 +260,8 @@ FS.Mkdirs("new directory name")
 ::: zone-end
 
 ### <a name="copy-file"></a>ファイルのコピー
-ファイルまたはディレクトリをコピーし、ファイル システム間でコピーをサポートします。
+
+ファイルまたはディレクトリをコピーします。 ファイル システム間でのコピーをサポートします。
 
 :::zone pivot = "programming-language-python"
 
@@ -282,6 +287,7 @@ FS.Cp("source file or directory", "destination file or directory", true) // Set 
 ::: zone-end
 
 ### <a name="preview-file-content"></a>ファイル コンテンツのプレビュー
+
 指定したファイルの最初の 'maxBytes' バイトまでを、UTF-8 でエンコードされた文字列として返します。
 
 :::zone pivot = "programming-language-python"
@@ -308,7 +314,8 @@ FS.Head("file path", maxBytes to read)
 ::: zone-end
 
 ### <a name="move-file"></a>ファイルの移動
-ファイルまたはディレクトリを移動し、ファイル システム間で移動をサポートします。
+
+ファイルまたはディレクトリを移動します。 ファイル システム間での移動をサポートします。
 
 :::zone pivot = "programming-language-python"
 
@@ -334,7 +341,8 @@ FS.Mv("source file or directory", "destination directory", true)
 ::: zone-end
 
 ### <a name="write-file"></a>ファイルの書き込み
-指定した文字列を UTF-8 でエンコードしたファイルに書き込みます。
+
+指定した文字列を UTF-8 でエンコードしてファイルに書き込みます。
 
 :::zone pivot = "programming-language-python"
 
@@ -360,7 +368,8 @@ FS.Put("file path", "content to write", true) // Set the last parameter as True 
 ::: zone-end
 
 ### <a name="append-content-to-a-file"></a>ファイルへのコンテンツの追加
-指定した文字列を UTF-8 でエンコードしたファイルに追加します。
+
+指定した文字列を UTF-8 でエンコードしてファイルに追加します。
 
 :::zone pivot = "programming-language-python"
 
@@ -386,6 +395,7 @@ FS.Append("file path","content to append",true) // Set the last parameter as Tru
 ::: zone-end
 
 ### <a name="delete-file-or-directory"></a>ファイルまたはディレクトリの削除
+
 ファイルまたはディレクトリを削除します。
 
 :::zone pivot = "programming-language-python"
@@ -454,6 +464,7 @@ putSecret(akvName, secretName, secretValue): puts AKV secret for a given akvName
 ```
 
 ### <a name="get-token"></a>トークンを取得する
+
 指定された対象ユーザー、名前 (省略可能) の Azure AD トークンを返します。 次の表に、使用可能なすべての対象ユーザーの種類を示します。 
 
 |対象ユーザーの種類|対象ユーザーのキー|
@@ -492,6 +503,7 @@ mssparkutils.credentials.getToken("audience Key")
 
 
 ### <a name="validate-token"></a>トークンの検証
+
 トークンの有効期限が切れていない場合は true を返します。
 
 :::zone pivot = "programming-language-python"
@@ -519,6 +531,7 @@ mssparkutils.credentials.isValidToken("your token")
 
 
 ### <a name="get-connection-string-or-credentials-for-linked-service"></a>リンクされたサービスの接続文字列または資格情報の取得
+
 リンクされたサービスの接続文字列または資格情報を返します。 
 
 :::zone pivot = "programming-language-python"
@@ -546,6 +559,7 @@ mssparkutils.credentials.getConnectionStringOrCreds("linked service name")
 
 
 ### <a name="get-secret-using-workspace-identity"></a>ワークスペース ID を使用したシークレットの取得
+
 ワークスペース ID を使用して、指定した Azure Key Vault 名、シークレット名、およびリンクされたサービス名の Azure Key Vault シークレットを返します。 [Azure Key Vault](#configure-access-to-azure-key-vault) へのアクセスが適切に構成されていることを確認してください。
 
 :::zone pivot = "programming-language-python"
@@ -573,6 +587,7 @@ mssparkutils.credentials.getSecret("azure key vault name","secret name","linked 
 
 
 ### <a name="get-secret-using-user-credentials"></a>ユーザー資格情報を使用したシークレットの取得
+
 ユーザー資格情報を使用して、指定した Azure Key Vault 名、シークレット名、およびリンクされたサービス名の Azure Key Vault シークレットを返します。 
 
 :::zone pivot = "programming-language-python"
@@ -599,6 +614,7 @@ mssparkutils.credentials.getSecret("azure key vault name","secret name")
 ::: zone-end
 
 ### <a name="put-secret-using-workspace-identity"></a>ワークスペース ID を使用したシークレットの作成
+
 ワークスペース ID を使用して、指定した Azure Key Vault 名、シークレット名、およびリンクされたサービス名の Azure Key Vault シークレットを作成します。 [Azure Key Vault](#configure-access-to-azure-key-vault) へのアクセスが適切に構成されていることを確認してください。
 
 :::zone pivot = "programming-language-python"
@@ -626,6 +642,7 @@ mssparkutils.credentials.putSecret("azure key vault name","secret name","secret 
 
 
 ### <a name="put-secret-using-user-credentials"></a>ユーザー資格情報を使用したシークレットの作成
+
 ユーザー資格情報を使用して、指定した Azure Key Vault 名、シークレット名、およびリンクされたサービス名の Azure Key Vault シークレットを作成します。 
 
 :::zone pivot = "programming-language-python"
@@ -689,6 +706,7 @@ getClusterId(): returns cluster id
 ```
 
 ### <a name="get-user-name"></a>ユーザー名の取得
+
 現在のユーザー名を返します。
 
 :::zone pivot = "programming-language-python"
@@ -715,6 +733,7 @@ mssparkutils.env.getUserName()
 ::: zone-end
 
 ### <a name="get-user-id"></a>ユーザー ID の取得
+
 現在のユーザー ID を返します。
 
 :::zone pivot = "programming-language-python"
@@ -741,6 +760,7 @@ mssparkutils.env.getUserId()
 ::: zone-end
 
 ### <a name="get-job-id"></a>ジョブ ID の取得
+
 ジョブ ID を返します。
 
 :::zone pivot = "programming-language-python"
@@ -767,6 +787,7 @@ mssparkutils.env.getJobId()
 ::: zone-end
 
 ### <a name="get-workspace-name"></a>ワークスペース名の取得
+
 ワークスペース名を返します。
 
 :::zone pivot = "programming-language-python"
@@ -793,6 +814,7 @@ mssparkutils.env.getWorkspaceName()
 ::: zone-end
 
 ### <a name="get-pool-name"></a>プール名の取得
+
 Spark プール名を返します。
 
 :::zone pivot = "programming-language-python"
@@ -819,6 +841,7 @@ mssparkutils.env.getPoolName()
 ::: zone-end
 
 ### <a name="get-cluster-id"></a>クラスター ID の取得
+
 現在のクラスター ID を返します。
 
 :::zone pivot = "programming-language-python"
@@ -845,6 +868,7 @@ mssparkutils.env.getClusterId()
 ::: zone-end
 
 ## <a name="next-steps"></a>次のステップ
+
 - [Synapse サンプル ノートブックをチェックアウトする](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
 - [クイック スタート: Web ツールを使用して Azure Synapse Analytics で Apache Spark プール (プレビュー) を作成する](../quickstart-apache-spark-notebook.md)
 - [Azure Synapse Analytics の Apache Spark とは](apache-spark-overview.md)

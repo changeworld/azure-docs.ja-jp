@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c08e03e6ff77613c0950f17fe5225bccb706524c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 83e8089073f7e7e7634ddf00f7276e12aaf645b0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444379"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536440"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>IoT Edge デバイスをゲートウェイとして使用する方法
 
@@ -45,21 +45,21 @@ IoT Edge のバージョン 1.2 以降、透過的ゲートウェイでは他の
 
 透過的ゲートウェイ パターンの場合、IoT Hub に理論的に接続できるデバイスは、代わりにゲートウェイ デバイスに接続できます。 このダウンストリーム デバイスには独自の IoT Hub ID があり、MQTT、AMQP、HTTP のいずれかのプロトコルを使用して接続します。 ゲートウェイは、デバイスと IoT Hub の間の通信を単純に受け渡します。 デバイスも、IoT Hub を介してそれと対話しているユーザーも、ゲートウェイが通信を仲介していることを認識しません。 このように認識されないことは、ゲートウェイが "*透過的*" と見なされることを意味します。
 
-<!-- 1.2.0 -->
-::: moniker range=">=iotedge-2020-11"
-
-IoT Edge デバイスでは、通常の IoT デバイスのほか、透過的ゲートウェイを介して接続できます。
-
-<!-- TODO add a downstream IoT Edge device to graphic -->
-
-::: moniker-end
-
 <!-- 1.0.10 -->
 ::: moniker range="iotedge-2018-06"
 
 IoT Edge デバイスを IoT Edge ゲートウェイのダウンストリームにすることはできません。
 
 ![図 - 透過的ゲートウェイ パターン](./media/iot-edge-as-gateway/edge-as-gateway-transparent.png)
+
+::: moniker-end
+
+<!-- 1.2.0 -->
+::: moniker range=">=iotedge-2020-11"
+
+IoT Edge デバイスでは、バージョン 1.2.0 から、透過的ゲートウェイを介して接続できます。
+
+<!-- TODO add a downstream IoT Edge device to graphic -->
 
 ::: moniker-end
 
@@ -102,10 +102,22 @@ IoT Edge デバイスは、透過的ゲートウェイ リレーションシッ�
 
 ### <a name="device-capabilities-behind-transparent-gateways"></a>透過的ゲートウェイの背後にあるデバイスの機能
 
-
 IoT Edge のメッセージング パイプラインと連携するすべての IoT Hub プリミティブでも、透過的ゲートウェイシナリオがサポートされます。 各 IoT Edge ゲートウェイには、それを経由して受信するメッセージのための保存および転送機能があります。
 
 次の表を使用して、ゲートウェイの背後にあるデバイスと比較して、デバイスでは、どのように異なる IoT Hub 機能がサポートされているかを確認してください。
+
+<!-- 1.0.10 -->
+::: moniker range="iotedge-2018-06"
+
+| 機能 | IoT デバイス | ゲートウェイの背後の IoT |
+| ---------- | ---------- | -------------------- |
+| [デバイスからクラウドへの (D2C) メッセージ](../iot-hub/iot-hub-devguide-messages-d2c.md) |  ![はい - IoT D2C](./media/iot-edge-as-gateway/check-yes.png) | ![はい - 子 IoT D2C](./media/iot-edge-as-gateway/check-yes.png) |
+| [クラウドからデバイスへの (C2D) メッセージ](../iot-hub/iot-hub-devguide-messages-c2d.md) | ![はい - IoT C2D](./media/iot-edge-as-gateway/check-yes.png) | ![はい - IoT 子 C2D](./media/iot-edge-as-gateway/check-yes.png) |
+| [ダイレクト メソッド](../iot-hub/iot-hub-devguide-direct-methods.md) | ![はい - IoT ダイレクト メソッド](./media/iot-edge-as-gateway/check-yes.png) | ![はい - 子 IoT ダイレクト メソッド](./media/iot-edge-as-gateway/check-yes.png) |
+| [デバイス ツイン](../iot-hub/iot-hub-devguide-device-twins.md)と[モジュール ツイン](../iot-hub/iot-hub-devguide-module-twins.md) | ![はい - IoT ツイン](./media/iot-edge-as-gateway/check-yes.png) | ![はい - 子 IoT ツイン](./media/iot-edge-as-gateway/check-yes.png) |
+| [ファイルのアップロード](../iot-hub/iot-hub-devguide-file-upload.md) | ![はい - IoT ファイル アップロード](./media/iot-edge-as-gateway/check-yes.png) | ![いいえ - IoT 子ファイル アップロード](./media/iot-edge-as-gateway/crossout-no.png) |
+
+::: moniker-end
 
 <!-- 1.2.0 -->
 ::: moniker range=">=iotedge-2020-11"
@@ -123,19 +135,6 @@ IoT Edge のメッセージング パイプラインと連携するすべての 
 **コンテナー イメージ** を、親デバイスから子デバイスにダウンロードし、保存して、配信することができます。
 
 サポート バンドルとログを含む **BLOB** を、子デバイスから親デバイスにアップロードできます。
-
-::: moniker-end
-
-<!-- 1.0.10 -->
-::: moniker range="iotedge-2018-06"
-
-| 機能 | IoT デバイス | ゲートウェイの背後の IoT |
-| ---------- | ---------- | -------------------- |
-| [デバイスからクラウドへの (D2C) メッセージ](../iot-hub/iot-hub-devguide-messages-d2c.md) |  ![はい - IoT D2C](./media/iot-edge-as-gateway/check-yes.png) | ![はい - 子 IoT D2C](./media/iot-edge-as-gateway/check-yes.png) |
-| [クラウドからデバイスへの (C2D) メッセージ](../iot-hub/iot-hub-devguide-messages-c2d.md) | ![はい - IoT C2D](./media/iot-edge-as-gateway/check-yes.png) | ![はい - IoT 子 C2D](./media/iot-edge-as-gateway/check-yes.png) |
-| [ダイレクト メソッド](../iot-hub/iot-hub-devguide-direct-methods.md) | ![はい - IoT ダイレクト メソッド](./media/iot-edge-as-gateway/check-yes.png) | ![はい - 子 IoT ダイレクト メソッド](./media/iot-edge-as-gateway/check-yes.png) |
-| [デバイス ツイン](../iot-hub/iot-hub-devguide-device-twins.md)と[モジュール ツイン](../iot-hub/iot-hub-devguide-module-twins.md) | ![はい - IoT ツイン](./media/iot-edge-as-gateway/check-yes.png) | ![はい - 子 IoT ツイン](./media/iot-edge-as-gateway/check-yes.png) |
-| [ファイルのアップロード](../iot-hub/iot-hub-devguide-file-upload.md) | ![はい - IoT ファイル アップロード](./media/iot-edge-as-gateway/check-yes.png) | ![いいえ - IoT 子ファイル アップロード](./media/iot-edge-as-gateway/crossout-no.png) |
 
 ::: moniker-end
 

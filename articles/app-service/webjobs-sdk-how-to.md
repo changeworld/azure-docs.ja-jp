@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: b97ae5d4ba4295ebbb51c960e4cbb76c53dc88a8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148071"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009682"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
@@ -693,7 +693,7 @@ Azure Functions のドキュメントでは、各バインドの種類に関す�
 
 [`Disable`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) 属性は、関数がトリガーされるかどうかを制御します。 
 
-次の例では、アプリ設定 `Disable_TestJob` の値が `1` または `True` (大文字小文字の区別なし) の場合、関数は実行されません。 その場合、ランタイムが*関数 'Functions.TestJob' が無効です*というログ メッセージを作成します。
+次の例では、アプリ設定 `Disable_TestJob` の値が `1` または `True` (大文字小文字の区別なし) の場合、関数は実行されません。 その場合、ランタイムが *関数 'Functions.TestJob' が無効です* というログ メッセージを作成します。
 
 ```cs
 [Disable("Disable_TestJob")]
