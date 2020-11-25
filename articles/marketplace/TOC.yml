@@ -125,12 +125,12 @@
       items:
         - name: Azure Container オファーの計画
           href: marketplace-containers.md
+        - name: 技術資産を準備する
+          href: create-azure-container-technical-assets.md
         - name: Azure Container オファーの作成と発行
           items:
-            - name: 技術資産を準備する
-              href: partner-center-portal/create-azure-container-technical-assets.md
             - name: Azure Container オファーを作成する
-              href: partner-center-portal/create-azure-container-offer.md
+              href: create-azure-container-offer.md
     - name: Azure 仮想マシン オファー
       items:
         - name: VM オファーを計画する

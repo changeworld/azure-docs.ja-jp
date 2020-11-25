@@ -208,6 +208,10 @@
       items:
         - name: エージェントレスの VMware 移行におけるレプリケーションの問題のトラブルシューティング
           href: troubleshoot-changed-block-tracking-replication.md
+- name: リファレンス
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.migrate/
 - name: リソース
   items:
     - name: クラウド導入フレームワークにおける移行

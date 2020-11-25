@@ -752,6 +752,8 @@
           href: connector-troubleshoot-guide.md
         - name: データ フロー
           href: data-flow-troubleshoot-guide.md
+        - name: セキュリティとアクセス制御
+          href: security-and-access-control-troubleshoot-guide.md
         - name: セルフホステッド統合ランタイム
           href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Azure-SSIS 統合ランタイム

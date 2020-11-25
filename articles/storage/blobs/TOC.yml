@@ -1,5 +1,5 @@
 - name: Azure Blob Storage のドキュメント
-  href: /azure/storage/blobs/
+  href: ./index.yml
 - name: 概要
   items:
     - name: Azure Blob Storage とは
@@ -132,7 +132,7 @@
                   href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 管理操作の承認
               href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Security
+        - name: セキュリティ
           items:
             - name: セキュリティに関する推奨事項
               href: security-recommendations.md
@@ -590,7 +590,7 @@
             - name: ストレージ エクスプローラーのアクセシビリティ
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Microsoft Q&A の BLOB ストレージ
-          href: 'https://docs.microsoft.com/answers/topics/azure-blob-storage.html'
+          href: /answers/topics/azure-blob-storage.html
         - name: Stack Overflow の BLOB ストレージ
           href: 'https://stackoverflow.com/questions/tagged/azure-blob-storage'
         - name: ブロック BLOB の価格
@@ -654,7 +654,7 @@
 - name: Data Lake Storage Gen2
   items:
     - name: Azure Data Lake Storage Gen1 のドキュメントに切り替え
-      href: /azure/data-lake-store/
+      href: ../../data-lake-store/index.yml
     - name: 概要
       items:
         - name: Data Lake Storage の概要
@@ -666,7 +666,7 @@
     - name: チュートリアル
       items:
         - name: Azure Databricks を使ったデータの抽出、変換、読み込み
-          href: ../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          href: /azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Spark を使用した Databricks での Data Lake Storage のデータへのアクセス
           href: data-lake-storage-use-databricks-spark.md
         - name: Azure HDInsight の Apache Hive を使用したデータの抽出、変換、読み込み
@@ -691,7 +691,7 @@
               href: data-lake-storage-introduction-abfs-uri.md
             - name: 階層型名前空間について
               href: data-lake-storage-namespace.md
-        - name: Security
+        - name: セキュリティ
           items:
             - name: セキュリティに関する推奨事項
               href: security-recommendations.md
@@ -712,7 +712,7 @@
         - name: 監視
           items:
             - name: Blob ストレージの監視
-              href: ../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              href: ./monitor-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: クラシック メトリックからの移行
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 監視 (クラシック)
@@ -874,7 +874,7 @@
             - name: ストレージ エクスプローラーのアクセシビリティ
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Microsoft Q&A 質問ページ
-          href: 'https://docs.microsoft.com/answers/topics/azure-blob-storage.html'
+          href: /answers/topics/azure-blob-storage.html
         - name: Stack Overflow の Azure Storage
           href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
         - name: 価格

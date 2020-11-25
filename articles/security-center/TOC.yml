@@ -278,8 +278,6 @@
       items:
         - name: 一般的な質問
           href: faq-general.md
-        - name: 課金に関する質問
-          href: faq-billing.md
         - name: アクセス許可に関する質問
           href: faq-permissions.md
         - name: データ収集とエージェントに関する質問

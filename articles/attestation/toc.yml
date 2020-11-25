@@ -35,6 +35,8 @@
           href: claim-sets.md
     - name: ワークフロー
       href: workflow.md
+    - name: 監査ログの表示
+      href: audit-logs.md
 - name: 参考資料
   items:
     - name: よく寄せられる質問

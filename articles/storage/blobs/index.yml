@@ -12,12 +12,12 @@ metadata:
   author: normesta
   ms.author: normesta
   ms.date: 08/20/2019
-  ms.openlocfilehash: 2193914011126848df10c3ad49d9e3381e3c7b86
-  ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+  ms.openlocfilehash: 38cf63766195c1e91662d725aeb1b21c06257ed9
+  ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/15/2020
-  ms.locfileid: "94635434"
+  ms.lasthandoff: 11/25/2020
+  ms.locfileid: "95912350"
 landingContent:
 - title: Blob Storage について
   linkLists:
@@ -76,7 +76,7 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Azure Databricks を使用してデータの抽出、変換、読み込みを行う
-      url: ../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      url: /azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - text: Azure HDInsight の Apache Hive を使用したデータの抽出、変換、読み込み
       url: data-lake-storage-tutorial-extract-transform-load-hive.md
     - text: Event Grid を使用して Databricks テーブルにデータを挿入する
@@ -86,7 +86,7 @@ landingContent:
     - text: Azure HDInsight クラスターで使用する
       url: ../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - text: Power BI で使用する
-      url: data-lake-storage-use-power-bi.md
+      url: /power-query/connectors/datalakestorage
 - title: アプリケーションを開発する
   linkLists:
   - linkListType: quickstart
