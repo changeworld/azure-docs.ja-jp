@@ -9,11 +9,11 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: 2c3e46bf386e70cbe35d96728ede896d6bf0dc7d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895836"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013124"
 ---
 # <a name="drawing-package-requirements"></a>Drawing パッケージの要件
 
@@ -37,7 +37,7 @@ ms.locfileid: "92895836"
 | Level | 設定した高度にある建物の領域。 たとえば、ビルのフロアなどです。 |
 | Xref  |外部参照としてプライマリ図面にアタッチされた AutoCAD DWG ファイル形式 (.dwg) のファイル。  |
 | 特徴量 | ジオメトリに追加のメタデータ情報を組み合わせたオブジェクト。 |
-| 地物クラス | 地物の一般的なブループリント。 たとえば、 *ユニット* は地物クラスであり、 *オフィス* は地物です。 |
+| 地物クラス | 地物の一般的なブループリント。 たとえば、*ユニット* は地物クラスであり、*オフィス* は地物です。 |
 
 ## <a name="drawing-package-structure"></a>Drawing パッケージの構造
 
@@ -50,9 +50,9 @@ DWG ファイルはフォルダー内で任意の方法で整理できますが�
 
 ## <a name="dwg-files-requirements"></a>DWG ファイルの要件
 
-施設のレベルごとに 1 つの DWG ファイルが必要です。 そのレベルのデータは、1 つの DWG ファイルに含まれている必要があります。 外部参照 ( _xrefs_ ) は、親図面にバインドする必要があります。 さらに、各 DWG ファイルには次の要件があります。
+施設のレベルごとに 1 つの DWG ファイルが必要です。 そのレベルのデータは、1 つの DWG ファイルに含まれている必要があります。 外部参照 (_xrefs_) は、親図面にバインドする必要があります。 さらに、各 DWG ファイルには次の要件があります。
 
-* _Exterior_ レイヤーと _Unit_ レイヤーを定義する必要があります。 必要に応じて、次の省略可能なレイヤーを定義することもできます。 _Wall_ 、 _Door_ 、 _UnitLabel_ 、 _Zone_ 、および _ZoneLabel_ 。
+* _Exterior_ レイヤーと _Unit_ レイヤーを定義する必要があります。 必要に応じて、次の省略可能なレイヤーを定義することもできます。_Wall_、_Door_、_UnitLabel_、_Zone_、および _ZoneLabel_。
 * 複数のレベルの地物を含めることはできません。
 * 複数の施設の地物を含めることはできません。
 

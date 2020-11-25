@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
 ms.openlocfilehash: 0e8d5fa14678a2a26234dfcd73f4a50af62ca7aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962878"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012947"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Traffic Manager 統合を使用して Azure App Service 内のカスタム ドメイン名を構成する
 
@@ -66,7 +66,7 @@ App Service アプリがサポートされている価格レベルになると�
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
 
-ドメイン プロバイダーによって仕様が異なりますが、[ルート以外のカスタム ドメイン名](#what-about-root-domains) (**www.contoso.com** など) *から*、お使いのアプリと統合されている Traffic Manager のドメイン名 (**contoso.trafficmanager.net**) *に*マッピングします。 
+ドメイン プロバイダーによって仕様が異なりますが、[ルート以外のカスタム ドメイン名](#what-about-root-domains) (**www.contoso.com** など) *から*、お使いのアプリと統合されている Traffic Manager のドメイン名 (**contoso.trafficmanager.net**) *に* マッピングします。 
 
 > [!NOTE]
 > レコードが既に使用されており、事前にアプリをバインドする必要がある場合は、追加の CNAME レコードを作成できます。 たとえば、**www\.contoso.com** をお使いのアプリに事前にバインドするには、**awverify.www** から **contoso.trafficmanager.net** への CNAME レコードを作成します。 その後、"www" CNAME レコードに変更を加えることなく、"www\.contoso.com" をお使いのアプリに追加できます。 詳細については、「[アクティブな DNS 名を Azure App Service に移行する](manage-custom-dns-migrate-domain.md)」を参照してください。
@@ -77,7 +77,7 @@ App Service アプリがサポートされている価格レベルになると�
 
 Traffic Manager では CNAME レコードを使用したカスタム ドメイン マッピングのみがサポートされており、DNS 標準では CNAME レコードがルート ドメインのマッピング (**contoso.com** など) にサポートされていないため、Traffic Manager はルート ドメインへのマッピングをサポートしていません。 この問題を回避するには、アプリ レベルで URL リダイレクトを使用します。 たとえば ASP.NET Core では、[URL の書き換え](/aspnet/core/fundamentals/url-rewriting)を使用できます。 次に、Traffic Manager を使用してサブドメインを負荷分散します (**www.contoso.com**)。
 
-高可用性シナリオでは、ルート ドメインから各アプリのコピーの IP アドレスにポイントする複数の *A レコード*を作成することによって、Traffic Manager を使用せずにフォールト トレラントな DNS セットアップを実装できます。 次に、[同じルート ドメインをすべてのアプリのコピーにマップします](app-service-web-tutorial-custom-domain.md#map-an-a-record)。 同じドメイン名を同じリージョン内の 2 つの異なるアプリにマップすることはできないため、このセットアップは、アプリのコピーが異なるリージョンにある場合にのみ機能します。
+高可用性シナリオでは、ルート ドメインから各アプリのコピーの IP アドレスにポイントする複数の *A レコード* を作成することによって、Traffic Manager を使用せずにフォールト トレラントな DNS セットアップを実装できます。 次に、[同じルート ドメインをすべてのアプリのコピーにマップします](app-service-web-tutorial-custom-domain.md#map-an-a-record)。 同じドメイン名を同じリージョン内の 2 つの異なるアプリにマップすることはできないため、このセットアップは、アプリのコピーが異なるリージョンにある場合にのみ機能します。
 
 ## <a name="enable-custom-domain"></a>カスタム ドメインを有効にする
 ドメイン名のレコードが反映されたら、ブラウザーを使用して、カスタム ドメイン名が App Service アプリに解決することを確認します。
@@ -92,7 +92,7 @@ Traffic Manager では CNAME レコードを使用したカスタム ドメイ�
 4. 以前にマップしたカスタム ドメイン名を入力し、 **[検証]** を選択します。
 5. **[ホスト名レコード タイプ]** が **[CNAME (www\.example.com または任意のサブドメイン)]** に設定されていることを確認します。
 
-6. App Service アプリが Traffic Manager エンドポイントと統合されるようになったため、**CNAME 構成**に Traffic Manager ドメイン名が表示されます。 それを選択して **[カスタム ドメインの追加]** をクリックします。
+6. App Service アプリが Traffic Manager エンドポイントと統合されるようになったため、**CNAME 構成** に Traffic Manager ドメイン名が表示されます。 それを選択して **[カスタム ドメインの追加]** をクリックします。
 
     ![アプリへの DNS 名の追加](./media/configure-domain-traffic-manager/enable-traffic-manager-domain.png)
 

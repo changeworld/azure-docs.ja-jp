@@ -15,11 +15,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 42afa073da9197c12e4cbd316d311a7699d9a95f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131056"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013033"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure Portal でアクティビティ レポートを見つける
 
@@ -48,7 +48,7 @@ ms.locfileid: "93131056"
 
 ### <a name="filtering-on-audit-logs"></a>監査ログのフィルター処理
 
-監査レポートで高度なフィルター処理を使用すると、 **[カテゴリ]** フィルターで指定することで、特定のカテゴリの監査データにアクセスできます。 たとえば、ユーザーに関連するすべてのアクティビティを表示するには、 **UserManagement** カテゴリを選択します。 
+監査レポートで高度なフィルター処理を使用すると、 **[カテゴリ]** フィルターで指定することで、特定のカテゴリの監査データにアクセスできます。 たとえば、ユーザーに関連するすべてのアクティビティを表示するには、**UserManagement** カテゴリを選択します。 
 
 次のようなカテゴリがあります。
 
@@ -91,7 +91,7 @@ ms.locfileid: "93131056"
 
 ## <a name="sign-ins-report"></a>サインイン レポート 
 
-**[サインイン]** ビューには、すべてのユーザー サインインと、 **アプリケーションの使用状況** レポートが表示されます。 アプリケーションの使用状況に関する情報は、 **[エンタープライズ アプリケーション]** の概要の **[管理]** セクションで確認することもできます。
+**[サインイン]** ビューには、すべてのユーザー サインインと、**アプリケーションの使用状況** レポートが表示されます。 アプリケーションの使用状況に関する情報は、 **[エンタープライズ アプリケーション]** の概要の **[管理]** セクションで確認することもできます。
 
 サインイン レポートにアクセスするには:
 

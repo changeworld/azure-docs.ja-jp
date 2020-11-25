@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/15/2018
 ms.openlocfilehash: dff59ac207e6078a264d1350d24c9e6f4a461d78
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108781"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012886"
 ---
 # <a name="smart-groups"></a>スマート グループ
 
@@ -23,7 +23,7 @@ ms.locfileid: "92108781"
 
 ## <a name="smart-group-state"></a>スマート グループの状態
 
-スマート グループの状態はアラートの状態と似た概念であり、スマート グループのレベルで解決プロセスを管理することができます。 アラートの状態と同様に、スマート グループが作成されると、**新規**状態になり、**確認済み**または**解決済み**に変更することができます。
+スマート グループの状態はアラートの状態と似た概念であり、スマート グループのレベルで解決プロセスを管理することができます。 アラートの状態と同様に、スマート グループが作成されると、**新規** 状態になり、**確認済み** または **解決済み** に変更することができます。
 
 次のスマート グループの状態がサポートされます。
 

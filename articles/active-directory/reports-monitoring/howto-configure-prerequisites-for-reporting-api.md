@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cabf5f40bc17828bc37b5c094de7b90de3ec8b26
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130223"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013056"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Azure Active Directory レポート API にアクセスするための前提条件
 
@@ -122,7 +122,7 @@ Azure AD Reporting API にアクセスするようにディレクトリを構成
 
     ![スクリーンショットには、[Grant admin consent]\(管理者の同意の付与\) を選択できる [Reporting A P I Application]\(レポート API アプリケーション\) ページが示されています。](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
-5. 注: **Microsoft Graph** は、API の登録時に既定で追加されます。
+5. 注:**Microsoft Graph** は、API の登録時に既定で追加されます。
 
     ![スクリーンショットには、[アクセス許可の追加] を選択できる [A P I アクセス許可] ページが示されています。](./media/howto-configure-prerequisites-for-reporting-api/15.png)
 
