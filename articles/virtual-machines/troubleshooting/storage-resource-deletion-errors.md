@@ -12,11 +12,11 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 8d727bc8bdc8f015504baa57f9596b3bacac9712
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91651635"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022872"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>ストレージ リソースの削除エラーのトラブルシューティング
 
@@ -34,8 +34,8 @@ Azure では、破損を防ぐため、VM に接続されているディスク�
 
 これらのエラーのいずれかが発生したときに、ストレージ アカウント、コンテナー、または BLOB を削除するプロセスは次のとおりです。 
 1. VM に接続されている BLOB を特定します
-2. [**OS ディスク**が接続されている VM を削除します](#step-2-delete-vm-to-detach-os-disk)
-3. [残りの VM から**データ ディスク**をすべて切断します](#step-3-detach-data-disk-from-the-vm)
+2. [**OS ディスク** が接続されている VM を削除します](#step-2-delete-vm-to-detach-os-disk)
+3. [残りの VM から **データ ディスク** をすべて切断します](#step-3-detach-data-disk-from-the-vm)
 
 これらの手順が完了した後、ストレージ アカウント、コンテナー、または BLOB の削除をもう一度試みます。
 
@@ -70,7 +70,7 @@ Azure では、破損を防ぐため、VM に接続されているディスク�
 ### <a name="scenario-3-deleting-storage-account---identify-all-blobs-within-storage-account-that-are-attached-to-vms"></a>シナリオ 3: ストレージ アカウントの削除 - ストレージ アカウント内で VM に接続されている BLOB をすべて特定する
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. ハブ メニューで、 **[すべてのリソース]** を選択します。 ストレージ アカウントに移動し、 **[Blob service]** で **[BLOB]** を選びます。
-3. **[コンテナー]** ウィンドウで、 **[リース状態]** が **[リース中]** であるすべてのコンテナーを特定し、各**リース中**コンテナーについて[シナリオ 2](#scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms) に従います。
+3. **[コンテナー]** ウィンドウで、 **[リース状態]** が **[リース中]** であるすべてのコンテナーを特定し、各 **リース中** コンテナーについて [シナリオ 2](#scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms) に従います。
 4. 「[ステップ 2](#step-2-delete-vm-to-detach-os-disk)」と「[ステップ 3](#step-3-detach-data-disk-from-the-vm)」に従って、**OSDisk** の VM を削除し、**DataDisk** を切断します。 
 
 ## <a name="step-2-delete-vm-to-detach-os-disk"></a>手順 2:VM を削除して OS ディスクを切断する
@@ -93,7 +93,7 @@ VHD がデータ ディスクの場合、リースを削除するには VHD を 
 5. VHD が接続されている削除するデータ ディスクを選びます。 VHD の URL を調べることで、ディスクで接続されている BLOB を特定できます。
 6. BLOB の場所は、ディスクをクリックして **[VHD の URI]** フィールドのパスを調べることで確認できます。
 7. **[ディスク]** ウィンドウの上部の **[編集]** を選びます。
-8. 削除するデータ ディスクの**切断アイコン**をクリックします。
+8. 削除するデータ ディスクの **切断アイコン** をクリックします。
 
      ![ストレージの [BLOB のメタデータ] ペインが開かれ、削除するデータ ディスクのデタッチ アイコンが強調して示されている、ポータルのスクリーンショット。](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
 

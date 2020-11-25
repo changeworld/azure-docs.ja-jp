@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a6fc1d6b831ae794907c59ab1af3328902f3a70a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb90c5776e67c1ba8fecdbf394a8098e96ca0652
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230111"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96022379"
 ---
 # <a name="soft-delete-for-blobs"></a>BLOB の論理的な削除
 
 BLOB の論理的な削除では、お客様のデータが誤って変更または削除されないように保護します。 ストレージ アカウントに対して BLOB の論理的な削除が有効になっている場合、そのストレージ アカウント内の BLOB、BLOB バージョン、およびスナップショットは、削除された後も、指定した保持期間中は復旧することができます。
 
-アプリケーションまたは別のストレージ アカウントのユーザーによってデータが誤って変更または削除される可能性がある場合、Microsoft では論理的な削除を有効にすることをお勧めします。 論理的な削除を有効にする方法について詳しくは、[BLOB の論理的な削除の有効化と管理](soft-delete-enable.md)に関する記事をご覧ください。
+アプリケーションまたは別のストレージ アカウントのユーザーによってデータが誤って変更または削除される可能性がある場合、Microsoft では論理的な削除を有効にすることをお勧めします。 論理的な削除を有効にする方法について詳しくは、[BLOB の論理的な削除の有効化と管理](./soft-delete-blob-enable.md)に関する記事をご覧ください。
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -149,7 +149,7 @@ Copy a snapshot over the base blob:
 
 ## <a name="pricing-and-billing"></a>価格と課金
 
-論理的に削除されたデータはすべて、アクティブなデータと同じレートで課金されます。 構成されているリテンション期間の後で完全に削除されたデータについては請求されません。 スナップショットとその課金方法について詳しくは、「[スナップショットの課金方法について](storage-blob-snapshots.md)」をご覧ください。
+論理的に削除されたデータはすべて、アクティブなデータと同じレートで課金されます。 構成されているリテンション期間の後で完全に削除されたデータについては請求されません。 スナップショットとその課金方法について詳しくは、「[スナップショットの課金方法について](./snapshots-overview.md)」をご覧ください。
 
 スナップショットの自動生成に関するトランザクションには課金されません。 **Undelete Blob** のトランザクションは、書き込み操作のレートで課金されます。
 
@@ -193,5 +193,5 @@ Azure 仮想マシンからアンマネージド ディスクへの書き込み�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [BLOB の論理的な削除の有効化](soft-delete-enable.md)
+- [BLOB の論理的な削除の有効化](./soft-delete-blob-enable.md)
 - [BLOB のバージョン管理](versioning-overview.md)

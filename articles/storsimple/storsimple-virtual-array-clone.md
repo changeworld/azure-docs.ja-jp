@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: b6cc89cb082cd0ed32abd88e3a6683c60a27ba90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742181"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023042"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>StorSimple Virtual Array のバックアップから複製する
 
@@ -89,7 +89,7 @@ ms.locfileid: "91742181"
    
    a. デバイス名は自動的に設定されます。
    
-   b. **複製されたボリューム**のボリューム名を指定します。 ボリューム名は、3 ～ 127 文字で指定する必要があります。
+   b. **複製されたボリューム** のボリューム名を指定します。 ボリューム名は、3 ～ 127 文字で指定する必要があります。
    
    c. ボリュームの種類は、元のボリュームに自動的に設定されます。 階層化ボリュームは階層化ボリュームとして、ローカル固定ボリュームはローカル固定ボリュームとして複製されます。
    
@@ -124,7 +124,7 @@ ms.locfileid: "91742181"
    
    最後の 5 つのバックアップは、この方法で表示され、項目レベルの回復を実行するために使用できます。 これには、既定のスケジュールされたバックアップと手動バックアップの両方が含まれます。
    
-   * **スケジュールされたバックアップ**には、&lt;デバイス名&gt;DailySchedule-YYYYMMDD-HHMMSS-UTC の形式で名前が付けられています。
+   * **スケジュールされたバックアップ** には、&lt;デバイス名&gt;DailySchedule-YYYYMMDD-HHMMSS-UTC の形式で名前が付けられています。
    * **手動バックアップ** には、Ad-hoc-YYYYMMDD-HHMMSS-UTC の形式で名前が付けられています。
      
      ![.backups フォルダーが表示されているファイル エクスプローラーのスクリーンショット。 そのフォルダー内で、手動バックアップ フォルダーが選択されています。](./media/storsimple-virtual-array-clone/image14.png)

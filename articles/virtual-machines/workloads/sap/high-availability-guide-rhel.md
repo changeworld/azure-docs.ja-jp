@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/22/2020
 ms.author: radeltch
-ms.openlocfilehash: 9b4684f8d9a6bd04a11961632b616258db7344a3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 496b78de869cc213af6b79b3e72016bba3da1266
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487570"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022447"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性
 
@@ -172,14 +173,14 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
    1. フロントエンド IP アドレスを作成します
       1. ASCS の IP アドレス 10.0.0.7
          1. ロード バランサーを開き、[フロントエンド IP プール] を選択して [追加] をクリックします
-         1. 新規のフロントエンド IP プールの名前を入力します (例: **nw1-ascs-frontend** )
-         1. 割り当てを "静的" に設定し、IP アドレスを入力します (例: **10.0.0.7** )
+         1. 新規のフロントエンド IP プールの名前を入力します (例: **nw1-ascs-frontend**)
+         1. 割り当てを "静的" に設定し、IP アドレスを入力します (例: **10.0.0.7**)
          1. [OK] をクリックします
       1. ASCS ERS の IP アドレス 10.0.0.8
-         * 上記の手順を繰り返して、ERS の IP アドレスを作成します (例: **10.0.0.8** と **nw1-aers-frontend** )
+         * 上記の手順を繰り返して、ERS の IP アドレスを作成します (例: **10.0.0.8** と **nw1-aers-frontend**)
    1. バックエンド プールの作成
       1. ロード バランサーを開き、[バックエンド プール] を選択して [追加] をクリックします
-      1. 新規のバックエンド プールの名前を入力します (例: **nw1-backend** )
+      1. 新規のバックエンド プールの名前を入力します (例: **nw1-backend**)
       1. [仮想マシンの追加] をクリックします。
       1. 仮想マシンを選択します。
       1. (A)SCS クラスターの仮想マシンとその IP アドレスを選択します。
@@ -187,33 +188,33 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
    1. 正常性プローブを作成します
       1. ASCS のポート 620 **00**
          1. ロード バランサーを開き、[正常性プローブ] を選択して [追加] をクリックします
-         1. 新しい正常性プローブの名前を入力します (例: **nw1-ascs-hp** )
+         1. 新しい正常性プローブの名前を入力します (例: **nw1-ascs-hp**)
          1. プロトコルに TCP、ポートに 620 **00** を選択し、[間隔] は 5、[異常] のしきい値は 2 のままにしておきます
          1. [OK] をクリックします
       1. ASCS ERS のポート 621 **02**
-         * 上記の手順を繰り返して、ERS の正常性プローブを作成します (例: 621 **02** と **nw1-aers-hp** )
+         * 上記の手順を繰り返して、ERS の正常性プローブを作成します (例: 621 **02** と **nw1-aers-hp**)
    1. 負荷分散規則
       1. ASCS の負荷分散規則
          1. ロード バランサーを開き、負荷分散規則を選択して [追加] をクリックします
-         1. 新しいロード バランサー規則の名前を入力します (例: **nw1-lb-ascs** )
-         1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **nw1-ascs-frontend** 、 **nw1-backend** 、および **nw1-ascs-hp** )
+         1. 新しいロード バランサー規則の名前を入力します (例: **nw1-lb-ascs**)
+         1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **nw1-ascs-frontend**、**nw1-backend**、および **nw1-ascs-hp**)
          1. **[HA ポート]** を選択します
          1. アイドル タイムアウトを 30 分に増やします
          1. **Floating IP を有効にします**
          1. [OK] をクリックします
-         * 上記の手順を繰り返して、ERS の負荷分散規則を作成します (例: **nw1-lb-ers** )
+         * 上記の手順を繰り返して、ERS の負荷分散規則を作成します (例: **nw1-lb-ers**)
 1. または、シナリオに基本的なロード バランサー (内部) が必要な場合は、次の手順に従ってください。  
    1. フロントエンド IP アドレスを作成します
       1. ASCS の IP アドレス 10.0.0.7
          1. ロード バランサーを開き、[フロントエンド IP プール] を選択して [追加] をクリックします
-         1. 新規のフロントエンド IP プールの名前を入力します (例: **nw1-ascs-frontend** )
-         1. 割り当てを "静的" に設定し、IP アドレスを入力します (例: **10.0.0.7** )
+         1. 新規のフロントエンド IP プールの名前を入力します (例: **nw1-ascs-frontend**)
+         1. 割り当てを "静的" に設定し、IP アドレスを入力します (例: **10.0.0.7**)
          1. [OK] をクリックします
       1. ASCS ERS の IP アドレス 10.0.0.8
-         * 上記の手順を繰り返して、ERS の IP アドレスを作成します (例: **10.0.0.8** と **nw1-aers-frontend** )
+         * 上記の手順を繰り返して、ERS の IP アドレスを作成します (例: **10.0.0.8** と **nw1-aers-frontend**)
    1. バックエンド プールの作成
       1. ロード バランサーを開き、[バックエンド プール] を選択して [追加] をクリックします
-      1. 新規のバックエンド プールの名前を入力します (例: **nw1-backend** )
+      1. 新規のバックエンド プールの名前を入力します (例: **nw1-backend**)
       1. [仮想マシンの追加] をクリックします。
       1. 前の手順で作成した可用性セットを選択します
       1. (A)SCS クラスターの仮想マシンを選択します
@@ -221,24 +222,24 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
    1. 正常性プローブを作成します
       1. ASCS のポート 620 **00**
          1. ロード バランサーを開き、[正常性プローブ] を選択して [追加] をクリックします
-         1. 新しい正常性プローブの名前を入力します (例: **nw1-ascs-hp** )
+         1. 新しい正常性プローブの名前を入力します (例: **nw1-ascs-hp**)
          1. プロトコルに TCP、ポートに 620 **00** を選択し、[間隔] は 5、[異常] のしきい値は 2 のままにしておきます
          1. [OK] をクリックします
       1. ASCS ERS のポート 621 **02**
-         * 上記の手順を繰り返して、ERS の正常性プローブを作成します (例: 621 **02** と **nw1-aers-hp** )
+         * 上記の手順を繰り返して、ERS の正常性プローブを作成します (例: 621 **02** と **nw1-aers-hp**)
    1. 負荷分散規則
       1. ASCS の 32 **00** TCP
          1. ロード バランサーを開き、負荷分散規則を選択して [追加] をクリックします
-         1. 新しいロード バランサー規則の名前を入力します (例: **nw1-lb-3200** )
-         1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **nw1-ascs-frontend** )
-         1. プロトコルは **TCP** のままにし、ポートに「 **3200** 」を入力します
+         1. 新しいロード バランサー規則の名前を入力します (例: **nw1-lb-3200**)
+         1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **nw1-ascs-frontend**)
+         1. プロトコルは **TCP** のままにし、ポートに「**3200**」を入力します
          1. アイドル タイムアウトを 30 分に増やします
          1. **Floating IP を有効にします**
          1. [OK] をクリックします
       1. ASCS の追加のポート
-         * ASCS のポート 36 **00** 、39 **00** 、81 **00** 、5 **00** 13、5 **00** 14、5 **00** 16 と TCP に対して上記の手順を繰り返します
+         * ASCS のポート 36 **00**、39 **00**、81 **00**、5 **00** 13、5 **00** 14、5 **00** 16 と TCP に対して上記の手順を繰り返します
       1. ASCS ERS の追加のポート
-         * ASCS ERS のポート 33 **02** 、5 **02** 13、5 **02** 14、5 **02** 16 と TCP に対して上記の手順を繰り返します
+         * ASCS ERS のポート 33 **02**、5 **02** 13、5 **02** 14、5 **02** 16 と TCP に対して上記の手順を繰り返します
 
 > [!IMPORTANT]
 > フローティング IP は、負荷分散シナリオの NIC セカンダリ IP 構成ではサポートされていません。 詳細については、[Azure Load Balancer の制限事項](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)に関する記事を参照してください。 VM に追加の IP アドレスが必要な場合は、2 つ目の NIC をデプロイします。  
@@ -406,7 +407,7 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
    sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
-   インストールで /usr/sap/ **NW1** /ASCS **00** へのサブフォルダーの作成に失敗する場合は、ASCS **00** フォルダーの所有者とグループを設定し、もう一度試してください。
+   インストールで /usr/sap/**NW1**/ASCS **00** へのサブフォルダーの作成に失敗する場合は、ASCS **00** フォルダーの所有者とグループを設定し、もう一度試してください。
 
    <pre><code>sudo chown nw1adm /usr/sap/<b>NW1</b>/ASCS<b>00</b>
    sudo chgrp sapsys /usr/sap/<b>NW1</b>/ASCS<b>00</b>
@@ -462,7 +463,7 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
    sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
-   インストールで /usr/sap/ **NW1** /ERS **02** へのサブフォルダーの作成に失敗する場合は、ERS **02** フォルダーの所有者とグループを設定し、もう一度試してください。
+   インストールで /usr/sap/**NW1**/ERS **02** へのサブフォルダーの作成に失敗する場合は、ERS **02** フォルダーの所有者とグループを設定し、もう一度試してください。
 
    <pre><code>sudo chown nw1adm /usr/sap/<b>NW1</b>/ERS<b>02</b>
    sudo chgrp sapsys /usr/sap/<b>NW1</b>/ERS<b>02</b>
@@ -761,7 +762,7 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
      DATABASE: <b>NW1</b>
    </code></pre>
 
-   出力には、既定のエントリの IP アドレスがロード バランサーの IP アドレスではなく仮想マシンを指していることが示されます。 このエントリは、ロード バランサーの仮想ホスト名を指すように変更する必要があります。 同じポート (上の出力内の **30313** ) とデータベース名 (上の出力内の **HN1** ) を必ず使用してください。
+   出力には、既定のエントリの IP アドレスがロード バランサーの IP アドレスではなく仮想マシンを指していることが示されます。 このエントリは、ロード バランサーの仮想ホスト名を指すように変更する必要があります。 同じポート (上の出力内の **30313**) とデータベース名 (上の出力内の **HN1**) を必ず使用してください。
 
    <pre><code>su - <b>nw1</b>adm
    hdbuserstore SET DEFAULT <b>nw1-db</b>:<b>30313@NW1</b> <b>SAPABAP1</b> <b>&lt;password of ABAP schema&gt;</b>

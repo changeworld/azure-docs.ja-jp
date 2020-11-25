@@ -4,11 +4,11 @@ description: Azure Active Directory のテナント、ユーザー、および�
 ms.date: 10/29/2020
 ms.topic: conceptual
 ms.openlocfilehash: 411b9bae19166e1875011360aa011c05d590b237
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043048"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023944"
 ---
 # <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Azure Lighthouse のシナリオにおけるテナント、ユーザー、ロール
 
@@ -16,9 +16,9 @@ ms.locfileid: "93043048"
 
 *テナント* とは、Azure AD の信頼された専用インスタンスです。 通常、各 Azure テナントは 1 つの組織を表します。 [Azure の委任されたリソース管理](azure-delegated-resource-management.md)を使用すると、あるテナントから別のテナントにリソースを論理的に投影できます。 これにより、(サービス プロバイダーに属するユーザーなどの) 管理テナントのユーザーは、顧客のテナント内の委任されたリソースにアクセスできるようになります。また、[複数のテナントを持つ企業が、管理操作を一元的に実行できるようになります。](enterprise.md)
 
-この論理的な投影を実現するには、顧客テナントのサブスクリプション (またはサブスクリプション内の 1 つ以上のリソース グループ) を、Azure Lighthouse に " *オンボード* " する必要があります。 オンボードは、[Azure Resource Manager のテンプレート](../how-to/onboard-customer.md)を使用して行うか、[Azure Marketplace にパブリックまたはプライベート サービスを発行して行います](../how-to/publish-managed-services-offers.md)。
+この論理的な投影を実現するには、顧客テナントのサブスクリプション (またはサブスクリプション内の 1 つ以上のリソース グループ) を、Azure Lighthouse に "*オンボード*" する必要があります。 オンボードは、[Azure Resource Manager のテンプレート](../how-to/onboard-customer.md)を使用して行うか、[Azure Marketplace にパブリックまたはプライベート サービスを発行して行います](../how-to/publish-managed-services-offers.md)。
 
-いずれのオンボード方法を選択しても、 *承認* を定義する必要があります。 各承認では、委任されたリソースへのアクセス権を持つ管理テナントのユーザーアカウント、およびこれらの各ユーザーがこれらのリソースに対して持つアクセス許可を設定する組み込みのロールを指定します。
+いずれのオンボード方法を選択しても、*承認* を定義する必要があります。 各承認では、委任されたリソースへのアクセス権を持つ管理テナントのユーザーアカウント、およびこれらの各ユーザーがこれらのリソースに対して持つアクセス許可を設定する組み込みのロールを指定します。
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>ユーザーとロールを定義するためのベスト プラクティス
 

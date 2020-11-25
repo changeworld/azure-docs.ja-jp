@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: 6c6f71277c276bed603989774637bd95999de333
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079056"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023528"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute の暗号化:Virtual WAN 向けの ExpressRoute 経由の IPsec
 
@@ -105,16 +105,16 @@ VPN サイトを作成してハブに接続したら、次の手順を使用し�
 
 1. 仮想 WAN リソース ページに戻り、ハブ リソースを選択します。 または、VPN サイトから、接続されたハブに移動します。
 
-   :::image type="content" source="./media/vpn-over-expressroute/hub-selection.png" alt-text="ExpressRoute 経由の VPN":::
+   :::image type="content" source="./media/vpn-over-expressroute/hub-selection.png" alt-text="ハブを選択":::
 1. **[接続]** の **[VPN (Site-to-Site)]\(VPN (サイト間)\)** を選択します。
 
-   :::image type="content" source="./media/vpn-over-expressroute/vpn-select.png" alt-text="ExpressRoute 経由の VPN":::
+   :::image type="content" source="./media/vpn-over-expressroute/vpn-select.png" alt-text="VPN の選択 (サイト間)":::
 1. ExpressRoute 経由の VPN サイトで省略記号 (**[...]**) をクリックし、**[このハブへの VPN 接続の編集]** を選択します。
 
-   :::image type="content" source="./media/vpn-over-expressroute/config-menu.png" alt-text="ExpressRoute 経由の VPN":::
+   :::image type="content" source="./media/vpn-over-expressroute/config-menu.png" alt-text="構成メニューに入る":::
 1. **[Azure プライベート IP アドレスを使用する]** には **[はい]** を選択します。 この設定は、パブリック IP アドレスの代わりに、この接続用のゲートウェイ上のハブ アドレス範囲内のプライベート IP アドレスを使用するようにハブ VPN ゲートウェイを構成します。 これにより、オンプレミス ネットワークからのトラフィックは、この VPN 接続にパブリック インターネットを使用するのではなく、ExpressRoute プライベート ピアリングのパスを通過することが保証されます。 次のスクリーンショットは設定を示しています。
 
-   :::image type="content" source="./media/vpn-over-expressroute/vpn-link-configuration.png" alt-text="ExpressRoute 経由の VPN" border="false":::
+   :::image type="content" source="./media/vpn-over-expressroute/vpn-link-configuration.png" alt-text="VPN 接続にプライベート IP アドレスを使用する場合の設定" border="false":::
 1. **[保存]** を選択します。
 
 変更を保存すると、ハブ VPN ゲートウェイによって、VPN ゲートウェイ上のプライベート IP アドレスが使用され、ExpressRoute 経由でオンプレミス VPN デバイスとの IPsec/IKE 接続が確立されます。

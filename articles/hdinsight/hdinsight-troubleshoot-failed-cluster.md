@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: 4fea7719d0aa375aad3d2795d240006222b6486c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535095"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022702"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>HDInsight クラスターでジョブが遅いか失敗する場合のトラブルシューティング
 
@@ -115,7 +115,7 @@ HDInsight クラスターは、仮想マシンのインスタンスで稼働す�
 
 ### <a name="check-your-webhcat-service"></a>WebHCat サービスを確認する
 
-Apache Hive、Apache Pig、または Apache Sqoop ジョブが失敗する一般的なシナリオの 1 つは、 [WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (または *Templeton* ) サービスでの障害です。 WebHCat は、Hive、Pig、Scoop、MapReduce などのリモート ジョブ実行用の REST インターフェイスです。 WebHCat は、ジョブ送信要求を Apache Hadoop YARN アプリケーションに変換し、YARN アプリケーションの状態から抽出された状態を返します。  次のセクションでは、WebHCat HTTP の一般的な状態コードについて説明します。
+Apache Hive、Apache Pig、または Apache Sqoop ジョブが失敗する一般的なシナリオの 1 つは、[WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (または *Templeton*) サービスでの障害です。 WebHCat は、Hive、Pig、Scoop、MapReduce などのリモート ジョブ実行用の REST インターフェイスです。 WebHCat は、ジョブ送信要求を Apache Hadoop YARN アプリケーションに変換し、YARN アプリケーションの状態から抽出された状態を返します。  次のセクションでは、WebHCat HTTP の一般的な状態コードについて説明します。
 
 #### <a name="badgateway-502-status-code"></a>BadGateway (502 状態コード)
 
@@ -172,7 +172,7 @@ YARN レベルでは、2 種類のタイムアウトがあります。
 
     `/var/log/webhcat/webhcat.log` ログ ファイルを開き、"queued job" を検索すると、実行時間が異常に長く (2000 ミリ秒超) 待機時間が徐々に長くなる複数のエントリが見つかる場合があります。
 
-    新しいジョブが送信される数の方が、古いジョブが完了する数より多いので、ジョブがキューに入っている時間は長くなり続けます。 YARN メモリが 100% 使われると、" *joblauncher キュー* " は " *既定のキュー* " から容量を借りることができなくなります。 そのため、joblauncher キューはそれ以上新しいジョブを受け付けることができません。 このような動作のため、待機時間はどんどん長くなってタイムアウト エラーが発生し、通常はそれに続いて他にも多くのエラーが発生します。
+    新しいジョブが送信される数の方が、古いジョブが完了する数より多いので、ジョブがキューに入っている時間は長くなり続けます。 YARN メモリが 100% 使われると、"*joblauncher キュー*" は "*既定のキュー*" から容量を借りることができなくなります。 そのため、joblauncher キューはそれ以上新しいジョブを受け付けることができません。 このような動作のため、待機時間はどんどん長くなってタイムアウト エラーが発生し、通常はそれに続いて他にも多くのエラーが発生します。
 
     次の図は、714.4 の過剰使用状態の joblauncher キューを示したものです。 既定のキューに借用可能な空き容量がある限り、これは許容されます。 しかし、クラスターが完全に利用されて、YARN メモリの容量が 100% になると、新しいジョブは待機する必要があり、最終的にタイムアウトが発生します。
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
 ms.openlocfilehash: 1a90bc6636dcb3aa81f09b0489850c1a95b3256d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535248"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022753"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight の NSG サービス タグ
 
@@ -26,9 +26,9 @@ ms.locfileid: "92535248"
 
 ネットワーク セキュリティ グループでサービスタ グを使用するには、次の 2 つのオプションがあります。
 
-- **単一のグローバル HDInsight サービス タグを使用する** : このオプションでは、すべてのリージョンでクラスターを監視するために HDInsight サービスによって使用されているすべての IP アドレスに対して、仮想ネットワークが開放されます。 このオプションは最も簡単な方法ですが、セキュリティ要件の制限がある場合は適さないことがあります。
+- **単一のグローバル HDInsight サービス タグを使用する**: このオプションでは、すべてのリージョンでクラスターを監視するために HDInsight サービスによって使用されているすべての IP アドレスに対して、仮想ネットワークが開放されます。 このオプションは最も簡単な方法ですが、セキュリティ要件の制限がある場合は適さないことがあります。
 
-- **複数のリージョン サービス タグを使用する** : このオプションでは、HDInsight がその特定のリージョンで使用する IP アドレスに対してのみ、仮想ネットワークが開放されます。 ただし、複数のリージョンを使用している場合は、複数のサービス タグを仮想ネットワークに追加する必要があります。
+- **複数のリージョン サービス タグを使用する**: このオプションでは、HDInsight がその特定のリージョンで使用する IP アドレスに対してのみ、仮想ネットワークが開放されます。 ただし、複数のリージョンを使用している場合は、複数のサービス タグを仮想ネットワークに追加する必要があります。
 
 ## <a name="use-a-single-global-hdinsight-service-tag"></a>単一のグローバル HDInsight サービス タグを使用する
 
@@ -113,15 +113,15 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 
 #### <a name="group-2"></a>グループ 2
 
-" *中国北部* " および " *中国東部* " リージョンのクラスターでは、2 つのサービス タグ `HDInsight.ChinaNorth` と `HDInsight.ChinaEast` を許可する必要があります。
+"*中国北部*" および "*中国東部*" リージョンのクラスターでは、2 つのサービス タグ `HDInsight.ChinaNorth` と `HDInsight.ChinaEast` を許可する必要があります。
 
 #### <a name="group-3"></a>グループ 3
 
-" *US Gov アイオワ* " および " *US Gov バージニア* " リージョンのクラスターでは、2 つのサービス タグ `HDInsight.USGovIowa` と `HDInsight.USGovVirginia` を許可する必要があります。
+"*US Gov アイオワ*" および "*US Gov バージニア*" リージョンのクラスターでは、2 つのサービス タグ `HDInsight.USGovIowa` と `HDInsight.USGovVirginia` を許可する必要があります。
 
 #### <a name="group-4"></a>グループ 4
 
-" *ドイツ中部* " および " *ドイツ北東部* " リージョンのクラスターでは、2 つのサービス タグ `HDInsight.GermanyCentral` と `HDInsight.GermanyNortheast` を許可する必要があります。
+"*ドイツ中部*" および "*ドイツ北東部*" リージョンのクラスターでは、2 つのサービス タグ `HDInsight.GermanyCentral` と `HDInsight.GermanyNortheast` を許可する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

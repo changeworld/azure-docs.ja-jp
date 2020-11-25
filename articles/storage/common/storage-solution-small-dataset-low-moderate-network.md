@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
 ms.openlocfilehash: f59d1e297ba4d7607d7abd07a78da4784f55d20f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792907"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023229"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>低速から中速のネットワーク帯域幅での小規模なデータセットのデータ転送
  
@@ -32,12 +32,12 @@ ms.locfileid: "92792907"
 
 このシナリオで推奨されるオプションは次のとおりです。
 
-- Azure Storage Explorer や Azure portal の Azure Storage などの **グラフィカル インターフェイス ツール** 。 これらでは、データを表示して数個のファイルをすばやく転送する簡単な手段が提供されます。
+- Azure Storage Explorer や Azure portal の Azure Storage などの **グラフィカル インターフェイス ツール**。 これらでは、データを表示して数個のファイルをすばやく転送する簡単な手段が提供されます。
 
     - **Azure Storage Explorer** - このクロスプラットフォーム ツールを使用すると、Azure ストレージ アカウントの内容を管理できます。 BLOB、ファイル、キュー、テーブル、Azure Cosmos DB のエンティティをアップロード、ダウンロード、および管理できます。 BLOB ストレージと共に使用して BLOB とフォルダーを管理できるだけでなく、ローカル ファイル システムと BLOB ストレージ間、またはストレージ アカウント間で BLOB をアップロードおよびダウンロードすることができます。
     - **Azure portal** - Azure portal の Azure Storage では、ファイルを調べて一度に 1 つずつ新しいファイルをアップロードするための、Web ベースのインターフェイスが提供されています。 ツールをインストールしたくない場合、またはファイルをすばやく探索するためや少数のファイルをアップロードするためだけにコマンドを発行したくない場合に適しています。
 
-- AzCopy/PowerShell/Azure CLI や Azure Storage REST API などの **スクリプト/プログラム ツール** 。
+- AzCopy/PowerShell/Azure CLI や Azure Storage REST API などの **スクリプト/プログラム ツール**。
 
     - **AzCopy** - このコマンドライン ツールを使用すると、最適なパフォーマンスで Azure BLOB、Files、および Table ストレージとの間で相互に簡単にデータをコピーできます。 AzCopy はコンカレンシーと並列処理をサポートし、中断された場合にコピー操作を再開することができます。
     - **Azure PowerShell** - ユーザーがシステムの管理に慣れている場合は、Azure PowerShell の Azure Storage モジュールを使用してデータを転送します。

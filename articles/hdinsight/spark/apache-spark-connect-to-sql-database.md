@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: d979a68f4e3aa0071fb7654647610af1fbf95e90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86078818"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023978"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>HDInsight Spark クラスターを使用して Azure SQL Database のデータを読み書きする
 
@@ -36,7 +36,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
 最初に、Spark クラスターに関連付けられた Jupyter Notebook を作成します。 この Notebook を使って、この記事で使われているコード スニペットを実行します。
 
 1. [Azure Portal](https://portal.azure.com/) でクラスターを開きます。
-1. 右側の**クラスター ダッシュボード**の下で、 **[Jupyter Notebook]** を選択します。  **クラスター ダッシュボード**が表示されない場合は、左側のメニューの **[概要]** を選択します。 入力を求められたら、クラスターの管理者資格情報を入力します。
+1. 右側の **クラスター ダッシュボード** の下で、 **[Jupyter Notebook]** を選択します。  **クラスター ダッシュボード** が表示されない場合は、左側のメニューの **[概要]** を選択します。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
     ![Azure Spark 上の Jupyter Notebook](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark 上の Jupyter Notebook")
 
@@ -172,7 +172,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
 
     ![SSMS1 を使用して SQL Database に接続する](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "SSMS1 を使用して SQL Database に接続する")
 
-    b. **オブジェクト エクスプローラー**でデータベースとテーブル ノードを展開して、**dbo.hvactable** が作成されていることを確認します。
+    b. **オブジェクト エクスプローラー** でデータベースとテーブル ノードを展開して、**dbo.hvactable** が作成されていることを確認します。
 
     ![SSMS2 を使用して SQL Database に接続する](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "SSMS2 を使用して SQL Database に接続する")
 

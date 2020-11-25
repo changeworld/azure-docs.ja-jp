@@ -11,11 +11,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d3f6a48815519499ddc39dcc12cafe0fe95e70e0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320235"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023807"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>データ サイエンス プロジェクトのためのプラットフォームとツール
 
@@ -47,7 +47,7 @@ Microsoft が Windows と Linux の両方で提供するデータ サイエン�
 
 また、xgboost、mxnet、Vowpal Wabbit などの **ML や AI ツール** も含まれています。
 
-現在、DSVM は、 **Windows** オペレーティング システムと **Linux CentOS** オペレーティング システムでご利用いただけます。 実行を計画しているデータ サイエンス プロジェクトのニーズに基づいて、DSVM のサイズ (CPU コアの数とメモリ容量) を選択します。 
+現在、DSVM は、**Windows** オペレーティング システムと **Linux CentOS** オペレーティング システムでご利用いただけます。 実行を計画しているデータ サイエンス プロジェクトのニーズに基づいて、DSVM のサイズ (CPU コアの数とメモリ容量) を選択します。 
 
 Windows エディションの DSVM の詳細については、Azure Marketplace の [Microsoft データ サイエンス仮想マシン](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019)のページをご覧ください。 Linux エディションの DSVM については、[Linux データ サイエンス仮想マシン](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)のページをご覧ください。
 
@@ -60,7 +60,7 @@ Apache Spark は、ビッグ データ分析アプリケーションのパフォ
 
 HDInsight で Spark クラスターを作成するときは、Spark をインストールおよび構成して Azure コンピューティング リソースを作成します。 HDInsight の Spark クラスターの作成には約 10 分かかります。 処理対象のデータは Azure Blob Storage に格納します。 クラスターで Azure Blob Storage を使用する方法については、[HDInsight の Hadoop での HDFS と互換性のある Azure Blob Storage の使用](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。
 
-Microsoft の TDSP チームは、Azure HDInsight Spark クラスターを使用してデータ サイエンス ソリューションを構築する方法を示す 2 つのエンド ツー エンド チュートリアルを公開しています。1 つは Python を使用し、もう 1 つは Scala を使用します。 Azure HDInsight **Spark クラスター** の詳細については、 [HDInsight Linux の Apache Spark の概要](../../hdinsight/spark/apache-spark-overview.md)に関する記事をご覧ください。 Azure HDInsight Spark クラスターで **Python** を使用してデータ サイエンス ソリューションを構築する方法については、「 [Azure HDInsight 上の Spark を使用したデータ サイエンスの概要](spark-overview.md)」をご覧ください。 Azure HDInsight Spark クラスターで **Scala** を使用してデータ サイエンス ソリューションを構築する方法については、「 [Scala および Azure 上の Spark を使用したデータ サイエンス](scala-walkthrough.md)」をご覧ください。 
+Microsoft の TDSP チームは、Azure HDInsight Spark クラスターを使用してデータ サイエンス ソリューションを構築する方法を示す 2 つのエンド ツー エンド チュートリアルを公開しています。1 つは Python を使用し、もう 1 つは Scala を使用します。 Azure HDInsight **Spark クラスター** の詳細については、[HDInsight Linux の Apache Spark の概要](../../hdinsight/spark/apache-spark-overview.md)に関する記事をご覧ください。 Azure HDInsight Spark クラスターで **Python** を使用してデータ サイエンス ソリューションを構築する方法については、「[Azure HDInsight 上の Spark を使用したデータ サイエンスの概要](spark-overview.md)」をご覧ください。 Azure HDInsight Spark クラスターで **Scala** を使用してデータ サイエンス ソリューションを構築する方法については、「[Scala および Azure 上の Spark を使用したデータ サイエンス](scala-walkthrough.md)」をご覧ください。 
 
 
 ##  <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
@@ -101,7 +101,7 @@ R Services (データベース内) は、新たな洞察を発見できるイン
 
 R Services (データベース内) では、SQL Server のツールとテクノロジの包括的なセットを使用してオープン ソースの R 言語をサポートします。 R Services (データベース内) は、優れたパフォーマンス、セキュリティ、信頼性、管理容易性を実現します。 使い慣れた便利なツールを使用して、R ソリューションをデプロイできます。 実稼働アプリケーションでは、R ランタイムを呼び出し、Transact-SQL を使用して予測やビジュアルを取得できます。 また、ScaleR ライブラリを使用して、R ソリューションのスケールとパフォーマンスを向上させることもできます。 詳細については、[SQL Server R Services](/sql/advanced-analytics/r/sql-server-r-services) に関する記事をご覧ください。
 
-Microsoft の TDSP チームは、SQL Server 2016 R Services でデータ サイエンス ソリューションを構築する方法を示す 2 つのエンド ツー エンド チュートリアルを公開しています。1 つは R プログラマ向けで、もう 1 つは SQL 開発者向けです。 **R プログラマ** の場合は、 [データ サイエンスのエンド ツー エンド チュートリアル](/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)をご覧ください。 **SQL 開発者** の場合は、 [SQL 開発者向けの高度なデータベース内分析のチュートリアル](/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)をご覧ください。
+Microsoft の TDSP チームは、SQL Server 2016 R Services でデータ サイエンス ソリューションを構築する方法を示す 2 つのエンド ツー エンド チュートリアルを公開しています。1 つは R プログラマ向けで、もう 1 つは SQL 開発者向けです。 **R プログラマ** の場合は、[データ サイエンスのエンド ツー エンド チュートリアル](/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)をご覧ください。 **SQL 開発者** の場合は、[SQL 開発者向けの高度なデータベース内分析のチュートリアル](/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)をご覧ください。
 
 
 ## <a name="appendix-tools-to-set-up-data-science-projects"></a><a name="appendix"></a>付録: データ サイエンス プロジェクトを設定するためのツール

@@ -12,11 +12,11 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 7e706f12a251cd38c3525a48553743606ed199b6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321515"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024029"
 ---
 # <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-azure-synapse-analytics"></a>専用 SQL プール Azure Synapse Analytics にデータを読み込むためのベスト プラクティス
 
@@ -42,7 +42,7 @@ PolyBase には、1,000,000 バイトを超えるデータを含む行を読み�
 
 ### <a name="create-a-loading-user"></a>読み込みユーザーを作成する
 
-この例では、staticrc20 リソース クラスの読み込みユーザーを作成します。 まず、 **マスターに接続** し、ログインを作成します。
+この例では、staticrc20 リソース クラスの読み込みユーザーを作成します。 まず、**マスターに接続** し、ログインを作成します。
 
 ```sql
    -- Connect to master
@@ -94,7 +94,7 @@ user_A と user_B は、他の部門のスキーマからロックアウトさ�
 
 ## <a name="manage-loading-failures"></a>読み込みエラーの管理
 
-外部テーブルを使用した読み込みが、" *クエリは中止されました。外部ソースの読み取り中に最大拒否しきい値に達しました* " というエラーで失敗する場合があります。 このメッセージは、外部データにダーティなレコードが含まれていることを示します。 データ レコードは、列のデータの種類と数値が外部テーブルの列定義と一致しない場合、またはデータが指定された外部ファイルの形式に従っていない場合に「ダーティ」であるとみなされます。
+外部テーブルを使用した読み込みが、"*クエリは中止されました。外部ソースの読み取り中に最大拒否しきい値に達しました*" というエラーで失敗する場合があります。 このメッセージは、外部データにダーティなレコードが含まれていることを示します。 データ レコードは、列のデータの種類と数値が外部テーブルの列定義と一致しない場合、またはデータが指定された外部ファイルの形式に従っていない場合に「ダーティ」であるとみなされます。
 
 ダーティなレコードを修正するには、外部テーブルと外部ファイルの形式の定義が正しいこと、および外部データがこれらの定義に従っていることを確認します。 外部データ レコードのサブセットがダーティである場合は、CREATE EXTERNAL TABLE の中で拒否オプションを使用することで、クエリでこれらのレコードを拒否することを選択できます。
 

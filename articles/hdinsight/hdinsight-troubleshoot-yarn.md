@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: b8dc63030c6791779ad90500747e4e2f5c4ffeef
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288980"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022668"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Hadoop YARN のトラブルシューティング
 
@@ -24,7 +24,7 @@ Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発�
 
 新しい YARN キューを作成し、すべてのキューの間で容量の割り当てのバランスを取るには、Ambari で次の手順を実行します。
 
-この例では、次の 2 つの既存のキュー ( **default** と **thriftsvr** ) 両方の容量を 50% から 25% に変更し、新しいキュー (Spark) が容量の 50% を使用できるようにします。
+この例では、次の 2 つの既存のキュー (**default** と **thriftsvr**) 両方の容量を 50% から 25% に変更し、新しいキュー (Spark) が容量の 50% を使用できるようにします。
 
 | キュー | 容量 | 最大容量 |
 | --- | --- | --- |
@@ -38,7 +38,7 @@ Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発�
 2. **default** キューを選びます。
 
     ![Apache Ambari YARN での default キューの選択](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
-3. **default** キューで、 **容量** を 50% から 25% に変更します。 **thriftsvr** キューで、 **容量** を 25% に変更します。
+3. **default** キューで、**容量** を 50% から 25% に変更します。 **thriftsvr** キューで、**容量** を 25% に変更します。
 
     ![default キューと thriftsvr キューの容量を 25% に変更する](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
 4. 新しいキューを作成し、 **[キューの追加]** を選択します。

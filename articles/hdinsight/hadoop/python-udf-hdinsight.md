@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
 ms.openlocfilehash: 0179fd10e75af0ced55b4bb41f9525dc26b3efe5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540382"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023076"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>HDInsight 上の Apache Hive と Apache Pig で Python ユーザー定義関数 (UDF) を使用する
 
@@ -27,8 +27,8 @@ HDInsight には、Java で記述された Python 実装である Jython も付�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **HDInsight 上の Hadoop クラスター** 。 [Linux での HDInsight の概要](apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
-* **SSH クライアント** 。 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+* **HDInsight 上の Hadoop クラスター**。 [Linux での HDInsight の概要](apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
+* **SSH クライアント**。 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 * クラスターのプライマリ ストレージの [URI スキーム](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では adl:// です。 Azure Storage で安全な転送が有効になっている場合、URI は wasbs:// になります。  [安全な転送](../../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
 * **ストレージ構成に対する変更の可能性。**  ストレージ アカウントの種類 `BlobStorage` を使用している場合は、「[ストレージの構成](#storage-configuration)」を参照してください。
 * 省略可能。  PowerShell を使用する予定の場合は、[AZ モジュール](/powershell/azure/new-azureps-module-az)がインストールされている必要があります。
@@ -300,8 +300,8 @@ Get-AzHDInsightJobOutput `
 
 Python インタープリターを指定するには、Python スクリプトを参照するときに `register` を使います。 次の例では、スクリプトを `myfuncs` として Pig に登録します。
 
-* **Jython を使用するには** : `register '/path/to/pigudf.py' using jython as myfuncs;`
-* **C Python を使用するには** : `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
+* **Jython を使用するには**: `register '/path/to/pigudf.py' using jython as myfuncs;`
+* **C Python を使用するには**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]  
 > Jython を使用する場合、pig_jython ファイルへのパスには、ローカル パスまたは WASBS:// パスを指定できます。 ただし、C Python を使用する場合は、Pig ジョブの送信に使用しているノードのローカル ファイル システム上のファイルを参照する必要があります。
@@ -423,7 +423,7 @@ Pig に返された時点のデータは、`@outputSchema` ステートメント
     #from pig_util import outputSchema
     ```
 
-    この行は、Jython ではなく C Python を使用するように Python スクリプトを変更します。 変更を加えた後は、 **Ctrl キーを押しながら X キー** を押してエディターを終了します。 **Y** キーを押し、 **Enter** キーを押して変更を保存します。
+    この行は、Jython ではなく C Python を使用するように Python スクリプトを変更します。 変更を加えた後は、**Ctrl キーを押しながら X キー** を押してエディターを終了します。 **Y** キーを押し、**Enter** キーを押して変更を保存します。
 
 6. `pig` コマンドを使用してシェルを再起動します。 `grunt>` プロンプトが出たら、次のステートメントを使って C Python インタープリターを使用する Python スクリプトを実行します。
 

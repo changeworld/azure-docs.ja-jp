@@ -3,16 +3,17 @@ title: Azure 環境における Oracle ディザスター リカバリー シナ
 description: Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー シナリオ
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 9736c4d2b048aa18f283689247f5597d7526f1df
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b8da0b5c55b291af42d9a30db23d6f55f7c0bf2d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480362"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022787"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー
 
@@ -37,7 +38,7 @@ Azure セットアップの概要は次のとおりです。
 - Data Guard を備えた 2 つの Oracle データベース (プライマリとスタンバイ)
 - Golden Gate または Data Guard を備えた 2 つの Oracle データベース (プライマリ サイトのみ)
 - 2 つのアプリケーション サービス (プライマリ サイトに 1 つ、DR サイトに 1 つ)
-- プライマリ サイト上のデータベースおよびアプリケーション サービスに使用されている " *可用性セット* "
+- プライマリ サイト上のデータベースおよびアプリケーション サービスに使用されている "*可用性セット*"
 - 各サイトに 1 つのジャンプボックス (プライベート ネットワークへのアクセスを制限し、管理者によるサインインのみを許可)
 - 別個のサブネット上にあるジャンプボックス、アプリケーション サービス、データベース、および VPN ゲートウェイ
 - アプリケーションおよびデータベースのサブネットに適用されている NSG

@@ -4,11 +4,11 @@ description: Visual Studio Code 用の Azure Policy 拡張機能を使用して 
 ms.date: 10/20/2020
 ms.topic: how-to
 ms.openlocfilehash: 233c9158c30d6c373dd6147090894dc83b83da3d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317623"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022430"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Visual Studio Code 用の Azure Policy 拡張機能を使用する
 
@@ -36,7 +36,7 @@ Visual Studio Code 用の Azure Policy 拡張機能は、Visual Studio Code で�
 
 1. メニュー バーから、 **[ビュー]**  >  **[拡張機能]** の順に移動します。
 
-1. 検索ボックスに「 **Azure Policy** 」と入力します。
+1. 検索ボックスに「**Azure Policy**」と入力します。
 
 1. 検索結果から **Azure Policy** を選択し、 **[インストール]** を選択します。
 
@@ -64,13 +64,13 @@ Visual Studio Code 用の Azure Policy 拡張機能は、Visual Studio Code で�
 
      Azure Policy 拡張機能から、 **[Azure にサインイン]** を選択します。
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Visual Studio Code 用の国内の Azure クラウド サインインを選択するスクリーンショット。" border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Visual Studio Code と Azure Policy 拡張機能のアイコンのスクリーンショット。" border="false":::
 
    - コマンド パレット
 
-     メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「 **Azure: Sign In** 」と入力します。
+     メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Sign In**」と入力します。
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Visual Studio Code 用の国内の Azure クラウド サインインを選択するスクリーンショット。" border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="コマンド パレットからの Visual Studio Code 用の Azure クラウド サインイン オプションのスクリーンショット。" border="false":::
 
 1. サインインの手順に従って Azure にサインインします。 接続すると、Visual Studio Code ウィンドウの下部にあるステータス バーに Azure アカウント名が表示されます。
 
@@ -82,11 +82,11 @@ Visual Studio Code 用の Azure Policy 拡張機能は、Visual Studio Code で�
 
    - コマンド パレット: 
 
-     メニュー バーから、 **[ビュー]** > **[コマンド パレット]** の順に移動し、「 **Azure: Select Subscriptions** 」と入力します。
+     メニュー バーから、 **[ビュー]** > **[コマンド パレット]** の順に移動し、「**Azure: Select Subscriptions**」と入力します。
 
    - ウィンドウのフッター
 
-     画面の下部にあるウィンドウのフッターで、 **Azure: \<your account\>** に一致するセグメントを選択します。
+     画面の下部にあるウィンドウのフッターで、**Azure: \<your account\>** に一致するセグメントを選択します。
 
 1. フィルター ボックスを使用して、名前でサブスクリプションをすばやく検索します。 次に、各サブスクリプションのチェックをオンまたはオフにして、Azure Policy 拡張機能によって表示されるサブスクリプションを設定します。 表示するサブスクリプションの追加または削除が完了したら、 **[OK]** を選択します。
 
@@ -111,7 +111,7 @@ Azure Policy 拡張機能では、 **[リソース]** ウィンドウに、選�
 
    - コマンド パレット:
 
-     メニュー バーから、 **[ビュー]** > **[コマンド パレット]** の順に移動し、「 **Resources: Search Resources** 」と入力します。
+     メニュー バーから、 **[ビュー]** > **[コマンド パレット]** の順に移動し、「**Resources: Search Resources**」と入力します。
 
 1. 表示するサブスクリプションが複数選択されている場合は、フィルターを使用して検索するサブスクリプションを選択します。
 
@@ -123,9 +123,9 @@ Azure Policy 拡張機能では、 **[リソース]** ウィンドウに、選�
 
 リソースを選択すると、検索インターフェイスを使用したか、ツリー ビューで選択したかに関係なく、リソースとその Azure Resource Manager のプロパティ値のすべてを表す JSON ファイルが Azure Policy 拡張機能によって開かれます。
 
-リソースが開いたら、リソース マネージャーのプロパティ名または値の上にカーソルを合わせると、Azure Policy エイリアスが表示されます (存在する場合)。 この例では、リソースの種類は `Microsoft.Compute/virtualMachines` リソースであり、 **properties.storageProfile.imageReference.offer** プロパティの上にカーソルが合わせられています。 カーソルを合わせると、一致するエイリアスが表示されます。
+リソースが開いたら、リソース マネージャーのプロパティ名または値の上にカーソルを合わせると、Azure Policy エイリアスが表示されます (存在する場合)。 この例では、リソースの種類は `Microsoft.Compute/virtualMachines` リソースであり、**properties.storageProfile.imageReference.offer** プロパティの上にカーソルが合わせられています。 カーソルを合わせると、一致するエイリアスが表示されます。
 
-:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Visual Studio Code 用の国内の Azure クラウド サインインを選択するスクリーンショット。" border="false":::
+:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="プロパティにカーソルが合わされてエイリアス名が表示されている、Visual Studio Code 用の Azure Policy 拡張機能のスクリーンショット。" border="false":::
 
 > [!NOTE]
 > VS Code 拡張機能では、Resource Manager モードのプロパティのみが公開され、[リソースプロバイダー モード](../concepts/definition-structure.md#mode)のプロパティは表示されません。
@@ -142,7 +142,7 @@ Azure Policy 拡張機能では、ポリシーの種類とポリシーの割り�
 
    - コマンド パレット:
 
-     メニュー バーから、 **[ビュー]** > **[コマンド パレット]** の順に移動し、「 **Policies: Search Policies** 」と入力します。
+     メニュー バーから、 **[ビュー]** > **[コマンド パレット]** の順に移動し、「**Policies: Search Policies**」と入力します。
 
 1. 表示するサブスクリプションが複数選択されている場合は、フィルターを使用して検索するサブスクリプションを選択します。
 
@@ -176,9 +176,9 @@ Azure Policy 拡張機能では、ポリシーの種類とポリシーの割り�
 1. **[評価]** ペインの上部で、評価の実行アイコンを選択します。 Visual Studio Code の新しいペインが開き、結果の評価の詳細が JSON 形式で表示されます。
 
 > [!NOTE]
-> 選択したポリシー定義が [AuditIfNotExists](../concepts/effects.md#auditifnotexists) または [DeployIfNotExists](../concepts/effects.md#deployifnotexists) のいずれかである場合は、 **[評価]** ペインでプラス アイコンを使用して、存在を確認するために " _関連する_ " リソースを選択します。
+> 選択したポリシー定義が [AuditIfNotExists](../concepts/effects.md#auditifnotexists) または [DeployIfNotExists](../concepts/effects.md#deployifnotexists) のいずれかである場合は、 **[評価]** ペインでプラス アイコンを使用して、存在を確認するために "_関連する_" リソースを選択します。
 
-評価結果には、ポリシー定義とポリシー割り当てに関する情報が、 **policyEvaluations.evaluationResult** プロパティと共に表示されます。 出力は次の例のようになります。
+評価結果には、ポリシー定義とポリシー割り当てに関する情報が、**policyEvaluations.evaluationResult** プロパティと共に表示されます。 出力は次の例のようになります。
 
 ```json
 {
@@ -199,7 +199,7 @@ Azure Policy 拡張機能では、ポリシーの種類とポリシーの割り�
 
 ## <a name="sign-out"></a>サインアウトする
 
-メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「 **Azure: Sign Out** 」と入力します。
+メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Sign Out**」と入力します。
 
 ## <a name="next-steps"></a>次のステップ
 

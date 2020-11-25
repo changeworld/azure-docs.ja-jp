@@ -9,11 +9,11 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
 ms.openlocfilehash: 6c07ab4b18c017bd29723d2640129b8e67374e3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87837382"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023654"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>アプリとソリューションを BizTalk Services から Azure Logic Apps に移行する
 
@@ -93,7 +93,7 @@ BizTalk Services は、どのエンドポイントまたはコネクタで受信
 
 ![ルーティング フィルター オプションを示すスクリーンショット。](media/logic-apps-move-from-mabs/route-filter.png)
 
-BizTalk Services では、オプションが 2 つしかない場合は、BizTalk Services でのルーティング フィルターの変換に最適な方法として、"*条件*" を使用します。 3 つ以上存在する場合は、**スイッチ**を使用します。
+BizTalk Services では、オプションが 2 つしかない場合は、BizTalk Services でのルーティング フィルターの変換に最適な方法として、"*条件*" を使用します。 3 つ以上存在する場合は、**スイッチ** を使用します。
 
 Logic Apps は高度なロジック機能を備え、[条件付きステートメント](../logic-apps/logic-apps-control-flow-conditional-statement.md)と [switch ステートメント](../logic-apps/logic-apps-control-flow-switch-statement.md)を使用した高度な制御フローおよびルーティングを提供します。
 

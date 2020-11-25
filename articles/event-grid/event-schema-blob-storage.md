@@ -4,15 +4,15 @@ description: Blob Storage イベントに関して Azure Event Grid に用意さ
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: a914edbb6f624617766c77b277d7ee8e6ad08bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87458945"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023961"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Blob Storage
 
-この記事では、Blob Storage イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。 また、Azure Blob Storage をイベント ソースとして使用するためのクイック スタートとチュートリアルの一覧も示されています。
+この記事では、Blob Storage イベントのプロパティとスキーマについて説明します。  イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。 また、Azure Blob Storage をイベント ソースとして使用するためのクイック スタートとチュートリアルの一覧も示されています。
 
 
 >[!NOTE]
