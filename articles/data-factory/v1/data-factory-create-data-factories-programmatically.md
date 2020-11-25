@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c9dce90b0dc563fb0fa7ecaaa0882167eef444a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019897"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003635"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure Data Factory .NET SDK を使用した Azure Data Factory の作成、監視、および管理
 > [!NOTE]
@@ -40,7 +40,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 ### <a name="create-an-application-in-azure-active-directory"></a>Azure Active Directory にアプリケーションを作成する
 Azure Active Directory アプリケーションを作成し、アプリケーションのサービス プリンシパルを作成して、 **Data Factory 共同作成者** ロールに割り当てます。
 
-1. **PowerShell**を起動します。
+1. **PowerShell** を起動します。
 2. 次のコマンドを実行して、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
 
     ```powershell
@@ -118,7 +118,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
    6. [場所] で **[C:\ADFGetStarted]** を選択します。
    7. **[OK]** をクリックしてプロジェクトを作成します。
 2. **[ツール]** をクリックし、 **[NuGet パッケージ マネージャー]** をポイントして、 **[パッケージ マネージャー コンソール]** をクリックします。
-3. **パッケージ マネージャー コンソール**で、次の手順を実行します。
+3. **パッケージ マネージャー コンソール** で、次の手順を実行します。
    1. 次のコマンドを実行して、Data Factory パッケージをインストールします: `Install-Package Microsoft.Azure.Management.DataFactories`
    2. 次のコマンドを実行して、Azure Active Directory パッケージをインストールします (コードで Active Directory API を使用します): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
 4. プロジェクトの **App.config** ファイルの内容を次の内容に置き換えます。 
@@ -180,7 +180,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
    > **resourceGroupName** の値を、使用する Azure リソース グループの名前で置き換えます。 リソース グループを作成するには、 [New-AzureResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用します。
    >
    > データ ファクトリの名前 (dataFactoryName) が一意になるように更新します。 データ ファクトリの名前はグローバルに一意にする必要があります。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。
-7. **データ ファクトリ**を作成する次のコードを **Main** メソッドに追加します。
+7. **データ ファクトリ** を作成する次のコードを **Main** メソッドに追加します。
 
     ```csharp
     // create a data factory
@@ -197,7 +197,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
         }
     );
     ```
-8. **Azure Storage のリンクされたサービス**を作成する次のコードを **Main** メソッドに追加します。
+8. **Azure Storage のリンクされたサービス** を作成する次のコードを **Main** メソッドに追加します。
 
    > [!IMPORTANT]
    > **storageaccountname** と **accountkey** を Azure ストレージ アカウントの名前とキーで置き換えます。
@@ -219,7 +219,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
         }
     );
     ```
-9. **入力データセットと出力データセット**を作成する次のコードを **Main** メソッドに追加します。
+9. **入力データセットと出力データセット** を作成する次のコードを **Main** メソッドに追加します。
 
     入力 BLOB の **FolderPath** を **adftutorial/** に設定します。この **adftutorial** は BLOB ストレージ内のコンテナーの名前です。 Azure BLOB ストレージにこのコンテナーが存在しない場合は、**adftutorial** という名前のコンテナーを作成し、このコンテナーにテキスト ファイルをアップロードします。
 
@@ -299,7 +299,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
         }
     });
     ```
-10. **パイプラインを作成してアクティブにする**次のコードを **Main** メソッドに追加します。 このパイプラインには、ソースとして **BlobSource**、シンクとして **BlobSink** を使用する **CopyActivity** があります。
+10. **パイプラインを作成してアクティブにする** 次のコードを **Main** メソッドに追加します。 このパイプラインには、ソースとして **BlobSource**、シンクとして **BlobSink** を使用する **CopyActivity** があります。
 
     コピー アクティビティにより、Azure Data Factory でデータ移動が実行されます。 このアクティビティは、安全で信頼性の高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。 コピー アクティビティの詳細については、「 [データ移動アクティビティ](data-factory-data-movement-activities.md) 」をご覧ください。
 
@@ -426,7 +426,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
     Console.WriteLine("\nPress any key to exit.");
     Console.ReadKey();
     ```
-14. **Main** メソッドで使用される次のヘルパー メソッドを **Program** クラスに追加します。 このメソッドは、Azure Portal へのログインに使用する**ユーザー名**と**パスワード**の入力が可能なダイアログ ボックスを表示します。
+14. **Main** メソッドで使用される次のヘルパー メソッドを **Program** クラスに追加します。 このメソッドは、Azure Portal へのログインに使用する **ユーザー名** と **パスワード** の入力が可能なダイアログ ボックスを表示します。
 
     ```csharp
     public static async Task<string> GetAuthorizationHeader()

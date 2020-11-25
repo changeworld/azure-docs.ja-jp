@@ -9,11 +9,11 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 3603a4f5d103987b25bd5f976b89f943f98565a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88163987"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003686"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Azure Maps での適切な価格レベルの選択
 
@@ -21,7 +21,7 @@ Azure Maps では 2 つの価格レベルが提供されています。S0 と S1
 
 ## <a name="how-many-concurrent-users-do-i-plan-to-support"></a>サポートする同時実行ユーザーの数はどれくらいですか
 
-S0 価格レベルと S1 価格レベルでは、処理されるデータ スループットの量が異なります。 S0 価格レベルでは、**1 秒あたり最大 50 個のクエリ**が処理されます。 一方、S1 レベルでは、**1 秒あたり 50 個を超えるクエリ**が処理されます。
+S0 価格レベルと S1 価格レベルでは、処理されるデータ スループットの量が異なります。 S0 価格レベルでは、**1 秒あたり最大 50 個のクエリ** が処理されます。 一方、S1 レベルでは、**1 秒あたり 50 個を超えるクエリ** が処理されます。
 
 ## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>どのような地理空間機能を使用する予定ですか
 

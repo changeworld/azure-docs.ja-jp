@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: d085f8704850cdbb03e21b15b3cca7c8998b96fb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092944"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004230"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Docker Hub にある [Python イメージ](https://hub.docker.com/_/python/)を�
 
 Dockerfile で Docker コンテナーを指定します。 Dockerfile は、コンテナー内で環境をセットアップし、実行するアプリを読み込み、ポートを割り当てるための手順で構成されています。 Dockerfile はイメージを作成する `docker build` コマンドへの入力です。 
 
-空のディレクトリを作成し、 *Dockerfile* というファイル (ファイル拡張子なし) を作成します。 *Dockerfile* に次のコードを追加して変更を保存します。
+空のディレクトリを作成し、*Dockerfile* というファイル (ファイル拡張子なし) を作成します。 *Dockerfile* に次のコードを追加して変更を保存します。
 
 ```
 # Use an official Python runtime as a base image
@@ -69,7 +69,7 @@ CMD ["python", "app.py"]
 Flask
 ```
 
-さらに、 *app.py* ファイルを作成して次のスニペットを追加します。
+さらに、*app.py* ファイルを作成して次のスニペットを追加します。
 
 ```python
 from flask import Flask
@@ -88,7 +88,7 @@ if __name__ == "__main__":
 ```
 
 ## <a name="build-the-image"></a>イメージをビルドする
-`docker build` コマンドを実行して、Web アプリケーションを実行するイメージを作成します。 PowerShell ウィンドウを開き、 *c:\temp\helloworldapp* に移動します。 次のコマンドを実行します。
+`docker build` コマンドを実行して、Web アプリケーションを実行するイメージを作成します。 PowerShell ウィンドウを開き、*c:\temp\helloworldapp* に移動します。 次のコマンドを実行します。
 
 ```bash
 docker build -t helloworldapp .
@@ -209,9 +209,9 @@ Service Fabric コンテナー アプリケーションを作成するには、�
 
 ## <a name="configure-docker-healthcheck"></a>Docker HEALTHCHECK を構成する 
 
-Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) イベントがシステム正常性レポートに自動的に統合されます。 つまり、コンテナーの **HEALTHCHECK** が有効な場合、Service Fabric は Docker によって報告されたとおりにコンテナーの正常性状態が変化するたびに正常性を報告します。 **OK** 正常性レポートは、 *health_status* が " *正常* " のときに、 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に表示され、 **警告** は、 *health_status* が " *異常* " のときに表示されます。 
+Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) イベントがシステム正常性レポートに自動的に統合されます。 つまり、コンテナーの **HEALTHCHECK** が有効な場合、Service Fabric は Docker によって報告されたとおりにコンテナーの正常性状態が変化するたびに正常性を報告します。 **OK** 正常性レポートは、*health_status* が "*正常*" のときに、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に表示され、**警告** は、*health_status* が "*異常*" のときに表示されます。 
 
-v6.4 の最新の更新リリース以降、Docker の HEALTHCHECK 評価をエラーとしてレポートするかどうかの選択肢ができました。 このオプションを有効にすると、 *health_status* が *正常* の場合、 **OK** 正常性レポートが表示され、 *health_status* が *異常* の場合、 **ERROR** が表示されます。
+v6.4 の最新の更新リリース以降、Docker の HEALTHCHECK 評価をエラーとしてレポートするかどうかの選択肢ができました。 このオプションを有効にすると、*health_status* が *正常* の場合、**OK** 正常性レポートが表示され、*health_status* が *異常* の場合、**ERROR** が表示されます。
 
 コンテナーの正常性の監視のために実行される実際のチェックを指す **HEALTHCHECK** 命令は、コンテナー イメージを生成するときに使用される Dockerfile に存在する必要があります。
 
@@ -235,13 +235,13 @@ ApplicationManifest の **ContainerHostPolicies** の一部として **HealthCon
     </Policies>
 </ServiceManifestImport>
 ```
-既定で、 *IncludeDockerHealthStatusInSystemHealthReport* は **true** に設定され、 *RestartContainerOnUnhealthyDockerHealthStatus* は **false** に設定され、 *TreatContainerUnhealthyStatusAsError* は **false** に設定されています。 
+既定で、*IncludeDockerHealthStatusInSystemHealthReport* は **true** に設定され、*RestartContainerOnUnhealthyDockerHealthStatus* は **false** に設定され、*TreatContainerUnhealthyStatusAsError* は **false** に設定されています。 
 
 *RestartContainerOnUnhealthyDockerHealthStatus* を **true** に設定すると、異常を繰り返し報告するコンテナーが (おそらく他のノードで) 再起動されます。
 
-*TreatContainerUnhealthyStatusAsError* が **true** に設定されている場合、コンテナーの *health_status* が *異常* のとき、 **ERROR** 正常性レポートが表示されます。
+*TreatContainerUnhealthyStatusAsError* が **true** に設定されている場合、コンテナーの *health_status* が *異常* のとき、**ERROR** 正常性レポートが表示されます。
 
-Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する場合、 [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) を **false** に設定する必要があります。
+Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する場合、[EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) を **false** に設定する必要があります。
 
 ## <a name="deploy-the-application"></a>アプリケーションをデプロイする
 アプリケーションがビルドされたら、Service Fabric CLI を使用してローカル クラスターにデプロイできます。
@@ -442,7 +442,7 @@ Service Fabric ランタイムはコンテナー イメージのダウンロー�
 
 ## <a name="set-container-retention-policy"></a>コンテナーの保持ポリシーを設定する
 
-コンテナーのスタートアップ エラーの診断を支援するために、Service Fabric (バージョン 6.1 以降) では、終了または起動に失敗したコンテナーの保持をサポートしています。 このポリシーは、次のスニペットで示すように、 **ApplicationManifest.xml** ファイルで設定できます。
+コンテナーのスタートアップ エラーの診断を支援するために、Service Fabric (バージョン 6.1 以降) では、終了または起動に失敗したコンテナーの保持をサポートしています。 このポリシーは、次のスニペットで示すように、**ApplicationManifest.xml** ファイルで設定できます。
 
 ```xml
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 

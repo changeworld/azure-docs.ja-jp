@@ -10,11 +10,11 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/26/2020
 ms.openlocfilehash: a5db3935ae445ee7dcf8129eb1d4c75fcb64302f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739216"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003907"
 ---
 # <a name="apply-transformation-module"></a>変換の適用モジュール
 
@@ -22,7 +22,7 @@ ms.locfileid: "92739216"
 
 このモジュールを使用して、事前に計算された変換に基づいて入力データセットを変更します。 このモジュールは、推論パイプラインで変換を更新する必要がある場合に必要になります。
 
-たとえば、 **データの正規化** モジュールを使用してトレーニング データを正規化するために z スコアを使用した場合は、スコアリング フェーズ中も、トレーニング用に計算された z スコア値を使用することができます。 Azure Machine Learning では、正規化方法を変換として保存し、 **変換の適用** を使用して、スコアリングの前の入力データに z スコアを適用することができます。
+たとえば、**データの正規化** モジュールを使用してトレーニング データを正規化するために z スコアを使用した場合は、スコアリング フェーズ中も、トレーニング用に計算された z スコア値を使用することができます。 Azure Machine Learning では、正規化方法を変換として保存し、**変換の適用** を使用して、スコアリングの前の入力データに z スコアを適用することができます。
 
 ## <a name="how-to-save-transformations"></a>変換を保存する方法
 
@@ -52,7 +52,7 @@ ms.locfileid: "92739216"
 > トレーニング パイプラインで更新された変換が推論パイプラインでも適用可能であることを確認するには、トレーニング パイプラインで更新された変換が発生するたびに、次の手順に従う必要があります。
 > 1. トレーニング パイプラインで、[[Select Columns Transform]\(列変換の選択)](select-columns-transform.md) の出力をデータセットとして登録します。
 > ![モジュール出力のデータセットの登録](media/module/select-columns-transform-register-dataset.png)
-> 1. 推論パイプラインで、 **TD-** モジュールを削除し、前の手順で登録したデータセットで置き換えます。
+> 1. 推論パイプラインで、**TD-** モジュールを削除し、前の手順で登録したデータセットで置き換えます。
 > ![TD モジュールの置換](media/module/replace-tranformation-directory.png)
 
 ## <a name="next-steps"></a>次のステップ

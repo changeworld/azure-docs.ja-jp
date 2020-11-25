@@ -6,17 +6,17 @@ ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
 ms.openlocfilehash: 897f2b728dc068b09849d4f48f899b8630a87a51
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913169"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004002"
 ---
 Azure portal に移動し、<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title="新しい Form Recognizer リソースを作成します" target="_blank">新しい Form Recognizer リソースを作成します <span class="docon docon-navigate-external x-hidden-focus"></span></a>。 **[作成]** ウィンドウには以下の情報が表示されます。
 
 |    |    |
 |--|--|
-| **名前** | リソースのわかりやすい名前。 わかりやすい名前 ( *MyNameFaceAPIAccount* など) を使用することをお勧めします。 |
+| **名前** | リソースのわかりやすい名前。 わかりやすい名前 (*MyNameFaceAPIAccount* など) を使用することをお勧めします。 |
 | **サブスクリプション** | アクセスが許可されている Azure サブスクリプションを選択します。 |
 | **場所** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 |
 | **価格レベル** | リソースのコストは、選択した価格レベルと使用量に依存します。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。

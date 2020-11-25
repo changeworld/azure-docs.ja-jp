@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: duau
 ms.openlocfilehash: 83dc432a1f88b443d500bf9a977abfed69211156
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401556"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003856"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure Traffic Manager での機能低下状態のトラブルシューティング
 
-この記事では、機能低下状態になっている Azure Traffic Manager プロファイルをトラブルシューティングする方法について説明します。 Azure Traffic Manager の機能低下状態をトラブルシューティングする最初の手順として、ログを有効にします。  詳細については、[リソース ログの有効化](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs)に関するページを参照してください。 このシナリオでは、.cloudapp.net ホステッド サービスの一部を参照するように Traffic Manager プロファイルを構成しているとします。 Traffic Manager の正常性が **機能低下** 状態の場合は､1 つまたは複数のエンドポイントのステータスも**機能低下**している可能性があります｡
+この記事では、機能低下状態になっている Azure Traffic Manager プロファイルをトラブルシューティングする方法について説明します。 Azure Traffic Manager の機能低下状態をトラブルシューティングする最初の手順として、ログを有効にします。  詳細については、[リソース ログの有効化](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs)に関するページを参照してください。 このシナリオでは、.cloudapp.net ホステッド サービスの一部を参照するように Traffic Manager プロファイルを構成しているとします。 Traffic Manager の正常性が **機能低下** 状態の場合は､1 つまたは複数のエンドポイントのステータスも **機能低下** している可能性があります｡
 
 ![エンドポイントの機能低下状態](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 

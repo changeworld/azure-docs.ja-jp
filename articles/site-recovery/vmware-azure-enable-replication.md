@@ -7,11 +7,11 @@ ms.date: 04/01/2020
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 74870d10348421bf726b9bdc58504a74cf4105a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86129927"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004213"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Azure への VMware VM のレプリケーションを有効にする
 
@@ -61,7 +61,7 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
 1. **[ソース]** ページで **[ソース]** をクリックし、構成サーバーを選択します。
 1. **[マシンの種類]** で、 **[仮想マシン]** または **[物理マシン]** を選択します。
 1. **[vCenter/vSphere Hypervisor] \(vCenter/vSphere ハイパーバイザー)** で、vSphere ホストを管理する vCenter サーバーを選択するか、ホストを選択します。 物理コンピューターをレプリケートする場合、この設定は関係ありません。
-1. プロセス サーバーを選択します。 サーバーによって作成された追加のプロセスがない場合は、ドロップダウン メニューにおいて構成サーバーの組み込みのプロセス サーバーを利用できます。 各プロセス サーバーの正常性状態が、推奨される制限とその他のパラメーターに従って示されます。 正常なプロセス サーバーを選択します。 [クリティカル](vmware-physical-azure-monitor-process-server.md#process-server-alerts)であるプロセス サーバーは選択できません。 エラーを[トラブルシューティングして解決](vmware-physical-azure-troubleshoot-process-server.md)するか、**または**[スケールアウト プロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定できます。
+1. プロセス サーバーを選択します。 サーバーによって作成された追加のプロセスがない場合は、ドロップダウン メニューにおいて構成サーバーの組み込みのプロセス サーバーを利用できます。 各プロセス サーバーの正常性状態が、推奨される制限とその他のパラメーターに従って示されます。 正常なプロセス サーバーを選択します。 [クリティカル](vmware-physical-azure-monitor-process-server.md#process-server-alerts)であるプロセス サーバーは選択できません。 エラーを [トラブルシューティングして解決](vmware-physical-azure-troubleshoot-process-server.md)するか、**または**[スケールアウト プロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定できます。
 
    :::image type="content" source="./media/vmware-azure-enable-replication/ps-selection.png" alt-text="[レプリケーションを有効にする] [ソース] ウィンドウ":::
 
@@ -73,16 +73,16 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
 
    保護の対象として選択したすべての仮想マシンにネットワーク設定を適用する場合は、 **[選択したマシン用に今すぐ構成します。]** を選択します。 仮想マシンごとに Azure ネットワークを選択する場合は、 **[後で構成する]** を選択します。 ネットワークがない場合は、作成する必要があります。 Azure Resource Manager を使用してネットワークを作成する場合は、 **[新規作成]** を選択します。 該当する場合は、サブネットを選択し、 **[OK]** を選択します。
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-rep3.png" alt-text="[レプリケーションを有効にする] [ソース] ウィンドウ":::
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-rep3.png" alt-text="[レプリケーションを有効にする] [ターゲット] ウィンドウ":::
 
 1. **[Virtual Machines]**  >  **[仮想マシンの選択]** で、レプリケートする各仮想マシンを選択します。 選択できるのは、レプリケーションを有効にできる仮想マシンのみです。 **[OK]** をクリックします。 特定の仮想マシンを表示または選択できない場合は、「[ソース マシンが Azure portal 内に表示されない](vmware-azure-troubleshoot-replication.md#step-3-troubleshoot-source-machines-that-arent-available-for-replication)」を参照して問題を解決してください。
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication5.png" alt-text="[レプリケーションを有効にする] [ソース] ウィンドウ":::
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication5.png" alt-text="[レプリケーションを有効にする] [仮想マシンの選択] ウィンドウ":::
 
 1. **[プロパティ]**  >  **[プロパティの構成]** で、Site Recovery Mobility Service を VM に自動的にインストールするためにプロセス サーバーが使用するアカウントを選択します。 また、データ チャーン パターンに基づいてレプリケーションに使用するターゲット マネージド ディスクの種類を選択します。
 1. 既定では、ソース VM のすべてのディスクがレプリケートされます。 レプリケーションからディスクを除外するには、レプリケートしないディスクの **[Include]\(含める\)** チェックボックスをオフにします。 **[OK]** をクリックします。 後で追加のプロパティを設定できます。 ディスクの除外の詳細については、[こちら](vmware-azure-exclude-disk.md)をご覧ください。
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication6.png" alt-text="[レプリケーションを有効にする] [ソース] ウィンドウ":::
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication6.png" alt-text="[レプリケーションを有効にする] [プロパティの構成] ウィンドウ":::
 
 1. **[レプリケーション設定]**  >  **[レプリケーション設定の構成]** で、正しいレプリケーション ポリシーが選択されていることを確認します。 レプリケーション ポリシー設定を変更するには、 **[設定]**  >  **[レプリケーション ポリシー]**  >  _(ポリシー名)_  >  **[設定の編集]** の順にクリックします。 ポリシーに適用された変更は、レプリケートと新しい仮想マシンにも適用されます。
 1. 仮想マシンをレプリケーション グループにまとめる場合は、 **[マルチ VM 整合性]** を有効にします。 グループの名前を指定し、 **[OK]** を選択します。
@@ -91,9 +91,9 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
    > - レプリケーション グループの仮想マシンはまとめてレプリケートされ、フェールオーバー時にクラッシュ整合性復旧ポイントとアプリ整合性復旧ポイントを共有します。
    > - VM と物理サーバーがワークロードをミラー化できるように、これらをまとめます。 マルチ VM 整合性を有効にすると、ワークロードのパフォーマンスに影響する場合があります。 これは、複数の仮想マシンが同じワークロードを実行していて、整合性を持たせる必要がある場合にのみ実行してください。
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="[レプリケーションを有効にする] [ソース] ウィンドウ":::
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="[レプリケーションを有効にする] ウィンドウ":::
 
-1. **[レプリケーションを有効にする]** を選択します。 **保護の有効化**ジョブの進行状況は、 **[設定]**  >  **[ジョブ]**  >  **[Site Recovery ジョブ]** で追跡できます。 **保護の最終処理**ジョブが実行されると、仮想マシンはフェールオーバーを実行できる状態になります。
+1. **[レプリケーションを有効にする]** を選択します。 **保護の有効化** ジョブの進行状況は、 **[設定]**  >  **[ジョブ]**  >  **[Site Recovery ジョブ]** で追跡できます。 **保護の最終処理** ジョブが実行されると、仮想マシンはフェールオーバーを実行できる状態になります。
 
 ## <a name="view-and-manage-vm-properties"></a>VM プロパティを表示して管理する
 
@@ -103,12 +103,12 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
 1. **[プロパティ]** で、VM のレプリケーションとフェールオーバーの情報を確認できます。
 1. **[コンピューティングとネットワーク]**  >  **[コンピューティングのプロパティ]** で、複数の VM プロパティを変更することができます。
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="[レプリケーションを有効にする] [ソース] ウィンドウ":::
+   :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="[コンピューティングとネットワークのプロパティ] ウィンドウ":::
 
    - **Azure VM 名**:必要に応じて、Azure の要件を満たすように名前を変更します。
    - **ターゲット VM のサイズまたは VM の種類**:既定の VM サイズは、ターゲットとなる Azure リージョン内のディスク数、NIC 数、CPU コア数、メモリ、利用可能な VM ロール サイズを含むパラメーターに基づいて選択されます。 Azure Site Recovery では、すべての条件を満たす最初の使用可能な VM サイズが選択されます。 必要に応じて、フェールオーバーの前にいつでも、別の VM サイズを選択することができます。 VM ディスクのサイズは、ソース ディスクのサイズにも基づいており、フェールオーバー後にしか変更できません。 ディスク サイズと IOPS レートの詳細については、「[Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標](../virtual-machines/windows/disk-scalability-targets.md)」をご覧ください。
-   - **[リソース グループ]** :フェールオーバー後に仮想マシンが属する[リソース グループ](../azure-resource-manager/management/overview.md#resource-groups)を選択できます。 この設定は、フェールオーバー前であればいつでも変更できます。 フェールオーバー後に、仮想マシンを別のリソース グループに移行すると、その仮想マシンの保護設定が解除されます。
-   - **可用性セット**:仮想マシンがフェールオーバー後に[可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)に属する必要がある場合は、可用性セットを選択できます。 可用性セットを選択するときは、以下のことに注意してください。
+   - **[リソース グループ]** :フェールオーバー後に仮想マシンが属する [リソース グループ](../azure-resource-manager/management/overview.md#resource-groups)を選択できます。 この設定は、フェールオーバー前であればいつでも変更できます。 フェールオーバー後に、仮想マシンを別のリソース グループに移行すると、その仮想マシンの保護設定が解除されます。
+   - **可用性セット**:仮想マシンがフェールオーバー後に [可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)に属する必要がある場合は、可用性セットを選択できます。 可用性セットを選択するときは、以下のことに注意してください。
      - 指定されたリソース グループに属している可用性セットだけが一覧表示されます。
      - 異なる仮想ネットワーク上にある VM が同じ可用性セットに属することはできません。
      - 同じサイズの仮想マシンだけが同じ可用性セットに属することができます。

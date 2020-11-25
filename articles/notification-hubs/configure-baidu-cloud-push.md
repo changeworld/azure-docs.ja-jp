@@ -12,11 +12,11 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 759e35ba353f470ea3abc5f5d4182fa2b2ea0e73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71212522"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003584"
 ---
 # <a name="deprecated-configure-baidu-cloud-push-settings-for-a-notification-hub-in-the-azure-portal"></a>非推奨:Azure portal で通知ハブ用に Baidu クラウド プッシュの設定を構成する
 
@@ -32,8 +32,8 @@ ms.locfileid: "71212522"
 次の手順は、通知ハブ用に Baidu クラウド プッシュの設定を構成する手順を示しています。
 
 1. Azure portal の **[通知ハブ]** ページで、左側のメニューの **[Baidu (Android China)]** を選択します。 
-2. Baidu コンソールから取得した、Baidu クラウド プッシュ プロジェクトの **API キー**を入力します。 
-3. Baidu コンソールから取得した、Baidu クラウド プッシュ プロジェクトの**秘密鍵**を入力します。 
+2. Baidu コンソールから取得した、Baidu クラウド プッシュ プロジェクトの **API キー** を入力します。 
+3. Baidu コンソールから取得した、Baidu クラウド プッシュ プロジェクトの **秘密鍵** を入力します。 
 4. **[保存]** を選択します。 
 
     ![Baidu (Android China) のプッシュ通知構成を示した Notification Hubs のスクリーンショット](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)

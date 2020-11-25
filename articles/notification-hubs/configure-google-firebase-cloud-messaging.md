@@ -12,11 +12,11 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 0da103c11e2412108535ca322917632f5d95559d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87760840"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003567"
 ---
 # <a name="configure-google-firebase-settings-for-a-notification-hub-in-the-azure-portal"></a>Azure portal で通知ハブ用に Google Firebase の設定を構成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "87760840"
 次の手順は、通知ハブ用に Google Firebase Cloud Messaging (FCM) の設定を構成する手順を説明しています。
 
 1. Azure portal の **[通知ハブ]** ページで、左側のメニューの **[Google (GCM/FCM)]** を選択します。
-2. 前に保存した FCM プロジェクトの **API キー**を貼り付けます。
+2. 前に保存した FCM プロジェクトの **API キー** を貼り付けます。
 3. **[保存]** を選択します。
 
    ![Google FCM 用に Notification Hubs を構成する方法を示したスクリーンショット](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)

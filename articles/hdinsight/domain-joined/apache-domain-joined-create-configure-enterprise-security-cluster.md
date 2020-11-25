@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/10/2019
 ms.openlocfilehash: 07bd92e17b827dfeede5958587cecbdc97694329
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545295"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003924"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Azure HDInsight で Enterprise セキュリティ パッケージ クラスターを作成および構成する
 
@@ -21,7 +21,7 @@ Azure HDInsight の Enterprise セキュリティ パッケージ (ESP) を使�
 
 このガイドでは、ESP 対応の Azure HDInsight クラスターを作成する方法について説明します。 また、Windows IaaS VM を作成して、その上で Active Directory とドメイン ネーム システム (DNS) を有効にする方法についても説明します。 このガイドを使用して、オンプレミス ユーザーが ESP 対応の HDInsight クラスターにサインインできるように、必要なリソースを構成してください。
 
-作成するサーバーは、" *実際の* " オンプレミス環境の代わりとして機能します。 セットアップと構成の手順にそれを使用します。 後で、独自の環境でその手順を繰り返します。
+作成するサーバーは、"*実際の*" オンプレミス環境の代わりとして機能します。 セットアップと構成の手順にそれを使用します。 後で、独自の環境でその手順を繰り返します。
 
 このガイドは、Azure Active Directory (Azure AD) とのパスワード ハッシュ同期を使用して、ハイブリッド ID 環境を作成する場合にも役立ちます。 このガイドは、「[HDInsight で Enterprise セキュリティ パッケージを使用する](apache-domain-joined-architecture.md)」を補完するものです。
 
@@ -76,7 +76,7 @@ Azure HDInsight の Enterprise セキュリティ パッケージ (ESP) を使�
 
     ![[サーバー マネージャー] ダッシュボードで Active Directory の管理を開く](./media/apache-domain-joined-create-configure-enterprise-security-cluster/server-manager-active-directory-screen.png)
 
-1. 次の 2 人のユーザーを新しく作成します: **HDIAdmin** と **HDIUser** 。 これら 2 人のユーザーは、HDInsight クラスターにサインインします。
+1. 次の 2 人のユーザーを新しく作成します: **HDIAdmin** と **HDIUser**。 これら 2 人のユーザーは、HDInsight クラスターにサインインします。
 
     1. **[Active Directory ユーザーとコンピューター]** ページで、[`HDIFabrikam.com`] を右クリックして、 **[新規]**  >  **[ユーザー]** の順に移動します。
 
@@ -250,14 +250,14 @@ Azure AD DS を有効にするには、以下の手順のようにします。 �
 1. Azure portal にサインインします。
 1. **[リソースの作成]** を選択し、「`Domain services`」と入力して、 **[Azure AD Domain Services]**  >  **[作成]** の順に選択します。
 1. **[基本]** ページで次のようにします。
-    1. **[ディレクトリ名]** で、作成した Azure AD ディレクトリを選択します: **HDIFabrikam** 。
-    1. **[DNS ドメイン名]** に「 *HDIFabrikam.com* 」と入力します。
+    1. **[ディレクトリ名]** で、作成した Azure AD ディレクトリを選択します: **HDIFabrikam**。
+    1. **[DNS ドメイン名]** に「*HDIFabrikam.com*」と入力します。
     1. サブスクリプションを選択します。
     1. リソース グループ **HDIFabrikam-CentralUS** を指定します。 **[場所]** には **[米国中部]** を選択します。
 
         ![Azure AD DS の基本の詳細](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0084.png)
 
-1. **[ネットワーク]** ページで、PowerShell スクリプトを使用して作成したネットワーク ( **HDIFabrikam-VNET** ) とサブネット ( **AADDS-subnet** ) を選択します。 または、 **[新規作成]** を選択してここで仮想ネットワークを作成します。
+1. **[ネットワーク]** ページで、PowerShell スクリプトを使用して作成したネットワーク (**HDIFabrikam-VNET**) とサブネット (**AADDS-subnet**) を選択します。 または、 **[新規作成]** を選択してここで仮想ネットワークを作成します。
 
     !["仮想ネットワークの作成" ステップ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0086.png)
 
@@ -277,7 +277,7 @@ Azure AD DS を有効にすると、ローカル DNS サーバーが Azure AD VM
 
 ### <a name="configure-your-azure-ad-ds-virtual-network"></a>Azure AD DS 仮想ネットワークを構成する
 
-以下の手順を使用して、カスタム DNS サーバーを使用するように Azure AD DS 仮想ネットワーク ( **HDIFabrikam-AADDSVNET** ) を構成します。
+以下の手順を使用して、カスタム DNS サーバーを使用するように Azure AD DS 仮想ネットワーク (**HDIFabrikam-AADDSVNET**) を構成します。
 
 1. カスタム DNS サーバーの IP アドレスを見つけます。
     1. `HDIFabrikam.com` Azure AD DS リソースを選択します。
@@ -286,13 +286,13 @@ Azure AD DS を有効にすると、ローカル DNS サーバーが Azure AD VM
 
     ![Azure AD DS のカスタム DNS IP アドレスを見つける](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0096.png)
 
-1. カスタム IP アドレス 10.0.0.4 と 10.0.0.5 を使用するように、 **HDIFabrikam-AADDSVNET** を構成します。
+1. カスタム IP アドレス 10.0.0.4 と 10.0.0.5 を使用するように、**HDIFabrikam-AADDSVNET** を構成します。
 
     1. **[設定]** で、 **[DNS サーバー]** を選択します。
     1. **[カスタム]** を選択します。
-    1. テキスト ボックスに、最初の IP アドレス ( *10.0.0.4* ) を入力します。
+    1. テキスト ボックスに、最初の IP アドレス (*10.0.0.4*) を入力します。
     1. **[保存]** を選択します。
-    1. 手順を繰り返して、他の IP アドレス ( *10.0.0.5* ) を追加します。
+    1. 手順を繰り返して、他の IP アドレス (*10.0.0.5*) を追加します。
 
 このシナリオでは、IP アドレス 10.0.0.4 と 10.0.0.5 を使用するように Azure AD DS を構成し、同じ IP アドレスを Azure AD DS 仮想ネットワークに設定しました。
 
@@ -304,9 +304,9 @@ Azure Active Directory に対する読み書きには、ライトウェイト �
 
 Secure LDAP について詳しくは、[Azure AD DS マネージド ドメインに対する LDAP の構成](../../active-directory-domain-services/tutorial-configure-ldaps.md)に関する記事をご覧ください。
 
-このセクションでは、自己署名証明書を作成し、証明書をダウンロードして、 **HDIFabrikam** Azure AD DS マネージド ドメイン用に LDAPS を構成します。
+このセクションでは、自己署名証明書を作成し、証明書をダウンロードして、**HDIFabrikam** Azure AD DS マネージド ドメイン用に LDAPS を構成します。
 
-次のスクリプトでは、 **HDIFabrikam** 用の証明書が作成されます。 証明書は *LocalMachine* パスに保存されます。
+次のスクリプトでは、**HDIFabrikam** 用の証明書が作成されます。 証明書は *LocalMachine* パスに保存されます。
 
 ```powershell
 $lifetime = Get-Date
@@ -333,7 +333,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
     ![証明書エクスポート ウィザードの [秘密キーのエクスポート] ページ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0103.png)
 
 1. **[エクスポート ファイルの形式]** ページでは、既定値をそのまま使用し、 **[次へ]** を選択しますます。
-1. **[パスワード]** ページで、秘密キーのパスワードを入力します。 **[暗号化]** では、 **TripleDES-SHA1** を選択します。 **[次へ]** を選択します。
+1. **[パスワード]** ページで、秘密キーのパスワードを入力します。 **[暗号化]** では、**TripleDES-SHA1** を選択します。 **[次へ]** を選択します。
 1. **[エクスポートするファイル]** ページで、エクスポートした証明書ファイルのパスと名前を入力し、 **[次へ]** を選択します。 ファイル名の拡張子は .pfx である必要があります。 このファイルは、セキュリティで保護された接続を確立するために Azure portal で構成されます。
 1. Azure AD DS マネージド ドメインに対して LDAPS を有効にします。
     1. Azure portal から、`HDIFabrikam.com` を選択します。
@@ -391,7 +391,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 
 1. **HDIFabrikam-AADDSVNET** 仮想ネットワーク上にカスタム DNS を設定します。
     1. Azure portal、 **[リソース グループ]**  >  **[OnPremADVRG]**  >  **[HDIFabrikam-AADDSVNET]**  >  **[DNS サーバー]** の順に移動します。
-    1. **[カスタム]** を選択し、「 *10.0.0.4* 」と「 *10.0.0.5* 」を入力します。
+    1. **[カスタム]** を選択し、「*10.0.0.4*」と「*10.0.0.5*」を入力します。
     1. **[保存]** を選択します。
 
         ![仮想ネットワークのカスタム DNS 設定を保存する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0123.png)
