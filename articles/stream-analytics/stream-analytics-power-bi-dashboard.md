@@ -6,17 +6,17 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 8/6/2020
-ms.openlocfilehash: 2a130345a755644874b4547a5906101b593664a6
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/16/2020
+ms.openlocfilehash: 6dd855695a155e924f7c46bdb17449c5e6504ca6
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123474"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94745362"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics と Power BI:ストリーミング データのリアルタイム分析ダッシュボード
 
-Azure Stream Analytics では、主要なビジネス インテリジェンス ツールの 1 つである [Microsoft Power BI](https://powerbi.com/) を利用することができます。 この記事では、Azure Stream Analytics ジョブの出力として Power BI を使ってビジネス インテリジェンス ツールを作成する方法について説明します。 リアルタイム ダッシュボードを作って使う方法についても説明します。
+Azure Stream Analytics では、主要なビジネス インテリジェンス ツールの 1 つである [Microsoft Power BI](https://powerbi.com/) を利用することができます。 この記事では、Azure Stream Analytics ジョブの出力として Power BI を使ってビジネス インテリジェンス ツールを作成する方法について説明します。 また、Stream Analytics ジョブによって継続的に更新されるリアルタイム ダッシュボードを作成して使用する方法についても説明します。
 
 この記事は、Stream Analytics による[リアルタイムでの不正検出](stream-analytics-real-time-fraud-detection.md)に関するチュートリアルに続くものです。 この記事では、前のチュートリアルで作成したワークフローに Power BI の出力を追加し、Streaming Analytics ジョブによって検出された不正な電話を視覚化できるようにします。 
 
@@ -64,7 +64,7 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
 データセットは、次の設定で作成されます。
 
 * **defaultRetentionPolicy:BasicFIFO** - データは FIFO で、最大行数は 200,000 です。
-* **defaultMode: pushStreaming** - データセットは、ストリーミング タイルと従来のレポートベース ビジュアル (プッシュとも呼ばれます) の両方をサポートしています。
+* **defaultMode: hybrid** - データセットは、ストリーミング タイル (プッシュとも呼ばれます) と従来のレポートベース ビジュアルの両方をサポートしています。 プッシュ コンテンツについては、データはこの場合、ストリーム分析ジョブから継続的に更新され、Power BI 側からの更新をスケジュールする必要はありません。
 
 現時点では、他のフラグでデータセットを作成することはできません。
 

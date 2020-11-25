@@ -2,13 +2,13 @@
 title: リンクされたテンプレートとしてテンプレート スペックをデプロイする
 description: リンクされたデプロイに既存のテンプレート スペックをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 11/03/2020
-ms.openlocfilehash: 9755774f79ee4901c8aa691054da749f37756742
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/17/2020
+ms.openlocfilehash: 65ad5767817457133d0fbc34c7735cf52ff2c3f3
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321569"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747470"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>チュートリアル:リンクされたテンプレートとしてテンプレート スペックをデプロイする (プレビュー)
 
@@ -19,7 +19,7 @@ ms.locfileid: "93321569"
 アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> テンプレート スペックは現在プレビューの段階です。 使用するには、[プレビューにサインアップする](https://aka.ms/templateSpecOnboarding)必要があります。
+> テンプレート スペックは現在プレビューの段階です。 これを使用するには、最新バージョンの PowerShell または Azure CLI をインストールする必要があります。 Azure PowerShell の場合は、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)を使用します。 Azure CLI の場合は、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
 
 ## <a name="create-a-template-spec"></a>テンプレート スペックを作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "93321569"
 
 ## <a name="create-the-main-template"></a>メイン テンプレートを作成する
 
-ARM テンプレートにテンプレート スペックをデプロイするには、メイン テンプレートに[デプロイ リソース](/azure/templates/microsoft.resources/deployments)を追加します。 `templateLink` プロパティにテンプレート スペックのリソース ID を指定します。 **azuredeploy. json** という名前の次の JSON を使用して、テンプレートを作成します。 このチュートリアルでは、パス **c:\Templates\deployTS\azuredeploy.json** に保存したことを想定していますが、任意のパスを使用できます。
+ARM テンプレートにテンプレート スペックをデプロイするには、メイン テンプレートに[デプロイ リソース](/azure/templates/microsoft.resources/deployments)を追加します。 `templateLink` プロパティにテンプレート スペックのリソース ID を指定します。**azuredeploy. json** という名前の次の JSON を使用して、テンプレートを作成します。 このチュートリアルでは、パス **c:\Templates\deployTS\azuredeploy.json** に保存したことを想定していますが、任意のパスを使用できます。
 
 ```json
 {

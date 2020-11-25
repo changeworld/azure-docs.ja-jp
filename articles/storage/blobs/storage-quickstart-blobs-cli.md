@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 55cbf0a304bbf13d47fefad0981c0143c101bbb0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c9797024315a8fdc744d08863a42fba0b0b16420
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88520772"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660340"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>クイック スタート:Azure CLI を使用して BLOB を作成、ダウンロード、一覧表示する
 
@@ -27,19 +27,9 @@ Azure CLI は、Azure リソースを管理するための、Azure のコマン�
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
 
-## <a name="install-the-azure-cli-locally"></a>Azure CLI をローカルにインストールする
-
-Azure CLI をローカルにインストールして使用することを選択した場合、このクイックスタートでは Azure CLI バージョン 2.0.46 以降を実行していることが必要です。 `az --version` を実行して、バージョンを判断します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
-
-Azure CLI をローカルで実行している場合、ログインして認証を行う必要があります。 Azure Cloud Shell を使用している場合、この手順は必要ありません。 Azure CLI にログインするには、`az login` を実行して、ブラウザー ウィンドウで認証を行います。
-
-```azurecli
-az login
-```
-
-Azure CLI を使用した認証について詳しくは、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli)」をご覧ください。
+- この記事では、Azure CLI のバージョン 2.0.46 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="authorize-access-to-blob-storage"></a>Blob Storage へのアクセスを承認する
 

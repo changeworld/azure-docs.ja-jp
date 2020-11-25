@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 9827f79f8407bd04468f1b4456aec9d6a8793a6f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: a7bdc1ee22d3672160122cad65b18de99f743cc7
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506296"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747691"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>Azure Monitor for VMs 用に Log Analytics ワークスペースを構成する
 Azure Monitor for VMs は、Azure Monitor 内の 1 つ以上の Log Analytics ワークスペースからデータを収集します。 エージェントをオンボードする前に、ワークスペースを作成して構成する必要があります。 この記事では、ワークスペースの要件と、それを Azure Monitor for VMs 用に構成するための要件について説明します。
@@ -78,7 +78,7 @@ Azure Monitor for VMs で Log Analytics ワークスペースを使用するに�
 > ワークスペースに *VMInsights* ソリューションを追加すると、そのワークスペースに接続されているすべての既存の仮想マシンが InsightsMetrics にデータを送信し始めます。 その他のデータ型のデータは、そのワークスペースに接続されているこれらの既存の仮想マシンに依存関係エージェントを追加するまで収集されません。
 
 ### <a name="azure-portal"></a>Azure portal
-Azure portal から既存のワークスペースを構成するためのオプションは 3 つあります。
+Azure portal を使用して既存のワークスペースを構成するためのオプションは 3 つあります。 それぞれについて下で説明します。
 
 1 つのワークスペースを構成するには、 **[その他のオンボード オプション]** 、 **[ワークスペースの構成]** の順に選択します。 サブスクリプションとワークスペースを選択し、 **[構成]** をクリックします。
 

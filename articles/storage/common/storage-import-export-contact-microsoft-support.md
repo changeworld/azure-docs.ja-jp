@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/29/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ee30e9bba35ad39606fbe201c49e4eed3e656c97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdee5420fa6a50974250c45260a3727755bfcba7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548275"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542594"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Import/Export ジョブのサポート チケットを開く
 
@@ -33,7 +33,7 @@ Import/Export サービスで問題が発生した場合は、テクニカル �
 2. **[新しいサポート要求]** で、 **[基本]** を選択します。 **[基本]** で次の手順を実行します。
     
     1. **[問題の種類]** ドロップダウン リストで **[技術]** を選択します。
-    2. **サブスクリプション**を選択します。
+    2. **サブスクリプション** を選択します。
     3. **[サービス]** の **[使用中のサービス]** をオンにします。 ドロップ ダウン リストからは **[Storage Account Management]\(ストレージ アカウントの管理\)** 、 **[BLOB]** 、または **[ファイル]** のいずれかのオプションを選択できます。 
         - **[Storage Account Management]\(ストレージ アカウントの管理\)** を選択した場合は、 **[リソース]** と **[サポート プラン]** を選択します。
             ![[Storage Account Management]\(ストレージ アカウントの管理\) を選択する](./media/storage-import-export-contact-microsoft-support/import-export-support3.png)
@@ -74,15 +74,15 @@ Import/Export サービスで問題が発生した場合は、テクニカル �
 
 1. ヘルプとサポート ページにアクセスするには、 **[参照] > [ヘルプとサポート]** の順に移動します。
 
-    ![サポート要求を管理する](./media/storage-import-export-contact-microsoft-support/manage-support-ticket2.png)   
+    ![[ヘルプ] ダイアログ ボックスを示すスクリーンショット。](./media/storage-import-export-contact-microsoft-support/manage-support-ticket2.png)   
 
 2. **[ヘルプとサポート]** に **[最近のサポート要求]** の表形式の一覧が表示されます。
 
-    ![サポート要求を管理する](./media/storage-import-export-contact-microsoft-support/manage-support-ticket1.png) 
+    ![オープン状態のサポート要求を含む [ヘルプとサポート] ページを示すスクリーンショット。](./media/storage-import-export-contact-microsoft-support/manage-support-ticket1.png) 
 
 3. サポート要求を選択してクリックします。 この要求のステータスと詳細を表示することができます。 この要求をフォローアップする場合は、 **[+ 新しいメッセージ]** を選択します。
 
-    ![サポート要求を管理する](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
+    ![この要求に対して選択された新しいメッセージを示すスクリーンショット。](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
 
 
 ## <a name="next-steps"></a>次のステップ

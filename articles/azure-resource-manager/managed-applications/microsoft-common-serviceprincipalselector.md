@@ -1,30 +1,42 @@
 ---
 title: ServicePrincipalSelector UI 要素
-description: Azure portal 用の Microsoft.Common.ServicePrincipalSelector UI 要素について説明します。 アプリケーション識別子を選択するドロップダウンと、パスワードまたは証明書の拇印を入力するテキスト ボックスを提供します。
+description: Azure portal 用の Microsoft.Common.ServicePrincipalSelector UI 要素について説明します。 アプリケーションを選択するコントロールと、パスワードまたは証明書の拇印を入力するテキスト ボックスを提供します。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 09/29/2020
+ms.date: 11/17/2020
 ms.author: tomfitz
-ms.openlocfilehash: 73b242754bfae53b6df5abd9c2c8dee33b973dad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d41e41f110e927f436b38d6291719c138defa53
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575998"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94745765"
 ---
 # <a name="microsoftcommonserviceprincipalselector-ui-element"></a>Microsoft.Common.ServicePrincipalSelector UI 要素
 
-ユーザーが既存のサービス プリンシパルを選択したり、新しいサービス プリンシパルを登録したりできるようにするコントロールです。 **[新規作成]** を選択したときには、新しいアプリケーションを登録する手順を進めることになります。 既存のアプリケーションを選択すると、コントロールにより、パスワードまたは証明書の拇印を入力するテキスト ボックスが提供されます。
+ユーザーが既存の[サービス プリンシパル](/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)を選択したり、新しいアプリケーションを登録したりできるようにするコントロールです。 **[新規作成]** を選択したときに、新しいアプリケーションを登録する手順に従います。 既存のアプリケーションを選択すると、コントロールにより、パスワードまたは証明書の拇印を入力するテキスト ボックスが提供されます。
 
-## <a name="ui-sample"></a>UI サンプル
+## <a name="ui-samples"></a>UI サンプル
 
-既定のビューは、`defaultValue` プロパティの値によって決まります。 `principalId` プロパティに有効なグローバル一意識別子 (GUID) が含まれている場合、コントロールでは、アプリケーションのオブジェクト ID を検索します。 ユーザーがドロップダウンから選択しない場合は、既定値が適用されます。
+既定のアプリケーションを使用するか、新しいアプリケーションを作成するか、既存のアプリケーションを使用することができます。
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-initial.png" alt-text="Microsoft.Common.ServicePrincipalSelector の初期ビュー":::
+### <a name="use-default-application-or-create-new"></a>既定のアプリケーションを使用するか、新規に作成する
 
-**[新規作成]** を選択するか、ドロップダウンから既存のアプリケーション識別子を選択を選択すると、テキスト ボックスにパスワードまたは証明書の拇印を入力するために **[認証の種類]** が表示されます。
+既定のビューは `defaultValue` プロパティの値で決まります。また、 **[Service Principal Type]\(サービス プリンシパルの種類\)** は **[新規作成]** に設定されています。 `principalId` プロパティに有効なグローバル一意識別子 (GUID) が含まれている場合、コントロールでは、アプリケーションの `objectId` を検索します。 ユーザーがコントロールから選択しない場合は、既定値が適用されます。
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-selection.png" alt-text="Microsoft.Common.ServicePrincipalSelector の初期ビュー":::
+新しいアプリケーションを登録する場合は、 **[Change selection]\(選択内容の変更\)** を選択すると、 **[アプリケーションの登録]** ダイアログ ボックスが表示されます。 **名前**、**サポートされているアカウントの種類** を入力して、 **[登録]** ボタンを選択します。
+
+:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-default.png" alt-text="Microsoft.Common.ServicePrincipalSelector の初期表示。":::
+
+新しいアプリケーションを登録したら、 **[認証の種類]** を使用して、パスワードまたは証明書の拇印を入力します。
+
+:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-authenticate.png" alt-text="Microsoft.Common.ServicePrincipalSelector の認証。":::
+
+### <a name="use-existing-application"></a>既存のアプリケーションを使用する
+
+既存のアプリケーションを使用するには、 **[既存のものを選択]** を選び、 **[選択の作成]** を選択します。 アプリケーションの名前を検索するには **[アプリケーションの選択]** ダイアログ ボックスを使用します。 結果からアプリケーションを選択し、 **[選択]** ボタンを選択します。 アプリケーションを選択すると、コントロールに、パスワードまたは証明書の拇印を入力するための **[認証の種類]** が表示されます。
+
+:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-existing.png" alt-text="Microsoft.Common.ServicePrincipalSelector の既存のアプリケーションの選択。":::
 
 ## <a name="schema"></a>スキーマ
 
@@ -33,14 +45,12 @@ ms.locfileid: "91575998"
   "name": "ServicePrincipal",
   "type": "Microsoft.Common.ServicePrincipalSelector",
   "label": {
-    "principalId": "App Id",
     "password": "Password",
     "certificateThumbprint": "Certificate thumbprint",
     "authenticationType": "Authentication Type",
     "sectionHeader": "Service Principal"
   },
   "toolTip": {
-    "principalId": "App Id",
     "password": "Password",
     "certificateThumbprint": "Certificate thumbprint",
     "authenticationType": "Authentication Type"
@@ -63,13 +73,13 @@ ms.locfileid: "91575998"
 
 ## <a name="remarks"></a>解説
 
-- 必須のプロパティは以下のとおりです。
+- 必須のプロパティは次のとおりです。
   - `name`
   - `type`
   - `label`
   - `defaultValue`:既定の `principalId` と `name` を指定します。
 
-- 省略可能なプロパティは以下のとおりです。
+- 省略可能なプロパティは次のとおりです。
   - `toolTip`:各ラベルにヒントの `infoBalloon` をアタッチします。
   - `visible`:コントロールを非表示にするか、表示します。
   - `options`:証明書の拇印オプションを使用可能にする必要があるかどうかを指定します。
@@ -95,14 +105,12 @@ ms.locfileid: "91575998"
             "name": "ServicePrincipal",
             "type": "Microsoft.Common.ServicePrincipalSelector",
             "label": {
-              "principalId": "App Id",
               "password": "Password",
               "certificateThumbprint": "Certificate thumbprint",
               "authenticationType": "Authentication Type",
               "sectionHeader": "Service Principal"
             },
             "toolTip": {
-              "principalId": "App Id",
               "password": "Password",
               "certificateThumbprint": "Certificate thumbprint",
               "authenticationType": "Authentication Type"
@@ -140,7 +148,7 @@ ms.locfileid: "91575998"
 
 `appId` は、ユーザーが選択または作成したアプリケーション登録の ID です。 `objectId` は、選択したアプリケーション登録のために構成されたサービス プリンシパルのオブジェクト ID の配列です。
 
-ドロップダウンから何も選択されていないときの `newOrExisting` プロパティの値は、**new** です。
+コントロールから何も選択されていないときの `newOrExisting` プロパティの値は、**new** です。
 
 ```json
 {
@@ -165,7 +173,7 @@ ms.locfileid: "91575998"
 }
 ```
 
-**[新規作成]** を選択するか、ドロップダウンから既存のアプリケーション識別子を選択したときの `newOrExisting` プロパティの値は、**existing** です。
+**[新規作成]** を選択するか、コントロールから既存のアプリケーションを選択したときの `newOrExisting` プロパティの値は、**existing** です。
 
 ```json
 {

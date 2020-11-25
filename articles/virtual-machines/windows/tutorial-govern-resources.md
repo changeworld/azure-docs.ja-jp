@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - PowerShell を使用して仮想マシンを管理する
-description: このチュートリアルでは、Azure PowerShell を使用して、RBAC、ポリシー、ロック、およびタグを適用することによって Azure 仮想マシンを管理する方法について説明します
+description: このチュートリアルでは、Azure PowerShell を使用して、Azure RBAC、ポリシー、ロック、およびタグを適用することによって Azure 仮想マシンを管理する方法について説明します
 author: tfitzmac
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 723eaeb6eb8946473b31b447e817a0a3b696f1cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 393606eb4211131b2b530e3900746e5024321aa3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87926571"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844252"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した Windows 仮想マシンの管理方法の説明
 
@@ -39,7 +39,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 現在、リソース グループは空です。
 
-## <a name="role-based-access-control"></a>ロールベースのアクセス制御
+## <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 
 組織のユーザーがこれらのリソースへの適切なアクセス レベルを持つようにします。 ユーザーに無制限のアクセス権を許可したくはありませんが、ユーザーが自分の作業を実行できるようにすることも必要です。 [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を使うと、あるスコープで特定のアクションを実行するアクセス許可を持つユーザーを管理することができます。
 
@@ -65,7 +65,7 @@ New-AzRoleAssignment -ObjectId $adgroup.id `
 
 "**プリンシパル \<guid> がディレクトリ**  にありません" というエラーが発生した場合、まだ新しいグループが Azure Active Directory 全体に伝達されていません。 そのときは、コマンドをもう一度実行してみます。
 
-通常は、デプロイされたリソースを管理するユーザーが確実に割り当てられるようにするために、このプロセスを*ネットワークの共同作業者*と*ストレージ アカウントの共同作業者*に対して繰り返します。 この記事では、これらの手順を省略できます。
+通常は、デプロイされたリソースを管理するユーザーが確実に割り当てられるようにするために、このプロセスを *ネットワークの共同作業者* と *ストレージ アカウントの共同作業者* に対して繰り返します。 この記事では、これらの手順を省略できます。
 
 ## <a name="azure-policy"></a>Azure Policy
 

@@ -5,16 +5,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 11/13/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: c809a1ae525fb7fab6dceebb3241e229e8a0284e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a30fe70943c5329b36cbe10b75d47cc0ee3827fc
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781840"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630415"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Azure BLOB ストレージのコストを計画および管理する
 
@@ -40,6 +40,9 @@ Azure Storage アカウントを作成し、データの転送を開始する前
 
 4. 残りのオプションを変更して、それらが見積もりに与える影響を確認します。
 
+   > [!NOTE]
+   > Azure Blob Storage の料金は、Azure Enterprise Agreement の年額コミットメントのクレジットを使用して支払うことができます。 ただし、年額コミットメントのクレジットを使用して、サードパーティ製品やサービス (Azure Marketplace からのものを含む) の料金を支払うことはできません。
+
 ## <a name="optimize-costs"></a>コストを最適化する
 
 コストを削減するには、これらのオプションを使用することを検討してください。 
@@ -60,7 +63,7 @@ Azure Storage の予約容量を使用して BLOB データのストレージ �
 
 #### <a name="organize-data-into-access-tiers"></a>データをアクセス層にまとめる
 
-コスト効率に優れたアクセス層に BLOB データを配置することで、コストを削減できます。 データの使用に関するコストを最適化するように設計された 3 つの層から選択します。 たとえば、" *ホット* " 層のストレージ コストは高くなりますが、アクセス コストは低くなります。 そのため、データに頻繁にアクセスする場合は、ホット層が最もコスト効率の高い選択肢になる可能性があります。 データにアクセスする頻度が少ない場合は、データを格納するコストを削減すると同時に、データにアクセスするコストが発生するため、" *コールド* " または " *アーカイブ* " 層が最も意味がある可能性があります。    
+コスト効率に優れたアクセス層に BLOB データを配置することで、コストを削減できます。 データの使用に関するコストを最適化するように設計された 3 つの層から選択します。 たとえば、"*ホット*" 層のストレージ コストは高くなりますが、アクセス コストは低くなります。 そのため、データに頻繁にアクセスする場合は、ホット層が最もコスト効率の高い選択肢になる可能性があります。 データにアクセスする頻度が少ない場合は、データを格納するコストを削減すると同時に、データにアクセスするコストが発生するため、"*コールド*" または "*アーカイブ*" 層が最も意味がある可能性があります。    
 
 詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](../blobs/storage-blob-storage-tiers.md?tabs=azure-portal)」を参照してください。
 
@@ -99,11 +102,15 @@ Azure Storage のコストをコスト分析で表示するには、次の操作
 
 前の例では、サービスの現在のコストが表示されます。 また、Azure リージョン (場所) 別およびリソース グループ別のコストも表示されます。 他のフィルターを追加することもできます (例: 特定のストレージ アカウントのコストを表示するフィルター)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="export-cost-data"></a>コスト データのエクスポート
 
-[コスト分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md)を使用してコストを管理する方法について詳細に説明します。
+また、ストレージ アカウントに[コスト データをエクスポート](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)することもできます。 これは、自分や他のユーザーがコストに関する追加のデータ分析を行う必要がある場合に便利です。 たとえば、財務チームは、Excel や Power BI を使用してデータを分析できます。 日単位、週単位、または月単位のスケジュールでコストをエクスポートし、カスタムの日付範囲を設定することができます。 コスト データのエクスポートは、推奨されるコスト データセット取得方法です。
 
-Azure Storage での課金のしくみの詳細については、以下の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Storage の価格の概要](https://azure.microsoft.com/pricing/details/storage/)
-- [予約容量を使用して BLOB ストレージのコストを最適化する](../blobs/storage-blob-reserved-capacity.md)
+- Azure Storage での価格のしくみについて詳しく説明します。 「[Azure Storage の価格の概要](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
+- [予約容量を使用して BLOB ストレージのコストを最適化](../blobs/storage-blob-reserved-capacity.md)します。
+- [Azure Cost Management を使用してクラウドへの投資を最適化する](https://docs.microsoft.com/azure/cost-management-billing/costs/cost-mgt-best-practices?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)方法について説明します。
+- [コスト分析](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を使用してコストを管理する方法について詳細に説明します。
+- [予期しないコストを回避](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)する方法について説明します。
+- [Cost Management](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) のガイド付き学習コースを受講します。

@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 866f1c404df2de87c2b3ce58b791ceb5257fca1b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 88481346f22176b8e307b53774b42d753838f90b
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074449"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554825"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>クイック スタート:ASP.NET Core アプリに機能フラグを追加する
 
@@ -106,7 +106,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     ---
 
-    上記の変更により、[App Configuration の構成プロバイダー](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)が .NET Core 構成 API に登録されました。
+    上記の変更により、[App Configuration の構成プロバイダー](https://go.microsoft.com/fwlink/?linkid=2074664)が .NET Core 構成 API に登録されました。
 
 1. *Startup.cs* で、.NET Core 機能マネージャーへの参照を追加します。
 
@@ -181,36 +181,9 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     上記のコードでは、`<feature>` タグ ヘルパーをプロジェクトの *.cshtml* ファイルで使用できます。
 
-1. *Views/Shared/_Layout.cshtml* で、`<body>` > `<header>` の下の `<nav>` バー コードを次のマークアップに置き換えます。
+1. *Views*\\*Shared* ディレクトリの *_Layout.cshtml* を開きます。 `<body>` > `<header>` の下の `<nav>` バー コードを見つけます。 次の強調表示されている行に示すように、*Home* と *Privacy* navbar 項目の間に新しい `<feature>` タグを挿入します。
 
-    ```cshtml
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TestFeatureFlags</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <feature name="Beta">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Beta" asp-action="Index">Beta</a>
-                    </li>
-                    </feature>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    ```
-
-    上記のマークアップでは、`<feature>` タグ ヘルパーが *Beta* リスト項目を囲んでいることに注意してください。
+    :::code language="html" source="../../includes/azure-app-configuration-navbar.md" range="15-38" highlight="13-17":::
 
 1. *Views/Beta* ディレクトリと、次のマークアップを含む *Index.cshtml* ファイルを作成します。
 
@@ -246,13 +219,15 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 **[すべてのリソース]** を選択し、クイック スタートで作成した App Configuration ストア インスタンスを選択します。
 
-1. **[機能マネージャー]** を選択し、*Beta* キーの状態を **[オン]** に変更します。
+1. **[機能マネージャー]** を選択します。 
+
+1. **[有効]** でチェック ボックスをオンにして、*Beta* フラグを有効にします。
 
 1. コマンド シェルに戻ります。 <kbd>Ctrl + C</kbd> キーを押して、実行中の `dotnet` プロセスをキャンセルします。 `dotnet run` を使用してアプリを再起動します。
 
 1. ブラウザー ページを最新の情報に更新して新しい構成設定を確認します。
 
-    :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-after.png" alt-text="変更前のローカル クイックスタート アプリ" border="true":::
+    :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-after.png" alt-text="変更後のローカル クイックスタート アプリ" border="true":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -260,7 +235,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、新しい App Configuration ストアを作成し、この構成ストアを使用して、[機能管理ライブラリ](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)を介して ASP.NET Core Web アプリの機能を管理しました。
+このクイック スタートでは、新しい App Configuration ストアを作成し、この構成ストアを使用して、[機能管理ライブラリ](https://go.microsoft.com/fwlink/?linkid=2074664)を介して ASP.NET Core Web アプリの機能を管理しました。
 
 * [機能管理](./concept-feature-management.md)の詳細を確認します。
 * [機能フラグを管理](./manage-feature-flags.md)します。

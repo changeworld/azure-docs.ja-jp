@@ -8,11 +8,11 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 07/03/2018
 ms.openlocfilehash: 706457a602e20dd37e64e5f389948b351ac8ebcf
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219243"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015249"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>U-SQL データベース プロジェクトを使った Azure Data Lake 用 U-SQL データベースの開発
 
@@ -52,7 +52,7 @@ U-SQL データベース プロジェクトを右クリックします。 **[追
 
 ## <a name="build-a-u-sql-database-project"></a>U-SQL データベース プロジェクトの作成
 
-U-SQL データベース プロジェクトのビルド出力は、名前に `.usqldbpack` というサフィックスのついた U-SQL データベース展開パッケージです。 `.usqldbpack` パッケージは .zip ファイルで、 **DDL** フォルダー内の単一の U-SQL スクリプトにはすべての DDL ステートメントが、 **Temp** フォルダーにはアセンブリのすべての DLL と追加ファイルが含まれています。
+U-SQL データベース プロジェクトのビルド出力は、名前に `.usqldbpack` というサフィックスのついた U-SQL データベース展開パッケージです。 `.usqldbpack` パッケージは .zip ファイルで、**DDL** フォルダー内の単一の U-SQL スクリプトにはすべての DDL ステートメントが、**Temp** フォルダーにはアセンブリのすべての DLL と追加ファイルが含まれています。
 
 詳細については、[MSBuild コマンド ラインと Azure DevOps Services ビルド タスクを使用して U-SQL データベース プロジェクトをビルドする方法](data-lake-analytics-cicd-overview.md)に関するページをご覧ください。
 
@@ -104,8 +104,8 @@ Visual Studio で、U-SQL データベース プロジェクトまたは .usqldb
 
 U-SQL プロジェクトから、U-SQL データベース プロジェクトを参照できます。 この参照は、2 つのワークロードに影響します。
 
-- *プロジェクトのビルド* : U-SQL スクリプトをビルドする前に、参照先のデータベース環境が設定されます。
-- *(local-project) アカウントに対するローカル実行* : U-SQL スクリプトを実行する前に、参照先のデータベース環境が (local-project) アカウントに配置されます。 [ローカル実行と、(local-machine) アカウントと (local-project) アカウントの違いについては、こちらを参照してください](data-lake-analytics-data-lake-tools-local-run.md)。
+- *プロジェクトのビルド*: U-SQL スクリプトをビルドする前に、参照先のデータベース環境が設定されます。
+- *(local-project) アカウントに対するローカル実行*: U-SQL スクリプトを実行する前に、参照先のデータベース環境が (local-project) アカウントに配置されます。 [ローカル実行と、(local-machine) アカウントと (local-project) アカウントの違いについては、こちらを参照してください](data-lake-analytics-data-lake-tools-local-run.md)。
 
 ### <a name="how-to-add-a-u-sql-database-reference"></a>U-SQL データベース参照の追加方法
 

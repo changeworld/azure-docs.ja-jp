@@ -9,11 +9,11 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
 ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87066124"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015198"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の X12 メッセージを交換する
 
@@ -271,7 +271,7 @@ Azure Logic Apps で X12 メッセージを操作するには、X12 コネクタ
 
 ![送信メッセージのメッセージ型の区切り記号](./media/logic-apps-enterprise-integration-x12/x12-send-settings-character-sets-separators.png)
 
-**[Default]\(既定\)** 行には、メッセージ スキーマの区切り記号として使用される文字セットが表示されます。 **既定**の文字セットを使用しない場合は、メッセージ型ごとに異なる区切り記号セットを入力できます。 行を 1 つ完了するたびに、新しい空の行が自動的に表示されます。
+**[Default]\(既定\)** 行には、メッセージ スキーマの区切り記号として使用される文字セットが表示されます。 **既定** の文字セットを使用しない場合は、メッセージ型ごとに異なる区切り記号セットを入力できます。 行を 1 つ完了するたびに、新しい空の行が自動的に表示されます。
 
 > [!TIP]
 > 特殊文字の値を指定するには、契約を JSON として編集し、特殊文字の ASCII 値を指定します。
@@ -375,7 +375,7 @@ HIPAA スキーマと 277 または 837 のメッセージ型を操作する場�
    ]
    ```
 
-1. 契約のメッセージ設定で、それぞれのメッセージ型、または**既定**の値を使用している場合はすべてのメッセージ型に対して **[EDI 検証]** チェックボックスをオフにして、EDI 検証を無効にします。
+1. 契約のメッセージ設定で、それぞれのメッセージ型、または **既定** の値を使用している場合はすべてのメッセージ型に対して **[EDI 検証]** チェックボックスをオフにして、EDI 検証を無効にします。
 
    ![すべてのメッセージ型、または各メッセージ型に対して検証を無効にする](./media/logic-apps-enterprise-integration-x12/x12-disable-validation.png) 
 

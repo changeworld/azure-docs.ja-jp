@@ -10,11 +10,11 @@ ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 075f6f83e5af43cde3886f637a8ee326309e4218
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071508"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015045"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Twin モジュールおよび依存関係をゼロからデプロイする
 
@@ -131,13 +131,13 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
 
 5. このページの **[Deployment modules]\(デプロイ モジュール\)** セクションで、**[追加]** と **[IoT Edge モジュール]** を選択します。
 
-6. **[IoT Edge のカスタム モジュール]** ダイアログで、モジュールの名前として `opctwin` を使用し、次にコンテナーの*画像 URI* を次のように指定します
+6. **[IoT Edge のカスタム モジュール]** ダイアログで、モジュールの名前として `opctwin` を使用し、次にコンテナーの *画像 URI* を次のように指定します
 
    ```bash
    mcr.microsoft.com/iotedge/opc-twin:latest
    ```
 
-   *コンテナー作成オプション*として、次の JSON を使用します。
+   *コンテナー作成オプション* として、次の JSON を使用します。
 
    ```json
    {"NetworkingConfig": {"EndpointsConfig": {"host": {}}}, "HostConfig": {"NetworkMode": "host" }}
@@ -147,13 +147,13 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
 
 7. **[保存]** を選択し、手順 **5** を繰り返します。  
 
-8. [IoT Edge のカスタム モジュール] ダイアログで、モジュールの名前として `opcpublisher` を使用し、コンテナーの*画像 URI* を次のように指定します 
+8. [IoT Edge のカスタム モジュール] ダイアログで、モジュールの名前として `opcpublisher` を使用し、コンテナーの *画像 URI* を次のように指定します 
 
    ```bash
    mcr.microsoft.com/iotedge/opc-publisher:latest
    ```
 
-   *コンテナー作成オプション*として、次の JSON を使用します。
+   *コンテナー作成オプション* として、次の JSON を使用します。
 
    ```json
    {"Hostname":"publisher","Cmd":["publisher","--pf=./pn.json","--di=60","--tm","--aa","--si=0","--ms=0"],"ExposedPorts":{"62222/tcp":{}},"HostConfig":{"PortBindings":{"62222/tcp":[{"HostPort":"62222"}] }}}

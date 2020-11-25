@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 74669036a40048ca21aae56856981197defe1c35
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a41eb5b38b741f8bdde59f8a4f1e8de2b4767903
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286533"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832774"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault を Azure Private Link と統合する
 
@@ -44,7 +44,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 ### <a name="create-a-new-key-vault-and-establish-a-private-link-connection"></a>新しいキー コンテナーを作成し、プライベート リンク接続を確立する
 
-新しいキー コンテナーは、[Azure portal を使用した Azure Key Vault からのシークレットの設定と取得](../secrets/quick-create-portal.md)に関するページの手順に従って作成できます。
+[Azure portal](../general/quick-create-portal.md)、[Azure CLI](../general/quick-create-cli.md)、または [Azure PowerShell](../general/quick-create-powershell.md) を使用して、Azure Key Vault を作成できます。
 
 キー コンテナーの基本的な構成の後、[ネットワーク] タブを選択し、次の手順に従います。
 
@@ -270,13 +270,13 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 > [!NOTE]
 > プライベート エンドポイントが有効なキー コンテナーのサブスクリプションあたりの上限は、調整可能です。 以下に記載した上限は、あくまで既定値です。 サービスに適用される上限の引き上げをご希望の場合には、akv-privatelink@microsoft.com まで電子メールをお送りください。 いただいたご依頼は、ケースごとの事情を考慮して承認します。
 
-**価格** : 価格情報については、 [Azure Private Link の価格](https://azure.microsoft.com/pricing/details/private-link/)に関するページを参照してください。
+**価格**: 価格情報については、[Azure Private Link の価格](https://azure.microsoft.com/pricing/details/private-link/)に関するページを参照してください。
 
-**制限事項** : Azure Key Vault のプライベート エンドポイントは、Azure パブリック リージョンでのみ使用できます。
+**制限事項**: Azure Key Vault のプライベート エンドポイントは、Azure パブリック リージョンでのみ使用できます。
 
-**キー コンテナーあたりのプライベート エンドポイントの最大数** : 64。
+**キー コンテナーあたりのプライベート エンドポイントの最大数**: 64。
 
-**プライベート エンドポイントのあるキー コンテナーのサブスクリプションあたりの既定の数** :400。
+**プライベート エンドポイントのあるキー コンテナーのサブスクリプションあたりの既定の数**:400。
 
 詳細については、[Azure Private Link サービスの制限事項](../../private-link/private-link-service-overview.md#limitations)に関するセクションを参照してください。
 

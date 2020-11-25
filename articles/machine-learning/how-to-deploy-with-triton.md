@@ -11,20 +11,20 @@ ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: afa1d958e054a769ea0f19b82afdf55a94c3d0cf
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: eed1a3d403a6012e2010a6b9a47a60f815044565
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309713"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685904"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton 推論サーバーを使用した高パフォーマンスのサービス (プレビュー) 
 
 [NVIDIA Triton 推論サーバー](https://developer.nvidia.com/nvidia-triton-inference-server)を使用して、モデルの推論に使用する Web サービスのパフォーマンスを向上させる方法について説明します。
 
-推論用のモデルを展開する方法の 1 つは、Web サービスとして展開することです。 たとえば、Azure Kubernetes Service または Azure Container Instances への展開です。 既定では、Azure Machine Learning はシングルスレッドの " *汎用* " Web フレームワークを使用して Web サービスを展開します。
+推論用のモデルを展開する方法の 1 つは、Web サービスとして展開することです。 たとえば、Azure Kubernetes Service または Azure Container Instances への展開です。 既定では、Azure Machine Learning はシングルスレッドの "*汎用*" Web フレームワークを使用して Web サービスを展開します。
 
-Triton は、" *推論用に最適化された* " フレームワークです。 GPU の使用率が高く、コスト効率に優れた推論を実現します。 サーバー側では、受信した要求をバッチ処理し、推論のためにこれらのバッチを送信します。 バッチ処理は GPU リソースのより適切な利用を可能にする、Triton のパフォーマンスにおける重要な部分です。
+Triton は、"*推論用に最適化された*" フレームワークです。 GPU の使用率が高く、コスト効率に優れた推論を実現します。 サーバー側では、受信した要求をバッチ処理し、推論のためにこれらのバッチを送信します。 バッチ処理は GPU リソースのより適切な利用を可能にする、Triton のパフォーマンスにおける重要な部分です。
 
 > [!IMPORTANT]
 > Azure Machine Learning からの展開に対する Triton の使用は、現在 __プレビュー__ 段階です。 プレビューの機能は、カスタマー サポートの対象になっていない場合があります。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
@@ -34,7 +34,7 @@ Triton は、" *推論用に最適化された* " フレームワークです。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション** 。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+* **Azure サブスクリプション**。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
 * Azure Machine Learning で[モデルを展開する方法と場所](how-to-deploy-and-where.md)について理解していること。
 * [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/?view=azure-ml-py) **または** [Azure CLI](/cli/azure/?view=azure-cli-latest) と [機械学習拡張機能](reference-azure-machine-learning-cli.md)。
 * ローカル テスト用の Docker の動作するインストール。 Docker のインストールと検証の詳細については、[オリエンテーションとセットアップ](https://docs.docker.com/get-started/)に関する Docker ドキュメントを参照してください。
@@ -47,16 +47,27 @@ Triton は、" *推論用に最適化された* " フレームワークです。
 
 * 受信した要求を同時に処理するために、複数の [Gunicorn](https://gunicorn.org/) ワーカーが開始されています。
 * これらのワーカーでは、前処理、モデルの呼び出し、および後処理が行われます。 
-* 推論要求には、 __スコアリング URI__ が使用されます。 たとえば、「 `https://myserevice.azureml.net/score` 」のように入力します。
+* 推論要求には、__スコアリング URI__ が使用されます。 たとえば、「 `https://myserevice.azureml.net/score` 」のように入力します。
 
 :::image type="content" source="./media/how-to-deploy-with-triton/normal-deploy.png" alt-text="標準の、Triton を使用しない展開アーキテクチャの図":::
+
+### <a name="setting-the-number-of-workers"></a>worker の数の設定
+
+デプロイ内の worker の数を設定するには、環境変数 `WORKER_COUNT` を設定します。 `env` と呼ばれる [Environment](https://docs.microsoft.compython/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) オブジェクトがあると仮定した場合、以下を実行できます。
+
+```{py}
+env.environment_variables["WORKER_COUNT"] = "1"
+```
+
+これにより、指定した数の worker をスピン アップするよう Azure ML が指示されます。
+
 
 **Triton を使用した推論構成の展開**
 
 * 受信した要求を同時に処理するために、複数の [Gunicorn](https://gunicorn.org/) ワーカーが開始されています。
 * 要求は **Triton サーバー** に転送されます。 
 * Triton によって、GPU 使用率を最大化するために要求がバッチ処理されます。
-* クライアントは、 __スコアリング URI__ を使用して要求を行います。 たとえば、「 `https://myserevice.azureml.net/score` 」のように入力します。
+* クライアントは、__スコアリング URI__ を使用して要求を行います。 たとえば、「 `https://myserevice.azureml.net/score` 」のように入力します。
 
 :::image type="content" source="./media/how-to-deploy-with-triton/inferenceconfig-deploy.png" alt-text="Triton を使用した推論構成の展開":::
 
@@ -66,7 +77,11 @@ Triton は、" *推論用に最適化された* " フレームワークです。
 1. Triton によって展開されたモデルに、要求を送信できることを確認します。
 1. Triton 固有のコードを AML の展開に組み込みます。
 
-## <a name="optional-define-a-model-config-file"></a>(省略可能) モデル構成ファイルの定義
+## <a name="verify-that-triton-can-serve-your-model"></a>Triton がモデルに使用できることを確認する
+
+まず、下の手順に従って、Triton 推論サーバーがモデルに使用できることを確認します。
+
+### <a name="optional-define-a-model-config-file"></a>(省略可能) モデル構成ファイルの定義
 
 モデル構成ファイルでは、想定される入力の数と、それらの入力の次元を Triton に対して指定します。 構成ファイルの作成の詳細については、[モデルの構成](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_configuration.html)に関する NVIDIA ドキュメントを参照してください。
 
@@ -75,7 +90,7 @@ Triton は、" *推論用に最適化された* " フレームワークです。
 > 
 > このオプションの詳細については、[生成されたモデルの構成](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_configuration.html#generated-model-configuration)に関する NVIDIA ドキュメントを参照してください。
 
-## <a name="directory-structure"></a>ディレクトリの構造
+### <a name="use-the-correct-directory-structure"></a>正しいディレクトリ構造を使用する
 
 Azure Machine Learning にモデルを登録する場合、個々のファイルまたはディレクトリ構造を登録できます。 Triton を使用するには、`triton` という名前のディレクトリを含むディレクトリ構造に対してモデルの登録を行う必要があります。 このディレクトリの一般的な構造は次のとおりです。
 
@@ -93,7 +108,7 @@ models
 > [!IMPORTANT]
 > このディレクトリ構造は Triton モデル リポジトリであり、モデルを Triton で動作させるために必要です。 詳細については、[Triton モデル リポジトリ](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_repository.html)に関する NVIDIA ドキュメントを参照してください。
 
-## <a name="test-with-triton-and-docker"></a>Triton と Docker を使用したテスト
+### <a name="test-with-triton-and-docker"></a>Triton と Docker を使用したテスト
 
 Triton で実行できることを確認するためにモデルをテストするには、Docker を使用できます。 次のコマンドは、Triton コンテナーをローカル コンピューターにプルし、Triton サーバーを起動します。
 
@@ -146,7 +161,7 @@ Triton で実行できることを確認するためにモデルをテストす�
 
 Docker を使用した Triton の実行の詳細については、[GPU を使用したシステムでの Triton の実行](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/run.html#running-triton-on-a-system-with-a-gpu)および [GPU のないシステムでの Triton の実行](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/run.html#running-triton-on-a-system-without-a-gpu)に関するページを参照してください。
 
-## <a name="register-your-model"></a>モデルを登録する
+### <a name="register-your-model"></a>モデルを登録する
 
 モデルが Triton で動作することを確認したので、Azure Machine Learning に登録します。 モデルの登録により、モデル ファイルが Azure Machine Learning ワークスペースに格納され、Python SDK および Azure CLI での展開時に使用されます。
 
@@ -176,9 +191,9 @@ az ml model register --model-path='triton' \
 
 <a id="processing"></a>
 
-## <a name="add-pre-and-post-processing"></a>前処理と後処理を追加する
+## <a name="verify-you-can-call-into-your-model"></a>モデルを呼び出すことができることを確認する
 
-Web サービスが動作していることを確認した後、" _エントリ スクリプト_ " を定義することで、前処理と後処理のコードを追加できます。 このファイルの名前は `score.py` です。 エントリ スクリプトの詳細については、「[エントリ スクリプトを定義する](how-to-deploy-and-where.md#define-an-entry-script)」を参照してください。
+Triton がモデルに使用できることを確認した後、"_エントリ スクリプト_" を定義することで、前処理と後処理のコードを追加できます。 このファイルの名前は `score.py` です。 エントリ スクリプトの詳細については、「[エントリ スクリプトを定義する](how-to-deploy-and-where.md#define-an-entry-script)」を参照してください。
 
 主なステップの 2 つは、`init()` メソッドで Triton HTTP クライアントを初期化し、`run()` 関数でそのクライアントを呼び出すことです。
 

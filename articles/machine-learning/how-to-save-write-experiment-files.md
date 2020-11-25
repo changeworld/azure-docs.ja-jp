@@ -1,7 +1,7 @@
 ---
 title: 実験ファイルを保存する場所と書き込む場所
 titleSuffix: Azure Machine Learning
-description: ストレージ制限エラーを回避し、待機時間を実験するために、実験で入力ファイルをどこに保存し、出力ファイルをどこに書き込むかについて説明します。
+description: ストレージ制限エラーと実験の待機時間を回避するために入力および出力のファイルを保存する場所について説明します。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -12,12 +12,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 0dab99c902269f7d598eedb8c2fa23bbed3948c4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 49e1e9efbd6f59bd037a8033f83836bf7fc71c43
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325358"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630330"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Azure Machine Learning の実験でファイルを保存する場所と書き込む場所
 

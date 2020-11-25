@@ -1,7 +1,7 @@
 ---
 title: コンピューティング インスタンスを作成および管理する
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning ワークスペースでコンピューティング インスタンスを作成および管理する方法について説明します。 コンピューティング インスタンスは、開発環境として、またはトレーニングおよび推論 Dev/Test の目的で使用します。
+description: Azure Machine Learning コンピューティング インスタンスを作成して管理する方法について説明します。 開発環境として、または Dev/Test 用のコンピューティング ターゲットとして使用します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 6e0d80c35a4822ad46973c94b32cf71b129ad1e1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bdae8d77dc5e51cf4a181459ab2e159f31f06e31
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318025"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543104"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスを作成して管理する
 
@@ -42,7 +42,7 @@ Azure Machine Learning ワークスペースで[コンピューティング イ�
 
 ## <a name="create"></a>作成
 
-**推定所要時間** : 約 5 分です。
+**推定所要時間**: 約 5 分です。
 
 コンピューティング インスタンスの作成は、ワークスペースに対する 1 回限りのプロセスです。 このコンピューティングは、開発ワークステーションとして、またはトレーニング用のコンピューティング ターゲットとして再利用できます。 ワークスペースには複数のコンピューティング インスタンスをアタッチすることができます。
 
@@ -258,12 +258,12 @@ Azure RBAC によって、次のアクションを制御できます。
 または、ターミナル ウィンドウからインストールすることもできます。 Python パッケージを **Python 3.6 - AzureML** 環境にインストールします。  R パッケージを **R** 環境にインストールします。
 
 > [!NOTE]
-> Notebook 内のパッケージ管理については、すべてのパッケージ (現在実行されているカーネルの外部のパッケージを含む) を参照する **!pip** または **!conda** ではなく、 **%pip** または **%conda** マジック関数を使用して、 **現在実行中のカーネル** にパッケージを自動的にインストールします
+> Notebook 内のパッケージ管理については、すべてのパッケージ (現在実行されているカーネルの外部のパッケージを含む) を参照する **!pip** または **!conda** ではなく、 **%pip** または **%conda** マジック関数を使用して、**現在実行中のカーネル** にパッケージを自動的にインストールします
 
 ## <a name="add-new-kernels"></a>新しいカーネルを追加する
 
 > [!WARNING]
->  コンピューティング インスタンスをカスタマイズするときは、 **azureml_py36** conda 環境も **Python 3.6 - AzureML** カーネルも決して削除しないようにしてください。 Jupyter/JupyterLab 機能に必要です
+>  コンピューティング インスタンスをカスタマイズするときは、**azureml_py36** conda 環境も **Python 3.6 - AzureML** カーネルも決して削除しないようにしてください。 Jupyter/JupyterLab 機能に必要です
 
 新しい Jupyter カーネルをコンピューティング インスタンスに追加するには、次のようにします。
 

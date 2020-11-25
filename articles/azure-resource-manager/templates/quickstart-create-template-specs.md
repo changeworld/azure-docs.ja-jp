@@ -2,15 +2,15 @@
 title: テンプレート スペックの作成とデプロイ
 description: ARM テンプレートからテンプレート スペックを作成する方法について説明します。 次に、サブスクリプションのリソース グループにテンプレート スペックをデプロイします。
 author: tfitzmac
-ms.date: 11/10/2020
+ms.date: 11/17/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 96ef5796aac1d0ee02e6bbafc40b7d3bcdea4e2f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 8439b1de5a69b3e5bfc22e10f089938da921c1cb
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506364"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747504"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>クイック スタート:テンプレート スペックの作成とデプロイ (プレビュー)
 
@@ -21,9 +21,7 @@ ms.locfileid: "94506364"
 アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> Template Specs は現在プレビューの段階です。 使用するには、[待機リストにサインアップする](https://aka.ms/templateSpecOnboarding)必要があります。
->
-> 待機リストから承認されると、プレビューの PowerShell モジュールとプレビューの CLI モジュールをインストールするための手順が表示されます。
+> Template Specs は現在プレビューの段階です。 これを使用するには、最新バージョンの PowerShell または Azure CLI をインストールする必要があります。 Azure PowerShell の場合は、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)を使用します。 Azure CLI の場合は、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
 
 ## <a name="create-template-spec"></a>テンプレート スペックの作成
 

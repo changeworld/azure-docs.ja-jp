@@ -18,22 +18,24 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 871c4fc69daac9d5f515fdf3e4ec0ca1de6fbe08
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0a483bc6097c4dd76ed67e93e4313ad8c25cbc08
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91295959"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542356"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>クイック スタート:仮想マシン ネットワーク トラフィック フィルターの問題を診断する - Azure CLI
 
 このクイック スタートでは、仮想マシン (VM) を展開してから、IP アドレスと URL への通信および IP アドレスからの通信をチェックします。 通信障害の原因と解決方法を特定します。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Azure CLI をローカルにインストールして使用することを選択した場合、このクイックスタートでは Azure CLI バージョン 2.0.28 以降を実行していることが必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI のバージョンを確認した後、`az login` を実行して Azure との接続を作成します。 このクイックスタートの Azure CLI コマンドは、Bash シェルで実行するように書式設定されています。
+- このクイックスタートには、Azure CLI のバージョン 2.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。 
+
+- このクイックスタートの Azure CLI コマンドは、Bash シェルで実行するように書式設定されています。
 
 ## <a name="create-a-vm"></a>VM の作成
 
@@ -134,7 +136,7 @@ az network nic list-effective-nsg \
 
 返される出力には、前の「[IP フローの確認を使用する](#use-ip-flow-verify)」の手順で www.bing.com への送信アクセスを許可した **AllowInternetOutbound** 規則に関する次のテキストが含まれます。
 
-```
+```console
 {
  "access": "Allow",
  "additionalProperties": {},
@@ -175,7 +177,7 @@ az network nic list-effective-nsg \
 
 「[IP フローの確認を使用する](#use-ip-flow-verify)」で `az network watcher test-ip-flow` コマンドを実行して 172.131.0.100 への送信通信をテストしたとき、出力では **DefaultOutboundDenyAll** 規則が通信を拒否したことが示されました. **DefaultOutboundDenyAll** 規則は、`az network nic list-effective-nsg` コマンドからの次の出力で示されている **DenyAllOutBound** 規則と同じです。
 
-```
+```console
 {
  "access": "Deny",
  "additionalProperties": {},
@@ -208,7 +210,7 @@ az network nic list-effective-nsg \
 
 「[IP フローの確認を使用する](#use-ip-flow-verify)」で `az network watcher test-ip-flow` コマンドを実行して 172.131.0.100 からの受信通信をテストしたとき、出力では **DefaultInboundDenyAll** 規則が通信を拒否したことが示されました. **DefaultInboundDenyAll** 規則は、`az network nic list-effective-nsg` コマンドからの次の出力で示されている **DenyAllInBound** 規則と同じです。
 
-```
+```console
 {
  "access": "Deny",
  "additionalProperties": {},

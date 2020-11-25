@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 3b26b7d95f4a6d01d81a2916403ab3a630370fc8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520832"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014773"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pexip"></a>チュートリアル:Azure Active Directory と Pexip の統合
 
@@ -41,7 +41,7 @@ Pexip と Azure AD の統合を構成するには、次のものが必要です�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Pexip では、 **SP** によって開始される SSO がサポートされます
+* Pexip では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-pexip-from-the-gallery"></a>ギャラリーからの Pexip の追加
 
@@ -61,13 +61,13 @@ Azure AD への Pexip の統合を構成するには、ギャラリーから管�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Pexip** 」と入力し、結果パネルで **[Pexip]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Pexip**」と入力し、結果パネルで **[Pexip]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Pexip](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Pexip で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Pexip で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Pexip 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Pexip で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -137,9 +137,9 @@ Pexip で Azure AD のシングル サインオンを構成するには、次の
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

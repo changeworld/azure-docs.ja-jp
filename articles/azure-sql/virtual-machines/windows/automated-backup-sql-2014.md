@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8119d01ae8e8ed1e809753e433b063a844a2c5c3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ccd998bc2f6e2771ff4dd1bedfa2213af7573102
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790680"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556586"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 仮想マシンの自動バックアップ (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "92790680"
 
 - Windows Server 2012 以降 
 
-**SQL Server バージョン/エディション** :
+**SQL Server バージョン/エディション**:
 
 - SQL Server 2014 Standard
 - SQL Server 2014 Enterprise
@@ -47,10 +47,10 @@ ms.locfileid: "92790680"
 > [!NOTE]
 > SQL 2016 以降については、[SQL Server 2016 の自動バックアップ](automated-backup.md)に関するページを参照してください。
 
-**データベースの構成** :
+**データベースの構成**:
 
-- ターゲット " _ユーザー_ " データベースでは、完全復旧モデルを使用する必要があります。 システム データベースでは、完全復旧モデルを使用する必要はありません。 しかし、モデルまたは MSDB のログのバックアップの作成を必要とする場合は、完全復旧モデルを使用する必要があります。 バックアップに対する完全復旧モデルの影響の詳細については、「[完全復旧モデルでのバックアップ](/previous-versions/sql/sql-server-2008-r2/ms190217(v=sql.105))」を参照してください。 
-- SQL Server VM が SQL VM リソース プロバイダーに[フル管理モード](sql-vm-resource-provider-register.md#upgrade-to-full)で登録されています。 
+- ターゲット "_ユーザー_" データベースでは、完全復旧モデルを使用する必要があります。 システム データベースでは、完全復旧モデルを使用する必要はありません。 しかし、モデルまたは MSDB のログのバックアップの作成を必要とする場合は、完全復旧モデルを使用する必要があります。 バックアップに対する完全復旧モデルの影響の詳細については、「[完全復旧モデルでのバックアップ](/previous-versions/sql/sql-server-2008-r2/ms190217(v=sql.105))」を参照してください。 
+- SQL Server VM が SQL IaaS Agent 拡張機能に[フル管理モード](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full)で登録されています。 
 -  自動バックアップは、フル [SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に依存します。 そのため、自動バックアップは、既定のインスタンスのターゲット データベース、または単一の名前付きインスタンスでのみサポートされます。 既定のインスタンスがなく、複数の名前付きインスタンスがある場合、SQL IaaS 拡張機能は失敗し、自動バックアップは機能しません。 
 
 ## <a name="settings"></a>設定
@@ -70,7 +70,7 @@ ms.locfileid: "92790680"
 
 Resource Manager デプロイ モデルで新しい SQL Server 2014 Virtual Machine を作成するときに自動バックアップを構成するには、Azure portal を使用します。
 
-**[SQL Server 設定]** タブで下にスクロールして **[自動バックアップ]** を見つけ、 **[有効にする]** を選択します。 次の Azure Portal のスクリーンショットは、 **SQL Automated Backup** の設定を示しています。
+**[SQL Server 設定]** タブで下にスクロールして **[自動バックアップ]** を見つけ、 **[有効にする]** を選択します。 次の Azure Portal のスクリーンショットは、**SQL Automated Backup** の設定を示しています。
 
 ![Azure portal での SQL 自動バックアップ構成](./media/automated-backup-sql-2014/azure-sql-arm-autobackup.png)
 
@@ -96,12 +96,12 @@ SQL Server 2014 仮想マシン用の [SQL 仮想マシンのリソース](manag
 PowerShell を使用して自動バックアップを構成できます。 開始する前に、次の操作を行う必要があります。
 
 - [最新の Azure PowerShell をダウンロードしてインストールします](https://aka.ms/webpi-azps)。
-- Windows PowerShell を開き、 **Connect-AzAccount** コマンドを使用してそれをアカウントに関連付けます。 
+- Windows PowerShell を開き、**Connect-AzAccount** コマンドを使用してそれをアカウントに関連付けます。 
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 ### <a name="install-the-sql-server-iaas-extension"></a>SQL Server IaaS 拡張機能のインストール
-SQL Server 仮想マシンを Azure portal からプロビジョニングした場合は、SQL Server IaaS 拡張機能は既にインストールされています。 これがお使いの仮想マシンにインストール済みかどうかを確認するには、 **Get-AzVM** コマンドを呼び出して **Extensions** プロパティを調べます。
+SQL Server 仮想マシンを Azure portal からプロビジョニングした場合は、SQL Server IaaS 拡張機能は既にインストールされています。 これがお使いの仮想マシンにインストール済みかどうかを確認するには、**Get-AzVM** コマンドを呼び出して **Extensions** プロパティを調べます。
 
 ```powershell
 $vmname = "vmname"
@@ -112,7 +112,7 @@ $resourcegroupname = "resourcegroupname"
 
 SQL Server IaaS Agent 拡張機能がインストールされている場合、それは "SqlIaaSAgent" または "SQLIaaSExtension" と表示されます。 また、拡張機能の **ProvisioningState** も "Succeeded" と表示されるはずです。
 
-インストールされていない場合、またはプロビジョニングに失敗した場合は、次のコマンドを使ってインストールできます。 VM 名とリソース グループのほかに、VM が配置されているリージョン ( **$region** ) を指定する必要があります。 SQL Server VM のライセンスの種類を指定し、[[Azure ハイブリッド特典]](https://azure.microsoft.com/pricing/hybrid-benefit/) を使用して従量課金制またはライセンス持ち込みを選択します。 ライセンスの詳細については、「[ライセンス モデル](licensing-model-azure-hybrid-benefit-ahb-change.md)」を参照してください。 
+インストールされていない場合、またはプロビジョニングに失敗した場合は、次のコマンドを使ってインストールできます。 VM 名とリソース グループのほかに、VM が配置されているリージョン ( **$region**) を指定する必要があります。 SQL Server VM のライセンスの種類を指定し、[[Azure ハイブリッド特典]](https://azure.microsoft.com/pricing/hybrid-benefit/) を使用して従量課金制またはライセンス持ち込みを選択します。 ライセンスの詳細については、「[ライセンス モデル](licensing-model-azure-hybrid-benefit-ahb-change.md)」を参照してください。 
 
 ```powershell
 New-AzSqlVM  -Name $vmname `
@@ -186,9 +186,9 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 SQL Server IaaS エージェントのインストールと構成には数分かかる場合があります。
 
 > [!NOTE]
-> SQL Server 2016 と自動バックアップ v2 のみに適用される、 **New-AzVMSqlServerAutoBackupConfig** のその他の設定があります。 SQL Server 2014 では、 **BackupSystemDbs** 、 **BackupScheduleType** 、 **FullBackupFrequency** 、 **FullBackupStartHour** 、 **FullBackupWindowInHours** 、 **LogBackupFrequencyInMinutes** はサポートしていません。 これらの設定を SQL Server 2014 仮想マシンで構成しようとした場合、エラーは発生しませんが、設定は適用されません。 これらの設定を SQL Server 2016 仮想マシンで使用したい場合は、[SQL Server 2016 Azure 仮想マシン用 Azure Backup v2](automated-backup.md) に関するページを参照してください。
+> SQL Server 2016 と自動バックアップ v2 のみに適用される、**New-AzVMSqlServerAutoBackupConfig** のその他の設定があります。 SQL Server 2014 では、**BackupSystemDbs**、**BackupScheduleType**、**FullBackupFrequency**、**FullBackupStartHour**、**FullBackupWindowInHours**、**LogBackupFrequencyInMinutes** はサポートしていません。 これらの設定を SQL Server 2014 仮想マシンで構成しようとした場合、エラーは発生しませんが、設定は適用されません。 これらの設定を SQL Server 2016 仮想マシンで使用したい場合は、[SQL Server 2016 Azure 仮想マシン用 Azure Backup v2](automated-backup.md) に関するページを参照してください。
 
-暗号化を有効にするには、 **EnableEncryption** パラメーターと、 **CertificatePassword** パラメーターのパスワード (セキュリティで保護された文字列) を渡すように、前のスクリプトを変更します。 次のスクリプトでは、前の例の自動バックアップ設定を有効にし、暗号化を追加します。
+暗号化を有効にするには、**EnableEncryption** パラメーターと、**CertificatePassword** パラメーターのパスワード (セキュリティで保護された文字列) を渡すように、前のスクリプトを変更します。 次のスクリプトでは、前の例の自動バックアップ設定を有効にし、暗号化を追加します。
 
 ```powershell
 $password = "P@ssw0rd"
@@ -207,7 +207,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 
 ### <a name="disable-automated-backup"></a>自動バックアップを無効にする
 
-自動バックアップを無効にするには、 **New-AzVMSqlServerAutoBackupConfig** コマンドの **-Enable** パラメーターを指定せずに、同じスクリプトを実行します。 **-Enable** パラメーターがない場合は、機能を無効にするコマンドが伝えられます。 インストールと同様に、自動バックアップの無効化には数分かかる場合があります。
+自動バックアップを無効にするには、**New-AzVMSqlServerAutoBackupConfig** コマンドの **-Enable** パラメーターを指定せずに、同じスクリプトを実行します。 **-Enable** パラメーターがない場合は、機能を無効にするコマンドが伝えられます。 インストールと同様に、自動バックアップの無効化には数分かかる場合があります。
 
 ```powershell
 $autobackupconfig = New-AzVMSqlServerAutoBackupConfig -ResourceGroupName $storage_resourcegroupname
@@ -265,7 +265,7 @@ SQL Server 2014 での Automated Backup の監視には､大きく 2 つの選�
 
 もう 1 つのオプションは、通知に組み込みのデータベース メール機能を利用する方法です。
 
-1. [msdb.smart_admin.sp_set_parameter](/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) ストアド プロシージャを呼び出して､ **SSMBackup2WANotificationEmailIds** パラメーターに電子メール アドレスを設定します｡ 
+1. [msdb.smart_admin.sp_set_parameter](/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) ストアド プロシージャを呼び出して､**SSMBackup2WANotificationEmailIds** パラメーターに電子メール アドレスを設定します｡ 
 1. [SendGrid](../../../sendgrid-dotnet-how-to-send-email.md) が Azure VM から電子メールを送信できるようにします。
 1. SMTP サーバーとユーザー名を使用してデータベース メールを構成します。 データベース メールは、SQL Server Management Studio または Transact-SQL コマンドで構成できます。 詳細については、「[データベース メール](/sql/relational-databases/database-mail/database-mail)」を参照してください。
 1. [データベース メールを使用するように SQL Server エージェントを構成します](/sql/relational-databases/database-mail/configure-sql-server-agent-mail-to-use-database-mail)。

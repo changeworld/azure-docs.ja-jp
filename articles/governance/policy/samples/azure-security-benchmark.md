@@ -1,23 +1,23 @@
 ---
 title: Azure セキュリティ ベンチマークの規制コンプライアンスの詳細
 description: Azure セキュリティ ベンチマーク規制コンプライアンスの組み込みイニシアチブの詳細。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: c4f009b24889f3c855e9cb612fed7bdc1342e313
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 1f5a81f430b536155626dfff1b74167146fdbbe5
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311472"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699427"
 ---
 # <a name="details-of-the-azure-security-benchmark-regulatory-compliance-built-in-initiative"></a>Azure セキュリティ ベンチマーク規制コンプライアンスの組み込みイニシアチブの詳細
 
 この記事では、Azure Policy 規制コンプライアンスの組み込みイニシアチブの定義が、Azure セキュリティ ベンチマークの **コンプライアンス ドメイン** と **コントロール** にどのように対応するのかを、詳しく説明します。
-このコンプライアンス標準の詳細については、[Azure セキュリティ ベンチマーク](../../../security/benchmarks/overview.md)に関するページを参照してください。 " _所有権_ " については、 [Azure Policy のポリシー定義](../concepts/definition-structure.md#type)に関するページと、「 [クラウドにおける共同責任](../../../security/fundamentals/shared-responsibility.md)」を参照してください。
+このコンプライアンス標準の詳細については、[Azure セキュリティ ベンチマーク](../../../security/benchmarks/overview.md)に関するページを参照してください。 "_所有権_" については、[Azure Policy のポリシー定義](../concepts/definition-structure.md#type)に関するページと、「[クラウドにおける共同責任](../../../security/fundamentals/shared-responsibility.md)」を参照してください。
 
-以下のマッピングは、 **Azure セキュリティ ベンチマーク** のコントロールに対するものです。 右側のナビゲーションを使用すると、特定の **コンプライアンス ドメイン** に直接移動します。 コントロールの多くは、[Azure Policy](../overview.md) のイニシアチブ定義で実装されています。 完全なイニシアチブ定義を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。
-次に、 **Azure セキュリティ ベンチマーク** 規制コンプライアンスの組み込みイニシアティブ定義を選択します。
+以下のマッピングは、**Azure セキュリティ ベンチマーク** のコントロールに対するものです。 右側のナビゲーションを使用すると、特定の **コンプライアンス ドメイン** に直接移動します。 コントロールの多くは、[Azure Policy](../overview.md) のイニシアチブ定義で実装されています。 完全なイニシアチブ定義を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。
+次に、**Azure セキュリティ ベンチマーク** 規制コンプライアンスの組み込みイニシアティブ定義を選択します。
 
 この組み込みイニシアチブは、[Azure セキュリティ ベンチマーク ブループリント サンプル](../../blueprints/samples/azure-security-benchmark.md)の一部としてデプロイされます。
 
@@ -29,7 +29,7 @@ ms.locfileid: "92311472"
 
 ### <a name="protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>Virtual Network でネットワーク セキュリティ グループまたは Azure Firewall を使用してリソースを保護する
 
-**[ID]** :Azure セキュリティ ベンチマーク 1.1 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 1.1 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -58,7 +58,7 @@ ms.locfileid: "92311472"
 
 ### <a name="monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>VNet、サブネット、NIC の構成とトラフィックを監視してログに記録する
 
-**[ID]** :Azure セキュリティ ベンチマーク 1.2 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 1.2 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -66,7 +66,7 @@ ms.locfileid: "92311472"
 
 ### <a name="protect-critical-web-applications"></a>重要な Web アプリケーションを保護する
 
-**[ID]** :Azure セキュリティ ベンチマーク 1.3 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 1.3 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -80,7 +80,7 @@ ms.locfileid: "92311472"
 
 ### <a name="deny-communications-with-known-malicious-ip-addresses"></a>既知の悪意のある IP アドレスとの通信を拒否する
 
-**[ID]** :Azure セキュリティ ベンチマーク 1.4 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 1.4 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -91,7 +91,7 @@ ms.locfileid: "92311472"
 
 ### <a name="record-network-packets-and-flow-logs"></a>ネットワーク パケットとフロー ログを記録する
 
-**[ID]** :Azure セキュリティ ベンチマーク 1.5 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 1.5 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -99,7 +99,7 @@ ms.locfileid: "92311472"
 
 ### <a name="use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>自動化ツールを使用してネットワーク リソース構成を監視し、変更を検出する
 
-**[ID]** :Azure セキュリティ ベンチマーク 1.11 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 1.11 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -115,7 +115,7 @@ ms.locfileid: "92311472"
 
 ### <a name="configure-central-security-log-management"></a>セキュリティ ログの一元管理を構成する
 
-**[ID]** :Azure セキュリティ ベンチマーク 2.2 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 2.2 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -128,7 +128,7 @@ ms.locfileid: "92311472"
 
 ### <a name="enable-audit-logging-for-azure-resources"></a>Azure リソースの監査ログ記録を有効にする
 
-**[ID]** :Azure セキュリティ ベンチマーク 2.3 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 2.3 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -150,7 +150,7 @@ ms.locfileid: "92311472"
 
 ### <a name="collect-security-logs-from-operating-systems"></a>オペレーティング システムからセキュリティ ログを収集する
 
-**[ID]** :Azure セキュリティ ベンチマーク 2.4 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 2.4 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -161,7 +161,7 @@ ms.locfileid: "92311472"
 
 ### <a name="configure-security-log-storage-retention"></a>セキュリティ ログのストレージ保持を構成する
 
-**[ID]** :Azure セキュリティ ベンチマーク 2.5 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 2.5 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -169,7 +169,7 @@ ms.locfileid: "92311472"
 
 ### <a name="enable-alerts-for-anomalous-activity"></a>異常なアクティビティについてのアラートを有効にする
 
-**[ID]** :Azure セキュリティ ベンチマーク 2.7 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 2.7 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -178,7 +178,7 @@ ms.locfileid: "92311472"
 
 ### <a name="centralize-anti-malware-logging"></a>マルウェア対策のログ記録を一元管理する
 
-**[ID]** :Azure セキュリティ ベンチマーク 2.8 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 2.8 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -190,7 +190,7 @@ ms.locfileid: "92311472"
 
 ### <a name="maintain-an-inventory-of-administrative-accounts"></a>管理アカウントのインベントリを維持する
 
-**[ID]** :Azure セキュリティ ベンチマーク 3.1 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 3.1 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -201,7 +201,7 @@ ms.locfileid: "92311472"
 
 ### <a name="use-dedicated-administrative-accounts"></a>専用管理者アカウントを使用する
 
-**[ID]** :Azure セキュリティ ベンチマーク 3.3 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 3.3 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -213,7 +213,7 @@ ms.locfileid: "92311472"
 
 ### <a name="use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>すべての Azure Active Directory ベースのアクセスに多要素認証を使用する
 
-**[ID]** :Azure セキュリティ ベンチマーク 3.5 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 3.5 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -223,7 +223,7 @@ ms.locfileid: "92311472"
 
 ### <a name="use-azure-active-directory"></a>Azure Active Directory を使用する
 
-**[ID]** :Azure セキュリティ ベンチマーク 3.9 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 3.9 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -232,7 +232,7 @@ ms.locfileid: "92311472"
 
 ### <a name="regularly-review-and-reconcile-user-access"></a>ユーザー アクセスを定期的に確認して調整する
 
-**[ID]** :Azure セキュリティ ベンチマーク 3.10 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 3.10 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -246,7 +246,7 @@ ms.locfileid: "92311472"
 
 ### <a name="maintain-an-inventory-of-sensitive-information"></a>機密情報のインベントリを維持する
 
-**[ID]** :Azure セキュリティ ベンチマーク 4.1 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 4.1 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -254,7 +254,7 @@ ms.locfileid: "92311472"
 
 ### <a name="encrypt-all-sensitive-information-in-transit"></a>転送中のすべての機密情報を暗号化する
 
-**[ID]** :Azure セキュリティ ベンチマーク 4.4 **所有権** : 共有
+**[ID]** :Azure セキュリティ ベンチマーク 4.4 **所有権**: 共有
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -274,7 +274,7 @@ ms.locfileid: "92311472"
 
 ### <a name="use-an-active-discovery-tool-to-identify-sensitive-data"></a>アクティブ検出ツールを使用して機密データを特定する
 
-**[ID]** :Azure セキュリティ ベンチマーク 4.5 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 4.5 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -284,7 +284,7 @@ ms.locfileid: "92311472"
 
 ### <a name="use-azure-rbac-to-control-access-to-resources"></a>Azure RBAC を使用してリソースへのアクセスを制御する
 
-**[ID]** :Azure セキュリティ ベンチマーク 4.6 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 4.6 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -293,7 +293,7 @@ ms.locfileid: "92311472"
 
 ### <a name="encrypt-sensitive-information-at-rest"></a>機密情報を保存時に暗号化する
 
-**[ID]** :Azure セキュリティ ベンチマーク 4.8 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 4.8 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -307,7 +307,7 @@ ms.locfileid: "92311472"
 
 ### <a name="log-and-alert-on-changes-to-critical-azure-resources"></a>重要な Azure リソースへの変更に関するログとアラート
 
-**[ID]** :Azure セキュリティ ベンチマーク 4.9 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 4.9 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -317,7 +317,7 @@ ms.locfileid: "92311472"
 
 ### <a name="run-automated-vulnerability-scanning-tools"></a>自動化された脆弱性スキャン ツールを実行する
 
-**[ID]** :Azure セキュリティ ベンチマーク 5.1 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 5.1 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -327,7 +327,7 @@ ms.locfileid: "92311472"
 
 ### <a name="deploy-automated-operating-system-patch-management-solution"></a>自動化されたオペレーティング システム修正プログラム管理ソリューションを展開する
 
-**[ID]** :Azure セキュリティ ベンチマーク 5.2 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 5.2 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -336,7 +336,7 @@ ms.locfileid: "92311472"
 
 ### <a name="deploy-automated-third-party-software-patch-management-solution"></a>サードパーティの自動化されたソフトウェア修正プログラム管理ソリューションを展開する
 
-**[ID]** :Azure セキュリティ ベンチマーク 5.3 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 5.3 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -352,21 +352,21 @@ ms.locfileid: "92311472"
 
 ### <a name="use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>リスク評価プロセスを使用して、検出された脆弱性の修復に優先順位を付ける
 
-**[ID]** :Azure セキュリティ ベンチマーク 5.5 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 5.5 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[コンテナーのセキュリティ構成の脆弱性を修復する必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe8cbc669-f12d-49eb-93e7-9273119e9933) |Docker がインストールされているマシンのセキュリティ構成の脆弱性を監査し、Azure Security Center で推奨事項として表示します。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ContainerBenchmark_Audit.json) |
 |[使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe1e5fd5d-3e4c-4ce1-8661-7d1873ae6b15) |構成ベースラインを満たしていないサーバーが、推奨設定として Azure Security Center で監視されます |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_OSVulnerabilities_Audit.json) |
 |[仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3c735d8a-a4ba-4a3a-b7cf-db7754cf57f4) |攻撃から保護するため、お使いの仮想マシン スケール セットの OS 脆弱性を監査します。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VmssOSVulnerabilities_Audit.json) |
-|[SQL データベースの脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffeedbf84-6b99-488c-acc2-71c829aa5ffc) |脆弱性評価スキャン結果と、データベースの脆弱性を修正する方法についての推奨事項を監視します。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SQLDbVulnerabilities_Audit.json) |
+|[SQL データベースの脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffeedbf84-6b99-488c-acc2-71c829aa5ffc) |脆弱性評価スキャン結果と、データベースの脆弱性を修正する方法についての推奨事項を監視します。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SQLDbVulnerabilities_Audit.json) |
 |[脆弱性評価ソリューションによって脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F760a85ff-6162-42b3-8d70-698e268f648c) |脆弱性評価ソリューションによって検出された脆弱性と、脆弱性評価ソリューションを使用していない VM を、推奨設定として Azure Security Center で監視します。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VMVulnerabilities_Audit.json) |
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
 ### <a name="use-only-approved-applications"></a>承認されたアプリケーションのみを使用する
 
-**[ID]** :Azure セキュリティ ベンチマーク 6.8 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 6.8 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -374,7 +374,7 @@ ms.locfileid: "92311472"
 
 ### <a name="use-only-approved-azure-services"></a>承認された Azure サービスのみを使用する
 
-**[ID]** :Azure セキュリティ ベンチマーク 6.9 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 6.9 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -383,7 +383,7 @@ ms.locfileid: "92311472"
 
 ### <a name="implement-approved-application-list"></a>承認されたアプリケーションの一覧を実装する
 
-**[ID]** :Azure セキュリティ ベンチマーク 6.10 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 6.10 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -393,7 +393,7 @@ ms.locfileid: "92311472"
 
 ### <a name="maintain-secure-operating-system-configurations"></a>セキュリティで保護されたオペレーティング システムの構成を維持する
 
-**[ID]** :Azure セキュリティ ベンチマーク 7.4 **所有権** : 共有
+**[ID]** :Azure セキュリティ ベンチマーク 7.4 **所有権**: 共有
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -403,7 +403,7 @@ ms.locfileid: "92311472"
 
 ### <a name="implement-automated-configuration-monitoring-for-operating-systems"></a>オペレーティング システムの自動構成監視を実装する
 
-**[ID]** :Azure セキュリティ ベンチマーク 7.10 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 7.10 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -413,15 +413,15 @@ ms.locfileid: "92311472"
 
 ### <a name="manage-azure-secrets-securely"></a>Azure シークレットを安全に管理する
 
-**[ID]** :Azure セキュリティ ベンチマーク 7.11 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 7.11 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[キー コンテナー オブジェクトが回復可能でなければならない](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |このポリシーは、キー コンテナー オブジェクトが回復可能でないかどうかを監査します。 論理的な削除機能は、DELETE 操作の後でもオブジェクトが削除されているように見せながら特定の保持期間 (90 日間) の間リソースを実際に保持するのに役立ちます。 "消去保護" が有効な場合、削除状態のコンテナーまたはオブジェクトは、90 日間の保持期間が経過するまで消去できません。 これらのコンテナーとオブジェクトはまだ回復可能で、お客様のアイテム保持ポリシーに確実に従うことができます。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
+|[キー コンテナーで消去保護が有効になっている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |悪意でキー コンテナーが削除されると、データが完全に失われる可能性があります。 組織内の悪意のある内部関係者が、キー コンテナーの削除と消去のアクセスを取得できる可能性もあります。 消去保護では、論理的に削除されたキー コンテナーに必須の保有期間を適用することによって、内部関係者の攻撃から組織を保護します。 組織や Microsoft の内部にいるどのユーザーも、論理的な削除の保有期間中にキー コンテナーを消去することはできなくなります。 |Audit、Deny、Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
 
 ### <a name="manage-identities-securely-and-automatically"></a>ID を安全かつ自動的に管理する 
 
-**[ID]** :Azure セキュリティ ベンチマーク 7.12 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 7.12 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -433,7 +433,7 @@ ms.locfileid: "92311472"
 
 ### <a name="use-centrally-managed-anti-malware-software"></a>一元管理されるマルウェア対策ソフトウェアを使用する
 
-**[ID]** :Azure セキュリティ ベンチマーク 8.1 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 8.1 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -442,7 +442,7 @@ ms.locfileid: "92311472"
 
 ### <a name="ensure-anti-malware-software-and-signatures-are-updated"></a>マルウェア対策ソフトウェアと署名が確実に更新されるようにする
 
-**[ID]** :Azure セキュリティ ベンチマーク 8.3 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 8.3 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -452,7 +452,7 @@ ms.locfileid: "92311472"
 
 ### <a name="ensure-regular-automated-back-ups"></a>定期的に自動バックアップを行う
 
-**[ID]** :Azure セキュリティ ベンチマーク 9.1 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 9.1 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -464,7 +464,7 @@ ms.locfileid: "92311472"
 
 ### <a name="perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>システムの完全バックアップを実行し、カスタマー マネージド キーをバックアップする
 
-**[ID]** :Azure セキュリティ ベンチマーク 9.2 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 9.2 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -476,17 +476,17 @@ ms.locfileid: "92311472"
 
 ### <a name="ensure-protection-of-backups-and-customer-managed-keys"></a>バックアップとカスタマー マネージド キーの保護を確保する
 
-**[ID]** :Azure セキュリティ ベンチマーク 9.4 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 9.4 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[キー コンテナー オブジェクトが回復可能でなければならない](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |このポリシーは、キー コンテナー オブジェクトが回復可能でないかどうかを監査します。 論理的な削除機能は、DELETE 操作の後でもオブジェクトが削除されているように見せながら特定の保持期間 (90 日間) の間リソースを実際に保持するのに役立ちます。 "消去保護" が有効な場合、削除状態のコンテナーまたはオブジェクトは、90 日間の保持期間が経過するまで消去できません。 これらのコンテナーとオブジェクトはまだ回復可能で、お客様のアイテム保持ポリシーに確実に従うことができます。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
+|[キー コンテナーで消去保護が有効になっている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |悪意でキー コンテナーが削除されると、データが完全に失われる可能性があります。 組織内の悪意のある内部関係者が、キー コンテナーの削除と消去のアクセスを取得できる可能性もあります。 消去保護では、論理的に削除されたキー コンテナーに必須の保有期間を適用することによって、内部関係者の攻撃から組織を保護します。 組織や Microsoft の内部にいるどのユーザーも、論理的な削除の保有期間中にキー コンテナーを消去することはできなくなります。 |Audit、Deny、Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
 
 ## <a name="incident-response"></a>インシデント対応
 
 ### <a name="provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
-**[ID]** :Azure セキュリティ ベンチマーク 10.4 **所有権** : Customer
+**[ID]** :Azure セキュリティ ベンチマーク 10.4 **所有権**: Customer
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|

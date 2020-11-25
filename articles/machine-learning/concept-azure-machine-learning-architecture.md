@@ -1,7 +1,7 @@
 ---
 title: アーキテクチャと主要な概念
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning を構成するアーキテクチャ、用語、概念について説明します。
+description: この記事では、Azure Machine Learning を構成するアーキテクチャ、用語、および概念の概要について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: f17cdd42c892f6c0d218875cf304846937ba58d7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: a36481b2496060cb12bd755f56680915ec1074bb
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444832"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540200"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
@@ -267,6 +267,18 @@ Azure IoT Edge ではモジュールが実行されるのを保証し、モジ�
 [機械学習パイプライン](concept-ml-pipelines.md)を使用し、機械学習フェーズをつなげるワークフローを作成して管理します。 たとえば、パイプラインには、データ準備、モデル トレーニング、モデル デプロイ、推論/スコアリングの各フェーズが含まれることが考えられます。 それぞれのフェーズには、複数のステップを含めることができ、各ステップは、さまざまなコンピューティング先において無人実行することができます。 
 
 パイプライン手順は再利用できます。また、その手順の出力が変わっていない場合は、前の手順を再実行しなくても実行できます。 たとえば、データが変わっていない場合は、コストのかかるデータ準備手順を再実行することなく、モデルを再トレーニングできます。 また、パイプラインを使用すると、機械学習ワークフローの別の領域で作業しているときに、データ サイエンティストが共同作業することもできます。
+
+## <a name="monitoring-and-logging"></a>監視およびログ記録
+
+Azure Machine Learning で提供される監視およびログ記録機能は次のとおりです。
+
+* "__データ科学者__" の場合、実験を監視し、トレーニングの実行から情報をログに記録することができます。 詳細については、次の記事を参照してください。
+   * [トレーニングの実行の開始、監視、およびキャンセル](how-to-manage-runs.md)
+   * [トレーニング実行のメトリックを記録する](how-to-track-experiments.md)
+   * [MLflow を使用して実験を追跡する](how-to-use-mlflow.md)
+   * [TensorBoard を使用して実行を視覚化する](how-to-monitor-tensorboard.md)
+* "__管理者__" の場合、Azure Monitor を使用して、ワークスペース、関連する Azure リソース、およびリソースの作成や削除などのイベントに関する情報を監視できます。 詳細については、[Azure Machine Learning を監視する方法](monitor-azure-machine-learning.md)に関する記事を参照してください。
+* __DevOps__ または __MLOps__ の場合、Web サービスまたは IoT Edge モジュールとしてデプロイされたモデルによって生成された情報を監視して、デプロイに関する問題を特定し、サービスに送信されたデータを収集できます。 詳細については、[モデル データの収集](how-to-enable-data-collection.md)および [Application Insights での監視](how-to-enable-app-insights.md)に関する記事を参照してください。
 
 ## <a name="interacting-with-your-workspace"></a>ワークスペースの操作
 

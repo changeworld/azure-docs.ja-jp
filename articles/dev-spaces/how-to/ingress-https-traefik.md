@@ -6,12 +6,12 @@ ms.topic: conceptual
 description: Azure Dev Spaces をカスタム traefik イングレス コントローラーを使用するように構成し、そのイングレス コントローラーを使用して HTTPS を構成する方法を説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: fb45c310d306813dc10b667db6ce36048eccf217
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2dcb549078f1f0f5f7168960864d564fd0c169fc
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746116"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636828"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>カスタム traefik イングレス コントローラーの使用と HTTPS の構成
 
@@ -53,7 +53,7 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 traefik イングレス コントローラー用に Kubernetes 名前空間を作成し、それを `helm` を使用してインストールします。
 
 > [!NOTE]
-> ご使用の AKS クラスターで RBAC を有効にしない場合は、 *--set rbac.enabled=true* パラメーターを削除します。
+> ご使用の AKS クラスターで Kubernetes RBAC を有効にしない場合は、 *--set rbac.enabled=true* パラメーターを削除します。
 
 ```console
 kubectl create ns traefik
@@ -61,7 +61,7 @@ helm install traefik stable/traefik --namespace traefik --set kubernetes.ingress
 ```
 
 > [!NOTE]
-> 上の例では、イングレス コントローラーのパブリック エンドポイントを作成します。 代わりに、イングレス コントローラーのプライベート エンドポイントを使用する必要がある場合は、 *helm install* コマンドに *--set service.annotations."service\\.beta\\.kubernetes\\.io/azure-load-balancer-internal"=true* パラメーターを追加します。
+> 上の例では、イングレス コントローラーのパブリック エンドポイントを作成します。 代わりに、イングレス コントローラーのプライベート エンドポイントを使用する必要がある場合は、*helm install* コマンドに *--set service.annotations."service\\.beta\\.kubernetes\\.io/azure-load-balancer-internal"=true* パラメーターを追加します。
 > ```console
 > helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set rbac.enabled=true --set fullnameOverride=customtraefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --set service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.85.0
 > ```
@@ -73,7 +73,7 @@ helm install traefik stable/traefik --namespace traefik --set kubernetes.ingress
 kubectl get svc -n traefik --watch
 ```
 
-このサンプル出力では、 *traefik* 名前空間にあるすべてのサービスの IP アドレスを示しています。
+このサンプル出力では、*traefik* 名前空間にあるすべてのサービスの IP アドレスを示しています。
 
 ```console
 NAME      TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)                      AGE
@@ -82,7 +82,7 @@ traefik   LoadBalancer   10.0.205.78   <pending>     80:32484/TCP,443:30620/TCP 
 traefik   LoadBalancer   10.0.205.78   MY_EXTERNAL_IP   80:32484/TCP,443:30620/TCP   60s
 ```
 
-*A* レコードを、 [az network dns record-set a add-record][az-network-dns-record-set-a-add-record] を使用し、traefik サービスの外部 IP アドレスが使用された DNS ゾーンに追加します。
+*A* レコードを、[az network dns record-set a add-record][az-network-dns-record-set-a-add-record] を使用し、traefik サービスの外部 IP アドレスが使用された DNS ゾーンに追加します。
 
 ```azurecli
 az network dns record-set a add-record \
@@ -92,7 +92,7 @@ az network dns record-set a add-record \
     --ipv4-address MY_EXTERNAL_IP
 ```
 
-上記の例では、 *A* レコードを *MY_CUSTOM_DOMAIN* DNS ゾーンに追加します。
+上記の例では、*A* レコードを *MY_CUSTOM_DOMAIN* DNS ゾーンに追加します。
 
 この記事では、[Azure Dev Spaces 自転車シェア サンプル アプリケーション](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp)を使用して、Azure Dev Spaces の使い方のデモを行います。 GitHub からアプリケーションを複製して、そのディレクトリに移動します。
 
@@ -102,7 +102,7 @@ cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
 [values.yaml][values-yaml] を開き、以下の更新を加えます。
-* *<REPLACE_ME_WITH_HOST_SUFFIX>* のすべてのインスタンスを *traefik.MY_CUSTOM_DOMAIN* で置き換えます (ここで、 *MY_CUSTOM_DOMAIN* にはご自身のドメインを使用してください)。 
+* *<REPLACE_ME_WITH_HOST_SUFFIX>* のすべてのインスタンスを *traefik.MY_CUSTOM_DOMAIN* で置き換えます (ここで、*MY_CUSTOM_DOMAIN* にはご自身のドメインを使用してください)。 
 * *kubernetes.io/ingress.class: traefik  # Custom Ingress* を *kubernetes.io/ingress.class: traefik-azds  # Dev Spaces-specific* で置き換えます。 
 
 更新された `values.yaml` ファイルの例を次に示します。
@@ -140,7 +140,7 @@ azds space select -n dev -y
 helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 ```
 
-サンプル アプリケーションは、上記の例では、 *dev* 名前空間にデプロイされます。
+サンプル アプリケーションは、上記の例では、*dev* 名前空間にデプロイされます。
 
 `azds list-uris` を使用してサンプル アプリケーションにアクセスするための URL を表示します。
 
@@ -157,19 +157,19 @@ http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-`azds list-uris` コマンドからパブリック URL を開いて、 *bikesharingweb* サービスに移動します。 上記の例では、 *bikesharingweb* サービスのパブリック URL は `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` です。
+`azds list-uris` コマンドからパブリック URL を開いて、*bikesharingweb* サービスに移動します。 上記の例では、*bikesharingweb* サービスのパブリック URL は `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` です。
 
 > [!NOTE]
-> *bikesharingweb* サービスではなくエラー ページが表示される場合は、 *values.yaml* ファイル内で *kubernetes.io/ingress.class* 注釈とホストの **両方** を更新したことを確認してください。
+> *bikesharingweb* サービスではなくエラー ページが表示される場合は、*values.yaml* ファイル内で *kubernetes.io/ingress.class* 注釈とホストの **両方** を更新したことを確認してください。
 
-`azds space select` コマンドを使用すると、 *dev* の下に子空間を作成し、子開発空間にアクセスするための URL を列挙できます。
+`azds space select` コマンドを使用すると、*dev* の下に子空間を作成し、子開発空間にアクセスするための URL を列挙できます。
 
 ```console
 azds space select -n dev/azureuser1 -y
 azds list-uris
 ```
 
-以下は、`azds list-uris` で出力された、 *azureuser1* 子開発空間のサンプル アプリケーションにアクセスするための URL の例です。
+以下は、`azds list-uris` で出力された、*azureuser1* 子開発空間のサンプル アプリケーションにアクセスするための URL の例です。
 
 ```console
 Uri                                                  Status
@@ -178,11 +178,11 @@ http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-`azds list-uris` コマンドからパブリック URL を開いて、 *azureuser1* 子開発空間の *bikesharingweb* サービスに移動します。 上記の例で、 *azureuser1* 子開発空間の *bikesharingweb* サービスのパブリック URL は `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` です。
+`azds list-uris` コマンドからパブリック URL を開いて、*azureuser1* 子開発空間の *bikesharingweb* サービスに移動します。 上記の例で、*azureuser1* 子開発空間の *bikesharingweb* サービスのパブリック URL は `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` です。
 
 ## <a name="configure-the-traefik-ingress-controller-to-use-https"></a>HTTPS を使用する traefik イングレス コントローラーの構成
 
-[cert-manager][cert-manager] を使用して、HTTPS を使用するように traefik イングレス コントローラーを構成するときに TLS 証明書の管理を自動化します。 `helm` を使用して、 *certmanager* グラフをインストールします。
+[cert-manager][cert-manager] を使用して、HTTPS を使用するように traefik イングレス コントローラーを構成するときに TLS 証明書の管理を自動化します。 `helm` を使用して、*certmanager* グラフをインストールします。
 
 ```console
 kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml --namespace traefik
@@ -212,7 +212,7 @@ spec:
 ```
 
 > [!NOTE]
-> テストの場合、 *ClusterIssuer* に使用できる [ステージング サーバー][letsencrypt-staging-issuer]もあります。
+> テストの場合、*ClusterIssuer* に使用できる [ステージング サーバー][letsencrypt-staging-issuer]もあります。
 
 `kubectl` を使用して `letsencrypt-clusterissuer.yaml` を適用します。
 
@@ -223,7 +223,7 @@ kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
 以前の *traefik* *ClusterRole* および *ClusterRoleBinding* を削除し、`helm` を使用して、traefik を HTTPS にアップグレードします。
 
 > [!NOTE]
-> ご使用の AKS クラスターで RBAC を有効にしない場合は、 *--set rbac.enabled=true* パラメーターを削除します。
+> ご使用の AKS クラスターで Kubernetes RBAC を有効にしない場合は、 *--set rbac.enabled=true* パラメーターを削除します。
 
 ```console
 kubectl delete ClusterRole traefik
@@ -237,7 +237,7 @@ helm upgrade traefik stable/traefik --namespace traefik --set kubernetes.ingress
 kubectl get svc -n traefik --watch
 ```
 
-このサンプル出力では、 *traefik* 名前空間にあるすべてのサービスの IP アドレスを示しています。
+このサンプル出力では、*traefik* 名前空間にあるすべてのサービスの IP アドレスを示しています。
 
 ```console
 NAME      TYPE           CLUSTER-IP    EXTERNAL-IP          PORT(S)                      AGE
@@ -246,7 +246,7 @@ traefik   LoadBalancer   10.0.205.78   <pending>            80:32484/TCP,443:306
 traefik   LoadBalancer   10.0.205.78   MY_NEW_EXTERNAL_IP   80:32484/TCP,443:30620/TCP   60s
 ```
 
-[az network dns record-set a add-record][az-network-dns-record-set-a-add-record] を使用して、 *A* レコードを、traefik サービスの外部 IP アドレスが使用された DNS ゾーンに追加し、 [az network dns record-set a remove-record][az-network-dns-record-set-a-remove-record] を使用して、以前の *A* レコードを削除します。
+[az network dns record-set a add-record][az-network-dns-record-set-a-add-record] を使用して、*A* レコードを、traefik サービスの外部 IP アドレスが使用された DNS ゾーンに追加し、[az network dns record-set a remove-record][az-network-dns-record-set-a-remove-record] を使用して、以前の *A* レコードを削除します。
 
 ```azurecli
 az network dns record-set a add-record \
@@ -262,7 +262,7 @@ az network dns record-set a remove-record \
     --ipv4-address PREVIOUS_EXTERNAL_IP
 ```
 
-上記の例は、 *MY_CUSTOM_DOMAIN* DNS ゾーンの *A* レコードを更新して、 *PREVIOUS_EXTERNAL_IP* を使用しています。
+上記の例は、*MY_CUSTOM_DOMAIN* DNS ゾーンの *A* レコードを更新して、*PREVIOUS_EXTERNAL_IP* を使用しています。
 
 *cert-manager* および HTTPS を使用するための詳細を含むように [values.yaml][values-yaml] を更新します。 更新された `values.yaml` ファイルの例を次に示します。
 
@@ -312,7 +312,7 @@ helm upgrade bikesharingsampleapp . --namespace dev --atomic
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.
 ```
 
-このエラーを修正するには、 [BikeSharingWeb/azds.yaml][azds-yaml] で *kubernetes.io/ingress.class* に *traefik* が使用され、 *$(hostSuffix)* にお使いのカスタム ドメインが使用されるように更新します。 次に例を示します。
+このエラーを修正するには、[BikeSharingWeb/azds.yaml][azds-yaml] で *kubernetes.io/ingress.class* に *traefik* が使用され、 *$(hostSuffix)* にお使いのカスタム ドメインが使用されるように更新します。 次に例を示します。
 
 ```yaml
 ...

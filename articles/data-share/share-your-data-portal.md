@@ -5,22 +5,29 @@ author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: quickstart
-ms.date: 08/19/2020
-ms.openlocfilehash: 41598c04af78d4366435259357d8f897ac178942
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/30/2020
+ms.openlocfilehash: 1442720fdf48aaa7da76e181b168a04306ff3e33
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89489937"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577500"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Data Share を使用してデータを共有する
 
-このクイックスタートでは、Azure portal を使用して、新しい Azure Data Share を設定する方法について説明します。
+このクイックスタートでは、Azure portal を使用して、ストレージ アカウントからデータを共有するための新しい Azure Data Share を設定する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプション:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+* Azure サブスクリプション:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+* 受信者の Azure ログイン用メール アドレス (メール エイリアスは無効です)。
+* Data Share リソースの作成用とは異なる Azure サブスクリプションにソース Azure データ ストアが存在する場合、Azure データ ストアがあるサブスクリプションで [Microsoft.DataShare リソースプロバイダー](concepts-roles-permissions.md#resource-provider-registration)を登録してください。 
 
+### <a name="share-from-a-storage-account"></a>ストレージ アカウントからの共有
+
+* Azure Storage アカウント: まだお持ちでない場合は、[Azure Storage アカウント](../storage/common/storage-account-create.md)を作成できます。
+* ストレージ アカウントに書き込む権限。これは、*Microsoft.Storage/storageAccounts/write* に含まれています。 このアクセス許可は、**共同作成者** ロール内に存在します。
+* ストレージ アカウントにロールの割り当てを追加する権限。これは、*Microsoft.Authorization/role assignments/write* に含まれています。 このアクセス許可は、**所有者** ロール内に存在します。 
 
 ## <a name="create-a-data-share-account"></a>Data Share アカウントを作成する
 
@@ -67,7 +74,7 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
    ![共有にデータセットを追加する](./media/datasets.png "データセット")
 
-1. 追加するデータセットの種類を選択します。 前の手順で選択した共有の種類 (スナップショットまたはインプレース) によって異なる種類のデータセット一覧が表示されます。 Azure SQL Database または Azure Synapse Analytics から共有する場合は、いくつかの SQL 資格情報を入力するように求められます。 前提条件の中で作成したユーザーを使用して、認証します。
+1. 追加するデータセットの種類を選択します。 前の手順で選択した共有の種類 (スナップショットまたはインプレース) によって異なる種類のデータセット一覧が表示されます。 
 
    ![AddDatasets](./media/add-datasets.png "データセットを追加する")    
 

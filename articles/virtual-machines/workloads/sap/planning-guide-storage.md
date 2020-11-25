@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 819ac1f01cc182c79571de35ec0753f694dc7722
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ed99145a2d3860849c4a8117a93a9a0f24d227c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653615"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540928"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>SAP ワークロードの Azure Storage の種類
 Azure には、機能、スループット、待機時間、価格が大幅に異なるさまざまな種類のストレージがあります。 ストレージの種類の中には、SAP シナリオでは使用できないものや、制限付きで使用できるものがあります。 一方、いくつかの Azure Storage の種類が、特定の SAP ワークロードのシナリオ用として適切であるか、または最適化されています。 特に SAP HANA に関して、一部の Azure Storage の種類は SAP HANA での使用の認定を受けています。 このドキュメントでは、さまざまな種類のストレージを取り上げて、SAP ワークロードと SAP コンポーネントに対する機能と使用可能性について説明します。
@@ -30,7 +30,7 @@ Azure には、機能、スループット、待機時間、価格が大幅に�
 
 ## <a name="microsoft-azure-storage-resiliency"></a>Microsoft Azure Storage の回復性
 
-Standard HDD、Standard SSD、Azure Premium Storage、Ultra Disk からなる Microsoft Azure Storage では、ベース VHD (OS を含む) と VM にアタッチされたデータ ディスクまたは VHD が、3 つの異なるストレージ ノード上の 3 つのコピーに保持されます。 記憶域ノード障害が発生した場合の、別のレプリカへのフェールオーバーと新しいレプリカのシード処理は透過的です。 この冗長性の結果、複数の Azure ディスクにわたるどのような種類のストレージ冗長レイヤーも使用する必要は**ありません**。 これは、ローカル冗長ストレージ (LRS) と呼ばれます。 LRS は、Azure 内のこれらの種類のストレージの既定になっています。 [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) では、他のネイティブ Azure Storage と同じ SLA を実現する十分な冗長性が提供されます。
+Standard HDD、Standard SSD、Azure Premium Storage、Ultra Disk からなる Microsoft Azure Storage では、ベース VHD (OS を含む) と VM にアタッチされたデータ ディスクまたは VHD が、3 つの異なるストレージ ノード上の 3 つのコピーに保持されます。 記憶域ノード障害が発生した場合の、別のレプリカへのフェールオーバーと新しいレプリカのシード処理は透過的です。 この冗長性の結果、複数の Azure ディスクにわたるどのような種類のストレージ冗長レイヤーも使用する必要は **ありません**。 これは、ローカル冗長ストレージ (LRS) と呼ばれます。 LRS は、Azure 内のこれらの種類のストレージの既定になっています。 [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) では、他のネイティブ Azure Storage と同じ SLA を実現する十分な冗長性が提供されます。
 
 この他に、Azure で提供されるさまざまなストレージの種類の一部に適用されるいくつかの冗長化の方法があり、それらはすべて [Azure Storage のレプリケーション](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)に関する記事で説明されています。 
 
@@ -130,7 +130,7 @@ Azure Premium SSD は、以下のことを実現する目的で導入されま�
 - このストレージの I/O スループットは、ディスク カテゴリのサイズに対して線形ではありません。 容量 65 GiB と 128 GiB の間のカテゴリのような小容量ディスクの場合、スループットは約 780 KB/GiB です。 一方、32,767 GiB ディスクのような非常に大容量のディスクでは、スループットは約 28 KB/GiB です。
 - ディスクの容量を変更せずに IOPS とスループットの SLA を変更することはできません。
 
-Azure には、Azure Premium ストレージまたは Azure Ultra Disk ストレージの使用に関連付けられた、99.9% の単一インスタンス VM SLA があります。 その SLA は、「[仮想マシンの SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)」に記載されています。 この単一 VM SLA に準拠するには、ベース VHD ディスクと、アタッチされている**すべての**ディスクが、Azure Premium ストレージまたは Azure Ultra Disk ストレージのいずれかである必要があります。
+Azure には、Azure Premium ストレージまたは Azure Ultra Disk ストレージの使用に関連付けられた、99.9% の単一インスタンス VM SLA があります。 その SLA は、「[仮想マシンの SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)」に記載されています。 この単一 VM SLA に準拠するには、ベース VHD ディスクと、アタッチされている **すべての** ディスクが、Azure Premium ストレージまたは Azure Ultra Disk ストレージのいずれかである必要があります。
 
 SAP ワークロードの機能マトリックスは次のようになります。
 
@@ -352,11 +352,10 @@ SAP システムのライフサイクルにおいて Azure VM のサイズを大
 
 
 ## <a name="striping-or-not-striping"></a>ストライピングするかどうか
-複数の Azure ディスクから 1 つの大きなボリュームにストライプ セットを作成すると、個々のディスクの IOPS とスループットを 1 つのボリュームに累積できます。 Azure Standard Storage と Azure Premium Storage にのみ使用されます。 ディスク容量に関係なくスループットと IOPS を構成できる Azure Ultra ディスクでは、ストライプ セットを使用する必要はありません。 NFS または SMB に基づく共有ボリュームをストライピングすることはできません。 Azure Premium Storage のスループットと IOPS には非線形という特徴があるため、大規模な単一の Azure Premium Storage ディスクと同じ IOPS とスループットを持つ、より小さな容量をプロビジョニングすることができます。 これは、Azure Premium Storage を使用して、より高いスループットまたは IOPS をより低コストで実現するための方法です。 次に例を示します。
+複数の Azure ディスクから 1 つの大きなボリュームにストライプ セットを作成すると、個々のディスクの IOPS とスループットを 1 つのボリュームに累積できます。 Azure Standard Storage と Azure Premium Storage にのみ使用されます。 ディスク容量に関係なくスループットと IOPS を構成できる Azure Ultra ディスクでは、ストライプ セットを使用する必要はありません。 NFS または SMB に基づく共有ボリュームをストライピングすることはできません。 Azure Premium Storage のスループットと IOPS には非線形という特徴があるため、大規模な単一の Azure Premium Storage ディスクと同じ IOPS とスループットを持つ、より小さな容量をプロビジョニングすることができます。 これは、Azure Premium Storage を使用して、より高いスループットまたは IOPS をより低コストで実現するための方法です。 たとえば、2 台の P15 Premium Storage ディスクをストライピングして実現できるスループットは、 
 
-- 2 台の P15 Premium Storage ディスクをストライピングして実現できるスループットは、 
 - 250 MiB/秒です。このようなボリュームは、512 GiB の容量になります。 1 秒あたり 250 MiB のスループットを提供する単一のディスクを希望する場合は、2 TiB の容量を持つ P40 ディスクを選択する必要があります。 
-- または、ストライピングにより総容量 512 GiB となる 4 台の P10 Premium Storage ディスクをストライピングすることで、400 MiB/秒のスループットを実現できます。 少なくとも 1 秒あたり 500 MiB のスループットを持つ単一のディスクを希望する場合は、8 TiB の P60 Premium Storage ディスクを選択する必要があります。 Premium Storage で発生するコストは容量に対してほぼ線形であるため、ストライピングを使用することでコスト削減を実感できます。
+- ストライピングにより総容量 512 GiB となる 4 台の P10 Premium Storage ディスクをストライピングする方法では、400 MiB/秒です。 少なくとも 1 秒あたり 500 MiB のスループットを持つ単一のディスクを希望する場合は、8 TiB の P60 Premium Storage ディスクを選択する必要があります。 Premium Storage のコストは容量に対してほぼ線形であるため、ストライピングを使用することでコスト削減を実感できます。
 
 ストライピングでは、いくつかのルールに従う必要があります。
 

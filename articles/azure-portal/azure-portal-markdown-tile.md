@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: devx-track-js
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 5ca225f136b0c3a6fc8b47d00ff64064fe17d4ee
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2d9344d8b97d9a6ba361a337e0c6165438c04897
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281753"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94745090"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Azure ダッシュボードでマークダウン タイルを使用して、カスタム コンテンツを表示する
 
@@ -27,7 +27,7 @@ ms.locfileid: "92281753"
 
    ![ポータルのサイドバーを示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-nav.png)
 
-1. カスタム ダッシュボードを既に作成している場合は、ダッシュボード ビューで、ドロップダウンを使用して、カスタムのマークダウン タイルが表示されるダッシュボードを選択します。 編集アイコンを選択して、 **タイル ギャラリー** を開きます。
+1. カスタム ダッシュボードを既に作成している場合は、ダッシュボード ビューで、ドロップダウンを使用して、カスタムのマークダウン タイルが表示されるダッシュボードを選択します。 編集アイコンを選択して、**タイル ギャラリー** を開きます。
 
    ![ダッシュボード編集ビューを示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
@@ -48,15 +48,15 @@ ms.locfileid: "92281753"
       ![URL の入力を示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
 
       > [!NOTE]
-      > セキュリティを強化するために、マークダウン ファイルを作成して[暗号化が有効になっている Azure ストレージ アカウント BLOB](../storage/common/storage-service-encryption.md) に保存し、URL オプションを使用してそのファイルを指定できます。 マークダウン コンテンツは、ストレージ アカウントの暗号化オプションを使用して暗号化されます。 そのファイルに対するアクセス許可を持つユーザーのみが、ダッシュボードでマークダウン コンテンツを表示できます。 Azure portal ( _https://portal.azure.com/_ ) で BLOB のマークダウン ファイルにアクセスできるよう、ストレージ アカウントにクロスオリジン リソース共有 (CORS) を設定します。
+      > セキュリティを強化するために、マークダウン ファイルを作成して[暗号化が有効になっている Azure ストレージ アカウント BLOB](../storage/common/storage-service-encryption.md) に保存し、URL オプションを使用してそのファイルを指定できます。 マークダウン コンテンツは、ストレージ アカウントの暗号化オプションを使用して暗号化されます。 そのファイルに対するアクセス許可を持つユーザーのみが、ダッシュボードでマークダウン コンテンツを表示できます。 Azure portal ( _https://portal.azure.com/_ ) で BLOB のマークダウン ファイルにアクセスできるよう、ストレージ アカウントに[クロスオリジン リソース共有 (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) ルールを設定することが必要な場合があります。
 
-1. **[完了]** を選択して、 **[マークダウンの編集]** ウィンドウを閉じます。 コンテンツが [マークダウン] タイルに表示されます。これは、右下隅のハンドルをドラッグしてサイズ変更できます。
+1. **[完了]** を選択して、**[マークダウンの編集]** ウィンドウを閉じます。 コンテンツが [マークダウン] タイルに表示されます。これは、右下隅のハンドルをドラッグしてサイズ変更できます。
 
    ![カスタムのマークダウン タイルを示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
 
 ## <a name="markdown-content-capabilities-and-limitations"></a>マークダウン コンテンツの機能と制限
 
-マークダウン タイルでは、プレーン テキスト、マークダウン構文、HTML コンテンツの任意の組み合わせを使用できます。 Azure portal により " _マーク済_ " というオープンソース ライブラリが使用され、コンテンツがタイルに表示される HTML に変換されます。 " _マーク済_ " によって生成される HTML が、レンダリングされる前にポータルによって事前処理されます。 この手順は、独自のカスタマイズが、セキュリティまたはポータルのレイアウトに影響しないことを確認するのに役立ちます。 事前処理中に、潜在的な脅威となる HTML のすべての部分が削除されます。 次の種類のコンテンツは、ポータルによって許可されていません。
+マークダウン タイルでは、プレーン テキスト、マークダウン構文、HTML コンテンツの任意の組み合わせを使用できます。 Azure portal により "_マーク済_" というオープンソース ライブラリが使用され、コンテンツがタイルに表示される HTML に変換されます。 "_マーク済_" によって生成される HTML が、レンダリングされる前にポータルによって事前処理されます。 この手順は、独自のカスタマイズが、セキュリティまたはポータルのレイアウトに影響しないことを確認するのに役立ちます。 事前処理中に、潜在的な脅威となる HTML のすべての部分が削除されます。 次の種類のコンテンツは、ポータルによって許可されていません。
 
 * JavaScript – `<script>` タグとインライン JavaScript 評価が削除されます。
 * iframe - `<iframe>` タグが削除されます。

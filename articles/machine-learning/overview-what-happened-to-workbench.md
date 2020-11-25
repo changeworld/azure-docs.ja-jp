@@ -1,7 +1,7 @@
 ---
 title: Workbench はどうなったか
 titleSuffix: Azure Machine Learning
-description: Workbench アプリケーションの廃止に伴う影響とサポート タイムラインについて説明します。
+description: Azure Machine Learning は、ML アプリケーションをクラウド規模でモデル化してデプロイするための統合データ サイエンス ソリューションです。 ワークベンチ機能は廃止されました。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 03/05/2020
-ms.openlocfilehash: 2a9111e40b207cadd27365cb4f1c199931c40638
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fb35cce46a8448b744e8f7b3d26f2ca6a166f831
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323961"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541217"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench の変更点
 
-Azure Machine Learning Workbench アプリケーションとその他のいくつかの初期機能は、 **2018 年 9 月** のリリースで非推奨とされ、改善された [アーキテクチャ](concept-azure-machine-learning-architecture.md)への移行のために置き換えられました。
+Azure Machine Learning Workbench アプリケーションとその他のいくつかの初期機能は、**2018 年 9 月** のリリースで非推奨とされ、改善された [アーキテクチャ](concept-azure-machine-learning-architecture.md)への移行のために置き換えられました。
 
 エクスペリエンスの向上のため、このリリースには、お客様からのフィードバックをきっかけとする重要なアップデートが多く含まれています。 実験の実施からモデルのデプロイに至るまで、コア機能は変更されていません。 ただし、堅牢な <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a>、R SDK、[Azure CLI](reference-azure-machine-learning-cli.md) を使用して、機械学習のタスクとパイプラインを実現できるようになっています。
 

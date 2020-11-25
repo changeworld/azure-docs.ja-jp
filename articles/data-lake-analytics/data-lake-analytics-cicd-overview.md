@@ -8,11 +8,11 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 09/14/2018
 ms.openlocfilehash: 95b638b85e0746d2995488f2a28a5fb2512b1063
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219328"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015266"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics の CI/CD パイプラインをセットアップする方法  
 
@@ -76,16 +76,16 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
 引数の定義と値は次のとおりです。
 
-- **USQLSDKPath=\<U-SQL Nuget package>\build\runtime** 。 このパラメーターは、U-SQL 言語サービス用の NuGet パッケージのインストール パスを参照します。
-- **USQLTargetType=Merge or SyntaxCheck** :
+- **USQLSDKPath=\<U-SQL Nuget package>\build\runtime**。 このパラメーターは、U-SQL 言語サービス用の NuGet パッケージのインストール パスを参照します。
+- **USQLTargetType=Merge or SyntaxCheck**:
 
-  - **Merge** 。 マージ モードでコードビハインド ファイルをコンパイルします。 たとえば、 **.cs** 、 **.py** 、 **.r** などのファイルです。 結果のユーザー定義コード ライブラリを U-SQL スクリプトにインライン展開します。 たとえば、dll バイナリ、Python、R などのコードです。
+  - **Merge**。 マージ モードでコードビハインド ファイルをコンパイルします。 たとえば、 **.cs**、 **.py**、 **.r** などのファイルです。 結果のユーザー定義コード ライブラリを U-SQL スクリプトにインライン展開します。 たとえば、dll バイナリ、Python、R などのコードです。
 
-  - **SyntaxCheck** 。 SyntaxCheck モードでは、まずコードビハインド ファイルが U-SQL スクリプトにマージされます。 次に、U-SQL スクリプトがコンパイルされ、コードが検証されます。
+  - **SyntaxCheck**。 SyntaxCheck モードでは、まずコードビハインド ファイルが U-SQL スクリプトにマージされます。 次に、U-SQL スクリプトがコンパイルされ、コードが検証されます。
 
 - **DataRoot=\<DataRoot path>** 。 DataRoot は SyntaxCheck モードの場合にのみ必要です。 SyntaxCheck モードでスクリプトをビルドすると、MSBuild によってスクリプト内のデータベース オブジェクトに対する参照がチェックされます。 ビルド前に、U-SQL データベースから参照されるオブジェクトを含め、一致するローカル環境をビルド コンピューターの DataRoot フォルダー上にセットアップしてください。 [U-SQL データベース プロジェクトを参照する](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)ことによって、これらのデータベース依存関係を管理することもできます。 MSBuild ではデータベース オブジェクト参照のみがチェックされ、ファイルはチェックされません。
 
-- **EnableDeployment=true** または **false** 。 EnableDeployment は、ビルド処理中に参照されている U-SQL データベースをデプロイできるかどうかを示します。 U-SQL データベース プロジェクトを参照し、U-SQL スクリプトでデータベース オブジェクトを使用する場合は、このパラメーターを **true** に設定します。
+- **EnableDeployment=true** または **false**。 EnableDeployment は、ビルド処理中に参照されている U-SQL データベースをデプロイできるかどうかを示します。 U-SQL データベース プロジェクトを参照し、U-SQL スクリプトでデータベース オブジェクトを使用する場合は、このパラメーターを **true** に設定します。
 
 ### <a name="continuous-integration-through-azure-pipelines"></a>Azure Pipelines を使用した継続的インテグレーション
 
@@ -307,7 +307,7 @@ Azure Data Lake Tools for Visual Studio が提供する U-SQL データベース
 
 MSBuild には、U-SQL データベース プロジェクトのサポートが組み込まれていません。 この機能を取得するには、必要な言語サービスを追加する [Microsoft.Azure.DataLake.USQL.SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) NuGet パッケージへの参照をソリューションのために追加する必要があります。
 
-NuGet パッケージ参照を追加するには、Visual Studio のソリューション エクスプローラーでソリューションを右クリックします。 **[NuGet パッケージの管理]** を選択します。 NuGet パッケージを探してインストールします。 また、 **packages.config** という名前のファイルをソリューション フォルダーに追加し、次の内容をそのファイルに追加することもできます。
+NuGet パッケージ参照を追加するには、Visual Studio のソリューション エクスプローラーでソリューションを右クリックします。 **[NuGet パッケージの管理]** を選択します。 NuGet パッケージを探してインストールします。 また、**packages.config** という名前のファイルをソリューション フォルダーに追加し、次の内容をそのファイルに追加することもできます。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -444,13 +444,13 @@ Azure Pipelines でデータベース デプロイ タスクを設定するに�
       PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -AzureSDKPath <azure sdk path> -Interactive
       ```
 
-   - U-SQL データベースを Azure Data Lake Analytics アカウントに追加するには、 **シークレット** 認証を使用します。
+   - U-SQL データベースを Azure Data Lake Analytics アカウントに追加するには、**シークレット** 認証を使用します。
 
       ```cmd
       PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secrete <secrete>
       ```
 
-   - U-SQL データベースを Azure Data Lake Analytics アカウントに追加するには、 **certFile** 認証を使用します。
+   - U-SQL データベースを Azure Data Lake Analytics アカウントに追加するには、**certFile** 認証を使用します。
 
       ```cmd
       PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secrete <secrete> -CertFile <certFile>

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 0afd1f2f8dd06c3c224d64304eec2e18489a7e81
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 54b15d5865b1abb0d624628ed4b5c9892ab04d41
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489133"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542135"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
@@ -107,6 +107,16 @@ ms.locfileid: "94489133"
   + **azureml-train-automl-client**
     + get_output から XGBoostError が報告されることがある問題を修正しました。
 
+### <a name="azure-machine-learning-studio-notebooks-experience-october-update"></a>Azure Machine Learning Studio のノートブック エクスペリエンス (10 月の更新)
++ **新機能**
+  + [仮想ネットワークの完全サポート](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
+  + [フォーカス モード](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#focus-mode)
+  + ノートブックの保存 Ctrl-S
+  + 行番号
+
++ **バグの修正と機能強化**
+  + 速度とカーネルの信頼性の向上
+  + Jupyter ウィジェットの UI の更新
 
 ## <a name="2020-10-12"></a>2020-10-12
 
