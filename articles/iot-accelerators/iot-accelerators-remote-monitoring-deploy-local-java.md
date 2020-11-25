@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
 ms.openlocfilehash: 78573cfe00d8e2e7ddcbf705dffdd5530f82c4e0
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998598"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024199"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>リモート監視ソリューション アクセラレータのローカルでのデプロイ - IntelliJ
 
@@ -200,7 +200,7 @@ Web サービスごとにコマンド プロンプト ウィンドウと Web ブ
 Stream Analytics ジョブを開始するには、次の手順に従います。
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
-1. ソリューション用に作成された**リソース グループ**に移動します。 このリソース グループの名前は、**start.cmd** スクリプトを実行したときにソリューション用に選択した名前です。
+1. ソリューション用に作成された **リソース グループ** に移動します。 このリソース グループの名前は、**start.cmd** スクリプトを実行したときにソリューション用に選択した名前です。
 1. リソースの一覧で **[Stream Analytics ジョブ]** を選択します。
 1. Stream Analytics ジョブの **[概要]** ページで、 **[開始]** ボタンを選択し、 **[開始]** を選択してジョブを開始します。
 

@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8f1d20e9a6a78d99a23fe4b98aeb4f3eb8359da7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73890957"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024182"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>リモート監視ソリューション アクセラレータをローカルでデプロイする - Visual Studio Code
 
@@ -65,7 +65,7 @@ dotnet build -c Release
 1. VS Code で、**azure-iot-pcs-remote-monitoring-dotnet** フォルダーを開きます。
 1. **.vscode** という新しいフォルダーを **azure-iot-pcs-remote-monitoring-dotnet** フォルダー内に作成します。
 1. services\scripts\local\launch\idesettings\vscode から、作成したばかりの **.vscode** フォルダーに、**launch.json** ファイルと **tasks.json** ファイルをコピーします。
-1. VS Code で **[デバッグ] パネル**を開き、 **[Run all microservices]** (すべてのマイクロサービスを実行) 構成を実行します。 この構成は、デバイス シミュレーション マイクロサービスを Docker で実行し、他のマイクロサービスをデバッガーで実行します。
+1. VS Code で **[デバッグ] パネル** を開き、 **[Run all microservices]** (すべてのマイクロサービスを実行) 構成を実行します。 この構成は、デバイス シミュレーション マイクロサービスを Docker で実行し、他のマイクロサービスをデバッガーで実行します。
 
 デバッグ コンソールでの **[Run All microservices]** (すべてのマイクロサービスを実行) を実行した出力は次のようになります。
 

@@ -10,11 +10,11 @@ ms.date: 12/19/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
 ms.openlocfilehash: be26c6fe03dac9b9ff9dbff4a2bdce391ec0837e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147867"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024165"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>IoT DevKit AZ3166 と Azure Functions および Cognitive Services を使用して言語翻訳ツールを作成する
 
@@ -38,7 +38,7 @@ ms.locfileid: "92147867"
 
 ## <a name="open-sample-project"></a>サンプル プロジェクトを開く
 
-1. IoT DevKit がお使いのコンピューターに接続されて**いない**ことを確認します。 まず VS Code を起動し、DevKit をコンピューターに接続します。
+1. IoT DevKit がお使いのコンピューターに接続されて **いない** ことを確認します。 まず VS Code を起動し、DevKit をコンピューターに接続します。
 
 1. `F1` をクリックしてコマンド パレットを開き、 **[Azure IoT Device Workbench:Open Examples...]\(Azure IoT Device Workbench: 例を開く...\)** を入力して選択します。次に、 **[IoT DevKit]** をボードとして選択します。
 
@@ -83,11 +83,11 @@ ms.locfileid: "92147867"
 
 ## <a name="build-and-upload-device-code"></a>デバイス コードをビルドしてアップロードする
 
-1. 次のようにして、DevKit を**構成モード**に切り替えます。
+1. 次のようにして、DevKit を **構成モード** に切り替えます。
    * **A** ボタンを押しながら、
    * **[リセット]** ボタンを押して離します。
 
-   画面に、DevKit の ID と**構成**が表示されます。
+   画面に、DevKit の ID と **構成** が表示されます。
 
    ![DevKit 構成モード](media/iot-hub-arduino-iot-devkit-az3166-translator/devkit-configuration-mode.png)
 
