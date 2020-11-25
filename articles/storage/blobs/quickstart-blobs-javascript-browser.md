@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: eebfa61632bc49d5df35c17ba2d2faca0382001c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 998d49e91d38a1f2fdc2503165ee99635e153027
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91336141"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001900"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -26,7 +26,7 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 * [API リファレンス ドキュメント](/javascript/api/@azure/storage-blob)
 * [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
 * [パッケージ (npm)](https://www.npmjs.com/package/@azure/storage-blob)
-* [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [サンプル](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -66,7 +66,7 @@ Blob Storage には、3 種類のリソースがあります。
 
 ### <a name="create-a-cors-rule"></a>CORS ルールを作成する
 
-Web アプリケーションでクライアントから BLOB ストレージにアクセスするには、アカウントを構成して、[クロス オリジン リソース共有](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) (CORS) を有効にしておく必要があります。
+Web アプリケーションでクライアントから BLOB ストレージにアクセスするには、アカウントを構成して、[クロス オリジン リソース共有](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) (CORS) を有効にしておく必要があります。
 
 Azure portal で、自分のストレージ アカウントを選択します。 新しい CORS ルールを定義するために、 **[設定]** セクションに移動し、 **[CORS]** を選択します。 このクイック スタートでは、オープン CORS ルールを作成します。
 
@@ -76,10 +76,10 @@ Azure portal で、自分のストレージ アカウントを選択します。
 
 |設定  |値  | 説明 |
 |---------|---------|---------|
-| **許可されたオリジン** | **\*** | 許容されるオリジンとして設定されるドメインの、コンマ区切りの一覧を受け入れます。 値を `*` に設定すると、すべてのドメインがストレージ アカウントにアクセスできるようになります。 |
+| **許可されたオリジン** | **\** _ | 許容されるオリジンとして設定されるドメインの、コンマ区切りの一覧を受け入れます。 値を `_` に設定すると、すべてのドメインがストレージ アカウントにアクセスできるようになります。 |
 | **許可されたメソッド** | **DELETE**、**GET**、**HEAD**、**MERGE**、**POST**、**OPTIONS**、**PUT** | ストレージ アカウントに対して実行できる HTTP 動詞の一覧です。 このクイック スタートの目的に合わせて、利用可能なすべてのオプションを選択します。 |
-| **許可されたヘッダー** | **\*** | ストレージ アカウントによって許可される要求ヘッダー (プレフィックス付きヘッダーを含む) の一覧を定義します。 値を `*` に設定すると、すべてのヘッダーがアクセスできるようになります。 |
-| **公開されるヘッダー** | **\*** | アカウントによって許可される応答ヘッダーの一覧です。 値を `*` に設定すると、アカウントは任意のヘッダーを送信できるようになります。 |
+| **許可されたヘッダー** | **\** _ | ストレージ アカウントによって許可される要求ヘッダー (プレフィックス付きヘッダーを含む) の一覧を定義します。 値を `_` に設定すると、すべてのヘッダーがアクセスできるようになります。 |
+| **公開されるヘッダー** | **\** _ | アカウントによって許可される応答ヘッダーの一覧です。 値を `_` に設定すると、アカウントは任意のヘッダーを送信できるようになります。 |
 | **最長有効期間** | **86400** | ブラウザーがプレフライト OPTIONS 要求をキャッシュする最大時間 (秒)。 値を *86,400* にすると、キャッシュが丸 1 日保持されます。 |
 
 この表の値を各フィールドに入力したら、 **[保存]** ボタンをクリックします。

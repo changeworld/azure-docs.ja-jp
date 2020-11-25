@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 31832c13ddee848864dcfe0d796deb7fcdcd8359
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 7a0e15ac3c08f55e817eb6a6300d58ab4af6029c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526546"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966660"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>クイックスタート - Azure IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使い、シミュレートされた TPM デバイスを作成してプロビジョニングします。
 
@@ -27,7 +27,7 @@ ms.locfileid: "90526546"
 - [プロビジョニング](about-iot-dps.md#provisioning-process)の概念を理解していること。
 - [Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)が完了していること。
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- [Java SE Development Kit 8](https://aka.ms/azure-jdks)。
+- [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
 - [Maven](https://maven.apache.org/install.html)。
 - [Git](https://git-scm.com/download/).
 
@@ -35,7 +35,7 @@ ms.locfileid: "90526546"
 
 ## <a name="prepare-the-environment"></a>環境の準備 
 
-1. [Java SE Development Kit 8](https://aka.ms/azure-jdks) がマシンにインストールされていることを確認します。
+1. [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) がマシンにインストールされていることを確認します。
 
 1. [Maven](https://maven.apache.org/install.html) をダウンロードし、インストールします。
 
@@ -47,7 +47,7 @@ ms.locfileid: "90526546"
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
     ```
 
-1. シミュレートされたデバイスの [HSM](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) として [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) シミュレーターを実行します。 **[アクセスを許可]** をクリックし、_[Windows ファイアウォール]_ 設定への変更を許可します。 これは、ソケットでポート 2321 とポート 2322 をリッスンします。 このウィンドウを閉じないでください。このクイックスタート ガイドの終了まで、このシミュレーターを実行状態にしておく必要があります。 
+1. シミュレートされたデバイスの [HSM](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) として [TPM](/windows/device-security/tpm/trusted-platform-module-overview) シミュレーターを実行します。 **[アクセスを許可]** をクリックし、_[Windows ファイアウォール]_ 設定への変更を許可します。 これは、ソケットでポート 2321 とポート 2322 をリッスンします。 このウィンドウを閉じないでください。このクイックスタート ガイドの終了まで、このシミュレーターを実行状態にしておく必要があります。 
 
     ```cmd/sh
     .\azure-iot-sdk-java\provisioning\provisioning-tools\tpm-simulator\Simulator.exe

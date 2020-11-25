@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6b8145666ab92432d01b2f039685afe5534f0958
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 7c522abd04f4a3e480bb5c3e14e78cc03dbd5d86
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043575"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888642"
 ---
 # <a name="region-availability-and-data-residency"></a>利用可能なリージョンとデータの保存場所
 
@@ -37,13 +37,13 @@ Communication Services のデータには 2 つのカテゴリがあります。
 
 ### <a name="identities"></a>Identities
 
-Azure Communication Services は、ID のディレクトリを保持しており、それらを削除するには [DeleteIdentity](https://docs.microsoft.com/rest/api/communication/communicationidentity/delete) API を使用します。 ID を削除すると、関連付けられているすべてのアクセス トークンが取り消され、そのチャット メッセージが削除されます。 ID の削除方法の詳細については、[このページを参照](../quickstarts/access-tokens.md)してください。
+Azure Communication Services は、ID のディレクトリを保持しており、それらを削除するには [DeleteIdentity](/rest/api/communication/communicationidentity/delete) API を使用します。 ID を削除すると、関連付けられているすべてのアクセス トークンが取り消され、そのチャット メッセージが削除されます。 ID の削除方法の詳細については、[このページを参照](../quickstarts/access-tokens.md)してください。
 
 - DeleteIdentity
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Communication Services と共に Azure portal または Azure Resource Manager API シリーズを使用すると、個人データを作成できます。 [Azure Resource Manager システムで個人データを管理する方法を確認するには、このページを使用してください。](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-manager-personal-data)
+Communication Services と共に Azure portal または Azure Resource Manager API シリーズを使用すると、個人データを作成できます。 [Azure Resource Manager システムで個人データを管理する方法を確認するには、このページを使用してください。](../../azure-resource-manager/management/resource-manager-personal-data.md)
 
 ### <a name="telephone-number-management"></a>電話番号の管理
 
@@ -52,7 +52,7 @@ Azure Communication Services では、Communication Services リソースに関�
 
 ### <a name="chat"></a>チャット
 
-チャットのスレッドとメッセージは、明示的に削除されるまで保持されます。 完全にアイドル状態のスレッドは 30 日後に自動的に削除されます。 [チャット API シリーズ](https://docs.microsoft.com/rest/api/communication/chat/deletechatmessage/deletechatmessage)を使用すると、メッセージの取得、一覧表示、更新、削除を実行できます。
+チャットのスレッドとメッセージは、明示的に削除されるまで保持されます。 完全にアイドル状態のスレッドは 30 日後に自動的に削除されます。 [チャット API シリーズ](/rest/api/communication/chat/deletechatmessage/deletechatmessage)を使用すると、メッセージの取得、一覧表示、更新、削除を実行できます。
 
 - `Get Thread`
 - `Get Message`
@@ -73,10 +73,10 @@ Azure Communication Services では、Communication Services リソースに関�
 
 ## <a name="azure-monitor-and-log-analytics"></a>Azure Monitor とログ分析
 
-Azure Communication Services は、サービスの動作の正常性と使用状況を把握するためにログ データを Azure Monitor に送ります。 これらのログには、フィールド データとして Communication Services の ID や電話番号が含まれているものもあります。 個人データである可能性のあるデータを削除するには、[Azure Monitor に対してこちらの手順を使用](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt)してください。 また、[Azure Monitor で既定の保持期間](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)を構成することもできます。
+Azure Communication Services は、サービスの動作の正常性と使用状況を把握するためにログ データを Azure Monitor に送ります。 これらのログには、フィールド データとして Communication Services の ID や電話番号が含まれているものもあります。 個人データである可能性のあるデータを削除するには、[Azure Monitor に対してこちらの手順を使用](../../azure-monitor/platform/personal-data-mgmt.md)してください。 また、[Azure Monitor で既定の保持期間](../../azure-monitor/platform/manage-cost-storage.md)を構成することもできます。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [GDPR および CCPA のための Azure データ主体要求](https://docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-azure?view=o365-worldwide&preserve-view=true)
+- [GDPR および CCPA のための Azure データ主体要求](/microsoft-365/compliance/gdpr-dsr-azure?preserve-view=true&view=o365-worldwide)
 - [Microsoft セキュリティ センター](https://www.microsoft.com/trust-center/privacy/data-location)
 - [Azure の対話型マップ - 顧客データの場所](https://azuredatacentermap.azurewebsites.net/)

@@ -8,12 +8,12 @@ ms.author: mikben
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1c79ffb02df4a64b2c506ef0863d9bb2da06db53
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d680df0ec5e18cca4d7a42edf45dbd6a50be1472
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91303371"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888608"
 ---
 # <a name="what-is-azure-communication-services"></a>Azure Communication Services とは
 
@@ -77,9 +77,9 @@ Azure Communication Services を初めて使用する場合は、次のリソー
 
 現時点では Communication Services と直接相互運用できない、利用を検討する可能性のある Microsoft 通信製品が他にも 2 つあります。
 
- - [Microsoft Graph Cloud Communication API シリーズ](https://docs.microsoft.com/graph/cloud-communications-concept-overview)を使用すると、組織は、M365 ライセンスを持つ Azure Active Directory ユーザーに関連付けられた通信エクスペリエンスを構築できます。 これは、Azure Active Directory に関連付けられているか Microsoft Teams で生産性を拡張したいアプリケーションに最適です。 また、[Teams のエクスペリエンス](https://docs.microsoft.com/microsoftteams/platform/?view=msteams-client-js-latest&preserve-view=true)でアプリケーションやカスタマイズを構築するための API もあります。
+ - [Microsoft Graph Cloud Communication API シリーズ](/graph/cloud-communications-concept-overview)を使用すると、組織は、M365 ライセンスを持つ Azure Active Directory ユーザーに関連付けられた通信エクスペリエンスを構築できます。 これは、Azure Active Directory に関連付けられているか Microsoft Teams で生産性を拡張したいアプリケーションに最適です。 また、[Teams のエクスペリエンス](/microsoftteams/platform/?preserve-view=true&view=msteams-client-js-latest)でアプリケーションやカスタマイズを構築するための API もあります。
 
- - [Azure PlayFab Party](https://docs.microsoft.com/gaming/playfab/features/multiplayer/networking/) により、低遅延のチャットやデータ通信をゲームに追加することが簡単になります。 Communication Services でゲームのチャットやネットワーク システムを強化できるのに対し、PlayFab はカスタマイズされたオプションで、Xbox では無料です。
+ - [Azure PlayFab Party](/gaming/playfab/features/multiplayer/networking/) により、低遅延のチャットやデータ通信をゲームに追加することが簡単になります。 Communication Services でゲームのチャットやネットワーク システムを強化できるのに対し、PlayFab はカスタマイズされたオプションで、Xbox では無料です。
 
 
 ## <a name="next-steps"></a>次の手順

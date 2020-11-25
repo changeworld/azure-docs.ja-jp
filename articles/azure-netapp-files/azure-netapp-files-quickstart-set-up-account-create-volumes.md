@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: 70441c3a1953fa1b6ebd69ef9cdb324d6cc04a5b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e31a1cef427062723adf4b45bd47cd8009630128
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336454"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888812"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>クイック スタート:Azure NetApp Files を設定し、NFS ボリュームを作成する
 
@@ -32,8 +32,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 > [!IMPORTANT]
 > Azure NetApp Files サービスへのアクセスを許可されている必要があります。 サービスへのアクセスを要求するには、[Azure NetApp Files 順番待ちリスト送信ページ](https://aka.ms/azurenetappfiles)を参照してください。  次の手順に進む前に、Azure NetApp Files チームから正式な確認メールが届くのを待つ必要があります。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ---
 
@@ -65,6 +63,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+Azure CLI の環境を準備します。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
 
 # <a name="template"></a>[テンプレート](#tab/template)
@@ -81,7 +83,7 @@ Azure portal、PowerShell、または Azure CLI を使用して Azure NetApp Fil
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-1. Azure portal の [検索] ボックスに「 **Azure NetApp Files** 」と入力し、表示された一覧から **[Azure NetApp Files]** を選択します。
+1. Azure portal の [検索] ボックスに「**Azure NetApp Files**」と入力し、表示された一覧から **[Azure NetApp Files]** を選択します。
 
       ![Azure NetApp Files を選択する](../media/azure-netapp-files/azure-netapp-files-select-azure-netapp-files.png)
 
@@ -90,9 +92,9 @@ Azure portal、PowerShell、または Azure CLI を使用して Azure NetApp Fil
      ![新しい NetApp アカウントを作成する](../media/azure-netapp-files/azure-netapp-files-create-new-netapp-account.png)
 
 3. [新しい NetApp アカウント] ウィンドウで、次の情報を指定します。
-   1. アカウント名に「 **myaccount1** 」と入力します。
+   1. アカウント名に「**myaccount1**」と入力します。
    2. サブスクリプションを選択します。
-   3. **[新規作成]** を選択し、新しいリソース グループを作成します。 リソース グループ名に「 **myRG1** 」と入力します。 **[OK]** をクリックします。
+   3. **[新規作成]** を選択し、新しいリソース グループを作成します。 リソース グループ名に「**myRG1**」と入力します。 **[OK]** をクリックします。
    4. アカウントの場所を選択します。
 
       ![[新しい NetApp アカウント] ウィンドウ](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)
@@ -176,7 +178,7 @@ Azure portal、PowerShell、または Azure CLI を使用して Azure NetApp Fil
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-1. Azure NetApp Files 管理ブレードで、自分の NetApp アカウント ( **myaccount1** ) を選択します。
+1. Azure NetApp Files 管理ブレードで、自分の NetApp アカウント (**myaccount1**) を選択します。
 
     ![NetApp アカウントを選択する](../media/azure-netapp-files/azure-netapp-files-select-netapp-account.png)
 
@@ -189,7 +191,7 @@ Azure portal、PowerShell、または Azure CLI を使用して Azure NetApp Fil
     ![[プールの追加] をクリックする](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
 4. 容量プールの情報を指定します。
-    * プール名として「 **mypool1** 」と入力します。
+    * プール名として「**mypool1**」と入力します。
     * サービス レベルに **[Premium]** を選択します。
     * プール サイズとして **4 (TiB)** を選択します。
     * **[自動]** QoS タイプを使用します。
@@ -259,17 +261,17 @@ Azure portal、PowerShell、または Azure CLI を使用して Azure NetApp Fil
     ![[ボリュームの追加] をクリックする](../media/azure-netapp-files/azure-netapp-files-click-add-volumes.png)
 
 3. [ボリュームの作成] ウィンドウで、ボリュームの情報を指定します。
-   1. ボリューム名として「 **myvol1** 」と入力します。
-   2. 容量プールを選択します ( **mypool1** )。
+   1. ボリューム名として「**myvol1**」と入力します。
+   2. 容量プールを選択します (**mypool1**)。
    3. クォータの既定値を使用します。
    4. 仮想ネットワークで **[新規作成]** をクリックし、新しい Azure 仮想ネットワーク (Vnet) を作成します。  次の情報を入力します。
-       * Vnet 名として「 **myvnet1** 」と入力します。
+       * Vnet 名として「**myvnet1**」と入力します。
        * 10.7.0.0/16 など、自分の設定用のアドレス空間を指定します。
-       * サブネット名として「 **myANFsubnet** 」と入力します。
+       * サブネット名として「**myANFsubnet**」と入力します。
        * 10.7.0.0/24 など、サブネット アドレス範囲を指定します。 専用サブネットは他のリソースと共有できません。
        * サブネットの委任に **[Microsoft.NetApp/volumes]** を選択します。
        * **[OK]** をクリックして Vnet を作成します。
-   5. サブネットで、新しく作成した Vnet ( **myvnet1** ) を委任サブネットとして選択します。
+   5. サブネットで、新しく作成した Vnet (**myvnet1**) を委任サブネットとして選択します。
 
       ![ボリューム ウィンドウを作成する](../media/azure-netapp-files/azure-netapp-files-create-volume-window.png)
 
@@ -277,7 +279,7 @@ Azure portal、PowerShell、または Azure CLI を使用して Azure NetApp Fil
 
 4. **[プロトコル]** をクリックし、次のアクションを実行します。
     * ボリュームのプロトコルの種類として **[NFS]** を選択します。
-    * ボリュームのエクスポート パスを作成する際に使用するファイル パスとして「 **myfilepath1** 」と入力します。
+    * ボリュームのエクスポート パスを作成する際に使用するファイル パスとして「**myfilepath1**」と入力します。
     * ボリュームの NFS バージョン ( **[NFSv3]** または **[NFSv4.1]** ) を選択します。
       NFS のバージョンについては、「[考慮事項](azure-netapp-files-create-volumes.md#considerations)」および「[ベスト プラクティス](azure-netapp-files-create-volumes.md#best-practice)」を参照してください。
 
@@ -408,7 +410,7 @@ Azure portal、PowerShell、または Azure CLI を使用して Azure NetApp Fil
 > [!IMPORTANT]
 > リソース グループ内のすべてのリソースが完全に削除され、元に戻すことはできません。
 
-1. Azure portal の [検索] ボックスに「 **Azure NetApp Files** 」と入力し、表示された一覧から **[Azure NetApp Files]** を選択します。
+1. Azure portal の [検索] ボックスに「**Azure NetApp Files**」と入力し、表示された一覧から **[Azure NetApp Files]** を選択します。
 
 2. サブスクリプションの一覧で、削除するリソース グループ (myRG1) をクリックします。
 

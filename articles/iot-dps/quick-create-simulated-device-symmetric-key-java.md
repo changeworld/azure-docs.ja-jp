@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: fa1354c471cf23d85b3c2b0b563ed0463f5e19b2
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: a32811b439a569a8f8f82fcc046e0f4b89e47a38
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90528433"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966702"
 ---
 # <a name="quickstart-provision-a-simulated-device-to-iot-hub-with-symmetric-keys"></a>対称キーを使用してシミュレートされたデバイスを IoT Hub にプロビジョニングする
 
@@ -34,7 +34,7 @@ ms.locfileid: "90528433"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java SE Development Kit 8](https://aka.ms/azure-jdks) 以降がマシンにインストールされていることを確認します。
+* [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) 以降がマシンにインストールされていることを確認します。
 
 * [Maven](https://maven.apache.org/install.html) をダウンロードし、インストールします。
 
@@ -66,7 +66,7 @@ ms.locfileid: "90528433"
 
 3. **[登録の追加]** パネルで次の情報を入力して、**[保存]** を押します。
 
-   - **メカニズム:** ID 構成証明の*メカニズム*として **[対称キー]** を選択します。
+   - **メカニズム:** ID 構成証明の *メカニズム* として **[対称キー]** を選択します。
 
    - **[キーの自動生成]**: このボックスをオンにします。
 
@@ -76,9 +76,9 @@ ms.locfileid: "90528433"
 
      ![ポータルで対称キーの構成証明に対する個々の登録を追加する](./media/quick-create-simulated-device-symm-key-java/create-individual-enrollment-java.png)
 
-4. 登録を保存したら、**主キー**と**セカンダリ キー**が生成され、登録エントリに追加されます。 対称キーのデバイス登録は、*[個々の登録]* タブの *[登録 ID]* 列に **symm-key-java-device-007** と表示されます。 
+4. 登録を保存したら、**主キー** と **セカンダリ キー** が生成され、登録エントリに追加されます。 対称キーのデバイス登録は、*[個々の登録]* タブの *[登録 ID]* 列に **symm-key-java-device-007** と表示されます。 
 
-    登録を開き、生成された**主キー**の値をコピーします。 このキーの値と**登録 ID** は、後でデバイスの Java コードを更新する際に使用します。
+    登録を開き、生成された **主キー** の値をコピーします。 このキーの値と **登録 ID** は、後でデバイスの Java コードを更新する際に使用します。
 
 
 
@@ -132,7 +132,7 @@ ms.locfileid: "90528433"
       Message received! Response status: OK_EMPTY
     ```
 
-6. Azure Portal で、ご利用のプロビジョニング サービスにリンクされている IoT Hub に移動し、**[Device Explorer]** ブレードを開きます。 シミュレートされた対称キーのデバイスをハブにプロビジョニングすると、そのデバイス ID が**有効**な "*状態*" として **[Device Explorer]** ブレードに表示されます。  サンプル デバイス アプリケーションを稼働させる前にこのブレードを開いていた場合は、一番上にある **[最新の情報に更新]** を押すことが必要になる場合があります。 
+6. Azure Portal で、ご利用のプロビジョニング サービスにリンクされている IoT Hub に移動し、**[Device Explorer]** ブレードを開きます。 シミュレートされた対称キーのデバイスをハブにプロビジョニングすると、そのデバイス ID が **有効** な "*状態*" として **[Device Explorer]** ブレードに表示されます。  サンプル デバイス アプリケーションを稼働させる前にこのブレードを開いていた場合は、一番上にある **[最新の情報に更新]** を押すことが必要になる場合があります。 
 
     ![IoT ハブに登録されたデバイス](./media/quick-create-simulated-device-symm-key-java/hubregistration-java.png) 
 
