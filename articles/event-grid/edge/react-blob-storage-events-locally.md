@@ -8,11 +8,11 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 230e158a970f8c815b1575403c013e30749124c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87462022"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005063"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>チュートリアル:IoT Edge で Blob Storage イベントに対応する (プレビュー)
 この記事では、Azure BLOB ストレージを IoT モジュールにデプロイする方法について説明します。これは、BLOB の作成および削除時に Event Grid にイベントを送信する Event Grid パブリッシャーとして機能します。  
@@ -45,7 +45,7 @@ Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on
 
 ### <a name="configure-a-deployment-manifest"></a>配置マニフェストを構成する
 
-配置マニフェストは、デプロイするモジュール、モジュール間でのデータ フロー、およびモジュール ツインの目的のプロパティを記述した JSON ドキュメントです。 Azure portal には、JSON ドキュメントを手動で作成する代わりに配置マニフェストを作成する手順を示すウィザードがあります。  3 つのステップがあります。**モジュールの追加**、**ルートの指定**、および**デプロイの確認**。
+配置マニフェストは、デプロイするモジュール、モジュール間でのデータ フロー、およびモジュール ツインの目的のプロパティを記述した JSON ドキュメントです。 Azure portal には、JSON ドキュメントを手動で作成する代わりに配置マニフェストを作成する手順を示すウィザードがあります。  3 つのステップがあります。**モジュールの追加**、**ルートの指定**、および **デプロイの確認**。
 
 ### <a name="add-modules"></a>モジュールを追加する
 
@@ -164,7 +164,7 @@ Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on
 ## <a name="verify-your-deployment"></a>デプロイを確認する
 
 1. デプロイを送信すると、自分の IoT ハブの IoT Edge ページに戻ります。
-2. デプロイで対象にした **IoT Edge デバイス**を選択して、その詳細を開きます。
+2. デプロイで対象にした **IoT Edge デバイス** を選択して、その詳細を開きます。
 3. デバイスの詳細で、eventgridmodule、subscriber、azureblobstorageoniotedge の各モジュールが、 **[デプロイで指定]** と **[デバイス別に報告]** の両方に表示されていることを確認します。
 
    モジュールがデバイス上で開始してから IoT Hub にレポートされるまでしばらく時間がかかる場合があります。 ページを更新して、最新の状態を表示します。

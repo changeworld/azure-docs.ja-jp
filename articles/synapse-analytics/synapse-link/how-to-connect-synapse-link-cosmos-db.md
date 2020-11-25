@@ -10,11 +10,11 @@ ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 3434953de3460d3eff066768474f03aa0e14165e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668586"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004995"
 ---
 # <a name="connect-to-azure-synapse-link-preview-for-azure-cosmos-db"></a>Azure Cosmos DB 用の Azure Synapse Link (プレビュー) に接続する
 
@@ -46,20 +46,20 @@ Azure Cosmos DB データベースの接続は、リンクされたサービス�
 
 1. **[データ]** の近くにある **+** アイコンを選択します。
 1. **[Connect to external data]\(外部データに接続する\)** を選択します。
-1. 接続する API ( **SQL API** 、 **MongoDB 用 API** など) を選択します。
+1. 接続する API (**SQL API**、**MongoDB 用 API** など) を選択します。
 1. **[続行]** をクリックします。
 1. フレンドリ名を使用して、リンクされたサービスに名前を付けます。 この名前は、データ オブジェクト エクスプローラーに表示され、データベースとコンテナーに接続するために Azure Synapse ランタイムによって使用されます。
 1. **Azure Cosmos DB アカウント名** と **データベース名** を選択します。
-1. (省略可能) リージョンが指定されていない場合、Azure Synapse ランタイム操作は、分析ストアが有効になっている最も近いリージョンにルーティングされます。 また、ユーザーが Azure Cosmos DB 分析ストアにアクセスするために使用するリージョンを手動で設定することもできます。 **[Additional connection properties]\(追加の接続プロパティ\)** を選択し、 **[新規]** を選択します。 **[プロパティ名]** に「 **PreferredRegions** 」と入力します。 **[値]** を任意のリージョンに設定します (例: **WestUS2** )。 (単語と数字の間にスペースはありません)。
+1. (省略可能) リージョンが指定されていない場合、Azure Synapse ランタイム操作は、分析ストアが有効になっている最も近いリージョンにルーティングされます。 また、ユーザーが Azure Cosmos DB 分析ストアにアクセスするために使用するリージョンを手動で設定することもできます。 **[Additional connection properties]\(追加の接続プロパティ\)** を選択し、 **[新規]** を選択します。 **[プロパティ名]** に「**PreferredRegions**」と入力します。 **[値]** を任意のリージョンに設定します (例: **WestUS2**)。 (単語と数字の間にスペースはありません)。
 1. **［作成］** を選択します
 
 Azure Cosmos DB データベースは、 **[Azure Cosmos DB]** セクションの **[リンク済み]** タブの下に表示されます。 Azure Cosmos DB では、次のアイコンによって、HTAP 対応のコンテナーと OLTP のみのコンテナーを区別できます。
 
-**OLTP のみのコンテナー** :
+**OLTP のみのコンテナー**:
 
 ![OLTP コンテナー アイコンを示す視覚化。](../media/quickstart-connect-synapse-link-cosmosdb/oltp-container.png)
 
-**HTAP 対応のコンテナー** :
+**HTAP 対応のコンテナー**:
 
 ![HTAP コンテナー アイコンを示す視覚化。](../media/quickstart-connect-synapse-link-cosmosdb/htap-container.png)
 

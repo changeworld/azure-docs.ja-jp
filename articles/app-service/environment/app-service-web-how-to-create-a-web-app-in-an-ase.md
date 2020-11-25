@@ -8,11 +8,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: d0ac8e0cf187d1a6a329f2c7332c9ec37018d4cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962521"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005233"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>App Service Environment v1 で Web アプリを作成する
 
@@ -40,10 +40,10 @@ ms.locfileid: "88962521"
     サブスクリプションを複数保有している場合、App Service 環境でアプリを作成するには、App Service 環境を作成するときに使用したものと同じサブスクリプションを使用する必要があります。 
 3. リソース グループを選択または作成します。
    
-    *リソース グループ*を使用すると、関連する Azure リソースを 1 つの単位として管理でき、アプリ用に *Azure のロールベースのアクセス制御 (Azure RBAC)* 規則を作成する際に便利です。 詳細については、「[Azure Resource Manager の概要][ResourceGroups]」を参照してください。 
+    *リソース グループ* を使用すると、関連する Azure リソースを 1 つの単位として管理でき、アプリ用に *Azure のロールベースのアクセス制御 (Azure RBAC)* 規則を作成する際に便利です。 詳細については、「[Azure Resource Manager の概要][ResourceGroups]」を参照してください。 
 4. App Service プランを選択または作成します。
    
-    *App Service プラン*は、管理された Web アプリのセットです。  通常、価格を選択すると、課金される価格は個々のアプリではなく App Service プランに適用されます。 ASE では、ASP に記載されているものではなく、ASE に割り当てられているコンピューティング インスタンスに対して課金されます。  Web アプリのインスタンスの数を増やすには、App Service プランのインスタンスを増やします。これにより、そのプラン内のすべての Web アプリが影響を受けます。  サイトのスロット、VNET 統合などのいくつかの機能には、プラン内での数量制限があります。  詳細については、「[Azure App Service プランの概要](../overview-hosting-plans.md)」を参照してください。
+    *App Service プラン* は、管理された Web アプリのセットです。  通常、価格を選択すると、課金される価格は個々のアプリではなく App Service プランに適用されます。 ASE では、ASP に記載されているものではなく、ASE に割り当てられているコンピューティング インスタンスに対して課金されます。  Web アプリのインスタンスの数を増やすには、App Service プランのインスタンスを増やします。これにより、そのプラン内のすべての Web アプリが影響を受けます。  サイトのスロット、VNET 統合などのいくつかの機能には、プラン内での数量制限があります。  詳細については、「[Azure App Service プランの概要](../overview-hosting-plans.md)」を参照してください。
    
     ASE で App Service プランを識別するには、プラン名の下に表示されている場所を確認します。  
    
@@ -76,7 +76,7 @@ App Service 環境でホストされる App Service プランに関するもう 
     ![場所の選択コントロールで ASE を選択した後の ASE システムの詳細を示すスクリーンショット。][3]
 
 ### <a name="selecting-a-worker-pool"></a>ワーカー プールの選択
-Azure App Service 内の App Service 環境以外の通常の操作では、3 つのコンピューティング サイズが専用の価格プランで選択できるようになっています。  これと似た方法として、ASE では、ワーカーのプールを 3 つまで定義し、そのワーカー プールで使用するコンピューティング サイズを指定できます。  ASE のテナントから見れば、App Service プランの価格プランとコンピューティング サイズを選択する代わりに、 *ワーカー プール*と呼ばれるものを選択することになります。  
+Azure App Service 内の App Service 環境以外の通常の操作では、3 つのコンピューティング サイズが専用の価格プランで選択できるようになっています。  これと似た方法として、ASE では、ワーカーのプールを 3 つまで定義し、そのワーカー プールで使用するコンピューティング サイズを指定できます。  ASE のテナントから見れば、App Service プランの価格プランとコンピューティング サイズを選択する代わりに、 *ワーカー プール* と呼ばれるものを選択することになります。  
 
 ワーカー プールの選択 UI では、そのワーカー プールに使用されるコンピューティング サイズがその名の下に表示されます。  "使用可能" な数は、そのプールで使用できるコンピューティング インスタンスの数を示します。  プール全体ではこの数を超えるインスタンスが実際に含まれている可能性がありますが、この値は単に使用されていないインスタンスの数を表します。  App Service 環境を調整してコンピューティング リソースを追加する必要がある場合は、「 [App Service Environment の構成](app-service-web-configure-an-app-service-environment.md)」を参照してください。
 

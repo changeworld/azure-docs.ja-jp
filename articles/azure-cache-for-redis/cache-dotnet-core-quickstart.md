@@ -9,11 +9,11 @@ ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.openlocfilehash: 945d4a3d2bba84bf8f5973fd8dec092c66794c11
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077083"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004298"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-core"></a>クイックスタート: .NET Core で Azure Cache for Redis を使用する
 
@@ -49,7 +49,7 @@ dotnet new console -o Redistest
 
 このセクションでは、プロジェクトに[シークレット マネージャー ツール](/aspnet/core/security/app-secrets)を追加します。 シークレット マネージャー ツールは、開発作業の機密データをプロジェクト ツリーの外部に格納します。 これにより、ソース コード内のアプリ シークレットが偶発的に共有されるのを防止できます。
 
-*Redistest.csproj* ファイルを開きます。 `DotNetCliToolReference` 要素を追加して、 *Microsoft.Extensions.SecretManager.Tools* を含めます。 また、`UserSecretsId` 要素を下記のように追加して、ファイルを保存します。
+*Redistest.csproj* ファイルを開きます。 `DotNetCliToolReference` 要素を追加して、*Microsoft.Extensions.SecretManager.Tools* を含めます。 また、`UserSecretsId` 要素を下記のように追加して、ファイルを保存します。
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -64,7 +64,7 @@ dotnet new console -o Redistest
 </Project>
 ```
 
-次のコマンドを実行して、 *Microsoft.Extensions.Configuration.UserSecrets* パッケージをプロジェクトに追加します。
+次のコマンドを実行して、*Microsoft.Extensions.Configuration.UserSecrets* パッケージをプロジェクトに追加します。
 
 ```
 dotnet add package Microsoft.Extensions.Configuration.UserSecrets
@@ -107,13 +107,13 @@ private static void InitializeConfiguration()
 
 このセクションでは、.NET に [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) クライアントを使用するようにコンソール アプリを構成します。
 
-コマンド ウィンドウで、 *Redistest* プロジェクト ディレクトリで次のコマンドを実行します。
+コマンド ウィンドウで、*Redistest* プロジェクト ディレクトリで次のコマンドを実行します。
 
 ```
 dotnet add package StackExchange.Redis
 ```
 
-インストールが完了すると、 *StackExchange.Redis* キャッシュ クライアントをプロジェクトに使用できるようになります。
+インストールが完了すると、*StackExchange.Redis* キャッシュ クライアントをプロジェクトに使用できるようになります。
 
 
 ## <a name="connect-to-the-cache"></a>キャッシュに接続する
@@ -222,7 +222,7 @@ Azure Cache for Redis は .NET オブジェクトとプリミティブ データ
 
 オブジェクトをシリアル化する簡単な方法の 1 つは、[Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) の `JsonConvert` シリアル化メソッドを使用して、JSON へおよび JSON からシリアル化する方法です。 このセクションでは、.NET オブジェクトをキャッシュに追加します。
 
-次のコマンドを実行して、 *Newtonsoft.json* パッケージをアプリに追加します。
+次のコマンドを実行して、*Newtonsoft.json* パッケージをアプリに追加します。
 
 ```
 dotnet add package Newtonsoft.json
@@ -295,7 +295,7 @@ dotnet run
 
 [Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
 
-**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、 *TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、 **[リソース グループの削除]** をクリックします。
+**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、 **[リソース グループの削除]** をクリックします。
 
 ![削除](./media/cache-dotnet-core-quickstart/cache-delete-resource-group.png)
 

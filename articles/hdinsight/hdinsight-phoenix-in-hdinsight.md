@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: f98021d1e94b3796b2aeb6ba2e883e4e1380b8ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504334"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004825"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Azure HDInsight の Apache Phoenix
 
@@ -37,7 +37,7 @@ HBase には、プライマリ行キーについて辞書式に並べ替えら�
 CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) INCLUDE (bookname, quantity);
 ```
 
-この方法を使うと、単一インデックスでクエリを実行するより、パフォーマンスが大幅に向上します。 この種のセカンダリ インデックスは**カバリング インデックス**であり、クエリに含まれるすべての列を含みます。 したがって、テーブル参照は必要なく、インデックスがクエリ全体を満たします。
+この方法を使うと、単一インデックスでクエリを実行するより、パフォーマンスが大幅に向上します。 この種のセカンダリ インデックスは **カバリング インデックス** であり、クエリに含まれるすべての列を含みます。 したがって、テーブル参照は必要なく、インデックスがクエリ全体を満たします。
 
 ### <a name="views"></a>ビュー
 
