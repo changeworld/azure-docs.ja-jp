@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
 ms.openlocfilehash: 0a2a386264be0ec13e29b7a7546926819c5d931a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972885"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012733"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの仮想マシン
 
@@ -308,7 +308,7 @@ Linux オペレーティング システムを作成する場合は、次の定�
 },
 ```
 
-オペレーティング システム ディスクの構成設定は、osDisk 要素で割り当てられます。 この例では、キャッシュ モードが **ReadWrite** に設定された新しいマネージド ディスクを定義し、ディスクが[プラットフォーム イメージ](cli-ps-findimage.md)から作成されるようにします。
+オペレーティング システム ディスクの構成設定は、osDisk 要素で割り当てられます。 この例では、キャッシュ モードが **ReadWrite** に設定された新しいマネージド ディスクを定義し、ディスクが [プラットフォーム イメージ](cli-ps-findimage.md)から作成されるようにします。
 
 ```json
 "osDisk": { 

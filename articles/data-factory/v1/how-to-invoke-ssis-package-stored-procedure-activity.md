@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
 ms.openlocfilehash: c7a99e7e5f27f8c3503c7fa6124d27cfc4e7f4a4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636767"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012835"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory のストアド プロシージャ アクティビティを使用して SSIS パッケージを呼び出す
 この記事では、ストアド プロシージャ アクティビティを使用して SSIS パッケージを Azure Data Factory パイプラインから呼び出す方法を説明します。 
@@ -79,7 +79,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
     ```
     The specified Data Factory name 'ADFTutorialFactory' is already in use. Data Factory names must be globally unique.
     ```
-* Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、 **共同作成者** ロールまたは **所有者** ロールのメンバーであるか、Azure サブスクリプションの **管理者** である必要があります。
+* Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、**共同作成者** ロールまたは **所有者** ロールのメンバーであるか、Azure サブスクリプションの **管理者** である必要があります。
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービスを作成する
 リンクされたサービスを作成し、SSIS カタログをホストしている、Azure SQL Database 内のデータベースをデータ ファクトリにリンクします。 このリンクされたサービスの情報をデータ ファクトリが使用して、SSISDB データベースに接続し、ストアド プロシージャを実行して SSIS パッケージを実行します。 
@@ -101,7 +101,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
         }
     ```
 2. **Azure PowerShell** で **C:\ADF\RunSSISPackage** フォルダーに切り替えます。
-3. **New-AzDataFactoryLinkedService** コマンドレットを実行して、リンクされたサービスを作成します。 **AzureSqlDatabaseLinkedService** を作成します。 
+3. **New-AzDataFactoryLinkedService** コマンドレットを実行して、リンクされたサービスを作成します。**AzureSqlDatabaseLinkedService** を作成します。 
 
     ```powershell
     New-AzDataFactoryLinkedService $df -File ".\AzureSqlDatabaseLinkedService.json"
@@ -168,7 +168,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
     }    
     ```
 
-2. パイプライン **RunSSISPackagePipeline** を作成するには、 **New-AzDataFactoryPipeline** コマンドレットを実行します。
+2. パイプライン **RunSSISPackagePipeline** を作成するには、**New-AzDataFactoryPipeline** コマンドレットを実行します。
 
     ```powershell
     $DFPipeLine = New-AzDataFactoryPipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "RunSSISPackagePipeline" -DefinitionFile ".\RunSSISPackagePipeline.json"

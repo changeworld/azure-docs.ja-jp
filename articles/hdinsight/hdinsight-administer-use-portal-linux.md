@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
 ms.openlocfilehash: 7c644583e994e51f11bdf7991755a6ea94b01e76
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533480"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012811"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用して HDInsight の Apache Hadoop クラスターを管理する
 
@@ -107,7 +107,7 @@ HDInsight 上の 既存の Apache Hadoop クラスター。  「[Azure Portal �
 |プライベート エンドポイント|クラスターのプライベート エンドポイント。|
 |Secure Shell (SSH)|SSH でクラスターにアクセスするときに使うユーザー名とホスト名。|
 |状態|つぎのいずれかです。Aborted、Accepted、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、Operational、Running、Error、Deleting、Deleted、Timedout、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued、ClusterCustomization。|
-|リージョン|Azure の場所。 サポートされている Azure の場所の一覧については、「 **HDInsight の価格** 」の [[リージョン]](https://azure.microsoft.com/pricing/details/hdinsight/) ボックスの一覧をご覧ください。|
+|リージョン|Azure の場所。 サポートされている Azure の場所の一覧については、「**HDInsight の価格**」の [[リージョン]](https://azure.microsoft.com/pricing/details/hdinsight/) ボックスの一覧をご覧ください。|
 |作成日|クラスターがデプロイされた日付。|
 |オペレーティング システム|**[Windows]** または **[Linux]** 。|
 |TYPE|Hadoop、HBase、Storm、Spark。|
@@ -246,7 +246,7 @@ Azure Resource Manager モードでは、各 HDInsight クラスターは Azure 
 
 ## <a name="find-the-storage-accounts"></a>ストレージ アカウントを検索する
 
-HDInsight クラスターは、Azure Storage アカウントまたは Azure Data Lake Storage のいずれかを使用してデータを格納します。 各 HDInsight クラスターは、1 つの既定のストレージ アカウントと、複数のリンクされたストレージ アカウントを持つことができます。 ストレージ アカウントを一覧表示するには、 **クラスター ホーム ページ** の **[設定]** で [[ストレージ アカウント]](#homePage) を選択します。
+HDInsight クラスターは、Azure Storage アカウントまたは Azure Data Lake Storage のいずれかを使用してデータを格納します。 各 HDInsight クラスターは、1 つの既定のストレージ アカウントと、複数のリンクされたストレージ アカウントを持つことができます。 ストレージ アカウントを一覧表示するには、**クラスター ホーム ページ** の **[設定]** で [[ストレージ アカウント]](#homePage) を選択します。
 
 ## <a name="monitor-jobs"></a>ジョブの監視
 

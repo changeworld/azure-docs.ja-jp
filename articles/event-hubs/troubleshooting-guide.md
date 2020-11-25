@@ -3,12 +3,12 @@ title: 接続の問題のトラブルシューティング - Azure Event Hubs | 
 description: この記事では、Azure Event Hubs での接続の問題のトラブルシューティングについて説明します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: b85c0895d1c8f165f494d29013adea014187dd23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eddc0e8c598e4553b30759d179fecb6ae880829
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87039329"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96012682"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>接続に関する問題のトラブルシューティング - Azure Event Hubs
 クライアント アプリケーションがイベント ハブに接続できない理由はさまざまです。 発生した接続の問題は、永続的である場合もあれば、一時的なものである場合もあります。 問題が常に (永続的に) 発生する場合は、接続文字列、組織のファイアウォール設定、IP ファイアウォール設定、ネットワーク セキュリティ設定 (サービス エンドポイント、プライベート エンドポイントなど) などを確認することをお勧めします。 一時的な問題の場合は、SDK の最新バージョンへのアップグレード、ドロップされたパケットを確認するコマンドの実行、ネットワーク トレースの取得によって問題のトラブルシューティングに役立つ場合があります。 
@@ -26,54 +26,7 @@ ms.locfileid: "87039329"
 
 Kafka クライアントの場合、producer.config または consumer.config の各ファイルが正しく構成されていることを確認します。 詳細については、「[Event Hubs で Kafka を使用してメッセージを送受信する](event-hubs-quickstart-kafka-enabled-event-hubs.md#send-and-receive-messages-with-kafka-in-event-hubs)」を参照してください。
 
-### <a name="check-if-the-ports-required-to-communicate-with-event-hubs-are-blocked-by-organizations-firewall"></a>Event Hubs との通信に必要なポートが組織のファイアウォールによってブロックされていないかどうかを確認する
-Azure Event Hubs との通信に使用されるポートが組織のファイアウォールでブロックされていないことを確認します。 Azure Event Hubs と通信するために開く必要がある送信ポートについては、次の表を参照してください。 
-
-| Protocol | Port | 詳細 | 
-| -------- | ----- | ------- | 
-| AMQP | 5671 と 5672 | [AMQP プロトコル ガイド](../service-bus-messaging/service-bus-amqp-protocol-guide.md)に関するページを参照してください | 
-| HTTP、HTTPS | 80、443 |  |
-| Kafka | 9093 | [Kafka アプリケーションからの Event Hubs の使用](event-hubs-for-kafka-ecosystem-overview.md)に関するページをご覧ください
-
-5671 ポートがブロックされているかどうかを確認するサンプル コマンドを次に示します。
-
-```powershell
-tnc <yournamespacename>.servicebus.windows.net -port 5671
-```
-
-Linux の場合:
-
-```shell
-telnet <yournamespacename>.servicebus.windows.net 5671
-```
-
-### <a name="verify-that-ip-addresses-are-allowed-in-your-corporate-firewall"></a>企業のファイアウォールで IP アドレスが許可されていることを確認する
-Azure を使用している場合、使用している、または使用しようとしているすべての Azure サービスにアクセスするために、企業のファイアウォールまたはプロキシで特定の IP アドレス範囲または URL を許可することが必要になる場合があります。 Event Hubs によって使用される IP アドレスでトラフィックが許可されていることを確認します。 Azure Event Hubs によって使用される IP アドレスについては、「[Azure の IP 範囲とサービス タグ - パブリック クラウド](https://www.microsoft.com/download/details.aspx?id=56519)」を参照してください。
-
-また、名前空間の IP アドレスが許可されていることを確認します。 接続を許可する適切な IP アドレスを検索するには、次の手順を実行します。
-
-1. コマンド プロンプトで、次のコマンドを実行します。 
-
-    ```
-    nslookup <YourNamespaceName>.servicebus.windows.net
-    ```
-2. `Non-authoritative answer` で返された IP アドレスをメモします。 これが変更されるのは、名前空間を別のクラスターに復元する場合のみです。
-
-名前空間にゾーン冗長性を使用している場合は、次の追加手順を実行する必要があります。 
-
-1. まず、名前空間に対して nslookup を実行します。
-
-    ```
-    nslookup <yournamespace>.servicebus.windows.net
-    ```
-2. **non-authoritative answer** セクションの名前をメモします。これは、次のいずれかの形式になります。 
-
-    ```
-    <name>-s1.cloudapp.net
-    <name>-s2.cloudapp.net
-    <name>-s3.cloudapp.net
-    ```
-3. s1、s2、s3 のサフィックスが付いているそれぞれについて nslookup を実行し、3 つの可用性ゾーンで実行されている 3 つのインスタンスすべての IP アドレスを取得します。 
+[!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
 
 ### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>ネットワーク セキュリティ グループで AzureEventGrid サービス タグが許可されていることを確認する
 アプリケーションがサブネット内で実行されていて、関連付けられているネットワーク セキュリティ グループがある場合は、インターネット アウトバウンドが許可されているか、または AzureEventGrid サービス タグが許可されているかを確認します。 「[仮想ネットワーク サービス タグ](../virtual-network/service-tags-overview.md)」を参照し、`EventHub` を検索してください。
@@ -92,41 +45,25 @@ IP ファイアウォール規則は、Event Hubs 名前空間レベルで適用
 
 詳細については、「[Azure Event Hubs 名前空間に対する IP ファイアウォール規則を構成する](event-hubs-ip-filtering.md)」を参照してください。 IP フィルター処理、仮想ネットワーク、または証明書チェーンの問題があるかどうかを確認するには、「[ネットワーク関連の問題をトラブルシューティングする](#troubleshoot-network-related-issues)」を参照してください。
 
-#### <a name="find-the-ip-addresses-blocked-by-ip-firewall"></a>IP ファイアウォールによってブロックされている IP アドレスを見つける
-「[診断ログを有効にする](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)」の手順に従って、[Event Hubs 仮想ネットワーク接続イベント](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema)の診断ログを有効にします。 拒否された接続の IP アドレスが表示されます。
-
-```json
-{
-    "SubscriptionId": "0000000-0000-0000-0000-000000000000",
-    "NamespaceName": "namespace-name",
-    "IPAddress": "1.2.3.4",
-    "Action": "Deny Connection",
-    "Reason": "IPAddress doesn't belong to a subnet with Service Endpoint enabled.",
-    "Count": "65",
-    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name",
-    "Category": "EventHubVNetConnectionEvent"
-}
-```
-
 ### <a name="check-if-the-namespace-can-be-accessed-using-only-a-private-endpoint"></a>プライベート エンドポイントのみを使用して名前空間にアクセスできるかどうかを確認する
 Event Hubs がプライベート エンドポイント経由でのみアクセスできるように構成されている場合は、クライアント アプリケーションがプライベート エンドポイント経由で名前空間にアクセスしていることを確認します。 
 
-[Azure Private Link サービス](../private-link/private-link-overview.md)を使用すると、仮想ネットワーク内の**プライベート エンドポイント**経由で Azure Event Hubs にアクセスできます。 プライベート エンドポイントとは、Azure Private Link を使用するサービスにプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントは、ご自分の仮想ネットワークからのプライベート IP アドレスを使用して、サービスを実質的に仮想ネットワークに取り込みます。 サービスへのすべてのトラフィックをプライベート エンドポイント経由でルーティングできるため、ゲートウェイ、NAT デバイス、ExpressRoute または VPN 接続、パブリック IP アドレスは必要ありません。 仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを経由して、パブリック インターネットからの公開を排除します。 最高レベルの細分性でアクセスを制御しながら Azure リソースのインスタンスに接続できます。
+[Azure Private Link サービス](../private-link/private-link-overview.md)を使用すると、仮想ネットワーク内の **プライベート エンドポイント** 経由で Azure Event Hubs にアクセスできます。 プライベート エンドポイントとは、Azure Private Link を使用するサービスにプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントは、ご自分の仮想ネットワークからのプライベート IP アドレスを使用して、サービスを実質的に仮想ネットワークに取り込みます。 サービスへのすべてのトラフィックをプライベート エンドポイント経由でルーティングできるため、ゲートウェイ、NAT デバイス、ExpressRoute または VPN 接続、パブリック IP アドレスは必要ありません。 仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを経由して、パブリック インターネットからの公開を排除します。 最高レベルの細分性でアクセスを制御しながら Azure リソースのインスタンスに接続できます。
 
-詳細については、[プライベート エンドポイントの構成](private-link-service.md)に関するページを参照してください。 プライベート エンドポイントが使用されていることを確認するには、**プライベート エンドポイント接続の動作検証**に関するセクションを参照してください。 
+詳細については、[プライベート エンドポイントの構成](private-link-service.md)に関するページを参照してください。 プライベート エンドポイントが使用されていることを確認するには、**プライベート エンドポイント接続の動作検証** に関するセクションを参照してください。 
 
 ### <a name="troubleshoot-network-related-issues"></a>ネットワーク関連の問題をトラブルシューティングする
 Event Hubs のネットワーク関連の問題をトラブルシューティングするには、次の手順を実行します。 
 
 `https://<yournamespacename>.servicebus.windows.net/` の参照または [wget](https://www.gnu.org/software/wget/) を行います。 これは、IP フィルタリング、仮想ネットワーク、または証明書チェーンの問題 (Java SDK の使用時に最も一般的) があるかどうかを確認するのに役立ちます。
 
-**成功したメッセージ**の例を次に示します。
+**成功したメッセージ** の例を次に示します。
 
 ```xml
 <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Publicly Listed Services</title><subtitle type="text">This is the list of publicly-listed services currently available.</subtitle><id>uuid:27fcd1e2-3a99-44b1-8f1e-3e92b52f0171;id=30</id><updated>2019-12-27T13:11:47Z</updated><generator>Service Bus 1.1</generator></feed>
 ```
 
-**失敗したエラー メッセージ**の例を次に示します。
+**失敗したエラー メッセージ** の例を次に示します。
 
 ```json
 <Error>

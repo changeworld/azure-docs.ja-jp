@@ -6,11 +6,11 @@ ms.topic: quickstart
 ms.date: 04/04/2020
 ms.reviewer: azfuncdf, antchu
 ms.openlocfilehash: 5d624027259212d804ced26a6daaffb853984a98
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294869"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012631"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>Python で最初の永続関数を作成する
 
@@ -155,7 +155,7 @@ Azure Functions Core Tools は、必要に応じて Visual Studio Code により
 
 Azure Functions Core Tools を使用すると、ローカルの開発用コンピューター上で Azure Functions プロジェクトを実行できます。 インストールしていない場合は、Visual Studio Code から初めて関数を起動すると、これらのツールをインストールするよう求めるメッセージが表示されます。
 
-1. 関数をテストするには、`Hello` アクティビティ関数のコード (*Hello/\_\_init__.py*) にブレークポイントを設定します。 F5 キーを押すか、コマンド パレットから `Debug: Start Debugging` を選択して、関数アプリ プロジェクトを開始します。 Core Tools からの出力が**ターミナル** パネルに表示されます。
+1. 関数をテストするには、`Hello` アクティビティ関数のコード (*Hello/\_\_init__.py*) にブレークポイントを設定します。 F5 キーを押すか、コマンド パレットから `Debug: Start Debugging` を選択して、関数アプリ プロジェクトを開始します。 Core Tools からの出力が **ターミナル** パネルに表示されます。
 
     > [!NOTE]
     > デバッグについて詳しくは、[Durable Functions の診断](durable-functions-diagnostics.md#debugging)に関する記事をご覧ください。
@@ -203,7 +203,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
     }
     ```
 
-1. デバッグを停止するには、VS Code で **Shift キーを押しながら F5 キー**を押します。
+1. デバッグを停止するには、VS Code で **Shift キーを押しながら F5 キー** を押します。
 
 関数がローカル コンピューター上で正常に動作することを確認したら、プロジェクトを Azure に発行します。
 
@@ -213,7 +213,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
 ## <a name="test-your-function-in-azure"></a>Azure で関数をテストする
 
-1. **出力**パネルから HTTP トリガーの URL をコピーします。 HTTP によってトリガーされる関数を呼び出す URL は、次の形式である必要があります: `http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
+1. **出力** パネルから HTTP トリガーの URL をコピーします。 HTTP によってトリガーされる関数を呼び出す URL は、次の形式である必要があります: `http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
 
 2. HTTP 要求のこの新しい URL をブラウザーのアドレス バーに貼り付けます。 以前の発行済みアプリの使用時と同じ状態応答を受け取るはずです。
 
