@@ -12,11 +12,11 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.openlocfilehash: e73126cfc54294a7b9d54ff62c406d5e686ac470
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186775"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95982716"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
 
@@ -113,7 +113,7 @@ Azure-SSIS IR を作成するユーザーは、次のアクセス許可を持っ
 
   - 組み込みのネットワーク共同作成者ロールを使用します。 このロールには、必要なスコープよりずっと大きなスコープを持つ _Microsoft.Network/\*_ アクセス許可が備わっています。
 
-  - 必要な _Microsoft.Network/virtualNetworks/\*/join/action_ アクセス許可のみを含むカスタム ロールを作成してください。 また、Azure-SSIS IR を Azure Resource Manager 仮想ネットワークに参加させながら、独自のパブリック IP アドレスを使用する場合は、 _Microsoft.Network/publicIPAddresses/*/join/action_ アクセス許可もロールに含めてください。
+  - 必要な _Microsoft.Network/virtualNetworks/\*/join/action_ アクセス許可のみを含むカスタム ロールを作成してください。 また、Azure-SSIS IR を Azure Resource Manager 仮想ネットワークに参加させながら、独自のパブリック IP アドレスを使用する場合は、_Microsoft.Network/publicIPAddresses/*/join/action_ アクセス許可もロールに含めてください。
 
 - SSIS IR を従来の仮想ネットワークに参加させる場合は、組み込みの従来の仮想マシン共同作成者ロールを使用することをお勧めします。 そうしない場合は、仮想ネットワークに参加するためのアクセス許可を含むカスタム ロールを定義する必要があります。
 
@@ -169,7 +169,7 @@ Azure-SSIS IR によって使用されるサブネットに NSG を実装する�
 | Direction | トランスポート プロトコル | source | 発信元ポート範囲 | 宛先 | Destination port range | 説明 |
 |---|---|---|---|---|---|---|
 | 送信 | TCP | VirtualNetwork | * | AzureCloud | 443 | 仮想ネットワークの Azure-SSIS IR のノードはこのポートを使って、Azure Storage や Azure Event Hubs などの Azure サービスにアクセスします。 |
-| 送信 | TCP | VirtualNetwork | * | インターネット | 80 | (省略可能) 仮想ネットワーク内の Azure-SSIS IR のノードでは、このポートを使用して、インターネットから証明書失効リストをダウンロードします。 このトラフィックをブロックすると、IR の開始時にパフォーマンスが低下し、証明書の使用状況について証明書失効リストを確認する機能が失われる可能性があります。 送信先を特定の FQDN にさらに絞り込む場合は、「 **Azure ExpressRoute または UDR を使用する** 」のセクションを参照してください|
+| 送信 | TCP | VirtualNetwork | * | インターネット | 80 | (省略可能) 仮想ネットワーク内の Azure-SSIS IR のノードでは、このポートを使用して、インターネットから証明書失効リストをダウンロードします。 このトラフィックをブロックすると、IR の開始時にパフォーマンスが低下し、証明書の使用状況について証明書失効リストを確認する機能が失われる可能性があります。 送信先を特定の FQDN にさらに絞り込む場合は、「**Azure ExpressRoute または UDR を使用する**」のセクションを参照してください|
 | 送信 | TCP | VirtualNetwork | * | Sql | 1433、11000 ～ 11999 | (省略可能) この規則は、仮想ネットワーク内の Azure-SSIS IR のノードから、サーバーによってホストされている SSISDB にアクセスする場合にのみ必要です。 サーバー接続ポリシーが **[リダイレクト]** ではなく **[プロキシ]** に設定されている場合、ポート 1433 のみが必要です。 <br/><br/> この送信セキュリティ規則は、プライベート エンドポイントで構成された SQL Database または仮想ネットワーク内の SQL Managed Instance によってホストされている SSISDB には適用できません。 |
 | 送信 | TCP | VirtualNetwork | * | VirtualNetwork | 1433、11000 ～ 11999 | (省略可能) この規則は、仮想ネットワーク内の Azure-SSIS IR のノードから、プライベート エンドポイントで構成された SQL Database または仮想ネットワーク内の SQL Managed Instance によってホストされている SSISDB にアクセスする場合にのみ必要です。 サーバー接続ポリシーが **[リダイレクト]** ではなく **[プロキシ]** に設定されている場合、ポート 1433 のみが必要です。 |
 | 送信 | TCP | VirtualNetwork | * | ストレージ | 445 | (省略可能) この規則は、Azure Files に格納されている SSIS パッケージを実行する場合にのみ必要です。 |
@@ -356,7 +356,7 @@ Azure-SSIS IR を参加させる前に、ポータルを使用して Azure Resou
 
    1. サブスクリプションを選択します。 
 
-   1. 左側の **[リソース プロバイダー]** を選択し、 **Microsoft.Batch** が登録済みのプロバイダーであることを確認します。 
+   1. 左側の **[リソース プロバイダー]** を選択し、**Microsoft.Batch** が登録済みのプロバイダーであることを確認します。 
 
    !["登録済み" 状態の確認](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
 
@@ -392,7 +392,7 @@ Azure-SSIS IR を参加させる前に、ポータルを使用して従来の仮
 
    1. **[ロールの割り当ての追加]** を選択します。
 
-   1. **[ロールの割り当ての追加]** ページで、 **[ロール]** に **[従来の仮想マシン共同作成者]** を選択します。 **[選択]** ボックスに「 **ddbf3205-c6bd-46ae-8127-60eb93363864** 」を貼り付け、検索結果の一覧から **[Microsoft Azure Batch]** を選択します。 
+   1. **[ロールの割り当ての追加]** ページで、 **[ロール]** に **[従来の仮想マシン共同作成者]** を選択します。 **[選択]** ボックスに「**ddbf3205-c6bd-46ae-8127-60eb93363864**」を貼り付け、検索結果の一覧から **[Microsoft Azure Batch]** を選択します。 
 
        ![[ロールの割り当ての追加] ページでの検索結果](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
 
@@ -410,7 +410,7 @@ Azure-SSIS IR を参加させる前に、ポータルを使用して従来の仮
 
    1. サブスクリプションを選択します。 
 
-   1. 左側の **[リソース プロバイダー]** を選択し、 **Microsoft.Batch** が登録済みのプロバイダーであることを確認します。 
+   1. 左側の **[リソース プロバイダー]** を選択し、**Microsoft.Batch** が登録済みのプロバイダーであることを確認します。 
 
    !["登録済み" 状態の確認](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
 
